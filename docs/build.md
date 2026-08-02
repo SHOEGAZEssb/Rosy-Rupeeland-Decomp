@@ -49,6 +49,16 @@ Compared with `-O4`, this leaves the exact `PAD_Read` and instruction-matched
 candidate rather than a confirmed original setting until the remaining
 function is exact.
 
+`src/system/debug_menu.c` uses:
+
+```text
+-proc arm946e -O4 -inline off -ipa function -interworking -lang c
+```
+
+The constructor, destructor variants, factory, and 12-byte `.data` vtable are
+exact. Its 964-byte update is exact in size and matches `99.170130%`; the full
+1,100-byte `.text` section matches `99.272730%`.
+
 The remaining NitroSDK make flags for instruction set, debug information,
 diagnostics, character signedness, and language compatibility do not alter the
 owned bytes. The checked-in build keeps the smallest proven code-generation
@@ -89,16 +99,17 @@ is `build/decomp/delinks/src/system/input.o`; the reconstructed object is
 .\tools\configure.ps1
 ninja mt19937  # target delink object and reconstructed object
 ninja input    # input objects plus the current informational match report
+ninja debug_menu  # complete debug-menu unit, reports, and exact sub-gate
 ninja archive  # MWLDARM static-library smoke test
 ninja match    # both object diffs, raw slices, archive, and MT exactness gate
 ```
 
-Machine-readable comparisons are `build/reports/mt19937.json` and
-`build/reports/input.json`; their concise summaries have matching `.txt`
-names. All build artifacts are ignored.
+Machine-readable comparisons are `build/reports/mt19937.json`,
+`build/reports/input.json`, and `build/reports/debug_menu.json`; their concise
+summaries have matching `.txt` names. All build artifacts are ignored.
 
 `objdiff.json` is generated from the dsd configuration and covers the full
-ARM9/overlay layout. It includes both reconstructed units and invokes
+ARM9/overlay layout. It includes all reconstructed units and invokes
 `ninja match` when objdiff requests a rebuild.
 
 ## Incremental reconstruction

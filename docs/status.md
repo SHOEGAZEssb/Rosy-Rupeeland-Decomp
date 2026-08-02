@@ -66,9 +66,25 @@ target and addend. `UpdateKeyState` is behaviorally reconstructed and has the
 exact retail size, but its register allocation and literal-load ordering still
 need compiler shaping.
 
-`ninja match` rebuilds both units and the Metrowerks archive. It fails if the
-already exact MT19937 unit regresses; the input report remains informational
-until all three functions are exact.
+`ninja match` rebuilds all reconstructed units and the Metrowerks archive. It
+fails if an exact gated result regresses; the remaining input differences stay
+informational until all three functions are exact.
+
+The complete debug menu is a third reconstructed unit:
+
+| Item | Address | Target size | Match |
+| --- | --- | ---: | ---: |
+| `DebugMenu_Init` | `0x0200113C` | 40 bytes | `100.000000%` |
+| `DebugMenu_Destroy` | `0x02001164` | 20 bytes | `100.000000%` |
+| `DebugMenu_DestroyAndFree` | `0x02001178` | 28 bytes | `100.000000%` |
+| `DebugMenu_Update` | `0x02001194` | 964 bytes | `99.170130%` |
+| `DebugMenu_Create` | `0x02001558` | 48 bytes | `100.000000%` |
+| `gDebugMenuVTable` | `0x020D3BC4` | 12 bytes | `100.000000%` |
+
+Its `.text` aggregate is `99.272730%` and every function has the exact target
+size. The only update mismatch is the scheduling order of two equivalent
+instructions around its virtual destructor call. See
+[debug_menu.md](debug_menu.md) for the class layout and full behavior.
 
 ## Confirmed Nitro SDK symbols
 

@@ -17,3 +17,8 @@ src/system/mt19937.c:
 src/system/input.c:
     categories: Game code
     .text       start:0x02000ed8 end:0x0200113c
+
+src/system/debug_menu.c:
+    categories: Game code
+    .text       start:0x0200113c end:0x02001588
+    .data       start:0x020d3bc4 end:0x020d3bd0

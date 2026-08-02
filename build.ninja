@@ -2,6 +2,7 @@ include build/config.ninja
 
 mt_cflags = -proc arm946e -O4 -inline on,noauto -ipa file -interworking -lang c
 input_cflags = -proc arm946e -O3 -inline on,noauto -ipa file -interworking -lang c
+debug_menu_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -lang c
 
 rule mwccarm
   command = "$mwccarm" $cflags -i "$repo_root/include" -c $source -o $out
@@ -28,7 +29,7 @@ rule match_report
   command = "$python" tools/report_objdiff.py $report_json $out $report_args
   description = MATCH $out
 
-build build/decomp/delinks/src/system/mt19937.o | build/decomp/delinks/src/system/input.o: dsd_delink config/arm9/config.yaml config/arm9/delinks.txt config/arm9/symbols.txt config/arm9/relocs.txt | build/rom/arm9/arm9.bin
+build build/decomp/delinks/src/system/mt19937.o | build/decomp/delinks/src/system/input.o build/decomp/delinks/src/system/debug_menu.o: dsd_delink config/arm9/config.yaml config/arm9/delinks.txt config/arm9/symbols.txt config/arm9/relocs.txt | build/rom/arm9/arm9.bin
 
 build build/decomp/src/system/mt19937.o: mwccarm src/system/mt19937.c | include/tingle/random.h include/tingle/types.h
   source = src/system/mt19937.c
@@ -38,7 +39,11 @@ build build/decomp/src/system/input.o: mwccarm src/system/input.c | include/ting
   source = src/system/input.c
   cflags = $input_cflags
 
-build build/decomp/lib/tingle.a: mwldarm_archive build/decomp/src/system/mt19937.o build/decomp/src/system/input.o
+build build/decomp/src/system/debug_menu.o: mwccarm src/system/debug_menu.c | include/tingle/debug_menu.h include/tingle/types.h
+  source = src/system/debug_menu.c
+  cflags = $debug_menu_cflags
+
+build build/decomp/lib/tingle.a: mwldarm_archive build/decomp/src/system/mt19937.o build/decomp/src/system/input.o build/decomp/src/system/debug_menu.o
 
 build build/reference/mt19937.text.bin: extract_slice build/rom/arm9/arm9.bin
   slice_start = 0x0200234c
@@ -81,10 +86,23 @@ build build/reports/input.txt: match_report build/reports/input.json | tools/rep
   report_json = build/reports/input.json
   report_args = --section .text --function PAD_Read --function UpdateSystemFrame --function UpdateKeyState
 
+build build/reports/debug_menu.json: objdiff build/decomp/delinks/src/system/debug_menu.o | build/decomp/src/system/debug_menu.o
+  target_object = build/decomp/delinks/src/system/debug_menu.o
+  base_object = build/decomp/src/system/debug_menu.o
+
+build build/reports/debug_menu.txt: match_report build/reports/debug_menu.json | tools/report_objdiff.py
+  report_json = build/reports/debug_menu.json
+  report_args = --section .text --section .data --function DebugMenu_Init --function DebugMenu_Destroy --function DebugMenu_DestroyAndFree --function DebugMenu_Update --function DebugMenu_Create
+
+build build/reports/debug_menu_exact.txt: match_report build/reports/debug_menu.json | tools/report_objdiff.py
+  report_json = build/reports/debug_menu.json
+  report_args = --section .data --function DebugMenu_Init --function DebugMenu_Destroy --function DebugMenu_DestroyAndFree --function DebugMenu_Create --require-exact
+
 build mt19937: phony build/decomp/delinks/src/system/mt19937.o build/decomp/src/system/mt19937.o
 build input: phony build/decomp/delinks/src/system/input.o build/decomp/src/system/input.o build/reports/input.txt
+build debug_menu: phony build/decomp/delinks/src/system/debug_menu.o build/decomp/src/system/debug_menu.o build/reports/debug_menu.txt build/reports/debug_menu_exact.txt
 build archive: phony build/decomp/lib/tingle.a
 build references: phony build/reference/mt19937.text.bin build/reference/init_genrand.bin build/reference/init_by_array.bin build/reference/genrand_int32.bin build/reference/InitRandom.bin
-build match: phony build/reports/mt19937.txt build/reports/input.txt build/decomp/lib/tingle.a references
+build match: phony build/reports/mt19937.txt build/reports/input.txt build/reports/debug_menu.txt build/reports/debug_menu_exact.txt build/decomp/lib/tingle.a references
 
 default match

@@ -25,8 +25,8 @@
   ],
   "units": [
     {
-      "name": "_dsd_gap@main_10",
-      "target_path": "build/decomp/delinks/_dsd_gap@main_10.o",
+      "name": "_dsd_gap@main_11",
+      "target_path": "build/decomp/delinks/_dsd_gap@main_11.o",
       "metadata": {
         "complete": false,
         "reverse_fn_order": false,
@@ -48,8 +48,22 @@
       }
     },
     {
-      "name": "_dsd_gap@main_1",
-      "target_path": "build/decomp/delinks/_dsd_gap@main_1.o",
+      "name": "src/system/debug_menu",
+      "target_path": "build/decomp/delinks/src/system/debug_menu.o",
+      "base_path": "build/decomp/src/system/debug_menu.o",
+      "metadata": {
+        "complete": false,
+        "reverse_fn_order": false,
+        "source_path": "src/system/debug_menu.c",
+        "progress_categories": [
+          "Game code"
+        ],
+        "auto_generated": false
+      }
+    },
+    {
+      "name": "_dsd_gap@main_4",
+      "target_path": "build/decomp/delinks/_dsd_gap@main_4.o",
       "metadata": {
         "complete": false,
         "reverse_fn_order": false,
@@ -71,8 +85,8 @@
       }
     },
     {
-      "name": "_dsd_gap@main_12",
-      "target_path": "build/decomp/delinks/_dsd_gap@main_12.o",
+      "name": "_dsd_gap@main_13",
+      "target_path": "build/decomp/delinks/_dsd_gap@main_13.o",
       "metadata": {
         "complete": false,
         "reverse_fn_order": false,

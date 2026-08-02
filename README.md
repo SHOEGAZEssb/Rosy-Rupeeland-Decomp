@@ -67,16 +67,22 @@ ninja match
 On the current machine the configuration script also detects those locations
 without environment variables. `ninja match` performs all of the following:
 
-- compiles `src/system/mt19937.c` and `src/system/input.c` with MWCCARM;
-- archives both objects with MWLDARM, exercising both proprietary tools;
+- compiles the MT19937, input, and debug-menu source units with MWCCARM;
+- archives all reconstructed objects with MWLDARM, exercising both
+  proprietary tools;
 - regenerates the relocation-aware target object with dsd;
 - extracts and SHA-256 verifies the four functions from the ARM9 binary; and
-- runs objdiff for both source units with an exact-match gate on MT19937.
+- runs objdiff for all source units and enforces their exact sub-gates.
 
 The MT19937 unit matches all code and owned data at `100.000000%`. The input
 unit contains three readable reconstructed functions and currently matches
 `96.823530%` across its `.text` section. Open `objdiff.json` from the
 repository root to use the GUI; its custom build command is `ninja match`.
+
+The complete debug menu is reconstructed: its constructor, destructor
+variants, factory, and vtable are exact, while its 964-byte update is exact in
+size and matches `99.170130%`. See
+[docs/debug_menu.md](docs/debug_menu.md) for its behavior and addresses.
 
 See [docs/build.md](docs/build.md) for flags, artifacts, address ranges, and the
 incremental link structure.
