@@ -49,7 +49,8 @@ $env:DSD_EXE = 'E:\Stuff\Decomp\dsd.exe'
 
 The script verifies the input ROM hash, extracts it into `build/rom`, rebuilds
 it, restores the retail secure-area checksum field, verifies an exact SHA-256
-match, and creates reference delink objects under `build/decomp`.
+match as `build/tingle.original.nds`, and creates reference delink objects under
+`build/decomp`. This output contains only the original binary code.
 
 ## Matching build
 
@@ -83,6 +84,20 @@ The complete debug menu is reconstructed: its constructor, destructor
 variants, factory, and vtable are exact, while its 964-byte update is exact in
 size and matches `99.170130%`. See
 [docs/debug_menu.md](docs/debug_menu.md) for its behavior and addresses.
+
+## Source-backed ROM
+
+The first complete source-backed ROM is available with one command:
+
+```powershell
+ninja rom
+```
+
+Ninja compiles `src/system/mt19937.c`, replaces its original delink object in
+the full ARM9 link, links the ARM9, ITCM, DTCM, and all 647 overlays with
+MWLDARM, verifies every linked module with dsd, and repacks the NDS. The output
+is `build/tingle.recompiled.nds`. Because MT19937 is byte-exact, this first
+source-backed ROM also has the retail SHA-256.
 
 See [docs/build.md](docs/build.md) for flags, artifacts, address ranges, and the
 incremental link structure.

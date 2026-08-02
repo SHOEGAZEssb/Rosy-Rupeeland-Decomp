@@ -8,7 +8,7 @@ $ExpectedSha256 = '72FE824D5FBA107BCE221EB85EEE4DA54295A9B1DFC47F5176ED7752A6F50
 $RepoRoot = Split-Path -Parent $PSScriptRoot
 $RomPath = Join-Path $RepoRoot $Rom
 $ExtractConfig = Join-Path $RepoRoot 'build\rom\config.yaml'
-$RebuiltRom = Join-Path $RepoRoot 'build\tingle.rebuilt.nds'
+$OriginalRom = Join-Path $RepoRoot 'build\tingle.original.nds'
 $DsdConfig = Join-Path $RepoRoot 'config\arm9\config.yaml'
 
 if (-not $DsdExe) {
@@ -40,17 +40,17 @@ if (-not (Test-Path -LiteralPath $ExtractConfig)) {
     Write-Host 'Using existing build\rom extraction.'
 }
 
-& $DsdExe rom build --config $ExtractConfig --rom $RebuiltRom
+& $DsdExe rom build --config $ExtractConfig --rom $OriginalRom
 if ($LASTEXITCODE -ne 0) { throw "dsd rom build failed with exit code $LASTEXITCODE" }
 
-& python (Join-Path $PSScriptRoot 'patch_rom_header.py') $RomPath $RebuiltRom
+& python (Join-Path $PSScriptRoot 'patch_rom_header.py') $RomPath $OriginalRom
 if ($LASTEXITCODE -ne 0) { throw "header patch failed with exit code $LASTEXITCODE" }
 
-$RebuiltSha256 = (Get-FileHash -Algorithm SHA256 -LiteralPath $RebuiltRom).Hash
-if ($RebuiltSha256 -ne $ExpectedSha256) {
-    throw "Rebuilt ROM does not match: $RebuiltSha256"
+$OriginalSha256 = (Get-FileHash -Algorithm SHA256 -LiteralPath $OriginalRom).Hash
+if ($OriginalSha256 -ne $ExpectedSha256) {
+    throw "Original-code ROM does not match: $OriginalSha256"
 }
-Write-Host "Exact rebuild verified: $RebuiltSha256"
+Write-Host "Exact original-code ROM verified: $OriginalSha256"
 
 & $DsdExe delink --config-path $DsdConfig
 if ($LASTEXITCODE -ne 0) { throw "dsd delink failed with exit code $LASTEXITCODE" }

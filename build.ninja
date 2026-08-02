@@ -1,6 +1,6 @@
 include build/config.ninja
 
-mt_cflags = -proc arm946e -O4 -inline on,noauto -ipa file -interworking -lang c
+mt_cflags = -proc arm946e -O4 -inline on,noauto -ipa file -interworking -Cpp_exceptions off -lang c
 input_cflags = -proc arm946e -O3 -inline on,noauto -ipa file -interworking -lang c
 debug_menu_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -lang c
 
@@ -16,6 +16,23 @@ rule dsd_delink
   command = "$dsd" delink --config-path config/arm9/config.yaml
   description = DSD DELINK
   restat = 1
+
+rule dsd_lcf
+  command = "$dsd" lcf --config-path config/arm9/config.yaml
+  description = DSD LCF
+  restat = 1
+
+rule prepare_link_objects
+  command = powershell -NoProfile -ExecutionPolicy Bypass -File tools/prepare_link_objects.ps1 -InputPath build/decomp/objects.txt -ReplacementsPath config/arm9/link_replacements.txt -OutputPath $out
+  description = LINK OBJECTS $out
+
+rule mwldarm_link
+  command = "$mwldarm" -proc arm946e -nostdlib -nodeadstrip -interworking -main Entry -map -o build/decomp/tingle.elf @build/decomp/objects.source.txt build/decomp/arm9.lcf
+  description = MWLDARM ROM MODULES
+
+rule build_recompiled_rom
+  command = powershell -NoProfile -ExecutionPolicy Bypass -File tools/build_recompiled_rom.ps1 -DsdExe "$dsd" -PythonExe "$python" -OutputRom $out
+  description = ROM $out
 
 rule extract_slice
   command = "$python" tools/extract_slice.py $in $out --base-address 0x02000000 --start $slice_start --end $slice_end --sha256 $slice_sha256
@@ -44,6 +61,14 @@ build build/decomp/src/system/debug_menu.o: mwccarm src/system/debug_menu.c | in
   cflags = $debug_menu_cflags
 
 build build/decomp/lib/tingle.a: mwldarm_archive build/decomp/src/system/mt19937.o build/decomp/src/system/input.o build/decomp/src/system/debug_menu.o
+
+build build/decomp/arm9.lcf build/decomp/objects.txt: dsd_lcf config/arm9/config.yaml config/arm9/delinks.txt config/arm9/symbols.txt config/arm9/relocs.txt | build/decomp/delinks/src/system/mt19937.o
+
+build build/decomp/objects.source.txt: prepare_link_objects build/decomp/objects.txt config/arm9/link_replacements.txt tools/prepare_link_objects.ps1 | build/decomp/src/system/mt19937.o
+
+build build/decomp/tingle.elf | build/decomp/build/arm9.bin build/decomp/build/itcm.bin build/decomp/build/dtcm.bin: mwldarm_link build/decomp/objects.source.txt build/decomp/arm9.lcf | build/decomp/src/system/mt19937.o
+
+build build/tingle.recompiled.nds: build_recompiled_rom build/decomp/tingle.elf | tools/build_recompiled_rom.ps1 tools/patch_rom_header.py
 
 build build/reference/mt19937.text.bin: extract_slice build/rom/arm9/arm9.bin
   slice_start = 0x0200234c
@@ -104,5 +129,6 @@ build debug_menu: phony build/decomp/delinks/src/system/debug_menu.o build/decom
 build archive: phony build/decomp/lib/tingle.a
 build references: phony build/reference/mt19937.text.bin build/reference/init_genrand.bin build/reference/init_by_array.bin build/reference/genrand_int32.bin build/reference/InitRandom.bin
 build match: phony build/reports/mt19937.txt build/reports/input.txt build/reports/debug_menu.txt build/reports/debug_menu_exact.txt build/decomp/lib/tingle.a references
+build rom: phony build/tingle.recompiled.nds
 
 default match

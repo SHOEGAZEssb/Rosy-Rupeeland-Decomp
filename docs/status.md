@@ -9,7 +9,12 @@
   already decrypted, `dsd` writes zero there. The second field is the header
   CRC covering the first field.
 - `tools/patch_rom_header.py` restores the retail secure-area CRC and computes
-  a valid header CRC. The unmodified rebuild then matches the target SHA-256.
+  a valid header CRC. The unmodified `build/tingle.original.nds` then matches
+  the target SHA-256.
+- `ninja rom` now performs a full Metrowerks link with the reconstructed,
+  byte-exact `src/system/mt19937.c` object replacing its retail slice. dsd
+  verifies ARM9, ITCM, DTCM, and all 647 overlays, and the resulting
+  `build/tingle.recompiled.nds` matches the retail SHA-256 exactly.
 
 ## Code layout
 
@@ -27,7 +32,7 @@ The matching toolchain is MWCCARM 3.0 build 114 and MWLDARM 2.0 build 82. The
 first exact game-owned unit uses:
 
 ```text
--proc arm946e -O4 -inline on,noauto -ipa file -interworking -lang c
+-proc arm946e -O4 -inline on,noauto -ipa file -interworking -Cpp_exceptions off -lang c
 ```
 
 See [build.md](build.md) for local configuration, the comparison workflow, and

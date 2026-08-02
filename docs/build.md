@@ -24,7 +24,7 @@ include path and object inputs explicitly.
 The exact code-generation flags are:
 
 ```text
--proc arm946e -O4 -inline on,noauto -ipa file -interworking -lang c
+-proc arm946e -O4 -inline on,noauto -ipa file -interworking -Cpp_exceptions off -lang c
 ```
 
 These flags compile `src/system/mt19937.c`. The `-ipa file` option is
@@ -102,6 +102,7 @@ ninja input    # input objects plus the current informational match report
 ninja debug_menu  # complete debug-menu unit, reports, and exact sub-gate
 ninja archive  # MWLDARM static-library smoke test
 ninja match    # both object diffs, raw slices, archive, and MT exactness gate
+ninja rom      # full source-backed link, module verification, and NDS rebuild
 ```
 
 Machine-readable comparisons are `build/reports/mt19937.json`,
@@ -112,16 +113,34 @@ summaries have matching `.txt` names. All build artifacts are ignored.
 ARM9/overlay layout. It includes all reconstructed units and invokes
 `ninja match` when objdiff requests a rebuild.
 
+## Source-backed ROM link
+
+`ninja rom` generates `build/decomp/arm9.lcf` and the original object response
+file with dsd. `tools/prepare_link_objects.ps1` then applies the explicit
+entries in `config/arm9/link_replacements.txt`. The current manifest replaces
+the original MT19937 delink object with `build/decomp/src/system/mt19937.o`.
+
+MWLDARM links the full module graph with `-nodeadstrip`; this is required to
+retain retail code that has no statically visible references. Before packing,
+`dsd check modules --fail` verifies the ARM9, ITCM, DTCM, and every one of the
+647 ARM9 overlays. `tools/build_recompiled_rom.ps1` stages the linked modules in
+an ignored copy of the extracted ROM, rebuilds the NDS, fixes its header CRCs,
+and enforces the retail SHA-256. The verified output is:
+
+```text
+build/tingle.recompiled.nds
+72FE824D5FBA107BCE221EB85EEE4DA54295A9B1DFC47F5176ED7752A6F5006D
+```
+
 ## Incremental reconstruction
 
 Unassigned ranges remain in dsd-generated `_dsd_gap@...` objects. A new source
 file is introduced by assigning its original `.text`, data, and BSS ranges in
-the corresponding `delinks.txt`. Until it is ready for the full link, dsd's
-original relocation-aware object remains the linkable slice and objdiff target.
-Once a translation unit is complete, its delink entry can be marked `complete`
-so the generated LCF selects the reconstructed object. This preserves exact
-original slices while allowing C/C++ objects to replace them one unit at a
-time.
+the corresponding `delinks.txt`. Until it is byte-exact, dsd's original
+relocation-aware object remains the linkable slice and objdiff target. Once a
+translation unit is complete, its target-to-source substitution is added to
+`config/arm9/link_replacements.txt`. This preserves exact original slices while
+allowing C/C++ objects to replace them one unit at a time.
 
 An optional GCC/devkitARM build can later use the same source/object graph, but
 it must use separate output paths and is not part of the matching baseline.
