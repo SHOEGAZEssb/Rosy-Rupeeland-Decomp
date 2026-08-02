@@ -66,33 +66,23 @@ void UpdateSystemFrame(void)
     }
 }
 
-void UpdateKeyState(u16 keys, int stateIndex)
+#ifndef MATCHING
+void UpdateKeyState(u32 keys, int stateIndex)
 {
     int byteOffset = stateIndex * sizeof(PadState);
     volatile u8 *heldBase = (volatile u8 *)&gPadStates;
     SystemState *system =
         (SystemState *)((u8 *)&gSystemState + byteOffset);
     u16 held = *(volatile u16 *)(heldBase + byteOffset);
-    volatile u8 *pressedBase = (volatile u8 *)&gPadState0Pressed;
     u16 repeated = 0;
-    u32 invertedKeys;
-    volatile u8 *releasedBase;
-    u16 mask;
-    u8 zero;
+    u16 mask = 1;
     int i;
 
-    *(volatile u16 *)(pressedBase + byteOffset) = keys & ~held;
+    *(volatile u16 *)((u8 *)&gPadState0Pressed + byteOffset) = keys & ~held;
+    *(volatile u16 *)((u8 *)&gPadState0Released + byteOffset) =
+        ~keys & *(volatile u16 *)(heldBase + byteOffset);
 
-    held = *(volatile u16 *)(heldBase + byteOffset);
-    invertedKeys = ~keys;
-    releasedBase = (volatile u8 *)&gPadState0Released;
-    *(volatile u16 *)(releasedBase + byteOffset) = invertedKeys & held;
-
-    i = 0;
-    mask = 1;
-    zero = 0;
-
-    for (; i < PAD_KEY_COUNT; i++, mask <<= 1) {
+    for (i = 0; i < PAD_KEY_COUNT; i++, mask <<= 1) {
         if ((keys & mask) != 0) {
             if ((system->pads[0].held & mask) == 0) {
                 repeated |= mask;
@@ -107,10 +97,11 @@ void UpdateKeyState(u16 keys, int stateIndex)
                 }
             }
         } else {
-            system->pads[0].repeatTimers[i] = zero;
+            system->pads[0].repeatTimers[i] = 0;
         }
     }
 
     *(volatile u16 *)((u8 *)&gPadState0Repeated + byteOffset) = repeated;
     *(volatile u16 *)(heldBase + byteOffset) = keys;
 }
+#endif

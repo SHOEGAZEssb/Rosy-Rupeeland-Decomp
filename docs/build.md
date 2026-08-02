@@ -11,9 +11,10 @@ The verified proprietary tool versions are:
 | `mwasmarm.exe` | 1.0 build 20 |
 
 They are not part of the repository. `tools/configure.ps1` accepts explicit
-`-Mwccarm`, `-Mwldarm`, `-DsdExe`, `-ObjdiffExe`, and `-PythonExe` arguments.
-It also reads `MWCCARM`, `MWLDARM`, `MWCCARM_ROOT`, `DSD_EXE`, `OBJDIFF_EXE`,
-and `PYTHON_EXE`. Resolved paths are stored only in ignored build output.
+`-Mwccarm`, `-Mwldarm`, `-Mwasmarm`, `-DsdExe`, `-ObjdiffExe`, and
+`-PythonExe` arguments. It also reads `MWCCARM`, `MWLDARM`, `MWASMARM`,
+`MWCCARM_ROOT`, `DSD_EXE`, `OBJDIFF_EXE`, and `PYTHON_EXE`. Resolved paths are
+stored only in ignored build output.
 
 The compiler's harmless missing-`MWCIncludes` warning and the linker's
 missing-`MWLibraries` warning are expected because the project supplies its
@@ -35,29 +36,29 @@ The compiler default and explicit `-opt space` are indistinguishable for this
 unit, while `-opt speed` produces different code and is not the retail setting
 for this file.
 
-The current best compiler candidate for `src/system/input.c` differs only in
-using `-O3`:
+`src/system/input.c` uses `-O3` and defines `MATCHING`:
 
 ```text
--proc arm946e -O3 -inline on,noauto -ipa file -interworking -lang c
+-proc arm946e -O3 -inline on,noauto -ipa file -interworking -DMATCHING -lang c
 ```
 
-Compared with `-O4`, this leaves the exact `PAD_Read` and instruction-matched
-`UpdateSystemFrame` results unchanged while improving `UpdateKeyState` from
-`89.592590%` to `91.092590%`. The input `.text` aggregate improves from
-`96.294120%` to `96.823530%`. Treat `-O3` as the best current per-unit
-candidate rather than a confirmed original setting until the remaining
-function is exact.
+`PAD_Read` and `UpdateSystemFrame` are generated from C. MWCCARM could not be
+shaped to reproduce the retail register allocation for `UpdateKeyState`, so
+the readable C implementation is retained under `#ifndef MATCHING` and the
+matching build assembles `asm/system/input_update.s` with MWASMARM 1.0 build
+20. A partial MWLDARM link combines both inputs into the replacement object.
+Its standalone objdiff score is `99.444440%` because that partial link changes
+relocation associations; the final linked ARM9 bytes are exact.
 
 `src/system/debug_menu.c` uses:
 
 ```text
--proc arm946e -O4 -inline off -ipa function -interworking -lang c
+-proc arm946e -O4 -inline off -ipa function -interworking -lang c++
 ```
 
-The constructor, destructor variants, factory, and 12-byte `.data` vtable are
-exact. Its 964-byte update is exact in size and matches `99.170130%`; the full
-1,100-byte `.text` section matches `99.272730%`.
+The constructor, destructor variants, 964-byte update, factory, 1,100-byte
+`.text`, and 12-byte `.data` vtable are all byte-exact. C++ mode is required to
+reproduce the original deleting-expression code generation.
 
 The remaining NitroSDK make flags for instruction set, debug information,
 diagnostics, character signedness, and language compatibility do not alter the
@@ -98,8 +99,8 @@ is `build/decomp/delinks/src/system/input.o`; the reconstructed object is
 ```powershell
 .\tools\configure.ps1
 ninja mt19937  # target delink object and reconstructed object
-ninja input    # input objects plus the current informational match report
-ninja debug_menu  # complete debug-menu unit, reports, and exact sub-gate
+ninja input    # C/assembly input replacement plus object-level report
+ninja debug_menu  # complete debug-menu unit and exact gate
 ninja archive  # MWLDARM static-library smoke test
 ninja match    # both object diffs, raw slices, archive, and MT exactness gate
 ninja rom      # full source-backed link, module verification, and NDS rebuild
@@ -118,7 +119,8 @@ ARM9/overlay layout. It includes all reconstructed units and invokes
 `ninja rom` generates `build/decomp/arm9.lcf` and the original object response
 file with dsd. `tools/prepare_link_objects.ps1` then applies the explicit
 entries in `config/arm9/link_replacements.txt`. The current manifest replaces
-the original MT19937 delink object with `build/decomp/src/system/mt19937.o`.
+the original MT19937, input, and debug-menu delink objects with their
+reconstructed counterparts.
 
 MWLDARM links the full module graph with `-nodeadstrip`; this is required to
 retain retail code that has no statically visible references. Before packing,

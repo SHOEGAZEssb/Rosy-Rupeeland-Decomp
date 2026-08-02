@@ -1,3 +1,5 @@
 # Delink object = reconstructed object
 # Paths are repository-relative. Add only byte-exact units to the matching ROM.
 build/decomp/delinks/src/system/mt19937.o = build/decomp/src/system/mt19937.o
+build/decomp/delinks/src/system/input.o = build/decomp/src/system/input.o
+build/decomp/delinks/src/system/debug_menu.o = build/decomp/src/system/debug_menu.o

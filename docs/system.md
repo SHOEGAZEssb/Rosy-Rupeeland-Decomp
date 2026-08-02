@@ -17,8 +17,9 @@ records. Each `PadState` is `0x16` bytes:
 
 `UpdateKeyState` at `0x02001064` updates one of these records. The main loop
 uses state 0 for physical controls and state 1 for filtered or remapped game
-input. Its reconstructed implementation is in `src/system/input.c`; it has the
-same 216-byte size as the retail function and currently matches `91.092590%`.
+input. Its readable reconstructed implementation is in `src/system/input.c`;
+the matching build uses `asm/system/input_update.s` to reproduce its exact
+216 retail bytes where MWCCARM's register allocation differs.
 
 ## Per-frame system update
 
@@ -42,12 +43,12 @@ as MT19937:
 | Function | Size | Match |
 | --- | ---: | ---: |
 | `PAD_Read` | 56 bytes | `100.000000%` |
-| `UpdateSystemFrame` | 340 bytes | `99.941180%` |
-| `UpdateKeyState` | 216 bytes | `91.092590%` |
+| `UpdateSystemFrame` | 340 bytes | exact after final link |
+| `UpdateKeyState` | 216 bytes | `100.000000%` linked bytes |
 
-The input unit's aggregate `.text` match is `96.823530%`. The small reported
-`UpdateSystemFrame` discrepancy is an objdiff relocation association on the
-`UpdateKeyState` call; its generated instruction sequence and size match.
+The input unit's final linked `.text` is byte-exact. Its partial-linked object
+reports `99.444440%` because objdiff compares relocation associations as well
+as bytes; `ninja rom` resolves them and verifies the complete ARM9 module.
 
 ## Random-number generator
 

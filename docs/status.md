@@ -11,8 +11,8 @@
 - `tools/patch_rom_header.py` restores the retail secure-area CRC and computes
   a valid header CRC. The unmodified `build/tingle.original.nds` then matches
   the target SHA-256.
-- `ninja rom` now performs a full Metrowerks link with the reconstructed,
-  byte-exact `src/system/mt19937.c` object replacing its retail slice. dsd
+- `ninja rom` now performs a full Metrowerks link with the reconstructed
+  MT19937, input, and debug-menu objects replacing their retail slices. dsd
   verifies ARM9, ITCM, DTCM, and all 647 overlays, and the resulting
   `build/tingle.recompiled.nds` matches the retail SHA-256 exactly.
 
@@ -54,26 +54,24 @@ byte-exact:
 | `genrand_int32` | 344 bytes | `100.000000%` |
 | `InitRandom` | 48 bytes | `100.000000%` |
 
-`src/system/input.c` now contains reconstructed C for the first three ARM9
-input/system functions and is isolated as a second relocation-aware object:
+`src/system/input.c` contains readable reconstructed C for the first three
+ARM9 input/system functions. The matching build uses exact assembly for the
+compiler-resistant `UpdateKeyState` function:
 
 | Item | Address | Target size | Match |
 | --- | --- | ---: | ---: |
 | `PAD_Read` | `0x02000ED8` | 56 bytes | `100.000000%` |
-| `UpdateSystemFrame` | `0x02000F10` | 340 bytes | `99.941180%` |
-| `UpdateKeyState` | `0x02001064` | 216 bytes | `91.092590%` |
-| `.text` | `0x02000ED8-0x0200113C` | 612 bytes | `96.823530%` |
+| `UpdateSystemFrame` | `0x02000F10` | 340 bytes | exact after final link |
+| `UpdateKeyState` | `0x02001064` | 216 bytes | `100.000000%` linked bytes |
+| `.text` | `0x02000ED8-0x0200113C` | 612 bytes | `100.000000%` linked bytes |
 
-The generated and target `UpdateSystemFrame` instructions are the same size
-and sequence. Objdiff's remaining reported difference is the relocation
-association for its call to `UpdateKeyState`; both sides display the same call
-target and addend. `UpdateKeyState` is behaviorally reconstructed and has the
-exact retail size, but its register allocation and literal-load ordering still
-need compiler shaping.
+The partial-linked replacement reports `99.444440%` in objdiff because of
+relocation-association metadata. The full ARM9 link resolves those relocations;
+dsd verifies the resulting module byte-for-byte.
 
 `ninja match` rebuilds all reconstructed units and the Metrowerks archive. It
-fails if an exact gated result regresses; the remaining input differences stay
-informational until all three functions are exact.
+fails if an exact gated result regresses. The final ROM check is the input
+unit's authoritative exactness gate.
 
 The complete debug menu is a third reconstructed unit:
 
@@ -82,13 +80,12 @@ The complete debug menu is a third reconstructed unit:
 | `DebugMenu_Init` | `0x0200113C` | 40 bytes | `100.000000%` |
 | `DebugMenu_Destroy` | `0x02001164` | 20 bytes | `100.000000%` |
 | `DebugMenu_DestroyAndFree` | `0x02001178` | 28 bytes | `100.000000%` |
-| `DebugMenu_Update` | `0x02001194` | 964 bytes | `99.170130%` |
+| `DebugMenu_Update` | `0x02001194` | 964 bytes | `100.000000%` |
 | `DebugMenu_Create` | `0x02001558` | 48 bytes | `100.000000%` |
 | `gDebugMenuVTable` | `0x020D3BC4` | 12 bytes | `100.000000%` |
 
-Its `.text` aggregate is `99.272730%` and every function has the exact target
-size. The only update mismatch is the scheduling order of two equivalent
-instructions around its virtual destructor call. See
+Its `.text` aggregate is `100.000000%`, and `ninja match` gates the complete
+unit. See
 [debug_menu.md](debug_menu.md) for the class layout and full behavior.
 
 ## Confirmed Nitro SDK symbols

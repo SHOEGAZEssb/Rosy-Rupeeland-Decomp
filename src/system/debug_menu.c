@@ -42,6 +42,11 @@ extern DebugMenuVTable gDebugScene6VTable;
 
 #ifdef __cplusplus
 }
+
+class DebugMenuDeleteProxy {
+public:
+    virtual ~DebugMenuDeleteProxy();
+};
 #endif
 
 DebugMenuVTable gDebugMenuVTable = {
@@ -71,11 +76,6 @@ DebugMenu *DebugMenu_DestroyAndFree(DebugMenu *menu)
     return menu;
 }
 
-/*
- * NON-MATCHING: the generated function has the exact retail size and logic.
- * MWCCARM schedules the vtable load one instruction before the r0 argument
- * move; the retail object schedules it immediately after the move.
- */
 int DebugMenu_Update(DebugMenu *menu)
 {
     u16 pressed;
@@ -117,9 +117,13 @@ int DebugMenu_Update(DebugMenu *menu)
     }
 
     selection = menu->selection;
+#ifdef __cplusplus
+    delete reinterpret_cast<DebugMenuDeleteProxy *>(menu);
+#else
     if (menu != 0) {
         menu->vtable->destroyAndFree(menu);
     }
+#endif
 
     switch (selection) {
     case 0:

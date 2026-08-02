@@ -56,6 +56,6 @@ void InitRuntime(void);
 void InitHeap(void);
 u16 PAD_Read(void);
 void UpdateSystemFrame(void);
-void UpdateKeyState(u16 keys, int stateIndex);
+void UpdateKeyState(u32 keys, int stateIndex);
 
 #endif

@@ -28,15 +28,14 @@ followed by a signed selection index:
 | `0x0200113C` | `DebugMenu_Init` | 40 bytes | `100.000000%` |
 | `0x02001164` | `DebugMenu_Destroy` | 20 bytes | `100.000000%` |
 | `0x02001178` | `DebugMenu_DestroyAndFree` | 28 bytes | `100.000000%` |
-| `0x02001194` | `DebugMenu_Update` | 964 bytes | `99.170130%` |
+| `0x02001194` | `DebugMenu_Update` | 964 bytes | `100.000000%` |
 | `0x02001558` | `DebugMenu_Create` | 48 bytes | `100.000000%` |
 | `0x020D3BC4` | `gDebugMenuVTable` | 12 bytes | `100.000000%` |
 
-The complete 1,100-byte `.text` section matches `99.272730%`; `.data` is
-exact. Every function has the exact retail size. `ninja match` enforces exact
-results for the constructor, both destructor variants, factory, and vtable.
+The complete 1,100-byte `.text` section and `.data` are exact. `ninja match`
+enforces exact results for every function and the vtable.
 
-## Update behavior and remaining mismatch
+## Update behavior
 
 `DebugMenu_Update` draws the build date, timezone note, and SDK version;
 changes the selection with newly pressed directional buttons; destroys the
@@ -44,14 +43,12 @@ menu when A is pressed; and allocates and initializes the selected test scene.
 All 13 switch entries, including the no-op entry and the early-return entry,
 are reconstructed.
 
-Its only generated-code difference is instruction scheduling around the
-virtual destructor call. Retail emits `mov r0, r4` immediately before loading
-the vtable through `r0`; MWCCARM schedules the equivalent vtable load through
-`r4` one instruction earlier. The remaining instructions, function size, and
-relocations match.
-
 The best matching flags for this unit are:
 
 ```text
--proc arm946e -O4 -inline off -ipa function -interworking -lang c
+-proc arm946e -O4 -inline off -ipa function -interworking -lang c++
 ```
+
+The original update uses a C++ delete expression after the virtual destructor
+call. Reconstructing that expression is what produces the exact retail
+instruction scheduling.

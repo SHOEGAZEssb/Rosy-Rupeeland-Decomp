@@ -2,6 +2,7 @@
 param(
     [string]$Mwccarm = $env:MWCCARM,
     [string]$Mwldarm = $env:MWLDARM,
+    [string]$Mwasmarm = $env:MWASMARM,
     [string]$MwccarmRoot = $env:MWCCARM_ROOT,
     [string]$DsdExe = $env:DSD_EXE,
     [string]$ObjdiffExe = $env:OBJDIFF_EXE,
@@ -41,10 +42,12 @@ function Resolve-Executable {
 if ($MwccarmRoot) {
     if (-not $Mwccarm) { $Mwccarm = Join-Path $MwccarmRoot 'mwccarm.exe' }
     if (-not $Mwldarm) { $Mwldarm = Join-Path $MwccarmRoot 'mwldarm.exe' }
+    if (-not $Mwasmarm) { $Mwasmarm = Join-Path $MwccarmRoot 'mwasmarm.exe' }
 }
 
 $Mwccarm = Resolve-Executable $Mwccarm 'mwccarm' 'E:\Stuff\Decomp\mwccarm\2.0\base\mwccarm.exe' 'MWCCARM'
 $Mwldarm = Resolve-Executable $Mwldarm 'mwldarm' 'E:\Stuff\Decomp\mwccarm\2.0\base\mwldarm.exe' 'MWLDARM'
+$Mwasmarm = Resolve-Executable $Mwasmarm 'mwasmarm' 'E:\Stuff\Decomp\mwccarm\2.0\base\mwasmarm.exe' 'MWASMARM'
 $DsdExe = Resolve-Executable $DsdExe 'dsd' 'E:\Stuff\Decomp\dsd.exe' 'dsd'
 $ObjdiffExe = Resolve-Executable $ObjdiffExe 'objdiff-cli' 'E:\Stuff\Decomp\objdiff-cli.exe' 'objdiff-cli'
 $PythonExe = Resolve-Executable $PythonExe 'python' $null 'Python'
@@ -71,6 +74,7 @@ $Config = @"
 repo_root = $(ConvertTo-NinjaPath $RepoRoot)
 mwccarm = $(ConvertTo-NinjaPath $Mwccarm)
 mwldarm = $(ConvertTo-NinjaPath $Mwldarm)
+mwasmarm = $(ConvertTo-NinjaPath $Mwasmarm)
 dsd = $(ConvertTo-NinjaPath $DsdExe)
 objdiff = $(ConvertTo-NinjaPath $ObjdiffExe)
 python = $(ConvertTo-NinjaPath $PythonExe)
@@ -81,4 +85,5 @@ Set-Content -LiteralPath $ConfigPath -Value $Config -Encoding ascii
 
 Write-Host "Configured Ninja with MWCCARM at $Mwccarm"
 Write-Host "Configured Ninja with MWLDARM at $Mwldarm"
+Write-Host "Configured Ninja with MWASMARM at $Mwasmarm"
 Write-Host 'Run `ninja match` to compile and compare the reconstructed source units.'
