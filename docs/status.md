@@ -1,5 +1,21 @@
 # Project status
 
+## Long-term objective
+
+The project ultimately targets a native, cross-platform executable, with
+Windows as the first supported desktop target. Byte-matching the European NDS
+ROM is the reference workflow used to validate reconstructed game logic; it is
+not the final product. Native targets will reuse portable game-owned code and
+replace NitroSDK, ARM, and Nintendo DS hardware interfaces with documented
+platform implementations.
+
+SDK boundaries are therefore part of the decompilation output, not incidental
+details. When a function or subsystem is reconstructed, its documentation
+should identify every relevant SDK call or hardware dependency, the observable
+semantics required by the game, and the planned native replacement. The
+current barrier register and documentation format are in
+[native_port.md](native_port.md).
+
 ## Baseline
 
 - The ROM extracts successfully without an ARM7 BIOS.
