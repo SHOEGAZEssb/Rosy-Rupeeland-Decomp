@@ -61,6 +61,7 @@ combines `REG_KEYINPUT` (`0x04000130`) with the shared X/Y button word
 | `0x020B5744` | `MI_DmaFill32` | Synchronous 32-bit DMA fill |
 | `0x020B5808` | `MIi_CpuClear32` | Word-at-a-time CPU fill primitive |
 | `0x020B5834` | `MIi_CpuClearFast` | Eight-word CPU fill primitive |
+| `0x020B5984` | `MI_CpuCopy8` | Alignment-safe byte copy used by game-work initialization |
 
 The CRT path reaches `InitRuntime` (`0x02002330`), which calls `OS_Init`,
 `OS_InitThread`, `OS_InitTick`, and the game heap initializer at `0x02002638`

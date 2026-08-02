@@ -1,6 +1,12 @@
 #include "tingle/debug_menu.h"
 #include "tingle/system.h"
 
+/*
+ * Hidden debug-menu scene recovered from the retail ARM9 binary. Constructors
+ * whose roles are still unknown retain their address-derived names; the switch
+ * below records only their observed allocation sizes and call relationships.
+ */
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -55,6 +61,7 @@ DebugMenuVTable gDebugMenuVTable = {
     DebugMenu_Update,
 };
 
+/* Construct the scene base, install this scene's vtable, and select item zero. */
 DebugMenu *DebugMenu_Init(DebugMenu *menu)
 {
     Scene_Init(menu);
@@ -63,12 +70,14 @@ DebugMenu *DebugMenu_Init(DebugMenu *menu)
     return menu;
 }
 
+/* Run the base scene destructor without releasing the allocation. */
 DebugMenu *DebugMenu_Destroy(DebugMenu *menu)
 {
     Scene_Destroy(menu);
     return menu;
 }
 
+/* Destroy a heap-owned menu and release its allocation. */
 DebugMenu *DebugMenu_DestroyAndFree(DebugMenu *menu)
 {
     Scene_Destroy(menu);
@@ -76,6 +85,10 @@ DebugMenu *DebugMenu_DestroyAndFree(DebugMenu *menu)
     return menu;
 }
 
+/*
+ * Draw build information, navigate the two-column list, and launch the scene
+ * represented by the selected entry when A is pressed.
+ */
 int DebugMenu_Update(DebugMenu *menu)
 {
     u16 pressed;
@@ -90,6 +103,7 @@ int DebugMenu_Update(DebugMenu *menu)
     DebugText_Printf(gDebugFont, 1, 18, gDebugTextRenderer,
                      gDebugSdkVersionFormat, 3, 2, 0x7530);
 
+    /* Up/down move by rows; left/right toggle the column within a row. */
     pressed = gSystemState.pads[0].pressed;
     if ((pressed & 0x40) != 0) {
         menu->selection -= 2;
@@ -116,6 +130,7 @@ int DebugMenu_Update(DebugMenu *menu)
         goto done;
     }
 
+    /* The menu destroys itself before handing control to the selected scene. */
     selection = menu->selection;
 #ifdef __cplusplus
     delete reinterpret_cast<DebugMenuDeleteProxy *>(menu);
@@ -125,6 +140,7 @@ int DebugMenu_Update(DebugMenu *menu)
     }
 #endif
 
+    /* Scene meanings remain unknown, so keep the original numeric dispatch. */
     switch (selection) {
     case 0:
         func_020ae920();
@@ -213,6 +229,7 @@ done:
     return 0;
 }
 
+/* Allocate and construct a debug menu from the game's main heap context. */
 DebugMenu *DebugMenu_Create(void)
 {
     DebugMenu *menu =

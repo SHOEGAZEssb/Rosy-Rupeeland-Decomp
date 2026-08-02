@@ -3,3 +3,4 @@
 build/decomp/delinks/src/system/mt19937.o = build/decomp/src/system/mt19937.o
 build/decomp/delinks/src/system/input.o = build/decomp/src/system/input.o
 build/decomp/delinks/src/system/debug_menu.o = build/decomp/src/system/debug_menu.o
+build/decomp/delinks/src/system/game_work.o = build/decomp/src/system/game_work.o

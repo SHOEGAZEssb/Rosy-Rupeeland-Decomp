@@ -60,6 +60,15 @@ The constructor, destructor variants, 964-byte update, factory, 1,100-byte
 `.text`, and 12-byte `.data` vtable are all byte-exact. C++ mode is required to
 reproduce the original deleting-expression code generation.
 
+`src/system/game_work.c` uses `-O4`, disables inlining, and enables per-file
+IPA. Three functions compile directly to their retail bytes. The readable
+`GameWork_Init` C differs only in one scratch-register allocation, so the
+matching definition uses an inline assembly fallback while retaining the C for
+portable builds. Its backward branches are emitted as exact ARM words because
+MWCC otherwise adds fallthrough branches to labels inside the inline assembly
+function. The final linked 956-byte text range, 40-byte data block, and four-byte
+BSS slot are exact.
+
 The remaining NitroSDK make flags for instruction set, debug information,
 diagnostics, character signedness, and language compatibility do not alter the
 owned bytes. The checked-in build keeps the smallest proven code-generation
@@ -101,14 +110,18 @@ is `build/decomp/delinks/src/system/input.o`; the reconstructed object is
 ninja mt19937  # target delink object and reconstructed object
 ninja input    # C/assembly input replacement plus object-level report
 ninja debug_menu  # complete debug-menu unit and exact gate
+ninja game_work   # global game-work unit and object report
 ninja archive  # MWLDARM static-library smoke test
 ninja match    # both object diffs, raw slices, archive, and MT exactness gate
 ninja rom      # full source-backed link, module verification, and NDS rebuild
 ```
 
 Machine-readable comparisons are `build/reports/mt19937.json`,
-`build/reports/input.json`, and `build/reports/debug_menu.json`; their concise
-summaries have matching `.txt` names. All build artifacts are ignored.
+`build/reports/input.json`, `build/reports/debug_menu.json`, and
+`build/reports/game_work.json`; their concise summaries have matching `.txt`
+names. All build artifacts are ignored. The game-work object report is
+non-authoritative for its hand-encoded branch mapping and aggregate-data
+relocation; `ninja rom` verifies the linked bytes.
 
 `objdiff.json` is generated from the dsd configuration and covers the full
 ARM9/overlay layout. It includes all reconstructed units and invokes
@@ -119,7 +132,7 @@ ARM9/overlay layout. It includes all reconstructed units and invokes
 `ninja rom` generates `build/decomp/arm9.lcf` and the original object response
 file with dsd. `tools/prepare_link_objects.ps1` then applies the explicit
 entries in `config/arm9/link_replacements.txt`. The current manifest replaces
-the original MT19937, input, and debug-menu delink objects with their
+the original MT19937, input, debug-menu, and game-work delink objects with their
 reconstructed counterparts.
 
 MWLDARM links the full module graph with `-nodeadstrip`; this is required to

@@ -1,5 +1,11 @@
 #include "tingle/system.h"
 
+/*
+ * Nintendo DS input and frame-timing support recovered from the ARM9 binary.
+ * The register definitions are volatile because the values are supplied by
+ * hardware or by the SDK's shared-memory area.
+ */
+
 #define REG_VCOUNT (*(volatile u16 *)0x04000006)
 #define REG_KEYINPUT (*(volatile u16 *)0x04000130)
 #define REG_EXTKEYIN (*(volatile u16 *)0x027fffa8)
@@ -13,15 +19,21 @@ extern void OS_WaitVBlankIntr(void);
 extern void OS_ResetSystem(u32 parameter);
 extern void PM_GoSleepMode(u32 trigger, u32 logic, u16 keyPattern);
 
+/* Convert the active-low hardware key bits into the game's active-high mask. */
 u16 PAD_Read(void)
 {
     return ((REG_KEYINPUT | REG_EXTKEYIN) ^ PAD_ALL_MASK) & PAD_ALL_MASK;
 }
 
+/*
+ * Finish one game frame: account for scanlines, wait for VBlank, update pad
+ * state, process the soft-reset chord, and enter sleep when the lid is closed.
+ */
 void UpdateSystemFrame(void)
 {
     s32 previousVCount = gPreviousVCount;
 
+    /* VCOUNT wraps after the last LCD scanline, so unfold a single wrap. */
     gAdjustedVCount = REG_VCOUNT;
     if (gAdjustedVCount < previousVCount) {
         gAdjustedVCount += HW_LCD_LINES;
@@ -33,6 +45,7 @@ void UpdateSystemFrame(void)
         gMaxFrameVCount = gFrameVCount;
     }
 
+    /* The post-wait sample becomes the timing origin for the next frame. */
     OS_WaitVBlankIntr();
 
     gPreviousVCount = REG_VCOUNT;
@@ -46,6 +59,7 @@ void UpdateSystemFrame(void)
     }
 
     {
+        /* Some runtime contexts temporarily disable both disruptive actions. */
         u32 suppressResetAndSleep =
             gRuntimeContext->suppressResetAndSleep != 0;
         if (suppressResetAndSleep != 0) {
@@ -54,6 +68,7 @@ void UpdateSystemFrame(void)
     }
 
     {
+        /* Reset is accepted only while system-state flag bit 2 is clear. */
         u16 held = gSystemState.pads[0].held;
         if ((gSystemState.flags & 4U) == 0 &&
             (held & PAD_SOFT_RESET_MASK) == PAD_SOFT_RESET_MASK) {
@@ -67,6 +82,11 @@ void UpdateSystemFrame(void)
 }
 
 #ifndef MATCHING
+/*
+ * Derive pressed, released, held, and auto-repeat masks for one pad slot.
+ * Repeat timers are reloaded on the initial press and after every repeat.
+ * The retail-matching implementation of this function is supplied separately.
+ */
 void UpdateKeyState(u32 keys, int stateIndex)
 {
     int byteOffset = stateIndex * sizeof(PadState);

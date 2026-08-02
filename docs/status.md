@@ -28,7 +28,8 @@ current barrier register and documentation format are in
   a valid header CRC. The unmodified `build/tingle.original.nds` then matches
   the target SHA-256.
 - `ninja rom` now performs a full Metrowerks link with the reconstructed
-  MT19937, input, and debug-menu objects replacing their retail slices. dsd
+  MT19937, input, debug-menu, and game-work objects replacing their retail
+  slices. dsd
   verifies ARM9, ITCM, DTCM, and all 647 overlays, and the resulting
   `build/tingle.recompiled.nds` matches the retail SHA-256 exactly.
 
@@ -104,6 +105,22 @@ Its `.text` aggregate is `100.000000%`, and `ninja match` gates the complete
 unit. See
 [debug_menu.md](debug_menu.md) for the class layout and full behavior.
 
+The global game-work singleton is a fourth reconstructed unit:
+
+| Item | Address | Target size | Linked result |
+| --- | --- | ---: | ---: |
+| `GameWork_Create` | `0x02001588` | 64 bytes | exact |
+| `GameWork_Reset` | `0x020015C8` | 24 bytes | exact |
+| `GameWork_Init` | `0x020015E0` | 788 bytes | exact |
+| `GameWork_ClearPointerBank` | `0x020018F4` | 80 bytes | exact |
+| initial data | `0x020D3C4C` | 40 bytes | exact |
+| `gGameWork` | `0x020F3780` | 4 bytes | exact |
+
+The matching-only initializer fallback and complete typed C reconstruction are
+described in [game_work.md](game_work.md). The final ARM9 and ROM checks are the
+authoritative gates because objdiff treats the fallback's encoded branches and
+an aggregate-data relocation as metadata differences.
+
 ## Confirmed Nitro SDK symbols
 
 The built-in `dsd` signatures identify these initial ARM9 functions:
@@ -117,9 +134,10 @@ The built-in `dsd` signatures identify these initial ARM9 functions:
 | `0x020B9818` | `FS_LoadOverlayFile` |
 | `0x020B98B8` | `FS_LoadOverlayInfo` |
 
-Source-pattern analysis has also identified the startup-facing OS, PXI, FS,
-and PM functions. See [startup.md](startup.md) for their addresses, evidence,
-and the initial `main` loop map.
+Source-pattern analysis has also identified `MI_CpuCopy8` at `0x020B5984` and
+the startup-facing OS, PXI, FS, and PM functions. See
+[startup.md](startup.md) for their addresses, evidence, and the initial `main`
+loop map.
 
 ## Analyzer exception
 

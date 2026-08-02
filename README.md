@@ -83,19 +83,19 @@ ninja match
 On the current machine the configuration script also detects those locations
 without environment variables. `ninja match` performs all of the following:
 
-- compiles the MT19937 and debug-menu source units with MWCCARM and assembles
-  the matching input fallback with MWASMARM;
+- compiles the MT19937, debug-menu, and game-work source units with MWCCARM and
+  assembles the matching input fallback with MWASMARM;
 - archives all reconstructed objects with MWLDARM, exercising both
   proprietary tools;
 - regenerates the relocation-aware target object with dsd;
 - extracts and SHA-256 verifies the four functions from the ARM9 binary; and
 - runs objdiff for all source units and enforces their exact sub-gates.
 
-The MT19937 unit and complete debug-menu unit match all owned code and data at
-`100.000000%`. The input unit keeps readable reconstructed C for all three
-functions; the one compiler-resistant function has an exact matching assembly
-fallback. Open `objdiff.json` from the repository root to use the GUI; its
-custom build command is `ninja match`.
+The MT19937 and complete debug-menu units match all owned code and data at
+`100.000000%`. The input and game-work units retain readable reconstructed C
+for compiler-resistant functions and select exact matching fallbacks. Their
+final linked ranges are byte-exact. Open `objdiff.json` from the repository root
+to use the GUI; its custom build command is `ninja match`.
 
 The complete debug menu is reconstructed: its constructor, destructor
 variants, update, factory, and vtable are byte-exact. See
@@ -109,11 +109,13 @@ The first complete source-backed ROM is available with one command:
 ninja rom
 ```
 
-Ninja builds the MT19937, input, and debug-menu replacements, substitutes them
-for their original delink objects, links the ARM9, ITCM, DTCM, and all 647
-overlays with MWLDARM, verifies every linked module with dsd, and repacks the
-NDS. The output is `build/tingle.recompiled.nds`. All three replacements are
-byte-exact after linking, so the ROM has the retail SHA-256.
+Ninja builds the MT19937, input, debug-menu, and game-work replacements,
+substitutes them for their original delink objects, links the ARM9, ITCM, DTCM,
+and all 647 overlays with MWLDARM, verifies every linked module with dsd, and
+repacks the NDS. The output is `build/tingle.recompiled.nds`. All four
+replacements are byte-exact after linking, so the ROM has the retail SHA-256. See
+[docs/game_work.md](docs/game_work.md) for the new singleton layout and
+native-port boundaries.
 
 See [docs/build.md](docs/build.md) for flags, artifacts, address ranges, and the
 incremental link structure.

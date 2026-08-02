@@ -3,6 +3,7 @@ include build/config.ninja
 mt_cflags = -proc arm946e -O4 -inline on,noauto -ipa file -interworking -Cpp_exceptions off -lang c
 input_cflags = -proc arm946e -O3 -inline on,noauto -ipa file -interworking -DMATCHING -lang c
 debug_menu_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -lang c++
+game_work_cflags = -proc arm946e -O4 -inline off -ipa file -interworking -Cpp_exceptions off -DMATCHING -lang c
 
 rule mwccarm
   command = "$mwccarm" $cflags -i "$repo_root/include" -c $source -o $out
@@ -54,7 +55,7 @@ rule match_report
   command = "$python" tools/report_objdiff.py $report_json $out $report_args
   description = MATCH $out
 
-build build/decomp/delinks/src/system/mt19937.o | build/decomp/delinks/src/system/input.o build/decomp/delinks/src/system/debug_menu.o: dsd_delink config/arm9/config.yaml config/arm9/delinks.txt config/arm9/symbols.txt config/arm9/relocs.txt | build/rom/arm9/arm9.bin
+build build/decomp/delinks/src/system/mt19937.o | build/decomp/delinks/src/system/input.o build/decomp/delinks/src/system/debug_menu.o build/decomp/delinks/src/system/game_work.o: dsd_delink config/arm9/config.yaml config/arm9/delinks.txt config/arm9/symbols.txt config/arm9/relocs.txt | build/rom/arm9/arm9.bin
 
 build build/decomp/src/system/mt19937.o: mwccarm src/system/mt19937.c | include/tingle/random.h include/tingle/types.h
   source = src/system/mt19937.c
@@ -72,13 +73,17 @@ build build/decomp/src/system/debug_menu.o: mwccarm src/system/debug_menu.c | in
   source = src/system/debug_menu.c
   cflags = $debug_menu_cflags
 
-build build/decomp/lib/tingle.a: mwldarm_archive build/decomp/src/system/mt19937.o build/decomp/src/system/input.o build/decomp/src/system/debug_menu.o
+build build/decomp/src/system/game_work.o: mwccarm src/system/game_work.c | include/tingle/game_work.h include/tingle/types.h
+  source = src/system/game_work.c
+  cflags = $game_work_cflags
+
+build build/decomp/lib/tingle.a: mwldarm_archive build/decomp/src/system/mt19937.o build/decomp/src/system/input.o build/decomp/src/system/debug_menu.o build/decomp/src/system/game_work.o
 
 build build/decomp/arm9.lcf build/decomp/objects.txt: dsd_lcf config/arm9/config.yaml config/arm9/delinks.txt config/arm9/symbols.txt config/arm9/relocs.txt | build/decomp/delinks/src/system/mt19937.o
 
-build build/decomp/objects.source.txt: prepare_link_objects build/decomp/objects.txt config/arm9/link_replacements.txt tools/prepare_link_objects.ps1 | build/decomp/src/system/mt19937.o build/decomp/src/system/input.o build/decomp/src/system/debug_menu.o
+build build/decomp/objects.source.txt: prepare_link_objects build/decomp/objects.txt config/arm9/link_replacements.txt tools/prepare_link_objects.ps1 | build/decomp/src/system/mt19937.o build/decomp/src/system/input.o build/decomp/src/system/debug_menu.o build/decomp/src/system/game_work.o
 
-build build/decomp/tingle.elf | build/decomp/build/arm9.bin build/decomp/build/itcm.bin build/decomp/build/dtcm.bin: mwldarm_link build/decomp/objects.source.txt build/decomp/arm9.lcf | build/decomp/src/system/mt19937.o build/decomp/src/system/input.o build/decomp/src/system/debug_menu.o
+build build/decomp/tingle.elf | build/decomp/build/arm9.bin build/decomp/build/itcm.bin build/decomp/build/dtcm.bin: mwldarm_link build/decomp/objects.source.txt build/decomp/arm9.lcf | build/decomp/src/system/mt19937.o build/decomp/src/system/input.o build/decomp/src/system/debug_menu.o build/decomp/src/system/game_work.o
 
 build build/tingle.recompiled.nds: build_recompiled_rom build/decomp/tingle.elf | tools/build_recompiled_rom.ps1 tools/patch_rom_header.py
 
@@ -135,12 +140,21 @@ build build/reports/debug_menu_exact.txt: match_report build/reports/debug_menu.
   report_json = build/reports/debug_menu.json
   report_args = --section .text --section .data --function DebugMenu_Init --function DebugMenu_Destroy --function DebugMenu_DestroyAndFree --function DebugMenu_Update --function DebugMenu_Create --require-exact
 
+build build/reports/game_work.json: objdiff build/decomp/delinks/src/system/game_work.o | build/decomp/src/system/game_work.o
+  target_object = build/decomp/delinks/src/system/game_work.o
+  base_object = build/decomp/src/system/game_work.o
+
+build build/reports/game_work.txt: match_report build/reports/game_work.json | tools/report_objdiff.py
+  report_json = build/reports/game_work.json
+  report_args = --section .text --section .data --section .bss --function GameWork_Create --function GameWork_Reset --function GameWork_Init --function GameWork_ClearPointerBank
+
 build mt19937: phony build/decomp/delinks/src/system/mt19937.o build/decomp/src/system/mt19937.o
 build input: phony build/decomp/delinks/src/system/input.o build/decomp/src/system/input.o build/reports/input.txt
 build debug_menu: phony build/decomp/delinks/src/system/debug_menu.o build/decomp/src/system/debug_menu.o build/reports/debug_menu.txt build/reports/debug_menu_exact.txt
+build game_work: phony build/decomp/delinks/src/system/game_work.o build/decomp/src/system/game_work.o build/reports/game_work.txt
 build archive: phony build/decomp/lib/tingle.a
 build references: phony build/reference/mt19937.text.bin build/reference/init_genrand.bin build/reference/init_by_array.bin build/reference/genrand_int32.bin build/reference/InitRandom.bin
-build match: phony build/reports/mt19937.txt build/reports/input.txt build/reports/debug_menu.txt build/reports/debug_menu_exact.txt build/decomp/lib/tingle.a references
+build match: phony build/reports/mt19937.txt build/reports/input.txt build/reports/debug_menu.txt build/reports/debug_menu_exact.txt build/reports/game_work.txt build/decomp/lib/tingle.a references
 build rom: phony build/tingle.recompiled.nds
 
 default match

@@ -19,6 +19,7 @@ u32 gMtState[MT_N];
 int gMtIndex = MT_N + 1;
 u32 gMtMag01[2] = { 0, MT_MATRIX_A };
 
+/* Seed the generator and expand one value into all 624 state words. */
 void init_genrand(u32 seed)
 {
     gMtState[0] = seed & 0xffffffffU;
@@ -31,6 +32,10 @@ void init_genrand(u32 seed)
     }
 }
 
+/*
+ * Seed the generator from an array. The two mixing passes and the forced high
+ * bit are part of the authors' reference initialization algorithm.
+ */
 void init_by_array(const u32 *initKey, int keyLength)
 {
     int i;
@@ -75,6 +80,11 @@ void init_by_array(const u32 *initKey, int keyLength)
     gMtState[0] = MT_UPPER_MASK;
 }
 
+/*
+ * Return one tempered 32-bit value. A fresh state block is generated when all
+ * 624 existing words have been consumed; an untouched generator uses the
+ * reference implementation's default seed.
+ */
 u32 genrand_int32(void)
 {
     u32 value;
@@ -112,6 +122,7 @@ u32 genrand_int32(void)
     return value;
 }
 
+/* Initialize the game's deterministic default random-number sequence. */
 void InitRandom(void)
 {
     const u32 initialSeed[4] = { 0x123, 0x234, 0x345, 0x456 };

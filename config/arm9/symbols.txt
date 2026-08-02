@@ -33,10 +33,10 @@ DebugMenu_Destroy kind:function(arm,size=0x14) addr:0x02001164
 DebugMenu_DestroyAndFree kind:function(arm,size=0x1c) addr:0x02001178
 DebugMenu_Update kind:function(arm,size=0x3c4) addr:0x02001194
 DebugMenu_Create kind:function(arm,size=0x30) addr:0x02001558
-func_02001588 kind:function(arm,size=0x40) addr:0x02001588
-func_020015c8 kind:function(arm,size=0x18) addr:0x020015c8
-func_020015e0 kind:function(arm,size=0x314) addr:0x020015e0
-func_020018f4 kind:function(arm,size=0x50) addr:0x020018f4
+GameWork_Create kind:function(arm,size=0x40) addr:0x02001588
+GameWork_Reset kind:function(arm,size=0x18) addr:0x020015c8
+GameWork_Init kind:function(arm,size=0x314) addr:0x020015e0
+GameWork_ClearPointerBank kind:function(arm,size=0x50) addr:0x020018f4
 func_02001944 kind:function(arm,size=0x2c) addr:0x02001944
 func_02001970 kind:function(arm,size=0x2c) addr:0x02001970
 func_0200199c kind:function(arm,size=0x34) addr:0x0200199c
@@ -5774,7 +5774,7 @@ func_020b5880 kind:function(arm,size=0x38) addr:0x020b5880
 func_020b58b8 kind:function(arm,size=0x1c) addr:0x020b58b8
 func_020b58d4 kind:function(arm,size=0x1c) addr:0x020b58d4
 func_020b58f0 kind:function(arm,size=0x94) addr:0x020b58f0
-func_020b5984 kind:function(arm,size=0x130) addr:0x020b5984
+MI_CpuCopy8 kind:function(arm,size=0x130) addr:0x020b5984
 func_020b5ab4 kind:function(arm,size=0x8) addr:0x020b5ab4
 func_020b5abc kind:function(arm,size=0x94) addr:0x020b5abc
 func_020b5b50 kind:function(arm,size=0x8c) addr:0x020b5b50
@@ -6621,8 +6621,8 @@ gDebugTimezoneText kind:data(any) addr:0x020d3c10
 gDebugSdkVersionFormat kind:data(any) addr:0x020d3c2c
 gDebugMenuScene0Tag kind:data(any) addr:0x020d3c3c
 gDebugMenuSceneTag kind:data(any) addr:0x020d3c44
-data_020d3c4c kind:data(any) addr:0x020d3c4c
-data_020d3c6c kind:data(any) addr:0x020d3c6c
+gGameWorkInitialData kind:data(any) addr:0x020d3c4c
+gGameWorkTag kind:data(any) addr:0x020d3c6c
 data_020d3c74 kind:data(any) addr:0x020d3c74
 data_020d3c84 kind:data(any) addr:0x020d3c84
 data_020d3c8c kind:data(any) addr:0x020d3c8c
@@ -9169,7 +9169,7 @@ data_020f3714 kind:data(any) addr:0x020f3714
 data_020f373c kind:data(any) addr:0x020f373c
 data_020f376c kind:data(any) addr:0x020f376c
 data_020f3774 kind:data(any) addr:0x020f3774
-data_020f3780 kind:bss addr:0x020f3780
+gGameWork kind:bss addr:0x020f3780
 data_020f3784 kind:bss addr:0x020f3784
 data_020f3790 kind:bss addr:0x020f3790
 data_020f37a0 kind:bss addr:0x020f37a0

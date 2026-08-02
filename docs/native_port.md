@@ -68,6 +68,11 @@ The broad barriers currently known are:
 | Save data | Cartridge backup APIs and device constraints | Compatible persistent save storage and validation | unmapped |
 | Memory/runtime | Fixed addresses, arenas, caches, DMA, fixed-point and ARM ABI assumptions | Portable allocation, transfer, numeric, and serialization layers | unmapped |
 
+The first detailed memory/runtime contract is the game-work allocator and
+32-byte `MI_CpuCopy8` use in [game_work.md](game_work.md). Its heap alignment and
+lifetime requirements are identified; the embedded state initialized through
+`0x02027F94`/`0x02027BD4` remains unmapped.
+
 This table is an index, not a substitute for module-level contracts. Update it
 as barriers are discovered or eliminated, and link detailed subsystem notes
 from the relevant area.

@@ -25,8 +25,8 @@
   ],
   "units": [
     {
-      "name": "_dsd_gap@main_11",
-      "target_path": "build/decomp/delinks/_dsd_gap@main_11.o",
+      "name": "_dsd_gap@main_12",
+      "target_path": "build/decomp/delinks/_dsd_gap@main_12.o",
       "metadata": {
         "complete": false,
         "reverse_fn_order": false,
@@ -62,8 +62,31 @@
       }
     },
     {
-      "name": "_dsd_gap@main_4",
-      "target_path": "build/decomp/delinks/_dsd_gap@main_4.o",
+      "name": "_dsd_gap@main_2",
+      "target_path": "build/decomp/delinks/_dsd_gap@main_2.o",
+      "metadata": {
+        "complete": false,
+        "reverse_fn_order": false,
+        "auto_generated": true
+      }
+    },
+    {
+      "name": "src/system/game_work",
+      "target_path": "build/decomp/delinks/src/system/game_work.o",
+      "base_path": "build/decomp/src/system/game_work.o",
+      "metadata": {
+        "complete": false,
+        "reverse_fn_order": false,
+        "source_path": "src/system/game_work.c",
+        "progress_categories": [
+          "Game code"
+        ],
+        "auto_generated": false
+      }
+    },
+    {
+      "name": "_dsd_gap@main_6",
+      "target_path": "build/decomp/delinks/_dsd_gap@main_6.o",
       "metadata": {
         "complete": false,
         "reverse_fn_order": false,
@@ -85,8 +108,8 @@
       }
     },
     {
-      "name": "_dsd_gap@main_13",
-      "target_path": "build/decomp/delinks/_dsd_gap@main_13.o",
+      "name": "_dsd_gap@main_14",
+      "target_path": "build/decomp/delinks/_dsd_gap@main_14.o",
       "metadata": {
         "complete": false,
         "reverse_fn_order": false,

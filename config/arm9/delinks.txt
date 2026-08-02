@@ -22,3 +22,9 @@ src/system/debug_menu.c:
     categories: Game code
     .text       start:0x0200113c end:0x02001588
     .data       start:0x020d3bc4 end:0x020d3bd0
+
+src/system/game_work.c:
+    categories: Game code
+    .text       start:0x02001588 end:0x02001944
+    .data       start:0x020d3c4c end:0x020d3c74
+    .bss        start:0x020f3780 end:0x020f3784
