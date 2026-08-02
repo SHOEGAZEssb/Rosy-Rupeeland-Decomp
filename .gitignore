@@ -1,0 +1,25 @@
+# User-supplied Nintendo DS images and emulator state
+/*.nds
+/*.sav
+/*.dsv
+
+# Local proprietary license-manager files (never commit these)
+/*.lic
+/license.dat
+/.flexlmrc
+
+# Reproducible build and extraction outputs
+/build/
+/.ninja_deps
+/.ninja_log
+
+# Local reverse-engineering projects
+/*.gpr
+/*.rep/
+/.ghidra/
+
+# Local editor and Python state
+/.vscode/
+/.venv/
+__pycache__/
+*.pyc

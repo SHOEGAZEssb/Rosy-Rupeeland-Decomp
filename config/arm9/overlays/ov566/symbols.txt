@@ -1,0 +1,15 @@
+func_ov566_02233c60 kind:function(arm,size=0x38) addr:0x02233c60
+data_ov566_02233ca0 kind:data(any) addr:0x02233ca0
+data_ov566_02234002 kind:data(any) addr:0x02234002
+data_ov566_02234045 kind:data(any) addr:0x02234045
+data_ov566_0223405c kind:data(any) addr:0x0223405c
+data_ov566_02234082 kind:data(any) addr:0x02234082
+data_ov566_022340bc kind:data(any) addr:0x022340bc
+data_ov566_022341b0 kind:data(any) addr:0x022341b0
+data_ov566_022341c4 kind:data(any) addr:0x022341c4
+data_ov566_022341ea kind:data(any) addr:0x022341ea
+data_ov566_0223426d kind:data(any) addr:0x0223426d
+data_ov566_0223426e kind:data(any) addr:0x0223426e
+data_ov566_022343ce kind:data(any) addr:0x022343ce
+data_ov566_022343e0 kind:bss addr:0x022343e0
+data_ov566_022343e4 kind:bss addr:0x022343e4

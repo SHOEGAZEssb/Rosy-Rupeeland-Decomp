@@ -1,0 +1,74 @@
+include build/config.ninja
+
+mt_cflags = -proc arm946e -O4 -inline on,noauto -ipa file -interworking -lang c
+
+rule mwccarm
+  command = "$mwccarm" $mt_cflags -i "$repo_root/include" -c $source -o $out
+  description = MWCCARM $source
+
+rule mwldarm_archive
+  command = "$mwldarm" -library $in -o $out
+  description = MWLDARM $out
+
+rule dsd_delink
+  command = "$dsd" delink --config-path config/arm9/config.yaml
+  description = DSD DELINK
+  restat = 1
+
+rule extract_slice
+  command = "$python" tools/extract_slice.py $in $out --base-address 0x02000000 --start $slice_start --end $slice_end --sha256 $slice_sha256
+  description = EXTRACT $out
+
+rule objdiff
+  command = "$objdiff" --no-color diff -1 $target_object -2 $base_object -o $out --format json
+  description = OBJD_DIFF $out
+
+rule match_report
+  command = "$python" tools/report_objdiff.py $report_json $out --require-exact
+  description = MATCH $out
+
+build build/decomp/delinks/src/system/mt19937.o: dsd_delink config/arm9/config.yaml config/arm9/delinks.txt config/arm9/symbols.txt config/arm9/relocs.txt | build/rom/arm9/arm9.bin
+
+build build/decomp/src/system/mt19937.o: mwccarm src/system/mt19937.c | include/tingle/random.h include/tingle/types.h
+  source = src/system/mt19937.c
+
+build build/decomp/lib/tingle.a: mwldarm_archive build/decomp/src/system/mt19937.o
+
+build build/reference/mt19937.text.bin: extract_slice build/rom/arm9/arm9.bin
+  slice_start = 0x0200234c
+  slice_end = 0x02002638
+  slice_sha256 = BB847ACB31A6B5F24FEAC97F6DE603E640B0BD4ED1C5810881D0FF3B0690C490
+
+build build/reference/init_genrand.bin: extract_slice build/rom/arm9/arm9.bin
+  slice_start = 0x0200234c
+  slice_end = 0x020023a0
+  slice_sha256 = 5C0F6F4135F440181ECA364E2767AD999F348155291FC3E49546D88820ACDF9D
+
+build build/reference/init_by_array.bin: extract_slice build/rom/arm9/arm9.bin
+  slice_start = 0x020023a0
+  slice_end = 0x020024b0
+  slice_sha256 = 5F441DF5770B57B1E589A228BEF01463349A6C21FA3EF81530FEFB44A9569068
+
+build build/reference/genrand_int32.bin: extract_slice build/rom/arm9/arm9.bin
+  slice_start = 0x020024b0
+  slice_end = 0x02002608
+  slice_sha256 = DA52559E9777E8639125D2EA663B661063731F840D0949496B96D50BF015BF29
+
+build build/reference/InitRandom.bin: extract_slice build/rom/arm9/arm9.bin
+  slice_start = 0x02002608
+  slice_end = 0x02002638
+  slice_sha256 = CA31A898643247A18E9478E592C819FE0446BF3B063F30211BB93DA7CDFF17E5
+
+build build/reports/mt19937.json: objdiff build/decomp/delinks/src/system/mt19937.o | build/decomp/src/system/mt19937.o
+  target_object = build/decomp/delinks/src/system/mt19937.o
+  base_object = build/decomp/src/system/mt19937.o
+
+build build/reports/mt19937.txt: match_report build/reports/mt19937.json | tools/report_objdiff.py
+  report_json = build/reports/mt19937.json
+
+build mt19937: phony build/decomp/delinks/src/system/mt19937.o build/decomp/src/system/mt19937.o
+build archive: phony build/decomp/lib/tingle.a
+build references: phony build/reference/mt19937.text.bin build/reference/init_genrand.bin build/reference/init_by_array.bin build/reference/genrand_int32.bin build/reference/InitRandom.bin
+build match: phony build/reports/mt19937.txt build/decomp/lib/tingle.a references
+
+default match
