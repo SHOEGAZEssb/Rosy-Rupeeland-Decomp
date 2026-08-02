@@ -81,4 +81,4 @@ Set-Content -LiteralPath $ConfigPath -Value $Config -Encoding ascii
 
 Write-Host "Configured Ninja with MWCCARM at $Mwccarm"
 Write-Host "Configured Ninja with MWLDARM at $Mwldarm"
-Write-Host 'Run `ninja match` to compile, extract references, compare, and verify the MT19937 unit.'
+Write-Host 'Run `ninja match` to compile and compare the reconstructed source units.'

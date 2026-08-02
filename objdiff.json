@@ -2,7 +2,7 @@
   "min_version": "2.3.2",
   "custom_make": "ninja",
   "custom_args": [
-    "mt19937"
+    "match"
   ],
   "target_dir": "build/decomp",
   "base_dir": "build/decomp/delinks",
@@ -25,8 +25,31 @@
   ],
   "units": [
     {
-      "name": "_dsd_gap@main_9",
-      "target_path": "build/decomp/delinks/_dsd_gap@main_9.o",
+      "name": "_dsd_gap@main_10",
+      "target_path": "build/decomp/delinks/_dsd_gap@main_10.o",
+      "metadata": {
+        "complete": false,
+        "reverse_fn_order": false,
+        "auto_generated": true
+      }
+    },
+    {
+      "name": "src/system/input",
+      "target_path": "build/decomp/delinks/src/system/input.o",
+      "base_path": "build/decomp/src/system/input.o",
+      "metadata": {
+        "complete": false,
+        "reverse_fn_order": false,
+        "source_path": "src/system/input.c",
+        "progress_categories": [
+          "Game code"
+        ],
+        "auto_generated": false
+      }
+    },
+    {
+      "name": "_dsd_gap@main_1",
+      "target_path": "build/decomp/delinks/_dsd_gap@main_1.o",
       "metadata": {
         "complete": false,
         "reverse_fn_order": false,
@@ -48,8 +71,8 @@
       }
     },
     {
-      "name": "_dsd_gap@main_11",
-      "target_path": "build/decomp/delinks/_dsd_gap@main_11.o",
+      "name": "_dsd_gap@main_12",
+      "target_path": "build/decomp/delinks/_dsd_gap@main_12.o",
       "metadata": {
         "complete": false,
         "reverse_fn_order": false,

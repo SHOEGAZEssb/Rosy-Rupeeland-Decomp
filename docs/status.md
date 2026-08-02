@@ -49,8 +49,26 @@ byte-exact:
 | `genrand_int32` | 344 bytes | `100.000000%` |
 | `InitRandom` | 48 bytes | `100.000000%` |
 
-`ninja match` rebuilds this result and fails if any owned section or function
-falls below an exact match.
+`src/system/input.c` now contains reconstructed C for the first three ARM9
+input/system functions and is isolated as a second relocation-aware object:
+
+| Item | Address | Target size | Match |
+| --- | --- | ---: | ---: |
+| `PAD_Read` | `0x02000ED8` | 56 bytes | `100.000000%` |
+| `UpdateSystemFrame` | `0x02000F10` | 340 bytes | `99.941180%` |
+| `UpdateKeyState` | `0x02001064` | 216 bytes | `91.092590%` |
+| `.text` | `0x02000ED8-0x0200113C` | 612 bytes | `96.823530%` |
+
+The generated and target `UpdateSystemFrame` instructions are the same size
+and sequence. Objdiff's remaining reported difference is the relocation
+association for its call to `UpdateKeyState`; both sides display the same call
+target and addend. `UpdateKeyState` is behaviorally reconstructed and has the
+exact retail size, but its register allocation and literal-load ordering still
+need compiler shaping.
+
+`ninja match` rebuilds both units and the Metrowerks archive. It fails if the
+already exact MT19937 unit regresses; the input report remains informational
+until all three functions are exact.
 
 ## Confirmed Nitro SDK symbols
 

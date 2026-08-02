@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Summarize and optionally enforce the MT19937 objdiff result."""
+"""Summarize and optionally enforce selected objdiff results."""
 
 from __future__ import annotations
 
@@ -28,25 +28,30 @@ def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("input", type=Path)
     parser.add_argument("output", type=Path)
+    parser.add_argument("--section", action="append", dest="sections")
+    parser.add_argument("--function", action="append", dest="functions")
     parser.add_argument("--require-exact", action="store_true")
     args = parser.parse_args()
+
+    sections = args.sections or EXPECTED_SECTIONS
+    functions = args.functions or EXPECTED_FUNCTIONS
 
     report = json.loads(args.input.read_text(encoding="utf-8"))
     target = report["left"]
     current = report["right"]
 
-    lines = ["MT19937 objdiff report", ""]
+    lines = [f"Objdiff report: {args.input.stem}", ""]
     exact = True
 
     lines.append("Sections:")
-    for name in EXPECTED_SECTIONS:
+    for name in sections:
         entry = find_match(target["sections"], name)
         percent = float(entry["match_percent"])
         exact &= percent == 100.0
         lines.append(f"  {name:<8} {percent:10.6f}%  {int(entry['size']):4d} bytes")
 
     lines.extend(("", "Functions:"))
-    for name in EXPECTED_FUNCTIONS:
+    for name in functions:
         target_entry = find_match(target["symbols"], name)
         current_entry = next(
             entry for entry in current["symbols"] if entry.get("name") == name

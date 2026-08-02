@@ -17,7 +17,8 @@ records. Each `PadState` is `0x16` bytes:
 
 `UpdateKeyState` at `0x02001064` updates one of these records. The main loop
 uses state 0 for physical controls and state 1 for filtered or remapped game
-input.
+input. Its reconstructed implementation is in `src/system/input.c`; it has the
+same 216-byte size as the retail function and currently matches `91.092590%`.
 
 ## Per-frame system update
 
@@ -31,6 +32,22 @@ input.
 6. enters `PM_GoSleepMode` when the lid-close bit is set.
 
 The sleep wake-up mask is `0x0C`, which combines cover-open and card events.
+
+## Input matching progress
+
+The source unit covers the contiguous ARM9 range
+`0x02000ED8-0x0200113C` and is compiled with the same proven Metrowerks flags
+as MT19937:
+
+| Function | Size | Match |
+| --- | ---: | ---: |
+| `PAD_Read` | 56 bytes | `100.000000%` |
+| `UpdateSystemFrame` | 340 bytes | `99.941180%` |
+| `UpdateKeyState` | 216 bytes | `91.092590%` |
+
+The input unit's aggregate `.text` match is `96.823530%`. The small reported
+`UpdateSystemFrame` discrepancy is an objdiff relocation association on the
+`UpdateKeyState` call; its generated instruction sequence and size match.
 
 ## Random-number generator
 

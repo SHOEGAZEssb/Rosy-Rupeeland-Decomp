@@ -19,7 +19,7 @@ The compiler's harmless missing-`MWCIncludes` warning and the linker's
 missing-`MWLibraries` warning are expected because the project supplies its
 include path and object inputs explicitly.
 
-## MT19937 compiler result
+## Metrowerks compiler result
 
 The exact code-generation flags are:
 
@@ -27,12 +27,27 @@ The exact code-generation flags are:
 -proc arm946e -O4 -inline on,noauto -ipa file -interworking -lang c
 ```
 
-The `-ipa file` option is essential. With the recovered reference-style C,
+These flags compile `src/system/mt19937.c`. The `-ipa file` option is
+essential. With the recovered reference-style C,
 the same command without it reaches `94.454544%` for `.text`; adding it makes
 all four functions byte-exact. `-O3` and `-O4` generate the same non-IPA code.
 The compiler default and explicit `-opt space` are indistinguishable for this
 unit, while `-opt speed` produces different code and is not the retail setting
 for this file.
+
+The current best compiler candidate for `src/system/input.c` differs only in
+using `-O3`:
+
+```text
+-proc arm946e -O3 -inline on,noauto -ipa file -interworking -lang c
+```
+
+Compared with `-O4`, this leaves the exact `PAD_Read` and instruction-matched
+`UpdateSystemFrame` results unchanged while improving `UpdateKeyState` from
+`89.592590%` to `91.092590%`. The input `.text` aggregate improves from
+`96.294120%` to `96.823530%`. Treat `-O3` as the best current per-unit
+candidate rather than a confirmed original setting until the remaining
+function is exact.
 
 The remaining NitroSDK make flags for instruction set, debug information,
 diagnostics, character signedness, and language compatibility do not alter the
@@ -63,21 +78,28 @@ dsd turns those noncontiguous slices and their relocations into
 | `genrand_int32` | `0x020024B0-0x02002608` | `DA52559E9777E8639125D2EA663B661063731F840D0949496B96D50BF015BF29` |
 | `InitRandom` | `0x02002608-0x02002638` | `CA31A898643247A18E9478E592C819FE0446BF3B063F30211BB93DA7CDFF17E5` |
 
+The input/system unit is the contiguous `.text` range
+`0x02000ED8-0x0200113C` (`0x264` bytes). Its original relocation-aware object
+is `build/decomp/delinks/src/system/input.o`; the reconstructed object is
+`build/decomp/src/system/input.o`.
+
 ## Commands and artifacts
 
 ```powershell
 .\tools\configure.ps1
 ninja mt19937  # target delink object and reconstructed object
+ninja input    # input objects plus the current informational match report
 ninja archive  # MWLDARM static-library smoke test
-ninja match    # raw slices, object diff, archive, and exactness gate
+ninja match    # both object diffs, raw slices, archive, and MT exactness gate
 ```
 
-The machine-readable comparison is `build/reports/mt19937.json`; the concise
-summary is `build/reports/mt19937.txt`. All build artifacts are ignored.
+Machine-readable comparisons are `build/reports/mt19937.json` and
+`build/reports/input.json`; their concise summaries have matching `.txt`
+names. All build artifacts are ignored.
 
 `objdiff.json` is generated from the dsd configuration and covers the full
-ARM9/overlay layout. The current reconstructed object is
-`build/decomp/src/system/mt19937.o`, paired with the original delink object.
+ARM9/overlay layout. It includes both reconstructed units and invokes
+`ninja match` when objdiff requests a rebuild.
 
 ## Incremental reconstruction
 

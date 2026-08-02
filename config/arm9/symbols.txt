@@ -9425,7 +9425,7 @@ data_021f512c kind:bss addr:0x021f512c
 data_021f5138 kind:bss addr:0x021f5138
 data_021f52a8 kind:bss addr:0x021f52a8
 data_021f5da0 kind:bss addr:0x021f5da0
-data_021f5db0 kind:bss addr:0x021f5db0
+gRuntimeContext kind:bss addr:0x021f5db0
 data_021f5db8 kind:bss addr:0x021f5db8
 data_021f5eb8 kind:bss addr:0x021f5eb8
 data_021f5ebc kind:bss addr:0x021f5ebc

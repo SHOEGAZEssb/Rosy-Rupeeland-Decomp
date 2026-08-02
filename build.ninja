@@ -1,9 +1,10 @@
 include build/config.ninja
 
 mt_cflags = -proc arm946e -O4 -inline on,noauto -ipa file -interworking -lang c
+input_cflags = -proc arm946e -O3 -inline on,noauto -ipa file -interworking -lang c
 
 rule mwccarm
-  command = "$mwccarm" $mt_cflags -i "$repo_root/include" -c $source -o $out
+  command = "$mwccarm" $cflags -i "$repo_root/include" -c $source -o $out
   description = MWCCARM $source
 
 rule mwldarm_archive
@@ -24,15 +25,20 @@ rule objdiff
   description = OBJD_DIFF $out
 
 rule match_report
-  command = "$python" tools/report_objdiff.py $report_json $out --require-exact
+  command = "$python" tools/report_objdiff.py $report_json $out $report_args
   description = MATCH $out
 
-build build/decomp/delinks/src/system/mt19937.o: dsd_delink config/arm9/config.yaml config/arm9/delinks.txt config/arm9/symbols.txt config/arm9/relocs.txt | build/rom/arm9/arm9.bin
+build build/decomp/delinks/src/system/mt19937.o | build/decomp/delinks/src/system/input.o: dsd_delink config/arm9/config.yaml config/arm9/delinks.txt config/arm9/symbols.txt config/arm9/relocs.txt | build/rom/arm9/arm9.bin
 
 build build/decomp/src/system/mt19937.o: mwccarm src/system/mt19937.c | include/tingle/random.h include/tingle/types.h
   source = src/system/mt19937.c
+  cflags = $mt_cflags
 
-build build/decomp/lib/tingle.a: mwldarm_archive build/decomp/src/system/mt19937.o
+build build/decomp/src/system/input.o: mwccarm src/system/input.c | include/tingle/system.h include/tingle/types.h
+  source = src/system/input.c
+  cflags = $input_cflags
+
+build build/decomp/lib/tingle.a: mwldarm_archive build/decomp/src/system/mt19937.o build/decomp/src/system/input.o
 
 build build/reference/mt19937.text.bin: extract_slice build/rom/arm9/arm9.bin
   slice_start = 0x0200234c
@@ -65,10 +71,20 @@ build build/reports/mt19937.json: objdiff build/decomp/delinks/src/system/mt1993
 
 build build/reports/mt19937.txt: match_report build/reports/mt19937.json | tools/report_objdiff.py
   report_json = build/reports/mt19937.json
+  report_args = --require-exact
+
+build build/reports/input.json: objdiff build/decomp/delinks/src/system/input.o | build/decomp/src/system/input.o
+  target_object = build/decomp/delinks/src/system/input.o
+  base_object = build/decomp/src/system/input.o
+
+build build/reports/input.txt: match_report build/reports/input.json | tools/report_objdiff.py
+  report_json = build/reports/input.json
+  report_args = --section .text --function PAD_Read --function UpdateSystemFrame --function UpdateKeyState
 
 build mt19937: phony build/decomp/delinks/src/system/mt19937.o build/decomp/src/system/mt19937.o
+build input: phony build/decomp/delinks/src/system/input.o build/decomp/src/system/input.o build/reports/input.txt
 build archive: phony build/decomp/lib/tingle.a
 build references: phony build/reference/mt19937.text.bin build/reference/init_genrand.bin build/reference/init_by_array.bin build/reference/genrand_int32.bin build/reference/InitRandom.bin
-build match: phony build/reports/mt19937.txt build/decomp/lib/tingle.a references
+build match: phony build/reports/mt19937.txt build/reports/input.txt build/decomp/lib/tingle.a references
 
 default match
