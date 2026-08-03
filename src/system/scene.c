@@ -13,8 +13,8 @@ extern "C" {
 
 extern void *Heap_Alloc(u32 size, const char *tag, s32 alignment, void *heap);
 extern void Heap_Free(void *allocation);
-extern void *func_02004c40(void *embedded);
-extern void func_02004cc4(void *embedded);
+extern void *TouchRegionManager_Init(void *embedded);
+extern void TouchRegionManager_Destroy(void *embedded);
 extern void *SceneTouchTask_Init(void *task);
 
 /* These SDK routines directly clear and set the ARM IRQ-disable CPSR bit. */
@@ -69,7 +69,7 @@ Scene *Scene_Init(Scene *scene)
     scene->value04 = 0;
     scene->value08 = 0;
     scene->flags.raw = 0;
-    func_02004c40(scene->embedded10);
+    TouchRegionManager_Init(scene->embedded10);
 
     func_020b4f54();
     scene->flags.bits.bit1 = 0;
@@ -93,7 +93,7 @@ Scene *Scene_Destructor(Scene *scene)
     }
     SceneManager_Pop(ACTIVE_SCENE_MANAGER);
     func_020b4f40();
-    func_02004cc4(scene->embedded10);
+    TouchRegionManager_Destroy(scene->embedded10);
     return scene;
 }
 
@@ -107,7 +107,7 @@ Scene *Scene_DeletingDestructor(Scene *scene)
     }
     SceneManager_Pop(ACTIVE_SCENE_MANAGER);
     func_020b4f40();
-    func_02004cc4(scene->embedded10);
+    TouchRegionManager_Destroy(scene->embedded10);
     Heap_Free(scene);
     return scene;
 }
@@ -122,7 +122,7 @@ Scene *Scene_Destroy(Scene *scene)
     }
     SceneManager_Pop(ACTIVE_SCENE_MANAGER);
     func_020b4f40();
-    func_02004cc4(scene->embedded10);
+    TouchRegionManager_Destroy(scene->embedded10);
     return scene;
 }
 

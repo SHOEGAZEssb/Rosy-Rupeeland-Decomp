@@ -3,7 +3,17 @@
 
 #include "tingle/types.h"
 
-typedef struct FSFile FSFile;
+typedef struct FSFile {
+    u8 unknown00[0x0c];
+    u32 flags;
+    u8 unknown10[0x14];
+    s32 startOffset;
+    s32 endOffset;
+    s32 currentOffset;
+    u8 unknown30[0x18];
+} FSFile;
+
+typedef char FSFileSizeCheck[sizeof(FSFile) == 0x48 ? 1 : -1];
 
 typedef struct FSFileID {
     u32 archive;

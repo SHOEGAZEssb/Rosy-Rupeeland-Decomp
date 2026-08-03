@@ -119,3 +119,11 @@ src/system/checked_fs.c:
 src/system/game_string.c:
     categories: Game code
     .text       start:0x02004688 end:0x020049b0
+
+src/system/game_file.c:
+    categories: Game code
+    .text       start:0x020049b0 end:0x02004ac8
+
+src/system/touch_region.c:
+    categories: Game code
+    .text       start:0x02004ac8 end:0x02004fe0

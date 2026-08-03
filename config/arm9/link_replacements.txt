@@ -25,3 +25,5 @@ build/decomp/delinks/src/system/graphics_display.o = build/decomp/src/system/gra
 build/decomp/delinks/src/system/error_display.o = build/decomp/src/system/error_display.o
 build/decomp/delinks/src/system/checked_fs.o = build/decomp/src/system/checked_fs.o
 build/decomp/delinks/src/system/game_string.o = build/decomp/src/system/game_string.o
+build/decomp/delinks/src/system/game_file.o = build/decomp/src/system/game_file.o
+build/decomp/delinks/src/system/touch_region.o = build/decomp/src/system/touch_region.o

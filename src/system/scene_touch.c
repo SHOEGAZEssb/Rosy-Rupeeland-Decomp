@@ -38,8 +38,8 @@ extern "C" {
 
 extern void *func_02006108(void *task);
 extern void func_02006138(void *task);
-extern int func_02004dfc(void *embedded, u32 x, u32 y);
-extern void func_02004e84(void *embedded, u32 x, u32 y);
+extern int TouchRegionManager_BeginPressAt(void *embedded, u32 x, u32 y);
+extern int TouchRegionManager_EndPressOutside(void *embedded, u32 x, u32 y);
 extern void Heap_Free(void *allocation);
 
 extern void *gSceneState020F4DFC;
@@ -106,7 +106,7 @@ int SceneTouchTask_Update(SceneTouchTask *task)
 
     switch (state) {
     case TOUCH_STATE_PRESSED: {
-        int target = func_02004dfc(scene->embedded10,
+        int target = TouchRegionManager_BeginPressAt(scene->embedded10,
                                   touch->currentSample.x,
                                   touch->currentSample.y);
         if (target == -1) {
@@ -142,7 +142,7 @@ int SceneTouchTask_Update(SceneTouchTask *task)
             ((SceneTouchDispatchVTable *)current->vtable)->onTouchHeld(
                 current, &frame.heldPoint);
         }
-        func_02004e84(scene->embedded10, touch->currentSample.x,
+        TouchRegionManager_EndPressOutside(scene->embedded10, touch->currentSample.x,
                       touch->currentSample.y);
         break;
     }
@@ -192,7 +192,7 @@ touch_pressed:
     ldrh r1, [r5, #0x40]
     ldrh r2, [r5, #0x42]
     add r0, r4, #0x10
-    bl func_02004dfc
+    bl TouchRegionManager_BeginPressAt
     mov r1, r0
     mvn r0, #0
     cmp r1, r0
@@ -245,7 +245,7 @@ touch_held:
     ldrh r1, [r5, #0x40]
     ldrh r2, [r5, #0x42]
     add r0, r4, #0x10
-    bl func_02004e84
+    bl TouchRegionManager_EndPressOutside
 touch_update_done:
     str r6, [r7, #8]
     mov r0, #0

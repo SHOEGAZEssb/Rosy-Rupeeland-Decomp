@@ -9,13 +9,6 @@
  * a short transfer unless the file cursor has reached the file end.
  */
 
-struct FSFile {
-    u8 unknown00[0x24];
-    s32 startOffset;
-    s32 endOffset;
-    s32 currentOffset;
-};
-
 #ifdef __cplusplus
 extern "C" {
 #endif
