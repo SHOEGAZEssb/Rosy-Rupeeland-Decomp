@@ -1,0 +1,189 @@
+#include "tingle/graphics_3d_command.h"
+#include "tingle/graphics_3d_render_object.h"
+
+/*
+ * Direct NDS geometry submission for a textured render object. The routine
+ * resets matrix state, configures texture/palette addressing, and emits one
+ * fixed-size textured quadrilateral at the object's retained depth.
+ */
+
+#define REG_G3_MTX_MODE (*(volatile u32 *)0x04000440)
+#define REG_G3_MTX_PUSH (*(volatile u32 *)0x04000444)
+#define REG_G3_MTX_POP (*(volatile u32 *)0x04000448)
+#define REG_G3_MTX_IDENTITY (*(volatile u32 *)0x04000454)
+#define REG_G3_COLOR (*(volatile u32 *)0x04000480)
+#define REG_G3_TEXCOORD (*(volatile u32 *)0x04000488)
+#define REG_G3_VTX_16 (*(volatile u32 *)0x0400048c)
+#define REG_G3_VTX_XZ (*(volatile u32 *)0x04000494)
+#define REG_G3_TEXIMAGE_PARAM (*(volatile u32 *)0x040004a8)
+#define REG_G3_PLTT_BASE (*(volatile u32 *)0x040004ac)
+#define REG_G3_BEGIN_VTXS (*(volatile u32 *)0x04000500)
+#define REG_G3_END_VTXS (*(volatile u32 *)0x04000504)
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+extern u32 func_02070474(const void *resource);
+extern u32 func_020704c8(const void *resource);
+extern u32 func_02070580(const void *resource);
+
+#ifdef __cplusplus
+}
+#endif
+
+/*
+ * Push and reset the position-vector matrix, submit polygon attributes using
+ * field_0e as polygon ID, and configure the bound texture/palette from their
+ * region offsets and decoded metadata. Emit a 0x2000-by-0x2000 quadrilateral
+ * with texture coordinates spanning 0x1000 by 0x0c00 at the low 16 bits of
+ * field_08, then end and pop. All volatile geometry writes and metadata calls
+ * are ordered observable effects; the binding and regions must be valid.
+ */
+#ifndef MATCHING
+void func_02077e24(Graphics3DRenderObject *object)
+{
+    Graphics3DResourceBinding *binding = object->binding;
+    u32 format;
+    u32 width;
+    u32 height;
+    u32 paletteShift;
+
+    REG_G3_MTX_PUSH = 0;
+    REG_G3_MTX_MODE = 0;
+    REG_G3_MTX_IDENTITY = 0;
+    REG_G3_MTX_MODE = 2;
+    REG_G3_MTX_IDENTITY = 0;
+
+    func_020771f4(0, 0, 3, object->field_0e, 0x1f, 0);
+
+    height = func_02077d6c(binding);
+    width = func_02077d5c(binding);
+    format = func_02077d4c(binding);
+    REG_G3_TEXIMAGE_PARAM =
+        (format << 26) | (binding->textureRegion->offset >> 3) |
+        0x40000000 | (width << 20) | (height << 23) | 0x30000 |
+        (object->field_04 << 29);
+
+    paletteShift = format == 2 ? 3 : 4;
+    REG_G3_PLTT_BASE = binding->paletteRegion->offset >> paletteShift;
+
+    REG_G3_BEGIN_VTXS = 1;
+    REG_G3_COLOR = object->field_0c;
+
+    REG_G3_TEXCOORD = 0;
+    REG_G3_VTX_16 = 0x1000f000;
+    REG_G3_VTX_16 = object->field_08 & 0xffff;
+
+    REG_G3_TEXCOORD = 0x00001000;
+    REG_G3_VTX_XZ = 0x10001000;
+    REG_G3_TEXCOORD = 0x0c001000;
+    REG_G3_VTX_XZ = 0xf0001000;
+    REG_G3_TEXCOORD = 0x0c000000;
+    REG_G3_VTX_XZ = 0xf000f000;
+
+    REG_G3_END_VTXS = 0;
+    REG_G3_MTX_POP = 1;
+}
+#else
+/* This matching fallback implements the documented portable C directly above. */
+asm void func_02077e24(Graphics3DRenderObject *object)
+{
+    stmdb sp!, {r4, r5, r6, r7, r8, lr}
+    sub sp, sp, #8
+    /* Load the trailing matrix-push register address. */
+    DCD 0xE59F314C
+    mov r4, r0
+    mov r0, #0
+    str r0, [r3]
+    sub r2, r3, #4
+    str r0, [r2]
+    str r0, [r3, #0x10]
+    mov r1, #2
+    str r1, [r2]
+    str r0, [r3, #0x10]
+    mov r1, #0x1f
+    str r1, [sp]
+    str r0, [sp, #4]
+    ldrh r3, [r4, #0xe]
+    mov r1, r0
+    mov r2, #3
+    bl func_020771f4
+    ldmia r4, {r0, r7}
+    ldr r1, [r0, #0x10]
+    ldr r0, [r0, #4]
+    ldr r8, [r1, #0xc]
+    bl func_02070580
+    ldr r1, [r4]
+    mov r6, r0
+    ldr r0, [r1, #4]
+    bl func_020704c8
+    ldr r1, [r4]
+    mov r5, r0
+    ldr r0, [r1, #4]
+    bl func_02070474
+    mov r0, r0, lsl #0x1a
+    orr r0, r0, r8, lsr #3
+    orr r0, r0, #0x40000000
+    orr r0, r0, r5, lsl #0x14
+    orr r0, r0, r6, lsl #0x17
+    orr r1, r0, #0x30000
+    /* Load the trailing texture-image register address. */
+    DCD 0xE59F00C0
+    orr r1, r1, r7, lsl #0x1d
+    str r1, [r0]
+    ldr r0, [r4]
+    ldr r0, [r0, #4]
+    bl func_02070474
+    cmp r0, #2
+    ldr r0, [r4]
+    moveq r2, #1
+    ldr r0, [r0, #0x14]
+    /* Load the trailing palette-base register address. */
+    DCD 0xE59FC09C
+    movne r2, #0
+    ldr r1, [r0, #0xc]
+    rsb r0, r2, #4
+    mov r0, r1, lsr r0
+    str r0, [r12]
+    mov r3, #1
+    str r3, [r12, #0x54]
+    ldrh r2, [r4, #0xc]
+    sub r1, r12, #0x24
+    /* Load the trailing packed first-vertex literal. */
+    DCD 0xE59F0078
+    str r2, [r12, #-0x2c]
+    mov r2, #0
+    str r2, [r1]
+    ldr r4, [r4, #8]
+    sub r5, r12, #0x20
+    mov r4, r4, lsl #0x10
+    mov r4, r4, asr #0x10
+    mov r4, r4, lsl #0x10
+    str r0, [r5]
+    mov r4, r4, lsr #0x10
+    str r4, [r5]
+    mov r6, #0x1000
+    str r6, [r1]
+    sub r4, r6, #0xf0000000
+    sub r5, r12, #0x18
+    str r4, [r5]
+    sub r4, r6, #0xf4000000
+    str r4, [r1]
+    sub r4, r6, #0x10000000
+    str r4, [r5]
+    mov r4, #0xc000000
+    str r4, [r1]
+    sub r0, r0, #0x20000000
+    str r0, [r5]
+    str r2, [r12, #0x58]
+    str r3, [r12, #-0x64]
+    add sp, sp, #8
+    ldmia sp!, {r4, r5, r6, r7, r8, pc}
+graphics_3d_render_object_draw_literals:
+    DCD 0x04000444
+    DCD 0x040004a8
+    DCD 0x040004ac
+    DCD 0x1000f000
+}
+#endif

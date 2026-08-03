@@ -228,6 +228,98 @@ src/graphics/graphics_sprite_text_layout.c:
     categories: Game code
     .text       start:0x02076148 end:0x02076308
 
+src/graphics/graphics_sprite_canvas.c:
+    categories: Game code
+    .text       start:0x02076308 end:0x020766cc
+
+src/graphics/graphics_sprite_runtime_lifecycle.c:
+    categories: Game code
+    .text       start:0x020766cc end:0x0207671c
+
+src/graphics/graphics_sprite_region_allocator.c:
+    categories: Game code
+    .text       start:0x0207671c end:0x02076920
+
+src/graphics/graphics_sprite_small_region_allocator.c:
+    categories: Game code
+    .text       start:0x02076920 end:0x02076b48
+
+src/graphics/graphics_animation_instance_setup.c:
+    categories: Game code
+    .text       start:0x02076b48 end:0x02076ca0
+
+src/graphics/graphics_animation_instance_update.c:
+    categories: Game code
+    .text       start:0x02076ca0 end:0x02076db0
+
+src/graphics/graphics_3d_polygon_attr.c:
+    categories: Game code
+    .text       start:0x020771f4 end:0x02077220
+
+src/graphics/graphics_animation_instance_manager.c:
+    categories: Game code
+    .text       start:0x02077220 end:0x020773e4
+
+src/graphics/graphics_animation_instance_manager_render.c:
+    categories: Game code
+    .text       start:0x020773e4 end:0x020774ac
+
+src/graphics/graphics_3d_resource_owner.c:
+    categories: Game code
+    .text       start:0x020774ac end:0x020775d8
+
+src/graphics/graphics_3d_resource_owner_lifecycle.c:
+    categories: Game code
+    .text       start:0x020775d8 end:0x02077624
+
+src/graphics/graphics_3d_resource_owner_managers.c:
+    categories: Game code
+    .text       start:0x02077624 end:0x02077734
+
+src/graphics/graphics_animation_instance_resources.c:
+    categories: Game code
+    .text       start:0x02077734 end:0x02077870
+
+src/graphics/graphics_3d_resource_regions.c:
+    categories: Game code
+    .text       start:0x02077870 end:0x020779ac
+
+src/graphics/graphics_3d_resource_owner_ops.c:
+    categories: Game code
+    .text       start:0x020779ac end:0x02077a04
+
+src/graphics/graphics_3d_light.c:
+    categories: Game code
+    .text       start:0x02077a04 end:0x02077a8c
+
+src/graphics/graphics_3d_light_set.c:
+    categories: Game code
+    .text       start:0x02077a8c end:0x02077ae8
+
+src/graphics/graphics_3d_scene_state.c:
+    categories: Game code
+    .text       start:0x02077ae8 end:0x02077b44
+
+src/graphics/graphics_3d_scene_state_apply.c:
+    categories: Game code
+    .text       start:0x02077b44 end:0x02077ca0
+
+src/graphics/graphics_3d_resource_binding.c:
+    categories: Game code
+    .text       start:0x02077ca0 end:0x02077d4c
+
+src/graphics/graphics_3d_resource_binding_queries.c:
+    categories: Game code
+    .text       start:0x02077d4c end:0x02077d7c
+
+src/graphics/graphics_3d_render_object.c:
+    categories: Game code
+    .text       start:0x02077d7c end:0x02077e24
+
+src/graphics/graphics_3d_render_object_draw.c:
+    categories: Game code
+    .text       start:0x02077e24 end:0x02077f90
+
 src/graphics/graphics_sprite_group_owner.c:
     categories: Game code
     .text       start:0x020742cc end:0x020743ac
