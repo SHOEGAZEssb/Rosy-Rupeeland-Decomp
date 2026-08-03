@@ -61,8 +61,9 @@ The built-in `dsd` signatures identify these initial ARM9 functions:
 | `0x020B9818` | `FS_LoadOverlayFile` |
 | `0x020B98B8` | `FS_LoadOverlayInfo` |
 
-Source-pattern analysis has also identified `MI_CpuCopy8` at `0x020B5984` and
-the startup-facing OS, PXI, FS, and PM functions. See
+Source-pattern analysis has also identified `MI_CpuCopy8` at `0x020B5984`,
+`MI_UncompressLZ8` at `0x020B5ABC`, `MI_CompressLZ` at `0x020B5CE0`, and the
+startup-facing OS, PXI, FS, and PM functions. See
 [startup.md](startup.md) for their addresses, evidence, and the initial `main`
 loop map.
 

@@ -108,8 +108,45 @@
       }
     },
     {
+      "name": "src/system/game_work_io",
+      "target_path": "build/decomp/delinks/src/system/game_work_io.o",
+      "base_path": "build/decomp/src/system/game_work_io.o",
+      "metadata": {
+        "complete": false,
+        "reverse_fn_order": false,
+        "source_path": "src/system/game_work_io.c",
+        "progress_categories": [
+          "Game code"
+        ],
+        "auto_generated": false
+      }
+    },
+    {
       "name": "_dsd_gap@main_3",
       "target_path": "build/decomp/delinks/_dsd_gap@main_3.o",
+      "metadata": {
+        "complete": false,
+        "reverse_fn_order": false,
+        "auto_generated": true
+      }
+    },
+    {
+      "name": "src/system/game_phase",
+      "target_path": "build/decomp/delinks/src/system/game_phase.o",
+      "base_path": "build/decomp/src/system/game_phase.o",
+      "metadata": {
+        "complete": false,
+        "reverse_fn_order": false,
+        "source_path": "src/system/game_phase.c",
+        "progress_categories": [
+          "Game code"
+        ],
+        "auto_generated": false
+      }
+    },
+    {
+      "name": "_dsd_gap@main_4",
+      "target_path": "build/decomp/delinks/_dsd_gap@main_4.o",
       "metadata": {
         "complete": false,
         "reverse_fn_order": false,

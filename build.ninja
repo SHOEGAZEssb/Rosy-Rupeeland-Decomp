@@ -5,6 +5,8 @@ input_cflags = -proc arm946e -O3 -inline on,noauto -ipa file -interworking -DMAT
 debug_menu_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -lang c++
 game_work_cflags = -proc arm946e -O4 -inline off -ipa file -interworking -Cpp_exceptions off -DMATCHING -lang c
 game_flags_cflags = -proc arm946e -O4 -inline off -ipa file -interworking -Cpp_exceptions off -lang c
+game_work_io_cflags = -proc arm946e -O4 -inline off -ipa file -interworking -Cpp_exceptions off -lang c
+game_phase_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -lang c++
 
 rule mwccarm
   command = "$mwccarm" $cflags -i "$repo_root/include" -c $source -o $out
@@ -56,7 +58,7 @@ rule match_report
   command = "$python" tools/report_objdiff.py $report_json $out $report_args
   description = MATCH $out
 
-build build/decomp/delinks/src/system/mt19937.o | build/decomp/delinks/src/system/input.o build/decomp/delinks/src/system/debug_menu.o build/decomp/delinks/src/system/game_work.o build/decomp/delinks/src/system/game_flags.o: dsd_delink config/arm9/config.yaml config/arm9/delinks.txt config/arm9/symbols.txt config/arm9/relocs.txt | build/rom/arm9/arm9.bin
+build build/decomp/delinks/src/system/mt19937.o | build/decomp/delinks/src/system/input.o build/decomp/delinks/src/system/debug_menu.o build/decomp/delinks/src/system/game_work.o build/decomp/delinks/src/system/game_flags.o build/decomp/delinks/src/system/game_work_io.o build/decomp/delinks/src/system/game_phase.o: dsd_delink config/arm9/config.yaml config/arm9/delinks.txt config/arm9/symbols.txt config/arm9/relocs.txt | build/rom/arm9/arm9.bin
 
 build build/decomp/src/system/mt19937.o: mwccarm src/system/mt19937.c | include/tingle/random.h include/tingle/types.h
   source = src/system/mt19937.c
@@ -82,13 +84,21 @@ build build/decomp/src/system/game_flags.o: mwccarm src/system/game_flags.c | in
   source = src/system/game_flags.c
   cflags = $game_flags_cflags
 
-build build/decomp/lib/tingle.a: mwldarm_archive build/decomp/src/system/mt19937.o build/decomp/src/system/input.o build/decomp/src/system/debug_menu.o build/decomp/src/system/game_work.o build/decomp/src/system/game_flags.o
+build build/decomp/src/system/game_work_io.o: mwccarm src/system/game_work_io.c | include/tingle/game_work.h include/tingle/types.h
+  source = src/system/game_work_io.c
+  cflags = $game_work_io_cflags
+
+build build/decomp/src/system/game_phase.o: mwccarm src/system/game_phase.c | include/tingle/game_phase.h include/tingle/game_work.h include/tingle/types.h
+  source = src/system/game_phase.c
+  cflags = $game_phase_cflags
+
+build build/decomp/lib/tingle.a: mwldarm_archive build/decomp/src/system/mt19937.o build/decomp/src/system/input.o build/decomp/src/system/debug_menu.o build/decomp/src/system/game_work.o build/decomp/src/system/game_flags.o build/decomp/src/system/game_work_io.o build/decomp/src/system/game_phase.o
 
 build build/decomp/arm9.lcf build/decomp/objects.txt: dsd_lcf config/arm9/config.yaml config/arm9/delinks.txt config/arm9/symbols.txt config/arm9/relocs.txt | build/decomp/delinks/src/system/mt19937.o
 
-build build/decomp/objects.source.txt: prepare_link_objects build/decomp/objects.txt config/arm9/link_replacements.txt tools/prepare_link_objects.ps1 | build/decomp/src/system/mt19937.o build/decomp/src/system/input.o build/decomp/src/system/debug_menu.o build/decomp/src/system/game_work.o build/decomp/src/system/game_flags.o
+build build/decomp/objects.source.txt: prepare_link_objects build/decomp/objects.txt config/arm9/link_replacements.txt tools/prepare_link_objects.ps1 | build/decomp/src/system/mt19937.o build/decomp/src/system/input.o build/decomp/src/system/debug_menu.o build/decomp/src/system/game_work.o build/decomp/src/system/game_flags.o build/decomp/src/system/game_work_io.o build/decomp/src/system/game_phase.o
 
-build build/decomp/tingle.elf | build/decomp/build/arm9.bin build/decomp/build/itcm.bin build/decomp/build/dtcm.bin: mwldarm_link build/decomp/objects.source.txt build/decomp/arm9.lcf | build/decomp/src/system/mt19937.o build/decomp/src/system/input.o build/decomp/src/system/debug_menu.o build/decomp/src/system/game_work.o build/decomp/src/system/game_flags.o
+build build/decomp/tingle.elf | build/decomp/build/arm9.bin build/decomp/build/itcm.bin build/decomp/build/dtcm.bin: mwldarm_link build/decomp/objects.source.txt build/decomp/arm9.lcf | build/decomp/src/system/mt19937.o build/decomp/src/system/input.o build/decomp/src/system/debug_menu.o build/decomp/src/system/game_work.o build/decomp/src/system/game_flags.o build/decomp/src/system/game_work_io.o build/decomp/src/system/game_phase.o
 
 build build/tingle.recompiled.nds: build_recompiled_rom build/decomp/tingle.elf | tools/build_recompiled_rom.ps1 tools/patch_rom_header.py
 
@@ -161,14 +171,32 @@ build build/reports/game_flags.txt: match_report build/reports/game_flags.json |
   report_json = build/reports/game_flags.json
   report_args = --section .text --function GameWork_SetFlag --function GameWork_TestFlag --function GameWork_ClearFlag --require-exact
 
+build build/reports/game_work_io.json: objdiff build/decomp/delinks/src/system/game_work_io.o | build/decomp/src/system/game_work_io.o
+  target_object = build/decomp/delinks/src/system/game_work_io.o
+  base_object = build/decomp/src/system/game_work_io.o
+
+build build/reports/game_work_io.txt: match_report build/reports/game_work_io.json | tools/report_objdiff.py
+  report_json = build/reports/game_work_io.json
+  report_args = --section .text --section .data --function GameWork_Serialize --function GameWork_Deserialize --function GameWork_CompressionRoundTrip --require-exact
+
+build build/reports/game_phase.json: objdiff build/decomp/delinks/src/system/game_phase.o | build/decomp/src/system/game_phase.o
+  target_object = build/decomp/delinks/src/system/game_phase.o
+  base_object = build/decomp/src/system/game_phase.o
+
+build build/reports/game_phase.txt: match_report build/reports/game_phase.json | tools/report_objdiff.py
+  report_json = build/reports/game_phase.json
+  report_args = --section .text --section .data --function GamePhase_Start --function GamePhase_Bootstrap --function GamePhaseTransition_Init --function GamePhaseTransition_Destroy --function GamePhaseTransition_DestroyAndFree --function GamePhaseTransition_Update
+
 build mt19937: phony build/decomp/delinks/src/system/mt19937.o build/decomp/src/system/mt19937.o
 build input: phony build/decomp/delinks/src/system/input.o build/decomp/src/system/input.o build/reports/input.txt
 build debug_menu: phony build/decomp/delinks/src/system/debug_menu.o build/decomp/src/system/debug_menu.o build/reports/debug_menu.txt build/reports/debug_menu_exact.txt
 build game_work: phony build/decomp/delinks/src/system/game_work.o build/decomp/src/system/game_work.o build/reports/game_work.txt
 build game_flags: phony build/decomp/delinks/src/system/game_flags.o build/decomp/src/system/game_flags.o build/reports/game_flags.txt
+build game_work_io: phony build/decomp/delinks/src/system/game_work_io.o build/decomp/src/system/game_work_io.o build/reports/game_work_io.txt
+build game_phase: phony build/decomp/delinks/src/system/game_phase.o build/decomp/src/system/game_phase.o build/reports/game_phase.txt
 build archive: phony build/decomp/lib/tingle.a
 build references: phony build/reference/mt19937.text.bin build/reference/init_genrand.bin build/reference/init_by_array.bin build/reference/genrand_int32.bin build/reference/InitRandom.bin
-build match: phony build/reports/mt19937.txt build/reports/input.txt build/reports/debug_menu.txt build/reports/debug_menu_exact.txt build/reports/game_work.txt build/reports/game_flags.txt build/decomp/lib/tingle.a references
+build match: phony build/reports/mt19937.txt build/reports/input.txt build/reports/debug_menu.txt build/reports/debug_menu_exact.txt build/reports/game_work.txt build/reports/game_flags.txt build/reports/game_work_io.txt build/reports/game_phase.txt build/decomp/lib/tingle.a references
 build rom: phony build/tingle.recompiled.nds
 
 default match

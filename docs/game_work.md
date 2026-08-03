@@ -13,6 +13,31 @@ state. This name and the `GMWK` tag occupy the 40-byte data block at
 
 The singleton's bit-level API is described in [game_flags.md](game_flags.md).
 
+## Serialization contract
+
+`GameWork_Serialize` leaves the first `0x40` bytes uncompressed and passes the
+remaining `0x5ED4` bytes through NitroSDK `MI_CompressLZ`. Compression occurs
+from a temporary `0x5F14`-byte heap allocation tagged `buff`, allowing the
+output buffer to be separate from the live singleton.
+
+NitroSDK returns zero when LZ output would not be smaller than its input. In
+that case the serializer copies the payload verbatim and sets bit 31 at offset
+`0x04` in the serialized header. The live `GameWork` header is cleared before
+serialization but does not receive the fallback marker. The return value is the
+complete serialized byte count including the `0x40`-byte header.
+
+`GameWork_Deserialize` copies the header first. When the marker is set it copies
+the remaining supplied bytes directly; otherwise it calls
+`MI_UncompressLZ8`, whose own four-byte stream header determines the expanded
+length. Neither path validates pointers, buffer capacity, or the encoded size.
+
+`GameWork_CompressionRoundTrip` contains a confirmed size asymmetry: it passes
+`0x5ED4` as the total buffer size even though the serializer subtracts the
+`0x40`-byte header before filling scratch memory and always asks the compressor
+to consume a `0x5ED4`-byte payload. Preserve this retail behavior unless a
+caller-level investigation proves the extra scratch bytes are intentionally
+initialized by the allocator.
+
 ## Known layout
 
 The header gives names only to structure that the initializer establishes with
@@ -57,6 +82,11 @@ caller, the required semantics are exactly overlap-independent byte copying;
 the native implementation can use the platform memory-copy primitive. The two
 calls at `0x02027F94` and `0x02027BD4` initialize the embedded state at `0x5DF0`,
 but their subsystem is not yet identified and remains a pending boundary.
+
+Native save compatibility also requires the NitroSDK LZ stream format described
+above, including its four-byte size/type header and raw fallback convention. A
+host implementation may use a different internal representation only if the
+persistent on-disk format is converted at the boundary.
 
 Validation is the linked ARM9 check performed by `ninja rom`, followed by the
 retail ROM SHA-256 gate.

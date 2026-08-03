@@ -65,7 +65,7 @@ The broad barriers currently known are:
 | Overlays | `FS_LoadOverlay`, `FS_StartOverlay`, unload lifecycle | Static registration or host-side scene/module lifecycle | identified |
 | Power management | `PM_GoSleepMode`, lid and card events | Window focus/suspend policy with compatible game-visible state | identified |
 | ARM7/PXI services | Cross-processor messages and ARM7-owned hardware | Host services replacing each message protocol | unmapped |
-| Save data | Cartridge backup APIs and device constraints | Compatible persistent save storage and validation | unmapped |
+| Save data | GameWork raw/LZ serialization, cartridge backup APIs, and device constraints | Compatible persistent save storage, codec, and validation | identified |
 | Memory/runtime | Fixed addresses, arenas, caches, DMA, fixed-point and ARM ABI assumptions | Portable allocation, transfer, numeric, and serialization layers | unmapped |
 
 The first detailed memory/runtime contract is the game-work allocator and

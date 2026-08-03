@@ -5,3 +5,5 @@ build/decomp/delinks/src/system/input.o = build/decomp/src/system/input.o
 build/decomp/delinks/src/system/debug_menu.o = build/decomp/src/system/debug_menu.o
 build/decomp/delinks/src/system/game_work.o = build/decomp/src/system/game_work.o
 build/decomp/delinks/src/system/game_flags.o = build/decomp/src/system/game_flags.o
+build/decomp/delinks/src/system/game_work_io.o = build/decomp/src/system/game_work_io.o
+build/decomp/delinks/src/system/game_phase.o = build/decomp/src/system/game_phase.o

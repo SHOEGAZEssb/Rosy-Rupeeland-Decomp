@@ -41,7 +41,9 @@ typedef struct GameWorkInitialData {
 } GameWorkInitialData;
 
 typedef struct GameWork {
-    u8 unknown0000[0x10];
+    u32 unknown0000;
+    u32 serializationFlags;
+    u8 unknown0008[8];
     u16 playerName[16];
     u8 unknown0030[0x10];
     u32 unknown0040;
@@ -86,6 +88,10 @@ typedef char GameWorkInitialDataSizeCheck[
     sizeof(GameWorkInitialData) == 0x28 ? 1 : -1];
 typedef char GameWorkSizeCheck[sizeof(GameWork) == 0x5F14 ? 1 : -1];
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 extern GameWorkInitialData gGameWorkInitialData;
 extern GameWork *gGameWork;
 
@@ -96,5 +102,12 @@ void GameWork_ClearPointerBank(GameWork *work, int bank);
 void GameWork_SetFlag(GameWork *work, int flag);
 int GameWork_TestFlag(GameWork *work, int flag);
 void GameWork_ClearFlag(GameWork *work, int flag);
+u32 GameWork_Serialize(GameWork *work, void *buffer, u32 bufferSize);
+void GameWork_Deserialize(GameWork *work, const void *buffer, u32 bufferSize);
+void GameWork_CompressionRoundTrip(void);
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif
