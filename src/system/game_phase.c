@@ -38,14 +38,14 @@ extern void func_02002d74(int mode, int duration);
 extern int func_02002d94(void);
 extern int func_02002db0(void);
 
-extern int func_02003084(GamePhaseTransition *transition);
-extern int func_0200308c(GamePhaseTransition *transition);
-extern int func_02003094(GamePhaseTransition *transition);
-extern int func_0200309c(GamePhaseTransition *transition);
-extern int func_020030a4(GamePhaseTransition *transition);
-extern int func_020030ac(GamePhaseTransition *transition);
-extern int func_020030b4(GamePhaseTransition *transition);
-extern int func_020030bc(GamePhaseTransition *transition);
+extern int Scene_NoopMethod0C(GamePhaseTransition *transition);
+extern int Scene_NoopMethod10(GamePhaseTransition *transition);
+extern int Scene_NoopMethod14(GamePhaseTransition *transition);
+extern int Scene_NoopMethod18(GamePhaseTransition *transition);
+extern int Scene_NoopMethod1C(GamePhaseTransition *transition);
+extern int Scene_OnRevealed(GamePhaseTransition *transition);
+extern int Scene_NoopMethod20(GamePhaseTransition *transition);
+extern int Scene_OnCovered(GamePhaseTransition *transition);
 
 extern void *gHeapContext;
 extern void *gLupyContext;
@@ -68,14 +68,14 @@ GamePhaseInitialData gGamePhaseInitialData = {
         GamePhaseTransition_Destroy,
         GamePhaseTransition_DestroyAndFree,
         GamePhaseTransition_Update,
-        func_02003084,
-        func_0200308c,
-        func_02003094,
-        func_0200309c,
-        func_020030a4,
-        func_020030b4,
-        func_020030ac,
-        func_020030bc,
+        Scene_NoopMethod0C,
+        Scene_NoopMethod10,
+        Scene_NoopMethod14,
+        Scene_NoopMethod18,
+        Scene_NoopMethod1C,
+        Scene_NoopMethod20,
+        Scene_OnRevealed,
+        Scene_OnCovered,
     },
     "PHAZ",
     "LUPY",

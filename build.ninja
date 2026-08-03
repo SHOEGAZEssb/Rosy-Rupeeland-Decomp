@@ -7,6 +7,8 @@ game_work_cflags = -proc arm946e -O4 -inline off -ipa file -interworking -Cpp_ex
 game_flags_cflags = -proc arm946e -O4 -inline off -ipa file -interworking -Cpp_exceptions off -lang c
 game_work_io_cflags = -proc arm946e -O4 -inline off -ipa file -interworking -Cpp_exceptions off -lang c
 game_phase_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -lang c++
+scene_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -DMATCHING -lang c++
+scene_touch_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -DMATCHING -lang c++
 
 rule mwccarm
   command = "$mwccarm" $cflags -i "$repo_root/include" -c $source -o $out
@@ -58,7 +60,7 @@ rule match_report
   command = "$python" tools/report_objdiff.py $report_json $out $report_args
   description = MATCH $out
 
-build build/decomp/delinks/src/system/mt19937.o | build/decomp/delinks/src/system/input.o build/decomp/delinks/src/system/debug_menu.o build/decomp/delinks/src/system/game_work.o build/decomp/delinks/src/system/game_flags.o build/decomp/delinks/src/system/game_work_io.o build/decomp/delinks/src/system/game_phase.o: dsd_delink config/arm9/config.yaml config/arm9/delinks.txt config/arm9/symbols.txt config/arm9/relocs.txt | build/rom/arm9/arm9.bin
+build build/decomp/delinks/src/system/mt19937.o | build/decomp/delinks/src/system/input.o build/decomp/delinks/src/system/debug_menu.o build/decomp/delinks/src/system/game_work.o build/decomp/delinks/src/system/game_flags.o build/decomp/delinks/src/system/game_work_io.o build/decomp/delinks/src/system/game_phase.o build/decomp/delinks/src/system/scene_touch_data.o build/decomp/delinks/src/system/scene.o build/decomp/delinks/src/system/scene_touch.o: dsd_delink config/arm9/config.yaml config/arm9/delinks.txt config/arm9/symbols.txt config/arm9/relocs.txt | build/rom/arm9/arm9.bin
 
 build build/decomp/src/system/mt19937.o: mwccarm src/system/mt19937.c | include/tingle/random.h include/tingle/types.h
   source = src/system/mt19937.c
@@ -92,13 +94,25 @@ build build/decomp/src/system/game_phase.o: mwccarm src/system/game_phase.c | in
   source = src/system/game_phase.c
   cflags = $game_phase_cflags
 
-build build/decomp/lib/tingle.a: mwldarm_archive build/decomp/src/system/mt19937.o build/decomp/src/system/input.o build/decomp/src/system/debug_menu.o build/decomp/src/system/game_work.o build/decomp/src/system/game_flags.o build/decomp/src/system/game_work_io.o build/decomp/src/system/game_phase.o
+build build/decomp/src/system/scene.o: mwccarm src/system/scene.c | include/tingle/scene.h include/tingle/types.h
+  source = src/system/scene.c
+  cflags = $scene_cflags
+
+build build/decomp/src/system/scene_touch_data.o: mwccarm src/system/scene_touch_data.c | include/tingle/scene_touch.h include/tingle/scene.h include/tingle/types.h
+  source = src/system/scene_touch_data.c
+  cflags = $scene_touch_cflags
+
+build build/decomp/src/system/scene_touch.o: mwccarm src/system/scene_touch.c | include/tingle/scene_touch.h include/tingle/scene.h include/tingle/types.h
+  source = src/system/scene_touch.c
+  cflags = $scene_touch_cflags
+
+build build/decomp/lib/tingle.a: mwldarm_archive build/decomp/src/system/mt19937.o build/decomp/src/system/input.o build/decomp/src/system/debug_menu.o build/decomp/src/system/game_work.o build/decomp/src/system/game_flags.o build/decomp/src/system/game_work_io.o build/decomp/src/system/game_phase.o build/decomp/src/system/scene_touch_data.o build/decomp/src/system/scene.o build/decomp/src/system/scene_touch.o
 
 build build/decomp/arm9.lcf build/decomp/objects.txt: dsd_lcf config/arm9/config.yaml config/arm9/delinks.txt config/arm9/symbols.txt config/arm9/relocs.txt | build/decomp/delinks/src/system/mt19937.o
 
-build build/decomp/objects.source.txt: prepare_link_objects build/decomp/objects.txt config/arm9/link_replacements.txt tools/prepare_link_objects.ps1 | build/decomp/src/system/mt19937.o build/decomp/src/system/input.o build/decomp/src/system/debug_menu.o build/decomp/src/system/game_work.o build/decomp/src/system/game_flags.o build/decomp/src/system/game_work_io.o build/decomp/src/system/game_phase.o
+build build/decomp/objects.source.txt: prepare_link_objects build/decomp/objects.txt config/arm9/link_replacements.txt tools/prepare_link_objects.ps1 | build/decomp/src/system/mt19937.o build/decomp/src/system/input.o build/decomp/src/system/debug_menu.o build/decomp/src/system/game_work.o build/decomp/src/system/game_flags.o build/decomp/src/system/game_work_io.o build/decomp/src/system/game_phase.o build/decomp/src/system/scene_touch_data.o build/decomp/src/system/scene.o build/decomp/src/system/scene_touch.o
 
-build build/decomp/tingle.elf | build/decomp/build/arm9.bin build/decomp/build/itcm.bin build/decomp/build/dtcm.bin: mwldarm_link build/decomp/objects.source.txt build/decomp/arm9.lcf | build/decomp/src/system/mt19937.o build/decomp/src/system/input.o build/decomp/src/system/debug_menu.o build/decomp/src/system/game_work.o build/decomp/src/system/game_flags.o build/decomp/src/system/game_work_io.o build/decomp/src/system/game_phase.o
+build build/decomp/tingle.elf | build/decomp/build/arm9.bin build/decomp/build/itcm.bin build/decomp/build/dtcm.bin: mwldarm_link build/decomp/objects.source.txt build/decomp/arm9.lcf | build/decomp/src/system/mt19937.o build/decomp/src/system/input.o build/decomp/src/system/debug_menu.o build/decomp/src/system/game_work.o build/decomp/src/system/game_flags.o build/decomp/src/system/game_work_io.o build/decomp/src/system/game_phase.o build/decomp/src/system/scene_touch_data.o build/decomp/src/system/scene.o build/decomp/src/system/scene_touch.o
 
 build build/tingle.recompiled.nds: build_recompiled_rom build/decomp/tingle.elf | tools/build_recompiled_rom.ps1 tools/patch_rom_header.py
 
@@ -187,6 +201,26 @@ build build/reports/game_phase.txt: match_report build/reports/game_phase.json |
   report_json = build/reports/game_phase.json
   report_args = --section .text --section .data --function GamePhase_Start --function GamePhase_Bootstrap --function GamePhaseTransition_Init --function GamePhaseTransition_Destroy --function GamePhaseTransition_DestroyAndFree --function GamePhaseTransition_Update
 
+build build/reports/scene.json: objdiff build/decomp/delinks/src/system/scene.o | build/decomp/src/system/scene.o
+  target_object = build/decomp/delinks/src/system/scene.o
+  base_object = build/decomp/src/system/scene.o
+
+build build/reports/scene.txt: match_report build/reports/scene.json | tools/report_objdiff.py
+  report_json = build/reports/scene.json
+  report_args = --section .text --section .data --section .bss --function Scene_Init --function Scene_Destructor --function Scene_DeletingDestructor --function Scene_Destroy --function Scene_NoopMethod0C --function Scene_NoopMethod10 --function Scene_NoopMethod14 --function Scene_NoopMethod18 --function Scene_NoopMethod1C --function Scene_OnRevealed --function Scene_NoopMethod20 --function Scene_OnCovered --function Scene_SetFlags03 --function Scene_ClearFlags03 --function Scene_HasFlags03 --function Scene_ClearFlag02 --function Scene_GetEmbedded10 --function SceneManager_Init --function SceneManager_Reset --function SceneManager_Push --function SceneManager_Pop --function SceneManager_GetCurrent --function SceneManager_IsEmpty --function SceneManager_SetUpdateEnabled --function SceneManager_UpdateCurrent
+
+build build/reports/scene_touch_data.json: objdiff build/decomp/delinks/src/system/scene_touch_data.o | build/decomp/src/system/scene_touch_data.o
+  target_object = build/decomp/delinks/src/system/scene_touch_data.o
+  base_object = build/decomp/src/system/scene_touch_data.o
+
+build build/reports/scene_touch.json: objdiff build/decomp/delinks/src/system/scene_touch.o | build/decomp/src/system/scene_touch.o
+  target_object = build/decomp/delinks/src/system/scene_touch.o
+  base_object = build/decomp/src/system/scene_touch.o
+
+build build/reports/scene_touch.txt: match_report build/reports/scene_touch.json | tools/report_objdiff.py
+  report_json = build/reports/scene_touch.json
+  report_args = --section .text --function SceneTouchTask_Init --function SceneTouchTask_Destroy --function SceneTouchTask_DestroyAndFree --function SceneTouchTask_Update --function TouchPoint_Init --function TouchPoint_Destroy --function TouchPoint_DestroyAndFree
+
 build mt19937: phony build/decomp/delinks/src/system/mt19937.o build/decomp/src/system/mt19937.o
 build input: phony build/decomp/delinks/src/system/input.o build/decomp/src/system/input.o build/reports/input.txt
 build debug_menu: phony build/decomp/delinks/src/system/debug_menu.o build/decomp/src/system/debug_menu.o build/reports/debug_menu.txt build/reports/debug_menu_exact.txt
@@ -194,9 +228,11 @@ build game_work: phony build/decomp/delinks/src/system/game_work.o build/decomp/
 build game_flags: phony build/decomp/delinks/src/system/game_flags.o build/decomp/src/system/game_flags.o build/reports/game_flags.txt
 build game_work_io: phony build/decomp/delinks/src/system/game_work_io.o build/decomp/src/system/game_work_io.o build/reports/game_work_io.txt
 build game_phase: phony build/decomp/delinks/src/system/game_phase.o build/decomp/src/system/game_phase.o build/reports/game_phase.txt
+build scene: phony build/decomp/delinks/src/system/scene.o build/decomp/src/system/scene.o build/reports/scene.txt
+build scene_touch: phony build/decomp/delinks/src/system/scene_touch_data.o build/decomp/src/system/scene_touch_data.o build/reports/scene_touch_data.json build/decomp/delinks/src/system/scene_touch.o build/decomp/src/system/scene_touch.o build/reports/scene_touch.txt
 build archive: phony build/decomp/lib/tingle.a
 build references: phony build/reference/mt19937.text.bin build/reference/init_genrand.bin build/reference/init_by_array.bin build/reference/genrand_int32.bin build/reference/InitRandom.bin
-build match: phony build/reports/mt19937.txt build/reports/input.txt build/reports/debug_menu.txt build/reports/debug_menu_exact.txt build/reports/game_work.txt build/reports/game_flags.txt build/reports/game_work_io.txt build/reports/game_phase.txt build/decomp/lib/tingle.a references
+build match: phony build/reports/mt19937.txt build/reports/input.txt build/reports/debug_menu.txt build/reports/debug_menu_exact.txt build/reports/game_work.txt build/reports/game_flags.txt build/reports/game_work_io.txt build/reports/game_phase.txt build/reports/scene_touch_data.json build/reports/scene.txt build/reports/scene_touch.txt build/decomp/lib/tingle.a references
 build rom: phony build/tingle.recompiled.nds
 
 default match

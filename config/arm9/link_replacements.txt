@@ -7,3 +7,6 @@ build/decomp/delinks/src/system/game_work.o = build/decomp/src/system/game_work.
 build/decomp/delinks/src/system/game_flags.o = build/decomp/src/system/game_flags.o
 build/decomp/delinks/src/system/game_work_io.o = build/decomp/src/system/game_work_io.o
 build/decomp/delinks/src/system/game_phase.o = build/decomp/src/system/game_phase.o
+build/decomp/delinks/src/system/scene_touch_data.o = build/decomp/src/system/scene_touch_data.o
+build/decomp/delinks/src/system/scene.o = build/decomp/src/system/scene.o
+build/decomp/delinks/src/system/scene_touch.o = build/decomp/src/system/scene_touch.o

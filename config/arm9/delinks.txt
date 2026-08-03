@@ -42,3 +42,17 @@ src/system/game_phase.c:
     categories: Game code
     .text       start:0x02001b28 end:0x02001d10
     .data       start:0x020d3cd4 end:0x020d3d10
+
+src/system/scene_touch_data.c:
+    categories: Game code
+    .data       start:0x020d3d68 end:0x020d3d84
+
+src/system/scene.c:
+    categories: Game code
+    .text       start:0x02002f1c end:0x02003298
+    .data       start:0x020d3dac end:0x020d3de0
+    .bss        start:0x020f4dfc end:0x020f4e00
+
+src/system/scene_touch.c:
+    categories: Game code
+    .text       start:0x02003298 end:0x02003484
