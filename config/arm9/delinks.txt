@@ -143,3 +143,107 @@ src/graphics/graphics_resource_set_variant.c:
 src/graphics/graphics_vram_allocator.c:
     categories: Game code
     .text       start:0x02072188 end:0x020723e0
+
+src/graphics/graphics_render_entry_pool.c:
+    categories: Game code
+    .text       start:0x020723e0 end:0x0207260c
+
+src/graphics/graphics_transfer_queue.c:
+    categories: Game code
+    .text       start:0x0207260c end:0x020727c4
+
+src/graphics/graphics_indexed_chain_pool.c:
+    categories: Game code
+    .text       start:0x020727c4 end:0x0207298c
+
+src/graphics/graphics_lookup_cache.c:
+    categories: Game code
+    .text       start:0x0207298c end:0x02072aec
+
+src/graphics/graphics_sprite_state.c:
+    categories: Game code
+    .text       start:0x02072aec end:0x02072b68
+
+src/graphics/graphics_sprite_animation.c:
+    categories: Game code
+    .text       start:0x02072b68 end:0x02072d04
+
+src/graphics/graphics_sprite_frame.c:
+    categories: Game code
+    .text       start:0x02072d04 end:0x02072ea4
+
+src/graphics/graphics_sprite_render_helpers.c:
+    categories: Game code
+    .text       start:0x02073304 end:0x02073340
+
+src/graphics/graphics_sprite_config.c:
+    categories: Game code
+    .text       start:0x02073e48 end:0x02073e90
+
+src/graphics/graphics_sprite_group.c:
+    categories: Game code
+    .text       start:0x02073e90 end:0x02074200
+
+src/graphics/graphics_sprite_renderer.c:
+    categories: Game code
+    .text       start:0x02074200 end:0x020742cc
+
+src/graphics/graphics_sprite_renderer_hw.c:
+    categories: Game code
+    .text       start:0x02074f0c end:0x02075020
+
+src/graphics/graphics_sprite_renderer_accessors.c:
+    categories: Game code
+    .text       start:0x02075598 end:0x02075630
+
+src/graphics/graphics_sprite_palette_upload.c:
+    categories: Game code
+    .text       start:0x02075630 end:0x020756b4
+
+src/graphics/graphics_sprite_text_printf.c:
+    categories: Game code
+    .text       start:0x02075858 end:0x0207593c
+
+src/graphics/graphics_sprite_text_oam.c:
+    categories: Game code
+    .text       start:0x0207593c end:0x02075ad4
+
+src/graphics/graphics_sprite_font_lookup.c:
+    categories: Game code
+    .text       start:0x02075e48 end:0x02075ecc
+
+src/graphics/graphics_sprite_character_map.c:
+    categories: Game code
+    .text       start:0x02075ecc end:0x02076004
+
+src/graphics/graphics_sprite_number_format.c:
+    categories: Game code
+    .text       start:0x02076004 end:0x020760c0
+
+src/graphics/graphics_sprite_font_dispatch.c:
+    categories: Game code
+    .text       start:0x020760c0 end:0x02076148
+
+src/graphics/graphics_sprite_text_layout.c:
+    categories: Game code
+    .text       start:0x02076148 end:0x02076308
+
+src/graphics/graphics_sprite_group_owner.c:
+    categories: Game code
+    .text       start:0x020742cc end:0x020743ac
+
+src/graphics/graphics_sprite_pool.c:
+    categories: Game code
+    .text       start:0x020743ac end:0x02074568
+
+src/graphics/graphics_sprite_oam.c:
+    categories: Game code
+    .text       start:0x02074568 end:0x020745c4
+
+src/graphics/graphics_sprite_vram_binding.c:
+    categories: Game code
+    .text       start:0x02074a88 end:0x02074b9c
+
+src/graphics/graphics_sprite_indexed_release.c:
+    categories: Game code
+    .text       start:0x02074d40 end:0x02074dc8

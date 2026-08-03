@@ -534,6 +534,332 @@
       }
     },
     {
+      "name": "src/graphics/graphics_render_entry_pool",
+      "target_path": "build/decomp/delinks/src/graphics/graphics_render_entry_pool.o",
+      "base_path": "build/decomp/src/graphics/graphics_render_entry_pool.o",
+      "metadata": {
+        "complete": false,
+        "reverse_fn_order": false,
+        "source_path": "src/graphics/graphics_render_entry_pool.c",
+        "progress_categories": [
+          "Game code"
+        ],
+        "auto_generated": false
+      }
+    },
+    {
+      "name": "src/graphics/graphics_transfer_queue",
+      "target_path": "build/decomp/delinks/src/graphics/graphics_transfer_queue.o",
+      "base_path": "build/decomp/src/graphics/graphics_transfer_queue.o",
+      "metadata": {
+        "complete": false,
+        "reverse_fn_order": false,
+        "source_path": "src/graphics/graphics_transfer_queue.c",
+        "progress_categories": [
+          "Game code"
+        ],
+        "auto_generated": false
+      }
+    },
+    {
+      "name": "src/graphics/graphics_indexed_chain_pool",
+      "target_path": "build/decomp/delinks/src/graphics/graphics_indexed_chain_pool.o",
+      "base_path": "build/decomp/src/graphics/graphics_indexed_chain_pool.o",
+      "metadata": {
+        "complete": false,
+        "reverse_fn_order": false,
+        "source_path": "src/graphics/graphics_indexed_chain_pool.c",
+        "progress_categories": [
+          "Game code"
+        ],
+        "auto_generated": false
+      }
+    },
+    {
+      "name": "src/graphics/graphics_lookup_cache",
+      "target_path": "build/decomp/delinks/src/graphics/graphics_lookup_cache.o",
+      "base_path": "build/decomp/src/graphics/graphics_lookup_cache.o",
+      "metadata": {
+        "complete": false,
+        "reverse_fn_order": false,
+        "source_path": "src/graphics/graphics_lookup_cache.c",
+        "progress_categories": [
+          "Game code"
+        ],
+        "auto_generated": false
+      }
+    },
+    {
+      "name": "src/graphics/graphics_sprite_state",
+      "target_path": "build/decomp/delinks/src/graphics/graphics_sprite_state.o",
+      "base_path": "build/decomp/src/graphics/graphics_sprite_state.o",
+      "metadata": {
+        "complete": false,
+        "reverse_fn_order": false,
+        "source_path": "src/graphics/graphics_sprite_state.c",
+        "progress_categories": [
+          "Game code"
+        ],
+        "auto_generated": false
+      }
+    },
+    {
+      "name": "src/graphics/graphics_sprite_animation",
+      "target_path": "build/decomp/delinks/src/graphics/graphics_sprite_animation.o",
+      "base_path": "build/decomp/src/graphics/graphics_sprite_animation.o",
+      "metadata": {
+        "complete": false,
+        "reverse_fn_order": false,
+        "source_path": "src/graphics/graphics_sprite_animation.c",
+        "progress_categories": [
+          "Game code"
+        ],
+        "auto_generated": false
+      }
+    },
+    {
+      "name": "src/graphics/graphics_sprite_frame",
+      "target_path": "build/decomp/delinks/src/graphics/graphics_sprite_frame.o",
+      "base_path": "build/decomp/src/graphics/graphics_sprite_frame.o",
+      "metadata": {
+        "complete": false,
+        "reverse_fn_order": false,
+        "source_path": "src/graphics/graphics_sprite_frame.c",
+        "progress_categories": [
+          "Game code"
+        ],
+        "auto_generated": false
+      }
+    },
+    {
+      "name": "src/graphics/graphics_sprite_render_helpers",
+      "target_path": "build/decomp/delinks/src/graphics/graphics_sprite_render_helpers.o",
+      "base_path": "build/decomp/src/graphics/graphics_sprite_render_helpers.o",
+      "metadata": {
+        "complete": false,
+        "reverse_fn_order": false,
+        "source_path": "src/graphics/graphics_sprite_render_helpers.c",
+        "progress_categories": ["Game code"],
+        "auto_generated": false
+      }
+    },
+    {
+      "name": "src/graphics/graphics_sprite_config",
+      "target_path": "build/decomp/delinks/src/graphics/graphics_sprite_config.o",
+      "base_path": "build/decomp/src/graphics/graphics_sprite_config.o",
+      "metadata": {
+        "complete": false,
+        "reverse_fn_order": false,
+        "source_path": "src/graphics/graphics_sprite_config.c",
+        "progress_categories": ["Game code"],
+        "auto_generated": false
+      }
+    },
+    {
+      "name": "src/graphics/graphics_sprite_group",
+      "target_path": "build/decomp/delinks/src/graphics/graphics_sprite_group.o",
+      "base_path": "build/decomp/src/graphics/graphics_sprite_group.o",
+      "metadata": {
+        "complete": false,
+        "reverse_fn_order": false,
+        "source_path": "src/graphics/graphics_sprite_group.c",
+        "progress_categories": ["Game code"],
+        "auto_generated": false
+      }
+    },
+    {
+      "name": "src/graphics/graphics_sprite_group_owner",
+      "target_path": "build/decomp/delinks/src/graphics/graphics_sprite_group_owner.o",
+      "base_path": "build/decomp/src/graphics/graphics_sprite_group_owner.o",
+      "metadata": {
+        "complete": false,
+        "reverse_fn_order": false,
+        "source_path": "src/graphics/graphics_sprite_group_owner.c",
+        "progress_categories": ["Game code"],
+        "auto_generated": false
+      }
+    },
+    {
+      "name": "src/graphics/graphics_sprite_renderer",
+      "target_path": "build/decomp/delinks/src/graphics/graphics_sprite_renderer.o",
+      "base_path": "build/decomp/src/graphics/graphics_sprite_renderer.o",
+      "metadata": {
+        "complete": false,
+        "reverse_fn_order": false,
+        "source_path": "src/graphics/graphics_sprite_renderer.c",
+        "progress_categories": ["Game code"],
+        "auto_generated": false
+      }
+    },
+    {
+      "name": "src/graphics/graphics_sprite_renderer_hw",
+      "target_path": "build/decomp/delinks/src/graphics/graphics_sprite_renderer_hw.o",
+      "base_path": "build/decomp/src/graphics/graphics_sprite_renderer_hw.o",
+      "metadata": {
+        "complete": false,
+        "reverse_fn_order": false,
+        "source_path": "src/graphics/graphics_sprite_renderer_hw.c",
+        "progress_categories": ["Game code"],
+        "auto_generated": false
+      }
+    },
+    {
+      "name": "src/graphics/graphics_sprite_renderer_accessors",
+      "target_path": "build/decomp/delinks/src/graphics/graphics_sprite_renderer_accessors.o",
+      "base_path": "build/decomp/src/graphics/graphics_sprite_renderer_accessors.o",
+      "metadata": {
+        "complete": false,
+        "reverse_fn_order": false,
+        "source_path": "src/graphics/graphics_sprite_renderer_accessors.c",
+        "progress_categories": ["Game code"],
+        "auto_generated": false
+      }
+    },
+    {
+      "name": "src/graphics/graphics_sprite_palette_upload",
+      "target_path": "build/decomp/delinks/src/graphics/graphics_sprite_palette_upload.o",
+      "base_path": "build/decomp/src/graphics/graphics_sprite_palette_upload.o",
+      "metadata": {
+        "complete": false,
+        "reverse_fn_order": false,
+        "source_path": "src/graphics/graphics_sprite_palette_upload.c",
+        "progress_categories": ["Game code"],
+        "auto_generated": false
+      }
+    },
+    {
+      "name": "src/graphics/graphics_sprite_text_printf",
+      "target_path": "build/decomp/delinks/src/graphics/graphics_sprite_text_printf.o",
+      "base_path": "build/decomp/src/graphics/graphics_sprite_text_printf.o",
+      "metadata": {
+        "complete": false,
+        "reverse_fn_order": false,
+        "source_path": "src/graphics/graphics_sprite_text_printf.c",
+        "progress_categories": ["Game code"],
+        "auto_generated": false
+      }
+    },
+    {
+      "name": "src/graphics/graphics_sprite_text_oam",
+      "target_path": "build/decomp/delinks/src/graphics/graphics_sprite_text_oam.o",
+      "base_path": "build/decomp/src/graphics/graphics_sprite_text_oam.o",
+      "metadata": {
+        "complete": false,
+        "reverse_fn_order": false,
+        "source_path": "src/graphics/graphics_sprite_text_oam.c",
+        "progress_categories": ["Game code"],
+        "auto_generated": false
+      }
+    },
+    {
+      "name": "src/graphics/graphics_sprite_font_lookup",
+      "target_path": "build/decomp/delinks/src/graphics/graphics_sprite_font_lookup.o",
+      "base_path": "build/decomp/src/graphics/graphics_sprite_font_lookup.o",
+      "metadata": {
+        "complete": false,
+        "reverse_fn_order": false,
+        "source_path": "src/graphics/graphics_sprite_font_lookup.c",
+        "progress_categories": ["Game code"],
+        "auto_generated": false
+      }
+    },
+    {
+      "name": "src/graphics/graphics_sprite_character_map",
+      "target_path": "build/decomp/delinks/src/graphics/graphics_sprite_character_map.o",
+      "base_path": "build/decomp/src/graphics/graphics_sprite_character_map.o",
+      "metadata": {
+        "complete": false,
+        "reverse_fn_order": false,
+        "source_path": "src/graphics/graphics_sprite_character_map.c",
+        "progress_categories": ["Game code"],
+        "auto_generated": false
+      }
+    },
+    {
+      "name": "src/graphics/graphics_sprite_number_format",
+      "target_path": "build/decomp/delinks/src/graphics/graphics_sprite_number_format.o",
+      "base_path": "build/decomp/src/graphics/graphics_sprite_number_format.o",
+      "metadata": {
+        "complete": false,
+        "reverse_fn_order": false,
+        "source_path": "src/graphics/graphics_sprite_number_format.c",
+        "progress_categories": ["Game code"],
+        "auto_generated": false
+      }
+    },
+    {
+      "name": "src/graphics/graphics_sprite_font_dispatch",
+      "target_path": "build/decomp/delinks/src/graphics/graphics_sprite_font_dispatch.o",
+      "base_path": "build/decomp/src/graphics/graphics_sprite_font_dispatch.o",
+      "metadata": {
+        "complete": false,
+        "reverse_fn_order": false,
+        "source_path": "src/graphics/graphics_sprite_font_dispatch.c",
+        "progress_categories": ["Game code"],
+        "auto_generated": false
+      }
+    },
+    {
+      "name": "src/graphics/graphics_sprite_text_layout",
+      "target_path": "build/decomp/delinks/src/graphics/graphics_sprite_text_layout.o",
+      "base_path": "build/decomp/src/graphics/graphics_sprite_text_layout.o",
+      "metadata": {
+        "complete": false,
+        "reverse_fn_order": false,
+        "source_path": "src/graphics/graphics_sprite_text_layout.c",
+        "progress_categories": ["Game code"],
+        "auto_generated": false
+      }
+    },
+    {
+      "name": "src/graphics/graphics_sprite_pool",
+      "target_path": "build/decomp/delinks/src/graphics/graphics_sprite_pool.o",
+      "base_path": "build/decomp/src/graphics/graphics_sprite_pool.o",
+      "metadata": {
+        "complete": false,
+        "reverse_fn_order": false,
+        "source_path": "src/graphics/graphics_sprite_pool.c",
+        "progress_categories": ["Game code"],
+        "auto_generated": false
+      }
+    },
+    {
+      "name": "src/graphics/graphics_sprite_oam",
+      "target_path": "build/decomp/delinks/src/graphics/graphics_sprite_oam.o",
+      "base_path": "build/decomp/src/graphics/graphics_sprite_oam.o",
+      "metadata": {
+        "complete": false,
+        "reverse_fn_order": false,
+        "source_path": "src/graphics/graphics_sprite_oam.c",
+        "progress_categories": ["Game code"],
+        "auto_generated": false
+      }
+    },
+    {
+      "name": "src/graphics/graphics_sprite_vram_binding",
+      "target_path": "build/decomp/delinks/src/graphics/graphics_sprite_vram_binding.o",
+      "base_path": "build/decomp/src/graphics/graphics_sprite_vram_binding.o",
+      "metadata": {
+        "complete": false,
+        "reverse_fn_order": false,
+        "source_path": "src/graphics/graphics_sprite_vram_binding.c",
+        "progress_categories": ["Game code"],
+        "auto_generated": false
+      }
+    },
+    {
+      "name": "src/graphics/graphics_sprite_indexed_release",
+      "target_path": "build/decomp/delinks/src/graphics/graphics_sprite_indexed_release.o",
+      "base_path": "build/decomp/src/graphics/graphics_sprite_indexed_release.o",
+      "metadata": {
+        "complete": false,
+        "reverse_fn_order": false,
+        "source_path": "src/graphics/graphics_sprite_indexed_release.c",
+        "progress_categories": ["Game code"],
+        "auto_generated": false
+      }
+    },
+    {
       "name": "_dsd_gap@main_18",
       "target_path": "build/decomp/delinks/_dsd_gap@main_18.o",
       "metadata": {

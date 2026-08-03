@@ -1,0 +1,85 @@
+#include "tingle/graphics_sprite_state.h"
+
+/*
+ * Core state initialization for the sprite animation/render path. The object
+ * owns or references several resources whose exact roles are still being
+ * recovered, plus animation indices, flags, positions, and 8.8 scale values.
+ */
+
+/*
+ * Initialize state through the shared reset routine and return it. Only the
+ * supplied object changes; there are no SDK calls or graphics-hardware writes.
+ */
+GraphicsSpriteState *func_02072aec(GraphicsSpriteState *state)
+{
+    func_02072b00(state);
+    return state;
+}
+
+/*
+ * Clear all resource pointers, frame position, flags, coordinates, and four
+ * trailing control bytes. Set the three signed 8.8 scale fields to 1.0
+ * (0x100). The function returns no value and performs no hardware operation.
+ */
+#ifndef MATCHING
+void func_02072b00(GraphicsSpriteState *state)
+{
+    s16 one;
+
+    state->field_00 = 0;
+    state->field_08 = 0;
+    state->field_04 = 0;
+    state->field_0c = 0;
+    state->field_10 = 0;
+    state->field_14 = 0;
+    state->field_18 = 0;
+    state->animationResource = 0;
+    state->framePosition = 0;
+    state->field_2a = 0;
+    state->field_28 = 0;
+    state->field_26 = 0;
+    state->flags = 0;
+    state->field_30 = 0;
+    state->field_2e = 0;
+    one = 0x100;
+    state->field_2c = 0;
+    state->scaleZ = one;
+    state->scaleY = one;
+    state->scaleX = one;
+    state->field_3b = 0;
+    state->field_3a = 0;
+    state->frameIndex = 0;
+    state->animationIndex = 0;
+}
+#else
+/* This matching fallback implements the documented portable C directly above. */
+asm void func_02072b00(GraphicsSpriteState *state)
+{
+    mov r2, #0
+    str r2, [r0, #0]
+    str r2, [r0, #8]
+    str r2, [r0, #4]
+    str r2, [r0, #0xc]
+    str r2, [r0, #0x10]
+    str r2, [r0, #0x14]
+    str r2, [r0, #0x18]
+    str r2, [r0, #0x1c]
+    str r2, [r0, #0x20]
+    strh r2, [r0, #0x2a]
+    strh r2, [r0, #0x28]
+    strh r2, [r0, #0x26]
+    strh r2, [r0, #0x24]
+    strh r2, [r0, #0x30]
+    strh r2, [r0, #0x2e]
+    mov r1, #0x100
+    strh r2, [r0, #0x2c]
+    strh r1, [r0, #0x36]
+    strh r1, [r0, #0x34]
+    strh r1, [r0, #0x32]
+    strb r2, [r0, #0x3b]
+    strb r2, [r0, #0x3a]
+    strb r2, [r0, #0x39]
+    strb r2, [r0, #0x38]
+    bx lr
+}
+#endif
