@@ -20,21 +20,18 @@ The compiler's harmless missing-`MWCIncludes` warning and the linker's
 missing-`MWLibraries` warning are expected because the project supplies its
 include path and object inputs explicitly.
 
-## Metrowerks compiler result
+## Code-generation profiles and traps
 
-The exact code-generation flags are:
+The MT19937 source uses:
 
 ```text
 -proc arm946e -O4 -inline on,noauto -ipa file -interworking -Cpp_exceptions off -lang c
 ```
 
-These flags compile `src/system/mt19937.c`. The `-ipa file` option is
-essential. With the recovered reference-style C,
-the same command without it reaches `94.454544%` for `.text`; adding it makes
-all four functions byte-exact. `-O3` and `-O4` generate the same non-IPA code.
-The compiler default and explicit `-opt space` are indistinguishable for this
-unit, while `-opt speed` produces different code and is not the retail setting
-for this file.
+The `-ipa file` option is essential for the recovered reference-style C;
+without it MWCC uses a different instruction schedule. `-O3` and `-O4`
+generate the same non-IPA code. The compiler default and explicit `-opt space`
+are indistinguishable here, while `-opt speed` produces different code.
 
 `src/system/input.c` uses `-O3` and defines `MATCHING`:
 
@@ -47,8 +44,8 @@ shaped to reproduce the retail register allocation for `UpdateKeyState`, so
 the readable C implementation is retained under `#ifndef MATCHING` and the
 matching build assembles `asm/system/input_update.s` with MWASMARM 1.0 build
 20. A partial MWLDARM link combines both inputs into the replacement object.
-Its standalone objdiff score is `99.444440%` because that partial link changes
-relocation associations; the final linked ARM9 bytes are exact.
+That partial link changes relocation associations, so its standalone objdiff
+result can differ even when the final linked ARM9 bytes match.
 
 `src/system/debug_menu.c` uses:
 
@@ -56,72 +53,34 @@ relocation associations; the final linked ARM9 bytes are exact.
 -proc arm946e -O4 -inline off -ipa function -interworking -lang c++
 ```
 
-The constructor, destructor variants, 964-byte update, factory, 1,100-byte
-`.text`, and 12-byte `.data` vtable are all byte-exact. C++ mode is required to
-reproduce the original deleting-expression code generation.
+C++ mode is required to reproduce the original deleting-expression code
+generation in the update routine.
 
 `src/system/game_work.c` uses `-O4`, disables inlining, and enables per-file
-IPA. Three functions compile directly to their retail bytes. The readable
-`GameWork_Init` C differs only in one scratch-register allocation, so the
-matching definition uses an inline assembly fallback while retaining the C for
-portable builds. Its backward branches are emitted as exact ARM words because
-MWCC otherwise adds fallthrough branches to labels inside the inline assembly
-function. The final linked 956-byte text range, 40-byte data block, and four-byte
-BSS slot are exact.
+IPA. The readable `GameWork_Init` C differs in one scratch-register allocation,
+so the matching definition uses an inline-assembly fallback while retaining the
+C for portable builds. Its backward branches are emitted as exact ARM words
+because MWCC otherwise adds fallthrough branches to labels inside the inline
+assembly function.
 
 The remaining NitroSDK make flags for instruction set, debug information,
 diagnostics, character signedness, and language compatibility do not alter the
 owned bytes. The checked-in build keeps the smallest proven code-generation
-set.
-
-## Target slices
-
-`config/arm9/delinks.txt` assigns these original sections to
-`src/system/mt19937.c`:
-
-| Section | Address range | Size |
-| --- | --- | ---: |
-| `.text` | `0x0200234C-0x02002638` | `0x2EC` |
-| `.rodata` | `0x020C35F0-0x020C3600` | `0x10` |
-| `.data` | `0x020D3D10-0x020D3D1C` | `0x0C` |
-| `.bss` | `0x020F43EC-0x020F4DAC` | `0x9C0` |
-
-dsd turns those noncontiguous slices and their relocations into
-`build/decomp/delinks/src/system/mt19937.o`. Ninja also extracts raw code under
-`build/reference` and checks these hashes:
-
-| Slice | Range | SHA-256 |
-| --- | --- | --- |
-| Entire text | `0x0200234C-0x02002638` | `BB847ACB31A6B5F24FEAC97F6DE603E640B0BD4ED1C5810881D0FF3B0690C490` |
-| `init_genrand` | `0x0200234C-0x020023A0` | `5C0F6F4135F440181ECA364E2767AD999F348155291FC3E49546D88820ACDF9D` |
-| `init_by_array` | `0x020023A0-0x020024B0` | `5F441DF5770B57B1E589A228BEF01463349A6C21FA3EF81530FEFB44A9569068` |
-| `genrand_int32` | `0x020024B0-0x02002608` | `DA52559E9777E8639125D2EA663B661063731F840D0949496B96D50BF015BF29` |
-| `InitRandom` | `0x02002608-0x02002638` | `CA31A898643247A18E9478E592C819FE0446BF3B063F30211BB93DA7CDFF17E5` |
-
-The input/system unit is the contiguous `.text` range
-`0x02000ED8-0x0200113C` (`0x264` bytes). Its original relocation-aware object
-is `build/decomp/delinks/src/system/input.o`; the reconstructed object is
-`build/decomp/src/system/input.o`.
+set. Exact source-to-ROM ownership ranges live in `config/arm9/delinks.txt`,
+and generated comparison details live under `build/reports`.
 
 ## Commands and artifacts
 
 ```powershell
 .\tools\configure.ps1
-ninja mt19937  # target delink object and reconstructed object
-ninja input    # C/assembly input replacement plus object-level report
-ninja debug_menu  # complete debug-menu unit and exact gate
-ninja game_work   # global game-work unit and object report
-ninja archive  # MWLDARM static-library smoke test
-ninja match    # both object diffs, raw slices, archive, and MT exactness gate
+ninja match    # compile replacements and run configured object-level gates
 ninja rom      # full source-backed link, module verification, and NDS rebuild
 ```
 
-Machine-readable comparisons are `build/reports/mt19937.json`,
-`build/reports/input.json`, `build/reports/debug_menu.json`, and
-`build/reports/game_work.json`; their concise summaries have matching `.txt`
-names. All build artifacts are ignored. The game-work object report is
-non-authoritative for its hand-encoded branch mapping and aggregate-data
-relocation; `ninja rom` verifies the linked bytes.
+Machine-readable comparisons and their concise text summaries are generated
+under `build/reports`. All build artifacts are ignored. Reports for partially
+linked objects or hand-encoded inline-assembly branches may contain metadata
+differences; `ninja rom` verifies the authoritative linked bytes.
 
 `objdiff.json` is generated from the dsd configuration and covers the full
 ARM9/overlay layout. It includes all reconstructed units and invokes
@@ -131,9 +90,8 @@ ARM9/overlay layout. It includes all reconstructed units and invokes
 
 `ninja rom` generates `build/decomp/arm9.lcf` and the original object response
 file with dsd. `tools/prepare_link_objects.ps1` then applies the explicit
-entries in `config/arm9/link_replacements.txt`. The current manifest replaces
-the original MT19937, input, debug-menu, and game-work delink objects with their
-reconstructed counterparts.
+entries in `config/arm9/link_replacements.txt`, replacing selected original
+delink objects with their reconstructed counterparts.
 
 MWLDARM links the full module graph with `-nodeadstrip`; this is required to
 retain retail code that has no statically visible references. Before packing,

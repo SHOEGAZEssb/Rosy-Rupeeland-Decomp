@@ -78,5 +78,5 @@ and calls every non-null entry. Its behavior is the static-initializer runner,
 but the exact runtime-library symbol spelling remains unconfirmed, so the
 address-based name is retained for now.
 
-The inferred input-state layout and first readable C implementation are
-documented in [system.md](system.md).
+The inferred input-state layout and its update behavior are documented in
+[system.md](system.md).

@@ -1,4 +1,4 @@
-# Project status
+# Project technical baseline
 
 ## Long-term objective
 
@@ -27,10 +27,9 @@ current barrier register and documentation format are in
 - `tools/patch_rom_header.py` restores the retail secure-area CRC and computes
   a valid header CRC. The unmodified `build/tingle.original.nds` then matches
   the target SHA-256.
-- `ninja rom` now performs a full Metrowerks link with the reconstructed
-  MT19937, input, debug-menu, and game-work objects replacing their retail
-  slices. dsd
-  verifies ARM9, ITCM, DTCM, and all 647 overlays, and the resulting
+- `ninja rom` performs a full Metrowerks link with configured reconstructed
+  objects replacing their retail slices. dsd verifies ARM9, ITCM, DTCM, and
+  all 647 overlays, and the resulting
   `build/tingle.recompiled.nds` matches the retail SHA-256 exactly.
 
 ## Code layout
@@ -45,81 +44,9 @@ current barrier register and documentation format are in
 - Nitro filesystem entries: 819
 - SDK version word reported by the ROM: `0x03027530`
 
-The matching toolchain is MWCCARM 3.0 build 114 and MWLDARM 2.0 build 82. The
-first exact game-owned unit uses:
-
-```text
--proc arm946e -O4 -inline on,noauto -ipa file -interworking -Cpp_exceptions off -lang c
-```
-
-See [build.md](build.md) for local configuration, the comparison workflow, and
-the optimization variants tested.
-
-## Matching progress
-
-`src/system/mt19937.c` is isolated as a relocation-aware dsd object and is
-byte-exact:
-
-| Item | Target size | Match |
-| --- | ---: | ---: |
-| `.text` | 748 bytes | `100.000000%` |
-| `.rodata` | 16 bytes | `100.000000%` |
-| `.data` | 12 bytes | `100.000000%` |
-| `.bss` | 2,496 bytes | `100.000000%` |
-| `init_genrand` | 84 bytes | `100.000000%` |
-| `init_by_array` | 272 bytes | `100.000000%` |
-| `genrand_int32` | 344 bytes | `100.000000%` |
-| `InitRandom` | 48 bytes | `100.000000%` |
-
-`src/system/input.c` contains readable reconstructed C for the first three
-ARM9 input/system functions. The matching build uses exact assembly for the
-compiler-resistant `UpdateKeyState` function:
-
-| Item | Address | Target size | Match |
-| --- | --- | ---: | ---: |
-| `PAD_Read` | `0x02000ED8` | 56 bytes | `100.000000%` |
-| `UpdateSystemFrame` | `0x02000F10` | 340 bytes | exact after final link |
-| `UpdateKeyState` | `0x02001064` | 216 bytes | `100.000000%` linked bytes |
-| `.text` | `0x02000ED8-0x0200113C` | 612 bytes | `100.000000%` linked bytes |
-
-The partial-linked replacement reports `99.444440%` in objdiff because of
-relocation-association metadata. The full ARM9 link resolves those relocations;
-dsd verifies the resulting module byte-for-byte.
-
-`ninja match` rebuilds all reconstructed units and the Metrowerks archive. It
-fails if an exact gated result regresses. The final ROM check is the input
-unit's authoritative exactness gate.
-
-The complete debug menu is a third reconstructed unit:
-
-| Item | Address | Target size | Match |
-| --- | --- | ---: | ---: |
-| `DebugMenu_Init` | `0x0200113C` | 40 bytes | `100.000000%` |
-| `DebugMenu_Destroy` | `0x02001164` | 20 bytes | `100.000000%` |
-| `DebugMenu_DestroyAndFree` | `0x02001178` | 28 bytes | `100.000000%` |
-| `DebugMenu_Update` | `0x02001194` | 964 bytes | `100.000000%` |
-| `DebugMenu_Create` | `0x02001558` | 48 bytes | `100.000000%` |
-| `gDebugMenuVTable` | `0x020D3BC4` | 12 bytes | `100.000000%` |
-
-Its `.text` aggregate is `100.000000%`, and `ninja match` gates the complete
-unit. See
-[debug_menu.md](debug_menu.md) for the class layout and full behavior.
-
-The global game-work singleton is a fourth reconstructed unit:
-
-| Item | Address | Target size | Linked result |
-| --- | --- | ---: | ---: |
-| `GameWork_Create` | `0x02001588` | 64 bytes | exact |
-| `GameWork_Reset` | `0x020015C8` | 24 bytes | exact |
-| `GameWork_Init` | `0x020015E0` | 788 bytes | exact |
-| `GameWork_ClearPointerBank` | `0x020018F4` | 80 bytes | exact |
-| initial data | `0x020D3C4C` | 40 bytes | exact |
-| `gGameWork` | `0x020F3780` | 4 bytes | exact |
-
-The matching-only initializer fallback and complete typed C reconstruction are
-described in [game_work.md](game_work.md). The final ARM9 and ROM checks are the
-authoritative gates because objdiff treats the fallback's encoded branches and
-an aggregate-data relocation as metadata differences.
+The matching toolchain is MWCCARM 3.0 build 114 and MWLDARM 2.0 build 82. See
+[build.md](build.md) for local configuration, the comparison workflow, and
+compiler-sensitive code-generation profiles.
 
 ## Confirmed Nitro SDK symbols
 

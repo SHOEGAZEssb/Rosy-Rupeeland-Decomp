@@ -94,6 +94,29 @@
       }
     },
     {
+      "name": "src/system/game_flags",
+      "target_path": "build/decomp/delinks/src/system/game_flags.o",
+      "base_path": "build/decomp/src/system/game_flags.o",
+      "metadata": {
+        "complete": false,
+        "reverse_fn_order": false,
+        "source_path": "src/system/game_flags.c",
+        "progress_categories": [
+          "Game code"
+        ],
+        "auto_generated": false
+      }
+    },
+    {
+      "name": "_dsd_gap@main_3",
+      "target_path": "build/decomp/delinks/_dsd_gap@main_3.o",
+      "metadata": {
+        "complete": false,
+        "reverse_fn_order": false,
+        "auto_generated": true
+      }
+    },
+    {
       "name": "src/system/mt19937",
       "target_path": "build/decomp/delinks/src/system/mt19937.o",
       "base_path": "build/decomp/src/system/mt19937.o",

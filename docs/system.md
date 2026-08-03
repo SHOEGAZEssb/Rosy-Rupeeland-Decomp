@@ -18,8 +18,8 @@ records. Each `PadState` is `0x16` bytes:
 `UpdateKeyState` at `0x02001064` updates one of these records. The main loop
 uses state 0 for physical controls and state 1 for filtered or remapped game
 input. Its readable reconstructed implementation is in `src/system/input.c`;
-the matching build uses `asm/system/input_update.s` to reproduce its exact
-216 retail bytes where MWCCARM's register allocation differs.
+the matching build uses `asm/system/input_update.s` where MWCCARM's register
+allocation differs.
 
 ## Per-frame system update
 
@@ -34,33 +34,19 @@ the matching build uses `asm/system/input_update.s` to reproduce its exact
 
 The sleep wake-up mask is `0x0C`, which combines cover-open and card events.
 
-## Input matching progress
+## Matching trap
 
-The source unit covers the contiguous ARM9 range
-`0x02000ED8-0x0200113C` and is compiled with the same proven Metrowerks flags
-as MT19937:
-
-| Function | Size | Match |
-| --- | ---: | ---: |
-| `PAD_Read` | 56 bytes | `100.000000%` |
-| `UpdateSystemFrame` | 340 bytes | exact after final link |
-| `UpdateKeyState` | 216 bytes | `100.000000%` linked bytes |
-
-The input unit's final linked `.text` is byte-exact. Its partial-linked object
-reports `99.444440%` because objdiff compares relocation associations as well
-as bytes; `ninja rom` resolves them and verifies the complete ARM9 module.
+The matching build combines compiler output with the assembly implementation
+of `UpdateKeyState` through a partial MWLDARM link. Objdiff compares relocation
+associations as well as instruction bytes, so that intermediate object can
+report differences which disappear in the final ARM9 link. Use `ninja rom` as
+the authoritative check for this unit.
 
 ## Random-number generator
 
 The block at `0x0200234C-0x02002638` is the standard 32-bit MT19937 reference
-implementation:
-
-| Address range | Symbol | Match |
-| --- | --- | ---: |
-| `0x0200234C-0x020023A0` | `init_genrand` | `100.000000%` |
-| `0x020023A0-0x020024B0` | `init_by_array` | `100.000000%` |
-| `0x020024B0-0x02002608` | `genrand_int32` | `100.000000%` |
-| `0x02002608-0x02002638` | `InitRandom` | `100.000000%` |
+implementation, exposing `init_genrand`, `init_by_array`, `genrand_int32`, and
+the game's `InitRandom` wrapper.
 
 The state contains 624 words at `0x020F43EC`; its index is initialized to 625
 at `0x020D3D10`, followed by the two-word `mag01` table at `0x020D3D14`.

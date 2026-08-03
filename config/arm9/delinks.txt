@@ -28,3 +28,7 @@ src/system/game_work.c:
     .text       start:0x02001588 end:0x02001944
     .data       start:0x020d3c4c end:0x020d3c74
     .bss        start:0x020f3780 end:0x020f3784
+
+src/system/game_flags.c:
+    categories: Game code
+    .text       start:0x02001944 end:0x020019d0

@@ -11,26 +11,7 @@ The initializer copies the UTF-16 default name `デバッグ` ("debug") into the
 state. This name and the `GMWK` tag occupy the 40-byte data block at
 `0x020D3C4C-0x020D3C74`.
 
-## Reconstructed unit
-
-`src/system/game_work.c` and `include/tingle/game_work.h` own:
-
-| Address | Symbol | Size | Linked result |
-| --- | --- | ---: | ---: |
-| `0x02001588` | `GameWork_Create` | 64 bytes | exact |
-| `0x020015C8` | `GameWork_Reset` | 24 bytes | exact |
-| `0x020015E0` | `GameWork_Init` | 788 bytes | exact |
-| `0x020018F4` | `GameWork_ClearPointerBank` | 80 bytes | exact |
-| `0x020D3C4C` | initial name and heap tag | 40 bytes | exact |
-| `0x020F3780` | `gGameWork` | 4 bytes | exact |
-
-The complete 956-byte text range is exact after the final link. The readable C
-for `GameWork_Init` reaches the retail control flow, offsets, and instruction
-schedule but differs in one `r2`/`r12` allocation. As with `UpdateKeyState`, the
-matching build retains the C and selects an exact assembly fallback. Objdiff
-classifies the fallback's hand-encoded backward branches as data and reports a
-lower object score even though `ninja rom` verifies the linked range and the
-complete ROM byte-for-byte.
+The singleton's bit-level API is described in [game_flags.md](game_flags.md).
 
 ## Known layout
 
@@ -49,8 +30,21 @@ direct evidence. Important fixed-capacity areas include:
 | `0x5E14` | 30 halfword pairs | cleared |
 
 Offsets without corroborated behavior retain `unknown` or value-oriented names.
-Later users should refine those names rather than treating this first layout as
-semantic proof.
+Later users should refine those names rather than treating this initial layout
+as semantic proof.
+
+## Matching trap
+
+The readable C for `GameWork_Init` reproduces the retail control flow and
+offsets but causes MWCC to exchange the `r2` and `r12` scratch registers. The
+matching build therefore retains that C for portable builds and selects an
+inline-assembly fallback for the retail build.
+
+MWCC adds fallthrough branches to labels inside an inline-assembly function,
+so backward branches in the fallback are emitted as exact ARM words. Objdiff
+classifies those words as data and also associates an aggregate-data relocation
+differently. The final ARM9 link performed by `ninja rom`, rather than the
+standalone object score, is authoritative for this function.
 
 ## Native-port boundaries
 

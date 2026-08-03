@@ -93,5 +93,8 @@ void GameWork_Create(void);
 void GameWork_Reset(void);
 void GameWork_Init(GameWork *work);
 void GameWork_ClearPointerBank(GameWork *work, int bank);
+void GameWork_SetFlag(GameWork *work, int flag);
+int GameWork_TestFlag(GameWork *work, int flag);
+void GameWork_ClearFlag(GameWork *work, int flag);
 
 #endif

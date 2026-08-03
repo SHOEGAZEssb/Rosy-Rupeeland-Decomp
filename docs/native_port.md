@@ -73,6 +73,10 @@ The first detailed memory/runtime contract is the game-work allocator and
 lifetime requirements are identified; the embedded state initialized through
 `0x02027F94`/`0x02027BD4` remains unmapped.
 
+The adjacent [game-work flag accessors](game_flags.md) are already portable C
+and require no platform adapter. Their only external contract is a valid
+`GameWork` object and an unchecked flag index in the range `0-3071`.
+
 This table is an index, not a substitute for module-level contracts. Update it
 as barriers are discovered or eliminated, and link detailed subsystem notes
 from the relevant area.

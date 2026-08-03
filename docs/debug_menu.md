@@ -17,38 +17,22 @@ followed by a signed selection index:
 | `0x04` | `0x20` | common scene fields |
 | `0x24` | 4 | selected debug-menu entry |
 
-## Reconstructed unit
-
-`src/system/debug_menu.c` owns the complete menu code at
-`0x0200113C-0x02001588` and the three-entry vtable at
-`0x020D3BC4-0x020D3BD0`:
-
-| Address | Symbol | Size | Match |
-| --- | --- | ---: | ---: |
-| `0x0200113C` | `DebugMenu_Init` | 40 bytes | `100.000000%` |
-| `0x02001164` | `DebugMenu_Destroy` | 20 bytes | `100.000000%` |
-| `0x02001178` | `DebugMenu_DestroyAndFree` | 28 bytes | `100.000000%` |
-| `0x02001194` | `DebugMenu_Update` | 964 bytes | `100.000000%` |
-| `0x02001558` | `DebugMenu_Create` | 48 bytes | `100.000000%` |
-| `0x020D3BC4` | `gDebugMenuVTable` | 12 bytes | `100.000000%` |
-
-The complete 1,100-byte `.text` section and `.data` are exact. `ninja match`
-enforces exact results for every function and the vtable.
-
 ## Update behavior
 
 `DebugMenu_Update` draws the build date, timezone note, and SDK version;
 changes the selection with newly pressed directional buttons; destroys the
 menu when A is pressed; and allocates and initializes the selected test scene.
-All 13 switch entries, including the no-op entry and the early-return entry,
-are reconstructed.
+The switch has 13 entries, including one no-op entry and one entry that returns
+immediately after launching its scene.
 
-The best matching flags for this unit are:
+## Matching trap
+
+This source requires C++ mode and per-function IPA:
 
 ```text
 -proc arm946e -O4 -inline off -ipa function -interworking -lang c++
 ```
 
-The original update uses a C++ delete expression after the virtual destructor
-call. Reconstructing that expression is what produces the exact retail
-instruction scheduling.
+The update destroys the menu through a C++ delete expression after the virtual
+destructor call. Expressing it as an ordinary C-style destructor/free sequence
+changes the compiler's instruction scheduling.
