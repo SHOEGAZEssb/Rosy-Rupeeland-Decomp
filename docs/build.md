@@ -47,6 +47,13 @@ matching build assembles `asm/system/input_update.s` with MWASMARM 1.0 build
 That partial link changes relocation associations, so its standalone objdiff
 result can differ even when the final linked ARM9 bytes match.
 
+Objdiff has a similar edge case for `func_020720e8`: the delinked object's
+single `.text` section makes the call to the immediately following
+`func_02072140` look like a branch back into the caller after applying the
+`R_ARM_PC24` addend. The compiled instruction and relocation are correct, and
+the final ARM9 and ROM match exactly, but the standalone function score is
+`99.772730%`. Keep the ROM verification as the exact gate for this unit.
+
 `src/system/debug_menu.c` uses:
 
 ```text
@@ -62,6 +69,11 @@ so the matching definition uses an inline-assembly fallback while retaining the
 C for portable builds. Its backward branches are emitted as exact ARM words
 because MWCC otherwise adds fallthrough branches to labels inside the inline
 assembly function.
+
+`func_02072234` uses the same hand-encoded-branch technique. Objdiff displays
+its exact `0x1AFFFFF1` `bne` word as data rather than an instruction, leaving
+that function's standalone score at `98.888885%`; the final ARM9 and ROM remain
+the exact gate for the unit.
 
 The complete cross-module inventory of matching fallbacks and C++ lifetime
 forms, including the behavior a host implementation must preserve, is in

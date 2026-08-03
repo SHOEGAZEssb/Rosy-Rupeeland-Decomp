@@ -135,3 +135,11 @@ src/graphics/graphics_resource_set.c:
 src/graphics/graphics_resource_set_ops.c:
     categories: Game code
     .text       start:0x02072000 end:0x020720c0
+
+src/graphics/graphics_resource_set_variant.c:
+    categories: Game code
+    .text       start:0x020720c0 end:0x02072188
+
+src/graphics/graphics_vram_allocator.c:
+    categories: Game code
+    .text       start:0x02072188 end:0x020723e0

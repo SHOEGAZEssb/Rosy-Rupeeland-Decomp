@@ -33,6 +33,12 @@ void func_02072048(GraphicsResourceSet *set, s32 value0, s32 value1);
 void GraphicsResourceSet_Apply(GraphicsResourceSet *set, s32 value0,
                                s32 value1);
 
+void func_020720c0(GraphicsResourceSet *set);
+GraphicsResourceSet *func_020720d4(GraphicsResourceSet *set);
+void func_020720e8(GraphicsResourceSet *set, void *archive, u32 resource0Id,
+                   u32 resource1Id, u32 resource2Id);
+void func_02072140(GraphicsResourceSet *set);
+
 #ifdef __cplusplus
 }
 #endif

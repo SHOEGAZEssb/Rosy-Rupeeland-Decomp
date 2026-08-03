@@ -506,6 +506,34 @@
       }
     },
     {
+      "name": "src/graphics/graphics_resource_set_variant",
+      "target_path": "build/decomp/delinks/src/graphics/graphics_resource_set_variant.o",
+      "base_path": "build/decomp/src/graphics/graphics_resource_set_variant.o",
+      "metadata": {
+        "complete": false,
+        "reverse_fn_order": false,
+        "source_path": "src/graphics/graphics_resource_set_variant.c",
+        "progress_categories": [
+          "Game code"
+        ],
+        "auto_generated": false
+      }
+    },
+    {
+      "name": "src/graphics/graphics_vram_allocator",
+      "target_path": "build/decomp/delinks/src/graphics/graphics_vram_allocator.o",
+      "base_path": "build/decomp/src/graphics/graphics_vram_allocator.o",
+      "metadata": {
+        "complete": false,
+        "reverse_fn_order": false,
+        "source_path": "src/graphics/graphics_vram_allocator.c",
+        "progress_categories": [
+          "Game code"
+        ],
+        "auto_generated": false
+      }
+    },
+    {
       "name": "_dsd_gap@main_18",
       "target_path": "build/decomp/delinks/_dsd_gap@main_18.o",
       "metadata": {
