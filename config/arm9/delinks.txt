@@ -29,6 +29,10 @@ src/system/game_work.c:
     .data       start:0x020d3c4c end:0x020d3c74
     .bss        start:0x020f3780 end:0x020f3784
 
+src/system/frame_task_list.c:
+    categories: Game code
+    .bss        start:0x020f3790 end:0x020f37a0
+
 src/system/game_flags.c:
     categories: Game code
     .text       start:0x02001944 end:0x020019d0
@@ -56,3 +60,62 @@ src/system/scene.c:
 src/system/scene_touch.c:
     categories: Game code
     .text       start:0x02003298 end:0x02003484
+
+src/system/touch_panel.c:
+    categories: Game code
+    .text       start:0x02003484 end:0x020037bc
+    .data       start:0x020d3df8 end:0x020d3e00
+
+src/system/graphics_system.c:
+    categories: Game code
+    .text       start:0x020037bc end:0x02003964
+    .data       start:0x020d3e14 end:0x020d3e2c
+
+src/system/frame_task.c:
+    categories: Game code
+    .text       start:0x02003964 end:0x02003b9c
+
+src/system/palette_buffer.c:
+    categories: Game code
+    .text       start:0x02003b9c end:0x02003e14
+
+src/system/frame_task_tags.c:
+    categories: Game code
+    .data       start:0x020d3e2c end:0x020d3e3c
+
+asm/system/palette_buffer_data.s:
+    categories: Game code
+    .data       start:0x020d3ecc end:0x020d3f34
+
+src/system/thread.c:
+    categories: Game code
+    .text       start:0x02003e44 end:0x02003f48
+
+asm/system/thread_data.s:
+    categories: Game code
+    .data       start:0x020d3f34 end:0x020d3f60
+
+src/system/bg_scroll.c:
+    categories: Game code
+    .text       start:0x02003f48 end:0x02004224
+    .bss        start:0x02105270 end:0x021052b4
+
+src/system/graphics_resources.c:
+    categories: Game code
+    .text       start:0x02004224 end:0x02004314
+
+src/system/graphics_display.c:
+    categories: Game code
+    .text       start:0x02004314 end:0x02004424
+
+src/system/error_display.c:
+    categories: Game code
+    .text       start:0x02004424 end:0x020044d8
+
+src/system/checked_fs.c:
+    categories: Game code
+    .text       start:0x020044d8 end:0x02004688
+
+src/system/game_string.c:
+    categories: Game code
+    .text       start:0x02004688 end:0x020049b0

@@ -9,6 +9,17 @@ game_work_io_cflags = -proc arm946e -O4 -inline off -ipa file -interworking -Cpp
 game_phase_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -lang c++
 scene_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -DMATCHING -lang c++
 scene_touch_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -DMATCHING -lang c++
+touch_panel_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -DMATCHING -lang c++
+frame_task_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -DMATCHING -lang c++
+graphics_system_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -DMATCHING -lang c++
+palette_buffer_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -DMATCHING -lang c++
+thread_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -DMATCHING -lang c++
+bg_scroll_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -DMATCHING -lang c++
+graphics_resources_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -DMATCHING -lang c++
+graphics_display_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -DMATCHING -lang c++
+error_display_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -DMATCHING -lang c++
+checked_fs_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -DMATCHING -lang c++
+game_string_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -DMATCHING -lang c++
 
 rule mwccarm
   command = "$mwccarm" $cflags -i "$repo_root/include" -c $source -o $out
@@ -60,7 +71,7 @@ rule match_report
   command = "$python" tools/report_objdiff.py $report_json $out $report_args
   description = MATCH $out
 
-build build/decomp/delinks/src/system/mt19937.o | build/decomp/delinks/src/system/input.o build/decomp/delinks/src/system/debug_menu.o build/decomp/delinks/src/system/game_work.o build/decomp/delinks/src/system/game_flags.o build/decomp/delinks/src/system/game_work_io.o build/decomp/delinks/src/system/game_phase.o build/decomp/delinks/src/system/scene_touch_data.o build/decomp/delinks/src/system/scene.o build/decomp/delinks/src/system/scene_touch.o: dsd_delink config/arm9/config.yaml config/arm9/delinks.txt config/arm9/symbols.txt config/arm9/relocs.txt | build/rom/arm9/arm9.bin
+build build/decomp/delinks/src/system/mt19937.o | build/decomp/delinks/src/system/input.o build/decomp/delinks/src/system/debug_menu.o build/decomp/delinks/src/system/game_work.o build/decomp/delinks/src/system/frame_task_list.o build/decomp/delinks/src/system/game_flags.o build/decomp/delinks/src/system/game_work_io.o build/decomp/delinks/src/system/game_phase.o build/decomp/delinks/src/system/scene_touch_data.o build/decomp/delinks/src/system/scene.o build/decomp/delinks/src/system/scene_touch.o build/decomp/delinks/src/system/touch_panel.o build/decomp/delinks/src/system/graphics_system.o build/decomp/delinks/src/system/frame_task.o build/decomp/delinks/src/system/frame_task_tags.o build/decomp/delinks/src/system/palette_buffer.o build/decomp/delinks/asm/system/palette_buffer_data.o build/decomp/delinks/src/system/thread.o build/decomp/delinks/asm/system/thread_data.o build/decomp/delinks/src/system/bg_scroll.o build/decomp/delinks/src/system/graphics_resources.o build/decomp/delinks/src/system/graphics_display.o build/decomp/delinks/src/system/error_display.o build/decomp/delinks/src/system/checked_fs.o build/decomp/delinks/src/system/game_string.o: dsd_delink config/arm9/config.yaml config/arm9/delinks.txt config/arm9/symbols.txt config/arm9/relocs.txt | build/rom/arm9/arm9.bin
 
 build build/decomp/src/system/mt19937.o: mwccarm src/system/mt19937.c | include/tingle/random.h include/tingle/types.h
   source = src/system/mt19937.c
@@ -94,7 +105,7 @@ build build/decomp/src/system/game_phase.o: mwccarm src/system/game_phase.c | in
   source = src/system/game_phase.c
   cflags = $game_phase_cflags
 
-build build/decomp/src/system/scene.o: mwccarm src/system/scene.c | include/tingle/scene.h include/tingle/types.h
+build build/decomp/src/system/scene.o: mwccarm src/system/scene.c | include/tingle/scene.h include/tingle/frame_task.h include/tingle/types.h
   source = src/system/scene.c
   cflags = $scene_cflags
 
@@ -106,13 +117,69 @@ build build/decomp/src/system/scene_touch.o: mwccarm src/system/scene_touch.c | 
   source = src/system/scene_touch.c
   cflags = $scene_touch_cflags
 
-build build/decomp/lib/tingle.a: mwldarm_archive build/decomp/src/system/mt19937.o build/decomp/src/system/input.o build/decomp/src/system/debug_menu.o build/decomp/src/system/game_work.o build/decomp/src/system/game_flags.o build/decomp/src/system/game_work_io.o build/decomp/src/system/game_phase.o build/decomp/src/system/scene_touch_data.o build/decomp/src/system/scene.o build/decomp/src/system/scene_touch.o
+build build/decomp/src/system/touch_panel.o: mwccarm src/system/touch_panel.c | include/tingle/touch_panel.h include/tingle/scene_touch.h include/tingle/scene.h include/tingle/game_work.h include/tingle/types.h
+  source = src/system/touch_panel.c
+  cflags = $touch_panel_cflags
+
+build build/decomp/src/system/graphics_system.o: mwccarm src/system/graphics_system.c | include/tingle/graphics_system.h include/tingle/types.h
+  source = src/system/graphics_system.c
+  cflags = $graphics_system_cflags
+
+build build/decomp/src/system/palette_buffer.o: mwccarm src/system/palette_buffer.c | include/tingle/palette_buffer.h include/tingle/types.h
+  source = src/system/palette_buffer.c
+  cflags = $palette_buffer_cflags
+
+build build/decomp/asm/system/palette_buffer_data.o: mwasmarm asm/system/palette_buffer_data.s
+
+build build/decomp/src/system/thread.o: mwccarm src/system/thread.c | include/tingle/thread.h include/tingle/types.h
+  source = src/system/thread.c
+  cflags = $thread_cflags
+
+build build/decomp/asm/system/thread_data.o: mwasmarm asm/system/thread_data.s
+
+build build/decomp/src/system/bg_scroll.o: mwccarm src/system/bg_scroll.c | include/tingle/bg_scroll.h include/tingle/types.h
+  source = src/system/bg_scroll.c
+  cflags = $bg_scroll_cflags
+
+build build/decomp/src/system/graphics_resources.o: mwccarm src/system/graphics_resources.c | include/tingle/graphics_resources.h include/tingle/types.h
+  source = src/system/graphics_resources.c
+  cflags = $graphics_resources_cflags
+
+build build/decomp/src/system/graphics_display.o: mwccarm src/system/graphics_display.c | include/tingle/graphics_display.h include/tingle/graphics_resources.h include/tingle/types.h
+  source = src/system/graphics_display.c
+  cflags = $graphics_display_cflags
+
+build build/decomp/src/system/error_display.o: mwccarm src/system/error_display.c | include/tingle/error_display.h include/tingle/graphics_display.h include/tingle/types.h
+  source = src/system/error_display.c
+  cflags = $error_display_cflags
+
+build build/decomp/src/system/checked_fs.o: mwccarm src/system/checked_fs.c | include/tingle/checked_fs.h include/tingle/error_display.h include/tingle/system.h include/tingle/types.h
+  source = src/system/checked_fs.c
+  cflags = $checked_fs_cflags
+
+build build/decomp/src/system/game_string.o: mwccarm src/system/game_string.c | include/tingle/game_string.h include/tingle/types.h
+  source = src/system/game_string.c
+  cflags = $game_string_cflags
+
+build build/decomp/src/system/frame_task.o: mwccarm src/system/frame_task.c | include/tingle/frame_task.h include/tingle/types.h
+  source = src/system/frame_task.c
+  cflags = $frame_task_cflags
+
+build build/decomp/src/system/frame_task_tags.o: mwccarm src/system/frame_task_tags.c | include/tingle/frame_task.h include/tingle/types.h
+  source = src/system/frame_task_tags.c
+  cflags = $frame_task_cflags
+
+build build/decomp/src/system/frame_task_list.o: mwccarm src/system/frame_task_list.c | include/tingle/frame_task.h include/tingle/types.h
+  source = src/system/frame_task_list.c
+  cflags = $frame_task_cflags
+
+build build/decomp/lib/tingle.a: mwldarm_archive build/decomp/src/system/mt19937.o build/decomp/src/system/input.o build/decomp/src/system/debug_menu.o build/decomp/src/system/game_work.o build/decomp/src/system/frame_task_list.o build/decomp/src/system/game_flags.o build/decomp/src/system/game_work_io.o build/decomp/src/system/game_phase.o build/decomp/src/system/scene_touch_data.o build/decomp/src/system/scene.o build/decomp/src/system/scene_touch.o build/decomp/src/system/touch_panel.o build/decomp/src/system/graphics_system.o build/decomp/src/system/frame_task.o build/decomp/src/system/frame_task_tags.o build/decomp/src/system/palette_buffer.o build/decomp/asm/system/palette_buffer_data.o build/decomp/src/system/thread.o build/decomp/asm/system/thread_data.o build/decomp/src/system/bg_scroll.o build/decomp/src/system/graphics_resources.o build/decomp/src/system/graphics_display.o build/decomp/src/system/error_display.o build/decomp/src/system/checked_fs.o build/decomp/src/system/game_string.o
 
 build build/decomp/arm9.lcf build/decomp/objects.txt: dsd_lcf config/arm9/config.yaml config/arm9/delinks.txt config/arm9/symbols.txt config/arm9/relocs.txt | build/decomp/delinks/src/system/mt19937.o
 
-build build/decomp/objects.source.txt: prepare_link_objects build/decomp/objects.txt config/arm9/link_replacements.txt tools/prepare_link_objects.ps1 | build/decomp/src/system/mt19937.o build/decomp/src/system/input.o build/decomp/src/system/debug_menu.o build/decomp/src/system/game_work.o build/decomp/src/system/game_flags.o build/decomp/src/system/game_work_io.o build/decomp/src/system/game_phase.o build/decomp/src/system/scene_touch_data.o build/decomp/src/system/scene.o build/decomp/src/system/scene_touch.o
+build build/decomp/objects.source.txt: prepare_link_objects build/decomp/objects.txt config/arm9/link_replacements.txt tools/prepare_link_objects.ps1 | build/decomp/src/system/mt19937.o build/decomp/src/system/input.o build/decomp/src/system/debug_menu.o build/decomp/src/system/game_work.o build/decomp/src/system/frame_task_list.o build/decomp/src/system/game_flags.o build/decomp/src/system/game_work_io.o build/decomp/src/system/game_phase.o build/decomp/src/system/scene_touch_data.o build/decomp/src/system/scene.o build/decomp/src/system/scene_touch.o build/decomp/src/system/touch_panel.o build/decomp/src/system/graphics_system.o build/decomp/src/system/frame_task.o build/decomp/src/system/frame_task_tags.o build/decomp/src/system/palette_buffer.o build/decomp/asm/system/palette_buffer_data.o build/decomp/src/system/thread.o build/decomp/asm/system/thread_data.o build/decomp/src/system/bg_scroll.o build/decomp/src/system/graphics_resources.o build/decomp/src/system/graphics_display.o build/decomp/src/system/error_display.o build/decomp/src/system/checked_fs.o build/decomp/src/system/game_string.o
 
-build build/decomp/tingle.elf | build/decomp/build/arm9.bin build/decomp/build/itcm.bin build/decomp/build/dtcm.bin: mwldarm_link build/decomp/objects.source.txt build/decomp/arm9.lcf | build/decomp/src/system/mt19937.o build/decomp/src/system/input.o build/decomp/src/system/debug_menu.o build/decomp/src/system/game_work.o build/decomp/src/system/game_flags.o build/decomp/src/system/game_work_io.o build/decomp/src/system/game_phase.o build/decomp/src/system/scene_touch_data.o build/decomp/src/system/scene.o build/decomp/src/system/scene_touch.o
+build build/decomp/tingle.elf | build/decomp/build/arm9.bin build/decomp/build/itcm.bin build/decomp/build/dtcm.bin: mwldarm_link build/decomp/objects.source.txt build/decomp/arm9.lcf | build/decomp/src/system/mt19937.o build/decomp/src/system/input.o build/decomp/src/system/debug_menu.o build/decomp/src/system/game_work.o build/decomp/src/system/frame_task_list.o build/decomp/src/system/game_flags.o build/decomp/src/system/game_work_io.o build/decomp/src/system/game_phase.o build/decomp/src/system/scene_touch_data.o build/decomp/src/system/scene.o build/decomp/src/system/scene_touch.o build/decomp/src/system/touch_panel.o build/decomp/src/system/graphics_system.o build/decomp/src/system/frame_task.o build/decomp/src/system/frame_task_tags.o build/decomp/src/system/palette_buffer.o build/decomp/asm/system/palette_buffer_data.o build/decomp/src/system/thread.o build/decomp/asm/system/thread_data.o build/decomp/src/system/bg_scroll.o build/decomp/src/system/graphics_resources.o build/decomp/src/system/graphics_display.o build/decomp/src/system/error_display.o build/decomp/src/system/checked_fs.o build/decomp/src/system/game_string.o
 
 build build/tingle.recompiled.nds: build_recompiled_rom build/decomp/tingle.elf | tools/build_recompiled_rom.ps1 tools/patch_rom_header.py
 
@@ -221,6 +288,110 @@ build build/reports/scene_touch.txt: match_report build/reports/scene_touch.json
   report_json = build/reports/scene_touch.json
   report_args = --section .text --function SceneTouchTask_Init --function SceneTouchTask_Destroy --function SceneTouchTask_DestroyAndFree --function SceneTouchTask_Update --function TouchPoint_Init --function TouchPoint_Destroy --function TouchPoint_DestroyAndFree
 
+build build/reports/touch_panel.json: objdiff build/decomp/delinks/src/system/touch_panel.o | build/decomp/src/system/touch_panel.o
+  target_object = build/decomp/delinks/src/system/touch_panel.o
+  base_object = build/decomp/src/system/touch_panel.o
+
+build build/reports/touch_panel.txt: match_report build/reports/touch_panel.json | tools/report_objdiff.py
+  report_json = build/reports/touch_panel.json
+  report_args = --section .text --section .data --function TouchPanelManager_Init --function TouchPanelManager_Destroy --function TouchPanelManager_DestroyAndFree --function TouchPanelManager_Update --function TouchPanelManager_GetPoint --function TouchPanelManager_SetAutoSampling
+
+build build/reports/frame_task.json: objdiff build/decomp/delinks/src/system/frame_task.o | build/decomp/src/system/frame_task.o
+  target_object = build/decomp/delinks/src/system/frame_task.o
+  base_object = build/decomp/src/system/frame_task.o
+
+build build/reports/frame_task.txt: match_report build/reports/frame_task.json | tools/report_objdiff.py
+  report_json = build/reports/frame_task.json
+  report_args = --section .text --function FrameTaskList_Add --function FrameTaskNode_Init --function FrameTaskList_DestroyNode --function FrameTaskList_Remove --function FrameTaskList_Update
+
+build build/reports/frame_task_tags.json: objdiff build/decomp/delinks/src/system/frame_task_tags.o | build/decomp/src/system/frame_task_tags.o
+  target_object = build/decomp/delinks/src/system/frame_task_tags.o
+  base_object = build/decomp/src/system/frame_task_tags.o
+
+build build/reports/frame_task_list.json: objdiff build/decomp/delinks/src/system/frame_task_list.o | build/decomp/src/system/frame_task_list.o
+  target_object = build/decomp/delinks/src/system/frame_task_list.o
+  base_object = build/decomp/src/system/frame_task_list.o
+
+build build/reports/graphics_system.json: objdiff build/decomp/delinks/src/system/graphics_system.o | build/decomp/src/system/graphics_system.o
+  target_object = build/decomp/delinks/src/system/graphics_system.o
+  base_object = build/decomp/src/system/graphics_system.o
+
+build build/reports/graphics_system.txt: match_report build/reports/graphics_system.json | tools/report_objdiff.py
+  report_json = build/reports/graphics_system.json
+  report_args = --section .text --section .data --function GraphicsSystem_Init --function GraphicsSystem_CreateEngine
+
+build build/reports/palette_buffer.json: objdiff build/decomp/delinks/src/system/palette_buffer.o | build/decomp/src/system/palette_buffer.o
+  target_object = build/decomp/delinks/src/system/palette_buffer.o
+  base_object = build/decomp/src/system/palette_buffer.o
+
+build build/reports/palette_buffer.txt: match_report build/reports/palette_buffer.json | tools/report_objdiff.py
+  report_json = build/reports/palette_buffer.json
+  report_args = --section .text --function PaletteBuffer_Init --function PaletteBuffer_Write --function MainBgPaletteBuffer_Init --function MainBgPaletteBuffer_Flush --function SubBgPaletteBuffer_Init --function SubBgPaletteBuffer_Flush --function ExtendedPaletteBuffer_Write --function MainBgExtendedPaletteBuffer_Init --function MainBgExtendedPaletteBuffer_Flush --function SubBgExtendedPaletteBuffer_Init --function SubBgExtendedPaletteBuffer_Flush
+
+build build/reports/palette_buffer_data.json: objdiff build/decomp/delinks/asm/system/palette_buffer_data.o | build/decomp/asm/system/palette_buffer_data.o
+  target_object = build/decomp/delinks/asm/system/palette_buffer_data.o
+  base_object = build/decomp/asm/system/palette_buffer_data.o
+
+build build/reports/thread.json: objdiff build/decomp/delinks/src/system/thread.o | build/decomp/src/system/thread.o
+  target_object = build/decomp/delinks/src/system/thread.o
+  base_object = build/decomp/src/system/thread.o
+
+build build/reports/thread.txt: match_report build/reports/thread.json | tools/report_objdiff.py
+  report_json = build/reports/thread.json
+  report_args = --section .text --function Thread_Init --function Thread_Destroy --function Thread_DestroyAndFree --function Thread_Deinit --function Thread_Create --function Thread_Start
+
+build build/reports/thread_data.json: objdiff build/decomp/delinks/asm/system/thread_data.o | build/decomp/asm/system/thread_data.o
+  target_object = build/decomp/delinks/asm/system/thread_data.o
+  base_object = build/decomp/asm/system/thread_data.o
+
+build build/reports/bg_scroll.json: objdiff build/decomp/delinks/src/system/bg_scroll.o | build/decomp/src/system/bg_scroll.o
+  target_object = build/decomp/delinks/src/system/bg_scroll.o
+  base_object = build/decomp/src/system/bg_scroll.o
+
+build build/reports/bg_scroll.txt: match_report build/reports/bg_scroll.json | tools/report_objdiff.py
+  report_json = build/reports/bg_scroll.json
+  report_args = --section .text --section .bss --function BgScroll_SetMainBg1 --function BgScroll_SetMainBg2 --function BgScroll_SetSubBg0 --function BgScroll_SetSubBg1 --function BgScroll_SetSubBg2 --function BgScroll_SetSubBg3 --function BgScroll_ClearDirty --function BgScroll_Flush
+
+build build/reports/graphics_resources.json: objdiff build/decomp/delinks/src/system/graphics_resources.o | build/decomp/src/system/graphics_resources.o
+  target_object = build/decomp/delinks/src/system/graphics_resources.o
+  base_object = build/decomp/src/system/graphics_resources.o
+
+build build/reports/graphics_resources.txt: match_report build/reports/graphics_resources.json | tools/report_objdiff.py
+  report_json = build/reports/graphics_resources.json
+  report_args = --section .text --function GraphicsResourceSets_Destroy --function GraphicsResourceSets_Load --function GraphicsResourceSets_Get
+
+build build/reports/graphics_display.json: objdiff build/decomp/delinks/src/system/graphics_display.o | build/decomp/src/system/graphics_display.o
+  target_object = build/decomp/delinks/src/system/graphics_display.o
+  base_object = build/decomp/src/system/graphics_display.o
+
+build build/reports/graphics_display.txt: match_report build/reports/graphics_display.json | tools/report_objdiff.py
+  report_json = build/reports/graphics_display.json
+  report_args = --section .text --function GraphicsDisplay_SetupSubBg0
+
+build build/reports/error_display.json: objdiff build/decomp/delinks/src/system/error_display.o | build/decomp/src/system/error_display.o
+  target_object = build/decomp/delinks/src/system/error_display.o
+  base_object = build/decomp/src/system/error_display.o
+
+build build/reports/error_display.txt: match_report build/reports/error_display.json | tools/report_objdiff.py
+  report_json = build/reports/error_display.json
+  report_args = --section .text --function ErrorDisplayContext_Destroy --function ErrorDisplay_RunHaltLoop --function ErrorDisplay_ShowAndHalt --function ErrorDisplay_ShowDefaultAndHalt --function ErrorDisplayContext_Get
+
+build build/reports/checked_fs.json: objdiff build/decomp/delinks/src/system/checked_fs.o | build/decomp/src/system/checked_fs.o
+  target_object = build/decomp/delinks/src/system/checked_fs.o
+  base_object = build/decomp/src/system/checked_fs.o
+
+build build/reports/checked_fs.txt: match_report build/reports/checked_fs.json | tools/report_objdiff.py
+  report_json = build/reports/checked_fs.json
+  report_args = --section .text --function CheckedFS_ValidateResult --function CheckedFS_ReadFile --function CheckedFS_OpenFile --function CheckedFS_OpenFileFast --function CheckedFS_GetFileLength --function CheckedFS_CloseFile --function CheckedFS_ConvertPathToFileID --function CheckedFS_SeekFile --function CheckedFS_RewindFile --function CheckedFS_InitFile --function CheckedFS_LoadOverlay --function CheckedFS_UnloadOverlay
+
+build build/reports/game_string.json: objdiff build/decomp/delinks/src/system/game_string.o | build/decomp/src/system/game_string.o
+  target_object = build/decomp/delinks/src/system/game_string.o
+  base_object = build/decomp/src/system/game_string.o
+
+build build/reports/game_string.txt: match_report build/reports/game_string.json | tools/report_objdiff.py
+  report_json = build/reports/game_string.json
+  report_args = --section .text --function GameString_Init --function GameString_InitCString --function GameString_InitFromOther --function GameString_Destroy --function GameString_DestroyAndFree --function GameString_Assign --function GameString_Append --function GameString_Clear --function GameString_InitPrefix --function GameString_AssignCopy --function GameString_Concat --function GameString_Equals
+
 build mt19937: phony build/decomp/delinks/src/system/mt19937.o build/decomp/src/system/mt19937.o
 build input: phony build/decomp/delinks/src/system/input.o build/decomp/src/system/input.o build/reports/input.txt
 build debug_menu: phony build/decomp/delinks/src/system/debug_menu.o build/decomp/src/system/debug_menu.o build/reports/debug_menu.txt build/reports/debug_menu_exact.txt
@@ -230,9 +401,20 @@ build game_work_io: phony build/decomp/delinks/src/system/game_work_io.o build/d
 build game_phase: phony build/decomp/delinks/src/system/game_phase.o build/decomp/src/system/game_phase.o build/reports/game_phase.txt
 build scene: phony build/decomp/delinks/src/system/scene.o build/decomp/src/system/scene.o build/reports/scene.txt
 build scene_touch: phony build/decomp/delinks/src/system/scene_touch_data.o build/decomp/src/system/scene_touch_data.o build/reports/scene_touch_data.json build/decomp/delinks/src/system/scene_touch.o build/decomp/src/system/scene_touch.o build/reports/scene_touch.txt
+build touch_panel: phony build/decomp/delinks/src/system/touch_panel.o build/decomp/src/system/touch_panel.o build/reports/touch_panel.txt
+build frame_task: phony build/decomp/delinks/src/system/frame_task.o build/decomp/src/system/frame_task.o build/reports/frame_task.txt build/decomp/delinks/src/system/frame_task_tags.o build/decomp/src/system/frame_task_tags.o build/reports/frame_task_tags.json build/decomp/delinks/src/system/frame_task_list.o build/decomp/src/system/frame_task_list.o build/reports/frame_task_list.json
+build graphics_system: phony build/decomp/delinks/src/system/graphics_system.o build/decomp/src/system/graphics_system.o build/reports/graphics_system.txt
+build palette_buffer: phony build/decomp/delinks/src/system/palette_buffer.o build/decomp/src/system/palette_buffer.o build/reports/palette_buffer.txt build/decomp/delinks/asm/system/palette_buffer_data.o build/decomp/asm/system/palette_buffer_data.o build/reports/palette_buffer_data.json
+build thread: phony build/decomp/delinks/src/system/thread.o build/decomp/src/system/thread.o build/reports/thread.txt build/decomp/delinks/asm/system/thread_data.o build/decomp/asm/system/thread_data.o build/reports/thread_data.json
+build bg_scroll: phony build/decomp/delinks/src/system/bg_scroll.o build/decomp/src/system/bg_scroll.o build/reports/bg_scroll.txt
+build graphics_resources: phony build/decomp/delinks/src/system/graphics_resources.o build/decomp/src/system/graphics_resources.o build/reports/graphics_resources.txt
+build graphics_display: phony build/decomp/delinks/src/system/graphics_display.o build/decomp/src/system/graphics_display.o build/reports/graphics_display.txt
+build error_display: phony build/decomp/delinks/src/system/error_display.o build/decomp/src/system/error_display.o build/reports/error_display.txt
+build checked_fs: phony build/decomp/delinks/src/system/checked_fs.o build/decomp/src/system/checked_fs.o build/reports/checked_fs.txt
+build game_string: phony build/decomp/delinks/src/system/game_string.o build/decomp/src/system/game_string.o build/reports/game_string.txt
 build archive: phony build/decomp/lib/tingle.a
 build references: phony build/reference/mt19937.text.bin build/reference/init_genrand.bin build/reference/init_by_array.bin build/reference/genrand_int32.bin build/reference/InitRandom.bin
-build match: phony build/reports/mt19937.txt build/reports/input.txt build/reports/debug_menu.txt build/reports/debug_menu_exact.txt build/reports/game_work.txt build/reports/game_flags.txt build/reports/game_work_io.txt build/reports/game_phase.txt build/reports/scene_touch_data.json build/reports/scene.txt build/reports/scene_touch.txt build/decomp/lib/tingle.a references
+build match: phony build/reports/mt19937.txt build/reports/input.txt build/reports/debug_menu.txt build/reports/debug_menu_exact.txt build/reports/game_work.txt build/reports/game_flags.txt build/reports/game_work_io.txt build/reports/game_phase.txt build/reports/scene_touch_data.json build/reports/scene.txt build/reports/scene_touch.txt build/reports/touch_panel.txt build/reports/frame_task.txt build/reports/frame_task_tags.json build/reports/frame_task_list.json build/reports/graphics_system.txt build/reports/palette_buffer.txt build/reports/palette_buffer_data.json build/reports/thread.txt build/reports/thread_data.json build/reports/bg_scroll.txt build/reports/graphics_resources.txt build/reports/graphics_display.txt build/reports/error_display.txt build/reports/checked_fs.txt build/reports/game_string.txt build/decomp/lib/tingle.a references
 build rom: phony build/tingle.recompiled.nds
 
 default match

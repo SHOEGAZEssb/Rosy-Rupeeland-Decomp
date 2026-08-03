@@ -1,28 +1,11 @@
 #include "tingle/scene_touch.h"
+#include "tingle/touch_panel.h"
 
 /*
  * Per-frame touch dispatcher for the active scene. It converts the touch
  * manager's press/hold/release states into scene virtual callbacks and carries
  * coordinates in a small polymorphic point object used by those callbacks.
  */
-
-enum {
-    TOUCH_STATE_RELEASED = 0,
-    TOUCH_STATE_PRESSED = 1,
-    TOUCH_STATE_HELD = 2,
-};
-
-typedef struct TouchSample {
-    u16 values[4];
-} TouchSample;
-
-typedef struct TouchPanelManagerPartial {
-    u8 unknown00[4];
-    s32 state;
-    u8 unknown08[0x30];
-    TouchSample previousSample;
-    TouchSample currentSample;
-} TouchPanelManagerPartial;
 
 typedef int (*SceneTouchPointCallback)(Scene *scene, TouchPoint *point);
 typedef int (*SceneTouchTargetCallback)(Scene *scene, int targetIndex);
@@ -40,17 +23,12 @@ typedef struct SceneTouchDispatchVTable {
 } SceneTouchDispatchVTable;
 
 typedef struct SceneTouchUpdateFrame {
-    TouchSample previousSample;
+    TPData previousSample;
     TouchPoint heldPoint;
     TouchPoint releasedPoint;
     TouchPoint pressedPoint;
 } SceneTouchUpdateFrame;
 
-typedef char TouchSampleSizeCheck[sizeof(TouchSample) == 8 ? 1 : -1];
-typedef char TouchPreviousSampleOffsetCheck[
-    (u32)&((TouchPanelManagerPartial *)0)->previousSample == 0x38 ? 1 : -1];
-typedef char TouchCurrentSampleOffsetCheck[
-    (u32)&((TouchPanelManagerPartial *)0)->currentSample == 0x40 ? 1 : -1];
 typedef char SceneTouchUpdateFrameSizeCheck[
     sizeof(SceneTouchUpdateFrame) == 0x2C ? 1 : -1];
 
@@ -65,8 +43,6 @@ extern void func_02004e84(void *embedded, u32 x, u32 y);
 extern void Heap_Free(void *allocation);
 
 extern void *gSceneState020F4DFC;
-extern TouchPanelManagerPartial *gTouchPanelManager;
-
 #ifdef __cplusplus
 }
 #endif
@@ -110,7 +86,7 @@ SceneTouchTask *SceneTouchTask_DestroyAndFree(SceneTouchTask *task)
 int SceneTouchTask_Update(SceneTouchTask *task)
 {
     SceneTouchUpdateFrame frame;
-    TouchPanelManagerPartial *touch;
+    TouchPanelManager *touch;
     Scene *scene;
     int state;
     int i;
@@ -121,7 +97,8 @@ int SceneTouchTask_Update(SceneTouchTask *task)
 
     touch = gTouchPanelManager;
     for (i = 0; i < 4; i++) {
-        frame.previousSample.values[i] = touch->previousSample.values[i];
+        ((u16 *)&frame.previousSample)[i] =
+            ((u16 *)&touch->previousSample)[i];
     }
 
     scene = SceneManager_GetCurrent(ACTIVE_SCENE_MANAGER);
@@ -130,12 +107,12 @@ int SceneTouchTask_Update(SceneTouchTask *task)
     switch (state) {
     case TOUCH_STATE_PRESSED: {
         int target = func_02004dfc(scene->embedded10,
-                                  touch->currentSample.values[0],
-                                  touch->currentSample.values[1]);
+                                  touch->currentSample.x,
+                                  touch->currentSample.y);
         if (target == -1) {
             TouchPoint_Init(&frame.pressedPoint,
-                            touch->currentSample.values[0],
-                            touch->currentSample.values[1]);
+                            touch->currentSample.x,
+                            touch->currentSample.y);
             ((SceneTouchDispatchVTable *)scene->vtable)->onTouchDown(
                 scene, &frame.pressedPoint);
         } else {
@@ -149,8 +126,8 @@ int SceneTouchTask_Update(SceneTouchTask *task)
         /* Suppress repeated release callbacks while the panel stays idle. */
         if ((u32)(task->previousTouchState - TOUCH_STATE_PRESSED) <= 1) {
             TouchPoint_Init(&frame.releasedPoint,
-                            frame.previousSample.values[0],
-                            frame.previousSample.values[1]);
+                            frame.previousSample.x,
+                            frame.previousSample.y);
             scene = SceneManager_GetCurrent(ACTIVE_SCENE_MANAGER);
             ((SceneTouchDispatchVTable *)scene->vtable)->onTouchUp(
                 scene, &frame.releasedPoint);
@@ -158,15 +135,15 @@ int SceneTouchTask_Update(SceneTouchTask *task)
         break;
 
     case TOUCH_STATE_HELD:
-        TouchPoint_Init(&frame.heldPoint, touch->currentSample.values[0],
-                        touch->currentSample.values[1]);
+        TouchPoint_Init(&frame.heldPoint, touch->currentSample.x,
+                        touch->currentSample.y);
         {
             Scene *current = SceneManager_GetCurrent(ACTIVE_SCENE_MANAGER);
             ((SceneTouchDispatchVTable *)current->vtable)->onTouchHeld(
                 current, &frame.heldPoint);
         }
-        func_02004e84(scene->embedded10, touch->currentSample.values[0],
-                      touch->currentSample.values[1]);
+        func_02004e84(scene->embedded10, touch->currentSample.x,
+                      touch->currentSample.y);
         break;
     }
 

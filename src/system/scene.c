@@ -1,4 +1,5 @@
 #include "tingle/scene.h"
+#include "tingle/frame_task.h"
 
 /*
  * Core scene lifetime and stack management. Scenes register themselves with
@@ -15,14 +16,13 @@ extern void Heap_Free(void *allocation);
 extern void *func_02004c40(void *embedded);
 extern void func_02004cc4(void *embedded);
 extern void *SceneTouchTask_Init(void *task);
-extern void *func_02003964(void *task, int enabled);
 
 /* These SDK routines directly clear and set the ARM IRQ-disable CPSR bit. */
 extern u32 func_020b4f40(void);
 extern u32 func_020b4f54(void);
 
 /* Disable IRQs and enter the SDK's non-returning processor wait loop. */
-extern void func_020b5294(void);
+extern void OS_Halt(void);
 
 extern void *gHeapContext;
 extern SceneManager *gSceneManager;
@@ -89,7 +89,7 @@ Scene *Scene_Destructor(Scene *scene)
     scene->vtable = &gSceneInitialData.vtable;
     func_020b4f54();
     if (SceneManager_GetCurrent(ACTIVE_SCENE_MANAGER) != scene) {
-        func_020b5294();
+        OS_Halt();
     }
     SceneManager_Pop(ACTIVE_SCENE_MANAGER);
     func_020b4f40();
@@ -103,7 +103,7 @@ Scene *Scene_DeletingDestructor(Scene *scene)
     scene->vtable = &gSceneInitialData.vtable;
     func_020b4f54();
     if (SceneManager_GetCurrent(ACTIVE_SCENE_MANAGER) != scene) {
-        func_020b5294();
+        OS_Halt();
     }
     SceneManager_Pop(ACTIVE_SCENE_MANAGER);
     func_020b4f40();
@@ -118,7 +118,7 @@ Scene *Scene_Destroy(Scene *scene)
     scene->vtable = &gSceneInitialData.vtable;
     func_020b4f54();
     if (SceneManager_GetCurrent(ACTIVE_SCENE_MANAGER) != scene) {
-        func_020b5294();
+        OS_Halt();
     }
     SceneManager_Pop(ACTIVE_SCENE_MANAGER);
     func_020b4f40();
@@ -227,7 +227,7 @@ SceneManager *SceneManager_Init(SceneManager *manager)
     if (task != 0) {
         task = SceneTouchTask_Init(task);
     }
-    task = func_02003964(task, 1);
+    task = FrameTaskList_Add((FrameTask *)task, 1);
     manager->updateTask = task;
     return manager;
 }
