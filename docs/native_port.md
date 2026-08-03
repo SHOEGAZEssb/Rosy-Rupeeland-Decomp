@@ -34,6 +34,12 @@ cross-processor communication, and assumptions about the NDS runtime or memory
 layout. Platform-neutral interfaces should contain the game-visible contract;
 operating-system-specific code should remain confined to small backends.
 
+Before moving a reconstructed unit to a host compiler, consult the consolidated
+[compiler-sensitive function inventory](compiler_sensitive.md). It identifies
+matching-only ARM bodies, C++ lifetime forms, and the ordering or ownership
+constraints that must survive even though their retail instruction sequences do
+not.
+
 For each reconstructed module, record barriers alongside its behavioral
 documentation. Each barrier entry should capture:
 

@@ -127,3 +127,11 @@ src/system/game_file.c:
 src/system/touch_region.c:
     categories: Game code
     .text       start:0x02004ac8 end:0x02004fe0
+
+src/graphics/graphics_resource_set.c:
+    categories: Game code
+    .text       start:0x02071f80 end:0x02072000
+
+src/graphics/graphics_resource_set_ops.c:
+    categories: Game code
+    .text       start:0x02072000 end:0x020720c0

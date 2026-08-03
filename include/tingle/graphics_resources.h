@@ -23,6 +23,16 @@ GraphicsResourceSet *GraphicsResourceSets_Destroy(GraphicsResourceSet *sets);
 void GraphicsResourceSets_Load(GraphicsResourceSet *sets);
 GraphicsResourceSet *GraphicsResourceSets_Get(void);
 
+void GraphicsResourceSet_Init(GraphicsResourceSet *set);
+GraphicsResourceSet *GraphicsResourceSet_Destroy(GraphicsResourceSet *set);
+void GraphicsResourceSet_Load(GraphicsResourceSet *set, void *archive,
+                              u32 resource0Id, u32 resource1Id,
+                              u32 resource2Id);
+void func_02072000(GraphicsResourceSet *set);
+void func_02072048(GraphicsResourceSet *set, s32 value0, s32 value1);
+void GraphicsResourceSet_Apply(GraphicsResourceSet *set, s32 value0,
+                               s32 value1);
+
 #ifdef __cplusplus
 }
 #endif

@@ -63,6 +63,10 @@ C for portable builds. Its backward branches are emitted as exact ARM words
 because MWCC otherwise adds fallthrough branches to labels inside the inline
 assembly function.
 
+The complete cross-module inventory of matching fallbacks and C++ lifetime
+forms, including the behavior a host implementation must preserve, is in
+[compiler_sensitive.md](compiler_sensitive.md).
+
 The remaining NitroSDK make flags for instruction set, debug information,
 diagnostics, character signedness, and language compatibility do not alter the
 owned bytes. The checked-in build keeps the smallest proven code-generation

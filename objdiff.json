@@ -25,8 +25,8 @@
   ],
   "units": [
     {
-      "name": "_dsd_gap@main_16",
-      "target_path": "build/decomp/delinks/_dsd_gap@main_16.o",
+      "name": "_dsd_gap@main_23",
+      "target_path": "build/decomp/delinks/_dsd_gap@main_23.o",
       "metadata": {
         "complete": false,
         "reverse_fn_order": false,
@@ -85,8 +85,31 @@
       }
     },
     {
-      "name": "_dsd_gap@main_6",
-      "target_path": "build/decomp/delinks/_dsd_gap@main_6.o",
+      "name": "_dsd_gap@main_4",
+      "target_path": "build/decomp/delinks/_dsd_gap@main_4.o",
+      "metadata": {
+        "complete": false,
+        "reverse_fn_order": false,
+        "auto_generated": true
+      }
+    },
+    {
+      "name": "src/system/frame_task_list",
+      "target_path": "build/decomp/delinks/src/system/frame_task_list.o",
+      "base_path": "build/decomp/src/system/frame_task_list.o",
+      "metadata": {
+        "complete": false,
+        "reverse_fn_order": false,
+        "source_path": "src/system/frame_task_list.c",
+        "progress_categories": [
+          "Game code"
+        ],
+        "auto_generated": false
+      }
+    },
+    {
+      "name": "_dsd_gap@main_7",
+      "target_path": "build/decomp/delinks/_dsd_gap@main_7.o",
       "metadata": {
         "complete": false,
         "reverse_fn_order": false,
@@ -145,8 +168,8 @@
       }
     },
     {
-      "name": "_dsd_gap@main_4",
-      "target_path": "build/decomp/delinks/_dsd_gap@main_4.o",
+      "name": "_dsd_gap@main_5",
+      "target_path": "build/decomp/delinks/_dsd_gap@main_5.o",
       "metadata": {
         "complete": false,
         "reverse_fn_order": false,
@@ -168,8 +191,8 @@
       }
     },
     {
-      "name": "_dsd_gap@main_15",
-      "target_path": "build/decomp/delinks/_dsd_gap@main_15.o",
+      "name": "_dsd_gap@main_22",
+      "target_path": "build/decomp/delinks/_dsd_gap@main_22.o",
       "metadata": {
         "complete": false,
         "reverse_fn_order": false,
@@ -191,8 +214,8 @@
       }
     },
     {
-      "name": "_dsd_gap@main_9",
-      "target_path": "build/decomp/delinks/_dsd_gap@main_9.o",
+      "name": "_dsd_gap@main_10",
+      "target_path": "build/decomp/delinks/_dsd_gap@main_10.o",
       "metadata": {
         "complete": false,
         "reverse_fn_order": false,
@@ -214,8 +237,8 @@
       }
     },
     {
-      "name": "_dsd_gap@main_18",
-      "target_path": "build/decomp/delinks/_dsd_gap@main_18.o",
+      "name": "_dsd_gap@main_16",
+      "target_path": "build/decomp/delinks/_dsd_gap@main_16.o",
       "metadata": {
         "complete": false,
         "reverse_fn_order": false,
@@ -237,8 +260,314 @@
       }
     },
     {
-      "name": "_dsd_gap@main_11",
-      "target_path": "build/decomp/delinks/_dsd_gap@main_11.o",
+      "name": "src/system/touch_panel",
+      "target_path": "build/decomp/delinks/src/system/touch_panel.o",
+      "base_path": "build/decomp/src/system/touch_panel.o",
+      "metadata": {
+        "complete": false,
+        "reverse_fn_order": false,
+        "source_path": "src/system/touch_panel.c",
+        "progress_categories": [
+          "Game code"
+        ],
+        "auto_generated": false
+      }
+    },
+    {
+      "name": "_dsd_gap@main_13",
+      "target_path": "build/decomp/delinks/_dsd_gap@main_13.o",
+      "metadata": {
+        "complete": false,
+        "reverse_fn_order": false,
+        "auto_generated": true
+      }
+    },
+    {
+      "name": "src/system/graphics_system",
+      "target_path": "build/decomp/delinks/src/system/graphics_system.o",
+      "base_path": "build/decomp/src/system/graphics_system.o",
+      "metadata": {
+        "complete": false,
+        "reverse_fn_order": false,
+        "source_path": "src/system/graphics_system.c",
+        "progress_categories": [
+          "Game code"
+        ],
+        "auto_generated": false
+      }
+    },
+    {
+      "name": "src/system/frame_task",
+      "target_path": "build/decomp/delinks/src/system/frame_task.o",
+      "base_path": "build/decomp/src/system/frame_task.o",
+      "metadata": {
+        "complete": false,
+        "reverse_fn_order": false,
+        "source_path": "src/system/frame_task.c",
+        "progress_categories": [
+          "Game code"
+        ],
+        "auto_generated": false
+      }
+    },
+    {
+      "name": "src/system/palette_buffer",
+      "target_path": "build/decomp/delinks/src/system/palette_buffer.o",
+      "base_path": "build/decomp/src/system/palette_buffer.o",
+      "metadata": {
+        "complete": false,
+        "reverse_fn_order": false,
+        "source_path": "src/system/palette_buffer.c",
+        "progress_categories": [
+          "Game code"
+        ],
+        "auto_generated": false
+      }
+    },
+    {
+      "name": "_dsd_gap@main_15",
+      "target_path": "build/decomp/delinks/_dsd_gap@main_15.o",
+      "metadata": {
+        "complete": false,
+        "reverse_fn_order": false,
+        "auto_generated": true
+      }
+    },
+    {
+      "name": "src/system/thread",
+      "target_path": "build/decomp/delinks/src/system/thread.o",
+      "base_path": "build/decomp/src/system/thread.o",
+      "metadata": {
+        "complete": false,
+        "reverse_fn_order": false,
+        "source_path": "src/system/thread.c",
+        "progress_categories": [
+          "Game code"
+        ],
+        "auto_generated": false
+      }
+    },
+    {
+      "name": "src/system/bg_scroll",
+      "target_path": "build/decomp/delinks/src/system/bg_scroll.o",
+      "base_path": "build/decomp/src/system/bg_scroll.o",
+      "metadata": {
+        "complete": false,
+        "reverse_fn_order": false,
+        "source_path": "src/system/bg_scroll.c",
+        "progress_categories": [
+          "Game code"
+        ],
+        "auto_generated": false
+      }
+    },
+    {
+      "name": "_dsd_gap@main_25",
+      "target_path": "build/decomp/delinks/_dsd_gap@main_25.o",
+      "metadata": {
+        "complete": false,
+        "reverse_fn_order": false,
+        "auto_generated": true
+      }
+    },
+    {
+      "name": "src/system/graphics_resources",
+      "target_path": "build/decomp/delinks/src/system/graphics_resources.o",
+      "base_path": "build/decomp/src/system/graphics_resources.o",
+      "metadata": {
+        "complete": false,
+        "reverse_fn_order": false,
+        "source_path": "src/system/graphics_resources.c",
+        "progress_categories": [
+          "Game code"
+        ],
+        "auto_generated": false
+      }
+    },
+    {
+      "name": "src/system/graphics_display",
+      "target_path": "build/decomp/delinks/src/system/graphics_display.o",
+      "base_path": "build/decomp/src/system/graphics_display.o",
+      "metadata": {
+        "complete": false,
+        "reverse_fn_order": false,
+        "source_path": "src/system/graphics_display.c",
+        "progress_categories": [
+          "Game code"
+        ],
+        "auto_generated": false
+      }
+    },
+    {
+      "name": "src/system/error_display",
+      "target_path": "build/decomp/delinks/src/system/error_display.o",
+      "base_path": "build/decomp/src/system/error_display.o",
+      "metadata": {
+        "complete": false,
+        "reverse_fn_order": false,
+        "source_path": "src/system/error_display.c",
+        "progress_categories": [
+          "Game code"
+        ],
+        "auto_generated": false
+      }
+    },
+    {
+      "name": "src/system/checked_fs",
+      "target_path": "build/decomp/delinks/src/system/checked_fs.o",
+      "base_path": "build/decomp/src/system/checked_fs.o",
+      "metadata": {
+        "complete": false,
+        "reverse_fn_order": false,
+        "source_path": "src/system/checked_fs.c",
+        "progress_categories": [
+          "Game code"
+        ],
+        "auto_generated": false
+      }
+    },
+    {
+      "name": "src/system/game_string",
+      "target_path": "build/decomp/delinks/src/system/game_string.o",
+      "base_path": "build/decomp/src/system/game_string.o",
+      "metadata": {
+        "complete": false,
+        "reverse_fn_order": false,
+        "source_path": "src/system/game_string.c",
+        "progress_categories": [
+          "Game code"
+        ],
+        "auto_generated": false
+      }
+    },
+    {
+      "name": "src/system/game_file",
+      "target_path": "build/decomp/delinks/src/system/game_file.o",
+      "base_path": "build/decomp/src/system/game_file.o",
+      "metadata": {
+        "complete": false,
+        "reverse_fn_order": false,
+        "source_path": "src/system/game_file.c",
+        "progress_categories": [
+          "Game code"
+        ],
+        "auto_generated": false
+      }
+    },
+    {
+      "name": "src/system/touch_region",
+      "target_path": "build/decomp/delinks/src/system/touch_region.o",
+      "base_path": "build/decomp/src/system/touch_region.o",
+      "metadata": {
+        "complete": false,
+        "reverse_fn_order": false,
+        "source_path": "src/system/touch_region.c",
+        "progress_categories": [
+          "Game code"
+        ],
+        "auto_generated": false
+      }
+    },
+    {
+      "name": "_dsd_gap@main_17",
+      "target_path": "build/decomp/delinks/_dsd_gap@main_17.o",
+      "metadata": {
+        "complete": false,
+        "reverse_fn_order": false,
+        "auto_generated": true
+      }
+    },
+    {
+      "name": "src/graphics/graphics_resource_set",
+      "target_path": "build/decomp/delinks/src/graphics/graphics_resource_set.o",
+      "base_path": "build/decomp/src/graphics/graphics_resource_set.o",
+      "metadata": {
+        "complete": false,
+        "reverse_fn_order": false,
+        "source_path": "src/graphics/graphics_resource_set.c",
+        "progress_categories": [
+          "Game code"
+        ],
+        "auto_generated": false
+      }
+    },
+    {
+      "name": "src/graphics/graphics_resource_set_ops",
+      "target_path": "build/decomp/delinks/src/graphics/graphics_resource_set_ops.o",
+      "base_path": "build/decomp/src/graphics/graphics_resource_set_ops.o",
+      "metadata": {
+        "complete": false,
+        "reverse_fn_order": false,
+        "source_path": "src/graphics/graphics_resource_set_ops.c",
+        "progress_categories": [
+          "Game code"
+        ],
+        "auto_generated": false
+      }
+    },
+    {
+      "name": "_dsd_gap@main_18",
+      "target_path": "build/decomp/delinks/_dsd_gap@main_18.o",
+      "metadata": {
+        "complete": false,
+        "reverse_fn_order": false,
+        "auto_generated": true
+      }
+    },
+    {
+      "name": "src/system/frame_task_tags",
+      "target_path": "build/decomp/delinks/src/system/frame_task_tags.o",
+      "base_path": "build/decomp/src/system/frame_task_tags.o",
+      "metadata": {
+        "complete": false,
+        "reverse_fn_order": false,
+        "source_path": "src/system/frame_task_tags.c",
+        "progress_categories": [
+          "Game code"
+        ],
+        "auto_generated": false
+      }
+    },
+    {
+      "name": "_dsd_gap@main_14",
+      "target_path": "build/decomp/delinks/_dsd_gap@main_14.o",
+      "metadata": {
+        "complete": false,
+        "reverse_fn_order": false,
+        "auto_generated": true
+      }
+    },
+    {
+      "name": "asm/system/palette_buffer_data",
+      "target_path": "build/decomp/delinks/asm/system/palette_buffer_data.o",
+      "base_path": "build/decomp/asm/system/palette_buffer_data.o",
+      "metadata": {
+        "complete": false,
+        "reverse_fn_order": false,
+        "source_path": "asm/system/palette_buffer_data.s",
+        "progress_categories": [
+          "Game code"
+        ],
+        "auto_generated": false
+      }
+    },
+    {
+      "name": "asm/system/thread_data",
+      "target_path": "build/decomp/delinks/asm/system/thread_data.o",
+      "base_path": "build/decomp/asm/system/thread_data.o",
+      "metadata": {
+        "complete": false,
+        "reverse_fn_order": false,
+        "source_path": "asm/system/thread_data.s",
+        "progress_categories": [
+          "Game code"
+        ],
+        "auto_generated": false
+      }
+    },
+    {
+      "name": "_dsd_gap@main_24",
+      "target_path": "build/decomp/delinks/_dsd_gap@main_24.o",
       "metadata": {
         "complete": false,
         "reverse_fn_order": false,

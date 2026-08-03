@@ -61,6 +61,7 @@ $BuildDir = Join-Path $RepoRoot 'build'
 $Directories = @(
     $BuildDir,
     (Join-Path $BuildDir 'decomp\src\system'),
+    (Join-Path $BuildDir 'decomp\src\graphics'),
     (Join-Path $BuildDir 'decomp\lib'),
     (Join-Path $BuildDir 'reference'),
     (Join-Path $BuildDir 'reports')
