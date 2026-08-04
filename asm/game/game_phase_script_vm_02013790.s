@@ -1,0 +1,22 @@
+; Matching retail form; see src/game/game_phase_script_vm_actor_flag_opcodes.c.
+.text
+.extern func_02012704
+
+    .global func_02013790
+func_02013790: ; 0x02013790
+    stmdb sp!, {r4, lr}
+    mov r4, r0
+    bl func_02012704
+    cmp r0, #0x0
+    ldr r0, [r4, #0x84]
+    ldrne r1, [r0, #0x54]
+    ldrneh r0, [r1, #0x24]
+    orrne r0, r0, #0x20
+    ldreq r1, [r0, #0x54]
+    ldreqh r0, [r1, #0x24]
+    biceq r0, r0, #0x20
+    strh r0, [r1, #0x24]
+    mov r0, #0x0
+    ldmia sp!, {r4, pc}
+    .size func_02013790, . - func_02013790
+

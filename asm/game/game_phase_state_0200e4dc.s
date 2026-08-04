@@ -1,0 +1,50 @@
+; Matching retail form; see src/game/game_phase_state_lifecycle.c.
+.text
+.extern func_02006268
+.extern func_0200fa40
+.extern func_02011470
+.extern func_0201dbc8
+.extern func_0202cf2c
+
+    .global func_0200e4dc
+func_0200e4dc: ; 0x0200e4dc
+    stmdb sp!, {r4, lr}
+    mov r4, r0
+    mov r1, #0x0
+    add r0, r4, #0x4
+    str r1, [r4, #0x0]
+    bl func_0202cf2c
+    add r0, r4, #0x2a4
+    add r0, r0, #0x2c00
+    bl func_02006268
+    add r0, r4, #0x2b4
+    add r1, r4, #0x2000
+    mov r2, #0x0
+    add r0, r0, #0x2c00
+    str r2, [r1, #0xeb0]
+    bl func_0200fa40
+    add r0, r4, #0x358
+    add r0, r0, #0x2c00
+    bl func_0201dbc8
+    add r1, r4, #0x2000
+    ldr r2, [r1, #0xf7c]
+    add r0, r4, #0x2f80
+    bic r2, r2, #0x1
+    orr r2, r2, #0x3
+    str r2, [r1, #0xf7c]
+    bl func_02011470
+    add r1, r4, #0x2f00
+    mov r0, #0x1
+    strh r0, [r1, #0x90]
+    ldrsh r2, [r1, #0x92]
+    mov r0, r4
+    bic r2, r2, #0xff
+    orr r2, r2, #0x8
+    strh r2, [r1, #0x92]
+    ldrsh r2, [r1, #0x92]
+    bic r2, r2, #0xff00
+    orr r2, r2, #0x800
+    strh r2, [r1, #0x92]
+    ldmia sp!, {r4, pc}
+    .size func_0200e4dc, . - func_0200e4dc
+

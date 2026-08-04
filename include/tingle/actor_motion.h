@@ -45,6 +45,18 @@ typedef struct ActorMotionJitter {
 typedef char ActorMotionJitterSizeCheck[
     sizeof(ActorMotionJitter) == 0x68 ? 1 : -1];
 
+typedef struct ActorMotionAreaFollower {
+    ActorMotionJitter jitter;
+    void *areaContext;
+    VecFx32Object offset;
+    s32 transitionActive;
+    s32 transitionTimer;
+    s32 previousArea;
+} ActorMotionAreaFollower;
+
+typedef char ActorMotionAreaFollowerSizeCheck[
+    sizeof(ActorMotionAreaFollower) == 0x88 ? 1 : -1];
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -90,6 +102,41 @@ ActorMotion *func_020099dc(ActorMotion *self);
 ActorMotion *func_020099fc(ActorMotion *self);
 ActorMotion *func_02009a10(ActorMotion *self);
 s32 func_02009a2c(ActorMotion *self, const s16 *bounds);
+s32 func_02009c20(ActorMotion *self);
+VecFx32Object *func_02009d0c(ActorMotion *self);
+ActorMotionAreaFollower *func_02009d14(ActorMotionAreaFollower *self,
+                                       void *areaContext);
+ActorMotionAreaFollower *func_02009d58(ActorMotionAreaFollower *self);
+VecFx32Object *func_02009d78(ActorMotionAreaFollower *self);
+s32 func_02009d80(ActorMotionAreaFollower *self, const s16 *bounds);
+void func_0200a114(ActorMotion *self, void *actor);
+s32 func_0200a124(ActorMotionAreaFollower *self, void *actor, s32 area);
+void func_0200a1a0(ActorMotionAreaFollower *self, s32 area,
+                   const s16 *fallbackBounds);
+void func_0200a2dc(s16 *rectangle, s32 x, s32 y);
+void func_0200a310(ActorMotionAreaFollower *self);
+void func_0200a35c(ActorMotionAreaFollower *self);
+void func_0200a3b8(void *actor, void *collisionContext);
+s32 func_0200a63c(void *collisionContext, s32 x, s32 y, s32 z,
+                  s32 actorHeight);
+
+typedef struct ActorCollisionRange {
+    s32 minX;
+    s32 minY;
+    s32 maxX;
+    s32 maxY;
+} ActorCollisionRange;
+
+void func_0200a6ac(ActorCollisionRange *result, void *collisionContext,
+                   const ActorCollisionRange *input, s32 direction,
+                   s32 z, s32 actorHeight);
+s32 func_0200a970(void *actor, s32 deltaX, s32 deltaY,
+                  const ActorCollisionRange *other);
+s32 func_0200ab18(const s8 *bounds);
+s32 func_0200ab30(const s8 *bounds);
+void func_0200ab48(void *actor, s32 deltaX, s32 deltaY, u8 edgeFlags,
+                   const ActorCollisionRange *intersection);
+void func_0200ac14(void *actor, void *collisionContext);
 
 #ifdef __cplusplus
 }

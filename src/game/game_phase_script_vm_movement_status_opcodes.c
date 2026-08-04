@@ -1,0 +1,47 @@
+#include "tingle/game_phase_script_vm.h"
+#include "tingle/vec_fx32.h"
+
+/* Implement actor-script opcodes that wait for and query movement completion. */
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+extern u32 *func_0200b2c0(void *object, u32 first, u32 second, u32 third);
+extern void func_02032dd4(void *actor, const VecFx32Object *value);
+#ifdef __cplusplus
+}
+#endif
+
+/*
+ * If actor flag 0x40 is still set, rewind the opcode by two bytes and return
+ * one so the VM polls again later. Once clear, normalize the actor's auxiliary
+ * state: type byte 1 clears bit 1 at actor->0x54->0x24, three four-word blocks
+ * at offsets 0x38/0x88/0x98 are zeroed, and func_02032dd4 receives a zero
+ * vector. Returns zero after that cleanup.
+ */
+s32 func_020133e8(GamePhaseActorScriptVm *self)
+{
+    u8 *actor = (u8 *)self->actor_84;
+    VecFx32Object zero;
+    if ((*(u32 *)(actor + 0x10) & 0x40) != 0) {
+        self->base.cursor_04 -= 2;
+        return 1;
+    }
+    if (actor[0xe6] == 1)
+        *(u16 *)(*(u8 **)(actor + 0x54) + 0x24) &= (u16)~2;
+    func_0200b2c0(actor + 0x38, 0, 0, 0);
+    func_0200b2c0(actor + 0x88, 0, 0, 0);
+    func_0200b2c0(actor + 0x98, 0, 0, 0);
+    func_0200500c(&zero, 0, 0, 0);
+    func_02032dd4(actor, &zero);
+    func_02005058(&zero);
+    return 0;
+}
+
+/* Push whether actor flag 0x40 is set and return zero. */
+s32 func_020134a0(GamePhaseActorScriptVm *self)
+{
+    u32 flags = *(u32 *)((u8 *)self->actor_84 + 0x10);
+    func_020127f8(&self->base, (flags & 0x40) != 0);
+    return 0;
+}

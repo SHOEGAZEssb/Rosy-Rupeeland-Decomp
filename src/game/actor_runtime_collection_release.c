@@ -1,0 +1,24 @@
+#include "tingle/actor_runtime_collection.h"
+#include "tingle/game_work.h"
+
+/* Release the gameplay object selected by the actor runtime collection. */
+
+typedef void (*ActorRuntimeReleaseMethod)(void *object, s32 reason);
+
+/*
+ * Convert selection bit 1 into pending-release bit 2, clear persistent
+ * GameWork flag 0x400, and invoke the selected object's vtable method at 0x78
+ * with reason 3. Returns no value; the virtual method's broader effect is not
+ * yet confirmed and no hardware is accessed directly.
+ */
+void func_0200af8c(ActorRuntimeCollection *self)
+{
+    void *selected;
+    void **vtable;
+
+    self->flags = (self->flags & ~2) | 4;
+    GameWork_ClearFlag(gGameWork, 0x400);
+    selected = *(void **)((u8 *)self + 0x9c);
+    vtable = *(void ***)selected;
+    ((ActorRuntimeReleaseMethod)vtable[0x78 / 4])(selected, 3);
+}

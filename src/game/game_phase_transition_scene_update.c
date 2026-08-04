@@ -1,0 +1,89 @@
+#include "tingle/game_phase_transition_scene.h"
+#include "tingle/game_work.h"
+#include "tingle/heap.h"
+
+/* Advance fades, shared contexts, and allocation during a game-phase transition. */
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+extern const u8 data_020d53b0[];
+extern void *data_021052fc;
+extern void *gLupyContext;
+extern void func_02002d54(s32 screen, s32 frames);
+extern void func_02002d74(s32 screen, s32 frames);
+extern s32 func_02002d94(void);
+extern s32 func_02002db0(void);
+extern s32 func_02002df0(void);
+extern s32 func_02002e14(void);
+extern void func_02007ff4(void *context);
+extern void func_0201140c(void *context, s32 value);
+extern void *func_0200f878(void *allocation, s32 mode);
+#ifdef __cplusplus
+}
+#endif
+
+typedef void (*GamePhaseTransitionMethod)(void *object, s32 value,
+                                          s32 parameter);
+
+/*
+ * Advance the Scene value08 state machine. State 0 either consumes GameWork
+ * flag 0x3f8 and skips ahead, or starts missing screen-2 fades. State 1 waits
+ * for both fades, resets Lupy state, and invokes context object 0x30e8's vtable
+ * method 0x0c with (0,0x1f). State 2 optionally consumes flag 0x3e8/resetting
+ * GameWork, refreshes the root context, and allocates/initializes a 0x28-byte
+ * mode-1 object. State 3 destroys this scene, consumes flag 0x386 or starts
+ * screen-1 fades, and returns 1. Other/incomplete states return 0.
+ */
+s32 func_0200c6d8(GamePhaseTransitionScene *self)
+{
+    if (self->base.value08 == 0) {
+        if (GameWork_TestFlag(gGameWork, 0x3f8)) {
+            GameWork_ClearFlag(gGameWork, 0x3f8);
+            self->base.value08 = 2;
+            return 0;
+        }
+        if (!func_02002df0())
+            func_02002d54(2, 0x10);
+        if (!func_02002e14())
+            func_02002d74(2, 0x10);
+        self->base.value08++;
+    }
+
+    if (self->base.value08 == 1) {
+        void *object;
+        void **vtable;
+
+        if (!func_02002d94() || !func_02002db0())
+            return 0;
+        func_0201140c(gLupyContext, 0);
+        object = *(void **)((u8 *)data_021052fc + 0x30e8);
+        vtable = *(void ***)object;
+        ((GamePhaseTransitionMethod)vtable[3])(object, 0, 0x1f);
+        self->base.value08++;
+    } else if (self->base.value08 == 2) {
+        void *allocation;
+
+        if (GameWork_TestFlag(gGameWork, 0x3e8)) {
+            GameWork_ClearFlag(gGameWork, 0x3e8);
+            GameWork_Reset();
+        }
+        func_02007ff4(data_021052fc);
+        allocation = Heap_Alloc(0x28, (const char *)data_020d53b0, -4,
+                                &gHeapContext);
+        if (allocation != 0)
+            func_0200f878(allocation, 1);
+        self->base.value08++;
+    } else if (self->base.value08 == 3) {
+        if (self != 0)
+            self->base.vtable->destroyAndFree(&self->base);
+        if (GameWork_TestFlag(gGameWork, 0x386))
+            GameWork_ClearFlag(gGameWork, 0x386);
+        else {
+            func_02002d54(1, 0x10);
+            func_02002d74(1, 0x10);
+        }
+        return 1;
+    }
+    return 0;
+}
