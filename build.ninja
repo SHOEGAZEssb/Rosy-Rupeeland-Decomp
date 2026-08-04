@@ -7,6 +7,26 @@ game_work_cflags = -proc arm946e -O4 -inline off -ipa file -interworking -Cpp_ex
 game_flags_cflags = -proc arm946e -O4 -inline off -ipa file -interworking -Cpp_exceptions off -lang c
 game_work_io_cflags = -proc arm946e -O4 -inline off -ipa file -interworking -Cpp_exceptions off -lang c
 game_phase_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -lang c++
+owned_pointer_list_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
+packed_timer_array_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -DMATCHING -lang c++
+overlay_manager_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
+runtime_init_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c
+heap_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -DMATCHING -lang c
+graphics_hardware_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c
+display_brightness_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -DMATCHING -lang c
+display_controller_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -DMATCHING -lang c++
+debug_text_frame_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c
+debug_sprite_text_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -DMATCHING -lang c++
+system_state_init_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c
+heap_wrappers_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c
+vec_fx32_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
+nitro_file_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
+ncg_file_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -DMATCHING -lang c++
+ncl_file_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -DMATCHING -lang c++
+animation_resource_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
+animation_binding_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
+util_animation_resource_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -DMATCHING -lang c++
+util_animation_position_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -DMATCHING -lang c++
 scene_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -DMATCHING -lang c++
 scene_touch_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -DMATCHING -lang c++
 touch_panel_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -DMATCHING -lang c++
@@ -27,6 +47,16 @@ graphics_sprite_animation_cflags = -proc arm946e -O4 -inline off -ipa function -
 graphics_sprite_frame_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -DMATCHING -lang c++
 graphics_sprite_render_helpers_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -DMATCHING -lang c++
 graphics_sprite_config_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -DMATCHING -lang c++
+graphics_sprite_position_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -DMATCHING -lang c++
+graphics_sprite_position_bounds_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -DMATCHING -lang c++
+graphics_sprite_create_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -DMATCHING -lang c++
+software_canvas_lifecycle_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -DMATCHING -lang c++
+software_canvas_pixel_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
+software_canvas_line_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -DMATCHING -lang c++
+software_canvas_fill_rect_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -DMATCHING -lang c++
+software_canvas_rect_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -DMATCHING -lang c++
+software_canvas_glyph_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
+software_canvas_data_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
 graphics_sprite_group_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -DMATCHING -lang c++
 graphics_sprite_group_owner_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -DMATCHING -lang c++
 graphics_sprite_pool_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -DMATCHING -lang c++
@@ -124,7 +154,7 @@ rule match_report
   command = "$python" tools/report_objdiff.py $report_json $out $report_args
   description = MATCH $out
 
-build build/decomp/delinks/src/system/mt19937.o | build/decomp/delinks/src/system/input.o build/decomp/delinks/src/system/debug_menu.o build/decomp/delinks/src/system/game_work.o build/decomp/delinks/src/system/frame_task_list.o build/decomp/delinks/src/system/game_flags.o build/decomp/delinks/src/system/game_work_io.o build/decomp/delinks/src/system/game_phase.o build/decomp/delinks/src/system/scene_touch_data.o build/decomp/delinks/src/system/scene.o build/decomp/delinks/src/system/scene_touch.o build/decomp/delinks/src/system/touch_panel.o build/decomp/delinks/src/system/graphics_system.o build/decomp/delinks/src/system/frame_task.o build/decomp/delinks/src/system/frame_task_tags.o build/decomp/delinks/src/system/palette_buffer.o build/decomp/delinks/asm/system/palette_buffer_data.o build/decomp/delinks/src/system/thread.o build/decomp/delinks/asm/system/thread_data.o build/decomp/delinks/src/system/bg_scroll.o build/decomp/delinks/src/system/graphics_resources.o build/decomp/delinks/src/graphics/graphics_resource_set.o build/decomp/delinks/src/graphics/graphics_resource_set_ops.o build/decomp/delinks/src/graphics/graphics_resource_set_variant.o build/decomp/delinks/src/graphics/graphics_vram_allocator.o build/decomp/delinks/src/graphics/graphics_render_entry_pool.o build/decomp/delinks/src/graphics/graphics_transfer_queue.o build/decomp/delinks/src/graphics/graphics_indexed_chain_pool.o build/decomp/delinks/src/graphics/graphics_lookup_cache.o build/decomp/delinks/src/graphics/graphics_sprite_state.o build/decomp/delinks/src/graphics/graphics_sprite_animation.o build/decomp/delinks/src/graphics/graphics_sprite_frame.o build/decomp/delinks/src/graphics/graphics_sprite_render_helpers.o build/decomp/delinks/src/graphics/graphics_sprite_config.o build/decomp/delinks/src/graphics/graphics_sprite_group.o build/decomp/delinks/src/graphics/graphics_sprite_group_owner.o build/decomp/delinks/src/graphics/graphics_sprite_pool.o build/decomp/delinks/src/graphics/graphics_sprite_oam.o build/decomp/delinks/src/graphics/graphics_sprite_vram_binding.o build/decomp/delinks/src/graphics/graphics_sprite_indexed_release.o build/decomp/delinks/src/graphics/graphics_sprite_renderer.o build/decomp/delinks/src/graphics/graphics_sprite_renderer_hw.o build/decomp/delinks/src/graphics/graphics_sprite_renderer_accessors.o build/decomp/delinks/src/graphics/graphics_sprite_palette_upload.o build/decomp/delinks/src/graphics/graphics_sprite_text_printf.o build/decomp/delinks/src/graphics/graphics_sprite_text_oam.o build/decomp/delinks/src/graphics/graphics_sprite_font_lookup.o build/decomp/delinks/src/graphics/graphics_sprite_character_map.o build/decomp/delinks/src/graphics/graphics_sprite_number_format.o build/decomp/delinks/src/graphics/graphics_sprite_font_dispatch.o build/decomp/delinks/src/graphics/graphics_sprite_text_layout.o build/decomp/delinks/src/graphics/graphics_sprite_canvas.o build/decomp/delinks/src/graphics/graphics_sprite_runtime_lifecycle.o build/decomp/delinks/src/graphics/graphics_sprite_region_allocator.o build/decomp/delinks/src/graphics/graphics_sprite_small_region_allocator.o build/decomp/delinks/src/graphics/graphics_animation_instance_setup.o build/decomp/delinks/src/graphics/graphics_animation_instance_update.o build/decomp/delinks/src/graphics/graphics_3d_polygon_attr.o build/decomp/delinks/src/graphics/graphics_animation_instance_manager.o build/decomp/delinks/src/graphics/graphics_animation_instance_manager_render.o build/decomp/delinks/src/graphics/graphics_3d_resource_owner.o build/decomp/delinks/src/graphics/graphics_3d_resource_owner_lifecycle.o build/decomp/delinks/src/graphics/graphics_3d_resource_owner_managers.o build/decomp/delinks/src/graphics/graphics_animation_instance_resources.o build/decomp/delinks/src/graphics/graphics_3d_resource_regions.o build/decomp/delinks/src/graphics/graphics_3d_resource_owner_ops.o build/decomp/delinks/src/graphics/graphics_3d_light.o build/decomp/delinks/src/graphics/graphics_3d_light_set.o build/decomp/delinks/src/graphics/graphics_3d_scene_state.o build/decomp/delinks/src/graphics/graphics_3d_scene_state_apply.o build/decomp/delinks/src/graphics/graphics_3d_resource_binding.o build/decomp/delinks/src/graphics/graphics_3d_resource_binding_queries.o build/decomp/delinks/src/graphics/graphics_3d_render_object.o build/decomp/delinks/src/graphics/graphics_3d_render_object_draw.o build/decomp/delinks/src/system/graphics_display.o build/decomp/delinks/src/system/error_display.o build/decomp/delinks/src/system/checked_fs.o build/decomp/delinks/src/system/game_string.o build/decomp/delinks/src/system/game_file.o build/decomp/delinks/src/system/touch_region.o: dsd_delink config/arm9/config.yaml config/arm9/delinks.txt config/arm9/symbols.txt config/arm9/relocs.txt | build/rom/arm9/arm9.bin
+build build/decomp/delinks/src/system/mt19937.o | build/decomp/delinks/src/system/input.o build/decomp/delinks/src/system/debug_menu.o build/decomp/delinks/src/system/game_work.o build/decomp/delinks/src/system/frame_task_list.o build/decomp/delinks/src/system/game_flags.o build/decomp/delinks/src/system/game_work_io.o build/decomp/delinks/src/system/game_phase.o build/decomp/delinks/src/system/owned_pointer_list.o build/decomp/delinks/src/system/owned_pointer_list_data.o build/decomp/delinks/src/system/packed_timer_array.o build/decomp/delinks/src/system/overlay_manager.o build/decomp/delinks/src/system/runtime_init.o build/decomp/delinks/src/system/heap.o build/decomp/delinks/asm/system/heap_state.o build/decomp/delinks/src/system/graphics_hardware.o build/decomp/delinks/src/system/display_brightness.o build/decomp/delinks/src/system/display_controller.o build/decomp/delinks/asm/system/display_controller_state.o build/decomp/delinks/src/system/debug_text_frame.o build/decomp/delinks/src/system/system_state_init.o build/decomp/delinks/src/system/heap_wrappers.o build/decomp/delinks/src/math/vec_fx32.o build/decomp/delinks/src/math/vec_fx32_data.o build/decomp/delinks/src/system/nitro_file.o build/decomp/delinks/src/system/nitro_file_data.o build/decomp/delinks/src/system/ncg_file.o build/decomp/delinks/src/system/ncg_file_data.o build/decomp/delinks/src/system/ncg_file_tag.o build/decomp/delinks/src/system/ncl_file.o build/decomp/delinks/asm/system/ncl_file_signature.o build/decomp/delinks/src/system/ncl_file_data.o build/decomp/delinks/src/system/ncl_file_tag.o build/decomp/delinks/src/system/animation_resource.o build/decomp/delinks/src/system/animation_resource_data.o build/decomp/delinks/src/system/animation_binding.o build/decomp/delinks/asm/system/util_animation_resource_ctor.o build/decomp/delinks/src/system/util_animation_resource.o build/decomp/delinks/src/system/util_animation_resource_data.o build/decomp/delinks/src/system/util_animation_position.o build/decomp/delinks/src/system/util_animation_difference.o build/decomp/delinks/asm/system/util_animation_apply.o build/decomp/delinks/src/system/scene_touch_data.o build/decomp/delinks/src/system/scene.o build/decomp/delinks/src/system/scene_touch.o build/decomp/delinks/src/system/touch_panel.o build/decomp/delinks/src/system/graphics_system.o build/decomp/delinks/src/system/frame_task.o build/decomp/delinks/src/system/frame_task_tags.o build/decomp/delinks/src/system/palette_buffer.o build/decomp/delinks/asm/system/palette_buffer_data.o build/decomp/delinks/src/system/thread.o build/decomp/delinks/asm/system/thread_data.o build/decomp/delinks/src/system/bg_scroll.o build/decomp/delinks/src/system/graphics_resources.o build/decomp/delinks/src/graphics/graphics_resource_set.o build/decomp/delinks/src/graphics/graphics_resource_set_ops.o build/decomp/delinks/src/graphics/graphics_resource_set_variant.o build/decomp/delinks/src/graphics/graphics_vram_allocator.o build/decomp/delinks/src/graphics/graphics_render_entry_pool.o build/decomp/delinks/src/graphics/graphics_transfer_queue.o build/decomp/delinks/src/graphics/graphics_indexed_chain_pool.o build/decomp/delinks/src/graphics/graphics_lookup_cache.o build/decomp/delinks/src/graphics/graphics_sprite_state.o build/decomp/delinks/src/graphics/graphics_sprite_animation.o build/decomp/delinks/src/graphics/graphics_sprite_frame.o build/decomp/delinks/src/graphics/graphics_sprite_render_helpers.o build/decomp/delinks/src/graphics/graphics_sprite_config.o build/decomp/delinks/src/graphics/graphics_sprite_position.o build/decomp/delinks/src/graphics/graphics_sprite_position_bounds.o build/decomp/delinks/src/graphics/graphics_sprite_create.o build/decomp/delinks/src/system/debug_sprite_text.o build/decomp/delinks/src/graphics/software_canvas_lifecycle.o build/decomp/delinks/src/graphics/software_canvas_pixel.o build/decomp/delinks/src/graphics/software_canvas_line.o build/decomp/delinks/src/graphics/software_canvas_fill_rect.o build/decomp/delinks/src/graphics/software_canvas_rect.o build/decomp/delinks/asm/graphics/software_canvas_glyph.o build/decomp/delinks/src/graphics/software_canvas_data.o build/decomp/delinks/src/graphics/graphics_sprite_group.o build/decomp/delinks/src/graphics/graphics_sprite_group_owner.o build/decomp/delinks/src/graphics/graphics_sprite_pool.o build/decomp/delinks/src/graphics/graphics_sprite_oam.o build/decomp/delinks/src/graphics/graphics_sprite_vram_binding.o build/decomp/delinks/src/graphics/graphics_sprite_indexed_release.o build/decomp/delinks/src/graphics/graphics_sprite_renderer.o build/decomp/delinks/src/graphics/graphics_sprite_renderer_hw.o build/decomp/delinks/src/graphics/graphics_sprite_renderer_accessors.o build/decomp/delinks/src/graphics/graphics_sprite_palette_upload.o build/decomp/delinks/src/graphics/graphics_sprite_text_printf.o build/decomp/delinks/src/graphics/graphics_sprite_text_oam.o build/decomp/delinks/src/graphics/graphics_sprite_font_lookup.o build/decomp/delinks/src/graphics/graphics_sprite_character_map.o build/decomp/delinks/src/graphics/graphics_sprite_number_format.o build/decomp/delinks/src/graphics/graphics_sprite_font_dispatch.o build/decomp/delinks/src/graphics/graphics_sprite_text_layout.o build/decomp/delinks/src/graphics/graphics_sprite_canvas.o build/decomp/delinks/src/graphics/graphics_sprite_runtime_lifecycle.o build/decomp/delinks/src/graphics/graphics_sprite_region_allocator.o build/decomp/delinks/src/graphics/graphics_sprite_small_region_allocator.o build/decomp/delinks/src/graphics/graphics_animation_instance_setup.o build/decomp/delinks/src/graphics/graphics_animation_instance_update.o build/decomp/delinks/src/graphics/graphics_3d_polygon_attr.o build/decomp/delinks/src/graphics/graphics_animation_instance_manager.o build/decomp/delinks/src/graphics/graphics_animation_instance_manager_render.o build/decomp/delinks/src/graphics/graphics_3d_resource_owner.o build/decomp/delinks/src/graphics/graphics_3d_resource_owner_lifecycle.o build/decomp/delinks/src/graphics/graphics_3d_resource_owner_managers.o build/decomp/delinks/src/graphics/graphics_animation_instance_resources.o build/decomp/delinks/src/graphics/graphics_3d_resource_regions.o build/decomp/delinks/src/graphics/graphics_3d_resource_owner_ops.o build/decomp/delinks/src/graphics/graphics_3d_light.o build/decomp/delinks/src/graphics/graphics_3d_light_set.o build/decomp/delinks/src/graphics/graphics_3d_scene_state.o build/decomp/delinks/src/graphics/graphics_3d_scene_state_apply.o build/decomp/delinks/src/graphics/graphics_3d_resource_binding.o build/decomp/delinks/src/graphics/graphics_3d_resource_binding_queries.o build/decomp/delinks/src/graphics/graphics_3d_render_object.o build/decomp/delinks/src/graphics/graphics_3d_render_object_draw.o build/decomp/delinks/src/system/graphics_display.o build/decomp/delinks/src/system/error_display.o build/decomp/delinks/src/system/checked_fs.o build/decomp/delinks/src/system/game_string.o build/decomp/delinks/src/system/game_file.o build/decomp/delinks/src/system/touch_region.o: dsd_delink config/arm9/config.yaml config/arm9/delinks.txt config/arm9/symbols.txt config/arm9/relocs.txt | build/rom/arm9/arm9.bin
 
 build build/decomp/src/system/mt19937.o: mwccarm src/system/mt19937.c | include/tingle/random.h include/tingle/types.h
   source = src/system/mt19937.c
@@ -157,6 +187,140 @@ build build/decomp/src/system/game_work_io.o: mwccarm src/system/game_work_io.c 
 build build/decomp/src/system/game_phase.o: mwccarm src/system/game_phase.c | include/tingle/game_phase.h include/tingle/game_work.h include/tingle/types.h
   source = src/system/game_phase.c
   cflags = $game_phase_cflags
+
+build build/decomp/src/system/owned_pointer_list.o: mwccarm src/system/owned_pointer_list.c | include/tingle/owned_pointer_list.h include/tingle/types.h
+  source = src/system/owned_pointer_list.c
+  cflags = $owned_pointer_list_cflags
+
+build build/decomp/src/system/owned_pointer_list_data.o: mwccarm src/system/owned_pointer_list_data.c | include/tingle/owned_pointer_list.h include/tingle/types.h
+  source = src/system/owned_pointer_list_data.c
+  cflags = $owned_pointer_list_cflags
+
+build build/decomp/src/system/packed_timer_array_c.o: mwccarm src/system/packed_timer_array.c | include/tingle/packed_timer_array.h include/tingle/game_work.h include/tingle/types.h
+  source = src/system/packed_timer_array.c
+  cflags = $packed_timer_array_cflags
+
+build build/decomp/src/system/packed_timer_array_data.o: mwasmarm asm/system/packed_timer_array_data.s
+
+build build/decomp/src/system/packed_timer_array.o: mwldarm_partial build/decomp/src/system/packed_timer_array_c.o build/decomp/src/system/packed_timer_array_data.o
+
+build build/decomp/src/system/overlay_manager.o: mwccarm src/system/overlay_manager.c | include/tingle/overlay_manager.h include/tingle/types.h
+  source = src/system/overlay_manager.c
+  cflags = $overlay_manager_cflags
+
+build build/decomp/src/system/runtime_init.o: mwccarm src/system/runtime_init.c | include/tingle/system.h include/tingle/bg_scroll.h include/tingle/types.h
+  source = src/system/runtime_init.c
+  cflags = $runtime_init_cflags
+
+build build/decomp/src/system/heap.o: mwccarm src/system/heap.c | include/tingle/heap.h include/tingle/types.h
+  source = src/system/heap.c
+  cflags = $heap_cflags
+
+build build/decomp/asm/system/heap_state.o: mwasmarm asm/system/heap_state.s
+
+build build/decomp/src/system/graphics_hardware.o: mwccarm src/system/graphics_hardware.c | include/tingle/graphics_hardware.h include/tingle/system.h include/tingle/types.h
+  source = src/system/graphics_hardware.c
+  cflags = $graphics_hardware_cflags
+
+build build/decomp/src/system/display_brightness.o: mwccarm src/system/display_brightness.c | include/tingle/display_brightness.h include/tingle/types.h
+  source = src/system/display_brightness.c
+  cflags = $display_brightness_cflags
+
+build build/decomp/src/system/display_controller.o: mwccarm src/system/display_controller.c | include/tingle/display_controller.h include/tingle/display_brightness.h include/tingle/system.h include/tingle/types.h
+  source = src/system/display_controller.c
+  cflags = $display_controller_cflags
+
+build build/decomp/asm/system/display_controller_state.o: mwasmarm asm/system/display_controller_state.s
+
+build build/decomp/src/system/debug_text_frame.o: mwccarm src/system/debug_text_frame.c | include/tingle/debug_text_frame.h
+  source = src/system/debug_text_frame.c
+  cflags = $debug_text_frame_cflags
+
+build build/decomp/src/system/debug_sprite_text.o: mwccarm src/system/debug_sprite_text.c | include/tingle/debug_sprite_text.h include/tingle/graphics_sprite_renderer.h include/tingle/types.h
+  source = src/system/debug_sprite_text.c
+  cflags = $debug_sprite_text_cflags
+
+build build/decomp/src/system/system_state_init.o: mwccarm src/system/system_state_init.c | include/tingle/system.h include/tingle/types.h
+  source = src/system/system_state_init.c
+  cflags = $system_state_init_cflags
+
+build build/decomp/src/system/heap_wrappers.o: mwccarm src/system/heap_wrappers.c | include/tingle/heap.h include/tingle/types.h
+  source = src/system/heap_wrappers.c
+  cflags = $heap_wrappers_cflags
+
+build build/decomp/src/math/vec_fx32.o: mwccarm src/math/vec_fx32.c | include/tingle/vec_fx32.h include/tingle/heap.h include/tingle/types.h
+  source = src/math/vec_fx32.c
+  cflags = $vec_fx32_cflags
+
+build build/decomp/src/math/vec_fx32_data.o: mwccarm src/math/vec_fx32_data.c | include/tingle/vec_fx32.h include/tingle/types.h
+  source = src/math/vec_fx32_data.c
+  cflags = $vec_fx32_cflags
+
+build build/decomp/src/system/nitro_file.o: mwccarm src/system/nitro_file.c | include/tingle/nitro_file.h include/tingle/game_file.h include/tingle/checked_fs.h include/tingle/heap.h include/tingle/types.h
+  source = src/system/nitro_file.c
+  cflags = $nitro_file_cflags
+
+build build/decomp/src/system/nitro_file_data.o: mwccarm src/system/nitro_file_data.c | include/tingle/nitro_file.h include/tingle/game_file.h include/tingle/checked_fs.h include/tingle/types.h
+  source = src/system/nitro_file_data.c
+  cflags = $nitro_file_cflags
+
+build build/decomp/src/system/ncg_file.o: mwccarm src/system/ncg_file.c | include/tingle/ncg_file.h include/tingle/nitro_file.h include/tingle/game_file.h include/tingle/checked_fs.h include/tingle/heap.h include/tingle/types.h
+  source = src/system/ncg_file.c
+  cflags = $ncg_file_cflags
+
+build build/decomp/src/system/ncg_file_data.o: mwccarm src/system/ncg_file_data.c | include/tingle/ncg_file.h include/tingle/nitro_file.h include/tingle/game_file.h include/tingle/checked_fs.h include/tingle/types.h
+  source = src/system/ncg_file_data.c
+  cflags = $ncg_file_cflags
+
+build build/decomp/src/system/ncg_file_tag.o: mwccarm src/system/ncg_file_tag.c | include/tingle/types.h
+  source = src/system/ncg_file_tag.c
+  cflags = $ncg_file_cflags
+
+build build/decomp/src/system/ncl_file.o: mwccarm src/system/ncl_file.c | include/tingle/ncl_file.h include/tingle/nitro_file.h include/tingle/game_file.h include/tingle/checked_fs.h include/tingle/heap.h include/tingle/types.h
+  source = src/system/ncl_file.c
+  cflags = $ncl_file_cflags
+
+build build/decomp/asm/system/ncl_file_signature.o: mwasmarm asm/system/ncl_file_signature.s
+
+build build/decomp/src/system/ncl_file_data.o: mwccarm src/system/ncl_file_data.c | include/tingle/ncl_file.h include/tingle/nitro_file.h include/tingle/game_file.h include/tingle/checked_fs.h include/tingle/types.h
+  source = src/system/ncl_file_data.c
+  cflags = $ncl_file_cflags
+
+build build/decomp/src/system/ncl_file_tag.o: mwccarm src/system/ncl_file_tag.c | include/tingle/types.h
+  source = src/system/ncl_file_tag.c
+  cflags = $ncl_file_cflags
+
+build build/decomp/src/system/animation_resource.o: mwccarm src/system/animation_resource.c | include/tingle/animation_resource.h include/tingle/heap.h include/tingle/types.h
+  source = src/system/animation_resource.c
+  cflags = $animation_resource_cflags
+
+build build/decomp/src/system/animation_resource_data.o: mwccarm src/system/animation_resource_data.c | include/tingle/animation_resource.h include/tingle/types.h
+  source = src/system/animation_resource_data.c
+  cflags = $animation_resource_cflags
+
+build build/decomp/src/system/animation_binding.o: mwccarm src/system/animation_binding.c | include/tingle/animation_binding.h include/tingle/types.h
+  source = src/system/animation_binding.c
+  cflags = $animation_binding_cflags
+
+build build/decomp/asm/system/util_animation_resource_ctor.o: mwasmarm asm/system/util_animation_resource_ctor.s
+
+build build/decomp/src/system/util_animation_resource.o: mwccarm src/system/util_animation_resource.c | include/tingle/util_animation_resource.h include/tingle/animation_binding.h include/tingle/scene_touch.h include/tingle/scene.h include/tingle/heap.h include/tingle/types.h
+  source = src/system/util_animation_resource.c
+  cflags = $util_animation_resource_cflags
+
+build build/decomp/src/system/util_animation_resource_data.o: mwccarm src/system/util_animation_resource_data.c | include/tingle/util_animation_resource.h include/tingle/animation_binding.h include/tingle/scene_touch.h include/tingle/scene.h include/tingle/types.h
+  source = src/system/util_animation_resource_data.c
+  cflags = $util_animation_resource_cflags
+
+build build/decomp/src/system/util_animation_position.o: mwccarm src/system/util_animation_position.c | include/tingle/util_animation_resource.h include/tingle/animation_binding.h include/tingle/scene_touch.h include/tingle/scene.h include/tingle/types.h
+  source = src/system/util_animation_position.c
+  cflags = $util_animation_position_cflags
+
+build build/decomp/src/system/util_animation_difference.o: mwccarm src/system/util_animation_difference.c | include/tingle/util_animation_resource.h include/tingle/animation_binding.h include/tingle/scene_touch.h include/tingle/scene.h include/tingle/types.h
+  source = src/system/util_animation_difference.c
+  cflags = $util_animation_position_cflags
+
+build build/decomp/asm/system/util_animation_apply.o: mwasmarm asm/system/util_animation_apply.s
 
 build build/decomp/src/system/scene.o: mwccarm src/system/scene.c | include/tingle/scene.h include/tingle/frame_task.h include/tingle/types.h
   source = src/system/scene.c
@@ -249,6 +413,48 @@ build build/decomp/src/graphics/graphics_sprite_render_helpers.o: mwccarm src/gr
 build build/decomp/src/graphics/graphics_sprite_config.o: mwccarm src/graphics/graphics_sprite_config.c | include/tingle/graphics_sprite_state.h include/tingle/types.h
   source = src/graphics/graphics_sprite_config.c
   cflags = $graphics_sprite_config_cflags
+
+build build/decomp/src/graphics/graphics_sprite_position.o: mwccarm src/graphics/graphics_sprite_position.c | include/tingle/graphics_sprite_position.h include/tingle/graphics_sprite_state.h include/tingle/types.h
+  source = src/graphics/graphics_sprite_position.c
+  cflags = $graphics_sprite_position_cflags
+
+build build/decomp/src/graphics/graphics_sprite_position_bounds.o: mwccarm src/graphics/graphics_sprite_position_bounds.c | include/tingle/graphics_sprite_position.h include/tingle/graphics_sprite_state.h include/tingle/types.h
+  source = src/graphics/graphics_sprite_position_bounds.c
+  cflags = $graphics_sprite_position_bounds_cflags
+
+build build/decomp/src/graphics/graphics_sprite_create.o: mwccarm src/graphics/graphics_sprite_create.c | include/tingle/graphics_sprite_create.h include/tingle/graphics_sprite_group.h include/tingle/graphics_sprite_state.h include/tingle/types.h
+  source = src/graphics/graphics_sprite_create.c
+  cflags = $graphics_sprite_create_cflags
+
+build build/decomp/src/graphics/software_canvas_lifecycle.o: mwccarm src/graphics/software_canvas_lifecycle.c | include/tingle/software_canvas.h include/tingle/heap.h include/tingle/types.h
+  source = src/graphics/software_canvas_lifecycle.c
+  cflags = $software_canvas_lifecycle_cflags
+
+build build/decomp/src/graphics/software_canvas_pixel.o: mwccarm src/graphics/software_canvas_pixel.c | include/tingle/software_canvas.h include/tingle/types.h
+  source = src/graphics/software_canvas_pixel.c
+  cflags = $software_canvas_pixel_cflags
+
+build build/decomp/src/graphics/software_canvas_line.o: mwccarm src/graphics/software_canvas_line.c | include/tingle/software_canvas.h include/tingle/types.h
+  source = src/graphics/software_canvas_line.c
+  cflags = $software_canvas_line_cflags
+
+build build/decomp/src/graphics/software_canvas_fill_rect.o: mwccarm src/graphics/software_canvas_fill_rect.c | include/tingle/software_canvas.h include/tingle/types.h
+  source = src/graphics/software_canvas_fill_rect.c
+  cflags = $software_canvas_fill_rect_cflags
+
+build build/decomp/src/graphics/software_canvas_rect.o: mwccarm src/graphics/software_canvas_rect.c | include/tingle/software_canvas.h include/tingle/types.h
+  source = src/graphics/software_canvas_rect.c
+  cflags = $software_canvas_rect_cflags
+
+build build/decomp/src/graphics/software_canvas_glyph.o: mwccarm src/graphics/software_canvas_glyph.c | include/tingle/software_canvas.h include/tingle/types.h
+  source = src/graphics/software_canvas_glyph.c
+  cflags = $software_canvas_glyph_cflags
+
+build build/decomp/asm/graphics/software_canvas_glyph.o: mwasmarm asm/graphics/software_canvas_glyph.s
+
+build build/decomp/src/graphics/software_canvas_data.o: mwccarm src/graphics/software_canvas_data.c | include/tingle/software_canvas.h include/tingle/types.h
+  source = src/graphics/software_canvas_data.c
+  cflags = $software_canvas_data_cflags
 
 build build/decomp/src/graphics/graphics_sprite_group.o: mwccarm src/graphics/graphics_sprite_group.c | include/tingle/graphics_sprite_group.h include/tingle/graphics_sprite_state.h include/tingle/types.h
   source = src/graphics/graphics_sprite_group.c
@@ -446,13 +652,13 @@ build build/decomp/src/system/frame_task_list.o: mwccarm src/system/frame_task_l
   source = src/system/frame_task_list.c
   cflags = $frame_task_cflags
 
-build build/decomp/lib/tingle.a: mwldarm_archive build/decomp/src/system/mt19937.o build/decomp/src/system/input.o build/decomp/src/system/debug_menu.o build/decomp/src/system/game_work.o build/decomp/src/system/frame_task_list.o build/decomp/src/system/game_flags.o build/decomp/src/system/game_work_io.o build/decomp/src/system/game_phase.o build/decomp/src/system/scene_touch_data.o build/decomp/src/system/scene.o build/decomp/src/system/scene_touch.o build/decomp/src/system/touch_panel.o build/decomp/src/system/graphics_system.o build/decomp/src/system/frame_task.o build/decomp/src/system/frame_task_tags.o build/decomp/src/system/palette_buffer.o build/decomp/asm/system/palette_buffer_data.o build/decomp/src/system/thread.o build/decomp/asm/system/thread_data.o build/decomp/src/system/bg_scroll.o build/decomp/src/system/graphics_resources.o build/decomp/src/graphics/graphics_resource_set.o build/decomp/src/graphics/graphics_resource_set_ops.o build/decomp/src/graphics/graphics_resource_set_variant.o build/decomp/src/graphics/graphics_vram_allocator.o build/decomp/src/graphics/graphics_render_entry_pool.o build/decomp/src/graphics/graphics_transfer_queue.o build/decomp/src/graphics/graphics_indexed_chain_pool.o build/decomp/src/graphics/graphics_lookup_cache.o build/decomp/src/graphics/graphics_sprite_state.o build/decomp/src/graphics/graphics_sprite_animation.o build/decomp/src/graphics/graphics_sprite_frame.o build/decomp/src/graphics/graphics_sprite_render_helpers.o build/decomp/src/graphics/graphics_sprite_config.o build/decomp/src/graphics/graphics_sprite_group.o build/decomp/src/graphics/graphics_sprite_group_owner.o build/decomp/src/graphics/graphics_sprite_pool.o build/decomp/src/graphics/graphics_sprite_oam.o build/decomp/src/graphics/graphics_sprite_vram_binding.o build/decomp/src/graphics/graphics_sprite_indexed_release.o build/decomp/src/graphics/graphics_sprite_renderer.o build/decomp/src/graphics/graphics_sprite_renderer_hw.o build/decomp/src/graphics/graphics_sprite_renderer_accessors.o build/decomp/src/graphics/graphics_sprite_palette_upload.o build/decomp/src/graphics/graphics_sprite_text_printf.o build/decomp/src/graphics/graphics_sprite_text_oam.o build/decomp/src/graphics/graphics_sprite_font_lookup.o build/decomp/src/graphics/graphics_sprite_character_map.o build/decomp/src/graphics/graphics_sprite_number_format.o build/decomp/src/graphics/graphics_sprite_font_dispatch.o build/decomp/src/graphics/graphics_sprite_text_layout.o build/decomp/src/graphics/graphics_sprite_canvas.o build/decomp/src/graphics/graphics_sprite_runtime_lifecycle.o build/decomp/src/graphics/graphics_sprite_region_allocator.o build/decomp/src/graphics/graphics_sprite_small_region_allocator.o build/decomp/src/graphics/graphics_animation_instance_setup.o build/decomp/src/graphics/graphics_animation_instance_update.o build/decomp/src/graphics/graphics_3d_polygon_attr.o build/decomp/src/graphics/graphics_animation_instance_manager.o build/decomp/src/graphics/graphics_animation_instance_manager_render.o build/decomp/src/graphics/graphics_3d_resource_owner.o build/decomp/src/graphics/graphics_3d_resource_owner_lifecycle.o build/decomp/src/graphics/graphics_3d_resource_owner_managers.o build/decomp/src/graphics/graphics_animation_instance_resources.o build/decomp/src/graphics/graphics_3d_resource_regions.o build/decomp/src/graphics/graphics_3d_resource_owner_ops.o build/decomp/src/graphics/graphics_3d_light.o build/decomp/src/graphics/graphics_3d_light_set.o build/decomp/src/graphics/graphics_3d_scene_state.o build/decomp/src/graphics/graphics_3d_scene_state_apply.o build/decomp/src/graphics/graphics_3d_resource_binding.o build/decomp/src/graphics/graphics_3d_resource_binding_queries.o build/decomp/src/graphics/graphics_3d_render_object.o build/decomp/src/graphics/graphics_3d_render_object_draw.o build/decomp/src/system/graphics_display.o build/decomp/src/system/error_display.o build/decomp/src/system/checked_fs.o build/decomp/src/system/game_string.o build/decomp/src/system/game_file.o build/decomp/src/system/touch_region.o
+build build/decomp/lib/tingle.a: mwldarm_archive build/decomp/src/system/mt19937.o build/decomp/src/system/input.o build/decomp/src/system/debug_menu.o build/decomp/src/system/game_work.o build/decomp/src/system/frame_task_list.o build/decomp/src/system/game_flags.o build/decomp/src/system/game_work_io.o build/decomp/src/system/game_phase.o build/decomp/src/system/owned_pointer_list.o build/decomp/src/system/owned_pointer_list_data.o build/decomp/src/system/packed_timer_array.o build/decomp/src/system/overlay_manager.o build/decomp/src/system/runtime_init.o build/decomp/src/system/heap.o build/decomp/asm/system/heap_state.o build/decomp/src/system/graphics_hardware.o build/decomp/src/system/display_brightness.o build/decomp/src/system/display_controller.o build/decomp/asm/system/display_controller_state.o build/decomp/src/system/debug_text_frame.o build/decomp/src/system/system_state_init.o build/decomp/src/system/heap_wrappers.o build/decomp/src/math/vec_fx32.o build/decomp/src/math/vec_fx32_data.o build/decomp/src/system/nitro_file.o build/decomp/src/system/nitro_file_data.o build/decomp/src/system/ncg_file.o build/decomp/src/system/ncg_file_data.o build/decomp/src/system/ncg_file_tag.o build/decomp/src/system/ncl_file.o build/decomp/asm/system/ncl_file_signature.o build/decomp/src/system/ncl_file_data.o build/decomp/src/system/ncl_file_tag.o build/decomp/src/system/animation_resource.o build/decomp/src/system/animation_resource_data.o build/decomp/src/system/animation_binding.o build/decomp/asm/system/util_animation_resource_ctor.o build/decomp/src/system/util_animation_resource.o build/decomp/src/system/util_animation_resource_data.o build/decomp/src/system/util_animation_position.o build/decomp/src/system/util_animation_difference.o build/decomp/asm/system/util_animation_apply.o build/decomp/src/system/scene_touch_data.o build/decomp/src/system/scene.o build/decomp/src/system/scene_touch.o build/decomp/src/system/touch_panel.o build/decomp/src/system/graphics_system.o build/decomp/src/system/frame_task.o build/decomp/src/system/frame_task_tags.o build/decomp/src/system/palette_buffer.o build/decomp/asm/system/palette_buffer_data.o build/decomp/src/system/thread.o build/decomp/asm/system/thread_data.o build/decomp/src/system/bg_scroll.o build/decomp/src/system/graphics_resources.o build/decomp/src/graphics/graphics_resource_set.o build/decomp/src/graphics/graphics_resource_set_ops.o build/decomp/src/graphics/graphics_resource_set_variant.o build/decomp/src/graphics/graphics_vram_allocator.o build/decomp/src/graphics/graphics_render_entry_pool.o build/decomp/src/graphics/graphics_transfer_queue.o build/decomp/src/graphics/graphics_indexed_chain_pool.o build/decomp/src/graphics/graphics_lookup_cache.o build/decomp/src/graphics/graphics_sprite_state.o build/decomp/src/graphics/graphics_sprite_animation.o build/decomp/src/graphics/graphics_sprite_frame.o build/decomp/src/graphics/graphics_sprite_render_helpers.o build/decomp/src/graphics/graphics_sprite_config.o build/decomp/src/graphics/graphics_sprite_position.o build/decomp/src/graphics/graphics_sprite_position_bounds.o build/decomp/src/graphics/graphics_sprite_create.o build/decomp/src/system/debug_sprite_text.o build/decomp/src/graphics/software_canvas_lifecycle.o build/decomp/src/graphics/software_canvas_pixel.o build/decomp/src/graphics/software_canvas_line.o build/decomp/src/graphics/software_canvas_fill_rect.o build/decomp/src/graphics/software_canvas_rect.o build/decomp/asm/graphics/software_canvas_glyph.o build/decomp/src/graphics/software_canvas_data.o build/decomp/src/graphics/graphics_sprite_group.o build/decomp/src/graphics/graphics_sprite_group_owner.o build/decomp/src/graphics/graphics_sprite_pool.o build/decomp/src/graphics/graphics_sprite_oam.o build/decomp/src/graphics/graphics_sprite_vram_binding.o build/decomp/src/graphics/graphics_sprite_indexed_release.o build/decomp/src/graphics/graphics_sprite_renderer.o build/decomp/src/graphics/graphics_sprite_renderer_hw.o build/decomp/src/graphics/graphics_sprite_renderer_accessors.o build/decomp/src/graphics/graphics_sprite_palette_upload.o build/decomp/src/graphics/graphics_sprite_text_printf.o build/decomp/src/graphics/graphics_sprite_text_oam.o build/decomp/src/graphics/graphics_sprite_font_lookup.o build/decomp/src/graphics/graphics_sprite_character_map.o build/decomp/src/graphics/graphics_sprite_number_format.o build/decomp/src/graphics/graphics_sprite_font_dispatch.o build/decomp/src/graphics/graphics_sprite_text_layout.o build/decomp/src/graphics/graphics_sprite_canvas.o build/decomp/src/graphics/graphics_sprite_runtime_lifecycle.o build/decomp/src/graphics/graphics_sprite_region_allocator.o build/decomp/src/graphics/graphics_sprite_small_region_allocator.o build/decomp/src/graphics/graphics_animation_instance_setup.o build/decomp/src/graphics/graphics_animation_instance_update.o build/decomp/src/graphics/graphics_3d_polygon_attr.o build/decomp/src/graphics/graphics_animation_instance_manager.o build/decomp/src/graphics/graphics_animation_instance_manager_render.o build/decomp/src/graphics/graphics_3d_resource_owner.o build/decomp/src/graphics/graphics_3d_resource_owner_lifecycle.o build/decomp/src/graphics/graphics_3d_resource_owner_managers.o build/decomp/src/graphics/graphics_animation_instance_resources.o build/decomp/src/graphics/graphics_3d_resource_regions.o build/decomp/src/graphics/graphics_3d_resource_owner_ops.o build/decomp/src/graphics/graphics_3d_light.o build/decomp/src/graphics/graphics_3d_light_set.o build/decomp/src/graphics/graphics_3d_scene_state.o build/decomp/src/graphics/graphics_3d_scene_state_apply.o build/decomp/src/graphics/graphics_3d_resource_binding.o build/decomp/src/graphics/graphics_3d_resource_binding_queries.o build/decomp/src/graphics/graphics_3d_render_object.o build/decomp/src/graphics/graphics_3d_render_object_draw.o build/decomp/src/system/graphics_display.o build/decomp/src/system/error_display.o build/decomp/src/system/checked_fs.o build/decomp/src/system/game_string.o build/decomp/src/system/game_file.o build/decomp/src/system/touch_region.o
 
 build build/decomp/arm9.lcf build/decomp/objects.txt: dsd_lcf config/arm9/config.yaml config/arm9/delinks.txt config/arm9/symbols.txt config/arm9/relocs.txt | build/decomp/delinks/src/system/mt19937.o
 
-build build/decomp/objects.source.txt: prepare_link_objects build/decomp/objects.txt config/arm9/link_replacements.txt tools/prepare_link_objects.ps1 | build/decomp/src/system/mt19937.o build/decomp/src/system/input.o build/decomp/src/system/debug_menu.o build/decomp/src/system/game_work.o build/decomp/src/system/frame_task_list.o build/decomp/src/system/game_flags.o build/decomp/src/system/game_work_io.o build/decomp/src/system/game_phase.o build/decomp/src/system/scene_touch_data.o build/decomp/src/system/scene.o build/decomp/src/system/scene_touch.o build/decomp/src/system/touch_panel.o build/decomp/src/system/graphics_system.o build/decomp/src/system/frame_task.o build/decomp/src/system/frame_task_tags.o build/decomp/src/system/palette_buffer.o build/decomp/asm/system/palette_buffer_data.o build/decomp/src/system/thread.o build/decomp/asm/system/thread_data.o build/decomp/src/system/bg_scroll.o build/decomp/src/system/graphics_resources.o build/decomp/src/graphics/graphics_resource_set.o build/decomp/src/graphics/graphics_resource_set_ops.o build/decomp/src/graphics/graphics_resource_set_variant.o build/decomp/src/graphics/graphics_vram_allocator.o build/decomp/src/graphics/graphics_render_entry_pool.o build/decomp/src/graphics/graphics_transfer_queue.o build/decomp/src/graphics/graphics_indexed_chain_pool.o build/decomp/src/graphics/graphics_lookup_cache.o build/decomp/src/graphics/graphics_sprite_state.o build/decomp/src/graphics/graphics_sprite_animation.o build/decomp/src/graphics/graphics_sprite_frame.o build/decomp/src/graphics/graphics_sprite_render_helpers.o build/decomp/src/graphics/graphics_sprite_config.o build/decomp/src/graphics/graphics_sprite_group.o build/decomp/src/graphics/graphics_sprite_group_owner.o build/decomp/src/graphics/graphics_sprite_pool.o build/decomp/src/graphics/graphics_sprite_oam.o build/decomp/src/graphics/graphics_sprite_vram_binding.o build/decomp/src/graphics/graphics_sprite_indexed_release.o build/decomp/src/graphics/graphics_sprite_renderer.o build/decomp/src/graphics/graphics_sprite_renderer_hw.o build/decomp/src/graphics/graphics_sprite_renderer_accessors.o build/decomp/src/graphics/graphics_sprite_palette_upload.o build/decomp/src/graphics/graphics_sprite_text_printf.o build/decomp/src/graphics/graphics_sprite_text_oam.o build/decomp/src/graphics/graphics_sprite_font_lookup.o build/decomp/src/graphics/graphics_sprite_character_map.o build/decomp/src/graphics/graphics_sprite_number_format.o build/decomp/src/graphics/graphics_sprite_font_dispatch.o build/decomp/src/graphics/graphics_sprite_text_layout.o build/decomp/src/graphics/graphics_sprite_canvas.o build/decomp/src/graphics/graphics_sprite_runtime_lifecycle.o build/decomp/src/graphics/graphics_sprite_region_allocator.o build/decomp/src/graphics/graphics_sprite_small_region_allocator.o build/decomp/src/graphics/graphics_animation_instance_setup.o build/decomp/src/graphics/graphics_animation_instance_update.o build/decomp/src/graphics/graphics_3d_polygon_attr.o build/decomp/src/graphics/graphics_animation_instance_manager.o build/decomp/src/graphics/graphics_animation_instance_manager_render.o build/decomp/src/graphics/graphics_3d_resource_owner.o build/decomp/src/graphics/graphics_3d_resource_owner_lifecycle.o build/decomp/src/graphics/graphics_3d_resource_owner_managers.o build/decomp/src/graphics/graphics_animation_instance_resources.o build/decomp/src/graphics/graphics_3d_resource_regions.o build/decomp/src/graphics/graphics_3d_resource_owner_ops.o build/decomp/src/graphics/graphics_3d_light.o build/decomp/src/graphics/graphics_3d_light_set.o build/decomp/src/graphics/graphics_3d_scene_state.o build/decomp/src/graphics/graphics_3d_scene_state_apply.o build/decomp/src/graphics/graphics_3d_resource_binding.o build/decomp/src/graphics/graphics_3d_resource_binding_queries.o build/decomp/src/graphics/graphics_3d_render_object.o build/decomp/src/graphics/graphics_3d_render_object_draw.o build/decomp/src/system/graphics_display.o build/decomp/src/system/error_display.o build/decomp/src/system/checked_fs.o build/decomp/src/system/game_string.o build/decomp/src/system/game_file.o build/decomp/src/system/touch_region.o
+build build/decomp/objects.source.txt: prepare_link_objects build/decomp/objects.txt config/arm9/link_replacements.txt tools/prepare_link_objects.ps1 | build/decomp/src/system/mt19937.o build/decomp/src/system/input.o build/decomp/src/system/debug_menu.o build/decomp/src/system/game_work.o build/decomp/src/system/frame_task_list.o build/decomp/src/system/game_flags.o build/decomp/src/system/game_work_io.o build/decomp/src/system/game_phase.o build/decomp/src/system/owned_pointer_list.o build/decomp/src/system/owned_pointer_list_data.o build/decomp/src/system/packed_timer_array.o build/decomp/src/system/overlay_manager.o build/decomp/src/system/runtime_init.o build/decomp/src/system/heap.o build/decomp/asm/system/heap_state.o build/decomp/src/system/graphics_hardware.o build/decomp/src/system/display_brightness.o build/decomp/src/system/display_controller.o build/decomp/asm/system/display_controller_state.o build/decomp/src/system/debug_text_frame.o build/decomp/src/system/system_state_init.o build/decomp/src/system/heap_wrappers.o build/decomp/src/math/vec_fx32.o build/decomp/src/math/vec_fx32_data.o build/decomp/src/system/nitro_file.o build/decomp/src/system/nitro_file_data.o build/decomp/src/system/ncg_file.o build/decomp/src/system/ncg_file_data.o build/decomp/src/system/ncg_file_tag.o build/decomp/src/system/ncl_file.o build/decomp/asm/system/ncl_file_signature.o build/decomp/src/system/ncl_file_data.o build/decomp/src/system/ncl_file_tag.o build/decomp/src/system/animation_resource.o build/decomp/src/system/animation_resource_data.o build/decomp/src/system/animation_binding.o build/decomp/asm/system/util_animation_resource_ctor.o build/decomp/src/system/util_animation_resource.o build/decomp/src/system/util_animation_resource_data.o build/decomp/src/system/util_animation_position.o build/decomp/src/system/util_animation_difference.o build/decomp/asm/system/util_animation_apply.o build/decomp/src/system/scene_touch_data.o build/decomp/src/system/scene.o build/decomp/src/system/scene_touch.o build/decomp/src/system/touch_panel.o build/decomp/src/system/graphics_system.o build/decomp/src/system/frame_task.o build/decomp/src/system/frame_task_tags.o build/decomp/src/system/palette_buffer.o build/decomp/asm/system/palette_buffer_data.o build/decomp/src/system/thread.o build/decomp/asm/system/thread_data.o build/decomp/src/system/bg_scroll.o build/decomp/src/system/graphics_resources.o build/decomp/src/graphics/graphics_resource_set.o build/decomp/src/graphics/graphics_resource_set_ops.o build/decomp/src/graphics/graphics_resource_set_variant.o build/decomp/src/graphics/graphics_vram_allocator.o build/decomp/src/graphics/graphics_render_entry_pool.o build/decomp/src/graphics/graphics_transfer_queue.o build/decomp/src/graphics/graphics_indexed_chain_pool.o build/decomp/src/graphics/graphics_lookup_cache.o build/decomp/src/graphics/graphics_sprite_state.o build/decomp/src/graphics/graphics_sprite_animation.o build/decomp/src/graphics/graphics_sprite_frame.o build/decomp/src/graphics/graphics_sprite_render_helpers.o build/decomp/src/graphics/graphics_sprite_config.o build/decomp/src/graphics/graphics_sprite_position.o build/decomp/src/graphics/graphics_sprite_position_bounds.o build/decomp/src/graphics/graphics_sprite_create.o build/decomp/src/system/debug_sprite_text.o build/decomp/src/graphics/software_canvas_lifecycle.o build/decomp/src/graphics/software_canvas_pixel.o build/decomp/src/graphics/software_canvas_line.o build/decomp/src/graphics/software_canvas_fill_rect.o build/decomp/src/graphics/software_canvas_rect.o build/decomp/asm/graphics/software_canvas_glyph.o build/decomp/src/graphics/software_canvas_data.o build/decomp/src/graphics/graphics_sprite_group.o build/decomp/src/graphics/graphics_sprite_group_owner.o build/decomp/src/graphics/graphics_sprite_pool.o build/decomp/src/graphics/graphics_sprite_oam.o build/decomp/src/graphics/graphics_sprite_vram_binding.o build/decomp/src/graphics/graphics_sprite_indexed_release.o build/decomp/src/graphics/graphics_sprite_renderer.o build/decomp/src/graphics/graphics_sprite_renderer_hw.o build/decomp/src/graphics/graphics_sprite_renderer_accessors.o build/decomp/src/graphics/graphics_sprite_palette_upload.o build/decomp/src/graphics/graphics_sprite_text_printf.o build/decomp/src/graphics/graphics_sprite_text_oam.o build/decomp/src/graphics/graphics_sprite_font_lookup.o build/decomp/src/graphics/graphics_sprite_character_map.o build/decomp/src/graphics/graphics_sprite_number_format.o build/decomp/src/graphics/graphics_sprite_font_dispatch.o build/decomp/src/graphics/graphics_sprite_text_layout.o build/decomp/src/graphics/graphics_sprite_canvas.o build/decomp/src/graphics/graphics_sprite_runtime_lifecycle.o build/decomp/src/graphics/graphics_sprite_region_allocator.o build/decomp/src/graphics/graphics_sprite_small_region_allocator.o build/decomp/src/graphics/graphics_animation_instance_setup.o build/decomp/src/graphics/graphics_animation_instance_update.o build/decomp/src/graphics/graphics_3d_polygon_attr.o build/decomp/src/graphics/graphics_animation_instance_manager.o build/decomp/src/graphics/graphics_animation_instance_manager_render.o build/decomp/src/graphics/graphics_3d_resource_owner.o build/decomp/src/graphics/graphics_3d_resource_owner_lifecycle.o build/decomp/src/graphics/graphics_3d_resource_owner_managers.o build/decomp/src/graphics/graphics_animation_instance_resources.o build/decomp/src/graphics/graphics_3d_resource_regions.o build/decomp/src/graphics/graphics_3d_resource_owner_ops.o build/decomp/src/graphics/graphics_3d_light.o build/decomp/src/graphics/graphics_3d_light_set.o build/decomp/src/graphics/graphics_3d_scene_state.o build/decomp/src/graphics/graphics_3d_scene_state_apply.o build/decomp/src/graphics/graphics_3d_resource_binding.o build/decomp/src/graphics/graphics_3d_resource_binding_queries.o build/decomp/src/graphics/graphics_3d_render_object.o build/decomp/src/graphics/graphics_3d_render_object_draw.o build/decomp/src/system/graphics_display.o build/decomp/src/system/error_display.o build/decomp/src/system/checked_fs.o build/decomp/src/system/game_string.o build/decomp/src/system/game_file.o build/decomp/src/system/touch_region.o
 
-build build/decomp/tingle.elf | build/decomp/build/arm9.bin build/decomp/build/itcm.bin build/decomp/build/dtcm.bin: mwldarm_link build/decomp/objects.source.txt build/decomp/arm9.lcf | build/decomp/src/system/mt19937.o build/decomp/src/system/input.o build/decomp/src/system/debug_menu.o build/decomp/src/system/game_work.o build/decomp/src/system/frame_task_list.o build/decomp/src/system/game_flags.o build/decomp/src/system/game_work_io.o build/decomp/src/system/game_phase.o build/decomp/src/system/scene_touch_data.o build/decomp/src/system/scene.o build/decomp/src/system/scene_touch.o build/decomp/src/system/touch_panel.o build/decomp/src/system/graphics_system.o build/decomp/src/system/frame_task.o build/decomp/src/system/frame_task_tags.o build/decomp/src/system/palette_buffer.o build/decomp/asm/system/palette_buffer_data.o build/decomp/src/system/thread.o build/decomp/asm/system/thread_data.o build/decomp/src/system/bg_scroll.o build/decomp/src/system/graphics_resources.o build/decomp/src/graphics/graphics_resource_set.o build/decomp/src/graphics/graphics_resource_set_ops.o build/decomp/src/graphics/graphics_resource_set_variant.o build/decomp/src/graphics/graphics_vram_allocator.o build/decomp/src/graphics/graphics_render_entry_pool.o build/decomp/src/graphics/graphics_transfer_queue.o build/decomp/src/graphics/graphics_indexed_chain_pool.o build/decomp/src/graphics/graphics_lookup_cache.o build/decomp/src/graphics/graphics_sprite_state.o build/decomp/src/graphics/graphics_sprite_animation.o build/decomp/src/graphics/graphics_sprite_frame.o build/decomp/src/graphics/graphics_sprite_render_helpers.o build/decomp/src/graphics/graphics_sprite_config.o build/decomp/src/graphics/graphics_sprite_group.o build/decomp/src/graphics/graphics_sprite_group_owner.o build/decomp/src/graphics/graphics_sprite_pool.o build/decomp/src/graphics/graphics_sprite_oam.o build/decomp/src/graphics/graphics_sprite_vram_binding.o build/decomp/src/graphics/graphics_sprite_indexed_release.o build/decomp/src/graphics/graphics_sprite_renderer.o build/decomp/src/graphics/graphics_sprite_renderer_hw.o build/decomp/src/graphics/graphics_sprite_renderer_accessors.o build/decomp/src/graphics/graphics_sprite_palette_upload.o build/decomp/src/graphics/graphics_sprite_text_printf.o build/decomp/src/graphics/graphics_sprite_text_oam.o build/decomp/src/graphics/graphics_sprite_font_lookup.o build/decomp/src/graphics/graphics_sprite_character_map.o build/decomp/src/graphics/graphics_sprite_number_format.o build/decomp/src/graphics/graphics_sprite_font_dispatch.o build/decomp/src/graphics/graphics_sprite_text_layout.o build/decomp/src/graphics/graphics_sprite_canvas.o build/decomp/src/graphics/graphics_sprite_runtime_lifecycle.o build/decomp/src/graphics/graphics_sprite_region_allocator.o build/decomp/src/graphics/graphics_sprite_small_region_allocator.o build/decomp/src/graphics/graphics_animation_instance_setup.o build/decomp/src/graphics/graphics_animation_instance_update.o build/decomp/src/graphics/graphics_3d_polygon_attr.o build/decomp/src/graphics/graphics_animation_instance_manager.o build/decomp/src/graphics/graphics_animation_instance_manager_render.o build/decomp/src/graphics/graphics_3d_resource_owner.o build/decomp/src/graphics/graphics_3d_resource_owner_lifecycle.o build/decomp/src/graphics/graphics_3d_resource_owner_managers.o build/decomp/src/graphics/graphics_animation_instance_resources.o build/decomp/src/graphics/graphics_3d_resource_regions.o build/decomp/src/graphics/graphics_3d_resource_owner_ops.o build/decomp/src/graphics/graphics_3d_light.o build/decomp/src/graphics/graphics_3d_light_set.o build/decomp/src/graphics/graphics_3d_scene_state.o build/decomp/src/graphics/graphics_3d_scene_state_apply.o build/decomp/src/graphics/graphics_3d_resource_binding.o build/decomp/src/graphics/graphics_3d_resource_binding_queries.o build/decomp/src/graphics/graphics_3d_render_object.o build/decomp/src/graphics/graphics_3d_render_object_draw.o build/decomp/src/system/graphics_display.o build/decomp/src/system/error_display.o build/decomp/src/system/checked_fs.o build/decomp/src/system/game_string.o build/decomp/src/system/game_file.o build/decomp/src/system/touch_region.o
+build build/decomp/tingle.elf | build/decomp/build/arm9.bin build/decomp/build/itcm.bin build/decomp/build/dtcm.bin: mwldarm_link build/decomp/objects.source.txt build/decomp/arm9.lcf | build/decomp/src/system/mt19937.o build/decomp/src/system/input.o build/decomp/src/system/debug_menu.o build/decomp/src/system/game_work.o build/decomp/src/system/frame_task_list.o build/decomp/src/system/game_flags.o build/decomp/src/system/game_work_io.o build/decomp/src/system/game_phase.o build/decomp/src/system/owned_pointer_list.o build/decomp/src/system/owned_pointer_list_data.o build/decomp/src/system/packed_timer_array.o build/decomp/src/system/overlay_manager.o build/decomp/src/system/runtime_init.o build/decomp/src/system/heap.o build/decomp/asm/system/heap_state.o build/decomp/src/system/graphics_hardware.o build/decomp/src/system/display_brightness.o build/decomp/src/system/display_controller.o build/decomp/asm/system/display_controller_state.o build/decomp/src/system/debug_text_frame.o build/decomp/src/system/system_state_init.o build/decomp/src/system/heap_wrappers.o build/decomp/src/math/vec_fx32.o build/decomp/src/math/vec_fx32_data.o build/decomp/src/system/nitro_file.o build/decomp/src/system/nitro_file_data.o build/decomp/src/system/ncg_file.o build/decomp/src/system/ncg_file_data.o build/decomp/src/system/ncg_file_tag.o build/decomp/src/system/ncl_file.o build/decomp/asm/system/ncl_file_signature.o build/decomp/src/system/ncl_file_data.o build/decomp/src/system/ncl_file_tag.o build/decomp/src/system/animation_resource.o build/decomp/src/system/animation_resource_data.o build/decomp/src/system/animation_binding.o build/decomp/asm/system/util_animation_resource_ctor.o build/decomp/src/system/util_animation_resource.o build/decomp/src/system/util_animation_resource_data.o build/decomp/src/system/util_animation_position.o build/decomp/src/system/util_animation_difference.o build/decomp/asm/system/util_animation_apply.o build/decomp/src/system/scene_touch_data.o build/decomp/src/system/scene.o build/decomp/src/system/scene_touch.o build/decomp/src/system/touch_panel.o build/decomp/src/system/graphics_system.o build/decomp/src/system/frame_task.o build/decomp/src/system/frame_task_tags.o build/decomp/src/system/palette_buffer.o build/decomp/asm/system/palette_buffer_data.o build/decomp/src/system/thread.o build/decomp/asm/system/thread_data.o build/decomp/src/system/bg_scroll.o build/decomp/src/system/graphics_resources.o build/decomp/src/graphics/graphics_resource_set.o build/decomp/src/graphics/graphics_resource_set_ops.o build/decomp/src/graphics/graphics_resource_set_variant.o build/decomp/src/graphics/graphics_vram_allocator.o build/decomp/src/graphics/graphics_render_entry_pool.o build/decomp/src/graphics/graphics_transfer_queue.o build/decomp/src/graphics/graphics_indexed_chain_pool.o build/decomp/src/graphics/graphics_lookup_cache.o build/decomp/src/graphics/graphics_sprite_state.o build/decomp/src/graphics/graphics_sprite_animation.o build/decomp/src/graphics/graphics_sprite_frame.o build/decomp/src/graphics/graphics_sprite_render_helpers.o build/decomp/src/graphics/graphics_sprite_config.o build/decomp/src/graphics/graphics_sprite_position.o build/decomp/src/graphics/graphics_sprite_position_bounds.o build/decomp/src/graphics/graphics_sprite_create.o build/decomp/src/system/debug_sprite_text.o build/decomp/src/graphics/software_canvas_lifecycle.o build/decomp/src/graphics/software_canvas_pixel.o build/decomp/src/graphics/software_canvas_line.o build/decomp/src/graphics/software_canvas_fill_rect.o build/decomp/src/graphics/software_canvas_rect.o build/decomp/asm/graphics/software_canvas_glyph.o build/decomp/src/graphics/software_canvas_data.o build/decomp/src/graphics/graphics_sprite_group.o build/decomp/src/graphics/graphics_sprite_group_owner.o build/decomp/src/graphics/graphics_sprite_pool.o build/decomp/src/graphics/graphics_sprite_oam.o build/decomp/src/graphics/graphics_sprite_vram_binding.o build/decomp/src/graphics/graphics_sprite_indexed_release.o build/decomp/src/graphics/graphics_sprite_renderer.o build/decomp/src/graphics/graphics_sprite_renderer_hw.o build/decomp/src/graphics/graphics_sprite_renderer_accessors.o build/decomp/src/graphics/graphics_sprite_palette_upload.o build/decomp/src/graphics/graphics_sprite_text_printf.o build/decomp/src/graphics/graphics_sprite_text_oam.o build/decomp/src/graphics/graphics_sprite_font_lookup.o build/decomp/src/graphics/graphics_sprite_character_map.o build/decomp/src/graphics/graphics_sprite_number_format.o build/decomp/src/graphics/graphics_sprite_font_dispatch.o build/decomp/src/graphics/graphics_sprite_text_layout.o build/decomp/src/graphics/graphics_sprite_canvas.o build/decomp/src/graphics/graphics_sprite_runtime_lifecycle.o build/decomp/src/graphics/graphics_sprite_region_allocator.o build/decomp/src/graphics/graphics_sprite_small_region_allocator.o build/decomp/src/graphics/graphics_animation_instance_setup.o build/decomp/src/graphics/graphics_animation_instance_update.o build/decomp/src/graphics/graphics_3d_polygon_attr.o build/decomp/src/graphics/graphics_animation_instance_manager.o build/decomp/src/graphics/graphics_animation_instance_manager_render.o build/decomp/src/graphics/graphics_3d_resource_owner.o build/decomp/src/graphics/graphics_3d_resource_owner_lifecycle.o build/decomp/src/graphics/graphics_3d_resource_owner_managers.o build/decomp/src/graphics/graphics_animation_instance_resources.o build/decomp/src/graphics/graphics_3d_resource_regions.o build/decomp/src/graphics/graphics_3d_resource_owner_ops.o build/decomp/src/graphics/graphics_3d_light.o build/decomp/src/graphics/graphics_3d_light_set.o build/decomp/src/graphics/graphics_3d_scene_state.o build/decomp/src/graphics/graphics_3d_scene_state_apply.o build/decomp/src/graphics/graphics_3d_resource_binding.o build/decomp/src/graphics/graphics_3d_resource_binding_queries.o build/decomp/src/graphics/graphics_3d_render_object.o build/decomp/src/graphics/graphics_3d_render_object_draw.o build/decomp/src/system/graphics_display.o build/decomp/src/system/error_display.o build/decomp/src/system/checked_fs.o build/decomp/src/system/game_string.o build/decomp/src/system/game_file.o build/decomp/src/system/touch_region.o
 
 build build/tingle.recompiled.nds: build_recompiled_rom build/decomp/tingle.elf | tools/build_recompiled_rom.ps1 tools/patch_rom_header.py
 
@@ -540,6 +746,242 @@ build build/reports/game_phase.json: objdiff build/decomp/delinks/src/system/gam
 build build/reports/game_phase.txt: match_report build/reports/game_phase.json | tools/report_objdiff.py
   report_json = build/reports/game_phase.json
   report_args = --section .text --section .data --function GamePhase_Start --function GamePhase_Bootstrap --function GamePhaseTransition_Init --function GamePhaseTransition_Destroy --function GamePhaseTransition_DestroyAndFree --function GamePhaseTransition_Update
+
+build build/reports/owned_pointer_list.json: objdiff build/decomp/delinks/src/system/owned_pointer_list.o | build/decomp/src/system/owned_pointer_list.o
+  target_object = build/decomp/delinks/src/system/owned_pointer_list.o
+  base_object = build/decomp/src/system/owned_pointer_list.o
+
+build build/reports/owned_pointer_list.txt: match_report build/reports/owned_pointer_list.json | tools/report_objdiff.py
+  report_json = build/reports/owned_pointer_list.json
+  report_args = --section .text --function func_02001d10 --function func_02001d30 --function func_02001d50 --function func_02001d90
+
+build build/reports/owned_pointer_list_data.json: objdiff build/decomp/delinks/src/system/owned_pointer_list_data.o | build/decomp/src/system/owned_pointer_list_data.o
+  target_object = build/decomp/delinks/src/system/owned_pointer_list_data.o
+  base_object = build/decomp/src/system/owned_pointer_list_data.o
+
+build build/reports/packed_timer_array.json: objdiff build/decomp/delinks/src/system/packed_timer_array.o | build/decomp/src/system/packed_timer_array.o
+  target_object = build/decomp/delinks/src/system/packed_timer_array.o
+  base_object = build/decomp/src/system/packed_timer_array.o
+
+build build/reports/packed_timer_array.txt: match_report build/reports/packed_timer_array.json | tools/report_objdiff.py
+  report_json = build/reports/packed_timer_array.json
+  report_args = --section .text --section .bss --function func_02001db8 --function func_02001de8 --function func_02001e10 --function func_02001e14 --function func_02001f14 --function func_02001f40 --function func_02001f54 --function func_02001fb8 --function func_02002010 --function func_02002068 --function func_020020a0 --function func_020020c4 --function func_020020ec --function func_020020f8 --function func_0200213c --function func_02002180 --function func_020021c4
+
+build build/reports/overlay_manager.json: objdiff build/decomp/delinks/src/system/overlay_manager.o | build/decomp/src/system/overlay_manager.o
+  target_object = build/decomp/delinks/src/system/overlay_manager.o
+  base_object = build/decomp/src/system/overlay_manager.o
+
+build build/reports/overlay_manager.txt: match_report build/reports/overlay_manager.json | tools/report_objdiff.py
+  report_json = build/reports/overlay_manager.json
+  report_args = --section .text --section .bss --function func_020021d0 --function func_020021fc --function func_0200222c --function func_02002290 --function func_020022dc
+
+build build/reports/runtime_init.json: objdiff build/decomp/delinks/src/system/runtime_init.o | build/decomp/src/system/runtime_init.o
+  target_object = build/decomp/delinks/src/system/runtime_init.o
+  base_object = build/decomp/src/system/runtime_init.o
+
+build build/reports/runtime_init.txt: match_report build/reports/runtime_init.json | tools/report_objdiff.py
+  report_json = build/reports/runtime_init.json
+  report_args = --section .text --function InitRuntime --require-exact
+
+build build/reports/heap.json: objdiff build/decomp/delinks/src/system/heap.o | build/decomp/src/system/heap.o
+  target_object = build/decomp/delinks/src/system/heap.o
+  base_object = build/decomp/src/system/heap.o
+
+build build/reports/heap.txt: match_report build/reports/heap.json | tools/report_objdiff.py
+  report_json = build/reports/heap.json
+  report_args = --section .text --section .data --function InitHeap --function func_020026c0 --function func_020026ec --function func_02002700 --function func_02002728 --function func_02002744 --function func_02002788 --function func_020027c8 --function func_02002808 --function func_02002828
+
+build build/reports/heap_state.json: objdiff build/decomp/delinks/asm/system/heap_state.o | build/decomp/asm/system/heap_state.o
+  target_object = build/decomp/delinks/asm/system/heap_state.o
+  base_object = build/decomp/asm/system/heap_state.o
+
+build build/reports/graphics_hardware.json: objdiff build/decomp/delinks/src/system/graphics_hardware.o | build/decomp/src/system/graphics_hardware.o
+  target_object = build/decomp/delinks/src/system/graphics_hardware.o
+  base_object = build/decomp/src/system/graphics_hardware.o
+
+build build/reports/graphics_hardware.txt: match_report build/reports/graphics_hardware.json | tools/report_objdiff.py
+  report_json = build/reports/graphics_hardware.json
+  report_args = --section .text --function func_0200284c --require-exact
+
+build build/reports/display_brightness.json: objdiff build/decomp/delinks/src/system/display_brightness.o | build/decomp/src/system/display_brightness.o
+  target_object = build/decomp/delinks/src/system/display_brightness.o
+  base_object = build/decomp/src/system/display_brightness.o
+
+build build/reports/display_brightness.txt: match_report build/reports/display_brightness.json | tools/report_objdiff.py
+  report_json = build/reports/display_brightness.json
+  report_args = --section .text --function func_020028f0 --function func_02002930 --function func_02002a04 --function func_02002ac0 --function func_02002b3c --function func_02002cd0 --require-exact
+
+build build/reports/display_controller.json: objdiff build/decomp/delinks/src/system/display_controller.o | build/decomp/src/system/display_controller.o
+  target_object = build/decomp/delinks/src/system/display_controller.o
+  base_object = build/decomp/src/system/display_controller.o
+
+build build/reports/display_controller.txt: match_report build/reports/display_controller.json | tools/report_objdiff.py
+  report_json = build/reports/display_controller.json
+  report_args = --section .text --function func_02002cdc --function func_02002d24 --function func_02002d28 --function func_02002d34 --function func_02002d54 --function func_02002d74 --function func_02002d94 --function func_02002db0 --function func_02002dcc --function func_02002df0 --function func_02002e14 --function func_02002e38 --function func_02002e48 --function func_02002e5c --require-exact
+
+build build/reports/display_controller_state.json: objdiff build/decomp/delinks/asm/system/display_controller_state.o | build/decomp/asm/system/display_controller_state.o
+  target_object = build/decomp/delinks/asm/system/display_controller_state.o
+  base_object = build/decomp/asm/system/display_controller_state.o
+
+build build/reports/debug_text_frame.json: objdiff build/decomp/delinks/src/system/debug_text_frame.o | build/decomp/src/system/debug_text_frame.o
+  target_object = build/decomp/delinks/src/system/debug_text_frame.o
+  base_object = build/decomp/src/system/debug_text_frame.o
+
+build build/reports/debug_text_frame.txt: match_report build/reports/debug_text_frame.json | tools/report_objdiff.py
+  report_json = build/reports/debug_text_frame.json
+  report_args = --section .text --function DebugText_BeginFrame --require-exact
+
+build build/reports/debug_sprite_text.json: objdiff build/decomp/delinks/src/system/debug_sprite_text.o | build/decomp/src/system/debug_sprite_text.o
+  target_object = build/decomp/delinks/src/system/debug_sprite_text.o
+  base_object = build/decomp/src/system/debug_sprite_text.o
+
+build build/reports/debug_sprite_text.txt: match_report build/reports/debug_sprite_text.json | tools/report_objdiff.py
+  report_json = build/reports/debug_sprite_text.json
+  report_args = --section .text --function func_02005c90 --function func_02005cc8 --function func_02005cec --function func_02005d0c --require-exact
+
+build build/reports/system_state_init.json: objdiff build/decomp/delinks/src/system/system_state_init.o | build/decomp/src/system/system_state_init.o
+  target_object = build/decomp/delinks/src/system/system_state_init.o
+  base_object = build/decomp/src/system/system_state_init.o
+
+build build/reports/system_state_init.txt: match_report build/reports/system_state_init.json | tools/report_objdiff.py
+  report_json = build/reports/system_state_init.json
+  report_args = --section .text --function func_02002ea4 --require-exact
+
+build build/reports/heap_wrappers.json: objdiff build/decomp/delinks/src/system/heap_wrappers.o | build/decomp/src/system/heap_wrappers.o
+  target_object = build/decomp/delinks/src/system/heap_wrappers.o
+  base_object = build/decomp/src/system/heap_wrappers.o
+
+build build/reports/heap_wrappers.txt: match_report build/reports/heap_wrappers.json | tools/report_objdiff.py
+  report_json = build/reports/heap_wrappers.json
+  report_args = --section .text --function Heap_Alloc --function func_02003e20 --function Heap_Free --function func_02003e38 --require-exact
+
+build build/reports/vec_fx32.json: objdiff build/decomp/delinks/src/math/vec_fx32.o | build/decomp/src/math/vec_fx32.o
+  target_object = build/decomp/delinks/src/math/vec_fx32.o
+  base_object = build/decomp/src/math/vec_fx32.o
+
+build build/reports/vec_fx32.txt: match_report build/reports/vec_fx32.json | tools/report_objdiff.py
+  report_json = build/reports/vec_fx32.json
+  report_args = --section .text --function func_02004fe0 --function func_0200500c --function func_02005030 --function func_02005058 --function func_0200505c --function func_02005070 --function func_02005084 --function func_020050a4 --function func_020050c8 --function func_020050f0 --require-exact
+
+build build/reports/vec_fx32_data.json: objdiff build/decomp/delinks/src/math/vec_fx32_data.o | build/decomp/src/math/vec_fx32_data.o
+  target_object = build/decomp/delinks/src/math/vec_fx32_data.o
+  base_object = build/decomp/src/math/vec_fx32_data.o
+
+build build/reports/nitro_file.json: objdiff build/decomp/delinks/src/system/nitro_file.o | build/decomp/src/system/nitro_file.o
+  target_object = build/decomp/delinks/src/system/nitro_file.o
+  base_object = build/decomp/src/system/nitro_file.o
+
+build build/reports/nitro_file.txt: match_report build/reports/nitro_file.json | tools/report_objdiff.py
+  report_json = build/reports/nitro_file.json
+  report_args = --section .text --function func_02005118 --function func_02005134 --function func_02005160 --function func_02005194 --function func_020051c0 --function func_020051ec --require-exact
+
+build build/reports/nitro_file_data.json: objdiff build/decomp/delinks/src/system/nitro_file_data.o | build/decomp/src/system/nitro_file_data.o
+  target_object = build/decomp/delinks/src/system/nitro_file_data.o
+  base_object = build/decomp/src/system/nitro_file_data.o
+
+build build/reports/ncg_file.json: objdiff build/decomp/delinks/src/system/ncg_file.o | build/decomp/src/system/ncg_file.o
+  target_object = build/decomp/delinks/src/system/ncg_file.o
+  base_object = build/decomp/src/system/ncg_file.o
+
+build build/reports/ncg_file.txt: match_report build/reports/ncg_file.json | tools/report_objdiff.py
+  report_json = build/reports/ncg_file.json
+  report_args = --section .text --function func_02005284 --function func_020052b0 --function func_020052c4 --function func_020052e0 --function func_02005354 --function func_020053b8 --function func_020053f4 --require-exact
+
+build build/reports/ncg_file_data.json: objdiff build/decomp/delinks/src/system/ncg_file_data.o | build/decomp/src/system/ncg_file_data.o
+  target_object = build/decomp/delinks/src/system/ncg_file_data.o
+  base_object = build/decomp/src/system/ncg_file_data.o
+
+build build/reports/ncg_file_tag.json: objdiff build/decomp/delinks/src/system/ncg_file_tag.o | build/decomp/src/system/ncg_file_tag.o
+  target_object = build/decomp/delinks/src/system/ncg_file_tag.o
+  base_object = build/decomp/src/system/ncg_file_tag.o
+
+build build/reports/ncl_file.json: objdiff build/decomp/delinks/src/system/ncl_file.o | build/decomp/src/system/ncl_file.o
+  target_object = build/decomp/delinks/src/system/ncl_file.o
+  base_object = build/decomp/src/system/ncl_file.o
+
+build build/reports/ncl_file.txt: match_report build/reports/ncl_file.json | tools/report_objdiff.py
+  report_json = build/reports/ncl_file.json
+  report_args = --section .text --function func_0200542c --function func_0200544c --function func_02005460 --function func_0200547c --function func_020054e4 --require-exact
+
+build build/reports/ncl_file_signature.json: objdiff build/decomp/delinks/asm/system/ncl_file_signature.o | build/decomp/asm/system/ncl_file_signature.o
+  target_object = build/decomp/delinks/asm/system/ncl_file_signature.o
+  base_object = build/decomp/asm/system/ncl_file_signature.o
+
+build build/reports/ncl_file_signature.txt: match_report build/reports/ncl_file_signature.json | tools/report_objdiff.py
+  report_json = build/reports/ncl_file_signature.json
+  report_args = --section .text --function func_02005548 --require-exact
+
+build build/reports/ncl_file_data.json: objdiff build/decomp/delinks/src/system/ncl_file_data.o | build/decomp/src/system/ncl_file_data.o
+  target_object = build/decomp/delinks/src/system/ncl_file_data.o
+  base_object = build/decomp/src/system/ncl_file_data.o
+
+build build/reports/ncl_file_tag.json: objdiff build/decomp/delinks/src/system/ncl_file_tag.o | build/decomp/src/system/ncl_file_tag.o
+  target_object = build/decomp/delinks/src/system/ncl_file_tag.o
+  base_object = build/decomp/src/system/ncl_file_tag.o
+
+build build/reports/animation_resource.json: objdiff build/decomp/delinks/src/system/animation_resource.o | build/decomp/src/system/animation_resource.o
+  target_object = build/decomp/delinks/src/system/animation_resource.o
+  base_object = build/decomp/src/system/animation_resource.o
+
+build build/reports/animation_resource.txt: match_report build/reports/animation_resource.json | tools/report_objdiff.py
+  report_json = build/reports/animation_resource.json
+  report_args = --section .text --function func_02005580 --function func_020055d0 --function func_020055fc --function func_02005630 --function func_0200567c --require-exact
+
+build build/reports/animation_resource_data.json: objdiff build/decomp/delinks/src/system/animation_resource_data.o | build/decomp/src/system/animation_resource_data.o
+  target_object = build/decomp/delinks/src/system/animation_resource_data.o
+  base_object = build/decomp/src/system/animation_resource_data.o
+
+build build/reports/animation_binding.json: objdiff build/decomp/delinks/src/system/animation_binding.o | build/decomp/src/system/animation_binding.o
+  target_object = build/decomp/delinks/src/system/animation_binding.o
+  base_object = build/decomp/src/system/animation_binding.o
+
+build build/reports/animation_binding.txt: match_report build/reports/animation_binding.json | tools/report_objdiff.py
+  report_json = build/reports/animation_binding.json
+  report_args = --section .text --function func_02005698 --function func_02005708 --require-exact
+
+build build/reports/util_animation_resource_ctor.json: objdiff build/decomp/delinks/asm/system/util_animation_resource_ctor.o | build/decomp/asm/system/util_animation_resource_ctor.o
+  target_object = build/decomp/delinks/asm/system/util_animation_resource_ctor.o
+  base_object = build/decomp/asm/system/util_animation_resource_ctor.o
+
+build build/reports/util_animation_resource_ctor.txt: match_report build/reports/util_animation_resource_ctor.json | tools/report_objdiff.py
+  report_json = build/reports/util_animation_resource_ctor.json
+  report_args = --section .text --function func_0200572c --require-exact
+
+build build/reports/util_animation_resource.json: objdiff build/decomp/delinks/src/system/util_animation_resource.o | build/decomp/src/system/util_animation_resource.o
+  target_object = build/decomp/delinks/src/system/util_animation_resource.o
+  base_object = build/decomp/src/system/util_animation_resource.o
+
+build build/reports/util_animation_resource.txt: match_report build/reports/util_animation_resource.json | tools/report_objdiff.py
+  report_json = build/reports/util_animation_resource.json
+  report_args = --section .text --function func_020057dc --function func_020057f8 --function func_020057fc --require-exact
+
+build build/reports/util_animation_resource_data.json: objdiff build/decomp/delinks/src/system/util_animation_resource_data.o | build/decomp/src/system/util_animation_resource_data.o
+  target_object = build/decomp/delinks/src/system/util_animation_resource_data.o
+  base_object = build/decomp/src/system/util_animation_resource_data.o
+
+build build/reports/util_animation_position.json: objdiff build/decomp/delinks/src/system/util_animation_position.o | build/decomp/src/system/util_animation_position.o
+  target_object = build/decomp/delinks/src/system/util_animation_position.o
+  base_object = build/decomp/src/system/util_animation_position.o
+
+build build/reports/util_animation_position.txt: match_report build/reports/util_animation_position.json | tools/report_objdiff.py
+  report_json = build/reports/util_animation_position.json
+  report_args = --section .text --function func_02005810 --require-exact
+
+build build/reports/util_animation_difference.json: objdiff build/decomp/delinks/src/system/util_animation_difference.o | build/decomp/src/system/util_animation_difference.o
+  target_object = build/decomp/delinks/src/system/util_animation_difference.o
+  base_object = build/decomp/src/system/util_animation_difference.o
+
+build build/reports/util_animation_difference.txt: match_report build/reports/util_animation_difference.json | tools/report_objdiff.py
+  report_json = build/reports/util_animation_difference.json
+  report_args = --section .text --function func_02005880 --require-exact
+
+build build/reports/util_animation_apply.json: objdiff build/decomp/delinks/asm/system/util_animation_apply.o | build/decomp/asm/system/util_animation_apply.o
+  target_object = build/decomp/delinks/asm/system/util_animation_apply.o
+  base_object = build/decomp/asm/system/util_animation_apply.o
+
+build build/reports/util_animation_apply.txt: match_report build/reports/util_animation_apply.json | tools/report_objdiff.py
+  report_json = build/reports/util_animation_apply.json
+  report_args = --section .text --function func_020058b8 --require-exact
 
 build build/reports/scene.json: objdiff build/decomp/delinks/src/system/scene.o | build/decomp/src/system/scene.o
   target_object = build/decomp/delinks/src/system/scene.o
@@ -736,6 +1178,86 @@ build build/reports/graphics_sprite_config.json: objdiff build/decomp/delinks/sr
 build build/reports/graphics_sprite_config.txt: match_report build/reports/graphics_sprite_config.json | tools/report_objdiff.py
   report_json = build/reports/graphics_sprite_config.json
   report_args = --section .text --function func_02073e48
+
+build build/reports/graphics_sprite_position.json: objdiff build/decomp/delinks/src/graphics/graphics_sprite_position.o | build/decomp/src/graphics/graphics_sprite_position.o
+  target_object = build/decomp/delinks/src/graphics/graphics_sprite_position.o
+  base_object = build/decomp/src/graphics/graphics_sprite_position.o
+
+build build/reports/graphics_sprite_position.txt: match_report build/reports/graphics_sprite_position.json | tools/report_objdiff.py
+  report_json = build/reports/graphics_sprite_position.json
+  report_args = --section .text --function func_02005914 --function func_020059ac --function func_02005a00 --function func_02005a54 --function func_02005afc --require-exact
+
+build build/reports/graphics_sprite_position_bounds.json: objdiff build/decomp/delinks/src/graphics/graphics_sprite_position_bounds.o | build/decomp/src/graphics/graphics_sprite_position_bounds.o
+  target_object = build/decomp/delinks/src/graphics/graphics_sprite_position_bounds.o
+  base_object = build/decomp/src/graphics/graphics_sprite_position_bounds.o
+
+build build/reports/graphics_sprite_position_bounds.txt: match_report build/reports/graphics_sprite_position_bounds.json | tools/report_objdiff.py
+  report_json = build/reports/graphics_sprite_position_bounds.json
+  report_args = --section .text --function func_02005b50 --require-exact
+
+build build/reports/graphics_sprite_create.json: objdiff build/decomp/delinks/src/graphics/graphics_sprite_create.o | build/decomp/src/graphics/graphics_sprite_create.o
+  target_object = build/decomp/delinks/src/graphics/graphics_sprite_create.o
+  base_object = build/decomp/src/graphics/graphics_sprite_create.o
+
+build build/reports/graphics_sprite_create.txt: match_report build/reports/graphics_sprite_create.json | tools/report_objdiff.py
+  report_json = build/reports/graphics_sprite_create.json
+  report_args = --section .text --function func_02005bfc --function func_02005c3c --require-exact
+
+build build/reports/software_canvas_lifecycle.json: objdiff build/decomp/delinks/src/graphics/software_canvas_lifecycle.o | build/decomp/src/graphics/software_canvas_lifecycle.o
+  target_object = build/decomp/delinks/src/graphics/software_canvas_lifecycle.o
+  base_object = build/decomp/src/graphics/software_canvas_lifecycle.o
+
+build build/reports/software_canvas_lifecycle.txt: match_report build/reports/software_canvas_lifecycle.json | tools/report_objdiff.py
+  report_json = build/reports/software_canvas_lifecycle.json
+  report_args = --section .text --function func_02005d88 --function func_02005dac --function func_02005dc8 --function func_02005dcc --require-exact
+
+build build/reports/software_canvas_pixel.json: objdiff build/decomp/delinks/src/graphics/software_canvas_pixel.o | build/decomp/src/graphics/software_canvas_pixel.o
+  target_object = build/decomp/delinks/src/graphics/software_canvas_pixel.o
+  base_object = build/decomp/src/graphics/software_canvas_pixel.o
+
+build build/reports/software_canvas_pixel.txt: match_report build/reports/software_canvas_pixel.json | tools/report_objdiff.py
+  report_json = build/reports/software_canvas_pixel.json
+  report_args = --section .text --function func_02005de0 --require-exact
+
+build build/reports/software_canvas_line.json: objdiff build/decomp/delinks/src/graphics/software_canvas_line.o | build/decomp/src/graphics/software_canvas_line.o
+  target_object = build/decomp/delinks/src/graphics/software_canvas_line.o
+  base_object = build/decomp/src/graphics/software_canvas_line.o
+
+build build/reports/software_canvas_line.txt: match_report build/reports/software_canvas_line.json | tools/report_objdiff.py
+  report_json = build/reports/software_canvas_line.json
+  report_args = --section .text --function func_02005dfc --require-exact
+
+build build/reports/software_canvas_fill_rect.json: objdiff build/decomp/delinks/src/graphics/software_canvas_fill_rect.o | build/decomp/src/graphics/software_canvas_fill_rect.o
+  target_object = build/decomp/delinks/src/graphics/software_canvas_fill_rect.o
+  base_object = build/decomp/src/graphics/software_canvas_fill_rect.o
+
+build build/reports/software_canvas_fill_rect.txt: match_report build/reports/software_canvas_fill_rect.json | tools/report_objdiff.py
+  report_json = build/reports/software_canvas_fill_rect.json
+  report_args = --section .text --function func_02005eb8 --require-exact
+
+build build/reports/software_canvas_rect.json: objdiff build/decomp/delinks/src/graphics/software_canvas_rect.o | build/decomp/src/graphics/software_canvas_rect.o
+  target_object = build/decomp/delinks/src/graphics/software_canvas_rect.o
+  base_object = build/decomp/src/graphics/software_canvas_rect.o
+
+build build/reports/software_canvas_rect.txt: match_report build/reports/software_canvas_rect.json | tools/report_objdiff.py
+  report_json = build/reports/software_canvas_rect.json
+  report_args = --section .text --function func_02005f38 --require-exact
+
+build build/reports/software_canvas_glyph.json: objdiff build/decomp/delinks/asm/graphics/software_canvas_glyph.o | build/decomp/asm/graphics/software_canvas_glyph.o
+  target_object = build/decomp/delinks/asm/graphics/software_canvas_glyph.o
+  base_object = build/decomp/asm/graphics/software_canvas_glyph.o
+
+build build/reports/software_canvas_glyph.txt: match_report build/reports/software_canvas_glyph.json | tools/report_objdiff.py
+  report_json = build/reports/software_canvas_glyph.json
+  report_args = --section .text --function func_02005fec --require-exact
+
+build build/reports/software_canvas_data.json: objdiff build/decomp/delinks/src/graphics/software_canvas_data.o | build/decomp/src/graphics/software_canvas_data.o
+  target_object = build/decomp/delinks/src/graphics/software_canvas_data.o
+  base_object = build/decomp/src/graphics/software_canvas_data.o
+
+build build/reports/software_canvas_data.txt: match_report build/reports/software_canvas_data.json | tools/report_objdiff.py
+  report_json = build/reports/software_canvas_data.json
+  report_args = --section .data --function data_020d4190 --require-exact
 
 build build/reports/graphics_sprite_group.json: objdiff build/decomp/delinks/src/graphics/graphics_sprite_group.o | build/decomp/src/graphics/graphics_sprite_group.o
   target_object = build/decomp/delinks/src/graphics/graphics_sprite_group.o
@@ -1112,6 +1634,26 @@ build game_work: phony build/decomp/delinks/src/system/game_work.o build/decomp/
 build game_flags: phony build/decomp/delinks/src/system/game_flags.o build/decomp/src/system/game_flags.o build/reports/game_flags.txt
 build game_work_io: phony build/decomp/delinks/src/system/game_work_io.o build/decomp/src/system/game_work_io.o build/reports/game_work_io.txt
 build game_phase: phony build/decomp/delinks/src/system/game_phase.o build/decomp/src/system/game_phase.o build/reports/game_phase.txt
+build owned_pointer_list: phony build/decomp/delinks/src/system/owned_pointer_list.o build/decomp/src/system/owned_pointer_list.o build/reports/owned_pointer_list.txt build/decomp/delinks/src/system/owned_pointer_list_data.o build/decomp/src/system/owned_pointer_list_data.o build/reports/owned_pointer_list_data.json
+build packed_timer_array: phony build/decomp/delinks/src/system/packed_timer_array.o build/decomp/src/system/packed_timer_array.o build/reports/packed_timer_array.txt
+build overlay_manager: phony build/decomp/delinks/src/system/overlay_manager.o build/decomp/src/system/overlay_manager.o build/reports/overlay_manager.txt
+build runtime_init: phony build/decomp/delinks/src/system/runtime_init.o build/decomp/src/system/runtime_init.o build/reports/runtime_init.txt
+build heap: phony build/decomp/delinks/src/system/heap.o build/decomp/src/system/heap.o build/reports/heap.txt build/decomp/delinks/asm/system/heap_state.o build/decomp/asm/system/heap_state.o build/reports/heap_state.json
+build graphics_hardware: phony build/decomp/delinks/src/system/graphics_hardware.o build/decomp/src/system/graphics_hardware.o build/reports/graphics_hardware.txt
+build display_brightness: phony build/decomp/delinks/src/system/display_brightness.o build/decomp/src/system/display_brightness.o build/reports/display_brightness.txt
+build display_controller: phony build/decomp/delinks/src/system/display_controller.o build/decomp/src/system/display_controller.o build/reports/display_controller.txt build/decomp/delinks/asm/system/display_controller_state.o build/decomp/asm/system/display_controller_state.o build/reports/display_controller_state.json
+build debug_text_frame: phony build/decomp/delinks/src/system/debug_text_frame.o build/decomp/src/system/debug_text_frame.o build/reports/debug_text_frame.txt
+build debug_sprite_text: phony build/decomp/delinks/src/system/debug_sprite_text.o build/decomp/src/system/debug_sprite_text.o build/reports/debug_sprite_text.txt
+build system_state_init: phony build/decomp/delinks/src/system/system_state_init.o build/decomp/src/system/system_state_init.o build/reports/system_state_init.txt
+build heap_wrappers: phony build/decomp/delinks/src/system/heap_wrappers.o build/decomp/src/system/heap_wrappers.o build/reports/heap_wrappers.txt
+build vec_fx32: phony build/decomp/delinks/src/math/vec_fx32.o build/decomp/src/math/vec_fx32.o build/reports/vec_fx32.txt build/decomp/delinks/src/math/vec_fx32_data.o build/decomp/src/math/vec_fx32_data.o build/reports/vec_fx32_data.json
+build nitro_file: phony build/decomp/delinks/src/system/nitro_file.o build/decomp/src/system/nitro_file.o build/reports/nitro_file.txt build/decomp/delinks/src/system/nitro_file_data.o build/decomp/src/system/nitro_file_data.o build/reports/nitro_file_data.json
+build ncg_file: phony build/decomp/delinks/src/system/ncg_file.o build/decomp/src/system/ncg_file.o build/reports/ncg_file.txt build/decomp/delinks/src/system/ncg_file_data.o build/decomp/src/system/ncg_file_data.o build/reports/ncg_file_data.json build/decomp/delinks/src/system/ncg_file_tag.o build/decomp/src/system/ncg_file_tag.o build/reports/ncg_file_tag.json
+build ncl_file: phony build/decomp/delinks/src/system/ncl_file.o build/decomp/src/system/ncl_file.o build/reports/ncl_file.txt build/decomp/delinks/asm/system/ncl_file_signature.o build/decomp/asm/system/ncl_file_signature.o build/reports/ncl_file_signature.txt build/decomp/delinks/src/system/ncl_file_data.o build/decomp/src/system/ncl_file_data.o build/reports/ncl_file_data.json build/decomp/delinks/src/system/ncl_file_tag.o build/decomp/src/system/ncl_file_tag.o build/reports/ncl_file_tag.json
+build animation_resource: phony build/decomp/delinks/src/system/animation_resource.o build/decomp/src/system/animation_resource.o build/reports/animation_resource.txt build/decomp/delinks/src/system/animation_resource_data.o build/decomp/src/system/animation_resource_data.o build/reports/animation_resource_data.json
+build animation_binding: phony build/decomp/delinks/src/system/animation_binding.o build/decomp/src/system/animation_binding.o build/reports/animation_binding.txt
+build util_animation_resource: phony build/decomp/delinks/asm/system/util_animation_resource_ctor.o build/decomp/asm/system/util_animation_resource_ctor.o build/reports/util_animation_resource_ctor.txt build/decomp/delinks/src/system/util_animation_resource.o build/decomp/src/system/util_animation_resource.o build/reports/util_animation_resource.txt build/decomp/delinks/src/system/util_animation_resource_data.o build/decomp/src/system/util_animation_resource_data.o build/reports/util_animation_resource_data.json
+build util_animation_position: phony build/decomp/delinks/src/system/util_animation_position.o build/decomp/src/system/util_animation_position.o build/reports/util_animation_position.txt build/decomp/delinks/src/system/util_animation_difference.o build/decomp/src/system/util_animation_difference.o build/reports/util_animation_difference.txt build/decomp/delinks/asm/system/util_animation_apply.o build/decomp/asm/system/util_animation_apply.o build/reports/util_animation_apply.txt
 build scene: phony build/decomp/delinks/src/system/scene.o build/decomp/src/system/scene.o build/reports/scene.txt
 build scene_touch: phony build/decomp/delinks/src/system/scene_touch_data.o build/decomp/src/system/scene_touch_data.o build/reports/scene_touch_data.json build/decomp/delinks/src/system/scene_touch.o build/decomp/src/system/scene_touch.o build/reports/scene_touch.txt
 build touch_panel: phony build/decomp/delinks/src/system/touch_panel.o build/decomp/src/system/touch_panel.o build/reports/touch_panel.txt
@@ -1132,6 +1674,10 @@ build graphics_sprite_animation: phony build/decomp/delinks/src/graphics/graphic
 build graphics_sprite_frame: phony build/decomp/delinks/src/graphics/graphics_sprite_frame.o build/decomp/src/graphics/graphics_sprite_frame.o build/reports/graphics_sprite_frame.txt
 build graphics_sprite_render_helpers: phony build/decomp/delinks/src/graphics/graphics_sprite_render_helpers.o build/decomp/src/graphics/graphics_sprite_render_helpers.o build/reports/graphics_sprite_render_helpers.txt
 build graphics_sprite_config: phony build/decomp/delinks/src/graphics/graphics_sprite_config.o build/decomp/src/graphics/graphics_sprite_config.o build/reports/graphics_sprite_config.txt
+build graphics_sprite_position: phony build/decomp/delinks/src/graphics/graphics_sprite_position.o build/decomp/src/graphics/graphics_sprite_position.o build/reports/graphics_sprite_position.txt
+build graphics_sprite_position_bounds: phony build/decomp/delinks/src/graphics/graphics_sprite_position_bounds.o build/decomp/src/graphics/graphics_sprite_position_bounds.o build/reports/graphics_sprite_position_bounds.txt
+build graphics_sprite_create: phony build/decomp/delinks/src/graphics/graphics_sprite_create.o build/decomp/src/graphics/graphics_sprite_create.o build/reports/graphics_sprite_create.txt
+build software_canvas_lifecycle: phony build/decomp/delinks/src/graphics/software_canvas_lifecycle.o build/decomp/src/graphics/software_canvas_lifecycle.o build/reports/software_canvas_lifecycle.txt build/decomp/delinks/src/graphics/software_canvas_pixel.o build/decomp/src/graphics/software_canvas_pixel.o build/reports/software_canvas_pixel.txt build/decomp/delinks/src/graphics/software_canvas_line.o build/decomp/src/graphics/software_canvas_line.o build/reports/software_canvas_line.txt build/decomp/delinks/src/graphics/software_canvas_fill_rect.o build/decomp/src/graphics/software_canvas_fill_rect.o build/reports/software_canvas_fill_rect.txt build/decomp/delinks/src/graphics/software_canvas_rect.o build/decomp/src/graphics/software_canvas_rect.o build/reports/software_canvas_rect.txt build/decomp/delinks/asm/graphics/software_canvas_glyph.o build/decomp/asm/graphics/software_canvas_glyph.o build/reports/software_canvas_glyph.txt build/decomp/delinks/src/graphics/software_canvas_data.o build/decomp/src/graphics/software_canvas_data.o build/reports/software_canvas_data.txt
 build graphics_sprite_group: phony build/decomp/delinks/src/graphics/graphics_sprite_group.o build/decomp/src/graphics/graphics_sprite_group.o build/reports/graphics_sprite_group.txt
 build graphics_sprite_group_owner: phony build/decomp/delinks/src/graphics/graphics_sprite_group_owner.o build/decomp/src/graphics/graphics_sprite_group_owner.o build/reports/graphics_sprite_group_owner.txt
 build graphics_sprite_pool: phony build/decomp/delinks/src/graphics/graphics_sprite_pool.o build/decomp/src/graphics/graphics_sprite_pool.o build/reports/graphics_sprite_pool.txt
@@ -1180,7 +1726,7 @@ build game_file: phony build/decomp/delinks/src/system/game_file.o build/decomp/
 build touch_region: phony build/decomp/delinks/src/system/touch_region.o build/decomp/src/system/touch_region.o build/reports/touch_region.txt
 build archive: phony build/decomp/lib/tingle.a
 build references: phony build/reference/mt19937.text.bin build/reference/init_genrand.bin build/reference/init_by_array.bin build/reference/genrand_int32.bin build/reference/InitRandom.bin
-build match: phony build/reports/mt19937.txt build/reports/input.txt build/reports/debug_menu.txt build/reports/debug_menu_exact.txt build/reports/game_work.txt build/reports/game_flags.txt build/reports/game_work_io.txt build/reports/game_phase.txt build/reports/scene_touch_data.json build/reports/scene.txt build/reports/scene_touch.txt build/reports/touch_panel.txt build/reports/frame_task.txt build/reports/frame_task_tags.json build/reports/frame_task_list.json build/reports/graphics_system.txt build/reports/palette_buffer.txt build/reports/palette_buffer_data.json build/reports/thread.txt build/reports/thread_data.json build/reports/bg_scroll.txt build/reports/graphics_resources.txt build/reports/graphics_resource_set.txt build/reports/graphics_resource_set_ops.txt build/reports/graphics_resource_set_variant.txt build/reports/graphics_vram_allocator.txt build/reports/graphics_render_entry_pool.txt build/reports/graphics_transfer_queue.txt build/reports/graphics_indexed_chain_pool.txt build/reports/graphics_lookup_cache.txt build/reports/graphics_sprite_state.txt build/reports/graphics_sprite_animation.txt build/reports/graphics_sprite_frame.txt build/reports/graphics_sprite_render_helpers.txt build/reports/graphics_sprite_config.txt build/reports/graphics_sprite_group.txt build/reports/graphics_sprite_group_owner.txt build/reports/graphics_sprite_pool.txt build/reports/graphics_sprite_oam.txt build/reports/graphics_sprite_vram_binding.txt build/reports/graphics_sprite_indexed_release.txt build/reports/graphics_sprite_renderer.txt build/reports/graphics_sprite_renderer_hw.txt build/reports/graphics_sprite_renderer_accessors.txt build/reports/graphics_sprite_palette_upload.txt build/reports/graphics_sprite_text_printf.txt build/reports/graphics_sprite_text_oam.txt build/reports/graphics_sprite_font_lookup.txt build/reports/graphics_sprite_character_map.txt build/reports/graphics_sprite_number_format.txt build/reports/graphics_sprite_font_dispatch.txt build/reports/graphics_sprite_text_layout.txt build/reports/graphics_sprite_canvas.txt build/reports/graphics_sprite_runtime_lifecycle.txt build/reports/graphics_sprite_region_allocator.txt build/reports/graphics_sprite_small_region_allocator.txt build/reports/graphics_animation_instance_setup.txt build/reports/graphics_animation_instance_update.txt build/reports/graphics_3d_polygon_attr.txt build/reports/graphics_animation_instance_manager.txt build/reports/graphics_animation_instance_manager_render.txt build/reports/graphics_3d_resource_owner.txt build/reports/graphics_3d_resource_owner_lifecycle.txt build/reports/graphics_3d_resource_owner_managers.txt build/reports/graphics_animation_instance_resources.txt build/reports/graphics_3d_resource_regions.txt build/reports/graphics_3d_resource_owner_ops.txt build/reports/graphics_3d_light.txt build/reports/graphics_3d_light_set.txt build/reports/graphics_3d_scene_state.txt build/reports/graphics_3d_scene_state_apply.txt build/reports/graphics_3d_resource_binding.txt build/reports/graphics_3d_resource_binding_queries.txt build/reports/graphics_3d_render_object.txt build/reports/graphics_3d_render_object_draw.txt build/reports/graphics_display.txt build/reports/error_display.txt build/reports/checked_fs.txt build/reports/game_string.txt build/reports/game_file.txt build/reports/touch_region.txt build/decomp/lib/tingle.a references
+build match: phony build/reports/mt19937.txt build/reports/input.txt build/reports/debug_menu.txt build/reports/debug_menu_exact.txt build/reports/game_work.txt build/reports/game_flags.txt build/reports/game_work_io.txt build/reports/game_phase.txt build/reports/owned_pointer_list.txt build/reports/owned_pointer_list_data.json build/reports/packed_timer_array.txt build/reports/overlay_manager.txt build/reports/runtime_init.txt build/reports/heap.txt build/reports/heap_state.json build/reports/graphics_hardware.txt build/reports/display_brightness.txt build/reports/display_controller.txt build/reports/display_controller_state.json build/reports/debug_text_frame.txt build/reports/system_state_init.txt build/reports/heap_wrappers.txt build/reports/vec_fx32.txt build/reports/vec_fx32_data.json build/reports/nitro_file.txt build/reports/nitro_file_data.json build/reports/ncg_file.txt build/reports/ncg_file_data.json build/reports/ncg_file_tag.json build/reports/ncl_file.txt build/reports/ncl_file_signature.txt build/reports/ncl_file_data.json build/reports/ncl_file_tag.json build/reports/animation_resource.txt build/reports/animation_resource_data.json build/reports/animation_binding.txt build/reports/util_animation_resource_ctor.txt build/reports/util_animation_resource.txt build/reports/util_animation_resource_data.json build/reports/util_animation_position.txt build/reports/util_animation_difference.txt build/reports/util_animation_apply.txt build/reports/scene_touch_data.json build/reports/scene.txt build/reports/scene_touch.txt build/reports/touch_panel.txt build/reports/frame_task.txt build/reports/frame_task_tags.json build/reports/frame_task_list.json build/reports/graphics_system.txt build/reports/palette_buffer.txt build/reports/palette_buffer_data.json build/reports/thread.txt build/reports/thread_data.json build/reports/bg_scroll.txt build/reports/graphics_resources.txt build/reports/graphics_resource_set.txt build/reports/graphics_resource_set_ops.txt build/reports/graphics_resource_set_variant.txt build/reports/graphics_vram_allocator.txt build/reports/graphics_render_entry_pool.txt build/reports/graphics_transfer_queue.txt build/reports/graphics_indexed_chain_pool.txt build/reports/graphics_lookup_cache.txt build/reports/graphics_sprite_state.txt build/reports/graphics_sprite_animation.txt build/reports/graphics_sprite_frame.txt build/reports/graphics_sprite_render_helpers.txt build/reports/graphics_sprite_config.txt build/reports/graphics_sprite_position.txt build/reports/graphics_sprite_position_bounds.txt build/reports/graphics_sprite_create.txt build/reports/debug_sprite_text.txt build/reports/software_canvas_lifecycle.txt build/reports/software_canvas_pixel.txt build/reports/software_canvas_line.txt build/reports/software_canvas_fill_rect.txt build/reports/software_canvas_rect.txt build/reports/software_canvas_glyph.txt build/reports/software_canvas_data.txt build/reports/graphics_sprite_group.txt build/reports/graphics_sprite_group_owner.txt build/reports/graphics_sprite_pool.txt build/reports/graphics_sprite_oam.txt build/reports/graphics_sprite_vram_binding.txt build/reports/graphics_sprite_indexed_release.txt build/reports/graphics_sprite_renderer.txt build/reports/graphics_sprite_renderer_hw.txt build/reports/graphics_sprite_renderer_accessors.txt build/reports/graphics_sprite_palette_upload.txt build/reports/graphics_sprite_text_printf.txt build/reports/graphics_sprite_text_oam.txt build/reports/graphics_sprite_font_lookup.txt build/reports/graphics_sprite_character_map.txt build/reports/graphics_sprite_number_format.txt build/reports/graphics_sprite_font_dispatch.txt build/reports/graphics_sprite_text_layout.txt build/reports/graphics_sprite_canvas.txt build/reports/graphics_sprite_runtime_lifecycle.txt build/reports/graphics_sprite_region_allocator.txt build/reports/graphics_sprite_small_region_allocator.txt build/reports/graphics_animation_instance_setup.txt build/reports/graphics_animation_instance_update.txt build/reports/graphics_3d_polygon_attr.txt build/reports/graphics_animation_instance_manager.txt build/reports/graphics_animation_instance_manager_render.txt build/reports/graphics_3d_resource_owner.txt build/reports/graphics_3d_resource_owner_lifecycle.txt build/reports/graphics_3d_resource_owner_managers.txt build/reports/graphics_animation_instance_resources.txt build/reports/graphics_3d_resource_regions.txt build/reports/graphics_3d_resource_owner_ops.txt build/reports/graphics_3d_light.txt build/reports/graphics_3d_light_set.txt build/reports/graphics_3d_scene_state.txt build/reports/graphics_3d_scene_state_apply.txt build/reports/graphics_3d_resource_binding.txt build/reports/graphics_3d_resource_binding_queries.txt build/reports/graphics_3d_render_object.txt build/reports/graphics_3d_render_object_draw.txt build/reports/graphics_display.txt build/reports/error_display.txt build/reports/checked_fs.txt build/reports/game_string.txt build/reports/game_file.txt build/reports/touch_region.txt build/decomp/lib/tingle.a references
 build rom: phony build/tingle.recompiled.nds
 
 default match

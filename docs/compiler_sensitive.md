@@ -38,6 +38,13 @@ the fallback exists; “native-port care” is the contract that survives it.
 | `FrameTaskList_DestroyNode` | The matching body fixes the destructor-call register schedule. | Cache the task, unlink and free the node, then invoke the task's deleting destructor. Neither callback nor later code may access the freed node. |
 | `FrameTaskList_Remove` | The unlink branches use different registers when compiled from C. | Preserve head/tail repair, node release, count decrement, and the retail zero-count cleanup. The cleanup is defensive; a consistent list should already be empty when it runs. |
 | `FrameTaskList_Update` | The retail iterator reloads `node->next` after freeing `node`, whereas the portable form caches `next` first. | Use the portable, cached-next implementation. The matching post-free read is a retail lifetime artifact, not a host contract. Validate removal of the head, tail, consecutive tasks, and tasks that mutate the list from callbacks. |
+| `func_02002068` through `func_020021c4` | The matching object is partially linked with `asm/system/packed_timer_array_data.s` so three externally referenced BSS labels retain their retail order. That partial link changes call-relocation associations reported by Objdiff even though the C instructions, BSS bytes, linked ARM9, and ROM are exact. | Use the contiguous `PackedTimerArray` storage in the portable C branch. Preserve 256 stable 12-byte entries; the interior labels at indices 207 and 209 are address artifacts, not separate native allocations. |
+| `InitHeap`, `func_02002744`, `func_020027c8` | MWCC does not reproduce the retail register schedule for arena initialization, child-heap creation, and heap teardown. Their matching branches use inline ARM. Calls to immediately following functions are byte-exact in the linked ROM but Objdiff associates the relocations differently in the separately compiled object. `asm/system/heap_state.s` also preserves the retail adjacency of the allocation-size accumulator and root heap context. | Use the portable C branches and replace the NitroSDK arena/heap primitives behind a platform allocator boundary. Preserve 16-byte root-arena alignment, the extra `0x50` bytes reserved before a child heap is created, allocation enumeration before heap destruction, and the fact that destroying a child heap does not release its backing root allocation. |
+| `func_02002930` | MWCC combines adjacent signed-bitfield copies when compiled from readable C. The matching form retains the retail field-by-field load/store sequence. | Use the portable C copy. Preserve the destination's unknown top five flag bits, copy the screen/mode/endpoints individually, and retain signed six-bit endpoint semantics rather than replacing the packed word with an unchecked raw copy. |
+| `func_020053b8`, `func_020053f4`, `func_02005548` | MWCC folds the readable CNcgFile format tests into an unsigned range check and addresses the local signature arrays directly from `sp`; matching forms retain the retail comparisons and temporary base register. | Compute 32 bytes per signed width/height tile for format zero and 64 for formats one or two, retaining the retail fallback for unknown formats. Build the graphics and palette signature bytes in `NCCG` and `NCCL` order; the ARM register and stack-address choices have no native significance. |
+| `func_0200572c` | Typed handle fields and the reusable masked variant make MWCC retain different registers and schedule the two manager calls differently. | Create both handles from the same resource triple and low eight bits of the variant, set flag bit 3 on each, retain selector/origin, and initialize the embedded position to zero. The register schedule is matching-only. |
+| `func_020058b8` | Typed coordinate and handle fields make MWCC retain x/y and synthesize a halfword mask constant; the matching object reloads both coordinates together before its halfword stores. | Clear hidden flag bit 3 and update signed coordinates only inside `-64 < x < 320`, `-50 < y < 242`; otherwise set the hidden bit and preserve coordinates. The reload and mask form are NDS matching details. |
+| `func_02002cdc` through `func_02002e5c` | `asm/system/display_controller_state.s` preserves a 12-byte global-destructor record, two independently referenced 0x14-byte screen states, and eight trailing bytes in their retail BSS order. | Native code may own the two screen states as one aggregate. Preserve main/sub selector mapping, signed packed transition modes, per-frame hardware application, and the registered object's lifetime; the interior BSS labels are matching artifacts. |
 | `GraphicsSystem_Init` | Typed state-block expressions and volatile register accesses lower differently. | Replace DS allocation/resource helpers and display registers with a graphics-platform interface, while preserving manager-before-engine construction, main/sub resource binding, and the point at which the subsystem becomes active. Do not expose fixed addresses in game-owned native code. |
 | `GraphicsSystem_CreateEngine` | The same typed state-block expressions alter code generation. | Accept only engine 0 or 1, construct the corresponding state with `(0,0,1)` or `(1,2,3)`, and publish it in the correct slot. The retail function has no meaningful return value. |
 | `PaletteBuffer_Init` | MWCC reshapes or replaces the explicit halfword-clear loop. | Install the correct base type/vtable, clear exactly 256 16-bit colors, clear the dirty flag, and keep the CPU-side palette representation independent of host pixel formats. |
@@ -114,6 +121,8 @@ instead of importing the Metrowerks runtime.
 | --- | --- | --- |
 | `DebugMenu_Update` | A C++ `delete` expression is required for the retail virtual deleting-destructor schedule. | Save `selection` before deletion, destroy the menu exactly once, and never read it afterward. Scene creation and the confirmation sound occur only after the menu has been destroyed. |
 | `GamePhaseTransition_Update` | State 2 uses a C++ virtual `delete` expression. | Destroy the transition before calling `GamePhase_Start(0xE1, 1)`, return 1 after scheduling the replacement phase, and do not touch the transition after deletion. |
+| `func_02002068`, `func_020020a0` | `__construct_array` and `__destroy_arr` traverse the fixed 256-entry packed-timer bank; each recovered element destructor is a no-op. | A native fixed array may use ordinary value initialization and needs no teardown walk. Preserve stable indices, the 12-byte persisted representation, and the full-bank copy to and from GameWork offset `0x51f0`. |
+| `func_020022dc` | A compiler guard plus `__register_global_object` lazily constructs the four-slot overlay manager and registers reverse-order teardown. The recovered aggregate preserves the guard/record/object layout, so Objdiff sees different interior BSS symbols while the linked ROM is exact. | Use a stable process-global manager with an explicit initialization policy. Preserve unload-on-shutdown and reverse slot order; choose deliberate synchronization if native callers may initialize it concurrently. |
 | `GraphicsResourceSets_Destroy` | `__destroy_arr` supplies the compiler runtime's array-destruction behavior. | Destroy both constructed sets in reverse order and release each set's three resources exactly once. A native container or explicit loop can replace the runtime helper. |
 | `GraphicsResourceSets_Get` | `__construct_array`, a guard bit, and `__register_global_object` implement lazy global construction and exit-time destruction. | Preserve stable object identity and one-time construction. Choose and document native thread-safety and shutdown ownership explicitly; the original guard itself is not a portable synchronization primitive. |
 | `func_020721b4` | `__construct_array` initializes all 96 fixed VRAM-range descriptors before allocator-specific list setup. | Construct or value-initialize every descriptor before exposing the allocator, reserve descriptor zero for the initial 0x400-block free range, and link descriptors 1 through 95 as spare metadata nodes. A native container may replace the compiler helper while preserving stable node addresses. |
@@ -135,6 +144,66 @@ replaced deliberately on another compiler.
 | Function | Compiler-sensitive form | Native-port care |
 | --- | --- | --- |
 | `func_02075858`, `DebugText_Printf` | The source derives the first unnamed argument by rounding the address of the last named argument down to a four-byte boundary and advancing one word. This reproduces the retail register-homing and stack traversal without an available Metrowerks `stdarg.h`. | Use the host's real `va_list`/`va_start` in a native build. Preserve the active-renderer guard, mode forwarding, and formatted length passed to the glyph blitter. Retail formatting is unbounded and then writes a terminator at the returned length in a 0x104-byte buffer; replace this with bounded formatting and define truncation behavior rather than retaining the overflow hazard. |
+
+### Sprite world-position conversion
+
+`func_02005914`, `func_020059ac`, `func_02005a00`, `func_02005a54`,
+`func_02005afc`, and `func_02005b50` retain matching inline ARM forms. Their portable equivalents
+document the fixed-point origin subtraction, signed five-bit layer query,
+expanded-viewport bounds, and caller-selected culling flag. A native port
+should use the portable forms and replace the offset-based global view access
+once that owner type is recovered; it must preserve arithmetic shifts and the
+16-bit truncation of sprite fields.
+
+### Sprite creation configuration
+
+`func_02005bfc` and `func_02005c3c` retain matching inline ARM forms while
+their portable equivalents document sprite allocation, animation selection,
+and the ordering of flag set/clear masks. A native port should call the typed
+sprite-group API and preserve that mask ordering; the descriptor's leading
+word is deliberately skipped because only offsets 4, 8, and 0xc are confirmed
+resource inputs.
+
+### Debug sprite text
+
+`func_02005c90`, `func_02005cc8`, `func_02005cec`, and `func_02005d0c`
+retain matching inline ARM forms. The portable implementation captures entry
+ownership, two-byte resource-record prefix skipping, signed half-width
+rounding, and the renderer's mode/advance/spacing arguments. A native port
+should replace the two offset-unknown global managers with typed interfaces
+while preserving the entry selection before measurement and drawing.
+
+### Software-canvas lifecycle
+
+`func_02005d88`, `func_02005dac`, `func_02005dc8`, and `func_02005dcc`
+retain matching inline ARM forms. Their portable counterparts establish that
+the canvas only borrows its 16-bit pixel buffer: the normal destructor is a
+no-op, and the deleting destructor frees only the canvas object and returns an
+invalidated pointer for ABI compatibility. Native code must not use that
+returned address or infer ownership of the retained buffer.
+
+`func_02005dfc` also retains a matching inline ARM form because equivalent
+portable fixed-point DDA source receives different register allocation. The
+portable routine is authoritative for behavior: choose the larger absolute
+axis delta, divide 20.12 deltas by that step count, plot both endpoints, and
+force color bit 15. A native implementation should define zero-length division
+behavior explicitly if it cannot rely on the retail integer divider.
+
+`func_02005eb8` uses the same arrangement: portable half-open rectangle loops
+are retained alongside a matching ARM form because register assignment differs
+despite identical code size. Preserve its asymmetric clipping exactly: only
+negative minima and maxima at or beyond 256x192 are clamped.
+
+`func_02005f38` likewise keeps readable four-edge composition beside its
+matching ARM register/stack arrangement. Preserve edge order and repeated
+corner writes if pixel writes later gain blending or other side effects.
+
+`func_02005fec` uses a separately assembled matching form alongside the readable
+8x8 glyph blitter in `software_canvas_glyph.c`; CodeWarrior inserts extra
+fallthrough branches around the two natural loop labels in inline assembly.
+Its row pitch is the literal 256 pixels rather than the canvas stride, glyph
+nibbles are consumed least-significant first, palette index zero is transparent,
+and the shared cursor is not clipped before address formation.
 
 ## Maintenance rule
 

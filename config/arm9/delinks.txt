@@ -42,10 +42,193 @@ src/system/game_work_io.c:
     .text       start:0x020019d0 end:0x02001b28
     .data       start:0x020d3c74 end:0x020d3c7c
 
+src/system/owned_pointer_list_data.c:
+    categories: Game code
+    .data       start:0x020d3ca0 end:0x020d3ca8
+
 src/system/game_phase.c:
     categories: Game code
     .text       start:0x02001b28 end:0x02001d10
     .data       start:0x020d3cd4 end:0x020d3d10
+
+src/system/owned_pointer_list.c:
+    categories: Game code
+    .text       start:0x02001d10 end:0x02001db8
+
+src/system/packed_timer_array.c:
+    categories: Game code
+    .text       start:0x02001db8 end:0x020021d0
+    .bss        start:0x020f37ac end:0x020f43ac
+
+src/system/overlay_manager.c:
+    categories: Game code
+    .text       start:0x020021d0 end:0x02002330
+    .bss        start:0x020f43ac end:0x020f43ec
+
+src/system/runtime_init.c:
+    categories: Game code
+    .text       start:0x02002330 end:0x0200234c
+
+src/system/heap.c:
+    categories: Game code
+    .text       start:0x02002638 end:0x0200284c
+    .data       start:0x020d3d1c end:0x020d3d24
+
+asm/system/heap_state.s:
+    categories: Game code
+    .bss        start:0x020f4dac end:0x020f4dbc
+
+src/system/graphics_hardware.c:
+    categories: Game code
+    .text       start:0x0200284c end:0x020028f0
+
+src/system/display_brightness.c:
+    categories: Game code
+    .text       start:0x020028f0 end:0x02002cdc
+
+src/system/display_controller.c:
+    categories: Game code
+    .text       start:0x02002cdc end:0x02002e6c
+
+asm/system/display_controller_state.s:
+    categories: Game code
+    .bss        start:0x020f4dbc end:0x020f4df8
+
+src/system/debug_text_frame.c:
+    categories: Game code
+    .text       start:0x02002e6c end:0x02002ea4
+
+src/system/system_state_init.c:
+    categories: Game code
+    .text       start:0x02002ea4 end:0x02002f1c
+
+src/system/heap_wrappers.c:
+    categories: Game code
+    .text       start:0x02003e14 end:0x02003e44
+
+src/math/vec_fx32.c:
+    categories: Game code
+    .text       start:0x02004fe0 end:0x02005118
+
+src/math/vec_fx32_data.c:
+    categories: Game code
+    .data       start:0x020d405c end:0x020d4064
+
+src/system/nitro_file.c:
+    categories: Game code
+    .text       start:0x02005118 end:0x02005284
+
+src/system/nitro_file_data.c:
+    categories: Game code
+    .data       start:0x020d40dc end:0x020d40ec
+
+src/system/ncg_file.c:
+    categories: Game code
+    .text       start:0x02005284 end:0x0200542c
+
+src/system/ncg_file_data.c:
+    categories: Game code
+    .data       start:0x020d40cc end:0x020d40dc
+
+src/system/ncg_file_tag.c:
+    categories: Game code
+    .data       start:0x020d4104 end:0x020d410c
+
+src/system/ncl_file.c:
+    categories: Game code
+    .text       start:0x0200542c end:0x02005548
+
+asm/system/ncl_file_signature.s:
+    categories: Game code
+    .text       start:0x02005548 end:0x02005580
+
+src/system/ncl_file_data.c:
+    categories: Game code
+    .data       start:0x020d40ec end:0x020d40f4
+
+src/system/ncl_file_tag.c:
+    categories: Game code
+    .data       start:0x020d410c end:0x020d4114
+
+src/system/animation_resource.c:
+    categories: Game code
+    .text       start:0x02005580 end:0x02005698
+
+src/system/animation_resource_data.c:
+    categories: Game code
+    .data       start:0x020d4178 end:0x020d4180
+
+src/system/animation_binding.c:
+    categories: Game code
+    .text       start:0x02005698 end:0x0200572c
+
+asm/system/util_animation_resource_ctor.s:
+    categories: Game code
+    .text       start:0x0200572c end:0x020057dc
+
+src/system/util_animation_resource.c:
+    categories: Game code
+    .text       start:0x020057dc end:0x02005810
+
+src/system/util_animation_resource_data.c:
+    categories: Game code
+    .data       start:0x020d4168 end:0x020d4178
+
+src/system/util_animation_position.c:
+    categories: Game code
+    .text       start:0x02005810 end:0x02005880
+
+src/system/util_animation_difference.c:
+    categories: Game code
+    .text       start:0x02005880 end:0x020058b8
+
+asm/system/util_animation_apply.s:
+    categories: Game code
+    .text       start:0x020058b8 end:0x02005914
+
+src/graphics/graphics_sprite_position.c:
+    categories: Game code
+    .text       start:0x02005914 end:0x02005b50
+
+src/graphics/graphics_sprite_position_bounds.c:
+    categories: Game code
+    .text       start:0x02005b50 end:0x02005bfc
+
+src/graphics/graphics_sprite_create.c:
+    categories: Game code
+    .text       start:0x02005bfc end:0x02005c90
+
+src/system/debug_sprite_text.c:
+    categories: Game code
+    .text       start:0x02005c90 end:0x02005d88
+
+src/graphics/software_canvas_lifecycle.c:
+    categories: Game code
+    .text       start:0x02005d88 end:0x02005de0
+
+src/graphics/software_canvas_pixel.c:
+    categories: Game code
+    .text       start:0x02005de0 end:0x02005dfc
+
+src/graphics/software_canvas_line.c:
+    categories: Game code
+    .text       start:0x02005dfc end:0x02005eb8
+
+src/graphics/software_canvas_fill_rect.c:
+    categories: Game code
+    .text       start:0x02005eb8 end:0x02005f38
+
+src/graphics/software_canvas_rect.c:
+    categories: Game code
+    .text       start:0x02005f38 end:0x02005fec
+
+asm/graphics/software_canvas_glyph.s:
+    categories: Game code
+    .text       start:0x02005fec end:0x02006078
+
+src/graphics/software_canvas_data.c:
+    categories: Game code
+    .data       start:0x020d4190 end:0x020d4198
 
 src/system/scene_touch_data.c:
     categories: Game code
