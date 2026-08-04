@@ -1,0 +1,83 @@
+#include "tingle/game_phase_script_vm.h"
+#include "tingle/heap.h"
+
+/* Implement miscellaneous script opcodes for notifications, distance, scene creation, and value queries. */
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+extern const char data_020d5b2c[];
+extern void *data_021e9ac0;
+extern void func_02030f84(u16 first, u16 second);
+extern s32 func_020adc40(s32 value);
+extern void *func_02028388(s32 phaseIndex);
+extern void *func_0200c8bc(void *self, void *area, u32 field28, u32 field2c,
+                           u32 extra);
+extern s32 func_020be328(s32 value);
+extern u32 func_02063670(void *table, u16 value);
+#ifdef __cplusplus
+}
+#endif
+
+/* Pop and discard one value, notify func_02030f84 with the next two as u16, and return zero. */
+s32 func_02015d0c(GamePhaseActorScriptVm *self)
+{
+    u16 second = (u16)func_02012704(&self->base);
+    u16 first = (u16)func_02012704(&self->base);
+    (void)func_02012704(&self->base);
+    func_02030f84(first, second);
+    return 0;
+}
+
+/*
+ * Pop two integer XYZ triples, calculate their Euclidean distance through
+ * func_020adc40, arithmetically divide the result by 64, push it, and return zero.
+ */
+s32 func_02015d4c(GamePhaseActorScriptVm *self)
+{
+    s32 z1 = (s32)func_02012704(&self->base);
+    s32 x1 = (s32)func_02012704(&self->base);
+    s32 y1 = (s32)func_02012704(&self->base);
+    s32 z2 = (s32)func_02012704(&self->base);
+    s32 x2 = (s32)func_02012704(&self->base);
+    s32 y2 = (s32)func_02012704(&self->base);
+    s32 dx = x1 - x2;
+    s32 dy = z1 - z2;
+    s32 dz = y1 - y2;
+    s32 distance = func_020adc40(dx * dx + dy * dy + dz * dz);
+    func_020127f8(&self->base, (u32)(distance >> 6));
+    return 0;
+}
+
+/*
+ * Pop field2c, field28, and one-based phase ID; allocate a 0x30-byte apply
+ * scene with the confirmed heap tag, initialize it when allocation succeeds,
+ * pass a zero matching-only fifth argument ignored by the recovered constructor,
+ * and return zero.
+ */
+s32 func_02015dc8(GamePhaseActorScriptVm *self)
+{
+    u32 field2c = func_02012704(&self->base);
+    u32 field28 = func_02012704(&self->base);
+    s32 phaseId = (s32)func_02012704(&self->base);
+    void *scene = Heap_Alloc(0x30, data_020d5b2c, 4, &gHeapContext);
+    if (scene != 0)
+        func_0200c8bc(scene, func_02028388(phaseId - 1), field28, field2c, 0);
+    return 0;
+}
+
+/* Pop a signed value, push its func_020be328 classification, and return zero. */
+s32 func_02015e40(GamePhaseActorScriptVm *self)
+{
+    s32 value = (s32)func_02012704(&self->base);
+    func_020127f8(&self->base, (u32)func_020be328(value));
+    return 0;
+}
+
+/* Pop a u16 key, query the table referenced by data_021e9ac0, push the result, and return zero. */
+s32 func_02015e64(GamePhaseActorScriptVm *self)
+{
+    u16 value = (u16)func_02012704(&self->base);
+    func_020127f8(&self->base, func_02063670(data_021e9ac0, value));
+    return 0;
+}

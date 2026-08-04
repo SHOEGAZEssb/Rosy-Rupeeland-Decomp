@@ -1,0 +1,28 @@
+#include "tingle/game_phase_script_vm.h"
+
+/* Reconstruct the script opcode that submits a four-operand phase request. */
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+extern void *data_021052fc;
+extern void func_02007f24(void *runtime, u32 first, u32 second, u32 third,
+                         u32 fourth, u32 zero);
+#ifdef __cplusplus
+}
+#endif
+
+/*
+ * Pop fourth through first operands, submit them plus a trailing zero to
+ * func_02007f24 on the global phase runtime, and return one. Returning one
+ * stops the current VM dispatch loop after the request is queued.
+ */
+s32 func_0201416c(GamePhaseActorScriptVm *self)
+{
+    u32 fourth = func_02012704(&self->base);
+    u32 third = func_02012704(&self->base);
+    u32 second = func_02012704(&self->base);
+    u32 first = func_02012704(&self->base);
+    func_02007f24(data_021052fc, first, second, third, fourth, 0);
+    return 1;
+}

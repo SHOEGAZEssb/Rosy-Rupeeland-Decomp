@@ -1358,6 +1358,290 @@ asm/game/game_phase_script_vm_02013b74.s:
     categories: Game code
     .text       start:0x02013b74 end:0x02013c7c
 
+asm/game/game_phase_script_vm_02013c7c.s:
+    categories: Game code
+    .text       start:0x02013c7c end:0x02013ca0
+
+asm/game/game_phase_script_vm_02013ca0.s:
+    categories: Game code
+    .text       start:0x02013ca0 end:0x02013cc4
+
+asm/game/game_phase_script_vm_02013cc4.s:
+    categories: Game code
+    .text       start:0x02013cc4 end:0x02013cf8
+
+asm/game/game_phase_script_vm_02013cf8.s:
+    categories: Game code
+    .text       start:0x02013cf8 end:0x02013d68
+
+asm/game/game_phase_script_vm_02013d68.s:
+    categories: Game code
+    .text       start:0x02013d68 end:0x02013d80
+
+asm/game/game_phase_script_vm_02013d80.s:
+    categories: Game code
+    .text       start:0x02013d80 end:0x02013db0
+
+asm/game/game_phase_script_vm_02013db0.s:
+    categories: Game code
+    .text       start:0x02013db0 end:0x02013ddc
+
+asm/game/game_phase_script_vm_02013ddc.s:
+    categories: Game code
+    .text       start:0x02013ddc end:0x02013dfc
+
+asm/game/game_phase_script_vm_02013dfc.s:
+    categories: Game code
+    .text       start:0x02013dfc end:0x02013e14
+
+asm/game/game_phase_script_vm_02013e14.s:
+    categories: Game code
+    .text       start:0x02013e14 end:0x02013e64
+
+asm/game/game_phase_script_vm_02013e64.s:
+    categories: Game code
+    .text       start:0x02013e64 end:0x02013ea0
+
+asm/game/game_phase_script_vm_02013ea0.s:
+    categories: Game code
+    .text       start:0x02013ea0 end:0x02013eb0
+
+asm/game/game_phase_script_vm_02013eb0.s:
+    categories: Game code
+    .text       start:0x02013eb0 end:0x02013ec4
+
+asm/game/game_phase_script_vm_02013ec4.s:
+    categories: Game code
+    .text       start:0x02013ec4 end:0x02013ed8
+
+asm/game/game_phase_script_vm_02013ed8.s:
+    categories: Game code
+    .text       start:0x02013ed8 end:0x02013efc
+
+asm/game/game_phase_script_vm_02013efc.s:
+    categories: Game code
+    .text       start:0x02013efc end:0x02013f10
+
+asm/game/game_phase_script_vm_02013f10.s:
+    categories: Game code
+    .text       start:0x02013f10 end:0x0201409c
+
+asm/game/game_phase_script_vm_0201409c.s:
+    categories: Game code
+    .text       start:0x0201409c end:0x0201410c
+
+asm/game/game_phase_script_vm_0201410c.s:
+    categories: Game code
+    .text       start:0x0201410c end:0x0201413c
+
+asm/game/game_phase_script_vm_0201413c.s:
+    categories: Game code
+    .text       start:0x0201413c end:0x0201416c
+
+asm/game/game_phase_script_vm_0201416c.s:
+    categories: Game code
+    .text       start:0x0201416c end:0x020141d4
+
+asm/game/game_phase_script_vm_020141d4.s:
+    categories: Game code
+    .text       start:0x020141d4 end:0x02014250
+
+asm/game/game_phase_script_vm_02014250.s:
+    categories: Game code
+    .text       start:0x02014250 end:0x020142cc
+
+asm/game/game_phase_script_vm_020142cc.s:
+    categories: Game code
+    .text       start:0x020142cc end:0x020142ec
+
+asm/game/game_phase_script_vm_020142ec.s:
+    categories: Game code
+    .text       start:0x020142ec end:0x020142f4
+
+asm/game/game_phase_script_vm_020142f4.s:
+    categories: Game code
+    .text       start:0x020142f4 end:0x02014314
+
+asm/game/game_phase_script_vm_02014314.s:
+    categories: Game code
+    .text       start:0x02014314 end:0x0201433c
+
+asm/game/game_phase_script_vm_0201433c.s:
+    categories: Game code
+    .text       start:0x0201433c end:0x020143a8
+
+asm/game/game_phase_script_vm_020143a8.s:
+    categories: Game code
+    .text       start:0x020143a8 end:0x02015548
+
+asm/game/game_phase_script_vm_02015548.s:
+    categories: Game code
+    .text       start:0x02015548 end:0x0201555c
+
+asm/game/game_phase_script_vm_0201555c.s:
+    categories: Game code
+    .text       start:0x0201555c end:0x02015580
+
+asm/game/game_phase_script_vm_02015580.s:
+    categories: Game code
+    .text       start:0x02015580 end:0x020155a4
+
+asm/game/game_phase_script_vm_020155a4.s:
+    categories: Game code
+    .text       start:0x020155a4 end:0x02015610
+
+asm/game/game_phase_script_vm_02015610.s:
+    categories: Game code
+    .text       start:0x02015610 end:0x02015690
+
+asm/game/game_phase_script_vm_02015690.s:
+    categories: Game code
+    .text       start:0x02015690 end:0x020156c8
+
+asm/game/game_phase_script_vm_020156c8.s:
+    categories: Game code
+    .text       start:0x020156c8 end:0x020156fc
+
+asm/game/game_phase_script_vm_020156fc.s:
+    categories: Game code
+    .text       start:0x020156fc end:0x0201579c
+
+asm/game/game_phase_script_vm_0201579c.s:
+    categories: Game code
+    .text       start:0x0201579c end:0x02015818
+
+asm/game/game_phase_script_vm_02015818.s:
+    categories: Game code
+    .text       start:0x02015818 end:0x0201593c
+
+asm/game/game_phase_script_vm_0201593c.s:
+    categories: Game code
+    .text       start:0x0201593c end:0x0201597c
+
+asm/game/game_phase_script_vm_0201597c.s:
+    categories: Game code
+    .text       start:0x0201597c end:0x020159b4
+
+asm/game/game_phase_script_vm_020159b4.s:
+    categories: Game code
+    .text       start:0x020159b4 end:0x020159d4
+
+asm/game/game_phase_script_vm_020159d4.s:
+    categories: Game code
+    .text       start:0x020159d4 end:0x02015a34
+
+asm/game/game_phase_script_vm_02015a34.s:
+    categories: Game code
+    .text       start:0x02015a34 end:0x02015a80
+
+asm/game/game_phase_script_vm_02015a80.s:
+    categories: Game code
+    .text       start:0x02015a80 end:0x02015acc
+
+asm/game/game_phase_script_vm_02015acc.s:
+    categories: Game code
+    .text       start:0x02015acc end:0x02015b18
+
+asm/game/game_phase_script_vm_02015b18.s:
+    categories: Game code
+    .text       start:0x02015b18 end:0x02015b64
+
+asm/game/game_phase_script_vm_02015b64.s:
+    categories: Game code
+    .text       start:0x02015b64 end:0x02015d0c
+
+asm/game/game_phase_script_vm_02015d0c.s:
+    categories: Game code
+    .text       start:0x02015d0c end:0x02015d4c
+
+asm/game/game_phase_script_vm_02015d4c.s:
+    categories: Game code
+    .text       start:0x02015d4c end:0x02015dc8
+
+asm/game/game_phase_script_vm_02015dc8.s:
+    categories: Game code
+    .text       start:0x02015dc8 end:0x02015e40
+
+asm/game/game_phase_script_vm_02015e40.s:
+    categories: Game code
+    .text       start:0x02015e40 end:0x02015e64
+
+asm/game/game_phase_script_vm_02015e64.s:
+    categories: Game code
+    .text       start:0x02015e64 end:0x02015e9c
+
+asm/game/game_phase_script_vm_02015e9c.s:
+    categories: Game code
+    .text       start:0x02015e9c end:0x02015f10
+
+asm/game/game_phase_script_vm_02015f10.s:
+    categories: Game code
+    .text       start:0x02015f10 end:0x02015f50
+
+asm/game/game_phase_script_vm_02015f50.s:
+    categories: Game code
+    .text       start:0x02015f50 end:0x02016014
+
+asm/game/game_phase_script_vm_02016014.s:
+    categories: Game code
+    .text       start:0x02016014 end:0x02016030
+
+asm/game/game_phase_script_vm_02016030.s:
+    categories: Game code
+    .text       start:0x02016030 end:0x02016070
+
+asm/game/game_phase_script_vm_02016070.s:
+    categories: Game code
+    .text       start:0x02016070 end:0x020160b0
+
+asm/game/game_phase_script_vm_020160b0.s:
+    categories: Game code
+    .text       start:0x020160b0 end:0x020160f0
+
+asm/game/game_phase_script_vm_020160f0.s:
+    categories: Game code
+    .text       start:0x020160f0 end:0x02016144
+
+asm/game/game_phase_script_vm_02016144.s:
+    categories: Game code
+    .text       start:0x02016144 end:0x0201616c
+
+asm/game/game_phase_script_vm_0201616c.s:
+    categories: Game code
+    .text       start:0x0201616c end:0x020161ac
+
+asm/game/game_phase_script_vm_020161ac.s:
+    categories: Game code
+    .text       start:0x020161ac end:0x020161f4
+
+asm/game/game_phase_script_vm_020161f4.s:
+    categories: Game code
+    .text       start:0x020161f4 end:0x02016238
+
+asm/game/game_phase_script_vm_02016238.s:
+    categories: Game code
+    .text       start:0x02016238 end:0x02016814
+
+asm/game/game_phase_script_vm_02016814.s:
+    categories: Game code
+    .text       start:0x02016814 end:0x02016898
+
+asm/game/game_phase_script_vm_02016898.s:
+    categories: Game code
+    .text       start:0x02016898 end:0x020168a0
+
+asm/game/game_phase_script_vm_020168a0.s:
+    categories: Game code
+    .text       start:0x020168a0 end:0x020168a8
+
+asm/game/game_phase_script_vm_020168a8.s:
+    categories: Game code
+    .text       start:0x020168a8 end:0x020168d0
+
+asm/game/game_phase_script_vm_020168d0.s:
+    categories: Game code
+    .text       start:0x020168d0 end:0x02016930
+
 src/graphics/software_canvas_data.c:
     categories: Game code
     .data       start:0x020d4190 end:0x020d4198
