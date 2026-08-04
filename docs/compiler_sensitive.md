@@ -205,6 +205,75 @@ Its row pitch is the literal 256 pixels rather than the canvas stride, glyph
 nibbles are consumed least-significant first, palette index zero is transparent,
 and the shared cursor is not clipped before address formation.
 
+`func_02006078` also uses a separately assembled matching form beside its
+portable variadic C implementation. CodeWarrior changes the cursor-store and
+argument-list register schedule even when the generated size is identical;
+preserve the retail 256-byte halt threshold and signed-byte glyph lookup.
+
+The `game_string_list` unit has portable C for the recovered ownership and
+linking behavior, plus a separately assembled retail form. The compiler moves
+the virtual-function and next-node loads in `func_02006164`; preserve the
+virtual hook, explicit `GameString_Destroy`, and node free sequence.
+
+The fixed-point Bézier evaluators use a separately assembled matching form
+alongside `vec_fx32_bezier.c`. Equivalent C has identical sizes but allocates
+the initial inverse-parameter products to different registers. Keep each 20.12
+product's `+0x800` rounding independent rather than combining terms first.
+
+The large game-phase runtime constructor/configurator has a documented portable
+C implementation and a separately assembled matching form. The optimizer
+collapses duplicated configuration-mode branches and several hardware bit-test
+sequences; retain the volatile display-register writes and the retail call order.
+
+The adjacent runtime helpers also use a matching assembly form because the
+compiler hoists the field-loader table arguments ahead of the store at offset
+0x30b4. The portable C preserves the observable store-before-configuration order.
+
+The game-phase runtime deleting destructor has a readable portable wrapper
+around the non-deleting destructor and heap release, while the matching retail
+form duplicates the complete teardown before freeing the 0x3100-byte object.
+Preserve the full teardown-before-free ordering if either implementation changes.
+
+The short game-phase runtime virtual methods are portable C. The delinked target
+object retains a pre-encoded forward branch from `func_02007328` to its copy
+helper in addition to the branch relocation; a freshly compiled object leaves
+that relocation field clear, but the linker produces the same final ARM branch.
+
+The same delinker artifact occurs on the forward call from `func_020086f8` to
+the immediately following `func_02008740`; their linked ARM code is identical.
+
+The large per-frame game-phase controller has documented portable C and a
+separately assembled matching form. Preserve its early-return order, request-bit
+clears, virtual calls, and allocation-before-construction failure behavior.
+
+The directional area-change routine also keeps a matching assembly form beside
+portable C. It mixes compiler-runtime fixed/float conversions with offset-based
+actor transfers; preserve direction-specific sign handling and cleanup order.
+
+The actor synchronization routine has portable C and matching assembly because
+its seven overlapping stack temporaries are laid out according to the original
+C++ value-object lifetimes. Preserve each explicit temporary destructor call.
+
+The secondary-transform builder likewise uses matching assembly for five
+mode-dependent stack value objects. Invalid placement modes intentionally call
+`OS_Halt`; do not replace those paths with a silent default.
+
+The placement-mode switch has four mutually exclusive stack vector lifetimes
+and therefore retains a matching assembly form beside its portable C. Its
+invalid-mode halt and optional post-switch synchronization are intentional.
+
+The auxiliary-object replacement routine uses matching assembly to retain the
+VBlank disable/enable bracket and sub-display register schedule around overlay
+replacement. All allocation and attachment work must stay inside that bracket.
+
+The scene-object replacement routine uses matching assembly because the retail
+C++ destruction idiom retains two consecutive null branches before clearing
+offset 0x30e8. Portable C expresses the same destroy-before-create behavior.
+
+The screen-mode switch uses matching assembly beside portable C because the
+compiler reschedules the volatile sub BG palette clear around the GameWork
+pointer load. Preserve the retail hardware-write and flag-update order.
+
 ## Maintenance rule
 
 Update this document whenever reconstructed code adds any of the following:

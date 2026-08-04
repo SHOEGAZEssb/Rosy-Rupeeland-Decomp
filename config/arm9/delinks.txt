@@ -226,6 +226,210 @@ asm/graphics/software_canvas_glyph.s:
     categories: Game code
     .text       start:0x02005fec end:0x02006078
 
+asm/graphics/software_canvas_text.s:
+    categories: Game code
+    .text       start:0x02006078 end:0x02006108
+
+asm/system/game_string_list_lifecycle.s:
+    categories: Game code
+    .text       start:0x02006108 end:0x02006164
+
+asm/system/game_string_list_clear.s:
+    categories: Game code
+    .text       start:0x02006164 end:0x020061c0
+
+asm/system/game_string_list_append.s:
+    categories: Game code
+    .text       start:0x020061c0 end:0x02006268
+
+src/system/overlay_slot_lifecycle.c:
+    categories: Game code
+    .text       start:0x02006268 end:0x020062f8
+
+src/system/overlay_slot_unload.c:
+    categories: Game code
+    .text       start:0x020062f8 end:0x02006328
+
+src/math/vec_fx32_triple.c:
+    categories: Game code
+    .text       start:0x02006328 end:0x020063a4
+
+asm/math/vec_fx32_bezier.s:
+    categories: Game code
+    .text       start:0x020063a4 end:0x02006644
+
+src/math/vec_fx32_stepper.c:
+    categories: Game code
+    .text       start:0x02006644 end:0x020068ac
+
+src/math/spline_mover.c:
+    categories: Game code
+    .text       start:0x020068ac end:0x02006ae0
+
+asm/game/game_phase_runtime.s:
+    categories: Game code
+    .text       start:0x02006ae0 end:0x02006fd4
+
+asm/game/game_phase_runtime_helpers.s:
+    categories: Game code
+    .text       start:0x02006fd4 end:0x02007064
+
+asm/game/game_phase_runtime_destroy.s:
+    categories: Game code
+    .text       start:0x02007064 end:0x0200719c
+
+asm/game/game_phase_runtime_delete.s:
+    categories: Game code
+    .text       start:0x0200719c end:0x020072dc
+
+src/game/game_phase_runtime_methods.c:
+    categories: Game code
+    .text       start:0x020072dc end:0x02007430
+
+asm/game/game_phase_runtime_update.s:
+    categories: Game code
+    .text       start:0x02007430 end:0x02007868
+
+src/game/game_phase_runtime_readiness.c:
+    categories: Game code
+    .text       start:0x02007868 end:0x02007908
+
+src/game/game_phase_runtime_prepare.c:
+    categories: Game code
+    .text       start:0x02007908 end:0x02007a24
+
+src/game/game_phase_runtime_finalize.c:
+    categories: Game code
+    .text       start:0x02007a24 end:0x02007ae8
+
+src/game/game_phase_runtime_maintenance.c:
+    categories: Game code
+    .text       start:0x02007ae8 end:0x02007b18
+
+asm/game/game_phase_runtime_change_area.s:
+    categories: Game code
+    .text       start:0x02007b18 end:0x02007f08
+
+src/game/game_phase_runtime_area_request.c:
+    categories: Game code
+    .text       start:0x02007f08 end:0x02007ff4
+
+src/game/game_phase_runtime_apply_request.c:
+    categories: Game code
+    .text       start:0x02007ff4 end:0x0200807c
+
+src/game/game_phase_runtime_secondary.c:
+    categories: Game code
+    .text       start:0x0200807c end:0x02008148
+
+asm/game/game_phase_runtime_actor_sync.s:
+    categories: Game code
+    .text       start:0x02008148 end:0x02008354
+
+src/game/game_phase_runtime_value_helpers.c:
+    categories: Game code
+    .text       start:0x02008354 end:0x020083c8
+
+src/game/game_phase_runtime_request_dispatch.c:
+    categories: Game code
+    .text       start:0x020083c8 end:0x020084b8
+
+src/game/game_phase_runtime_warp_request.c:
+    categories: Game code
+    .text       start:0x020084b8 end:0x02008570
+
+asm/game/game_phase_runtime_screen_mode.s:
+    categories: Game code
+    .text       start:0x02008570 end:0x0200866c
+
+src/game/game_phase_runtime_secondary_position.c:
+    categories: Game code
+    .text       start:0x0200866c end:0x020086f8
+
+src/game/game_phase_runtime_primary_transform.c:
+    categories: Game code
+    .text       start:0x020086f8 end:0x0200875c
+
+asm/game/game_phase_runtime_secondary_transform.s:
+    categories: Game code
+    .text       start:0x0200875c end:0x020088b8
+
+asm/game/game_phase_runtime_placement_mode.s:
+    categories: Game code
+    .text       start:0x020088b8 end:0x02008af8
+
+src/game/game_phase_runtime_area_helpers.c:
+    categories: Game code
+    .text       start:0x02008af8 end:0x02008bb8
+
+asm/game/game_phase_runtime_auxiliary.s:
+    categories: Game code
+    .text       start:0x02008bb8 end:0x02008cf8
+
+asm/game/game_phase_runtime_scene_object.s:
+    categories: Game code
+    .text       start:0x02008cf8 end:0x02008e10
+
+src/game/game_phase_runtime_transition_sync.c:
+    categories: Game code
+    .text       start:0x02008e10 end:0x02008ed0
+
+src/game/game_phase_runtime_misc.c:
+    categories: Game code
+    .text       start:0x02008ed0 end:0x02008f90
+
+src/game/actor_motion_lifecycle.c:
+    categories: Game code
+    .text       start:0x02008f90 end:0x0200920c
+
+asm/game/actor_motion_grid_target.s:
+    categories: Game code
+    .text       start:0x0200920c end:0x020093ac
+
+src/game/actor_motion_angle.c:
+    categories: Game code
+    .text       start:0x020093ac end:0x020093cc
+
+asm/game/actor_motion_actor_target.s:
+    categories: Game code
+    .text       start:0x020093cc end:0x02009514
+
+asm/game/actor_motion_extract_target.s:
+    categories: Game code
+    .text       start:0x02009514 end:0x020095cc
+
+asm/game/actor_motion_oscillation_setup.s:
+    categories: Game code
+    .text       start:0x020095cc end:0x02009694
+
+src/game/actor_motion_oscillation_control.c:
+    categories: Game code
+    .text       start:0x02009694 end:0x020096f0
+
+asm/game/actor_motion_oscillation_sample.s:
+    categories: Game code
+    .text       start:0x020096f0 end:0x02009790
+
+src/game/actor_motion_jitter_lifecycle.c:
+    categories: Game code
+    .text       start:0x02009790 end:0x020097ec
+
+asm/game/actor_motion_jitter_update.s:
+    categories: Game code
+    .text       start:0x020097ec end:0x020099c0
+
+src/game/actor_motion_jitter_limits.c:
+    categories: Game code
+    .text       start:0x020099c0 end:0x020099dc
+
+src/game/actor_motion_gamework_lifecycle.c:
+    categories: Game code
+    .text       start:0x020099dc end:0x02009a2c
+
+asm/game/actor_motion_gamework_update.s:
+    categories: Game code
+    .text       start:0x02009a2c end:0x02009c20
+
 src/graphics/software_canvas_data.c:
     categories: Game code
     .data       start:0x020d4190 end:0x020d4198

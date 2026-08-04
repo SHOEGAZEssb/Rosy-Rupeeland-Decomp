@@ -40,6 +40,8 @@ void func_02005eb8(SoftwareCanvas *self, s32 x0, s32 y0,
 void func_02005f38(SoftwareCanvas *self, s32 x0, s32 y0,
                    s32 x1, s32 y1, u16 color);
 void func_02005fec(SoftwareCanvas *self, s32 glyphIndex);
+void func_02006078(SoftwareCanvas *self, s32 x, s32 y,
+                   const char *format, ...);
 
 #ifdef __cplusplus
 }

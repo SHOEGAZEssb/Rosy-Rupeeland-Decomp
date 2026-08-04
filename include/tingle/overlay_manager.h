@@ -28,6 +28,10 @@ OverlayManager *func_020021fc(OverlayManager *manager);
 void func_0200222c(OverlayManager *manager, int slotIndex, int overlayId);
 void func_02002290(OverlayManager *manager, int slotIndex);
 OverlayManager *func_020022dc(void);
+OverlaySlot *func_02006268(OverlaySlot *slot);
+OverlaySlot *func_02006280(OverlaySlot *slot);
+void func_020062a0(OverlaySlot *slot, int overlayId);
+void func_020062f8(OverlaySlot *slot);
 
 #ifdef __cplusplus
 }

@@ -1,0 +1,74 @@
+#include "tingle/game_phase_runtime.h"
+#include "tingle/heap.h"
+
+/* Compact flag, timing, global-access, and deleting helpers for the runtime. */
+
+extern GamePhaseRuntime *data_021052fc;
+extern void *data_020f4e14;
+extern void *gDebugFont;
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+extern void func_020755bc(void *font);
+#ifdef __cplusplus
+}
+#endif
+
+/*
+ * Consume runtime request bits 0x10 and 0x20 independently, refreshing the
+ * associated debug text/font objects after each clear. Returns no value.
+ */
+void func_02008ed0(GamePhaseRuntime *self)
+{
+    u8 *b = (u8 *)self;
+    u32 flags = *(u32 *)(b + 0x30b8);
+    if (flags & 0x10) {
+        *(u32 *)(b + 0x30b8) = flags & ~0x10;
+        func_020755bc(data_020f4e14);
+    }
+    flags = *(u32 *)(b + 0x30b8);
+    if (flags & 0x20) {
+        *(u32 *)(b + 0x30b8) = flags & ~0x20;
+        func_020755bc(gDebugFont);
+    }
+}
+
+/* No-op predicate; it changes no state and always returns zero. */
+s32 func_02008f2c(void)
+{
+    return 0;
+}
+
+/*
+ * Increment the signed counter at offset four. Values above 30 reset to zero
+ * and return one; all other values remain stored and return zero.
+ */
+s32 func_02008f34(void *counter)
+{
+    s32 value = ++*(s32 *)((u8 *)counter + 4);
+    if (value > 30) {
+        *(s32 *)((u8 *)counter + 4) = 0;
+        return 1;
+    }
+    return 0;
+}
+
+/* Store value at offset 0x30f8 of the global active runtime; returns no value. */
+void func_02008f58(void *value)
+{
+    *(void **)((u8 *)data_021052fc + 0x30f8) = value;
+}
+
+/* Return the auxiliary object stored at runtime offset 0x30ec; changes no state. */
+void *func_02008f70(GamePhaseRuntime *self)
+{
+    return *(void **)((u8 *)self + 0x30ec);
+}
+
+/* Free allocation and return its original address; Heap_Free is the only effect. */
+void *func_02008f7c(void *allocation)
+{
+    Heap_Free(allocation);
+    return allocation;
+}
