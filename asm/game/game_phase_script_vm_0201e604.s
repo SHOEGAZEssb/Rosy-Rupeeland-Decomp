@@ -1,0 +1,23 @@
+; Matching retail form; see src/game/timed_sprite_offset_variant.c.
+.text
+.extern Heap_Free
+.extern func_0201e290
+.extern func_0201e380
+.extern func_0201e3b8
+.extern func_020050a4
+.extern func_020050c8
+.extern func_02005a54
+.extern func_02072b68
+.extern data_020d6084
+.global func_0201e604
+func_0201e604: ; 0x0201e604
+    stmdb sp!, {r4, lr}
+    mov r4, r0
+    bl func_0201e380
+    mov r0, r4
+    bl Heap_Free
+    mov r0, r4
+    ldmia sp!, {r4, pc}
+
+
+.size func_0201e604, . - func_0201e604

@@ -1,0 +1,35 @@
+#include "tingle/game_phase_script_vm.h"
+
+/* Implement the final adjacent runtime command and query opcodes in this VM block. */
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+extern void *data_021052fc;
+extern void *func_02007f0c(void *runtime, s32 index);
+extern void *func_02030ad4(void *collection, s32 index);
+extern void func_020330fc(void *actor, s32 command, s32 value);
+extern s32 func_0204fc6c(void);
+#ifdef __cplusplus
+}
+#endif
+
+/*
+ * Pop a value, resolve actor zero from runtime collection 2, send command
+ * 0x2a with that value, and return zero.
+ */
+s32 func_0201b098(GamePhaseActorScriptVm *self)
+{
+    s32 value = (s32)func_02012704(&self->base);
+    void *collection = func_02007f0c(data_021052fc, 2);
+    void *actor = func_02030ad4(collection, 0);
+    func_020330fc(actor, 0x2a, value);
+    return 0;
+}
+
+/* Query the recovered global runtime value, push it, and return zero. */
+s32 func_0201b0d4(GamePhaseActorScriptVm *self)
+{
+    func_020127f8(&self->base, (u32)func_0204fc6c());
+    return 0;
+}

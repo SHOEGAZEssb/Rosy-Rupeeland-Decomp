@@ -1,0 +1,53 @@
+#include "tingle/actor_motion.h"
+#include "tingle/game_phase_script_vm.h"
+
+/*
+ * Implement script opcodes that configure or clear either of the two recovered
+ * ActorMotion objects embedded in the global game-phase runtime.
+ */
+
+extern void *data_021052fc;
+
+/*
+ * Pop duration, Y amplitude, and X amplitude, configure the ActorMotion at
+ * runtime offset 0x3044 through func_020095cc, and return zero.
+ */
+s32 func_02017008(GamePhaseActorScriptVm *self)
+{
+    s32 duration = (s32)func_02012704(&self->base);
+    s32 yAmplitude = (s32)func_02012704(&self->base);
+    s32 xAmplitude = (s32)func_02012704(&self->base);
+    func_020095cc((ActorMotion *)((u8 *)data_021052fc + 0x3044),
+                  xAmplitude, yAmplitude, duration);
+    return 0;
+}
+
+/* Clear the ActorMotion at runtime offset 0x3044 and return zero. */
+s32 func_02017058(GamePhaseActorScriptVm *self)
+{
+    (void)self;
+    func_02009694((ActorMotion *)((u8 *)data_021052fc + 0x3044));
+    return 0;
+}
+
+/*
+ * Pop duration, Y amplitude, and X amplitude, configure the ActorMotion at
+ * runtime offset 0x2fbc through func_020095cc, and return zero.
+ */
+s32 func_0201707c(GamePhaseActorScriptVm *self)
+{
+    s32 duration = (s32)func_02012704(&self->base);
+    s32 yAmplitude = (s32)func_02012704(&self->base);
+    s32 xAmplitude = (s32)func_02012704(&self->base);
+    func_020095cc((ActorMotion *)((u8 *)data_021052fc + 0x2fbc),
+                  xAmplitude, yAmplitude, duration);
+    return 0;
+}
+
+/* Clear the ActorMotion at runtime offset 0x2fbc and return zero. */
+s32 func_020170cc(GamePhaseActorScriptVm *self)
+{
+    (void)self;
+    func_02009694((ActorMotion *)((u8 *)data_021052fc + 0x2fbc));
+    return 0;
+}

@@ -1,0 +1,26 @@
+; Matching retail form; see src/game/game_phase_script_vm_bitwise_opcodes.c.
+.text
+.extern func_0201b278
+.extern func_0201b2b4
+.global func_0201b790
+func_0201b790: ; 0x0201b790
+    stmdb sp!, {r3, r4, r5, lr}
+    mov r4, r0
+    ldr r1, [r4, #0x4]
+    add r0, r1, #0x1
+    str r0, [r4, #0x4]
+    ldrb r5, [r1, #0x0]
+    bl func_0201b278
+    ldr r1, [r4, #0x4]
+    add r3, r4, #0x2c
+    add r1, r1, #0x4
+    str r1, [r4, #0x4]
+    ldr r2, [r3, r5, lsl #0x2]
+    mov r1, r5
+    and r2, r2, r0
+    mov r0, r4
+    str r2, [r3, r5, lsl #0x2]
+    bl func_0201b2b4
+    mov r0, #0x0
+    ldmia sp!, {r3, r4, r5, pc}
+.size func_0201b790, . - func_0201b790

@@ -1,0 +1,66 @@
+#include "tingle/heap.h"
+#include "tingle/types.h"
+
+/* Specialize the timed sprite presentation with copied tracks and orientation. */
+
+typedef struct Track { u8 bytes[0x10]; } Track;
+typedef struct TimedSprite { void *vtable; u8 *sprite; Track first08; Track second18; s32 remaining28; } TimedSprite;
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+extern void *data_020d605c;
+extern TimedSprite *func_0201e290(TimedSprite *self,u8 *config);
+extern TimedSprite *func_0201e380(TimedSprite *self);
+extern void func_0201e3b8(TimedSprite *self,s32 enabled);
+extern void func_020050a4(Track *destination,const void *source);
+extern void func_020050c8(Track *first,Track *second);
+extern u16 func_020ae024(s32 x,s32 y);
+extern void func_02072b68(void *sprite,s32 value);
+extern void func_02005914(void *sprite,s32 argument,s32 first,s32 second,
+                          s32 third,s32 constant8);
+#ifdef __cplusplus
+}
+#endif
+
+/*
+ * Initialize the base, install this variant's vtable, copy config tracks and
+ * lifetime, enable sprite flag 2, derive/store orientation from track values,
+ * set sprite value zero, and return self.
+ */
+TimedSprite *func_0201e454(TimedSprite *self,u8 *config)
+{
+    u16 angle;
+    func_0201e290(self,config);
+    self->vtable=data_020d605c;
+    func_020050a4(&self->first08,config+0x10);
+    func_020050a4(&self->second18,config+0x20);
+    self->remaining28=*(s32 *)(config+0x30);
+    *(u16 *)(self->sprite+0x24)|=2;
+    angle=func_020ae024(-*(s32 *)&self->second18.bytes[4],
+                        *(s32 *)&self->second18.bytes[8]);
+    func_02072b68(self->sprite,0);
+    *(u16 *)(self->sprite+0x30)=angle;
+    return self;
+}
+
+/* Run the shared non-freeing teardown and return self. */
+TimedSprite *func_0201e4d0(TimedSprite *self){func_0201e380(self);return self;}
+
+/* Run the shared teardown, free self, and return its old address. */
+TimedSprite *func_0201e4e4(TimedSprite *self){func_0201e380(self);Heap_Free(self);return self;}
+
+/*
+ * Decrement lifetime and hide/finish when negative.  Otherwise advance the
+ * tracks, update the sprite through func_02005914 with recovered constant 8,
+ * and return whether sprite status flag 8 is set.
+ */
+s32 func_0201e500(TimedSprite *self,s32 argument)
+{
+    self->remaining28--;
+    if(self->remaining28<0){func_0201e3b8(self,0);return 1;}
+    func_020050c8(&self->first08,&self->second18);
+    func_02005914(self->sprite,argument,*(s32 *)&self->first08.bytes[4],
+        *(s32 *)&self->first08.bytes[8],*(s32 *)&self->first08.bytes[0xc],8);
+    return (*(u16 *)(self->sprite+0x24)&8)!=0;
+}

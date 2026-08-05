@@ -1,0 +1,25 @@
+; Matching retail form; see src/game/game_phase_script_vm_global_object_query_opcodes.c.
+.text
+.extern data_021f5128
+.extern func_02012704
+.extern func_020127f8
+.extern func_0207a494
+.global func_02017788
+func_02017788:
+    stmdb sp!, {r3, r4, r5, lr}
+    mov r5, r0
+    bl func_02012704
+    ldr r2, L_020177c4
+    mov r1, r0
+    ldr r0, [r2]
+    mov r4, #0
+    bl func_0207a494
+    cmp r0, #0
+    movne r4, #1
+    mov r0, r5
+    mov r1, r4
+    bl func_020127f8
+    mov r0, #0
+    ldmia sp!, {r3, r4, r5, pc}
+L_020177c4: .word data_021f5128
+    .size func_02017788, . - func_02017788
