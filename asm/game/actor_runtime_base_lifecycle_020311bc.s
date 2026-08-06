@@ -1,0 +1,62 @@
+; Matching retail form; see src/game/actor_runtime_base_lifecycle.c.
+.text
+.extern Heap_Free
+.extern data_020df040
+.extern func_02005058
+.extern func_02006788
+.extern func_0201b1e0
+.extern func_02030acc
+.extern func_02030e08
+.extern func_02031488
+.extern func_020337d4
+.extern func_02057184
+.extern func_02074038
+
+    .global func_020311bc
+    .type func_020311bc, @function
+func_020311bc: ; 0x020311bc
+    stmdb sp!, {r3, r4, r5, lr}
+    ldr r1, .L_0203125c
+    mov r5, r0
+    str r1, [r5, #0x0]
+    ldr r1, [r0, #0x0]
+    ldr r1, [r1, #0xbc]
+    blx r1
+    mov r0, r5
+    bl func_02031488
+    ldr r4, [r5, #0xa8]
+    cmp r4, #0x0
+    beq .L_02031200
+    mov r0, r5
+    bl func_020337d4
+    bl func_02030acc
+    mov r1, r4
+    bl func_02074038
+.L_02031200:
+    ldr r4, [r5, #0x1e0]
+    cmp r4, #0x0
+    beq .L_0203121c
+    mov r0, r4
+    bl func_02057184
+    mov r0, r4
+    bl Heap_Free
+.L_0203121c:
+    add r0, r5, #0x198
+    bl func_02006788
+    add r0, r5, #0xec
+    bl func_0201b1e0
+    add r0, r5, #0xb0
+    bl func_02005058
+    add r0, r5, #0x98
+    bl func_02005058
+    add r0, r5, #0x88
+    bl func_02005058
+    add r0, r5, #0x78
+    bl func_02005058
+    mov r0, r5
+    bl func_02030e08
+    mov r0, r5
+    ldmia sp!, {r3, r4, r5, pc}
+.L_0203125c: .word data_020df040
+    .size func_020311bc, . - func_020311bc
+

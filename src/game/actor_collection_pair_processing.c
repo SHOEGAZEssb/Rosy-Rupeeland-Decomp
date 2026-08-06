@@ -1,0 +1,251 @@
+#include "tingle/types.h"
+
+/*
+ * Process potentially overlapping pairs from actor collection categories one
+ * and two. The routine performs mask and sweep-order rejection, constructs
+ * collision shapes, separates intersecting actors, maintains a pair-state
+ * matrix, dispatches pair callbacks, and performs per-actor follow-up work.
+ */
+typedef struct PairActor PairActor;
+
+typedef struct PairActorVTable {
+    u8 field_00[0x0c];
+    u32 (*filter_0c)(PairActor *);
+} PairActorVTable;
+
+struct PairActor {
+    PairActorVTable *vtable_00;
+    u8 field_04[0x0c];
+    u32 flags_10;
+    u32 flags_14;
+    s32 field_18;
+    s32 positionX_1c;
+    s32 positionY_20;
+    s32 positionZ_24;
+    s32 field_28;
+    s32 previousX_2c;
+    s32 previousY_30;
+    u8 field_34[0x14];
+    s8 order_48;
+    u8 contactEdges_49;
+    u8 field_4a[3];
+    u8 type_4d;
+    u8 field_4e[6];
+    void *field_54;
+};
+
+typedef struct ActorPairCollection {
+    PairActor *actors_0000[128];
+    PairActor *categories_0200[5][128];
+    u8 field_0c00[0x220];
+    s32 categoryCounts_0e20[5];
+    u8 pairState_0e34[0x2040];
+} ActorPairCollection;
+
+typedef struct CollisionWords {
+    s32 word[4];
+} CollisionWords;
+
+extern void *data_021052fc;
+extern u8 data_02105310[];
+extern u8 data_021f5ebc[];
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+extern void func_02005030(CollisionWords *, const void *);
+extern void func_02005058(CollisionWords *);
+extern void func_02030f10(CollisionWords *, PairActor *, CollisionWords *);
+extern s32 func_02056f34(CollisionWords *, const CollisionWords *,
+                         const CollisionWords *, u32 *);
+extern s32 func_020adc90(s32, s32);
+extern s32 func_020be334(s32);
+extern s32 func_0202d2f4(u8 *, s32, s32);
+extern void func_0202d324(u8 *, s32, s32);
+extern s32 func_0202ec08(ActorPairCollection *, PairActor *, PairActor *, s32);
+extern void func_0202ec74(ActorPairCollection *, PairActor *, PairActor *);
+extern s32 func_020828a0(void *, s32);
+extern s32 func_0200b04c(void *);
+extern void func_0200a3b8(PairActor *, void *);
+extern void func_0200ac14(PairActor *, void *);
+#ifdef __cplusplus
+}
+#endif
+
+static s32 multiplyFx(s32 a, s32 b)
+{
+    return (s32)(((s64)a * b + 0x800) >> 12);
+}
+
+/*
+ * Split one axis of an overlap according to the actors' movement deltas, then
+ * apply only corrections permitted by their recovered contact-edge bits.
+ * This is an inferred extraction of the duplicated X/Y code in the retail
+ * function; func_020adc90 performs the fixed-point division.
+ */
+static void resolvePairAxis(s32 overlap, s32 deltaA, s32 deltaB,
+                            s32 *positionA, s32 *positionB, u8 edgesA,
+                            u8 edgesB, u8 negativeEdge, u8 positiveEdge)
+{
+    s32 total = func_020be334(deltaA) + func_020be334(deltaB);
+    s32 correctionA;
+    s32 correctionB;
+
+    if (overlap > total)
+        return;
+    if (deltaA == 0) {
+        if (deltaB > 0 && (edgesB & positiveEdge))
+            *positionB -= overlap;
+        else if (deltaB < 0 && (edgesB & negativeEdge))
+            *positionB += overlap;
+        return;
+    }
+    if (deltaB == 0) {
+        if (deltaA > 0 && (edgesA & positiveEdge))
+            *positionA -= overlap;
+        else if (deltaA < 0 && (edgesA & negativeEdge))
+            *positionA += overlap;
+        return;
+    }
+
+    correctionB = func_020adc90(multiplyFx(overlap, deltaB), total);
+    correctionA = overlap - func_020be334(correctionB);
+    if (deltaA <= 0)
+        correctionA = -correctionA;
+    if ((correctionA > 0 && (edgesA & positiveEdge)) ||
+        (correctionA < 0 && (edgesA & negativeEdge)))
+        *positionA -= correctionA;
+    if ((correctionB > 0 && (edgesB & positiveEdge)) ||
+        (correctionB < 0 && (edgesB & negativeEdge)))
+        *positionB -= correctionB;
+}
+
+static s32 testPair(PairActor *actorA, PairActor *actorB, u32 *contact)
+{
+    CollisionWords temporaryA;
+    CollisionWords temporaryB;
+    CollisionWords shapeA;
+    CollisionWords shapeB;
+    CollisionWords intersection = {{0, 0, 0, 0}};
+    s32 result;
+
+    if (!(actorA->flags_14 & 0x800000) &&
+        !((actorA->flags_14 | actorB->flags_14) & 0x10) &&
+        !(actorB->flags_14 & 0x800000) &&
+        func_020be334(actorA->positionZ_24 - actorB->positionZ_24) >=
+            0x1000)
+        return 0;
+
+    func_02005030(&temporaryA, &actorA->field_18);
+    func_02030f10(&shapeA, actorA, &temporaryA);
+    func_02005058(&temporaryA);
+    func_02005030(&temporaryB, &actorB->field_18);
+    func_02030f10(&shapeB, actorB, &temporaryB);
+    func_02005058(&temporaryB);
+    result = func_02056f34(&intersection, &shapeA, &shapeB, contact);
+    if (result) {
+        actorA->contactEdges_49 = (u8)(*contact & 0x0f);
+        actorB->contactEdges_49 = (u8)((*contact >> 8) & 0x0f);
+    }
+    if (result == 2 && !((actorA->flags_14 | actorB->flags_14) & 0x10)) {
+        resolvePairAxis(intersection.word[2] - intersection.word[0],
+                        actorA->positionX_1c - actorA->previousX_2c,
+                        actorB->positionX_1c - actorB->previousX_2c,
+                        &actorA->positionX_1c, &actorB->positionX_1c,
+                        actorA->contactEdges_49, actorB->contactEdges_49, 1,
+                        2);
+        resolvePairAxis(intersection.word[3] - intersection.word[1],
+                        actorA->positionY_20 - actorA->previousY_30,
+                        actorB->positionY_20 - actorB->previousY_30,
+                        &actorA->positionY_20, &actorB->positionY_20,
+                        actorA->contactEdges_49, actorB->contactEdges_49, 4,
+                        8);
+    }
+    return result;
+}
+
+/*
+ * Sweep category one against category two using signed byte 0x48 as the sorted
+ * key. Flag, virtual-mask, height, and shape tests reject pairs. Intersections
+ * update edge byte 0x49 and may correct X/Y positions; pair-state at offset
+ * 0x0e34 is queried or changed through func_0202d2f4/func_0202d324. Pair
+ * callbacks run in both directions. Finally, each processed category-one
+ * actor may receive func_0200a3b8 and/or func_0200ac14 using global context
+ * offset 0x2ed4. Returns no value; helper calls may update gameplay state.
+ */
+void func_0202e15c(ActorPairCollection *self)
+{
+    s32 firstPossible = 0;
+    s32 outerCount = self->categoryCounts_0e20[1];
+    s32 innerCount = self->categoryCounts_0e20[2];
+    void *contextValue = *(void **)((u8 *)data_021052fc + 0x2ed4);
+    s32 outer;
+
+    for (outer = 0; outer < outerCount; outer++) {
+        PairActor *actorA = self->categories_0200[1][outer];
+        s32 inner;
+
+        if (actorA->flags_14 & 2)
+            continue;
+        for (inner = firstPossible; inner < innerCount; inner++) {
+            PairActor *actorB = self->categories_0200[2][inner];
+            s32 collision;
+            s32 wasActive;
+            u32 contact;
+
+            if (actorA->order_48 >= actorB->order_48) {
+                firstPossible++;
+                continue;
+            }
+            if (actorB->flags_14 & 4)
+                continue;
+            if (actorA->vtable_00->filter_0c(actorA) &
+                (actorB->flags_10 & 0x1f0000))
+                continue;
+            if (actorB->vtable_00->filter_0c(actorB) &
+                (actorA->flags_10 & 0x1f0000))
+                continue;
+
+            collision = testPair(actorA, actorB, &contact);
+            wasActive = func_0202d2f4(self->pairState_0e34,
+                                      actorB->order_48, actorA->order_48);
+            if (collision) {
+                s32 accepted;
+                s32 active = wasActive ? 1 : 0;
+
+                accepted = func_0202ec08(self, actorA, actorB, active);
+                accepted += func_0202ec08(self, actorB, actorA, active);
+                if (accepted == 2) {
+                    s32 low = actorA->order_48;
+                    s32 high = actorB->order_48;
+                    s32 index;
+
+                    if (low > high) {
+                        s32 swap = low;
+                        low = high;
+                        high = swap;
+                    }
+                    index = low * 128 - (low * (low + 1)) / 2 + high;
+                    self->pairState_0e34[index] = 1;
+                }
+            } else if (wasActive) {
+                func_0202ec74(self, actorA, actorB);
+                func_0202ec74(self, actorB, actorA);
+                func_0202d324(self->pairState_0e34, actorB->order_48,
+                              actorA->order_48);
+            }
+        }
+
+        if (actorA->field_54 &&
+            (actorA->type_4d == 1 || actorA->type_4d == 7)) {
+            if (!(actorA->flags_14 & 0x40) &&
+                !func_020828a0(data_021f5ebc, 1)) {
+                if (!func_0200b04c(data_02105310))
+                    func_0200a3b8(actorA, contextValue);
+                func_0200ac14(actorA, contextValue);
+            }
+        } else if (!actorA->field_54 || !(actorA->flags_14 & 0x100)) {
+            func_0200ac14(actorA, contextValue);
+        }
+    }
+}

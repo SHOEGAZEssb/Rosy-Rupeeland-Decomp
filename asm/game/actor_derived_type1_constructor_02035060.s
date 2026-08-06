@@ -1,0 +1,90 @@
+; Matching retail form; see src/game/actor_derived_type1_constructor.c.
+.text
+.extern data_020df3c8
+.extern func_02004fe0
+.extern func_0200500c
+.extern func_0200b2c0
+.extern func_0203b514
+.extern func_0204cca8
+
+    .global func_02035060
+    .type func_02035060, @function
+func_02035060: ; 0x02035060
+    stmdb sp!, {r4, lr}
+    mov r4, r0
+    bl func_0203b514
+    mov r1, #0x0
+    ldr ip, .L_02035184
+    mov r2, r1
+    mov r3, r1
+    add r0, r4, #0x238
+    str ip, [r4, #0x0]
+    bl func_0200500c
+    mov r2, #0x0
+    str r2, [r4, #0x248]
+    add r1, r4, #0x200
+    strh r2, [r1, #0x4c]
+    strh r2, [r1, #0x4e]
+    strh r2, [r1, #0x50]
+    add r0, r4, #0x254
+    strh r2, [r1, #0x52]
+    bl func_02004fe0
+    add r0, r4, #0x200
+    mov r1, #0x0
+    strh r1, [r0, #0x66]
+    strh r1, [r0, #0x68]
+    strb r1, [r4, #0x26b]
+    str r1, [r4, #0x26c]
+    str r1, [r4, #0x270]
+    str r1, [r4, #0x274]
+    str r1, [r4, #0x278]
+    str r1, [r4, #0x27c]
+    strh r1, [r0, #0x80]
+    strh r1, [r0, #0x82]
+    add r0, r4, #0x284
+    bl func_02004fe0
+    mvn r1, #0x0
+    add r0, r4, #0x200
+    strh r1, [r0, #0x94]
+    mov r1, #0x0
+    strh r1, [r0, #0x96]
+    strh r1, [r0, #0x98]
+    strh r1, [r0, #0x9a]
+    strh r1, [r0, #0x9c]
+    strh r1, [r0, #0x9e]
+    strb r1, [r4, #0x2a0]
+    strb r1, [r4, #0x2a1]
+    strh r1, [r0, #0xa2]
+    strh r1, [r0, #0xa4]
+    add r0, r4, #0x2a8
+    mov r1, r4
+    bl func_0204cca8
+    mov r0, #0x1
+    strb r0, [r4, #0x4d]
+    mov r1, #0x0
+    str r1, [r4, #0x230]
+    add r0, r4, #0x200
+    strh r1, [r0, #0x34]
+    strh r1, [r0, #0x36]
+    ldr r2, [r4, #0xd0]
+    add r0, r4, #0x254
+    bic r2, r2, #0x4
+    str r2, [r4, #0xd0]
+    ldr r3, [r4, #0x14]
+    mov r2, r1
+    orr r3, r3, #0x100000
+    str r3, [r4, #0x14]
+    mov r3, r1
+    bl func_0200b2c0
+    mov r1, #0x0
+    add r0, r4, #0x200
+    strh r1, [r0, #0x64]
+    sub r1, r1, #0x1
+    mov r0, r4
+    strb r1, [r4, #0x26a]
+    ldmia sp!, {r4, pc}
+.L_02035184: .word data_020df3c8
+    .size func_02035060, . - func_02035060
+
+    .global func_02035188
+
