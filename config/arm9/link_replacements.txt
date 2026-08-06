@@ -1097,7 +1097,6 @@ build/decomp/delinks/asm/game/bg3_extended_tile_layer_0202b20c.o = build/decomp/
 build/decomp/delinks/asm/game/bg3_extended_tile_layer_0202b320.o = build/decomp/asm/game/bg3_extended_tile_layer_0202b320.o
 build/decomp/delinks/asm/game/bg3_extended_tile_layer_0202b378.o = build/decomp/asm/game/bg3_extended_tile_layer_0202b378.o
 build/decomp/delinks/src/graphics/software_canvas_data.o = build/decomp/src/graphics/software_canvas_data.o
-build/decomp/delinks/src/graphics/software_canvas_data.o = build/decomp/src/graphics/software_canvas_data.o
 
 build/decomp/delinks/asm/game/compressed_byte_buffer_0202b3bc.o = build/decomp/asm/game/compressed_byte_buffer_0202b3bc.o
 build/decomp/delinks/asm/game/compressed_byte_buffer_0202b3c8.o = build/decomp/asm/game/compressed_byte_buffer_0202b3c8.o
@@ -1229,7 +1228,7 @@ build/decomp/delinks/asm/game/actor_collection_lookup_visibility_0202d68c.o = bu
 
 build/decomp/delinks/asm/game/actor_collection_selection_query_0202d7a8.o = build/decomp/asm/game/actor_collection_selection_query_0202d7a8.o
 
-build/decomp/delinks/asm/game/actor_collection_query_dispatch_0202daec.o = build/decomp/asm/game/actor_collection_query_dispatch_0202daec.o+
+build/decomp/delinks/asm/game/actor_collection_query_dispatch_0202daec.o = build/decomp/asm/game/actor_collection_query_dispatch_0202daec.o
 build/decomp/delinks/asm/game/actor_collection_query_dispatch_0202db78.o = build/decomp/asm/game/actor_collection_query_dispatch_0202db78.o
 
 build/decomp/delinks/asm/game/actor_collection_category_build_0202dbe0.o = build/decomp/asm/game/actor_collection_category_build_0202dbe0.o
@@ -1880,3 +1879,5 @@ build/decomp/delinks/asm/game/type7_actor_idle_control_02048c10.o = build/decomp
 build/decomp/delinks/asm/game/type7_actor_animation_states_02048e6c.o = build/decomp/asm/game/type7_actor_animation_states_02048e6c.o
 
 build/decomp/delinks/asm/game/type7_actor_random_motion_02048fe4.o = build/decomp/asm/game/type7_actor_random_motion_02048fe4.o
+
+build/decomp/delinks/asm/system/arm9_static_initializers_020c1374.o = build/decomp/asm/system/arm9_static_initializers_020c1374.o

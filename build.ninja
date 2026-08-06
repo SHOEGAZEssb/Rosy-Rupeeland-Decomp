@@ -18366,3 +18366,17 @@ build build/reports/type7_actor_random_motion_02048fe4.txt: match_report build/r
   report_json = build/reports/type7_actor_random_motion_02048fe4.json
   report_args = --section .text --function func_02048fe4 --require-exact
 build type7_actor_random_motion: phony build/decomp/src/game/type7_actor_random_motion.o build/decomp/asm/game/type7_actor_random_motion_02048fe4.o build/reports/type7_actor_random_motion_02048fe4.txt
+
+arm9_static_initializers_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
+build build/decomp/src/system/arm9_static_initializers.o: mwccarm src/system/arm9_static_initializers.c | include/tingle/types.h
+  source = src/system/arm9_static_initializers.c
+  cflags = $arm9_static_initializers_cflags
+build build/decomp/asm/system/arm9_static_initializers_020c1374.o: mwasmarm asm/system/arm9_static_initializers_020c1374.s
+build build/decomp/delinks/asm/system/arm9_static_initializers_020c1374.o: dsd_delink config/arm9/config.yaml config/arm9/delinks.txt config/arm9/symbols.txt config/arm9/relocs.txt
+build build/reports/arm9_static_initializers_020c1374.json: objdiff build/decomp/delinks/asm/system/arm9_static_initializers_020c1374.o | build/decomp/asm/system/arm9_static_initializers_020c1374.o
+  target_object = build/decomp/delinks/asm/system/arm9_static_initializers_020c1374.o
+  base_object = build/decomp/asm/system/arm9_static_initializers_020c1374.o
+build build/reports/arm9_static_initializers_020c1374.txt: match_report build/reports/arm9_static_initializers_020c1374.json | tools/report_objdiff.py
+  report_json = build/reports/arm9_static_initializers_020c1374.json
+  report_args = --section .init --function __sinit_020c1374 --function __sinit_020c13a0 --function __sinit_020c13cc --function __sinit_020c13f8 --function __sinit_020c1490 --function __sinit_020c14bc --function __sinit_020c152c --function __sinit_020c1558 --function __sinit_020c15c0 --function __sinit_020c15ec --function __sinit_020c1600 --function __sinit_020c162c --function __sinit_020c1658 --function __sinit_020c1684 --function __sinit_020c16cc --function __sinit_020c16f8 --function __sinit_020c176c --function __sinit_020c1798 --function __sinit_020c17c4 --require-exact
+build arm9_static_initializers: phony build/decomp/src/system/arm9_static_initializers.o build/decomp/asm/system/arm9_static_initializers_020c1374.o build/reports/arm9_static_initializers_020c1374.txt
