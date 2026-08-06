@@ -1,0 +1,103 @@
+; Matching retail form; see src/game/tracked_resource_actor_timed_collision.c.
+.extern data_02105310
+.extern func_02005030
+.extern func_02005058
+.extern func_02005070
+.extern func_020050a4
+.extern func_020066a4
+.extern func_0200b04c
+.extern func_020328d0
+.extern func_02033f44
+.extern func_02050260
+.extern func_02050560
+.extern func_02050b34
+.extern func_020adae4
+.text
+    .global func_02051b48
+func_02051b48:
+    stmdb sp!, {r3, r4, r5, lr}
+    sub sp, sp, #0x20
+    mov r5, r0
+    add r0, r5, #0x200
+    ldrsh r0, [r0, #0x0]
+    mov r4, r1
+    cmp r0, #0x0
+    bgt .L_02051c84
+    ldr r0, .L_02051c8c
+    bl func_0200b04c
+    cmp r0, #0x0
+    bne .L_02051c40
+    cmp r4, #0x0
+    beq .L_02051c40
+    add r0, sp, #0x10
+    add r1, r5, #0x88
+    bl func_02005030
+    ldr r0, [sp, #0x14]
+    mvn r1, #0x7
+    bl func_020adae4
+    str r0, [sp, #0x14]
+    ldr r0, [sp, #0x18]
+    mvn r1, #0x7
+    bl func_020adae4
+    mov r2, #0x0
+    str r0, [sp, #0x18]
+    mov r0, r4
+    str r2, [sp, #0x1c]
+    ldr r3, [r0, #0x0]
+    add r1, sp, #0x10
+    ldr r3, [r3, #0xb8]
+    blx r3
+    add r0, sp, #0x0
+    add r1, r5, #0x18
+    add r2, r4, #0x18
+    bl func_020066a4
+    add r0, r5, #0x88
+    add r1, sp, #0x0
+    bl func_020050a4
+    add r0, sp, #0x0
+    bl func_02005058
+    add r0, r5, #0x88
+    bl func_02005070
+    mov r1, r0
+    cmp r1, #0x4
+    movlt r1, #0x4
+    add r0, r5, #0x88
+    bl func_02050b34
+    ldr r1, [r5, #0x1fc]
+    add r0, r5, #0x88
+    ldrsh r1, [r1, #0xa]
+    mov r1, r1, lsl #0x4
+    bl func_020328d0
+    mov r0, r5
+    bl func_02033f44
+    ldr r1, [r5, #0x24]
+    add r0, r0, #0x8000
+    cmp r1, r0
+    movle r0, #0x2000
+    strle r0, [r5, #0x44]
+    add r0, sp, #0x10
+    bl func_02005058
+.L_02051c40:
+    mov ip, #0x0
+    str ip, [r5, #0x40]
+    str ip, [r5, #0x3c]
+    add r2, r5, #0x100
+    ldrh r3, [r2, #0xf0]
+    sub r1, ip, #0x8000
+    mov r0, r5
+    and r1, r3, r1
+    strh r1, [r2, #0xf0]
+    strh ip, [r2, #0xf8]
+    ldr r1, [r5, #0x14]
+    orr r1, r1, #0x800000
+    str r1, [r5, #0x14]
+    bl func_02050260
+    mov r0, r5
+    mov r1, r4
+    bl func_02050560
+.L_02051c84:
+    add sp, sp, #0x20
+    ldmia sp!, {r3, r4, r5, pc}
+.L_02051c8c: .word data_02105310
+    .size func_02051b48, . - func_02051b48
+

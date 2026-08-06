@@ -1,0 +1,62 @@
+#include "tingle/types.h"
+#include "tingle/vec_fx32.h"
+
+/*
+ * Recovered interaction callbacks for the runtime actor variant. Three hooks
+ * are intentionally empty; the fourth clears motion and may enter state two.
+ */
+
+extern u8 data_02105310[];
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+extern s32 func_0200b04c(void *registry);
+extern void func_02032a94(void *actor, void *other, s32 mode);
+#ifdef __cplusplus
+}
+#endif
+
+/* Empty recovered callback: ignore all register inputs and change no state. */
+void func_0204d3d8(void)
+{
+}
+
+/* Empty recovered callback: ignore all register inputs and change no state. */
+void func_0204d3dc(void)
+{
+}
+
+/* Empty recovered callback: ignore all register inputs and change no state. */
+void func_0204d3e0(void)
+{
+}
+
+/*
+ * Inputs are a runtime actor variant, another actor, and a mode. Invoke base
+ * interaction helper func_02032a94 with all three inputs, construct a temporary
+ * zero VecFx32Object, assign it into actor vector +0x38, and destroy the
+ * temporary. If the other actor's type byte +0x4d is one, mode is zero, actor
+ * pointer +0x188 is non-null, actor byte +0xe8 is zero, and registry predicate
+ * func_0200b04c(data_02105310) is zero, invoke actor virtual slot 0x78 with
+ * state two. Return one on every path. Actor/base/vector and virtual state may
+ * change; there are no direct hardware effects.
+ */
+s32 func_0204d3e4(void *self, void *other, s32 mode)
+{
+    u8 *actor = (u8 *)self;
+    u8 *otherActor = (u8 *)other;
+    VecFx32Object zero;
+    func_02032a94(actor, otherActor, mode);
+    func_0200500c(&zero, 0, 0, 0);
+    func_020050a4((VecFx32Object *)(actor + 0x38), &zero);
+    func_02005058(&zero);
+
+    if (otherActor[0x4d] == 1 && mode == 0
+        && *(void **)(actor + 0x188) != 0 && actor[0xe8] == 0
+        && func_0200b04c(data_02105310) == 0) {
+        void (**vtable)(void *, s32) = *(void (***)(void *, s32))actor;
+        vtable[0x78 / 4](actor, 2);
+    }
+    return 1;
+}

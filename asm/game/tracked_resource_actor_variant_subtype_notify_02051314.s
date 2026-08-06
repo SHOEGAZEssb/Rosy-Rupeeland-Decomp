@@ -1,0 +1,26 @@
+; Matching retail form; see src/game/tracked_resource_actor_variant_subtype_notify.c.
+.extern data_021052fc
+.extern func_020099c0
+.extern func_020505f0
+.text
+    .global func_02051314
+func_02051314:
+    stmdb sp!, {r4, lr}
+    mov r4, r0
+    ldrh r1, [r4, #0x4e]
+    cmp r1, #0x19
+    ldmneia sp!, {r4, pc}
+    bl func_020505f0
+    ldr r0, [r4, #0x10]
+    tst r0, #0x4
+    ldmeqia sp!, {r4, pc}
+    ldr r0, .L_02051358
+    mov r1, #0x14
+    ldr r0, [r0, #0x0]
+    mov r2, #0x3
+    add r0, r0, #0x3bc
+    add r0, r0, #0x2c00
+    bl func_020099c0
+    ldmia sp!, {r4, pc}
+.L_02051358: .word data_021052fc
+    .size func_02051314, . - func_02051314

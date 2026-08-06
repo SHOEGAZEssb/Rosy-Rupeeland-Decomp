@@ -1,0 +1,18 @@
+; Matching retail form; see src/game/tracked_resource_actor_timed_forward.c.
+.extern func_02032a94
+.text
+    .global func_0205196c
+func_0205196c:
+    stmdb sp!, {r4, r5, r6, lr}
+    ldr r3, [r0, #0x0]
+    mov r6, r0
+    ldr r3, [r3, #0xc4]
+    mov r5, r1
+    mov r4, r2
+    blx r3
+    mov r0, r6
+    mov r1, r5
+    mov r2, r4
+    bl func_02032a94
+    ldmia sp!, {r4, r5, r6, pc}
+    .size func_0205196c, . - func_0205196c

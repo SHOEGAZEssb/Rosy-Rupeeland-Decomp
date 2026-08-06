@@ -1,0 +1,92 @@
+#include "tingle/types.h"
+
+/*
+ * Recovered convenience spawners for presentation-backed actors. One chooses
+ * a type-10 denomination from an amount; the other emits three type-19 actors
+ * with rotating velocity vectors.
+ */
+
+extern const s16 data_020c3e78[];
+extern const s16 data_020c9670[];
+extern u16 data_02105788[];
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+extern void func_0200500c(void *vector, s32 x, s32 y, s32 z);
+extern void func_02005058(void *vector);
+extern void *func_0204e2ac(s32 type, u32 value_1f4, u32 value_1f2,
+                           const void *position, const void *vector_38,
+                           u32 descriptor_arg0, u32 descriptor_arg1,
+                           u32 descriptor_arg2, u32 selection,
+                           u32 value_1ef, s32 enable_flag_200);
+extern s32 func_020adae4(s32 numerator, s32 denominator);
+extern u32 genrand_int32(void);
+#ifdef __cplusplus
+}
+#endif
+
+typedef struct FxVector3 {
+    s32 x;
+    s32 y;
+    s32 z;
+} FxVector3;
+
+/*
+ * Inputs are a playback value, an amount, a position, and a vector source.
+ * Select the greatest of seven data_020c3e78 thresholds strictly below the
+ * amount (clamped to indices 0..6), then spawn one type-10 actor using resource
+ * IDs 0x300D..0x300F, selection equal to that index, value byte 7, and flag
+ * selector 1. Return the spawned actor; manager state changes, with no direct
+ * hardware effects.
+ */
+void *func_0204e584(u32 playback_value, s32 amount,
+                    const void *position, const void *vector)
+{
+    s32 index = 0;
+    while (index < 7) {
+        if (amount <= data_020c3e78[index]) {
+            index--;
+            break;
+        }
+        index++;
+    }
+    if (index < 0)
+        index = 0;
+    else if (index >= 7)
+        index = 6;
+
+    return func_0204e2ac(10, playback_value, data_020c3e78[index],
+                         position, vector, 0x300d, 0x300e, 0x300f,
+                         index, 7, 1);
+}
+
+/*
+ * Inputs are a playback value, an amount, and a position. Initialize a local
+ * vector, take one third of the amount as a signed 16-bit value, and spawn
+ * three type-19 actors using resources 0x3010, 0x300E, and 0x3011. Each vector
+ * uses the global angle's table entry scaled by 3/2; advance the angle by a
+ * random remainder modulo 0x3000 plus 0x3000 after every spawn. Returns nothing;
+ * actor-manager and RNG state change and hardware is not accessed directly.
+ */
+void func_0204e628(u32 playback_value, s32 amount, const void *position)
+{
+    FxVector3 velocity;
+    s16 divided_amount = (s16)func_020adae4(amount, 3);
+    s32 i;
+
+    func_0200500c(&velocity, 0, 0, 0x2000);
+    for (i = 0; i < 3; i++) {
+        s32 angle_index = (s16)data_02105788[0] >> 4;
+        velocity.y = func_020adae4(
+            data_020c9670[angle_index * 2 + 1] * 3, 2);
+        velocity.z = func_020adae4(
+            data_020c9670[angle_index * 2] * 3, 2);
+        func_0204e2ac(19, playback_value, divided_amount, position,
+                      &velocity, 0x3010, 0x300e, 0x3011, 0, 7, 1);
+        data_02105788[0] = (u16)(data_02105788[0] +
+            (genrand_int32() % 0x3000) + 0x3000);
+    }
+    func_02005058(&velocity);
+}
+

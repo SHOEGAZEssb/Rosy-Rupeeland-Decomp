@@ -1,0 +1,103 @@
+#include "tingle/types.h"
+
+/*
+ * Recovered presentation-backed actor subclass that owns an effect handle.
+ * It emits periodic visuals while in state zero, creates one persistent effect
+ * in later states, and removes that effect during either destructor path.
+ */
+
+extern const u8 data_020e2458[];
+extern void *data_021052fc;
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+extern void Heap_Free(void *allocation);
+extern void *func_0201e0ec(void *manager);
+extern void *func_0204d5c8(void *actor);
+extern void *func_0204d738(void *actor);
+extern void func_0204d858(void *actor);
+extern void func_020a2310(void *manager, s32 handle);
+extern void func_020a25c8(void *manager, s32 mode, s32 x, s32 y,
+                          s32 width, s32 height, s32 kind);
+extern s32 func_020a257c(void *manager, s32 mode, s32 x, s32 y,
+                         s32 width, s32 height, s32 kind);
+#ifdef __cplusplus
+}
+#endif
+
+#define FIELD(type, object, offset) (*(type *)((u8 *)(object) + (offset)))
+
+/*
+ * Input is actor storage. Construct the presentation-backed parent, install
+ * data_020e2458, clear the private frame counter at 0x1FC, set the effect
+ * handle at 0x1FE to -1, and return self. Parent construction changes engine
+ * state; this wrapper has no direct hardware effects.
+ */
+void *func_0204e740(void *self)
+{
+    func_0204d5c8(self);
+    FIELD(const void *, self, 0) = data_020e2458;
+    FIELD(s16, self, 0x1fc) = 0;
+    FIELD(s16, self, 0x1fe) = -1;
+    return self;
+}
+
+/*
+ * Input is an actor. Restore data_020e2458, remove the effect identified by
+ * 0x1FE when it is not -1, then run the parent's non-deleting teardown and
+ * return self. Effect and inherited engine state may change; heap storage is
+ * retained and no hardware is touched directly.
+ */
+void *func_0204e774(void *self)
+{
+    FIELD(const void *, self, 0) = data_020e2458;
+    s16 handle = FIELD(s16, self, 0x1fe);
+    if (handle != -1) {
+        void *manager = func_0201e0ec((u8 *)data_021052fc + 0x2f7c);
+        func_020a2310(manager, handle);
+    }
+    func_0204d738(self);
+    return self;
+}
+
+/*
+ * Input is an actor. Perform the effect removal and inherited teardown of
+ * func_0204e774, free the actor allocation, and return its former address.
+ * Effect, inherited, and heap state change; there are no direct hardware effects.
+ */
+void *func_0204e7cc(void *self)
+{
+    func_0204e774(self);
+    Heap_Free(self);
+    return self;
+}
+
+/*
+ * Input is an actor. Once presentation selection 0x38 reaches 6, state zero
+ * increments counter 0x1FC and emits a 40x40 kind-15 visual every 32 frames;
+ * later states create one 40x40 kind-0x46 effect if handle 0x1FE is still -1.
+ * Coordinates derive from fixed-point actor position and height, with the
+ * recovered 20-pixel offsets and signed-16 truncation on persistent creation.
+ * Always run func_0204d858 afterward. Returns nothing; visual and actor state
+ * change, and hardware is not accessed directly.
+ */
+void func_0204e82c(void *actor)
+{
+    if (FIELD(u8, FIELD(void *, actor, 0x54), 0x38) >= 6) {
+        void *manager = func_0201e0ec((u8 *)data_021052fc + 0x2f7c);
+        s32 x = FIELD(s32, actor, 0x1c) >> 12;
+        s32 y = (FIELD(s32, actor, 0x20) >> 12) -
+                (FIELD(s32, actor, 0x24) >> 12);
+        if (FIELD(u16, actor, 0x1ec) == 0) {
+            FIELD(s16, actor, 0x1fc)++;
+            if ((FIELD(s16, actor, 0x1fc) & 0x1f) == 0)
+                func_020a25c8(manager, 0, x - 20, y - 20, 40, 40, 15);
+        } else if (FIELD(s16, actor, 0x1fe) == -1) {
+            FIELD(s16, actor, 0x1fe) = (s16)func_020a257c(
+                manager, 0, (s16)(x - 20), (s16)(y - 20), 40, 40, 0x46);
+        }
+    }
+    func_0204d858(actor);
+}
+
