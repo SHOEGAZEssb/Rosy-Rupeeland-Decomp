@@ -1,0 +1,35 @@
+#include "tingle/types.h"
+
+/* Restore the type-1 actor's base position, motion, orientation, and state. */
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+extern void *func_020050a4(void *destination, const void *source);
+extern void func_0200b2c0(void *value, s32 x, s32 y, s32 z);
+extern void func_02034b60(void *actor, s32 angle, s32 step);
+extern void func_02038aac(void *actor);
+#ifdef __cplusplus
+}
+#endif
+
+/*
+ * Copy current position +0x18 to previous position +0x28; zero vectors +0x38,
+ * +0x88, and +0x98; request orientation zero with step 0x1000; and enter the
+ * base reset through func_02038aac. Then clear actor +0xd0 bit 0x10000 and
+ * halfwords +0x204/+0x264. Returns no value; vector, orientation, and reset
+ * helpers change actor-owned runtime and presentation state.
+ */
+void func_0203936c(void *self)
+{
+    u8 *actor = (u8 *)self;
+    func_020050a4(actor + 0x28, actor + 0x18);
+    func_0200b2c0(actor + 0x38, 0, 0, 0);
+    func_0200b2c0(actor + 0x88, 0, 0, 0);
+    func_0200b2c0(actor + 0x98, 0, 0, 0);
+    func_02034b60(actor, 0, 0x1000);
+    func_02038aac(actor);
+    *(u32 *)(actor + 0xd0) &= ~0x10000;
+    *(u16 *)(actor + 0x204) = 0;
+    *(u16 *)(actor + 0x264) = 0;
+}

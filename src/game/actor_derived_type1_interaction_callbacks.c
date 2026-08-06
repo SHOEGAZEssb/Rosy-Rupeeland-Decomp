@@ -1,0 +1,70 @@
+#include "tingle/heap.h"
+#include "tingle/types.h"
+
+/* Provide type-1 actor interaction callbacks and their default return paths. */
+extern void *gLupyContext;
+extern const char data_020df4a4[];
+extern u8 *data_021052fc;
+extern void *gSceneManager;
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+extern void func_02010c00(void *context, s32 value, s32 extra);
+extern void *func_02009d78(void *manager);
+extern void *func_02022cb0(void *allocation, void *resource, void *owner,
+                           s32 value, s32 first, s32 second);
+extern void func_0201ded4(void *manager, void *object);
+extern void func_02039bb0(void *actor);
+extern void *SceneManager_GetCurrent(void *manager);
+#ifdef __cplusplus
+}
+#endif
+
+/* Accept no inputs, change no state, and return no value. */
+void func_02039a50(void) {}
+
+/*
+ * Return zero while optional object +0x270 has byte +0x10 bit one, actor
+ * +0x230 bit 0x20000 is set, or amount is nonpositive. With +0xd0 bit 0x40000
+ * clear, subtract positive amount from Lupy, allocate/register a 0x44-byte
+ * actor-owned effect with -amount, 0x2000, and -0xc0, call func_02039bb0, and
+ * return one. With that bit set, instead dispatch source through current scene
+ * object +0x4c virtual +0xcc and return its result. Heap, Lupy, manager, scene,
+ * and virtual calls have observable engine state.
+ */
+s32 func_02039a54(void *self, s32 amount, void *source)
+{
+    u8 *actor = (u8 *)self;
+    if (*(u8 **)(actor + 0x270) != 0 &&
+        ((*(u8 **)(actor + 0x270))[0x10] & 1) != 0)
+        return 0;
+    if ((*(u32 *)(actor + 0x230) & 0x20000) != 0 || amount <= 0)
+        return 0;
+    if ((*(u32 *)(actor + 0xd0) & 0x40000) != 0) {
+        u8 *scene = (u8 *)SceneManager_GetCurrent(gSceneManager);
+        void *object = *(void **)(scene + 0x4c);
+        return (*(s32 (**)(void *, void *))(*(u8 **)object + 0xcc))(object,
+                                                                       source);
+    } else {
+        s32 negative = -amount;
+        void *allocation;
+        void *effect = 0;
+        func_02010c00(gLupyContext, negative, 0);
+        allocation = Heap_Alloc(0x44, data_020df4a4, 4, &gHeapContext);
+        if (allocation != 0) {
+            void *resource = func_02009d78(data_021052fc + 0x2fbc);
+            effect = func_02022cb0(allocation, resource, actor, negative,
+                                   0x2000, -0xc0);
+        }
+        func_0201ded4(data_021052fc + 0x2f7c, effect);
+        func_02039bb0(actor);
+        return 1;
+    }
+}
+
+/* Ignore all inputs, change no state, and return zero. */
+s32 func_02039b98(void)
+{
+    return 0;
+}

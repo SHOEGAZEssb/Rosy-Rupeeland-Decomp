@@ -5707,3 +5707,830 @@ asm/game/actor_derived_type1_auxiliary_reset_effect_0203811c.s:
 asm/game/actor_derived_type1_target_displacement_0203825c.s:
     categories: Game code
     .text       start:0x0203825c end:0x02038784
+
+asm/game/actor_vector_component_divide_02038784.s:
+    categories: Game code
+    .text       start:0x02038784 end:0x020387cc
+
+asm/game/actor_derived_type1_contact_reset_020387cc.s:
+    categories: Game code
+    .text       start:0x020387cc end:0x020387d8
+
+asm/game/actor_derived_type1_contact_reset_020387d8.s:
+    categories: Game code
+    .text       start:0x020387d8 end:0x02038834
+
+asm/game/actor_derived_type1_state_entry_02038834.s:
+    categories: Game code
+    .text       start:0x02038834 end:0x020389ec
+
+asm/game/actor_derived_type1_debug_render_020389ec.s:
+    categories: Game code
+    .text       start:0x020389ec end:0x02038aac
+
+asm/game/actor_derived_type1_state_resets_02038aac.s:
+    categories: Game code
+    .text       start:0x02038aac end:0x02038b64
+
+asm/game/actor_derived_type1_state_resets_02038b64.s:
+    categories: Game code
+    .text       start:0x02038b64 end:0x02038c1c
+
+asm/game/actor_derived_type1_orientation_flag_02038c1c.s:
+    categories: Game code
+    .text       start:0x02038c1c end:0x02038c4c
+
+asm/game/actor_derived_type1_contact_position_02038c4c.s:
+    categories: Game code
+    .text       start:0x02038c4c end:0x02038d38
+
+asm/game/actor_derived_type1_state_vector_02038d38.s:
+    categories: Game code
+    .text       start:0x02038d38 end:0x02038e38
+
+asm/game/actor_derived_type1_state_vector_02038e38.s:
+    categories: Game code
+    .text       start:0x02038e38 end:0x02038e50
+
+asm/game/actor_derived_type1_gamework_flags_02038e50.s:
+    categories: Game code
+    .text       start:0x02038e50 end:0x02038ecc
+
+asm/game/actor_derived_type1_record_start_02038ecc.s:
+    categories: Game code
+    .text       start:0x02038ecc end:0x02038f98
+
+asm/game/actor_derived_type1_record_apply_02038f98.s:
+    categories: Game code
+    .text       start:0x02038f98 end:0x020390c8
+
+asm/game/actor_derived_type1_record_teardown_020390c8.s:
+    categories: Game code
+    .text       start:0x020390c8 end:0x02039240
+
+asm/game/actor_derived_type1_record_controls_02039240.s:
+    categories: Game code
+    .text       start:0x02039240 end:0x02039278
+
+asm/game/actor_derived_type1_record_controls_02039278.s:
+    categories: Game code
+    .text       start:0x02039278 end:0x020392b4
+
+asm/game/actor_derived_type1_record_controls_020392b4.s:
+    categories: Game code
+    .text       start:0x020392b4 end:0x02039348
+
+asm/game/actor_derived_type1_record_controls_02039348.s:
+    categories: Game code
+    .text       start:0x02039348 end:0x0203936c
+
+asm/game/actor_derived_type1_runtime_reset_0203936c.s:
+    categories: Game code
+    .text       start:0x0203936c end:0x020393f4
+
+asm/game/actor_derived_type1_record_queries_020393f4.s:
+    categories: Game code
+    .text       start:0x020393f4 end:0x02039408
+
+asm/game/actor_derived_type1_record_queries_02039408.s:
+    categories: Game code
+    .text       start:0x02039408 end:0x02039428
+
+asm/game/actor_derived_type1_record_queries_02039428.s:
+    categories: Game code
+    .text       start:0x02039428 end:0x02039448
+
+asm/game/actor_derived_type1_record_queries_02039448.s:
+    categories: Game code
+    .text       start:0x02039448 end:0x02039468
+
+asm/game/actor_derived_type1_record_collision_scan_02039468.s:
+    categories: Game code
+    .text       start:0x02039468 end:0x02039714
+
+asm/game/actor_attachment_slot_resource_02039714.s:
+    categories: Game code
+    .text       start:0x02039714 end:0x02039720
+
+asm/game/actor_attachment_slot_resource_02039720.s:
+    categories: Game code
+    .text       start:0x02039720 end:0x020397d4
+
+asm/game/actor_derived_type1_idle_eligibility_020397d4.s:
+    categories: Game code
+    .text       start:0x020397d4 end:0x020398a4
+
+asm/game/actor_derived_type1_interaction_dispatch_020398a4.s:
+    categories: Game code
+    .text       start:0x020398a4 end:0x02039a50
+
+asm/game/actor_derived_type1_interaction_callbacks_02039a50.s:
+    categories: Game code
+    .text       start:0x02039a50 end:0x02039a54
+
+asm/game/actor_derived_type1_interaction_callbacks_02039a54.s:
+    categories: Game code
+    .text       start:0x02039a54 end:0x02039b98
+
+asm/game/actor_derived_type1_interaction_callbacks_02039b98.s:
+    categories: Game code
+    .text       start:0x02039b98 end:0x02039ba0
+
+asm/game/actor_derived_type1_failure_state_02039ba0.s:
+    categories: Game code
+    .text       start:0x02039ba0 end:0x02039bb0
+
+asm/game/actor_derived_type1_failure_state_02039bb0.s:
+    categories: Game code
+    .text       start:0x02039bb0 end:0x02039bfc
+
+asm/game/actor_derived_type1_failure_state_02039bfc.s:
+    categories: Game code
+    .text       start:0x02039bfc end:0x02039c3c
+
+asm/game/actor_height_attachment_update_02039c3c.s:
+    categories: Game code
+    .text       start:0x02039c3c end:0x02039c7c
+
+asm/game/actor_height_attachment_update_02039c7c.s:
+    categories: Game code
+    .text       start:0x02039c7c end:0x02039d0c
+
+asm/game/actor_derived_type1_special_mode_02039d0c.s:
+    categories: Game code
+    .text       start:0x02039d0c end:0x02039d54
+
+asm/game/actor_derived_type1_special_mode_02039d54.s:
+    categories: Game code
+    .text       start:0x02039d54 end:0x02039db8
+
+asm/game/actor_derived_type1_special_mode_02039db8.s:
+    categories: Game code
+    .text       start:0x02039db8 end:0x02039de0
+
+asm/game/actor_derived_type1_misc_helpers_02039de0.s:
+    categories: Game code
+    .text       start:0x02039de0 end:0x02039ea0
+
+asm/game/actor_global_terrain_gate_spawn_02039ea0.s:
+    categories: Game code
+    .text       start:0x02039ea0 end:0x02039f6c
+
+asm/game/actor_resource_table_lifecycle_02039f6c.s:
+    categories: Game code
+    .text       start:0x02039f6c end:0x0203a0f0
+
+asm/game/actor_resource_indexed_presentation_spawn_0203a0f0.s:
+    categories: Game code
+    .text       start:0x0203a0f0 end:0x0203a314
+
+asm/game/actor_environment_feedback_dispatch_0203a314.s:
+    categories: Game code
+    .text       start:0x0203a314 end:0x0203a8b8
+
+asm/game/actor_snapshot_cell_feedback_0203a8b8.s:
+    categories: Game code
+    .text       start:0x0203a8b8 end:0x0203aac4
+
+asm/game/actor_interaction_runtime_lifecycle_0203aac4.s:
+    categories: Game code
+    .text       start:0x0203aac4 end:0x0203ac9c
+
+asm/game/actor_interaction_runtime_update_0203ac9c.s:
+    categories: Game code
+    .text       start:0x0203ac9c end:0x0203ad64
+
+asm/game/actor_feedback_slot_and_random_value_0203ad64.s:
+    categories: Game code
+    .text       start:0x0203ad64 end:0x0203ae14
+
+asm/game/actor_spawn_descriptor_init_0203ae14.s:
+    categories: Game code
+    .text       start:0x0203ae14 end:0x0203af24
+
+asm/game/actor_descriptor_batch_spawn_0203af24.s:
+    categories: Game code
+    .text       start:0x0203af24 end:0x0203b38c
+
+asm/game/actor_descriptor_batch_wrappers_0203b38c.s:
+    categories: Game code
+    .text       start:0x0203b38c end:0x0203b3cc
+
+asm/game/actor_collection_callback_apply_0203b3cc.s:
+    categories: Game code
+    .text       start:0x0203b3cc end:0x0203b514
+
+asm/game/actor_derived_runtime_object_lifecycle_0203b514.s:
+    categories: Game code
+    .text       start:0x0203b514 end:0x0203b65c
+
+asm/game/actor_base_descriptor_initialize_0203b65c.s:
+    categories: Game code
+    .text       start:0x0203b65c end:0x0203b798
+
+asm/game/actor_derived_runtime_object_update_0203b798.s:
+    categories: Game code
+    .text       start:0x0203b798 end:0x0203b998
+
+asm/game/actor_derived_runtime_interaction_callbacks_0203b998.s:
+    categories: Game code
+    .text       start:0x0203b998 end:0x0203baa0
+
+asm/game/actor_derived_runtime_virtual_wrappers_0203baa0.s:
+    categories: Game code
+    .text       start:0x0203baa0 end:0x0203bae4
+
+asm/game/actor_primary_attachment_rebuild_0203bae4.s:
+    categories: Game code
+    .text       start:0x0203bae4 end:0x0203bba4
+
+asm/game/actor_ground_contact_probe_update_0203bba4.s:
+    categories: Game code
+    .text       start:0x0203bba4 end:0x0203c134
+
+asm/game/actor_motion_probe_object_lifecycle_0203c134.s:
+    categories: Game code
+    .text       start:0x0203c134 end:0x0203c240
+
+asm/game/actor_motion_probe_touch_update_0203c240.s:
+    categories: Game code
+    .text       start:0x0203c240 end:0x0203c410
+
+asm/game/actor_motion_probe_configuration_0203c410.s:
+    categories: Game code
+    .text       start:0x0203c410 end:0x0203c438
+
+asm/game/actor_motion_probe_reset_0203c438.s:
+    categories: Game code
+    .text       start:0x0203c438 end:0x0203c4e0
+
+asm/game/actor_mode_nibble_object_lifecycle_0203c4e0.s:
+    categories: Game code
+    .text       start:0x0203c4e0 end:0x0203c578
+
+asm/game/actor_mode_nibble_contact_flags_0203c578.s:
+    categories: Game code
+    .text       start:0x0203c578 end:0x0203c748
+
+asm/game/actor_mode_nibble_update_0203c748.s:
+    categories: Game code
+    .text       start:0x0203c748 end:0x0203c884
+
+asm/game/actor_mode_nibble_presentation_state_0203c884.s:
+    categories: Game code
+    .text       start:0x0203c884 end:0x0203c94c
+
+asm/game/actor_table_record_object_lifecycle_0203c94c.s:
+    categories: Game code
+    .text       start:0x0203c94c end:0x0203cb34
+
+asm/game/actor_table_record_interaction_response_0203cb34.s:
+    categories: Game code
+    .text       start:0x0203cb34 end:0x0203cea0
+
+asm/game/actor_table_record_interaction_helpers_0203cea0.s:
+    categories: Game code
+    .text       start:0x0203cea0 end:0x0203cf8c
+
+asm/game/actor_table_record_frame_update_0203cf8c.s:
+    categories: Game code
+    .text       start:0x0203cf8c end:0x0203d260
+
+asm/game/actor_table_record_presentation_and_subclass_lifecycle_0203d260.s:
+    categories: Game code
+    .text       start:0x0203d260 end:0x0203d3b4
+
+asm/game/actor_registered_subclass_state_helpers_0203d3b4.s:
+    categories: Game code
+    .text       start:0x0203d3b4 end:0x0203d3fc
+
+asm/game/actor_registered_subclass_state_helpers_0203d3fc.s:
+    categories: Game code
+    .text       start:0x0203d3fc end:0x0203d48c
+
+asm/game/actor_registered_subclass_state_helpers_0203d48c.s:
+    categories: Game code
+    .text       start:0x0203d48c end:0x0203d540
+
+asm/game/actor_registered_subclass_frame_update_0203d540.s:
+    categories: Game code
+    .text       start:0x0203d540 end:0x0203d6e0
+
+asm/game/actor_registered_subclass_presentation_helpers_0203d6e0.s:
+    categories: Game code
+    .text       start:0x0203d6e0 end:0x0203d8bc
+
+asm/game/actor_registered_subclass_registry_0203d8bc.s:
+    categories: Game code
+    .text       start:0x0203d8bc end:0x0203da28
+
+asm/game/actor_collection_threshold_effect_dispatch_0203da28.s:
+    categories: Game code
+    .text       start:0x0203da28 end:0x0203db80
+
+asm/game/actor_extended_type2_constructor_0203db80.s:
+    categories: Game code
+    .text       start:0x0203db80 end:0x0203de48
+
+asm/game/actor_extended_type2_record_array_0203de48.s:
+    categories: Game code
+    .text       start:0x0203de48 end:0x0203df48
+
+asm/game/actor_extended_type2_record_array_0203df48.s:
+    categories: Game code
+    .text       start:0x0203df48 end:0x0203df4c
+
+asm/game/actor_extended_type2_constructor_duplicate_0203df4c.s:
+    categories: Game code
+    .text       start:0x0203df4c end:0x0203e214
+
+asm/game/actor_extended_type2_lifecycle_0203e214.s:
+    categories: Game code
+    .text       start:0x0203e214 end:0x0203e3b4
+
+asm/game/actor_extended_type2_destructor_variants_0203e3b4.s:
+    categories: Game code
+    .text       start:0x0203e3b4 end:0x0203e56c
+
+asm/game/actor_extended_type2_presentation_init_0203e56c.s:
+    categories: Game code
+    .text       start:0x0203e56c end:0x0203e7c8
+
+asm/game/actor_extended_type2_frame_update_0203e7c8.s:
+    categories: Game code
+    .text       start:0x0203e7c8 end:0x0203ef60
+
+asm/game/actor_extended_type2_misc_helpers_0203ef60.s:
+    categories: Game code
+    .text       start:0x0203ef60 end:0x0203efac
+
+asm/game/actor_extended_type2_render_callback_0203efac.s:
+    categories: Game code
+    .text       start:0x0203efac end:0x0203f0bc
+
+asm/game/actor_extended_type2_attachment_state_0203f0bc.s:
+    categories: Game code
+    .text       start:0x0203f0bc end:0x0203f2ec
+
+asm/game/actor_extended_type2_descriptor_copy_0203f2ec.s:
+    categories: Game code
+    .text       start:0x0203f2ec end:0x0203f4a0
+
+asm/game/actor_extended_type2_position_helpers_0203f4a0.s:
+    categories: Game code
+    .text       start:0x0203f4a0 end:0x0203f5c4
+
+asm/game/actor_extended_type2_target_motion_0203f5c4.s:
+    categories: Game code
+    .text       start:0x0203f5c4 end:0x0203f858
+
+asm/game/actor_extended_type2_target_impulse_0203f858.s:
+    categories: Game code
+    .text       start:0x0203f858 end:0x0203f9ac
+
+asm/game/actor_extended_type2_interaction_state_entry_0203f9ac.s:
+    categories: Game code
+    .text       start:0x0203f9ac end:0x0203fb24
+
+asm/game/actor_extended_type2_callback_pair_resets_0203fb24.s:
+    categories: Game code
+    .text       start:0x0203fb24 end:0x0203fc68
+
+asm/game/actor_extended_type2_disable_reset_0203fc68.s:
+    categories: Game code
+    .text       start:0x0203fc68 end:0x0203fd00
+
+asm/game/actor_extended_type2_progress_and_state_reset_0203fd00.s:
+    categories: Game code
+    .text       start:0x0203fd00 end:0x0203fe0c
+
+asm/game/actor_extended_type2_transform_initialize_0203fe0c.s:
+    categories: Game code
+    .text       start:0x0203fe0c end:0x0203fea0
+
+asm/game/actor_extended_type2_interaction_accumulate_0203fea0.s:
+    categories: Game code
+    .text       start:0x0203fea0 end:0x02040000
+
+asm/game/actor_extended_type2_record_containment_02040000.s:
+    categories: Game code
+    .text       start:0x02040000 end:0x020400a4
+
+asm/game/actor_extended_type2_interaction_gate_020400a4.s:
+    categories: Game code
+    .text       start:0x020400a4 end:0x020401a0
+
+asm/game/actor_extended_type2_callback_pair_predicates_020401a0.s:
+    categories: Game code
+    .text       start:0x020401a0 end:0x02040234
+
+asm/game/actor_extended_type2_target_callback_trigger_02040234.s:
+    categories: Game code
+    .text       start:0x02040234 end:0x02040284
+
+asm/game/actor_extended_type2_proximity_callback_02040284.s:
+    categories: Game code
+    .text       start:0x02040284 end:0x02040334
+
+asm/game/actor_extended_type2_secondary_interaction_gate_02040334.s:
+    categories: Game code
+    .text       start:0x02040334 end:0x02040400
+
+asm/game/actor_extended_type2_runtime_group_proximity_02040400.s:
+    categories: Game code
+    .text       start:0x02040400 end:0x02040590
+
+asm/game/actor_extended_type2_sound_and_presentation_02040590.s:
+    categories: Game code
+    .text       start:0x02040590 end:0x0204067c
+
+asm/game/actor_extended_type2_timed_transition_0204067c.s:
+    categories: Game code
+    .text       start:0x0204067c end:0x02040a58
+
+asm/game/actor_extended_type2_transition_control_02040a58.s:
+    categories: Game code
+    .text       start:0x02040a58 end:0x02040bdc
+
+asm/game/actor_extended_type2_transition_dispatch_02040bdc.s:
+    categories: Game code
+    .text       start:0x02040bdc end:0x02040d64
+
+asm/game/actor_extended_type2_callback_routing_02040d64.s:
+    categories: Game code
+    .text       start:0x02040d64 end:0x02040e28
+
+asm/game/actor_extended_type2_completion_gate_02040e28.s:
+    categories: Game code
+    .text       start:0x02040e28 end:0x02040f4c
+
+asm/game/actor_extended_type2_target_motion_02040f4c.s:
+    categories: Game code
+    .text       start:0x02040f4c end:0x020412a8
+
+asm/game/actor_extended_type2_target_approach_020412a8.s:
+    categories: Game code
+    .text       start:0x020412a8 end:0x02041424
+
+asm/game/actor_extended_type2_target_follow_effect_02041424.s:
+    categories: Game code
+    .text       start:0x02041424 end:0x0204157c
+
+asm/game/actor_extended_type2_terminal_update_0204157c.s:
+    categories: Game code
+    .text       start:0x0204157c end:0x02041710
+
+asm/game/actor_extended_type2_late_state_callbacks_02041710.s:
+    categories: Game code
+    .text       start:0x02041710 end:0x020417dc
+
+asm/game/actor_extended_type2_near_target_dispatch_020417dc.s:
+    categories: Game code
+    .text       start:0x020417dc end:0x0204194c
+
+asm/game/actor_extended_type2_target_transform_dispatch_0204194c.s:
+    categories: Game code
+    .text       start:0x0204194c end:0x02041aec
+
+asm/game/actor_extended_type2_special_target_lookup_02041aec.s:
+    categories: Game code
+    .text       start:0x02041aec end:0x02041c18
+
+asm/game/actor_extended_type2_random_callback_select_02041c18.s:
+    categories: Game code
+    .text       start:0x02041c18 end:0x02041e18
+
+asm/game/actor_extended_type2_random_delay_02041e18.s:
+    categories: Game code
+    .text       start:0x02041e18 end:0x02041e9c
+
+asm/game/actor_extended_type2_random_waypoint_02041e9c.s:
+    categories: Game code
+    .text       start:0x02041e9c end:0x02042034
+
+asm/game/actor_extended_type2_center_waypoint_02042034.s:
+    categories: Game code
+    .text       start:0x02042034 end:0x02042170
+
+asm/game/actor_extended_type2_long_delay_audio_02042170.s:
+    categories: Game code
+    .text       start:0x02042170 end:0x020422f4
+
+asm/game/actor_extended_type2_target_bind_effect_020422f4.s:
+    categories: Game code
+    .text       start:0x020422f4 end:0x020423c8
+
+asm/game/actor_extended_type2_release_launch_020423c8.s:
+    categories: Game code
+    .text       start:0x020423c8 end:0x02042514
+
+asm/game/actor_extended_type2_countdown_update_02042514.s:
+    categories: Game code
+    .text       start:0x02042514 end:0x020425d4
+
+asm/game/actor_extended_type2_reentry_initialize_020425d4.s:
+    categories: Game code
+    .text       start:0x020425d4 end:0x02042810
+
+asm/game/actor_extended_type2_vertical_reset_02042810.s:
+    categories: Game code
+    .text       start:0x02042810 end:0x02042864
+
+asm/game/actor_extended_type2_debug_overlay_02042864.s:
+    categories: Game code
+    .text       start:0x02042864 end:0x0204305c
+
+asm/game/actor_extended_type2_direction_gate_wrapper_0204305c.s:
+    categories: Game code
+    .text       start:0x0204305c end:0x02043080
+
+asm/game/actor_extended_type2_direction_gate_02043080.s:
+    categories: Game code
+    .text       start:0x02043080 end:0x020430ec
+
+asm/game/actor_extended_type2_interaction_eligibility_020430ec.s:
+    categories: Game code
+    .text       start:0x020430ec end:0x0204322c
+
+asm/game/actor_extended_type2_candidate_track_0204322c.s:
+    categories: Game code
+    .text       start:0x0204322c end:0x0204330c
+
+asm/game/actor_extended_type2_contact_response_0204330c.s:
+    categories: Game code
+    .text       start:0x0204330c end:0x0204344c
+
+asm/game/actor_extended_type2_scene_interaction_0204344c.s:
+    categories: Game code
+    .text       start:0x0204344c end:0x02043534
+
+asm/game/actor_extended_type2_descriptor_helpers_02043534.s:
+    categories: Game code
+    .text       start:0x02043534 end:0x0204362c
+
+asm/game/actor_extended_type2_descriptor_activity_helpers_0204362c.s:
+    categories: Game code
+    .text       start:0x0204362c end:0x02043730
+
+asm/game/actor_extended_type2_interface_helpers_02043730.s:
+    categories: Game code
+    .text       start:0x02043730 end:0x020437f4
+
+asm/game/actor_extended_type3_lifecycle_020437f4.s:
+    categories: Game code
+    .text       start:0x020437f4 end:0x02043864
+
+asm/game/actor_extended_type3_wrappers_02043864.s:
+    categories: Game code
+    .text       start:0x02043864 end:0x02043958
+
+asm/game/actor_extended_type3_state_reset_02043958.s:
+    categories: Game code
+    .text       start:0x02043958 end:0x020439ec
+
+asm/game/actor_extended_type3_countdown_motion_020439ec.s:
+    categories: Game code
+    .text       start:0x020439ec end:0x02043b20
+asm/game/actor_extended_type3_timed_helpers_02043b20.s:
+    categories: Game code
+    .text       start:0x02043b20 end:0x02043c24
+
+asm/game/actor_extended_pairing_update_02043c24.s:
+    categories: Game code
+    .text       start:0x02043c24 end:0x02043cd0
+
+asm/game/actor_extended_linked_lifecycle_02043cd0.s:
+    categories: Game code
+    .text       start:0x02043cd0 end:0x02043d78
+
+asm/game/actor_extended_linked_partner_callbacks_02043d78.s:
+    categories: Game code
+    .text       start:0x02043d78 end:0x02043de4
+
+asm/game/actor_extended_link_source_lifecycle_02043de4.s:
+    categories: Game code
+    .text       start:0x02043de4 end:0x02043eb4
+
+asm/game/actor_extended_link_source_motion_gate_02043eb4.s:
+    categories: Game code
+    .text       start:0x02043eb4 end:0x02043f10
+
+asm/game/actor_extended_link_source_transform_update_02043f10.s:
+    categories: Game code
+    .text       start:0x02043f10 end:0x02044044
+
+asm/game/actor_extended_link_source_callbacks_02044044.s:
+    categories: Game code
+    .text       start:0x02044044 end:0x020440cc
+
+asm/game/actor_extended_transform_lifecycle_020440cc.s:
+    categories: Game code
+    .text       start:0x020440cc end:0x020441cc
+
+asm/game/actor_extended_transform_interaction_020441cc.s:
+    categories: Game code
+    .text       start:0x020441cc end:0x020443f0
+
+asm/game/actor_extended_transform_callbacks_020443f0.s:
+    categories: Game code
+    .text       start:0x020443f0 end:0x02044518
+
+asm/game/actor_extended_table_lifecycle_02044518.s:
+    categories: Game code
+    .text       start:0x02044518 end:0x02044698
+
+asm/game/actor_extended_table_destructors_02044698.s:
+    categories: Game code
+    .text       start:0x02044698 end:0x020446c8
+
+asm/game/actor_extended_table_output_gate_020446c8.s:
+    categories: Game code
+    .text       start:0x020446c8 end:0x02044718
+
+asm/game/actor_extended_table_descriptor_predicates_02044718.s:
+    categories: Game code
+    .text       start:0x02044718 end:0x020447a8
+
+asm/game/actor_extended_table_forward_gate_020447a8.s:
+    categories: Game code
+    .text       start:0x020447a8 end:0x020447ec
+
+asm/game/actor_extended_table_state_helpers_020447ec.s:
+    categories: Game code
+    .text       start:0x020447ec end:0x0204483c
+
+asm/game/actor_extended_table_frame_update_0204483c.s:
+    categories: Game code
+    .text       start:0x0204483c end:0x0204497c
+
+asm/game/actor_extended_table_counter_dispatch_0204497c.s:
+    categories: Game code
+    .text       start:0x0204497c end:0x02044ae0
+
+asm/game/actor_extended_table_record_dispatch_02044ae0.s:
+    categories: Game code
+    .text       start:0x02044ae0 end:0x02044c74
+
+asm/game/actor_extended_table_transform_effect_02044c74.s:
+    categories: Game code
+    .text       start:0x02044c74 end:0x02044d84
+
+asm/game/actor_extended_table_subclass_lifecycle_02044d84.s:
+    categories: Game code
+    .text       start:0x02044d84 end:0x02044e08
+
+asm/game/actor_extended_table_subclass_dispatch_02044e08.s:
+    categories: Game code
+    .text       start:0x02044e08 end:0x02045004
+
+asm/game/interaction_timing_state_02045004.s:
+    categories: Game code
+    .text       start:0x02045004 end:0x02045058
+
+asm/game/interaction_record_allocator_02045058.s:
+    categories: Game code
+    .text       start:0x02045058 end:0x020451b8
+
+asm/game/interaction_owned_object_pool_020451b8.s:
+    categories: Game code
+    .text       start:0x020451b8 end:0x02045210
+
+asm/game/interaction_owned_object_lookup_02045210.s:
+    categories: Game code
+    .text       start:0x02045210 end:0x02045288
+
+asm/game/interaction_waypoint_cursor_initialize_02045288.s:
+    categories: Game code
+    .text       start:0x02045288 end:0x020452f8
+
+asm/game/interaction_waypoint_cursor_retarget_020452f8.s:
+    categories: Game code
+    .text       start:0x020452f8 end:0x02045364
+
+asm/game/interaction_waypoint_cursor_helpers_02045364.s:
+    categories: Game code
+    .text       start:0x02045364 end:0x02045410
+
+asm/game/interaction_forwarding_wrappers_02045410.s:
+    categories: Game code
+    .text       start:0x02045410 end:0x020454f8
+
+asm/game/type7_actor_registry_020454f8.s:
+    categories: Game code
+    .text       start:0x020454f8 end:0x020455bc
+
+asm/game/type7_actor_constructor_020455bc.s:
+    categories: Game code
+    .text       start:0x020455bc end:0x02045724
+
+asm/game/type7_actor_destructor_02045724.s:
+    categories: Game code
+    .text       start:0x02045724 end:0x02045878
+
+asm/game/type7_actor_deleting_destructor_02045878.s:
+    categories: Game code
+    .text       start:0x02045878 end:0x020459d4
+
+asm/game/type7_actor_resource_setup_020459d4.s:
+    categories: Game code
+    .text       start:0x020459d4 end:0x02045a60
+
+asm/game/type7_actor_frame_update_02045a60.s:
+    categories: Game code
+    .text       start:0x02045a60 end:0x02046208
+
+asm/game/type7_actor_animation_update_02046208.s:
+    categories: Game code
+    .text       start:0x02046208 end:0x020464f4
+
+asm/game/type7_actor_helpers_020464f4.s:
+    categories: Game code
+    .text       start:0x020464f4 end:0x02046660
+
+asm/game/type7_actor_contact_response_02046660.s:
+    categories: Game code
+    .text       start:0x02046660 end:0x02046d8c
+
+asm/game/type7_actor_callback_predicate_02046d8c.s:
+    categories: Game code
+    .text       start:0x02046d8c end:0x02046e60
+
+asm/game/type7_actor_type2_interaction_02046e60.s:
+    categories: Game code
+    .text       start:0x02046e60 end:0x020471e4
+
+asm/game/type7_actor_auxiliary_spawn_020471e4.s:
+    categories: Game code
+    .text       start:0x020471e4 end:0x02047248
+
+asm/game/type7_actor_touch_interaction_02047248.s:
+    categories: Game code
+    .text       start:0x02047248 end:0x0204767c
+
+asm/game/type7_actor_drag_start_0204767c.s:
+    categories: Game code
+    .text       start:0x0204767c end:0x020478b0
+
+asm/game/type7_actor_motion_update_020478b0.s:
+    categories: Game code
+    .text       start:0x020478b0 end:0x02047d40
+
+asm/game/type7_actor_reset_entry_02047d40.s:
+    categories: Game code
+    .text       start:0x02047d40 end:0x02047dd8
+
+asm/game/type7_actor_reset_state_02047dd8.s:
+    categories: Game code
+    .text       start:0x02047dd8 end:0x02047f38
+
+asm/game/type7_actor_callback_reset_02047f38.s:
+    categories: Game code
+    .text       start:0x02047f38 end:0x02048000
+
+asm/game/type7_actor_callback_random_02048000.s:
+    categories: Game code
+    .text       start:0x02048000 end:0x020480c8
+
+asm/game/type7_actor_callback_random_pair_020480c8.s:
+    categories: Game code
+    .text       start:0x020480c8 end:0x02048148
+
+asm/game/type7_actor_callback_dispatch_02048148.s:
+    categories: Game code
+    .text       start:0x02048148 end:0x020481dc
+
+asm/game/type7_actor_callback_assign_020481dc.s:
+    categories: Game code
+    .text       start:0x020481dc end:0x0204820c
+
+asm/game/type7_actor_target_state_0204820c.s:
+    categories: Game code
+    .text       start:0x0204820c end:0x02048378
+
+asm/game/type7_actor_object_interaction_02048378.s:
+    categories: Game code
+    .text       start:0x02048378 end:0x020486a8
+
+asm/game/type7_actor_random_acceptance_020486a8.s:
+    categories: Game code
+    .text       start:0x020486a8 end:0x0204876c
+
+asm/game/type7_actor_target_acquisition_0204876c.s:
+    categories: Game code
+    .text       start:0x0204876c end:0x02048a4c
+
+asm/game/type7_actor_target_binding_02048a4c.s:
+    categories: Game code
+    .text       start:0x02048a4c end:0x02048c10
+
+asm/game/type7_actor_idle_control_02048c10.s:
+    categories: Game code
+    .text       start:0x02048c10 end:0x02048e6c
+
+asm/game/type7_actor_animation_states_02048e6c.s:
+    categories: Game code
+    .text       start:0x02048e6c end:0x02048fe4
+
+asm/game/type7_actor_random_motion_02048fe4.s:
+    categories: Game code
+    .text       start:0x02048fe4 end:0x02049148

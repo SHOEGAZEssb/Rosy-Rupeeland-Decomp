@@ -1,0 +1,90 @@
+#include "tingle/heap.h"
+#include "tingle/types.h"
+
+/* Dispatch a type-1 actor interaction into damage effects or the active scene. */
+extern void *gLupyContext;
+extern const char data_020df4a4[];
+extern u8 *data_021052fc;
+extern void *gSceneManager;
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+extern void func_02010c00(void *context, s32 value, s32 extra);
+extern void *func_02009d78(void *manager);
+extern void *func_02022cb0(void *allocation, void *resource, void *owner,
+                           s32 value, s32 first, s32 second);
+extern void func_0201ded4(void *manager, void *object);
+extern void func_0203811c(void *actor);
+extern void func_020349b8(void *actor, u32 sound, s32 extra);
+extern void func_02039bb0(void *actor);
+extern void func_02038ecc(void *actor, s32 record);
+extern void *SceneManager_GetCurrent(void *manager);
+#ifdef __cplusplus
+}
+#endif
+
+/*
+ * Return while optional actor object +0x270 has byte +0x10 bit one or actor
+ * +0x230 bit 0x20000. With +0xd0 bit 0x40000 clear and positive amount,
+ * subtract amount from Lupy, allocate/register a 0x44-byte effect carrying
+ * -amount, 0x2000, and -0xc0, then inspect source descriptor +0x1fc. IDs
+ * 0x21/0x22/0x2e/0x2f/0x40 trigger auxiliary reset, sound 0x26, and actor
+ * +0x230 bit 0x400000 when descriptor byte +0x2c is four or 0x200000 otherwise;
+ * finally call func_02039bb0. Independently, descriptor halfword +0x2e other
+ * than -1 starts a record through func_02038ecc.
+ *
+ * With actor +0xd0 bit 0x40000 set, positive amount instead dispatches source
+ * to virtual +0xc8 on current scene object +0x4c. Returns no value; Lupy, heap,
+ * manager, auxiliary, sound, record, and scene calls alter engine state.
+ */
+void func_020398a4(void *self, s32 amount, void *sourceValue)
+{
+    u8 *actor = (u8 *)self;
+    u8 *source = (u8 *)sourceValue;
+    u8 *descriptor;
+
+    if (*(u8 **)(actor + 0x270) != 0 &&
+        ((*(u8 **)(actor + 0x270))[0x10] & 1) != 0)
+        return;
+    if ((*(u32 *)(actor + 0x230) & 0x20000) != 0)
+        return;
+    if ((*(u32 *)(actor + 0xd0) & 0x40000) != 0) {
+        if (amount > 0) {
+            u8 *scene = (u8 *)SceneManager_GetCurrent(gSceneManager);
+            void *object = *(void **)(scene + 0x4c);
+            (*(void (**)(void *, void *))(*(u8 **)object + 0xc8))(object,
+                                                                    source);
+        }
+        return;
+    }
+
+    if (amount > 0) {
+        s32 negative = -amount;
+        void *allocation;
+        void *effect = 0;
+        func_02010c00(gLupyContext, negative, 0);
+        allocation = Heap_Alloc(0x44, data_020df4a4, 4, &gHeapContext);
+        if (allocation != 0) {
+            void *resource = func_02009d78(data_021052fc + 0x2fbc);
+            effect = func_02022cb0(allocation, resource, actor, negative,
+                                   0x2000, -0xc0);
+        }
+        func_0201ded4(data_021052fc + 0x2f7c, effect);
+        descriptor = *(u8 **)(source + 0x1fc);
+        if (*(s16 *)descriptor == 0x21 || *(s16 *)descriptor == 0x22 ||
+            *(s16 *)descriptor == 0x2e || *(s16 *)descriptor == 0x2f ||
+            *(s16 *)descriptor == 0x40) {
+            func_0203811c(actor);
+            func_020349b8(actor, 0x26, 0);
+            if (*(s8 *)(descriptor + 0x2c) == 4)
+                *(u32 *)(actor + 0x230) |= 0x400000;
+            else
+                *(u32 *)(actor + 0x230) |= 0x200000;
+        }
+        func_02039bb0(actor);
+    }
+    descriptor = *(u8 **)(source + 0x1fc);
+    if (*(s16 *)(descriptor + 0x2e) != -1)
+        func_02038ecc(actor, *(s16 *)(descriptor + 0x2e));
+}

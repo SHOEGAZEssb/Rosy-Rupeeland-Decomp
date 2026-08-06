@@ -1,0 +1,104 @@
+#include "tingle/types.h"
+
+/*
+ * Recovered type-seven animation-state callbacks. They clear or validate motion
+ * state, select animation IDs, and invoke the actor reset on proximity events.
+ */
+#ifdef __cplusplus
+extern "C" {
+#endif
+extern void func_0200b2c0(void *value, s32 x, s32 y, s32 z);
+extern s32 func_0204a5b8(void *actor);
+extern void func_02047dd8(void *actor);
+extern s32 func_02033f44(void *actor);
+extern s32 func_020be328(s32 value);
+extern void func_0204b7bc(void *actor, s32 mode);
+#ifdef __cplusplus
+}
+#endif
+
+/*
+ * Input is a type-seven actor. Clear flag 0x8000 and select animation eleven
+ * when +0x1dc is below +0x24, or animation three otherwise. Return zero. Actor
+ * flags and animation change; no SDK or hardware effects occur.
+ */
+s32 func_02048e6c(void *self)
+{
+    u8 *actor = (u8 *)self;
+    *(u32 *)(actor + 0x268) &= ~0x8000;
+    *(u16 *)(actor + 0xd6) =
+        *(s32 *)(actor + 0x1dc) < *(s32 *)(actor + 0x24) ? 11 : 3;
+    return 0;
+}
+
+/*
+ * Input is a type-seven actor. Clear directional words +0x3c/+0x40 and zero
+ * vector-like values +0x88/+0x98. With no +0x280 target, return zero. Unless
+ * actor flag 0x40 is set, flag 0x20 plus func_0204a5b8 acceptance clears that
+ * flag and runs func_02047dd8; otherwise flag 0x80 resets when the absolute
+ * func_02033f44 difference between actor and target is below 0x20000.
+ *
+ * If no reset occurs, select animation eleven below height +0x1dc, animation
+ * five when flag 0x20 is set, or animation four otherwise. Return zero on every
+ * path. Actor motion, callback, resource, flags, and animation may change; no
+ * direct hardware access occurs.
+ */
+s32 func_02048e98(void *self)
+{
+    u8 *actor = (u8 *)self;
+    u8 *target;
+    *(s32 *)(actor + 0x40) = 0;
+    *(s32 *)(actor + 0x3c) = 0;
+    func_0200b2c0(actor + 0x88, 0, 0, 0);
+    func_0200b2c0(actor + 0x98, 0, 0, 0);
+    target = *(u8 **)(actor + 0x280);
+    if (target == 0)
+        return 0;
+    if ((*(u32 *)(actor + 0x268) & 0x40) == 0) {
+        if ((*(u32 *)(actor + 0x268) & 0x20) != 0
+            && func_0204a5b8(actor) != 0) {
+            *(u32 *)(actor + 0x268) &= ~0x20;
+            func_02047dd8(actor);
+            return 0;
+        }
+        if ((*(u32 *)(actor + 0x268) & 0x80) != 0
+            && func_020be328(func_02033f44(actor)
+                             - func_02033f44(target)) < 0x20000) {
+            func_02047dd8(actor);
+            return 0;
+        }
+    }
+    if (*(s32 *)(actor + 0x1dc) < *(s32 *)(actor + 0x24))
+        *(u16 *)(actor + 0xd6) = 11;
+    else
+        *(u16 *)(actor + 0xd6) =
+            (*(u32 *)(actor + 0x268) & 0x20) != 0 ? 5 : 4;
+    return 0;
+}
+
+/*
+ * Input is a type-seven actor. Select animation seven when flag four is set,
+ * or animation six otherwise, then return zero. No SDK or hardware effects
+ * occur.
+ */
+s32 func_02048f98(void *self)
+{
+    u8 *actor = (u8 *)self;
+    *(u16 *)(actor + 0xd6) =
+        (*(u32 *)(actor + 0x268) & 4) != 0 ? 7 : 6;
+    return 0;
+}
+
+/*
+ * Input is a type-seven actor. When signed counter +0x248 equals ten, select
+ * response mode zero through func_0204b7bc. Select animation six and return
+ * zero. Actor response and animation may change; no hardware effect occurs.
+ */
+s32 func_02048fb4(void *self)
+{
+    u8 *actor = (u8 *)self;
+    if (*(s16 *)(actor + 0x248) == 10)
+        func_0204b7bc(actor, 0);
+    *(u16 *)(actor + 0xd6) = 6;
+    return 0;
+}

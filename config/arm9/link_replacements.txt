@@ -1478,3 +1478,405 @@ build/decomp/delinks/asm/game/actor_derived_type1_target_predicates_020380f0.o =
 build/decomp/delinks/asm/game/actor_derived_type1_auxiliary_reset_effect_0203811c.o = build/decomp/asm/game/actor_derived_type1_auxiliary_reset_effect_0203811c.o
 
 build/decomp/delinks/asm/game/actor_derived_type1_target_displacement_0203825c.o = build/decomp/asm/game/actor_derived_type1_target_displacement_0203825c.o
+
+build/decomp/delinks/asm/game/actor_vector_component_divide_02038784.o = build/decomp/asm/game/actor_vector_component_divide_02038784.o
+
+build/decomp/delinks/asm/game/actor_derived_type1_contact_reset_020387cc.o = build/decomp/asm/game/actor_derived_type1_contact_reset_020387cc.o
+
+build/decomp/delinks/asm/game/actor_derived_type1_contact_reset_020387d8.o = build/decomp/asm/game/actor_derived_type1_contact_reset_020387d8.o
+
+build/decomp/delinks/asm/game/actor_derived_type1_state_entry_02038834.o = build/decomp/asm/game/actor_derived_type1_state_entry_02038834.o
+
+build/decomp/delinks/asm/game/actor_derived_type1_debug_render_020389ec.o = build/decomp/asm/game/actor_derived_type1_debug_render_020389ec.o
+
+build/decomp/delinks/asm/game/actor_derived_type1_state_resets_02038aac.o = build/decomp/asm/game/actor_derived_type1_state_resets_02038aac.o
+
+build/decomp/delinks/asm/game/actor_derived_type1_state_resets_02038b64.o = build/decomp/asm/game/actor_derived_type1_state_resets_02038b64.o
+
+build/decomp/delinks/asm/game/actor_derived_type1_orientation_flag_02038c1c.o = build/decomp/asm/game/actor_derived_type1_orientation_flag_02038c1c.o
+
+build/decomp/delinks/asm/game/actor_derived_type1_contact_position_02038c4c.o = build/decomp/asm/game/actor_derived_type1_contact_position_02038c4c.o
+
+build/decomp/delinks/asm/game/actor_derived_type1_state_vector_02038d38.o = build/decomp/asm/game/actor_derived_type1_state_vector_02038d38.o
+
+build/decomp/delinks/asm/game/actor_derived_type1_state_vector_02038e38.o = build/decomp/asm/game/actor_derived_type1_state_vector_02038e38.o
+
+build/decomp/delinks/asm/game/actor_derived_type1_gamework_flags_02038e50.o = build/decomp/asm/game/actor_derived_type1_gamework_flags_02038e50.o
+
+build/decomp/delinks/asm/game/actor_derived_type1_record_start_02038ecc.o = build/decomp/asm/game/actor_derived_type1_record_start_02038ecc.o
+
+build/decomp/delinks/asm/game/actor_derived_type1_record_apply_02038f98.o = build/decomp/asm/game/actor_derived_type1_record_apply_02038f98.o
+
+build/decomp/delinks/asm/game/actor_derived_type1_record_teardown_020390c8.o = build/decomp/asm/game/actor_derived_type1_record_teardown_020390c8.o
+
+build/decomp/delinks/asm/game/actor_derived_type1_record_controls_02039240.o = build/decomp/asm/game/actor_derived_type1_record_controls_02039240.o
+
+build/decomp/delinks/asm/game/actor_derived_type1_record_controls_02039278.o = build/decomp/asm/game/actor_derived_type1_record_controls_02039278.o
+
+build/decomp/delinks/asm/game/actor_derived_type1_record_controls_020392b4.o = build/decomp/asm/game/actor_derived_type1_record_controls_020392b4.o
+
+build/decomp/delinks/asm/game/actor_derived_type1_record_controls_02039348.o = build/decomp/asm/game/actor_derived_type1_record_controls_02039348.o
+
+build/decomp/delinks/asm/game/actor_derived_type1_runtime_reset_0203936c.o = build/decomp/asm/game/actor_derived_type1_runtime_reset_0203936c.o
+
+build/decomp/delinks/asm/game/actor_derived_type1_record_queries_020393f4.o = build/decomp/asm/game/actor_derived_type1_record_queries_020393f4.o
+
+build/decomp/delinks/asm/game/actor_derived_type1_record_queries_02039408.o = build/decomp/asm/game/actor_derived_type1_record_queries_02039408.o
+
+build/decomp/delinks/asm/game/actor_derived_type1_record_queries_02039428.o = build/decomp/asm/game/actor_derived_type1_record_queries_02039428.o
+
+build/decomp/delinks/asm/game/actor_derived_type1_record_queries_02039448.o = build/decomp/asm/game/actor_derived_type1_record_queries_02039448.o
+
+build/decomp/delinks/asm/game/actor_derived_type1_record_collision_scan_02039468.o = build/decomp/asm/game/actor_derived_type1_record_collision_scan_02039468.o
+
+build/decomp/delinks/asm/game/actor_attachment_slot_resource_02039714.o = build/decomp/asm/game/actor_attachment_slot_resource_02039714.o
+
+build/decomp/delinks/asm/game/actor_attachment_slot_resource_02039720.o = build/decomp/asm/game/actor_attachment_slot_resource_02039720.o
+
+build/decomp/delinks/asm/game/actor_derived_type1_idle_eligibility_020397d4.o = build/decomp/asm/game/actor_derived_type1_idle_eligibility_020397d4.o
+
+build/decomp/delinks/asm/game/actor_derived_type1_interaction_dispatch_020398a4.o = build/decomp/asm/game/actor_derived_type1_interaction_dispatch_020398a4.o
+
+build/decomp/delinks/asm/game/actor_derived_type1_interaction_callbacks_02039a50.o = build/decomp/asm/game/actor_derived_type1_interaction_callbacks_02039a50.o
+
+build/decomp/delinks/asm/game/actor_derived_type1_interaction_callbacks_02039a54.o = build/decomp/asm/game/actor_derived_type1_interaction_callbacks_02039a54.o
+
+build/decomp/delinks/asm/game/actor_derived_type1_interaction_callbacks_02039b98.o = build/decomp/asm/game/actor_derived_type1_interaction_callbacks_02039b98.o
+
+build/decomp/delinks/asm/game/actor_derived_type1_failure_state_02039ba0.o = build/decomp/asm/game/actor_derived_type1_failure_state_02039ba0.o
+
+build/decomp/delinks/asm/game/actor_derived_type1_failure_state_02039bb0.o = build/decomp/asm/game/actor_derived_type1_failure_state_02039bb0.o
+
+build/decomp/delinks/asm/game/actor_derived_type1_failure_state_02039bfc.o = build/decomp/asm/game/actor_derived_type1_failure_state_02039bfc.o
+
+build/decomp/delinks/asm/game/actor_height_attachment_update_02039c3c.o = build/decomp/asm/game/actor_height_attachment_update_02039c3c.o
+
+build/decomp/delinks/asm/game/actor_height_attachment_update_02039c7c.o = build/decomp/asm/game/actor_height_attachment_update_02039c7c.o
+
+build/decomp/delinks/asm/game/actor_derived_type1_special_mode_02039d0c.o = build/decomp/asm/game/actor_derived_type1_special_mode_02039d0c.o
+
+build/decomp/delinks/asm/game/actor_derived_type1_special_mode_02039d54.o = build/decomp/asm/game/actor_derived_type1_special_mode_02039d54.o
+
+build/decomp/delinks/asm/game/actor_derived_type1_special_mode_02039db8.o = build/decomp/asm/game/actor_derived_type1_special_mode_02039db8.o
+
+build/decomp/delinks/asm/game/actor_derived_type1_misc_helpers_02039de0.o = build/decomp/asm/game/actor_derived_type1_misc_helpers_02039de0.o
+
+build/decomp/delinks/asm/game/actor_global_terrain_gate_spawn_02039ea0.o = build/decomp/asm/game/actor_global_terrain_gate_spawn_02039ea0.o
+
+build/decomp/delinks/asm/game/actor_resource_table_lifecycle_02039f6c.o = build/decomp/asm/game/actor_resource_table_lifecycle_02039f6c.o
+
+build/decomp/delinks/asm/game/actor_resource_indexed_presentation_spawn_0203a0f0.o = build/decomp/asm/game/actor_resource_indexed_presentation_spawn_0203a0f0.o
+
+build/decomp/delinks/asm/game/actor_environment_feedback_dispatch_0203a314.o = build/decomp/asm/game/actor_environment_feedback_dispatch_0203a314.o
+
+build/decomp/delinks/asm/game/actor_snapshot_cell_feedback_0203a8b8.o = build/decomp/asm/game/actor_snapshot_cell_feedback_0203a8b8.o
+
+build/decomp/delinks/asm/game/actor_interaction_runtime_lifecycle_0203aac4.o = build/decomp/asm/game/actor_interaction_runtime_lifecycle_0203aac4.o
+
+build/decomp/delinks/asm/game/actor_interaction_runtime_update_0203ac9c.o = build/decomp/asm/game/actor_interaction_runtime_update_0203ac9c.o
+
+build/decomp/delinks/asm/game/actor_feedback_slot_and_random_value_0203ad64.o = build/decomp/asm/game/actor_feedback_slot_and_random_value_0203ad64.o
+
+build/decomp/delinks/asm/game/actor_spawn_descriptor_init_0203ae14.o = build/decomp/asm/game/actor_spawn_descriptor_init_0203ae14.o
+
+build/decomp/delinks/asm/game/actor_descriptor_batch_spawn_0203af24.o = build/decomp/asm/game/actor_descriptor_batch_spawn_0203af24.o
+
+build/decomp/delinks/asm/game/actor_descriptor_batch_wrappers_0203b38c.o = build/decomp/asm/game/actor_descriptor_batch_wrappers_0203b38c.o
+
+build/decomp/delinks/asm/game/actor_collection_callback_apply_0203b3cc.o = build/decomp/asm/game/actor_collection_callback_apply_0203b3cc.o
+
+build/decomp/delinks/asm/game/actor_derived_runtime_object_lifecycle_0203b514.o = build/decomp/asm/game/actor_derived_runtime_object_lifecycle_0203b514.o
+
+build/decomp/delinks/asm/game/actor_base_descriptor_initialize_0203b65c.o = build/decomp/asm/game/actor_base_descriptor_initialize_0203b65c.o
+
+build/decomp/delinks/asm/game/actor_derived_runtime_object_update_0203b798.o = build/decomp/asm/game/actor_derived_runtime_object_update_0203b798.o
+
+build/decomp/delinks/asm/game/actor_derived_runtime_interaction_callbacks_0203b998.o = build/decomp/asm/game/actor_derived_runtime_interaction_callbacks_0203b998.o
+
+build/decomp/delinks/asm/game/actor_derived_runtime_virtual_wrappers_0203baa0.o = build/decomp/asm/game/actor_derived_runtime_virtual_wrappers_0203baa0.o
+
+build/decomp/delinks/asm/game/actor_primary_attachment_rebuild_0203bae4.o = build/decomp/asm/game/actor_primary_attachment_rebuild_0203bae4.o
+
+build/decomp/delinks/asm/game/actor_ground_contact_probe_update_0203bba4.o = build/decomp/asm/game/actor_ground_contact_probe_update_0203bba4.o
+
+build/decomp/delinks/asm/game/actor_motion_probe_object_lifecycle_0203c134.o = build/decomp/asm/game/actor_motion_probe_object_lifecycle_0203c134.o
+
+build/decomp/delinks/asm/game/actor_motion_probe_touch_update_0203c240.o = build/decomp/asm/game/actor_motion_probe_touch_update_0203c240.o
+
+build/decomp/delinks/asm/game/actor_motion_probe_configuration_0203c410.o = build/decomp/asm/game/actor_motion_probe_configuration_0203c410.o
+
+build/decomp/delinks/asm/game/actor_motion_probe_reset_0203c438.o = build/decomp/asm/game/actor_motion_probe_reset_0203c438.o
+
+build/decomp/delinks/asm/game/actor_mode_nibble_object_lifecycle_0203c4e0.o = build/decomp/asm/game/actor_mode_nibble_object_lifecycle_0203c4e0.o
+
+build/decomp/delinks/asm/game/actor_mode_nibble_contact_flags_0203c578.o = build/decomp/asm/game/actor_mode_nibble_contact_flags_0203c578.o
+
+build/decomp/delinks/asm/game/actor_mode_nibble_update_0203c748.o = build/decomp/asm/game/actor_mode_nibble_update_0203c748.o
+
+build/decomp/delinks/asm/game/actor_mode_nibble_presentation_state_0203c884.o = build/decomp/asm/game/actor_mode_nibble_presentation_state_0203c884.o
+
+build/decomp/delinks/asm/game/actor_table_record_object_lifecycle_0203c94c.o = build/decomp/asm/game/actor_table_record_object_lifecycle_0203c94c.o
+
+build/decomp/delinks/asm/game/actor_table_record_interaction_response_0203cb34.o = build/decomp/asm/game/actor_table_record_interaction_response_0203cb34.o
+
+build/decomp/delinks/asm/game/actor_table_record_interaction_helpers_0203cea0.o = build/decomp/asm/game/actor_table_record_interaction_helpers_0203cea0.o
+
+build/decomp/delinks/asm/game/actor_table_record_frame_update_0203cf8c.o = build/decomp/asm/game/actor_table_record_frame_update_0203cf8c.o
+
+build/decomp/delinks/asm/game/actor_table_record_presentation_and_subclass_lifecycle_0203d260.o = build/decomp/asm/game/actor_table_record_presentation_and_subclass_lifecycle_0203d260.o
+
+build/decomp/delinks/asm/game/actor_registered_subclass_state_helpers_0203d3b4.o = build/decomp/asm/game/actor_registered_subclass_state_helpers_0203d3b4.o
+build/decomp/delinks/asm/game/actor_registered_subclass_state_helpers_0203d3fc.o = build/decomp/asm/game/actor_registered_subclass_state_helpers_0203d3fc.o
+build/decomp/delinks/asm/game/actor_registered_subclass_state_helpers_0203d48c.o = build/decomp/asm/game/actor_registered_subclass_state_helpers_0203d48c.o
+
+build/decomp/delinks/asm/game/actor_registered_subclass_frame_update_0203d540.o = build/decomp/asm/game/actor_registered_subclass_frame_update_0203d540.o
+
+build/decomp/delinks/asm/game/actor_registered_subclass_presentation_helpers_0203d6e0.o = build/decomp/asm/game/actor_registered_subclass_presentation_helpers_0203d6e0.o
+
+build/decomp/delinks/asm/game/actor_registered_subclass_registry_0203d8bc.o = build/decomp/asm/game/actor_registered_subclass_registry_0203d8bc.o
+
+build/decomp/delinks/asm/game/actor_collection_threshold_effect_dispatch_0203da28.o = build/decomp/asm/game/actor_collection_threshold_effect_dispatch_0203da28.o
+
+build/decomp/delinks/asm/game/actor_extended_type2_constructor_0203db80.o = build/decomp/asm/game/actor_extended_type2_constructor_0203db80.o
+
+build/decomp/delinks/asm/game/actor_extended_type2_record_array_0203de48.o = build/decomp/asm/game/actor_extended_type2_record_array_0203de48.o
+build/decomp/delinks/asm/game/actor_extended_type2_record_array_0203df48.o = build/decomp/asm/game/actor_extended_type2_record_array_0203df48.o
+
+build/decomp/delinks/asm/game/actor_extended_type2_constructor_duplicate_0203df4c.o = build/decomp/asm/game/actor_extended_type2_constructor_duplicate_0203df4c.o
+
+build/decomp/delinks/asm/game/actor_extended_type2_lifecycle_0203e214.o = build/decomp/asm/game/actor_extended_type2_lifecycle_0203e214.o
+
+build/decomp/delinks/asm/game/actor_extended_type2_destructor_variants_0203e3b4.o = build/decomp/asm/game/actor_extended_type2_destructor_variants_0203e3b4.o
+
+build/decomp/delinks/asm/game/actor_extended_type2_presentation_init_0203e56c.o = build/decomp/asm/game/actor_extended_type2_presentation_init_0203e56c.o
+
+build/decomp/delinks/asm/game/actor_extended_type2_frame_update_0203e7c8.o = build/decomp/asm/game/actor_extended_type2_frame_update_0203e7c8.o
+
+build/decomp/delinks/asm/game/actor_extended_type2_misc_helpers_0203ef60.o = build/decomp/asm/game/actor_extended_type2_misc_helpers_0203ef60.o
+
+build/decomp/delinks/asm/game/actor_extended_type2_render_callback_0203efac.o = build/decomp/asm/game/actor_extended_type2_render_callback_0203efac.o
+
+build/decomp/delinks/asm/game/actor_extended_type2_attachment_state_0203f0bc.o = build/decomp/asm/game/actor_extended_type2_attachment_state_0203f0bc.o
+
+build/decomp/delinks/asm/game/actor_extended_type2_descriptor_copy_0203f2ec.o = build/decomp/asm/game/actor_extended_type2_descriptor_copy_0203f2ec.o
+
+build/decomp/delinks/asm/game/actor_extended_type2_position_helpers_0203f4a0.o = build/decomp/asm/game/actor_extended_type2_position_helpers_0203f4a0.o
+
+build/decomp/delinks/asm/game/actor_extended_type2_target_motion_0203f5c4.o = build/decomp/asm/game/actor_extended_type2_target_motion_0203f5c4.o
+
+build/decomp/delinks/asm/game/actor_extended_type2_target_impulse_0203f858.o = build/decomp/asm/game/actor_extended_type2_target_impulse_0203f858.o
+
+build/decomp/delinks/asm/game/actor_extended_type2_interaction_state_entry_0203f9ac.o = build/decomp/asm/game/actor_extended_type2_interaction_state_entry_0203f9ac.o
+
+build/decomp/delinks/asm/game/actor_extended_type2_callback_pair_resets_0203fb24.o = build/decomp/asm/game/actor_extended_type2_callback_pair_resets_0203fb24.o
+
+build/decomp/delinks/asm/game/actor_extended_type2_disable_reset_0203fc68.o = build/decomp/asm/game/actor_extended_type2_disable_reset_0203fc68.o
+
+build/decomp/delinks/asm/game/actor_extended_type2_progress_and_state_reset_0203fd00.o = build/decomp/asm/game/actor_extended_type2_progress_and_state_reset_0203fd00.o
+
+build/decomp/delinks/asm/game/actor_extended_type2_transform_initialize_0203fe0c.o = build/decomp/asm/game/actor_extended_type2_transform_initialize_0203fe0c.o
+
+build/decomp/delinks/asm/game/actor_extended_type2_interaction_accumulate_0203fea0.o = build/decomp/asm/game/actor_extended_type2_interaction_accumulate_0203fea0.o
+
+build/decomp/delinks/asm/game/actor_extended_type2_record_containment_02040000.o = build/decomp/asm/game/actor_extended_type2_record_containment_02040000.o
+
+build/decomp/delinks/asm/game/actor_extended_type2_interaction_gate_020400a4.o = build/decomp/asm/game/actor_extended_type2_interaction_gate_020400a4.o
+
+build/decomp/delinks/asm/game/actor_extended_type2_callback_pair_predicates_020401a0.o = build/decomp/asm/game/actor_extended_type2_callback_pair_predicates_020401a0.o
+
+build/decomp/delinks/asm/game/actor_extended_type2_target_callback_trigger_02040234.o = build/decomp/asm/game/actor_extended_type2_target_callback_trigger_02040234.o
+
+build/decomp/delinks/asm/game/actor_extended_type2_proximity_callback_02040284.o = build/decomp/asm/game/actor_extended_type2_proximity_callback_02040284.o
+
+build/decomp/delinks/asm/game/actor_extended_type2_secondary_interaction_gate_02040334.o = build/decomp/asm/game/actor_extended_type2_secondary_interaction_gate_02040334.o
+
+build/decomp/delinks/asm/game/actor_extended_type2_runtime_group_proximity_02040400.o = build/decomp/asm/game/actor_extended_type2_runtime_group_proximity_02040400.o
+
+build/decomp/delinks/asm/game/actor_extended_type2_sound_and_presentation_02040590.o = build/decomp/asm/game/actor_extended_type2_sound_and_presentation_02040590.o
+
+build/decomp/delinks/asm/game/actor_extended_type2_timed_transition_0204067c.o = build/decomp/asm/game/actor_extended_type2_timed_transition_0204067c.o
+
+build/decomp/delinks/asm/game/actor_extended_type2_transition_control_02040a58.o = build/decomp/asm/game/actor_extended_type2_transition_control_02040a58.o
+
+build/decomp/delinks/asm/game/actor_extended_type2_transition_dispatch_02040bdc.o = build/decomp/asm/game/actor_extended_type2_transition_dispatch_02040bdc.o
+
+build/decomp/delinks/asm/game/actor_extended_type2_callback_routing_02040d64.o = build/decomp/asm/game/actor_extended_type2_callback_routing_02040d64.o
+
+build/decomp/delinks/asm/game/actor_extended_type2_completion_gate_02040e28.o = build/decomp/asm/game/actor_extended_type2_completion_gate_02040e28.o
+
+build/decomp/delinks/asm/game/actor_extended_type2_target_motion_02040f4c.o = build/decomp/asm/game/actor_extended_type2_target_motion_02040f4c.o
+
+build/decomp/delinks/asm/game/actor_extended_type2_target_approach_020412a8.o = build/decomp/asm/game/actor_extended_type2_target_approach_020412a8.o
+
+build/decomp/delinks/asm/game/actor_extended_type2_target_follow_effect_02041424.o = build/decomp/asm/game/actor_extended_type2_target_follow_effect_02041424.o
+
+build/decomp/delinks/asm/game/actor_extended_type2_terminal_update_0204157c.o = build/decomp/asm/game/actor_extended_type2_terminal_update_0204157c.o
+
+build/decomp/delinks/asm/game/actor_extended_type2_late_state_callbacks_02041710.o = build/decomp/asm/game/actor_extended_type2_late_state_callbacks_02041710.o
+
+build/decomp/delinks/asm/game/actor_extended_type2_near_target_dispatch_020417dc.o = build/decomp/asm/game/actor_extended_type2_near_target_dispatch_020417dc.o
+
+build/decomp/delinks/asm/game/actor_extended_type2_target_transform_dispatch_0204194c.o = build/decomp/asm/game/actor_extended_type2_target_transform_dispatch_0204194c.o
+
+build/decomp/delinks/asm/game/actor_extended_type2_special_target_lookup_02041aec.o = build/decomp/asm/game/actor_extended_type2_special_target_lookup_02041aec.o
+
+build/decomp/delinks/asm/game/actor_extended_type2_random_callback_select_02041c18.o = build/decomp/asm/game/actor_extended_type2_random_callback_select_02041c18.o
+
+build/decomp/delinks/asm/game/actor_extended_type2_random_delay_02041e18.o = build/decomp/asm/game/actor_extended_type2_random_delay_02041e18.o
+
+build/decomp/delinks/asm/game/actor_extended_type2_random_waypoint_02041e9c.o = build/decomp/asm/game/actor_extended_type2_random_waypoint_02041e9c.o
+
+build/decomp/delinks/asm/game/actor_extended_type2_center_waypoint_02042034.o = build/decomp/asm/game/actor_extended_type2_center_waypoint_02042034.o
+
+build/decomp/delinks/asm/game/actor_extended_type2_long_delay_audio_02042170.o = build/decomp/asm/game/actor_extended_type2_long_delay_audio_02042170.o
+
+build/decomp/delinks/asm/game/actor_extended_type2_target_bind_effect_020422f4.o = build/decomp/asm/game/actor_extended_type2_target_bind_effect_020422f4.o
+
+build/decomp/delinks/asm/game/actor_extended_type2_release_launch_020423c8.o = build/decomp/asm/game/actor_extended_type2_release_launch_020423c8.o
+
+build/decomp/delinks/asm/game/actor_extended_type2_countdown_update_02042514.o = build/decomp/asm/game/actor_extended_type2_countdown_update_02042514.o
+
+build/decomp/delinks/asm/game/actor_extended_type2_reentry_initialize_020425d4.o = build/decomp/asm/game/actor_extended_type2_reentry_initialize_020425d4.o
+
+build/decomp/delinks/asm/game/actor_extended_type2_vertical_reset_02042810.o = build/decomp/asm/game/actor_extended_type2_vertical_reset_02042810.o
+
+build/decomp/delinks/asm/game/actor_extended_type2_debug_overlay_02042864.o = build/decomp/asm/game/actor_extended_type2_debug_overlay_02042864.o
+
+build/decomp/delinks/asm/game/actor_extended_type2_direction_gate_wrapper_0204305c.o = build/decomp/asm/game/actor_extended_type2_direction_gate_wrapper_0204305c.o
+
+build/decomp/delinks/asm/game/actor_extended_type2_direction_gate_02043080.o = build/decomp/asm/game/actor_extended_type2_direction_gate_02043080.o
+
+build/decomp/delinks/asm/game/actor_extended_type2_interaction_eligibility_020430ec.o = build/decomp/asm/game/actor_extended_type2_interaction_eligibility_020430ec.o
+
+build/decomp/delinks/asm/game/actor_extended_type2_candidate_track_0204322c.o = build/decomp/asm/game/actor_extended_type2_candidate_track_0204322c.o
+
+build/decomp/delinks/asm/game/actor_extended_type2_contact_response_0204330c.o = build/decomp/asm/game/actor_extended_type2_contact_response_0204330c.o
+
+build/decomp/delinks/asm/game/actor_extended_type2_scene_interaction_0204344c.o = build/decomp/asm/game/actor_extended_type2_scene_interaction_0204344c.o
+
+build/decomp/delinks/asm/game/actor_extended_type2_descriptor_helpers_02043534.o = build/decomp/asm/game/actor_extended_type2_descriptor_helpers_02043534.o
+
+build/decomp/delinks/asm/game/actor_extended_type2_descriptor_activity_helpers_0204362c.o = build/decomp/asm/game/actor_extended_type2_descriptor_activity_helpers_0204362c.o
+
+build/decomp/delinks/asm/game/actor_extended_type2_interface_helpers_02043730.o = build/decomp/asm/game/actor_extended_type2_interface_helpers_02043730.o
+
+build/decomp/delinks/asm/game/actor_extended_type3_lifecycle_020437f4.o = build/decomp/asm/game/actor_extended_type3_lifecycle_020437f4.o
+
+build/decomp/delinks/asm/game/actor_extended_type3_wrappers_02043864.o = build/decomp/asm/game/actor_extended_type3_wrappers_02043864.o
+
+build/decomp/delinks/asm/game/actor_extended_type3_state_reset_02043958.o = build/decomp/asm/game/actor_extended_type3_state_reset_02043958.o
+
+build/decomp/delinks/asm/game/actor_extended_type3_countdown_motion_020439ec.o = build/decomp/asm/game/actor_extended_type3_countdown_motion_020439ec.o
+build/decomp/delinks/asm/game/actor_extended_type3_timed_helpers_02043b20.o = build/decomp/asm/game/actor_extended_type3_timed_helpers_02043b20.o
+
+build/decomp/delinks/asm/game/actor_extended_pairing_update_02043c24.o = build/decomp/asm/game/actor_extended_pairing_update_02043c24.o
+
+build/decomp/delinks/asm/game/actor_extended_linked_lifecycle_02043cd0.o = build/decomp/asm/game/actor_extended_linked_lifecycle_02043cd0.o
+
+build/decomp/delinks/asm/game/actor_extended_linked_partner_callbacks_02043d78.o = build/decomp/asm/game/actor_extended_linked_partner_callbacks_02043d78.o
+
+build/decomp/delinks/asm/game/actor_extended_link_source_lifecycle_02043de4.o = build/decomp/asm/game/actor_extended_link_source_lifecycle_02043de4.o
+
+build/decomp/delinks/asm/game/actor_extended_link_source_motion_gate_02043eb4.o = build/decomp/asm/game/actor_extended_link_source_motion_gate_02043eb4.o
+
+build/decomp/delinks/asm/game/actor_extended_link_source_transform_update_02043f10.o = build/decomp/asm/game/actor_extended_link_source_transform_update_02043f10.o
+
+build/decomp/delinks/asm/game/actor_extended_link_source_callbacks_02044044.o = build/decomp/asm/game/actor_extended_link_source_callbacks_02044044.o
+
+build/decomp/delinks/asm/game/actor_extended_transform_lifecycle_020440cc.o = build/decomp/asm/game/actor_extended_transform_lifecycle_020440cc.o
+
+build/decomp/delinks/asm/game/actor_extended_transform_interaction_020441cc.o = build/decomp/asm/game/actor_extended_transform_interaction_020441cc.o
+
+build/decomp/delinks/asm/game/actor_extended_transform_callbacks_020443f0.o = build/decomp/asm/game/actor_extended_transform_callbacks_020443f0.o
+
+build/decomp/delinks/asm/game/actor_extended_table_lifecycle_02044518.o = build/decomp/asm/game/actor_extended_table_lifecycle_02044518.o
+
+build/decomp/delinks/asm/game/actor_extended_table_destructors_02044698.o = build/decomp/asm/game/actor_extended_table_destructors_02044698.o
+
+build/decomp/delinks/asm/game/actor_extended_table_output_gate_020446c8.o = build/decomp/asm/game/actor_extended_table_output_gate_020446c8.o
+build/decomp/delinks/asm/game/actor_extended_table_descriptor_predicates_02044718.o = build/decomp/asm/game/actor_extended_table_descriptor_predicates_02044718.o
+build/decomp/delinks/asm/game/actor_extended_table_forward_gate_020447a8.o = build/decomp/asm/game/actor_extended_table_forward_gate_020447a8.o
+
+build/decomp/delinks/asm/game/actor_extended_table_state_helpers_020447ec.o = build/decomp/asm/game/actor_extended_table_state_helpers_020447ec.o
+
+build/decomp/delinks/asm/game/actor_extended_table_frame_update_0204483c.o = build/decomp/asm/game/actor_extended_table_frame_update_0204483c.o
+
+build/decomp/delinks/asm/game/actor_extended_table_counter_dispatch_0204497c.o = build/decomp/asm/game/actor_extended_table_counter_dispatch_0204497c.o
+
+build/decomp/delinks/asm/game/actor_extended_table_record_dispatch_02044ae0.o = build/decomp/asm/game/actor_extended_table_record_dispatch_02044ae0.o
+
+build/decomp/delinks/asm/game/actor_extended_table_transform_effect_02044c74.o = build/decomp/asm/game/actor_extended_table_transform_effect_02044c74.o
+
+build/decomp/delinks/asm/game/actor_extended_table_subclass_lifecycle_02044d84.o = build/decomp/asm/game/actor_extended_table_subclass_lifecycle_02044d84.o
+
+build/decomp/delinks/asm/game/actor_extended_table_subclass_dispatch_02044e08.o = build/decomp/asm/game/actor_extended_table_subclass_dispatch_02044e08.o
+
+build/decomp/delinks/asm/game/interaction_timing_state_02045004.o = build/decomp/asm/game/interaction_timing_state_02045004.o
+
+build/decomp/delinks/asm/game/interaction_record_allocator_02045058.o = build/decomp/asm/game/interaction_record_allocator_02045058.o
+
+build/decomp/delinks/asm/game/interaction_owned_object_pool_020451b8.o = build/decomp/asm/game/interaction_owned_object_pool_020451b8.o
+
+build/decomp/delinks/asm/game/interaction_owned_object_lookup_02045210.o = build/decomp/asm/game/interaction_owned_object_lookup_02045210.o
+
+build/decomp/delinks/asm/game/interaction_waypoint_cursor_initialize_02045288.o = build/decomp/asm/game/interaction_waypoint_cursor_initialize_02045288.o
+build/decomp/delinks/asm/game/interaction_waypoint_cursor_retarget_020452f8.o = build/decomp/asm/game/interaction_waypoint_cursor_retarget_020452f8.o
+build/decomp/delinks/asm/game/interaction_waypoint_cursor_helpers_02045364.o = build/decomp/asm/game/interaction_waypoint_cursor_helpers_02045364.o
+
+build/decomp/delinks/asm/game/interaction_forwarding_wrappers_02045410.o = build/decomp/asm/game/interaction_forwarding_wrappers_02045410.o
+
+build/decomp/delinks/asm/game/type7_actor_registry_020454f8.o = build/decomp/asm/game/type7_actor_registry_020454f8.o
+
+build/decomp/delinks/asm/game/type7_actor_constructor_020455bc.o = build/decomp/asm/game/type7_actor_constructor_020455bc.o
+
+build/decomp/delinks/asm/game/type7_actor_destructor_02045724.o = build/decomp/asm/game/type7_actor_destructor_02045724.o
+
+build/decomp/delinks/asm/game/type7_actor_deleting_destructor_02045878.o = build/decomp/asm/game/type7_actor_deleting_destructor_02045878.o
+
+build/decomp/delinks/asm/game/type7_actor_resource_setup_020459d4.o = build/decomp/asm/game/type7_actor_resource_setup_020459d4.o
+
+build/decomp/delinks/asm/game/type7_actor_frame_update_02045a60.o = build/decomp/asm/game/type7_actor_frame_update_02045a60.o
+
+build/decomp/delinks/asm/game/type7_actor_animation_update_02046208.o = build/decomp/asm/game/type7_actor_animation_update_02046208.o
+
+build/decomp/delinks/asm/game/type7_actor_helpers_020464f4.o = build/decomp/asm/game/type7_actor_helpers_020464f4.o
+
+build/decomp/delinks/asm/game/type7_actor_contact_response_02046660.o = build/decomp/asm/game/type7_actor_contact_response_02046660.o
+
+build/decomp/delinks/asm/game/type7_actor_callback_predicate_02046d8c.o = build/decomp/asm/game/type7_actor_callback_predicate_02046d8c.o
+
+build/decomp/delinks/asm/game/type7_actor_type2_interaction_02046e60.o = build/decomp/asm/game/type7_actor_type2_interaction_02046e60.o
+
+build/decomp/delinks/asm/game/type7_actor_auxiliary_spawn_020471e4.o = build/decomp/asm/game/type7_actor_auxiliary_spawn_020471e4.o
+
+build/decomp/delinks/asm/game/type7_actor_touch_interaction_02047248.o = build/decomp/asm/game/type7_actor_touch_interaction_02047248.o
+
+build/decomp/delinks/asm/game/type7_actor_drag_start_0204767c.o = build/decomp/asm/game/type7_actor_drag_start_0204767c.o
+
+build/decomp/delinks/asm/game/type7_actor_motion_update_020478b0.o = build/decomp/asm/game/type7_actor_motion_update_020478b0.o
+
+build/decomp/delinks/asm/game/type7_actor_reset_entry_02047d40.o = build/decomp/asm/game/type7_actor_reset_entry_02047d40.o
+
+build/decomp/delinks/asm/game/type7_actor_reset_state_02047dd8.o = build/decomp/asm/game/type7_actor_reset_state_02047dd8.o
+
+build/decomp/delinks/asm/game/type7_actor_callback_reset_02047f38.o = build/decomp/asm/game/type7_actor_callback_reset_02047f38.o
+build/decomp/delinks/asm/game/type7_actor_callback_random_02048000.o = build/decomp/asm/game/type7_actor_callback_random_02048000.o
+build/decomp/delinks/asm/game/type7_actor_callback_random_pair_020480c8.o = build/decomp/asm/game/type7_actor_callback_random_pair_020480c8.o
+build/decomp/delinks/asm/game/type7_actor_callback_dispatch_02048148.o = build/decomp/asm/game/type7_actor_callback_dispatch_02048148.o
+build/decomp/delinks/asm/game/type7_actor_callback_assign_020481dc.o = build/decomp/asm/game/type7_actor_callback_assign_020481dc.o
+
+build/decomp/delinks/asm/game/type7_actor_target_state_0204820c.o = build/decomp/asm/game/type7_actor_target_state_0204820c.o
+
+build/decomp/delinks/asm/game/type7_actor_object_interaction_02048378.o = build/decomp/asm/game/type7_actor_object_interaction_02048378.o
+
+build/decomp/delinks/asm/game/type7_actor_random_acceptance_020486a8.o = build/decomp/asm/game/type7_actor_random_acceptance_020486a8.o
+
+build/decomp/delinks/asm/game/type7_actor_target_acquisition_0204876c.o = build/decomp/asm/game/type7_actor_target_acquisition_0204876c.o
+
+build/decomp/delinks/asm/game/type7_actor_target_binding_02048a4c.o = build/decomp/asm/game/type7_actor_target_binding_02048a4c.o
+
+build/decomp/delinks/asm/game/type7_actor_idle_control_02048c10.o = build/decomp/asm/game/type7_actor_idle_control_02048c10.o
+
+build/decomp/delinks/asm/game/type7_actor_animation_states_02048e6c.o = build/decomp/asm/game/type7_actor_animation_states_02048e6c.o
+
+build/decomp/delinks/asm/game/type7_actor_random_motion_02048fe4.o = build/decomp/asm/game/type7_actor_random_motion_02048fe4.o

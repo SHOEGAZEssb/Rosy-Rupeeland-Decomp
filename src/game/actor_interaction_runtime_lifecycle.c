@@ -1,0 +1,128 @@
+#include "tingle/heap.h"
+#include "tingle/types.h"
+
+/* Initialize, reset, and tear down the shared actor-interaction runtime and feedback slots. */
+extern const char data_020df4f8[];
+extern void *data_02105778;
+extern void *data_021056f4[6];
+extern u16 data_0210572a;
+extern u16 data_02105728;
+extern u16 data_02105774;
+extern u8 data_021056e4[];
+extern void *gGameWork;
+extern void *gSoundContext;
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+extern void *func_020451b8(void *allocation);
+extern void func_020451d4(void *object);
+extern void func_02039f6c(void);
+extern void func_0203a050(void);
+extern void func_0203d910(void);
+extern void func_02034e58(void);
+extern void func_02034ea8(void);
+extern void func_02043c24(void);
+extern void func_02045004(void);
+extern void func_020454f8(void);
+extern void func_02045598(void);
+extern void func_0204fafc(void);
+extern void func_0204fb2c(void);
+extern void func_020534cc(void);
+extern void func_0205355c(void);
+extern void func_02039e80(void);
+extern s32 func_02059344(void *context, s32 channel);
+extern void func_0205929c(void *context, s32 channel, s32 value);
+#ifdef __cplusplus
+}
+#endif
+
+/*
+ * Allocate and initialize the 0x40-byte shared object, materialize the actor
+ * resource table, set GameWork halfwords selected by indices 0x90..0x9b at
+ * offset +0x4c to -1, clear the two recovered counters, invoke func_0203d910,
+ * and clear all six feedback slots. Returns no value; allocation, resource,
+ * and subsystem initialization change global ownership and engine state.
+ */
+void func_0203aac4(void)
+{
+    void *object = Heap_Alloc(0x40, data_020df4f8, 4, &gHeapContext);
+    s32 i;
+    if (object != 0)
+        object = func_020451b8(object);
+    data_02105778 = object;
+    func_02039f6c();
+    for (i = 0x90; i <= 0x9b; ++i)
+        *(s16 *)((u8 *)gGameWork + i * 2 + 0x4c) = -1;
+    data_0210572a = 0;
+    data_02105728 = 0;
+    func_0203d910();
+    for (i = 0; i < 6; ++i)
+        data_021056f4[i] = 0;
+}
+
+/*
+ * Start the recovered actor, scene, presentation, and related runtime helpers
+ * in retail order, clearing data_02105774 and the leading resource-table
+ * halfword first. Returns no value; every called initializer changes global
+ * subsystem state.
+ */
+void func_0203ab6c(void)
+{
+    func_02034e58();
+    data_02105774 = 0;
+    *(u16 *)data_021056e4 = 0;
+    func_02043c24();
+    func_02045004();
+    func_020454f8();
+    func_0204fafc();
+    func_020534cc();
+    func_02039e80();
+}
+
+/* Accept no inputs, change no known state, and return no value. */
+void func_0203abac(void)
+{
+}
+
+/*
+ * Destroy each nonnull one of the six global feedback presentations through
+ * vtable slot +0x04 and clear its slot. Returns no value; virtual calls release
+ * presentation ownership.
+ */
+void func_0203abb0(void)
+{
+    s32 i;
+    for (i = 0; i < 6; ++i) {
+        void *object = data_021056f4[i];
+        if (object != 0) {
+            (*(void (**)(void *))(*(u8 **)object + 4))(object);
+            data_021056f4[i] = 0;
+        }
+    }
+}
+
+/*
+ * Stop sound channels 31 and 32 when active, shut down the recovered runtime
+ * helpers in retail order, destroy and free the shared object when present,
+ * clear its global, then shut down the actor helper and resource table.
+ * Returns no value; sound, virtual subsystem, heap, and resource calls have
+ * observable hardware and ownership effects.
+ */
+void func_0203abf4(void)
+{
+    if (func_02059344(gSoundContext, 0x1f) != 0)
+        func_0205929c(gSoundContext, 0x1f, 0);
+    if (func_02059344(gSoundContext, 0x20) != 0)
+        func_0205929c(gSoundContext, 0x20, 0);
+    func_0205355c();
+    func_0204fb2c();
+    func_02045598();
+    if (data_02105778 != 0) {
+        func_020451d4(data_02105778);
+        Heap_Free(data_02105778);
+    }
+    data_02105778 = 0;
+    func_02034ea8();
+    func_0203a050();
+}
