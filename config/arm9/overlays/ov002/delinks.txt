@@ -3,3 +3,55 @@
     .ctor       start:0x021fbe9c end:0x021fbe9c kind:rodata align:4
     .data       start:0x021fbea0 end:0x021fbf00 kind:data align:32
     .bss        start:0x021fbf00 end:0x021fbf00 kind:bss align:32
+
+asm/overlays/ov002/overlay002_presentation_constructor_021fb6e0.s:
+    categories: Game code
+    .text       start:0x021fb6e0 end:0x021fb9c4
+
+src/overlays/ov002/overlay002_presentation_destroy.c:
+    categories: Game code
+    .text       start:0x021fb9c4 end:0x021fba00
+
+src/overlays/ov002/overlay002_presentation_update.c:
+    categories: Game code
+    .text       start:0x021fba00 end:0x021fba1c
+
+asm/overlays/ov002/overlay002_value_display_set_021fba1c.s:
+    categories: Game code
+    .text       start:0x021fba1c end:0x021fbb68
+
+asm/overlays/ov002/overlay002_icon_hit_test_021fbb68.s:
+    categories: Game code
+    .text       start:0x021fbb68 end:0x021fbc54
+
+asm/overlays/ov002/overlay002_selected_key_apply_021fbc54.s:
+    categories: Game code
+    .text       start:0x021fbc54 end:0x021fbd64
+
+src/overlays/ov002/overlay002_selected_icon_release.c:
+    categories: Game code
+    .text       start:0x021fbd64 end:0x021fbd98
+
+src/overlays/ov002/overlay002_phase_countdown.c:
+    categories: Game code
+    .text       start:0x021fbd98 end:0x021fbdb0
+
+src/overlays/ov002/overlay002_control_flag_query.c:
+    categories: Game code
+    .text       start:0x021fbdb0 end:0x021fbdc0
+
+src/overlays/ov002/overlay002_footer_animation_start.c:
+    categories: Game code
+    .text       start:0x021fbdc0 end:0x021fbe08
+
+asm/overlays/ov002/overlay002_footer_animation_update_021fbe08.s:
+    categories: Game code
+    .text       start:0x021fbe08 end:0x021fbe60
+
+src/overlays/ov002/overlay002_animation_value_get.c:
+    categories: Game code
+    .text       start:0x021fbe60 end:0x021fbe68
+
+src/overlays/ov002/overlay002_value_clear.c:
+    categories: Game code
+    .text       start:0x021fbe68 end:0x021fbe80

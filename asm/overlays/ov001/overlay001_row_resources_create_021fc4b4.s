@@ -1,0 +1,91 @@
+    .text
+    .extern data_020f4e18
+    .extern func_02062918
+    .extern func_02063064
+    .extern func_02063074
+    .extern func_02063084
+    .extern func_02063190
+    .extern func_02071ee0
+    .extern func_02073ffc
+    .extern func_02073e48
+    .global func_ov001_021fc4b4
+func_ov001_021fc4b4: ; 0x021fc4b4
+    stmdb sp!, {r4, r5, r6, r7, r8, r9, r10, r11, lr}
+    sub sp, sp, #0xc
+    mov r10, r0
+    add r6, r1, r1, lsl #0x2
+    mov r7, #0x0
+    mov r11, #0x2
+    b L_021fc5c8
+L_021fc4d0:
+    add r1, r6, r7
+    ldr r0, [r10, #0x1a4]
+    cmp r1, r0
+    bge L_021fc5d0
+    ldr r0, [r10, #0x20c]
+    add r8, r0, r1, lsl #0x5
+    ldr r9, [r8, #0xc]
+    cmp r9, #0x0
+    beq L_021fc5c4
+    ldr r0, [r8, #0x10]
+    cmp r0, #0x0
+    bne L_021fc5c4
+    mov r0, r9
+    mov r1, #0x0
+    bl func_02062918
+    bl func_02063064
+    mov r5, r0
+    mov r0, r9
+    mov r1, #0x0
+    bl func_02062918
+    bl func_02063074
+    mov r4, r0
+    mov r0, r9
+    mov r1, #0x0
+    bl func_02062918
+    bl func_02063084
+    str r0, [sp, #0x0]
+    ldr r1, L_021fc5d8
+    mov r2, r5
+    ldr r1, [r1, #0x0]
+    mov r3, r4
+    mov r0, r8
+    bl func_02071ee0
+    ldr r0, [r10, #0x8]
+    mov r1, r8
+    mov r2, #0x2
+    bl func_02073ffc
+    mov r4, r0
+    mov r0, r9
+    str r4, [r8, #0x10]
+    mov r1, #0x0
+    bl func_02062918
+    bl func_02063190
+    str r11, [sp, #0x0]
+    mov r1, #0x3000
+    str r1, [sp, #0x4]
+    mov r1, #0x0
+    str r1, [sp, #0x8]
+    mov r1, r0
+    ldr r2, [r8, #0x14]
+    ldr r3, [r8, #0x18]
+    mov r0, r4
+    bl func_02073e48
+    ldr r0, [r8, #0xc]
+    cmp r0, #0x0
+    ldrne r0, [r0, #0x20]
+    andne r0, r0, #0x1
+    moveq r0, #0x0
+    cmp r0, #0x0
+    movne r0, #0x1
+    strneh r0, [r4, #0x2a]
+L_021fc5c4:
+    add r7, r7, #0x1
+L_021fc5c8:
+    cmp r7, #0x5
+    blt L_021fc4d0
+L_021fc5d0:
+    add sp, sp, #0xc
+    ldmia sp!, {r4, r5, r6, r7, r8, r9, r10, r11, pc}
+L_021fc5d8: .word data_020f4e18
+    .size func_ov001_021fc4b4, .-func_ov001_021fc4b4

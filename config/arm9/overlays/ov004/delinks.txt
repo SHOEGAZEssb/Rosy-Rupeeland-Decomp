@@ -2,3 +2,27 @@
     .ctor       start:0x021fcd00 end:0x021fcd00 kind:rodata align:4
     .data       start:0x021fcd20 end:0x021fce00 kind:data align:32
     .bss        start:0x021fce00 end:0x021fce00 kind:bss align:32
+
+src/overlays/ov004/overlay004_noop.c:
+    categories: Game code
+    .text       start:0x021fb6e0 end:0x021fb6e4
+
+asm/overlays/ov004/overlay004_coordinate_state_set_021fb6e4.s:
+    categories: Game code
+    .text       start:0x021fb6e4 end:0x021fb70c
+
+asm/overlays/ov004/overlay004_presentation_constructor_021fb70c.s:
+    categories: Game code
+    .text       start:0x021fb70c end:0x021fb868
+
+src/overlays/ov004/overlay004_presentation_destroy.c:
+    categories: Game code
+    .text       start:0x021fb868 end:0x021fb8e4
+
+asm/overlays/ov004/overlay004_presentation_delete_021fb8e4.s:
+    categories: Game code
+    .text       start:0x021fb8e4 end:0x021fb968
+
+asm/overlays/ov004/overlay004_background_hardware_setup_021fb968.s:
+    categories: Graphics
+    .text       start:0x021fb968 end:0x021fba28

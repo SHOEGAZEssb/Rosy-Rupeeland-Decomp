@@ -2,3 +2,195 @@
     .ctor       start:0x021fcd0c end:0x021fcd0c kind:rodata align:4
     .data       start:0x021fcd20 end:0x021fcd80 kind:data align:32
     .bss        start:0x021fcd80 end:0x021fcd80 kind:bss align:32
+
+src/overlays/ov000/overlay000_numeric_glyph.c:
+    categories: Game code
+    .text       start:0x021fb6e0 end:0x021fb710
+
+src/overlays/ov000/overlay000_layout_fields.c:
+    categories: Game code
+    .text       start:0x021fb710 end:0x021fb728
+
+src/overlays/ov000/overlay000_presentation_lifecycle.c:
+    categories: Game code
+    .text       start:0x021fb728 end:0x021fb848
+
+src/overlays/ov000/overlay000_presentation_destroy.c:
+    categories: Game code
+    .text       start:0x021fb848 end:0x021fb890
+
+src/overlays/ov000/overlay000_presentation_close.c:
+    categories: Game code
+    .text       start:0x021fb890 end:0x021fb8f0
+
+asm/overlays/ov000/overlay000_presentation_populate_021fb8f0.s:
+    categories: Game code
+    .text       start:0x021fb8f0 end:0x021fbcc0
+
+src/overlays/ov000/overlay000_noop_callback.c:
+    categories: Game code
+    .text       start:0x021fbcc0 end:0x021fbcc4
+
+asm/overlays/ov000/overlay000_grid_constructor_021fbcc4.s:
+    categories: Game code
+    .text       start:0x021fbcc4 end:0x021fc054
+
+src/overlays/ov000/overlay000_grid_destroy.c:
+    categories: Game code
+    .text       start:0x021fc054 end:0x021fc0d8
+
+src/overlays/ov000/overlay000_grid_delete.c:
+    categories: Game code
+    .text       start:0x021fc0d8 end:0x021fc164
+
+asm/overlays/ov000/overlay000_grid_update_021fc164.s:
+    categories: Game code
+    .text       start:0x021fc164 end:0x021fc254
+
+src/overlays/ov000/overlay000_visible_rows_update.c:
+    categories: Game code
+    .text       start:0x021fc254 end:0x021fc298
+
+src/overlays/ov000/overlay000_grid_hit_test.c:
+    categories: Game code
+    .text       start:0x021fc298 end:0x021fc340
+
+asm/overlays/ov000/overlay000_grid_scroll_021fc340.s:
+    categories: Game code
+    .text       start:0x021fc340 end:0x021fc3a4
+
+src/overlays/ov000/overlay000_transient_release.c:
+    categories: Game code
+    .text       start:0x021fc3a4 end:0x021fc3c0
+
+src/overlays/ov000/overlay000_transient_validate.c:
+    categories: Game code
+    .text       start:0x021fc3c0 end:0x021fc3f8
+
+src/overlays/ov000/overlay000_grid_refresh.c:
+    categories: Game code
+    .text       start:0x021fc3f8 end:0x021fc424
+
+src/overlays/ov000/overlay000_grid_step.c:
+    categories: Game code
+    .text       start:0x021fc424 end:0x021fc450
+
+src/overlays/ov000/overlay000_controller_query.c:
+    categories: Game code
+    .text       start:0x021fc450 end:0x021fc460
+
+asm/overlays/ov000/overlay000_grid_transition_021fc460.s:
+    categories: Game code
+    .text       start:0x021fc460 end:0x021fc4fc
+
+src/overlays/ov000/overlay000_embedded_step.c:
+    categories: Game code
+    .text       start:0x021fc4fc end:0x021fc528
+
+src/overlays/ov000/overlay000_embedded_query.c:
+    categories: Game code
+    .text       start:0x021fc528 end:0x021fc538
+
+src/overlays/ov000/overlay000_timed_refresh.c:
+    categories: Game code
+    .text       start:0x021fc538 end:0x021fc560
+
+src/overlays/ov000/overlay000_controller_command.c:
+    categories: Game code
+    .text       start:0x021fc560 end:0x021fc59c
+
+src/overlays/ov000/overlay000_region_query.c:
+    categories: Game code
+    .text       start:0x021fc59c end:0x021fc5ac
+
+src/overlays/ov000/overlay000_region_test.c:
+    categories: Game code
+    .text       start:0x021fc5ac end:0x021fc5c4
+
+src/overlays/ov000/overlay000_secondary_region_query.c:
+    categories: Game code
+    .text       start:0x021fc5c4 end:0x021fc5d4
+
+src/overlays/ov000/overlay000_secondary_region_test.c:
+    categories: Game code
+    .text       start:0x021fc5d4 end:0x021fc5ec
+
+src/overlays/ov000/overlay000_tertiary_region_query.c:
+    categories: Game code
+    .text       start:0x021fc5ec end:0x021fc5fc
+
+src/overlays/ov000/overlay000_tertiary_region_test.c:
+    categories: Game code
+    .text       start:0x021fc5fc end:0x021fc614
+
+src/overlays/ov000/overlay000_cells_apply.c:
+    categories: Game code
+    .text       start:0x021fc614 end:0x021fc658
+
+src/overlays/ov000/overlay000_cell_bind.c:
+    categories: Game code
+    .text       start:0x021fc658 end:0x021fc6b4
+
+src/overlays/ov000/overlay000_cell_reset.c:
+    categories: Game code
+    .text       start:0x021fc6b4 end:0x021fc714
+
+asm/overlays/ov000/overlay000_grid_render_021fc714.s:
+    categories: Game code
+    .text       start:0x021fc714 end:0x021fc834
+
+src/overlays/ov000/overlay000_cell_flag_test.c:
+    categories: Game code
+    .text       start:0x021fc834 end:0x021fc84c
+
+asm/overlays/ov000/overlay000_row_resources_create_021fc84c.s:
+    categories: Game code
+    .text       start:0x021fc84c end:0x021fc96c
+
+asm/overlays/ov000/overlay000_row_resources_destroy_021fc96c.s:
+    categories: Game code
+    .text       start:0x021fc96c end:0x021fc9d4
+
+asm/overlays/ov000/overlay000_selection_sync_021fc9d4.s:
+    categories: Game code
+    .text       start:0x021fc9d4 end:0x021fca4c
+
+asm/overlays/ov000/overlay000_selection_set_021fca4c.s:
+    categories: Game code
+    .text       start:0x021fca4c end:0x021fcab4
+
+src/overlays/ov000/overlay000_metadata_get.c:
+    categories: Game code
+    .text       start:0x021fcab4 end:0x021fcad8
+
+src/overlays/ov000/overlay000_active_metadata_get.c:
+    categories: Game code
+    .text       start:0x021fcad8 end:0x021fcae8
+
+src/overlays/ov000/overlay000_view_apply.c:
+    categories: Game code
+    .text       start:0x021fcae8 end:0x021fcb4c
+
+asm/overlays/ov000/overlay000_view_capture_021fcb4c.s:
+    categories: Game code
+    .text       start:0x021fcb4c end:0x021fcb64
+
+asm/overlays/ov000/overlay000_view_record_from_index_021fcb64.s:
+    categories: Game code
+    .text       start:0x021fcb64 end:0x021fcb98
+
+src/overlays/ov000/overlay000_direction_dispatch.c:
+    categories: Game code
+    .text       start:0x021fcb98 end:0x021fcc18
+
+src/overlays/ov000/overlay000_controller_action.c:
+    categories: Game code
+    .text       start:0x021fcc18 end:0x021fcca8
+
+src/overlays/ov000/overlay000_controller_action_alt.c:
+    categories: Game code
+    .text       start:0x021fcca8 end:0x021fccfc
+
+src/overlays/ov000/overlay000_controller_status.c:
+    categories: Game code
+    .text       start:0x021fccfc end:0x021fcd0c

@@ -20077,3 +20077,1718 @@ build build/reports/arm9_static_initializers_020c1374.txt: match_report build/re
   report_json = build/reports/arm9_static_initializers_020c1374.json
   report_args = --section .init --function __sinit_020c1374 --function __sinit_020c13a0 --function __sinit_020c13cc --function __sinit_020c13f8 --function __sinit_020c1490 --function __sinit_020c14bc --function __sinit_020c152c --function __sinit_020c1558 --function __sinit_020c15c0 --function __sinit_020c15ec --function __sinit_020c1600 --function __sinit_020c162c --function __sinit_020c1658 --function __sinit_020c1684 --function __sinit_020c16cc --function __sinit_020c16f8 --function __sinit_020c176c --function __sinit_020c1798 --function __sinit_020c17c4 --require-exact
 build arm9_static_initializers: phony build/decomp/src/system/arm9_static_initializers.o build/decomp/asm/system/arm9_static_initializers_020c1374.o build/reports/arm9_static_initializers_020c1374.txt
+
+overlay000_numeric_glyph_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
+build build/decomp/src/overlays/ov000/overlay000_numeric_glyph.o: mwccarm src/overlays/ov000/overlay000_numeric_glyph.c | include/tingle/graphics_sprite_renderer.h include/tingle/types.h
+  source = src/overlays/ov000/overlay000_numeric_glyph.c
+  cflags = $overlay000_numeric_glyph_cflags
+build build/decomp/delinks/src/overlays/ov000/overlay000_numeric_glyph.o: dsd_delink config/arm9/config.yaml config/arm9/overlays/ov000/delinks.txt config/arm9/overlays/ov000/symbols.txt config/arm9/overlays/ov000/relocs.txt
+build build/reports/overlay000_numeric_glyph.json: objdiff build/decomp/delinks/src/overlays/ov000/overlay000_numeric_glyph.o | build/decomp/src/overlays/ov000/overlay000_numeric_glyph.o
+  target_object = build/decomp/delinks/src/overlays/ov000/overlay000_numeric_glyph.o
+  base_object = build/decomp/src/overlays/ov000/overlay000_numeric_glyph.o
+build build/reports/overlay000_numeric_glyph.txt: match_report build/reports/overlay000_numeric_glyph.json | tools/report_objdiff.py
+  report_json = build/reports/overlay000_numeric_glyph.json
+  report_args = --section .text --function func_ov000_021fb6e0 --require-exact
+
+build overlay000_numeric_glyph: phony build/decomp/src/overlays/ov000/overlay000_numeric_glyph.o build/reports/overlay000_numeric_glyph.txt
+
+overlay000_layout_fields_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
+build build/decomp/src/overlays/ov000/overlay000_layout_fields.o: mwccarm src/overlays/ov000/overlay000_layout_fields.c | include/tingle/types.h
+  source = src/overlays/ov000/overlay000_layout_fields.c
+  cflags = $overlay000_layout_fields_cflags
+build build/decomp/delinks/src/overlays/ov000/overlay000_layout_fields.o: dsd_delink config/arm9/config.yaml config/arm9/overlays/ov000/delinks.txt config/arm9/overlays/ov000/symbols.txt config/arm9/overlays/ov000/relocs.txt
+build build/reports/overlay000_layout_fields.json: objdiff build/decomp/delinks/src/overlays/ov000/overlay000_layout_fields.o | build/decomp/src/overlays/ov000/overlay000_layout_fields.o
+  target_object = build/decomp/delinks/src/overlays/ov000/overlay000_layout_fields.o
+  base_object = build/decomp/src/overlays/ov000/overlay000_layout_fields.o
+build build/reports/overlay000_layout_fields.txt: match_report build/reports/overlay000_layout_fields.json | tools/report_objdiff.py
+  report_json = build/reports/overlay000_layout_fields.json
+  report_args = --section .text --function func_ov000_021fb710 --require-exact
+
+build overlay000_layout_fields: phony build/decomp/src/overlays/ov000/overlay000_layout_fields.o build/reports/overlay000_layout_fields.txt
+
+overlay000_presentation_lifecycle_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
+build build/decomp/src/overlays/ov000/overlay000_presentation_lifecycle.o: mwccarm src/overlays/ov000/overlay000_presentation_lifecycle.c | include/tingle/heap.h include/tingle/types.h
+  source = src/overlays/ov000/overlay000_presentation_lifecycle.c
+  cflags = $overlay000_presentation_lifecycle_cflags
+build build/decomp/delinks/src/overlays/ov000/overlay000_presentation_lifecycle.o: dsd_delink config/arm9/config.yaml config/arm9/overlays/ov000/delinks.txt config/arm9/overlays/ov000/symbols.txt config/arm9/overlays/ov000/relocs.txt
+build build/reports/overlay000_presentation_lifecycle.json: objdiff build/decomp/delinks/src/overlays/ov000/overlay000_presentation_lifecycle.o | build/decomp/src/overlays/ov000/overlay000_presentation_lifecycle.o
+  target_object = build/decomp/delinks/src/overlays/ov000/overlay000_presentation_lifecycle.o
+  base_object = build/decomp/src/overlays/ov000/overlay000_presentation_lifecycle.o
+build build/reports/overlay000_presentation_lifecycle.txt: match_report build/reports/overlay000_presentation_lifecycle.json | tools/report_objdiff.py
+  report_json = build/reports/overlay000_presentation_lifecycle.json
+  report_args = --section .text --function func_ov000_021fb728 --require-exact
+
+build overlay000_presentation_lifecycle: phony build/decomp/src/overlays/ov000/overlay000_presentation_lifecycle.o build/reports/overlay000_presentation_lifecycle.txt
+
+overlay000_presentation_destroy_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
+build build/decomp/src/overlays/ov000/overlay000_presentation_destroy.o: mwccarm src/overlays/ov000/overlay000_presentation_destroy.c | include/tingle/types.h
+  source = src/overlays/ov000/overlay000_presentation_destroy.c
+  cflags = $overlay000_presentation_destroy_cflags
+build build/decomp/delinks/src/overlays/ov000/overlay000_presentation_destroy.o: dsd_delink config/arm9/config.yaml config/arm9/overlays/ov000/delinks.txt config/arm9/overlays/ov000/symbols.txt config/arm9/overlays/ov000/relocs.txt
+build build/reports/overlay000_presentation_destroy.json: objdiff build/decomp/delinks/src/overlays/ov000/overlay000_presentation_destroy.o | build/decomp/src/overlays/ov000/overlay000_presentation_destroy.o
+  target_object = build/decomp/delinks/src/overlays/ov000/overlay000_presentation_destroy.o
+  base_object = build/decomp/src/overlays/ov000/overlay000_presentation_destroy.o
+build build/reports/overlay000_presentation_destroy.txt: match_report build/reports/overlay000_presentation_destroy.json | tools/report_objdiff.py
+  report_json = build/reports/overlay000_presentation_destroy.json
+  report_args = --section .text --function func_ov000_021fb848 --require-exact
+
+build overlay000_presentation_destroy: phony build/decomp/src/overlays/ov000/overlay000_presentation_destroy.o build/reports/overlay000_presentation_destroy.txt
+
+overlay000_presentation_close_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
+build build/decomp/src/overlays/ov000/overlay000_presentation_close.o: mwccarm src/overlays/ov000/overlay000_presentation_close.c | include/tingle/types.h
+  source = src/overlays/ov000/overlay000_presentation_close.c
+  cflags = $overlay000_presentation_close_cflags
+build build/decomp/delinks/src/overlays/ov000/overlay000_presentation_close.o: dsd_delink config/arm9/config.yaml config/arm9/overlays/ov000/delinks.txt config/arm9/overlays/ov000/symbols.txt config/arm9/overlays/ov000/relocs.txt
+build build/reports/overlay000_presentation_close.json: objdiff build/decomp/delinks/src/overlays/ov000/overlay000_presentation_close.o | build/decomp/src/overlays/ov000/overlay000_presentation_close.o
+  target_object = build/decomp/delinks/src/overlays/ov000/overlay000_presentation_close.o
+  base_object = build/decomp/src/overlays/ov000/overlay000_presentation_close.o
+build build/reports/overlay000_presentation_close.txt: match_report build/reports/overlay000_presentation_close.json | tools/report_objdiff.py
+  report_json = build/reports/overlay000_presentation_close.json
+  report_args = --section .text --function func_ov000_021fb890 --require-exact
+
+build overlay000_presentation_close: phony build/decomp/src/overlays/ov000/overlay000_presentation_close.o build/reports/overlay000_presentation_close.txt
+
+overlay000_presentation_populate_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
+build build/decomp/src/overlays/ov000/overlay000_presentation_populate.o: mwccarm src/overlays/ov000/overlay000_presentation_populate.c | include/tingle/types.h
+  source = src/overlays/ov000/overlay000_presentation_populate.c
+  cflags = $overlay000_presentation_populate_cflags
+build build/decomp/asm/overlays/ov000/overlay000_presentation_populate_021fb8f0.o: mwasmarm asm/overlays/ov000/overlay000_presentation_populate_021fb8f0.s
+build build/decomp/delinks/asm/overlays/ov000/overlay000_presentation_populate_021fb8f0.o: dsd_delink config/arm9/config.yaml config/arm9/overlays/ov000/delinks.txt config/arm9/overlays/ov000/symbols.txt config/arm9/overlays/ov000/relocs.txt
+build build/reports/overlay000_presentation_populate.json: objdiff build/decomp/delinks/asm/overlays/ov000/overlay000_presentation_populate_021fb8f0.o | build/decomp/asm/overlays/ov000/overlay000_presentation_populate_021fb8f0.o
+  target_object = build/decomp/delinks/asm/overlays/ov000/overlay000_presentation_populate_021fb8f0.o
+  base_object = build/decomp/asm/overlays/ov000/overlay000_presentation_populate_021fb8f0.o
+build build/reports/overlay000_presentation_populate.txt: match_report build/reports/overlay000_presentation_populate.json | tools/report_objdiff.py
+  report_json = build/reports/overlay000_presentation_populate.json
+  report_args = --section .text --function func_ov000_021fb8f0 --require-exact
+
+build overlay000_presentation_populate: phony build/decomp/src/overlays/ov000/overlay000_presentation_populate.o build/decomp/asm/overlays/ov000/overlay000_presentation_populate_021fb8f0.o build/reports/overlay000_presentation_populate.txt
+
+overlay000_noop_callback_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
+build build/decomp/src/overlays/ov000/overlay000_noop_callback.o: mwccarm src/overlays/ov000/overlay000_noop_callback.c | include/tingle/types.h
+  source = src/overlays/ov000/overlay000_noop_callback.c
+  cflags = $overlay000_noop_callback_cflags
+build build/decomp/delinks/src/overlays/ov000/overlay000_noop_callback.o: dsd_delink config/arm9/config.yaml config/arm9/overlays/ov000/delinks.txt config/arm9/overlays/ov000/symbols.txt config/arm9/overlays/ov000/relocs.txt
+build build/reports/overlay000_noop_callback.json: objdiff build/decomp/delinks/src/overlays/ov000/overlay000_noop_callback.o | build/decomp/src/overlays/ov000/overlay000_noop_callback.o
+  target_object = build/decomp/delinks/src/overlays/ov000/overlay000_noop_callback.o
+  base_object = build/decomp/src/overlays/ov000/overlay000_noop_callback.o
+build build/reports/overlay000_noop_callback.txt: match_report build/reports/overlay000_noop_callback.json | tools/report_objdiff.py
+  report_json = build/reports/overlay000_noop_callback.json
+  report_args = --section .text --function func_ov000_021fbcc0 --require-exact
+
+build overlay000_noop_callback: phony build/decomp/src/overlays/ov000/overlay000_noop_callback.o build/reports/overlay000_noop_callback.txt
+
+overlay000_grid_constructor_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
+build build/decomp/src/overlays/ov000/overlay000_grid_constructor.o: mwccarm src/overlays/ov000/overlay000_grid_constructor.c | include/tingle/heap.h include/tingle/types.h
+  source = src/overlays/ov000/overlay000_grid_constructor.c
+  cflags = $overlay000_grid_constructor_cflags
+build build/decomp/asm/overlays/ov000/overlay000_grid_constructor_021fbcc4.o: mwasmarm asm/overlays/ov000/overlay000_grid_constructor_021fbcc4.s
+build build/decomp/delinks/asm/overlays/ov000/overlay000_grid_constructor_021fbcc4.o: dsd_delink config/arm9/config.yaml config/arm9/overlays/ov000/delinks.txt config/arm9/overlays/ov000/symbols.txt config/arm9/overlays/ov000/relocs.txt
+build build/reports/overlay000_grid_constructor.json: objdiff build/decomp/delinks/asm/overlays/ov000/overlay000_grid_constructor_021fbcc4.o | build/decomp/asm/overlays/ov000/overlay000_grid_constructor_021fbcc4.o
+  target_object = build/decomp/delinks/asm/overlays/ov000/overlay000_grid_constructor_021fbcc4.o
+  base_object = build/decomp/asm/overlays/ov000/overlay000_grid_constructor_021fbcc4.o
+build build/reports/overlay000_grid_constructor.txt: match_report build/reports/overlay000_grid_constructor.json | tools/report_objdiff.py
+  report_json = build/reports/overlay000_grid_constructor.json
+  report_args = --section .text --function func_ov000_021fbcc4 --require-exact
+
+build overlay000_grid_constructor: phony build/decomp/src/overlays/ov000/overlay000_grid_constructor.o build/decomp/asm/overlays/ov000/overlay000_grid_constructor_021fbcc4.o build/reports/overlay000_grid_constructor.txt
+
+overlay000_grid_destroy_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
+build build/decomp/src/overlays/ov000/overlay000_grid_destroy.o: mwccarm src/overlays/ov000/overlay000_grid_destroy.c | include/tingle/types.h
+  source = src/overlays/ov000/overlay000_grid_destroy.c
+  cflags = $overlay000_grid_destroy_cflags
+build build/decomp/delinks/src/overlays/ov000/overlay000_grid_destroy.o: dsd_delink config/arm9/config.yaml config/arm9/overlays/ov000/delinks.txt config/arm9/overlays/ov000/symbols.txt config/arm9/overlays/ov000/relocs.txt
+build build/reports/overlay000_grid_destroy.json: objdiff build/decomp/delinks/src/overlays/ov000/overlay000_grid_destroy.o | build/decomp/src/overlays/ov000/overlay000_grid_destroy.o
+  target_object = build/decomp/delinks/src/overlays/ov000/overlay000_grid_destroy.o
+  base_object = build/decomp/src/overlays/ov000/overlay000_grid_destroy.o
+build build/reports/overlay000_grid_destroy.txt: match_report build/reports/overlay000_grid_destroy.json | tools/report_objdiff.py
+  report_json = build/reports/overlay000_grid_destroy.json
+  report_args = --section .text --function func_ov000_021fc054 --require-exact
+
+build overlay000_grid_destroy: phony build/decomp/src/overlays/ov000/overlay000_grid_destroy.o build/reports/overlay000_grid_destroy.txt
+
+overlay000_grid_delete_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
+build build/decomp/src/overlays/ov000/overlay000_grid_delete.o: mwccarm src/overlays/ov000/overlay000_grid_delete.c | include/tingle/heap.h include/tingle/types.h
+  source = src/overlays/ov000/overlay000_grid_delete.c
+  cflags = $overlay000_grid_delete_cflags
+build build/decomp/delinks/src/overlays/ov000/overlay000_grid_delete.o: dsd_delink config/arm9/config.yaml config/arm9/overlays/ov000/delinks.txt config/arm9/overlays/ov000/symbols.txt config/arm9/overlays/ov000/relocs.txt
+build build/reports/overlay000_grid_delete.json: objdiff build/decomp/delinks/src/overlays/ov000/overlay000_grid_delete.o | build/decomp/src/overlays/ov000/overlay000_grid_delete.o
+  target_object = build/decomp/delinks/src/overlays/ov000/overlay000_grid_delete.o
+  base_object = build/decomp/src/overlays/ov000/overlay000_grid_delete.o
+build build/reports/overlay000_grid_delete.txt: match_report build/reports/overlay000_grid_delete.json | tools/report_objdiff.py
+  report_json = build/reports/overlay000_grid_delete.json
+  report_args = --section .text --function func_ov000_021fc0d8 --require-exact
+
+build overlay000_grid_delete: phony build/decomp/src/overlays/ov000/overlay000_grid_delete.o build/reports/overlay000_grid_delete.txt
+
+overlay000_grid_update_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
+build build/decomp/src/overlays/ov000/overlay000_grid_update.o: mwccarm src/overlays/ov000/overlay000_grid_update.c | include/tingle/types.h
+  source = src/overlays/ov000/overlay000_grid_update.c
+  cflags = $overlay000_grid_update_cflags
+build build/decomp/asm/overlays/ov000/overlay000_grid_update_021fc164.o: mwasmarm asm/overlays/ov000/overlay000_grid_update_021fc164.s
+build build/decomp/delinks/asm/overlays/ov000/overlay000_grid_update_021fc164.o: dsd_delink config/arm9/config.yaml config/arm9/overlays/ov000/delinks.txt config/arm9/overlays/ov000/symbols.txt config/arm9/overlays/ov000/relocs.txt
+build build/reports/overlay000_grid_update.json: objdiff build/decomp/delinks/asm/overlays/ov000/overlay000_grid_update_021fc164.o | build/decomp/asm/overlays/ov000/overlay000_grid_update_021fc164.o
+  target_object = build/decomp/delinks/asm/overlays/ov000/overlay000_grid_update_021fc164.o
+  base_object = build/decomp/asm/overlays/ov000/overlay000_grid_update_021fc164.o
+build build/reports/overlay000_grid_update.txt: match_report build/reports/overlay000_grid_update.json | tools/report_objdiff.py
+  report_json = build/reports/overlay000_grid_update.json
+  report_args = --section .text --function func_ov000_021fc164 --require-exact
+
+build overlay000_grid_update: phony build/decomp/src/overlays/ov000/overlay000_grid_update.o build/decomp/asm/overlays/ov000/overlay000_grid_update_021fc164.o build/reports/overlay000_grid_update.txt
+
+overlay000_visible_rows_update_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
+build build/decomp/src/overlays/ov000/overlay000_visible_rows_update.o: mwccarm src/overlays/ov000/overlay000_visible_rows_update.c | include/tingle/types.h
+  source = src/overlays/ov000/overlay000_visible_rows_update.c
+  cflags = $overlay000_visible_rows_update_cflags
+build build/decomp/delinks/src/overlays/ov000/overlay000_visible_rows_update.o: dsd_delink config/arm9/config.yaml config/arm9/overlays/ov000/delinks.txt config/arm9/overlays/ov000/symbols.txt config/arm9/overlays/ov000/relocs.txt
+build build/reports/overlay000_visible_rows_update.json: objdiff build/decomp/delinks/src/overlays/ov000/overlay000_visible_rows_update.o | build/decomp/src/overlays/ov000/overlay000_visible_rows_update.o
+  target_object = build/decomp/delinks/src/overlays/ov000/overlay000_visible_rows_update.o
+  base_object = build/decomp/src/overlays/ov000/overlay000_visible_rows_update.o
+build build/reports/overlay000_visible_rows_update.txt: match_report build/reports/overlay000_visible_rows_update.json | tools/report_objdiff.py
+  report_json = build/reports/overlay000_visible_rows_update.json
+  report_args = --section .text --function func_ov000_021fc254 --require-exact
+
+build overlay000_visible_rows_update: phony build/decomp/src/overlays/ov000/overlay000_visible_rows_update.o build/reports/overlay000_visible_rows_update.txt
+
+overlay000_grid_hit_test_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
+build build/decomp/src/overlays/ov000/overlay000_grid_hit_test.o: mwccarm src/overlays/ov000/overlay000_grid_hit_test.c | include/tingle/types.h
+  source = src/overlays/ov000/overlay000_grid_hit_test.c
+  cflags = $overlay000_grid_hit_test_cflags
+build build/decomp/delinks/src/overlays/ov000/overlay000_grid_hit_test.o: dsd_delink config/arm9/config.yaml config/arm9/overlays/ov000/delinks.txt config/arm9/overlays/ov000/symbols.txt config/arm9/overlays/ov000/relocs.txt
+build build/reports/overlay000_grid_hit_test.json: objdiff build/decomp/delinks/src/overlays/ov000/overlay000_grid_hit_test.o | build/decomp/src/overlays/ov000/overlay000_grid_hit_test.o
+  target_object = build/decomp/delinks/src/overlays/ov000/overlay000_grid_hit_test.o
+  base_object = build/decomp/src/overlays/ov000/overlay000_grid_hit_test.o
+build build/reports/overlay000_grid_hit_test.txt: match_report build/reports/overlay000_grid_hit_test.json | tools/report_objdiff.py
+  report_json = build/reports/overlay000_grid_hit_test.json
+  report_args = --section .text --function func_ov000_021fc298 --require-exact
+
+build overlay000_grid_hit_test: phony build/decomp/src/overlays/ov000/overlay000_grid_hit_test.o build/reports/overlay000_grid_hit_test.txt
+
+overlay000_grid_scroll_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
+build build/decomp/src/overlays/ov000/overlay000_grid_scroll.o: mwccarm src/overlays/ov000/overlay000_grid_scroll.c | include/tingle/types.h
+  source = src/overlays/ov000/overlay000_grid_scroll.c
+  cflags = $overlay000_grid_scroll_cflags
+build build/decomp/asm/overlays/ov000/overlay000_grid_scroll_021fc340.o: mwasmarm asm/overlays/ov000/overlay000_grid_scroll_021fc340.s
+build build/decomp/delinks/asm/overlays/ov000/overlay000_grid_scroll_021fc340.o: dsd_delink config/arm9/config.yaml config/arm9/overlays/ov000/delinks.txt config/arm9/overlays/ov000/symbols.txt config/arm9/overlays/ov000/relocs.txt
+build build/reports/overlay000_grid_scroll.json: objdiff build/decomp/delinks/asm/overlays/ov000/overlay000_grid_scroll_021fc340.o | build/decomp/asm/overlays/ov000/overlay000_grid_scroll_021fc340.o
+  target_object = build/decomp/delinks/asm/overlays/ov000/overlay000_grid_scroll_021fc340.o
+  base_object = build/decomp/asm/overlays/ov000/overlay000_grid_scroll_021fc340.o
+build build/reports/overlay000_grid_scroll.txt: match_report build/reports/overlay000_grid_scroll.json | tools/report_objdiff.py
+  report_json = build/reports/overlay000_grid_scroll.json
+  report_args = --section .text --function func_ov000_021fc340 --require-exact
+
+build overlay000_grid_scroll: phony build/decomp/src/overlays/ov000/overlay000_grid_scroll.o build/decomp/asm/overlays/ov000/overlay000_grid_scroll_021fc340.o build/reports/overlay000_grid_scroll.txt
+
+overlay000_transient_release_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
+build build/decomp/src/overlays/ov000/overlay000_transient_release.o: mwccarm src/overlays/ov000/overlay000_transient_release.c | include/tingle/types.h
+  source = src/overlays/ov000/overlay000_transient_release.c
+  cflags = $overlay000_transient_release_cflags
+build build/decomp/delinks/src/overlays/ov000/overlay000_transient_release.o: dsd_delink config/arm9/config.yaml config/arm9/overlays/ov000/delinks.txt config/arm9/overlays/ov000/symbols.txt config/arm9/overlays/ov000/relocs.txt
+build build/reports/overlay000_transient_release.json: objdiff build/decomp/delinks/src/overlays/ov000/overlay000_transient_release.o | build/decomp/src/overlays/ov000/overlay000_transient_release.o
+  target_object = build/decomp/delinks/src/overlays/ov000/overlay000_transient_release.o
+  base_object = build/decomp/src/overlays/ov000/overlay000_transient_release.o
+build build/reports/overlay000_transient_release.txt: match_report build/reports/overlay000_transient_release.json | tools/report_objdiff.py
+  report_json = build/reports/overlay000_transient_release.json
+  report_args = --section .text --function func_ov000_021fc3a4 --require-exact
+
+build overlay000_transient_release: phony build/decomp/src/overlays/ov000/overlay000_transient_release.o build/reports/overlay000_transient_release.txt
+
+overlay000_transient_validate_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
+build build/decomp/src/overlays/ov000/overlay000_transient_validate.o: mwccarm src/overlays/ov000/overlay000_transient_validate.c | include/tingle/types.h
+  source = src/overlays/ov000/overlay000_transient_validate.c
+  cflags = $overlay000_transient_validate_cflags
+build build/decomp/delinks/src/overlays/ov000/overlay000_transient_validate.o: dsd_delink config/arm9/config.yaml config/arm9/overlays/ov000/delinks.txt config/arm9/overlays/ov000/symbols.txt config/arm9/overlays/ov000/relocs.txt
+build build/reports/overlay000_transient_validate.json: objdiff build/decomp/delinks/src/overlays/ov000/overlay000_transient_validate.o | build/decomp/src/overlays/ov000/overlay000_transient_validate.o
+  target_object = build/decomp/delinks/src/overlays/ov000/overlay000_transient_validate.o
+  base_object = build/decomp/src/overlays/ov000/overlay000_transient_validate.o
+build build/reports/overlay000_transient_validate.txt: match_report build/reports/overlay000_transient_validate.json | tools/report_objdiff.py
+  report_json = build/reports/overlay000_transient_validate.json
+  report_args = --section .text --function func_ov000_021fc3c0 --require-exact
+
+build overlay000_transient_validate: phony build/decomp/src/overlays/ov000/overlay000_transient_validate.o build/reports/overlay000_transient_validate.txt
+
+overlay000_grid_refresh_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
+build build/decomp/src/overlays/ov000/overlay000_grid_refresh.o: mwccarm src/overlays/ov000/overlay000_grid_refresh.c | include/tingle/types.h
+  source = src/overlays/ov000/overlay000_grid_refresh.c
+  cflags = $overlay000_grid_refresh_cflags
+build build/decomp/delinks/src/overlays/ov000/overlay000_grid_refresh.o: dsd_delink config/arm9/config.yaml config/arm9/overlays/ov000/delinks.txt config/arm9/overlays/ov000/symbols.txt config/arm9/overlays/ov000/relocs.txt
+build build/reports/overlay000_grid_refresh.json: objdiff build/decomp/delinks/src/overlays/ov000/overlay000_grid_refresh.o | build/decomp/src/overlays/ov000/overlay000_grid_refresh.o
+  target_object = build/decomp/delinks/src/overlays/ov000/overlay000_grid_refresh.o
+  base_object = build/decomp/src/overlays/ov000/overlay000_grid_refresh.o
+build build/reports/overlay000_grid_refresh.txt: match_report build/reports/overlay000_grid_refresh.json | tools/report_objdiff.py
+  report_json = build/reports/overlay000_grid_refresh.json
+  report_args = --section .text --function func_ov000_021fc3f8 --require-exact
+
+build overlay000_grid_refresh: phony build/decomp/src/overlays/ov000/overlay000_grid_refresh.o build/reports/overlay000_grid_refresh.txt
+
+overlay000_grid_step_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
+build build/decomp/src/overlays/ov000/overlay000_grid_step.o: mwccarm src/overlays/ov000/overlay000_grid_step.c | include/tingle/types.h
+  source = src/overlays/ov000/overlay000_grid_step.c
+  cflags = $overlay000_grid_step_cflags
+build build/decomp/delinks/src/overlays/ov000/overlay000_grid_step.o: dsd_delink config/arm9/config.yaml config/arm9/overlays/ov000/delinks.txt config/arm9/overlays/ov000/symbols.txt config/arm9/overlays/ov000/relocs.txt
+build build/reports/overlay000_grid_step.json: objdiff build/decomp/delinks/src/overlays/ov000/overlay000_grid_step.o | build/decomp/src/overlays/ov000/overlay000_grid_step.o
+  target_object = build/decomp/delinks/src/overlays/ov000/overlay000_grid_step.o
+  base_object = build/decomp/src/overlays/ov000/overlay000_grid_step.o
+build build/reports/overlay000_grid_step.txt: match_report build/reports/overlay000_grid_step.json | tools/report_objdiff.py
+  report_json = build/reports/overlay000_grid_step.json
+  report_args = --section .text --function func_ov000_021fc424 --require-exact
+
+build overlay000_grid_step: phony build/decomp/src/overlays/ov000/overlay000_grid_step.o build/reports/overlay000_grid_step.txt
+
+overlay000_controller_query_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
+build build/decomp/src/overlays/ov000/overlay000_controller_query.o: mwccarm src/overlays/ov000/overlay000_controller_query.c | include/tingle/types.h
+  source = src/overlays/ov000/overlay000_controller_query.c
+  cflags = $overlay000_controller_query_cflags
+build build/decomp/delinks/src/overlays/ov000/overlay000_controller_query.o: dsd_delink config/arm9/config.yaml config/arm9/overlays/ov000/delinks.txt config/arm9/overlays/ov000/symbols.txt config/arm9/overlays/ov000/relocs.txt
+build build/reports/overlay000_controller_query.json: objdiff build/decomp/delinks/src/overlays/ov000/overlay000_controller_query.o | build/decomp/src/overlays/ov000/overlay000_controller_query.o
+  target_object = build/decomp/delinks/src/overlays/ov000/overlay000_controller_query.o
+  base_object = build/decomp/src/overlays/ov000/overlay000_controller_query.o
+build build/reports/overlay000_controller_query.txt: match_report build/reports/overlay000_controller_query.json | tools/report_objdiff.py
+  report_json = build/reports/overlay000_controller_query.json
+  report_args = --section .text --function func_ov000_021fc450 --require-exact
+
+build overlay000_controller_query: phony build/decomp/src/overlays/ov000/overlay000_controller_query.o build/reports/overlay000_controller_query.txt
+
+overlay000_grid_transition_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
+build build/decomp/src/overlays/ov000/overlay000_grid_transition.o: mwccarm src/overlays/ov000/overlay000_grid_transition.c | include/tingle/types.h
+  source = src/overlays/ov000/overlay000_grid_transition.c
+  cflags = $overlay000_grid_transition_cflags
+build build/decomp/asm/overlays/ov000/overlay000_grid_transition_021fc460.o: mwasmarm asm/overlays/ov000/overlay000_grid_transition_021fc460.s
+build build/decomp/delinks/asm/overlays/ov000/overlay000_grid_transition_021fc460.o: dsd_delink config/arm9/config.yaml config/arm9/overlays/ov000/delinks.txt config/arm9/overlays/ov000/symbols.txt config/arm9/overlays/ov000/relocs.txt
+build build/reports/overlay000_grid_transition.json: objdiff build/decomp/delinks/asm/overlays/ov000/overlay000_grid_transition_021fc460.o | build/decomp/asm/overlays/ov000/overlay000_grid_transition_021fc460.o
+  target_object = build/decomp/delinks/asm/overlays/ov000/overlay000_grid_transition_021fc460.o
+  base_object = build/decomp/asm/overlays/ov000/overlay000_grid_transition_021fc460.o
+build build/reports/overlay000_grid_transition.txt: match_report build/reports/overlay000_grid_transition.json | tools/report_objdiff.py
+  report_json = build/reports/overlay000_grid_transition.json
+  report_args = --section .text --function func_ov000_021fc460 --require-exact
+
+build overlay000_grid_transition: phony build/decomp/src/overlays/ov000/overlay000_grid_transition.o build/decomp/asm/overlays/ov000/overlay000_grid_transition_021fc460.o build/reports/overlay000_grid_transition.txt
+
+overlay000_embedded_step_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
+build build/decomp/src/overlays/ov000/overlay000_embedded_step.o: mwccarm src/overlays/ov000/overlay000_embedded_step.c | include/tingle/types.h
+  source = src/overlays/ov000/overlay000_embedded_step.c
+  cflags = $overlay000_embedded_step_cflags
+build build/decomp/delinks/src/overlays/ov000/overlay000_embedded_step.o: dsd_delink config/arm9/config.yaml config/arm9/overlays/ov000/delinks.txt config/arm9/overlays/ov000/symbols.txt config/arm9/overlays/ov000/relocs.txt
+build build/reports/overlay000_embedded_step.json: objdiff build/decomp/delinks/src/overlays/ov000/overlay000_embedded_step.o | build/decomp/src/overlays/ov000/overlay000_embedded_step.o
+  target_object = build/decomp/delinks/src/overlays/ov000/overlay000_embedded_step.o
+  base_object = build/decomp/src/overlays/ov000/overlay000_embedded_step.o
+build build/reports/overlay000_embedded_step.txt: match_report build/reports/overlay000_embedded_step.json | tools/report_objdiff.py
+  report_json = build/reports/overlay000_embedded_step.json
+  report_args = --section .text --function func_ov000_021fc4fc --require-exact
+
+build overlay000_embedded_step: phony build/decomp/src/overlays/ov000/overlay000_embedded_step.o build/reports/overlay000_embedded_step.txt
+
+overlay000_embedded_query_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
+build build/decomp/src/overlays/ov000/overlay000_embedded_query.o: mwccarm src/overlays/ov000/overlay000_embedded_query.c | include/tingle/types.h
+  source = src/overlays/ov000/overlay000_embedded_query.c
+  cflags = $overlay000_embedded_query_cflags
+build build/decomp/delinks/src/overlays/ov000/overlay000_embedded_query.o: dsd_delink config/arm9/config.yaml config/arm9/overlays/ov000/delinks.txt config/arm9/overlays/ov000/symbols.txt config/arm9/overlays/ov000/relocs.txt
+build build/reports/overlay000_embedded_query.json: objdiff build/decomp/delinks/src/overlays/ov000/overlay000_embedded_query.o | build/decomp/src/overlays/ov000/overlay000_embedded_query.o
+  target_object = build/decomp/delinks/src/overlays/ov000/overlay000_embedded_query.o
+  base_object = build/decomp/src/overlays/ov000/overlay000_embedded_query.o
+build build/reports/overlay000_embedded_query.txt: match_report build/reports/overlay000_embedded_query.json | tools/report_objdiff.py
+  report_json = build/reports/overlay000_embedded_query.json
+  report_args = --section .text --function func_ov000_021fc528 --require-exact
+
+build overlay000_embedded_query: phony build/decomp/src/overlays/ov000/overlay000_embedded_query.o build/reports/overlay000_embedded_query.txt
+
+overlay000_timed_refresh_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
+build build/decomp/src/overlays/ov000/overlay000_timed_refresh.o: mwccarm src/overlays/ov000/overlay000_timed_refresh.c | include/tingle/types.h
+  source = src/overlays/ov000/overlay000_timed_refresh.c
+  cflags = $overlay000_timed_refresh_cflags
+build build/decomp/delinks/src/overlays/ov000/overlay000_timed_refresh.o: dsd_delink config/arm9/config.yaml config/arm9/overlays/ov000/delinks.txt config/arm9/overlays/ov000/symbols.txt config/arm9/overlays/ov000/relocs.txt
+build build/reports/overlay000_timed_refresh.json: objdiff build/decomp/delinks/src/overlays/ov000/overlay000_timed_refresh.o | build/decomp/src/overlays/ov000/overlay000_timed_refresh.o
+  target_object = build/decomp/delinks/src/overlays/ov000/overlay000_timed_refresh.o
+  base_object = build/decomp/src/overlays/ov000/overlay000_timed_refresh.o
+build build/reports/overlay000_timed_refresh.txt: match_report build/reports/overlay000_timed_refresh.json | tools/report_objdiff.py
+  report_json = build/reports/overlay000_timed_refresh.json
+  report_args = --section .text --function func_ov000_021fc538 --require-exact
+
+build overlay000_timed_refresh: phony build/decomp/src/overlays/ov000/overlay000_timed_refresh.o build/reports/overlay000_timed_refresh.txt
+
+overlay000_controller_command_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
+build build/decomp/src/overlays/ov000/overlay000_controller_command.o: mwccarm src/overlays/ov000/overlay000_controller_command.c | include/tingle/types.h
+  source = src/overlays/ov000/overlay000_controller_command.c
+  cflags = $overlay000_controller_command_cflags
+build build/decomp/delinks/src/overlays/ov000/overlay000_controller_command.o: dsd_delink config/arm9/config.yaml config/arm9/overlays/ov000/delinks.txt config/arm9/overlays/ov000/symbols.txt config/arm9/overlays/ov000/relocs.txt
+build build/reports/overlay000_controller_command.json: objdiff build/decomp/delinks/src/overlays/ov000/overlay000_controller_command.o | build/decomp/src/overlays/ov000/overlay000_controller_command.o
+  target_object = build/decomp/delinks/src/overlays/ov000/overlay000_controller_command.o
+  base_object = build/decomp/src/overlays/ov000/overlay000_controller_command.o
+build build/reports/overlay000_controller_command.txt: match_report build/reports/overlay000_controller_command.json | tools/report_objdiff.py
+  report_json = build/reports/overlay000_controller_command.json
+  report_args = --section .text --function func_ov000_021fc560 --require-exact
+
+build overlay000_controller_command: phony build/decomp/src/overlays/ov000/overlay000_controller_command.o build/reports/overlay000_controller_command.txt
+
+overlay000_region_query_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
+build build/decomp/src/overlays/ov000/overlay000_region_query.o: mwccarm src/overlays/ov000/overlay000_region_query.c | include/tingle/types.h
+  source = src/overlays/ov000/overlay000_region_query.c
+  cflags = $overlay000_region_query_cflags
+build build/decomp/delinks/src/overlays/ov000/overlay000_region_query.o: dsd_delink config/arm9/config.yaml config/arm9/overlays/ov000/delinks.txt config/arm9/overlays/ov000/symbols.txt config/arm9/overlays/ov000/relocs.txt
+build build/reports/overlay000_region_query.json: objdiff build/decomp/delinks/src/overlays/ov000/overlay000_region_query.o | build/decomp/src/overlays/ov000/overlay000_region_query.o
+  target_object = build/decomp/delinks/src/overlays/ov000/overlay000_region_query.o
+  base_object = build/decomp/src/overlays/ov000/overlay000_region_query.o
+build build/reports/overlay000_region_query.txt: match_report build/reports/overlay000_region_query.json | tools/report_objdiff.py
+  report_json = build/reports/overlay000_region_query.json
+  report_args = --section .text --function func_ov000_021fc59c --require-exact
+
+build overlay000_region_query: phony build/decomp/src/overlays/ov000/overlay000_region_query.o build/reports/overlay000_region_query.txt
+
+overlay000_region_test_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
+build build/decomp/src/overlays/ov000/overlay000_region_test.o: mwccarm src/overlays/ov000/overlay000_region_test.c | include/tingle/types.h
+  source = src/overlays/ov000/overlay000_region_test.c
+  cflags = $overlay000_region_test_cflags
+build build/decomp/delinks/src/overlays/ov000/overlay000_region_test.o: dsd_delink config/arm9/config.yaml config/arm9/overlays/ov000/delinks.txt config/arm9/overlays/ov000/symbols.txt config/arm9/overlays/ov000/relocs.txt
+build build/reports/overlay000_region_test.json: objdiff build/decomp/delinks/src/overlays/ov000/overlay000_region_test.o | build/decomp/src/overlays/ov000/overlay000_region_test.o
+  target_object = build/decomp/delinks/src/overlays/ov000/overlay000_region_test.o
+  base_object = build/decomp/src/overlays/ov000/overlay000_region_test.o
+build build/reports/overlay000_region_test.txt: match_report build/reports/overlay000_region_test.json | tools/report_objdiff.py
+  report_json = build/reports/overlay000_region_test.json
+  report_args = --section .text --function func_ov000_021fc5ac --require-exact
+
+build overlay000_region_test: phony build/decomp/src/overlays/ov000/overlay000_region_test.o build/reports/overlay000_region_test.txt
+
+overlay000_secondary_region_query_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
+build build/decomp/src/overlays/ov000/overlay000_secondary_region_query.o: mwccarm src/overlays/ov000/overlay000_secondary_region_query.c | include/tingle/types.h
+  source = src/overlays/ov000/overlay000_secondary_region_query.c
+  cflags = $overlay000_secondary_region_query_cflags
+build build/decomp/delinks/src/overlays/ov000/overlay000_secondary_region_query.o: dsd_delink config/arm9/config.yaml config/arm9/overlays/ov000/delinks.txt config/arm9/overlays/ov000/symbols.txt config/arm9/overlays/ov000/relocs.txt
+build build/reports/overlay000_secondary_region_query.json: objdiff build/decomp/delinks/src/overlays/ov000/overlay000_secondary_region_query.o | build/decomp/src/overlays/ov000/overlay000_secondary_region_query.o
+  target_object = build/decomp/delinks/src/overlays/ov000/overlay000_secondary_region_query.o
+  base_object = build/decomp/src/overlays/ov000/overlay000_secondary_region_query.o
+build build/reports/overlay000_secondary_region_query.txt: match_report build/reports/overlay000_secondary_region_query.json | tools/report_objdiff.py
+  report_json = build/reports/overlay000_secondary_region_query.json
+  report_args = --section .text --function func_ov000_021fc5c4 --require-exact
+
+build overlay000_secondary_region_query: phony build/decomp/src/overlays/ov000/overlay000_secondary_region_query.o build/reports/overlay000_secondary_region_query.txt
+
+overlay000_secondary_region_test_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
+build build/decomp/src/overlays/ov000/overlay000_secondary_region_test.o: mwccarm src/overlays/ov000/overlay000_secondary_region_test.c | include/tingle/types.h
+  source = src/overlays/ov000/overlay000_secondary_region_test.c
+  cflags = $overlay000_secondary_region_test_cflags
+build build/decomp/delinks/src/overlays/ov000/overlay000_secondary_region_test.o: dsd_delink config/arm9/config.yaml config/arm9/overlays/ov000/delinks.txt config/arm9/overlays/ov000/symbols.txt config/arm9/overlays/ov000/relocs.txt
+build build/reports/overlay000_secondary_region_test.json: objdiff build/decomp/delinks/src/overlays/ov000/overlay000_secondary_region_test.o | build/decomp/src/overlays/ov000/overlay000_secondary_region_test.o
+  target_object = build/decomp/delinks/src/overlays/ov000/overlay000_secondary_region_test.o
+  base_object = build/decomp/src/overlays/ov000/overlay000_secondary_region_test.o
+build build/reports/overlay000_secondary_region_test.txt: match_report build/reports/overlay000_secondary_region_test.json | tools/report_objdiff.py
+  report_json = build/reports/overlay000_secondary_region_test.json
+  report_args = --section .text --function func_ov000_021fc5d4 --require-exact
+
+build overlay000_secondary_region_test: phony build/decomp/src/overlays/ov000/overlay000_secondary_region_test.o build/reports/overlay000_secondary_region_test.txt
+
+overlay000_tertiary_region_query_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
+build build/decomp/src/overlays/ov000/overlay000_tertiary_region_query.o: mwccarm src/overlays/ov000/overlay000_tertiary_region_query.c | include/tingle/types.h
+  source = src/overlays/ov000/overlay000_tertiary_region_query.c
+  cflags = $overlay000_tertiary_region_query_cflags
+build build/decomp/delinks/src/overlays/ov000/overlay000_tertiary_region_query.o: dsd_delink config/arm9/config.yaml config/arm9/overlays/ov000/delinks.txt config/arm9/overlays/ov000/symbols.txt config/arm9/overlays/ov000/relocs.txt
+build build/reports/overlay000_tertiary_region_query.json: objdiff build/decomp/delinks/src/overlays/ov000/overlay000_tertiary_region_query.o | build/decomp/src/overlays/ov000/overlay000_tertiary_region_query.o
+  target_object = build/decomp/delinks/src/overlays/ov000/overlay000_tertiary_region_query.o
+  base_object = build/decomp/src/overlays/ov000/overlay000_tertiary_region_query.o
+build build/reports/overlay000_tertiary_region_query.txt: match_report build/reports/overlay000_tertiary_region_query.json | tools/report_objdiff.py
+  report_json = build/reports/overlay000_tertiary_region_query.json
+  report_args = --section .text --function func_ov000_021fc5ec --require-exact
+
+build overlay000_tertiary_region_query: phony build/decomp/src/overlays/ov000/overlay000_tertiary_region_query.o build/reports/overlay000_tertiary_region_query.txt
+
+overlay000_tertiary_region_test_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
+build build/decomp/src/overlays/ov000/overlay000_tertiary_region_test.o: mwccarm src/overlays/ov000/overlay000_tertiary_region_test.c | include/tingle/types.h
+  source = src/overlays/ov000/overlay000_tertiary_region_test.c
+  cflags = $overlay000_tertiary_region_test_cflags
+build build/decomp/delinks/src/overlays/ov000/overlay000_tertiary_region_test.o: dsd_delink config/arm9/config.yaml config/arm9/overlays/ov000/delinks.txt config/arm9/overlays/ov000/symbols.txt config/arm9/overlays/ov000/relocs.txt
+build build/reports/overlay000_tertiary_region_test.json: objdiff build/decomp/delinks/src/overlays/ov000/overlay000_tertiary_region_test.o | build/decomp/src/overlays/ov000/overlay000_tertiary_region_test.o
+  target_object = build/decomp/delinks/src/overlays/ov000/overlay000_tertiary_region_test.o
+  base_object = build/decomp/src/overlays/ov000/overlay000_tertiary_region_test.o
+build build/reports/overlay000_tertiary_region_test.txt: match_report build/reports/overlay000_tertiary_region_test.json | tools/report_objdiff.py
+  report_json = build/reports/overlay000_tertiary_region_test.json
+  report_args = --section .text --function func_ov000_021fc5fc --require-exact
+
+build overlay000_tertiary_region_test: phony build/decomp/src/overlays/ov000/overlay000_tertiary_region_test.o build/reports/overlay000_tertiary_region_test.txt
+
+overlay000_cells_apply_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
+build build/decomp/src/overlays/ov000/overlay000_cells_apply.o: mwccarm src/overlays/ov000/overlay000_cells_apply.c | include/tingle/types.h
+  source = src/overlays/ov000/overlay000_cells_apply.c
+  cflags = $overlay000_cells_apply_cflags
+build build/decomp/delinks/src/overlays/ov000/overlay000_cells_apply.o: dsd_delink config/arm9/config.yaml config/arm9/overlays/ov000/delinks.txt config/arm9/overlays/ov000/symbols.txt config/arm9/overlays/ov000/relocs.txt
+build build/reports/overlay000_cells_apply.json: objdiff build/decomp/delinks/src/overlays/ov000/overlay000_cells_apply.o | build/decomp/src/overlays/ov000/overlay000_cells_apply.o
+  target_object = build/decomp/delinks/src/overlays/ov000/overlay000_cells_apply.o
+  base_object = build/decomp/src/overlays/ov000/overlay000_cells_apply.o
+build build/reports/overlay000_cells_apply.txt: match_report build/reports/overlay000_cells_apply.json | tools/report_objdiff.py
+  report_json = build/reports/overlay000_cells_apply.json
+  report_args = --section .text --function func_ov000_021fc614 --require-exact
+
+build overlay000_cells_apply: phony build/decomp/src/overlays/ov000/overlay000_cells_apply.o build/reports/overlay000_cells_apply.txt
+
+overlay000_cell_bind_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
+build build/decomp/src/overlays/ov000/overlay000_cell_bind.o: mwccarm src/overlays/ov000/overlay000_cell_bind.c | include/tingle/types.h
+  source = src/overlays/ov000/overlay000_cell_bind.c
+  cflags = $overlay000_cell_bind_cflags
+build build/decomp/delinks/src/overlays/ov000/overlay000_cell_bind.o: dsd_delink config/arm9/config.yaml config/arm9/overlays/ov000/delinks.txt config/arm9/overlays/ov000/symbols.txt config/arm9/overlays/ov000/relocs.txt
+build build/reports/overlay000_cell_bind.json: objdiff build/decomp/delinks/src/overlays/ov000/overlay000_cell_bind.o | build/decomp/src/overlays/ov000/overlay000_cell_bind.o
+  target_object = build/decomp/delinks/src/overlays/ov000/overlay000_cell_bind.o
+  base_object = build/decomp/src/overlays/ov000/overlay000_cell_bind.o
+build build/reports/overlay000_cell_bind.txt: match_report build/reports/overlay000_cell_bind.json | tools/report_objdiff.py
+  report_json = build/reports/overlay000_cell_bind.json
+  report_args = --section .text --function func_ov000_021fc658 --require-exact
+
+build overlay000_cell_bind: phony build/decomp/src/overlays/ov000/overlay000_cell_bind.o build/reports/overlay000_cell_bind.txt
+
+overlay000_cell_reset_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
+build build/decomp/src/overlays/ov000/overlay000_cell_reset.o: mwccarm src/overlays/ov000/overlay000_cell_reset.c | include/tingle/types.h
+  source = src/overlays/ov000/overlay000_cell_reset.c
+  cflags = $overlay000_cell_reset_cflags
+build build/decomp/delinks/src/overlays/ov000/overlay000_cell_reset.o: dsd_delink config/arm9/config.yaml config/arm9/overlays/ov000/delinks.txt config/arm9/overlays/ov000/symbols.txt config/arm9/overlays/ov000/relocs.txt
+build build/reports/overlay000_cell_reset.json: objdiff build/decomp/delinks/src/overlays/ov000/overlay000_cell_reset.o | build/decomp/src/overlays/ov000/overlay000_cell_reset.o
+  target_object = build/decomp/delinks/src/overlays/ov000/overlay000_cell_reset.o
+  base_object = build/decomp/src/overlays/ov000/overlay000_cell_reset.o
+build build/reports/overlay000_cell_reset.txt: match_report build/reports/overlay000_cell_reset.json | tools/report_objdiff.py
+  report_json = build/reports/overlay000_cell_reset.json
+  report_args = --section .text --function func_ov000_021fc6b4 --require-exact
+
+build overlay000_cell_reset: phony build/decomp/src/overlays/ov000/overlay000_cell_reset.o build/reports/overlay000_cell_reset.txt
+
+overlay000_grid_render_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
+build build/decomp/src/overlays/ov000/overlay000_grid_render.o: mwccarm src/overlays/ov000/overlay000_grid_render.c | include/tingle/types.h
+  source = src/overlays/ov000/overlay000_grid_render.c
+  cflags = $overlay000_grid_render_cflags
+build build/decomp/asm/overlays/ov000/overlay000_grid_render_021fc714.o: mwasmarm asm/overlays/ov000/overlay000_grid_render_021fc714.s
+build build/decomp/delinks/asm/overlays/ov000/overlay000_grid_render_021fc714.o: dsd_delink config/arm9/config.yaml config/arm9/overlays/ov000/delinks.txt config/arm9/overlays/ov000/symbols.txt config/arm9/overlays/ov000/relocs.txt
+build build/reports/overlay000_grid_render.json: objdiff build/decomp/delinks/asm/overlays/ov000/overlay000_grid_render_021fc714.o | build/decomp/asm/overlays/ov000/overlay000_grid_render_021fc714.o
+  target_object = build/decomp/delinks/asm/overlays/ov000/overlay000_grid_render_021fc714.o
+  base_object = build/decomp/asm/overlays/ov000/overlay000_grid_render_021fc714.o
+build build/reports/overlay000_grid_render.txt: match_report build/reports/overlay000_grid_render.json | tools/report_objdiff.py
+  report_json = build/reports/overlay000_grid_render.json
+  report_args = --section .text --function func_ov000_021fc714 --require-exact
+
+build overlay000_grid_render: phony build/decomp/src/overlays/ov000/overlay000_grid_render.o build/decomp/asm/overlays/ov000/overlay000_grid_render_021fc714.o build/reports/overlay000_grid_render.txt
+
+overlay000_cell_flag_test_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
+build build/decomp/src/overlays/ov000/overlay000_cell_flag_test.o: mwccarm src/overlays/ov000/overlay000_cell_flag_test.c | include/tingle/types.h
+  source = src/overlays/ov000/overlay000_cell_flag_test.c
+  cflags = $overlay000_cell_flag_test_cflags
+build build/decomp/delinks/src/overlays/ov000/overlay000_cell_flag_test.o: dsd_delink config/arm9/config.yaml config/arm9/overlays/ov000/delinks.txt config/arm9/overlays/ov000/symbols.txt config/arm9/overlays/ov000/relocs.txt
+build build/reports/overlay000_cell_flag_test.json: objdiff build/decomp/delinks/src/overlays/ov000/overlay000_cell_flag_test.o | build/decomp/src/overlays/ov000/overlay000_cell_flag_test.o
+  target_object = build/decomp/delinks/src/overlays/ov000/overlay000_cell_flag_test.o
+  base_object = build/decomp/src/overlays/ov000/overlay000_cell_flag_test.o
+build build/reports/overlay000_cell_flag_test.txt: match_report build/reports/overlay000_cell_flag_test.json | tools/report_objdiff.py
+  report_json = build/reports/overlay000_cell_flag_test.json
+  report_args = --section .text --function func_ov000_021fc834 --require-exact
+
+build overlay000_cell_flag_test: phony build/decomp/src/overlays/ov000/overlay000_cell_flag_test.o build/reports/overlay000_cell_flag_test.txt
+
+overlay000_row_resources_create_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
+build build/decomp/src/overlays/ov000/overlay000_row_resources_create.o: mwccarm src/overlays/ov000/overlay000_row_resources_create.c | include/tingle/types.h
+  source = src/overlays/ov000/overlay000_row_resources_create.c
+  cflags = $overlay000_row_resources_create_cflags
+build build/decomp/asm/overlays/ov000/overlay000_row_resources_create_021fc84c.o: mwasmarm asm/overlays/ov000/overlay000_row_resources_create_021fc84c.s
+build build/decomp/delinks/asm/overlays/ov000/overlay000_row_resources_create_021fc84c.o: dsd_delink config/arm9/config.yaml config/arm9/overlays/ov000/delinks.txt config/arm9/overlays/ov000/symbols.txt config/arm9/overlays/ov000/relocs.txt
+build build/reports/overlay000_row_resources_create.json: objdiff build/decomp/delinks/asm/overlays/ov000/overlay000_row_resources_create_021fc84c.o | build/decomp/asm/overlays/ov000/overlay000_row_resources_create_021fc84c.o
+  target_object = build/decomp/delinks/asm/overlays/ov000/overlay000_row_resources_create_021fc84c.o
+  base_object = build/decomp/asm/overlays/ov000/overlay000_row_resources_create_021fc84c.o
+build build/reports/overlay000_row_resources_create.txt: match_report build/reports/overlay000_row_resources_create.json | tools/report_objdiff.py
+  report_json = build/reports/overlay000_row_resources_create.json
+  report_args = --section .text --function func_ov000_021fc84c --require-exact
+
+build overlay000_row_resources_create: phony build/decomp/src/overlays/ov000/overlay000_row_resources_create.o build/decomp/asm/overlays/ov000/overlay000_row_resources_create_021fc84c.o build/reports/overlay000_row_resources_create.txt
+
+overlay000_row_resources_destroy_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
+build build/decomp/src/overlays/ov000/overlay000_row_resources_destroy.o: mwccarm src/overlays/ov000/overlay000_row_resources_destroy.c | include/tingle/types.h
+  source = src/overlays/ov000/overlay000_row_resources_destroy.c
+  cflags = $overlay000_row_resources_destroy_cflags
+build build/decomp/asm/overlays/ov000/overlay000_row_resources_destroy_021fc96c.o: mwasmarm asm/overlays/ov000/overlay000_row_resources_destroy_021fc96c.s
+build build/decomp/delinks/asm/overlays/ov000/overlay000_row_resources_destroy_021fc96c.o: dsd_delink config/arm9/config.yaml config/arm9/overlays/ov000/delinks.txt config/arm9/overlays/ov000/symbols.txt config/arm9/overlays/ov000/relocs.txt
+build build/reports/overlay000_row_resources_destroy.json: objdiff build/decomp/delinks/asm/overlays/ov000/overlay000_row_resources_destroy_021fc96c.o | build/decomp/asm/overlays/ov000/overlay000_row_resources_destroy_021fc96c.o
+  target_object = build/decomp/delinks/asm/overlays/ov000/overlay000_row_resources_destroy_021fc96c.o
+  base_object = build/decomp/asm/overlays/ov000/overlay000_row_resources_destroy_021fc96c.o
+build build/reports/overlay000_row_resources_destroy.txt: match_report build/reports/overlay000_row_resources_destroy.json | tools/report_objdiff.py
+  report_json = build/reports/overlay000_row_resources_destroy.json
+  report_args = --section .text --function func_ov000_021fc96c --require-exact
+
+build overlay000_row_resources_destroy: phony build/decomp/src/overlays/ov000/overlay000_row_resources_destroy.o build/decomp/asm/overlays/ov000/overlay000_row_resources_destroy_021fc96c.o build/reports/overlay000_row_resources_destroy.txt
+
+overlay000_selection_sync_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
+build build/decomp/src/overlays/ov000/overlay000_selection_sync.o: mwccarm src/overlays/ov000/overlay000_selection_sync.c | include/tingle/types.h
+  source = src/overlays/ov000/overlay000_selection_sync.c
+  cflags = $overlay000_selection_sync_cflags
+build build/decomp/asm/overlays/ov000/overlay000_selection_sync_021fc9d4.o: mwasmarm asm/overlays/ov000/overlay000_selection_sync_021fc9d4.s
+build build/decomp/delinks/asm/overlays/ov000/overlay000_selection_sync_021fc9d4.o: dsd_delink config/arm9/config.yaml config/arm9/overlays/ov000/delinks.txt config/arm9/overlays/ov000/symbols.txt config/arm9/overlays/ov000/relocs.txt
+build build/reports/overlay000_selection_sync.json: objdiff build/decomp/delinks/asm/overlays/ov000/overlay000_selection_sync_021fc9d4.o | build/decomp/asm/overlays/ov000/overlay000_selection_sync_021fc9d4.o
+  target_object = build/decomp/delinks/asm/overlays/ov000/overlay000_selection_sync_021fc9d4.o
+  base_object = build/decomp/asm/overlays/ov000/overlay000_selection_sync_021fc9d4.o
+build build/reports/overlay000_selection_sync.txt: match_report build/reports/overlay000_selection_sync.json | tools/report_objdiff.py
+  report_json = build/reports/overlay000_selection_sync.json
+  report_args = --section .text --function func_ov000_021fc9d4 --require-exact
+
+build overlay000_selection_sync: phony build/decomp/src/overlays/ov000/overlay000_selection_sync.o build/decomp/asm/overlays/ov000/overlay000_selection_sync_021fc9d4.o build/reports/overlay000_selection_sync.txt
+
+overlay000_selection_set_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
+build build/decomp/src/overlays/ov000/overlay000_selection_set.o: mwccarm src/overlays/ov000/overlay000_selection_set.c | include/tingle/types.h
+  source = src/overlays/ov000/overlay000_selection_set.c
+  cflags = $overlay000_selection_set_cflags
+build build/decomp/asm/overlays/ov000/overlay000_selection_set_021fca4c.o: mwasmarm asm/overlays/ov000/overlay000_selection_set_021fca4c.s
+build build/decomp/delinks/asm/overlays/ov000/overlay000_selection_set_021fca4c.o: dsd_delink config/arm9/config.yaml config/arm9/overlays/ov000/delinks.txt config/arm9/overlays/ov000/symbols.txt config/arm9/overlays/ov000/relocs.txt
+build build/reports/overlay000_selection_set.json: objdiff build/decomp/delinks/asm/overlays/ov000/overlay000_selection_set_021fca4c.o | build/decomp/asm/overlays/ov000/overlay000_selection_set_021fca4c.o
+  target_object = build/decomp/delinks/asm/overlays/ov000/overlay000_selection_set_021fca4c.o
+  base_object = build/decomp/asm/overlays/ov000/overlay000_selection_set_021fca4c.o
+build build/reports/overlay000_selection_set.txt: match_report build/reports/overlay000_selection_set.json | tools/report_objdiff.py
+  report_json = build/reports/overlay000_selection_set.json
+  report_args = --section .text --function func_ov000_021fca4c --require-exact
+
+build overlay000_selection_set: phony build/decomp/src/overlays/ov000/overlay000_selection_set.o build/decomp/asm/overlays/ov000/overlay000_selection_set_021fca4c.o build/reports/overlay000_selection_set.txt
+
+overlay000_metadata_get_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
+build build/decomp/src/overlays/ov000/overlay000_metadata_get.o: mwccarm src/overlays/ov000/overlay000_metadata_get.c | include/tingle/types.h
+  source = src/overlays/ov000/overlay000_metadata_get.c
+  cflags = $overlay000_metadata_get_cflags
+build build/decomp/delinks/src/overlays/ov000/overlay000_metadata_get.o: dsd_delink config/arm9/config.yaml config/arm9/overlays/ov000/delinks.txt config/arm9/overlays/ov000/symbols.txt config/arm9/overlays/ov000/relocs.txt
+build build/reports/overlay000_metadata_get.json: objdiff build/decomp/delinks/src/overlays/ov000/overlay000_metadata_get.o | build/decomp/src/overlays/ov000/overlay000_metadata_get.o
+  target_object = build/decomp/delinks/src/overlays/ov000/overlay000_metadata_get.o
+  base_object = build/decomp/src/overlays/ov000/overlay000_metadata_get.o
+build build/reports/overlay000_metadata_get.txt: match_report build/reports/overlay000_metadata_get.json | tools/report_objdiff.py
+  report_json = build/reports/overlay000_metadata_get.json
+  report_args = --section .text --function func_ov000_021fcab4 --require-exact
+
+build overlay000_metadata_get: phony build/decomp/src/overlays/ov000/overlay000_metadata_get.o build/reports/overlay000_metadata_get.txt
+
+overlay000_active_metadata_get_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
+build build/decomp/src/overlays/ov000/overlay000_active_metadata_get.o: mwccarm src/overlays/ov000/overlay000_active_metadata_get.c | include/tingle/types.h
+  source = src/overlays/ov000/overlay000_active_metadata_get.c
+  cflags = $overlay000_active_metadata_get_cflags
+build build/decomp/delinks/src/overlays/ov000/overlay000_active_metadata_get.o: dsd_delink config/arm9/config.yaml config/arm9/overlays/ov000/delinks.txt config/arm9/overlays/ov000/symbols.txt config/arm9/overlays/ov000/relocs.txt
+build build/reports/overlay000_active_metadata_get.json: objdiff build/decomp/delinks/src/overlays/ov000/overlay000_active_metadata_get.o | build/decomp/src/overlays/ov000/overlay000_active_metadata_get.o
+  target_object = build/decomp/delinks/src/overlays/ov000/overlay000_active_metadata_get.o
+  base_object = build/decomp/src/overlays/ov000/overlay000_active_metadata_get.o
+build build/reports/overlay000_active_metadata_get.txt: match_report build/reports/overlay000_active_metadata_get.json | tools/report_objdiff.py
+  report_json = build/reports/overlay000_active_metadata_get.json
+  report_args = --section .text --function func_ov000_021fcad8 --require-exact
+
+build overlay000_active_metadata_get: phony build/decomp/src/overlays/ov000/overlay000_active_metadata_get.o build/reports/overlay000_active_metadata_get.txt
+
+overlay000_view_apply_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
+build build/decomp/src/overlays/ov000/overlay000_view_apply.o: mwccarm src/overlays/ov000/overlay000_view_apply.c | include/tingle/types.h
+  source = src/overlays/ov000/overlay000_view_apply.c
+  cflags = $overlay000_view_apply_cflags
+build build/decomp/delinks/src/overlays/ov000/overlay000_view_apply.o: dsd_delink config/arm9/config.yaml config/arm9/overlays/ov000/delinks.txt config/arm9/overlays/ov000/symbols.txt config/arm9/overlays/ov000/relocs.txt
+build build/reports/overlay000_view_apply.json: objdiff build/decomp/delinks/src/overlays/ov000/overlay000_view_apply.o | build/decomp/src/overlays/ov000/overlay000_view_apply.o
+  target_object = build/decomp/delinks/src/overlays/ov000/overlay000_view_apply.o
+  base_object = build/decomp/src/overlays/ov000/overlay000_view_apply.o
+build build/reports/overlay000_view_apply.txt: match_report build/reports/overlay000_view_apply.json | tools/report_objdiff.py
+  report_json = build/reports/overlay000_view_apply.json
+  report_args = --section .text --function func_ov000_021fcae8 --require-exact
+
+build overlay000_view_apply: phony build/decomp/src/overlays/ov000/overlay000_view_apply.o build/reports/overlay000_view_apply.txt
+
+overlay000_view_capture_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
+build build/decomp/src/overlays/ov000/overlay000_view_capture.o: mwccarm src/overlays/ov000/overlay000_view_capture.c | include/tingle/types.h
+  source = src/overlays/ov000/overlay000_view_capture.c
+  cflags = $overlay000_view_capture_cflags
+build build/decomp/asm/overlays/ov000/overlay000_view_capture_021fcb4c.o: mwasmarm asm/overlays/ov000/overlay000_view_capture_021fcb4c.s
+build build/decomp/delinks/asm/overlays/ov000/overlay000_view_capture_021fcb4c.o: dsd_delink config/arm9/config.yaml config/arm9/overlays/ov000/delinks.txt config/arm9/overlays/ov000/symbols.txt config/arm9/overlays/ov000/relocs.txt
+build build/reports/overlay000_view_capture.json: objdiff build/decomp/delinks/asm/overlays/ov000/overlay000_view_capture_021fcb4c.o | build/decomp/asm/overlays/ov000/overlay000_view_capture_021fcb4c.o
+  target_object = build/decomp/delinks/asm/overlays/ov000/overlay000_view_capture_021fcb4c.o
+  base_object = build/decomp/asm/overlays/ov000/overlay000_view_capture_021fcb4c.o
+build build/reports/overlay000_view_capture.txt: match_report build/reports/overlay000_view_capture.json | tools/report_objdiff.py
+  report_json = build/reports/overlay000_view_capture.json
+  report_args = --section .text --function func_ov000_021fcb4c --require-exact
+
+build overlay000_view_capture: phony build/decomp/src/overlays/ov000/overlay000_view_capture.o build/decomp/asm/overlays/ov000/overlay000_view_capture_021fcb4c.o build/reports/overlay000_view_capture.txt
+
+overlay000_view_record_from_index_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
+build build/decomp/src/overlays/ov000/overlay000_view_record_from_index.o: mwccarm src/overlays/ov000/overlay000_view_record_from_index.c | include/tingle/types.h
+  source = src/overlays/ov000/overlay000_view_record_from_index.c
+  cflags = $overlay000_view_record_from_index_cflags
+build build/decomp/asm/overlays/ov000/overlay000_view_record_from_index_021fcb64.o: mwasmarm asm/overlays/ov000/overlay000_view_record_from_index_021fcb64.s
+build build/decomp/delinks/asm/overlays/ov000/overlay000_view_record_from_index_021fcb64.o: dsd_delink config/arm9/config.yaml config/arm9/overlays/ov000/delinks.txt config/arm9/overlays/ov000/symbols.txt config/arm9/overlays/ov000/relocs.txt
+build build/reports/overlay000_view_record_from_index.json: objdiff build/decomp/delinks/asm/overlays/ov000/overlay000_view_record_from_index_021fcb64.o | build/decomp/asm/overlays/ov000/overlay000_view_record_from_index_021fcb64.o
+  target_object = build/decomp/delinks/asm/overlays/ov000/overlay000_view_record_from_index_021fcb64.o
+  base_object = build/decomp/asm/overlays/ov000/overlay000_view_record_from_index_021fcb64.o
+build build/reports/overlay000_view_record_from_index.txt: match_report build/reports/overlay000_view_record_from_index.json | tools/report_objdiff.py
+  report_json = build/reports/overlay000_view_record_from_index.json
+  report_args = --section .text --function func_ov000_021fcb64 --require-exact
+
+build overlay000_view_record_from_index: phony build/decomp/src/overlays/ov000/overlay000_view_record_from_index.o build/decomp/asm/overlays/ov000/overlay000_view_record_from_index_021fcb64.o build/reports/overlay000_view_record_from_index.txt
+
+overlay000_direction_dispatch_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
+build build/decomp/src/overlays/ov000/overlay000_direction_dispatch.o: mwccarm src/overlays/ov000/overlay000_direction_dispatch.c | include/tingle/types.h
+  source = src/overlays/ov000/overlay000_direction_dispatch.c
+  cflags = $overlay000_direction_dispatch_cflags
+build build/decomp/delinks/src/overlays/ov000/overlay000_direction_dispatch.o: dsd_delink config/arm9/config.yaml config/arm9/overlays/ov000/delinks.txt config/arm9/overlays/ov000/symbols.txt config/arm9/overlays/ov000/relocs.txt
+build build/reports/overlay000_direction_dispatch.json: objdiff build/decomp/delinks/src/overlays/ov000/overlay000_direction_dispatch.o | build/decomp/src/overlays/ov000/overlay000_direction_dispatch.o
+  target_object = build/decomp/delinks/src/overlays/ov000/overlay000_direction_dispatch.o
+  base_object = build/decomp/src/overlays/ov000/overlay000_direction_dispatch.o
+build build/reports/overlay000_direction_dispatch.txt: match_report build/reports/overlay000_direction_dispatch.json | tools/report_objdiff.py
+  report_json = build/reports/overlay000_direction_dispatch.json
+  report_args = --section .text --function func_ov000_021fcb98 --require-exact
+
+build overlay000_direction_dispatch: phony build/decomp/src/overlays/ov000/overlay000_direction_dispatch.o build/reports/overlay000_direction_dispatch.txt
+
+overlay000_controller_action_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
+build build/decomp/src/overlays/ov000/overlay000_controller_action.o: mwccarm src/overlays/ov000/overlay000_controller_action.c | include/tingle/types.h
+  source = src/overlays/ov000/overlay000_controller_action.c
+  cflags = $overlay000_controller_action_cflags
+build build/decomp/delinks/src/overlays/ov000/overlay000_controller_action.o: dsd_delink config/arm9/config.yaml config/arm9/overlays/ov000/delinks.txt config/arm9/overlays/ov000/symbols.txt config/arm9/overlays/ov000/relocs.txt
+build build/reports/overlay000_controller_action.json: objdiff build/decomp/delinks/src/overlays/ov000/overlay000_controller_action.o | build/decomp/src/overlays/ov000/overlay000_controller_action.o
+  target_object = build/decomp/delinks/src/overlays/ov000/overlay000_controller_action.o
+  base_object = build/decomp/src/overlays/ov000/overlay000_controller_action.o
+build build/reports/overlay000_controller_action.txt: match_report build/reports/overlay000_controller_action.json | tools/report_objdiff.py
+  report_json = build/reports/overlay000_controller_action.json
+  report_args = --section .text --function func_ov000_021fcc18 --require-exact
+
+build overlay000_controller_action: phony build/decomp/src/overlays/ov000/overlay000_controller_action.o build/reports/overlay000_controller_action.txt
+
+overlay000_controller_action_alt_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
+build build/decomp/src/overlays/ov000/overlay000_controller_action_alt.o: mwccarm src/overlays/ov000/overlay000_controller_action_alt.c | include/tingle/types.h
+  source = src/overlays/ov000/overlay000_controller_action_alt.c
+  cflags = $overlay000_controller_action_alt_cflags
+build build/decomp/delinks/src/overlays/ov000/overlay000_controller_action_alt.o: dsd_delink config/arm9/config.yaml config/arm9/overlays/ov000/delinks.txt config/arm9/overlays/ov000/symbols.txt config/arm9/overlays/ov000/relocs.txt
+build build/reports/overlay000_controller_action_alt.json: objdiff build/decomp/delinks/src/overlays/ov000/overlay000_controller_action_alt.o | build/decomp/src/overlays/ov000/overlay000_controller_action_alt.o
+  target_object = build/decomp/delinks/src/overlays/ov000/overlay000_controller_action_alt.o
+  base_object = build/decomp/src/overlays/ov000/overlay000_controller_action_alt.o
+build build/reports/overlay000_controller_action_alt.txt: match_report build/reports/overlay000_controller_action_alt.json | tools/report_objdiff.py
+  report_json = build/reports/overlay000_controller_action_alt.json
+  report_args = --section .text --function func_ov000_021fcca8 --require-exact
+
+build overlay000_controller_action_alt: phony build/decomp/src/overlays/ov000/overlay000_controller_action_alt.o build/reports/overlay000_controller_action_alt.txt
+
+overlay000_controller_status_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
+build build/decomp/src/overlays/ov000/overlay000_controller_status.o: mwccarm src/overlays/ov000/overlay000_controller_status.c | include/tingle/types.h
+  source = src/overlays/ov000/overlay000_controller_status.c
+  cflags = $overlay000_controller_status_cflags
+build build/decomp/delinks/src/overlays/ov000/overlay000_controller_status.o: dsd_delink config/arm9/config.yaml config/arm9/overlays/ov000/delinks.txt config/arm9/overlays/ov000/symbols.txt config/arm9/overlays/ov000/relocs.txt
+build build/reports/overlay000_controller_status.json: objdiff build/decomp/delinks/src/overlays/ov000/overlay000_controller_status.o | build/decomp/src/overlays/ov000/overlay000_controller_status.o
+  target_object = build/decomp/delinks/src/overlays/ov000/overlay000_controller_status.o
+  base_object = build/decomp/src/overlays/ov000/overlay000_controller_status.o
+build build/reports/overlay000_controller_status.txt: match_report build/reports/overlay000_controller_status.json | tools/report_objdiff.py
+  report_json = build/reports/overlay000_controller_status.json
+  report_args = --section .text --function func_ov000_021fccfc --require-exact
+
+build overlay000_controller_status: phony build/decomp/src/overlays/ov000/overlay000_controller_status.o build/reports/overlay000_controller_status.txt
+
+overlay001_layout_fields_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
+build build/decomp/src/overlays/ov001/overlay001_layout_fields.o: mwccarm src/overlays/ov001/overlay001_layout_fields.c | include/tingle/types.h
+  source = src/overlays/ov001/overlay001_layout_fields.c
+  cflags = $overlay001_layout_fields_cflags
+build build/decomp/delinks/src/overlays/ov001/overlay001_layout_fields.o: dsd_delink config/arm9/config.yaml config/arm9/overlays/ov001/delinks.txt config/arm9/overlays/ov001/symbols.txt config/arm9/overlays/ov001/relocs.txt
+build build/reports/overlay001_layout_fields.json: objdiff build/decomp/delinks/src/overlays/ov001/overlay001_layout_fields.o | build/decomp/src/overlays/ov001/overlay001_layout_fields.o
+  target_object = build/decomp/delinks/src/overlays/ov001/overlay001_layout_fields.o
+  base_object = build/decomp/src/overlays/ov001/overlay001_layout_fields.o
+build build/reports/overlay001_layout_fields.txt: match_report build/reports/overlay001_layout_fields.json | tools/report_objdiff.py
+  report_json = build/reports/overlay001_layout_fields.json
+  report_args = --section .text --function func_ov001_021fb6e0 --require-exact
+
+build overlay001_layout_fields: phony build/decomp/src/overlays/ov001/overlay001_layout_fields.o build/reports/overlay001_layout_fields.txt
+
+overlay001_presentation_lifecycle_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
+build build/decomp/src/overlays/ov001/overlay001_presentation_lifecycle.o: mwccarm src/overlays/ov001/overlay001_presentation_lifecycle.c | include/tingle/heap.h include/tingle/types.h
+  source = src/overlays/ov001/overlay001_presentation_lifecycle.c
+  cflags = $overlay001_presentation_lifecycle_cflags
+build build/decomp/delinks/src/overlays/ov001/overlay001_presentation_lifecycle.o: dsd_delink config/arm9/config.yaml config/arm9/overlays/ov001/delinks.txt config/arm9/overlays/ov001/symbols.txt config/arm9/overlays/ov001/relocs.txt
+build build/reports/overlay001_presentation_lifecycle.json: objdiff build/decomp/delinks/src/overlays/ov001/overlay001_presentation_lifecycle.o | build/decomp/src/overlays/ov001/overlay001_presentation_lifecycle.o
+  target_object = build/decomp/delinks/src/overlays/ov001/overlay001_presentation_lifecycle.o
+  base_object = build/decomp/src/overlays/ov001/overlay001_presentation_lifecycle.o
+build build/reports/overlay001_presentation_lifecycle.txt: match_report build/reports/overlay001_presentation_lifecycle.json | tools/report_objdiff.py
+  report_json = build/reports/overlay001_presentation_lifecycle.json
+  report_args = --section .text --function func_ov001_021fb6f8 --require-exact
+
+build overlay001_presentation_lifecycle: phony build/decomp/src/overlays/ov001/overlay001_presentation_lifecycle.o build/reports/overlay001_presentation_lifecycle.txt
+
+overlay001_presentation_destroy_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
+build build/decomp/src/overlays/ov001/overlay001_presentation_destroy.o: mwccarm src/overlays/ov001/overlay001_presentation_destroy.c | include/tingle/types.h
+  source = src/overlays/ov001/overlay001_presentation_destroy.c
+  cflags = $overlay001_presentation_destroy_cflags
+build build/decomp/delinks/src/overlays/ov001/overlay001_presentation_destroy.o: dsd_delink config/arm9/config.yaml config/arm9/overlays/ov001/delinks.txt config/arm9/overlays/ov001/symbols.txt config/arm9/overlays/ov001/relocs.txt
+build build/reports/overlay001_presentation_destroy.json: objdiff build/decomp/delinks/src/overlays/ov001/overlay001_presentation_destroy.o | build/decomp/src/overlays/ov001/overlay001_presentation_destroy.o
+  target_object = build/decomp/delinks/src/overlays/ov001/overlay001_presentation_destroy.o
+  base_object = build/decomp/src/overlays/ov001/overlay001_presentation_destroy.o
+build build/reports/overlay001_presentation_destroy.txt: match_report build/reports/overlay001_presentation_destroy.json | tools/report_objdiff.py
+  report_json = build/reports/overlay001_presentation_destroy.json
+  report_args = --section .text --function func_ov001_021fb7d4 --require-exact
+
+build overlay001_presentation_destroy: phony build/decomp/src/overlays/ov001/overlay001_presentation_destroy.o build/reports/overlay001_presentation_destroy.txt
+
+overlay001_presentation_close_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
+build build/decomp/src/overlays/ov001/overlay001_presentation_close.o: mwccarm src/overlays/ov001/overlay001_presentation_close.c | include/tingle/types.h
+  source = src/overlays/ov001/overlay001_presentation_close.c
+  cflags = $overlay001_presentation_close_cflags
+build build/decomp/delinks/src/overlays/ov001/overlay001_presentation_close.o: dsd_delink config/arm9/config.yaml config/arm9/overlays/ov001/delinks.txt config/arm9/overlays/ov001/symbols.txt config/arm9/overlays/ov001/relocs.txt
+build build/reports/overlay001_presentation_close.json: objdiff build/decomp/delinks/src/overlays/ov001/overlay001_presentation_close.o | build/decomp/src/overlays/ov001/overlay001_presentation_close.o
+  target_object = build/decomp/delinks/src/overlays/ov001/overlay001_presentation_close.o
+  base_object = build/decomp/src/overlays/ov001/overlay001_presentation_close.o
+build build/reports/overlay001_presentation_close.txt: match_report build/reports/overlay001_presentation_close.json | tools/report_objdiff.py
+  report_json = build/reports/overlay001_presentation_close.json
+  report_args = --section .text --function func_ov001_021fb81c --require-exact
+
+build overlay001_presentation_close: phony build/decomp/src/overlays/ov001/overlay001_presentation_close.o build/reports/overlay001_presentation_close.txt
+
+overlay001_presentation_populate_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
+build build/decomp/src/overlays/ov001/overlay001_presentation_populate.o: mwccarm src/overlays/ov001/overlay001_presentation_populate.c | include/tingle/types.h
+  source = src/overlays/ov001/overlay001_presentation_populate.c
+  cflags = $overlay001_presentation_populate_cflags
+build build/decomp/asm/overlays/ov001/overlay001_presentation_populate_021fb87c.o: mwasmarm asm/overlays/ov001/overlay001_presentation_populate_021fb87c.s
+build build/decomp/delinks/asm/overlays/ov001/overlay001_presentation_populate_021fb87c.o: dsd_delink config/arm9/config.yaml config/arm9/overlays/ov001/delinks.txt config/arm9/overlays/ov001/symbols.txt config/arm9/overlays/ov001/relocs.txt
+build build/reports/overlay001_presentation_populate.json: objdiff build/decomp/delinks/asm/overlays/ov001/overlay001_presentation_populate_021fb87c.o | build/decomp/asm/overlays/ov001/overlay001_presentation_populate_021fb87c.o
+  target_object = build/decomp/delinks/asm/overlays/ov001/overlay001_presentation_populate_021fb87c.o
+  base_object = build/decomp/asm/overlays/ov001/overlay001_presentation_populate_021fb87c.o
+build build/reports/overlay001_presentation_populate.txt: match_report build/reports/overlay001_presentation_populate.json | tools/report_objdiff.py
+  report_json = build/reports/overlay001_presentation_populate.json
+  report_args = --section .text --function func_ov001_021fb87c --require-exact
+
+build overlay001_presentation_populate: phony build/decomp/src/overlays/ov001/overlay001_presentation_populate.o build/decomp/asm/overlays/ov001/overlay001_presentation_populate_021fb87c.o build/reports/overlay001_presentation_populate.txt
+
+overlay001_sprite_owner_update_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
+build build/decomp/src/overlays/ov001/overlay001_sprite_owner_update.o: mwccarm src/overlays/ov001/overlay001_sprite_owner_update.c | include/tingle/types.h
+  source = src/overlays/ov001/overlay001_sprite_owner_update.c
+  cflags = $overlay001_sprite_owner_update_cflags
+build build/decomp/delinks/src/overlays/ov001/overlay001_sprite_owner_update.o: dsd_delink config/arm9/config.yaml config/arm9/overlays/ov001/delinks.txt config/arm9/overlays/ov001/symbols.txt config/arm9/overlays/ov001/relocs.txt
+build build/reports/overlay001_sprite_owner_update.json: objdiff build/decomp/delinks/src/overlays/ov001/overlay001_sprite_owner_update.o | build/decomp/src/overlays/ov001/overlay001_sprite_owner_update.o
+  target_object = build/decomp/delinks/src/overlays/ov001/overlay001_sprite_owner_update.o
+  base_object = build/decomp/src/overlays/ov001/overlay001_sprite_owner_update.o
+build build/reports/overlay001_sprite_owner_update.txt: match_report build/reports/overlay001_sprite_owner_update.json | tools/report_objdiff.py
+  report_json = build/reports/overlay001_sprite_owner_update.json
+  report_args = --section .text --function func_ov001_021fbaa8 --require-exact
+
+build overlay001_sprite_owner_update: phony build/decomp/src/overlays/ov001/overlay001_sprite_owner_update.o build/reports/overlay001_sprite_owner_update.txt
+
+overlay001_noop_callback_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
+build build/decomp/src/overlays/ov001/overlay001_noop_callback.o: mwccarm src/overlays/ov001/overlay001_noop_callback.c | include/tingle/types.h
+  source = src/overlays/ov001/overlay001_noop_callback.c
+  cflags = $overlay001_noop_callback_cflags
+build build/decomp/delinks/src/overlays/ov001/overlay001_noop_callback.o: dsd_delink config/arm9/config.yaml config/arm9/overlays/ov001/delinks.txt config/arm9/overlays/ov001/symbols.txt config/arm9/overlays/ov001/relocs.txt
+build build/reports/overlay001_noop_callback.json: objdiff build/decomp/delinks/src/overlays/ov001/overlay001_noop_callback.o | build/decomp/src/overlays/ov001/overlay001_noop_callback.o
+  target_object = build/decomp/delinks/src/overlays/ov001/overlay001_noop_callback.o
+  base_object = build/decomp/src/overlays/ov001/overlay001_noop_callback.o
+build build/reports/overlay001_noop_callback.txt: match_report build/reports/overlay001_noop_callback.json | tools/report_objdiff.py
+  report_json = build/reports/overlay001_noop_callback.json
+  report_args = --section .text --function func_ov001_021fbab8 --require-exact
+
+build overlay001_noop_callback: phony build/decomp/src/overlays/ov001/overlay001_noop_callback.o build/reports/overlay001_noop_callback.txt
+
+overlay001_grid_constructor_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
+build build/decomp/src/overlays/ov001/overlay001_grid_constructor.o: mwccarm src/overlays/ov001/overlay001_grid_constructor.c | include/tingle/heap.h include/tingle/types.h
+  source = src/overlays/ov001/overlay001_grid_constructor.c
+  cflags = $overlay001_grid_constructor_cflags
+build build/decomp/asm/overlays/ov001/overlay001_grid_constructor_021fbabc.o: mwasmarm asm/overlays/ov001/overlay001_grid_constructor_021fbabc.s
+build build/decomp/delinks/asm/overlays/ov001/overlay001_grid_constructor_021fbabc.o: dsd_delink config/arm9/config.yaml config/arm9/overlays/ov001/delinks.txt config/arm9/overlays/ov001/symbols.txt config/arm9/overlays/ov001/relocs.txt
+build build/reports/overlay001_grid_constructor.json: objdiff build/decomp/delinks/asm/overlays/ov001/overlay001_grid_constructor_021fbabc.o | build/decomp/asm/overlays/ov001/overlay001_grid_constructor_021fbabc.o
+  target_object = build/decomp/delinks/asm/overlays/ov001/overlay001_grid_constructor_021fbabc.o
+  base_object = build/decomp/asm/overlays/ov001/overlay001_grid_constructor_021fbabc.o
+build build/reports/overlay001_grid_constructor.txt: match_report build/reports/overlay001_grid_constructor.json | tools/report_objdiff.py
+  report_json = build/reports/overlay001_grid_constructor.json
+  report_args = --section .text --function func_ov001_021fbabc --require-exact
+
+build overlay001_grid_constructor: phony build/decomp/src/overlays/ov001/overlay001_grid_constructor.o build/decomp/asm/overlays/ov001/overlay001_grid_constructor_021fbabc.o build/reports/overlay001_grid_constructor.txt
+
+overlay001_grid_destroy_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
+build build/decomp/src/overlays/ov001/overlay001_grid_destroy.o: mwccarm src/overlays/ov001/overlay001_grid_destroy.c | include/tingle/types.h
+  source = src/overlays/ov001/overlay001_grid_destroy.c
+  cflags = $overlay001_grid_destroy_cflags
+build build/decomp/delinks/src/overlays/ov001/overlay001_grid_destroy.o: dsd_delink config/arm9/config.yaml config/arm9/overlays/ov001/delinks.txt config/arm9/overlays/ov001/symbols.txt config/arm9/overlays/ov001/relocs.txt
+build build/reports/overlay001_grid_destroy.json: objdiff build/decomp/delinks/src/overlays/ov001/overlay001_grid_destroy.o | build/decomp/src/overlays/ov001/overlay001_grid_destroy.o
+  target_object = build/decomp/delinks/src/overlays/ov001/overlay001_grid_destroy.o
+  base_object = build/decomp/src/overlays/ov001/overlay001_grid_destroy.o
+build build/reports/overlay001_grid_destroy.txt: match_report build/reports/overlay001_grid_destroy.json | tools/report_objdiff.py
+  report_json = build/reports/overlay001_grid_destroy.json
+  report_args = --section .text --function func_ov001_021fbe6c --require-exact
+
+build overlay001_grid_destroy: phony build/decomp/src/overlays/ov001/overlay001_grid_destroy.o build/reports/overlay001_grid_destroy.txt
+
+overlay001_grid_delete_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
+build build/decomp/src/overlays/ov001/overlay001_grid_delete.o: mwccarm src/overlays/ov001/overlay001_grid_delete.c | include/tingle/heap.h include/tingle/types.h
+  source = src/overlays/ov001/overlay001_grid_delete.c
+  cflags = $overlay001_grid_delete_cflags
+build build/decomp/delinks/src/overlays/ov001/overlay001_grid_delete.o: dsd_delink config/arm9/config.yaml config/arm9/overlays/ov001/delinks.txt config/arm9/overlays/ov001/symbols.txt config/arm9/overlays/ov001/relocs.txt
+build build/reports/overlay001_grid_delete.json: objdiff build/decomp/delinks/src/overlays/ov001/overlay001_grid_delete.o | build/decomp/src/overlays/ov001/overlay001_grid_delete.o
+  target_object = build/decomp/delinks/src/overlays/ov001/overlay001_grid_delete.o
+  base_object = build/decomp/src/overlays/ov001/overlay001_grid_delete.o
+build build/reports/overlay001_grid_delete.txt: match_report build/reports/overlay001_grid_delete.json | tools/report_objdiff.py
+  report_json = build/reports/overlay001_grid_delete.json
+  report_args = --section .text --function func_ov001_021fbef0 --require-exact
+
+build overlay001_grid_delete: phony build/decomp/src/overlays/ov001/overlay001_grid_delete.o build/reports/overlay001_grid_delete.txt
+
+overlay001_grid_update_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
+build build/decomp/src/overlays/ov001/overlay001_grid_update.o: mwccarm src/overlays/ov001/overlay001_grid_update.c | include/tingle/types.h
+  source = src/overlays/ov001/overlay001_grid_update.c
+  cflags = $overlay001_grid_update_cflags
+build build/decomp/asm/overlays/ov001/overlay001_grid_update_021fbf7c.o: mwasmarm asm/overlays/ov001/overlay001_grid_update_021fbf7c.s
+build build/decomp/delinks/asm/overlays/ov001/overlay001_grid_update_021fbf7c.o: dsd_delink config/arm9/config.yaml config/arm9/overlays/ov001/delinks.txt config/arm9/overlays/ov001/symbols.txt config/arm9/overlays/ov001/relocs.txt
+build build/reports/overlay001_grid_update.json: objdiff build/decomp/delinks/asm/overlays/ov001/overlay001_grid_update_021fbf7c.o | build/decomp/asm/overlays/ov001/overlay001_grid_update_021fbf7c.o
+  target_object = build/decomp/delinks/asm/overlays/ov001/overlay001_grid_update_021fbf7c.o
+  base_object = build/decomp/asm/overlays/ov001/overlay001_grid_update_021fbf7c.o
+build build/reports/overlay001_grid_update.txt: match_report build/reports/overlay001_grid_update.json | tools/report_objdiff.py
+  report_json = build/reports/overlay001_grid_update.json
+  report_args = --section .text --function func_ov001_021fbf7c --require-exact
+
+build overlay001_grid_update: phony build/decomp/src/overlays/ov001/overlay001_grid_update.o build/decomp/asm/overlays/ov001/overlay001_grid_update_021fbf7c.o build/reports/overlay001_grid_update.txt
+
+overlay001_visible_rows_update_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
+build build/decomp/src/overlays/ov001/overlay001_visible_rows_update.o: mwccarm src/overlays/ov001/overlay001_visible_rows_update.c | include/tingle/types.h
+  source = src/overlays/ov001/overlay001_visible_rows_update.c
+  cflags = $overlay001_visible_rows_update_cflags
+build build/decomp/delinks/src/overlays/ov001/overlay001_visible_rows_update.o: dsd_delink config/arm9/config.yaml config/arm9/overlays/ov001/delinks.txt config/arm9/overlays/ov001/symbols.txt config/arm9/overlays/ov001/relocs.txt
+build build/reports/overlay001_visible_rows_update.json: objdiff build/decomp/delinks/src/overlays/ov001/overlay001_visible_rows_update.o | build/decomp/src/overlays/ov001/overlay001_visible_rows_update.o
+  target_object = build/decomp/delinks/src/overlays/ov001/overlay001_visible_rows_update.o
+  base_object = build/decomp/src/overlays/ov001/overlay001_visible_rows_update.o
+build build/reports/overlay001_visible_rows_update.txt: match_report build/reports/overlay001_visible_rows_update.json | tools/report_objdiff.py
+  report_json = build/reports/overlay001_visible_rows_update.json
+  report_args = --section .text --function func_ov001_021fc068 --require-exact
+
+build overlay001_visible_rows_update: phony build/decomp/src/overlays/ov001/overlay001_visible_rows_update.o build/reports/overlay001_visible_rows_update.txt
+
+overlay001_grid_hit_test_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
+build build/decomp/src/overlays/ov001/overlay001_grid_hit_test.o: mwccarm src/overlays/ov001/overlay001_grid_hit_test.c | include/tingle/types.h
+  source = src/overlays/ov001/overlay001_grid_hit_test.c
+  cflags = $overlay001_grid_hit_test_cflags
+build build/decomp/delinks/src/overlays/ov001/overlay001_grid_hit_test.o: dsd_delink config/arm9/config.yaml config/arm9/overlays/ov001/delinks.txt config/arm9/overlays/ov001/symbols.txt config/arm9/overlays/ov001/relocs.txt
+build build/reports/overlay001_grid_hit_test.json: objdiff build/decomp/delinks/src/overlays/ov001/overlay001_grid_hit_test.o | build/decomp/src/overlays/ov001/overlay001_grid_hit_test.o
+  target_object = build/decomp/delinks/src/overlays/ov001/overlay001_grid_hit_test.o
+  base_object = build/decomp/src/overlays/ov001/overlay001_grid_hit_test.o
+build build/reports/overlay001_grid_hit_test.txt: match_report build/reports/overlay001_grid_hit_test.json | tools/report_objdiff.py
+  report_json = build/reports/overlay001_grid_hit_test.json
+  report_args = --section .text --function func_ov001_021fc0ac --require-exact
+
+build overlay001_grid_hit_test: phony build/decomp/src/overlays/ov001/overlay001_grid_hit_test.o build/reports/overlay001_grid_hit_test.txt
+
+overlay001_grid_scroll_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
+build build/decomp/src/overlays/ov001/overlay001_grid_scroll.o: mwccarm src/overlays/ov001/overlay001_grid_scroll.c | include/tingle/types.h
+  source = src/overlays/ov001/overlay001_grid_scroll.c
+  cflags = $overlay001_grid_scroll_cflags
+build build/decomp/asm/overlays/ov001/overlay001_grid_scroll_021fc154.o: mwasmarm asm/overlays/ov001/overlay001_grid_scroll_021fc154.s
+build build/decomp/delinks/asm/overlays/ov001/overlay001_grid_scroll_021fc154.o: dsd_delink config/arm9/config.yaml config/arm9/overlays/ov001/delinks.txt config/arm9/overlays/ov001/symbols.txt config/arm9/overlays/ov001/relocs.txt
+build build/reports/overlay001_grid_scroll.json: objdiff build/decomp/delinks/asm/overlays/ov001/overlay001_grid_scroll_021fc154.o | build/decomp/asm/overlays/ov001/overlay001_grid_scroll_021fc154.o
+  target_object = build/decomp/delinks/asm/overlays/ov001/overlay001_grid_scroll_021fc154.o
+  base_object = build/decomp/asm/overlays/ov001/overlay001_grid_scroll_021fc154.o
+build build/reports/overlay001_grid_scroll.txt: match_report build/reports/overlay001_grid_scroll.json | tools/report_objdiff.py
+  report_json = build/reports/overlay001_grid_scroll.json
+  report_args = --section .text --function func_ov001_021fc154 --require-exact
+
+build overlay001_grid_scroll: phony build/decomp/src/overlays/ov001/overlay001_grid_scroll.o build/decomp/asm/overlays/ov001/overlay001_grid_scroll_021fc154.o build/reports/overlay001_grid_scroll.txt
+
+overlay001_transient_validate_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
+build build/decomp/src/overlays/ov001/overlay001_transient_validate.o: mwccarm src/overlays/ov001/overlay001_transient_validate.c | include/tingle/types.h
+  source = src/overlays/ov001/overlay001_transient_validate.c
+  cflags = $overlay001_transient_validate_cflags
+build build/decomp/delinks/src/overlays/ov001/overlay001_transient_validate.o: dsd_delink config/arm9/config.yaml config/arm9/overlays/ov001/delinks.txt config/arm9/overlays/ov001/symbols.txt config/arm9/overlays/ov001/relocs.txt
+build build/reports/overlay001_transient_validate.json: objdiff build/decomp/delinks/src/overlays/ov001/overlay001_transient_validate.o | build/decomp/src/overlays/ov001/overlay001_transient_validate.o
+  target_object = build/decomp/delinks/src/overlays/ov001/overlay001_transient_validate.o
+  base_object = build/decomp/src/overlays/ov001/overlay001_transient_validate.o
+build build/reports/overlay001_transient_validate.txt: match_report build/reports/overlay001_transient_validate.json | tools/report_objdiff.py
+  report_json = build/reports/overlay001_transient_validate.json
+  report_args = --section .text --function func_ov001_021fc1b8 --require-exact
+
+build overlay001_transient_validate: phony build/decomp/src/overlays/ov001/overlay001_transient_validate.o build/reports/overlay001_transient_validate.txt
+
+overlay001_grid_refresh_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
+build build/decomp/src/overlays/ov001/overlay001_grid_refresh.o: mwccarm src/overlays/ov001/overlay001_grid_refresh.c | include/tingle/types.h
+  source = src/overlays/ov001/overlay001_grid_refresh.c
+  cflags = $overlay001_grid_refresh_cflags
+build build/decomp/delinks/src/overlays/ov001/overlay001_grid_refresh.o: dsd_delink config/arm9/config.yaml config/arm9/overlays/ov001/delinks.txt config/arm9/overlays/ov001/symbols.txt config/arm9/overlays/ov001/relocs.txt
+build build/reports/overlay001_grid_refresh.json: objdiff build/decomp/delinks/src/overlays/ov001/overlay001_grid_refresh.o | build/decomp/src/overlays/ov001/overlay001_grid_refresh.o
+  target_object = build/decomp/delinks/src/overlays/ov001/overlay001_grid_refresh.o
+  base_object = build/decomp/src/overlays/ov001/overlay001_grid_refresh.o
+build build/reports/overlay001_grid_refresh.txt: match_report build/reports/overlay001_grid_refresh.json | tools/report_objdiff.py
+  report_json = build/reports/overlay001_grid_refresh.json
+  report_args = --section .text --function func_ov001_021fc1f0 --require-exact
+
+build overlay001_grid_refresh: phony build/decomp/src/overlays/ov001/overlay001_grid_refresh.o build/reports/overlay001_grid_refresh.txt
+
+overlay001_grid_step_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
+build build/decomp/src/overlays/ov001/overlay001_grid_step.o: mwccarm src/overlays/ov001/overlay001_grid_step.c | include/tingle/types.h
+  source = src/overlays/ov001/overlay001_grid_step.c
+  cflags = $overlay001_grid_step_cflags
+build build/decomp/delinks/src/overlays/ov001/overlay001_grid_step.o: dsd_delink config/arm9/config.yaml config/arm9/overlays/ov001/delinks.txt config/arm9/overlays/ov001/symbols.txt config/arm9/overlays/ov001/relocs.txt
+build build/reports/overlay001_grid_step.json: objdiff build/decomp/delinks/src/overlays/ov001/overlay001_grid_step.o | build/decomp/src/overlays/ov001/overlay001_grid_step.o
+  target_object = build/decomp/delinks/src/overlays/ov001/overlay001_grid_step.o
+  base_object = build/decomp/src/overlays/ov001/overlay001_grid_step.o
+build build/reports/overlay001_grid_step.txt: match_report build/reports/overlay001_grid_step.json | tools/report_objdiff.py
+  report_json = build/reports/overlay001_grid_step.json
+  report_args = --section .text --function func_ov001_021fc214 --require-exact
+
+build overlay001_grid_step: phony build/decomp/src/overlays/ov001/overlay001_grid_step.o build/reports/overlay001_grid_step.txt
+
+overlay001_controller_query_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
+build build/decomp/src/overlays/ov001/overlay001_controller_query.o: mwccarm src/overlays/ov001/overlay001_controller_query.c | include/tingle/types.h
+  source = src/overlays/ov001/overlay001_controller_query.c
+  cflags = $overlay001_controller_query_cflags
+build build/decomp/delinks/src/overlays/ov001/overlay001_controller_query.o: dsd_delink config/arm9/config.yaml config/arm9/overlays/ov001/delinks.txt config/arm9/overlays/ov001/symbols.txt config/arm9/overlays/ov001/relocs.txt
+build build/reports/overlay001_controller_query.json: objdiff build/decomp/delinks/src/overlays/ov001/overlay001_controller_query.o | build/decomp/src/overlays/ov001/overlay001_controller_query.o
+  target_object = build/decomp/delinks/src/overlays/ov001/overlay001_controller_query.o
+  base_object = build/decomp/src/overlays/ov001/overlay001_controller_query.o
+build build/reports/overlay001_controller_query.txt: match_report build/reports/overlay001_controller_query.json | tools/report_objdiff.py
+  report_json = build/reports/overlay001_controller_query.json
+  report_args = --section .text --function func_ov001_021fc240 --require-exact
+
+build overlay001_controller_query: phony build/decomp/src/overlays/ov001/overlay001_controller_query.o build/reports/overlay001_controller_query.txt
+
+overlay001_grid_transition_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
+build build/decomp/src/overlays/ov001/overlay001_grid_transition.o: mwccarm src/overlays/ov001/overlay001_grid_transition.c | include/tingle/types.h
+  source = src/overlays/ov001/overlay001_grid_transition.c
+  cflags = $overlay001_grid_transition_cflags
+build build/decomp/asm/overlays/ov001/overlay001_grid_transition_021fc250.o: mwasmarm asm/overlays/ov001/overlay001_grid_transition_021fc250.s
+build build/decomp/delinks/asm/overlays/ov001/overlay001_grid_transition_021fc250.o: dsd_delink config/arm9/config.yaml config/arm9/overlays/ov001/delinks.txt config/arm9/overlays/ov001/symbols.txt config/arm9/overlays/ov001/relocs.txt
+build build/reports/overlay001_grid_transition.json: objdiff build/decomp/delinks/asm/overlays/ov001/overlay001_grid_transition_021fc250.o | build/decomp/asm/overlays/ov001/overlay001_grid_transition_021fc250.o
+  target_object = build/decomp/delinks/asm/overlays/ov001/overlay001_grid_transition_021fc250.o
+  base_object = build/decomp/asm/overlays/ov001/overlay001_grid_transition_021fc250.o
+build build/reports/overlay001_grid_transition.txt: match_report build/reports/overlay001_grid_transition.json | tools/report_objdiff.py
+  report_json = build/reports/overlay001_grid_transition.json
+  report_args = --section .text --function func_ov001_021fc250 --require-exact
+
+build overlay001_grid_transition: phony build/decomp/src/overlays/ov001/overlay001_grid_transition.o build/decomp/asm/overlays/ov001/overlay001_grid_transition_021fc250.o build/reports/overlay001_grid_transition.txt
+
+overlay001_embedded_step_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
+build build/decomp/src/overlays/ov001/overlay001_embedded_step.o: mwccarm src/overlays/ov001/overlay001_embedded_step.c | include/tingle/types.h
+  source = src/overlays/ov001/overlay001_embedded_step.c
+  cflags = $overlay001_embedded_step_cflags
+build build/decomp/delinks/src/overlays/ov001/overlay001_embedded_step.o: dsd_delink config/arm9/config.yaml config/arm9/overlays/ov001/delinks.txt config/arm9/overlays/ov001/symbols.txt config/arm9/overlays/ov001/relocs.txt
+build build/reports/overlay001_embedded_step.json: objdiff build/decomp/delinks/src/overlays/ov001/overlay001_embedded_step.o | build/decomp/src/overlays/ov001/overlay001_embedded_step.o
+  target_object = build/decomp/delinks/src/overlays/ov001/overlay001_embedded_step.o
+  base_object = build/decomp/src/overlays/ov001/overlay001_embedded_step.o
+build build/reports/overlay001_embedded_step.txt: match_report build/reports/overlay001_embedded_step.json | tools/report_objdiff.py
+  report_json = build/reports/overlay001_embedded_step.json
+  report_args = --section .text --function func_ov001_021fc2e4 --require-exact
+
+build overlay001_embedded_step: phony build/decomp/src/overlays/ov001/overlay001_embedded_step.o build/reports/overlay001_embedded_step.txt
+
+overlay001_embedded_query_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
+build build/decomp/src/overlays/ov001/overlay001_embedded_query.o: mwccarm src/overlays/ov001/overlay001_embedded_query.c | include/tingle/types.h
+  source = src/overlays/ov001/overlay001_embedded_query.c
+  cflags = $overlay001_embedded_query_cflags
+build build/decomp/delinks/src/overlays/ov001/overlay001_embedded_query.o: dsd_delink config/arm9/config.yaml config/arm9/overlays/ov001/delinks.txt config/arm9/overlays/ov001/symbols.txt config/arm9/overlays/ov001/relocs.txt
+build build/reports/overlay001_embedded_query.json: objdiff build/decomp/delinks/src/overlays/ov001/overlay001_embedded_query.o | build/decomp/src/overlays/ov001/overlay001_embedded_query.o
+  target_object = build/decomp/delinks/src/overlays/ov001/overlay001_embedded_query.o
+  base_object = build/decomp/src/overlays/ov001/overlay001_embedded_query.o
+build build/reports/overlay001_embedded_query.txt: match_report build/reports/overlay001_embedded_query.json | tools/report_objdiff.py
+  report_json = build/reports/overlay001_embedded_query.json
+  report_args = --section .text --function func_ov001_021fc310 --require-exact
+
+build overlay001_embedded_query: phony build/decomp/src/overlays/ov001/overlay001_embedded_query.o build/reports/overlay001_embedded_query.txt
+
+overlay001_timed_selection_sync_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
+build build/decomp/src/overlays/ov001/overlay001_timed_selection_sync.o: mwccarm src/overlays/ov001/overlay001_timed_selection_sync.c | include/tingle/types.h
+  source = src/overlays/ov001/overlay001_timed_selection_sync.c
+  cflags = $overlay001_timed_selection_sync_cflags
+build build/decomp/delinks/src/overlays/ov001/overlay001_timed_selection_sync.o: dsd_delink config/arm9/config.yaml config/arm9/overlays/ov001/delinks.txt config/arm9/overlays/ov001/symbols.txt config/arm9/overlays/ov001/relocs.txt
+build build/reports/overlay001_timed_selection_sync.json: objdiff build/decomp/delinks/src/overlays/ov001/overlay001_timed_selection_sync.o | build/decomp/src/overlays/ov001/overlay001_timed_selection_sync.o
+  target_object = build/decomp/delinks/src/overlays/ov001/overlay001_timed_selection_sync.o
+  base_object = build/decomp/src/overlays/ov001/overlay001_timed_selection_sync.o
+build build/reports/overlay001_timed_selection_sync.txt: match_report build/reports/overlay001_timed_selection_sync.json | tools/report_objdiff.py
+  report_json = build/reports/overlay001_timed_selection_sync.json
+  report_args = --section .text --function func_ov001_021fc320 --require-exact
+
+build overlay001_timed_selection_sync: phony build/decomp/src/overlays/ov001/overlay001_timed_selection_sync.o build/reports/overlay001_timed_selection_sync.txt
+
+overlay001_controller_command_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
+build build/decomp/src/overlays/ov001/overlay001_controller_command.o: mwccarm src/overlays/ov001/overlay001_controller_command.c | include/tingle/types.h
+  source = src/overlays/ov001/overlay001_controller_command.c
+  cflags = $overlay001_controller_command_cflags
+build build/decomp/delinks/src/overlays/ov001/overlay001_controller_command.o: dsd_delink config/arm9/config.yaml config/arm9/overlays/ov001/delinks.txt config/arm9/overlays/ov001/symbols.txt config/arm9/overlays/ov001/relocs.txt
+build build/reports/overlay001_controller_command.json: objdiff build/decomp/delinks/src/overlays/ov001/overlay001_controller_command.o | build/decomp/src/overlays/ov001/overlay001_controller_command.o
+  target_object = build/decomp/delinks/src/overlays/ov001/overlay001_controller_command.o
+  base_object = build/decomp/src/overlays/ov001/overlay001_controller_command.o
+build build/reports/overlay001_controller_command.txt: match_report build/reports/overlay001_controller_command.json | tools/report_objdiff.py
+  report_json = build/reports/overlay001_controller_command.json
+  report_args = --section .text --function func_ov001_021fc348 --require-exact
+
+build overlay001_controller_command: phony build/decomp/src/overlays/ov001/overlay001_controller_command.o build/reports/overlay001_controller_command.txt
+
+overlay001_primary_sprite_flag_clear_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
+build build/decomp/src/overlays/ov001/overlay001_primary_sprite_flag_clear.o: mwccarm src/overlays/ov001/overlay001_primary_sprite_flag_clear.c | include/tingle/types.h
+  source = src/overlays/ov001/overlay001_primary_sprite_flag_clear.c
+  cflags = $overlay001_primary_sprite_flag_clear_cflags
+build build/decomp/delinks/src/overlays/ov001/overlay001_primary_sprite_flag_clear.o: dsd_delink config/arm9/config.yaml config/arm9/overlays/ov001/delinks.txt config/arm9/overlays/ov001/symbols.txt config/arm9/overlays/ov001/relocs.txt
+build build/reports/overlay001_primary_sprite_flag_clear.json: objdiff build/decomp/delinks/src/overlays/ov001/overlay001_primary_sprite_flag_clear.o | build/decomp/src/overlays/ov001/overlay001_primary_sprite_flag_clear.o
+  target_object = build/decomp/delinks/src/overlays/ov001/overlay001_primary_sprite_flag_clear.o
+  base_object = build/decomp/src/overlays/ov001/overlay001_primary_sprite_flag_clear.o
+build build/reports/overlay001_primary_sprite_flag_clear.txt: match_report build/reports/overlay001_primary_sprite_flag_clear.json | tools/report_objdiff.py
+  report_json = build/reports/overlay001_primary_sprite_flag_clear.json
+  report_args = --section .text --function func_ov001_021fc384 --require-exact
+
+build overlay001_primary_sprite_flag_clear: phony build/decomp/src/overlays/ov001/overlay001_primary_sprite_flag_clear.o build/reports/overlay001_primary_sprite_flag_clear.txt
+
+overlay001_primary_sprite_flag_set_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
+build build/decomp/src/overlays/ov001/overlay001_primary_sprite_flag_set.o: mwccarm src/overlays/ov001/overlay001_primary_sprite_flag_set.c | include/tingle/types.h
+  source = src/overlays/ov001/overlay001_primary_sprite_flag_set.c
+  cflags = $overlay001_primary_sprite_flag_set_cflags
+build build/decomp/delinks/src/overlays/ov001/overlay001_primary_sprite_flag_set.o: dsd_delink config/arm9/config.yaml config/arm9/overlays/ov001/delinks.txt config/arm9/overlays/ov001/symbols.txt config/arm9/overlays/ov001/relocs.txt
+build build/reports/overlay001_primary_sprite_flag_set.json: objdiff build/decomp/delinks/src/overlays/ov001/overlay001_primary_sprite_flag_set.o | build/decomp/src/overlays/ov001/overlay001_primary_sprite_flag_set.o
+  target_object = build/decomp/delinks/src/overlays/ov001/overlay001_primary_sprite_flag_set.o
+  base_object = build/decomp/src/overlays/ov001/overlay001_primary_sprite_flag_set.o
+build build/reports/overlay001_primary_sprite_flag_set.txt: match_report build/reports/overlay001_primary_sprite_flag_set.json | tools/report_objdiff.py
+  report_json = build/reports/overlay001_primary_sprite_flag_set.json
+  report_args = --section .text --function func_ov001_021fc39c --require-exact
+
+build overlay001_primary_sprite_flag_set: phony build/decomp/src/overlays/ov001/overlay001_primary_sprite_flag_set.o build/reports/overlay001_primary_sprite_flag_set.txt
+
+overlay001_region_query_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
+build build/decomp/src/overlays/ov001/overlay001_region_query.o: mwccarm src/overlays/ov001/overlay001_region_query.c | include/tingle/types.h
+  source = src/overlays/ov001/overlay001_region_query.c
+  cflags = $overlay001_region_query_cflags
+build build/decomp/delinks/src/overlays/ov001/overlay001_region_query.o: dsd_delink config/arm9/config.yaml config/arm9/overlays/ov001/delinks.txt config/arm9/overlays/ov001/symbols.txt config/arm9/overlays/ov001/relocs.txt
+build build/reports/overlay001_region_query.json: objdiff build/decomp/delinks/src/overlays/ov001/overlay001_region_query.o | build/decomp/src/overlays/ov001/overlay001_region_query.o
+  target_object = build/decomp/delinks/src/overlays/ov001/overlay001_region_query.o
+  base_object = build/decomp/src/overlays/ov001/overlay001_region_query.o
+build build/reports/overlay001_region_query.txt: match_report build/reports/overlay001_region_query.json | tools/report_objdiff.py
+  report_json = build/reports/overlay001_region_query.json
+  report_args = --section .text --function func_ov001_021fc3b4 --require-exact
+
+build overlay001_region_query: phony build/decomp/src/overlays/ov001/overlay001_region_query.o build/reports/overlay001_region_query.txt
+
+overlay001_region_test_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
+build build/decomp/src/overlays/ov001/overlay001_region_test.o: mwccarm src/overlays/ov001/overlay001_region_test.c | include/tingle/types.h
+  source = src/overlays/ov001/overlay001_region_test.c
+  cflags = $overlay001_region_test_cflags
+build build/decomp/delinks/src/overlays/ov001/overlay001_region_test.o: dsd_delink config/arm9/config.yaml config/arm9/overlays/ov001/delinks.txt config/arm9/overlays/ov001/symbols.txt config/arm9/overlays/ov001/relocs.txt
+build build/reports/overlay001_region_test.json: objdiff build/decomp/delinks/src/overlays/ov001/overlay001_region_test.o | build/decomp/src/overlays/ov001/overlay001_region_test.o
+  target_object = build/decomp/delinks/src/overlays/ov001/overlay001_region_test.o
+  base_object = build/decomp/src/overlays/ov001/overlay001_region_test.o
+build build/reports/overlay001_region_test.txt: match_report build/reports/overlay001_region_test.json | tools/report_objdiff.py
+  report_json = build/reports/overlay001_region_test.json
+  report_args = --section .text --function func_ov001_021fc3c4 --require-exact
+build overlay001_region_test: phony build/decomp/src/overlays/ov001/overlay001_region_test.o build/reports/overlay001_region_test.txt
+
+overlay001_secondary_region_query_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
+build build/decomp/src/overlays/ov001/overlay001_secondary_region_query.o: mwccarm src/overlays/ov001/overlay001_secondary_region_query.c | include/tingle/types.h
+  source = src/overlays/ov001/overlay001_secondary_region_query.c
+  cflags = $overlay001_secondary_region_query_cflags
+build build/decomp/delinks/src/overlays/ov001/overlay001_secondary_region_query.o: dsd_delink config/arm9/config.yaml config/arm9/overlays/ov001/delinks.txt config/arm9/overlays/ov001/symbols.txt config/arm9/overlays/ov001/relocs.txt
+build build/reports/overlay001_secondary_region_query.json: objdiff build/decomp/delinks/src/overlays/ov001/overlay001_secondary_region_query.o | build/decomp/src/overlays/ov001/overlay001_secondary_region_query.o
+  target_object = build/decomp/delinks/src/overlays/ov001/overlay001_secondary_region_query.o
+  base_object = build/decomp/src/overlays/ov001/overlay001_secondary_region_query.o
+build build/reports/overlay001_secondary_region_query.txt: match_report build/reports/overlay001_secondary_region_query.json | tools/report_objdiff.py
+  report_json = build/reports/overlay001_secondary_region_query.json
+  report_args = --section .text --function func_ov001_021fc3dc --require-exact
+build overlay001_secondary_region_query: phony build/decomp/src/overlays/ov001/overlay001_secondary_region_query.o build/reports/overlay001_secondary_region_query.txt
+
+overlay001_secondary_region_test_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
+build build/decomp/src/overlays/ov001/overlay001_secondary_region_test.o: mwccarm src/overlays/ov001/overlay001_secondary_region_test.c | include/tingle/types.h
+  source = src/overlays/ov001/overlay001_secondary_region_test.c
+  cflags = $overlay001_secondary_region_test_cflags
+build build/decomp/delinks/src/overlays/ov001/overlay001_secondary_region_test.o: dsd_delink config/arm9/config.yaml config/arm9/overlays/ov001/delinks.txt config/arm9/overlays/ov001/symbols.txt config/arm9/overlays/ov001/relocs.txt
+build build/reports/overlay001_secondary_region_test.json: objdiff build/decomp/delinks/src/overlays/ov001/overlay001_secondary_region_test.o | build/decomp/src/overlays/ov001/overlay001_secondary_region_test.o
+  target_object = build/decomp/delinks/src/overlays/ov001/overlay001_secondary_region_test.o
+  base_object = build/decomp/src/overlays/ov001/overlay001_secondary_region_test.o
+build build/reports/overlay001_secondary_region_test.txt: match_report build/reports/overlay001_secondary_region_test.json | tools/report_objdiff.py
+  report_json = build/reports/overlay001_secondary_region_test.json
+  report_args = --section .text --function func_ov001_021fc3ec --require-exact
+build overlay001_secondary_region_test: phony build/decomp/src/overlays/ov001/overlay001_secondary_region_test.o build/reports/overlay001_secondary_region_test.txt
+
+overlay001_cell_bind_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
+build build/decomp/src/overlays/ov001/overlay001_cell_bind.o: mwccarm src/overlays/ov001/overlay001_cell_bind.c | include/tingle/types.h
+  source = src/overlays/ov001/overlay001_cell_bind.c
+  cflags = $overlay001_cell_bind_cflags
+build build/decomp/delinks/src/overlays/ov001/overlay001_cell_bind.o: dsd_delink config/arm9/config.yaml config/arm9/overlays/ov001/delinks.txt config/arm9/overlays/ov001/symbols.txt config/arm9/overlays/ov001/relocs.txt
+build build/reports/overlay001_cell_bind.json: objdiff build/decomp/delinks/src/overlays/ov001/overlay001_cell_bind.o | build/decomp/src/overlays/ov001/overlay001_cell_bind.o
+  target_object = build/decomp/delinks/src/overlays/ov001/overlay001_cell_bind.o
+  base_object = build/decomp/src/overlays/ov001/overlay001_cell_bind.o
+build build/reports/overlay001_cell_bind.txt: match_report build/reports/overlay001_cell_bind.json | tools/report_objdiff.py
+  report_json = build/reports/overlay001_cell_bind.json
+  report_args = --section .text --function func_ov001_021fc404 --require-exact
+
+build overlay001_cell_bind: phony build/decomp/src/overlays/ov001/overlay001_cell_bind.o build/reports/overlay001_cell_bind.txt
+
+overlay001_cell_reset_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
+build build/decomp/src/overlays/ov001/overlay001_cell_reset.o: mwccarm src/overlays/ov001/overlay001_cell_reset.c | include/tingle/types.h
+  source = src/overlays/ov001/overlay001_cell_reset.c
+  cflags = $overlay001_cell_reset_cflags
+build build/decomp/delinks/src/overlays/ov001/overlay001_cell_reset.o: dsd_delink config/arm9/config.yaml config/arm9/overlays/ov001/delinks.txt config/arm9/overlays/ov001/symbols.txt config/arm9/overlays/ov001/relocs.txt
+build build/reports/overlay001_cell_reset.json: objdiff build/decomp/delinks/src/overlays/ov001/overlay001_cell_reset.o | build/decomp/src/overlays/ov001/overlay001_cell_reset.o
+  target_object = build/decomp/delinks/src/overlays/ov001/overlay001_cell_reset.o
+  base_object = build/decomp/src/overlays/ov001/overlay001_cell_reset.o
+build build/reports/overlay001_cell_reset.txt: match_report build/reports/overlay001_cell_reset.json | tools/report_objdiff.py
+  report_json = build/reports/overlay001_cell_reset.json
+  report_args = --section .text --function func_ov001_021fc460 --require-exact
+
+build overlay001_cell_reset: phony build/decomp/src/overlays/ov001/overlay001_cell_reset.o build/reports/overlay001_cell_reset.txt
+
+overlay001_row_resources_create_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
+build build/decomp/src/overlays/ov001/overlay001_row_resources_create.o: mwccarm src/overlays/ov001/overlay001_row_resources_create.c | include/tingle/types.h
+  source = src/overlays/ov001/overlay001_row_resources_create.c
+  cflags = $overlay001_row_resources_create_cflags
+build build/decomp/asm/overlays/ov001/overlay001_row_resources_create_021fc4b4.o: mwasmarm asm/overlays/ov001/overlay001_row_resources_create_021fc4b4.s
+build build/decomp/delinks/asm/overlays/ov001/overlay001_row_resources_create_021fc4b4.o: dsd_delink config/arm9/config.yaml config/arm9/overlays/ov001/delinks.txt config/arm9/overlays/ov001/symbols.txt config/arm9/overlays/ov001/relocs.txt
+build build/reports/overlay001_row_resources_create.json: objdiff build/decomp/delinks/asm/overlays/ov001/overlay001_row_resources_create_021fc4b4.o | build/decomp/asm/overlays/ov001/overlay001_row_resources_create_021fc4b4.o
+  target_object = build/decomp/delinks/asm/overlays/ov001/overlay001_row_resources_create_021fc4b4.o
+  base_object = build/decomp/asm/overlays/ov001/overlay001_row_resources_create_021fc4b4.o
+build build/reports/overlay001_row_resources_create.txt: match_report build/reports/overlay001_row_resources_create.json | tools/report_objdiff.py
+  report_json = build/reports/overlay001_row_resources_create.json
+  report_args = --section .text --function func_ov001_021fc4b4 --require-exact
+
+build overlay001_row_resources_create: phony build/decomp/src/overlays/ov001/overlay001_row_resources_create.o build/decomp/asm/overlays/ov001/overlay001_row_resources_create_021fc4b4.o build/reports/overlay001_row_resources_create.txt
+
+overlay001_row_resources_destroy_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
+build build/decomp/src/overlays/ov001/overlay001_row_resources_destroy.o: mwccarm src/overlays/ov001/overlay001_row_resources_destroy.c | include/tingle/types.h
+  source = src/overlays/ov001/overlay001_row_resources_destroy.c
+  cflags = $overlay001_row_resources_destroy_cflags
+build build/decomp/asm/overlays/ov001/overlay001_row_resources_destroy_021fc5dc.o: mwasmarm asm/overlays/ov001/overlay001_row_resources_destroy_021fc5dc.s
+build build/decomp/delinks/asm/overlays/ov001/overlay001_row_resources_destroy_021fc5dc.o: dsd_delink config/arm9/config.yaml config/arm9/overlays/ov001/delinks.txt config/arm9/overlays/ov001/symbols.txt config/arm9/overlays/ov001/relocs.txt
+build build/reports/overlay001_row_resources_destroy.json: objdiff build/decomp/delinks/asm/overlays/ov001/overlay001_row_resources_destroy_021fc5dc.o | build/decomp/asm/overlays/ov001/overlay001_row_resources_destroy_021fc5dc.o
+  target_object = build/decomp/delinks/asm/overlays/ov001/overlay001_row_resources_destroy_021fc5dc.o
+  base_object = build/decomp/asm/overlays/ov001/overlay001_row_resources_destroy_021fc5dc.o
+build build/reports/overlay001_row_resources_destroy.txt: match_report build/reports/overlay001_row_resources_destroy.json | tools/report_objdiff.py
+  report_json = build/reports/overlay001_row_resources_destroy.json
+  report_args = --section .text --function func_ov001_021fc5dc --require-exact
+
+build overlay001_row_resources_destroy: phony build/decomp/src/overlays/ov001/overlay001_row_resources_destroy.o build/decomp/asm/overlays/ov001/overlay001_row_resources_destroy_021fc5dc.o build/reports/overlay001_row_resources_destroy.txt
+
+overlay001_selection_sync_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
+build build/decomp/src/overlays/ov001/overlay001_selection_sync.o: mwccarm src/overlays/ov001/overlay001_selection_sync.c | include/tingle/types.h
+  source = src/overlays/ov001/overlay001_selection_sync.c
+  cflags = $overlay001_selection_sync_cflags
+build build/decomp/asm/overlays/ov001/overlay001_selection_sync_021fc644.o: mwasmarm asm/overlays/ov001/overlay001_selection_sync_021fc644.s
+build build/decomp/delinks/asm/overlays/ov001/overlay001_selection_sync_021fc644.o: dsd_delink config/arm9/config.yaml config/arm9/overlays/ov001/delinks.txt config/arm9/overlays/ov001/symbols.txt config/arm9/overlays/ov001/relocs.txt
+build build/reports/overlay001_selection_sync.json: objdiff build/decomp/delinks/asm/overlays/ov001/overlay001_selection_sync_021fc644.o | build/decomp/asm/overlays/ov001/overlay001_selection_sync_021fc644.o
+  target_object = build/decomp/delinks/asm/overlays/ov001/overlay001_selection_sync_021fc644.o
+  base_object = build/decomp/asm/overlays/ov001/overlay001_selection_sync_021fc644.o
+build build/reports/overlay001_selection_sync.txt: match_report build/reports/overlay001_selection_sync.json | tools/report_objdiff.py
+  report_json = build/reports/overlay001_selection_sync.json
+  report_args = --section .text --function func_ov001_021fc644 --require-exact
+
+build overlay001_selection_sync: phony build/decomp/src/overlays/ov001/overlay001_selection_sync.o build/decomp/asm/overlays/ov001/overlay001_selection_sync_021fc644.o build/reports/overlay001_selection_sync.txt
+
+overlay001_selection_set_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
+build build/decomp/src/overlays/ov001/overlay001_selection_set.o: mwccarm src/overlays/ov001/overlay001_selection_set.c | include/tingle/types.h
+  source = src/overlays/ov001/overlay001_selection_set.c
+  cflags = $overlay001_selection_set_cflags
+build build/decomp/asm/overlays/ov001/overlay001_selection_set_021fc758.o: mwasmarm asm/overlays/ov001/overlay001_selection_set_021fc758.s
+build build/decomp/delinks/asm/overlays/ov001/overlay001_selection_set_021fc758.o: dsd_delink config/arm9/config.yaml config/arm9/overlays/ov001/delinks.txt config/arm9/overlays/ov001/symbols.txt config/arm9/overlays/ov001/relocs.txt
+build build/reports/overlay001_selection_set.json: objdiff build/decomp/delinks/asm/overlays/ov001/overlay001_selection_set_021fc758.o | build/decomp/asm/overlays/ov001/overlay001_selection_set_021fc758.o
+  target_object = build/decomp/delinks/asm/overlays/ov001/overlay001_selection_set_021fc758.o
+  base_object = build/decomp/asm/overlays/ov001/overlay001_selection_set_021fc758.o
+build build/reports/overlay001_selection_set.txt: match_report build/reports/overlay001_selection_set.json | tools/report_objdiff.py
+  report_json = build/reports/overlay001_selection_set.json
+  report_args = --section .text --function func_ov001_021fc758 --require-exact
+
+build overlay001_selection_set: phony build/decomp/src/overlays/ov001/overlay001_selection_set.o build/decomp/asm/overlays/ov001/overlay001_selection_set_021fc758.o build/reports/overlay001_selection_set.txt
+
+overlay001_metadata_get_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
+build build/decomp/src/overlays/ov001/overlay001_metadata_get.o: mwccarm src/overlays/ov001/overlay001_metadata_get.c | include/tingle/types.h
+  source = src/overlays/ov001/overlay001_metadata_get.c
+  cflags = $overlay001_metadata_get_cflags
+build build/decomp/delinks/src/overlays/ov001/overlay001_metadata_get.o: dsd_delink config/arm9/config.yaml config/arm9/overlays/ov001/delinks.txt config/arm9/overlays/ov001/symbols.txt config/arm9/overlays/ov001/relocs.txt
+build build/reports/overlay001_metadata_get.json: objdiff build/decomp/delinks/src/overlays/ov001/overlay001_metadata_get.o | build/decomp/src/overlays/ov001/overlay001_metadata_get.o
+  target_object = build/decomp/delinks/src/overlays/ov001/overlay001_metadata_get.o
+  base_object = build/decomp/src/overlays/ov001/overlay001_metadata_get.o
+build build/reports/overlay001_metadata_get.txt: match_report build/reports/overlay001_metadata_get.json | tools/report_objdiff.py
+  report_json = build/reports/overlay001_metadata_get.json
+  report_args = --section .text --function func_ov001_021fc7c0 --require-exact
+
+build overlay001_metadata_get: phony build/decomp/src/overlays/ov001/overlay001_metadata_get.o build/reports/overlay001_metadata_get.txt
+
+overlay001_active_metadata_get_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
+build build/decomp/src/overlays/ov001/overlay001_active_metadata_get.o: mwccarm src/overlays/ov001/overlay001_active_metadata_get.c | include/tingle/types.h
+  source = src/overlays/ov001/overlay001_active_metadata_get.c
+  cflags = $overlay001_active_metadata_get_cflags
+build build/decomp/delinks/src/overlays/ov001/overlay001_active_metadata_get.o: dsd_delink config/arm9/config.yaml config/arm9/overlays/ov001/delinks.txt config/arm9/overlays/ov001/symbols.txt config/arm9/overlays/ov001/relocs.txt
+build build/reports/overlay001_active_metadata_get.json: objdiff build/decomp/delinks/src/overlays/ov001/overlay001_active_metadata_get.o | build/decomp/src/overlays/ov001/overlay001_active_metadata_get.o
+  target_object = build/decomp/delinks/src/overlays/ov001/overlay001_active_metadata_get.o
+  base_object = build/decomp/src/overlays/ov001/overlay001_active_metadata_get.o
+build build/reports/overlay001_active_metadata_get.txt: match_report build/reports/overlay001_active_metadata_get.json | tools/report_objdiff.py
+  report_json = build/reports/overlay001_active_metadata_get.json
+  report_args = --section .text --function func_ov001_021fc7e4 --require-exact
+
+build overlay001_active_metadata_get: phony build/decomp/src/overlays/ov001/overlay001_active_metadata_get.o build/reports/overlay001_active_metadata_get.txt
+
+overlay001_active_cell_refresh_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
+build build/decomp/src/overlays/ov001/overlay001_active_cell_refresh.o: mwccarm src/overlays/ov001/overlay001_active_cell_refresh.c | include/tingle/types.h
+  source = src/overlays/ov001/overlay001_active_cell_refresh.c
+  cflags = $overlay001_active_cell_refresh_cflags
+build build/decomp/delinks/src/overlays/ov001/overlay001_active_cell_refresh.o: dsd_delink config/arm9/config.yaml config/arm9/overlays/ov001/delinks.txt config/arm9/overlays/ov001/symbols.txt config/arm9/overlays/ov001/relocs.txt
+build build/reports/overlay001_active_cell_refresh.json: objdiff build/decomp/delinks/src/overlays/ov001/overlay001_active_cell_refresh.o | build/decomp/src/overlays/ov001/overlay001_active_cell_refresh.o
+  target_object = build/decomp/delinks/src/overlays/ov001/overlay001_active_cell_refresh.o
+  base_object = build/decomp/src/overlays/ov001/overlay001_active_cell_refresh.o
+build build/reports/overlay001_active_cell_refresh.txt: match_report build/reports/overlay001_active_cell_refresh.json | tools/report_objdiff.py
+  report_json = build/reports/overlay001_active_cell_refresh.json
+  report_args = --section .text --function func_ov001_021fc7f4 --require-exact
+
+build overlay001_active_cell_refresh: phony build/decomp/src/overlays/ov001/overlay001_active_cell_refresh.o build/reports/overlay001_active_cell_refresh.txt
+
+overlay001_active_cell_transfer_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
+build build/decomp/src/overlays/ov001/overlay001_active_cell_transfer.o: mwccarm src/overlays/ov001/overlay001_active_cell_transfer.c | include/tingle/types.h
+  source = src/overlays/ov001/overlay001_active_cell_transfer.c
+  cflags = $overlay001_active_cell_transfer_cflags
+build build/decomp/asm/overlays/ov001/overlay001_active_cell_transfer_021fc88c.o: mwasmarm asm/overlays/ov001/overlay001_active_cell_transfer_021fc88c.s
+build build/decomp/delinks/asm/overlays/ov001/overlay001_active_cell_transfer_021fc88c.o: dsd_delink config/arm9/config.yaml config/arm9/overlays/ov001/delinks.txt config/arm9/overlays/ov001/symbols.txt config/arm9/overlays/ov001/relocs.txt
+build build/reports/overlay001_active_cell_transfer.json: objdiff build/decomp/delinks/asm/overlays/ov001/overlay001_active_cell_transfer_021fc88c.o | build/decomp/asm/overlays/ov001/overlay001_active_cell_transfer_021fc88c.o
+  target_object = build/decomp/delinks/asm/overlays/ov001/overlay001_active_cell_transfer_021fc88c.o
+  base_object = build/decomp/asm/overlays/ov001/overlay001_active_cell_transfer_021fc88c.o
+build build/reports/overlay001_active_cell_transfer.txt: match_report build/reports/overlay001_active_cell_transfer.json | tools/report_objdiff.py
+  report_json = build/reports/overlay001_active_cell_transfer.json
+  report_args = --section .text --function func_ov001_021fc88c --require-exact
+
+build overlay001_active_cell_transfer: phony build/decomp/src/overlays/ov001/overlay001_active_cell_transfer.o build/decomp/asm/overlays/ov001/overlay001_active_cell_transfer_021fc88c.o build/reports/overlay001_active_cell_transfer.txt
+
+overlay001_active_cell_merge_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
+build build/decomp/src/overlays/ov001/overlay001_active_cell_merge.o: mwccarm src/overlays/ov001/overlay001_active_cell_merge.c | include/tingle/types.h
+  source = src/overlays/ov001/overlay001_active_cell_merge.c
+  cflags = $overlay001_active_cell_merge_cflags
+build build/decomp/asm/overlays/ov001/overlay001_active_cell_merge_021fc964.o: mwasmarm asm/overlays/ov001/overlay001_active_cell_merge_021fc964.s
+build build/decomp/delinks/asm/overlays/ov001/overlay001_active_cell_merge_021fc964.o: dsd_delink config/arm9/config.yaml config/arm9/overlays/ov001/delinks.txt config/arm9/overlays/ov001/symbols.txt config/arm9/overlays/ov001/relocs.txt
+build build/reports/overlay001_active_cell_merge.json: objdiff build/decomp/delinks/asm/overlays/ov001/overlay001_active_cell_merge_021fc964.o | build/decomp/asm/overlays/ov001/overlay001_active_cell_merge_021fc964.o
+  target_object = build/decomp/delinks/asm/overlays/ov001/overlay001_active_cell_merge_021fc964.o
+  base_object = build/decomp/asm/overlays/ov001/overlay001_active_cell_merge_021fc964.o
+build build/reports/overlay001_active_cell_merge.txt: match_report build/reports/overlay001_active_cell_merge.json | tools/report_objdiff.py
+  report_json = build/reports/overlay001_active_cell_merge.json
+  report_args = --section .text --function func_ov001_021fc964 --require-exact
+
+build overlay001_active_cell_merge: phony build/decomp/src/overlays/ov001/overlay001_active_cell_merge.o build/decomp/asm/overlays/ov001/overlay001_active_cell_merge_021fc964.o build/reports/overlay001_active_cell_merge.txt
+
+overlay001_view_apply_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
+build build/decomp/src/overlays/ov001/overlay001_view_apply.o: mwccarm src/overlays/ov001/overlay001_view_apply.c | include/tingle/types.h
+  source = src/overlays/ov001/overlay001_view_apply.c
+  cflags = $overlay001_view_apply_cflags
+build build/decomp/delinks/src/overlays/ov001/overlay001_view_apply.o: dsd_delink config/arm9/config.yaml config/arm9/overlays/ov001/delinks.txt config/arm9/overlays/ov001/symbols.txt config/arm9/overlays/ov001/relocs.txt
+build build/reports/overlay001_view_apply.json: objdiff build/decomp/delinks/src/overlays/ov001/overlay001_view_apply.o | build/decomp/src/overlays/ov001/overlay001_view_apply.o
+  target_object = build/decomp/delinks/src/overlays/ov001/overlay001_view_apply.o
+  base_object = build/decomp/src/overlays/ov001/overlay001_view_apply.o
+build build/reports/overlay001_view_apply.txt: match_report build/reports/overlay001_view_apply.json | tools/report_objdiff.py
+  report_json = build/reports/overlay001_view_apply.json
+  report_args = --section .text --function func_ov001_021fca38 --require-exact
+
+build overlay001_view_apply: phony build/decomp/src/overlays/ov001/overlay001_view_apply.o build/reports/overlay001_view_apply.txt
+
+overlay001_view_capture_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
+build build/decomp/src/overlays/ov001/overlay001_view_capture.o: mwccarm src/overlays/ov001/overlay001_view_capture.c | include/tingle/types.h
+  source = src/overlays/ov001/overlay001_view_capture.c
+  cflags = $overlay001_view_capture_cflags
+build build/decomp/asm/overlays/ov001/overlay001_view_capture_021fca94.o: mwasmarm asm/overlays/ov001/overlay001_view_capture_021fca94.s
+build build/decomp/delinks/asm/overlays/ov001/overlay001_view_capture_021fca94.o: dsd_delink config/arm9/config.yaml config/arm9/overlays/ov001/delinks.txt config/arm9/overlays/ov001/symbols.txt config/arm9/overlays/ov001/relocs.txt
+build build/reports/overlay001_view_capture.json: objdiff build/decomp/delinks/asm/overlays/ov001/overlay001_view_capture_021fca94.o | build/decomp/asm/overlays/ov001/overlay001_view_capture_021fca94.o
+  target_object = build/decomp/delinks/asm/overlays/ov001/overlay001_view_capture_021fca94.o
+  base_object = build/decomp/asm/overlays/ov001/overlay001_view_capture_021fca94.o
+build build/reports/overlay001_view_capture.txt: match_report build/reports/overlay001_view_capture.json | tools/report_objdiff.py
+  report_json = build/reports/overlay001_view_capture.json
+  report_args = --section .text --function func_ov001_021fca94 --require-exact
+
+build overlay001_view_capture: phony build/decomp/src/overlays/ov001/overlay001_view_capture.o build/decomp/asm/overlays/ov001/overlay001_view_capture_021fca94.o build/reports/overlay001_view_capture.txt
+
+overlay001_view_record_from_index_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
+build build/decomp/src/overlays/ov001/overlay001_view_record_from_index.o: mwccarm src/overlays/ov001/overlay001_view_record_from_index.c | include/tingle/types.h
+  source = src/overlays/ov001/overlay001_view_record_from_index.c
+  cflags = $overlay001_view_record_from_index_cflags
+build build/decomp/asm/overlays/ov001/overlay001_view_record_from_index_021fcaac.o: mwasmarm asm/overlays/ov001/overlay001_view_record_from_index_021fcaac.s
+build build/decomp/delinks/asm/overlays/ov001/overlay001_view_record_from_index_021fcaac.o: dsd_delink config/arm9/config.yaml config/arm9/overlays/ov001/delinks.txt config/arm9/overlays/ov001/symbols.txt config/arm9/overlays/ov001/relocs.txt
+build build/reports/overlay001_view_record_from_index.json: objdiff build/decomp/delinks/asm/overlays/ov001/overlay001_view_record_from_index_021fcaac.o | build/decomp/asm/overlays/ov001/overlay001_view_record_from_index_021fcaac.o
+  target_object = build/decomp/delinks/asm/overlays/ov001/overlay001_view_record_from_index_021fcaac.o
+  base_object = build/decomp/asm/overlays/ov001/overlay001_view_record_from_index_021fcaac.o
+build build/reports/overlay001_view_record_from_index.txt: match_report build/reports/overlay001_view_record_from_index.json | tools/report_objdiff.py
+  report_json = build/reports/overlay001_view_record_from_index.json
+  report_args = --section .text --function func_ov001_021fcaac --require-exact
+
+build overlay001_view_record_from_index: phony build/decomp/src/overlays/ov001/overlay001_view_record_from_index.o build/decomp/asm/overlays/ov001/overlay001_view_record_from_index_021fcaac.o build/reports/overlay001_view_record_from_index.txt
+
+overlay001_direction_dispatch_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
+build build/decomp/src/overlays/ov001/overlay001_direction_dispatch.o: mwccarm src/overlays/ov001/overlay001_direction_dispatch.c | include/tingle/types.h
+  source = src/overlays/ov001/overlay001_direction_dispatch.c
+  cflags = $overlay001_direction_dispatch_cflags
+build build/decomp/delinks/src/overlays/ov001/overlay001_direction_dispatch.o: dsd_delink config/arm9/config.yaml config/arm9/overlays/ov001/delinks.txt config/arm9/overlays/ov001/symbols.txt config/arm9/overlays/ov001/relocs.txt
+build build/reports/overlay001_direction_dispatch.json: objdiff build/decomp/delinks/src/overlays/ov001/overlay001_direction_dispatch.o | build/decomp/src/overlays/ov001/overlay001_direction_dispatch.o
+  target_object = build/decomp/delinks/src/overlays/ov001/overlay001_direction_dispatch.o
+  base_object = build/decomp/src/overlays/ov001/overlay001_direction_dispatch.o
+build build/reports/overlay001_direction_dispatch.txt: match_report build/reports/overlay001_direction_dispatch.json | tools/report_objdiff.py
+  report_json = build/reports/overlay001_direction_dispatch.json
+  report_args = --section .text --function func_ov001_021fcae0 --require-exact
+
+build overlay001_direction_dispatch: phony build/decomp/src/overlays/ov001/overlay001_direction_dispatch.o build/reports/overlay001_direction_dispatch.txt
+
+overlay001_controller_action_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
+build build/decomp/src/overlays/ov001/overlay001_controller_action.o: mwccarm src/overlays/ov001/overlay001_controller_action.c | include/tingle/types.h
+  source = src/overlays/ov001/overlay001_controller_action.c
+  cflags = $overlay001_controller_action_cflags
+build build/decomp/delinks/src/overlays/ov001/overlay001_controller_action.o: dsd_delink config/arm9/config.yaml config/arm9/overlays/ov001/delinks.txt config/arm9/overlays/ov001/symbols.txt config/arm9/overlays/ov001/relocs.txt
+build build/reports/overlay001_controller_action.json: objdiff build/decomp/delinks/src/overlays/ov001/overlay001_controller_action.o | build/decomp/src/overlays/ov001/overlay001_controller_action.o
+  target_object = build/decomp/delinks/src/overlays/ov001/overlay001_controller_action.o
+  base_object = build/decomp/src/overlays/ov001/overlay001_controller_action.o
+build build/reports/overlay001_controller_action.txt: match_report build/reports/overlay001_controller_action.json | tools/report_objdiff.py
+  report_json = build/reports/overlay001_controller_action.json
+  report_args = --section .text --function func_ov001_021fcb60 --require-exact
+
+build overlay001_controller_action: phony build/decomp/src/overlays/ov001/overlay001_controller_action.o build/reports/overlay001_controller_action.txt
+
+overlay001_controller_action_alt_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
+build build/decomp/src/overlays/ov001/overlay001_controller_action_alt.o: mwccarm src/overlays/ov001/overlay001_controller_action_alt.c | include/tingle/types.h
+  source = src/overlays/ov001/overlay001_controller_action_alt.c
+  cflags = $overlay001_controller_action_alt_cflags
+build build/decomp/delinks/src/overlays/ov001/overlay001_controller_action_alt.o: dsd_delink config/arm9/config.yaml config/arm9/overlays/ov001/delinks.txt config/arm9/overlays/ov001/symbols.txt config/arm9/overlays/ov001/relocs.txt
+build build/reports/overlay001_controller_action_alt.json: objdiff build/decomp/delinks/src/overlays/ov001/overlay001_controller_action_alt.o | build/decomp/src/overlays/ov001/overlay001_controller_action_alt.o
+  target_object = build/decomp/delinks/src/overlays/ov001/overlay001_controller_action_alt.o
+  base_object = build/decomp/src/overlays/ov001/overlay001_controller_action_alt.o
+build build/reports/overlay001_controller_action_alt.txt: match_report build/reports/overlay001_controller_action_alt.json | tools/report_objdiff.py
+  report_json = build/reports/overlay001_controller_action_alt.json
+  report_args = --section .text --function func_ov001_021fcbf0 --require-exact
+
+build overlay001_controller_action_alt: phony build/decomp/src/overlays/ov001/overlay001_controller_action_alt.o build/reports/overlay001_controller_action_alt.txt
+
+overlay001_controller_status_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
+build build/decomp/src/overlays/ov001/overlay001_controller_status.o: mwccarm src/overlays/ov001/overlay001_controller_status.c | include/tingle/types.h
+  source = src/overlays/ov001/overlay001_controller_status.c
+  cflags = $overlay001_controller_status_cflags
+build build/decomp/delinks/src/overlays/ov001/overlay001_controller_status.o: dsd_delink config/arm9/config.yaml config/arm9/overlays/ov001/delinks.txt config/arm9/overlays/ov001/symbols.txt config/arm9/overlays/ov001/relocs.txt
+build build/reports/overlay001_controller_status.json: objdiff build/decomp/delinks/src/overlays/ov001/overlay001_controller_status.o | build/decomp/src/overlays/ov001/overlay001_controller_status.o
+  target_object = build/decomp/delinks/src/overlays/ov001/overlay001_controller_status.o
+  base_object = build/decomp/src/overlays/ov001/overlay001_controller_status.o
+build build/reports/overlay001_controller_status.txt: match_report build/reports/overlay001_controller_status.json | tools/report_objdiff.py
+  report_json = build/reports/overlay001_controller_status.json
+  report_args = --section .text --function func_ov001_021fcc44 --require-exact
+
+build overlay001_controller_status: phony build/decomp/src/overlays/ov001/overlay001_controller_status.o build/reports/overlay001_controller_status.txt
+
+overlay002_presentation_constructor_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
+build build/decomp/src/overlays/ov002/overlay002_presentation_constructor.o: mwccarm src/overlays/ov002/overlay002_presentation_constructor.c | include/tingle/types.h
+  source = src/overlays/ov002/overlay002_presentation_constructor.c
+  cflags = $overlay002_presentation_constructor_cflags
+build build/decomp/asm/overlays/ov002/overlay002_presentation_constructor_021fb6e0.o: mwasmarm asm/overlays/ov002/overlay002_presentation_constructor_021fb6e0.s
+build build/decomp/delinks/asm/overlays/ov002/overlay002_presentation_constructor_021fb6e0.o: dsd_delink config/arm9/config.yaml config/arm9/overlays/ov002/delinks.txt config/arm9/overlays/ov002/symbols.txt config/arm9/overlays/ov002/relocs.txt
+build build/reports/overlay002_presentation_constructor.json: objdiff build/decomp/delinks/asm/overlays/ov002/overlay002_presentation_constructor_021fb6e0.o | build/decomp/asm/overlays/ov002/overlay002_presentation_constructor_021fb6e0.o
+  target_object = build/decomp/delinks/asm/overlays/ov002/overlay002_presentation_constructor_021fb6e0.o
+  base_object = build/decomp/asm/overlays/ov002/overlay002_presentation_constructor_021fb6e0.o
+build build/reports/overlay002_presentation_constructor.txt: match_report build/reports/overlay002_presentation_constructor.json | tools/report_objdiff.py
+  report_json = build/reports/overlay002_presentation_constructor.json
+  report_args = --section .text --function func_ov002_021fb6e0 --require-exact
+
+build overlay002_presentation_constructor: phony build/decomp/src/overlays/ov002/overlay002_presentation_constructor.o build/decomp/asm/overlays/ov002/overlay002_presentation_constructor_021fb6e0.o build/reports/overlay002_presentation_constructor.txt
+
+overlay002_presentation_destroy_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
+build build/decomp/src/overlays/ov002/overlay002_presentation_destroy.o: mwccarm src/overlays/ov002/overlay002_presentation_destroy.c | include/tingle/types.h
+  source = src/overlays/ov002/overlay002_presentation_destroy.c
+  cflags = $overlay002_presentation_destroy_cflags
+build build/decomp/delinks/src/overlays/ov002/overlay002_presentation_destroy.o: dsd_delink config/arm9/config.yaml config/arm9/overlays/ov002/delinks.txt config/arm9/overlays/ov002/symbols.txt config/arm9/overlays/ov002/relocs.txt
+build build/reports/overlay002_presentation_destroy.json: objdiff build/decomp/delinks/src/overlays/ov002/overlay002_presentation_destroy.o | build/decomp/src/overlays/ov002/overlay002_presentation_destroy.o
+  target_object = build/decomp/delinks/src/overlays/ov002/overlay002_presentation_destroy.o
+  base_object = build/decomp/src/overlays/ov002/overlay002_presentation_destroy.o
+build build/reports/overlay002_presentation_destroy.txt: match_report build/reports/overlay002_presentation_destroy.json | tools/report_objdiff.py
+  report_json = build/reports/overlay002_presentation_destroy.json
+  report_args = --section .text --function func_ov002_021fb9c4 --require-exact
+
+build overlay002_presentation_destroy: phony build/decomp/src/overlays/ov002/overlay002_presentation_destroy.o build/reports/overlay002_presentation_destroy.txt
+
+overlay002_presentation_update_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
+build build/decomp/src/overlays/ov002/overlay002_presentation_update.o: mwccarm src/overlays/ov002/overlay002_presentation_update.c | include/tingle/types.h
+  source = src/overlays/ov002/overlay002_presentation_update.c
+  cflags = $overlay002_presentation_update_cflags
+build build/decomp/delinks/src/overlays/ov002/overlay002_presentation_update.o: dsd_delink config/arm9/config.yaml config/arm9/overlays/ov002/delinks.txt config/arm9/overlays/ov002/symbols.txt config/arm9/overlays/ov002/relocs.txt
+build build/reports/overlay002_presentation_update.json: objdiff build/decomp/delinks/src/overlays/ov002/overlay002_presentation_update.o | build/decomp/src/overlays/ov002/overlay002_presentation_update.o
+  target_object = build/decomp/delinks/src/overlays/ov002/overlay002_presentation_update.o
+  base_object = build/decomp/src/overlays/ov002/overlay002_presentation_update.o
+build build/reports/overlay002_presentation_update.txt: match_report build/reports/overlay002_presentation_update.json | tools/report_objdiff.py
+  report_json = build/reports/overlay002_presentation_update.json
+  report_args = --section .text --function func_ov002_021fba00 --require-exact
+
+build overlay002_presentation_update: phony build/decomp/src/overlays/ov002/overlay002_presentation_update.o build/reports/overlay002_presentation_update.txt
+
+overlay002_value_display_set_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
+build build/decomp/src/overlays/ov002/overlay002_value_display_set.o: mwccarm src/overlays/ov002/overlay002_value_display_set.c | include/tingle/types.h
+  source = src/overlays/ov002/overlay002_value_display_set.c
+  cflags = $overlay002_value_display_set_cflags
+build build/decomp/asm/overlays/ov002/overlay002_value_display_set_021fba1c.o: mwasmarm asm/overlays/ov002/overlay002_value_display_set_021fba1c.s
+build build/decomp/delinks/asm/overlays/ov002/overlay002_value_display_set_021fba1c.o: dsd_delink config/arm9/config.yaml config/arm9/overlays/ov002/delinks.txt config/arm9/overlays/ov002/symbols.txt config/arm9/overlays/ov002/relocs.txt
+build build/reports/overlay002_value_display_set.json: objdiff build/decomp/delinks/asm/overlays/ov002/overlay002_value_display_set_021fba1c.o | build/decomp/asm/overlays/ov002/overlay002_value_display_set_021fba1c.o
+  target_object = build/decomp/delinks/asm/overlays/ov002/overlay002_value_display_set_021fba1c.o
+  base_object = build/decomp/asm/overlays/ov002/overlay002_value_display_set_021fba1c.o
+build build/reports/overlay002_value_display_set.txt: match_report build/reports/overlay002_value_display_set.json | tools/report_objdiff.py
+  report_json = build/reports/overlay002_value_display_set.json
+  report_args = --section .text --function func_ov002_021fba1c --require-exact
+
+build overlay002_value_display_set: phony build/decomp/src/overlays/ov002/overlay002_value_display_set.o build/decomp/asm/overlays/ov002/overlay002_value_display_set_021fba1c.o build/reports/overlay002_value_display_set.txt
+
+overlay002_icon_hit_test_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
+build build/decomp/src/overlays/ov002/overlay002_icon_hit_test.o: mwccarm src/overlays/ov002/overlay002_icon_hit_test.c | include/tingle/types.h
+  source = src/overlays/ov002/overlay002_icon_hit_test.c
+  cflags = $overlay002_icon_hit_test_cflags
+build build/decomp/asm/overlays/ov002/overlay002_icon_hit_test_021fbb68.o: mwasmarm asm/overlays/ov002/overlay002_icon_hit_test_021fbb68.s
+build build/decomp/delinks/asm/overlays/ov002/overlay002_icon_hit_test_021fbb68.o: dsd_delink config/arm9/config.yaml config/arm9/overlays/ov002/delinks.txt config/arm9/overlays/ov002/symbols.txt config/arm9/overlays/ov002/relocs.txt
+build build/reports/overlay002_icon_hit_test.json: objdiff build/decomp/delinks/asm/overlays/ov002/overlay002_icon_hit_test_021fbb68.o | build/decomp/asm/overlays/ov002/overlay002_icon_hit_test_021fbb68.o
+  target_object = build/decomp/delinks/asm/overlays/ov002/overlay002_icon_hit_test_021fbb68.o
+  base_object = build/decomp/asm/overlays/ov002/overlay002_icon_hit_test_021fbb68.o
+build build/reports/overlay002_icon_hit_test.txt: match_report build/reports/overlay002_icon_hit_test.json | tools/report_objdiff.py
+  report_json = build/reports/overlay002_icon_hit_test.json
+  report_args = --section .text --function func_ov002_021fbb68 --require-exact
+
+build overlay002_icon_hit_test: phony build/decomp/src/overlays/ov002/overlay002_icon_hit_test.o build/decomp/asm/overlays/ov002/overlay002_icon_hit_test_021fbb68.o build/reports/overlay002_icon_hit_test.txt
+
+overlay002_selected_key_apply_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
+build build/decomp/src/overlays/ov002/overlay002_selected_key_apply.o: mwccarm src/overlays/ov002/overlay002_selected_key_apply.c | include/tingle/types.h
+  source = src/overlays/ov002/overlay002_selected_key_apply.c
+  cflags = $overlay002_selected_key_apply_cflags
+build build/decomp/asm/overlays/ov002/overlay002_selected_key_apply_021fbc54.o: mwasmarm asm/overlays/ov002/overlay002_selected_key_apply_021fbc54.s
+build build/decomp/delinks/asm/overlays/ov002/overlay002_selected_key_apply_021fbc54.o: dsd_delink config/arm9/config.yaml config/arm9/overlays/ov002/delinks.txt config/arm9/overlays/ov002/symbols.txt config/arm9/overlays/ov002/relocs.txt
+build build/reports/overlay002_selected_key_apply.json: objdiff build/decomp/delinks/asm/overlays/ov002/overlay002_selected_key_apply_021fbc54.o | build/decomp/asm/overlays/ov002/overlay002_selected_key_apply_021fbc54.o
+  target_object = build/decomp/delinks/asm/overlays/ov002/overlay002_selected_key_apply_021fbc54.o
+  base_object = build/decomp/asm/overlays/ov002/overlay002_selected_key_apply_021fbc54.o
+build build/reports/overlay002_selected_key_apply.txt: match_report build/reports/overlay002_selected_key_apply.json | tools/report_objdiff.py
+  report_json = build/reports/overlay002_selected_key_apply.json
+  report_args = --section .text --function func_ov002_021fbc54 --require-exact
+
+build overlay002_selected_key_apply: phony build/decomp/src/overlays/ov002/overlay002_selected_key_apply.o build/decomp/asm/overlays/ov002/overlay002_selected_key_apply_021fbc54.o build/reports/overlay002_selected_key_apply.txt
+
+overlay002_selected_icon_release_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
+build build/decomp/src/overlays/ov002/overlay002_selected_icon_release.o: mwccarm src/overlays/ov002/overlay002_selected_icon_release.c | include/tingle/types.h
+  source = src/overlays/ov002/overlay002_selected_icon_release.c
+  cflags = $overlay002_selected_icon_release_cflags
+build build/decomp/delinks/src/overlays/ov002/overlay002_selected_icon_release.o: dsd_delink config/arm9/config.yaml config/arm9/overlays/ov002/delinks.txt config/arm9/overlays/ov002/symbols.txt config/arm9/overlays/ov002/relocs.txt
+build build/reports/overlay002_selected_icon_release.json: objdiff build/decomp/delinks/src/overlays/ov002/overlay002_selected_icon_release.o | build/decomp/src/overlays/ov002/overlay002_selected_icon_release.o
+  target_object = build/decomp/delinks/src/overlays/ov002/overlay002_selected_icon_release.o
+  base_object = build/decomp/src/overlays/ov002/overlay002_selected_icon_release.o
+build build/reports/overlay002_selected_icon_release.txt: match_report build/reports/overlay002_selected_icon_release.json | tools/report_objdiff.py
+  report_json = build/reports/overlay002_selected_icon_release.json
+  report_args = --section .text --function func_ov002_021fbd64 --require-exact
+
+build overlay002_selected_icon_release: phony build/decomp/src/overlays/ov002/overlay002_selected_icon_release.o build/reports/overlay002_selected_icon_release.txt
+
+overlay002_phase_countdown_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
+build build/decomp/src/overlays/ov002/overlay002_phase_countdown.o: mwccarm src/overlays/ov002/overlay002_phase_countdown.c | include/tingle/types.h
+  source = src/overlays/ov002/overlay002_phase_countdown.c
+  cflags = $overlay002_phase_countdown_cflags
+build build/decomp/delinks/src/overlays/ov002/overlay002_phase_countdown.o: dsd_delink config/arm9/config.yaml config/arm9/overlays/ov002/delinks.txt config/arm9/overlays/ov002/symbols.txt config/arm9/overlays/ov002/relocs.txt
+build build/reports/overlay002_phase_countdown.json: objdiff build/decomp/delinks/src/overlays/ov002/overlay002_phase_countdown.o | build/decomp/src/overlays/ov002/overlay002_phase_countdown.o
+  target_object = build/decomp/delinks/src/overlays/ov002/overlay002_phase_countdown.o
+  base_object = build/decomp/src/overlays/ov002/overlay002_phase_countdown.o
+build build/reports/overlay002_phase_countdown.txt: match_report build/reports/overlay002_phase_countdown.json | tools/report_objdiff.py
+  report_json = build/reports/overlay002_phase_countdown.json
+  report_args = --section .text --function func_ov002_021fbd98 --require-exact
+
+build overlay002_phase_countdown: phony build/decomp/src/overlays/ov002/overlay002_phase_countdown.o build/reports/overlay002_phase_countdown.txt
+
+overlay002_control_flag_query_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
+build build/decomp/src/overlays/ov002/overlay002_control_flag_query.o: mwccarm src/overlays/ov002/overlay002_control_flag_query.c | include/tingle/types.h
+  source = src/overlays/ov002/overlay002_control_flag_query.c
+  cflags = $overlay002_control_flag_query_cflags
+build build/decomp/delinks/src/overlays/ov002/overlay002_control_flag_query.o: dsd_delink config/arm9/config.yaml config/arm9/overlays/ov002/delinks.txt config/arm9/overlays/ov002/symbols.txt config/arm9/overlays/ov002/relocs.txt
+build build/reports/overlay002_control_flag_query.json: objdiff build/decomp/delinks/src/overlays/ov002/overlay002_control_flag_query.o | build/decomp/src/overlays/ov002/overlay002_control_flag_query.o
+  target_object = build/decomp/delinks/src/overlays/ov002/overlay002_control_flag_query.o
+  base_object = build/decomp/src/overlays/ov002/overlay002_control_flag_query.o
+build build/reports/overlay002_control_flag_query.txt: match_report build/reports/overlay002_control_flag_query.json | tools/report_objdiff.py
+  report_json = build/reports/overlay002_control_flag_query.json
+  report_args = --section .text --function func_ov002_021fbdb0 --require-exact
+
+build overlay002_control_flag_query: phony build/decomp/src/overlays/ov002/overlay002_control_flag_query.o build/reports/overlay002_control_flag_query.txt
+
+overlay002_footer_animation_start_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
+build build/decomp/src/overlays/ov002/overlay002_footer_animation_start.o: mwccarm src/overlays/ov002/overlay002_footer_animation_start.c | include/tingle/types.h
+  source = src/overlays/ov002/overlay002_footer_animation_start.c
+  cflags = $overlay002_footer_animation_start_cflags
+build build/decomp/delinks/src/overlays/ov002/overlay002_footer_animation_start.o: dsd_delink config/arm9/config.yaml config/arm9/overlays/ov002/delinks.txt config/arm9/overlays/ov002/symbols.txt config/arm9/overlays/ov002/relocs.txt
+build build/reports/overlay002_footer_animation_start.json: objdiff build/decomp/delinks/src/overlays/ov002/overlay002_footer_animation_start.o | build/decomp/src/overlays/ov002/overlay002_footer_animation_start.o
+  target_object = build/decomp/delinks/src/overlays/ov002/overlay002_footer_animation_start.o
+  base_object = build/decomp/src/overlays/ov002/overlay002_footer_animation_start.o
+build build/reports/overlay002_footer_animation_start.txt: match_report build/reports/overlay002_footer_animation_start.json | tools/report_objdiff.py
+  report_json = build/reports/overlay002_footer_animation_start.json
+  report_args = --section .text --function func_ov002_021fbdc0 --require-exact
+
+build overlay002_footer_animation_start: phony build/decomp/src/overlays/ov002/overlay002_footer_animation_start.o build/reports/overlay002_footer_animation_start.txt
+
+overlay002_footer_animation_update_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
+build build/decomp/src/overlays/ov002/overlay002_footer_animation_update.o: mwccarm src/overlays/ov002/overlay002_footer_animation_update.c | include/tingle/types.h
+  source = src/overlays/ov002/overlay002_footer_animation_update.c
+  cflags = $overlay002_footer_animation_update_cflags
+build build/decomp/asm/overlays/ov002/overlay002_footer_animation_update_021fbe08.o: mwasmarm asm/overlays/ov002/overlay002_footer_animation_update_021fbe08.s
+build build/decomp/delinks/asm/overlays/ov002/overlay002_footer_animation_update_021fbe08.o: dsd_delink config/arm9/config.yaml config/arm9/overlays/ov002/delinks.txt config/arm9/overlays/ov002/symbols.txt config/arm9/overlays/ov002/relocs.txt
+build build/reports/overlay002_footer_animation_update.json: objdiff build/decomp/delinks/asm/overlays/ov002/overlay002_footer_animation_update_021fbe08.o | build/decomp/asm/overlays/ov002/overlay002_footer_animation_update_021fbe08.o
+  target_object = build/decomp/delinks/asm/overlays/ov002/overlay002_footer_animation_update_021fbe08.o
+  base_object = build/decomp/asm/overlays/ov002/overlay002_footer_animation_update_021fbe08.o
+build build/reports/overlay002_footer_animation_update.txt: match_report build/reports/overlay002_footer_animation_update.json | tools/report_objdiff.py
+  report_json = build/reports/overlay002_footer_animation_update.json
+  report_args = --section .text --function func_ov002_021fbe08 --require-exact
+
+build overlay002_footer_animation_update: phony build/decomp/src/overlays/ov002/overlay002_footer_animation_update.o build/decomp/asm/overlays/ov002/overlay002_footer_animation_update_021fbe08.o build/reports/overlay002_footer_animation_update.txt
+
+overlay002_animation_value_get_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
+build build/decomp/src/overlays/ov002/overlay002_animation_value_get.o: mwccarm src/overlays/ov002/overlay002_animation_value_get.c | include/tingle/types.h
+  source = src/overlays/ov002/overlay002_animation_value_get.c
+  cflags = $overlay002_animation_value_get_cflags
+build build/decomp/delinks/src/overlays/ov002/overlay002_animation_value_get.o: dsd_delink config/arm9/config.yaml config/arm9/overlays/ov002/delinks.txt config/arm9/overlays/ov002/symbols.txt config/arm9/overlays/ov002/relocs.txt
+build build/reports/overlay002_animation_value_get.json: objdiff build/decomp/delinks/src/overlays/ov002/overlay002_animation_value_get.o | build/decomp/src/overlays/ov002/overlay002_animation_value_get.o
+  target_object = build/decomp/delinks/src/overlays/ov002/overlay002_animation_value_get.o
+  base_object = build/decomp/src/overlays/ov002/overlay002_animation_value_get.o
+build build/reports/overlay002_animation_value_get.txt: match_report build/reports/overlay002_animation_value_get.json | tools/report_objdiff.py
+  report_json = build/reports/overlay002_animation_value_get.json
+  report_args = --section .text --function func_ov002_021fbe60 --require-exact
+build overlay002_animation_value_get: phony build/decomp/src/overlays/ov002/overlay002_animation_value_get.o build/reports/overlay002_animation_value_get.txt
+
+overlay002_value_clear_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
+build build/decomp/src/overlays/ov002/overlay002_value_clear.o: mwccarm src/overlays/ov002/overlay002_value_clear.c | include/tingle/types.h
+  source = src/overlays/ov002/overlay002_value_clear.c
+  cflags = $overlay002_value_clear_cflags
+build build/decomp/delinks/src/overlays/ov002/overlay002_value_clear.o: dsd_delink config/arm9/config.yaml config/arm9/overlays/ov002/delinks.txt config/arm9/overlays/ov002/symbols.txt config/arm9/overlays/ov002/relocs.txt
+build build/reports/overlay002_value_clear.json: objdiff build/decomp/delinks/src/overlays/ov002/overlay002_value_clear.o | build/decomp/src/overlays/ov002/overlay002_value_clear.o
+  target_object = build/decomp/delinks/src/overlays/ov002/overlay002_value_clear.o
+  base_object = build/decomp/src/overlays/ov002/overlay002_value_clear.o
+build build/reports/overlay002_value_clear.txt: match_report build/reports/overlay002_value_clear.json | tools/report_objdiff.py
+  report_json = build/reports/overlay002_value_clear.json
+  report_args = --section .text --function func_ov002_021fbe68 --require-exact
+build overlay002_value_clear: phony build/decomp/src/overlays/ov002/overlay002_value_clear.o build/reports/overlay002_value_clear.txt
+
+overlay003_pixel_buffer_constructor_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
+build build/decomp/src/overlays/ov003/overlay003_pixel_buffer_constructor.o: mwccarm src/overlays/ov003/overlay003_pixel_buffer_constructor.c | include/tingle/types.h
+  source = src/overlays/ov003/overlay003_pixel_buffer_constructor.c
+  cflags = $overlay003_pixel_buffer_constructor_cflags
+build build/decomp/asm/overlays/ov003/overlay003_pixel_buffer_constructor_021fb6e0.o: mwasmarm asm/overlays/ov003/overlay003_pixel_buffer_constructor_021fb6e0.s
+build build/decomp/delinks/asm/overlays/ov003/overlay003_pixel_buffer_constructor_021fb6e0.o: dsd_delink config/arm9/config.yaml config/arm9/overlays/ov003/delinks.txt config/arm9/overlays/ov003/symbols.txt config/arm9/overlays/ov003/relocs.txt
+build build/reports/overlay003_pixel_buffer_constructor.json: objdiff build/decomp/delinks/asm/overlays/ov003/overlay003_pixel_buffer_constructor_021fb6e0.o | build/decomp/asm/overlays/ov003/overlay003_pixel_buffer_constructor_021fb6e0.o
+  target_object = build/decomp/delinks/asm/overlays/ov003/overlay003_pixel_buffer_constructor_021fb6e0.o
+  base_object = build/decomp/asm/overlays/ov003/overlay003_pixel_buffer_constructor_021fb6e0.o
+build build/reports/overlay003_pixel_buffer_constructor.txt: match_report build/reports/overlay003_pixel_buffer_constructor.json | tools/report_objdiff.py
+  report_json = build/reports/overlay003_pixel_buffer_constructor.json
+  report_args = --section .text --function func_ov003_021fb6e0 --require-exact
+
+build overlay003_pixel_buffer_constructor: phony build/decomp/src/overlays/ov003/overlay003_pixel_buffer_constructor.o build/decomp/asm/overlays/ov003/overlay003_pixel_buffer_constructor_021fb6e0.o build/reports/overlay003_pixel_buffer_constructor.txt
+
+overlay003_pair_copy_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
+build build/decomp/src/overlays/ov003/overlay003_pair_copy.o: mwccarm src/overlays/ov003/overlay003_pair_copy.c | include/tingle/types.h
+  source = src/overlays/ov003/overlay003_pair_copy.c
+  cflags = $overlay003_pair_copy_cflags
+build build/decomp/delinks/src/overlays/ov003/overlay003_pair_copy.o: dsd_delink config/arm9/config.yaml config/arm9/overlays/ov003/delinks.txt config/arm9/overlays/ov003/symbols.txt config/arm9/overlays/ov003/relocs.txt
+build build/reports/overlay003_pair_copy.json: objdiff build/decomp/delinks/src/overlays/ov003/overlay003_pair_copy.o | build/decomp/src/overlays/ov003/overlay003_pair_copy.o
+  target_object = build/decomp/delinks/src/overlays/ov003/overlay003_pair_copy.o
+  base_object = build/decomp/src/overlays/ov003/overlay003_pair_copy.o
+build build/reports/overlay003_pair_copy.txt: match_report build/reports/overlay003_pair_copy.json | tools/report_objdiff.py
+  report_json = build/reports/overlay003_pair_copy.json
+  report_args = --section .text --function func_ov003_021fb7c0 --require-exact
+build overlay003_pair_copy: phony build/decomp/src/overlays/ov003/overlay003_pair_copy.o build/reports/overlay003_pair_copy.txt
+
+overlay003_pixel_buffer_destroy_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
+build build/decomp/src/overlays/ov003/overlay003_pixel_buffer_destroy.o: mwccarm src/overlays/ov003/overlay003_pixel_buffer_destroy.c | include/tingle/types.h
+  source = src/overlays/ov003/overlay003_pixel_buffer_destroy.c
+  cflags = $overlay003_pixel_buffer_destroy_cflags
+build build/decomp/delinks/src/overlays/ov003/overlay003_pixel_buffer_destroy.o: dsd_delink config/arm9/config.yaml config/arm9/overlays/ov003/delinks.txt config/arm9/overlays/ov003/symbols.txt config/arm9/overlays/ov003/relocs.txt
+build build/reports/overlay003_pixel_buffer_destroy.json: objdiff build/decomp/delinks/src/overlays/ov003/overlay003_pixel_buffer_destroy.o | build/decomp/src/overlays/ov003/overlay003_pixel_buffer_destroy.o
+  target_object = build/decomp/delinks/src/overlays/ov003/overlay003_pixel_buffer_destroy.o
+  base_object = build/decomp/src/overlays/ov003/overlay003_pixel_buffer_destroy.o
+build build/reports/overlay003_pixel_buffer_destroy.txt: match_report build/reports/overlay003_pixel_buffer_destroy.json | tools/report_objdiff.py
+  report_json = build/reports/overlay003_pixel_buffer_destroy.json
+  report_args = --section .text --function func_ov003_021fb7d4 --require-exact
+build overlay003_pixel_buffer_destroy: phony build/decomp/src/overlays/ov003/overlay003_pixel_buffer_destroy.o build/reports/overlay003_pixel_buffer_destroy.txt
+
+overlay003_pixel_buffer_clear_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
+build build/decomp/src/overlays/ov003/overlay003_pixel_buffer_clear.o: mwccarm src/overlays/ov003/overlay003_pixel_buffer_clear.c | include/tingle/types.h
+  source = src/overlays/ov003/overlay003_pixel_buffer_clear.c
+  cflags = $overlay003_pixel_buffer_clear_cflags
+build build/decomp/delinks/src/overlays/ov003/overlay003_pixel_buffer_clear.o: dsd_delink config/arm9/config.yaml config/arm9/overlays/ov003/delinks.txt config/arm9/overlays/ov003/symbols.txt config/arm9/overlays/ov003/relocs.txt
+build build/reports/overlay003_pixel_buffer_clear.json: objdiff build/decomp/delinks/src/overlays/ov003/overlay003_pixel_buffer_clear.o | build/decomp/src/overlays/ov003/overlay003_pixel_buffer_clear.o
+  target_object = build/decomp/delinks/src/overlays/ov003/overlay003_pixel_buffer_clear.o
+  base_object = build/decomp/src/overlays/ov003/overlay003_pixel_buffer_clear.o
+build build/reports/overlay003_pixel_buffer_clear.txt: match_report build/reports/overlay003_pixel_buffer_clear.json | tools/report_objdiff.py
+  report_json = build/reports/overlay003_pixel_buffer_clear.json
+  report_args = --section .text --function func_ov003_021fb7ec --require-exact
+build overlay003_pixel_buffer_clear: phony build/decomp/src/overlays/ov003/overlay003_pixel_buffer_clear.o build/reports/overlay003_pixel_buffer_clear.txt
+
+overlay003_tilemap_create_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
+build build/decomp/src/overlays/ov003/overlay003_tilemap_create.o: mwccarm src/overlays/ov003/overlay003_tilemap_create.c | include/tingle/types.h
+  source = src/overlays/ov003/overlay003_tilemap_create.c
+  cflags = $overlay003_tilemap_create_cflags
+build build/decomp/asm/overlays/ov003/overlay003_tilemap_create_021fb804.o: mwasmarm asm/overlays/ov003/overlay003_tilemap_create_021fb804.s
+build build/decomp/delinks/asm/overlays/ov003/overlay003_tilemap_create_021fb804.o: dsd_delink config/arm9/config.yaml config/arm9/overlays/ov003/delinks.txt config/arm9/overlays/ov003/symbols.txt config/arm9/overlays/ov003/relocs.txt
+build build/reports/overlay003_tilemap_create.json: objdiff build/decomp/delinks/asm/overlays/ov003/overlay003_tilemap_create_021fb804.o | build/decomp/asm/overlays/ov003/overlay003_tilemap_create_021fb804.o
+  target_object = build/decomp/delinks/asm/overlays/ov003/overlay003_tilemap_create_021fb804.o
+  base_object = build/decomp/asm/overlays/ov003/overlay003_tilemap_create_021fb804.o
+build build/reports/overlay003_tilemap_create.txt: match_report build/reports/overlay003_tilemap_create.json | tools/report_objdiff.py
+  report_json = build/reports/overlay003_tilemap_create.json
+  report_args = --section .text --function func_ov003_021fb804 --require-exact
+build overlay003_tilemap_create: phony build/decomp/src/overlays/ov003/overlay003_tilemap_create.o build/decomp/asm/overlays/ov003/overlay003_tilemap_create_021fb804.o build/reports/overlay003_tilemap_create.txt
+
+overlay003_line_rasterize_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
+build build/decomp/src/overlays/ov003/overlay003_line_rasterize.o: mwccarm src/overlays/ov003/overlay003_line_rasterize.c | include/tingle/types.h
+  source = src/overlays/ov003/overlay003_line_rasterize.c
+  cflags = $overlay003_line_rasterize_cflags
+build build/decomp/asm/overlays/ov003/overlay003_line_rasterize_021fb8ac.o: mwasmarm asm/overlays/ov003/overlay003_line_rasterize_021fb8ac.s
+build build/decomp/delinks/asm/overlays/ov003/overlay003_line_rasterize_021fb8ac.o: dsd_delink config/arm9/config.yaml config/arm9/overlays/ov003/delinks.txt config/arm9/overlays/ov003/symbols.txt config/arm9/overlays/ov003/relocs.txt
+build build/reports/overlay003_line_rasterize.json: objdiff build/decomp/delinks/asm/overlays/ov003/overlay003_line_rasterize_021fb8ac.o | build/decomp/asm/overlays/ov003/overlay003_line_rasterize_021fb8ac.o
+  target_object = build/decomp/delinks/asm/overlays/ov003/overlay003_line_rasterize_021fb8ac.o
+  base_object = build/decomp/asm/overlays/ov003/overlay003_line_rasterize_021fb8ac.o
+build build/reports/overlay003_line_rasterize.txt: match_report build/reports/overlay003_line_rasterize.json | tools/report_objdiff.py
+  report_json = build/reports/overlay003_line_rasterize.json
+  report_args = --section .text --function func_ov003_021fb8ac --require-exact
+build overlay003_line_rasterize: phony build/decomp/src/overlays/ov003/overlay003_line_rasterize.o build/decomp/asm/overlays/ov003/overlay003_line_rasterize_021fb8ac.o build/reports/overlay003_line_rasterize.txt
+
+overlay003_randomized_stamp_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
+build build/decomp/src/overlays/ov003/overlay003_randomized_stamp.o: mwccarm src/overlays/ov003/overlay003_randomized_stamp.c | include/tingle/types.h
+  source = src/overlays/ov003/overlay003_randomized_stamp.c
+  cflags = $overlay003_randomized_stamp_cflags
+build build/decomp/asm/overlays/ov003/overlay003_randomized_stamp_021fbaa0.o: mwasmarm asm/overlays/ov003/overlay003_randomized_stamp_021fbaa0.s
+build build/decomp/delinks/asm/overlays/ov003/overlay003_randomized_stamp_021fbaa0.o: dsd_delink config/arm9/config.yaml config/arm9/overlays/ov003/delinks.txt config/arm9/overlays/ov003/symbols.txt config/arm9/overlays/ov003/relocs.txt
+build build/reports/overlay003_randomized_stamp.json: objdiff build/decomp/delinks/asm/overlays/ov003/overlay003_randomized_stamp_021fbaa0.o | build/decomp/asm/overlays/ov003/overlay003_randomized_stamp_021fbaa0.o
+  target_object = build/decomp/delinks/asm/overlays/ov003/overlay003_randomized_stamp_021fbaa0.o
+  base_object = build/decomp/asm/overlays/ov003/overlay003_randomized_stamp_021fbaa0.o
+build build/reports/overlay003_randomized_stamp.txt: match_report build/reports/overlay003_randomized_stamp.json | tools/report_objdiff.py
+  report_json = build/reports/overlay003_randomized_stamp.json
+  report_args = --section .text --function func_ov003_021fbaa0 --require-exact
+build overlay003_randomized_stamp: phony build/decomp/src/overlays/ov003/overlay003_randomized_stamp.o build/decomp/asm/overlays/ov003/overlay003_randomized_stamp_021fbaa0.o build/reports/overlay003_randomized_stamp.txt
+
+overlay004_noop_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
+build build/decomp/src/overlays/ov004/overlay004_noop.o: mwccarm src/overlays/ov004/overlay004_noop.c | include/tingle/types.h
+  source = src/overlays/ov004/overlay004_noop.c
+  cflags = $overlay004_noop_cflags
+build build/decomp/delinks/src/overlays/ov004/overlay004_noop.o: dsd_delink config/arm9/config.yaml config/arm9/overlays/ov004/delinks.txt config/arm9/overlays/ov004/symbols.txt config/arm9/overlays/ov004/relocs.txt
+build build/reports/overlay004_noop.json: objdiff build/decomp/delinks/src/overlays/ov004/overlay004_noop.o | build/decomp/src/overlays/ov004/overlay004_noop.o
+  target_object = build/decomp/delinks/src/overlays/ov004/overlay004_noop.o
+  base_object = build/decomp/src/overlays/ov004/overlay004_noop.o
+build build/reports/overlay004_noop.txt: match_report build/reports/overlay004_noop.json | tools/report_objdiff.py
+  report_json = build/reports/overlay004_noop.json
+  report_args = --section .text --function func_ov004_021fb6e0 --require-exact
+build overlay004_noop: phony build/decomp/src/overlays/ov004/overlay004_noop.o build/reports/overlay004_noop.txt
+
+overlay004_coordinate_state_set_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
+build build/decomp/src/overlays/ov004/overlay004_coordinate_state_set.o: mwccarm src/overlays/ov004/overlay004_coordinate_state_set.c | include/tingle/types.h
+  source = src/overlays/ov004/overlay004_coordinate_state_set.c
+  cflags = $overlay004_coordinate_state_set_cflags
+build build/decomp/asm/overlays/ov004/overlay004_coordinate_state_set_021fb6e4.o: mwasmarm asm/overlays/ov004/overlay004_coordinate_state_set_021fb6e4.s
+build build/decomp/delinks/asm/overlays/ov004/overlay004_coordinate_state_set_021fb6e4.o: dsd_delink config/arm9/config.yaml config/arm9/overlays/ov004/delinks.txt config/arm9/overlays/ov004/symbols.txt config/arm9/overlays/ov004/relocs.txt
+build build/reports/overlay004_coordinate_state_set.json: objdiff build/decomp/delinks/asm/overlays/ov004/overlay004_coordinate_state_set_021fb6e4.o | build/decomp/asm/overlays/ov004/overlay004_coordinate_state_set_021fb6e4.o
+  target_object = build/decomp/delinks/asm/overlays/ov004/overlay004_coordinate_state_set_021fb6e4.o
+  base_object = build/decomp/asm/overlays/ov004/overlay004_coordinate_state_set_021fb6e4.o
+build build/reports/overlay004_coordinate_state_set.txt: match_report build/reports/overlay004_coordinate_state_set.json | tools/report_objdiff.py
+  report_json = build/reports/overlay004_coordinate_state_set.json
+  report_args = --section .text --function func_ov004_021fb6e4 --require-exact
+build overlay004_coordinate_state_set: phony build/decomp/src/overlays/ov004/overlay004_coordinate_state_set.o build/decomp/asm/overlays/ov004/overlay004_coordinate_state_set_021fb6e4.o build/reports/overlay004_coordinate_state_set.txt
+
+overlay004_presentation_constructor_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
+build build/decomp/src/overlays/ov004/overlay004_presentation_constructor.o: mwccarm src/overlays/ov004/overlay004_presentation_constructor.c | include/tingle/types.h
+  source = src/overlays/ov004/overlay004_presentation_constructor.c
+  cflags = $overlay004_presentation_constructor_cflags
+build build/decomp/asm/overlays/ov004/overlay004_presentation_constructor_021fb70c.o: mwasmarm asm/overlays/ov004/overlay004_presentation_constructor_021fb70c.s
+build build/decomp/delinks/asm/overlays/ov004/overlay004_presentation_constructor_021fb70c.o: dsd_delink config/arm9/config.yaml config/arm9/overlays/ov004/delinks.txt config/arm9/overlays/ov004/symbols.txt config/arm9/overlays/ov004/relocs.txt
+build build/reports/overlay004_presentation_constructor.json: objdiff build/decomp/delinks/asm/overlays/ov004/overlay004_presentation_constructor_021fb70c.o | build/decomp/asm/overlays/ov004/overlay004_presentation_constructor_021fb70c.o
+  target_object = build/decomp/delinks/asm/overlays/ov004/overlay004_presentation_constructor_021fb70c.o
+  base_object = build/decomp/asm/overlays/ov004/overlay004_presentation_constructor_021fb70c.o
+build build/reports/overlay004_presentation_constructor.txt: match_report build/reports/overlay004_presentation_constructor.json | tools/report_objdiff.py
+  report_json = build/reports/overlay004_presentation_constructor.json
+  report_args = --section .text --function func_ov004_021fb70c --require-exact
+build overlay004_presentation_constructor: phony build/decomp/src/overlays/ov004/overlay004_presentation_constructor.o build/decomp/asm/overlays/ov004/overlay004_presentation_constructor_021fb70c.o build/reports/overlay004_presentation_constructor.txt
+
+overlay004_presentation_destroy_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
+build build/decomp/src/overlays/ov004/overlay004_presentation_destroy.o: mwccarm src/overlays/ov004/overlay004_presentation_destroy.c | include/tingle/types.h
+  source = src/overlays/ov004/overlay004_presentation_destroy.c
+  cflags = $overlay004_presentation_destroy_cflags
+build build/decomp/delinks/src/overlays/ov004/overlay004_presentation_destroy.o: dsd_delink config/arm9/config.yaml config/arm9/overlays/ov004/delinks.txt config/arm9/overlays/ov004/symbols.txt config/arm9/overlays/ov004/relocs.txt
+build build/reports/overlay004_presentation_destroy.json: objdiff build/decomp/delinks/src/overlays/ov004/overlay004_presentation_destroy.o | build/decomp/src/overlays/ov004/overlay004_presentation_destroy.o
+  target_object = build/decomp/delinks/src/overlays/ov004/overlay004_presentation_destroy.o
+  base_object = build/decomp/src/overlays/ov004/overlay004_presentation_destroy.o
+build build/reports/overlay004_presentation_destroy.txt: match_report build/reports/overlay004_presentation_destroy.json | tools/report_objdiff.py
+  report_json = build/reports/overlay004_presentation_destroy.json
+  report_args = --section .text --function func_ov004_021fb868 --require-exact
+build overlay004_presentation_destroy: phony build/decomp/src/overlays/ov004/overlay004_presentation_destroy.o build/reports/overlay004_presentation_destroy.txt
+
+overlay004_presentation_delete_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
+build build/decomp/src/overlays/ov004/overlay004_presentation_delete.o: mwccarm src/overlays/ov004/overlay004_presentation_delete.c | include/tingle/types.h
+  source = src/overlays/ov004/overlay004_presentation_delete.c
+  cflags = $overlay004_presentation_delete_cflags
+build build/decomp/asm/overlays/ov004/overlay004_presentation_delete_021fb8e4.o: mwasmarm asm/overlays/ov004/overlay004_presentation_delete_021fb8e4.s
+build build/decomp/delinks/asm/overlays/ov004/overlay004_presentation_delete_021fb8e4.o: dsd_delink config/arm9/config.yaml config/arm9/overlays/ov004/delinks.txt config/arm9/overlays/ov004/symbols.txt config/arm9/overlays/ov004/relocs.txt
+build build/reports/overlay004_presentation_delete.json: objdiff build/decomp/delinks/asm/overlays/ov004/overlay004_presentation_delete_021fb8e4.o | build/decomp/asm/overlays/ov004/overlay004_presentation_delete_021fb8e4.o
+  target_object = build/decomp/delinks/asm/overlays/ov004/overlay004_presentation_delete_021fb8e4.o
+  base_object = build/decomp/asm/overlays/ov004/overlay004_presentation_delete_021fb8e4.o
+build build/reports/overlay004_presentation_delete.txt: match_report build/reports/overlay004_presentation_delete.json | tools/report_objdiff.py
+  report_json = build/reports/overlay004_presentation_delete.json
+  report_args = --section .text --function func_ov004_021fb8e4 --require-exact
+build overlay004_presentation_delete: phony build/decomp/src/overlays/ov004/overlay004_presentation_delete.o build/decomp/asm/overlays/ov004/overlay004_presentation_delete_021fb8e4.o build/reports/overlay004_presentation_delete.txt
+
+overlay004_background_hardware_setup_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
+build build/decomp/src/overlays/ov004/overlay004_background_hardware_setup.o: mwccarm src/overlays/ov004/overlay004_background_hardware_setup.c | include/tingle/types.h
+  source = src/overlays/ov004/overlay004_background_hardware_setup.c
+  cflags = $overlay004_background_hardware_setup_cflags
+build build/decomp/asm/overlays/ov004/overlay004_background_hardware_setup_021fb968.o: mwasmarm asm/overlays/ov004/overlay004_background_hardware_setup_021fb968.s
+build build/decomp/delinks/asm/overlays/ov004/overlay004_background_hardware_setup_021fb968.o: dsd_delink config/arm9/config.yaml config/arm9/overlays/ov004/delinks.txt config/arm9/overlays/ov004/symbols.txt config/arm9/overlays/ov004/relocs.txt
+build build/reports/overlay004_background_hardware_setup.json: objdiff build/decomp/delinks/asm/overlays/ov004/overlay004_background_hardware_setup_021fb968.o | build/decomp/asm/overlays/ov004/overlay004_background_hardware_setup_021fb968.o
+  target_object = build/decomp/delinks/asm/overlays/ov004/overlay004_background_hardware_setup_021fb968.o
+  base_object = build/decomp/asm/overlays/ov004/overlay004_background_hardware_setup_021fb968.o
+build build/reports/overlay004_background_hardware_setup.txt: match_report build/reports/overlay004_background_hardware_setup.json | tools/report_objdiff.py
+  report_json = build/reports/overlay004_background_hardware_setup.json
+  report_args = --section .text --function func_ov004_021fb968 --require-exact
+build overlay004_background_hardware_setup: phony build/decomp/src/overlays/ov004/overlay004_background_hardware_setup.o build/decomp/asm/overlays/ov004/overlay004_background_hardware_setup_021fb968.o build/reports/overlay004_background_hardware_setup.txt
