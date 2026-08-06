@@ -1,0 +1,68 @@
+; Matching retail form; see src/game/dual_array_blend_presentation.c.
+.text
+.extern GameWork_ClearFlag
+.extern GameWork_SetFlag
+.extern GameWork_TestFlag
+.extern Heap_Free
+.extern __construct_array
+.extern __destroy_arr
+.extern data_020c36c4
+.extern data_020d63d0
+.extern data_020d63e0
+.extern data_020d658c
+.extern data_021055dc
+.extern func_0201e250
+.extern func_0201e28c
+.extern func_020215a0
+.extern func_020215a4
+.extern func_020218c0
+.extern func_02021934
+.extern func_0202194c
+.extern func_020219bc
+.extern func_02021ad8
+.extern func_0209189c
+.extern func_020918f4
+.extern func_02092418
+.extern func_020948e4
+.extern func_02094ad4
+.extern func_02094bbc
+.extern func_02094d28
+.extern func_020afd0c
+.extern gGameWork
+.extern gSystemState
+.extern genrand_int32
+
+.global func_0202194c
+    .type func_0202194c, @function
+func_0202194c: ; 0x0202194c
+    stmdb sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, lr}
+    mov r8, #0x0
+    add r7, r0, #0x20
+    add r5, r0, #0x1f4
+    mov r6, #0x2
+    mov r11, r8
+    mov r4, #0x9c
+.L_02021968:
+    mul r9, r8, r4
+    add r10, r7, r9
+    mov r1, r6
+    mov r2, r11
+    add r0, r10, #0xc
+    bl func_020948e4
+    mov r0, r10
+    mov r1, #0x78
+    bl func_02021934
+    add r9, r5, r9
+    add r0, r9, #0xc
+    mov r1, #0x2
+    mov r2, #0x100000
+    bl func_020948e4
+    mov r0, r9
+    mov r1, #0x78
+    bl func_02021934
+    add r8, r8, #0x1
+    cmp r8, #0x3
+    blt .L_02021968
+    ldmia sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, pc}
+    .size func_0202194c, .-func_0202194c
+

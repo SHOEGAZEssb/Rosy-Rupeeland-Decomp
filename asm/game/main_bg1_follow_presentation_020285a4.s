@@ -1,0 +1,49 @@
+; Matching retail form; see src/game/main_bg1_follow_presentation.c.
+.text
+.extern BgScroll_SetMainBg1
+.extern func_02005030
+.extern func_02005058
+.extern func_020050c8
+.extern func_02008740
+.extern func_02009d78
+
+    .global func_020285a4
+    .type func_020285a4, @function
+func_020285a4: ; 0x020285a4
+    stmdb sp!, {r4, lr}
+    sub sp, sp, #0x20
+    mov r4, r0
+    ldr r0, [r4, #0x8]
+    bl func_02009d78
+    mov r1, r0
+    add r0, sp, #0x10
+    bl func_02005030
+    ldr r0, [sp, #0x14]
+    ldr r1, [sp, #0x18]
+    add r0, r0, r0, lsr #0x1f
+    mov r2, r0, asr #0x1
+    add r1, r1, r1, lsr #0x1f
+    mov r0, r1, asr #0x1
+    str r0, [sp, #0x18]
+    str r2, [sp, #0x14]
+    ldr r1, [r4, #0x8]
+    add r0, sp, #0x0
+    add r1, r1, #0x44
+    bl func_02008740
+    add r0, sp, #0x10
+    add r1, sp, #0x0
+    bl func_020050c8
+    add r0, sp, #0x0
+    bl func_02005058
+    ldr r0, [sp, #0x14]
+    ldr r1, [sp, #0x18]
+    mov r0, r0, asr #0xc
+    mov r1, r1, asr #0xc
+    bl BgScroll_SetMainBg1
+    add r0, sp, #0x10
+    bl func_02005058
+    mov r0, #0x0
+    add sp, sp, #0x20
+    ldmia sp!, {r4, pc}
+    .size func_020285a4, . - func_020285a4
+

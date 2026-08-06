@@ -2730,6 +2730,1555 @@ asm/game/game_phase_script_vm_0201e620.s:
     categories: Game code
     .text       start:0x0201e620 end:0x0201e6e4
 
+asm/game/timed_sprite_attached_variant.s:
+    categories: Game code
+    .text       start:0x0201e6e4 end:0x0201e9d8
+
+asm/game/timed_sprite_orbit_variant.s:
+    categories: Game code
+    .text       start:0x0201e9d8 end:0x0201ebac
+
+asm/game/timed_sprite_free_orbit_variant.s:
+    categories: Game code
+    .text       start:0x0201ebac end:0x0201ecbc
+
+asm/game/timed_sprite_owner_position_variant.s:
+    categories: Game code
+    .text       start:0x0201ecbc end:0x0201edd0
+
+asm/game/timed_sprite_sampled_arc_variant.s:
+    categories: Game code
+    .text       start:0x0201edd0 end:0x0201eefc
+
+asm/game/timed_sprite_burst_manager_0201eefc.s:
+    categories: Game code
+    .text       start:0x0201eefc end:0x0201f0b0
+
+asm/game/timed_sprite_burst_manager_0201f0b0.s:
+    categories: Game code
+    .text       start:0x0201f0b0 end:0x0201f0d0
+
+asm/game/timed_sprite_burst_manager_0201f0d0.s:
+    categories: Game code
+    .text       start:0x0201f0d0 end:0x0201f0fc
+
+asm/game/timed_sprite_burst_manager_0201f0fc.s:
+    categories: Game code
+    .text       start:0x0201f0fc end:0x0201f11c
+
+asm/game/timed_sprite_burst_manager_0201f11c.s:
+    categories: Game code
+    .text       start:0x0201f11c end:0x0201f15c
+
+asm/game/timed_sprite_burst_manager_0201f15c.s:
+    categories: Game code
+    .text       start:0x0201f15c end:0x0201f204
+
+asm/game/timed_sprite_burst_manager_0201f204.s:
+    categories: Game code
+    .text       start:0x0201f204 end:0x0201f2b4
+
+asm/game/timed_sprite_burst_manager_0201f2b4.s:
+    categories: Game code
+    .text       start:0x0201f2b4 end:0x0201f378
+
+asm/game/timed_sprite_offset_presentation_0201f378.s:
+    categories: Game code
+    .text       start:0x0201f378 end:0x0201f3e8
+
+asm/game/timed_sprite_offset_presentation_0201f3e8.s:
+    categories: Game code
+    .text       start:0x0201f3e8 end:0x0201f41c
+
+asm/game/timed_sprite_offset_presentation_0201f41c.s:
+    categories: Game code
+    .text       start:0x0201f41c end:0x0201f458
+
+asm/game/timed_sprite_offset_presentation_0201f458.s:
+    categories: Game code
+    .text       start:0x0201f458 end:0x0201f520
+
+asm/game/timed_sprite_offset_presentation_0201f520.s:
+    categories: Game code
+    .text       start:0x0201f520 end:0x0201f598
+
+asm/game/timed_sprite_sampled_arc_presentation_0201f598.s:
+    categories: Game code
+    .text       start:0x0201f598 end:0x0201f670
+
+asm/game/timed_sprite_sampled_arc_presentation_0201f670.s:
+    categories: Game code
+    .text       start:0x0201f670 end:0x0201f6a4
+
+asm/game/timed_sprite_sampled_arc_presentation_0201f6a4.s:
+    categories: Game code
+    .text       start:0x0201f6a4 end:0x0201f6e0
+
+asm/game/timed_sprite_sampled_arc_presentation_0201f6e0.s:
+    categories: Game code
+    .text       start:0x0201f6e0 end:0x0201f724
+
+asm/game/timed_sprite_auxiliary_presentation_0201f724.s:
+    categories: Game code
+    .text       start:0x0201f724 end:0x0201f864
+
+asm/game/timed_sprite_auxiliary_presentation_0201f864.s:
+    categories: Game code
+    .text       start:0x0201f864 end:0x0201f9a4
+
+asm/game/timed_sprite_auxiliary_presentation_0201f9a4.s:
+    categories: Game code
+    .text       start:0x0201f9a4 end:0x0201f9f0
+
+asm/game/timed_sprite_auxiliary_presentation_0201f9f0.s:
+    categories: Game code
+    .text       start:0x0201f9f0 end:0x0201fa44
+
+asm/game/timed_sprite_auxiliary_presentation_0201fa44.s:
+    categories: Game code
+    .text       start:0x0201fa44 end:0x0201fa90
+
+asm/game/timed_sprite_auxiliary_presentation_0201fa90.s:
+    categories: Game code
+    .text       start:0x0201fa90 end:0x0201fafc
+
+asm/game/timed_sprite_rising_auxiliary_presentation_0201fafc.s:
+    categories: Game code
+    .text       start:0x0201fafc end:0x0201fb54
+
+asm/game/timed_sprite_rising_auxiliary_presentation_0201fb54.s:
+    categories: Game code
+    .text       start:0x0201fb54 end:0x0201fb68
+
+asm/game/timed_sprite_rising_auxiliary_presentation_0201fb68.s:
+    categories: Game code
+    .text       start:0x0201fb68 end:0x0201fb84
+
+asm/game/timed_sprite_rising_auxiliary_presentation_0201fb84.s:
+    categories: Game code
+    .text       start:0x0201fb84 end:0x0201fc28
+
+asm/game/direct_sprite_track_presentation_0201fc28.s:
+    categories: Game code
+    .text       start:0x0201fc28 end:0x0201fd64
+
+asm/game/direct_sprite_track_presentation_0201fd64.s:
+    categories: Game code
+    .text       start:0x0201fd64 end:0x0201fda4
+
+asm/game/direct_sprite_track_presentation_0201fda4.s:
+    categories: Game code
+    .text       start:0x0201fda4 end:0x0201fdec
+
+asm/game/direct_sprite_track_presentation_0201fdec.s:
+    categories: Game code
+    .text       start:0x0201fdec end:0x0201fe68
+
+asm/game/direct_sprite_track_presentation_0201fe68.s:
+    categories: Game code
+    .text       start:0x0201fe68 end:0x0201ff2c
+
+asm/game/timed_sprite_record_presentation_0201ff2c.s:
+    categories: Game code
+    .text       start:0x0201ff2c end:0x02020018
+
+asm/game/timed_sprite_record_presentation_02020018.s:
+    categories: Game code
+    .text       start:0x02020018 end:0x0202002c
+
+asm/game/timed_sprite_record_presentation_0202002c.s:
+    categories: Game code
+    .text       start:0x0202002c end:0x02020048
+
+asm/game/timed_sprite_record_presentation_02020048.s:
+    categories: Game code
+    .text       start:0x02020048 end:0x02020060
+
+asm/game/timed_sprite_record_presentation_02020060.s:
+    categories: Game code
+    .text       start:0x02020060 end:0x020200bc
+
+asm/game/overlay_worker_presentation_020200bc.s:
+    categories: Game code
+    .text       start:0x020200bc end:0x02020188
+
+asm/game/overlay_worker_presentation_02020188.s:
+    categories: Game code
+    .text       start:0x02020188 end:0x020201fc
+
+asm/game/overlay_worker_presentation_020201fc.s:
+    categories: Game code
+    .text       start:0x020201fc end:0x02020278
+
+asm/game/overlay_worker_presentation_02020278.s:
+    categories: Game code
+    .text       start:0x02020278 end:0x02020364
+
+asm/game/sprite_motion_delta_02020364.s:
+    categories: Game code
+    .text       start:0x02020364 end:0x02020374
+
+asm/game/sprite_motion_delta_02020374.s:
+    categories: Game code
+    .text       start:0x02020374 end:0x020203b0
+
+asm/game/sprite_motion_delta_020203b0.s:
+    categories: Game code
+    .text       start:0x020203b0 end:0x020203e4
+
+asm/game/rising_sprite_motion_controller_020203e4.s:
+    categories: Game code
+    .text       start:0x020203e4 end:0x02020558
+
+asm/game/rising_sprite_motion_controller_02020558.s:
+    categories: Game code
+    .text       start:0x02020558 end:0x0202057c
+
+asm/game/rising_sprite_motion_controller_0202057c.s:
+    categories: Game code
+    .text       start:0x0202057c end:0x020206e8
+
+asm/game/rising_sprite_motion_controller_020206e8.s:
+    categories: Game code
+    .text       start:0x020206e8 end:0x02020754
+
+asm/game/rising_sprite_motion_controller_02020754.s:
+    categories: Game code
+    .text       start:0x02020754 end:0x02020794
+
+asm/game/rising_sprite_swarm_presentation_02020794.s:
+    categories: Game code
+    .text       start:0x02020794 end:0x020208a4
+
+asm/game/rising_sprite_swarm_presentation_020208a4.s:
+    categories: Game code
+    .text       start:0x020208a4 end:0x020208c4
+
+asm/game/rising_sprite_swarm_presentation_020208c4.s:
+    categories: Game code
+    .text       start:0x020208c4 end:0x020208e4
+
+asm/game/rising_sprite_swarm_presentation_020208e4.s:
+    categories: Game code
+    .text       start:0x020208e4 end:0x02020924
+
+asm/game/rising_sprite_swarm_presentation_02020924.s:
+    categories: Game code
+    .text       start:0x02020924 end:0x020209b8
+
+asm/game/rising_sprite_swarm_presentation_020209b8.s:
+    categories: Game code
+    .text       start:0x020209b8 end:0x02020a54
+
+asm/game/rising_sprite_swarm_presentation_02020a54.s:
+    categories: Game code
+    .text       start:0x02020a54 end:0x02020abc
+
+asm/game/rising_sprite_swarm_presentation_02020abc.s:
+    categories: Game code
+    .text       start:0x02020abc end:0x02020c38
+
+asm/game/rising_sprite_swarm_presentation_02020c38.s:
+    categories: Game code
+    .text       start:0x02020c38 end:0x02020d48
+
+asm/game/rising_sprite_swarm_presentation_02020d48.s:
+    categories: Game code
+    .text       start:0x02020d48 end:0x02020d74
+
+asm/game/rising_sprite_swarm_presentation_02020d74.s:
+    categories: Game code
+    .text       start:0x02020d74 end:0x02020d9c
+
+asm/graphics/display_blend_control_02020d9c.s:
+    categories: Game code
+    .text       start:0x02020d9c end:0x02020da0
+
+asm/graphics/display_blend_control_02020da0.s:
+    categories: Game code
+    .text       start:0x02020da0 end:0x02020dd4
+
+asm/graphics/display_blend_control_02020dd4.s:
+    categories: Game code
+    .text       start:0x02020dd4 end:0x02020e00
+
+asm/graphics/display_blend_control_02020e00.s:
+    categories: Game code
+    .text       start:0x02020e00 end:0x02020e34
+
+asm/graphics/display_blend_control_02020e34.s:
+    categories: Game code
+    .text       start:0x02020e34 end:0x02020e60
+
+asm/game/paired_reference_state_02020e60.s:
+    categories: Game code
+    .text       start:0x02020e60 end:0x02020e84
+
+asm/game/display_fade_presentation_02020e84.s:
+    categories: Game code
+    .text       start:0x02020e84 end:0x02021118
+
+asm/game/display_fade_presentation_02021118.s:
+    categories: Game code
+    .text       start:0x02021118 end:0x02021158
+
+asm/game/display_fade_presentation_02021158.s:
+    categories: Game code
+    .text       start:0x02021158 end:0x02021278
+
+asm/game/display_fade_presentation_02021278.s:
+    categories: Game code
+    .text       start:0x02021278 end:0x02021280
+
+asm/game/display_fade_presentation_02021280.s:
+    categories: Game code
+    .text       start:0x02021280 end:0x02021290
+
+asm/game/display_fade_presentation_02021290.s:
+    categories: Game code
+    .text       start:0x02021290 end:0x02021350
+
+asm/graphics/scene_display_resource_setup_02021350.s:
+    categories: Game code
+    .text       start:0x02021350 end:0x020215a0
+
+asm/game/extended_callback_state_020215a0.s:
+    categories: Game code
+    .text       start:0x020215a0 end:0x020215a4
+
+asm/game/extended_callback_state_020215a4.s:
+    categories: Game code
+    .text       start:0x020215a4 end:0x020215cc
+
+asm/game/dual_array_blend_presentation_020215cc.s:
+    categories: Game code
+    .text       start:0x020215cc end:0x020216e0
+
+asm/game/dual_array_blend_presentation_020216e0.s:
+    categories: Game code
+    .text       start:0x020216e0 end:0x020217ac
+
+asm/game/dual_array_blend_presentation_020217ac.s:
+    categories: Game code
+    .text       start:0x020217ac end:0x02021880
+
+asm/game/dual_array_blend_presentation_02021880.s:
+    categories: Game code
+    .text       start:0x02021880 end:0x020218c0
+
+asm/game/dual_array_blend_presentation_020218c0.s:
+    categories: Game code
+    .text       start:0x020218c0 end:0x02021934
+
+asm/game/dual_array_blend_presentation_02021934.s:
+    categories: Game code
+    .text       start:0x02021934 end:0x0202194c
+
+asm/game/dual_array_blend_presentation_0202194c.s:
+    categories: Game code
+    .text       start:0x0202194c end:0x020219bc
+
+asm/game/dual_array_blend_presentation_020219bc.s:
+    categories: Game code
+    .text       start:0x020219bc end:0x02021ad8
+
+asm/game/dual_array_blend_presentation_02021ad8.s:
+    categories: Game code
+    .text       start:0x02021ad8 end:0x02021bb4
+
+asm/game/dual_array_blend_presentation_02021bb4.s:
+    categories: Game code
+    .text       start:0x02021bb4 end:0x02021f58
+
+asm/game/dual_array_blend_presentation_02021f58.s:
+    categories: Game code
+    .text       start:0x02021f58 end:0x02021f60
+
+asm/game/dual_array_blend_presentation_02021f60.s:
+    categories: Game code
+    .text       start:0x02021f60 end:0x02022040
+
+asm/game/dual_array_blend_presentation_02022040.s:
+    categories: Game code
+    .text       start:0x02022040 end:0x0202225c
+
+asm/game/overlay_prompt_presentation_0202225c.s:
+    categories: Game code
+    .text       start:0x0202225c end:0x020222dc
+
+asm/game/overlay_prompt_presentation_020222dc.s:
+    categories: Game code
+    .text       start:0x020222dc end:0x02022354
+
+asm/game/overlay_prompt_presentation_02022354.s:
+    categories: Game code
+    .text       start:0x02022354 end:0x020223d4
+
+asm/game/overlay_prompt_presentation_020223d4.s:
+    categories: Game code
+    .text       start:0x020223d4 end:0x02022530
+
+asm/game/overlay_prompt_presentation_02022530.s:
+    categories: Game code
+    .text       start:0x02022530 end:0x02022558
+
+asm/game/overlay_prompt_presentation_02022558.s:
+    categories: Game code
+    .text       start:0x02022558 end:0x02022580
+
+asm/game/palette_cycle_presentation_02022580.s:
+    categories: Game code
+    .text       start:0x02022580 end:0x02022680
+
+asm/game/palette_cycle_presentation_02022680.s:
+    categories: Game code
+    .text       start:0x02022680 end:0x0202269c
+
+asm/game/palette_cycle_presentation_0202269c.s:
+    categories: Game code
+    .text       start:0x0202269c end:0x020226c0
+
+asm/game/palette_cycle_presentation_020226c0.s:
+    categories: Game code
+    .text       start:0x020226c0 end:0x02022880
+
+asm/game/palette_cycle_presentation_02022880.s:
+    categories: Game code
+    .text       start:0x02022880 end:0x020228dc
+
+asm/game/palette_cycle_presentation_020228dc.s:
+    categories: Game code
+    .text       start:0x020228dc end:0x0202290c
+
+asm/game/presentation_base_teardown_0202290c.s:
+    categories: Game code
+    .text       start:0x0202290c end:0x02022928
+
+asm/game/presentation_base_teardown_02022928.s:
+    categories: Game code
+    .text       start:0x02022928 end:0x0202293c
+
+asm/game/sprite_number_group_0202293c.s:
+    categories: Game code
+    .text       start:0x0202293c end:0x02022a88
+
+asm/game/sprite_number_group_02022a88.s:
+    categories: Game code
+    .text       start:0x02022a88 end:0x02022aa8
+
+asm/game/sprite_number_group_02022aa8.s:
+    categories: Game code
+    .text       start:0x02022aa8 end:0x02022ac8
+
+asm/game/sprite_number_group_02022ac8.s:
+    categories: Game code
+    .text       start:0x02022ac8 end:0x02022b08
+
+asm/game/sprite_number_group_02022b08.s:
+    categories: Game code
+    .text       start:0x02022b08 end:0x02022b70
+
+asm/game/sprite_number_group_02022b70.s:
+    categories: Game code
+    .text       start:0x02022b70 end:0x02022bc8
+
+asm/game/sprite_number_group_02022bc8.s:
+    categories: Game code
+    .text       start:0x02022bc8 end:0x02022c30
+
+asm/game/sprite_number_group_02022c30.s:
+    categories: Game code
+    .text       start:0x02022c30 end:0x02022c80
+
+asm/game/sprite_number_group_02022c80.s:
+    categories: Game code
+    .text       start:0x02022c80 end:0x02022cb0
+
+asm/game/sprite_number_motion_presentation_02022cb0.s:
+    categories: Game code
+    .text       start:0x02022cb0 end:0x02022e70
+
+asm/game/sprite_number_motion_presentation_02022e70.s:
+    categories: Game code
+    .text       start:0x02022e70 end:0x02022ec8
+
+asm/game/sprite_number_motion_presentation_02022ec8.s:
+    categories: Game code
+    .text       start:0x02022ec8 end:0x02022f28
+
+asm/game/sprite_number_motion_presentation_02022f28.s:
+    categories: Game code
+    .text       start:0x02022f28 end:0x02022fbc
+
+asm/game/self_linked_sprite_config_02022fbc.s:
+    categories: Game code
+    .text       start:0x02022fbc end:0x02022ff4
+
+asm/game/record_sprite_motion_presentation_02022ff4.s:
+    categories: Game code
+    .text       start:0x02022ff4 end:0x02023260
+
+asm/game/record_sprite_motion_presentation_02023260.s:
+    categories: Game code
+    .text       start:0x02023260 end:0x020232b0
+
+asm/game/record_sprite_motion_presentation_020232b0.s:
+    categories: Game code
+    .text       start:0x020232b0 end:0x02023308
+
+asm/game/record_sprite_motion_presentation_02023308.s:
+    categories: Game code
+    .text       start:0x02023308 end:0x020233a0
+
+asm/game/sprite_number_list_delete_020233a0.s:
+    categories: Game code
+    .text       start:0x020233a0 end:0x020233c8
+
+asm/math/vec_fx32_scale_rounded_020233c8.s:
+    categories: Game code
+    .text       start:0x020233c8 end:0x02023434
+
+asm/game/arcing_sprite_effect_presentation_02023434.s:
+    categories: Game code
+    .text       start:0x02023434 end:0x020235a0
+
+asm/game/arcing_sprite_effect_presentation_020235a0.s:
+    categories: Game code
+    .text       start:0x020235a0 end:0x0202361c
+
+asm/game/arcing_sprite_effect_presentation_0202361c.s:
+    categories: Game code
+    .text       start:0x0202361c end:0x020236a0
+
+asm/game/arcing_sprite_effect_presentation_020236a0.s:
+    categories: Game code
+    .text       start:0x020236a0 end:0x02023890
+
+asm/game/ballistic_sprite_particle_02023890.s:
+    categories: Game code
+    .text       start:0x02023890 end:0x020239e8
+
+asm/game/ballistic_sprite_particle_020239e8.s:
+    categories: Game code
+    .text       start:0x020239e8 end:0x02023a14
+
+asm/game/ballistic_sprite_particle_02023a14.s:
+    categories: Game code
+    .text       start:0x02023a14 end:0x02023a8c
+
+asm/game/ballistic_sprite_emitter_02023a8c.s:
+    categories: Game code
+    .text       start:0x02023a8c end:0x02023bcc
+
+asm/game/ballistic_sprite_emitter_02023bcc.s:
+    categories: Game code
+    .text       start:0x02023bcc end:0x02023bec
+
+asm/game/ballistic_sprite_emitter_02023bec.s:
+    categories: Game code
+    .text       start:0x02023bec end:0x02023c0c
+
+asm/game/ballistic_sprite_emitter_02023c0c.s:
+    categories: Game code
+    .text       start:0x02023c0c end:0x02023c4c
+
+asm/game/ballistic_sprite_emitter_02023c4c.s:
+    categories: Game code
+    .text       start:0x02023c4c end:0x02023cb0
+
+asm/game/ballistic_sprite_emitter_02023cb0.s:
+    categories: Game code
+    .text       start:0x02023cb0 end:0x02023d1c
+
+asm/game/ballistic_sprite_emitter_02023d1c.s:
+    categories: Game code
+    .text       start:0x02023d1c end:0x02023d90
+
+asm/game/ballistic_sprite_emitter_02023d90.s:
+    categories: Game code
+    .text       start:0x02023d90 end:0x02023ed4
+
+asm/game/ballistic_sprite_emitter_02023ed4.s:
+    categories: Game code
+    .text       start:0x02023ed4 end:0x02023f78
+
+asm/game/ballistic_sprite_emitter_02023f78.s:
+    categories: Game code
+    .text       start:0x02023f78 end:0x02023fa0
+
+asm/game/overlay_2c_component_presentation_02023fa0.s:
+    categories: Game code
+    .text       start:0x02023fa0 end:0x02024004
+
+asm/game/overlay_2c_component_presentation_02024004.s:
+    categories: Game code
+    .text       start:0x02024004 end:0x02024054
+
+asm/game/overlay_2c_component_presentation_02024054.s:
+    categories: Game code
+    .text       start:0x02024054 end:0x020240ac
+
+asm/game/overlay_2c_component_presentation_020240ac.s:
+    categories: Game code
+    .text       start:0x020240ac end:0x020240bc
+
+asm/game/overlay_2c_component_presentation_020240bc.s:
+    categories: Game code
+    .text       start:0x020240bc end:0x020240cc
+
+asm/game/overlay_50_component_presentation_020240cc.s:
+    categories: Game code
+    .text       start:0x020240cc end:0x02024138
+
+asm/game/overlay_50_component_presentation_02024138.s:
+    categories: Game code
+    .text       start:0x02024138 end:0x02024188
+
+asm/game/overlay_50_component_presentation_02024188.s:
+    categories: Game code
+    .text       start:0x02024188 end:0x020241e0
+
+asm/game/overlay_50_component_presentation_020241e0.s:
+    categories: Game code
+    .text       start:0x020241e0 end:0x020241f0
+
+asm/game/overlay_50_component_presentation_020241f0.s:
+    categories: Game code
+    .text       start:0x020241f0 end:0x02024200
+
+asm/game/overlay_4c_component_presentation_02024200.s:
+    categories: Game code
+    .text       start:0x02024200 end:0x02024264
+
+asm/game/overlay_4c_component_presentation_02024264.s:
+    categories: Game code
+    .text       start:0x02024264 end:0x020242b4
+
+asm/game/overlay_4c_component_presentation_020242b4.s:
+    categories: Game code
+    .text       start:0x020242b4 end:0x0202430c
+
+asm/game/overlay_4c_component_presentation_0202430c.s:
+    categories: Game code
+    .text       start:0x0202430c end:0x0202431c
+
+asm/game/overlay_4c_component_presentation_0202431c.s:
+    categories: Game code
+    .text       start:0x0202431c end:0x0202432c
+
+asm/game/overlay_4c_parameterized_presentation_0202432c.s:
+    categories: Game code
+    .text       start:0x0202432c end:0x020243a0
+
+asm/game/overlay_4c_parameterized_presentation_020243a0.s:
+    categories: Game code
+    .text       start:0x020243a0 end:0x020243f0
+
+asm/game/overlay_4c_parameterized_presentation_020243f0.s:
+    categories: Game code
+    .text       start:0x020243f0 end:0x02024448
+
+asm/game/overlay_4c_parameterized_presentation_02024448.s:
+    categories: Game code
+    .text       start:0x02024448 end:0x02024458
+
+asm/game/overlay_4c_parameterized_presentation_02024458.s:
+    categories: Game code
+    .text       start:0x02024458 end:0x02024468
+
+asm/game/overlay_18_component_presentation_02024468.s:
+    categories: Game code
+    .text       start:0x02024468 end:0x020244cc
+
+asm/game/overlay_18_component_presentation_020244cc.s:
+    categories: Game code
+    .text       start:0x020244cc end:0x0202451c
+
+asm/game/overlay_18_component_presentation_0202451c.s:
+    categories: Game code
+    .text       start:0x0202451c end:0x02024574
+
+asm/game/overlay_18_component_presentation_02024574.s:
+    categories: Game code
+    .text       start:0x02024574 end:0x02024584
+
+asm/game/overlay_18_component_presentation_02024584.s:
+    categories: Game code
+    .text       start:0x02024584 end:0x02024594
+
+asm/game/four_slot_3d_presentation_02024594.s:
+    categories: Game code
+    .text       start:0x02024594 end:0x02024670
+
+asm/game/four_slot_3d_presentation_02024670.s:
+    categories: Game code
+    .text       start:0x02024670 end:0x020246a0
+
+asm/game/four_slot_3d_presentation_020246a0.s:
+    categories: Game code
+    .text       start:0x020246a0 end:0x020246d8
+
+asm/game/four_slot_3d_presentation_020246d8.s:
+    categories: Game code
+    .text       start:0x020246d8 end:0x0202497c
+
+asm/game/four_slot_3d_presentation_0202497c.s:
+    categories: Game code
+    .text       start:0x0202497c end:0x02024b04
+
+asm/game/launched_sprite_pair_presentation_02024b04.s:
+    categories: Game code
+    .text       start:0x02024b04 end:0x02024d3c
+
+asm/game/launched_sprite_pair_presentation_02024d3c.s:
+    categories: Game code
+    .text       start:0x02024d3c end:0x02024dac
+
+asm/game/launched_sprite_pair_presentation_02024dac.s:
+    categories: Game code
+    .text       start:0x02024dac end:0x02024e24
+
+asm/game/launched_sprite_pair_presentation_02024e24.s:
+    categories: Game code
+    .text       start:0x02024e24 end:0x02025120
+
+asm/game/timed_actor_rectangle_presentation_02025120.s:
+    categories: Game code
+    .text       start:0x02025120 end:0x0202517c
+
+asm/game/timed_actor_rectangle_presentation_0202517c.s:
+    categories: Game code
+    .text       start:0x0202517c end:0x02025190
+
+asm/game/timed_actor_rectangle_presentation_02025190.s:
+    categories: Game code
+    .text       start:0x02025190 end:0x020251ac
+
+asm/game/timed_actor_rectangle_presentation_020251ac.s:
+    categories: Game code
+    .text       start:0x020251ac end:0x02025300
+
+asm/game/rotating_core_effect_controller_02025300.s:
+    categories: Game code
+    .text       start:0x02025300 end:0x020254a4
+
+asm/game/rotating_core_effect_controller_020254a4.s:
+    categories: Game code
+    .text       start:0x020254a4 end:0x02025564
+
+asm/game/rotating_core_effect_controller_02025564.s:
+    categories: Game code
+    .text       start:0x02025564 end:0x0202562c
+
+asm/game/rotating_core_effect_controller_0202562c.s:
+    categories: Game code
+    .text       start:0x0202562c end:0x02025644
+
+asm/game/rotating_core_effect_controller_02025644.s:
+    categories: Game code
+    .text       start:0x02025644 end:0x0202564c
+
+asm/game/rotating_core_effect_controller_0202564c.s:
+    categories: Game code
+    .text       start:0x0202564c end:0x020256b4
+
+asm/game/rotating_core_effect_controller_020256b4.s:
+    categories: Game code
+    .text       start:0x020256b4 end:0x02025a3c
+
+asm/game/rotating_core_effect_controller_02025a3c.s:
+    categories: Game code
+    .text       start:0x02025a3c end:0x02025a44
+
+asm/game/dual_screen_ui_presentation_base_02025a44.s:
+    categories: Game code
+    .text       start:0x02025a44 end:0x02025acc
+
+asm/game/dual_screen_ui_presentation_base_02025acc.s:
+    categories: Game code
+    .text       start:0x02025acc end:0x02025b54
+
+asm/game/dual_screen_ui_presentation_base_02025b54.s:
+    categories: Game code
+    .text       start:0x02025b54 end:0x02025b94
+
+asm/game/dual_screen_ui_presentation_base_02025b94.s:
+    categories: Game code
+    .text       start:0x02025b94 end:0x02025bdc
+
+asm/game/dual_screen_ui_presentation_base_02025bdc.s:
+    categories: Game code
+    .text       start:0x02025bdc end:0x02025c1c
+
+asm/game/dual_screen_ui_presentation_base_02025c1c.s:
+    categories: Game code
+    .text       start:0x02025c1c end:0x02025c20
+
+asm/game/dual_screen_ui_presentation_base_02025c20.s:
+    categories: Game code
+    .text       start:0x02025c20 end:0x02025cd0
+
+asm/game/dual_screen_ui_presentation_base_02025cd0.s:
+    categories: Game code
+    .text       start:0x02025cd0 end:0x02025d10
+
+asm/game/dual_screen_ui_presentation_base_02025d10.s:
+    categories: Game code
+    .text       start:0x02025d10 end:0x02025d14
+
+asm/game/dual_screen_ui_presentation_base_02025d14.s:
+    categories: Game code
+    .text       start:0x02025d14 end:0x02025d1c
+
+asm/game/dual_screen_ui_presentation_base_02025d1c.s:
+    categories: Game code
+    .text       start:0x02025d1c end:0x02025dd8
+
+asm/game/dual_screen_ui_presentation_base_02025dd8.s:
+    categories: Game code
+    .text       start:0x02025dd8 end:0x02025e88
+
+asm/game/dual_screen_ui_presentation_base_02025e88.s:
+    categories: Game code
+    .text       start:0x02025e88 end:0x02025ed4
+
+asm/game/dual_screen_ui_presentation_base_02025ed4.s:
+    categories: Game code
+    .text       start:0x02025ed4 end:0x02025f20
+
+asm/game/dual_screen_ui_standard_presentation_02025f20.s:
+    categories: Game code
+    .text       start:0x02025f20 end:0x02025fc4
+
+asm/game/dual_screen_ui_standard_presentation_02025fc4.s:
+    categories: Game code
+    .text       start:0x02025fc4 end:0x02025fe4
+
+asm/game/dual_screen_ui_standard_presentation_02025fe4.s:
+    categories: Game code
+    .text       start:0x02025fe4 end:0x0202600c
+
+asm/game/dual_screen_ui_standard_presentation_0202600c.s:
+    categories: Game code
+    .text       start:0x0202600c end:0x02026044
+
+asm/game/dual_screen_ui_standard_presentation_02026044.s:
+    categories: Game code
+    .text       start:0x02026044 end:0x0202613c
+
+asm/game/dual_screen_ui_standard_presentation_0202613c.s:
+    categories: Game code
+    .text       start:0x0202613c end:0x02026174
+
+asm/game/dual_screen_ui_standard_presentation_02026174.s:
+    categories: Game code
+    .text       start:0x02026174 end:0x020261bc
+
+asm/game/dual_screen_ui_indexed_icon_presentation_020261bc.s:
+    categories: Game code
+    .text       start:0x020261bc end:0x02026308
+
+asm/game/dual_screen_ui_indexed_icon_presentation_02026308.s:
+    categories: Game code
+    .text       start:0x02026308 end:0x02026350
+
+asm/game/dual_screen_ui_indexed_icon_presentation_02026350.s:
+    categories: Game code
+    .text       start:0x02026350 end:0x020263a0
+
+asm/game/dual_screen_ui_indexed_icon_presentation_020263a0.s:
+    categories: Game code
+    .text       start:0x020263a0 end:0x020263d4
+
+asm/game/dual_screen_ui_indexed_icon_presentation_020263d4.s:
+    categories: Game code
+    .text       start:0x020263d4 end:0x0202640c
+
+asm/game/dual_screen_ui_indexed_icon_presentation_0202640c.s:
+    categories: Game code
+    .text       start:0x0202640c end:0x020264b0
+
+asm/game/dual_screen_ui_grid_state_020264b0.s:
+    categories: Game code
+    .text       start:0x020264b0 end:0x020264c4
+
+asm/game/dual_screen_ui_grid_state_020264c4.s:
+    categories: Game code
+    .text       start:0x020264c4 end:0x02026514
+
+asm/game/dual_screen_ui_grid_state_02026514.s:
+    categories: Game code
+    .text       start:0x02026514 end:0x02026588
+
+asm/game/dual_screen_ui_grid_state_02026588.s:
+    categories: Game code
+    .text       start:0x02026588 end:0x02026990
+
+asm/game/dual_screen_ui_grid_state_02026990.s:
+    categories: Game code
+    .text       start:0x02026990 end:0x020269a4
+
+asm/game/dual_screen_ui_grid_state_020269a4.s:
+    categories: Game code
+    .text       start:0x020269a4 end:0x020269f8
+
+asm/game/dual_screen_ui_grid_state_020269f8.s:
+    categories: Game code
+    .text       start:0x020269f8 end:0x02026e38
+
+asm/game/dual_screen_ui_grid_state_02026e38.s:
+    categories: Game code
+    .text       start:0x02026e38 end:0x02026e44
+
+asm/game/dual_screen_ui_grid_state_02026e44.s:
+    categories: Game code
+    .text       start:0x02026e44 end:0x02026ed4
+
+asm/game/dual_screen_ui_grid_state_02026ed4.s:
+    categories: Game code
+    .text       start:0x02026ed4 end:0x02026f38
+
+asm/game/four_stage_command_presentation_02026f38.s:
+    categories: Game code
+    .text       start:0x02026f38 end:0x02026f8c
+
+asm/game/four_stage_command_presentation_02026f8c.s:
+    categories: Game code
+    .text       start:0x02026f8c end:0x02026fa0
+
+asm/game/four_stage_command_presentation_02026fa0.s:
+    categories: Game code
+    .text       start:0x02026fa0 end:0x02026fbc
+
+asm/game/four_stage_command_presentation_02026fbc.s:
+    categories: Game code
+    .text       start:0x02026fbc end:0x02027150
+
+asm/game/indexed_sprite_overlay_presentation_02027150.s:
+    categories: Game code
+    .text       start:0x02027150 end:0x0202721c
+
+asm/game/indexed_sprite_overlay_presentation_0202721c.s:
+    categories: Game code
+    .text       start:0x0202721c end:0x02027268
+
+asm/game/indexed_sprite_overlay_presentation_02027268.s:
+    categories: Game code
+    .text       start:0x02027268 end:0x020272bc
+
+asm/game/indexed_sprite_overlay_presentation_020272bc.s:
+    categories: Game code
+    .text       start:0x020272bc end:0x020272e0
+
+asm/game/indexed_sprite_overlay_presentation_020272e0.s:
+    categories: Game code
+    .text       start:0x020272e0 end:0x02027300
+
+asm/game/reversed_frame_sprite_overlay_presentation_02027300.s:
+    categories: Game code
+    .text       start:0x02027300 end:0x020273d4
+
+asm/game/reversed_frame_sprite_overlay_presentation_020273d4.s:
+    categories: Game code
+    .text       start:0x020273d4 end:0x02027420
+
+asm/game/reversed_frame_sprite_overlay_presentation_02027420.s:
+    categories: Game code
+    .text       start:0x02027420 end:0x02027474
+
+asm/game/reversed_frame_sprite_overlay_presentation_02027474.s:
+    categories: Game code
+    .text       start:0x02027474 end:0x02027498
+
+asm/game/reversed_frame_sprite_overlay_presentation_02027498.s:
+    categories: Game code
+    .text       start:0x02027498 end:0x020274b8
+
+asm/game/packed_bit_grid_state_020274b8.s:
+    categories: Game code
+    .text       start:0x020274b8 end:0x020274c8
+
+asm/game/packed_bit_grid_state_020274c8.s:
+    categories: Game code
+    .text       start:0x020274c8 end:0x020274f4
+
+asm/game/packed_bit_grid_state_020274f4.s:
+    categories: Game code
+    .text       start:0x020274f4 end:0x0202751c
+
+asm/game/packed_bit_grid_state_0202751c.s:
+    categories: Game code
+    .text       start:0x0202751c end:0x020275b0
+
+asm/game/packed_bit_grid_state_020275b0.s:
+   categories: Game code
+   .text       start:0x020275b0 end:0x02027604
+
+asm/game/game_phase_progress_controller_02027604.s:
+    categories: Game code
+    .text       start:0x02027604 end:0x02027650
+
+asm/game/game_phase_progress_controller_02027650.s:
+    categories: Game code
+    .text       start:0x02027650 end:0x02027654
+
+asm/game/game_phase_progress_controller_02027654.s:
+    categories: Game code
+    .text       start:0x02027654 end:0x02027788
+
+asm/game/game_phase_progress_controller_02027788.s:
+    categories: Game code
+    .text       start:0x02027788 end:0x02027818
+
+asm/game/game_phase_progress_controller_02027818.s:
+    categories: Game code
+    .text       start:0x02027818 end:0x02027828
+
+asm/game/game_phase_progress_controller_02027828.s:
+    categories: Game code
+    .text       start:0x02027828 end:0x02027854
+
+asm/game/game_phase_progress_controller_02027854.s:
+    categories: Game code
+    .text       start:0x02027854 end:0x02027864
+
+asm/game/game_phase_progress_controller_02027864.s:
+    categories: Game code
+    .text       start:0x02027864 end:0x020278b4
+
+asm/game/game_phase_progress_controller_020278b4.s:
+    categories: Game code
+    .text       start:0x020278b4 end:0x020278d4
+
+asm/game/game_phase_progress_controller_020278d4.s:
+    categories: Game code
+    .text       start:0x020278d4 end:0x02027930
+
+asm/game/game_phase_progress_controller_02027930.s:
+    categories: Game code
+    .text       start:0x02027930 end:0x02027a7c
+
+asm/game/game_phase_progress_controller_02027a7c.s:
+    categories: Game code
+    .text       start:0x02027a7c end:0x02027bd4
+
+asm/game/game_phase_progress_controller_02027bd4.s:
+    categories: Game code
+    .text       start:0x02027bd4 end:0x02027c34
+
+asm/game/game_phase_progress_controller_02027c34.s:
+    categories: Game code
+    .text       start:0x02027c34 end:0x02027d14
+
+asm/game/game_phase_progress_controller_02027d14.s:
+    categories: Game code
+    .text       start:0x02027d14 end:0x02027d7c
+
+asm/game/game_phase_progress_controller_02027d7c.s:
+    categories: Game code
+    .text       start:0x02027d7c end:0x02027df0
+
+asm/game/game_phase_progress_controller_02027df0.s:
+    categories: Game code
+    .text       start:0x02027df0 end:0x02027e08
+
+asm/game/game_phase_progress_controller_02027e08.s:
+    categories: Game code
+    .text       start:0x02027e08 end:0x02027e8c
+
+asm/game/game_phase_progress_controller_02027e8c.s:
+    categories: Game code
+    .text       start:0x02027e8c end:0x02027e94
+
+asm/game/game_phase_progress_controller_02027e94.s:
+    categories: Game code
+    .text       start:0x02027e94 end:0x02027e9c
+
+asm/game/game_phase_progress_controller_02027e9c.s:
+    categories: Game code
+    .text       start:0x02027e9c end:0x02027ea4
+
+asm/game/game_phase_progress_controller_02027ea4.s:
+    categories: Game code
+    .text       start:0x02027ea4 end:0x02027eac
+
+asm/game/game_phase_progress_controller_02027eac.s:
+    categories: Game code
+    .text       start:0x02027eac end:0x02027f2c
+
+asm/game/game_phase_progress_controller_02027f2c.s:
+    categories: Game code
+    .text       start:0x02027f2c end:0x02027f38
+
+asm/game/game_phase_progress_controller_02027f38.s:
+    categories: Game code
+    .text       start:0x02027f38 end:0x02027f94
+
+asm/game/game_phase_progress_controller_02027f94.s:
+    categories: Game code
+    .text       start:0x02027f94 end:0x02027fe8
+
+asm/game/area_info_panel_presentation_02027fe8.s:
+    categories: Game code
+    .text       start:0x02027fe8 end:0x020280d8
+
+asm/game/area_info_panel_presentation_020280d8.s:
+    categories: Game code
+    .text       start:0x020280d8 end:0x02028100
+
+asm/game/area_info_panel_presentation_02028100.s:
+    categories: Game code
+    .text       start:0x02028100 end:0x0202836c
+
+asm/game/area_info_panel_presentation_0202836c.s:
+    categories: Game code
+    .text       start:0x0202836c end:0x02028388
+
+asm/game/game_phase_metadata_queries_02028388.s:
+    categories: Game code
+    .text       start:0x02028388 end:0x0202839c
+
+asm/game/game_phase_metadata_queries_0202839c.s:
+    categories: Game code
+    .text       start:0x0202839c end:0x02028404
+
+asm/game/game_phase_metadata_queries_02028404.s:
+    categories: Game code
+    .text       start:0x02028404 end:0x0202844c
+
+asm/game/game_phase_metadata_queries_0202844c.s:
+    categories: Game code
+    .text       start:0x0202844c end:0x020284e0
+
+asm/game/game_phase_metadata_queries_020284e0.s:
+    categories: Game code
+    .text       start:0x020284e0 end:0x020284f0
+
+asm/game/game_phase_metadata_queries_020284f0.s:
+    categories: Game code
+    .text       start:0x020284f0 end:0x02028508
+
+asm/game/game_phase_metadata_queries_02028508.s:
+    categories: Game code
+    .text       start:0x02028508 end:0x0202852c
+
+asm/game/game_phase_metadata_queries_0202852c.s:
+    categories: Game code
+    .text       start:0x0202852c end:0x02028544
+
+asm/game/main_bg1_follow_presentation_02028544.s:
+    categories: Game code
+    .text       start:0x02028544 end:0x02028574
+
+asm/game/main_bg1_follow_presentation_02028574.s:
+    categories: Game code
+    .text       start:0x02028574 end:0x02028588
+
+asm/game/main_bg1_follow_presentation_02028588.s:
+    categories: Game code
+    .text       start:0x02028588 end:0x020285a4
+
+asm/game/main_bg1_follow_presentation_020285a4.s:
+    categories: Game code
+    .text       start:0x020285a4 end:0x02028630
+
+asm/game/main_bg1_follow_presentation_02028630.s:
+    categories: Game code
+    .text       start:0x02028630 end:0x02028684
+
+asm/game/main_bg1_follow_presentation_02028684.s:
+    categories: Game code
+    .text       start:0x02028684 end:0x02028764
+
+asm/game/main_bg1_follow_presentation_02028764.s:
+    categories: Game code
+    .text       start:0x02028764 end:0x02028778
+
+asm/game/main_window_mask_presentation_02028778.s:
+    categories: Game code
+    .text       start:0x02028778 end:0x020287a4
+
+asm/game/main_window_mask_presentation_020287a4.s:
+    categories: Game code
+    .text       start:0x020287a4 end:0x020287b8
+
+asm/game/main_window_mask_presentation_020287b8.s:
+    categories: Game code
+    .text       start:0x020287b8 end:0x020287d4
+
+asm/game/main_window_mask_presentation_020287d4.s:
+    categories: Game code
+    .text       start:0x020287d4 end:0x020287dc
+
+asm/game/main_window_mask_presentation_020287dc.s:
+    categories: Game code
+    .text       start:0x020287dc end:0x02028814
+
+asm/game/main_window_mask_presentation_02028814.s:
+    categories: Game code
+    .text       start:0x02028814 end:0x02028860
+
+asm/game/randomized_sprite_particle_02028860.s:
+    categories: Game code
+    .text       start:0x02028860 end:0x0202895c
+
+asm/game/randomized_sprite_particle_0202895c.s:
+    categories: Game code
+    .text       start:0x0202895c end:0x02028998
+
+asm/game/randomized_sprite_particle_02028998.s:
+    categories: Game code
+    .text       start:0x02028998 end:0x02028b98
+
+asm/game/randomized_sprite_particle_emitter_02028b98.s:
+    categories: Game code
+    .text       start:0x02028b98 end:0x02028c94
+
+asm/game/randomized_sprite_particle_emitter_02028c94.s:
+    categories: Game code
+    .text       start:0x02028c94 end:0x02028cb4
+
+asm/game/randomized_sprite_particle_emitter_02028cb4.s:
+    categories: Game code
+    .text       start:0x02028cb4 end:0x02028cd4
+
+asm/game/randomized_sprite_particle_emitter_02028cd4.s:
+    categories: Game code
+    .text       start:0x02028cd4 end:0x02028d14
+
+asm/game/randomized_sprite_particle_emitter_02028d14.s:
+    categories: Game code
+    .text       start:0x02028d14 end:0x02028dd4
+
+asm/game/randomized_sprite_particle_emitter_02028dd4.s:
+    categories: Game code
+    .text       start:0x02028dd4 end:0x02028e9c
+
+asm/game/randomized_sprite_particle_emitter_02028e9c.s:
+    categories: Game code
+    .text       start:0x02028e9c end:0x02028f04
+
+asm/game/randomized_sprite_particle_emitter_02028f04.s:
+    categories: Game code
+    .text       start:0x02028f04 end:0x0202906c
+
+asm/game/randomized_sprite_particle_emitter_0202906c.s:
+    categories: Game code
+    .text       start:0x0202906c end:0x02029170
+
+asm/game/randomized_sprite_particle_emitter_02029170.s:
+    categories: Game code
+    .text       start:0x02029170 end:0x02029190
+
+asm/game/randomized_sprite_particle_emitter_02029190.s:
+    categories: Game code
+    .text       start:0x02029190 end:0x020291b8
+
+asm/game/dual_layer_tile_renderer_base_020291b8.s:
+    categories: Game code
+    .text       start:0x020291b8 end:0x02029218
+
+asm/game/dual_layer_tile_renderer_base_02029218.s:
+    categories: Game code
+    .text       start:0x02029218 end:0x02029278
+
+asm/game/dual_layer_tile_renderer_base_02029278.s:
+    categories: Game code
+    .text       start:0x02029278 end:0x020292b0
+
+asm/game/dual_layer_tile_renderer_base_020292b0.s:
+    categories: Game code
+    .text       start:0x020292b0 end:0x020292f0
+
+asm/game/dual_layer_tile_renderer_base_020292f0.s:
+    categories: Game code
+    .text       start:0x020292f0 end:0x02029328
+
+asm/game/dual_layer_tile_renderer_base_02029328.s:
+    categories: Game code
+    .text       start:0x02029328 end:0x02029360
+
+asm/game/dual_layer_tile_renderer_base_02029360.s:
+    categories: Game code
+    .text       start:0x02029360 end:0x02029370
+
+asm/game/dual_layer_tile_renderer_runtime_02029370.s:
+    categories: Game code
+    .text       start:0x02029370 end:0x02029648
+
+asm/game/dual_layer_tile_renderer_runtime_02029648.s:
+    categories: Game code
+    .text       start:0x02029648 end:0x0202973c
+
+asm/game/dual_layer_tile_renderer_runtime_0202973c.s:
+    categories: Game code
+    .text       start:0x0202973c end:0x02029784
+
+asm/game/dual_layer_tile_renderer_runtime_02029784.s:
+    categories: Game code
+    .text       start:0x02029784 end:0x02029864
+
+asm/game/dual_layer_tile_renderer_runtime_02029864.s:
+    categories: Game code
+    .text       start:0x02029864 end:0x02029914
+
+asm/game/dual_layer_tile_renderer_runtime_02029914.s:
+    categories: Game code
+    .text       start:0x02029914 end:0x02029a00
+
+asm/game/dual_layer_tile_renderer_runtime_02029a00.s:
+    categories: Game code
+    .text       start:0x02029a00 end:0x02029a1c
+
+asm/game/dual_layer_tile_renderer_runtime_02029a1c.s:
+    categories: Game code
+    .text       start:0x02029a1c end:0x02029a40
+
+asm/game/dual_layer_tile_renderer_runtime_02029a40.s:
+    categories: Game code
+    .text       start:0x02029a40 end:0x02029a80
+
+asm/game/dual_layer_tile_renderer_runtime_02029a80.s:
+    categories: Game code
+    .text       start:0x02029a80 end:0x02029ad0
+
+asm/game/dual_layer_tile_renderer_runtime_02029ad0.s:
+    categories: Game code
+    .text       start:0x02029ad0 end:0x02029b70
+
+asm/game/dual_layer_tile_renderer_runtime_02029b70.s:
+    categories: Game code
+    .text       start:0x02029b70 end:0x02029bfc
+
+asm/game/dual_layer_tile_renderer_runtime_02029bfc.s:
+    categories: Game code
+    .text       start:0x02029bfc end:0x02029c94
+
+asm/game/dual_layer_tile_renderer_runtime_02029c94.s:
+    categories: Game code
+    .text       start:0x02029c94 end:0x02029ca4
+
+asm/game/dual_layer_tile_renderer_runtime_02029ca4.s:
+    categories: Game code
+    .text       start:0x02029ca4 end:0x02029d3c
+
+asm/game/dual_layer_tile_renderer_runtime_02029d3c.s:
+    categories: Game code
+    .text       start:0x02029d3c end:0x02029d40
+
+asm/game/tile_draw_command_dispatch_02029d40.s:
+    categories: Game code
+    .text       start:0x02029d40 end:0x02029df4
+
+asm/game/tile_draw_command_dispatch_02029df4.s:
+    categories: Game code
+    .text       start:0x02029df4 end:0x02029e44
+
+asm/game/owned_tile_buffer_02029e44.s:
+    categories: Game code
+    .text       start:0x02029e44 end:0x02029e64
+
+asm/game/owned_tile_buffer_02029e64.s:
+    categories: Game code
+    .text       start:0x02029e64 end:0x02029e90
+
+asm/game/tile_layer_state_lifecycle_02029e90.s:
+    categories: Game code
+    .text       start:0x02029e90 end:0x02029ed4
+
+asm/game/tile_layer_state_lifecycle_02029ed4.s:
+    categories: Game code
+    .text       start:0x02029ed4 end:0x02029efc
+
+asm/game/tile_layer_state_lifecycle_02029efc.s:
+    categories: Game code
+    .text       start:0x02029efc end:0x02029f2c
+
+asm/game/tile_layer_state_lifecycle_02029f2c.s:
+    categories: Game code
+    .text       start:0x02029f2c end:0x02029fb0
+
+asm/game/tile_layer_cache_refresh_02029fb0.s:
+    categories: Game code
+    .text       start:0x02029fb0 end:0x0202a0e8
+
+asm/game/tile_layer_cache_refresh_0202a0e8.s:
+    categories: Game code
+    .text       start:0x0202a0e8 end:0x0202a1cc
+
+asm/game/tile_layer_cache_refresh_0202a1cc.s:
+    categories: Game code
+    .text       start:0x0202a1cc end:0x0202a2b0
+
+asm/game/tile_layer_scroll_and_access_0202a2b0.s:
+    categories: Game code
+    .text       start:0x0202a2b0 end:0x0202a588
+
+asm/game/tile_layer_scroll_and_access_0202a588.s:
+    categories: Game code
+    .text       start:0x0202a588 end:0x0202a62c
+
+asm/game/tile_layer_scroll_and_access_0202a62c.s:
+    categories: Game code
+    .text       start:0x0202a62c end:0x0202a6d0
+
+asm/game/tile_layer_scroll_and_access_0202a6d0.s:
+    categories: Game code
+    .text       start:0x0202a6d0 end:0x0202a708
+
+asm/game/tile_layer_scroll_and_access_0202a708.s:
+    categories: Game code
+    .text       start:0x0202a708 end:0x0202a730
+
+asm/game/tile_layer_scroll_and_access_0202a730.s:
+    categories: Game code
+    .text       start:0x0202a730 end:0x0202a74c
+
+asm/game/tile_layer_scroll_and_access_0202a74c.s:
+    categories: Game code
+    .text       start:0x0202a74c end:0x0202a78c
+
+asm/game/tile_layer_scroll_and_access_0202a78c.s:
+    categories: Game code
+    .text       start:0x0202a78c end:0x0202a7fc
+
+asm/game/tile_layer_scroll_and_access_0202a7fc.s:
+    categories: Game code
+    .text       start:0x0202a7fc end:0x0202a884
+
+asm/game/tile_layer_scroll_and_access_0202a884.s:
+    categories: Game code
+    .text       start:0x0202a884 end:0x0202a8b4
+
+asm/game/bg2_tile_layer_0202a8b4.s:
+    categories: Game code
+    .text       start:0x0202a8b4 end:0x0202a8e4
+
+asm/game/bg2_tile_layer_0202a8e4.s:
+    categories: Game code
+    .text       start:0x0202a8e4 end:0x0202a950
+
+asm/game/bg2_tile_layer_0202a950.s:
+    categories: Game code
+    .text       start:0x0202a950 end:0x0202a97c
+
+asm/game/bg2_tile_layer_0202a97c.s:
+    categories: Game code
+    .text       start:0x0202a97c end:0x0202a9a8
+
+asm/game/bg2_tile_layer_0202a9a8.s:
+    categories: Game code
+    .text       start:0x0202a9a8 end:0x0202a9d0
+
+asm/game/bg2_tile_layer_0202a9d0.s:
+    categories: Game code
+    .text       start:0x0202a9d0 end:0x0202aa00
+
+asm/game/bg2_tile_layer_0202aa00.s:
+    categories: Game code
+    .text       start:0x0202aa00 end:0x0202ab14
+
+asm/game/bg2_tile_layer_0202ab14.s:
+    categories: Game code
+    .text       start:0x0202ab14 end:0x0202ab6c
+
+asm/game/bg2_tile_layer_0202ab6c.s:
+    categories: Game code
+    .text       start:0x0202ab6c end:0x0202abb0
+
+asm/game/bg3_tile_layer_0202abb0.s:
+    categories: Game code
+    .text       start:0x0202abb0 end:0x0202abe0
+
+asm/game/bg3_tile_layer_0202abe0.s:
+    categories: Game code
+    .text       start:0x0202abe0 end:0x0202ac4c
+
+asm/game/bg3_tile_layer_0202ac4c.s:
+    categories: Game code
+    .text       start:0x0202ac4c end:0x0202ac78
+
+asm/game/bg3_tile_layer_0202ac78.s:
+    categories: Game code
+    .text       start:0x0202ac78 end:0x0202aca4
+
+asm/game/bg3_tile_layer_0202aca4.s:
+    categories: Game code
+    .text       start:0x0202aca4 end:0x0202accc
+
+asm/game/bg3_tile_layer_0202accc.s:
+    categories: Game code
+    .text       start:0x0202accc end:0x0202acfc
+
+asm/game/bg3_tile_layer_0202acfc.s:
+    categories: Game code
+    .text       start:0x0202acfc end:0x0202ae10
+
+asm/game/bg3_tile_layer_0202ae10.s:
+    categories: Game code
+    .text       start:0x0202ae10 end:0x0202ae68
+
+asm/game/bg3_tile_layer_0202ae68.s:
+    categories: Game code
+    .text       start:0x0202ae68 end:0x0202aeac
+
+asm/game/bg2_extended_tile_layer_0202aeac.s:
+    categories: Game code
+    .text       start:0x0202aeac end:0x0202aedc
+
+asm/game/bg2_extended_tile_layer_0202aedc.s:
+    categories: Game code
+    .text       start:0x0202aedc end:0x0202af2c
+
+asm/game/bg2_extended_tile_layer_0202af2c.s:
+    categories: Game code
+    .text       start:0x0202af2c end:0x0202af54
+
+asm/game/bg2_extended_tile_layer_0202af54.s:
+    categories: Game code
+    .text       start:0x0202af54 end:0x0202af84
+
+asm/game/bg2_extended_tile_layer_0202af84.s:
+    categories: Game code
+    .text       start:0x0202af84 end:0x0202b098
+
+asm/game/bg2_extended_tile_layer_0202b098.s:
+    categories: Game code
+    .text       start:0x0202b098 end:0x0202b0f0
+
+asm/game/bg2_extended_tile_layer_0202b0f0.s:
+    categories: Game code
+    .text       start:0x0202b0f0 end:0x0202b134
+
+asm/game/bg3_extended_tile_layer_0202b134.s:
+    categories: Game code
+    .text       start:0x0202b134 end:0x0202b164
+
+asm/game/bg3_extended_tile_layer_0202b164.s:
+    categories: Game code
+    .text       start:0x0202b164 end:0x0202b1b4
+
+asm/game/bg3_extended_tile_layer_0202b1b4.s:
+    categories: Game code
+    .text       start:0x0202b1b4 end:0x0202b1dc
+
+asm/game/bg3_extended_tile_layer_0202b1dc.s:
+    categories: Game code
+    .text       start:0x0202b1dc end:0x0202b20c
+
+asm/game/bg3_extended_tile_layer_0202b20c.s:
+    categories: Game code
+    .text       start:0x0202b20c end:0x0202b320
+
+asm/game/bg3_extended_tile_layer_0202b320.s:
+    categories: Game code
+    .text       start:0x0202b320 end:0x0202b378
+
+asm/game/bg3_extended_tile_layer_0202b378.s:
+    categories: Game code
+    .text       start:0x0202b378 end:0x0202b3bc
+
+src/graphics/software_canvas_data.c:
 src/graphics/software_canvas_data.c:
     categories: Game code
     .data       start:0x020d4190 end:0x020d4198
@@ -3026,3 +4575,475 @@ src/graphics/graphics_sprite_vram_binding.c:
 src/graphics/graphics_sprite_indexed_release.c:
     categories: Game code
     .text       start:0x02074d40 end:0x02074dc8
+
+asm/game/compressed_byte_buffer_0202b3bc.s:
+    categories: Game code
+    .text       start:0x0202b3bc end:0x0202b3c8
+
+asm/game/compressed_byte_buffer_0202b3c8.s:
+    categories: Game code
+    .text       start:0x0202b3c8 end:0x0202b3e8
+
+asm/game/compressed_byte_buffer_0202b3e8.s:
+    categories: Game code
+    .text       start:0x0202b3e8 end:0x0202b3f0
+
+asm/game/compressed_byte_buffer_0202b3f0.s:
+    categories: Game code
+    .text       start:0x0202b3f0 end:0x0202b3fc
+
+asm/game/compressed_byte_buffer_0202b3fc.s:
+    categories: Game code
+    .text       start:0x0202b3fc end:0x0202b408
+
+asm/game/compressed_byte_buffer_0202b408.s:
+    categories: Game code
+    .text       start:0x0202b408 end:0x0202b4c0
+
+asm/game/compressed_byte_buffer_0202b4c0.s:
+    categories: Game code
+    .text       start:0x0202b4c0 end:0x0202b4d4
+
+asm/game/sized_compressed_buffer_0202b4d4.s:
+    categories: Game code
+    .text       start:0x0202b4d4 end:0x0202b4e4
+
+asm/game/sized_compressed_buffer_0202b4e4.s:
+    categories: Game code
+    .text       start:0x0202b4e4 end:0x0202b4f8
+
+asm/game/sized_compressed_buffer_0202b4f8.s:
+    categories: Game code
+    .text       start:0x0202b4f8 end:0x0202b520
+
+asm/game/sized_compressed_buffer_0202b520.s:
+    categories: Game code
+    .text       start:0x0202b520 end:0x0202b5f4
+
+asm/game/sized_compressed_buffer_0202b5f4.s:
+    categories: Game code
+    .text       start:0x0202b5f4 end:0x0202b5fc
+
+asm/game/zeroed_compressed_buffer_0202b5fc.s:
+    categories: Game code
+    .text       start:0x0202b5fc end:0x0202b60c
+
+asm/game/zeroed_compressed_buffer_0202b60c.s:
+    categories: Game code
+    .text       start:0x0202b60c end:0x0202b620
+
+asm/game/zeroed_compressed_buffer_0202b620.s:
+    categories: Game code
+    .text       start:0x0202b620 end:0x0202b648
+
+asm/game/zeroed_compressed_buffer_0202b648.s:
+    categories: Game code
+    .text       start:0x0202b648 end:0x0202b728
+
+asm/game/zeroed_compressed_buffer_0202b728.s:
+    categories: Game code
+    .text       start:0x0202b728 end:0x0202b730
+
+asm/game/animated_tile_staging_buffer_0202b730.s:
+    categories: Game code
+    .text       start:0x0202b730 end:0x0202b750
+
+asm/game/animated_tile_staging_buffer_0202b750.s:
+    categories: Game code
+    .text       start:0x0202b750 end:0x0202b834
+
+asm/game/animated_tile_staging_buffer_0202b834.s:
+    categories: Game code
+    .text       start:0x0202b834 end:0x0202b838
+
+asm/game/animated_tile_staging_buffer_0202b838.s:
+    categories: Game code
+    .text       start:0x0202b838 end:0x0202b854
+
+asm/game/animated_tile_staging_buffer_0202b854.s:
+    categories: Game code
+    .text       start:0x0202b854 end:0x0202b930
+
+asm/game/animated_tile_staging_buffer_0202b930.s:
+    categories: Game code
+    .text       start:0x0202b930 end:0x0202b9bc
+
+asm/game/animated_tile_staging_buffer_0202b9bc.s:
+    categories: Game code
+    .text       start:0x0202b9bc end:0x0202b9dc
+
+asm/game/byte_tile_map_owner_0202b9dc.s:
+    categories: Game code
+    .text       start:0x0202b9dc end:0x0202ba4c
+
+asm/game/byte_tile_map_owner_0202ba4c.s:
+    categories: Game code
+    .text       start:0x0202ba4c end:0x0202ba74
+
+asm/game/byte_tile_map_owner_0202ba74.s:
+    categories: Game code
+    .text       start:0x0202ba74 end:0x0202baa4
+
+asm/game/byte_tile_map_owner_0202baa4.s:
+    categories: Game code
+    .text       start:0x0202baa4 end:0x0202bacc
+
+asm/game/byte_tile_map_owner_0202bacc.s:
+    categories: Game code
+    .text       start:0x0202bacc end:0x0202bad0
+
+asm/game/byte_tile_map_owner_0202bad0.s:
+    categories: Game code
+    .text       start:0x0202bad0 end:0x0202bad4
+
+asm/game/byte_tile_map_owner_0202bad4.s:
+    categories: Game code
+    .text       start:0x0202bad4 end:0x0202bad8
+
+asm/game/byte_tile_map_owner_0202bad8.s:
+    categories: Game code
+    .text       start:0x0202bad8 end:0x0202badc
+
+asm/game/byte_tile_map_owner_0202badc.s:
+    categories: Game code
+    .text       start:0x0202badc end:0x0202bae0
+
+asm/game/byte_tile_map_owner_0202bae0.s:
+    categories: Game code
+    .text       start:0x0202bae0 end:0x0202bae4
+
+asm/game/byte_tile_map_owner_0202bae4.s:
+    categories: Game code
+    .text       start:0x0202bae4 end:0x0202bae8
+
+asm/game/byte_tile_map_owner_0202bae8.s:
+    categories: Game code
+    .text       start:0x0202bae8 end:0x0202baec
+
+asm/game/byte_tile_map_owner_0202baec.s:
+    categories: Game code
+    .text       start:0x0202baec end:0x0202bb60
+
+asm/game/byte_tile_map_owner_0202bb60.s:
+    categories: Game code
+    .text       start:0x0202bb60 end:0x0202bbd0
+
+asm/game/byte_tile_map_owner_0202bbd0.s:
+    categories: Game code
+    .text       start:0x0202bbd0 end:0x0202bbd8
+
+asm/game/byte_tile_map_owner_0202bbd8.s:
+    categories: Game code
+    .text       start:0x0202bbd8 end:0x0202bbf4
+
+asm/game/byte_tile_map_owner_0202bbf4.s:
+    categories: Game code
+    .text       start:0x0202bbf4 end:0x0202bbf8
+
+asm/game/byte_tile_map_owner_0202bbf8.s:
+    categories: Game code
+    .text       start:0x0202bbf8 end:0x0202bc10
+
+asm/game/byte_tile_map_owner_0202bc10.s:
+    categories: Game code
+    .text       start:0x0202bc10 end:0x0202bc14
+
+asm/game/byte_tile_map_owner_0202bc14.s:
+    categories: Game code
+    .text       start:0x0202bc14 end:0x0202bc18
+
+asm/game/sub_dual_layer_resource_renderer_0202bc18.s:
+    categories: Game code
+    .text       start:0x0202bc18 end:0x0202bc38
+
+asm/game/sub_dual_layer_resource_renderer_0202bc38.s:
+    categories: Game code
+    .text       start:0x0202bc38 end:0x0202bc4c
+
+asm/game/sub_dual_layer_resource_renderer_0202bc4c.s:
+    categories: Game code
+    .text       start:0x0202bc4c end:0x0202bc68
+
+asm/game/sub_dual_layer_resource_renderer_0202bc68.s:
+    categories: Game code
+    .text       start:0x0202bc68 end:0x0202bc80
+
+asm/game/sub_dual_layer_resource_renderer_0202bc80.s:
+    categories: Game code
+    .text       start:0x0202bc80 end:0x0202bc98
+
+asm/game/sub_dual_layer_resource_renderer_0202bc98.s:
+    categories: Game code
+    .text       start:0x0202bc98 end:0x0202be68
+
+asm/game/sub_dual_layer_resource_renderer_0202be68.s:
+    categories: Game code
+    .text       start:0x0202be68 end:0x0202becc
+
+asm/game/main_dual_layer_resource_renderer_0202becc.s:
+    categories: Game code
+    .text       start:0x0202becc end:0x0202beec
+
+asm/game/main_dual_layer_resource_renderer_0202beec.s:
+    categories: Game code
+    .text       start:0x0202beec end:0x0202bf00
+
+asm/game/main_dual_layer_resource_renderer_0202bf00.s:
+    categories: Game code
+    .text       start:0x0202bf00 end:0x0202bf1c
+
+asm/game/main_dual_layer_resource_renderer_0202bf1c.s:
+    categories: Game code
+    .text       start:0x0202bf1c end:0x0202bf34
+
+asm/game/main_dual_layer_resource_renderer_0202bf34.s:
+    categories: Game code
+    .text       start:0x0202bf34 end:0x0202bf4c
+
+asm/game/main_dual_layer_resource_renderer_0202bf4c.s:
+    categories: Game code
+    .text       start:0x0202bf4c end:0x0202c0b8
+
+asm/game/sub_dual_layer_resource_renderer_alt_0202c0b8.s:
+    categories: Game code
+    .text       start:0x0202c0b8 end:0x0202c0d8
+
+asm/game/sub_dual_layer_resource_renderer_alt_0202c0d8.s:
+    categories: Game code
+    .text       start:0x0202c0d8 end:0x0202c0ec
+
+asm/game/sub_dual_layer_resource_renderer_alt_0202c0ec.s:
+    categories: Game code
+    .text       start:0x0202c0ec end:0x0202c108
+
+asm/game/sub_dual_layer_resource_renderer_alt_0202c108.s:
+    categories: Game code
+    .text       start:0x0202c108 end:0x0202c120
+
+asm/game/sub_dual_layer_resource_renderer_alt_0202c120.s:
+    categories: Game code
+    .text       start:0x0202c120 end:0x0202c138
+
+asm/game/sub_dual_layer_resource_renderer_alt_0202c138.s:
+    categories: Game code
+    .text       start:0x0202c138 end:0x0202c308
+
+asm/game/main_dual_layer_resource_renderer_alt_0202c308.s:
+    categories: Game code
+    .text       start:0x0202c308 end:0x0202c328
+
+asm/game/main_dual_layer_resource_renderer_alt_0202c328.s:
+    categories: Game code
+    .text       start:0x0202c328 end:0x0202c33c
+
+asm/game/main_dual_layer_resource_renderer_alt_0202c33c.s:
+    categories: Game code
+    .text       start:0x0202c33c end:0x0202c358
+
+asm/game/main_dual_layer_resource_renderer_alt_0202c358.s:
+    categories: Game code
+    .text       start:0x0202c358 end:0x0202c370
+
+asm/game/main_dual_layer_resource_renderer_alt_0202c370.s:
+    categories: Game code
+    .text       start:0x0202c370 end:0x0202c388
+
+asm/game/main_dual_layer_resource_renderer_alt_0202c388.s:
+    categories: Game code
+    .text       start:0x0202c388 end:0x0202c4f4
+
+asm/game/sub_dual_layer_resource_renderer_swapped_0202c4f4.s:
+    categories: Game code
+    .text       start:0x0202c4f4 end:0x0202c514
+
+asm/game/sub_dual_layer_resource_renderer_swapped_0202c514.s:
+    categories: Game code
+    .text       start:0x0202c514 end:0x0202c528
+
+asm/game/sub_dual_layer_resource_renderer_swapped_0202c528.s:
+    categories: Game code
+    .text       start:0x0202c528 end:0x0202c544
+
+asm/game/sub_dual_layer_resource_renderer_swapped_0202c544.s:
+    categories: Game code
+    .text       start:0x0202c544 end:0x0202c55c
+
+asm/game/sub_dual_layer_resource_renderer_swapped_0202c55c.s:
+    categories: Game code
+    .text       start:0x0202c55c end:0x0202c574
+
+asm/game/sub_dual_layer_resource_renderer_swapped_0202c574.s:
+    categories: Game code
+    .text       start:0x0202c574 end:0x0202c744
+
+asm/game/main_bg2_resource_renderer_0202c744.s:
+    categories: Game code
+    .text       start:0x0202c744 end:0x0202c764
+
+asm/game/main_bg2_resource_renderer_0202c764.s:
+    categories: Game code
+    .text       start:0x0202c764 end:0x0202c778
+
+asm/game/main_bg2_resource_renderer_0202c778.s:
+    categories: Game code
+    .text       start:0x0202c778 end:0x0202c794
+
+asm/game/main_bg2_resource_renderer_0202c794.s:
+    categories: Game code
+    .text       start:0x0202c794 end:0x0202c7ac
+
+asm/game/main_bg2_resource_renderer_0202c7ac.s:
+    categories: Game code
+    .text       start:0x0202c7ac end:0x0202c7c4
+
+asm/game/main_bg2_resource_renderer_0202c7c4.s:
+    categories: Game code
+    .text       start:0x0202c7c4 end:0x0202c8a8
+
+asm/game/sub_three_layer_resource_renderer_0202c8a8.s:
+    categories: Game code
+    .text       start:0x0202c8a8 end:0x0202c8c8
+
+asm/game/sub_three_layer_resource_renderer_0202c8c8.s:
+    categories: Game code
+    .text       start:0x0202c8c8 end:0x0202c8dc
+
+asm/game/sub_three_layer_resource_renderer_0202c8dc.s:
+    categories: Game code
+    .text       start:0x0202c8dc end:0x0202c8f8
+
+asm/game/sub_three_layer_resource_renderer_0202c8f8.s:
+    categories: Game code
+    .text       start:0x0202c8f8 end:0x0202c938
+
+asm/game/sub_three_layer_resource_renderer_0202c938.s:
+    categories: Game code
+    .text       start:0x0202c938 end:0x0202c950
+
+asm/game/sub_three_layer_resource_renderer_0202c950.s:
+    categories: Game code
+    .text       start:0x0202c950 end:0x0202cbe0
+
+asm/game/main_three_layer_resource_renderer_0202cbe0.s:
+    categories: Game code
+    .text       start:0x0202cbe0 end:0x0202cc00
+
+asm/game/main_three_layer_resource_renderer_0202cc00.s:
+    categories: Game code
+    .text       start:0x0202cc00 end:0x0202cc14
+
+asm/game/main_three_layer_resource_renderer_0202cc14.s:
+    categories: Game code
+    .text       start:0x0202cc14 end:0x0202cc30
+
+asm/game/main_three_layer_resource_renderer_0202cc30.s:
+    categories: Game code
+    .text       start:0x0202cc30 end:0x0202cc70
+
+asm/game/main_three_layer_resource_renderer_0202cc70.s:
+    categories: Game code
+    .text       start:0x0202cc70 end:0x0202cc88
+
+asm/game/main_three_layer_resource_renderer_0202cc88.s:
+    categories: Game code
+    .text       start:0x0202cc88 end:0x0202cf10
+
+asm/game/actor_collection_lifecycle_0202cf10.s:
+    categories: Game code
+    .text       start:0x0202cf10 end:0x0202cf2c
+
+asm/game/actor_collection_lifecycle_0202cf2c.s:
+    categories: Game code
+    .text       start:0x0202cf2c end:0x0202d014
+
+asm/game/actor_collection_lifecycle_0202d014.s:
+    categories: Game code
+    .text       start:0x0202d014 end:0x0202d06c
+
+asm/game/actor_collection_lifecycle_0202d06c.s:
+    categories: Game code
+    .text       start:0x0202d06c end:0x0202d094
+
+asm/game/actor_collection_lifecycle_0202d094.s:
+    categories: Game code
+    .text       start:0x0202d094 end:0x0202d110
+
+asm/game/actor_collection_registration_0202d110.s:
+    categories: Game code
+    .text       start:0x0202d110 end:0x0202d1e4
+
+asm/game/actor_collection_registration_0202d1e4.s:
+    categories: Game code
+    .text       start:0x0202d1e4 end:0x0202d2f4
+
+asm/game/actor_collection_registration_0202d2f4.s:
+    categories: Game code
+    .text       start:0x0202d2f4 end:0x0202d324
+
+asm/game/actor_collection_registration_0202d324.s:
+    categories: Game code
+    .text       start:0x0202d324 end:0x0202d358
+
+asm/game/actor_collection_registration_0202d358.s:
+    categories: Game code
+    .text       start:0x0202d358 end:0x0202d380
+
+asm/game/actor_collection_registration_0202d380.s:
+    categories: Game code
+    .text       start:0x0202d380 end:0x0202d3cc
+
+asm/game/actor_collection_activation_0202d3cc.s:
+    categories: Game code
+    .text       start:0x0202d3cc end:0x0202d494
+
+asm/game/actor_collection_activation_0202d494.s:
+    categories: Game code
+    .text       start:0x0202d494 end:0x0202d568
+
+asm/game/actor_collection_activation_0202d568.s:
+    categories: Game code
+    .text       start:0x0202d568 end:0x0202d5c8
+
+asm/game/actor_collection_active_drain_0202d5c8.s:
+    categories: Game code
+    .text       start:0x0202d5c8 end:0x0202d640
+
+asm/game/actor_collection_lookup_visibility_0202d640.s:
+    categories: Game code
+    .text       start:0x0202d640 end:0x0202d68c
+
+asm/game/actor_collection_lookup_visibility_0202d68c.s:
+    categories: Game code
+    .text       start:0x0202d68c end:0x0202d7a8
+
+asm/game/actor_collection_selection_query_0202d7a8.s:
+    categories: Game code
+    .text       start:0x0202d7a8 end:0x0202daec
+
+asm/game/actor_collection_query_dispatch_0202daec.s:
+    categories: Game code
+    .text       start:0x0202daec end:0x0202db78
+
+asm/game/actor_collection_query_dispatch_0202db78.s:
+    categories: Game code
+    .text       start:0x0202db78 end:0x0202dbe0
+
+asm/game/actor_collection_category_build_0202dbe0.s:
+    categories: Game code
+    .text       start:0x0202dbe0 end:0x0202dd80
+
+asm/game/actor_collection_category_build_0202dd80.s:
+    categories: Game code
+    .text       start:0x0202dd80 end:0x0202ddac
+
+asm/game/actor_collection_category_build_0202ddac.s:
+    categories: Game code
+    .text       start:0x0202ddac end:0x0202ddc4
+
+asm/game/actor_collection_category_build_0202ddc4.s:
+    categories: Game code
+    .text       start:0x0202ddc4 end:0x0202dddc
+
+asm/game/actor_collection_basic_category_build_0202dddc.s:
+    categories: Game code
+    .text       start:0x0202dddc end:0x0202de90

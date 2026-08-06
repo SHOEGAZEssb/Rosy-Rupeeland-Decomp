@@ -1,0 +1,65 @@
+; Matching retail form; see src/game/overlay_prompt_presentation.c.
+.text
+.extern GameWork_ClearFlag
+.extern GameWork_TestFlag
+.extern Heap_Alloc
+.extern Heap_Free
+.extern data_020d653c
+.extern data_020d65ac
+.extern func_02002db0
+.extern func_02006268
+.extern func_02006280
+.extern func_020062a0
+.extern func_020062f8
+.extern func_0201140c
+.extern func_0201e250
+.extern func_0201e28c
+.extern func_020755bc
+.extern func_02091fb0
+.extern func_02092c8c
+.extern func_ov001_021fbe6c
+.extern gDebugFont
+.extern gGameWork
+.extern gHeapContext
+.extern gLupyContext
+
+.global func_02022354
+    .type func_02022354, @function
+func_02022354: ; 0x02022354
+    stmdb sp!, {r4, lr}
+    ldr r1, .L_020223cc
+    mov r4, r0
+    str r1, [r4, #0x0]
+    mov r0, #0x0
+    str r0, [r4, #0x20]
+    ldr r0, [r4, #0xc]
+    cmp r0, #0x0
+    beq .L_02022390
+    beq .L_02022388
+    ldr r1, [r0, #0x0]
+    ldr r1, [r1, #0x8]
+    blx r1
+.L_02022388:
+    add r0, r4, #0x10
+    bl func_020062f8
+.L_02022390:
+    ldr r0, [r4, #0x1c]
+    cmp r0, #0x0
+    beq .L_020223ac
+    ldr r0, .L_020223d0
+    mov r1, #0x1
+    ldr r0, [r0, #0x0]
+    bl func_0201140c
+.L_020223ac:
+    add r0, r4, #0x10
+    bl func_02006280
+    mov r0, r4
+    bl func_0201e28c
+    mov r0, r4
+    bl Heap_Free
+    mov r0, r4
+    ldmia sp!, {r4, pc}
+.L_020223cc: .word data_020d653c
+.L_020223d0: .word gLupyContext
+    .size func_02022354, .-func_02022354
+

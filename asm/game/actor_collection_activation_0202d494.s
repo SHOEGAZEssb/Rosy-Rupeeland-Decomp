@@ -1,0 +1,67 @@
+; Matching retail form; see src/game/actor_collection_activation.c.
+.text
+.extern func_0202d2f4
+.extern func_0202ec74
+.extern func_0202d324
+.extern func_0202d110
+
+    .global func_0202d494
+    .type func_0202d494, @function
+func_0202d494: ; 0x0202d494
+    stmdb sp!, {r3, r4, r5, r6, r7, r8, r9, lr}
+    mov r4, r1
+    ldrb r1, [r4, #0x4d]
+    mov r5, r0
+    cmp r1, #0x7
+    moveq r0, #0x1
+    movne r0, #0x0
+    cmp r0, #0x0
+    beq .L_0202d544
+    add r0, r5, #0x2000
+    ldr r0, [r0, #0xe80]
+    cmp r0, r4
+    bne .L_0202d544
+    mov r8, #0x1
+    mov r9, #0x0
+    add r6, r5, #0x234
+    mov r7, r8
+.L_0202d4d8:
+    ldr r0, [r5, r9, lsl #0x2]
+    cmp r0, #0x0
+    beq .L_0202d50c
+    mov r1, r8
+    mov r2, r9
+    add r0, r6, #0xc00
+    bl func_0202d2f4
+    cmp r0, #0x0
+    beq .L_0202d50c
+    ldr r1, [r5, r9, lsl #0x2]
+    mov r0, r5
+    mov r2, r4
+    bl func_0202ec74
+.L_0202d50c:
+    mov r1, r7
+    mov r2, r9
+    add r0, r6, #0xc00
+    bl func_0202d324
+    add r9, r9, #0x1
+    cmp r9, #0x80
+    blt .L_0202d4d8
+    mov r0, r5
+    mov r1, r4
+    bl func_0202d110
+    mov r1, #0x0
+    str r1, [r5, #0x4]
+    add r0, r5, #0x2000
+    str r1, [r0, #0xe80]
+.L_0202d544:
+    ldrsb r1, [r4, #0x48]
+    add r0, r5, #0x2000
+    add r1, r5, r1, lsl #0x2
+    str r4, [r1, #0xc00]
+    ldr r1, [r0, #0xe78]
+    bic r1, r1, #0x1
+    orr r1, r1, #0x1
+    str r1, [r0, #0xe78]
+    ldmia sp!, {r3, r4, r5, r6, r7, r8, r9, pc}
+    .size func_0202d494, . - func_0202d494

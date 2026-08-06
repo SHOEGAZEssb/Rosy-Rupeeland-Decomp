@@ -1,0 +1,76 @@
+; Matching retail form; see src/game/reversed_frame_sprite_overlay_presentation.c.
+.text
+.extern Heap_Alloc
+.extern data_020c378c
+.extern data_020d6bd0
+.extern data_020d6c40
+.extern data_020f4e14
+.extern data_020f4e18
+.extern func_0201e250
+.extern func_02071ea4
+.extern func_02071ee0
+.extern func_02072b68
+.extern func_02073ffc
+.extern func_020742cc
+.extern func_02094cf0
+.extern func_020953f4
+.extern gHeapContext
+
+    .global func_02027300
+    .type func_02027300, @function
+func_02027300: ; 0x02027300
+    stmdb sp!, {r3, r4, r5, r6, lr}
+    sub sp, sp, #0x4
+    mov r4, r0
+    mov r6, r1
+    bl func_0201e250
+    ldr r1, .L_020273bc
+    add r0, r4, #0x8
+    str r1, [r4, #0x0]
+    bl func_02071ea4
+    mov r1, #0x3c
+    ldr r0, .L_020273c0
+    str r1, [sp, #0x0]
+    ldr r1, [r0, #0x0]
+    add r0, r4, #0x8
+    mov r2, #0x3a
+    mov r3, #0x3b
+    bl func_02071ee0
+    ldr r0, .L_020273c4
+    ldr r0, [r0, #0x0]
+    bl func_020742cc
+    add r1, r4, #0x8
+    mov r2, #0x2
+    str r0, [r4, #0x14]
+    bl func_02073ffc
+    mov r5, r0
+    rsb r1, r6, #0x9
+    cmp r6, #0x0
+    addge r1, r1, #0x1
+    mov r0, r5
+    and r1, r1, #0xff
+    bl func_02072b68
+    ldr r1, .L_020273c8
+    ldr r3, .L_020273cc
+    mov r0, #0xa0
+    mov r2, #0x4
+    bl Heap_Alloc
+    cmp r0, #0x0
+    beq .L_020273a0
+    mov r1, r5
+    bl func_020953f4
+.L_020273a0:
+    ldr r1, .L_020273d0
+    mov r2, #0x1
+    str r0, [r4, #0x18]
+    bl func_02094cf0
+    mov r0, r4
+    add sp, sp, #0x4
+    ldmia sp!, {r3, r4, r5, r6, pc}
+.L_020273bc: .word data_020d6bd0
+.L_020273c0: .word data_020f4e18
+.L_020273c4: .word data_020f4e14
+.L_020273c8: .word data_020d6c40
+.L_020273cc: .word gHeapContext
+.L_020273d0: .word data_020c378c
+    .size func_02027300, . - func_02027300

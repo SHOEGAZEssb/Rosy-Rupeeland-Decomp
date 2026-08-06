@@ -1,0 +1,34 @@
+; Matching retail form; see src/game/timed_actor_rectangle_presentation.c.
+.text
+.extern data_020d6a24
+.extern data_021052fc
+.extern func_0201ded4
+.extern func_0201e250
+
+    .global func_02025120
+    .type func_02025120, @function
+func_02025120: ; 0x02025120
+    stmdb sp!, {r3, r4, r5, r6, r7, lr}
+    mov r4, r0
+    mov r7, r1
+    mov r6, r2
+    mov r5, r3
+    bl func_0201e250
+    ldr r0, .L_02025174
+    ldr r1, [sp, #0x18]
+    str r0, [r4, #0x0]
+    str r7, [r4, #0x8]
+    strh r6, [r4, #0xc]
+    strh r5, [r4, #0xe]
+    ldr r0, .L_02025178
+    str r1, [r4, #0x10]
+    ldr r0, [r0, #0x0]
+    mov r1, r4
+    add r0, r0, #0x37c
+    add r0, r0, #0x2c00
+    bl func_0201ded4
+    mov r0, r4
+    ldmia sp!, {r3, r4, r5, r6, r7, pc}
+.L_02025174: .word data_020d6a24
+.L_02025178: .word data_021052fc
+    .size func_02025120, . - func_02025120

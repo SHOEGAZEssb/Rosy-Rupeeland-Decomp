@@ -1,0 +1,99 @@
+; Matching retail form; see src/game/timed_sprite_burst_manager.c.
+.text
+.extern Heap_Alloc
+.extern Heap_Free
+.extern TouchPoint_Init
+.extern data_020c9670
+.extern data_020d5e48
+.extern data_020d6220
+.extern data_020d6268
+.extern data_020f4e18
+.extern data_021052fc
+.extern func_02003e20
+.extern func_02003e38
+.extern func_02004fe0
+.extern func_02005030
+.extern func_02005058
+.extern func_02009d0c
+.extern func_0201e250
+.extern func_0201e3b8
+.extern func_0201e454
+.extern func_0201eefc
+.extern func_0201f0b0
+.extern func_0201f0d0
+.extern func_0201f0fc
+.extern func_0201f11c
+.extern func_0201f15c
+.extern func_0201f204
+.extern func_0201f2b4
+.extern func_02071bdc
+.extern func_02071c38
+.extern func_02071c94
+.extern func_020740a4
+.extern func_020742cc
+.extern func_02074330
+.extern gDebugFont
+.extern gHeapContext
+.extern genrand_int32
+
+.global func_0201f2b4
+.type func_0201f2b4, @function
+
+func_0201f2b4: ; 0x0201f2b4
+    stmdb sp!, {r4, r5, r6, lr}
+    sub sp, sp, #0x10
+    ldr r1, .L_0201f374
+    mov r4, r0
+    ldr r0, [r1, #0x0]
+    add r0, r0, #0x44
+    add r0, r0, #0x3000
+    bl func_02009d0c
+    mov r1, r0
+    add r0, sp, #0x0
+    bl func_02005030
+    ldr r0, [r4, #0x14]
+    cmp r0, #0x0
+    beq .L_0201f2f8
+    cmp r0, #0x1
+    beq .L_0201f348
+    b .L_0201f358
+.L_0201f2f8:
+    mov r6, #0x0
+    add r5, sp, #0x0
+    b .L_0201f320
+.L_0201f304:
+    ldr r0, [r4, #0x8]
+    mov r1, r5
+    ldr r0, [r0, r6, lsl #0x2]
+    ldr r2, [r0, #0x0]
+    ldr r2, [r2, #0x8]
+    blx r2
+    add r6, r6, #0x1
+.L_0201f320:
+    ldr r0, [r4, #0xc]
+    cmp r6, r0
+    blt .L_0201f304
+    ldr r0, [r4, #0x24]
+    subs r0, r0, #0x1
+    str r0, [r4, #0x24]
+    ldrmi r0, [r4, #0x14]
+    addmi r0, r0, #0x1
+    strmi r0, [r4, #0x14]
+    b .L_0201f358
+.L_0201f348:
+    add r0, sp, #0x0
+    bl func_02005058
+    mov r0, #0x1
+    b .L_0201f36c
+.L_0201f358:
+    ldr r0, [r4, #0x10]
+    bl func_020740a4
+    add r0, sp, #0x0
+    bl func_02005058
+    mov r0, #0x0
+.L_0201f36c:
+    add sp, sp, #0x10
+    ldmia sp!, {r4, r5, r6, pc}
+.L_0201f374: .word data_021052fc
+    .size func_0201f2b4, .-func_0201f2b4
+

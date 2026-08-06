@@ -1,0 +1,18 @@
+; Matching retail form; see src/game/dual_layer_tile_renderer_runtime.c.
+.text
+.extern func_0202a588
+
+    .global func_02029a1c
+    .type func_02029a1c, @function
+func_02029a1c: ; 0x02029a1c
+    stmdb sp!, {r3, lr}
+    add r0, r0, r1, lsl #0x2
+    mov ip, r2
+    mov r1, r3
+    ldr r0, [r0, #0x28]
+    ldr r2, [sp, #0x8]
+    mov r3, ip
+    bl func_0202a588
+    ldmia sp!, {r3, pc}
+    .size func_02029a1c, . - func_02029a1c
+
