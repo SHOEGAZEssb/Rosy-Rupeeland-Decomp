@@ -1,0 +1,74 @@
+.text
+
+/* Exact fallback; see src/overlays/ov023/overlay023_graphics_setup.c. */
+.extern data_020f4e18
+.extern func_02070638
+.extern func_020706c4
+.extern func_02070874
+.extern func_02070e0c
+.extern func_02070eac
+.extern func_02070f34
+.extern func_020b1ff0
+.extern func_020b2058
+.extern func_020b44e8
+.extern GraphicsResourceSet_Destroy
+.extern GraphicsResourceSet_Init
+.extern GraphicsResourceSet_Load
+
+
+    .global func_ov023_021fe2cc
+func_ov023_021fe2cc:
+    stmdb sp!, {r4, lr}
+    sub sp, sp, #0x10
+    mov r4, r0
+    add r0, sp, #0x4
+    bl GraphicsResourceSet_Init
+    ldr r3, L_021fe394
+    ldr r0, L_021fe398
+    str r3, [sp, #0x0]
+    ldr r1, [r0, #0x0]
+    sub r2, r3, #0x2
+    add r0, sp, #0x4
+    sub r3, r3, #0x1
+    bl GraphicsResourceSet_Load
+    bl func_020b44e8
+    ldr r0, [sp, #0x4]
+    mov r1, #0x2
+    mov r2, #0x0
+    bl func_020706c4
+    ldr r0, [sp, #0xc]
+    mov r1, #0x2
+    mov r2, #0x0
+    bl func_02070eac
+    ldr r0, [sp, #0xc]
+    mov r1, #0x8
+    bl func_02070f34
+    bl func_020b44e8
+    ldr r0, [sp, #0x4]
+    mov r1, #0x2
+    mov r2, #0x0
+    bl func_02070638
+    ldr r0, [sp, #0xc]
+    mov r1, #0x2
+    mov r2, #0x0
+    bl func_02070e0c
+    ldr r0, [r4, #0x4c0]
+    bl func_02070874
+    add r0, r0, #0x40
+    mov r1, #0x0
+    mov r2, #0x20
+    bl func_020b1ff0
+    ldr r0, [r4, #0x4c0]
+    bl func_02070874
+    add r0, r0, #0x40
+    mov r1, #0x100
+    mov r2, #0x20
+    bl func_020b2058
+    add r0, sp, #0x4
+    bl GraphicsResourceSet_Destroy
+    add sp, sp, #0x10
+    ldmia sp!, {r4, pc}
+L_021fe394: .word 0xc008
+L_021fe398: .word data_020f4e18
+.size func_ov023_021fe2cc, .-func_ov023_021fe2cc
+

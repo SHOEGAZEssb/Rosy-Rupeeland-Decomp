@@ -1,0 +1,34 @@
+    .text
+/* Exact fallback; see src/overlays/ov021/overlay021_list_helpers.c. */
+
+.global func_ov021_021fd0e8
+func_ov021_021fd0e8:
+    stmdb sp!, {r3, r4, r5, lr}
+    ldr r5, [r0, #0x4c]
+    mov r2, #0x0
+    cmp r5, #0x0
+    beq L_021fd148
+    ldr ip, [r0, #0x54]
+    ldr r3, [r0, #0x50]
+    cmp ip, r3
+    movge r0, r2
+    ldmgeia sp!, {r3, r4, r5, pc}
+    mov r3, #0xc
+    mul r4, ip, r3
+    str r1, [r5, r4]
+    ldr lr, [r0, #0x54]
+    ldr ip, [r0, #0x4c]
+    mov r1, #0x18
+    mla r3, lr, r3, ip
+    mul r1, lr, r1
+    strh r2, [r3, #0x8]
+    strh r1, [r3, #0xa]
+    ldr r1, [r0, #0x54]
+    add r2, r5, r4
+    add r1, r1, #0x1
+    str r1, [r0, #0x54]
+L_021fd148:
+    mov r0, r2
+    ldmia sp!, {r3, r4, r5, pc}
+    .size func_ov021_021fd0e8, . - func_ov021_021fd0e8
+

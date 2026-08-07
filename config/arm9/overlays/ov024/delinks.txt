@@ -3,3 +3,54 @@
     .ctor       start:0x021fe2a8 end:0x021fe2a8 kind:rodata align:4
     .data       start:0x021fe2c0 end:0x021fe380 kind:data align:32
     .bss        start:0x021fe380 end:0x021fe380 kind:bss align:32
+asm/overlays/ov024/overlay024_callback_helpers_021fce00.s:
+    categories: Game code
+    .text start:0x021fce00 end:0x021fce04
+asm/overlays/ov024/overlay024_callback_helpers_021fce04.s:
+    categories: Game code
+    .text start:0x021fce04 end:0x021fce2c
+asm/overlays/ov024/overlay024_scene_lifecycle_021fce2c.s:
+    categories: Game code
+    .text start:0x021fce2c end:0x021fd138
+asm/overlays/ov024/overlay024_scene_lifecycle_021fd138.s:
+    categories: Game code
+    .text start:0x021fd138 end:0x021fd214
+asm/overlays/ov024/overlay024_scene_lifecycle_021fd214.s:
+    categories: Game code
+    .text start:0x021fd214 end:0x021fd2f8
+asm/overlays/ov024/overlay024_graphics_setup_021fd2f8.s:
+    categories: Game code
+    .text start:0x021fd2f8 end:0x021fd86c
+asm/overlays/ov024/overlay024_scene_runtime_021fd86c.s:
+    categories: Game code
+    .text start:0x021fd86c end:0x021fd8f8
+asm/overlays/ov024/overlay024_scene_runtime_021fd8f8.s:
+    categories: Game code
+    .text start:0x021fd8f8 end:0x021fd968
+asm/overlays/ov024/overlay024_scene_runtime_021fd968.s:
+    categories: Game code
+    .text start:0x021fd968 end:0x021fdab0
+asm/overlays/ov024/overlay024_state_transitions_021fdab0.s:
+    categories: Game code
+    .text start:0x021fdab0 end:0x021fdac4
+asm/overlays/ov024/overlay024_state_transitions_021fdac4.s:
+    categories: Game code
+    .text start:0x021fdac4 end:0x021fdc54
+asm/overlays/ov024/overlay024_state_transitions_021fdc54.s:
+    categories: Game code
+    .text start:0x021fdc54 end:0x021fdcdc
+asm/overlays/ov024/overlay024_state_callbacks_021fdcdc.s:
+    categories: Game code
+    .text start:0x021fdcdc end:0x021fe040
+asm/overlays/ov024/overlay024_state_callbacks_021fe040.s:
+    categories: Game code
+    .text start:0x021fe040 end:0x021fe0bc
+asm/overlays/ov024/overlay024_state_callbacks_021fe0bc.s:
+    categories: Game code
+    .text start:0x021fe0bc end:0x021fe0cc
+asm/overlays/ov024/overlay024_state_callbacks_021fe0cc.s:
+    categories: Game code
+    .text start:0x021fe0cc end:0x021fe14c
+asm/overlays/ov024/overlay024_state_callbacks_021fe14c.s:
+    categories: Game code
+    .text start:0x021fe14c end:0x021fe1e4

@@ -2,3 +2,33 @@
     .ctor       start:0x021fd5cc end:0x021fd5cc kind:rodata align:4
     .data       start:0x021fd5e0 end:0x021fd660 kind:data align:32
     .bss        start:0x021fd660 end:0x021fd660 kind:bss align:32
+asm/overlays/ov019/overlay019_scene_helpers_021fce00.s:
+    categories: Game code
+    .text start:0x021fce00 end:0x021fce28
+asm/overlays/ov019/overlay019_scene_construct_021fce28.s:
+    categories: Game code
+    .text start:0x021fce28 end:0x021fcf2c
+asm/overlays/ov019/overlay019_scene_helpers_021fcf2c.s:
+    categories: Game code
+    .text start:0x021fcf2c end:0x021fcfbc
+asm/overlays/ov019/overlay019_graphics_setup_021fcfbc.s:
+    categories: Game code
+    .text start:0x021fcfbc end:0x021fd154
+asm/overlays/ov019/overlay019_scene_helpers_021fd154.s:
+    categories: Game code
+    .text start:0x021fd154 end:0x021fd1b8
+asm/overlays/ov019/overlay019_opening_transition_021fd1b8.s:
+    categories: Game code
+    .text start:0x021fd1b8 end:0x021fd278
+asm/overlays/ov019/overlay019_selection_runtime_021fd278.s:
+    categories: Game code
+    .text start:0x021fd278 end:0x021fd4c8
+asm/overlays/ov019/overlay019_scene_helpers_021fd4c8.s:
+    categories: Game code
+    .text start:0x021fd4c8 end:0x021fd4d8
+asm/overlays/ov019/overlay019_display_callback_021fd4d8.s:
+    categories: Game code
+    .text start:0x021fd4d8 end:0x021fd588
+asm/overlays/ov019/overlay019_scene_helpers_021fd588.s:
+    categories: Game code
+    .text start:0x021fd588 end:0x021fd5cc

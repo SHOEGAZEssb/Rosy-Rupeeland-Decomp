@@ -2,3 +2,78 @@
     .ctor       start:0x021ffbb8 end:0x021ffbb8 kind:rodata align:4
     .data       start:0x021ffbc0 end:0x021ffda0 kind:data align:32
     .bss        start:0x021ffda0 end:0x021ffda0 kind:bss align:32
+asm/overlays/ov018/overlay018_object_base_021fce00.s:
+    categories: Game code
+    .text start:0x021fce00 end:0x021fcf68
+asm/overlays/ov018/overlay018_scene_lifecycle_021fcf68.s:
+    categories: Game code
+    .text start:0x021fcf68 end:0x021fd36c
+asm/overlays/ov018/overlay018_scene_lifecycle_021fd36c.s:
+    categories: Game code
+    .text start:0x021fd36c end:0x021fd5d0
+asm/overlays/ov018/overlay018_display_setup_021fd5d0.s:
+    categories: Game code
+    .text start:0x021fd5d0 end:0x021fd788
+asm/overlays/ov018/overlay018_scene_helpers_021fdb7c.s:
+    categories: Game code
+    .text start:0x021fdb7c end:0x021fdce4
+asm/overlays/ov018/overlay018_path_runtime_021fdce4.s:
+    categories: Game code
+    .text start:0x021fdce4 end:0x021fe184
+asm/overlays/ov018/overlay018_dialog_runtime_021fd90c.s:
+    categories: Game code
+    .text start:0x021fd90c end:0x021fd9f8
+asm/overlays/ov018/overlay018_dialog_runtime_021fd9f8.s:
+    categories: Game code
+    .text start:0x021fd9f8 end:0x021fdb7c
+asm/overlays/ov018/overlay018_frame_ui_021fd788.s:
+    categories: Game code
+    .text start:0x021fd788 end:0x021fd90c
+asm/overlays/ov018/overlay018_coordinate_helpers_021fe184.s:
+    categories: Game code
+    .text start:0x021fe184 end:0x021fe214
+asm/overlays/ov018/overlay018_path_classification_021fe214.s:
+    categories: Game code
+    .text start:0x021fe214 end:0x021fe46c
+asm/overlays/ov018/overlay018_result_text_021fe46c.s:
+    categories: Game code
+    .text start:0x021fe46c end:0x021fe5a8
+asm/overlays/ov018/overlay018_actor_visibility_021fe5a8.s:
+    categories: Game code
+    .text start:0x021fe5a8 end:0x021fe6f0
+asm/overlays/ov018/overlay018_scene_finalize_021fe6f0.s:
+    categories: Game code
+    .text start:0x021fe6f0 end:0x021fe854
+asm/overlays/ov018/overlay018_interaction_state_021fe854.s:
+    categories: Game code
+    .text start:0x021fe854 end:0x021fea1c
+asm/overlays/ov018/overlay018_result_sequence_021fea1c.s:
+    categories: Game code
+    .text start:0x021fea1c end:0x021fef2c
+asm/overlays/ov018/overlay018_dialog_interaction_021fef2c.s:
+    categories: Game code
+    .text start:0x021fef2c end:0x021ff1b8
+asm/overlays/ov018/overlay018_point_buffer_021ff2cc.s:
+    categories: Game code
+    .text start:0x021ff2cc end:0x021ff330
+asm/overlays/ov018/overlay018_point_buffer_021ff330.s:
+    categories: Game code
+    .text start:0x021ff330 end:0x021ff37c
+asm/overlays/ov018/overlay018_point_buffer_021ff37c.s:
+    categories: Game code
+    .text start:0x021ff37c end:0x021ff474
+asm/overlays/ov018/overlay018_path_trim_021ff474.s:
+    categories: Game code
+    .text start:0x021ff474 end:0x021ff738
+asm/overlays/ov018/overlay018_geometry_helpers_021ff738.s:
+    categories: Game code
+    .text start:0x021ff738 end:0x021ff770
+asm/overlays/ov018/overlay018_path_intersection_021ff770.s:
+    categories: Game code
+    .text start:0x021ff770 end:0x021ff964
+asm/overlays/ov018/overlay018_geometry_helpers_021ff964.s:
+    categories: Game code
+    .text start:0x021ff964 end:0x021ffbb8
+asm/overlays/ov018/overlay018_scene_callbacks_021ff1b8.s:
+    categories: Game code
+    .text start:0x021ff1b8 end:0x021ff2cc

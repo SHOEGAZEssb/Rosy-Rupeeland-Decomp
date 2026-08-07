@@ -1,0 +1,271 @@
+#include "tingle/types.h"
+
+/* Overlay 21 active-list interaction and generic panel/list closing state handlers. */
+
+#define FIELD(type, base, offset) (*(type *)((u8 *)(base) + (offset)))
+
+extern void *data_020f4e14;
+extern const u32 data_ov021_02202ed8[];
+extern const u32 data_ov021_02202ee0[];
+extern const u32 data_ov021_02202ee8[];
+extern const u32 data_ov021_02202ef0[];
+extern const u32 data_ov021_02202ef8[];
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+extern s32 func_02002d94(void);
+extern void func_020755bc(void *);
+extern void func_02092260(void *, s32);
+extern void func_02092288(void *, s32);
+extern void func_02092c8c(s32, s32);
+extern void func_020939d8(void *);
+extern void func_02093d50(void *, s32);
+extern void func_02093de4(void *);
+extern void func_02093e0c(void *);
+extern void func_02093e20(void *);
+extern s32 func_02093e3c(void *);
+extern s32 func_02093e58(void *);
+extern s32 func_02093ffc(void *);
+extern s32 func_020945c8(void *, void *);
+extern s32 func_02094600(void *, void *);
+extern s32 func_02094638(void *, void *);
+extern s32 func_02094668(void *, void *);
+extern s32 func_02094698(void *, void *);
+extern void func_020946a8(void *, s32);
+extern s32 func_020946c8(void *, void *);
+extern void func_02094738(void *, s32);
+extern s32 func_02094758(void *);
+extern void func_02094874(void *);
+extern s32 func_02095860(void *, void *, s32, s32);
+extern s32 func_ov000_021fc460(void *);
+extern s32 func_ov000_021fc560(void *, void *);
+extern s32 func_ov001_021fc250(void *);
+extern s32 func_ov001_021fc348(void *, void *);
+extern void func_ov021_021fd224(void *);
+extern void func_ov021_021fd490(void *);
+extern s32 func_ov021_021fd678(void *, const void *);
+extern s32 func_ov021_021fd700(void *);
+extern void func_ov021_021fd7c0(void *, u32, u32);
+extern void func_ov021_021feea4(void *);
+extern void func_ov021_021fee54(void *);
+extern s32 func_ov021_021ff274(void *);
+extern void func_ov021_021ff5b8(void *);
+extern void func_ov021_021ff644(void *);
+extern void func_ov021_021ffcb4(void *);
+#ifdef __cplusplus
+}
+#endif
+
+/*
+ * Run the primary active-list handler. States 0/1 open controller
+ * list(+0x2C0)->+0x58 and refresh list/marker while waiting. State 2 handles
+ * key bits 0x40/0x80, touch navigation, row hit testing, selection changes,
+ * repeated-selection action through 0x021FFCB4, active-channel and cancel
+ * helpers, back transition 0x02202EF8, and close completion. A changed row
+ * enters state 10 for a nine-frame delay before reopening. State 3 waits for
+ * cancel transition, resets dialog/font, hides list/markers, starts (1,0), and
+ * routes through 0x02202EF0. Always process prompt/update components and return
+ * zero. Input/list/dialog/action/transition state changes; no direct MMIO.
+ */
+extern "C" s32 func_ov021_021ffd5c(void *state)
+{
+    void *list = FIELD(void *, state, 0x2c0);
+    void *controller = FIELD(void *, list, 0x58);
+    func_ov021_021ff274(state);
+    switch (FIELD(s32, state, 4)) {
+    case 0:
+        func_02094874(controller);
+        FIELD(s32, state, 4)++;
+        FIELD(s32, state, 8) = 0;
+        /* Deliberate fall-through into opening wait. */
+    case 1:
+        if (func_02093ffc(controller) != 0) {
+            FIELD(s32, state, 4)++;
+            FIELD(s32, state, 8) = 0;
+        } else {
+            if (func_ov021_021fd700(list) != 0)
+                func_ov021_021fee54(state);
+            break;
+        }
+        /* Completed opening deliberately continues into interaction. */
+    case 2: {
+        func_02093de4(controller);
+        u16 keys = FIELD(u16, FIELD(void *, state, 0x2c), 0);
+        if ((keys & 0x40) != 0) {
+            func_02093e0c(controller);
+        } else if ((keys & 0x80) != 0) {
+            func_02093e20(controller);
+        } else if ((FIELD(u32, state, 0x20) & 0x10) != 0) {
+            s32 selected = func_ov021_021fd678(list,
+                                               (u8 *)state + 0x30);
+            if (func_02094638(controller, (u8 *)state + 0x30) != 0) {
+                func_02093e3c(controller);
+            } else if (func_02094668(controller,
+                                     (u8 *)state + 0x30) != 0) {
+                func_02093e58(controller);
+            } else if ((FIELD(u32, state, 0x20) & 0x20) != 0) {
+                if (func_020945c8(controller,
+                                  (u8 *)state + 0x30) != 0) {
+                    if (func_02093e3c(controller) == 0)
+                        func_02092260(state, 0x16);
+                } else if (func_02094600(controller,
+                                         (u8 *)state + 0x30) != 0) {
+                    if (func_02093e58(controller) == 0)
+                        func_02092260(state, 0x16);
+                } else if (func_02094698(controller,
+                                         (u8 *)state + 0x30) != 0) {
+                    func_ov021_021fd7c0(state,
+                                        data_ov021_02202ef8[0],
+                                        data_ov021_02202ef8[1]);
+                    break;
+                } else if (selected >= 0) {
+                    if (selected != FIELD(s32, controller, 0x14)) {
+                        func_02092260(state, 0);
+                        func_02093d50(controller, selected);
+                        func_ov021_021fd490(list);
+                        func_ov021_021fee54(state);
+                        FIELD(s32, state, 4) = 10;
+                        FIELD(s32, state, 8) = 0;
+                    } else {
+                        func_ov021_021ffcb4(state);
+                    }
+                    break;
+                } else {
+                    s32 channel = FIELD(s32, state, 0x2c4);
+                    if (func_02095860((u8 *)state + 0x14c +
+                                      channel * 0xac,
+                                      (u8 *)state + 0x30, 0, 4) != 0) {
+                        func_ov021_021ffcb4(state);
+                        break;
+                    }
+                    if (func_02095860((u8 *)state + 0xa0,
+                                      (u8 *)state + 0x30, 0, 4) != 0) {
+                        func_02092260(state, 3);
+                        func_02092c8c(1, -16);
+                        FIELD(s32, state, 4)++;
+                        FIELD(s32, state, 8) = 0;
+                        break;
+                    }
+                }
+            }
+        }
+        if (func_02094758(controller) != 0) {
+            func_02092260(state, 0);
+            FIELD(s32, state, 4)--;
+            FIELD(s32, state, 8) = 0;
+        }
+        break;
+    }
+    case 3:
+        if (func_02002d94() != 0) {
+            func_020939d8(FIELD(void *, state, 0x388));
+            func_020755bc(data_020f4e14);
+            FIELD(u32, state, 0x48) &= ~2U;
+            FIELD(u16, FIELD(void *, state, 0x98), 0x24) |= 4;
+            FIELD(u16, FIELD(void *, state, 0x9c), 0x24) |= 4;
+            func_ov021_021fd224(list);
+            func_02092c8c(1, 0);
+            func_ov021_021fd7c0(state, data_ov021_02202ef0[0],
+                                data_ov021_02202ef0[1]);
+        }
+        break;
+    case 10:
+        FIELD(s32, state, 8)++;
+        if (FIELD(s32, state, 8) > 8) {
+            FIELD(s32, state, 4) = 0;
+            FIELD(s32, state, 8) = 0;
+        }
+        break;
+    }
+    func_ov021_021feea4(state);
+    return 0;
+}
+
+/*
+ * Generic three-state close handler for overlay-0 panel +0x354, overlay-1
+ * panel +0x358, or the active list +0x2C0. State 0 starts controller mode 4 and
+ * falls through. State 1 waits for opening, emits action 8 when controller
+ * indices +0x0C/+0x10 differ, or refreshes the appropriate panel/list while
+ * waiting. State 2 accepts panel/list touch input while scene flag bit 4 is set,
+ * emitting action 8 and backing up one state; when the flag is clear, close
+ * controller mode 6 and route through 0x02202EE8, 0x02202EE0, or 0x02202ED8
+ * according to active widget. Always process prompt/update components and
+ * return zero. Input/panel/list/action/transition state changes; no MMIO.
+ */
+extern "C" s32 func_ov021_022000f0(void *state)
+{
+    void *primary = FIELD(void *, state, 0x354);
+    void *secondary = FIELD(void *, state, 0x358);
+    void *controller;
+    if (primary != 0)
+        controller = FIELD(void *, primary, 0x26c);
+    else if (secondary != 0)
+        controller = FIELD(void *, secondary, 0x1bc);
+    else
+        controller = FIELD(void *, FIELD(void *, state, 0x2c0), 0x58);
+
+    func_ov021_021ff274(state);
+    switch (FIELD(s32, state, 4)) {
+    case 0:
+        func_020946a8(controller, 4);
+        FIELD(s32, state, 4)++;
+        FIELD(s32, state, 8) = 0;
+        /* Deliberate fall-through into opening wait. */
+    case 1:
+        if (func_02093ffc(controller) != 0) {
+            if (FIELD(s32, controller, 0xc) !=
+                FIELD(s32, controller, 0x10))
+                func_02092288(state, 8);
+            FIELD(s32, state, 4)++;
+            FIELD(s32, state, 8) = 0;
+        } else if (primary != 0) {
+            if (func_ov000_021fc460(primary) != 0)
+                func_ov021_021ff5b8(state);
+            break;
+        } else if (secondary != 0) {
+            if (func_ov001_021fc250(secondary) != 0)
+                func_ov021_021ff644(state);
+            break;
+        } else {
+            if (func_ov021_021fd700(FIELD(void *, state, 0x2c0)) != 0)
+                func_ov021_021fee54(state);
+            break;
+        }
+        /* Completed opening deliberately continues into input state 2. */
+    case 2:
+        if ((FIELD(u32, state, 0x20) & 0x10) != 0) {
+            s32 accepted;
+            if (primary != 0)
+                accepted = func_ov000_021fc560(primary,
+                                               (u8 *)state + 0x30);
+            else if (secondary != 0)
+                accepted = func_ov001_021fc348(secondary,
+                                               (u8 *)state + 0x30);
+            else {
+                func_02093de4(controller);
+                accepted = func_020946c8(controller,
+                                         (u8 *)state + 0x30);
+            }
+            if (accepted != 0) {
+                func_02092260(state, 8);
+                FIELD(s32, state, 4)--;
+                FIELD(s32, state, 8) = 0;
+            }
+        } else {
+            func_02094738(controller, 6);
+            if (primary != 0)
+                func_ov021_021fd7c0(state, data_ov021_02202ee8[0],
+                                    data_ov021_02202ee8[1]);
+            else if (secondary != 0)
+                func_ov021_021fd7c0(state, data_ov021_02202ee0[0],
+                                    data_ov021_02202ee0[1]);
+            else
+                func_ov021_021fd7c0(state, data_ov021_02202ed8[0],
+                                    data_ov021_02202ed8[1]);
+        }
+        break;
+    }
+    func_ov021_021feea4(state);
+    return 0;
+}
