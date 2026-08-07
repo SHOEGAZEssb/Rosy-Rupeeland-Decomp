@@ -3,3 +3,55 @@
     .ctor       start:0x021fecc0 end:0x021fecc0 kind:rodata align:4
     .data       start:0x021fece0 end:0x021feda0 kind:data align:32
     .bss        start:0x021feda0 end:0x021feda0 kind:bss align:32
+
+asm/overlays/ov013/overlay013_base_helpers_021fce00.s:
+    categories: Game code
+    .text start:0x021fce00 end:0x021fce2c
+asm/overlays/ov013/overlay013_scene_construct_021fce2c.s:
+    categories: Game code
+    .text start:0x021fce2c end:0x021fd09c
+asm/overlays/ov013/overlay013_scene_destroy_021fd09c.s:
+    categories: Game code
+    .text start:0x021fd09c end:0x021fd1a0
+asm/overlays/ov013/overlay013_scene_delete_021fd1a0.s:
+    categories: Game code
+    .text start:0x021fd1a0 end:0x021fd2ac
+asm/overlays/ov013/overlay013_callback_dispatch_021fd2ac.s:
+    categories: Game code
+    .text start:0x021fd2ac end:0x021fd310
+asm/overlays/ov013/overlay013_scene_populate_021fd310.s:
+    categories: Game code
+    .text start:0x021fd310 end:0x021fda28
+asm/overlays/ov013/overlay013_auxiliary_helpers_021fda28.s:
+    categories: Game code
+    .text start:0x021fda28 end:0x021fdbb0
+asm/overlays/ov013/overlay013_runtime_update_021fdbb0.s:
+    categories: Game code
+    .text start:0x021fdbb0 end:0x021fdfbc
+asm/overlays/ov013/overlay013_record_complete_021fdfbc.s:
+    categories: Game code
+    .text start:0x021fdfbc end:0x021fdfd4
+asm/overlays/ov013/overlay013_record_position_021fdfd4.s:
+    categories: Game code
+    .text start:0x021fdfd4 end:0x021fe078
+asm/overlays/ov013/overlay013_record_position_all_021fe078.s:
+    categories: Game code
+    .text start:0x021fe078 end:0x021fe148
+asm/overlays/ov013/overlay013_phase_initialize_021fe148.s:
+    categories: Game code
+    .text start:0x021fe148 end:0x021fe28c
+asm/overlays/ov013/overlay013_phase_wait_021fe28c.s:
+    categories: Game code
+    .text start:0x021fe28c end:0x021fe454
+asm/overlays/ov013/overlay013_phase_interaction_021fe454.s:
+    categories: Game code
+    .text start:0x021fe454 end:0x021fe880
+asm/overlays/ov013/overlay013_phase_timer_021fe880.s:
+    categories: Game code
+    .text start:0x021fe880 end:0x021fe9c8
+asm/overlays/ov013/overlay013_terminal_select_021fe9c8.s:
+    categories: Game code
+    .text start:0x021fe9c8 end:0x021feacc
+asm/overlays/ov013/overlay013_terminal_update_021feacc.s:
+    categories: Game code
+    .text start:0x021feacc end:0x021feb40

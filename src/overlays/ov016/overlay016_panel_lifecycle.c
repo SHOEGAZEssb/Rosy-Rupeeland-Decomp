@@ -1,0 +1,93 @@
+#include "tingle/types.h"
+
+/* Overlay 16 six-slot dual-column panel construction. */
+
+#define FIELD(type, base, offset) (*(type *)((u8 *)(base) + (offset)))
+
+extern void *data_020f4e18;
+extern u8 gSystemState[];
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+extern void __construct_array(void *, s32, s32, void (*)(void *), void (*)(void *));
+extern void func_02071ea4(void *);
+extern void func_02071eb8(void *);
+extern void func_02071ee0(void *, void *, s32, s32, s32);
+extern void func_02073e48(void *, s32, s32, s32, s32, s32, s32);
+extern void *func_02073ffc(void *, void *, s32);
+extern void *func_020742cc(void *);
+extern void func_02091b6c(void *);
+extern void func_02092798(void *);
+extern void func_02092814(void *, s32);
+#ifdef __cplusplus
+}
+#endif
+
+/*
+ * Construct the overlay's six-slot panel. Initialize resources +0x0C/+0x18,
+ * six 0x0C-byte resources at +0x24, resources +0x6C/+0x78, state +0xD4, and
+ * controller +0xF8. Acquire two owner children, queue 0x7000/0x7005/0x7006,
+ * load confirmed resource triples 0x24/0x22/0x25, 0x60-0x62, and 0x21-0x23,
+ * then create fixed sprites +0x84/+0x88 and three six-sprite arrays at +0x8C,
+ * +0xA4, and +0xBC. The six slots form two columns of three; system byte +0x5F
+ * shifts the first column left by 16 pixels. Return state. SDK graphics objects
+ * are allocated/initialized, but the function performs no direct MMIO.
+ */
+extern "C" void *func_ov016_021fd6c8(void *state, void *owner)
+{
+    s32 i;
+    s32 xOffset = gSystemState[0x5f] != 0 ? -0x10 : 0;
+    s32 yOffset = 0;
+
+    func_02071ea4((u8 *)state + 0xc);
+    func_02071ea4((u8 *)state + 0x18);
+    __construct_array((u8 *)state + 0x24, 6, 0xc, func_02071ea4, func_02071eb8);
+    func_02071ea4((u8 *)state + 0x6c);
+    func_02071ea4((u8 *)state + 0x78);
+    func_02092798((u8 *)state + 0xd4);
+    func_02091b6c((u8 *)state + 0xf8);
+    FIELD(void *, state, 0) = owner;
+    FIELD(void *, state, 4) = func_020742cc(owner);
+    FIELD(void *, state, 8) = func_020742cc(owner);
+    func_02092814((u8 *)state + 0xd4, 0x7000);
+    func_02092814((u8 *)state + 0xd4, 0x7005);
+    func_02092814((u8 *)state + 0xd4, 0x7006);
+    func_02071ee0((u8 *)state + 0xc, data_020f4e18, 0x24, 0x22, 0x25);
+    func_02071ee0((u8 *)state + 0x6c, data_020f4e18, 0x60, 0x61, 0x62);
+    func_02071ee0((u8 *)state + 0x78, data_020f4e18, 0x21, 0x22, 0x23);
+
+    FIELD(void *, state, 0x84) = func_02073ffc(FIELD(void *, state, 8),
+                                               (u8 *)state + 0x6c, 1);
+    func_02073e48(FIELD(void *, state, 0x84), 0, 0x23, 0x2e, 1, 0, 4);
+    FIELD(void *, state, 0x88) = func_02073ffc(FIELD(void *, state, 8),
+                                               (u8 *)state + 0xc, 1);
+    func_02073e48(FIELD(void *, state, 0x88), 6, 0x58, 0x37, 1, 0, 4);
+
+    for (i = 0; i < 6; i++) {
+        FIELD(void *, state, 0xa4 + i * 4) =
+            func_02073ffc(FIELD(void *, state, 8), (u8 *)state + 0x78, 1);
+        func_02073e48(FIELD(void *, state, 0xa4 + i * 4), 0,
+                      xOffset + 0x48, yOffset + 0x67, 1, 0, 4);
+
+        FIELD(void *, state, 0x8c + i * 4) =
+            func_02073ffc(FIELD(void *, state, 8), (u8 *)state + 0x78, 1);
+        func_02073e48(FIELD(void *, state, 0x8c + i * 4), 0xf,
+                      xOffset + 0x26, yOffset + 0x60, 1, 0x100, 4);
+
+        FIELD(void *, state, 0xbc + i * 4) =
+            func_02073ffc(FIELD(void *, state, 8), (u8 *)state + 0x78, 1);
+        func_02073e48(FIELD(void *, state, 0xbc + i * 4), 0x12,
+                      xOffset + 0x3a, yOffset + 0x64, 1, 0x100, 4);
+
+        yOffset += 0x22;
+        if (i == 2) {
+            xOffset += 0x6c;
+            if (gSystemState[0x5f] != 0) {
+                xOffset += 0x10;
+            }
+            yOffset = 0;
+        }
+    }
+    return state;
+}

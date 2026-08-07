@@ -2,3 +2,46 @@
     .ctor       start:0x021fd900 end:0x021fd900 kind:rodata align:4
     .data       start:0x021fd920 end:0x021fd9c0 kind:data align:32
     .bss        start:0x021fd9c0 end:0x021fd9c0 kind:bss align:32
+
+asm/overlays/ov014/overlay014_value_clear_021fce00.s:
+    categories: Game code
+    .text start:0x021fce00 end:0x021fce14
+asm/overlays/ov014/overlay014_transition_fields_021fce14.s:
+    categories: Game code
+    .text start:0x021fce14 end:0x021fce3c
+asm/overlays/ov014/overlay014_scene_construct_021fce3c.s:
+    categories: Game code
+    .text start:0x021fce3c end:0x021fcf50
+asm/overlays/ov014/overlay014_value_copy_021fcf50.s:
+    categories: Game code
+    .text start:0x021fcf50 end:0x021fcf6c
+asm/overlays/ov014/overlay014_scene_destroy_021fcf6c.s:
+    categories: Game code
+    .text start:0x021fcf6c end:0x021fcff0
+asm/overlays/ov014/overlay014_scene_delete_021fcff0.s:
+    categories: Game code
+    .text start:0x021fcff0 end:0x021fd07c
+asm/overlays/ov014/overlay014_graphics_setup_021fd07c.s:
+    categories: Graphics
+    .text start:0x021fd07c end:0x021fd2f8
+asm/overlays/ov014/overlay014_presentation_toggle_021fd2f8.s:
+    categories: Graphics
+    .text start:0x021fd2f8 end:0x021fd350
+asm/overlays/ov014/overlay014_subordinate_reset_021fd350.s:
+    categories: Game code
+    .text start:0x021fd350 end:0x021fd38c
+asm/overlays/ov014/overlay014_main_state_021fd38c.s:
+    categories: Game code
+    .text start:0x021fd38c end:0x021fd67c
+asm/overlays/ov014/overlay014_focus_state_021fd67c.s:
+    categories: Game code
+    .text start:0x021fd67c end:0x021fd7b4
+asm/overlays/ov014/overlay014_finish_state_021fd7b4.s:
+    categories: Game code
+    .text start:0x021fd7b4 end:0x021fd89c
+asm/overlays/ov014/overlay014_subordinate_finish_021fd89c.s:
+    categories: Game code
+    .text start:0x021fd89c end:0x021fd8b8
+asm/overlays/ov014/overlay014_display_update_021fd8b8.s:
+    categories: Graphics
+    .text start:0x021fd8b8 end:0x021fd900

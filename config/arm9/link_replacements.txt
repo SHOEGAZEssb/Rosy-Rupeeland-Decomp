@@ -2614,3 +2614,433 @@ build/decomp/delinks/asm/overlays/ov011/overlay011_sub_bg1_control_021fd374.o = 
 build/decomp/delinks/src/overlays/ov011/overlay011_fixed_resources_apply.o = build/decomp/src/overlays/ov011/overlay011_fixed_resources_apply.o
 build/decomp/delinks/asm/overlays/ov011/overlay011_scene_member_reset_021fd410.o = build/decomp/asm/overlays/ov011/overlay011_scene_member_reset_021fd410.o
 build/decomp/delinks/asm/overlays/ov011/overlay011_debug_controller_021fd450.o = build/decomp/asm/overlays/ov011/overlay011_debug_controller_021fd450.o
+
+build/decomp/delinks/src/overlays/ov012/overlay012_display_select.o = build/decomp/src/overlays/ov012/overlay012_display_select.o
+
+build/decomp/delinks/src/overlays/ov012/overlay012_disp3d_field_set.o = build/decomp/src/overlays/ov012/overlay012_disp3d_field_set.o
+
+build/decomp/delinks/asm/overlays/ov012/overlay012_disp3d_bit4_toggle_021fd044.o = build/decomp/asm/overlays/ov012/overlay012_disp3d_bit4_toggle_021fd044.o
+
+build/decomp/delinks/asm/overlays/ov012/overlay012_disp3d_bit3_toggle_021fd080.o = build/decomp/asm/overlays/ov012/overlay012_disp3d_bit3_toggle_021fd080.o
+
+build/decomp/delinks/src/overlays/ov012/overlay012_vector0_set.o = build/decomp/src/overlays/ov012/overlay012_vector0_set.o
+
+build/decomp/delinks/src/overlays/ov012/overlay012_vector1_set.o = build/decomp/src/overlays/ov012/overlay012_vector1_set.o
+
+build/decomp/delinks/src/overlays/ov012/overlay012_scene_activate.o = build/decomp/src/overlays/ov012/overlay012_scene_activate.o
+
+build/decomp/delinks/src/overlays/ov012/overlay012_optional_dispatch.o = build/decomp/src/overlays/ov012/overlay012_optional_dispatch.o
+
+build/decomp/delinks/src/overlays/ov012/overlay012_display_modes_apply.o = build/decomp/src/overlays/ov012/overlay012_display_modes_apply.o
+
+build/decomp/delinks/asm/overlays/ov012/overlay012_embedded_delete_thunk_021fe440.o = build/decomp/asm/overlays/ov012/overlay012_embedded_delete_thunk_021fe440.o
+
+build/decomp/delinks/asm/overlays/ov012/overlay012_embedded_destroy_thunk_021fe450.o = build/decomp/asm/overlays/ov012/overlay012_embedded_destroy_thunk_021fe450.o
+
+build/decomp/delinks/src/overlays/ov012/overlay012_transform_construct.o = build/decomp/src/overlays/ov012/overlay012_transform_construct.o
+
+build/decomp/delinks/asm/overlays/ov012/overlay012_transform_destroy_021fce3c.o = build/decomp/asm/overlays/ov012/overlay012_transform_destroy_021fce3c.o
+
+build/decomp/delinks/asm/overlays/ov012/overlay012_transform_delete_021fce74.o = build/decomp/asm/overlays/ov012/overlay012_transform_delete_021fce74.o
+
+build/decomp/delinks/asm/overlays/ov012/overlay012_transform_resource_set_021fceb4.o = build/decomp/asm/overlays/ov012/overlay012_transform_resource_set_021fceb4.o
+
+build/decomp/delinks/asm/overlays/ov012/overlay012_transform_apply_021fcef4.o = build/decomp/asm/overlays/ov012/overlay012_transform_apply_021fcef4.o
+
+build/decomp/delinks/src/overlays/ov012/overlay012_transform_draw_index.o = build/decomp/src/overlays/ov012/overlay012_transform_draw_index.o
+
+build/decomp/delinks/asm/overlays/ov012/overlay012_scene_fields_initialize_021fd148.o = build/decomp/asm/overlays/ov012/overlay012_scene_fields_initialize_021fd148.o
+
+build/decomp/delinks/asm/overlays/ov012/overlay012_viewer_helpers_021fd5ac.o = build/decomp/asm/overlays/ov012/overlay012_viewer_helpers_021fd5ac.o
+
+build/decomp/delinks/asm/overlays/ov012/overlay012_debug_viewer_update_021fd73c.o = build/decomp/asm/overlays/ov012/overlay012_debug_viewer_update_021fd73c.o
+
+build/decomp/delinks/asm/overlays/ov012/overlay012_geometry_commands_021fe348.o = build/decomp/asm/overlays/ov012/overlay012_geometry_commands_021fe348.o
+
+build/decomp/delinks/asm/overlays/ov012/overlay012_draw_slot_configure_021fd0d4.o = build/decomp/asm/overlays/ov012/overlay012_draw_slot_configure_021fd0d4.o
+
+build/decomp/delinks/asm/overlays/ov012/overlay012_scene_construct_021fd170.o = build/decomp/asm/overlays/ov012/overlay012_scene_construct_021fd170.o
+
+build/decomp/delinks/src/overlays/ov012/overlay012_scene_destroy.o = build/decomp/src/overlays/ov012/overlay012_scene_destroy.o
+
+build/decomp/delinks/src/overlays/ov012/overlay012_scene_delete.o = build/decomp/src/overlays/ov012/overlay012_scene_delete.o
+
+build/decomp/delinks/asm/overlays/ov013/overlay013_base_helpers_021fce00.o = build/decomp/asm/overlays/ov013/overlay013_base_helpers_021fce00.o
+
+build/decomp/delinks/asm/overlays/ov013/overlay013_scene_construct_021fce2c.o = build/decomp/asm/overlays/ov013/overlay013_scene_construct_021fce2c.o
+
+build/decomp/delinks/asm/overlays/ov013/overlay013_scene_destroy_021fd09c.o = build/decomp/asm/overlays/ov013/overlay013_scene_destroy_021fd09c.o
+
+build/decomp/delinks/asm/overlays/ov013/overlay013_scene_delete_021fd1a0.o = build/decomp/asm/overlays/ov013/overlay013_scene_delete_021fd1a0.o
+
+build/decomp/delinks/asm/overlays/ov013/overlay013_callback_dispatch_021fd2ac.o = build/decomp/asm/overlays/ov013/overlay013_callback_dispatch_021fd2ac.o
+
+build/decomp/delinks/asm/overlays/ov013/overlay013_scene_populate_021fd310.o = build/decomp/asm/overlays/ov013/overlay013_scene_populate_021fd310.o
+
+build/decomp/delinks/asm/overlays/ov013/overlay013_auxiliary_helpers_021fda28.o = build/decomp/asm/overlays/ov013/overlay013_auxiliary_helpers_021fda28.o
+
+build/decomp/delinks/asm/overlays/ov013/overlay013_runtime_update_021fdbb0.o = build/decomp/asm/overlays/ov013/overlay013_runtime_update_021fdbb0.o
+
+build/decomp/delinks/asm/overlays/ov013/overlay013_record_complete_021fdfbc.o = build/decomp/asm/overlays/ov013/overlay013_record_complete_021fdfbc.o
+
+build/decomp/delinks/asm/overlays/ov013/overlay013_record_position_021fdfd4.o = build/decomp/asm/overlays/ov013/overlay013_record_position_021fdfd4.o
+
+build/decomp/delinks/asm/overlays/ov013/overlay013_record_position_all_021fe078.o = build/decomp/asm/overlays/ov013/overlay013_record_position_all_021fe078.o
+
+build/decomp/delinks/asm/overlays/ov013/overlay013_phase_initialize_021fe148.o = build/decomp/asm/overlays/ov013/overlay013_phase_initialize_021fe148.o
+
+build/decomp/delinks/asm/overlays/ov013/overlay013_phase_wait_021fe28c.o = build/decomp/asm/overlays/ov013/overlay013_phase_wait_021fe28c.o
+
+build/decomp/delinks/asm/overlays/ov013/overlay013_phase_interaction_021fe454.o = build/decomp/asm/overlays/ov013/overlay013_phase_interaction_021fe454.o
+
+build/decomp/delinks/asm/overlays/ov013/overlay013_phase_timer_021fe880.o = build/decomp/asm/overlays/ov013/overlay013_phase_timer_021fe880.o
+
+build/decomp/delinks/asm/overlays/ov013/overlay013_terminal_select_021fe9c8.o = build/decomp/asm/overlays/ov013/overlay013_terminal_select_021fe9c8.o
+
+build/decomp/delinks/asm/overlays/ov013/overlay013_terminal_update_021feacc.o = build/decomp/asm/overlays/ov013/overlay013_terminal_update_021feacc.o
+
+build/decomp/delinks/asm/overlays/ov014/overlay014_value_clear_021fce00.o = build/decomp/asm/overlays/ov014/overlay014_value_clear_021fce00.o
+
+build/decomp/delinks/asm/overlays/ov014/overlay014_transition_fields_021fce14.o = build/decomp/asm/overlays/ov014/overlay014_transition_fields_021fce14.o
+
+build/decomp/delinks/asm/overlays/ov014/overlay014_scene_construct_021fce3c.o = build/decomp/asm/overlays/ov014/overlay014_scene_construct_021fce3c.o
+
+build/decomp/delinks/asm/overlays/ov014/overlay014_value_copy_021fcf50.o = build/decomp/asm/overlays/ov014/overlay014_value_copy_021fcf50.o
+
+build/decomp/delinks/asm/overlays/ov014/overlay014_scene_destroy_021fcf6c.o = build/decomp/asm/overlays/ov014/overlay014_scene_destroy_021fcf6c.o
+
+build/decomp/delinks/asm/overlays/ov014/overlay014_scene_delete_021fcff0.o = build/decomp/asm/overlays/ov014/overlay014_scene_delete_021fcff0.o
+
+build/decomp/delinks/asm/overlays/ov014/overlay014_graphics_setup_021fd07c.o = build/decomp/asm/overlays/ov014/overlay014_graphics_setup_021fd07c.o
+
+build/decomp/delinks/asm/overlays/ov014/overlay014_presentation_toggle_021fd2f8.o = build/decomp/asm/overlays/ov014/overlay014_presentation_toggle_021fd2f8.o
+
+build/decomp/delinks/asm/overlays/ov014/overlay014_subordinate_reset_021fd350.o = build/decomp/asm/overlays/ov014/overlay014_subordinate_reset_021fd350.o
+
+build/decomp/delinks/asm/overlays/ov014/overlay014_main_state_021fd38c.o = build/decomp/asm/overlays/ov014/overlay014_main_state_021fd38c.o
+
+build/decomp/delinks/asm/overlays/ov014/overlay014_focus_state_021fd67c.o = build/decomp/asm/overlays/ov014/overlay014_focus_state_021fd67c.o
+
+build/decomp/delinks/asm/overlays/ov014/overlay014_finish_state_021fd7b4.o = build/decomp/asm/overlays/ov014/overlay014_finish_state_021fd7b4.o
+
+build/decomp/delinks/asm/overlays/ov014/overlay014_subordinate_finish_021fd89c.o = build/decomp/asm/overlays/ov014/overlay014_subordinate_finish_021fd89c.o
+
+build/decomp/delinks/asm/overlays/ov014/overlay014_display_update_021fd8b8.o = build/decomp/asm/overlays/ov014/overlay014_display_update_021fd8b8.o
+
+build/decomp/delinks/asm/overlays/ov015/overlay015_base_helpers_021fce00.o = build/decomp/asm/overlays/ov015/overlay015_base_helpers_021fce00.o
+
+build/decomp/delinks/asm/overlays/ov015/overlay015_scene_construct_021fce58.o = build/decomp/asm/overlays/ov015/overlay015_scene_construct_021fce58.o
+
+build/decomp/delinks/asm/overlays/ov015/overlay015_value_copy_021fd230.o = build/decomp/asm/overlays/ov015/overlay015_value_copy_021fd230.o
+
+build/decomp/delinks/asm/overlays/ov015/overlay015_scene_destroy_021fd24c.o = build/decomp/asm/overlays/ov015/overlay015_scene_destroy_021fd24c.o
+
+build/decomp/delinks/asm/overlays/ov015/overlay015_scene_delete_021fd330.o = build/decomp/asm/overlays/ov015/overlay015_scene_delete_021fd330.o
+
+build/decomp/delinks/asm/overlays/ov015/overlay015_graphics_setup_021fd41c.o = build/decomp/asm/overlays/ov015/overlay015_graphics_setup_021fd41c.o
+
+build/decomp/delinks/asm/overlays/ov015/overlay015_record_runtime_021fd68c.o = build/decomp/asm/overlays/ov015/overlay015_record_runtime_021fd68c.o
+
+build/decomp/delinks/asm/overlays/ov015/overlay015_record_layout_021fd8ec.o = build/decomp/asm/overlays/ov015/overlay015_record_layout_021fd8ec.o
+
+build/decomp/delinks/asm/overlays/ov015/overlay015_record_replace_021fd9f0.o = build/decomp/asm/overlays/ov015/overlay015_record_replace_021fd9f0.o
+
+build/decomp/delinks/asm/overlays/ov015/overlay015_record_helpers_021fda50.o = build/decomp/asm/overlays/ov015/overlay015_record_helpers_021fda50.o
+
+build/decomp/delinks/asm/overlays/ov015/overlay015_record_selection_021fdad4.o = build/decomp/asm/overlays/ov015/overlay015_record_selection_021fdad4.o
+
+build/decomp/delinks/asm/overlays/ov015/overlay015_record_dispatch_021fdd1c.o = build/decomp/asm/overlays/ov015/overlay015_record_dispatch_021fdd1c.o
+
+build/decomp/delinks/asm/overlays/ov015/overlay015_transient_create_021fde00.o = build/decomp/asm/overlays/ov015/overlay015_transient_create_021fde00.o
+
+build/decomp/delinks/asm/overlays/ov015/overlay015_transient_destroy_021fdeac.o = build/decomp/asm/overlays/ov015/overlay015_transient_destroy_021fdeac.o
+
+build/decomp/delinks/asm/overlays/ov015/overlay015_phase_transient_021fdeec.o = build/decomp/asm/overlays/ov015/overlay015_phase_transient_021fdeec.o
+
+build/decomp/delinks/asm/overlays/ov015/overlay015_phase_primary_021fdfe8.o = build/decomp/asm/overlays/ov015/overlay015_phase_primary_021fdfe8.o
+
+build/decomp/delinks/asm/overlays/ov015/overlay015_phase_auxiliary_021fe2b0.o = build/decomp/asm/overlays/ov015/overlay015_phase_auxiliary_021fe2b0.o
+
+build/decomp/delinks/asm/overlays/ov015/overlay015_phase_confirmation_021fe3e4.o = build/decomp/asm/overlays/ov015/overlay015_phase_confirmation_021fe3e4.o
+
+build/decomp/delinks/asm/overlays/ov015/overlay015_phase_predicates_021fe548.o = build/decomp/asm/overlays/ov015/overlay015_phase_predicates_021fe548.o
+
+build/decomp/delinks/asm/overlays/ov015/overlay015_phase_choice_021fe588.o = build/decomp/asm/overlays/ov015/overlay015_phase_choice_021fe588.o
+
+build/decomp/delinks/asm/overlays/ov015/overlay015_phase_aux_action_021fe828.o = build/decomp/asm/overlays/ov015/overlay015_phase_aux_action_021fe828.o
+
+build/decomp/delinks/asm/overlays/ov015/overlay015_phase_commit_021fe9b8.o = build/decomp/asm/overlays/ov015/overlay015_phase_commit_021fe9b8.o
+
+build/decomp/delinks/asm/overlays/ov015/overlay015_final_hooks_021feb20.o = build/decomp/asm/overlays/ov015/overlay015_final_hooks_021feb20.o
+
+build/decomp/delinks/asm/overlays/ov016/overlay016_descriptor_init_021fce00.o = build/decomp/asm/overlays/ov016/overlay016_descriptor_init_021fce00.o
+
+build/decomp/delinks/asm/overlays/ov016/overlay016_list_construct_021fce34.o = build/decomp/asm/overlays/ov016/overlay016_list_construct_021fce34.o
+
+build/decomp/delinks/asm/overlays/ov016/overlay016_list_destroy_021fd06c.o = build/decomp/asm/overlays/ov016/overlay016_list_destroy_021fd06c.o
+
+build/decomp/delinks/asm/overlays/ov016/overlay016_list_helpers_021fd0dc.o = build/decomp/asm/overlays/ov016/overlay016_list_helpers_021fd0dc.o
+
+build/decomp/delinks/asm/overlays/ov016/overlay016_visible_rows_021fd210.o = build/decomp/asm/overlays/ov016/overlay016_visible_rows_021fd210.o
+
+build/decomp/delinks/asm/overlays/ov016/overlay016_row_runtime_021fd270.o = build/decomp/asm/overlays/ov016/overlay016_row_runtime_021fd270.o
+
+build/decomp/delinks/asm/overlays/ov016/overlay016_list_render_021fd3f8.o = build/decomp/asm/overlays/ov016/overlay016_list_render_021fd3f8.o
+
+build/decomp/delinks/asm/overlays/ov016/overlay016_list_input_021fd5b8.o = build/decomp/asm/overlays/ov016/overlay016_list_input_021fd5b8.o
+
+build/decomp/delinks/asm/overlays/ov016/overlay016_panel_construct_021fd6c8.o = build/decomp/asm/overlays/ov016/overlay016_panel_construct_021fd6c8.o
+
+build/decomp/delinks/asm/overlays/ov016/overlay016_panel_helpers_021fd97c.o = build/decomp/asm/overlays/ov016/overlay016_panel_helpers_021fd97c.o
+
+build/decomp/delinks/asm/overlays/ov016/overlay016_panel_populate_021fdaa0.o = build/decomp/asm/overlays/ov016/overlay016_panel_populate_021fdaa0.o
+
+build/decomp/delinks/asm/overlays/ov016/overlay016_panel_animation_021fdf50.o = build/decomp/asm/overlays/ov016/overlay016_panel_animation_021fdf50.o
+
+build/decomp/delinks/asm/overlays/ov016/overlay016_sprite_wrapper_construct_021fe004.o = build/decomp/asm/overlays/ov016/overlay016_sprite_wrapper_construct_021fe004.o
+
+build/decomp/delinks/asm/overlays/ov016/overlay016_sprite_wrapper_destroy_021fe08c.o = build/decomp/asm/overlays/ov016/overlay016_sprite_wrapper_destroy_021fe08c.o
+
+build/decomp/delinks/asm/overlays/ov016/overlay016_sprite_wrapper_delete_021fe0ac.o = build/decomp/asm/overlays/ov016/overlay016_sprite_wrapper_delete_021fe0ac.o
+
+build/decomp/delinks/asm/overlays/ov016/overlay016_small_base_helpers_021fe0d4.o = build/decomp/asm/overlays/ov016/overlay016_small_base_helpers_021fe0d4.o
+
+build/decomp/delinks/asm/overlays/ov016/overlay016_actor_group_construct_021fe118.o = build/decomp/asm/overlays/ov016/overlay016_actor_group_construct_021fe118.o
+
+build/decomp/delinks/asm/overlays/ov016/overlay016_actor_group_destroy_021fe24c.o = build/decomp/asm/overlays/ov016/overlay016_actor_group_destroy_021fe24c.o
+
+build/decomp/delinks/asm/overlays/ov016/overlay016_actor_group_helpers_021fe2b0.o = build/decomp/asm/overlays/ov016/overlay016_actor_group_helpers_021fe2b0.o
+
+build/decomp/delinks/asm/overlays/ov016/overlay016_actor_spawn_021fe390.o = build/decomp/asm/overlays/ov016/overlay016_actor_spawn_021fe390.o
+
+build/decomp/delinks/asm/overlays/ov016/overlay016_actor_add_021fe4d0.o = build/decomp/asm/overlays/ov016/overlay016_actor_add_021fe4d0.o
+
+build/decomp/delinks/asm/overlays/ov016/overlay016_actor_select_021fe584.o = build/decomp/asm/overlays/ov016/overlay016_actor_select_021fe584.o
+
+build/decomp/delinks/asm/overlays/ov016/overlay016_actor_update_021fe63c.o = build/decomp/asm/overlays/ov016/overlay016_actor_update_021fe63c.o
+
+build/decomp/delinks/asm/overlays/ov016/overlay016_actor_completion_021fe6f4.o = build/decomp/asm/overlays/ov016/overlay016_actor_completion_021fe6f4.o
+
+build/decomp/delinks/asm/overlays/ov016/overlay016_actor_value_helpers_021fe728.o = build/decomp/asm/overlays/ov016/overlay016_actor_value_helpers_021fe728.o
+
+build/decomp/delinks/asm/overlays/ov016/overlay016_scene_construct_021fe77c.o = build/decomp/asm/overlays/ov016/overlay016_scene_construct_021fe77c.o
+
+build/decomp/delinks/asm/overlays/ov016/overlay016_scene_destroy_021feaa4.o = build/decomp/asm/overlays/ov016/overlay016_scene_destroy_021feaa4.o
+
+build/decomp/delinks/asm/overlays/ov016/overlay016_scene_delete_021fec0c.o = build/decomp/asm/overlays/ov016/overlay016_scene_delete_021fec0c.o
+
+build/decomp/delinks/asm/overlays/ov016/overlay016_display_commit_021fed7c.o = build/decomp/asm/overlays/ov016/overlay016_display_commit_021fed7c.o
+
+build/decomp/delinks/asm/overlays/ov016/overlay016_graphics_setup_021fedc4.o = build/decomp/asm/overlays/ov016/overlay016_graphics_setup_021fedc4.o
+
+build/decomp/delinks/asm/overlays/ov016/overlay016_display_registers_021ff04c.o = build/decomp/asm/overlays/ov016/overlay016_display_registers_021ff04c.o
+
+build/decomp/delinks/asm/overlays/ov016/overlay016_mode_graphics_021ff094.o = build/decomp/asm/overlays/ov016/overlay016_mode_graphics_021ff094.o
+
+build/decomp/delinks/asm/overlays/ov016/overlay016_mode_graphics_021ff17c.o = build/decomp/asm/overlays/ov016/overlay016_mode_graphics_021ff17c.o
+
+build/decomp/delinks/asm/overlays/ov016/overlay016_scene_populate_021ff288.o = build/decomp/asm/overlays/ov016/overlay016_scene_populate_021ff288.o
+
+build/decomp/delinks/asm/overlays/ov016/overlay016_scene_sprites_021ff404.o = build/decomp/asm/overlays/ov016/overlay016_scene_sprites_021ff404.o
+
+build/decomp/delinks/asm/overlays/ov016/overlay016_scene_sprites_021ff4ec.o = build/decomp/asm/overlays/ov016/overlay016_scene_sprites_021ff4ec.o
+
+build/decomp/delinks/asm/overlays/ov016/overlay016_scene_auxiliary_021ff510.o = build/decomp/asm/overlays/ov016/overlay016_scene_auxiliary_021ff510.o
+
+build/decomp/delinks/asm/overlays/ov016/overlay016_scene_auxiliary_021ff6e8.o = build/decomp/asm/overlays/ov016/overlay016_scene_auxiliary_021ff6e8.o
+
+build/decomp/delinks/asm/overlays/ov016/overlay016_scene_auxiliary_021ff700.o = build/decomp/asm/overlays/ov016/overlay016_scene_auxiliary_021ff700.o
+
+build/decomp/delinks/asm/overlays/ov016/overlay016_scene_auxiliary_021ff71c.o = build/decomp/asm/overlays/ov016/overlay016_scene_auxiliary_021ff71c.o
+
+build/decomp/delinks/asm/overlays/ov016/overlay016_scene_update_021ff7bc.o = build/decomp/asm/overlays/ov016/overlay016_scene_update_021ff7bc.o
+
+build/decomp/delinks/asm/overlays/ov016/overlay016_message_runtime_021ff848.o = build/decomp/asm/overlays/ov016/overlay016_message_runtime_021ff848.o
+
+build/decomp/delinks/asm/overlays/ov016/overlay016_message_runtime_021ff908.o = build/decomp/asm/overlays/ov016/overlay016_message_runtime_021ff908.o
+
+build/decomp/delinks/asm/overlays/ov016/overlay016_message_runtime_021ff9b8.o = build/decomp/asm/overlays/ov016/overlay016_message_runtime_021ff9b8.o
+
+build/decomp/delinks/asm/overlays/ov016/overlay016_message_runtime_021ff9f8.o = build/decomp/asm/overlays/ov016/overlay016_message_runtime_021ff9f8.o
+
+build/decomp/delinks/asm/overlays/ov016/overlay016_message_runtime_021ffb3c.o = build/decomp/asm/overlays/ov016/overlay016_message_runtime_021ffb3c.o
+
+build/decomp/delinks/asm/overlays/ov016/overlay016_selection_helpers_021ffba4.o = build/decomp/asm/overlays/ov016/overlay016_selection_helpers_021ffba4.o
+
+build/decomp/delinks/asm/overlays/ov016/overlay016_selection_helpers_021ffbd8.o = build/decomp/asm/overlays/ov016/overlay016_selection_helpers_021ffbd8.o
+
+build/decomp/delinks/asm/overlays/ov016/overlay016_selection_helpers_021ffc2c.o = build/decomp/asm/overlays/ov016/overlay016_selection_helpers_021ffc2c.o
+
+build/decomp/delinks/asm/overlays/ov016/overlay016_selection_helpers_021ffcb0.o = build/decomp/asm/overlays/ov016/overlay016_selection_helpers_021ffcb0.o
+
+build/decomp/delinks/asm/overlays/ov016/overlay016_selection_helpers_021ffd84.o = build/decomp/asm/overlays/ov016/overlay016_selection_helpers_021ffd84.o
+
+build/decomp/delinks/asm/overlays/ov016/overlay016_selection_helpers_021ffe3c.o = build/decomp/asm/overlays/ov016/overlay016_selection_helpers_021ffe3c.o
+
+build/decomp/delinks/asm/overlays/ov016/overlay016_transition_helpers_021ffe90.o = build/decomp/asm/overlays/ov016/overlay016_transition_helpers_021ffe90.o
+
+build/decomp/delinks/asm/overlays/ov016/overlay016_transition_helpers_021fffcc.o = build/decomp/asm/overlays/ov016/overlay016_transition_helpers_021fffcc.o
+
+build/decomp/delinks/asm/overlays/ov016/overlay016_state_list_0220007c.o = build/decomp/asm/overlays/ov016/overlay016_state_list_0220007c.o
+
+build/decomp/delinks/asm/overlays/ov016/overlay016_state_list_alt_02200488.o = build/decomp/asm/overlays/ov016/overlay016_state_list_alt_02200488.o
+
+build/decomp/delinks/asm/overlays/ov016/overlay016_state_mode_switch_022005c8.o = build/decomp/asm/overlays/ov016/overlay016_state_mode_switch_022005c8.o
+
+build/decomp/delinks/asm/overlays/ov016/overlay016_state_alt_entry_02200778.o = build/decomp/asm/overlays/ov016/overlay016_state_alt_entry_02200778.o
+
+build/decomp/delinks/asm/overlays/ov016/overlay016_state_auxiliary_02200900.o = build/decomp/asm/overlays/ov016/overlay016_state_auxiliary_02200900.o
+
+build/decomp/delinks/asm/overlays/ov016/overlay016_state_actor_confirmation_02200d5c.o = build/decomp/asm/overlays/ov016/overlay016_state_actor_confirmation_02200d5c.o
+
+build/decomp/delinks/asm/overlays/ov016/overlay016_state_actor_confirmation_02200e88.o = build/decomp/asm/overlays/ov016/overlay016_state_actor_confirmation_02200e88.o
+
+build/decomp/delinks/asm/overlays/ov016/overlay016_final_handlers_02200fe4.o = build/decomp/asm/overlays/ov016/overlay016_final_handlers_02200fe4.o
+
+build/decomp/delinks/asm/overlays/ov016/overlay016_final_handlers_022010c0.o = build/decomp/asm/overlays/ov016/overlay016_final_handlers_022010c0.o
+
+build/decomp/delinks/asm/overlays/ov016/overlay016_final_handlers_022011c0.o = build/decomp/asm/overlays/ov016/overlay016_final_handlers_022011c0.o
+
+build/decomp/delinks/asm/overlays/ov016/overlay016_final_handlers_02201304.o = build/decomp/asm/overlays/ov016/overlay016_final_handlers_02201304.o
+
+build/decomp/delinks/asm/overlays/ov016/overlay016_final_handlers_02201364.o = build/decomp/asm/overlays/ov016/overlay016_final_handlers_02201364.o
+
+build/decomp/delinks/asm/overlays/ov017/overlay017_grid_init_021fce00.o = build/decomp/asm/overlays/ov017/overlay017_grid_init_021fce00.o
+
+build/decomp/delinks/asm/overlays/ov017/overlay017_geometry_engine_021fd3f0.o = build/decomp/asm/overlays/ov017/overlay017_geometry_engine_021fd3f0.o
+
+build/decomp/delinks/asm/overlays/ov017/overlay017_geometry_engine_021fd414.o = build/decomp/asm/overlays/ov017/overlay017_geometry_engine_021fd414.o
+
+build/decomp/delinks/asm/overlays/ov017/overlay017_geometry_engine_021fd60c.o = build/decomp/asm/overlays/ov017/overlay017_geometry_engine_021fd60c.o
+
+build/decomp/delinks/asm/overlays/ov017/overlay017_geometry_engine_021fd638.o = build/decomp/asm/overlays/ov017/overlay017_geometry_engine_021fd638.o
+
+build/decomp/delinks/asm/overlays/ov017/overlay017_geometry_engine_021fd64c.o = build/decomp/asm/overlays/ov017/overlay017_geometry_engine_021fd64c.o
+
+build/decomp/delinks/asm/overlays/ov017/overlay017_geometry_engine_021fd680.o = build/decomp/asm/overlays/ov017/overlay017_geometry_engine_021fd680.o
+
+build/decomp/delinks/asm/overlays/ov017/overlay017_grid_runtime_021fd6b0.o = build/decomp/asm/overlays/ov017/overlay017_grid_runtime_021fd6b0.o
+
+build/decomp/delinks/asm/overlays/ov017/overlay017_grid_runtime_021fd744.o = build/decomp/asm/overlays/ov017/overlay017_grid_runtime_021fd744.o
+
+build/decomp/delinks/asm/overlays/ov017/overlay017_grid_runtime_021fd780.o = build/decomp/asm/overlays/ov017/overlay017_grid_runtime_021fd780.o
+
+build/decomp/delinks/asm/overlays/ov017/overlay017_grid_runtime_021fd7b8.o = build/decomp/asm/overlays/ov017/overlay017_grid_runtime_021fd7b8.o
+
+build/decomp/delinks/asm/overlays/ov017/overlay017_grid_runtime_021fd7f8.o = build/decomp/asm/overlays/ov017/overlay017_grid_runtime_021fd7f8.o
+
+build/decomp/delinks/asm/overlays/ov017/overlay017_grid_runtime_021fd838.o = build/decomp/asm/overlays/ov017/overlay017_grid_runtime_021fd838.o
+
+build/decomp/delinks/asm/overlays/ov017/overlay017_effect_lifecycle_021fd918.o = build/decomp/asm/overlays/ov017/overlay017_effect_lifecycle_021fd918.o
+
+build/decomp/delinks/asm/overlays/ov017/overlay017_effect_lifecycle_021fd948.o = build/decomp/asm/overlays/ov017/overlay017_effect_lifecycle_021fd948.o
+
+build/decomp/delinks/asm/overlays/ov017/overlay017_effect_lifecycle_021fd94c.o = build/decomp/asm/overlays/ov017/overlay017_effect_lifecycle_021fd94c.o
+
+build/decomp/delinks/asm/overlays/ov017/overlay017_effect_lifecycle_021fda1c.o = build/decomp/asm/overlays/ov017/overlay017_effect_lifecycle_021fda1c.o
+
+build/decomp/delinks/asm/overlays/ov017/overlay017_effect_lifecycle_021fda3c.o = build/decomp/asm/overlays/ov017/overlay017_effect_lifecycle_021fda3c.o
+
+build/decomp/delinks/asm/overlays/ov017/overlay017_effect_progress_021fe0b4.o = build/decomp/asm/overlays/ov017/overlay017_effect_progress_021fe0b4.o
+
+build/decomp/delinks/asm/overlays/ov017/overlay017_effect_progress_021fe160.o = build/decomp/asm/overlays/ov017/overlay017_effect_progress_021fe160.o
+
+build/decomp/delinks/asm/overlays/ov017/overlay017_effect_progress_021fe178.o = build/decomp/asm/overlays/ov017/overlay017_effect_progress_021fe178.o
+
+build/decomp/delinks/asm/overlays/ov017/overlay017_effect_variant_021fe190.o = build/decomp/asm/overlays/ov017/overlay017_effect_variant_021fe190.o
+
+build/decomp/delinks/asm/overlays/ov017/overlay017_effect_variant_021fe2d4.o = build/decomp/asm/overlays/ov017/overlay017_effect_variant_021fe2d4.o
+
+build/decomp/delinks/asm/overlays/ov017/overlay017_effect_variant_021fe33c.o = build/decomp/asm/overlays/ov017/overlay017_effect_variant_021fe33c.o
+
+build/decomp/delinks/asm/overlays/ov017/overlay017_effect_variant_021fe3c4.o = build/decomp/asm/overlays/ov017/overlay017_effect_variant_021fe3c4.o
+
+build/decomp/delinks/asm/overlays/ov017/overlay017_sprite_pool_021fe40c.o = build/decomp/asm/overlays/ov017/overlay017_sprite_pool_021fe40c.o
+
+build/decomp/delinks/asm/overlays/ov017/overlay017_sprite_pool_021fe58c.o = build/decomp/asm/overlays/ov017/overlay017_sprite_pool_021fe58c.o
+
+build/decomp/delinks/asm/overlays/ov017/overlay017_sprite_pool_state_021fe5b0.o = build/decomp/asm/overlays/ov017/overlay017_sprite_pool_state_021fe5b0.o
+
+build/decomp/delinks/asm/overlays/ov017/overlay017_sprite_pool_state_021fe6dc.o = build/decomp/asm/overlays/ov017/overlay017_sprite_pool_state_021fe6dc.o
+
+build/decomp/delinks/asm/overlays/ov017/overlay017_sprite_pool_state_021fe71c.o = build/decomp/asm/overlays/ov017/overlay017_sprite_pool_state_021fe71c.o
+
+build/decomp/delinks/asm/overlays/ov017/overlay017_record_base_021fe9bc.o = build/decomp/asm/overlays/ov017/overlay017_record_base_021fe9bc.o
+
+build/decomp/delinks/asm/overlays/ov017/overlay017_record_base_021fe9c0.o = build/decomp/asm/overlays/ov017/overlay017_record_base_021fe9c0.o
+
+build/decomp/delinks/asm/overlays/ov017/overlay017_record_base_021fe9e0.o = build/decomp/asm/overlays/ov017/overlay017_record_base_021fe9e0.o
+
+build/decomp/delinks/asm/overlays/ov017/overlay017_record_base_021fea00.o = build/decomp/asm/overlays/ov017/overlay017_record_base_021fea00.o
+
+build/decomp/delinks/asm/overlays/ov017/overlay017_record_base_021fea08.o = build/decomp/asm/overlays/ov017/overlay017_record_base_021fea08.o
+
+build/decomp/delinks/asm/overlays/ov017/overlay017_record_base_021fea18.o = build/decomp/asm/overlays/ov017/overlay017_record_base_021fea18.o
+
+build/decomp/delinks/asm/overlays/ov017/overlay017_record_base_021fea8c.o = build/decomp/asm/overlays/ov017/overlay017_record_base_021fea8c.o
+
+build/decomp/delinks/asm/overlays/ov017/overlay017_final_handlers_02201350.o = build/decomp/asm/overlays/ov017/overlay017_final_handlers_02201350.o
+
+build/decomp/delinks/asm/overlays/ov017/overlay017_final_handlers_02201384.o = build/decomp/asm/overlays/ov017/overlay017_final_handlers_02201384.o
+
+build/decomp/delinks/asm/overlays/ov017/overlay017_final_handlers_02201388.o = build/decomp/asm/overlays/ov017/overlay017_final_handlers_02201388.o
+
+build/decomp/delinks/asm/overlays/ov017/overlay017_final_handlers_022013a4.o = build/decomp/asm/overlays/ov017/overlay017_final_handlers_022013a4.o
+
+build/decomp/delinks/asm/overlays/ov017/overlay017_final_handlers_022013b8.o = build/decomp/asm/overlays/ov017/overlay017_final_handlers_022013b8.o
+
+build/decomp/delinks/asm/overlays/ov017/overlay017_final_handlers_022013e0.o = build/decomp/asm/overlays/ov017/overlay017_final_handlers_022013e0.o
+
+build/decomp/delinks/asm/overlays/ov017/overlay017_final_handlers_022013f4.o = build/decomp/asm/overlays/ov017/overlay017_final_handlers_022013f4.o
+
+build/decomp/delinks/asm/overlays/ov017/overlay017_final_handlers_02201440.o = build/decomp/asm/overlays/ov017/overlay017_final_handlers_02201440.o
+
+build/decomp/delinks/asm/overlays/ov017/overlay017_scene_helpers_021ff150.o = build/decomp/asm/overlays/ov017/overlay017_scene_helpers_021ff150.o
+
+build/decomp/delinks/asm/overlays/ov017/overlay017_scene_helpers_021ff544.o = build/decomp/asm/overlays/ov017/overlay017_scene_helpers_021ff544.o
+
+build/decomp/delinks/asm/overlays/ov017/overlay017_scene_helpers_0220087c.o = build/decomp/asm/overlays/ov017/overlay017_scene_helpers_0220087c.o
+
+build/decomp/delinks/asm/overlays/ov017/overlay017_scene_helpers_02200a8c.o = build/decomp/asm/overlays/ov017/overlay017_scene_helpers_02200a8c.o
+
+build/decomp/delinks/asm/overlays/ov017/overlay017_scene_helpers_02200bf8.o = build/decomp/asm/overlays/ov017/overlay017_scene_helpers_02200bf8.o
+
+build/decomp/delinks/asm/overlays/ov017/overlay017_panel_lifecycle_021ffcc8.o = build/decomp/asm/overlays/ov017/overlay017_panel_lifecycle_021ffcc8.o
+
+build/decomp/delinks/asm/overlays/ov017/overlay017_panel_lifecycle_021ffd74.o = build/decomp/asm/overlays/ov017/overlay017_panel_lifecycle_021ffd74.o
+
+build/decomp/delinks/asm/overlays/ov017/overlay017_ui_sprite_group_021fe75c.o = build/decomp/asm/overlays/ov017/overlay017_ui_sprite_group_021fe75c.o
+
+build/decomp/delinks/asm/overlays/ov017/overlay017_ui_sprite_group_021fe894.o = build/decomp/asm/overlays/ov017/overlay017_ui_sprite_group_021fe894.o
+
+build/decomp/delinks/asm/overlays/ov017/overlay017_state_handlers_02200ab0.o = build/decomp/asm/overlays/ov017/overlay017_state_handlers_02200ab0.o
+
+build/decomp/delinks/asm/overlays/ov017/overlay017_state_handlers_02200c20.o = build/decomp/asm/overlays/ov017/overlay017_state_handlers_02200c20.o
+
+build/decomp/delinks/asm/overlays/ov017/overlay017_palette_ramp_02200064.o = build/decomp/asm/overlays/ov017/overlay017_palette_ramp_02200064.o
+
+build/decomp/delinks/asm/overlays/ov017/overlay017_projection_setup_021ff75c.o = build/decomp/asm/overlays/ov017/overlay017_projection_setup_021ff75c.o
+
+build/decomp/delinks/asm/overlays/ov017/overlay017_graphics_setup_021ff58c.o = build/decomp/asm/overlays/ov017/overlay017_graphics_setup_021ff58c.o
+
+build/decomp/delinks/asm/overlays/ov017/overlay017_scene_lifecycle_021ff16c.o = build/decomp/asm/overlays/ov017/overlay017_scene_lifecycle_021ff16c.o
+
+build/decomp/delinks/asm/overlays/ov017/overlay017_scene_lifecycle_021ff354.o = build/decomp/asm/overlays/ov017/overlay017_scene_lifecycle_021ff354.o
+
+build/decomp/delinks/asm/overlays/ov017/overlay017_effect_phase_021fde40.o = build/decomp/asm/overlays/ov017/overlay017_effect_phase_021fde40.o
+
+build/decomp/delinks/asm/overlays/ov017/overlay017_status_text_021ffdb4.o = build/decomp/asm/overlays/ov017/overlay017_status_text_021ffdb4.o
+
+build/decomp/delinks/asm/overlays/ov017/overlay017_effect_spawn_021ff8a8.o = build/decomp/asm/overlays/ov017/overlay017_effect_spawn_021ff8a8.o
+
+build/decomp/delinks/asm/overlays/ov017/overlay017_effect_motion_021fda64.o = build/decomp/asm/overlays/ov017/overlay017_effect_motion_021fda64.o
+
+build/decomp/delinks/asm/overlays/ov017/overlay017_scene_render_022008ac.o = build/decomp/asm/overlays/ov017/overlay017_scene_render_022008ac.o
+
+build/decomp/delinks/asm/overlays/ov017/overlay017_grid_deform_021fcf6c.o = build/decomp/asm/overlays/ov017/overlay017_grid_deform_021fcf6c.o
+
+build/decomp/delinks/asm/overlays/ov017/overlay017_main_state_02200cc0.o = build/decomp/asm/overlays/ov017/overlay017_main_state_02200cc0.o
+
+build/decomp/delinks/asm/overlays/ov017/overlay017_scene_construct_021feab4.o = build/decomp/asm/overlays/ov017/overlay017_scene_construct_021feab4.o
+
+build/decomp/delinks/asm/overlays/ov017/overlay017_scene_update_02200188.o = build/decomp/asm/overlays/ov017/overlay017_scene_update_02200188.o

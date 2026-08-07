@@ -1,0 +1,95 @@
+    .text
+    .extern __destroy_arr
+    .extern func_02071eb8
+    .extern func_02071f38
+    .extern func_02074058
+    .extern func_0207419c
+    .extern func_02076428
+    .extern func_020927b8
+
+/* Exact fallbacks; see src/overlays/ov016/overlay016_panel_helpers.c. */
+    .global func_ov016_021fd97c
+    .global func_ov016_021fd9dc
+
+func_ov016_021fd97c:
+    stmdb sp!, {r4, lr}
+    mov r4, r0
+    ldr r0, [r4, #0x8]
+    bl func_0207419c
+    ldr r0, [r4, #0x4]
+    bl func_0207419c
+    add r0, r4, #0xd4
+    bl func_020927b8
+    add r0, r4, #0x78
+    bl func_02071eb8
+    add r0, r4, #0x6c
+    bl func_02071eb8
+    add r0, r4, #0x24
+    mov r1, #0x6
+    mov r2, #0xc
+    ldr r3, L_021fd9d8
+    bl __destroy_arr
+    add r0, r4, #0x18
+    bl func_02071eb8
+    add r0, r4, #0xc
+    bl func_02071eb8
+    mov r0, r4
+    ldmia sp!, {r4, pc}
+L_021fd9d8: .word func_02071eb8
+
+    .global func_ov016_021fd9dc
+func_ov016_021fd9dc:
+    stmdb sp!, {r3, r4, r5, r6, r7, lr}
+    sub sp, sp, #0x8
+    mov r6, r0
+    cmp r1, #0x0
+    beq L_021fda14
+    mov r0, #0xb8
+    str r0, [sp, #0x0]
+    mov r0, #0x0
+    str r0, [sp, #0x4]
+    ldr r0, [r6, #0x0]
+    mov r1, #0x20
+    mov r2, #0x28
+    mov r3, #0xf8
+    bl func_02076428
+L_021fda14:
+    ldr r0, [r6, #0x4]
+    bl func_02074058
+    add r0, r6, #0x18
+    bl func_02071f38
+    mov r5, #0x0
+    add r4, r6, #0x24
+    mov r7, #0xc
+L_021fda30:
+    mla r0, r5, r7, r4
+    bl func_02071f38
+    add r2, r6, r5, lsl #0x2
+    ldr r1, [r2, #0x8c]
+    add r5, r5, #0x1
+    ldrh r0, [r1, #0x24]
+    cmp r5, #0x6
+    orr r0, r0, #0x4
+    strh r0, [r1, #0x24]
+    ldr r1, [r2, #0xa4]
+    ldrh r0, [r1, #0x24]
+    orr r0, r0, #0x4
+    strh r0, [r1, #0x24]
+    ldr r1, [r2, #0xbc]
+    ldrh r0, [r1, #0x24]
+    orr r0, r0, #0x4
+    strh r0, [r1, #0x24]
+    blt L_021fda30
+    ldr r1, [r6, #0x84]
+    ldrh r0, [r1, #0x24]
+    orr r0, r0, #0x4
+    strh r0, [r1, #0x24]
+    ldr r1, [r6, #0x88]
+    ldrh r0, [r1, #0x24]
+    orr r0, r0, #0x4
+    strh r0, [r1, #0x24]
+    add sp, sp, #0x8
+    ldmia sp!, {r3, r4, r5, r6, r7, pc}
+
+    .size func_ov016_021fd97c, func_ov016_021fd9dc - func_ov016_021fd97c
+    .size func_ov016_021fd9dc, . - func_ov016_021fd9dc

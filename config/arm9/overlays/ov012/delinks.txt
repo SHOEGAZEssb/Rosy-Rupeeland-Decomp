@@ -3,3 +3,80 @@
     .ctor       start:0x021fe498 end:0x021fe498 kind:rodata align:4
     .data       start:0x021fe4a0 end:0x021fe760 kind:data align:32
     .bss        start:0x021fe760 end:0x021fe760 kind:bss align:32
+
+src/overlays/ov012/overlay012_transform_construct.c:
+    categories: Graphics
+    .text start:0x021fce00 end:0x021fce3c
+asm/overlays/ov012/overlay012_transform_destroy_021fce3c.s:
+    categories: Graphics
+    .text start:0x021fce3c end:0x021fce74
+asm/overlays/ov012/overlay012_transform_delete_021fce74.s:
+    categories: Graphics
+    .text start:0x021fce74 end:0x021fceb4
+asm/overlays/ov012/overlay012_transform_resource_set_021fceb4.s:
+    categories: Graphics
+    .text start:0x021fceb4 end:0x021fcef4
+asm/overlays/ov012/overlay012_transform_apply_021fcef4.s:
+    categories: Graphics
+    .text start:0x021fcef4 end:0x021fcfd4
+src/overlays/ov012/overlay012_transform_draw_index.c:
+    categories: Graphics
+    .text start:0x021fcfd4 end:0x021fd004
+
+src/overlays/ov012/overlay012_display_select.c:
+    categories: Graphics
+    .text start:0x021fd004 end:0x021fd020
+src/overlays/ov012/overlay012_disp3d_field_set.c:
+    categories: Graphics
+    .text start:0x021fd020 end:0x021fd044
+asm/overlays/ov012/overlay012_disp3d_bit4_toggle_021fd044.s:
+    categories: Graphics
+    .text start:0x021fd044 end:0x021fd080
+asm/overlays/ov012/overlay012_disp3d_bit3_toggle_021fd080.s:
+    categories: Graphics
+    .text start:0x021fd080 end:0x021fd0bc
+src/overlays/ov012/overlay012_vector0_set.c:
+    categories: Game code
+    .text start:0x021fd0bc end:0x021fd0c4
+src/overlays/ov012/overlay012_vector1_set.c:
+    categories: Game code
+    .text start:0x021fd0c4 end:0x021fd0d4
+asm/overlays/ov012/overlay012_draw_slot_configure_021fd0d4.s:
+    categories: Graphics
+    .text start:0x021fd0d4 end:0x021fd148
+asm/overlays/ov012/overlay012_scene_fields_initialize_021fd148.s:
+    categories: Game code
+    .text start:0x021fd148 end:0x021fd170
+asm/overlays/ov012/overlay012_scene_construct_021fd170.s:
+    categories: Debug
+    .text start:0x021fd170 end:0x021fd468
+src/overlays/ov012/overlay012_scene_destroy.c:
+    categories: Game code
+    .text start:0x021fd468 end:0x021fd4fc
+src/overlays/ov012/overlay012_scene_delete.c:
+    categories: Game code
+    .text start:0x021fd4fc end:0x021fd598
+src/overlays/ov012/overlay012_scene_activate.c:
+    categories: Game code
+    .text start:0x021fd598 end:0x021fd5ac
+asm/overlays/ov012/overlay012_viewer_helpers_021fd5ac.s:
+    categories: Debug
+    .text start:0x021fd5ac end:0x021fd73c
+asm/overlays/ov012/overlay012_debug_viewer_update_021fd73c.s:
+    categories: Debug
+    .text start:0x021fd73c end:0x021fe348
+asm/overlays/ov012/overlay012_geometry_commands_021fe348.s:
+    categories: Graphics
+    .text start:0x021fe348 end:0x021fe3e8
+src/overlays/ov012/overlay012_optional_dispatch.c:
+    categories: Game code
+    .text start:0x021fe3e8 end:0x021fe408
+src/overlays/ov012/overlay012_display_modes_apply.c:
+    categories: Graphics
+    .text start:0x021fe408 end:0x021fe440
+asm/overlays/ov012/overlay012_embedded_delete_thunk_021fe440.s:
+    categories: Game code
+    .text start:0x021fe440 end:0x021fe450
+asm/overlays/ov012/overlay012_embedded_destroy_thunk_021fe450.s:
+    categories: Game code
+    .text start:0x021fe450 end:0x021fe460

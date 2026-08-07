@@ -3,3 +3,73 @@
     .ctor       start:0x021feb90 end:0x021feb90 kind:rodata align:4
     .data       start:0x021feba0 end:0x021feca0 kind:data align:32
     .bss        start:0x021feca0 end:0x021feca0 kind:bss align:32
+
+asm/overlays/ov015/overlay015_base_helpers_021fce00.s:
+    categories: Game code
+    .text start:0x021fce00 end:0x021fce58
+asm/overlays/ov015/overlay015_scene_construct_021fce58.s:
+    categories: Game code
+    .text start:0x021fce58 end:0x021fd230
+asm/overlays/ov015/overlay015_value_copy_021fd230.s:
+    categories: Game code
+    .text start:0x021fd230 end:0x021fd24c
+asm/overlays/ov015/overlay015_scene_destroy_021fd24c.s:
+    categories: Game code
+    .text start:0x021fd24c end:0x021fd330
+asm/overlays/ov015/overlay015_scene_delete_021fd330.s:
+    categories: Game code
+    .text start:0x021fd330 end:0x021fd41c
+asm/overlays/ov015/overlay015_graphics_setup_021fd41c.s:
+    categories: Game code
+    .text start:0x021fd41c end:0x021fd68c
+asm/overlays/ov015/overlay015_record_runtime_021fd68c.s:
+    categories: Game code
+    .text start:0x021fd68c end:0x021fd8ec
+asm/overlays/ov015/overlay015_record_layout_021fd8ec.s:
+    categories: Game code
+    .text start:0x021fd8ec end:0x021fd9f0
+asm/overlays/ov015/overlay015_record_replace_021fd9f0.s:
+    categories: Game code
+    .text start:0x021fd9f0 end:0x021fda50
+asm/overlays/ov015/overlay015_record_helpers_021fda50.s:
+    categories: Game code
+    .text start:0x021fda50 end:0x021fdad4
+asm/overlays/ov015/overlay015_record_selection_021fdad4.s:
+    categories: Game code
+    .text start:0x021fdad4 end:0x021fdd1c
+asm/overlays/ov015/overlay015_record_dispatch_021fdd1c.s:
+    categories: Game code
+    .text start:0x021fdd1c end:0x021fde00
+asm/overlays/ov015/overlay015_transient_create_021fde00.s:
+    categories: Game code
+    .text start:0x021fde00 end:0x021fdeac
+asm/overlays/ov015/overlay015_transient_destroy_021fdeac.s:
+    categories: Game code
+    .text start:0x021fdeac end:0x021fdeec
+asm/overlays/ov015/overlay015_phase_transient_021fdeec.s:
+    categories: Game code
+    .text start:0x021fdeec end:0x021fdfe8
+asm/overlays/ov015/overlay015_phase_primary_021fdfe8.s:
+    categories: Game code
+    .text start:0x021fdfe8 end:0x021fe2b0
+asm/overlays/ov015/overlay015_phase_auxiliary_021fe2b0.s:
+    categories: Game code
+    .text start:0x021fe2b0 end:0x021fe3e4
+asm/overlays/ov015/overlay015_phase_confirmation_021fe3e4.s:
+    categories: Game code
+    .text start:0x021fe3e4 end:0x021fe548
+asm/overlays/ov015/overlay015_phase_predicates_021fe548.s:
+    categories: Game code
+    .text start:0x021fe548 end:0x021fe588
+asm/overlays/ov015/overlay015_phase_choice_021fe588.s:
+    categories: Game code
+    .text start:0x021fe588 end:0x021fe828
+asm/overlays/ov015/overlay015_phase_aux_action_021fe828.s:
+    categories: Game code
+    .text start:0x021fe828 end:0x021fe9b8
+asm/overlays/ov015/overlay015_phase_commit_021fe9b8.s:
+    categories: Game code
+    .text start:0x021fe9b8 end:0x021feb20
+asm/overlays/ov015/overlay015_final_hooks_021feb20.s:
+    categories: Game code
+    .text start:0x021feb20 end:0x021feb84
