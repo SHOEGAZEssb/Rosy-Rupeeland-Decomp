@@ -3,3 +3,107 @@
     .ctor       start:0x021fc9c8 end:0x021fc9c8 kind:rodata align:4
     .data       start:0x021fc9e0 end:0x021fcb40 kind:data align:32
     .bss        start:0x021fcb40 end:0x021fcb40 kind:bss align:32
+
+src/overlays/ov005/overlay005_noop.c:
+    categories: Game code
+    .text       start:0x021fb6e0 end:0x021fb6e4
+
+asm/overlays/ov005/overlay005_render_effect_construct_021fb6e4.s:
+    categories: Graphics
+    .text       start:0x021fb6e4 end:0x021fb75c
+
+asm/overlays/ov005/overlay005_render_effect_update_021fb75c.s:
+    categories: Graphics
+    .text       start:0x021fb75c end:0x021fb82c
+
+src/overlays/ov005/overlay005_counter_state_init.c:
+    categories: Game code
+    .text       start:0x021fb82c end:0x021fb84c
+
+src/overlays/ov005/overlay005_counter_state_destroy.c:
+    categories: Game code
+    .text       start:0x021fb84c end:0x021fb86c
+
+asm/overlays/ov005/overlay005_scene_population_construct_021fb86c.s:
+    categories: Graphics
+    .text       start:0x021fb86c end:0x021fbb78
+
+src/overlays/ov005/overlay005_scene_population_destroy.c:
+    categories: Graphics
+    .text       start:0x021fbb78 end:0x021fbbe8
+
+asm/overlays/ov005/overlay005_scene_population_update_021fbbe8.s:
+    categories: Graphics
+    .text       start:0x021fbbe8 end:0x021fbd64
+
+src/overlays/ov005/overlay005_context_pair_set.c:
+    categories: Game code
+    .text       start:0x021fbd64 end:0x021fbd74
+
+asm/overlays/ov005/overlay005_scene_selection_set_021fbd74.s:
+    categories: Graphics
+    .text       start:0x021fbd74 end:0x021fbdf8
+
+src/overlays/ov005/overlay005_draw_pair_apply.c:
+    categories: Graphics
+    .text       start:0x021fbdf8 end:0x021fbe1c
+
+src/overlays/ov005/overlay005_draw_group_flag_set.c:
+    categories: Graphics
+    .text       start:0x021fbe1c end:0x021fbe44
+
+asm/overlays/ov005/overlay005_transition_state_init_021fbe44.s:
+    categories: Game code
+    .text       start:0x021fbe44 end:0x021fbe6c
+
+asm/overlays/ov005/overlay005_presentation_construct_021fbe6c.s:
+    categories: Game code
+    .text       start:0x021fbe6c end:0x021fc110
+
+asm/overlays/ov005/overlay005_presentation_destroy_021fc110.s:
+    categories: Game code
+    .text       start:0x021fc110 end:0x021fc1c0
+
+asm/overlays/ov005/overlay005_presentation_delete_021fc1c0.s:
+    categories: Game code
+    .text       start:0x021fc1c0 end:0x021fc278
+
+asm/overlays/ov005/overlay005_graphics_setup_021fc278.s:
+    categories: Graphics
+    .text       start:0x021fc278 end:0x021fc5e4
+
+src/overlays/ov005/overlay005_presentation_update.c:
+    categories: Game code
+    .text       start:0x021fc5e4 end:0x021fc610
+
+asm/overlays/ov005/overlay005_transition_prime_021fc610.s:
+    categories: Game code
+    .text       start:0x021fc610 end:0x021fc638
+
+asm/overlays/ov005/overlay005_entry_transition_update_021fc638.s:
+    categories: Game code
+    .text       start:0x021fc638 end:0x021fc794
+
+src/overlays/ov005/overlay005_display_mode_apply.c:
+    categories: Graphics
+    .text       start:0x021fc794 end:0x021fc7d8
+
+asm/overlays/ov005/overlay005_scanline_scroll_update_021fc7d8.s:
+    categories: Graphics
+    .text       start:0x021fc7d8 end:0x021fc864
+
+src/overlays/ov005/overlay005_render_noop.c:
+    categories: Game code
+    .text       start:0x021fc864 end:0x021fc868
+
+src/overlays/ov005/overlay005_render_effect_delete.c:
+    categories: Game code
+    .text       start:0x021fc868 end:0x021fc890
+
+src/overlays/ov005/overlay005_render_effect_destroy.c:
+    categories: Game code
+    .text       start:0x021fc890 end:0x021fc8b0
+
+src/overlays/ov005/overlay005_counter_state_delete.c:
+    categories: Game code
+    .text       start:0x021fc8b0 end:0x021fc8d8

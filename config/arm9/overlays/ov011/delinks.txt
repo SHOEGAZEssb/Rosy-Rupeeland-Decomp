@@ -3,3 +3,39 @@
     .ctor       start:0x021fe380 end:0x021fe380 kind:rodata align:4
     .data       start:0x021fe3a0 end:0x021fe700 kind:data align:32
     .bss        start:0x021fe700 end:0x021fe700 kind:bss align:32
+src/overlays/ov011/overlay011_display_select.c:
+    categories: Graphics
+    .text start:0x021fce00 end:0x021fce1c
+asm/overlays/ov011/overlay011_sub_bg0_control_021fce1c.s:
+    categories: Graphics
+    .text start:0x021fce1c end:0x021fce50
+asm/overlays/ov011/overlay011_scene_fields_initialize_021fce50.s:
+    categories: Game code
+    .text start:0x021fce50 end:0x021fce78
+asm/overlays/ov011/overlay011_scene_construct_021fce78.s:
+    categories: Debug
+    .text start:0x021fce78 end:0x021fd08c
+asm/overlays/ov011/overlay011_scene_destroy_021fd08c.s:
+    categories: Game code
+    .text start:0x021fd08c end:0x021fd0fc
+asm/overlays/ov011/overlay011_scene_delete_021fd0fc.s:
+    categories: Game code
+    .text start:0x021fd0fc end:0x021fd174
+src/overlays/ov011/overlay011_scene_activate.c:
+    categories: Game code
+    .text start:0x021fd174 end:0x021fd188
+asm/overlays/ov011/overlay011_resource_setup_021fd188.s:
+    categories: Graphics
+    .text start:0x021fd188 end:0x021fd374
+asm/overlays/ov011/overlay011_sub_bg1_control_021fd374.s:
+    categories: Graphics
+    .text start:0x021fd374 end:0x021fd3a8
+src/overlays/ov011/overlay011_fixed_resources_apply.c:
+    categories: Graphics
+    .text start:0x021fd3a8 end:0x021fd410
+asm/overlays/ov011/overlay011_scene_member_reset_021fd410.s:
+    categories: Game code
+    .text start:0x021fd410 end:0x021fd450
+asm/overlays/ov011/overlay011_debug_controller_021fd450.s:
+    categories: Debug
+    .text start:0x021fd450 end:0x021fdae0

@@ -3,3 +3,27 @@
     .ctor       start:0x021fc2b4 end:0x021fc2b4 kind:rodata align:4
     .data       start:0x021fc2c0 end:0x021fc300 kind:data align:32
     .bss        start:0x021fc300 end:0x021fc300 kind:bss align:32
+
+src/overlays/ov008/overlay008_base_construct.c:
+    categories: Game code
+    .text       start:0x021fb6e0 end:0x021fb720
+
+asm/overlays/ov008/overlay008_controller_construct_021fb720.s:
+    categories: Game code
+    .text       start:0x021fb720 end:0x021fb814
+
+asm/overlays/ov008/overlay008_object_initialize_021fb814.s:
+    categories: Game code
+    .text       start:0x021fb814 end:0x021fb868
+
+asm/overlays/ov008/overlay008_particles_spawn_021fb868.s:
+    categories: Game code
+    .text       start:0x021fb868 end:0x021fbd1c
+
+asm/overlays/ov008/overlay008_particles_update_021fbd1c.s:
+    categories: Game code
+    .text       start:0x021fbd1c end:0x021fbe0c
+
+asm/overlays/ov008/overlay008_particles_render_021fbe0c.s:
+    categories: Graphics
+    .text       start:0x021fbe0c end:0x021fc258

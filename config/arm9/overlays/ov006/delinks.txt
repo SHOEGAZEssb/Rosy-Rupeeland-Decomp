@@ -2,3 +2,39 @@
     .ctor       start:0x021fbc24 end:0x021fbc24 kind:rodata align:4
     .data       start:0x021fbc40 end:0x021fbcc0 kind:data align:32
     .bss        start:0x021fbcc0 end:0x021fbcc0 kind:bss align:32
+
+asm/overlays/ov006/overlay006_transition_state_init_021fb6e0.s:
+    categories: Game code
+    .text       start:0x021fb6e0 end:0x021fb708
+
+asm/overlays/ov006/overlay006_presentation_construct_021fb708.s:
+    categories: Game code
+    .text       start:0x021fb708 end:0x021fb848
+
+src/overlays/ov006/overlay006_presentation_destroy.c:
+    categories: Game code
+    .text       start:0x021fb848 end:0x021fb8c8
+
+src/overlays/ov006/overlay006_presentation_delete.c:
+    categories: Game code
+    .text       start:0x021fb8c8 end:0x021fb950
+
+asm/overlays/ov006/overlay006_auxiliary_toggle_update_021fb950.s:
+    categories: Game code
+    .text       start:0x021fb950 end:0x021fb9b4
+
+asm/overlays/ov006/overlay006_geometry_interpolate_021fb9b4.s:
+    categories: Graphics
+    .text       start:0x021fb9b4 end:0x021fba8c
+
+asm/overlays/ov006/overlay006_transition_prepare_021fba8c.s:
+    categories: Game code
+    .text       start:0x021fba8c end:0x021fbafc
+
+asm/overlays/ov006/overlay006_selection_interaction_update_021fbafc.s:
+    categories: Game code
+    .text       start:0x021fbafc end:0x021fbc00
+
+src/overlays/ov006/overlay006_display_helper_apply.c:
+    categories: Graphics
+    .text       start:0x021fbc00 end:0x021fbc24

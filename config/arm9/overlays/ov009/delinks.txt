@@ -3,3 +3,79 @@
     .ctor       start:0x021feb40 end:0x021feb40 kind:rodata align:4
     .data       start:0x021feb60 end:0x021fefe0 kind:data align:32
     .bss        start:0x021fefe0 end:0x021fefe0 kind:bss align:32
+
+src/overlays/ov009/overlay009_display_select.c:
+    categories: Graphics
+    .text       start:0x021fce00 end:0x021fce1c
+
+src/overlays/ov009/overlay009_bg2_control.c:
+    categories: Graphics
+    .text       start:0x021fce1c end:0x021fce48
+
+src/overlays/ov009/overlay009_bg3_control.c:
+    categories: Graphics
+    .text       start:0x021fce48 end:0x021fce74
+
+asm/overlays/ov009/overlay009_scene_fields_initialize_021fce74.s:
+    categories: Game code
+    .text       start:0x021fce74 end:0x021fce9c
+
+asm/overlays/ov009/overlay009_scene_construct_021fce9c.s:
+    categories: Game code
+    .text       start:0x021fce9c end:0x021fd198
+
+asm/overlays/ov009/overlay009_scene_destroy_021fd198.s:
+    categories: Game code
+    .text       start:0x021fd198 end:0x021fd208
+
+asm/overlays/ov009/overlay009_scene_delete_021fd208.s:
+    categories: Game code
+    .text       start:0x021fd208 end:0x021fd280
+
+src/overlays/ov009/overlay009_scene_activate.c:
+    categories: Game code
+    .text       start:0x021fd280 end:0x021fd294
+
+asm/overlays/ov009/overlay009_scene_state_reset_021fd294.s:
+    categories: Game code
+    .text       start:0x021fd294 end:0x021fd338
+
+src/overlays/ov009/overlay009_active_object_release.c:
+    categories: Game code
+    .text       start:0x021fd338 end:0x021fd360
+
+asm/overlays/ov009/overlay009_active_object_create_021fd360.s:
+    categories: Game code
+    .text       start:0x021fd360 end:0x021fd414
+
+src/overlays/ov009/overlay009_input_clamp.c:
+    categories: Game code
+    .text       start:0x021fd414 end:0x021fd458
+
+src/overlays/ov009/overlay009_input_wrap.c:
+    categories: Game code
+    .text       start:0x021fd458 end:0x021fd49c
+
+asm/overlays/ov009/overlay009_scene_member_idle_021fd49c.s:
+    categories: Game code
+    .text       start:0x021fd49c end:0x021fd4e8
+
+asm/overlays/ov009/overlay009_debug_viewer_update_021fd4e8.s:
+    categories: Debug
+    .text       start:0x021fd4e8 end:0x021fea2c
+
+src/overlays/ov009/overlay009_optional_dispatch.c:
+    categories: Game code
+    .text       start:0x021fea2c end:0x021fea4c
+
+asm/overlays/ov009/overlay009_scroll_apply_021fea4c.s:
+    categories: Graphics
+    .text       start:0x021fea4c end:0x021feab0
+
+asm/overlays/ov009/overlay009_embedded_delete_thunk_021feab0.s:
+    categories: Game code
+    .text       start:0x021feab0 end:0x021feac0
+
+asm/overlays/ov009/overlay009_embedded_destroy_thunk_021feac0.s:
+    categories: Game code
+    .text       start:0x021feac0 end:0x021fead0

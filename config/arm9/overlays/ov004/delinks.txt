@@ -26,3 +26,59 @@ asm/overlays/ov004/overlay004_presentation_delete_021fb8e4.s:
 asm/overlays/ov004/overlay004_background_hardware_setup_021fb968.s:
     categories: Graphics
     .text       start:0x021fb968 end:0x021fba28
+
+asm/overlays/ov004/overlay004_variant_resources_load_021fba28.s:
+    categories: Graphics
+    .text       start:0x021fba28 end:0x021fbf10
+
+asm/overlays/ov004/overlay004_context_update_021fbf10.s:
+    categories: Graphics
+    .text       start:0x021fbf10 end:0x021fbf40
+
+asm/overlays/ov004/overlay004_sprite_controller_construct_021fbf40.s:
+    categories: Graphics
+    .text       start:0x021fbf40 end:0x021fc24c
+
+asm/overlays/ov004/overlay004_affine_background_apply_021fc24c.s:
+    categories: Graphics
+    .text       start:0x021fc24c end:0x021fc3ac
+
+asm/overlays/ov004/overlay004_entry_phase_update_021fc3ac.s:
+    categories: Game code
+    .text       start:0x021fc3ac end:0x021fc57c
+
+asm/overlays/ov004/overlay004_main_phase_update_021fc57c.s:
+    categories: Game code
+    .text       start:0x021fc57c end:0x021fc8ec
+
+src/overlays/ov004/overlay004_context_finish.c:
+    categories: Game code
+    .text       start:0x021fc8ec end:0x021fc8fc
+
+src/overlays/ov004/overlay004_display_mode_apply.c:
+    categories: Graphics
+    .text       start:0x021fc8fc end:0x021fc944
+
+asm/overlays/ov004/overlay004_variant_controller_construct_021fc944.s:
+    categories: Game code
+    .text       start:0x021fc944 end:0x021fca00
+
+src/overlays/ov004/overlay004_variant_controller_destroy.c:
+    categories: Game code
+    .text       start:0x021fca00 end:0x021fca40
+
+src/overlays/ov004/overlay004_variant_controller_delete.c:
+    categories: Game code
+    .text       start:0x021fca40 end:0x021fca88
+
+src/overlays/ov004/overlay004_variant_controller_update.c:
+    categories: Game code
+    .text       start:0x021fca88 end:0x021fcab8
+
+asm/overlays/ov004/overlay004_variant_transition_update_021fcab8.s:
+    categories: Game code
+    .text       start:0x021fcab8 end:0x021fccf8
+
+src/overlays/ov004/overlay004_transition_complete.c:
+    categories: Game code
+    .text       start:0x021fccf8 end:0x021fcd00
