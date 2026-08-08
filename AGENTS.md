@@ -19,6 +19,17 @@
 - Documentation changes must not alter the matching code or data layout. Run
   the relevant match target after editing decompiled C.
 
+## ROM correctness guardrail
+
+- When adding or splitting reconstructed objects, update
+  `config/arm9/link_replacements.txt` and the corresponding replacement-object
+  dependencies in `build.ninja` together. Never rely on objects left by an
+  earlier build.
+- Export every assembly symbol referenced from another object with `.global`;
+  exact per-object matches do not prove that the final module can link.
+- Before finishing a decompilation batch, run `ninja rom` from the current
+  sources and require its module checks and expected retail SHA-256 to pass.
+
 ## Repository documentation
 
 - Do not treat repository documentation as a decompilation diary. Do not add a

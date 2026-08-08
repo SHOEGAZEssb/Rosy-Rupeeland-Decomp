@@ -3,3 +3,198 @@
     .ctor       start:0x022038c4 end:0x022038c4 kind:rodata align:4
     .data       start:0x022038e0 end:0x02203da0 kind:data align:32
     .bss        start:0x02203da0 end:0x02203da0 kind:bss align:32
+asm/overlays/ov035/overlay035_input_controller.s:
+    categories: Game code
+    .text start:0x021fce00 end:0x021fcec4
+asm/overlays/ov035/overlay035_render_object_init.s:
+    categories: Game code
+    .text start:0x021fcec4 end:0x021fcfa0
+asm/overlays/ov035/overlay035_render_draw.s:
+    categories: Game code
+    .text start:0x021fcfa0 end:0x021fd128
+asm/overlays/ov035/overlay035_gx_attributes.s:
+    categories: Game code
+    .text start:0x021fd128 end:0x021fd19c
+asm/overlays/ov035/overlay035_render_command.s:
+    categories: Game code
+    .text start:0x021fd19c end:0x021fd218
+asm/overlays/ov035/overlay035_render_pending.s:
+    categories: Game code
+    .text start:0x021fd218 end:0x021fd25c
+asm/overlays/ov035/overlay035_render_timer_gx.s:
+    categories: Game code
+    .text start:0x021fd25c end:0x021fd2bc
+asm/overlays/ov035/overlay035_primitive_init.s:
+    categories: Game code
+    .text start:0x021fd2bc end:0x021fd30c
+asm/overlays/ov035/overlay035_primitive_draw.s:
+    categories: Game code
+    .text start:0x021fd30c end:0x021fd460
+asm/overlays/ov035/overlay035_node_init.s:
+    categories: Game code
+    .text start:0x021fd460 end:0x021fd4b4
+asm/overlays/ov035/overlay035_list_base.s:
+    categories: Game code
+    .text start:0x021fd4b4 end:0x021fd5ac
+asm/overlays/ov035/overlay035_list_retire.s:
+    categories: Game code
+    .text start:0x021fd5ac end:0x021fd60c
+asm/overlays/ov035/overlay035_list_render.s:
+    categories: Game code
+    .text start:0x021fd60c end:0x021fd7b0
+asm/overlays/ov035/overlay035_texture_attributes.s:
+    categories: Game code
+    .text start:0x021fd7b0 end:0x021fd7f0
+asm/overlays/ov035/overlay035_particle_init.s:
+    categories: Game code
+    .text start:0x021fd7f0 end:0x021fd9dc
+asm/overlays/ov035/overlay035_particle_update.s:
+    categories: Game code
+    .text start:0x021fd9dc end:0x021fda24
+asm/overlays/ov035/overlay035_particle_draw.s:
+    categories: Game code
+    .text start:0x021fda24 end:0x021fdb54
+asm/overlays/ov035/overlay035_animated_init.s:
+    categories: Game code
+    .text start:0x021fdb54 end:0x021fdbe0
+asm/overlays/ov035/overlay035_animated_update.s:
+    categories: Game code
+    .text start:0x021fdbe0 end:0x021fdce8
+asm/overlays/ov035/overlay035_sprite_record.s:
+    categories: Game code
+    .text start:0x021fdce8 end:0x021fdd88
+asm/overlays/ov035/overlay035_scene_constructor.s:
+    categories: Game code
+    .text start:0x021fdd88 end:0x021fe13c
+asm/overlays/ov035/overlay035_scene_destructors.s:
+    categories: Game code
+    .text start:0x021fe13c end:0x021fe20c
+asm/overlays/ov035/overlay035_spawn_animated.s:
+    categories: Game code
+    .text start:0x021fe20c end:0x021fe2f8
+asm/overlays/ov035/overlay035_main_state.s:
+    categories: Game code
+    .text start:0x021fe2f8 end:0x021fe5cc
+asm/overlays/ov035/overlay035_transition_sync.s:
+    categories: Game code
+    .text start:0x021fe5cc end:0x021fe5ec
+asm/overlays/ov035/overlay035_transition_init.s:
+    categories: Game code
+    .text start:0x021fe5ec end:0x021fe65c
+asm/overlays/ov035/overlay035_transition_destructors.s:
+    categories: Game code
+    .text start:0x021fe65c end:0x021fe6e4
+asm/overlays/ov035/overlay035_transition_render.s:
+    categories: Game code
+    .text start:0x021fe6e4 end:0x021fe88c
+asm/overlays/ov035/overlay035_transition_gx_helpers.s:
+    categories: Game code
+    .text start:0x021fe88c end:0x021fe8e4
+asm/overlays/ov035/overlay035_transition_variant_init.s:
+    categories: Game code
+    .text start:0x021fe8e4 end:0x021fe954
+asm/overlays/ov035/overlay035_transition_variant_destructors.s:
+    categories: Game code
+    .text start:0x021fe954 end:0x021fe9dc
+asm/overlays/ov035/overlay035_transition_variant_render.s:
+    categories: Game code
+    .text start:0x021fe9dc end:0x021feb7c
+asm/overlays/ov035/overlay035_secondary_scene_constructor.s:
+    categories: Game code
+    .text start:0x021feb7c end:0x021ff01c
+asm/overlays/ov035/overlay035_secondary_scene_destructors.s:
+    categories: Game code
+    .text start:0x021ff01c end:0x021ff164
+asm/overlays/ov035/overlay035_secondary_scene_update.s:
+    categories: Game code
+    .text start:0x021ff164 end:0x021ff190
+asm/overlays/ov035/overlay035_secondary_main_state.s:
+    categories: Game code
+    .text start:0x021ff190 end:0x021ff3bc
+asm/overlays/ov035/overlay035_secondary_render.s:
+    categories: Game code
+    .text start:0x021ff3bc end:0x021ff478
+asm/overlays/ov035/overlay035_tertiary_scene_constructor.s:
+    categories: Game code
+    .text start:0x021ff478 end:0x021ffa44
+asm/overlays/ov035/overlay035_tertiary_scene_destructors.s:
+    categories: Game code
+    .text start:0x021ffa44 end:0x021ffb74
+asm/overlays/ov035/overlay035_spawn_kind3.s:
+    categories: Game code
+    .text start:0x021ffb74 end:0x021ffc60
+asm/overlays/ov035/overlay035_tertiary_main_state.s:
+    categories: Game code
+    .text start:0x021ffc60 end:0x021ffe44
+asm/overlays/ov035/overlay035_tertiary_render.s:
+    categories: Game code
+    .text start:0x021ffe44 end:0x021ffec4
+asm/overlays/ov035/overlay035_four_records.s:
+    categories: Game code
+    .text start:0x021ffec4 end:0x021fff38
+asm/overlays/ov035/overlay035_quaternary_scene_constructor.s:
+    categories: Game code
+    .text start:0x021fff38 end:0x0220043c
+asm/overlays/ov035/overlay035_quaternary_scene_lifecycle.s:
+    categories: Game code
+    .text start:0x0220043c end:0x022005b0
+asm/overlays/ov035/overlay035_quaternary_main_state.s:
+    categories: Game code
+    .text start:0x022005b0 end:0x022007ec
+asm/overlays/ov035/overlay035_quaternary_render.s:
+    categories: Game code
+    .text start:0x022007ec end:0x022008d0
+asm/overlays/ov035/overlay035_quinary_scene_constructor.s:
+    categories: Game code
+    .text start:0x022008d0 end:0x02200d40
+asm/overlays/ov035/overlay035_quinary_scene_lifecycle.s:
+    categories: Game code
+    .text start:0x02200d40 end:0x02200ec0
+asm/overlays/ov035/overlay035_radial_particle_spawn.s:
+    categories: Game code
+    .text start:0x02200ec0 end:0x02201000
+asm/overlays/ov035/overlay035_quinary_scene_update.s:
+    categories: Game code
+    .text start:0x02201000 end:0x022011a8
+asm/overlays/ov035/overlay035_quinary_effect_helpers.s:
+    categories: Game code
+    .text start:0x022011a8 end:0x02201360
+asm/overlays/ov035/overlay035_quinary_main_state.s:
+    categories: Game code
+    .text start:0x02201360 end:0x022014d0
+asm/overlays/ov035/overlay035_quinary_render.s:
+    categories: Game code
+    .text start:0x022014d0 end:0x02201584
+asm/overlays/ov035/overlay035_burst_model.s:
+    categories: Game code
+    .text start:0x02201584 end:0x022016e8
+asm/overlays/ov035/overlay035_senary_scene_constructor.s:
+    categories: Game code
+    .text start:0x022016e8 end:0x02201bd8
+asm/overlays/ov035/overlay035_senary_scene_lifecycle.s:
+    categories: Game code
+    .text start:0x02201bd8 end:0x02201d10
+asm/overlays/ov035/overlay035_burst_model_spawn.s:
+    categories: Game code
+    .text start:0x02201d10 end:0x02201df8
+asm/overlays/ov035/overlay035_senary_spawn_updates.s:
+    categories: Game code
+    .text start:0x02201df8 end:0x02202148
+asm/overlays/ov035/overlay035_senary_main_state.s:
+    categories: Game code
+    .text start:0x02202148 end:0x022022e4
+asm/overlays/ov035/overlay035_senary_render_helpers.s:
+    categories: Game code
+    .text start:0x022022e4 end:0x02202378
+asm/overlays/ov035/overlay035_presentation_constructor.s:
+    categories: Game code
+    .text start:0x02202378 end:0x022026ac
+asm/overlays/ov035/overlay035_presentation_lifecycle.s:
+    categories: Game code
+    .text start:0x022026ac end:0x022028b4
+asm/overlays/ov035/overlay035_presentation_render.s:
+    categories: Game code
+    .text start:0x022028b4 end:0x02202948
+asm/overlays/ov035/overlay035_callback_vtable_tail.s:
+    categories: Game code
+    .text start:0x02202948 end:0x02202b98

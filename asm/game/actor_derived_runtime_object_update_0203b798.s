@@ -11,6 +11,7 @@
 .extern func_02031748
 .extern func_02032394
 .extern func_02034164
+    .global func_0203b798
 func_0203b798: ; 0x0203b798
     stmdb sp!, {r4, lr}
     sub sp, sp, #0x20

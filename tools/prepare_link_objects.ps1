@@ -19,6 +19,15 @@ $InputFullPath = [IO.Path]::GetFullPath((Join-Path $RepoRoot $InputPath))
 $ReplacementsFullPath = [IO.Path]::GetFullPath((Join-Path $RepoRoot $ReplacementsPath))
 $OutputFullPath = [IO.Path]::GetFullPath((Join-Path $RepoRoot $OutputPath))
 $Objects = [Collections.Generic.List[string]](Get-Content -LiteralPath $InputFullPath)
+$ObjectIndices = @{}
+for ($Index = 0; $Index -lt $Objects.Count; $Index++) {
+    $NormalizedObject = Normalize-LinkPath $Objects[$Index]
+    if (-not $ObjectIndices.ContainsKey($NormalizedObject)) {
+        $ObjectIndices[$NormalizedObject] = [Collections.Generic.List[int]]::new()
+    }
+    $ObjectIndices[$NormalizedObject].Add($Index)
+}
+$ReplacementCount = 0
 
 foreach ($Line in Get-Content -LiteralPath $ReplacementsFullPath) {
     $Trimmed = $Line.Trim()
@@ -38,19 +47,17 @@ foreach ($Line in Get-Content -LiteralPath $ReplacementsFullPath) {
         throw "Replacement object was not found: $ReplacementFullPath"
     }
 
-    $Matches = @()
-    for ($Index = 0; $Index -lt $Objects.Count; $Index++) {
-        if ((Normalize-LinkPath $Objects[$Index]) -eq $Target) {
-            $Matches += $Index
-        }
-    }
+    $Matches = if ($ObjectIndices.ContainsKey($Target)) { $ObjectIndices[$Target] } else { @() }
     if ($Matches.Count -ne 1) {
         throw "Expected exactly one '$($Parts[0].Trim())' entry, found $($Matches.Count)"
     }
 
     $Objects[$Matches[0]] = $Replacement
-    Write-Host "Link replacement: $($Parts[0].Trim()) -> $($Parts[1].Trim())"
+    $ObjectIndices.Remove($Target)
+    $ReplacementCount++
 }
+
+Write-Host "Applied $ReplacementCount link replacements."
 
 $OutputDirectory = Split-Path -Parent $OutputFullPath
 $null = New-Item -ItemType Directory -Force -Path $OutputDirectory

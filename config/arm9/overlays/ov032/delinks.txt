@@ -2,3 +2,198 @@
     .ctor       start:0x02202218 end:0x02202218 kind:rodata align:4
     .data       start:0x02202220 end:0x02202360 kind:data align:32
     .bss        start:0x02202360 end:0x02202360 kind:bss align:32
+asm/overlays/ov032/overlay032_base_helpers.s:
+    categories: Game code
+    .text start:0x021fce00 end:0x021fce20
+asm/overlays/ov032/overlay032_constructor.s:
+    categories: Game code
+    .text start:0x021fce20 end:0x021fd7a4
+asm/overlays/ov032/overlay032_embedded_helpers.s:
+    categories: Game code
+    .text start:0x021fd7a4 end:0x021fd7f8
+asm/overlays/ov032/overlay032_teardown.s:
+    categories: Game code
+    .text start:0x021fd7f8 end:0x021fd920
+asm/overlays/ov032/overlay032_scroll_callback.s:
+    categories: Game code
+    .text start:0x021fd920 end:0x021fd938
+asm/overlays/ov032/overlay032_scroll_mmio.s:
+    categories: Game code
+    .text start:0x021fd938 end:0x021fd994
+asm/overlays/ov032/overlay032_graphics_setup.s:
+    categories: Game code
+    .text start:0x021fd994 end:0x021fde1c
+asm/overlays/ov032/overlay032_power_control.s:
+    categories: Game code
+    .text start:0x021fde1c end:0x021fde38
+asm/overlays/ov032/overlay032_display_shutdown.s:
+    categories: Game code
+    .text start:0x021fde38 end:0x021fdf30
+asm/overlays/ov032/overlay032_frame_dispatch.s:
+    categories: Game code
+    .text start:0x021fdf30 end:0x021fe024
+asm/overlays/ov032/overlay032_prompt_blink.s:
+    categories: Game code
+    .text start:0x021fe024 end:0x021fe0c4
+asm/overlays/ov032/overlay032_sprite_disable.s:
+    categories: Game code
+    .text start:0x021fe0c4 end:0x021fe0e8
+asm/overlays/ov032/overlay032_sprite_enable.s:
+    categories: Game code
+    .text start:0x021fe0e8 end:0x021fe10c
+asm/overlays/ov032/overlay032_dialog_close.s:
+    categories: Game code
+    .text start:0x021fe10c end:0x021fe134
+asm/overlays/ov032/overlay032_dialog_input.s:
+    categories: Game code
+    .text start:0x021fe134 end:0x021fe23c
+asm/overlays/ov032/overlay032_fade_toggle.s:
+    categories: Game code
+    .text start:0x021fe23c end:0x021fe2bc
+asm/overlays/ov032/overlay032_message_select.s:
+    categories: Game code
+    .text start:0x021fe2bc end:0x021fe2f0
+asm/overlays/ov032/overlay032_value_format.s:
+    categories: Game code
+    .text start:0x021fe2f0 end:0x021fe440
+asm/overlays/ov032/overlay032_indexed_message.s:
+    categories: Game code
+    .text start:0x021fe440 end:0x021fe4a8
+asm/overlays/ov032/overlay032_background_common.s:
+    categories: Game code
+    .text start:0x021fe4a8 end:0x021fe55c
+asm/overlays/ov032/overlay032_background_selected.s:
+    categories: Game code
+    .text start:0x021fe55c end:0x021fe6b0
+asm/overlays/ov032/overlay032_dialog_create.s:
+    categories: Game code
+    .text start:0x021fe6b0 end:0x021fe7d0
+asm/overlays/ov032/overlay032_dialog_destroy.s:
+    categories: Game code
+    .text start:0x021fe7d0 end:0x021fe848
+asm/overlays/ov032/overlay032_children_configure.s:
+    categories: Game code
+    .text start:0x021fe848 end:0x021fe8a0
+asm/overlays/ov032/overlay032_children_reset.s:
+    categories: Game code
+    .text start:0x021fe8a0 end:0x021fe8d8
+asm/overlays/ov032/overlay032_children_apply.s:
+    categories: Game code
+    .text start:0x021fe8d8 end:0x021fe92c
+asm/overlays/ov032/overlay032_motion_update.s:
+    categories: Game code
+    .text start:0x021fe92c end:0x021fe9e8
+asm/overlays/ov032/overlay032_selection_begin.s:
+    categories: Game code
+    .text start:0x021fe9e8 end:0x021fead4
+asm/overlays/ov032/overlay032_selection_update.s:
+    categories: Game code
+    .text start:0x021fead4 end:0x021febec
+asm/overlays/ov032/overlay032_scene_enter.s:
+    categories: Game code
+    .text start:0x021febec end:0x021fed8c
+asm/overlays/ov032/overlay032_scene_exit.s:
+    categories: Game code
+    .text start:0x021fed8c end:0x021feea0
+asm/overlays/ov032/overlay032_interaction_menu.s:
+    categories: Game code
+    .text start:0x021feea0 end:0x021ff288
+asm/overlays/ov032/overlay032_hit_test.s:
+    categories: Game code
+    .text start:0x021ff288 end:0x021ff308
+asm/overlays/ov032/overlay032_detail_state.s:
+    categories: Game code
+    .text start:0x021ff308 end:0x021ff6e0
+asm/overlays/ov032/overlay032_progression_state.s:
+    categories: Game code
+    .text start:0x021ff6e0 end:0x02200180
+asm/overlays/ov032/overlay032_arrow_off.s:
+    categories: Game code
+    .text start:0x02200180 end:0x022001a0
+asm/overlays/ov032/overlay032_arrow_on.s:
+    categories: Game code
+    .text start:0x022001a0 end:0x022001c0
+asm/overlays/ov032/overlay032_effect_init.s:
+    categories: Game code
+    .text start:0x022001c0 end:0x02200284
+asm/overlays/ov032/overlay032_effect_update.s:
+    categories: Game code
+    .text start:0x02200284 end:0x022003e4
+asm/overlays/ov032/overlay032_effect_reset.s:
+    categories: Game code
+    .text start:0x022003e4 end:0x0220040c
+asm/overlays/ov032/overlay032_flag_dialog_state.s:
+    categories: Game code
+    .text start:0x0220040c end:0x02200618
+asm/overlays/ov032/overlay032_runtime_choice_state.s:
+    categories: Game code
+    .text start:0x02200618 end:0x02200da4
+asm/overlays/ov032/overlay032_terminal_halt.s:
+    categories: Game code
+    .text start:0x02200da4 end:0x02200f88
+asm/overlays/ov032/overlay032_child_init.s:
+    categories: Game code
+    .text start:0x02200f88 end:0x02201020
+asm/overlays/ov032/overlay032_child_setup.s:
+    categories: Game code
+    .text start:0x02201020 end:0x02201188
+asm/overlays/ov032/overlay032_child_motion_plan.s:
+    categories: Game code
+    .text start:0x02201188 end:0x02201390
+asm/overlays/ov032/overlay032_child_motion_update.s:
+    categories: Game code
+    .text start:0x02201390 end:0x0220142c
+asm/overlays/ov032/overlay032_controller_init.s:
+    categories: Game code
+    .text start:0x0220142c end:0x02201450
+asm/overlays/ov032/overlay032_controller_attach.s:
+    categories: Game code
+    .text start:0x02201450 end:0x0220147c
+asm/overlays/ov032/overlay032_controller_detach.s:
+    categories: Game code
+    .text start:0x0220147c end:0x022014c0
+asm/overlays/ov032/overlay032_controller_configure.s:
+    categories: Game code
+    .text start:0x022014c0 end:0x0220150c
+asm/overlays/ov032/overlay032_scale_begin.s:
+    categories: Game code
+    .text start:0x0220150c end:0x02201670
+asm/overlays/ov032/overlay032_scale_update.s:
+    categories: Game code
+    .text start:0x02201670 end:0x0220173c
+asm/overlays/ov032/overlay032_widget_init.s:
+    categories: Game code
+    .text start:0x0220173c end:0x022018ac
+asm/overlays/ov032/overlay032_widget_destroy.s:
+    categories: Game code
+    .text start:0x022018ac end:0x02201914
+asm/overlays/ov032/overlay032_widget_heap_destroy.s:
+    categories: Game code
+    .text start:0x02201914 end:0x02201930
+asm/overlays/ov032/overlay032_widget_sync_position.s:
+    categories: Game code
+    .text start:0x02201930 end:0x02201960
+asm/overlays/ov032/overlay032_widget_state.s:
+    categories: Game code
+    .text start:0x02201960 end:0x02201de4
+asm/overlays/ov032/overlay032_widget_hit_row.s:
+    categories: Game code
+    .text start:0x02201de4 end:0x02201e58
+asm/overlays/ov032/overlay032_widget_midpoint.s:
+    categories: Game code
+    .text start:0x02201e58 end:0x02201ea4
+asm/overlays/ov032/overlay032_widget_render_rows.s:
+    categories: Game code
+    .text start:0x02201ea4 end:0x02201f58
+asm/overlays/ov032/overlay032_list_base_init.s:
+    categories: Game code
+    .text start:0x02201f58 end:0x02201f80
+asm/overlays/ov032/overlay032_list_constructor.s:
+    categories: Game code
+    .text start:0x02201f80 end:0x022021f0
+asm/overlays/ov032/overlay032_list_destroy.s:
+    categories: Game code
+    .text start:0x022021f0 end:0x02202204
+asm/overlays/ov032/overlay032_list_free.s:
+    categories: Game code
+    .text start:0x02202204 end:0x02202218

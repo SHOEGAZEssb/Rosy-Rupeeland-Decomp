@@ -10,6 +10,7 @@
 .extern genrand_int32
 .text
 
+    .global func_0204e584
 func_0204e584: ; 0x0204e584
     stmdb sp!, {r3, r4, lr}
     sub sp, sp, #0x1c

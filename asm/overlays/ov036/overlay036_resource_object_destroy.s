@@ -1,0 +1,29 @@
+.text
+
+/* Exact fallback; see src/overlays/ov036/overlay036_resource_object.c for documented portable C. */
+
+    .extern func_02077d08
+    .extern Heap_Free
+    .extern func_ov036_021fcf30
+    .extern data_ov036_02205ff0
+
+    .global func_ov036_021fdfa0
+func_ov036_021fdfa0:
+    stmdb sp!, {r3, r4, r5, lr}
+    ldr r1, L_021fdfdc
+    mov r5, r0
+    str r1, [r5, #0x0]
+    ldr r4, [r5, #0x9c]
+    cmp r4, #0x0
+    beq L_021fdfcc
+    mov r0, r4
+    bl func_02077d08
+    mov r0, r4
+    bl Heap_Free
+L_021fdfcc:
+    mov r0, r5
+    bl func_ov036_021fcf30
+    mov r0, r5
+    ldmia sp!, {r3, r4, r5, pc}
+L_021fdfdc: .word data_ov036_02205ff0
+    .size func_ov036_021fdfa0, .-func_ov036_021fdfa0

@@ -3,3 +3,72 @@
     .ctor       start:0x021fe72c end:0x021fe72c kind:rodata align:4
     .data       start:0x021fe740 end:0x021ff1c0 kind:data align:32
     .bss        start:0x021ff1c0 end:0x021ff1c0 kind:bss align:32
+asm/overlays/ov034/overlay034_render_object.s:
+    categories: Game code
+    .text start:0x021fce00 end:0x021fce50
+asm/overlays/ov034/overlay034_gx_setup.s:
+    categories: Game code
+    .text start:0x021fce50 end:0x021fd030
+asm/overlays/ov034/overlay034_gx_strip.s:
+    categories: Game code
+    .text start:0x021fd030 end:0x021fd2b8
+asm/overlays/ov034/overlay034_gx_primitives.s:
+    categories: Game code
+    .text start:0x021fd2b8 end:0x021fd330
+asm/overlays/ov034/overlay034_sector_state.s:
+    categories: Game code
+    .text start:0x021fd330 end:0x021fd3a0
+asm/overlays/ov034/overlay034_sector_search.s:
+    categories: Game code
+    .text start:0x021fd3a0 end:0x021fd3f4
+asm/overlays/ov034/overlay034_sector_dispatch.s:
+    categories: Game code
+    .text start:0x021fd3f4 end:0x021fd494
+asm/overlays/ov034/overlay034_sector_update.s:
+    categories: Game code
+    .text start:0x021fd494 end:0x021fd544
+asm/overlays/ov034/overlay034_owner_constructor.s:
+    categories: Game code
+    .text start:0x021fd544 end:0x021fd634
+asm/overlays/ov034/overlay034_owner_destructors.s:
+    categories: Game code
+    .text start:0x021fd634 end:0x021fd6f4
+asm/overlays/ov034/overlay034_owner_render.s:
+    categories: Game code
+    .text start:0x021fd6f4 end:0x021fd90c
+asm/overlays/ov034/overlay034_gx_attributes.s:
+    categories: Game code
+    .text start:0x021fd90c end:0x021fd978
+asm/overlays/ov034/overlay034_owner_helpers.s:
+    categories: Game code
+    .text start:0x021fd978 end:0x021fda4c
+asm/overlays/ov034/overlay034_scene_helpers.s:
+    categories: Game code
+    .text start:0x021fda4c end:0x021fdae8
+asm/overlays/ov034/overlay034_scene_constructor.s:
+    categories: Game code
+    .text start:0x021fdae8 end:0x021fdda4
+asm/overlays/ov034/overlay034_scene_lifecycle.s:
+    categories: Game code
+    .text start:0x021fdda4 end:0x021fdfe0
+asm/overlays/ov034/overlay034_intro_state.s:
+    categories: Game code
+    .text start:0x021fdfe0 end:0x021fe2c4
+asm/overlays/ov034/overlay034_timer_complete.s:
+    categories: Game code
+    .text start:0x021fe2c4 end:0x021fe2dc
+asm/overlays/ov034/overlay034_selection_state.s:
+    categories: Game code
+    .text start:0x021fe2dc end:0x021fe668
+asm/overlays/ov034/overlay034_random_choice.s:
+    categories: Game code
+    .text start:0x021fe668 end:0x021fe6bc
+asm/overlays/ov034/overlay034_choice_map.s:
+    categories: Game code
+    .text start:0x021fe6bc end:0x021fe6ec
+asm/overlays/ov034/overlay034_vtable_hook.s:
+    categories: Game code
+    .text start:0x021fe6ec end:0x021fe6f0
+asm/overlays/ov034/overlay034_base_wrapper.s:
+    categories: Game code
+    .text start:0x021fe6f0 end:0x021fe704

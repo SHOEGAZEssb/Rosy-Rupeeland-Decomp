@@ -11,6 +11,7 @@
 .extern func_020a257c
 .text
 
+    .global func_0204e740
 func_0204e740: ; 0x0204e740
     stmdb sp!, {r4, lr}
     mov r4, r0

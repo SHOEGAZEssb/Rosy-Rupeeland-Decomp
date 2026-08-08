@@ -3,3 +3,45 @@
     .ctor       start:0x021febf0 end:0x021febf0 kind:rodata align:4
     .data       start:0x021fec00 end:0x021fed40 kind:data align:32
     .bss        start:0x021fed40 end:0x021fed40 kind:bss align:32
+asm/overlays/ov029/overlay029_base_helpers.s:
+    categories: Game code
+    .text start:0x021fce00 end:0x021fce74
+asm/overlays/ov029/overlay029_scene_constructor.s:
+    categories: Game code
+    .text start:0x021fce74 end:0x021fd174
+asm/overlays/ov029/overlay029_scene_teardown.s:
+    categories: Game code
+    .text start:0x021fd174 end:0x021fd3d4
+asm/overlays/ov029/overlay029_frame_callbacks.s:
+    categories: Game code
+    .text start:0x021fd3d4 end:0x021fd464
+asm/overlays/ov029/overlay029_graphics_setup.s:
+    categories: Game code
+    .text start:0x021fd464 end:0x021fd644
+asm/overlays/ov029/overlay029_runtime_helpers.s:
+    categories: Game code
+    .text start:0x021fd644 end:0x021fd850
+asm/overlays/ov029/overlay029_input_palette.s:
+    categories: Game code
+    .text start:0x021fd850 end:0x021fd9e0
+asm/overlays/ov029/overlay029_intro_state.s:
+    categories: Game code
+    .text start:0x021fd9e0 end:0x021fdc5c
+asm/overlays/ov029/overlay029_selection_state.s:
+    categories: Game code
+    .text start:0x021fdc5c end:0x021fe0cc
+asm/overlays/ov029/overlay029_resolution_state.s:
+    categories: Game code
+    .text start:0x021fe0cc end:0x021fe780
+asm/overlays/ov029/overlay029_animation_helpers.s:
+    categories: Game code
+    .text start:0x021fe780 end:0x021fe7b0
+asm/overlays/ov029/overlay029_apply_state.s:
+    categories: Game code
+    .text start:0x021fe7b0 end:0x021fe870
+asm/overlays/ov029/overlay029_return_state.s:
+    categories: Game code
+    .text start:0x021fe870 end:0x021feb08
+asm/overlays/ov029/overlay029_commit_tail.s:
+    categories: Game code
+    .text start:0x021feb08 end:0x021febbc

@@ -3,3 +3,57 @@
     .ctor       start:0x021ff1f4 end:0x021ff1f4 kind:rodata align:4
     .data       start:0x021ff200 end:0x021ff300 kind:data align:32
     .bss        start:0x021ff300 end:0x021ff320 kind:bss align:32
+asm/overlays/ov028/overlay028_scanline_palette.s:
+    categories: Game code
+    .text start:0x021fce00 end:0x021fd00c
+asm/overlays/ov028/overlay028_list_lifecycle.s:
+    categories: Game code
+    .text start:0x021fd00c end:0x021fd2c4
+asm/overlays/ov028/overlay028_list_sprites.s:
+    categories: Game code
+    .text start:0x021fd2c4 end:0x021fd468
+asm/overlays/ov028/overlay028_list_render.s:
+    categories: Game code
+    .text start:0x021fd468 end:0x021fd5e0
+asm/overlays/ov028/overlay028_list_render_tail.s:
+    categories: Game code
+    .text start:0x021fd5e0 end:0x021fd680
+asm/overlays/ov028/overlay028_effect_runtime.s:
+    categories: Game code
+    .text start:0x021fd680 end:0x021fd8b8
+asm/overlays/ov028/overlay028_effect_display.s:
+    categories: Game code
+    .text start:0x021fd8b8 end:0x021fdb00
+asm/overlays/ov028/overlay028_scene_constructor.s:
+    categories: Game code
+    .text start:0x021fdb00 end:0x021fdf94
+asm/overlays/ov028/overlay028_scene_teardown.s:
+    categories: Game code
+    .text start:0x021fdf94 end:0x021fe1b0
+asm/overlays/ov028/overlay028_scene_graphics.s:
+    categories: Game code
+    .text start:0x021fe1b0 end:0x021fe540
+asm/overlays/ov028/overlay028_selection_runtime.s:
+    categories: Game code
+    .text start:0x021fe540 end:0x021fe558
+asm/overlays/ov028/overlay028_selection_apply.s:
+    categories: Game code
+    .text start:0x021fe558 end:0x021fe6bc
+asm/overlays/ov028/overlay028_selection_cursor.s:
+    categories: Game code
+    .text start:0x021fe6bc end:0x021fe714
+asm/overlays/ov028/overlay028_selection_state.s:
+    categories: Game code
+    .text start:0x021fe714 end:0x021fe77c
+asm/overlays/ov028/overlay028_interactive_state.s:
+    categories: Game code
+    .text start:0x021fe77c end:0x021fea98
+asm/overlays/ov028/overlay028_return_state.s:
+    categories: Game code
+    .text start:0x021fea98 end:0x021febd0
+asm/overlays/ov028/overlay028_detail_state.s:
+    categories: Game code
+    .text start:0x021febd0 end:0x021ff0b0
+asm/overlays/ov028/overlay028_lifecycle_tail.s:
+    categories: Game code
+    .text start:0x021ff0b0 end:0x021ff174

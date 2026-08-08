@@ -15,6 +15,7 @@
 .extern func_020828a0
 .extern gGameWork
 .extern gSoundContext
+    .global func_0203bba4
 func_0203bba4: ; 0x0203bba4
     stmdb sp!, {r4, r5, r6, r7, r8, r9, r10, r11, lr}
     sub sp, sp, #0x34

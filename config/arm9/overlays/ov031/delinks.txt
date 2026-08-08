@@ -3,3 +3,72 @@
     .ctor       start:0x021fe6d4 end:0x021fe6d4 kind:rodata align:4
     .data       start:0x021fe6e0 end:0x021fe7c0 kind:data align:32
     .bss        start:0x021fe7c0 end:0x021fe7c0 kind:bss align:32
+asm/overlays/ov031/overlay031_wave_init.s:
+    categories: Game code
+    .text start:0x021fce00 end:0x021fce98
+asm/overlays/ov031/overlay031_wave_runtime.s:
+    categories: Game code
+    .text start:0x021fce98 end:0x021fd19c
+asm/overlays/ov031/overlay031_sprite_trajectory.s:
+    categories: Game code
+    .text start:0x021fd19c end:0x021fd258
+asm/overlays/ov031/overlay031_effect_constructor.s:
+    categories: Game code
+    .text start:0x021fd258 end:0x021fd4b0
+asm/overlays/ov031/overlay031_effect_teardown.s:
+    categories: Game code
+    .text start:0x021fd4b0 end:0x021fd5c0
+asm/overlays/ov031/overlay031_effect_frame.s:
+    categories: Game code
+    .text start:0x021fd5c0 end:0x021fd684
+asm/overlays/ov031/overlay031_effect_spawn.s:
+    categories: Game code
+    .text start:0x021fd684 end:0x021fd798
+asm/overlays/ov031/overlay031_trajectory_update.s:
+    categories: Game code
+    .text start:0x021fd798 end:0x021fd7fc
+asm/overlays/ov031/overlay031_effect_state.s:
+    categories: Game code
+    .text start:0x021fd7fc end:0x021fd91c
+asm/overlays/ov031/overlay031_rectangle_setter.s:
+    categories: Game code
+    .text start:0x021fd91c end:0x021fd934
+asm/overlays/ov031/overlay031_coordinate_init.s:
+    categories: Game code
+    .text start:0x021fd934 end:0x021fd95c
+asm/overlays/ov031/overlay031_scene_constructor.s:
+    categories: Game code
+    .text start:0x021fd95c end:0x021fdb60
+asm/overlays/ov031/overlay031_scene_teardown.s:
+    categories: Game code
+    .text start:0x021fdb60 end:0x021fdc48
+asm/overlays/ov031/overlay031_display_callbacks.s:
+    categories: Game code
+    .text start:0x021fdc48 end:0x021fdd04
+asm/overlays/ov031/overlay031_dialog_open.s:
+    categories: Game code
+    .text start:0x021fdd04 end:0x021fddbc
+asm/overlays/ov031/overlay031_dialog_input.s:
+    categories: Game code
+    .text start:0x021fddbc end:0x021fdf20
+asm/overlays/ov031/overlay031_status_sprite.s:
+    categories: Game code
+    .text start:0x021fdf20 end:0x021fdfa8
+asm/overlays/ov031/overlay031_graphics_setup.s:
+    categories: Game code
+    .text start:0x021fdfa8 end:0x021fe148
+asm/overlays/ov031/overlay031_wave_enable.s:
+    categories: Game code
+    .text start:0x021fe148 end:0x021fe1a8
+asm/overlays/ov031/overlay031_transition_setup.s:
+    categories: Game code
+    .text start:0x021fe1a8 end:0x021fe28c
+asm/overlays/ov031/overlay031_intro_state.s:
+    categories: Game code
+    .text start:0x021fe28c end:0x021fe4ac
+asm/overlays/ov031/overlay031_interaction_state.s:
+    categories: Game code
+    .text start:0x021fe4ac end:0x021fe5d4
+asm/overlays/ov031/overlay031_terminal_state.s:
+    categories: Game code
+    .text start:0x021fe5d4 end:0x021fe5fc

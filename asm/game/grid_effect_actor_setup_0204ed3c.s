@@ -10,6 +10,7 @@
 .extern func_02073fc4
 .text
 
+    .global func_0204ed3c
 func_0204ed3c: ; 0x0204ed3c
     stmdb sp!, {r3, r4, r5, r6, lr}
     sub sp, sp, #0x4

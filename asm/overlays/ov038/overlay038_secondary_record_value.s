@@ -1,0 +1,20 @@
+.text
+/* Exact fallback; see overlay038_selection_accessors.c for portable C. */
+    .extern data_020d7a64
+    .global func_ov038_021fd540
+func_ov038_021fd540:
+    ldr r1, [r0, #0x110]
+    cmp r1, #0x0
+    moveq r0, #0x0
+    bxeq lr
+    ldr r2, [r0, #0x314]
+    mov r1, #0x24
+    ldr r3, [r2, #0x14]
+    ldr r2, L_021fd574
+    add r0, r0, r3, lsl #0x2
+    ldr r0, [r0, #0x114]
+    mul r1, r0, r1
+    ldrh r0, [r2, r1]
+    bx lr
+L_021fd574: .word data_020d7a64
+    .size func_ov038_021fd540, .-func_ov038_021fd540

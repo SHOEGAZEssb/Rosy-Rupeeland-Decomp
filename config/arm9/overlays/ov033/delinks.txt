@@ -2,3 +2,33 @@
     .ctor       start:0x021fdce0 end:0x021fdce0 kind:rodata align:4
     .data       start:0x021fdd00 end:0x021fdee0 kind:data align:32
     .bss        start:0x021fdee0 end:0x021fdee0 kind:bss align:32
+asm/overlays/ov033/overlay033_sprite_group.s:
+    categories: Game code
+    .text start:0x021fce00 end:0x021fcf8c
+asm/overlays/ov033/overlay033_sprite_group_helpers.s:
+    categories: Game code
+    .text start:0x021fcf8c end:0x021fd070
+asm/overlays/ov033/overlay033_scene_constructor.s:
+    categories: Game code
+    .text start:0x021fd070 end:0x021fd260
+asm/overlays/ov033/overlay033_scene_lifecycle.s:
+    categories: Game code
+    .text start:0x021fd260 end:0x021fd37c
+asm/overlays/ov033/overlay033_scene_motion.s:
+    categories: Game code
+    .text start:0x021fd37c end:0x021fd598
+asm/overlays/ov033/overlay033_scene_follow_motion.s:
+    categories: Game code
+    .text start:0x021fd598 end:0x021fd624
+asm/overlays/ov033/overlay033_entrance_state.s:
+    categories: Game code
+    .text start:0x021fd624 end:0x021fd738
+asm/overlays/ov033/overlay033_transition_state.s:
+    categories: Game code
+    .text start:0x021fd738 end:0x021fd9a0
+asm/overlays/ov033/overlay033_final_state.s:
+    categories: Game code
+    .text start:0x021fd9a0 end:0x021fdcdc
+asm/overlays/ov033/overlay033_vtable_hook.s:
+    categories: Game code
+    .text start:0x021fdcdc end:0x021fdce0

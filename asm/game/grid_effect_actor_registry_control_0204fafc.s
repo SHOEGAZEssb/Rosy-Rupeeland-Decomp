@@ -10,6 +10,7 @@
 .extern func_02071d4c
 .text
 
+    .global func_0204fafc
 func_0204fafc: ; 0x0204fafc
     stmdb sp!, {r3, lr}
     ldr r0, .L_0204fb20

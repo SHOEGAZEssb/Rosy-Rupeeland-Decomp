@@ -14,6 +14,7 @@
 .extern func_020a291c
 .text
 
+    .global func_02050260
 func_02050260: ; 0x02050260
     stmdb sp!, {r4, r5, r6, lr}
     sub sp, sp, #0x18

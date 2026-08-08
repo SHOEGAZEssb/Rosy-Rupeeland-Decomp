@@ -6,6 +6,7 @@
 .extern func_020337d4
 .text
 
+    .global func_0204f990
 func_0204f990: ; 0x0204f990
     mov r2, #0x0
     ldr r0, .L_0204f9b8

@@ -3,3 +3,411 @@
     .ctor       start:0x02205abc end:0x02205abc kind:rodata align:4
     .data       start:0x02205ac0 end:0x022061c0 kind:data align:32
     .bss        start:0x022061c0 end:0x022061c0 kind:bss align:32
+asm/overlays/ov036/overlay036_input_controller.s:
+    categories: Game code
+    .text start:0x021fce00 end:0x021fcec4
+asm/overlays/ov036/overlay036_render_object_init.s:
+    categories: Game code
+    .text start:0x021fcec4 end:0x021fcfa0
+asm/overlays/ov036/overlay036_render_draw.s:
+    categories: Game code
+    .text start:0x021fcfa0 end:0x021fd128
+asm/overlays/ov036/overlay036_gx_attributes.s:
+    categories: Game code
+    .text start:0x021fd128 end:0x021fd19c
+asm/overlays/ov036/overlay036_render_command.s:
+    categories: Game code
+    .text start:0x021fd19c end:0x021fd248
+asm/overlays/ov036/overlay036_render_pending.s:
+    categories: Game code
+    .text start:0x021fd248 end:0x021fd28c
+asm/overlays/ov036/overlay036_render_timer.s:
+    categories: Game code
+    .text start:0x021fd28c end:0x021fd2a4
+asm/overlays/ov036/overlay036_motion_primitive_init.s:
+    categories: Game code
+    .text start:0x021fd2a4 end:0x021fd31c
+asm/overlays/ov036/overlay036_motion_primitive_update.s:
+    categories: Game code
+    .text start:0x021fd31c end:0x021fd4b0
+asm/overlays/ov036/overlay036_motion_timer.s:
+    categories: Game code
+    .text start:0x021fd4b0 end:0x021fd4c8
+asm/overlays/ov036/overlay036_motion_primitive_render.s:
+    categories: Game code
+    .text start:0x021fd4c8 end:0x021fd660
+asm/overlays/ov036/overlay036_texture_coordinate.s:
+    categories: Game code
+    .text start:0x021fd660 end:0x021fd690
+asm/overlays/ov036/overlay036_single_primitive.s:
+    categories: Game code
+    .text start:0x021fd690 end:0x021fd834
+asm/overlays/ov036/overlay036_segment_effect.s:
+    categories: Game code
+    .text start:0x021fd834 end:0x021fd97c
+asm/overlays/ov036/overlay036_segment_effect_render.s:
+    categories: Game code
+    .text start:0x021fd97c end:0x021fdba0
+asm/overlays/ov036/overlay036_timed_record_init.s:
+    categories: Game code
+    .text start:0x021fdba0 end:0x021fdbf4
+asm/overlays/ov036/overlay036_record_list_init.s:
+    categories: Game code
+    .text start:0x021fdbf4 end:0x021fdc1c
+asm/overlays/ov036/overlay036_record_list_clear.s:
+    categories: Game code
+    .text start:0x021fdc1c end:0x021fdc5c
+asm/overlays/ov036/overlay036_record_list_append.s:
+    categories: Game code
+    .text start:0x021fdc5c end:0x021fdcec
+asm/overlays/ov036/overlay036_record_list_update.s:
+    categories: Game code
+    .text start:0x021fdcec end:0x021fdd4c
+asm/overlays/ov036/overlay036_record_list_render.s:
+    categories: Game code
+    .text start:0x021fdd4c end:0x021fdef0
+asm/overlays/ov036/overlay036_polygon_attributes.s:
+    categories: Game code
+    .text start:0x021fdef0 end:0x021fdf30
+asm/overlays/ov036/overlay036_resource_object_init.s:
+    categories: Game code
+    .text start:0x021fdf30 end:0x021fdfa0
+asm/overlays/ov036/overlay036_resource_object_destroy.s:
+    categories: Game code
+    .text start:0x021fdfa0 end:0x021fdfe0
+asm/overlays/ov036/overlay036_resource_object_delete.s:
+    categories: Game code
+    .text start:0x021fdfe0 end:0x021fe028
+asm/overlays/ov036/overlay036_resource_object_render.s:
+    categories: Game code
+    .text start:0x021fe028 end:0x021fe1c0
+asm/overlays/ov036/overlay036_texture_parameter.s:
+    categories: Game code
+    .text start:0x021fe1c0 end:0x021fe1e4
+asm/overlays/ov036/overlay036_texture_coordinate_fixed.s:
+    categories: Game code
+    .text start:0x021fe1e4 end:0x021fe218
+asm/overlays/ov036/overlay036_effect_helper_init.s:
+    categories: Game code
+    .text start:0x021fe218 end:0x021fe238
+asm/overlays/ov036/overlay036_effect_helper_destroy.s:
+    categories: Game code
+    .text start:0x021fe238 end:0x021fe258
+asm/overlays/ov036/overlay036_random_effect_init.s:
+    categories: Game code
+    .text start:0x021fe258 end:0x021fe328
+asm/overlays/ov036/overlay036_random_effect_destroy.s:
+    categories: Game code
+    .text start:0x021fe328 end:0x021fe370
+asm/overlays/ov036/overlay036_random_effect_delete.s:
+    categories: Game code
+    .text start:0x021fe370 end:0x021fe3c0
+asm/overlays/ov036/overlay036_random_effect_update.s:
+    categories: Game code
+    .text start:0x021fe3c0 end:0x021fe968
+asm/overlays/ov036/overlay036_particle_vector.s:
+    categories: Game code
+    .text start:0x021fe968 end:0x021fe978
+asm/overlays/ov036/overlay036_handle_position.s:
+    categories: Game code
+    .text start:0x021fe978 end:0x021fe988
+asm/overlays/ov036/overlay036_particle_list_render.s:
+    categories: Game code
+    .text start:0x021fe988 end:0x021fe9fc
+asm/overlays/ov036/overlay036_vector4.s:
+    categories: Game code
+    .text start:0x021fe9fc end:0x021fea04
+asm/overlays/ov036/overlay036_vector10.s:
+    categories: Game code
+    .text start:0x021fea04 end:0x021fea14
+asm/overlays/ov036/overlay036_effect_controller_init.s:
+    categories: Game code
+    .text start:0x021fea14 end:0x021fee7c
+asm/overlays/ov036/overlay036_effect_controller_destroy.s:
+    categories: Game code
+    .text start:0x021fee7c end:0x021feef0
+asm/overlays/ov036/overlay036_effect_controller_delete.s:
+    categories: Game code
+    .text start:0x021feef0 end:0x021fef6c
+asm/overlays/ov036/overlay036_effect_spawn.s:
+    categories: Game code
+    .text start:0x021fef6c end:0x021ff050
+asm/overlays/ov036/overlay036_aux_handle_init.s:
+    categories: Game code
+    .text start:0x021ff050 end:0x021ff098
+asm/overlays/ov036/overlay036_effect_controller_update.s:
+    categories: Game code
+    .text start:0x021ff098 end:0x021ff184
+asm/overlays/ov036/overlay036_effect_controller_render.s:
+    categories: Game code
+    .text start:0x021ff184 end:0x021ff214
+asm/overlays/ov036/overlay036_multi_effect_controller_init.s:
+    categories: Game code
+    .text start:0x021ff214 end:0x021ff5bc
+asm/overlays/ov036/overlay036_multi_effect_controller_destroy.s:
+    categories: Game code
+    .text start:0x021ff5bc end:0x021ff680
+asm/overlays/ov036/overlay036_multi_effect_controller_delete.s:
+    categories: Game code
+    .text start:0x021ff680 end:0x021ff74c
+asm/overlays/ov036/overlay036_multi_effect_controller_update.s:
+    categories: Game code
+    .text start:0x021ff74c end:0x021ff778
+asm/overlays/ov036/overlay036_child_transition.s:
+    categories: Game code
+    .text start:0x021ff778 end:0x021ff7cc
+asm/overlays/ov036/overlay036_multi_effect_emitter.s:
+    categories: Game code
+    .text start:0x021ff7cc end:0x021ff9d0
+asm/overlays/ov036/overlay036_multi_effect_sequence.s:
+    categories: Game code
+    .text start:0x021ff9d0 end:0x021ffefc
+asm/overlays/ov036/overlay036_multi_effect_render.s:
+    categories: Game code
+    .text start:0x021ffefc end:0x021fffa4
+asm/overlays/ov036/overlay036_secondary_resource_object_init.s:
+    categories: Game code
+    .text start:0x021fffa4 end:0x02200014
+asm/overlays/ov036/overlay036_secondary_resource_object_destroy.s:
+    categories: Game code
+    .text start:0x02200014 end:0x02200054
+asm/overlays/ov036/overlay036_secondary_resource_object_delete.s:
+    categories: Game code
+    .text start:0x02200054 end:0x0220009c
+asm/overlays/ov036/overlay036_secondary_resource_object_render.s:
+    categories: Game code
+    .text start:0x0220009c end:0x02200234
+asm/overlays/ov036/overlay036_orbit_handles_init.s:
+    categories: Game code
+    .text start:0x02200234 end:0x02200288
+asm/overlays/ov036/overlay036_orbit_handles_destroy.s:
+    categories: Game code
+    .text start:0x02200288 end:0x0220029c
+asm/overlays/ov036/overlay036_orbit_handles_delete.s:
+    categories: Game code
+    .text start:0x0220029c end:0x022002b8
+asm/overlays/ov036/overlay036_orbit_handle_update.s:
+    categories: Game code
+    .text start:0x022002b8 end:0x02200318
+asm/overlays/ov036/overlay036_orbit_handles_position.s:
+    categories: Game code
+    .text start:0x02200318 end:0x022003d4
+asm/overlays/ov036/overlay036_orbit_sequence.s:
+    categories: Game code
+    .text start:0x022003d4 end:0x0220059c
+asm/overlays/ov036/overlay036_orbit_controller_init.s:
+    categories: Game code
+    .text start:0x0220059c end:0x022008e8
+asm/overlays/ov036/overlay036_orbit_controller_destroy.s:
+    categories: Game code
+    .text start:0x022008e8 end:0x0220094c
+asm/overlays/ov036/overlay036_orbit_controller_delete.s:
+    categories: Game code
+    .text start:0x0220094c end:0x022009b8
+asm/overlays/ov036/overlay036_orbit_spawn.s:
+    categories: Game code
+    .text start:0x022009b8 end:0x02200b38
+asm/overlays/ov036/overlay036_orbit_transition.s:
+    categories: Game code
+    .text start:0x02200b38 end:0x02200bb0
+asm/overlays/ov036/overlay036_orbit_controller_sequence.s:
+    categories: Game code
+    .text start:0x02200bb0 end:0x02200fb8
+asm/overlays/ov036/overlay036_orbit_controller_render.s:
+    categories: Game code
+    .text start:0x02200fb8 end:0x0220102c
+asm/overlays/ov036/overlay036_ramp_controller_init.s:
+    categories: Game code
+    .text start:0x0220102c end:0x02201350
+asm/overlays/ov036/overlay036_ramp_controller_destroy.s:
+    categories: Game code
+    .text start:0x02201350 end:0x022013dc
+asm/overlays/ov036/overlay036_ramp_controller_delete.s:
+    categories: Game code
+    .text start:0x022013dc end:0x02201470
+asm/overlays/ov036/overlay036_ramp_child_emitter.s:
+    categories: Game code
+    .text start:0x02201470 end:0x02201580
+asm/overlays/ov036/overlay036_ramp_primitive_spawn.s:
+    categories: Game code
+    .text start:0x02201580 end:0x02201710
+asm/overlays/ov036/overlay036_ramp_child_pool_init.s:
+    categories: Game code
+    .text start:0x02201710 end:0x022018a8
+asm/overlays/ov036/overlay036_ramp_children_activate.s:
+    categories: Game code
+    .text start:0x022018a8 end:0x02201a78
+asm/overlays/ov036/overlay036_ramp_frame_emit.s:
+    categories: Game code
+    .text start:0x02201a78 end:0x02201acc
+asm/overlays/ov036/overlay036_ramp_sequence.s:
+    categories: Game code
+    .text start:0x02201acc end:0x02201c7c
+asm/overlays/ov036/overlay036_ramp_controller_render.s:
+    categories: Game code
+    .text start:0x02201c7c end:0x02201d60
+asm/overlays/ov036/overlay036_oscillating_vector_set.s:
+    categories: Game code
+    .text start:0x02201d60 end:0x02201d70
+asm/overlays/ov036/overlay036_oscillating_object_init.s:
+    categories: Game code
+    .text start:0x02201d70 end:0x02201df0
+asm/overlays/ov036/overlay036_oscillating_object_destroy.s:
+    categories: Game code
+    .text start:0x02201df0 end:0x02201e1c
+asm/overlays/ov036/overlay036_oscillating_object_delete.s:
+    categories: Game code
+    .text start:0x02201e1c end:0x02201e50
+asm/overlays/ov036/overlay036_oscillating_object_update.s:
+    categories: Game code
+    .text start:0x02201e50 end:0x0220213c
+asm/overlays/ov036/overlay036_four_slot_record_init.s:
+    categories: Game code
+    .text start:0x0220213c end:0x022021b0
+asm/overlays/ov036/overlay036_quad_controller_init.s:
+    categories: Game code
+    .text start:0x022021b0 end:0x02202500
+asm/overlays/ov036/overlay036_quad_controller_destroy.s:
+    categories: Game code
+    .text start:0x02202500 end:0x02202590
+asm/overlays/ov036/overlay036_quad_controller_delete.s:
+    categories: Game code
+    .text start:0x02202590 end:0x02202628
+asm/overlays/ov036/overlay036_quad_child_spawn.s:
+    categories: Game code
+    .text start:0x02202628 end:0x02202790
+asm/overlays/ov036/overlay036_quad_controller_sequence.s:
+    categories: Game code
+    .text start:0x02202790 end:0x0220293c
+asm/overlays/ov036/overlay036_quad_controller_render.s:
+    categories: Game code
+    .text start:0x0220293c end:0x022029b0
+asm/overlays/ov036/overlay036_quad_records_render.s:
+    categories: Game code
+    .text start:0x022029b0 end:0x022029d8
+asm/overlays/ov036/overlay036_composite_controller_init.s:
+    categories: Game code
+    .text start:0x022029d8 end:0x02202e58
+asm/overlays/ov036/overlay036_composite_controller_destroy.s:
+    categories: Game code
+    .text start:0x02202e58 end:0x02202f04
+asm/overlays/ov036/overlay036_composite_controller_delete.s:
+    categories: Game code
+    .text start:0x02202f04 end:0x02202fb8
+asm/overlays/ov036/overlay036_composite_controller_update.s:
+    categories: Game code
+    .text start:0x02202fb8 end:0x02203024
+asm/overlays/ov036/overlay036_composite_segment_emitter.s:
+    categories: Game code
+    .text start:0x02203024 end:0x02203228
+asm/overlays/ov036/overlay036_composite_transition_point.s:
+    categories: Game code
+    .text start:0x02203228 end:0x022032a8
+asm/overlays/ov036/overlay036_composite_controller_sequence.s:
+    categories: Game code
+    .text start:0x022032a8 end:0x02203774
+asm/overlays/ov036/overlay036_composite_controller_render.s:
+    categories: Game code
+    .text start:0x02203774 end:0x0220384c
+asm/overlays/ov036/overlay036_noop_callback.s:
+    categories: Game code
+    .text start:0x0220384c end:0x02203850
+asm/overlays/ov036/overlay036_triple_object_init.s:
+    categories: Game code
+    .text start:0x02203850 end:0x022039a0
+asm/overlays/ov036/overlay036_triple_object_destroy.s:
+    categories: Game code
+    .text start:0x022039a0 end:0x022039e8
+asm/overlays/ov036/overlay036_triple_object_delete.s:
+    categories: Game code
+    .text start:0x022039e8 end:0x02203a38
+asm/overlays/ov036/overlay036_triple_object_update.s:
+    categories: Game code
+    .text start:0x02203a38 end:0x02203b24
+asm/overlays/ov036/overlay036_triple_object_command.s:
+    categories: Game code
+    .text start:0x02203b24 end:0x02203c44
+asm/overlays/ov036/overlay036_triple_object_render.s:
+    categories: Game code
+    .text start:0x02203c44 end:0x02203db0
+asm/overlays/ov036/overlay036_final_controller_init.s:
+    categories: Game code
+    .text start:0x02203db0 end:0x02204118
+asm/overlays/ov036/overlay036_final_controller_destroy.s:
+    categories: Game code
+    .text start:0x02204118 end:0x022041c8
+asm/overlays/ov036/overlay036_common_object_delete.s:
+    categories: Game code
+    .text start:0x022041c8 end:0x022041e4
+asm/overlays/ov036/overlay036_final_controller_delete.s:
+    categories: Game code
+    .text start:0x022041e4 end:0x0220429c
+asm/overlays/ov036/overlay036_final_controller_update.s:
+    categories: Game code
+    .text start:0x0220429c end:0x022042e0
+asm/overlays/ov036/overlay036_final_controller_sequence.s:
+    categories: Game code
+    .text start:0x022042e0 end:0x02204510
+asm/overlays/ov036/overlay036_final_controller_render.s:
+    categories: Game code
+    .text start:0x02204510 end:0x022045ac
+asm/overlays/ov036/overlay036_pair_state_init.s:
+    categories: Game code
+    .text start:0x022045ac end:0x022045d4
+asm/overlays/ov036/overlay036_scene_init.s:
+    categories: Game code
+    .text start:0x022045d4 end:0x022048d8
+asm/overlays/ov036/overlay036_scene_destroy.s:
+    categories: Game code
+    .text start:0x022048d8 end:0x022049a8
+asm/overlays/ov036/overlay036_resource_owner_delete.s:
+    categories: Game code
+    .text start:0x022049a8 end:0x022049c8
+asm/overlays/ov036/overlay036_scene_delete.s:
+    categories: Game code
+    .text start:0x022049c8 end:0x02204aa0
+asm/overlays/ov036/overlay036_scene_update.s:
+    categories: Game code
+    .text start:0x02204aa0 end:0x02204ae0
+asm/overlays/ov036/overlay036_scene_render.s:
+    categories: Game code
+    .text start:0x02204ae0 end:0x02204b74
+asm/overlays/ov036/overlay036_scene_offset.s:
+    categories: Game code
+    .text start:0x02204b74 end:0x02204b80
+asm/overlays/ov036/overlay036_scene_entry_state.s:
+    categories: Game code
+    .text start:0x02204b80 end:0x02204bf8
+asm/overlays/ov036/overlay036_scene_completion_state.s:
+    categories: Game code
+    .text start:0x02204bf8 end:0x02204c84
+asm/overlays/ov036/overlay036_terminal_noop.s:
+    categories: Game code
+    .text start:0x02204c84 end:0x02204c88
+asm/overlays/ov036/overlay036_terminal_delete_a.s:
+    categories: Game code
+    .text start:0x02204c88 end:0x02204ca4
+asm/overlays/ov036/overlay036_terminal_destroy_a.s:
+    categories: Game code
+    .text start:0x02204ca4 end:0x02204cb8
+asm/overlays/ov036/overlay036_terminal_delete_b.s:
+    categories: Game code
+    .text start:0x02204cb8 end:0x02204cd4
+asm/overlays/ov036/overlay036_terminal_destroy_b.s:
+    categories: Game code
+    .text start:0x02204cd4 end:0x02204ce8
+asm/overlays/ov036/overlay036_terminal_delete_c.s:
+    categories: Game code
+    .text start:0x02204ce8 end:0x02204d04
+asm/overlays/ov036/overlay036_terminal_destroy_c.s:
+    categories: Game code
+    .text start:0x02204d04 end:0x02204d18
+asm/overlays/ov036/overlay036_terminal_destroy_d.s:
+    categories: Game code
+    .text start:0x02204d18 end:0x02204d2c
+asm/overlays/ov036/overlay036_terminal_resource_destroy.s:
+    categories: Game code
+    .text start:0x02204d2c end:0x02204d44
+asm/overlays/ov036/overlay036_terminal_list_delete.s:
+    categories: Game code
+    .text start:0x02204d44 end:0x02204d6c

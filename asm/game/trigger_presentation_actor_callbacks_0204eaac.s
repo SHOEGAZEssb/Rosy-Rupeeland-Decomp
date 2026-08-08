@@ -6,6 +6,7 @@
 .extern func_02034164
 .text
 
+    .global func_0204eaac
 func_0204eaac: ; 0x0204eaac
     stmdb sp!, {r4, lr}
     mov r4, r0

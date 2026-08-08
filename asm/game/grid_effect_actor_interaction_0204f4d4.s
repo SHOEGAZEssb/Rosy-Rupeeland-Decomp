@@ -11,6 +11,7 @@
 .extern func_02064a18
 .text
 
+    .global func_0204f4d4
 func_0204f4d4: ; 0x0204f4d4
     stmdb sp!, {r4, lr}
     ldrb r1, [r1, #0x4d]

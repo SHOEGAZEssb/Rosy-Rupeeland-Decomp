@@ -1,0 +1,133 @@
+#include "tingle/types.h"
+
+/* Overlay 37 main scene construction, resource binding, and child-object population. */
+
+#define FIELD(type, base, offset) (*(type *)((u8 *)(base) + (offset)))
+
+extern const u8 data_ov037_021fedd0[];
+extern const u8 data_ov037_021feeb0[];
+extern const u8 data_ov037_021feeb8[];
+extern void *data_020f4e18[];
+extern void *gHeapContext;
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+extern void *func_ov037_021fce00(void *scene);
+extern void func_020720c0(void *state);
+extern void *func_ov037_021fd6d0(void *container);
+extern void func_02077a8c(void *state);
+extern void func_02091b6c(void *timer);
+extern void func_020720e8(void *slot, void *archive, s32 id0, s32 id1, s32 id2);
+extern void func_020779ac(void *owner, void *slot);
+extern void *func_02071adc(void *archive, s32 resourceId);
+extern void *func_02077624(void *owner);
+extern void *func_02077308(void *resourceOwner, void *slot);
+extern void func_ov037_021fd710(void *actor, s32 mode, s32 x, s32 y,
+                                s32 z, u8 parameter, u16 flags);
+extern void *Heap_Alloc(u32 size, const void *tag, s32 alignment, void *heap);
+extern void *func_ov037_021fd5ac(void *controller, void *argument, void *actor);
+extern void func_02095274(void *container, void *object);
+extern void *func_020955d8(void *object, void *actor);
+extern void *func_ov037_021fd22c(void *object, void *owner);
+extern void *func_ov037_021fd1cc(void *object);
+extern void func_ov037_021fd758(void *record, s32 a, s32 b, s32 c);
+extern void func_ov037_021fd760(void *record, s32 a, s32 b, s32 c);
+extern void func_ov037_021fd770(void *table, s32 index, s32 a, s32 b,
+                                s32 c, u32 field0, u32 field1, u32 field2);
+extern void func_020b0300(s32 a, s32 b, s32 c, s32 d, s32 e);
+extern void func_02092850(s32 mode);
+#ifdef __cplusplus
+}
+#endif
+
+static void initResourceSlot(void *scene, void *owner, u32 offset, s32 finalId)
+{
+    void *slot = (u8 *)scene + offset;
+    func_020720e8(slot, data_020f4e18[0], finalId - 2, finalId - 1, finalId);
+    func_020779ac(owner, slot);
+}
+
+/*
+ * Constructs the overlay's main scene around owner. It initializes the input
+ * controller base, six embedded resource slots (+0xC8..+0x104), two child
+ * containers, a four-entry record table, three timers, and six resource IDs
+ * 0x6048..0x60BF. It then obtains actor handles, allocates five child objects
+ * at +0x118..+0x128, registers them in +0x12C, initializes base transform and
+ * slot 0, and establishes global geometry state. Returns scene; heap, archive,
+ * actor, renderer, and global graphics state all change. Allocation failures
+ * are retained as null and still passed to the recovered container registrar,
+ * matching the original control flow.
+ */
+extern "C" void *func_ov037_021fd7e4(void *scene, void *owner)
+{
+    func_ov037_021fce00(scene);
+    FIELD(const void *, scene, 0) = data_ov037_021fedd0;
+
+    const u32 slotOffsets[6] = {0xc8, 0xd4, 0xe0, 0xec, 0xf8, 0x104};
+    for (s32 i = 0; i < 6; ++i)
+        func_020720c0((u8 *)scene + slotOffsets[i]);
+    func_ov037_021fd6d0((u8 *)scene + 0x12c);
+    func_ov037_021fd6d0((u8 *)scene + 0x13c);
+    func_02077a8c((u8 *)scene + 0x14c);
+    func_02091b6c((u8 *)scene + 0x18c);
+    func_02091b6c((u8 *)scene + 0x1a8);
+    func_02091b6c((u8 *)scene + 0x1c4);
+
+    initResourceSlot(scene, owner, 0xc8, 0x604a);
+    initResourceSlot(scene, owner, 0xd4, 0x6050);
+    initResourceSlot(scene, owner, 0xe0, 0x60bf);
+    initResourceSlot(scene, owner, 0xec, 0x6056);
+    initResourceSlot(scene, owner, 0xf8, 0x6059);
+    initResourceSlot(scene, owner, 0x104, 0x604d);
+
+    FIELD(void *, scene, 0x110) = func_02071adc(data_020f4e18[0], 0x5010);
+    void *resourceOwner = func_02077624(owner);
+    FIELD(void *, scene, 0x114) = resourceOwner;
+
+    void *actor0 = func_02077308(resourceOwner, (u8 *)scene + 0xc8);
+    func_ov037_021fd710(actor0, 0, 0, 0, 0, 1, 0x42);
+    void *actor1 = func_02077308(resourceOwner, (u8 *)scene + 0x104);
+
+    void *child = Heap_Alloc(0xb0, data_ov037_021feeb0, 4, gHeapContext);
+    if (child != 0)
+        child = func_ov037_021fd5ac(child, actor0, actor1);
+    FIELD(void *, scene, 0x118) = child;
+    func_02095274((u8 *)scene + 0x12c, child);
+
+    void *actor = func_02077308(resourceOwner, (u8 *)scene + 0xd4);
+    child = Heap_Alloc(0xa0, data_ov037_021feeb0, 4, gHeapContext);
+    if (child != 0)
+        child = func_020955d8(child, actor);
+    FIELD(void *, scene, 0x11c) = child;
+    func_02095274((u8 *)scene + 0x12c, child);
+
+    actor = func_02077308(resourceOwner, (u8 *)scene + 0xe0);
+    FIELD(u8, actor, 0x5a) = 4;
+    FIELD(u16, actor, 0x4e) = 0x43ff;
+    child = Heap_Alloc(0xa0, data_ov037_021feeb0, 4, gHeapContext);
+    if (child != 0)
+        child = func_020955d8(child, actor);
+    FIELD(void *, scene, 0x120) = child;
+    func_02095274((u8 *)scene + 0x12c, child);
+
+    child = Heap_Alloc(0xa0, data_ov037_021feeb8, 4, gHeapContext);
+    if (child != 0)
+        child = func_ov037_021fd22c(child, owner);
+    FIELD(void *, scene, 0x124) = child;
+    func_02095274((u8 *)scene + 0x12c, child);
+
+    child = Heap_Alloc(0x9c, data_ov037_021feeb8, 4, gHeapContext);
+    if (child != 0)
+        child = func_ov037_021fd1cc(child);
+    FIELD(void *, scene, 0x128) = child;
+    func_02095274((u8 *)scene + 0x12c, child);
+
+    func_ov037_021fd758((u8 *)scene + 8, 0, 0, 0x2800);
+    func_ov037_021fd760((u8 *)scene + 8, 0, 0, 0);
+    func_ov037_021fd770((u8 *)scene + 0x14c, 0, 0x800, 0,
+                        -0x1000, 31, 31, 31);
+    func_020b0300(0, 31, 0x7fff, 0x3f, 0);
+    func_02092850(0);
+    return scene;
+}

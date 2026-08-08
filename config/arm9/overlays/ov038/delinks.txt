@@ -2,3 +2,39 @@
     .ctor       start:0x021fdc84 end:0x021fdc84 kind:rodata align:4
     .data       start:0x021fdca0 end:0x021fdd60 kind:data align:32
     .bss        start:0x021fdd60 end:0x021fdd60 kind:bss align:32
+asm/overlays/ov038/overlay038_opening_helpers.s:
+    categories: Game code
+    .text start:0x021fce00 end:0x021fce2c
+asm/overlays/ov038/overlay038_presentation_construct.s:
+    categories: Game code
+    .text start:0x021fce2c end:0x021fd0d8
+asm/overlays/ov038/overlay038_presentation_lifecycle.s:
+    categories: Game code
+    .text start:0x021fd0d8 end:0x021fd210
+asm/overlays/ov038/overlay038_display_resources.s:
+    categories: Game code
+    .text start:0x021fd210 end:0x021fd37c
+asm/overlays/ov038/overlay038_selection_update.s:
+    categories: Game code
+    .text start:0x021fd37c end:0x021fd508
+asm/overlays/ov038/overlay038_primary_record_value.s:
+    categories: Game code
+    .text start:0x021fd508 end:0x021fd540
+asm/overlays/ov038/overlay038_secondary_record_value.s:
+    categories: Game code
+    .text start:0x021fd540 end:0x021fd578
+asm/overlays/ov038/overlay038_selection_refresh.s:
+    categories: Game code
+    .text start:0x021fd578 end:0x021fd624
+asm/overlays/ov038/overlay038_transition_reset.s:
+    categories: Game code
+    .text start:0x021fd624 end:0x021fd670
+asm/overlays/ov038/overlay038_input_activate.s:
+    categories: Game code
+    .text start:0x021fd670 end:0x021fd7f8
+asm/overlays/ov038/overlay038_interaction_state.s:
+    categories: Game code
+    .text start:0x021fd7f8 end:0x021fdacc
+asm/overlays/ov038/overlay038_exit_render.s:
+    categories: Game code
+    .text start:0x021fdacc end:0x021fdc84
