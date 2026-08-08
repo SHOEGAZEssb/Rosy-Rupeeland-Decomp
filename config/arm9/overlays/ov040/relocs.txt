@@ -210,6 +210,7 @@ from:0x021ff138 kind:load to:0x020c9670 module:main
 from:0x021ff13c kind:load to:0x02105860 module:main
 from:0x021ff148 kind:load to:0x02207d24 module:overlay(40)
 from:0x021ff14c kind:load to:0x020f4db0 module:main
+from:0x021ff164 kind:arm_call to:0x020050a4 module:main
 from:0x021ff194 kind:arm_call to:0x020050a4 module:main
 from:0x021ff1c0 kind:arm_call to:0x02202244 module:overlay(40)
 from:0x021ff200 kind:arm_call to:0x0205940c module:main

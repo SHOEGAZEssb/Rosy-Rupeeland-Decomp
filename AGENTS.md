@@ -19,6 +19,10 @@
 - Documentation changes must not alter the matching code or data layout. Run
   the relevant match target after editing decompiled C.
 
+## Overlays
+- When decompiling overlays, fully finish the specific overlay, before moving on to the next one.
+- Only verify the below mentionen ROM correctness guardrails after finishing the whole overlay.
+
 ## ROM correctness guardrail
 
 - When adding or splitting reconstructed objects, update

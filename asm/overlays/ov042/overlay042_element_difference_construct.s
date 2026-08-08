@@ -1,0 +1,23 @@
+.text
+
+/* Exact fallback for func_ov042_0220368c; see the documented portable C in
+ * src/overlays/ov042/overlay042_base_lifecycle.c. */
+.extern func_ov042_021fcf80
+
+    .global func_ov042_0220368c
+func_ov042_0220368c:
+    stmdb sp!, {r4, r5, r6, lr}
+    mov r6, r1
+    mov r5, r2
+    mov r4, r0
+    bl func_ov042_021fcf80
+    ldr r1, [r6, #0x4]
+    ldr r0, [r5, #0x4]
+    sub r0, r1, r0
+    str r0, [r4, #0x4]
+    ldr r1, [r6, #0x8]
+    ldr r0, [r5, #0x8]
+    sub r0, r1, r0
+    str r0, [r4, #0x8]
+    ldmia sp!, {r4, r5, r6, pc}
+    .size func_ov042_0220368c, . - func_ov042_0220368c

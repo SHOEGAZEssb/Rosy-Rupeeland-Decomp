@@ -3,3 +3,147 @@
     .ctor       start:0x02203884 end:0x02203884 kind:rodata align:4
     .data       start:0x022038a0 end:0x02207dc0 kind:data align:32
     .bss        start:0x02207dc0 end:0x02207e20 kind:bss align:32
+asm/overlays/ov040/overlay040_base_init.s:
+    categories: Game code
+    .text start:0x021fce00 end:0x021fce40
+asm/overlays/ov040/overlay040_bg1_control.s:
+    categories: Game code
+    .text start:0x021fce40 end:0x021fce74
+asm/overlays/ov040/overlay040_bg3_control.s:
+    categories: Game code
+    .text start:0x021fce74 end:0x021fcea0
+asm/overlays/ov040/overlay040_position_set.s:
+    categories: Game code
+    .text start:0x021fcea0 end:0x021fceb0
+asm/overlays/ov040/overlay040_transform_halfwords_set.s:
+    categories: Game code
+    .text start:0x021fceb0 end:0x021fcebc
+asm/overlays/ov040/overlay040_scene_construct.s:
+    categories: Game code
+    .text start:0x021fcebc end:0x021fd724
+asm/overlays/ov040/overlay040_record_init.s:
+    categories: Game code
+    .text start:0x021fd724 end:0x021fd740
+asm/overlays/ov040/overlay040_record_noop.s:
+    categories: Game code
+    .text start:0x021fd740 end:0x021fd744
+asm/overlays/ov040/overlay040_scene_destroy.s:
+    categories: Game code
+    .text start:0x021fd744 end:0x021fd858
+asm/overlays/ov040/overlay040_object_configure.s:
+    categories: Game code
+    .text start:0x021fd858 end:0x021fd8ac
+asm/overlays/ov040/overlay040_scene_tables_init.s:
+    categories: Game code
+    .text start:0x021fd8ac end:0x021fe18c
+asm/overlays/ov040/overlay040_record_copy16.s:
+    categories: Game code
+    .text start:0x021fe18c end:0x021fe1b0
+asm/overlays/ov040/overlay040_scene_main_update.s:
+    categories: Game code
+    .text start:0x021fe1b0 end:0x021ff3f4
+asm/overlays/ov040/overlay040_vector_op_fbc.s:
+    categories: Game code
+    .text start:0x021ff3f4 end:0x021ff42c
+asm/overlays/ov040/overlay040_object_vector_copy.s:
+    categories: Game code
+    .text start:0x02200108 end:0x02200118
+asm/overlays/ov040/overlay040_object_vector_assign.s:
+    categories: Game code
+    .text start:0x02200118 end:0x02200128
+asm/overlays/ov040/overlay040_motion_vectors_init.s:
+    categories: Game code
+    .text start:0x02200128 end:0x02200378
+asm/overlays/ov040/overlay040_damped_motion_update.s:
+    categories: Game code
+    .text start:0x02200378 end:0x022005d4
+asm/overlays/ov040/overlay040_vector_xy_accumulate.s:
+    categories: Game code
+    .text start:0x022005d4 end:0x022005f8
+asm/overlays/ov040/overlay040_secondary_motion_update.s:
+    categories: Game code
+    .text start:0x022005f8 end:0x022009e8
+asm/overlays/ov040/overlay040_vector_op_ff0.s:
+    categories: Game code
+    .text start:0x022021dc end:0x02202214
+asm/overlays/ov040/overlay040_scene_delay_start.s:
+    categories: Game code
+    .text start:0x02202214 end:0x02202244
+asm/overlays/ov040/overlay040_sub_bg0_control.s:
+    categories: Game code
+    .text start:0x0220255c end:0x02202590
+asm/overlays/ov040/overlay040_scene_base_destroy.s:
+    categories: Game code
+    .text start:0x0220262c end:0x02202640
+asm/overlays/ov040/overlay040_sub_graphics_setup.s:
+    categories: Game code
+    .text start:0x02202640 end:0x02202a10
+asm/overlays/ov040/overlay040_object_group_activate.s:
+    categories: Game code
+    .text start:0x02202a10 end:0x02202a50
+asm/overlays/ov040/overlay040_orientation_dispatch.s:
+    categories: Game code
+    .text start:0x02202a50 end:0x02202cb4
+asm/overlays/ov040/overlay040_heap_delete.s:
+    categories: Game code
+    .text start:0x02202e90 end:0x02202ea4
+asm/overlays/ov040/overlay040_timed_presentation_start.s:
+    categories: Game code
+    .text start:0x021ff8b0 end:0x021ff900
+asm/overlays/ov040/overlay040_motion_bounds_select.s:
+    categories: Game code
+    .text start:0x02202244 end:0x022022dc
+asm/overlays/ov040/overlay040_event_schedule_update.s:
+    categories: Game code
+    .text start:0x022022dc end:0x0220255c
+asm/overlays/ov040/overlay040_sub_scene_construct.s:
+    categories: Game code
+    .text start:0x02202590 end:0x0220262c
+asm/overlays/ov040/overlay040_vector_arrays_construct.s:
+    categories: Game code
+    .text start:0x02202ea4 end:0x02202f1c
+asm/overlays/ov040/overlay040_presentation_state_0.s:
+    categories: Game code
+    .text start:0x021ff42c end:0x021ff514
+asm/overlays/ov040/overlay040_presentation_state_1.s:
+    categories: Game code
+    .text start:0x021ff514 end:0x021ff630
+asm/overlays/ov040/overlay040_presentation_bounce_update.s:
+    categories: Game code
+    .text start:0x021ff630 end:0x021ff8b0
+asm/overlays/ov040/overlay040_presentation_input_update.s:
+    categories: Game code
+    .text start:0x021ff900 end:0x02200108
+asm/overlays/ov040/overlay040_vertical_motion_update.s:
+    categories: Game code
+    .text start:0x02201288 end:0x022013e0
+asm/overlays/ov040/overlay040_scene_render_update.s:
+    categories: Game code
+    .text start:0x022013e0 end:0x022021dc
+asm/overlays/ov040/overlay040_collectible_proximity_scan.s:
+    categories: Game code
+    .text start:0x02203678 end:0x02203810
+asm/overlays/ov040/overlay040_meter_update.s:
+    categories: Game code
+    .text start:0x02202cb4 end:0x02202e90
+asm/overlays/ov040/overlay040_slot_physics_update.s:
+    categories: Game code
+    .text start:0x02203150 end:0x0220332c
+asm/overlays/ov040/overlay040_slot_render.s:
+    categories: Game code
+    .text start:0x0220332c end:0x02203678
+asm/overlays/ov040/overlay040_effect_state_update.s:
+    categories: Game code
+    .text start:0x02200eb8 end:0x02201060
+asm/overlays/ov040/overlay040_camera_motion_update.s:
+    categories: Game code
+    .text start:0x022009e8 end:0x02200bf4
+asm/overlays/ov040/overlay040_rising_object_update.s:
+    categories: Game code
+    .text start:0x02200bf4 end:0x02200eb8
+asm/overlays/ov040/overlay040_sequence_update.s:
+    categories: Game code
+    .text start:0x02201060 end:0x02201288
+asm/overlays/ov040/overlay040_effect_emit.s:
+    categories: Game code
+    .text start:0x02202f1c end:0x02203150
