@@ -1,0 +1,28 @@
+.text
+; Matching fallback for the portable implementation in src/overlays/ov054/overlay054_recovery.c.
+.extern data_ov054_0220f160
+.extern func_02005058
+.extern func_0201e28c
+.extern func_02071eb8
+
+.global func_ov054_0220ed0c
+func_ov054_0220ed0c:
+    stmdb sp!, {r4, lr}
+    mov r4, r0
+    ldr r1, .L_0220ed50
+    mov r2, #0x0
+    add r0, r4, #0x40
+    str r2, [r1, #0x0]
+    bl func_02005058
+    add r0, r4, #0x30
+    bl func_02005058
+    add r0, r4, #0x24
+    bl func_02071eb8
+    add r0, r4, #0x8
+    bl func_02005058
+    mov r0, r4
+    bl func_0201e28c
+    mov r0, r4
+    ldmia sp!, {r4, pc}
+.L_0220ed50: .word data_ov054_0220f160
+.size func_ov054_0220ed0c, . - func_ov054_0220ed0c
