@@ -15,6 +15,7 @@ def main() -> None:
     parser.add_argument("--portable", required=True)
     parser.add_argument("--binary", type=Path)
     parser.add_argument("--base", type=lambda value: int(value, 0))
+    parser.add_argument("--start", type=lambda value: int(value, 0))
     args = parser.parse_args()
 
     lines = args.input.read_text().splitlines()
@@ -49,7 +50,11 @@ def main() -> None:
     if args.binary is not None:
         if args.base is None:
             parser.error("--base is required with --binary")
-        first_address = int(next(iter(sorted(defined))).rsplit("_", 1)[1], 16)
+        # Some data sections begin with an anonymous byte range before their
+        # first relocation-derived label. Let callers preserve that prefix.
+        first_address = args.start
+        if first_address is None:
+            first_address = int(next(iter(sorted(defined))).rsplit("_", 1)[1], 16)
         end_address = int(bss[0].rsplit("_", 1)[1], 16)
         payload = args.binary.read_bytes()[first_address - args.base : end_address - args.base]
         output.append("; Absolute labels preserve fixed-address record and BSS references without alignment padding.")
