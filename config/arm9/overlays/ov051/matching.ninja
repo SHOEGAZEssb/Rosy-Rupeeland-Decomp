@@ -1,0 +1,194 @@
+# Generated exact matching fallbacks for overlay 051.
+# Regenerate with tools/generate_overlay_matching_ninja.py.
+
+build build/decomp/asm/overlays/ov051/overlay051_base_construct.o: mwasmarm asm/overlays/ov051/overlay051_base_construct.s
+build build/decomp/delinks/asm/overlays/ov051/overlay051_base_construct.o: dsd_delink config/arm9/config.yaml | config/arm9/overlays/ov051/delinks.txt config/arm9/overlays/ov051/symbols.txt config/arm9/overlays/ov051/relocs.txt
+  object = asm/overlays/ov051/overlay051_base_construct.s
+build build/reports/overlay051_base_construct.json: objdiff build/decomp/asm/overlays/ov051/overlay051_base_construct.o build/decomp/delinks/asm/overlays/ov051/overlay051_base_construct.o
+  target_object = build/decomp/asm/overlays/ov051/overlay051_base_construct.o
+  base_object = build/decomp/delinks/asm/overlays/ov051/overlay051_base_construct.o
+build build/reports/overlay051_base_construct.txt: match_report build/reports/overlay051_base_construct.json | tools/report_objdiff.py
+  report_json = build/reports/overlay051_base_construct.json
+  report_args = --section .text --function func_ov051_0220d600 --require-exact
+
+build build/decomp/asm/overlays/ov051/overlay051_shared_update.o: mwasmarm asm/overlays/ov051/overlay051_shared_update.s
+build build/decomp/delinks/asm/overlays/ov051/overlay051_shared_update.o: dsd_delink config/arm9/config.yaml | config/arm9/overlays/ov051/delinks.txt config/arm9/overlays/ov051/symbols.txt config/arm9/overlays/ov051/relocs.txt
+  object = asm/overlays/ov051/overlay051_shared_update.s
+build build/reports/overlay051_shared_update.json: objdiff build/decomp/asm/overlays/ov051/overlay051_shared_update.o build/decomp/delinks/asm/overlays/ov051/overlay051_shared_update.o
+  target_object = build/decomp/asm/overlays/ov051/overlay051_shared_update.o
+  base_object = build/decomp/delinks/asm/overlays/ov051/overlay051_shared_update.o
+build build/reports/overlay051_shared_update.txt: match_report build/reports/overlay051_shared_update.json | tools/report_objdiff.py
+  report_json = build/reports/overlay051_shared_update.json
+  report_args = --section .text --function func_ov051_0220d688 --require-exact
+
+build build/decomp/asm/overlays/ov051/overlay051_transform_apply.o: mwasmarm asm/overlays/ov051/overlay051_transform_apply.s
+build build/decomp/delinks/asm/overlays/ov051/overlay051_transform_apply.o: dsd_delink config/arm9/config.yaml | config/arm9/overlays/ov051/delinks.txt config/arm9/overlays/ov051/symbols.txt config/arm9/overlays/ov051/relocs.txt
+  object = asm/overlays/ov051/overlay051_transform_apply.s
+build build/reports/overlay051_transform_apply.json: objdiff build/decomp/asm/overlays/ov051/overlay051_transform_apply.o build/decomp/delinks/asm/overlays/ov051/overlay051_transform_apply.o
+  target_object = build/decomp/asm/overlays/ov051/overlay051_transform_apply.o
+  base_object = build/decomp/delinks/asm/overlays/ov051/overlay051_transform_apply.o
+build build/reports/overlay051_transform_apply.txt: match_report build/reports/overlay051_transform_apply.json | tools/report_objdiff.py
+  report_json = build/reports/overlay051_transform_apply.json
+  report_args = --section .text --function func_ov051_0220d774 --require-exact
+
+build build/decomp/asm/overlays/ov051/overlay051_bounds_compute.o: mwasmarm asm/overlays/ov051/overlay051_bounds_compute.s
+build build/decomp/delinks/asm/overlays/ov051/overlay051_bounds_compute.o: dsd_delink config/arm9/config.yaml | config/arm9/overlays/ov051/delinks.txt config/arm9/overlays/ov051/symbols.txt config/arm9/overlays/ov051/relocs.txt
+  object = asm/overlays/ov051/overlay051_bounds_compute.s
+build build/reports/overlay051_bounds_compute.json: objdiff build/decomp/asm/overlays/ov051/overlay051_bounds_compute.o build/decomp/delinks/asm/overlays/ov051/overlay051_bounds_compute.o
+  target_object = build/decomp/asm/overlays/ov051/overlay051_bounds_compute.o
+  base_object = build/decomp/delinks/asm/overlays/ov051/overlay051_bounds_compute.o
+build build/reports/overlay051_bounds_compute.txt: match_report build/reports/overlay051_bounds_compute.json | tools/report_objdiff.py
+  report_json = build/reports/overlay051_bounds_compute.json
+  report_args = --section .text --function func_ov051_0220d7bc --require-exact
+
+build build/decomp/asm/overlays/ov051/overlay051_sub_display_control.o: mwasmarm asm/overlays/ov051/overlay051_sub_display_control.s
+build build/decomp/delinks/asm/overlays/ov051/overlay051_sub_display_control.o: dsd_delink config/arm9/config.yaml | config/arm9/overlays/ov051/delinks.txt config/arm9/overlays/ov051/symbols.txt config/arm9/overlays/ov051/relocs.txt
+  object = asm/overlays/ov051/overlay051_sub_display_control.s
+build build/reports/overlay051_sub_display_control.json: objdiff build/decomp/asm/overlays/ov051/overlay051_sub_display_control.o build/decomp/delinks/asm/overlays/ov051/overlay051_sub_display_control.o
+  target_object = build/decomp/asm/overlays/ov051/overlay051_sub_display_control.o
+  base_object = build/decomp/delinks/asm/overlays/ov051/overlay051_sub_display_control.o
+build build/reports/overlay051_sub_display_control.txt: match_report build/reports/overlay051_sub_display_control.json | tools/report_objdiff.py
+  report_json = build/reports/overlay051_sub_display_control.json
+  report_args = --section .text --function func_ov051_0220d84c --require-exact
+
+build build/decomp/asm/overlays/ov051/overlay051_sub_scene_construct.o: mwasmarm asm/overlays/ov051/overlay051_sub_scene_construct.s
+build build/decomp/delinks/asm/overlays/ov051/overlay051_sub_scene_construct.o: dsd_delink config/arm9/config.yaml | config/arm9/overlays/ov051/delinks.txt config/arm9/overlays/ov051/symbols.txt config/arm9/overlays/ov051/relocs.txt
+  object = asm/overlays/ov051/overlay051_sub_scene_construct.s
+build build/reports/overlay051_sub_scene_construct.json: objdiff build/decomp/asm/overlays/ov051/overlay051_sub_scene_construct.o build/decomp/delinks/asm/overlays/ov051/overlay051_sub_scene_construct.o
+  target_object = build/decomp/asm/overlays/ov051/overlay051_sub_scene_construct.o
+  base_object = build/decomp/delinks/asm/overlays/ov051/overlay051_sub_scene_construct.o
+build build/reports/overlay051_sub_scene_construct.txt: match_report build/reports/overlay051_sub_scene_construct.json | tools/report_objdiff.py
+  report_json = build/reports/overlay051_sub_scene_construct.json
+  report_args = --section .text --function func_ov051_0220d878 --require-exact
+
+build build/decomp/asm/overlays/ov051/overlay051_sub_scene_destroy.o: mwasmarm asm/overlays/ov051/overlay051_sub_scene_destroy.s
+build build/decomp/delinks/asm/overlays/ov051/overlay051_sub_scene_destroy.o: dsd_delink config/arm9/config.yaml | config/arm9/overlays/ov051/delinks.txt config/arm9/overlays/ov051/symbols.txt config/arm9/overlays/ov051/relocs.txt
+  object = asm/overlays/ov051/overlay051_sub_scene_destroy.s
+build build/reports/overlay051_sub_scene_destroy.json: objdiff build/decomp/asm/overlays/ov051/overlay051_sub_scene_destroy.o build/decomp/delinks/asm/overlays/ov051/overlay051_sub_scene_destroy.o
+  target_object = build/decomp/asm/overlays/ov051/overlay051_sub_scene_destroy.o
+  base_object = build/decomp/delinks/asm/overlays/ov051/overlay051_sub_scene_destroy.o
+build build/reports/overlay051_sub_scene_destroy.txt: match_report build/reports/overlay051_sub_scene_destroy.json | tools/report_objdiff.py
+  report_json = build/reports/overlay051_sub_scene_destroy.json
+  report_args = --section .text --function func_ov051_0220d99c --require-exact
+
+build build/decomp/asm/overlays/ov051/overlay051_sub_scene_delete.o: mwasmarm asm/overlays/ov051/overlay051_sub_scene_delete.s
+build build/decomp/delinks/asm/overlays/ov051/overlay051_sub_scene_delete.o: dsd_delink config/arm9/config.yaml | config/arm9/overlays/ov051/delinks.txt config/arm9/overlays/ov051/symbols.txt config/arm9/overlays/ov051/relocs.txt
+  object = asm/overlays/ov051/overlay051_sub_scene_delete.s
+build build/reports/overlay051_sub_scene_delete.json: objdiff build/decomp/asm/overlays/ov051/overlay051_sub_scene_delete.o build/decomp/delinks/asm/overlays/ov051/overlay051_sub_scene_delete.o
+  target_object = build/decomp/asm/overlays/ov051/overlay051_sub_scene_delete.o
+  base_object = build/decomp/delinks/asm/overlays/ov051/overlay051_sub_scene_delete.o
+build build/reports/overlay051_sub_scene_delete.txt: match_report build/reports/overlay051_sub_scene_delete.json | tools/report_objdiff.py
+  report_json = build/reports/overlay051_sub_scene_delete.json
+  report_args = --section .text --function func_ov051_0220d9dc --require-exact
+
+build build/decomp/asm/overlays/ov051/overlay051_sub_scene_update.o: mwasmarm asm/overlays/ov051/overlay051_sub_scene_update.s
+build build/decomp/delinks/asm/overlays/ov051/overlay051_sub_scene_update.o: dsd_delink config/arm9/config.yaml | config/arm9/overlays/ov051/delinks.txt config/arm9/overlays/ov051/symbols.txt config/arm9/overlays/ov051/relocs.txt
+  object = asm/overlays/ov051/overlay051_sub_scene_update.s
+build build/reports/overlay051_sub_scene_update.json: objdiff build/decomp/asm/overlays/ov051/overlay051_sub_scene_update.o build/decomp/delinks/asm/overlays/ov051/overlay051_sub_scene_update.o
+  target_object = build/decomp/asm/overlays/ov051/overlay051_sub_scene_update.o
+  base_object = build/decomp/delinks/asm/overlays/ov051/overlay051_sub_scene_update.o
+build build/reports/overlay051_sub_scene_update.txt: match_report build/reports/overlay051_sub_scene_update.json | tools/report_objdiff.py
+  report_json = build/reports/overlay051_sub_scene_update.json
+  report_args = --section .text --function func_ov051_0220da24 --require-exact
+
+build build/decomp/asm/overlays/ov051/overlay051_sub_scene_create.o: mwasmarm asm/overlays/ov051/overlay051_sub_scene_create.s
+build build/decomp/delinks/asm/overlays/ov051/overlay051_sub_scene_create.o: dsd_delink config/arm9/config.yaml | config/arm9/overlays/ov051/delinks.txt config/arm9/overlays/ov051/symbols.txt config/arm9/overlays/ov051/relocs.txt
+  object = asm/overlays/ov051/overlay051_sub_scene_create.s
+build build/reports/overlay051_sub_scene_create.json: objdiff build/decomp/asm/overlays/ov051/overlay051_sub_scene_create.o build/decomp/delinks/asm/overlays/ov051/overlay051_sub_scene_create.o
+  target_object = build/decomp/asm/overlays/ov051/overlay051_sub_scene_create.o
+  base_object = build/decomp/delinks/asm/overlays/ov051/overlay051_sub_scene_create.o
+build build/reports/overlay051_sub_scene_create.txt: match_report build/reports/overlay051_sub_scene_create.json | tools/report_objdiff.py
+  report_json = build/reports/overlay051_sub_scene_create.json
+  report_args = --section .text --function func_ov051_0220daa4 --require-exact
+
+build build/decomp/asm/overlays/ov051/overlay051_sub_bg_apply.o: mwasmarm asm/overlays/ov051/overlay051_sub_bg_apply.s
+build build/decomp/delinks/asm/overlays/ov051/overlay051_sub_bg_apply.o: dsd_delink config/arm9/config.yaml | config/arm9/overlays/ov051/delinks.txt config/arm9/overlays/ov051/symbols.txt config/arm9/overlays/ov051/relocs.txt
+  object = asm/overlays/ov051/overlay051_sub_bg_apply.s
+build build/reports/overlay051_sub_bg_apply.json: objdiff build/decomp/asm/overlays/ov051/overlay051_sub_bg_apply.o build/decomp/delinks/asm/overlays/ov051/overlay051_sub_bg_apply.o
+  target_object = build/decomp/asm/overlays/ov051/overlay051_sub_bg_apply.o
+  base_object = build/decomp/delinks/asm/overlays/ov051/overlay051_sub_bg_apply.o
+build build/reports/overlay051_sub_bg_apply.txt: match_report build/reports/overlay051_sub_bg_apply.json | tools/report_objdiff.py
+  report_json = build/reports/overlay051_sub_bg_apply.json
+  report_args = --section .text --function func_ov051_0220db0c --require-exact
+
+build build/decomp/asm/overlays/ov051/overlay051_sub_bg_reset.o: mwasmarm asm/overlays/ov051/overlay051_sub_bg_reset.s
+build build/decomp/delinks/asm/overlays/ov051/overlay051_sub_bg_reset.o: dsd_delink config/arm9/config.yaml | config/arm9/overlays/ov051/delinks.txt config/arm9/overlays/ov051/symbols.txt config/arm9/overlays/ov051/relocs.txt
+  object = asm/overlays/ov051/overlay051_sub_bg_reset.s
+build build/reports/overlay051_sub_bg_reset.json: objdiff build/decomp/asm/overlays/ov051/overlay051_sub_bg_reset.o build/decomp/delinks/asm/overlays/ov051/overlay051_sub_bg_reset.o
+  target_object = build/decomp/asm/overlays/ov051/overlay051_sub_bg_reset.o
+  base_object = build/decomp/delinks/asm/overlays/ov051/overlay051_sub_bg_reset.o
+build build/reports/overlay051_sub_bg_reset.txt: match_report build/reports/overlay051_sub_bg_reset.json | tools/report_objdiff.py
+  report_json = build/reports/overlay051_sub_bg_reset.json
+  report_args = --section .text --function func_ov051_0220db7c --require-exact
+
+build build/decomp/asm/overlays/ov051/overlay051_main_display_control.o: mwasmarm asm/overlays/ov051/overlay051_main_display_control.s
+build build/decomp/delinks/asm/overlays/ov051/overlay051_main_display_control.o: dsd_delink config/arm9/config.yaml | config/arm9/overlays/ov051/delinks.txt config/arm9/overlays/ov051/symbols.txt config/arm9/overlays/ov051/relocs.txt
+  object = asm/overlays/ov051/overlay051_main_display_control.s
+build build/reports/overlay051_main_display_control.json: objdiff build/decomp/asm/overlays/ov051/overlay051_main_display_control.o build/decomp/delinks/asm/overlays/ov051/overlay051_main_display_control.o
+  target_object = build/decomp/asm/overlays/ov051/overlay051_main_display_control.o
+  base_object = build/decomp/delinks/asm/overlays/ov051/overlay051_main_display_control.o
+build build/reports/overlay051_main_display_control.txt: match_report build/reports/overlay051_main_display_control.json | tools/report_objdiff.py
+  report_json = build/reports/overlay051_main_display_control.json
+  report_args = --section .text --function func_ov051_0220dbc4 --require-exact
+
+build build/decomp/asm/overlays/ov051/overlay051_main_scene_construct.o: mwasmarm asm/overlays/ov051/overlay051_main_scene_construct.s
+build build/decomp/delinks/asm/overlays/ov051/overlay051_main_scene_construct.o: dsd_delink config/arm9/config.yaml | config/arm9/overlays/ov051/delinks.txt config/arm9/overlays/ov051/symbols.txt config/arm9/overlays/ov051/relocs.txt
+  object = asm/overlays/ov051/overlay051_main_scene_construct.s
+build build/reports/overlay051_main_scene_construct.json: objdiff build/decomp/asm/overlays/ov051/overlay051_main_scene_construct.o build/decomp/delinks/asm/overlays/ov051/overlay051_main_scene_construct.o
+  target_object = build/decomp/asm/overlays/ov051/overlay051_main_scene_construct.o
+  base_object = build/decomp/delinks/asm/overlays/ov051/overlay051_main_scene_construct.o
+build build/reports/overlay051_main_scene_construct.txt: match_report build/reports/overlay051_main_scene_construct.json | tools/report_objdiff.py
+  report_json = build/reports/overlay051_main_scene_construct.json
+  report_args = --section .text --function func_ov051_0220dbf0 --require-exact
+
+build build/decomp/asm/overlays/ov051/overlay051_main_scene_destroy.o: mwasmarm asm/overlays/ov051/overlay051_main_scene_destroy.s
+build build/decomp/delinks/asm/overlays/ov051/overlay051_main_scene_destroy.o: dsd_delink config/arm9/config.yaml | config/arm9/overlays/ov051/delinks.txt config/arm9/overlays/ov051/symbols.txt config/arm9/overlays/ov051/relocs.txt
+  object = asm/overlays/ov051/overlay051_main_scene_destroy.s
+build build/reports/overlay051_main_scene_destroy.json: objdiff build/decomp/asm/overlays/ov051/overlay051_main_scene_destroy.o build/decomp/delinks/asm/overlays/ov051/overlay051_main_scene_destroy.o
+  target_object = build/decomp/asm/overlays/ov051/overlay051_main_scene_destroy.o
+  base_object = build/decomp/delinks/asm/overlays/ov051/overlay051_main_scene_destroy.o
+build build/reports/overlay051_main_scene_destroy.txt: match_report build/reports/overlay051_main_scene_destroy.json | tools/report_objdiff.py
+  report_json = build/reports/overlay051_main_scene_destroy.json
+  report_args = --section .text --function func_ov051_0220dd10 --require-exact
+
+build build/decomp/asm/overlays/ov051/overlay051_main_scene_delete.o: mwasmarm asm/overlays/ov051/overlay051_main_scene_delete.s
+build build/decomp/delinks/asm/overlays/ov051/overlay051_main_scene_delete.o: dsd_delink config/arm9/config.yaml | config/arm9/overlays/ov051/delinks.txt config/arm9/overlays/ov051/symbols.txt config/arm9/overlays/ov051/relocs.txt
+  object = asm/overlays/ov051/overlay051_main_scene_delete.s
+build build/reports/overlay051_main_scene_delete.json: objdiff build/decomp/asm/overlays/ov051/overlay051_main_scene_delete.o build/decomp/delinks/asm/overlays/ov051/overlay051_main_scene_delete.o
+  target_object = build/decomp/asm/overlays/ov051/overlay051_main_scene_delete.o
+  base_object = build/decomp/delinks/asm/overlays/ov051/overlay051_main_scene_delete.o
+build build/reports/overlay051_main_scene_delete.txt: match_report build/reports/overlay051_main_scene_delete.json | tools/report_objdiff.py
+  report_json = build/reports/overlay051_main_scene_delete.json
+  report_args = --section .text --function func_ov051_0220dd44 --require-exact
+
+build build/decomp/asm/overlays/ov051/overlay051_main_scene_create.o: mwasmarm asm/overlays/ov051/overlay051_main_scene_create.s
+build build/decomp/delinks/asm/overlays/ov051/overlay051_main_scene_create.o: dsd_delink config/arm9/config.yaml | config/arm9/overlays/ov051/delinks.txt config/arm9/overlays/ov051/symbols.txt config/arm9/overlays/ov051/relocs.txt
+  object = asm/overlays/ov051/overlay051_main_scene_create.s
+build build/reports/overlay051_main_scene_create.json: objdiff build/decomp/asm/overlays/ov051/overlay051_main_scene_create.o build/decomp/delinks/asm/overlays/ov051/overlay051_main_scene_create.o
+  target_object = build/decomp/asm/overlays/ov051/overlay051_main_scene_create.o
+  base_object = build/decomp/delinks/asm/overlays/ov051/overlay051_main_scene_create.o
+build build/reports/overlay051_main_scene_create.txt: match_report build/reports/overlay051_main_scene_create.json | tools/report_objdiff.py
+  report_json = build/reports/overlay051_main_scene_create.json
+  report_args = --section .text --function func_ov051_0220dd90 --require-exact
+
+build build/decomp/asm/overlays/ov051/overlay051_main_bg_apply.o: mwasmarm asm/overlays/ov051/overlay051_main_bg_apply.s
+build build/decomp/delinks/asm/overlays/ov051/overlay051_main_bg_apply.o: dsd_delink config/arm9/config.yaml | config/arm9/overlays/ov051/delinks.txt config/arm9/overlays/ov051/symbols.txt config/arm9/overlays/ov051/relocs.txt
+  object = asm/overlays/ov051/overlay051_main_bg_apply.s
+build build/reports/overlay051_main_bg_apply.json: objdiff build/decomp/asm/overlays/ov051/overlay051_main_bg_apply.o build/decomp/delinks/asm/overlays/ov051/overlay051_main_bg_apply.o
+  target_object = build/decomp/asm/overlays/ov051/overlay051_main_bg_apply.o
+  base_object = build/decomp/delinks/asm/overlays/ov051/overlay051_main_bg_apply.o
+build build/reports/overlay051_main_bg_apply.txt: match_report build/reports/overlay051_main_bg_apply.json | tools/report_objdiff.py
+  report_json = build/reports/overlay051_main_bg_apply.json
+  report_args = --section .text --function func_ov051_0220ddf8 --require-exact
+
+build build/decomp/asm/overlays/ov051/overlay051_main_bg_reset.o: mwasmarm asm/overlays/ov051/overlay051_main_bg_reset.s
+build build/decomp/delinks/asm/overlays/ov051/overlay051_main_bg_reset.o: dsd_delink config/arm9/config.yaml | config/arm9/overlays/ov051/delinks.txt config/arm9/overlays/ov051/symbols.txt config/arm9/overlays/ov051/relocs.txt
+  object = asm/overlays/ov051/overlay051_main_bg_reset.s
+build build/reports/overlay051_main_bg_reset.json: objdiff build/decomp/asm/overlays/ov051/overlay051_main_bg_reset.o build/decomp/delinks/asm/overlays/ov051/overlay051_main_bg_reset.o
+  target_object = build/decomp/asm/overlays/ov051/overlay051_main_bg_reset.o
+  base_object = build/decomp/delinks/asm/overlays/ov051/overlay051_main_bg_reset.o
+build build/reports/overlay051_main_bg_reset.txt: match_report build/reports/overlay051_main_bg_reset.json | tools/report_objdiff.py
+  report_json = build/reports/overlay051_main_bg_reset.json
+  report_args = --section .text --function func_ov051_0220de68 --require-exact
+
+build overlay051_matching: phony build/reports/overlay051_base_construct.txt build/reports/overlay051_shared_update.txt build/reports/overlay051_transform_apply.txt build/reports/overlay051_bounds_compute.txt build/reports/overlay051_sub_display_control.txt build/reports/overlay051_sub_scene_construct.txt build/reports/overlay051_sub_scene_destroy.txt build/reports/overlay051_sub_scene_delete.txt build/reports/overlay051_sub_scene_update.txt build/reports/overlay051_sub_scene_create.txt build/reports/overlay051_sub_bg_apply.txt build/reports/overlay051_sub_bg_reset.txt build/reports/overlay051_main_display_control.txt build/reports/overlay051_main_scene_construct.txt build/reports/overlay051_main_scene_destroy.txt build/reports/overlay051_main_scene_delete.txt build/reports/overlay051_main_scene_create.txt build/reports/overlay051_main_bg_apply.txt build/reports/overlay051_main_bg_reset.txt

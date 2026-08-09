@@ -2,3 +2,70 @@
     .ctor       start:0x0220dec4 end:0x0220dec4 kind:rodata align:4
     .data       start:0x0220dee0 end:0x0220dfc0 kind:data align:32
     .bss        start:0x0220dfc0 end:0x0220dfc0 kind:bss align:32
+
+asm/overlays/ov051/overlay051_base_construct.s:
+    categories: Game code
+    .text start:0x0220d600 end:0x0220d658
+src/overlays/ov051/overlay051_scene_lifecycle.c:
+    categories: Game code
+    .text start:0x0220d658 end:0x0220d688
+asm/overlays/ov051/overlay051_shared_update.s:
+    categories: Game code
+    .text start:0x0220d688 end:0x0220d774
+asm/overlays/ov051/overlay051_transform_apply.s:
+    categories: Game code
+    .text start:0x0220d774 end:0x0220d7bc
+asm/overlays/ov051/overlay051_bounds_compute.s:
+    categories: Game code
+    .text start:0x0220d7bc end:0x0220d84c
+asm/overlays/ov051/overlay051_sub_display_control.s:
+    categories: Game code
+    .text start:0x0220d84c end:0x0220d878
+asm/overlays/ov051/overlay051_sub_scene_construct.s:
+    categories: Game code
+    .text start:0x0220d878 end:0x0220d99c
+asm/overlays/ov051/overlay051_sub_scene_destroy.s:
+    categories: Game code
+    .text start:0x0220d99c end:0x0220d9dc
+asm/overlays/ov051/overlay051_sub_scene_delete.s:
+    categories: Game code
+    .text start:0x0220d9dc end:0x0220da24
+asm/overlays/ov051/overlay051_sub_scene_update.s:
+    categories: Game code
+    .text start:0x0220da24 end:0x0220daa4
+asm/overlays/ov051/overlay051_sub_scene_create.s:
+    categories: Game code
+    .text start:0x0220daa4 end:0x0220db0c
+asm/overlays/ov051/overlay051_sub_bg_apply.s:
+    categories: Game code
+    .text start:0x0220db0c end:0x0220db7c
+asm/overlays/ov051/overlay051_sub_bg_reset.s:
+    categories: Game code
+    .text start:0x0220db7c end:0x0220dbc4
+asm/overlays/ov051/overlay051_main_display_control.s:
+    categories: Game code
+    .text start:0x0220dbc4 end:0x0220dbf0
+asm/overlays/ov051/overlay051_main_scene_construct.s:
+    categories: Game code
+    .text start:0x0220dbf0 end:0x0220dd10
+asm/overlays/ov051/overlay051_main_scene_destroy.s:
+    categories: Game code
+    .text start:0x0220dd10 end:0x0220dd44
+asm/overlays/ov051/overlay051_main_scene_delete.s:
+    categories: Game code
+    .text start:0x0220dd44 end:0x0220dd80
+src/overlays/ov051/overlay051_update_wrapper.c:
+    categories: Game code
+    .text start:0x0220dd80 end:0x0220dd90
+asm/overlays/ov051/overlay051_main_scene_create.s:
+    categories: Game code
+    .text start:0x0220dd90 end:0x0220ddf8
+asm/overlays/ov051/overlay051_main_bg_apply.s:
+    categories: Game code
+    .text start:0x0220ddf8 end:0x0220de68
+asm/overlays/ov051/overlay051_main_bg_reset.s:
+    categories: Game code
+    .text start:0x0220de68 end:0x0220deb0
+src/overlays/ov051/overlay051_virtual_noops.c:
+    categories: Game code
+    .text start:0x0220deb0 end:0x0220dec4
