@@ -6694,3 +6694,5 @@ build/decomp/delinks/asm/overlays/ov134/overlay134_0221d6c0.o = build/decomp/asm
 build/decomp/delinks/asm/overlays/ov134/overlay134_data.o = build/decomp/asm/overlays/ov134/overlay134_data.o
 build/decomp/delinks/asm/overlays/ov135/overlay135_0221d6c0.o = build/decomp/asm/overlays/ov135/overlay135_0221d6c0.o
 build/decomp/delinks/asm/overlays/ov135/overlay135_data.o = build/decomp/asm/overlays/ov135/overlay135_data.o
+build/decomp/delinks/asm/overlays/ov136/overlay136_0221d6c0.o = build/decomp/asm/overlays/ov136/overlay136_0221d6c0.o
+build/decomp/delinks/asm/overlays/ov136/overlay136_data.o = build/decomp/asm/overlays/ov136/overlay136_data.o
