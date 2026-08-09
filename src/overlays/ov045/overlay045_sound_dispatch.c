@@ -1,0 +1,65 @@
+#include "tingle/types.h"
+
+/*
+ * Overlay 45 sound dispatch. This recovered selector maps sprite/object types
+ * to a preparation sound ID and a playback sound ID, with selector 8 using a
+ * second 0..49 subtype table. The matching fallback preserves the original
+ * compiler's duplicated dispatch arms; this file is its portable equivalent.
+ */
+
+struct SoundPair {
+    u16 prepare;
+    u16 play;
+};
+
+extern "C" void *gSoundContext;
+extern "C" void func_0205974c(void *context, s32 soundId);
+extern "C" void Sound_Play(void *context, s32 soundId, s32 argument);
+
+/*
+ * Prepare and play the sound pair for selector 0..17 and return the preparation
+ * ID. Selector 8 indexes the subtype mapping with the second input. Invalid
+ * selectors or selector-8 subtypes above 49 return zero without touching audio
+ * state. The preparation and playback IDs intentionally differ for several
+ * entries; both calls use gSoundContext and Sound_Play receives argument zero.
+ */
+extern "C" s32 func_ov045_0220c9e8(u32 selector, u32 subtype)
+{
+    static const SoundPair top[18] = {
+        {0x121, 0x121}, {0x124, 0x124}, {0x24c, 0x1a1},
+        {0x246, 0x19b}, {0x250, 0x1a5}, {0x120, 0x120},
+        {0x24b, 0x1a0}, {0x122, 0x122}, {0, 0},
+        {0x125, 0x125}, {0x128, 0x128}, {0x24d, 0x1a2},
+        {0x24a, 0x19f}, {0x245, 0x19a}, {0x252, 0x1a7},
+        {0x252, 0x1a7}, {0x252, 0x1a7}, {0x252, 0x1a7}
+    };
+    static const SoundPair subtype8[50] = {
+        {0x247,0x19c}, {0x127,0x127}, {0x249,0x19e}, {0x123,0x123},
+        {0x253,0x1a8}, {0x243,0x198}, {0x128,0x128}, {0x24e,0x1a3},
+        {0x255,0x1aa}, {0x244,0x199}, {0x129,0x129}, {0x248,0x19d},
+        {0x251,0x1a6}, {0x240,0x195}, {0x126,0x126}, {0x244,0x199},
+        {0x129,0x129}, {0x248,0x19d}, {0x249,0x19e}, {0x123,0x123},
+        {0x253,0x1a8}, {0x251,0x1a6}, {0x240,0x195}, {0x126,0x126},
+        {0x244,0x199}, {0x129,0x129}, {0x248,0x19d}, {0x249,0x19e},
+        {0x123,0x123}, {0x253,0x1a8}, {0x251,0x1a6}, {0x240,0x195},
+        {0x126,0x126}, {0x24f,0x1a4}, {0x23f,0x194}, {0x24d,0x1a2},
+        {0x241,0x196}, {0x242,0x197}, {0x24b,0x1a0}, {0x24a,0x19f},
+        {0x247,0x19c}, {0x247,0x19c}, {0x245,0x19a}, {0x127,0x127},
+        {0x125,0x125}, {0x256,0x1ab}, {0x254,0x1a9}, {0x252,0x1a7},
+        {0x252,0x1a7}, {0x252,0x1a7}
+    };
+
+    if (selector > 17)
+        return 0;
+    SoundPair pair;
+    if (selector == 8) {
+        if (subtype > 49)
+            return 0;
+        pair = subtype8[subtype];
+    } else {
+        pair = top[selector];
+    }
+    func_0205974c(gSoundContext, pair.prepare);
+    Sound_Play(gSoundContext, pair.play, 0);
+    return pair.prepare;
+}

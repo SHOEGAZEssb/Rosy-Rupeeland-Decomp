@@ -12,6 +12,9 @@ asm/overlays/ov045/overlay045_effect_update.s:
 src/overlays/ov045/overlay045_emitter_lifecycle.c:
     categories: Game code
     .text start:0x0220b7fc end:0x0220b9b8
+asm/overlays/ov045/overlay045_emitter_tick.s:
+    categories: Game code
+    .text start:0x0220b9b8 end:0x0220bc34
 src/overlays/ov045/overlay045_display_object.c:
     categories: Game code
     .text start:0x0220bc34 end:0x0220be10
@@ -42,3 +45,15 @@ src/overlays/ov045/overlay045_derived_sprite_scene.c:
 asm/overlays/ov045/overlay045_sprite_factory.s:
     categories: Game code
     .text start:0x0220c48c end:0x0220c9e8
+asm/overlays/ov045/overlay045_sound_dispatch.s:
+    categories: Game code
+    .text start:0x0220c9e8 end:0x0220d2d8
+asm/overlays/ov045/overlay045_sound_stop.s:
+    categories: Game code
+    .text start:0x0220d2d8 end:0x0220d2f8
+asm/overlays/ov045/overlay045_preview_draw.s:
+    categories: Game code
+    .text start:0x0220d2f8 end:0x0220d454
+asm/overlays/ov045/overlay045_effect_delete.s:
+    categories: Game code
+    .text start:0x0220d454 end:0x0220d47c

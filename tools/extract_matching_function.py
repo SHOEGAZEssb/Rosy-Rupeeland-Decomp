@@ -47,6 +47,7 @@ def main() -> int:
     ]
     output.extend(f".extern {symbol}" for symbol in externs)
     output.append("")
+    output.append(f".global {args.function}")
     output.extend(body)
     output.append(f".size {args.function}, . - {args.function}")
     output.append("")
