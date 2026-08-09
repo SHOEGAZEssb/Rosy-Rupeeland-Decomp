@@ -2,3 +2,81 @@
     .ctor       start:0x0220e314 end:0x0220e314 kind:rodata align:4
     .data       start:0x0220e320 end:0x0220e400 kind:data align:32
     .bss        start:0x0220e400 end:0x0220e400 kind:bss align:32
+asm/overlays/ov050/overlay050_effect_construct.s:
+    categories: Game code
+    .text start:0x0220d600 end:0x0220d6b0
+asm/overlays/ov050/overlay050_effect_destroy.s:
+    categories: Game code
+    .text start:0x0220d6b0 end:0x0220d6e8
+asm/overlays/ov050/overlay050_effect_update.s:
+    categories: Game code
+    .text start:0x0220d6e8 end:0x0220d7ac
+src/overlays/ov050/overlay050_sprite_alpha.c:
+    categories: Game code
+    .text start:0x0220d7ac end:0x0220d7c4
+asm/overlays/ov050/overlay050_particle_reset.s:
+    categories: Game code
+    .text start:0x0220d7c4 end:0x0220d824
+asm/overlays/ov050/overlay050_effect_create.s:
+    categories: Game code
+    .text start:0x0220d824 end:0x0220d874
+src/overlays/ov050/overlay050_effect_base.c:
+    categories: Game code
+    .text start:0x0220d874 end:0x0220d894
+asm/overlays/ov050/overlay050_base_destroy.s:
+    categories: Game code
+    .text start:0x0220d894 end:0x0220d8b4
+asm/overlays/ov050/overlay050_effect_delete.s:
+    categories: Game code
+    .text start:0x0220d8b4 end:0x0220d8f4
+asm/overlays/ov050/overlay050_manager_destroy.s:
+    categories: Game code
+    .text start:0x0220d8f4 end:0x0220d95c
+asm/overlays/ov050/overlay050_manager_delete.s:
+    categories: Game code
+    .text start:0x0220d95c end:0x0220d9c4
+asm/overlays/ov050/overlay050_effect_factory.s:
+    categories: Game code
+    .text start:0x0220d9c4 end:0x0220db3c
+src/overlays/ov050/overlay050_list_noop.c:
+    categories: Game code
+    .text start:0x0220db3c end:0x0220db40
+asm/overlays/ov050/overlay050_alpha_apply.s:
+    categories: Game code
+    .text start:0x0220db40 end:0x0220db84
+asm/overlays/ov050/overlay050_scene_construct.s:
+    categories: Game code
+    .text start:0x0220db84 end:0x0220dcb8
+asm/overlays/ov050/overlay050_scene_destroy.s:
+    categories: Game code
+    .text start:0x0220dcb8 end:0x0220dd50
+asm/overlays/ov050/overlay050_scene_delete.s:
+    categories: Game code
+    .text start:0x0220dd50 end:0x0220ddf0
+asm/overlays/ov050/overlay050_scene_update.s:
+    categories: Game code
+    .text start:0x0220ddf0 end:0x0220e168
+asm/overlays/ov050/overlay050_transform_apply.s:
+    categories: Game code
+    .text start:0x0220e168 end:0x0220e1a0
+asm/overlays/ov050/overlay050_scene_create.s:
+    categories: Game code
+    .text start:0x0220e1a0 end:0x0220e204
+asm/overlays/ov050/overlay050_scene_set30.s:
+    categories: Game code
+    .text start:0x0220e204 end:0x0220e224
+asm/overlays/ov050/overlay050_scene_ready.s:
+    categories: Game code
+    .text start:0x0220e224 end:0x0220e26c
+asm/overlays/ov050/overlay050_scene_set34.s:
+    categories: Game code
+    .text start:0x0220e26c end:0x0220e294
+asm/overlays/ov050/overlay050_scene_font_control.s:
+    categories: Game code
+    .text start:0x0220e294 end:0x0220e2c8
+src/overlays/ov050/overlay050_virtual_noops.c:
+    categories: Game code
+    .text start:0x0220e2c8 end:0x0220e2d8
+src/overlays/ov050/overlay050_delete.c:
+    categories: Game code
+    .text start:0x0220e2d8 end:0x0220e314
