@@ -1,3 +1,36 @@
     .text       start:0x0220b740 end:0x0220bd4c kind:code align:32
     .ctor       start:0x0220bd4c end:0x0220bd4c kind:rodata align:4
     .bss        start:0x0220bd60 end:0x0220bd60 kind:bss align:32
+src/overlays/ov048/overlay048_oam_buffer.c:
+    categories: Game code
+    .text start:0x0220b740 end:0x0220b7b8
+asm/overlays/ov048/overlay048_display_setup.s:
+    categories: Game code
+    .text start:0x0220b7b8 end:0x0220b9a0
+asm/overlays/ov048/overlay048_power_control.s:
+    categories: Game code
+    .text start:0x0220b9a0 end:0x0220b9bc
+asm/overlays/ov048/overlay048_vram_route.s:
+    categories: Game code
+    .text start:0x0220b9bc end:0x0220ba54
+asm/overlays/ov048/overlay048_capture_config.s:
+    categories: Game code
+    .text start:0x0220ba54 end:0x0220ba90
+asm/overlays/ov048/overlay048_display_apply.s:
+    categories: Game code
+    .text start:0x0220ba90 end:0x0220bad4
+src/overlays/ov048/overlay048_display_toggle.c:
+    categories: Game code
+    .text start:0x0220bad4 end:0x0220baec
+asm/overlays/ov048/overlay048_quad_a.s:
+    categories: Game code
+    .text start:0x0220baec end:0x0220bbfc
+asm/overlays/ov048/overlay048_clear_color.s:
+    categories: Game code
+    .text start:0x0220bbfc end:0x0220bc28
+asm/overlays/ov048/overlay048_capture_disable.s:
+    categories: Game code
+    .text start:0x0220bc28 end:0x0220bc3c
+asm/overlays/ov048/overlay048_quad_b.s:
+    categories: Game code
+    .text start:0x0220bc3c end:0x0220bd4c

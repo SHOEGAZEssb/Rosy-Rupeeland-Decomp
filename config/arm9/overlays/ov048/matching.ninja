@@ -1,0 +1,93 @@
+# Exact matching fallbacks for volatile-MMIO overlay 48 routines.
+
+build build/decomp/asm/overlays/ov048/overlay048_display_setup.o: mwasmarm asm/overlays/ov048/overlay048_display_setup.s
+build build/decomp/delinks/asm/overlays/ov048/overlay048_display_setup.o: dsd_delink config/arm9/config.yaml | config/arm9/overlays/ov048/delinks.txt config/arm9/overlays/ov048/symbols.txt config/arm9/overlays/ov048/relocs.txt
+  object = asm/overlays/ov048/overlay048_display_setup.s
+build build/reports/overlay048_display_setup.json: objdiff build/decomp/asm/overlays/ov048/overlay048_display_setup.o build/decomp/delinks/asm/overlays/ov048/overlay048_display_setup.o
+  target_object = build/decomp/asm/overlays/ov048/overlay048_display_setup.o
+  base_object = build/decomp/delinks/asm/overlays/ov048/overlay048_display_setup.o
+build build/reports/overlay048_display_setup.txt: match_report build/reports/overlay048_display_setup.json | tools/report_objdiff.py
+  report_json = build/reports/overlay048_display_setup.json
+  report_args = --section .text --function func_ov048_0220b7b8 --require-exact
+
+build build/decomp/asm/overlays/ov048/overlay048_power_control.o: mwasmarm asm/overlays/ov048/overlay048_power_control.s
+build build/decomp/delinks/asm/overlays/ov048/overlay048_power_control.o: dsd_delink config/arm9/config.yaml | config/arm9/overlays/ov048/delinks.txt config/arm9/overlays/ov048/symbols.txt config/arm9/overlays/ov048/relocs.txt
+  object = asm/overlays/ov048/overlay048_power_control.s
+build build/reports/overlay048_power_control.json: objdiff build/decomp/asm/overlays/ov048/overlay048_power_control.o build/decomp/delinks/asm/overlays/ov048/overlay048_power_control.o
+  target_object = build/decomp/asm/overlays/ov048/overlay048_power_control.o
+  base_object = build/decomp/delinks/asm/overlays/ov048/overlay048_power_control.o
+build build/reports/overlay048_power_control.txt: match_report build/reports/overlay048_power_control.json | tools/report_objdiff.py
+  report_json = build/reports/overlay048_power_control.json
+  report_args = --section .text --function func_ov048_0220b9a0 --require-exact
+
+build build/decomp/asm/overlays/ov048/overlay048_vram_route.o: mwasmarm asm/overlays/ov048/overlay048_vram_route.s
+build build/decomp/delinks/asm/overlays/ov048/overlay048_vram_route.o: dsd_delink config/arm9/config.yaml | config/arm9/overlays/ov048/delinks.txt config/arm9/overlays/ov048/symbols.txt config/arm9/overlays/ov048/relocs.txt
+  object = asm/overlays/ov048/overlay048_vram_route.s
+build build/reports/overlay048_vram_route.json: objdiff build/decomp/asm/overlays/ov048/overlay048_vram_route.o build/decomp/delinks/asm/overlays/ov048/overlay048_vram_route.o
+  target_object = build/decomp/asm/overlays/ov048/overlay048_vram_route.o
+  base_object = build/decomp/delinks/asm/overlays/ov048/overlay048_vram_route.o
+build build/reports/overlay048_vram_route.txt: match_report build/reports/overlay048_vram_route.json | tools/report_objdiff.py
+  report_json = build/reports/overlay048_vram_route.json
+  report_args = --section .text --function func_ov048_0220b9bc --require-exact
+
+build build/decomp/asm/overlays/ov048/overlay048_capture_config.o: mwasmarm asm/overlays/ov048/overlay048_capture_config.s
+build build/decomp/delinks/asm/overlays/ov048/overlay048_capture_config.o: dsd_delink config/arm9/config.yaml | config/arm9/overlays/ov048/delinks.txt config/arm9/overlays/ov048/symbols.txt config/arm9/overlays/ov048/relocs.txt
+  object = asm/overlays/ov048/overlay048_capture_config.s
+build build/reports/overlay048_capture_config.json: objdiff build/decomp/asm/overlays/ov048/overlay048_capture_config.o build/decomp/delinks/asm/overlays/ov048/overlay048_capture_config.o
+  target_object = build/decomp/asm/overlays/ov048/overlay048_capture_config.o
+  base_object = build/decomp/delinks/asm/overlays/ov048/overlay048_capture_config.o
+build build/reports/overlay048_capture_config.txt: match_report build/reports/overlay048_capture_config.json | tools/report_objdiff.py
+  report_json = build/reports/overlay048_capture_config.json
+  report_args = --section .text --function func_ov048_0220ba54 --require-exact
+
+build build/decomp/asm/overlays/ov048/overlay048_display_apply.o: mwasmarm asm/overlays/ov048/overlay048_display_apply.s
+build build/decomp/delinks/asm/overlays/ov048/overlay048_display_apply.o: dsd_delink config/arm9/config.yaml | config/arm9/overlays/ov048/delinks.txt config/arm9/overlays/ov048/symbols.txt config/arm9/overlays/ov048/relocs.txt
+  object = asm/overlays/ov048/overlay048_display_apply.s
+build build/reports/overlay048_display_apply.json: objdiff build/decomp/asm/overlays/ov048/overlay048_display_apply.o build/decomp/delinks/asm/overlays/ov048/overlay048_display_apply.o
+  target_object = build/decomp/asm/overlays/ov048/overlay048_display_apply.o
+  base_object = build/decomp/delinks/asm/overlays/ov048/overlay048_display_apply.o
+build build/reports/overlay048_display_apply.txt: match_report build/reports/overlay048_display_apply.json | tools/report_objdiff.py
+  report_json = build/reports/overlay048_display_apply.json
+  report_args = --section .text --function func_ov048_0220ba90 --require-exact
+
+build build/decomp/asm/overlays/ov048/overlay048_quad_a.o: mwasmarm asm/overlays/ov048/overlay048_quad_a.s
+build build/decomp/delinks/asm/overlays/ov048/overlay048_quad_a.o: dsd_delink config/arm9/config.yaml | config/arm9/overlays/ov048/delinks.txt config/arm9/overlays/ov048/symbols.txt config/arm9/overlays/ov048/relocs.txt
+  object = asm/overlays/ov048/overlay048_quad_a.s
+build build/reports/overlay048_quad_a.json: objdiff build/decomp/asm/overlays/ov048/overlay048_quad_a.o build/decomp/delinks/asm/overlays/ov048/overlay048_quad_a.o
+  target_object = build/decomp/asm/overlays/ov048/overlay048_quad_a.o
+  base_object = build/decomp/delinks/asm/overlays/ov048/overlay048_quad_a.o
+build build/reports/overlay048_quad_a.txt: match_report build/reports/overlay048_quad_a.json | tools/report_objdiff.py
+  report_json = build/reports/overlay048_quad_a.json
+  report_args = --section .text --function func_ov048_0220baec --require-exact
+
+build build/decomp/asm/overlays/ov048/overlay048_clear_color.o: mwasmarm asm/overlays/ov048/overlay048_clear_color.s
+build build/decomp/delinks/asm/overlays/ov048/overlay048_clear_color.o: dsd_delink config/arm9/config.yaml | config/arm9/overlays/ov048/delinks.txt config/arm9/overlays/ov048/symbols.txt config/arm9/overlays/ov048/relocs.txt
+  object = asm/overlays/ov048/overlay048_clear_color.s
+build build/reports/overlay048_clear_color.json: objdiff build/decomp/asm/overlays/ov048/overlay048_clear_color.o build/decomp/delinks/asm/overlays/ov048/overlay048_clear_color.o
+  target_object = build/decomp/asm/overlays/ov048/overlay048_clear_color.o
+  base_object = build/decomp/delinks/asm/overlays/ov048/overlay048_clear_color.o
+build build/reports/overlay048_clear_color.txt: match_report build/reports/overlay048_clear_color.json | tools/report_objdiff.py
+  report_json = build/reports/overlay048_clear_color.json
+  report_args = --section .text --function func_ov048_0220bbfc --require-exact
+
+build build/decomp/asm/overlays/ov048/overlay048_capture_disable.o: mwasmarm asm/overlays/ov048/overlay048_capture_disable.s
+build build/decomp/delinks/asm/overlays/ov048/overlay048_capture_disable.o: dsd_delink config/arm9/config.yaml | config/arm9/overlays/ov048/delinks.txt config/arm9/overlays/ov048/symbols.txt config/arm9/overlays/ov048/relocs.txt
+  object = asm/overlays/ov048/overlay048_capture_disable.s
+build build/reports/overlay048_capture_disable.json: objdiff build/decomp/asm/overlays/ov048/overlay048_capture_disable.o build/decomp/delinks/asm/overlays/ov048/overlay048_capture_disable.o
+  target_object = build/decomp/asm/overlays/ov048/overlay048_capture_disable.o
+  base_object = build/decomp/delinks/asm/overlays/ov048/overlay048_capture_disable.o
+build build/reports/overlay048_capture_disable.txt: match_report build/reports/overlay048_capture_disable.json | tools/report_objdiff.py
+  report_json = build/reports/overlay048_capture_disable.json
+  report_args = --section .text --function func_ov048_0220bc28 --require-exact
+
+build build/decomp/asm/overlays/ov048/overlay048_quad_b.o: mwasmarm asm/overlays/ov048/overlay048_quad_b.s
+build build/decomp/delinks/asm/overlays/ov048/overlay048_quad_b.o: dsd_delink config/arm9/config.yaml | config/arm9/overlays/ov048/delinks.txt config/arm9/overlays/ov048/symbols.txt config/arm9/overlays/ov048/relocs.txt
+  object = asm/overlays/ov048/overlay048_quad_b.s
+build build/reports/overlay048_quad_b.json: objdiff build/decomp/asm/overlays/ov048/overlay048_quad_b.o build/decomp/delinks/asm/overlays/ov048/overlay048_quad_b.o
+  target_object = build/decomp/asm/overlays/ov048/overlay048_quad_b.o
+  base_object = build/decomp/delinks/asm/overlays/ov048/overlay048_quad_b.o
+build build/reports/overlay048_quad_b.txt: match_report build/reports/overlay048_quad_b.json | tools/report_objdiff.py
+  report_json = build/reports/overlay048_quad_b.json
+  report_args = --section .text --function func_ov048_0220bc3c --require-exact
+
+build overlay048_matching: phony build/reports/overlay048_display_setup.txt build/reports/overlay048_power_control.txt build/reports/overlay048_vram_route.txt build/reports/overlay048_capture_config.txt build/reports/overlay048_display_apply.txt build/reports/overlay048_quad_a.txt build/reports/overlay048_clear_color.txt build/reports/overlay048_capture_disable.txt build/reports/overlay048_quad_b.txt
