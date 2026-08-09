@@ -3,3 +3,31 @@
     .ctor       start:0x0220dc88 end:0x0220dc8c kind:rodata align:4
     .data       start:0x0220dca0 end:0x0220dd40 kind:data align:32
     .bss        start:0x0220dd40 end:0x0220ddc0 kind:bss align:32
+
+src/overlays/ov053/overlay053_embedded_record.c:
+    categories: Game code
+    .text start:0x0220d600 end:0x0220d624
+asm/overlays/ov053/overlay053_scene_construct.s:
+    categories: Game code
+    .text start:0x0220d624 end:0x0220d7fc
+asm/overlays/ov053/overlay053_scene_destroy.s:
+    categories: Game code
+    .text start:0x0220d7fc end:0x0220d850
+asm/overlays/ov053/overlay053_scene_delete.s:
+    categories: Game code
+    .text start:0x0220d850 end:0x0220d8ac
+asm/overlays/ov053/overlay053_scene_update.s:
+    categories: Game code
+    .text start:0x0220d8ac end:0x0220da0c
+asm/overlays/ov053/overlay053_scene_create.s:
+    categories: Game code
+    .text start:0x0220da0c end:0x0220da60
+asm/overlays/ov053/overlay053_graphics_setup.s:
+    categories: Game code
+    .text start:0x0220da60 end:0x0220db70
+src/overlays/ov053/overlay053_small_helpers.c:
+    categories: Game code
+    .text start:0x0220db70 end:0x0220dbb4
+asm/overlays/ov053/overlay053_static_init.s:
+    categories: Game code
+    .init start:0x0220dbb4 end:0x0220dc88

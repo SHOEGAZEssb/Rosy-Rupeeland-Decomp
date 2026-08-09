@@ -41182,6 +41182,55 @@ build build/reports/overlay052_message_fields.txt: match_report build/reports/ov
 build overlay052_small: phony build/reports/overlay052_message_fields.txt
 build overlay052: phony overlay052_small overlay052_matching
 
+subninja config/arm9/overlays/ov053/matching.ninja
+
+overlay053_small_cflags = -proc arm946e -O4 -inline off -interworking -Cpp_exceptions off -lang c++
+build build/decomp/src/overlays/ov053/overlay053_embedded_record.o: mwccarm src/overlays/ov053/overlay053_embedded_record.c | include/tingle/types.h
+  source = src/overlays/ov053/overlay053_embedded_record.c
+  cflags = $overlay053_small_cflags
+build build/decomp/delinks/src/overlays/ov053/overlay053_embedded_record.o: dsd_delink config/arm9/config.yaml | config/arm9/overlays/ov053/delinks.txt config/arm9/overlays/ov053/symbols.txt config/arm9/overlays/ov053/relocs.txt
+  object = src/overlays/ov053/overlay053_embedded_record.c
+build build/reports/overlay053_embedded_record.json: objdiff build/decomp/src/overlays/ov053/overlay053_embedded_record.o build/decomp/delinks/src/overlays/ov053/overlay053_embedded_record.o
+  target_object = build/decomp/src/overlays/ov053/overlay053_embedded_record.o
+  base_object = build/decomp/delinks/src/overlays/ov053/overlay053_embedded_record.o
+build build/reports/overlay053_embedded_record.txt: match_report build/reports/overlay053_embedded_record.json | tools/report_objdiff.py
+  report_json = build/reports/overlay053_embedded_record.json
+  report_args = --section .text --function func_ov053_0220d600 --require-exact
+build build/decomp/src/overlays/ov053/overlay053_small_helpers.o: mwccarm src/overlays/ov053/overlay053_small_helpers.c | include/tingle/types.h
+  source = src/overlays/ov053/overlay053_small_helpers.c
+  cflags = $overlay053_small_cflags
+build build/decomp/delinks/src/overlays/ov053/overlay053_small_helpers.o: dsd_delink config/arm9/config.yaml | config/arm9/overlays/ov053/delinks.txt config/arm9/overlays/ov053/symbols.txt config/arm9/overlays/ov053/relocs.txt
+  object = src/overlays/ov053/overlay053_small_helpers.c
+build build/reports/overlay053_small_helpers.json: objdiff build/decomp/src/overlays/ov053/overlay053_small_helpers.o build/decomp/delinks/src/overlays/ov053/overlay053_small_helpers.o
+  target_object = build/decomp/src/overlays/ov053/overlay053_small_helpers.o
+  base_object = build/decomp/delinks/src/overlays/ov053/overlay053_small_helpers.o
+build build/reports/overlay053_noop_70.txt: match_report build/reports/overlay053_small_helpers.json | tools/report_objdiff.py
+  report_json = build/reports/overlay053_small_helpers.json
+  report_args = --section .text --function func_ov053_0220db70 --require-exact
+build build/reports/overlay053_noop_74.txt: match_report build/reports/overlay053_small_helpers.json | tools/report_objdiff.py
+  report_json = build/reports/overlay053_small_helpers.json
+  report_args = --section .text --function func_ov053_0220db74 --require-exact
+build build/reports/overlay053_noop_78.txt: match_report build/reports/overlay053_small_helpers.json | tools/report_objdiff.py
+  report_json = build/reports/overlay053_small_helpers.json
+  report_args = --section .text --function func_ov053_0220db78 --require-exact
+build build/reports/overlay053_noop_7c.txt: match_report build/reports/overlay053_small_helpers.json | tools/report_objdiff.py
+  report_json = build/reports/overlay053_small_helpers.json
+  report_args = --section .text --function func_ov053_0220db7c --require-exact
+build build/reports/overlay053_noop_80.txt: match_report build/reports/overlay053_small_helpers.json | tools/report_objdiff.py
+  report_json = build/reports/overlay053_small_helpers.json
+  report_args = --section .text --function func_ov053_0220db80 --require-exact
+build build/reports/overlay053_coordinate_init.txt: match_report build/reports/overlay053_small_helpers.json | tools/report_objdiff.py
+  report_json = build/reports/overlay053_small_helpers.json
+  report_args = --section .text --function func_ov053_0220db84 --require-exact
+build build/reports/overlay053_noop_9c.txt: match_report build/reports/overlay053_small_helpers.json | tools/report_objdiff.py
+  report_json = build/reports/overlay053_small_helpers.json
+  report_args = --section .text --function func_ov053_0220db9c --require-exact
+build build/reports/overlay053_heap_delete.txt: match_report build/reports/overlay053_small_helpers.json | tools/report_objdiff.py
+  report_json = build/reports/overlay053_small_helpers.json
+  report_args = --section .text --function func_ov053_0220dba0 --require-exact
+build overlay053_small: phony build/reports/overlay053_embedded_record.txt build/reports/overlay053_noop_70.txt build/reports/overlay053_noop_74.txt build/reports/overlay053_noop_78.txt build/reports/overlay053_noop_7c.txt build/reports/overlay053_noop_80.txt build/reports/overlay053_coordinate_init.txt build/reports/overlay053_noop_9c.txt build/reports/overlay053_heap_delete.txt
+build overlay053: phony overlay053_small overlay053_matching
+
 
 
 # Keep every configured link replacement built before preparing the linker object list.
@@ -41239,4 +41288,5 @@ build link_replacement_objects_50: phony build/decomp/src/overlays/ov049/overlay
 build link_replacement_objects_51: phony build/decomp/asm/overlays/ov050/overlay050_effect_construct.o build/decomp/asm/overlays/ov050/overlay050_effect_destroy.o build/decomp/asm/overlays/ov050/overlay050_effect_update.o build/decomp/src/overlays/ov050/overlay050_sprite_alpha.o build/decomp/asm/overlays/ov050/overlay050_particle_reset.o build/decomp/asm/overlays/ov050/overlay050_effect_create.o build/decomp/src/overlays/ov050/overlay050_effect_base.o build/decomp/asm/overlays/ov050/overlay050_base_destroy.o build/decomp/asm/overlays/ov050/overlay050_effect_delete.o build/decomp/asm/overlays/ov050/overlay050_manager_destroy.o build/decomp/asm/overlays/ov050/overlay050_manager_delete.o build/decomp/asm/overlays/ov050/overlay050_effect_factory.o build/decomp/src/overlays/ov050/overlay050_list_noop.o build/decomp/asm/overlays/ov050/overlay050_alpha_apply.o build/decomp/asm/overlays/ov050/overlay050_scene_construct.o build/decomp/asm/overlays/ov050/overlay050_scene_destroy.o build/decomp/asm/overlays/ov050/overlay050_scene_delete.o build/decomp/asm/overlays/ov050/overlay050_scene_update.o build/decomp/asm/overlays/ov050/overlay050_transform_apply.o build/decomp/asm/overlays/ov050/overlay050_scene_create.o build/decomp/asm/overlays/ov050/overlay050_scene_set30.o build/decomp/asm/overlays/ov050/overlay050_scene_ready.o build/decomp/asm/overlays/ov050/overlay050_scene_set34.o build/decomp/asm/overlays/ov050/overlay050_scene_font_control.o build/decomp/src/overlays/ov050/overlay050_virtual_noops.o build/decomp/src/overlays/ov050/overlay050_delete.o
 build link_replacement_objects_52: phony build/decomp/asm/overlays/ov051/overlay051_base_construct.o build/decomp/src/overlays/ov051/overlay051_scene_lifecycle.o build/decomp/asm/overlays/ov051/overlay051_shared_update.o build/decomp/asm/overlays/ov051/overlay051_transform_apply.o build/decomp/asm/overlays/ov051/overlay051_bounds_compute.o build/decomp/asm/overlays/ov051/overlay051_sub_display_control.o build/decomp/asm/overlays/ov051/overlay051_sub_scene_construct.o build/decomp/asm/overlays/ov051/overlay051_sub_scene_destroy.o build/decomp/asm/overlays/ov051/overlay051_sub_scene_delete.o build/decomp/asm/overlays/ov051/overlay051_sub_scene_update.o build/decomp/asm/overlays/ov051/overlay051_sub_scene_create.o build/decomp/asm/overlays/ov051/overlay051_sub_bg_apply.o build/decomp/asm/overlays/ov051/overlay051_sub_bg_reset.o build/decomp/asm/overlays/ov051/overlay051_main_display_control.o build/decomp/asm/overlays/ov051/overlay051_main_scene_construct.o build/decomp/asm/overlays/ov051/overlay051_main_scene_destroy.o build/decomp/asm/overlays/ov051/overlay051_main_scene_delete.o build/decomp/src/overlays/ov051/overlay051_update_wrapper.o build/decomp/asm/overlays/ov051/overlay051_main_scene_create.o build/decomp/asm/overlays/ov051/overlay051_main_bg_apply.o build/decomp/asm/overlays/ov051/overlay051_main_bg_reset.o build/decomp/src/overlays/ov051/overlay051_virtual_noops.o
 build link_replacement_objects_53: phony build/decomp/src/overlays/ov052/overlay052_message_fields.o build/decomp/asm/overlays/ov052/overlay052_scene_construct.o build/decomp/asm/overlays/ov052/overlay052_scene_destroy.o build/decomp/asm/overlays/ov052/overlay052_scene_delete.o build/decomp/asm/overlays/ov052/overlay052_scene_update.o build/decomp/asm/overlays/ov052/overlay052_resources_load.o build/decomp/asm/overlays/ov052/overlay052_decoration_randomize.o build/decomp/asm/overlays/ov052/overlay052_menu_animation_update.o build/decomp/asm/overlays/ov052/overlay052_menu_animation_dispatch.o build/decomp/asm/overlays/ov052/overlay052_confirm_transition.o
-build link_replacement_objects: phony link_replacement_objects_00 link_replacement_objects_01 link_replacement_objects_02 link_replacement_objects_03 link_replacement_objects_04 link_replacement_objects_05 link_replacement_objects_06 link_replacement_objects_07 link_replacement_objects_08 link_replacement_objects_09 link_replacement_objects_10 link_replacement_objects_11 link_replacement_objects_12 link_replacement_objects_13 link_replacement_objects_14 link_replacement_objects_15 link_replacement_objects_16 link_replacement_objects_17 link_replacement_objects_18 link_replacement_objects_19 link_replacement_objects_20 link_replacement_objects_21 link_replacement_objects_22 link_replacement_objects_23 link_replacement_objects_24 link_replacement_objects_25 link_replacement_objects_26 link_replacement_objects_27 link_replacement_objects_28 link_replacement_objects_29 link_replacement_objects_30 link_replacement_objects_31 link_replacement_objects_32 link_replacement_objects_33 link_replacement_objects_34 link_replacement_objects_35 link_replacement_objects_36 link_replacement_objects_37 link_replacement_objects_38 link_replacement_objects_39 link_replacement_objects_40 link_replacement_objects_41 link_replacement_objects_42 link_replacement_objects_43 link_replacement_objects_44 link_replacement_objects_45 link_replacement_objects_46 link_replacement_objects_47 link_replacement_objects_48 link_replacement_objects_49 link_replacement_objects_50 link_replacement_objects_51 link_replacement_objects_52 link_replacement_objects_53
+build link_replacement_objects_54: phony build/decomp/src/overlays/ov053/overlay053_embedded_record.o build/decomp/asm/overlays/ov053/overlay053_scene_construct.o build/decomp/asm/overlays/ov053/overlay053_scene_destroy.o build/decomp/asm/overlays/ov053/overlay053_scene_delete.o build/decomp/asm/overlays/ov053/overlay053_scene_update.o build/decomp/asm/overlays/ov053/overlay053_scene_create.o build/decomp/asm/overlays/ov053/overlay053_graphics_setup.o build/decomp/src/overlays/ov053/overlay053_small_helpers.o build/decomp/asm/overlays/ov053/overlay053_static_init.o
+build link_replacement_objects: phony link_replacement_objects_00 link_replacement_objects_01 link_replacement_objects_02 link_replacement_objects_03 link_replacement_objects_04 link_replacement_objects_05 link_replacement_objects_06 link_replacement_objects_07 link_replacement_objects_08 link_replacement_objects_09 link_replacement_objects_10 link_replacement_objects_11 link_replacement_objects_12 link_replacement_objects_13 link_replacement_objects_14 link_replacement_objects_15 link_replacement_objects_16 link_replacement_objects_17 link_replacement_objects_18 link_replacement_objects_19 link_replacement_objects_20 link_replacement_objects_21 link_replacement_objects_22 link_replacement_objects_23 link_replacement_objects_24 link_replacement_objects_25 link_replacement_objects_26 link_replacement_objects_27 link_replacement_objects_28 link_replacement_objects_29 link_replacement_objects_30 link_replacement_objects_31 link_replacement_objects_32 link_replacement_objects_33 link_replacement_objects_34 link_replacement_objects_35 link_replacement_objects_36 link_replacement_objects_37 link_replacement_objects_38 link_replacement_objects_39 link_replacement_objects_40 link_replacement_objects_41 link_replacement_objects_42 link_replacement_objects_43 link_replacement_objects_44 link_replacement_objects_45 link_replacement_objects_46 link_replacement_objects_47 link_replacement_objects_48 link_replacement_objects_49 link_replacement_objects_50 link_replacement_objects_51 link_replacement_objects_52 link_replacement_objects_53 link_replacement_objects_54
