@@ -1,0 +1,76 @@
+.text
+; Matching fallback for the portable implementation in src/overlays/ov074/overlay074_recovery.c.
+.extern GameWork_ClearFlag
+.extern Heap_Free
+.extern Scene_Destroy
+.extern data_02105300
+.extern data_ov074_02211d8c
+.extern func_02002290
+.extern func_020022dc
+.extern func_02005058
+.extern func_020068e0
+.extern func_02010520
+.extern func_02039e70
+.extern func_ov088_0221ad9c
+.extern gGameWork
+
+.global func_ov074_022100fc
+func_ov074_022100fc:
+    stmdb sp!, {r4, lr}
+    ldr r1, .L_022101cc
+    mov r4, r0
+    ldr r0, .L_022101d0
+    str r1, [r4, #0x0]
+    ldr r0, [r0, #0x0]
+    mov r1, #0x1
+    ldr r0, [r0, #0x8]
+    bl func_02010520
+    bl func_02039e70
+    cmp r0, #0x0
+    beq .L_02210158
+    bl func_02039e70
+    add r0, r0, #0x200
+    ldrsh r0, [r0, #0x30]
+    cmp r0, #0x1
+    moveq r0, #0x1
+    movne r0, #0x0
+    cmp r0, #0x0
+    beq .L_02210158
+    bl func_02039e70
+    mov r1, #0x1
+    bl func_ov088_0221ad9c
+.L_02210158:
+    bl func_020022dc
+    mov r1, #0x2
+    bl func_02002290
+    ldr r0, .L_022101d4
+    ldr r1, .L_022101d8
+    ldr r0, [r0, #0x0]
+    bl GameWork_ClearFlag
+    add r0, r4, #0x12c
+    bl func_02005058
+    add r0, r4, #0x114
+    bl func_02005058
+    add r0, r4, #0x104
+    bl func_02005058
+    add r0, r4, #0xc8
+    bl func_020068e0
+    add r0, r4, #0x8c
+    bl func_020068e0
+    add r0, r4, #0x50
+    bl func_020068e0
+    add r0, r4, #0x40
+    bl func_02005058
+    add r0, r4, #0x28
+    bl func_02005058
+    mov r0, r4
+    bl Scene_Destroy
+    mov r0, r4
+    bl Heap_Free
+    mov r0, r4
+    ldmia sp!, {r4, pc}
+.L_022101cc: .word data_ov074_02211d8c
+.L_022101d0: .word data_02105300
+.L_022101d4: .word gGameWork
+.L_022101d8: .word 0x412
+.size func_ov074_022100fc, . - func_ov074_022100fc
