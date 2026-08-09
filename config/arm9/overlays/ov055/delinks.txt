@@ -2,3 +2,64 @@
     .ctor       start:0x0220f01c end:0x0220f01c kind:rodata align:4
     .data       start:0x0220f020 end:0x0220f0a0 kind:data align:32
     .bss        start:0x0220f0a0 end:0x0220f0a0 kind:bss align:32
+
+asm/overlays/ov055/overlay055_object_initialize.s:
+    categories: Game code
+    .text start:0x0220e400 end:0x0220e518
+asm/overlays/ov055/overlay055_object_randomize.s:
+    categories: Game code
+    .text start:0x0220e518 end:0x0220e574
+asm/overlays/ov055/overlay055_collection_construct.s:
+    categories: Game code
+    .text start:0x0220e574 end:0x0220e7cc
+asm/overlays/ov055/overlay055_collection_destroy.s:
+    categories: Game code
+    .text start:0x0220e7cc end:0x0220e804
+asm/overlays/ov055/overlay055_element_update.s:
+    categories: Game code
+    .text start:0x0220e804 end:0x0220e860
+asm/overlays/ov055/overlay055_display_control.s:
+    categories: Game code
+    .text start:0x0220e860 end:0x0220e8a0
+asm/overlays/ov055/overlay055_coordinate_store.s:
+    categories: Game code
+    .text start:0x0220e8a0 end:0x0220e8b8
+asm/overlays/ov055/overlay055_scene_construct.s:
+    categories: Game code
+    .text start:0x0220e8b8 end:0x0220e96c
+asm/overlays/ov055/overlay055_scene_partial_destroy.s:
+    categories: Game code
+    .text start:0x0220e96c end:0x0220ea68
+asm/overlays/ov055/overlay055_scene_destroy.s:
+    categories: Game code
+    .text start:0x0220ea68 end:0x0220eae4
+asm/overlays/ov055/overlay055_scene_delete.s:
+    categories: Game code
+    .text start:0x0220eae4 end:0x0220eb68
+asm/overlays/ov055/overlay055_scene_update.s:
+    categories: Game code
+    .text start:0x0220eb68 end:0x0220ebec
+asm/overlays/ov055/overlay055_graphics_load.s:
+    categories: Game code
+    .text start:0x0220ebec end:0x0220eee4
+asm/overlays/ov055/overlay055_bg_control.s:
+    categories: Game code
+    .text start:0x0220eee4 end:0x0220eefc
+asm/overlays/ov055/overlay055_transform_copy.s:
+    categories: Game code
+    .text start:0x0220eefc end:0x0220ef6c
+asm/overlays/ov055/overlay055_scene_create.s:
+    categories: Game code
+    .text start:0x0220ef6c end:0x0220efe0
+asm/overlays/ov055/overlay055_resource_submit.s:
+    categories: Game code
+    .text start:0x0220efe0 end:0x0220f010
+asm/overlays/ov055/overlay055_noop_10.s:
+    categories: Game code
+    .text start:0x0220f010 end:0x0220f014
+asm/overlays/ov055/overlay055_noop_14.s:
+    categories: Game code
+    .text start:0x0220f014 end:0x0220f018
+asm/overlays/ov055/overlay055_noop_18.s:
+    categories: Game code
+    .text start:0x0220f018 end:0x0220f01c

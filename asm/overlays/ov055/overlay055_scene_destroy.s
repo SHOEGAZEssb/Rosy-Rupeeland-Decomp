@@ -1,0 +1,48 @@
+.text
+; Matching fallback for the portable implementation in src/overlays/ov055/overlay055_recovery.c.
+.extern Heap_Free
+.extern data_020f4e14
+.extern data_ov055_0220f058
+.extern func_02002290
+.extern func_020022dc
+.extern func_02005058
+.extern func_0201e28c
+.extern func_02074330
+.extern func_ov055_0220e7cc
+.extern gDebugFont
+
+.global func_ov055_0220ea68
+func_ov055_0220ea68:
+    stmdb sp!, {r3, r4, r5, lr}
+    ldr r1, .L_0220ead8
+    mov r5, r0
+    str r1, [r5, #0x0]
+    ldr r4, [r5, #0x24]
+    cmp r4, #0x0
+    beq .L_0220ea94
+    mov r0, r4
+    bl func_ov055_0220e7cc
+    mov r0, r4
+    bl Heap_Free
+.L_0220ea94:
+    ldr r0, .L_0220eadc
+    ldr r1, [r5, #0x1c]
+    ldr r0, [r0, #0x0]
+    bl func_02074330
+    ldr r0, .L_0220eae0
+    ldr r1, [r5, #0x20]
+    ldr r0, [r0, #0x0]
+    bl func_02074330
+    bl func_020022dc
+    mov r1, #0x1
+    bl func_02002290
+    add r0, r5, #0x8
+    bl func_02005058
+    mov r0, r5
+    bl func_0201e28c
+    mov r0, r5
+    ldmia sp!, {r3, r4, r5, pc}
+.L_0220ead8: .word data_ov055_0220f058
+.L_0220eadc: .word data_020f4e14
+.L_0220eae0: .word gDebugFont
+.size func_ov055_0220ea68, . - func_ov055_0220ea68
