@@ -1,0 +1,7 @@
+.text
+; Matching fallback for the portable implementation in src/overlays/ov092/overlay092_recovery.c.
+
+.global func_ov092_0221a800
+func_ov092_0221a800:
+    bx lr
+.size func_ov092_0221a800, . - func_ov092_0221a800
