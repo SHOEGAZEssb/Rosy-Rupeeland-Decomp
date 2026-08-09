@@ -3,3 +3,21 @@
     .ctor       start:0x0221d600 end:0x0221d600 kind:rodata align:4
     .data       start:0x0221d620 end:0x0221d6c0 kind:data align:32
     .bss        start:0x0221d6c0 end:0x0221d6c0 kind:bss align:32
+
+asm/overlays/ov101/overlay101_0221d3e0.s:
+    categories: Game code
+    .text start:0x0221d3e0 end:0x0221d408
+asm/overlays/ov101/overlay101_0221d408.s:
+    categories: Game code
+    .text start:0x0221d408 end:0x0221d438
+asm/overlays/ov101/overlay101_0221d438.s:
+    categories: Game code
+    .text start:0x0221d438 end:0x0221d470
+asm/overlays/ov101/overlay101_0221d470.s:
+    categories: Game code
+    .text start:0x0221d470 end:0x0221d5e8
+
+asm/overlays/ov101/overlay101_data.s:
+    categories: Game data
+    .rodata start:0x0221d5e8 end:0x0221d600
+    .data start:0x0221d620 end:0x0221d6c0
