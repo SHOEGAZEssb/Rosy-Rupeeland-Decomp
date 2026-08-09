@@ -1,0 +1,14 @@
+# Generated exact matching fallback for overlay 406.
+# Regenerate with tools/generate_overlay_matching_ninja.py.
+
+build build/decomp/asm/overlays/ov406/overlay406_02233c60.o: mwasmarm asm/overlays/ov406/overlay406_02233c60.s
+build build/decomp/delinks/asm/overlays/ov406/overlay406_02233c60.o: dsd_delink config/arm9/config.yaml | config/arm9/overlays/ov406/delinks.txt config/arm9/overlays/ov406/symbols.txt config/arm9/overlays/ov406/relocs.txt
+  object = asm/overlays/ov406/overlay406_02233c60.s
+build build/reports/overlay406_02233c60.json: objdiff build/decomp/asm/overlays/ov406/overlay406_02233c60.o build/decomp/delinks/asm/overlays/ov406/overlay406_02233c60.o
+  target_object = build/decomp/asm/overlays/ov406/overlay406_02233c60.o
+  base_object = build/decomp/delinks/asm/overlays/ov406/overlay406_02233c60.o
+build build/reports/overlay406_02233c60.txt: match_report build/reports/overlay406_02233c60.json | tools/report_objdiff.py
+  report_json = build/reports/overlay406_02233c60.json
+  report_args = --section .text --function func_ov406_02233c60 --require-exact
+
+build overlay406_matching: phony build/reports/overlay406_02233c60.txt
