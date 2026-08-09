@@ -44,7 +44,8 @@ def main() -> int:
         for line in body
         if (match := re.search(r"\bblx?\s+([A-Za-z_][A-Za-z0-9_]*)", line))
     )
-    externs = sorted(referenced - defined - {args.function})
+    registers = {f"r{index}" for index in range(16)} | {"sp", "lr", "pc", "ip"}
+    externs = sorted(referenced - defined - registers - {args.function})
 
     output = [
         ".text",

@@ -1,0 +1,164 @@
+# Generated exact matching fallbacks for overlay 049.
+# Regenerate with tools/generate_overlay_matching_ninja.py.
+
+build build/decomp/asm/overlays/ov049/overlay049_derived_construct.o: mwasmarm asm/overlays/ov049/overlay049_derived_construct.s
+build build/decomp/delinks/asm/overlays/ov049/overlay049_derived_construct.o: dsd_delink config/arm9/config.yaml | config/arm9/overlays/ov049/delinks.txt config/arm9/overlays/ov049/symbols.txt config/arm9/overlays/ov049/relocs.txt
+  object = asm/overlays/ov049/overlay049_derived_construct.s
+build build/reports/overlay049_derived_construct.json: objdiff build/decomp/asm/overlays/ov049/overlay049_derived_construct.o build/decomp/delinks/asm/overlays/ov049/overlay049_derived_construct.o
+  target_object = build/decomp/asm/overlays/ov049/overlay049_derived_construct.o
+  base_object = build/decomp/delinks/asm/overlays/ov049/overlay049_derived_construct.o
+build build/reports/overlay049_derived_construct.txt: match_report build/reports/overlay049_derived_construct.json | tools/report_objdiff.py
+  report_json = build/reports/overlay049_derived_construct.json
+  report_args = --section .text --function func_ov049_0220b780 --require-exact
+
+build build/decomp/asm/overlays/ov049/overlay049_sprite_position.o: mwasmarm asm/overlays/ov049/overlay049_sprite_position.s
+build build/decomp/delinks/asm/overlays/ov049/overlay049_sprite_position.o: dsd_delink config/arm9/config.yaml | config/arm9/overlays/ov049/delinks.txt config/arm9/overlays/ov049/symbols.txt config/arm9/overlays/ov049/relocs.txt
+  object = asm/overlays/ov049/overlay049_sprite_position.s
+build build/reports/overlay049_sprite_position.json: objdiff build/decomp/asm/overlays/ov049/overlay049_sprite_position.o build/decomp/delinks/asm/overlays/ov049/overlay049_sprite_position.o
+  target_object = build/decomp/asm/overlays/ov049/overlay049_sprite_position.o
+  base_object = build/decomp/delinks/asm/overlays/ov049/overlay049_sprite_position.o
+build build/reports/overlay049_sprite_position.txt: match_report build/reports/overlay049_sprite_position.json | tools/report_objdiff.py
+  report_json = build/reports/overlay049_sprite_position.json
+  report_args = --section .text --function func_ov049_0220bac0 --require-exact
+
+build build/decomp/asm/overlays/ov049/overlay049_sprite_frame.o: mwasmarm asm/overlays/ov049/overlay049_sprite_frame.s
+build build/decomp/delinks/asm/overlays/ov049/overlay049_sprite_frame.o: dsd_delink config/arm9/config.yaml | config/arm9/overlays/ov049/delinks.txt config/arm9/overlays/ov049/symbols.txt config/arm9/overlays/ov049/relocs.txt
+  object = asm/overlays/ov049/overlay049_sprite_frame.s
+build build/reports/overlay049_sprite_frame.json: objdiff build/decomp/asm/overlays/ov049/overlay049_sprite_frame.o build/decomp/delinks/asm/overlays/ov049/overlay049_sprite_frame.o
+  target_object = build/decomp/asm/overlays/ov049/overlay049_sprite_frame.o
+  base_object = build/decomp/delinks/asm/overlays/ov049/overlay049_sprite_frame.o
+build build/reports/overlay049_sprite_frame.txt: match_report build/reports/overlay049_sprite_frame.json | tools/report_objdiff.py
+  report_json = build/reports/overlay049_sprite_frame.json
+  report_args = --section .text --function func_ov049_0220bb84 --require-exact
+
+build build/decomp/asm/overlays/ov049/overlay049_resource_initialize.o: mwasmarm asm/overlays/ov049/overlay049_resource_initialize.s
+build build/decomp/delinks/asm/overlays/ov049/overlay049_resource_initialize.o: dsd_delink config/arm9/config.yaml | config/arm9/overlays/ov049/delinks.txt config/arm9/overlays/ov049/symbols.txt config/arm9/overlays/ov049/relocs.txt
+  object = asm/overlays/ov049/overlay049_resource_initialize.s
+build build/reports/overlay049_resource_initialize.json: objdiff build/decomp/asm/overlays/ov049/overlay049_resource_initialize.o build/decomp/delinks/asm/overlays/ov049/overlay049_resource_initialize.o
+  target_object = build/decomp/asm/overlays/ov049/overlay049_resource_initialize.o
+  base_object = build/decomp/delinks/asm/overlays/ov049/overlay049_resource_initialize.o
+build build/reports/overlay049_resource_initialize.txt: match_report build/reports/overlay049_resource_initialize.json | tools/report_objdiff.py
+  report_json = build/reports/overlay049_resource_initialize.json
+  report_args = --section .text --function func_ov049_0220bbdc --require-exact
+
+build build/decomp/asm/overlays/ov049/overlay049_resource_apply.o: mwasmarm asm/overlays/ov049/overlay049_resource_apply.s
+build build/decomp/delinks/asm/overlays/ov049/overlay049_resource_apply.o: dsd_delink config/arm9/config.yaml | config/arm9/overlays/ov049/delinks.txt config/arm9/overlays/ov049/symbols.txt config/arm9/overlays/ov049/relocs.txt
+  object = asm/overlays/ov049/overlay049_resource_apply.s
+build build/reports/overlay049_resource_apply.json: objdiff build/decomp/asm/overlays/ov049/overlay049_resource_apply.o build/decomp/delinks/asm/overlays/ov049/overlay049_resource_apply.o
+  target_object = build/decomp/asm/overlays/ov049/overlay049_resource_apply.o
+  base_object = build/decomp/delinks/asm/overlays/ov049/overlay049_resource_apply.o
+build build/reports/overlay049_resource_apply.txt: match_report build/reports/overlay049_resource_apply.json | tools/report_objdiff.py
+  report_json = build/reports/overlay049_resource_apply.json
+  report_args = --section .text --function func_ov049_0220be28 --require-exact
+
+build build/decomp/asm/overlays/ov049/overlay049_sprite_update.o: mwasmarm asm/overlays/ov049/overlay049_sprite_update.s
+build build/decomp/delinks/asm/overlays/ov049/overlay049_sprite_update.o: dsd_delink config/arm9/config.yaml | config/arm9/overlays/ov049/delinks.txt config/arm9/overlays/ov049/symbols.txt config/arm9/overlays/ov049/relocs.txt
+  object = asm/overlays/ov049/overlay049_sprite_update.s
+build build/reports/overlay049_sprite_update.json: objdiff build/decomp/asm/overlays/ov049/overlay049_sprite_update.o build/decomp/delinks/asm/overlays/ov049/overlay049_sprite_update.o
+  target_object = build/decomp/asm/overlays/ov049/overlay049_sprite_update.o
+  base_object = build/decomp/delinks/asm/overlays/ov049/overlay049_sprite_update.o
+build build/reports/overlay049_sprite_update.txt: match_report build/reports/overlay049_sprite_update.json | tools/report_objdiff.py
+  report_json = build/reports/overlay049_sprite_update.json
+  report_args = --section .text --function func_ov049_0220bee8 --require-exact
+
+build build/decomp/asm/overlays/ov049/overlay049_resource_destroy.o: mwasmarm asm/overlays/ov049/overlay049_resource_destroy.s
+build build/decomp/delinks/asm/overlays/ov049/overlay049_resource_destroy.o: dsd_delink config/arm9/config.yaml | config/arm9/overlays/ov049/delinks.txt config/arm9/overlays/ov049/symbols.txt config/arm9/overlays/ov049/relocs.txt
+  object = asm/overlays/ov049/overlay049_resource_destroy.s
+build build/reports/overlay049_resource_destroy.json: objdiff build/decomp/asm/overlays/ov049/overlay049_resource_destroy.o build/decomp/delinks/asm/overlays/ov049/overlay049_resource_destroy.o
+  target_object = build/decomp/asm/overlays/ov049/overlay049_resource_destroy.o
+  base_object = build/decomp/delinks/asm/overlays/ov049/overlay049_resource_destroy.o
+build build/reports/overlay049_resource_destroy.txt: match_report build/reports/overlay049_resource_destroy.json | tools/report_objdiff.py
+  report_json = build/reports/overlay049_resource_destroy.json
+  report_args = --section .text --function func_ov049_0220c0b8 --require-exact
+
+build build/decomp/asm/overlays/ov049/overlay049_controller_construct.o: mwasmarm asm/overlays/ov049/overlay049_controller_construct.s
+build build/decomp/delinks/asm/overlays/ov049/overlay049_controller_construct.o: dsd_delink config/arm9/config.yaml | config/arm9/overlays/ov049/delinks.txt config/arm9/overlays/ov049/symbols.txt config/arm9/overlays/ov049/relocs.txt
+  object = asm/overlays/ov049/overlay049_controller_construct.s
+build build/reports/overlay049_controller_construct.json: objdiff build/decomp/asm/overlays/ov049/overlay049_controller_construct.o build/decomp/delinks/asm/overlays/ov049/overlay049_controller_construct.o
+  target_object = build/decomp/asm/overlays/ov049/overlay049_controller_construct.o
+  base_object = build/decomp/delinks/asm/overlays/ov049/overlay049_controller_construct.o
+build build/reports/overlay049_controller_construct.txt: match_report build/reports/overlay049_controller_construct.json | tools/report_objdiff.py
+  report_json = build/reports/overlay049_controller_construct.json
+  report_args = --section .text --function func_ov049_0220c124 --require-exact
+
+build build/decomp/asm/overlays/ov049/overlay049_particle_initialize.o: mwasmarm asm/overlays/ov049/overlay049_particle_initialize.s
+build build/decomp/delinks/asm/overlays/ov049/overlay049_particle_initialize.o: dsd_delink config/arm9/config.yaml | config/arm9/overlays/ov049/delinks.txt config/arm9/overlays/ov049/symbols.txt config/arm9/overlays/ov049/relocs.txt
+  object = asm/overlays/ov049/overlay049_particle_initialize.s
+build build/reports/overlay049_particle_initialize.json: objdiff build/decomp/asm/overlays/ov049/overlay049_particle_initialize.o build/decomp/delinks/asm/overlays/ov049/overlay049_particle_initialize.o
+  target_object = build/decomp/asm/overlays/ov049/overlay049_particle_initialize.o
+  base_object = build/decomp/delinks/asm/overlays/ov049/overlay049_particle_initialize.o
+build build/reports/overlay049_particle_initialize.txt: match_report build/reports/overlay049_particle_initialize.json | tools/report_objdiff.py
+  report_json = build/reports/overlay049_particle_initialize.json
+  report_args = --section .text --function func_ov049_0220c254 --require-exact
+
+build build/decomp/asm/overlays/ov049/overlay049_particle_burst.o: mwasmarm asm/overlays/ov049/overlay049_particle_burst.s
+build build/decomp/delinks/asm/overlays/ov049/overlay049_particle_burst.o: dsd_delink config/arm9/config.yaml | config/arm9/overlays/ov049/delinks.txt config/arm9/overlays/ov049/symbols.txt config/arm9/overlays/ov049/relocs.txt
+  object = asm/overlays/ov049/overlay049_particle_burst.s
+build build/reports/overlay049_particle_burst.json: objdiff build/decomp/asm/overlays/ov049/overlay049_particle_burst.o build/decomp/delinks/asm/overlays/ov049/overlay049_particle_burst.o
+  target_object = build/decomp/asm/overlays/ov049/overlay049_particle_burst.o
+  base_object = build/decomp/delinks/asm/overlays/ov049/overlay049_particle_burst.o
+build build/reports/overlay049_particle_burst.txt: match_report build/reports/overlay049_particle_burst.json | tools/report_objdiff.py
+  report_json = build/reports/overlay049_particle_burst.json
+  report_args = --section .text --function func_ov049_0220c2dc --require-exact
+
+build build/decomp/asm/overlays/ov049/overlay049_particle_transform.o: mwasmarm asm/overlays/ov049/overlay049_particle_transform.s
+build build/decomp/delinks/asm/overlays/ov049/overlay049_particle_transform.o: dsd_delink config/arm9/config.yaml | config/arm9/overlays/ov049/delinks.txt config/arm9/overlays/ov049/symbols.txt config/arm9/overlays/ov049/relocs.txt
+  object = asm/overlays/ov049/overlay049_particle_transform.s
+build build/reports/overlay049_particle_transform.json: objdiff build/decomp/asm/overlays/ov049/overlay049_particle_transform.o build/decomp/delinks/asm/overlays/ov049/overlay049_particle_transform.o
+  target_object = build/decomp/asm/overlays/ov049/overlay049_particle_transform.o
+  base_object = build/decomp/delinks/asm/overlays/ov049/overlay049_particle_transform.o
+build build/reports/overlay049_particle_transform.txt: match_report build/reports/overlay049_particle_transform.json | tools/report_objdiff.py
+  report_json = build/reports/overlay049_particle_transform.json
+  report_args = --section .text --function func_ov049_0220c3d8 --require-exact
+
+build build/decomp/asm/overlays/ov049/overlay049_particle_render.o: mwasmarm asm/overlays/ov049/overlay049_particle_render.s
+build build/decomp/delinks/asm/overlays/ov049/overlay049_particle_render.o: dsd_delink config/arm9/config.yaml | config/arm9/overlays/ov049/delinks.txt config/arm9/overlays/ov049/symbols.txt config/arm9/overlays/ov049/relocs.txt
+  object = asm/overlays/ov049/overlay049_particle_render.s
+build build/reports/overlay049_particle_render.json: objdiff build/decomp/asm/overlays/ov049/overlay049_particle_render.o build/decomp/delinks/asm/overlays/ov049/overlay049_particle_render.o
+  target_object = build/decomp/asm/overlays/ov049/overlay049_particle_render.o
+  base_object = build/decomp/delinks/asm/overlays/ov049/overlay049_particle_render.o
+build build/reports/overlay049_particle_render.txt: match_report build/reports/overlay049_particle_render.json | tools/report_objdiff.py
+  report_json = build/reports/overlay049_particle_render.json
+  report_args = --section .text --function func_ov049_0220c48c --require-exact
+
+build build/decomp/asm/overlays/ov049/overlay049_particle_randomize.o: mwasmarm asm/overlays/ov049/overlay049_particle_randomize.s
+build build/decomp/delinks/asm/overlays/ov049/overlay049_particle_randomize.o: dsd_delink config/arm9/config.yaml | config/arm9/overlays/ov049/delinks.txt config/arm9/overlays/ov049/symbols.txt config/arm9/overlays/ov049/relocs.txt
+  object = asm/overlays/ov049/overlay049_particle_randomize.s
+build build/reports/overlay049_particle_randomize.json: objdiff build/decomp/asm/overlays/ov049/overlay049_particle_randomize.o build/decomp/delinks/asm/overlays/ov049/overlay049_particle_randomize.o
+  target_object = build/decomp/asm/overlays/ov049/overlay049_particle_randomize.o
+  base_object = build/decomp/delinks/asm/overlays/ov049/overlay049_particle_randomize.o
+build build/reports/overlay049_particle_randomize.txt: match_report build/reports/overlay049_particle_randomize.json | tools/report_objdiff.py
+  report_json = build/reports/overlay049_particle_randomize.json
+  report_args = --section .text --function func_ov049_0220c67c --require-exact
+
+build build/decomp/asm/overlays/ov049/overlay049_particle_step.o: mwasmarm asm/overlays/ov049/overlay049_particle_step.s
+build build/decomp/delinks/asm/overlays/ov049/overlay049_particle_step.o: dsd_delink config/arm9/config.yaml | config/arm9/overlays/ov049/delinks.txt config/arm9/overlays/ov049/symbols.txt config/arm9/overlays/ov049/relocs.txt
+  object = asm/overlays/ov049/overlay049_particle_step.s
+build build/reports/overlay049_particle_step.json: objdiff build/decomp/asm/overlays/ov049/overlay049_particle_step.o build/decomp/delinks/asm/overlays/ov049/overlay049_particle_step.o
+  target_object = build/decomp/asm/overlays/ov049/overlay049_particle_step.o
+  base_object = build/decomp/delinks/asm/overlays/ov049/overlay049_particle_step.o
+build build/reports/overlay049_particle_step.txt: match_report build/reports/overlay049_particle_step.json | tools/report_objdiff.py
+  report_json = build/reports/overlay049_particle_step.json
+  report_args = --section .text --function func_ov049_0220c6cc --require-exact
+
+build build/decomp/asm/overlays/ov049/overlay049_controller_update.o: mwasmarm asm/overlays/ov049/overlay049_controller_update.s
+build build/decomp/delinks/asm/overlays/ov049/overlay049_controller_update.o: dsd_delink config/arm9/config.yaml | config/arm9/overlays/ov049/delinks.txt config/arm9/overlays/ov049/symbols.txt config/arm9/overlays/ov049/relocs.txt
+  object = asm/overlays/ov049/overlay049_controller_update.s
+build build/reports/overlay049_controller_update.json: objdiff build/decomp/asm/overlays/ov049/overlay049_controller_update.o build/decomp/delinks/asm/overlays/ov049/overlay049_controller_update.o
+  target_object = build/decomp/asm/overlays/ov049/overlay049_controller_update.o
+  base_object = build/decomp/delinks/asm/overlays/ov049/overlay049_controller_update.o
+build build/reports/overlay049_controller_update.txt: match_report build/reports/overlay049_controller_update.json | tools/report_objdiff.py
+  report_json = build/reports/overlay049_controller_update.json
+  report_args = --section .text --function func_ov049_0220c8a0 --require-exact
+
+build build/decomp/asm/overlays/ov049/overlay049_scene_construct.o: mwasmarm asm/overlays/ov049/overlay049_scene_construct.s
+build build/decomp/delinks/asm/overlays/ov049/overlay049_scene_construct.o: dsd_delink config/arm9/config.yaml | config/arm9/overlays/ov049/delinks.txt config/arm9/overlays/ov049/symbols.txt config/arm9/overlays/ov049/relocs.txt
+  object = asm/overlays/ov049/overlay049_scene_construct.s
+build build/reports/overlay049_scene_construct.json: objdiff build/decomp/asm/overlays/ov049/overlay049_scene_construct.o build/decomp/delinks/asm/overlays/ov049/overlay049_scene_construct.o
+  target_object = build/decomp/asm/overlays/ov049/overlay049_scene_construct.o
+  base_object = build/decomp/delinks/asm/overlays/ov049/overlay049_scene_construct.o
+build build/reports/overlay049_scene_construct.txt: match_report build/reports/overlay049_scene_construct.json | tools/report_objdiff.py
+  report_json = build/reports/overlay049_scene_construct.json
+  report_args = --section .text --function func_ov049_0220cf94 --require-exact
+
+build overlay049_matching: phony build/reports/overlay049_derived_construct.txt build/reports/overlay049_sprite_position.txt build/reports/overlay049_sprite_frame.txt build/reports/overlay049_resource_initialize.txt build/reports/overlay049_resource_apply.txt build/reports/overlay049_sprite_update.txt build/reports/overlay049_resource_destroy.txt build/reports/overlay049_controller_construct.txt build/reports/overlay049_particle_initialize.txt build/reports/overlay049_particle_burst.txt build/reports/overlay049_particle_transform.txt build/reports/overlay049_particle_render.txt build/reports/overlay049_particle_randomize.txt build/reports/overlay049_particle_step.txt build/reports/overlay049_controller_update.txt build/reports/overlay049_scene_construct.txt

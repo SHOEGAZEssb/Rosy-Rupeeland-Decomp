@@ -3,3 +3,63 @@
     .ctor       start:0x0220d328 end:0x0220d328 kind:rodata align:4
     .data       start:0x0220d340 end:0x0220d3a0 kind:data align:32
     .bss        start:0x0220d3a0 end:0x0220d3a0 kind:bss align:32
+src/overlays/ov049/overlay049_base_construct.c:
+    categories: Game code
+    .text start:0x0220b740 end:0x0220b780
+asm/overlays/ov049/overlay049_derived_construct.s:
+    categories: Game code
+    .text start:0x0220b780 end:0x0220ba98
+src/overlays/ov049/overlay049_object_destroy.c:
+    categories: Game code
+    .text start:0x0220ba98 end:0x0220bac0
+asm/overlays/ov049/overlay049_sprite_position.s:
+    categories: Game code
+    .text start:0x0220bac0 end:0x0220bb84
+asm/overlays/ov049/overlay049_sprite_frame.s:
+    categories: Game code
+    .text start:0x0220bb84 end:0x0220bbdc
+asm/overlays/ov049/overlay049_resource_initialize.s:
+    categories: Game code
+    .text start:0x0220bbdc end:0x0220be28
+asm/overlays/ov049/overlay049_resource_apply.s:
+    categories: Game code
+    .text start:0x0220be28 end:0x0220bee8
+asm/overlays/ov049/overlay049_sprite_update.s:
+    categories: Game code
+    .text start:0x0220bee8 end:0x0220c0b8
+asm/overlays/ov049/overlay049_resource_destroy.s:
+    categories: Game code
+    .text start:0x0220c0b8 end:0x0220c124
+asm/overlays/ov049/overlay049_controller_construct.s:
+    categories: Game code
+    .text start:0x0220c124 end:0x0220c21c
+src/overlays/ov049/overlay049_point_lifecycle.c:
+    categories: Game code
+    .text start:0x0220c21c end:0x0220c254
+asm/overlays/ov049/overlay049_particle_initialize.s:
+    categories: Game code
+    .text start:0x0220c254 end:0x0220c2dc
+asm/overlays/ov049/overlay049_particle_burst.s:
+    categories: Game code
+    .text start:0x0220c2dc end:0x0220c3d8
+asm/overlays/ov049/overlay049_particle_transform.s:
+    categories: Game code
+    .text start:0x0220c3d8 end:0x0220c48c
+asm/overlays/ov049/overlay049_particle_render.s:
+    categories: Game code
+    .text start:0x0220c48c end:0x0220c67c
+asm/overlays/ov049/overlay049_particle_randomize.s:
+    categories: Game code
+    .text start:0x0220c67c end:0x0220c6cc
+asm/overlays/ov049/overlay049_particle_step.s:
+    categories: Game code
+    .text start:0x0220c6cc end:0x0220c8a0
+asm/overlays/ov049/overlay049_controller_update.s:
+    categories: Game code
+    .text start:0x0220c8a0 end:0x0220cf94
+asm/overlays/ov049/overlay049_scene_construct.s:
+    categories: Game code
+    .text start:0x0220cf94 end:0x0220d304
+src/overlays/ov049/overlay049_heap_delete.c:
+    categories: Game code
+    .text start:0x0220d304 end:0x0220d318
