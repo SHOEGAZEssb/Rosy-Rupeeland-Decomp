@@ -2,3 +2,78 @@
     .ctor       start:0x0220d28c end:0x0220d28c kind:rodata align:4
     .data       start:0x0220d2a0 end:0x0220d360 kind:data align:32
     .bss        start:0x0220d360 end:0x0220d360 kind:bss align:32
+asm/overlays/ov044/overlay044_panel_construct.s:
+    categories: Game code
+    .text start:0x0220b740 end:0x0220b8e4
+asm/overlays/ov044/overlay044_panel_lifecycle.s:
+    categories: Game code
+    .text start:0x0220b8e4 end:0x0220bb48
+asm/overlays/ov044/overlay044_panel_interaction_flag.s:
+    categories: Game code
+    .text start:0x0220bb48 end:0x0220bb60
+asm/overlays/ov044/overlay044_panel_interaction_release.s:
+    categories: Game code
+    .text start:0x0220bb60 end:0x0220bba4
+asm/overlays/ov044/overlay044_panel_interaction_display.s:
+    categories: Game code
+    .text start:0x0220bba4 end:0x0220bdac
+asm/overlays/ov044/overlay044_panel_interaction_sync.s:
+    categories: Game code
+    .text start:0x0220bdac end:0x0220be60
+asm/overlays/ov044/overlay044_scene_construct.s:
+    categories: Game code
+    .text start:0x0220be60 end:0x0220bfd4
+asm/overlays/ov044/overlay044_scene_destroy.s:
+    categories: Game code
+    .text start:0x0220bfd4 end:0x0220c19c
+asm/overlays/ov044/overlay044_display_setup.s:
+    categories: Game code
+    .text start:0x0220c19c end:0x0220c2e4
+asm/overlays/ov044/overlay044_graphics_resources_main.s:
+    categories: Game code
+    .text start:0x0220c2e4 end:0x0220c3e4
+asm/overlays/ov044/overlay044_graphics_resources_aux.s:
+    categories: Game code
+    .text start:0x0220c3e4 end:0x0220c440
+asm/overlays/ov044/overlay044_panel_populate.s:
+    categories: Game code
+    .text start:0x0220c440 end:0x0220c5c0
+asm/overlays/ov044/overlay044_panel_release.s:
+    categories: Game code
+    .text start:0x0220c5c0 end:0x0220c610
+asm/overlays/ov044/overlay044_text_presentation.s:
+    categories: Game code
+    .text start:0x0220c610 end:0x0220c700
+asm/overlays/ov044/overlay044_presentation_update.s:
+    categories: Game code
+    .text start:0x0220c700 end:0x0220c74c
+asm/overlays/ov044/overlay044_status_draw.s:
+    categories: Game code
+    .text start:0x0220c74c end:0x0220c80c
+asm/overlays/ov044/overlay044_status_preview.s:
+    categories: Game code
+    .text start:0x0220c80c end:0x0220c880
+asm/overlays/ov044/overlay044_display_flush.s:
+    categories: Game code
+    .text start:0x0220c880 end:0x0220c8d0
+asm/overlays/ov044/overlay044_auxiliary_create.s:
+    categories: Game code
+    .text start:0x0220c8d0 end:0x0220c97c
+asm/overlays/ov044/overlay044_state_entry.s:
+    categories: Game code
+    .text start:0x0220c97c end:0x0220caa4
+asm/overlays/ov044/overlay044_selection_branch.s:
+    categories: Game code
+    .text start:0x0220caa4 end:0x0220cb04
+asm/overlays/ov044/overlay044_list_state.s:
+    categories: Game code
+    .text start:0x0220cb04 end:0x0220ce28
+asm/overlays/ov044/overlay044_panel_transition.s:
+    categories: Game code
+    .text start:0x0220ce28 end:0x0220cf60
+asm/overlays/ov044/overlay044_subscene_handoff.s:
+    categories: Game code
+    .text start:0x0220cf60 end:0x0220d20c
+asm/overlays/ov044/overlay044_final_callbacks.s:
+    categories: Game code
+    .text start:0x0220d20c end:0x0220d28c

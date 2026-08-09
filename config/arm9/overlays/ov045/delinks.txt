@@ -3,3 +3,42 @@
     .ctor       start:0x0220d48c end:0x0220d48c kind:rodata align:4
     .data       start:0x0220d4a0 end:0x0220d600 kind:data align:32
     .bss        start:0x0220d600 end:0x0220d600 kind:bss align:32
+asm/overlays/ov045/overlay045_effect_lifecycle.s:
+    categories: Game code
+    .text start:0x0220b740 end:0x0220b7a0
+asm/overlays/ov045/overlay045_effect_update.s:
+    categories: Game code
+    .text start:0x0220b7a0 end:0x0220b7fc
+src/overlays/ov045/overlay045_emitter_lifecycle.c:
+    categories: Game code
+    .text start:0x0220b7fc end:0x0220b9b8
+src/overlays/ov045/overlay045_display_object.c:
+    categories: Game code
+    .text start:0x0220bc34 end:0x0220be10
+src/overlays/ov045/overlay045_sprite_pair_lifecycle.c:
+    categories: Game code
+    .text start:0x0220be10 end:0x0220c028
+src/overlays/ov045/overlay045_sprite_pair_modes.c:
+    categories: Game code
+    .text start:0x0220c028 end:0x0220c18c
+src/overlays/ov045/overlay045_sprite_pair_update.c:
+    categories: Game code
+    .text start:0x0220c18c end:0x0220c1ac
+asm/overlays/ov045/overlay045_sprite_pair_wait.s:
+    categories: Game code
+    .text start:0x0220c1ac end:0x0220c274
+src/overlays/ov045/overlay045_sprite_pair_controls.c:
+    categories: Game code
+    .text start:0x0220c274 end:0x0220c2a0
+src/overlays/ov045/overlay045_graphics_helpers.c:
+    categories: Game code
+    .text start:0x0220c2a0 end:0x0220c2e0
+asm/overlays/ov045/overlay045_sub_display_control.s:
+    categories: Game code
+    .text start:0x0220c2e0 end:0x0220c314
+src/overlays/ov045/overlay045_derived_sprite_scene.c:
+    categories: Game code
+    .text start:0x0220c314 end:0x0220c48c
+asm/overlays/ov045/overlay045_sprite_factory.s:
+    categories: Game code
+    .text start:0x0220c48c end:0x0220c9e8

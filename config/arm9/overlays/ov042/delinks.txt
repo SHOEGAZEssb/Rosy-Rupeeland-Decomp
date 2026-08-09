@@ -205,3 +205,165 @@ asm/overlays/ov042/overlay042_effect_position_derive.s:
 asm/overlays/ov042/overlay042_effect_sounds_stop.s:
     categories: Game code
     .text start:0x02200b38 end:0x02200bc0
+asm/overlays/ov042/overlay042_element_pool_construct.s:
+    categories: Game code
+    .text start:0x022050b0 end:0x02205148
+asm/overlays/ov042/overlay042_eight_child_construct.s:
+    categories: Game code
+    .text start:0x0220a7d8 end:0x0220a8ac
+asm/overlays/ov042/overlay042_forty_child_construct.s:
+    categories: Game code
+    .text start:0x0220aa5c end:0x0220ab30
+asm/overlays/ov042/overlay042_late_variant1_construct.s:
+    categories: Game code
+    .text start:0x02207e04 end:0x02207ef0
+asm/overlays/ov042/overlay042_late_variant2_construct.s:
+    categories: Game code
+    .text start:0x022087a0 end:0x02208894
+asm/overlays/ov042/overlay042_variant2_activate.s:
+    categories: Game code
+    .text start:0x022088fc end:0x022089e8
+asm/overlays/ov042/overlay042_variant2_motion_prime.s:
+    categories: Game code
+    .text start:0x022089e8 end:0x02208a90
+asm/overlays/ov042/overlay042_late_variant3_construct.s:
+    categories: Game code
+    .text start:0x02208ffc end:0x02209128
+asm/overlays/ov042/overlay042_variant3_motion_prime.s:
+    categories: Game code
+    .text start:0x022091f4 end:0x02209344
+asm/overlays/ov042/overlay042_late_variant4_construct.s:
+    categories: Game code
+    .text start:0x0220999c end:0x02209a8c
+asm/overlays/ov042/overlay042_effect_emit_dispatch.s:
+    categories: Game code
+    .text start:0x0220a720 end:0x0220a7d8
+asm/overlays/ov042/overlay042_scene_effect_reset.s:
+    categories: Game code
+    .text start:0x02205cb8 end:0x02205d74
+asm/overlays/ov042/overlay042_owner_audio_dispatch.s:
+    categories: Game code
+    .text start:0x02201ea0 end:0x02201f30
+asm/overlays/ov042/overlay042_resource_variant_select.s:
+    categories: Game code
+    .text start:0x02206ff8 end:0x02207114
+asm/overlays/ov042/overlay042_primary_spawn_variant.s:
+    categories: Game code
+    .text start:0x021fdbc8 end:0x021fdc88
+asm/overlays/ov042/overlay042_primary_spawn_variant_parameter.s:
+    categories: Game code
+    .text start:0x021fdc88 end:0x021fdd48
+asm/overlays/ov042/overlay042_primary_spawn_mode.s:
+    categories: Game code
+    .text start:0x021fdd48 end:0x021fde00
+asm/overlays/ov042/overlay042_primary_spawn_seeded.s:
+    categories: Game code
+    .text start:0x021fde00 end:0x021fdeac
+asm/overlays/ov042/overlay042_primary_spawn_duration.s:
+    categories: Game code
+    .text start:0x021fdeac end:0x021fdf70
+asm/overlays/ov042/overlay042_secondary_spawn_222a.s:
+    categories: Game code
+    .text start:0x021fdf70 end:0x021fe098
+asm/overlays/ov042/overlay042_secondary_spawn_222d.s:
+    categories: Game code
+    .text start:0x021fe098 end:0x021fe1c4
+asm/overlays/ov042/overlay042_secondary_spawn_2224.s:
+    categories: Game code
+    .text start:0x021fe1c4 end:0x021fe2f0
+asm/overlays/ov042/overlay042_secondary_spawn_163c.s:
+    categories: Game code
+    .text start:0x021fe2f0 end:0x021fe41c
+asm/overlays/ov042/overlay042_secondary_spawn_21ef.s:
+    categories: Game code
+    .text start:0x021fe41c end:0x021fe544
+asm/overlays/ov042/overlay042_secondary_spawn_1673.s:
+    categories: Game code
+    .text start:0x021fe544 end:0x021fe670
+asm/overlays/ov042/overlay042_secondary_spawn_2233.s:
+    categories: Game code
+    .text start:0x021fe670 end:0x021fe7a4
+asm/overlays/ov042/overlay042_secondary_spawn_2236.s:
+    categories: Game code
+    .text start:0x021fe7a4 end:0x021fe8e4
+asm/overlays/ov042/overlay042_secondary_pool_motion.s:
+    categories: Game code
+    .text start:0x021fe8e4 end:0x021fe9e4
+asm/overlays/ov042/overlay042_effect_scene_destroy.s:
+    categories: Game code
+    .text start:0x0220049c end:0x02200604
+asm/overlays/ov042/overlay042_record_burst_spawn.s:
+    categories: Game code
+    .text start:0x021fda24 end:0x021fdbc8
+asm/overlays/ov042/overlay042_variant1_state.s:
+    categories: Game code
+    .text start:0x02207f58 end:0x022080d4
+asm/overlays/ov042/overlay042_variant4_state.s:
+    categories: Game code
+    .text start:0x02209af4 end:0x02209cbc
+asm/overlays/ov042/overlay042_scene_pool_construct.s:
+    categories: Game code
+    .text start:0x021fd6ac end:0x021fd858
+asm/overlays/ov042/overlay042_rotated_quad_emit.s:
+    categories: Game code
+    .text start:0x02205b38 end:0x02205cb8
+asm/overlays/ov042/overlay042_transformed_quad_emit.s:
+    categories: Game code
+    .text start:0x02204ee4 end:0x0220507c
+asm/overlays/ov042/overlay042_three_child_trail.s:
+    categories: Game code
+    .text start:0x022009a0 end:0x02200afc
+asm/overlays/ov042/overlay042_primary_children_reconfigure.s:
+    categories: Game code
+    .text start:0x02200658 end:0x022008f8
+asm/overlays/ov042/overlay042_late_pool_spawn.s:
+    categories: Game code
+    .text start:0x022051a8 end:0x0220549c
+asm/overlays/ov042/overlay042_record_quad_draw.s:
+    categories: Game code
+    .text start:0x02205808 end:0x02205b38
+asm/overlays/ov042/overlay042_record_pool_update.s:
+    categories: Game code
+    .text start:0x0220549c end:0x02205808
+asm/overlays/ov042/overlay042_base_field_draw.s:
+    categories: Game code
+    .text start:0x021fd158 end:0x021fd548
+asm/overlays/ov042/overlay042_variant2_state_machine.s:
+    categories: Game code
+    .text start:0x02208aac end:0x02208fd0
+asm/overlays/ov042/overlay042_effect_scene_construct.s:
+    categories: Game code
+    .text start:0x021ffee4 end:0x0220049c
+asm/overlays/ov042/overlay042_variant3_state_machine.s:
+    categories: Game code
+    .text start:0x02209360 end:0x02209944
+asm/overlays/ov042/overlay042_encounter_script_update.s:
+    categories: Game code
+    .text start:0x02200bc0 end:0x02201234
+asm/overlays/ov042/overlay042_variant1_state_machine.s:
+    categories: Game code
+    .text start:0x022080f0 end:0x02208774
+asm/overlays/ov042/overlay042_dual_pool_update.s:
+    categories: Game code
+    .text start:0x021feabc end:0x021ff2f8
+asm/overlays/ov042/overlay042_dual_pool_draw.s:
+    categories: Game code
+    .text start:0x021ff31c end:0x021ffd00
+asm/overlays/ov042/overlay042_variant4_state_machine.s:
+    categories: Game code
+    .text start:0x02209cd8 end:0x0220a720
+asm/overlays/ov042/overlay042_primary_script_update.s:
+    categories: Game code
+    .text start:0x02201234 end:0x02201ea0
+asm/overlays/ov042/overlay042_primary_scene_update.s:
+    categories: Game code
+    .text start:0x02207114 end:0x02207e04
+asm/overlays/ov042/overlay042_primary_behavior_update.s:
+    categories: Game code
+    .text start:0x02205d80 end:0x02206fc0
+asm/overlays/ov042/overlay042_encounter_controller_update.s:
+    categories: Game code
+    .text start:0x02201f30 end:0x02203658
+asm/overlays/ov042/overlay042_encounter_render.s:
+    categories: Game code
+    .text start:0x022036c4 end:0x02204e74

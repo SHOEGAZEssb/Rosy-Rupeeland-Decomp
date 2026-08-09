@@ -12,6 +12,8 @@ extern "C" void func_02072b68(void *resource, u8 mode);
 extern "C" void func_0205940c(void *sound, s32 sequence, s32 value);
 extern "C" void func_0205929c(void *sound, s32 sequence, s32 value);
 extern "C" void func_ov042_021fcf80(void *element);
+extern "C" void func_020a1794(void *owner, void *source, void *destination);
+extern "C" void func_020a1ec0(void *owner, u16 value);
 extern "C" void *gSoundContext;
 
 /*
@@ -102,4 +104,44 @@ extern "C" void func_ov042_02200b38(void)
     func_0205929c(gSoundContext, 0xcd, 0);
     func_0205929c(gSoundContext, 0xea, 0);
     func_0205929c(gSoundContext, 0xf0, 0);
+}
+
+/*
+ * Reset the larger effect scene's offset-derived runtime state. Set mode fields
+ * +0x1B4/+0x1B0 to one, +0xE0 to 3000, two indices +0x224/+0x228 to -1,
+ * clear the remaining recovered counters, set base coordinates +0xA8/+0xAC
+ * to 0/-0x82000, apply the embedded state at +0xA4 to child +0x4C through the
+ * owner at +0x48, set child scales to 0x10, reset sample history, send owner
+ * value 0xB481, and store owner mode +0x1C8=4. SDK state changes; no return.
+ */
+extern "C" void func_ov042_02205cb8(void *object)
+{
+    FIELD(s32, object, 0x1b4) = 1;
+    FIELD(s32, object, 0xc4) = 0;
+    FIELD(s32, object, 0xe0) = 3000;
+    FIELD(s32, object, 0x150) = 0;
+    FIELD(s32, object, 0x1bc) = 0;
+    FIELD(s32, object, 0x1c4) = 0;
+    FIELD(s32, object, 0xbc) = 0;
+    FIELD(s32, object, 0xc0) = 0;
+    FIELD(s32, object, 0x1f0) = 0;
+    FIELD(s32, object, 0x20c) = 0;
+    FIELD(s32, object, 0x228) = -1;
+    FIELD(s32, object, 0x224) = -1;
+    FIELD(s32, object, 0x230) = 0;
+    FIELD(s32, object, 0x22c) = 0;
+    FIELD(s32, object, 0x238) = 0;
+    FIELD(s32, object, 0x234) = 0;
+    FIELD(s32, object, 0x1ec) = 0;
+    FIELD(s32, object, 0x1b0) = 1;
+    FIELD(s32, object, 0xa8) = 0;
+    FIELD(s32, object, 0xac) = -0x82000;
+    void *owner = FIELD(void *, object, 0x48);
+    void *child = FIELD(void *, object, 0x4c);
+    func_020a1794(owner, (u8 *)object + 0xa4, (u8 *)child + 0x2c);
+    FIELD(u16, child, 0x3c) = 0x10;
+    FIELD(u16, child, 0x3e) = 0x10;
+    func_ov042_02200950(object);
+    func_020a1ec0(owner, 0xb481);
+    FIELD(s32, owner, 0x1c8) = 4;
 }
