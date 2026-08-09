@@ -2,3 +2,34 @@
     .ctor       start:0x0220e1c0 end:0x0220e1c0 kind:rodata align:4
     .data       start:0x0220e1e0 end:0x0220e240 kind:data align:32
     .bss        start:0x0220e240 end:0x0220e260 kind:bss align:32
+
+src/overlays/ov052/overlay052_message_fields.c:
+    categories: Game code
+    .text start:0x0220d600 end:0x0220d618
+asm/overlays/ov052/overlay052_scene_construct.s:
+    categories: Game code
+    .text start:0x0220d618 end:0x0220d884
+asm/overlays/ov052/overlay052_scene_destroy.s:
+    categories: Game code
+    .text start:0x0220d884 end:0x0220d968
+asm/overlays/ov052/overlay052_scene_delete.s:
+    categories: Game code
+    .text start:0x0220d968 end:0x0220da54
+asm/overlays/ov052/overlay052_scene_update.s:
+    categories: Game code
+    .text start:0x0220da54 end:0x0220ddb4
+asm/overlays/ov052/overlay052_resources_load.s:
+    categories: Game code
+    .text start:0x0220ddb4 end:0x0220df9c
+asm/overlays/ov052/overlay052_decoration_randomize.s:
+    categories: Game code
+    .text start:0x0220df9c end:0x0220e064
+asm/overlays/ov052/overlay052_menu_animation_update.s:
+    categories: Game code
+    .text start:0x0220e064 end:0x0220e14c
+asm/overlays/ov052/overlay052_menu_animation_dispatch.s:
+    categories: Game code
+    .text start:0x0220e14c end:0x0220e178
+asm/overlays/ov052/overlay052_confirm_transition.s:
+    categories: Game code
+    .text start:0x0220e178 end:0x0220e1c0
