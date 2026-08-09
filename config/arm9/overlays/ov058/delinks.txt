@@ -3,3 +3,70 @@
     .ctor       start:0x0220fc7c end:0x0220fc7c kind:rodata align:4
     .data       start:0x0220fc80 end:0x0220fd20 kind:data align:32
     .bss        start:0x0220fd20 end:0x0220fd20 kind:bss align:32
+
+asm/overlays/ov058/overlay058_0220e400.s:
+    categories: Game code
+    .text start:0x0220e400 end:0x0220e598
+asm/overlays/ov058/overlay058_0220e598.s:
+    categories: Game code
+    .text start:0x0220e598 end:0x0220e5fc
+asm/overlays/ov058/overlay058_0220e5fc.s:
+    categories: Game code
+    .text start:0x0220e5fc end:0x0220e63c
+asm/overlays/ov058/overlay058_0220e63c.s:
+    categories: Game code
+    .text start:0x0220e63c end:0x0220e664
+asm/overlays/ov058/overlay058_0220e664.s:
+    categories: Game code
+    .text start:0x0220e664 end:0x0220e68c
+asm/overlays/ov058/overlay058_0220e68c.s:
+    categories: Game code
+    .text start:0x0220e68c end:0x0220e6b0
+asm/overlays/ov058/overlay058_0220e6b0.s:
+    categories: Game code
+    .text start:0x0220e6b0 end:0x0220e840
+asm/overlays/ov058/overlay058_0220e840.s:
+    categories: Game code
+    .text start:0x0220e840 end:0x0220ea68
+asm/overlays/ov058/overlay058_0220ea68.s:
+    categories: Game code
+    .text start:0x0220ea68 end:0x0220eb50
+asm/overlays/ov058/overlay058_0220eb50.s:
+    categories: Game code
+    .text start:0x0220eb50 end:0x0220ec40
+asm/overlays/ov058/overlay058_0220ec40.s:
+    categories: Game code
+    .text start:0x0220ec40 end:0x0220eca4
+asm/overlays/ov058/overlay058_0220eca4.s:
+    categories: Game code
+    .text start:0x0220eca4 end:0x0220ed64
+asm/overlays/ov058/overlay058_0220ed64.s:
+    categories: Game code
+    .text start:0x0220ed64 end:0x0220eef0
+asm/overlays/ov058/overlay058_0220eef0.s:
+    categories: Game code
+    .text start:0x0220eef0 end:0x0220efa4
+asm/overlays/ov058/overlay058_0220efa4.s:
+    categories: Game code
+    .text start:0x0220efa4 end:0x0220f11c
+asm/overlays/ov058/overlay058_0220f11c.s:
+    categories: Game code
+    .text start:0x0220f11c end:0x0220f228
+asm/overlays/ov058/overlay058_0220f228.s:
+    categories: Game code
+    .text start:0x0220f228 end:0x0220f308
+asm/overlays/ov058/overlay058_0220f308.s:
+    categories: Game code
+    .text start:0x0220f308 end:0x0220f484
+asm/overlays/ov058/overlay058_0220f484.s:
+    categories: Game code
+    .text start:0x0220f484 end:0x0220f4e8
+asm/overlays/ov058/overlay058_0220f4e8.s:
+    categories: Game code
+    .text start:0x0220f4e8 end:0x0220f51c
+asm/overlays/ov058/overlay058_0220f51c.s:
+    categories: Game code
+    .text start:0x0220f51c end:0x0220f520
+asm/overlays/ov058/overlay058_0220f520.s:
+    categories: Game code
+    .text start:0x0220f520 end:0x0220f524
