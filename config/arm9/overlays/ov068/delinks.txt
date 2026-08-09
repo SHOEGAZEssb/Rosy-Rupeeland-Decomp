@@ -2,3 +2,28 @@
     .ctor       start:0x02210724 end:0x02210724 kind:rodata align:4
     .data       start:0x02210740 end:0x022107c0 kind:data align:32
     .bss        start:0x022107c0 end:0x02210820 kind:bss align:32
+
+asm/overlays/ov068/overlay068_0220fd20.s:
+    categories: Game code
+    .text start:0x0220fd20 end:0x02210024
+asm/overlays/ov068/overlay068_02210024.s:
+    categories: Game code
+    .text start:0x02210024 end:0x02210044
+asm/overlays/ov068/overlay068_02210044.s:
+    categories: Game code
+    .text start:0x02210044 end:0x02210070
+asm/overlays/ov068/overlay068_02210070.s:
+    categories: Game code
+    .text start:0x02210070 end:0x022100b0
+asm/overlays/ov068/overlay068_022100b0.s:
+    categories: Game code
+    .text start:0x022100b0 end:0x02210140
+asm/overlays/ov068/overlay068_02210140.s:
+    categories: Game code
+    .text start:0x02210140 end:0x022101d8
+asm/overlays/ov068/overlay068_022101d8.s:
+    categories: Game code
+    .text start:0x022101d8 end:0x0221071c
+asm/overlays/ov068/overlay068_0221071c.s:
+    categories: Game code
+    .text start:0x0221071c end:0x02210724

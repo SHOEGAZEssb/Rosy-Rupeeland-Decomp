@@ -1,0 +1,84 @@
+# Generated exact matching fallbacks for overlay 068.
+# Regenerate with tools/generate_overlay_matching_ninja.py.
+
+build build/decomp/asm/overlays/ov068/overlay068_0220fd20.o: mwasmarm asm/overlays/ov068/overlay068_0220fd20.s
+build build/decomp/delinks/asm/overlays/ov068/overlay068_0220fd20.o: dsd_delink config/arm9/config.yaml | config/arm9/overlays/ov068/delinks.txt config/arm9/overlays/ov068/symbols.txt config/arm9/overlays/ov068/relocs.txt
+  object = asm/overlays/ov068/overlay068_0220fd20.s
+build build/reports/overlay068_0220fd20.json: objdiff build/decomp/asm/overlays/ov068/overlay068_0220fd20.o build/decomp/delinks/asm/overlays/ov068/overlay068_0220fd20.o
+  target_object = build/decomp/asm/overlays/ov068/overlay068_0220fd20.o
+  base_object = build/decomp/delinks/asm/overlays/ov068/overlay068_0220fd20.o
+build build/reports/overlay068_0220fd20.txt: match_report build/reports/overlay068_0220fd20.json | tools/report_objdiff.py
+  report_json = build/reports/overlay068_0220fd20.json
+  report_args = --section .text --function func_ov068_0220fd20 --require-exact
+
+build build/decomp/asm/overlays/ov068/overlay068_02210024.o: mwasmarm asm/overlays/ov068/overlay068_02210024.s
+build build/decomp/delinks/asm/overlays/ov068/overlay068_02210024.o: dsd_delink config/arm9/config.yaml | config/arm9/overlays/ov068/delinks.txt config/arm9/overlays/ov068/symbols.txt config/arm9/overlays/ov068/relocs.txt
+  object = asm/overlays/ov068/overlay068_02210024.s
+build build/reports/overlay068_02210024.json: objdiff build/decomp/asm/overlays/ov068/overlay068_02210024.o build/decomp/delinks/asm/overlays/ov068/overlay068_02210024.o
+  target_object = build/decomp/asm/overlays/ov068/overlay068_02210024.o
+  base_object = build/decomp/delinks/asm/overlays/ov068/overlay068_02210024.o
+build build/reports/overlay068_02210024.txt: match_report build/reports/overlay068_02210024.json | tools/report_objdiff.py
+  report_json = build/reports/overlay068_02210024.json
+  report_args = --section .text --function func_ov068_02210024 --require-exact
+
+build build/decomp/asm/overlays/ov068/overlay068_02210044.o: mwasmarm asm/overlays/ov068/overlay068_02210044.s
+build build/decomp/delinks/asm/overlays/ov068/overlay068_02210044.o: dsd_delink config/arm9/config.yaml | config/arm9/overlays/ov068/delinks.txt config/arm9/overlays/ov068/symbols.txt config/arm9/overlays/ov068/relocs.txt
+  object = asm/overlays/ov068/overlay068_02210044.s
+build build/reports/overlay068_02210044.json: objdiff build/decomp/asm/overlays/ov068/overlay068_02210044.o build/decomp/delinks/asm/overlays/ov068/overlay068_02210044.o
+  target_object = build/decomp/asm/overlays/ov068/overlay068_02210044.o
+  base_object = build/decomp/delinks/asm/overlays/ov068/overlay068_02210044.o
+build build/reports/overlay068_02210044.txt: match_report build/reports/overlay068_02210044.json | tools/report_objdiff.py
+  report_json = build/reports/overlay068_02210044.json
+  report_args = --section .text --function func_ov068_02210044 --require-exact
+
+build build/decomp/asm/overlays/ov068/overlay068_02210070.o: mwasmarm asm/overlays/ov068/overlay068_02210070.s
+build build/decomp/delinks/asm/overlays/ov068/overlay068_02210070.o: dsd_delink config/arm9/config.yaml | config/arm9/overlays/ov068/delinks.txt config/arm9/overlays/ov068/symbols.txt config/arm9/overlays/ov068/relocs.txt
+  object = asm/overlays/ov068/overlay068_02210070.s
+build build/reports/overlay068_02210070.json: objdiff build/decomp/asm/overlays/ov068/overlay068_02210070.o build/decomp/delinks/asm/overlays/ov068/overlay068_02210070.o
+  target_object = build/decomp/asm/overlays/ov068/overlay068_02210070.o
+  base_object = build/decomp/delinks/asm/overlays/ov068/overlay068_02210070.o
+build build/reports/overlay068_02210070.txt: match_report build/reports/overlay068_02210070.json | tools/report_objdiff.py
+  report_json = build/reports/overlay068_02210070.json
+  report_args = --section .text --function func_ov068_02210070 --require-exact
+
+build build/decomp/asm/overlays/ov068/overlay068_022100b0.o: mwasmarm asm/overlays/ov068/overlay068_022100b0.s
+build build/decomp/delinks/asm/overlays/ov068/overlay068_022100b0.o: dsd_delink config/arm9/config.yaml | config/arm9/overlays/ov068/delinks.txt config/arm9/overlays/ov068/symbols.txt config/arm9/overlays/ov068/relocs.txt
+  object = asm/overlays/ov068/overlay068_022100b0.s
+build build/reports/overlay068_022100b0.json: objdiff build/decomp/asm/overlays/ov068/overlay068_022100b0.o build/decomp/delinks/asm/overlays/ov068/overlay068_022100b0.o
+  target_object = build/decomp/asm/overlays/ov068/overlay068_022100b0.o
+  base_object = build/decomp/delinks/asm/overlays/ov068/overlay068_022100b0.o
+build build/reports/overlay068_022100b0.txt: match_report build/reports/overlay068_022100b0.json | tools/report_objdiff.py
+  report_json = build/reports/overlay068_022100b0.json
+  report_args = --section .text --function func_ov068_022100b0 --require-exact
+
+build build/decomp/asm/overlays/ov068/overlay068_02210140.o: mwasmarm asm/overlays/ov068/overlay068_02210140.s
+build build/decomp/delinks/asm/overlays/ov068/overlay068_02210140.o: dsd_delink config/arm9/config.yaml | config/arm9/overlays/ov068/delinks.txt config/arm9/overlays/ov068/symbols.txt config/arm9/overlays/ov068/relocs.txt
+  object = asm/overlays/ov068/overlay068_02210140.s
+build build/reports/overlay068_02210140.json: objdiff build/decomp/asm/overlays/ov068/overlay068_02210140.o build/decomp/delinks/asm/overlays/ov068/overlay068_02210140.o
+  target_object = build/decomp/asm/overlays/ov068/overlay068_02210140.o
+  base_object = build/decomp/delinks/asm/overlays/ov068/overlay068_02210140.o
+build build/reports/overlay068_02210140.txt: match_report build/reports/overlay068_02210140.json | tools/report_objdiff.py
+  report_json = build/reports/overlay068_02210140.json
+  report_args = --section .text --function func_ov068_02210140 --require-exact
+
+build build/decomp/asm/overlays/ov068/overlay068_022101d8.o: mwasmarm asm/overlays/ov068/overlay068_022101d8.s
+build build/decomp/delinks/asm/overlays/ov068/overlay068_022101d8.o: dsd_delink config/arm9/config.yaml | config/arm9/overlays/ov068/delinks.txt config/arm9/overlays/ov068/symbols.txt config/arm9/overlays/ov068/relocs.txt
+  object = asm/overlays/ov068/overlay068_022101d8.s
+build build/reports/overlay068_022101d8.json: objdiff build/decomp/asm/overlays/ov068/overlay068_022101d8.o build/decomp/delinks/asm/overlays/ov068/overlay068_022101d8.o
+  target_object = build/decomp/asm/overlays/ov068/overlay068_022101d8.o
+  base_object = build/decomp/delinks/asm/overlays/ov068/overlay068_022101d8.o
+build build/reports/overlay068_022101d8.txt: match_report build/reports/overlay068_022101d8.json | tools/report_objdiff.py
+  report_json = build/reports/overlay068_022101d8.json
+  report_args = --section .text --function func_ov068_022101d8 --require-exact
+
+build build/decomp/asm/overlays/ov068/overlay068_0221071c.o: mwasmarm asm/overlays/ov068/overlay068_0221071c.s
+build build/decomp/delinks/asm/overlays/ov068/overlay068_0221071c.o: dsd_delink config/arm9/config.yaml | config/arm9/overlays/ov068/delinks.txt config/arm9/overlays/ov068/symbols.txt config/arm9/overlays/ov068/relocs.txt
+  object = asm/overlays/ov068/overlay068_0221071c.s
+build build/reports/overlay068_0221071c.json: objdiff build/decomp/asm/overlays/ov068/overlay068_0221071c.o build/decomp/delinks/asm/overlays/ov068/overlay068_0221071c.o
+  target_object = build/decomp/asm/overlays/ov068/overlay068_0221071c.o
+  base_object = build/decomp/delinks/asm/overlays/ov068/overlay068_0221071c.o
+build build/reports/overlay068_0221071c.txt: match_report build/reports/overlay068_0221071c.json | tools/report_objdiff.py
+  report_json = build/reports/overlay068_0221071c.json
+  report_args = --section .text --function func_ov068_0221071c --require-exact
+
+build overlay068_matching: phony build/reports/overlay068_0220fd20.txt build/reports/overlay068_02210024.txt build/reports/overlay068_02210044.txt build/reports/overlay068_02210070.txt build/reports/overlay068_022100b0.txt build/reports/overlay068_02210140.txt build/reports/overlay068_022101d8.txt build/reports/overlay068_0221071c.txt
