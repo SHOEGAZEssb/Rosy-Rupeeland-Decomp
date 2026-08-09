@@ -1,0 +1,14 @@
+# Generated exact matching fallback for overlay 179.
+# Regenerate with tools/generate_overlay_matching_ninja.py.
+
+build build/decomp/asm/overlays/ov179/overlay179_0221d6c0.o: mwasmarm asm/overlays/ov179/overlay179_0221d6c0.s
+build build/decomp/delinks/asm/overlays/ov179/overlay179_0221d6c0.o: dsd_delink config/arm9/config.yaml | config/arm9/overlays/ov179/delinks.txt config/arm9/overlays/ov179/symbols.txt config/arm9/overlays/ov179/relocs.txt
+  object = asm/overlays/ov179/overlay179_0221d6c0.s
+build build/reports/overlay179_0221d6c0.json: objdiff build/decomp/asm/overlays/ov179/overlay179_0221d6c0.o build/decomp/delinks/asm/overlays/ov179/overlay179_0221d6c0.o
+  target_object = build/decomp/asm/overlays/ov179/overlay179_0221d6c0.o
+  base_object = build/decomp/delinks/asm/overlays/ov179/overlay179_0221d6c0.o
+build build/reports/overlay179_0221d6c0.txt: match_report build/reports/overlay179_0221d6c0.json | tools/report_objdiff.py
+  report_json = build/reports/overlay179_0221d6c0.json
+  report_args = --section .text --function func_ov179_0221d6c0 --require-exact
+
+build overlay179_matching: phony build/reports/overlay179_0221d6c0.txt
