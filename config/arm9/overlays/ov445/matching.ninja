@@ -1,0 +1,14 @@
+# Generated exact matching fallback for overlay 445.
+# Regenerate with tools/generate_overlay_matching_ninja.py.
+
+build build/decomp/asm/overlays/ov445/overlay445_02233c60.o: mwasmarm asm/overlays/ov445/overlay445_02233c60.s
+build build/decomp/delinks/asm/overlays/ov445/overlay445_02233c60.o: dsd_delink config/arm9/config.yaml | config/arm9/overlays/ov445/delinks.txt config/arm9/overlays/ov445/symbols.txt config/arm9/overlays/ov445/relocs.txt
+  object = asm/overlays/ov445/overlay445_02233c60.s
+build build/reports/overlay445_02233c60.json: objdiff build/decomp/asm/overlays/ov445/overlay445_02233c60.o build/decomp/delinks/asm/overlays/ov445/overlay445_02233c60.o
+  target_object = build/decomp/asm/overlays/ov445/overlay445_02233c60.o
+  base_object = build/decomp/delinks/asm/overlays/ov445/overlay445_02233c60.o
+build build/reports/overlay445_02233c60.txt: match_report build/reports/overlay445_02233c60.json | tools/report_objdiff.py
+  report_json = build/reports/overlay445_02233c60.json
+  report_args = --section .text --function func_ov445_02233c60 --require-exact
+
+build overlay445_matching: phony build/reports/overlay445_02233c60.txt
