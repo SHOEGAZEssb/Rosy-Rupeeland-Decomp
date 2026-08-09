@@ -2,3 +2,69 @@
     .ctor       start:0x0220ccd0 end:0x0220ccd0 kind:rodata align:4
     .data       start:0x0220cce0 end:0x0220cf60 kind:data align:32
     .bss        start:0x0220cf60 end:0x0220cf60 kind:bss align:32
+src/overlays/ov046/overlay046_table_addresses.c:
+    categories: Game code
+    .text start:0x0220b740 end:0x0220b7bc
+asm/overlays/ov046/overlay046_ui_construct.s:
+    categories: Game code
+    .text start:0x0220b7bc end:0x0220ba80
+src/overlays/ov046/overlay046_ui_destroy.c:
+    categories: Game code
+    .text start:0x0220ba80 end:0x0220bac0
+asm/overlays/ov046/overlay046_graphics_setup.s:
+    categories: Game code
+    .text start:0x0220bac0 end:0x0220bc80
+asm/overlays/ov046/overlay046_bitmap_clear.s:
+    categories: Game code
+    .text start:0x0220bc80 end:0x0220bd14
+asm/overlays/ov046/overlay046_panel_rebuild.s:
+    categories: Game code
+    .text start:0x0220bd14 end:0x0220bffc
+asm/overlays/ov046/overlay046_panel_populate.s:
+    categories: Game code
+    .text start:0x0220bffc end:0x0220c1a4
+asm/overlays/ov046/overlay046_panel_refresh.s:
+    categories: Game code
+    .text start:0x0220c1a4 end:0x0220c1d8
+asm/overlays/ov046/overlay046_oam_update.s:
+    categories: Game code
+    .text start:0x0220c1d8 end:0x0220c3bc
+asm/overlays/ov046/overlay046_panel_x.s:
+    categories: Game code
+    .text start:0x0220c3bc end:0x0220c410
+asm/overlays/ov046/overlay046_panel_y.s:
+    categories: Game code
+    .text start:0x0220c410 end:0x0220c46c
+asm/overlays/ov046/overlay046_panel_set.s:
+    categories: Game code
+    .text start:0x0220c46c end:0x0220c478
+asm/overlays/ov046/overlay046_panel_select.s:
+    categories: Game code
+    .text start:0x0220c478 end:0x0220c4a0
+asm/overlays/ov046/overlay046_panel_update.s:
+    categories: Game code
+    .text start:0x0220c4a0 end:0x0220c7b0
+asm/overlays/ov046/overlay046_state_set.s:
+    categories: Game code
+    .text start:0x0220c7b0 end:0x0220c7d8
+asm/overlays/ov046/overlay046_scene_construct.s:
+    categories: Game code
+    .text start:0x0220c7d8 end:0x0220ca40
+src/overlays/ov046/overlay046_scene_lifecycle.c:
+    categories: Game code
+    .text start:0x0220ca40 end:0x0220cb28
+asm/overlays/ov046/overlay046_scene_oam_gate.s:
+    categories: Game code
+    .text start:0x0220cb28 end:0x0220cb4c
+asm/overlays/ov046/overlay046_scene_refresh.s:
+    categories: Game code
+    .text start:0x0220cb4c end:0x0220cb88
+asm/overlays/ov046/overlay046_scene_enter.s:
+    categories: Game code
+    .text start:0x0220cb88 end:0x0220cc18
+asm/overlays/ov046/overlay046_scene_step.s:
+    categories: Game code
+    .text start:0x0220cc18 end:0x0220ccc0
+asm/overlays/ov046/overlay046_scene_finish.s:
+    categories: Game code
+    .text start:0x0220ccc0 end:0x0220ccd0

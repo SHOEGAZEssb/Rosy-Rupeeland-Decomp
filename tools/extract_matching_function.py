@@ -10,7 +10,7 @@ from pathlib import Path
 
 SYMBOL_RE = re.compile(
     r"\b(?:func_[A-Za-z0-9_]+|data_[A-Za-z0-9_]+|g[A-Z][A-Za-z0-9_]*|"
-    r"Heap_Alloc|Heap_Free|GameWork_TestFlag|Sound_Play)\b"
+    r"Heap_Alloc|Heap_Free|GameWork_TestFlag|Sound_Play|__[A-Za-z0-9_]+)\b"
 )
 
 
@@ -39,6 +39,11 @@ def main() -> int:
         if (match := re.match(r"^([A-Za-z_.$][A-Za-z0-9_.$]*):", line.strip()))
     }
     referenced = set(SYMBOL_RE.findall("\n".join(body)))
+    referenced.update(
+        match.group(1)
+        for line in body
+        if (match := re.search(r"\bblx?\s+([A-Za-z_][A-Za-z0-9_]*)", line))
+    )
     externs = sorted(referenced - defined - {args.function})
 
     output = [

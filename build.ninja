@@ -40792,6 +40792,137 @@ build build/reports/overlay045_emitter_tick.txt: match_report build/reports/over
 build overlay045_emitter_tick: phony build/decomp/src/overlays/ov045/overlay045_emitter_tick.o build/decomp/asm/overlays/ov045/overlay045_emitter_tick.o build/reports/overlay045_emitter_tick.txt
 build overlay045_complete: phony overlay045_partial11 overlay045_emitter_tick
 
+subninja config/arm9/overlays/ov046/matching.ninja
+
+overlay046_table_addresses_cflags = -proc arm946e -O4 -inline off -interworking -Cpp_exceptions off -lang c++
+build build/decomp/src/overlays/ov046/overlay046_table_addresses.o: mwccarm src/overlays/ov046/overlay046_table_addresses.c | include/tingle/types.h
+  source = src/overlays/ov046/overlay046_table_addresses.c
+  cflags = $overlay046_table_addresses_cflags
+build build/decomp/delinks/src/overlays/ov046/overlay046_table_addresses.o: dsd_delink config/arm9/config.yaml | config/arm9/overlays/ov046/delinks.txt config/arm9/overlays/ov046/symbols.txt config/arm9/overlays/ov046/relocs.txt
+  object = src/overlays/ov046/overlay046_table_addresses.c
+build build/reports/overlay046_table_addresses.json: objdiff build/decomp/src/overlays/ov046/overlay046_table_addresses.o build/decomp/delinks/src/overlays/ov046/overlay046_table_addresses.o
+  target_object = build/decomp/src/overlays/ov046/overlay046_table_addresses.o
+  base_object = build/decomp/delinks/src/overlays/ov046/overlay046_table_addresses.o
+build build/reports/overlay046_table_address_40.txt: match_report build/reports/overlay046_table_addresses.json | tools/report_objdiff.py
+  report_json = build/reports/overlay046_table_addresses.json
+  report_args = --section .text --function func_ov046_0220b740 --require-exact
+build build/reports/overlay046_table_address_30.txt: match_report build/reports/overlay046_table_addresses.json | tools/report_objdiff.py
+  report_json = build/reports/overlay046_table_addresses.json
+  report_args = --section .text --function func_ov046_0220b77c --require-exact
+build overlay046_table_addresses: phony build/decomp/src/overlays/ov046/overlay046_table_addresses.o build/reports/overlay046_table_address_40.txt build/reports/overlay046_table_address_30.txt
+build overlay046_partial1: phony overlay046_table_addresses
+
+build build/decomp/asm/overlays/ov046/overlay046_ui_construct.o: mwasmarm asm/overlays/ov046/overlay046_ui_construct.s
+build build/decomp/delinks/asm/overlays/ov046/overlay046_ui_construct.o: dsd_delink config/arm9/config.yaml | config/arm9/overlays/ov046/delinks.txt config/arm9/overlays/ov046/symbols.txt config/arm9/overlays/ov046/relocs.txt
+  object = asm/overlays/ov046/overlay046_ui_construct.s
+build build/reports/overlay046_ui_construct.json: objdiff build/decomp/asm/overlays/ov046/overlay046_ui_construct.o build/decomp/delinks/asm/overlays/ov046/overlay046_ui_construct.o
+  target_object = build/decomp/asm/overlays/ov046/overlay046_ui_construct.o
+  base_object = build/decomp/delinks/asm/overlays/ov046/overlay046_ui_construct.o
+build build/reports/overlay046_ui_construct.txt: match_report build/reports/overlay046_ui_construct.json | tools/report_objdiff.py
+  report_json = build/reports/overlay046_ui_construct.json
+  report_args = --section .text --function func_ov046_0220b7bc --require-exact
+build overlay046_ui_construct: phony build/decomp/asm/overlays/ov046/overlay046_ui_construct.o build/reports/overlay046_ui_construct.txt
+
+overlay046_ui_destroy_cflags = -proc arm946e -O4 -inline off -interworking -Cpp_exceptions off -lang c++
+build build/decomp/src/overlays/ov046/overlay046_ui_destroy.o: mwccarm src/overlays/ov046/overlay046_ui_destroy.c | include/tingle/types.h
+  source = src/overlays/ov046/overlay046_ui_destroy.c
+  cflags = $overlay046_ui_destroy_cflags
+build build/decomp/delinks/src/overlays/ov046/overlay046_ui_destroy.o: dsd_delink config/arm9/config.yaml | config/arm9/overlays/ov046/delinks.txt config/arm9/overlays/ov046/symbols.txt config/arm9/overlays/ov046/relocs.txt
+  object = src/overlays/ov046/overlay046_ui_destroy.c
+build build/reports/overlay046_ui_destroy.json: objdiff build/decomp/src/overlays/ov046/overlay046_ui_destroy.o build/decomp/delinks/src/overlays/ov046/overlay046_ui_destroy.o
+  target_object = build/decomp/src/overlays/ov046/overlay046_ui_destroy.o
+  base_object = build/decomp/delinks/src/overlays/ov046/overlay046_ui_destroy.o
+build build/reports/overlay046_ui_destroy.txt: match_report build/reports/overlay046_ui_destroy.json | tools/report_objdiff.py
+  report_json = build/reports/overlay046_ui_destroy.json
+  report_args = --section .text --function func_ov046_0220ba80 --require-exact
+build overlay046_ui_destroy: phony build/decomp/src/overlays/ov046/overlay046_ui_destroy.o build/reports/overlay046_ui_destroy.txt
+build overlay046_partial2: phony overlay046_partial1 overlay046_ui_construct overlay046_ui_destroy
+
+build build/decomp/asm/overlays/ov046/overlay046_panel_refresh.o: mwasmarm asm/overlays/ov046/overlay046_panel_refresh.s
+build build/decomp/delinks/asm/overlays/ov046/overlay046_panel_refresh.o: dsd_delink config/arm9/config.yaml | config/arm9/overlays/ov046/delinks.txt config/arm9/overlays/ov046/symbols.txt config/arm9/overlays/ov046/relocs.txt
+  object = asm/overlays/ov046/overlay046_panel_refresh.s
+build build/reports/overlay046_panel_refresh_exact.json: objdiff build/decomp/asm/overlays/ov046/overlay046_panel_refresh.o build/decomp/delinks/asm/overlays/ov046/overlay046_panel_refresh.o
+  target_object = build/decomp/asm/overlays/ov046/overlay046_panel_refresh.o
+  base_object = build/decomp/delinks/asm/overlays/ov046/overlay046_panel_refresh.o
+build build/reports/overlay046_panel_refresh_exact.txt: match_report build/reports/overlay046_panel_refresh_exact.json | tools/report_objdiff.py
+  report_json = build/reports/overlay046_panel_refresh_exact.json
+  report_args = --section .text --function func_ov046_0220c1a4 --require-exact
+build build/decomp/asm/overlays/ov046/overlay046_panel_x.o: mwasmarm asm/overlays/ov046/overlay046_panel_x.s
+build build/decomp/delinks/asm/overlays/ov046/overlay046_panel_x.o: dsd_delink config/arm9/config.yaml | config/arm9/overlays/ov046/delinks.txt config/arm9/overlays/ov046/symbols.txt config/arm9/overlays/ov046/relocs.txt
+  object = asm/overlays/ov046/overlay046_panel_x.s
+build build/reports/overlay046_panel_x.json: objdiff build/decomp/asm/overlays/ov046/overlay046_panel_x.o build/decomp/delinks/asm/overlays/ov046/overlay046_panel_x.o
+  target_object = build/decomp/asm/overlays/ov046/overlay046_panel_x.o
+  base_object = build/decomp/delinks/asm/overlays/ov046/overlay046_panel_x.o
+build build/reports/overlay046_panel_x.txt: match_report build/reports/overlay046_panel_x.json | tools/report_objdiff.py
+  report_json = build/reports/overlay046_panel_x.json
+  report_args = --section .text --function func_ov046_0220c3bc --require-exact
+build build/decomp/asm/overlays/ov046/overlay046_panel_y.o: mwasmarm asm/overlays/ov046/overlay046_panel_y.s
+build build/decomp/delinks/asm/overlays/ov046/overlay046_panel_y.o: dsd_delink config/arm9/config.yaml | config/arm9/overlays/ov046/delinks.txt config/arm9/overlays/ov046/symbols.txt config/arm9/overlays/ov046/relocs.txt
+  object = asm/overlays/ov046/overlay046_panel_y.s
+build build/reports/overlay046_panel_y.json: objdiff build/decomp/asm/overlays/ov046/overlay046_panel_y.o build/decomp/delinks/asm/overlays/ov046/overlay046_panel_y.o
+  target_object = build/decomp/asm/overlays/ov046/overlay046_panel_y.o
+  base_object = build/decomp/delinks/asm/overlays/ov046/overlay046_panel_y.o
+build build/reports/overlay046_panel_y.txt: match_report build/reports/overlay046_panel_y.json | tools/report_objdiff.py
+  report_json = build/reports/overlay046_panel_y.json
+  report_args = --section .text --function func_ov046_0220c410 --require-exact
+build build/decomp/asm/overlays/ov046/overlay046_panel_set.o: mwasmarm asm/overlays/ov046/overlay046_panel_set.s
+build build/decomp/delinks/asm/overlays/ov046/overlay046_panel_set.o: dsd_delink config/arm9/config.yaml | config/arm9/overlays/ov046/delinks.txt config/arm9/overlays/ov046/symbols.txt config/arm9/overlays/ov046/relocs.txt
+  object = asm/overlays/ov046/overlay046_panel_set.s
+build build/reports/overlay046_panel_set.json: objdiff build/decomp/asm/overlays/ov046/overlay046_panel_set.o build/decomp/delinks/asm/overlays/ov046/overlay046_panel_set.o
+  target_object = build/decomp/asm/overlays/ov046/overlay046_panel_set.o
+  base_object = build/decomp/delinks/asm/overlays/ov046/overlay046_panel_set.o
+build build/reports/overlay046_panel_set.txt: match_report build/reports/overlay046_panel_set.json | tools/report_objdiff.py
+  report_json = build/reports/overlay046_panel_set.json
+  report_args = --section .text --function func_ov046_0220c46c --require-exact
+build build/decomp/asm/overlays/ov046/overlay046_panel_select.o: mwasmarm asm/overlays/ov046/overlay046_panel_select.s
+build build/decomp/delinks/asm/overlays/ov046/overlay046_panel_select.o: dsd_delink config/arm9/config.yaml | config/arm9/overlays/ov046/delinks.txt config/arm9/overlays/ov046/symbols.txt config/arm9/overlays/ov046/relocs.txt
+  object = asm/overlays/ov046/overlay046_panel_select.s
+build build/reports/overlay046_panel_select.json: objdiff build/decomp/asm/overlays/ov046/overlay046_panel_select.o build/decomp/delinks/asm/overlays/ov046/overlay046_panel_select.o
+  target_object = build/decomp/asm/overlays/ov046/overlay046_panel_select.o
+  base_object = build/decomp/delinks/asm/overlays/ov046/overlay046_panel_select.o
+build build/reports/overlay046_panel_select.txt: match_report build/reports/overlay046_panel_select.json | tools/report_objdiff.py
+  report_json = build/reports/overlay046_panel_select.json
+  report_args = --section .text --function func_ov046_0220c478 --require-exact
+build overlay046_panel_position: phony build/reports/overlay046_panel_refresh_exact.txt build/reports/overlay046_panel_x.txt build/reports/overlay046_panel_y.txt build/reports/overlay046_panel_set.txt build/reports/overlay046_panel_select.txt
+build overlay046_partial3: phony overlay046_partial2 overlay046_panel_position
+
+overlay046_scene_lifecycle_cflags = -proc arm946e -O4 -inline off -interworking -Cpp_exceptions off -lang c++
+build build/decomp/src/overlays/ov046/overlay046_scene_lifecycle.o: mwccarm src/overlays/ov046/overlay046_scene_lifecycle.c | include/tingle/types.h
+  source = src/overlays/ov046/overlay046_scene_lifecycle.c
+  cflags = $overlay046_scene_lifecycle_cflags
+build build/decomp/delinks/src/overlays/ov046/overlay046_scene_lifecycle.o: dsd_delink config/arm9/config.yaml | config/arm9/overlays/ov046/delinks.txt config/arm9/overlays/ov046/symbols.txt config/arm9/overlays/ov046/relocs.txt
+  object = src/overlays/ov046/overlay046_scene_lifecycle.c
+build build/reports/overlay046_scene_lifecycle.json: objdiff build/decomp/src/overlays/ov046/overlay046_scene_lifecycle.o build/decomp/delinks/src/overlays/ov046/overlay046_scene_lifecycle.o
+  target_object = build/decomp/src/overlays/ov046/overlay046_scene_lifecycle.o
+  base_object = build/decomp/delinks/src/overlays/ov046/overlay046_scene_lifecycle.o
+build build/reports/overlay046_scene_destroy.txt: match_report build/reports/overlay046_scene_lifecycle.json | tools/report_objdiff.py
+  report_json = build/reports/overlay046_scene_lifecycle.json
+  report_args = --section .text --function func_ov046_0220ca40 --require-exact
+build build/reports/overlay046_scene_delete.txt: match_report build/reports/overlay046_scene_lifecycle.json | tools/report_objdiff.py
+  report_json = build/reports/overlay046_scene_lifecycle.json
+  report_args = --section .text --function func_ov046_0220cab0 --require-exact
+build build/decomp/asm/overlays/ov046/overlay046_scene_oam_gate.o: mwasmarm asm/overlays/ov046/overlay046_scene_oam_gate.s
+build build/decomp/delinks/asm/overlays/ov046/overlay046_scene_oam_gate.o: dsd_delink config/arm9/config.yaml | config/arm9/overlays/ov046/delinks.txt config/arm9/overlays/ov046/symbols.txt config/arm9/overlays/ov046/relocs.txt
+  object = asm/overlays/ov046/overlay046_scene_oam_gate.s
+build build/reports/overlay046_scene_oam_gate_exact.json: objdiff build/decomp/asm/overlays/ov046/overlay046_scene_oam_gate.o build/decomp/delinks/asm/overlays/ov046/overlay046_scene_oam_gate.o
+  target_object = build/decomp/asm/overlays/ov046/overlay046_scene_oam_gate.o
+  base_object = build/decomp/delinks/asm/overlays/ov046/overlay046_scene_oam_gate.o
+build build/reports/overlay046_scene_oam_gate_exact.txt: match_report build/reports/overlay046_scene_oam_gate_exact.json | tools/report_objdiff.py
+  report_json = build/reports/overlay046_scene_oam_gate_exact.json
+  report_args = --section .text --function func_ov046_0220cb28 --require-exact
+build build/decomp/asm/overlays/ov046/overlay046_scene_refresh.o: mwasmarm asm/overlays/ov046/overlay046_scene_refresh.s
+build build/decomp/delinks/asm/overlays/ov046/overlay046_scene_refresh.o: dsd_delink config/arm9/config.yaml | config/arm9/overlays/ov046/delinks.txt config/arm9/overlays/ov046/symbols.txt config/arm9/overlays/ov046/relocs.txt
+  object = asm/overlays/ov046/overlay046_scene_refresh.s
+build build/reports/overlay046_scene_refresh_exact.json: objdiff build/decomp/asm/overlays/ov046/overlay046_scene_refresh.o build/decomp/delinks/asm/overlays/ov046/overlay046_scene_refresh.o
+  target_object = build/decomp/asm/overlays/ov046/overlay046_scene_refresh.o
+  base_object = build/decomp/delinks/asm/overlays/ov046/overlay046_scene_refresh.o
+build build/reports/overlay046_scene_refresh_exact.txt: match_report build/reports/overlay046_scene_refresh_exact.json | tools/report_objdiff.py
+  report_json = build/reports/overlay046_scene_refresh_exact.json
+  report_args = --section .text --function func_ov046_0220cb4c --require-exact
+build overlay046_scene_lifecycle: phony build/reports/overlay046_scene_destroy.txt build/reports/overlay046_scene_delete.txt build/reports/overlay046_scene_oam_gate_exact.txt build/reports/overlay046_scene_refresh_exact.txt
+build overlay046_partial4: phony overlay046_partial3 overlay046_scene_lifecycle
+build overlay046: phony overlay046_partial4 overlay046_remaining
+
 
 
 # Keep every configured link replacement built before preparing the linker object list.
@@ -40842,4 +40973,5 @@ build link_replacement_objects_43: phony build/decomp/asm/overlays/ov040/overlay
 build link_replacement_objects_44: phony build/decomp/asm/overlays/ov040/overlay040_sequence_update.o
 build link_replacement_objects_45: phony build/decomp/asm/overlays/ov040/overlay040_effect_emit.o
 build link_replacement_objects_46: phony build/decomp/asm/overlays/ov045/overlay045_effect_lifecycle.o build/decomp/asm/overlays/ov045/overlay045_effect_update.o build/decomp/src/overlays/ov045/overlay045_emitter_lifecycle.o build/decomp/asm/overlays/ov045/overlay045_emitter_tick.o build/decomp/src/overlays/ov045/overlay045_display_object.o build/decomp/src/overlays/ov045/overlay045_sprite_pair_lifecycle.o build/decomp/src/overlays/ov045/overlay045_sprite_pair_modes.o build/decomp/src/overlays/ov045/overlay045_sprite_pair_update.o build/decomp/asm/overlays/ov045/overlay045_sprite_pair_wait.o build/decomp/src/overlays/ov045/overlay045_sprite_pair_controls.o build/decomp/src/overlays/ov045/overlay045_graphics_helpers.o build/decomp/asm/overlays/ov045/overlay045_sub_display_control.o build/decomp/src/overlays/ov045/overlay045_derived_sprite_scene.o build/decomp/asm/overlays/ov045/overlay045_sprite_factory.o build/decomp/asm/overlays/ov045/overlay045_sound_dispatch.o build/decomp/asm/overlays/ov045/overlay045_sound_stop.o build/decomp/asm/overlays/ov045/overlay045_preview_draw.o build/decomp/asm/overlays/ov045/overlay045_effect_delete.o
-build link_replacement_objects: phony link_replacement_objects_00 link_replacement_objects_01 link_replacement_objects_02 link_replacement_objects_03 link_replacement_objects_04 link_replacement_objects_05 link_replacement_objects_06 link_replacement_objects_07 link_replacement_objects_08 link_replacement_objects_09 link_replacement_objects_10 link_replacement_objects_11 link_replacement_objects_12 link_replacement_objects_13 link_replacement_objects_14 link_replacement_objects_15 link_replacement_objects_16 link_replacement_objects_17 link_replacement_objects_18 link_replacement_objects_19 link_replacement_objects_20 link_replacement_objects_21 link_replacement_objects_22 link_replacement_objects_23 link_replacement_objects_24 link_replacement_objects_25 link_replacement_objects_26 link_replacement_objects_27 link_replacement_objects_28 link_replacement_objects_29 link_replacement_objects_30 link_replacement_objects_31 link_replacement_objects_32 link_replacement_objects_33 link_replacement_objects_34 link_replacement_objects_35 link_replacement_objects_36 link_replacement_objects_37 link_replacement_objects_38 link_replacement_objects_39 link_replacement_objects_40 link_replacement_objects_41 link_replacement_objects_42 link_replacement_objects_43 link_replacement_objects_44 link_replacement_objects_45 link_replacement_objects_46
+build link_replacement_objects_47: phony build/decomp/src/overlays/ov046/overlay046_table_addresses.o build/decomp/asm/overlays/ov046/overlay046_ui_construct.o build/decomp/src/overlays/ov046/overlay046_ui_destroy.o build/decomp/asm/overlays/ov046/overlay046_graphics_setup.o build/decomp/asm/overlays/ov046/overlay046_bitmap_clear.o build/decomp/asm/overlays/ov046/overlay046_panel_rebuild.o build/decomp/asm/overlays/ov046/overlay046_panel_populate.o build/decomp/asm/overlays/ov046/overlay046_panel_refresh.o build/decomp/asm/overlays/ov046/overlay046_oam_update.o build/decomp/asm/overlays/ov046/overlay046_panel_x.o build/decomp/asm/overlays/ov046/overlay046_panel_y.o build/decomp/asm/overlays/ov046/overlay046_panel_set.o build/decomp/asm/overlays/ov046/overlay046_panel_select.o build/decomp/asm/overlays/ov046/overlay046_panel_update.o build/decomp/asm/overlays/ov046/overlay046_state_set.o build/decomp/asm/overlays/ov046/overlay046_scene_construct.o build/decomp/src/overlays/ov046/overlay046_scene_lifecycle.o build/decomp/asm/overlays/ov046/overlay046_scene_oam_gate.o build/decomp/asm/overlays/ov046/overlay046_scene_refresh.o build/decomp/asm/overlays/ov046/overlay046_scene_enter.o build/decomp/asm/overlays/ov046/overlay046_scene_step.o build/decomp/asm/overlays/ov046/overlay046_scene_finish.o
+build link_replacement_objects: phony link_replacement_objects_00 link_replacement_objects_01 link_replacement_objects_02 link_replacement_objects_03 link_replacement_objects_04 link_replacement_objects_05 link_replacement_objects_06 link_replacement_objects_07 link_replacement_objects_08 link_replacement_objects_09 link_replacement_objects_10 link_replacement_objects_11 link_replacement_objects_12 link_replacement_objects_13 link_replacement_objects_14 link_replacement_objects_15 link_replacement_objects_16 link_replacement_objects_17 link_replacement_objects_18 link_replacement_objects_19 link_replacement_objects_20 link_replacement_objects_21 link_replacement_objects_22 link_replacement_objects_23 link_replacement_objects_24 link_replacement_objects_25 link_replacement_objects_26 link_replacement_objects_27 link_replacement_objects_28 link_replacement_objects_29 link_replacement_objects_30 link_replacement_objects_31 link_replacement_objects_32 link_replacement_objects_33 link_replacement_objects_34 link_replacement_objects_35 link_replacement_objects_36 link_replacement_objects_37 link_replacement_objects_38 link_replacement_objects_39 link_replacement_objects_40 link_replacement_objects_41 link_replacement_objects_42 link_replacement_objects_43 link_replacement_objects_44 link_replacement_objects_45 link_replacement_objects_46 link_replacement_objects_47
