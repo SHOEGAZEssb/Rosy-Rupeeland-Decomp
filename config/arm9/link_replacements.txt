@@ -6739,3 +6739,4 @@ build/decomp/delinks/asm/overlays/ov185/overlay185_0221d6c0.o = build/decomp/asm
 build/decomp/delinks/asm/overlays/ov186/overlay186_0221d6c0.o = build/decomp/asm/overlays/ov186/overlay186_0221d6c0.o
 build/decomp/delinks/asm/overlays/ov187/overlay187_0221d6c0.o = build/decomp/asm/overlays/ov187/overlay187_0221d6c0.o
 build/decomp/delinks/asm/overlays/ov188/overlay188_0221d6c0.o = build/decomp/asm/overlays/ov188/overlay188_0221d6c0.o
+build/decomp/delinks/asm/overlays/ov189/overlay189_0221d6c0.o = build/decomp/asm/overlays/ov189/overlay189_0221d6c0.o
