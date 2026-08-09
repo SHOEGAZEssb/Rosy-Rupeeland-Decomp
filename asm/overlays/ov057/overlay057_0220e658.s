@@ -1,0 +1,89 @@
+.text
+; Matching fallback for the portable implementation in src/overlays/ov057/overlay057_recovery.c.
+.extern GraphicsResourceSet_Load
+.extern PaletteBuffer_Write
+.extern data_020f4e18
+.extern data_020f4e50
+.extern data_020f5058
+.extern func_02070638
+.extern func_020706c4
+.extern func_02070874
+.extern func_02070e0c
+.extern func_02070eac
+.extern func_02070f80
+.extern func_020b44e8
+
+.global func_ov057_0220e658
+func_ov057_0220e658:
+    stmdb sp!, {r3, r4, lr}
+    sub sp, sp, #0x4
+    ldr r3, .L_0220e760
+    ldr r1, .L_0220e764
+    str r3, [sp, #0x0]
+    mov r4, r0
+    ldr r1, [r1, #0x0]
+    add r0, r4, #0x8
+    sub r2, r3, #0x2
+    sub r3, r3, #0x1
+    bl GraphicsResourceSet_Load
+    ldr r3, .L_0220e768
+    mov r1, #0xf
+    ldrh r0, [r3, #0x0]
+    sub r2, r3, #0x1000
+    and r0, r0, #0x43
+    orr r0, r0, #0x1a00
+    strh r0, [r3, #0x0]
+    ldrh r0, [r3, #0x0]
+    bic r0, r0, #0x3
+    orr r0, r0, #0x3
+    strh r0, [r3, #0x0]
+    ldrh r0, [r2, #0x0]
+    and r0, r0, #0x43
+    orr r0, r0, #0x208
+    orr r0, r0, #0x1800
+    strh r0, [r2, #0x0]
+    ldrh r0, [r2, #0x0]
+    bic r0, r0, #0x3
+    orr r0, r0, #0x3
+    strh r0, [r2, #0x0]
+    ldr r0, [r4, #0x10]
+    bl func_02070f80
+    bl func_020b44e8
+    ldr r0, [r4, #0x8]
+    mov r1, #0x1
+    mov r2, #0x0
+    bl func_020706c4
+    ldr r0, [r4, #0x10]
+    mov r1, #0x1
+    mov r2, #0x0
+    bl func_02070eac
+    ldr r0, [r4, #0xc]
+    bl func_02070874
+    mov r1, r0
+    ldr r0, .L_0220e76c
+    mov r2, #0x1e0
+    mov r3, #0x20
+    bl PaletteBuffer_Write
+    ldr r0, [r4, #0x8]
+    mov r1, #0x1
+    mov r2, #0x0
+    bl func_02070638
+    ldr r0, [r4, #0x10]
+    mov r1, #0x1
+    mov r2, #0x0
+    bl func_02070e0c
+    ldr r0, [r4, #0xc]
+    bl func_02070874
+    mov r1, r0
+    ldr r0, .L_0220e770
+    mov r2, #0x1e0
+    mov r3, #0x20
+    bl PaletteBuffer_Write
+    add sp, sp, #0x4
+    ldmia sp!, {r3, r4, pc}
+.L_0220e760: .word 0xa05d
+.L_0220e764: .word data_020f4e18
+.L_0220e768: .word 0x400100a
+.L_0220e76c: .word data_020f5058
+.L_0220e770: .word data_020f4e50
+.size func_ov057_0220e658, . - func_ov057_0220e658
