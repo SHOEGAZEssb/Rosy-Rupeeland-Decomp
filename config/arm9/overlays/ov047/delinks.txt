@@ -1,3 +1,24 @@
     .text       start:0x0220b740 end:0x0220c350 kind:code align:32
     .ctor       start:0x0220c350 end:0x0220c350 kind:rodata align:4
     .bss        start:0x0220c360 end:0x0220c360 kind:bss align:32
+asm/overlays/ov047/overlay047_controller_construct.s:
+    categories: Game code
+    .text start:0x0220b740 end:0x0220ba64
+src/overlays/ov047/overlay047_resource_release.c:
+    categories: Game code
+    .text start:0x0220ba64 end:0x0220baa8
+asm/overlays/ov047/overlay047_matrix_initialize.s:
+    categories: Game code
+    .text start:0x0220baa8 end:0x0220bda8
+asm/overlays/ov047/overlay047_render_update.s:
+    categories: Game code
+    .text start:0x0220bda8 end:0x0220c2c8
+asm/overlays/ov047/overlay047_capture_config.s:
+    categories: Game code
+    .text start:0x0220c2c8 end:0x0220c308
+asm/overlays/ov047/overlay047_fifo_write.s:
+    categories: Game code
+    .text start:0x0220c308 end:0x0220c338
+src/overlays/ov047/overlay047_completion_query.c:
+    categories: Game code
+    .text start:0x0220c338 end:0x0220c350

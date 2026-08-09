@@ -1,0 +1,53 @@
+# Exact matching fallbacks for compiler- and MMIO-sensitive overlay 47 code.
+
+build build/decomp/asm/overlays/ov047/overlay047_controller_construct.o: mwasmarm asm/overlays/ov047/overlay047_controller_construct.s
+build build/decomp/delinks/asm/overlays/ov047/overlay047_controller_construct.o: dsd_delink config/arm9/config.yaml | config/arm9/overlays/ov047/delinks.txt config/arm9/overlays/ov047/symbols.txt config/arm9/overlays/ov047/relocs.txt
+  object = asm/overlays/ov047/overlay047_controller_construct.s
+build build/reports/overlay047_controller_construct.json: objdiff build/decomp/asm/overlays/ov047/overlay047_controller_construct.o build/decomp/delinks/asm/overlays/ov047/overlay047_controller_construct.o
+  target_object = build/decomp/asm/overlays/ov047/overlay047_controller_construct.o
+  base_object = build/decomp/delinks/asm/overlays/ov047/overlay047_controller_construct.o
+build build/reports/overlay047_controller_construct.txt: match_report build/reports/overlay047_controller_construct.json | tools/report_objdiff.py
+  report_json = build/reports/overlay047_controller_construct.json
+  report_args = --section .text --function func_ov047_0220b740 --require-exact
+
+build build/decomp/asm/overlays/ov047/overlay047_matrix_initialize.o: mwasmarm asm/overlays/ov047/overlay047_matrix_initialize.s
+build build/decomp/delinks/asm/overlays/ov047/overlay047_matrix_initialize.o: dsd_delink config/arm9/config.yaml | config/arm9/overlays/ov047/delinks.txt config/arm9/overlays/ov047/symbols.txt config/arm9/overlays/ov047/relocs.txt
+  object = asm/overlays/ov047/overlay047_matrix_initialize.s
+build build/reports/overlay047_matrix_initialize.json: objdiff build/decomp/asm/overlays/ov047/overlay047_matrix_initialize.o build/decomp/delinks/asm/overlays/ov047/overlay047_matrix_initialize.o
+  target_object = build/decomp/asm/overlays/ov047/overlay047_matrix_initialize.o
+  base_object = build/decomp/delinks/asm/overlays/ov047/overlay047_matrix_initialize.o
+build build/reports/overlay047_matrix_initialize.txt: match_report build/reports/overlay047_matrix_initialize.json | tools/report_objdiff.py
+  report_json = build/reports/overlay047_matrix_initialize.json
+  report_args = --section .text --function func_ov047_0220baa8 --require-exact
+
+build build/decomp/asm/overlays/ov047/overlay047_render_update.o: mwasmarm asm/overlays/ov047/overlay047_render_update.s
+build build/decomp/delinks/asm/overlays/ov047/overlay047_render_update.o: dsd_delink config/arm9/config.yaml | config/arm9/overlays/ov047/delinks.txt config/arm9/overlays/ov047/symbols.txt config/arm9/overlays/ov047/relocs.txt
+  object = asm/overlays/ov047/overlay047_render_update.s
+build build/reports/overlay047_render_update.json: objdiff build/decomp/asm/overlays/ov047/overlay047_render_update.o build/decomp/delinks/asm/overlays/ov047/overlay047_render_update.o
+  target_object = build/decomp/asm/overlays/ov047/overlay047_render_update.o
+  base_object = build/decomp/delinks/asm/overlays/ov047/overlay047_render_update.o
+build build/reports/overlay047_render_update.txt: match_report build/reports/overlay047_render_update.json | tools/report_objdiff.py
+  report_json = build/reports/overlay047_render_update.json
+  report_args = --section .text --function func_ov047_0220bda8 --require-exact
+
+build build/decomp/asm/overlays/ov047/overlay047_capture_config.o: mwasmarm asm/overlays/ov047/overlay047_capture_config.s
+build build/decomp/delinks/asm/overlays/ov047/overlay047_capture_config.o: dsd_delink config/arm9/config.yaml | config/arm9/overlays/ov047/delinks.txt config/arm9/overlays/ov047/symbols.txt config/arm9/overlays/ov047/relocs.txt
+  object = asm/overlays/ov047/overlay047_capture_config.s
+build build/reports/overlay047_capture_config.json: objdiff build/decomp/asm/overlays/ov047/overlay047_capture_config.o build/decomp/delinks/asm/overlays/ov047/overlay047_capture_config.o
+  target_object = build/decomp/asm/overlays/ov047/overlay047_capture_config.o
+  base_object = build/decomp/delinks/asm/overlays/ov047/overlay047_capture_config.o
+build build/reports/overlay047_capture_config.txt: match_report build/reports/overlay047_capture_config.json | tools/report_objdiff.py
+  report_json = build/reports/overlay047_capture_config.json
+  report_args = --section .text --function func_ov047_0220c2c8 --require-exact
+
+build build/decomp/asm/overlays/ov047/overlay047_fifo_write.o: mwasmarm asm/overlays/ov047/overlay047_fifo_write.s
+build build/decomp/delinks/asm/overlays/ov047/overlay047_fifo_write.o: dsd_delink config/arm9/config.yaml | config/arm9/overlays/ov047/delinks.txt config/arm9/overlays/ov047/symbols.txt config/arm9/overlays/ov047/relocs.txt
+  object = asm/overlays/ov047/overlay047_fifo_write.s
+build build/reports/overlay047_fifo_write.json: objdiff build/decomp/asm/overlays/ov047/overlay047_fifo_write.o build/decomp/delinks/asm/overlays/ov047/overlay047_fifo_write.o
+  target_object = build/decomp/asm/overlays/ov047/overlay047_fifo_write.o
+  base_object = build/decomp/delinks/asm/overlays/ov047/overlay047_fifo_write.o
+build build/reports/overlay047_fifo_write.txt: match_report build/reports/overlay047_fifo_write.json | tools/report_objdiff.py
+  report_json = build/reports/overlay047_fifo_write.json
+  report_args = --section .text --function func_ov047_0220c308 --require-exact
+
+build overlay047_matching: phony build/reports/overlay047_controller_construct.txt build/reports/overlay047_matrix_initialize.txt build/reports/overlay047_render_update.txt build/reports/overlay047_capture_config.txt build/reports/overlay047_fifo_write.txt
