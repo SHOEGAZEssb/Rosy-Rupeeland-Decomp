@@ -1,0 +1,48 @@
+# Generated exact matching fallbacks for overlay 137.
+# Regenerate with tools/generate_overlay_matching_ninja.py.
+
+build build/decomp/asm/overlays/ov137/overlay137_0221d6c0.o: mwasmarm asm/overlays/ov137/overlay137_0221d6c0.s
+build build/decomp/delinks/asm/overlays/ov137/overlay137_0221d6c0.o: dsd_delink config/arm9/config.yaml | config/arm9/overlays/ov137/delinks.txt config/arm9/overlays/ov137/symbols.txt config/arm9/overlays/ov137/relocs.txt
+  object = asm/overlays/ov137/overlay137_0221d6c0.s
+build build/reports/overlay137_0221d6c0.json: objdiff build/decomp/asm/overlays/ov137/overlay137_0221d6c0.o build/decomp/delinks/asm/overlays/ov137/overlay137_0221d6c0.o
+  target_object = build/decomp/asm/overlays/ov137/overlay137_0221d6c0.o
+  base_object = build/decomp/delinks/asm/overlays/ov137/overlay137_0221d6c0.o
+build build/reports/overlay137_0221d6c0.txt: match_report build/reports/overlay137_0221d6c0.json | tools/report_objdiff.py
+  report_json = build/reports/overlay137_0221d6c0.json
+  report_args = --section .text --function func_ov137_0221d6c0 --require-exact
+
+build overlay137_matching: phony build/reports/overlay137_0221d6c0.txt
+
+build build/decomp/asm/overlays/ov137/overlay137_data_b.o: mwasmarm asm/overlays/ov137/overlay137_data_b.s
+build build/decomp/delinks/asm/overlays/ov137/overlay137_data_b.o: dsd_delink config/arm9/config.yaml | config/arm9/overlays/ov137/delinks.txt config/arm9/overlays/ov137/symbols.txt config/arm9/overlays/ov137/relocs.txt
+  object = asm/overlays/ov137/overlay137_data_b.s
+build build/decomp/asm/overlays/ov137/overlay137_data_c.o: mwasmarm asm/overlays/ov137/overlay137_data_c.s
+build build/decomp/delinks/asm/overlays/ov137/overlay137_data_c.o: dsd_delink config/arm9/config.yaml | config/arm9/overlays/ov137/delinks.txt config/arm9/overlays/ov137/symbols.txt config/arm9/overlays/ov137/relocs.txt
+  object = asm/overlays/ov137/overlay137_data_c.s
+build build/decomp/asm/overlays/ov137/overlay137_data_d.o: mwasmarm asm/overlays/ov137/overlay137_data_d.s
+build build/decomp/delinks/asm/overlays/ov137/overlay137_data_d.o: dsd_delink config/arm9/config.yaml | config/arm9/overlays/ov137/delinks.txt config/arm9/overlays/ov137/symbols.txt config/arm9/overlays/ov137/relocs.txt
+  object = asm/overlays/ov137/overlay137_data_d.s
+build build/decomp/asm/overlays/ov137/overlay137_data_e.o: mwasmarm asm/overlays/ov137/overlay137_data_e.s
+build build/decomp/delinks/asm/overlays/ov137/overlay137_data_e.o: dsd_delink config/arm9/config.yaml | config/arm9/overlays/ov137/delinks.txt config/arm9/overlays/ov137/symbols.txt config/arm9/overlays/ov137/relocs.txt
+  object = asm/overlays/ov137/overlay137_data_e.s
+build build/decomp/asm/overlays/ov137/overlay137_data_f.o: mwasmarm asm/overlays/ov137/overlay137_data_f.s
+build build/decomp/delinks/asm/overlays/ov137/overlay137_data_f.o: dsd_delink config/arm9/config.yaml | config/arm9/overlays/ov137/delinks.txt config/arm9/overlays/ov137/symbols.txt config/arm9/overlays/ov137/relocs.txt
+  object = asm/overlays/ov137/overlay137_data_f.s
+build build/decomp/asm/overlays/ov137/overlay137_data_g.o: mwasmarm asm/overlays/ov137/overlay137_data_g.s
+build build/decomp/delinks/asm/overlays/ov137/overlay137_data_g.o: dsd_delink config/arm9/config.yaml | config/arm9/overlays/ov137/delinks.txt config/arm9/overlays/ov137/symbols.txt config/arm9/overlays/ov137/relocs.txt
+  object = asm/overlays/ov137/overlay137_data_g.s
+build build/decomp/asm/overlays/ov137/overlay137_data_h.o: mwasmarm asm/overlays/ov137/overlay137_data_h.s
+build build/decomp/delinks/asm/overlays/ov137/overlay137_data_h.o: dsd_delink config/arm9/config.yaml | config/arm9/overlays/ov137/delinks.txt config/arm9/overlays/ov137/symbols.txt config/arm9/overlays/ov137/relocs.txt
+  object = asm/overlays/ov137/overlay137_data_h.s
+build build/decomp/asm/overlays/ov137/overlay137_data_i.o: mwasmarm asm/overlays/ov137/overlay137_data_i.s
+build build/decomp/delinks/asm/overlays/ov137/overlay137_data_i.o: dsd_delink config/arm9/config.yaml | config/arm9/overlays/ov137/delinks.txt config/arm9/overlays/ov137/symbols.txt config/arm9/overlays/ov137/relocs.txt
+  object = asm/overlays/ov137/overlay137_data_i.s
+build build/decomp/asm/overlays/ov137/overlay137_data_j.o: mwasmarm asm/overlays/ov137/overlay137_data_j.s
+build build/decomp/delinks/asm/overlays/ov137/overlay137_data_j.o: dsd_delink config/arm9/config.yaml | config/arm9/overlays/ov137/delinks.txt config/arm9/overlays/ov137/symbols.txt config/arm9/overlays/ov137/relocs.txt
+  object = asm/overlays/ov137/overlay137_data_j.s
+build build/decomp/asm/overlays/ov137/overlay137_data_k.o: mwasmarm asm/overlays/ov137/overlay137_data_k.s
+build build/decomp/delinks/asm/overlays/ov137/overlay137_data_k.o: dsd_delink config/arm9/config.yaml | config/arm9/overlays/ov137/delinks.txt config/arm9/overlays/ov137/symbols.txt config/arm9/overlays/ov137/relocs.txt
+  object = asm/overlays/ov137/overlay137_data_k.s
+build build/decomp/asm/overlays/ov137/overlay137_data_l.o: mwasmarm asm/overlays/ov137/overlay137_data_l.s
+build build/decomp/delinks/asm/overlays/ov137/overlay137_data_l.o: dsd_delink config/arm9/config.yaml | config/arm9/overlays/ov137/delinks.txt config/arm9/overlays/ov137/symbols.txt config/arm9/overlays/ov137/relocs.txt
+  object = asm/overlays/ov137/overlay137_data_l.s

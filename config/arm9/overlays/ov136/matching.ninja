@@ -12,7 +12,3 @@ build build/reports/overlay136_0221d6c0.txt: match_report build/reports/overlay1
   report_args = --section .text --function func_ov136_0221d6c0 --require-exact
 
 build overlay136_matching: phony build/reports/overlay136_0221d6c0.txt
-
-build build/decomp/asm/overlays/ov136/overlay136_data.o: mwasmarm asm/overlays/ov136/overlay136_data.s
-build build/decomp/delinks/asm/overlays/ov136/overlay136_data.o: dsd_delink config/arm9/config.yaml | config/arm9/overlays/ov136/delinks.txt config/arm9/overlays/ov136/symbols.txt config/arm9/overlays/ov136/relocs.txt
-  object = asm/overlays/ov136/overlay136_data.s
