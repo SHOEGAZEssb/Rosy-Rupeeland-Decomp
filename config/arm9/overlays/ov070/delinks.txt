@@ -3,3 +3,64 @@
     .ctor       start:0x02212a54 end:0x02212a54 kind:rodata align:4
     .data       start:0x02212a60 end:0x02212ae0 kind:data align:32
     .bss        start:0x02212ae0 end:0x02212ae0 kind:bss align:32
+
+asm/overlays/ov070/overlay070_0220fd20.s:
+    categories: Game code
+    .text start:0x0220fd20 end:0x0220fd60
+asm/overlays/ov070/overlay070_0220fd60.s:
+    categories: Game code
+    .text start:0x0220fd60 end:0x02210218
+asm/overlays/ov070/overlay070_02210218.s:
+    categories: Game code
+    .text start:0x02210218 end:0x02210234
+asm/overlays/ov070/overlay070_02210234.s:
+    categories: Game code
+    .text start:0x02210234 end:0x02210238
+asm/overlays/ov070/overlay070_02210238.s:
+    categories: Game code
+    .text start:0x02210238 end:0x0221028c
+asm/overlays/ov070/overlay070_0221028c.s:
+    categories: Game code
+    .text start:0x0221028c end:0x022102e0
+asm/overlays/ov070/overlay070_022102e0.s:
+    categories: Game code
+    .text start:0x022102e0 end:0x02210320
+asm/overlays/ov070/overlay070_02210320.s:
+    categories: Game code
+    .text start:0x02210320 end:0x022103d8
+asm/overlays/ov070/overlay070_022103d8.s:
+    categories: Game code
+    .text start:0x022103d8 end:0x02210860
+asm/overlays/ov070/overlay070_02210860.s:
+    categories: Game code
+    .text start:0x02210860 end:0x0221186c
+asm/overlays/ov070/overlay070_0221186c.s:
+    categories: Game code
+    .text start:0x0221186c end:0x0221187c
+asm/overlays/ov070/overlay070_0221187c.s:
+    categories: Game code
+    .text start:0x0221187c end:0x0221189c
+asm/overlays/ov070/overlay070_0221189c.s:
+    categories: Game code
+    .text start:0x0221189c end:0x022118b4
+asm/overlays/ov070/overlay070_022118b4.s:
+    categories: Game code
+    .text start:0x022118b4 end:0x02211dcc
+asm/overlays/ov070/overlay070_02211dcc.s:
+    categories: Game code
+    .text start:0x02211dcc end:0x022126b8
+asm/overlays/ov070/overlay070_022126b8.s:
+    categories: Game code
+    .text start:0x022126b8 end:0x02212764
+asm/overlays/ov070/overlay070_02212764.s:
+    categories: Game code
+    .text start:0x02212764 end:0x0221282c
+asm/overlays/ov070/overlay070_0221282c.s:
+    categories: Game code
+    .text start:0x0221282c end:0x02212908
+asm/overlays/ov070/overlay070_02212908.s:
+    categories: Game code
+    .text start:0x02212908 end:0x02212998
+asm/overlays/ov070/overlay070_02212998.s:
+    categories: Game code
+    .text start:0x02212998 end:0x022129ac
