@@ -1,0 +1,12 @@
+.text
+; Matching fallback for the portable implementation in src/overlays/ov095/overlay095_recovery.c.
+.extern func_02051d2c
+
+.global func_ov095_0221c74c
+func_ov095_0221c74c:
+    stmdb sp!, {r4, lr}
+    mov r4, r0
+    bl func_02051d2c
+    mov r0, r4
+    ldmia sp!, {r4, pc}
+.size func_ov095_0221c74c, . - func_ov095_0221c74c
