@@ -1,0 +1,464 @@
+; Matching fallback for initialized dispatch data documented in
+; src/overlays/ov096/overlay096_recovery.c.
+.extern data_020f35e0
+.extern data_020f35d0
+.extern func_ov096_02217868
+.extern func_ov096_0221787c
+.extern func_ov096_02218178
+.extern func_ov096_02218308
+.extern func_0203e56c
+.extern func_020314b8
+.extern func_020316e8
+.extern func_ov096_022178c0
+.extern func_0203ef90
+.extern func_02031564
+.extern func_02043340
+.extern func_0203baa0
+.extern func_02031f44
+.extern func_0203213c
+.extern func_02032144
+.extern func_020320fc
+.extern func_02032208
+.extern func_ov096_022181b0
+.extern func_0204344c
+.extern func_0203bac0
+.extern func_0203bad8
+.extern func_02033a6c
+.extern func_0203efac
+.extern func_ov096_02217eb0
+.extern func_ov096_022182b8
+.extern func_ov096_022182a0
+.extern func_ov096_02218288
+.extern func_ov096_022181f4
+.extern func_02032cc4
+.extern func_02032bd0
+.extern func_02032aec
+.extern func_020423c8
+.extern func_020425d4
+.extern func_02042864
+.extern func_02033f2c
+.extern func_0204330c
+.extern func_020324dc
+.extern func_ov096_022182e8
+.extern func_ov096_022181ac
+.extern func_ov096_022181a4
+.extern func_ov096_02218190
+.extern func_02032520
+.extern func_ov096_02217ea4
+.extern func_02032c08
+.extern func_02033f4c
+.extern func_ov096_02218180
+.extern func_02043674
+.extern func_02031464
+.extern func_0203baac
+.extern func_0203e214
+.extern func_ov096_02217ec8
+.extern func_0203f4f8
+.extern func_0203f5c4
+.extern func_0203f9ac
+.extern func_ov096_022182e4
+.extern func_0203fae0
+.extern func_0203fa70
+.extern func_0203faa8
+.extern func_0203fb24
+.extern func_0203fb70
+.extern func_0203fbc4
+.extern func_020422f4
+.extern func_ov096_02217898
+.extern func_0203fc68
+.extern func_0203fc48
+.extern func_02042408
+.extern func_02042514
+.extern func_02042810
+.extern func_0203fd68
+.extern func_0203fd84
+.extern func_ov096_022182e0
+.extern func_020400a4
+.extern func_0203fea0
+.extern func_02040334
+.extern func_02040284
+.extern func_0204022c
+.extern func_02040234
+.extern func_02040400
+.extern func_0203f4a0
+.extern func_0204322c
+.extern func_ov096_022182d8
+.extern func_ov096_022182d0
+.extern func_020430ec
+.extern func_0204067c
+.extern func_02040a5c
+.extern func_ov096_02217ef8
+.extern func_02040d94
+.extern func_02040e28
+.extern func_02040f4c
+.extern func_020412a8
+.extern func_02041424
+.extern func_0204157c
+.extern func_020415a8
+.extern func_02041710
+.extern func_020417d4
+.extern func_020417dc
+.extern func_0204194c
+.extern func_02041aec
+.extern func_0204176c
+.extern func_02041c18
+.extern func_ov096_02217f4c
+.extern func_ov096_02217f6c
+.extern func_02041e9c
+.extern func_02042034
+.extern func_02042170
+.extern func_ov096_02218268
+.extern func_ov096_02218254
+.extern func_ov096_0221820c
+.extern func_02040d64
+.extern func_ov096_022181fc
+.extern func_02043534
+.extern func_ov096_022181dc
+.extern func_ov096_022181c4
+.extern func_ov096_022181bc
+.extern func_ov096_022181b4
+.extern func_ov096_02218108
+.extern func_0204368c
+.extern func_ov096_0221835c
+.extern func_ov096_02218370
+.extern func_ov096_022185d8
+.extern func_ov096_0221838c
+.extern func_020443f0
+.extern func_0203f2ec
+.extern func_ov096_0221865c
+.extern func_0203fc0c
+.extern func_02040bdc
+.extern func_ov096_02218958
+.extern func_ov096_02218aa4
+.extern func_02041c48
+.extern func_02041e18
+.extern func_ov096_02218adc
+.extern func_ov096_0221883c
+.extern func_ov096_02218668
+.global data_ov096_02218b00
+.global data_ov096_02218b08
+.global data_ov096_02218b18
+.global data_ov096_02218b20
+.global data_ov096_02218b28
+.global data_ov096_02218b34
+.global data_ov096_02218b40
+.global data_ov096_02218b4c
+.global data_ov096_02218b58
+.global data_ov096_02218b64
+.global data_ov096_02218b70
+.global data_ov096_02218b7c
+.global data_ov096_02218b98
+.global data_ov096_02218d6c
+.global data_ov096_02218d74
+.global data_ov096_02218d94
+.global data_ov096_02218dac
+.global data_ov096_02218db8
+.global data_ov096_02218dcc
+.global data_ov096_02218de8
+.section .data, 4, 1, 4
+data_ov096_02218b00:
+    .byte 0x35, 0x43, 0x46, 0x43, 0x68, 0x72, 0x00, 0x00
+data_ov096_02218b08:
+    .word data_020f35e0
+    .word data_ov096_02218b00
+    .byte 0x90, 0x01, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00
+data_ov096_02218b18:
+    .byte 0x94, 0x01, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00
+data_ov096_02218b20:
+    .byte 0x54, 0x01, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00
+data_ov096_02218b28:
+    .word data_020f35d0
+    .word data_ov096_02218b70
+    .word data_ov096_02218b40
+data_ov096_02218b34:
+    .word data_020f35d0
+    .word data_ov096_02218b64
+    .word data_ov096_02218b08
+data_ov096_02218b40:
+    .word data_020f35d0
+    .word data_ov096_02218b58
+    .word data_ov096_02218b34
+data_ov096_02218b4c:
+    .word data_020f35d0
+    .word data_ov096_02218b7c
+    .word data_ov096_02218b28
+data_ov096_02218b58:
+    .byte 0x38, 0x43, 0x46, 0x43, 0x68, 0x72, 0x4e, 0x70, 0x63, 0x00, 0x00, 0x00
+data_ov096_02218b64:
+    .byte 0x38, 0x43, 0x46, 0x43, 0x68, 0x72, 0x45, 0x76, 0x74, 0x00, 0x00, 0x00
+data_ov096_02218b70:
+    .byte 0x39, 0x43, 0x46, 0x43, 0x68, 0x72, 0x4d, 0x6f, 0x6e, 0x73, 0x00, 0x00
+data_ov096_02218b7c:
+    .byte 0x31, 0x35, 0x43, 0x46, 0x43, 0x68, 0x72, 0x4d, 0x6f, 0x6e, 0x73, 0x5f, 0x4d, 0x69, 0x6d, 0x69
+    .byte 0x63, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+    .word data_ov096_02218b4c
+data_ov096_02218b98:
+    .word func_ov096_02217868
+    .word func_ov096_0221787c
+    .word func_ov096_02218178
+    .word func_ov096_02218308
+    .word func_0203e56c
+    .word func_020314b8
+    .word func_020316e8
+    .word func_ov096_022178c0
+    .word func_0203ef90
+    .word func_02031564
+    .word func_02043340
+    .word func_0203baa0
+    .word func_02031f44
+    .word func_0203213c
+    .word func_02032144
+    .word func_020320fc
+    .word func_02032208
+    .word func_ov096_022181b0
+    .word func_0204344c
+    .word func_0203bac0
+    .word func_0203bad8
+    .word func_02033a6c
+    .word func_0203efac
+    .word func_ov096_02217eb0
+    .word func_ov096_022182b8
+    .word func_ov096_022182a0
+    .word func_ov096_02218288
+    .word func_ov096_022181f4
+    .word func_02032cc4
+    .word func_02032bd0
+    .word func_02032aec
+    .word func_020423c8
+    .word func_020425d4
+    .word func_02042864
+    .word func_02033f2c
+    .word func_0204330c
+    .word func_020324dc
+    .word func_ov096_022182e8
+    .word func_ov096_022181ac
+    .word func_ov096_022181a4
+    .word func_ov096_02218190
+    .word func_02032520
+    .word func_ov096_02217ea4
+    .word func_02032c08
+    .word func_02033f4c
+    .word func_ov096_02218180
+    .word func_02043674
+    .word func_02031464
+    .word func_0203baac
+    .word func_0203e214
+    .word func_ov096_02217ec8
+    .word func_0203f4f8
+    .word func_0203f5c4
+    .word func_0203f9ac
+    .word func_ov096_022182e4
+    .word func_0203fae0
+    .word func_0203fa70
+    .word func_0203faa8
+    .word func_0203fb24
+    .word func_0203fb70
+    .word func_0203fbc4
+    .word func_020422f4
+    .word func_ov096_02217898
+    .word func_0203fc68
+    .word func_0203fc48
+    .word func_02042408
+    .word func_02042514
+    .word func_02042810
+    .word func_0203fd68
+    .word func_0203fd84
+    .word func_ov096_022182e0
+    .word func_020400a4
+    .word func_0203fea0
+    .word func_02040334
+    .word func_02040284
+    .word func_0204022c
+    .word func_02040234
+    .word func_02040400
+    .word func_0203f4a0
+    .word func_0204322c
+    .word func_ov096_022182d8
+    .word func_ov096_022182d0
+    .word func_020430ec
+    .word func_0204067c
+    .word func_02040a5c
+    .word func_ov096_02217ef8
+    .word func_02040d94
+    .word func_02040e28
+    .word func_02040f4c
+    .word func_020412a8
+    .word func_02041424
+    .word func_0204157c
+    .word func_020415a8
+    .word func_02041710
+    .word func_020417d4
+    .word func_020417dc
+    .word func_0204194c
+    .word func_02041aec
+    .word func_0204176c
+    .word func_02041c18
+    .word func_ov096_02217f4c
+    .word func_ov096_02217f6c
+    .word func_02041e9c
+    .word func_02042034
+    .word func_02042170
+    .word func_ov096_02218268
+    .word func_ov096_02218254
+    .word func_ov096_0221820c
+    .word func_02040d64
+    .word func_ov096_022181fc
+    .word func_02043534
+    .word func_ov096_022181dc
+    .word func_ov096_022181c4
+    .word func_ov096_022181bc
+    .word func_ov096_022181b4
+    .word func_ov096_02218108
+    .word func_0204368c
+data_ov096_02218d6c:
+    .word data_020f35e0
+    .word data_ov096_02218b00
+data_ov096_02218d74:
+    .byte 0x60, 0x01, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00
+    .word data_020f35d0
+    .word data_ov096_02218b70
+    .word data_ov096_02218b40
+    .word data_020f35d0
+    .word data_ov096_02218b64
+    .word data_ov096_02218b08
+data_ov096_02218d94:
+    .word data_020f35d0
+    .word data_ov096_02218db8
+    .word data_ov096_02218dac
+    .word data_020f35d0
+    .word data_ov096_02218b58
+    .word data_ov096_02218b34
+data_ov096_02218dac:
+    .word data_020f35d0
+    .word data_ov096_02218dcc
+    .word data_ov096_02218b28
+data_ov096_02218db8:
+    .byte 0x31, 0x36, 0x43, 0x46, 0x43, 0x68, 0x72, 0x4d, 0x6f, 0x6e, 0x73, 0x5f, 0x53, 0x6c, 0x69, 0x64
+    .byte 0x65, 0x72, 0x00, 0x00
+data_ov096_02218dcc:
+    .byte 0x31, 0x36, 0x43, 0x46, 0x43, 0x68, 0x72, 0x4d, 0x6f, 0x6e, 0x73, 0x5f, 0x4a, 0x75, 0x6d, 0x70
+    .byte 0x65, 0x72, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+    .word data_ov096_02218d94
+data_ov096_02218de8:
+    .word func_ov096_0221835c
+    .word func_ov096_02218370
+    .word func_ov096_02218178
+    .word func_ov096_02218308
+    .word func_0203e56c
+    .word func_020314b8
+    .word func_020316e8
+    .word func_ov096_022185d8
+    .word func_0203ef90
+    .word func_02031564
+    .word func_02043340
+    .word func_0203baa0
+    .word func_02031f44
+    .word func_0203213c
+    .word func_02032144
+    .word func_020320fc
+    .word func_02032208
+    .word func_ov096_022181b0
+    .word func_0204344c
+    .word func_0203bac0
+    .word func_0203bad8
+    .word func_02033a6c
+    .word func_0203efac
+    .word func_ov096_0221838c
+    .word func_ov096_022182b8
+    .word func_ov096_022182a0
+    .word func_ov096_02218288
+    .word func_ov096_022181f4
+    .word func_02032cc4
+    .word func_02032bd0
+    .word func_02032aec
+    .word func_020423c8
+    .word func_020425d4
+    .word func_02042864
+    .word func_02033f2c
+    .word func_0204330c
+    .word func_020324dc
+    .word func_ov096_022182e8
+    .word func_ov096_022181ac
+    .word func_ov096_022181a4
+    .word func_ov096_02218190
+    .word func_02032520
+    .word func_ov096_02217ea4
+    .word func_02032c08
+    .word func_02033f4c
+    .word func_ov096_02218180
+    .word func_020443f0
+    .word func_02031464
+    .word func_0203baac
+    .word func_0203e214
+    .word func_0203f2ec
+    .word func_0203f4f8
+    .word func_ov096_0221865c
+    .word func_0203f9ac
+    .word func_ov096_022182e4
+    .word func_0203fae0
+    .word func_0203fa70
+    .word func_0203faa8
+    .word func_0203fb24
+    .word func_0203fb70
+    .word func_0203fbc4
+    .word func_020422f4
+    .word func_0203fc0c
+    .word func_0203fc68
+    .word func_0203fc48
+    .word func_02042408
+    .word func_02042514
+    .word func_02042810
+    .word func_0203fd68
+    .word func_0203fd84
+    .word func_ov096_022182e0
+    .word func_020400a4
+    .word func_0203fea0
+    .word func_02040334
+    .word func_02040284
+    .word func_0204022c
+    .word func_02040234
+    .word func_02040400
+    .word func_0203f4a0
+    .word func_0204322c
+    .word func_ov096_022182d8
+    .word func_ov096_022182d0
+    .word func_020430ec
+    .word func_0204067c
+    .word func_02040a5c
+    .word func_02040bdc
+    .word func_02040d94
+    .word func_02040e28
+    .word func_ov096_02218958
+    .word func_020412a8
+    .word func_02041424
+    .word func_0204157c
+    .word func_020415a8
+    .word func_02041710
+    .word func_020417d4
+    .word func_020417dc
+    .word func_0204194c
+    .word func_ov096_02218aa4
+    .word func_0204176c
+    .word func_02041c18
+    .word func_02041c48
+    .word func_02041e18
+    .word func_02041e9c
+    .word func_02042034
+    .word func_02042170
+    .word func_ov096_02218268
+    .word func_ov096_02218254
+    .word func_ov096_0221820c
+    .word func_02040d64
+    .word func_ov096_022181fc
+    .word func_02043534
+    .word func_ov096_022181dc
+    .word func_ov096_022181c4
+    .word func_ov096_022181bc
+    .word func_ov096_022181b4
+    .word func_ov096_02218adc
+    .word func_0204368c
+    .word func_ov096_0221883c
+    .word func_ov096_02218668
+    .byte 0x00, 0x00, 0x00, 0x00
+    .byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+    .byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
