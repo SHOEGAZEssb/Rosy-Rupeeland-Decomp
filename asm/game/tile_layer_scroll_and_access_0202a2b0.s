@@ -1,11 +1,11 @@
 ; Matching retail form; see src/game/tile_layer_scroll_and_access.c.
 .text
-.extern func_0202a0e8
-.extern func_0202a1cc
+.extern TileLayer_RefreshCacheColumn
+.extern TileLayer_RefreshCacheRow
 
-    .global func_0202a2b0
-    .type func_0202a2b0, @function
-func_0202a2b0: ; 0x0202a2b0
+    .global TileLayer_ScrollToPixelPosition
+    .type TileLayer_ScrollToPixelPosition, @function
+TileLayer_ScrollToPixelPosition: ; 0x0202a2b0
     stmdb sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, lr}
     sub sp, sp, #0x8
     mov r10, r0
@@ -36,7 +36,7 @@ func_0202a2b0: ; 0x0202a2b0
     mov r3, r11
     strb ip, [sp, #0x7]
     mov r1, r1, asr #0x10
-    bl func_0202a0e8
+    bl TileLayer_RefreshCacheColumn
     ldrb r1, [r6, #0x0]
     mov r0, r1, lsl #0x1b
     mov r0, r0, lsr #0x1b
@@ -85,7 +85,7 @@ func_0202a2b0: ; 0x0202a2b0
     strb lr, [sp, #0x5]
     strb ip, [r11, #0x0]
     mov r1, r1, asr #0x10
-    bl func_0202a0e8
+    bl TileLayer_RefreshCacheColumn
     ldrb r1, [r6, #0x0]
     mov r0, r1, lsl #0x1b
     mov r0, r0, lsr #0x1b
@@ -128,7 +128,7 @@ func_0202a2b0: ; 0x0202a2b0
     mov r3, r11
     strb ip, [sp, #0x3]
     mov r2, r2, asr #0x10
-    bl func_0202a1cc
+    bl TileLayer_RefreshCacheRow
     ldrb r1, [r6, #0x0]
     mov r0, r1, lsl #0x1c
     mov r0, r0, lsr #0x1c
@@ -177,7 +177,7 @@ func_0202a2b0: ; 0x0202a2b0
     add r11, sp, #0x1
     mov r2, r2, asr #0x10
     strb ip, [r11, #0x0]
-    bl func_0202a1cc
+    bl TileLayer_RefreshCacheRow
     ldrb r1, [r7, #0x0]
     mov r0, r1, lsl #0x1c
     mov r0, r0, lsr #0x1c
@@ -200,5 +200,5 @@ func_0202a2b0: ; 0x0202a2b0
     str r8, [r0, #0x1c]
     add sp, sp, #0x8
     ldmia sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, pc}
-    .size func_0202a2b0, . - func_0202a2b0
+    .size TileLayer_ScrollToPixelPosition, . - TileLayer_ScrollToPixelPosition
 

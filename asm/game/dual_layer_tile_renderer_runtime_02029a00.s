@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/dual_layer_tile_renderer_runtime.c.
 .text
-.extern func_0202a708
+.extern TileLayer_GetMetatileIndex
 
     .global DualLayerTileRenderer_ForwardLayerPair
     .type DualLayerTileRenderer_ForwardLayerPair, @function
@@ -11,6 +11,6 @@ DualLayerTileRenderer_ForwardLayerPair: ; 0x02029a00
     ldr r0, [r0, #0x28]
     mov r2, r3
     bx ip
-.L_02029a18: .word func_0202a708
+.L_02029a18: .word TileLayer_GetMetatileIndex
     .size DualLayerTileRenderer_ForwardLayerPair, . - DualLayerTileRenderer_ForwardLayerPair
 

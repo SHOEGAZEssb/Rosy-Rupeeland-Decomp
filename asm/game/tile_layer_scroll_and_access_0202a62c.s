@@ -2,9 +2,9 @@
 .text
 
 
-    .global func_0202a62c
-    .type func_0202a62c, @function
-func_0202a62c: ; 0x0202a62c
+    .global TileLayer_WriteMetatileToCache
+    .type TileLayer_WriteMetatileToCache, @function
+TileLayer_WriteMetatileToCache: ; 0x0202a62c
     stmdb sp!, {r4, r5, r6, r7, r8, lr}
     mov ip, r1, lsr #0x1f
     rsb r1, ip, r1, lsl #0x1b
@@ -46,5 +46,5 @@ func_0202a62c: ; 0x0202a62c
     add r0, r1, r0
     strh r0, [r2, #0x42]
     ldmia sp!, {r4, r5, r6, r7, r8, pc}
-    .size func_0202a62c, . - func_0202a62c
+    .size TileLayer_WriteMetatileToCache, . - TileLayer_WriteMetatileToCache
 

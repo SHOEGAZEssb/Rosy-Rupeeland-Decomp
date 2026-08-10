@@ -2,9 +2,9 @@
 .text
 .extern MIi_CpuClearFast
 
-    .global func_02029f2c
-    .type func_02029f2c, @function
-func_02029f2c: ; 0x02029f2c
+    .global TileLayerState_Reset
+    .type TileLayerState_Reset, @function
+TileLayerState_Reset: ; 0x02029f2c
     stmdb sp!, {r4, lr}
     mov r4, r0
     add r0, r4, #0x1000
@@ -38,5 +38,5 @@ func_02029f2c: ; 0x02029f2c
     orr r1, r1, #0x1
     strb r1, [r0, #0x30]
     ldmia sp!, {r4, pc}
-    .size func_02029f2c, . - func_02029f2c
+    .size TileLayerState_Reset, . - TileLayerState_Reset
 

@@ -2,7 +2,7 @@
 .text
 .extern DualLayerTileRenderer_UploadGraphics
 .extern DualLayerTileRenderer_UploadPalette
-.extern func_02029fb0
+.extern TileLayer_RebuildCache
 
     .global DualLayerTileRenderer_ActivateLayers
     .type DualLayerTileRenderer_ActivateLayers, @function
@@ -33,7 +33,7 @@ DualLayerTileRenderer_ActivateLayers: ; 0x02029648
     ldr r0, [r0, #0x28]
     cmp r0, #0x0
     beq .L_020296a8
-    bl func_02029fb0
+    bl TileLayer_RebuildCache
 .L_020296a8:
     add r5, r5, #0x1
     cmp r5, #0x2

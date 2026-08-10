@@ -25,7 +25,7 @@ extern "C" {
 #endif
 extern void RectS32_Init(void *, s32, s32, s32, s32);
 extern s32 RectS32_ContainsPoint(void *, s32, s32);
-extern void func_0202a62c(void *, s32, s32, u16);
+extern void TileLayer_WriteMetatileToCache(void *, s32, s32, u16);
 #ifdef __cplusplus
 }
 #endif
@@ -34,7 +34,7 @@ extern void func_0202a62c(void *, s32, s32, u16);
  * Rebuild all 32x16 cache cells, starting at the layer's packed cursor and
  * wrapping its low five/four coordinate bits after every column/row.
  */
-void func_02029fb0(TileLayerCacheState *self)
+void TileLayer_RebuildCache(TileLayerCacheState *self)
 {
     u8 bounds[0x10];
     u8 cursorX = self->cursorX_1004;
@@ -51,7 +51,7 @@ void func_02029fb0(TileLayerCacheState *self)
             if (RectS32_ContainsPoint(bounds, sourceX, sourceY))
                 tile = self->sourceTiles_1008[
                            sourceY * self->sourceWidth_102c + sourceX] & 0x1ff;
-            func_0202a62c(self, cursorX & 0x1f, cursorY & 0x0f, tile);
+            TileLayer_WriteMetatileToCache(self, cursorX & 0x1f, cursorY & 0x0f, tile);
             cursorX = (cursorX & (u8)~0x1f) | ((cursorX + 1) & 0x1f);
         }
         cursorY = (cursorY & (u8)~0x0f) | ((cursorY + 1) & 0x0f);
@@ -62,7 +62,7 @@ void func_02029fb0(TileLayerCacheState *self)
  * Refresh a 16-tile vertical source run at fixed X. The caller's two-byte
  * cursor is advanced in Y modulo 16; X is unchanged.
  */
-void func_0202a0e8(TileLayerCacheState *self, s32 sourceX, s32 sourceY,
+void TileLayer_RefreshCacheColumn(TileLayerCacheState *self, s32 sourceX, s32 sourceY,
                    u8 cursor[2])
 {
     u8 bounds[0x10];
@@ -74,7 +74,7 @@ void func_0202a0e8(TileLayerCacheState *self, s32 sourceX, s32 sourceY,
         if (RectS32_ContainsPoint(bounds, sourceX, sourceY))
             tile = self->sourceTiles_1008[
                        sourceY * self->sourceWidth_102c + sourceX] & 0x1ff;
-        func_0202a62c(self, cursor[0] & 0x1f, cursor[1] & 0x0f, tile);
+        TileLayer_WriteMetatileToCache(self, cursor[0] & 0x1f, cursor[1] & 0x0f, tile);
         cursor[1] = (cursor[1] & (u8)~0x0f) | ((cursor[1] + 1) & 0x0f);
     }
 }
@@ -83,7 +83,7 @@ void func_0202a0e8(TileLayerCacheState *self, s32 sourceX, s32 sourceY,
  * Refresh a 32-tile horizontal source run at fixed Y. The caller's two-byte
  * cursor is advanced in X modulo 32; Y is unchanged.
  */
-void func_0202a1cc(TileLayerCacheState *self, s32 sourceX, s32 sourceY,
+void TileLayer_RefreshCacheRow(TileLayerCacheState *self, s32 sourceX, s32 sourceY,
                    u8 cursor[2])
 {
     u8 bounds[0x10];
@@ -95,7 +95,7 @@ void func_0202a1cc(TileLayerCacheState *self, s32 sourceX, s32 sourceY,
         if (RectS32_ContainsPoint(bounds, sourceX, sourceY))
             tile = self->sourceTiles_1008[
                        sourceY * self->sourceWidth_102c + sourceX] & 0x1ff;
-        func_0202a62c(self, cursor[0] & 0x1f, cursor[1] & 0x0f, tile);
+        TileLayer_WriteMetatileToCache(self, cursor[0] & 0x1f, cursor[1] & 0x0f, tile);
         cursor[0] = (cursor[0] & (u8)~0x1f) | ((cursor[0] + 1) & 0x1f);
     }
 }

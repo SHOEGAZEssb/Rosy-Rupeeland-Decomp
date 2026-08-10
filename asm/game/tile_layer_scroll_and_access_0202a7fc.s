@@ -1,14 +1,14 @@
 ; Matching retail form; see src/game/tile_layer_scroll_and_access.c.
 .text
-.extern func_02029fb0
-.extern func_0202a78c
+.extern TileLayer_RebuildCache
+.extern TileLayer_LoadSourceTileSection
 
-    .global func_0202a7fc
-    .type func_0202a7fc, @function
-func_0202a7fc: ; 0x0202a7fc
+    .global TileLayer_InitSourceMap
+    .type TileLayer_InitSourceMap, @function
+TileLayer_InitSourceMap: ; 0x0202a7fc
     stmdb sp!, {r4, lr}
     mov r4, r0
-    bl func_0202a78c
+    bl TileLayer_LoadSourceTileSection
     ldr r0, [sp, #0x8]
     add r1, r4, #0x1000
     ldr r2, [sp, #0x14]
@@ -38,7 +38,7 @@ func_0202a7fc: ; 0x0202a7fc
     and r2, r2, #0xf
     orr r2, r3, r2
     strb r2, [r1, #0x5]
-    bl func_02029fb0
+    bl TileLayer_RebuildCache
     ldmia sp!, {r4, pc}
-    .size func_0202a7fc, . - func_0202a7fc
+    .size TileLayer_InitSourceMap, . - TileLayer_InitSourceMap
 

@@ -39,44 +39,44 @@ typedef char TileLayerStateSizeCheck[sizeof(TileLayerState) == 0x1040 ? 1 : -1];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *data_020deb1c;
+extern void *gTileLayerStateVtable;
 extern void MIi_CpuClearFast(void *, u32, u32);
-extern void *func_02029e44(void *);
-void func_02029f2c(TileLayerState *, s32);
+extern void *OwnedTileBuffer_Destroy(void *);
+void TileLayerState_Reset(TileLayerState *, s32);
 #ifdef __cplusplus
 }
 #endif
 
 /*
  * Install the base vtable, clear the owned-buffer pointer/count, reset all
- * cache/metadata through func_02029f2c, store the two trailing parameters,
+ * cache/metadata through TileLayerState_Reset, store the two trailing parameters,
  * and return self.
  */
-TileLayerState *func_02029e90(TileLayerState *self, s32 mode,
+TileLayerState *TileLayerState_Init(TileLayerState *self, s32 mode,
                               s32 parameter0, s32 parameter1)
 {
-    self->vtable_0000 = (void **)data_020deb1c;
+    self->vtable_0000 = (void **)gTileLayerStateVtable;
     self->ownedBytes_1008 = 0;
     self->ownedCount_100c = 0;
-    func_02029f2c(self, mode);
+    TileLayerState_Reset(self, mode);
     self->parameter0_1038 = parameter0;
     self->parameter1_103c = parameter1;
     return self;
 }
 
 /* Install the base vtable, release offset-0x1008 storage, and return self. */
-TileLayerState *func_02029ed4(TileLayerState *self)
+TileLayerState *TileLayerState_DestroyComplete(TileLayerState *self)
 {
-    self->vtable_0000 = (void **)data_020deb1c;
-    func_02029e44(&self->ownedBytes_1008);
+    self->vtable_0000 = (void **)gTileLayerStateVtable;
+    OwnedTileBuffer_Destroy(&self->ownedBytes_1008);
     return self;
 }
 
 /* Release owned storage, free the layer, and return its old address. */
-TileLayerState *func_02029efc(TileLayerState *self)
+TileLayerState *TileLayerState_DestroyAndFree(TileLayerState *self)
 {
-    self->vtable_0000 = (void **)data_020deb1c;
-    func_02029e44(&self->ownedBytes_1008);
+    self->vtable_0000 = (void **)gTileLayerStateVtable;
+    OwnedTileBuffer_Destroy(&self->ownedBytes_1008);
     Heap_Free(self);
     return self;
 }
@@ -85,7 +85,7 @@ TileLayerState *func_02029efc(TileLayerState *self)
  * Preserve the supplied mode at 0x1031, clear exactly 0x1000 bytes beginning
  * at offset four, reset all recovered metadata fields, and set status bit zero.
  */
-void func_02029f2c(TileLayerState *self, s32 mode)
+void TileLayerState_Reset(TileLayerState *self, s32 mode)
 {
     self->mode_1031 = (u8)mode;
     MIi_CpuClearFast(self->cache_0004, 0, 0x1000);

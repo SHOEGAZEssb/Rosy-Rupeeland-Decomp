@@ -9651,118 +9651,118 @@ build build/reports/owned_tile_buffer_02029e44.json: objdiff build/decomp/delink
   base_object = build/decomp/asm/game/owned_tile_buffer_02029e44.o
 build build/reports/owned_tile_buffer_02029e44.txt: match_report build/reports/owned_tile_buffer_02029e44.json | tools/report_objdiff.py
   report_json = build/reports/owned_tile_buffer_02029e44.json
-  report_args = --section .text --function func_02029e44 --require-exact
+  report_args = --section .text --function OwnedTileBuffer_Destroy --require-exact
 build build/reports/owned_tile_buffer_02029e64.json: objdiff build/decomp/delinks/asm/game/owned_tile_buffer_02029e64.o | build/decomp/asm/game/owned_tile_buffer_02029e64.o
   target_object = build/decomp/delinks/asm/game/owned_tile_buffer_02029e64.o
   base_object = build/decomp/asm/game/owned_tile_buffer_02029e64.o
 build build/reports/owned_tile_buffer_02029e64.txt: match_report build/reports/owned_tile_buffer_02029e64.json | tools/report_objdiff.py
   report_json = build/reports/owned_tile_buffer_02029e64.json
-  report_args = --section .text --function func_02029e64 --require-exact
+  report_args = --section .text --function OwnedTileBuffer_Clear --require-exact
 build build/reports/owned_tile_buffer.txt: phony build/reports/owned_tile_buffer_02029e44.txt build/reports/owned_tile_buffer_02029e64.txt
 build build/reports/tile_layer_state_lifecycle_02029e90.json: objdiff build/decomp/delinks/asm/game/tile_layer_state_lifecycle_02029e90.o | build/decomp/asm/game/tile_layer_state_lifecycle_02029e90.o
   target_object = build/decomp/delinks/asm/game/tile_layer_state_lifecycle_02029e90.o
   base_object = build/decomp/asm/game/tile_layer_state_lifecycle_02029e90.o
 build build/reports/tile_layer_state_lifecycle_02029e90.txt: match_report build/reports/tile_layer_state_lifecycle_02029e90.json | tools/report_objdiff.py
   report_json = build/reports/tile_layer_state_lifecycle_02029e90.json
-  report_args = --section .text --function func_02029e90 --require-exact
+  report_args = --section .text --function TileLayerState_Init --require-exact
 build build/reports/tile_layer_state_lifecycle_02029ed4.json: objdiff build/decomp/delinks/asm/game/tile_layer_state_lifecycle_02029ed4.o | build/decomp/asm/game/tile_layer_state_lifecycle_02029ed4.o
   target_object = build/decomp/delinks/asm/game/tile_layer_state_lifecycle_02029ed4.o
   base_object = build/decomp/asm/game/tile_layer_state_lifecycle_02029ed4.o
 build build/reports/tile_layer_state_lifecycle_02029ed4.txt: match_report build/reports/tile_layer_state_lifecycle_02029ed4.json | tools/report_objdiff.py
   report_json = build/reports/tile_layer_state_lifecycle_02029ed4.json
-  report_args = --section .text --function func_02029ed4 --require-exact
+  report_args = --section .text --function TileLayerState_DestroyComplete --require-exact
 build build/reports/tile_layer_state_lifecycle_02029efc.json: objdiff build/decomp/delinks/asm/game/tile_layer_state_lifecycle_02029efc.o | build/decomp/asm/game/tile_layer_state_lifecycle_02029efc.o
   target_object = build/decomp/delinks/asm/game/tile_layer_state_lifecycle_02029efc.o
   base_object = build/decomp/asm/game/tile_layer_state_lifecycle_02029efc.o
 build build/reports/tile_layer_state_lifecycle_02029efc.txt: match_report build/reports/tile_layer_state_lifecycle_02029efc.json | tools/report_objdiff.py
   report_json = build/reports/tile_layer_state_lifecycle_02029efc.json
-  report_args = --section .text --function func_02029efc --require-exact
+  report_args = --section .text --function TileLayerState_DestroyAndFree --require-exact
 build build/reports/tile_layer_state_lifecycle_02029f2c.json: objdiff build/decomp/delinks/asm/game/tile_layer_state_lifecycle_02029f2c.o | build/decomp/asm/game/tile_layer_state_lifecycle_02029f2c.o
   target_object = build/decomp/delinks/asm/game/tile_layer_state_lifecycle_02029f2c.o
   base_object = build/decomp/asm/game/tile_layer_state_lifecycle_02029f2c.o
 build build/reports/tile_layer_state_lifecycle_02029f2c.txt: match_report build/reports/tile_layer_state_lifecycle_02029f2c.json | tools/report_objdiff.py
   report_json = build/reports/tile_layer_state_lifecycle_02029f2c.json
-  report_args = --section .text --function func_02029f2c --require-exact
+  report_args = --section .text --function TileLayerState_Reset --require-exact
 build build/reports/tile_layer_state_lifecycle.txt: phony build/reports/tile_layer_state_lifecycle_02029e90.txt build/reports/tile_layer_state_lifecycle_02029ed4.txt build/reports/tile_layer_state_lifecycle_02029efc.txt build/reports/tile_layer_state_lifecycle_02029f2c.txt
 build build/reports/tile_layer_cache_refresh_02029fb0.json: objdiff build/decomp/delinks/asm/game/tile_layer_cache_refresh_02029fb0.o | build/decomp/asm/game/tile_layer_cache_refresh_02029fb0.o
   target_object = build/decomp/delinks/asm/game/tile_layer_cache_refresh_02029fb0.o
   base_object = build/decomp/asm/game/tile_layer_cache_refresh_02029fb0.o
 build build/reports/tile_layer_cache_refresh_02029fb0.txt: match_report build/reports/tile_layer_cache_refresh_02029fb0.json | tools/report_objdiff.py
   report_json = build/reports/tile_layer_cache_refresh_02029fb0.json
-  report_args = --section .text --function func_02029fb0 --require-exact
+  report_args = --section .text --function TileLayer_RebuildCache --require-exact
 build build/reports/tile_layer_cache_refresh_0202a0e8.json: objdiff build/decomp/delinks/asm/game/tile_layer_cache_refresh_0202a0e8.o | build/decomp/asm/game/tile_layer_cache_refresh_0202a0e8.o
   target_object = build/decomp/delinks/asm/game/tile_layer_cache_refresh_0202a0e8.o
   base_object = build/decomp/asm/game/tile_layer_cache_refresh_0202a0e8.o
 build build/reports/tile_layer_cache_refresh_0202a0e8.txt: match_report build/reports/tile_layer_cache_refresh_0202a0e8.json | tools/report_objdiff.py
   report_json = build/reports/tile_layer_cache_refresh_0202a0e8.json
-  report_args = --section .text --function func_0202a0e8 --require-exact
+  report_args = --section .text --function TileLayer_RefreshCacheColumn --require-exact
 build build/reports/tile_layer_cache_refresh_0202a1cc.json: objdiff build/decomp/delinks/asm/game/tile_layer_cache_refresh_0202a1cc.o | build/decomp/asm/game/tile_layer_cache_refresh_0202a1cc.o
   target_object = build/decomp/delinks/asm/game/tile_layer_cache_refresh_0202a1cc.o
   base_object = build/decomp/asm/game/tile_layer_cache_refresh_0202a1cc.o
 build build/reports/tile_layer_cache_refresh_0202a1cc.txt: match_report build/reports/tile_layer_cache_refresh_0202a1cc.json | tools/report_objdiff.py
   report_json = build/reports/tile_layer_cache_refresh_0202a1cc.json
-  report_args = --section .text --function func_0202a1cc --require-exact
+  report_args = --section .text --function TileLayer_RefreshCacheRow --require-exact
 build build/reports/tile_layer_cache_refresh.txt: phony build/reports/tile_layer_cache_refresh_02029fb0.txt build/reports/tile_layer_cache_refresh_0202a0e8.txt build/reports/tile_layer_cache_refresh_0202a1cc.txt
 build build/reports/tile_layer_scroll_and_access_0202a2b0.json: objdiff build/decomp/delinks/asm/game/tile_layer_scroll_and_access_0202a2b0.o | build/decomp/asm/game/tile_layer_scroll_and_access_0202a2b0.o
   target_object = build/decomp/delinks/asm/game/tile_layer_scroll_and_access_0202a2b0.o
   base_object = build/decomp/asm/game/tile_layer_scroll_and_access_0202a2b0.o
 build build/reports/tile_layer_scroll_and_access_0202a2b0.txt: match_report build/reports/tile_layer_scroll_and_access_0202a2b0.json | tools/report_objdiff.py
   report_json = build/reports/tile_layer_scroll_and_access_0202a2b0.json
-  report_args = --section .text --function func_0202a2b0 --require-exact
+  report_args = --section .text --function TileLayer_ScrollToPixelPosition --require-exact
 build build/reports/tile_layer_scroll_and_access_0202a588.json: objdiff build/decomp/delinks/asm/game/tile_layer_scroll_and_access_0202a588.o | build/decomp/asm/game/tile_layer_scroll_and_access_0202a588.o
   target_object = build/decomp/delinks/asm/game/tile_layer_scroll_and_access_0202a588.o
   base_object = build/decomp/asm/game/tile_layer_scroll_and_access_0202a588.o
 build build/reports/tile_layer_scroll_and_access_0202a588.txt: match_report build/reports/tile_layer_scroll_and_access_0202a588.json | tools/report_objdiff.py
   report_json = build/reports/tile_layer_scroll_and_access_0202a588.json
-  report_args = --section .text --function func_0202a588 --require-exact
+  report_args = --section .text --function TileLayer_SetMetatileIndex --require-exact
 build build/reports/tile_layer_scroll_and_access_0202a62c.json: objdiff build/decomp/delinks/asm/game/tile_layer_scroll_and_access_0202a62c.o | build/decomp/asm/game/tile_layer_scroll_and_access_0202a62c.o
   target_object = build/decomp/delinks/asm/game/tile_layer_scroll_and_access_0202a62c.o
   base_object = build/decomp/asm/game/tile_layer_scroll_and_access_0202a62c.o
 build build/reports/tile_layer_scroll_and_access_0202a62c.txt: match_report build/reports/tile_layer_scroll_and_access_0202a62c.json | tools/report_objdiff.py
   report_json = build/reports/tile_layer_scroll_and_access_0202a62c.json
-  report_args = --section .text --function func_0202a62c --require-exact
+  report_args = --section .text --function TileLayer_WriteMetatileToCache --require-exact
 build build/reports/tile_layer_scroll_and_access_0202a6d0.json: objdiff build/decomp/delinks/asm/game/tile_layer_scroll_and_access_0202a6d0.o | build/decomp/asm/game/tile_layer_scroll_and_access_0202a6d0.o
   target_object = build/decomp/delinks/asm/game/tile_layer_scroll_and_access_0202a6d0.o
   base_object = build/decomp/asm/game/tile_layer_scroll_and_access_0202a6d0.o
 build build/reports/tile_layer_scroll_and_access_0202a6d0.txt: match_report build/reports/tile_layer_scroll_and_access_0202a6d0.json | tools/report_objdiff.py
   report_json = build/reports/tile_layer_scroll_and_access_0202a6d0.json
-  report_args = --section .text --function func_0202a6d0 --require-exact
+  report_args = --section .text --function TileLayer_SetSourceCellUpperBits --require-exact
 build build/reports/tile_layer_scroll_and_access_0202a708.json: objdiff build/decomp/delinks/asm/game/tile_layer_scroll_and_access_0202a708.o | build/decomp/asm/game/tile_layer_scroll_and_access_0202a708.o
   target_object = build/decomp/delinks/asm/game/tile_layer_scroll_and_access_0202a708.o
   base_object = build/decomp/asm/game/tile_layer_scroll_and_access_0202a708.o
 build build/reports/tile_layer_scroll_and_access_0202a708.txt: match_report build/reports/tile_layer_scroll_and_access_0202a708.json | tools/report_objdiff.py
   report_json = build/reports/tile_layer_scroll_and_access_0202a708.json
-  report_args = --section .text --function func_0202a708 --require-exact
+  report_args = --section .text --function TileLayer_GetMetatileIndex --require-exact
 build build/reports/tile_layer_scroll_and_access_0202a730.json: objdiff build/decomp/delinks/asm/game/tile_layer_scroll_and_access_0202a730.o | build/decomp/asm/game/tile_layer_scroll_and_access_0202a730.o
   target_object = build/decomp/delinks/asm/game/tile_layer_scroll_and_access_0202a730.o
   base_object = build/decomp/asm/game/tile_layer_scroll_and_access_0202a730.o
 build build/reports/tile_layer_scroll_and_access_0202a730.txt: match_report build/reports/tile_layer_scroll_and_access_0202a730.json | tools/report_objdiff.py
   report_json = build/reports/tile_layer_scroll_and_access_0202a730.json
-  report_args = --section .text --function func_0202a730 --require-exact
+  report_args = --section .text --function TileLayer_GetSourceCell --require-exact
 build build/reports/tile_layer_scroll_and_access_0202a74c.json: objdiff build/decomp/delinks/asm/game/tile_layer_scroll_and_access_0202a74c.o | build/decomp/asm/game/tile_layer_scroll_and_access_0202a74c.o
   target_object = build/decomp/delinks/asm/game/tile_layer_scroll_and_access_0202a74c.o
   base_object = build/decomp/asm/game/tile_layer_scroll_and_access_0202a74c.o
 build build/reports/tile_layer_scroll_and_access_0202a74c.txt: match_report build/reports/tile_layer_scroll_and_access_0202a74c.json | tools/report_objdiff.py
   report_json = build/reports/tile_layer_scroll_and_access_0202a74c.json
-  report_args = --section .text --function func_0202a74c --require-exact
+  report_args = --section .text --function OwnedTileBuffer_Resize --require-exact
 build build/reports/tile_layer_scroll_and_access_0202a78c.json: objdiff build/decomp/delinks/asm/game/tile_layer_scroll_and_access_0202a78c.o | build/decomp/asm/game/tile_layer_scroll_and_access_0202a78c.o
   target_object = build/decomp/delinks/asm/game/tile_layer_scroll_and_access_0202a78c.o
   base_object = build/decomp/asm/game/tile_layer_scroll_and_access_0202a78c.o
 build build/reports/tile_layer_scroll_and_access_0202a78c.txt: match_report build/reports/tile_layer_scroll_and_access_0202a78c.json | tools/report_objdiff.py
   report_json = build/reports/tile_layer_scroll_and_access_0202a78c.json
-  report_args = --section .text --function func_0202a78c --require-exact
+  report_args = --section .text --function TileLayer_LoadSourceTileSection --require-exact
 build build/reports/tile_layer_scroll_and_access_0202a7fc.json: objdiff build/decomp/delinks/asm/game/tile_layer_scroll_and_access_0202a7fc.o | build/decomp/asm/game/tile_layer_scroll_and_access_0202a7fc.o
   target_object = build/decomp/delinks/asm/game/tile_layer_scroll_and_access_0202a7fc.o
   base_object = build/decomp/asm/game/tile_layer_scroll_and_access_0202a7fc.o
 build build/reports/tile_layer_scroll_and_access_0202a7fc.txt: match_report build/reports/tile_layer_scroll_and_access_0202a7fc.json | tools/report_objdiff.py
   report_json = build/reports/tile_layer_scroll_and_access_0202a7fc.json
-  report_args = --section .text --function func_0202a7fc --require-exact
+  report_args = --section .text --function TileLayer_InitSourceMap --require-exact
 build build/reports/tile_layer_scroll_and_access_0202a884.json: objdiff build/decomp/delinks/asm/game/tile_layer_scroll_and_access_0202a884.o | build/decomp/asm/game/tile_layer_scroll_and_access_0202a884.o
   target_object = build/decomp/delinks/asm/game/tile_layer_scroll_and_access_0202a884.o
   base_object = build/decomp/asm/game/tile_layer_scroll_and_access_0202a884.o
 build build/reports/tile_layer_scroll_and_access_0202a884.txt: match_report build/reports/tile_layer_scroll_and_access_0202a884.json | tools/report_objdiff.py
   report_json = build/reports/tile_layer_scroll_and_access_0202a884.json
-  report_args = --section .text --function func_0202a884 --require-exact
+  report_args = --section .text --function TileLayer_SetScrollPositionDirect --require-exact
 build build/reports/tile_layer_scroll_and_access.txt: phony build/reports/tile_layer_scroll_and_access_0202a2b0.txt build/reports/tile_layer_scroll_and_access_0202a588.txt build/reports/tile_layer_scroll_and_access_0202a62c.txt build/reports/tile_layer_scroll_and_access_0202a6d0.txt build/reports/tile_layer_scroll_and_access_0202a708.txt build/reports/tile_layer_scroll_and_access_0202a730.txt build/reports/tile_layer_scroll_and_access_0202a74c.txt build/reports/tile_layer_scroll_and_access_0202a78c.txt build/reports/tile_layer_scroll_and_access_0202a7fc.txt build/reports/tile_layer_scroll_and_access_0202a884.txt
 build build/reports/bg2_tile_layer_0202a8b4.json: objdiff build/decomp/delinks/asm/game/bg2_tile_layer_0202a8b4.o | build/decomp/asm/game/bg2_tile_layer_0202a8b4.o
   target_object = build/decomp/delinks/asm/game/bg2_tile_layer_0202a8b4.o

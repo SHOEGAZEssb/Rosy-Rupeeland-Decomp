@@ -32,19 +32,19 @@ typedef struct TileLayerAccessState {
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern const char data_020de98c[];
-extern void func_0202a0e8(void *, s32, s32, u8 *);
-extern void func_0202a1cc(void *, s32, s32, u8 *);
-extern void func_02029fb0(void *);
-extern void func_02029e64(void *);
+extern const char gTileLayerArrayAllocationTag[];
+extern void TileLayer_RefreshCacheColumn(void *, s32, s32, u8 *);
+extern void TileLayer_RefreshCacheRow(void *, s32, s32, u8 *);
+extern void TileLayer_RebuildCache(void *);
+extern void OwnedTileBuffer_Clear(void *);
 extern void func_0202b5fc(void *);
 extern void func_0202b648(void *, void *, u32, u32);
 extern void *func_0202b728(void *);
 extern void func_0202b60c(void *);
 extern void MI_CpuCopy8(const void *, void *, u32);
-void func_0202a62c(TileLayerAccessState *, s32, s32, u16);
-void func_0202a74c(void *, u32);
-void func_0202a78c(TileLayerAccessState *, void *, u32, u32);
+void TileLayer_WriteMetatileToCache(TileLayerAccessState *, s32, s32, u16);
+void OwnedTileBuffer_Resize(void *, u32);
+void TileLayer_LoadSourceTileSection(TileLayerAccessState *, void *, u32, u32);
 #ifdef __cplusplus
 }
 #endif
@@ -65,13 +65,13 @@ static s32 WrapCoordinate(s32 value, s32 modulus)
  * newly exposed 16-cell column or 32-cell row, advance/retreat the circular
  * cursor and source offset, then store the exact pixel coordinates.
  */
-void func_0202a2b0(TileLayerAccessState *self, s32 pixelX, s32 pixelY)
+void TileLayer_ScrollToPixelPosition(TileLayerAccessState *self, s32 pixelX, s32 pixelY)
 {
     s32 target;
     target = PixelToTile(pixelX) - 1;
     while (target > self->sourceOffsetX_1028) {
         u8 cursor[2] = {self->cursorX_1004, self->cursorY_1005};
-        func_0202a0e8(self, self->sourceOffsetX_1028 + 32,
+        TileLayer_RefreshCacheColumn(self, self->sourceOffsetX_1028 + 32,
                       self->sourceOffsetY_102a, cursor);
         self->cursorX_1004 = (self->cursorX_1004 & (u8)~0x1f) |
                              ((self->cursorX_1004 + 1) & 0x1f);
@@ -83,7 +83,7 @@ void func_0202a2b0(TileLayerAccessState *self, s32 pixelX, s32 pixelY)
                  ((self->cursorX_1004 - 1) & 0x1f)),
             self->cursorY_1005
         };
-        func_0202a0e8(self, self->sourceOffsetX_1028 - 1,
+        TileLayer_RefreshCacheColumn(self, self->sourceOffsetX_1028 - 1,
                       self->sourceOffsetY_102a, cursor);
         self->cursorX_1004 = cursor[0];
         self->sourceOffsetX_1028--;
@@ -92,7 +92,7 @@ void func_0202a2b0(TileLayerAccessState *self, s32 pixelX, s32 pixelY)
     target = PixelToTile(pixelY) - 1;
     while (target > self->sourceOffsetY_102a) {
         u8 cursor[2] = {self->cursorX_1004, self->cursorY_1005};
-        func_0202a1cc(self, self->sourceOffsetX_1028,
+        TileLayer_RefreshCacheRow(self, self->sourceOffsetX_1028,
                       self->sourceOffsetY_102a + 16, cursor);
         self->cursorY_1005 = (self->cursorY_1005 & (u8)~0x0f) |
                              ((self->cursorY_1005 + 1) & 0x0f);
@@ -104,7 +104,7 @@ void func_0202a2b0(TileLayerAccessState *self, s32 pixelX, s32 pixelY)
             (u8)((self->cursorY_1005 & (u8)~0x0f) |
                  ((self->cursorY_1005 - 1) & 0x0f))
         };
-        func_0202a1cc(self, self->sourceOffsetX_1028,
+        TileLayer_RefreshCacheRow(self, self->sourceOffsetX_1028,
                       self->sourceOffsetY_102a - 1, cursor);
         self->cursorY_1005 = cursor[1];
         self->sourceOffsetY_102a--;
@@ -117,7 +117,7 @@ void func_0202a2b0(TileLayerAccessState *self, s32 pixelX, s32 pixelY)
  * Replace a source cell's low nine bits. If that cell is inside the currently
  * cached 32x16 window, immediately expand it into the wrapped cache position.
  */
-void func_0202a588(TileLayerAccessState *self, s32 x, s32 y, u16 tile)
+void TileLayer_SetMetatileIndex(TileLayerAccessState *self, s32 x, s32 y, u16 tile)
 {
     u16 *cell = &self->sourceTiles_1008[y * self->sourceWidth_102c + x];
     *cell = (*cell & 0xfe00) | (tile & 0x1ff);
@@ -125,7 +125,7 @@ void func_0202a588(TileLayerAccessState *self, s32 x, s32 y, u16 tile)
         x < self->sourceOffsetX_1028 + 32 &&
         y >= self->sourceOffsetY_102a &&
         y < self->sourceOffsetY_102a + 16)
-        func_0202a62c(self, WrapCoordinate(x, 32),
+        TileLayer_WriteMetatileToCache(self, WrapCoordinate(x, 32),
                       WrapCoordinate(y, 16), tile);
 }
 
@@ -134,7 +134,7 @@ void func_0202a588(TileLayerAccessState *self, s32 x, s32 y, u16 tile)
  * 16-column screen blocks; definition halfwords receive the recovered base at
  * offset 0x1034 before being written.
  */
-void func_0202a62c(TileLayerAccessState *self, s32 x, s32 y, u16 tile)
+void TileLayer_WriteMetatileToCache(TileLayerAccessState *self, s32 x, s32 y, u16 tile)
 {
     const u16 *definition = self->definitions_1010 + tile * 5;
     s32 wrappedX = WrapCoordinate(x, 32);
@@ -148,31 +148,31 @@ void func_0202a62c(TileLayerAccessState *self, s32 x, s32 y, u16 tile)
 }
 
 /* Preserve a source cell's low nine bits and replace its upper bits. */
-void func_0202a6d0(TileLayerAccessState *self, s32 x, s32 y, u16 upperBits)
+void TileLayer_SetSourceCellUpperBits(TileLayerAccessState *self, s32 x, s32 y, u16 upperBits)
 {
     u16 *cell = &self->sourceTiles_1008[y * self->sourceWidth_102c + x];
     *cell = (*cell & 0x1ff) | upperBits;
 }
 
 /* Return only the low nine-bit metatile index for a source coordinate. */
-u16 func_0202a708(TileLayerAccessState *self, s32 x, s32 y)
+u16 TileLayer_GetMetatileIndex(TileLayerAccessState *self, s32 x, s32 y)
 {
     return self->sourceTiles_1008[y * self->sourceWidth_102c + x] & 0x1ff;
 }
 
 /* Return the full 16-bit source-map cell for a coordinate. */
-u16 func_0202a730(TileLayerAccessState *self, s32 x, s32 y)
+u16 TileLayer_GetSourceCell(TileLayerAccessState *self, s32 x, s32 y)
 {
     return self->sourceTiles_1008[y * self->sourceWidth_102c + x];
 }
 
 /* Replace an owned halfword buffer with storage for count elements. */
-void func_0202a74c(void *ownedBuffer, u32 count)
+void OwnedTileBuffer_Resize(void *ownedBuffer, u32 count)
 {
     void **bytes = (void **)ownedBuffer;
     if (*bytes)
-        func_02029e64(ownedBuffer);
-    bytes[0] = func_02003e20(count * 2, data_020de98c, 4, &gHeapContext);
+        OwnedTileBuffer_Clear(ownedBuffer);
+    bytes[0] = func_02003e20(count * 2, gTileLayerArrayAllocationTag, 4, &gHeapContext);
     ((u32 *)ownedBuffer)[1] = count;
 }
 
@@ -180,14 +180,14 @@ void func_0202a74c(void *ownedBuffer, u32 count)
  * Load a file subsection through a temporary archive view, allocate the layer's
  * halfword buffer from half the byte size, copy all bytes, and destroy the view.
  */
-void func_0202a78c(TileLayerAccessState *self, void *file,
+void TileLayer_LoadSourceTileSection(TileLayerAccessState *self, void *file,
                    u32 offset, u32 size)
 {
     u8 view[8];
     const void *source;
     func_0202b5fc(view);
     func_0202b648(view, file, offset, size);
-    func_0202a74c(&self->sourceTiles_1008, *(u32 *)(view + 4) >> 1);
+    OwnedTileBuffer_Resize(&self->sourceTiles_1008, *(u32 *)(view + 4) >> 1);
     source = func_0202b728(view);
     MI_CpuCopy8(source, self->sourceTiles_1008, *(u32 *)(view + 4));
     func_0202b60c(view);
@@ -198,11 +198,11 @@ void func_0202a78c(TileLayerAccessState *self, void *file,
  * dimensions and zero scroll/source origins; derive packed cursors; fully
  * rebuild the cache.
  */
-void func_0202a7fc(TileLayerAccessState *self, void *file, u32 offset,
+void TileLayer_InitSourceMap(TileLayerAccessState *self, void *file, u32 offset,
                    u32 size, const u16 *definitions, s16 width, s16 height,
                    const void *auxiliary)
 {
-    func_0202a78c(self, file, offset, size);
+    TileLayer_LoadSourceTileSection(self, file, offset, size);
     self->definitions_1010 = definitions;
     self->field_1014 = auxiliary;
     self->sourceWidth_102c = (u16)width;
@@ -215,11 +215,11 @@ void func_0202a7fc(TileLayerAccessState *self, void *file, u32 offset,
                          (self->sourceOffsetX_1028 & 0x1f);
     self->cursorY_1005 = (self->cursorY_1005 & (u8)~0x0f) |
                          (self->sourceOffsetY_102a & 0x0f);
-    func_02029fb0(self);
+    TileLayer_RebuildCache(self);
 }
 
 /* Store exact pixel coordinates and their signed, truncating tile coordinates. */
-void func_0202a884(TileLayerAccessState *self, s32 pixelX, s32 pixelY)
+void TileLayer_SetScrollPositionDirect(TileLayerAccessState *self, s32 pixelX, s32 pixelY)
 {
     self->pixelX_1018 = pixelX;
     self->pixelY_101c = pixelY;

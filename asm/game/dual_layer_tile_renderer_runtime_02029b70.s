@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/dual_layer_tile_renderer_runtime.c.
 .text
-.extern func_0202a6d0
+.extern TileLayer_SetSourceCellUpperBits
 
     .global DualLayerTileRenderer_SetPackedTileValue
     .type DualLayerTileRenderer_SetPackedTileValue, @function
@@ -28,7 +28,7 @@ DualLayerTileRenderer_SetPackedTileValue: ; 0x02029b70
     beq .L_02029bd0
     mov r3, ip, lsl #0x19
     mov r3, r3, lsr #0x10
-    bl func_0202a6d0
+    bl TileLayer_SetSourceCellUpperBits
 .L_02029bd0:
     ldr r0, [r6, #0x2c]
     cmp r0, #0x0
@@ -37,7 +37,7 @@ DualLayerTileRenderer_SetPackedTileValue: ; 0x02029b70
     mov r1, r5
     mov r2, r4
     mov r3, r3, lsr #0x10
-    bl func_0202a6d0
+    bl TileLayer_SetSourceCellUpperBits
 .L_02029bf0:
     ldmia sp!, {r3, r4, r5, r6, r7, lr}
     add sp, sp, #0x10

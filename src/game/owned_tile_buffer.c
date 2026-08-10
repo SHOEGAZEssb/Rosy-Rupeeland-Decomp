@@ -10,21 +10,21 @@ typedef struct OwnedTileBuffer {
 #ifdef __cplusplus
 extern "C" {
 #endif
-void func_02029e64(OwnedTileBuffer *);
+void OwnedTileBuffer_Clear(OwnedTileBuffer *);
 #ifdef __cplusplus
 }
 #endif
 
 /* Release storage when present and return the buffer object. */
-OwnedTileBuffer *func_02029e44(OwnedTileBuffer *self)
+OwnedTileBuffer *OwnedTileBuffer_Destroy(OwnedTileBuffer *self)
 {
     if (self->bytes_00)
-        func_02029e64(self);
+        OwnedTileBuffer_Clear(self);
     return self;
 }
 
 /* Free owned storage when non-null, then clear both pointer and count. */
-void func_02029e64(OwnedTileBuffer *self)
+void OwnedTileBuffer_Clear(OwnedTileBuffer *self)
 {
     if (self->bytes_00) {
         func_02003e38(self->bytes_00);

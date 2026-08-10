@@ -73,13 +73,13 @@ extern void *func_0202abb0(void *, s32, s32, s32);
 extern void *func_0202b134(void *, s32, s32, s32);
 extern void *func_0202a8b4(void *, s32, s32, s32);
 extern void *func_0202aeac(void *, s32, s32, s32);
-extern void func_0202a7fc(void *, void *, u32, u32, void *, s32, s32, void *);
-extern void func_0202a884(void *, s32, s32);
-extern void func_02029fb0(void *);
+extern void TileLayer_InitSourceMap(void *, void *, u32, u32, void *, s32, s32, void *);
+extern void TileLayer_SetScrollPositionDirect(void *, s32, s32);
+extern void TileLayer_RebuildCache(void *);
 extern void func_0202badc(void *);
 extern void VecFx32_Subtract(void *, const void *, const void *);
 extern void VecFx32Object_Destroy(void *);
-extern void func_0202a2b0(void *, s32, s32);
+extern void TileLayer_ScrollToPixelPosition(void *, s32, s32);
 extern void func_0202b930(void *);
 extern void func_020b1854(void *, s32, s32);
 extern void func_020b17ec(void *, s32, s32);
@@ -97,10 +97,10 @@ extern void func_020b1534(void);
 extern void func_020b13d4(void);
 extern void func_020b1360(void *, s32, s32);
 extern void func_020b1314(void);
-extern void func_0202a708(void *, s32, s32);
-extern void func_0202a588(void *, s32, s32, s32);
-extern u16 func_0202a730(void *, ...);
-extern void func_0202a6d0(void *, s32, s32, s32);
+extern void TileLayer_GetMetatileIndex(void *, s32, s32);
+extern void TileLayer_SetMetatileIndex(void *, s32, s32, s32);
+extern u16 TileLayer_GetSourceCell(void *, ...);
+extern void TileLayer_SetSourceCellUpperBits(void *, s32, s32, s32);
 extern void ByteTileMapOwner_SetCell(void *, s32, s32, s32);
 extern void *func_0202b9bc(void *);
 extern void func_0202b750(void *, void *, s32);
@@ -152,11 +152,11 @@ void DualLayerTileRenderer_LoadFromConfig(DualLayerTileRenderer *self,
         }
         map = func_0202b5f4(self->resource_04);
         optional = CompressedByteBuffer_GetData(self->optionalResource_0c);
-        func_0202a7fc(self->layers_28[0], file, config->layer0Offset_18,
+        TileLayer_InitSourceMap(self->layers_28[0], file, config->layer0Offset_18,
                       config->layer0Size_1c, map,
                       (s16)(self->packedDimensions_20 & 0xffff),
                       (s16)(self->packedDimensions_20 >> 16), optional);
-        func_0202a884(self->layers_28[0], 0, 0);
+        TileLayer_SetScrollPositionDirect(self->layers_28[0], 0, 0);
         self->layerState_34[0] = 0;
         self->layerState_34[2] = 0;
     }
@@ -172,11 +172,11 @@ void DualLayerTileRenderer_LoadFromConfig(DualLayerTileRenderer *self,
                     self->layers_28[1], mode, self->field_44, self->height_4c);
         }
         map = func_0202b5f4(self->resource_04);
-        func_0202a7fc(self->layers_28[1], file, config->layer1Offset_20,
+        TileLayer_InitSourceMap(self->layers_28[1], file, config->layer1Offset_20,
                       config->layer1Size_24, map,
                       (s16)(self->packedDimensions_20 & 0xffff),
                       (s16)(self->packedDimensions_20 >> 16), 0);
-        func_0202a884(self->layers_28[1], 0, 0);
+        TileLayer_SetScrollPositionDirect(self->layers_28[1], 0, 0);
         self->layerState_34[1] = 0;
         self->layerState_34[3] = 0;
     }
@@ -204,7 +204,7 @@ void DualLayerTileRenderer_ActivateLayers(DualLayerTileRenderer *self, s32 notif
     DualLayerTileRenderer_UploadPalette(self);
     for (i = 0; i < 2; i++)
         if (self->layers_28[i])
-            func_02029fb0(self->layers_28[i]);
+            TileLayer_RebuildCache(self->layers_28[i]);
     if (notify)
         ((LayerBoolMethod)(*(void ***)self)[9])(self, 1);
     screenControl = (volatile u16 *)(self->engineMode_30 == 1 ?
@@ -241,9 +241,9 @@ void DualLayerTileRenderer_UpdatePosition(DualLayerTileRenderer *self, const voi
     x = transformed[1] >> 12;
     y = transformed[2] >> 12;
     if (self->layers_28[0])
-        func_0202a2b0(self->layers_28[0], x, y);
+        TileLayer_ScrollToPixelPosition(self->layers_28[0], x, y);
     if (self->layers_28[1])
-        func_0202a2b0(self->layers_28[1], x, y);
+        TileLayer_ScrollToPixelPosition(self->layers_28[1], x, y);
     if (*(u32 *)(self->base_00 + 0x1878) & 1) {
         func_0202b930(self->embeddedRenderer_60);
         if ((self->flags_24 >> 1) & 1) {
@@ -304,17 +304,17 @@ void DualLayerTileRenderer_UploadPalette(DualLayerTileRenderer *self)
     }
 }
 
-/* Forward two values to func_0202a708 on the indexed layer. */
+/* Forward two values to TileLayer_GetMetatileIndex on the indexed layer. */
 void DualLayerTileRenderer_ForwardLayerPair(DualLayerTileRenderer *self, s32 layer, s32 a, s32 b)
 {
-    func_0202a708(self->layers_28[layer], a, b);
+    TileLayer_GetMetatileIndex(self->layers_28[layer], a, b);
 }
 
-/* Forward three values to func_0202a588 on the indexed layer. */
+/* Forward three values to TileLayer_SetMetatileIndex on the indexed layer. */
 void DualLayerTileRenderer_ForwardLayerTriple(DualLayerTileRenderer *self, s32 layer,
                    s32 a, s32 b, s32 c)
 {
-    func_0202a588(self->layers_28[layer], b, c, a);
+    TileLayer_SetMetatileIndex(self->layers_28[layer], b, c, a);
 }
 
 /* Invoke vtable slot three with the supplied value on both existing layers. */
@@ -353,9 +353,9 @@ u16 DualLayerTileRenderer_GetPackedTileValue(DualLayerTileRenderer *self, s32 x,
     if (x < 0 || x >= width || y < 0 || y >= height)
         return 0;
     if (self->layers_28[0])
-        low = (func_0202a730(self->layers_28[0], x, y) & 0xfe00) >> 9;
+        low = (TileLayer_GetSourceCell(self->layers_28[0], x, y) & 0xfe00) >> 9;
     if (self->layers_28[1])
-        high = (func_0202a730(self->layers_28[1], x, y) & 0xfe00) >> 9;
+        high = (TileLayer_GetSourceCell(self->layers_28[1], x, y) & 0xfe00) >> 9;
     return low | (high << 7);
 }
 
@@ -367,9 +367,9 @@ void DualLayerTileRenderer_SetPackedTileValue(DualLayerTileRenderer *self, s32 x
     if (x < 0 || x >= width || y < 0 || y >= height)
         return;
     if (self->layers_28[0])
-        func_0202a6d0(self->layers_28[0], x, y, (value & 0x7f) << 9);
+        TileLayer_SetSourceCellUpperBits(self->layers_28[0], x, y, (value & 0x7f) << 9);
     if (self->layers_28[1])
-        func_0202a6d0(self->layers_28[1], x, y,
+        TileLayer_SetSourceCellUpperBits(self->layers_28[1], x, y,
                       ((value >> 7) & 0x7f) << 9);
 }
 

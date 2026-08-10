@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/dual_layer_tile_renderer_runtime.c.
 .text
-.extern func_0202a730
+.extern TileLayer_GetSourceCell
 
     .global DualLayerTileRenderer_GetPackedTileValue
     .type DualLayerTileRenderer_GetPackedTileValue, @function
@@ -30,7 +30,7 @@ DualLayerTileRenderer_GetPackedTileValue: ; 0x02029ad0
     mov r6, r5
     cmp r0, #0x0
     beq .L_02029b3c
-    bl func_0202a730
+    bl TileLayer_GetSourceCell
     and r0, r0, #0xfe00
     mov r0, r0, lsl #0x7
     mov r6, r0, lsr #0x10
@@ -40,7 +40,7 @@ DualLayerTileRenderer_GetPackedTileValue: ; 0x02029ad0
     beq .L_02029b60
     mov r1, r8
     mov r2, r7
-    bl func_0202a730
+    bl TileLayer_GetSourceCell
     and r0, r0, #0xfe00
     mov r0, r0, lsl #0x7
     mov r5, r0, lsr #0x10

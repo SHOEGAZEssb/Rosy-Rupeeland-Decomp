@@ -1,10 +1,10 @@
 ; Matching retail form; see src/game/tile_layer_scroll_and_access.c.
 .text
-.extern func_0202a62c
+.extern TileLayer_WriteMetatileToCache
 
-    .global func_0202a588
-    .type func_0202a588, @function
-func_0202a588: ; 0x0202a588
+    .global TileLayer_SetMetatileIndex
+    .type TileLayer_SetMetatileIndex, @function
+TileLayer_SetMetatileIndex: ; 0x0202a588
     stmdb sp!, {r4, r5, r6, lr}
     add r4, r0, #0x1000
     ldrh r5, [r4, #0x2c]
@@ -43,8 +43,8 @@ func_0202a588: ; 0x0202a588
     rsb r2, lr, r2, lsl #0x1c
     add r1, ip, r1, ror #0x1b
     add r2, lr, r2, ror #0x1c
-    bl func_0202a62c
+    bl TileLayer_WriteMetatileToCache
     ldmia sp!, {r4, r5, r6, pc}
 .L_0202a628: .word 0x1ff
-    .size func_0202a588, . - func_0202a588
+    .size TileLayer_SetMetatileIndex, . - TileLayer_SetMetatileIndex
 

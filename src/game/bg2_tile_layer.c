@@ -23,9 +23,9 @@ typedef struct Bg2TileLayer {
 extern "C" {
 #endif
 extern void *data_020dea9c;
-extern void *data_020deb1c;
-extern void *func_02029e90(void *, s32, s32, s32);
-extern void *func_02029e44(void *);
+extern void *gTileLayerStateVtable;
+extern void *TileLayerState_Init(void *, s32, s32, s32);
+extern void *OwnedTileBuffer_Destroy(void *);
 extern void func_020b4554(void *, u32);
 extern void func_020b44e8(void);
 extern void func_020b1b94(const void *, s32, u32);
@@ -42,7 +42,7 @@ void func_0202a97c(s32, s32, s32, s32);
 Bg2TileLayer *func_0202a8b4(Bg2TileLayer *self, s32 engineMode,
                             s32 characterBase, s32 screenBase)
 {
-    func_02029e90(self, engineMode, characterBase, screenBase);
+    TileLayerState_Init(self, engineMode, characterBase, screenBase);
     self->vtable_0000 = (void **)data_020dea9c;
     func_0202a8e4(self);
     return self;
@@ -83,16 +83,16 @@ void func_0202a97c(s32 size, s32 colorMode, s32 screenBase, s32 characterBase)
 /* Install the base-layer vtable, release its source-map buffer, and return self. */
 Bg2TileLayer *func_0202a9a8(Bg2TileLayer *self)
 {
-    self->vtable_0000 = (void **)data_020deb1c;
-    func_02029e44((u8 *)self + 0x1008);
+    self->vtable_0000 = (void **)gTileLayerStateVtable;
+    OwnedTileBuffer_Destroy((u8 *)self + 0x1008);
     return self;
 }
 
 /* Release source-map storage, free the BG2 layer, and return its old address. */
 Bg2TileLayer *func_0202a9d0(Bg2TileLayer *self)
 {
-    self->vtable_0000 = (void **)data_020deb1c;
-    func_02029e44((u8 *)self + 0x1008);
+    self->vtable_0000 = (void **)gTileLayerStateVtable;
+    OwnedTileBuffer_Destroy((u8 *)self + 0x1008);
     Heap_Free(self);
     return self;
 }

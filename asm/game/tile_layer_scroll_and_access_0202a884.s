@@ -2,9 +2,9 @@
 .text
 
 
-    .global func_0202a884
-    .type func_0202a884, @function
-func_0202a884: ; 0x0202a884
+    .global TileLayer_SetScrollPositionDirect
+    .type TileLayer_SetScrollPositionDirect, @function
+TileLayer_SetScrollPositionDirect: ; 0x0202a884
     add r3, r0, #0x1000
     mov r0, r1, asr #0x3
     str r1, [r3, #0x18]
@@ -17,5 +17,5 @@ func_0202a884: ; 0x0202a884
     mov r0, r1, asr #0x4
     strh r0, [r3, #0x2a]
     bx lr
-    .size func_0202a884, . - func_0202a884
+    .size TileLayer_SetScrollPositionDirect, . - TileLayer_SetScrollPositionDirect
 

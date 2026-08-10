@@ -2,11 +2,11 @@
 .text
 .extern RectS32_Init
 .extern RectS32_ContainsPoint
-.extern func_0202a62c
+.extern TileLayer_WriteMetatileToCache
 
-    .global func_0202a1cc
-    .type func_0202a1cc, @function
-func_0202a1cc: ; 0x0202a1cc
+    .global TileLayer_RefreshCacheRow
+    .type TileLayer_RefreshCacheRow, @function
+TileLayer_RefreshCacheRow: ; 0x0202a1cc
     stmdb sp!, {r4, r5, r6, r7, r8, r9, r10, r11, lr}
     sub sp, sp, #0x14
     mov r10, r0
@@ -49,7 +49,7 @@ func_0202a1cc: ; 0x0202a1cc
     mov r3, r6
     mov r1, ip, lsr #0x1b
     mov r2, r2, lsr #0x1c
-    bl func_0202a62c
+    bl TileLayer_WriteMetatileToCache
     ldrb r1, [r7, #0x0]
     add r5, r5, #0x1
     cmp r5, #0x20
@@ -66,5 +66,5 @@ func_0202a1cc: ; 0x0202a1cc
     add sp, sp, #0x14
     ldmia sp!, {r4, r5, r6, r7, r8, r9, r10, r11, pc}
 .L_0202a2ac: .word 0x1ff
-    .size func_0202a1cc, . - func_0202a1cc
+    .size TileLayer_RefreshCacheRow, . - TileLayer_RefreshCacheRow
 

@@ -1,20 +1,20 @@
 ; Matching retail form; see src/game/tile_layer_scroll_and_access.c.
 .text
-.extern data_020de98c
+.extern gTileLayerArrayAllocationTag
 .extern func_02003e20
-.extern func_02029e64
+.extern OwnedTileBuffer_Clear
 .extern gHeapContext
 
-    .global func_0202a74c
-    .type func_0202a74c, @function
-func_0202a74c: ; 0x0202a74c
+    .global OwnedTileBuffer_Resize
+    .type OwnedTileBuffer_Resize, @function
+OwnedTileBuffer_Resize: ; 0x0202a74c
     stmdb sp!, {r3, r4, r5, lr}
     mov r5, r0
     ldr r2, [r5, #0x0]
     mov r4, r1
     cmp r2, #0x0
     beq .L_0202a768
-    bl func_02029e64
+    bl OwnedTileBuffer_Clear
 .L_0202a768:
     ldr r1, .L_0202a784
     ldr r3, .L_0202a788
@@ -23,7 +23,7 @@ func_0202a74c: ; 0x0202a74c
     bl func_02003e20
     stmia r5, {r0, r4}
     ldmia sp!, {r3, r4, r5, pc}
-.L_0202a784: .word data_020de98c
+.L_0202a784: .word gTileLayerArrayAllocationTag
 .L_0202a788: .word gHeapContext
-    .size func_0202a74c, . - func_0202a74c
+    .size OwnedTileBuffer_Resize, . - OwnedTileBuffer_Resize
 

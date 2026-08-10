@@ -1,14 +1,14 @@
 ; Matching retail form; see src/game/bg2_extended_tile_layer.c.
 .text
 .extern data_020deadc
-.extern func_02029e90
+.extern TileLayerState_Init
 
     .global func_0202aeac
     .type func_0202aeac, @function
 func_0202aeac: ; 0x0202aeac
     stmdb sp!, {r4, lr}
     mov r4, r0
-    bl func_02029e90
+    bl TileLayerState_Init
     ldr r1, .L_0202aed8
     mov r0, r4
     str r1, [r4, #0x0]

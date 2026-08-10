@@ -2,9 +2,9 @@
 .text
 
 
-    .global func_0202a6d0
-    .type func_0202a6d0, @function
-func_0202a6d0: ; 0x0202a6d0
+    .global TileLayer_SetSourceCellUpperBits
+    .type TileLayer_SetSourceCellUpperBits, @function
+TileLayer_SetSourceCellUpperBits: ; 0x0202a6d0
     stmdb sp!, {r3, lr}
     add r0, r0, #0x1000
     ldrh ip, [r0, #0x2c]
@@ -19,5 +19,5 @@ func_0202a6d0: ; 0x0202a6d0
     strh r0, [lr, r2]
     ldmia sp!, {r3, pc}
 .L_0202a704: .word 0x1ff
-    .size func_0202a6d0, . - func_0202a6d0
+    .size TileLayer_SetSourceCellUpperBits, . - TileLayer_SetSourceCellUpperBits
 

@@ -10,8 +10,8 @@
 .extern NclFile_LoadCompressedFromFile
 .extern DualLayerTileRenderer_UploadGraphics
 .extern DualLayerTileRenderer_UploadPalette
-.extern func_0202a7fc
-.extern func_0202a884
+.extern TileLayer_InitSourceMap
+.extern TileLayer_SetScrollPositionDirect
 .extern func_0202a8b4
 .extern func_0202abb0
 .extern func_0202aeac
@@ -130,11 +130,11 @@ DualLayerTileRenderer_LoadFromConfig: ; 0x02029370
     ldr r0, [r6, #0x28]
     ldr r2, [r5, #0x18]
     ldr r3, [r5, #0x1c]
-    bl func_0202a7fc
+    bl TileLayer_InitSourceMap
     mov r1, #0x0
     ldr r0, [r6, #0x28]
     mov r2, r1
-    bl func_0202a884
+    bl TileLayer_SetScrollPositionDirect
     mov r0, #0x0
     str r0, [r6, #0x34]
     str r0, [r6, #0x3c]
@@ -198,11 +198,11 @@ DualLayerTileRenderer_LoadFromConfig: ; 0x02029370
     ldr r0, [r6, #0x2c]
     ldr r2, [r5, #0x20]
     ldr r3, [r5, #0x24]
-    bl func_0202a7fc
+    bl TileLayer_InitSourceMap
     mov r1, #0x0
     ldr r0, [r6, #0x2c]
     mov r2, r1
-    bl func_0202a884
+    bl TileLayer_SetScrollPositionDirect
     mov r0, #0x0
     str r0, [r6, #0x38]
     str r0, [r6, #0x40]

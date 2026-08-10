@@ -2,7 +2,7 @@
 .text
 .extern VecFx32Object_Destroy
 .extern VecFx32_Subtract
-.extern func_0202a2b0
+.extern TileLayer_ScrollToPixelPosition
 .extern func_0202b930
 .extern func_0202badc
 .extern func_020b17ec
@@ -29,14 +29,14 @@ DualLayerTileRenderer_UpdatePosition: ; 0x02029784
     beq .L_020297d0
     mov r1, r5
     mov r2, r6
-    bl func_0202a2b0
+    bl TileLayer_ScrollToPixelPosition
 .L_020297d0:
     ldr r0, [r4, #0x2c]
     cmp r0, #0x0
     beq .L_020297e8
     mov r1, r5
     mov r2, r6
-    bl func_0202a2b0
+    bl TileLayer_ScrollToPixelPosition
 .L_020297e8:
     add r0, r4, #0x1000
     ldr r0, [r0, #0x878]
