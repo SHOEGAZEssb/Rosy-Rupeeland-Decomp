@@ -2,7 +2,7 @@
 .text
 .extern func_0200e61c
 .extern func_0201155c
-.extern func_0202d094
+.extern ActorCollection_Deinit
 
     .global func_0200e5bc
 func_0200e5bc: ; 0x0200e5bc
@@ -18,7 +18,7 @@ func_0200e5bc: ; 0x0200e5bc
     mov r0, r4
     bl func_0200e61c
     add r0, r4, #0x4
-    bl func_0202d094
+    bl ActorCollection_Deinit
     add r0, r4, #0x2000
     ldr r0, [r0, #0xeb0]
     cmp r0, #0x0

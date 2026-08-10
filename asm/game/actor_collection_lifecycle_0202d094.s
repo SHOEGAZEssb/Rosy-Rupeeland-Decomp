@@ -6,9 +6,9 @@
 .extern data_020f4e14
 .extern gDebugFont
 
-    .global func_0202d094
-    .type func_0202d094, @function
-func_0202d094: ; 0x0202d094
+    .global ActorCollection_Deinit
+    .type ActorCollection_Deinit, @function
+ActorCollection_Deinit: ; 0x0202d094
     stmdb sp!, {r4, lr}
     mov r4, r0
     bl ActorCollection_UnregisterAndDestroyAllActors
@@ -43,4 +43,4 @@ func_0202d094: ; 0x0202d094
     ldmia sp!, {r4, pc}
 .L_0202d108: .word data_020f4e14
 .L_0202d10c: .word gDebugFont
-    .size func_0202d094, . - func_0202d094
+    .size ActorCollection_Deinit, . - ActorCollection_Deinit

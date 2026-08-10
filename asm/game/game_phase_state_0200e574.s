@@ -5,7 +5,7 @@
 .extern func_0200fb34
 .extern func_0201155c
 .extern func_0201dc98
-.extern func_0202d06c
+.extern ActorCollection_Destructor
 
     .global func_0200e574
 func_0200e574: ; 0x0200e574
@@ -24,7 +24,7 @@ func_0200e574: ; 0x0200e574
     add r0, r0, #0x2c00
     bl func_02006280
     add r0, r4, #0x4
-    bl func_0202d06c
+    bl ActorCollection_Destructor
     mov r0, r4
     ldmia sp!, {r4, pc}
     .size func_0200e574, . - func_0200e574

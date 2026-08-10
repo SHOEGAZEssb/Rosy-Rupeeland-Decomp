@@ -17,9 +17,9 @@ extern void func_0201dbc8(void *object);
 extern void func_0201dc98(void *object);
 extern void func_0201df64(void *object);
 extern void func_0201e0ec(void *object);
-extern void func_0202cf2c(void *object);
-extern void func_0202d06c(void *object);
-extern void func_0202d094(void *object);
+extern void ActorCollection_Init(void *object);
+extern void ActorCollection_Destructor(void *object);
+extern void ActorCollection_Deinit(void *object);
 extern void ActorCollection_UnregisterAndDestroyAllActors(void *object);
 extern void func_0203abb0(void);
 extern void func_020a2324(void);
@@ -44,7 +44,7 @@ typedef struct PhaseOwned {
 GamePhaseState *func_0200e4dc(GamePhaseState *self)
 {
     self->configuration = 0;
-    func_0202cf2c(self->storage_0004);
+    ActorCollection_Init(self->storage_0004);
     func_02006268(self->helper_2ea4);
     self->owned_2eb0 = 0;
     func_0200fa40(self->helper_2eb4);
@@ -65,7 +65,7 @@ GamePhaseState *func_0200e574(GamePhaseState *self)
     func_0201dc98(self->helper_2f58);
     func_0200fb34(self->helper_2eb4);
     func_02006280(self->helper_2ea4);
-    func_0202d06c(self->storage_0004);
+    ActorCollection_Destructor(self->storage_0004);
     return self;
 }
 
@@ -80,7 +80,7 @@ void func_0200e5bc(GamePhaseState *self)
     helper->vtable->destroy(helper);
     func_0201155c(self->helper_2f80);
     func_0200e61c(self);
-    func_0202d094(self->storage_0004);
+    ActorCollection_Deinit(self->storage_0004);
     if (self->owned_2eb0 != 0)
         ((PhaseOwned *)self->owned_2eb0)->vtable->destroyAndFree(
             self->owned_2eb0);

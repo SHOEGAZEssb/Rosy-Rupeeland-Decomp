@@ -11,9 +11,9 @@
 .extern func_0201dc98
 .extern func_0201df64
 .extern func_0201e0ec
-.extern func_0202cf2c
-.extern func_0202d06c
-.extern func_0202d094
+.extern ActorCollection_Init
+.extern ActorCollection_Destructor
+.extern ActorCollection_Deinit
 .extern ActorCollection_UnregisterAndDestroyAllActors
 .extern func_0203abb0
 .extern func_020a2324
@@ -25,7 +25,7 @@ func_0200e4dc: ; 0x0200e4dc
     mov r1, #0x0
     add r0, r4, #0x4
     str r1, [r4, #0x0]
-    bl func_0202cf2c
+    bl ActorCollection_Init
     add r0, r4, #0x2a4
     add r0, r0, #0x2c00
     bl func_02006268
@@ -77,7 +77,7 @@ func_0200e574: ; 0x0200e574
     add r0, r0, #0x2c00
     bl func_02006280
     add r0, r4, #0x4
-    bl func_0202d06c
+    bl ActorCollection_Destructor
     mov r0, r4
     ldmia sp!, {r4, pc}
     .size func_0200e574, . - func_0200e574
@@ -96,7 +96,7 @@ func_0200e5bc: ; 0x0200e5bc
     mov r0, r4
     bl func_0200e61c
     add r0, r4, #0x4
-    bl func_0202d094
+    bl ActorCollection_Deinit
     add r0, r4, #0x2000
     ldr r0, [r0, #0xeb0]
     cmp r0, #0x0

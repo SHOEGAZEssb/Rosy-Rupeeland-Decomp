@@ -5,7 +5,7 @@
 .extern func_02005058
 .extern func_02006280
 .extern func_0201e1b0
-.extern func_0202d06c
+.extern ActorCollection_Destructor
 .extern ActorCollection_UnregisterAndDestroyAllActors
 
     .global func_02011f24
@@ -35,7 +35,7 @@ L_02011f6c:
     add r0, r0, #0x2000
     bl func_02006280
     add r0, r4, #0x8
-    bl func_0202d06c
+    bl ActorCollection_Destructor
     mov r0, r4
     ldmia sp!, {r4, pc}
 L_02011f90: .word data_020d5680

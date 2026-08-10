@@ -10,12 +10,12 @@ extern "C" {
 extern const void *data_020d5680;
 extern const char data_020d5688[];
 extern void *data_021052fc;
-extern void func_0202cf2c(void *renderer);
-extern void func_0202d014(void *renderer, s32 value);
+extern void ActorCollection_Init(void *renderer);
+extern void ActorCollection_SetSpriteMode(void *renderer, s32 value);
 extern void func_02030b18(void *renderer, s32 value);
 extern void *ActorCollection_FindActorByTypeAndId(void *renderer, s32 first, s32 second);
 extern void ActorCollection_UnregisterAndDestroyAllActors(void *renderer);
-extern void func_0202d06c(void *renderer);
+extern void ActorCollection_Destructor(void *renderer);
 extern void func_02006268(void *state);
 extern void func_02006280(void *state);
 extern void func_020062a0(void *state, u32 value);
@@ -70,7 +70,7 @@ GamePhaseAreaScene *func_02011a5c(GamePhaseAreaScene *self,
     u32 mode;
     self->vtable = data_020d5680;
     self->subRenderer_04 = 0;
-    func_0202cf2c(self->renderer_08);
+    ActorCollection_Init(self->renderer_08);
     self->rendererFlags_2ea8 =
         (self->rendererFlags_2ea8 & ~0x1f) | 0x3f;
     self->config_2eac = config;
@@ -142,7 +142,7 @@ rendererConfigured:
  */
 void func_02011ebc(GamePhaseAreaScene *self)
 {
-    func_0202d014(self->renderer_08, 2);
+    ActorCollection_SetSpriteMode(self->renderer_08, 2);
     func_02030b18(self->renderer_08, 0x1000);
     func_020062a0(self->state_2eb0, self->config_2eac->field20);
     self->config_2eac->callback28(0);
@@ -164,6 +164,6 @@ GamePhaseAreaScene *func_02011f24(GamePhaseAreaScene *self)
             self->subRenderer_04);
     func_02005058(&self->position_2ec0);
     func_02006280(self->state_2eb0);
-    func_0202d06c(self->renderer_08);
+    ActorCollection_Destructor(self->renderer_08);
     return self;
 }

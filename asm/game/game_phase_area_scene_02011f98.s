@@ -6,7 +6,7 @@
 .extern func_02005058
 .extern func_02006280
 .extern func_0201e1b0
-.extern func_0202d06c
+.extern ActorCollection_Destructor
 .extern ActorCollection_UnregisterAndDestroyAllActors
 
     .global func_02011f98
@@ -36,7 +36,7 @@ L_02011fe0:
     add r0, r0, #0x2000
     bl func_02006280
     add r0, r4, #0x8
-    bl func_0202d06c
+    bl ActorCollection_Destructor
     mov r0, r4
     bl Heap_Free
     mov r0, r4

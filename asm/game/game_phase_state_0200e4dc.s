@@ -4,7 +4,7 @@
 .extern func_0200fa40
 .extern func_02011470
 .extern func_0201dbc8
-.extern func_0202cf2c
+.extern ActorCollection_Init
 
     .global func_0200e4dc
 func_0200e4dc: ; 0x0200e4dc
@@ -13,7 +13,7 @@ func_0200e4dc: ; 0x0200e4dc
     mov r1, #0x0
     add r0, r4, #0x4
     str r1, [r4, #0x0]
-    bl func_0202cf2c
+    bl ActorCollection_Init
     add r0, r4, #0x2a4
     add r0, r0, #0x2c00
     bl func_02006268

@@ -16,7 +16,7 @@
 .extern func_0202c0b8
 .extern func_0202c4f4
 .extern func_0202c8a8
-.extern func_0202cf2c
+.extern ActorCollection_Init
 .extern func_020aea7c
 .extern gGameWork
 .extern gHeapContext
@@ -32,7 +32,7 @@ func_02011a5c: ; 0x02011a5c
     mov r5, r1
     mov r4, r2
     str r3, [r6, #0x4]
-    bl func_0202cf2c
+    bl ActorCollection_Init
     add r1, r6, #0x2000
     ldr r2, [r1, #0xea8]
     add r0, r6, #0xeb0

@@ -1,11 +1,11 @@
 ; Matching retail form; see src/game/actor_collection_lifecycle.c.
 .text
 .extern func_02006268
-.extern func_0202cf10
+.extern ActorPairMatrix_ClearAll
 
-    .global func_0202cf2c
-    .type func_0202cf2c, @function
-func_0202cf2c: ; 0x0202cf2c
+    .global ActorCollection_Init
+    .type ActorCollection_Init, @function
+ActorCollection_Init: ; 0x0202cf2c
     stmdb sp!, {r4, lr}
     mov r4, r0
     add r0, r4, #0x204
@@ -17,7 +17,7 @@ func_0202cf2c: ; 0x0202cf2c
     bl func_02006268
     add r0, r4, #0x234
     add r0, r0, #0xc00
-    bl func_0202cf10
+    bl ActorPairMatrix_ClearAll
     mov r3, #0x0
     add r0, r4, #0x2000
     ldr r1, [r0, #0xe78]
@@ -68,4 +68,4 @@ func_0202cf2c: ; 0x0202cf2c
     blt .L_0202cff4
     mov r0, r4
     ldmia sp!, {r4, pc}
-    .size func_0202cf2c, . - func_0202cf2c
+    .size ActorCollection_Init, . - ActorCollection_Init

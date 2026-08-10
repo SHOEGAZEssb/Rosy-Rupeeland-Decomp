@@ -5,7 +5,7 @@
 .extern GX_SetGraphicsMode
 .extern func_0200e780
 .extern func_0201e0ec
-.extern func_0202d014
+.extern ActorCollection_SetSpriteMode
 .extern func_0202d68c
 .extern func_020a2348
 .extern func_020a23a8
@@ -56,7 +56,7 @@ L_0200e6a4:
 L_0200e6ec:
     add r0, r4, #0x4
     mov r1, #0x1
-    bl func_0202d014
+    bl ActorCollection_SetSpriteMode
     add r0, r4, #0x4
     mov r1, #0x0
     bl func_0202d68c

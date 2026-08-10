@@ -4,9 +4,9 @@
 .extern data_020f4e14
 .extern gDebugFont
 
-    .global func_0202d014
-    .type func_0202d014, @function
-func_0202d014: ; 0x0202d014
+    .global ActorCollection_SetSpriteMode
+    .type ActorCollection_SetSpriteMode, @function
+ActorCollection_SetSpriteMode: ; 0x0202d014
     stmdb sp!, {r3, r4, r5, lr}
     mov r4, r1
     mov r5, r0
@@ -32,4 +32,4 @@ func_0202d014: ; 0x0202d014
     ldmia sp!, {r3, r4, r5, pc}
 .L_0202d064: .word data_020f4e14
 .L_0202d068: .word gDebugFont
-    .size func_0202d014, . - func_0202d014
+    .size ActorCollection_SetSpriteMode, . - ActorCollection_SetSpriteMode

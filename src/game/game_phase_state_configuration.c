@@ -14,7 +14,7 @@ extern void *func_0202751c(void *object, void *phaseObject);
 extern void *func_020275b0(void);
 extern void func_02027f2c(void);
 extern void *func_02027f94(void);
-extern void func_0202d014(void *object, s32 value);
+extern void ActorCollection_SetSpriteMode(void *object, s32 value);
 extern void func_0202d68c(void *object, s32 value);
 extern void func_02038e50(void *object, s32 enabled);
 extern void func_0203ab6c(void);
@@ -70,7 +70,7 @@ void func_0200e650(GamePhaseState *self, const void *configuration)
         *(volatile u32 *)0x04000000 =
             (*(volatile u32 *)0x04000000 & ~0x1f00) | 0x1000;
     }
-    func_0202d014(self->storage_0004, 1);
+    ActorCollection_SetSpriteMode(self->storage_0004, 1);
     func_0202d68c(self->storage_0004, 0);
     func_0200e780(self, configuration);
 }

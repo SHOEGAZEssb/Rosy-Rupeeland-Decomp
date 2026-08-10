@@ -41,13 +41,13 @@ extern void func_020062f8(void *owner);
 extern void *func_020742cc(void *pool);
 extern void func_02074330(void *pool, void *sprite);
 extern void ActorCollection_UnregisterAndDestroyAllActors(ActorCollection *self);
-extern void func_0202d094(ActorCollection *self);
+extern void ActorCollection_Deinit(ActorCollection *self);
 #ifdef __cplusplus
 }
 #endif
 
 /* Clear exactly 0x2040 relationship bytes and return no value. */
-void func_0202cf10(u8 *matrix)
+void ActorPairMatrix_ClearAll(u8 *matrix)
 {
     s32 i;
     for (i = 0; i < 0x2040; i++)
@@ -62,7 +62,7 @@ void func_0202cf10(u8 *matrix)
  * trailing indices to -1, and return self. Embedded owner calls may establish
  * allocation or SDK state not yet semantically identified.
  */
-ActorCollection *func_0202cf2c(ActorCollection *self)
+ActorCollection *ActorCollection_Init(ActorCollection *self)
 {
     s32 i;
     s32 j;
@@ -70,7 +70,7 @@ ActorCollection *func_0202cf2c(ActorCollection *self)
     self->sprite_0e00 = 0;
     func_02006268(&self->owner_0e04);
     func_02006268(&self->owner_0e10);
-    func_0202cf10(self->relationshipMatrix_0e34);
+    ActorPairMatrix_ClearAll(self->relationshipMatrix_0e34);
     self->flags_2e78 |= 2;
     self->spriteMode_2e84 = 0;
     self->field_2e88 = 0x1000;
@@ -97,7 +97,7 @@ ActorCollection *func_0202cf2c(ActorCollection *self)
  * mode two acquires from gDebugFont, and other modes acquire nothing. Record
  * the requested mode regardless of whether a sprite was acquired.
  */
-void func_0202d014(ActorCollection *self, s32 mode)
+void ActorCollection_SetSpriteMode(ActorCollection *self, s32 mode)
 {
     if (mode == 1)
         self->sprite_0e00 = func_020742cc(data_020f4e14);
@@ -107,9 +107,9 @@ void func_0202d014(ActorCollection *self, s32 mode)
 }
 
 /* Fully clean the collection and both embedded owners, then return self. */
-ActorCollection *func_0202d06c(ActorCollection *self)
+ActorCollection *ActorCollection_Destructor(ActorCollection *self)
 {
-    func_0202d094(self);
+    ActorCollection_Deinit(self);
     func_02006280(&self->owner_0e10);
     func_02006280(&self->owner_0e04);
     return self;
@@ -120,7 +120,7 @@ ActorCollection *func_0202d06c(ActorCollection *self)
  * by spriteMode_2e84, clear its pointer, and finalize both embedded owners.
  * Modes other than one and two do not release sprite_0e00.
  */
-void func_0202d094(ActorCollection *self)
+void ActorCollection_Deinit(ActorCollection *self)
 {
     ActorCollection_UnregisterAndDestroyAllActors(self);
     if (self->spriteMode_2e84 == 1) {
