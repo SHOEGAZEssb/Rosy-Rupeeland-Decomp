@@ -15,7 +15,7 @@
  */
 SoftwareCanvas *SoftwareCanvas_Init(SoftwareCanvas *self)
 {
-    self->vtable = &data_020d4190;
+    self->vtable = &gSoftwareCanvasVTable;
     self->field_04 = 0;
     self->pixels = 0;
     self->stride = 0;
@@ -30,7 +30,7 @@ SoftwareCanvas *SoftwareCanvas_Init(SoftwareCanvas *self)
 SoftwareCanvas *SoftwareCanvas_InitWithBuffer(SoftwareCanvas *self, s32 field04,
                               u16 *pixels, s32 stride, s32 field10)
 {
-    self->vtable = &data_020d4190;
+    self->vtable = &gSoftwareCanvasVTable;
     self->field_04 = field04;
     self->pixels = pixels;
     self->stride = stride;
@@ -60,7 +60,7 @@ SoftwareCanvas *SoftwareCanvas_DestroyAndFree(SoftwareCanvas *self)
 /* Matching forms implement the documented portable C above. */
 asm SoftwareCanvas *SoftwareCanvas_Init(SoftwareCanvas *)
 {
-    ldr r2, =data_020d4190
+    ldr r2, =gSoftwareCanvasVTable
     mov r1, #0
     str r2, [r0]
     str r1, [r0, #4]
@@ -73,7 +73,7 @@ asm SoftwareCanvas *SoftwareCanvas_Init(SoftwareCanvas *)
 asm SoftwareCanvas *SoftwareCanvas_InitWithBuffer(SoftwareCanvas *, s32, u16 *, s32, s32)
 {
     stmdb sp!, {r3, lr}
-    ldr lr, =data_020d4190
+    ldr lr, =gSoftwareCanvasVTable
     ldr ip, [sp, #8]
     str lr, [r0]
     stmib r0, {r1, r2, r3, ip}

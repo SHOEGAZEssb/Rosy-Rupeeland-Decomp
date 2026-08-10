@@ -6720,7 +6720,7 @@ data_020d4150 kind:data(any) addr:0x020d4150
 gUtilAnimationResourceVTable kind:data(any) addr:0x020d4168
 gAnimationResourceVTable kind:data(any) addr:0x020d4178
 data_020d4180 kind:data(any) addr:0x020d4180
-data_020d4190 kind:data(any) addr:0x020d4190
+gSoftwareCanvasVTable kind:data(any) addr:0x020d4190
 data_020d4198 kind:data(any) addr:0x020d4198
 data_020d41b4 kind:data(any) addr:0x020d41b4
 data_020d41c0 kind:data(any) addr:0x020d41c0

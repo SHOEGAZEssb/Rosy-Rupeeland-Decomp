@@ -5,7 +5,7 @@
  * points to the non-deleting and deleting destruction paths respectively.
  */
 
-SoftwareCanvasVTable data_020d4190 = {
+SoftwareCanvasVTable gSoftwareCanvasVTable = {
     SoftwareCanvas_Destroy,
     SoftwareCanvas_DestroyAndFree,
 };

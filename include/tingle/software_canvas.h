@@ -25,7 +25,7 @@ typedef char SoftwareCanvasSizeCheck[
 extern "C" {
 #endif
 
-extern SoftwareCanvasVTable data_020d4190;
+extern SoftwareCanvasVTable gSoftwareCanvasVTable;
 
 SoftwareCanvas *SoftwareCanvas_Init(SoftwareCanvas *self);
 SoftwareCanvas *SoftwareCanvas_InitWithBuffer(SoftwareCanvas *self, s32 field04,
