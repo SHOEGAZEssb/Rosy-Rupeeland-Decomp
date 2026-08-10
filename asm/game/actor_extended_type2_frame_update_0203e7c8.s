@@ -16,7 +16,7 @@
 .extern func_02007f0c
 .extern func_02032228
 .extern func_02032370
-.extern func_0203292c
+.extern Actor_UpdateAnimationState
 .extern func_02033ed0
 .extern func_020349b8
 .extern func_02035518
@@ -451,7 +451,7 @@ func_0203e7c8: ; 0x0203e7c8
     ldr r1, [r1, #0xa4]
     blx r1
     mov r0, r6
-    bl func_0203292c
+    bl Actor_UpdateAnimationState
     ldr r0, [r6, #0x260]
     tst r0, #0x40
     bne .L_0203ef14
@@ -569,4 +569,3 @@ func_0203e7c8: ; 0x0203e7c8
 .L_0203ef58: .word data_020c9670
 .L_0203ef5c: .word data_020dfa48
     .size func_0203e7c8, . - func_0203e7c8
-

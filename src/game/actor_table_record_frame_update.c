@@ -13,7 +13,7 @@ extern s32 func_02005070(void *vector);
 extern s32 func_020343e4(void *actor, s32 x, s32 y);
 extern void func_0203a0f0(void *actor, u32 resource, u16 value);
 extern void func_02032228(void *actor, s32 x, s32 y, s32 scale);
-extern void func_0203292c(void *actor);
+extern void Actor_UpdateAnimationState(void *actor);
 #ifdef __cplusplus
 }
 #endif
@@ -44,7 +44,7 @@ static s32 squareFxRound(s32 value)
  * bit, divide motion +0x3c/+0x40 by three and zero both when their rounded
  * fixed-point squared sum is below 410. For +0x20c bit 0x2000, store vector
  * +0x88 length divided by 16 into attachment +0x54 halfword +0x36 and invoke
- * func_02032228(actor,+0x8c,+0x90,0x800). Finish through func_0203292c and
+ * func_02032228(actor,+0x8c,+0x90,0x800). Finish through Actor_UpdateAnimationState and
  * virtual +0x20. Returns no value; map, presentation, vector, and virtual calls
  * have observable actor/engine effects.
  */
@@ -113,6 +113,6 @@ void func_0203cf8c(void *self)
         func_02032228(actor, *(s32 *)(actor + 0x8c),
                       *(s32 *)(actor + 0x90), 0x800);
     }
-    func_0203292c(actor);
+    Actor_UpdateAnimationState(actor);
     (*(void (**)(void *))(*(u8 **)actor + 0x20))(actor);
 }

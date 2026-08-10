@@ -1,5 +1,5 @@
 ; Matching retail form; see src/game/tracked_resource_actor_oriented_update.c.
-.extern func_0203292c
+.extern Actor_UpdateAnimationState
 .text
     .global func_020523c8
 func_020523c8:
@@ -37,7 +37,7 @@ func_020523c8:
     ldr r1, [r1, #0xa4]
     blx r1
     mov r0, r4
-    bl func_0203292c
+    bl Actor_UpdateAnimationState
     mov r0, r4
     ldr r1, [r0, #0x0]
     ldr r1, [r1, #0x20]

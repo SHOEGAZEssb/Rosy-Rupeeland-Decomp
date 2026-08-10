@@ -33,7 +33,7 @@ extern void func_02032228(void *actor, s32 x, s32 y, s32 scale);
 extern s32 func_02033f44(void *actor);
 extern s32 func_020be328(s32 value);
 extern void func_0203bba4(void *actor);
-extern void func_0203292c(void *actor);
+extern void Actor_UpdateAnimationState(void *actor);
 extern void func_0204b1e0(void *actor);
 #ifdef __cplusplus
 }
@@ -77,7 +77,7 @@ static s32 callback_pair_matches(const u8 *actor, const void *first,
  * target +0x210 transform +0x18, +0x224, or current +0x3c/+0x40. Positive
  * +0x246 cancels velocity, decrements, and enters state 15. Target angular
  * separation controls +0x268 bit 0x800000; bit 0x80000 invokes func_0203bba4
- * and vtable +0xa4. Finish func_0203292c/func_0204b1e0, update signed timer
+ * and vtable +0xa4. Finish Actor_UpdateAnimationState/func_0204b1e0, update signed timer
  * +0x250 with target/callback/motion-dependent penalties and clamping, tick
  * +0x256/+0x25a, move +0x264 toward zero (clearing +0x250), decrement +0x24e
  * and start +0x264 at 90 on expiry, reduce +0x266 by 20 toward zero, decrement
@@ -246,7 +246,7 @@ void func_02045a60(void *self)
         func_0203bba4(actor);
         (*(void (**)(void *))(*(u8 **)actor + 0xa4))(actor);
     }
-    func_0203292c(actor);
+    Actor_UpdateAnimationState(actor);
     func_0204b1e0(actor);
 
     if (*(s16 *)(actor + 0x250) > 0) {

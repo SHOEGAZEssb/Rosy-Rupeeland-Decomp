@@ -5,7 +5,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_0203292c(void *actor);
+extern void Actor_UpdateAnimationState(void *actor);
 extern s32 func_02033f44(void *actor);
 extern s32 func_020adae4(s32 value, s32 divisor);
 #ifdef __cplusplus
@@ -28,7 +28,7 @@ static VirtualFunction virtual_function(void *actor, u32 offset)
  * invoke slot 0xC4; otherwise reaching 0x1DC enters state 1 and divides fields
  * 0x8C/0x90 by the recovered factor 4. A nonzero nibble invokes slot 0xC8.
  * State 1 zeroes fields 0x3C/0x40 once field 0x24 reaches 0x1DC; state 2 calls
- * slot 0x54 with zero. Finally runs slots 0xD4/0xA4, func_0203292c, and slot
+ * slot 0x54 with zero. Finally runs slots 0xD4/0xA4, Actor_UpdateAnimationState, and slot
  * 0x20. Returns nothing; callbacks mutate engine state without direct hardware
  * access. State and motion field meanings remain partly inferred.
  */
@@ -82,6 +82,6 @@ void func_0205199c(void *actor)
     }
     virtual_function(actor, 0xd4)(actor);
     virtual_function(actor, 0xa4)(actor);
-    func_0203292c(actor);
+    Actor_UpdateAnimationState(actor);
     virtual_function(actor, 0x20)(actor);
 }

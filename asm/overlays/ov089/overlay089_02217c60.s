@@ -15,7 +15,7 @@
 .extern func_0201f864
 .extern Actor_GetCollisionBounds
 .extern func_020316e8
-.extern func_0203292c
+.extern Actor_UpdateAnimationState
 .extern func_0203b798
 .extern func_02072b68
 .extern func_020adc40
@@ -697,7 +697,7 @@ func_ov089_02217c60:
     bl func_02005058
 .L_02218660:
     mov r0, r10
-    bl func_0203292c
+    bl Actor_UpdateAnimationState
     mov r0, r10
     ldr r1, [r0, #0x0]
     ldr r1, [r1, #0x20]

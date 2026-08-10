@@ -13,7 +13,7 @@
 .extern func_02026588
 .extern func_02032228
 .extern func_02032370
-.extern func_0203292c
+.extern Actor_UpdateAnimationState
 .extern func_02033f44
 .extern func_0203b798
 .extern func_0203bba4
@@ -397,7 +397,7 @@ func_02045a60: ; 0x02045a60
     blx r1
 .L_02045fbc:
     mov r0, r4
-    bl func_0203292c
+    bl Actor_UpdateAnimationState
     mov r0, r4
     bl func_0204b1e0
     add r0, r4, #0x200

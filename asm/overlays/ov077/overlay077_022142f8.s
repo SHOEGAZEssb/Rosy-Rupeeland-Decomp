@@ -11,7 +11,7 @@
 .extern func_02004fe0
 .extern func_02005058
 .extern func_020050a4
-.extern func_0203292c
+.extern Actor_UpdateAnimationState
 .extern func_02072b68
 .extern func_020befec
 .extern func_ov077_022130b8
@@ -66,7 +66,7 @@ func_ov077_022142f8:
     strb r1, [r7, #0xd5]
     mov r0, r7
     strb r1, [r7, #0xd4]
-    bl func_0203292c
+    bl Actor_UpdateAnimationState
     ldr r0, .L_02214c48
     mov r6, #0x1
     ldr r2, [r7, #0x218]

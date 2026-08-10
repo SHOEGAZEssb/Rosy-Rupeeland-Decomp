@@ -39,7 +39,7 @@ extern s32 func_02005070(void *state);
 extern void func_0200b2c0(void *state, s32 first, s32 second, s32 third);
 extern s32 func_020adc90(s32 numerator, s32 denominator);
 extern void func_020328d0(void *state, s32 scale);
-extern void func_0203292c(void *actor);
+extern void Actor_UpdateAnimationState(void *actor);
 extern void func_0204ced8(void *state, s32 mode);
 extern void func_02031720(void *actor);
 #ifdef __cplusplus
@@ -202,7 +202,7 @@ void func_02035538(void *self)
             func_020328d0(actor + 0x88, func_020adc90(0x8000, magnitude));
         }
     }
-    func_0203292c(actor);
+    Actor_UpdateAnimationState(actor);
 
     object = *(void **)(actor + 0x270);
     if (object != 0) {

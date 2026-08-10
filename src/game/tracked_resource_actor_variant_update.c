@@ -6,7 +6,7 @@
 extern "C" {
 #endif
 extern void func_0202d494(void *handle, void *actor);
-extern void func_0203292c(void *actor);
+extern void Actor_UpdateAnimationState(void *actor);
 extern void *func_020337d4(void *actor);
 extern s32 func_02033f44(void *actor);
 extern s32 func_020adae4(s32 value, s32 shift);
@@ -30,7 +30,7 @@ static VirtualFunction virtual_function(void *actor, u32 offset)
  * enters state 1 after shifting fields 0x3C/0x40 through func_020adae4. State 1
  * zeroes those fields after reaching 0x1DC, flashes presentation bit 4 for 30
  * ticks, notifies func_0202d494, and enters state 2. State 2 calls slot 0x54
- * with zero. Finally runs slots 0xD4/0xA4, func_0203292c, and slot 0x20. Returns
+ * with zero. Finally runs slots 0xD4/0xA4, Actor_UpdateAnimationState, and slot 0x20. Returns
  * nothing; engine callbacks may have SDK effects, with no direct hardware use.
  */
 void func_02050fa0(void *actor)
@@ -93,6 +93,6 @@ void func_02050fa0(void *actor)
 
     virtual_function(actor, 0xd4)(actor);
     virtual_function(actor, 0xa4)(actor);
-    func_0203292c(actor);
+    Actor_UpdateAnimationState(actor);
     virtual_function(actor, 0x20)(actor);
 }

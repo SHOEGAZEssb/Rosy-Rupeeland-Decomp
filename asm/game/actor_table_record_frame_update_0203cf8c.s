@@ -4,7 +4,7 @@
 .extern func_02005070
 .extern func_02032228
 .extern func_020328d0
-.extern func_0203292c
+.extern Actor_UpdateAnimationState
 .extern func_02034164
 .extern func_020343e4
 .extern func_0203a0f0
@@ -190,7 +190,7 @@ func_0203cf8c: ; 0x0203cf8c
     bl func_02032228
 .L_0203d238:
     mov r0, r4
-    bl func_0203292c
+    bl Actor_UpdateAnimationState
     mov r0, r4
     ldr r1, [r0, #0x0]
     ldr r1, [r1, #0x20]
@@ -202,4 +202,3 @@ func_0203cf8c: ; 0x0203cf8c
 .L_0203d25c: .word data_021052fc
 
     .size func_0203cf8c, . - func_0203cf8c
-

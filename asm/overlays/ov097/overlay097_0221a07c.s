@@ -1,6 +1,6 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov097/overlay097_recovery.c.
-.extern func_0203292c
+.extern Actor_UpdateAnimationState
 .extern func_02033f44
 .extern func_02034a60
 
@@ -37,7 +37,7 @@ func_ov097_0221a07c:
     ldr r1, [r1, #0xa4]
     blx r1
     mov r0, r4
-    bl func_0203292c
+    bl Actor_UpdateAnimationState
     mov r0, #0x10000
     ldr r1, [r4, #0x5c]
     rsb r0, r0, #0x0

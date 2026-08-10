@@ -14058,7 +14058,7 @@ build build/reports/actor_animation_state_dispatch_0203292c.json: objdiff build/
   base_object = build/decomp/asm/game/actor_animation_state_dispatch_0203292c.o
 build build/reports/actor_animation_state_dispatch_0203292c.txt: match_report build/reports/actor_animation_state_dispatch_0203292c.json | tools/report_objdiff.py
   report_json = build/reports/actor_animation_state_dispatch_0203292c.json
-  report_args = --section .text --function func_0203292c --require-exact
+  report_args = --section .text --function Actor_UpdateAnimationState --require-exact
 build build/reports/actor_animation_state_dispatch_020329a8.json: objdiff build/decomp/delinks/asm/game/actor_animation_state_dispatch_020329a8.o | build/decomp/asm/game/actor_animation_state_dispatch_020329a8.o
   target_object = build/decomp/delinks/asm/game/actor_animation_state_dispatch_020329a8.o
   base_object = build/decomp/asm/game/actor_animation_state_dispatch_020329a8.o

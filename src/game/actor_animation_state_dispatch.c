@@ -20,7 +20,7 @@ void func_02032928(void)
  * nonzero, copy halfword 0xde to attachment-0x54 halfword 0x36. Returns no
  * value; virtual callbacks may update animation and presentation state.
  */
-void func_0203292c(void *self)
+void Actor_UpdateAnimationState(void *self)
 {
     u8 *actor = (u8 *)self;
     AnimationStateVTable *vtable = *(AnimationStateVTable **)actor;

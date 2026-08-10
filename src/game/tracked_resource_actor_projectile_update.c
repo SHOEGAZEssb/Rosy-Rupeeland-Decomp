@@ -6,7 +6,7 @@
 extern "C" {
 #endif
 extern void func_0202d494(void *handle, void *actor);
-extern void func_0203292c(void *actor);
+extern void Actor_UpdateAnimationState(void *actor);
 extern void *func_020337d4(void *actor);
 extern s32 func_02033f44(void *actor);
 #ifdef __cplusplus
@@ -30,7 +30,7 @@ static VirtualFunction virtual_function(void *actor, u32 offset)
  * after reaching 0x1DC, flashes presentation bit 4 for 30 ticks, notifies
  * func_0202d494, and enters state 2. State 2 calls virtual slot 0x54 with zero.
  * The high state bit is preserved. Finally runs slots 0xD4 and 0xA4,
- * func_0203292c, and slot 0x20. Returns nothing; engine callbacks may cross SDK
+ * Actor_UpdateAnimationState, and slot 0x20. Returns nothing; engine callbacks may cross SDK
  * boundaries, while this routine has no direct hardware access.
  */
 void func_02051440(void *actor)
@@ -85,6 +85,6 @@ void func_02051440(void *actor)
     }
     virtual_function(actor, 0xd4)(actor);
     virtual_function(actor, 0xa4)(actor);
-    func_0203292c(actor);
+    Actor_UpdateAnimationState(actor);
     virtual_function(actor, 0x20)(actor);
 }

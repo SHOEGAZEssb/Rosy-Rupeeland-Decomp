@@ -28,7 +28,7 @@ extern s32 func_020ae024(s32 y, s32 x);
 extern void func_0204cff4(s32 *x, s32 *y, s32 maximum);
 extern void func_02005058(void *vector);
 extern void func_0203bba4(void *actor);
-extern void func_0203292c(void *actor);
+extern void Actor_UpdateAnimationState(void *actor);
 extern void func_02035518(void *owner, s32 enabled);
 extern void func_0204cf28(void *owner);
 extern void func_0204ced8(void *owner, u32 animation);
@@ -64,7 +64,7 @@ static s32 multiplyFxRound(s32 first, s32 second)
  * countdown +0x268 computes displacement, applies descriptor-driven radial
  * impulse through the trigonometric table, clamps +0x8c/+0x90 to 0x6000, and
  * invokes virtual +0x13c on expiry. Finish with optional ground probing,
- * virtual +0xa4, func_0203292c, helper +0x284 animation synchronization, and
+ * virtual +0xa4, Actor_UpdateAnimationState, helper +0x284 animation synchronization, and
  * virtual +0x20. Returns no value; callbacks, actor/target motion, temporary
  * vector lifetime, attachment presentation, and global runtime state change.
  */
@@ -240,7 +240,7 @@ void func_0203e7c8(void *self)
     if ((*(u32 *)(actor + 0xd0) & 4) == 0)
         func_0203bba4(actor);
     (*(void (**)(void *))(*(u8 **)actor + 0xa4))(actor);
-    func_0203292c(actor);
+    Actor_UpdateAnimationState(actor);
 
     if ((*(u32 *)(actor + 0x260) & 0x40) == 0) {
         u8 mode = actor[0x24c];

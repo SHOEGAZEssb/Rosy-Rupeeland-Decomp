@@ -12,7 +12,7 @@
 .extern func_020050c8
 .extern func_020050f0
 .extern func_0201f864
-.extern func_0203292c
+.extern Actor_UpdateAnimationState
 .extern func_02033f44
 .extern func_02034a60
 .extern Actor_ReplaceAttachmentSlotResource
@@ -969,7 +969,7 @@ func_ov088_02218328:
     str r0, [r1, #0x14]
 .L_022190e8:
     mov r0, r4
-    bl func_0203292c
+    bl Actor_UpdateAnimationState
     mov r0, r4
     ldr r1, [r0, #0x0]
     ldr r1, [r1, #0x20]

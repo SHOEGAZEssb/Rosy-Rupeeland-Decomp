@@ -5,7 +5,7 @@
 extern "C" {
 #endif
 extern void func_0203b798(void *actor);
-extern void func_0203292c(void *actor);
+extern void Actor_UpdateAnimationState(void *actor);
 #ifdef __cplusplus
 }
 #endif
@@ -19,7 +19,7 @@ extern void func_0203292c(void *actor);
  * four into actor flags +0x14. When bit one was absent, bit two is consumed
  * only while +0xd6 equals one and attachment +0x54 halfword +0x24 has bit one;
  * consuming it clears +0xd6. Finish through virtual +0xa4,
- * func_0203292c, and virtual +0x20. Returns no value; virtual and base helpers
+ * Actor_UpdateAnimationState, and virtual +0x20. Returns no value; virtual and base helpers
  * have observable actor/presentation effects.
  */
 void func_0203c748(void *self)
@@ -50,6 +50,6 @@ void func_0203c748(void *self)
         *(s16 *)(actor + 0xd6) = 0;
     }
     (*(void (**)(void *))(*(u8 **)actor + 0xa4))(actor);
-    func_0203292c(actor);
+    Actor_UpdateAnimationState(actor);
     (*(void (**)(void *))(*(u8 **)actor + 0x20))(actor);
 }
