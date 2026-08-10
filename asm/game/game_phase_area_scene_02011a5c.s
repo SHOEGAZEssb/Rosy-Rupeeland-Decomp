@@ -9,8 +9,8 @@
 .extern gGamePhaseAreaSceneRendererAllocationTag
 .extern VecFx32Object_Init
 .extern OverlaySlot_Init
-.extern func_02029218
-.extern func_02029360
+.extern DualLayerTileRendererBase_Init
+.extern DualLayerTileRendererBase_SetLayoutParameters
 .extern func_02029ca4
 .extern func_0202bc18
 .extern func_0202c0b8
@@ -226,13 +226,13 @@ L_02011d3c:
     bl Heap_Alloc
     cmp r0, #0x0
     beq L_02011d64
-    bl func_02029218
+    bl DualLayerTileRendererBase_Init
 L_02011d64:
     str r0, [r6, #0x4]
     mov r1, #0x4
     mov r2, #0x1c
     mov r3, #0x1e
-    bl func_02029360
+    bl DualLayerTileRendererBase_SetLayoutParameters
     ldr r0, [r6, #0x4]
     mov r1, r5
     ldr r4, [r0, #0x0]
@@ -251,13 +251,13 @@ L_02011d98:
     bl Heap_Alloc
     cmp r0, #0x0
     beq L_02011dc0
-    bl func_02029218
+    bl DualLayerTileRendererBase_Init
 L_02011dc0:
     str r0, [r6, #0x4]
     mov r1, #0x4
     mov r2, #0x1c
     mov r3, #0x1e
-    bl func_02029360
+    bl DualLayerTileRendererBase_SetLayoutParameters
     ldr r0, [r6, #0x4]
     mov r2, #0x2
     ldr r4, [r0, #0x0]

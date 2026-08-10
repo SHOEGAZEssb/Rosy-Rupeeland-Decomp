@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/main_dual_layer_resource_renderer.c.
 .text
-.extern func_020291b8
+.extern DualLayerTileRendererBase_InitBase
 .extern data_020dec4c
 
     .global func_0202becc
@@ -8,7 +8,7 @@
 func_0202becc: ; 0x0202becc
     stmdb sp!, {r4, lr}
     mov r4, r0
-    bl func_020291b8
+    bl DualLayerTileRendererBase_InitBase
     ldr r1, .L_0202bee8
     mov r0, r4
     str r1, [r4, #0x0]

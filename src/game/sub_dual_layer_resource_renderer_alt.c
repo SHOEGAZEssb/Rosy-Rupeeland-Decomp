@@ -30,8 +30,8 @@ extern "C" {
 #endif
 extern void *data_020decc4;
 extern void *data_020f4e18;
-extern void func_020291b8(void *self);
-extern void func_020292f0(void *self);
+extern void DualLayerTileRendererBase_InitBase(void *self);
+extern void DualLayerTileRendererBase_Destroy(void *self);
 extern void func_02029370(void *self);
 extern void func_02029648(void *self);
 extern void func_02029914(void *self);
@@ -48,7 +48,7 @@ void func_0202c138(SubDualLayerResourceRendererAlt *self);
 /* Construct the common renderer, install this variant's vtable, and return self. */
 SubDualLayerResourceRendererAlt *func_0202c0b8(SubDualLayerResourceRendererAlt *self)
 {
-    func_020291b8(self);
+    DualLayerTileRendererBase_InitBase(self);
     self->vtable_00 = (void **)data_020decc4;
     return self;
 }
@@ -56,14 +56,14 @@ SubDualLayerResourceRendererAlt *func_0202c0b8(SubDualLayerResourceRendererAlt *
 /* Run common renderer teardown and return self without freeing it. */
 SubDualLayerResourceRendererAlt *func_0202c0d8(SubDualLayerResourceRendererAlt *self)
 {
-    func_020292f0(self);
+    DualLayerTileRendererBase_Destroy(self);
     return self;
 }
 
 /* Run common renderer teardown, free self, and return its former address. */
 SubDualLayerResourceRendererAlt *func_0202c0ec(SubDualLayerResourceRendererAlt *self)
 {
-    func_020292f0(self);
+    DualLayerTileRendererBase_Destroy(self);
     Heap_Free(self);
     return self;
 }

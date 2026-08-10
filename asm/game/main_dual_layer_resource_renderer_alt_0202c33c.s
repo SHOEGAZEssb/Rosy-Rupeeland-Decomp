@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/main_dual_layer_resource_renderer_alt.c.
 .text
-.extern func_020292f0
+.extern DualLayerTileRendererBase_Destroy
 .extern Heap_Free
 
     .global func_0202c33c
@@ -8,7 +8,7 @@
 func_0202c33c: ; 0x0202c33c
     stmdb sp!, {r4, lr}
     mov r4, r0
-    bl func_020292f0
+    bl DualLayerTileRendererBase_Destroy
     mov r0, r4
     bl Heap_Free
     mov r0, r4

@@ -25,8 +25,8 @@ extern "C" {
 extern void *data_020def1c;
 extern void *data_020f4e18;
 extern PaletteBuffer gMainBgPaletteBuffer;
-extern void func_020291b8(void *);
-extern void func_020292f0(void *);
+extern void DualLayerTileRendererBase_InitBase(void *);
+extern void DualLayerTileRendererBase_Destroy(void *);
 extern void func_02029370(void *);
 extern void func_02029648(void *);
 extern void func_020b44e8(void);
@@ -43,7 +43,7 @@ void func_0202cc88(MainThreeLayerResourceRenderer *);
 /* Construct the common renderer, install this variant's vtable, and return self. */
 MainThreeLayerResourceRenderer *func_0202cbe0(MainThreeLayerResourceRenderer *self)
 {
-    func_020291b8(self);
+    DualLayerTileRendererBase_InitBase(self);
     self->vtable_00 = (void **)data_020def1c;
     return self;
 }
@@ -51,14 +51,14 @@ MainThreeLayerResourceRenderer *func_0202cbe0(MainThreeLayerResourceRenderer *se
 /* Run common renderer teardown and return self without freeing it. */
 MainThreeLayerResourceRenderer *func_0202cc00(MainThreeLayerResourceRenderer *self)
 {
-    func_020292f0(self);
+    DualLayerTileRendererBase_Destroy(self);
     return self;
 }
 
 /* Run common renderer teardown, free self, and return its former address. */
 MainThreeLayerResourceRenderer *func_0202cc14(MainThreeLayerResourceRenderer *self)
 {
-    func_020292f0(self);
+    DualLayerTileRendererBase_Destroy(self);
     Heap_Free(self);
     return self;
 }

@@ -2,12 +2,12 @@
 .text
 
 
-    .global func_02029360
-    .type func_02029360, @function
-func_02029360: ; 0x02029360
+    .global DualLayerTileRendererBase_SetLayoutParameters
+    .type DualLayerTileRendererBase_SetLayoutParameters, @function
+DualLayerTileRendererBase_SetLayoutParameters: ; 0x02029360
     str r1, [r0, #0x44]
     str r2, [r0, #0x48]
     str r3, [r0, #0x4c]
     bx lr
-    .size func_02029360, . - func_02029360
+    .size DualLayerTileRendererBase_SetLayoutParameters, . - DualLayerTileRendererBase_SetLayoutParameters
 

@@ -14,8 +14,8 @@ typedef struct MainDualLayerResourceRendererAlt {
 extern "C" {
 #endif
 extern void *data_020ded3c;
-extern void func_020291b8(void *self);
-extern void func_020292f0(void *self);
+extern void DualLayerTileRendererBase_InitBase(void *self);
+extern void DualLayerTileRendererBase_Destroy(void *self);
 extern void func_02029370(void *self);
 extern void func_02029648(void *self);
 extern void func_0202bf4c(void *self);
@@ -27,7 +27,7 @@ void func_0202c388(MainDualLayerResourceRendererAlt *self);
 /* Construct the common renderer, install this variant's vtable, and return self. */
 MainDualLayerResourceRendererAlt *func_0202c308(MainDualLayerResourceRendererAlt *self)
 {
-    func_020291b8(self);
+    DualLayerTileRendererBase_InitBase(self);
     self->vtable_00 = (void **)data_020ded3c;
     return self;
 }
@@ -35,14 +35,14 @@ MainDualLayerResourceRendererAlt *func_0202c308(MainDualLayerResourceRendererAlt
 /* Run common renderer teardown and return self without freeing it. */
 MainDualLayerResourceRendererAlt *func_0202c328(MainDualLayerResourceRendererAlt *self)
 {
-    func_020292f0(self);
+    DualLayerTileRendererBase_Destroy(self);
     return self;
 }
 
 /* Run common renderer teardown, free self, and return its former address. */
 MainDualLayerResourceRendererAlt *func_0202c33c(MainDualLayerResourceRendererAlt *self)
 {
-    func_020292f0(self);
+    DualLayerTileRendererBase_Destroy(self);
     Heap_Free(self);
     return self;
 }

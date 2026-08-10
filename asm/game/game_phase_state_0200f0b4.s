@@ -4,7 +4,7 @@
 .extern gGamePhaseStateRendererAllocationTag
 .extern GamePhaseRegionTable_Load
 .extern GamePhaseRegionTable_SetGameWorkFlagBase
-.extern func_02029218
+.extern DualLayerTileRendererBase_Init
 .extern func_02029ca4
 .extern func_0202becc
 .extern func_0202c308
@@ -103,7 +103,7 @@ L_0200f1e4:
     bl Heap_Alloc
     cmp r0, #0x0
     beq L_0200f1fc
-    bl func_02029218
+    bl DualLayerTileRendererBase_Init
 L_0200f1fc:
     add r1, r5, #0x2000
     str r0, [r1, #0xeb0]

@@ -7,7 +7,7 @@
 extern "C" {
 #endif
 extern const u8 gGamePhaseStateRendererAllocationTag[];
-extern void *func_02029218(void *object);
+extern void *DualLayerTileRendererBase_Init(void *object);
 extern void func_02029ca4(void *object, const void *configuration);
 extern void *func_0202becc(void *object);
 extern void *func_0202c308(void *object);
@@ -53,7 +53,7 @@ void GamePhaseState_CreatePhaseObject(GamePhaseState *self, const void *configur
     else if (phaseId == 0x5d)
         constructor = func_0202cbe0;
     else
-        constructor = func_02029218;
+        constructor = DualLayerTileRendererBase_Init;
 
     object = Heap_Alloc(0x187c, (const char *)gGamePhaseStateRendererAllocationTag, 4,
                         &gHeapContext);

@@ -1,13 +1,13 @@
 ; Matching retail form; see src/game/dual_layer_tile_renderer_base.c.
 .text
-.extern data_020de930
+.extern gDualLayerTileRendererBaseVtable
 .extern VecFx32Object_Init
 .extern func_0202b730
 .extern ByteTileMapOwner_Init
 
-    .global func_020291b8
-    .type func_020291b8, @function
-func_020291b8: ; 0x020291b8
+    .global DualLayerTileRendererBase_InitBase
+    .type DualLayerTileRendererBase_InitBase, @function
+DualLayerTileRendererBase_InitBase: ; 0x020291b8
     stmdb sp!, {r4, lr}
     mov r4, r0
     bl ByteTileMapOwner_Init
@@ -32,6 +32,6 @@ func_020291b8: ; 0x020291b8
     mov r0, r4
     str r1, [r4, #0x4c]
     ldmia sp!, {r4, pc}
-.L_02029214: .word data_020de930
-    .size func_020291b8, . - func_020291b8
+.L_02029214: .word gDualLayerTileRendererBaseVtable
+    .size DualLayerTileRendererBase_InitBase, . - DualLayerTileRendererBase_InitBase
 

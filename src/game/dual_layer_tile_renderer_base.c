@@ -23,14 +23,14 @@ typedef void (*LayerDestructor)(void *);
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *data_020de930;
+extern void *gDualLayerTileRendererBaseVtable;
 extern void ByteTileMapOwner_Init(void *);
 extern void ByteTileMapOwner_Destroy(void *);
 extern void VecFx32Object_Init(void *);
 extern void VecFx32Object_Destroy(void *);
 extern void func_0202b730(void *);
 extern void func_0202b834(void *);
-void func_02029328(DualLayerTileRendererBase *);
+void DualLayerTileRendererBase_DestroyOwnedLayers(DualLayerTileRendererBase *);
 #ifdef __cplusplus
 }
 #endif
@@ -39,10 +39,10 @@ void func_02029328(DualLayerTileRendererBase *);
  * Initialize the renderer base, vector, and offset-0x60 subobject; clear both
  * layer pointers and field 0x44; set default dimensions 28 by 30; return self.
  */
-DualLayerTileRendererBase *func_020291b8(DualLayerTileRendererBase *self)
+DualLayerTileRendererBase *DualLayerTileRendererBase_InitBase(DualLayerTileRendererBase *self)
 {
     ByteTileMapOwner_Init(self);
-    *(void ***)self = (void **)data_020de930;
+    *(void ***)self = (void **)gDualLayerTileRendererBaseVtable;
     VecFx32Object_Init(self->vector_50);
     func_0202b730(self->renderer_60);
     self->layers_28[0] = 0;
@@ -54,10 +54,10 @@ DualLayerTileRendererBase *func_020291b8(DualLayerTileRendererBase *self)
 }
 
 /* Construct the same default renderer state for the alternate recovered entry point. */
-DualLayerTileRendererBase *func_02029218(DualLayerTileRendererBase *self)
+DualLayerTileRendererBase *DualLayerTileRendererBase_Init(DualLayerTileRendererBase *self)
 {
     ByteTileMapOwner_Init(self);
-    *(void ***)self = (void **)data_020de930;
+    *(void ***)self = (void **)gDualLayerTileRendererBaseVtable;
     VecFx32Object_Init(self->vector_50);
     func_0202b730(self->renderer_60);
     self->layers_28[0] = 0;
@@ -69,10 +69,10 @@ DualLayerTileRendererBase *func_02029218(DualLayerTileRendererBase *self)
 }
 
 /* Destroy layers, embedded renderer/vector state, and the base; return self. */
-DualLayerTileRendererBase *func_02029278(DualLayerTileRendererBase *self)
+DualLayerTileRendererBase *DualLayerTileRendererBase_DestroyComplete(DualLayerTileRendererBase *self)
 {
-    *(void ***)self = (void **)data_020de930;
-    func_02029328(self);
+    *(void ***)self = (void **)gDualLayerTileRendererBaseVtable;
+    DualLayerTileRendererBase_DestroyOwnedLayers(self);
     func_0202b834(self->renderer_60);
     VecFx32Object_Destroy(self->vector_50);
     ByteTileMapOwner_Destroy(self);
@@ -80,10 +80,10 @@ DualLayerTileRendererBase *func_02029278(DualLayerTileRendererBase *self)
 }
 
 /* Perform full teardown, free self, and return its old address. */
-DualLayerTileRendererBase *func_020292b0(DualLayerTileRendererBase *self)
+DualLayerTileRendererBase *DualLayerTileRendererBase_DestroyAndFree(DualLayerTileRendererBase *self)
 {
-    *(void ***)self = (void **)data_020de930;
-    func_02029328(self);
+    *(void ***)self = (void **)gDualLayerTileRendererBaseVtable;
+    DualLayerTileRendererBase_DestroyOwnedLayers(self);
     func_0202b834(self->renderer_60);
     VecFx32Object_Destroy(self->vector_50);
     ByteTileMapOwner_Destroy(self);
@@ -91,11 +91,11 @@ DualLayerTileRendererBase *func_020292b0(DualLayerTileRendererBase *self)
     return self;
 }
 
-/* Alternate non-freeing teardown entry; effects match func_02029278. */
-DualLayerTileRendererBase *func_020292f0(DualLayerTileRendererBase *self)
+/* Alternate non-freeing teardown entry; effects match DualLayerTileRendererBase_DestroyComplete. */
+DualLayerTileRendererBase *DualLayerTileRendererBase_Destroy(DualLayerTileRendererBase *self)
 {
-    *(void ***)self = (void **)data_020de930;
-    func_02029328(self);
+    *(void ***)self = (void **)gDualLayerTileRendererBaseVtable;
+    DualLayerTileRendererBase_DestroyOwnedLayers(self);
     func_0202b834(self->renderer_60);
     VecFx32Object_Destroy(self->vector_50);
     ByteTileMapOwner_Destroy(self);
@@ -103,7 +103,7 @@ DualLayerTileRendererBase *func_020292f0(DualLayerTileRendererBase *self)
 }
 
 /* Invoke vtable slot one on each non-null owned layer object. */
-void func_02029328(DualLayerTileRendererBase *self)
+void DualLayerTileRendererBase_DestroyOwnedLayers(DualLayerTileRendererBase *self)
 {
     s32 i;
     for (i = 0; i < 2; i++) {
@@ -114,7 +114,7 @@ void func_02029328(DualLayerTileRendererBase *self)
 }
 
 /* Store the renderer's field 0x44 and its width/height values. */
-void func_02029360(DualLayerTileRendererBase *self, s32 field44,
+void DualLayerTileRendererBase_SetLayoutParameters(DualLayerTileRendererBase *self, s32 field44,
                    s32 width, s32 height)
 {
     self->field_44 = field44;

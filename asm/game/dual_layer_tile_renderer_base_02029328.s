@@ -2,9 +2,9 @@
 .text
 
 
-    .global func_02029328
-    .type func_02029328, @function
-func_02029328: ; 0x02029328
+    .global DualLayerTileRendererBase_DestroyOwnedLayers
+    .type DualLayerTileRendererBase_DestroyOwnedLayers, @function
+DualLayerTileRendererBase_DestroyOwnedLayers: ; 0x02029328
     stmdb sp!, {r3, r4, r5, lr}
     mov r5, r0
     mov r4, #0x0
@@ -21,5 +21,5 @@ func_02029328: ; 0x02029328
     cmp r4, #0x2
     blt .L_02029334
     ldmia sp!, {r3, r4, r5, pc}
-    .size func_02029328, . - func_02029328
+    .size DualLayerTileRendererBase_DestroyOwnedLayers, . - DualLayerTileRendererBase_DestroyOwnedLayers
 

@@ -23,8 +23,8 @@ extern void *func_0202bc18(void *self);
 extern void *func_0202c0b8(void *self);
 extern void *func_0202c4f4(void *self);
 extern void *func_0202c8a8(void *self);
-extern void *func_02029218(void *self);
-extern void func_02029360(void *self, s32 a, s32 b, s32 c);
+extern void *DualLayerTileRendererBase_Init(void *self);
+extern void DualLayerTileRendererBase_SetLayoutParameters(void *self, s32 a, s32 b, s32 c);
 extern void func_02029ca4(void *self, const void *config);
 extern void func_0201e1b0(void *state, s32 value);
 extern void GX_SetBankForSubBG(s32 bank);
@@ -114,8 +114,8 @@ GamePhaseAreaScene *GamePhaseAreaScene_Init(GamePhaseAreaScene *self,
             u32 variant = (config->flags >> 20) & 3;
             if (variant == 0 || variant == 1) {
                 GXS_SetGraphicsMode(0);
-                self->subRenderer = createRenderer(func_02029218);
-                func_02029360(self->subRenderer, 4, 28, 30);
+                self->subRenderer = createRenderer(DualLayerTileRendererBase_Init);
+                DualLayerTileRendererBase_SetLayoutParameters(self->subRenderer, 4, 28, 30);
                 loadRenderer(self->subRenderer, resource,
                              variant == 1 ? 2 : 0);
             }
