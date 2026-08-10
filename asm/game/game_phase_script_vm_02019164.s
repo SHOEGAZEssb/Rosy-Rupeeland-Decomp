@@ -3,8 +3,8 @@
 .extern data_02105300
 .extern GamePhaseTouchPrompt_SetEnabled
 .extern GamePhaseScriptVm_Pop
-.global func_02019164
-func_02019164:
+.global GamePhaseActorScriptVm_SetTouchPromptEnabled
+GamePhaseActorScriptVm_SetTouchPromptEnabled:
     stmdb sp!, {r3, lr}
     bl GamePhaseScriptVm_Pop
     ldr r2, L_02019188
@@ -15,4 +15,4 @@ func_02019164:
     mov r0, #0x0
     ldmia sp!, {r3, pc}
 L_02019188: .word data_02105300
-.size func_02019164, . - func_02019164
+.size GamePhaseActorScriptVm_SetTouchPromptEnabled, . - GamePhaseActorScriptVm_SetTouchPromptEnabled

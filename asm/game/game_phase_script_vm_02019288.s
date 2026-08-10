@@ -2,8 +2,8 @@
 .text
 .extern GamePhaseScriptVm_SetResult
 .extern gGameWork
-.global func_02019288
-func_02019288:
+.global GamePhaseActorScriptVm_GetGameWorkField44
+GamePhaseActorScriptVm_GetGameWorkField44:
     stmdb sp!, {r3, lr}
     ldr r1, L_020192a4
     ldr r1, [r1, #0x0]
@@ -12,4 +12,4 @@ func_02019288:
     mov r0, #0x0
     ldmia sp!, {r3, pc}
 L_020192a4: .word gGameWork
-.size func_02019288, . - func_02019288
+.size GamePhaseActorScriptVm_GetGameWorkField44, . - GamePhaseActorScriptVm_GetGameWorkField44

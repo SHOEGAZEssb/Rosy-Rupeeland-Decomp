@@ -34,7 +34,7 @@ s32 func_02019104(GamePhaseActorScriptVm *self)
  * Pop a u16 count and invoke the recovered operation on global state offset
  * 0x34 exactly count times.  A zero count has no effect.  Return zero.
  */
-s32 func_02019128(GamePhaseActorScriptVm *self)
+s32 GamePhaseActorScriptVm_RepeatGlobalState34Operation(GamePhaseActorScriptVm *self)
 {
     u16 count = (u16)GamePhaseScriptVm_Pop(&self->base);
     u16 index;
@@ -44,7 +44,7 @@ s32 func_02019128(GamePhaseActorScriptVm *self)
 }
 
 /* Pop a value, apply it to recovered global state offset 0x08, and return zero. */
-s32 func_02019164(GamePhaseActorScriptVm *self)
+s32 GamePhaseActorScriptVm_SetTouchPromptEnabled(GamePhaseActorScriptVm *self)
 {
     s32 value = (s32)GamePhaseScriptVm_Pop(&self->base);
     GamePhaseTouchPrompt_SetEnabled(*(void **)((u8 *)data_02105300 + 8), value);
@@ -52,7 +52,7 @@ s32 func_02019164(GamePhaseActorScriptVm *self)
 }
 
 /* Query the runtime context with fixed arguments (0, 0, 1), push, and return zero. */
-s32 func_0201918c(GamePhaseActorScriptVm *self)
+s32 GamePhaseActorScriptVm_QueryRuntimeContextFixedMode(GamePhaseActorScriptVm *self)
 {
     GamePhaseScriptVm_SetResult(&self->base, (u32)func_0207f80c(gRuntimeContext, 0, 0, 1));
     return 0;
@@ -70,7 +70,7 @@ static s32 squareFx32(s32 value)
  * distances is below 1.0 fx32; otherwise push zero.  The recovered division
  * routine supplies each normalized term.  Return zero.
  */
-s32 func_020191c4(GamePhaseActorScriptVm *self)
+s32 GamePhaseActorScriptVm_IsPointWithinEllipse(GamePhaseActorScriptVm *self)
 {
     s32 verticalRadius = (s32)GamePhaseScriptVm_Pop(&self->base);
     s32 horizontalRadius = (s32)GamePhaseScriptVm_Pop(&self->base);
@@ -93,21 +93,21 @@ s32 func_020191c4(GamePhaseActorScriptVm *self)
 }
 
 /* Push the confirmed GameWork word at offset 0x44 and return zero. */
-s32 func_02019288(GamePhaseActorScriptVm *self)
+s32 GamePhaseActorScriptVm_GetGameWorkField44(GamePhaseActorScriptVm *self)
 {
     GamePhaseScriptVm_SetResult(&self->base, *(u32 *)((u8 *)gGameWork + 0x44));
     return 0;
 }
 
 /* Push the negated GameWork word at offset 0x48 and return zero. */
-s32 func_020192a8(GamePhaseActorScriptVm *self)
+s32 GamePhaseActorScriptVm_GetNegatedGameWorkField48(GamePhaseActorScriptVm *self)
 {
     GamePhaseScriptVm_SetResult(&self->base, (u32)-*(s32 *)((u8 *)gGameWork + 0x48));
     return 0;
 }
 
 /* Clear the GameWork words at offsets 0x44 and 0x48 and return zero. */
-s32 func_020192cc(GamePhaseActorScriptVm *self)
+s32 GamePhaseActorScriptVm_ClearGameWorkFields44And48(GamePhaseActorScriptVm *self)
 {
     (void)self;
     *(u32 *)((u8 *)gGameWork + 0x44) = 0;
@@ -116,7 +116,7 @@ s32 func_020192cc(GamePhaseActorScriptVm *self)
 }
 
 /* Return zero without consuming operands or changing state. */
-s32 func_020192ec(GamePhaseActorScriptVm *self)
+s32 GamePhaseActorScriptVm_RuntimeUtilityNoOp(GamePhaseActorScriptVm *self)
 {
     (void)self;
     return 0;

@@ -3,8 +3,8 @@
 .extern data_021e9ac0
 .extern GamePhaseScriptVm_Pop
 .extern func_02065270
-.global func_02019128
-func_02019128:
+.global GamePhaseActorScriptVm_RepeatGlobalState34Operation
+GamePhaseActorScriptVm_RepeatGlobalState34Operation:
     stmdb sp!, {r4, r5, r6, lr}
     bl GamePhaseScriptVm_Pop
     mov r4, r0, lsl #0x10
@@ -22,4 +22,4 @@ L_02019150:
     mov r0, #0x0
     ldmia sp!, {r4, r5, r6, pc}
 L_02019160: .word data_021e9ac0
-.size func_02019128, . - func_02019128
+.size GamePhaseActorScriptVm_RepeatGlobalState34Operation, . - GamePhaseActorScriptVm_RepeatGlobalState34Operation

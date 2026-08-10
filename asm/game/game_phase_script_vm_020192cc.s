@@ -1,8 +1,8 @@
 ; Matching retail form; see src/game/game_phase_script_vm_runtime_utility_query_opcodes.c.
 .text
 .extern gGameWork
-.global func_020192cc
-func_020192cc:
+.global GamePhaseActorScriptVm_ClearGameWorkFields44And48
+GamePhaseActorScriptVm_ClearGameWorkFields44And48:
     ldr r1, L_020192e8
     mov r0, #0x0
     ldr r2, [r1, #0x0]
@@ -11,4 +11,4 @@ func_020192cc:
     str r0, [r1, #0x48]
     bx lr
 L_020192e8: .word gGameWork
-.size func_020192cc, . - func_020192cc
+.size GamePhaseActorScriptVm_ClearGameWorkFields44And48, . - GamePhaseActorScriptVm_ClearGameWorkFields44And48

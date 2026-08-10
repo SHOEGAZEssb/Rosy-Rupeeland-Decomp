@@ -3,8 +3,8 @@
 .extern GamePhaseScriptVm_SetResult
 .extern func_0207f80c
 .extern gRuntimeContext
-.global func_0201918c
-func_0201918c:
+.global GamePhaseActorScriptVm_QueryRuntimeContextFixedMode
+GamePhaseActorScriptVm_QueryRuntimeContextFixedMode:
     stmdb sp!, {r4, lr}
     ldr r2, L_020191c0
     mov r4, r0
@@ -19,4 +19,4 @@ func_0201918c:
     mov r0, #0x0
     ldmia sp!, {r4, pc}
 L_020191c0: .word gRuntimeContext
-.size func_0201918c, . - func_0201918c
+.size GamePhaseActorScriptVm_QueryRuntimeContextFixedMode, . - GamePhaseActorScriptVm_QueryRuntimeContextFixedMode

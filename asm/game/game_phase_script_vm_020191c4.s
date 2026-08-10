@@ -3,8 +3,8 @@
 .extern GamePhaseScriptVm_Pop
 .extern GamePhaseScriptVm_SetResult
 .extern func_020befec
-.global func_020191c4
-func_020191c4:
+.global GamePhaseActorScriptVm_IsPointWithinEllipse
+GamePhaseActorScriptVm_IsPointWithinEllipse:
     stmdb sp!, {r3, r4, r5, r6, r7, r8, r9, lr}
     mov r8, r0
     bl GamePhaseScriptVm_Pop
@@ -55,4 +55,4 @@ L_02019274:
     bl GamePhaseScriptVm_SetResult
     mov r0, #0x0
     ldmia sp!, {r3, r4, r5, r6, r7, r8, r9, pc}
-.size func_020191c4, . - func_020191c4
+.size GamePhaseActorScriptVm_IsPointWithinEllipse, . - GamePhaseActorScriptVm_IsPointWithinEllipse
