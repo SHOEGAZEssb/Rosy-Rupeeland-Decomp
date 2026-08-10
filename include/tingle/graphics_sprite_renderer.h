@@ -46,7 +46,8 @@ extern "C" {
 
 GraphicsSpriteRenderer *func_02074200(GraphicsSpriteRenderer *renderer,
                                       u32 engine, u32 field28, u32 field2c);
-void func_02074f0c(GraphicsSpriteRenderer *renderer);
+void GraphicsSpriteRenderer_ConfigureObjectDisplay(
+    GraphicsSpriteRenderer *renderer);
 void *func_02075598(GraphicsSpriteRenderer *renderer, void *replacement);
 void func_020755b0(GraphicsSpriteRenderer *renderer);
 void func_020755bc(GraphicsSpriteRenderer *renderer);

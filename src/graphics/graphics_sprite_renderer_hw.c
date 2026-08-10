@@ -36,7 +36,7 @@ extern void func_020ae9f0(u32 mode);
  * volatile graphics-register writes.
  */
 #ifndef MATCHING
-void func_02074f0c(GraphicsSpriteRenderer *renderer)
+void GraphicsSpriteRenderer_ConfigureObjectDisplay(GraphicsSpriteRenderer *renderer)
 {
     volatile u32 *displayControl;
     u32 value;
@@ -80,7 +80,7 @@ void func_02074f0c(GraphicsSpriteRenderer *renderer)
 }
 #else
 /* This matching fallback implements the documented portable C directly above. */
-asm void func_02074f0c(GraphicsSpriteRenderer *renderer)
+asm void GraphicsSpriteRenderer_ConfigureObjectDisplay(GraphicsSpriteRenderer *renderer)
 {
     stmdb sp!, {r4, lr}
     mov r4, r0

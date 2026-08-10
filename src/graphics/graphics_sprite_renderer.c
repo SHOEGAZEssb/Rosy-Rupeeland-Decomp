@@ -6,16 +6,6 @@
  * transfer queue used by later frame-building and upload paths.
  */
 
-#ifdef __cplusplus
-extern "C" {
-#endif
-
-extern void func_02074f0c(GraphicsSpriteRenderer *renderer);
-
-#ifdef __cplusplus
-}
-#endif
-
 /*
  * Construct every embedded allocator/pool in dependency order, store the three
  * caller configuration words, initialize owner-list and control fields, run
@@ -42,7 +32,7 @@ GraphicsSpriteRenderer *func_02074200(GraphicsSpriteRenderer *renderer,
     renderer->groupCount = 0;
     renderer->groupTail = 0;
     renderer->groupHead = 0;
-    func_02074f0c(renderer);
+    GraphicsSpriteRenderer_ConfigureObjectDisplay(renderer);
     GraphicsRenderEntryPool_Reset(&renderer->renderEntryPool);
     GraphicsLookupCache_BindRecords(
         &renderer->lookupCache, renderer->shadowBuffer);
