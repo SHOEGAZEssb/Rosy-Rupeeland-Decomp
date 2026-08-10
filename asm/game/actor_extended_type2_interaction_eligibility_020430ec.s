@@ -4,9 +4,9 @@
 .extern data_020dfbd8
 .extern data_020e8380
 .extern Actor_GetCachedTerrainHeight
-.global func_020430ec
-.type func_020430ec, @function
-func_020430ec: ; 0x020430ec
+.global ActorExtendedType2_IsInteractionEligible
+.type ActorExtendedType2_IsInteractionEligible, @function
+ActorExtendedType2_IsInteractionEligible: ; 0x020430ec
     stmdb sp!, {r4, r5, r6, lr}
     mov r5, r0
     ldr r0, [r5, #0x10]
@@ -92,4 +92,4 @@ func_020430ec: ; 0x020430ec
 .L_02043228: .word data_020dfbd8
 
     .global ActorExtendedType2_TrackCandidate
-.size func_020430ec, . - func_020430ec
+.size ActorExtendedType2_IsInteractionEligible, . - ActorExtendedType2_IsInteractionEligible

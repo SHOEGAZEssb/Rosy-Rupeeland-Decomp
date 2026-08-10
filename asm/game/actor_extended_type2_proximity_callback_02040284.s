@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/actor_extended_type2_proximity_callback.c.
 .text
 .extern data_020df9e8
-.extern func_0204305c
+.extern ActorExtendedType2_IsDirectionToActorAccepted
 .global func_02040284
 .type func_02040284, @function
 func_02040284: ; 0x02040284
@@ -13,7 +13,7 @@ func_02040284: ; 0x02040284
     mov r1, r3, lsl #0x1e
     mov r1, r1, lsr #0x1e
     mov r6, r0
-    bl func_0204305c
+    bl ActorExtendedType2_IsDirectionToActorAccepted
     cmp r0, #0x0
     moveq r0, #0x0
     ldmeqia sp!, {r4, r5, r6, pc}

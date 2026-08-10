@@ -15,15 +15,15 @@ extern s32 func_020ae024(s32 y, s32 x);
 
 /*
  * Compute other +0x1c/+0x20 minus actor +0x1c/+0x20 and forward actor, mode,
- * and that fixed-point displacement to func_02043080. Returns its boolean
+ * and that fixed-point displacement to ActorExtendedType2_IsDirectionDisplacementAccepted. Returns its boolean
  * result. Inputs are read only and no SDK or hardware state changes.
  */
-s32 func_0204305c(const void *self, s32 mode, const void *other)
+s32 ActorExtendedType2_IsDirectionToActorAccepted(const void *self, s32 mode, const void *other)
 {
     const u8 *actor = (const u8 *)self;
     const u8 *target = (const u8 *)other;
-    extern s32 func_02043080(const void *, s32, s32, s32);
-    return func_02043080(actor, mode,
+    extern s32 ActorExtendedType2_IsDirectionDisplacementAccepted(const void *, s32, s32, s32);
+    return ActorExtendedType2_IsDirectionDisplacementAccepted(actor, mode,
                          *(const s32 *)(target + 0x1c) - *(const s32 *)(actor + 0x1c),
                          *(const s32 *)(target + 0x20) - *(const s32 *)(actor + 0x20));
 }
@@ -35,7 +35,7 @@ s32 func_0204305c(const void *self, s32 mode, const void *other)
  * difference is below 0x2ee0. Other cases return zero. Actor and displacement
  * are read only; the angle helper has no documented hardware effect.
  */
-s32 func_02043080(const void *self, s32 mode, s32 deltaX, s32 deltaY)
+s32 ActorExtendedType2_IsDirectionDisplacementAccepted(const void *self, s32 mode, s32 deltaX, s32 deltaY)
 {
     const u8 *actor = (const u8 *)self;
     if (mode == 1 || (deltaX == 0 && deltaY == 0))

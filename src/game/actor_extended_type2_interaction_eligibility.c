@@ -37,7 +37,7 @@ static s32 callback_pair_matches(const u8 *actor)
  * bookkeeping queries may have engine-visible effects but no direct hardware
  * operation occurs.
  */
-s32 func_020430ec(void *self, void *other)
+s32 ActorExtendedType2_IsInteractionEligible(void *self, void *other)
 {
     u8 *actor = (u8 *)self;
     u32 flags10 = *(u32 *)(actor + 0x10);

@@ -17382,7 +17382,7 @@ build build/reports/actor_extended_type2_direction_gate_0204305c.json: objdiff b
   base_object = build/decomp/asm/game/actor_extended_type2_direction_gate_wrapper_0204305c.o
 build build/reports/actor_extended_type2_direction_gate_0204305c.txt: match_report build/reports/actor_extended_type2_direction_gate_0204305c.json | tools/report_objdiff.py
   report_json = build/reports/actor_extended_type2_direction_gate_0204305c.json
-  report_args = --section .text --function func_0204305c --require-exact
+  report_args = --section .text --function ActorExtendedType2_IsDirectionToActorAccepted --require-exact
 build build/decomp/asm/game/actor_extended_type2_direction_gate_02043080.o: mwasmarm asm/game/actor_extended_type2_direction_gate_02043080.s
 build build/decomp/delinks/asm/game/actor_extended_type2_direction_gate_02043080.o: dsd_delink config/arm9/config.yaml config/arm9/delinks.txt config/arm9/symbols.txt config/arm9/relocs.txt
 build build/reports/actor_extended_type2_direction_gate_02043080.json: objdiff build/decomp/delinks/asm/game/actor_extended_type2_direction_gate_02043080.o | build/decomp/asm/game/actor_extended_type2_direction_gate_02043080.o
@@ -17390,7 +17390,7 @@ build build/reports/actor_extended_type2_direction_gate_02043080.json: objdiff b
   base_object = build/decomp/asm/game/actor_extended_type2_direction_gate_02043080.o
 build build/reports/actor_extended_type2_direction_gate_02043080.txt: match_report build/reports/actor_extended_type2_direction_gate_02043080.json | tools/report_objdiff.py
   report_json = build/reports/actor_extended_type2_direction_gate_02043080.json
-  report_args = --section .text --function func_02043080 --require-exact
+  report_args = --section .text --function ActorExtendedType2_IsDirectionDisplacementAccepted --require-exact
 build build/reports/actor_extended_type2_direction_gate.txt: phony build/reports/actor_extended_type2_direction_gate_0204305c.txt build/reports/actor_extended_type2_direction_gate_02043080.txt
 build actor_extended_type2_direction_gate: phony build/decomp/src/game/actor_extended_type2_direction_gate.o build/decomp/asm/game/actor_extended_type2_direction_gate_wrapper_0204305c.o build/decomp/asm/game/actor_extended_type2_direction_gate_02043080.o build/reports/actor_extended_type2_direction_gate.txt
 
@@ -17405,7 +17405,7 @@ build build/reports/actor_extended_type2_interaction_eligibility_020430ec.json: 
   base_object = build/decomp/asm/game/actor_extended_type2_interaction_eligibility_020430ec.o
 build build/reports/actor_extended_type2_interaction_eligibility_020430ec.txt: match_report build/reports/actor_extended_type2_interaction_eligibility_020430ec.json | tools/report_objdiff.py
   report_json = build/reports/actor_extended_type2_interaction_eligibility_020430ec.json
-  report_args = --section .text --function func_020430ec --require-exact
+  report_args = --section .text --function ActorExtendedType2_IsInteractionEligible --require-exact
 build build/reports/actor_extended_type2_interaction_eligibility.txt: phony build/reports/actor_extended_type2_interaction_eligibility_020430ec.txt
 build actor_extended_type2_interaction_eligibility: phony build/decomp/src/game/actor_extended_type2_interaction_eligibility.o build/decomp/asm/game/actor_extended_type2_interaction_eligibility_020430ec.o build/reports/actor_extended_type2_interaction_eligibility.txt
 

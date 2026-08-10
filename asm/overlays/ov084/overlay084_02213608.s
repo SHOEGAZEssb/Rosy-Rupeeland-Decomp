@@ -3,7 +3,7 @@
 .extern data_ov084_02214108
 .extern data_ov084_02214118
 .extern data_ov084_02214140
-.extern func_020430ec
+.extern ActorExtendedType2_IsInteractionEligible
 
 .global func_ov084_02213608
 func_ov084_02213608:
@@ -48,7 +48,7 @@ func_ov084_02213608:
     mov r0, #0x0
     ldmia sp!, {r3, pc}
 .L_0221369c:
-    bl func_020430ec
+    bl ActorExtendedType2_IsInteractionEligible
     ldmia sp!, {r3, pc}
 .L_022136a4: .word data_ov084_02214108
 .L_022136a8: .word data_ov084_02214140

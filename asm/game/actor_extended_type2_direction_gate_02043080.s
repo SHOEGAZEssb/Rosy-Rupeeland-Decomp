@@ -1,9 +1,9 @@
 ; Matching retail predicate; see src/game/actor_extended_type2_direction_gate.c.
 .text
 .extern func_020ae024
-.global func_02043080
-.type func_02043080, @function
-func_02043080: ; 0x02043080
+.global ActorExtendedType2_IsDirectionDisplacementAccepted
+.type ActorExtendedType2_IsDirectionDisplacementAccepted, @function
+ActorExtendedType2_IsDirectionDisplacementAccepted: ; 0x02043080
     stmdb sp!, {r4, lr}
     mov r4, r0
     cmp r1, #0x1
@@ -32,4 +32,4 @@ func_02043080: ; 0x02043080
     mov r0, #0x0
     ldmia sp!, {r4, pc}
 .L_020430e8: .word 0x2ee0
-.size func_02043080, . - func_02043080
+.size ActorExtendedType2_IsDirectionDisplacementAccepted, . - ActorExtendedType2_IsDirectionDisplacementAccepted

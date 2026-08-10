@@ -84,7 +84,7 @@
 .extern ActorExtendedType2_TrackCandidate
 .extern func_ov095_0221b1c0
 .extern func_ov095_0221b1b8
-.extern func_020430ec
+.extern ActorExtendedType2_IsInteractionEligible
 .extern func_0204067c
 .extern func_02040a5c
 .extern func_02040bdc
@@ -391,7 +391,7 @@ data_ov095_0221cca0:
     .word ActorExtendedType2_TrackCandidate
     .word func_ov095_0221b1c0
     .word func_ov095_0221b1b8
-    .word func_020430ec
+    .word ActorExtendedType2_IsInteractionEligible
     .word func_0204067c
     .word func_02040a5c
     .word func_02040bdc
@@ -555,7 +555,7 @@ data_ov095_0221cf4c:
     .word ActorExtendedType2_TrackCandidate
     .word func_ov095_0221b1c0
     .word func_ov095_0221b1b8
-    .word func_020430ec
+    .word ActorExtendedType2_IsInteractionEligible
     .word func_0204067c
     .word func_02040a5c
     .word func_ov095_0221bd68

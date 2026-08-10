@@ -601,5 +601,5 @@ func_02042864: ; 0x02042864
 .L_02043054: .word data_020e0204
 .L_02043058: .word data_020e0214
 
-    .global func_0204305c
+    .global ActorExtendedType2_IsDirectionToActorAccepted
 .size func_02042864, . - func_02042864

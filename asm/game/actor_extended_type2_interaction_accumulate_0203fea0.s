@@ -2,7 +2,7 @@
 .text
 .extern data_020df9e8
 .extern func_02040000
-.extern func_0204305c
+.extern ActorExtendedType2_IsDirectionToActorAccepted
 .extern func_020be334
 .global func_0203fea0
 .type func_0203fea0, @function
@@ -19,7 +19,7 @@ func_0203fea0: ; 0x0203fea0
     mov r2, r6
     mov r1, r1, lsl #0x1e
     mov r1, r1, lsr #0x1e
-    bl func_0204305c
+    bl ActorExtendedType2_IsDirectionToActorAccepted
     cmp r0, #0x0
     moveq r0, #0x0
     ldmeqia sp!, {r3, r4, r5, r6, r7, pc}
