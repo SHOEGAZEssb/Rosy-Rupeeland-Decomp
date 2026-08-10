@@ -13385,7 +13385,7 @@ build build/reports/actor_collision_mask_constant_0202e850.json: objdiff build/d
   base_object = build/decomp/asm/game/actor_collision_mask_constant_0202e850.o
 build build/reports/actor_collision_mask_constant_0202e850.txt: match_report build/reports/actor_collision_mask_constant_0202e850.json | tools/report_objdiff.py
   report_json = build/reports/actor_collision_mask_constant_0202e850.json
-  report_args = --section .text --function func_0202e850 --require-exact
+  report_args = --section .text --function Actor_GetDefaultCollisionMask --require-exact
 build build/reports/actor_collision_mask_constant.txt: phony build/reports/actor_collision_mask_constant_0202e850.txt
 
 build actor_collision_mask_constant: phony build/decomp/src/game/actor_collision_mask_constant.o build/decomp/asm/game/actor_collision_mask_constant_0202e850.o build/reports/actor_collision_mask_constant.txt
@@ -15182,7 +15182,7 @@ build build/reports/actor_derived_type1_default_index_02036a84.json: objdiff bui
   base_object = build/decomp/asm/game/actor_derived_type1_default_index_02036a84.o
 build build/reports/actor_derived_type1_default_index_02036a84.txt: match_report build/reports/actor_derived_type1_default_index_02036a84.json | tools/report_objdiff.py
   report_json = build/reports/actor_derived_type1_default_index_02036a84.json
-  report_args = --section .text --function func_02036a84 --require-exact
+  report_args = --section .text --function Type1Actor_GetDefaultIndex --require-exact
 build build/reports/actor_derived_type1_default_index.txt: phony build/reports/actor_derived_type1_default_index_02036a84.txt
 
 build actor_derived_type1_default_index: phony build/decomp/src/game/actor_derived_type1_default_index.o build/decomp/asm/game/actor_derived_type1_default_index_02036a84.o build/reports/actor_derived_type1_default_index.txt

@@ -433,4 +433,4 @@ func_0203647c: ; 0x0203647c
 .L_02036a80: .word gSoundContext
     .size func_0203647c, . - func_0203647c
 
-    .global func_02036a84
+    .global Type1Actor_GetDefaultIndex

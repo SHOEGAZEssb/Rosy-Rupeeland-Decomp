@@ -6,7 +6,7 @@
  * Ignore the implied object input and return the constant mask 0x40000. No
  * state, hardware, or SDK service is touched.
  */
-u32 func_0202e850(void)
+u32 Actor_GetDefaultCollisionMask(void)
 {
     return 0x40000;
 }
