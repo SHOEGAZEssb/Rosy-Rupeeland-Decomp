@@ -13,7 +13,7 @@ extern s32 func_020adc40(s32 value);
 #endif
 
 /* Store left, top, right, and bottom words in order and return the result pointer. */
-u32 *func_02015548(u32 *result, s32 left, s32 top, s32 right, s32 bottom)
+u32 *RectS32_Set(u32 *result, s32 left, s32 top, s32 right, s32 bottom)
 {
     result[0] = (u32)left;
     result[1] = (u32)top;

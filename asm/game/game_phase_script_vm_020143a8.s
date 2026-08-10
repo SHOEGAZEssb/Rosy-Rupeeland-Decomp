@@ -18,7 +18,7 @@
 .extern ActorRuntimeTriple_Assign
 .extern GamePhaseScriptVm_Pop
 .extern GamePhaseScriptVm_SetResult
-.extern func_02015548
+.extern RectS32_Set
 .extern func_0201d240
 .extern func_0201ded4
 .extern func_0201df54
@@ -161,7 +161,7 @@ L_020144c0:
     add r0, sp, #0x30
     sub r2, r2, #0x4
     add r3, r3, #0x4
-    bl func_02015548
+    bl RectS32_Set
     ldr r2, [sp, #0x30]
     ldr r9, [sp, #0x34]
     ldr r5, [sp, #0x38]

@@ -2,7 +2,7 @@
 .text
 .extern func_02005030
 .extern func_02005058
-.extern func_02015548
+.extern RectS32_Set
 .extern func_02030b7c
 .extern Actor_GetCollisionCenter
 .extern Actor_BuildCollisionRect
@@ -225,7 +225,7 @@ func_02031758: ; 0x02031758
     mov r2, r1
     mov r3, r1
     str r1, [sp, #0x0]
-    bl func_02015548
+    bl RectS32_Set
     add r0, sp, #0x30
     add r1, sp, #0x50
     add r2, sp, #0x40

@@ -11,7 +11,7 @@ extern void func_02005030(void *temporary, const void *source);
 extern void func_02005058(void *temporary);
 extern void Actor_BuildCollisionRect(void *output, void *actor,
                                      const void *position);
-extern void func_02015548(void *output, s32 first, s32 second, s32 third,
+extern void RectS32_Set(void *output, s32 first, s32 second, s32 third,
                           s32 fourth);
 extern s32 func_02056f34(void *state, const void *actorGeometry,
                          const void *referenceGeometry, void *output);
@@ -51,7 +51,7 @@ s32 Actor_IsInteractionEligible(void *self)
             Actor_BuildCollisionRect(referenceGeometry, reference,
                                      referenceVector);
             func_02005058(referenceVector);
-            func_02015548(state, 0, 0, 0, 0);
+            RectS32_Set(state, 0, 0, 0, 0);
             if (func_02056f34(state, actorGeometry, referenceGeometry,
                               &output) == 0) {
                 return 0;

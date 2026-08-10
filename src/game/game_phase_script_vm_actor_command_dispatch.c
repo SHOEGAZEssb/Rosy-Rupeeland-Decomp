@@ -136,7 +136,7 @@ s32 func_020143a8(GamePhaseActorScriptVm *self)
         s32 tileX = (*(s32 *)(actor + 0x1c) >> 12) / 16;
         u32 rect[4];
         void *object;
-        func_02015548(rect, tileX - 4, tileY - 4, tileX + 4, tileY + 4);
+        RectS32_Set(rect, tileX - 4, tileY - 4, tileX + 4, tileY + 4);
         object = Heap_Alloc(0x28, data_020d5b34, 4, &gHeapContext);
         if (object != 0)
             object = func_0201eefc(object, rect, a2, a3, a4);

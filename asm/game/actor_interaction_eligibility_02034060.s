@@ -2,7 +2,7 @@
 .text
 .extern func_02005030
 .extern func_02005058
-.extern func_02015548
+.extern RectS32_Set
 .extern Actor_BuildCollisionRect
 .extern Actor_GetCollection
 .extern Actor_BuildWorldInteractionBounds
@@ -50,7 +50,7 @@ Actor_IsInteractionEligible: ; 0x02034060
     mov r2, r1
     mov r3, r1
     str r1, [sp, #0x0]
-    bl func_02015548
+    bl RectS32_Set
     add r0, sp, #0x18
     add r1, sp, #0x38
     add r2, sp, #0x28
