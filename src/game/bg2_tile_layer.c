@@ -22,7 +22,7 @@ typedef struct Bg2TileLayer {
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *data_020dea9c;
+extern void *gBg2TileLayerVtable;
 extern void *gTileLayerStateVtable;
 extern void *TileLayerState_Init(void *, s32, s32, s32);
 extern void *OwnedTileBuffer_Destroy(void *);
@@ -31,31 +31,31 @@ extern void func_020b44e8(void);
 extern void func_020b1b94(const void *, s32, u32);
 extern void func_020b1b2c(const void *, s32, u32);
 extern void OS_Halt(void);
-void func_0202a8e4(Bg2TileLayer *);
-void func_0202a950(s32, s32, s32, s32);
-void func_0202a97c(s32, s32, s32, s32);
+void Bg2TileLayer_ConfigureControl(Bg2TileLayer *);
+void Bg2TileLayer_SetMainControl(s32, s32, s32, s32);
+void Bg2TileLayer_SetSubControl(s32, s32, s32, s32);
 #ifdef __cplusplus
 }
 #endif
 
 /* Construct the common layer, install the BG2 vtable, configure BG2CNT, and return self. */
-Bg2TileLayer *func_0202a8b4(Bg2TileLayer *self, s32 engineMode,
+Bg2TileLayer *Bg2TileLayer_Init(Bg2TileLayer *self, s32 engineMode,
                             s32 characterBase, s32 screenBase)
 {
     TileLayerState_Init(self, engineMode, characterBase, screenBase);
-    self->vtable_0000 = (void **)data_020dea9c;
-    func_0202a8e4(self);
+    self->vtable_0000 = (void **)gBg2TileLayerVtable;
+    Bg2TileLayer_ConfigureControl(self);
     return self;
 }
 
 /* Configure main/sub BG2CNT from trailing parameters and reset definition base to zero. */
-void func_0202a8e4(Bg2TileLayer *self)
+void Bg2TileLayer_ConfigureControl(Bg2TileLayer *self)
 {
     if (self->engineMode_1031 == 1)
-        func_0202a950(1, 0, self->screenBase_103c,
+        Bg2TileLayer_SetMainControl(1, 0, self->screenBase_103c,
                       self->characterBase_1038);
     else if (self->engineMode_1031 == 2)
-        func_0202a97c(1, 0, self->screenBase_103c,
+        Bg2TileLayer_SetSubControl(1, 0, self->screenBase_103c,
                       self->characterBase_1038);
     else
         return;
@@ -63,7 +63,7 @@ void func_0202a8e4(Bg2TileLayer *self)
 }
 
 /* Write main BG2CNT fields while preserving priority/character low bits selected by mask 0x43. */
-void func_0202a950(s32 size, s32 colorMode, s32 screenBase, s32 characterBase)
+void Bg2TileLayer_SetMainControl(s32 size, s32 colorMode, s32 screenBase, s32 characterBase)
 {
     volatile u16 *control = (volatile u16 *)0x0400000c;
     *control = (*control & 0x43) | (u16)(size << 14) |
@@ -71,8 +71,8 @@ void func_0202a950(s32 size, s32 colorMode, s32 screenBase, s32 characterBase)
                (u16)(characterBase << 2);
 }
 
-/* Write sub BG2CNT using the same recovered field packing as func_0202a950. */
-void func_0202a97c(s32 size, s32 colorMode, s32 screenBase, s32 characterBase)
+/* Write sub BG2CNT using the same recovered field packing as Bg2TileLayer_SetMainControl. */
+void Bg2TileLayer_SetSubControl(s32 size, s32 colorMode, s32 screenBase, s32 characterBase)
 {
     volatile u16 *control = (volatile u16 *)0x0400100c;
     *control = (*control & 0x43) | (u16)(size << 14) |
@@ -81,7 +81,7 @@ void func_0202a97c(s32 size, s32 colorMode, s32 screenBase, s32 characterBase)
 }
 
 /* Install the base-layer vtable, release its source-map buffer, and return self. */
-Bg2TileLayer *func_0202a9a8(Bg2TileLayer *self)
+Bg2TileLayer *Bg2TileLayer_DestroyComplete(Bg2TileLayer *self)
 {
     self->vtable_0000 = (void **)gTileLayerStateVtable;
     OwnedTileBuffer_Destroy((u8 *)self + 0x1008);
@@ -89,7 +89,7 @@ Bg2TileLayer *func_0202a9a8(Bg2TileLayer *self)
 }
 
 /* Release source-map storage, free the BG2 layer, and return its old address. */
-Bg2TileLayer *func_0202a9d0(Bg2TileLayer *self)
+Bg2TileLayer *Bg2TileLayer_DestroyAndFree(Bg2TileLayer *self)
 {
     self->vtable_0000 = (void **)gTileLayerStateVtable;
     OwnedTileBuffer_Destroy((u8 *)self + 0x1008);
@@ -102,7 +102,7 @@ Bg2TileLayer *func_0202a9d0(Bg2TileLayer *self)
  * wrapped (pixel+offset) BG2 scroll values, and replace DISPCNT's BG2 bit with
  * the stored display mask. Unsupported engine modes perform no upload.
  */
-void func_0202aa00(Bg2TileLayer *self)
+void Bg2TileLayer_UpdateHardware(Bg2TileLayer *self)
 {
     u8 *metadata = (u8 *)self + 0x1000;
     s32 x;
@@ -133,14 +133,14 @@ void func_0202aa00(Bg2TileLayer *self)
 }
 
 /* Store 0x400 when enabled and zero when disabled for valid engine modes. */
-void func_0202ab14(Bg2TileLayer *self, s32 enabled)
+void Bg2TileLayer_SetVisible(Bg2TileLayer *self, s32 enabled)
 {
     if (self->engineMode_1031 == 1 || self->engineMode_1031 == 2)
         self->displayMask_1032 = enabled ? 0x400 : 0;
 }
 
 /* Return the stored BG2 enable bit; halt and return zero for an invalid engine mode. */
-s32 func_0202ab6c(Bg2TileLayer *self)
+s32 Bg2TileLayer_IsVisible(Bg2TileLayer *self)
 {
     if (self->engineMode_1031 == 1 || self->engineMode_1031 == 2)
         return self->displayMask_1032 & 0x400;

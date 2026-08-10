@@ -69,10 +69,10 @@ extern void func_0202b520(void *, void *, u32, u32);
 extern void CompressedByteBuffer_LoadLz8Payload(void *, void *, u32, u32);
 extern void *func_0202b5f4(void *);
 extern void *CompressedByteBuffer_GetData(void *);
-extern void *func_0202abb0(void *, s32, s32, s32);
-extern void *func_0202b134(void *, s32, s32, s32);
-extern void *func_0202a8b4(void *, s32, s32, s32);
-extern void *func_0202aeac(void *, s32, s32, s32);
+extern void *Bg3TileLayer_Init(void *, s32, s32, s32);
+extern void *Bg3ExtendedTileLayer_Init(void *, s32, s32, s32);
+extern void *Bg2TileLayer_Init(void *, s32, s32, s32);
+extern void *Bg2ExtendedTileLayer_Init(void *, s32, s32, s32);
 extern void TileLayer_InitSourceMap(void *, void *, u32, u32, void *, s32, s32, void *);
 extern void TileLayer_SetScrollPositionDirect(void *, s32, s32);
 extern void TileLayer_RebuildCache(void *);
@@ -144,10 +144,10 @@ void DualLayerTileRenderer_LoadFromConfig(DualLayerTileRenderer *self,
                                         &gHeapContext);
         if (self->layers_28[0]) {
             if (variant == 0)
-                self->layers_28[0] = func_0202abb0(
+                self->layers_28[0] = Bg3TileLayer_Init(
                     self->layers_28[0], mode, self->field_44, self->width_48);
             else if (variant == 2)
-                self->layers_28[0] = func_0202b134(
+                self->layers_28[0] = Bg3ExtendedTileLayer_Init(
                     self->layers_28[0], mode, self->field_44, self->width_48);
         }
         map = func_0202b5f4(self->resource_04);
@@ -165,10 +165,10 @@ void DualLayerTileRenderer_LoadFromConfig(DualLayerTileRenderer *self,
                                         &gHeapContext);
         if (self->layers_28[1]) {
             if (variant == 0)
-                self->layers_28[1] = func_0202a8b4(
+                self->layers_28[1] = Bg2TileLayer_Init(
                     self->layers_28[1], mode, self->field_44, self->height_4c);
             else if (variant == 2)
-                self->layers_28[1] = func_0202aeac(
+                self->layers_28[1] = Bg2ExtendedTileLayer_Init(
                     self->layers_28[1], mode, self->field_44, self->height_4c);
         }
         map = func_0202b5f4(self->resource_04);

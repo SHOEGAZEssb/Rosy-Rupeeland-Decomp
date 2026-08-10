@@ -2,9 +2,9 @@
 .text
 
 
-    .global func_0202ab14
-    .type func_0202ab14, @function
-func_0202ab14: ; 0x0202ab14
+    .global Bg2TileLayer_SetVisible
+    .type Bg2TileLayer_SetVisible, @function
+Bg2TileLayer_SetVisible: ; 0x0202ab14
     add r0, r0, #0x1000
     cmp r1, #0x0
     ldrb r1, [r0, #0x31]
@@ -30,5 +30,5 @@ func_0202ab14: ; 0x0202ab14
     mov r1, #0x0
     strh r1, [r0, #0x32]
     bx lr
-    .size func_0202ab14, . - func_0202ab14
+    .size Bg2TileLayer_SetVisible, . - Bg2TileLayer_SetVisible
 

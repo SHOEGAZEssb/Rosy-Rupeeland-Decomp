@@ -9769,196 +9769,196 @@ build build/reports/bg2_tile_layer_0202a8b4.json: objdiff build/decomp/delinks/a
   base_object = build/decomp/asm/game/bg2_tile_layer_0202a8b4.o
 build build/reports/bg2_tile_layer_0202a8b4.txt: match_report build/reports/bg2_tile_layer_0202a8b4.json | tools/report_objdiff.py
   report_json = build/reports/bg2_tile_layer_0202a8b4.json
-  report_args = --section .text --function func_0202a8b4 --require-exact
+  report_args = --section .text --function Bg2TileLayer_Init --require-exact
 build build/reports/bg2_tile_layer_0202a8e4.json: objdiff build/decomp/delinks/asm/game/bg2_tile_layer_0202a8e4.o | build/decomp/asm/game/bg2_tile_layer_0202a8e4.o
   target_object = build/decomp/delinks/asm/game/bg2_tile_layer_0202a8e4.o
   base_object = build/decomp/asm/game/bg2_tile_layer_0202a8e4.o
 build build/reports/bg2_tile_layer_0202a8e4.txt: match_report build/reports/bg2_tile_layer_0202a8e4.json | tools/report_objdiff.py
   report_json = build/reports/bg2_tile_layer_0202a8e4.json
-  report_args = --section .text --function func_0202a8e4 --require-exact
+  report_args = --section .text --function Bg2TileLayer_ConfigureControl --require-exact
 build build/reports/bg2_tile_layer_0202a950.json: objdiff build/decomp/delinks/asm/game/bg2_tile_layer_0202a950.o | build/decomp/asm/game/bg2_tile_layer_0202a950.o
   target_object = build/decomp/delinks/asm/game/bg2_tile_layer_0202a950.o
   base_object = build/decomp/asm/game/bg2_tile_layer_0202a950.o
 build build/reports/bg2_tile_layer_0202a950.txt: match_report build/reports/bg2_tile_layer_0202a950.json | tools/report_objdiff.py
   report_json = build/reports/bg2_tile_layer_0202a950.json
-  report_args = --section .text --function func_0202a950 --require-exact
+  report_args = --section .text --function Bg2TileLayer_SetMainControl --require-exact
 build build/reports/bg2_tile_layer_0202a97c.json: objdiff build/decomp/delinks/asm/game/bg2_tile_layer_0202a97c.o | build/decomp/asm/game/bg2_tile_layer_0202a97c.o
   target_object = build/decomp/delinks/asm/game/bg2_tile_layer_0202a97c.o
   base_object = build/decomp/asm/game/bg2_tile_layer_0202a97c.o
 build build/reports/bg2_tile_layer_0202a97c.txt: match_report build/reports/bg2_tile_layer_0202a97c.json | tools/report_objdiff.py
   report_json = build/reports/bg2_tile_layer_0202a97c.json
-  report_args = --section .text --function func_0202a97c --require-exact
+  report_args = --section .text --function Bg2TileLayer_SetSubControl --require-exact
 build build/reports/bg2_tile_layer_0202a9a8.json: objdiff build/decomp/delinks/asm/game/bg2_tile_layer_0202a9a8.o | build/decomp/asm/game/bg2_tile_layer_0202a9a8.o
   target_object = build/decomp/delinks/asm/game/bg2_tile_layer_0202a9a8.o
   base_object = build/decomp/asm/game/bg2_tile_layer_0202a9a8.o
 build build/reports/bg2_tile_layer_0202a9a8.txt: match_report build/reports/bg2_tile_layer_0202a9a8.json | tools/report_objdiff.py
   report_json = build/reports/bg2_tile_layer_0202a9a8.json
-  report_args = --section .text --function func_0202a9a8 --require-exact
+  report_args = --section .text --function Bg2TileLayer_DestroyComplete --require-exact
 build build/reports/bg2_tile_layer_0202a9d0.json: objdiff build/decomp/delinks/asm/game/bg2_tile_layer_0202a9d0.o | build/decomp/asm/game/bg2_tile_layer_0202a9d0.o
   target_object = build/decomp/delinks/asm/game/bg2_tile_layer_0202a9d0.o
   base_object = build/decomp/asm/game/bg2_tile_layer_0202a9d0.o
 build build/reports/bg2_tile_layer_0202a9d0.txt: match_report build/reports/bg2_tile_layer_0202a9d0.json | tools/report_objdiff.py
   report_json = build/reports/bg2_tile_layer_0202a9d0.json
-  report_args = --section .text --function func_0202a9d0 --require-exact
+  report_args = --section .text --function Bg2TileLayer_DestroyAndFree --require-exact
 build build/reports/bg2_tile_layer_0202aa00.json: objdiff build/decomp/delinks/asm/game/bg2_tile_layer_0202aa00.o | build/decomp/asm/game/bg2_tile_layer_0202aa00.o
   target_object = build/decomp/delinks/asm/game/bg2_tile_layer_0202aa00.o
   base_object = build/decomp/asm/game/bg2_tile_layer_0202aa00.o
 build build/reports/bg2_tile_layer_0202aa00.txt: match_report build/reports/bg2_tile_layer_0202aa00.json | tools/report_objdiff.py
   report_json = build/reports/bg2_tile_layer_0202aa00.json
-  report_args = --section .text --function func_0202aa00 --require-exact
+  report_args = --section .text --function Bg2TileLayer_UpdateHardware --require-exact
 build build/reports/bg2_tile_layer_0202ab14.json: objdiff build/decomp/delinks/asm/game/bg2_tile_layer_0202ab14.o | build/decomp/asm/game/bg2_tile_layer_0202ab14.o
   target_object = build/decomp/delinks/asm/game/bg2_tile_layer_0202ab14.o
   base_object = build/decomp/asm/game/bg2_tile_layer_0202ab14.o
 build build/reports/bg2_tile_layer_0202ab14.txt: match_report build/reports/bg2_tile_layer_0202ab14.json | tools/report_objdiff.py
   report_json = build/reports/bg2_tile_layer_0202ab14.json
-  report_args = --section .text --function func_0202ab14 --require-exact
+  report_args = --section .text --function Bg2TileLayer_SetVisible --require-exact
 build build/reports/bg2_tile_layer_0202ab6c.json: objdiff build/decomp/delinks/asm/game/bg2_tile_layer_0202ab6c.o | build/decomp/asm/game/bg2_tile_layer_0202ab6c.o
   target_object = build/decomp/delinks/asm/game/bg2_tile_layer_0202ab6c.o
   base_object = build/decomp/asm/game/bg2_tile_layer_0202ab6c.o
 build build/reports/bg2_tile_layer_0202ab6c.txt: match_report build/reports/bg2_tile_layer_0202ab6c.json | tools/report_objdiff.py
   report_json = build/reports/bg2_tile_layer_0202ab6c.json
-  report_args = --section .text --function func_0202ab6c --require-exact
+  report_args = --section .text --function Bg2TileLayer_IsVisible --require-exact
 build build/reports/bg2_tile_layer.txt: phony build/reports/bg2_tile_layer_0202a8b4.txt build/reports/bg2_tile_layer_0202a8e4.txt build/reports/bg2_tile_layer_0202a950.txt build/reports/bg2_tile_layer_0202a97c.txt build/reports/bg2_tile_layer_0202a9a8.txt build/reports/bg2_tile_layer_0202a9d0.txt build/reports/bg2_tile_layer_0202aa00.txt build/reports/bg2_tile_layer_0202ab14.txt build/reports/bg2_tile_layer_0202ab6c.txt
 build build/reports/bg3_tile_layer_0202abb0.json: objdiff build/decomp/delinks/asm/game/bg3_tile_layer_0202abb0.o | build/decomp/asm/game/bg3_tile_layer_0202abb0.o
   target_object = build/decomp/delinks/asm/game/bg3_tile_layer_0202abb0.o
   base_object = build/decomp/asm/game/bg3_tile_layer_0202abb0.o
 build build/reports/bg3_tile_layer_0202abb0.txt: match_report build/reports/bg3_tile_layer_0202abb0.json | tools/report_objdiff.py
   report_json = build/reports/bg3_tile_layer_0202abb0.json
-  report_args = --section .text --function func_0202abb0 --require-exact
+  report_args = --section .text --function Bg3TileLayer_Init --require-exact
 build build/reports/bg3_tile_layer_0202abe0.json: objdiff build/decomp/delinks/asm/game/bg3_tile_layer_0202abe0.o | build/decomp/asm/game/bg3_tile_layer_0202abe0.o
   target_object = build/decomp/delinks/asm/game/bg3_tile_layer_0202abe0.o
   base_object = build/decomp/asm/game/bg3_tile_layer_0202abe0.o
 build build/reports/bg3_tile_layer_0202abe0.txt: match_report build/reports/bg3_tile_layer_0202abe0.json | tools/report_objdiff.py
   report_json = build/reports/bg3_tile_layer_0202abe0.json
-  report_args = --section .text --function func_0202abe0 --require-exact
+  report_args = --section .text --function Bg3TileLayer_ConfigureControl --require-exact
 build build/reports/bg3_tile_layer_0202ac4c.json: objdiff build/decomp/delinks/asm/game/bg3_tile_layer_0202ac4c.o | build/decomp/asm/game/bg3_tile_layer_0202ac4c.o
   target_object = build/decomp/delinks/asm/game/bg3_tile_layer_0202ac4c.o
   base_object = build/decomp/asm/game/bg3_tile_layer_0202ac4c.o
 build build/reports/bg3_tile_layer_0202ac4c.txt: match_report build/reports/bg3_tile_layer_0202ac4c.json | tools/report_objdiff.py
   report_json = build/reports/bg3_tile_layer_0202ac4c.json
-  report_args = --section .text --function func_0202ac4c --require-exact
+  report_args = --section .text --function Bg3TileLayer_SetMainControl --require-exact
 build build/reports/bg3_tile_layer_0202ac78.json: objdiff build/decomp/delinks/asm/game/bg3_tile_layer_0202ac78.o | build/decomp/asm/game/bg3_tile_layer_0202ac78.o
   target_object = build/decomp/delinks/asm/game/bg3_tile_layer_0202ac78.o
   base_object = build/decomp/asm/game/bg3_tile_layer_0202ac78.o
 build build/reports/bg3_tile_layer_0202ac78.txt: match_report build/reports/bg3_tile_layer_0202ac78.json | tools/report_objdiff.py
   report_json = build/reports/bg3_tile_layer_0202ac78.json
-  report_args = --section .text --function func_0202ac78 --require-exact
+  report_args = --section .text --function Bg3TileLayer_SetSubControl --require-exact
 build build/reports/bg3_tile_layer_0202aca4.json: objdiff build/decomp/delinks/asm/game/bg3_tile_layer_0202aca4.o | build/decomp/asm/game/bg3_tile_layer_0202aca4.o
   target_object = build/decomp/delinks/asm/game/bg3_tile_layer_0202aca4.o
   base_object = build/decomp/asm/game/bg3_tile_layer_0202aca4.o
 build build/reports/bg3_tile_layer_0202aca4.txt: match_report build/reports/bg3_tile_layer_0202aca4.json | tools/report_objdiff.py
   report_json = build/reports/bg3_tile_layer_0202aca4.json
-  report_args = --section .text --function func_0202aca4 --require-exact
+  report_args = --section .text --function Bg3TileLayer_DestroyComplete --require-exact
 build build/reports/bg3_tile_layer_0202accc.json: objdiff build/decomp/delinks/asm/game/bg3_tile_layer_0202accc.o | build/decomp/asm/game/bg3_tile_layer_0202accc.o
   target_object = build/decomp/delinks/asm/game/bg3_tile_layer_0202accc.o
   base_object = build/decomp/asm/game/bg3_tile_layer_0202accc.o
 build build/reports/bg3_tile_layer_0202accc.txt: match_report build/reports/bg3_tile_layer_0202accc.json | tools/report_objdiff.py
   report_json = build/reports/bg3_tile_layer_0202accc.json
-  report_args = --section .text --function func_0202accc --require-exact
+  report_args = --section .text --function Bg3TileLayer_DestroyAndFree --require-exact
 build build/reports/bg3_tile_layer_0202acfc.json: objdiff build/decomp/delinks/asm/game/bg3_tile_layer_0202acfc.o | build/decomp/asm/game/bg3_tile_layer_0202acfc.o
   target_object = build/decomp/delinks/asm/game/bg3_tile_layer_0202acfc.o
   base_object = build/decomp/asm/game/bg3_tile_layer_0202acfc.o
 build build/reports/bg3_tile_layer_0202acfc.txt: match_report build/reports/bg3_tile_layer_0202acfc.json | tools/report_objdiff.py
   report_json = build/reports/bg3_tile_layer_0202acfc.json
-  report_args = --section .text --function func_0202acfc --require-exact
+  report_args = --section .text --function Bg3TileLayer_UpdateHardware --require-exact
 build build/reports/bg3_tile_layer_0202ae10.json: objdiff build/decomp/delinks/asm/game/bg3_tile_layer_0202ae10.o | build/decomp/asm/game/bg3_tile_layer_0202ae10.o
   target_object = build/decomp/delinks/asm/game/bg3_tile_layer_0202ae10.o
   base_object = build/decomp/asm/game/bg3_tile_layer_0202ae10.o
 build build/reports/bg3_tile_layer_0202ae10.txt: match_report build/reports/bg3_tile_layer_0202ae10.json | tools/report_objdiff.py
   report_json = build/reports/bg3_tile_layer_0202ae10.json
-  report_args = --section .text --function func_0202ae10 --require-exact
+  report_args = --section .text --function Bg3TileLayer_SetVisible --require-exact
 build build/reports/bg3_tile_layer_0202ae68.json: objdiff build/decomp/delinks/asm/game/bg3_tile_layer_0202ae68.o | build/decomp/asm/game/bg3_tile_layer_0202ae68.o
   target_object = build/decomp/delinks/asm/game/bg3_tile_layer_0202ae68.o
   base_object = build/decomp/asm/game/bg3_tile_layer_0202ae68.o
 build build/reports/bg3_tile_layer_0202ae68.txt: match_report build/reports/bg3_tile_layer_0202ae68.json | tools/report_objdiff.py
   report_json = build/reports/bg3_tile_layer_0202ae68.json
-  report_args = --section .text --function func_0202ae68 --require-exact
+  report_args = --section .text --function Bg3TileLayer_IsVisible --require-exact
 build build/reports/bg3_tile_layer.txt: phony build/reports/bg3_tile_layer_0202abb0.txt build/reports/bg3_tile_layer_0202abe0.txt build/reports/bg3_tile_layer_0202ac4c.txt build/reports/bg3_tile_layer_0202ac78.txt build/reports/bg3_tile_layer_0202aca4.txt build/reports/bg3_tile_layer_0202accc.txt build/reports/bg3_tile_layer_0202acfc.txt build/reports/bg3_tile_layer_0202ae10.txt build/reports/bg3_tile_layer_0202ae68.txt
 build build/reports/bg2_extended_tile_layer_0202aeac.json: objdiff build/decomp/delinks/asm/game/bg2_extended_tile_layer_0202aeac.o | build/decomp/asm/game/bg2_extended_tile_layer_0202aeac.o
   target_object = build/decomp/delinks/asm/game/bg2_extended_tile_layer_0202aeac.o
   base_object = build/decomp/asm/game/bg2_extended_tile_layer_0202aeac.o
 build build/reports/bg2_extended_tile_layer_0202aeac.txt: match_report build/reports/bg2_extended_tile_layer_0202aeac.json | tools/report_objdiff.py
   report_json = build/reports/bg2_extended_tile_layer_0202aeac.json
-  report_args = --section .text --function func_0202aeac --require-exact
+  report_args = --section .text --function Bg2ExtendedTileLayer_Init --require-exact
 build build/reports/bg2_extended_tile_layer_0202aedc.json: objdiff build/decomp/delinks/asm/game/bg2_extended_tile_layer_0202aedc.o | build/decomp/asm/game/bg2_extended_tile_layer_0202aedc.o
   target_object = build/decomp/delinks/asm/game/bg2_extended_tile_layer_0202aedc.o
   base_object = build/decomp/asm/game/bg2_extended_tile_layer_0202aedc.o
 build build/reports/bg2_extended_tile_layer_0202aedc.txt: match_report build/reports/bg2_extended_tile_layer_0202aedc.json | tools/report_objdiff.py
   report_json = build/reports/bg2_extended_tile_layer_0202aedc.json
-  report_args = --section .text --function func_0202aedc --require-exact
+  report_args = --section .text --function Bg2ExtendedTileLayer_ConfigureControl --require-exact
 build build/reports/bg2_extended_tile_layer_0202af2c.json: objdiff build/decomp/delinks/asm/game/bg2_extended_tile_layer_0202af2c.o | build/decomp/asm/game/bg2_extended_tile_layer_0202af2c.o
   target_object = build/decomp/delinks/asm/game/bg2_extended_tile_layer_0202af2c.o
   base_object = build/decomp/asm/game/bg2_extended_tile_layer_0202af2c.o
 build build/reports/bg2_extended_tile_layer_0202af2c.txt: match_report build/reports/bg2_extended_tile_layer_0202af2c.json | tools/report_objdiff.py
   report_json = build/reports/bg2_extended_tile_layer_0202af2c.json
-  report_args = --section .text --function func_0202af2c --require-exact
+  report_args = --section .text --function Bg2ExtendedTileLayer_DestroyComplete --require-exact
 build build/reports/bg2_extended_tile_layer_0202af54.json: objdiff build/decomp/delinks/asm/game/bg2_extended_tile_layer_0202af54.o | build/decomp/asm/game/bg2_extended_tile_layer_0202af54.o
   target_object = build/decomp/delinks/asm/game/bg2_extended_tile_layer_0202af54.o
   base_object = build/decomp/asm/game/bg2_extended_tile_layer_0202af54.o
 build build/reports/bg2_extended_tile_layer_0202af54.txt: match_report build/reports/bg2_extended_tile_layer_0202af54.json | tools/report_objdiff.py
   report_json = build/reports/bg2_extended_tile_layer_0202af54.json
-  report_args = --section .text --function func_0202af54 --require-exact
+  report_args = --section .text --function Bg2ExtendedTileLayer_DestroyAndFree --require-exact
 build build/reports/bg2_extended_tile_layer_0202af84.json: objdiff build/decomp/delinks/asm/game/bg2_extended_tile_layer_0202af84.o | build/decomp/asm/game/bg2_extended_tile_layer_0202af84.o
   target_object = build/decomp/delinks/asm/game/bg2_extended_tile_layer_0202af84.o
   base_object = build/decomp/asm/game/bg2_extended_tile_layer_0202af84.o
 build build/reports/bg2_extended_tile_layer_0202af84.txt: match_report build/reports/bg2_extended_tile_layer_0202af84.json | tools/report_objdiff.py
   report_json = build/reports/bg2_extended_tile_layer_0202af84.json
-  report_args = --section .text --function func_0202af84 --require-exact
+  report_args = --section .text --function Bg2ExtendedTileLayer_UpdateHardware --require-exact
 build build/reports/bg2_extended_tile_layer_0202b098.json: objdiff build/decomp/delinks/asm/game/bg2_extended_tile_layer_0202b098.o | build/decomp/asm/game/bg2_extended_tile_layer_0202b098.o
   target_object = build/decomp/delinks/asm/game/bg2_extended_tile_layer_0202b098.o
   base_object = build/decomp/asm/game/bg2_extended_tile_layer_0202b098.o
 build build/reports/bg2_extended_tile_layer_0202b098.txt: match_report build/reports/bg2_extended_tile_layer_0202b098.json | tools/report_objdiff.py
   report_json = build/reports/bg2_extended_tile_layer_0202b098.json
-  report_args = --section .text --function func_0202b098 --require-exact
+  report_args = --section .text --function Bg2ExtendedTileLayer_SetVisible --require-exact
 build build/reports/bg2_extended_tile_layer_0202b0f0.json: objdiff build/decomp/delinks/asm/game/bg2_extended_tile_layer_0202b0f0.o | build/decomp/asm/game/bg2_extended_tile_layer_0202b0f0.o
   target_object = build/decomp/delinks/asm/game/bg2_extended_tile_layer_0202b0f0.o
   base_object = build/decomp/asm/game/bg2_extended_tile_layer_0202b0f0.o
 build build/reports/bg2_extended_tile_layer_0202b0f0.txt: match_report build/reports/bg2_extended_tile_layer_0202b0f0.json | tools/report_objdiff.py
   report_json = build/reports/bg2_extended_tile_layer_0202b0f0.json
-  report_args = --section .text --function func_0202b0f0 --require-exact
+  report_args = --section .text --function Bg2ExtendedTileLayer_IsVisible --require-exact
 build build/reports/bg2_extended_tile_layer.txt: phony build/reports/bg2_extended_tile_layer_0202aeac.txt build/reports/bg2_extended_tile_layer_0202aedc.txt build/reports/bg2_extended_tile_layer_0202af2c.txt build/reports/bg2_extended_tile_layer_0202af54.txt build/reports/bg2_extended_tile_layer_0202af84.txt build/reports/bg2_extended_tile_layer_0202b098.txt build/reports/bg2_extended_tile_layer_0202b0f0.txt
 build build/reports/bg3_extended_tile_layer_0202b134.json: objdiff build/decomp/delinks/asm/game/bg3_extended_tile_layer_0202b134.o | build/decomp/asm/game/bg3_extended_tile_layer_0202b134.o
   target_object = build/decomp/delinks/asm/game/bg3_extended_tile_layer_0202b134.o
   base_object = build/decomp/asm/game/bg3_extended_tile_layer_0202b134.o
 build build/reports/bg3_extended_tile_layer_0202b134.txt: match_report build/reports/bg3_extended_tile_layer_0202b134.json | tools/report_objdiff.py
   report_json = build/reports/bg3_extended_tile_layer_0202b134.json
-  report_args = --section .text --function func_0202b134 --require-exact
+  report_args = --section .text --function Bg3ExtendedTileLayer_Init --require-exact
 build build/reports/bg3_extended_tile_layer_0202b164.json: objdiff build/decomp/delinks/asm/game/bg3_extended_tile_layer_0202b164.o | build/decomp/asm/game/bg3_extended_tile_layer_0202b164.o
   target_object = build/decomp/delinks/asm/game/bg3_extended_tile_layer_0202b164.o
   base_object = build/decomp/asm/game/bg3_extended_tile_layer_0202b164.o
 build build/reports/bg3_extended_tile_layer_0202b164.txt: match_report build/reports/bg3_extended_tile_layer_0202b164.json | tools/report_objdiff.py
   report_json = build/reports/bg3_extended_tile_layer_0202b164.json
-  report_args = --section .text --function func_0202b164 --require-exact
+  report_args = --section .text --function Bg3ExtendedTileLayer_ConfigureControl --require-exact
 build build/reports/bg3_extended_tile_layer_0202b1b4.json: objdiff build/decomp/delinks/asm/game/bg3_extended_tile_layer_0202b1b4.o | build/decomp/asm/game/bg3_extended_tile_layer_0202b1b4.o
   target_object = build/decomp/delinks/asm/game/bg3_extended_tile_layer_0202b1b4.o
   base_object = build/decomp/asm/game/bg3_extended_tile_layer_0202b1b4.o
 build build/reports/bg3_extended_tile_layer_0202b1b4.txt: match_report build/reports/bg3_extended_tile_layer_0202b1b4.json | tools/report_objdiff.py
   report_json = build/reports/bg3_extended_tile_layer_0202b1b4.json
-  report_args = --section .text --function func_0202b1b4 --require-exact
+  report_args = --section .text --function Bg3ExtendedTileLayer_DestroyComplete --require-exact
 build build/reports/bg3_extended_tile_layer_0202b1dc.json: objdiff build/decomp/delinks/asm/game/bg3_extended_tile_layer_0202b1dc.o | build/decomp/asm/game/bg3_extended_tile_layer_0202b1dc.o
   target_object = build/decomp/delinks/asm/game/bg3_extended_tile_layer_0202b1dc.o
   base_object = build/decomp/asm/game/bg3_extended_tile_layer_0202b1dc.o
 build build/reports/bg3_extended_tile_layer_0202b1dc.txt: match_report build/reports/bg3_extended_tile_layer_0202b1dc.json | tools/report_objdiff.py
   report_json = build/reports/bg3_extended_tile_layer_0202b1dc.json
-  report_args = --section .text --function func_0202b1dc --require-exact
+  report_args = --section .text --function Bg3ExtendedTileLayer_DestroyAndFree --require-exact
 build build/reports/bg3_extended_tile_layer_0202b20c.json: objdiff build/decomp/delinks/asm/game/bg3_extended_tile_layer_0202b20c.o | build/decomp/asm/game/bg3_extended_tile_layer_0202b20c.o
   target_object = build/decomp/delinks/asm/game/bg3_extended_tile_layer_0202b20c.o
   base_object = build/decomp/asm/game/bg3_extended_tile_layer_0202b20c.o
 build build/reports/bg3_extended_tile_layer_0202b20c.txt: match_report build/reports/bg3_extended_tile_layer_0202b20c.json | tools/report_objdiff.py
   report_json = build/reports/bg3_extended_tile_layer_0202b20c.json
-  report_args = --section .text --function func_0202b20c --require-exact
+  report_args = --section .text --function Bg3ExtendedTileLayer_UpdateHardware --require-exact
 build build/reports/bg3_extended_tile_layer_0202b320.json: objdiff build/decomp/delinks/asm/game/bg3_extended_tile_layer_0202b320.o | build/decomp/asm/game/bg3_extended_tile_layer_0202b320.o
   target_object = build/decomp/delinks/asm/game/bg3_extended_tile_layer_0202b320.o
   base_object = build/decomp/asm/game/bg3_extended_tile_layer_0202b320.o
 build build/reports/bg3_extended_tile_layer_0202b320.txt: match_report build/reports/bg3_extended_tile_layer_0202b320.json | tools/report_objdiff.py
   report_json = build/reports/bg3_extended_tile_layer_0202b320.json
-  report_args = --section .text --function func_0202b320 --require-exact
+  report_args = --section .text --function Bg3ExtendedTileLayer_SetVisible --require-exact
 build build/reports/bg3_extended_tile_layer_0202b378.json: objdiff build/decomp/delinks/asm/game/bg3_extended_tile_layer_0202b378.o | build/decomp/asm/game/bg3_extended_tile_layer_0202b378.o
   target_object = build/decomp/delinks/asm/game/bg3_extended_tile_layer_0202b378.o
   base_object = build/decomp/asm/game/bg3_extended_tile_layer_0202b378.o
 build build/reports/bg3_extended_tile_layer_0202b378.txt: match_report build/reports/bg3_extended_tile_layer_0202b378.json | tools/report_objdiff.py
   report_json = build/reports/bg3_extended_tile_layer_0202b378.json
-  report_args = --section .text --function func_0202b378 --require-exact
+  report_args = --section .text --function Bg3ExtendedTileLayer_IsVisible --require-exact
 build build/reports/bg3_extended_tile_layer.txt: phony build/reports/bg3_extended_tile_layer_0202b134.txt build/reports/bg3_extended_tile_layer_0202b164.txt build/reports/bg3_extended_tile_layer_0202b1b4.txt build/reports/bg3_extended_tile_layer_0202b1dc.txt build/reports/bg3_extended_tile_layer_0202b20c.txt build/reports/bg3_extended_tile_layer_0202b320.txt build/reports/bg3_extended_tile_layer_0202b378.txt
 build build/reports/software_canvas_data.json: objdiff build/decomp/delinks/src/graphics/software_canvas_data.o | build/decomp/src/graphics/software_canvas_data.o
   target_object = build/decomp/delinks/src/graphics/software_canvas_data.o

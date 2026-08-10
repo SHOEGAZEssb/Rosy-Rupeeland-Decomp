@@ -2,9 +2,9 @@
 .text
 .extern OS_Halt
 
-    .global func_0202b378
-    .type func_0202b378, @function
-func_0202b378: ; 0x0202b378
+    .global Bg3ExtendedTileLayer_IsVisible
+    .type Bg3ExtendedTileLayer_IsVisible, @function
+Bg3ExtendedTileLayer_IsVisible: ; 0x0202b378
     stmdb sp!, {r3, lr}
     add r0, r0, #0x1000
     ldrb r1, [r0, #0x31]
@@ -25,5 +25,5 @@ func_0202b378: ; 0x0202b378
     bl OS_Halt
     mov r0, #0x0
     ldmia sp!, {r3, pc}
-    .size func_0202b378, . - func_0202b378
+    .size Bg3ExtendedTileLayer_IsVisible, . - Bg3ExtendedTileLayer_IsVisible
 

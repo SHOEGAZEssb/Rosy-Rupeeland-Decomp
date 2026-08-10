@@ -2,9 +2,9 @@
 .text
 .extern OS_Halt
 
-    .global func_0202ae68
-    .type func_0202ae68, @function
-func_0202ae68: ; 0x0202ae68
+    .global Bg3TileLayer_IsVisible
+    .type Bg3TileLayer_IsVisible, @function
+Bg3TileLayer_IsVisible: ; 0x0202ae68
     stmdb sp!, {r3, lr}
     add r0, r0, #0x1000
     ldrb r1, [r0, #0x31]
@@ -25,5 +25,5 @@ func_0202ae68: ; 0x0202ae68
     bl OS_Halt
     mov r0, #0x0
     ldmia sp!, {r3, pc}
-    .size func_0202ae68, . - func_0202ae68
+    .size Bg3TileLayer_IsVisible, . - Bg3TileLayer_IsVisible
 

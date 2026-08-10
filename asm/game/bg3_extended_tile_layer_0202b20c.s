@@ -5,9 +5,9 @@
 .extern func_020b44e8
 .extern func_020b4554
 
-    .global func_0202b20c
-    .type func_0202b20c, @function
-func_0202b20c: ; 0x0202b20c
+    .global Bg3ExtendedTileLayer_UpdateHardware
+    .type Bg3ExtendedTileLayer_UpdateHardware, @function
+Bg3ExtendedTileLayer_UpdateHardware: ; 0x0202b20c
     stmdb sp!, {r4, lr}
     mov r4, r0
     add r0, r4, #0x1000
@@ -79,5 +79,5 @@ func_0202b20c: ; 0x0202b20c
 .L_0202b314: .word 0x1ff
 .L_0202b318: .word 0x400001c
 .L_0202b31c: .word 0x400101c
-    .size func_0202b20c, . - func_0202b20c
+    .size Bg3ExtendedTileLayer_UpdateHardware, . - Bg3ExtendedTileLayer_UpdateHardware
 

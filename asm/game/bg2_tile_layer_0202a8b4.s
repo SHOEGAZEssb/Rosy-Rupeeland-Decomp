@@ -1,11 +1,11 @@
 ; Matching retail form; see src/game/bg2_tile_layer.c.
 .text
-.extern data_020dea9c
+.extern gBg2TileLayerVtable
 .extern TileLayerState_Init
 
-    .global func_0202a8b4
-    .type func_0202a8b4, @function
-func_0202a8b4: ; 0x0202a8b4
+    .global Bg2TileLayer_Init
+    .type Bg2TileLayer_Init, @function
+Bg2TileLayer_Init: ; 0x0202a8b4
     stmdb sp!, {r4, lr}
     mov r4, r0
     bl TileLayerState_Init
@@ -17,6 +17,6 @@ func_0202a8b4: ; 0x0202a8b4
     blx r1
     mov r0, r4
     ldmia sp!, {r4, pc}
-.L_0202a8e0: .word data_020dea9c
-    .size func_0202a8b4, . - func_0202a8b4
+.L_0202a8e0: .word gBg2TileLayerVtable
+    .size Bg2TileLayer_Init, . - Bg2TileLayer_Init
 

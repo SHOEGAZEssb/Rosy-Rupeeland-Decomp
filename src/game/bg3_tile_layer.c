@@ -22,7 +22,7 @@ typedef struct Bg3TileLayer {
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *data_020deafc;
+extern void *gBg3TileLayerVtable;
 extern void *gTileLayerStateVtable;
 extern void *TileLayerState_Init(void *, s32, s32, s32);
 extern void *OwnedTileBuffer_Destroy(void *);
@@ -31,31 +31,31 @@ extern void func_020b44e8(void);
 extern void func_020b1ac4(const void *, s32, u32);
 extern void func_020b1a5c(const void *, s32, u32);
 extern void OS_Halt(void);
-void func_0202abe0(Bg3TileLayer *);
-void func_0202ac4c(s32, s32, s32, s32);
-void func_0202ac78(s32, s32, s32, s32);
+void Bg3TileLayer_ConfigureControl(Bg3TileLayer *);
+void Bg3TileLayer_SetMainControl(s32, s32, s32, s32);
+void Bg3TileLayer_SetSubControl(s32, s32, s32, s32);
 #ifdef __cplusplus
 }
 #endif
 
 /* Construct the common layer, install the BG3 vtable, configure BG3CNT, and return self. */
-Bg3TileLayer *func_0202abb0(Bg3TileLayer *self, s32 engineMode,
+Bg3TileLayer *Bg3TileLayer_Init(Bg3TileLayer *self, s32 engineMode,
                             s32 characterBase, s32 screenBase)
 {
     TileLayerState_Init(self, engineMode, characterBase, screenBase);
-    self->vtable_0000 = (void **)data_020deafc;
-    func_0202abe0(self);
+    self->vtable_0000 = (void **)gBg3TileLayerVtable;
+    Bg3TileLayer_ConfigureControl(self);
     return self;
 }
 
 /* Configure main/sub BG3CNT from trailing parameters and reset definition base to zero. */
-void func_0202abe0(Bg3TileLayer *self)
+void Bg3TileLayer_ConfigureControl(Bg3TileLayer *self)
 {
     if (self->engineMode_1031 == 1)
-        func_0202ac4c(1, 0, self->screenBase_103c,
+        Bg3TileLayer_SetMainControl(1, 0, self->screenBase_103c,
                       self->characterBase_1038);
     else if (self->engineMode_1031 == 2)
-        func_0202ac78(1, 0, self->screenBase_103c,
+        Bg3TileLayer_SetSubControl(1, 0, self->screenBase_103c,
                       self->characterBase_1038);
     else
         return;
@@ -63,7 +63,7 @@ void func_0202abe0(Bg3TileLayer *self)
 }
 
 /* Pack the recovered size/color/screen/character fields into main BG3CNT. */
-void func_0202ac4c(s32 size, s32 colorMode, s32 screenBase, s32 characterBase)
+void Bg3TileLayer_SetMainControl(s32 size, s32 colorMode, s32 screenBase, s32 characterBase)
 {
     volatile u16 *control = (volatile u16 *)0x0400000e;
     *control = (*control & 0x43) | (u16)(size << 14) |
@@ -72,7 +72,7 @@ void func_0202ac4c(s32 size, s32 colorMode, s32 screenBase, s32 characterBase)
 }
 
 /* Pack the same recovered fields into sub BG3CNT. */
-void func_0202ac78(s32 size, s32 colorMode, s32 screenBase, s32 characterBase)
+void Bg3TileLayer_SetSubControl(s32 size, s32 colorMode, s32 screenBase, s32 characterBase)
 {
     volatile u16 *control = (volatile u16 *)0x0400100e;
     *control = (*control & 0x43) | (u16)(size << 14) |
@@ -81,7 +81,7 @@ void func_0202ac78(s32 size, s32 colorMode, s32 screenBase, s32 characterBase)
 }
 
 /* Install the base-layer vtable, release its source-map buffer, and return self. */
-Bg3TileLayer *func_0202aca4(Bg3TileLayer *self)
+Bg3TileLayer *Bg3TileLayer_DestroyComplete(Bg3TileLayer *self)
 {
     self->vtable_0000 = (void **)gTileLayerStateVtable;
     OwnedTileBuffer_Destroy((u8 *)self + 0x1008);
@@ -89,7 +89,7 @@ Bg3TileLayer *func_0202aca4(Bg3TileLayer *self)
 }
 
 /* Release source-map storage, free the BG3 layer, and return its old address. */
-Bg3TileLayer *func_0202accc(Bg3TileLayer *self)
+Bg3TileLayer *Bg3TileLayer_DestroyAndFree(Bg3TileLayer *self)
 {
     self->vtable_0000 = (void **)gTileLayerStateVtable;
     OwnedTileBuffer_Destroy((u8 *)self + 0x1008);
@@ -102,7 +102,7 @@ Bg3TileLayer *func_0202accc(Bg3TileLayer *self)
  * transfer path, write wrapped scroll coordinates, and replace DISPCNT's BG3
  * enable bit with the stored mask.
  */
-void func_0202acfc(Bg3TileLayer *self)
+void Bg3TileLayer_UpdateHardware(Bg3TileLayer *self)
 {
     u8 *metadata = (u8 *)self + 0x1000;
     s32 x;
@@ -131,14 +131,14 @@ void func_0202acfc(Bg3TileLayer *self)
 }
 
 /* Store 0x800 when enabled and zero when disabled for valid engine modes. */
-void func_0202ae10(Bg3TileLayer *self, s32 enabled)
+void Bg3TileLayer_SetVisible(Bg3TileLayer *self, s32 enabled)
 {
     if (self->engineMode_1031 == 1 || self->engineMode_1031 == 2)
         self->displayMask_1032 = enabled ? 0x800 : 0;
 }
 
 /* Return the stored BG3 enable bit; halt and return zero for an invalid engine mode. */
-s32 func_0202ae68(Bg3TileLayer *self)
+s32 Bg3TileLayer_IsVisible(Bg3TileLayer *self)
 {
     if (self->engineMode_1031 == 1 || self->engineMode_1031 == 2)
         return self->displayMask_1032 & 0x800;

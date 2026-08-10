@@ -2,9 +2,9 @@
 .text
 
 
-    .global func_0202b320
-    .type func_0202b320, @function
-func_0202b320: ; 0x0202b320
+    .global Bg3ExtendedTileLayer_SetVisible
+    .type Bg3ExtendedTileLayer_SetVisible, @function
+Bg3ExtendedTileLayer_SetVisible: ; 0x0202b320
     add r0, r0, #0x1000
     cmp r1, #0x0
     ldrb r1, [r0, #0x31]
@@ -30,5 +30,5 @@ func_0202b320: ; 0x0202b320
     mov r1, #0x0
     strh r1, [r0, #0x32]
     bx lr
-    .size func_0202b320, . - func_0202b320
+    .size Bg3ExtendedTileLayer_SetVisible, . - Bg3ExtendedTileLayer_SetVisible
 

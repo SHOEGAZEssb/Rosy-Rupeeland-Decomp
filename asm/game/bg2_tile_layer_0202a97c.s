@@ -2,9 +2,9 @@
 .text
 
 
-    .global func_0202a97c
-    .type func_0202a97c, @function
-func_0202a97c: ; 0x0202a97c
+    .global Bg2TileLayer_SetSubControl
+    .type Bg2TileLayer_SetSubControl, @function
+Bg2TileLayer_SetSubControl: ; 0x0202a97c
     stmdb sp!, {r3, lr}
     ldr lr, .L_0202a9a4
     ldrh ip, [lr, #0x0]
@@ -16,5 +16,5 @@ func_0202a97c: ; 0x0202a97c
     strh r0, [lr, #0x0]
     ldmia sp!, {r3, pc}
 .L_0202a9a4: .word 0x400100c
-    .size func_0202a97c, . - func_0202a97c
+    .size Bg2TileLayer_SetSubControl, . - Bg2TileLayer_SetSubControl
 

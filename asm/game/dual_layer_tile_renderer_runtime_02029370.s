@@ -12,10 +12,10 @@
 .extern DualLayerTileRenderer_UploadPalette
 .extern TileLayer_InitSourceMap
 .extern TileLayer_SetScrollPositionDirect
-.extern func_0202a8b4
-.extern func_0202abb0
-.extern func_0202aeac
-.extern func_0202b134
+.extern Bg2TileLayer_Init
+.extern Bg3TileLayer_Init
+.extern Bg2ExtendedTileLayer_Init
+.extern Bg3ExtendedTileLayer_Init
 .extern CompressedByteBuffer_GetData
 .extern CompressedByteBuffer_LoadLz8Payload
 .extern func_0202b520
@@ -89,7 +89,7 @@ DualLayerTileRenderer_LoadFromConfig: ; 0x02029370
     ldr r2, [r6, #0x44]
     ldr r3, [r6, #0x48]
     mov r1, r4
-    bl func_0202abb0
+    bl Bg3TileLayer_Init
 .L_0202946c:
     str r0, [r6, #0x28]
     b .L_020294a4
@@ -104,7 +104,7 @@ DualLayerTileRenderer_LoadFromConfig: ; 0x02029370
     ldr r2, [r6, #0x44]
     ldr r3, [r6, #0x48]
     mov r1, r4
-    bl func_0202b134
+    bl Bg3ExtendedTileLayer_Init
 .L_020294a0:
     str r0, [r6, #0x28]
 .L_020294a4:
@@ -159,7 +159,7 @@ DualLayerTileRenderer_LoadFromConfig: ; 0x02029370
     ldr r2, [r6, #0x44]
     ldr r3, [r6, #0x4c]
     mov r1, r4
-    bl func_0202a8b4
+    bl Bg2TileLayer_Init
 .L_0202956c:
     str r0, [r6, #0x2c]
     b .L_020295a4
@@ -174,7 +174,7 @@ DualLayerTileRenderer_LoadFromConfig: ; 0x02029370
     ldr r2, [r6, #0x44]
     ldr r3, [r6, #0x4c]
     mov r1, r4
-    bl func_0202aeac
+    bl Bg2ExtendedTileLayer_Init
 .L_020295a0:
     str r0, [r6, #0x2c]
 .L_020295a4:

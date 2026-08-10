@@ -4,9 +4,9 @@
 .extern gTileLayerStateVtable
 .extern OwnedTileBuffer_Destroy
 
-    .global func_0202af54
-    .type func_0202af54, @function
-func_0202af54: ; 0x0202af54
+    .global Bg2ExtendedTileLayer_DestroyAndFree
+    .type Bg2ExtendedTileLayer_DestroyAndFree, @function
+Bg2ExtendedTileLayer_DestroyAndFree: ; 0x0202af54
     stmdb sp!, {r4, lr}
     mov r4, r0
     add r0, r4, #0x8
@@ -19,5 +19,5 @@ func_0202af54: ; 0x0202af54
     mov r0, r4
     ldmia sp!, {r4, pc}
 .L_0202af80: .word gTileLayerStateVtable
-    .size func_0202af54, . - func_0202af54
+    .size Bg2ExtendedTileLayer_DestroyAndFree, . - Bg2ExtendedTileLayer_DestroyAndFree
 

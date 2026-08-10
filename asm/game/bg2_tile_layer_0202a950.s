@@ -2,9 +2,9 @@
 .text
 
 
-    .global func_0202a950
-    .type func_0202a950, @function
-func_0202a950: ; 0x0202a950
+    .global Bg2TileLayer_SetMainControl
+    .type Bg2TileLayer_SetMainControl, @function
+Bg2TileLayer_SetMainControl: ; 0x0202a950
     stmdb sp!, {r3, lr}
     ldr lr, .L_0202a978
     ldrh ip, [lr, #0x0]
@@ -16,5 +16,5 @@ func_0202a950: ; 0x0202a950
     strh r0, [lr, #0x0]
     ldmia sp!, {r3, pc}
 .L_0202a978: .word 0x400000c
-    .size func_0202a950, . - func_0202a950
+    .size Bg2TileLayer_SetMainControl, . - Bg2TileLayer_SetMainControl
 
