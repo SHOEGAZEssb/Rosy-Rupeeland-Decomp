@@ -1,6 +1,6 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov084/overlay084_recovery.c.
-.extern func_0203f2ec
+.extern ActorExtendedType2_CopyAdjustedDescriptor
 .extern ActorExtendedType2_GetDescriptorValue2C
 
 .global func_ov084_02213f04
@@ -8,7 +8,7 @@ func_ov084_02213f04:
     stmdb sp!, {r3, r4, r5, lr}
     mov r5, r0
     mov r4, r1
-    bl func_0203f2ec
+    bl ActorExtendedType2_CopyAdjustedDescriptor
     add r0, r5, #0x200
     ldrh r0, [r0, #0x9a]
     mov r0, r0, lsl #0x1f

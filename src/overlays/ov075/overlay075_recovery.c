@@ -256,7 +256,7 @@ void func_ov075_022150d8(void);
 /* Processes the supplied ABI arguments and offset-based actor state, returns its encoded result, and invokes ActorExtendedType2_IsInteractionActive; exact higher-level semantics remain unconfirmed. */
 void func_ov075_022150f4(void);
 
-/* Processes the supplied ABI arguments and offset-based actor state, returns its encoded result, and invokes func_0203f2ec; exact higher-level semantics remain unconfirmed. */
+/* Processes the supplied ABI arguments and offset-based actor state, returns its encoded result, and invokes ActorExtendedType2_CopyAdjustedDescriptor; exact higher-level semantics remain unconfirmed. */
 void func_ov075_02215110(void);
 
 /* Processes the supplied ABI arguments using only local offset-based fields; observable mutations and the return value are preserved by the matching implementation, with no direct SDK call. */

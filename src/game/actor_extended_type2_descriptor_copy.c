@@ -20,7 +20,7 @@ static s32 actorIsActive(void *object)
  * actor +0x2ea8. Returns no value; output changes and runtime actor virtuals
  * may have observable effects. Descriptor field meanings remain unconfirmed.
  */
-void func_0203f2ec(const void *self, void *output)
+void ActorExtendedType2_CopyAdjustedDescriptor(const void *self, void *output)
 {
     const u8 *actor = (const u8 *)self;
     u8 *destination = (u8 *)output;

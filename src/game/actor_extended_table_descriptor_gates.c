@@ -10,7 +10,7 @@ extern u8 data_020e0ae0[];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_0203f2ec(void *actor, void *output);
+extern void ActorExtendedType2_CopyAdjustedDescriptor(void *actor, void *output);
 extern s32 ActorExtendedType2_AccumulateProximityInteraction(void *actor, void *first, void *second);
 extern s32 ActorExtendedType2_GetDescriptorValue2C(const void *actor);
 #ifdef __cplusplus
@@ -21,16 +21,16 @@ s32 ActorExtendedTable_MatchesCallbackPair18(const void *self);
 s32 ActorExtendedTable_MatchesCallbackPair00(const void *self);
 
 /*
- * Run base output update func_0203f2ec(actor,output). Leave that output intact
- * when ActorExtendedType2_GetDescriptorValue2C is nonzero or the callback pair
- * matches table entry +0x18.
+ * Run ActorExtendedType2_CopyAdjustedDescriptor(actor, output). Leave that
+ * output intact when ActorExtendedType2_GetDescriptorValue2C is nonzero or
+ * the callback pair matches table entry +0x18.
  * Otherwise, if the pair also fails to match table entry +0x00, clear the first
  * three output halfwords. Returns no
  * meaningful value; base actor and caller-owned output state may change.
  */
 void ActorExtendedTable_FilterDescriptorOutput(void *self, void *output)
 {
-    func_0203f2ec(self, output);
+    ActorExtendedType2_CopyAdjustedDescriptor(self, output);
     if (ActorExtendedType2_GetDescriptorValue2C(self) != 0)
         return;
     if (ActorExtendedTable_MatchesCallbackPair18(self) != 0)

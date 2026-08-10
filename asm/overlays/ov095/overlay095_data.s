@@ -10,7 +10,7 @@
 .extern func_020314b8
 .extern Actor_SnapshotTransientState
 .extern func_ov095_02217aac
-.extern func_0203ef90
+.extern ActorExtendedType2_ClearTransientInteractionState
 .extern func_02031564
 .extern func_ov095_02218124
 .extern func_0203baa0
@@ -52,7 +52,7 @@
 .extern func_02031464
 .extern func_0203baac
 .extern ActorExtendedType2_ResetRuntimeState
-.extern func_0203f2ec
+.extern ActorExtendedType2_CopyAdjustedDescriptor
 .extern func_0203f4f8
 .extern func_0203f5c4
 .extern func_0203f9ac
@@ -317,7 +317,7 @@ data_ov095_0221cca0:
     .word func_020314b8
     .word Actor_SnapshotTransientState
     .word func_ov095_02217aac
-    .word func_0203ef90
+    .word ActorExtendedType2_ClearTransientInteractionState
     .word func_02031564
     .word func_ov095_02218124
     .word func_0203baa0
@@ -359,7 +359,7 @@ data_ov095_0221cca0:
     .word func_02031464
     .word func_0203baac
     .word ActorExtendedType2_ResetRuntimeState
-    .word func_0203f2ec
+    .word ActorExtendedType2_CopyAdjustedDescriptor
     .word func_0203f4f8
     .word func_0203f5c4
     .word func_0203f9ac
@@ -481,7 +481,7 @@ data_ov095_0221cf4c:
     .word func_020314b8
     .word func_ov095_0221b2e8
     .word func_ov095_0221ba38
-    .word func_0203ef90
+    .word ActorExtendedType2_ClearTransientInteractionState
     .word func_ov095_0221b304
     .word ActorExtendedType2_ApplyContactResponse
     .word func_0203baa0
@@ -523,7 +523,7 @@ data_ov095_0221cf4c:
     .word func_02031464
     .word func_0203baac
     .word ActorExtendedType2_ResetRuntimeState
-    .word func_0203f2ec
+    .word ActorExtendedType2_CopyAdjustedDescriptor
     .word func_0203f4f8
     .word func_0203f5c4
     .word func_0203f9ac

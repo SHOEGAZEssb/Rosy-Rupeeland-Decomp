@@ -16692,7 +16692,7 @@ build build/reports/actor_extended_type2_misc_helpers_0203ef60.json: objdiff bui
   base_object = build/decomp/asm/game/actor_extended_type2_misc_helpers_0203ef60.o
 build build/reports/actor_extended_type2_misc_helpers_0203ef60.txt: match_report build/reports/actor_extended_type2_misc_helpers_0203ef60.json | tools/report_objdiff.py
   report_json = build/reports/actor_extended_type2_misc_helpers_0203ef60.json
-  report_args = --section .text --function func_0203ef60 --function func_0203ef80 --function func_0203ef88 --function func_0203ef90 --require-exact
+  report_args = --section .text --function ActorExtendedType2_IsStateNot16 --function ActorExtendedType2_GetConstant800 --function ActorExtendedType2_GetConstant800Duplicate --function ActorExtendedType2_ClearTransientInteractionState --require-exact
 build build/reports/actor_extended_type2_misc_helpers.txt: phony build/reports/actor_extended_type2_misc_helpers_0203ef60.txt
 
 build actor_extended_type2_misc_helpers: phony build/decomp/src/game/actor_extended_type2_misc_helpers.o build/decomp/asm/game/actor_extended_type2_misc_helpers_0203ef60.o build/reports/actor_extended_type2_misc_helpers.txt
@@ -16743,7 +16743,7 @@ build build/reports/actor_extended_type2_descriptor_copy_0203f2ec.json: objdiff 
   base_object = build/decomp/asm/game/actor_extended_type2_descriptor_copy_0203f2ec.o
 build build/reports/actor_extended_type2_descriptor_copy_0203f2ec.txt: match_report build/reports/actor_extended_type2_descriptor_copy_0203f2ec.json | tools/report_objdiff.py
   report_json = build/reports/actor_extended_type2_descriptor_copy_0203f2ec.json
-  report_args = --section .text --function func_0203f2ec --require-exact
+  report_args = --section .text --function ActorExtendedType2_CopyAdjustedDescriptor --require-exact
 build build/reports/actor_extended_type2_descriptor_copy.txt: phony build/reports/actor_extended_type2_descriptor_copy_0203f2ec.txt
 
 build actor_extended_type2_descriptor_copy: phony build/decomp/src/game/actor_extended_type2_descriptor_copy.o build/decomp/asm/game/actor_extended_type2_descriptor_copy_0203f2ec.o build/reports/actor_extended_type2_descriptor_copy.txt

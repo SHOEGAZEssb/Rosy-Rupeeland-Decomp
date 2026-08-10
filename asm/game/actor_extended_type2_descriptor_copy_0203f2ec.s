@@ -2,9 +2,9 @@
 .text
 .extern data_020e8380
 .extern data_021052fc
-    .global func_0203f2ec
-    .type func_0203f2ec, @function
-func_0203f2ec: ; 0x0203f2ec
+    .global ActorExtendedType2_CopyAdjustedDescriptor
+    .type ActorExtendedType2_CopyAdjustedDescriptor, @function
+ActorExtendedType2_CopyAdjustedDescriptor: ; 0x0203f2ec
     stmdb sp!, {r4, lr}
     ldrh r3, [r0, #0x4e]
     mov r2, #0x30
@@ -117,5 +117,5 @@ func_0203f2ec: ; 0x0203f2ec
     ldmia sp!, {r4, pc}
 .L_0203f498: .word data_020e8380
 .L_0203f49c: .word data_021052fc
-    .size func_0203f2ec, . - func_0203f2ec
+    .size ActorExtendedType2_CopyAdjustedDescriptor, . - ActorExtendedType2_CopyAdjustedDescriptor
 
