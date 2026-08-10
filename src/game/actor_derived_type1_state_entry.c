@@ -38,7 +38,7 @@ extern void Sound_Play(void *context, s32 channel, s32 sound);
  * halfword at object +0x54/+0x24 and call actor virtual +0x5c. Returns no
  * value; virtual, Lupy, effect, and sound calls have observable engine state.
  */
-void func_02038834(void *self, const void *position, s32 mode)
+void ActorDerivedType1_EnterPositionedState(void *self, const void *position, s32 mode)
 {
     u8 *actor = (u8 *)self;
 

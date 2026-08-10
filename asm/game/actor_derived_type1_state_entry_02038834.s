@@ -14,9 +14,9 @@
 .extern gLupyContext
 .extern gSoundContext
 
-    .global func_02038834
-    .type func_02038834, @function
-func_02038834: ; 0x02038834
+    .global ActorDerivedType1_EnterPositionedState
+    .type ActorDerivedType1_EnterPositionedState, @function
+ActorDerivedType1_EnterPositionedState: ; 0x02038834
     stmdb sp!, {r4, r5, lr}
     sub sp, sp, #0x14
     mov r5, r0
@@ -130,4 +130,4 @@ func_02038834: ; 0x02038834
 .L_020389e0: .word data_021056e0
 .L_020389e4: .word 0x109e
 .L_020389e8: .word gSoundContext
-    .size func_02038834, . - func_02038834
+    .size ActorDerivedType1_EnterPositionedState, . - ActorDerivedType1_EnterPositionedState

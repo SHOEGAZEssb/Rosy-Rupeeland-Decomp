@@ -16,7 +16,7 @@ extern s32 func_020adae4(s32 numerator, s32 denominator);
 extern s32 func_020ae024(s32 y, s32 x);
 extern void func_0204cff4(s32 *x, s32 *y, s32 maximum);
 extern void func_02005058(void *vector);
-extern void func_02038784(void *output, const void *direction, s32 scale);
+extern void ActorVector_DivideByScalar(void *output, const void *direction, s32 scale);
 extern void func_02008378(void *output, const void *left, const void *right);
 extern void *func_0201e0ec(void *manager);
 extern void func_020a2894(void *effect, s32 kind, s32 x, s32 y, s32 extra);
@@ -133,7 +133,7 @@ void ActorDerivedType1_ApplyWeightedCollisionDisplacement(
         s32 magnitude;
 
         func_020066a4(separation, target + 0x18, actor + 0x18);
-        func_02038784(normalized, separation, 0x2000);
+        ActorVector_DivideByScalar(normalized, separation, 0x2000);
         func_02008378(effectPosition, actor + 0x18, normalized);
         func_02005058(normalized);
         func_02005058(separation);

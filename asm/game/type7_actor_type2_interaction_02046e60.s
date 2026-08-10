@@ -8,7 +8,7 @@
 .extern func_02008378
 .extern func_0201e0ec
 .extern ActorDerivedType1_IsTargetStateEligible
-.extern func_02038784
+.extern ActorVector_DivideByScalar
 .extern func_02047dd8
 .extern func_0204b7bc
 .extern func_0204cff4
@@ -188,7 +188,7 @@ func_02046e60: ; 0x02046e60
     add r0, sp, #0x4
     add r1, sp, #0x14
     mov r2, #0x2000
-    bl func_02038784
+    bl ActorVector_DivideByScalar
     add r0, sp, #0x24
     add r2, sp, #0x4
     add r1, r7, #0x18

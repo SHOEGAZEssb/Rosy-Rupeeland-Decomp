@@ -57,7 +57,7 @@ static void *createAuxiliary(u8 *actor)
  * manager, target virtual, and resource calls have observable engine/SDK
  * effects; the target itself may also be modified by the called handlers.
  */
-s32 func_02037d98(void *self, void *other)
+s32 ActorDerivedType1_HandleAuxiliaryInteraction(void *self, void *other)
 {
     u8 *actor = (u8 *)self;
     u8 *target = (u8 *)other;

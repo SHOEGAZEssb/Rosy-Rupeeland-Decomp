@@ -27,9 +27,9 @@
 .extern gHeapContext
 .extern gSceneManager
 
-    .global func_02037d98
-    .type func_02037d98, @function
-func_02037d98: ; 0x02037d98
+    .global ActorDerivedType1_HandleAuxiliaryInteraction
+    .type ActorDerivedType1_HandleAuxiliaryInteraction, @function
+ActorDerivedType1_HandleAuxiliaryInteraction: ; 0x02037d98
     stmdb sp!, {r3, r4, r5, r6, r7, lr}
     mov r5, r0
     mov r4, r1
@@ -240,4 +240,4 @@ func_02037d98: ; 0x02037d98
 .L_0203809c: .word gGameWork
 .L_020380a0: .word 0x3ee
 .L_020380a4: .word data_021052fc
-    .size func_02037d98, . - func_02037d98
+    .size ActorDerivedType1_HandleAuxiliaryInteraction, . - ActorDerivedType1_HandleAuxiliaryInteraction

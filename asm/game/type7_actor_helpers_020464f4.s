@@ -9,7 +9,7 @@
 .extern func_02031758
 .extern Actor_RefreshTerrainHeight
 .extern Actor_ApplyMotionImpulse
-.extern func_02038784
+.extern ActorVector_DivideByScalar
 .extern func_0206dcac
 .global func_020464f4
 .type func_020464f4, @function
@@ -108,7 +108,7 @@ func_020465b8: ; 0x020465b8
 .L_0204662c:
     add r0, sp, #0x0
     mov r2, #0x2000
-    bl func_02038784
+    bl ActorVector_DivideByScalar
     add r1, sp, #0x0
     mov r0, r4
     mov r2, #0x0

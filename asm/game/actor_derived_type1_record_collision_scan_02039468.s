@@ -14,9 +14,9 @@
 .extern func_020adc90
 .extern func_ov092_0221ad80
 
-    .global func_02039468
-    .type func_02039468, @function
-func_02039468: ; 0x02039468
+    .global ActorDerivedType1_ScanActiveRecordCollisions
+    .type ActorDerivedType1_ScanActiveRecordCollisions, @function
+ActorDerivedType1_ScanActiveRecordCollisions: ; 0x02039468
     stmdb sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, lr}
     sub sp, sp, #0x20
     mov r10, r0
@@ -196,4 +196,4 @@ func_02039468: ; 0x02039468
 .L_02039708: .word data_020c9670
 .L_0203970c: .word data_021052fc
 .L_02039710: .word 0x1ccd
-    .size func_02039468, . - func_02039468
+    .size ActorDerivedType1_ScanActiveRecordCollisions, . - ActorDerivedType1_ScanActiveRecordCollisions

@@ -23,7 +23,7 @@ extern s32 func_020adc90(s32 numerator, s32 denominator);
  * the vector's runtime metadata, while func_020adc90 supplies SDK-style
  * signed fixed-point division and therefore inherits its zero-divisor rules.
  */
-void func_02038784(ActorVectorValue *destination,
+void ActorVector_DivideByScalar(ActorVectorValue *destination,
                    const ActorVectorValue *source, s32 divisor)
 {
     func_02004fe0(destination);

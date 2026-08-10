@@ -44,7 +44,7 @@ extern void *func_0201e0ec(void *state);
 extern void func_020a25c8(void *object, s32 first, s32 x, s32 y,
                           s32 width, s32 height, s32 kind);
 extern void ActorFeedback_ProcessSnapshotCell(const void *snapshot);
-extern void func_02039468(void *actor);
+extern void ActorDerivedType1_ScanActiveRecordCollisions(void *actor);
 #ifdef __cplusplus
 }
 #endif
@@ -87,8 +87,9 @@ static void reduceScaleCounter(u8 *actor)
  * bit 0x2000, inspect the direction-adjacent terrain cell: when all confirmed
  * GameWork, resource, height, packed-terrain, and cooldown gates pass, trigger
  * animation/effects/sound and four scene effects; otherwise store fallback
- * target coordinates and clear motion. Bit 0x4000 uses func_02039468 and current
- * X. Remaining descriptor IDs/bytes 0x7b/0x7c/0x80 or 0x73/0x74 adjust byte
+ * target coordinates and clear motion. Bit 0x4000 uses
+ * ActorDerivedType1_ScanActiveRecordCollisions and current X. Remaining
+ * descriptor IDs/bytes 0x7b/0x7c/0x80 or 0x73/0x74 adjust byte
  * +0x26b, countdown +0x282, and attachment scale. Returns one when a branch is
  * handled, zero otherwise. Virtual, terrain, resource, sound, scene, and effect
  * helpers have observable engine/SDK/hardware effects.
@@ -261,7 +262,7 @@ s32 ActorDerivedType1_ProcessInteraction(void *self)
     }
 
     if ((*(u32 *)(actor + 0x230) & 0x4000) != 0) {
-        func_02039468(actor);
+        ActorDerivedType1_ScanActiveRecordCollisions(actor);
         x = (*(s32 *)(actor + 0x1c) << 4) >> 16;
         storeTarget(actor, *(s16 *)descriptor, x, x);
         return 1;

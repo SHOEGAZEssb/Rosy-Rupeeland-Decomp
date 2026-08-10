@@ -16,7 +16,7 @@ extern void func_020050f0(void *first, const void *second);
 extern s32 func_020adae4(s32 value, s32 divisor);
 extern s32 func_020ae024(s32 y, s32 x);
 extern void func_0204cff4(s32 *x, s32 *y, s32 limit);
-extern void func_02038784(void *output, const void *input, s32 scale);
+extern void ActorVector_DivideByScalar(void *output, const void *input, s32 scale);
 extern void func_02008378(void *output, const void *first, const void *second);
 extern void *func_0201e0ec(void *world, s32 first, s32 second);
 extern void func_020a2894(void *effect, s32 mode, s32 x, s32 y, s32 extra);
@@ -116,7 +116,7 @@ void func_02046e60(void *self, void *otherObject, s32 value, s32 extra)
     }
 
     func_020066a4(displacement, other + 0x18, actor + 0x18);
-    func_02038784(scaled, displacement, 0x2000);
+    ActorVector_DivideByScalar(scaled, displacement, 0x2000);
     func_02008378(effectTransform, actor + 0x18, scaled);
     func_02005058(scaled);
     func_02005058(displacement);

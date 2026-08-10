@@ -16,7 +16,7 @@ extern void func_02032a94(void *actor, void *context, s32 condition);
 extern void func_0203392c(void *actor, void *context);
 extern void func_02034a60(void *actor, u16 value, s32 mode,
                           s32 top, s32 left, s32 right, s32 bottom);
-extern void func_02039468(void *actor);
+extern void ActorDerivedType1_ScanActiveRecordCollisions(void *actor);
 #ifdef __cplusplus
 }
 #endif
@@ -43,7 +43,7 @@ void func_0204ff0c(void *actor, void *context, s32 condition)
 
 /*
  * Inputs are an actor and context. If the low 15 bits of halfword 0x1F0 are
- * zero and bit 0 of word 0x1F4 is clear, invoke func_02039468 on the primary
+ * zero and bit 0 of word 0x1F4 is clear, invoke ActorDerivedType1_ScanActiveRecordCollisions on the primary
  * global actor. Then always run func_0203392c with the original inputs. Returns
  * nothing; actor/global engine state may change without direct hardware effects.
  */
@@ -51,7 +51,7 @@ void func_0204ff40(void *actor, void *context)
 {
     if ((FIELD(u16, actor, 0x1f0) & 0x7fff) == 0 &&
         (FIELD(u32, actor, 0x1f4) & 1) == 0) {
-        func_02039468(FIELD(void *, data_021052fc, 0x2ea4));
+        ActorDerivedType1_ScanActiveRecordCollisions(FIELD(void *, data_021052fc, 0x2ea4));
     }
     func_0203392c(actor, context);
 }

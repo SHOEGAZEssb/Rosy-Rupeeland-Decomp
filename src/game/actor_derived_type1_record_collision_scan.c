@@ -41,7 +41,7 @@ extern void ActorDerivedType1_TrySetStateVector(void *actor, const void *vector,
  * center. Returns no value; collection, virtual, sound, overlay, and vector
  * helpers have observable engine state.
  */
-void func_02039468(void *self)
+void ActorDerivedType1_ScanActiveRecordCollisions(void *self)
 {
     u8 *actor = (u8 *)self;
     u8 *descriptor;

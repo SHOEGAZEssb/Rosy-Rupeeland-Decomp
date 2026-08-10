@@ -4,7 +4,7 @@
 .extern func_02032a94
 .extern func_0203392c
 .extern func_02034a60
-.extern func_02039468
+.extern ActorDerivedType1_ScanActiveRecordCollisions
 .text
 
     .global func_0204ff0c
@@ -44,7 +44,7 @@ func_0204ff40: ; 0x0204ff40
     ldr r0, [r0, #0x0]
     add r0, r0, #0x2000
     ldr r0, [r0, #0xea4]
-    bl func_02039468
+    bl ActorDerivedType1_ScanActiveRecordCollisions
 .L_0204ff84:
     mov r0, r5
     mov r1, r4

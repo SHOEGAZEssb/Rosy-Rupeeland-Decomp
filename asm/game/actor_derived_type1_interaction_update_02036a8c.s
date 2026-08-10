@@ -27,7 +27,7 @@
 .extern func_020349b8
 .extern Actor_IsAtCachedTerrainHeight
 .extern ActorDerivedType1_HasBlockingStateFlags
-.extern func_02039468
+.extern ActorDerivedType1_ScanActiveRecordCollisions
 .extern ActorDerivedType1_ResetSpecialModeFlags
 .extern ActorFeedback_DispatchEnvironment
 .extern ActorFeedback_ProcessSnapshotCell
@@ -504,7 +504,7 @@ ActorDerivedType1_ProcessInteraction: ; 0x02036a8c
     tst r0, #0x4000
     beq .L_020371a4
     mov r0, r10
-    bl func_02039468
+    bl ActorDerivedType1_ScanActiveRecordCollisions
     ldr r0, [r10, #0x27c]
     ldr r3, [r10, #0x1c]
     ldrsh r2, [r0, #0x0]

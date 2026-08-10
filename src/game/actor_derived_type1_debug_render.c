@@ -24,7 +24,7 @@ extern void DebugText_Printf(void *font, s32 screen, s32 row, s32 column,
  * bits 5..9, and sign-extended bits 0..4. Returns no value. Debug font output
  * is the only direct observable SDK effect; no actor fields are modified.
  */
-void func_020389ec(void *self, s32 line)
+void ActorDerivedType1_DrawDebugInfo(void *self, s32 line)
 {
     u8 *actor = (u8 *)self;
     s32 packed;

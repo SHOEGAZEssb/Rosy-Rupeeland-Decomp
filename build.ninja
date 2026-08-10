@@ -15300,7 +15300,7 @@ build build/reports/actor_derived_type1_auxiliary_interaction_02037d98.json: obj
   base_object = build/decomp/asm/game/actor_derived_type1_auxiliary_interaction_02037d98.o
 build build/reports/actor_derived_type1_auxiliary_interaction_02037d98.txt: match_report build/reports/actor_derived_type1_auxiliary_interaction_02037d98.json | tools/report_objdiff.py
   report_json = build/reports/actor_derived_type1_auxiliary_interaction_02037d98.json
-  report_args = --section .text --function func_02037d98 --require-exact
+  report_args = --section .text --function ActorDerivedType1_HandleAuxiliaryInteraction --require-exact
 build build/reports/actor_derived_type1_auxiliary_interaction.txt: phony build/reports/actor_derived_type1_auxiliary_interaction_02037d98.txt
 
 build actor_derived_type1_auxiliary_interaction: phony build/decomp/src/game/actor_derived_type1_auxiliary_interaction.o build/decomp/asm/game/actor_derived_type1_auxiliary_interaction_02037d98.o build/reports/actor_derived_type1_auxiliary_interaction.txt
@@ -15376,7 +15376,7 @@ build build/reports/actor_vector_component_divide_02038784.json: objdiff build/d
   base_object = build/decomp/asm/game/actor_vector_component_divide_02038784.o
 build build/reports/actor_vector_component_divide_02038784.txt: match_report build/reports/actor_vector_component_divide_02038784.json | tools/report_objdiff.py
   report_json = build/reports/actor_vector_component_divide_02038784.json
-  report_args = --section .text --function func_02038784 --require-exact
+  report_args = --section .text --function ActorVector_DivideByScalar --require-exact
 build build/reports/actor_vector_component_divide.txt: phony build/reports/actor_vector_component_divide_02038784.txt
 
 build actor_vector_component_divide: phony build/decomp/src/game/actor_vector_component_divide.o build/decomp/asm/game/actor_vector_component_divide_02038784.o build/reports/actor_vector_component_divide.txt
@@ -15418,7 +15418,7 @@ build build/reports/actor_derived_type1_state_entry_02038834.json: objdiff build
   base_object = build/decomp/asm/game/actor_derived_type1_state_entry_02038834.o
 build build/reports/actor_derived_type1_state_entry_02038834.txt: match_report build/reports/actor_derived_type1_state_entry_02038834.json | tools/report_objdiff.py
   report_json = build/reports/actor_derived_type1_state_entry_02038834.json
-  report_args = --section .text --function func_02038834 --require-exact
+  report_args = --section .text --function ActorDerivedType1_EnterPositionedState --require-exact
 build build/reports/actor_derived_type1_state_entry.txt: phony build/reports/actor_derived_type1_state_entry_02038834.txt
 
 build actor_derived_type1_state_entry: phony build/decomp/src/game/actor_derived_type1_state_entry.o build/decomp/asm/game/actor_derived_type1_state_entry_02038834.o build/reports/actor_derived_type1_state_entry.txt
@@ -15435,7 +15435,7 @@ build build/reports/actor_derived_type1_debug_render_020389ec.json: objdiff buil
   base_object = build/decomp/asm/game/actor_derived_type1_debug_render_020389ec.o
 build build/reports/actor_derived_type1_debug_render_020389ec.txt: match_report build/reports/actor_derived_type1_debug_render_020389ec.json | tools/report_objdiff.py
   report_json = build/reports/actor_derived_type1_debug_render_020389ec.json
-  report_args = --section .text --function func_020389ec --require-exact
+  report_args = --section .text --function ActorDerivedType1_DrawDebugInfo --require-exact
 build build/reports/actor_derived_type1_debug_render.txt: phony build/reports/actor_derived_type1_debug_render_020389ec.txt
 
 build actor_derived_type1_debug_render: phony build/decomp/src/game/actor_derived_type1_debug_render.o build/decomp/asm/game/actor_derived_type1_debug_render_020389ec.o build/reports/actor_derived_type1_debug_render.txt
@@ -15703,7 +15703,7 @@ build build/reports/actor_derived_type1_record_collision_scan_02039468.json: obj
   base_object = build/decomp/asm/game/actor_derived_type1_record_collision_scan_02039468.o
 build build/reports/actor_derived_type1_record_collision_scan_02039468.txt: match_report build/reports/actor_derived_type1_record_collision_scan_02039468.json | tools/report_objdiff.py
   report_json = build/reports/actor_derived_type1_record_collision_scan_02039468.json
-  report_args = --section .text --function func_02039468 --require-exact
+  report_args = --section .text --function ActorDerivedType1_ScanActiveRecordCollisions --require-exact
 build build/reports/actor_derived_type1_record_collision_scan.txt: phony build/reports/actor_derived_type1_record_collision_scan_02039468.txt
 
 build actor_derived_type1_record_collision_scan: phony build/decomp/src/game/actor_derived_type1_record_collision_scan.o build/decomp/asm/game/actor_derived_type1_record_collision_scan_02039468.o build/reports/actor_derived_type1_record_collision_scan.txt

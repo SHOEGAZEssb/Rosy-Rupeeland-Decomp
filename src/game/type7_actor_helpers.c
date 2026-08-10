@@ -15,7 +15,7 @@ extern void Actor_RefreshTerrainHeight(void *actor);
 extern void func_02031758(void *context, void *actor, void *value);
 extern void func_0206dcac(void *resource);
 extern void Actor_ApplyMotionImpulse(void *actor, const void *value, s32 mode);
-extern void func_02038784(void *output, const void *input, s32 scale);
+extern void ActorVector_DivideByScalar(void *output, const void *input, s32 scale);
 #ifdef __cplusplus
 }
 #endif
@@ -62,7 +62,7 @@ void func_02046544(void *context, void *self, void *value)
  * when record +0x29c halfword +0x40 is zero. Otherwise compare callback pair
  * +0x208/+0x20c against data_020e16b0+0x20/data_020e16d0+4. Nonmatching pairs
  * forward actor/value/condition to Actor_ApplyMotionImpulse. A matching pair first derives
- * a temporary from value with func_02038784 scale 0x2000, then calls
+ * a temporary from value with ActorVector_DivideByScalar scale 0x2000, then calls
  * Actor_ApplyMotionImpulse(actor,temporary,0) and finalizes it. Actor/transform state may
  * change; no direct SDK or hardware access occurs.
  */
@@ -82,7 +82,7 @@ void func_020465b8(void *self, const void *value, s32 condition)
         Actor_ApplyMotionImpulse(actor, value, condition);
         return;
     }
-    func_02038784(temporary, value, 0x2000);
+    ActorVector_DivideByScalar(temporary, value, 0x2000);
     Actor_ApplyMotionImpulse(actor, temporary, 0);
     func_02005058(temporary);
 }

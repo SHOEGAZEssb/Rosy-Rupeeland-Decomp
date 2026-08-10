@@ -8,9 +8,9 @@
 .extern Actor_QueryTerrainCell
 .extern gDebugFont
 
-    .global func_020389ec
-    .type func_020389ec, @function
-func_020389ec: ; 0x020389ec
+    .global ActorDerivedType1_DrawDebugInfo
+    .type ActorDerivedType1_DrawDebugInfo, @function
+ActorDerivedType1_DrawDebugInfo: ; 0x020389ec
     stmdb sp!, {r3, r4, r5, lr}
     sub sp, sp, #0x18
     mov r5, r0
@@ -59,4 +59,4 @@ func_020389ec: ; 0x020389ec
 .L_02038aa0: .word data_020df294
 .L_02038aa4: .word gDebugFont
 .L_02038aa8: .word data_020df4b8
-    .size func_020389ec, . - func_020389ec
+    .size ActorDerivedType1_DrawDebugInfo, . - ActorDerivedType1_DrawDebugInfo
