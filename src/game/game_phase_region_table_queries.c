@@ -6,25 +6,27 @@
  * Return the first region index containing (x,y), or -1. Bounds are left/top
  * inclusive and right/bottom exclusive; table state is unchanged.
  */
-s32 func_020116e8(const GamePhaseRegionTable *self, s32 x, s32 y)
+s32 GamePhaseRegionTable_FindContainingRegion(
+    const GamePhaseRegionTable *self, s32 x, s32 y)
 {
     s32 i;
     for (i = 0; i < self->count; i++) {
-        if (func_02011738(&self->regions[i], x, y))
+        if (GamePhaseRegion_ContainsPoint(&self->regions[i], x, y))
             return i;
     }
     return -1;
 }
 
 /* Return whether (x,y) lies in region's half-open rectangle; no state changes. */
-s32 func_02011738(const GamePhaseRegion *region, s32 x, s32 y)
+s32 GamePhaseRegion_ContainsPoint(const GamePhaseRegion *region, s32 x, s32 y)
 {
     return x >= region->left && x < region->right &&
            y >= region->top && y < region->bottom;
 }
 
 /* Return a pointer to regions[index] without bounds checking or state changes. */
-GamePhaseRegion *func_02011788(GamePhaseRegionTable *self, s32 index)
+GamePhaseRegion *GamePhaseRegionTable_GetRegion(GamePhaseRegionTable *self,
+                                                s32 index)
 {
     return &self->regions[index];
 }
@@ -34,16 +36,19 @@ GamePhaseRegion *func_02011788(GamePhaseRegionTable *self, s32 index)
  * 0 all four, 1 right, 2 left, 3 bottom, 4 top, or -1 for no recognized full
  * side. Only corner containment is tested; general rectangle overlap is not.
  */
-s32 func_02011794(const GamePhaseRegionTable *self, s32 index,
-                   const GamePhaseRegion *candidate)
+s32 GamePhaseRegionTable_ClassifyContainedSide(
+    const GamePhaseRegionTable *self, s32 index,
+    const GamePhaseRegion *candidate)
 {
     const GamePhaseRegion *region = &self->regions[index];
-    s32 topLeft = func_02011738(region, candidate->left, candidate->top);
-    s32 topRight = func_02011738(region, candidate->right, candidate->top);
+    s32 topLeft =
+        GamePhaseRegion_ContainsPoint(region, candidate->left, candidate->top);
+    s32 topRight =
+        GamePhaseRegion_ContainsPoint(region, candidate->right, candidate->top);
     s32 bottomLeft =
-        func_02011738(region, candidate->left, candidate->bottom);
+        GamePhaseRegion_ContainsPoint(region, candidate->left, candidate->bottom);
     s32 bottomRight =
-        func_02011738(region, candidate->right, candidate->bottom);
+        GamePhaseRegion_ContainsPoint(region, candidate->right, candidate->bottom);
     if (topLeft && topRight && bottomLeft && bottomRight)
         return 0;
     if (!(topLeft && bottomLeft) && topRight && bottomRight)

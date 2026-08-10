@@ -5,8 +5,8 @@
 .extern OverlaySlot_Destroy
 .extern GamePhaseVisualEffect_Init
 .extern GamePhaseVisualEffect_Destroy
-.extern func_02011470
-.extern func_0201155c
+.extern GamePhaseRegionTable_Init
+.extern GamePhaseRegionTable_Destroy
 .extern func_0201dbc8
 .extern func_0201dc98
 .extern func_0201df64
@@ -44,7 +44,7 @@ GamePhaseState_Init: ; 0x0200e4dc
     bic r2, r2, #0x1
     orr r2, r2, #0x3
     str r2, [r1, #0xf7c]
-    bl func_02011470
+    bl GamePhaseRegionTable_Init
     add r1, r4, #0x2f00
     mov r0, #0x1
     strh r0, [r1, #0x90]
@@ -66,7 +66,7 @@ GamePhaseState_Destroy: ; 0x0200e574
     mov r4, r0
     bl GamePhaseState_UnloadPhase
     add r0, r4, #0x2f80
-    bl func_0201155c
+    bl GamePhaseRegionTable_Destroy
     add r0, r4, #0x358
     add r0, r0, #0x2c00
     bl func_0201dc98
@@ -92,7 +92,7 @@ GamePhaseState_UnloadPhase: ; 0x0200e5bc
     ldr r1, [r1, #0x0]
     blx r1
     add r0, r4, #0x2f80
-    bl func_0201155c
+    bl GamePhaseRegionTable_Destroy
     mov r0, r4
     bl GamePhaseState_ResetRuntime
     add r0, r4, #0x4

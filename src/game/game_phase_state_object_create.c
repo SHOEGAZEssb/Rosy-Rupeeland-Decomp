@@ -13,8 +13,8 @@ extern void *func_0202becc(void *object);
 extern void *func_0202c308(void *object);
 extern void *func_0202c744(void *object);
 extern void *func_0202cbe0(void *object);
-extern void func_0201185c(void *object, u32 value);
-extern void func_02011a44(void *object, u32 value);
+extern void GamePhaseRegionTable_Load(void *object, u32 value);
+extern void GamePhaseRegionTable_SetGameWorkFlagBase(void *object, u32 value);
 #ifdef __cplusplus
 }
 #endif
@@ -63,6 +63,6 @@ void GamePhaseState_CreatePhaseObject(GamePhaseState *self, const void *configur
     ((ObjectConfigureMethod)(*(void ***)object)[5])(
         object, *(u32 *)(config + 4), 1, 0);
     func_02029ca4(object, config + 0x34);
-    func_0201185c(self->helper_2f80, *(u32 *)(config + 4));
-    func_02011a44(self->helper_2f80, *(u32 *)(config + 0x48));
+    GamePhaseRegionTable_Load(self->helper_2f80, *(u32 *)(config + 4));
+    GamePhaseRegionTable_SetGameWorkFlagBase(self->helper_2f80, *(u32 *)(config + 0x48));
 }

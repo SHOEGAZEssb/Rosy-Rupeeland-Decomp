@@ -10,7 +10,7 @@
 extern "C" {
 #endif
 extern const s8 *Actor_GetCollisionBounds(void *actor);
-extern const s16 *func_02011788(void *context, s32 area);
+extern const s16 *GamePhaseRegionTable_GetRegion(void *context, s32 area);
 #ifdef __cplusplus
 }
 #endif
@@ -55,7 +55,7 @@ void ActorMotionAreaFollower_ClampToAreaBounds(ActorMotionAreaFollower *self, s3
     actorRectangle[3] = collision[3];
     S16Rectangle_Translate(actorRectangle, actorX, actorY);
 
-    bounds = func_02011788(self->areaContext, area);
+    bounds = GamePhaseRegionTable_GetRegion(self->areaContext, area);
     if ((position.value.x >> 12) < bounds[0])
         position.value.x = bounds[0] << 12;
     else if ((position.value.x >> 12) + 0x100 >= bounds[2])

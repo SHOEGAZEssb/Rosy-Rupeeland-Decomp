@@ -4,11 +4,11 @@
 .extern GraphicsResourceSet_Init
 .extern GraphicsResourceSet_Load
 .extern data_020f4e18
-.extern func_02011470
-.extern func_0201155c
-.extern func_0201185c
-.extern func_02011a3c
-.extern func_02011a44
+.extern GamePhaseRegionTable_Init
+.extern GamePhaseRegionTable_Destroy
+.extern GamePhaseRegionTable_Load
+.extern GamePhaseRegionTable_GetCount
+.extern GamePhaseRegionTable_SetGameWorkFlagBase
 .extern func_020706c4
 .extern func_02070bc4
 .extern func_02070eac
@@ -215,25 +215,25 @@ func_ov059_0220fd80:
     str r2, [r3, #0x1c]
     bl func_ov059_02210178
     add r0, sp, #0x4
-    bl func_02011470
+    bl GamePhaseRegionTable_Init
     ldr r1, [r9, #0x4]
     add r0, sp, #0x4
-    bl func_0201185c
+    bl GamePhaseRegionTable_Load
     ldr r1, [r9, #0x48]
     add r0, sp, #0x4
-    bl func_02011a44
+    bl GamePhaseRegionTable_SetGameWorkFlagBase
     add r1, sp, #0x4
     mov r0, r10
     bl func_ov059_022101b0
     add r0, sp, #0x4
-    bl func_02011a3c
+    bl GamePhaseRegionTable_GetCount
     cmp r0, #0x0
     bgt .L_02210088
     mov r0, r10
     bl func_ov059_02210284
 .L_02210088:
     add r0, sp, #0x4
-    bl func_0201155c
+    bl GamePhaseRegionTable_Destroy
     add r0, sp, #0x14
     bl GraphicsResourceSet_Destroy
     add sp, sp, #0x20

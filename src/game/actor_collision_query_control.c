@@ -4,7 +4,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern u32 func_02011738(const void *rectangle, s32 x, s32 y);
+extern u32 GamePhaseRegion_ContainsPoint(const void *rectangle, s32 x, s32 y);
 extern void BoundsCenterSnapshot_Init(void *center, const void *bounds);
 extern void func_0200500c(void *vector, s32 x, s32 y, s32 z);
 extern void func_02005058(void *vector);
@@ -106,7 +106,7 @@ u32 Actor_TestQueryPoint(void *self, const void *query)
     rectangle[1] = *(s16 *)(actor + 0x62) + y;
     rectangle[2] = *(s16 *)(actor + 0x64) + x;
     rectangle[3] = *(s16 *)(actor + 0x66) + y;
-    result = func_02011738(rectangle, *(s32 *)(queryBytes + 4),
+    result = GamePhaseRegion_ContainsPoint(rectangle, *(s32 *)(queryBytes + 4),
                            *(s32 *)(queryBytes + 8));
 
     resource = *(void **)(actor + 0x1e0);
@@ -119,7 +119,7 @@ u32 Actor_TestQueryPoint(void *self, const void *query)
                       0);
         func_0205740c(resourceRectangle, resource, position);
         func_02005058(position);
-        result |= func_02011738(resourceRectangle, *(s32 *)(queryBytes + 4),
+        result |= GamePhaseRegion_ContainsPoint(resourceRectangle, *(s32 *)(queryBytes + 4),
                                 *(s32 *)(queryBytes + 8));
     }
     return result;

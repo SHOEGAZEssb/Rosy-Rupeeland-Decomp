@@ -2,7 +2,7 @@
 .text
 .extern OverlaySlot_Init
 .extern GamePhaseVisualEffect_Init
-.extern func_02011470
+.extern GamePhaseRegionTable_Init
 .extern func_0201dbc8
 .extern ActorCollection_Init
 
@@ -32,7 +32,7 @@ GamePhaseState_Init: ; 0x0200e4dc
     bic r2, r2, #0x1
     orr r2, r2, #0x3
     str r2, [r1, #0xf7c]
-    bl func_02011470
+    bl GamePhaseRegionTable_Init
     add r1, r4, #0x2f00
     mov r0, #0x1
     strh r0, [r1, #0x90]

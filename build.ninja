@@ -4305,56 +4305,56 @@ build build/reports/game_phase_region_table_02011470.json: objdiff build/decomp/
   base_object = build/decomp/asm/game/game_phase_region_table_02011470.o
 build build/reports/game_phase_region_table_02011470.txt: match_report build/reports/game_phase_region_table_02011470.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_region_table_02011470.json
-  report_args = --section .text --function func_02011470 --require-exact
+  report_args = --section .text --function GamePhaseRegionTable_Init --require-exact
 
 build build/reports/game_phase_region_table_02011498.json: objdiff build/decomp/delinks/asm/game/game_phase_region_table_02011498.o | build/decomp/asm/game/game_phase_region_table_02011498.o
   target_object = build/decomp/delinks/asm/game/game_phase_region_table_02011498.o
   base_object = build/decomp/asm/game/game_phase_region_table_02011498.o
 build build/reports/game_phase_region_table_02011498.txt: match_report build/reports/game_phase_region_table_02011498.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_region_table_02011498.json
-  report_args = --section .text --function func_02011498 --require-exact
+  report_args = --section .text --function GamePhaseRegionTable_InitWithCount --require-exact
 
 build build/reports/game_phase_region_table_02011518.json: objdiff build/decomp/delinks/asm/game/game_phase_region_table_02011518.o | build/decomp/asm/game/game_phase_region_table_02011518.o
   target_object = build/decomp/delinks/asm/game/game_phase_region_table_02011518.o
   base_object = build/decomp/asm/game/game_phase_region_table_02011518.o
 build build/reports/game_phase_region_table_02011518.txt: match_report build/reports/game_phase_region_table_02011518.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_region_table_02011518.json
-  report_args = --section .text --function func_02011518 --require-exact
+  report_args = --section .text --function GamePhaseRegion_Init --require-exact
 
 build build/reports/game_phase_region_table_0201151c.json: objdiff build/decomp/delinks/asm/game/game_phase_region_table_0201151c.o | build/decomp/asm/game/game_phase_region_table_0201151c.o
   target_object = build/decomp/delinks/asm/game/game_phase_region_table_0201151c.o
   base_object = build/decomp/asm/game/game_phase_region_table_0201151c.o
 build build/reports/game_phase_region_table_0201151c.txt: match_report build/reports/game_phase_region_table_0201151c.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_region_table_0201151c.json
-  report_args = --section .text --function func_0201151c --require-exact
+  report_args = --section .text --function GamePhaseRegion_Destroy --require-exact
 
 build build/reports/game_phase_region_table_02011520.json: objdiff build/decomp/delinks/asm/game/game_phase_region_table_02011520.o | build/decomp/asm/game/game_phase_region_table_02011520.o
   target_object = build/decomp/delinks/asm/game/game_phase_region_table_02011520.o
   base_object = build/decomp/asm/game/game_phase_region_table_02011520.o
 build build/reports/game_phase_region_table_02011520.txt: match_report build/reports/game_phase_region_table_02011520.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_region_table_02011520.json
-  report_args = --section .text --function func_02011520 --require-exact
+  report_args = --section .text --function GamePhaseRegionTable_Clear --require-exact
 
 build build/reports/game_phase_region_table_0201155c.json: objdiff build/decomp/delinks/asm/game/game_phase_region_table_0201155c.o | build/decomp/asm/game/game_phase_region_table_0201155c.o
   target_object = build/decomp/delinks/asm/game/game_phase_region_table_0201155c.o
   base_object = build/decomp/asm/game/game_phase_region_table_0201155c.o
 build build/reports/game_phase_region_table_0201155c.txt: match_report build/reports/game_phase_region_table_0201155c.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_region_table_0201155c.json
-  report_args = --section .text --function func_0201155c --require-exact
+  report_args = --section .text --function GamePhaseRegionTable_Destroy --require-exact
 
 build build/reports/game_phase_region_table_02011584.json: objdiff build/decomp/delinks/asm/game/game_phase_region_table_02011584.o | build/decomp/asm/game/game_phase_region_table_02011584.o
   target_object = build/decomp/delinks/asm/game/game_phase_region_table_02011584.o
   base_object = build/decomp/asm/game/game_phase_region_table_02011584.o
 build build/reports/game_phase_region_table_02011584.txt: match_report build/reports/game_phase_region_table_02011584.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_region_table_02011584.json
-  report_args = --section .text --function func_02011584 --require-exact
+  report_args = --section .text --function GamePhaseRegionTable_SetRegionsFromSentinel --require-exact
 
 build build/reports/game_phase_region_table_0201166c.json: objdiff build/decomp/delinks/asm/game/game_phase_region_table_0201166c.o | build/decomp/asm/game/game_phase_region_table_0201166c.o
   target_object = build/decomp/delinks/asm/game/game_phase_region_table_0201166c.o
   base_object = build/decomp/asm/game/game_phase_region_table_0201166c.o
 build build/reports/game_phase_region_table_0201166c.txt: match_report build/reports/game_phase_region_table_0201166c.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_region_table_0201166c.json
-  report_args = --section .text --function func_0201166c --require-exact
+  report_args = --section .text --function GamePhaseRegionTable_Resize --require-exact
 
 build build/reports/game_phase_region_table_lifecycle.txt: phony build/reports/game_phase_region_table_02011470.txt build/reports/game_phase_region_table_02011498.txt build/reports/game_phase_region_table_02011518.txt build/reports/game_phase_region_table_0201151c.txt build/reports/game_phase_region_table_02011520.txt build/reports/game_phase_region_table_0201155c.txt build/reports/game_phase_region_table_02011584.txt build/reports/game_phase_region_table_0201166c.txt
 
@@ -4363,28 +4363,28 @@ build build/reports/game_phase_region_table_020116e8.json: objdiff build/decomp/
   base_object = build/decomp/asm/game/game_phase_region_table_020116e8.o
 build build/reports/game_phase_region_table_020116e8.txt: match_report build/reports/game_phase_region_table_020116e8.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_region_table_020116e8.json
-  report_args = --section .text --function func_020116e8 --require-exact
+  report_args = --section .text --function GamePhaseRegionTable_FindContainingRegion --require-exact
 
 build build/reports/game_phase_region_table_02011738.json: objdiff build/decomp/delinks/asm/game/game_phase_region_table_02011738.o | build/decomp/asm/game/game_phase_region_table_02011738.o
   target_object = build/decomp/delinks/asm/game/game_phase_region_table_02011738.o
   base_object = build/decomp/asm/game/game_phase_region_table_02011738.o
 build build/reports/game_phase_region_table_02011738.txt: match_report build/reports/game_phase_region_table_02011738.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_region_table_02011738.json
-  report_args = --section .text --function func_02011738 --require-exact
+  report_args = --section .text --function GamePhaseRegion_ContainsPoint --require-exact
 
 build build/reports/game_phase_region_table_02011788.json: objdiff build/decomp/delinks/asm/game/game_phase_region_table_02011788.o | build/decomp/asm/game/game_phase_region_table_02011788.o
   target_object = build/decomp/delinks/asm/game/game_phase_region_table_02011788.o
   base_object = build/decomp/asm/game/game_phase_region_table_02011788.o
 build build/reports/game_phase_region_table_02011788.txt: match_report build/reports/game_phase_region_table_02011788.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_region_table_02011788.json
-  report_args = --section .text --function func_02011788 --require-exact
+  report_args = --section .text --function GamePhaseRegionTable_GetRegion --require-exact
 
 build build/reports/game_phase_region_table_02011794.json: objdiff build/decomp/delinks/asm/game/game_phase_region_table_02011794.o | build/decomp/asm/game/game_phase_region_table_02011794.o
   target_object = build/decomp/delinks/asm/game/game_phase_region_table_02011794.o
   base_object = build/decomp/asm/game/game_phase_region_table_02011794.o
 build build/reports/game_phase_region_table_02011794.txt: match_report build/reports/game_phase_region_table_02011794.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_region_table_02011794.json
-  report_args = --section .text --function func_02011794 --require-exact
+  report_args = --section .text --function GamePhaseRegionTable_ClassifyContainedSide --require-exact
 
 build build/reports/game_phase_region_table_queries.txt: phony build/reports/game_phase_region_table_020116e8.txt build/reports/game_phase_region_table_02011738.txt build/reports/game_phase_region_table_02011788.txt build/reports/game_phase_region_table_02011794.txt
 
@@ -4393,42 +4393,42 @@ build build/reports/game_phase_region_table_0201185c.json: objdiff build/decomp/
   base_object = build/decomp/asm/game/game_phase_region_table_0201185c.o
 build build/reports/game_phase_region_table_load.txt: match_report build/reports/game_phase_region_table_0201185c.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_region_table_0201185c.json
-  report_args = --section .text --function func_0201185c --require-exact
+  report_args = --section .text --function GamePhaseRegionTable_Load --require-exact
 
 build build/reports/game_phase_region_table_020119c8.json: objdiff build/decomp/delinks/asm/game/game_phase_region_table_020119c8.o | build/decomp/asm/game/game_phase_region_table_020119c8.o
   target_object = build/decomp/delinks/asm/game/game_phase_region_table_020119c8.o
   base_object = build/decomp/asm/game/game_phase_region_table_020119c8.o
 build build/reports/game_phase_region_table_020119c8.txt: match_report build/reports/game_phase_region_table_020119c8.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_region_table_020119c8.json
-  report_args = --section .text --function func_020119c8 --require-exact
+  report_args = --section .text --function GamePhaseRegionTable_IsRegionEnabled --require-exact
 
 build build/reports/game_phase_region_table_020119f4.json: objdiff build/decomp/delinks/asm/game/game_phase_region_table_020119f4.o | build/decomp/asm/game/game_phase_region_table_020119f4.o
   target_object = build/decomp/delinks/asm/game/game_phase_region_table_020119f4.o
   base_object = build/decomp/asm/game/game_phase_region_table_020119f4.o
 build build/reports/game_phase_region_table_020119f4.txt: match_report build/reports/game_phase_region_table_020119f4.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_region_table_020119f4.json
-  report_args = --section .text --function func_020119f4 --require-exact
+  report_args = --section .text --function GamePhaseRegionTable_SetRegionEnabled --require-exact
 
 build build/reports/game_phase_region_table_02011a3c.json: objdiff build/decomp/delinks/asm/game/game_phase_region_table_02011a3c.o | build/decomp/asm/game/game_phase_region_table_02011a3c.o
   target_object = build/decomp/delinks/asm/game/game_phase_region_table_02011a3c.o
   base_object = build/decomp/asm/game/game_phase_region_table_02011a3c.o
 build build/reports/game_phase_region_table_02011a3c.txt: match_report build/reports/game_phase_region_table_02011a3c.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_region_table_02011a3c.json
-  report_args = --section .text --function func_02011a3c --require-exact
+  report_args = --section .text --function GamePhaseRegionTable_GetCount --require-exact
 
 build build/reports/game_phase_region_table_02011a44.json: objdiff build/decomp/delinks/asm/game/game_phase_region_table_02011a44.o | build/decomp/asm/game/game_phase_region_table_02011a44.o
   target_object = build/decomp/delinks/asm/game/game_phase_region_table_02011a44.o
   base_object = build/decomp/asm/game/game_phase_region_table_02011a44.o
 build build/reports/game_phase_region_table_02011a44.txt: match_report build/reports/game_phase_region_table_02011a44.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_region_table_02011a44.json
-  report_args = --section .text --function func_02011a44 --require-exact
+  report_args = --section .text --function GamePhaseRegionTable_SetGameWorkFlagBase --require-exact
 
 build build/reports/game_phase_region_table_02011a4c.json: objdiff build/decomp/delinks/asm/game/game_phase_region_table_02011a4c.o | build/decomp/asm/game/game_phase_region_table_02011a4c.o
   target_object = build/decomp/delinks/asm/game/game_phase_region_table_02011a4c.o
   base_object = build/decomp/asm/game/game_phase_region_table_02011a4c.o
 build build/reports/game_phase_region_table_02011a4c.txt: match_report build/reports/game_phase_region_table_02011a4c.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_region_table_02011a4c.json
-  report_args = --section .text --function func_02011a4c --require-exact
+  report_args = --section .text --function GamePhaseRegionTable_PublishActive --require-exact
 
 build build/reports/game_phase_region_table_flags.txt: phony build/reports/game_phase_region_table_020119c8.txt build/reports/game_phase_region_table_020119f4.txt build/reports/game_phase_region_table_02011a3c.txt build/reports/game_phase_region_table_02011a44.txt build/reports/game_phase_region_table_02011a4c.txt
 

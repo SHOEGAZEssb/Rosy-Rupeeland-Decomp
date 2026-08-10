@@ -6,7 +6,7 @@
 extern "C" {
 #endif
 extern void func_02056f00(VecFx32Object *result, const void *source);
-extern s32 func_020116e8(void *context, s32 x, s32 y);
+extern s32 GamePhaseRegionTable_FindContainingRegion(void *context, s32 x, s32 y);
 #ifdef __cplusplus
 }
 #endif
@@ -22,7 +22,7 @@ void ActorMotionAreaFollower_RefreshCurrentArea(ActorMotionAreaFollower *self)
     u8 *actor = (u8 *)self->jitter.base.actor;
 
     func_02056f00(&position, actor + 0x18);
-    self->previousArea = func_020116e8(self->areaContext,
+    self->previousArea = GamePhaseRegionTable_FindContainingRegion(self->areaContext,
                                        position.value.x >> 12,
                                        (position.value.y >> 12) - 0x10);
     func_02005058(&position);

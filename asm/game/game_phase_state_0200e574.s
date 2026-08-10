@@ -3,7 +3,7 @@
 .extern OverlaySlot_Destroy
 .extern GamePhaseState_UnloadPhase
 .extern GamePhaseVisualEffect_Destroy
-.extern func_0201155c
+.extern GamePhaseRegionTable_Destroy
 .extern func_0201dc98
 .extern ActorCollection_Destructor
 
@@ -13,7 +13,7 @@ GamePhaseState_Destroy: ; 0x0200e574
     mov r4, r0
     bl GamePhaseState_UnloadPhase
     add r0, r4, #0x2f80
-    bl func_0201155c
+    bl GamePhaseRegionTable_Destroy
     add r0, r4, #0x358
     add r0, r0, #0x2c00
     bl func_0201dc98

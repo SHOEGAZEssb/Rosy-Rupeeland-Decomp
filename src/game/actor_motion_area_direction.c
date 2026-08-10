@@ -6,7 +6,7 @@
 extern "C" {
 #endif
 extern void func_02056f00(VecFx32Object *result, const void *source);
-extern s32 func_02011794(void *context, s32 area, const s16 *rectangle);
+extern s32 GamePhaseRegionTable_ClassifyContainedSide(void *context, s32 area, const s16 *rectangle);
 #ifdef __cplusplus
 }
 #endif
@@ -43,7 +43,7 @@ s32 ActorMotionAreaFollower_QueryCrossingDirection(ActorMotionAreaFollower *self
     position.value.y = loweredY;
     rectangle[0] = (s16)left;
     rectangle[3] = (s16)bottom;
-    result = func_02011794(self->areaContext, area, rectangle);
+    result = GamePhaseRegionTable_ClassifyContainedSide(self->areaContext, area, rectangle);
     func_02005058(&position);
     return result;
 }

@@ -2,7 +2,7 @@
 .text
 .extern DisplayController_GetSubScreenVerticalOffset
 .extern func_020083b0
-.extern func_02011738
+.extern GamePhaseRegion_ContainsPoint
 .extern func_02072b68
 .extern func_02072bdc
 
@@ -50,7 +50,7 @@ func_02031cac: ; 0x02031cac
     ldmib r4, {r1, r2}
     add r2, r2, r0
     add r0, sp, #0x4
-    bl func_02011738
+    bl GamePhaseRegion_ContainsPoint
     ldr r1, [r5, #0x58]
     cmp r0, #0x0
     ldrneh r0, [r1, #0x24]

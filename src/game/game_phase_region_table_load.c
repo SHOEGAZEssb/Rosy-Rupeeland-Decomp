@@ -27,8 +27,8 @@ extern void func_02003e38(void *allocation);
  * and return one. Open failure enters OS_Halt. This mutates file, heap, and
  * table ownership state; the two caller-record offsets remain address-derived.
  */
-s32 func_0201185c(GamePhaseRegionTable *self,
-                   const GamePhaseRegionFileInfo *info)
+s32 GamePhaseRegionTable_Load(GamePhaseRegionTable *self,
+                              const GamePhaseRegionFileInfo *info)
 {
     GameFile file;
     u8 *compressed;
@@ -38,7 +38,7 @@ s32 func_0201185c(GamePhaseRegionTable *self,
     s32 i;
 
     if (!info->fileOffset_30) {
-        func_02011584(self, 0);
+        GamePhaseRegionTable_SetRegionsFromSentinel(self, 0);
         return 0;
     }
     GameFile_Init(&file);
@@ -54,7 +54,7 @@ s32 func_0201185c(GamePhaseRegionTable *self,
     MI_UncompressLZ8(compressed, expanded);
     MI_CpuCopy8(expanded + 4, expanded, expandedSize - 4);
     count = expandedSize / sizeof(GamePhaseRegion);
-    func_0201166c(self, count);
+    GamePhaseRegionTable_Resize(self, count);
     for (i = 0; i < count; i++)
         self->regions[i] = ((GamePhaseRegion *)expanded)[i];
     func_02003e38(compressed);

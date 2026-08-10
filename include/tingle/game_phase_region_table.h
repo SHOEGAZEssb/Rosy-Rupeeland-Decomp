@@ -28,27 +28,34 @@ typedef struct GamePhaseRegionFileInfo {
 #ifdef __cplusplus
 extern "C" {
 #endif
-GamePhaseRegionTable *func_02011470(GamePhaseRegionTable *self);
-GamePhaseRegionTable *func_02011498(GamePhaseRegionTable *self, s32 count);
-void func_02011518(GamePhaseRegion *region);
-void func_0201151c(GamePhaseRegion *region);
-void func_02011520(GamePhaseRegionTable *self);
-GamePhaseRegionTable *func_0201155c(GamePhaseRegionTable *self);
-void func_02011584(GamePhaseRegionTable *self,
-                   const GamePhaseRegion *sentinelTerminated);
-void func_0201166c(GamePhaseRegionTable *self, s32 count);
-s32 func_020116e8(const GamePhaseRegionTable *self, s32 x, s32 y);
-s32 func_02011738(const GamePhaseRegion *region, s32 x, s32 y);
-GamePhaseRegion *func_02011788(GamePhaseRegionTable *self, s32 index);
-s32 func_02011794(const GamePhaseRegionTable *self, s32 index,
-                   const GamePhaseRegion *candidate);
-s32 func_0201185c(GamePhaseRegionTable *self,
-                   const GamePhaseRegionFileInfo *info);
-s32 func_020119c8(const GamePhaseRegionTable *self, s32 index);
-void func_020119f4(GamePhaseRegionTable *self, s32 index, s32 enabled);
-s32 func_02011a3c(const GamePhaseRegionTable *self);
-void func_02011a44(GamePhaseRegionTable *self, s32 flagBase);
-void func_02011a4c(GamePhaseRegionTable *self);
+GamePhaseRegionTable *GamePhaseRegionTable_Init(GamePhaseRegionTable *self);
+GamePhaseRegionTable *GamePhaseRegionTable_InitWithCount(
+    GamePhaseRegionTable *self, s32 count);
+void GamePhaseRegion_Init(GamePhaseRegion *region);
+void GamePhaseRegion_Destroy(GamePhaseRegion *region);
+void GamePhaseRegionTable_Clear(GamePhaseRegionTable *self);
+GamePhaseRegionTable *GamePhaseRegionTable_Destroy(GamePhaseRegionTable *self);
+void GamePhaseRegionTable_SetRegionsFromSentinel(GamePhaseRegionTable *self,
+                                                 const GamePhaseRegion *source);
+void GamePhaseRegionTable_Resize(GamePhaseRegionTable *self, s32 count);
+s32 GamePhaseRegionTable_FindContainingRegion(
+    const GamePhaseRegionTable *self, s32 x, s32 y);
+s32 GamePhaseRegion_ContainsPoint(const GamePhaseRegion *region, s32 x, s32 y);
+GamePhaseRegion *GamePhaseRegionTable_GetRegion(GamePhaseRegionTable *self,
+                                                s32 index);
+s32 GamePhaseRegionTable_ClassifyContainedSide(
+    const GamePhaseRegionTable *self, s32 index,
+    const GamePhaseRegion *candidate);
+s32 GamePhaseRegionTable_Load(GamePhaseRegionTable *self,
+                              const GamePhaseRegionFileInfo *info);
+s32 GamePhaseRegionTable_IsRegionEnabled(const GamePhaseRegionTable *self,
+                                         s32 index);
+void GamePhaseRegionTable_SetRegionEnabled(GamePhaseRegionTable *self,
+                                           s32 index, s32 enabled);
+s32 GamePhaseRegionTable_GetCount(const GamePhaseRegionTable *self);
+void GamePhaseRegionTable_SetGameWorkFlagBase(GamePhaseRegionTable *self,
+                                              s32 flagBase);
+void GamePhaseRegionTable_PublishActive(GamePhaseRegionTable *self);
 #ifdef __cplusplus
 }
 #endif

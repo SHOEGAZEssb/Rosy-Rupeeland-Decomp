@@ -2,7 +2,7 @@
 ; the documented portable implementation and recovered behavior.
 .text
 .extern func_02005058
-.extern func_02011794
+.extern GamePhaseRegionTable_ClassifyContainedSide
 .extern func_02056f00
 .global ActorMotionAreaFollower_QueryCrossingDirection
 ActorMotionAreaFollower_QueryCrossingDirection: ; 0x0200a124
@@ -30,7 +30,7 @@ ActorMotionAreaFollower_QueryCrossingDirection: ; 0x0200a124
     ldr r0, [r5, #0x68]
     add r2, sp, #0x0
     mov r1, r4
-    bl func_02011794
+    bl GamePhaseRegionTable_ClassifyContainedSide
     mov r4, r0
     add r0, sp, #0x8
     bl func_02005058

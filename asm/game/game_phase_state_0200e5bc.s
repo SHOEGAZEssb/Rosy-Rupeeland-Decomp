@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/game_phase_state_lifecycle.c.
 .text
 .extern GamePhaseState_ResetRuntime
-.extern func_0201155c
+.extern GamePhaseRegionTable_Destroy
 .extern ActorCollection_Deinit
 
     .global GamePhaseState_UnloadPhase
@@ -14,7 +14,7 @@ GamePhaseState_UnloadPhase: ; 0x0200e5bc
     ldr r1, [r1, #0x0]
     blx r1
     add r0, r4, #0x2f80
-    bl func_0201155c
+    bl GamePhaseRegionTable_Destroy
     mov r0, r4
     bl GamePhaseState_ResetRuntime
     add r0, r4, #0x4

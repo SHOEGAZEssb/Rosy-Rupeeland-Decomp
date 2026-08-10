@@ -2,7 +2,7 @@
 .text
 .extern func_0200500c
 .extern func_02005058
-.extern func_02011738
+.extern GamePhaseRegion_ContainsPoint
 .extern BoundsCenterSnapshot_Init
 .extern func_020573e4
 .extern func_0205740c
@@ -37,7 +37,7 @@ Actor_TestQueryPoint: ; 0x02033974
     strh r2, [sp, #0x14]
     strh r1, [sp, #0x16]
     ldmib r5, {r1, r2}
-    bl func_02011738
+    bl GamePhaseRegion_ContainsPoint
     mov r4, r0
     ldr r0, [r6, #0x1e0]
     cmp r0, #0x0
@@ -67,7 +67,7 @@ Actor_TestQueryPoint: ; 0x02033974
     bl func_02005058
     add r0, sp, #0x0
     ldmib r5, {r1, r2}
-    bl func_02011738
+    bl GamePhaseRegion_ContainsPoint
     orr r4, r4, r0
 .L_02033a60:
     mov r0, r4

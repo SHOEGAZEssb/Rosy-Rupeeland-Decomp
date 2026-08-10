@@ -3,10 +3,10 @@
 .extern Heap_Alloc
 .extern data_020d5690
 .extern data_021052fc
-.extern func_020116e8
-.extern func_02011788
-.extern func_020119c8
-.extern func_020119f4
+.extern GamePhaseRegionTable_FindContainingRegion
+.extern GamePhaseRegionTable_GetRegion
+.extern GamePhaseRegionTable_IsRegionEnabled
+.extern GamePhaseRegionTable_SetRegionEnabled
 .extern func_0201ded4
 .extern func_02026f38
 .extern gHeapContext
@@ -20,7 +20,7 @@ func_02012014: ; 0x02012014
     mov r1, r2, asr #0xc
     mov r0, r9
     mov r2, r3, asr #0xc
-    bl func_020116e8
+    bl GamePhaseRegionTable_FindContainingRegion
     mov r8, r0
     mvn r0, #0x0
     cmp r8, r0
@@ -31,7 +31,7 @@ func_02012014: ; 0x02012014
     beq L_02012138
     mov r0, r9
     mov r1, r8
-    bl func_02011788
+    bl GamePhaseRegionTable_GetRegion
     ldrsh r2, [r0, #0x0]
     ldrsh r3, [r0, #0x2]
     ldrsh r1, [r0, #0x4]
@@ -46,7 +46,7 @@ func_02012014: ; 0x02012014
     mov r5, r3, asr #0x1
     mov r6, r6, asr #0x1
     mov r7, r7, asr #0x1
-    bl func_020119c8
+    bl GamePhaseRegionTable_IsRegionEnabled
     cmp r0, #0x0
     bne L_02012110
     ldr r0, [r10, #0x4]
@@ -81,7 +81,7 @@ L_02012110:
     mov r0, r9
     mov r1, r8
     mov r2, #0x1
-    bl func_020119f4
+    bl GamePhaseRegionTable_SetRegionEnabled
     add r0, r10, #0x2000
     ldr r2, [r0, #0xea8]
     and r1, r8, #0x1f

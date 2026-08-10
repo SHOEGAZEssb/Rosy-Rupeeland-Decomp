@@ -47,10 +47,10 @@ s32 func_02012014(GamePhaseAreaScene *self, void *tablePointer,
                    s32 worldX, s32 worldY)
 {
     GamePhaseRegionTable *table = (GamePhaseRegionTable *)tablePointer;
-    s32 index = func_020116e8(table, worldX >> 12, worldY >> 12);
+    s32 index = GamePhaseRegionTable_FindContainingRegion(table, worldX >> 12, worldY >> 12);
     if (index != -1 && index != (s32)(self->rendererFlags_2ea8 & 0x1f)) {
-        GamePhaseRegion *region = func_02011788(table, index);
-        if (!func_020119c8(table, index) && self->subRenderer_04) {
+        GamePhaseRegion *region = GamePhaseRegionTable_GetRegion(table, index);
+        if (!GamePhaseRegionTable_IsRegionEnabled(table, index) && self->subRenderer_04) {
             void *effect = Heap_Alloc(0x24, data_020d5690, 4,
                                       &gHeapContext);
             if (effect)
@@ -65,7 +65,7 @@ s32 func_02012014(GamePhaseAreaScene *self, void *tablePointer,
             self->field_2ed4 = (u32)func_0201ded4(
                 (u8 *)data_021052fc + 0x2f7c, effect);
         }
-        func_020119f4(table, index, 1);
+        GamePhaseRegionTable_SetRegionEnabled(table, index, 1);
         self->rendererFlags_2ea8 =
             (self->rendererFlags_2ea8 & ~0x1f) | (index & 0x1f);
     }

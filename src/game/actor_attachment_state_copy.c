@@ -7,7 +7,7 @@ extern "C" {
 #endif
 extern s32 DisplayController_GetSubScreenVerticalOffset(void);
 extern void func_020083b0(void *, s32, s32, s32, s32);
-extern s32 func_02011738(const void *, s32, s32);
+extern s32 GamePhaseRegion_ContainsPoint(const void *, s32, s32);
 extern void func_02072b68(void *, s32);
 extern void func_02072bdc(void *, s32);
 #ifdef __cplusplus
@@ -53,7 +53,7 @@ void func_02031cac(void *self, const void *pointPointer)
     rectangle[2] -= *(s16 *)(actor + 0x68);
     rectangle[3] -= *(s16 *)(actor + 0x6a);
     verticalOffset = DisplayController_GetSubScreenVerticalOffset();
-    if (func_02011738(rectangle, *(s32 *)(point + 0x04),
+    if (GamePhaseRegion_ContainsPoint(rectangle, *(s32 *)(point + 0x04),
                       *(s32 *)(point + 0x08) + verticalOffset))
         *(u16 *)(destination + 0x24) &= ~8;
     else

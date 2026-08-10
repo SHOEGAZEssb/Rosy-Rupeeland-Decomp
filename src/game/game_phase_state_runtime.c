@@ -9,7 +9,7 @@ extern "C" {
 extern void DebugText_BeginFrame(void);
 extern void *GamePhaseVisualEffect_Update(void *object);
 extern void GamePhaseVisualEffect_PrepareBackground(void *object);
-extern void func_0201155c(void *object);
+extern void GamePhaseRegionTable_Destroy(void *object);
 extern void func_0201de4c(void *object);
 extern void func_0201de8c(void *object, u16 vcount);
 extern void *func_0201e0ec(void *object);
@@ -68,7 +68,7 @@ void GamePhaseState_ResetActivePhase(GamePhaseState *self)
     GameWork_SetFlag(gGameWork, 0x3ec);
     *(u16 *)(work + 0x20c) = 0;
     *(u16 *)(work + 0x20e) = 0;
-    func_0201155c(self->helper_2f80);
+    GamePhaseRegionTable_Destroy(self->helper_2f80);
     func_0201df64(self->renderHelperStorage);
     func_0201e0ec(self->renderHelperStorage);
     func_020a2324();

@@ -83,7 +83,7 @@ extern u8 data_020fd268[];
 extern u8 data_020f4e44[];
 extern u8 data_02105310[];
 extern u8 data_02105304[];
-extern u8 data_021055b8[];
+extern u8 gDefaultGamePhaseRegion[];
 extern u8 data_021055ac[];
 extern u8 data_021055c0[];
 extern u8 data_021055a0[];
@@ -191,15 +191,15 @@ void __sinit_020c1490(void)
 }
 
 /*
- * No inputs. Initialize data_021055b8 with recovered values
+ * No inputs. Initialize gDefaultGamePhaseRegion with recovered values
  * (0,0,0x400,0x300) and data_021055c0 with five zeros, then register
  * func_02004ac8 for each using records data_021055ac/data_021055a0. Both
  * global object lifetimes change; no value or direct hardware effect occurs.
  */
 void __sinit_020c14bc(void)
 {
-    func_020083b0(data_021055b8, 0, 0, 0x400, 0x300);
-    __register_global_object(data_021055b8, func_02004ac8, data_021055ac);
+    func_020083b0(gDefaultGamePhaseRegion, 0, 0, 0x400, 0x300);
+    __register_global_object(gDefaultGamePhaseRegion, func_02004ac8, data_021055ac);
     func_020083b0(data_021055c0, 0, 0, 0, 0);
     __register_global_object(data_021055c0, func_02004ac8, data_021055a0);
 }

@@ -13,10 +13,10 @@ extern void *data_021052fc;
 extern "C" {
 #endif
 extern void func_02056f00(VecFx32Object *result, const void *source);
-extern s32 func_020116e8(void *context, s32 x, s32 y);
+extern s32 GamePhaseRegionTable_FindContainingRegion(void *context, s32 x, s32 y);
 extern s32 ActorMotionAreaFollower_QueryCrossingDirection(ActorMotionAreaFollower *self, void *actor,
                          s32 area);
-extern const s16 *func_02011788(void *context, s32 area);
+extern const s16 *GamePhaseRegionTable_GetRegion(void *context, s32 area);
 extern void ActorMotionAreaFollower_ClampToAreaBounds(ActorMotionAreaFollower *self, s32 area,
                           const s16 *bounds);
 extern s32 Type7Actor_GetStateCode(void *actor);
@@ -59,13 +59,13 @@ s32 ActorMotionAreaFollower_Update(ActorMotionAreaFollower *self, const s16 *bou
     s32 area;
 
     func_02056f00(&transformed, actor + 0x18);
-    area = func_020116e8(self->areaContext,
+    area = GamePhaseRegionTable_FindContainingRegion(self->areaContext,
                          transformed.value.x >> 12,
                          (transformed.value.y >> 12) - 0x10);
 
     if (GameWork_TestFlag(gGameWork, 0x404) == 0 && area >= 0) {
         s32 direction = ActorMotionAreaFollower_QueryCrossingDirection(self, actor, area);
-        const s16 *areaBounds = func_02011788(self->areaContext, area);
+        const s16 *areaBounds = GamePhaseRegionTable_GetRegion(self->areaContext, area);
 
         ActorMotionJitter_Update(&self->jitter, areaBounds);
         ActorMotionAreaFollower_ClampToAreaBounds(self, area, bounds);

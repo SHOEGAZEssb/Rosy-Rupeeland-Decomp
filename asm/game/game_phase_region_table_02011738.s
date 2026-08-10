@@ -1,8 +1,8 @@
 ; Matching retail form; see src/game/game_phase_region_table_queries.c.
 .text
 
-    .global func_02011738
-func_02011738: ; 0x02011738
+    .global GamePhaseRegion_ContainsPoint
+GamePhaseRegion_ContainsPoint: ; 0x02011738
     ldrsh r3, [r0, #0x6]
     cmp r2, r3
     ldrsh r3, [r0, #0x2]
@@ -23,5 +23,5 @@ func_02011738: ; 0x02011738
     and r0, r3, r0
     and r0, ip, r0
     bx lr
-    .size func_02011738, . - func_02011738
+    .size GamePhaseRegion_ContainsPoint, . - GamePhaseRegion_ContainsPoint
 

@@ -11,8 +11,8 @@ extern void GamePhaseState_UnloadPhase(GamePhaseState *self);
 extern void GamePhaseState_ResetRuntime(GamePhaseState *self);
 extern void GamePhaseVisualEffect_Init(void *object);
 extern void GamePhaseVisualEffect_Destroy(void *object);
-extern void func_02011470(void *object);
-extern void func_0201155c(void *object);
+extern void GamePhaseRegionTable_Init(void *object);
+extern void GamePhaseRegionTable_Destroy(void *object);
 extern void func_0201dbc8(void *object);
 extern void func_0201dc98(void *object);
 extern void func_0201df64(void *object);
@@ -50,7 +50,7 @@ GamePhaseState *GamePhaseState_Init(GamePhaseState *self)
     GamePhaseVisualEffect_Init(self->helper_2eb4);
     func_0201dbc8(self->renderHelperStorage);
     self->renderFlags = (self->renderFlags & ~1) | 3;
-    func_02011470(self->helper_2f80);
+    GamePhaseRegionTable_Init(self->helper_2f80);
     self->field_2f90 = 1;
     self->field_2f92 = (s16)((self->field_2f92 & ~0xff) | 8);
     self->field_2f92 = (s16)((self->field_2f92 & ~0xff00) | 0x800);
@@ -61,7 +61,7 @@ GamePhaseState *GamePhaseState_Init(GamePhaseState *self)
 GamePhaseState *GamePhaseState_Destroy(GamePhaseState *self)
 {
     GamePhaseState_UnloadPhase(self);
-    func_0201155c(self->helper_2f80);
+    GamePhaseRegionTable_Destroy(self->helper_2f80);
     func_0201dc98(self->renderHelperStorage);
     GamePhaseVisualEffect_Destroy(self->helper_2eb4);
     OverlaySlot_Destroy(self->overlaySlotStorage);
@@ -78,7 +78,7 @@ void GamePhaseState_UnloadPhase(GamePhaseState *self)
 {
     PhaseOwned *helper = (PhaseOwned *)self->helper_2eb4;
     helper->vtable->destroy(helper);
-    func_0201155c(self->helper_2f80);
+    GamePhaseRegionTable_Destroy(self->helper_2f80);
     GamePhaseState_ResetRuntime(self);
     ActorCollection_Deinit(self->actorCollectionStorage);
     if (self->phaseObject != 0)

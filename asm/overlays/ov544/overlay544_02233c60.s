@@ -4,7 +4,7 @@
 .extern data_ov544_02233ca0
 .extern data_ov544_0223468a
 .extern data_ov544_02234a24
-.extern func_02011a4c
+.extern GamePhaseRegionTable_PublishActive
 .extern ActorDescriptorBatch_RegisterAndSpawnCategory2
 .extern ActorDescriptorBatch_SetCategory2Callback
 
@@ -18,7 +18,7 @@ func_ov544_02233c60:
     ldr r0, .L_02233c90
     bl ActorDescriptorBatch_SetCategory2Callback
     ldr r0, .L_02233c94
-    bl func_02011a4c
+    bl GamePhaseRegionTable_PublishActive
     ldmia sp!, {r3, pc}
 .L_02233c88: .word data_ov544_02234a20
 .L_02233c8c: .word data_ov544_02233ca0

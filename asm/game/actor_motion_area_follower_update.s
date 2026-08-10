@@ -10,8 +10,8 @@
 .extern ActorMotionJitter_Update
 .extern ActorMotionAreaFollower_QueryCrossingDirection
 .extern ActorMotionAreaFollower_ClampToAreaBounds
-.extern func_020116e8
-.extern func_02011788
+.extern GamePhaseRegionTable_FindContainingRegion
+.extern GamePhaseRegionTable_GetRegion
 .extern Type7Actor_GetStateCode
 .extern func_02056f00
 .extern func_020adcac
@@ -32,7 +32,7 @@ ActorMotionAreaFollower_Update: ; 0x02009d80
     ldr r0, [r4, #0x68]
     mov r1, r1, asr #0xc
     sub r2, r2, #0x10
-    bl func_020116e8
+    bl GamePhaseRegionTable_FindContainingRegion
     ldr r1, L_0200a108
     mov r5, r0
     ldr r0, [r1, #0x0]
@@ -49,7 +49,7 @@ ActorMotionAreaFollower_Update: ; 0x02009d80
     mov r6, r0
     ldr r0, [r4, #0x68]
     mov r1, r5
-    bl func_02011788
+    bl GamePhaseRegionTable_GetRegion
     mov r1, r0
     mov r0, r4
     bl ActorMotionJitter_Update

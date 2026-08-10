@@ -2,13 +2,13 @@
 .text
 .extern data_020d5638
 .extern func_02003e20
-.extern func_02011518
-.extern func_0201151c
+.extern GamePhaseRegion_Init
+.extern GamePhaseRegion_Destroy
 .extern func_020c09cc
 .extern gHeapContext
 
-    .global func_02011498
-func_02011498: ; 0x02011498
+    .global GamePhaseRegionTable_InitWithCount
+GamePhaseRegionTable_InitWithCount: ; 0x02011498
     stmdb sp!, {r3, r4, r5, lr}
     sub sp, sp, #0x8
     movs r4, r1
@@ -41,7 +41,7 @@ L_020114fc:
     ldmia sp!, {r3, r4, r5, pc}
 L_02011508: .word data_020d5638
 L_0201150c: .word gHeapContext
-L_02011510: .word func_02011518
-L_02011514: .word func_0201151c
-    .size func_02011498, . - func_02011498
+L_02011510: .word GamePhaseRegion_Init
+L_02011514: .word GamePhaseRegion_Destroy
+    .size GamePhaseRegionTable_InitWithCount, . - GamePhaseRegionTable_InitWithCount
 

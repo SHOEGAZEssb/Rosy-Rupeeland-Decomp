@@ -1,9 +1,9 @@
 ; Matching retail form; see src/game/game_phase_region_table_queries.c.
 .text
-.extern func_02011738
+.extern GamePhaseRegion_ContainsPoint
 
-    .global func_02011794
-func_02011794: ; 0x02011794
+    .global GamePhaseRegionTable_ClassifyContainedSide
+GamePhaseRegionTable_ClassifyContainedSide: ; 0x02011794
     stmdb sp!, {r4, r5, r6, r7, r8, lr}
     ldr r0, [r0, #0x0]
     mov r8, r2
@@ -11,22 +11,22 @@ func_02011794: ; 0x02011794
     ldrsh r1, [r8, #0x0]
     ldrsh r2, [r8, #0x2]
     mov r0, r7
-    bl func_02011738
+    bl GamePhaseRegion_ContainsPoint
     mov r4, r0
     ldrsh r1, [r8, #0x4]
     ldrsh r2, [r8, #0x2]
     mov r0, r7
-    bl func_02011738
+    bl GamePhaseRegion_ContainsPoint
     mov r5, r0
     ldrsh r1, [r8, #0x0]
     ldrsh r2, [r8, #0x6]
     mov r0, r7
-    bl func_02011738
+    bl GamePhaseRegion_ContainsPoint
     mov r6, r0
     ldrsh r1, [r8, #0x4]
     ldrsh r2, [r8, #0x6]
     mov r0, r7
-    bl func_02011738
+    bl GamePhaseRegion_ContainsPoint
     and r2, r4, r5
     and r1, r6, r2
     tst r0, r1
@@ -58,5 +58,5 @@ L_02011840:
 L_02011854:
     mvn r0, #0x0
     ldmia sp!, {r4, r5, r6, r7, r8, pc}
-    .size func_02011794, . - func_02011794
+    .size GamePhaseRegionTable_ClassifyContainedSide, . - GamePhaseRegionTable_ClassifyContainedSide
 

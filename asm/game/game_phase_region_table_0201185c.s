@@ -13,12 +13,12 @@
 .extern data_020d565c
 .extern func_02003e20
 .extern func_02003e38
-.extern func_02011584
-.extern func_0201166c
+.extern GamePhaseRegionTable_SetRegionsFromSentinel
+.extern GamePhaseRegionTable_Resize
 .extern gHeapContext
 
-    .global func_0201185c
-func_0201185c: ; 0x0201185c
+    .global GamePhaseRegionTable_Load
+GamePhaseRegionTable_Load: ; 0x0201185c
     stmdb sp!, {r4, r5, r6, r7, lr}
     sub sp, sp, #0x4c
     mov r5, r1
@@ -27,7 +27,7 @@ func_0201185c: ; 0x0201185c
     cmp r1, #0x0
     bne L_02011888
     mov r1, #0x0
-    bl func_02011584
+    bl GamePhaseRegionTable_SetRegionsFromSentinel
     mov r0, #0x0
     b L_020119b0
 L_02011888:
@@ -74,7 +74,7 @@ L_020118a8:
     mov r6, r6, lsr #0x3
     mov r0, r7
     mov r1, r6
-    bl func_0201166c
+    bl GamePhaseRegionTable_Resize
     mov r0, #0x0
     b L_0201198c
 L_0201193c:
@@ -115,5 +115,5 @@ L_020119b8: .word data_020d5640
 L_020119bc: .word data_020d5654
 L_020119c0: .word gHeapContext
 L_020119c4: .word data_020d565c
-    .size func_0201185c, . - func_0201185c
+    .size GamePhaseRegionTable_Load, . - GamePhaseRegionTable_Load
 

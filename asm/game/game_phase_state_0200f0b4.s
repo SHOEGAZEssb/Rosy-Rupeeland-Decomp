@@ -2,8 +2,8 @@
 .text
 .extern Heap_Alloc
 .extern data_020d554c
-.extern func_0201185c
-.extern func_02011a44
+.extern GamePhaseRegionTable_Load
+.extern GamePhaseRegionTable_SetGameWorkFlagBase
 .extern func_02029218
 .extern func_02029ca4
 .extern func_0202becc
@@ -122,10 +122,10 @@ L_0200f204:
     bl func_02029ca4
     ldr r1, [r4, #0x4]
     add r0, r5, #0x2f80
-    bl func_0201185c
+    bl GamePhaseRegionTable_Load
     ldr r1, [r4, #0x48]
     add r0, r5, #0x2f80
-    bl func_02011a44
+    bl GamePhaseRegionTable_SetGameWorkFlagBase
     ldmia sp!, {r3, r4, r5, pc}
 L_0200f250: .word 0x400000e
 L_0200f254: .word 0x187c

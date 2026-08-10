@@ -2,7 +2,7 @@
 .text
 .extern DebugText_BeginFrame
 .extern GameWork_SetFlag
-.extern func_0201155c
+.extern GamePhaseRegionTable_Destroy
 .extern func_0201df64
 .extern func_0201e0ec
 .extern func_0202d3cc
@@ -32,7 +32,7 @@ GamePhaseState_ResetActivePhase: ; 0x0200ea48
     ldr r1, [r2, #0x0]
     add r1, r1, #0x200
     strh r3, [r1, #0xe]
-    bl func_0201155c
+    bl GamePhaseRegionTable_Destroy
     add r0, r4, #0x358
     add r0, r0, #0x2c00
     bl func_0201df64

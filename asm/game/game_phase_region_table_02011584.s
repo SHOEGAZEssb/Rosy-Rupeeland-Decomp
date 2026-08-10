@@ -1,17 +1,17 @@
 ; Matching retail form; see src/game/game_phase_region_table_lifecycle.c.
 .text
-.extern data_021055b8
+.extern gDefaultGamePhaseRegion
 .extern func_02008354
-.extern func_0201166c
+.extern GamePhaseRegionTable_Resize
 
-    .global func_02011584
-func_02011584: ; 0x02011584
+    .global GamePhaseRegionTable_SetRegionsFromSentinel
+GamePhaseRegionTable_SetRegionsFromSentinel: ; 0x02011584
     stmdb sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, lr}
     movs r5, r1
     mov r6, r0
     bne L_020115ac
     mov r1, #0x1
-    bl func_0201166c
+    bl GamePhaseRegionTable_Resize
     ldr r0, [r6, #0x0]
     ldr r1, L_02011668
     bl func_02008354
@@ -53,7 +53,7 @@ L_020115cc:
     beq L_020115cc
     mov r0, r6
     mov r1, r4
-    bl func_0201166c
+    bl GamePhaseRegionTable_Resize
     mov r7, #0x0
     b L_0201165c
 L_02011644:
@@ -67,6 +67,6 @@ L_0201165c:
     cmp r7, r4
     blt L_02011644
     ldmia sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, pc}
-L_02011668: .word data_021055b8
-    .size func_02011584, . - func_02011584
+L_02011668: .word gDefaultGamePhaseRegion
+    .size GamePhaseRegionTable_SetRegionsFromSentinel, . - GamePhaseRegionTable_SetRegionsFromSentinel
 

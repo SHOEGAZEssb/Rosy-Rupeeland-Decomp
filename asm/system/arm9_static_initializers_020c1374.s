@@ -45,7 +45,7 @@
 .extern data_02105310
 .extern data_021055a0
 .extern data_021055ac
-.extern data_021055b8
+.extern gDefaultGamePhaseRegion
 .extern data_021055c0
 .extern data_021055d0
 .extern data_021055dc
@@ -257,7 +257,7 @@ __sinit_020c14bc: ; 0x020c14bc
     ldr r2, .L_020c1528
     bl __register_global_object
     ldmia sp!, {r3, pc}
-.L_020c1518: .word data_021055b8
+.L_020c1518: .word gDefaultGamePhaseRegion
 .L_020c151c: .word func_02004ac8
 .L_020c1520: .word data_021055ac
 .L_020c1524: .word data_021055c0

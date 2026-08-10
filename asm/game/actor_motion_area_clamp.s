@@ -5,7 +5,7 @@
 .extern func_02005058
 .extern func_020050a4
 .extern S16Rectangle_Translate
-.extern func_02011788
+.extern GamePhaseRegionTable_GetRegion
 .extern Actor_GetCollisionBounds
 .global ActorMotionAreaFollower_ClampToAreaBounds
 ActorMotionAreaFollower_ClampToAreaBounds: ; 0x0200a1a0
@@ -54,7 +54,7 @@ ActorMotionAreaFollower_ClampToAreaBounds: ; 0x0200a1a0
     bl S16Rectangle_Translate
     ldr r0, [r9, #0x68]
     mov r1, r8
-    bl func_02011788
+    bl GamePhaseRegionTable_GetRegion
     ldrsh r2, [r0, #0x0]
     ldr r1, [sp, #0x14]
     cmp r2, r1, asr #0xc

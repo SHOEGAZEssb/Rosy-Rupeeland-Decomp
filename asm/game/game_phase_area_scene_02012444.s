@@ -1,8 +1,8 @@
 ; Matching retail form; see src/game/game_phase_area_scene_helpers.c.
 .text
-.extern func_02011788
-.extern func_020119c8
-.extern func_02011a3c
+.extern GamePhaseRegionTable_GetRegion
+.extern GamePhaseRegionTable_IsRegionEnabled
+.extern GamePhaseRegionTable_GetCount
 .extern func_02029bfc
 
     .global func_02012444
@@ -21,12 +21,12 @@ func_02012444: ; 0x02012444
 L_02012470:
     mov r0, r7
     mov r1, r6
-    bl func_020119c8
+    bl GamePhaseRegionTable_IsRegionEnabled
     cmp r0, #0x0
     beq L_020124d4
     mov r0, r7
     mov r1, r6
-    bl func_02011788
+    bl GamePhaseRegionTable_GetRegion
     ldrsh r2, [r0, #0x4]
     mov r1, r4
     add r2, r2, r2, lsr #0x1f
@@ -48,7 +48,7 @@ L_020124d4:
     add r6, r6, #0x1
 L_020124d8:
     mov r0, r7
-    bl func_02011a3c
+    bl GamePhaseRegionTable_GetCount
     cmp r6, r0
     blt L_02012470
 L_020124e8:

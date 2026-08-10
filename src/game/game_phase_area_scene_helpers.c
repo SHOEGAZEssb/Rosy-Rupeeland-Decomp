@@ -29,9 +29,9 @@ void func_02012444(GamePhaseAreaScene *self, void *tablePointer)
     s32 i;
     if (!self->subRenderer_04)
         return;
-    for (i = 0; i < func_02011a3c(table); i++) {
-        if (func_020119c8(table, i)) {
-            GamePhaseRegion *region = func_02011788(table, i);
+    for (i = 0; i < GamePhaseRegionTable_GetCount(table); i++) {
+        if (GamePhaseRegionTable_IsRegionEnabled(table, i)) {
+            GamePhaseRegion *region = GamePhaseRegionTable_GetRegion(table, i);
             func_02029bfc(self->subRenderer_04, 1,
                           halfCoordinate(region->left),
                           halfCoordinate(region->top),

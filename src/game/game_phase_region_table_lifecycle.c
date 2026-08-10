@@ -8,7 +8,7 @@ extern "C" {
 #endif
 extern const char data_020d5630[];
 extern const char data_020d5638[];
-extern const GamePhaseRegion data_021055b8;
+extern const GamePhaseRegion gDefaultGamePhaseRegion;
 extern void *func_020c09cc(void *allocation, s32 count, s32 elementSize,
                            s32 stride, void (*construct)(GamePhaseRegion *),
                            void (*destroy)(GamePhaseRegion *));
@@ -19,9 +19,9 @@ extern void func_020c0c24(void *array, s32 elementSize, s32 stride,
 #endif
 
 /* Initialize an empty table and set the low byte of flags to 0xff; returns self. */
-GamePhaseRegionTable *func_02011470(GamePhaseRegionTable *self)
+GamePhaseRegionTable *GamePhaseRegionTable_Init(GamePhaseRegionTable *self)
 {
-    func_02011498(self, 0);
+    GamePhaseRegionTable_InitWithCount(self, 0);
     self->flags = (self->flags & ~0xff) | 0xff;
     return self;
 }
@@ -31,7 +31,8 @@ GamePhaseRegionTable *func_02011470(GamePhaseRegionTable *self)
  * no-op element hooks, store the array/count pair, and return self. Zero count
  * produces a null pointer. Heap state changes; region contents remain unset.
  */
-GamePhaseRegionTable *func_02011498(GamePhaseRegionTable *self, s32 count)
+GamePhaseRegionTable *GamePhaseRegionTable_InitWithCount(
+    GamePhaseRegionTable *self, s32 count)
 {
     GamePhaseRegion *regions = 0;
     if (count) {
@@ -40,7 +41,8 @@ GamePhaseRegionTable *func_02011498(GamePhaseRegionTable *self, s32 count)
         if (allocation)
             regions = (GamePhaseRegion *)func_020c09cc(
                 allocation, count, sizeof(GamePhaseRegion),
-                sizeof(GamePhaseRegion), func_02011518, func_0201151c);
+                sizeof(GamePhaseRegion), GamePhaseRegion_Init,
+                GamePhaseRegion_Destroy);
     }
     self->regions = regions;
     self->count = count;
@@ -48,54 +50,55 @@ GamePhaseRegionTable *func_02011498(GamePhaseRegionTable *self, s32 count)
 }
 
 /* Recovered no-op array element constructor; it leaves region unchanged. */
-void func_02011518(GamePhaseRegion *region)
+void GamePhaseRegion_Init(GamePhaseRegion *region)
 {
     (void)region;
 }
 
 /* Recovered no-op array element destructor; it leaves region unchanged. */
-void func_0201151c(GamePhaseRegion *region)
+void GamePhaseRegion_Destroy(GamePhaseRegion *region)
 {
     (void)region;
 }
 
 /* Destroy the owned region array when present and reset pointer/count to zero. */
-void func_02011520(GamePhaseRegionTable *self)
+void GamePhaseRegionTable_Clear(GamePhaseRegionTable *self)
 {
     if (self->regions) {
         func_020c0c24(self->regions, sizeof(GamePhaseRegion),
-                      sizeof(GamePhaseRegion), func_0201151c);
+                      sizeof(GamePhaseRegion), GamePhaseRegion_Destroy);
         self->regions = 0;
     }
     self->count = 0;
 }
 
 /* Destroy the table's owned array and return self without freeing the table object. */
-GamePhaseRegionTable *func_0201155c(GamePhaseRegionTable *self)
+GamePhaseRegionTable *GamePhaseRegionTable_Destroy(GamePhaseRegionTable *self)
 {
-    func_02011520(self);
+    GamePhaseRegionTable_Clear(self);
     return self;
 }
 
 /*
  * Replace the table from a rectangle array terminated by an all-zero entry.
- * A null source creates one entry copied from data_021055b8. The terminating
- * zero entry is not copied. Allocation and old-array ownership are updated.
+ * A null source creates one entry copied from gDefaultGamePhaseRegion. The
+ * terminating zero entry is not copied. Allocation and old-array ownership
+ * are updated.
  */
-void func_02011584(GamePhaseRegionTable *self,
-                   const GamePhaseRegion *source)
+void GamePhaseRegionTable_SetRegionsFromSentinel(GamePhaseRegionTable *self,
+                                                 const GamePhaseRegion *source)
 {
     s32 count = 0;
     s32 i;
     if (!source) {
-        func_0201166c(self, 1);
-        self->regions[0] = data_021055b8;
+        GamePhaseRegionTable_Resize(self, 1);
+        self->regions[0] = gDefaultGamePhaseRegion;
         return;
     }
     while (source[count].left || source[count].top ||
            source[count].right || source[count].bottom)
         count++;
-    func_0201166c(self, count);
+    GamePhaseRegionTable_Resize(self, count);
     for (i = 0; i < count; i++)
         self->regions[i] = source[i];
 }
@@ -104,18 +107,19 @@ void func_02011584(GamePhaseRegionTable *self,
  * Destroy any existing array, allocate exactly count uninitialized entries
  * with the alternate recovered heap tag, and store the pointer/count pair.
  */
-void func_0201166c(GamePhaseRegionTable *self, s32 count)
+void GamePhaseRegionTable_Resize(GamePhaseRegionTable *self, s32 count)
 {
     GamePhaseRegion *regions = 0;
     if (self->regions)
-        func_02011520(self);
+        GamePhaseRegionTable_Clear(self);
     {
         void *allocation = Heap_Alloc(count * sizeof(GamePhaseRegion) + 8,
                                       data_020d5630, 4, &gHeapContext);
         if (allocation)
             regions = (GamePhaseRegion *)func_020c09cc(
                 allocation, count, sizeof(GamePhaseRegion),
-                sizeof(GamePhaseRegion), func_02011518, func_0201151c);
+                sizeof(GamePhaseRegion), GamePhaseRegion_Init,
+                GamePhaseRegion_Destroy);
     }
     self->regions = regions;
     self->count = count;
