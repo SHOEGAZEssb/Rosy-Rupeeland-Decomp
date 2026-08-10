@@ -1,7 +1,7 @@
 ; Matching retail form; see src/graphics/sub_bg_runtime_control.c.
 .text
-.global func_0201c610
-func_0201c610: ; 0x0201c610
+.global GraphicsSubBackground_SetVisible
+GraphicsSubBackground_SetVisible: ; 0x0201c610
     cmp r1, #0x0
     beq L_0201c6d4
     cmp r0, #0x3
@@ -112,4 +112,4 @@ L_0201c78c:
     mov r0, #0x0
     bx lr
 L_0201c794: .word 0x4001000
-.size func_0201c610, . - func_0201c610
+.size GraphicsSubBackground_SetVisible, . - GraphicsSubBackground_SetVisible

@@ -6,17 +6,17 @@
 extern "C" {
 #endif
 extern void OS_Halt(void);
-extern void func_0201c174(...);
-extern void func_0201c3f8(...);
-extern void func_0201c5ac(...);
-extern void func_0201c610(...);
-extern void func_0201c798(...);
-extern void func_0201c91c(...);
-extern void func_0201cabc(...);
-extern void func_0201cb70(...);
-extern void func_0201ccf4(...);
-extern void func_0201ce98(...);
-extern void func_0201cf34(...);
+extern void GraphicsSubBackground_Configure256ColorText(...);
+extern void GraphicsSubBackground_Configure16ColorText(...);
+extern void GraphicsSubBackground_SetScroll(...);
+extern void GraphicsSubBackground_SetVisible(...);
+extern void GraphicsMainBackground_Configure16ColorText(...);
+extern void GraphicsMainBackground_LoadResources(...);
+extern void GraphicsMainBackground_SetScroll(...);
+extern void GraphicsMainBackground_SetVisible(...);
+extern void GraphicsSubBackground_LoadResources(...);
+extern void GraphicsMainBackground_ConfigureAlphaBlend(...);
+extern void GraphicsSubBackground_ConfigureAlphaBlend(...);
 #ifdef __cplusplus
 }
 #endif
@@ -37,18 +37,26 @@ s32 func_02016930(GamePhaseActorScriptVm *self)
     u32 selector = GamePhaseScriptVm_Pop(&self->base);
 
     switch (selector) {
-    case 0: func_0201c174(first, second, third, fourth); break;
-    case 1: func_0201c3f8(first, second, third, fourth); break;
-    case 2:
-        func_0201ccf4(first, (u16)second, (u16)third, (u16)fourth,
-                      (u16)fifth, 1);
+    case 0:
+        GraphicsSubBackground_Configure256ColorText(first, second, third,
+                                                    fourth);
         break;
-    case 3: func_0201c5ac(first, second, third); break;
-    case 4: func_0201c610(first, second); break;
-    case 5: func_0201cf34(first, second, third); break;
+    case 1:
+        GraphicsSubBackground_Configure16ColorText(first, second, third,
+                                                   fourth);
+        break;
+    case 2:
+        GraphicsSubBackground_LoadResources(first, (u16)second, (u16)third,
+                                            (u16)fourth, (u16)fifth, 1);
+        break;
+    case 3: GraphicsSubBackground_SetScroll(first, second, third); break;
+    case 4: GraphicsSubBackground_SetVisible(first, second); break;
+    case 5:
+        GraphicsSubBackground_ConfigureAlphaBlend(first, second, third);
+        break;
     case 6:
-        func_0201ccf4(first, (u16)second, (u16)third, (u16)fourth,
-                      (u16)fifth, 0);
+        GraphicsSubBackground_LoadResources(first, (u16)second, (u16)third,
+                                            (u16)fourth, (u16)fifth, 0);
         break;
     default: OS_Halt(); break;
     }
@@ -71,17 +79,22 @@ s32 func_02016a84(GamePhaseActorScriptVm *self)
     u32 selector = GamePhaseScriptVm_Pop(&self->base);
 
     switch (selector) {
-    case 1: func_0201c798(first, second, third, fourth); break;
-    case 2:
-        func_0201c91c(first, (u16)second, (u16)third, (u16)fourth,
-                      (u16)fifth, 1);
+    case 1:
+        GraphicsMainBackground_Configure16ColorText(first, second, third,
+                                                    fourth);
         break;
-    case 3: func_0201cabc(first, second, third); break;
-    case 4: func_0201cb70(first, second); break;
-    case 5: func_0201ce98(first, second, third); break;
+    case 2:
+        GraphicsMainBackground_LoadResources(first, (u16)second, (u16)third,
+                                             (u16)fourth, (u16)fifth, 1);
+        break;
+    case 3: GraphicsMainBackground_SetScroll(first, second, third); break;
+    case 4: GraphicsMainBackground_SetVisible(first, second); break;
+    case 5:
+        GraphicsMainBackground_ConfigureAlphaBlend(first, second, third);
+        break;
     case 6:
-        func_0201c91c(first, (u16)second, (u16)third, (u16)fourth,
-                      (u16)fifth, 0);
+        GraphicsMainBackground_LoadResources(first, (u16)second, (u16)third,
+                                             (u16)fourth, (u16)fifth, 0);
         break;
     default: OS_Halt(); break;
     }

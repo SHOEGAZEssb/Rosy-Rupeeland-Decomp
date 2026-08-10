@@ -23,8 +23,9 @@ extern void func_02070eac(void *resource, s32 background, s32 value);
  * resource-1 transfers exactly as recovered.  The temporary set is destroyed
  * before returning zero; the resource helpers may perform VRAM/cache effects.
  */
-s32 func_0201ccf4(s32 background, u32 resource0Id, u32 resource1Id,
-                  u32 resource2Id, u16 parameter, s32 uploadGraphics)
+s32 GraphicsSubBackground_LoadResources(s32 background, u32 resource0Id,
+                                        u32 resource1Id, u32 resource2Id,
+                                        u16 parameter, s32 uploadGraphics)
 {
     GraphicsResourceSet resources;
     s32 destination;

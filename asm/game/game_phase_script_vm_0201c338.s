@@ -1,7 +1,7 @@
 ; Matching retail form; see src/graphics/sub_bg_control.c.
 .text
-.global func_0201c338
-func_0201c338: ; 0x0201c338
+.global GraphicsSubBackground_WriteBg0Control
+GraphicsSubBackground_WriteBg0Control: ; 0x0201c338
     stmdb sp!, {r4, lr}
     ldr lr, L_0201c368
     ldr r4, [sp, #0x8]
@@ -15,4 +15,4 @@ func_0201c338: ; 0x0201c338
     strh r0, [lr, #0x0]
     ldmia sp!, {r4, pc}
 L_0201c368: .word 0x4001008
-.size func_0201c338, . - func_0201c338
+.size GraphicsSubBackground_WriteBg0Control, . - GraphicsSubBackground_WriteBg0Control

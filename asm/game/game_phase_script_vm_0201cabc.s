@@ -1,7 +1,7 @@
 ; Matching retail form; see src/graphics/main_bg_runtime_control.c.
 .text
-.global func_0201cabc
-func_0201cabc: ; 0x0201cabc
+.global GraphicsMainBackground_SetScroll
+GraphicsMainBackground_SetScroll: ; 0x0201cabc
     cmp r0, #0x3
     addls pc, pc, r0, lsl #0x2
     b L_0201cb54
@@ -53,4 +53,4 @@ L_0201cb60: .word 0x4000010
 L_0201cb64: .word 0x4000014
 L_0201cb68: .word 0x4000018
 L_0201cb6c: .word 0x400001c
-.size func_0201cabc, . - func_0201cabc
+.size GraphicsMainBackground_SetScroll, . - GraphicsMainBackground_SetScroll

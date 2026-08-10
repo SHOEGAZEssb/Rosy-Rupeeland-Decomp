@@ -2,12 +2,12 @@
 .text
 .extern OS_Halt
 .extern GamePhaseScriptVm_Pop
-.extern func_0201c174
-.extern func_0201c3f8
-.extern func_0201c5ac
-.extern func_0201c610
-.extern func_0201ccf4
-.extern func_0201cf34
+.extern GraphicsSubBackground_Configure256ColorText
+.extern GraphicsSubBackground_Configure16ColorText
+.extern GraphicsSubBackground_SetScroll
+.extern GraphicsSubBackground_SetVisible
+.extern GraphicsSubBackground_LoadResources
+.extern GraphicsSubBackground_ConfigureAlphaBlend
 .global func_02016930
 func_02016930:
     stmdb sp!, {r3, r4, r5, r6, r7, r8, r9, lr}
@@ -44,14 +44,14 @@ L_020169a4:
     mov r1, r5
     mov r2, r6
     mov r3, r7
-    bl func_0201c174
+    bl GraphicsSubBackground_Configure256ColorText
     b L_02016a78
 L_020169bc:
     mov r0, r4
     mov r1, r5
     mov r2, r6
     mov r3, r7
-    bl func_0201c3f8
+    bl GraphicsSubBackground_Configure16ColorText
     b L_02016a78
 L_020169d4:
     mov r0, r8, lsl #16
@@ -66,7 +66,7 @@ L_020169d4:
     mov r2, r2, lsr #16
     mov r3, r3, lsr #16
     str r4, [sp, #4]
-    bl func_0201ccf4
+    bl GraphicsSubBackground_LoadResources
     b L_02016a78
 L_02016a0c:
     mov r0, r8, lsl #16
@@ -81,24 +81,24 @@ L_02016a0c:
     mov r2, r2, lsr #16
     mov r3, r3, lsr #16
     str r4, [sp, #4]
-    bl func_0201ccf4
+    bl GraphicsSubBackground_LoadResources
     b L_02016a78
 L_02016a44:
     mov r0, r4
     mov r1, r5
     mov r2, r6
-    bl func_0201c5ac
+    bl GraphicsSubBackground_SetScroll
     b L_02016a78
 L_02016a58:
     mov r0, r4
     mov r1, r5
-    bl func_0201c610
+    bl GraphicsSubBackground_SetVisible
     b L_02016a78
 L_02016a68:
     mov r0, r4
     mov r1, r5
     mov r2, r6
-    bl func_0201cf34
+    bl GraphicsSubBackground_ConfigureAlphaBlend
 L_02016a78:
     mov r0, #0
     add sp, sp, #8

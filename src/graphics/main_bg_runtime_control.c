@@ -3,7 +3,7 @@
 /* Set main-engine background scroll registers and visibility bits. */
 
 /* Write low-nine-bit X/Y scroll values for main background 0..3 and return zero. */
-s32 func_0201cabc(s32 background, s32 x, s32 y)
+s32 GraphicsMainBackground_SetScroll(s32 background, s32 x, s32 y)
 {
     if ((u32)background <= 3) {
         volatile u32 *scroll = (volatile u32 *)(0x04000010 + background * 4);
@@ -13,7 +13,7 @@ s32 func_0201cabc(s32 background, s32 x, s32 y)
 }
 
 /* Set or clear the selected main-background visibility bit in DISPCNT; return zero. */
-s32 func_0201cb70(s32 background, s32 enabled)
+s32 GraphicsMainBackground_SetVisible(s32 background, s32 enabled)
 {
     volatile u32 *displayControl = (volatile u32 *)0x04000000;
     if ((u32)background <= 3) {

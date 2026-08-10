@@ -10,8 +10,8 @@
 .extern func_02070b50
 .extern func_02070e0c
 .extern data_020f4e18
-.global func_0201c91c
-func_0201c91c: ; 0x0201c91c
+.global GraphicsMainBackground_LoadResources
+GraphicsMainBackground_LoadResources: ; 0x0201c91c
     stmdb sp!, {r4, r5, r6, r7, r8, lr}
     sub sp, sp, #0x10
     mov r4, r0
@@ -126,4 +126,4 @@ L_0201caa4:
     add sp, sp, #0x10
     ldmia sp!, {r4, r5, r6, r7, r8, pc}
 L_0201cab8: .word data_020f4e18
-.size func_0201c91c, . - func_0201c91c
+.size GraphicsMainBackground_LoadResources, . - GraphicsMainBackground_LoadResources

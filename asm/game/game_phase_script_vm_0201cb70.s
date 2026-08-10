@@ -1,7 +1,7 @@
 ; Matching retail form; see src/graphics/main_bg_runtime_control.c.
 .text
-.global func_0201cb70
-func_0201cb70: ; 0x0201cb70
+.global GraphicsMainBackground_SetVisible
+GraphicsMainBackground_SetVisible: ; 0x0201cb70
     cmp r1, #0x0
     beq L_0201cc34
     cmp r0, #0x3
@@ -111,4 +111,4 @@ L_0201ccc8:
 L_0201ccec:
     mov r0, #0x0
     bx lr
-.size func_0201cb70, . - func_0201cb70
+.size GraphicsMainBackground_SetVisible, . - GraphicsMainBackground_SetVisible

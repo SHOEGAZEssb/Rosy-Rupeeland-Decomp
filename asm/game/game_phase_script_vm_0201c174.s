@@ -2,12 +2,12 @@
 .text
 .extern GXS_SetGraphicsMode
 .extern OS_Halt
-.extern func_0201c338
-.extern func_0201c36c
-.extern func_0201c3a0
-.extern func_0201c3cc
-.global func_0201c174
-func_0201c174: ; 0x0201c174
+.extern GraphicsSubBackground_WriteBg0Control
+.extern GraphicsSubBackground_WriteBg1Control
+.extern GraphicsSubBackground_WriteBg2Control
+.extern GraphicsSubBackground_WriteBg3Control
+.global GraphicsSubBackground_Configure256ColorText
+GraphicsSubBackground_Configure256ColorText: ; 0x0201c174
     stmdb sp!, {r3, r4, r5, r6, r7, lr}
     mov r7, r0
     mov r4, r2
@@ -87,7 +87,7 @@ L_0201c244:
     mov r1, #0x1
     mov r2, #0x1c
     str ip, [sp, #0x0]
-    bl func_0201c338
+    bl GraphicsSubBackground_WriteBg0Control
     ldr r1, L_0201c328
     ldrh r0, [r1, #0x0]
     bic r0, r0, #0x3
@@ -103,7 +103,7 @@ L_0201c280:
     mov r1, #0x1
     mov r2, #0x1e
     str ip, [sp, #0x0]
-    bl func_0201c36c
+    bl GraphicsSubBackground_WriteBg1Control
     ldr r1, L_0201c32c
     ldrh r0, [r1, #0x0]
     bic r0, r0, #0x3
@@ -117,7 +117,7 @@ L_0201c2bc:
     mov r3, r6
     mov r1, #0x1
     mov r2, #0x1e
-    bl func_0201c3a0
+    bl GraphicsSubBackground_WriteBg2Control
     ldr r1, L_0201c330
     ldrh r0, [r1, #0x0]
     bic r0, r0, #0x3
@@ -131,7 +131,7 @@ L_0201c2f0:
     mov r3, r6
     mov r1, #0x1
     mov r2, #0x1e
-    bl func_0201c3cc
+    bl GraphicsSubBackground_WriteBg3Control
     ldr r1, L_0201c334
     ldrh r0, [r1, #0x0]
     bic r0, r0, #0x3
@@ -144,4 +144,4 @@ L_0201c328: .word 0x4001008
 L_0201c32c: .word 0x400100a
 L_0201c330: .word 0x400100c
 L_0201c334: .word 0x400100e
-.size func_0201c174, . - func_0201c174
+.size GraphicsSubBackground_Configure256ColorText, . - GraphicsSubBackground_Configure256ColorText

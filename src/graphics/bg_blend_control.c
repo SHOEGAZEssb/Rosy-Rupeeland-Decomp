@@ -18,7 +18,9 @@ extern void func_020afd0c(volatile u16 *registerAddress, s32 firstMask,
  * plus backdrop as second targets, using the two coefficients.  selector 4
  * clears BLDCNT; an out-of-range selector halts through the SDK.  Returns zero.
  */
-s32 func_0201ce98(s32 selector, s32 firstCoefficient, s32 secondCoefficient)
+s32 GraphicsMainBackground_ConfigureAlphaBlend(s32 selector,
+                                               s32 firstCoefficient,
+                                               s32 secondCoefficient)
 {
     s32 firstMask = 0;
     s32 secondMask = 0x10;
@@ -57,7 +59,9 @@ s32 func_0201ce98(s32 selector, s32 firstCoefficient, s32 secondCoefficient)
  * backgrounds plus backdrop as second targets.  selector 4 clears BLDCNT_SUB;
  * an out-of-range selector halts through the SDK.  Returns zero.
  */
-s32 func_0201cf34(s32 selector, s32 firstCoefficient, s32 secondCoefficient)
+s32 GraphicsSubBackground_ConfigureAlphaBlend(s32 selector,
+                                              s32 firstCoefficient,
+                                              s32 secondCoefficient)
 {
     s32 firstMask = 0;
     s32 secondMask = 0x10;

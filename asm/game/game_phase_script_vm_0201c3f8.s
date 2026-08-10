@@ -3,12 +3,12 @@
 .extern OS_Halt
 .extern GraphicsResourceSet_Init
 .extern GraphicsResourceSet_Destroy
-.extern func_0201c338
-.extern func_0201c36c
-.extern func_0201c3a0
-.extern func_0201c3cc
-.global func_0201c3f8
-func_0201c3f8: ; 0x0201c3f8
+.extern GraphicsSubBackground_WriteBg0Control
+.extern GraphicsSubBackground_WriteBg1Control
+.extern GraphicsSubBackground_WriteBg2Control
+.extern GraphicsSubBackground_WriteBg3Control
+.global GraphicsSubBackground_Configure16ColorText
+GraphicsSubBackground_Configure16ColorText: ; 0x0201c3f8
     stmdb sp!, {r3, r4, r5, r6, r7, lr}
     sub sp, sp, #0x10
     mov r7, r0
@@ -88,7 +88,7 @@ L_0201c4d4:
     mov r3, r6
     mov r2, #0x18
     str r1, [sp, #0x0]
-    bl func_0201c338
+    bl GraphicsSubBackground_WriteBg0Control
     ldr r1, L_0201c59c
     ldrh r0, [r1, #0x0]
     bic r0, r0, #0x3
@@ -101,7 +101,7 @@ L_0201c504:
     mov r3, r6
     mov r2, #0x1a
     str r1, [sp, #0x0]
-    bl func_0201c36c
+    bl GraphicsSubBackground_WriteBg1Control
     ldr r1, L_0201c5a0
     ldrh r0, [r1, #0x0]
     bic r0, r0, #0x3
@@ -113,7 +113,7 @@ L_0201c534:
     mov r3, r6
     mov r1, #0x0
     mov r2, #0x1c
-    bl func_0201c3a0
+    bl GraphicsSubBackground_WriteBg2Control
     ldr r1, L_0201c5a4
     ldrh r0, [r1, #0x0]
     bic r0, r0, #0x3
@@ -125,7 +125,7 @@ L_0201c560:
     mov r3, r6
     mov r1, #0x0
     mov r2, #0x1e
-    bl func_0201c3cc
+    bl GraphicsSubBackground_WriteBg3Control
     ldr r1, L_0201c5a8
     ldrh r0, [r1, #0x0]
     bic r0, r0, #0x3
@@ -141,4 +141,4 @@ L_0201c59c: .word 0x4001008
 L_0201c5a0: .word 0x400100a
 L_0201c5a4: .word 0x400100c
 L_0201c5a8: .word 0x400100e
-.size func_0201c3f8, . - func_0201c3f8
+.size GraphicsSubBackground_Configure16ColorText, . - GraphicsSubBackground_Configure16ColorText

@@ -2,8 +2,8 @@
 .text
 .extern GX_SetGraphicsMode
 .extern OS_Halt
-.global func_0201c798
-func_0201c798: ; 0x0201c798
+.global GraphicsMainBackground_Configure16ColorText
+GraphicsMainBackground_Configure16ColorText: ; 0x0201c798
     stmdb sp!, {r3, r4, r5, r6, r7, lr}
     mov r7, r0
     mov r6, r2
@@ -120,4 +120,4 @@ L_0201c910:
     mov r0, #0x0
     ldmia sp!, {r3, r4, r5, r6, r7, pc}
 L_0201c918: .word 0x4000050
-.size func_0201c798, . - func_0201c798
+.size GraphicsMainBackground_Configure16ColorText, . - GraphicsMainBackground_Configure16ColorText

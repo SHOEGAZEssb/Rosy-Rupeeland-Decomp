@@ -2,8 +2,8 @@
 .text
 .extern OS_Halt
 .extern func_020afd0c
-.global func_0201cf34
-func_0201cf34: ; 0x0201cf34
+.global GraphicsSubBackground_ConfigureAlphaBlend
+GraphicsSubBackground_ConfigureAlphaBlend: ; 0x0201cf34
     stmdb sp!, {r3, r4, r5, r6, r7, lr}
     mov r7, r1
     mov r6, r2
@@ -53,4 +53,4 @@ L_0201cfac:
 L_0201cfcc: .word 0x4001050
 
 
-.size func_0201cf34, . - func_0201cf34
+.size GraphicsSubBackground_ConfigureAlphaBlend, . - GraphicsSubBackground_ConfigureAlphaBlend

@@ -4,8 +4,8 @@
 .extern BgScroll_SetSubBg1
 .extern BgScroll_SetSubBg2
 .extern BgScroll_SetSubBg3
-.global func_0201c5ac
-func_0201c5ac: ; 0x0201c5ac
+.global GraphicsSubBackground_SetScroll
+GraphicsSubBackground_SetScroll: ; 0x0201c5ac
     stmdb sp!, {r3, lr}
     cmp r0, #0x3
     addls pc, pc, r0, lsl #0x2
@@ -37,4 +37,4 @@ L_0201c5fc:
 L_0201c608:
     mov r0, #0x0
     ldmia sp!, {r3, pc}
-.size func_0201c5ac, . - func_0201c5ac
+.size GraphicsSubBackground_SetScroll, . - GraphicsSubBackground_SetScroll

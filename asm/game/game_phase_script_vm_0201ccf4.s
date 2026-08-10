@@ -10,8 +10,8 @@
 .extern func_02070bc4
 .extern func_02070eac
 .extern data_020f4e18
-.global func_0201ccf4
-func_0201ccf4: ; 0x0201ccf4
+.global GraphicsSubBackground_LoadResources
+GraphicsSubBackground_LoadResources: ; 0x0201ccf4
     stmdb sp!, {r4, r5, r6, r7, r8, lr}
     sub sp, sp, #0x10
     mov r4, r0
@@ -129,4 +129,4 @@ L_0201ce90: .word data_020f4e18
 L_0201ce94: .word 0x5000400
 
 
-.size func_0201ccf4, . - func_0201ccf4
+.size GraphicsSubBackground_LoadResources, . - GraphicsSubBackground_LoadResources

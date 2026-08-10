@@ -14,7 +14,7 @@ extern void BgScroll_SetSubBg3(s32 x, s32 y);
 #endif
 
 /* Dispatch X/Y scroll offsets to sub background 0..3 and return zero. */
-s32 func_0201c5ac(s32 background, s32 x, s32 y)
+s32 GraphicsSubBackground_SetScroll(s32 background, s32 x, s32 y)
 {
     switch (background) {
     case 0: BgScroll_SetSubBg0(x, y); break;
@@ -26,7 +26,7 @@ s32 func_0201c5ac(s32 background, s32 x, s32 y)
 }
 
 /* Set or clear the selected sub-background visibility bit in DISPCNT_SUB; return zero. */
-s32 func_0201c610(s32 background, s32 enabled)
+s32 GraphicsSubBackground_SetVisible(s32 background, s32 enabled)
 {
     volatile u32 *displayControl = (volatile u32 *)0x04001000;
     if ((u32)background <= 3) {
