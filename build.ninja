@@ -11384,7 +11384,7 @@ build build/reports/graphics_3d_polygon_attr.json: objdiff build/decomp/delinks/
 
 build build/reports/graphics_3d_polygon_attr.txt: match_report build/reports/graphics_3d_polygon_attr.json | tools/report_objdiff.py
   report_json = build/reports/graphics_3d_polygon_attr.json
-  report_args = --section .text --function func_020771f4
+  report_args = --section .text --function Graphics3DCommand_SetPolygonAttr
 
 build build/reports/graphics_animation_instance_manager.json: objdiff build/decomp/delinks/src/graphics/graphics_animation_instance_manager.o | build/decomp/src/graphics/graphics_animation_instance_manager.o
   target_object = build/decomp/delinks/src/graphics/graphics_animation_instance_manager.o

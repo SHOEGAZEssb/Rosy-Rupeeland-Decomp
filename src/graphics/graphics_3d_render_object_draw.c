@@ -55,7 +55,7 @@ void Graphics3DRenderObject_Draw(Graphics3DRenderObject *object)
     REG_G3_MTX_MODE = 2;
     REG_G3_MTX_IDENTITY = 0;
 
-    func_020771f4(0, 0, 3, object->polygonId, 0x1f, 0);
+    Graphics3DCommand_SetPolygonAttr(0, 0, 3, object->polygonId, 0x1f, 0);
 
     height = Graphics3DResourceBinding_GetTextureHeightClass(binding);
     width = Graphics3DResourceBinding_GetTextureWidthClass(binding);
@@ -108,7 +108,7 @@ asm void Graphics3DRenderObject_Draw(Graphics3DRenderObject *object)
     ldrh r3, [r4, #0xe]
     mov r1, r0
     mov r2, #3
-    bl func_020771f4
+    bl Graphics3DCommand_SetPolygonAttr
     ldmia r4, {r0, r7}
     ldr r1, [r0, #0x10]
     ldr r0, [r0, #4]

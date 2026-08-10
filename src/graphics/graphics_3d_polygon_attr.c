@@ -15,8 +15,9 @@
  * overlap other fields exactly as in retail. The only state change is the
  * volatile write to the NDS geometry engine at 0x040004a4; there is no return.
  */
-void func_020771f4(u32 lightMask, u32 polygonMode, u32 cullMode,
-                   u32 polygonId, u32 alpha, u32 miscFlags)
+void Graphics3DCommand_SetPolygonAttr(u32 lightMask, u32 polygonMode,
+                                      u32 cullMode, u32 polygonId, u32 alpha,
+                                      u32 miscFlags)
 {
     REG_G3_POLYGON_ATTR = lightMask | (polygonMode << 4) | (cullMode << 6) |
                           miscFlags | (polygonId << 24) | (alpha << 16);
