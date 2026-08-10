@@ -9172,9 +9172,9 @@ data_020f373c kind:data(any) addr:0x020f373c
 data_020f376c kind:data(any) addr:0x020f376c
 data_020f3774 kind:data(any) addr:0x020f3774
 gGameWork kind:bss addr:0x020f3780
-data_020f3784 kind:bss addr:0x020f3784
+gFrameTaskListDestructorRecord kind:bss addr:0x020f3784
 gFrameTaskList kind:bss addr:0x020f3790
-data_020f37a0 kind:bss addr:0x020f37a0
+gPackedTimerArrayDestructorRecord kind:bss addr:0x020f37a0
 gPackedTimerArray kind:bss addr:0x020f37ac
 gPackedTimerArrayEntry207 kind:bss addr:0x020f4160
 gPackedTimerArrayEntry209 kind:bss addr:0x020f4178

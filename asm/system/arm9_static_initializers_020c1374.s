@@ -28,8 +28,8 @@
 .extern MainBgPaletteBuffer_Destroy
 .extern SubBgExtendedPaletteBuffer_Destroy
 .extern SubBgPaletteBuffer_Destroy
-.extern data_020f3784
-.extern data_020f37a0
+.extern gFrameTaskListDestructorRecord
+.extern gPackedTimerArrayDestructorRecord
 .extern gPackedTimerArray
 .extern gDisplayBrightnessStorage
 .extern gDisplayBrightnessPair
@@ -152,7 +152,7 @@ __sinit_020c1374: ; 0x020c1374
     ldmia sp!, {r3, pc}
 .L_020c1394: .word gFrameTaskList
 .L_020c1398: .word OwnedPointerList_Destroy
-.L_020c139c: .word data_020f3784
+.L_020c139c: .word gFrameTaskListDestructorRecord
 
 __sinit_020c13a0: ; 0x020c13a0
     stmdb sp!, {r3, lr}
@@ -165,7 +165,7 @@ __sinit_020c13a0: ; 0x020c13a0
     ldmia sp!, {r3, pc}
 .L_020c13c0: .word gPackedTimerArray
 .L_020c13c4: .word PackedTimerArray_Destroy
-.L_020c13c8: .word data_020f37a0
+.L_020c13c8: .word gPackedTimerArrayDestructorRecord
 
 __sinit_020c13cc: ; 0x020c13cc
     stmdb sp!, {r3, lr}

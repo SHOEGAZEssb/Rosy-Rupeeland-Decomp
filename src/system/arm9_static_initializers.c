@@ -68,9 +68,9 @@ extern void func_020983c8(void *);
 extern void func_02098450(void *);
 
 extern u8 gFrameTaskList[];
-extern u8 data_020f3784[];
+extern u8 gFrameTaskListDestructorRecord[];
 extern u8 gPackedTimerArray[];
-extern u8 data_020f37a0[];
+extern u8 gPackedTimerArrayDestructorRecord[];
 extern u8 gDisplayBrightnessPair[];
 extern u8 gDisplayBrightnessStorage[];
 extern u8 gMainBgPaletteBuffer[];
@@ -124,26 +124,26 @@ extern u8 data_021f5f0c[];
 
 /*
  * No inputs. Construct gFrameTaskList and register OwnedPointerList_Destroy
- * with record data_020f3784 for shutdown. Global task-list lifetime state
+ * with record gFrameTaskListDestructorRecord for shutdown. Global task-list lifetime state
  * changes; the routine returns no value and has no direct hardware effect.
  */
 void __sinit_020c1374(void)
 {
     OwnedPointerList_Init(gFrameTaskList);
     __register_global_object(gFrameTaskList, OwnedPointerList_Destroy,
-                             data_020f3784);
+                             gFrameTaskListDestructorRecord);
 }
 
 /*
  * No inputs. Construct gPackedTimerArray and register PackedTimerArray_Destroy
- * with record data_020f37a0. Global timer-bank lifetime state changes; no value
+ * with record gPackedTimerArrayDestructorRecord. Global timer-bank lifetime state changes; no value
  * is returned and no SDK or hardware service is called directly.
  */
 void __sinit_020c13a0(void)
 {
     PackedTimerArray_Init(gPackedTimerArray);
     __register_global_object(gPackedTimerArray, PackedTimerArray_Destroy,
-                             data_020f37a0);
+                             gPackedTimerArrayDestructorRecord);
 }
 
 /*
