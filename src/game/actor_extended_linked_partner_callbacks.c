@@ -19,7 +19,7 @@ extern void func_02042408(void *actor);
  * +0x298 exists and its virtual predicate at vtable +0xa8 returns nonzero;
  * otherwise return zero. Predicate calls may observe or change actor state.
  */
-s32 func_02043d78(void *self)
+s32 ActorExtendedLinked_IsActorOrPartnerActive(void *self)
 {
     u8 *actor = (u8 *)self;
     void *partner;
@@ -38,7 +38,7 @@ s32 func_02043d78(void *self)
  * its vtable callback at +0x1d8. Returns no value; both actors' state may
  * change, with no direct SDK or hardware access.
  */
-void func_02043dbc(void *self)
+void ActorExtendedLinked_NotifyPartner(void *self)
 {
     u8 *actor = (u8 *)self;
     void *partner;

@@ -2,11 +2,11 @@
 .text
 .extern func_02040400
 .extern func_02042408
-.global func_02043d78
-.type func_02043d78, @function
-.global func_02043dbc
-.type func_02043dbc, @function
-func_02043d78: ; 0x02043d78
+.global ActorExtendedLinked_IsActorOrPartnerActive
+.type ActorExtendedLinked_IsActorOrPartnerActive, @function
+.global ActorExtendedLinked_NotifyPartner
+.type ActorExtendedLinked_NotifyPartner, @function
+ActorExtendedLinked_IsActorOrPartnerActive: ; 0x02043d78
     stmdb sp!, {r4, lr}
     mov r4, r0
     bl func_02040400
@@ -26,8 +26,8 @@ func_02043d78: ; 0x02043d78
     mov r0, #0x0
     ldmia sp!, {r4, pc}
 
-.size func_02043d78, . - func_02043d78
-func_02043dbc: ; 0x02043dbc
+.size ActorExtendedLinked_IsActorOrPartnerActive, . - ActorExtendedLinked_IsActorOrPartnerActive
+ActorExtendedLinked_NotifyPartner: ; 0x02043dbc
     stmdb sp!, {r4, lr}
     mov r4, r0
     bl func_02042408
@@ -38,4 +38,4 @@ func_02043dbc: ; 0x02043dbc
     ldr r1, [r1, #0x1d8]
     blx r1
     ldmia sp!, {r4, pc}
-.size func_02043dbc, . - func_02043dbc
+.size ActorExtendedLinked_NotifyPartner, . - ActorExtendedLinked_NotifyPartner

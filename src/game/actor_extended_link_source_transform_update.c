@@ -29,7 +29,7 @@ extern void func_0203efac(void *context, void *actor, void *record);
  * or clear it otherwise. Returns no value; transform, presentation, and base
  * actor state may change, with no direct SDK or hardware access.
  */
-void func_02043f10(void *context, void *self, void *record)
+void ActorExtendedLinkSource_UpdatePartnerTransform(void *context, void *self, void *record)
 {
     u8 *actor = (u8 *)self;
     void *partner;

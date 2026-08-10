@@ -5,9 +5,9 @@
 .extern func_020050a4
 .extern func_02008378
 .extern func_0203efac
-.global func_02043f10
-.type func_02043f10, @function
-func_02043f10: ; 0x02043f10
+.global ActorExtendedLinkSource_UpdatePartnerTransform
+.type ActorExtendedLinkSource_UpdatePartnerTransform, @function
+ActorExtendedLinkSource_UpdatePartnerTransform: ; 0x02043f10
     stmdb sp!, {r4, r5, r6, lr}
     sub sp, sp, #0x30
     mov r4, r1
@@ -88,4 +88,4 @@ func_02043f10: ; 0x02043f10
     strneh r0, [r1, #0x24]
     add sp, sp, #0x30
     ldmia sp!, {r4, r5, r6, pc}
-.size func_02043f10, . - func_02043f10
+.size ActorExtendedLinkSource_UpdatePartnerTransform, . - ActorExtendedLinkSource_UpdatePartnerTransform

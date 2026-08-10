@@ -17614,7 +17614,7 @@ build build/reports/actor_extended_linked_partner_callbacks_02043d78.json: objdi
   base_object = build/decomp/asm/game/actor_extended_linked_partner_callbacks_02043d78.o
 build build/reports/actor_extended_linked_partner_callbacks_02043d78.txt: match_report build/reports/actor_extended_linked_partner_callbacks_02043d78.json | tools/report_objdiff.py
   report_json = build/reports/actor_extended_linked_partner_callbacks_02043d78.json
-  report_args = --section .text --function func_02043d78 --function func_02043dbc --require-exact
+  report_args = --section .text --function ActorExtendedLinked_IsActorOrPartnerActive --function ActorExtendedLinked_NotifyPartner --require-exact
 build build/reports/actor_extended_linked_partner_callbacks.txt: phony build/reports/actor_extended_linked_partner_callbacks_02043d78.txt
 build actor_extended_linked_partner_callbacks: phony build/decomp/src/game/actor_extended_linked_partner_callbacks.o build/decomp/asm/game/actor_extended_linked_partner_callbacks_02043d78.o build/reports/actor_extended_linked_partner_callbacks.txt
 
@@ -17659,7 +17659,7 @@ build build/reports/actor_extended_link_source_transform_update_02043f10.json: o
   base_object = build/decomp/asm/game/actor_extended_link_source_transform_update_02043f10.o
 build build/reports/actor_extended_link_source_transform_update_02043f10.txt: match_report build/reports/actor_extended_link_source_transform_update_02043f10.json | tools/report_objdiff.py
   report_json = build/reports/actor_extended_link_source_transform_update_02043f10.json
-  report_args = --section .text --function func_02043f10 --require-exact
+  report_args = --section .text --function ActorExtendedLinkSource_UpdatePartnerTransform --require-exact
 build build/reports/actor_extended_link_source_transform_update.txt: phony build/reports/actor_extended_link_source_transform_update_02043f10.txt
 build actor_extended_link_source_transform_update: phony build/decomp/src/game/actor_extended_link_source_transform_update.o build/decomp/asm/game/actor_extended_link_source_transform_update_02043f10.o build/reports/actor_extended_link_source_transform_update.txt
 
