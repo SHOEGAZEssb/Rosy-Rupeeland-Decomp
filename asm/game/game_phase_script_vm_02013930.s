@@ -3,8 +3,8 @@
 .extern data_021052fc
 .extern Type7Actor_ResetMotionAndCooldown
 
-    .global func_02013930
-func_02013930: ; 0x02013930
+    .global GamePhaseActorScriptVm_ClearFlag01000000AndCleanup
+GamePhaseActorScriptVm_ClearFlag01000000AndCleanup: ; 0x02013930
     stmdb sp!, {r4, lr}
     mov r4, r0
     ldr r1, [r4, #0x84]
@@ -48,5 +48,5 @@ L_020139c4:
     mov r0, #0x0
     ldmia sp!, {r4, pc}
 L_020139cc: .word data_021052fc
-    .size func_02013930, . - func_02013930
+    .size GamePhaseActorScriptVm_ClearFlag01000000AndCleanup, . - GamePhaseActorScriptVm_ClearFlag01000000AndCleanup
 

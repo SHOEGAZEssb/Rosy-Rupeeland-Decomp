@@ -24,7 +24,7 @@ typedef void (*ActorPointerMethod)(void *actor, void *value);
  * method 0xd4 with the runtime pointer at 0x2ea4. Type 7 delegates to
  * Type7Actor_ResetMotionAndCooldown. Returns zero. The meaning of these type values is unconfirmed.
  */
-s32 func_02013930(GamePhaseActorScriptVm *self)
+s32 GamePhaseActorScriptVm_ClearFlag01000000AndCleanup(GamePhaseActorScriptVm *self)
 {
     u8 *actor = (u8 *)self->actor;
     *(u32 *)(actor + 0x10) &= ~0x01000000u;
@@ -46,7 +46,7 @@ s32 func_02013930(GamePhaseActorScriptVm *self)
 }
 
 /* No-op script handler; ignores the VM and returns zero. */
-s32 func_020139d0(GamePhaseActorScriptVm *self)
+s32 GamePhaseActorScriptVm_NoOp(GamePhaseActorScriptVm *self)
 {
     (void)self;
     return 0;
