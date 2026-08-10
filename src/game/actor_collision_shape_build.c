@@ -34,7 +34,8 @@ extern s32 func_020adae4(s32, s32);
  * with divisor two and 20.12 scaling. Returns no value; temporary vector value
  * construction/destruction may use SDK helpers but touches no hardware.
  */
-void func_02030e58(CollisionVector *output, CollisionShapeActor *actor)
+void Actor_GetCollisionCenter(CollisionVector *output,
+                              CollisionShapeActor *actor)
 {
     s8 width;
     s8 height;
@@ -62,8 +63,8 @@ void func_02030e58(CollisionVector *output, CollisionShapeActor *actor)
  * both X edges by transform offset 0x04 and both Y edges by offset 0x08.
  * Store minX/minY/maxX/maxY in output and return no value.
  */
-void func_02030f10(s32 output[4], const CollisionShapeActor *actor,
-                   const CollisionVector *transform)
+void Actor_BuildCollisionRect(s32 output[4], const CollisionShapeActor *actor,
+                              const CollisionVector *transform)
 {
     output[0] = ((s32)actor->minX_08 << 12) + transform->word[1];
     output[1] = ((s32)actor->minY_09 << 12) + transform->word[2];

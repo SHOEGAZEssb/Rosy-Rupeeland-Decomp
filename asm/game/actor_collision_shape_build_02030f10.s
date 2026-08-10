@@ -1,9 +1,9 @@
 ; Matching retail form; see src/game/actor_collision_shape_build.c.
 .text
 
-    .global func_02030f10
-    .type func_02030f10, @function
-func_02030f10: ; 0x02030f10
+    .global Actor_BuildCollisionRect
+    .type Actor_BuildCollisionRect, @function
+Actor_BuildCollisionRect: ; 0x02030f10
     ldrsb r3, [r1, #0x8]
     mov r3, r3, lsl #0xc
     str r3, [r0, #0x0]
@@ -31,5 +31,4 @@ func_02030f10: ; 0x02030f10
     add r1, r1, r2
     str r1, [r0, #0xc]
     bx lr
-    .size func_02030f10, . - func_02030f10
-
+    .size Actor_BuildCollisionRect, . - Actor_BuildCollisionRect

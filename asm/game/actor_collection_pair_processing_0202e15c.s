@@ -12,7 +12,7 @@
 .extern func_0202d324
 .extern func_0202ec08
 .extern func_0202ec74
-.extern func_02030f10
+.extern Actor_BuildCollisionRect
 .extern func_02056f34
 .extern func_020828a0
 .extern func_020adc90
@@ -111,7 +111,7 @@ func_0202e15c: ; 0x0202e15c
     add r0, sp, #0x38
     mov r1, r4
     add r2, sp, #0x68
-    bl func_02030f10
+    bl Actor_BuildCollisionRect
     add r0, sp, #0x68
     bl func_02005058
     add r0, sp, #0x78
@@ -120,7 +120,7 @@ func_0202e15c: ; 0x0202e15c
     add r0, sp, #0x48
     mov r1, r5
     add r2, sp, #0x78
-    bl func_02030f10
+    bl Actor_BuildCollisionRect
     add r0, sp, #0x78
     bl func_02005058
     mov r0, #0x0
@@ -501,4 +501,3 @@ func_0202e15c: ; 0x0202e15c
 .L_0202e848: .word data_021f5ebc
 .L_0202e84c: .word data_02105310
     .size func_0202e15c, . - func_0202e15c
-

@@ -6,9 +6,9 @@
 .extern func_020050a4
 .extern func_020adae4
 
-    .global func_02030e58
-    .type func_02030e58, @function
-func_02030e58: ; 0x02030e58
+    .global Actor_GetCollisionCenter
+    .type Actor_GetCollisionCenter, @function
+Actor_GetCollisionCenter: ; 0x02030e58
     stmdb sp!, {r4, r5, r6, lr}
     sub sp, sp, #0x10
     mov r5, r1
@@ -58,5 +58,4 @@ func_02030e58: ; 0x02030e58
 .L_02030f08:
     add sp, sp, #0x10
     ldmia sp!, {r4, r5, r6, pc}
-    .size func_02030e58, . - func_02030e58
-
+    .size Actor_GetCollisionCenter, . - Actor_GetCollisionCenter

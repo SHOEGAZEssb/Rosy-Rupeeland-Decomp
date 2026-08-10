@@ -19,7 +19,7 @@ extern s32 func_020adae4(s32, s32);
 extern void *func_020337d4(void *);
 extern s32 func_02030b7c(void *);
 extern void func_02057394(void *, s32);
-extern void func_02030e58(void *, void *);
+extern void Actor_GetCollisionCenter(void *, void *);
 extern void func_020571b4(void *, const void *, const void *);
 extern void func_02005058(void *);
 extern u32 func_02034464(void *, s32, s32);
@@ -125,7 +125,7 @@ void func_02031758(PresentationPoint *output, void *actorPointer,
             !(*(u32 *)(actor + 0x14) & 0x1000))
             enabled = 0;
         func_02057394(*(void **)(actor + 0x1e0), enabled);
-        func_02030e58(center, actor);
+        Actor_GetCollisionCenter(center, actor);
         func_020571b4(*(void **)(actor + 0x1e0), transform, center);
         func_02005058(center);
     }

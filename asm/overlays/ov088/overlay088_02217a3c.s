@@ -4,7 +4,7 @@
 .extern data_021056f0
 .extern data_ov088_0221b928
 .extern func_0202d494
-.extern func_02030e50
+.extern Actor_GetCollisionBounds
 .extern func_020337d4
 .extern func_0203b514
 .extern func_020befec
@@ -122,7 +122,7 @@ func_ov088_02217a3c:
     mov r3, #0x10
     bl func_ov088_02217c3c
     mov r0, r5
-    bl func_02030e50
+    bl Actor_GetCollisionBounds
     add r1, sp, #0x4
     bl func_ov088_02217a18
     add r0, r5, #0x200

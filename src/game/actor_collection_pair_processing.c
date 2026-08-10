@@ -55,7 +55,8 @@ extern "C" {
 #endif
 extern void func_02005030(CollisionWords *, const void *);
 extern void func_02005058(CollisionWords *);
-extern void func_02030f10(CollisionWords *, PairActor *, CollisionWords *);
+extern void Actor_BuildCollisionRect(CollisionWords *, PairActor *,
+                                     CollisionWords *);
 extern s32 func_02056f34(CollisionWords *, const CollisionWords *,
                          const CollisionWords *, u32 *);
 extern s32 func_020adc90(s32, s32);
@@ -137,10 +138,10 @@ static s32 testPair(PairActor *actorA, PairActor *actorB, u32 *contact)
         return 0;
 
     func_02005030(&temporaryA, &actorA->field_18);
-    func_02030f10(&shapeA, actorA, &temporaryA);
+    Actor_BuildCollisionRect(&shapeA, actorA, &temporaryA);
     func_02005058(&temporaryA);
     func_02005030(&temporaryB, &actorB->field_18);
-    func_02030f10(&shapeB, actorB, &temporaryB);
+    Actor_BuildCollisionRect(&shapeB, actorB, &temporaryB);
     func_02005058(&temporaryB);
     result = func_02056f34(&intersection, &shapeA, &shapeB, contact);
     if (result) {

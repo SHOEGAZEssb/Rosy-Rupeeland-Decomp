@@ -9,7 +9,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern const s8 *func_02030e50(void *actor);
+extern const s8 *Actor_GetCollisionBounds(void *actor);
 extern const s16 *func_02011788(void *context, s32 area);
 #ifdef __cplusplus
 }
@@ -41,7 +41,7 @@ void func_0200a1a0(ActorMotionAreaFollower *self, s32 area,
     actorX = *(s32 *)(actor + 0x1c) >> 12;
     actorY = (*(s32 *)(actor + 0x20) >> 12) - 0x10;
     actorZ = *(s32 *)(actor + 0x24) >> 12;
-    collision = func_02030e50(actor);
+    collision = Actor_GetCollisionBounds(actor);
 
     lowerRectangle[0] = collision[0];
     lowerRectangle[1] = (s16)(-42 - actorZ);

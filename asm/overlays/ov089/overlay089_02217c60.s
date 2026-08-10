@@ -13,7 +13,7 @@
 .extern func_020050a4
 .extern func_020050f0
 .extern func_0201f864
-.extern func_02030e50
+.extern Actor_GetCollisionBounds
 .extern func_020316e8
 .extern func_0203292c
 .extern func_0203b798
@@ -288,7 +288,7 @@ func_ov089_02217c60:
     strb r2, [sp, #0x31]
     strb r1, [sp, #0x32]
     strb r1, [sp, #0x33]
-    bl func_02030e50
+    bl Actor_GetCollisionBounds
     ldrsb r3, [sp, #0x30]
     ldrsb r1, [sp, #0x31]
     ldrsb r2, [sp, #0x32]

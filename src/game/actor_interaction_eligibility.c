@@ -8,7 +8,8 @@ extern void *func_020337d4(void *actor);
 extern void func_02034378(void *output, void *actor, const void *position);
 extern void func_02005030(void *temporary, const void *source);
 extern void func_02005058(void *temporary);
-extern void func_02030f10(void *output, void *actor, const void *position);
+extern void Actor_BuildCollisionRect(void *output, void *actor,
+                                     const void *position);
 extern void func_02015548(void *output, s32 first, s32 second, s32 third,
                           s32 fourth);
 extern s32 func_02056f34(void *state, const void *actorGeometry,
@@ -23,7 +24,8 @@ extern s32 func_020573e4(void *resource);
  * to a reference-geometry test. That test is skipped when either s16 pair
  * +0x70/+0x74 or +0x72/+0x76 is equal, or when collection field 0x2e7c is
  * null. Otherwise actor geometry built by func_02034378 is tested against the
- * reference actor geometry built by func_02030f10; a zero test result rejects
+ * reference actor geometry built by Actor_BuildCollisionRect; a zero test
+ * result rejects
  * the actor. Temporary vector/state helpers may manage SDK-owned values.
  */
 s32 func_02034060(void *self)
@@ -44,7 +46,8 @@ s32 func_02034060(void *self)
         if (reference != 0) {
             func_02034378(actorGeometry, actor, actor + 0x18);
             func_02005030(referenceVector, reference + 0x18);
-            func_02030f10(referenceGeometry, reference, referenceVector);
+            Actor_BuildCollisionRect(referenceGeometry, reference,
+                                     referenceVector);
             func_02005058(referenceVector);
             func_02015548(state, 0, 0, 0, 0);
             if (func_02056f34(state, actorGeometry, referenceGeometry,

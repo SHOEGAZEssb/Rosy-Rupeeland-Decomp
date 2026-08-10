@@ -13608,7 +13608,7 @@ build build/reports/actor_base_geometry_lifecycle_02030e50.json: objdiff build/d
   base_object = build/decomp/asm/game/actor_base_geometry_lifecycle_02030e50.o
 build build/reports/actor_base_geometry_lifecycle_02030e50.txt: match_report build/reports/actor_base_geometry_lifecycle_02030e50.json | tools/report_objdiff.py
   report_json = build/reports/actor_base_geometry_lifecycle_02030e50.json
-  report_args = --section .text --function func_02030e50 --require-exact
+  report_args = --section .text --function Actor_GetCollisionBounds --require-exact
 build build/reports/actor_base_geometry_lifecycle.txt: phony build/reports/actor_base_geometry_lifecycle_02030d70.txt build/reports/actor_base_geometry_lifecycle_02030db8.txt build/reports/actor_base_geometry_lifecycle_02030e08.txt build/reports/actor_base_geometry_lifecycle_02030e50.txt
 
 build actor_base_geometry_lifecycle: phony build/decomp/src/game/actor_base_geometry_lifecycle.o build/decomp/asm/game/actor_base_geometry_lifecycle_02030d70.o build/decomp/asm/game/actor_base_geometry_lifecycle_02030db8.o build/decomp/asm/game/actor_base_geometry_lifecycle_02030e08.o build/decomp/asm/game/actor_base_geometry_lifecycle_02030e50.o build/reports/actor_base_geometry_lifecycle.txt
@@ -13627,13 +13627,13 @@ build build/reports/actor_collision_shape_build_02030e58.json: objdiff build/dec
   base_object = build/decomp/asm/game/actor_collision_shape_build_02030e58.o
 build build/reports/actor_collision_shape_build_02030e58.txt: match_report build/reports/actor_collision_shape_build_02030e58.json | tools/report_objdiff.py
   report_json = build/reports/actor_collision_shape_build_02030e58.json
-  report_args = --section .text --function func_02030e58 --require-exact
+  report_args = --section .text --function Actor_GetCollisionCenter --require-exact
 build build/reports/actor_collision_shape_build_02030f10.json: objdiff build/decomp/delinks/asm/game/actor_collision_shape_build_02030f10.o | build/decomp/asm/game/actor_collision_shape_build_02030f10.o
   target_object = build/decomp/delinks/asm/game/actor_collision_shape_build_02030f10.o
   base_object = build/decomp/asm/game/actor_collision_shape_build_02030f10.o
 build build/reports/actor_collision_shape_build_02030f10.txt: match_report build/reports/actor_collision_shape_build_02030f10.json | tools/report_objdiff.py
   report_json = build/reports/actor_collision_shape_build_02030f10.json
-  report_args = --section .text --function func_02030f10 --require-exact
+  report_args = --section .text --function Actor_BuildCollisionRect --require-exact
 build build/reports/actor_collision_shape_build.txt: phony build/reports/actor_collision_shape_build_02030e58.txt build/reports/actor_collision_shape_build_02030f10.txt
 
 build actor_collision_shape_build: phony build/decomp/src/game/actor_collision_shape_build.o build/decomp/asm/game/actor_collision_shape_build_02030e58.o build/decomp/asm/game/actor_collision_shape_build_02030f10.o build/reports/actor_collision_shape_build.txt

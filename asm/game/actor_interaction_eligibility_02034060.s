@@ -3,7 +3,7 @@
 .extern func_02005030
 .extern func_02005058
 .extern func_02015548
-.extern func_02030f10
+.extern Actor_BuildCollisionRect
 .extern func_020337d4
 .extern func_02034378
 .extern func_02056f34
@@ -42,7 +42,7 @@ func_02034060: ; 0x02034060
     add r0, sp, #0x28
     add r2, sp, #0x8
     mov r1, r5
-    bl func_02030f10
+    bl Actor_BuildCollisionRect
     add r0, sp, #0x8
     bl func_02005058
     mov r1, #0x0
@@ -74,4 +74,3 @@ func_02034060: ; 0x02034060
     .size func_02034060, . - func_02034060
 
     .global func_02034148
-

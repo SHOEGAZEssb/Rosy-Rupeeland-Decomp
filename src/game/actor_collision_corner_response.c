@@ -9,7 +9,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern const s8 *func_02030e50(void *actor);
+extern const s8 *Actor_GetCollisionBounds(void *actor);
 extern s32 func_02033f44(void *actor);
 #ifdef __cplusplus
 }
@@ -59,13 +59,13 @@ void func_0200a3b8(void *actorPointer, void *collisionContext)
 
     if (z < 0)
         z -= 0xf000;
-    box = func_02030e50(actorPointer);
+    box = Actor_GetCollisionBounds(actorPointer);
     left = (s32)box[0] << 12;
-    box = func_02030e50(actorPointer);
+    box = Actor_GetCollisionBounds(actorPointer);
     top = (s32)box[1] << 12;
-    box = func_02030e50(actorPointer);
+    box = Actor_GetCollisionBounds(actorPointer);
     right = (s32)box[2] << 12;
-    box = func_02030e50(actorPointer);
+    box = Actor_GetCollisionBounds(actorPointer);
     bottom = (s32)box[3] << 12;
 
     halfWidth = collision_half_toward_zero(right - left);

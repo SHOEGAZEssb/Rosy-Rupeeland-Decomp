@@ -65,7 +65,7 @@ ActorBaseGeometryLifecycle *func_02030e08(ActorBaseGeometryLifecycle *self)
 }
 
 /* Return a pointer to the four-byte bounds record at self offset 0x04. */
-void *func_02030e50(ActorBaseGeometryLifecycle *self)
+void *Actor_GetCollisionBounds(ActorBaseGeometryLifecycle *self)
 {
     return self->bounds_04;
 }

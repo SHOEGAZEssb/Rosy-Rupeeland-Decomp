@@ -5,7 +5,7 @@
 .extern func_0200a970
 .extern func_0200ab18
 .extern func_0200ab30
-.extern func_02030e50
+.extern Actor_GetCollisionBounds
 .extern func_02033f44
 .global func_0200ac14
 func_0200ac14:
@@ -21,11 +21,11 @@ func_0200ac14:
     mov r4, r4, asr #0x10
     sub r5, r6, r5
     sub r6, r3, r2
-    bl func_02030e50
+    bl Actor_GetCollisionBounds
     bl func_0200ab18
     mov r7, r0, lsl #0xc
     mov r0, r10
-    bl func_02030e50
+    bl Actor_GetCollisionBounds
     bl func_0200ab30
     mov r8, r0, lsl #0xc
     mov r0, r10
@@ -111,4 +111,3 @@ L_0200ad88:
     add sp, sp, #0x48
     ldmia sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, pc}
 .size func_0200ac14, . - func_0200ac14
-

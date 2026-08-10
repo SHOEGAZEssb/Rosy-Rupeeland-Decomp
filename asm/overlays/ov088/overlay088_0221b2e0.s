@@ -1,6 +1,6 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov088/overlay088_recovery.c.
-.extern func_02030e50
+.extern Actor_GetCollisionBounds
 .extern func_ov088_0221ad6c
 .extern func_ov088_0221ad84
 .extern func_ov088_0221b278
@@ -13,12 +13,12 @@ func_ov088_0221b2e0:
     mov r9, r1
     mov r8, r2
     str r3, [sp, #0x0]
-    bl func_02030e50
+    bl Actor_GetCollisionBounds
     bl func_ov088_0221ad6c
     add r1, r0, r0, lsr #0x1f
     mov r0, r10
     mov r4, r1, asr #0x1
-    bl func_02030e50
+    bl Actor_GetCollisionBounds
     bl func_ov088_0221ad84
     add r0, r0, r0, lsr #0x1f
     mvn r6, #0x0

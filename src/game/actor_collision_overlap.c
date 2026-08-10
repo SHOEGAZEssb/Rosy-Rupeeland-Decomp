@@ -5,7 +5,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern const s8 *func_02030e50(void *actor);
+extern const s8 *Actor_GetCollisionBounds(void *actor);
 #ifdef __cplusplus
 }
 #endif
@@ -27,8 +27,8 @@ s32 func_0200a970(void *actorPointer, s32 deltaX, s32 deltaY,
                   const ActorCollisionRange *other)
 {
     u8 *actor = (u8 *)actorPointer;
-    s32 width = func_0200ab18(func_02030e50(actorPointer)) << 12;
-    s32 height = func_0200ab30(func_02030e50(actorPointer)) << 12;
+    s32 width = func_0200ab18(Actor_GetCollisionBounds(actorPointer)) << 12;
+    s32 height = func_0200ab30(Actor_GetCollisionBounds(actorPointer)) << 12;
     ActorCollisionRange actorRange;
     ActorCollisionRange intersection;
     u8 edges = 0;

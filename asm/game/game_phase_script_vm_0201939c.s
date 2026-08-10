@@ -16,7 +16,7 @@
 .extern func_0202ecd0
 .extern func_02030a80
 .extern func_02030ad4
-.extern func_02030e58
+.extern Actor_GetCollisionCenter
 .extern func_020337d4
 .extern func_02038ecc
 .extern func_020397d4
@@ -106,7 +106,7 @@ L_0201948c:
     strb r0, [sp, #0xff]
     add r0, sp, #0x4
     mov r1, r4
-    bl func_02030e58
+    bl Actor_GetCollisionCenter
     add r0, sp, #0xdc
     add r1, sp, #0x4
     add r2, r4, #0x18

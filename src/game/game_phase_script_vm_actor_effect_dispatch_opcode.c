@@ -21,7 +21,7 @@ extern void *func_0202d568(void *collection, s32 index);
 extern void *func_0202ecd0(void *collection, const void *descriptor);
 extern void *func_02030a80(void *collection, s32 value, s32 index);
 extern void *func_02030ad4(void *collection, s32 index);
-extern void *func_02030e58(VecFx32Object *destination, void *actor);
+extern void *Actor_GetCollisionCenter(VecFx32Object *destination, void *actor);
 extern void *func_020337d4(void *actor);
 extern void func_02038ecc(void *manager, s32 value);
 extern s32 func_020397d4(void *manager);
@@ -84,7 +84,7 @@ static void spawnActorSnapshot(GamePhaseActorScriptVm *self, s32 actorIndex,
     descriptor[0x12] = func_0200ab18(actor + 8);
     descriptor[0x13] = func_0200ab30(actor + 8);
 
-    func_02030e58(&position, actor);
+    Actor_GetCollisionCenter(&position, actor);
     func_020066a4(&transform, &position, actor + 0x18);
     func_02005058(&position);
     descriptor[0x14] = (u8)(transform.value.y >> 12);

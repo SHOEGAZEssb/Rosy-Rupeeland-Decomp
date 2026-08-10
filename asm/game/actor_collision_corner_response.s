@@ -2,7 +2,7 @@
 ; the documented portable implementation and recovered behavior.
 .text
 .extern func_0200a63c
-.extern func_02030e50
+.extern Actor_GetCollisionBounds
 .extern func_02033f44
 .global func_0200a3b8
 func_0200a3b8: ; 0x0200a3b8
@@ -14,22 +14,22 @@ func_0200a3b8: ; 0x0200a3b8
     cmp r6, #0x0
     mov r9, r1
     sublt r6, r6, #0xf000
-    bl func_02030e50
+    bl Actor_GetCollisionBounds
     ldrsb r1, [r0, #0x0]
     mov r0, r10
     mov r1, r1, lsl #0xc
     str r1, [sp, #0x10]
-    bl func_02030e50
+    bl Actor_GetCollisionBounds
     ldrsb r1, [r0, #0x1]
     mov r0, r10
     mov r1, r1, lsl #0xc
     str r1, [sp, #0x14]
-    bl func_02030e50
+    bl Actor_GetCollisionBounds
     ldrsb r1, [r0, #0x2]
     mov r0, r10
     mov r1, r1, lsl #0xc
     str r1, [sp, #0x18]
-    bl func_02030e50
+    bl Actor_GetCollisionBounds
     ldrsb r3, [r0, #0x3]
     mov r7, #0x0
     ldr r1, [sp, #0x18]
@@ -176,4 +176,3 @@ L_0200a62c:
 L_0200a634: .word 0xfffff001
 L_0200a638: .word 0xffffe001
     .size func_0200a3b8, .-func_0200a3b8
-

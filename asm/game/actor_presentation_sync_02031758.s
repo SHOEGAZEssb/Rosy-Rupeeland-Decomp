@@ -4,8 +4,8 @@
 .extern func_02005058
 .extern func_02015548
 .extern func_02030b7c
-.extern func_02030e58
-.extern func_02030f10
+.extern Actor_GetCollisionCenter
+.extern Actor_BuildCollisionRect
 .extern func_020337d4
 .extern func_02034378
 .extern func_02034464
@@ -217,7 +217,7 @@ func_02031758: ; 0x02031758
     ldr r1, [r0, #0xe7c]
     add r0, sp, #0x40
     add r2, sp, #0x20
-    bl func_02030f10
+    bl Actor_BuildCollisionRect
     add r0, sp, #0x20
     bl func_02005058
     mov r1, #0x0
@@ -274,7 +274,7 @@ func_02031758: ; 0x02031758
 .L_02031b0c:
     add r0, sp, #0x10
     mov r1, r5
-    bl func_02030e58
+    bl Actor_GetCollisionCenter
     ldr r0, [r5, #0x1e0]
     add r2, sp, #0x10
     mov r1, r4
@@ -383,4 +383,3 @@ func_02031758: ; 0x02031758
 .L_02031ca4: .word gSceneTouchInitialData
 .L_02031ca8: .word 0x8007
     .size func_02031758, . - func_02031758
-
