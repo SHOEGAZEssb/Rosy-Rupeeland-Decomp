@@ -16811,7 +16811,7 @@ build build/reports/actor_extended_type2_interaction_state_entry_0203f9ac.json: 
   base_object = build/decomp/asm/game/actor_extended_type2_interaction_state_entry_0203f9ac.o
 build build/reports/actor_extended_type2_interaction_state_entry_0203f9ac.txt: match_report build/reports/actor_extended_type2_interaction_state_entry_0203f9ac.json | tools/report_objdiff.py
   report_json = build/reports/actor_extended_type2_interaction_state_entry_0203f9ac.json
-  report_args = --section .text --function func_0203f9ac --function func_0203fa6c --function func_0203fa70 --function func_0203faa8 --function func_0203fae0 --require-exact
+  report_args = --section .text --function ActorExtendedType2_EnterTargetInteractionState7 --function ActorExtendedType2_InteractionNoOp --function ActorExtendedType2_SetTargetCallbackPairC0 --function ActorExtendedType2_SetTargetCallbackPair48 --function ActorExtendedType2_SetTargetCallbackPair40AndResetCounters --require-exact
 build build/reports/actor_extended_type2_interaction_state_entry.txt: phony build/reports/actor_extended_type2_interaction_state_entry_0203f9ac.txt
 
 build actor_extended_type2_interaction_state_entry: phony build/decomp/src/game/actor_extended_type2_interaction_state_entry.o build/decomp/asm/game/actor_extended_type2_interaction_state_entry_0203f9ac.o build/reports/actor_extended_type2_interaction_state_entry.txt

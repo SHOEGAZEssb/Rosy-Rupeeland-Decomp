@@ -55,11 +55,11 @@
 .extern ActorExtendedType2_CopyAdjustedDescriptor
 .extern ActorExtendedType2_RestoreRandomizedPosition
 .extern ActorExtendedType2_UpdateTargetMotion
-.extern func_0203f9ac
+.extern ActorExtendedType2_EnterTargetInteractionState7
 .extern func_ov097_02219cc0
-.extern func_0203fae0
-.extern func_0203fa70
-.extern func_0203faa8
+.extern ActorExtendedType2_SetTargetCallbackPair40AndResetCounters
+.extern ActorExtendedType2_SetTargetCallbackPairC0
+.extern ActorExtendedType2_SetTargetCallbackPair48
 .extern ActorExtendedType2_ConfigureCallbacks00And170
 .extern ActorExtendedType2_ConfigureCallbacks78And70
 .extern ActorExtendedType2_ConfigureCallbacks18And240
@@ -337,11 +337,11 @@ data_ov097_0221a5f4:
     .word ActorExtendedType2_CopyAdjustedDescriptor
     .word ActorExtendedType2_RestoreRandomizedPosition
     .word ActorExtendedType2_UpdateTargetMotion
-    .word func_0203f9ac
+    .word ActorExtendedType2_EnterTargetInteractionState7
     .word func_ov097_02219cc0
-    .word func_0203fae0
-    .word func_0203fa70
-    .word func_0203faa8
+    .word ActorExtendedType2_SetTargetCallbackPair40AndResetCounters
+    .word ActorExtendedType2_SetTargetCallbackPairC0
+    .word ActorExtendedType2_SetTargetCallbackPair48
     .word ActorExtendedType2_ConfigureCallbacks00And170
     .word ActorExtendedType2_ConfigureCallbacks78And70
     .word ActorExtendedType2_ConfigureCallbacks18And240
@@ -472,11 +472,11 @@ data_ov097_0221a80c:
     .word ActorExtendedType2_CopyAdjustedDescriptor
     .word ActorExtendedType2_RestoreRandomizedPosition
     .word ActorExtendedType2_UpdateTargetMotion
-    .word func_0203f9ac
+    .word ActorExtendedType2_EnterTargetInteractionState7
     .word func_ov097_02219cc0
-    .word func_0203fae0
-    .word func_0203fa70
-    .word func_0203faa8
+    .word ActorExtendedType2_SetTargetCallbackPair40AndResetCounters
+    .word ActorExtendedType2_SetTargetCallbackPairC0
+    .word ActorExtendedType2_SetTargetCallbackPair48
     .word ActorExtendedType2_ConfigureCallbacks00And170
     .word ActorExtendedType2_ConfigureCallbacks78And70
     .word ActorExtendedType2_ConfigureCallbacks18And240

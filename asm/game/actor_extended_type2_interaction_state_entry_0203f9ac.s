@@ -4,9 +4,9 @@
 .extern data_020e7318
 .extern func_020050a4
 .extern func_020349b8
-    .global func_0203f9ac
-    .type func_0203f9ac, @function
-func_0203f9ac: ; 0x0203f9ac
+    .global ActorExtendedType2_EnterTargetInteractionState7
+    .type ActorExtendedType2_EnterTargetInteractionState7, @function
+ActorExtendedType2_EnterTargetInteractionState7: ; 0x0203f9ac
     stmdb sp!, {r3, r4, r5, lr}
     mov r5, r0
     add r3, r5, #0x200
@@ -58,19 +58,19 @@ func_0203f9ac: ; 0x0203f9ac
 .L_0203fa60: .word data_020e7318
 .L_0203fa64: .word 0xffff
 .L_0203fa68: .word data_020df9e8
-    .size func_0203f9ac, . - func_0203f9ac
+    .size ActorExtendedType2_EnterTargetInteractionState7, . - ActorExtendedType2_EnterTargetInteractionState7
 
-    .global func_0203fa6c
-    .type func_0203fa6c, @function
+    .global ActorExtendedType2_InteractionNoOp
+    .type ActorExtendedType2_InteractionNoOp, @function
 
-func_0203fa6c: ; 0x0203fa6c
+ActorExtendedType2_InteractionNoOp: ; 0x0203fa6c
     bx lr
-    .size func_0203fa6c, . - func_0203fa6c
+    .size ActorExtendedType2_InteractionNoOp, . - ActorExtendedType2_InteractionNoOp
 
-    .global func_0203fa70
-    .type func_0203fa70, @function
+    .global ActorExtendedType2_SetTargetCallbackPairC0
+    .type ActorExtendedType2_SetTargetCallbackPairC0, @function
 
-func_0203fa70: ; 0x0203fa70
+ActorExtendedType2_SetTargetCallbackPairC0: ; 0x0203fa70
     add r2, r0, #0x200
     mov r3, #0x0
     strh r3, [r2, #0x5a]
@@ -85,12 +85,12 @@ func_0203fa70: ; 0x0203fa70
     str r1, [r0, #0x21c]
     bx lr
 .L_0203faa4: .word data_020df9e8
-    .size func_0203fa70, . - func_0203fa70
+    .size ActorExtendedType2_SetTargetCallbackPairC0, . - ActorExtendedType2_SetTargetCallbackPairC0
 
-    .global func_0203faa8
-    .type func_0203faa8, @function
+    .global ActorExtendedType2_SetTargetCallbackPair48
+    .type ActorExtendedType2_SetTargetCallbackPair48, @function
 
-func_0203faa8: ; 0x0203faa8
+ActorExtendedType2_SetTargetCallbackPair48: ; 0x0203faa8
     add r2, r0, #0x200
     mov r3, #0x0
     strh r3, [r2, #0x5a]
@@ -105,12 +105,12 @@ func_0203faa8: ; 0x0203faa8
     str r1, [r0, #0x21c]
     bx lr
 .L_0203fadc: .word data_020df9e8
-    .size func_0203faa8, . - func_0203faa8
+    .size ActorExtendedType2_SetTargetCallbackPair48, . - ActorExtendedType2_SetTargetCallbackPair48
 
-    .global func_0203fae0
-    .type func_0203fae0, @function
+    .global ActorExtendedType2_SetTargetCallbackPair40AndResetCounters
+    .type ActorExtendedType2_SetTargetCallbackPair40AndResetCounters, @function
 
-func_0203fae0: ; 0x0203fae0
+ActorExtendedType2_SetTargetCallbackPair40AndResetCounters: ; 0x0203fae0
     stmdb sp!, {r3, lr}
     add r2, r0, #0x200
     mov lr, #0x0
@@ -128,5 +128,5 @@ func_0203fae0: ; 0x0203fae0
     strh lr, [r2, #0x5a]
     ldmia sp!, {r3, pc}
 .L_0203fb20: .word data_020df9e8
-    .size func_0203fae0, . - func_0203fae0
+    .size ActorExtendedType2_SetTargetCallbackPair40AndResetCounters, . - ActorExtendedType2_SetTargetCallbackPair40AndResetCounters
 

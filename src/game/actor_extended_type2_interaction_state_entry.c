@@ -23,7 +23,7 @@ extern void func_020050a4(void *destination, const void *source);
  * invoke virtual +0xd8. Returns no value; sound, target, state, vector, and
  * virtual callback state change.
  */
-void func_0203f9ac(void *self, void *target, s32 extra)
+void ActorExtendedType2_EnterTargetInteractionState7(void *self, void *target, s32 extra)
 {
     u8 *actor = (u8 *)self;
     u16 sound;
@@ -47,7 +47,7 @@ void func_0203f9ac(void *self, void *target, s32 extra)
 }
 
 /* Accept arbitrary inputs and perform no state changes; returns no value. */
-void func_0203fa6c(void)
+void ActorExtendedType2_InteractionNoOp(void)
 {
 }
 
@@ -56,7 +56,7 @@ void func_0203fa6c(void)
  * copy global pair +0xc0/+0xc4 into +0x218/+0x21c. Returns no value; actor
  * target and recovered callback-pair state change.
  */
-void func_0203fa70(void *self, void *target)
+void ActorExtendedType2_SetTargetCallbackPairC0(void *self, void *target)
 {
     u8 *actor = (u8 *)self;
     *(u16 *)(actor + 0x25a) = 0;
@@ -71,7 +71,7 @@ void func_0203fa70(void *self, void *target)
  * copy global pair +0x48/+0x4c into +0x218/+0x21c. Returns no value; actor
  * target and recovered callback-pair state change.
  */
-void func_0203faa8(void *self, void *target)
+void ActorExtendedType2_SetTargetCallbackPair48(void *self, void *target)
 {
     u8 *actor = (u8 *)self;
     *(u16 *)(actor + 0x25a) = 0;
@@ -86,7 +86,7 @@ void func_0203faa8(void *self, void *target)
  * +0x228, and copy global pair +0x40/+0x44 into +0x218/+0x21c. Returns no
  * value; actor target, countdown, and recovered callback-pair state change.
  */
-void func_0203fae0(void *self, void *target)
+void ActorExtendedType2_SetTargetCallbackPair40AndResetCounters(void *self, void *target)
 {
     u8 *actor = (u8 *)self;
     *(u16 *)(actor + 0x25e) = 0;
