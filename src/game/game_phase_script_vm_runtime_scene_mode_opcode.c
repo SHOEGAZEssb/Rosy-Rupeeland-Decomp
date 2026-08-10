@@ -21,7 +21,7 @@ extern void func_0202d68c(void *object, s32 enabled);
  * zero on the object reached through runtime offsets 0x2fb8 and 0x2ebc.
  * Return zero.
  */
-s32 func_0201af00(GamePhaseActorScriptVm *self)
+s32 GamePhaseActorScriptVm_SetPlacementModeAndSynchronize(GamePhaseActorScriptVm *self)
 {
     s32 enabled = (s32)GamePhaseScriptVm_Pop(&self->base);
     u8 *runtime = (u8 *)data_021052fc;

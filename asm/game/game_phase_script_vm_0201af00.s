@@ -5,8 +5,8 @@
 .extern GamePhaseRuntime_GetActorCollection
 .extern func_0202d68c
 .extern data_021052fc
-.global func_0201af00
-func_0201af00: ; 0x0201af00
+.global GamePhaseActorScriptVm_SetPlacementModeAndSynchronize
+GamePhaseActorScriptVm_SetPlacementModeAndSynchronize: ; 0x0201af00
     stmdb sp!, {r3, lr}
     bl GamePhaseScriptVm_Pop
     cmp r0, #0x0
@@ -43,4 +43,4 @@ L_0201af7c:
     mov r0, #0x0
     ldmia sp!, {r3, pc}
 L_0201af84: .word data_021052fc
-.size func_0201af00, . - func_0201af00
+.size GamePhaseActorScriptVm_SetPlacementModeAndSynchronize, . - GamePhaseActorScriptVm_SetPlacementModeAndSynchronize

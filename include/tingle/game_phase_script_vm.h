@@ -275,7 +275,7 @@ s32 GamePhaseActorScriptVm_IsPointInRectangle(GamePhaseActorScriptVm *self);
 s32 GamePhaseActorScriptVm_GetActiveEntityPositionX(GamePhaseActorScriptVm *self);
 s32 GamePhaseActorScriptVm_GetActiveEntityPositionY(GamePhaseActorScriptVm *self);
 s32 GamePhaseActorScriptVm_GetActiveEntityPositionZ(GamePhaseActorScriptVm *self);
-s32 func_0201af00(GamePhaseActorScriptVm *self);
+s32 GamePhaseActorScriptVm_SetPlacementModeAndSynchronize(GamePhaseActorScriptVm *self);
 s32 func_0201af88(GamePhaseActorScriptVm *self);
 s32 GamePhaseActorScriptVm_CalculateScaledRuntimeValue(GamePhaseActorScriptVm *self);
 s32 func_0201b040(GamePhaseActorScriptVm *self);
