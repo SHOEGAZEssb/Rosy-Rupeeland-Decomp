@@ -8,9 +8,9 @@
 .extern Actor_BuildWorldInteractionBounds
 .extern func_02056f34
 
-    .global func_02034060
-    .type func_02034060, @function
-func_02034060: ; 0x02034060
+    .global Actor_IsInteractionEligible
+    .type Actor_IsInteractionEligible, @function
+Actor_IsInteractionEligible: ; 0x02034060
     stmdb sp!, {r3, r4, r5, lr}
     sub sp, sp, #0x48
     mov r4, r0
@@ -71,6 +71,6 @@ func_02034060: ; 0x02034060
 .L_02034140:
     add sp, sp, #0x48
     ldmia sp!, {r3, r4, r5, pc}
-    .size func_02034060, . - func_02034060
+    .size Actor_IsInteractionEligible, . - Actor_IsInteractionEligible
 
     .global func_02034148

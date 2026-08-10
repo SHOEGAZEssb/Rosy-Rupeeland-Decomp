@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/actor_collection_selection_query.c.
 .text
 .extern Actor_TestQueryPoint
-.extern func_02034060
+.extern Actor_IsInteractionEligible
 .extern func_0200b04c
 .extern func_0204aff4
 .extern func_020397d4
@@ -12,9 +12,9 @@
 .extern data_02105310
 .extern data_021052fc
 
-    .global func_0202d7a8
-    .type func_0202d7a8, @function
-func_0202d7a8: ; 0x0202d7a8
+    .global ActorCollection_ProcessSelectionQuery
+    .type ActorCollection_ProcessSelectionQuery, @function
+ActorCollection_ProcessSelectionQuery: ; 0x0202d7a8
     stmdb sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, lr}
     sub sp, sp, #0x10
     mov r10, r0
@@ -40,7 +40,7 @@ func_0202d7a8: ; 0x0202d7a8
     blx r2
     mov r4, r0
     mov r0, r6
-    bl func_02034060
+    bl Actor_IsInteractionEligible
     cmp r0, #0x0
     movne r5, r6
 .L_0202d818:
@@ -115,7 +115,7 @@ func_0202d7a8: ; 0x0202d7a8
     cmp r5, #0x0
     beq .L_0202d934
     mov r0, r5
-    bl func_02034060
+    bl Actor_IsInteractionEligible
     cmp r0, #0x0
     bne .L_0202d9a0
 .L_0202d934:
@@ -125,7 +125,7 @@ func_0202d7a8: ; 0x0202d7a8
     cmp r5, #0x0
     beq .L_0202d954
     mov r0, r5
-    bl func_02034060
+    bl Actor_IsInteractionEligible
     cmp r0, #0x0
     bne .L_0202d9a0
 .L_0202d954:
@@ -164,7 +164,7 @@ func_0202d7a8: ; 0x0202d7a8
     cmp r0, #0x0
     bne .L_0202dad8
     mov r0, r5
-    bl func_02034060
+    bl Actor_IsInteractionEligible
     cmp r0, #0x0
     bne .L_0202dacc
     ldr r0, [r5, #0x14]
@@ -236,4 +236,4 @@ func_0202d7a8: ; 0x0202d7a8
     ldmia sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, pc}
 .L_0202dae4: .word data_02105310
 .L_0202dae8: .word data_021052fc
-    .size func_0202d7a8, . - func_0202d7a8
+    .size ActorCollection_ProcessSelectionQuery, . - ActorCollection_ProcessSelectionQuery

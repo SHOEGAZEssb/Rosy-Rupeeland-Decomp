@@ -29,7 +29,7 @@ extern s32 func_020573e4(void *resource);
  * result rejects
  * the actor. Temporary vector/state helpers may manage SDK-owned values.
  */
-s32 func_02034060(void *self)
+s32 Actor_IsInteractionEligible(void *self)
 {
     u8 *actor = (u8 *)self;
     u8 actorGeometry[16];

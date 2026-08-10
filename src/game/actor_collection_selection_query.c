@@ -27,7 +27,7 @@ extern u8 data_02105310[];
 extern void *data_021052fc;
 extern s32 Actor_TestQueryPoint(void *actor,
                                 const ActorSelectionQuery *query);
-extern s32 func_02034060(void *actor);
+extern s32 Actor_IsInteractionEligible(void *actor);
 extern s32 Actor_DispatchActivationMode1(void *actor);
 extern s32 func_0200b04c(const void *state);
 extern s32 func_0204aff4(void *actor);
@@ -64,22 +64,23 @@ static u16 actor_rank(void *actor)
 
 /*
  * Query reserved actor zero first when flag 0x200000 is clear and
- * Actor_TestQueryPoint accepts it. Preserve its vtable-0x48 return value and mark it
- * as candidate when func_02034060 succeeds. If neither yields a result, scan
- * ordinary slots 2..slotLimit-1 under the same eligibility tests, call their
- * query hooks, and choose the nonnull-offset-0x184 actor with the smallest
- * offset-0x54/+0x28 halfword (later actors win ties).
+ * Actor_TestQueryPoint accepts it. Preserve its vtable-0x48 return value and
+ * mark it as candidate when Actor_IsInteractionEligible succeeds. If neither
+ * yields a result, scan ordinary slots 2..slotLimit-1 under the same
+ * eligibility tests, call their query hooks, and choose the nonnull-offset-
+ * 0x184 actor with the smallest offset-0x54/+0x28 halfword (later actors win
+ * ties).
  *
  * Reserved actor one then receives special handling governed by flags at
  * 0x10, 0x14, and 0x268 plus address-derived predicates. A selected candidate
- * can return Actor_DispatchActivationMode1, or can cause a temporary vector to be built from
- * query fields and actor offset-0x24 values and sent to the global actor at
- * scene offset 0x2ea4. The function returns the preserved hook result,
- * Actor_DispatchActivationMode1's result, or zero. Query hooks and the final dispatch may
- * mutate actor/scene state.
+ * can return Actor_DispatchActivationMode1, or can cause a temporary vector to
+ * be built from query fields and actor offset-0x24 values and sent to the
+ * global actor at scene offset 0x2ea4. The function returns the preserved hook
+ * result, Actor_DispatchActivationMode1's result, or zero. Query hooks and the
+ * final dispatch may mutate actor/scene state.
  */
-s32 func_0202d7a8(ActorSelectionCollection *self,
-                  const ActorSelectionQuery *query)
+s32 ActorCollection_ProcessSelectionQuery(ActorSelectionCollection *self,
+                                          const ActorSelectionQuery *query)
 {
     void *actor = self->actors_0000[0];
     void *candidate = 0;
@@ -91,7 +92,7 @@ s32 func_0202d7a8(ActorSelectionCollection *self,
     if (!(read_u32(actor, 0x14) & 0x200000) &&
         Actor_TestQueryPoint(actor, query)) {
         result = call_query_hook(actor, query);
-        if (func_02034060(actor))
+        if (Actor_IsInteractionEligible(actor))
             candidate = actor;
     }
 
@@ -115,9 +116,9 @@ s32 func_0202d7a8(ActorSelectionCollection *self,
             if (read_u32(actor, 0x10) & 0x01000000) {
                 call_query_hook(actor, query);
                 if (actor_rank(actor) <= bestRank &&
-                    (!candidate || !func_02034060(candidate)))
+                    (!candidate || !Actor_IsInteractionEligible(candidate)))
                     candidate = actor;
-            } else if ((!candidate || !func_02034060(candidate)) &&
+            } else if ((!candidate || !Actor_IsInteractionEligible(candidate)) &&
                        !func_0200b04c(data_02105310) &&
                        (read_u32(actor, 0x268) & 0x8000) &&
                        func_0204aff4(actor) != 5) {
@@ -130,7 +131,7 @@ s32 func_0202d7a8(ActorSelectionCollection *self,
         scene = (u8 *)data_021052fc;
         actor = *(void **)(scene + 0x2ea4);
         if (func_020397d4(actor) && !func_0200b04c(data_02105310)) {
-            if (func_02034060(candidate)) {
+            if (Actor_IsInteractionEligible(candidate)) {
                 result = Actor_DispatchActivationMode1(candidate);
             } else if (read_u32(candidate, 0x14) & 0x08000000) {
                 void *guardActor = *(void **)(scene + 0x2ea8);

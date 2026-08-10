@@ -7,7 +7,8 @@ extern "C" {
 #endif
 extern void func_020057dc(void *point);
 extern void *func_02009d78(void *object);
-extern s32 func_0202d7a8(void *actor, const void *point);
+extern s32 ActorCollection_ProcessSelectionQuery(void *collection,
+                                                  const void *query);
 extern s32 func_0202daec(void *actor, const void *point);
 extern s32 func_0202db78(void *actor, const void *point);
 #ifdef __cplusplus
@@ -44,7 +45,7 @@ s32 func_020083c8(GamePhaseRuntime *self)
         *(u32 *)(b + 0x30b8) = flags & ~1;
         if (*(s32 *)(b + 0x30b0) >= 192)
             goto returnZero;
-        return func_0202d7a8(b + 0x28, point);
+        return ActorCollection_ProcessSelectionQuery(b + 0x28, point);
     }
     if (flags & 2) {
         *(u32 *)(b + 0x30b8) = flags & ~2;

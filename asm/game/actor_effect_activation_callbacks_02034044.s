@@ -13,5 +13,5 @@ Actor_DispatchActivationMode1: ; 0x02034044
     ldmia sp!, {r3, pc}
     .size Actor_DispatchActivationMode1, . - Actor_DispatchActivationMode1
 
-    .global func_02034060
+    .global Actor_IsInteractionEligible
 
