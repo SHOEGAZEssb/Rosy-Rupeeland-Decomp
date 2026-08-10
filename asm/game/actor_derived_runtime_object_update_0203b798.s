@@ -7,7 +7,7 @@
 .extern VecFx32Stepper_Update
 .extern VecFx32Stepper_GetStep
 .extern VecFx32Stepper_IsComplete
-.extern func_020068ac
+.extern VecFx32Stepper_GetTarget
 .extern Actor_SetRuntimeFlag80
 .extern Actor_UpdateTerrainMotionFeedback
 .extern func_02034164
@@ -69,7 +69,7 @@ ActorDerivedRuntime_UpdateFrame: ; 0x0203b798
     add r0, sp, #0x10
     bl func_02005058
     add r0, r4, #0x198
-    bl func_020068ac
+    bl VecFx32Stepper_GetTarget
     mov r1, r0
     add r0, r4, #0x28
     bl func_020050a4

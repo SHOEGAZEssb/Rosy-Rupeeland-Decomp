@@ -6,9 +6,9 @@
 .extern data_021052fc
 .extern data_ov074_02211db8
 .extern func_02005058
-.extern func_020068e0
-.extern func_02006a5c
-.extern func_02006acc
+.extern SplineMover_Destroy
+.extern SplineMover_Assign
+.extern SplineMover_Evaluate2D
 .extern func_02007a24
 .extern func_02007ae8
 .extern func_02007b18
@@ -41,7 +41,7 @@ func_ov074_022105b4:
     bl func_02007b18
     add r0, sp, #0x3c
     mov r1, r5
-    bl func_02006acc
+    bl SplineMover_Evaluate2D
     ldr r0, .L_02210720
     add r1, sp, #0x3c
     ldr r0, [r0, #0x0]
@@ -75,9 +75,9 @@ func_ov074_022105b4:
     bl func_ov074_02210878
     add r0, r4, #0xc8
     add r1, sp, #0x0
-    bl func_02006a5c
+    bl SplineMover_Assign
     add r0, sp, #0x0
-    bl func_020068e0
+    bl SplineMover_Destroy
     ldr r0, [r4, #0x124]
     cmp r0, #0x0
     bne .L_022106ac

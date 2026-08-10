@@ -13,7 +13,7 @@
 .extern GraphicsSpriteState_Create
 .extern VecFx32Triple_Destroy
 .extern VecFx32Bezier_Evaluate3D
-.extern func_02006918
+.extern VecFx32Triple_InitWithValues
 .extern func_02008378
 .extern func_0201e250
 .extern func_0201e28c

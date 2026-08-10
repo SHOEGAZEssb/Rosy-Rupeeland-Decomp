@@ -6,10 +6,10 @@
 .extern func_02005030
 .extern func_02005058
 .extern func_020050a4
-.extern func_020068e0
-.extern func_020069b8
-.extern func_02006a5c
-.extern func_02006acc
+.extern SplineMover_Destroy
+.extern SplineMover_InitTransition
+.extern SplineMover_Assign
+.extern SplineMover_Evaluate2D
 .extern func_02007f0c
 .extern func_0200875c
 .extern func_020091d0
@@ -122,14 +122,14 @@ func_ov074_02210b90:
     add r1, r1, #0x14
     add r2, r2, #0x24
     add r3, r3, #0x4
-    bl func_020069b8
+    bl SplineMover_InitTransition
     add r1, sp, #0x400
     add r0, r6, #0x8c
     add r1, r1, #0xa8
-    bl func_02006a5c
+    bl SplineMover_Assign
     add r0, sp, #0x400
     add r0, r0, #0xa8
-    bl func_020068e0
+    bl SplineMover_Destroy
     add r0, sp, #0x400
     add r1, sp, #0x500
     add r2, sp, #0x500
@@ -159,12 +159,12 @@ func_ov074_02210b90:
     add r1, r1, #0x98
     add r2, r2, #0x88
     add r3, r3, #0x78
-    bl func_020069b8
+    bl SplineMover_InitTransition
     add r1, sp, #0xb8
     add r0, r6, #0x50
-    bl func_02006a5c
+    bl SplineMover_Assign
     add r0, sp, #0xb8
-    bl func_020068e0
+    bl SplineMover_Destroy
     add r0, sp, #0x400
     add r0, r0, #0x78
     bl func_02005058
@@ -221,14 +221,14 @@ func_ov074_02210b90:
     add r0, r0, #0xc
     add r2, r2, #0x24
     mov r3, r1
-    bl func_020069b8
+    bl SplineMover_InitTransition
     add r1, sp, #0x400
     add r0, r6, #0xc8
     add r1, r1, #0xc
-    bl func_02006a5c
+    bl SplineMover_Assign
     add r0, sp, #0x400
     add r0, r0, #0xc
-    bl func_020068e0
+    bl SplineMover_Destroy
     b .L_022114b0
 .L_02210ec8:
     ldr r1, [r6, #0x2c]
@@ -273,12 +273,12 @@ func_ov074_02210b90:
     add r1, r1, #0x14
     add r2, r2, #0x24
     add r3, r3, #0x4
-    bl func_020069b8
+    bl SplineMover_InitTransition
     add r0, r6, #0x8c
     add r1, sp, #0x3b0
-    bl func_02006a5c
+    bl SplineMover_Assign
     add r0, sp, #0x3b0
-    bl func_020068e0
+    bl SplineMover_Destroy
     add r1, sp, #0x500
     add r2, sp, #0x500
     add r0, sp, #0x3a0
@@ -302,12 +302,12 @@ func_ov074_02210b90:
     add r1, sp, #0x3a0
     add r2, sp, #0x390
     add r3, sp, #0x380
-    bl func_020069b8
+    bl SplineMover_InitTransition
     add r1, sp, #0x7c
     add r0, r6, #0x50
-    bl func_02006a5c
+    bl SplineMover_Assign
     add r0, sp, #0x7c
-    bl func_020068e0
+    bl SplineMover_Destroy
     add r0, sp, #0x380
     bl func_02005058
     add r0, sp, #0x390
@@ -350,12 +350,12 @@ func_ov074_02210b90:
     add r0, sp, #0x314
     add r2, r2, #0x24
     mov r3, r1
-    bl func_020069b8
+    bl SplineMover_InitTransition
     add r0, r6, #0xc8
     add r1, sp, #0x314
-    bl func_02006a5c
+    bl SplineMover_Assign
     add r0, sp, #0x314
-    bl func_020068e0
+    bl SplineMover_Destroy
     b .L_022114b0
 .L_022110c0:
     ldr r0, [r6, #0x30]
@@ -401,12 +401,12 @@ func_ov074_02210b90:
     add r1, r1, #0x14
     add r2, r2, #0x24
     add r3, r3, #0x4
-    bl func_020069b8
+    bl SplineMover_InitTransition
     add r0, r6, #0x8c
     add r1, sp, #0x2b8
-    bl func_02006a5c
+    bl SplineMover_Assign
     add r0, sp, #0x2b8
-    bl func_020068e0
+    bl SplineMover_Destroy
     add r1, sp, #0x500
     add r2, sp, #0x500
     add r0, sp, #0x2a8
@@ -430,12 +430,12 @@ func_ov074_02210b90:
     add r1, sp, #0x2a8
     add r2, sp, #0x298
     add r3, sp, #0x288
-    bl func_020069b8
+    bl SplineMover_InitTransition
     add r1, sp, #0x40
     add r0, r6, #0x50
-    bl func_02006a5c
+    bl SplineMover_Assign
     add r0, sp, #0x40
-    bl func_020068e0
+    bl SplineMover_Destroy
     add r0, sp, #0x288
     bl func_02005058
     add r0, sp, #0x298
@@ -478,12 +478,12 @@ func_ov074_02210b90:
     add r0, sp, #0x21c
     add r2, r2, #0x24
     mov r3, r1
-    bl func_020069b8
+    bl SplineMover_InitTransition
     add r0, r6, #0xc8
     add r1, sp, #0x21c
-    bl func_02006a5c
+    bl SplineMover_Assign
     add r0, sp, #0x21c
-    bl func_020068e0
+    bl SplineMover_Destroy
     b .L_022114b0
 .L_022112bc:
     ldr r1, [r6, #0x30]
@@ -528,12 +528,12 @@ func_ov074_02210b90:
     add r1, r1, #0x14
     add r2, r2, #0x24
     add r3, r3, #0x4
-    bl func_020069b8
+    bl SplineMover_InitTransition
     add r0, r6, #0x8c
     add r1, sp, #0x1c0
-    bl func_02006a5c
+    bl SplineMover_Assign
     add r0, sp, #0x1c0
-    bl func_020068e0
+    bl SplineMover_Destroy
     add r1, sp, #0x500
     add r2, sp, #0x500
     add r0, sp, #0x1b0
@@ -557,12 +557,12 @@ func_ov074_02210b90:
     add r1, sp, #0x1b0
     add r2, sp, #0x1a0
     add r3, sp, #0x190
-    bl func_020069b8
+    bl SplineMover_InitTransition
     add r1, sp, #0x4
     add r0, r6, #0x50
-    bl func_02006a5c
+    bl SplineMover_Assign
     add r0, sp, #0x4
-    bl func_020068e0
+    bl SplineMover_Destroy
     add r0, sp, #0x190
     bl func_02005058
     add r0, sp, #0x1a0
@@ -605,12 +605,12 @@ func_ov074_02210b90:
     add r0, sp, #0x124
     add r2, r2, #0x24
     mov r3, r1
-    bl func_020069b8
+    bl SplineMover_InitTransition
     add r0, r6, #0xc8
     add r1, sp, #0x124
-    bl func_02006a5c
+    bl SplineMover_Assign
     add r0, sp, #0x124
-    bl func_020068e0
+    bl SplineMover_Destroy
 .L_022114b0:
     ldr r0, .L_02211640
     mov r1, #0x1
@@ -679,7 +679,7 @@ func_ov074_02210b90:
 .L_022115ac:
     add r0, sp, #0x104
     add r1, r6, #0x8c
-    bl func_02006acc
+    bl SplineMover_Evaluate2D
     ldr r0, .L_02211640
     add r1, sp, #0x104
     ldr r0, [r0, #0x0]
@@ -690,7 +690,7 @@ func_ov074_02210b90:
     bl func_02005058
     add r0, sp, #0xf4
     add r1, r6, #0xc8
-    bl func_02006acc
+    bl SplineMover_Evaluate2D
     ldr r0, .L_02211640
     add r1, sp, #0xf4
     ldr r0, [r0, #0x0]

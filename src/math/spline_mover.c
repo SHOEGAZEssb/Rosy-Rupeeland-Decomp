@@ -1,5 +1,6 @@
 #include "tingle/heap.h"
 #include "tingle/spline_mover.h"
+#include "tingle/vec_fx32_stepper.h"
 
 /*
  * Quadratic fixed-point spline mover identified by retail RTTI as
@@ -19,14 +20,14 @@ extern s32 func_020befec(s32 numerator, s32 denominator);
 }
 #endif
 
-/* Recovered no-op base hook: preserve and return the supplied pointer. */
-void *func_020068ac(void *self)
+/* Return the address of the stepper target vector without changing state. */
+VecFx32Object *VecFx32Stepper_GetTarget(VecFx32Stepper *self)
 {
-    return self;
+    return &self->target;
 }
 
 /* Construct zero control points, clear parameter fields, and return self. */
-SplineMover *func_020068b0(SplineMover *self)
+SplineMover *SplineMover_Init(SplineMover *self)
 {
     self->vtable = data_020d4218;
     VecFx32Triple_Init(&self->points);
@@ -36,14 +37,14 @@ SplineMover *func_020068b0(SplineMover *self)
 }
 
 /* Destroy the three non-owning control vectors and return self. */
-SplineMover *func_020068e0(SplineMover *self)
+SplineMover *SplineMover_Destroy(SplineMover *self)
 {
     VecFx32Triple_Destroy(&self->points);
     return self;
 }
 
 /* Destroy control vectors, free the mover object, and return its old address. */
-SplineMover *func_020068f8(SplineMover *self)
+SplineMover *SplineMover_DestroyAndFree(SplineMover *self)
 {
     VecFx32Triple_Destroy(&self->points);
     Heap_Free(self);
@@ -51,10 +52,10 @@ SplineMover *func_020068f8(SplineMover *self)
 }
 
 /* Construct and copy three supplied vectors into a triple, then return it. */
-VecFx32Triple *func_02006918(VecFx32Triple *self,
-                             const VecFx32Object *first,
-                             const VecFx32Object *second,
-                             const VecFx32Object *third)
+VecFx32Triple *VecFx32Triple_InitWithValues(VecFx32Triple *self,
+                                            const VecFx32Object *first,
+                                            const VecFx32Object *second,
+                                            const VecFx32Object *third)
 {
     func_02004fe0(&self->first);
     func_02004fe0(&self->second);
@@ -66,8 +67,8 @@ VecFx32Triple *func_02006918(VecFx32Triple *self,
 }
 
 /* Copy-construct all three vectors from source and return the new triple. */
-VecFx32Triple *func_0200696c(VecFx32Triple *self,
-                             const VecFx32Triple *source)
+VecFx32Triple *VecFx32Triple_InitCopy(VecFx32Triple *self,
+                                     const VecFx32Triple *source)
 {
     func_02004fe0(&self->first);
     func_02004fe0(&self->second);
@@ -79,20 +80,21 @@ VecFx32Triple *func_0200696c(VecFx32Triple *self,
 }
 
 /*
- * Install the spline vtable and store the points in recovered order: second,
- * first, control. Start at parameter zero and set the step to 1.0/duration
- * through the retail integer divider. Duration zero remains unchecked.
+ * Install the spline vtable and store the points as current, target, control.
+ * Start at parameter zero and set the step to 1.0/duration through the retail
+ * integer divider. Duration zero remains unchecked.
  */
-SplineMover *func_020069b8(SplineMover *self,
-                           const VecFx32Object *first,
-                           const VecFx32Object *second,
-                           const VecFx32Object *control, s32 duration)
+SplineMover *SplineMover_InitTransition(SplineMover *self,
+                                        const VecFx32Object *target,
+                                        const VecFx32Object *current,
+                                        const VecFx32Object *control,
+                                        s32 duration)
 {
     VecFx32Triple temporary;
 
     self->vtable = data_020d4218;
-    func_02006918(&temporary, second, first, control);
-    func_0200696c(&self->points, &temporary);
+    VecFx32Triple_InitWithValues(&temporary, current, target, control);
+    VecFx32Triple_InitCopy(&self->points, &temporary);
     func_02005058(&temporary.third);
     func_02005058(&temporary.second);
     func_02005058(&temporary.first);
@@ -102,8 +104,8 @@ SplineMover *func_020069b8(SplineMover *self,
 }
 
 /* Assign the three vector payloads and return the destination triple. */
-VecFx32Triple *func_02006a2c(VecFx32Triple *self,
-                             const VecFx32Triple *source)
+VecFx32Triple *VecFx32Triple_Assign(VecFx32Triple *self,
+                                   const VecFx32Triple *source)
 {
     func_020050a4(&self->first, &source->first);
     func_020050a4(&self->second, &source->second);
@@ -112,11 +114,11 @@ VecFx32Triple *func_02006a2c(VecFx32Triple *self,
 }
 
 /* Copy points and parameter state unless self-assigned, then return self. */
-SplineMover *func_02006a5c(SplineMover *self,
-                           const SplineMover *source)
+SplineMover *SplineMover_Assign(SplineMover *self,
+                                const SplineMover *source)
 {
     if (self != source) {
-        func_02006a2c(&self->points, &source->points);
+        VecFx32Triple_Assign(&self->points, &source->points);
         self->parameter = source->parameter;
         self->parameterStep = source->parameterStep;
     }
@@ -127,7 +129,7 @@ SplineMover *func_02006a5c(SplineMover *self,
  * Advance the normalized parameter and clamp it to 1.0. Return false only
  * when it was already at or above 1.0 on entry; otherwise return true.
  */
-s32 func_02006a94(SplineMover *self)
+s32 SplineMover_Update(SplineMover *self)
 {
     if (self->parameter >= 0x1000) {
         self->parameter = 0x1000;
@@ -141,7 +143,7 @@ s32 func_02006a94(SplineMover *self)
 }
 
 /* Evaluate the mover's x/y spline position into result; no state changes. */
-void func_02006acc(VecFx32Object *result, const SplineMover *self)
+void SplineMover_Evaluate2D(VecFx32Object *result, const SplineMover *self)
 {
     VecFx32Bezier_Evaluate2D(result, &self->points, self->parameter);
 }

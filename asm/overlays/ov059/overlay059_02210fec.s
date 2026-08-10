@@ -11,7 +11,7 @@
 .extern data_ov059_02211ba8
 .extern data_ov059_02211bb0
 .extern DebugSpriteText_Init
-.extern func_020068b0
+.extern SplineMover_Init
 .extern func_0201140c
 .extern func_020284f0
 .extern func_ov059_022106fc
@@ -43,7 +43,7 @@ func_ov059_02210fec:
     str r0, [r4, #0x4c]
     add r0, r4, #0x54
     str r1, [r4, #0x50]
-    bl func_020068b0
+    bl SplineMover_Init
     mov r0, r5
     bl func_020284f0
     str r0, [r4, #0x30]

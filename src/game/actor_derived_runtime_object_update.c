@@ -14,7 +14,7 @@ extern void func_020050c8(void *destination, const void *delta);
 extern void VecFx32Stepper_Update(void *track);
 extern void *VecFx32Stepper_GetStep(void *track);
 extern s32 VecFx32Stepper_IsComplete(void *track);
-extern void *func_020068ac(void *track);
+extern void *VecFx32Stepper_GetTarget(void *track);
 extern void Actor_UpdateTerrainMotionFeedback(void *actor);
 #ifdef __cplusplus
 }
@@ -72,7 +72,7 @@ void ActorDerivedRuntime_UpdateFrame(void *self)
             void *terminal;
             *(u32 *)(actor + 0x10) &= ~0x40;
             clearActorVector(actor, 0x38);
-            terminal = func_020068ac(actor + 0x198);
+            terminal = VecFx32Stepper_GetTarget(actor + 0x198);
             func_020050a4(actor + 0x28, terminal);
             func_020050a4(actor + 0x18, actor + 0x28);
         } else {

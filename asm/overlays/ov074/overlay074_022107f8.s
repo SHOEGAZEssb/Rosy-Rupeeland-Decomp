@@ -2,7 +2,7 @@
 ; Matching fallback for the portable implementation in src/overlays/ov074/overlay074_recovery.c.
 .extern data_021052fc
 .extern func_02005058
-.extern func_02006acc
+.extern SplineMover_Evaluate2D
 .extern func_02012150
 .extern ActorCollection_DispatchEventToActors
 
@@ -23,7 +23,7 @@ func_ov074_022107f8:
     blx r2
     add r0, sp, #0x10
     mov r1, r5
-    bl func_02006acc
+    bl SplineMover_Evaluate2D
     add r1, sp, #0x10
     mov r0, r4
     bl func_02012150
@@ -31,7 +31,7 @@ func_ov074_022107f8:
     bl func_02005058
     add r0, sp, #0x0
     mov r1, r5
-    bl func_02006acc
+    bl SplineMover_Evaluate2D
     add r1, sp, #0x0
     add r0, r4, #0x8
     bl ActorCollection_DispatchEventToActors

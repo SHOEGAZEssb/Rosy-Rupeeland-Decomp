@@ -42,9 +42,9 @@ extern void func_0200500c(PresentationValue *value, s32 x, s32 y, s32 z);
 extern void func_02005058(PresentationValue *value);
 extern void func_02008378(PresentationValue *destination, s32 argument,
                           PresentationValue *source);
-extern void func_02006918(void *destination, s32 first,
+extern void VecFx32Triple_InitWithValues(void *destination, s32 first,
                           PresentationValue *source, s32 second);
-extern void func_02006a2c(void *path, void *source);
+extern void VecFx32Triple_Assign(void *path, void *source);
 extern void func_0200964c(void *value, s32 first, s32 second, s32 third);
 extern void func_0200919c(void *state, void *source);
 extern s32 func_020096f0(void *state, s32 time, s32 mode);
@@ -100,8 +100,8 @@ RisingSpriteMotionController *func_020203e4(
     self->systemTime60 = *(s32 *)(gSystemState + 0x64);
     func_0200500c(&value60, 0, 0, 0x46000);
     func_02008378(&value50, pathArgument, &value60);
-    func_02006918(pathValue20, pathArgument, &value50, pathArgument);
-    func_02006a2c(self->path1c, pathValue20);
+    VecFx32Triple_InitWithValues(pathValue20, pathArgument, &value50, pathArgument);
+    VecFx32Triple_Assign(self->path1c, pathValue20);
     VecFx32Triple_Destroy(pathValue20);
     func_02005058(&value50);
     func_02005058(&value60);

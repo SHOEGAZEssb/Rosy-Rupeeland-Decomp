@@ -3,9 +3,9 @@
 .extern func_0200500c
 .extern func_02005030
 .extern func_02005058
-.extern func_020068e0
-.extern func_020069b8
-.extern func_02006a5c
+.extern SplineMover_Destroy
+.extern SplineMover_InitTransition
+.extern SplineMover_Assign
 
 .global func_ov059_02211a14
 func_ov059_02211a14:
@@ -32,12 +32,12 @@ func_ov059_02211a14:
     add r1, sp, #0x60
     add r2, sp, #0x50
     add r3, sp, #0x40
-    bl func_020069b8
+    bl SplineMover_InitTransition
     add r0, r5, #0x54
     add r1, sp, #0x4
-    bl func_02006a5c
+    bl SplineMover_Assign
     add r0, sp, #0x4
-    bl func_020068e0
+    bl SplineMover_Destroy
     add r0, sp, #0x40
     bl func_02005058
     add r0, sp, #0x50

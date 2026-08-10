@@ -8,7 +8,7 @@
 .extern data_02105300
 .extern data_ov074_02211d8c
 .extern func_02004fe0
-.extern func_020068b0
+.extern SplineMover_Init
 .extern func_02010520
 .extern func_0201df64
 .extern func_0201e0ec
@@ -45,9 +45,9 @@ func_ov074_0220fda8:
     add r0, r4, #0x38
     bl func_ov074_0221167c
     add r0, r4, #0x8c
-    bl func_020068b0
+    bl SplineMover_Init
     add r0, r4, #0xc8
-    bl func_020068b0
+    bl SplineMover_Init
     add r0, r4, #0x104
     bl func_02004fe0
     add r0, r4, #0x114

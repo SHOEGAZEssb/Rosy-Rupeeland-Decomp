@@ -8,7 +8,7 @@
 .extern OverlayManager_UnloadOverlay
 .extern OverlayManager_GetGlobal
 .extern func_02005058
-.extern func_020068e0
+.extern SplineMover_Destroy
 .extern func_02010520
 .extern ActorDerivedType1_GetSingletonObject
 .extern func_ov088_0221ad9c
@@ -54,11 +54,11 @@ func_ov074_022100fc:
     add r0, r4, #0x104
     bl func_02005058
     add r0, r4, #0xc8
-    bl func_020068e0
+    bl SplineMover_Destroy
     add r0, r4, #0x8c
-    bl func_020068e0
+    bl SplineMover_Destroy
     add r0, r4, #0x50
-    bl func_020068e0
+    bl SplineMover_Destroy
     add r0, r4, #0x40
     bl func_02005058
     add r0, r4, #0x28

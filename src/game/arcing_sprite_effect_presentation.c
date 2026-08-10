@@ -21,7 +21,7 @@ extern void *func_0201e250(void *);extern void *func_0201e28c(void *);
 extern void *AnimationResource_Init(void *,s32,s32,s32);extern u8 *GraphicsSpriteState_Create(void *,void *,s32,s32,s32,s32,s32);
 extern void GraphicsSpriteState_SetDepthOrderedWorldPosition(void *,s32,s32,s32,s32);extern void func_02004fe0(void *);
 extern void func_02005058(void *);extern void VecFx32Triple_Destroy(void *);extern void VecFx32Bezier_Evaluate3D(void *,void *,s32);
-extern void func_02006918(void *,const void *,const void *,const void *);extern void func_02008378(void *,const void *,const void *);
+extern void VecFx32Triple_InitWithValues(void *,const void *,const void *,const void *);extern void func_02008378(void *,const void *,const void *);
 extern void func_020233c8(void *,const void *,s32);extern s32 func_020befec(s32,s32);
 extern void func_02074038(void *,void *);extern void func_020740c8(void *,s32,s32,s32,s32);
 extern void func_02072b68(void *,s32);extern void Sound_Play(void *,s32,s32);
@@ -52,7 +52,7 @@ ArcingSpriteEffectPresentation *func_02023434(
     func_020233c8(&a,first,0x4cd);func_020233c8(&b,second,0xb33);
     func_02008378(&combined,&a,&b);func_02005058(&b);func_02005058(&a);
     self->path1c=(u8 *)Heap_Alloc(0x30,data_020d6760,4,&gHeapContext);
-    if(self->path1c)func_02006918(self->path1c,first,second,&combined);
+    if(self->path1c)VecFx32Triple_InitWithValues(self->path1c,first,second,&combined);
     func_02005058(&combined);return self;
 }
 

@@ -31,6 +31,7 @@ VecFx32Stepper *VecFx32Stepper_Destroy(VecFx32Stepper *self);
 s32 VecFx32Stepper_Update(VecFx32Stepper *self);
 VecFx32Object *VecFx32Stepper_GetCurrent(VecFx32Stepper *self);
 VecFx32Object *VecFx32Stepper_GetStep(VecFx32Stepper *self);
+VecFx32Object *VecFx32Stepper_GetTarget(VecFx32Stepper *self);
 s32 VecFx32Stepper_IsComplete(const VecFx32Stepper *self);
 void VecFx32Stepper_Reset(VecFx32Stepper *self);
 

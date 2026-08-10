@@ -15,8 +15,8 @@
 .extern func_02005058
 .extern DebugSpriteText_SetTextResource
 .extern DebugSpriteText_DrawCentered
-.extern func_02006a94
-.extern func_02006acc
+.extern SplineMover_Update
+.extern SplineMover_Evaluate2D
 .extern func_02007908
 .extern func_0200807c
 .extern func_020080d0
@@ -228,11 +228,11 @@ func_ov059_02211330:
     bl func_ov059_02210c24
 .L_022115d4:
     add r0, r5, #0x54
-    bl func_02006a94
+    bl SplineMover_Update
     mov r4, r0
     add r0, sp, #0x10
     add r1, r5, #0x54
-    bl func_02006acc
+    bl SplineMover_Evaluate2D
     ldr r1, [sp, #0x18]
     add r0, sp, #0x10
     mov r1, r1, asr #0xc
@@ -282,11 +282,11 @@ func_ov059_02211330:
     bl func_ov059_02210c24
 .L_022116a4:
     add r0, r5, #0x54
-    bl func_02006a94
+    bl SplineMover_Update
     mov r4, r0
     add r0, sp, #0x0
     add r1, r5, #0x54
-    bl func_02006acc
+    bl SplineMover_Evaluate2D
     ldr r1, [sp, #0x8]
     add r0, sp, #0x0
     mov r1, r1, asr #0xc

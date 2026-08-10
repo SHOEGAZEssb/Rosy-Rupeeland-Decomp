@@ -7,7 +7,7 @@
 .extern OverlayManager_UnloadOverlay
 .extern OverlayManager_GetGlobal
 .extern DebugSpriteText_Destroy
-.extern func_020068e0
+.extern SplineMover_Destroy
 .extern func_0201140c
 .extern func_ov059_02210968
 .extern func_ov059_02210ba4
@@ -48,7 +48,7 @@ func_ov059_022111d4:
     ldr r0, [r0, #0x0]
     bl SceneManager_SetUpdateEnabled
     add r0, r5, #0x54
-    bl func_020068e0
+    bl SplineMover_Destroy
     add r0, r5, #0x40
     bl DebugSpriteText_Destroy
     mov r0, r5

@@ -4,8 +4,8 @@
 .extern func_02005058
 .extern VecFx32Triple_Init
 .extern VecFx32Triple_Destroy
-.extern func_02006918
-.extern func_02006a2c
+.extern VecFx32Triple_InitWithValues
+.extern VecFx32Triple_Assign
 .extern func_02008378
 .extern func_02009044
 .extern func_0200919c
@@ -53,10 +53,10 @@ func_020203e4: ; 0x020203e4
     add r0, sp, #0x20
     add r2, sp, #0x50
     mov r3, r1
-    bl func_02006918
+    bl VecFx32Triple_InitWithValues
     add r0, r4, #0x1c
     add r1, sp, #0x20
-    bl func_02006a2c
+    bl VecFx32Triple_Assign
     add r0, sp, #0x20
     bl VecFx32Triple_Destroy
     add r0, sp, #0x50

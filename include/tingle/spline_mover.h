@@ -16,26 +16,18 @@ typedef char SplineMoverSizeCheck[sizeof(SplineMover) == 0x3c ? 1 : -1];
 extern "C" {
 #endif
 
-void *func_020068ac(void *self);
-SplineMover *func_020068b0(SplineMover *self);
-SplineMover *func_020068e0(SplineMover *self);
-SplineMover *func_020068f8(SplineMover *self);
-VecFx32Triple *func_02006918(VecFx32Triple *self,
-                             const VecFx32Object *first,
-                             const VecFx32Object *second,
-                             const VecFx32Object *third);
-VecFx32Triple *func_0200696c(VecFx32Triple *self,
-                             const VecFx32Triple *source);
-SplineMover *func_020069b8(SplineMover *self,
-                           const VecFx32Object *first,
-                           const VecFx32Object *second,
-                           const VecFx32Object *control, s32 duration);
-VecFx32Triple *func_02006a2c(VecFx32Triple *self,
-                             const VecFx32Triple *source);
-SplineMover *func_02006a5c(SplineMover *self,
-                           const SplineMover *source);
-s32 func_02006a94(SplineMover *self);
-void func_02006acc(VecFx32Object *result, const SplineMover *self);
+SplineMover *SplineMover_Init(SplineMover *self);
+SplineMover *SplineMover_Destroy(SplineMover *self);
+SplineMover *SplineMover_DestroyAndFree(SplineMover *self);
+SplineMover *SplineMover_InitTransition(SplineMover *self,
+                                        const VecFx32Object *target,
+                                        const VecFx32Object *current,
+                                        const VecFx32Object *control,
+                                        s32 duration);
+SplineMover *SplineMover_Assign(SplineMover *self,
+                                const SplineMover *source);
+s32 SplineMover_Update(SplineMover *self);
+void SplineMover_Evaluate2D(VecFx32Object *result, const SplineMover *self);
 
 #ifdef __cplusplus
 }

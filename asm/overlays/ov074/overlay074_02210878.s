@@ -5,7 +5,7 @@
 .extern func_0200500c
 .extern func_02005058
 .extern func_020050a4
-.extern func_020069b8
+.extern SplineMover_InitTransition
 .extern func_0200875c
 .extern func_ov074_02210a04
 
@@ -108,7 +108,7 @@ func_ov074_02210878:
     mov r0, r5
     mov r3, r1
     str ip, [sp, #0x0]
-    bl func_020069b8
+    bl SplineMover_InitTransition
     add r0, sp, #0x84
     bl func_02005058
     add r0, sp, #0x94
