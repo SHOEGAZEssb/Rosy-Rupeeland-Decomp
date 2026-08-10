@@ -143,7 +143,9 @@ callbacks are verified generated templates: their actor descriptor lists,
 runtime data, callback data, work storage, and secondary region table are
 translated to validated overlay-relative records. Descriptor kinds are checked
 against the recovered 1-9 factory range, and signed selector offset `0x50`
-determines initial eligibility. Fourteen 32-byte zero
+determines initial eligibility. Confirmed common descriptor fields--kind,
+subtype, byte bounds, signed position, flags, selector, retained value, and the
+raw reference at `0x58`--are copied into host-owned scalar records. Fourteen 32-byte zero
 secondary images are omitted by the phase table; the decoder still represents
 such an image as an empty registration when read directly. The callbacks
 remain addresses and are never called as host function pointers.

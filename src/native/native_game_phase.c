@@ -60,6 +60,65 @@ static s32 CatalogDescriptors(const TingleNativeOverlayImage *overlay, u32 addre
     return 1;
 }
 
+/* Decode confirmed common actor fields from one registration-owned record. */
+s32 TingleNativeGamePhase_DecodeActorDescriptor(
+    const TingleNativeOverlayImage *overlay,
+    const TingleNativePhaseOverlayRegistration *registration, u32 index,
+    TingleNativeActorDescriptor *descriptor)
+{
+    const u8 *bytes;
+    u32 address;
+    size_t offset;
+
+    if (overlay == NULL || overlay->bytes == NULL || registration == NULL ||
+        descriptor == NULL || index >= registration->descriptor_count)
+        return 0;
+    address = registration->descriptor_address + index * 0x64;
+    if (!AddressInOverlay(overlay, address, 0x64)) return 0;
+    offset = (size_t)(address - overlay->load_address);
+    bytes = (const u8 *)overlay->bytes + offset;
+    memset(descriptor, 0, sizeof(*descriptor));
+    descriptor->address = address;
+    descriptor->kind = ReadU16(bytes);
+    descriptor->subtype = ReadU16(bytes + 2);
+    descriptor->half_width = bytes[0x12];
+    descriptor->half_height = bytes[0x13];
+    descriptor->bounds_offset_x = bytes[0x14];
+    descriptor->bounds_offset_y = bytes[0x15];
+    descriptor->position_x = (s16)ReadU16(bytes + 0x22);
+    descriptor->position_y = (s16)ReadU16(bytes + 0x24);
+    descriptor->position_z = (s16)ReadU16(bytes + 0x26);
+    descriptor->flags_28 = ReadU32(bytes + 0x28);
+    descriptor->selector_50 = (s16)ReadU16(bytes + 0x50);
+    descriptor->value_52 = (s16)ReadU16(bytes + 0x52);
+    descriptor->reference_58 = ReadU32(bytes + 0x58);
+    return descriptor->kind >= 1 && descriptor->kind <= 9;
+}
+
+static s32 DecodeDescriptorList(
+    const TingleNativeOverlayImage *overlay,
+    const TingleNativePhaseOverlayRegistration *registration,
+    TingleNativeActorDescriptor **descriptors)
+{
+    TingleNativeActorDescriptor *result;
+    u32 index;
+
+    *descriptors = NULL;
+    if (registration->descriptor_count == 0) return 1;
+    result = (TingleNativeActorDescriptor *)calloc(
+        registration->descriptor_count, sizeof(*result));
+    if (result == NULL) return 0;
+    for (index = 0; index < registration->descriptor_count; ++index) {
+        if (!TingleNativeGamePhase_DecodeActorDescriptor(
+                overlay, registration, index, &result[index])) {
+            free(result);
+            return 0;
+        }
+    }
+    *descriptors = result;
+    return 1;
+}
+
 static s32 WordsMatch(const u8 *bytes, const u32 *expected, size_t count,
                       size_t immediate_index)
 {
@@ -208,12 +267,20 @@ s32 TingleNativeGamePhaseBoundary_Init(TingleNativeGamePhaseBoundary *boundary,
             TingleNativeGamePhase_ParseOverlayRegistration(
                 &boundary->primary_overlay, TINGLE_NATIVE_PHASE_OVERLAY_PRIMARY,
                 &boundary->primary_registration);
+        if (boundary->primary_callback_valid)
+            boundary->primary_descriptors_decoded = DecodeDescriptorList(
+                &boundary->primary_overlay, &boundary->primary_registration,
+                &boundary->primary_descriptors);
     }
     if (boundary->secondary_callback_valid) {
         boundary->secondary_callback_valid =
             TingleNativeGamePhase_ParseOverlayRegistration(
                 &boundary->secondary_overlay, TINGLE_NATIVE_PHASE_OVERLAY_SECONDARY,
                 &boundary->secondary_registration);
+        if (boundary->secondary_callback_valid)
+            boundary->secondary_descriptors_decoded = DecodeDescriptorList(
+                &boundary->secondary_overlay, &boundary->secondary_registration,
+                &boundary->secondary_descriptors);
     }
     return boundary->metadata_loaded;
 }
@@ -221,6 +288,8 @@ s32 TingleNativeGamePhaseBoundary_Init(TingleNativeGamePhaseBoundary *boundary,
 void TingleNativeGamePhaseBoundary_Destroy(TingleNativeGamePhaseBoundary *boundary)
 {
     if (boundary == NULL) return;
+    free(boundary->secondary_descriptors);
+    free(boundary->primary_descriptors);
     TingleNativeData_CloseOverlay(&boundary->secondary_overlay);
     TingleNativeData_CloseOverlay(&boundary->primary_overlay);
     memset(boundary, 0, sizeof(*boundary));
@@ -283,6 +352,13 @@ void TingleNativeGamePhaseBoundary_Draw(
                        boundary->primary_registration.eligible_descriptor_count,
                        boundary->secondary_registration.eligible_descriptor_count);
         TingleNativeCanvas_DrawText(canvas, 12, 194, text, 0x00e0b060u, 1);
+        (void)snprintf(text, sizeof(text), "DESCRIPTORS: %s",
+                       boundary->primary_descriptors_decoded &&
+                               boundary->secondary_descriptors_decoded
+                           ? "DECODED"
+                           : "UNAVAILABLE");
+        TingleNativeCanvas_DrawText(canvas, 132, 180, text,
+                                    0x00e0b060u, 1);
         (void)snprintf(text, sizeof(text), "FLAGS 40: %08X", boundary->metadata.flags_40);
         TingleNativeCanvas_DrawText(canvas, 12, 264, text, 0x00d8e0d0u, 1);
         DrawField(canvas, 278, "FIELD 2C", boundary->metadata.field_2c);

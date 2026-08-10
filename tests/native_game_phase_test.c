@@ -30,6 +30,7 @@ static int TestOverlayRegistration(void)
     u8 bytes[0x180] = {0};
     TingleNativeOverlayImage overlay = {0};
     TingleNativePhaseOverlayRegistration registration;
+    TingleNativeActorDescriptor descriptor;
     size_t index;
 
     overlay.load_address = 0x02200000;
@@ -45,6 +46,16 @@ static int TestOverlayRegistration(void)
     WriteU32(bytes + 0x48, 0x02200080);
     WriteU32(bytes + 0x4c, 0x02200090);
     WriteU16(bytes + 0x100, 1);
+    WriteU16(bytes + 0x102, 7);
+    bytes[0x112] = 24;
+    bytes[0x113] = 18;
+    WriteU16(bytes + 0x122, (u16)-12);
+    WriteU16(bytes + 0x124, 34);
+    WriteU16(bytes + 0x126, (u16)-5);
+    WriteU32(bytes + 0x128, 0x12345678);
+    WriteU16(bytes + 0x150, 2);
+    WriteU16(bytes + 0x152, (u16)-9);
+    WriteU32(bytes + 0x158, 0x02200170);
     if (!TingleNativeGamePhase_ParseOverlayRegistration(
             &overlay, TINGLE_NATIVE_PHASE_OVERLAY_PRIMARY, &registration) ||
         registration.kind != TINGLE_NATIVE_PHASE_OVERLAY_PRIMARY ||
@@ -52,7 +63,16 @@ static int TestOverlayRegistration(void)
         registration.eligible_descriptor_count != 1 ||
         registration.kind_counts[1] != 1 ||
         registration.descriptor_address != 0x02200100 ||
-        registration.callback_address != 0x02200090) return 0;
+        registration.callback_address != 0x02200090 ||
+        !TingleNativeGamePhase_DecodeActorDescriptor(
+            &overlay, &registration, 0, &descriptor) ||
+        descriptor.address != 0x02200100 || descriptor.kind != 1 ||
+        descriptor.subtype != 7 || descriptor.half_width != 24 ||
+        descriptor.half_height != 18 || descriptor.position_x != -12 ||
+        descriptor.position_y != 34 || descriptor.position_z != -5 ||
+        descriptor.flags_28 != 0x12345678 || descriptor.selector_50 != 2 ||
+        descriptor.value_52 != -9 || descriptor.reference_58 != 0x02200170)
+        return 0;
     bytes[0] = 0;
     if (TingleNativeGamePhase_ParseOverlayRegistration(
             &overlay, TINGLE_NATIVE_PHASE_OVERLAY_PRIMARY, &registration)) return 0;
@@ -83,7 +103,9 @@ static int ProbeMetadata(const char *kind, const char *source, const char *phase
         for (phase_id = 1; phase_id <= TINGLE_NATIVE_PHASE_COUNT; ++phase_id) {
             ok = TingleNativeGamePhaseBoundary_Init(&boundary, data, phase_id) &&
                  boundary.primary_overlay_loaded && boundary.secondary_overlay_loaded &&
-                 boundary.primary_callback_valid && boundary.secondary_callback_valid;
+                 boundary.primary_callback_valid && boundary.secondary_callback_valid &&
+                 boundary.primary_descriptors_decoded &&
+                 boundary.secondary_descriptors_decoded;
             if (!ok) {
                 TingleNativeGamePhaseBoundary_Destroy(&boundary);
                 TingleNativeData_Close(data);

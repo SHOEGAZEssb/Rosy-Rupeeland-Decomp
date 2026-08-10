@@ -28,6 +28,23 @@ typedef struct TingleNativePhaseOverlayRegistration {
     u32 work_address_1;
 } TingleNativePhaseOverlayRegistration;
 
+typedef struct TingleNativeActorDescriptor {
+    u32 address;
+    u16 kind;
+    u16 subtype;
+    u8 half_width;
+    u8 half_height;
+    u8 bounds_offset_x;
+    u8 bounds_offset_y;
+    s16 position_x;
+    s16 position_y;
+    s16 position_z;
+    u32 flags_28;
+    s16 selector_50;
+    s16 value_52;
+    u32 reference_58;
+} TingleNativeActorDescriptor;
+
 typedef struct TingleNativeGamePhaseMetadata {
     s32 phase_id;
     s32 field_00;
@@ -55,17 +72,27 @@ typedef struct TingleNativeGamePhaseBoundary {
     TingleNativeOverlayImage secondary_overlay;
     TingleNativePhaseOverlayRegistration primary_registration;
     TingleNativePhaseOverlayRegistration secondary_registration;
+    TingleNativeActorDescriptor *primary_descriptors;
+    TingleNativeActorDescriptor *secondary_descriptors;
     s32 metadata_loaded;
     s32 primary_overlay_loaded;
     s32 secondary_overlay_loaded;
     s32 primary_callback_valid;
     s32 secondary_callback_valid;
+    s32 primary_descriptors_decoded;
+    s32 secondary_descriptors_decoded;
 } TingleNativeGamePhaseBoundary;
 
 /* Decodes one verified generated phase-overlay entry callback as data. */
 s32 TingleNativeGamePhase_ParseOverlayRegistration(
     const TingleNativeOverlayImage *overlay, TingleNativePhaseOverlayKind kind,
     TingleNativePhaseOverlayRegistration *registration);
+
+/* Decodes one 0x64-byte actor descriptor without retaining an ARM pointer. */
+s32 TingleNativeGamePhase_DecodeActorDescriptor(
+    const TingleNativeOverlayImage *overlay,
+    const TingleNativePhaseOverlayRegistration *registration, u32 index,
+    TingleNativeActorDescriptor *descriptor);
 
 /* Decodes confirmed fields without retaining pointers into ARM9 storage. */
 s32 TingleNativeGamePhase_DecodeMetadata(s32 phase_id, const void *record,
