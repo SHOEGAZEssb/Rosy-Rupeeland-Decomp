@@ -10912,7 +10912,7 @@ build build/reports/game_phase_effect_scene.json: objdiff build/decomp/delinks/a
   base_object = build/decomp/asm/game/game_phase_effect_scene.o
 build build/reports/game_phase_effect_scene.txt: match_report build/reports/game_phase_effect_scene.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_effect_scene.json
-  report_args = --section .text --function func_0200c9fc --function func_0200cc44 --function func_0200cc8c --function func_0200ccdc --function func_0200cd58 --function func_0200cdf0 --require-exact
+  report_args = --section .text --function GamePhaseEffectScene_Init --function GamePhaseEffectScene_Destroy --function GamePhaseEffectScene_DestroyAndFree --function GamePhaseEffectScene_Update --function GamePhaseEffectScene_WaitForAnimation --function GamePhaseEffectScene_RiseAfterAnimation --require-exact
 
 build build/reports/game_phase_load_scene_lifecycle.json: objdiff build/decomp/delinks/asm/game/game_phase_load_scene_lifecycle.o | build/decomp/asm/game/game_phase_load_scene_lifecycle.o
   target_object = build/decomp/delinks/asm/game/game_phase_load_scene_lifecycle.o

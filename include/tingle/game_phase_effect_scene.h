@@ -19,12 +19,12 @@ typedef struct GamePhaseEffectScene {
 extern "C" {
 #endif
 
-GamePhaseEffectScene *func_0200c9fc(GamePhaseEffectScene *self, s32 mode);
-GamePhaseEffectScene *func_0200cc44(GamePhaseEffectScene *self);
-GamePhaseEffectScene *func_0200cc8c(GamePhaseEffectScene *self);
-s32 func_0200ccdc(GamePhaseEffectScene *self);
-s32 func_0200cd58(GamePhaseEffectScene *self);
-s32 func_0200cdf0(GamePhaseEffectScene *self);
+GamePhaseEffectScene *GamePhaseEffectScene_Init(GamePhaseEffectScene *self, s32 mode);
+GamePhaseEffectScene *GamePhaseEffectScene_Destroy(GamePhaseEffectScene *self);
+GamePhaseEffectScene *GamePhaseEffectScene_DestroyAndFree(GamePhaseEffectScene *self);
+s32 GamePhaseEffectScene_Update(GamePhaseEffectScene *self);
+s32 GamePhaseEffectScene_WaitForAnimation(GamePhaseEffectScene *self);
+s32 GamePhaseEffectScene_RiseAfterAnimation(GamePhaseEffectScene *self);
 
 #ifdef __cplusplus
 }

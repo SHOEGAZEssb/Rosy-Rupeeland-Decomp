@@ -39,7 +39,7 @@ static AnimationResource *createResources(void *resource1, void *resource2)
  * sprite inherits the current phase actor's position. Other modes retain a
  * default callback descriptor; callers are only confirmed to request 1/2/4.
  */
-GamePhaseEffectScene *func_0200c9fc(GamePhaseEffectScene *self, s32 mode)
+GamePhaseEffectScene *GamePhaseEffectScene_Init(GamePhaseEffectScene *self, s32 mode)
 {
     u8 *runtime = (u8 *)data_021052fc;
     GraphicsSpriteState *source;
@@ -93,7 +93,7 @@ GamePhaseEffectScene *func_0200c9fc(GamePhaseEffectScene *self, s32 mode)
 }
 
 /* Remove the sprite and owned resources, destroy the Scene, and return self. */
-GamePhaseEffectScene *func_0200cc44(GamePhaseEffectScene *self)
+GamePhaseEffectScene *GamePhaseEffectScene_Destroy(GamePhaseEffectScene *self)
 {
     self->base.vtable = &data_020d5400;
     func_02074038((GraphicsSpriteGroup *)self->sprite->field_00, self->sprite);
@@ -104,7 +104,7 @@ GamePhaseEffectScene *func_0200cc44(GamePhaseEffectScene *self)
 }
 
 /* Destroy the effect and then free its Scene allocation through the game heap. */
-GamePhaseEffectScene *func_0200cc8c(GamePhaseEffectScene *self)
+GamePhaseEffectScene *GamePhaseEffectScene_DestroyAndFree(GamePhaseEffectScene *self)
 {
     self->base.vtable = &data_020d5400;
     func_02074038((GraphicsSpriteGroup *)self->sprite->field_00, self->sprite);
@@ -120,7 +120,7 @@ GamePhaseEffectScene *func_0200cc8c(GamePhaseEffectScene *self)
  * group, and force main-engine window/blend control to 0xc0310010. Destroy the
  * Scene and return one when the callback reports completion, otherwise zero.
  */
-s32 func_0200ccdc(GamePhaseEffectScene *self)
+s32 GamePhaseEffectScene_Update(GamePhaseEffectScene *self)
 {
     EffectUpdate callback;
     GamePhaseEffectScene *adjusted = (GamePhaseEffectScene *)(
@@ -150,7 +150,7 @@ s32 func_0200ccdc(GamePhaseEffectScene *self)
  * Hide the phase actor, reveal this sprite, and play sound 0x2d on entry.
  * Return one once the sprite sets flag bit 0, otherwise return zero.
  */
-s32 func_0200cd58(GamePhaseEffectScene *self)
+s32 GamePhaseEffectScene_WaitForAnimation(GamePhaseEffectScene *self)
 {
     if (self->base.value08 == 0) {
         GraphicsSpriteState *source = *(GraphicsSpriteState **)(
@@ -169,7 +169,7 @@ s32 func_0200cd58(GamePhaseEffectScene *self)
  * Perform the same reveal/sound setup, switch completed animation to index
  * 0x17, then move the sprite upward for 91 frames. Returns one afterward.
  */
-s32 func_0200cdf0(GamePhaseEffectScene *self)
+s32 GamePhaseEffectScene_RiseAfterAnimation(GamePhaseEffectScene *self)
 {
     if (self->base.value08 == 0) {
         GraphicsSpriteState *source = *(GraphicsSpriteState **)(

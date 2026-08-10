@@ -20,8 +20,8 @@
 .extern func_020740a4
 .extern gHeapContext
 .extern gSoundContext
-    .global func_0200c9fc
-func_0200c9fc: ; 0x0200c9fc
+    .global GamePhaseEffectScene_Init
+GamePhaseEffectScene_Init: ; 0x0200c9fc
     stmdb sp!, {r3, r4, r5, r6, lr}
     sub sp, sp, #0xc
     mov r6, r0
@@ -177,10 +177,10 @@ L_0200cc34: .word data_020d53b8
 L_0200cc38: .word 0x101b
 L_0200cc3c: .word 0x1003
 L_0200cc40: .word data_020cdc1c
-    .size func_0200c9fc, . - func_0200c9fc
+    .size GamePhaseEffectScene_Init, . - GamePhaseEffectScene_Init
 
-    .global func_0200cc44
-func_0200cc44: ; 0x0200cc44
+    .global GamePhaseEffectScene_Destroy
+GamePhaseEffectScene_Destroy: ; 0x0200cc44
     stmdb sp!, {r4, lr}
     ldr r1, L_0200cc88
     mov r4, r0
@@ -200,10 +200,10 @@ L_0200cc78:
     mov r0, r4
     ldmia sp!, {r4, pc}
 L_0200cc88: .word data_020d5400
-    .size func_0200cc44, . - func_0200cc44
+    .size GamePhaseEffectScene_Destroy, . - GamePhaseEffectScene_Destroy
 
-    .global func_0200cc8c
-func_0200cc8c: ; 0x0200cc8c
+    .global GamePhaseEffectScene_DestroyAndFree
+GamePhaseEffectScene_DestroyAndFree: ; 0x0200cc8c
     stmdb sp!, {r4, lr}
     ldr r1, L_0200ccd8
     mov r4, r0
@@ -225,10 +225,10 @@ L_0200ccc0:
     mov r0, r4
     ldmia sp!, {r4, pc}
 L_0200ccd8: .word data_020d5400
-    .size func_0200cc8c, . - func_0200cc8c
+    .size GamePhaseEffectScene_DestroyAndFree, . - GamePhaseEffectScene_DestroyAndFree
 
-    .global func_0200ccdc
-func_0200ccdc: ; 0x0200ccdc
+    .global GamePhaseEffectScene_Update
+GamePhaseEffectScene_Update: ; 0x0200ccdc
     stmdb sp!, {r3, r4, r5, lr}
     mov r4, r0
     ldr r0, [r4, #0x30]
@@ -262,10 +262,10 @@ L_0200cd48:
     ldmia sp!, {r3, r4, r5, pc}
 L_0200cd50: .word 0xc0310010
 L_0200cd54: .word 0x4000064
-    .size func_0200ccdc, . - func_0200ccdc
+    .size GamePhaseEffectScene_Update, . - GamePhaseEffectScene_Update
 
-    .global func_0200cd58
-func_0200cd58: ; 0x0200cd58
+    .global GamePhaseEffectScene_WaitForAnimation
+GamePhaseEffectScene_WaitForAnimation: ; 0x0200cd58
     stmdb sp!, {r4, lr}
     mov r4, r0
     ldr r0, [r4, #0x8]
@@ -307,10 +307,10 @@ L_0200cde0:
     ldmia sp!, {r4, pc}
 L_0200cde8: .word data_021052fc
 L_0200cdec: .word gSoundContext
-    .size func_0200cd58, . - func_0200cd58
+    .size GamePhaseEffectScene_WaitForAnimation, . - GamePhaseEffectScene_WaitForAnimation
 
-    .global func_0200cdf0
-func_0200cdf0: ; 0x0200cdf0
+    .global GamePhaseEffectScene_RiseAfterAnimation
+GamePhaseEffectScene_RiseAfterAnimation: ; 0x0200cdf0
     stmdb sp!, {r4, lr}
     mov r4, r0
     ldr r0, [r4, #0x8]
@@ -383,4 +383,4 @@ L_0200cef0:
     ldmia sp!, {r4, pc}
 L_0200cef8: .word data_021052fc
 L_0200cefc: .word gSoundContext
-    .size func_0200cdf0, . - func_0200cdf0
+    .size GamePhaseEffectScene_RiseAfterAnimation, . - GamePhaseEffectScene_RiseAfterAnimation

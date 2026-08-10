@@ -20,7 +20,7 @@ extern "C" {
 #endif
 extern void *DebugPhaseSelector_Init(void *object);
 extern void *GamePhaseTransitionScene_Init(void *object);
-extern void *func_0200c9fc(void *object, s32 mode);
+extern void *GamePhaseEffectScene_Init(void *object, s32 mode);
 extern void *GamePhaseApplyScene_Init(void *object, u32 a, u32 b, u32 c, u32 d);
 extern void *func_ov059_0220fd20(void *object, s32 mode, s32 value);
 extern void *func_0206ec68(void *object);
@@ -91,7 +91,7 @@ s32 GamePhaseRuntime_Update(GamePhaseRuntime *self)
         case 4:
             object = allocRuntimeObject(0x38);
             if (object != 0)
-                func_0200c9fc(object, *(s32 *)(b + 0x30e4));
+                GamePhaseEffectScene_Init(object, *(s32 *)(b + 0x30e4));
             break;
         case 1:
             OverlayManager_LoadOverlay(OverlayManager_GetGlobal(), 2, 0x40);

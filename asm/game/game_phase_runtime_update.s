@@ -18,7 +18,7 @@
 .extern DebugPhaseSelector_Init
 .extern GamePhaseTransitionScene_Init
 .extern GamePhaseApplyScene_Init
-.extern func_0200c9fc
+.extern GamePhaseEffectScene_Init
 .extern func_0200ecf0
 .extern func_02010b64
 .extern func_02010e68
@@ -103,7 +103,7 @@ L_020074dc:
     beq L_02007540
     add r1, r4, #0x3000
     ldr r1, [r1, #0xe4]
-    bl func_0200c9fc
+    bl GamePhaseEffectScene_Init
     b L_02007540
 L_02007508:
     bl OverlayManager_GetGlobal
