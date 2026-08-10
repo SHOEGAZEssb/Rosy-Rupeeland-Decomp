@@ -1,14 +1,16 @@
-# Generated exact matching fallback for overlay 225.
-# Regenerate with tools/generate_overlay_matching_ninja.py.
+# Exact source match for overlay 225's only executable function.
 
-build build/decomp/asm/overlays/ov225/overlay225_0221d6c0.o: mwasmarm asm/overlays/ov225/overlay225_0221d6c0.s
-build build/decomp/delinks/asm/overlays/ov225/overlay225_0221d6c0.o: dsd_delink config/arm9/config.yaml | config/arm9/overlays/ov225/delinks.txt config/arm9/overlays/ov225/symbols.txt config/arm9/overlays/ov225/relocs.txt
-  object = asm/overlays/ov225/overlay225_0221d6c0.s
-build build/reports/overlay225_0221d6c0.json: objdiff build/decomp/asm/overlays/ov225/overlay225_0221d6c0.o build/decomp/delinks/asm/overlays/ov225/overlay225_0221d6c0.o
-  target_object = build/decomp/asm/overlays/ov225/overlay225_0221d6c0.o
-  base_object = build/decomp/delinks/asm/overlays/ov225/overlay225_0221d6c0.o
-build build/reports/overlay225_0221d6c0.txt: match_report build/reports/overlay225_0221d6c0.json | tools/report_objdiff.py
-  report_json = build/reports/overlay225_0221d6c0.json
+overlay225_recovery_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -DMATCHING -lang c++
+build build/decomp/src/overlays/ov225/overlay225_recovery.o: mwccarm src/overlays/ov225/overlay225_recovery.c | include/tingle/types.h
+  source = src/overlays/ov225/overlay225_recovery.c
+  cflags = $overlay225_recovery_cflags
+build build/decomp/delinks/src/overlays/ov225/overlay225_recovery.o: dsd_delink config/arm9/config.yaml | config/arm9/overlays/ov225/delinks.txt config/arm9/overlays/ov225/symbols.txt config/arm9/overlays/ov225/relocs.txt
+  object = src/overlays/ov225/overlay225_recovery.c
+build build/reports/overlay225_recovery.json: objdiff build/decomp/src/overlays/ov225/overlay225_recovery.o build/decomp/delinks/src/overlays/ov225/overlay225_recovery.o
+  target_object = build/decomp/src/overlays/ov225/overlay225_recovery.o
+  base_object = build/decomp/delinks/src/overlays/ov225/overlay225_recovery.o
+build build/reports/overlay225_recovery.txt: match_report build/reports/overlay225_recovery.json | tools/report_objdiff.py
+  report_json = build/reports/overlay225_recovery.json
   report_args = --section .text --function func_ov225_0221d6c0 --require-exact
 
-build overlay225_matching: phony build/reports/overlay225_0221d6c0.txt
+build overlay225_matching: phony build/reports/overlay225_recovery.txt

@@ -147,12 +147,9 @@ asm/overlays/ov025/overlay025_scene_lifecycle_021ffc30.s:
 asm/overlays/ov025/overlay025_graphics_setup_021ffdfc.s:
     categories: Game code
     .text start:0x021ffdfc end:0x02200014
-asm/overlays/ov025/overlay025_graphics_setup_02200014.s:
-    categories: Game code
-    .text start:0x02200014 end:0x022000a4
-asm/overlays/ov025/overlay025_graphics_setup_022000a4.s:
-    categories: Game code
-    .text start:0x022000a4 end:0x02200178
+src/overlays/ov025/overlay025_title_graphics_setup.c:
+    categories: Graphics
+    .text start:0x02200014 end:0x02200178
 asm/overlays/ov025/overlay025_scene_runtime_02200178.s:
     categories: Game code
     .text start:0x02200178 end:0x022001f4

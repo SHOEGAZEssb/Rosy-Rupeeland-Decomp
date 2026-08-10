@@ -29299,6 +29299,17 @@ overlay025_graphics_setup_cflags = -proc arm946e -O4 -inline off -ipa function -
 build build/decomp/src/overlays/ov025/overlay025_graphics_setup.o: mwccarm src/overlays/ov025/overlay025_graphics_setup.c | include/tingle/types.h
   source = src/overlays/ov025/overlay025_graphics_setup.c
   cflags = $overlay025_graphics_setup_cflags
+overlay025_title_graphics_setup_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
+build build/decomp/src/overlays/ov025/overlay025_title_graphics_setup.o: mwccarm src/overlays/ov025/overlay025_title_graphics_setup.c | include/tingle/types.h
+  source = src/overlays/ov025/overlay025_title_graphics_setup.c
+  cflags = $overlay025_title_graphics_setup_cflags
+build build/decomp/delinks/src/overlays/ov025/overlay025_title_graphics_setup.o: dsd_delink config/arm9/config.yaml config/arm9/overlays/ov025/delinks.txt config/arm9/overlays/ov025/symbols.txt config/arm9/overlays/ov025/relocs.txt
+build build/reports/overlay025_title_graphics_setup.json: objdiff build/decomp/delinks/src/overlays/ov025/overlay025_title_graphics_setup.o | build/decomp/src/overlays/ov025/overlay025_title_graphics_setup.o
+  target_object = build/decomp/delinks/src/overlays/ov025/overlay025_title_graphics_setup.o
+  base_object = build/decomp/src/overlays/ov025/overlay025_title_graphics_setup.o
+build build/reports/overlay025_title_graphics_setup.txt: match_report build/reports/overlay025_title_graphics_setup.json | tools/report_objdiff.py
+  report_json = build/reports/overlay025_title_graphics_setup.json
+  report_args = --section .text --function func_ov025_02200014 --function func_ov025_022000a4 --require-exact
 build build/decomp/asm/overlays/ov025/overlay025_graphics_setup_021ffdfc.o: mwasmarm asm/overlays/ov025/overlay025_graphics_setup_021ffdfc.s
 build build/decomp/delinks/asm/overlays/ov025/overlay025_graphics_setup_021ffdfc.o: dsd_delink config/arm9/config.yaml config/arm9/overlays/ov025/delinks.txt config/arm9/overlays/ov025/symbols.txt config/arm9/overlays/ov025/relocs.txt
 build build/reports/overlay025_graphics_setup_021ffdfc.json: objdiff build/decomp/delinks/asm/overlays/ov025/overlay025_graphics_setup_021ffdfc.o | build/decomp/asm/overlays/ov025/overlay025_graphics_setup_021ffdfc.o
@@ -29307,7 +29318,7 @@ build build/reports/overlay025_graphics_setup_021ffdfc.json: objdiff build/decom
 build build/reports/overlay025_graphics_setup_021ffdfc.txt: match_report build/reports/overlay025_graphics_setup_021ffdfc.json | tools/report_objdiff.py
   report_json = build/reports/overlay025_graphics_setup_021ffdfc.json
   report_args = --section .text --function func_ov025_021ffdfc --require-exact
-build build/decomp/asm/overlays/ov025/overlay025_graphics_setup_02200014.o: mwasmarm asm/overlays/ov025/overlay025_graphics_setup_02200014.s
+build build/decomp/asm/overlays/ov025/overlay025_graphics_setup_02200014.o: mwasmarm asm/overlays/ov025/overlay025_graphics_setup_02200014.s | build/decomp/src/overlays/ov025/overlay025_title_graphics_setup.o
 build build/decomp/delinks/asm/overlays/ov025/overlay025_graphics_setup_02200014.o: dsd_delink config/arm9/config.yaml config/arm9/overlays/ov025/delinks.txt config/arm9/overlays/ov025/symbols.txt config/arm9/overlays/ov025/relocs.txt
 build build/reports/overlay025_graphics_setup_02200014.json: objdiff build/decomp/delinks/asm/overlays/ov025/overlay025_graphics_setup_02200014.o | build/decomp/asm/overlays/ov025/overlay025_graphics_setup_02200014.o
   target_object = build/decomp/delinks/asm/overlays/ov025/overlay025_graphics_setup_02200014.o
@@ -29323,7 +29334,7 @@ build build/reports/overlay025_graphics_setup_022000a4.json: objdiff build/decom
 build build/reports/overlay025_graphics_setup_022000a4.txt: match_report build/reports/overlay025_graphics_setup_022000a4.json | tools/report_objdiff.py
   report_json = build/reports/overlay025_graphics_setup_022000a4.json
   report_args = --section .text --function func_ov025_022000a4 --require-exact
-build overlay025_graphics_setup: phony build/decomp/src/overlays/ov025/overlay025_graphics_setup.o build/decomp/asm/overlays/ov025/overlay025_graphics_setup_021ffdfc.o build/reports/overlay025_graphics_setup_021ffdfc.txt build/decomp/asm/overlays/ov025/overlay025_graphics_setup_02200014.o build/reports/overlay025_graphics_setup_02200014.txt build/decomp/asm/overlays/ov025/overlay025_graphics_setup_022000a4.o build/reports/overlay025_graphics_setup_022000a4.txt
+build overlay025_graphics_setup: phony build/decomp/src/overlays/ov025/overlay025_graphics_setup.o build/decomp/asm/overlays/ov025/overlay025_graphics_setup_021ffdfc.o build/reports/overlay025_graphics_setup_021ffdfc.txt build/reports/overlay025_title_graphics_setup.txt
 overlay025_scene_runtime_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
 build build/decomp/src/overlays/ov025/overlay025_scene_runtime.o: mwccarm src/overlays/ov025/overlay025_scene_runtime.c | include/tingle/types.h
   source = src/overlays/ov025/overlay025_scene_runtime.c
@@ -41801,7 +41812,7 @@ build overlay224: phony overlay224_matching
 build link_replacement_objects_217: phony build/decomp/asm/overlays/ov224/overlay224_0221d6c0.o link_replacement_objects_218
 subninja config/arm9/overlays/ov225/matching.ninja
 build overlay225: phony overlay225_matching
-build link_replacement_objects_218: phony build/decomp/asm/overlays/ov225/overlay225_0221d6c0.o link_replacement_objects_219
+build link_replacement_objects_218: phony build/decomp/src/overlays/ov225/overlay225_recovery.o link_replacement_objects_219
 subninja config/arm9/overlays/ov226/matching.ninja
 build overlay226: phony overlay226_matching
 build link_replacement_objects_219: phony build/decomp/asm/overlays/ov226/overlay226_0221d6c0.o link_replacement_objects_220
