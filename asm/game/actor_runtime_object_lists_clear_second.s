@@ -2,9 +2,9 @@
 ; the documented portable implementation and recovered behavior.
 .text
 .extern ActorInteractionRuntime_Shutdown
-.extern func_0200bba8
-.global func_0200bd10
-func_0200bd10:
+.extern ActorRuntimePayloadList_Clear
+.global ActorRuntimeObjectLists_ClearSecond
+ActorRuntimeObjectLists_ClearSecond:
     stmdb sp!, {r3, r4, r5, lr}
     mov r5, r0
     bl ActorInteractionRuntime_Shutdown
@@ -29,7 +29,7 @@ L_0200bd58:
     cmp r4, #0x0
     bne L_0200bd3c
     add r0, r5, #0x14
-    bl func_0200bba8
+    bl ActorRuntimePayloadList_Clear
     ldmia sp!, {r3, r4, r5, pc}
-.size func_0200bd10, . - func_0200bd10
+.size ActorRuntimeObjectLists_ClearSecond, . - ActorRuntimeObjectLists_ClearSecond
 

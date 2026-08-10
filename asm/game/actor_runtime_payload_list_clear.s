@@ -2,8 +2,8 @@
 ; the documented portable implementation and recovered behavior.
 .text
 .extern Heap_Free
-.global func_0200bba8
-func_0200bba8:
+.global ActorRuntimePayloadList_Clear
+ActorRuntimePayloadList_Clear:
     stmdb sp!, {r3, r4, r5, lr}
     mov r5, r0
     ldr r0, [r5, #0x4]
@@ -23,5 +23,5 @@ L_0200bbcc:
     str r0, [r5, #0x8]
     str r0, [r5, #0xc]
     ldmia sp!, {r3, r4, r5, pc}
-.size func_0200bba8, . - func_0200bba8
+.size ActorRuntimePayloadList_Clear, . - ActorRuntimePayloadList_Clear
 

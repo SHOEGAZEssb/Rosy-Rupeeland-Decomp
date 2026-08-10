@@ -8,8 +8,8 @@ extern "C" {
 #endif
 extern const u8 data_020d44f0[];
 extern const u8 data_020d4500[];
-extern void func_0200bd10(ActorRuntimeObjectLists *self);
-extern void func_0200bd6c(ActorRuntimeObjectLists *self);
+extern void ActorRuntimeObjectLists_ClearSecond(ActorRuntimeObjectLists *self);
+extern void ActorRuntimeObjectLists_ClearThird(ActorRuntimeObjectLists *self);
 #ifdef __cplusplus
 }
 #endif
@@ -17,17 +17,17 @@ extern void func_0200bd6c(ActorRuntimeObjectLists *self);
 typedef void *(*ActorRuntimePayloadDeleteMethod)(void *payload);
 
 /* Initialize the manager vtable and all three empty payload lists; return self. */
-ActorRuntimeObjectLists *func_0200bb34(ActorRuntimeObjectLists *self)
+ActorRuntimeObjectLists *ActorRuntimeObjectLists_Init(ActorRuntimeObjectLists *self)
 {
     self->vtable = data_020d4500;
-    func_0200bb68(&self->first);
-    func_0200bb68(&self->second);
-    func_0200bb68(&self->third);
+    ActorRuntimePayloadList_Init(&self->first);
+    ActorRuntimePayloadList_Init(&self->second);
+    ActorRuntimePayloadList_Init(&self->third);
     return self;
 }
 
 /* Initialize an empty payload list with its recovered vtable and return self. */
-ActorRuntimePayloadList *func_0200bb68(ActorRuntimePayloadList *self)
+ActorRuntimePayloadList *ActorRuntimePayloadList_Init(ActorRuntimePayloadList *self)
 {
     self->vtable = data_020d44f0;
     self->head = 0;
@@ -37,10 +37,10 @@ ActorRuntimePayloadList *func_0200bb68(ActorRuntimePayloadList *self)
 }
 
 /* Restore the list vtable, clear owned nodes, and return self without freeing. */
-ActorRuntimePayloadList *func_0200bb88(ActorRuntimePayloadList *self)
+ActorRuntimePayloadList *ActorRuntimePayloadList_Destroy(ActorRuntimePayloadList *self)
 {
     self->vtable = data_020d44f0;
-    func_0200bba8(self);
+    ActorRuntimePayloadList_Clear(self);
     return self;
 }
 
@@ -48,7 +48,7 @@ ActorRuntimePayloadList *func_0200bb88(ActorRuntimePayloadList *self)
  * Free every node reachable from head, then clear head/tail/count. Payloads are
  * not destroyed here. Returns no value; Heap_Free is the only runtime effect.
  */
-void func_0200bba8(ActorRuntimePayloadList *self)
+void ActorRuntimePayloadList_Clear(ActorRuntimePayloadList *self)
 {
     ActorRuntimeOwnedNode *node = self->head;
 
@@ -68,25 +68,25 @@ void func_0200bba8(ActorRuntimePayloadList *self)
  * clear all list bases in reverse order. Returns self without freeing it; the
  * category semantics remain unconfirmed.
  */
-ActorRuntimeObjectLists *func_0200bbe8(ActorRuntimeObjectLists *self)
+ActorRuntimeObjectLists *ActorRuntimeObjectLists_Destroy(ActorRuntimeObjectLists *self)
 {
     self->vtable = data_020d4500;
-    func_0200bd10(self);
-    func_0200bd6c(self);
-    func_0200bcb8(self);
+    ActorRuntimeObjectLists_ClearSecond(self);
+    ActorRuntimeObjectLists_ClearThird(self);
+    ActorRuntimeObjectLists_ClearFirst(self);
     self->third.vtable = data_020d44f0;
-    func_0200bba8(&self->third);
+    ActorRuntimePayloadList_Clear(&self->third);
     self->second.vtable = data_020d44f0;
-    func_0200bba8(&self->second);
+    ActorRuntimePayloadList_Clear(&self->second);
     self->first.vtable = data_020d44f0;
-    func_0200bba8(&self->first);
+    ActorRuntimePayloadList_Clear(&self->first);
     return self;
 }
 
-/* Perform func_0200bbe8's teardown, free self, and return its old address. */
-ActorRuntimeObjectLists *func_0200bc4c(ActorRuntimeObjectLists *self)
+/* Perform ActorRuntimeObjectLists_Destroy's teardown, free self, and return its old address. */
+ActorRuntimeObjectLists *ActorRuntimeObjectLists_DestroyAndFree(ActorRuntimeObjectLists *self)
 {
-    func_0200bbe8(self);
+    ActorRuntimeObjectLists_Destroy(self);
     Heap_Free(self);
     return self;
 }
@@ -96,7 +96,7 @@ ActorRuntimeObjectLists *func_0200bc4c(ActorRuntimeObjectLists *self)
  * method at vtable offset 0x04, then clear its nodes. Returns no value; payload
  * and node allocations are released through virtual calls and Heap_Free.
  */
-void func_0200bcb8(ActorRuntimeObjectLists *self)
+void ActorRuntimeObjectLists_ClearFirst(ActorRuntimeObjectLists *self)
 {
     ActorRuntimeOwnedNode *node;
 
@@ -108,5 +108,5 @@ void func_0200bcb8(ActorRuntimeObjectLists *self)
             ((ActorRuntimePayloadDeleteMethod)vtable[1])(node->value);
         }
     }
-    func_0200bba8(&self->first);
+    ActorRuntimePayloadList_Clear(&self->first);
 }

@@ -18,7 +18,7 @@ typedef void *(*ActorRuntimePayloadDeleteMethod)(void *payload);
  * and clear the list. Returns no value; payload and node allocations may be
  * released, while the hook's wider state effect remains unconfirmed.
  */
-void func_0200bd10(ActorRuntimeObjectLists *self)
+void ActorRuntimeObjectLists_ClearSecond(ActorRuntimeObjectLists *self)
 {
     ActorRuntimeOwnedNode *node;
 
@@ -31,7 +31,7 @@ void func_0200bd10(ActorRuntimeObjectLists *self)
             ((ActorRuntimePayloadDeleteMethod)vtable[1])(node->value);
         }
     }
-    func_0200bba8(&self->second);
+    ActorRuntimePayloadList_Clear(&self->second);
 }
 
 /*
@@ -39,7 +39,7 @@ void func_0200bd10(ActorRuntimeObjectLists *self)
  * method at offset 0x04 and clear the list. Returns no value; virtual calls and
  * list clearing release owned payload/node resources.
  */
-void func_0200bd6c(ActorRuntimeObjectLists *self)
+void ActorRuntimeObjectLists_ClearThird(ActorRuntimeObjectLists *self)
 {
     ActorRuntimeOwnedNode *node;
 
@@ -51,5 +51,5 @@ void func_0200bd6c(ActorRuntimeObjectLists *self)
             ((ActorRuntimePayloadDeleteMethod)vtable[1])(node->value);
         }
     }
-    func_0200bba8(&self->third);
+    ActorRuntimePayloadList_Clear(&self->third);
 }

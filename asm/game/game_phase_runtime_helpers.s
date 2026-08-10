@@ -1,8 +1,8 @@
 .text
 .extern data_020d4264
 .extern data_020d4350
-.extern func_0200bb34
-.extern func_0200bdc4
+.extern ActorRuntimeObjectLists_Init
+.extern ActorRuntimeObjectLists_AddRecords
 .extern gHeapContext
 .extern Heap_Alloc
 
@@ -30,14 +30,14 @@ GamePhaseRuntime_CreateFieldLoader:
     bl Heap_Alloc
     cmp r0, #0x0
     beq L_02007018
-    bl func_0200bb34
+    bl ActorRuntimeObjectLists_Init
 L_02007018:
     add r1, r4, #0x3000
     str r0, [r1, #0xb4]
     ldr r1, L_0200703c
     mov r2, #0xb
     mov r3, #0x0
-    bl func_0200bdc4
+    bl ActorRuntimeObjectLists_AddRecords
     ldmia sp!, {r4, pc}
 L_02007034: .word data_020d4350
 L_02007038: .word gHeapContext

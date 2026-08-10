@@ -6,8 +6,8 @@
 .extern data_020d44c0
 .extern data_020d4520
 .extern gHeapContext
-.global func_0200be14
-func_0200be14:
+.global ActorRuntimeObjectLists_AddRecord
+ActorRuntimeObjectLists_AddRecord:
     stmdb sp!, {r4, r5, r6, r7, r8, lr}
     ldrsh r4, [sp, #0x18]
     mov r8, r1
@@ -60,5 +60,5 @@ L_0200be70:
 L_0200bed0: .word data_020d4520
 L_0200bed4: .word gHeapContext
 L_0200bed8: .word data_020d44c0
-.size func_0200be14, . - func_0200be14
+.size ActorRuntimeObjectLists_AddRecord, . - ActorRuntimeObjectLists_AddRecord
 

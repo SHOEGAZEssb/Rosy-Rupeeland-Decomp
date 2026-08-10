@@ -9,7 +9,7 @@ extern void func_0200f824(void);
 extern void func_0200f52c(void);
 extern void func_0200ea48(void *state);
 extern void GamePhaseRuntime_DestroySecondaryActorSubsystem(GamePhaseRuntime *self);
-extern void func_0200bd10(void *loader);
+extern void ActorRuntimeObjectLists_ClearSecond(void *loader);
 #ifdef __cplusplus
 }
 #endif
@@ -26,5 +26,5 @@ void GamePhaseRuntime_RunFrameMaintenance(GamePhaseRuntime *self)
     func_0200f52c();
     func_0200ea48(b + 0x24);
     GamePhaseRuntime_DestroySecondaryActorSubsystem(self);
-    func_0200bd10(*(void **)(b + 0x30b4));
+    ActorRuntimeObjectLists_ClearSecond(*(void **)(b + 0x30b4));
 }

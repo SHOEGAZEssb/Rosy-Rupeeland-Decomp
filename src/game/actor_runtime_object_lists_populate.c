@@ -14,11 +14,11 @@ extern void *AnimationResource_Init(void *allocation, u32 first, u32 second, u32
 #endif
 
 /*
- * Consume count consecutive three-word records and pass each to func_0200be14
+ * Consume count consecutive three-word records and pass each to ActorRuntimeObjectLists_AddRecord
  * with category. A zero count returns immediately. Returns no value; payload
  * and list-node allocations are performed by the callee.
  */
-void func_0200bdc4(ActorRuntimeObjectLists *self, const u32 *triples,
+void ActorRuntimeObjectLists_AddRecords(ActorRuntimeObjectLists *self, const u32 *triples,
                    u32 count, s16 category)
 {
     u32 index;
@@ -27,7 +27,7 @@ void func_0200bdc4(ActorRuntimeObjectLists *self, const u32 *triples,
         return;
     for (index = 0; index < count; index++) {
         const u32 *record = triples + index * 3;
-        func_0200be14(self, record[0], record[1], record[2], category);
+        ActorRuntimeObjectLists_AddRecord(self, record[0], record[1], record[2], category);
     }
 }
 
@@ -37,7 +37,7 @@ void func_0200bdc4(ActorRuntimeObjectLists *self, const u32 *triples,
  * payload offset 0x04's offset 0x28, then allocate and append a 12-byte node.
  * Returns no value; the original assumes both heap allocations succeed.
  */
-void func_0200be14(ActorRuntimeObjectLists *self, u32 first, u32 second,
+void ActorRuntimeObjectLists_AddRecord(ActorRuntimeObjectLists *self, u32 first, u32 second,
                    u32 third, s16 category)
 {
     ActorRuntimePayloadList *list;
@@ -76,12 +76,12 @@ void func_0200be14(ActorRuntimeObjectLists *self, u32 first, u32 second,
 }
 
 /* Restore the payload-list vtable, clear nodes, free self, and return its address. */
-ActorRuntimePayloadList *func_0200bedc(ActorRuntimePayloadList *self)
+ActorRuntimePayloadList *ActorRuntimePayloadList_DestroyAndFree(ActorRuntimePayloadList *self)
 {
     extern const u8 data_020d44f0[];
 
     self->vtable = data_020d44f0;
-    func_0200bba8(self);
+    ActorRuntimePayloadList_Clear(self);
     Heap_Free(self);
     return self;
 }

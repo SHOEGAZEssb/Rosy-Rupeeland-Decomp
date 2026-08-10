@@ -10,9 +10,9 @@ extern "C" {
 #endif
 extern void *func_02011a5c(void *object, void *area, s32 enabled);
 extern void func_02011ebc(void *object);
-extern void func_0200bd6c(void *loader);
+extern void ActorRuntimeObjectLists_ClearThird(void *loader);
 extern void func_0200e5bc(void *state);
-extern void func_0200bd10(void *loader);
+extern void ActorRuntimeObjectLists_ClearSecond(void *loader);
 #ifdef __cplusplus
 }
 #endif
@@ -44,7 +44,7 @@ void GamePhaseRuntime_DestroySecondaryActorSubsystem(GamePhaseRuntime *self)
     if (object != 0)
         (*(void (***)(void *))object)[1](object);
     *(void **)(b + 0x2fb8) = 0;
-    func_0200bd6c(*(void **)(b + 0x30b4));
+    ActorRuntimeObjectLists_ClearThird(*(void **)(b + 0x30b4));
 }
 
 /*
@@ -59,5 +59,5 @@ void GamePhaseRuntime_TeardownActiveAreaState(GamePhaseRuntime *self)
     typedef void (*Method)(void *, s32);
     ((Method *)(*(void **)object))[9](object, 0);
     func_0200e5bc(b + 0x24);
-    func_0200bd10(*(void **)(b + 0x30b4));
+    ActorRuntimeObjectLists_ClearSecond(*(void **)(b + 0x30b4));
 }
