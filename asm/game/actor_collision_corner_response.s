@@ -3,7 +3,7 @@
 .text
 .extern func_0200a63c
 .extern Actor_GetCollisionBounds
-.extern func_02033f44
+.extern Actor_GetCachedTerrainHeight
 .global func_0200a3b8
 func_0200a3b8: ; 0x0200a3b8
     stmdb sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, lr}
@@ -56,7 +56,7 @@ func_0200a3b8: ; 0x0200a3b8
     str r0, [sp, #0x8]
     mov r0, r10
     mov r8, r7
-    bl func_02033f44
+    bl Actor_GetCachedTerrainHeight
     ldr r1, [sp, #0xc]
     ldr r3, L_0200a638
     sub r2, r11, r5, asr #0x1

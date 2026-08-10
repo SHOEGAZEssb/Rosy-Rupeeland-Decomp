@@ -7,7 +7,7 @@
 .extern func_02005058
 .extern func_02005084
 .extern func_020050a4
-.extern func_02033f44
+.extern Actor_GetCachedTerrainHeight
 .extern Actor_QueryTerrainHeight
 .extern Actor_QueryTerrainCell
 .extern func_0203463c
@@ -61,7 +61,7 @@ func_0203bba4: ; 0x0203bba4
     bl Actor_QueryTerrainHeight
     mov r6, r0, lsl #0x10
     mov r0, r10
-    bl func_02033f44
+    bl Actor_GetCachedTerrainHeight
     cmp r6, r0
     beq .L_0203c074
     mov r0, r10
@@ -169,7 +169,7 @@ func_0203bba4: ; 0x0203bba4
     cmp r8, #0x0
     beq .L_0203bf68
     mov r0, r10
-    bl func_02033f44
+    bl Actor_GetCachedTerrainHeight
     mov r0, r0, asr #0x10
     str r0, [sp, #0xc]
     mov r7, #0x4

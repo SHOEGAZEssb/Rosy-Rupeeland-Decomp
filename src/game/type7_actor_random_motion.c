@@ -13,7 +13,7 @@ extern "C" {
 extern void *func_020050a4(void *destination, const void *source);
 extern u32 genrand_int32(void);
 extern s32 func_020ada8c(s32 value, s32 divisor);
-extern s32 func_02033f44(void *actor);
+extern s32 Actor_GetCachedTerrainHeight(void *actor);
 extern s32 func_0204832c(void *actor);
 extern s32 func_0204820c(void *actor);
 extern s32 func_0204876c(void *actor, s32 finiteMode);
@@ -29,7 +29,7 @@ extern void func_02047dd8(void *actor);
  * transform +0x78, draw a 16-bit direction and a sign-cleared random magnitude
  * modulo 0x80 for record subtype two or 0x18 otherwise, and add the corresponding
  * data_020c9670 direction components directly to +0x7c/+0x80. Save
- * func_02033f44(actor) at +0x84 and null related object +0x210.
+ * Actor_GetCachedTerrainHeight(actor) at +0x84 and null related object +0x210.
  *
  * Try func_0204832c, func_0204820c, and finite-mode func_0204876c in order,
  * returning zero when any succeeds. Otherwise choose the motion destination:
@@ -60,7 +60,7 @@ s32 func_02048fe4(void *self)
             magnitude * data_020c9670[index * 2 + 1];
         *(s32 *)(actor + 0x80) +=
             magnitude * data_020c9670[index * 2];
-        *(s32 *)(actor + 0x84) = func_02033f44(actor);
+        *(s32 *)(actor + 0x84) = Actor_GetCachedTerrainHeight(actor);
         *(void **)(actor + 0x210) = 0;
     }
     if (func_0204832c(actor) != 0 || func_0204820c(actor) != 0

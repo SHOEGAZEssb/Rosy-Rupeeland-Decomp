@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/tracked_resource_actor_impulse_update.c.
 .extern Actor_UpdateAnimationState
-.extern func_02033f44
+.extern Actor_GetCachedTerrainHeight
 .extern func_020adae4
 .text
     .global func_02051e04
@@ -59,7 +59,7 @@ func_02051e04:
     b .L_02051f20
 .L_02051ecc:
     mov r0, r4
-    bl func_02033f44
+    bl Actor_GetCachedTerrainHeight
     ldr r1, [r4, #0x24]
     sub r0, r1, r0
     cmp r0, #0x20000

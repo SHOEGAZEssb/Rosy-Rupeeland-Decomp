@@ -19,7 +19,7 @@ extern "C" {
 extern s32 func_02039d0c(void *object);
 extern s32 func_02046d8c(const void *actor);
 extern void func_020481dc(void *actor, u32 first, u32 second, s32 duration);
-extern s32 func_02033f44(void *actor);
+extern s32 Actor_GetCachedTerrainHeight(void *actor);
 extern s32 func_020be334(s32 value);
 extern s32 func_020adcac(const void *first, const void *second);
 #ifdef __cplusplus
@@ -50,7 +50,7 @@ static s32 invoke_a8_predicate(void *object)
  *
  * Otherwise reject actor flag 0x4000 and scan ten pointers in data_02105690.
  * A candidate needs +0x260 bit two, must fail its virtual +0xa8 predicate, must
- * clear +0x260 bit 0x10000, share the func_02033f44 value with the actor, lie
+ * clear +0x260 bit 0x10000, share the Actor_GetCachedTerrainHeight value with the actor, lie
  * within 0x20000 vertically, and have planar distance below actor +0x260 plus
  * 0x30000 when func_02046d8c recognizes the callback. Choose the eligible entry
  * with the smallest parallel data_021056b8 priority. Bind it at +0x210 and,
@@ -109,10 +109,10 @@ s32 func_0204876c(void *self, s32 finiteMode)
             || invoke_a8_predicate(candidate) != 0
             || (*(u32 *)(candidate + 0x260) & 0x10000) != 0)
             continue;
-        if (func_02033f44(candidate) != func_02033f44(actor))
+        if (Actor_GetCachedTerrainHeight(candidate) != Actor_GetCachedTerrainHeight(actor))
             continue;
         if (func_020be334(*(s32 *)(candidate + 0x24)
-                          - func_02033f44(actor)) > 0x20000)
+                          - Actor_GetCachedTerrainHeight(actor)) > 0x20000)
             continue;
         distance = func_020adcac(actor + 0x1c, candidate + 0x1c);
         range = *(s32 *)(actor + 0x260);

@@ -22,7 +22,7 @@ extern u32 func_02028508(s32 phase);
 extern void func_0202d494(void *collection, void *actor);
 extern void *func_0202ecd0(void *collection, const void *descriptor);
 extern void Actor_RefreshTerrainHeight(void *actor);
-extern s32 func_02033f44(void *actor);
+extern s32 Actor_GetCachedTerrainHeight(void *actor);
 extern void func_0203ae14(
     void *, u16, u16, s32, s32, s32, u8, u8, u16, u16, u16, u8, u8,
     s32, s32, s32, s32, s32, u16, u8, u8, u8, u8);
@@ -123,7 +123,7 @@ s32 func_0204bf9c(s32 recordIndex, s32 phase, s32 x, s32 y, s32 field2b8)
     *(s16 *)(actor + 0x66) = *(s8 *)(record + 0x4f);
     callActorMethod(actor, 0x54, 1);
     Actor_RefreshTerrainHeight(actor);
-    *(s32 *)(actor + 0x24) = func_02033f44(actor);
+    *(s32 *)(actor + 0x24) = Actor_GetCachedTerrainHeight(actor);
     *(s16 *)(actor + 0x27e) = (s16)phase;
     *(u32 *)(actor + 0x200) = *(u16 *)(record + 0x20);
     func_02048b94(actor, *(void **)(data_021052fc + 0x2ea4));

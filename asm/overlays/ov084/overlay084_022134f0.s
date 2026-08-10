@@ -3,7 +3,7 @@
 .extern data_020e6f94
 .extern data_ov084_02214108
 .extern Actor_SaveAndForceFlags
-.extern func_02033f44
+.extern Actor_GetCachedTerrainHeight
 .extern func_020349b8
 .extern func_02045184
 .extern func_ov084_022131fc
@@ -74,7 +74,7 @@ func_ov084_022134f0:
     ldr r1, [r4, #0x14]
     bic r1, r1, #0x40
     str r1, [r4, #0x14]
-    bl func_02033f44
+    bl Actor_GetCachedTerrainHeight
     str r0, [r4, #0x24]
     mov r0, #0x11
     strh r0, [r4, #0xd6]

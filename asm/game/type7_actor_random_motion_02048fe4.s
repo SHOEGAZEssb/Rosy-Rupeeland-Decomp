@@ -2,7 +2,7 @@
 .text
 .extern data_020c9670
 .extern func_020050a4
-.extern func_02033f44
+.extern Actor_GetCachedTerrainHeight
 .extern func_02047908
 .extern func_02047dd8
 .extern func_0204820c
@@ -56,7 +56,7 @@ func_02048fe4: ; 0x02048fe4
     mla r1, r0, r1, r2
     mov r0, r4
     str r1, [r4, #0x80]
-    bl func_02033f44
+    bl Actor_GetCachedTerrainHeight
     str r0, [r4, #0x84]
     mov r0, #0x0
     str r0, [r4, #0x210]

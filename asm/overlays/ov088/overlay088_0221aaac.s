@@ -6,7 +6,7 @@
 .extern func_020050a4
 .extern func_02005580
 .extern Actor_AdjustPositionForTerrainHeight
-.extern func_02033f44
+.extern Actor_GetCachedTerrainHeight
 .extern func_02034568
 .extern func_02072b68
 .extern func_020740c8
@@ -54,7 +54,7 @@ func_ov088_0221aaac:
     mov r0, r0, asr #0x1
     add r7, r0, #0x2
     mov r0, r4
-    bl func_02033f44
+    bl Actor_GetCachedTerrainHeight
     add r2, r6, r5, asr #0xc
     mov r5, r0, asr #0x10
     mov r0, r9, asr #0x3

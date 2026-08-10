@@ -4,7 +4,7 @@
 .extern data_020df9e8
 .extern data_020e6d3c
 .extern Actor_SaveAndForceFlags
-.extern func_02033f44
+.extern Actor_GetCachedTerrainHeight
 .extern func_020349b8
 .extern genrand_int32
 .global func_020423c8
@@ -20,7 +20,7 @@ func_020423c8: ; 0x020423c8
     ldr r1, [r1, #0x1e4]
     str r2, [r4, #0x218]
     str r1, [r4, #0x21c]
-    bl func_02033f44
+    bl Actor_GetCachedTerrainHeight
     str r0, [r4, #0x24]
     mov r0, r4
     bl Actor_SaveAndForceFlags

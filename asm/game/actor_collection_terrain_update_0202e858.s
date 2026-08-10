@@ -2,7 +2,7 @@
 .text
 .extern data_021f5ebc
 .extern func_0200b2c0
-.extern func_02033f44
+.extern Actor_GetCachedTerrainHeight
 .extern Actor_QueryTerrainCell
 .extern func_020828a0
 
@@ -39,14 +39,14 @@ func_0202e858: ; 0x0202e858
     tst r1, #0x200
     beq .L_0202e948
     mov r0, r9
-    bl func_02033f44
+    bl Actor_GetCachedTerrainHeight
     mov r6, r0
     mov r0, r9
     ldr r1, [r0, #0x0]
     ldr r1, [r1, #0x88]
     blx r1
     mov r0, r9
-    bl func_02033f44
+    bl Actor_GetCachedTerrainHeight
     cmp r6, r0
     beq .L_0202eafc
     ldr r0, [r9, #0x2c]
@@ -84,7 +84,7 @@ func_0202e858: ; 0x0202e858
     beq .L_0202ead8
 .L_0202e974:
     mov r0, r9
-    bl func_02033f44
+    bl Actor_GetCachedTerrainHeight
     ldr r1, [r9, #0x24]
     cmp r1, r0
     bne .L_0202ead8
@@ -92,7 +92,7 @@ func_0202e858: ; 0x0202e858
     tst r0, #0x40
     bne .L_0202ead8
     mov r0, r9
-    bl func_02033f44
+    bl Actor_GetCachedTerrainHeight
     mov r6, r0
     mov r0, r9
     ldr r1, [r0, #0x0]
@@ -146,7 +146,7 @@ func_0202e858: ; 0x0202e858
     cmp r0, #0x0
     bne .L_0202eafc
     mov r0, r9
-    bl func_02033f44
+    bl Actor_GetCachedTerrainHeight
     add r0, r0, #0x20000
     cmp r6, r0
     bge .L_0202ea84

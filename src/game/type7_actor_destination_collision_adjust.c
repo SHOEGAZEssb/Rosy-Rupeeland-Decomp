@@ -9,7 +9,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern s32 func_02033f44(void *actor);
+extern s32 Actor_GetCachedTerrainHeight(void *actor);
 extern s32 func_0203463c(void *actor, s32 x, s32 y, s32 height);
 extern s32 func_02034718(void *actor, s32 x, s32 y, s32 height);
 extern s32 func_0204cfa4(s32 x, s32 y);
@@ -43,7 +43,7 @@ extern s32 func_020adc90(s32 value, s32 length);
 void func_0204a5dc(void *self)
 {
     u8 *actor = (u8 *)self;
-    s32 height = func_02033f44(actor) >> 16;
+    s32 height = Actor_GetCachedTerrainHeight(actor) >> 16;
     s32 targetX = *(s32 *)(actor + 0x7c);
     s32 targetY = *(s32 *)(actor + 0x80);
     s32 currentX = *(s32 *)(actor + 0x1c);

@@ -8,7 +8,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern s32 func_02033f44(void *actor);
+extern s32 Actor_GetCachedTerrainHeight(void *actor);
 #ifdef __cplusplus
 }
 #endif
@@ -17,7 +17,7 @@ extern s32 func_02033f44(void *actor);
  * Construct `result`, derive its X/Y components from the actor bound at offset
  * four, then combine it with the motion target vector at offset 0x34. Actor
  * mode byte 1 enables additional offsets at 0x23c..0x244; motion flag 0x8
- * selects the alternate Y calculation and invokes func_02033f44, whose exact
+ * selects the alternate Y calculation and invokes Actor_GetCachedTerrainHeight, whose exact
  * actor-side effect is not yet known. Returns no value; no hardware is touched.
  */
 void func_02009514(VecFx32Object *result, const ActorMotion *self)
@@ -30,7 +30,7 @@ void func_02009514(VecFx32Object *result, const ActorMotion *self)
                           *(s32 *)(actor + 0x23c);
         if (self->field_30 & 8) {
             s32 offset = *(s32 *)(actor + 0x240);
-            s32 adjustment = func_02033f44(actor);
+            s32 adjustment = Actor_GetCachedTerrainHeight(actor);
             actor = (u8 *)self->actor;
             result->value.y = *(s32 *)(actor + 0x20) + offset - adjustment;
         } else {

@@ -16,7 +16,7 @@ extern "C" {
 #endif
 extern void GameWork_ClearFlag(void *work, u32 flag);
 extern void Heap_Free(void *allocation);
-extern s32 func_02033f44(void *actor);
+extern s32 Actor_GetCachedTerrainHeight(void *actor);
 extern s32 func_02034568(void *actor, s32 x, s32 y, s32 height);
 extern s32 func_02034718(void *actor, s32 x, s32 y, s32 height);
 extern void func_02039d54(void *object, s32 value);
@@ -79,7 +79,7 @@ void func_0204a988(void *self, const VecFx32Object *destination, s32 direction)
         s32 gridY = *(s32 *)(actor + 0x20) >> 12;
         s32 halfWidth = func_020adae4(
             (s16)(*(s16 *)(actor + 0x6c) - *(s16 *)(actor + 0x68)), 2);
-        s32 height = func_02033f44(actor) >> 16;
+        s32 height = Actor_GetCachedTerrainHeight(actor) >> 16;
         s32 clearCount = 0;
         s32 edgeClear = 0;
         s32 offset;

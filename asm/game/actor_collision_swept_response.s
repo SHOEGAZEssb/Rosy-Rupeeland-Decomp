@@ -6,7 +6,7 @@
 .extern ActorBounds_GetWidth
 .extern ActorBounds_GetHeight
 .extern Actor_GetCollisionBounds
-.extern func_02033f44
+.extern Actor_GetCachedTerrainHeight
 .global func_0200ac14
 func_0200ac14:
     stmdb sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, lr}
@@ -29,7 +29,7 @@ func_0200ac14:
     bl ActorBounds_GetHeight
     mov r8, r0, lsl #0xc
     mov r0, r10
-    bl func_02033f44
+    bl Actor_GetCachedTerrainHeight
     cmp r6, #0x0
     mov r9, r0, asr #0x10
     beq L_0200acfc

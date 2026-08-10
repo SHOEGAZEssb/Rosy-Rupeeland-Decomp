@@ -8,7 +8,7 @@
 .extern func_0200b2c0
 .extern func_02010b64
 .extern Actor_SetPosition
-.extern func_02033f44
+.extern Actor_GetCachedTerrainHeight
 .extern Actor_ReplaceAttachmentSlotResource
 .extern Type1Actor_EnterFailureState
 .extern gLupyContext
@@ -83,7 +83,7 @@ func_02038834: ; 0x02038834
     str r1, [r5, #0x230]
     mov r1, #0x4000
     str r1, [r5, #0x44]
-    bl func_02033f44
+    bl Actor_GetCachedTerrainHeight
     add r0, r0, #0x1000
     str r0, [r5, #0x24]
     mov r0, #0xd
@@ -104,7 +104,7 @@ func_02038834: ; 0x02038834
     strh r1, [r5, #0xd6]
     mov r1, #0x4000
     str r1, [r5, #0x44]
-    bl func_02033f44
+    bl Actor_GetCachedTerrainHeight
     add r0, r0, #0x1000
     str r0, [r5, #0x24]
     ldr r1, [r5, #0xd0]

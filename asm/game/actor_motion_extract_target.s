@@ -3,7 +3,7 @@
 .text
 .extern func_02004fe0
 .extern func_020050c8
-.extern func_02033f44
+.extern Actor_GetCachedTerrainHeight
 .global func_02009514
 func_02009514: ; 0x02009514
     stmdb sp!, {r4, r5, r6, lr}
@@ -25,7 +25,7 @@ func_02009514: ; 0x02009514
     tst r1, #0x8
     beq L_02009574
     ldr r6, [r0, #0x240]
-    bl func_02033f44
+    bl Actor_GetCachedTerrainHeight
     ldr r1, [r4, #0x4]
     ldr r1, [r1, #0x20]
     add r1, r1, r6

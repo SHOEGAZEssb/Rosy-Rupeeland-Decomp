@@ -11,7 +11,7 @@ extern u8 *data_021052fc;
 extern "C" {
 #endif
 extern void func_0203cf8c(void *actor);
-extern s32 func_02033f44(void *actor);
+extern s32 Actor_GetCachedTerrainHeight(void *actor);
 extern void func_0203d86c(void *actor);
 extern void *func_0201e0ec(void *manager);
 extern void func_020a28e0(void *effect, s32 kind, s32 x, s32 y, s32 duration);
@@ -21,7 +21,7 @@ extern void func_020a28e0(void *effect, s32 kind, s32 x, s32 y, s32 duration);
 
 /*
  * Run the common table-record frame update, then set actor +0x14 bit 0x800000
- * only when func_02033f44 first reports zero, Z +0x24 is positive, and Z is
+ * only when Actor_GetCachedTerrainHeight first reports zero, Z +0x24 is positive, and Z is
  * less than a second reported value plus 0x18000. The repeated query is
  * preserved because whether that helper mutates state is not yet confirmed.
  *
@@ -41,8 +41,8 @@ void func_0203d540(void *self)
     s16 state;
 
     func_0203cf8c(actor);
-    if (func_02033f44(actor) == 0 && *(s32 *)(actor + 0x24) > 0 &&
-        *(s32 *)(actor + 0x24) < func_02033f44(actor) + 0x18000) {
+    if (Actor_GetCachedTerrainHeight(actor) == 0 && *(s32 *)(actor + 0x24) > 0 &&
+        *(s32 *)(actor + 0x24) < Actor_GetCachedTerrainHeight(actor) + 0x18000) {
         *(u32 *)(actor + 0x14) |= 0x800000;
     } else {
         *(u32 *)(actor + 0x14) &= ~0x800000;

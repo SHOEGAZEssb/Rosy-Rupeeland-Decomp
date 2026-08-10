@@ -66,7 +66,7 @@ void Actor_RefreshTerrainHeightIfEnabled(void *self)
 }
 
 /* Return the cached terrain-height word at actor+0x1dc. */
-s32 func_02033f44(void *self)
+s32 Actor_GetCachedTerrainHeight(void *self)
 {
     return *(s32 *)((u8 *)self + 0x1dc);
 }

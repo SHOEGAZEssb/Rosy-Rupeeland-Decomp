@@ -2,7 +2,7 @@
 ; Matching fallback for the portable implementation in src/overlays/ov082/overlay082_recovery.c.
 .extern data_ov082_022145e8
 .extern data_ov082_022145f0
-.extern func_02033f44
+.extern Actor_GetCachedTerrainHeight
 .extern func_0203e7c8
 .extern func_020435f4
 .extern func_02043610
@@ -114,12 +114,12 @@ func_ov082_02212d90:
     cmp r3, #0x0
     bne .L_02212f48
     mov r0, r5
-    bl func_02033f44
+    bl Actor_GetCachedTerrainHeight
     ldr r1, [r5, #0x24]
     cmp r1, r0
     ldmgeia sp!, {r3, r4, r5, r6, r7, pc}
     mov r0, r5
-    bl func_02033f44
+    bl Actor_GetCachedTerrainHeight
     str r0, [r5, #0x24]
     mov r0, #0x0
     str r0, [r5, #0x44]

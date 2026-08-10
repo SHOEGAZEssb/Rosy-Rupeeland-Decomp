@@ -10,7 +10,7 @@
 extern "C" {
 #endif
 extern const s8 *Actor_GetCollisionBounds(void *actor);
-extern s32 func_02033f44(void *actor);
+extern s32 Actor_GetCachedTerrainHeight(void *actor);
 #ifdef __cplusplus
 }
 #endif
@@ -27,7 +27,7 @@ static s32 collision_to_integer_toward_zero(s32 value)
 
 /*
  * Build four query points around the actor from signed-byte collision bounds,
- * its fixed-point position, adjusted Z, and func_02033f44's height result.
+ * its fixed-point position, adjusted Z, and Actor_GetCachedTerrainHeight's height result.
  * Each failed corner query contributes +/-0x1333 to X and Y correction. A
  * correction is applied to actor offsets 0x9c/0xa0 only when it opposes (or is
  * neutral to) velocity fields 0x3c/0x40; the corresponding accumulator at
@@ -72,7 +72,7 @@ void func_0200a3b8(void *actorPointer, void *collisionContext)
     halfHeight = collision_half_toward_zero(bottom - top);
     queryRight = (actorX + halfWidth + 0xfff) >> 16;
     queryBottom = (actorY + halfHeight - 0xfff) >> 16;
-    actorHeight = func_02033f44(actorPointer) >> 16;
+    actorHeight = Actor_GetCachedTerrainHeight(actorPointer) >> 16;
     queryLeft = (actorX - halfWidth - 0xfff) >> 16;
     queryTop = (actorY - halfHeight - 0x1fff) >> 16;
     queryZ = collision_to_integer_toward_zero(z);

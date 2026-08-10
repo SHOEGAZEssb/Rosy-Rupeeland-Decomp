@@ -6,7 +6,7 @@
 extern "C" {
 #endif
 extern void Actor_UpdateAnimationState(void *actor);
-extern s32 func_02033f44(void *actor);
+extern s32 Actor_GetCachedTerrainHeight(void *actor);
 extern s32 func_020adae4(s32 value, s32 divisor);
 #ifdef __cplusplus
 }
@@ -24,7 +24,7 @@ static VirtualFunction virtual_function(void *actor, u32 offset)
  * Input is an impulse actor. Calls virtual pre-update slot 0x18 and advances
  * the low 15-bit state at 0x1F0. State 0 increments timer 0x1F8, clears
  * presentation bit 4, and either controls actor flag 0x800000 from the distance
- * between field 0x24 and func_02033f44, invokes slot 0xC8, or settles field
+ * between field 0x24 and Actor_GetCachedTerrainHeight, invokes slot 0xC8, or settles field
  * 0x24 at 0x1DC, enters state 1, and divides fields 0x3C/0x40 by 4. State 1
  * invokes slot 0xE0; state 2 invokes slot 0x54 with zero. Independently, while
  * timer 0x1F8 is less than signed record halfword 0x28, increments it and runs
@@ -47,7 +47,7 @@ void func_02051e04(void *actor)
         FIELD(u16, presentation, 0x24) &= (u16)~4;
         if ((FIELD(u8, actor, 0x4b) & 0x0f) == 0) {
             if (FIELD(s32, actor, 0x1dc) < FIELD(s32, actor, 0x24)) {
-                reference = func_02033f44(actor);
+                reference = Actor_GetCachedTerrainHeight(actor);
                 if (FIELD(s32, actor, 0x24) - reference < 0x20001)
                     FIELD(u32, actor, 0x14) |= 0x800000;
                 else

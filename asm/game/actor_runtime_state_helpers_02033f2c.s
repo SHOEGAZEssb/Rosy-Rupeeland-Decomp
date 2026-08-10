@@ -13,4 +13,4 @@ Actor_RefreshTerrainHeightIfEnabled: ; 0x02033f2c
     ldmia sp!, {r3, pc}
     .size Actor_RefreshTerrainHeightIfEnabled, . - Actor_RefreshTerrainHeightIfEnabled
 
-    .global func_02033f44
+    .global Actor_GetCachedTerrainHeight

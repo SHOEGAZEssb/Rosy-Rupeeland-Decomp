@@ -10,7 +10,7 @@ extern "C" {
 #endif
 extern s32 func_020828a0(void *state, s32 index);
 extern s32 Actor_QueryTerrainHeight(void *actor, s32 x, s32 y);
-extern s32 func_02033f44(void *actor);
+extern s32 Actor_GetCachedTerrainHeight(void *actor);
 extern u32 Actor_QueryTerrainCell(void *actor, s32 x, s32 y);
 extern s32 func_0203463c(void *actor, s32 x, s32 y, s32 height);
 extern s32 GameWork_TestFlag(void *work, u32 flag);
@@ -46,7 +46,7 @@ static s32 isTypeOne(const u8 *actor)
  *
  * The normal path is disabled by +0xd0 bit 0x10. Otherwise predict X/Y from
  * position +0x1c/+0x20 and motion +0x3c/+0x40, +0x8c/+0x90, +0x9c/+0xa0.
- * If terrain height equals func_02033f44, clear countdown +0x204 and flag
+ * If terrain height equals Actor_GetCachedTerrainHeight, clear countdown +0x204 and flag
  * 0x40. For differing terrain, decode kind bits 5..9 and subtype bits 10..13
  * from Actor_QueryTerrainCell. Kinds 6,16,20,17 are a confirmed special set for type-one
  * actors; kinds 8..13 and kind 7 participate in the recovered floor gates.
@@ -115,7 +115,7 @@ void func_0203bba4(void *self)
     predictedX = *(s32 *)(actor + 0x1c) + totalX;
     predictedY = *(s32 *)(actor + 0x20) + totalY;
     terrain = Actor_QueryTerrainHeight(actor, predictedX >> 16, predictedY >> 16) << 16;
-    currentGround = func_02033f44(actor);
+    currentGround = Actor_GetCachedTerrainHeight(actor);
     if (terrain == currentGround) {
         clearContactCountdown(actor);
         return;
@@ -149,7 +149,7 @@ void func_0203bba4(void *self)
         (*(u32 *)(actor + 0x230) & 0x800) == 0 && special) {
         s32 validCount = 4;
         s32 i;
-        s32 height = func_02033f44(actor) >> 16;
+        s32 height = Actor_GetCachedTerrainHeight(actor) >> 16;
         for (i = 0; i < 4; ++i) {
             s32 scale = i * 9 + 8;
             if (func_0203463c(actor,

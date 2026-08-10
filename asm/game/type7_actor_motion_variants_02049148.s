@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/type7_actor_motion_variants.c.
 .extern data_020c9670
 .extern func_020050a4
-.extern func_02033f44
+.extern Actor_GetCachedTerrainHeight
 .extern func_02047908
 .extern func_02047dd8
 .extern func_0204820c
@@ -239,10 +239,10 @@ func_020493f8: ; 0x020493f8
     ldmia sp!, {r4, r5, r6, pc}
 .L_0204946c:
     mov r0, r5
-    bl func_02033f44
+    bl Actor_GetCachedTerrainHeight
     mov r6, r0
     mov r0, r4
-    bl func_02033f44
+    bl Actor_GetCachedTerrainHeight
     sub r0, r6, r0
     bl func_020be328
     cmp r0, #0x20000

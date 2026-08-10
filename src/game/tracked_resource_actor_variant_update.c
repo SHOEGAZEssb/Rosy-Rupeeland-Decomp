@@ -8,7 +8,7 @@ extern "C" {
 extern void func_0202d494(void *handle, void *actor);
 extern void Actor_UpdateAnimationState(void *actor);
 extern void *func_020337d4(void *actor);
-extern s32 func_02033f44(void *actor);
+extern s32 Actor_GetCachedTerrainHeight(void *actor);
 extern s32 func_020adae4(s32 value, s32 shift);
 #ifdef __cplusplus
 }
@@ -25,7 +25,7 @@ static VirtualFunction virtual_function(void *actor, u32 offset)
 /*
  * Input is a variant actor. Calls virtual pre-update slot 0x18 and advances the
  * low 15-bit state at 0x1F0 while preserving its high bit. In state 0 it clears
- * presentation bit 4, tests the actor against field 0x1DC and func_02033f44,
+ * presentation bit 4, tests the actor against field 0x1DC and Actor_GetCachedTerrainHeight,
  * controls flag 0x800000, and either invokes subtype-specific slot 0xC4 or
  * enters state 1 after shifting fields 0x3C/0x40 through func_020adae4. State 1
  * zeroes those fields after reaching 0x1DC, flashes presentation bit 4 for 30
@@ -50,7 +50,7 @@ void func_02050fa0(void *actor)
         FIELD(u16, presentation, 0x24) &= (u16)~4;
         if ((FIELD(u8, actor, 0x4b) & 0x0f) == 0) {
             if (FIELD(s32, actor, 0x1dc) < FIELD(s32, actor, 0x24)) {
-                reference = func_02033f44(actor);
+                reference = Actor_GetCachedTerrainHeight(actor);
                 if (FIELD(s32, actor, 0x24) - reference < 0x20001)
                     FIELD(u32, actor, 0x14) |= 0x800000;
                 else

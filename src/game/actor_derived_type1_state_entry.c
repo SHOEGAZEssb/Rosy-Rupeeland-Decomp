@@ -13,7 +13,7 @@ extern s32 func_02010b64(void *context, s32 value);
 extern void func_0200b2c0(void *value, s32 x, s32 y, s32 z);
 extern void func_0200500c(void *value, s32 x, s32 y, s32 z);
 extern void func_02005058(void *value);
-extern s32 func_02033f44(void *actor);
+extern s32 Actor_GetCachedTerrainHeight(void *actor);
 extern void Type1Actor_EnterFailureState(void *actor);
 extern void Actor_ReplaceAttachmentSlotResource(
     void *actor, s32 kind, s32 first, s32 second, s32 third);
@@ -62,7 +62,7 @@ void func_02038834(void *self, const void *position, s32 mode)
         } else {
             *(u32 *)(actor + 0x230) |= 0x400;
             *(s32 *)(actor + 0x44) = 0x4000;
-            *(s32 *)(actor + 0x24) = func_02033f44(actor) + 0x1000;
+            *(s32 *)(actor + 0x24) = Actor_GetCachedTerrainHeight(actor) + 0x1000;
             *(u16 *)(actor + 0xd6) = 13;
         }
     } else {
@@ -71,7 +71,7 @@ void func_02038834(void *self, const void *position, s32 mode)
                                             0x109e);
         *(u16 *)(actor + 0xd6) = 14;
         *(s32 *)(actor + 0x44) = 0x4000;
-        *(s32 *)(actor + 0x24) = func_02033f44(actor) + 0x1000;
+        *(s32 *)(actor + 0x24) = Actor_GetCachedTerrainHeight(actor) + 0x1000;
         *(u32 *)(actor + 0xd0) |= 0x2000;
         Sound_Play(gSoundContext, 0, 0x2d);
     }

@@ -2,7 +2,7 @@
 .text
 .extern func_02005030
 .extern func_02005058
-.extern func_02033f44
+.extern Actor_GetCachedTerrainHeight
 .extern Actor_QueryTerrainHeight
 
     .global func_02038c4c
@@ -48,7 +48,7 @@ func_02038c4c: ; 0x02038c4c
     bl Actor_QueryTerrainHeight
     mov r7, r0, lsl #0x4
     mov r0, r5
-    bl func_02033f44
+    bl Actor_GetCachedTerrainHeight
     cmp r0, r7, lsl #0xc
     bne .L_02038d0c
     mov r0, r8, lsl #0x10

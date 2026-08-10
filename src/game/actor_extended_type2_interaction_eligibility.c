@@ -11,7 +11,7 @@ extern u8 data_020dfbd8[];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern s32 func_02033f44(void *actor);
+extern s32 Actor_GetCachedTerrainHeight(void *actor);
 #ifdef __cplusplus
 }
 #endif
@@ -31,7 +31,7 @@ static s32 callback_pair_matches(const u8 *actor)
  * descriptor record data_020e8380[index*0x30]+0x1e shifted down two is below
  * five; callback +0x218/+0x21c is not global representation +0x1f0; +0x260 bit
  * 0x10000 is clear; +0x260 bit one is set while virtual +0xa8 reports inactive;
- * func_02033f44 returns the same value for actor and other; +0xd0 bit 0x10 is
+ * Actor_GetCachedTerrainHeight returns the same value for actor and other; +0xd0 bit 0x10 is
  * clear; +0x24 equals +0x1dc; and +0xd0 bit 0x100 is clear. Otherwise return
  * zero. Inputs and global descriptor/callback data are read only; virtual and
  * bookkeeping queries may have engine-visible effects but no direct hardware
@@ -56,7 +56,7 @@ s32 func_020430ec(void *self, void *other)
     if ((flags260 & 2) == 0 ||
         (*(s32 (**)(void *))(*(u8 **)actor + 0xa8))(actor) != 0)
         return 0;
-    if (func_02033f44(actor) != func_02033f44(other))
+    if (Actor_GetCachedTerrainHeight(actor) != Actor_GetCachedTerrainHeight(other))
         return 0;
     flagsD0 = *(u32 *)(actor + 0xd0);
     if ((flagsD0 & 0x10) != 0 ||

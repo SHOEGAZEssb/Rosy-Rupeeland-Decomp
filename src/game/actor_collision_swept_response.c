@@ -6,7 +6,7 @@
 extern "C" {
 #endif
 extern const s8 *Actor_GetCollisionBounds(void *actor);
-extern s32 func_02033f44(void *actor);
+extern s32 Actor_GetCachedTerrainHeight(void *actor);
 #ifdef __cplusplus
 }
 #endif
@@ -18,7 +18,7 @@ extern s32 func_02033f44(void *actor);
  * in movement direction, and apply the returned overlap response. The actor's
  * position and contact state may change through func_0200a970; no value is
  * returned and no hardware is accessed directly. The bounds pointer returned
- * by Actor_GetCollisionBounds and the height from func_02033f44 retain
+ * by Actor_GetCollisionBounds and the height from Actor_GetCachedTerrainHeight retain
  * address-derived
  * names because their wider actor contracts are not yet recovered.
  */
@@ -30,7 +30,7 @@ void func_0200ac14(void *actorPointer, void *collisionContext)
     s32 deltaY = *(s32 *)(actor + 0x20) - *(s32 *)(actor + 0x30);
     s32 width = ActorBounds_GetWidth(Actor_GetCollisionBounds(actorPointer)) << 12;
     s32 height = ActorBounds_GetHeight(Actor_GetCollisionBounds(actorPointer)) << 12;
-    s32 actorHeight = func_02033f44(actorPointer) >> 16;
+    s32 actorHeight = Actor_GetCachedTerrainHeight(actorPointer) >> 16;
     ActorCollisionRange sweep;
     ActorCollisionRange collision;
 

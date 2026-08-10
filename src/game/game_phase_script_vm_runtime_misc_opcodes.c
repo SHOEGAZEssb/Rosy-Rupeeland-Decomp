@@ -9,7 +9,7 @@ extern "C" {
 extern void *data_021052fc;
 extern void *func_02007f0c(void *runtime, s32 index);
 extern void func_0204cc30(void *object);
-extern s32 func_02033f44(void *actor);
+extern s32 Actor_GetCachedTerrainHeight(void *actor);
 #ifdef __cplusplus
 }
 #endif
@@ -62,7 +62,7 @@ s32 func_020168a8(GamePhaseActorScriptVm *self)
 
 /*
  * Push one when runtime actor 0x2ea4 has bit 4 set at 0xd0 or its fx32 Y at
- * 0x24 is greater than func_02033f44(actor); otherwise push zero. Return zero.
+ * 0x24 is greater than Actor_GetCachedTerrainHeight(actor); otherwise push zero. Return zero.
  */
 s32 func_020168d0(GamePhaseActorScriptVm *self)
 {
@@ -70,7 +70,7 @@ s32 func_020168d0(GamePhaseActorScriptVm *self)
     s32 result = (*(u32 *)(actor + 0xd0) & 0x10) != 0;
     if (!result)
         result = (*(s32 *)(actor + 0x24) >> 12) >
-                 (func_02033f44(actor) >> 12);
+                 (Actor_GetCachedTerrainHeight(actor) >> 12);
     func_020127f8(&self->base, result);
     return 0;
 }

@@ -6,7 +6,7 @@
 .extern func_020050a4
 .extern func_0200634c
 .extern func_0200637c
-.extern func_02033f44
+.extern Actor_GetCachedTerrainHeight
 .extern func_02072b68
 .extern func_020befec
 .extern func_ov075_02212d80
@@ -105,12 +105,12 @@ func_ov075_02213f08:
     add r0, sp, #0x10
     bl func_02005058
     mov r0, r10
-    bl func_02033f44
+    bl Actor_GetCachedTerrainHeight
     ldr r1, [r10, #0x24]
     cmp r1, r0
     bge .L_02214070
     mov r0, r10
-    bl func_02033f44
+    bl Actor_GetCachedTerrainHeight
     str r0, [r10, #0x24]
 .L_02214070:
     ldr r1, [r10, #0x54]
@@ -151,7 +151,7 @@ func_ov075_02213f08:
     blx r1
 .L_022140f8:
     mov r0, r10
-    bl func_02033f44
+    bl Actor_GetCachedTerrainHeight
     str r0, [r10, #0x24]
 .L_02214104:
     add r11, r10, #0x200

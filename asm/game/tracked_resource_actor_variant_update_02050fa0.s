@@ -2,7 +2,7 @@
 .extern func_0202d494
 .extern Actor_UpdateAnimationState
 .extern func_020337d4
-.extern func_02033f44
+.extern Actor_GetCachedTerrainHeight
 .extern func_020adae4
 .text
     .global func_02050fa0
@@ -76,7 +76,7 @@ func_02050fa0:
     b .L_02051168
 .L_020510a0:
     mov r0, r4
-    bl func_02033f44
+    bl Actor_GetCachedTerrainHeight
     ldr r1, [r4, #0x24]
     sub r0, r1, r0
     cmp r0, #0x20000

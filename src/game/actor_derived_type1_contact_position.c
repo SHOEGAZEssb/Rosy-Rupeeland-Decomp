@@ -8,7 +8,7 @@ extern "C" {
 extern void func_02005030(void *destination, const void *source);
 extern void func_02005058(void *value);
 extern s32 Actor_QueryTerrainHeight(void *actor, s32 x, s32 y);
-extern s32 func_02033f44(void *actor);
+extern s32 Actor_GetCachedTerrainHeight(void *actor);
 #ifdef __cplusplus
 }
 #endif
@@ -17,7 +17,7 @@ extern s32 func_02033f44(void *actor);
  * Increment actor signed halfword +0x24c. Normally copy position +0x18 to
  * output. When record byte +0x4d equals seven, copy through a temporary; in
  * actor states one or two, test the adjacent X cell in the record's direction.
- * If its terrain height (cell result <<16) equals func_02033f44, replace the
+ * If its terrain height (cell result <<16) equals Actor_GetCachedTerrainHeight, replace the
  * temporary X with that cell coordinate and add 0xf000 for positive movement.
  * Copy the temporary to output and destroy it. Returns no value; vector copy/
  * teardown may maintain SDK object state, while terrain queries are read-only.
@@ -38,7 +38,7 @@ void func_02038c4c(void *output, void *self, const void *recordValue)
             s32 cellX = (*(s32 *)(actor + 0x1c) >> 16) + direction;
             s32 height = Actor_QueryTerrainHeight(actor, cellX,
                                       *(s32 *)(actor + 0x20) >> 16) << 4;
-            if (func_02033f44(actor) == (height << 12)) {
+            if (Actor_GetCachedTerrainHeight(actor) == (height << 12)) {
                 temporary[1] = cellX << 16;
                 if (direction > 0)
                     temporary[1] += 0xf000;

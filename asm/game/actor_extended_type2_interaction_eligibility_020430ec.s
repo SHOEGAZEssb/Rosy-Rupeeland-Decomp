@@ -3,7 +3,7 @@
 .extern data_020df9e8
 .extern data_020dfbd8
 .extern data_020e8380
-.extern func_02033f44
+.extern Actor_GetCachedTerrainHeight
 .global func_020430ec
 .type func_020430ec, @function
 func_020430ec: ; 0x020430ec
@@ -66,10 +66,10 @@ func_020430ec: ; 0x020430ec
     moveq r0, #0x0
     ldmeqia sp!, {r4, r5, r6, pc}
     mov r0, r5
-    bl func_02033f44
+    bl Actor_GetCachedTerrainHeight
     mov r6, r0
     mov r0, r4
-    bl func_02033f44
+    bl Actor_GetCachedTerrainHeight
     cmp r6, r0
     movne r0, #0x0
     ldmneia sp!, {r4, r5, r6, pc}

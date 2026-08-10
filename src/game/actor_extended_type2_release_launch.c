@@ -11,7 +11,7 @@ extern u16 data_020e6d3c[];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern s32 func_02033f44(void *actor);
+extern s32 Actor_GetCachedTerrainHeight(void *actor);
 extern void Actor_SaveAndForceFlags(void *actor);
 extern u32 genrand_int32(void);
 extern void func_020349b8(void *actor, u32 sound, s32 extra);
@@ -21,7 +21,7 @@ extern void func_020349b8(void *actor, u32 sound, s32 extra);
 
 /*
  * Set actor +0xd0 bit 0x80, install global pair +0x1e0/+0x1e4 at
- * +0x218/+0x21c, store func_02033f44(actor) at +0x24, then invoke
+ * +0x218/+0x21c, store Actor_GetCachedTerrainHeight(actor) at +0x24, then invoke
  * Actor_SaveAndForceFlags. The routine has no meaningful return value; actor and engine
  * bookkeeping may change, with no direct hardware access.
  */
@@ -31,7 +31,7 @@ void func_020423c8(void *self)
     *(u32 *)(actor + 0xd0) |= 0x80;
     *(u32 *)(actor + 0x218) = *(u32 *)(data_020df9e8 + 0x1e0);
     *(u32 *)(actor + 0x21c) = *(u32 *)(data_020df9e8 + 0x1e4);
-    *(s32 *)(actor + 0x24) = func_02033f44(actor);
+    *(s32 *)(actor + 0x24) = Actor_GetCachedTerrainHeight(actor);
     Actor_SaveAndForceFlags(actor);
 }
 

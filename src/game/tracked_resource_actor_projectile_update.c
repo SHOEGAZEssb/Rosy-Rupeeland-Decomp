@@ -8,7 +8,7 @@ extern "C" {
 extern void func_0202d494(void *handle, void *actor);
 extern void Actor_UpdateAnimationState(void *actor);
 extern void *func_020337d4(void *actor);
-extern s32 func_02033f44(void *actor);
+extern s32 Actor_GetCachedTerrainHeight(void *actor);
 #ifdef __cplusplus
 }
 #endif
@@ -25,7 +25,7 @@ static VirtualFunction virtual_function(void *actor, u32 offset)
  * Input is a projectile-like actor. Calls virtual pre-update slot 0x18 and
  * advances the low 15-bit state at 0x1F0. State 0 increments timer 0x1F8,
  * clears presentation bit 4, bounds field 0x44 using signed record halfword
- * 0x0A, and compares field 0x24 against func_02033f44 to control actor flag
+ * 0x0A, and compares field 0x24 against Actor_GetCachedTerrainHeight to control actor flag
  * 0x800000 or enter state 1 at field 0x1DC. State 1 zeroes fields 0x3C/0x40
  * after reaching 0x1DC, flashes presentation bit 4 for 30 ticks, notifies
  * func_0202d494, and enters state 2. State 2 calls virtual slot 0x54 with zero.
@@ -51,9 +51,9 @@ void func_02051440(void *actor)
         if (FIELD(s32, actor, 0x44) + record_step < 0)
             FIELD(s32, actor, 0x44) = -record_step;
 
-        reference = func_02033f44(actor);
+        reference = Actor_GetCachedTerrainHeight(actor);
         if (reference < FIELD(s32, actor, 0x24)) {
-            if (FIELD(s32, actor, 0x24) - func_02033f44(actor) < 0x20001)
+            if (FIELD(s32, actor, 0x24) - Actor_GetCachedTerrainHeight(actor) < 0x20001)
                 FIELD(u32, actor, 0x14) |= 0x800000;
             else
                 FIELD(u32, actor, 0x14) &= 0xff7fffff;

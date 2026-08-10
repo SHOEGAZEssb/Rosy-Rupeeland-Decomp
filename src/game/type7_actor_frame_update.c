@@ -30,7 +30,7 @@ extern void func_0206c978(void *resource);
 extern void GameWork_ClearFlag(void *work, u32 flag);
 extern void func_02032370(void *actor, const void *target, s32 scale);
 extern void func_02032228(void *actor, s32 x, s32 y, s32 scale);
-extern s32 func_02033f44(void *actor);
+extern s32 Actor_GetCachedTerrainHeight(void *actor);
 extern s32 func_020be328(s32 value);
 extern void func_0203bba4(void *actor);
 extern void Actor_UpdateAnimationState(void *actor);
@@ -234,7 +234,7 @@ void func_02045a60(void *self)
     target = *(u8 **)(actor + 0x280);
     if (target != 0) {
         s32 separation = func_020be328(
-            func_02033f44(actor) - func_02033f44(target));
+            Actor_GetCachedTerrainHeight(actor) - Actor_GetCachedTerrainHeight(target));
         if (separation >= 0x20000)
             *(u32 *)(actor + 0x268) |= 0x800000;
         else

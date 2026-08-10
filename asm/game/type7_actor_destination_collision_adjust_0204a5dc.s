@@ -1,5 +1,5 @@
 ; Matching retail form; see src/game/type7_actor_destination_collision_adjust.c.
-.extern func_02033f44
+.extern Actor_GetCachedTerrainHeight
 .extern func_0203463c
 .extern func_02034718
 .extern func_0204cfa4
@@ -12,7 +12,7 @@ func_0204a5dc: ; 0x0204a5dc
     stmdb sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, lr}
     sub sp, sp, #0x20
     mov r10, r0
-    bl func_02033f44
+    bl Actor_GetCachedTerrainHeight
     mov r0, r0, asr #0x10
     str r0, [sp, #0xc]
     ldr r1, [r10, #0x7c]

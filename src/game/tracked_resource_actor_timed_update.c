@@ -6,7 +6,7 @@
 extern "C" {
 #endif
 extern void Actor_UpdateAnimationState(void *actor);
-extern s32 func_02033f44(void *actor);
+extern s32 Actor_GetCachedTerrainHeight(void *actor);
 extern s32 func_020adae4(s32 value, s32 divisor);
 #ifdef __cplusplus
 }
@@ -24,7 +24,7 @@ static VirtualFunction virtual_function(void *actor, u32 offset)
  * Input is a timed actor. Calls virtual pre-update slot 0x18 and decrements the
  * positive cooldown at 0x200. In low state 0, increments timer 0x1F8, clears
  * presentation bit 4, and—when the low nibble at 0x4B is clear—compares field
- * 0x24 with 0x1DC and func_02033f44 to control flag 0x800000. Subtype 0x19 can
+ * 0x24 with 0x1DC and Actor_GetCachedTerrainHeight to control flag 0x800000. Subtype 0x19 can
  * invoke slot 0xC4; otherwise reaching 0x1DC enters state 1 and divides fields
  * 0x8C/0x90 by the recovered factor 4. A nonzero nibble invokes slot 0xC8.
  * State 1 zeroes fields 0x3C/0x40 once field 0x24 reaches 0x1DC; state 2 calls
@@ -52,7 +52,7 @@ void func_0205199c(void *actor)
         FIELD(u16, presentation, 0x24) &= (u16)~4;
         if ((FIELD(u8, actor, 0x4b) & 0x0f) == 0) {
             if (FIELD(s32, actor, 0x1dc) < FIELD(s32, actor, 0x24)) {
-                reference = func_02033f44(actor);
+                reference = Actor_GetCachedTerrainHeight(actor);
                 if (FIELD(s32, actor, 0x24) - reference < 0x20001)
                     FIELD(u32, actor, 0x14) |= 0x800000;
                 else

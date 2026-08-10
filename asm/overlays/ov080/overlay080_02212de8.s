@@ -6,7 +6,7 @@
 .extern data_ov080_02213e70
 .extern data_ov080_02213e78
 .extern Actor_SaveAndForceFlags
-.extern func_02033f44
+.extern Actor_GetCachedTerrainHeight
 .extern func_0203e7c8
 .extern func_ov080_02212ae0
 .extern gGameWork
@@ -28,7 +28,7 @@ func_ov080_02212de8:
     ldr r0, [r0, #0x0]
     add r0, r0, #0x2000
     ldr r0, [r0, #0xea4]
-    bl func_02033f44
+    bl Actor_GetCachedTerrainHeight
     ldr r1, .L_02212f58
     str r0, [r4, #0x24]
     ldr r0, [r1, #0x0]

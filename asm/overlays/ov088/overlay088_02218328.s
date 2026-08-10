@@ -13,7 +13,7 @@
 .extern func_020050f0
 .extern func_0201f864
 .extern Actor_UpdateAnimationState
-.extern func_02033f44
+.extern Actor_GetCachedTerrainHeight
 .extern func_02034a60
 .extern Actor_ReplaceAttachmentSlotResource
 .extern func_0203b798
@@ -92,7 +92,7 @@ func_ov088_02218328:
     mov r0, r5
     bic r2, r2, #0x80
     strh r2, [r1, #0x1a]
-    bl func_02033f44
+    bl Actor_GetCachedTerrainHeight
     ldr r6, .L_02219110
     str r0, [r5, #0x34]
     str r0, [r5, #0x24]

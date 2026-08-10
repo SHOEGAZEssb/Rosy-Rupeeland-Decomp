@@ -48,7 +48,7 @@ extern u8 data_021f5ebc[];
 extern "C" {
 #endif
 extern s32 func_020828a0(void *, s32);
-extern s32 func_02033f44(TerrainUpdateActor *);
+extern s32 Actor_GetCachedTerrainHeight(TerrainUpdateActor *);
 extern u32 Actor_QueryTerrainCell(TerrainUpdateActor *, s32, s32);
 extern void func_0200b2c0(void *, s32, s32, s32);
 #ifdef __cplusplus
@@ -78,7 +78,7 @@ static s32 terrainCodeIsRestricted(u32 terrain)
  * Visit the category-three array at offset 0x800. Every actor receives its
  * vtable-offset-0x88 callback unless a global gate and actor flags enable the
  * transition checks, in which case the callback still runs before validation.
- * Flag 0x200 actors are restored whenever func_02033f44 changes. Types one and
+ * Flag 0x200 actors are restored whenever Actor_GetCachedTerrainHeight changes. Types one and
  * seven at matching offset-0x24 height additionally use the encoded result of
  * Actor_QueryTerrainCell and a 0x20000 tolerance to decide restoration. Restoration
  * resets fields 0x3c/0x40, objects at 0x88/0x98, and sets flag 0x40 at 0xd0.
@@ -100,20 +100,20 @@ void func_0202e858(ActorCollectionTerrainUpdate *self)
             continue;
         }
         if (actor->flags_14 & 0x200) {
-            oldValue = func_02033f44(actor);
+            oldValue = Actor_GetCachedTerrainHeight(actor);
             actor->vtable_00->callback_88(actor);
-            if (oldValue != func_02033f44(actor))
+            if (oldValue != Actor_GetCachedTerrainHeight(actor))
                 restoreTerrainActor(actor, oldValue);
             continue;
         }
 
         if ((actor->type_4d == 1 || actor->type_4d == 7) &&
-            actor->positionZ_24 == func_02033f44(actor) &&
+            actor->positionZ_24 == Actor_GetCachedTerrainHeight(actor) &&
             !(actor->flags_14 & 0x40)) {
             u32 terrain;
             s32 restricted;
 
-            oldValue = func_02033f44(actor);
+            oldValue = Actor_GetCachedTerrainHeight(actor);
             actor->vtable_00->callback_88(actor);
             terrain = Actor_QueryTerrainCell(actor, actor->positionX_1c >> 16,
                                     actor->positionY_20 >> 16);
@@ -122,7 +122,7 @@ void func_0202e858(ActorCollectionTerrainUpdate *self)
                          (actor->flags_d0 & 0x10000);
             if (restricted)
                 continue;
-            if (oldValue >= func_02033f44(actor) + 0x20000 ||
+            if (oldValue >= Actor_GetCachedTerrainHeight(actor) + 0x20000 ||
                 ((terrain >> 10) & 0x0f) == 1)
                 restoreTerrainActor(actor, oldValue);
             continue;

@@ -1,7 +1,7 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov097/overlay097_recovery.c.
 .extern Actor_UpdateAnimationState
-.extern func_02033f44
+.extern Actor_GetCachedTerrainHeight
 .extern func_02034a60
 
 .global func_ov097_0221a07c
@@ -50,7 +50,7 @@ func_ov097_0221a07c:
     movs r0, r0, asr #0x1f
     bne .L_0221a14c
     mov r0, r4
-    bl func_02033f44
+    bl Actor_GetCachedTerrainHeight
     ldr r1, [r4, #0x24]
     sub r0, r1, r0
     cmp r0, #0x48000

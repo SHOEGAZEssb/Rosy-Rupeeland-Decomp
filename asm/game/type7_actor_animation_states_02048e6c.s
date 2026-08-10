@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/type7_actor_animation_states.c.
 .text
 .extern func_0200b2c0
-.extern func_02033f44
+.extern Actor_GetCachedTerrainHeight
 .extern func_02047dd8
 .extern func_0204a5b8
 .extern func_0204b7bc
@@ -68,10 +68,10 @@ func_02048e98: ; 0x02048e98
     tst r0, #0x80
     beq .L_02048f60
     mov r0, r4
-    bl func_02033f44
+    bl Actor_GetCachedTerrainHeight
     mov r5, r0
     ldr r0, [r4, #0x280]
-    bl func_02033f44
+    bl Actor_GetCachedTerrainHeight
     sub r0, r5, r0
     bl func_020be328
     cmp r0, #0x20000

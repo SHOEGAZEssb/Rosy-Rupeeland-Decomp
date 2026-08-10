@@ -2,7 +2,7 @@
 .text
 .extern data_021052fc
 .extern func_020127f8
-.extern func_02033f44
+.extern Actor_GetCachedTerrainHeight
 .global func_020168d0
 func_020168d0:
     stmdb sp!, {r3, r4, r5, lr}
@@ -16,7 +16,7 @@ func_020168d0:
     bne L_02016908
     ldr r1, [r0, #0x24]
     mov r4, r1, asr #12
-    bl func_02033f44
+    bl Actor_GetCachedTerrainHeight
     cmp r4, r0, asr #12
     ble L_02016918
 L_02016908:

@@ -14,7 +14,7 @@
 .extern func_02032228
 .extern func_02032370
 .extern Actor_UpdateAnimationState
-.extern func_02033f44
+.extern Actor_GetCachedTerrainHeight
 .extern func_0203b798
 .extern func_0203bba4
 .extern func_02047d40
@@ -365,10 +365,10 @@ func_02045a60: ; 0x02045a60
     cmp r6, #0x0
     beq .L_02045f80
     mov r0, r4
-    bl func_02033f44
+    bl Actor_GetCachedTerrainHeight
     mov r5, r0
     mov r0, r6
-    bl func_02033f44
+    bl Actor_GetCachedTerrainHeight
     sub r0, r5, r0
     bl func_020be328
     cmp r0, #0x20000

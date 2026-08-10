@@ -16,7 +16,7 @@ extern u32 genrand_int32(void);
 extern s32 func_020ada8c(s32 value, s32 divisor);
 extern s32 func_020adcac(const void *first, const void *second);
 extern s32 func_020be328(s32 value);
-extern s32 func_02033f44(void *actor);
+extern s32 Actor_GetCachedTerrainHeight(void *actor);
 extern void func_02047908(void *actor, const void *transform);
 extern void func_02047dd8(void *actor);
 extern s32 func_0204820c(void *actor);
@@ -127,7 +127,7 @@ s32 func_0204929c(void *self)
  * Input is a type-seven actor. Set actor flag 0x8000 and +0xd0 bit one. When
  * related actor +0x280 exists, compare integer X/Y separation against 0x24000;
  * if outside that squared threshold while actor flag four is clear, dispatch
- * func_0204a2e8. Otherwise compare the actors' func_02033f44 values by absolute
+ * func_0204a2e8. Otherwise compare the actors' Actor_GetCachedTerrainHeight values by absolute
  * difference and dispatch func_0204a360 when it reaches 0x20000.
  *
  * If neither relationship check dispatches, run the shared object and finite
@@ -156,7 +156,7 @@ s32 func_020493f8(void *self)
             func_0204a2e8(actor);
             return 0;
         }
-        if (func_020be328(func_02033f44(actor) - func_02033f44(related))
+        if (func_020be328(Actor_GetCachedTerrainHeight(actor) - Actor_GetCachedTerrainHeight(related))
             >= 0x20000) {
             func_0204a360(actor);
             return 0;
