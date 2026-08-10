@@ -8,7 +8,7 @@
 .extern func_020062a0
 .extern ActorCollection_RegisterActor
 .extern Actor_RefreshTerrainHeight
-.extern func_02035060
+.extern ActorDerivedType1_Init
 .extern func_0203b554
 .extern func_0203c140
 .extern func_0203c4e0
@@ -116,7 +116,7 @@ ActorCollection_SpawnActorFromDescriptor: ; 0x0202ecd0
     movs r4, r0
     beq .L_0202ed40
     mov r1, r5
-    bl func_02035060
+    bl ActorDerivedType1_Init
     mov r4, r0
 .L_0202ed40:
     mov r0, r4

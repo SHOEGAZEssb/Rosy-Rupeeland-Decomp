@@ -8,5 +8,5 @@ func_02035058: ; 0x02035058
     bx lr
     .size func_02035058, . - func_02035058
 
-    .global func_02035060
+    .global ActorDerivedType1_Init
 

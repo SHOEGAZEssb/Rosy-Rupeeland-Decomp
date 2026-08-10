@@ -46,7 +46,7 @@ extern u8 data_020ed470[];
 extern "C" {
 #endif
 #define DECLARE_ACTOR_CTOR(name) extern void *name(void *, const void *)
-DECLARE_ACTOR_CTOR(func_02035060);
+DECLARE_ACTOR_CTOR(ActorDerivedType1_Init);
 DECLARE_ACTOR_CTOR(func_0203b554);
 DECLARE_ACTOR_CTOR(func_0203c140);
 DECLARE_ACTOR_CTOR(func_0203c4e0);
@@ -211,7 +211,7 @@ static ActorFactorySpec selectFactorySpec(const ActorSpawnDescriptor *descriptor
     u16 subtype = descriptor->subtype_02;
 
     switch (descriptor->kind_00) {
-    case 1: return (ActorFactorySpec)SPEC(0x2b8, func_02035060);
+    case 1: return (ActorFactorySpec)SPEC(0x2b8, ActorDerivedType1_Init);
     case 2: {
         s8 actorClass = *(s8 *)(data_020e8380 + subtype * 0x30 + 0x24);
         if (actorClass >= 0 && actorClass < 36)

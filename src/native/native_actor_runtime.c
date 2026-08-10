@@ -264,7 +264,7 @@ static void InitializeSharedDerived(TingleNativeActorImage *actor)
 }
 
 /*
- * Reproduce the host-independent writes in func_02035060. Its +0x2a8 helper
+ * Reproduce the host-independent writes in ActorDerivedType1_Init. Its +0x2a8 helper
  * requires resource lookup and presentation creation, so pointer fields stay
  * null and carry an explicit pending marker instead of a fabricated DS value.
  */

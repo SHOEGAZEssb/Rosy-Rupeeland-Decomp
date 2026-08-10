@@ -7,9 +7,9 @@
 .extern func_0203b514
 .extern func_0204cca8
 
-    .global func_02035060
-    .type func_02035060, @function
-func_02035060: ; 0x02035060
+    .global ActorDerivedType1_Init
+    .type ActorDerivedType1_Init, @function
+ActorDerivedType1_Init: ; 0x02035060
     stmdb sp!, {r4, lr}
     mov r4, r0
     bl func_0203b514
@@ -84,7 +84,7 @@ func_02035060: ; 0x02035060
     strb r1, [r4, #0x26a]
     ldmia sp!, {r4, pc}
 .L_02035184: .word data_020df3c8
-    .size func_02035060, . - func_02035060
+    .size ActorDerivedType1_Init, . - ActorDerivedType1_Init
 
-    .global func_02035188
+    .global ActorDerivedType1_Destroy
 

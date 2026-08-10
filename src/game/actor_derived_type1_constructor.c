@@ -26,7 +26,7 @@ extern void func_0200b2c0(void *state, s32 first, s32 second, s32 third);
  * 0x100000 at +0x14, reset state +0x254 with zeros, and clear halfword +0x264.
  * Return self; constructors and value helpers may manage SDK-owned state.
  */
-void *func_02035060(void *self)
+void *ActorDerivedType1_Init(void *self)
 {
     u8 *actor = (u8 *)self;
     u32 offset;

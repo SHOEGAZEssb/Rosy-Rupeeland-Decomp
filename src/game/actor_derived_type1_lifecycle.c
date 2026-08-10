@@ -64,18 +64,18 @@ static void cleanupDerivedType1(u8 *actor)
  * then run the base destructor. Return self without freeing its allocation.
  * Object, heap, GameWork, and value helpers have observable ownership effects.
  */
-void *func_02035188(void *self)
+void *ActorDerivedType1_Destroy(void *self)
 {
     cleanupDerivedType1((u8 *)self);
     return self;
 }
 
 /*
- * Perform exactly the cleanup documented for func_02035188, then free the
+ * Perform exactly the cleanup documented for ActorDerivedType1_Destroy, then free the
  * actor allocation and return its former pointer value. The returned address
  * is no longer live storage and must not be dereferenced.
  */
-void *func_02035290(void *self)
+void *ActorDerivedType1_DestroyAndFree(void *self)
 {
     cleanupDerivedType1((u8 *)self);
     Heap_Free(self);
