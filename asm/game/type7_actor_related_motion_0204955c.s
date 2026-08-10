@@ -10,9 +10,9 @@
 .extern Type7Actor_TryAcquireTarget
 .extern func_0204a5dc
 .text
-    .global func_0204955c
-.type func_0204955c, @function
-func_0204955c: ; 0x0204955c
+    .global Type7Actor_UpdateMotionFromRelatedTransform
+.type Type7Actor_UpdateMotionFromRelatedTransform, @function
+Type7Actor_UpdateMotionFromRelatedTransform: ; 0x0204955c
     stmdb sp!, {r4, lr}
     sub sp, sp, #0x10
     mov r4, r0
@@ -60,11 +60,11 @@ func_0204955c: ; 0x0204955c
 .L_02049604:
     add sp, sp, #0x10
     ldmia sp!, {r4, pc}
-.size func_0204955c, . - func_0204955c
+.size Type7Actor_UpdateMotionFromRelatedTransform, . - Type7Actor_UpdateMotionFromRelatedTransform
 
-    .global func_0204960c
-.type func_0204960c, @function
-func_0204960c: ; 0x0204960c
+    .global Type7Actor_UpdateResourceDependentMotion
+.type Type7Actor_UpdateResourceDependentMotion, @function
+Type7Actor_UpdateResourceDependentMotion: ; 0x0204960c
     stmdb sp!, {r3, r4, r5, lr}
     mov r5, r0
     ldr r0, [r5, #0x234]
@@ -96,11 +96,11 @@ func_0204960c: ; 0x0204960c
 .L_02049678:
     mov r0, #0x0
     ldmia sp!, {r3, r4, r5, pc}
-.size func_0204960c, . - func_0204960c
+.size Type7Actor_UpdateResourceDependentMotion, . - Type7Actor_UpdateResourceDependentMotion
 
-    .global func_02049680
-.type func_02049680, @function
-func_02049680: ; 0x02049680
+    .global Type7Actor_UpdateResourceDependentFlags
+.type Type7Actor_UpdateResourceDependentFlags, @function
+Type7Actor_UpdateResourceDependentFlags: ; 0x02049680
     stmdb sp!, {r3, r4, r5, lr}
     mov r5, r0
     ldr r0, [r5, #0x234]
@@ -120,11 +120,11 @@ func_02049680: ; 0x02049680
     bl Type7Actor_UpdateFlag14Bit4FromCondition
     mov r0, #0x0
     ldmia sp!, {r3, r4, r5, pc}
-.size func_02049680, . - func_02049680
+.size Type7Actor_UpdateResourceDependentFlags, . - Type7Actor_UpdateResourceDependentFlags
 
-    .global func_020496cc
-.type func_020496cc, @function
-func_020496cc: ; 0x020496cc
+    .global Type7Actor_UpdateAcquiredTargetMotion
+.type Type7Actor_UpdateAcquiredTargetMotion, @function
+Type7Actor_UpdateAcquiredTargetMotion: ; 0x020496cc
     stmdb sp!, {r4, lr}
     mov r4, r0
     ldr r2, [r4, #0x268]
@@ -183,5 +183,5 @@ func_020496cc: ; 0x020496cc
     strh r0, [r4, #0xd6]
     mov r0, #0x0
     ldmia sp!, {r4, pc}
-.size func_020496cc, . - func_020496cc
+.size Type7Actor_UpdateAcquiredTargetMotion, . - Type7Actor_UpdateAcquiredTargetMotion
 

@@ -42,7 +42,7 @@ static void set_actor_mode(u8 *actor, s32 mode)
  * value 0x12. The function always returns zero. Actor, related-object, motion,
  * and temporary-value state may change; there is no direct hardware access.
  */
-s32 func_0204955c(void *self)
+s32 Type7Actor_UpdateMotionFromRelatedTransform(void *self)
 {
     u8 *actor = (u8 *)self;
     u8 *related;
@@ -79,7 +79,7 @@ s32 func_0204955c(void *self)
  * transform. Return zero. Actor flags, mode, and motion may change; there are
  * no direct SDK or hardware effects.
  */
-s32 func_0204960c(void *self)
+s32 Type7Actor_UpdateResourceDependentMotion(void *self)
 {
     u8 *actor = (u8 *)self;
     s32 hasResource = *(void **)(actor + 0x234) != 0;
@@ -101,7 +101,7 @@ s32 func_0204960c(void *self)
  * attached resource +0x234 exists to the two +0x14 flag helpers. Return zero.
  * Actor mode and flags may change; no SDK or hardware effects occur directly.
  */
-s32 func_02049680(void *self)
+s32 Type7Actor_UpdateResourceDependentFlags(void *self)
 {
     u8 *actor = (u8 *)self;
     s32 hasResource = *(void **)(actor + 0x234) != 0;
@@ -126,7 +126,7 @@ s32 func_02049680(void *self)
  * Always return zero. Actor, target, callback, and motion state may change; no
  * direct hardware access occurs.
  */
-s32 func_020496cc(void *self)
+s32 Type7Actor_UpdateAcquiredTargetMotion(void *self)
 {
     u8 *actor = (u8 *)self;
     u8 *related;
