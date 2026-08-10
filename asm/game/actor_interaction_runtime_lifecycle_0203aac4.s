@@ -4,7 +4,7 @@
 .extern Heap_Free
 .extern data_020df4f8
 .extern data_021056e4
-.extern data_021056f4
+.extern gActorFeedbackPresentations
 .extern data_02105728
 .extern data_0210572a
 .extern data_02105774
@@ -77,7 +77,7 @@ func_0203aac4: ; 0x0203aac4
 .L_0203ab5c: .word gGameWork
 .L_0203ab60: .word data_0210572a
 .L_0203ab64: .word data_02105728
-.L_0203ab68: .word data_021056f4
+.L_0203ab68: .word gActorFeedbackPresentations
     .size func_0203aac4, . - func_0203aac4
 
     .global func_0203ab6c
@@ -129,7 +129,7 @@ func_0203abb0: ; 0x0203abb0
     cmp r6, #0x6
     blt .L_0203abc0
     ldmia sp!, {r4, r5, r6, pc}
-.L_0203abf0: .word data_021056f4
+.L_0203abf0: .word gActorFeedbackPresentations
     .size func_0203abb0, . - func_0203abb0
 
     .global func_0203abf4

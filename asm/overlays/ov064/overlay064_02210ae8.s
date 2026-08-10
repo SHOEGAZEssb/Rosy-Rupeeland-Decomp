@@ -11,7 +11,7 @@
 .extern func_0201dcec
 .extern ActorCollection_DispatchEventToActors
 .extern ActorCollection_GetSpriteOwner
-.extern func_0203ad64
+.extern ActorFeedback_UpdatePresentations
 .extern func_020740a4
 .extern gLupyContext
 
@@ -40,7 +40,7 @@ func_ov064_02210ae8:
     mov r1, #0x1
     ldr r0, [r0, #0x0]
     bl func_02008148
-    bl func_0203ad64
+    bl ActorFeedback_UpdatePresentations
     ldr r0, .L_02210c54
     mov r1, #0x1
     ldr r0, [r0, #0x0]

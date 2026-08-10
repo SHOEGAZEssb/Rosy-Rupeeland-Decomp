@@ -12,7 +12,7 @@ extern void func_02005058(void *state);
 extern void ActorCollection_GetSpriteOwner(void *actor);
 extern void func_020740a4(void);
 extern void ActorCollection_DrainRemovalQueue(void *actor);
-extern void func_0203ad64(void);
+extern void ActorFeedback_UpdatePresentations(void);
 #ifdef __cplusplus
 }
 #endif
@@ -55,5 +55,5 @@ void func_02007a24(GamePhaseRuntime *self, s32 value, s32 mode)
             ActorCollection_DrainRemovalQueue(actor);
         }
     }
-    func_0203ad64();
+    ActorFeedback_UpdatePresentations();
 }

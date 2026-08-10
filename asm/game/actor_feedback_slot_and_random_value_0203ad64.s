@@ -1,12 +1,12 @@
 ; Matching retail form; see src/game/actor_feedback_slot_and_random_value.c.
 .text
-.extern data_021056f4
+.extern gActorFeedbackPresentations
 .extern func_020befec
 .extern func_020bf1f8
 .extern genrand_int32
-    .global func_0203ad64
-    .type func_0203ad64, @function
-func_0203ad64: ; 0x0203ad64
+    .global ActorFeedback_UpdatePresentations
+    .type ActorFeedback_UpdatePresentations, @function
+ActorFeedback_UpdatePresentations: ; 0x0203ad64
     stmdb sp!, {r4, r5, r6, lr}
     mov r6, #0x0
     ldr r5, .L_0203adc0
@@ -33,12 +33,12 @@ func_0203ad64: ; 0x0203ad64
     cmp r6, #0x6
     blt .L_0203ad74
     ldmia sp!, {r4, r5, r6, pc}
-.L_0203adc0: .word data_021056f4
-    .size func_0203ad64, . - func_0203ad64
+.L_0203adc0: .word gActorFeedbackPresentations
+    .size ActorFeedback_UpdatePresentations, . - ActorFeedback_UpdatePresentations
 
-    .global func_0203adc4
-    .type func_0203adc4, @function
-func_0203adc4: ; 0x0203adc4
+    .global Actor_RandomizeValueByTenPercent
+    .type Actor_RandomizeValueByTenPercent, @function
+Actor_RandomizeValueByTenPercent: ; 0x0203adc4
     stmdb sp!, {r3, r4, r5, lr}
     mov r1, #0xa
     mov r5, r0
@@ -62,5 +62,5 @@ func_0203adc4: ; 0x0203adc4
     mov r0, r5
     ldmia sp!, {r3, r4, r5, pc}
 
-    .size func_0203adc4, . - func_0203adc4
+    .size Actor_RandomizeValueByTenPercent, . - Actor_RandomizeValueByTenPercent
 

@@ -6,7 +6,7 @@ extern s16 data_020c9670[];
 extern const char data_020df4f0[];
 extern u8 *data_021052fc;
 extern u8 data_021056e4[];
-extern void *data_021056f4[6];
+extern void *gActorFeedbackPresentations[6];
 extern void *gSoundContext;
 extern u8 gSceneTouchInitialData[];
 
@@ -132,14 +132,14 @@ scanComplete:
                 void **oldest = 0;
                 s32 i;
                 for (i = 0; i < 6; ++i) {
-                    if (data_021056f4[i] == 0) {
-                        slot = &data_021056f4[i];
+                    if (gActorFeedbackPresentations[i] == 0) {
+                        slot = &gActorFeedbackPresentations[i];
                         break;
                     }
                     if (oldest == 0 ||
-                        *(u16 *)(*(u8 **)((u8 *)data_021056f4[i] + 8) + 0x28) >
+                        *(u16 *)(*(u8 **)((u8 *)gActorFeedbackPresentations[i] + 8) + 0x28) >
                         *(u16 *)(*(u8 **)((u8 *)*oldest + 8) + 0x28)) {
-                        oldest = &data_021056f4[i];
+                        oldest = &gActorFeedbackPresentations[i];
                     }
                 }
                 if (slot == 0) {
@@ -161,8 +161,8 @@ scanComplete:
                     *slot = presentation;
                 }
                 for (i = 0; i < 6; ++i) {
-                    if (data_021056f4[i] != 0) {
-                        u8 *sprite = *(u8 **)(*(u8 **)((u8 *)data_021056f4[i] + 8) + 4);
+                    if (gActorFeedbackPresentations[i] != 0) {
+                        u8 *sprite = *(u8 **)(*(u8 **)((u8 *)gActorFeedbackPresentations[i] + 8) + 4);
                         u16 old = *(u16 *)(sprite + 0x28);
                         *(u16 *)(sprite + 0x28) = old + 1;
                         if (old >= 0xfdec && sprite[0x39] <= 2) {

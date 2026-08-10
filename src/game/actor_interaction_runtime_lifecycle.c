@@ -4,7 +4,7 @@
 /* Initialize, reset, and tear down the shared actor-interaction runtime and feedback slots. */
 extern const char data_020df4f8[];
 extern void *data_02105778;
-extern void *data_021056f4[6];
+extern void *gActorFeedbackPresentations[6];
 extern u16 data_0210572a;
 extern u16 data_02105728;
 extern u16 data_02105774;
@@ -58,7 +58,7 @@ void func_0203aac4(void)
     data_02105728 = 0;
     func_0203d910();
     for (i = 0; i < 6; ++i)
-        data_021056f4[i] = 0;
+        gActorFeedbackPresentations[i] = 0;
 }
 
 /*
@@ -94,10 +94,10 @@ void func_0203abb0(void)
 {
     s32 i;
     for (i = 0; i < 6; ++i) {
-        void *object = data_021056f4[i];
+        void *object = gActorFeedbackPresentations[i];
         if (object != 0) {
             (*(void (**)(void *))(*(u8 **)object + 4))(object);
-            data_021056f4[i] = 0;
+            gActorFeedbackPresentations[i] = 0;
         }
     }
 }

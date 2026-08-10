@@ -16039,7 +16039,7 @@ build build/reports/actor_feedback_slot_and_random_value_0203ad64.json: objdiff 
   base_object = build/decomp/asm/game/actor_feedback_slot_and_random_value_0203ad64.o
 build build/reports/actor_feedback_slot_and_random_value_0203ad64.txt: match_report build/reports/actor_feedback_slot_and_random_value_0203ad64.json | tools/report_objdiff.py
   report_json = build/reports/actor_feedback_slot_and_random_value_0203ad64.json
-  report_args = --section .text --function func_0203ad64 --function func_0203adc4 --require-exact
+  report_args = --section .text --function ActorFeedback_UpdatePresentations --function Actor_RandomizeValueByTenPercent --require-exact
 build build/reports/actor_feedback_slot_and_random_value.txt: phony build/reports/actor_feedback_slot_and_random_value_0203ad64.txt
 
 build actor_feedback_slot_and_random_value: phony build/decomp/src/game/actor_feedback_slot_and_random_value.o build/decomp/asm/game/actor_feedback_slot_and_random_value_0203ad64.o build/reports/actor_feedback_slot_and_random_value.txt

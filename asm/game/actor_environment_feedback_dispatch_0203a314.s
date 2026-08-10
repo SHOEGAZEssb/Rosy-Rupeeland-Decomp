@@ -6,7 +6,7 @@
 .extern data_020df4f0
 .extern data_021052fc
 .extern data_021056e4
-.extern data_021056f4
+.extern gActorFeedbackPresentations
 .extern func_02005030
 .extern func_02005058
 .extern func_02008514
@@ -404,7 +404,7 @@ func_0203a314: ; 0x0203a314
 .L_0203a890: .word data_020c9670
 .L_0203a894: .word gSceneTouchInitialData
 .L_0203a898: .word data_021052fc
-.L_0203a89c: .word data_021056f4
+.L_0203a89c: .word gActorFeedbackPresentations
 .L_0203a8a0: .word data_020df4f0
 .L_0203a8a4: .word gHeapContext
 .L_0203a8a8: .word 0xfde8

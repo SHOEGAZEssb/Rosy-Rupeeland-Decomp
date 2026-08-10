@@ -16,7 +16,7 @@
 .extern func_02032228
 .extern func_02039348
 .extern func_02039e70
-.extern func_0203adc4
+.extern Actor_RandomizeValueByTenPercent
 .extern func_020435d8
 .extern func_020ae024
 .extern func_020befec
@@ -158,7 +158,7 @@ func_ov075_0221647c:
     orr r2, r2, r1, lsl #0x14
     str r2, [sp, #0x58]
     bl func_020435d8
-    bl func_0203adc4
+    bl Actor_RandomizeValueByTenPercent
     mov r7, r0
     ldrb r0, [r5, #0x4d]
     cmp r0, #0x1
