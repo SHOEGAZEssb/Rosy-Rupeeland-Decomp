@@ -1,8 +1,8 @@
 ; Matching retail form; see src/game/actor_spawn_descriptor_init.c.
 .text
-    .global func_0203ae14
-    .type func_0203ae14, @function
-func_0203ae14: ; 0x0203ae14
+    .global ActorSpawnDescriptor_Init
+    .type ActorSpawnDescriptor_Init, @function
+ActorSpawnDescriptor_Init: ; 0x0203ae14
     strh r1, [r0, #0x0]
     strh r2, [r0, #0x2]
     ldr r2, [sp, #0x0]
@@ -72,5 +72,5 @@ func_0203ae14: ; 0x0203ae14
     strh r1, [r0, #0x60]
     bx lr
 
-    .size func_0203ae14, . - func_0203ae14
+    .size ActorSpawnDescriptor_Init, . - ActorSpawnDescriptor_Init
 

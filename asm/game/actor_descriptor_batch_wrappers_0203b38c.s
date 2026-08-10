@@ -1,14 +1,14 @@
 ; Matching retail form; see src/game/actor_descriptor_batch_wrappers.c.
 .text
 .extern data_020df500
-.extern func_0203af24
+.extern ActorDescriptorBatch_RegisterAndSpawn
     .global func_0203b38c
     .type func_0203b38c, @function
 func_0203b38c: ; 0x0203b38c
     ldr ip, .L_0203b398
     mov r3, #0x1
     bx ip
-.L_0203b398: .word func_0203af24
+.L_0203b398: .word ActorDescriptorBatch_RegisterAndSpawn
     .size func_0203b38c, . - func_0203b38c
 
     .global func_0203b39c
@@ -17,7 +17,7 @@ func_0203b39c: ; 0x0203b39c
     ldr ip, .L_0203b3a8
     mov r3, #0x2
     bx ip
-.L_0203b3a8: .word func_0203af24
+.L_0203b3a8: .word ActorDescriptorBatch_RegisterAndSpawn
     .size func_0203b39c, . - func_0203b39c
 
     .global func_0203b3ac

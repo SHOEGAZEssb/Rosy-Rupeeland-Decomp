@@ -3,7 +3,7 @@
 .extern func_02028508
 .extern func_02007f0c
 .extern ActorCollection_QueueActorForRemoval
-.extern func_0203ae14
+.extern ActorSpawnDescriptor_Init
 .extern ActorCollection_SpawnActorFromDescriptor
 .extern Actor_RefreshTerrainHeight
 .extern Actor_GetCachedTerrainHeight
@@ -94,7 +94,7 @@ func_0204bf9c: ; 0x0204bf9c
     str r3, [sp, #0x44]
     str r3, [sp, #0x48]
     ldrh r3, [r4, #0x2]
-    bl func_0203ae14
+    bl ActorSpawnDescriptor_Init
     cmp r5, #0x0
     moveq r0, #0x1
     streqh r0, [sp, #0x9e]

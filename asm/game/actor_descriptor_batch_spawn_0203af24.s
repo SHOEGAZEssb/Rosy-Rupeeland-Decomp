@@ -8,12 +8,12 @@
 .extern func_02007f0c
 .extern func_02028508
 .extern ActorCollection_SpawnActorFromDescriptor
-.extern func_0203ae14
+.extern ActorSpawnDescriptor_Init
 .extern func_0204bf9c
 .extern gGameWork
-    .global func_0203af24
-    .type func_0203af24, @function
-func_0203af24: ; 0x0203af24
+    .global ActorDescriptorBatch_RegisterAndSpawn
+    .type ActorDescriptorBatch_RegisterAndSpawn, @function
+ActorDescriptorBatch_RegisterAndSpawn: ; 0x0203af24
     stmdb sp!, {r4, r5, r6, r7, r8, r9, r10, lr}
     sub sp, sp, #0xb0
     mov r9, r3
@@ -62,7 +62,7 @@ func_0203af24: ; 0x0203af24
     add r0, sp, #0x4c
     mov r1, #0x1
     str r2, [sp, #0x48]
-    bl func_0203ae14
+    bl ActorSpawnDescriptor_Init
     ldr r0, .L_0203b370
     mov r2, #0x0
     ldr r0, [r0, #0x0]
@@ -231,7 +231,7 @@ func_0203af24: ; 0x0203af24
     mov r2, r1
     sub r3, r3, #0x1
     str r4, [sp, #0x48]
-    bl func_0203ae14
+    bl ActorSpawnDescriptor_Init
     ldr r0, .L_0203b370
     mov r2, r4
     ldr r0, [r0, #0x0]
@@ -269,7 +269,7 @@ func_0203af24: ; 0x0203af24
     mov r1, #0x3
     mov r2, #0x4
     str r4, [sp, #0x48]
-    bl func_0203ae14
+    bl ActorSpawnDescriptor_Init
     ldr r0, .L_0203b370
     mov r2, #0x2
     ldr r0, [r0, #0x0]
@@ -308,5 +308,5 @@ func_0203af24: ; 0x0203af24
 .L_0203b384: .word 0x138b
 .L_0203b388: .word 0x4088008
 
-    .size func_0203af24, . - func_0203af24
+    .size ActorDescriptorBatch_RegisterAndSpawn, . - ActorDescriptorBatch_RegisterAndSpawn
 

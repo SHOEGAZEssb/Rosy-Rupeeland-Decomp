@@ -15,7 +15,7 @@ extern "C" {
 extern void *func_02007f0c(void *context, s32 index);
 extern void *func_02028388(s32 index);
 extern void *ActorCollection_SpawnActorFromDescriptor(void *manager, const void *descriptor);
-extern void func_0203ae14(void *destination, ...);
+extern void ActorSpawnDescriptor_Init(void *destination, ...);
 #ifdef __cplusplus
 }
 #endif
@@ -77,7 +77,7 @@ void *func_02050078(s32 key, const void *position, u32 argument)
         alternate = 1;
     }
 
-    func_0203ae14(descriptor, 4, record->actor_type,
+    ActorSpawnDescriptor_Init(descriptor, 4, record->actor_type,
                   record->resource0, record->resource1, record->resource2,
                   alternate, 0,
                   FIELD(s32, position, 4) >> 12,

@@ -23,7 +23,7 @@ extern void ActorCollection_QueueActorForRemoval(void *collection, void *actor);
 extern void *ActorCollection_SpawnActorFromDescriptor(void *collection, const void *descriptor);
 extern void Actor_RefreshTerrainHeight(void *actor);
 extern s32 Actor_GetCachedTerrainHeight(void *actor);
-extern void func_0203ae14(
+extern void ActorSpawnDescriptor_Init(
     void *, u16, u16, s32, s32, s32, u8, u8, u16, u16, u16, u8, u8,
     s32, s32, s32, s32, s32, u16, u8, u8, u8, u8);
 extern void func_02048b94(void *actor, void *object);
@@ -102,7 +102,7 @@ s32 func_0204bf9c(s32 recordIndex, s32 phase, s32 x, s32 y, s32 field2b8)
             ActorCollection_QueueActorForRemoval(collection, replacedActor);
     }
 
-    func_0203ae14(
+    ActorSpawnDescriptor_Init(
         &descriptor, 7, (u16)recordIndex,
         *(u16 *)(record + 0x02), *(u16 *)(record + 0x04),
         *(u16 *)(record + 0x06), 2, 0, (u16)x, (u16)y, 0,

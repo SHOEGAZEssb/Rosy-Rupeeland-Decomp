@@ -16056,7 +16056,7 @@ build build/reports/actor_spawn_descriptor_init_0203ae14.json: objdiff build/dec
   base_object = build/decomp/asm/game/actor_spawn_descriptor_init_0203ae14.o
 build build/reports/actor_spawn_descriptor_init_0203ae14.txt: match_report build/reports/actor_spawn_descriptor_init_0203ae14.json | tools/report_objdiff.py
   report_json = build/reports/actor_spawn_descriptor_init_0203ae14.json
-  report_args = --section .text --function func_0203ae14 --require-exact
+  report_args = --section .text --function ActorSpawnDescriptor_Init --require-exact
 build build/reports/actor_spawn_descriptor_init.txt: phony build/reports/actor_spawn_descriptor_init_0203ae14.txt
 
 build actor_spawn_descriptor_init: phony build/decomp/src/game/actor_spawn_descriptor_init.o build/decomp/asm/game/actor_spawn_descriptor_init_0203ae14.o build/reports/actor_spawn_descriptor_init.txt
@@ -16073,7 +16073,7 @@ build build/reports/actor_descriptor_batch_spawn_0203af24.json: objdiff build/de
   base_object = build/decomp/asm/game/actor_descriptor_batch_spawn_0203af24.o
 build build/reports/actor_descriptor_batch_spawn_0203af24.txt: match_report build/reports/actor_descriptor_batch_spawn_0203af24.json | tools/report_objdiff.py
   report_json = build/reports/actor_descriptor_batch_spawn_0203af24.json
-  report_args = --section .text --function func_0203af24 --require-exact
+  report_args = --section .text --function ActorDescriptorBatch_RegisterAndSpawn --require-exact
 build build/reports/actor_descriptor_batch_spawn.txt: phony build/reports/actor_descriptor_batch_spawn_0203af24.txt
 
 build actor_descriptor_batch_spawn: phony build/decomp/src/game/actor_descriptor_batch_spawn.o build/decomp/asm/game/actor_descriptor_batch_spawn_0203af24.o build/reports/actor_descriptor_batch_spawn.txt

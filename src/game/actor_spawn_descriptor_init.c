@@ -11,7 +11,7 @@
  * +0x5f/+0x60. Return no value. No allocation or hardware effect occurs; the
  * destination must provide at least 0x62 writable bytes.
  */
-void func_0203ae14(
+void ActorSpawnDescriptor_Init(
     void *destination, u16 field00, u16 field02, s32 field04,
     s32 field08, s32 field0c, u8 field10, u8 field11,
     u16 field22, u16 field24, u16 field26, u8 field12, u8 field13,

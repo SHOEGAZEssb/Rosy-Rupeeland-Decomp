@@ -6,22 +6,22 @@ extern void *data_020df500[2];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_0203af24(void *first, void *second, void *descriptors,
+extern void ActorDescriptorBatch_RegisterAndSpawn(void *first, void *second, void *descriptors,
                           s32 category);
 #ifdef __cplusplus
 }
 #endif
 
-/* Forward all three inputs to func_0203af24 with actor category one; return no value. */
+/* Forward all three inputs to ActorDescriptorBatch_RegisterAndSpawn with actor category one; return no value. */
 void func_0203b38c(void *first, void *second, void *descriptors)
 {
-    func_0203af24(first, second, descriptors, 1);
+    ActorDescriptorBatch_RegisterAndSpawn(first, second, descriptors, 1);
 }
 
-/* Forward all three inputs to func_0203af24 with actor category two; return no value. */
+/* Forward all three inputs to ActorDescriptorBatch_RegisterAndSpawn with actor category two; return no value. */
 void func_0203b39c(void *first, void *second, void *descriptors)
 {
-    func_0203af24(first, second, descriptors, 2);
+    ActorDescriptorBatch_RegisterAndSpawn(first, second, descriptors, 2);
 }
 
 /* Store input in recovered callback slot data_020df500+0; return no value. */

@@ -14,7 +14,7 @@ extern "C" {
 extern void *func_02007f0c(void *context, s32 index);
 extern void *func_02028388(s32 index);
 extern void *ActorCollection_SpawnActorFromDescriptor(void *manager, const void *descriptor);
-extern void func_0203ae14(void *destination, ...);
+extern void ActorSpawnDescriptor_Init(void *destination, ...);
 extern void **func_0204f9c0(void);
 extern void func_02062728(void *subobject, void *source);
 extern void func_02062918(void *source, s32 index);
@@ -60,7 +60,7 @@ void *func_0204f62c(const void *position, void *source, s16 timer)
     func_02062918(source, 0);
     resource3 = func_02063190();
 
-    func_0203ae14(descriptor, 4, 20,
+    ActorSpawnDescriptor_Init(descriptor, 4, 20,
                   resource0, resource1, resource2, 2, resource3,
                   FIELD(s32, position, 4) >> 12,
                   FIELD(s32, position, 8) >> 12,

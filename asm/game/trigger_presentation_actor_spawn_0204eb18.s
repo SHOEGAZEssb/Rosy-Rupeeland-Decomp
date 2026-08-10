@@ -2,7 +2,7 @@
 .extern data_021052fc
 .extern func_02007f0c
 .extern ActorCollection_SpawnActorFromDescriptor
-.extern func_0203ae14
+.extern ActorSpawnDescriptor_Init
 .extern func_0204ea8c
 .text
 
@@ -47,7 +47,7 @@ func_0204eb18: ; 0x0204eb18
     add r0, sp, #0x4c
     mov r1, #0x4
     str ip, [sp, #0x48]
-    bl func_0203ae14
+    bl ActorSpawnDescriptor_Init
     ldr r0, .L_0204ebf0
     mov r1, #0x1
     ldr r0, [r0, #0x0]

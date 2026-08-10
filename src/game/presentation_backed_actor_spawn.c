@@ -14,7 +14,7 @@ extern "C" {
 extern void *func_02007f0c(void *context, s32 index);
 extern void func_020050a4(void *destination, const void *source);
 extern void *ActorCollection_SpawnActorFromDescriptor(void *manager, const void *descriptor);
-extern void func_0203ae14(void *destination, ...);
+extern void ActorSpawnDescriptor_Init(void *destination, ...);
 extern void func_0204d82c(void *actor, u16 value_1f2, u16 value_1f4,
                           u8 selection, u8 value_1ef);
 #ifdef __cplusplus
@@ -43,7 +43,7 @@ void *func_0204e2ac(s32 type, u32 value_1f4, u32 value_1f2,
     if (type != 18 && enable_flag_200 != 0)
         flags |= 0x200;
 
-    func_0203ae14(descriptor, 4, type, descriptor_arg0, descriptor_arg1,
+    ActorSpawnDescriptor_Init(descriptor, 4, type, descriptor_arg0, descriptor_arg1,
                   descriptor_arg2, 2, selection,
                   FIELD(s32, position, 4) >> 12,
                   FIELD(s32, position, 8) >> 12,

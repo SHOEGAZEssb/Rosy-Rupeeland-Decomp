@@ -13,7 +13,7 @@ extern "C" {
 #endif
 extern void *func_02007f0c(void *context, s32 index);
 extern void *ActorCollection_SpawnActorFromDescriptor(void *manager, const void *descriptor);
-extern void func_0203ae14(void *destination, ...);
+extern void ActorSpawnDescriptor_Init(void *destination, ...);
 extern void func_0204ea8c(void *actor, u16 selection);
 #ifdef __cplusplus
 }
@@ -34,7 +34,7 @@ void func_0204eb18(u32 type, u32 selection, const void *position,
                    u32 descriptor_arg2, u32 width, u32 height)
 {
     u8 descriptor[100];
-    func_0203ae14(descriptor, 4, type, descriptor_arg0, descriptor_arg1,
+    ActorSpawnDescriptor_Init(descriptor, 4, type, descriptor_arg0, descriptor_arg1,
                   descriptor_arg2, 2, 0,
                   FIELD(s32, position, 4) >> 12,
                   FIELD(s32, position, 8) >> 12,

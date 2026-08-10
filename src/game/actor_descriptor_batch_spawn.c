@@ -13,7 +13,7 @@ typedef struct ActorSpawnDescriptor {
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_0203ae14(
+extern void ActorSpawnDescriptor_Init(
     void *, u16, u16, s32, s32, s32, u8, u8, u16, u16, u16, u8, u8,
     s32, s32, s32, s32, s32, u16, u8, u8, u8, u8);
 extern void *func_02007f0c(void *runtime, s32 category);
@@ -59,7 +59,7 @@ static void *addDescriptor(s32 category, ActorSpawnDescriptor *descriptor,
  * request calls have observable engine state. Unidentified descriptor fields
  * deliberately retain their offset-derived initializer arguments.
  */
-void func_0203af24(void *unused0, void *unused1,
+void ActorDescriptorBatch_RegisterAndSpawn(void *unused0, void *unused1,
                    ActorSpawnDescriptor *inputDescriptors, s32 category)
 {
     ActorSpawnDescriptor descriptor;
@@ -71,7 +71,7 @@ void func_0203af24(void *unused0, void *unused1,
         if (*(void **)(collection + 0x2e7c) == 0) {
             u8 *phaseState = *(u8 **)(data_021052fc + 0x30bc);
             void *actor;
-            func_0203ae14(&descriptor, 1, 0, -1, -1, 2, 0, 0,
+            ActorSpawnDescriptor_Init(&descriptor, 1, 0, -1, -1, 2, 0, 0,
                            *(s32 *)(phaseState + 0x2c),
                            *(s32 *)(phaseState + 0x30), 0, 24, 8,
                            0x02000008, 0, 0, 0, 0, 255, 0, 0, 0, 0);
@@ -123,14 +123,14 @@ void func_0203af24(void *unused0, void *unused1,
         }
         data_0210570c[0] = inputDescriptors;
     } else if (category == 2) {
-        func_0203ae14(&descriptor, 3, 3, 0x138a, 0x1078, 0x138b,
+        ActorSpawnDescriptor_Init(&descriptor, 3, 3, 0x138a, 0x1078, 0x138b,
                        2, 0x1d, 0, 0, 0, 0, 0, 0x04088008,
                        0, 0, 0, 0, 1, 0, 0, 0, 0);
         addDescriptor(2, &descriptor, 0);
         data_0210570c[1] = inputDescriptors;
     }
 
-    func_0203ae14(&descriptor, 3, 4, -1, -1, -1, 0, (u8)-100,
+    ActorSpawnDescriptor_Init(&descriptor, 3, 4, -1, -1, -1, 0, (u8)-100,
                    (u16)-100, 0, 0, 0, 0, 8, 0, 0, 0, 0,
                    255, 0, 0, 0, 0);
     addDescriptor(category, &descriptor, 2);
