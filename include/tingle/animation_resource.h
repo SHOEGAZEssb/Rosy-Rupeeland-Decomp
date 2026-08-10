@@ -27,7 +27,7 @@ typedef char AnimationResourceSizeCheck[
 extern "C" {
 #endif
 
-extern AnimationResourceVTable data_020d4178;
+extern AnimationResourceVTable gAnimationResourceVTable;
 
 AnimationResource *AnimationResource_Init(AnimationResource *self, void *resource0,
                                  void *resource1, void *resource2);

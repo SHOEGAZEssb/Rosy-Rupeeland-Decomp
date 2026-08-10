@@ -30,7 +30,7 @@ UtilAnimationResource *UtilAnimationResource_Init(
     UtilAnimationResource *self, u32 selector, void *owner0, void *owner1,
     u32 variant, void *resource0, void *resource1, void *resource2, s32 origin)
 {
-    self->vtable = &data_020d4168;
+    self->vtable = &gUtilAnimationResourceVTable;
     self->selector = selector;
     self->origin = origin;
     TouchPoint_InitZero(&self->position);

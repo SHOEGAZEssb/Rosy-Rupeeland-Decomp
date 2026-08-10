@@ -1,7 +1,7 @@
 .text
 .global UtilAnimationResource_Init
 .type UtilAnimationResource_Init, @function
-    .extern data_020d4168
+    .extern gUtilAnimationResourceVTable
     .extern TouchPoint_InitZero
     .extern GraphicsSpriteGroup_CreateState
 
@@ -49,5 +49,5 @@ UtilAnimationResource_Init:
     mov r0, r4
     add sp, sp, #4
     ldmia sp!, {r3, r4, r5, r6, pc}
-    .word data_020d4168
+    .word gUtilAnimationResourceVTable
     .size UtilAnimationResource_Init, .-UtilAnimationResource_Init

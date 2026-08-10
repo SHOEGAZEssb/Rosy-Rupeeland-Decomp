@@ -6717,8 +6717,8 @@ data_020d412c kind:data(any) addr:0x020d412c
 data_020d4138 kind:data(any) addr:0x020d4138
 data_020d4144 kind:data(any) addr:0x020d4144
 data_020d4150 kind:data(any) addr:0x020d4150
-data_020d4168 kind:data(any) addr:0x020d4168
-data_020d4178 kind:data(any) addr:0x020d4178
+gUtilAnimationResourceVTable kind:data(any) addr:0x020d4168
+gAnimationResourceVTable kind:data(any) addr:0x020d4178
 data_020d4180 kind:data(any) addr:0x020d4180
 data_020d4190 kind:data(any) addr:0x020d4190
 data_020d4198 kind:data(any) addr:0x020d4198

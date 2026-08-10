@@ -32,7 +32,7 @@ AnimationResource *AnimationResource_Init(AnimationResource *self, void *resourc
                                  void *resource1, void *resource2)
 {
     func_02071e90(&self->entries[0]);
-    self->vtable = &data_020d4178;
+    self->vtable = &gAnimationResourceVTable;
     func_02071ee0(&self->entries[0], data_020f4e18, resource0, resource1,
                   resource2);
     return self;
@@ -44,7 +44,7 @@ AnimationResource *AnimationResource_Init(AnimationResource *self, void *resourc
  */
 AnimationResource *AnimationResource_Destroy(AnimationResource *self)
 {
-    self->vtable = &data_020d4178;
+    self->vtable = &gAnimationResourceVTable;
     func_02071f38(&self->entries[0]);
     func_02071ecc(&self->entries[0]);
     return self;
@@ -56,7 +56,7 @@ AnimationResource *AnimationResource_Destroy(AnimationResource *self)
  */
 AnimationResource *AnimationResource_DestroyAndFree(AnimationResource *self)
 {
-    self->vtable = &data_020d4178;
+    self->vtable = &gAnimationResourceVTable;
     func_02071f38(&self->entries[0]);
     func_02071ecc(&self->entries[0]);
     Heap_Free(self);

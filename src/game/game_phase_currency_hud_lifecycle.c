@@ -22,7 +22,7 @@ extern void GamePhaseCurrencyHud_SetVisible(GamePhaseCurrencyHud *self, s32 valu
 AnimationResource *AnimationResource_InitEmpty(AnimationResource *self)
 {
     func_02071e90(&self->entries[0]);
-    self->vtable = &data_020d4178;
+    self->vtable = &gAnimationResourceVTable;
     return self;
 }
 

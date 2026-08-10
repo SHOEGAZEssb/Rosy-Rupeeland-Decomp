@@ -4,7 +4,7 @@
 
 extern const void *data_020d412c;
 
-UtilAnimationResourceVTable data_020d4168 = {
+UtilAnimationResourceVTable gUtilAnimationResourceVTable = {
     UtilAnimationResource_Destroy,
     UtilAnimationResource_DestroyAndFree,
     0,

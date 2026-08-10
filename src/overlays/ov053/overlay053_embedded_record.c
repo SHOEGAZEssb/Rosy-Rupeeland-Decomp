@@ -3,7 +3,7 @@
 /* Overlay 53 embedded field-effect record initialization. */
 
 extern "C" void func_02071e90(void *record);
-extern "C" u32 data_020d4178[];
+extern "C" u32 gAnimationResourceVTable[];
 
 /*
  * Initialize the embedded record at offset four, install its confirmed SDK
@@ -12,6 +12,6 @@ extern "C" u32 data_020d4178[];
 extern "C" void *func_ov053_0220d600(void *object)
 {
     func_02071e90((u8 *)object + 4);
-    *(u32 **)object = data_020d4178;
+    *(u32 **)object = gAnimationResourceVTable;
     return object;
 }

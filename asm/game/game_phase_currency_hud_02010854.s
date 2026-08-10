@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/game_phase_currency_hud_lifecycle.c.
 .text
-.extern data_020d4178
+.extern gAnimationResourceVTable
 .extern func_02071e90
 
     .global AnimationResource_InitEmpty
@@ -13,6 +13,6 @@ AnimationResource_InitEmpty: ; 0x02010854
     mov r0, r4
     str r1, [r4, #0x0]
     ldmia sp!, {r4, pc}
-L_02010874: .word data_020d4178
+L_02010874: .word gAnimationResourceVTable
     .size AnimationResource_InitEmpty, . - AnimationResource_InitEmpty
 

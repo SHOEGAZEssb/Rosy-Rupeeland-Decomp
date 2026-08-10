@@ -2,7 +2,7 @@
 
 /* Retail CkkAnmRes virtual destructor pair. */
 
-AnimationResourceVTable data_020d4178 = {
+AnimationResourceVTable gAnimationResourceVTable = {
     AnimationResource_Destroy,
     AnimationResource_DestroyAndFree,
 };
