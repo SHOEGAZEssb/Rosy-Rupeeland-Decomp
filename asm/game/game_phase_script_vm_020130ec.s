@@ -11,8 +11,8 @@
 .extern func_020adc40
 .extern func_020befec
 
-    .global func_020130ec
-func_020130ec: ; 0x020130ec
+    .global GamePhaseActorScriptVm_StartMovement
+GamePhaseActorScriptVm_StartMovement: ; 0x020130ec
     stmdb sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, lr}
     sub sp, sp, #0x50
     mov r9, r0
@@ -218,4 +218,4 @@ L_020133d4:
     mov r0, #0x0
     add sp, sp, #0x50
     ldmia sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, pc}
-    .size func_020130ec, . - func_020130ec
+    .size GamePhaseActorScriptVm_StartMovement, . - GamePhaseActorScriptVm_StartMovement

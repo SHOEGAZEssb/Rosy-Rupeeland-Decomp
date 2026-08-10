@@ -74,7 +74,7 @@ s32 func_02013030(GamePhaseActorScriptVm *self);
 s32 func_02013074(GamePhaseActorScriptVm *self);
 s32 func_02013094(GamePhaseActorScriptVm *self);
 s32 func_020130c0(GamePhaseActorScriptVm *self);
-s32 func_020130ec(GamePhaseActorScriptVm *self);
+s32 GamePhaseActorScriptVm_StartMovement(GamePhaseActorScriptVm *self);
 s32 GamePhaseActorScriptVm_WaitForMovementCompletion(GamePhaseActorScriptVm *self);
 s32 GamePhaseActorScriptVm_IsMovementActive(GamePhaseActorScriptVm *self);
 s32 GamePhaseActorScriptVm_SetField5cLowHalfword(GamePhaseActorScriptVm *self);

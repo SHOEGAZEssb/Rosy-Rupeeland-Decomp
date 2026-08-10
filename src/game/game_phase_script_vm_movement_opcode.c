@@ -37,7 +37,7 @@ static fx32 squareFx32(fx32 value)
  * clears actor flag 1, pushes the chosen duration, and returns zero. The exact
  * semantic names of the movement modes and helper object remain unconfirmed.
  */
-s32 func_020130ec(GamePhaseActorScriptVm *self)
+s32 GamePhaseActorScriptVm_StartMovement(GamePhaseActorScriptVm *self)
 {
     u32 useZ = GamePhaseScriptVm_Pop(&self->base);
     u32 mode = GamePhaseScriptVm_Pop(&self->base);
