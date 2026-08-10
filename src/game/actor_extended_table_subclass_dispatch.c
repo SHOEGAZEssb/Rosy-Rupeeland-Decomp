@@ -23,7 +23,7 @@ extern s32 func_02040f4c(void *actor, void *descriptorRecord);
  * zero falls through. The fallthrough path sets +0x260 bit 0x20 and returns
  * func_02040f4c(actor,descriptorRecord). Actor and callback state may change.
  */
-s32 func_02044e08(void *self, void *descriptorRecord)
+s32 ActorExtendedTableCyclic_UpdateStagedCounters(void *self, void *descriptorRecord)
 {
     u8 *actor = (u8 *)self;
     if (*(void **)(actor + 0x2a4) != 0) {

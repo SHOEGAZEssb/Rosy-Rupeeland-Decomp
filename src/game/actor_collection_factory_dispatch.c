@@ -56,7 +56,7 @@ DECLARE_ACTOR_CTOR(ActorExtendedType2_InitDuplicate);
 DECLARE_ACTOR_CTOR(func_02043830);
 DECLARE_ACTOR_CTOR(ActorExtendedTransform_InitDuplicate);
 DECLARE_ACTOR_CTOR(ActorExtendedTable_InitDuplicate);
-DECLARE_ACTOR_CTOR(func_02044d84);
+DECLARE_ACTOR_CTOR(ActorExtendedTableCyclic_Init);
 DECLARE_ACTOR_CTOR(func_020455bc);
 DECLARE_ACTOR_CTOR(func_0204d068);
 DECLARE_ACTOR_CTOR(func_0204d284);
@@ -149,7 +149,7 @@ static const ActorFactorySpec sKind2Specs[36] = {
     SPEC(0x2b0, func_ov096_02218310), SPEC(0x2a4, func_ov080_02212af4),
     SPEC(0x2c8, func_ov078_02214090), SPEC(0x2e8, func_ov097_02217804),
     SPEC(0x2bc, func_ov075_022159c4), SPEC(0x2b8, func_ov075_02215068),
-    SPEC(0x324, func_ov087_022177e0), SPEC(0x2ac, func_02044d84),
+    SPEC(0x324, func_ov087_022177e0), SPEC(0x2ac, ActorExtendedTableCyclic_Init),
     SPEC(0x2a0, func_ov076_022140a4), SPEC(0x2ac, func_ov075_02212ae0)
 };
 

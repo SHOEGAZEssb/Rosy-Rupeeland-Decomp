@@ -18,7 +18,7 @@
 .extern func_02043830
 .extern ActorExtendedTransform_InitDuplicate
 .extern ActorExtendedTable_InitDuplicate
-.extern func_02044d84
+.extern ActorExtendedTableCyclic_Init
 .extern func_020455bc
 .extern func_0204d068
 .extern func_0204d284
@@ -507,7 +507,7 @@ ActorCollection_SpawnActorFromDescriptor: ; 0x0202ecd0
     movs r4, r0
     beq .L_0202f928
     mov r1, r5
-    bl func_02044d84
+    bl ActorExtendedTableCyclic_Init
     mov r4, r0
     b .L_0202f928
 .L_0202f2dc:

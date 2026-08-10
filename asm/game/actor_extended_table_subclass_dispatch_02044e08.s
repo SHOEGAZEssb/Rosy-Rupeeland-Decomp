@@ -1,9 +1,9 @@
 ; Matching retail form; see src/game/actor_extended_table_subclass_dispatch.c.
 .text
 .extern func_02040f4c
-.global func_02044e08
-.type func_02044e08, @function
-func_02044e08: ; 0x02044e08
+.global ActorExtendedTableCyclic_UpdateStagedCounters
+.type ActorExtendedTableCyclic_UpdateStagedCounters, @function
+ActorExtendedTableCyclic_UpdateStagedCounters: ; 0x02044e08
     stmdb sp!, {r3, r4, r5, lr}
     mov r5, r0
     ldr r0, [r5, #0x2a4]
@@ -138,4 +138,4 @@ func_02044e08: ; 0x02044e08
     str r2, [r5, #0x260]
     bl func_02040f4c
     ldmia sp!, {r3, r4, r5, pc}
-.size func_02044e08, . - func_02044e08
+.size ActorExtendedTableCyclic_UpdateStagedCounters, . - ActorExtendedTableCyclic_UpdateStagedCounters

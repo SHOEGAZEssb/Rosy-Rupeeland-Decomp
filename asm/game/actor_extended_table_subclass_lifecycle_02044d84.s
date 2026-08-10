@@ -5,15 +5,15 @@
 .extern ActorExtendedType2_Destroy
 .extern ActorExtendedTable_Init
 .extern ActorExtendedTable_ResetStageCounters
-.global func_02044d84
-.type func_02044d84, @function
-.global func_02044db4
-.type func_02044db4, @function
-.global func_02044dc8
-.type func_02044dc8, @function
-.global func_02044de4
-.type func_02044de4, @function
-func_02044d84: ; 0x02044d84
+.global ActorExtendedTableCyclic_Init
+.type ActorExtendedTableCyclic_Init, @function
+.global ActorExtendedTableCyclic_Destroy
+.type ActorExtendedTableCyclic_Destroy, @function
+.global ActorExtendedTableCyclic_DestroyAndFree
+.type ActorExtendedTableCyclic_DestroyAndFree, @function
+.global ActorExtendedTableCyclic_ResetStageCycle
+.type ActorExtendedTableCyclic_ResetStageCycle, @function
+ActorExtendedTableCyclic_Init: ; 0x02044d84
     stmdb sp!, {r4, lr}
     mov r4, r0
     bl ActorExtendedTable_Init
@@ -27,16 +27,16 @@ func_02044d84: ; 0x02044d84
     ldmia sp!, {r4, pc}
 .L_02044db0: .word data_020e0b70
 
-.size func_02044d84, . - func_02044d84
-func_02044db4: ; 0x02044db4
+.size ActorExtendedTableCyclic_Init, . - ActorExtendedTableCyclic_Init
+ActorExtendedTableCyclic_Destroy: ; 0x02044db4
     stmdb sp!, {r4, lr}
     mov r4, r0
     bl ActorExtendedType2_Destroy
     mov r0, r4
     ldmia sp!, {r4, pc}
 
-.size func_02044db4, . - func_02044db4
-func_02044dc8: ; 0x02044dc8
+.size ActorExtendedTableCyclic_Destroy, . - ActorExtendedTableCyclic_Destroy
+ActorExtendedTableCyclic_DestroyAndFree: ; 0x02044dc8
     stmdb sp!, {r4, lr}
     mov r4, r0
     bl ActorExtendedType2_Destroy
@@ -45,8 +45,8 @@ func_02044dc8: ; 0x02044dc8
     mov r0, r4
     ldmia sp!, {r4, pc}
 
-.size func_02044dc8, . - func_02044dc8
-func_02044de4: ; 0x02044de4
+.size ActorExtendedTableCyclic_DestroyAndFree, . - ActorExtendedTableCyclic_DestroyAndFree
+ActorExtendedTableCyclic_ResetStageCycle: ; 0x02044de4
     stmdb sp!, {r4, lr}
     mov r4, r0
     bl ActorExtendedTable_ResetStageCounters
@@ -56,4 +56,4 @@ func_02044de4: ; 0x02044de4
     mov r1, #0xf
     strh r1, [r0, #0xaa]
     ldmia sp!, {r4, pc}
-.size func_02044de4, . - func_02044de4
+.size ActorExtendedTableCyclic_ResetStageCycle, . - ActorExtendedTableCyclic_ResetStageCycle
