@@ -17,7 +17,7 @@ extern void *func_0200af04(void *effectState, s32 index);
 extern void func_0201b180(void *state, void *value);
 extern void func_0201b228(void *state);
 extern void Actor_UpdateAttachmentDirectionFromVector(void *actor, s32 x, s32 y);
-extern void func_0202d494(void *collection, void *actor);
+extern void ActorCollection_QueueActorForRemoval(void *collection, void *actor);
 #ifdef __cplusplus
 }
 #endif
@@ -68,7 +68,7 @@ s32 func_02034164(void *self)
     }
 
     if ((*(u32 *)(actor + 0x14) & 0x20) != 0) {
-        func_0202d494(Actor_GetCollection(actor), actor);
+        ActorCollection_QueueActorForRemoval(Actor_GetCollection(actor), actor);
         return 0;
     }
     return 1;

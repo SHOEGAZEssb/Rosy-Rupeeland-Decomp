@@ -14,7 +14,7 @@ extern void *data_0210579c[];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *func_0202d494(void *value, void *actor);
+extern void *ActorCollection_QueueActorForRemoval(void *value, void *actor);
 extern void *Actor_GetCollection(void *actor);
 extern void func_0204f990(void);
 extern void func_02071d4c(void *archive, void *resource);
@@ -93,7 +93,7 @@ void func_0204fb9c(void)
 /*
  * Ignore all register inputs. For each occupied actor whose low state bits at
  * 0x1F0 equal two, set presentation flags 0x14, change the state to three, and
- * finish it through Actor_GetCollection/func_0202d494. Finally set global flag 0x10
+ * finish it through Actor_GetCollection/ActorCollection_QueueActorForRemoval. Finally set global flag 0x10
  * at data_021052fc+0x30B8. Returns nothing; actor/global state changes without
  * direct hardware effects.
  */
@@ -106,7 +106,7 @@ void func_0204fbdc(void)
             FIELD(u16, FIELD(void *, actor, 0x54), 0x24) |= 0x14;
             FIELD(u16, actor, 0x1f0) =
                 (FIELD(u16, actor, 0x1f0) & (u16)~3) | 3;
-            func_0202d494(Actor_GetCollection(actor), actor);
+            ActorCollection_QueueActorForRemoval(Actor_GetCollection(actor), actor);
         }
     }
     FIELD(u32, data_021052fc, 0x30b8) |= 0x10;

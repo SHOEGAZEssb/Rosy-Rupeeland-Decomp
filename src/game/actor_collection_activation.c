@@ -1,7 +1,7 @@
 #include "tingle/types.h"
 
 /*
- * Prune inactive actors and populate the collection's active-pointer array.
+ * Prune inactive actors and populate the collection's deferred-removal queue.
  * The routines also migrate a reserved type-seven actor into the ordinary
  * slot range while preserving relationship notifications.
  */
@@ -26,7 +26,7 @@ struct CollectionActor {
 typedef struct ActorCollectionActivation {
     CollectionActor *actors_0000[128];
     void *relations_0200[5][128];
-    CollectionActor *active_0c00[128];
+    CollectionActor *removalQueue_0c00[128];
     u8 field_0e00[0x2074];
     s32 slotLimit_2e74;
     u32 flags_2e78;
@@ -79,9 +79,9 @@ void func_0202d3cc(ActorCollectionActivation *self)
  * If actor is the reserved type-seven actor, notify every related actor for
  * slot one, clear those matrix bytes, re-register actor into the ordinary
  * range, and clear the old reserved slot/pointer. Then publish actor in
- * active_0c00 at its signed byte slot and set flags_2e78 bit zero.
+ * removalQueue_0c00 at its signed byte slot and set flags_2e78 bit zero.
  */
-void func_0202d494(ActorCollectionActivation *self, CollectionActor *actor)
+void ActorCollection_QueueActorForRemoval(ActorCollectionActivation *self, CollectionActor *actor)
 {
     s32 i;
 
@@ -96,15 +96,15 @@ void func_0202d494(ActorCollectionActivation *self, CollectionActor *actor)
         self->actors_0000[1] = 0;
         self->secondaryActor_2e80 = 0;
     }
-    self->active_0c00[actor->slot_48] = actor;
+    self->removalQueue_0c00[actor->slot_48] = actor;
     self->flags_2e78 |= 1;
 }
 
 /*
  * Publish every registered actor whose group_50 equals group into its same
- * active-array slot. If at least one actor matched, set flags_2e78 bit zero.
+ * removal-queue slot. If at least one actor matched, set flags_2e78 bit zero.
  */
-void func_0202d568(ActorCollectionActivation *self, s32 group)
+void ActorCollection_QueueGroupForRemoval(ActorCollectionActivation *self, s32 group)
 {
     s32 i;
     s32 matches = 0;
@@ -112,7 +112,7 @@ void func_0202d568(ActorCollectionActivation *self, s32 group)
     for (i = 0; i < self->slotLimit_2e74; i++) {
         CollectionActor *actor = self->actors_0000[i];
         if (actor && actor->group_50 == group) {
-            self->active_0c00[i] = actor;
+            self->removalQueue_0c00[i] = actor;
             matches++;
         }
     }

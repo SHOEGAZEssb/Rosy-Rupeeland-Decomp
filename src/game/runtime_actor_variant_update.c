@@ -16,7 +16,7 @@ extern void func_0201273c(void *state, s32 value);
 extern void func_0201b180(void *state, void *value);
 extern void func_0201b228(void *state);
 extern s32 func_0201b23c(void *state);
-extern void func_0202d494(void *runtime, void *actor);
+extern void ActorCollection_QueueActorForRemoval(void *runtime, void *actor);
 extern void func_0202eba4(void *runtime, void *anchor, void *actor);
 extern void func_02031748(void *actor);
 extern void *Actor_GetCollection(void *actor);
@@ -36,7 +36,7 @@ extern u8 *Actor_GetCollectionBySlot(void *actor, s32 category);
  * +0x2e7c anchor, runtime from Actor_GetCollection, and the actor. Then clear +0xe8,
  * copy the registry
  * value from func_0200af04 into embedded state +0xec, and advance that state.
- * Finally, actor +0x14 bit 0x20 removes the actor through func_0202d494.
+ * Finally, actor +0x14 bit 0x20 removes the actor through ActorCollection_QueueActorForRemoval.
  * No value is returned. Base, embedded state, registry, and collection
  * membership may change; there are no direct hardware effects.
  */
@@ -64,5 +64,5 @@ void func_0204d308(void *self)
         func_0201b228(state);
     }
     if ((*(u32 *)(actor + 0x14) & 0x20) != 0)
-        func_0202d494(Actor_GetCollection(actor), actor);
+        ActorCollection_QueueActorForRemoval(Actor_GetCollection(actor), actor);
 }

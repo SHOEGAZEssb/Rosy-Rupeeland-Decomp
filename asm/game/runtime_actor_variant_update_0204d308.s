@@ -9,7 +9,7 @@
 .extern func_0200af04
 .extern func_0201b180
 .extern func_0201b228
-.extern func_0202d494
+.extern ActorCollection_QueueActorForRemoval
 .extern data_02105310
 .text
     .global func_0204d308
@@ -65,7 +65,7 @@ func_0204d308: ; 0x0204d308
     mov r0, r4
     bl Actor_GetCollection
     mov r1, r4
-    bl func_0202d494
+    bl ActorCollection_QueueActorForRemoval
     ldmia sp!, {r3, r4, r5, pc}
 .L_0204d3d4: .word data_02105310
 .size func_0204d308, . - func_0204d308

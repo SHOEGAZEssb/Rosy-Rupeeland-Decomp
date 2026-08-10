@@ -5,7 +5,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_0202d494(void *handle, void *actor);
+extern void ActorCollection_QueueActorForRemoval(void *handle, void *actor);
 extern void *Actor_GetCollection(void *actor);
 extern void func_02050260(void *actor);
 #ifdef __cplusplus
@@ -16,13 +16,13 @@ extern void func_02050260(void *actor);
 
 /*
  * Input is an impulse actor. Obtains its recovered handle through Actor_GetCollection,
- * notifies func_0202d494 with the handle and actor, then invokes the recovered
+ * notifies ActorCollection_QueueActorForRemoval with the handle and actor, then invokes the recovered
  * effect helper func_02050260. Returns nothing; engine resources and effects
  * may change, but hardware is not accessed directly.
  */
 void func_020520b4(void *actor)
 {
-    func_0202d494(Actor_GetCollection(actor), actor);
+    ActorCollection_QueueActorForRemoval(Actor_GetCollection(actor), actor);
     func_02050260(actor);
 }
 

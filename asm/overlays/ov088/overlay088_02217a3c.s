@@ -3,7 +3,7 @@
 .extern data_020ed470
 .extern data_021056f0
 .extern data_ov088_0221b928
-.extern func_0202d494
+.extern ActorCollection_QueueActorForRemoval
 .extern Actor_GetCollisionBounds
 .extern Actor_GetCollection
 .extern func_0203b514
@@ -137,7 +137,7 @@ func_ov088_02217a3c:
     mov r0, r5
     bl Actor_GetCollection
     mov r1, r5
-    bl func_0202d494
+    bl ActorCollection_QueueActorForRemoval
 .L_02217c24:
     mov r0, r5
     add sp, sp, #0xc

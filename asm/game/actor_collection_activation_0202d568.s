@@ -1,9 +1,9 @@
 ; Matching retail form; see src/game/actor_collection_activation.c.
 .text
 
-    .global func_0202d568
-    .type func_0202d568, @function
-func_0202d568: ; 0x0202d568
+    .global ActorCollection_QueueGroupForRemoval
+    .type ActorCollection_QueueGroupForRemoval, @function
+ActorCollection_QueueGroupForRemoval: ; 0x0202d568
     stmdb sp!, {r4, lr}
     mov lr, #0x0
     mov r4, lr
@@ -31,4 +31,4 @@ func_0202d568: ; 0x0202d568
     orrne r1, r1, #0x1
     strne r1, [r0, #0xe78]
     ldmia sp!, {r4, pc}
-    .size func_0202d568, . - func_0202d568
+    .size ActorCollection_QueueGroupForRemoval, . - ActorCollection_QueueGroupForRemoval

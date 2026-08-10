@@ -16,7 +16,7 @@ extern "C" {
 #endif
 extern void *SceneManager_GetCurrent(void *manager);
 extern void *func_02009d78(void *object);
-extern void *func_0202d494(void *value, void *actor);
+extern void *ActorCollection_QueueActorForRemoval(void *value, void *actor);
 extern void *Actor_GetCollection(void *actor);
 extern s32 Actor_QueryTerrainHeight(void *actor, s32 x, s32 y);
 extern void func_020050a4(void *destination, const void *source);
@@ -42,7 +42,7 @@ static s32 fx_mul(s32 a, s32 b)
 static void finish_actor(void *actor)
 {
     void *prepared = Actor_GetCollection(actor);
-    func_0202d494(prepared, actor);
+    ActorCollection_QueueActorForRemoval(prepared, actor);
     FIELD(u16, actor, 0x1ec) = 3;
 }
 

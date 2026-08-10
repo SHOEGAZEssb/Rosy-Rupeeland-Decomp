@@ -12,7 +12,7 @@
 .extern func_0201ded4
 .extern func_0201e0ec
 .extern func_02022cb0
-.extern func_0202d494
+.extern ActorCollection_QueueActorForRemoval
 .extern Actor_GetCollection
 .extern func_02038d38
 .extern func_02072b68
@@ -157,7 +157,7 @@ func_0204df40: ; 0x0204df40
     strh r1, [r2, #0x24]
     bl Actor_GetCollection
     mov r1, r6
-    bl func_0202d494
+    bl ActorCollection_QueueActorForRemoval
     add r0, r6, #0x100
     mov r1, #0x3
     strh r1, [r0, #0xec]
@@ -198,7 +198,7 @@ func_0204df40: ; 0x0204df40
     strh r1, [r2, #0x24]
     bl Actor_GetCollection
     mov r1, r6
-    bl func_0202d494
+    bl ActorCollection_QueueActorForRemoval
     add r0, r6, #0x100
     mov r1, #0x3
     strh r1, [r0, #0xec]

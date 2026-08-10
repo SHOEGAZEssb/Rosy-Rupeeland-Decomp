@@ -11,7 +11,7 @@ extern void func_02004fe0(void *vector);
 extern void func_02005058(void *vector);
 extern void func_020050a4(void *destination, const void *source);
 extern s32 func_0200b04c(void *state);
-extern void func_0202d494(void *handle, void *actor);
+extern void ActorCollection_QueueActorForRemoval(void *handle, void *actor);
 extern void *Actor_GetCollection(void *actor);
 extern void func_02050260(void *actor);
 extern void func_02050560(void *actor, void *target, ...);
@@ -58,7 +58,7 @@ void func_020515fc(void *actor, void *target)
     FIELD(u32, actor, 0x10) |= 0x1f0000;
     FIELD(u16, actor, 0x1f8) = 0;
     FIELD(u32, actor, 0x14) &= 0xff7fffff;
-    func_0202d494(Actor_GetCollection(actor), actor);
+    ActorCollection_QueueActorForRemoval(Actor_GetCollection(actor), actor);
     func_02050260(actor);
     func_02050560(actor, target);
     func_02005058(vector);

@@ -4,7 +4,7 @@
 .extern func_02005058
 .extern func_0200b04c
 .extern func_0200b2c0
-.extern func_0202d494
+.extern ActorCollection_QueueActorForRemoval
 .extern func_020328d0
 .extern Actor_GetCollection
 .extern func_02050260
@@ -69,7 +69,7 @@ func_02050d0c:
     str r1, [r5, #0x14]
     bl Actor_GetCollection
     mov r1, r5
-    bl func_0202d494
+    bl ActorCollection_QueueActorForRemoval
     cmp r4, #0x0
     beq .L_02050e1c
     ldr r1, [r4, #0x24]

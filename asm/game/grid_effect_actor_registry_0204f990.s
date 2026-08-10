@@ -2,7 +2,7 @@
 .extern data_021052fc
 .extern data_02105790
 .extern data_0210579c
-.extern func_0202d494
+.extern ActorCollection_QueueActorForRemoval
 .extern Actor_GetCollection
 .text
 
@@ -51,7 +51,7 @@ func_0204f9c0: ; 0x0204f9c0
     mov r0, r5
     bl Actor_GetCollection
     mov r1, r5
-    bl func_0202d494
+    bl ActorCollection_QueueActorForRemoval
     ldr r1, .L_0204fa44
     mov r0, r4
     ldr r1, [r1, #0x0]

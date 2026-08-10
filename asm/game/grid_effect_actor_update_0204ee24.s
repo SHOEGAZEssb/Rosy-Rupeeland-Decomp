@@ -7,7 +7,7 @@
 .extern func_020050a4
 .extern func_020050c8
 .extern func_02005a00
-.extern func_0202d494
+.extern ActorCollection_QueueActorForRemoval
 .extern Actor_GetCollection
 .extern Actor_QueryTerrainHeight
 .extern func_0204aff4
@@ -132,7 +132,7 @@ func_0204ee24: ; 0x0204ee24
     mov r0, r5
     bl Actor_GetCollection
     mov r1, r5
-    bl func_0202d494
+    bl ActorCollection_QueueActorForRemoval
     add r0, r5, #0x100
     ldrh r2, [r0, #0xf0]
     ldr r1, .L_0204f464
@@ -161,7 +161,7 @@ func_0204ee24: ; 0x0204ee24
     mov r0, r5
     bl Actor_GetCollection
     mov r1, r5
-    bl func_0202d494
+    bl ActorCollection_QueueActorForRemoval
     ldr r0, .L_0204f464
     add r1, r5, #0x100
     ldr r0, [r0, #0x0]
@@ -210,7 +210,7 @@ func_0204ee24: ; 0x0204ee24
     mov r0, r5
     bl Actor_GetCollection
     mov r1, r5
-    bl func_0202d494
+    bl ActorCollection_QueueActorForRemoval
     ldr r0, .L_0204f464
     add r1, r5, #0x100
     ldr r0, [r0, #0x0]
@@ -364,7 +364,7 @@ func_0204ee24: ; 0x0204ee24
     strh r1, [r2, #0x24]
     bl Actor_GetCollection
     mov r1, r5
-    bl func_0202d494
+    bl ActorCollection_QueueActorForRemoval
     ldr r0, .L_0204f464
     add r1, r5, #0x100
     ldr r0, [r0, #0x0]

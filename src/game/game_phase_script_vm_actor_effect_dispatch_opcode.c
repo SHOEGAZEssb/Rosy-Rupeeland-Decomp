@@ -17,7 +17,7 @@ extern u8 ActorBounds_GetWidth(const void *value);
 extern u8 ActorBounds_GetHeight(const void *value);
 extern void func_020066a4(void *destination, const void *source,
                           const void *transform);
-extern void *func_0202d568(void *collection, s32 index);
+extern void *ActorCollection_QueueGroupForRemoval(void *collection, s32 index);
 extern void *func_0202ecd0(void *collection, const void *descriptor);
 extern void ActorCollection_SpawnDescriptorsBySelector(
     void *collection, void *descriptors, s32 selector);
@@ -183,7 +183,7 @@ s32 func_0201939c(GamePhaseActorScriptVm *self)
         break;
     }
     case 5:
-        func_0202d568(Actor_GetCollection(self->actor_84), p6);
+        ActorCollection_QueueGroupForRemoval(Actor_GetCollection(self->actor_84), p6);
         break;
     case 6: {
         VecFx32Object first;

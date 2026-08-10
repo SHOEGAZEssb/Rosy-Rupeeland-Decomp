@@ -2,9 +2,9 @@
 .text
 .extern ActorCollection_UnregisterActor
 
-    .global func_0202d5c8
-    .type func_0202d5c8, @function
-func_0202d5c8: ; 0x0202d5c8
+    .global ActorCollection_DrainRemovalQueue
+    .type ActorCollection_DrainRemovalQueue, @function
+ActorCollection_DrainRemovalQueue: ; 0x0202d5c8
     stmdb sp!, {r4, r5, r6, r7, r8, lr}
     mov r5, r0
     add r6, r5, #0x2000
@@ -39,4 +39,4 @@ func_0202d5c8: ; 0x0202d5c8
     cmp r4, r0
     blt .L_0202d5f0
     ldmia sp!, {r4, r5, r6, r7, r8, pc}
-    .size func_0202d5c8, . - func_0202d5c8
+    .size ActorCollection_DrainRemovalQueue, . - ActorCollection_DrainRemovalQueue

@@ -12,7 +12,7 @@
 .extern func_02012704
 .extern func_020127f8
 .extern func_02019890
-.extern func_0202d568
+.extern ActorCollection_QueueGroupForRemoval
 .extern func_0202ecd0
 .extern ActorCollection_SpawnDescriptorsBySelector
 .extern ActorCollection_FindActorByDescriptorValue
@@ -330,7 +330,7 @@ L_02019804:
     ldr r0, [r9, #0x84]
     bl Actor_GetCollection
     mov r1, r6
-    bl func_0202d568
+    bl ActorCollection_QueueGroupForRemoval
     b L_02019878
 L_02019818:
     mov r1, r6, lsl #0x10

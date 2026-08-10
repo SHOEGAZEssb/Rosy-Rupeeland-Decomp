@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/tracked_resource_actor_sequence_complete.c.
 .extern data_021052fc
 .extern func_020099c0
-.extern func_0202d494
+.extern ActorCollection_QueueActorForRemoval
 .extern Actor_GetCollection
 .extern func_02050260
 .extern func_020505f0
@@ -12,7 +12,7 @@ func_02052254:
     mov r4, r0
     bl Actor_GetCollection
     mov r1, r4
-    bl func_0202d494
+    bl ActorCollection_QueueActorForRemoval
     mov r0, r4
     bl func_02050260
     ldr r0, [r4, #0x10]

@@ -9,7 +9,7 @@
 .extern func_0201b180
 .extern func_0201b228
 .extern func_0201b23c
-.extern func_0202d494
+.extern ActorCollection_QueueActorForRemoval
 .extern func_0202eba4
 .extern Actor_UpdateAttachmentDirectionFromVector
 .extern Actor_GetCollection
@@ -75,7 +75,7 @@ func_02034164: ; 0x02034164
     mov r0, r4
     bl Actor_GetCollection
     mov r1, r4
-    bl func_0202d494
+    bl ActorCollection_QueueActorForRemoval
     mov r0, #0x0
     ldmia sp!, {r3, r4, r5, pc}
 .L_02034250:

@@ -3,7 +3,7 @@
 .extern GameWork_ClearFlag
 .extern Sound_Play
 .extern data_021052fc
-.extern func_0202d494
+.extern ActorCollection_QueueActorForRemoval
 .extern Actor_GetCollection
 .extern func_020390c8
 .extern func_020393f4
@@ -80,7 +80,7 @@ func_ov090_0221a784:
     strh r1, [r2, #0x24]
     bl Actor_GetCollection
     mov r1, r5
-    bl func_0202d494
+    bl ActorCollection_QueueActorForRemoval
     ldr r4, [r6, #0x200]
     ldr r0, .L_0221a8b8
     ldrh r3, [r4, #0x24]

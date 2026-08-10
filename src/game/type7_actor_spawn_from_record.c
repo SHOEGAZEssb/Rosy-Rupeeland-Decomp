@@ -19,7 +19,7 @@ extern "C" {
 extern void *func_02007f0c(void *runtime, s32 category);
 extern void *func_02025d14(void *state);
 extern u32 func_02028508(s32 phase);
-extern void func_0202d494(void *collection, void *actor);
+extern void ActorCollection_QueueActorForRemoval(void *collection, void *actor);
 extern void *func_0202ecd0(void *collection, const void *descriptor);
 extern void Actor_RefreshTerrainHeight(void *actor);
 extern s32 Actor_GetCachedTerrainHeight(void *actor);
@@ -99,7 +99,7 @@ s32 func_0204bf9c(s32 recordIndex, s32 phase, s32 x, s32 y, s32 field2b8)
     if ((recordFlags & 0x40) == 0) {
         replacedActor = *(void **)(data_021052fc + 0x2ea8);
         if (replacedActor != 0)
-            func_0202d494(collection, replacedActor);
+            ActorCollection_QueueActorForRemoval(collection, replacedActor);
     }
 
     func_0203ae14(

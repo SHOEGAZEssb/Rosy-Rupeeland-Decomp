@@ -18,7 +18,7 @@ extern void *SceneManager_GetCurrent(void *manager);
 extern void func_020050a4(void *destination, const void *source);
 extern void func_020050c8(void *destination, const void *source);
 extern void func_02005a00(void *presentation, s32 x, s32 y, s32 mode);
-extern void *func_0202d494(void *value, void *actor);
+extern void *ActorCollection_QueueActorForRemoval(void *value, void *actor);
 extern void *Actor_GetCollection(void *actor);
 extern s32 Actor_QueryTerrainHeight(void *actor, s32 x, s32 y);
 extern s32 func_0204aff4(void *actor);
@@ -54,7 +54,7 @@ static void set_state(void *actor, u16 state)
 
 static void finish_actor(void *actor)
 {
-    func_0202d494(Actor_GetCollection(actor), actor);
+    ActorCollection_QueueActorForRemoval(Actor_GetCollection(actor), actor);
     FIELD(u32, data_021052fc, 0x30b8) |= 0x10;
     set_state(actor, 3);
 }

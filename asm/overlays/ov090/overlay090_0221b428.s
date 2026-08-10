@@ -9,7 +9,7 @@
 .extern func_02005580
 .extern func_02007f0c
 .extern func_0201e0ec
-.extern func_0202d494
+.extern ActorCollection_QueueActorForRemoval
 .extern func_020349b8
 .extern func_0204e2ac
 .extern func_020594ec
@@ -50,7 +50,7 @@ func_ov090_0221b428:
     mov r1, r11
     bl func_02007f0c
     mov r1, r9
-    bl func_0202d494
+    bl ActorCollection_QueueActorForRemoval
 .L_0221b494:
     add r10, r10, #0x1
 .L_0221b498:

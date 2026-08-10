@@ -4,7 +4,7 @@
 .extern data_ov095_0221cba8
 .extern data_ov095_0221cbf8
 .extern func_02007f0c
-.extern func_0202d494
+.extern ActorCollection_QueueActorForRemoval
 .extern Actor_GetCollection
 .extern func_0204cfa4
 
@@ -86,7 +86,7 @@ func_ov095_0221af0c:
     mov r0, r10
     bl Actor_GetCollection
     mov r1, r5
-    bl func_0202d494
+    bl ActorCollection_QueueActorForRemoval
 .L_0221b030:
     add r6, r6, #0x1
 .L_0221b034:

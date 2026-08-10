@@ -5,9 +5,9 @@
 .extern ActorPairMatrix_Clear
 .extern ActorCollection_RegisterActor
 
-    .global func_0202d494
-    .type func_0202d494, @function
-func_0202d494: ; 0x0202d494
+    .global ActorCollection_QueueActorForRemoval
+    .type ActorCollection_QueueActorForRemoval, @function
+ActorCollection_QueueActorForRemoval: ; 0x0202d494
     stmdb sp!, {r3, r4, r5, r6, r7, r8, r9, lr}
     mov r4, r1
     ldrb r1, [r4, #0x4d]
@@ -64,4 +64,4 @@ func_0202d494: ; 0x0202d494
     orr r1, r1, #0x1
     str r1, [r0, #0xe78]
     ldmia sp!, {r3, r4, r5, r6, r7, r8, r9, pc}
-    .size func_0202d494, . - func_0202d494
+    .size ActorCollection_QueueActorForRemoval, . - ActorCollection_QueueActorForRemoval

@@ -5,7 +5,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_0202d494(void *handle, void *actor);
+extern void ActorCollection_QueueActorForRemoval(void *handle, void *actor);
 extern void Actor_UpdateAnimationState(void *actor);
 extern void *Actor_GetCollection(void *actor);
 extern s32 Actor_GetCachedTerrainHeight(void *actor);
@@ -29,7 +29,7 @@ static VirtualFunction virtual_function(void *actor, u32 offset)
  * controls flag 0x800000, and either invokes subtype-specific slot 0xC4 or
  * enters state 1 after shifting fields 0x3C/0x40 through func_020adae4. State 1
  * zeroes those fields after reaching 0x1DC, flashes presentation bit 4 for 30
- * ticks, notifies func_0202d494, and enters state 2. State 2 calls slot 0x54
+ * ticks, notifies ActorCollection_QueueActorForRemoval, and enters state 2. State 2 calls slot 0x54
  * with zero. Finally runs slots 0xD4/0xA4, Actor_UpdateAnimationState, and slot 0x20. Returns
  * nothing; engine callbacks may have SDK effects, with no direct hardware use.
  */
@@ -83,7 +83,7 @@ void func_02050fa0(void *actor)
             else
                 FIELD(u16, presentation, 0x24) &= (u16)~4;
         } else {
-            func_0202d494(Actor_GetCollection(actor), actor);
+            ActorCollection_QueueActorForRemoval(Actor_GetCollection(actor), actor);
             FIELD(u16, actor, 0x1f0) =
                 (FIELD(u16, actor, 0x1f0) & 0x8000) | 2;
         }

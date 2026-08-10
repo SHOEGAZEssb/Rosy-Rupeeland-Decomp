@@ -1,5 +1,5 @@
 ; Matching retail form; see src/game/tracked_resource_actor_projectile_update.c.
-.extern func_0202d494
+.extern ActorCollection_QueueActorForRemoval
 .extern Actor_UpdateAnimationState
 .extern Actor_GetCollection
 .extern Actor_GetCachedTerrainHeight
@@ -92,7 +92,7 @@ func_02051440:
     mov r0, r4
     bl Actor_GetCollection
     mov r1, r4
-    bl func_0202d494
+    bl ActorCollection_QueueActorForRemoval
     add r1, r4, #0x100
     mov r0, #0x8000
     ldrh r2, [r1, #0xf0]

@@ -2,7 +2,7 @@
 .extern func_0204c51c
 .extern func_02028508
 .extern func_02007f0c
-.extern func_0202d494
+.extern ActorCollection_QueueActorForRemoval
 .extern func_0203ae14
 .extern func_0202ecd0
 .extern Actor_RefreshTerrainHeight
@@ -61,7 +61,7 @@ func_0204bf9c: ; 0x0204bf9c
     mov r6, r7
     bl func_02007f0c
     mov r1, r7
-    bl func_0202d494
+    bl ActorCollection_QueueActorForRemoval
 .L_0204c034:
     ldrh r1, [r4, #0x4]
     mov r0, #0x2

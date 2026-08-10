@@ -5,7 +5,7 @@
 .extern func_02005058
 .extern func_0200b04c
 .extern func_0201e0ec
-.extern func_0202d494
+.extern ActorCollection_QueueActorForRemoval
 .extern Actor_GetCollection
 .extern func_020349b8
 .extern func_0204cfa4
@@ -140,7 +140,7 @@ func_ov095_0221c4a4:
     str r1, [r6, #0x14]
     bl Actor_GetCollection
     mov r1, r6
-    bl func_0202d494
+    bl ActorCollection_QueueActorForRemoval
     add sp, sp, #0x24
     ldmia sp!, {r3, r4, r5, r6, r7, r8, pc}
 .L_0221c688: .word data_02105310

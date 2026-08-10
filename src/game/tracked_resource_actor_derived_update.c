@@ -5,7 +5,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_0202d494(void *handle, void *actor);
+extern void ActorCollection_QueueActorForRemoval(void *handle, void *actor);
 extern void Actor_UpdateAnimationState(void *actor);
 extern void *Actor_GetCollection(void *actor);
 #ifdef __cplusplus
@@ -24,7 +24,7 @@ static VirtualFunction virtual_function(void *actor, u32 offset)
  * Input is a subclass actor. Calls virtual pre-update slot 0x18, then advances
  * the low 15-bit state at 0x1F0. State 0 clears presentation bit 4 and either
  * settles the actor at field 0x1DC or invokes slot 0xC8. State 1 flashes that
- * presentation bit for 30 ticks, notifies func_0202d494, then enters state 2.
+ * presentation bit for 30 ticks, notifies ActorCollection_QueueActorForRemoval, then enters state 2.
  * State 2 invokes slot 0x54 with zero. The high state bit is preserved across
  * transitions. Finally calls virtual slots 0xD4 and 0xA4, Actor_UpdateAnimationState, and
  * slot 0x20. Returns nothing; actor/presentation state changes and downstream
@@ -65,7 +65,7 @@ void func_02050b70(void *actor)
             else
                 FIELD(u16, presentation, 0x24) &= (u16)~4;
         } else {
-            func_0202d494(Actor_GetCollection(actor), actor);
+            ActorCollection_QueueActorForRemoval(Actor_GetCollection(actor), actor);
             FIELD(u16, actor, 0x1f0) =
                 (FIELD(u16, actor, 0x1f0) & 0x8000) | 2;
         }
