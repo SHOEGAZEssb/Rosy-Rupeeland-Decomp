@@ -40,7 +40,7 @@ static void clear_motion_vectors(u8 *actor)
  * callback, timer, subobject, flag, and motion state may change. No value is
  * returned and there are no direct SDK or hardware effects.
  */
-void func_0204a200(void *self, s32 condition)
+void Type7Actor_SetFlag40StateEnabled(void *self, s32 condition)
 {
     u8 *actor = (u8 *)self;
     if (condition != 0) {
@@ -72,7 +72,7 @@ void func_0204a200(void *self, s32 condition)
  * presentation, relationship, and motion state may change. No value is
  * returned and no SDK or hardware effects occur directly.
  */
-void func_0204a2e8(void *self)
+void Type7Actor_EnterFlag20State(void *self)
 {
     u8 *actor = (u8 *)self;
     *(void **)(actor + 0x210) = 0;
@@ -89,7 +89,7 @@ void func_0204a2e8(void *self)
  * presentation, relationship, and motion state may change. No value is
  * returned and no SDK or hardware effects occur directly.
  */
-void func_0204a360(void *self)
+void Type7Actor_EnterFlag80State(void *self)
 {
     u8 *actor = (u8 *)self;
     *(void **)(actor + 0x210) = 0;

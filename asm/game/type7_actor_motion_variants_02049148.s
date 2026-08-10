@@ -7,8 +7,8 @@
 .extern Type7Actor_TryCancelDistantTarget
 .extern Type7Actor_TryInstallGlobalTargetCallback
 .extern Type7Actor_TryAcquireTarget
-.extern func_0204a2e8
-.extern func_0204a360
+.extern Type7Actor_EnterFlag20State
+.extern Type7Actor_EnterFlag80State
 .extern func_0204a5dc
 .extern func_020ada8c
 .extern func_020adcac
@@ -234,7 +234,7 @@ Type7Actor_UpdateRelatedTargetMotion: ; 0x020493f8
     ldr r1, [r5, #0x10]
     tst r1, #0x4
     bne .L_0204946c
-    bl func_0204a2e8
+    bl Type7Actor_EnterFlag20State
     mov r0, #0x0
     ldmia sp!, {r4, r5, r6, pc}
 .L_0204946c:
@@ -248,7 +248,7 @@ Type7Actor_UpdateRelatedTargetMotion: ; 0x020493f8
     cmp r0, #0x20000
     blt .L_020494a0
     mov r0, r5
-    bl func_0204a360
+    bl Type7Actor_EnterFlag80State
     mov r0, #0x0
     ldmia sp!, {r4, r5, r6, pc}
 .L_020494a0:

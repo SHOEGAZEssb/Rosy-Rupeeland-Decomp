@@ -20,7 +20,7 @@ extern void Type7Actor_SetMotionTargetWithTimer(void *entity, const VecFx32Objec
 extern void Type7Actor_ResetMotionAndCooldown(void *entity);
 extern void Type7Actor_ClearTarget(void *entity);
 extern void Type7Actor_DisableTargeting(void *entity);
-extern void func_0204a200(void *entity, s32 value);
+extern void Type7Actor_SetFlag40StateEnabled(void *entity, s32 value);
 extern void func_0204b078(void *entity, s32 value);
 extern void func_0204b148(void *entity, s32 value);
 extern void func_0204b6ec(void *entity, u16 value, s32 enabled);
@@ -73,7 +73,7 @@ s32 func_02018c3c(GamePhaseActorScriptVm *self)
         break;
     case 3:
         if (entity)
-            func_0204a200(entity, first);
+            Type7Actor_SetFlag40StateEnabled(entity, first);
         break;
     case 4:
         if (entity)

@@ -40,7 +40,7 @@
 .extern ActorDerivedType1_StartRecord
 .extern ActorDerivedType1_TeardownActiveRecord
 .extern Type7Actor_SetMotionTargetWithTimer
-.extern func_0204a200
+.extern Type7Actor_SetFlag40StateEnabled
 .extern func_0204d308
 .extern func_02058d40
 .extern func_02059278
@@ -210,7 +210,7 @@ func_ov090_02217d70:
     bl func_020050a4
     mov r0, r6
     mov r1, #0x1
-    bl func_0204a200
+    bl Type7Actor_SetFlag40StateEnabled
     add r0, sp, #0x348
     bl func_02005058
 .L_02217f64:
@@ -430,7 +430,7 @@ func_ov090_02217d70:
     beq .L_0221a284
     mov r0, r6
     mov r1, #0x0
-    bl func_0204a200
+    bl Type7Actor_SetFlag40StateEnabled
     mov r1, #0x220000
     add r0, sp, #0x2d8
     add r2, r1, #0xb000
@@ -584,7 +584,7 @@ func_ov090_02217d70:
     beq .L_022184f8
     mov r0, r6
     mov r1, #0x1
-    bl func_0204a200
+    bl Type7Actor_SetFlag40StateEnabled
 .L_022184f8:
     add r0, r4, #0x100
     ldrh r5, [r0, #0xf0]
@@ -823,7 +823,7 @@ func_ov090_02217d70:
     beq .L_0221a284
     mov r0, r6
     mov r1, #0x0
-    bl func_0204a200
+    bl Type7Actor_SetFlag40StateEnabled
     b .L_0221a284
 .L_02218890:
     mov r0, r4

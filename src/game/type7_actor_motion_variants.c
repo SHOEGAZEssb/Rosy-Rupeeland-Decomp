@@ -22,8 +22,8 @@ extern void Type7Actor_ResetInteractionState(void *actor);
 extern s32 Type7Actor_TryCancelDistantTarget(void *actor);
 extern s32 Type7Actor_TryInstallGlobalTargetCallback(void *actor);
 extern s32 Type7Actor_TryAcquireTarget(void *actor, s32 finiteMode);
-extern void func_0204a2e8(void *actor);
-extern void func_0204a360(void *actor);
+extern void Type7Actor_EnterFlag20State(void *actor);
+extern void Type7Actor_EnterFlag80State(void *actor);
 extern void func_0204a5dc(void *actor);
 #ifdef __cplusplus
 }
@@ -127,8 +127,8 @@ s32 Type7Actor_UpdateRandomOffsetMotionVariant(void *self)
  * Input is a type-seven actor. Set actor flag 0x8000 and +0xd0 bit one. When
  * related actor +0x280 exists, compare integer X/Y separation against 0x24000;
  * if outside that squared threshold while actor flag four is clear, dispatch
- * func_0204a2e8. Otherwise compare the actors' Actor_GetCachedTerrainHeight values by absolute
- * difference and dispatch func_0204a360 when it reaches 0x20000.
+ * Type7Actor_EnterFlag20State. Otherwise compare the actors' Actor_GetCachedTerrainHeight values by absolute
+ * difference and dispatch Type7Actor_EnterFlag80State when it reaches 0x20000.
  *
  * If neither relationship check dispatches, run the shared object and finite
  * acquisition gates. Select destination +0x18 while +0x264 is positive,
@@ -153,12 +153,12 @@ s32 Type7Actor_UpdateRelatedTargetMotion(void *self)
             - (*(s32 *)(actor + 0x1c) >> 12);
         if (dx * dx + dy * dy > 0x24000
             && (*(u32 *)(actor + 0x10) & 4) == 0) {
-            func_0204a2e8(actor);
+            Type7Actor_EnterFlag20State(actor);
             return 0;
         }
         if (func_020be328(Actor_GetCachedTerrainHeight(actor) - Actor_GetCachedTerrainHeight(related))
             >= 0x20000) {
-            func_0204a360(actor);
+            Type7Actor_EnterFlag80State(actor);
             return 0;
         }
     }

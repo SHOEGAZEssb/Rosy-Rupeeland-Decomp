@@ -7,9 +7,9 @@
 .extern Type7Actor_ResetMotionAndCooldown
 .extern Type7Actor_SetCallbackPair
 .text
-    .global func_0204a200
-.type func_0204a200, @function
-func_0204a200: ; 0x0204a200
+    .global Type7Actor_SetFlag40StateEnabled
+.type Type7Actor_SetFlag40StateEnabled, @function
+Type7Actor_SetFlag40StateEnabled: ; 0x0204a200
     stmdb sp!, {r4, lr}
     mov r4, r0
     cmp r1, #0x0
@@ -69,11 +69,11 @@ func_0204a200: ; 0x0204a200
     ldmia sp!, {r4, pc}
 .L_0204a2e0: .word data_020e18b8
 .L_0204a2e4: .word 0xfffff7b3
-.size func_0204a200, . - func_0204a200
+.size Type7Actor_SetFlag40StateEnabled, . - Type7Actor_SetFlag40StateEnabled
 
-    .global func_0204a2e8
-.type func_0204a2e8, @function
-func_0204a2e8: ; 0x0204a2e8
+    .global Type7Actor_EnterFlag20State
+.type Type7Actor_EnterFlag20State, @function
+Type7Actor_EnterFlag20State: ; 0x0204a2e8
     stmdb sp!, {r4, lr}
     mov r2, #0x0
     mov r4, r0
@@ -104,11 +104,11 @@ func_0204a2e8: ; 0x0204a2e8
     bl func_0200b2c0
     ldmia sp!, {r4, pc}
 .L_0204a35c: .word data_020e18b0
-.size func_0204a2e8, . - func_0204a2e8
+.size Type7Actor_EnterFlag20State, . - Type7Actor_EnterFlag20State
 
-    .global func_0204a360
-.type func_0204a360, @function
-func_0204a360: ; 0x0204a360
+    .global Type7Actor_EnterFlag80State
+.type Type7Actor_EnterFlag80State, @function
+Type7Actor_EnterFlag80State: ; 0x0204a360
     stmdb sp!, {r4, lr}
     mov r2, #0x0
     mov r4, r0
@@ -139,5 +139,5 @@ func_0204a360: ; 0x0204a360
     bl func_0200b2c0
     ldmia sp!, {r4, pc}
 .L_0204a3d4: .word data_020e18a8
-.size func_0204a360, . - func_0204a360
+.size Type7Actor_EnterFlag80State, . - Type7Actor_EnterFlag80State
 

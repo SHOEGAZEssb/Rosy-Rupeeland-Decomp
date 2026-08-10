@@ -12,7 +12,7 @@
 .extern Type7Actor_ResetMotionAndCooldown
 .extern Type7Actor_ClearTarget
 .extern Type7Actor_DisableTargeting
-.extern func_0204a200
+.extern Type7Actor_SetFlag40StateEnabled
 .extern func_0204b078
 .extern func_0204b148
 .extern func_0204b6ec
@@ -80,7 +80,7 @@ L_02018d10:
     beq L_02018ef4
     mov r0, r8
     mov r1, r7
-    bl func_0204a200
+    bl Type7Actor_SetFlag40StateEnabled
     b L_02018ef4
 L_02018d28:
     cmp r8, #0x0
