@@ -41,7 +41,7 @@ GraphicsSpriteGroup *func_020742cc(void *ownerPointer)
         sizeof(GraphicsSpriteGroup), data_020e69e4, 4, gHeapContext);
 
     if (group != 0) {
-        func_02073f20(group, owner);
+        GraphicsSpriteGroup_Init(group, owner);
     }
     if (owner->groupHead == 0) {
         owner->groupHead = group;
@@ -67,7 +67,7 @@ asm GraphicsSpriteGroup *func_020742cc(void *owner)
     cmp r0, #0
     beq sprite_group_alloc_append
     mov r1, r4
-    bl func_02073f20
+    bl GraphicsSpriteGroup_Init
 sprite_group_alloc_append:
     ldr r1, [r4, #0x43c]
     cmp r1, #0

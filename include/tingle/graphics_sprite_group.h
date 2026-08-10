@@ -32,9 +32,12 @@ extern "C" {
 void func_02073e90(GraphicsSpriteState *state);
 void func_02073ed4(GraphicsSpriteState *state);
 void func_02073ef8(GraphicsSpriteState *state);
-GraphicsSpriteGroup *func_02073f20(GraphicsSpriteGroup *group, void *owner);
-void func_02073f50(GraphicsSpriteGroup *group, GraphicsSpriteState *state);
-void func_02073f8c(GraphicsSpriteGroup *group, GraphicsSpriteState *state);
+GraphicsSpriteGroup *GraphicsSpriteGroup_Init(GraphicsSpriteGroup *group,
+                                              void *owner);
+void GraphicsSpriteGroup_AppendState(GraphicsSpriteGroup *group,
+                                     GraphicsSpriteState *state);
+void GraphicsSpriteGroup_RemoveState(GraphicsSpriteGroup *group,
+                                     GraphicsSpriteState *state);
 GraphicsSpriteState *func_02073fc4(GraphicsSpriteGroup *group, void *field14,
                                     void *field18, void *field1c, u8 attach);
 GraphicsSpriteState *func_02073ffc(GraphicsSpriteGroup *group,

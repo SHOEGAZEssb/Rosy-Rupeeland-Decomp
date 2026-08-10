@@ -83,7 +83,7 @@ void func_02073ef8(GraphicsSpriteState *state)
 {
     GraphicsSpriteGroup *group = (GraphicsSpriteGroup *)state->field_00;
 
-    func_02073f8c(group, state);
+    GraphicsSpriteGroup_RemoveState(group, state);
     func_0207442c(group->owner, state);
 }
 
@@ -92,7 +92,8 @@ void func_02073ef8(GraphicsSpriteState *state)
  * set field_20 to one. Returns group and performs no allocation or SDK access.
  */
 #ifndef MATCHING
-GraphicsSpriteGroup *func_02073f20(GraphicsSpriteGroup *group, void *owner)
+GraphicsSpriteGroup *GraphicsSpriteGroup_Init(GraphicsSpriteGroup *group,
+                                              void *owner)
 {
     group->owner = owner;
     group->next = 0;
@@ -107,7 +108,8 @@ GraphicsSpriteGroup *func_02073f20(GraphicsSpriteGroup *group, void *owner)
 }
 #else
 /* This matching fallback implements the documented portable C directly above. */
-asm GraphicsSpriteGroup *func_02073f20(GraphicsSpriteGroup *group, void *owner)
+asm GraphicsSpriteGroup *GraphicsSpriteGroup_Init(GraphicsSpriteGroup *group,
+                                                  void *owner)
 {
     str r1, [r0, #0]
     mov r2, #0
@@ -129,7 +131,8 @@ asm GraphicsSpriteGroup *func_02073f20(GraphicsSpriteGroup *group, void *owner)
  * list, and increment count. A null state is ignored; no resources are touched.
  */
 #ifndef MATCHING
-void func_02073f50(GraphicsSpriteGroup *group, GraphicsSpriteState *state)
+void GraphicsSpriteGroup_AppendState(GraphicsSpriteGroup *group,
+                                     GraphicsSpriteState *state)
 {
     if (state == 0) {
         return;
@@ -146,7 +149,8 @@ void func_02073f50(GraphicsSpriteGroup *group, GraphicsSpriteState *state)
 }
 #else
 /* This matching fallback implements the documented portable C directly above. */
-asm void func_02073f50(GraphicsSpriteGroup *group, GraphicsSpriteState *state)
+asm void GraphicsSpriteGroup_AppendState(GraphicsSpriteGroup *group,
+                                         GraphicsSpriteState *state)
 {
     cmp r1, #0
     bxeq lr
@@ -172,7 +176,8 @@ asm void func_02073f50(GraphicsSpriteGroup *group, GraphicsSpriteState *state)
  * as in retail code; no allocation or resource operation occurs here.
  */
 #ifndef MATCHING
-void func_02073f8c(GraphicsSpriteGroup *group, GraphicsSpriteState *state)
+void GraphicsSpriteGroup_RemoveState(GraphicsSpriteGroup *group,
+                                     GraphicsSpriteState *state)
 {
     if (state == 0) {
         return;
@@ -191,7 +196,8 @@ void func_02073f8c(GraphicsSpriteGroup *group, GraphicsSpriteState *state)
 }
 #else
 /* This matching fallback implements the documented portable C directly above. */
-asm void func_02073f8c(GraphicsSpriteGroup *group, GraphicsSpriteState *state)
+asm void GraphicsSpriteGroup_RemoveState(GraphicsSpriteGroup *group,
+                                         GraphicsSpriteState *state)
 {
     cmp r1, #0
     bxeq lr
@@ -220,7 +226,7 @@ GraphicsSpriteState *func_02073fc4(GraphicsSpriteGroup *group, void *field14,
 {
     GraphicsSpriteState *state = func_020743ac(
         group->owner, field14, field18, field1c, attach, group);
-    func_02073f50(group, state);
+    GraphicsSpriteGroup_AppendState(group, state);
     return state;
 }
 
@@ -235,7 +241,7 @@ GraphicsSpriteState *func_02073ffc(GraphicsSpriteGroup *group,
     GraphicsSpriteState *state = func_020743ac(
         group->owner, source->field_00, source->field_04, source->field_08,
         attach, group);
-    func_02073f50(group, state);
+    GraphicsSpriteGroup_AppendState(group, state);
     return state;
 }
 
@@ -245,7 +251,7 @@ GraphicsSpriteState *func_02073ffc(GraphicsSpriteGroup *group,
  */
 void func_02074038(GraphicsSpriteGroup *group, GraphicsSpriteState *state)
 {
-    func_02073f8c(group, state);
+    GraphicsSpriteGroup_RemoveState(group, state);
     func_0207442c(group->owner, state);
 }
 
@@ -260,7 +266,7 @@ void func_02074058(GraphicsSpriteGroup *group)
 
     while (state != 0) {
         GraphicsSpriteState *next = (GraphicsSpriteState *)state->field_08;
-        func_02073f8c(group, state);
+        GraphicsSpriteGroup_RemoveState(group, state);
         func_0207442c(group->owner, state);
         state = next;
     }
