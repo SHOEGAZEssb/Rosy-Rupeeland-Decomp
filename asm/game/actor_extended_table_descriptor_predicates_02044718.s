@@ -2,11 +2,11 @@
 .text
 .extern data_020e0ac8
 .extern data_020e0ae0
-.global func_02044718
-.type func_02044718, @function
-.global func_02044760
-.type func_02044760, @function
-func_02044718: ; 0x02044718
+.global ActorExtendedTable_MatchesCallbackPair18
+.type ActorExtendedTable_MatchesCallbackPair18, @function
+.global ActorExtendedTable_MatchesCallbackPair00
+.type ActorExtendedTable_MatchesCallbackPair00, @function
+ActorExtendedTable_MatchesCallbackPair18: ; 0x02044718
     ldr r1, .L_02044758
     ldr r2, [r0, #0x218]
     ldr r1, [r1, #0x18]
@@ -26,8 +26,8 @@ func_02044718: ; 0x02044718
     bx lr
 .L_02044758: .word data_020e0ac8
 .L_0204475c: .word data_020e0ae0
-.size func_02044718, . - func_02044718
-func_02044760: ; 0x02044760
+.size ActorExtendedTable_MatchesCallbackPair18, . - ActorExtendedTable_MatchesCallbackPair18
+ActorExtendedTable_MatchesCallbackPair00: ; 0x02044760
     ldr r1, .L_020447a0
     ldr r2, [r0, #0x218]
     ldr r1, [r1, #0x0]
@@ -47,4 +47,4 @@ func_02044760: ; 0x02044760
     bx lr
 .L_020447a0: .word data_020e0ac8
 .L_020447a4: .word data_020e0ac8
-.size func_02044760, . - func_02044760
+.size ActorExtendedTable_MatchesCallbackPair00, . - ActorExtendedTable_MatchesCallbackPair00

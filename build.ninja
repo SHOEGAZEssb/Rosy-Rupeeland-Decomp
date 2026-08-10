@@ -17768,19 +17768,19 @@ build build/reports/actor_extended_table_output_gate_020446c8.json: objdiff buil
   base_object = build/decomp/asm/game/actor_extended_table_output_gate_020446c8.o
 build build/reports/actor_extended_table_output_gate_020446c8.txt: match_report build/reports/actor_extended_table_output_gate_020446c8.json | tools/report_objdiff.py
   report_json = build/reports/actor_extended_table_output_gate_020446c8.json
-  report_args = --section .text --function func_020446c8 --require-exact
+  report_args = --section .text --function ActorExtendedTable_FilterDescriptorOutput --require-exact
 build build/reports/actor_extended_table_descriptor_predicates_02044718.json: objdiff build/decomp/delinks/asm/game/actor_extended_table_descriptor_predicates_02044718.o | build/decomp/asm/game/actor_extended_table_descriptor_predicates_02044718.o
   target_object = build/decomp/delinks/asm/game/actor_extended_table_descriptor_predicates_02044718.o
   base_object = build/decomp/asm/game/actor_extended_table_descriptor_predicates_02044718.o
 build build/reports/actor_extended_table_descriptor_predicates_02044718.txt: match_report build/reports/actor_extended_table_descriptor_predicates_02044718.json | tools/report_objdiff.py
   report_json = build/reports/actor_extended_table_descriptor_predicates_02044718.json
-  report_args = --section .text --function func_02044718 --function func_02044760 --require-exact
+  report_args = --section .text --function ActorExtendedTable_MatchesCallbackPair18 --function ActorExtendedTable_MatchesCallbackPair00 --require-exact
 build build/reports/actor_extended_table_forward_gate_020447a8.json: objdiff build/decomp/delinks/asm/game/actor_extended_table_forward_gate_020447a8.o | build/decomp/asm/game/actor_extended_table_forward_gate_020447a8.o
   target_object = build/decomp/delinks/asm/game/actor_extended_table_forward_gate_020447a8.o
   base_object = build/decomp/asm/game/actor_extended_table_forward_gate_020447a8.o
 build build/reports/actor_extended_table_forward_gate_020447a8.txt: match_report build/reports/actor_extended_table_forward_gate_020447a8.json | tools/report_objdiff.py
   report_json = build/reports/actor_extended_table_forward_gate_020447a8.json
-  report_args = --section .text --function func_020447a8 --require-exact
+  report_args = --section .text --function ActorExtendedTable_ForwardProximityInteraction --require-exact
 build actor_extended_table_descriptor_gates: phony build/decomp/src/game/actor_extended_table_descriptor_gates.o build/decomp/asm/game/actor_extended_table_output_gate_020446c8.o build/decomp/asm/game/actor_extended_table_descriptor_predicates_02044718.o build/decomp/asm/game/actor_extended_table_forward_gate_020447a8.o build/reports/actor_extended_table_output_gate_020446c8.txt build/reports/actor_extended_table_descriptor_predicates_02044718.txt build/reports/actor_extended_table_forward_gate_020447a8.txt
 
 actor_extended_table_state_helpers_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++

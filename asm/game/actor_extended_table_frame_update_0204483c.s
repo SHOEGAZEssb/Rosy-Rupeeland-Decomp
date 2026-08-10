@@ -6,8 +6,8 @@
 .extern func_02032228
 .extern ActorExtendedType2_UpdateFrame
 .extern func_02043610
-.extern func_02044718
-.extern func_02044760
+.extern ActorExtendedTable_MatchesCallbackPair18
+.extern ActorExtendedTable_MatchesCallbackPair00
 .global ActorExtendedTable_UpdateFrame
 .type ActorExtendedTable_UpdateFrame, @function
 ActorExtendedTable_UpdateFrame: ; 0x0204483c
@@ -24,11 +24,11 @@ ActorExtendedTable_UpdateFrame: ; 0x0204483c
     cmp r0, #0x0
     bne .L_02044958
     mov r0, r4
-    bl func_02044718
+    bl ActorExtendedTable_MatchesCallbackPair18
     cmp r0, #0x0
     bne .L_02044948
     mov r0, r4
-    bl func_02044760
+    bl ActorExtendedTable_MatchesCallbackPair00
     cmp r0, #0x0
     bne .L_02044948
     ldr r0, .L_02044970

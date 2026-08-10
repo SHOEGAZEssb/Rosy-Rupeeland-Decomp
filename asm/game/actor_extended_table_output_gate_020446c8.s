@@ -2,11 +2,11 @@
 .text
 .extern func_0203f2ec
 .extern func_02043610
-.extern func_02044718
-.extern func_02044760
-.global func_020446c8
-.type func_020446c8, @function
-func_020446c8: ; 0x020446c8
+.extern ActorExtendedTable_MatchesCallbackPair18
+.extern ActorExtendedTable_MatchesCallbackPair00
+.global ActorExtendedTable_FilterDescriptorOutput
+.type ActorExtendedTable_FilterDescriptorOutput, @function
+ActorExtendedTable_FilterDescriptorOutput: ; 0x020446c8
     stmdb sp!, {r3, r4, r5, lr}
     mov r5, r0
     mov r4, r1
@@ -16,15 +16,15 @@ func_020446c8: ; 0x020446c8
     cmp r0, #0x0
     ldmneia sp!, {r3, r4, r5, pc}
     mov r0, r5
-    bl func_02044718
+    bl ActorExtendedTable_MatchesCallbackPair18
     cmp r0, #0x0
     ldmneia sp!, {r3, r4, r5, pc}
     mov r0, r5
-    bl func_02044760
+    bl ActorExtendedTable_MatchesCallbackPair00
     cmp r0, #0x0
     moveq r0, #0x0
     streqh r0, [r4, #0x0]
     streqh r0, [r4, #0x2]
     streqh r0, [r4, #0x4]
     ldmia sp!, {r3, r4, r5, pc}
-.size func_020446c8, . - func_020446c8
+.size ActorExtendedTable_FilterDescriptorOutput, . - ActorExtendedTable_FilterDescriptorOutput
