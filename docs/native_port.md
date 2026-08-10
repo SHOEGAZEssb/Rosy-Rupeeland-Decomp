@@ -139,15 +139,17 @@ runtime barrier; other menu entries likewise report their selected scene
 boundary until their graphics, sound, heap, and overlay dependencies have
 native implementations.
 
-Supply game data from either a user-owned ROM or an extracted NitroFS root:
+Supply game data from either a user-owned ROM or an extracted ROM root:
 
 ```text
 build/native/tingle_native.exe --rom path/to/game.nds
-build/native/tingle_native.exe --data path/to/extracted/files
+build/native/tingle_native.exe --data path/to/extracted/root
 ```
 
-The top-right diagnostic square turns green after the provider successfully
-reads `db/lang.bin`; it remains red when no provider is selected. ROM reads
-resolve paths through validated FNT/FAT ranges, while directory reads reject
-absolute paths and dot traversal. Returned file buffers are always owned by
-the caller, giving reconstructed loaders one consistent native contract.
+An extracted root uses `files/` for NitroFS, `arm9/arm9.bin` for fixed program
+data, and `arm9/arm9.yaml` for its ARM9 base address. Passing the `files/`
+directory directly remains supported for NitroFS-only work. ROM reads resolve
+paths through validated FNT/FAT ranges and ARM9 reads through validated header
+offsets; directory reads reject absolute paths and dot traversal. Returned
+buffers are always owned by the caller, giving reconstructed loaders one
+consistent native contract.

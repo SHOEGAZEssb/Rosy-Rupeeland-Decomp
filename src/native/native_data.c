@@ -22,6 +22,11 @@ struct TingleNativeData {
     unsigned char *fat;
     size_t fat_size;
     size_t rom_size;
+    size_t arm9_offset;
+    size_t arm9_size;
+    u32 arm9_address;
+    char *arm9_path;
+    int extracted_layout;
 };
 
 static unsigned short ReadU16(const unsigned char *p)
@@ -46,6 +51,70 @@ static char *CopyString(const char *text)
     char *copy = (char *)malloc(size);
     if (copy != NULL) memcpy(copy, text, size);
     return copy;
+}
+
+static char *JoinPath(const char *root, const char *path)
+{
+    size_t root_size = strlen(root);
+    size_t path_size = strlen(path);
+    char *joined = (char *)malloc(root_size + path_size + 2);
+
+    if (joined == NULL) return NULL;
+    memcpy(joined, root, root_size);
+    joined[root_size] = '/';
+    memcpy(joined + root_size + 1, path, path_size + 1);
+    return joined;
+}
+
+static int FileExists(const char *path)
+{
+    FILE *file = fopen(path, "rb");
+    if (file == NULL) return 0;
+    fclose(file);
+    return 1;
+}
+
+static int ReadExtractedArm9Mapping(TingleNativeData *data)
+{
+    char *config_path = JoinPath(data->root, "arm9/arm9.yaml");
+    char *arm9_path = JoinPath(data->root, "arm9/arm9.bin");
+    FILE *config;
+    FILE *arm9;
+    char line[256];
+    long arm9_size;
+    unsigned long address = 0;
+
+    if (config_path == NULL || arm9_path == NULL || !FileExists(arm9_path)) goto fail;
+    config = fopen(config_path, "r");
+    if (config == NULL) goto fail;
+    while (fgets(line, sizeof(line), config) != NULL) {
+        if (strncmp(line, "base_address:", 13) == 0) {
+            char *end;
+            address = strtoul(line + 13, &end, 0);
+            if (end != line + 13) break;
+            address = 0;
+        }
+    }
+    fclose(config);
+    if (address > 0xffffffffUL) goto fail;
+    arm9 = fopen(arm9_path, "rb");
+    if (arm9 == NULL || fseek(arm9, 0, SEEK_END) != 0) {
+        if (arm9 != NULL) fclose(arm9);
+        goto fail;
+    }
+    arm9_size = ftell(arm9);
+    fclose(arm9);
+    if (address == 0 || arm9_size <= 0) goto fail;
+    data->arm9_address = (u32)address;
+    data->arm9_size = (size_t)arm9_size;
+    data->arm9_path = arm9_path;
+    data->extracted_layout = 1;
+    free(config_path);
+    return 1;
+fail:
+    free(config_path);
+    free(arm9_path);
+    return 0;
 }
 
 static int SafeRelativePath(const char *path)
@@ -89,6 +158,7 @@ TingleNativeData *TingleNativeData_OpenDirectory(const char *root)
         return NULL;
     }
     data->kind = DATA_DIRECTORY;
+    (void)ReadExtractedArm9Mapping(data);
     return data;
 }
 
@@ -114,7 +184,12 @@ TingleNativeData *TingleNativeData_OpenRom(const char *path)
     data->fnt_size = ReadU32(header + 0x44);
     fat_offset = ReadU32(header + 0x48);
     data->fat_size = ReadU32(header + 0x4c);
+    data->arm9_offset = ReadU32(header + 0x20);
+    data->arm9_address = ReadU32(header + 0x28);
+    data->arm9_size = ReadU32(header + 0x2c);
     if ((data->fat_size & 7) != 0 || data->fnt_size < 9 ||
+        data->arm9_size == 0 ||
+        !RangeValid(data->arm9_offset, data->arm9_size, data->rom_size) ||
         !LoadTable(data->rom, fnt_offset, data->fnt_size, data->rom_size, &data->fnt) ||
         !LoadTable(data->rom, fat_offset, data->fat_size, data->rom_size, &data->fat)) goto fail;
     data->kind = DATA_ROM;
@@ -131,6 +206,7 @@ void TingleNativeData_Close(TingleNativeData *data)
     free(data->root);
     free(data->fnt);
     free(data->fat);
+    free(data->arm9_path);
     free(data);
 }
 
@@ -151,16 +227,21 @@ static int ReadStreamRange(FILE *file, size_t offset, size_t size,
 static int ReadDirectoryFile(TingleNativeData *data, const char *path,
                              void **bytes, size_t *size)
 {
-    size_t root_size = strlen(data->root);
-    size_t path_size = strlen(path);
-    char *joined = (char *)malloc(root_size + path_size + 2);
+    char *relative = NULL;
+    char *joined;
     FILE *file;
     long file_size;
     int result;
+    if (data->extracted_layout) {
+        size_t path_size = strlen(path);
+        relative = (char *)malloc(path_size + 7);
+        if (relative == NULL) return 0;
+        memcpy(relative, "files/", 6);
+        memcpy(relative + 6, path, path_size + 1);
+    }
+    joined = JoinPath(data->root, relative != NULL ? relative : path);
+    free(relative);
     if (joined == NULL) return 0;
-    memcpy(joined, data->root, root_size);
-    joined[root_size] = '/';
-    memcpy(joined + root_size + 1, path, path_size + 1);
     file = fopen(joined, "rb");
     free(joined);
     if (file == NULL || fseek(file, 0, SEEK_END) != 0) {
@@ -249,4 +330,28 @@ int TingleNativeData_ReadFile(TingleNativeData *data, const char *path,
     return data->kind == DATA_DIRECTORY
         ? ReadDirectoryFile(data, path, bytes, size)
         : ReadRomFile(data, path, bytes, size);
+}
+
+int TingleNativeData_ReadArm9(TingleNativeData *data, u32 address,
+                              size_t size, void **bytes)
+{
+    size_t relative;
+    FILE *file;
+    size_t ignored_size;
+    int result;
+
+    if (data == NULL || bytes == NULL || address < data->arm9_address) return 0;
+    *bytes = NULL;
+    relative = (size_t)(address - data->arm9_address);
+    if (!RangeValid(relative, size, data->arm9_size)) return 0;
+    if (data->kind == DATA_ROM) {
+        return ReadStreamRange(data->rom, data->arm9_offset + relative,
+                               size, bytes, &ignored_size);
+    }
+    if (data->arm9_path == NULL) return 0;
+    file = fopen(data->arm9_path, "rb");
+    if (file == NULL) return 0;
+    result = ReadStreamRange(file, relative, size, bytes, &ignored_size);
+    fclose(file);
+    return result;
 }

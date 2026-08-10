@@ -1,6 +1,8 @@
 #ifndef TINGLE_NATIVE_DATA_H
 #define TINGLE_NATIVE_DATA_H
 
+#include "tingle/types.h"
+
 #include <stddef.h>
 
 typedef struct TingleNativeData TingleNativeData;
@@ -21,5 +23,14 @@ void TingleNativeData_Close(TingleNativeData *data);
  */
 int TingleNativeData_ReadFile(TingleNativeData *data, const char *path,
                               void **bytes, size_t *size);
+
+/*
+ * Copies an exact range from the ARM9 load image by its DS memory address.
+ * ROM providers derive the mapping from the NDS header. Extracted providers
+ * require a root containing arm9/arm9.yaml and arm9/arm9.bin. The caller owns
+ * the returned bytes.
+ */
+int TingleNativeData_ReadArm9(TingleNativeData *data, u32 address,
+                              size_t size, void **bytes);
 
 #endif
