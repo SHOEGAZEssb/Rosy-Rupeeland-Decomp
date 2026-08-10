@@ -9,8 +9,8 @@ extern void *data_021052fc;
 extern void *gLupyContext;
 extern void func_02007908(void *context, u32 value, s32 mode);
 extern void func_02007a24(void *context, u32 value, s32 mode);
-extern void func_02008148(void *context, s32 index);
-extern void func_020083c8(void *context);
+extern s32 func_02008148(void *context, s32 index);
+extern s32 GamePhaseRuntime_DispatchActorQueryRequest(void *runtime);
 extern void func_0200866c(void *context);
 extern void func_02008b50(void *context);
 extern void func_02008ed0(void *context);
@@ -34,7 +34,7 @@ s32 func_0200b6c4(ActorRuntimeScene *self)
 
     func_02008ed0(root);
     if (self->base.value08 == 0) {
-        func_020083c8(root);
+        GamePhaseRuntime_DispatchActorQueryRequest(root);
         func_02007908(root, self->base.value04, 3);
         func_0200866c(root);
         func_02008148(root, 0);

@@ -10178,7 +10178,7 @@ build build/reports/game_phase_runtime_request_dispatch.json: objdiff build/deco
 
 build build/reports/game_phase_runtime_request_dispatch.txt: match_report build/reports/game_phase_runtime_request_dispatch.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_runtime_request_dispatch.json
-  report_args = --section .text --function func_020083c8 --require-exact
+  report_args = --section .text --function GamePhaseRuntime_DispatchActorQueryRequest --require-exact
 
 build build/reports/game_phase_runtime_warp_request.json: objdiff build/decomp/delinks/src/game/game_phase_runtime_warp_request.o | build/decomp/src/game/game_phase_runtime_warp_request.o
   target_object = build/decomp/delinks/src/game/game_phase_runtime_warp_request.o

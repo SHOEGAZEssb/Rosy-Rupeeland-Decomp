@@ -51,7 +51,7 @@ s32 func_02008148(GamePhaseRuntime *self, s32 actorIndex);
 void func_02008354(void *destination, const void *source);
 void func_02008378(void *destination, const void *left, const void *right);
 void func_020083b0(void *destination, s32 a, s32 b, s32 c, s16 d);
-s32 func_020083c8(GamePhaseRuntime *self);
+s32 GamePhaseRuntime_DispatchActorQueryRequest(GamePhaseRuntime *self);
 s32 func_020084b8(GamePhaseRuntime *self, s32 x, s32 y);
 s32 func_02008514(GamePhaseRuntime *self, s32 x, s32 y);
 void func_02008570(GamePhaseRuntime *self, s32 mode, void *state);

@@ -25,7 +25,7 @@ extern void ActorCollection_BroadcastQuery(void *collection,
  * least 192. Bits zero and one return the selected action's result; bit two
  * deliberately discards it and returns zero.
  */
-s32 func_020083c8(GamePhaseRuntime *self)
+s32 GamePhaseRuntime_DispatchActorQueryRequest(GamePhaseRuntime *self)
 {
     u8 *b = (u8 *)self;
     u8 point[12];

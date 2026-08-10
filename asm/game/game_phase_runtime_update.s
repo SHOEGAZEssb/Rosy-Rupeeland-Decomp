@@ -12,7 +12,7 @@
 .extern func_02007908
 .extern func_02007a24
 .extern func_02008148
-.extern func_020083c8
+.extern GamePhaseRuntime_DispatchActorQueryRequest
 .extern func_0200866c
 .extern func_02008f34
 .extern func_0200c244
@@ -247,7 +247,7 @@ L_020076a0:
     mov r2, #0x3
     bl func_02007a24
     mov r0, r4
-    bl func_020083c8
+    bl GamePhaseRuntime_DispatchActorQueryRequest
     cmp r0, #0x0
     movne r0, #0x0
     ldmneia sp!, {r3, r4, r5, pc}

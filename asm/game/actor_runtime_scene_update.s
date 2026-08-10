@@ -2,7 +2,7 @@
 ; the documented portable implementation and recovered behavior.
 .text
 .extern func_02008ed0
-.extern func_020083c8
+.extern GamePhaseRuntime_DispatchActorQueryRequest
 .extern func_02007908
 .extern func_0200866c
 .extern func_02008148
@@ -28,7 +28,7 @@ func_0200b6c4:
 L_0200b6f0:
     ldr r0, L_0200b7ac
     ldr r0, [r0, #0x0]
-    bl func_020083c8
+    bl GamePhaseRuntime_DispatchActorQueryRequest
     ldr r0, L_0200b7ac
     ldr r1, [r4, #0x4]
     ldr r0, [r0, #0x0]

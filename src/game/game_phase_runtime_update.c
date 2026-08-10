@@ -39,9 +39,9 @@ extern s32 func_02010b64(void *context);
 extern void func_02010e68(void *context);
 extern s32 func_0200ecf0(void *object);
 extern void func_0200866c(GamePhaseRuntime *self);
-extern void func_02008148(GamePhaseRuntime *self, s32 index);
+extern s32 func_02008148(GamePhaseRuntime *self, s32 index);
 extern void func_0201dcec(void *object, s32 enabled);
-extern s32 func_020083c8(GamePhaseRuntime *self);
+extern s32 GamePhaseRuntime_DispatchActorQueryRequest(GamePhaseRuntime *self);
 extern void func_020338e4(void *object);
 extern void func_02048bcc(void *object);
 extern void *SceneManager_GetCurrent(void *manager);
@@ -154,7 +154,7 @@ s32 func_02007430(GamePhaseRuntime *self)
         func_02008148(self, 1);
         func_0201dcec(b + 0x2ffc, 1);
         func_02007a24(self, self->field_04, 3);
-        if (func_020083c8(self))
+        if (GamePhaseRuntime_DispatchActorQueryRequest(self))
             return 0;
     }
 
