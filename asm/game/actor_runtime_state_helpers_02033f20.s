@@ -9,5 +9,4 @@ func_02033f20: ; 0x02033f20
     bx lr
     .size func_02033f20, . - func_02033f20
 
-    .global func_02033f2c
-
+    .global Actor_RefreshTerrainHeightIfEnabled

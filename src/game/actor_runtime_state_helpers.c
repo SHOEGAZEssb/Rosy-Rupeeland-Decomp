@@ -59,7 +59,7 @@ void func_02033f20(void *self, s32 first, s32 second)
  * Refresh cached terrain state through Actor_RefreshTerrainHeight unless actor flag
  * 0x01000000 at +0x14 is set. Returns no value; the helper reads map state.
  */
-void func_02033f2c(void *self)
+void Actor_RefreshTerrainHeightIfEnabled(void *self)
 {
     if ((*(u32 *)((u8 *)self + 0x14) & 0x01000000) == 0)
         Actor_RefreshTerrainHeight(self);

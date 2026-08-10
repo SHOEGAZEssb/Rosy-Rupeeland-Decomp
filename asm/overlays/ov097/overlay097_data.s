@@ -36,7 +36,7 @@
 .extern func_ov097_02217cf8
 .extern func_ov097_02217d44
 .extern func_02042864
-.extern func_02033f2c
+.extern Actor_RefreshTerrainHeightIfEnabled
 .extern func_0204330c
 .extern func_020324dc
 .extern func_ov097_02219cc4
@@ -318,7 +318,7 @@ data_ov097_0221a5f4:
     .word func_ov097_02217cf8
     .word func_ov097_02217d44
     .word func_02042864
-    .word func_02033f2c
+    .word Actor_RefreshTerrainHeightIfEnabled
     .word func_0204330c
     .word func_020324dc
     .word func_ov097_02219cc4
@@ -453,7 +453,7 @@ data_ov097_0221a80c:
     .word func_020423c8
     .word func_020425d4
     .word func_02042864
-    .word func_02033f2c
+    .word Actor_RefreshTerrainHeightIfEnabled
     .word func_0204330c
     .word func_020324dc
     .word func_ov097_02219cc4
@@ -614,7 +614,7 @@ data_ov097_0221aaa4:
     .word func_ov097_0221a460
     .word func_02032a64
     .word func_02033b38
-    .word func_02033f2c
+    .word Actor_RefreshTerrainHeightIfEnabled
     .word func_ov097_0221a45c
     .word func_020324dc
     .word func_ov097_0221a458

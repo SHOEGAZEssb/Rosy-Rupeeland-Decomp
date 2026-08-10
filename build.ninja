@@ -14514,7 +14514,7 @@ build build/reports/actor_runtime_state_helpers_02033f2c.json: objdiff build/dec
   base_object = build/decomp/asm/game/actor_runtime_state_helpers_02033f2c.o
 build build/reports/actor_runtime_state_helpers_02033f2c.txt: match_report build/reports/actor_runtime_state_helpers_02033f2c.json | tools/report_objdiff.py
   report_json = build/reports/actor_runtime_state_helpers_02033f2c.json
-  report_args = --section .text --function func_02033f2c --require-exact
+  report_args = --section .text --function Actor_RefreshTerrainHeightIfEnabled --require-exact
 build build/decomp/asm/game/actor_runtime_state_helpers_02033f44.o: mwasmarm asm/game/actor_runtime_state_helpers_02033f44.s
 build build/decomp/delinks/asm/game/actor_runtime_state_helpers_02033f44.o: dsd_delink config/arm9/config.yaml config/arm9/delinks.txt config/arm9/symbols.txt config/arm9/relocs.txt
 build build/reports/actor_runtime_state_helpers_02033f44.json: objdiff build/decomp/delinks/asm/game/actor_runtime_state_helpers_02033f44.o | build/decomp/asm/game/actor_runtime_state_helpers_02033f44.o

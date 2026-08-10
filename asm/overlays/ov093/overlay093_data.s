@@ -23,7 +23,7 @@
 .extern func_02033940
 .extern func_02033954
 .extern func_02033b38
-.extern func_02033f2c
+.extern Actor_RefreshTerrainHeightIfEnabled
 .extern func_02033f4c
 .extern func_02033f7c
 .extern func_0204d3dc
@@ -158,7 +158,7 @@ data_ov093_022188f0:
     .word func_ov093_02218778
     .word func_02032a64
     .word func_02033b38
-    .word func_02033f2c
+    .word Actor_RefreshTerrainHeightIfEnabled
     .word func_ov093_02218774
     .word func_020324dc
     .word func_ov093_02218770
