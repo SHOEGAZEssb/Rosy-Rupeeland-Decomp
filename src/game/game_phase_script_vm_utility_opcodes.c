@@ -8,7 +8,8 @@ extern "C" {
 #endif
 extern const char data_020d5b2c[];
 extern void *data_021e9ac0;
-extern void func_02030f84(u16 first, u16 second);
+extern void ActorInteraction_SetDirectionAndMagnitude(u16 directionIndex,
+                                                       u16 magnitude);
 extern s32 func_020adc40(s32 value);
 extern void *func_02028388(s32 phaseIndex);
 extern void *func_0200c8bc(void *self, void *area, u32 field28, u32 field2c,
@@ -19,13 +20,16 @@ extern u32 func_02063670(void *table, u16 value);
 }
 #endif
 
-/* Pop and discard one value, notify func_02030f84 with the next two as u16, and return zero. */
-s32 func_02015d0c(GamePhaseActorScriptVm *self)
+/*
+ * Pop a magnitude and direction-table index, discard one additional value,
+ * publish the interaction input pair, and return zero.
+ */
+s32 GamePhaseActorScriptVm_SetInteractionDirectionAndMagnitude(GamePhaseActorScriptVm *self)
 {
-    u16 second = (u16)func_02012704(&self->base);
-    u16 first = (u16)func_02012704(&self->base);
+    u16 magnitude = (u16)func_02012704(&self->base);
+    u16 directionIndex = (u16)func_02012704(&self->base);
     (void)func_02012704(&self->base);
-    func_02030f84(first, second);
+    ActorInteraction_SetDirectionAndMagnitude(directionIndex, magnitude);
     return 0;
 }
 

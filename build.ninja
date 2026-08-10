@@ -5386,7 +5386,7 @@ build build/reports/game_phase_script_vm_02015d0c.json: objdiff build/decomp/del
   base_object = build/decomp/asm/game/game_phase_script_vm_02015d0c.o
 build build/reports/game_phase_script_vm_02015d0c.txt: match_report build/reports/game_phase_script_vm_02015d0c.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_script_vm_02015d0c.json
-  report_args = --section .text --function func_02015d0c --require-exact
+  report_args = --section .text --function GamePhaseActorScriptVm_SetInteractionDirectionAndMagnitude --require-exact
 
 build build/reports/game_phase_script_vm_02015d4c.json: objdiff build/decomp/delinks/asm/game/game_phase_script_vm_02015d4c.o | build/decomp/asm/game/game_phase_script_vm_02015d4c.o
   target_object = build/decomp/delinks/asm/game/game_phase_script_vm_02015d4c.o
@@ -13658,7 +13658,7 @@ build build/reports/actor_base_defaults_02030f84.json: objdiff build/decomp/deli
   base_object = build/decomp/asm/game/actor_base_defaults_02030f84.o
 build build/reports/actor_base_defaults_02030f84.txt: match_report build/reports/actor_base_defaults_02030f84.json | tools/report_objdiff.py
   report_json = build/reports/actor_base_defaults_02030f84.json
-  report_args = --section .text --function func_02030f84 --require-exact
+  report_args = --section .text --function ActorInteraction_SetDirectionAndMagnitude --require-exact
 build build/reports/actor_base_defaults.txt: phony build/reports/actor_base_defaults_02030f7c.txt build/reports/actor_base_defaults_02030f84.txt
 
 build actor_base_defaults: phony build/decomp/src/game/actor_base_defaults.o build/decomp/asm/game/actor_base_defaults_02030f7c.o build/decomp/asm/game/actor_base_defaults_02030f84.o build/reports/actor_base_defaults.txt
@@ -16022,7 +16022,7 @@ build build/reports/actor_interaction_runtime_update_0203ac9c.json: objdiff buil
   base_object = build/decomp/asm/game/actor_interaction_runtime_update_0203ac9c.o
 build build/reports/actor_interaction_runtime_update_0203ac9c.txt: match_report build/reports/actor_interaction_runtime_update_0203ac9c.json | tools/report_objdiff.py
   report_json = build/reports/actor_interaction_runtime_update_0203ac9c.json
-  report_args = --section .text --function func_0203ac9c --require-exact
+  report_args = --section .text --function ActorInteractionRuntime_Update --require-exact
 build build/reports/actor_interaction_runtime_update.txt: phony build/reports/actor_interaction_runtime_update_0203ac9c.txt
 
 build actor_interaction_runtime_update: phony build/decomp/src/game/actor_interaction_runtime_update.o build/decomp/asm/game/actor_interaction_runtime_update_0203ac9c.o build/reports/actor_interaction_runtime_update.txt

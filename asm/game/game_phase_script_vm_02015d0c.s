@@ -1,9 +1,9 @@
 ; Matching retail form; see src/game/game_phase_script_vm_utility_opcodes.c.
 .text
 .extern func_02012704
-.extern func_02030f84
-.global func_02015d0c
-func_02015d0c:
+.extern ActorInteraction_SetDirectionAndMagnitude
+.global GamePhaseActorScriptVm_SetInteractionDirectionAndMagnitude
+GamePhaseActorScriptVm_SetInteractionDirectionAndMagnitude:
     stmdb sp!, {r4, r5, r6, lr}
     mov r6, r0
     bl func_02012704
@@ -17,7 +17,7 @@ func_02015d0c:
     mov r1, r5, lsl #16
     mov r0, r0, lsr #16
     mov r1, r1, lsr #16
-    bl func_02030f84
+    bl ActorInteraction_SetDirectionAndMagnitude
     mov r0, #0
     ldmia sp!, {r4, r5, r6, pc}
-    .size func_02015d0c, . - func_02015d0c
+    .size GamePhaseActorScriptVm_SetInteractionDirectionAndMagnitude, . - GamePhaseActorScriptVm_SetInteractionDirectionAndMagnitude

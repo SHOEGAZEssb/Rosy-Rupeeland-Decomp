@@ -29,7 +29,7 @@ extern void func_02045028(void);
  * halfword before func_02045028. Returns no value; helper calls change global
  * engine state. The matching fallback preserves compiler-sensitive shifts.
  */
-void func_0203ac9c(void)
+void ActorInteractionRuntime_Update(void)
 {
     u32 index = (u8)data_02105680 * 0x10;
     s32 scale = data_02105682 * 3;

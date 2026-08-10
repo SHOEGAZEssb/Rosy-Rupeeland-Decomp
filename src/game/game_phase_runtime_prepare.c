@@ -7,7 +7,7 @@ extern u8 data_02105310[];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_0203ac9c(GamePhaseRuntime *self);
+extern void ActorInteractionRuntime_Update(GamePhaseRuntime *self);
 extern void ActorCollection_RebuildCategories(void *actor);
 extern void ActorCollection_UpdateFlag100Category0Actors(void *actor);
 extern void ActorCollection_ProcessCategory1And2Pairs(void *actor);
@@ -34,7 +34,7 @@ void func_02007908(GamePhaseRuntime *self, s32 value, s32 mode)
     u8 *b = (u8 *)self;
     void *actor;
 
-    func_0203ac9c(self);
+    ActorInteractionRuntime_Update(self);
     if (mode == 1 || mode == 3) {
         actor = b + 0x28;
         if (value == 2) {

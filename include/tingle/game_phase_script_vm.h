@@ -147,7 +147,7 @@ s32 func_02015a80(GamePhaseActorScriptVm *self);
 s32 func_02015acc(GamePhaseActorScriptVm *self);
 s32 func_02015b18(GamePhaseActorScriptVm *self);
 s32 func_02015b64(GamePhaseActorScriptVm *self);
-s32 func_02015d0c(GamePhaseActorScriptVm *self);
+s32 GamePhaseActorScriptVm_SetInteractionDirectionAndMagnitude(GamePhaseActorScriptVm *self);
 s32 func_02015d4c(GamePhaseActorScriptVm *self);
 s32 func_02015dc8(GamePhaseActorScriptVm *self);
 s32 func_02015e40(GamePhaseActorScriptVm *self);

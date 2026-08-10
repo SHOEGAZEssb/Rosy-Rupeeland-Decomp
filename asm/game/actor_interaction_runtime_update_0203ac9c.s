@@ -10,9 +10,9 @@
 .extern func_02045028
 .extern func_0204cfa4
 .extern func_02053560
-    .global func_0203ac9c
-    .type func_0203ac9c, @function
-func_0203ac9c: ; 0x0203ac9c
+    .global ActorInteractionRuntime_Update
+    .type ActorInteractionRuntime_Update, @function
+ActorInteractionRuntime_Update: ; 0x0203ac9c
     stmdb sp!, {r3, r4, r5, lr}
     ldr r0, .L_0203ad50
     ldr r1, .L_0203ad54
@@ -65,5 +65,5 @@ func_0203ac9c: ; 0x0203ac9c
 .L_0203ad5c: .word data_020c9670
 .L_0203ad60: .word data_021056e4
 
-    .size func_0203ac9c, . - func_0203ac9c
+    .size ActorInteractionRuntime_Update, . - ActorInteractionRuntime_Update
 
