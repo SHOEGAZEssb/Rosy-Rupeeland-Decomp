@@ -13,9 +13,9 @@ extern void *gHeapContext;
 extern "C" {
 #endif
 extern void *func_ov036_021fce00(void *controller, void *argument);
-extern void func_020720c0(void *resourceSet);
+extern void GraphicsResourceSetVariant_Init(void *resourceSet);
 extern void func_ov036_021fe218(void *list);
-extern void func_020720e8(void *resourceSet, void *archive,
+extern void GraphicsResourceSetVariant_Load(void *resourceSet, void *archive,
                           s32 firstId, s32 secondId, s32 thirdId);
 extern void Graphics3DResourceOwner_PrepareResources(void *owner, void *resourceSet);
 extern void *Graphics3DResourceOwner_CreateManager(void *owner);
@@ -81,17 +81,17 @@ extern "C" void *func_ov036_021fea14(void *controller, void *owner,
 {
     func_ov036_021fce00(controller, argument);
     FIELD(const void *, controller, 0) = data_ov036_02205f2c;
-    func_020720c0((u8 *)controller + 0xe0);
-    func_020720c0((u8 *)controller + 0xec);
+    GraphicsResourceSetVariant_Init((u8 *)controller + 0xe0);
+    GraphicsResourceSetVariant_Init((u8 *)controller + 0xec);
     func_ov036_021fe218((u8 *)controller + 0xf8);
     func_ov036_021fe218((u8 *)controller + 0x108);
 
     s32 id = select_resource_id(FIELD(s32, controller, 4));
-    func_020720e8((u8 *)controller + 0xec, data_020f4e18,
+    GraphicsResourceSetVariant_Load((u8 *)controller + 0xec, data_020f4e18,
                   id - 2, id - 1, id);
     Graphics3DResourceOwner_PrepareResources(owner, (u8 *)controller + 0xec);
 
-    func_020720e8((u8 *)controller + 0xe0, data_020f4e18,
+    GraphicsResourceSetVariant_Load((u8 *)controller + 0xe0, data_020f4e18,
                   0x6096, 0x6097, 0x6098);
     Graphics3DResourceOwner_PrepareResources(owner, (u8 *)controller + 0xe0);
     FIELD(void *, controller, 0xdc) = Graphics3DResourceOwner_CreateManager(owner);

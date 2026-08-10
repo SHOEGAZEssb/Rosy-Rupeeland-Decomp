@@ -5,8 +5,8 @@
     .extern data_020f4e18
     .extern data_ov017_02201414
     .extern data_ov017_022016e0
-    .extern func_020720c0
-    .extern func_020720e8
+    .extern GraphicsResourceSetVariant_Init
+    .extern GraphicsResourceSetVariant_Load
     .extern GraphicsAnimationInstanceManager_CreateInstance
     .extern Graphics3DResourceOwner_CreateManager
     .extern Graphics3DResourceOwner_PrepareResources
@@ -21,7 +21,7 @@ func_ov017_021fe40c:
     mov r10, r0
     add r0, r10, #0x4
     mov r4, r1
-    bl func_020720c0
+    bl GraphicsResourceSetVariant_Init
     add r0, r10, #0x38
     bl func_02091b6c
     mov r0, #0x0
@@ -38,7 +38,7 @@ func_ov017_021fe40c:
     ldr r1, [r1, #0x0]
     add r0, r10, #0x4
     sub r3, r3, #0x1
-    bl func_020720e8
+    bl GraphicsResourceSetVariant_Load
     mov r0, r4
     add r1, r10, #0x4
     bl Graphics3DResourceOwner_PrepareResources

@@ -27,7 +27,7 @@ extern void func_02070638(...);
 extern s32 func_0207042c(void *);
 extern void func_02070b50(...);
 extern void func_02070e0c(...);
-extern void func_02072000(GraphicsResourceSet *);
+extern void GraphicsResourceSet_ReleaseHandles(GraphicsResourceSet *);
 extern void *Heap_Alloc(...);
 extern void *func_020959d4(...);
 extern void func_02095c30(...);
@@ -77,7 +77,7 @@ extern "C" s32 func_ov032_02200da4(void *scene)
         func_02070638(set->tiles, 2, 0);
         func_02070b50(set->map, func_0207042c(set->tiles) ? 0x6000 : 0);
         func_02070e0c(set->palette, 2, 0);
-        func_02072000(set);
+        GraphicsResourceSet_ReleaseHandles(set);
         REG16(0x05000000) = 0x24a3;
         void *object = Heap_Alloc(0x2d0, data_ov032_02202348, 4, gHeapContext);
         if (object != 0) object = func_020959d4(object, 0, 0);

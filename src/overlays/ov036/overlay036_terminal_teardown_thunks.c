@@ -10,7 +10,7 @@ extern const u8 data_ov036_02205eac[];
 extern "C" {
 #endif
 extern void func_ov036_021fcf30(void *object);
-extern void func_020720d4(void *resourceSet);
+extern void GraphicsResourceSetVariant_Destroy(void *resourceSet);
 extern void func_02095308(void *list);
 extern void Heap_Free(void *allocation);
 #ifdef __cplusplus
@@ -81,7 +81,7 @@ extern "C" void *func_ov036_02204d18(void *object)
  */
 extern "C" void *func_ov036_02204d2c(void *object)
 {
-    func_020720d4((u8 *)object + 0xcc);
+    GraphicsResourceSetVariant_Destroy((u8 *)object + 0xcc);
     return object;
 }
 

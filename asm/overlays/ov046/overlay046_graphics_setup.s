@@ -7,7 +7,7 @@
 .extern data_020f4e14
 .extern data_020f4e18
 .extern func_02070f34
-.extern func_02072000
+.extern GraphicsResourceSet_ReleaseHandles
 .extern func_02072048
 .extern func_020925a4
 .extern func_020925dc
@@ -123,7 +123,7 @@ func_ov046_0220bac0:
     bl GraphicsResourceSet_Apply
 .L_0220bc48:
     add r0, sp, #0x4
-    bl func_02072000
+    bl GraphicsResourceSet_ReleaseHandles
     mov r0, r4
     bl func_ov046_0220bd14
     add r0, sp, #0x4

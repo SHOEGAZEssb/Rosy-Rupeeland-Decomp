@@ -8,7 +8,7 @@
     .extern data_ov017_02201754
     .extern func_020597fc
     .extern func_02071eb8
-    .extern func_020720d4
+    .extern GraphicsResourceSetVariant_Destroy
     .extern GraphicsSpriteGroup_Destroy
     .extern func_02075290
     .extern Graphics3DResourceOwner_Destroy
@@ -133,7 +133,7 @@ L_021ff458:
     add r0, r4, #0x264
     bl func_ov017_021fd780
     add r0, r4, #0x248
-    bl func_020720d4
+    bl GraphicsResourceSetVariant_Destroy
     add r0, r4, #0x1fc
     bl func_020926f8
     add r0, r4, #0x1d8

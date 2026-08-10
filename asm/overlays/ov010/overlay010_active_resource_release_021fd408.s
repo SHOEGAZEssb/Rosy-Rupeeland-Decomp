@@ -1,6 +1,6 @@
     .text
     .extern Heap_Free
-    .extern func_02072140
+    .extern GraphicsResourceSetVariant_ReleaseHandles
     .extern GraphicsAnimationInstanceManager_DestroyInstance
     .extern Graphics3DResourceBinding_Destroy
 
@@ -28,7 +28,7 @@ L_021fd43c:
     mov r1, #0x0
     add r0, r5, #0x7c
     str r1, [r5, #0x8c]
-    bl func_02072140
+    bl GraphicsResourceSetVariant_ReleaseHandles
     ldmia sp!, {r3, r4, r5, pc}
 
     .size func_ov010_021fd408, . - func_ov010_021fd408

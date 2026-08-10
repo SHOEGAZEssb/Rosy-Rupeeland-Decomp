@@ -6,7 +6,7 @@
     .extern func_02071e04
     .extern Graphics3DResourceOwner_RemoveManager
     .extern Graphics3DLightSet_Destroy
-    .extern func_020720d4
+    .extern GraphicsResourceSetVariant_Destroy
     .extern data_ov036_02205fb8
     .extern data_020f4e18
     .extern data_ov036_02205eac
@@ -39,11 +39,11 @@ func_ov036_02202500:
     str r1, [r4, #0xfc]
     bl func_02095308
     add r0, r4, #0xe8
-    bl func_020720d4
+    bl GraphicsResourceSetVariant_Destroy
     add r0, r4, #0xdc
-    bl func_020720d4
+    bl GraphicsResourceSetVariant_Destroy
     add r0, r4, #0xcc
-    bl func_020720d4
+    bl GraphicsResourceSetVariant_Destroy
     mov r0, r4
     ldmia sp!, {r4, pc}
 L_02202584: .word data_ov036_02205fb8

@@ -6,7 +6,7 @@
     .extern func_02095308
     .extern func_02071e04
     .extern Graphics3DResourceOwner_RemoveManager
-    .extern func_020720d4
+    .extern GraphicsResourceSetVariant_Destroy
     .extern Heap_Free
     .extern data_ov036_022060ec
     .extern gSoundContext
@@ -54,9 +54,9 @@ func_ov036_021ff680:
     str r1, [r4, #0x108]
     bl func_02095308
     add r0, r4, #0xdc
-    bl func_020720d4
+    bl GraphicsResourceSetVariant_Destroy
     add r0, r4, #0xcc
-    bl func_020720d4
+    bl GraphicsResourceSetVariant_Destroy
     mov r0, r4
     bl Heap_Free
     mov r0, r4

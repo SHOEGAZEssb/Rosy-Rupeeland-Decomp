@@ -2,7 +2,7 @@
     .extern Heap_Alloc
     .extern data_020f4e18
     .extern data_ov010_021fec8c
-    .extern func_020720e8
+    .extern GraphicsResourceSetVariant_Load
     .extern GraphicsAnimationInstanceManager_CreateInstance
     .extern Graphics3DResourceBinding_Init
     .extern gHeapContext
@@ -28,7 +28,7 @@ func_ov010_021fd45c: ; 0x021fd45c
     ldr r1, [r0, #0x0]
     add r0, r5, #0x7c
     ldmia r4, {r2, r3}
-    bl func_020720e8
+    bl GraphicsResourceSetVariant_Load
     ldr r0, [r5, #0x88]
     add r1, r5, #0x7c
     bl GraphicsAnimationInstanceManager_CreateInstance

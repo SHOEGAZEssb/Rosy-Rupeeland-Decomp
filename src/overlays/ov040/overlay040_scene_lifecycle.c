@@ -16,7 +16,7 @@ extern const u8 data_ov040_022042d4[];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_02072000(void *resourceSet);
+extern void GraphicsResourceSet_ReleaseHandles(void *resourceSet);
 extern void GraphicsResourceSet_Destroy(void *resourceSet);
 extern void __destroy_arr(void *array, s32 count, s32 stride,
                           Overlay040ElementDestructor destructor);
@@ -54,7 +54,7 @@ extern "C" void func_ov040_021fd740(void *element)
 extern "C" void *func_ov040_021fd744(void *scene)
 {
     FIELD(const void *, scene, 0) = data_ov040_022042a8;
-    func_02072000((u8 *)scene + 0x1b7c);
+    GraphicsResourceSet_ReleaseHandles((u8 *)scene + 0x1b7c);
     GraphicsResourceSet_Destroy((u8 *)scene + 0x1b7c);
     __destroy_arr((u8 *)scene + 0x167c, 0x50, 0x10, func_02005058);
     __destroy_arr((u8 *)scene + 0xbdc, 0x50, 0x10, func_02005058);

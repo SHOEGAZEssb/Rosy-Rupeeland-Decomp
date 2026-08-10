@@ -11,8 +11,8 @@
 .extern data_ov027_021fef2c
 .extern data_ov027_021fef34
 .extern data_ov027_021fef3c
-.extern func_020720c0
-.extern func_020720e8
+.extern GraphicsResourceSetVariant_Init
+.extern GraphicsResourceSetVariant_Load
 .extern GraphicsSpriteRenderer_HideAllSprites
 .extern func_02075238
 .extern GraphicsAnimationInstanceManager_CreateInstance
@@ -50,11 +50,11 @@ func_ov027_021fda30:
     ldr r1, L_021fdde4
     add r0, r10, #0x5c
     str r1, [r10, #0x0]
-    bl func_020720c0
+    bl GraphicsResourceSetVariant_Init
     add r0, r10, #0x68
-    bl func_020720c0
+    bl GraphicsResourceSetVariant_Init
     add r0, r10, #0x74
-    bl func_020720c0
+    bl GraphicsResourceSetVariant_Init
     add r0, r10, #0x80
     bl Graphics3DSceneState_Init
     add r0, r10, #0x120
@@ -113,7 +113,7 @@ L_021fdb1c:
     sub r2, r3, #0x2
     add r0, r10, #0x5c
     sub r3, r3, #0x1
-    bl func_020720e8
+    bl GraphicsResourceSetVariant_Load
     ldr r0, [r10, #0x54]
     add r1, r10, #0x5c
     bl Graphics3DResourceOwner_PrepareResources
@@ -124,7 +124,7 @@ L_021fdb1c:
     ldr r1, [r1, #0x0]
     add r0, r10, #0x68
     sub r3, r3, #0x1
-    bl func_020720e8
+    bl GraphicsResourceSetVariant_Load
     ldr r0, [r10, #0x54]
     add r1, r10, #0x68
     bl Graphics3DResourceOwner_PrepareResources
@@ -135,7 +135,7 @@ L_021fdb1c:
     ldr r1, [r1, #0x0]
     add r0, r10, #0x74
     sub r3, r3, #0x1
-    bl func_020720e8
+    bl GraphicsResourceSetVariant_Load
     ldr r0, [r10, #0x54]
     add r1, r10, #0x74
     bl Graphics3DResourceOwner_PrepareResources

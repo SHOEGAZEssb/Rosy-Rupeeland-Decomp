@@ -48,7 +48,7 @@ GamePhaseVisualEffect *GamePhaseVisualEffect_Destroy(GamePhaseVisualEffect *self
     self->vtable = data_020d55e0;
     self->flags &= ~1;
     self->randomToken = 0;
-    func_02072000(&self->resources);
+    GraphicsResourceSet_ReleaseHandles(&self->resources);
     display = *(volatile u32 *)0x04000000;
     display = (display & ~0x1f00) |
               ((((display & 0x1f00) >> 8) & ~2) << 8);

@@ -18,7 +18,7 @@
     .extern data_ov011_021fe6b0
     .extern func_0207043c
     .extern func_02070888
-    .extern func_02072000
+    .extern GraphicsResourceSet_ReleaseHandles
     .extern GraphicsSpriteRenderer_ClearTextBuffer
     .extern GraphicsSpriteRenderer_Printf
     .extern GraphicsSpriteCanvas_DrawLine
@@ -145,7 +145,7 @@ L_021fd5e0:
     ldr r0, [r0, #0x0]
     bl GraphicsSpriteRenderer_ClearTextBuffer
     add r0, r9, #0x78
-    bl func_02072000
+    bl GraphicsResourceSet_ReleaseHandles
     mov r0, r9
     bl func_ov011_021fd188
     b L_021fd734
@@ -189,7 +189,7 @@ L_021fd684:
     ldr r0, [r0, #0x0]
     bl GraphicsSpriteRenderer_ClearTextBuffer
     add r0, r9, #0x78
-    bl func_02072000
+    bl GraphicsResourceSet_ReleaseHandles
     mov r0, r9
     bl func_ov011_021fd188
     b L_021fd734
@@ -229,7 +229,7 @@ L_021fd6fc:
     ldr r0, [r0, #0x0]
     bl GraphicsSpriteRenderer_ClearTextBuffer
     add r0, r9, #0x78
-    bl func_02072000
+    bl GraphicsResourceSet_ReleaseHandles
     mov r0, r9
     bl func_ov011_021fd188
 L_021fd734:

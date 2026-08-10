@@ -7,7 +7,7 @@
 .extern func_02070e0c
 .extern func_02070874
 .extern PaletteBuffer_Write
-.extern func_02072000
+.extern GraphicsResourceSet_ReleaseHandles
 .extern GraphicsResourceSet_Destroy
 .extern data_020f4e18
 .extern data_020f4e50
@@ -64,7 +64,7 @@ func_0202bf4c: ; 0x0202bf4c
     mov r3, #0x80
     bl PaletteBuffer_Write
     add r0, sp, #0x4
-    bl func_02072000
+    bl GraphicsResourceSet_ReleaseHandles
     ldr r1, .L_0202c0b0
     mov r2, #0x4000000
     ldrh r0, [r1, #0x0]

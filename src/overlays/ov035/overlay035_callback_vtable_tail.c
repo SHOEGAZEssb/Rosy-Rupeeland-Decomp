@@ -19,7 +19,7 @@ extern s32 func_ov035_021fce5c(void *scene);
 extern void func_ov035_022028b4(void *object);
 extern void func_ov035_021fcf30(void);
 extern void func_02095670(void *object);
-extern void func_020720d4(void *state);
+extern void GraphicsResourceSetVariant_Destroy(void *state);
 extern void func_02095308(void *collection);
 extern void Heap_Free(void *allocation);
 #ifdef __cplusplus
@@ -207,7 +207,7 @@ extern "C" void *func_ov035_02202b44(void *object)
  */
 extern "C" void *func_ov035_02202b58(void *object)
 {
-    func_020720d4((u8 *)object + 0xcc);
+    GraphicsResourceSetVariant_Destroy((u8 *)object + 0xcc);
     return object;
 }
 

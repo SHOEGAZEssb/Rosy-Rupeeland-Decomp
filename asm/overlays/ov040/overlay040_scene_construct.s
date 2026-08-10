@@ -19,7 +19,7 @@
     .extern func_020708c4
     .extern func_02070e0c
     .extern func_02070f80
-    .extern func_02072000
+    .extern GraphicsResourceSet_ReleaseHandles
     .extern func_0209a208
     .extern func_020ae284
     .extern func_020ae90c
@@ -189,7 +189,7 @@ func_ov040_021fcebc: ; 0x021fcebc
     bl func_02070e0c
     bl func_020b44e8
     add r0, sp, #0x18
-    bl func_02072000
+    bl GraphicsResourceSet_ReleaseHandles
     ldr r3, .L_021fd704
     add r0, r10, #0x37c
     ldr r1, .L_021fd700

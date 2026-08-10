@@ -22,7 +22,7 @@ extern "C" {
 #endif
 extern void *Heap_Alloc(u32, const void *, u32, void *);
 extern void func_02091e28(void *);
-extern void func_020720c0(void *);
+extern void GraphicsResourceSetVariant_Init(void *);
 extern void Graphics3DSceneState_Init(void *);
 extern void func_02092364(void *);
 extern void func_ov043_0220b740(void *);
@@ -34,7 +34,7 @@ extern void GraphicsSpriteRenderer_HideAllSprites(void *);
 extern void func_020ae6dc(void);
 extern void *Graphics3DResourceOwner_Init(void *, s32, s32);
 extern void *Graphics3DResourceOwner_CreateManager(void);
-extern void func_020720e8(void *, void *, s32, s32, s32);
+extern void GraphicsResourceSetVariant_Load(void *, void *, s32, s32, s32);
 extern void Graphics3DResourceOwner_PrepareResources(void *, void *);
 extern void *func_02094ad4(void *);
 extern void func_02095274(void *, void *);
@@ -66,9 +66,9 @@ extern "C" void *func_ov027_021fda30(void *scene)
 {
     func_02091e28(scene);
     FIELD(const void *, scene, 0) = data_ov027_021feeb4;
-    func_020720c0((u8 *)scene + 0x5c);
-    func_020720c0((u8 *)scene + 0x68);
-    func_020720c0((u8 *)scene + 0x74);
+    GraphicsResourceSetVariant_Init((u8 *)scene + 0x5c);
+    GraphicsResourceSetVariant_Init((u8 *)scene + 0x68);
+    GraphicsResourceSetVariant_Init((u8 *)scene + 0x74);
     Graphics3DSceneState_Init((u8 *)scene + 0x80);
     func_ov027_021fd9c8((u8 *)scene + 0x120);
     func_ov027_021fd9c8((u8 *)scene + 0x130);
@@ -93,13 +93,13 @@ extern "C" void *func_ov027_021fda30(void *scene)
     FIELD(void *, scene, 0x54) = group;
     FIELD(void *, scene, 0x58) = Graphics3DResourceOwner_CreateManager();
 
-    func_020720e8((u8 *)scene + 0x5c, data_020f4e18,
+    GraphicsResourceSetVariant_Load((u8 *)scene + 0x5c, data_020f4e18,
                    0x6030, 0x6031, 0x6032);
     Graphics3DResourceOwner_PrepareResources(group, (u8 *)scene + 0x5c);
-    func_020720e8((u8 *)scene + 0x68, data_020f4e18,
+    GraphicsResourceSetVariant_Load((u8 *)scene + 0x68, data_020f4e18,
                    0x6036, 0x6037, 0x6038);
     Graphics3DResourceOwner_PrepareResources(group, (u8 *)scene + 0x68);
-    func_020720e8((u8 *)scene + 0x74, data_020f4e18,
+    GraphicsResourceSetVariant_Load((u8 *)scene + 0x74, data_020f4e18,
                    0x6033, 0x6034, 0x6035);
     Graphics3DResourceOwner_PrepareResources(group, (u8 *)scene + 0x74);
 

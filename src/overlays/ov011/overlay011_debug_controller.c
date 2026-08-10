@@ -29,7 +29,7 @@ extern const char data_ov011_021fe690[];
 extern const char data_ov011_021fe6a0[];
 extern const char data_ov011_021fe6b0[];
 extern void GraphicsSpriteRenderer_ClearTextBuffer(void *font);
-extern void func_02072000(GraphicsResourceSet *set);
+extern void GraphicsResourceSet_ReleaseHandles(GraphicsResourceSet *set);
 extern void func_ov011_021fd188(void *state);
 extern void DebugText_Printf(void *debug, s32 x, s32 y, s32 style, ...);
 extern void GraphicsSpriteRenderer_Printf(void *debug, s32 x, s32 y, const char *format, ...);
@@ -58,7 +58,7 @@ static void overlay011_toggle_sub_mode(void *state)
 static void overlay011_reload_resources(void *state)
 {
     GraphicsSpriteRenderer_ClearTextBuffer(gDebugFont);
-    func_02072000((GraphicsResourceSet *)((u8 *)state + 0x78));
+    GraphicsResourceSet_ReleaseHandles((GraphicsResourceSet *)((u8 *)state + 0x78));
     func_ov011_021fd188(state);
 }
 

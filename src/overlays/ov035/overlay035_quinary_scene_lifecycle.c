@@ -16,7 +16,7 @@ extern void Heap_Free(void *allocation);
 extern void func_02095308(void *collection);
 extern void Graphics3DResourceOwner_RemoveManager(void *resourceSetRoot);
 extern void func_02071e04(void *resourceContext, void *resource);
-extern void func_020720d4(void *state);
+extern void GraphicsResourceSetVariant_Destroy(void *state);
 #ifdef __cplusplus
 }
 #endif
@@ -48,9 +48,9 @@ static void *teardown_scene(void *scene)
     func_02095308((u8 *)scene + 0x118);
     FIELD(const void *, scene, 0x108) = data_ov035_02203af8;
     func_02095308((u8 *)scene + 0x108);
-    func_020720d4((u8 *)scene + 0xe8);
-    func_020720d4((u8 *)scene + 0xdc);
-    func_020720d4((u8 *)scene + 0xcc);
+    GraphicsResourceSetVariant_Destroy((u8 *)scene + 0xe8);
+    GraphicsResourceSetVariant_Destroy((u8 *)scene + 0xdc);
+    GraphicsResourceSetVariant_Destroy((u8 *)scene + 0xcc);
     return scene;
 }
 

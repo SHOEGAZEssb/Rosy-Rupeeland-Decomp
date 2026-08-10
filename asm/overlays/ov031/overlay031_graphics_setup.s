@@ -5,7 +5,7 @@
 .extern func_020706c4
 .extern func_02070bc4
 .extern func_02070eac
-.extern func_02072000
+.extern GraphicsResourceSet_ReleaseHandles
 .extern func_020925dc
 .extern func_02092618
 .extern func_02092688
@@ -71,7 +71,7 @@ func_ov031_021fdfa8:
     mov r2, r1
     bl func_02070eac
     add r0, sp, #0x4
-    bl func_02072000
+    bl GraphicsResourceSet_ReleaseHandles
     ldr r3, L_021fe140
     ldr r1, L_021fe13c
     str r3, [sp, #0x0]
@@ -93,7 +93,7 @@ func_ov031_021fdfa8:
     mov r2, #0x0
     bl func_02070eac
     add r0, sp, #0x4
-    bl func_02072000
+    bl GraphicsResourceSet_ReleaseHandles
     ldr r3, L_021fe144
     ldr r0, L_021fe13c
     str r3, [sp, #0x0]
@@ -112,7 +112,7 @@ func_ov031_021fdfa8:
     mov r2, #0x0
     bl func_02070eac
     add r0, sp, #0x4
-    bl func_02072000
+    bl GraphicsResourceSet_ReleaseHandles
     add r0, sp, #0x4
     bl GraphicsResourceSet_Destroy
     add sp, sp, #0x10

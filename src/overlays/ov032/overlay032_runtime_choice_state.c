@@ -26,7 +26,7 @@ extern void func_02070638(...);
 extern s32 func_0207042c(void *);
 extern void func_02070b50(...);
 extern void func_02070e0c(...);
-extern void func_02072000(GraphicsResourceSet *);
+extern void GraphicsResourceSet_ReleaseHandles(GraphicsResourceSet *);
 extern void func_020980f8(void *);
 extern void GameWork_ClearFlag(...);
 extern void GameWork_SetFlag(...);
@@ -69,7 +69,7 @@ static void upload_background(void *scene)
     func_02070638(set->tiles, 2, 0);
     func_02070b50(set->map, func_0207042c(set->tiles) ? 0x6000 : 0);
     func_02070e0c(set->palette, 2, 0);
-    func_02072000(set);
+    GraphicsResourceSet_ReleaseHandles(set);
     REG16(0x05000000) = 0x24a3;
     REG32(0x04000000) = (REG32(0x04000000) & ~0x1f00) | 0x1700;
 }

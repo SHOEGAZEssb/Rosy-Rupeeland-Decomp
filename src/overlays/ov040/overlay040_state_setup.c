@@ -44,7 +44,7 @@ extern void *func_02070874(void *resource);
 extern void *func_02070888(void *resource);
 extern void func_020b1ff0(void *destination, s32 slot, void *source);
 extern void func_02070eac(void *resource, s32 first, s32 second);
-extern void func_02072000(void *set);
+extern void GraphicsResourceSet_ReleaseHandles(void *set);
 extern void func_020afd28(volatile void *reg, const void *transform,
                           s32 a2, s32 a3, s32 a4, s32 a5);
 extern void *DisplayBrightnessPair_GetScreen(void *resource, s32 index);
@@ -356,7 +356,7 @@ extern "C" void func_ov040_02202640(void *scene, void *argument)
     func_020b44e8();
     func_02070eac((void *)resources[2], 0, 0);
     func_020b44e8();
-    func_02072000(resources);
+    GraphicsResourceSet_ReleaseHandles(resources);
 
     func_020afd28((volatile void *)0x04001020, transform, 0, 0, 0, 0);
     func_020afd28((volatile void *)0x04001030, transform, 0, 0, 0, 0);

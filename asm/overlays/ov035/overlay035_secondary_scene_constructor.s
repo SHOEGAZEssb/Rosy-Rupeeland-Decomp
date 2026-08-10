@@ -3,9 +3,9 @@
 /* Exact fallback; see src/overlays/ov035/overlay035_secondary_scene_constructor.c for documented portable C. */
 
     .extern func_ov035_021fce00
-    .extern func_020720c0
+    .extern GraphicsResourceSetVariant_Init
     .extern func_ov035_021fdce8
-    .extern func_020720e8
+    .extern GraphicsResourceSetVariant_Load
     .extern Graphics3DResourceOwner_PrepareResources
     .extern func_02071adc
     .extern Graphics3DResourceOwner_CreateManager
@@ -43,9 +43,9 @@ func_ov035_021feb7c:
     ldr r1, L_021fefe0
     add r0, r5, #0xdc
     str r1, [r5, #0x0]
-    bl func_020720c0
+    bl GraphicsResourceSetVariant_Init
     add r0, r5, #0xe8
-    bl func_020720c0
+    bl GraphicsResourceSetVariant_Init
     add r0, r5, #0x10c
     bl func_ov035_021fdce8
     add r0, r5, #0x11c
@@ -59,7 +59,7 @@ func_ov035_021feb7c:
     sub r2, r3, #0x2
     ldr r1, [r1, #0x0]
     sub r3, r3, #0x1
-    bl func_020720e8
+    bl GraphicsResourceSetVariant_Load
     mov r0, r4
     add r1, r5, #0xdc
     bl Graphics3DResourceOwner_PrepareResources
@@ -78,7 +78,7 @@ L_021fec0c:
     add r0, r5, #0xe8
     sub r2, r3, #0x2
     sub r3, r3, #0x1
-    bl func_020720e8
+    bl GraphicsResourceSetVariant_Load
     ldr r3, L_021feff0
     ldr r0, L_021fefe8
     str r3, [sp, #0x0]
@@ -86,7 +86,7 @@ L_021fec0c:
     add r0, r5, #0xcc
     sub r2, r3, #0x2
     sub r3, r3, #0x1
-    bl func_020720e8
+    bl GraphicsResourceSetVariant_Load
     b L_021fecd4
 L_021fec50:
     ldr r3, L_021fefec
@@ -96,7 +96,7 @@ L_021fec50:
     add r0, r5, #0xe8
     sub r2, r3, #0x2
     add r3, r3, #0x1
-    bl func_020720e8
+    bl GraphicsResourceSetVariant_Load
     ldr r3, L_021feff4
     ldr r0, L_021fefe8
     str r3, [sp, #0x0]
@@ -104,7 +104,7 @@ L_021fec50:
     add r0, r5, #0xcc
     sub r2, r3, #0x2
     sub r3, r3, #0x1
-    bl func_020720e8
+    bl GraphicsResourceSetVariant_Load
     b L_021fecd4
 L_021fec94:
     ldr r3, L_021fefec
@@ -114,7 +114,7 @@ L_021fec94:
     add r0, r5, #0xe8
     sub r2, r3, #0x2
     add r3, r3, #0x2
-    bl func_020720e8
+    bl GraphicsResourceSetVariant_Load
     ldr r3, L_021feff8
     ldr r0, L_021fefe8
     str r3, [sp, #0x0]
@@ -122,7 +122,7 @@ L_021fec94:
     add r0, r5, #0xcc
     sub r2, r3, #0x2
     sub r3, r3, #0x1
-    bl func_020720e8
+    bl GraphicsResourceSetVariant_Load
 L_021fecd4:
     mov r0, r4
     add r1, r5, #0xe8

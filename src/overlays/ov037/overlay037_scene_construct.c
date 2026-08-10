@@ -14,11 +14,11 @@ extern void *gHeapContext;
 extern "C" {
 #endif
 extern void *func_ov037_021fce00(void *scene);
-extern void func_020720c0(void *state);
+extern void GraphicsResourceSetVariant_Init(void *state);
 extern void *func_ov037_021fd6d0(void *container);
 extern void Graphics3DLightSet_Init(void *state);
 extern void func_02091b6c(void *timer);
-extern void func_020720e8(void *slot, void *archive, s32 id0, s32 id1, s32 id2);
+extern void GraphicsResourceSetVariant_Load(void *slot, void *archive, s32 id0, s32 id1, s32 id2);
 extern void Graphics3DResourceOwner_PrepareResources(void *owner, void *slot);
 extern void *func_02071adc(void *archive, s32 resourceId);
 extern void *Graphics3DResourceOwner_CreateManager(void *owner);
@@ -44,7 +44,7 @@ extern void func_02092850(s32 mode);
 static void initResourceSlot(void *scene, void *owner, u32 offset, s32 finalId)
 {
     void *slot = (u8 *)scene + offset;
-    func_020720e8(slot, data_020f4e18[0], finalId - 2, finalId - 1, finalId);
+    GraphicsResourceSetVariant_Load(slot, data_020f4e18[0], finalId - 2, finalId - 1, finalId);
     Graphics3DResourceOwner_PrepareResources(owner, slot);
 }
 
@@ -66,7 +66,7 @@ extern "C" void *func_ov037_021fd7e4(void *scene, void *owner)
 
     const u32 slotOffsets[6] = {0xc8, 0xd4, 0xe0, 0xec, 0xf8, 0x104};
     for (s32 i = 0; i < 6; ++i)
-        func_020720c0((u8 *)scene + slotOffsets[i]);
+        GraphicsResourceSetVariant_Init((u8 *)scene + slotOffsets[i]);
     func_ov037_021fd6d0((u8 *)scene + 0x12c);
     func_ov037_021fd6d0((u8 *)scene + 0x13c);
     Graphics3DLightSet_Init((u8 *)scene + 0x14c);

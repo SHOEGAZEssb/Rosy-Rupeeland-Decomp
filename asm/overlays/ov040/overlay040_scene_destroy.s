@@ -1,7 +1,7 @@
 .text
 /* Exact fallback; see overlay040_scene_lifecycle.c for portable C. */
     .extern data_ov040_022042a8
-    .extern func_02072000
+    .extern GraphicsResourceSet_ReleaseHandles
     .extern GraphicsResourceSet_Destroy
     .extern __destroy_arr
     .extern func_02005058
@@ -15,7 +15,7 @@ func_ov040_021fd744:
     ldr r1, L_021fd84c
     add r0, r0, #0x1800
     str r1, [r4, #0x0]
-    bl func_02072000
+    bl GraphicsResourceSet_ReleaseHandles
     add r0, r4, #0x37c
     add r0, r0, #0x1800
     bl GraphicsResourceSet_Destroy

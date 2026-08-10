@@ -3955,7 +3955,7 @@ build build/reports/graphics_resource_set_ops.json: objdiff build/decomp/delinks
 
 build build/reports/graphics_resource_set_ops.txt: match_report build/reports/graphics_resource_set_ops.json | tools/report_objdiff.py
   report_json = build/reports/graphics_resource_set_ops.json
-  report_args = --section .text --function func_02072000 --function func_02072048 --function GraphicsResourceSet_Apply --require-exact
+  report_args = --section .text --function GraphicsResourceSet_ReleaseHandles --function func_02072048 --function GraphicsResourceSet_Apply --require-exact
 
 build build/reports/graphics_resource_set_variant.json: objdiff build/decomp/delinks/src/graphics/graphics_resource_set_variant.o | build/decomp/src/graphics/graphics_resource_set_variant.o
   target_object = build/decomp/delinks/src/graphics/graphics_resource_set_variant.o
@@ -3963,7 +3963,7 @@ build build/reports/graphics_resource_set_variant.json: objdiff build/decomp/del
 
 build build/reports/graphics_resource_set_variant.txt: match_report build/reports/graphics_resource_set_variant.json | tools/report_objdiff.py
   report_json = build/reports/graphics_resource_set_variant.json
-  report_args = --section .text --function func_020720c0 --function func_020720d4 --function func_020720e8 --function func_02072140
+  report_args = --section .text --function GraphicsResourceSetVariant_Init --function GraphicsResourceSetVariant_Destroy --function GraphicsResourceSetVariant_Load --function GraphicsResourceSetVariant_ReleaseHandles
 
 build build/reports/graphics_vram_allocator.json: objdiff build/decomp/delinks/src/graphics/graphics_vram_allocator.o | build/decomp/src/graphics/graphics_vram_allocator.o
   target_object = build/decomp/delinks/src/graphics/graphics_vram_allocator.o

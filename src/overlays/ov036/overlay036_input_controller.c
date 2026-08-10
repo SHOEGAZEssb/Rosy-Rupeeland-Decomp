@@ -15,7 +15,7 @@ extern "C" {
 #endif
 extern void Graphics3DSceneState_Init(void *state);
 extern void func_02091b6c(void *state);
-extern void func_020720c0(void *state);
+extern void GraphicsResourceSetVariant_Init(void *state);
 #ifdef __cplusplus
 }
 #endif
@@ -32,7 +32,7 @@ extern "C" void *func_ov036_021fce00(void *controller, void *argument)
     Graphics3DSceneState_Init((u8 *)controller + 0x0c);
     func_02091b6c((u8 *)controller + 0xa4);
     FIELD(s32, controller, 0xc0) = 0;
-    func_020720c0((u8 *)controller + 0xcc);
+    GraphicsResourceSetVariant_Init((u8 *)controller + 0xcc);
     FIELD(void *, controller, 4) = argument;
     FIELD(s32, controller, 0x0c) = 2;
     FIELD(s32, controller, 0xa0) = 0;

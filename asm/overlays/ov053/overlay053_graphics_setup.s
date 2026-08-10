@@ -7,7 +7,7 @@
 .extern GraphicsResourceSet_Init
 .extern GraphicsResourceSet_Load
 .extern data_020f4e18
-.extern func_02072000
+.extern GraphicsResourceSet_ReleaseHandles
 .extern func_02072048
 
 .global func_ov053_0220da60
@@ -29,7 +29,7 @@ func_ov053_0220da60:
     mov r2, #0x0
     bl func_02072048
     add r0, sp, #0x4
-    bl func_02072000
+    bl GraphicsResourceSet_ReleaseHandles
     ldr ip, .L_0220db60
     ldr r3, .L_0220db64
     ldrh r2, [ip, #0x0]

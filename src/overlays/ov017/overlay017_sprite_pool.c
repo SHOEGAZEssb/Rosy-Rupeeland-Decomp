@@ -13,9 +13,9 @@ extern u8 data_ov017_022016e0[];
 extern "C" {
 #endif
 extern u32 genrand_int32(void);
-extern s32 func_020720c0(void *);
-extern void func_020720d4(void *);
-extern void func_020720e8(void *, void *, s32, s32, s32);
+extern s32 GraphicsResourceSetVariant_Init(void *);
+extern void GraphicsResourceSetVariant_Destroy(void *);
+extern void GraphicsResourceSetVariant_Load(void *, void *, s32, s32, s32);
 extern void *GraphicsAnimationInstanceManager_CreateInstance(void *, void *);
 extern void *Graphics3DResourceOwner_CreateManager(void *);
 extern void Graphics3DResourceOwner_RemoveManager(void *, void *);
@@ -42,12 +42,12 @@ extern "C" void *func_ov017_021fe40c(void *pool, void *resourceContext)
     s32 i;
     s32 zero = 0;
 
-    func_020720c0((u8 *)pool + 4);
+    GraphicsResourceSetVariant_Init((u8 *)pool + 4);
     func_02091b6c((u8 *)pool + 0x38);
     FIELD(u32, pool, 0x54) = 0;
     FIELD(u32, pool, 0x54) = genrand_int32();
     FIELD(void *, pool, 0) = Graphics3DResourceOwner_CreateManager(resourceContext);
-    func_020720e8((u8 *)pool + 4, data_020f4e18[0], 0x6020, 0x601e,
+    GraphicsResourceSetVariant_Load((u8 *)pool + 4, data_020f4e18[0], 0x6020, 0x601e,
                   0x601f);
     Graphics3DResourceOwner_PrepareResources(resourceContext, (u8 *)pool + 4);
 
@@ -88,6 +88,6 @@ extern "C" void *func_ov017_021fe58c(void *pool)
     void *resource = FIELD(void *, pool, 0);
 
     Graphics3DResourceOwner_RemoveManager(FIELD(void *, resource, 0), resource);
-    func_020720d4((u8 *)pool + 4);
+    GraphicsResourceSetVariant_Destroy((u8 *)pool + 4);
     return pool;
 }

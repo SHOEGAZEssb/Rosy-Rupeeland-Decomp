@@ -20,7 +20,7 @@
 .extern func_02070bc4
 .extern func_02070e0c
 .extern func_02070eac
-.extern func_02072000
+.extern GraphicsResourceSet_ReleaseHandles
 .extern GraphicsSpriteRenderer_ClearTextBuffer
 .extern GraphicsSpriteRenderer_ConfigureTextGridPriority
 .extern func_020923a4
@@ -171,7 +171,7 @@ func_ov032_021fd994:
     mov r2, r1
     bl func_02070e0c
     add r0, sp, #0x4
-    bl func_02072000
+    bl GraphicsResourceSet_ReleaseHandles
     ldr r3, L_021fde08
     ldr r1, L_021fde04
     str r3, [sp, #0x0]
@@ -197,7 +197,7 @@ func_ov032_021fd994:
     mov r2, #0x0
     bl func_02070e0c
     add r0, sp, #0x4
-    bl func_02072000
+    bl GraphicsResourceSet_ReleaseHandles
     ldr r3, L_021fde0c
     ldr r1, L_021fde04
     str r3, [sp, #0x0]
@@ -223,7 +223,7 @@ func_ov032_021fd994:
     mov r2, #0x0
     bl func_02070eac
     add r0, sp, #0x4
-    bl func_02072000
+    bl GraphicsResourceSet_ReleaseHandles
     ldr r3, L_021fde08
     ldr r1, L_021fde04
     str r3, [sp, #0x0]
@@ -249,7 +249,7 @@ func_ov032_021fd994:
     mov r2, #0x0
     bl func_02070eac
     add r0, sp, #0x4
-    bl func_02072000
+    bl GraphicsResourceSet_ReleaseHandles
     ldr r3, L_021fde10
     ldr r1, L_021fde04
     str r3, [sp, #0x0]
@@ -275,7 +275,7 @@ func_ov032_021fd994:
     mov r2, #0x0
     bl func_02070eac
     add r0, sp, #0x4
-    bl func_02072000
+    bl GraphicsResourceSet_ReleaseHandles
     mov r1, #0x5000000
     ldr r2, L_021fde14
     add r0, r1, #0x400

@@ -10,7 +10,7 @@
     .extern func_02059230
     .extern func_ov048_0220b7b4
     .extern func_020923a0
-    .extern func_020720d4
+    .extern GraphicsResourceSetVariant_Destroy
     .extern func_ov048_0220ba90
     .extern data_ov035_02203bb4
     .extern data_020f4e14
@@ -80,7 +80,7 @@ func_ov035_0220277c:
     stmdb sp!, {r4, lr}
     mov r4, r0
     add r0, r4, #0xcc
-    bl func_020720d4
+    bl GraphicsResourceSetVariant_Destroy
     mov r0, r4
     bl Heap_Free
     mov r0, r4

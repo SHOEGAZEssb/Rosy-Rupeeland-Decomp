@@ -99,7 +99,7 @@ void func_0202bf4c(MainDualLayerResourceRenderer *self)
     func_02070e0c(resources.resource2, 0, 0);
     palette = func_02070874(resources.resource1);
     PaletteBuffer_Write(&data_020f4e50, palette + 0x180, 0x180, 0x80);
-    func_02072000(&resources);
+    GraphicsResourceSet_ReleaseHandles(&resources);
 
     *bg1cnt = (*bg1cnt & 0x43) | 0x1a00;
     *bg1cnt &= ~3u;

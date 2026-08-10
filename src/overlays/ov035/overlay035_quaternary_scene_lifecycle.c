@@ -15,7 +15,7 @@ extern void func_02095308(void *collection);
 extern void Graphics3DResourceOwner_RemoveManager(void *resourceSetRoot);
 extern void func_02071e04(void *resourceContext, void *resource);
 extern void Graphics3DLightSet_Destroy(void *records);
-extern void func_020720d4(void *state);
+extern void GraphicsResourceSetVariant_Destroy(void *state);
 extern void Heap_Free(void *allocation);
 extern void func_02095360(void *collection);
 extern void func_ov035_021fdd70(void *record, s32 x, s32 y, s32 z);
@@ -43,10 +43,10 @@ extern "C" void *func_ov035_0220043c(void *scene)
     FIELD(const void *, scene, 0x160) = data_ov035_02203af8;
     func_02095308((u8 *)scene + 0x160);
     Graphics3DLightSet_Destroy((u8 *)scene + 0x120);
-    func_020720d4((u8 *)scene + 0xf4);
-    func_020720d4((u8 *)scene + 0xe8);
-    func_020720d4((u8 *)scene + 0xdc);
-    func_020720d4((u8 *)scene + 0xcc);
+    GraphicsResourceSetVariant_Destroy((u8 *)scene + 0xf4);
+    GraphicsResourceSetVariant_Destroy((u8 *)scene + 0xe8);
+    GraphicsResourceSetVariant_Destroy((u8 *)scene + 0xdc);
+    GraphicsResourceSetVariant_Destroy((u8 *)scene + 0xcc);
     return scene;
 }
 

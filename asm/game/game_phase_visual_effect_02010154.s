@@ -3,7 +3,7 @@
 .extern GraphicsResourceSet_Load
 .extern data_020f4e18
 .extern func_02070f34
-.extern func_02072000
+.extern GraphicsResourceSet_ReleaseHandles
 .extern func_020b44e8
 .global GamePhaseVisualEffect_LoadResources
 GamePhaseVisualEffect_LoadResources:
@@ -13,7 +13,7 @@ GamePhaseVisualEffect_LoadResources:
     mov r6, r1
     mov r5, r2
     mov r4, r3
-    bl func_02072000
+    bl GraphicsResourceSet_ReleaseHandles
     ldr r0, L_020101a0
     str r4, [sp, #0x0]
     ldr r1, [r0, #0x0]

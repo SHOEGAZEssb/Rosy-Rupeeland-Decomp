@@ -13,11 +13,11 @@ extern u8 gHeapContext[];
 extern "C" {
 #endif
 extern void *func_ov035_021fce00(void *object, void *argument);
-extern void func_020720c0(void *state);
+extern void GraphicsResourceSetVariant_Init(void *state);
 extern void func_ov035_021fdce8(void *record);
 extern void func_02091b6c(void *state);
 extern void func_02091d08(void *state);
-extern void func_020720e8(void *state, void *resourceContext, s32 first,
+extern void GraphicsResourceSetVariant_Load(void *state, void *resourceContext, s32 first,
                          s32 second, s32 third);
 extern void Graphics3DResourceOwner_PrepareResources(void *owner, void *resource);
 extern void *Graphics3DResourceOwner_CreateManager(void *owner);
@@ -57,14 +57,14 @@ extern "C" void *func_ov035_021fdd88(void *owner, void *resourceOwner,
 {
     func_ov035_021fce00(owner, baseArgument);
     FIELD(const void *, owner, 0) = data_ov035_02203b98;
-    func_020720c0((u8 *)owner + 0xdc);
-    func_020720c0((u8 *)owner + 0xe8);
-    func_020720c0((u8 *)owner + 0xf4);
+    GraphicsResourceSetVariant_Init((u8 *)owner + 0xdc);
+    GraphicsResourceSetVariant_Init((u8 *)owner + 0xe8);
+    GraphicsResourceSetVariant_Init((u8 *)owner + 0xf4);
     func_ov035_021fdce8((u8 *)owner + 0x10c);
     func_02091b6c((u8 *)owner + 0x11c);
     func_02091d08((u8 *)owner + 0x138);
 
-    func_020720e8((u8 *)owner + 0xdc, data_020f4e18[0],
+    GraphicsResourceSetVariant_Load((u8 *)owner + 0xdc, data_020f4e18[0],
                   0x603c, 0x603d, 0x603e);
     Graphics3DResourceOwner_PrepareResources(resourceOwner, (u8 *)owner + 0xdc);
 
@@ -73,13 +73,13 @@ extern "C" void *func_ov035_021fdd88(void *owner, void *resourceOwner,
                      variant == 0xce ? 0x606a : 0x6068;
     s32 resourceCC = variant == 0xcb ? 0x60e0 :
                      variant == 0xce ? 0x60e3 : 0x60dd;
-    func_020720e8((u8 *)owner + 0xe8, data_020f4e18[0],
+    GraphicsResourceSetVariant_Load((u8 *)owner + 0xe8, data_020f4e18[0],
                   0x6066, 0x6067, resourceE8);
-    func_020720e8((u8 *)owner + 0xcc, data_020f4e18[0],
+    GraphicsResourceSetVariant_Load((u8 *)owner + 0xcc, data_020f4e18[0],
                   resourceCC - 2, resourceCC - 1, resourceCC);
     Graphics3DResourceOwner_PrepareResources(resourceOwner, (u8 *)owner + 0xe8);
 
-    func_020720e8((u8 *)owner + 0xf4, data_020f4e18[0],
+    GraphicsResourceSetVariant_Load((u8 *)owner + 0xf4, data_020f4e18[0],
                   0x6084, 0x6085, 0x6086);
     Graphics3DResourceOwner_PrepareResources(resourceOwner, (u8 *)owner + 0xf4);
     FIELD(void *, owner, 0x100) = Graphics3DResourceOwner_CreateManager(resourceOwner);

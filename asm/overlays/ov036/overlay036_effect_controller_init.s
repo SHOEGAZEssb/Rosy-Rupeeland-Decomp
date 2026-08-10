@@ -3,9 +3,9 @@
 /* Exact fallback; see src/overlays/ov036/overlay036_effect_controller_init.c for documented portable C. */
 
     .extern func_ov036_021fce00
-    .extern func_020720c0
+    .extern GraphicsResourceSetVariant_Init
     .extern func_ov036_021fe218
-    .extern func_020720e8
+    .extern GraphicsResourceSetVariant_Load
     .extern Graphics3DResourceOwner_PrepareResources
     .extern Graphics3DResourceOwner_CreateManager
     .extern Heap_Alloc
@@ -30,9 +30,9 @@ func_ov036_021fea14:
     ldr r1, L_021fee30
     add r0, r5, #0xe0
     str r1, [r5, #0x0]
-    bl func_020720c0
+    bl GraphicsResourceSetVariant_Init
     add r0, r5, #0xec
-    bl func_020720c0
+    bl GraphicsResourceSetVariant_Init
     add r0, r5, #0xf8
     bl func_ov036_021fe218
     add r0, r5, #0x108
@@ -152,7 +152,7 @@ L_021febc0:
     add r0, r5, #0xec
     sub r2, r3, #0x2
     sub r3, r3, #0x1
-    bl func_020720e8
+    bl GraphicsResourceSetVariant_Load
     b L_021fed6c
 L_021febe4:
     ldr r3, L_021fee44
@@ -162,7 +162,7 @@ L_021febe4:
     add r0, r5, #0xec
     sub r2, r3, #0x2
     sub r3, r3, #0x1
-    bl func_020720e8
+    bl GraphicsResourceSetVariant_Load
     b L_021fed6c
 L_021fec08:
     ldr r3, L_021fee48
@@ -172,7 +172,7 @@ L_021fec08:
     add r0, r5, #0xec
     sub r2, r3, #0x2
     sub r3, r3, #0x1
-    bl func_020720e8
+    bl GraphicsResourceSetVariant_Load
     b L_021fed6c
 L_021fec2c:
     ldr r3, L_021fee4c
@@ -182,7 +182,7 @@ L_021fec2c:
     add r0, r5, #0xec
     sub r2, r3, #0x2
     sub r3, r3, #0x1
-    bl func_020720e8
+    bl GraphicsResourceSetVariant_Load
     b L_021fed6c
 L_021fec50:
     ldr r3, L_021fee50
@@ -192,7 +192,7 @@ L_021fec50:
     add r0, r5, #0xec
     sub r2, r3, #0x2
     sub r3, r3, #0x1
-    bl func_020720e8
+    bl GraphicsResourceSetVariant_Load
     b L_021fed6c
 L_021fec74:
     ldr r3, L_021fee54
@@ -202,7 +202,7 @@ L_021fec74:
     add r0, r5, #0xec
     sub r2, r3, #0x2
     sub r3, r3, #0x1
-    bl func_020720e8
+    bl GraphicsResourceSetVariant_Load
     b L_021fed6c
 L_021fec98:
     ldr r3, L_021fee58
@@ -212,7 +212,7 @@ L_021fec98:
     add r0, r5, #0xec
     sub r2, r3, #0x2
     sub r3, r3, #0x1
-    bl func_020720e8
+    bl GraphicsResourceSetVariant_Load
     b L_021fed6c
 L_021fecbc:
     ldr r3, L_021fee5c
@@ -222,7 +222,7 @@ L_021fecbc:
     add r0, r5, #0xec
     sub r2, r3, #0x2
     sub r3, r3, #0x1
-    bl func_020720e8
+    bl GraphicsResourceSetVariant_Load
     b L_021fed6c
 L_021fece0:
     ldr r3, L_021fee60
@@ -232,7 +232,7 @@ L_021fece0:
     add r0, r5, #0xec
     sub r2, r3, #0x2
     sub r3, r3, #0x1
-    bl func_020720e8
+    bl GraphicsResourceSetVariant_Load
     b L_021fed6c
 L_021fed04:
     ldr r3, L_021fee64
@@ -242,7 +242,7 @@ L_021fed04:
     add r0, r5, #0xec
     sub r2, r3, #0x2
     sub r3, r3, #0x1
-    bl func_020720e8
+    bl GraphicsResourceSetVariant_Load
     b L_021fed6c
 L_021fed28:
     ldr r3, L_021fee68
@@ -252,7 +252,7 @@ L_021fed28:
     add r0, r5, #0xec
     sub r2, r3, #0x2
     sub r3, r3, #0x1
-    bl func_020720e8
+    bl GraphicsResourceSetVariant_Load
     b L_021fed6c
 L_021fed4c:
     ldr r3, L_021fee6c
@@ -262,7 +262,7 @@ L_021fed4c:
     add r0, r5, #0xec
     sub r2, r3, #0x2
     sub r3, r3, #0x1
-    bl func_020720e8
+    bl GraphicsResourceSetVariant_Load
 L_021fed6c:
     mov r0, r4
     add r1, r5, #0xec
@@ -274,7 +274,7 @@ L_021fed6c:
     add r0, r5, #0xe0
     sub r2, r3, #0x2
     sub r3, r3, #0x1
-    bl func_020720e8
+    bl GraphicsResourceSetVariant_Load
     mov r0, r4
     add r1, r5, #0xe0
     bl Graphics3DResourceOwner_PrepareResources

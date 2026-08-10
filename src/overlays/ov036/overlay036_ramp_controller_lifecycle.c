@@ -14,7 +14,7 @@ extern "C" {
 #endif
 extern void func_02095308(void *list);
 extern void Graphics3DResourceOwner_RemoveManager(void *manager);
-extern void func_020720d4(void *resourceSet);
+extern void GraphicsResourceSetVariant_Destroy(void *resourceSet);
 extern void Heap_Free(void *allocation);
 extern s32 func_02091c7c(void *timer, s32 mode);
 extern void *GraphicsAnimationInstanceManager_CreateInstance(void *manager, void *resourceSet);
@@ -51,7 +51,7 @@ extern "C" void *func_ov036_02201350(void *controller)
     func_02095308((u8 *)controller + 0x148);
     const s32 offsets[] = {0x10c, 0x100, 0xf4, 0xe8, 0xdc, 0xcc};
     for (s32 i = 0; i < 6; ++i)
-        func_020720d4((u8 *)controller + offsets[i]);
+        GraphicsResourceSetVariant_Destroy((u8 *)controller + offsets[i]);
     return controller;
 }
 
@@ -72,7 +72,7 @@ extern "C" void *func_ov036_022013dc(void *controller)
     func_02095308((u8 *)controller + 0x148);
     const s32 offsets[] = {0x10c, 0x100, 0xf4, 0xe8, 0xdc, 0xcc};
     for (s32 i = 0; i < 6; ++i)
-        func_020720d4((u8 *)controller + offsets[i]);
+        GraphicsResourceSetVariant_Destroy((u8 *)controller + offsets[i]);
     Heap_Free(controller);
     return controller;
 }

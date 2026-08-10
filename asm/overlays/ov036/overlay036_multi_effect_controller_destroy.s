@@ -6,7 +6,7 @@
     .extern func_02095308
     .extern func_02071e04
     .extern Graphics3DResourceOwner_RemoveManager
-    .extern func_020720d4
+    .extern GraphicsResourceSetVariant_Destroy
     .extern data_ov036_022060ec
     .extern gSoundContext
     .extern data_020f4e18
@@ -53,9 +53,9 @@ func_ov036_021ff5bc:
     str r1, [r4, #0x108]
     bl func_02095308
     add r0, r4, #0xdc
-    bl func_020720d4
+    bl GraphicsResourceSetVariant_Destroy
     add r0, r4, #0xcc
-    bl func_020720d4
+    bl GraphicsResourceSetVariant_Destroy
     mov r0, r4
     ldmia sp!, {r4, pc}
 L_021ff66c: .word data_ov036_022060ec

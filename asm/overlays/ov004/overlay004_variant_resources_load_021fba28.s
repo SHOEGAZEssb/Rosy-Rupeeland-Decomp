@@ -9,7 +9,7 @@
     .extern func_020706c4
     .extern func_02070bc4
     .extern func_02070eac
-    .extern func_02072000
+    .extern GraphicsResourceSet_ReleaseHandles
     .extern func_0205974c
     .extern GraphicsResourceSet_Destroy
     .extern data_020f4e18
@@ -254,7 +254,7 @@ L_021fbd2c:
     mov r2, #0x0
     bl func_02070eac
     add r0, sp, #0x4
-    bl func_02072000
+    bl GraphicsResourceSet_ReleaseHandles
     ldr r0, [r4, #0x150]
     cmp r0, #0xa
     addls pc, pc, r0, lsl #0x2

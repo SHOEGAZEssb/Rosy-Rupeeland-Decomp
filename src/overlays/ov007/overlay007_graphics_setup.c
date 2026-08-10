@@ -38,7 +38,7 @@ extern void *func_02070874(void *resource);
 extern void *func_02070888(void *resource);
 extern void func_020b1ff0(void *destination, s32 offset, void *source);
 extern void func_02070eac(void *resource, s32 first, s32 second);
-extern void func_02072000(Overlay007GraphicsResourceSet *set);
+extern void GraphicsResourceSet_ReleaseHandles(Overlay007GraphicsResourceSet *set);
 extern void func_020afd28(volatile void *registers,
                           const Overlay007AffineMatrix *matrix, s32 width,
                           s32 height, s32 centerX, s32 centerY);
@@ -58,7 +58,7 @@ extern void GraphicsResourceSet_Destroy(Overlay007GraphicsResourceSet *set);
  * resource's +0x24 destination from func_0207043c via func_020b198c; synchronize
  * and copy the second resource's func_02070888 data to its func_02070874
  * destination via func_020b1ff0; synchronize, apply 0/0 to the third resource,
- * and finalize through func_02072000.
+ * and finalize through GraphicsResourceSet_ReleaseHandles.
  *
  * Apply the identity 20.12 matrix {0x1000,0,0,0x1000} with zero extents/centers
  * to sub BG2/BG3 blocks 0x04001020/0x04001030. Set state +0xD4 to 2, call
@@ -100,7 +100,7 @@ void func_ov007_021fbaf0(void *state)
     func_020b1ff0(destination, 0, source);
     func_020b44e8();
     func_02070eac(set.third, 0, 0);
-    func_02072000(&set);
+    GraphicsResourceSet_ReleaseHandles(&set);
     func_020afd28((volatile void *)0x04001020, &matrix, 0, 0, 0, 0);
     func_020afd28((volatile void *)0x04001030, &matrix, 0, 0, 0, 0);
     *(s32 *)((u8 *)state + 0xd4) = 2;

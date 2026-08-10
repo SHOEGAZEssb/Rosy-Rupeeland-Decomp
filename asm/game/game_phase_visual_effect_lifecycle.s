@@ -8,7 +8,7 @@
 .extern func_02005058
 .extern VecFx32Stepper_Init
 .extern VecFx32Stepper_Destroy
-.extern func_02072000
+.extern GraphicsResourceSet_ReleaseHandles
 
     .global GamePhaseVisualEffect_Init
 GamePhaseVisualEffect_Init: ; 0x0200fa40
@@ -87,7 +87,7 @@ GamePhaseVisualEffect_Destroy: ; 0x0200fb34
     str r1, [r4, #0x94]
     mov r1, #0x0
     str r1, [r4, #0x18]
-    bl func_02072000
+    bl GraphicsResourceSet_ReleaseHandles
     mov r2, #0x4000000
     ldr r1, [r2, #0x0]
     ldr r0, [r2, #0x0]
@@ -128,7 +128,7 @@ GamePhaseVisualEffect_DestroyAndFree: ; 0x0200fbc8
     str r1, [r4, #0x94]
     mov r1, #0x0
     str r1, [r4, #0x18]
-    bl func_02072000
+    bl GraphicsResourceSet_ReleaseHandles
     mov r2, #0x4000000
     ldr r1, [r2, #0x0]
     ldr r0, [r2, #0x0]

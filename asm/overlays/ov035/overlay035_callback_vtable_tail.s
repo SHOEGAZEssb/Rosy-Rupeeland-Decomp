@@ -8,7 +8,7 @@
     .extern func_ov035_022028b4
     .extern func_ov035_021fcf30
     .extern func_02095670
-    .extern func_020720d4
+    .extern GraphicsResourceSetVariant_Destroy
     .extern func_02095308
     .extern Heap_Free
     .extern gSoundContext
@@ -220,7 +220,7 @@ func_ov035_02202b58:
     stmdb sp!, {r4, lr}
     mov r4, r0
     add r0, r4, #0xcc
-    bl func_020720d4
+    bl GraphicsResourceSetVariant_Destroy
     mov r0, r4
     ldmia sp!, {r4, pc}
     .size func_ov035_02202b58, .-func_ov035_02202b58

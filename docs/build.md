@@ -47,9 +47,9 @@ matching build assembles `asm/system/input_update.s` with MWASMARM 1.0 build
 That partial link changes relocation associations, so its standalone objdiff
 result can differ even when the final linked ARM9 bytes match.
 
-Objdiff has a similar edge case for `func_020720e8`: the delinked object's
+Objdiff has a similar edge case for `GraphicsResourceSetVariant_Load`: the delinked object's
 single `.text` section makes the call to the immediately following
-`func_02072140` look like a branch back into the caller after applying the
+`GraphicsResourceSetVariant_ReleaseHandles` look like a branch back into the caller after applying the
 `R_ARM_PC24` addend. The compiled instruction and relocation are correct, and
 the final ARM9 and ROM match exactly, but the standalone function score is
 `99.772730%`. Keep the ROM verification as the exact gate for this unit.

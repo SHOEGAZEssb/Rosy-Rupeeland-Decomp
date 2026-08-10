@@ -18,7 +18,7 @@ extern void GX_SetGraphicsMode(s32, s32, s32);
 extern void Heap_Free(void *);
 extern void func_0205940c(void *, s32, s32);
 extern void func_02071e04(void *, void *);
-extern void func_020720d4(void *);
+extern void GraphicsResourceSetVariant_Destroy(void *);
 extern void func_02075020(void *);
 extern void Graphics3DResourceOwner_Destroy(void *);
 extern void Graphics3DLightSet_Destroy(void *);
@@ -70,7 +70,7 @@ static void teardown_scene(void *scene)
     func_02095308((u8 *)scene + 0x2f4);
     Graphics3DLightSet_Destroy((u8 *)scene + 0x180);
     for (s32 off = 0xac; off >= 0x7c; off -= 0xc)
-        func_020720d4((u8 *)scene + off);
+        GraphicsResourceSetVariant_Destroy((u8 *)scene + off);
 }
 
 /* Restores the scene vtable, performs full shutdown, and returns `scene` without freeing it. */

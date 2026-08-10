@@ -17,11 +17,11 @@ extern u8 gHeapContext[];
 extern "C" {
 #endif
 extern void *func_ov035_021fce00(void *object, void *argument);
-extern void func_020720c0(void *state);
+extern void GraphicsResourceSetVariant_Init(void *state);
 extern void func_ov035_021fdce8(void *collection);
 extern void func_02091b6c(void *state);
 extern void func_02091d08(void *state);
-extern void func_020720e8(void *state, void *resourceContext, s32 first,
+extern void GraphicsResourceSetVariant_Load(void *state, void *resourceContext, s32 first,
                          s32 second, s32 third);
 extern void Graphics3DResourceOwner_PrepareResources(void *owner, void *resource);
 extern void *func_02071adc(void *resourceContext, s32 resourceId);
@@ -56,7 +56,7 @@ extern void func_02091d24(void *state, s32 first, s32 second, s32 third,
 /* Loads a consecutive three-ID resource group and registers it with owner. */
 static void load_group(void *state, s32 finalId, void *resourceOwner)
 {
-    func_020720e8(state, data_020f4e18[0],
+    GraphicsResourceSetVariant_Load(state, data_020f4e18[0],
                   finalId - 2, finalId - 1, finalId);
     Graphics3DResourceOwner_PrepareResources(resourceOwner, state);
 }
@@ -91,8 +91,8 @@ extern "C" void *func_ov035_022016e8(void *scene, void *resourceOwner,
 {
     func_ov035_021fce00(scene, baseArgument);
     FIELD(const void *, scene, 0) = data_ov035_02203bd0;
-    func_020720c0((u8 *)scene + 0xdc);
-    func_020720c0((u8 *)scene + 0xe8);
+    GraphicsResourceSetVariant_Init((u8 *)scene + 0xdc);
+    GraphicsResourceSetVariant_Init((u8 *)scene + 0xe8);
     func_ov035_021fdce8((u8 *)scene + 0x10c);
     func_ov035_021fdce8((u8 *)scene + 0x11c);
     func_02091b6c((u8 *)scene + 0x12c);
@@ -105,17 +105,17 @@ extern "C" void *func_ov035_022016e8(void *scene, void *resourceOwner,
     if (variant == 0x12e) {
         FIELD(void *, scene, 0x100) =
             func_02071adc(data_020f4e18[0], 0x5005);
-        func_020720e8((u8 *)scene + 0xcc, data_020f4e18[0],
+        GraphicsResourceSetVariant_Load((u8 *)scene + 0xcc, data_020f4e18[0],
                       0x60c9, 0x60ca, 0x60cb);
     } else if (variant == 0x131) {
         FIELD(void *, scene, 0x100) =
             func_02071adc(data_020f4e18[0], 0x5005);
-        func_020720e8((u8 *)scene + 0xcc, data_020f4e18[0],
+        GraphicsResourceSetVariant_Load((u8 *)scene + 0xcc, data_020f4e18[0],
                       0x60cc, 0x60cd, 0x60ce);
     } else if (variant == 0x134) {
         FIELD(void *, scene, 0x100) =
             func_02071adc(data_020f4e18[0], 0x5006);
-        func_020720e8((u8 *)scene + 0xcc, data_020f4e18[0],
+        GraphicsResourceSetVariant_Load((u8 *)scene + 0xcc, data_020f4e18[0],
                       0x60cf, 0x60d0, 0x60d1);
     }
     Graphics3DResourceOwner_PrepareResources(resourceOwner, (u8 *)scene + 0xcc);

@@ -9,7 +9,7 @@
 #define FIELD(type, base, offset) (*(type *)((u8 *)(base) + (offset)))
 
 extern "C" {
-void func_02072000(void *);
+void GraphicsResourceSet_ReleaseHandles(void *);
 void func_02003e38(void *);
 void __destroy_arr(void *, s32, s32, void *);
 void func_02099fb0(void *);
@@ -50,7 +50,7 @@ extern "C" void func_ov041_021fdeb4(void *owner)
         0x48, 0x54, 0x60, 0x6c, 0x78, 0x84
     };
     for (u32 i = 0; i < sizeof(offsets) / sizeof(offsets[0]); ++i)
-        func_02072000((u8 *)owner + offsets[i]);
+        GraphicsResourceSet_ReleaseHandles((u8 *)owner + offsets[i]);
 
     if (FIELD(void *, owner, 0x170) != 0) {
         func_02003e38(FIELD(void *, owner, 0x170));

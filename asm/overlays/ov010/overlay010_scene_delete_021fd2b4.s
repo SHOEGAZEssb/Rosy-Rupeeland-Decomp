@@ -6,7 +6,7 @@
     .extern data_ov010_021fec34
     .extern data_ov010_021fec68
     .extern func_02002728
-    .extern func_020720d4
+    .extern GraphicsResourceSetVariant_Destroy
     .extern func_02075020
     .extern Graphics3DResourceOwner_Destroy
     .extern Graphics3DResourceBinding_Destroy
@@ -63,7 +63,7 @@ L_021fd33c:
     add r0, r4, #0x180
     bl func_020923a0
     add r0, r4, #0x7c
-    bl func_020720d4
+    bl GraphicsResourceSetVariant_Destroy
     mov r0, r4
     bl Scene_Destroy
     mov r0, r4

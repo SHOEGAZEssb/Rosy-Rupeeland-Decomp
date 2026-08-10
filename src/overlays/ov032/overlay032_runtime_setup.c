@@ -53,7 +53,7 @@ extern void func_02070b50(...);
 extern void func_02070bc4(...);
 extern void func_02070e0c(...);
 extern void func_02070eac(...);
-extern void func_02072000(GraphicsResourceSet *);
+extern void GraphicsResourceSet_ReleaseHandles(GraphicsResourceSet *);
 extern void func_020afd0c(...);
 extern void GraphicsSpriteRenderer_ConfigureTextGridPriority(...);
 extern void *func_ov032_021fd7e0(void *);
@@ -126,7 +126,7 @@ static void load_text_resources(GraphicsResourceSet *set, u32 tilesId, u32 mapId
     func_02070638(set->tiles, layer, 0);
     func_02070b50(set->map, func_0207042c(set->tiles) ? mapBase : 0);
     func_02070e0c(set->palette, layer, 0);
-    func_02072000(set);
+    GraphicsResourceSet_ReleaseHandles(set);
 }
 
 static void load_affine_resources(GraphicsResourceSet *set, u32 tilesId, u32 mapId,
@@ -137,7 +137,7 @@ static void load_affine_resources(GraphicsResourceSet *set, u32 tilesId, u32 map
     func_020706c4(set->tiles, layer, 0);
     func_02070bc4(set->map, func_0207042c(set->tiles) ? mapBase : 0);
     func_02070eac(set->palette, layer, 0);
-    func_02072000(set);
+    GraphicsResourceSet_ReleaseHandles(set);
 }
 
 /*

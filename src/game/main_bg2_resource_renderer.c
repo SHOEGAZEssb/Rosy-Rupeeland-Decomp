@@ -91,6 +91,6 @@ void func_0202c7c4(MainBg0ResourceRenderer *self)
     func_02070e0c(set.resource2, 0, 0);
     PaletteBuffer_Write(&data_020f4e50, func_02070874(set.resource1) + 0x180,
                         0x180, 0x80);
-    func_02072000(&set);
+    GraphicsResourceSet_ReleaseHandles(&set);
     GraphicsResourceSet_Destroy(&set);
 }

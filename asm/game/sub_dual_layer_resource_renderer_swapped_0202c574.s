@@ -4,7 +4,7 @@
 .extern GraphicsResourceSet_Load
 .extern func_020b44e8
 .extern func_02070eac
-.extern func_02072000
+.extern GraphicsResourceSet_ReleaseHandles
 .extern func_020706c4
 .extern func_02070874
 .extern MIi_CpuCopy16
@@ -53,7 +53,7 @@ func_0202c574: ; 0x0202c574
     orr r1, r5, #0x1
     orr r1, r2, r1, lsl #0x8
     str r1, [r3, #0x0]
-    bl func_02072000
+    bl GraphicsResourceSet_ReleaseHandles
     ldr r5, .L_0202c73c
     ldr r3, .L_0202c740
     ldrh r2, [r5, #0x0]

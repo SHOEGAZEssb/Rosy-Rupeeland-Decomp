@@ -64,7 +64,7 @@ void GamePhaseVisualEffect_ApplyBlend(GamePhaseVisualEffect *self)
 void GamePhaseVisualEffect_LoadResources(GamePhaseVisualEffect *self, u32 resource0Id,
                    u32 resource1Id, u32 resource2Id)
 {
-    func_02072000(&self->resources);
+    GraphicsResourceSet_ReleaseHandles(&self->resources);
     GraphicsResourceSet_Load(&self->resources, data_020f4e18,
                              resource0Id, resource1Id, resource2Id);
     func_02070f34(self->resources.resource2, 0xf);

@@ -15,7 +15,7 @@ extern void func_02095308(void *container);
 extern void Graphics3DResourceOwner_RemoveManager(void *ownerResource);
 extern void func_02071e04(void *archive, void *resource);
 extern void Graphics3DLightSet_Destroy(void *table);
-extern void func_020720d4(void *slot);
+extern void GraphicsResourceSetVariant_Destroy(void *slot);
 extern void Heap_Free(void *allocation);
 #ifdef __cplusplus
 }
@@ -36,12 +36,12 @@ static void releaseSceneContents(void *scene)
     func_02095308((u8 *)scene + 0x12c);
 
     /* Slots are released in reverse construction order. */
-    func_020720d4((u8 *)scene + 0x104);
-    func_020720d4((u8 *)scene + 0xf8);
-    func_020720d4((u8 *)scene + 0xec);
-    func_020720d4((u8 *)scene + 0xe0);
-    func_020720d4((u8 *)scene + 0xd4);
-    func_020720d4((u8 *)scene + 0xc8);
+    GraphicsResourceSetVariant_Destroy((u8 *)scene + 0x104);
+    GraphicsResourceSetVariant_Destroy((u8 *)scene + 0xf8);
+    GraphicsResourceSetVariant_Destroy((u8 *)scene + 0xec);
+    GraphicsResourceSetVariant_Destroy((u8 *)scene + 0xe0);
+    GraphicsResourceSetVariant_Destroy((u8 *)scene + 0xd4);
+    GraphicsResourceSetVariant_Destroy((u8 *)scene + 0xc8);
 }
 
 /*

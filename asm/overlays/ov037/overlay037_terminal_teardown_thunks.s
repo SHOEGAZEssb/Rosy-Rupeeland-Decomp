@@ -2,7 +2,7 @@
 
 /* Exact fallback; see src/overlays/ov037/overlay037_terminal_teardown_thunks.c for documented portable C. */
 
-    .extern func_020720d4
+    .extern GraphicsResourceSetVariant_Destroy
     .extern func_02095670
     .extern func_ov037_021fcf1c
     .extern func_02095308
@@ -14,7 +14,7 @@ func_ov037_021fe99c:
     stmdb sp!, {r4, lr}
     mov r4, r0
     add r0, r4, #0xa0
-    bl func_020720d4
+    bl GraphicsResourceSetVariant_Destroy
     mov r0, r4
     bl func_02095670
     mov r0, r4
@@ -28,7 +28,7 @@ func_ov037_021fe9c4:
     stmdb sp!, {r4, lr}
     mov r4, r0
     add r0, r4, #0xa0
-    bl func_020720d4
+    bl GraphicsResourceSetVariant_Destroy
     mov r0, r4
     bl func_02095670
     mov r0, r4

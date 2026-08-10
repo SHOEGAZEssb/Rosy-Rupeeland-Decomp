@@ -17,7 +17,7 @@ extern void Heap_Free(void *);
 extern void GX_SetGraphicsMode(s32, s32, s32);
 extern void func_020597fc(void *, s32);
 extern void func_02071eb8(void *);
-extern void func_020720d4(void *);
+extern void GraphicsResourceSetVariant_Destroy(void *);
 extern void GraphicsSpriteGroup_Destroy(void *);
 extern void func_02075290(void *);
 extern void Graphics3DResourceOwner_Destroy(void *);
@@ -107,7 +107,7 @@ extern "C" void *func_ov017_021ff16c(void *state)
     Graphics3DLightSet_Destroy((u8 *)state + 0x2d0);
     func_ov017_021fd780((u8 *)state + 0x290);
     func_ov017_021fd780((u8 *)state + 0x264);
-    func_020720d4((u8 *)state + 0x248);
+    GraphicsResourceSetVariant_Destroy((u8 *)state + 0x248);
     func_020926f8((u8 *)state + 0x1fc);
     func_020927b8((u8 *)state + 0x1d8);
     func_ov017_021fd948((u8 *)state + 0x12c);

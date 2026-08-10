@@ -37,7 +37,7 @@ extern void func_02070eac(void *resource, s32 value, s32 zero);
  * state change; the teardown helpers may affect graphics-library ownership.
  */
 #ifndef MATCHING
-void func_02072000(GraphicsResourceSet *set)
+void GraphicsResourceSet_ReleaseHandles(GraphicsResourceSet *set)
 {
     GraphicsResourceHandle *resource0 =
         (GraphicsResourceHandle *)set->resource0;
@@ -59,7 +59,7 @@ void func_02072000(GraphicsResourceSet *set)
 }
 #else
 /* This matching fallback implements the documented portable C directly above. */
-asm void func_02072000(GraphicsResourceSet *set)
+asm void GraphicsResourceSet_ReleaseHandles(GraphicsResourceSet *set)
 {
     stmdb sp!, {r4, lr}
     mov r4, r0

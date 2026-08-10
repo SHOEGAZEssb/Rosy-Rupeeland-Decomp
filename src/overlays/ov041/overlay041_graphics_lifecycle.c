@@ -23,7 +23,7 @@ extern void GraphicsResourceSet_Destroy(void *);
 extern void func_02071f80(void *);
 extern void func_02071f94(void *);
 extern void func_02071fa8(void *, void *, s32, s32, s32);
-extern void func_02072000(void *);
+extern void GraphicsResourceSet_ReleaseHandles(void *);
 extern void func_020b44e8(void);
 extern void *func_0207043c(void);
 extern void *func_02070874(void *);
@@ -138,7 +138,7 @@ extern "C" void func_ov041_021fd01c(void *owner)
         func_020b2058(func_02070874((void *)temporary[1]), 0,
                       func_02070888((void *)temporary[1]));
         func_020b44e8();
-        func_02072000(temporary);
+        GraphicsResourceSet_ReleaseHandles(temporary);
     }
 
     /* The retail sequence fills fourteen consecutive resource sets here. */

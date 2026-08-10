@@ -13,7 +13,7 @@
 .extern func_02070638
 .extern func_02070b50
 .extern func_02070e0c
-.extern func_02072000
+.extern GraphicsResourceSet_ReleaseHandles
 .extern GraphicsSpriteGroupOwner_DestroyGroup
 .extern GraphicsSpriteRenderer_ClearTextBuffer
 .extern func_020959d4
@@ -104,7 +104,7 @@ L_02200e64:
     bl func_02070e0c
     add r0, r4, #0x318
     add r0, r0, #0xc00
-    bl func_02072000
+    bl GraphicsResourceSet_ReleaseHandles
     ldr r1, L_02200f7c
     mov r0, #0x5000000
     strh r1, [r0, #0x0]

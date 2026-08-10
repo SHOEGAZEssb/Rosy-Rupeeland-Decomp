@@ -18,7 +18,7 @@
 .extern func_02070874
 .extern func_02070888
 .extern func_02070f80
-.extern func_02072000
+.extern GraphicsResourceSet_ReleaseHandles
 .extern GraphicsSpriteRenderer_HideAllSprites
 .extern func_02075238
 .extern func_020ae6dc
@@ -360,7 +360,7 @@ func_ov041_021fd01c: ; 0x021fd01c
     bl func_020b2058
     bl func_020b44e8
     add r0, sp, #0x4
-    bl func_02072000
+    bl GraphicsResourceSet_ReleaseHandles
     b .L_021fd5b4
 .L_021fd524:
     cmp r0, #0x2
@@ -398,7 +398,7 @@ func_ov041_021fd01c: ; 0x021fd01c
     bl func_020b2058
     bl func_020b44e8
     add r0, sp, #0x4
-    bl func_02072000
+    bl GraphicsResourceSet_ReleaseHandles
 .L_021fd5b4:
     ldr r0, [r4, #0x1f4]
     cmp r0, #0x0

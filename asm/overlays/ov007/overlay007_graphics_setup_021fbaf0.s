@@ -11,7 +11,7 @@
     .extern func_02070888
     .extern func_020b1ff0
     .extern func_02070eac
-    .extern func_02072000
+    .extern GraphicsResourceSet_ReleaseHandles
     .extern func_020afd28
     .extern DisplayBrightnessPair_GetScreen
     .extern DisplayBrightness_StartTransition
@@ -83,7 +83,7 @@ func_ov007_021fbaf0: ; 0x021fbaf0
     mov r2, r1
     bl func_02070eac
     add r0, sp, #0x18
-    bl func_02072000
+    bl GraphicsResourceSet_ReleaseHandles
     mov r2, #0x0
     mov r0, #0x1000
     str r0, [sp, #0x8]

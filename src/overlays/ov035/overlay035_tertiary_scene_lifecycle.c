@@ -14,7 +14,7 @@ extern "C" {
 #endif
 extern void func_02095308(void *collection);
 extern void Graphics3DResourceOwner_RemoveManager(void *resource);
-extern void func_020720d4(void *state);
+extern void GraphicsResourceSetVariant_Destroy(void *state);
 extern void Heap_Free(void *allocation);
 extern void *GraphicsAnimationInstanceManager_CreateInstance(void *resourceSet, void *resource);
 extern s32 func_020918f4(void *randomState, s32 maximum);
@@ -42,13 +42,13 @@ static void release_tertiary_scene(void *scene)
     func_02095308((u8 *)scene + 0x184);
     FIELD(const void *, scene, 0x174) = data_ov035_02203af8;
     func_02095308((u8 *)scene + 0x174);
-    func_020720d4((u8 *)scene + 0x118);
-    func_020720d4((u8 *)scene + 0x10c);
-    func_020720d4((u8 *)scene + 0x100);
-    func_020720d4((u8 *)scene + 0xf4);
-    func_020720d4((u8 *)scene + 0xe8);
-    func_020720d4((u8 *)scene + 0xdc);
-    func_020720d4((u8 *)scene + 0xcc);
+    GraphicsResourceSetVariant_Destroy((u8 *)scene + 0x118);
+    GraphicsResourceSetVariant_Destroy((u8 *)scene + 0x10c);
+    GraphicsResourceSetVariant_Destroy((u8 *)scene + 0x100);
+    GraphicsResourceSetVariant_Destroy((u8 *)scene + 0xf4);
+    GraphicsResourceSetVariant_Destroy((u8 *)scene + 0xe8);
+    GraphicsResourceSetVariant_Destroy((u8 *)scene + 0xdc);
+    GraphicsResourceSetVariant_Destroy((u8 *)scene + 0xcc);
 }
 
 /*

@@ -110,7 +110,7 @@ void func_0202c138(SubDualLayerResourceRendererAlt *self)
     *bg0cnt = (*bg0cnt & ~3u) | 3;
     *dispcnt = (*dispcnt & ~0x1f00u) |
                (((((*dispcnt >> 8) & 0x1f) | 1) & 0x1f) << 8);
-    func_02072000(&resources);
+    GraphicsResourceSet_ReleaseHandles(&resources);
 
     *bg1cnt = (*bg1cnt & 0x43) | 0x5a10;
     GraphicsResourceSet_Load(&resources, data_020f4e18,

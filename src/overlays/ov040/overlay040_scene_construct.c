@@ -33,7 +33,7 @@ extern void GraphicsResourceSet_Init(void *set);
 extern void GraphicsResourceSet_Load(void *set, void *archive, s32 first,
                                      s32 second, s32 third);
 extern void GraphicsResourceSet_Destroy(void *set);
-extern void func_02072000(void *set);
+extern void GraphicsResourceSet_ReleaseHandles(void *set);
 extern void func_020b44e8(void);
 extern void *func_0207043c(void);
 extern void *func_02070874(void *resource);
@@ -125,7 +125,7 @@ extern "C" void *func_ov040_021fcebc(void *scene, void *argument,
     func_020b44e8();
     func_02070e0c((void *)temporarySet[2], 1, 0);
     func_020b44e8();
-    func_02072000(temporarySet);
+    GraphicsResourceSet_ReleaseHandles(temporarySet);
 
     GraphicsResourceSet_Load((u8 *)scene + 0x1b7c, data_020f4e18, 0xa081, 0xa082, 0xa083);
     func_020b44e8();

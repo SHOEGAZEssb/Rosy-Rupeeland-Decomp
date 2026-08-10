@@ -9,7 +9,7 @@ extern const u8 data_ov037_021fedac[];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_020720d4(void *state);
+extern void GraphicsResourceSetVariant_Destroy(void *state);
 extern void func_02095670(void *object);
 extern void func_ov037_021fcf1c(void *object);
 extern void func_02095308(void *container);
@@ -21,7 +21,7 @@ extern void Heap_Free(void *allocation);
 /* Releases +0xA0, runs common teardown, frees object, and returns its old address. */
 extern "C" void *func_ov037_021fe99c(void *object)
 {
-    func_020720d4((u8 *)object + 0xa0);
+    GraphicsResourceSetVariant_Destroy((u8 *)object + 0xa0);
     func_02095670(object);
     Heap_Free(object);
     return object;
@@ -30,7 +30,7 @@ extern "C" void *func_ov037_021fe99c(void *object)
 /* Releases +0xA0 and runs common teardown without freeing; returns object. */
 extern "C" void *func_ov037_021fe9c4(void *object)
 {
-    func_020720d4((u8 *)object + 0xa0);
+    GraphicsResourceSetVariant_Destroy((u8 *)object + 0xa0);
     func_02095670(object);
     return object;
 }

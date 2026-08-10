@@ -10,7 +10,7 @@ extern const u8 data_ov037_021fee08[];
 extern "C" {
 #endif
 extern void func_020955b0(void *controller, void *argument);
-extern void func_020720c0(void *state);
+extern void GraphicsResourceSetVariant_Init(void *state);
 extern void func_020956f0(void *controller);
 extern void GraphicsAnimationInstance_SetAnimation(void *actor, s32 mode);
 #ifdef __cplusplus
@@ -38,7 +38,7 @@ extern "C" void *func_ov037_021fd5ac(void *controller, void *argument,
 {
     func_020955b0(controller, argument);
     FIELD(const void *, controller, 0) = data_ov037_021fee08;
-    func_020720c0((u8 *)controller + 0xa0);
+    GraphicsResourceSetVariant_Init((u8 *)controller + 0xa0);
     FIELD(void *, controller, 0xac) = actor;
     FIELD(u16, actor, 0x50) |= 0x42;
     FIELD(u8, actor, 0x5a) = 6;

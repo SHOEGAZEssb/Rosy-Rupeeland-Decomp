@@ -35,7 +35,7 @@ extern "C" void GraphicsResourceSet_Load(GraphicsResourceSet *set,
 extern "C" void GraphicsResourceSet_Apply(GraphicsResourceSet *set,
                                             s32 engine, s32 size);
 extern "C" void GraphicsResourceSet_Destroy(GraphicsResourceSet *set);
-extern "C" void func_02072000(GraphicsResourceSet *set);
+extern "C" void GraphicsResourceSet_ReleaseHandles(GraphicsResourceSet *set);
 extern "C" void func_02070f34(void *resource, s32 value);
 extern "C" void func_020b44e8(void);
 extern "C" void func_02071ee0(void *owner, void *archive, s32 first,
@@ -68,7 +68,7 @@ extern "C" void *func_ov045_0220c314(void *object)
     func_02070f34(resources.field8, 8);
     func_020b44e8();
     GraphicsResourceSet_Apply(&resources, 1, 0x100);
-    func_02072000(&resources);
+    GraphicsResourceSet_ReleaseHandles(&resources);
 
     func_02071ee0((u8 *)object + 4, data_020f4e18,
                    FIELD(u16, data_020ed9e0, 0x38),

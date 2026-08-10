@@ -5,7 +5,7 @@
     .extern func_02095308
     .extern func_02071e04
     .extern Graphics3DResourceOwner_RemoveManager
-    .extern func_020720d4
+    .extern GraphicsResourceSetVariant_Destroy
     .extern Heap_Free
     .extern data_ov035_02203bd0
     .extern data_020f4e18
@@ -41,11 +41,11 @@ func_ov035_02201bd8:
     str r1, [r4, #0x10c]
     bl func_02095308
     add r0, r4, #0xe8
-    bl func_020720d4
+    bl GraphicsResourceSetVariant_Destroy
     add r0, r4, #0xdc
-    bl func_020720d4
+    bl GraphicsResourceSetVariant_Destroy
     add r0, r4, #0xcc
-    bl func_020720d4
+    bl GraphicsResourceSetVariant_Destroy
     mov r0, r4
     ldmia sp!, {r4, pc}
 L_02201c64: .word data_ov035_02203bd0
@@ -83,11 +83,11 @@ func_ov035_02201c70:
     str r1, [r4, #0x10c]
     bl func_02095308
     add r0, r4, #0xe8
-    bl func_020720d4
+    bl GraphicsResourceSetVariant_Destroy
     add r0, r4, #0xdc
-    bl func_020720d4
+    bl GraphicsResourceSetVariant_Destroy
     add r0, r4, #0xcc
-    bl func_020720d4
+    bl GraphicsResourceSetVariant_Destroy
     mov r0, r4
     bl Heap_Free
     mov r0, r4

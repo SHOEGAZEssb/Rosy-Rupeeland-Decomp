@@ -26,8 +26,8 @@
     .extern func_0206fd30
     .extern func_02071ea4
     .extern func_02071ee0
-    .extern func_020720c0
-    .extern func_020720e8
+    .extern GraphicsResourceSetVariant_Init
+    .extern GraphicsResourceSetVariant_Load
     .extern GraphicsSpriteGroup_CreateStateFromSource
     .extern GraphicsSpriteGroupOwner_CreateGroup
     .extern func_02075358
@@ -100,7 +100,7 @@ func_ov017_021feab4:
     add r0, r10, #0x1fc
     bl func_020926d8
     add r0, r10, #0x248
-    bl func_020720c0
+    bl GraphicsResourceSetVariant_Init
     add r0, r10, #0x264
     bl func_ov017_021fd744
     add r0, r10, #0x290
@@ -191,7 +191,7 @@ L_021febe8:
     ldr r1, [r1, #0x0]
     add r0, r10, #0x248
     sub r3, r3, #0x1
-    bl func_020720e8
+    bl GraphicsResourceSetVariant_Load
     ldr r0, [r10, #0x240]
     add r1, r10, #0x248
     bl Graphics3DResourceOwner_PrepareResources

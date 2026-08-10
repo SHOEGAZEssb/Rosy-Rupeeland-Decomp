@@ -14,11 +14,11 @@ extern u8 gHeapContext[];
 extern "C" {
 #endif
 extern void *func_ov035_021fce00(void *object, void *argument);
-extern void func_020720c0(void *state);
+extern void GraphicsResourceSetVariant_Init(void *state);
 extern void func_ov035_021fdce8(void *collection);
 extern void func_02091b6c(void *state);
 extern void func_02091d08(void *state);
-extern void func_020720e8(void *state, void *resourceContext, s32 first,
+extern void GraphicsResourceSetVariant_Load(void *state, void *resourceContext, s32 first,
                          s32 second, s32 third);
 extern void Graphics3DResourceOwner_PrepareResources(void *owner, void *resource);
 extern void *func_02071adc(void *resourceContext, s32 resourceId);
@@ -49,7 +49,7 @@ extern void func_02091b98(void *state, s32 value);
 static void load_group(void *state, s32 first, s32 second, s32 third,
                        void *resourceOwner)
 {
-    func_020720e8(state, data_020f4e18[0], first, second, third);
+    GraphicsResourceSetVariant_Load(state, data_020f4e18[0], first, second, third);
     Graphics3DResourceOwner_PrepareResources(resourceOwner, state);
 }
 
@@ -86,8 +86,8 @@ extern "C" void *func_ov035_022008d0(void *scene, void *resourceOwner,
 {
     func_ov035_021fce00(scene, baseArgument);
     FIELD(const void *, scene, 0) = data_ov035_02203c24;
-    func_020720c0((u8 *)scene + 0xdc);
-    func_020720c0((u8 *)scene + 0xe8);
+    GraphicsResourceSetVariant_Init((u8 *)scene + 0xdc);
+    GraphicsResourceSetVariant_Init((u8 *)scene + 0xe8);
     func_ov035_021fdce8((u8 *)scene + 0x108);
     func_ov035_021fdce8((u8 *)scene + 0x118);
     func_ov035_021fdce8((u8 *)scene + 0x128);

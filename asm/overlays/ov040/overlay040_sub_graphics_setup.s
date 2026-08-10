@@ -13,7 +13,7 @@
     .extern func_02070874
     .extern func_02070888
     .extern func_02070eac
-    .extern func_02072000
+    .extern GraphicsResourceSet_ReleaseHandles
     .extern GraphicsSpriteState_SetAnimationIndex
     .extern GraphicsSpriteRenderer_GetObjectPaletteAddress
     .extern func_0209a208
@@ -92,7 +92,7 @@ func_ov040_02202640: ; 0x02202640
     bl func_02070eac
     bl func_020b44e8
     add r0, sp, #0x18
-    bl func_02072000
+    bl GraphicsResourceSet_ReleaseHandles
     mov r2, #0x0
     mov r0, #0x1000
     str r0, [sp, #0x8]

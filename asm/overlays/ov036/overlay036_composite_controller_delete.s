@@ -8,7 +8,7 @@
     .extern Graphics3DResourceOwner_RemoveManager
     .extern func_02071e04
     .extern Graphics3DLightSet_Destroy
-    .extern func_020720d4
+    .extern GraphicsResourceSetVariant_Destroy
     .extern data_ov036_02205f9c
     .extern data_020f4e18
     .extern data_ov036_02205eac
@@ -49,11 +49,11 @@ L_02202f30:
     str r1, [r5, #0x100]
     bl func_02095308
     add r0, r5, #0xe8
-    bl func_020720d4
+    bl GraphicsResourceSetVariant_Destroy
     add r0, r5, #0xdc
-    bl func_020720d4
+    bl GraphicsResourceSetVariant_Destroy
     add r0, r5, #0xcc
-    bl func_020720d4
+    bl GraphicsResourceSetVariant_Destroy
     mov r0, r5
     bl Heap_Free
     mov r0, r5

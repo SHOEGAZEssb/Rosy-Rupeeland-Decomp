@@ -19,7 +19,7 @@
     .extern data_ov010_021fec84
     .extern data_ov010_021fec8c
     .extern func_02002700
-    .extern func_020720c0
+    .extern GraphicsResourceSetVariant_Init
     .extern GraphicsSpriteRenderer_HideAllSprites
     .extern func_02075238
     .extern GraphicsSpriteRenderer_ClearTextBuffer
@@ -59,7 +59,7 @@ func_ov010_021fcebc: ; 0x021fcebc
     str r0, [r10, #0x0]
     add r0, r10, #0x7c
     str r1, [r10, #0x24]
-    bl func_020720c0
+    bl GraphicsResourceSetVariant_Init
     add r0, r10, #0x98
     bl Graphics3DSceneState_Init
     add r0, r10, #0x180

@@ -18,8 +18,8 @@
 .extern data_ov026_02204ab0
 .extern data_ov026_02204ab8
 .extern func_02071adc
-.extern func_020720c0
-.extern func_020720e8
+.extern GraphicsResourceSetVariant_Init
+.extern GraphicsResourceSetVariant_Load
 .extern GraphicsSpriteRenderer_HideAllSprites
 .extern func_02075238
 .extern GraphicsAnimationInstanceManager_CreateInstance
@@ -76,15 +76,15 @@ func_ov026_021ff8a0:
     str r4, [r7, #0x54]
     str r6, [r7, #0x60]
     str r5, [r7, #0x64]
-    bl func_020720c0
+    bl GraphicsResourceSetVariant_Init
     add r0, r7, #0x88
-    bl func_020720c0
+    bl GraphicsResourceSetVariant_Init
     add r0, r7, #0x94
-    bl func_020720c0
+    bl GraphicsResourceSetVariant_Init
     add r0, r7, #0xa0
-    bl func_020720c0
+    bl GraphicsResourceSetVariant_Init
     add r0, r7, #0xac
-    bl func_020720c0
+    bl GraphicsResourceSetVariant_Init
     add r0, r7, #0x180
     bl Graphics3DLightSet_Init
     add r0, r7, #0x1c0
@@ -173,7 +173,7 @@ L_021ffa04:
     ldr r1, [r1, #0x0]
     add r0, r7, #0x7c
     sub r3, r3, #0x1
-    bl func_020720e8
+    bl GraphicsResourceSetVariant_Load
     ldr r0, [r7, #0x68]
     add r1, r7, #0x7c
     bl Graphics3DResourceOwner_PrepareResources
@@ -184,7 +184,7 @@ L_021ffa04:
     ldr r1, [r1, #0x0]
     add r0, r7, #0x88
     sub r3, r3, #0x1
-    bl func_020720e8
+    bl GraphicsResourceSetVariant_Load
     ldr r0, [r7, #0x68]
     add r1, r7, #0x88
     bl Graphics3DResourceOwner_PrepareResources
@@ -195,7 +195,7 @@ L_021ffa04:
     ldr r1, [r1, #0x0]
     add r0, r7, #0x94
     sub r3, r3, #0x1
-    bl func_020720e8
+    bl GraphicsResourceSetVariant_Load
     ldr r0, [r7, #0x68]
     add r1, r7, #0x94
     bl Graphics3DResourceOwner_PrepareResources
@@ -206,7 +206,7 @@ L_021ffa04:
     ldr r1, [r1, #0x0]
     add r0, r7, #0xa0
     sub r3, r3, #0x1
-    bl func_020720e8
+    bl GraphicsResourceSetVariant_Load
     ldr r0, [r7, #0x68]
     add r1, r7, #0xa0
     bl Graphics3DResourceOwner_PrepareResources
@@ -217,7 +217,7 @@ L_021ffa04:
     ldr r1, [r1, #0x0]
     add r0, r7, #0xac
     sub r3, r3, #0x1
-    bl func_020720e8
+    bl GraphicsResourceSetVariant_Load
     ldr r0, [r7, #0x68]
     add r1, r7, #0xac
     bl Graphics3DResourceOwner_PrepareResources

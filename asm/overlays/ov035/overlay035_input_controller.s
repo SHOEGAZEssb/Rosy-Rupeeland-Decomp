@@ -4,7 +4,7 @@
 
     .extern Graphics3DSceneState_Init
     .extern func_02091b6c
-    .extern func_020720c0
+    .extern GraphicsResourceSetVariant_Init
     .extern data_ov035_02203c5c
     .extern gTouchPanelManager
     .extern gPadStates
@@ -24,7 +24,7 @@ func_ov035_021fce00:
     mov r0, #0x0
     str r0, [r5, #0xc0]
     add r0, r5, #0xcc
-    bl func_020720c0
+    bl GraphicsResourceSetVariant_Init
     str r4, [r5, #0x4]
     mov r0, #0x2
     str r0, [r5, #0xc]

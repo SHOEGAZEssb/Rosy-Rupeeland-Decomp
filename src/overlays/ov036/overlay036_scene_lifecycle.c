@@ -23,7 +23,7 @@ extern void GX_SetGraphicsMode(s32 mode, s32 bgMode, s32 bg0Mode);
 extern void func_02059230(void *sound, s32 first, s32 second);
 extern void func_ov048_0220b7b4(void *state);
 extern void func_020923a0(void *state);
-extern void func_020720d4(void *resourceSet);
+extern void GraphicsResourceSetVariant_Destroy(void *resourceSet);
 #ifdef __cplusplus
 }
 #endif
@@ -76,7 +76,7 @@ extern "C" void *func_ov036_022048d8(void *scene)
  */
 extern "C" void *func_ov036_022049a8(void *object)
 {
-    func_020720d4((u8 *)object + 0xcc);
+    GraphicsResourceSetVariant_Destroy((u8 *)object + 0xcc);
     Heap_Free(object);
     return object;
 }

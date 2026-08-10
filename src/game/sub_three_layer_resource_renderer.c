@@ -114,7 +114,7 @@ void func_0202c950(SubThreeLayerResourceRenderer *self)
     func_02070eac(set.resource2, 2, 0);
     func_02070bc4(set.resource1, 0);
     PaletteBuffer_Write(&data_020f5058, func_02070874(set.resource1), 0, 0xc0);
-    func_02072000(&set);
+    GraphicsResourceSet_ReleaseHandles(&set);
 
     *bg1 = (*bg1 & 0x43) | 0x1a00;
     *bg1 = (*bg1 & ~3u) | 2;
@@ -128,7 +128,7 @@ void func_0202c950(SubThreeLayerResourceRenderer *self)
     func_02070bc4(set.resource1, 0xc0);
     PaletteBuffer_Write(&data_020f5058, func_02070874(set.resource1),
                         0xc0, 0xc0);
-    func_02072000(&set);
+    GraphicsResourceSet_ReleaseHandles(&set);
 
     *bg3 = (*bg3 & 0x43) | 0x1e08;
     *bg3 = (*bg3 & ~3u) | 2;
@@ -143,6 +143,6 @@ void func_0202c950(SubThreeLayerResourceRenderer *self)
     func_02070bc4(set.resource1, 0x180);
     PaletteBuffer_Write(&data_020f5058, func_02070874(set.resource1),
                         0x180, 0x80);
-    func_02072000(&set);
+    GraphicsResourceSet_ReleaseHandles(&set);
     GraphicsResourceSet_Destroy(&set);
 }

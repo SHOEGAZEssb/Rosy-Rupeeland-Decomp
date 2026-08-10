@@ -20,7 +20,7 @@ extern void func_02092418(void *);
 extern void GX_SetGraphicsMode(s32, s32, s32);
 extern void func_ov048_0220b7b4(void *);
 extern void func_020923a0(void *);
-extern void func_020720d4(void *);
+extern void GraphicsResourceSetVariant_Destroy(void *);
 #ifdef __cplusplus
 }
 #endif
@@ -64,9 +64,9 @@ extern "C" void *func_ov027_021fde24(void *scene)
     func_02095308((u8 *)scene + 0x130);
     FIELD(const void *, scene, 0x120) = data_ov027_021fee60;
     func_02095308((u8 *)scene + 0x120);
-    func_020720d4((u8 *)scene + 0x74);
-    func_020720d4((u8 *)scene + 0x68);
-    func_020720d4((u8 *)scene + 0x5c);
+    GraphicsResourceSetVariant_Destroy((u8 *)scene + 0x74);
+    GraphicsResourceSetVariant_Destroy((u8 *)scene + 0x68);
+    GraphicsResourceSetVariant_Destroy((u8 *)scene + 0x5c);
     return scene;
 }
 

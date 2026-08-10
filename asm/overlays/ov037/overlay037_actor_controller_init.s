@@ -3,7 +3,7 @@
 /* Exact fallback; see src/overlays/ov037/overlay037_actor_controller.c for documented portable C. */
 
     .extern func_020955b0
-    .extern func_020720c0
+    .extern GraphicsResourceSetVariant_Init
     .extern data_ov037_021fee08
 
     .global func_ov037_021fd5ac
@@ -15,7 +15,7 @@ func_ov037_021fd5ac:
     ldr r1, L_021fd5fc
     add r0, r4, #0xa0
     str r1, [r4, #0x0]
-    bl func_020720c0
+    bl GraphicsResourceSetVariant_Init
     str r5, [r4, #0xac]
     ldrh r0, [r5, #0x50]
     mov r3, #0x6

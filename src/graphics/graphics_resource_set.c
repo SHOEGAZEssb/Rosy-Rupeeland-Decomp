@@ -31,12 +31,13 @@ void GraphicsResourceSet_Init(GraphicsResourceSet *set)
 }
 
 /*
- * Release every handle owned by set through func_02072000 and return set.
- * The called teardown helpers may release graphics-library allocations.
+ * Release every handle owned by set through
+ * GraphicsResourceSet_ReleaseHandles and return set. The called teardown
+ * helpers may release graphics-library allocations.
  */
 GraphicsResourceSet *GraphicsResourceSet_Destroy(GraphicsResourceSet *set)
 {
-    func_02072000(set);
+    GraphicsResourceSet_ReleaseHandles(set);
     return set;
 }
 
@@ -50,7 +51,7 @@ void GraphicsResourceSet_Load(GraphicsResourceSet *set, void *archive,
                               u32 resource2Id)
 {
     if (set->resource0 != 0) {
-        func_02072000(set);
+        GraphicsResourceSet_ReleaseHandles(set);
     }
 
     set->resource0 = func_02071568(archive, resource0Id);

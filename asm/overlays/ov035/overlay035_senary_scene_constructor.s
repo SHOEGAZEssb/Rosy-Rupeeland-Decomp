@@ -3,11 +3,11 @@
 /* Exact fallback; see src/overlays/ov035/overlay035_senary_scene_constructor.c for documented portable C. */
 
     .extern func_ov035_021fce00
-    .extern func_020720c0
+    .extern GraphicsResourceSetVariant_Init
     .extern func_ov035_021fdce8
     .extern func_02091b6c
     .extern func_02091d08
-    .extern func_020720e8
+    .extern GraphicsResourceSetVariant_Load
     .extern Graphics3DResourceOwner_PrepareResources
     .extern func_02071adc
     .extern Graphics3DResourceOwner_CreateManager
@@ -49,9 +49,9 @@ func_ov035_022016e8:
     ldr r1, L_02201b88
     add r0, r5, #0xdc
     str r1, [r5, #0x0]
-    bl func_020720c0
+    bl GraphicsResourceSetVariant_Init
     add r0, r5, #0xe8
-    bl func_020720c0
+    bl GraphicsResourceSetVariant_Init
     add r0, r5, #0x10c
     bl func_ov035_021fdce8
     add r0, r5, #0x11c
@@ -67,7 +67,7 @@ func_ov035_022016e8:
     sub r2, r3, #0x2
     ldr r1, [r1, #0x0]
     sub r3, r3, #0x1
-    bl func_020720e8
+    bl GraphicsResourceSetVariant_Load
     mov r0, r4
     add r1, r5, #0xdc
     bl Graphics3DResourceOwner_PrepareResources
@@ -78,7 +78,7 @@ func_ov035_022016e8:
     sub r2, r3, #0x2
     ldr r1, [r1, #0x0]
     sub r3, r3, #0x1
-    bl func_020720e8
+    bl GraphicsResourceSetVariant_Load
     mov r0, r4
     add r1, r5, #0xe8
     bl Graphics3DResourceOwner_PrepareResources
@@ -110,7 +110,7 @@ L_022017cc:
     add r0, r5, #0xcc
     sub r2, r3, #0x2
     sub r3, r3, #0x1
-    bl func_020720e8
+    bl GraphicsResourceSetVariant_Load
     b L_02201870
 L_02201804:
     ldr r0, L_02201b90
@@ -125,7 +125,7 @@ L_02201804:
     add r0, r5, #0xcc
     sub r2, r3, #0x2
     sub r3, r3, #0x1
-    bl func_020720e8
+    bl GraphicsResourceSetVariant_Load
     b L_02201870
 L_0220183c:
     ldr r0, L_02201b90
@@ -140,7 +140,7 @@ L_0220183c:
     add r0, r5, #0xcc
     sub r2, r3, #0x2
     sub r3, r3, #0x1
-    bl func_020720e8
+    bl GraphicsResourceSetVariant_Load
 L_02201870:
     mov r0, r4
     add r1, r5, #0xcc

@@ -102,7 +102,7 @@ void func_0202c574(SubDualLayerResourceRendererSwapped *self)
     func_02070eac(set.resource2, 0, 0);
     *bg0 = (*bg0 & ~3u) | 3;
     *disp = (*disp & ~0x1f00u) | (((((*disp >> 8) & 0x1f) | 1) & 0x1f) << 8);
-    func_02072000(&set);
+    GraphicsResourceSet_ReleaseHandles(&set);
     *bg1 = (*bg1 & 0x43) | 0x5a10;
     GraphicsResourceSet_Load(&set, data_020f4e18, 0xa012, 0xa013, 0xa014);
     map = (SwappedTileMapResource *)set.resource2;

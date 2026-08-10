@@ -16,9 +16,9 @@ extern u8 gHeapContext[];
 extern "C" {
 #endif
 extern void *func_ov035_021fce00(void *object, void *argument);
-extern void func_020720c0(void *state);
+extern void GraphicsResourceSetVariant_Init(void *state);
 extern void func_ov035_021fdce8(void *record);
-extern void func_020720e8(void *state, void *resourceContext, s32 first,
+extern void GraphicsResourceSetVariant_Load(void *state, void *resourceContext, s32 first,
                          s32 second, s32 third);
 extern void Graphics3DResourceOwner_PrepareResources(void *owner, void *resource);
 extern void *func_02071adc(void *resourceContext, s32 resourceId);
@@ -71,13 +71,13 @@ extern "C" void *func_ov035_021feb7c(void *scene, void *resourceOwner,
 {
     func_ov035_021fce00(scene, baseArgument);
     FIELD(const void *, scene, 0) = data_ov035_02203d04;
-    func_020720c0((u8 *)scene + 0xdc);
-    func_020720c0((u8 *)scene + 0xe8);
+    GraphicsResourceSetVariant_Init((u8 *)scene + 0xdc);
+    GraphicsResourceSetVariant_Init((u8 *)scene + 0xe8);
     func_ov035_021fdce8((u8 *)scene + 0x10c);
     func_ov035_021fdce8((u8 *)scene + 0x11c);
     func_ov035_021fdce8((u8 *)scene + 0x12c);
 
-    func_020720e8((u8 *)scene + 0xdc, data_020f4e18[0],
+    GraphicsResourceSetVariant_Load((u8 *)scene + 0xdc, data_020f4e18[0],
                   0x6015, 0x6016, 0x6017);
     Graphics3DResourceOwner_PrepareResources(resourceOwner, (u8 *)scene + 0xdc);
     s32 variant = FIELD(s32, scene, 4);
@@ -85,9 +85,9 @@ extern "C" void *func_ov035_021feb7c(void *scene, void *resourceOwner,
                      variant == 0xcf ? 0x6074 : 0x6072;
     s32 resourceCC = variant == 0xcc ? 0x610d :
                      variant == 0xcf ? 0x6110 : 0x610a;
-    func_020720e8((u8 *)scene + 0xe8, data_020f4e18[0],
+    GraphicsResourceSetVariant_Load((u8 *)scene + 0xe8, data_020f4e18[0],
                   0x6070, 0x6071, resourceE8);
-    func_020720e8((u8 *)scene + 0xcc, data_020f4e18[0],
+    GraphicsResourceSetVariant_Load((u8 *)scene + 0xcc, data_020f4e18[0],
                   resourceCC - 2, resourceCC - 1, resourceCC);
     Graphics3DResourceOwner_PrepareResources(resourceOwner, (u8 *)scene + 0xe8);
     Graphics3DResourceOwner_PrepareResources(resourceOwner, (u8 *)scene + 0xcc);

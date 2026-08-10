@@ -13,7 +13,7 @@ extern void Graphics3DResourceBinding_Destroy(void *); extern void Heap_Free(voi
 extern void func_02002728(void *); extern void Graphics3DResourceOwner_Destroy(void *);
 extern void func_02075020(void *); extern void func_02092418(void *);
 extern void DebugText_BeginFrame(void); extern void func_020923a0(void *);
-extern void func_020720d4(void *); extern void Scene_Destroy(void *);
+extern void GraphicsResourceSetVariant_Destroy(void *); extern void Scene_Destroy(void *);
 #ifdef __cplusplus
 }
 #endif
@@ -33,6 +33,6 @@ void *func_ov010_021fd1e8(void *state)
     p = FIELD(void *, state, 0x78); if (p) { Graphics3DResourceOwner_Destroy(p); Heap_Free(p); }
     func_02075020(data_020f4e14);
     func_02092418((u8 *)state + 0x180); DebugText_BeginFrame();
-    func_020923a0((u8 *)state + 0x180); func_020720d4((u8 *)state + 0x7c);
+    func_020923a0((u8 *)state + 0x180); GraphicsResourceSetVariant_Destroy((u8 *)state + 0x7c);
     Scene_Destroy(state); return state;
 }

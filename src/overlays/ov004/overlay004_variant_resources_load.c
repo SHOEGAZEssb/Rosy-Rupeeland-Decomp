@@ -36,7 +36,7 @@ extern void func_02070e0c(void *resource, s32 layer, s32 value);
 extern void func_020706c4(void *resource, s32 layer, s32 value);
 extern void func_02070bc4(void *resource, s32 offset);
 extern void func_02070eac(void *resource, s32 layer, s32 value);
-extern void func_02072000(Overlay004GraphicsResourceSet *set);
+extern void GraphicsResourceSet_ReleaseHandles(Overlay004GraphicsResourceSet *set);
 extern void func_0205974c(void *context, s32 soundId);
 #ifdef __cplusplus
 }
@@ -100,7 +100,7 @@ void func_ov004_021fba28(Overlay004VariantResourceState *state)
     GraphicsResourceSet_Load(&set, data_020f4e18, finalId - 2,
                              finalId - 1, finalId);
     overlay004_upload_resource_set(&set, 3, 0x6000);
-    func_02072000(&set);
+    GraphicsResourceSet_ReleaseHandles(&set);
 
     switch (variant) {
     case 3: state->soundId_154 = 0x217; state->soundParameter_158 = 0x6580; break;

@@ -7,7 +7,7 @@
 .extern func_02070bc4
 .extern func_02070874
 .extern PaletteBuffer_Write
-.extern func_02072000
+.extern GraphicsResourceSet_ReleaseHandles
 .extern func_02070f80
 .extern func_020b44e8
 .extern GraphicsResourceSet_Destroy
@@ -68,7 +68,7 @@ func_0202c950: ; 0x0202c950
     mov r3, #0xc0
     bl PaletteBuffer_Write
     add r0, sp, #0x4
-    bl func_02072000
+    bl GraphicsResourceSet_ReleaseHandles
     ldr r0, .L_0202cbd4
     ldrh r1, [r0, #0x0]
     sub r3, r0, #0xa
@@ -116,7 +116,7 @@ func_0202c950: ; 0x0202c950
     mov r3, r2
     bl PaletteBuffer_Write
     add r0, sp, #0x4
-    bl func_02072000
+    bl GraphicsResourceSet_ReleaseHandles
     ldr r1, .L_0202cbd8
     mov ip, #0x0
     ldrh r0, [r1, #0x0]
@@ -169,7 +169,7 @@ func_0202c950: ; 0x0202c950
     mov r3, #0x80
     bl PaletteBuffer_Write
     add r0, sp, #0x4
-    bl func_02072000
+    bl GraphicsResourceSet_ReleaseHandles
     add r0, sp, #0x4
     bl GraphicsResourceSet_Destroy
     add sp, sp, #0x10

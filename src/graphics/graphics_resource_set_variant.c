@@ -32,7 +32,7 @@ extern void func_02071da8(void *allocation);
  * Initialize set with three null handles. The set is mutated in place and the
  * function has no return value or direct SDK/hardware effects.
  */
-void func_020720c0(GraphicsResourceSet *set)
+void GraphicsResourceSetVariant_Init(GraphicsResourceSet *set)
 {
     set->resource0 = 0;
     set->resource1 = 0;
@@ -40,12 +40,14 @@ void func_020720c0(GraphicsResourceSet *set)
 }
 
 /*
- * Release every handle owned by set through func_02072140 and return set. The
- * called teardown helpers may release graphics-library allocations.
+ * Release every handle owned by set through
+ * GraphicsResourceSetVariant_ReleaseHandles and return set. The called
+ * teardown helpers may release graphics-library allocations.
  */
-GraphicsResourceSet *func_020720d4(GraphicsResourceSet *set)
+GraphicsResourceSet *GraphicsResourceSetVariant_Destroy(
+    GraphicsResourceSet *set)
 {
-    func_02072140(set);
+    GraphicsResourceSetVariant_ReleaseHandles(set);
     return set;
 }
 
@@ -54,11 +56,12 @@ GraphicsResourceSet *func_020720d4(GraphicsResourceSet *set)
  * resources are released first when resource0 is non-null. The third handle
  * uses the distinct func_02071a24 family; the function returns no value.
  */
-void func_020720e8(GraphicsResourceSet *set, void *archive, u32 resource0Id,
-                   u32 resource1Id, u32 resource2Id)
+void GraphicsResourceSetVariant_Load(GraphicsResourceSet *set, void *archive,
+                                     u32 resource0Id, u32 resource1Id,
+                                     u32 resource2Id)
 {
     if (set->resource0 != 0) {
-        func_02072140(set);
+        GraphicsResourceSetVariant_ReleaseHandles(set);
     }
 
     set->resource0 = func_02071568(archive, resource0Id);
@@ -73,7 +76,7 @@ void func_020720e8(GraphicsResourceSet *set, void *archive, u32 resource0Id,
  * function returns no value; the helpers release graphics-library allocations.
  */
 #ifndef MATCHING
-void func_02072140(GraphicsResourceSet *set)
+void GraphicsResourceSetVariant_ReleaseHandles(GraphicsResourceSet *set)
 {
     GraphicsResourceHandleVariant *resource0 =
         (GraphicsResourceHandleVariant *)set->resource0;
@@ -95,7 +98,7 @@ void func_02072140(GraphicsResourceSet *set)
 }
 #else
 /* This matching fallback implements the documented portable C directly above. */
-asm void func_02072140(GraphicsResourceSet *set)
+asm void GraphicsResourceSetVariant_ReleaseHandles(GraphicsResourceSet *set)
 {
     stmdb sp!, {r4, lr}
     mov r4, r0

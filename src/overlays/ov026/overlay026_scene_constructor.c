@@ -29,8 +29,8 @@ extern "C" {
 extern void G3X_Init(void);
 extern void *Heap_Alloc(u32, const void *, u32, void *);
 extern void *func_02071adc(void *, s32);
-extern void func_020720c0(void *);
-extern void func_020720e8(void *, void *, s32, s32, s32);
+extern void GraphicsResourceSetVariant_Init(void *);
+extern void GraphicsResourceSetVariant_Load(void *, void *, s32, s32, s32);
 extern void GraphicsSpriteRenderer_HideAllSprites(void *);
 extern void func_02075238(void *);
 extern void *GraphicsAnimationInstanceManager_CreateInstance(void *, void *);
@@ -100,7 +100,7 @@ extern "C" void *func_ov026_021ff8a0(void *scene, s32 scene_id,
     FIELD(s32, scene, 0x60) = range_start;
     FIELD(s32, scene, 0x64) = range_end;
     for (s32 off = 0x7c; off <= 0xac; off += 0xc)
-        func_020720c0((u8 *)scene + off);
+        GraphicsResourceSetVariant_Init((u8 *)scene + off);
     Graphics3DLightSet_Init((u8 *)scene + 0x180);
     Graphics3DSceneState_Init((u8 *)scene + 0x1c0);
     Graphics3DSceneState_Init((u8 *)scene + 0x254);
@@ -139,7 +139,7 @@ extern "C" void *func_ov026_021ff8a0(void *scene, s32 scene_id,
     for (s32 i = 0; i < 5; ++i) {
         void *descriptor = (u8 *)scene + 0x7c + i * 0xc;
         s32 id = resource_ids[i];
-        func_020720e8(descriptor, data_020f4e18, id - 2, id - 1, id);
+        GraphicsResourceSetVariant_Load(descriptor, data_020f4e18, id - 2, id - 1, id);
         Graphics3DResourceOwner_PrepareResources(manager, descriptor);
     }
 

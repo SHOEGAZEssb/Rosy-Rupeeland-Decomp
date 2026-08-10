@@ -12,7 +12,7 @@
 .extern func_02070638
 .extern func_02070b50
 .extern func_02070e0c
-.extern func_02072000
+.extern GraphicsResourceSet_ReleaseHandles
 .extern func_020b44e8
 
     .global func_ov032_021fe55c
@@ -52,10 +52,10 @@ func_ov032_021fe55c:
     mov r2, #0x0
     bl func_02070e0c
     add r0, sp, #0x4
-    bl func_02072000
+    bl GraphicsResourceSet_ReleaseHandles
     add r0, r4, #0x344
     add r0, r0, #0x800
-    bl func_02072000
+    bl GraphicsResourceSet_ReleaseHandles
     ldr r1, [r4, #0xc24]
     mov r0, #0x208
     mul ip, r1, r0
