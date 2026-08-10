@@ -21,6 +21,11 @@ typedef struct OwnerInfoBuffer {
     u8 bytes[0x50];
 } OwnerInfoBuffer;
 
+#ifdef TINGLE_NATIVE
+/* Host storage for the retail fixed-address SystemState object. */
+SystemState gSystemState;
+#endif
+
 /*
  * Reset the confirmed SystemState control fields, read the firmware owner
  * language, and retain languages 1..5. Zero or values above 5 fall back to 1.
