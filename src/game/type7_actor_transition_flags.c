@@ -11,7 +11,7 @@
  * the actor unchanged. No value is returned and there are no SDK or hardware
  * effects.
  */
-void func_0204afd4(void *self)
+void Type7Actor_ClearBoundaryTransitionFlags(void *self)
 {
     u8 *actor = (u8 *)self;
     if ((*(u32 *)(actor + 0x268) & 0x80000) != 0) {
@@ -27,7 +27,7 @@ void func_0204afd4(void *self)
  * bit 0x40 => 4, and zero otherwise. Actor state is read only and there are no
  * SDK or hardware effects.
  */
-s32 func_0204aff4(void *self)
+s32 Type7Actor_GetStateCode(void *self)
 {
     u8 *actor = (u8 *)self;
     u32 flags = *(u32 *)(actor + 0x268);

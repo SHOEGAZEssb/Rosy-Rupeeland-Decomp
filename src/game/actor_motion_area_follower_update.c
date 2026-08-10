@@ -19,7 +19,7 @@ extern s32 func_0200a124(ActorMotionAreaFollower *self, void *actor,
 extern const s16 *func_02011788(void *context, s32 area);
 extern void func_0200a1a0(ActorMotionAreaFollower *self, s32 area,
                           const s16 *bounds);
-extern s32 func_0204aff4(void *actor);
+extern s32 Type7Actor_GetStateCode(void *actor);
 extern void func_02008740(VecFx32Object *result,
                           const ActorMotionState *state);
 extern s32 func_020adcac(const VecFx32Value *left,
@@ -79,7 +79,7 @@ s32 func_02009d80(ActorMotionAreaFollower *self, const s16 *bounds)
                 runtime = (u8 *)data_021052fc;
                 companion = *(u8 **)(runtime + 0x2ea8);
             }
-            if (companion != 0 && func_0204aff4(companion) == 3) {
+            if (companion != 0 && Type7Actor_GetStateCode(companion) == 3) {
                 VecFx32Object shifted;
 
                 func_02005030(&shifted,

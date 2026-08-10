@@ -15,7 +15,7 @@ extern "C" {
 extern s32 func_0200b04c(const void *state);
 extern void func_02031758(void);
 extern void func_02032a94(void);
-extern s32 func_0204aff4(void *actor);
+extern s32 Type7Actor_GetStateCode(void *actor);
 extern s32 func_0204deec(void *actor);
 extern void func_0204df40(void *actor, void *target);
 extern s32 func_020adcac(const void *point0, const void *point1);
@@ -29,7 +29,7 @@ extern s32 func_020adcac(const void *point0, const void *point1);
  * Input is an actor. If func_0204deec permits acquisition, compare its point
  * at 0x1C with the global primary actor at data_021052fc+0x2EA4 and trigger
  * func_0204df40 inside 0x10000 units. Otherwise consider the secondary actor
- * at +0x2EA8 when it exists, passes func_0204aff4, and is inside 0x18000 units.
+ * at +0x2EA8 when it exists, passes Type7Actor_GetStateCode, and is inside 0x18000 units.
  * Returns nothing; the chosen handler may mutate actor and global engine state.
  */
 void func_0204de18(void *actor)
@@ -47,7 +47,7 @@ void func_0204de18(void *actor)
     }
 
     secondary = FIELD(void *, data_021052fc, 0x2ea8);
-    if (secondary == 0 || func_0204aff4(secondary) != 0)
+    if (secondary == 0 || Type7Actor_GetStateCode(secondary) != 0)
         return;
     if (func_020adcac((u8 *)secondary + 0x1c, (u8 *)actor + 0x1c) <
         0x18000) {

@@ -13,7 +13,7 @@ extern "C" {
 #endif
 extern void func_0200b2c0(void *value, s32 x, s32 y, s32 z);
 extern void AttachmentController_SetEnabled(void *state, s32 enabled);
-extern s32 func_0204aff4(void *actor);
+extern s32 Type7Actor_GetStateCode(void *actor);
 extern void func_0204b1e0(void *actor);
 extern void func_0204ced8(void *state, u32 index);
 extern void func_0204cf28(void *state);
@@ -25,7 +25,7 @@ extern void func_02072b68(void *presentation, u32 index);
 #endif
 
 /*
- * Input is a type-seven actor. If func_0204aff4 reports state zero, set
+ * Input is a type-seven actor. If Type7Actor_GetStateCode reports state zero, set
  * +0x268 bit 0x200000, disable helper +0x2a8, optionally advance the current
  * presentation index +0xd4 by eight, set presentation +0x36 to 0x100 and
  * +0x24 bit 0x20, and zero vector-like fields +0x38, +0x88, and +0x98 through
@@ -36,7 +36,7 @@ void func_0204b5d8(void *self)
 {
     u8 *actor = (u8 *)self;
     u8 *presentation;
-    if (func_0204aff4(actor) != 0)
+    if (Type7Actor_GetStateCode(actor) != 0)
         return;
     *(u32 *)(actor + 0x268) |= 0x200000;
     AttachmentController_SetEnabled(actor + 0x2a8, 0);
@@ -95,7 +95,7 @@ void func_0204b6ec(void *self, s32 value, s32 selector)
     void *helper;
     void (**actorVtable)(void *, void *);
     void (**helperVtable)(void *);
-    if (*(void **)(actor + 0x294) == 0 || func_0204aff4(actor) != 0)
+    if (*(void **)(actor + 0x294) == 0 || Type7Actor_GetStateCode(actor) != 0)
         return;
     func_0200b2c0(actor + 0x38, 0, 0, 0);
     func_0200b2c0(actor + 0x88, 0, 0, 0);

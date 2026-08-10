@@ -7,7 +7,7 @@
 .extern func_0200222c
 .extern func_020022dc
 .extern func_02005058
-.extern func_0204aff4
+.extern Type7Actor_GetStateCode
 .extern func_0204b078
 .extern func_0204b6cc
 .extern func_ov062_0220fe78
@@ -37,7 +37,7 @@ func_ov089_02218f28:
     ldr r0, [r0, #0xea8]
     cmp r0, #0x0
     beq .L_02218f84
-    bl func_0204aff4
+    bl Type7Actor_GetStateCode
     cmp r0, #0x0
     addeq r0, r5, #0x200
     ldreqh r1, [r0, #0xc]

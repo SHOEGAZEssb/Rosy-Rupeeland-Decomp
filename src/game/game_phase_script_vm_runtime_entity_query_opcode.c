@@ -12,7 +12,7 @@ extern void *data_021052fc;
 extern s32 data_020e1964;
 extern void *ActorCollection_FindActorByDescriptorValue(void *collection, s32 index);
 extern void *Actor_GetCollection(void *actor);
-extern s32 func_0204aff4(void *entity);
+extern s32 Type7Actor_GetStateCode(void *entity);
 extern u8 *func_0204c51c(s32 index);
 extern s32 func_0204c59c(s32 mode, s32 index);
 #ifdef __cplusplus
@@ -50,7 +50,7 @@ s32 func_02018f10(GamePhaseActorScriptVm *self)
     case 3:
         entity = *(u8 **)(runtime + 0x2ea8);
         if (entity)
-            result = func_0204aff4(entity);
+            result = Type7Actor_GetStateCode(entity);
         break;
     case 4:
         entity = *(u8 **)(runtime + 0x2ea8);

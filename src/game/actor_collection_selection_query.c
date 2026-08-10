@@ -30,7 +30,7 @@ extern s32 Actor_TestQueryPoint(void *actor,
 extern s32 Actor_IsInteractionEligible(void *actor);
 extern s32 Actor_DispatchActivationMode1(void *actor);
 extern s32 func_0200b04c(const void *state);
-extern s32 func_0204aff4(void *actor);
+extern s32 Type7Actor_GetStateCode(void *actor);
 extern s32 ActorDerivedType1_IsIdleEligible(void *actor);
 extern void func_0200500c(void *storage, s32 first, s32 second);
 extern void func_02005058(void *storage);
@@ -121,7 +121,7 @@ s32 ActorCollection_ProcessSelectionQuery(ActorSelectionCollection *self,
             } else if ((!candidate || !Actor_IsInteractionEligible(candidate)) &&
                        !func_0200b04c(data_02105310) &&
                        (read_u32(actor, 0x268) & 0x8000) &&
-                       func_0204aff4(actor) != 5) {
+                       Type7Actor_GetStateCode(actor) != 5) {
                 call_query_hook(actor, query);
             }
         }

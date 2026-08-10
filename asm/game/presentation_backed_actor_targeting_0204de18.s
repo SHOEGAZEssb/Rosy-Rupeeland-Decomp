@@ -4,7 +4,7 @@
 .extern func_0200b04c
 .extern func_02031758
 .extern func_02032a94
-.extern func_0204aff4
+.extern Type7Actor_GetStateCode
 .extern func_0204deec
 .extern func_0204df40
 .extern func_020adcac
@@ -44,7 +44,7 @@ func_0204de18: ; 0x0204de18
     cmp r5, #0x0
     ldmeqia sp!, {r3, r4, r5, pc}
     mov r0, r5
-    bl func_0204aff4
+    bl Type7Actor_GetStateCode
     cmp r0, #0x0
     ldmneia sp!, {r3, r4, r5, pc}
     adds r1, r4, #0x18

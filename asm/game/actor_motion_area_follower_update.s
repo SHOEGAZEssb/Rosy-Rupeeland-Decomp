@@ -12,7 +12,7 @@
 .extern func_0200a1a0
 .extern func_020116e8
 .extern func_02011788
-.extern func_0204aff4
+.extern Type7Actor_GetStateCode
 .extern func_02056f00
 .extern func_020adcac
 .extern gGameWork
@@ -77,7 +77,7 @@ func_02009d80: ; 0x02009d80
     cmpne r8, #0x0
     beq L_02009ee4
     mov r0, r8
-    bl func_0204aff4
+    bl Type7Actor_GetStateCode
     cmp r0, #0x3
     bne L_02009ee4
     add r0, sp, #0x30

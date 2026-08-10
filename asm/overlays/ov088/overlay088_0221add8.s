@@ -3,7 +3,7 @@
 .extern SceneManager_GetCurrent
 .extern data_021052fc
 .extern func_02034a60
-.extern func_0204aff4
+.extern Type7Actor_GetStateCode
 .extern func_0204cfa4
 .extern func_ov088_02219154
 .extern func_ov088_0221af2c
@@ -38,7 +38,7 @@ func_ov088_0221add8:
     cmp r0, #0x0
     beq .L_0221aebc
     mov r0, r4
-    bl func_0204aff4
+    bl Type7Actor_GetStateCode
     cmp r0, #0x0
     bne .L_0221aebc
     ldr r0, [r5, #0x3c]

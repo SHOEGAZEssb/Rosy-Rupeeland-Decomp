@@ -2,7 +2,7 @@
 .extern data_021052fc
 .extern ActorDerivedType1_TrySetStateVector
 .extern Type7Actor_HandleObjectInteraction
-.extern func_0204aff4
+.extern Type7Actor_GetStateCode
 .extern func_0204c74c
 .text
     .global Type7Actor_ProcessGlobalInteractionTrigger
@@ -29,7 +29,7 @@ Type7Actor_ProcessGlobalInteractionTrigger: ; 0x0204a4f0
     movs r0, r0, lsr #0x1f
     ldmeqia sp!, {r3, r4, r5, pc}
     mov r0, r5
-    bl func_0204aff4
+    bl Type7Actor_GetStateCode
     cmp r0, #0x1
     ldmhiia sp!, {r3, r4, r5, pc}
     mov r0, r5

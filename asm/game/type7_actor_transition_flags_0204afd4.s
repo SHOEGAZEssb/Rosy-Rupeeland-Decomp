@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/type7_actor_transition_flags.c.
 .text
-    .global func_0204afd4
-func_0204afd4: ; 0x0204afd4
+    .global Type7Actor_ClearBoundaryTransitionFlags
+Type7Actor_ClearBoundaryTransitionFlags: ; 0x0204afd4
     ldr r1, [r0, #0x268]
     tst r1, #0x80000
     movne r1, #0x0
@@ -10,10 +10,10 @@ func_0204afd4: ; 0x0204afd4
     bicne r1, r1, #0xa0
     strne r1, [r0, #0x268]
     bx lr
-.size func_0204afd4, . - func_0204afd4
+.size Type7Actor_ClearBoundaryTransitionFlags, . - Type7Actor_ClearBoundaryTransitionFlags
 
-    .global func_0204aff4
-func_0204aff4: ; 0x0204aff4
+    .global Type7Actor_GetStateCode
+Type7Actor_GetStateCode: ; 0x0204aff4
     ldr r1, [r0, #0x268]
     tst r1, #0x400
     movne r0, #0x5
@@ -47,5 +47,5 @@ func_0204aff4: ; 0x0204aff4
     movne r0, #0x4
     moveq r0, #0x0
     bx lr
-.size func_0204aff4, . - func_0204aff4
+.size Type7Actor_GetStateCode, . - Type7Actor_GetStateCode
 

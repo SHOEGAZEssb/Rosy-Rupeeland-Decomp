@@ -13,7 +13,7 @@ extern "C" {
 extern void ActorDerivedType1_TrySetStateVector(void *globalObject, const void *transform,
                           s32 distance, s32 mode);
 extern void Type7Actor_HandleObjectInteraction(void *actor, void *trigger);
-extern s32 func_0204aff4(void *actor);
+extern s32 Type7Actor_GetStateCode(void *actor);
 extern s32 func_0204c74c(void);
 #ifdef __cplusplus
 }
@@ -24,7 +24,7 @@ extern s32 func_0204c74c(void);
  * permits processing and the global actor at data_021052fc+0x2ea8 exists.
  * Update the global object at +0x2ea4 from that actor's transform +0x18 with
  * recovered distance 20 and mode zero. Continue only when descriptor +0x29c
- * halfword +0x38 has bit three set and func_0204aff4 returns zero or one; then
+ * halfword +0x38 has bit three set and Type7Actor_GetStateCode returns zero or one; then
  * call Type7Actor_HandleObjectInteraction with the global actor and input trigger. Global object,
  * actor interaction, and callback state may change. No value is returned and
  * no direct SDK or hardware effects occur.
@@ -43,6 +43,6 @@ void Type7Actor_ProcessGlobalInteractionTrigger(void *trigger)
     ActorDerivedType1_TrySetStateVector(*(void **)(state + 0x2ea4), actor + 0x18, 20, 0);
     if ((*(u16 *)(*(u8 **)(actor + 0x29c) + 0x38) & 8) == 0)
         return;
-    if (func_0204aff4(actor) < 2)
+    if (Type7Actor_GetStateCode(actor) < 2)
         Type7Actor_HandleObjectInteraction(actor, trigger);
 }

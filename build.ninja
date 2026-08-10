@@ -18628,7 +18628,7 @@ build build/reports/type7_actor_transition_flags_0204afd4.json: objdiff build/de
   base_object = build/decomp/asm/game/type7_actor_transition_flags_0204afd4.o
 build build/reports/type7_actor_transition_flags_0204afd4.txt: match_report build/reports/type7_actor_transition_flags_0204afd4.json | tools/report_objdiff.py
   report_json = build/reports/type7_actor_transition_flags_0204afd4.json
-  report_args = --section .text --function func_0204afd4 --function func_0204aff4 --require-exact
+  report_args = --section .text --function Type7Actor_ClearBoundaryTransitionFlags --function Type7Actor_GetStateCode --require-exact
 build type7_actor_transition_flags: phony build/decomp/src/game/type7_actor_transition_flags.o build/decomp/asm/game/type7_actor_transition_flags_0204afd4.o build/reports/type7_actor_transition_flags_0204afd4.txt
 
 type7_actor_transition_mode_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++

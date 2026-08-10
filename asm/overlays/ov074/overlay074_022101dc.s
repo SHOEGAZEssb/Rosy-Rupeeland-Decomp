@@ -15,7 +15,7 @@
 .extern func_020122a0
 .extern func_0201dcec
 .extern func_0201e0ec
-.extern func_0204afd4
+.extern Type7Actor_ClearBoundaryTransitionFlags
 .extern func_020a23a8
 .extern func_ov025_021fd2e8
 .extern func_ov033_021fd324
@@ -84,7 +84,7 @@ func_ov074_022101dc:
     ldr r0, [r0, #0xea8]
     cmp r0, #0x0
     beq .L_022102a4
-    bl func_0204afd4
+    bl Type7Actor_ClearBoundaryTransitionFlags
 .L_022102a4:
     bl DebugText_BeginFrame
     ldr r0, .L_022105a8

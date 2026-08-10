@@ -6,7 +6,7 @@
 .extern func_020127f8
 .extern ActorCollection_FindActorByDescriptorValue
 .extern Actor_GetCollection
-.extern func_0204aff4
+.extern Type7Actor_GetStateCode
 .extern func_0204c51c
 .extern func_0204c59c
 .global func_02018f10
@@ -69,7 +69,7 @@ L_02018fcc:
     ldr r0, [r0, #0xea8]
     cmp r0, #0x0
     beq L_020190ec
-    bl func_0204aff4
+    bl Type7Actor_GetStateCode
     mov r1, r0
     b L_020190ec
 L_02018ff0:

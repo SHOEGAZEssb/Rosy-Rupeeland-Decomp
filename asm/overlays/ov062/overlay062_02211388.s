@@ -13,7 +13,7 @@
 .extern func_02008e10
 .extern func_020099c0
 .extern func_0202baec
-.extern func_0204aff4
+.extern Type7Actor_GetStateCode
 .extern func_0204b148
 .extern func_02072b68
 .extern func_020740c8
@@ -272,7 +272,7 @@ func_ov062_02211388:
     cmp r0, r7
     bne .L_02211768
     mov r0, r6
-    bl func_0204aff4
+    bl Type7Actor_GetStateCode
     cmp r0, #0x0
     cmpne r0, #0x3
     cmpne r0, #0x8

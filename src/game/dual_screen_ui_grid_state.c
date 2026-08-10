@@ -67,7 +67,7 @@ extern void *func_02005580(void *, s32, s32, s32);
 extern u8 *func_02005c3c(void *, void *, s32, s32, s32, s32, s32);
 extern void func_02072b68(void *, s32);
 extern s32 func_020befec(s32, s32);
-extern s32 func_0204aff4(void *);
+extern s32 Type7Actor_GetStateCode(void *);
 extern s32 func_0200b04c(void *);
 extern s32 func_0200b294(void *);
 extern s32 func_020adc90(s32, s32);
@@ -250,14 +250,14 @@ void func_02026990(GridMotion *self, s32 scale)
 
 /*
  * Return one only when runtime subobject 0x29c flag bit 5 and runtime flag
- * 0x268 bit 4 are both set and func_0204aff4(runtime) does not return 5.
+ * 0x268 bit 4 are both set and Type7Actor_GetStateCode(runtime) does not return 5.
  */
 s32 func_020269a4(u8 *runtime)
 {
     u8 *record = *(u8 **)(runtime + 0x29c);
     if ((*(u16 *)(record + 0x38) & 0x20) == 0) return 0;
     if ((*(u32 *)(runtime + 0x268) & 0x10) == 0) return 0;
-    return func_0204aff4(runtime) != 5;
+    return Type7Actor_GetStateCode(runtime) != 5;
 }
 
 static s32 rounded_fx_mul(s32 first, s32 second)

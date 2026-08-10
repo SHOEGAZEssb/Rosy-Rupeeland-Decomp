@@ -21,7 +21,7 @@ extern void func_02005a00(void *presentation, s32 x, s32 y, s32 mode);
 extern void *ActorCollection_QueueActorForRemoval(void *value, void *actor);
 extern void *Actor_GetCollection(void *actor);
 extern s32 Actor_QueryTerrainHeight(void *actor, s32 x, s32 y);
-extern s32 func_0204aff4(void *actor);
+extern s32 Type7Actor_GetStateCode(void *actor);
 extern s32 func_0204f478(void *actor);
 extern void func_0204f4d4(void *actor, void *target);
 extern u32 func_020628c8(void *subobject);
@@ -194,7 +194,7 @@ void func_0204ee24(void *actor)
             func_0204f4d4(actor, primary);
         } else {
             void *secondary = FIELD(void *, data_021052fc, 0x2ea8);
-            if (secondary != 0 && func_0204aff4(secondary) == 0 &&
+            if (secondary != 0 && Type7Actor_GetStateCode(secondary) == 0 &&
                 func_020adcac((u8 *)secondary + 0x1c,
                               (u8 *)actor + 0x1c) < 0x18000) {
                 func_0204f4d4(actor, secondary);

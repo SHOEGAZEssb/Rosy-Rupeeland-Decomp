@@ -340,7 +340,7 @@ void func_ov075_02216174(void);
 /* Processes the supplied ABI arguments using only local offset-based fields; observable mutations and the return value are preserved by the matching implementation, with no direct SDK call. */
 void func_ov075_0221625c(void);
 
-/* Processes the supplied ABI arguments and offset-based actor state, returns its encoded result, and invokes Actor_GetCachedTerrainHeight, func_0204aff4, func_0204cfa4 and other shared helpers; exact higher-level semantics remain unconfirmed. */
+/* Processes the supplied ABI arguments and offset-based actor state, returns its encoded result, and invokes Actor_GetCachedTerrainHeight, Type7Actor_GetStateCode, func_0204cfa4 and other shared helpers; exact higher-level semantics remain unconfirmed. */
 void func_ov075_0221627c(void);
 
 /* Processes the supplied ABI arguments and offset-based actor state, returns its encoded result, and invokes func_0200500c, func_02005058, func_02009d78 and other shared helpers; exact higher-level semantics remain unconfirmed. */

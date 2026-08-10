@@ -10,7 +10,7 @@
 .extern ActorCollection_QueueActorForRemoval
 .extern Actor_GetCollection
 .extern Actor_QueryTerrainHeight
-.extern func_0204aff4
+.extern Type7Actor_GetStateCode
 .extern func_0204f478
 .extern func_0204f4d4
 .extern func_020628c8
@@ -423,7 +423,7 @@ func_0204ee24: ; 0x0204ee24
     cmp r4, #0x0
     beq .L_0204f458
     mov r0, r4
-    bl func_0204aff4
+    bl Type7Actor_GetStateCode
     cmp r0, #0x0
     bne .L_0204f458
     adds r1, r5, #0x18

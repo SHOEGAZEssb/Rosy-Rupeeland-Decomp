@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/type7_actor_special_state_control.c.
 .extern func_0200b2c0
 .extern AttachmentController_SetEnabled
-.extern func_0204aff4
+.extern Type7Actor_GetStateCode
 .extern func_0204b1e0
 .extern func_0204ced8
 .extern func_0204cf28
@@ -14,7 +14,7 @@
 func_0204b5d8: ; 0x0204b5d8
     stmdb sp!, {r4, lr}
     mov r4, r0
-    bl func_0204aff4
+    bl Type7Actor_GetStateCode
     cmp r0, #0x0
     ldmneia sp!, {r4, pc}
     ldr r1, [r4, #0x268]
@@ -102,7 +102,7 @@ func_0204b6ec: ; 0x0204b6ec
     mov r5, r2
     cmp r3, #0x0
     ldmeqia sp!, {r4, r5, r6, pc}
-    bl func_0204aff4
+    bl Type7Actor_GetStateCode
     cmp r0, #0x0
     ldmneia sp!, {r4, r5, r6, pc}
     mov r1, #0x0

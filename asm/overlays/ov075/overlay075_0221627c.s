@@ -4,7 +4,7 @@
 .extern data_ov075_02217290
 .extern data_ov075_022172d8
 .extern Actor_GetCachedTerrainHeight
-.extern func_0204aff4
+.extern Type7Actor_GetStateCode
 .extern func_0204cfa4
 .extern func_ov075_0221625c
 .extern func_ov075_0221647c
@@ -111,7 +111,7 @@ func_ov075_0221627c:
     b .L_0221641c
 .L_022163e4:
     mov r0, r9
-    bl func_0204aff4
+    bl Type7Actor_GetStateCode
     cmp r0, #0x0
     bne .L_02216460
     mov r0, r9

@@ -3,7 +3,7 @@
 .extern Actor_TestQueryPoint
 .extern Actor_IsInteractionEligible
 .extern func_0200b04c
-.extern func_0204aff4
+.extern Type7Actor_GetStateCode
 .extern ActorDerivedType1_IsIdleEligible
 .extern func_0200500c
 .extern ActorDerivedType1_TrySetStateVector
@@ -140,7 +140,7 @@ ActorCollection_ProcessSelectionQuery: ; 0x0202d7a8
     cmp r0, #0x0
     beq .L_0202d9a0
     mov r0, r4
-    bl func_0204aff4
+    bl Type7Actor_GetStateCode
     cmp r0, #0x5
     beq .L_0202d9a0
     mov r0, r4
