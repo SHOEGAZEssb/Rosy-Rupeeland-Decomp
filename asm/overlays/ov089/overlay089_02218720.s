@@ -2,7 +2,7 @@
 ; Matching fallback for the portable implementation in src/overlays/ov089/overlay089_recovery.c.
 .extern Sound_Play
 .extern data_021052fc
-.extern func_0204b078
+.extern Type7Actor_SetActorEnabled
 .extern func_02072b68
 .extern func_ov089_02217c14
 .extern gSoundContext
@@ -131,7 +131,7 @@ func_ov089_02218720:
     movs r1, r1, lsr #0x10
     ldmeqia sp!, {r4, pc}
     mov r1, #0x0
-    bl func_0204b078
+    bl Type7Actor_SetActorEnabled
     ldmia sp!, {r4, pc}
 .L_022188f4:
     ldrb r1, [r4, #0xd4]

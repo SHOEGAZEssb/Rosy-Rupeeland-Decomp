@@ -9,7 +9,7 @@
 .extern func_02005c3c
 .extern ActorCollection_GetSpriteOwner
 .extern Actor_GetCollection
-.extern func_0204b078
+.extern Type7Actor_SetActorEnabled
 .extern func_0204d3d8
 .extern func_02073fc4
 .extern gHeapContext
@@ -97,7 +97,7 @@ func_ov093_02217908:
     cmp r0, #0x0
     beq .L_02217a48
     mov r1, #0x0
-    bl func_0204b078
+    bl Type7Actor_SetActorEnabled
 .L_02217a48:
     mov r9, #0x0
     ldr r7, .L_02217ad4

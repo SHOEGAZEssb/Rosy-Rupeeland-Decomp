@@ -8,7 +8,7 @@
 .extern func_020022dc
 .extern func_02005058
 .extern Type7Actor_GetStateCode
-.extern func_0204b078
+.extern Type7Actor_SetActorEnabled
 .extern func_0204b6cc
 .extern func_ov062_0220fe78
 .extern func_ov062_02210674
@@ -198,7 +198,7 @@ func_ov089_02218f28:
     ldr r0, [r0, #0x0]
     add r0, r0, #0x2000
     ldr r0, [r0, #0xea8]
-    bl func_0204b078
+    bl Type7Actor_SetActorEnabled
 .L_022191d8:
     ldr r0, .L_0221920c
     ldr r1, .L_02219210

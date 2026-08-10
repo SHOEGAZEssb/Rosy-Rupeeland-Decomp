@@ -6,8 +6,8 @@
 .extern func_0204ced8
 .extern func_0204cf28
 .text
-    .global func_0204b078
-func_0204b078: ; 0x0204b078
+    .global Type7Actor_SetActorEnabled
+Type7Actor_SetActorEnabled: ; 0x0204b078
     stmdb sp!, {r4, lr}
     mov r4, r0
     cmp r1, #0x0
@@ -62,10 +62,10 @@ func_0204b078: ; 0x0204b078
     bl ActorDerivedType1_SetSpecialModeEnabled
     ldmia sp!, {r4, pc}
 .L_0204b144: .word data_021052fc
-.size func_0204b078, . - func_0204b078
+.size Type7Actor_SetActorEnabled, . - Type7Actor_SetActorEnabled
 
-    .global func_0204b148
-func_0204b148: ; 0x0204b148
+    .global Type7Actor_ConfigureAttachmentController
+Type7Actor_ConfigureAttachmentController: ; 0x0204b148
     stmdb sp!, {r3, r4, r5, lr}
     mov r4, r1
     mvn r1, #0x1
@@ -107,5 +107,5 @@ func_0204b148: ; 0x0204b148
     mov r1, #0x1
     bl AttachmentController_SetEnabled
     ldmia sp!, {r3, r4, r5, pc}
-.size func_0204b148, . - func_0204b148
+.size Type7Actor_ConfigureAttachmentController, . - Type7Actor_ConfigureAttachmentController
 

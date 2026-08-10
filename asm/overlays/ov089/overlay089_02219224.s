@@ -13,7 +13,7 @@
 .extern Actor_SetDirectionFromVector
 .extern ActorDerivedType1_ResetToBaseState
 .extern Type7Actor_ResetMotionAndCooldown
-.extern func_0204b078
+.extern Type7Actor_SetActorEnabled
 .extern func_ov062_0220fe78
 .extern func_ov062_02210674
 .extern func_ov089_02217904
@@ -140,7 +140,7 @@ func_ov089_02219224:
     ldr r0, [r2, #0x0]
     add r0, r0, #0x2000
     ldr r0, [r0, #0xea8]
-    bl func_0204b078
+    bl Type7Actor_SetActorEnabled
     ldr r0, .L_02219528
     ldr r0, [r0, #0x0]
     add r0, r0, #0x2000

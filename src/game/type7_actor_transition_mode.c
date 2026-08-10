@@ -30,7 +30,7 @@ extern void func_0204cf28(void *state);
  * returned. Actor and presentation/global state may change; there are no
  * direct hardware effects.
  */
-void func_0204b078(void *self, s32 enabled)
+void Type7Actor_SetActorEnabled(void *self, s32 enabled)
 {
     u8 *actor = (u8 *)self;
     u8 *attachment;
@@ -68,7 +68,7 @@ void func_0204b078(void *self, s32 enabled)
  * func_0204ced8, and enable the helper. No value is returned. Actor/helper
  * state changes, with no direct SDK or hardware effects.
  */
-void func_0204b148(void *self, s32 index)
+void Type7Actor_ConfigureAttachmentController(void *self, s32 index)
 {
     u8 *actor = (u8 *)self;
     if (index == -2) {

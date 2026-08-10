@@ -18642,7 +18642,7 @@ build build/reports/type7_actor_transition_mode_0204b078.json: objdiff build/dec
   base_object = build/decomp/asm/game/type7_actor_transition_mode_0204b078.o
 build build/reports/type7_actor_transition_mode_0204b078.txt: match_report build/reports/type7_actor_transition_mode_0204b078.json | tools/report_objdiff.py
   report_json = build/reports/type7_actor_transition_mode_0204b078.json
-  report_args = --section .text --function func_0204b078 --function func_0204b148 --require-exact
+  report_args = --section .text --function Type7Actor_SetActorEnabled --function Type7Actor_ConfigureAttachmentController --require-exact
 build type7_actor_transition_mode: phony build/decomp/src/game/type7_actor_transition_mode.o build/decomp/asm/game/type7_actor_transition_mode_0204b078.o build/reports/type7_actor_transition_mode_0204b078.txt
 
 type7_actor_animation_selection_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++

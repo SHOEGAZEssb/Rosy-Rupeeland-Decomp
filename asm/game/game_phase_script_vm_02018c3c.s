@@ -13,8 +13,8 @@
 .extern Type7Actor_ClearTarget
 .extern Type7Actor_DisableTargeting
 .extern Type7Actor_SetFlag40StateEnabled
-.extern func_0204b078
-.extern func_0204b148
+.extern Type7Actor_SetActorEnabled
+.extern Type7Actor_ConfigureAttachmentController
 .extern func_0204b6ec
 .extern func_0204bf9c
 .global func_02018c3c
@@ -113,14 +113,14 @@ L_02018d88:
     beq L_02018ef4
     mov r0, r8
     mov r1, r7
-    bl func_0204b078
+    bl Type7Actor_SetActorEnabled
     b L_02018ef4
 L_02018da0:
     cmp r8, #0x0
     beq L_02018ef4
     mov r0, r8
     mov r1, r7
-    bl func_0204b148
+    bl Type7Actor_ConfigureAttachmentController
     b L_02018ef4
 L_02018db8:
     cmp r8, #0x0

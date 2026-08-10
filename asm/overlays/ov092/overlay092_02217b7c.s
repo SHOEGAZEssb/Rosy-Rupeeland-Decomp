@@ -7,7 +7,7 @@
 .extern func_02005c3c
 .extern ActorCollection_GetSpriteOwner
 .extern Actor_GetCollection
-.extern func_0204b078
+.extern Type7Actor_SetActorEnabled
 .extern func_0204d3d8
 .extern func_02072b68
 .extern gHeapContext
@@ -84,7 +84,7 @@ func_ov092_02217b7c:
     cmp r0, #0x0
     beq .L_02217c90
     mov r1, #0x0
-    bl func_0204b078
+    bl Type7Actor_SetActorEnabled
 .L_02217c90:
     add sp, sp, #0xc
     ldmia sp!, {r3, r4, pc}

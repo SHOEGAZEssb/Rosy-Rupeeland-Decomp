@@ -21,8 +21,8 @@ extern void Type7Actor_ResetMotionAndCooldown(void *entity);
 extern void Type7Actor_ClearTarget(void *entity);
 extern void Type7Actor_DisableTargeting(void *entity);
 extern void Type7Actor_SetFlag40StateEnabled(void *entity, s32 value);
-extern void func_0204b078(void *entity, s32 value);
-extern void func_0204b148(void *entity, s32 value);
+extern void Type7Actor_SetActorEnabled(void *entity, s32 value);
+extern void Type7Actor_ConfigureAttachmentController(void *entity, s32 value);
 extern void func_0204b6ec(void *entity, u16 value, s32 enabled);
 extern void func_0204bf9c(s32 first, void *owner, s32 second, s32 third,
                           s32 fourth);
@@ -89,11 +89,11 @@ s32 func_02018c3c(GamePhaseActorScriptVm *self)
         break;
     case 6:
         if (entity)
-            func_0204b078(entity, first);
+            Type7Actor_SetActorEnabled(entity, first);
         break;
     case 7:
         if (entity)
-            func_0204b148(entity, first);
+            Type7Actor_ConfigureAttachmentController(entity, first);
         break;
     case 8:
         if (entity) {

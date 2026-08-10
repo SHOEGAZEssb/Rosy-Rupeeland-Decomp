@@ -14,7 +14,7 @@
 .extern func_020099c0
 .extern func_0202baec
 .extern Type7Actor_GetStateCode
-.extern func_0204b148
+.extern Type7Actor_ConfigureAttachmentController
 .extern func_02072b68
 .extern func_020740c8
 .extern func_020adcac
@@ -307,7 +307,7 @@ func_ov062_02211388:
     beq .L_022117d4
     mov r0, r6
     mvn r1, #0x1
-    bl func_0204b148
+    bl Type7Actor_ConfigureAttachmentController
     ldr r1, .L_02211ab8
     ldr r3, .L_02211abc
     mov r0, #0x40
