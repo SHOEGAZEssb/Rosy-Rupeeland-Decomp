@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/game_phase_runtime_scene_object.c for
 ; the documented portable implementation and recovered behavior.
 .text
-.extern data_020d4378
+.extern gGamePhaseDualScreenUiPresentationAllocationTag
 .extern func_02025acc
 .extern func_02025f20
 .extern func_020261bc
@@ -90,7 +90,7 @@ L_02008df4:
 L_02008e00:
     bl OS_Halt
     ldmia sp!, {r4, r5, r6, pc}
-L_02008e08: .word data_020d4378
+L_02008e08: .word gGamePhaseDualScreenUiPresentationAllocationTag
 L_02008e0c: .word gHeapContext
     .size GamePhaseRuntime_RecreateDualScreenUiPresentation, .-GamePhaseRuntime_RecreateDualScreenUiPresentation
 

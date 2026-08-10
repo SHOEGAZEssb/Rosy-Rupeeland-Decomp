@@ -6,7 +6,7 @@
  * The retail hardware/overlay schedule is retained in matching assembly.
  */
 
-extern u8 data_020d4370[];
+extern u8 gGamePhaseAreaAuxiliaryObjectAllocationTag[];
 
 #ifdef __cplusplus
 extern "C" {
@@ -55,7 +55,7 @@ void GamePhaseRuntime_RefreshAreaAuxiliaryObject(GamePhaseRuntime *self, void *a
         *subDisplay = (*subDisplay & ~0x1f00) | ((mode & ~8) << 8);
         OverlayManager_LoadOverlay(OverlayManager_GetGlobal(), 1, 0x38);
         variant = func_0202852c(*(s8 *)((u8 *)area + 0x4c));
-        object = Heap_Alloc(0x8ac, (const char *)data_020d4370, 4,
+        object = Heap_Alloc(0x8ac, (const char *)gGamePhaseAreaAuxiliaryObjectAllocationTag, 4,
                             &gHeapContext);
         if (object != 0)
             object = func_ov054_0220e400(object, variant, enabled);

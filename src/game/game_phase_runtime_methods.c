@@ -12,7 +12,7 @@ typedef struct ActorQueryPoint {
     u32 y_08;
 } ActorQueryPoint;
 
-extern u8 data_020d4358[];
+extern u8 gGamePhaseLoadSceneAllocationTag[];
 extern void *gSoundContext;
 
 #ifdef __cplusplus
@@ -111,7 +111,7 @@ s32 GamePhaseRuntime_HandleEvent100(GamePhaseRuntime *self, s32 event)
 
     if (event == 100) {
         Sound_Play(gSoundContext, 0, 123);
-        effect = Heap_Alloc(0x9c, (const char *)data_020d4358, 4,
+        effect = Heap_Alloc(0x9c, (const char *)gGamePhaseLoadSceneAllocationTag, 4,
                             &gHeapContext);
         if (effect != 0)
             GamePhaseLoadScene_Init(effect, 1, 0);

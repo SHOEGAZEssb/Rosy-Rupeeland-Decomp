@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/game_phase_runtime_update.c for the
 ; documented portable implementation and recovered behavior.
 .text
-.extern data_020d4360
+.extern gGamePhaseRuntimeUpdateAllocationTag
 .extern data_020f4e14
 .extern data_021f38fc
 .extern PackedTimerArray_Update
@@ -327,7 +327,7 @@ L_02007828:
 L_02007830:
     mov r0, #0x0
     ldmia sp!, {r3, r4, r5, pc}
-L_02007838: .word data_020d4360
+L_02007838: .word gGamePhaseRuntimeUpdateAllocationTag
 L_0200783c: .word gHeapContext
 L_02007840: .word 0x40
 L_02007844: .word gGameWork

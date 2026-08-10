@@ -1,6 +1,6 @@
 .text
 .extern data_020d4264
-.extern data_020d4350
+.extern gGamePhaseRuntimeFieldLoaderAllocationTag
 .extern ActorRuntimeObjectLists_Init
 .extern ActorRuntimeObjectLists_AddRecords
 .extern gHeapContext
@@ -39,7 +39,7 @@ L_02007018:
     mov r3, #0x0
     bl ActorRuntimeObjectLists_AddRecords
     ldmia sp!, {r4, pc}
-L_02007034: .word data_020d4350
+L_02007034: .word gGamePhaseRuntimeFieldLoaderAllocationTag
 L_02007038: .word gHeapContext
 L_0200703c: .word data_020d4264
     .size GamePhaseRuntime_CreateFieldLoader, .-GamePhaseRuntime_CreateFieldLoader

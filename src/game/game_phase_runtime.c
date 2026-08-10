@@ -19,7 +19,7 @@ typedef struct GamePhaseRuntimeGlobal {
 } GamePhaseRuntimeGlobal;
 
 extern u32 data_020d431c[];
-extern u8 data_020d4348[];
+extern u8 gGamePhaseTouchPromptAllocationTag[];
 extern GamePhaseRuntimeGlobal data_021052fc;
 extern u8 data_02105310[];
 extern void *gLupyContext;
@@ -96,7 +96,7 @@ GamePhaseRuntime *GamePhaseRuntime_Init(GamePhaseRuntime *self)
 
     data_021052fc.runtime = self;
     self->field_04 = 1;
-    task = Heap_Alloc(0x30, (const char *)data_020d4348, 4, &gHeapContext);
+    task = Heap_Alloc(0x30, (const char *)gGamePhaseTouchPromptAllocationTag, 4, &gHeapContext);
     if (task != 0)
         task = GamePhaseTouchPrompt_Init(task, self);
     data_021052fc.taskNode = FrameTaskList_Add((FrameTask *)task, 0);

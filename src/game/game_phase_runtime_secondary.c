@@ -3,7 +3,7 @@
 
 /* Lifecycle helpers for the runtime's optional secondary actor subsystem. */
 
-extern u8 data_020d4368[];
+extern u8 gGamePhaseAreaSceneAllocationTag[];
 
 #ifdef __cplusplus
 extern "C" {
@@ -25,7 +25,7 @@ extern void ActorRuntimeObjectLists_ClearSecond(void *loader);
 void GamePhaseRuntime_CreateSecondaryActorSubsystem(GamePhaseRuntime *self, void *area, s32 enabled)
 {
     u8 *b = (u8 *)self;
-    void *object = Heap_Alloc(0x2ed8, (const char *)data_020d4368, 4,
+    void *object = Heap_Alloc(0x2ed8, (const char *)gGamePhaseAreaSceneAllocationTag, 4,
                               &gHeapContext);
     if (object != 0)
         object = GamePhaseAreaScene_Init(object, area, enabled);

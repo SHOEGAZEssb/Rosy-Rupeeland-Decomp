@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/game_phase_runtime_auxiliary.c for
 ; the documented portable implementation and recovered behavior.
 .text
-.extern data_020d4370
+.extern gGamePhaseAreaAuxiliaryObjectAllocationTag
 .extern OverlayManager_LoadOverlay
 .extern OverlayManager_GetGlobal
 .extern GamePhaseRuntime_InitScaledAreaCoordinates
@@ -101,7 +101,7 @@ L_02008cd4:
 L_02008ce4: .word 0x4001000
 L_02008ce8: .word 0x38
 L_02008cec: .word 0x8ac
-L_02008cf0: .word data_020d4370
+L_02008cf0: .word gGamePhaseAreaAuxiliaryObjectAllocationTag
 L_02008cf4: .word gHeapContext
     .size GamePhaseRuntime_RefreshAreaAuxiliaryObject, .-GamePhaseRuntime_RefreshAreaAuxiliaryObject
 

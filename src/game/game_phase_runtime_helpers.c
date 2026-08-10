@@ -6,7 +6,7 @@
  * control DS display selection and the object stored at runtime offset 0x30b4.
  */
 
-extern u8 data_020d4350[];
+extern u8 gGamePhaseRuntimeFieldLoaderAllocationTag[];
 extern u32 data_020d4264[];
 
 #ifdef __cplusplus
@@ -39,7 +39,7 @@ void GamePhaseRuntime_SetDisplayRouting(s32 value)
 void GamePhaseRuntime_CreateFieldLoader(GamePhaseRuntime *self)
 {
     u8 *bytes = (u8 *)self;
-    void *loader = Heap_Alloc(0x34, (const char *)data_020d4350, 4,
+    void *loader = Heap_Alloc(0x34, (const char *)gGamePhaseRuntimeFieldLoaderAllocationTag, 4,
                               &gHeapContext);
 
     if (loader != 0)

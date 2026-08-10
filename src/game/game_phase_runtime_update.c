@@ -7,7 +7,7 @@
  * The retail instruction schedule is retained in the matching assembly file.
  */
 
-extern u8 data_020d4360[];
+extern u8 gGamePhaseRuntimeUpdateAllocationTag[];
 extern u8 data_021f38fc[];
 extern void *data_020f4e14;
 extern void *gDebugFont;
@@ -52,7 +52,7 @@ extern s32 Actor_TrySpawnTerrainGateObject(void);
 
 static void *allocRuntimeObject(u32 size)
 {
-    return Heap_Alloc(size, (const char *)data_020d4360, 4, &gHeapContext);
+    return Heap_Alloc(size, (const char *)gGamePhaseRuntimeUpdateAllocationTag, 4, &gHeapContext);
 }
 
 /*

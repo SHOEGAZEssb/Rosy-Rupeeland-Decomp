@@ -1,6 +1,6 @@
 .text
 .extern data_020d431c
-.extern data_020d4348
+.extern gGamePhaseTouchPromptAllocationTag
 .extern data_021052fc
 .extern data_02105310
 .extern FrameTaskList_Add
@@ -114,7 +114,7 @@ L_02006bac:
     ldmia sp!, {r4, pc}
 L_02006bcc: .word data_020d431c
 L_02006bd0: .word data_021052fc
-L_02006bd4: .word data_020d4348
+L_02006bd4: .word gGamePhaseTouchPromptAllocationTag
 L_02006bd8: .word gHeapContext
     .size GamePhaseRuntime_Init, .-GamePhaseRuntime_Init
 

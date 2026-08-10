@@ -3,7 +3,7 @@
 
 /* Replace the runtime scene object at offset 0x30e8 by mode and orientation. */
 
-extern u8 data_020d4378[];
+extern u8 gGamePhaseDualScreenUiPresentationAllocationTag[];
 
 #ifdef __cplusplus
 extern "C" {
@@ -37,7 +37,7 @@ void GamePhaseRuntime_RecreateDualScreenUiPresentation(GamePhaseRuntime *self, s
     if (mode == 0) {
         orientation = (*(u32 *)((u8 *)area + 0x40) << 12) >> 30;
         if (orientation == 1) {
-            object = Heap_Alloc(0xd4, (const char *)data_020d4378, 4,
+            object = Heap_Alloc(0xd4, (const char *)gGamePhaseDualScreenUiPresentationAllocationTag, 4,
                                 &gHeapContext);
             if (object != 0)
                 object = func_02025f20(object, area);
@@ -45,7 +45,7 @@ void GamePhaseRuntime_RecreateDualScreenUiPresentation(GamePhaseRuntime *self, s
             return;
         }
         if (orientation == 2) {
-            object = Heap_Alloc(0xd8, (const char *)data_020d4378, 4,
+            object = Heap_Alloc(0xd8, (const char *)gGamePhaseDualScreenUiPresentationAllocationTag, 4,
                                 &gHeapContext);
             if (object != 0)
                 object = func_020261bc(object, area);
@@ -56,7 +56,7 @@ void GamePhaseRuntime_RecreateDualScreenUiPresentation(GamePhaseRuntime *self, s
         return;
     }
     if (mode == 1 || mode == 2) {
-        object = Heap_Alloc(0xc8, (const char *)data_020d4378, 4,
+        object = Heap_Alloc(0xc8, (const char *)gGamePhaseDualScreenUiPresentationAllocationTag, 4,
                             &gHeapContext);
         if (object != 0)
             object = func_02025acc(object, area);
