@@ -1,8 +1,8 @@
 ; Matching retail form; see src/game/game_phase_script_vm_comparison_opcodes.c.
 .text
 .extern GamePhaseScriptVm_ReadU32Le
-.global func_0201bd34
-func_0201bd34: ; 0x0201bd34
+.global GamePhaseScriptVm_CompareLessEqualImmediate
+GamePhaseScriptVm_CompareLessEqualImmediate: ; 0x0201bd34
     stmdb sp!, {r3, r4, r5, lr}
     mov r4, r0
     ldr r1, [r4, #0x4]
@@ -26,4 +26,4 @@ func_0201bd34: ; 0x0201bd34
     str r0, [r2, #0x2c]
     mov r0, #0x0
     ldmia sp!, {r3, r4, r5, pc}
-.size func_0201bd34, . - func_0201bd34
+.size GamePhaseScriptVm_CompareLessEqualImmediate, . - GamePhaseScriptVm_CompareLessEqualImmediate

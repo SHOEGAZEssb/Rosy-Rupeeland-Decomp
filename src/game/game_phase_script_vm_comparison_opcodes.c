@@ -55,26 +55,26 @@ static s32 compareImmediate(GamePhaseScriptVm *self, VmComparison comparison)
 }
 
 /* Store whether destination is greater than source and return zero. */
-s32 func_0201ba28(GamePhaseScriptVm *self) { return compareRegisters(self, VM_COMPARE_GREATER); }
+s32 GamePhaseScriptVm_CompareGreaterRegisters(GamePhaseScriptVm *self) { return compareRegisters(self, VM_COMPARE_GREATER); }
 /* Store whether destination is at least source and return zero. */
-s32 func_0201ba7c(GamePhaseScriptVm *self) { return compareRegisters(self, VM_COMPARE_GREATER_EQUAL); }
+s32 GamePhaseScriptVm_CompareGreaterEqualRegisters(GamePhaseScriptVm *self) { return compareRegisters(self, VM_COMPARE_GREATER_EQUAL); }
 /* Store whether destination equals source and return zero. */
-s32 func_0201bad0(GamePhaseScriptVm *self) { return compareRegisters(self, VM_COMPARE_EQUAL); }
+s32 GamePhaseScriptVm_CompareEqualRegisters(GamePhaseScriptVm *self) { return compareRegisters(self, VM_COMPARE_EQUAL); }
 /* Store whether destination is at most source and return zero. */
-s32 func_0201bb24(GamePhaseScriptVm *self) { return compareRegisters(self, VM_COMPARE_LESS_EQUAL); }
+s32 GamePhaseScriptVm_CompareLessEqualRegisters(GamePhaseScriptVm *self) { return compareRegisters(self, VM_COMPARE_LESS_EQUAL); }
 /* Store whether destination is less than source and return zero. */
-s32 func_0201bb78(GamePhaseScriptVm *self) { return compareRegisters(self, VM_COMPARE_LESS); }
+s32 GamePhaseScriptVm_CompareLessRegisters(GamePhaseScriptVm *self) { return compareRegisters(self, VM_COMPARE_LESS); }
 /* Store whether destination differs from source and return zero. */
-s32 func_0201bbcc(GamePhaseScriptVm *self) { return compareRegisters(self, VM_COMPARE_NOT_EQUAL); }
+s32 GamePhaseScriptVm_CompareNotEqualRegisters(GamePhaseScriptVm *self) { return compareRegisters(self, VM_COMPARE_NOT_EQUAL); }
 /* Store whether destination is greater than the immediate and return zero. */
-s32 func_0201bc20(GamePhaseScriptVm *self) { return compareImmediate(self, VM_COMPARE_GREATER); }
+s32 GamePhaseScriptVm_CompareGreaterImmediate(GamePhaseScriptVm *self) { return compareImmediate(self, VM_COMPARE_GREATER); }
 /* Store whether destination is at least the immediate and return zero. */
-s32 func_0201bc7c(GamePhaseScriptVm *self) { return compareImmediate(self, VM_COMPARE_GREATER_EQUAL); }
+s32 GamePhaseScriptVm_CompareGreaterEqualImmediate(GamePhaseScriptVm *self) { return compareImmediate(self, VM_COMPARE_GREATER_EQUAL); }
 /* Store whether destination equals the immediate and return zero. */
-s32 func_0201bcd8(GamePhaseScriptVm *self) { return compareImmediate(self, VM_COMPARE_EQUAL); }
+s32 GamePhaseScriptVm_CompareEqualImmediate(GamePhaseScriptVm *self) { return compareImmediate(self, VM_COMPARE_EQUAL); }
 /* Store whether destination is at most the immediate and return zero. */
-s32 func_0201bd34(GamePhaseScriptVm *self) { return compareImmediate(self, VM_COMPARE_LESS_EQUAL); }
+s32 GamePhaseScriptVm_CompareLessEqualImmediate(GamePhaseScriptVm *self) { return compareImmediate(self, VM_COMPARE_LESS_EQUAL); }
 /* Store whether destination is less than the immediate and return zero. */
-s32 func_0201bd90(GamePhaseScriptVm *self) { return compareImmediate(self, VM_COMPARE_LESS); }
+s32 GamePhaseScriptVm_CompareLessImmediate(GamePhaseScriptVm *self) { return compareImmediate(self, VM_COMPARE_LESS); }
 /* Store whether destination differs from the immediate and return zero. */
-s32 func_0201bdec(GamePhaseScriptVm *self) { return compareImmediate(self, VM_COMPARE_NOT_EQUAL); }
+s32 GamePhaseScriptVm_CompareNotEqualImmediate(GamePhaseScriptVm *self) { return compareImmediate(self, VM_COMPARE_NOT_EQUAL); }

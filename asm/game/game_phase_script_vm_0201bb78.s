@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/game_phase_script_vm_comparison_opcodes.c.
 .text
-.global func_0201bb78
-func_0201bb78: ; 0x0201bb78
+.global GamePhaseScriptVm_CompareLessRegisters
+GamePhaseScriptVm_CompareLessRegisters: ; 0x0201bb78
     ldr r1, [r0, #0x4]
     ldrb r2, [r1, #0x0]
     add r3, r1, #0x1
@@ -23,4 +23,4 @@ func_0201bb78: ; 0x0201bb78
     str r1, [r3, #0x2c]
     mov r0, #0x0
     bx lr
-.size func_0201bb78, . - func_0201bb78
+.size GamePhaseScriptVm_CompareLessRegisters, . - GamePhaseScriptVm_CompareLessRegisters
