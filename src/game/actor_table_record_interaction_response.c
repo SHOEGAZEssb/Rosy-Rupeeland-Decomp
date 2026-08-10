@@ -14,8 +14,9 @@ extern s32 func_020adae4(s32 numerator, s32 denominator);
 extern s32 func_02007868(void *actor);
 extern void ActorDerivedType1_StartRecordOrHandleType6D66(void *manager, s32 value);
 extern void func_020349b8(void *actor, u32 sound, s32 extra);
-extern void func_0203cea0(void *actor, void *target);
-void func_0203cb48(void *self, void *other, s32 directionalMode, s32 scale);
+extern void ActorTableRecord_ApplySeparationImpulse(void *actor, void *target);
+void ActorTableRecord_ApplyCollisionResponse(void *self, void *other,
+                                             s32 directionalMode, s32 scale);
 #ifdef __cplusplus
 }
 #endif
@@ -35,12 +36,15 @@ static s32 isEligibleTarget(const u8 *target)
 }
 
 /*
- * Forward self, other, scale to func_0203cb48 with directionalMode zero.
- * Returns no value; all interaction effects are performed by the target.
+ * Forward self, other, and scale to ActorTableRecord_ApplyCollisionResponse
+ * with directionalMode zero. Returns no value; all interaction effects are
+ * performed by the target.
  */
-void func_0203cb34(void *self, void *other, s32 scale)
+void ActorTableRecord_ApplyNonDirectionalCollisionResponse(void *self,
+                                                           void *other,
+                                                           s32 scale)
 {
-    func_0203cb48(self, other, 0, scale);
+    ActorTableRecord_ApplyCollisionResponse(self, other, 0, scale);
 }
 
 /*
@@ -61,12 +65,13 @@ void func_0203cb34(void *self, void *other, s32 scale)
  *
  * If byte +0x211 is zero, play nonzero record sound +0x0a through
  * func_020349b8, then copy record byte +0x0c to +0x211. Self word +0x20c bit
- * 0x4000 invokes func_0203cea0 with runtime +0x2ea4; bit 0x8000 does likewise
- * with nonnull runtime +0x2ea8. Finally set bits 0x4000/0x8000 when other is
- * type one/seven. Returns no value. Math, virtual, sound, manager, and effect
- * calls have observable engine state.
+ * 0x4000 invokes ActorTableRecord_ApplySeparationImpulse with runtime +0x2ea4;
+ * bit 0x8000 does likewise with nonnull runtime +0x2ea8. Finally set bits
+ * 0x4000/0x8000 when other is type one/seven. Returns no value. Math, virtual,
+ * sound, manager, and effect calls have observable engine state.
  */
-void func_0203cb48(void *self, void *other, s32 directionalMode, s32 scale)
+void ActorTableRecord_ApplyCollisionResponse(void *self, void *other,
+                                             s32 directionalMode, s32 scale)
 {
     u8 *actor = (u8 *)self;
     u8 *target = (u8 *)other;
@@ -122,10 +127,12 @@ void func_0203cb48(void *self, void *other, s32 directionalMode, s32 scale)
         func_020349b8(actor, *(u16 *)(record + 0x0a), 0);
     actor[0x211] = record[0x0c];
     if ((*(u32 *)(actor + 0x20c) & 0x4000) != 0)
-        func_0203cea0(actor, *(void **)(data_021052fc + 0x2ea4));
+        ActorTableRecord_ApplySeparationImpulse(
+            actor, *(void **)(data_021052fc + 0x2ea4));
     if ((*(u32 *)(actor + 0x20c) & 0x8000) != 0 &&
         *(void **)(data_021052fc + 0x2ea8) != 0)
-        func_0203cea0(actor, *(void **)(data_021052fc + 0x2ea8));
+        ActorTableRecord_ApplySeparationImpulse(
+            actor, *(void **)(data_021052fc + 0x2ea8));
     if (target[0x4d] == 1)
         *(u32 *)(actor + 0x20c) |= 0x4000;
     if (target[0x4d] == 7)

@@ -4,7 +4,7 @@
 .extern data_02105714
 .extern data_02105718
 .extern func_02007868
-.extern func_0203cb48
+.extern ActorTableRecord_ApplyCollisionResponse
 .extern func_0203d3fc
 .extern func_0203d48c
     .global func_0203d8bc
@@ -17,7 +17,7 @@ func_0203d8bc: ; 0x0203d8bc
     tst ip, #0x2
     ldmneia sp!, {r4, pc}
     mov r2, #0x0
-    bl func_0203cb48
+    bl ActorTableRecord_ApplyCollisionResponse
     ldr r0, .L_0203d90c
     mov r1, #0x6
     ldrsh r2, [r0, #0x0]

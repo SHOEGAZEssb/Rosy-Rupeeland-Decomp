@@ -16396,7 +16396,7 @@ build build/reports/actor_table_record_interaction_response_0203cb34.json: objdi
   base_object = build/decomp/asm/game/actor_table_record_interaction_response_0203cb34.o
 build build/reports/actor_table_record_interaction_response_0203cb34.txt: match_report build/reports/actor_table_record_interaction_response_0203cb34.json | tools/report_objdiff.py
   report_json = build/reports/actor_table_record_interaction_response_0203cb34.json
-  report_args = --section .text --function func_0203cb34 --function func_0203cb48 --require-exact
+  report_args = --section .text --function ActorTableRecord_ApplyNonDirectionalCollisionResponse --function ActorTableRecord_ApplyCollisionResponse --require-exact
 build build/reports/actor_table_record_interaction_response.txt: phony build/reports/actor_table_record_interaction_response_0203cb34.txt
 
 build actor_table_record_interaction_response: phony build/decomp/src/game/actor_table_record_interaction_response.o build/decomp/asm/game/actor_table_record_interaction_response_0203cb34.o build/reports/actor_table_record_interaction_response.txt
@@ -16413,7 +16413,7 @@ build build/reports/actor_table_record_interaction_helpers_0203cea0.json: objdif
   base_object = build/decomp/asm/game/actor_table_record_interaction_helpers_0203cea0.o
 build build/reports/actor_table_record_interaction_helpers_0203cea0.txt: match_report build/reports/actor_table_record_interaction_helpers_0203cea0.json | tools/report_objdiff.py
   report_json = build/reports/actor_table_record_interaction_helpers_0203cea0.json
-  report_args = --section .text --function func_0203cea0 --function func_0203cf40 --require-exact
+  report_args = --section .text --function ActorTableRecord_ApplySeparationImpulse --function ActorTableRecord_HandlePairActive --require-exact
 build build/reports/actor_table_record_interaction_helpers.txt: phony build/reports/actor_table_record_interaction_helpers_0203cea0.txt
 
 build actor_table_record_interaction_helpers: phony build/decomp/src/game/actor_table_record_interaction_helpers.o build/decomp/asm/game/actor_table_record_interaction_helpers_0203cea0.o build/reports/actor_table_record_interaction_helpers.txt

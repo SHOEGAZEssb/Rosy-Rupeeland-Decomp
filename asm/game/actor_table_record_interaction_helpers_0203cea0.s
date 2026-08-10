@@ -3,13 +3,13 @@
 .extern data_02105310
 .extern func_0200b04c
 .extern func_02032a94
-.extern func_0203cb48
+.extern ActorTableRecord_ApplyCollisionResponse
 .extern func_0204cfa4
 .extern func_0204cff4
 .extern func_020adc90
-    .global func_0203cea0
-    .type func_0203cea0, @function
-func_0203cea0: ; 0x0203cea0
+    .global ActorTableRecord_ApplySeparationImpulse
+    .type ActorTableRecord_ApplySeparationImpulse, @function
+ActorTableRecord_ApplySeparationImpulse: ; 0x0203cea0
     stmdb sp!, {r3, r4, r5, r6, r7, lr}
     mov r5, r0
     mov r4, r1
@@ -52,11 +52,11 @@ func_0203cea0: ; 0x0203cea0
     str r3, [r4, #0x90]
     bl func_0204cff4
     ldmia sp!, {r3, r4, r5, r6, r7, pc}
-    .size func_0203cea0, . - func_0203cea0
+    .size ActorTableRecord_ApplySeparationImpulse, . - ActorTableRecord_ApplySeparationImpulse
 
-    .global func_0203cf40
-    .type func_0203cf40, @function
-func_0203cf40: ; 0x0203cf40
+    .global ActorTableRecord_HandlePairActive
+    .type ActorTableRecord_HandlePairActive, @function
+ActorTableRecord_HandlePairActive: ; 0x0203cf40
     stmdb sp!, {r4, r5, r6, lr}
     mov r6, r0
     ldr r0, .L_0203cf88
@@ -69,7 +69,7 @@ func_0203cf40: ; 0x0203cf40
     mov r1, r5
     mov r2, #0x1
     mov r3, #0x1000
-    bl func_0203cb48
+    bl ActorTableRecord_ApplyCollisionResponse
 .L_0203cf74:
     mov r0, r6
     mov r1, r5
@@ -77,6 +77,6 @@ func_0203cf40: ; 0x0203cf40
     bl func_02032a94
     ldmia sp!, {r4, r5, r6, pc}
 .L_0203cf88: .word data_02105310
-    .size func_0203cf40, . - func_0203cf40
+    .size ActorTableRecord_HandlePairActive, . - ActorTableRecord_HandlePairActive
 
 

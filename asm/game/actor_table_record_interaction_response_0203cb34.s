@@ -5,24 +5,24 @@
 .extern func_02007868
 .extern func_020349b8
 .extern ActorDerivedType1_StartRecordOrHandleType6D66
-.extern func_0203cea0
+.extern ActorTableRecord_ApplySeparationImpulse
 .extern func_0204cfa4
 .extern func_020adae4
 .extern func_020adc90
 .extern func_020ae024
-    .global func_0203cb34
-    .type func_0203cb34, @function
-func_0203cb34: ; 0x0203cb34
+    .global ActorTableRecord_ApplyNonDirectionalCollisionResponse
+    .type ActorTableRecord_ApplyNonDirectionalCollisionResponse, @function
+ActorTableRecord_ApplyNonDirectionalCollisionResponse: ; 0x0203cb34
     ldr ip, .L_0203cb44
     mov r3, r2
     mov r2, #0x0
     bx ip
-.L_0203cb44: .word func_0203cb48
-    .size func_0203cb34, . - func_0203cb34
+.L_0203cb44: .word ActorTableRecord_ApplyCollisionResponse
+    .size ActorTableRecord_ApplyNonDirectionalCollisionResponse, . - ActorTableRecord_ApplyNonDirectionalCollisionResponse
 
-    .global func_0203cb48
-    .type func_0203cb48, @function
-func_0203cb48: ; 0x0203cb48
+    .global ActorTableRecord_ApplyCollisionResponse
+    .type ActorTableRecord_ApplyCollisionResponse, @function
+ActorTableRecord_ApplyCollisionResponse: ; 0x0203cb48
     stmdb sp!, {r4, r5, r6, r7, r8, r9, r10, lr}
     mov r5, r1
     ldrb r1, [r5, #0x4d]
@@ -215,7 +215,7 @@ func_0203cb48: ; 0x0203cb48
     ldr r1, [r1, #0x0]
     add r1, r1, #0x2000
     ldr r1, [r1, #0xea4]
-    bl func_0203cea0
+    bl ActorTableRecord_ApplySeparationImpulse
 .L_0203ce28:
     ldr r0, [r6, #0x20c]
     mov r0, r0, lsl #0x10
@@ -227,7 +227,7 @@ func_0203cb48: ; 0x0203cb48
     cmpne r1, #0x0
     beq .L_0203ce54
     mov r0, r6
-    bl func_0203cea0
+    bl ActorTableRecord_ApplySeparationImpulse
 .L_0203ce54:
     ldrb r0, [r5, #0x4d]
     cmp r0, #0x1
@@ -248,6 +248,6 @@ func_0203cb48: ; 0x0203cb48
     ldmia sp!, {r4, r5, r6, r7, r8, r9, r10, pc}
 .L_0203ce98: .word data_020c9670
 .L_0203ce9c: .word data_021052fc
-    .size func_0203cb48, . - func_0203cb48
+    .size ActorTableRecord_ApplyCollisionResponse, . - ActorTableRecord_ApplyCollisionResponse
 
 

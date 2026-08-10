@@ -11,7 +11,8 @@ extern u8 *data_021052fc;
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_0203cb48(void *actor, s32 value, s32 zero, s32 extra);
+extern void ActorTableRecord_ApplyCollisionResponse(void *actor, s32 value,
+                                                    s32 zero, s32 extra);
 extern void func_0203d48c(void *actor, u16 limit);
 extern s32 func_02007868(void *actor);
 extern void func_0203d3fc(void *actor);
@@ -22,9 +23,10 @@ extern void func_0203d3fc(void *actor);
 /*
  * Return immediately when actor +0x14 bit two is set. Otherwise forward value
  * r1 and original r2 as the first and fourth non-self arguments of
- * func_0203cb48, with zero between them. Start/clamp the timed state to
- * data_02105714[0]*6+16 frames and increment that counter. Returns no value;
- * actor interaction state and the global counter change.
+ * ActorTableRecord_ApplyCollisionResponse, with zero between them. Start or
+ * clamp the timed state to data_02105714[0]*6+16 frames and increment that
+ * counter. Returns no value; actor interaction state and the global counter
+ * change.
  */
 void func_0203d8bc(void *self, s32 value, s32 extra)
 {
@@ -32,7 +34,7 @@ void func_0203d8bc(void *self, s32 value, s32 extra)
 
     if ((*(u32 *)(actor + 0x14) & 2) != 0)
         return;
-    func_0203cb48(actor, value, 0, extra);
+    ActorTableRecord_ApplyCollisionResponse(actor, value, 0, extra);
     func_0203d48c(actor, (u16)(data_02105714[0] * 6 + 16));
     ++data_02105714[0];
 }
