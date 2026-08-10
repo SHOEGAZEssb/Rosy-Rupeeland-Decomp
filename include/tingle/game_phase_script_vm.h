@@ -121,8 +121,8 @@ s32 GamePhaseActorScriptVm_SetPositionFromCoordinates(GamePhaseActorScriptVm *se
 s32 GamePhaseActorScriptVm_TranslateSecondaryBounds(GamePhaseActorScriptVm *self);
 s32 GamePhaseActorScriptVm_TranslateCollisionBounds(GamePhaseActorScriptVm *self);
 s32 GamePhaseActorScriptVm_StageAreaRequest(GamePhaseActorScriptVm *self);
-s32 func_020141d4(GamePhaseActorScriptVm *self);
-s32 func_02014250(GamePhaseActorScriptVm *self);
+s32 GamePhaseActorScriptVm_StartBrightnessTransition(GamePhaseActorScriptVm *self);
+s32 GamePhaseActorScriptVm_IsBrightnessTransitionPending(GamePhaseActorScriptVm *self);
 s32 func_020142cc(GamePhaseActorScriptVm *self);
 s32 func_020142ec(GamePhaseActorScriptVm *self);
 s32 func_020142f4(GamePhaseActorScriptVm *self);

@@ -4,8 +4,8 @@
 .extern DisplayBrightness_StartSubTransition
 .extern GamePhaseScriptVm_Pop
 
-    .global func_020141d4
-func_020141d4: ; 0x020141d4
+    .global GamePhaseActorScriptVm_StartBrightnessTransition
+GamePhaseActorScriptVm_StartBrightnessTransition: ; 0x020141d4
     stmdb sp!, {r3, r4, r5, lr}
     mov r5, r0
     bl GamePhaseScriptVm_Pop
@@ -41,5 +41,5 @@ L_02014234:
 L_02014248:
     mov r0, #0x0
     ldmia sp!, {r3, r4, r5, pc}
-    .size func_020141d4, . - func_020141d4
+    .size GamePhaseActorScriptVm_StartBrightnessTransition, . - GamePhaseActorScriptVm_StartBrightnessTransition
 

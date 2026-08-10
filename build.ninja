@@ -5177,14 +5177,14 @@ build build/reports/game_phase_script_vm_020141d4.json: objdiff build/decomp/del
   base_object = build/decomp/asm/game/game_phase_script_vm_020141d4.o
 build build/reports/game_phase_script_vm_020141d4.txt: match_report build/reports/game_phase_script_vm_020141d4.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_script_vm_020141d4.json
-  report_args = --section .text --function func_020141d4 --require-exact
+  report_args = --section .text --function GamePhaseActorScriptVm_StartBrightnessTransition --require-exact
 
 build build/reports/game_phase_script_vm_02014250.json: objdiff build/decomp/delinks/asm/game/game_phase_script_vm_02014250.o | build/decomp/asm/game/game_phase_script_vm_02014250.o
   target_object = build/decomp/delinks/asm/game/game_phase_script_vm_02014250.o
   base_object = build/decomp/asm/game/game_phase_script_vm_02014250.o
 build build/reports/game_phase_script_vm_02014250.txt: match_report build/reports/game_phase_script_vm_02014250.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_script_vm_02014250.json
-  report_args = --section .text --function func_02014250 --require-exact
+  report_args = --section .text --function GamePhaseActorScriptVm_IsBrightnessTransitionPending --require-exact
 
 build build/reports/game_phase_script_vm_display_opcodes.txt: phony build/reports/game_phase_script_vm_020141d4.txt build/reports/game_phase_script_vm_02014250.txt
 

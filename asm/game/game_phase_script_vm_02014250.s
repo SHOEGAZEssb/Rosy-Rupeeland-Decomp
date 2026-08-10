@@ -5,8 +5,8 @@
 .extern GamePhaseScriptVm_Pop
 .extern GamePhaseScriptVm_SetResult
 
-    .global func_02014250
-func_02014250: ; 0x02014250
+    .global GamePhaseActorScriptVm_IsBrightnessTransitionPending
+GamePhaseActorScriptVm_IsBrightnessTransitionPending: ; 0x02014250
     stmdb sp!, {r4, lr}
     mov r4, r0
     bl GamePhaseScriptVm_Pop
@@ -44,5 +44,5 @@ L_020142bc:
     bl GamePhaseScriptVm_SetResult
     mov r0, #0x0
     ldmia sp!, {r4, pc}
-    .size func_02014250, . - func_02014250
+    .size GamePhaseActorScriptVm_IsBrightnessTransitionPending, . - GamePhaseActorScriptVm_IsBrightnessTransitionPending
 

@@ -8,7 +8,7 @@
  * display controller and bit 1 starts the second, both with fx32 divisor 0x10.
  * A nonzero selector passes direction 1; zero passes direction 2. Returns zero.
  */
-s32 func_020141d4(GamePhaseActorScriptVm *self)
+s32 GamePhaseActorScriptVm_StartBrightnessTransition(GamePhaseActorScriptVm *self)
 {
     u32 mask = GamePhaseScriptVm_Pop(&self->base);
     u32 selector = GamePhaseScriptVm_Pop(&self->base);
@@ -26,7 +26,7 @@ s32 func_020141d4(GamePhaseActorScriptVm *self)
  * and other values report pending if either controller is incomplete. Returns
  * zero after pushing the result.
  */
-s32 func_02014250(GamePhaseActorScriptVm *self)
+s32 GamePhaseActorScriptVm_IsBrightnessTransitionPending(GamePhaseActorScriptVm *self)
 {
     u32 selector = GamePhaseScriptVm_Pop(&self->base);
     u32 pending;
