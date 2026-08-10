@@ -16,7 +16,7 @@ extern void ActorDescriptorBatch_ApplyCategoryCallback(s32 value);
 #endif
 
 /* Initialize the Scene, retain its three constructor values, and return self. */
-GamePhaseApplyScene *func_0200c8bc(GamePhaseApplyScene *self, void *area,
+GamePhaseApplyScene *GamePhaseApplyScene_Init(GamePhaseApplyScene *self, void *area,
                                    u32 field28, u32 field2c)
 {
     Scene_Init(&self->base);
@@ -28,14 +28,14 @@ GamePhaseApplyScene *func_0200c8bc(GamePhaseApplyScene *self, void *area,
 }
 
 /* Destroy the Scene base and return self without freeing its storage. */
-GamePhaseApplyScene *func_0200c8f4(GamePhaseApplyScene *self)
+GamePhaseApplyScene *GamePhaseApplyScene_Destroy(GamePhaseApplyScene *self)
 {
     Scene_Destroy(&self->base);
     return self;
 }
 
 /* Destroy the Scene, free its storage through the game heap, and return it. */
-GamePhaseApplyScene *func_0200c908(GamePhaseApplyScene *self)
+GamePhaseApplyScene *GamePhaseApplyScene_DestroyAndFree(GamePhaseApplyScene *self)
 {
     Scene_Destroy(&self->base);
     Heap_Free(self);
@@ -49,7 +49,7 @@ GamePhaseApplyScene *func_0200c908(GamePhaseApplyScene *self)
  * pending bit at offset 0x30cc, and notifies the phase controller. Returns one
  * only when that final state completes.
  */
-s32 func_0200c924(GamePhaseApplyScene *self)
+s32 GamePhaseApplyScene_Update(GamePhaseApplyScene *self)
 {
     GamePhaseRuntime *runtime = (GamePhaseRuntime *)data_021052fc;
 

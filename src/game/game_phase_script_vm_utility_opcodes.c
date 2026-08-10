@@ -12,7 +12,7 @@ extern void ActorInteraction_SetDirectionAndMagnitude(u16 directionIndex,
                                                        u16 magnitude);
 extern s32 func_020adc40(s32 value);
 extern void *func_02028388(s32 phaseIndex);
-extern void *func_0200c8bc(void *self, void *area, u32 field28, u32 field2c,
+extern void *GamePhaseApplyScene_Init(void *self, void *area, u32 field28, u32 field2c,
                            u32 extra);
 extern s32 func_020be328(s32 value);
 extern u32 func_02063670(void *table, u16 value);
@@ -66,7 +66,7 @@ s32 func_02015dc8(GamePhaseActorScriptVm *self)
     s32 phaseId = (s32)func_02012704(&self->base);
     void *scene = Heap_Alloc(0x30, data_020d5b2c, 4, &gHeapContext);
     if (scene != 0)
-        func_0200c8bc(scene, func_02028388(phaseId - 1), field28, field2c, 0);
+        GamePhaseApplyScene_Init(scene, func_02028388(phaseId - 1), field28, field2c, 0);
     return 0;
 }
 

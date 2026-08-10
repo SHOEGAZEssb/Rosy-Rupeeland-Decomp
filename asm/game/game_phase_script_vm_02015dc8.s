@@ -2,7 +2,7 @@
 .text
 .extern data_020d5b2c
 .extern Heap_Alloc
-.extern func_0200c8bc
+.extern GamePhaseApplyScene_Init
 .extern func_02012704
 .extern func_02028388
 .extern gHeapContext
@@ -33,7 +33,7 @@ func_02015dc8:
     mov r2, r6
     mov r3, r7
     str r12, [sp]
-    bl func_0200c8bc
+    bl GamePhaseApplyScene_Init
 L_02015e30:
     mov r0, #0
     ldmia sp!, {r3, r4, r5, r6, r7, pc}

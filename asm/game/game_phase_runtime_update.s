@@ -17,7 +17,7 @@
 .extern FrameCounter_Tick31
 .extern DebugPhaseSelector_Init
 .extern GamePhaseTransitionScene_Init
-.extern func_0200c8bc
+.extern GamePhaseApplyScene_Init
 .extern func_0200c9fc
 .extern func_0200ecf0
 .extern func_02010b64
@@ -180,7 +180,7 @@ L_020075d8:
     ldr r1, [r3, #0xd0]
     ldr r2, [r3, #0xd4]
     ldr r3, [r3, #0xd8]
-    bl func_0200c8bc
+    bl GamePhaseApplyScene_Init
 L_02007620:
     mov r0, #0x0
     ldmia sp!, {r3, r4, r5, pc}

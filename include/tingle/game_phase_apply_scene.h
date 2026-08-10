@@ -15,11 +15,11 @@ typedef struct GamePhaseApplyScene {
 extern "C" {
 #endif
 
-GamePhaseApplyScene *func_0200c8bc(GamePhaseApplyScene *self, void *area,
+GamePhaseApplyScene *GamePhaseApplyScene_Init(GamePhaseApplyScene *self, void *area,
                                    u32 field28, u32 field2c);
-GamePhaseApplyScene *func_0200c8f4(GamePhaseApplyScene *self);
-GamePhaseApplyScene *func_0200c908(GamePhaseApplyScene *self);
-s32 func_0200c924(GamePhaseApplyScene *self);
+GamePhaseApplyScene *GamePhaseApplyScene_Destroy(GamePhaseApplyScene *self);
+GamePhaseApplyScene *GamePhaseApplyScene_DestroyAndFree(GamePhaseApplyScene *self);
+s32 GamePhaseApplyScene_Update(GamePhaseApplyScene *self);
 
 #ifdef __cplusplus
 }

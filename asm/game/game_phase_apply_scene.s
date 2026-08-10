@@ -12,8 +12,8 @@
 .extern func_020122a0
 .extern ActorDescriptorBatch_ApplyCategoryCallback
 
-.global func_0200c8bc
-func_0200c8bc:
+.global GamePhaseApplyScene_Init
+GamePhaseApplyScene_Init:
     stmdb sp!, {r3, r4, r5, r6, r7, lr}
     mov r7, r0
     mov r6, r1
@@ -28,19 +28,19 @@ func_0200c8bc:
     str r4, [r7, #0x2c]
     ldmia sp!, {r3, r4, r5, r6, r7, pc}
 L_0200c8f0: .word data_020d5384
-.size func_0200c8bc, . - func_0200c8bc
+.size GamePhaseApplyScene_Init, . - GamePhaseApplyScene_Init
 
-.global func_0200c8f4
-func_0200c8f4:
+.global GamePhaseApplyScene_Destroy
+GamePhaseApplyScene_Destroy:
     stmdb sp!, {r4, lr}
     mov r4, r0
     bl Scene_Destroy
     mov r0, r4
     ldmia sp!, {r4, pc}
-.size func_0200c8f4, . - func_0200c8f4
+.size GamePhaseApplyScene_Destroy, . - GamePhaseApplyScene_Destroy
 
-.global func_0200c908
-func_0200c908:
+.global GamePhaseApplyScene_DestroyAndFree
+GamePhaseApplyScene_DestroyAndFree:
     stmdb sp!, {r4, lr}
     mov r4, r0
     bl Scene_Destroy
@@ -48,10 +48,10 @@ func_0200c908:
     bl Heap_Free
     mov r0, r4
     ldmia sp!, {r4, pc}
-.size func_0200c908, . - func_0200c908
+.size GamePhaseApplyScene_DestroyAndFree, . - GamePhaseApplyScene_DestroyAndFree
 
-.global func_0200c924
-func_0200c924:
+.global GamePhaseApplyScene_Update
+GamePhaseApplyScene_Update:
     stmdb sp!, {r4, lr}
     mov r4, r0
     ldr r0, [r4, #0x8]
@@ -111,4 +111,4 @@ L_0200c9f0:
     mov r0, #0x0
     ldmia sp!, {r4, pc}
 L_0200c9f8: .word data_021052fc
-.size func_0200c924, . - func_0200c924
+.size GamePhaseApplyScene_Update, . - GamePhaseApplyScene_Update
