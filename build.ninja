@@ -666,7 +666,19 @@ build build/decomp/src/system/graphics_resources.o: mwccarm src/system/graphics_
   source = src/system/graphics_resources.c
   cflags = $graphics_resources_cflags
 
-build build/decomp/delinks/src/graphics/graphics_bg_resource.o | build/decomp/delinks/src/graphics/graphics_bg_resource_data.o build/decomp/delinks/src/graphics/graphics_bg_map_upload.o build/decomp/delinks/src/graphics/graphics_bg_map_palette.o build/decomp/delinks/src/graphics/graphics_archive_character_load.o build/decomp/delinks/src/graphics/graphics_archive_palette_load.o build/decomp/delinks/src/graphics/graphics_archive_screen_load.o: phony build/decomp/delinks/src/system/mt19937.o
+build build/decomp/delinks/src/graphics/graphics_bg_resource.o | build/decomp/delinks/src/graphics/graphics_bg_resource_data.o build/decomp/delinks/src/graphics/graphics_bg_map_upload.o build/decomp/delinks/src/graphics/graphics_bg_map_palette.o build/decomp/delinks/src/graphics/graphics_archive_character_load.o build/decomp/delinks/src/graphics/graphics_archive_palette_load.o build/decomp/delinks/src/graphics/graphics_archive_screen_load.o build/decomp/delinks/src/graphics/graphics_resource_cache.o build/decomp/delinks/src/graphics/graphics_bg_palette_upload.o build/decomp/delinks/src/graphics/graphics_bg_map_size.o: phony build/decomp/delinks/src/system/mt19937.o
+
+build build/decomp/src/graphics/graphics_resource_cache.o: mwccarm src/graphics/graphics_resource_cache.c | include/tingle/types.h
+  source = src/graphics/graphics_resource_cache.c
+  cflags = $graphics_resource_set_cflags
+
+build build/decomp/src/graphics/graphics_bg_palette_upload.o: mwccarm src/graphics/graphics_bg_palette_upload.c | include/tingle/types.h
+  source = src/graphics/graphics_bg_palette_upload.c
+  cflags = $graphics_resource_set_cflags
+
+build build/decomp/src/graphics/graphics_bg_map_size.o: mwccarm src/graphics/graphics_bg_map_size.c | include/tingle/types.h
+  source = src/graphics/graphics_bg_map_size.c
+  cflags = $graphics_resource_set_cflags
 
 build build/decomp/src/graphics/graphics_bg_resource.o: mwccarm src/graphics/graphics_bg_resource.c | include/tingle/types.h
   source = src/graphics/graphics_bg_resource.c
@@ -698,7 +710,7 @@ build build/decomp/src/graphics/graphics_archive_screen_load.o: mwccarm src/grap
   source = src/graphics/graphics_archive_screen_load.c
   cflags = $graphics_resource_set_cflags
 
-build build/decomp/src/graphics/graphics_resource_set.o: mwccarm src/graphics/graphics_resource_set.c | include/tingle/graphics_resources.h include/tingle/types.h build/decomp/src/graphics/graphics_bg_resource.o build/decomp/src/graphics/graphics_bg_resource_data.o build/decomp/src/graphics/graphics_bg_map_upload.o build/decomp/asm/graphics/graphics_bg_map_palette.o
+build build/decomp/src/graphics/graphics_resource_set.o: mwccarm src/graphics/graphics_resource_set.c | include/tingle/graphics_resources.h include/tingle/types.h build/decomp/src/graphics/graphics_bg_resource.o build/decomp/src/graphics/graphics_bg_resource_data.o build/decomp/src/graphics/graphics_bg_map_upload.o build/decomp/asm/graphics/graphics_bg_map_palette.o build/decomp/src/graphics/graphics_bg_map_size.o
   source = src/graphics/graphics_resource_set.c
   cflags = $graphics_resource_set_cflags
 
@@ -4029,7 +4041,31 @@ build build/reports/graphics_archive_screen_load.txt: match_report build/reports
   report_json = build/reports/graphics_archive_screen_load.json
   report_args = --section .text --function func_020718dc
 
-build graphics_bg_match: phony build/reports/graphics_bg_resource.txt build/reports/graphics_bg_resource_data.txt build/reports/graphics_bg_map_upload.txt build/reports/graphics_bg_map_palette.txt build/decomp/src/graphics/graphics_bg_map_palette.o build/reports/graphics_archive_character_load.txt build/reports/graphics_archive_palette_load.txt build/reports/graphics_archive_screen_load.txt
+build build/reports/graphics_resource_cache.json: objdiff build/decomp/delinks/src/graphics/graphics_resource_cache.o | build/decomp/src/graphics/graphics_resource_cache.o
+  target_object = build/decomp/delinks/src/graphics/graphics_resource_cache.o
+  base_object = build/decomp/src/graphics/graphics_resource_cache.o
+
+build build/reports/graphics_resource_cache.txt: match_report build/reports/graphics_resource_cache.json | tools/report_objdiff.py
+  report_json = build/reports/graphics_resource_cache.json
+  report_args = --section .text --function func_02070244 --function func_02070280 --function func_020702b8 --function func_020702d4
+
+build build/reports/graphics_bg_palette_upload.json: objdiff build/decomp/delinks/src/graphics/graphics_bg_palette_upload.o | build/decomp/src/graphics/graphics_bg_palette_upload.o
+  target_object = build/decomp/delinks/src/graphics/graphics_bg_palette_upload.o
+  base_object = build/decomp/src/graphics/graphics_bg_palette_upload.o
+
+build build/reports/graphics_bg_palette_upload.txt: match_report build/reports/graphics_bg_palette_upload.json | tools/report_objdiff.py
+  report_json = build/reports/graphics_bg_palette_upload.json
+  report_args = --section .text --function func_02070b50
+
+build build/reports/graphics_bg_map_size.json: objdiff build/decomp/delinks/src/graphics/graphics_bg_map_size.o | build/decomp/src/graphics/graphics_bg_map_size.o
+  target_object = build/decomp/delinks/src/graphics/graphics_bg_map_size.o
+  base_object = build/decomp/src/graphics/graphics_bg_map_size.o
+
+build build/reports/graphics_bg_map_size.txt: match_report build/reports/graphics_bg_map_size.json | tools/report_objdiff.py
+  report_json = build/reports/graphics_bg_map_size.json
+  report_args = --section .text --function func_02070e94 --require-exact
+
+build graphics_bg_match: phony build/reports/graphics_bg_resource.txt build/reports/graphics_bg_resource_data.txt build/reports/graphics_bg_map_upload.txt build/reports/graphics_bg_map_palette.txt build/decomp/src/graphics/graphics_bg_map_palette.o build/reports/graphics_archive_character_load.txt build/reports/graphics_archive_palette_load.txt build/reports/graphics_archive_screen_load.txt build/reports/graphics_resource_cache.txt build/reports/graphics_bg_palette_upload.txt build/reports/graphics_bg_map_size.txt
 
 build build/reports/graphics_resource_set.json: objdiff build/decomp/delinks/src/graphics/graphics_resource_set.o | build/decomp/src/graphics/graphics_resource_set.o
   target_object = build/decomp/delinks/src/graphics/graphics_resource_set.o

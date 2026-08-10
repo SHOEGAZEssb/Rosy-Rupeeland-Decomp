@@ -15,7 +15,7 @@ typedef struct GraphicsArchiveCachedResource {
 extern "C" {
 #endif
 
-extern void *func_020702d4(void *cache);
+extern void *func_020702d4(void *cache, u32 resourceId);
 extern void func_02070244(void *cache, void *resource);
 extern void *func_0207142c(void *archive, u32 resourceId, u32 *size);
 extern void *func_020713e4(u32 size);
@@ -42,7 +42,7 @@ void *func_02071568(void *archive, u32 resourceId)
     u32 sourceSize;
 
     resource = (GraphicsArchiveCachedResource *)func_020702d4(
-        (u8 *)archive + 0xb4);
+        (u8 *)archive + 0xb4, resourceId);
     if (resource != 0) {
         resource->referenceCount++;
         return resource;

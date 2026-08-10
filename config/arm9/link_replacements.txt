@@ -65,6 +65,7 @@ build/decomp/delinks/src/graphics/graphics_bg_resource.o = build/decomp/src/grap
 build/decomp/delinks/src/graphics/graphics_bg_resource_data.o = build/decomp/src/graphics/graphics_bg_resource_data.o
 build/decomp/delinks/src/graphics/graphics_bg_map_upload.o = build/decomp/src/graphics/graphics_bg_map_upload.o
 build/decomp/delinks/src/graphics/graphics_bg_map_palette.o = build/decomp/asm/graphics/graphics_bg_map_palette.o
+build/decomp/delinks/src/graphics/graphics_bg_map_size.o = build/decomp/src/graphics/graphics_bg_map_size.o
 build/decomp/delinks/src/graphics/graphics_resource_set.o = build/decomp/src/graphics/graphics_resource_set.o
 build/decomp/delinks/src/graphics/graphics_resource_set_ops.o = build/decomp/src/graphics/graphics_resource_set_ops.o
 build/decomp/delinks/src/graphics/graphics_resource_set_variant.o = build/decomp/src/graphics/graphics_resource_set_variant.o
