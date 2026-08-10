@@ -11,7 +11,7 @@
 .extern data_02105778
 .extern func_02034e58
 .extern func_02034ea8
-.extern func_02039e80
+.extern ActorDerivedType1_SetSingletonFieldE4To20E
 .extern ActorFeedbackResources_Load
 .extern ActorFeedbackResources_Unload
 .extern func_0203d910
@@ -95,7 +95,7 @@ ActorInteractionRuntime_Start: ; 0x0203ab6c
     bl func_020454f8
     bl func_0204fafc
     bl func_020534cc
-    bl func_02039e80
+    bl ActorDerivedType1_SetSingletonFieldE4To20E
     ldmia sp!, {r3, pc}
 .L_0203aba4: .word data_02105774
 .L_0203aba8: .word data_021056e4

@@ -10,7 +10,7 @@ extern "C" {
 #endif
 extern const u8 data_020d5544[];
 extern u8 data_02105310[];
-extern void *func_02039e70(void);
+extern void *ActorDerivedType1_GetSingletonObject(void);
 extern s32 func_0200b04c(void *object);
 extern s32 func_0200b294(void *object);
 extern s32 ActorDerivedType1_GetActiveRecordId(void *actor);
@@ -56,8 +56,8 @@ s32 func_0200ecf0(GamePhaseState *self)
     current = SceneManager_GetCurrent(gSceneManager);
     if (current->value04 != 1)
         return 0;
-    if (func_02039e70() != 0 &&
-        *(s16 *)((u8 *)func_02039e70() + 0x230) == 1)
+    if (ActorDerivedType1_GetSingletonObject() != 0 &&
+        *(s16 *)((u8 *)ActorDerivedType1_GetSingletonObject() + 0x230) == 1)
         special = 1;
 
     if (!special) {

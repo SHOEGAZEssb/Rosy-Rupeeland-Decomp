@@ -15,7 +15,7 @@
 .extern func_02022cb0
 .extern func_02032228
 .extern ActorDerivedType1_TeardownRecordAndApplyMotionImpulse
-.extern func_02039e70
+.extern ActorDerivedType1_GetSingletonObject
 .extern Actor_RandomizeValueByTenPercent
 .extern ActorExtendedType2_GetDescriptorValue28
 .extern func_020ae024
@@ -76,7 +76,7 @@ func_ov075_0221647c:
     moveq r0, #0x0
     cmp r0, #0x0
     beq .L_02216540
-    bl func_02039e70
+    bl ActorDerivedType1_GetSingletonObject
     ldr r1, [r0, #0x0]
     ldr r1, [r1, #0xcc]
     blx r1

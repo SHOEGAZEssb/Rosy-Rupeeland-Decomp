@@ -8,7 +8,7 @@
 .extern func_0200ecbc
 .extern func_020122a0
 .extern ActorCollection_DispatchEventToActors
-.extern func_02039e70
+.extern ActorDerivedType1_GetSingletonObject
 .extern func_ov074_022107f8
 .extern func_ov088_0221aaac
 
@@ -30,10 +30,10 @@ func_ov074_02210730:
     bl func_02007f0c
     add r1, sp, #0x0
     bl ActorCollection_DispatchEventToActors
-    bl func_02039e70
+    bl ActorDerivedType1_GetSingletonObject
     cmp r0, #0x0
     beq .L_022107a4
-    bl func_02039e70
+    bl ActorDerivedType1_GetSingletonObject
     add r0, r0, #0x200
     ldrsh r0, [r0, #0x30]
     cmp r0, #0x1
@@ -41,7 +41,7 @@ func_ov074_02210730:
     movne r0, #0x0
     cmp r0, #0x0
     beq .L_022107a4
-    bl func_02039e70
+    bl ActorDerivedType1_GetSingletonObject
     bl func_ov088_0221aaac
 .L_022107a4:
     ldr r0, [r4, #0x124]

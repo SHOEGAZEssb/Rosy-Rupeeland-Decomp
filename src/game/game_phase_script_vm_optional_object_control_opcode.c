@@ -1,11 +1,11 @@
 #include "tingle/game_phase_script_vm.h"
 
-/* Control the optional singleton object returned by func_02039e70. */
+/* Control the optional singleton object returned by ActorDerivedType1_GetSingletonObject. */
 
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *func_02039e70(void);
+extern void *ActorDerivedType1_GetSingletonObject(void);
 extern void func_ov088_02218130(void *object, s32 first, s32 second);
 extern void func_ov088_0221a8c4(void *object);
 #ifdef __cplusplus
@@ -32,7 +32,7 @@ s32 func_0201a1f0(GamePhaseActorScriptVm *self)
     first = (s32)func_02012704(&self->base);
     enabled = (s32)func_02012704(&self->base);
     mode = (s32)func_02012704(&self->base);
-    object = (u8 *)func_02039e70();
+    object = (u8 *)ActorDerivedType1_GetSingletonObject();
 
     switch (mode) {
     case 0:

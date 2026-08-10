@@ -15,7 +15,7 @@
 .extern func_020091d0
 .extern func_020091d8
 .extern func_02009d78
-.extern func_02039e70
+.extern ActorDerivedType1_GetSingletonObject
 .extern func_0204a988
 .extern func_ov074_02210a04
 .extern func_ov074_02211644
@@ -646,10 +646,10 @@ func_ov074_02210b90:
     bl func_020050a4
     add r0, sp, #0x114
     bl func_02005058
-    bl func_02039e70
+    bl ActorDerivedType1_GetSingletonObject
     cmp r0, #0x0
     beq .L_02211588
-    bl func_02039e70
+    bl ActorDerivedType1_GetSingletonObject
     add r0, r0, #0x200
     ldrsh r0, [r0, #0x30]
     cmp r0, #0x1
@@ -657,9 +657,9 @@ func_ov074_02210b90:
     movne r0, #0x0
     cmp r0, #0x0
     beq .L_02211588
-    bl func_02039e70
+    bl ActorDerivedType1_GetSingletonObject
     mov r4, r0
-    bl func_02039e70
+    bl ActorDerivedType1_GetSingletonObject
     add r0, r0, #0x28
     add r1, r6, #0x28
     bl func_020050a4

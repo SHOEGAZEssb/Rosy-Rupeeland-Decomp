@@ -30,7 +30,7 @@ extern void func_0204fafc(void);
 extern void func_0204fb2c(void);
 extern void func_020534cc(void);
 extern void func_0205355c(void);
-extern void func_02039e80(void);
+extern void ActorDerivedType1_SetSingletonFieldE4To20E(void);
 extern s32 func_02059344(void *context, s32 channel);
 extern void func_0205929c(void *context, s32 channel, s32 value);
 #ifdef __cplusplus
@@ -77,7 +77,7 @@ void ActorInteractionRuntime_Start(void)
     func_020454f8();
     func_0204fafc();
     func_020534cc();
-    func_02039e80();
+    ActorDerivedType1_SetSingletonFieldE4To20E();
 }
 
 /* Accept no inputs, change no known state, and return no value. */

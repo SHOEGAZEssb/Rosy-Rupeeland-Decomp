@@ -9,7 +9,7 @@
 .extern func_02005058
 .extern func_020068e0
 .extern func_02010520
-.extern func_02039e70
+.extern ActorDerivedType1_GetSingletonObject
 .extern func_ov088_0221ad9c
 .extern gGameWork
 
@@ -24,10 +24,10 @@ func_ov074_02210024:
     mov r1, #0x1
     ldr r0, [r0, #0x8]
     bl func_02010520
-    bl func_02039e70
+    bl ActorDerivedType1_GetSingletonObject
     cmp r0, #0x0
     beq .L_02210080
-    bl func_02039e70
+    bl ActorDerivedType1_GetSingletonObject
     add r0, r0, #0x200
     ldrsh r0, [r0, #0x30]
     cmp r0, #0x1
@@ -35,7 +35,7 @@ func_ov074_02210024:
     movne r0, #0x0
     cmp r0, #0x0
     beq .L_02210080
-    bl func_02039e70
+    bl ActorDerivedType1_GetSingletonObject
     mov r1, #0x1
     bl func_ov088_0221ad9c
 .L_02210080:

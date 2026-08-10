@@ -2,7 +2,7 @@
 .text
 .extern func_02012704
 .extern func_020127f8
-.extern func_02039e70
+.extern ActorDerivedType1_GetSingletonObject
 .extern func_ov088_0221b218
 .extern func_ov088_0221b380
 .global func_0201a304
@@ -12,7 +12,7 @@ func_0201a304:
     bl func_02012704
     mov r5, r0
     mov r6, #0x0
-    bl func_02039e70
+    bl ActorDerivedType1_GetSingletonObject
     cmp r5, #0x7
     addls pc, pc, r5, lsl #0x2
     b L_0201a3d0

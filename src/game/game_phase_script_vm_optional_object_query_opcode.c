@@ -5,7 +5,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *func_02039e70(void);
+extern void *ActorDerivedType1_GetSingletonObject(void);
 extern s32 func_ov088_0221b218(void *object);
 extern s32 func_ov088_0221b380(void *object);
 #ifdef __cplusplus
@@ -22,7 +22,7 @@ extern s32 func_ov088_0221b380(void *object);
 s32 func_0201a304(GamePhaseActorScriptVm *self)
 {
     s32 mode = (s32)func_02012704(&self->base);
-    u8 *object = (u8 *)func_02039e70();
+    u8 *object = (u8 *)ActorDerivedType1_GetSingletonObject();
     s32 result = 0;
     switch (mode) {
     case 0:

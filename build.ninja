@@ -15903,7 +15903,7 @@ build build/reports/actor_derived_type1_misc_helpers_02039de0.json: objdiff buil
   base_object = build/decomp/asm/game/actor_derived_type1_misc_helpers_02039de0.o
 build build/reports/actor_derived_type1_misc_helpers_02039de0.txt: match_report build/reports/actor_derived_type1_misc_helpers_02039de0.json | tools/report_objdiff.py
   report_json = build/reports/actor_derived_type1_misc_helpers_02039de0.json
-  report_args = --section .text --function func_02039de0 --function func_02039e00 --function func_02039e18 --function func_02039e30 --function func_02039e48 --function func_02039e58 --function func_02039e68 --function func_02039e70 --function func_02039e80 --require-exact
+  report_args = --section .text --function ActorDerivedType1_IsInteractionActive --function ActorDerivedType1_IsCurrentState5Or6 --function ActorDerivedType1_IsPreviousState9Or10 --function ActorDerivedType1_IsCurrentState9Or10 --function ActorDerivedType1_SetAttachmentControllerEnabled --function ActorDerivedType1_ClearField2A4 --function ActorDerivedType1_GetConstant10000 --function ActorDerivedType1_GetSingletonObject --function ActorDerivedType1_SetSingletonFieldE4To20E --require-exact
 build build/reports/actor_derived_type1_misc_helpers.txt: phony build/reports/actor_derived_type1_misc_helpers_02039de0.txt
 
 build actor_derived_type1_misc_helpers: phony build/decomp/src/game/actor_derived_type1_misc_helpers.o build/decomp/asm/game/actor_derived_type1_misc_helpers_02039de0.o build/reports/actor_derived_type1_misc_helpers.txt

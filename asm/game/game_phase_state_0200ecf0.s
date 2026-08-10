@@ -11,7 +11,7 @@
 .extern func_0200b294
 .extern func_0200efe0
 .extern ActorDerivedType1_GetActiveRecordId
-.extern func_02039e70
+.extern ActorDerivedType1_GetSingletonObject
 .extern func_ov074_0220fda8
 .extern gGameWork
 .extern gHeapContext
@@ -47,10 +47,10 @@ func_0200ecf0: ; 0x0200ecf0
     cmp r0, #0x1
     movne r0, #0x0
     ldmneia sp!, {r3, r4, r5, pc}
-    bl func_02039e70
+    bl ActorDerivedType1_GetSingletonObject
     cmp r0, #0x0
     beq L_0200ed8c
-    bl func_02039e70
+    bl ActorDerivedType1_GetSingletonObject
     add r0, r0, #0x200
     ldrsh r0, [r0, #0x30]
     cmp r0, #0x1

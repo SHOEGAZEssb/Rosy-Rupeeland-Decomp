@@ -14,7 +14,7 @@
 .extern func_0201e0ec
 .extern func_02028388
 .extern ActorDerivedType1_ResetToBaseState
-.extern func_02039e70
+.extern ActorDerivedType1_GetSingletonObject
 .extern func_0204fb9c
 .extern func_02059880
 .extern func_020755bc
@@ -108,10 +108,10 @@ func_ov074_0220fda8:
     ldr r0, [r0, #0x0]
     ldr r0, [r0, #0x8]
     bl func_02010520
-    bl func_02039e70
+    bl ActorDerivedType1_GetSingletonObject
     cmp r0, #0x0
     beq .L_0220ff10
-    bl func_02039e70
+    bl ActorDerivedType1_GetSingletonObject
     add r0, r0, #0x200
     ldrsh r0, [r0, #0x30]
     cmp r0, #0x1
@@ -119,7 +119,7 @@ func_ov074_0220fda8:
     movne r0, #0x0
     cmp r0, #0x0
     beq .L_0220ff10
-    bl func_02039e70
+    bl ActorDerivedType1_GetSingletonObject
     mov r1, #0x0
     bl func_ov088_0221ad9c
 .L_0220ff10:

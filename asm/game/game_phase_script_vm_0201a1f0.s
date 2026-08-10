@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/game_phase_script_vm_optional_object_control_opcode.c.
 .text
 .extern func_02012704
-.extern func_02039e70
+.extern ActorDerivedType1_GetSingletonObject
 .extern func_ov088_02218130
 .extern func_ov088_0221a8c4
 .global func_0201a1f0
@@ -23,7 +23,7 @@ func_0201a1f0:
     mov r0, r4
     bl func_02012704
     mov r4, r0
-    bl func_02039e70
+    bl ActorDerivedType1_GetSingletonObject
     cmp r4, #0x5
     addls pc, pc, r4, lsl #0x2
     b L_0201a2fc
