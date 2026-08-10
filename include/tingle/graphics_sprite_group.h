@@ -54,7 +54,7 @@ void func_02074110(GraphicsSpriteGroup *group);
 void GraphicsSpriteGroup_ReleaseResources(GraphicsSpriteGroup *group);
 void GraphicsSpriteGroup_PrepareResources(GraphicsSpriteGroup *group);
 void func_0207419c(GraphicsSpriteGroup *group);
-void func_020741b0(void);
+void GraphicsSpriteState_InitGlobalPool(void);
 GraphicsSpriteGroup *func_020742cc(void *owner);
 void func_02074330(void *owner, GraphicsSpriteGroup *group);
 

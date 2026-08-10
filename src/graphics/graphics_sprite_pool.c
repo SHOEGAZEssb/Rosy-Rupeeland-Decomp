@@ -47,7 +47,7 @@ extern void func_02074d40(void *owner, void *allocation);
  * an empty free list is outside the valid caller contract. Pool and optional
  * VRAM allocator state change, with no direct SDK or hardware access.
  */
-GraphicsSpriteState *func_020743ac(
+GraphicsSpriteState *GraphicsSpriteStatePool_Allocate(
     void *owner, void *field14, void *field18, void *field1c,
     u8 attach, GraphicsSpriteGroup *group)
 {
@@ -72,7 +72,8 @@ GraphicsSpriteState *func_020743ac(
  * range and offset-0x10 renderer allocation first, then push it through
  * field_08 and decrement the live count. The state is invalid for caller use.
  */
-void func_0207442c(void *ownerPointer, GraphicsSpriteState *state)
+void GraphicsSpriteStatePool_Release(void *ownerPointer,
+                                     GraphicsSpriteState *state)
 {
     GraphicsSpritePoolOwner *owner =
         (GraphicsSpritePoolOwner *)ownerPointer;
@@ -97,8 +98,10 @@ void func_0207442c(void *ownerPointer, GraphicsSpriteState *state)
  * Returns no value; renderer allocator state may change through the helpers.
  */
 #ifndef MATCHING
-void func_0207447c(void *ownerPointer, GraphicsSpriteState *state,
-                   void *field14, void *field18, void *field1c)
+void GraphicsSpriteState_ReplaceResources(void *ownerPointer,
+                                          GraphicsSpriteState *state,
+                                          void *field14, void *field18,
+                                          void *field1c)
 {
     GraphicsSpritePoolOwner *owner =
         (GraphicsSpritePoolOwner *)ownerPointer;
@@ -134,8 +137,10 @@ void func_0207447c(void *ownerPointer, GraphicsSpriteState *state,
 }
 #else
 /* This matching fallback implements the documented portable C directly above. */
-asm void func_0207447c(void *owner, GraphicsSpriteState *state,
-                       void *field14, void *field18, void *field1c)
+asm void GraphicsSpriteState_ReplaceResources(void *owner,
+                                              GraphicsSpriteState *state,
+                                              void *field14, void *field18,
+                                              void *field1c)
 {
     stmdb sp!, {r4, r5, r6, r7, r8, lr}
     ldr r4, [sp, #0x18]

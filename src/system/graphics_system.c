@@ -15,7 +15,7 @@ extern void *gHeapContext;
 
 extern void func_0207139c(void);
 extern void *func_02071294(void *manager);
-extern void func_020741b0(void);
+extern void GraphicsSpriteState_InitGlobalPool(void);
 extern void *func_02074200(void *state, int engine, int arg2, int arg3);
 extern void *func_02071568(void *manager, u32 resourceId);
 extern void *func_020716bc(void *manager, u32 resourceId);
@@ -73,7 +73,7 @@ void GraphicsSystem_Init(void)
     }
     GRAPHICS_STATE_FIELD(void *, 0x10) = manager;
 
-    func_020741b0();
+    GraphicsSpriteState_InitGlobalPool();
     state = Heap_Alloc(GRAPHICS_ENGINE_STATE_SIZE,
                        gGraphicsSystemTags.mainEngine, 4, gHeapContext);
     if (state != 0) {
@@ -147,7 +147,7 @@ asm void GraphicsSystem_Init(void)
 graphics_init_manager_done:
     ldr r1, =gGraphicsState020F4E08
     str r0, [r1, #0x10]
-    bl func_020741b0
+    bl GraphicsSpriteState_InitGlobalPool
     ldr r0, =0x2924
     ldr r1, =gGraphicsSystemTags+8
     ldr r3, =gHeapContext

@@ -11200,7 +11200,7 @@ build build/reports/graphics_sprite_group.json: objdiff build/decomp/delinks/src
 
 build build/reports/graphics_sprite_group.txt: match_report build/reports/graphics_sprite_group.json | tools/report_objdiff.py
   report_json = build/reports/graphics_sprite_group.json
-  report_args = --section .text --function GraphicsSpriteState_ReleaseResources --function GraphicsSpriteState_PrepareResources --function func_02073ef8 --function GraphicsSpriteGroup_Init --function GraphicsSpriteGroup_AppendState --function GraphicsSpriteGroup_RemoveState --function func_02073fc4 --function func_02073ffc --function func_02074038 --function func_02074058 --function func_020740a4 --function func_020740c8 --function func_020740e8 --function func_02074110 --function GraphicsSpriteGroup_ReleaseResources --function GraphicsSpriteGroup_PrepareResources --function func_0207419c --function func_020741b0
+  report_args = --section .text --function GraphicsSpriteState_ReleaseResources --function GraphicsSpriteState_PrepareResources --function func_02073ef8 --function GraphicsSpriteGroup_Init --function GraphicsSpriteGroup_AppendState --function GraphicsSpriteGroup_RemoveState --function func_02073fc4 --function func_02073ffc --function func_02074038 --function func_02074058 --function func_020740a4 --function func_020740c8 --function func_020740e8 --function func_02074110 --function GraphicsSpriteGroup_ReleaseResources --function GraphicsSpriteGroup_PrepareResources --function func_0207419c --function GraphicsSpriteState_InitGlobalPool
 
 build build/reports/graphics_sprite_group_owner.json: objdiff build/decomp/delinks/src/graphics/graphics_sprite_group_owner.o | build/decomp/src/graphics/graphics_sprite_group_owner.o
   target_object = build/decomp/delinks/src/graphics/graphics_sprite_group_owner.o
@@ -11216,7 +11216,7 @@ build build/reports/graphics_sprite_pool.json: objdiff build/decomp/delinks/src/
 
 build build/reports/graphics_sprite_pool.txt: match_report build/reports/graphics_sprite_pool.json | tools/report_objdiff.py
   report_json = build/reports/graphics_sprite_pool.json
-  report_args = --section .text --function func_020743ac --function func_0207442c --function func_0207447c
+  report_args = --section .text --function GraphicsSpriteStatePool_Allocate --function GraphicsSpriteStatePool_Release --function GraphicsSpriteState_ReplaceResources
 
 build build/reports/graphics_sprite_oam.json: objdiff build/decomp/delinks/src/graphics/graphics_sprite_oam.o | build/decomp/src/graphics/graphics_sprite_oam.o
   target_object = build/decomp/delinks/src/graphics/graphics_sprite_oam.o

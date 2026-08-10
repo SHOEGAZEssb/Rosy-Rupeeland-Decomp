@@ -30,12 +30,15 @@ extern void func_02070830(void *resource);
 extern void func_02070860(void *resource);
 extern void func_02070d38(void *resource);
 extern void func_02070d74(void *resource);
-extern GraphicsSpriteState *func_020743ac(
+extern GraphicsSpriteState *GraphicsSpriteStatePool_Allocate(
     void *owner, void *field14, void *field18, void *field1c,
     u8 attach, GraphicsSpriteGroup *group);
-extern void func_0207442c(void *owner, GraphicsSpriteState *state);
-extern void func_0207447c(void *owner, GraphicsSpriteState *state,
-                          void *field14, void *field18, void *field1c);
+extern void GraphicsSpriteStatePool_Release(void *owner,
+                                            GraphicsSpriteState *state);
+extern void GraphicsSpriteState_ReplaceResources(void *owner,
+                                                 GraphicsSpriteState *state,
+                                                 void *field14, void *field18,
+                                                 void *field1c);
 extern void func_02074330(void *owner, GraphicsSpriteGroup *group);
 extern void func_02074d40(void *owner, void *allocation);
 
@@ -77,14 +80,15 @@ void GraphicsSpriteState_PrepareResources(GraphicsSpriteState *state)
 /*
  * Remove state from its group, then return it to the owning renderer's fixed
  * sprite pool. The state becomes invalid for caller use and no value is
- * returned; allocator/resource effects occur through func_0207442c.
+ * returned; allocator/resource effects occur through
+ * GraphicsSpriteStatePool_Release.
  */
 void func_02073ef8(GraphicsSpriteState *state)
 {
     GraphicsSpriteGroup *group = (GraphicsSpriteGroup *)state->field_00;
 
     GraphicsSpriteGroup_RemoveState(group, state);
-    func_0207442c(group->owner, state);
+    GraphicsSpriteStatePool_Release(group->owner, state);
 }
 
 /*
@@ -219,12 +223,12 @@ asm void GraphicsSpriteGroup_RemoveState(GraphicsSpriteGroup *group,
 /*
  * Allocate/configure a sprite state from the renderer using three resource
  * pointers and attach policy, append it to group, and return it. Pool
- * exhaustion behavior is inherited from func_020743ac.
+ * exhaustion behavior is inherited from GraphicsSpriteStatePool_Allocate.
  */
 GraphicsSpriteState *func_02073fc4(GraphicsSpriteGroup *group, void *field14,
                                     void *field18, void *field1c, u8 attach)
 {
-    GraphicsSpriteState *state = func_020743ac(
+    GraphicsSpriteState *state = GraphicsSpriteStatePool_Allocate(
         group->owner, field14, field18, field1c, attach, group);
     GraphicsSpriteGroup_AppendState(group, state);
     return state;
@@ -238,7 +242,7 @@ GraphicsSpriteState *func_02073ffc(GraphicsSpriteGroup *group,
                                     const GraphicsSpriteSource3 *source,
                                     u8 attach)
 {
-    GraphicsSpriteState *state = func_020743ac(
+    GraphicsSpriteState *state = GraphicsSpriteStatePool_Allocate(
         group->owner, source->field_00, source->field_04, source->field_08,
         attach, group);
     GraphicsSpriteGroup_AppendState(group, state);
@@ -252,13 +256,14 @@ GraphicsSpriteState *func_02073ffc(GraphicsSpriteGroup *group,
 void func_02074038(GraphicsSpriteGroup *group, GraphicsSpriteState *state)
 {
     GraphicsSpriteGroup_RemoveState(group, state);
-    func_0207442c(group->owner, state);
+    GraphicsSpriteStatePool_Release(group->owner, state);
 }
 
 /*
  * Remove and release every state in forward order, caching each next link
  * before release. Reset list endpoints and count to zero. Renderer allocator
- * and resource state change through func_0207442c; no value is returned.
+ * and resource state change through GraphicsSpriteStatePool_Release; no value
+ * is returned.
  */
 void func_02074058(GraphicsSpriteGroup *group)
 {
@@ -267,7 +272,7 @@ void func_02074058(GraphicsSpriteGroup *group)
     while (state != 0) {
         GraphicsSpriteState *next = (GraphicsSpriteState *)state->field_08;
         GraphicsSpriteGroup_RemoveState(group, state);
-        func_0207442c(group->owner, state);
+        GraphicsSpriteStatePool_Release(group->owner, state);
         state = next;
     }
     group->tail = 0;
@@ -294,7 +299,8 @@ void func_020740c8(GraphicsSpriteGroup *group, GraphicsSpriteState *state,
                    void *field14, void *field18, void *field1c)
 {
     if (state != 0) {
-        func_0207447c(group->owner, state, field14, field18, field1c);
+        GraphicsSpriteState_ReplaceResources(group->owner, state, field14,
+                                             field18, field1c);
     }
 }
 
@@ -303,8 +309,9 @@ void func_020740e8(GraphicsSpriteGroup *group, GraphicsSpriteState *state,
                    const GraphicsSpriteSource3 *source)
 {
     if (state != 0) {
-        func_0207447c(group->owner, state, source->field_00,
-                      source->field_04, source->field_08);
+        GraphicsSpriteState_ReplaceResources(
+            group->owner, state, source->field_00,
+            source->field_04, source->field_08);
     }
 }
 
@@ -361,7 +368,7 @@ void func_0207419c(GraphicsSpriteGroup *group)
  * offset-0x08 link. Stable state addresses are required; no heap or SDK call is
  * made and the BSS-zeroed final link remains null.
  */
-void func_020741b0(void)
+void GraphicsSpriteState_InitGlobalPool(void)
 {
     s32 index;
 
