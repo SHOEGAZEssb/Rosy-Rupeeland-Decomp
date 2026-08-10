@@ -21,7 +21,7 @@ extern PackedBitGrid *func_020275b0(void);
  * bit value (zero or a power of two), and return zero.  The byte and bit
  * positions use signed division and remainder, matching the recovered code.
  */
-s32 func_0201ad20(GamePhaseActorScriptVm *self)
+s32 GamePhaseActorScriptVm_GetPackedBitGridMask(GamePhaseActorScriptVm *self)
 {
     s32 row = (s32)GamePhaseScriptVm_Pop(&self->base);
     s32 column = (s32)GamePhaseScriptVm_Pop(&self->base);
@@ -34,7 +34,7 @@ s32 func_0201ad20(GamePhaseActorScriptVm *self)
 }
 
 /* Pop a row and column, set the corresponding packed bit, and return zero. */
-s32 func_0201ad7c(GamePhaseActorScriptVm *self)
+s32 GamePhaseActorScriptVm_SetPackedBitGridBit(GamePhaseActorScriptVm *self)
 {
     s32 row = (s32)GamePhaseScriptVm_Pop(&self->base);
     s32 column = (s32)GamePhaseScriptVm_Pop(&self->base);

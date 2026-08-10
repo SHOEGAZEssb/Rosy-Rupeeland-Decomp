@@ -2,8 +2,8 @@
 .text
 .extern GamePhaseScriptVm_Pop
 .extern func_020275b0
-.global func_0201ad7c
-func_0201ad7c: ; 0x0201ad7c
+.global GamePhaseActorScriptVm_SetPackedBitGridBit
+GamePhaseActorScriptVm_SetPackedBitGridBit: ; 0x0201ad7c
     stmdb sp!, {r3, r4, r5, lr}
     mov r4, r0
     bl GamePhaseScriptVm_Pop
@@ -26,4 +26,4 @@ func_0201ad7c: ; 0x0201ad7c
     strb r1, [ip, r0, asr #0x3]
     mov r0, #0x0
     ldmia sp!, {r3, r4, r5, pc}
-.size func_0201ad7c, . - func_0201ad7c
+.size GamePhaseActorScriptVm_SetPackedBitGridBit, . - GamePhaseActorScriptVm_SetPackedBitGridBit
