@@ -19494,7 +19494,7 @@ build build/reports/tracked_resource_actor_derived_lifecycle_02050a08.json: objd
   base_object = build/decomp/asm/game/tracked_resource_actor_derived_lifecycle_02050a08.o
 build build/reports/tracked_resource_actor_derived_lifecycle_02050a08.txt: match_report build/reports/tracked_resource_actor_derived_lifecycle_02050a08.json | tools/report_objdiff.py
   report_json = build/reports/tracked_resource_actor_derived_lifecycle_02050a08.json
-  report_args = --section .text --function func_02050a08 --function func_02050a28 --function func_02050a48 --function func_02050a5c --function func_02050a78 --require-exact
+  report_args = --section .text --function TrackedResourceActorType21_InitBase --function TrackedResourceActorType21_Init --function TrackedResourceActorType21_DestroyComplete --function TrackedResourceActorType21_DestroyAndFree --function TrackedResourceActorType21_Destroy --require-exact
 
 build tracked_resource_actor_derived_lifecycle: phony build/decomp/src/game/tracked_resource_actor_derived_lifecycle.o build/decomp/asm/game/tracked_resource_actor_derived_lifecycle_02050a08.o build/reports/tracked_resource_actor_derived_lifecycle_02050a08.txt
 

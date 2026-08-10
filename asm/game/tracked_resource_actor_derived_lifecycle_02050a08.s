@@ -1,11 +1,11 @@
 ; Matching retail form; see src/game/tracked_resource_actor_derived_lifecycle.c.
 .extern Heap_Free
-.extern data_020e2a3c
+.extern gTrackedResourceActorType21Vtable
 .extern TrackedResourceActor_Init
 .extern TrackedResourceActor_Destroy
 .text
-    .global func_02050a08
-func_02050a08:
+    .global TrackedResourceActorType21_InitBase
+TrackedResourceActorType21_InitBase:
     stmdb sp!, {r4, lr}
     mov r4, r0
     bl TrackedResourceActor_Init
@@ -13,11 +13,11 @@ func_02050a08:
     mov r0, r4
     str r1, [r4, #0x0]
     ldmia sp!, {r4, pc}
-.L_02050a24: .word data_020e2a3c
-    .size func_02050a08, . - func_02050a08
+.L_02050a24: .word gTrackedResourceActorType21Vtable
+    .size TrackedResourceActorType21_InitBase, . - TrackedResourceActorType21_InitBase
 
-    .global func_02050a28
-func_02050a28:
+    .global TrackedResourceActorType21_Init
+TrackedResourceActorType21_Init:
     stmdb sp!, {r4, lr}
     mov r4, r0
     bl TrackedResourceActor_Init
@@ -25,20 +25,20 @@ func_02050a28:
     mov r0, r4
     str r1, [r4, #0x0]
     ldmia sp!, {r4, pc}
-.L_02050a44: .word data_020e2a3c
-    .size func_02050a28, . - func_02050a28
+.L_02050a44: .word gTrackedResourceActorType21Vtable
+    .size TrackedResourceActorType21_Init, . - TrackedResourceActorType21_Init
 
-    .global func_02050a48
-func_02050a48:
+    .global TrackedResourceActorType21_DestroyComplete
+TrackedResourceActorType21_DestroyComplete:
     stmdb sp!, {r4, lr}
     mov r4, r0
     bl TrackedResourceActor_Destroy
     mov r0, r4
     ldmia sp!, {r4, pc}
-    .size func_02050a48, . - func_02050a48
+    .size TrackedResourceActorType21_DestroyComplete, . - TrackedResourceActorType21_DestroyComplete
 
-    .global func_02050a5c
-func_02050a5c:
+    .global TrackedResourceActorType21_DestroyAndFree
+TrackedResourceActorType21_DestroyAndFree:
     stmdb sp!, {r4, lr}
     mov r4, r0
     bl TrackedResourceActor_Destroy
@@ -46,13 +46,13 @@ func_02050a5c:
     bl Heap_Free
     mov r0, r4
     ldmia sp!, {r4, pc}
-    .size func_02050a5c, . - func_02050a5c
+    .size TrackedResourceActorType21_DestroyAndFree, . - TrackedResourceActorType21_DestroyAndFree
 
-    .global func_02050a78
-func_02050a78:
+    .global TrackedResourceActorType21_Destroy
+TrackedResourceActorType21_Destroy:
     stmdb sp!, {r4, lr}
     mov r4, r0
     bl TrackedResourceActor_Destroy
     mov r0, r4
     ldmia sp!, {r4, pc}
-    .size func_02050a78, . - func_02050a78
+    .size TrackedResourceActorType21_Destroy, . - TrackedResourceActorType21_Destroy

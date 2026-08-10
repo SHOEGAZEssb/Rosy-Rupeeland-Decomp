@@ -1,7 +1,7 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov092/overlay092_recovery.c.
 .extern data_ov092_0221c8c4
-.extern func_02050a08
+.extern TrackedResourceActorType21_InitBase
 .extern func_ov092_02218380
 .extern gGameWork
 
@@ -9,7 +9,7 @@
 func_ov092_0221a838:
     stmdb sp!, {r4, lr}
     mov r4, r0
-    bl func_02050a08
+    bl TrackedResourceActorType21_InitBase
     mov r1, #0x0
     ldr r2, .L_0221a8b4
     sub r0, r1, #0x1
