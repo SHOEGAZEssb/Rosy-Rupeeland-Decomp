@@ -6,6 +6,7 @@
  * monotonic 60 Hz frame boundary without leaking Win32 types to game code.
  */
 #include "tingle/native_platform.h"
+#include "tingle/native_input.h"
 
 #include <windows.h>
 #include <shellapi.h>
@@ -17,6 +18,7 @@ struct TingleNativePlatform {
     LARGE_INTEGER frequency;
     LARGE_INTEGER next_frame;
     u16 held;
+    TingleNativeButtonState buttons;
     HDC framebuffer_dc;
     HBITMAP framebuffer_bitmap;
     HGDIOBJ previous_framebuffer_bitmap;
@@ -160,7 +162,6 @@ void TingleNativePlatform_Destroy(TingleNativePlatform *platform)
 s32 TingleNativePlatform_Poll(TingleNativePlatform *platform, TingleNativeInput *input)
 {
     MSG message;
-    u16 previous = input->held;
     POINT cursor;
     RECT client;
 
@@ -170,9 +171,7 @@ s32 TingleNativePlatform_Poll(TingleNativePlatform *platform, TingleNativeInput 
         DispatchMessageW(&message);
     }
 
-    input->held = platform->held;
-    input->pressed = (u16)(input->held & ~previous);
-    input->released = (u16)(previous & ~input->held);
+    TingleNativeInput_UpdateButtons(&platform->buttons, platform->held, input);
     GetCursorPos(&cursor);
     ScreenToClient(platform->window, &cursor);
     GetClientRect(platform->window, &client);

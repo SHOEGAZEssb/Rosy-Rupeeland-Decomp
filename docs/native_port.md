@@ -113,9 +113,11 @@ can replace it safely.
 
 The `tingle_native` CMake target creates a resizable window whose client area
 contains the two 256-by-192 DS screens stacked vertically. The portable loop
-receives active-high held, pressed, and released masks plus bottom-screen mouse
-coordinates. The Windows mapping is Z/A, X/B, Backspace/Select, Enter/Start,
-arrow keys/D-pad, Q/L, and W/R. A monotonic host clock maintains a 60 Hz frame
+receives active-high held, pressed, released, and repeated masks plus
+bottom-screen mouse coordinates. Repeat events use the recovered per-key
+timing: the initial press, again after 20 held frames, and then every four
+frames. The Windows mapping is Z/A, X/B, Backspace/Select, Enter/Start, arrow
+keys/D-pad, Q/L, and W/R. A monotonic host clock maintains a 60 Hz frame
 boundary; a long stall resets accumulated timing debt instead of running an
 unbounded catch-up loop.
 

@@ -24,6 +24,7 @@ typedef struct TingleNativeInput {
     u16 held;
     u16 pressed;
     u16 released;
+    u16 repeated;
     s32 touch_x;
     s32 touch_y;
     u8 touching;

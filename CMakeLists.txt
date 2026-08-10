@@ -10,6 +10,7 @@ add_executable(tingle_native WIN32
     src/native/main.c
     src/native/native_debug_menu.c
     src/native/native_data.c
+    src/native/native_input.c
     src/native/native_render.c
     src/native/platform_win32.c
 )
@@ -59,4 +60,17 @@ if(BUILD_TESTING)
         target_compile_options(native_debug_menu_test PRIVATE -Wall -Wextra -Werror)
     endif()
     add_test(NAME native_debug_menu_test COMMAND native_debug_menu_test)
+
+    add_executable(native_input_test
+        tests/native_input_test.c
+        src/native/native_input.c
+    )
+    target_include_directories(native_input_test PRIVATE include)
+    target_compile_features(native_input_test PRIVATE c_std_11)
+    if(MSVC)
+        target_compile_options(native_input_test PRIVATE /W4 /WX)
+    else()
+        target_compile_options(native_input_test PRIVATE -Wall -Wextra -Werror)
+    endif()
+    add_test(NAME native_input_test COMMAND native_input_test)
 endif()
