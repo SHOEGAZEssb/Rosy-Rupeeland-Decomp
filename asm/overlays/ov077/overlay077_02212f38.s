@@ -1,9 +1,9 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov077/overlay077_recovery.c.
 .extern data_020c9670
-.extern func_02005030
-.extern func_02005058
-.extern func_020050a4
+.extern VecFx32Object_InitCopy
+.extern VecFx32Object_Destroy
+.extern VecFx32Object_Assign
 .extern ActorExtendedType2_UpdateFrame
 .extern ActorExtendedType2_GetDescriptorValue2C
 .extern func_020ae024
@@ -50,7 +50,7 @@ func_ov077_02212f38:
     beq .L_02213000
     add r0, r4, #0x22c
     add r1, r1, #0x18
-    bl func_020050a4
+    bl VecFx32Object_Assign
     ldr r0, [r4, #0x29c]
     ldr r2, [r4, #0x234]
     ldrsh r1, [r0, #0x6e]
@@ -70,7 +70,7 @@ func_ov077_02212f38:
     mov r2, #0x0
     add r1, r4, #0x22c
     str r2, [r4, #0x44]
-    bl func_02005030
+    bl VecFx32Object_InitCopy
     add r0, sp, #0x8
     add r1, r4, #0x18
     add r2, r4, #0x2a4
@@ -107,9 +107,9 @@ func_ov077_02212f38:
     add r2, sp, #0x18
     bl func_ov090_0221be40
     add r0, sp, #0x8
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add r0, sp, #0x18
-    bl func_02005058
+    bl VecFx32Object_Destroy
 .L_022130ac:
     add sp, sp, #0x28
     ldmia sp!, {r4, pc}

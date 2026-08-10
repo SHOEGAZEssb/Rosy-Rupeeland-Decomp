@@ -2,7 +2,7 @@
 ; Matching fallback for the portable implementation in src/overlays/ov095/overlay095_recovery.c.
 .extern data_021052fc
 .extern data_02105310
-.extern func_02005058
+.extern VecFx32Object_Destroy
 .extern ActorRuntimeCollection_GetPendingAttachmentFlag
 .extern func_0201e0ec
 .extern ActorCollection_QueueActorForRemoval
@@ -98,7 +98,7 @@ func_ov095_0221c4a4:
     mov r2, #0x2000
     bl func_ov095_0221a208
     add r0, sp, #0x4
-    bl func_02005058
+    bl VecFx32Object_Destroy
     ldr r0, .L_0221c68c
     ldr r0, [r0, #0x0]
     add r0, r0, #0x37c
@@ -123,7 +123,7 @@ func_ov095_0221c4a4:
     bl func_020349b8
 .L_0221c63c:
     add r0, sp, #0x14
-    bl func_02005058
+    bl VecFx32Object_Destroy
     b .L_0221c654
 .L_0221c648:
     mov r0, r6

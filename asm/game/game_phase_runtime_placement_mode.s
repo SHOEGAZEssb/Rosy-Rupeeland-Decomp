@@ -1,8 +1,8 @@
 ; Matching retail form; see src/game/game_phase_runtime_placement_mode.c for
 ; the documented portable implementation and recovered behavior.
 .text
-.extern func_0200500c
-.extern func_02005058
+.extern VecFx32Object_InitComponents
+.extern VecFx32Object_Destroy
 .extern GamePhaseRuntime_PrepareActorCollections
 .extern GamePhaseRuntime_SynchronizeActorPlacement
 .extern GamePhaseRuntime_GetActiveAreaPlacementVariant
@@ -62,13 +62,13 @@ L_02008938:
     add r0, sp, #0x30
     add r2, r1, #0x14000
     mov r3, #0x0
-    bl func_0200500c
+    bl VecFx32Object_InitComponents
     add r0, r7, #0x44
     add r1, sp, #0x30
     add r0, r0, #0x3000
     bl ActorMotion_SetTarget
     add r0, sp, #0x30
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add r0, r7, #0x2000
     ldr r0, [r0, #0xfb8]
     mov r1, #0x1
@@ -87,13 +87,13 @@ L_02008998:
     add r0, sp, #0x20
     add r2, r1, #0xc000
     mov r3, #0x0
-    bl func_0200500c
+    bl VecFx32Object_InitComponents
     add r0, r7, #0x44
     add r1, sp, #0x20
     add r0, r0, #0x3000
     bl ActorMotion_SetTarget
     add r0, sp, #0x20
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add r0, r7, #0x2000
     ldr r0, [r0, #0xfb8]
     mov r1, #0x1
@@ -111,13 +111,13 @@ L_020089f8:
     add r0, sp, #0x10
     add r2, r1, #0x20000
     mov r3, #0x0
-    bl func_0200500c
+    bl VecFx32Object_InitComponents
     add r0, r7, #0x44
     add r1, sp, #0x10
     add r0, r0, #0x3000
     bl ActorMotion_SetTarget
     add r0, sp, #0x10
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add r0, r7, #0x44
     add r0, r0, #0x3000
     bl ActorMotion_UpdateFromBoundActor
@@ -132,13 +132,13 @@ L_02008a60:
     add r0, sp, #0x0
     add r2, r1, #0x14000
     mov r3, #0x0
-    bl func_0200500c
+    bl VecFx32Object_InitComponents
     add r0, r7, #0x44
     add r1, sp, #0x0
     add r0, r0, #0x3000
     bl ActorMotion_SetTarget
     add r0, sp, #0x0
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add r0, r7, #0x2000
     ldr r0, [r0, #0xfb8]
     mov r1, #0x1

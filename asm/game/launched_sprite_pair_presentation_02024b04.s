@@ -7,11 +7,11 @@
 .extern data_021052fc
 .extern data_021f3d68
 .extern DisplayController_GetVerticalOffset
-.extern func_02004fe0
-.extern func_0200500c
-.extern func_02005030
-.extern func_02005058
-.extern func_020050a4
+.extern VecFx32Object_Init
+.extern VecFx32Object_InitComponents
+.extern VecFx32Object_InitCopy
+.extern VecFx32Object_Destroy
+.extern VecFx32Object_Assign
 .extern func_0201e250
 .extern ActorCollection_GetSpriteOwner
 .extern Actor_GetCollection
@@ -38,9 +38,9 @@ func_02024b04: ; 0x02024b04
     str r1, [r6, #0x0]
     add r1, r5, #0x18
     str r7, [r6, #0x8]
-    bl func_02005030
+    bl VecFx32Object_InitCopy
     add r0, r6, #0x1c
-    bl func_02004fe0
+    bl VecFx32Object_Init
     add r0, r6, #0x3c
     bl func_02071ea4
     mov r0, r5
@@ -144,12 +144,12 @@ func_02024b04: ; 0x02024b04
     mov r2, r1
     mov r3, r1
     str r1, [r6, #0x2c]
-    bl func_0200500c
+    bl VecFx32Object_InitComponents
     add r1, sp, #0x4
     add r0, r6, #0x1c
-    bl func_020050a4
+    bl VecFx32Object_Assign
     add r0, sp, #0x4
-    bl func_02005058
+    bl VecFx32Object_Destroy
     mov r1, #0x0
     str r1, [r6, #0x30]
     str r1, [r6, #0x34]

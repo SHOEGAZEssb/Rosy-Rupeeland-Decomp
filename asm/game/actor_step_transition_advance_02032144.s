@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/actor_step_transition_advance.c.
 .text
 .extern data_020c3a48
-.extern func_020050a4
+.extern VecFx32Object_Assign
 
     .global func_02032144
     .type func_02032144, @function
@@ -52,7 +52,7 @@ func_02032144: ; 0x02032144
     blx r1
     add r0, r4, #0x18
     add r1, r4, #0xb0
-    bl func_020050a4
+    bl VecFx32Object_Assign
     mov r0, #0x2
 .L_020321fc:
     add sp, sp, #0x320

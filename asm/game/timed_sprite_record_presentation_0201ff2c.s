@@ -2,8 +2,8 @@
 .text
 .extern data_020d62b0
 .extern data_021052fc
-.extern func_0200500c
-.extern func_02005058
+.extern VecFx32Object_InitComponents
+.extern VecFx32Object_Destroy
 .extern GamePhaseVisualEffect_Configure
 .extern GamePhaseVisualEffect_SetBaseOffset
 .extern func_0201e250
@@ -60,12 +60,12 @@ func_0201ff2c: ; 0x0201ff2c
     mov r3, #0x0
     mov r1, r1, lsl #0x4
     mov r2, r2, lsl #0x4
-    bl func_0200500c
+    bl VecFx32Object_InitComponents
     add r0, r4, #0x2c00
     add r1, sp, #0x10
     bl GamePhaseVisualEffect_SetBaseOffset
     add r0, sp, #0x10
-    bl func_02005058
+    bl VecFx32Object_Destroy
     mov r0, r5
     add sp, sp, #0x20
     ldmia sp!, {r4, r5, r6, pc}

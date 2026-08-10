@@ -5,7 +5,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_02004fe0(void *value);
+extern void VecFx32Object_Init(void *value);
 extern void func_020adff0(const void *left, const void *right,
                           void *destination);
 #ifdef __cplusplus
@@ -30,7 +30,7 @@ void func_02008354(void *destination, const void *source)
  */
 void func_02008378(void *destination, const void *left, const void *right)
 {
-    func_02004fe0(destination);
+    VecFx32Object_Init(destination);
     if (right != 0)
         right = (const u8 *)right + 4;
     if (left != 0)

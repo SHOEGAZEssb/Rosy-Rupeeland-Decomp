@@ -11,7 +11,7 @@ extern u8 *data_021052fc;
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *func_020050a4(void *destination, const void *source);
+extern void *VecFx32Object_Assign(void *destination, const void *source);
 extern void ActorRuntimeTriple_Assign(void *value, s32 x, s32 y, s32 z);
 extern void ActorDerivedType1_SetSpecialModeEnabled(void *object, s32 mode);
 extern void Type7Actor_SelectRandomCallback(void *actor);
@@ -47,13 +47,13 @@ s32 Type7Actor_UpdateDestinationMotion(void *self)
 
     *(u32 *)(actor + 0x268) &= ~0x8000;
     *(u32 *)(actor + 0xd0) |= 2;
-    func_020050a4(actor + 0x78, actor + 0x284);
+    VecFx32Object_Assign(actor + 0x78, actor + 0x284);
     dx = *(s32 *)(actor + 0x7c) - *(s32 *)(actor + 0x1c);
     dy = *(s32 *)(actor + 0x80) - *(s32 *)(actor + 0x20);
     distance = func_0204cfa4(dx, dy);
     if (distance < 0x1000) {
         *(u16 *)(actor + 0xd6) = 2;
-        func_020050a4(actor + 0x18, actor + 0x78);
+        VecFx32Object_Assign(actor + 0x18, actor + 0x78);
         Type7Actor_CompleteDestinationMotion(actor);
     } else {
         s32 direction;
@@ -74,7 +74,7 @@ s32 Type7Actor_UpdateDestinationMotion(void *self)
         *(s32 *)(actor + 0x1c) += (s32)(product >> 12);
         product = (s64)data_020c9670[index * 2] * step + 0x800;
         *(s32 *)(actor + 0x20) += (s32)(product >> 12);
-        func_020050a4(actor + 0x28, actor + 0x18);
+        VecFx32Object_Assign(actor + 0x28, actor + 0x18);
     }
     return 0;
 }

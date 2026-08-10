@@ -34,8 +34,8 @@ extern s32 func_0204cfa4(s32 x, s32 y);
 extern s32 func_020adc90(s32 value, s32 divisor);
 extern s32 func_020adae4(s32 value, s32 shift);
 extern s32 Type7Actor_HasSpecialCallbackPair(void *actor);
-extern void func_02005030(void *destination, const void *source);
-extern void func_02005058(void *value);
+extern void VecFx32Object_InitCopy(void *destination, const void *source);
+extern void VecFx32Object_Destroy(void *value);
 extern void Type7Actor_SetMotionTargetWithTimer(void *actor, const void *transform, s32 value);
 extern s32 ActorDerivedType1_IsSpecialRecordActive(void *actor);
 extern void ActorDerivedType1_StartRecord(void *actor, s32 value);
@@ -153,11 +153,11 @@ s32 Type7Actor_HandleContact(void *self, void *otherObject, s32 context)
                     && Type7Actor_HasSpecialCallbackPair(actor) == 0
                     && (*(u32 *)(actor + 0x268) & 0x8000) != 0) {
                     u32 temporary[4];
-                    func_02005030(temporary, actor + 0x18);
+                    VecFx32Object_InitCopy(temporary, actor + 0x18);
                     temporary[1] = (u32)((s32)temporary[1] - dx * 20);
                     temporary[2] = (u32)((s32)temporary[2] - dy * 30);
                     Type7Actor_SetMotionTargetWithTimer(actor, temporary, 0x4b);
-                    func_02005058(temporary);
+                    VecFx32Object_Destroy(temporary);
                 }
                 if (*(u16 *)(actor + 0x254) == 0) {
                     *(s32 *)(actor + 0x9c) -= dx;

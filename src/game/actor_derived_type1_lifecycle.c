@@ -12,7 +12,7 @@ extern void func_0206c978(void *object);
 extern void GameWork_ClearFlag(void *work, u32 flag);
 extern void func_02031488(void *actor);
 extern void Type7MarkerPresentation_Destroy(void *state);
-extern void func_02005058(void *value);
+extern void VecFx32Object_Destroy(void *value);
 extern void ActorDerivedRuntime_DestroyAlternate(void *actor);
 #ifdef __cplusplus
 }
@@ -50,9 +50,9 @@ static void cleanupDerivedType1(u8 *actor)
     destroyOwnedVirtual(*(void **)(actor + 0x22c));
     destroyOwnedVirtual(*(void **)(actor + 0x274));
     Type7MarkerPresentation_Destroy(actor + 0x2a8);
-    func_02005058(actor + 0x284);
-    func_02005058(actor + 0x254);
-    func_02005058(actor + 0x238);
+    VecFx32Object_Destroy(actor + 0x284);
+    VecFx32Object_Destroy(actor + 0x254);
+    VecFx32Object_Destroy(actor + 0x238);
     ActorDerivedRuntime_DestroyAlternate(actor);
 }
 

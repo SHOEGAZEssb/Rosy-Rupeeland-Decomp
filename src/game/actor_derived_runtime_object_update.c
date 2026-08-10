@@ -7,10 +7,10 @@ extern "C" {
 #endif
 extern void Actor_SetRuntimeFlag80(void *actor);
 extern s32 func_02034164(void *actor);
-extern void *func_020050a4(void *destination, const void *source);
-extern void func_0200500c(void *vector, s32 x, s32 y, s32 z);
-extern void func_02005058(void *vector);
-extern void func_020050c8(void *destination, const void *delta);
+extern void *VecFx32Object_Assign(void *destination, const void *source);
+extern void VecFx32Object_InitComponents(void *vector, s32 x, s32 y, s32 z);
+extern void VecFx32Object_Destroy(void *vector);
+extern void VecFx32Object_Add(void *destination, const void *delta);
 extern void VecFx32Stepper_Update(void *track);
 extern void *VecFx32Stepper_GetStep(void *track);
 extern s32 VecFx32Stepper_IsComplete(void *track);
@@ -24,9 +24,9 @@ extern void Actor_UpdateTerrainMotionFeedback(void *actor);
 static void clearActorVector(u8 *actor, u32 offset)
 {
     s32 zero[4];
-    func_0200500c(zero, 0, 0, 0);
-    func_020050a4(actor + offset, zero);
-    func_02005058(zero);
+    VecFx32Object_InitComponents(zero, 0, 0, 0);
+    VecFx32Object_Assign(actor + offset, zero);
+    VecFx32Object_Destroy(zero);
 }
 
 /*
@@ -53,7 +53,7 @@ void ActorDerivedRuntime_UpdateFrame(void *self)
     Actor_SetRuntimeFlag80(actor);
     if (func_02034164(actor) == 0)
         return;
-    func_020050a4(actor + 0x28, actor + 0x18);
+    VecFx32Object_Assign(actor + 0x28, actor + 0x18);
 
     if ((*(u32 *)(actor + 0x10) & 0x40) != 0 &&
         ((*(u32 *)(actor + 0x10) & 1) == 0 ||
@@ -73,8 +73,8 @@ void ActorDerivedRuntime_UpdateFrame(void *self)
             *(u32 *)(actor + 0x10) &= ~0x40;
             clearActorVector(actor, 0x38);
             terminal = VecFx32Stepper_GetTarget(actor + 0x198);
-            func_020050a4(actor + 0x28, terminal);
-            func_020050a4(actor + 0x18, actor + 0x28);
+            VecFx32Object_Assign(actor + 0x28, terminal);
+            VecFx32Object_Assign(actor + 0x18, actor + 0x28);
         } else {
             s32 cancel = actor[0x4b] != 0;
             if (!cancel)
@@ -87,7 +87,7 @@ void ActorDerivedRuntime_UpdateFrame(void *self)
     }
     if ((*(u32 *)(actor + 0x14) & 0x100000) != 0)
         Actor_UpdateTerrainMotionFeedback(actor);
-    func_020050c8(actor + 0x18, actor + 0x38);
+    VecFx32Object_Add(actor + 0x18, actor + 0x38);
     if ((*(u32 *)(actor + 0x14) & 0x40) == 0 &&
         (*(u32 *)(actor + 0x10) & 0x400) != 0) {
         s32 floor = *(s32 *)(actor + 0x1dc);

@@ -44,6 +44,6 @@ s32 ActorMotionAreaFollower_QueryCrossingDirection(ActorMotionAreaFollower *self
     rectangle[0] = (s16)left;
     rectangle[3] = (s16)bottom;
     result = GamePhaseRegionTable_ClassifyContainedSide(self->areaContext, area, rectangle);
-    func_02005058(&position);
+    VecFx32Object_Destroy(&position);
     return result;
 }

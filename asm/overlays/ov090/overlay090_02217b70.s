@@ -2,7 +2,7 @@
 ; Matching fallback for the portable implementation in src/overlays/ov090/overlay090_recovery.c.
 .extern data_020f4e14
 .extern data_ov090_0221cb10
-.extern func_02005058
+.extern VecFx32Object_Destroy
 .extern ActorCollection_GetSpriteOwner
 .extern Actor_GetCollection
 .extern func_0204d570
@@ -73,9 +73,9 @@ func_ov090_02217b70:
     mov r2, r1
     bl GraphicsSpriteRenderer_SetTextGridPosition
     add r0, r4, #0x224
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add r0, r4, #0x20c
-    bl func_02005058
+    bl VecFx32Object_Destroy
     mov r0, r4
     bl func_0204d570
     mov r0, r4

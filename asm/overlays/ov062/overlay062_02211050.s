@@ -6,8 +6,8 @@
 .extern data_ov062_02211c14
 .extern OverlayManager_UnloadOverlay
 .extern OverlayManager_GetGlobal
-.extern func_02005058
-.extern func_020050a4
+.extern VecFx32Object_Destroy
+.extern VecFx32Object_Assign
 .extern ActorDerivedType1_ResetToBaseState
 .extern Type7Actor_LeaveSpecialPresentationState
 .extern func_020597fc
@@ -58,11 +58,11 @@ func_ov062_02211050:
     str r0, [r2, #0x14]
     ldr r0, [r4, #0x58]
     add r0, r0, #0x18
-    bl func_020050a4
+    bl VecFx32Object_Assign
     ldr r0, [r4, #0x58]
     add r1, r4, #0x24
     add r0, r0, #0x28
-    bl func_020050a4
+    bl VecFx32Object_Assign
     ldr r2, [r4, #0x58]
     mov r1, #0x1
     ldr r0, [r2, #0x230]
@@ -112,11 +112,11 @@ func_ov062_02211050:
     bl OverlayManager_UnloadOverlay
 .L_022111b4:
     add r0, r4, #0x44
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add r0, r4, #0x34
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add r0, r4, #0x24
-    bl func_02005058
+    bl VecFx32Object_Destroy
     mov r0, r4
     bl Scene_Destroy
     mov r0, r4

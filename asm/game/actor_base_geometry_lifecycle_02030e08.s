@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/actor_base_geometry_lifecycle.c.
 .text
 .extern data_020def7c
-.extern func_02005058
+.extern VecFx32Object_Destroy
 .extern func_02059424
 .extern gSoundContext
 
@@ -17,11 +17,11 @@ func_02030e08: ; 0x02030e08
     mov r1, r4
     bl func_02059424
     add r0, r4, #0x38
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add r0, r4, #0x28
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add r0, r4, #0x18
-    bl func_02005058
+    bl VecFx32Object_Destroy
     mov r0, r4
     ldmia sp!, {r4, pc}
 .L_02030e48: .word data_020def7c

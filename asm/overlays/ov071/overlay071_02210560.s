@@ -1,7 +1,7 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov071/overlay071_recovery.c.
 .extern data_020c9670
-.extern func_020050a4
+.extern VecFx32Object_Assign
 .extern GraphicsSpriteState_SetAnimationIndex
 .extern func_020a1794
 .extern func_020befec
@@ -187,7 +187,7 @@ func_ov071_02210560:
     ldr r1, [r4, #0xec]
     add r0, r0, #0x2c
     add r1, r1, #0x2c
-    bl func_020050a4
+    bl VecFx32Object_Assign
     ldr r2, [r4, #0xf0]
     ldrh r1, [r2, #0x42]
     tst r1, #0x4

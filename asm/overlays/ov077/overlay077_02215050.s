@@ -2,7 +2,7 @@
 ; Matching fallback for the portable implementation in src/overlays/ov077/overlay077_recovery.c.
 .extern data_021052fc
 .extern data_ov077_02216fc8
-.extern func_020050a4
+.extern VecFx32Object_Assign
 .extern func_0201e0ec
 .extern func_020349b8
 .extern func_020a2844
@@ -49,7 +49,7 @@ func_ov077_02215050:
     ldr r1, [r5, #0x29c]
     add r0, r5, #0x18
     add r1, r1, #0x18
-    bl func_020050a4
+    bl VecFx32Object_Assign
     mov r2, #0x0
     strh r2, [r5, #0xda]
     mov r1, #0x13

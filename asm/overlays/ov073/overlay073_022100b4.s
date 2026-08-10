@@ -4,9 +4,9 @@
 .extern data_021052fc
 .extern data_ov073_02210c04
 .extern func_02003e20
-.extern func_0200500c
-.extern func_02005058
-.extern func_020050a4
+.extern VecFx32Object_InitComponents
+.extern VecFx32Object_Destroy
+.extern VecFx32Object_Assign
 .extern GamePhaseRuntime_GetActorCollection
 .extern ActorCollection_GetSpriteOwner
 .extern func_020befec
@@ -29,12 +29,12 @@ func_ov073_022100b4:
     add r0, r10, #0x8
     str r4, [r10, #0x4]
     ldr r9, [sp, #0x70]
-    bl func_0200500c
+    bl VecFx32Object_InitComponents
     mov r1, #0x0
     mov r2, r1
     mov r3, r1
     add r0, r10, #0x18
-    bl func_0200500c
+    bl VecFx32Object_InitComponents
     mov r2, #0x0
     str r2, [r10, #0x28]
     ldr r1, [sp, #0x78]
@@ -82,7 +82,7 @@ func_ov073_022100b4:
 .L_022101a4:
     mov r0, r6
     add r1, r10, #0x8
-    bl func_020050a4
+    bl VecFx32Object_Assign
     bl genrand_int32
     mov r0, r0, lsl #0x10
     mov r0, r0, lsr #0x10
@@ -144,9 +144,9 @@ func_ov073_022100b4:
     movne r0, #0x1000
     strne r0, [r10, #0x38]
     add r0, sp, #0x24
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add r0, sp, #0x14
-    bl func_02005058
+    bl VecFx32Object_Destroy
     mov r0, r10
     add sp, sp, #0x3c
     ldmia sp!, {r4, r5, r6, r7, r8, r9, r10, r11, pc}

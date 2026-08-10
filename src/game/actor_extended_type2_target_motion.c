@@ -12,13 +12,13 @@ extern u8 *data_021052fc;
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_020050a4(void *transform);
+extern void VecFx32Object_Assign(void *transform);
 extern void VecFx32_Subtract(void *result, const void *from, const void *to);
 extern s32 func_0204cfa4(s32 y, s32 x);
 extern void *GamePhaseRuntime_GetActorCollection(void *context, s32 index);
 extern s32 func_020ae024(s32 y, s32 x);
 extern s32 func_020adae4(s32 value, s32 shift);
-extern void func_02005058(void *transform);
+extern void VecFx32Object_Destroy(void *transform);
 #ifdef __cplusplus
 }
 #endif
@@ -34,7 +34,7 @@ extern void func_02005058(void *transform);
  * with +0x8c/+0x90; state becomes five or six according to +0xd0 bit one.
  * Nonpositive magnitude clears velocity and enters state one. With +0xd0 bit
  * two, virtual +0x30 may also clear +0x8c/+0x90/+0x94. The temporary transform
- * is finalized with func_02005058. The routine has no meaningful return value;
+ * is finalized with VecFx32Object_Destroy. The routine has no meaningful return value;
  * actor, virtual, transform, and world-query state may change, with no direct
  * hardware access.
  */
@@ -45,7 +45,7 @@ void ActorExtendedType2_UpdateTargetMotion(void *self)
     u8 limits[0x10];
     s32 magnitude;
 
-    func_020050a4(actor + 0x78);
+    VecFx32Object_Assign(actor + 0x78);
     VecFx32_Subtract(query, actor + 0x78, actor + 0x18);
     magnitude = func_0204cfa4(*(s32 *)(query + 8), *(s32 *)(query + 4));
 
@@ -106,5 +106,5 @@ void ActorExtendedType2_UpdateTargetMotion(void *self)
         *(u32 *)(actor + 0x90) = 0;
         *(u32 *)(actor + 0x8c) = 0;
     }
-    func_02005058(query);
+    VecFx32Object_Destroy(query);
 }

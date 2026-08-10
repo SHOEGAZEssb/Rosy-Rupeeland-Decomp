@@ -2,8 +2,8 @@
 ; Matching fallback for the portable implementation in src/overlays/ov088/overlay088_recovery.c.
 .extern Heap_Alloc
 .extern data_ov088_0221ba04
-.extern func_02005030
-.extern func_02005058
+.extern VecFx32Object_InitCopy
+.extern VecFx32Object_Destroy
 .extern func_0201f864
 .extern Actor_RefreshTerrainHeight
 .extern Actor_SetDirectionFromVector
@@ -64,7 +64,7 @@ func_ov088_02218130:
     bl func_ov088_0221ad9c
     add r0, sp, #0x18
     add r1, r4, #0x18
-    bl func_02005030
+    bl VecFx32Object_InitCopy
     ldr r1, [sp, #0x20]
     ldr r3, .L_02218274
     sub r1, r1, #0x8000
@@ -93,7 +93,7 @@ func_ov088_02218130:
     bl func_0201f864
 .L_02218264:
     add r0, sp, #0x18
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add sp, sp, #0x28
     ldmia sp!, {r4, pc}
 .L_02218274: .word gHeapContext

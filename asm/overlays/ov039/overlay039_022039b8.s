@@ -1,13 +1,13 @@
 .text
 /* Exact fallback; see overlay039_secondary_effects.c for portable C. */
     .extern func_0209a2ac
-    .extern func_0200500c
+    .extern VecFx32Object_InitComponents
     .extern func_ov039_022014f8
     .extern func_020befec
     .extern func_0201e0ec
     .extern func_0209c3b4
     .extern func_0209c430
-    .extern func_02005058
+    .extern VecFx32Object_Destroy
     .extern func_ov039_02203794
     .extern func_ov039_02203064
     .extern func_ov039_0220454c
@@ -15,8 +15,8 @@
     .extern func_ov049_0220c8a0
     .extern func_ov039_022014e0
     .extern func_ov045_0220c48c
-    .extern func_02004fe0
-    .extern func_02005030
+    .extern VecFx32Object_Init
+    .extern VecFx32Object_InitCopy
     .extern func_ov039_022035d4
     .extern func_ov049_0220c254
     .extern func_ov049_0220cf94
@@ -123,7 +123,7 @@ L_022039fc:
     strh r8, [sp, #0x14]
     strh r7, [sp, #0x16]
     strh r5, [sp, #0x18]
-    bl func_0200500c
+    bl VecFx32Object_InitComponents
     add r0, sp, #0x4c
     add r1, r4, #0x2c
     add r2, r4, #0xac
@@ -282,9 +282,9 @@ L_02203d1c:
     str r6, [sp, #0x10]
     bl func_0209c430
     add r0, sp, #0x4c
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add r0, sp, #0x5c
-    bl func_02005058
+    bl VecFx32Object_Destroy
 L_02203da8:
     mov r0, r4
     bl func_ov039_02203794
@@ -321,9 +321,9 @@ L_02203de8:
     mov r3, #0x50000
     bl func_ov045_0220c48c ; func_ov049_0220c48c
     add r0, sp, #0x1c
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add r0, sp, #0x3c
-    bl func_02004fe0
+    bl VecFx32Object_Init
     add r6, r4, #0x64
     add r5, sp, #0x2c
     add r7, sp, #0x3c
@@ -334,7 +334,7 @@ L_02203e4c:
     ldr r1, [r1, #0x8]
     ldr r1, [r1, #0x48]
     add r1, r1, #0x2c
-    bl func_02005030
+    bl VecFx32Object_InitCopy
     ldr r1, [sp, #0x44]
     mov r0, r4
     str r1, [sp, #0x0]
@@ -346,7 +346,7 @@ L_02203e4c:
     sub r2, r2, #0x10000
     bl func_ov039_022035d4
     mov r0, r5
-    bl func_02005058
+    bl VecFx32Object_Destroy
 L_02203e94:
     mov r1, r7
     add r0, r6, #0x400
@@ -357,7 +357,7 @@ L_02203e94:
     add r0, r0, #0x400
     bl func_ov049_0220cf94
     add r0, sp, #0x3c
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add r1, r4, #0x1c00
     add r0, r4, #0x30c
     ldrh r1, [r1, #0xb0]

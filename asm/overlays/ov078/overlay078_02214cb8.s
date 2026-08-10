@@ -2,8 +2,8 @@
 ; Matching fallback for the portable implementation in src/overlays/ov078/overlay078_recovery.c.
 .extern data_ov078_02215c88
 .extern data_ov078_02215d30
-.extern func_02005030
-.extern func_02005058
+.extern VecFx32Object_InitCopy
+.extern VecFx32Object_Destroy
 .extern Actor_GetCachedTerrainHeight
 .extern func_02034a60
 .extern ActorExtendedType2_SpawnOptionalPresentation
@@ -49,7 +49,7 @@ func_ov078_02214cb8:
     add r0, sp, #0x8
     add r1, r6, #0x18
     add r7, r3, r2
-    bl func_02005030
+    bl VecFx32Object_InitCopy
     ldr r1, [sp, #0xc]
     ldr r0, [sp, #0x10]
     add r2, r1, r5
@@ -381,7 +381,7 @@ func_ov078_02214cb8:
     strh r1, [r0, #0x9e]
 .L_02215224:
     add r0, sp, #0x8
-    bl func_02005058
+    bl VecFx32Object_Destroy
 .L_0221522c:
     add sp, sp, #0x18
     ldmia sp!, {r4, r5, r6, r7, r8, pc}

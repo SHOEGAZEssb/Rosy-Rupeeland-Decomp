@@ -3,9 +3,9 @@
 .text
 .extern GameWork_TestFlag
 .extern data_021052fc
-.extern func_02005030
-.extern func_02005058
-.extern func_020050a4
+.extern VecFx32Object_InitCopy
+.extern VecFx32Object_Destroy
+.extern VecFx32Object_Assign
 .extern func_02008740
 .extern ActorMotionJitter_Update
 .extern ActorMotionAreaFollower_QueryCrossingDirection
@@ -82,7 +82,7 @@ ActorMotionAreaFollower_Update: ; 0x02009d80
     bne L_02009ee4
     add r0, sp, #0x30
     add r1, r7, #0x18
-    bl func_02005030
+    bl VecFx32Object_InitCopy
     cmp r6, #0x1
     ldreq r0, [sp, #0x34]
     subeq r0, r0, #0x14000
@@ -105,9 +105,9 @@ ActorMotionAreaFollower_Update: ; 0x02009d80
 L_02009ed0:
     add r1, sp, #0x30
     add r0, r8, #0x18
-    bl func_020050a4
+    bl VecFx32Object_Assign
     add r0, sp, #0x30
-    bl func_02005058
+    bl VecFx32Object_Destroy
 L_02009ee4:
     str r5, [r4, #0x84]
     b L_02009ef8
@@ -118,7 +118,7 @@ L_02009eec:
 L_02009ef8:
     add r0, sp, #0x20
     add r1, r4, #0x8
-    bl func_02005030
+    bl VecFx32Object_InitCopy
     ldr r0, [sp, #0x24]
     ldrsh r1, [r9, #0x0]
     mov r2, r0, asr #0xc
@@ -212,11 +212,11 @@ L_02009f6c:
 L_0200a064:
     add r1, sp, #0x20
     add r0, r4, #0x6c
-    bl func_020050a4
+    bl VecFx32Object_Assign
 L_0200a070:
     add r0, r4, #0x8
     add r1, r4, #0x6c
-    bl func_020050a4
+    bl VecFx32Object_Assign
     add r0, sp, #0x10
     add r1, r4, #0x44
     bl func_02008740
@@ -230,7 +230,7 @@ L_0200a070:
     add r2, r2, #0x80
     add r0, sp, #0x10
     strh r2, [r1, #0x2e]
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add r0, sp, #0x0
     add r1, r4, #0x44
     bl func_02008740
@@ -244,11 +244,11 @@ L_0200a070:
     add r2, r2, #0x60
     add r0, sp, #0x0
     strh r2, [r1, #0x30]
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add r0, sp, #0x20
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add r0, sp, #0x40
-    bl func_02005058
+    bl VecFx32Object_Destroy
     mov r0, #0x0
     add sp, sp, #0x50
     ldmia sp!, {r3, r4, r5, r6, r7, r8, r9, pc}

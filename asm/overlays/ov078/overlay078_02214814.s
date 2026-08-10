@@ -1,8 +1,8 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov078/overlay078_recovery.c.
 .extern data_ov078_02215c88
-.extern func_02005030
-.extern func_02005058
+.extern VecFx32Object_InitCopy
+.extern VecFx32Object_Destroy
 .extern ActorExtendedType2_SpawnOptionalPresentation
 .extern ActorExtendedType2_GetDescriptorValue2A
 .extern func_020593dc
@@ -37,7 +37,7 @@ func_ov078_02214814:
     sub r4, r5, r4
     add r1, r8, #0x18
     sub r5, r3, r2
-    bl func_02005030
+    bl VecFx32Object_InitCopy
     mov r0, r8
     bl ActorExtendedType2_GetDescriptorValue2A
     mov r6, r0
@@ -316,7 +316,7 @@ func_ov078_02214814:
     moveq r0, #0x2
     strb r0, [r8, #0x24c]
     add r0, sp, #0x8
-    bl func_02005058
+    bl VecFx32Object_Destroy
 .L_02214c9c:
     add sp, sp, #0x18
     ldmia sp!, {r4, r5, r6, r7, r8, r9, r10, pc}

@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/rising_sprite_motion_controller.c.
 .text
-.extern func_0200500c
-.extern func_02005058
+.extern VecFx32Object_InitComponents
+.extern VecFx32Object_Destroy
 .extern VecFx32Triple_Init
 .extern VecFx32Triple_Destroy
 .extern VecFx32Triple_InitWithValues
@@ -44,7 +44,7 @@ RisingSpriteMotionController_Init: ; 0x020203e4
     str r3, [r4, #0x60]
     mov r2, r1
     mov r3, #0x46000
-    bl func_0200500c
+    bl VecFx32Object_InitComponents
     ldr r1, [sp, #0x88]
     add r0, sp, #0x50
     add r2, sp, #0x60
@@ -60,9 +60,9 @@ RisingSpriteMotionController_Init: ; 0x020203e4
     add r0, sp, #0x20
     bl VecFx32Triple_Destroy
     add r0, sp, #0x50
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add r0, sp, #0x60
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add r0, sp, #0x10
     mov r1, #0x100000
     mov r2, #0x2000

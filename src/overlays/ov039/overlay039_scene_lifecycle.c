@@ -24,10 +24,10 @@ extern void func_ov039_021fce5c(void *object);
 extern void func_ov039_021fd06c(void *object);
 extern void func_ov039_0220482c(void *object);
 extern void func_ov039_02203ef0(void *object);
-extern void func_02004fe0(void *vector);
-extern void func_0200500c(void *vector, s32 x, s32 y, s32 z);
-extern void func_020050a4(void *destination, const void *source);
-extern void func_02005058(void *vector);
+extern void VecFx32Object_Init(void *vector);
+extern void VecFx32Object_InitComponents(void *vector, s32 x, s32 y, s32 z);
+extern void VecFx32Object_Assign(void *destination, const void *source);
+extern void VecFx32Object_Destroy(void *vector);
 extern void func_ov049_0220c124(void *object);
 extern void func_ov069_022109c4(void *object);
 extern void *func_0201e0ec(void *object);
@@ -68,7 +68,7 @@ extern "C" void *func_ov039_02200cd8(void *scene, void *owner, s32 variant)
 {
     func_ov039_021fce00(scene);
     FIELD(void *, scene, 0) = data_ov039_02208438;
-    func_02004fe0((u8 *)scene + 0xac);
+    VecFx32Object_Init((u8 *)scene + 0xac);
     func_ov039_0220482c((u8 *)scene + 0xbc);
     func_ov049_0220c124((u8 *)scene + 0x464);
     func_ov069_022109c4((u8 *)scene + 0xb3c);
@@ -119,8 +119,8 @@ extern "C" void *func_ov039_02200cd8(void *scene, void *owner, s32 variant)
  */
 extern "C" void *func_ov039_02200f4c(void *object)
 {
-    func_02005058((u8 *)object + 0x388);
-    func_02005058((u8 *)object + 0x378);
+    VecFx32Object_Destroy((u8 *)object + 0x388);
+    VecFx32Object_Destroy((u8 *)object + 0x378);
     for (s32 i = 38; i >= 0; i--) func_ov039_021fce5c((u8 *)object + 0x13c + i * 12);
     for (s32 i = 38; i >= 0; i--) func_ov039_021fd06c((u8 *)object + 4 + i * 8);
     return object;
@@ -185,7 +185,7 @@ extern "C" void *func_ov039_02201118(void *scene)
         if (target) { func_ov039_02200f4c(target); Heap_Free(target); }
     }
     func_ov039_02200f4c((u8 *)scene + 0xbc);
-    func_02005058((u8 *)scene + 0xac);
+    VecFx32Object_Destroy((u8 *)scene + 0xac);
     func_02099fb0(scene);
     return scene;
 }

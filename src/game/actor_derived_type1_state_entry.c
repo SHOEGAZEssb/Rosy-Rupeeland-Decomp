@@ -11,8 +11,8 @@ extern "C" {
 extern void Actor_SetPosition(void *actor, const void *position);
 extern s32 GamePhaseCurrencyHud_GetCurrency(void *context, s32 value);
 extern void ActorRuntimeTriple_Assign(void *value, s32 x, s32 y, s32 z);
-extern void func_0200500c(void *value, s32 x, s32 y, s32 z);
-extern void func_02005058(void *value);
+extern void VecFx32Object_InitComponents(void *value, s32 x, s32 y, s32 z);
+extern void VecFx32Object_Destroy(void *value);
 extern s32 Actor_GetCachedTerrainHeight(void *actor);
 extern void Type1Actor_EnterFailureState(void *actor);
 extern void Actor_ReplaceAttachmentSlotResource(
@@ -54,11 +54,11 @@ void ActorDerivedType1_EnterPositionedState(void *self, const void *position, s3
         if (mode != 0) {
             s32 offset[4];
             s32 x = (data_021056e0 & 1) ? -0x1800 : 0x1800;
-            func_0200500c(offset, x, -0x3000, 0);
+            VecFx32Object_InitComponents(offset, x, -0x3000, 0);
             ++data_021056e0;
             (*(void (**)(void *, const void *, s32, s32))
                 (*(u8 **)actor + 0xb8))(actor, offset, 1, data_021056e0);
-            func_02005058(offset);
+            VecFx32Object_Destroy(offset);
         } else {
             *(u32 *)(actor + 0x230) |= 0x400;
             *(s32 *)(actor + 0x44) = 0x4000;

@@ -16,7 +16,7 @@ ActorMotionAreaFollower *ActorMotionAreaFollower_Init(ActorMotionAreaFollower *s
 {
     ActorMotionJitter_Init(&self->jitter);
     self->areaContext = areaContext;
-    func_0200500c(&self->offset, 0, 0, 0);
+    VecFx32Object_InitComponents(&self->offset, 0, 0, 0);
     self->transitionActive = 0;
     self->transitionTimer = 0;
     self->previousArea = -1;
@@ -26,7 +26,7 @@ ActorMotionAreaFollower *ActorMotionAreaFollower_Init(ActorMotionAreaFollower *s
 /* Destroy the added vector and base motion wrappers, then return self. */
 ActorMotionAreaFollower *ActorMotionAreaFollower_Destroy(ActorMotionAreaFollower *self)
 {
-    func_02005058(&self->offset);
+    VecFx32Object_Destroy(&self->offset);
     ActorMotion_DestroyBase(&self->jitter.base);
     return self;
 }

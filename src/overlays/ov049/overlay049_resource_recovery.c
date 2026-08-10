@@ -11,13 +11,13 @@
  * render records, and the sprite/model state used by the object, then clear
  * their runtime counters and flags. Resource manager and SDK graphics state
  * change, no value is returned, and no direct MMIO is accessed. The repeated
- * record roles are inferred from their common func_0200500c initialization.
+ * record roles are inferred from their common VecFx32Object_InitComponents initialization.
  */
 extern "C" void func_ov049_0220bbdc(void *object);
 
 /*
  * Advance and apply the object's active render resource. The function updates
- * an embedded animation through func_020050c8/func_0209f09c and dispatches to
+ * an embedded animation through VecFx32Object_Add/func_0209f09c and dispatches to
  * overlay 39 rendering helpers using current object state. It returns a
  * Boolean/status result from the recovered control flow; animation and SDK 3D
  * state change, with no direct MMIO.

@@ -8,14 +8,14 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_02005058(void *member);
+extern void VecFx32Object_Destroy(void *member);
 extern void func_02099fb0(void *state);
 #ifdef __cplusplus
 }
 #endif
 
 /*
- * Destroy the embedded member at +0x80 through func_02005058, call
+ * Destroy the embedded member at +0x80 through VecFx32Object_Destroy, call
  * func_02099fb0(state) for base teardown, and return state without freeing it.
  * Ownership effects are delegated and no direct hardware access occurs.
  */
@@ -24,7 +24,7 @@ extern "C"
 #endif
 void *func_ov007_021fb768(void *state)
 {
-    func_02005058((u8 *)state + 0x80);
+    VecFx32Object_Destroy((u8 *)state + 0x80);
     func_02099fb0(state);
     return state;
 }

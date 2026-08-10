@@ -37,7 +37,7 @@ void ActorMotionAreaFollower_ClampToAreaBounds(ActorMotionAreaFollower *self, s3
     s32 actorZ;
 
     (void)fallbackBounds;
-    func_02005030(&position, &motion->position);
+    VecFx32Object_InitCopy(&position, &motion->position);
     actorX = *(s32 *)(actor + 0x1c) >> 12;
     actorY = (*(s32 *)(actor + 0x20) >> 12) - 0x10;
     actorZ = *(s32 *)(actor + 0x24) >> 12;
@@ -64,6 +64,6 @@ void ActorMotionAreaFollower_ClampToAreaBounds(ActorMotionAreaFollower *self, s3
         position.value.y = bounds[1] << 12;
     else if ((position.value.y >> 12) + 0xc0 >= bounds[3])
         position.value.y = (bounds[3] - 0xc0) << 12;
-    func_020050a4(&motion->position, &position);
-    func_02005058(&position);
+    VecFx32Object_Assign(&motion->position, &position);
+    VecFx32Object_Destroy(&position);
 }

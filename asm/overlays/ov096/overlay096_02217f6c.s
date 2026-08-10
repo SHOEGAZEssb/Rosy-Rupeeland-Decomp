@@ -2,7 +2,7 @@
 ; Matching fallback for the portable implementation in src/overlays/ov096/overlay096_recovery.c.
 .extern data_021052fc
 .extern data_ov096_02218b08
-.extern func_020050a4
+.extern VecFx32Object_Assign
 .extern ActorCollection_GetSpriteOwner
 .extern Actor_GetCollection
 .extern func_020593dc
@@ -26,7 +26,7 @@ func_ov096_02217f6c:
     strh r0, [r5, #0xd6]
     add r0, r5, #0x78
     add r1, r5, #0x18
-    bl func_020050a4
+    bl VecFx32Object_Assign
     ldr r2, [r5, #0x29c]
     add r1, r5, #0x200
     cmp r2, #0x0

@@ -11,10 +11,10 @@
 .extern data_020d63b8
 .extern data_020f4e14
 .extern data_020f4e18
-.extern func_0200500c
-.extern func_02005030
-.extern func_02005058
-.extern func_020050c8
+.extern VecFx32Object_InitComponents
+.extern VecFx32Object_InitCopy
+.extern VecFx32Object_Destroy
+.extern VecFx32Object_Add
 .extern func_02008378
 .extern func_0201e250
 .extern func_0201e28c
@@ -56,7 +56,7 @@ RisingSpriteSwarmPresentation_SpawnController: ; 0x02020c38
     add r0, sp, #0x18
     mov r2, r1
     mov r3, #0x20000
-    bl func_0200500c
+    bl VecFx32Object_InitComponents
     add r0, sp, #0x8
     add r2, sp, #0x18
     add r1, r4, #0x38
@@ -77,12 +77,12 @@ RisingSpriteSwarmPresentation_SpawnController: ; 0x02020c38
     cmp r6, #0x0
     beq .L_02020ccc
     add r0, sp, #0x8
-    bl func_02005058
+    bl VecFx32Object_Destroy
 .L_02020ccc:
     cmp r5, #0x0
     beq .L_02020cdc
     add r0, sp, #0x18
-    bl func_02005058
+    bl VecFx32Object_Destroy
 .L_02020cdc:
     ldr r1, .L_02020d44
     ldr r3, .L_02020d40

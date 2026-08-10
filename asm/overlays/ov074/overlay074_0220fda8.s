@@ -7,7 +7,7 @@
 .extern data_021052fc
 .extern data_02105300
 .extern data_ov074_02211d8c
-.extern func_02004fe0
+.extern VecFx32Object_Init
 .extern SplineMover_Init
 .extern GamePhaseTouchPrompt_SetEnabled
 .extern func_0201df64
@@ -41,7 +41,7 @@ func_ov074_0220fda8:
     add r0, r4, #0x28
     str r1, [r4, #0x0]
     str r5, [r4, #0x24]
-    bl func_02004fe0
+    bl VecFx32Object_Init
     add r0, r4, #0x38
     bl func_ov074_0221167c
     add r0, r4, #0x8c
@@ -49,14 +49,14 @@ func_ov074_0220fda8:
     add r0, r4, #0xc8
     bl SplineMover_Init
     add r0, r4, #0x104
-    bl func_02004fe0
+    bl VecFx32Object_Init
     add r0, r4, #0x114
-    bl func_02004fe0
+    bl VecFx32Object_Init
     mov r0, #0x0
     str r0, [r4, #0x124]
     str r0, [r4, #0x128]
     add r0, r4, #0x12c
-    bl func_02004fe0
+    bl VecFx32Object_Init
     mov r0, #0x0
     str r0, [r4, #0x140]
     add r0, r4, #0x144

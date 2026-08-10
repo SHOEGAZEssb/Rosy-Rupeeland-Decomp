@@ -75,9 +75,9 @@ s32 GamePhaseActorScriptVm_GetCollection1ActorVectorX(GamePhaseActorScriptVm *se
     u8 *collection = (u8 *)GamePhaseRuntime_GetActorCollection(data_021052fc, 1);
     VecFx32Object value;
     void *actor = *(void **)(collection + 0x2e7c);
-    func_02005030(&value, (VecFx32Object *)((u8 *)actor + 0x18));
+    VecFx32Object_InitCopy(&value, (VecFx32Object *)((u8 *)actor + 0x18));
     GamePhaseScriptVm_SetResult(&self->base, value.value.x >> 12);
-    func_02005058(&value);
+    VecFx32Object_Destroy(&value);
     return 0;
 }
 
@@ -87,9 +87,9 @@ s32 GamePhaseActorScriptVm_GetCollection1ActorVectorY(GamePhaseActorScriptVm *se
     u8 *collection = (u8 *)GamePhaseRuntime_GetActorCollection(data_021052fc, 1);
     VecFx32Object value;
     void *actor = *(void **)(collection + 0x2e7c);
-    func_02005030(&value, (VecFx32Object *)((u8 *)actor + 0x18));
+    VecFx32Object_InitCopy(&value, (VecFx32Object *)((u8 *)actor + 0x18));
     GamePhaseScriptVm_SetResult(&self->base, value.value.y >> 12);
-    func_02005058(&value);
+    VecFx32Object_Destroy(&value);
     return 0;
 }
 
@@ -99,8 +99,8 @@ s32 GamePhaseActorScriptVm_GetCollection1ActorVectorZ(GamePhaseActorScriptVm *se
     u8 *collection = (u8 *)GamePhaseRuntime_GetActorCollection(data_021052fc, 1);
     VecFx32Object value;
     void *actor = *(void **)(collection + 0x2e7c);
-    func_02005030(&value, (VecFx32Object *)((u8 *)actor + 0x18));
+    VecFx32Object_InitCopy(&value, (VecFx32Object *)((u8 *)actor + 0x18));
     GamePhaseScriptVm_SetResult(&self->base, value.value.z >> 12);
-    func_02005058(&value);
+    VecFx32Object_Destroy(&value);
     return 0;
 }

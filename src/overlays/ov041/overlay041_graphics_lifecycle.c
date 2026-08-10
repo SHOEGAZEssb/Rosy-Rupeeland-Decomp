@@ -31,8 +31,8 @@ extern void *func_02070888(void *);
 extern void func_020b1924(void *, s32, void *);
 extern void func_020b2058(void *, s32, void *);
 extern void func_02070f80(void *, s32);
-extern void func_020050a4(void *, const void *);
-extern void func_02005058(void *);
+extern void VecFx32Object_Assign(void *, const void *);
+extern void VecFx32Object_Destroy(void *);
 extern void func_02099fb0(void *);
 extern void func_02003e2c(void *);
 extern void GraphicsSpriteGroupOwner_DestroyGroup(void *, void *);
@@ -156,7 +156,7 @@ extern "C" void func_ov041_021fd01c(void *owner)
     FIELD(s32, owner, 0x178) = extent >> 4;
     FIELD(s32, owner, 0x190) = FIELD(void *, owner, 0x0c) ? -0x4e000 : 0;
     FIELD(s32, owner, 0x194) = extent << 12;
-    func_020050a4((u8 *)owner + 0x19c, (u8 *)owner + 0x18c);
+    VecFx32Object_Assign((u8 *)owner + 0x19c, (u8 *)owner + 0x18c);
     FIELD(s32, owner, 0x1ac) = 0x19a;
     FIELD(s32, owner, 0x1b0) = FIELD(s32, owner, 0x194);
     FIELD(s32, owner, 0x1b4) = 0;
@@ -182,12 +182,12 @@ extern "C" void *func_ov041_021fdd64(void *owner, s32, s32, s32)
     if (FIELD(void *, owner, 8)) { func_ov070_02210238(FIELD(void *, owner, 8)); func_02003e2c(FIELD(void *, owner, 8)); FIELD(void *, owner, 8)=0; }
     GraphicsSpriteGroupOwner_DestroyGroup(data_020f4e14, FIELD(void *, owner, 0));
     func_02075020(data_020f4dc8);
-    func_02005058((u8 *)owner + 0x19c);
-    func_02005058((u8 *)owner + 0x18c);
+    VecFx32Object_Destroy((u8 *)owner + 0x19c);
+    VecFx32Object_Destroy((u8 *)owner + 0x18c);
     for (s32 index=9; index>=0; index--) GraphicsResourceSet_Destroy((u8 *)owner+0xf0+index*0x0c);
     for (s32 index=7; index>=0; index--) GraphicsResourceSet_Destroy((u8 *)owner+0x90+index*0x0c);
     for (s32 index=5; index>=0; index--) GraphicsResourceSet_Destroy((u8 *)owner+0x48+index*0x0c);
-    func_02005058((u8 *)owner + 0x2c);
-    func_02005058((u8 *)owner + 0x1c);
+    VecFx32Object_Destroy((u8 *)owner + 0x2c);
+    VecFx32Object_Destroy((u8 *)owner + 0x1c);
     return owner;
 }

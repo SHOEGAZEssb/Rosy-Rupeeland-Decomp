@@ -7,7 +7,7 @@
 .extern Heap_Alloc
 .extern data_020d5680
 .extern data_020d5688
-.extern func_02004fe0
+.extern VecFx32Object_Init
 .extern OverlaySlot_Init
 .extern func_02029218
 .extern func_02029360
@@ -46,7 +46,7 @@ GamePhaseAreaScene_Init: ; 0x02011a5c
     mov r2, #0x0
     add r0, r6, #0x2ec0
     str r2, [r1, #0xebc]
-    bl func_02004fe0
+    bl VecFx32Object_Init
     add r0, r6, #0x2000
     mov r1, #0x0
     str r1, [r0, #0xed0]

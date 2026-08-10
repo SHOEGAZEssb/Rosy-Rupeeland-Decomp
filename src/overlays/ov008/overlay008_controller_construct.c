@@ -19,8 +19,8 @@ extern void *func_ov008_021fb6e0(void *state);
 extern void __construct_array(void *array, u32 count, u32 elementSize,
                               Overlay008MemberRoutine constructor,
                               Overlay008MemberRoutine destructor);
-extern void func_02004fe0(void *member);
-extern void func_02005058(void *member);
+extern void VecFx32Object_Init(void *member);
+extern void VecFx32Object_Destroy(void *member);
 extern void *func_0209a208(void *state, s32 firstId, s32 secondId, s32 thirdId,
                           s32 argument, s32 mode);
 extern void GraphicsSpriteState_SetAnimationIndex(void *member, s32 value);
@@ -46,8 +46,8 @@ void *func_ov008_021fb720(void *state, void *owner, s32 argument)
 
     func_ov008_021fb6e0(state);
     FIELD(const void *, state, 0x000) = data_ov008_021fc2e4;
-    __construct_array((u8 *)state + 0x13c, 60, 0x10, func_02004fe0,
-                      func_02005058);
+    __construct_array((u8 *)state + 0x13c, 60, 0x10, VecFx32Object_Init,
+                      VecFx32Object_Destroy);
     FIELD(void *, state, 0x048) = owner;
 
     for (index = 59; index >= 0; index--) {

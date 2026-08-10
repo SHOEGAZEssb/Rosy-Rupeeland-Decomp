@@ -12,8 +12,8 @@ extern TouchPanelManager *gTouchPanelManager;
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_0200500c(void *vector, s32 x, s32 y, s32 z);
-extern void func_02005058(void *vector);
+extern void VecFx32Object_InitComponents(void *vector, s32 x, s32 y, s32 z);
+extern void VecFx32Object_Destroy(void *vector);
 extern void Position_AdjustForTerrainHeight(void *vector);
 extern u32 genrand_int32(void);
 extern void *ActorFeedbackResources_GetResource(u32 index);
@@ -51,13 +51,13 @@ s32 ActorFeedback_ProcessSnapshotCell(const void *snapshot)
     u8 *resource;
     void *presentation = 0;
 
-    func_0200500c(position, saved[1] << 12, saved[2] << 12, 0);
+    VecFx32Object_InitComponents(position, saved[1] << 12, saved[2] << 12, 0);
     Position_AdjustForTerrainHeight(position);
     map = *(u8 **)(data_021052fc + 0x2ed4);
     cell = (*(u32 (**)(void *, s32, s32))(*(u8 **)map + 0x2c))(
         map, position[1] >> 16, position[2] >> 16);
     if (((cell >> 10) & 0x0f) != 1) {
-        func_02005058(position);
+        VecFx32Object_Destroy(position);
         return 0;
     }
 
@@ -86,7 +86,7 @@ s32 ActorFeedback_ProcessSnapshotCell(const void *snapshot)
 
     resource = (u8 *)ActorFeedbackResources_GetResource(1);
     if (resource == 0) {
-        func_02005058(position);
+        VecFx32Object_Destroy(position);
         return 1;
     }
     {
@@ -100,6 +100,6 @@ s32 ActorFeedback_ProcessSnapshotCell(const void *snapshot)
         }
     }
     func_0201ded4(data_021052fc + 0x2f7c, presentation);
-    func_02005058(position);
+    VecFx32Object_Destroy(position);
     return 1;
 }

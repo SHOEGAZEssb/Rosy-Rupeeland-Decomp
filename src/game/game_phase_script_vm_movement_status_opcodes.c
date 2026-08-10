@@ -32,9 +32,9 @@ s32 GamePhaseActorScriptVm_WaitForMovementCompletion(GamePhaseActorScriptVm *sel
     ActorRuntimeTriple_Assign(actor + 0x38, 0, 0, 0);
     ActorRuntimeTriple_Assign(actor + 0x88, 0, 0, 0);
     ActorRuntimeTriple_Assign(actor + 0x98, 0, 0, 0);
-    func_0200500c(&zero, 0, 0, 0);
+    VecFx32Object_InitComponents(&zero, 0, 0, 0);
     Actor_SetVelocity(actor, &zero);
-    func_02005058(&zero);
+    VecFx32Object_Destroy(&zero);
     return 0;
 }
 

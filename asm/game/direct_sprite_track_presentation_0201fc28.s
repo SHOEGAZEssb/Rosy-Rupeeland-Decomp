@@ -3,7 +3,7 @@
 .extern data_020d6158
 .extern data_020f4e18
 .extern data_021052fc
-.extern func_0200500c
+.extern VecFx32Object_InitComponents
 .extern GamePhaseRuntime_GetActorCollection
 .extern func_0201e250
 .extern ActorCollection_GetSpriteOwner
@@ -33,7 +33,7 @@ func_0201fc28: ; 0x0201fc28
     mov r1, r1, lsl #0xc
     mov r2, r2, lsl #0xc
     mov r3, #0x0
-    bl func_0200500c
+    bl VecFx32Object_InitComponents
     mov r2, r5
     mov r3, r4
     ldr r1, [sp, #0x18]

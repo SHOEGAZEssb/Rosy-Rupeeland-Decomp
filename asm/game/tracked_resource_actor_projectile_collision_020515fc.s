@@ -1,8 +1,8 @@
 ; Matching retail form; see src/game/tracked_resource_actor_projectile_collision.c.
 .extern data_02105310
-.extern func_02004fe0
-.extern func_02005058
-.extern func_020050a4
+.extern VecFx32Object_Init
+.extern VecFx32Object_Destroy
+.extern VecFx32Object_Assign
 .extern ActorRuntimeCollection_GetPendingAttachmentFlag
 .extern ActorCollection_QueueActorForRemoval
 .extern Actor_GetCollection
@@ -18,7 +18,7 @@ func_020515fc:
     mov r5, r0
     add r0, sp, #0x0
     mov r4, r1
-    bl func_02004fe0
+    bl VecFx32Object_Init
     bl genrand_int32
     bic r6, r0, #0x80000000
     mov r0, r6
@@ -53,7 +53,7 @@ func_020515fc:
     add r1, sp, #0x0
     add r0, r5, #0x38
     str r2, [sp, #0x8]
-    bl func_020050a4
+    bl VecFx32Object_Assign
     add r1, r5, #0x100
     mov r0, #0x8000
     ldrh r3, [r1, #0xf0]
@@ -79,7 +79,7 @@ func_020515fc:
     mov r1, r4
     bl func_02050560
     add r0, sp, #0x0
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add sp, sp, #0x10
     ldmia sp!, {r4, r5, r6, pc}
 .L_0205170c: .word data_02105310

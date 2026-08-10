@@ -3,7 +3,7 @@
     .extern GXS_SetGraphicsMode
     .extern data_021052fc
     .extern data_ov018_021ffcd0
-    .extern func_02005058
+    .extern VecFx32Object_Destroy
     .extern func_0200875c
     .extern GamePhaseRuntime_GetAuxiliaryOverlayObject
     .extern func_0202839c
@@ -132,7 +132,7 @@ func_ov018_021fd740:
     ldr r1, [sp, #0x8]
     mov r1, r1, asr #0xc
     str r1, [r4, #0x60]
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add sp, sp, #0x10
     ldmia sp!, {r4, pc}
 L_021fd784: .word data_021052fc

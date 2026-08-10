@@ -6,7 +6,7 @@
 .extern data_ov062_02211ba4
 .extern OverlayManager_UnloadOverlay
 .extern OverlayManager_GetGlobal
-.extern func_020050a4
+.extern VecFx32Object_Assign
 .extern VecFx32Triple_Destroy
 
 .global func_ov062_0221085c
@@ -20,11 +20,11 @@ func_ov062_0221085c:
     ldr r1, [r4, #0x28]
     add r0, r0, #0x18
     add r1, r1, #0x10
-    bl func_020050a4
+    bl VecFx32Object_Assign
     ldr r1, [r4, #0x24]
     add r0, r1, #0x28
     add r1, r1, #0x18
-    bl func_020050a4
+    bl VecFx32Object_Assign
     ldr r0, [r4, #0x24]
     ldr r1, [r0, #0x0]
     ldr r1, [r1, #0x5c]

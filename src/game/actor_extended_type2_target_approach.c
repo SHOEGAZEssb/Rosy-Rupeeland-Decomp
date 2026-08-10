@@ -11,8 +11,8 @@ extern u8 *data_021052fc;
 extern "C" {
 #endif
 extern void *GamePhaseRuntime_GetActorCollection(void *context, s32 index);
-extern void func_02005030(void *temporary, const void *source);
-extern void func_02005058(void *temporary);
+extern void VecFx32Object_InitCopy(void *temporary, const void *source);
+extern void VecFx32Object_Destroy(void *temporary);
 #ifdef __cplusplus
 }
 #endif
@@ -71,12 +71,12 @@ s32 ActorExtendedType2_UpdateTargetApproach(void *self, const void *descriptorRe
             return 0;
         }
 
-        func_02005030(temporary, actor + 0x18);
+        VecFx32Object_InitCopy(temporary, actor + 0x18);
         temporary[2] += dy << 12;
         temporary[1] += dx << 12;
         *(u32 *)(actor + 0xd0) |= 2;
         (*(void (**)(void *, void *))(vtable + 0xd0))(actor, temporary);
-        func_02005058(temporary);
+        VecFx32Object_Destroy(temporary);
     }
     return 0;
 }

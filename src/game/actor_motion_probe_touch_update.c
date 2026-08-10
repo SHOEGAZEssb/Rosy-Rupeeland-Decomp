@@ -10,12 +10,12 @@ extern "C" {
 extern void func_02031758(void *source);
 extern u32 genrand_int32(void);
 extern u64 func_020bf1f8(u32 value, u32 divisor);
-extern void func_0200500c(void *vector, s32 x, s32 y, s32 z);
+extern void VecFx32Object_InitComponents(void *vector, s32 x, s32 y, s32 z);
 extern void VecFx32_Subtract(void *output, const void *first,
                           const void *second);
-extern void func_020050a4(void *destination, const void *source);
-extern void func_02005058(void *vector);
-extern void func_020050c8(void *destination, const void *delta);
+extern void VecFx32Object_Assign(void *destination, const void *source);
+extern void VecFx32Object_Destroy(void *vector);
+extern void VecFx32Object_Add(void *destination, const void *delta);
 extern s32 func_020befec(s32 numerator, s32 denominator);
 extern void func_02031cac(void *actor, const TouchPoint *point);
 #ifdef __cplusplus
@@ -76,18 +76,18 @@ void ActorMotionProbe_UpdateTouchMotion(void *source, void *self)
                             *(s32 *)(actor + 0x20c));
         y = multiplyFxRound(centeredRandom(*(s32 *)(actor + 0x248)) << 12,
                             *(s32 *)(actor + 0x20c));
-        func_0200500c(target, x, y, 0);
+        VecFx32Object_InitComponents(target, x, y, 0);
         VecFx32_Subtract(delta, target, actor + 0x210);
-        func_020050a4(actor + 0x230, delta);
-        func_02005058(delta);
+        VecFx32Object_Assign(actor + 0x230, delta);
+        VecFx32Object_Destroy(delta);
         *(s32 *)(actor + 0x234) = func_020befec(
             *(s32 *)(actor + 0x234), *(s32 *)(actor + 0x24c));
         *(s32 *)(actor + 0x238) = func_020befec(
             *(s32 *)(actor + 0x238), *(s32 *)(actor + 0x24c));
-        func_020050a4(actor + 0x220, target);
-        func_02005058(target);
+        VecFx32Object_Assign(actor + 0x220, target);
+        VecFx32Object_Destroy(target);
     } else {
-        func_020050c8(actor + 0x210, actor + 0x230);
+        VecFx32Object_Add(actor + 0x210, actor + 0x230);
     }
 
     *(u16 *)(actor + 0x208) += (u16)*(s32 *)(actor + 0x254);

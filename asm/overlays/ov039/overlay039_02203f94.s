@@ -3,7 +3,7 @@
     .extern func_ov039_022014f8
     .extern func_ov039_02204118
     .extern Sound_Play
-    .extern func_02005058
+    .extern VecFx32Object_Destroy
     .extern data_020c9670
     .extern gSoundContext
     .global func_ov039_02203f94
@@ -93,7 +93,7 @@ L_022040d0:
     bpl L_02203fec
 L_022040d8:
     add r0, sp, #0x0
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add sp, sp, #0x10
     ldmia sp!, {r4, r5, r6, r7, r8, pc}
 L_022040e8: .word data_020c9670

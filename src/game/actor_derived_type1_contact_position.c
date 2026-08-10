@@ -5,8 +5,8 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_02005030(void *destination, const void *source);
-extern void func_02005058(void *value);
+extern void VecFx32Object_InitCopy(void *destination, const void *source);
+extern void VecFx32Object_Destroy(void *value);
 extern s32 Actor_QueryTerrainHeight(void *actor, s32 x, s32 y);
 extern s32 Actor_GetCachedTerrainHeight(void *actor);
 #ifdef __cplusplus
@@ -30,7 +30,7 @@ void ActorDerivedType1_BuildContactPosition(void *output, void *self, const void
     ++*(s16 *)(actor + 0x24c);
     if (record[0x4d] == 7) {
         s32 temporary[4];
-        func_02005030(temporary, actor + 0x18);
+        VecFx32Object_InitCopy(temporary, actor + 0x18);
         if (*(s16 *)(actor + 0xd6) == 1 ||
             *(s16 *)(actor + 0xd6) == 2) {
             s32 direction = *(s32 *)(record + 0x1c) >
@@ -44,9 +44,9 @@ void ActorDerivedType1_BuildContactPosition(void *output, void *self, const void
                     temporary[1] += 0xf000;
             }
         }
-        func_02005030(output, temporary);
-        func_02005058(temporary);
+        VecFx32Object_InitCopy(output, temporary);
+        VecFx32Object_Destroy(temporary);
     } else {
-        func_02005030(output, actor + 0x18);
+        VecFx32Object_InitCopy(output, actor + 0x18);
     }
 }

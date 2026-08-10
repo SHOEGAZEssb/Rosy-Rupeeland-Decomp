@@ -235,7 +235,7 @@ void func_ov077_02216f04(void);
 /* Processes the supplied ABI arguments using only local offset-based fields; observable mutations and the return value are preserved by the matching implementation, with no direct SDK call. */
 void func_ov077_02216f0c(void);
 
-/* Processes the supplied ABI arguments and offset-based actor state, returns its encoded result, and invokes ActorExtendedType2_Init, func_0200500c, func_02005058 and other shared helpers; exact higher-level semantics remain unconfirmed. */
+/* Processes the supplied ABI arguments and offset-based actor state, returns its encoded result, and invokes ActorExtendedType2_Init, VecFx32Object_InitComponents, VecFx32Object_Destroy and other shared helpers; exact higher-level semantics remain unconfirmed. */
 void func_ov077_02216f14(void);
 
 

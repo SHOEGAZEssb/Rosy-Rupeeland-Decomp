@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/game_phase_script_vm_movement_opcode.c.
 .text
-.extern func_02004fe0
-.extern func_02005058
+.extern VecFx32Object_Init
+.extern VecFx32Object_Destroy
 .extern VecFx32Stepper_InitTransition
 .extern VecFx32Stepper_Assign
 .extern VecFx32Stepper_Destroy
@@ -34,7 +34,7 @@ GamePhaseActorScriptVm_StartMovement: ; 0x020130ec
     bl GamePhaseScriptVm_Pop
     mov r7, r0, lsl #0xc
     add r0, sp, #0x40
-    bl func_02004fe0
+    bl VecFx32Object_Init
     mov r8, #0x0
     ldr r0, [r9, #0x84]
     str r8, [sp, #0x0]
@@ -214,7 +214,7 @@ L_02013354:
     strneh r0, [r1, #0x24]
 L_020133d4:
     add r0, sp, #0x40
-    bl func_02005058
+    bl VecFx32Object_Destroy
     mov r0, #0x0
     add sp, sp, #0x50
     ldmia sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, pc}

@@ -2,11 +2,11 @@
 ; the documented portable implementation and recovered behavior.
 .text
 .extern data_02105310
-.extern func_02004fe0
-.extern func_02005030
-.extern func_02005058
-.extern func_020050a4
-.extern func_020050c8
+.extern VecFx32Object_Init
+.extern VecFx32Object_InitCopy
+.extern VecFx32Object_Destroy
+.extern VecFx32Object_Assign
+.extern VecFx32Object_Add
 .extern GamePhaseRuntime_GetActorCollection
 .extern GamePhaseRuntime_CreateSecondaryActorSubsystem
 .extern GamePhaseRuntime_InitScaledAreaCoordinates
@@ -50,7 +50,7 @@ GamePhaseRuntime_ChangeToNeighborArea:
     add r1, r7, #0x3000
     str r0, [r1, #0xbc]
     add r0, sp, #0x1c
-    bl func_02004fe0
+    bl VecFx32Object_Init
     cmp r6, #0x0
     bne L_02007bb8
     add r0, r7, #0x2000
@@ -153,10 +153,10 @@ L_02007cb8:
     bl ActorMotionAreaFollower_GetPosition
     mov r1, r0
     add r0, sp, #0xc
-    bl func_02005030
+    bl VecFx32Object_InitCopy
     add r0, sp, #0xc
     add r1, sp, #0x1c
-    bl func_020050c8
+    bl VecFx32Object_Add
     add r0, r7, #0x3bc
     add r1, sp, #0xc
     add r0, r0, #0x2c00
@@ -272,7 +272,7 @@ L_02007e44:
     ldr r1, [r0, #0xe7c]
     add r0, r2, #0x18
     add r1, r1, #0x18
-    bl func_020050a4
+    bl VecFx32Object_Assign
     add r2, r7, #0x2000
     ldr r1, [r2, #0xfb8]
     add r0, sp, #0xc
@@ -294,9 +294,9 @@ L_02007e44:
     add r1, r1, #0x2000
     ldr r1, [r1, #0xebc]
     str r3, [r1, #0x24]
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add r0, sp, #0x1c
-    bl func_02005058
+    bl VecFx32Object_Destroy
     mov r0, #0x1
 L_02007ef8:
     add sp, sp, #0x2c

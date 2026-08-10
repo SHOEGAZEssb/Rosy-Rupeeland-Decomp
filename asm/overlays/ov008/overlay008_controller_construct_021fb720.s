@@ -1,8 +1,8 @@
     .text
     .extern __construct_array
     .extern data_ov008_021fc2e4
-    .extern func_02004fe0
-    .extern func_02005058
+    .extern VecFx32Object_Init
+    .extern VecFx32Object_Destroy
     .extern GraphicsSpriteState_SetAnimationIndex
     .extern func_0209a208
     .extern func_ov008_021fb6e0
@@ -70,7 +70,7 @@ L_021fb77c:
     add sp, sp, #0x8
     ldmia sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, pc}
 L_021fb804: .word data_ov008_021fc2e4
-L_021fb808: .word func_02005058
-L_021fb80c: .word func_02004fe0
+L_021fb808: .word VecFx32Object_Destroy
+L_021fb80c: .word VecFx32Object_Init
 L_021fb810: .word 0x12d8
     .size func_ov008_021fb720, . - func_ov008_021fb720

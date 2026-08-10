@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/tracked_resource_actor_derived_setup.c.
-.extern func_02005058
-.extern func_02005070
-.extern func_020050a4
+.extern VecFx32Object_Destroy
+.extern VecFx32Object_GetMagnitude
+.extern VecFx32Object_Assign
 .extern VecFx32_Subtract
 .extern func_020328d0
 .extern func_02050b34
@@ -19,16 +19,16 @@ func_02050a8c:
     bl VecFx32_Subtract
     add r1, sp, #0x0
     add r0, r4, #0x38
-    bl func_020050a4
+    bl VecFx32Object_Assign
     add r0, sp, #0x0
-    bl func_02005058
+    bl VecFx32Object_Destroy
     ldr r0, [r4, #0x1fc]
     ldr r2, [r4, #0x44]
     ldrsb r1, [r0, #0x15]
     add r0, r4, #0x38
     add r1, r2, r1, lsl #0xc
     str r1, [r4, #0x44]
-    bl func_02005070
+    bl VecFx32Object_GetMagnitude
     mov r1, r0
     cmp r1, #0x4
     movlt r1, #0x4

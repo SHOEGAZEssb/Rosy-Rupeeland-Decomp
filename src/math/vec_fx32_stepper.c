@@ -21,18 +21,18 @@ extern s32 func_020befec(s32 numerator, s32 denominator);
 /* Copy all three vector payloads and the countdown; no value is returned. */
 void VecFx32Stepper_CopyState(VecFx32Stepper *self, const VecFx32Stepper *source)
 {
-    func_020050a4(&self->target, &source->target);
-    func_020050a4(&self->current, &source->current);
-    func_020050a4(&self->step, &source->step);
+    VecFx32Object_Assign(&self->target, &source->target);
+    VecFx32Object_Assign(&self->current, &source->current);
+    VecFx32Object_Assign(&self->step, &source->step);
     self->remainingFrames = source->remainingFrames;
 }
 
 /* Construct three zero vectors, clear the countdown, and return self. */
 VecFx32Stepper *VecFx32Stepper_Init(VecFx32Stepper *self)
 {
-    func_02004fe0(&self->target);
-    func_02004fe0(&self->current);
-    func_02004fe0(&self->step);
+    VecFx32Object_Init(&self->target);
+    VecFx32Object_Init(&self->current);
+    VecFx32Object_Init(&self->step);
     self->remainingFrames = 0;
     return self;
 }
@@ -45,7 +45,7 @@ VecFx32Stepper *VecFx32Stepper_Init(VecFx32Stepper *self)
 void VecFx32_Subtract(VecFx32Object *result, const VecFx32Object *left,
                       const VecFx32Object *right)
 {
-    func_02004fe0(result);
+    VecFx32Object_Init(result);
     func_020adfbc(left != 0 ? &left->value : (const VecFx32Value *)left,
                   right != 0 ? &right->value : (const VecFx32Value *)right,
                   &result->value);
@@ -63,13 +63,13 @@ VecFx32Stepper *VecFx32Stepper_InitTransition(VecFx32Stepper *self,
 {
     VecFx32Object temporary;
 
-    func_02005030(&self->target, target);
-    func_02005030(&self->current, current);
-    func_02004fe0(&self->step);
+    VecFx32Object_InitCopy(&self->target, target);
+    VecFx32Object_InitCopy(&self->current, current);
+    VecFx32Object_Init(&self->step);
     self->remainingFrames = duration;
     VecFx32_Subtract(&temporary, &self->target, &self->current);
-    func_020050a4(&self->step, &temporary);
-    func_02005058(&temporary);
+    VecFx32Object_Assign(&self->step, &temporary);
+    VecFx32Object_Destroy(&temporary);
     self->step.value.x =
         func_020befec(self->step.value.x, self->remainingFrames);
     self->step.value.y =
@@ -93,9 +93,9 @@ VecFx32Stepper *VecFx32Stepper_Assign(VecFx32Stepper *self,
 /* Destroy the three non-owning vectors in reverse order and return self. */
 VecFx32Stepper *VecFx32Stepper_Destroy(VecFx32Stepper *self)
 {
-    func_02005058(&self->step);
-    func_02005058(&self->current);
-    func_02005058(&self->target);
+    VecFx32Object_Destroy(&self->step);
+    VecFx32Object_Destroy(&self->current);
+    VecFx32Object_Destroy(&self->target);
     return self;
 }
 
@@ -109,11 +109,11 @@ s32 VecFx32Stepper_Update(VecFx32Stepper *self)
     self->remainingFrames--;
     if (self->remainingFrames < 0) {
         self->remainingFrames = 0;
-        func_020050a4(&self->current, &self->target);
+        VecFx32Object_Assign(&self->current, &self->target);
         return 0;
     }
 
-    func_020050c8(&self->current, &self->step);
+    VecFx32Object_Add(&self->current, &self->step);
     return 1;
 }
 
@@ -145,14 +145,14 @@ void VecFx32Stepper_Reset(VecFx32Stepper *self)
     VecFx32Object currentTemporary;
     VecFx32Object stepTemporary;
 
-    func_0200500c(&targetTemporary, 0, 0, 0);
-    func_020050a4(&self->target, &targetTemporary);
-    func_02005058(&targetTemporary);
-    func_0200500c(&currentTemporary, 0, 0, 0);
-    func_020050a4(&self->current, &currentTemporary);
-    func_02005058(&currentTemporary);
-    func_0200500c(&stepTemporary, 0, 0, 0);
-    func_020050a4(&self->step, &stepTemporary);
-    func_02005058(&stepTemporary);
+    VecFx32Object_InitComponents(&targetTemporary, 0, 0, 0);
+    VecFx32Object_Assign(&self->target, &targetTemporary);
+    VecFx32Object_Destroy(&targetTemporary);
+    VecFx32Object_InitComponents(&currentTemporary, 0, 0, 0);
+    VecFx32Object_Assign(&self->current, &currentTemporary);
+    VecFx32Object_Destroy(&currentTemporary);
+    VecFx32Object_InitComponents(&stepTemporary, 0, 0, 0);
+    VecFx32Object_Assign(&self->step, &stepTemporary);
+    VecFx32Object_Destroy(&stepTemporary);
     self->remainingFrames = 0;
 }

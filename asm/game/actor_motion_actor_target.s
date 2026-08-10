@@ -2,7 +2,7 @@
 ; the documented portable implementation and recovered behavior.
 .text
 .extern data_020c9670
-.extern func_02005058
+.extern VecFx32Object_Destroy
 .extern VecFx32_Subtract
 .extern VecFx32_GetDirectionAngle
 .extern ActorMotion_GetBoundActorTargetPosition
@@ -45,9 +45,9 @@ L_02009438:
     str r1, [r5, #0x24]
     ldr r1, [sp, #0x28]
     str r1, [r5, #0x28]
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add r0, sp, #0x20
-    bl func_02005058
+    bl VecFx32Object_Destroy
     b L_02009504
 L_02009460:
     add r0, sp, #0x0
@@ -90,7 +90,7 @@ L_02009460:
     str r1, [r5, #0x24]
     ldr r1, [sp, #0x8]
     str r1, [r5, #0x28]
-    bl func_02005058
+    bl VecFx32Object_Destroy
 L_02009504:
     ldr r0, [r5, #0x2c]
     add sp, sp, #0x30

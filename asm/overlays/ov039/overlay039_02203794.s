@@ -1,10 +1,10 @@
 .text
 /* Exact fallback; see overlay039_helper_pool2.c for portable C. */
-    .extern func_0200500c
-    .extern func_02004fe0
+    .extern VecFx32Object_InitComponents
+    .extern VecFx32Object_Init
     .extern func_0201e0ec
     .extern func_0209c430
-    .extern func_02005058
+    .extern VecFx32Object_Destroy
     .extern data_021052fc
     .global func_ov039_02203794
 func_ov039_02203794:
@@ -29,7 +29,7 @@ L_022037c0:
     add r0, sp, #0x74
     mov r2, r1
     mov r3, r1
-    bl func_0200500c
+    bl VecFx32Object_InitComponents
     mov r1, #0x28000
     add r0, sp, #0x2c
     str r1, [r0, #0x0]
@@ -66,7 +66,7 @@ L_022037c0:
     str r8, [sp, #0x68]
     str r6, [r7, #0x0]
     str r6, [r7, #0x4]
-    bl func_02004fe0
+    bl VecFx32Object_Init
     add r0, r10, r9, lsl #0x2
     ldr r2, [r0, #0x74]
     ldr r1, L_02203918
@@ -99,9 +99,9 @@ L_022037c0:
     str r3, [sp, #0x10]
     bl func_0209c430
     add r0, sp, #0x14
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add r0, sp, #0x74
-    bl func_02005058
+    bl VecFx32Object_Destroy
 L_02203908:
     subs r9, r9, #0x1
     bpl L_022037c0

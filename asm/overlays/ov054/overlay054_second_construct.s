@@ -1,7 +1,7 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov054/overlay054_recovery.c.
 .extern data_ov054_0220f108
-.extern func_02004fe0
+.extern VecFx32Object_Init
 .extern func_0201e250
 .extern func_02071ea4
 .extern gGameWork
@@ -16,14 +16,14 @@ func_ov054_0220ec6c:
     ldr r1, .L_0220ed04
     add r0, r4, #0x8
     str r1, [r4, #0x0]
-    bl func_02004fe0
+    bl VecFx32Object_Init
     add r0, r4, #0x24
     str r5, [r4, #0x18]
     bl func_02071ea4
     add r0, r4, #0x30
-    bl func_02004fe0
+    bl VecFx32Object_Init
     add r0, r4, #0x40
-    bl func_02004fe0
+    bl VecFx32Object_Init
     bl genrand_int32
     ldr r2, .L_0220ed08
     mov r3, #0xcd

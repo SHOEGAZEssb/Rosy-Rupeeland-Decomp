@@ -1,5 +1,5 @@
 .text
-.extern func_02004fe0
+.extern VecFx32Object_Init
 
 /* Matching evaluators; see vec_fx32_bezier.c for the portable formulas. */
 .global VecFx32Bezier_Evaluate2D
@@ -9,7 +9,7 @@ VecFx32Bezier_Evaluate2D:
     mov r6, r2
     mov r5, r0
     mov r4, r1
-    bl func_02004fe0
+    bl VecFx32Object_Init
     rsb lr, r6, #0x1000
     smull r0, r1, lr, lr
     adds r3, r0, #0x800
@@ -83,7 +83,7 @@ VecFx32Bezier_Evaluate3D:
     mov r6, r2
     mov r5, r0
     mov r4, r1
-    bl func_02004fe0
+    bl VecFx32Object_Init
     rsb r7, r6, #0x1000
     smull r0, r1, r7, r7
     adds r3, r0, #0x800

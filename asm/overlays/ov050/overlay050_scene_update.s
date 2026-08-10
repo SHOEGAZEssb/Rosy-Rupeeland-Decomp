@@ -4,9 +4,9 @@
 .extern GameWork_SetFlag
 .extern GameWork_TestFlag
 .extern data_020c9670
-.extern func_0200500c
-.extern func_02005058
-.extern func_020050a4
+.extern VecFx32Object_InitComponents
+.extern VecFx32Object_Destroy
+.extern VecFx32Object_Assign
 .extern GraphicsSpriteGroup_AdvanceAnimations
 .extern func_ov050_0220d9c4
 .extern func_ov050_0220db40
@@ -213,7 +213,7 @@ func_ov050_0220ddf0:
     add r0, sp, #0x10
     mov r3, r2
     orr r1, r1, r9, lsl #0x14
-    bl func_0200500c
+    bl VecFx32Object_InitComponents
     add r0, sp, #0x0
     add r1, r6, #0x30
     add r2, sp, #0x10
@@ -222,11 +222,11 @@ func_ov050_0220ddf0:
     ldr r0, [r0, #0x1c]
     add r1, sp, #0x0
     add r0, r0, #0x20
-    bl func_020050a4
+    bl VecFx32Object_Assign
     add r0, sp, #0x0
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add r0, sp, #0x10
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add r0, r6, r4, lsl #0x2
     ldr r0, [r0, #0x1c]
     ldr r1, [r6, #0x2c]

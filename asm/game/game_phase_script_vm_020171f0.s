@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/game_phase_script_vm_tiered_effect_opcode.c.
 .text
-.extern func_02004fe0
-.extern func_02005058
+.extern VecFx32Object_Init
+.extern VecFx32Object_Destroy
 .extern GamePhaseScriptVm_Pop
 .extern func_0204e2ac
 .global GamePhaseActorScriptVm_SpawnTieredEffect
@@ -10,9 +10,9 @@ GamePhaseActorScriptVm_SpawnTieredEffect:
     sub sp, sp, #0x3c
     mov r5, r0
     add r0, sp, #0x2c
-    bl func_02004fe0
+    bl VecFx32Object_Init
     add r0, sp, #0x1c
-    bl func_02004fe0
+    bl VecFx32Object_Init
     mov r0, r5
     bl GamePhaseScriptVm_Pop
     mov r4, r0
@@ -81,9 +81,9 @@ L_020172c8:
     str r4, [sp, #0x18]
     bl func_0204e2ac
     add r0, sp, #0x1c
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add r0, sp, #0x2c
-    bl func_02005058
+    bl VecFx32Object_Destroy
     mov r0, r4
     add sp, sp, #0x3c
     ldmia sp!, {r4, r5, pc}

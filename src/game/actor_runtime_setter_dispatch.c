@@ -14,7 +14,7 @@ extern void BoundsCenterSnapshot_Init(void *center, const void *bounds);
 extern void ActorBounds_SetMinimum(void *bounds, s32 minX, s32 minY);
 extern void Actor_SetAttachmentAnimation(void *actor, s32 value);
 extern void Actor_SetAttachmentEnabled(void *actor, s32 value);
-extern void func_020050a4(void *destination, const void *source);
+extern void VecFx32Object_Assign(void *destination, const void *source);
 #ifdef __cplusplus
 }
 #endif
@@ -178,7 +178,7 @@ void Actor_SetRuntimeProperty(void *self, u32 selector, s32 value)
         if (secondary != 0) *(u16 *)(secondary + 0x30) = attachmentValue;
         break;
     case 47:
-        func_020050a4(actor + 0x18, actor + 0x28);
+        VecFx32Object_Assign(actor + 0x18, actor + 0x28);
         break;
     case 48:
         if (value != 0) {

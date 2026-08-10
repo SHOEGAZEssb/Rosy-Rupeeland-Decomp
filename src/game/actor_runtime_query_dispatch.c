@@ -6,8 +6,8 @@ extern "C" {
 #endif
 extern s32 ActorBounds_GetWidth(void *bounds);
 extern s32 ActorBounds_GetHeight(void *bounds);
-extern void func_02005030(void *temporary, const void *source);
-extern void func_02005058(void *temporary);
+extern void VecFx32Object_InitCopy(void *temporary, const void *source);
+extern void VecFx32Object_Destroy(void *temporary);
 extern void *VecFx32Stepper_GetStep(void *resourceState);
 #ifdef __cplusplus
 }
@@ -46,19 +46,19 @@ s32 Actor_QueryRuntimeProperty(void *self, u32 selector)
     case 6:
         return (*(u32 *)(actor + 0x10) & 4) != 0;
     case 7:
-        func_02005030(temporary, actor + 0x18);
+        VecFx32Object_InitCopy(temporary, actor + 0x18);
         value = *(s32 *)(temporary + 4) >> 12;
-        func_02005058(temporary);
+        VecFx32Object_Destroy(temporary);
         return value;
     case 8:
-        func_02005030(temporary, actor + 0x18);
+        VecFx32Object_InitCopy(temporary, actor + 0x18);
         value = *(s32 *)(temporary + 8) >> 12;
-        func_02005058(temporary);
+        VecFx32Object_Destroy(temporary);
         return value;
     case 9:
-        func_02005030(temporary, actor + 0x18);
+        VecFx32Object_InitCopy(temporary, actor + 0x18);
         value = *(s32 *)(temporary + 12) >> 12;
-        func_02005058(temporary);
+        VecFx32Object_Destroy(temporary);
         return value;
     case 10:
         return attachment[0x38];

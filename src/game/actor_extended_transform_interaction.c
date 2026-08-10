@@ -11,8 +11,8 @@ extern u8 *data_021052fc;
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_02005058(void *value);
-extern void func_020050a4(void *destination, const void *source);
+extern void VecFx32Object_Destroy(void *value);
+extern void VecFx32Object_Assign(void *destination, const void *source);
 extern void VecFx32_Subtract(void *output, const void *first, const void *second);
 extern void *GamePhaseRuntime_GetActorCollection(void *context, s32 index);
 extern s32 func_0204cfa4(s32 x, s32 y);
@@ -47,7 +47,7 @@ void ActorExtendedTransform_UpdateTargetMotion(void *self, const void *targetTra
         return;
     }
     *(u16 *)(actor + 0x298) = 0;
-    func_020050a4(actor + 0x78, targetTransform);
+    VecFx32Object_Assign(actor + 0x78, targetTransform);
     VecFx32_Subtract(displacement, actor + 0x78, actor + 0x18);
     magnitude = func_0204cfa4(*(s32 *)(displacement + 4),
                               *(s32 *)(displacement + 8));
@@ -100,5 +100,5 @@ void ActorExtendedTransform_UpdateTargetMotion(void *self, const void *targetTra
         *(u32 *)(actor + 0x90) = 0;
         *(u32 *)(actor + 0x94) = 0;
     }
-    func_02005058(displacement);
+    VecFx32Object_Destroy(displacement);
 }

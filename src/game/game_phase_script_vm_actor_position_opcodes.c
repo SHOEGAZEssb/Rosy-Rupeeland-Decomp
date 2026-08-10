@@ -26,10 +26,10 @@ s32 GamePhaseActorScriptVm_SetPositionFromCoordinates(GamePhaseActorScriptVm *se
     u8 *actor = (u8 *)self->actor;
     VecFx32Object value;
     VecFx32Object *copy;
-    func_0200500c(&value, x << 12, y << 12, 0);
-    copy = func_020050a4((VecFx32Object *)(actor + 0x28), &value);
-    func_020050a4((VecFx32Object *)(actor + 0x18), copy);
-    func_02005058(&value);
+    VecFx32Object_InitComponents(&value, x << 12, y << 12, 0);
+    copy = VecFx32Object_Assign((VecFx32Object *)(actor + 0x28), &value);
+    VecFx32Object_Assign((VecFx32Object *)(actor + 0x18), copy);
+    VecFx32Object_Destroy(&value);
     Actor_AdjustPositionForTerrainHeight(actor);
     return 0;
 }

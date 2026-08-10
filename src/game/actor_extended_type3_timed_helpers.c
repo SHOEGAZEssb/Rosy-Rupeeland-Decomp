@@ -15,8 +15,8 @@ extern s32 ActorExtendedType2_UpdateTargetApproach(
 extern u32 genrand_int32(void);
 extern s32 ActorExtendedType2_GetDescriptorValue2C(const void *actor);
 extern s32 ActorExtendedType2_GetDescriptorValue25(const void *actor);
-extern void func_02005030(void *temporary, const void *source);
-extern void func_02005058(void *temporary);
+extern void VecFx32Object_InitCopy(void *temporary, const void *source);
+extern void VecFx32Object_Destroy(void *temporary);
 extern void func_02050078(s32 mode, void *destination, const void *source);
 #ifdef __cplusplus
 }
@@ -78,8 +78,8 @@ void ActorExtendedType3_ApplyDescriptorModeTransform(void *self)
     mode = ActorExtendedType2_GetDescriptorValue25(actor);
     if (mode == -1)
         return;
-    func_02005030(temporary, actor + 0x18);
+    VecFx32Object_InitCopy(temporary, actor + 0x18);
     mode = ActorExtendedType2_GetDescriptorValue25(actor);
     func_02050078(mode, temporary, temporary);
-    func_02005058(temporary);
+    VecFx32Object_Destroy(temporary);
 }

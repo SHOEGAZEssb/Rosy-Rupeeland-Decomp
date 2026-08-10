@@ -4,7 +4,7 @@
 .extern data_ov090_0221cc68
 .extern data_ov090_0221cc90
 .extern DisplayController_GetVerticalOffset
-.extern func_02005030
+.extern VecFx32Object_InitCopy
 .extern UtilAnimationResource_Init
 .extern GraphicsSpriteState_SetAnimationIndex
 .extern func_ov090_0221b97c
@@ -22,7 +22,7 @@ func_ov090_0221b9a0:
     mov r4, r2
     mov r10, r3
     str r7, [r6, #0x0]
-    bl func_02005030
+    bl VecFx32Object_InitCopy
     ldr r1, .L_0221ba64
     ldr r3, .L_0221ba68
     mov r0, #0x20

@@ -18,9 +18,9 @@ s32 GamePhaseActorScriptVm_DispatchActorScaledVectorCommand(GamePhaseActorScript
     s32 x = (s32)GamePhaseScriptVm_Pop(&self->base) << 4;
     void *actor = self->actor;
     Method method;
-    func_0200500c(&vector, x, y, z);
+    VecFx32Object_InitComponents(&vector, x, y, z);
     method = *(Method *)((u8 *)*(void **)actor + 0xb8);
     method(actor, &vector, command);
-    func_02005058(&vector);
+    VecFx32Object_Destroy(&vector);
     return 0;
 }

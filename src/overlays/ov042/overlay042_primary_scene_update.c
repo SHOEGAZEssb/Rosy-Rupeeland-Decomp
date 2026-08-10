@@ -28,7 +28,7 @@ extern "C" void func_020a1e10(void *owner);
 extern "C" void func_020a1e50(void *owner);
 extern "C" void GraphicsSpriteState_SetAnimationIndex(void *animation, s32 index);
 extern "C" void func_020a1794(void *owner, const void *position, const void *display, s32 arg);
-extern "C" void func_020050a4(void *destination, const void *source);
+extern "C" void VecFx32Object_Assign(void *destination, const void *source);
 extern "C" void *DisplayBrightnessPair_GetScreen(void *controller, s32 screen);
 extern "C" void DisplayBrightness_StartTransition(void *brightness, s32 start, s32 end, s32 duration);
 extern "C" s32 DisplayBrightness_GetCurrent(void *brightness);
@@ -319,7 +319,7 @@ extern "C" void func_ov042_02207114(void *scene)
 
 common_update:
     func_020a1794(owner, (u8 *)scene + 0xa4, (u8 *)primaryDisplay + 0x2c, 0);
-    func_020050a4((u8 *)shadowDisplay + 0x2c, (u8 *)primaryDisplay + 0x2c);
+    VecFx32Object_Assign((u8 *)shadowDisplay + 0x2c, (u8 *)primaryDisplay + 0x2c);
     FIELD(s32, shadowDisplay, 0x34) += 0x28000;
     if (FIELD(s32, scene, 0x1bc) != 0 && FIELD(s32, scene, 0x1bc) < 234) {
         FIELD(s32, primaryDisplay, 0x30) += random_offset(12, 6) * 0x1000;
@@ -331,7 +331,7 @@ common_update:
     } else if (FIELD(u8, animation_of(primaryDisplay), 0x38) == 2) {
         set_display_bit4(secondaryDisplay, 0);
         set_display_scale(secondaryDisplay, FIELD(s32, scene, 0xd0) + 150);
-        func_020050a4((u8 *)secondaryDisplay + 0x2c, (u8 *)primaryDisplay + 0x2c);
+        VecFx32Object_Assign((u8 *)secondaryDisplay + 0x2c, (u8 *)primaryDisplay + 0x2c);
         s32 effectPosition[3];
         func_ov042_02203658(effectPosition, (u8 *)scene + 0xa4);
         s32 side = func_020befec(FIELD(s32, scene, 0xd0), 3);

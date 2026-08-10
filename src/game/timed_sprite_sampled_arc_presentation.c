@@ -41,8 +41,8 @@ extern void *func_0201e250(void *self);
 extern SampledArcSpriteConfig *func_0201f0fc(
     SampledArcSpriteConfig *config);
 extern void *func_0201edd0(void *self, SampledArcSpriteConfig *config);
-extern void func_02005058(void *track);
-extern void func_020050a4(PresentationTrack *destination, const void *source);
+extern void VecFx32Object_Destroy(void *track);
+extern void VecFx32Object_Assign(PresentationTrack *destination, const void *source);
 extern void *ActorMotionAreaFollower_GetPosition(void *source);
 #ifdef __cplusplus
 }
@@ -73,7 +73,7 @@ SampledArcPresentation *func_0201f598(
     config.field04 = field04;
     config.field08 = field08;
     config.field0c = field0c;
-    func_020050a4(&config.first10, trackSource);
+    VecFx32Object_Assign(&config.first10, trackSource);
     config.field34 = 2;
     config.lifetime30 = 1200;
     *(s32 *)&config.second20.bytes[4] = 0;
@@ -86,8 +86,8 @@ SampledArcPresentation *func_0201f598(
     sprite = *(u8 **)((u8 *)presentation + 4);
     *(u16 *)(sprite + 0x28) = (u16)spriteOffset;
     sprite[0x3a] = 2;
-    func_02005058(&config.second20);
-    func_02005058(&config.first10);
+    VecFx32Object_Destroy(&config.second20);
+    VecFx32Object_Destroy(&config.first10);
     return self;
 }
 

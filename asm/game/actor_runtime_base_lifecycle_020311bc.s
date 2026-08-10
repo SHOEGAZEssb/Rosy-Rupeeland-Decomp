@@ -2,7 +2,7 @@
 .text
 .extern Heap_Free
 .extern data_020df040
-.extern func_02005058
+.extern VecFx32Object_Destroy
 .extern VecFx32Stepper_Destroy
 .extern GamePhaseActorScriptVm_Destroy
 .extern ActorCollection_GetSpriteOwner
@@ -46,13 +46,13 @@ func_020311bc: ; 0x020311bc
     add r0, r5, #0xec
     bl GamePhaseActorScriptVm_Destroy
     add r0, r5, #0xb0
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add r0, r5, #0x98
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add r0, r5, #0x88
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add r0, r5, #0x78
-    bl func_02005058
+    bl VecFx32Object_Destroy
     mov r0, r5
     bl func_02030e08
     mov r0, r5

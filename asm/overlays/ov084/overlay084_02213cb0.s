@@ -1,8 +1,8 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov084/overlay084_recovery.c.
-.extern func_02004fe0
-.extern func_02005058
-.extern func_020050a4
+.extern VecFx32Object_Init
+.extern VecFx32Object_Destroy
+.extern VecFx32Object_Assign
 .extern VecFx32Triple_Set
 .extern VecFx32Triple_Destroy
 .extern VecFx32Bezier_Evaluate3D
@@ -49,19 +49,19 @@ func_ov084_02213cb0:
     add r1, r4, #0x298
     bl func_ov084_02212d28
     add r0, sp, #0x10
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add r0, sp, #0x20
-    bl func_02005058
+    bl VecFx32Object_Destroy
     ldr r0, [sp, #0x6c]
     add r5, sp, #0x30
     add r0, r0, #0x18000
     str r0, [sp, #0x6c]
     mov r0, r5
-    bl func_02004fe0
+    bl VecFx32Object_Init
     add r0, sp, #0x40
-    bl func_02004fe0
+    bl VecFx32Object_Init
     add r0, r5, #0x20
-    bl func_02004fe0
+    bl VecFx32Object_Init
     mov r0, r5
     add r1, r4, #0x298
     add r2, r4, #0xb0
@@ -79,13 +79,13 @@ func_ov084_02213cb0:
     bl VecFx32Bezier_Evaluate3D
     add r0, r4, #0x18
     add r1, sp, #0x0
-    bl func_020050a4
+    bl VecFx32Object_Assign
     add r0, sp, #0x0
-    bl func_02005058
+    bl VecFx32Object_Destroy
     mov r0, r5
     bl VecFx32Triple_Destroy
     add r0, sp, #0x60
-    bl func_02005058
+    bl VecFx32Object_Destroy
     mov r0, #0x1
     b .L_02213e08
 .L_02213dd4:
@@ -98,7 +98,7 @@ func_ov084_02213cb0:
     bic r2, r1, #0x20
     add r1, r4, #0xb0
     str r2, [r4, #0x260]
-    bl func_020050a4
+    bl VecFx32Object_Assign
     mov r0, r4
     bl Actor_RefreshTerrainHeight
     mov r0, #0x2

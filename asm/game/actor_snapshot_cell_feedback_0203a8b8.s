@@ -5,8 +5,8 @@
 .extern data_020df4f0
 .extern data_021052fc
 .extern data_021056e4
-.extern func_0200500c
-.extern func_02005058
+.extern VecFx32Object_InitComponents
+.extern VecFx32Object_Destroy
 .extern func_0201ded4
 .extern func_0201f378
 .extern Position_AdjustForTerrainHeight
@@ -25,7 +25,7 @@ ActorFeedback_ProcessSnapshotCell: ; 0x0203a8b8
     mov r1, r1, lsl #0xc
     mov r2, r2, lsl #0xc
     mov r3, #0x0
-    bl func_0200500c
+    bl VecFx32Object_InitComponents
     add r0, sp, #0x1c
     bl Position_AdjustForTerrainHeight
     ldr r0, .L_0203aaac
@@ -46,7 +46,7 @@ ActorFeedback_ProcessSnapshotCell: ; 0x0203a8b8
     cmp r1, #0x1
     beq .L_0203a934
     add r0, sp, #0x1c
-    bl func_02005058
+    bl VecFx32Object_Destroy
     mov r0, #0x0
     b .L_0203aaa4
 .L_0203a934:
@@ -106,7 +106,7 @@ ActorFeedback_ProcessSnapshotCell: ; 0x0203a8b8
     movs r5, r0
     bne .L_0203aa18
     add r0, sp, #0x1c
-    bl func_02005058
+    bl VecFx32Object_Destroy
     mov r0, #0x1
     b .L_0203aaa4
 .L_0203aa18:
@@ -144,7 +144,7 @@ ActorFeedback_ProcessSnapshotCell: ; 0x0203a8b8
     add r0, r0, #0x2c00
     bl func_0201ded4
     add r0, sp, #0x1c
-    bl func_02005058
+    bl VecFx32Object_Destroy
     mov r0, #0x1
 .L_0203aaa4:
     add sp, sp, #0x38

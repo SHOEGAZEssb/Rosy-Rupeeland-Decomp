@@ -57,12 +57,12 @@ VecFx32Triple *VecFx32Triple_InitWithValues(VecFx32Triple *self,
                                             const VecFx32Object *second,
                                             const VecFx32Object *third)
 {
-    func_02004fe0(&self->first);
-    func_02004fe0(&self->second);
-    func_02004fe0(&self->third);
-    func_020050a4(&self->first, first);
-    func_020050a4(&self->second, second);
-    func_020050a4(&self->third, third);
+    VecFx32Object_Init(&self->first);
+    VecFx32Object_Init(&self->second);
+    VecFx32Object_Init(&self->third);
+    VecFx32Object_Assign(&self->first, first);
+    VecFx32Object_Assign(&self->second, second);
+    VecFx32Object_Assign(&self->third, third);
     return self;
 }
 
@@ -70,12 +70,12 @@ VecFx32Triple *VecFx32Triple_InitWithValues(VecFx32Triple *self,
 VecFx32Triple *VecFx32Triple_InitCopy(VecFx32Triple *self,
                                      const VecFx32Triple *source)
 {
-    func_02004fe0(&self->first);
-    func_02004fe0(&self->second);
-    func_02004fe0(&self->third);
-    func_020050a4(&self->first, &source->first);
-    func_020050a4(&self->second, &source->second);
-    func_020050a4(&self->third, &source->third);
+    VecFx32Object_Init(&self->first);
+    VecFx32Object_Init(&self->second);
+    VecFx32Object_Init(&self->third);
+    VecFx32Object_Assign(&self->first, &source->first);
+    VecFx32Object_Assign(&self->second, &source->second);
+    VecFx32Object_Assign(&self->third, &source->third);
     return self;
 }
 
@@ -95,9 +95,9 @@ SplineMover *SplineMover_InitTransition(SplineMover *self,
     self->vtable = data_020d4218;
     VecFx32Triple_InitWithValues(&temporary, current, target, control);
     VecFx32Triple_InitCopy(&self->points, &temporary);
-    func_02005058(&temporary.third);
-    func_02005058(&temporary.second);
-    func_02005058(&temporary.first);
+    VecFx32Object_Destroy(&temporary.third);
+    VecFx32Object_Destroy(&temporary.second);
+    VecFx32Object_Destroy(&temporary.first);
     self->parameter = 0;
     self->parameterStep = func_020befec(0x1000, duration);
     return self;
@@ -107,9 +107,9 @@ SplineMover *SplineMover_InitTransition(SplineMover *self,
 VecFx32Triple *VecFx32Triple_Assign(VecFx32Triple *self,
                                    const VecFx32Triple *source)
 {
-    func_020050a4(&self->first, &source->first);
-    func_020050a4(&self->second, &source->second);
-    func_020050a4(&self->third, &source->third);
+    VecFx32Object_Assign(&self->first, &source->first);
+    VecFx32Object_Assign(&self->second, &source->second);
+    VecFx32Object_Assign(&self->third, &source->third);
     return self;
 }
 

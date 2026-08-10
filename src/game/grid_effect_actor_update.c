@@ -15,8 +15,8 @@ extern void *gSceneManager;
 extern "C" {
 #endif
 extern void *SceneManager_GetCurrent(void *manager);
-extern void func_020050a4(void *destination, const void *source);
-extern void func_020050c8(void *destination, const void *source);
+extern void VecFx32Object_Assign(void *destination, const void *source);
+extern void VecFx32Object_Add(void *destination, const void *source);
 extern void GraphicsSpriteState_SetScreenPositionCulled(void *presentation, s32 x, s32 y, s32 mode);
 extern void *ActorCollection_QueueActorForRemoval(void *value, void *actor);
 extern void *Actor_GetCollection(void *actor);
@@ -78,7 +78,7 @@ void func_0204ee24(void *actor)
         FIELD(u16, actor, 0x1f0) = (flags & 3) | (u16)((age + 1) << 2);
 
     FIELD(u8, actor, 0x21b) = 0;
-    func_020050a4((u8 *)actor + 0x28, (u8 *)actor + 0x18);
+    VecFx32Object_Assign((u8 *)actor + 0x28, (u8 *)actor + 0x18);
 
     switch (FIELD(u16, actor, 0x1f0) & 3) {
     case 0: {
@@ -87,7 +87,7 @@ void func_0204ee24(void *actor)
         ActorScalarCallback gravity =
             *(ActorScalarCallback *)((u8 *)FIELD(void *, actor, 0) + 0xb0);
         FIELD(s32, actor, 0x44) -= gravity(actor);
-        func_020050c8((u8 *)actor + 0x18, (u8 *)actor + 0x38);
+        VecFx32Object_Add((u8 *)actor + 0x18, (u8 *)actor + 0x38);
         if (FIELD(s32, actor, 0x24) < FIELD(s32, actor, 0x1dc)) {
             FIELD(s32, actor, 0x24) = FIELD(s32, actor, 0x1dc);
             set_state(actor, 1);

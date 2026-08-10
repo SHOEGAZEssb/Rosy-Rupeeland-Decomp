@@ -27,10 +27,10 @@ extern void func_ov039_021fce00(void *object);
 extern void func_ov039_021fce40(void *object);
 extern void func_ov039_021fce5c(void *object);
 extern void func_ov039_021fd06c(void *object);
-extern void func_02004fe0(void *vector);
-extern void func_02005030(void *destination, const void *source);
-extern void func_02005058(void *vector);
-extern void func_0200500c(void *vector, s32 x, s32 y, s32 z);
+extern void VecFx32Object_Init(void *vector);
+extern void VecFx32Object_InitCopy(void *destination, const void *source);
+extern void VecFx32Object_Destroy(void *vector);
+extern void VecFx32Object_InitComponents(void *vector, s32 x, s32 y, s32 z);
 extern void func_ov039_02204168(void *destination, const void *source);
 extern u32 genrand_int32(void);
 extern s32 func_020befec(s32 value, s32 divisor);
@@ -71,8 +71,8 @@ extern "C" void func_ov039_0220454c(void *scene)
         void *effect = FIELD(void *, scene, 0x9c + i * 4);
         if (!FIELD(s32, effect, 0)) continue;
         Overlay039ResourceVector scale, position;
-        func_0200500c(&scale, 0x1000, 0x1000, 0x1000);
-        func_02004fe0(&position);
+        VecFx32Object_InitComponents(&scale, 0x1000, 0x1000, 0x1000);
+        VecFx32Object_Init(&position);
         position.x_04 = FIELD(s32, effect, 0x10);
         position.y_08 = FIELD(s32, effect, 0x14);
         position.z_0c = 0;
@@ -82,8 +82,8 @@ extern "C" void func_ov039_0220454c(void *scene)
             position.y_08 = FIELD(s32, effect, 0x90 + j * 12);
             func_0209c430(resource, &position, &scale, 0x7fff);
         }
-        func_02005058(&position);
-        func_02005058(&scale);
+        VecFx32Object_Destroy(&position);
+        VecFx32Object_Destroy(&scale);
     }
 }
 
@@ -107,8 +107,8 @@ extern "C" void *func_ov039_0220482c(void *emitter)
         func_ov039_02204900((u8 *)emitter + 4 + i * 8);
         func_ov039_021fce40((u8 *)emitter + 0x13c + i * 12);
     }
-    func_02004fe0((u8 *)emitter + 0x378);
-    func_02004fe0((u8 *)emitter + 0x388);
+    VecFx32Object_Init((u8 *)emitter + 0x378);
+    VecFx32Object_Init((u8 *)emitter + 0x388);
     for (s32 i = 12; i >= 0; i--) {
         u8 *phase = (u8 *)emitter + i * 24;
         FIELD(u16, phase, 0x10) = (u16)genrand_int32();
@@ -224,9 +224,9 @@ extern "C" void *func_ov039_022058d8(void *scene, void *owner, void *context)
 {
     func_ov039_021fce00(scene);
     FIELD(void *, scene, 0) = data_ov039_02208498;
-    func_02004fe0((u8 *)scene + 0x84);
-    func_02004fe0((u8 *)scene + 0x94);
-    func_02004fe0((u8 *)scene + 0xc4);
+    VecFx32Object_Init((u8 *)scene + 0x84);
+    VecFx32Object_Init((u8 *)scene + 0x94);
+    VecFx32Object_Init((u8 *)scene + 0xc4);
     FIELD(void *, scene, 0x80) = owner;
     FIELD(void *, scene, 0x48) = func_0209a208(scene, 0x1036, 0x1001, 0x1037,
                                                context, 2);
@@ -262,9 +262,9 @@ extern "C" void *func_ov039_022058d8(void *scene, void *owner, void *context)
  */
 extern "C" void *func_ov039_02205b94(void *scene)
 {
-    func_02005058((u8 *)scene + 0xc4);
-    func_02005058((u8 *)scene + 0x94);
-    func_02005058((u8 *)scene + 0x84);
+    VecFx32Object_Destroy((u8 *)scene + 0xc4);
+    VecFx32Object_Destroy((u8 *)scene + 0x94);
+    VecFx32Object_Destroy((u8 *)scene + 0x84);
     func_02099fb0(scene);
     return scene;
 }

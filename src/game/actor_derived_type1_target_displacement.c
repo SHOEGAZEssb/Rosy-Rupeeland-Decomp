@@ -11,11 +11,11 @@ extern const char data_020df4a4[];
 extern "C" {
 #endif
 extern void VecFx32_Subtract(void *output, const void *first, const void *second);
-extern s32 func_020050f0(const void *first, const void *second);
+extern s32 VecFx32Object_Subtract(const void *first, const void *second);
 extern s32 func_020adae4(s32 numerator, s32 denominator);
 extern s32 func_020ae024(s32 y, s32 x);
 extern void func_0204cff4(s32 *x, s32 *y, s32 maximum);
-extern void func_02005058(void *vector);
+extern void VecFx32Object_Destroy(void *vector);
 extern void ActorVector_DivideByScalar(void *output, const void *direction, s32 scale);
 extern void func_02008378(void *output, const void *left, const void *right);
 extern void *func_0201e0ec(void *manager);
@@ -25,8 +25,8 @@ extern s32 ActorExtendedType2_GetDescriptorValue28(void *target);
 extern u32 genrand_int32(void);
 extern s32 func_020ada8c(s32 value, s32 divisor);
 extern void GamePhaseCurrencyHud_AddCurrency(void *context, s32 value, s32 extra);
-extern void func_0200500c(void *vector, s32 x, s32 y, s32 z);
-extern void func_02004fe0(void *vector);
+extern void VecFx32Object_InitComponents(void *vector, s32 x, s32 y, s32 z);
+extern void VecFx32Object_Init(void *vector);
 extern void *ActorMotionAreaFollower_GetPosition(void *manager);
 extern void *func_02022cb0(void *allocation, void *resource, void *owner,
                            s32 value, s32 first, s32 second);
@@ -88,7 +88,7 @@ void ActorDerivedType1_ApplyWeightedCollisionDisplacement(
 
     VecFx32_Subtract(actorCenter, actor + 0x18, actor + 0x28);
     VecFx32_Subtract(targetCenter, target + 0x18, target + 0x28);
-    (void)func_020050f0(actorCenter, targetCenter);
+    (void)VecFx32Object_Subtract(actorCenter, targetCenter);
     strength = displacementStrength(total);
     angle = func_020ae024(*(s32 *)(target + 0x20) - *(s32 *)(actor + 0x20),
                           *(s32 *)(target + 0x1c) - *(s32 *)(actor + 0x1c));
@@ -135,8 +135,8 @@ void ActorDerivedType1_ApplyWeightedCollisionDisplacement(
         VecFx32_Subtract(separation, target + 0x18, actor + 0x18);
         ActorVector_DivideByScalar(normalized, separation, 0x2000);
         func_02008378(effectPosition, actor + 0x18, normalized);
-        func_02005058(normalized);
-        func_02005058(separation);
+        VecFx32Object_Destroy(normalized);
+        VecFx32Object_Destroy(separation);
         effectPosition[2] += 0x18000 - effectPosition[3];
         effect = func_0201e0ec(data_021052fc + 0x2f7c);
         func_020a2894(effect, 1, effectPosition[1], effectPosition[2], 0);
@@ -173,10 +173,10 @@ void ActorDerivedType1_ApplyWeightedCollisionDisplacement(
             s32 negative = -magnitude;
             *(s16 *)(actor + 0x268) = 30;
             GamePhaseCurrencyHud_AddCurrency(gLupyContext, negative, 0);
-            func_0200500c(position, *(s32 *)(actor + 0x1c),
+            VecFx32Object_InitComponents(position, *(s32 *)(actor + 0x1c),
                           *(s32 *)(actor + 0x20),
                           *(s32 *)(actor + 0x24) + 0x18000);
-            func_02004fe0(temporary);
+            VecFx32Object_Init(temporary);
             object = Heap_Alloc(0x44, data_020df4a4, 4, &gHeapContext);
             if (object != 0) {
                 void *managerResource =
@@ -190,11 +190,11 @@ void ActorDerivedType1_ApplyWeightedCollisionDisplacement(
             func_020349b8(actor, 0x26, 0);
             func_020349b8(actor, 0x0e, 0);
             Type1Actor_TryEnterFailureState(actor);
-            func_02005058(temporary);
-            func_02005058(position);
+            VecFx32Object_Destroy(temporary);
+            VecFx32Object_Destroy(position);
         }
-        func_02005058(effectPosition);
+        VecFx32Object_Destroy(effectPosition);
     }
-    func_02005058(targetCenter);
-    func_02005058(actorCenter);
+    VecFx32Object_Destroy(targetCenter);
+    VecFx32Object_Destroy(actorCenter);
 }

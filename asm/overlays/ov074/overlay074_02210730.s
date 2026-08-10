@@ -1,7 +1,7 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov074/overlay074_recovery.c.
 .extern data_021052fc
-.extern func_02005058
+.extern VecFx32Object_Destroy
 .extern SplineMover_Update
 .extern SplineMover_Evaluate2D
 .extern GamePhaseRuntime_GetActorCollection
@@ -62,7 +62,7 @@ func_ov074_02210730:
     ldr r0, [r0, #0xfb8]
     bl GamePhaseAreaScene_SetEnabled
     add r0, sp, #0x0
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add sp, sp, #0x10
     ldmia sp!, {r4, pc}
 .L_022107f4: .word data_021052fc

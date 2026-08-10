@@ -26,10 +26,10 @@ extern void func_ov039_021fce40(void *object);
 extern void func_ov039_021fce5c(void *object);
 extern u32 genrand_int32(void);
 extern void func_0209a2ac(void *object, void *context, s32 enabled);
-extern void func_0200500c(void *vector, s32 x, s32 y, s32 z);
-extern void func_02004fe0(void *vector);
-extern void func_02005030(void *destination, const void *source);
-extern void func_02005058(void *vector);
+extern void VecFx32Object_InitComponents(void *vector, s32 x, s32 y, s32 z);
+extern void VecFx32Object_Init(void *vector);
+extern void VecFx32Object_InitCopy(void *destination, const void *source);
+extern void VecFx32Object_Destroy(void *vector);
 extern void func_ov039_022014f8(void *output, const void *first,
                                 const void *second);
 extern void func_ov039_022014e0(void *output, void *input);
@@ -98,19 +98,19 @@ extern "C" void func_ov039_022039b8(void *scene, void *context)
     Overlay039EffectVector bounds;
     func_ov039_022014e0(&bounds, ownerPos);
     func_ov045_0220c48c((u8 *)scene + 0x464, &bounds, 0x40000, 0x40000);
-    func_02005058(&bounds);
+    VecFx32Object_Destroy(&bounds);
 
     Overlay039EffectVector iterator;
-    func_02004fe0(&iterator);
+    VecFx32Object_Init(&iterator);
     while (func_ov049_0220c254((u8 *)scene + 0x464, &iterator)) {
         Overlay039EffectVector source;
-        func_02005030(&source, (u8 *)ownerPos + 0x2c);
+        VecFx32Object_InitCopy(&source, (u8 *)ownerPos + 0x2c);
         func_ov039_022035d4(scene, source.x_04, source.y_08,
                             iterator.x_04, iterator.y_08);
-        func_02005058(&source);
+        VecFx32Object_Destroy(&source);
     }
     func_ov049_0220cf94((u8 *)scene + 0x464);
-    func_02005058(&iterator);
+    VecFx32Object_Destroy(&iterator);
     func_ov069_0221100c((u8 *)scene + 0xb3c, 0);
     func_ov069_02211274((u8 *)scene + 0xb3c);
 }
@@ -189,7 +189,7 @@ extern "C" void func_ov039_02203f94(void *scene)
         Sound_Play(FIELD(void *, gSoundContext, 0), 0x1c5, 1);
         break;
     }
-    func_02005058(&origin);
+    VecFx32Object_Destroy(&origin);
 }
 
 /* Deactivate all three secondary effect objects. */

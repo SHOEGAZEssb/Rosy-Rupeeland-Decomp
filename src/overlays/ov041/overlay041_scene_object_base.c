@@ -9,7 +9,7 @@
 #define FIELD(type, base, offset) (*(type *)((u8 *)(base) + (offset)))
 
 extern "C" {
-void func_02004fe0(void *);
+void VecFx32Object_Init(void *);
 extern u8 data_020f3058;
 }
 
@@ -21,8 +21,8 @@ extern u8 data_020f3058;
 extern "C" void *func_ov041_021ff1cc(void *object)
 {
     FIELD(void *, object, 0) = &data_020f3058;
-    func_02004fe0((u8 *)object + 0x1c);
-    func_02004fe0((u8 *)object + 0x2c);
+    VecFx32Object_Init((u8 *)object + 0x1c);
+    VecFx32Object_Init((u8 *)object + 0x2c);
     FIELD(s32, object, 4) = 0;
     FIELD(s32, object, 8) = 0;
     FIELD(s32, object, 0x0c) = 0;

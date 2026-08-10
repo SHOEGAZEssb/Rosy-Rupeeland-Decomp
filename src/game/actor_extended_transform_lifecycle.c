@@ -12,8 +12,8 @@ extern "C" {
 #endif
 extern void *ActorExtendedType2_Init(void *actor, const void *configuration);
 extern void *ActorExtendedType2_Destroy(void *actor);
-extern void func_0200500c(void *value, s32 x, s32 y, s32 z);
-extern void func_02005058(void *value);
+extern void VecFx32Object_InitComponents(void *value, s32 x, s32 y, s32 z);
+extern void VecFx32Object_Destroy(void *value);
 extern s32 ActorExtendedType2_GetDescriptorValue2C(const void *actor);
 #ifdef __cplusplus
 }
@@ -31,7 +31,7 @@ void *ActorExtendedTransform_Init(void *self, const void *configuration)
     ActorExtendedType2_Init(actor, configuration);
     *(void **)actor = data_020e08ec;
     *(u16 *)(actor + 0x298) = 0;
-    func_0200500c(actor + 0x29c, 0, 0, 0);
+    VecFx32Object_InitComponents(actor + 0x29c, 0, 0, 0);
     *(u16 *)(actor + 0x29a) = (u16)ActorExtendedType2_GetDescriptorValue2C(actor);
     return actor;
 }
@@ -43,7 +43,7 @@ void *ActorExtendedTransform_InitDuplicate(void *self, const void *configuration
     ActorExtendedType2_Init(actor, configuration);
     *(void **)actor = data_020e08ec;
     *(u16 *)(actor + 0x298) = 0;
-    func_0200500c(actor + 0x29c, 0, 0, 0);
+    VecFx32Object_InitComponents(actor + 0x29c, 0, 0, 0);
     *(u16 *)(actor + 0x29a) = (u16)ActorExtendedType2_GetDescriptorValue2C(actor);
     return actor;
 }
@@ -51,7 +51,7 @@ void *ActorExtendedTransform_InitDuplicate(void *self, const void *configuration
 /* Finalize +0x29c, invoke the base destructor, and return self. */
 void *ActorExtendedTransform_DestroyComplete(void *self)
 {
-    func_02005058((u8 *)self + 0x29c);
+    VecFx32Object_Destroy((u8 *)self + 0x29c);
     ActorExtendedType2_Destroy(self);
     return self;
 }
@@ -62,7 +62,7 @@ void *ActorExtendedTransform_DestroyComplete(void *self)
  */
 void *ActorExtendedTransform_DestroyAndFree(void *self)
 {
-    func_02005058((u8 *)self + 0x29c);
+    VecFx32Object_Destroy((u8 *)self + 0x29c);
     ActorExtendedType2_Destroy(self);
     Heap_Free(self);
     return self;
@@ -71,7 +71,7 @@ void *ActorExtendedTransform_DestroyAndFree(void *self)
 /* Finalize +0x29c, invoke the base destructor, and return self. */
 void *ActorExtendedTransform_Destroy(void *self)
 {
-    func_02005058((u8 *)self + 0x29c);
+    VecFx32Object_Destroy((u8 *)self + 0x29c);
     ActorExtendedType2_Destroy(self);
     return self;
 }

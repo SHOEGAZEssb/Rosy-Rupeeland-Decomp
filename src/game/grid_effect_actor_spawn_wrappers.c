@@ -11,9 +11,9 @@ extern u16 data_02105790[];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_0200500c(void *vector, s32 x, s32 y, s32 z);
-extern void func_02005058(void *vector);
-extern void func_020050a4(void *destination, const void *source);
+extern void VecFx32Object_InitComponents(void *vector, s32 x, s32 y, s32 z);
+extern void VecFx32Object_Destroy(void *vector);
+extern void VecFx32Object_Assign(void *destination, const void *source);
 extern void *func_0204f62c(const void *position, void *source, s16 timer);
 extern u32 genrand_int32(void);
 #ifdef __cplusplus
@@ -46,12 +46,12 @@ s32 func_0204f7e4(const void *position, void *source, s16 timer)
     if (actor == 0)
         return 0;
     u32 random = genrand_int32();
-    func_0200500c(&velocity,
+    VecFx32Object_InitComponents(&velocity,
                   0x1000 - (s32)(random & 0x1fff),
                   0x1000 - (s32)((random >> 16) & 0x1fff),
                   0x3000);
-    func_020050a4((u8 *)actor + 0x38, &velocity);
-    func_02005058(&velocity);
+    VecFx32Object_Assign((u8 *)actor + 0x38, &velocity);
+    VecFx32Object_Destroy(&velocity);
     return 1;
 }
 
@@ -76,7 +76,7 @@ s32 func_0204f854(const void *position, const void *velocity,
     void *actor = func_0204f62c(position, source, timer);
     if (actor == 0)
         return 0;
-    func_020050a4((u8 *)actor + 0x38, velocity);
+    VecFx32Object_Assign((u8 *)actor + 0x38, velocity);
     FIELD(u32, actor, 0x14) |= 2;
     return 1;
 }
@@ -100,12 +100,12 @@ s32 func_0204f894(const void *position, void *source, s16 timer)
     if (data_02105790[0] > 0x8000)
         data_02105790[0] -= 0x8000;
     s32 index = (s16)data_02105790[0] >> 4;
-    func_0200500c(&velocity,
+    VecFx32Object_InitComponents(&velocity,
                   fx_mul(data_020c9670[index * 2 + 1], 0x1333),
                   fx_mul(data_020c9670[index * 2], 0x1333),
                   0x3000);
-    func_020050a4((u8 *)actor + 0x38, &velocity);
-    func_02005058(&velocity);
+    VecFx32Object_Assign((u8 *)actor + 0x38, &velocity);
+    VecFx32Object_Destroy(&velocity);
     return 1;
 }
 

@@ -3,7 +3,7 @@
 .extern OS_Halt
 .extern data_021052fc
 .extern data_ov095_0221cba8
-.extern func_020050a4
+.extern VecFx32Object_Assign
 .extern func_020593dc
 .extern func_ov095_02218404
 .extern gSoundContext
@@ -50,7 +50,7 @@ func_ov095_02218130:
     ldr r1, [r1, #0xea4]
     str r1, [r4, #0x228]
     add r1, r1, #0x18
-    bl func_020050a4
+    bl VecFx32Object_Assign
     mov r1, #0x0
     ldr r0, [r4, #0x2fc]
     mov r2, r1

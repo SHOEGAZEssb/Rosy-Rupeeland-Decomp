@@ -13,8 +13,8 @@ extern u8 gSceneTouchInitialData[];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_02005030(void *destination, const void *source);
-extern void func_02005058(void *value);
+extern void VecFx32Object_InitCopy(void *destination, const void *source);
+extern void VecFx32Object_Destroy(void *value);
 extern s32 func_02008514(void *runtime, s32 x, s32 y);
 extern void *func_0201f378(void *allocation, ...);
 extern void *func_0201f598(void *allocation, ...);
@@ -86,7 +86,7 @@ s32 ActorFeedback_DispatchEnvironment(void *self)
     s32 dy;
     u16 sound = 0;
 
-    func_02005030(position, actor + 0x18);
+    VecFx32Object_InitCopy(position, actor + 0x18);
     first = data_020c9670[direction * 0x400];
     second = data_020c9670[direction * 0x400 + 1];
     position[1] = (position[1] - first * 12) & ~0xfff;
@@ -195,6 +195,6 @@ scanComplete:
     }
 
     playPackedSound(sound);
-    func_02005058(position);
+    VecFx32Object_Destroy(position);
     return result;
 }

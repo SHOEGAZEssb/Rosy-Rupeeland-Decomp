@@ -1,8 +1,8 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov050/overlay050_effect_recovery.c.
-.extern func_0200500c
-.extern func_02005058
-.extern func_020050a4
+.extern VecFx32Object_InitComponents
+.extern VecFx32Object_Destroy
+.extern VecFx32Object_Assign
 .extern genrand_int32
 
 .global func_ov050_0220d7c4
@@ -23,12 +23,12 @@ func_ov050_0220d7c4:
     add r0, sp, #0x0
     mov r3, r1
     orr r2, r2, ip, lsl #0x14
-    bl func_0200500c
+    bl VecFx32Object_InitComponents
     add r1, sp, #0x0
     add r0, r4, #0x18
-    bl func_020050a4
+    bl VecFx32Object_Assign
     add r0, sp, #0x0
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add sp, sp, #0x10
     ldmia sp!, {r3, r4, r5, pc}
 .size func_ov050_0220d7c4, . - func_ov050_0220d7c4

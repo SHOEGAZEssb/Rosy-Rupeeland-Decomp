@@ -6,7 +6,7 @@ extern "C" {
 #endif
 extern s32 func_02057084(s32 x, s32 y);
 extern void GraphicsSpriteState_SetAnimationIndex(void *attachment, u32 animation);
-extern void func_020050a4(void *destination, const void *source);
+extern void VecFx32Object_Assign(void *destination, const void *source);
 extern void ActorBounds_Translate(void *bounds, s32 x, s32 y);
 extern void Position_AdjustForTerrainHeight(void *position);
 #ifdef __cplusplus
@@ -41,7 +41,7 @@ void Actor_UpdateAttachmentDirectionFromVector(void *self, s32 x, s32 y)
 /* Copy the supplied vector into actor+0x38; returns no value. */
 void Actor_SetVelocity(void *self, const void *value)
 {
-    func_020050a4((u8 *)self + 0x38, value);
+    VecFx32Object_Assign((u8 *)self + 0x38, value);
 }
 
 /* Update the signed-byte bounds at actor+8 from x and y; returns no value. */

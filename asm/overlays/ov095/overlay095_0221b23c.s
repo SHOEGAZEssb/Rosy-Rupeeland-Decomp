@@ -1,7 +1,7 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov095/overlay095_recovery.c.
 .extern data_ov095_0221cf4c
-.extern func_02004fe0
+.extern VecFx32Object_Init
 .extern Actor_QueryTerrainHeight
 .extern ActorExtendedType2_Init
 
@@ -17,7 +17,7 @@ func_ov095_0221b23c:
     strh r1, [r0, #0x98]
     strh r1, [r0, #0x9a]
     add r0, r4, #0x29c
-    bl func_02004fe0
+    bl VecFx32Object_Init
     ldr r1, [r4, #0x230]
     ldr r2, [r4, #0x234]
     mov r0, r4

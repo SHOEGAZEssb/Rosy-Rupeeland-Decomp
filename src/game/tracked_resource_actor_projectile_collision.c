@@ -7,9 +7,9 @@ extern "C" {
 #endif
 extern void *data_02105310;
 extern u32 genrand_int32(void);
-extern void func_02004fe0(void *vector);
-extern void func_02005058(void *vector);
-extern void func_020050a4(void *destination, const void *source);
+extern void VecFx32Object_Init(void *vector);
+extern void VecFx32Object_Destroy(void *vector);
+extern void VecFx32Object_Assign(void *destination, const void *source);
 extern s32 ActorRuntimeCollection_GetPendingAttachmentFlag(void *state);
 extern void ActorCollection_QueueActorForRemoval(void *handle, void *actor);
 extern void *Actor_GetCollection(void *actor);
@@ -45,7 +45,7 @@ void func_020515fc(void *actor, void *target)
     s32 vector[4];
     u32 random;
 
-    func_02004fe0(vector);
+    VecFx32Object_Init(vector);
     random = genrand_int32();
     vector[1] = func_020ada8c((s32)(random & 0x7fffffff), 0x2000) - 0x1000;
     vector[2] = func_020ada8c((s32)((random & 0x7fffffff) >> 4), 0x2000) - 0x1000;
@@ -53,7 +53,7 @@ void func_020515fc(void *actor, void *target)
         virtual_function(target, 0xb8)(target, vector, 1);
     vector[1] = -vector[1];
     vector[2] = -vector[2];
-    func_020050a4((u8 *)actor + 0x38, vector);
+    VecFx32Object_Assign((u8 *)actor + 0x38, vector);
     FIELD(u16, actor, 0x1f0) = (FIELD(u16, actor, 0x1f0) & 0x8000) | 2;
     FIELD(u32, actor, 0x10) |= 0x1f0000;
     FIELD(u16, actor, 0x1f8) = 0;
@@ -61,5 +61,5 @@ void func_020515fc(void *actor, void *target)
     ActorCollection_QueueActorForRemoval(Actor_GetCollection(actor), actor);
     func_02050260(actor);
     func_02050560(actor, target);
-    func_02005058(vector);
+    VecFx32Object_Destroy(vector);
 }

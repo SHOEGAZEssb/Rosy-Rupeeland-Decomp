@@ -1,6 +1,6 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov083/overlay083_recovery.c.
-.extern func_020050a4
+.extern VecFx32Object_Assign
 .extern ActorExtendedLinkSource_ClearPartnerLinkedFlag
 .extern func_ov083_02213bd4
 .extern genrand_int32
@@ -21,7 +21,7 @@ func_ov083_02213be8:
     beq .L_02213c24
     add r0, r4, #0x18
     add r1, r1, #0x18
-    bl func_020050a4
+    bl VecFx32Object_Assign
 .L_02213c24:
     ldr r0, [r4, #0x14]
     orr r1, r0, #0x10

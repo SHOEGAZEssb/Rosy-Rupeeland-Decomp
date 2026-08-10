@@ -2,8 +2,8 @@
 .text
 .extern data_020c9670
 .extern data_021052fc
-.extern func_02005058
-.extern func_020050f0
+.extern VecFx32Object_Destroy
+.extern VecFx32Object_Subtract
 .extern VecFx32_Subtract
 .extern func_02008378
 .extern func_0201e0ec
@@ -35,7 +35,7 @@ Type7Actor_ApplyType2InteractionResponse: ; 0x02046e60
     bl VecFx32_Subtract
     add r0, sp, #0x44
     add r1, sp, #0x34
-    bl func_020050f0
+    bl VecFx32Object_Subtract
     mov r0, r4, lsl #0xc
     mov r1, #0x32
     bl func_020adae4
@@ -194,9 +194,9 @@ Type7Actor_ApplyType2InteractionResponse: ; 0x02046e60
     add r1, r7, #0x18
     bl func_02008378
     add r0, sp, #0x4
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add r0, sp, #0x14
-    bl func_02005058
+    bl VecFx32Object_Destroy
     ldr r0, .L_020471e0
     ldr r1, [sp, #0x30]
     ldr r0, [r0, #0x0]
@@ -239,11 +239,11 @@ Type7Actor_ApplyType2InteractionResponse: ; 0x02046e60
     strh r1, [r0, #0x46]
 .L_020471bc:
     add r0, sp, #0x24
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add r0, sp, #0x34
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add r0, sp, #0x44
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add sp, sp, #0x54
     ldmia sp!, {r4, r5, r6, r7, r8, r9, r10, r11, pc}
 .L_020471dc: .word data_020c9670

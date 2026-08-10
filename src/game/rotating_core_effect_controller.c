@@ -59,11 +59,11 @@ extern const s16 data_020c9670[];
 extern u8 *data_021052fc;
 extern void func_0201e250(void *);
 extern void func_0201e28c(void *);
-extern void func_02004fe0(ControllerVector *);
-extern void func_0200500c(ControllerVector *, s32, s32, s32);
-extern void func_02005030(ControllerVector *, const ControllerVector *);
-extern void func_02005058(ControllerVector *);
-extern void func_020050a4(ControllerVector *, const ControllerVector *);
+extern void VecFx32Object_Init(ControllerVector *);
+extern void VecFx32Object_InitComponents(ControllerVector *, s32, s32, s32);
+extern void VecFx32Object_InitCopy(ControllerVector *, const ControllerVector *);
+extern void VecFx32Object_Destroy(ControllerVector *);
+extern void VecFx32Object_Assign(ControllerVector *, const ControllerVector *);
 extern void func_02008378(ControllerVector *, const ControllerVector *,
                           const ControllerVector *);
 extern void *AnimationResource_Init(ResourceDescriptor *, s32, s32, s32);
@@ -105,7 +105,7 @@ RotatingCoreEffectController *func_02025300(
 {
     func_0201e250(self);
     self->vtable00 = (void **)data_020d6a70;
-    func_02005030(&self->position18, position);
+    VecFx32Object_InitCopy(&self->position18, position);
     self->effect28 = 0;
     self->optionalDescriptor2c = 0;
     self->value30 = 0x100;
@@ -156,7 +156,7 @@ RotatingCoreEffectController *func_020254a4(
     destroy_polymorphic(self->firstDescriptor0c);
     destroy_polymorphic(self->secondDescriptor10);
     destroy_polymorphic(self->thirdDescriptor14);
-    func_02005058(&self->position18);
+    VecFx32Object_Destroy(&self->position18);
     func_0201e28c(self);
     return self;
 }
@@ -232,21 +232,21 @@ s32 func_020256b4(RotatingCoreEffectController *self)
                 u32 randomFlags;
                 s32 angle;
 
-                func_02004fe0(&first);
-                func_02004fe0(&position);
+                VecFx32Object_Init(&first);
+                VecFx32Object_Init(&position);
                 resourceRecord = *(u8 **)(
                     *(u8 **)(self->core08 + 4) + 0x34);
                 config[0] = *(u32 *)resourceRecord;
                 config[1] = (u32)self->optionalDescriptor2c->resource04;
                 config[2] = (u32)self->optionalDescriptor2c->palette08;
                 config[3] = (u32)self->optionalDescriptor2c->animation0c;
-                func_020050a4(&first, &self->position18);
+                VecFx32Object_Assign(&first, &self->position18);
                 angle = *(s32 *)(self->core08 + 0x2d8) >> 4;
                 first.x04 += data_020c9670[angle * 2 + 1] << 4;
                 first.y08 += (data_020c9670[angle * 2] << 4) - 0x18000;
-                func_0200500c(&offset, 0, -0x18000, 0);
+                VecFx32Object_InitComponents(&offset, 0, -0x18000, 0);
                 func_02008378(&combined, &self->position18, &offset);
-                func_02005058(&offset);
+                VecFx32Object_Destroy(&offset);
                 self->effect28 = (TransientOrbitEffect *)Heap_Alloc(
                     0x50, data_020d6aa0, 4, &gHeapContext);
                 if (self->effect28) {
@@ -259,9 +259,9 @@ s32 func_020256b4(RotatingCoreEffectController *self)
                 if (randomFlags & 1) *(u16 *)(self->effect28->sprite04 + 0x24) |= 0x80;
                 if (randomFlags & 2) *(u16 *)(self->effect28->sprite04 + 0x24) |= 0x40;
                 func_0201e3b8(self->effect28, 1);
-                func_02005058(&combined);
-                func_02005058(&position);
-                func_02005058(&first);
+                VecFx32Object_Destroy(&combined);
+                VecFx32Object_Destroy(&position);
+                VecFx32Object_Destroy(&first);
             }
         } else {
             self->stateFlags36 = (u16)((self->stateFlags36 & 0x8000) | 1);
@@ -286,14 +286,14 @@ s32 func_020256b4(RotatingCoreEffectController *self)
     func_0206c0b0(self->core08, self->value30, -1);
     *(s32 *)(self->core08 + 0x2d8) =
         (s16)(*(s32 *)(self->core08 + 0x2d8) + 0x180);
-    func_02005030(&position, &self->position18);
+    VecFx32Object_InitCopy(&position, &self->position18);
     if (self->jitterFrames32 > 0) {
         position.x04 += (4 - (s32)(func_020bf1f8(genrand_int32(), 9) >> 32)) << 12;
         position.y08 += (4 - (s32)(func_020bf1f8(genrand_int32(), 9) >> 32)) << 12;
         self->jitterFrames32--;
     }
     func_0206bb18(self->core08, &position);
-    func_02005058(&position);
+    VecFx32Object_Destroy(&position);
     return 0;
 }
 

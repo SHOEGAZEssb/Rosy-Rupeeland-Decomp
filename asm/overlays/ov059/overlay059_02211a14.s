@@ -1,8 +1,8 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov059/overlay059_recovery.c.
-.extern func_0200500c
-.extern func_02005030
-.extern func_02005058
+.extern VecFx32Object_InitComponents
+.extern VecFx32Object_InitCopy
+.extern VecFx32Object_Destroy
 .extern SplineMover_Destroy
 .extern SplineMover_InitTransition
 .extern SplineMover_Assign
@@ -17,15 +17,15 @@ func_ov059_02211a14:
     add r0, sp, #0x60
     mov r3, r1
     mov r2, r2, lsl #0xc
-    bl func_0200500c
+    bl VecFx32Object_InitComponents
     mov r1, #0x0
     add r0, sp, #0x50
     mov r3, r1
     mov r2, r4, lsl #0xc
-    bl func_0200500c
+    bl VecFx32Object_InitComponents
     add r0, sp, #0x40
     add r1, sp, #0x60
-    bl func_02005030
+    bl VecFx32Object_InitCopy
     mov r0, #0x1e
     str r0, [sp, #0x0]
     add r0, sp, #0x4
@@ -39,11 +39,11 @@ func_ov059_02211a14:
     add r0, sp, #0x4
     bl SplineMover_Destroy
     add r0, sp, #0x40
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add r0, sp, #0x50
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add r0, sp, #0x60
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add sp, sp, #0x70
     ldmia sp!, {r3, r4, r5, pc}
 .size func_ov059_02211a14, . - func_ov059_02211a14

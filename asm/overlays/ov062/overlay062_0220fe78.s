@@ -10,7 +10,7 @@
 .extern data_ov062_02211b60
 .extern data_ov062_02211b68
 .extern data_ov062_02211b70
-.extern func_02005058
+.extern VecFx32Object_Destroy
 .extern AnimationResource_Init
 .extern GraphicsSpriteState_Create
 .extern func_0201f864
@@ -110,9 +110,9 @@ func_ov062_0220fe78:
     add r2, sp, #0x18
     bl func_ov062_0220fdbc
     add r0, sp, #0x18
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add r0, sp, #0x28
-    bl func_02005058
+    bl VecFx32Object_Destroy
     ldr r1, .L_02210164
     ldr r3, .L_02210168
     mov r0, #0x30
@@ -210,7 +210,7 @@ func_ov062_0220fe78:
     mov r0, r6
     bl Scene_SetFlags03
     add r0, sp, #0x38
-    bl func_02005058
+    bl VecFx32Object_Destroy
     mov r0, r6
     add sp, sp, #0x48
     ldmia sp!, {r3, r4, r5, r6, r7, pc}

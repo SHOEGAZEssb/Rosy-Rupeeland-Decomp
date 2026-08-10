@@ -11,9 +11,9 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_0200500c(void *vector, s32 x, s32 y, s32 z);
-extern void *func_020050a4(void *destination, const void *source);
-extern void func_02005058(void *vector);
+extern void VecFx32Object_InitComponents(void *vector, s32 x, s32 y, s32 z);
+extern void *VecFx32Object_Assign(void *destination, const void *source);
+extern void VecFx32Object_Destroy(void *vector);
 extern s32 func_020adc40(s32 squaredDistance);
 extern s32 func_020adc90(s32 component, s32 magnitude);
 extern s32 func_020befec(s32 numerator, s32 denominator);
@@ -67,18 +67,18 @@ void func_ov040_02200128(void *scene, s32 unused1, s32 unused2, s32 unused3)
     (void)unused2;
     (void)unused3;
 
-    func_0200500c(vector, 0, 0x32000, 0xa000);
-    func_020050a4((u8 *)scene + 0x1a4, vector);
-    func_02005058(vector);
-    func_0200500c(vector, 0, 0x32000, 0xa000);
-    func_020050a4((u8 *)scene + 0x1b4, vector);
-    func_02005058(vector);
-    func_0200500c(vector, 0, 0x10000, 0xa000);
-    func_020050a4((u8 *)scene + 0x204, vector);
-    func_02005058(vector);
-    func_0200500c(vector, 0, -0x38000, -0x5000);
-    func_020050a4((u8 *)scene + 0x244, vector);
-    func_02005058(vector);
+    VecFx32Object_InitComponents(vector, 0, 0x32000, 0xa000);
+    VecFx32Object_Assign((u8 *)scene + 0x1a4, vector);
+    VecFx32Object_Destroy(vector);
+    VecFx32Object_InitComponents(vector, 0, 0x32000, 0xa000);
+    VecFx32Object_Assign((u8 *)scene + 0x1b4, vector);
+    VecFx32Object_Destroy(vector);
+    VecFx32Object_InitComponents(vector, 0, 0x10000, 0xa000);
+    VecFx32Object_Assign((u8 *)scene + 0x204, vector);
+    VecFx32Object_Destroy(vector);
+    VecFx32Object_InitComponents(vector, 0, -0x38000, -0x5000);
+    VecFx32Object_Assign((u8 *)scene + 0x244, vector);
+    VecFx32Object_Destroy(vector);
 
     FIELD(s32, scene, 0x1d8) = -FIELD(s32, scene, 0x11c);
     FIELD(s32, scene, 0x1dc) = FIELD(s32, scene, 0x118);

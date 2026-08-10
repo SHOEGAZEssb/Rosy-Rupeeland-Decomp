@@ -73,9 +73,9 @@ s32 func_02018208(GamePhaseActorScriptVm *self)
             break;
         case 1: {
             VecFx32Object position;
-            func_0200500c(&position, x << 12, y << 12, z << 12);
+            VecFx32Object_InitComponents(&position, x << 12, y << 12, z << 12);
             func_ov087_022186a8(object, &position, action);
-            func_02005058(&position);
+            VecFx32Object_Destroy(&position);
             break;
         }
         case 2:
@@ -102,9 +102,9 @@ s32 func_02018208(GamePhaseActorScriptVm *self)
             break;
         case 1: {
             VecFx32Object position;
-            func_0200500c(&position, x << 12, y << 12, z << 12);
+            VecFx32Object_InitComponents(&position, x << 12, y << 12, z << 12);
             func_ov089_02219224(object, &position, action);
-            func_02005058(&position);
+            VecFx32Object_Destroy(&position);
             break;
         }
         case 2:

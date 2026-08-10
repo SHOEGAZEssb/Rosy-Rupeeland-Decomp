@@ -7,7 +7,7 @@ typedef void (*Overlay039ArrayFn)(void *element);
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_02005058(void *object);
+extern void VecFx32Object_Destroy(void *object);
 extern void __destroy_arr(void *array, s32 count, s32 stride,
                           Overlay039ArrayFn destructor);
 extern void func_ov039_021fce5c(void);
@@ -28,8 +28,8 @@ extern "C" void func_ov039_021fd06c(void)
  */
 extern "C" void *func_ov039_021fd01c(void *scene)
 {
-    func_02005058((u8 *)scene + 0x320);
-    func_02005058((u8 *)scene + 0x310);
+    VecFx32Object_Destroy((u8 *)scene + 0x320);
+    VecFx32Object_Destroy((u8 *)scene + 0x310);
     __destroy_arr((u8 *)scene + 0x1d8, 39, 8,
                   (Overlay039ArrayFn)func_ov039_021fd06c);
     __destroy_arr((u8 *)scene + 4, 39, 12,

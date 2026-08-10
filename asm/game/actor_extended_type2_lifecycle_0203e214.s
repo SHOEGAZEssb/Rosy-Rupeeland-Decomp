@@ -5,7 +5,7 @@
 .extern data_020df9e8
 .extern data_020dfec0
 .extern func_02004ac8
-.extern func_02005058
+.extern VecFx32Object_Destroy
 .extern func_02031488
 .extern ActorDerivedRuntime_DestroyAlternate
 .extern Type7MarkerPresentation_Destroy
@@ -104,9 +104,9 @@ ActorExtendedType2_DestroyComplete: ; 0x0203e298
     add r0, r4, #0x284
     bl Type7MarkerPresentation_Destroy
     add r0, r4, #0x23c
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add r0, r4, #0x22c
-    bl func_02005058
+    bl VecFx32Object_Destroy
     mov r0, r4
     bl ActorDerivedRuntime_DestroyAlternate
     mov r0, r4

@@ -7,9 +7,9 @@
 .extern data_ov089_02219a04
 .extern OverlayManager_LoadOverlay
 .extern OverlayManager_GetGlobal
-.extern func_0200500c
-.extern func_02005058
-.extern func_020050a4
+.extern VecFx32Object_InitComponents
+.extern VecFx32Object_Destroy
+.extern VecFx32Object_Assign
 .extern Actor_SetDirectionFromVector
 .extern ActorDerivedType1_ResetToBaseState
 .extern Type7Actor_ResetMotionAndCooldown
@@ -52,12 +52,12 @@ func_ov089_02219224:
     add r0, sp, #0x38
     mov r2, r1
     mov r3, r1
-    bl func_0200500c
+    bl VecFx32Object_InitComponents
     add r0, r7, #0x38
     add r1, sp, #0x38
-    bl func_020050a4
+    bl VecFx32Object_Assign
     add r0, sp, #0x38
-    bl func_02005058
+    bl VecFx32Object_Destroy
     ldr r0, .L_02219528
     cmp r5, #0x0
     ldr r0, [r0, #0x0]
@@ -70,12 +70,12 @@ func_ov089_02219224:
     bl func_ov089_02218e80
     add r1, sp, #0x28
     add r0, r4, #0x18
-    bl func_020050a4
+    bl VecFx32Object_Assign
     add r0, sp, #0x28
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add r0, r4, #0x28
     add r1, r4, #0x18
-    bl func_020050a4
+    bl VecFx32Object_Assign
     add r0, r7, #0x200
     ldrh r1, [r0, #0xc]
     orr r1, r1, #0x80
@@ -104,9 +104,9 @@ func_ov089_02219224:
     add r0, r0, #0x2000
     ldr r0, [r0, #0xea8]
     add r0, r0, #0x18
-    bl func_020050a4
+    bl VecFx32Object_Assign
     add r0, sp, #0x18
-    bl func_02005058
+    bl VecFx32Object_Destroy
     ldr r1, .L_02219530
     ldr r3, .L_02219534
     mov r0, #0x40
@@ -184,10 +184,10 @@ func_ov089_02219224:
     bic r2, r0, #0x100
     add r0, r4, #0x18
     str r2, [r4, #0x230]
-    bl func_020050a4
+    bl VecFx32Object_Assign
     add r0, r4, #0x28
     add r1, r4, #0x18
-    bl func_020050a4
+    bl VecFx32Object_Assign
     add r0, r4, #0x38
     mov r1, #0x0
     mov r2, r1

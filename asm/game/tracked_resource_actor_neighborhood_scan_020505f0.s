@@ -1,10 +1,10 @@
 ; Matching retail form; see src/game/tracked_resource_actor_neighborhood_scan.c.
 .extern data_021052fc
 .extern data_02105310
-.extern func_02004fe0
-.extern func_0200500c
-.extern func_02005058
-.extern func_02005084
+.extern VecFx32Object_Init
+.extern VecFx32Object_InitComponents
+.extern VecFx32Object_Destroy
+.extern VecFx32Object_Normalize
 .extern GamePhaseRuntime_GetActorCollection
 .extern ActorRuntimeCollection_GetPendingAttachmentFlag
 .extern func_020328d0
@@ -34,7 +34,7 @@ func_020505f0:
     moveq r8, #0x1
     add r0, sp, #0x18
     movne r8, #0x0
-    bl func_02004fe0
+    bl VecFx32Object_Init
     mvn r0, #0x0
     mov r7, #0x0
     str r0, [sp, #0x4]
@@ -121,9 +121,9 @@ func_020505f0:
     mov r1, r5
     add r0, sp, #0x8
     mov r3, #0x0
-    bl func_0200500c
+    bl VecFx32Object_InitComponents
     add r0, sp, #0x8
-    bl func_02005084
+    bl VecFx32Object_Normalize
     ldr r1, [r9, #0x1fc]
     add r0, sp, #0x8
     ldrsh r1, [r1, #0x2a]
@@ -136,7 +136,7 @@ func_020505f0:
     mov r2, r8
     blx r3
     add r0, sp, #0x8
-    bl func_02005058
+    bl VecFx32Object_Destroy
 .L_020507d0:
     ldr r1, [r9, #0x1fc]
     ldrsb r0, [r1, #0x2c]
@@ -289,7 +289,7 @@ func_020505f0:
     cmp r7, r0
     blt .L_02050650
     add r0, sp, #0x18
-    bl func_02005058
+    bl VecFx32Object_Destroy
 .L_020509f8:
     add sp, sp, #0x28
     ldmia sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, pc}

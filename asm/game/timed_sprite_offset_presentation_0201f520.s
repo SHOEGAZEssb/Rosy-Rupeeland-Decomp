@@ -5,8 +5,8 @@
 .extern data_020d61f8
 .extern data_020d6268
 .extern data_021052fc
-.extern func_02005058
-.extern func_020050a4
+.extern VecFx32Object_Destroy
+.extern VecFx32Object_Assign
 .extern ActorMotionAreaFollower_GetPosition
 .extern func_0201e250
 .extern func_0201e584

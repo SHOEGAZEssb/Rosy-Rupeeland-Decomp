@@ -11,7 +11,7 @@ extern const u8 data_ov018_021ffcd0[];
 extern "C" {
 #endif
 extern void GXS_SetGraphicsMode(s32);
-extern void func_02005058(void *);
+extern void VecFx32Object_Destroy(void *);
 extern void func_0200875c(void *, void *);
 extern void *GamePhaseRuntime_GetAuxiliaryOverlayObject(void *);
 extern void func_0202839c(void *, void *);
@@ -96,5 +96,5 @@ extern "C" void func_ov018_021fd740(void *state)
     func_0200875c(transform, data_021052fc);
     FIELD(s32, state, 0x5c) = transform[1] >> 12;
     FIELD(s32, state, 0x60) = transform[2] >> 12;
-    func_02005058(transform);
+    VecFx32Object_Destroy(transform);
 }

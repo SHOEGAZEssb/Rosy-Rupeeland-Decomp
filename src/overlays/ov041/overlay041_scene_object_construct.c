@@ -14,8 +14,8 @@ void func_ov041_021fd000(void *);
 void *func_02003e20(s32, const void *, s32, void *);
 void func_020c09cc(void *, s32, s32, s32, void *, void *);
 void *func_0209a208(void *, s32, s32, s32, s32, s32);
-void func_02004fe0(void *);
-void func_02005058(void *);
+void VecFx32Object_Init(void *);
+void VecFx32Object_Destroy(void *);
 void *func_ov041_021ff5a8(void *, s32, const void *);
 void func_ov041_021fce00(void *);
 extern u8 data_ov041_02205820;
@@ -94,7 +94,7 @@ extern "C" void *func_ov041_021ff20c(void *object, void *owner,
 
     for (s32 i = count - 1; i >= 0; --i) {
         s32 position[4];
-        func_02004fe0(position);
+        VecFx32Object_Init(position);
         position[1] = descriptors[i * 3 + 1] << 12;
         position[2] = descriptors[i * 3 + 2] << 12;
         position[3] = 0;
@@ -103,7 +103,7 @@ extern "C" void *func_ov041_021ff20c(void *object, void *owner,
             ++FIELD(s32, owner, 0x1fc);
         FIELD(void *, object, 0x9c) =
             func_ov041_021ff5a8(object, type, position);
-        func_02005058(position);
+        VecFx32Object_Destroy(position);
     }
     FIELD(s32, object, 0xa4) = 0x80000;
     FIELD(s32, object, 0xa8) = 0x1f4000;

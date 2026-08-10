@@ -3,9 +3,9 @@
 .extern Heap_Free
 .extern data_020d5b10
 .extern data_020d60f8
-.extern func_02005030
-.extern func_02005058
-.extern func_020050c8
+.extern VecFx32Object_InitCopy
+.extern VecFx32Object_Destroy
+.extern VecFx32Object_Add
 .extern func_0201e380
 .extern func_0201e3b8
 .extern func_0201e9d8
@@ -27,7 +27,7 @@ func_0201ebac: ; 0x0201ebac
     mov r1, r4
     add r0, r5, #0x40
     str r2, [r5, #0x0]
-    bl func_02005030
+    bl VecFx32Object_InitCopy
     mov r0, r5
     add sp, sp, #0x8
     ldmia sp!, {r3, r4, r5, pc}
@@ -40,7 +40,7 @@ func_0201ebf8: ; 0x0201ebf8
     stmdb sp!, {r4, lr}
     mov r4, r0
     add r0, r4, #0x40
-    bl func_02005058
+    bl VecFx32Object_Destroy
     mov r0, r4
     bl func_0201e380
     mov r0, r4
@@ -53,7 +53,7 @@ func_0201ec18: ; 0x0201ec18
     stmdb sp!, {r4, lr}
     mov r4, r0
     add r0, r4, #0x40
-    bl func_02005058
+    bl VecFx32Object_Destroy
     mov r0, r4
     bl func_0201e380
     mov r0, r4
@@ -88,7 +88,7 @@ func_0201ec40: ; 0x0201ec40
     blx r3
     add r0, r4, #0x8
     add r1, r4, #0x18
-    bl func_020050c8
+    bl VecFx32Object_Add
     ldrh r2, [r4, #0x38]
     ldrsh r1, [r4, #0x3a]
     mov r0, #0x0

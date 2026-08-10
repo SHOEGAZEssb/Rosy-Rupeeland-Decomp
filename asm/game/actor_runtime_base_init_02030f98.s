@@ -2,9 +2,9 @@
 .text
 .extern data_020df040
 .extern data_021052fc
-.extern func_02004fe0
-.extern func_0200500c
-.extern func_020050a4
+.extern VecFx32Object_Init
+.extern VecFx32Object_InitComponents
+.extern VecFx32Object_Assign
 .extern VecFx32Stepper_Init
 .extern func_020083b0
 .extern ActorMotionAreaFollower_GetPosition
@@ -46,24 +46,24 @@ func_02030f98: ; 0x02030f98
     ldrsh r3, [r4, #0x1e]
     bl func_020083b0
     add r0, r5, #0x78
-    bl func_02004fe0
+    bl VecFx32Object_Init
     mov r1, #0x0
     add r0, r5, #0x88
     mov r2, r1
     mov r3, r1
-    bl func_0200500c
+    bl VecFx32Object_InitComponents
     mov r1, #0x0
     add r0, r5, #0x98
     mov r2, r1
     mov r3, r1
-    bl func_0200500c
+    bl VecFx32Object_InitComponents
     mov r1, #0x0
     str r1, [r5, #0xa8]
     mov r0, #0xff
     strh r0, [r5, #0xac]
     add r0, r5, #0xb0
     strh r1, [r5, #0xae]
-    bl func_02004fe0
+    bl VecFx32Object_Init
     mov r1, #0x0
     str r1, [r5, #0xc8]
     str r1, [r5, #0xcc]
@@ -113,7 +113,7 @@ func_02030f98: ; 0x02030f98
     bl ActorMotionAreaFollower_GetPosition
     mov r1, r0
     add r0, r5, #0x78
-    bl func_020050a4
+    bl VecFx32Object_Assign
     mov r2, #0x0
     strb r2, [r5, #0x194]
     strb r2, [r5, #0x195]

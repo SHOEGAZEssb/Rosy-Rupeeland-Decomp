@@ -11,9 +11,9 @@
 .extern data_021052fc
 .extern func_02003e20
 .extern func_02003e38
-.extern func_02004fe0
-.extern func_02005030
-.extern func_02005058
+.extern VecFx32Object_Init
+.extern VecFx32Object_InitCopy
+.extern VecFx32Object_Destroy
 .extern ActorMotion_GetPosition
 .extern func_0201e250
 .extern func_0201e3b8
@@ -50,7 +50,7 @@ func_0201f2b4: ; 0x0201f2b4
     bl ActorMotion_GetPosition
     mov r1, r0
     add r0, sp, #0x0
-    bl func_02005030
+    bl VecFx32Object_InitCopy
     ldr r0, [r4, #0x14]
     cmp r0, #0x0
     beq .L_0201f2f8
@@ -82,14 +82,14 @@ func_0201f2b4: ; 0x0201f2b4
     b .L_0201f358
 .L_0201f348:
     add r0, sp, #0x0
-    bl func_02005058
+    bl VecFx32Object_Destroy
     mov r0, #0x1
     b .L_0201f36c
 .L_0201f358:
     ldr r0, [r4, #0x10]
     bl GraphicsSpriteGroup_AdvanceAnimations
     add r0, sp, #0x0
-    bl func_02005058
+    bl VecFx32Object_Destroy
     mov r0, #0x0
 .L_0201f36c:
     add sp, sp, #0x10

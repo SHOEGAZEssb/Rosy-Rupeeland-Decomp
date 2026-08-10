@@ -5,9 +5,9 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_02005058(void *vector);
-extern s32 func_02005070(const void *vector);
-extern void func_020050a4(void *destination, const void *source);
+extern void VecFx32Object_Destroy(void *vector);
+extern s32 VecFx32Object_GetMagnitude(const void *vector);
+extern void VecFx32Object_Assign(void *destination, const void *source);
 extern void VecFx32_Subtract(void *destination, u32 argument, const void *position);
 extern void func_020328d0(void *vector, s32 angle);
 extern void func_02050b34(void *vector, s32 length);
@@ -34,9 +34,9 @@ void func_0205232c(void *actor, const void *record, u32 argument, u32 unused)
     (void)unused;
     FIELD(const void *, actor, 0x1fc) = record;
     VecFx32_Subtract(vector, argument, (u8 *)actor + 0x18);
-    func_020050a4((u8 *)actor + 0x38, vector);
-    func_02005058(vector);
-    length = func_02005070((u8 *)actor + 0x38);
+    VecFx32Object_Assign((u8 *)actor + 0x38, vector);
+    VecFx32Object_Destroy(vector);
+    length = VecFx32Object_GetMagnitude((u8 *)actor + 0x38);
     if (length < 4)
         length = 4;
     func_02050b34((u8 *)actor + 0x38, length);

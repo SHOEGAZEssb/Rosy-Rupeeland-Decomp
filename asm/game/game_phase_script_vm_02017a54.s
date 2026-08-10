@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/game_phase_script_vm_actor_vector_command_opcode.c.
 .text
-.extern func_0200500c
-.extern func_02005058
+.extern VecFx32Object_InitComponents
+.extern VecFx32Object_Destroy
 .extern GamePhaseScriptVm_Pop
 .global GamePhaseActorScriptVm_DispatchActorScaledVectorCommand
 GamePhaseActorScriptVm_DispatchActorScaledVectorCommand:
@@ -22,7 +22,7 @@ GamePhaseActorScriptVm_DispatchActorScaledVectorCommand:
     mov r2, r6
     mov r3, r5
     add r0, sp, #0
-    bl func_0200500c
+    bl VecFx32Object_InitComponents
     ldr r0, [r7, #0x84]
     mov r2, r4
     ldr r3, [r0]
@@ -30,7 +30,7 @@ GamePhaseActorScriptVm_DispatchActorScaledVectorCommand:
     ldr r3, [r3, #0xb8]
     blx r3
     add r0, sp, #0
-    bl func_02005058
+    bl VecFx32Object_Destroy
     mov r0, #0
     add sp, sp, #0x10
     ldmia sp!, {r3, r4, r5, r6, r7, pc}

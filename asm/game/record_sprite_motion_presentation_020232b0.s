@@ -5,12 +5,12 @@
 .extern data_020d6630
 .extern data_020f4e18
 .extern data_021e9ac0
-.extern func_02004fe0
-.extern func_0200500c
-.extern func_02005030
-.extern func_02005058
-.extern func_020050a4
-.extern func_020050c8
+.extern VecFx32Object_Init
+.extern VecFx32Object_InitComponents
+.extern VecFx32Object_InitCopy
+.extern VecFx32Object_Destroy
+.extern VecFx32Object_Assign
+.extern VecFx32Object_Add
 .extern VecFx32_Subtract
 .extern func_0201e250
 .extern func_0201e28c
@@ -43,11 +43,11 @@ func_020232b0: ; 0x020232b0
     add r0, r4, #0x48
     bl func_02071eb8
     add r0, r4, #0x2c
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add r0, r4, #0x1c
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add r0, r4, #0xc
-    bl func_02005058
+    bl VecFx32Object_Destroy
     mov r0, r4
     bl func_0201e28c
     mov r0, r4

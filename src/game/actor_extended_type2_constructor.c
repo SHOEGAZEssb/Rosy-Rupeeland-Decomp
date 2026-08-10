@@ -12,9 +12,9 @@ extern s16 data_020e83a0[];
 extern "C" {
 #endif
 extern void ActorDerivedRuntime_Init(void *actor, const void *config);
-extern void func_02004fe0(void *vector);
+extern void VecFx32Object_Init(void *vector);
 extern void Type7MarkerPresentation_Init(void *object, void *actor);
-extern void func_020050a4(void *destination, const void *source);
+extern void VecFx32Object_Assign(void *destination, const void *source);
 extern void *InteractionRecordAllocatorPool_GetOrCreate(void *manager,
                                                         u32 value);
 extern s16 *InteractionRecordAllocator_ReserveRandomRecord(void *handle,
@@ -59,13 +59,13 @@ void *ActorExtendedType2_Init(void *self, const void *configuration)
 
     ActorDerivedRuntime_Init(actor, config);
     *(const void **)actor = data_020dfee4;
-    func_02004fe0(actor + 0x22c);
-    func_02004fe0(actor + 0x23c);
+    VecFx32Object_Init(actor + 0x22c);
+    VecFx32Object_Init(actor + 0x23c);
     *(u16 *)(actor + 0x252) = 0;
     *(u32 *)(actor + 0x260) = 0;
     Type7MarkerPresentation_Init(actor + 0x284, actor);
     actor[0x294] = 0;
-    func_020050a4(actor + 0x22c, actor + 0x18);
+    VecFx32Object_Assign(actor + 0x22c, actor + 0x18);
     actor[0x4d] = 2;
     if ((*(u32 *)(actor + 0x14) & 0x400) != 0)
         *(u32 *)(actor + 0xd0) |= 4;

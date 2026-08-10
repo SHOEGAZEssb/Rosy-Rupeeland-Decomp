@@ -4,7 +4,7 @@
 
     .extern GraphicsSpriteGroup_Destroy
     .extern func_020927b8
-    .extern func_02005058
+    .extern VecFx32Object_Destroy
     .extern GraphicsSpriteGroup_AdvanceAnimations
     .extern func_ov033_021fcff4
 
@@ -41,9 +41,9 @@ L_021fd298:
     add r0, r4, #0xa0
     bl func_020927b8
     add r0, r4, #0x24
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add r0, r4, #0x14
-    bl func_02005058
+    bl VecFx32Object_Destroy
     mov r0, r4
     ldmia sp!, {r4, pc}
 .size func_ov033_021fd260, .-func_ov033_021fd260

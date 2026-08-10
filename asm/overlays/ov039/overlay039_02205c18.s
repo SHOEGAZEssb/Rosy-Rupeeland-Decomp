@@ -6,10 +6,10 @@
     .extern func_ov007_021fc16c
     .extern func_020befec
     .extern ActorRuntimeFlags_Test
-    .extern func_02005030
+    .extern VecFx32Object_InitCopy
     .extern func_ov049_0220bbdc
-    .extern func_02005058
-    .extern func_020050c8
+    .extern VecFx32Object_Destroy
+    .extern VecFx32Object_Add
     .extern func_0209a2a4
     .extern func_ov007_021fc19c
     .extern Sound_Play
@@ -109,7 +109,7 @@ L_02205d4c:
     ldr r1, [r4, #0x50]
     add r0, sp, #0x0
     add r1, r1, #0x1c
-    bl func_02005030
+    bl VecFx32Object_InitCopy
     ldr r0, [r4, #0x48]
     ldr r1, [r4, #0x80]
     ldrh r2, [r0, #0x40]
@@ -120,7 +120,7 @@ L_02205d4c:
     mov r3, #0x1
     bl func_ov049_0220bbdc
     add r0, sp, #0x0
-    bl func_02005058
+    bl VecFx32Object_Destroy
     mov r0, #0x0
     str r0, [r4, #0xac]
     ldr r1, [r4, #0x80]
@@ -150,7 +150,7 @@ L_02205e00:
     ldr r1, [r4, #0x48]
     add r0, r0, #0x2c
     add r1, r1, #0x2c
-    bl func_020050c8
+    bl VecFx32Object_Add
     add r2, r4, r8, lsl #0x2
     ldr r0, [r2, #0x58]
     mov r1, r9

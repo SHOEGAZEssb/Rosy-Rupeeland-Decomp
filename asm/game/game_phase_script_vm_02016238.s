@@ -15,8 +15,8 @@
 .extern data_020d5b8c
 .extern data_021052fc
 .extern data_021f3d68
-.extern func_02005030
-.extern func_02005058
+.extern VecFx32Object_InitCopy
+.extern VecFx32Object_Destroy
 .extern ActorMotionAreaFollower_GetPosition
 .extern GamePhaseLoadScene_Init
 .extern GamePhaseScriptVm_Pop
@@ -246,7 +246,7 @@ L_02016508:
     bl ActorMotionAreaFollower_GetPosition
     mov r1, r0
     add r0, sp, #4
-    bl func_02005030
+    bl VecFx32Object_InitCopy
     ldr r0, [r5, #0x24]
     ldr r2, [r5, #0x20]
     mov r1, r0, asr #12
@@ -279,7 +279,7 @@ L_02016594:
     add r0, r0, #0x2c00
     bl func_0201ded4
     add r0, sp, #4
-    bl func_02005058
+    bl VecFx32Object_Destroy
     mov r0, #0
     b L_020167d4
 L_020165b8:

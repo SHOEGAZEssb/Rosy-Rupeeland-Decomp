@@ -4,7 +4,7 @@
 .extern data_ov054_0220f130
 .extern OverlayManager_UnloadOverlay
 .extern OverlayManager_GetGlobal
-.extern func_02005058
+.extern VecFx32Object_Destroy
 .extern OverlaySlot_Destroy
 .extern func_0201e28c
 
@@ -24,7 +24,7 @@ func_ov054_0220e704:
     add r0, r4, #0x1a8
     bl OverlaySlot_Destroy
     add r0, r4, #0x194
-    bl func_02005058
+    bl VecFx32Object_Destroy
     mov r0, r4
     bl func_0201e28c
     mov r0, r4

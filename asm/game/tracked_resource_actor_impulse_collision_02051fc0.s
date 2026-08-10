@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/tracked_resource_actor_impulse_collision.c.
 .extern data_02105310
-.extern func_02005030
-.extern func_02005058
+.extern VecFx32Object_InitCopy
+.extern VecFx32Object_Destroy
 .extern ActorRuntimeCollection_GetPendingAttachmentFlag
 .extern ActorRuntimeTriple_Assign
 .extern func_020328d0
@@ -20,7 +20,7 @@ func_02051fc0:
     beq .L_02052030
     add r0, sp, #0x0
     add r1, r4, #0x38
-    bl func_02005030
+    bl VecFx32Object_InitCopy
     mov r0, #0x0
     str r0, [sp, #0xc]
     ldr r1, [r4, #0x1fc]
@@ -35,7 +35,7 @@ func_02051fc0:
     mov r2, #0x1
     blx r3
     add r0, sp, #0x0
-    bl func_02005058
+    bl VecFx32Object_Destroy
 .L_02052030:
     mov r1, #0x0
     mov r2, r1

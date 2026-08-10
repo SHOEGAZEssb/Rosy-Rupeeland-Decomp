@@ -6,10 +6,10 @@
 .extern data_021052fc
 .extern data_ov097_0221a4c8
 .extern data_ov097_0221aa1c
-.extern func_0200500c
-.extern func_02005030
-.extern func_02005058
-.extern func_020050a4
+.extern VecFx32Object_InitComponents
+.extern VecFx32Object_InitCopy
+.extern VecFx32Object_Destroy
+.extern VecFx32Object_Assign
 .extern ActorMotionJitter_EnsureMinimum
 .extern func_0201f864
 .extern Actor_GetCachedTerrainHeight
@@ -174,7 +174,7 @@ func_ov097_022181a0:
     bl func_02034a60
     add r0, sp, #0x58
     add r1, r6, #0x18
-    bl func_02005030
+    bl VecFx32Object_InitCopy
     ldr r1, .L_022188d0
     ldr r3, .L_022188d4
     mov r0, #0x14
@@ -267,7 +267,7 @@ func_ov097_022181a0:
     bl ActorMotionJitter_EnsureMinimum
 .L_02218528:
     add r0, sp, #0x58
-    bl func_02005058
+    bl VecFx32Object_Destroy
     b .L_022188c0
 .L_02218534:
     add r0, r6, #0x200
@@ -418,7 +418,7 @@ func_ov097_022181a0:
     str r1, [r6, #0x90]
     ldr r1, [r6, #0x228]
     add r1, r1, #0x18
-    bl func_02005030
+    bl VecFx32Object_InitCopy
     ldr r0, [r6, #0x278]
     cmp r0, #0x0
     beq .L_0221880c
@@ -442,7 +442,7 @@ func_ov097_022181a0:
     mov r1, r1, lsl #0xc
     mov r2, r2, lsl #0xc
     mov r3, #0x0
-    bl func_0200500c
+    bl VecFx32Object_InitComponents
     add r0, sp, #0x28
     add r1, sp, #0x48
     add r2, sp, #0x38
@@ -453,13 +453,13 @@ func_ov097_022181a0:
     bl func_ov097_022188f8
     add r0, sp, #0x48
     add r1, sp, #0x18
-    bl func_020050a4
+    bl VecFx32Object_Assign
     add r0, sp, #0x18
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add r0, sp, #0x28
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add r0, sp, #0x38
-    bl func_02005058
+    bl VecFx32Object_Destroy
 .L_0221880c:
     mov r0, r6
     ldr r2, [r0, #0x0]
@@ -506,7 +506,7 @@ func_ov097_022181a0:
     bl func_02050078
 .L_022188b8:
     add r0, sp, #0x48
-    bl func_02005058
+    bl VecFx32Object_Destroy
 .L_022188c0:
     add sp, sp, #0x68
     ldmia sp!, {r3, r4, r5, r6, r7, pc}

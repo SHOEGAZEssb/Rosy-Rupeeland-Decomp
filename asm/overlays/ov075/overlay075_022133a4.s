@@ -1,6 +1,6 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov075/overlay075_recovery.c.
-.extern func_020050a4
+.extern VecFx32Object_Assign
 .extern Actor_GetCachedTerrainHeight
 .extern GraphicsSpriteState_SetAnimationIndex
 
@@ -12,7 +12,7 @@ func_ov075_022133a4:
     cmp r0, #0x2
     ldmhiia sp!, {r4, pc}
     add r0, r4, #0x18
-    bl func_020050a4
+    bl VecFx32Object_Assign
     ldr r0, [r4, #0x298]
     cmp r0, #0x2
     ldmneia sp!, {r4, pc}

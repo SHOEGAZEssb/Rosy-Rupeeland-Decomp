@@ -11,9 +11,9 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_0200500c(void *vector, s32 x, s32 y, s32 z);
-extern void func_02005058(void *vector);
-extern void func_020050a4(void *destination, const void *source);
+extern void VecFx32Object_InitComponents(void *vector, s32 x, s32 y, s32 z);
+extern void VecFx32Object_Destroy(void *vector);
+extern void VecFx32Object_Assign(void *destination, const void *source);
 extern void func_ov040_021fe18c(void *destination, const void *source);
 extern void func_ov040_02202244(void *scene, s32 mode);
 #ifdef __cplusplus
@@ -72,9 +72,9 @@ extern "C" void func_ov040_021fd8ac(void *scene, s32 unused1, s32 unused2,
     (void)unused1; (void)unused2; (void)unused3;
     for (s32 index = 28; index >= 0; index--) {
         s32 zero[4];
-        func_0200500c(zero, 0, 0, 0);
-        func_020050a4((u8 *)scene + 0x84 + index * 0x10, zero);
-        func_02005058(zero);
+        VecFx32Object_InitComponents(zero, 0, 0, 0);
+        VecFx32Object_Assign((u8 *)scene + 0x84 + index * 0x10, zero);
+        VecFx32Object_Destroy(zero);
         FIELD(s32, scene, 0x264 + index * 4) = 0;
         FIELD(s32, scene, 0x2dc + index * 0x0c) = 0;
         FIELD(s32, scene, 0x2e0 + index * 0x0c) = 0;

@@ -8,9 +8,9 @@
 .extern data_ov077_02216fc8
 .extern data_ov077_02217018
 .extern data_ov077_02217020
-.extern func_02004fe0
-.extern func_02005058
-.extern func_020050a4
+.extern VecFx32Object_Init
+.extern VecFx32Object_Destroy
+.extern VecFx32Object_Assign
 .extern Actor_UpdateAnimationState
 .extern GraphicsSpriteState_SetAnimationIndex
 .extern func_020befec
@@ -413,17 +413,17 @@ func_ov077_022142f8:
     bl func_ov077_02214cd4
 .L_022148c0:
     add r0, sp, #0xb0
-    bl func_02004fe0
+    bl VecFx32Object_Init
     ldr r1, [r7, #0x29c]
     add r0, sp, #0xb0
     cmp r1, #0x0
     beq .L_022148e4
     add r1, r1, #0x18
-    bl func_020050a4
+    bl VecFx32Object_Assign
     b .L_022148ec
 .L_022148e4:
     add r1, r7, #0x22c
-    bl func_020050a4
+    bl VecFx32Object_Assign
 .L_022148ec:
     add r0, r7, #0x200
     ldrsb r0, [r0, #0xe4]
@@ -530,7 +530,7 @@ func_ov077_022142f8:
     add r2, r7, #0x2b4
     bl func_ov077_022130b8
     add r0, sp, #0x38
-    bl func_02005058
+    bl VecFx32Object_Destroy
     mov r0, #0x0
     cmp r6, #0x0
     add r2, sp, #0xb0
@@ -653,9 +653,9 @@ func_ov077_022142f8:
     ldr r1, [r1, #0x20]
     blx r1
     add r0, sp, #0x70
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add r0, sp, #0xb0
-    bl func_02005058
+    bl VecFx32Object_Destroy
 .L_02214c40:
     add sp, sp, #0xf0
     ldmia sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, pc}

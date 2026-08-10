@@ -36,5 +36,5 @@ s32 ActorMotionOscillation_Sample(const ActorMotionTriple *state, s32 time, s32 
 VecFx32Object *ActorMotion_SetTarget(ActorMotion *self,
                              const VecFx32Object *target)
 {
-    return func_020050a4(&self->target, target);
+    return VecFx32Object_Assign(&self->target, target);
 }

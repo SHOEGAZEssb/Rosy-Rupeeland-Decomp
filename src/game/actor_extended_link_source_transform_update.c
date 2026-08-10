@@ -8,9 +8,9 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_0200500c(void *value, s32 x, s32 y, s32 z);
-extern void func_02005058(void *value);
-extern void func_020050a4(void *destination, const void *source);
+extern void VecFx32Object_InitComponents(void *value, s32 x, s32 y, s32 z);
+extern void VecFx32Object_Destroy(void *value);
+extern void VecFx32Object_Assign(void *destination, const void *source);
 extern void func_02008378(void *destination, const void *left, const void *right);
 extern void ActorExtendedType2_RunRenderCallback(void *context, void *actor, void *record);
 #ifdef __cplusplus
@@ -39,15 +39,15 @@ void ActorExtendedLinkSource_UpdatePartnerTransform(void *context, void *self, v
 
     if ((*(u32 *)(actor + 0x29c) & 1) != 0) {
         s32 value = (*(s32 (**)(void *))(*(u8 **)actor + 0x1e0))(actor);
-        func_0200500c(offset, 0, 0, value);
+        VecFx32Object_InitComponents(offset, 0, 0, value);
         partner = *(void **)(actor + 0x298);
         func_02008378(result, (u8 *)partner + 0x18, offset);
-        func_020050a4(actor + 0x18, result);
-        func_02005058(result);
+        VecFx32Object_Assign(actor + 0x18, result);
+        VecFx32Object_Destroy(result);
         func_02008378(result, (u8 *)partner + 0x28, offset);
-        func_020050a4(actor + 0x28, result);
-        func_02005058(result);
-        func_02005058(offset);
+        VecFx32Object_Assign(actor + 0x28, result);
+        VecFx32Object_Destroy(result);
+        VecFx32Object_Destroy(offset);
     }
 
     ActorExtendedType2_RunRenderCallback(context, actor, record);

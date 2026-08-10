@@ -1,8 +1,8 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov090/overlay090_recovery.c.
 .extern data_021052fc
-.extern func_02005030
-.extern func_02005058
+.extern VecFx32Object_InitCopy
+.extern VecFx32Object_Destroy
 .extern GraphicsSpriteState_SetDepthOrderedWorldPositionFromOrigin
 .extern GraphicsSpriteState_SetDepthOrderedWorldPosition
 .extern func_02031758
@@ -55,7 +55,7 @@ func_ov090_0221a544:
     bhi .L_0221a68c
     add r0, sp, #0x8
     add r1, r4, #0x18
-    bl func_02005030
+    bl VecFx32Object_InitCopy
     ldrb r0, [r6, #0x1ec]
     ldr r2, [sp, #0x14]
     cmp r0, #0xe
@@ -91,7 +91,7 @@ func_ov090_0221a544:
     strb r3, [r1, #0x3a]
     ldr r1, [r6, #0x248]
     strh r2, [r1, #0x28]
-    bl func_02005058
+    bl VecFx32Object_Destroy
     b .L_0221a69c
 .L_0221a68c:
     ldr r1, [r6, #0x248]

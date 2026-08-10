@@ -11,11 +11,11 @@
 .extern data_0210568c
 .extern data_02105690
 .extern data_021e9ac0
-.extern func_02004fe0
-.extern func_02005030
-.extern func_02005058
-.extern func_02005084
-.extern func_020050a4
+.extern VecFx32Object_Init
+.extern VecFx32Object_InitCopy
+.extern VecFx32Object_Destroy
+.extern VecFx32Object_Normalize
+.extern VecFx32Object_Assign
 .extern VecFx32_Subtract
 .extern GamePhaseRuntime_GetActorCollection
 .extern ActorRuntimeCollection_QueueValue
@@ -157,10 +157,10 @@ ActorDerivedType1_ProcessInteraction: ; 0x02036a8c
     str r1, [r10, #0x40]
     add r0, sp, #0x60
     str r1, [r10, #0x3c]
-    bl func_02004fe0
+    bl VecFx32Object_Init
     add r0, sp, #0x50
     add r1, r10, #0x18
-    bl func_02005030
+    bl VecFx32Object_InitCopy
     ldrb r0, [r10, #0xd4]
     ldr r1, .L_02037268
     ldr r3, [sp, #0x54]
@@ -208,7 +208,7 @@ ActorDerivedType1_ProcessInteraction: ; 0x02036a8c
     add r2, r10, #0x18
     bl VecFx32_Subtract
     mov r0, r6
-    bl func_02005084
+    bl VecFx32Object_Normalize
     mov r0, r6
     mov r1, r5
     bl func_020328d0
@@ -219,7 +219,7 @@ ActorDerivedType1_ProcessInteraction: ; 0x02036a8c
     ldr r3, [r3, #0xb8]
     blx r3
     mov r0, r6
-    bl func_02005058
+    bl VecFx32Object_Destroy
 .L_02036d40:
     add r9, r9, #0x1
 .L_02036d44:
@@ -273,15 +273,15 @@ ActorDerivedType1_ProcessInteraction: ; 0x02036a8c
     add r2, r10, #0x18
     bl VecFx32_Subtract
     add r0, sp, #0x30
-    bl func_02005084
+    bl VecFx32Object_Normalize
     add r0, sp, #0x30
     mov r1, #0x3000
     bl func_020328d0
     add r0, r8, #0x38
     add r1, sp, #0x30
-    bl func_020050a4
+    bl VecFx32Object_Assign
     add r0, sp, #0x30
-    bl func_02005058
+    bl VecFx32Object_Destroy
 .L_02036e2c:
     add r9, r9, #0x1
 .L_02036e30:
@@ -293,9 +293,9 @@ ActorDerivedType1_ProcessInteraction: ; 0x02036a8c
     cmp r9, r0
     blt .L_02036d6c
     add r0, sp, #0x50
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add r0, sp, #0x60
-    bl func_02005058
+    bl VecFx32Object_Destroy
     mov r0, #0x1
     b .L_0203725c
 .L_02036e64:

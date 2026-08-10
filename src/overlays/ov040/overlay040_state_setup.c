@@ -28,9 +28,9 @@ extern void func_020aea7c(s32 value);
 extern void __construct_array(void *array, u32 count, u32 elementSize,
                               void (*constructor)(void *),
                               void (*destructor)(void *));
-extern void func_02004fe0(void *object);
-extern void func_02005058(void *object);
-extern void *func_02005030(void *destination, const void *source);
+extern void VecFx32Object_Init(void *object);
+extern void VecFx32Object_Destroy(void *object);
+extern void *VecFx32Object_InitCopy(void *destination, const void *source);
 extern void func_ov040_02200118(void *object, const void *position);
 extern void func_02059278(void *sound, s32 parameter, s32 id);
 extern void GraphicsResourceSet_Init(void *set);
@@ -130,7 +130,7 @@ extern "C" void func_ov040_022022dc(void *scene)
             s32 original = FIELD(s32, scene, 0x78);
             func_ov040_02200108(vector, FIELD(void *, scene, 0xb44));
             FIELD(s32, scene, 0xadc) = 0x80000 - vector[1];
-            func_02005058(vector);
+            VecFx32Object_Destroy(vector);
             FIELD(s32, scene, 0xadc) =
                 state_fx_mul(FIELD(s32, scene, 0xadc), 0x1333);
             if (original == FIELD(s32, scene, 0xadc))
@@ -297,10 +297,10 @@ extern "C" void *func_ov040_02202ea4(void *owner, s32 unused1, s32 unused2,
 {
     (void)unused1;
     (void)unused2;
-    __construct_array((u8 *)owner + 4, 0x50, 0x10, func_02004fe0,
-                      func_02005058);
-    __construct_array((u8 *)owner + 0xaa4, 0x50, 0x10, func_02004fe0,
-                      func_02005058);
+    __construct_array((u8 *)owner + 4, 0x50, 0x10, VecFx32Object_Init,
+                      VecFx32Object_Destroy);
+    __construct_array((u8 *)owner + 0xaa4, 0x50, 0x10, VecFx32Object_Init,
+                      VecFx32Object_Destroy);
     (void)arrayCookie;
     for (s32 index = 0x4f; index >= 0; index--)
         FIELD(void *, owner, 0x824 + index * 4) = 0;
@@ -480,10 +480,10 @@ static void set_presentation_state(void *scene, s32 resource, s32 orientation,
 static void commit_presentation_position(void *scene, void *position)
 {
     s32 copy[4];
-    func_02005030(copy, position);
+    VecFx32Object_InitCopy(copy, position);
     func_ov040_02200118(FIELD(void *, scene, 0xb44), copy);
-    func_02005058(copy);
-    func_02005058(position);
+    VecFx32Object_Destroy(copy);
+    VecFx32Object_Destroy(position);
 }
 
 /*

@@ -4,9 +4,9 @@
 .extern GameWork_TestFlag
 .extern data_020c9670
 .extern data_021052fc
-.extern func_02004fe0
-.extern func_02005058
-.extern func_020050c8
+.extern VecFx32Object_Init
+.extern VecFx32Object_Destroy
+.extern VecFx32Object_Add
 .extern GamePhaseState_GetConfiguration
 .extern func_ov054_0220ec4c
 .extern gGameWork
@@ -61,7 +61,7 @@ func_ov054_0220eda4:
     add r0, sp, #0x10
     add r1, r1, #0x100
     ldrsh r4, [r1, #0x96]
-    bl func_02004fe0
+    bl VecFx32Object_Init
     mov r0, r6, asr #0x4
     mov r3, r0, lsl #0x1
     add r0, r3, #0x1
@@ -86,9 +86,9 @@ func_ov054_0220eda4:
     str r4, [sp, #0x14]
     str r3, [sp, #0x18]
     str r2, [sp, #0x1c]
-    bl func_020050c8
+    bl VecFx32Object_Add
     add r0, sp, #0x0
-    bl func_02004fe0
+    bl VecFx32Object_Init
     ldr r0, [r5, #0x44]
     ldr r2, .L_0220ef74
     rsb r1, r0, #0x0
@@ -115,14 +115,14 @@ func_ov054_0220eda4:
     orr r3, r3, r2, lsl #0x14
     add r1, sp, #0x0
     str r3, [sp, #0x8]
-    bl func_020050c8
+    bl VecFx32Object_Add
     add r0, r5, #0x30
     add r1, r5, #0x40
-    bl func_020050c8
+    bl VecFx32Object_Add
     add r0, sp, #0x0
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add r0, sp, #0x10
-    bl func_02005058
+    bl VecFx32Object_Destroy
     mov r0, #0x0
 .L_0220ef5c:
     add sp, sp, #0x20

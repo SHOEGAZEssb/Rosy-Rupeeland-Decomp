@@ -4,8 +4,8 @@
 .extern data_020d6180
 .extern data_021052fc
 .extern DisplayController_GetSubScreenVerticalOffset
-.extern func_02005030
-.extern func_02005058
+.extern VecFx32Object_InitCopy
+.extern VecFx32Object_Destroy
 .extern ActorMotionAreaFollower_GetPosition
 .extern func_0201f724
 .extern func_0201fa44
@@ -23,7 +23,7 @@ func_0201fb84: ; 0x0201fb84
     bl ActorMotionAreaFollower_GetPosition
     mov r1, r0
     add r0, sp, #0x0
-    bl func_02005030
+    bl VecFx32Object_InitCopy
     bl DisplayController_GetSubScreenVerticalOffset
     ldr r2, [sp, #0x8]
     add r1, sp, #0x0
@@ -46,11 +46,11 @@ func_0201fb84: ; 0x0201fb84
     cmp r0, #0x0
     add r0, sp, #0x0
     bge .L_0201fc14
-    bl func_02005058
+    bl VecFx32Object_Destroy
     mov r0, #0x1
     b .L_0201fc1c
 .L_0201fc14:
-    bl func_02005058
+    bl VecFx32Object_Destroy
     mov r0, #0x0
 .L_0201fc1c:
     add sp, sp, #0x10

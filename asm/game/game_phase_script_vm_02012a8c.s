@@ -1,8 +1,8 @@
 ; Matching retail form; see src/game/game_phase_script_vm_actor_opcodes.c.
 .text
-.extern func_0200500c
-.extern func_02005058
-.extern func_020050a4
+.extern VecFx32Object_InitComponents
+.extern VecFx32Object_Destroy
+.extern VecFx32Object_Assign
 .extern GamePhaseScriptVm_Pop
 
     .global GamePhaseActorScriptVm_SetPositionFromCoordinates3D
@@ -21,17 +21,17 @@ GamePhaseActorScriptVm_SetPositionFromCoordinates3D: ; 0x02012a8c
     mov r2, r4, lsl #0xc
     mov r3, r5, lsl #0xc
     add r0, sp, #0x0
-    bl func_0200500c
+    bl VecFx32Object_InitComponents
     ldr r0, [r6, #0x84]
     add r1, sp, #0x0
     add r0, r0, #0x18
-    bl func_020050a4
+    bl VecFx32Object_Assign
     ldr r1, [r6, #0x84]
     add r0, r1, #0x28
     add r1, r1, #0x18
-    bl func_020050a4
+    bl VecFx32Object_Assign
     add r0, sp, #0x0
-    bl func_02005058
+    bl VecFx32Object_Destroy
     mov r0, #0x0
     add sp, sp, #0x10
     ldmia sp!, {r4, r5, r6, pc}

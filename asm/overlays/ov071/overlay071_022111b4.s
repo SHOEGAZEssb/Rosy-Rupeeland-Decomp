@@ -3,8 +3,8 @@
 .extern GameWork_TestFlag
 .extern data_020cd470
 .extern data_ov071_0221223c
-.extern func_0200500c
-.extern func_02005058
+.extern VecFx32Object_InitComponents
+.extern VecFx32Object_Destroy
 .extern GraphicsSpriteState_SetAnimationIndex
 .extern func_0209a2ac
 .extern func_0209b7a0
@@ -122,7 +122,7 @@ func_ov071_022111b4:
     add r0, sp, #0x0
     mov r2, r1
     mov r3, r1
-    bl func_0200500c
+    bl VecFx32Object_InitComponents
     ldr r0, [r10, #0x48]
     add r3, sp, #0x0
     ldr r0, [r0, #0x20]
@@ -136,7 +136,7 @@ func_ov071_022111b4:
     ldr r0, [r10, #0xe8]
     bl func_ov071_02211e98
     add r0, sp, #0x0
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add sp, sp, #0x2c
     ldmia sp!, {r4, r5, r6, r7, r8, r9, r10, r11, pc}
 .L_02211388: .word data_ov071_0221223c

@@ -16,7 +16,7 @@ extern const u8 data_ov039_022083d0[];
 extern "C" {
 #endif
 extern void Heap_Free(void *allocation);
-extern void func_02005058(void *object);
+extern void VecFx32Object_Destroy(void *object);
 extern void __destroy_arr(void *array, s32 count, s32 stride,
                           Overlay039ArrayFn destructor);
 extern void func_ov039_021fce5c(void);
@@ -45,11 +45,11 @@ extern "C" void *func_ov039_021fd71c(void *scene)
             Heap_Free(helper);
         }
     }
-    func_02005058((u8 *)scene + 0x1da0);
+    VecFx32Object_Destroy((u8 *)scene + 0x1da0);
     __destroy_arr((u8 *)scene + 0x1d18, 10, 12,
                   (Overlay039ArrayFn)func_ov039_021fce5c);
-    __destroy_arr((u8 *)scene + 0x158c, 90, 16, func_02005058);
-    __destroy_arr((u8 *)scene + 0xb00, 90, 16, func_02005058);
+    __destroy_arr((u8 *)scene + 0x158c, 90, 16, VecFx32Object_Destroy);
+    __destroy_arr((u8 *)scene + 0xb00, 90, 16, VecFx32Object_Destroy);
     __destroy_arr((u8 *)scene + 0x6b0, 50, 12,
                   (Overlay039ArrayFn)func_ov039_021fce5c);
     __destroy_arr((u8 *)scene + 0x458, 50, 12,

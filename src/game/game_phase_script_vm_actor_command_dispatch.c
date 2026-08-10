@@ -170,25 +170,25 @@ s32 func_020143a8(GamePhaseActorScriptVm *self)
     case 7: {
         VecFx32Object position;
         void *object;
-        func_02004fe0(&position);
+        VecFx32Object_Init(&position);
         if (a6 != 0)
             ActorRuntimeTriple_Assign(&position, *(s32 *)(actor + 0x10c) << 12,
                           *(s32 *)(actor + 0x110) << 12,
                           *(s32 *)(actor + 0x114) << 12);
         else
-            func_020050a4(&position, (VecFx32Object *)(actor + 0x18));
+            VecFx32Object_Assign(&position, (VecFx32Object *)(actor + 0x18));
         object = Heap_Alloc(0x14, data_020d5b34, 4, &gHeapContext);
         if (object != 0)
             func_0201f864(object, &position,
                           ActorCollection_GetSpriteOwner(Actor_GetCollection(actor)), a1,
                           a2, a3, a4, a5, -1, 1);
-        func_02005058(&position);
+        VecFx32Object_Destroy(&position);
         break;
     }
     case 8: {
         VecFx32Object vector;
         void *object;
-        func_0200500c(&vector, convertEffectOperand((s32)a2),
+        VecFx32Object_InitComponents(&vector, convertEffectOperand((s32)a2),
                       convertEffectOperand((s32)a3),
                       convertEffectOperand((s32)a4));
         OverlayManager_LoadOverlay(OverlayManager_GetGlobal(), 2, 0x41);
@@ -199,13 +199,13 @@ s32 func_020143a8(GamePhaseActorScriptVm *self)
                 (u8 *)*(void **)((u8 *)data_021052fc + 0x2ea4) + 0x18,
                 &vector, convertEffectOperand((s32)a5),
                 convertEffectOperand((s32)a6));
-        func_02005058(&vector);
+        VecFx32Object_Destroy(&vector);
         break;
     }
     case 9: {
         VecFx32Object vector;
         void *object;
-        func_0200500c(&vector, convertEffectOperand((s32)a1),
+        VecFx32Object_InitComponents(&vector, convertEffectOperand((s32)a1),
                       convertEffectOperand((s32)a2),
                       convertEffectOperand((s32)a3));
         object = Heap_Alloc(0x38, data_020d5b34, 4, &gHeapContext);
@@ -214,7 +214,7 @@ s32 func_020143a8(GamePhaseActorScriptVm *self)
                 object, &vector, ActorCollection_GetSpriteOwner(Actor_GetCollection(actor)),
                 (s16)a4, 1, 0);
         addScriptObject(object);
-        func_02005058(&vector);
+        VecFx32Object_Destroy(&vector);
         break;
     }
     case 10:
@@ -222,10 +222,10 @@ s32 func_020143a8(GamePhaseActorScriptVm *self)
         VecFx32Object firstVector;
         VecFx32Object secondVector;
         void *object;
-        func_0200500c(&firstVector, convertEffectOperand((s32)a1),
+        VecFx32Object_InitComponents(&firstVector, convertEffectOperand((s32)a1),
                       convertEffectOperand((s32)a2),
                       convertEffectOperand((s32)a3));
-        func_0200500c(&secondVector, convertEffectOperand((s32)a4),
+        VecFx32Object_InitComponents(&secondVector, convertEffectOperand((s32)a4),
                       convertEffectOperand((s32)a5),
                       convertEffectOperand((s32)a6));
         object = Heap_Alloc(0x24, data_020d5b34, 4, &gHeapContext);
@@ -236,8 +236,8 @@ s32 func_020143a8(GamePhaseActorScriptVm *self)
                 &firstVector, &secondVector, variant, selector == 10);
         }
         addScriptObject(object);
-        func_02005058(&secondVector);
-        func_02005058(&firstVector);
+        VecFx32Object_Destroy(&secondVector);
+        VecFx32Object_Destroy(&firstVector);
         break;
     }
     case 11:
@@ -279,9 +279,9 @@ s32 func_020143a8(GamePhaseActorScriptVm *self)
     case 20: {
         VecFx32Object position;
         OverlayManager_LoadOverlay(OverlayManager_GetGlobal(), 0, 0x32);
-        func_0200500c(&position, (s32)a1 << 12, (s32)a2 << 12, 0);
+        VecFx32Object_InitComponents(&position, (s32)a1 << 12, (s32)a2 << 12, 0);
         func_ov050_0220e1a0(getScriptEffectContext(), &position, a3);
-        func_02005058(&position);
+        VecFx32Object_Destroy(&position);
         break;
     }
     case 21:

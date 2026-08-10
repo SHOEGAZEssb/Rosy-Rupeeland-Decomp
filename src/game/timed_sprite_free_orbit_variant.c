@@ -49,9 +49,9 @@ extern FreeOrbitTimedSprite *func_0201e9d8(FreeOrbitTimedSprite *self,
                                            s16 spriteOffset, s16 spriteByte);
 extern FreeOrbitTimedSprite *func_0201e380(FreeOrbitTimedSprite *self);
 extern void func_0201e3b8(FreeOrbitTimedSprite *self, s32 enabled);
-extern void func_02005030(PresentationTrack *track, const void *source);
-extern void func_02005058(void *track);
-extern void func_020050c8(PresentationTrack *first,
+extern void VecFx32Object_InitCopy(PresentationTrack *track, const void *source);
+extern void VecFx32Object_Destroy(void *track);
+extern void VecFx32Object_Add(PresentationTrack *first,
                           PresentationTrack *second);
 #ifdef __cplusplus
 }
@@ -69,14 +69,14 @@ FreeOrbitTimedSprite *func_0201ebac(FreeOrbitTimedSprite *self,
 {
     func_0201e9d8(self, 0, config, spriteValue, spriteOffset, spriteByte);
     self->vtable = (void **)data_020d60f8;
-    func_02005030(&self->position40, positionSource);
+    VecFx32Object_InitCopy(&self->position40, positionSource);
     return self;
 }
 
 /* Destroy position40, run shared non-freeing teardown, and return self. */
 FreeOrbitTimedSprite *func_0201ebf8(FreeOrbitTimedSprite *self)
 {
-    func_02005058(&self->position40);
+    VecFx32Object_Destroy(&self->position40);
     func_0201e380(self);
     return self;
 }
@@ -84,7 +84,7 @@ FreeOrbitTimedSprite *func_0201ebf8(FreeOrbitTimedSprite *self)
 /* Destroy position40 and the shared base, free self, and return its old address. */
 FreeOrbitTimedSprite *func_0201ec18(FreeOrbitTimedSprite *self)
 {
-    func_02005058(&self->position40);
+    VecFx32Object_Destroy(&self->position40);
     func_0201e380(self);
     Heap_Free(self);
     return self;
@@ -110,7 +110,7 @@ s32 func_0201ec40(FreeOrbitTimedSprite *self)
     zeroCenter.y = 0;
     ((FreeOrbitTimedSpriteApply)self->vtable[5])(
         self, &self->position40, &zeroCenter);
-    func_020050c8(&self->first08, &self->second18);
+    VecFx32Object_Add(&self->first08, &self->second18);
     self->angle38 = (u16)(self->angle38 + self->angleStep3a);
     return 0;
 }

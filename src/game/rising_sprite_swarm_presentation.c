@@ -52,10 +52,10 @@ extern void *gDebugFont;
 extern void *gGameWork;
 extern void *func_0201e250(void *self);
 extern void *func_0201e28c(void *self);
-extern void func_0200500c(PresentationValue *value, s32 x, s32 y, s32 z);
-extern void func_02005030(PresentationValue *destination, const void *source);
-extern void func_02005058(PresentationValue *value);
-extern void func_020050c8(PresentationValue *destination,
+extern void VecFx32Object_InitComponents(PresentationValue *value, s32 x, s32 y, s32 z);
+extern void VecFx32Object_InitCopy(PresentationValue *destination, const void *source);
+extern void VecFx32Object_Destroy(PresentationValue *value);
+extern void VecFx32Object_Add(PresentationValue *destination,
                           PresentationValue *source);
 extern void func_02008378(PresentationValue *destination, s32 argument,
                           PresentationValue *source);
@@ -113,11 +113,11 @@ RisingSpriteSwarmPresentation *RisingSpriteSwarmPresentation_Init(
     self->resource24 = 0;
     self->resource28 = 0;
     func_02071ea4(self->spriteConfig2c);
-    func_02005030(&self->track38, config + 0x18);
+    VecFx32Object_InitCopy(&self->track38, config + 0x18);
     self->nextPathArgument48 = 0;
-    func_0200500c(&offset, 0, 0, trackZ << 12);
-    func_020050c8(&self->track38, &offset);
-    func_02005058(&offset);
+    VecFx32Object_InitComponents(&offset, 0, 0, trackZ << 12);
+    VecFx32Object_Add(&self->track38, &offset);
+    VecFx32Object_Destroy(&offset);
     self->resource24 = GraphicsSpriteGroupOwner_CreateGroup(data_020f4e14);
     self->resource28 = GraphicsSpriteGroupOwner_CreateGroup(gDebugFont);
     func_02071ee0(self->spriteConfig2c, data_020f4e18, 0x1658, 0x1659,
@@ -179,7 +179,7 @@ static RisingSpriteSwarmPresentation *teardown_swarm(
     }
     GraphicsSpriteGroup_Clear(self->resource24);
     GraphicsSpriteGroup_Clear(self->resource28);
-    func_02005058(&self->track38);
+    VecFx32Object_Destroy(&self->track38);
     func_02071eb8(self->spriteConfig2c);
     self->controllers0c.vtable = (void **)data_020d6358;
     RisingSpriteControllerList_Clear(&self->controllers0c);
@@ -309,13 +309,13 @@ void RisingSpriteSwarmPresentation_SpawnController(RisingSpriteSwarmPresentation
     void *controller = Heap_Alloc(0x64, data_020d63b8, 4, &gHeapContext);
 
     if (controller != 0) {
-        func_0200500c(&base, 0, 0, 0x20000);
+        VecFx32Object_InitComponents(&base, 0, 0, 0x20000);
         func_02008378(&path, self->nextPathArgument48, &base);
         RisingSpriteMotionController_Init(controller, self->resource24, self->resource28,
                       self->spriteConfig2c, (s32)&path,
                       self->nextPathArgument48);
-        func_02005058(&path);
-        func_02005058(&base);
+        VecFx32Object_Destroy(&path);
+        VecFx32Object_Destroy(&base);
     }
     {
         ControllerListNode *node = (ControllerListNode *)Heap_Alloc(

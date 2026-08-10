@@ -5,8 +5,8 @@
 .extern data_020e1700
 .extern data_020e1718
 .extern data_020e1770
-.extern func_02005058
-.extern func_020050a4
+.extern VecFx32Object_Destroy
+.extern VecFx32Object_Assign
 .extern VecFx32_Subtract
 .extern Type7Actor_HasSpecialCallbackPair
 .extern func_0204cfa4
@@ -22,7 +22,7 @@ Type7Actor_SetMotionTarget: ; 0x020478b0
     stmdb sp!, {r4, lr}
     mov r4, r0
     add r0, r4, #0x224
-    bl func_020050a4
+    bl VecFx32Object_Assign
     ldr r1, [r4, #0x268]
     add r0, r4, #0x200
     orr r1, r1, #0x4
@@ -39,7 +39,7 @@ Type7Actor_SetMotionTargetWithTimer: ; 0x020478dc
     orr r3, r3, #0xc
     mov r4, r2
     str r3, [r5, #0x268]
-    bl func_020050a4
+    bl VecFx32Object_Assign
     add r0, r5, #0x200
     strh r4, [r0, #0x50]
     ldmia sp!, {r3, r4, r5, pc}
@@ -49,7 +49,7 @@ Type7Actor_UpdateMotionTowardTransform: ; 0x02047908
     sub sp, sp, #0x10
     mov r5, r0
     add r0, r5, #0x78
-    bl func_020050a4
+    bl VecFx32Object_Assign
     add r0, sp, #0x0
     add r1, r5, #0x78
     add r2, r5, #0x18
@@ -325,7 +325,7 @@ Type7Actor_UpdateMotionTowardTransform: ; 0x02047908
     strh r0, [r5, #0xd6]
 .L_02047d14:
     add r0, sp, #0x0
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add sp, sp, #0x10
     ldmia sp!, {r4, r5, r6, pc}
 .L_02047d24: .word data_020e16b0

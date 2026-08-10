@@ -1,6 +1,6 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov081/overlay081_recovery.c.
-.extern func_020050a4
+.extern VecFx32Object_Assign
 .extern Actor_RefreshTerrainHeight
 .extern func_ov081_0221312c
 
@@ -10,7 +10,7 @@ func_ov081_022130dc:
     mov r4, r0
     add r0, r4, #0x18
     add r1, r4, #0x214
-    bl func_020050a4
+    bl VecFx32Object_Assign
     mov r0, r4
     bl Actor_RefreshTerrainHeight
     mov r1, #0x0

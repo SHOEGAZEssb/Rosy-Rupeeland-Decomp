@@ -11,10 +11,10 @@
 .extern data_020d63b8
 .extern data_020f4e14
 .extern data_020f4e18
-.extern func_0200500c
-.extern func_02005030
-.extern func_02005058
-.extern func_020050c8
+.extern VecFx32Object_InitComponents
+.extern VecFx32Object_InitCopy
+.extern VecFx32Object_Destroy
+.extern VecFx32Object_Add
 .extern func_02008378
 .extern func_0201e250
 .extern func_0201e28c
@@ -61,18 +61,18 @@ RisingSpriteSwarmPresentation_Init: ; 0x02020794
     bl func_02071ea4
     add r1, r6, #0x18
     add r0, r4, #0x38
-    bl func_02005030
+    bl VecFx32Object_InitCopy
     mov r1, #0x0
     mov r3, r5, lsl #0xc
     add r0, sp, #0x4
     mov r2, r1
     str r1, [r4, #0x48]
-    bl func_0200500c
+    bl VecFx32Object_InitComponents
     add r0, r4, #0x38
     add r1, sp, #0x4
-    bl func_020050c8
+    bl VecFx32Object_Add
     add r0, sp, #0x4
-    bl func_02005058
+    bl VecFx32Object_Destroy
     ldr r0, .L_02020888
     ldr r0, [r0, #0x0]
     bl GraphicsSpriteGroupOwner_CreateGroup

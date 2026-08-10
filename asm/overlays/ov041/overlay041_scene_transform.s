@@ -4,8 +4,8 @@
  * src/overlays/ov041/overlay041_scene_transform.c. */
 .extern data_020c9670
 .extern data_ov041_02204c58
-.extern func_02005030
-.extern func_02005058
+.extern VecFx32Object_InitCopy
+.extern VecFx32Object_Destroy
 .extern func_0209a2ac
 .extern func_0209b7a0
 .extern func_0209c7e8
@@ -22,7 +22,7 @@ func_ov041_021fffc8: ; 0x021fffc8
     bl func_0209a2ac
     ldr r1, [sp, #0x4]
     add r0, sp, #0x54
-    bl func_02005030
+    bl VecFx32Object_InitCopy
     ldr r0, [r6, #0x1a8]
     add r0, r0, #0x1
     str r0, [r6, #0x1a8]
@@ -237,7 +237,7 @@ func_ov041_021fffc8: ; 0x021fffc8
     bl func_0209a2ac
 .L_0220032c:
     add r0, sp, #0x54
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add sp, sp, #0xf4
     ldmia sp!, {r4, r5, r6, r7, r8, r9, r10, r11, pc}
 .L_0220033c: .word data_ov041_02204c58

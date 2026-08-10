@@ -1,7 +1,7 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov064/overlay064_recovery.c.
 .extern data_021052fc
-.extern func_02005058
+.extern VecFx32Object_Destroy
 .extern GamePhaseRuntime_GetActorCollection
 .extern GamePhaseRuntime_SynchronizeActorPlacement
 .extern func_0200875c
@@ -71,7 +71,7 @@ func_ov064_02210ae8:
     add r1, sp, #0x0
     bl ActorCollection_DispatchEventToActors
     add r0, sp, #0x0
-    bl func_02005058
+    bl VecFx32Object_Destroy
     ldr r0, .L_02210c54
     mov r1, #0x2
     ldr r0, [r0, #0x0]

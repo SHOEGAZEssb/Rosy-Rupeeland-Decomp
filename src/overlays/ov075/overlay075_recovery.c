@@ -37,13 +37,13 @@ void func_ov075_02212e4c(void);
 /* Processes the supplied ABI arguments using only local offset-based fields; observable mutations and the return value are preserved by the matching implementation, with no direct SDK call. */
 void func_ov075_02212f10(void);
 
-/* Processes the supplied ABI arguments and offset-based actor state, returns its encoded result, and invokes func_020050a4, Actor_GetCachedTerrainHeight; exact higher-level semantics remain unconfirmed. */
+/* Processes the supplied ABI arguments and offset-based actor state, returns its encoded result, and invokes VecFx32Object_Assign, Actor_GetCachedTerrainHeight; exact higher-level semantics remain unconfirmed. */
 void func_ov075_02212f20(void);
 
 /* Processes the supplied ABI arguments and offset-based actor state, returns its encoded result, and invokes func_020349b8, ActorExtendedType2_SpawnOptionalPresentation; exact higher-level semantics remain unconfirmed. */
 void func_ov075_02212f98(void);
 
-/* Processes the supplied ABI arguments and offset-based actor state, returns its encoded result, and invokes func_020050a4, Actor_ClearTransientContactState, Actor_GetCachedTerrainHeight and other shared helpers; exact higher-level semantics remain unconfirmed. */
+/* Processes the supplied ABI arguments and offset-based actor state, returns its encoded result, and invokes VecFx32Object_Assign, Actor_ClearTransientContactState, Actor_GetCachedTerrainHeight and other shared helpers; exact higher-level semantics remain unconfirmed. */
 void func_ov075_02212fd8(void);
 
 /* Processes the supplied ABI arguments and offset-based actor state, returns its encoded result, and invokes func_020ae024; exact higher-level semantics remain unconfirmed. */
@@ -52,31 +52,31 @@ void func_ov075_022132e8(void);
 /* Processes the supplied ABI arguments using only local offset-based fields; observable mutations and the return value are preserved by the matching implementation, with no direct SDK call. */
 void func_ov075_02213368(void);
 
-/* Processes the supplied ABI arguments and offset-based actor state, returns its encoded result, and invokes func_020050a4, Actor_GetCachedTerrainHeight, GraphicsSpriteState_SetAnimationIndex; exact higher-level semantics remain unconfirmed. */
+/* Processes the supplied ABI arguments and offset-based actor state, returns its encoded result, and invokes VecFx32Object_Assign, Actor_GetCachedTerrainHeight, GraphicsSpriteState_SetAnimationIndex; exact higher-level semantics remain unconfirmed. */
 void func_ov075_022133a4(void);
 
 /* Processes the supplied ABI arguments using only local offset-based fields; observable mutations and the return value are preserved by the matching implementation, with no direct SDK call. */
 void func_ov075_0221343c(void);
 
-/* Processes the supplied ABI arguments and offset-based actor state, returns its encoded result, and invokes func_02005030, func_02005058, func_02050078; exact higher-level semantics remain unconfirmed. */
+/* Processes the supplied ABI arguments and offset-based actor state, returns its encoded result, and invokes VecFx32Object_InitCopy, VecFx32Object_Destroy, func_02050078; exact higher-level semantics remain unconfirmed. */
 void func_ov075_02213480(void);
 
 /* Empty or constant ABI helper: accepts its implicit arguments, changes no observable state, returns its encoded ABI result, and performs no SDK or hardware work. */
 void func_ov075_02213528(void);
 
-/* Processes the supplied ABI arguments and offset-based actor state, returns its encoded result, and invokes func_02003e20, func_02004fe0, ActorExtendedType2_GetDescriptorValue2A and other shared helpers; exact higher-level semantics remain unconfirmed. */
+/* Processes the supplied ABI arguments and offset-based actor state, returns its encoded result, and invokes func_02003e20, VecFx32Object_Init, ActorExtendedType2_GetDescriptorValue2A and other shared helpers; exact higher-level semantics remain unconfirmed. */
 void func_ov075_0221352c(void);
 
-/* Processes the supplied ABI arguments and offset-based actor state, returns its encoded result, and invokes func_02005058, ActorExtendedType2_Destroy; exact higher-level semantics remain unconfirmed. */
+/* Processes the supplied ABI arguments and offset-based actor state, returns its encoded result, and invokes VecFx32Object_Destroy, ActorExtendedType2_Destroy; exact higher-level semantics remain unconfirmed. */
 void func_ov075_022135c4(void);
 
-/* Processes the supplied ABI arguments and offset-based actor state, returns its encoded result, and invokes func_02005058, ActorExtendedType2_Destroy; exact higher-level semantics remain unconfirmed. */
+/* Processes the supplied ABI arguments and offset-based actor state, returns its encoded result, and invokes VecFx32Object_Destroy, ActorExtendedType2_Destroy; exact higher-level semantics remain unconfirmed. */
 void func_ov075_022135e4(void);
 
 /* Processes the supplied ABI arguments and offset-based actor state, returns its encoded result, and invokes func_0201f864, Actor_SetPosition, func_020593dc and other shared helpers; exact higher-level semantics remain unconfirmed. */
 void func_ov075_0221360c(void);
 
-/* Processes the supplied ABI arguments and offset-based actor state, returns its encoded result, and invokes func_020050a4, Actor_ClearTransientContactState, Actor_GetCachedTerrainHeight and other shared helpers; exact higher-level semantics remain unconfirmed. */
+/* Processes the supplied ABI arguments and offset-based actor state, returns its encoded result, and invokes VecFx32Object_Assign, Actor_ClearTransientContactState, Actor_GetCachedTerrainHeight and other shared helpers; exact higher-level semantics remain unconfirmed. */
 void func_ov075_022137a0(void);
 
 /* Processes the supplied ABI arguments using only local offset-based fields; observable mutations and the return value are preserved by the matching implementation, with no direct SDK call. */
@@ -88,13 +88,13 @@ void func_ov075_02213ca4(void);
 /* Processes the supplied ABI arguments and offset-based actor state, returns its encoded result, and invokes func_ov075_02212fd8; exact higher-level semantics remain unconfirmed. */
 void func_ov075_02213cc0(void);
 
-/* Processes the supplied ABI arguments and offset-based actor state, returns its encoded result, and invokes func_02005030, func_02005058, func_020050a4 and other shared helpers; exact higher-level semantics remain unconfirmed. */
+/* Processes the supplied ABI arguments and offset-based actor state, returns its encoded result, and invokes VecFx32Object_InitCopy, VecFx32Object_Destroy, VecFx32Object_Assign and other shared helpers; exact higher-level semantics remain unconfirmed. */
 void func_ov075_02213cfc(void);
 
 /* Processes the supplied ABI arguments and offset-based actor state, returns its encoded result, and invokes VecFx32Bezier_Evaluate3D; exact higher-level semantics remain unconfirmed. */
 void func_ov075_02213ec4(void);
 
-/* Processes the supplied ABI arguments and offset-based actor state, returns its encoded result, and invokes func_02004fe0, func_0200500c, func_02005058 and other shared helpers; exact higher-level semantics remain unconfirmed. */
+/* Processes the supplied ABI arguments and offset-based actor state, returns its encoded result, and invokes VecFx32Object_Init, VecFx32Object_InitComponents, VecFx32Object_Destroy and other shared helpers; exact higher-level semantics remain unconfirmed. */
 void func_ov075_02213f08(void);
 
 /* Processes the supplied ABI arguments using only local offset-based fields; observable mutations and the return value are preserved by the matching implementation, with no direct SDK call. */
@@ -184,25 +184,25 @@ void func_ov075_02214614(void);
 /* Empty or constant ABI helper: accepts its implicit arguments, changes no observable state, returns its encoded ABI result, and performs no SDK or hardware work. */
 void func_ov075_02214618(void);
 
-/* Processes the supplied ABI arguments and offset-based actor state, returns its encoded result, and invokes func_02004fe0, func_020050a4, ActorDerivedRuntime_Init; exact higher-level semantics remain unconfirmed. */
+/* Processes the supplied ABI arguments and offset-based actor state, returns its encoded result, and invokes VecFx32Object_Init, VecFx32Object_Assign, ActorDerivedRuntime_Init; exact higher-level semantics remain unconfirmed. */
 void func_ov075_0221461c(void);
 
-/* Processes the supplied ABI arguments and offset-based actor state, returns its encoded result, and invokes func_02005058, ActorDerivedRuntime_DestroyAlternate; exact higher-level semantics remain unconfirmed. */
+/* Processes the supplied ABI arguments and offset-based actor state, returns its encoded result, and invokes VecFx32Object_Destroy, ActorDerivedRuntime_DestroyAlternate; exact higher-level semantics remain unconfirmed. */
 void func_ov075_022146a4(void);
 
-/* Processes the supplied ABI arguments and offset-based actor state, returns its encoded result, and invokes func_02005058, ActorDerivedRuntime_DestroyAlternate; exact higher-level semantics remain unconfirmed. */
+/* Processes the supplied ABI arguments and offset-based actor state, returns its encoded result, and invokes VecFx32Object_Destroy, ActorDerivedRuntime_DestroyAlternate; exact higher-level semantics remain unconfirmed. */
 void func_ov075_022146c4(void);
 
 /* Processes the supplied ABI arguments and offset-based actor state, returns its encoded result, and invokes ActorCollection_GetSpriteOwner, Actor_GetCollection, func_02071ee0 and other shared helpers; exact higher-level semantics remain unconfirmed. */
 void func_ov075_022146ec(void);
 
-/* Processes the supplied ABI arguments and offset-based actor state, returns its encoded result, and invokes func_02005058, func_020050a4, Actor_QueryTerrainCell and other shared helpers; exact higher-level semantics remain unconfirmed. */
+/* Processes the supplied ABI arguments and offset-based actor state, returns its encoded result, and invokes VecFx32Object_Destroy, VecFx32Object_Assign, Actor_QueryTerrainCell and other shared helpers; exact higher-level semantics remain unconfirmed. */
 void func_ov075_02214770(void);
 
-/* Processes the supplied ABI arguments and offset-based actor state, returns its encoded result, and invokes func_02004fe0, func_020adfbc; exact higher-level semantics remain unconfirmed. */
+/* Processes the supplied ABI arguments and offset-based actor state, returns its encoded result, and invokes VecFx32Object_Init, func_020adfbc; exact higher-level semantics remain unconfirmed. */
 void func_ov075_02214898(void);
 
-/* Processes the supplied ABI arguments and offset-based actor state, returns its encoded result, and invokes OverlayManager_LoadOverlay, OverlayManager_GetGlobal, func_02005030 and other shared helpers; exact higher-level semantics remain unconfirmed. */
+/* Processes the supplied ABI arguments and offset-based actor state, returns its encoded result, and invokes OverlayManager_LoadOverlay, OverlayManager_GetGlobal, VecFx32Object_InitCopy and other shared helpers; exact higher-level semantics remain unconfirmed. */
 void func_ov075_022148d0(void);
 
 /* Processes the supplied ABI arguments using only local offset-based fields; observable mutations and the return value are preserved by the matching implementation, with no direct SDK call. */
@@ -211,7 +211,7 @@ void func_ov075_02214d88(void);
 /* Processes the supplied ABI arguments and offset-based actor state, returns its encoded result, and invokes ActorCollection_GetSpriteOwner, Actor_GetCollection, GraphicsSpriteState_SetAnimationIndex and other shared helpers; exact higher-level semantics remain unconfirmed. */
 void func_ov075_02214e28(void);
 
-/* Processes the supplied ABI arguments and offset-based actor state, returns its encoded result, and invokes func_020050a4, Actor_GetCachedTerrainHeight; exact higher-level semantics remain unconfirmed. */
+/* Processes the supplied ABI arguments and offset-based actor state, returns its encoded result, and invokes VecFx32Object_Assign, Actor_GetCachedTerrainHeight; exact higher-level semantics remain unconfirmed. */
 void func_ov075_02214f18(void);
 
 /* Processes the supplied ABI arguments using only local offset-based fields; observable mutations and the return value are preserved by the matching implementation, with no direct SDK call. */
@@ -307,13 +307,13 @@ void func_ov075_02215910(void);
 /* Processes the supplied ABI arguments and offset-based actor state, returns its encoded result, and invokes func_02029b70; exact higher-level semantics remain unconfirmed. */
 void func_ov075_02215930(void);
 
-/* Processes the supplied ABI arguments and offset-based actor state, returns its encoded result, and invokes func_02004fe0, ActorExtendedLinkSource_Init; exact higher-level semantics remain unconfirmed. */
+/* Processes the supplied ABI arguments and offset-based actor state, returns its encoded result, and invokes VecFx32Object_Init, ActorExtendedLinkSource_Init; exact higher-level semantics remain unconfirmed. */
 void func_ov075_022159c4(void);
 
-/* Processes the supplied ABI arguments and offset-based actor state, returns its encoded result, and invokes func_02005058, ActorExtendedLinkSource_Destroy; exact higher-level semantics remain unconfirmed. */
+/* Processes the supplied ABI arguments and offset-based actor state, returns its encoded result, and invokes VecFx32Object_Destroy, ActorExtendedLinkSource_Destroy; exact higher-level semantics remain unconfirmed. */
 void func_ov075_02215a28(void);
 
-/* Processes the supplied ABI arguments and offset-based actor state, returns its encoded result, and invokes func_02005058, ActorExtendedLinkSource_Destroy; exact higher-level semantics remain unconfirmed. */
+/* Processes the supplied ABI arguments and offset-based actor state, returns its encoded result, and invokes VecFx32Object_Destroy, ActorExtendedLinkSource_Destroy; exact higher-level semantics remain unconfirmed. */
 void func_ov075_02215a48(void);
 
 /* Processes the supplied ABI arguments and offset-based actor state, returns its encoded result, and invokes ActorCollection_GetSpriteOwner, Actor_GetCollection, GraphicsSpriteState_SetAnimationIndex and other shared helpers; exact higher-level semantics remain unconfirmed. */
@@ -322,7 +322,7 @@ void func_ov075_02215a70(void);
 /* Processes the supplied ABI arguments and offset-based actor state, returns its encoded result, and invokes ActorExtendedType2_ResetVerticalMotionCallbacks, func_020593dc, func_ov075_022152ac; exact higher-level semantics remain unconfirmed. */
 void func_ov075_02215c90(void);
 
-/* Processes the supplied ABI arguments and offset-based actor state, returns its encoded result, and invokes func_020050a4, ActorExtendedLinkSource_UpdateFrame, ActorExtendedLinkSource_ClearPartnerLinkedFlag and other shared helpers; exact higher-level semantics remain unconfirmed. */
+/* Processes the supplied ABI arguments and offset-based actor state, returns its encoded result, and invokes VecFx32Object_Assign, ActorExtendedLinkSource_UpdateFrame, ActorExtendedLinkSource_ClearPartnerLinkedFlag and other shared helpers; exact higher-level semantics remain unconfirmed. */
 void func_ov075_02215cf8(void);
 
 /* Processes the supplied ABI arguments using only local offset-based fields; observable mutations and the return value are preserved by the matching implementation, with no direct SDK call. */
@@ -334,7 +334,7 @@ void func_ov075_022160a4(void);
 /* Processes the supplied ABI arguments and offset-based actor state, returns its encoded result, and invokes ActorExtendedLinkSource_ClearRuntimeFlag2; exact higher-level semantics remain unconfirmed. */
 void func_ov075_02216158(void);
 
-/* Processes the supplied ABI arguments and offset-based actor state, returns its encoded result, and invokes func_020050a4, ActorExtendedLinkSource_LinkPartner, func_ov075_0221625c; exact higher-level semantics remain unconfirmed. */
+/* Processes the supplied ABI arguments and offset-based actor state, returns its encoded result, and invokes VecFx32Object_Assign, ActorExtendedLinkSource_LinkPartner, func_ov075_0221625c; exact higher-level semantics remain unconfirmed. */
 void func_ov075_02216174(void);
 
 /* Processes the supplied ABI arguments using only local offset-based fields; observable mutations and the return value are preserved by the matching implementation, with no direct SDK call. */
@@ -343,16 +343,16 @@ void func_ov075_0221625c(void);
 /* Processes the supplied ABI arguments and offset-based actor state, returns its encoded result, and invokes Actor_GetCachedTerrainHeight, Type7Actor_GetStateCode, func_0204cfa4 and other shared helpers; exact higher-level semantics remain unconfirmed. */
 void func_ov075_0221627c(void);
 
-/* Processes the supplied ABI arguments and offset-based actor state, returns its encoded result, and invokes func_0200500c, func_02005058, ActorMotionAreaFollower_GetPosition and other shared helpers; exact higher-level semantics remain unconfirmed. */
+/* Processes the supplied ABI arguments and offset-based actor state, returns its encoded result, and invokes VecFx32Object_InitComponents, VecFx32Object_Destroy, ActorMotionAreaFollower_GetPosition and other shared helpers; exact higher-level semantics remain unconfirmed. */
 void func_ov075_0221647c(void);
 
-/* Processes the supplied ABI arguments and offset-based actor state, returns its encoded result, and invokes func_02004fe0, func_020adc90; exact higher-level semantics remain unconfirmed. */
+/* Processes the supplied ABI arguments and offset-based actor state, returns its encoded result, and invokes VecFx32Object_Init, func_020adc90; exact higher-level semantics remain unconfirmed. */
 void func_ov075_022168a8(void);
 
-/* Processes the supplied ABI arguments and offset-based actor state, returns its encoded result, and invokes func_02004fe0, func_020adff0; exact higher-level semantics remain unconfirmed. */
+/* Processes the supplied ABI arguments and offset-based actor state, returns its encoded result, and invokes VecFx32Object_Init, func_020adff0; exact higher-level semantics remain unconfirmed. */
 void func_ov075_022168f0(void);
 
-/* Processes the supplied ABI arguments and offset-based actor state, returns its encoded result, and invokes func_02004fe0, func_02005030, func_02005058 and other shared helpers; exact higher-level semantics remain unconfirmed. */
+/* Processes the supplied ABI arguments and offset-based actor state, returns its encoded result, and invokes VecFx32Object_Init, VecFx32Object_InitCopy, VecFx32Object_Destroy and other shared helpers; exact higher-level semantics remain unconfirmed. */
 void func_ov075_02216928(void);
 
 /* Processes the supplied ABI arguments and offset-based actor state, returns its encoded result, and invokes Actor_RestoreSavedFlags; exact higher-level semantics remain unconfirmed. */

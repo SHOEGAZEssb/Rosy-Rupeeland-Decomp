@@ -1,7 +1,7 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov049/overlay049_object_recovery.c.
 .extern data_ov049_0220d364
-.extern func_02004fe0
+.extern VecFx32Object_Init
 .extern func_0209a208
 .extern func_ov049_0220b740
 
@@ -17,9 +17,9 @@ func_ov049_0220b780:
     ldr r1, .L_0220ba88
     add r0, r10, #0x8c
     str r1, [r10, #0x0]
-    bl func_02004fe0
+    bl VecFx32Object_Init
     add r0, r10, #0x9c
-    bl func_02004fe0
+    bl VecFx32Object_Init
     cmp r4, #0x0
     str r5, [r10, #0x48]
     mov r0, #0x7

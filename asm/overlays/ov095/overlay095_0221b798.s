@@ -1,6 +1,6 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov095/overlay095_recovery.c.
-.extern func_020050a4
+.extern VecFx32Object_Assign
 .extern ActorExtendedType2_InitializeReentryState
 
 .global func_ov095_0221b798
@@ -15,6 +15,6 @@ func_ov095_0221b798:
     blx r1
     mov r1, r4
     add r0, r5, #0x29c
-    bl func_020050a4
+    bl VecFx32Object_Assign
     ldmia sp!, {r3, r4, r5, pc}
 .size func_ov095_0221b798, . - func_ov095_0221b798

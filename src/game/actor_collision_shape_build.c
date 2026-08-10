@@ -18,10 +18,10 @@ typedef struct CollisionShapeActor {
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_02004fe0(CollisionVector *);
-extern void func_0200500c(CollisionVector *, s32, s32, s32);
-extern void func_02005058(CollisionVector *);
-extern void func_020050a4(CollisionVector *, const CollisionVector *);
+extern void VecFx32Object_Init(CollisionVector *);
+extern void VecFx32Object_InitComponents(CollisionVector *, s32, s32, s32);
+extern void VecFx32Object_Destroy(CollisionVector *);
+extern void VecFx32Object_Assign(CollisionVector *, const CollisionVector *);
 extern s32 func_020adae4(s32, s32);
 #ifdef __cplusplus
 }
@@ -40,21 +40,21 @@ void Actor_GetCollisionCenter(CollisionVector *output,
     s8 width;
     s8 height;
 
-    func_02004fe0(output);
+    VecFx32Object_Init(output);
     width = (s8)(actor->maxX_0a - actor->minX_08);
     height = (s8)(actor->maxY_0b - actor->minY_09);
     if (!width || !height) {
-        func_020050a4(output, &actor->position_18);
+        VecFx32Object_Assign(output, &actor->position_18);
     } else {
         CollisionVector center;
         s32 x = func_020adae4(width, 2) + actor->minX_08;
         s32 y = func_020adae4(height, 2) + actor->minY_09;
 
-        func_0200500c(&center, actor->position_18.word[1] + (x << 12),
+        VecFx32Object_InitComponents(&center, actor->position_18.word[1] + (x << 12),
                       actor->position_18.word[2] + (y << 12),
                       actor->position_18.word[3]);
-        func_020050a4(output, &center);
-        func_02005058(&center);
+        VecFx32Object_Assign(output, &center);
+        VecFx32Object_Destroy(&center);
     }
 }
 

@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/actor_derived_type1_state_vector.c.
 .text
 .extern Sound_Play
-.extern func_020050a4
+.extern VecFx32Object_Assign
 .extern Actor_IsAtCachedTerrainHeight
 .extern gSoundContext
 
@@ -66,7 +66,7 @@ ActorDerivedType1_TrySetStateVector: ; 0x02038d38
     mov r1, r6
     add r0, r7, #0x254
     strb r4, [r7, #0x26a]
-    bl func_020050a4
+    bl VecFx32Object_Assign
     add r0, r7, #0x200
     strh r5, [r0, #0x64]
     mov r1, #0x5

@@ -145,10 +145,10 @@ void Type7Actor_ProcessBoundaryTransition(void *self, const VecFx32Object *desti
         if (edgeClear) {
             VecFx32Object edgePosition;
             VecFx32Object currentPosition;
-            func_02004fe0(&edgePosition);
-            func_02005030(&currentPosition,
+            VecFx32Object_Init(&edgePosition);
+            VecFx32Object_InitCopy(&currentPosition,
                           (const VecFx32Object *)(actor + 0x18));
-            func_020050a4(&edgePosition,
+            VecFx32Object_Assign(&edgePosition,
                           (const VecFx32Object *)(actor + 0x18));
 
             if (direction == 0) {
@@ -169,19 +169,19 @@ void Type7Actor_ProcessBoundaryTransition(void *self, const VecFx32Object *desti
                     - ((bottomEdge - 0x20) - gridY) * 0x1000;
             }
 
-            func_020050a4((VecFx32Object *)(actor + 0x28), &currentPosition);
-            func_020050a4((VecFx32Object *)(actor + 0x18),
+            VecFx32Object_Assign((VecFx32Object *)(actor + 0x28), &currentPosition);
+            VecFx32Object_Assign((VecFx32Object *)(actor + 0x18),
                           (VecFx32Object *)(actor + 0x28));
-            func_020050a4((VecFx32Object *)(actor + 0x284), &edgePosition);
+            VecFx32Object_Assign((VecFx32Object *)(actor + 0x284), &edgePosition);
             if (direction == 2)
                 *(s32 *)(actor + 0x28c) += 0x2000;
             if (direction == 3)
                 *(s32 *)(actor + 0x28c) -= 0x2000;
-            func_02005058(&currentPosition);
-            func_02005058(&edgePosition);
+            VecFx32Object_Destroy(&currentPosition);
+            VecFx32Object_Destroy(&edgePosition);
         } else {
             VecFx32Object position;
-            func_02005030(&position, destination);
+            VecFx32Object_InitCopy(&position, destination);
             if (direction == 0) {
                 position.value.x += (halfWidth + 0x30) * 0x1000;
             } else if (direction == 1) {
@@ -193,13 +193,13 @@ void Type7Actor_ProcessBoundaryTransition(void *self, const VecFx32Object *desti
                 s32 extent = func_020be328(*(s16 *)(actor + 0x6e));
                 position.value.y -= (extent + 0x30) * 0x1000;
             }
-            func_020050a4((VecFx32Object *)(actor + 0x28), &position);
-            func_020050a4((VecFx32Object *)(actor + 0x18),
+            VecFx32Object_Assign((VecFx32Object *)(actor + 0x28), &position);
+            VecFx32Object_Assign((VecFx32Object *)(actor + 0x18),
                           (VecFx32Object *)(actor + 0x28));
-            func_020050a4((VecFx32Object *)(actor + 0x284), destination);
+            VecFx32Object_Assign((VecFx32Object *)(actor + 0x284), destination);
             if (direction == 2)
                 *(s32 *)(actor + 0x28c) += 0x1000;
-            func_02005058(&position);
+            VecFx32Object_Destroy(&position);
         }
 
         *(u32 *)(actor + 0x268) |= 0x80004;

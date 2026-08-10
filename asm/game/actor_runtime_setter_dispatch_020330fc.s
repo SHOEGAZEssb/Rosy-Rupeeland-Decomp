@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/actor_runtime_setter_dispatch.c.
 .text
-.extern func_020050a4
+.extern VecFx32Object_Assign
 .extern ActorBounds_GetWidth
 .extern ActorBounds_GetHeight
 .extern ActorBounds_Copy
@@ -430,7 +430,7 @@ Actor_SetRuntimeProperty: ; 0x020330fc
 .L_020336e8:
     add r0, r5, #0x18
     add r1, r5, #0x28
-    bl func_020050a4
+    bl VecFx32Object_Assign
     b .L_0203372c
 .L_020336f8:
     ldr r0, [r5, #0x14]

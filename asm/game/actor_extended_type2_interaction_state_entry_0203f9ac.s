@@ -2,7 +2,7 @@
 .text
 .extern data_020df9e8
 .extern data_020e7318
-.extern func_020050a4
+.extern VecFx32Object_Assign
 .extern func_020349b8
     .global ActorExtendedType2_EnterTargetInteractionState7
     .type ActorExtendedType2_EnterTargetInteractionState7, @function
@@ -44,11 +44,11 @@ ActorExtendedType2_EnterTargetInteractionState7: ; 0x0203f9ac
     add r0, r5, #0x23c
     bne .L_0203fa44
     add r1, r5, #0x22c
-    bl func_020050a4
+    bl VecFx32Object_Assign
     b .L_0203fa4c
 .L_0203fa44:
     add r1, r5, #0x18
-    bl func_020050a4
+    bl VecFx32Object_Assign
 .L_0203fa4c:
     mov r0, r5
     ldr r1, [r0, #0x0]

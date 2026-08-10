@@ -24,7 +24,7 @@ void ActorMotion_GetBoundActorTargetPosition(VecFx32Object *result, const ActorM
 {
     u8 *actor = (u8 *)self->actor;
 
-    func_02004fe0(result);
+    VecFx32Object_Init(result);
     if (*(u8 *)(actor + 0x4d) == 1) {
         result->value.x = *(s32 *)(actor + 0x1c) +
                           *(s32 *)(actor + 0x23c);
@@ -39,11 +39,11 @@ void ActorMotion_GetBoundActorTargetPosition(VecFx32Object *result, const ActorM
                               *(s32 *)(actor + 0x240) -
                               *(s32 *)(actor + 0x244);
         }
-        func_020050c8(result, &self->target);
+        VecFx32Object_Add(result, &self->target);
         return;
     }
 
     result->value.x = *(s32 *)(actor + 0x1c);
     result->value.y = *(s32 *)(actor + 0x20);
-    func_020050c8(result, &self->target);
+    VecFx32Object_Add(result, &self->target);
 }

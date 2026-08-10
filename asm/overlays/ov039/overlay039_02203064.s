@@ -2,12 +2,12 @@
 /* Exact fallback; see overlay039_script_render.c for portable C. */
     .extern func_0201e0ec
     .extern func_0209c3b4
-    .extern func_0200500c
+    .extern VecFx32Object_InitComponents
     .extern func_ov039_022014f8
     .extern func_020befec
     .extern func_ov039_0220346c
     .extern func_0209c430
-    .extern func_02005058
+    .extern VecFx32Object_Destroy
     .extern data_021052fc
     .global func_ov039_02203064
 func_ov039_02203064:
@@ -91,7 +91,7 @@ func_ov039_02203064:
     mov r3, r1
     str lr, [r10, #0x0]
     str r8, [r10, #0x4]
-    bl func_0200500c
+    bl VecFx32Object_InitComponents
     add r0, sp, #0x44
     add r1, r5, #0x2c
     add r2, r5, #0xac
@@ -264,9 +264,9 @@ L_02203320:
     bl func_0209c430
 L_02203448:
     add r0, sp, #0x44
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add r0, sp, #0x54
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add sp, sp, #0xf4
     ldmia sp!, {r3, r4, r5, r6, r7, r8, r9, r10, pc}
 L_02203460: .word data_021052fc

@@ -9,8 +9,8 @@ extern void *data_02105690[10];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_02005030(void *temporary, const void *source);
-extern void func_02005058(void *temporary);
+extern void VecFx32Object_InitCopy(void *temporary, const void *source);
+extern void VecFx32Object_Destroy(void *temporary);
 extern void func_02031758(void *output, void *actor, const void *position);
 extern void *SceneManager_GetCurrent(void *manager);
 extern void AttachmentController_SetEnabled(void *owner, s32 enabled);
@@ -60,7 +60,7 @@ void ActorDerivedType1_UpdatePresentationSteering(void *output, void *self, cons
     void *object;
     u32 i;
 
-    func_02005030(adjusted, input);
+    VecFx32Object_InitCopy(adjusted, input);
     object = *(void **)(actor + 0x270);
     if (object != 0 && (((u8 *)object)[0x10] & 1) != 0) {
         adjusted[1] += *(s32 *)((u8 *)object + 0x1c);
@@ -77,7 +77,7 @@ void ActorDerivedType1_UpdatePresentationSteering(void *output, void *self, cons
         s32 scene = *(s32 *)((u8 *)SceneManager_GetCurrent(gSceneManager) + 4);
         if (scene != 1 && scene != 0x16) AttachmentController_SetEnabled(actor + 0x2a8, 0);
     }
-    func_02005030(actorPosition, actor + 0x18);
+    VecFx32Object_InitCopy(actorPosition, actor + 0x18);
     actorPosition[2] += *(s16 *)(actor + 0x6a) * 0xb33;
     {
         u8 *owner = actor + 0x2a8;
@@ -86,7 +86,7 @@ void ActorDerivedType1_UpdatePresentationSteering(void *output, void *self, cons
                 (*(u8 **)owner + 0x0c);
         submit(owner, input, actorPosition, 0);
     }
-    func_02005058(actorPosition);
+    VecFx32Object_Destroy(actorPosition);
     *(s32 *)(actor + 0x244) = func_020adae4(*(s32 *)(actor + 0x244) * 0x5c,
                                             0x64);
 
@@ -161,5 +161,5 @@ void ActorDerivedType1_UpdatePresentationSteering(void *output, void *self, cons
         *(s32 *)(snapshot + 8) = *(s32 *)((u8 *)output + 8);
         func_02031cac(actor, snapshot);
     }
-    func_02005058(adjusted);
+    VecFx32Object_Destroy(adjusted);
 }

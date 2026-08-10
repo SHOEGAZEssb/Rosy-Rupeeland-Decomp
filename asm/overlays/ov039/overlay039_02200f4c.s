@@ -1,6 +1,6 @@
 .text
 /* Exact fallback; see overlay039_scene_lifecycle.c for portable C. */
-    .extern func_02005058
+    .extern VecFx32Object_Destroy
     .extern __destroy_arr
     .extern func_ov039_021fce5c
     .extern func_ov039_021fd06c
@@ -9,9 +9,9 @@ func_ov039_02200f4c:
     stmdb sp!, {r4, lr}
     mov r4, r0
     add r0, r4, #0x388
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add r0, r4, #0x378
-    bl func_02005058
+    bl VecFx32Object_Destroy
     ldr r3, L_02200f94
     add r0, r4, #0x13c
     mov r1, #0x27

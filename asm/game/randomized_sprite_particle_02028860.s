@@ -1,10 +1,10 @@
 ; Matching retail form; see src/game/randomized_sprite_particle.c.
 .text
-.extern func_02004fe0
-.extern func_0200500c
-.extern func_02005030
-.extern func_02005058
-.extern func_020050a4
+.extern VecFx32Object_Init
+.extern VecFx32Object_InitComponents
+.extern VecFx32Object_InitCopy
+.extern VecFx32Object_Destroy
+.extern VecFx32Object_Assign
 .extern GraphicsSpriteState_SetAnimationIndex
 .extern GraphicsSpriteGroup_CreateStateFromSource
 .extern genrand_int32
@@ -18,14 +18,14 @@ func_02028860: ; 0x02028860
     mov r1, r3
     mov r4, r0
     mov r5, r2
-    bl func_02005030
+    bl VecFx32Object_InitCopy
     ldr r1, [sp, #0x20]
     add r0, r4, #0x10
-    bl func_02005030
+    bl VecFx32Object_InitCopy
     add r0, r4, #0x20
-    bl func_02004fe0
+    bl VecFx32Object_Init
     add r0, r4, #0x30
-    bl func_02004fe0
+    bl VecFx32Object_Init
     str r6, [r4, #0x44]
     mov r0, #0x0
     str r0, [r4, #0x48]
@@ -63,12 +63,12 @@ func_02028860: ; 0x02028860
     sub r2, r3, r2
     add r0, sp, #0x0
     mov r3, r1
-    bl func_0200500c
+    bl VecFx32Object_InitComponents
     add r0, r4, #0x20
     add r1, sp, #0x0
-    bl func_020050a4
+    bl VecFx32Object_Assign
     add r0, sp, #0x0
-    bl func_02005058
+    bl VecFx32Object_Destroy
     mov r0, #0x190
     str r0, [r4, #0x48]
     mov r0, r4

@@ -32,7 +32,7 @@ extern OwnerPositionTimedSprite *func_0201e6e4(
 extern OwnerPositionTimedSprite *func_0201e380(
     OwnerPositionTimedSprite *self);
 extern void func_0201e3b8(OwnerPositionTimedSprite *self, s32 enabled);
-extern void func_020050a4(PresentationTrack *destination, const void *source);
+extern void VecFx32Object_Assign(PresentationTrack *destination, const void *source);
 extern void GraphicsSpriteState_SetDepthOrderedWorldPositionFromOrigin(void *sprite, const void *position, s32 first,
                           s32 second, s32 third, s32 constant8);
 #ifdef __cplusplus
@@ -82,7 +82,7 @@ s32 func_0201ed1c(OwnerPositionTimedSprite *self)
         func_0201e3b8(self, 0);
         return 1;
     }
-    func_020050a4(&self->first08, self->owner2c + 0x18);
+    VecFx32Object_Assign(&self->first08, self->owner2c + 0x18);
     return 0;
 }
 

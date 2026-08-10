@@ -40,7 +40,7 @@ s32 ActorMotion_ConfigureGridTarget(ActorMotion *self, s32 xIndex, s32 yIndex,
     VecFx32Object destination;
 
     self->mode = 2;
-    func_0200500c(&destination,
+    VecFx32Object_InitComponents(&destination,
                   self->target.value.x + (xIndex << 12),
                   self->target.value.y + ((yIndex + 20) << 12), 0);
 
@@ -58,7 +58,7 @@ s32 ActorMotion_ConfigureGridTarget(ActorMotion *self, s32 xIndex, s32 yIndex,
         }
         self->field_24 = destination.value.x;
         self->field_28 = destination.value.y;
-        func_02005058(&displacement);
+        VecFx32Object_Destroy(&displacement);
     } else {
         s32 dx = destination.value.x - self->position.value.x;
         s32 dy = destination.value.y - self->position.value.y;
@@ -78,6 +78,6 @@ s32 ActorMotion_ConfigureGridTarget(ActorMotion *self, s32 xIndex, s32 yIndex,
         self->field_28 = destination.value.y;
     }
 
-    func_02005058(&destination);
+    VecFx32Object_Destroy(&destination);
     return self->field_2c;
 }

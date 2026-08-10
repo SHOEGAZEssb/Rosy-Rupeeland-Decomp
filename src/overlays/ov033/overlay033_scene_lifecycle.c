@@ -9,7 +9,7 @@ extern "C" {
 #endif
 extern void GraphicsSpriteGroup_Destroy(void *spriteContext);
 extern void func_020927b8(void *resourceOwner);
-extern void func_02005058(void *embeddedObject);
+extern void VecFx32Object_Destroy(void *embeddedObject);
 extern void GraphicsSpriteGroup_AdvanceAnimations(void *spriteContext);
 extern void func_ov033_021fcff4(void *group);
 #ifdef __cplusplus
@@ -42,8 +42,8 @@ extern "C" void *func_ov033_021fd260(void *scene)
     FIELD(u16, FIELD(void *, primary, 0xa8), 0x24) &= (u16)~0x10;
     GraphicsSpriteGroup_Destroy(FIELD(void *, scene, 0));
     func_020927b8((u8 *)scene + 0xa0);
-    func_02005058((u8 *)scene + 0x24);
-    func_02005058((u8 *)scene + 0x14);
+    VecFx32Object_Destroy((u8 *)scene + 0x24);
+    VecFx32Object_Destroy((u8 *)scene + 0x14);
     return scene;
 }
 

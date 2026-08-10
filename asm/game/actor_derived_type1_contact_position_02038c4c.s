@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/actor_derived_type1_contact_position.c.
 .text
-.extern func_02005030
-.extern func_02005058
+.extern VecFx32Object_InitCopy
+.extern VecFx32Object_Destroy
 .extern Actor_GetCachedTerrainHeight
 .extern Actor_QueryTerrainHeight
 
@@ -25,7 +25,7 @@ ActorDerivedType1_BuildContactPosition: ; 0x02038c4c
     beq .L_02038d24
     add r0, sp, #0x0
     add r1, r5, #0x18
-    bl func_02005030
+    bl VecFx32Object_InitCopy
     ldrsh r0, [r5, #0xd6]
     sub r0, r0, #0x1
     mov r0, r0, lsl #0x10
@@ -59,14 +59,14 @@ ActorDerivedType1_BuildContactPosition: ; 0x02038c4c
 .L_02038d0c:
     add r1, sp, #0x0
     mov r0, r6
-    bl func_02005030
+    bl VecFx32Object_InitCopy
     add r0, sp, #0x0
-    bl func_02005058
+    bl VecFx32Object_Destroy
     b .L_02038d30
 .L_02038d24:
     mov r0, r6
     add r1, r5, #0x18
-    bl func_02005030
+    bl VecFx32Object_InitCopy
 .L_02038d30:
     add sp, sp, #0x10
     ldmia sp!, {r4, r5, r6, r7, r8, pc}

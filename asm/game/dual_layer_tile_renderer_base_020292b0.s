@@ -2,7 +2,7 @@
 .text
 .extern Heap_Free
 .extern data_020de930
-.extern func_02005058
+.extern VecFx32Object_Destroy
 .extern func_02029328
 .extern func_0202b834
 .extern func_0202baa4
@@ -18,7 +18,7 @@ func_020292b0: ; 0x020292b0
     add r0, r4, #0x60
     bl func_0202b834
     add r0, r4, #0x50
-    bl func_02005058
+    bl VecFx32Object_Destroy
     mov r0, r4
     bl func_0202baa4
     mov r0, r4

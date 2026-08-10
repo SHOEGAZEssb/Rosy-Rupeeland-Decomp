@@ -9,10 +9,10 @@
 .extern data_02105770
 .extern data_ov080_02213e68
 .extern data_ov080_02213ef0
-.extern func_02004fe0
-.extern func_02005030
-.extern func_02005058
-.extern func_020050a4
+.extern VecFx32Object_Init
+.extern VecFx32Object_InitCopy
+.extern VecFx32Object_Destroy
+.extern VecFx32Object_Assign
 .extern Actor_QueryTerrainHeight
 .extern func_02034568
 .extern func_02034a60
@@ -97,9 +97,9 @@ func_ov080_02212f90:
 .L_02213098:
     add r0, sp, #0x18
     add r1, r2, #0x18
-    bl func_02005030
+    bl VecFx32Object_InitCopy
     add r0, sp, #0x8
-    bl func_02004fe0
+    bl VecFx32Object_Init
     mov r4, #0x0
     b .L_0221335c
 .L_022130b4:
@@ -116,7 +116,7 @@ func_ov080_02212f90:
     bne .L_02213358
     add r0, sp, #0x8
     add r1, sp, #0x18
-    bl func_020050a4
+    bl VecFx32Object_Assign
     ldr r0, .L_02213398
     ldr r1, .L_0221338c
     mul r0, r9, r0
@@ -233,7 +233,7 @@ func_ov080_02212f90:
     add r0, r10, #0x22c
     strb r1, [r2, #0x0]
     add r1, sp, #0x8
-    bl func_020050a4
+    bl VecFx32Object_Assign
     mov r0, r10
     ldr r1, [r0, #0x0]
     ldr r1, [r1, #0xcc]
@@ -270,9 +270,9 @@ func_ov080_02212f90:
     add r1, r10, #0x200
     strh r0, [r1, #0xa0]
     add r0, sp, #0x8
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add r0, sp, #0x18
-    bl func_02005058
+    bl VecFx32Object_Destroy
     mov r0, #0x1
     b .L_02213378
 .L_02213358:
@@ -281,9 +281,9 @@ func_ov080_02212f90:
     cmp r4, #0xa
     blt .L_022130b4
     add r0, sp, #0x8
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add r0, sp, #0x18
-    bl func_02005058
+    bl VecFx32Object_Destroy
     mov r0, #0x0
 .L_02213378:
     add sp, sp, #0x28

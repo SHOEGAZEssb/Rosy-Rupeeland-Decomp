@@ -2,7 +2,7 @@
 ; Matching fallback for the portable implementation in src/overlays/ov065/overlay065_recovery.c.
 .extern data_020c9670
 .extern data_ov065_02210c00
-.extern func_02005058
+.extern VecFx32Object_Destroy
 .extern GraphicsSpriteState_SetDepthOrderedWorldPosition
 .extern VecFx32Bezier_Evaluate3D
 .extern func_020593ac
@@ -76,7 +76,7 @@ func_ov065_0220ff20:
     movgt r0, #0x1
     strgth r0, [r7, #0x8]
     add r0, sp, #0x8
-    bl func_02005058
+    bl VecFx32Object_Destroy
     b .L_02210198
 .L_02210018:
     ldr r0, .L_022101b4

@@ -27,7 +27,7 @@ GamePhaseVisualEffect *GamePhaseVisualEffect_Init(GamePhaseVisualEffect *self)
     self->firstBlend = 0;
     self->secondBlend = 0x1f;
     for (i = 0; i < 4; i++)
-        func_02004fe0(&self->vectors[i]);
+        VecFx32Object_Init(&self->vectors[i]);
     VecFx32Stepper_Init(&self->stepper);
     self->flags = (self->flags & ~0xff) | 8;
     self->sequenceEnabled = 0;
@@ -56,7 +56,7 @@ GamePhaseVisualEffect *GamePhaseVisualEffect_Destroy(GamePhaseVisualEffect *self
     *(volatile u16 *)0x04000050 = 0;
     VecFx32Stepper_Destroy(&self->stepper);
     for (i = 3; i >= 0; i--)
-        func_02005058(&self->vectors[i]);
+        VecFx32Object_Destroy(&self->vectors[i]);
     GraphicsResourceSet_Destroy(&self->resources);
     return self;
 }

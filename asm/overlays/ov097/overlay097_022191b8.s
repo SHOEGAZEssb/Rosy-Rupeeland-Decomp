@@ -1,6 +1,6 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov097/overlay097_recovery.c.
-.extern func_02005058
+.extern VecFx32Object_Destroy
 .extern Actor_ApplyMotionImpulse
 .extern func_ov097_022188f8
 .extern func_ov097_022194e8
@@ -33,7 +33,7 @@ func_ov097_022191b8:
     mov r2, r4
     bl Actor_ApplyMotionImpulse
     add r0, sp, #0x0
-    bl func_02005058
+    bl VecFx32Object_Destroy
 .L_02219220:
     add sp, sp, #0x10
     ldmia sp!, {r4, r5, r6, pc}

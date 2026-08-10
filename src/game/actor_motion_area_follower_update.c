@@ -82,7 +82,7 @@ s32 ActorMotionAreaFollower_Update(ActorMotionAreaFollower *self, const s16 *bou
             if (companion != 0 && Type7Actor_GetStateCode(companion) == 3) {
                 VecFx32Object shifted;
 
-                func_02005030(&shifted,
+                VecFx32Object_InitCopy(&shifted,
                               (const VecFx32Object *)(actor + 0x18));
                 if (direction == 1)
                     shifted.value.x -= 0x14000;
@@ -92,8 +92,8 @@ s32 ActorMotionAreaFollower_Update(ActorMotionAreaFollower *self, const s16 *bou
                     shifted.value.y -= 0x14000;
                 else if (direction == 4)
                     shifted.value.y += 0x14000;
-                func_020050a4((VecFx32Object *)(companion + 0x18), &shifted);
-                func_02005058(&shifted);
+                VecFx32Object_Assign((VecFx32Object *)(companion + 0x18), &shifted);
+                VecFx32Object_Destroy(&shifted);
             }
         }
         self->previousArea = area;
@@ -101,7 +101,7 @@ s32 ActorMotionAreaFollower_Update(ActorMotionAreaFollower *self, const s16 *bou
         ActorMotionJitter_Update(&self->jitter, bounds);
     }
 
-    func_02005030(&candidate, &motion->position);
+    VecFx32Object_InitCopy(&candidate, &motion->position);
     if ((candidate.value.x >> 12) < bounds[0])
         candidate.value.x = bounds[0] << 12;
     else if ((candidate.value.x >> 12) + 0x100 > bounds[2])
@@ -130,21 +130,21 @@ s32 ActorMotionAreaFollower_Update(ActorMotionAreaFollower *self, const s16 *bou
         if (func_020adcac(&self->offset.value, &candidate.value) < 0x1000)
             self->transitionActive = 0;
     } else {
-        func_020050a4(&self->offset, &candidate);
+        VecFx32Object_Assign(&self->offset, &candidate);
     }
-    func_020050a4(&motion->position, &self->offset);
+    VecFx32Object_Assign(&motion->position, &self->offset);
 
     func_02008740(&oscillation, &motion->state);
     *(s16 *)((u8 *)gGameWork + 0x22e) =
         (s16)(((motion->position.value.x + oscillation.value.x) >> 12) +
               0x80);
-    func_02005058(&oscillation);
+    VecFx32Object_Destroy(&oscillation);
     func_02008740(&oscillation, &motion->state);
     *(s16 *)((u8 *)gGameWork + 0x230) =
         (s16)(((motion->position.value.y + oscillation.value.y) >> 12) +
               0x60);
-    func_02005058(&oscillation);
-    func_02005058(&candidate);
-    func_02005058(&transformed);
+    VecFx32Object_Destroy(&oscillation);
+    VecFx32Object_Destroy(&candidate);
+    VecFx32Object_Destroy(&transformed);
     return 0;
 }

@@ -1,6 +1,6 @@
 .text
 /* Exact fallback; see overlay040_small_helpers.c for portable C. */
-    .extern func_02004fe0
+    .extern VecFx32Object_Init
     .extern func_020adfbc
     .global func_ov040_021ff3f4
 func_ov040_021ff3f4:
@@ -8,7 +8,7 @@ func_ov040_021ff3f4:
     mov r4, r2
     mov r5, r1
     mov r6, r0
-    bl func_02004fe0
+    bl VecFx32Object_Init
     cmp r4, #0x0
     addne r4, r4, #0x4
     cmp r5, #0x0

@@ -13,7 +13,7 @@ extern const u8 data_ov039_022083fc[];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_02004fe0(void *object);
+extern void VecFx32Object_Init(void *object);
 #ifdef __cplusplus
 }
 #endif
@@ -21,13 +21,13 @@ extern void func_02004fe0(void *object);
 /*
  * Install the address-derived base vtable, initialize embedded objects at
  * +0x1C and +0x2C, clear words +4/+8/+0x0C/+0x44, and return the input object.
- * Embedded subsystem state changes through func_02004fe0.
+ * Embedded subsystem state changes through VecFx32Object_Init.
  */
 extern "C" void *func_ov039_021fce00(void *object)
 {
     FIELD(const void *, object, 0) = data_020f3058;
-    func_02004fe0((u8 *)object + 0x1c);
-    func_02004fe0((u8 *)object + 0x2c);
+    VecFx32Object_Init((u8 *)object + 0x1c);
+    VecFx32Object_Init((u8 *)object + 0x2c);
     FIELD(u32, object, 4) = 0;
     FIELD(u32, object, 8) = 0;
     FIELD(u32, object, 0x0c) = 0;

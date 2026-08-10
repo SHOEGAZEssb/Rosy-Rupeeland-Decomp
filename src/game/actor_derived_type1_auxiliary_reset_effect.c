@@ -13,9 +13,9 @@ extern void func_0206e590(void *resource, s32 value);
 extern void func_0206c978(void *resource);
 extern void GameWork_ClearFlag(void *work, u32 flag);
 extern void ActorMotionJitter_EnsureMinimum(void *manager, s32 first, s32 second);
-extern void func_0200500c(void *vector, s32 x, s32 y, s32 z);
+extern void VecFx32Object_InitComponents(void *vector, s32 x, s32 y, s32 z);
 extern void func_02008378(void *output, const void *left, const void *right);
-extern void func_02005058(void *vector);
+extern void VecFx32Object_Destroy(void *vector);
 extern void *func_0201f864(void *allocation, ...);
 #ifdef __cplusplus
 }
@@ -53,15 +53,15 @@ void ActorDerivedType1_ReleaseAuxiliaryAndSpawnResetEffect(void *self)
         void *allocation;
         actor[0x2a0] = 8;
         ActorMotionJitter_EnsureMinimum(data_021052fc + 0x2fbc, 0x1e, 4);
-        func_0200500c(offset, 0, 0, 0x24000);
+        VecFx32Object_InitComponents(offset, 0, 0, 0x24000);
         func_02008378(position, actor + 0x18, offset);
-        func_02005058(offset);
+        VecFx32Object_Destroy(offset);
         allocation = Heap_Alloc(0x14, data_020df4a4, 4, &gHeapContext);
         if (allocation != 0) {
             void *attachment = *(void **)(actor + 0x54);
             func_0201f864(allocation, position, *(void **)attachment,
                           0x21e0, 0x21e1, 0x21e2, 0, -4, -1, 1);
         }
-        func_02005058(position);
+        VecFx32Object_Destroy(position);
     }
 }

@@ -1,7 +1,7 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov077/overlay077_recovery.c.
 .extern data_ov077_02217118
-.extern func_02005058
+.extern VecFx32Object_Destroy
 .extern ActorExtendedType2_Destroy
 
 .global func_ov077_02212c18
@@ -18,9 +18,9 @@ func_ov077_02212c18:
     blx r1
 .L_02212c40:
     add r0, r4, #0x2b4
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add r0, r4, #0x2a4
-    bl func_02005058
+    bl VecFx32Object_Destroy
     mov r0, r4
     bl ActorExtendedType2_Destroy
     mov r0, r4

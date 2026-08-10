@@ -1,6 +1,6 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov075/overlay075_recovery.c.
-.extern func_020050a4
+.extern VecFx32Object_Assign
 .extern Actor_ClearTransientContactState
 .extern Actor_GetCachedTerrainHeight
 .extern func_020593dc
@@ -32,7 +32,7 @@ func_ov075_022137a0:
     orr r2, r2, #0x6
     bic r2, r2, #0x800000
     str r2, [r7, #0x14]
-    bl func_020050a4
+    bl VecFx32Object_Assign
     mov r0, r7
     ldr r1, [r0, #0x0]
     ldr r1, [r1, #0x18]

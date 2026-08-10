@@ -1,7 +1,7 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov084/overlay084_recovery.c.
-.extern func_02005030
-.extern func_02005058
+.extern VecFx32Object_InitCopy
+.extern VecFx32Object_Destroy
 .extern Actor_GetCachedTerrainHeight
 .extern ActorExtendedType2_TriggerStoredTargetCallback
 .extern func_020536b8
@@ -28,7 +28,7 @@ func_ov084_022138d8:
     beq .L_02213948
     add r0, sp, #0x0
     add r1, r4, #0x18
-    bl func_02005030
+    bl VecFx32Object_InitCopy
     mov r0, r4
     bl Actor_GetCachedTerrainHeight
     str r0, [sp, #0xc]
@@ -36,7 +36,7 @@ func_ov084_022138d8:
     mov r0, r5
     bl func_ov084_02213b2c
     add r0, sp, #0x0
-    bl func_02005058
+    bl VecFx32Object_Destroy
     mov r0, #0x1
     b .L_0221394c
 .L_02213948:

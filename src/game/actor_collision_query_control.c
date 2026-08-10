@@ -6,8 +6,8 @@ extern "C" {
 #endif
 extern u32 GamePhaseRegion_ContainsPoint(const void *rectangle, s32 x, s32 y);
 extern void BoundsCenterSnapshot_Init(void *center, const void *bounds);
-extern void func_0200500c(void *vector, s32 x, s32 y, s32 z);
-extern void func_02005058(void *vector);
+extern void VecFx32Object_InitComponents(void *vector, s32 x, s32 y, s32 z);
+extern void VecFx32Object_Destroy(void *vector);
 extern u32 func_020573e4(void *resource);
 extern void func_0205740c(void *output, void *resource, const void *position);
 extern u32 Actor_TestQueryPoint(void *self, const void *query);
@@ -112,13 +112,13 @@ u32 Actor_TestQueryPoint(void *self, const void *query)
     resource = *(void **)(actor + 0x1e0);
     if (resource != 0 && func_020573e4(resource) != 0) {
         BoundsCenterSnapshot_Init(center, actor + 8);
-        func_0200500c(position,
+        VecFx32Object_InitComponents(position,
                       *(s32 *)(actor + 0x1c) + ((s8)center[4] << 12),
                       *(s32 *)(actor + 0x20) + ((s8)center[5] << 12) -
                           *(s32 *)(actor + 0x24),
                       0);
         func_0205740c(resourceRectangle, resource, position);
-        func_02005058(position);
+        VecFx32Object_Destroy(position);
         result |= GamePhaseRegion_ContainsPoint(resourceRectangle, *(s32 *)(queryBytes + 4),
                                 *(s32 *)(queryBytes + 8));
     }

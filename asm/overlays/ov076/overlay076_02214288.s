@@ -2,9 +2,9 @@
 ; Matching fallback for the portable implementation in src/overlays/ov076/overlay076_recovery.c.
 .extern data_020c9670
 .extern data_ov076_02214848
-.extern func_0200500c
-.extern func_02005030
-.extern func_02005058
+.extern VecFx32Object_InitComponents
+.extern VecFx32Object_InitCopy
+.extern VecFx32Object_Destroy
 .extern func_0204cfa4
 .extern func_020ae024
 .extern func_ov076_022145d8
@@ -139,7 +139,7 @@ func_ov076_02214288:
     add r0, sp, #0x10
     sub r1, r1, r5
     sub r2, r4, r2
-    bl func_0200500c
+    bl VecFx32Object_InitComponents
     ldr r1, [r6, #0xd0]
     mov r0, r6
     orr r1, r1, #0x2
@@ -171,9 +171,9 @@ func_ov076_02214288:
     mov r2, r2, lsr #0xc
     orr r2, r2, r1, lsl #0x14
     str r2, [r6, #0x40]
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add r0, sp, #0x20
-    bl func_02005058
+    bl VecFx32Object_Destroy
     b .L_022145c4
 .L_02214508:
     ldr ip, [r6, #0x228]
@@ -194,7 +194,7 @@ func_ov076_02214288:
     bge .L_02214598
     add r0, sp, #0x0
     add r1, r6, #0x18
-    bl func_02005030
+    bl VecFx32Object_InitCopy
     ldr r0, [sp, #0x8]
     ldr r1, [sp, #0x4]
     add r0, r0, r5, lsl #0xc
@@ -210,7 +210,7 @@ func_ov076_02214288:
     ldr r2, [r2, #0xd0]
     blx r2
     add r0, sp, #0x0
-    bl func_02005058
+    bl VecFx32Object_Destroy
     b .L_022145c4
 .L_02214598:
     mov r0, r6

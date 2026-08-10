@@ -1,9 +1,9 @@
 ; Matching retail form; see src/game/main_bg1_follow_presentation.c.
 .text
 .extern BgScroll_SetMainBg1
-.extern func_02005030
-.extern func_02005058
-.extern func_020050c8
+.extern VecFx32Object_InitCopy
+.extern VecFx32Object_Destroy
+.extern VecFx32Object_Add
 .extern func_02008740
 .extern ActorMotionAreaFollower_GetPosition
 
@@ -17,7 +17,7 @@ func_020285a4: ; 0x020285a4
     bl ActorMotionAreaFollower_GetPosition
     mov r1, r0
     add r0, sp, #0x10
-    bl func_02005030
+    bl VecFx32Object_InitCopy
     ldr r0, [sp, #0x14]
     ldr r1, [sp, #0x18]
     add r0, r0, r0, lsr #0x1f
@@ -32,16 +32,16 @@ func_020285a4: ; 0x020285a4
     bl func_02008740
     add r0, sp, #0x10
     add r1, sp, #0x0
-    bl func_020050c8
+    bl VecFx32Object_Add
     add r0, sp, #0x0
-    bl func_02005058
+    bl VecFx32Object_Destroy
     ldr r0, [sp, #0x14]
     ldr r1, [sp, #0x18]
     mov r0, r0, asr #0xc
     mov r1, r1, asr #0xc
     bl BgScroll_SetMainBg1
     add r0, sp, #0x10
-    bl func_02005058
+    bl VecFx32Object_Destroy
     mov r0, #0x0
     add sp, sp, #0x20
     ldmia sp!, {r4, pc}

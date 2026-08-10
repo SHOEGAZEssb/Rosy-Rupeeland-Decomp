@@ -3,8 +3,8 @@
 .extern data_020c9670
 .extern data_021052fc
 .extern data_0210576e
-.extern func_02005030
-.extern func_02005058
+.extern VecFx32Object_InitCopy
+.extern VecFx32Object_Destroy
 .extern func_020adcac
 .extern func_ov080_02213b24
 
@@ -71,7 +71,7 @@ func_ov080_02213774:
     ldr r5, [r4, #0x228]
     add r0, sp, #0x0
     add r1, r4, #0x18
-    bl func_02005030
+    bl VecFx32Object_InitCopy
     ldrb r0, [r4, #0x299]
     ldr r3, [r4, #0x20]
     ldr r2, [r5, #0x20]
@@ -127,7 +127,7 @@ func_ov080_02213774:
     movne r0, #0xd
     strneh r0, [r4, #0xd6]
     add r0, sp, #0x0
-    bl func_02005058
+    bl VecFx32Object_Destroy
     mov r0, #0x0
 .L_02213940:
     add sp, sp, #0x10

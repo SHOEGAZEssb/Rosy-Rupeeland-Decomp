@@ -3,7 +3,7 @@
 .extern Heap_Alloc
 .extern data_021052fc
 .extern data_ov088_0221b9fc
-.extern func_020050a4
+.extern VecFx32Object_Assign
 .extern AnimationResource_Init
 .extern Actor_AdjustPositionForTerrainHeight
 .extern Actor_GetCachedTerrainHeight
@@ -134,7 +134,7 @@ func_ov088_0221aaac:
     orr r1, r1, #0x2
     str r1, [r5, #0x14]
     add r1, r4, #0x18
-    bl func_020050a4
+    bl VecFx32Object_Assign
     ldr r0, .L_0221ad60
     ldr r0, [r0, #0x0]
     add r0, r0, #0x2000

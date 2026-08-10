@@ -1,7 +1,7 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov074/overlay074_recovery.c.
 .extern data_021052fc
-.extern func_02005058
+.extern VecFx32Object_Destroy
 .extern SplineMover_Evaluate2D
 .extern GamePhaseAreaScene_ApplyPlacementState
 .extern ActorCollection_DispatchEventToActors
@@ -28,7 +28,7 @@ func_ov074_022107f8:
     mov r0, r4
     bl GamePhaseAreaScene_ApplyPlacementState
     add r0, sp, #0x10
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add r0, sp, #0x0
     mov r1, r5
     bl SplineMover_Evaluate2D
@@ -36,7 +36,7 @@ func_ov074_022107f8:
     add r0, r4, #0x8
     bl ActorCollection_DispatchEventToActors
     add r0, sp, #0x0
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add sp, sp, #0x20
     ldmia sp!, {r3, r4, r5, pc}
 .L_02210874: .word data_021052fc

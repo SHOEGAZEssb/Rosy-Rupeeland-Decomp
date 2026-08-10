@@ -38,8 +38,8 @@ extern u8 gSystemState[];
 extern void ActorMotionTriple_Clear(void *state);
 extern void VecFx32Triple_Init(void *path);
 extern void VecFx32Triple_Destroy(void *value);
-extern void func_0200500c(PresentationValue *value, s32 x, s32 y, s32 z);
-extern void func_02005058(PresentationValue *value);
+extern void VecFx32Object_InitComponents(PresentationValue *value, s32 x, s32 y, s32 z);
+extern void VecFx32Object_Destroy(PresentationValue *value);
 extern void func_02008378(PresentationValue *destination, s32 argument,
                           PresentationValue *source);
 extern void VecFx32Triple_InitWithValues(void *destination, s32 first,
@@ -99,13 +99,13 @@ RisingSpriteMotionController *RisingSpriteMotionController_Init(
     SpriteMotionDelta_Init(&self->motion4c);
     self->offset5c = 0;
     self->systemTime60 = *(s32 *)(gSystemState + 0x64);
-    func_0200500c(&value60, 0, 0, 0x46000);
+    VecFx32Object_InitComponents(&value60, 0, 0, 0x46000);
     func_02008378(&value50, pathArgument, &value60);
     VecFx32Triple_InitWithValues(pathValue20, pathArgument, &value50, pathArgument);
     VecFx32Triple_Assign(self->path1c, pathValue20);
     VecFx32Triple_Destroy(pathValue20);
-    func_02005058(&value50);
-    func_02005058(&value60);
+    VecFx32Object_Destroy(&value50);
+    VecFx32Object_Destroy(&value60);
     SpriteMotionDelta_Configure(&motion, 0x100000, 0x2000, 0x78);
     SpriteMotionDelta_Copy(&self->motion4c, &motion);
     self->sprite00 = GraphicsSpriteGroup_CreateState(spriteOwner, spriteConfig[0],
@@ -172,8 +172,8 @@ s32 RisingSpriteMotionController_Update(RisingSpriteMotionController *self,
     VecFx32Bezier_Evaluate3D(pathSample, self->path1c, self->offset5c);
     VecFx32_Subtract(&sampled, pathSample, referencePosition);
     func_02056f00(&transformed, &sampled);
-    func_02005058(&sampled);
-    func_02005058((PresentationValue *)pathSample);
+    VecFx32Object_Destroy(&sampled);
+    VecFx32Object_Destroy((PresentationValue *)pathSample);
     *(s32 *)&transformed.bytes[4] +=
         ActorMotionOscillation_Sample(oscillationSample,
                       *(s32 *)(gSystemState + 0x64) + self->systemTime60, 0);
@@ -184,7 +184,7 @@ s32 RisingSpriteMotionController_Update(RisingSpriteMotionController *self,
     *(u16 *)(self->sprite00 + 0x24) &= (u16)~4;
     *(s16 *)(self->sprite00 + 0x32) = (s16)(scale + 0x20);
     *(s16 *)(self->sprite00 + 0x34) = (s16)(scale + 0x20);
-    func_02005058(&transformed);
+    VecFx32Object_Destroy(&transformed);
     return 0;
 }
 

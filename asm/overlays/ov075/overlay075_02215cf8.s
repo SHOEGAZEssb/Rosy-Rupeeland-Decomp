@@ -3,7 +3,7 @@
 .extern data_ov075_02217290
 .extern data_ov075_02217348
 .extern data_ov075_02217350
-.extern func_020050a4
+.extern VecFx32Object_Assign
 .extern ActorExtendedLinkSource_UpdateFrame
 .extern ActorExtendedLinkSource_ClearPartnerLinkedFlag
 .extern func_0204cfa4
@@ -72,7 +72,7 @@ func_ov075_02215cf8:
     beq .L_02216064
     add r0, r4, #0x22c
     add r1, r1, #0x22c
-    bl func_020050a4
+    bl VecFx32Object_Assign
     ldr r0, [r4, #0x298]
     ldr r1, [r0, #0x0]
     ldr r1, [r1, #0xa8]

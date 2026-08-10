@@ -2,7 +2,7 @@
 ; the documented portable implementation and recovered behavior.
 .text
 .extern data_020c9670
-.extern func_020050a4
+.extern VecFx32Object_Assign
 .global ActorMotionOscillation_Sample
 ActorMotionOscillation_Sample: ; 0x020096f0
     ldr r3, [r0, #0x8]
@@ -51,6 +51,6 @@ ActorMotion_SetTarget: ; 0x02009780
     ldr ip, L_0200978c
     add r0, r0, #0x34
     bx ip
-L_0200978c: .word func_020050a4
+L_0200978c: .word VecFx32Object_Assign
     .size ActorMotion_SetTarget, .-ActorMotion_SetTarget
 

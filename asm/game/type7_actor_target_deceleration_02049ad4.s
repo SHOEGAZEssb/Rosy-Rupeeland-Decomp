@@ -1,5 +1,5 @@
 ; Matching retail form; see src/game/type7_actor_target_deceleration.c.
-.extern func_020050a4
+.extern VecFx32Object_Assign
 .extern Type7Actor_UpdateMotionTowardTransform
 .extern Type7Actor_DispatchCurrentCallback
 .extern func_020adae4
@@ -37,11 +37,11 @@ Type7Actor_UpdateTargetDeceleration: ; 0x02049ad4
     ldr r1, [r4, #0x210]
     add r0, r4, #0x78
     add r1, r1, #0x18
-    bl func_020050a4
+    bl VecFx32Object_Assign
     ldr r1, [r4, #0x210]
     add r0, r4, #0x78
     add r1, r1, #0x18
-    bl func_020050a4
+    bl VecFx32Object_Assign
     mov r0, r4
     add r1, r4, #0x78
     bl Type7Actor_UpdateMotionTowardTransform

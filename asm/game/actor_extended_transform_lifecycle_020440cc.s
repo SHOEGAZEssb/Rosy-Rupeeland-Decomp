@@ -2,8 +2,8 @@
 .text
 .extern Heap_Free
 .extern data_020e08ec
-.extern func_0200500c
-.extern func_02005058
+.extern VecFx32Object_InitComponents
+.extern VecFx32Object_Destroy
 .extern ActorExtendedType2_Init
 .extern ActorExtendedType2_Destroy
 .extern ActorExtendedType2_GetDescriptorValue2C
@@ -29,7 +29,7 @@ ActorExtendedTransform_Init: ; 0x020440cc
     add ip, r4, #0x200
     add r0, r4, #0x29c
     strh r1, [ip, #0x98]
-    bl func_0200500c
+    bl VecFx32Object_InitComponents
     mov r0, r4
     bl ActorExtendedType2_GetDescriptorValue2C
     add r1, r4, #0x200
@@ -51,7 +51,7 @@ ActorExtendedTransform_InitDuplicate: ; 0x02044118
     add ip, r4, #0x200
     add r0, r4, #0x29c
     strh r1, [ip, #0x98]
-    bl func_0200500c
+    bl VecFx32Object_InitComponents
     mov r0, r4
     bl ActorExtendedType2_GetDescriptorValue2C
     add r1, r4, #0x200
@@ -65,7 +65,7 @@ ActorExtendedTransform_DestroyComplete: ; 0x02044164
     stmdb sp!, {r4, lr}
     mov r4, r0
     add r0, r4, #0x29c
-    bl func_02005058
+    bl VecFx32Object_Destroy
     mov r0, r4
     bl ActorExtendedType2_Destroy
     mov r0, r4
@@ -76,7 +76,7 @@ ActorExtendedTransform_DestroyAndFree: ; 0x02044184
     stmdb sp!, {r4, lr}
     mov r4, r0
     add r0, r4, #0x29c
-    bl func_02005058
+    bl VecFx32Object_Destroy
     mov r0, r4
     bl ActorExtendedType2_Destroy
     mov r0, r4
@@ -89,7 +89,7 @@ ActorExtendedTransform_Destroy: ; 0x020441ac
     stmdb sp!, {r4, lr}
     mov r4, r0
     add r0, r4, #0x29c
-    bl func_02005058
+    bl VecFx32Object_Destroy
     mov r0, r4
     bl ActorExtendedType2_Destroy
     mov r0, r4

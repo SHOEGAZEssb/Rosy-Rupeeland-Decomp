@@ -1,7 +1,7 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov065/overlay065_recovery.c.
 .extern data_ov065_02210c00
-.extern func_02005058
+.extern VecFx32Object_Destroy
 .extern VecFx32Triple_Set
 .extern GraphicsSpriteState_SetAnimationIndex
 .extern GraphicsSpriteGroup_ReplaceStateResources
@@ -28,9 +28,9 @@ func_ov065_0220fdac:
     add r2, sp, #0x4
     bl func_ov065_0220fee8
     add r0, sp, #0x4
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add r0, sp, #0x14
-    bl func_02005058
+    bl VecFx32Object_Destroy
     ldr r0, [r5, #0x10]
     mov r1, r7
     mov r2, r6
@@ -56,7 +56,7 @@ func_ov065_0220fdac:
     and r1, r4, #0xff
     bl GraphicsSpriteState_SetAnimationIndex
     add r0, sp, #0x24
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add sp, sp, #0x34
     ldmia sp!, {r4, r5, r6, r7, pc}
 .L_0220fe70: .word 0x4cd

@@ -27,7 +27,7 @@ s32 ActorMotion_UpdateFromBoundActor(ActorMotion *self)
     u8 *config = *(u8 **)(runtime + 0x30bc);
     u32 mode;
 
-    func_02004fe0(&temporary);
+    VecFx32Object_Init(&temporary);
     mode = (*(u32 *)(config + 0x40) << 12) >> 30;
     if (mode == 2) {
         self->position.value.x =
@@ -43,8 +43,8 @@ s32 ActorMotion_UpdateFromBoundActor(ActorMotion *self)
         self->position.value.x = *(s32 *)(actor + 0x1c);
         self->position.value.y = *(s32 *)(actor + 0x20);
     }
-    func_020050c8(&self->position, &self->target);
-    func_02005058(&temporary);
+    VecFx32Object_Add(&self->position, &self->target);
+    VecFx32Object_Destroy(&temporary);
     return 0;
 }
 

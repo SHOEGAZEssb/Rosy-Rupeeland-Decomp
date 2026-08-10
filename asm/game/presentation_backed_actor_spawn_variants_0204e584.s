@@ -2,8 +2,8 @@
 .extern data_020c3e78
 .extern data_020c9670
 .extern data_02105788
-.extern func_0200500c
-.extern func_02005058
+.extern VecFx32Object_InitComponents
+.extern VecFx32Object_Destroy
 .extern func_0204e2ac
 .extern func_020adae4
 .extern func_020bf1f8
@@ -74,7 +74,7 @@ func_0204e628: ; 0x0204e628
     add r0, sp, #0x1c
     mov r2, r1
     mov r3, #0x2000
-    bl func_0200500c
+    bl VecFx32Object_InitComponents
     ldr r0, .L_0204e734
     mov r1, r4, lsl #0x10
     ldr r11, .L_0204e738
@@ -127,7 +127,7 @@ func_0204e628: ; 0x0204e628
     strh r0, [r4, #0x0]
     blt .L_0204e67c
     add r0, sp, #0x1c
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add sp, sp, #0x2c
     ldmia sp!, {r4, r5, r6, r7, r8, r9, r10, r11, pc}
 .L_0204e734: .word 0x3010

@@ -3,7 +3,7 @@
 .extern Heap_Free
 .extern data_020c9670
 .extern data_020d6118
-.extern func_020050c8
+.extern VecFx32Object_Add
 .extern GraphicsSpriteState_SetDepthOrderedWorldPositionFromOrigin
 .extern S16BoundsCenter_Init
 .extern func_0201e380
@@ -107,7 +107,7 @@ func_0201ea98: ; 0x0201ea98
     blx r3
     add r0, r4, #0x8
     add r1, r4, #0x18
-    bl func_020050c8
+    bl VecFx32Object_Add
     ldrh r2, [r4, #0x38]
     ldrsh r1, [r4, #0x3a]
     mov r0, #0x0

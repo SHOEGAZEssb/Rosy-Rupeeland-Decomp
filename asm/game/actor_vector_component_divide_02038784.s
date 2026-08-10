@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/actor_vector_component_divide.c.
 .text
-.extern func_02004fe0
+.extern VecFx32Object_Init
 .extern func_020adc90
 
     .global ActorVector_DivideByScalar
@@ -10,7 +10,7 @@ ActorVector_DivideByScalar: ; 0x02038784
     mov r5, r1
     mov r6, r0
     mov r4, r2
-    bl func_02004fe0
+    bl VecFx32Object_Init
     ldr r0, [r5, #0x4]
     mov r1, r4
     bl func_020adc90

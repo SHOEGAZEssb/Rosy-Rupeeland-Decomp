@@ -10,12 +10,12 @@
 
 extern "C" {
 void func_0209a2ac(void *, const void *, s32);
-void func_02005030(void *, const void *);
-void func_0200500c(void *, s32, s32, s32);
-void func_02005058(void *);
+void VecFx32Object_InitCopy(void *, const void *);
+void VecFx32Object_InitComponents(void *, s32, s32, s32);
+void VecFx32Object_Destroy(void *);
 s32 func_020befec(s32, s32);
 void GraphicsSpriteCanvas_FillRect(void *, s32, s32, s32, s32, s32);
-void func_020050a4(void *, const void *);
+void VecFx32Object_Assign(void *, const void *);
 void func_0209c9d4(void *);
 void func_0209cb74(void *, const void *, const void *, s32,
                    s32, const void *, s32);
@@ -53,7 +53,7 @@ extern "C" void func_ov041_02200ce8(void *object, const void *transform)
 {
     func_0209a2ac(object, transform, 1);
     u8 localTransform[0x10];
-    func_02005030(localTransform, transform);
+    VecFx32Object_InitCopy(localTransform, transform);
     for (s32 i = 3; i >= 0; --i)
         func_0209a2ac(FIELD(void *, object, 0x4c + i * 4),
                       localTransform, 1);
@@ -61,13 +61,13 @@ extern "C" void func_ov041_02200ce8(void *object, const void *transform)
     void *owner = FIELD(void *, object, 0x48);
     s32 bankOffset = FIELD(s32, owner, 0x1ec) == 0 ? -0xc0000 : 0;
     u8 specialTransform[0x10];
-    func_0200500c(specialTransform, 0, bankOffset, 0);
+    VecFx32Object_InitComponents(specialTransform, 0, bankOffset, 0);
     func_0209a2ac(FIELD(void *, object, 0x5c), specialTransform, 1);
     func_0209a2ac(FIELD(void *, object, 0x60), specialTransform, 1);
 
     if (FIELD(s32, owner, 0x1f4) == 2) {
-        func_02005058(specialTransform);
-        func_02005058(localTransform);
+        VecFx32Object_Destroy(specialTransform);
+        VecFx32Object_Destroy(localTransform);
         return;
     }
 
@@ -80,7 +80,7 @@ extern "C" void func_ov041_02200ce8(void *object, const void *transform)
     }
 
     void *scene = FIELD(void *, owner, 0x18);
-    func_020050a4((u8 *)scene + 0x84, transform);
+    VecFx32Object_Assign((u8 *)scene + 0x84, transform);
     func_0209c9d4(scene);
     s32 animation = ((++FIELD(s32, object, 0x158) / 6) % 4) << 6;
 
@@ -117,6 +117,6 @@ extern "C" void func_ov041_02200ce8(void *object, const void *transform)
         }
         func_0209cb74(scene, positions, texcoords, 0x1e, 0x12, colors, 0);
     }
-    func_02005058(specialTransform);
-    func_02005058(localTransform);
+    VecFx32Object_Destroy(specialTransform);
+    VecFx32Object_Destroy(localTransform);
 }

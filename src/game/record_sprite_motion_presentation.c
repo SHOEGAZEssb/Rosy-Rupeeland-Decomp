@@ -19,9 +19,9 @@ extern "C" {
 #endif
 extern void *data_020d6630;extern void *data_020f4e18;extern void *data_021e9ac0;
 extern void *func_0201e250(void *);extern void *func_0201e28c(void *);
-extern void func_02005030(void *,const void *);extern void func_02004fe0(void *);
-extern void func_0200500c(void *,s32,s32,s32);extern void func_020050a4(void *,const void *);
-extern void func_02005058(void *);extern void func_020050c8(void *,const void *);
+extern void VecFx32Object_InitCopy(void *,const void *);extern void VecFx32Object_Init(void *);
+extern void VecFx32Object_InitComponents(void *,s32,s32,s32);extern void VecFx32Object_Assign(void *,const void *);
+extern void VecFx32Object_Destroy(void *);extern void VecFx32Object_Add(void *,const void *);
 extern void VecFx32_Subtract(void *,const void *,s32);extern void func_02056f00(void *,const void *);
 extern void *Actor_GetCollection(void *);extern void *ActorCollection_GetSpriteOwner(void *);
 extern void func_02071ea4(void *);extern void func_02071eb8(void *);
@@ -50,8 +50,8 @@ RecordSpriteMotionPresentation *func_02022ff4(
 {
     TrackValue sampled,position,temp;SelfLinkedConfig record;s32 kind;
     func_0201e250(self);self->vtable=(void **)data_020d6630;
-    self->sampleArgument08=sampleArgument;func_02005030(&self->track0c,config+0x18);
-    func_02004fe0(&self->firstOffset1c);func_02004fe0(&self->secondOffset2c);
+    self->sampleArgument08=sampleArgument;VecFx32Object_InitCopy(&self->track0c,config+0x18);
+    VecFx32Object_Init(&self->firstOffset1c);VecFx32Object_Init(&self->secondOffset2c);
     self->spriteOwner44=ActorCollection_GetSpriteOwner(Actor_GetCollection((void *)config));
     func_02071ea4(self->resource48);*(s32 *)&self->track0c.bytes[0x0c]+=0x10000;
     if(mode!=2&&mode!=3)OS_Halt();
@@ -63,24 +63,24 @@ RecordSpriteMotionPresentation *func_02022ff4(
     func_02062918(&record,0);GraphicsSpriteState_SetAnimationIndex(self->sprite3c,func_02063190());
     if(rangeEnd==0)*(u16 *)(self->sprite3c+0x24)|=4;
     VecFx32_Subtract(&sampled,&self->track0c,self->sampleArgument08);
-    func_02056f00(&position,&sampled);func_02005058(&sampled);
+    func_02056f00(&position,&sampled);VecFx32Object_Destroy(&sampled);
     *(s16 *)(self->sprite3c+0x2c)=(s16)(*(s32 *)&position.bytes[4]>>12);
     *(s16 *)(self->sprite3c+0x2e)=(s16)(*(s32 *)&position.bytes[8]>>12);
     if((*(s32 *)&position.bytes[8]>>12)>0x40){
-        func_0200500c(&temp,0,0,firstOffset);func_020050a4(&self->firstOffset1c,&temp);func_02005058(&temp);
-        func_0200500c(&temp,0,0,secondOffset);func_020050a4(&self->secondOffset2c,&temp);func_02005058(&temp);
+        VecFx32Object_InitComponents(&temp,0,0,firstOffset);VecFx32Object_Assign(&self->firstOffset1c,&temp);VecFx32Object_Destroy(&temp);
+        VecFx32Object_InitComponents(&temp,0,0,secondOffset);VecFx32Object_Assign(&self->secondOffset2c,&temp);VecFx32Object_Destroy(&temp);
     }else{
-        func_0200500c(&temp,0,0,-firstOffset);func_020050a4(&self->firstOffset1c,&temp);func_02005058(&temp);
-        func_0200500c(&temp,0,0,-secondOffset);func_020050a4(&self->secondOffset2c,&temp);func_02005058(&temp);
+        VecFx32Object_InitComponents(&temp,0,0,-firstOffset);VecFx32Object_Assign(&self->firstOffset1c,&temp);VecFx32Object_Destroy(&temp);
+        VecFx32Object_InitComponents(&temp,0,0,-secondOffset);VecFx32Object_Assign(&self->secondOffset2c,&temp);VecFx32Object_Destroy(&temp);
     }
-    self->timer40=0;func_02005058(&position);return self;
+    self->timer40=0;VecFx32Object_Destroy(&position);return self;
 }
 
 static RecordSpriteMotionPresentation *teardown_record_sprite(RecordSpriteMotionPresentation *self)
 {
     self->vtable=(void **)data_020d6630;GraphicsSpriteGroup_ReleaseState(self->spriteOwner44,self->sprite3c);
-    func_02071eb8(self->resource48);func_02005058(&self->secondOffset2c);
-    func_02005058(&self->firstOffset1c);func_02005058(&self->track0c);
+    func_02071eb8(self->resource48);VecFx32Object_Destroy(&self->secondOffset2c);
+    VecFx32Object_Destroy(&self->firstOffset1c);VecFx32Object_Destroy(&self->track0c);
     func_0201e28c(self);return self;
 }
 
@@ -96,9 +96,9 @@ RecordSpriteMotionPresentation *func_020232b0(RecordSpriteMotionPresentation *se
 s32 func_02023308(RecordSpriteMotionPresentation *self)
 {
     TrackValue sampled,position;VecFx32_Subtract(&sampled,&self->track0c,self->sampleArgument08);
-    func_02056f00(&position,&sampled);func_02005058(&sampled);
+    func_02056f00(&position,&sampled);VecFx32Object_Destroy(&sampled);
     *(s16 *)(self->sprite3c+0x2c)=(s16)(*(s32 *)&position.bytes[4]>>12);
     *(s16 *)(self->sprite3c+0x2e)=(s16)(*(s32 *)&position.bytes[8]>>12);
-    func_020050c8(&self->track0c,&self->firstOffset1c);func_020050c8(&self->firstOffset1c,&self->secondOffset2c);
-    self->timer40++;func_02005058(&position);return self->timer40>=60;
+    VecFx32Object_Add(&self->track0c,&self->firstOffset1c);VecFx32Object_Add(&self->firstOffset1c,&self->secondOffset2c);
+    self->timer40++;VecFx32Object_Destroy(&position);return self->timer40>=60;
 }

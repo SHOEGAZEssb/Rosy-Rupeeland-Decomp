@@ -26,8 +26,8 @@ extern "C" {
 extern void *data_020de930;
 extern void func_0202b9dc(void *);
 extern void func_0202baa4(void *);
-extern void func_02004fe0(void *);
-extern void func_02005058(void *);
+extern void VecFx32Object_Init(void *);
+extern void VecFx32Object_Destroy(void *);
 extern void func_0202b730(void *);
 extern void func_0202b834(void *);
 void func_02029328(DualLayerTileRendererBase *);
@@ -43,7 +43,7 @@ DualLayerTileRendererBase *func_020291b8(DualLayerTileRendererBase *self)
 {
     func_0202b9dc(self);
     *(void ***)self = (void **)data_020de930;
-    func_02004fe0(self->vector_50);
+    VecFx32Object_Init(self->vector_50);
     func_0202b730(self->renderer_60);
     self->layers_28[0] = 0;
     self->layers_28[1] = 0;
@@ -58,7 +58,7 @@ DualLayerTileRendererBase *func_02029218(DualLayerTileRendererBase *self)
 {
     func_0202b9dc(self);
     *(void ***)self = (void **)data_020de930;
-    func_02004fe0(self->vector_50);
+    VecFx32Object_Init(self->vector_50);
     func_0202b730(self->renderer_60);
     self->layers_28[0] = 0;
     self->layers_28[1] = 0;
@@ -74,7 +74,7 @@ DualLayerTileRendererBase *func_02029278(DualLayerTileRendererBase *self)
     *(void ***)self = (void **)data_020de930;
     func_02029328(self);
     func_0202b834(self->renderer_60);
-    func_02005058(self->vector_50);
+    VecFx32Object_Destroy(self->vector_50);
     func_0202baa4(self);
     return self;
 }
@@ -85,7 +85,7 @@ DualLayerTileRendererBase *func_020292b0(DualLayerTileRendererBase *self)
     *(void ***)self = (void **)data_020de930;
     func_02029328(self);
     func_0202b834(self->renderer_60);
-    func_02005058(self->vector_50);
+    VecFx32Object_Destroy(self->vector_50);
     func_0202baa4(self);
     Heap_Free(self);
     return self;
@@ -97,7 +97,7 @@ DualLayerTileRendererBase *func_020292f0(DualLayerTileRendererBase *self)
     *(void ***)self = (void **)data_020de930;
     func_02029328(self);
     func_0202b834(self->renderer_60);
-    func_02005058(self->vector_50);
+    VecFx32Object_Destroy(self->vector_50);
     func_0202baa4(self);
     return self;
 }

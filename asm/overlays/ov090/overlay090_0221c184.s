@@ -1,9 +1,9 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov090/overlay090_recovery.c.
 .extern data_020c9670
-.extern func_02004fe0
-.extern func_02005058
-.extern func_020050a4
+.extern VecFx32Object_Init
+.extern VecFx32Object_Destroy
+.extern VecFx32Object_Assign
 .extern func_ov090_0221a460
 .extern func_ov090_0221a498
 .extern func_ov090_0221bc0c
@@ -18,9 +18,9 @@ func_ov090_0221c184:
     mov r9, r1
     mov r8, r2
     ldr r7, [sp, #0xa8]
-    bl func_02004fe0
+    bl VecFx32Object_Init
     add r0, sp, #0x60
-    bl func_02004fe0
+    bl VecFx32Object_Init
     mov r5, #0x0
     ldr r4, .L_0221c310
     add r11, sp, #0x50
@@ -47,13 +47,13 @@ func_ov090_0221c184:
     bl func_ov090_0221a460
     add r0, sp, #0x60
     add r1, sp, #0x30
-    bl func_020050a4
+    bl VecFx32Object_Assign
     add r0, sp, #0x30
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add r0, sp, #0x40
-    bl func_02005058
+    bl VecFx32Object_Destroy
     mov r0, r11
-    bl func_02005058
+    bl VecFx32Object_Destroy
     ldr r2, [r10, #0x4]
     add r0, sp, #0x20
     ldr r2, [r2, r5, lsl #0x2]
@@ -74,13 +74,13 @@ func_ov090_0221c184:
     add r1, sp, #0x0
     ldr r0, [r0, r5, lsl #0x2]
     add r0, r0, #0x8
-    bl func_020050a4
+    bl VecFx32Object_Assign
     add r0, sp, #0x0
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add r0, sp, #0x10
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add r0, sp, #0x20
-    bl func_02005058
+    bl VecFx32Object_Destroy
     cmp r7, #0x0
     beq .L_0221c2b0
     ldr r0, [r10, #0x4]
@@ -98,7 +98,7 @@ func_ov090_0221c184:
     mov r1, r8
     ldr r0, [r0, r2, lsl #0x2]
     add r0, r0, #0x8
-    bl func_020050a4
+    bl VecFx32Object_Assign
     cmp r7, #0x0
     beq .L_0221c2f8
     ldrsh r0, [r10, #0x8]
@@ -109,9 +109,9 @@ func_ov090_0221c184:
     bl func_ov090_0221bc0c
 .L_0221c2f8:
     add r0, sp, #0x60
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add r0, sp, #0x70
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add sp, sp, #0x80
     ldmia sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, pc}
 .L_0221c310: .word data_020c9670

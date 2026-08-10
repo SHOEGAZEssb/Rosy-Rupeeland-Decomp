@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/type7_actor_destination_motion.c.
 .extern data_020c9670
-.extern func_020050a4
+.extern VecFx32Object_Assign
 .extern ActorRuntimeTriple_Assign
 .extern Type7Actor_CompleteDestinationMotion
 .extern func_0204cfa4
@@ -20,7 +20,7 @@ Type7Actor_UpdateDestinationMotion: ; 0x0204991c
     add r1, r4, #0x284
     orr r2, r2, #0x2
     str r2, [r4, #0xd0]
-    bl func_020050a4
+    bl VecFx32Object_Assign
     ldr r3, [r4, #0x7c]
     ldr r2, [r4, #0x1c]
     ldr r1, [r4, #0x80]
@@ -37,7 +37,7 @@ Type7Actor_UpdateDestinationMotion: ; 0x0204991c
     add r0, r4, #0x18
     add r1, r4, #0x78
     strh r2, [r4, #0xd6]
-    bl func_020050a4
+    bl VecFx32Object_Assign
     mov r0, r4
     bl Type7Actor_CompleteDestinationMotion
     b .L_02049a70
@@ -95,7 +95,7 @@ Type7Actor_UpdateDestinationMotion: ; 0x0204991c
     add r2, r2, r1
     add r1, r4, #0x18
     str r2, [r4, #0x20]
-    bl func_020050a4
+    bl VecFx32Object_Assign
 .L_02049a70:
     mov r0, #0x0
     ldmia sp!, {r3, r4, r5, r6, r7, pc}

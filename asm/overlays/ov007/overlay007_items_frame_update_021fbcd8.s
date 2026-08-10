@@ -1,9 +1,9 @@
     .text
     .extern func_ov007_021fbaf0
     .extern GraphicsSpriteState_SetAnimationIndex
-    .extern func_02005030
+    .extern VecFx32Object_InitCopy
     .extern func_020adc40
-    .extern func_02005058
+    .extern VecFx32Object_Destroy
     .extern data_020c9670
 
     /* Exact fallback; see the documented portable reconstruction in
@@ -181,7 +181,7 @@ L_021fbf3c:
     add r0, sp, #0x0
     ldr r1, [r1, #0x8]
     add r1, r1, #0x84
-    bl func_02005030
+    bl VecFx32Object_InitCopy
     ldr r2, [sp, #0x8]
     ldr ip, [sp, #0x4]
     smull r1, r0, r2, r2
@@ -211,7 +211,7 @@ L_021fbf3c:
     str r3, [r4, #0xcc]
     and r1, r3, r1
     str r1, [r2, #0x0]
-    bl func_02005058
+    bl VecFx32Object_Destroy
 L_021fbfc8:
     add sp, sp, #0x10
     ldmia sp!, {r4, pc}

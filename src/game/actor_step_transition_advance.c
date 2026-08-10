@@ -11,7 +11,7 @@ extern s32 data_020c3a48[4][25];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_020050a4(void *, const void *);
+extern void VecFx32Object_Assign(void *, const void *);
 #ifdef __cplusplus
 }
 #endif
@@ -44,6 +44,6 @@ s32 func_02032144(void *self)
         return 1;
     }
     (*(StepAdvanceVTable **)actor)->complete_40(actor);
-    func_020050a4(actor + 0x18, actor + 0xb0);
+    VecFx32Object_Assign(actor + 0x18, actor + 0xb0);
     return 2;
 }

@@ -5,8 +5,8 @@
 .extern data_020dfba0
 .extern data_020dfa50
 .extern data_021052fc
-.extern func_02005030
-.extern func_02005058
+.extern VecFx32Object_InitCopy
+.extern VecFx32Object_Destroy
 .extern ActorExtendedRecordArray_ContainsPoint
 .global ActorExtendedType2_UpdateTargetValidationMotion
 .type ActorExtendedType2_UpdateTargetValidationMotion, @function
@@ -200,7 +200,7 @@ ActorExtendedType2_UpdateTargetValidationMotion: ; 0x02040f4c
 .L_02041208:
     add r0, sp, #0x0
     add r1, r8, #0x18
-    bl func_02005030
+    bl VecFx32Object_InitCopy
     ldrsh r0, [r7, #0x12]
     smulbb r0, r0, r0
     cmp r4, r0
@@ -226,7 +226,7 @@ ActorExtendedType2_UpdateTargetValidationMotion: ; 0x02040f4c
     ldr r2, [r2, #0xd0]
     blx r2
     add r0, sp, #0x0
-    bl func_02005058
+    bl VecFx32Object_Destroy
     b .L_02041288
 .L_02041278:
     mov r0, r8

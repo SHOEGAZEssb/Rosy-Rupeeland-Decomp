@@ -28,7 +28,7 @@ extern void GraphicsSpriteGroup_ReleaseState(void *, void *);
 extern void func_02057184(void *);
 extern void VecFx32Stepper_Destroy(void *);
 extern void GamePhaseActorScriptVm_Destroy(void *);
-extern void func_02005058(void *);
+extern void VecFx32Object_Destroy(void *);
 extern void *func_02030e08(void *);
 #ifdef __cplusplus
 }
@@ -51,10 +51,10 @@ static RuntimeActorLifecycle *destroyRuntimeActor(RuntimeActorLifecycle *self)
     }
     VecFx32Stepper_Destroy((u8 *)self + 0x198);
     GamePhaseActorScriptVm_Destroy((u8 *)self + 0xec);
-    func_02005058((u8 *)self + 0xb0);
-    func_02005058((u8 *)self + 0x98);
-    func_02005058((u8 *)self + 0x88);
-    func_02005058((u8 *)self + 0x78);
+    VecFx32Object_Destroy((u8 *)self + 0xb0);
+    VecFx32Object_Destroy((u8 *)self + 0x98);
+    VecFx32Object_Destroy((u8 *)self + 0x88);
+    VecFx32Object_Destroy((u8 *)self + 0x78);
     func_02030e08(self);
     return self;
 }

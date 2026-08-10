@@ -4,8 +4,8 @@
 .extern data_ov089_02219aec
 .extern data_ov089_02219b48
 .extern data_ov089_02219b4c
-.extern func_02004fe0
-.extern func_020050a4
+.extern VecFx32Object_Init
+.extern VecFx32Object_Assign
 
 .global func_ov089_02218e80
 func_ov089_02218e80:
@@ -13,12 +13,12 @@ func_ov089_02218e80:
     mov r6, r2
     mov r5, r0
     mov r4, r1
-    bl func_02004fe0
+    bl VecFx32Object_Init
     cmp r6, #0x0
     mov r0, r5
     add r1, r4, #0x18
     beq .L_02218ec8
-    bl func_020050a4
+    bl VecFx32Object_Assign
     ldrb r2, [r4, #0xd4]
     mov r0, #0xc
     ldr r1, .L_02218f18
@@ -28,7 +28,7 @@ func_ov089_02218e80:
     ldr r1, .L_02218f1c
     b .L_02218ee8
 .L_02218ec8:
-    bl func_020050a4
+    bl VecFx32Object_Assign
     ldrb r2, [r4, #0xd4]
     mov r0, #0xc
     ldr r1, .L_02218f20

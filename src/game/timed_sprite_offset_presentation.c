@@ -45,8 +45,8 @@ extern void *func_0201e250(void *self);
 extern OffsetSpriteConfig *func_0201f0fc(OffsetSpriteConfig *config);
 extern void *func_0201e584(void *self, OffsetSpriteConfig *config,
                            s32 spriteValue, s32 offset);
-extern void func_02005058(void *track);
-extern void func_020050a4(PresentationTrack *destination, const void *source);
+extern void VecFx32Object_Destroy(void *track);
+extern void VecFx32Object_Assign(PresentationTrack *destination, const void *source);
 extern void *ActorMotionAreaFollower_GetPosition(void *source);
 #ifdef __cplusplus
 }
@@ -119,7 +119,7 @@ void func_0201f458(TimedSpriteOffsetPresentation *self,
     config.field04 = field04;
     config.field08 = field08;
     config.field0c = field0c;
-    func_020050a4(&config.first10, trackSource);
+    VecFx32Object_Assign(&config.first10, trackSource);
     config.field34 = 2;
     config.lifetime30 = 900;
     *(s32 *)&config.second20.bytes[4] = 0;
@@ -131,8 +131,8 @@ void func_0201f458(TimedSpriteOffsetPresentation *self,
     self->presentation08 = presentation;
     self->timer10 = 900;
     self->spriteByte12 = (s16)spriteByte;
-    func_02005058(&config.second20);
-    func_02005058(&config.first10);
+    VecFx32Object_Destroy(&config.second20);
+    VecFx32Object_Destroy(&config.first10);
 }
 
 /*

@@ -8,9 +8,9 @@
 /* Construct three zero vectors in forward order and return the aggregate. */
 VecFx32Triple *VecFx32Triple_Init(VecFx32Triple *self)
 {
-    func_02004fe0(&self->first);
-    func_02004fe0(&self->second);
-    func_02004fe0(&self->third);
+    VecFx32Object_Init(&self->first);
+    VecFx32Object_Init(&self->second);
+    VecFx32Object_Init(&self->third);
     return self;
 }
 
@@ -21,16 +21,16 @@ VecFx32Triple *VecFx32Triple_Init(VecFx32Triple *self)
 void VecFx32Triple_Set(VecFx32Triple *self, const VecFx32Object *first,
                    const VecFx32Object *second, const VecFx32Object *third)
 {
-    func_020050a4(&self->first, first);
-    func_020050a4(&self->second, second);
-    func_020050a4(&self->third, third);
+    VecFx32Object_Assign(&self->first, first);
+    VecFx32Object_Assign(&self->second, second);
+    VecFx32Object_Assign(&self->third, third);
 }
 
 /* Destroy the three non-owning vectors in reverse order and return self. */
 VecFx32Triple *VecFx32Triple_Destroy(VecFx32Triple *self)
 {
-    func_02005058(&self->third);
-    func_02005058(&self->second);
-    func_02005058(&self->first);
+    VecFx32Object_Destroy(&self->third);
+    VecFx32Object_Destroy(&self->second);
+    VecFx32Object_Destroy(&self->first);
     return self;
 }

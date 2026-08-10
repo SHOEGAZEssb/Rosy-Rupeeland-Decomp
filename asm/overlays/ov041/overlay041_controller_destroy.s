@@ -6,7 +6,7 @@
 .extern Heap_Free
 .extern __destroy_arr
 .extern data_020f4e14
-.extern func_02005058
+.extern VecFx32Object_Destroy
 .extern GraphicsSpriteGroupOwner_DestroyGroup
 .extern func_02075020
 .extern func_02099fb0
@@ -83,9 +83,9 @@ func_ov041_021fdd64: ; 0x021fdd64
     ldr r0, [r0, #0x0]
     bl func_02075020
     add r0, r4, #0x19c
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add r0, r4, #0x18c
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add r0, r4, #0xf0
     mov r1, #0xa
     mov r2, #0xc
@@ -102,9 +102,9 @@ func_ov041_021fdd64: ; 0x021fdd64
     ldr r3, .L_021fdeb0
     bl __destroy_arr
     add r0, r4, #0x2c
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add r0, r4, #0x1c
-    bl func_02005058
+    bl VecFx32Object_Destroy
     mov r0, r4
     ldmia sp!, {r3, r4, r5, pc}
 .L_021fdea4: .word func_ov041_021fce00

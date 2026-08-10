@@ -5,7 +5,7 @@
 .extern Heap_Free
 .extern __destroy_arr
 .extern data_ov041_022059b8
-.extern func_02005058
+.extern VecFx32Object_Destroy
 .extern func_02099fb0
 .extern func_ov041_021fce00
 
@@ -38,7 +38,7 @@ func_ov041_022012f4: ; 0x022012f4
     mov r0, r5
     ldmia sp!, {r3, r4, r5, pc}
 .L_02201358: .word data_ov041_022059b8
-.L_0220135c: .word func_02005058
+.L_0220135c: .word VecFx32Object_Destroy
 .L_02201360: .word func_ov041_021fce00
     .size func_ov041_022012f4, . - func_ov041_022012f4
 

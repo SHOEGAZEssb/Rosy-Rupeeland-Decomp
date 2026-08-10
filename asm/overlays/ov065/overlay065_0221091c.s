@@ -1,7 +1,7 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov065/overlay065_recovery.c.
 .extern data_020c9670
-.extern func_020050a4
+.extern VecFx32Object_Assign
 .extern genrand_int32
 
 .global func_ov065_0221091c
@@ -43,7 +43,7 @@ func_ov065_0221091c:
     add r1, r7, #0x134
     and r7, r0, r2
     mov r0, r6
-    bl func_020050a4
+    bl VecFx32Object_Assign
     smull r0, r2, r5, r7
     adds r3, r0, #0x800
     smull r1, r0, r4, r7

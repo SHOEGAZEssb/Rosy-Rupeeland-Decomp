@@ -4,8 +4,8 @@
 .extern data_0210568c
 .extern data_02105690
 .extern data_021056b8
-.extern func_02005058
-.extern func_02005070
+.extern VecFx32Object_Destroy
+.extern VecFx32Object_GetMagnitude
 .extern VecFx32_Subtract
 .extern GamePhaseRuntime_GetActorCollection
 
@@ -66,7 +66,7 @@ func_02034ecc: ; 0x02034ecc
     mov r0, #0x0
     str r0, [sp, #0xc]
     add r0, sp, #0x0
-    bl func_02005070
+    bl VecFx32Object_GetMagnitude
     mov r7, r0
     mov r0, r9
     ldr r1, [r0, #0x0]
@@ -90,7 +90,7 @@ func_02034ecc: ; 0x02034ecc
     ldr r1, [r1, #0x1b8]
     blx r1
     add r0, sp, #0x0
-    bl func_02005058
+    bl VecFx32Object_Destroy
 .L_02034ff8:
     add r10, r10, #0x1
 .L_02034ffc:

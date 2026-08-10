@@ -40,9 +40,9 @@ extern void func_ov039_021ff01c(void *scene);
 extern void func_ov039_021ff330(void *scene, s32 mode);
 extern void GraphicsSpriteState_SetAnimationIndex(void *renderObject, u8 mode);
 extern void GraphicsSpriteState_SetFrameIndex(void *renderObject, s32 value);
-extern void func_02005030(Overlay039Vector *destination, void *source);
-extern void func_02005058(void *object);
-extern void func_020050a4(void *destination, const void *source);
+extern void VecFx32Object_InitCopy(Overlay039Vector *destination, void *source);
+extern void VecFx32Object_Destroy(void *object);
+extern void VecFx32Object_Assign(void *destination, const void *source);
 extern s32 func_020adc40(s32 squaredDistance);
 extern s32 func_020ae024(s32 y, s32 x);
 extern s32 func_ov069_02211594(void *system);
@@ -166,7 +166,7 @@ static void updateTimedSequence(void *scene, s32 variant)
         transitionTimer++;
         if (transitionTimer == 20) {
             func_ov069_0220ff20((u8 *)scene + 0x118, -1);
-            func_020050a4((u8 *)scene + 0x1da0,
+            VecFx32Object_Assign((u8 *)scene + 0x1da0,
                           (u8 *)FIELD(void *, scene, 0x98) + 0x1c);
             enableObject(scene, 0x98);
             enableObject(scene, 0x9c);
@@ -258,12 +258,12 @@ static void updateModeObjects(void *scene)
         FIELD(u16, render, 0x24) &= (u16)~1;
         if (FIELD(u8, render, 0x38) == 5) {
             Overlay039Vector position;
-            func_02005030(&position, (u8 *)object + 0x1c);
+            VecFx32Object_InitCopy(&position, (u8 *)object + 0x1c);
             position.x_04 += (2 * (i / 2) - 1) * -0x28000;
             position.y_08 += 0x1c000;
             func_0209f158(FIELD(void *, FIELD(void *, scene, 0x48), 0x10),
                            &position);
-            func_02005058(&position);
+            VecFx32Object_Destroy(&position);
         }
     }
 }
@@ -275,11 +275,11 @@ static void updateFormationGroup(void *scene, s32 groupOffset)
     void *ownerTransform = FIELD(void *, FIELD(void *, owner, 8), 0x48);
     Overlay039Vector target;
     Overlay039Vector objectPosition;
-    func_02005030(&target, (u8 *)ownerTransform + 0x2c);
+    VecFx32Object_InitCopy(&target, (u8 *)ownerTransform + 0x2c);
     void *thirdObject = FIELD(void *, scene, 0x58 + groupOffset);
     s32 centerX = FIELD(s32, thirdObject, 0x30);
     s32 centerY = FIELD(s32, thirdObject, 0x34);
-    func_02005030(&objectPosition, (u8 *)thirdObject + 0x1c);
+    VecFx32Object_InitCopy(&objectPosition, (u8 *)thirdObject + 0x1c);
     s32 targetX = target.x_04;
     s32 targetY = target.y_08 - target.z_0c - 0x10000;
     s32 dx = targetX - objectPosition.x_04;
@@ -337,8 +337,8 @@ static void updateFormationGroup(void *scene, s32 groupOffset)
         FIELD(s32, object, 0x30) = centerX + fixedMultiply(sine, radii[i]);
         FIELD(s32, object, 0x34) = centerY + fixedMultiply(cosine, radii[i]);
     }
-    func_02005058(&objectPosition);
-    func_02005058(&target);
+    VecFx32Object_Destroy(&objectPosition);
+    VecFx32Object_Destroy(&target);
 }
 
 /* Integrate active helper velocities and recycle records outside world bounds. */

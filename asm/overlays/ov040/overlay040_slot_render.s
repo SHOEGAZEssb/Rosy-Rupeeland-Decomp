@@ -1,7 +1,7 @@
     .text
 /* Exact fallback; see overlay040_object_update.c for portable C. */
-    .extern func_0200500c
-    .extern func_02005058
+    .extern VecFx32Object_InitComponents
+    .extern VecFx32Object_Destroy
     .extern func_0209c3b4
     .extern func_0209c430
 
@@ -186,12 +186,12 @@ func_ov040_0220332c: ; 0x0220332c
     ldr r2, [r2, #0xaac]
     mov r0, r11
     mov r3, r3, asr #0xc
-    bl func_0200500c
+    bl VecFx32Object_InitComponents
     mov r1, #0x1000
     add r0, sp, #0x14
     mov r2, r1
     mov r3, r1
-    bl func_0200500c
+    bl VecFx32Object_InitComponents
     add r0, r4, r10, lsl #0x2
     ldr r0, [r0, #0x824]
     add r3, r4, r10, lsl #0x1
@@ -211,9 +211,9 @@ func_ov040_0220332c: ; 0x0220332c
     add r2, sp, #0x14
     bl func_0209c430
     add r0, sp, #0x14
-    bl func_02005058
+    bl VecFx32Object_Destroy
     mov r0, r11
-    bl func_02005058
+    bl VecFx32Object_Destroy
 .L_02203660:
     subs r10, r10, #0x1
     bpl .L_022035a4

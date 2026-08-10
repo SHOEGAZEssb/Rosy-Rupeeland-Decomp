@@ -4,8 +4,8 @@
 .extern data_020e16b0
 .extern data_020e17c8
 .extern data_020e1910
-.extern func_02005030
-.extern func_02005058
+.extern VecFx32Object_InitCopy
+.extern VecFx32Object_Destroy
 .extern Actor_TestQueryPointAndClearFlag2000
 .extern ActorDerivedType1_TrySetStateVector
 .extern ActorDerivedRuntime_TestInteractionQuery
@@ -131,7 +131,7 @@ Type7Actor_HandleDragStart: ; 0x0204767c
     ble .L_0204789c
     add r0, sp, #0x0
     add r1, r5, #0x18
-    bl func_02005030
+    bl VecFx32Object_InitCopy
     ldr r3, [sp, #0x4]
     ldr r2, [sp, #0x14]
     ldr r1, [sp, #0x8]
@@ -156,7 +156,7 @@ Type7Actor_HandleDragStart: ; 0x0204767c
     bl ActorDerivedType1_TrySetStateVector
 .L_02047894:
     add r0, sp, #0x0
-    bl func_02005058
+    bl VecFx32Object_Destroy
 .L_0204789c:
     add sp, sp, #0x1c
     ldmia sp!, {r4, r5, pc}

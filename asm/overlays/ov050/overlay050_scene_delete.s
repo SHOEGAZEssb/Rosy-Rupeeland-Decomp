@@ -5,7 +5,7 @@
 .extern data_ov050_0220e3c0
 .extern OverlayManager_UnloadOverlay
 .extern OverlayManager_GetGlobal
-.extern func_02005058
+.extern VecFx32Object_Destroy
 .extern func_0201e28c
 .extern func_02071eb8
 .extern GraphicsSpriteGroupOwner_DestroyGroup
@@ -44,7 +44,7 @@ func_ov050_0220dd50:
     mov r1, #0x0
     bl OverlayManager_UnloadOverlay
     add r0, r6, #0x30
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add r0, r6, #0x8
     bl func_02071eb8
     mov r0, r6

@@ -18,9 +18,9 @@ extern "C" {
 extern const s16 data_020c9670[];
 extern void func_ov007_021fbaf0(void *state);
 extern void GraphicsSpriteState_SetAnimationIndex(void *member, s32 value);
-extern void func_02005030(void *destination, const void *source);
+extern void VecFx32Object_InitCopy(void *destination, const void *source);
 extern s32 func_020adc40(s32 value);
-extern void func_02005058(void *member);
+extern void VecFx32Object_Destroy(void *member);
 #ifdef __cplusplus
 }
 #endif
@@ -64,7 +64,7 @@ static void overlay007_clear_primary_trigger(Overlay007ItemsFrameState *state)
  * the inactive count, decrement +0x90, set +0x94 to 24 if it now equals the
  * count or 13 otherwise, and set that palette to `21-+0x90`.
  *
- * Copy owner member +0x84 to a temporary through func_02005030, square its
+ * Copy owner member +0x84 to a temporary through VecFx32Object_InitCopy, square its
  * +0x04/+0x08 components with 20.12 rounding, sum them, pass the sum through
  * func_020adc40, multiply the result by five, shift by 12, and add one. Subtract
  * this step from +0xCC, retain signed remainder modulo 256, write its low nine
@@ -160,7 +160,7 @@ void func_ov007_021fbcd8(Overlay007ItemsFrameState *state)
                       (21 - FIELD(s32, state, 0x090)) & 0xff);
     }
 
-    func_02005030(temporary, (u8 *)owner + 0x84);
+    VecFx32Object_InitCopy(temporary, (u8 *)owner + 0x84);
     {
         s32 first = FIELD(s32, temporary, 0x04);
         s32 second = FIELD(s32, temporary, 0x08);
@@ -173,7 +173,7 @@ void func_ov007_021fbcd8(Overlay007ItemsFrameState *state)
         FIELD(s32, state, 0x0cc) = phase % 256;
         *(volatile u32 *)0x04001010 = FIELD(s32, state, 0x0cc) & 0x1ff;
     }
-    func_02005058(temporary);
+    VecFx32Object_Destroy(temporary);
 }
 
 #undef FIELD

@@ -13,8 +13,8 @@ extern "C" {
 extern void func_02033b38(void *actor, s32 column);
 extern void *ActorDerivedRuntime_Init(void *actor);
 extern void *ActorDerivedRuntime_DestroyAlternate(void *actor);
-extern void func_02004fe0(void *vector);
-extern void func_02005058(void *vector);
+extern void VecFx32Object_Init(void *vector);
+extern void VecFx32Object_Destroy(void *vector);
 extern void Actor_InitializeFromDescriptor(void *actor,
                                            const void *descriptor);
 extern void ActorDerivedRuntime_UpdateFrame(void *actor);
@@ -42,9 +42,9 @@ void *ActorMotionProbe_Init(void *self)
     *(u16 *)(actor + 0x208) = 0x4000;
     *(u16 *)(actor + 0x20a) = 0;
     *(s32 *)(actor + 0x20c) = 0x1000;
-    func_02004fe0(actor + 0x210);
-    func_02004fe0(actor + 0x220);
-    func_02004fe0(actor + 0x230);
+    VecFx32Object_Init(actor + 0x210);
+    VecFx32Object_Init(actor + 0x220);
+    VecFx32Object_Init(actor + 0x230);
     *(s32 *)(actor + 0x240) = 0;
     *(s32 *)(actor + 0x244) = 0x10;
     *(s32 *)(actor + 0x248) = 0x10;
@@ -61,9 +61,9 @@ void *ActorMotionProbe_Init(void *self)
 void *ActorMotionProbe_Destroy(void *self)
 {
     u8 *actor = (u8 *)self;
-    func_02005058(actor + 0x230);
-    func_02005058(actor + 0x220);
-    func_02005058(actor + 0x210);
+    VecFx32Object_Destroy(actor + 0x230);
+    VecFx32Object_Destroy(actor + 0x220);
+    VecFx32Object_Destroy(actor + 0x210);
     ActorDerivedRuntime_DestroyAlternate(actor);
     return actor;
 }

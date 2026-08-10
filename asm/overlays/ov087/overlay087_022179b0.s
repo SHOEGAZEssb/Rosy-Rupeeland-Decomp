@@ -4,11 +4,11 @@
 .extern Sound_Play
 .extern data_020c9670
 .extern data_021052fc
-.extern func_0200500c
-.extern func_02005058
-.extern func_020050a4
-.extern func_020050c8
-.extern func_020050f0
+.extern VecFx32Object_InitComponents
+.extern VecFx32Object_Destroy
+.extern VecFx32Object_Assign
+.extern VecFx32Object_Add
+.extern VecFx32Object_Subtract
 .extern ActorMotionAreaFollower_GetPosition
 .extern Actor_SnapshotTransientState
 .extern Actor_UpdateAnimationState
@@ -140,10 +140,10 @@ func_ov087_022179b0:
     add r0, sp, #0x18
     rsb r1, ip, #0x0
     mov r3, #0x0
-    bl func_0200500c
+    bl VecFx32Object_InitComponents
     add r1, sp, #0x18
     add r0, r5, #0x38
-    bl func_020050c8
+    bl VecFx32Object_Add
     ldr r0, .L_02217ecc
     cmp r4, r0
     ble .L_02217bd8
@@ -313,7 +313,7 @@ func_ov087_022179b0:
     mov r3, #0x50
     bl func_0205943c
     add r0, sp, #0x18
-    bl func_02005058
+    bl VecFx32Object_Destroy
 .L_02217de8:
     add r0, r5, #0x200
     ldrsh r1, [r0, #0x26]
@@ -335,9 +335,9 @@ func_ov087_022179b0:
     bl func_ov087_02217ed8
     add r1, sp, #0x8
     add r0, r5, #0x38
-    bl func_020050f0
+    bl VecFx32Object_Subtract
     add r0, sp, #0x8
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add r1, r5, #0x200
     mov r2, #0x0
     mov r0, r5
@@ -355,7 +355,7 @@ func_ov087_022179b0:
     add r0, r0, #0x2000
     ldr r0, [r0, #0xea4]
     add r0, r0, #0x18
-    bl func_020050a4
+    bl VecFx32Object_Assign
     ldr r0, .L_02217ed4
     ldr r0, [r0, #0x0]
     add r0, r0, #0x2000

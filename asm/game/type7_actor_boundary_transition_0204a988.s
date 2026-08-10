@@ -3,10 +3,10 @@
 .extern Heap_Free
 .extern data_020e17e8
 .extern data_021052fc
-.extern func_02004fe0
-.extern func_02005030
-.extern func_02005058
-.extern func_020050a4
+.extern VecFx32Object_Init
+.extern VecFx32Object_InitCopy
+.extern VecFx32Object_Destroy
+.extern VecFx32Object_Assign
 .extern Actor_GetCachedTerrainHeight
 .extern func_02034568
 .extern func_02034718
@@ -258,16 +258,16 @@ Type7Actor_ProcessBoundaryTransition: ; 0x0204a988
     cmp r9, #0x0
     beq .L_0204ae80
     add r0, sp, #0x3c
-    bl func_02004fe0
+    bl VecFx32Object_Init
     add r0, sp, #0x2c
     add r1, r8, #0x18
-    bl func_02005030
+    bl VecFx32Object_InitCopy
     ldr r0, [sp, #0x18]
     cmp r0, #0x0
     add r0, sp, #0x3c
     beq .L_0204adb4
     add r1, r8, #0x18
-    bl func_020050a4
+    bl VecFx32Object_Assign
     cmp r6, #0x0
     bne .L_0204ad44
     ldr r1, [r7, #0x4]
@@ -310,7 +310,7 @@ Type7Actor_ProcessBoundaryTransition: ; 0x0204a988
     b .L_0204ae28
 .L_0204adb4:
     mov r1, r7
-    bl func_020050a4
+    bl VecFx32Object_Assign
     cmp r6, #0x0
     ldreq r1, [r7, #0x4]
     subeq r0, r4, #0x20
@@ -342,13 +342,13 @@ Type7Actor_ProcessBoundaryTransition: ; 0x0204a988
 .L_0204ae28:
     add r1, sp, #0x2c
     add r0, r8, #0x28
-    bl func_020050a4
+    bl VecFx32Object_Assign
     mov r1, r0
     add r0, r8, #0x18
-    bl func_020050a4
+    bl VecFx32Object_Assign
     add r1, sp, #0x3c
     add r0, r8, #0x284
-    bl func_020050a4
+    bl VecFx32Object_Assign
     cmp r6, #0x2
     ldreq r0, [r8, #0x28c]
     addeq r0, r0, #0x2000
@@ -358,14 +358,14 @@ Type7Actor_ProcessBoundaryTransition: ; 0x0204a988
     subeq r0, r0, #0x2000
     streq r0, [r8, #0x28c]
     add r0, sp, #0x2c
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add r0, sp, #0x3c
-    bl func_02005058
+    bl VecFx32Object_Destroy
     b .L_0204af44
 .L_0204ae80:
     add r0, sp, #0x1c
     mov r1, r7
-    bl func_02005030
+    bl VecFx32Object_InitCopy
     cmp r6, #0x0
     bne .L_0204aeac
     ldr r0, [sp, #0x8]
@@ -403,19 +403,19 @@ Type7Actor_ProcessBoundaryTransition: ; 0x0204a988
 .L_0204af08:
     add r1, sp, #0x1c
     add r0, r8, #0x28
-    bl func_020050a4
+    bl VecFx32Object_Assign
     mov r1, r0
     add r0, r8, #0x18
-    bl func_020050a4
+    bl VecFx32Object_Assign
     mov r1, r7
     add r0, r8, #0x284
-    bl func_020050a4
+    bl VecFx32Object_Assign
     cmp r6, #0x2
     ldreq r0, [r8, #0x28c]
     addeq r0, r0, #0x1000
     streq r0, [r8, #0x28c]
     add r0, sp, #0x1c
-    bl func_02005058
+    bl VecFx32Object_Destroy
 .L_0204af44:
     ldr r0, [r8, #0x268]
     ldr r1, .L_0204afd0

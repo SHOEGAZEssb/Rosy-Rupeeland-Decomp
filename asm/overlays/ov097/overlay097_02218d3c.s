@@ -1,8 +1,8 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov097/overlay097_recovery.c.
-.extern func_02004fe0
-.extern func_02005058
-.extern func_020050a4
+.extern VecFx32Object_Init
+.extern VecFx32Object_Destroy
+.extern VecFx32Object_Assign
 .extern VecFx32Triple_Set
 .extern VecFx32Triple_Destroy
 .extern VecFx32Bezier_Evaluate3D
@@ -43,11 +43,11 @@ func_ov097_02218d3c:
     strh r1, [r0, #0xbe]
     add r0, r5, #0x2c8
     add r1, r5, #0x18
-    bl func_020050a4
+    bl VecFx32Object_Assign
     ldr r1, [r5, #0x2c4]
     add r0, r5, #0x2d8
     add r1, r1, #0x18
-    bl func_020050a4
+    bl VecFx32Object_Assign
     ldr r0, [r5, #0x2e4]
     add r0, r0, #0x10000
     str r0, [r5, #0x2e4]
@@ -144,9 +144,9 @@ func_ov097_02218d3c:
     add r1, r5, #0x2c8
     bl func_ov097_02217ac4
     add r0, sp, #0x18
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add r0, sp, #0x28
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add r0, r5, #0x200
     ldrh r0, [r0, #0xc0]
     ldr r1, [r5, #0x2e4]
@@ -157,11 +157,11 @@ func_ov097_02218d3c:
     add r0, r1, r0, lsl #0xc
     str r0, [sp, #0x74]
     mov r0, r4
-    bl func_02004fe0
+    bl VecFx32Object_Init
     add r0, sp, #0x48
-    bl func_02004fe0
+    bl VecFx32Object_Init
     add r0, r4, #0x20
-    bl func_02004fe0
+    bl VecFx32Object_Init
     mov r0, r4
     add r1, r5, #0x2c8
     add r2, r5, #0x2d8
@@ -178,13 +178,13 @@ func_ov097_02218d3c:
     bl VecFx32Bezier_Evaluate3D
     add r0, r5, #0x18
     add r1, sp, #0x8
-    bl func_020050a4
+    bl VecFx32Object_Assign
     add r0, sp, #0x8
-    bl func_02005058
+    bl VecFx32Object_Destroy
     mov r0, r4
     bl VecFx32Triple_Destroy
     add r0, sp, #0x68
-    bl func_02005058
+    bl VecFx32Object_Destroy
     b .L_022191a0
 .L_02218fb4:
     mov r1, #0x5

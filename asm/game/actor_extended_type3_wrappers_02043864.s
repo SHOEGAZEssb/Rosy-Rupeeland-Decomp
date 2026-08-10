@@ -1,8 +1,8 @@
 ; Matching retail form; see src/game/actor_extended_type3_wrappers.c.
 .text
 .extern Heap_Free
-.extern func_02005030
-.extern func_02005058
+.extern VecFx32Object_InitCopy
+.extern VecFx32Object_Destroy
 .extern ActorExtendedType2_Destroy
 .extern ActorExtendedType2_UpdateTargetMotion
 .extern ActorExtendedType2_TryDescriptorInteraction120
@@ -76,7 +76,7 @@ ActorExtendedType3_ApplyTransformAndDampAxis: ; 0x020438ec
     sub sp, sp, #0x10
     mov r4, r0
     add r0, sp, #0x0
-    bl func_02005030
+    bl VecFx32Object_InitCopy
     add r1, sp, #0x0
     mov r0, r4
     bl ActorExtendedType2_UpdateTargetMotion
@@ -98,7 +98,7 @@ ActorExtendedType3_ApplyTransformAndDampAxis: ; 0x020438ec
     str r0, [r4, #0x3c]
 .L_02043948:
     add r0, sp, #0x0
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add sp, sp, #0x10
     ldmia sp!, {r4, pc}
 .size ActorExtendedType3_ApplyTransformAndDampAxis, . - ActorExtendedType3_ApplyTransformAndDampAxis

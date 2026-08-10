@@ -4,10 +4,10 @@
 .extern data_020c9670
 .extern data_020df4a4
 .extern data_021052fc
-.extern func_02004fe0
-.extern func_0200500c
-.extern func_02005058
-.extern func_020050f0
+.extern VecFx32Object_Init
+.extern VecFx32Object_InitComponents
+.extern VecFx32Object_Destroy
+.extern VecFx32Object_Subtract
 .extern VecFx32_Subtract
 .extern func_02008378
 .extern ActorMotionJitter_EnsureMinimum
@@ -50,7 +50,7 @@ ActorDerivedType1_ApplyWeightedCollisionDisplacement: ; 0x0203825c
     bl VecFx32_Subtract
     add r0, sp, #0x68
     add r1, sp, #0x58
-    bl func_020050f0
+    bl VecFx32Object_Subtract
     mov r0, r4, lsl #0xc
     mov r1, #0x32
     bl func_020adae4
@@ -199,9 +199,9 @@ ActorDerivedType1_ApplyWeightedCollisionDisplacement: ; 0x0203825c
     cmp r0, #0x0
     ble .L_020384fc
     add r0, sp, #0x58
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add r0, sp, #0x68
-    bl func_02005058
+    bl VecFx32Object_Destroy
     b .L_02038768
 .L_020384fc:
     add r0, sp, #0x18
@@ -217,9 +217,9 @@ ActorDerivedType1_ApplyWeightedCollisionDisplacement: ; 0x0203825c
     add r1, r7, #0x18
     bl func_02008378
     add r0, sp, #0x8
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add r0, sp, #0x18
-    bl func_02005058
+    bl VecFx32Object_Destroy
     ldr r0, .L_02038774
     ldr r1, [sp, #0x54]
     ldr r0, [r0, #0x0]
@@ -302,9 +302,9 @@ ActorDerivedType1_ApplyWeightedCollisionDisplacement: ; 0x0203825c
     ldr r2, [r7, #0x20]
     add r0, sp, #0x38
     add r3, r3, #0x18000
-    bl func_0200500c
+    bl VecFx32Object_InitComponents
     add r0, sp, #0x28
-    bl func_02004fe0
+    bl VecFx32Object_Init
     ldr r1, .L_0203877c
     ldr r3, .L_02038780
     mov r0, #0x44
@@ -353,16 +353,16 @@ ActorDerivedType1_ApplyWeightedCollisionDisplacement: ; 0x0203825c
     mov r0, r7
     bl Type1Actor_TryEnterFailureState
     add r0, sp, #0x28
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add r0, sp, #0x38
-    bl func_02005058
+    bl VecFx32Object_Destroy
 .L_02038750:
     add r0, sp, #0x48
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add r0, sp, #0x58
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add r0, sp, #0x68
-    bl func_02005058
+    bl VecFx32Object_Destroy
 .L_02038768:
     add sp, sp, #0x78
     ldmia sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, pc}

@@ -5,7 +5,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *func_020050a4(void *destination, const void *source);
+extern void *VecFx32Object_Assign(void *destination, const void *source);
 extern void ActorRuntimeTriple_Assign(void *value, s32 x, s32 y, s32 z);
 extern void Actor_SetDirectionFromVector(void *actor, s32 x, s32 y);
 extern void ActorDerivedType1_ResetToBaseState(void *actor);
@@ -24,7 +24,7 @@ extern void ActorDerivedType1_ResetToBaseState(void *actor);
 void ActorDerivedType1_ResetRuntimeState(void *self)
 {
     u8 *actor = (u8 *)self;
-    func_020050a4(actor + 0x28, actor + 0x18);
+    VecFx32Object_Assign(actor + 0x28, actor + 0x18);
     ActorRuntimeTriple_Assign(actor + 0x38, 0, 0, 0);
     ActorRuntimeTriple_Assign(actor + 0x88, 0, 0, 0);
     ActorRuntimeTriple_Assign(actor + 0x98, 0, 0, 0);

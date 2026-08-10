@@ -2,8 +2,8 @@
 ; the documented portable implementation and recovered behavior.
 .text
 .extern DisplayController_GetSubScreenVerticalOffset
-.extern func_0200500c
-.extern func_02005058
+.extern VecFx32Object_InitComponents
+.extern VecFx32Object_Destroy
 .extern func_02008354
 .extern func_02008378
 .extern func_020083b0
@@ -63,7 +63,7 @@ L_02008168:
     add r0, r4, #0x24
     bl GamePhaseState_ApplyPlacementState
     add r0, sp, #0x54
-    bl func_02005058
+    bl VecFx32Object_Destroy
     b L_02008348
 L_020081fc:
     add r0, r4, #0x3000
@@ -79,7 +79,7 @@ L_020081fc:
     add r0, sp, #0x64
     mov r3, r1
     rsb r2, r2, #0x0
-    bl func_0200500c
+    bl VecFx32Object_InitComponents
     add r0, sp, #0x44
     mov r1, r4
     bl func_020086f8
@@ -92,11 +92,11 @@ L_020081fc:
     add r1, sp, #0x34
     bl GamePhaseAreaScene_ApplyPlacementState
     add r0, sp, #0x34
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add r0, sp, #0x44
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add r0, sp, #0x64
-    bl func_02005058
+    bl VecFx32Object_Destroy
     b L_02008348
 L_0200827c:
     cmp r0, #0x0
@@ -151,7 +151,7 @@ L_020082f8:
     add r1, sp, #0x24
     bl GamePhaseAreaScene_ApplyPlacementState
     add r0, sp, #0x24
-    bl func_02005058
+    bl VecFx32Object_Destroy
 L_02008348:
     mov r0, #0x0
 L_0200834c:

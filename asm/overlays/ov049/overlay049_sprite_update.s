@@ -1,7 +1,7 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov049/overlay049_sprite_recovery.c.
-.extern func_02005030
-.extern func_02005058
+.extern VecFx32Object_InitCopy
+.extern VecFx32Object_Destroy
 .extern GraphicsSpriteState_SetAnimationIndex
 .extern func_020adc40
 .extern func_ov049_0220be28
@@ -96,7 +96,7 @@ func_ov049_0220bee8:
     add r0, sp, #0x0
     ldr r1, [r1, #0x48]
     add r1, r1, #0x2c
-    bl func_02005030
+    bl VecFx32Object_InitCopy
     add r0, r10, r9, lsl #0x2
     ldr r0, [r0, #0x4c]
     ldr r2, [sp, #0x8]
@@ -124,7 +124,7 @@ func_ov049_0220bee8:
     biclt r0, r0, #0x4
     strlth r0, [r1, #0x42]
     add r0, sp, #0x0
-    bl func_02005058
+    bl VecFx32Object_Destroy
 .L_0220c0a8:
     subs r9, r9, #0x1
     bpl .L_0220bf18

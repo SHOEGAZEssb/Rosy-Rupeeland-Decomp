@@ -1,8 +1,8 @@
 ; Matching retail form; see src/game/runtime_actor_variant_callbacks.c.
 .extern func_02032a94
-.extern func_0200500c
-.extern func_020050a4
-.extern func_02005058
+.extern VecFx32Object_InitComponents
+.extern VecFx32Object_Assign
+.extern VecFx32Object_Destroy
 .extern ActorRuntimeCollection_GetPendingAttachmentFlag
 .extern data_02105310
 .text
@@ -33,12 +33,12 @@ func_0204d3e4: ; 0x0204d3e4
     add r0, sp, #0x0
     mov r2, r1
     mov r3, r1
-    bl func_0200500c
+    bl VecFx32Object_InitComponents
     add r1, sp, #0x0
     add r0, r6, #0x38
-    bl func_020050a4
+    bl VecFx32Object_Assign
     add r0, sp, #0x0
-    bl func_02005058
+    bl VecFx32Object_Destroy
     ldrb r0, [r5, #0x4d]
     cmp r0, #0x1
     cmpeq r4, #0x0

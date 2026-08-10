@@ -53,7 +53,7 @@ s32 ActorMotion_ConfigureBoundActorTarget(ActorMotion *self, s32 divisor, s32 us
         }
         self->field_24 = destination.value.x;
         self->field_28 = destination.value.y;
-        func_02005058(&displacement);
+        VecFx32Object_Destroy(&displacement);
     } else {
         u32 direction;
 
@@ -70,6 +70,6 @@ s32 ActorMotion_ConfigureBoundActorTarget(ActorMotion *self, s32 divisor, s32 us
         self->field_28 = destination.value.y;
     }
 
-    func_02005058(&destination);
+    VecFx32Object_Destroy(&destination);
     return self->field_2c;
 }

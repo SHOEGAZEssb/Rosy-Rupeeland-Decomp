@@ -6,9 +6,9 @@
 .extern data_021052fc
 .extern data_ov084_02214108
 .extern data_ov084_022143a4
-.extern func_02005030
-.extern func_02005058
-.extern func_020050a4
+.extern VecFx32Object_InitCopy
+.extern VecFx32Object_Destroy
+.extern VecFx32Object_Assign
 .extern VecFx32Triple_Set
 .extern VecFx32Bezier_Evaluate3D
 .extern ActorMotionAreaFollower_GetPosition
@@ -48,7 +48,7 @@ func_ov084_02212e6c:
     ldr r1, [r7, #0x228]
     add r0, r0, #0x10
     add r1, r1, #0x18
-    bl func_020050a4
+    bl VecFx32Object_Assign
     ldr r1, [r7, #0x2a4]
     add r0, sp, #0x38
     mov r2, #0x800
@@ -63,16 +63,16 @@ func_ov084_02212e6c:
     add r2, sp, #0x28
     bl func_ov084_02212d28
     add r0, sp, #0x28
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add r0, sp, #0x38
-    bl func_02005058
+    bl VecFx32Object_Destroy
     ldr r0, [r7, #0x2a4]
     ldr r1, [r7, #0x228]
     add r0, r0, #0x20
     add r1, r1, #0x18
-    bl func_020050a4
+    bl VecFx32Object_Assign
     add r0, sp, #0x78
-    bl func_02005058
+    bl VecFx32Object_Destroy
 .L_02212f28:
     ldr r1, [r7, #0x2a4]
     add r0, sp, #0x68
@@ -95,7 +95,7 @@ func_ov084_02212e6c:
     add r1, sp, #0x68
     add r0, r7, #0x18
     str r2, [sp, #0x74]
-    bl func_020050a4
+    bl VecFx32Object_Assign
     mov r1, #0x0
     add r0, r7, #0x38
     mov r2, r1
@@ -186,7 +186,7 @@ func_ov084_02212e6c:
     strlt r1, [r7, #0x298]
     ldr r1, [r7, #0x2a4]
     add r0, sp, #0x58
-    bl func_02005030
+    bl VecFx32Object_InitCopy
     ldr r1, [r7, #0x228]
     add r0, sp, #0x18
     add r1, r1, #0x18
@@ -201,9 +201,9 @@ func_ov084_02212e6c:
     add r2, sp, #0x8
     bl func_ov084_02212d28
     add r0, sp, #0x8
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add r0, sp, #0x18
-    bl func_02005058
+    bl VecFx32Object_Destroy
     ldr r1, [r7, #0x228]
     ldr r0, [r7, #0x2a4]
     add r2, sp, #0x58
@@ -211,9 +211,9 @@ func_ov084_02212e6c:
     add r3, sp, #0x48
     bl VecFx32Triple_Set
     add r0, sp, #0x48
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add r0, sp, #0x58
-    bl func_02005058
+    bl VecFx32Object_Destroy
     b .L_022131c8
 .L_02213154:
     strh r0, [r2, #0x9c]
@@ -247,7 +247,7 @@ func_ov084_02212e6c:
     str r0, [r7, #0x14]
 .L_022131c8:
     add r0, sp, #0x68
-    bl func_02005058
+    bl VecFx32Object_Destroy
     mov r0, #0x0
     add sp, sp, #0x88
     ldmia sp!, {r3, r4, r5, r6, r7, pc}

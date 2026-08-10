@@ -1,8 +1,8 @@
 ; Matching retail form; see src/game/actor_motion_gamework_update.c for
 ; the documented portable implementation and recovered behavior.
 .text
-.extern func_02004fe0
-.extern func_02005058
+.extern VecFx32Object_Init
+.extern VecFx32Object_Destroy
 .extern func_02008740
 .extern ActorMotion_UpdateOscillation
 .extern ActorMotion_UpdateFromBoundActor
@@ -119,7 +119,7 @@ L_02009b98:
     mov r2, r2, asr #0xc
     add r1, r1, #0x200
     strh r2, [r1, #0x32]
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add r0, sp, #0x0
     add r1, r6, #0x44
     bl func_02008740
@@ -134,7 +134,7 @@ L_02009b98:
     mov r2, r2, asr #0xc
     add r1, r1, #0x200
     strh r2, [r1, #0x34]
-    bl func_02005058
+    bl VecFx32Object_Destroy
     mov r0, r4
     add sp, sp, #0x20
     ldmia sp!, {r4, r5, r6, pc}

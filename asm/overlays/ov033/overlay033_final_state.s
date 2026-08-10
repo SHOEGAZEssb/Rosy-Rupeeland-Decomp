@@ -9,7 +9,7 @@
     .extern func_02091b98
     .extern func_020939d8
     .extern func_ov033_021fd4cc
-    .extern func_020050c8
+    .extern VecFx32Object_Add
     .extern func_02091c7c
     .extern func_0205974c
     .extern func_02059278
@@ -81,7 +81,7 @@ L_021fda40:
     ldr r0, [r5, #0x4]
     add r1, r5, #0x14
     add r0, r0, #0x18
-    bl func_020050c8
+    bl VecFx32Object_Add
     b L_021fdcc0
 L_021fda6c:
     add r0, r5, #0x84

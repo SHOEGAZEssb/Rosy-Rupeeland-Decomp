@@ -5,7 +5,7 @@
 .extern Scene_SetFlags03
 .extern data_021052fc
 .extern data_ov074_02211d34
-.extern func_02005058
+.extern VecFx32Object_Destroy
 .extern SplineMover_Update
 .extern SplineMover_Evaluate2D
 .extern GamePhaseRuntime_UpdateDualScreenUiPresentation
@@ -284,7 +284,7 @@ func_ov074_022101dc:
     add r1, sp, #0x8
     bl func_ov033_021fd324
     add r0, sp, #0x8
-    bl func_02005058
+    bl VecFx32Object_Destroy
     ldr r0, [r4, #0x128]
     bl func_ov025_021fd2e8
 .L_02210590:

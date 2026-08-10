@@ -4,7 +4,7 @@
 .extern __construct_array
 .extern data_020d6718
 .extern data_020d6768
-.extern func_02005030
+.extern VecFx32Object_InitCopy
 .extern AnimationResource_Init
 .extern AnimationResource_Destroy
 .extern AnimationResource_Assign
@@ -31,7 +31,7 @@ func_02023a8c: ; 0x02023a8c
     mov r1, r4
     add r0, r10, #0x8
     str r2, [r10, #0x0]
-    bl func_02005030
+    bl VecFx32Object_InitCopy
     ldr r1, .L_02023bb0
     ldr r3, .L_02023bb4
     str r1, [sp, #0x0]

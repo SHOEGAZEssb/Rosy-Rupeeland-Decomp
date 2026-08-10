@@ -27,7 +27,7 @@ void func_ov069_0220fe0c(void);
  * meaningful result without invoking SDK services. */
 void func_ov069_0220fe28(void);
 
-/* Returns the shared callback func_020050a4 for the supplied interface query;
+/* Returns the shared callback VecFx32Object_Assign for the supplied interface query;
  * no object or hardware state is modified. */
 void func_ov069_0220fe2c(void);
 

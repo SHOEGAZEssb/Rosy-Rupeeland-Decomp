@@ -6,8 +6,8 @@
 .extern data_ov088_0221b6b0
 .extern data_ov088_0221b6ec
 .extern data_ov088_0221b6f0
-.extern func_02005030
-.extern func_02005058
+.extern VecFx32Object_InitCopy
+.extern VecFx32Object_Destroy
 .extern GraphicsSpriteState_SetScreenPositionCulled
 .extern GraphicsSpriteState_SetDepthOrderedWorldPositionWithMargins
 .extern ActorDerivedRuntime_ForwardTouchPoint
@@ -24,7 +24,7 @@ func_ov088_022191d4:
     bl ActorDerivedRuntime_ForwardTouchPoint
     add r0, sp, #0x10
     add r1, r10, #0x18
-    bl func_02005030
+    bl VecFx32Object_InitCopy
     ldr r3, [r10, #0x54]
     ldr r1, [sp, #0x1c]
     ldrh r2, [r3, #0x28]
@@ -305,7 +305,7 @@ func_ov088_022191d4:
     strh r0, [r1, #0x24]
 .L_02219614:
     add r0, sp, #0x10
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add sp, sp, #0x20
     ldmia sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, pc}
 .L_02219624: .word gSceneManager

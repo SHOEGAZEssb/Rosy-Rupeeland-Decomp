@@ -2,7 +2,7 @@
 .text
 .extern data_020d5680
 .extern data_021052fc
-.extern func_02005058
+.extern VecFx32Object_Destroy
 .extern OverlaySlot_Destroy
 .extern func_0201e1b0
 .extern ActorCollection_Destructor
@@ -30,7 +30,7 @@ GamePhaseAreaScene_Destroy: ; 0x02011f24
     blx r1
 L_02011f6c:
     add r0, r4, #0x2ec0
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add r0, r4, #0xeb0
     add r0, r0, #0x2000
     bl OverlaySlot_Destroy

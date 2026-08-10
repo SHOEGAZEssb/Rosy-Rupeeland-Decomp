@@ -10,7 +10,7 @@
 
 extern "C" {
 void __destroy_arr(void *, s32, s32, void *);
-void func_02005058(void *);
+void VecFx32Object_Destroy(void *);
 void func_ov041_021fce00(void *);
 void func_02099fb0(void *);
 void Heap_Free(void *);
@@ -30,7 +30,7 @@ extern "C" void *func_ov041_022012f4(void *object)
     void *helper = FIELD(void *, object, 0x958);
     if (helper != 0) {
         __destroy_arr((u8 *)helper + 0x13c, 0x3c, 0x10,
-                      (void *)func_02005058);
+                      (void *)VecFx32Object_Destroy);
         func_02099fb0(helper);
         Heap_Free(helper);
     }

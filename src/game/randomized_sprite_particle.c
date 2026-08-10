@@ -28,12 +28,12 @@ extern "C" {
 #endif
 extern const s16 data_020c9670[];
 extern u32 genrand_int32(void);
-extern void func_02004fe0(void *);
-extern void func_0200500c(void *, s32, s32, s32);
-extern void func_02005030(void *, const void *);
-extern void func_02005058(void *);
-extern void func_020050a4(void *, const void *);
-extern void func_020050c8(void *, const void *);
+extern void VecFx32Object_Init(void *);
+extern void VecFx32Object_InitComponents(void *, s32, s32, s32);
+extern void VecFx32Object_InitCopy(void *, const void *);
+extern void VecFx32Object_Destroy(void *);
+extern void VecFx32Object_Assign(void *, const void *);
+extern void VecFx32Object_Add(void *, const void *);
 extern void VecFx32_Subtract(void *, const void *, const void *);
 extern s32 func_020adcac(const s32 *, const s32 *);
 extern s32 func_020adc90(s32, s32);
@@ -57,10 +57,10 @@ RandomizedSpriteParticle *func_02028860(RandomizedSpriteParticle *self,
                                         s32 frame)
 {
     ParticleVector impulse;
-    func_02005030(&self->position_00, position);
-    func_02005030(&self->target_10, target);
-    func_02004fe0(&self->velocity_20);
-    func_02004fe0(&self->steering_30);
+    VecFx32Object_InitCopy(&self->position_00, position);
+    VecFx32Object_InitCopy(&self->target_10, target);
+    VecFx32Object_Init(&self->velocity_20);
+    VecFx32Object_Init(&self->steering_30);
     self->owner_44 = owner;
     self->lifetime_48 = 0;
     self->position_00.y += ((s32)(genrand_int32() & 0x1f) - 0x10) << 12;
@@ -68,10 +68,10 @@ RandomizedSpriteParticle *func_02028860(RandomizedSpriteParticle *self,
     GraphicsSpriteState_SetAnimationIndex(self->sprite_40, (u8)frame);
     *(u16 *)(self->sprite_40 + 0x24) |= 6;
     *(u16 *)(self->sprite_40 + 0x28) = 100;
-    func_0200500c(&impulse, 0,
+    VecFx32Object_InitComponents(&impulse, 0,
                   -0x1000 - (s32)(genrand_int32() & 0x7ff), 0);
-    func_020050a4(&self->velocity_20, &impulse);
-    func_02005058(&impulse);
+    VecFx32Object_Assign(&self->velocity_20, &impulse);
+    VecFx32Object_Destroy(&impulse);
     self->lifetime_48 = 400;
     return self;
 }
@@ -80,10 +80,10 @@ RandomizedSpriteParticle *func_02028860(RandomizedSpriteParticle *self,
 RandomizedSpriteParticle *func_0202895c(RandomizedSpriteParticle *self)
 {
     GraphicsSpriteGroup_ReleaseState(self->owner_44, self->sprite_40);
-    func_02005058(&self->steering_30);
-    func_02005058(&self->velocity_20);
-    func_02005058(&self->target_10);
-    func_02005058(&self->position_00);
+    VecFx32Object_Destroy(&self->steering_30);
+    VecFx32Object_Destroy(&self->velocity_20);
+    VecFx32Object_Destroy(&self->target_10);
+    VecFx32Object_Destroy(&self->position_00);
     return self;
 }
 
@@ -115,13 +115,13 @@ s32 func_02028998(RandomizedSpriteParticle *self, const void *projection)
     self->steering_30.z =
         func_020adc90(data_020c9670[tableIndex], magnitude << 12);
     self->steering_30.x = 0;
-    func_020050c8(&self->velocity_20, &self->steering_30);
+    VecFx32Object_Add(&self->velocity_20, &self->steering_30);
 
-    func_02004fe0(&damping);
+    VecFx32Object_Init(&damping);
     damping.y = (s32)(((s64)-self->velocity_20.y * 98 + 0x800) >> 12);
     damping.z = (s32)(((s64)-self->velocity_20.z * 98 + 0x800) >> 12);
-    func_020050c8(&self->velocity_20, &damping);
-    func_020050c8(&self->position_00, &self->velocity_20);
+    VecFx32Object_Add(&self->velocity_20, &damping);
+    VecFx32Object_Add(&self->position_00, &self->velocity_20);
 
     VecFx32_Subtract(&projected, &self->position_00, projection);
     x = projected.y >> 12;
@@ -134,8 +134,8 @@ s32 func_02028998(RandomizedSpriteParticle *self, const void *projection)
         *(u16 *)(self->sprite_40 + 0x24) |= 4;
 
     self->lifetime_48--;
-    func_02005058(&projected);
-    func_02005058(&damping);
-    func_02005058(&difference);
+    VecFx32Object_Destroy(&projected);
+    VecFx32Object_Destroy(&damping);
+    VecFx32Object_Destroy(&difference);
     return self->lifetime_48 < 0;
 }

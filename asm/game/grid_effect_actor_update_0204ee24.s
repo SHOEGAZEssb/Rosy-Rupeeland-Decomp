@@ -4,8 +4,8 @@
 .extern data_021052fc
 .extern data_02105790
 .extern gSceneManager
-.extern func_020050a4
-.extern func_020050c8
+.extern VecFx32Object_Assign
+.extern VecFx32Object_Add
 .extern GraphicsSpriteState_SetScreenPositionCulled
 .extern ActorCollection_QueueActorForRemoval
 .extern Actor_GetCollection
@@ -45,7 +45,7 @@ func_0204ee24: ; 0x0204ee24
     add r0, r5, #0x28
     add r1, r5, #0x18
     strb r2, [r5, #0x21b]
-    bl func_020050a4
+    bl VecFx32Object_Assign
     add r0, r5, #0x100
     ldrh r0, [r0, #0xf0]
     mov r0, r0, lsl #0x1e
@@ -72,7 +72,7 @@ func_0204ee24: ; 0x0204ee24
     sub r0, r2, r0
     str r0, [r5, #0x44]
     add r0, r5, #0x18
-    bl func_020050c8
+    bl VecFx32Object_Add
     ldr r1, [r5, #0x1dc]
     ldr r0, [r5, #0x24]
     cmp r0, r1

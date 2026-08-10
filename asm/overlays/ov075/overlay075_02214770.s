@@ -1,8 +1,8 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov075/overlay075_recovery.c.
 .extern data_020c9670
-.extern func_02005058
-.extern func_020050a4
+.extern VecFx32Object_Destroy
+.extern VecFx32Object_Assign
 .extern Actor_QueryTerrainCell
 .extern func_0204cfa4
 .extern func_0204cff4
@@ -15,7 +15,7 @@ func_ov075_02214770:
     sub sp, sp, #0x20
     mov r5, r0
     add r0, r5, #0x78
-    bl func_020050a4
+    bl VecFx32Object_Assign
     add r0, sp, #0x10
     add r1, r5, #0x78
     add r2, r5, #0x18
@@ -73,7 +73,7 @@ func_ov075_02214770:
     str r1, [r5, #0x40]
     add r0, sp, #0x10
     str r1, [r5, #0x3c]
-    bl func_02005058
+    bl VecFx32Object_Destroy
     mov r0, #0x0
     b .L_0221488c
 .L_02214874:
@@ -82,7 +82,7 @@ func_ov075_02214770:
     str r0, [r5, #0x3c]
 .L_02214880:
     add r0, sp, #0x10
-    bl func_02005058
+    bl VecFx32Object_Destroy
     mov r0, #0x1
 .L_0221488c:
     add sp, sp, #0x20

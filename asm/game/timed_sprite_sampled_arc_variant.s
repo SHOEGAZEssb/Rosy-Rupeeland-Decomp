@@ -2,8 +2,8 @@
 .text
 .extern Heap_Free
 .extern data_020d60ac
-.extern func_02005058
-.extern func_020050a4
+.extern VecFx32Object_Destroy
+.extern VecFx32Object_Assign
 .extern GraphicsSpriteState_SetScreenPositionCulled
 .extern VecFx32_Subtract
 .extern func_0201e290
@@ -27,7 +27,7 @@ func_0201edd0: ; 0x0201edd0
     strh r2, [r3, #0x24]
     ldr r2, [r4, #0x30]
     str r2, [r5, #0x28]
-    bl func_020050a4
+    bl VecFx32Object_Assign
     mov r0, r5
     ldmia sp!, {r3, r4, r5, pc}
 .L_0201ee14: .word data_020d60ac
@@ -101,7 +101,7 @@ func_0201ee48: ; 0x0201ee48
     movne r4, #0x1
     add r0, sp, #0x0
     moveq r4, #0x0
-    bl func_02005058
+    bl VecFx32Object_Destroy
     mov r0, r4
 .L_0201eef4:
     add sp, sp, #0x10

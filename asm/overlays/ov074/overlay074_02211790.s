@@ -1,6 +1,6 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov074/overlay074_recovery.c.
-.extern func_02005058
+.extern VecFx32Object_Destroy
 .extern SplineMover_Evaluate2D
 .extern func_ov074_022117d0
 
@@ -19,7 +19,7 @@ func_ov074_02211790:
     mov r2, r2, asr #0xc
     bl func_ov074_022117d0
     add r0, sp, #0x0
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add sp, sp, #0x10
     ldmia sp!, {r4, pc}
 .size func_ov074_02211790, . - func_ov074_02211790

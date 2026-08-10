@@ -1,6 +1,6 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov085/overlay085_recovery.c.
-.extern func_020050a4
+.extern VecFx32Object_Assign
 .extern func_ov085_02213b3c
 
 .global func_ov085_02213f90
@@ -15,7 +15,7 @@ func_ov085_02213f90:
     bne .L_02213fc4
     add r0, r4, #0x78
     add r1, r4, #0x214
-    bl func_020050a4
+    bl VecFx32Object_Assign
     mov r0, #0x0
     str r0, [r4, #0x210]
 .L_02213fc4:

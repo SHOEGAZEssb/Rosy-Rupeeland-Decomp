@@ -1,9 +1,9 @@
 ; Matching retail form; see src/game/actor_motion_jitter_update.c for
 ; the documented portable implementation and recovered behavior.
 .text
-.extern func_02004fe0
-.extern func_02005058
-.extern func_020050a4
+.extern VecFx32Object_Init
+.extern VecFx32Object_Destroy
+.extern VecFx32Object_Assign
 .extern ActorMotion_GetBoundActorTargetPosition
 .extern ActorMotion_UpdateOscillation
 .extern func_020bf1f8
@@ -79,7 +79,7 @@ L_02009884:
     b L_020099a4
 L_020098f0:
     add r0, sp, #0x10
-    bl func_02004fe0
+    bl VecFx32Object_Init
     ldr r0, [r4, #0x4]
     cmp r0, #0x0
     beq L_0200999c
@@ -92,9 +92,9 @@ L_020098f0:
     bl ActorMotion_GetBoundActorTargetPosition
     add r0, sp, #0x10
     add r1, sp, #0x0
-    bl func_020050a4
+    bl VecFx32Object_Assign
     add r0, sp, #0x0
-    bl func_02005058
+    bl VecFx32Object_Destroy
     ldrsh r0, [r4, #0x64]
     cmp r0, #0x0
     ble L_02009990
@@ -121,10 +121,10 @@ L_020098f0:
 L_02009990:
     add r1, sp, #0x10
     add r0, r4, #0x8
-    bl func_020050a4
+    bl VecFx32Object_Assign
 L_0200999c:
     add r0, sp, #0x10
-    bl func_02005058
+    bl VecFx32Object_Destroy
 L_020099a4:
     ldr r0, [r4, #0x30]
     tst r0, #0x2

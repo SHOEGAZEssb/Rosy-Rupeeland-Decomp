@@ -2,8 +2,8 @@
 ; Matching fallback for the portable implementation in src/overlays/ov088/overlay088_recovery.c.
 .extern SceneManager_GetCurrent
 .extern data_021052fc
-.extern func_02005058
-.extern func_02005070
+.extern VecFx32Object_Destroy
+.extern VecFx32Object_GetMagnitude
 .extern Actor_SetInteractionFlag2000
 .extern Actor_GetCachedTerrainHeight
 .extern ActorDerivedType1_IsIdleEligible
@@ -61,7 +61,7 @@ func_ov088_02219c0c:
     mov r1, #0x0
     add r0, sp, #0x10
     str r1, [sp, #0x1c]
-    bl func_02005070
+    bl VecFx32Object_GetMagnitude
     cmp r0, #0x3c000
     bge .L_02219d0c
     mov r0, r5
@@ -79,7 +79,7 @@ func_ov088_02219c0c:
     strneh r1, [r0, #0xa6]
 .L_02219d0c:
     add r0, sp, #0x10
-    bl func_02005058
+    bl VecFx32Object_Destroy
     b .L_02219d48
 .L_02219d18:
     tst r1, #0x4
@@ -93,7 +93,7 @@ func_ov088_02219c0c:
     ldr r2, [r2, #0xc8]
     blx r2
     add r0, sp, #0x0
-    bl func_02005058
+    bl VecFx32Object_Destroy
 .L_02219d48:
     mov r0, r5
     mov r1, r4

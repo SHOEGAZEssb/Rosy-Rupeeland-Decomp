@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/type7_actor_motion_variants.c.
 .extern data_020c9670
-.extern func_020050a4
+.extern VecFx32Object_Assign
 .extern Actor_GetCachedTerrainHeight
 .extern Type7Actor_UpdateMotionTowardTransform
 .extern Type7Actor_ResetInteractionState
@@ -32,7 +32,7 @@ Type7Actor_UpdateRandomOffsetMotion: ; 0x02049148
     bne .L_020491f0
     add r0, r4, #0x78
     add r1, r4, #0x214
-    bl func_020050a4
+    bl VecFx32Object_Assign
     bl genrand_int32
     bic r0, r0, #0x80000000
     mov r1, #0x10000
@@ -83,7 +83,7 @@ Type7Actor_UpdateRandomOffsetMotion: ; 0x02049148
     ble .L_02049250
     add r0, r4, #0x78
     add r1, r4, #0x18
-    bl func_020050a4
+    bl VecFx32Object_Assign
     b .L_02049268
 .L_02049250:
     ldr r0, [r4, #0x268]
@@ -91,7 +91,7 @@ Type7Actor_UpdateRandomOffsetMotion: ; 0x02049148
     beq .L_02049268
     add r0, r4, #0x78
     add r1, r4, #0x224
-    bl func_020050a4
+    bl VecFx32Object_Assign
 .L_02049268:
     mov r0, r4
     add r1, r4, #0x78
@@ -126,7 +126,7 @@ Type7Actor_UpdateRandomOffsetMotionVariant: ; 0x0204929c
     bne .L_02049344
     add r0, r4, #0x78
     add r1, r4, #0x214
-    bl func_020050a4
+    bl VecFx32Object_Assign
     bl genrand_int32
     bic r0, r0, #0x80000000
     mov r1, #0x10000
@@ -177,7 +177,7 @@ Type7Actor_UpdateRandomOffsetMotionVariant: ; 0x0204929c
     ble .L_020493a4
     add r0, r4, #0x78
     add r1, r4, #0x18
-    bl func_020050a4
+    bl VecFx32Object_Assign
     b .L_020493bc
 .L_020493a4:
     ldr r0, [r4, #0x268]
@@ -185,7 +185,7 @@ Type7Actor_UpdateRandomOffsetMotionVariant: ; 0x0204929c
     beq .L_020493bc
     add r0, r4, #0x78
     add r1, r4, #0x224
-    bl func_020050a4
+    bl VecFx32Object_Assign
 .L_020493bc:
     mov r0, r4
     bl Type7Actor_AdjustDestinationForCollisions
@@ -269,7 +269,7 @@ Type7Actor_UpdateRelatedTargetMotion: ; 0x020493f8
     ble .L_020494ec
     add r0, r5, #0x78
     add r1, r5, #0x18
-    bl func_020050a4
+    bl VecFx32Object_Assign
     b .L_02049510
 .L_020494ec:
     ldr r0, [r5, #0x268]
@@ -277,11 +277,11 @@ Type7Actor_UpdateRelatedTargetMotion: ; 0x020493f8
     add r0, r5, #0x78
     beq .L_02049508
     add r1, r5, #0x224
-    bl func_020050a4
+    bl VecFx32Object_Assign
     b .L_02049510
 .L_02049508:
     add r1, r5, #0x214
-    bl func_020050a4
+    bl VecFx32Object_Assign
 .L_02049510:
     mov r0, r5
     bl Type7Actor_AdjustDestinationForCollisions

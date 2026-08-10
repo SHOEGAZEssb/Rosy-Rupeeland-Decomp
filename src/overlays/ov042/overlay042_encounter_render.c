@@ -20,10 +20,10 @@ extern "C" s32 func_020bf1f8(u32 value, s32 modulus);
 extern "C" s32 func_020befec(s32 numerator, s32 denominator);
 extern "C" s32 func_020adc90(s32 numerator, s32 denominator);
 extern "C" void func_0209a2ac(void *display, void *renderContext, s32 layer);
-extern "C" void func_02004fe0(void *matrix);
-extern "C" void func_0200500c(void *matrix, s32 x, s32 y, s32 z);
-extern "C" void func_02005058(void *matrix);
-extern "C" void func_020050a4(void *destination, const void *source);
+extern "C" void VecFx32Object_Init(void *matrix);
+extern "C" void VecFx32Object_InitComponents(void *matrix, s32 x, s32 y, s32 z);
+extern "C" void VecFx32Object_Destroy(void *matrix);
+extern "C" void VecFx32Object_Assign(void *destination, const void *source);
 extern "C" void func_0209b494(void *graphics, s32 parameter, s32 value);
 extern "C" void func_0209b668(void *graphics);
 extern "C" void func_020a1794(void *owner, const void *position,
@@ -80,8 +80,8 @@ static void draw_mode2_ribbon(void *scene)
     s32 actor[4];
     s32 scale[4];
     func_020c10d4(base);
-    func_0200500c(base, 192, 160, 112);
-    func_0200500c(actor, FIELD(s32, scene, 0xa8) >> 12,
+    VecFx32Object_InitComponents(base, 192, 160, 112);
+    VecFx32Object_InitComponents(actor, FIELD(s32, scene, 0xa8) >> 12,
                    FIELD(s32, scene, 0xac) >> 12, 210);
 
     s32 phase = FIELD(s32, scene, 0x1d4);
@@ -93,11 +93,11 @@ static void draw_mode2_ribbon(void *scene)
     scale[2] = func_020befec(FIELD(s32, scene, 0x1dc) * amplitude, 135);
 
     s32 center[3] = {FIELD(s32, scene, 0xa8), 0, FIELD(s32, scene, 0xac)};
-    func_020050a4((u8 *)FIELD(void *, FIELD(void *, scene, 0x48), 0x20) + 0x70,
+    VecFx32Object_Assign((u8 *)FIELD(void *, FIELD(void *, scene, 0x48), 0x20) + 0x70,
                    actor);
     func_020a227c(FIELD(void *, FIELD(void *, scene, 0x48), 0x20), actor,
                    (FIELD(s32, scene, 0x1bc) * 0x127) & 0xffff);
-    func_0200500c(scale, scale[0] >> 7, scale[1] >> 7, scale[2] >> 7);
+    VecFx32Object_InitComponents(scale, scale[0] >> 7, scale[1] >> 7, scale[2] >> 7);
     func_0209b494(FIELD(void *, FIELD(void *, scene, 0x48), 0x20), 38, 0);
 
     /* The retail function emits seven color-indexed ribbon billboards. */
@@ -114,16 +114,16 @@ static void draw_mode2_ribbon(void *scene)
         FIELD(s32, scene, 0x244) = 6;
         FIELD(s32, scene, 0x260) = 1;
         s32 matrix[4];
-        func_02004fe0(matrix);
+        VecFx32Object_Init(matrix);
         func_020a1794(FIELD(void *, scene, 0x48), (u8 *)scene + 0xa4, matrix, 0);
         FIELD(s32, scene, 0x254) = matrix[1];
         FIELD(s32, scene, 0x258) = matrix[2];
-        func_02005058(matrix);
+        VecFx32Object_Destroy(matrix);
     }
 
-    func_02005058(scale);
-    func_02005058(actor);
-    func_02005058(base);
+    VecFx32Object_Destroy(scale);
+    VecFx32Object_Destroy(actor);
+    VecFx32Object_Destroy(base);
 }
 
 /*

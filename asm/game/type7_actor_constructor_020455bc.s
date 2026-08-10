@@ -2,9 +2,9 @@
 .text
 .extern data_020e1740
 .extern data_020e1c38
-.extern func_02004fe0
-.extern func_0200500c
-.extern func_020050a4
+.extern VecFx32Object_Init
+.extern VecFx32Object_InitComponents
+.extern VecFx32Object_Assign
 .extern ActorDerivedRuntime_Init
 .extern Type7Actor_ResetBaseTransformAndMotion
 .extern Type7Actor_SetCallbackPair
@@ -18,12 +18,12 @@ Type7Actor_Init: ; 0x020455bc
     ldr r1, .L_02045718
     add r0, r4, #0x214
     str r1, [r4, #0x0]
-    bl func_02004fe0
+    bl VecFx32Object_Init
     mvn r1, #0x0
     mov r2, r1
     mov r3, r1
     add r0, r4, #0x224
-    bl func_0200500c
+    bl VecFx32Object_InitComponents
     mov r3, #0x0
     ldr r0, .L_0204571c
     str r3, [r4, #0x234]
@@ -51,7 +51,7 @@ Type7Actor_Init: ; 0x020455bc
     strh r3, [r0, #0x66]
     add r0, r4, #0x26c
     str r3, [r4, #0x268]
-    bl func_02004fe0
+    bl VecFx32Object_Init
     mov r2, #0x0
     add r0, r4, #0x200
     strh r2, [r0, #0x7c]
@@ -59,7 +59,7 @@ Type7Actor_Init: ; 0x020455bc
     strh r1, [r0, #0x7e]
     str r2, [r4, #0x280]
     add r0, r4, #0x284
-    bl func_02004fe0
+    bl VecFx32Object_Init
     mov r1, #0x0
     str r1, [r4, #0x294]
     str r1, [r4, #0x298]
@@ -74,10 +74,10 @@ Type7Actor_Init: ; 0x020455bc
     bl Type7MarkerPresentation_Init
     add r0, r4, #0x214
     add r1, r4, #0x18
-    bl func_020050a4
+    bl VecFx32Object_Assign
     mov r1, r0
     add r0, r4, #0x26c
-    bl func_020050a4
+    bl VecFx32Object_Assign
     ldr r0, [r4, #0x14]
     ldr r1, .L_02045720
     tst r0, #0x400

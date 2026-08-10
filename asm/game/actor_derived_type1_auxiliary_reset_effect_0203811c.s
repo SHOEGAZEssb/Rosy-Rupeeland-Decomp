@@ -5,8 +5,8 @@
 .extern Heap_Free
 .extern data_020df4a4
 .extern data_021052fc
-.extern func_0200500c
-.extern func_02005058
+.extern VecFx32Object_InitComponents
+.extern VecFx32Object_Destroy
 .extern func_02008378
 .extern ActorMotionJitter_EnsureMinimum
 .extern func_0201f864
@@ -60,13 +60,13 @@ ActorDerivedType1_ReleaseAuxiliaryAndSpawnResetEffect: ; 0x0203811c
     add r0, sp, #0x18
     mov r2, r1
     mov r3, #0x24000
-    bl func_0200500c
+    bl VecFx32Object_InitComponents
     add r0, sp, #0x28
     add r2, sp, #0x18
     add r1, r4, #0x18
     bl func_02008378
     add r0, sp, #0x18
-    bl func_02005058
+    bl VecFx32Object_Destroy
     ldr r1, .L_02038250
     ldr r3, .L_02038254
     mov r0, #0x14
@@ -92,7 +92,7 @@ ActorDerivedType1_ReleaseAuxiliaryAndSpawnResetEffect: ; 0x0203811c
     bl func_0201f864
 .L_02038234:
     add r0, sp, #0x28
-    bl func_02005058
+    bl VecFx32Object_Destroy
 .L_0203823c:
     add sp, sp, #0x38
     ldmia sp!, {r3, r4, r5, pc}

@@ -5,8 +5,8 @@
 .extern data_ov089_02219aec
 .extern data_ov089_02219b48
 .extern data_ov089_02219b4c
-.extern func_02005030
-.extern func_02005058
+.extern VecFx32Object_InitCopy
+.extern VecFx32Object_Destroy
 .extern ActorDerivedRuntime_ForwardTouchPoint
 .extern GraphicsSpriteState_AdvanceAnimation
 .extern func_ov089_02217c14
@@ -63,7 +63,7 @@ func_ov089_02218a5c:
     beq .L_02218b98
     add r0, sp, #0x10
     add r1, r5, #0x18
-    bl func_02005030
+    bl VecFx32Object_InitCopy
     ldr r1, [r5, #0x240]
     mov r0, #0xc
     ldrb r2, [r1, #0x1a]
@@ -91,7 +91,7 @@ func_ov089_02218a5c:
     ldr r0, [r0, #0x4]
     bl GraphicsSpriteState_AdvanceAnimation
     add r0, sp, #0x10
-    bl func_02005058
+    bl VecFx32Object_Destroy
 .L_02218b98:
     ldr r0, [r5, #0x244]
     cmp r0, #0x0
@@ -100,7 +100,7 @@ func_ov089_02218a5c:
     beq .L_02218c28
     add r0, sp, #0x0
     add r1, r5, #0x18
-    bl func_02005030
+    bl VecFx32Object_InitCopy
     ldr r1, [r5, #0x244]
     mov r0, #0xc
     ldrb r2, [r1, #0x1a]
@@ -128,7 +128,7 @@ func_ov089_02218a5c:
     ldr r0, [r0, #0x4]
     bl GraphicsSpriteState_AdvanceAnimation
     add r0, sp, #0x0
-    bl func_02005058
+    bl VecFx32Object_Destroy
 .L_02218c28:
     add sp, sp, #0x20
     ldmia sp!, {r3, r4, r5, pc}

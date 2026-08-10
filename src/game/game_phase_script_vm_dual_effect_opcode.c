@@ -27,7 +27,7 @@ s32 GamePhaseActorScriptVm_SpawnDualVariantEffect(GamePhaseActorScriptVm *self)
     VecFx32Object position;
     s32 first;
     s32 variant;
-    func_02004fe0(&position);
+    VecFx32Object_Init(&position);
     first = (s32)GamePhaseScriptVm_Pop(&self->base) << 12;
     position.value.y = (s32)GamePhaseScriptVm_Pop(&self->base) << 12;
     position.value.x = (s32)GamePhaseScriptVm_Pop(&self->base) << 12;
@@ -46,6 +46,6 @@ s32 GamePhaseActorScriptVm_SpawnDualVariantEffect(GamePhaseActorScriptVm *self)
         OS_Halt();
         break;
     }
-    func_02005058(&position);
+    VecFx32Object_Destroy(&position);
     return 0;
 }

@@ -26,14 +26,14 @@ void ActorMotion_SetOscillation(ActorMotion *self, s32 xAmplitude, s32 yAmplitud
     ActorMotionTriple second;
 
     self->field_30 |= 2;
-    func_0200500c(&amplitudes, xAmplitude << 12, yAmplitude << 12, 0);
+    VecFx32Object_InitComponents(&amplitudes, xAmplitude << 12, yAmplitude << 12, 0);
     ActorMotionOscillation_InitInterval(&first, -amplitudes.value.x,
                   amplitudes.value.x, duration);
     ActorMotionTriple_Assign(&self->state.first, &first);
     ActorMotionOscillation_InitInterval(&second, -amplitudes.value.y,
                   amplitudes.value.y, duration);
     ActorMotionTriple_Assign(&self->state.second, &second);
-    func_02005058(&amplitudes);
+    VecFx32Object_Destroy(&amplitudes);
 }
 
 /*

@@ -1,11 +1,11 @@
 ; Matching retail form; see src/game/ballistic_sprite_particle.c.
 .text
-.extern func_02004fe0
-.extern func_0200500c
-.extern func_02005030
-.extern func_02005058
-.extern func_020050a4
-.extern func_020050c8
+.extern VecFx32Object_Init
+.extern VecFx32Object_InitComponents
+.extern VecFx32Object_InitCopy
+.extern VecFx32Object_Destroy
+.extern VecFx32Object_Assign
+.extern VecFx32Object_Add
 .extern GraphicsSpriteState_SetAnimationIndex
 .extern GraphicsSpriteGroup_CreateState
 .extern GraphicsSpriteGroup_ReleaseState
@@ -22,9 +22,9 @@ func_02023890: ; 0x02023890
     mov r4, r0
     mov r1, r3
     mov r5, r2
-    bl func_02005030
+    bl VecFx32Object_InitCopy
     add r0, r4, #0x10
-    bl func_02004fe0
+    bl VecFx32Object_Init
     ldr r2, [sp, #0x38]
     mov r1, #0x0
     str r2, [r4, #0x24]
@@ -62,12 +62,12 @@ func_02023890: ; 0x02023890
     rsb r1, r1, #0x0
     sub r2, r2, #0x4800
     mov r3, #0x0
-    bl func_0200500c
+    bl VecFx32Object_InitComponents
     add r1, sp, #0x14
     add r0, r4, #0x10
-    bl func_020050a4
+    bl VecFx32Object_Assign
     add r0, sp, #0x14
-    bl func_02005058
+    bl VecFx32Object_Destroy
     bl func_020be4e4
     mov r0, r0, lsl #0x18
     mov r0, r0, lsr #0x14
@@ -84,12 +84,12 @@ func_02023890: ; 0x02023890
     add r1, r1, #0x800
     sub r2, r2, #0x4800
     mov r3, #0x0
-    bl func_0200500c
+    bl VecFx32Object_InitComponents
     add r1, sp, #0x4
     add r0, r4, #0x10
-    bl func_020050a4
+    bl VecFx32Object_Assign
     add r0, sp, #0x4
-    bl func_02005058
+    bl VecFx32Object_Destroy
     bl func_020be4e4
     and r0, r0, #0xff
     rsb r0, r0, #0x0

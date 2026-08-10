@@ -1,8 +1,8 @@
 ; Matching retail form; see src/game/game_phase_script_vm_actor_grid_placement_opcode.c.
 .text
-.extern func_0200500c
-.extern func_02005058
-.extern func_020050a4
+.extern VecFx32Object_InitComponents
+.extern VecFx32Object_Destroy
+.extern VecFx32Object_Assign
 .extern GamePhaseScriptVm_Pop
 .extern Actor_AdjustPositionForTerrainHeight
 .global GamePhaseActorScriptVm_PlaceActorOnGridAndSetBounds
@@ -31,17 +31,17 @@ GamePhaseActorScriptVm_PlaceActorOnGridAndSetBounds:
     mov r1, r1, lsl #12
     mov r2, r2, lsl #12
     mov r3, #0
-    bl func_0200500c
+    bl VecFx32Object_InitComponents
     ldr r0, [r7, #0x84]
     add r1, sp, #4
     add r0, r0, #0x28
-    bl func_020050a4
+    bl VecFx32Object_Assign
     mov r1, r0
     ldr r0, [r7, #0x84]
     add r0, r0, #0x18
-    bl func_020050a4
+    bl VecFx32Object_Assign
     add r0, sp, #4
-    bl func_02005058
+    bl VecFx32Object_Destroy
     ldr r0, [r7, #0x84]
     bl Actor_AdjustPositionForTerrainHeight
     rsb r2, r6, #0

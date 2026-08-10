@@ -6,9 +6,9 @@
     .extern func_ov039_021ff330
     .extern GraphicsSpriteState_SetAnimationIndex
     .extern GraphicsSpriteState_SetFrameIndex
-    .extern func_02005030
-    .extern func_02005058
-    .extern func_020050a4
+    .extern VecFx32Object_InitCopy
+    .extern VecFx32Object_Destroy
+    .extern VecFx32Object_Assign
     .extern func_020adc40
     .extern func_020ae024
     .extern func_ov069_02211594
@@ -372,7 +372,7 @@ L_021ffabc:
     add r0, r10, #0xda0
     add r0, r0, #0x1000
     add r1, r1, #0x1c
-    bl func_020050a4
+    bl VecFx32Object_Assign
     ldr r5, [r10, #0x98]
     ldr r0, L_022003e4
     ldrh r3, [r5, #0x42]
@@ -796,7 +796,7 @@ L_02200114:
     bne L_022001b8
     mov r0, r4
     add r1, r1, #0x1c
-    bl func_02005030
+    bl VecFx32Object_InitCopy
     mov r1, r6, lsr #0x1f
     rsb r0, r1, r6, lsl #0x1f
     add r0, r1, r0, ror #0x1f
@@ -813,7 +813,7 @@ L_02200114:
     ldr r0, [r0, #0x10]
     bl func_0209f158
     mov r0, r4
-    bl func_02005058
+    bl VecFx32Object_Destroy
 L_022001b8:
     subs r6, r6, #0x1
     bpl L_02200114
@@ -881,7 +881,7 @@ L_0220027c:
     add r1, r1, #0x2c
     ldr r4, [r2, #0x30]
     ldr r5, [r2, #0x34]
-    bl func_02005030
+    bl VecFx32Object_InitCopy
     add r0, r10, r9, lsl #0x2
     ldr r1, [r0, #0x58]
     ldr r3, [sp, #0x6c]
@@ -891,7 +891,7 @@ L_0220027c:
     add r1, r1, #0x1c
     sub r7, r2, #0x10000
     ldr r6, [sp, #0x68]
-    bl func_02005030
+    bl VecFx32Object_InitCopy
     ldr r0, [sp, #0x58]
     ldr r1, [sp, #0x5c]
     sub r0, r6, r0
@@ -1158,9 +1158,9 @@ L_022005d4:
     ldr r1, [r3, #0x4c]
     add r2, r5, r2
     str r2, [r1, #0x34]
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add r0, sp, #0x64
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add r9, r9, #0x4
     cmp r9, #0x4
     ble L_0220027c

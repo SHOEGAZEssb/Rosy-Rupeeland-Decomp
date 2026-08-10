@@ -1,9 +1,9 @@
 ; Matching retail form; see src/game/grid_effect_actor_spawn_wrappers.c.
 .extern data_020c9670
 .extern data_02105790
-.extern func_0200500c
-.extern func_02005058
-.extern func_020050a4
+.extern VecFx32Object_InitComponents
+.extern VecFx32Object_Destroy
+.extern VecFx32Object_Assign
 .extern func_0204f62c
 .extern genrand_int32
 .text
@@ -25,12 +25,12 @@ func_0204f7e4: ; 0x0204f7e4
     rsb r1, r3, #0x1000
     rsb r2, r2, #0x1000
     mov r3, #0x3000
-    bl func_0200500c
+    bl VecFx32Object_InitComponents
     add r1, sp, #0x0
     add r0, r4, #0x38
-    bl func_020050a4
+    bl VecFx32Object_Assign
     add r0, sp, #0x0
-    bl func_02005058
+    bl VecFx32Object_Destroy
     mov r0, #0x1
 .L_0204f83c:
     add sp, sp, #0x10
@@ -59,7 +59,7 @@ func_0204f854: ; 0x0204f854
     ldmeqia sp!, {r3, r4, r5, pc}
     mov r1, r5
     add r0, r4, #0x38
-    bl func_020050a4
+    bl VecFx32Object_Assign
     ldr r1, [r4, #0x14]
     mov r0, #0x1
     orr r1, r1, #0x2
@@ -118,12 +118,12 @@ func_0204f894: ; 0x0204f894
     add r0, sp, #0x0
     orr r1, r1, r5, lsl #0x14
     mov r3, #0x3000
-    bl func_0200500c
+    bl VecFx32Object_InitComponents
     add r1, sp, #0x0
     add r0, r4, #0x38
-    bl func_020050a4
+    bl VecFx32Object_Assign
     add r0, sp, #0x0
-    bl func_02005058
+    bl VecFx32Object_Destroy
     mov r0, #0x1
     b .L_0204f978
 .L_0204f974:

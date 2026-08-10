@@ -1,9 +1,9 @@
 ; Matching retail form; see src/game/actor_collision_shape_build.c.
 .text
-.extern func_02004fe0
-.extern func_0200500c
-.extern func_02005058
-.extern func_020050a4
+.extern VecFx32Object_Init
+.extern VecFx32Object_InitComponents
+.extern VecFx32Object_Destroy
+.extern VecFx32Object_Assign
 .extern func_020adae4
 
     .global Actor_GetCollisionCenter
@@ -13,7 +13,7 @@ Actor_GetCollisionCenter: ; 0x02030e58
     sub sp, sp, #0x10
     mov r5, r1
     mov r6, r0
-    bl func_02004fe0
+    bl VecFx32Object_Init
     ldrsb r1, [r5, #0xa]
     ldrsb r0, [r5, #0x8]
     sub r0, r1, r0
@@ -29,7 +29,7 @@ Actor_GetCollisionCenter: ; 0x02030e58
 .L_02030e9c:
     mov r0, r6
     add r1, r5, #0x18
-    bl func_020050a4
+    bl VecFx32Object_Assign
     b .L_02030f08
 .L_02030eac:
     mov r1, #0x2
@@ -49,12 +49,12 @@ Actor_GetCollisionCenter: ; 0x02030e58
     ldr r3, [r5, #0x24]
     add r0, sp, #0x0
     add r2, r2, r4, lsl #0xc
-    bl func_0200500c
+    bl VecFx32Object_InitComponents
     add r1, sp, #0x0
     mov r0, r6
-    bl func_020050a4
+    bl VecFx32Object_Assign
     add r0, sp, #0x0
-    bl func_02005058
+    bl VecFx32Object_Destroy
 .L_02030f08:
     add sp, sp, #0x10
     ldmia sp!, {r4, r5, r6, pc}

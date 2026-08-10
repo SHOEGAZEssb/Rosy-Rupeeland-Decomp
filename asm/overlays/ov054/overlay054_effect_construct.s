@@ -1,10 +1,10 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov054/overlay054_recovery.c.
 .extern data_ov054_0220f0e0
-.extern func_02004fe0
-.extern func_0200500c
-.extern func_02005058
-.extern func_020050a4
+.extern VecFx32Object_Init
+.extern VecFx32Object_InitComponents
+.extern VecFx32Object_Destroy
+.extern VecFx32Object_Assign
 .extern OverlaySlot_Init
 .extern func_0201e250
 
@@ -23,7 +23,7 @@ func_ov054_0220e400:
     str r5, [r4, #0xc]
     mov r1, #0x0
     str r1, [r4, #0x10]
-    bl func_02004fe0
+    bl VecFx32Object_Init
     mov r1, #0x1000
     add r0, r4, #0x1a8
     str r1, [r4, #0x1a4]
@@ -41,12 +41,12 @@ func_ov054_0220e400:
     add r0, sp, #0x0
     mov r3, r1
     rsb r2, r2, #0x0
-    bl func_0200500c
+    bl VecFx32Object_InitComponents
     add r1, sp, #0x0
     add r0, r4, #0x194
-    bl func_020050a4
+    bl VecFx32Object_Assign
     add r0, sp, #0x0
-    bl func_02005058
+    bl VecFx32Object_Destroy
     mov r0, r4
     add sp, sp, #0x10
     ldmia sp!, {r4, r5, r6, pc}

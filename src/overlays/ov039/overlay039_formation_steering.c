@@ -18,10 +18,10 @@ typedef struct Overlay039Vector {
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_0200500c(Overlay039Vector *vector, s32 x, s32 y, s32 z);
-extern void func_02004fe0(void *object);
-extern void func_020050a4(void *destination, const void *source);
-extern void func_02005058(void *object);
+extern void VecFx32Object_InitComponents(Overlay039Vector *vector, s32 x, s32 y, s32 z);
+extern void VecFx32Object_Init(void *object);
+extern void VecFx32Object_Assign(void *destination, const void *source);
+extern void VecFx32Object_Destroy(void *object);
 extern s32 func_020befec(s32 numerator, s32 denominator);
 extern s32 func_020adc40(s32 squaredDistance);
 extern s32 func_020adc90(s32 numerator, s32 denominator);
@@ -90,8 +90,8 @@ extern "C" void func_ov039_021fdb9c(void *scene)
     const s32 by[8] = {0x50000, 0x50000, 0x5000, 0,
                        0x50000, 0x50000, 0, 0x5000};
     for (s32 i = 0; i < 8; i++) {
-        func_0200500c(&pathA[i], ax[i], ay[i], 0x1000);
-        func_0200500c(&pathB[i], bx[i], by[i], 0x1000);
+        VecFx32Object_InitComponents(&pathA[i], ax[i], ay[i], 0x1000);
+        VecFx32Object_InitComponents(&pathB[i], bx[i], by[i], 0x1000);
     }
 
     Overlay039Vector *path =
@@ -99,9 +99,9 @@ extern "C" void func_ov039_021fdb9c(void *scene)
     if (FIELD(u16, scene, 0x1cc0) == 1) {
         Overlay039Vector selected;
         Overlay039Vector scratch;
-        func_02004fe0(&selected);
-        func_02004fe0(&scratch);
-        func_020050a4(&selected, &path[FIELD(u16, scene, 0x1cc2)]);
+        VecFx32Object_Init(&selected);
+        VecFx32Object_Init(&scratch);
+        VecFx32Object_Assign(&selected, &path[FIELD(u16, scene, 0x1cc2)]);
         selected.x_04 += 0x200000;
         selected.y_08 += 0x118000;
         s32 dx = selected.x_04 - FIELD(s32, scene, 0x30);
@@ -122,8 +122,8 @@ extern "C" void func_ov039_021fdb9c(void *scene)
             func_ov039_021ff330(scene, 4);
         }
         FIELD(u16, scene, 0x1ca0) = 0;
-        func_02005058(&scratch);
-        func_02005058(&selected);
+        VecFx32Object_Destroy(&scratch);
+        VecFx32Object_Destroy(&selected);
     }
 
     s32 currentX = FIELD(s32, scene, 0x1c98);
@@ -136,6 +136,6 @@ extern "C" void func_ov039_021fdb9c(void *scene)
         approachVelocity(FIELD(s32, scene, 0x1c9c),
                          FIELD(s32, scene, 0x1d98), -0xd2, 0xd2);
 
-    for (s32 i = 7; i >= 0; i--) func_02005058(&pathB[i]);
-    for (s32 i = 7; i >= 0; i--) func_02005058(&pathA[i]);
+    for (s32 i = 7; i >= 0; i--) VecFx32Object_Destroy(&pathB[i]);
+    for (s32 i = 7; i >= 0; i--) VecFx32Object_Destroy(&pathA[i]);
 }

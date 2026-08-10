@@ -8,8 +8,8 @@
 .extern data_ov041_02204ca0
 .extern data_ov041_02204ccc
 .extern data_ov041_02204d00
-.extern func_02004fe0
-.extern func_02005058
+.extern VecFx32Object_Init
+.extern VecFx32Object_Destroy
 .extern func_0205940c
 .extern GraphicsSpriteState_SetAnimationIndex
 .extern func_020a29ac
@@ -357,7 +357,7 @@ func_ov041_021ff868: ; 0x021ff868
     cmp r0, #0x0
     beq .L_021ffe24
     add r0, sp, #0x3c
-    bl func_02004fe0
+    bl VecFx32Object_Init
     ldr r1, [r10, #0xa4]
     mov r0, #0x0
     str r1, [sp, #0x40]
@@ -385,7 +385,7 @@ func_ov041_021ff868: ; 0x021ff868
     add r0, sp, #0x3c
     add r1, r1, #0x1
     str r1, [r10, #0x1a4]
-    bl func_02005058
+    bl VecFx32Object_Destroy
     b .L_021ffe24
 .L_021ffdd4:
     cmp r0, #0x1

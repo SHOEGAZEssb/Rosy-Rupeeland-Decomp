@@ -4,7 +4,7 @@
 .extern GameWork_SetFlag
 .extern data_021052fc
 .extern data_ov093_022188f0
-.extern func_02004fe0
+.extern VecFx32Object_Init
 .extern GamePhaseCurrencyHud_SetVisible
 .extern func_0204d520
 .extern func_ov093_022177e0
@@ -19,7 +19,7 @@ func_ov093_022177f0:
     ldr r1, .L_022178f0
     add r0, r4, #0x1ec
     str r1, [r4, #0x0]
-    bl func_02004fe0
+    bl VecFx32Object_Init
     mov r1, #0x0
     strb r1, [r4, #0x1fc]
     strb r1, [r4, #0x1fd]

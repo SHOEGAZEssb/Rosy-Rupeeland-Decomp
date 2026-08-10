@@ -20,14 +20,14 @@ typedef struct Overlay008BaseObject {
 extern "C" {
 #endif
 extern const u8 data_020f3058[];
-extern void func_02004fe0(void *member);
+extern void VecFx32Object_Init(void *member);
 #ifdef __cplusplus
 }
 #endif
 
 /*
  * Install data_020f3058 at +0x00, construct members +0x1C and +0x2C through
- * func_02004fe0, clear +0x04/+0x08/+0x0C/+0x44, and return state. Member and
+ * VecFx32Object_Init, clear +0x04/+0x08/+0x0C/+0x44, and return state. Member and
  * field semantics remain unidentified; construction effects are delegated and
  * no direct hardware access occurs.
  */
@@ -37,8 +37,8 @@ extern "C"
 Overlay008BaseObject *func_ov008_021fb6e0(Overlay008BaseObject *state)
 {
     state->descriptor_000 = data_020f3058;
-    func_02004fe0(state->member_01c);
-    func_02004fe0(state->member_02c);
+    VecFx32Object_Init(state->member_01c);
+    VecFx32Object_Init(state->member_02c);
     state->field_004 = 0;
     state->field_008 = 0;
     state->field_00c = 0;

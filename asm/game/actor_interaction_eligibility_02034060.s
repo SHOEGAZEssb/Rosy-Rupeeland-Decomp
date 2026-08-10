@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/actor_interaction_eligibility.c.
 .text
-.extern func_02005030
-.extern func_02005058
+.extern VecFx32Object_InitCopy
+.extern VecFx32Object_Destroy
 .extern RectS32_Set
 .extern Actor_BuildCollisionRect
 .extern Actor_GetCollection
@@ -38,13 +38,13 @@ Actor_IsInteractionEligible: ; 0x02034060
     bl Actor_BuildWorldInteractionBounds
     add r0, sp, #0x8
     add r1, r5, #0x18
-    bl func_02005030
+    bl VecFx32Object_InitCopy
     add r0, sp, #0x28
     add r2, sp, #0x8
     mov r1, r5
     bl Actor_BuildCollisionRect
     add r0, sp, #0x8
-    bl func_02005058
+    bl VecFx32Object_Destroy
     mov r1, #0x0
     add r0, sp, #0x18
     mov r2, r1

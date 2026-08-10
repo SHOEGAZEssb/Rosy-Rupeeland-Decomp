@@ -33,7 +33,7 @@
 .extern func_0205958c
 .extern func_ov042_021fea78
 .extern func_020a1794
-.extern func_020050a4
+.extern VecFx32Object_Assign
 .extern func_ov042_021fdeac
 .extern func_ov042_022009a0
 .extern gSoundContext
@@ -767,7 +767,7 @@ func_ov042_02207114:
     ldr r1, [r6, #0x4c]
     add r0, r0, #0x2c
     add r1, r1, #0x2c
-    bl func_020050a4
+    bl VecFx32Object_Assign
     ldr r1, [r6, #0x54]
     ldr r0, [r1, #0x34]
     add r0, r0, #0x28000
@@ -825,7 +825,7 @@ func_ov042_02207114:
     ldr r1, [r6, #0x4c]
     add r0, r0, #0x2c
     add r1, r1, #0x2c
-    bl func_020050a4
+    bl VecFx32Object_Assign
     add r0, sp, #0x1c
     add r1, r6, #0xa4
     bl func_ov042_02203658

@@ -1,9 +1,9 @@
 .text
 /* Exact fallback; see overlay039_resource_objects.c for portable C. */
     .extern func_020befec
-    .extern func_02005030
+    .extern VecFx32Object_InitCopy
     .extern func_020adc40
-    .extern func_02005058
+    .extern VecFx32Object_Destroy
     .extern func_ov039_0220491c
     .extern func_ov039_02204974
     .extern genrand_int32
@@ -105,7 +105,7 @@ L_02204af4:
     add r1, r1, #0x19c
     add r1, r1, #0x1400
     add r1, r1, r2, lsl #0x4
-    bl func_02005030
+    bl VecFx32Object_InitCopy
     ldr r2, [sp, #0x104]
     ldr r0, [r5, #0x8]
     ldr r1, [sp, #0xfc]
@@ -144,7 +144,7 @@ L_02204af4:
     str r0, [r1, #0xb3c]
 L_02204bbc:
     add r0, sp, #0xf8
-    bl func_02005058
+    bl VecFx32Object_Destroy
     b L_02204c00
 L_02204bc8:
     cmp r1, #0x2

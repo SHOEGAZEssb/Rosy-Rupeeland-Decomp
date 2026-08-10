@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/type7_actor_random_motion.c.
 .text
 .extern data_020c9670
-.extern func_020050a4
+.extern VecFx32Object_Assign
 .extern Actor_GetCachedTerrainHeight
 .extern Type7Actor_UpdateMotionTowardTransform
 .extern Type7Actor_ResetInteractionState
@@ -28,7 +28,7 @@ Type7Actor_UpdateRandomMotionState: ; 0x02048fe4
     bne .L_0204909c
     add r0, r4, #0x78
     add r1, r4, #0x214
-    bl func_020050a4
+    bl VecFx32Object_Assign
     bl genrand_int32
     ldr r1, [r4, #0x29c]
     mov r0, r0, lsl #0x10
@@ -83,7 +83,7 @@ Type7Actor_UpdateRandomMotionState: ; 0x02048fe4
     ble .L_020490fc
     add r0, r4, #0x78
     add r1, r4, #0x18
-    bl func_020050a4
+    bl VecFx32Object_Assign
     b .L_02049114
 .L_020490fc:
     ldr r0, [r4, #0x268]
@@ -91,7 +91,7 @@ Type7Actor_UpdateRandomMotionState: ; 0x02048fe4
     beq .L_02049114
     add r0, r4, #0x78
     add r1, r4, #0x224
-    bl func_020050a4
+    bl VecFx32Object_Assign
 .L_02049114:
     mov r0, r4
     add r1, r4, #0x78

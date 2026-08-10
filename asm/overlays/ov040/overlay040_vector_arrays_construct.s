@@ -1,8 +1,8 @@
 .text
 /* Exact fallback; see overlay040_state_setup.c for portable C. */
     .extern __construct_array
-    .extern func_02004fe0
-    .extern func_02005058
+    .extern VecFx32Object_Init
+    .extern VecFx32Object_Destroy
     .global func_ov040_02202ea4
 func_ov040_02202ea4:
     stmdb sp!, {r3, r4, lr}
@@ -34,6 +34,6 @@ func_ov040_02202ea4:
     mov r0, r4
     add sp, sp, #0x4
     ldmia sp!, {r3, r4, pc}
-.Ldtor: .word func_02005058
-.Lctor: .word func_02004fe0
+.Ldtor: .word VecFx32Object_Destroy
+.Lctor: .word VecFx32Object_Init
     .size func_ov040_02202ea4, .-func_ov040_02202ea4

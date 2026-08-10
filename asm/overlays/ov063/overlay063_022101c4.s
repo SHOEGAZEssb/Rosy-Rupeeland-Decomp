@@ -1,8 +1,8 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov063/overlay063_recovery.c.
 .extern data_021052fc
-.extern func_0200500c
-.extern func_02005058
+.extern VecFx32Object_InitComponents
+.extern VecFx32Object_Destroy
 .extern ActorMotionAreaFollower_GetPosition
 .extern GamePhaseState_UpdateRenderHelpers
 .extern GamePhaseAreaScene_Update
@@ -32,7 +32,7 @@ func_ov063_022101c4:
     add r0, sp, #0x0
     mov r2, r1
     mov r3, r1
-    bl func_0200500c
+    bl VecFx32Object_InitComponents
     ldr r0, .L_02210288
     ldr r0, [r0, #0x0]
     add r0, r0, #0x3bc
@@ -45,7 +45,7 @@ func_ov063_022101c4:
     mov r2, r2, asr #0x12
     bl func_020a6aa8
     add r0, sp, #0x0
-    bl func_02005058
+    bl VecFx32Object_Destroy
 .L_02210250:
     ldr r1, [r4, #0x24]
     cmp r1, #0x0

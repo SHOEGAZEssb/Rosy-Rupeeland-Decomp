@@ -1,7 +1,7 @@
 .text
 /* Exact fallback; see overlay039_resource_objects.c for portable C. */
     .extern func_ov039_021fce00
-    .extern func_02004fe0
+    .extern VecFx32Object_Init
     .extern func_0209a208
     .extern func_0209a2a4
     .extern func_ov039_0220608c
@@ -17,11 +17,11 @@ func_ov039_022058d8:
     ldr r1, L_02205b7c
     add r0, r9, #0x84
     str r1, [r9, #0x0]
-    bl func_02004fe0
+    bl VecFx32Object_Init
     add r0, r9, #0x94
-    bl func_02004fe0
+    bl VecFx32Object_Init
     add r0, r9, #0xc4
-    bl func_02004fe0
+    bl VecFx32Object_Init
     str r4, [r9, #0x80]
     str r8, [sp, #0x0]
     mov r0, #0x2

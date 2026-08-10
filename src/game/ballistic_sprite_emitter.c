@@ -58,10 +58,10 @@ extern u8 *data_021052fc;
 extern void func_0201e250(void *self);
 extern void func_0201e28c(void *self);
 extern void func_0201ded4(void *list, void *value);
-extern void func_0200500c(EmitterVector *value, s32 x, s32 y, s32 z);
-extern void func_02005030(EmitterVector *destination,
+extern void VecFx32Object_InitComponents(EmitterVector *value, s32 x, s32 y, s32 z);
+extern void VecFx32Object_InitCopy(EmitterVector *destination,
                           const EmitterVector *source);
-extern void func_02005058(void *value);
+extern void VecFx32Object_Destroy(void *value);
 extern void AnimationResource_Init(SpriteResourceDescriptor *descriptor, s32 resource,
                           s32 palette, s32 animation);
 extern void AnimationResource_Destroy(SpriteResourceDescriptor *descriptor);
@@ -105,7 +105,7 @@ BallisticSpriteEmitter *func_02023a8c(BallisticSpriteEmitter *self,
 
     func_0201e250(self);
     self->vtable00 = (void **)data_020d6718;
-    func_02005030(&self->position08, position);
+    VecFx32Object_InitCopy(&self->position08, position);
     AnimationResource_Init(&self->resources18[0], 0, 0, 0);
     AnimationResource_Init(&self->resources18[1], 0, 0, 0);
     func_02023bcc(&self->particles3c);
@@ -199,7 +199,7 @@ BallisticSpriteEmitter *func_02023cb0(BallisticSpriteEmitter *self)
     func_02023c0c(&self->particles3c);
     AnimationResource_Destroy(&self->resources18[1]);
     AnimationResource_Destroy(&self->resources18[0]);
-    func_02005058(&self->position08);
+    VecFx32Object_Destroy(&self->position08);
     func_0201e28c(self);
     return self;
 }
@@ -280,12 +280,12 @@ void func_02023ed4(s32 x, s32 y, s32 remaining, s32 direction)
     EmitterVector position;
     BallisticSpriteEmitter *emitter = (BallisticSpriteEmitter *)Heap_Alloc(
         0x4c, data_020d6770, 4, &gHeapContext);
-    func_0200500c(&position, x << 12, y << 12, 0);
+    VecFx32Object_InitComponents(&position, x << 12, y << 12, 0);
     if (emitter != 0) {
         emitter = func_02023a8c(emitter, &position, remaining, direction);
     }
     func_0201ded4(data_021052fc + 0x2f7c, emitter);
-    func_02005058(&position);
+    VecFx32Object_Destroy(&position);
 }
 
 /* Clear a standalone particle list, free it, and return its old address. */

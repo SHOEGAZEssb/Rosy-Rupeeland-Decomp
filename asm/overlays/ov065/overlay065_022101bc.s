@@ -7,7 +7,7 @@
 .extern data_ov065_02210bb8
 .extern data_ov065_02210be4
 .extern data_ov065_02210c00
-.extern func_02005030
+.extern VecFx32Object_InitCopy
 .extern AnimationResource_Init
 .extern GraphicsSpriteState_Create
 .extern GraphicsSpriteGroupOwner_CreateGroup
@@ -35,10 +35,10 @@ func_ov065_022101bc:
     mov r1, r5
     add r0, r10, #0x124
     strh r3, [r2, #0x22]
-    bl func_02005030
+    bl VecFx32Object_InitCopy
     mov r1, r4
     add r0, r10, #0x134
-    bl func_02005030
+    bl VecFx32Object_InitCopy
     ldr r1, [sp, #0x30]
     ldr r0, [sp, #0x34]
     str r1, [r10, #0x144]

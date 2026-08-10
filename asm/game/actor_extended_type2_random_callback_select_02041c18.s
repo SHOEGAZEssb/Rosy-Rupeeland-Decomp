@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/actor_extended_type2_random_callback_select.c.
 .text
 .extern data_020df9e8
-.extern func_020050a4
+.extern VecFx32Object_Assign
 .extern ActorExtendedType2_PlayDescriptorSoundIfEnabled
 .extern InteractionWaypointCursor_GetCurrentDurationFrames
 .extern func_020ada8c
@@ -57,7 +57,7 @@ ActorExtendedType2_SelectRandomDescriptorCallback: ; 0x02041c48
 .L_02041cb8:
     add r0, r5, #0x78
     add r1, r5, #0x18
-    bl func_020050a4
+    bl VecFx32Object_Assign
     ldrh r2, [r4, #0x18]
     mov r4, #0x0
     tst r2, #0x1

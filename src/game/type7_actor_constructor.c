@@ -12,9 +12,9 @@ extern u32 data_020e1740[];
 extern "C" {
 #endif
 extern void ActorDerivedRuntime_Init(void *actor, const void *configuration);
-extern void func_02004fe0(void *value);
-extern void func_0200500c(void *value, s32 x, s32 y, s32 z);
-extern void *func_020050a4(void *destination, const void *source);
+extern void VecFx32Object_Init(void *value);
+extern void VecFx32Object_InitComponents(void *value, s32 x, s32 y, s32 z);
+extern void *VecFx32Object_Assign(void *destination, const void *source);
 extern void Type7MarkerPresentation_Init(void *helper, void *actor);
 extern u32 Type7Actor_SetCallbackPair(void *actor, u32 first, u32 second, s32 third);
 extern void Type7Actor_ResetBaseTransformAndMotion(void *actor);
@@ -44,8 +44,8 @@ void *Type7Actor_Init(void *self, const void *configuration)
     void *copied;
     ActorDerivedRuntime_Init(actor, configuration);
     *(void **)actor = data_020e1c38;
-    func_02004fe0(actor + 0x214);
-    func_0200500c(actor + 0x224, -1, -1, -1);
+    VecFx32Object_Init(actor + 0x214);
+    VecFx32Object_InitComponents(actor + 0x224, -1, -1, -1);
     *(u32 *)(actor + 0x234) = 0;
     *(u32 *)(actor + 0x238) = 0xccd;
     *(u32 *)(actor + 0x23c) = 0x14cd;
@@ -63,11 +63,11 @@ void *Type7Actor_Init(void *self, const void *configuration)
     *(u16 *)(actor + 0x264) = 0;
     *(u16 *)(actor + 0x266) = 0;
     *(u32 *)(actor + 0x268) = 0;
-    func_02004fe0(actor + 0x26c);
+    VecFx32Object_Init(actor + 0x26c);
     *(u16 *)(actor + 0x27c) = 0;
     *(u16 *)(actor + 0x27e) = (u16)-1;
     *(u32 *)(actor + 0x280) = 0;
-    func_02004fe0(actor + 0x284);
+    VecFx32Object_Init(actor + 0x284);
     *(u32 *)(actor + 0x294) = 0;
     *(u32 *)(actor + 0x298) = 0;
     *(u32 *)(actor + 0x29c) = 0;
@@ -76,8 +76,8 @@ void *Type7Actor_Init(void *self, const void *configuration)
     *(u16 *)(actor + 0x2a4) = 0;
     *(u16 *)(actor + 0x2a6) = 0;
     Type7MarkerPresentation_Init(actor + 0x2a8, actor);
-    copied = func_020050a4(actor + 0x214, actor + 0x18);
-    func_020050a4(actor + 0x26c, copied);
+    copied = VecFx32Object_Assign(actor + 0x214, actor + 0x18);
+    VecFx32Object_Assign(actor + 0x26c, copied);
     if ((*(u32 *)(actor + 0x14) & 0x400) != 0)
         *(u32 *)(actor + 0xd0) |= 4;
     Type7Actor_SetCallbackPair(actor, data_020e1740[0], data_020e1740[1], 0x78);

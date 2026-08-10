@@ -27,9 +27,9 @@ extern void func_0201ded4(void *manager, void *object);
 extern void Sound_Play(void *context, u32 sound, u32 variant);
 extern void Type1Actor_TryEnterFailureState(void *actor);
 extern u32 genrand_int32(void);
-extern void func_0200500c(void *vector, s32 x, s32 y, s32 z);
+extern void VecFx32Object_InitComponents(void *vector, s32 x, s32 y, s32 z);
 extern void func_02008378(void *output, const void *left, const void *right);
-extern void func_02005058(void *vector);
+extern void VecFx32Object_Destroy(void *vector);
 extern void *func_0201f864(void *allocation, ...);
 extern void *func_0201e0ec(void *manager);
 extern void func_020a28e0(void *effect, s32 kind, s32 x, s32 y, s32 duration);
@@ -158,10 +158,10 @@ void ActorDerivedType1_UpdateFrameControl(void *self)
             s32 randomX = func_020ada8c((s32)(genrand_int32() & 0x7fffffff), 6);
             void *allocation;
             void *effect;
-            func_0200500c(offset, (randomX << 12) - 0x6000, 0,
+            VecFx32Object_InitComponents(offset, (randomX << 12) - 0x6000, 0,
                           (randomY << 12) + 0x1e000);
             func_02008378(position, actor + 0x18, offset);
-            func_02005058(offset);
+            VecFx32Object_Destroy(offset);
             allocation = Heap_Alloc(0x14, data_020df4a4, 4, &gHeapContext);
             if (allocation != 0) {
                 void *attachment = *(void **)(actor + 0x54);
@@ -171,7 +171,7 @@ void ActorDerivedType1_UpdateFrameControl(void *self)
             effect = func_0201e0ec(data_021052fc + 0x2f7c);
             func_020a28e0(effect, 1, position[1] >> 12,
                           (position[2] >> 12) - (position[3] >> 12), 30);
-            func_02005058(position);
+            VecFx32Object_Destroy(position);
         }
 
         ++actor[0x2a1];

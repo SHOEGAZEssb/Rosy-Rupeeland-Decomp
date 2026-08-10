@@ -1,10 +1,10 @@
 ; Matching retail form; see src/game/actor_motion_integration.c.
 .text
-.extern func_0200500c
-.extern func_02005058
-.extern func_02005070
-.extern func_020050a4
-.extern func_020050c8
+.extern VecFx32Object_InitComponents
+.extern VecFx32Object_Destroy
+.extern VecFx32Object_GetMagnitude
+.extern VecFx32Object_Assign
+.extern VecFx32Object_Add
 .extern ActorRuntimeTriple_Assign
 .extern Actor_UpdateTerrainMotionFeedback
 .extern func_020328d0
@@ -19,7 +19,7 @@ Actor_IntegrateMotion: ; 0x02032520
     mov r4, r0
     add r0, r4, #0x28
     add r1, r4, #0x18
-    bl func_020050a4
+    bl VecFx32Object_Assign
     ldr r0, [r4, #0x14]
     tst r0, #0x100000
     beq .L_0203254c
@@ -77,7 +77,7 @@ Actor_IntegrateMotion: ; 0x02032520
     bne .L_0203261c
     add r0, r4, #0x18
     add r1, r4, #0x38
-    bl func_020050c8
+    bl VecFx32Object_Add
     ldr r0, [r4, #0xd0]
     bic r0, r0, #0x20
     str r0, [r4, #0xd0]
@@ -148,7 +148,7 @@ Actor_IntegrateMotion: ; 0x02032520
 .L_02032710:
     add r0, r4, #0x18
     add r1, r4, #0x88
-    bl func_020050c8
+    bl VecFx32Object_Add
     ldr r0, [r4, #0xd0]
     tst r0, #0x10
     bne .L_02032748
@@ -173,7 +173,7 @@ Actor_IntegrateMotion: ; 0x02032520
     cmpeq r0, #0x0
     beq .L_02032808
     add r0, r4, #0x98
-    bl func_02005070
+    bl VecFx32Object_GetMagnitude
     mov r5, r0
     cmp r5, #0x1000
     blt .L_020327e0
@@ -191,7 +191,7 @@ Actor_IntegrateMotion: ; 0x02032520
     str r0, [r4, #0xa4]
     add r0, r4, #0x18
     add r1, r4, #0x98
-    bl func_020050c8
+    bl VecFx32Object_Add
     ldr r1, [r4, #0x24]
     ldr r0, [r4, #0x1dc]
     cmp r1, r0
@@ -205,12 +205,12 @@ Actor_IntegrateMotion: ; 0x02032520
     add r0, sp, #0x0
     mov r2, r1
     mov r3, r1
-    bl func_0200500c
+    bl VecFx32Object_InitComponents
     add r1, sp, #0x0
     add r0, r4, #0x98
-    bl func_020050a4
+    bl VecFx32Object_Assign
     add r0, sp, #0x0
-    bl func_02005058
+    bl VecFx32Object_Destroy
 .L_02032808:
     ldr r0, [r4, #0x14]
     tst r0, #0x40

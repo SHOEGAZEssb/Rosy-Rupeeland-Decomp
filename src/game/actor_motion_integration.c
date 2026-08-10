@@ -12,11 +12,11 @@ typedef struct MotionActorVTable {
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_0200500c(void *, s32, s32, s32);
-extern void func_02005058(void *);
-extern s32 func_02005070(void *);
-extern void func_020050a4(void *, const void *);
-extern void func_020050c8(void *, const void *);
+extern void VecFx32Object_InitComponents(void *, s32, s32, s32);
+extern void VecFx32Object_Destroy(void *);
+extern s32 VecFx32Object_GetMagnitude(void *);
+extern void VecFx32Object_Assign(void *, const void *);
+extern void VecFx32Object_Add(void *, const void *);
 extern void ActorRuntimeTriple_Assign(void *, s32, s32, s32);
 extern s32 func_020adae4(s32, s32);
 extern s32 func_020adc90(s32, s32);
@@ -50,7 +50,7 @@ void Actor_IntegrateMotion(void *self)
     MotionActorVTable *vtable = *(MotionActorVTable **)actor;
     u32 flags;
 
-    func_020050a4(actor + 0x28, actor + 0x18);
+    VecFx32Object_Assign(actor + 0x28, actor + 0x18);
     if (*(u32 *)(actor + 0x14) & 0x100000)
         Actor_UpdateTerrainMotionFeedback(actor);
     if (*(s16 *)(actor + 0xac) != 0xff)
@@ -73,7 +73,7 @@ void Actor_IntegrateMotion(void *self)
     }
 
     if (!(*(u32 *)(actor + 0xd0) & 0x10)) {
-        func_020050c8(actor + 0x18, actor + 0x38);
+        VecFx32Object_Add(actor + 0x18, actor + 0x38);
         *(u32 *)(actor + 0xd0) &= ~0x20;
     } else {
         s32 x;
@@ -95,7 +95,7 @@ void Actor_IntegrateMotion(void *self)
         vtable->accelerate_90(actor, 0);
     }
 
-    func_020050c8(actor + 0x18, actor + 0x88);
+    VecFx32Object_Add(actor + 0x18, actor + 0x88);
     if (*(u32 *)(actor + 0xd0) & 0x10)
         func_020328d0(actor + 0x88, 0xfae);
     else if (*(s32 *)(actor + 0x24) == *(s32 *)(actor + 0x1dc))
@@ -105,7 +105,7 @@ void Actor_IntegrateMotion(void *self)
 
     if (*(s32 *)(actor + 0x9c) || *(s32 *)(actor + 0xa0) ||
         *(s32 *)(actor + 0xa4)) {
-        s32 magnitude = func_02005070(actor + 0x98);
+        s32 magnitude = VecFx32Object_GetMagnitude(actor + 0x98);
         if (magnitude >= 0x1000) {
             *(s32 *)(actor + 0x9c) =
                 func_020adc90(*(s32 *)(actor + 0x9c), magnitude);
@@ -113,14 +113,14 @@ void Actor_IntegrateMotion(void *self)
                 func_020adc90(*(s32 *)(actor + 0xa0), magnitude);
             *(s32 *)(actor + 0xa4) =
                 func_020adc90(*(s32 *)(actor + 0xa4), magnitude);
-            func_020050c8(actor + 0x18, actor + 0x98);
+            VecFx32Object_Add(actor + 0x18, actor + 0x98);
             func_020328d0(actor + 0x98,
                           *(s32 *)(actor + 0x24) ==
                                   *(s32 *)(actor + 0x1dc)
                               ? 0x99a
                               : 0xee1);
         } else {
-            func_0200500c(actor + 0x98, 0, 0, 0);
+            VecFx32Object_InitComponents(actor + 0x98, 0, 0, 0);
         }
     }
 

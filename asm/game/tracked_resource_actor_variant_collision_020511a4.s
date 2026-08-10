@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/tracked_resource_actor_variant_collision.c.
 .extern data_02105310
-.extern func_02005030
-.extern func_02005058
+.extern VecFx32Object_InitCopy
+.extern VecFx32Object_Destroy
 .extern ActorRuntimeCollection_GetPendingAttachmentFlag
 .extern ActorRuntimeTriple_Assign
 .extern ActorCollection_QueueActorForRemoval
@@ -24,7 +24,7 @@ func_020511a4:
     beq .L_02051224
     add r0, sp, #0x0
     add r1, r5, #0x38
-    bl func_02005030
+    bl VecFx32Object_InitCopy
     mov r0, #0x0
     str r0, [sp, #0xc]
     ldr r1, [r5, #0x1fc]
@@ -43,7 +43,7 @@ func_020511a4:
     movle r2, #0x0
     blx r3
     add r0, sp, #0x0
-    bl func_02005058
+    bl VecFx32Object_Destroy
 .L_02051224:
     mov r1, #0x0
     mov r2, r1

@@ -8,7 +8,7 @@ extern u8 data_020df9e8[];
 extern "C" {
 #endif
 extern void func_020349b8(void *actor, u32 sound, s32 extra);
-extern void func_020050a4(void *destination, const void *source);
+extern void VecFx32Object_Assign(void *destination, const void *source);
 #ifdef __cplusplus
 }
 #endif
@@ -40,7 +40,7 @@ void ActorExtendedType2_EnterTargetInteractionState7(void *self, void *target, s
     *(s16 *)(actor + 0xd6) = 7;
     (*(void (**)(void *, void *))(*(u8 **)actor + 0xd0))(
         actor, (u8 *)target + 0x18);
-    func_020050a4(actor + 0x23c,
+    VecFx32Object_Assign(actor + 0x23c,
                   *(void **)(actor + 0x26c) == 0 ? actor + 0x22c
                                                    : actor + 0x18);
     (*(void (**)(void *))(*(u8 **)actor + 0xd8))(actor);

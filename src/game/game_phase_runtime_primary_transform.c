@@ -8,8 +8,8 @@ extern "C" {
 extern void *ActorMotionAreaFollower_GetPosition(void *object);
 extern void func_02008378(void *destination, const void *left,
                           const void *right);
-extern void func_02005058(void *value);
-extern void func_0200500c(void *destination, s32 x, s32 y, s32 z);
+extern void VecFx32Object_Destroy(void *value);
+extern void VecFx32Object_InitComponents(void *destination, s32 x, s32 y, s32 z);
 #ifdef __cplusplus
 }
 #endif
@@ -25,7 +25,7 @@ void func_020086f8(void *destination, GamePhaseRuntime *self)
     u8 *b = (u8 *)self;
     func_02008740(offset, b + 0x3000);
     func_02008378(destination, ActorMotionAreaFollower_GetPosition(b + 0x2fbc), offset);
-    func_02005058(offset);
+    VecFx32Object_Destroy(offset);
 }
 
 /*
@@ -36,5 +36,5 @@ void func_020086f8(void *destination, GamePhaseRuntime *self)
 void func_02008740(void *destination, const void *runtimeFields)
 {
     const u8 *b = (const u8 *)runtimeFields;
-    func_0200500c(destination, *(s32 *)(b + 0x18), *(s32 *)(b + 0x1c), 0);
+    VecFx32Object_InitComponents(destination, *(s32 *)(b + 0x18), *(s32 *)(b + 0x1c), 0);
 }

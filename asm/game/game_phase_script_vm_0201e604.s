@@ -4,8 +4,8 @@
 .extern func_0201e290
 .extern func_0201e380
 .extern func_0201e3b8
-.extern func_020050a4
-.extern func_020050c8
+.extern VecFx32Object_Assign
+.extern VecFx32Object_Add
 .extern GraphicsSpriteState_SetDepthOrderedWorldPositionFromOrigin
 .extern GraphicsSpriteState_SetAnimationIndex
 .extern data_020d6084

@@ -7,8 +7,8 @@
 .extern data_020e1748
 .extern data_020e1838
 .extern data_021052fc
-.extern func_02005058
-.extern func_020050a4
+.extern VecFx32Object_Destroy
+.extern VecFx32Object_Assign
 .extern func_02025d14
 .extern func_02026588
 .extern func_02032228
@@ -230,9 +230,9 @@ Type7Actor_UpdateFrame: ; 0x02045a60
     blx r3
     add r1, sp, #0x0
     add r0, r4, #0x214
-    bl func_020050a4
+    bl VecFx32Object_Assign
     add r0, sp, #0x0
-    bl func_02005058
+    bl VecFx32Object_Destroy
 .L_02045d68:
     ldr r0, [r4, #0x234]
     cmp r0, #0x0

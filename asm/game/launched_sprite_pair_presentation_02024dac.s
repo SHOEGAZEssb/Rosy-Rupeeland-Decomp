@@ -3,7 +3,7 @@
 .extern GameWork_SetFlag
 .extern Heap_Free
 .extern data_020d68e4
-.extern func_02005058
+.extern VecFx32Object_Destroy
 .extern func_0201e28c
 .extern func_02071eb8
 .extern GraphicsSpriteGroup_ReleaseState
@@ -32,9 +32,9 @@ func_02024dac: ; 0x02024dac
     add r0, r4, #0x3c
     bl func_02071eb8
     add r0, r4, #0x1c
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add r0, r4, #0xc
-    bl func_02005058
+    bl VecFx32Object_Destroy
     mov r0, r4
     bl func_0201e28c
     mov r0, r4

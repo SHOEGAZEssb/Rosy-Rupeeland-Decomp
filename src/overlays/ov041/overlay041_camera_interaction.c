@@ -11,7 +11,7 @@
 extern "C" {
 s32 func_020be334(s32);
 u32 genrand_int32(void);
-void func_02005030(void *, const void *);
+void VecFx32Object_InitCopy(void *, const void *);
 s32 func_020a6990(void *, s32, s32);
 void func_020a6aa8(void *, void *, s32);
 void func_02059278(void *, s32, s32);
@@ -21,7 +21,7 @@ void func_ov041_02203434(void *, void *);
 void func_ov041_02200ce8(void *, void *);
 void func_020a214c(void *, void *, s32);
 void func_ov041_021fe56c(void *);
-void func_02005058(void *);
+void VecFx32Object_Destroy(void *);
 extern void *gSoundContext;
 }
 
@@ -82,7 +82,7 @@ extern "C" void func_ov041_021feec8(void *owner)
     FIELD(s32, owner, 0x1b0) = FIELD(s32, owner, 0x194);
 
     u8 transform[0x10];
-    func_02005030(transform, (u8 *)owner + 0x18c);
+    VecFx32Object_InitCopy(transform, (u8 *)owner + 0x18c);
     if (FIELD(s32, owner, 0x1ec) == 0)
         FIELD(s32, transform, 8) -= 0xc0000;
 
@@ -106,5 +106,5 @@ extern "C" void func_ov041_021feec8(void *owner)
     }
     func_020a214c(FIELD(void *, owner, 0x18), transform, 0);
     func_ov041_021fe56c(owner);
-    func_02005058(transform);
+    VecFx32Object_Destroy(transform);
 }

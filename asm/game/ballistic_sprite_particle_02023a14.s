@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/ballistic_sprite_particle.c.
 .text
-.extern func_020050c8
+.extern VecFx32Object_Add
 
 .global func_02023a14
     .type func_02023a14, @function
@@ -12,7 +12,7 @@ func_02023a14: ; 0x02023a14
     cmp r1, #0x0
     bne .L_02023a84
     add r1, r5, #0x10
-    bl func_020050c8
+    bl VecFx32Object_Add
     ldr r0, [r5, #0x18]
     add r0, r0, #0x200
     str r0, [r5, #0x18]

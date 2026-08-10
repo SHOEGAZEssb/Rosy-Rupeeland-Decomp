@@ -11,8 +11,8 @@
 extern "C" {
 #endif
 extern void func_0209a2ac(void *object, const void *transform, s32 enabled);
-extern void func_0200500c(void *vector, s32 x, s32 y, s32 z);
-extern void func_02005058(void *vector);
+extern void VecFx32Object_InitComponents(void *vector, s32 x, s32 y, s32 z);
+extern void VecFx32Object_Destroy(void *vector);
 extern void GraphicsSpriteCanvas_FillRect(void *canvas, s32 left, s32 top, s32 right,
                           s32 bottom, s32 color);
 extern s32 func_020befec(s32 numerator, s32 denominator);
@@ -27,7 +27,7 @@ extern void func_ov040_021ff42c(void *scene);
 extern void func_ov040_02202214(void *scene, s32 value, s32 unused2,
                                 s32 unused3);
 extern void func_ov040_02202244(void *scene, s32 mode);
-extern void func_020050a4(void *destination, const void *source);
+extern void VecFx32Object_Assign(void *destination, const void *source);
 extern void func_ov040_02202f1c(void *owner, s32 type, s32 x, s32 y);
 extern u32 genrand_int32(void);
 extern s32 func_020bf1f8(u32 value, s32 modulus);
@@ -154,7 +154,7 @@ extern "C" void func_ov040_02203150(void *owner)
         FIELD(s32, owner, 0xaac + index * 0x10) += *velocityY;
         FIELD(s16, owner, 0x504 + index * 2) +=
             (s16)FIELD(s32, owner, 0x5a4 + index * 4);
-        func_02005058(difference);
+        VecFx32Object_Destroy(difference);
     }
 }
 
@@ -213,7 +213,7 @@ extern "C" void func_ov040_02201060(void *scene)
     }
 
     if (--FIELD(s32, scene, 0xbc0) > 0) return;
-    func_020050a4((u8 *)scene + 0xb54, source);
+    VecFx32Object_Assign((u8 *)scene + 0xb54, source);
     func_ov040_02202f1c((u8 *)scene + 0xbd8, effectType,
                         FIELD(s32, scene, 0xb58) >> 12,
                         FIELD(s32, scene, 0xb5c) >> 12);
@@ -399,7 +399,7 @@ extern "C" void func_ov040_02202cb4(void *owner)
 
     u32 zeroVector[4];
     func_0209a2ac(owner, 0, 1);
-    func_0200500c(zeroVector, 0, 0, 0);
+    VecFx32Object_InitComponents(zeroVector, 0, 0, 0);
     for (s32 offset = 0x58; offset <= 0x6c; offset += 4)
         func_0209a2ac(FIELD(void *, owner, offset), zeroVector, 1);
 
@@ -423,7 +423,7 @@ extern "C" void func_ov040_02202cb4(void *owner)
     renderer = FIELD(void *, FIELD(void *, owner, 0x58), 0x0c);
     if ((u8)orientation != FIELD(u8, renderer, 0x38))
         GraphicsSpriteState_SetAnimationIndex(renderer, (u8)orientation);
-    func_02005058(zeroVector);
+    VecFx32Object_Destroy(zeroVector);
 }
 
 /* Apply a non-negative pending orientation and consume it by writing -1. */
@@ -565,13 +565,13 @@ extern "C" void func_ov040_0220332c(void *owner)
         s32 position[4];
         s32 scale[4];
         u8 *record = (u8 *)owner + 0xaa8 + slot * 0x10;
-        func_0200500c(position, FIELD(s32, record, 0),
+        VecFx32Object_InitComponents(position, FIELD(s32, record, 0),
                       FIELD(s32, record, 4), -FIELD(s32, record, 8) >> 12);
-        func_0200500c(scale, 0x1000, 0x1000, 0x1000);
+        VecFx32Object_InitComponents(scale, 0x1000, 0x1000, 0x1000);
         func_0209c430(context, position, scale,
                       FIELD(u16, owner, 0x504 + slot * 2),
                       slotBounds[state], 0, slotRegions[state], 0x7fff, 0);
-        func_02005058(scale);
-        func_02005058(position);
+        VecFx32Object_Destroy(scale);
+        VecFx32Object_Destroy(position);
     }
 }

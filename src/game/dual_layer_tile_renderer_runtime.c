@@ -78,7 +78,7 @@ extern void func_0202a884(void *, s32, s32);
 extern void func_02029fb0(void *);
 extern void func_0202badc(void *);
 extern void VecFx32_Subtract(void *, const void *, const void *);
-extern void func_02005058(void *);
+extern void VecFx32Object_Destroy(void *);
 extern void func_0202a2b0(void *, s32, s32);
 extern void func_0202b930(void *);
 extern void func_020b1854(void *, s32, s32);
@@ -254,7 +254,7 @@ void func_02029784(DualLayerTileRenderer *self, const void *position)
                 func_020b17ec(handle, 0x6800, 0x800);
         }
     }
-    func_02005058(transformed);
+    VecFx32Object_Destroy(transformed);
 }
 
 /* Load common graphics data and upload it to the engine/mode-selected 0x20/0x40 KiB destination. */

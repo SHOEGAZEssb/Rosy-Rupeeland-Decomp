@@ -7,8 +7,8 @@
 .extern data_021052fc
 .extern data_021056e4
 .extern gActorFeedbackPresentations
-.extern func_02005030
-.extern func_02005058
+.extern VecFx32Object_InitCopy
+.extern VecFx32Object_Destroy
 .extern func_02008514
 .extern func_0201ded4
 .extern func_0201f378
@@ -33,7 +33,7 @@ ActorFeedback_DispatchEnvironment: ; 0x0203a314
     str r2, [sp, #0x18]
     mov r4, r2
     str r2, [sp, #0x14]
-    bl func_02005030
+    bl VecFx32Object_InitCopy
     ldrb r0, [r10, #0xd4]
     ldr r5, .L_0203a890
     ldr r6, [sp, #0x40]
@@ -397,7 +397,7 @@ ActorFeedback_DispatchEnvironment: ; 0x0203a314
     bl Sound_Play
 .L_0203a87c:
     add r0, sp, #0x3c
-    bl func_02005058
+    bl VecFx32Object_Destroy
     mov r0, r6
     add sp, sp, #0x4c
     ldmia sp!, {r4, r5, r6, r7, r8, r9, r10, r11, pc}

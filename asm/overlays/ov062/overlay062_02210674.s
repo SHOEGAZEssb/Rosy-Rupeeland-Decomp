@@ -6,7 +6,7 @@
 .extern data_ov062_02211ba4
 .extern data_ov062_02211bd0
 .extern data_ov062_02211bd8
-.extern func_02005058
+.extern VecFx32Object_Destroy
 .extern func_0201f864
 .extern Actor_UpdateAttachmentDirectionFromVector
 .extern func_ov062_0220fd20
@@ -67,9 +67,9 @@ func_ov062_02210674:
     add r2, sp, #0x18
     bl func_ov062_0220fdbc
     add r0, sp, #0x18
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add r0, sp, #0x28
-    bl func_02005058
+    bl VecFx32Object_Destroy
     ldr r1, .L_0221084c
     ldr r3, .L_02210850
     mov r0, #0x30
@@ -132,7 +132,7 @@ func_ov062_02210674:
     mov r0, r5
     bl Scene_SetFlags03
     add r0, sp, #0x38
-    bl func_02005058
+    bl VecFx32Object_Destroy
     mov r0, r5
     add sp, sp, #0x48
     ldmia sp!, {r3, r4, r5, r6, r7, pc}

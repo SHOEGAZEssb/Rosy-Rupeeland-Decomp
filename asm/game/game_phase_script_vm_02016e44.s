@@ -1,8 +1,8 @@
 ; Matching retail form; see src/game/game_phase_script_vm_actor_rectangle_query_opcode.c.
 .text
 .extern data_021052fc
-.extern func_02005030
-.extern func_02005058
+.extern VecFx32Object_InitCopy
+.extern VecFx32Object_Destroy
 .extern GamePhaseRuntime_GetActorCollection
 .extern GamePhaseScriptVm_Pop
 .extern GamePhaseScriptVm_SetResult
@@ -36,7 +36,7 @@ GamePhaseActorScriptVm_IsCollection1ActorInRectangle:
     bl ActorCollection_FindActorByDescriptorValue
     add r1, r0, #0x18
     add r0, sp, #0x14
-    bl func_02005030
+    bl VecFx32Object_InitCopy
     str r9, [sp]
     mov r1, r6
     mov r2, r7
@@ -60,7 +60,7 @@ L_02016ef4:
     bl GamePhaseScriptVm_SetResult
 L_02016efc:
     add r0, sp, #0x14
-    bl func_02005058
+    bl VecFx32Object_Destroy
     mov r0, #0
     add sp, sp, #0x24
     ldmia sp!, {r4, r5, r6, r7, r8, r9, pc}

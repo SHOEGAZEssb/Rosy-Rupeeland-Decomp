@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/actor_collision_query_control.c.
 .text
-.extern func_0200500c
-.extern func_02005058
+.extern VecFx32Object_InitComponents
+.extern VecFx32Object_Destroy
 .extern GamePhaseRegion_ContainsPoint
 .extern BoundsCenterSnapshot_Init
 .extern func_020573e4
@@ -58,13 +58,13 @@ Actor_TestQueryPoint: ; 0x02033974
     sub r2, r3, r2
     add r1, lr, ip, lsl #0xc
     mov r3, #0x0
-    bl func_0200500c
+    bl VecFx32Object_InitComponents
     ldr r1, [r6, #0x1e0]
     add r0, sp, #0x0
     add r2, sp, #0x18
     bl func_0205740c
     add r0, sp, #0x18
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add r0, sp, #0x0
     ldmib r5, {r1, r2}
     bl GamePhaseRegion_ContainsPoint

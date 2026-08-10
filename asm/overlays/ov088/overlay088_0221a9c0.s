@@ -1,6 +1,6 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov088/overlay088_recovery.c.
-.extern func_0200500c
+.extern VecFx32Object_InitComponents
 .extern Actor_GetCachedTerrainHeight
 .extern func_ov088_0221b2e0
 
@@ -64,6 +64,6 @@ func_ov088_0221a9c0:
     mov r0, r7
     mov r1, r4
     mov r2, r5
-    bl func_0200500c
+    bl VecFx32Object_InitComponents
     ldmia sp!, {r4, r5, r6, r7, r8, pc}
 .size func_ov088_0221a9c0, . - func_ov088_0221a9c0

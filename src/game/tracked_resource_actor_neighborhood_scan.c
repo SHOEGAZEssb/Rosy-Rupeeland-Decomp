@@ -8,10 +8,10 @@ extern "C" {
 extern void *data_021052fc;
 extern void *data_02105310;
 extern s32 ActorRuntimeCollection_GetPendingAttachmentFlag(void *state);
-extern void func_02004fe0(void *vector);
-extern void func_0200500c(void *vector, s32 x, s32 y, s32 z);
-extern void func_02005058(void *vector);
-extern void func_02005084(void *vector);
+extern void VecFx32Object_Init(void *vector);
+extern void VecFx32Object_InitComponents(void *vector, s32 x, s32 y, s32 z);
+extern void VecFx32Object_Destroy(void *vector);
+extern void VecFx32Object_Normalize(void *vector);
 extern void *GamePhaseRuntime_GetActorCollection(void *manager, s32 group);
 extern void func_020328d0(void *vector, s32 angle);
 extern void ActorDerivedType1_StartRecord(void *actor, s32 value);
@@ -72,7 +72,7 @@ void func_020505f0(void *actor, u32 unused1, u32 unused2, u32 unused3)
     mode = FIELD(s8, record, 0x2c);
     actor_x = FIELD(s32, actor, 0x1c);
     actor_y = FIELD(s32, actor, 0x20);
-    func_02004fe0(scan_state);
+    VecFx32Object_Init(scan_state);
 
     for (index = 0;; ++index) {
         manager = GamePhaseRuntime_GetActorCollection(data_021052fc, 1);
@@ -102,12 +102,12 @@ void func_020505f0(void *actor, u32 unused1, u32 unused2, u32 unused3)
             continue;
 
         if (distance > 0x1000 && virtual_function(candidate, 8)(candidate) == 0) {
-            func_0200500c(direction, dx, dy, 0);
-            func_02005084(direction);
+            VecFx32Object_InitComponents(direction, dx, dy, 0);
+            VecFx32Object_Normalize(direction);
             func_020328d0(direction, (s32)FIELD(s16, record, 0x2a) << 4);
             virtual_function(candidate, 0xb8)(candidate, direction,
                                                mode != 1 && mode != 3);
-            func_02005058(direction);
+            VecFx32Object_Destroy(direction);
         }
 
         switch (mode) {
@@ -151,5 +151,5 @@ void func_020505f0(void *actor, u32 unused1, u32 unused2, u32 unused3)
             break;
         }
     }
-    func_02005058(scan_state);
+    VecFx32Object_Destroy(scan_state);
 }

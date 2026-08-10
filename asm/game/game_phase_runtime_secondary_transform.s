@@ -1,10 +1,10 @@
 ; Matching retail form; see src/game/game_phase_runtime_secondary_transform.c for
 ; the documented portable implementation and recovered behavior.
 .text
-.extern func_02004fe0
-.extern func_0200500c
-.extern func_02005058
-.extern func_020050a4
+.extern VecFx32Object_Init
+.extern VecFx32Object_InitComponents
+.extern VecFx32Object_Destroy
+.extern VecFx32Object_Assign
 .extern func_02008378
 .extern func_02008740
 .extern GamePhaseRuntime_GetActiveAreaPlacementVariant
@@ -19,7 +19,7 @@ func_0200875c:
     mov r5, r0
     add r0, sp, #0x40
     mov r4, r1
-    bl func_02004fe0
+    bl VecFx32Object_Init
     add r0, r4, #0x3000
     ldr r0, [r0, #0xfc]
     cmp r0, #0x3
@@ -45,7 +45,7 @@ L_020087b8:
     add r0, sp, #0x30
     sub r2, r1, #0x18000
     mov r3, #0x0
-    bl func_0200500c
+    bl VecFx32Object_InitComponents
     add r0, r4, #0x44
     add r0, r0, #0x3000
     bl ActorMotion_GetPosition
@@ -55,11 +55,11 @@ L_020087b8:
     bl func_02008378
     add r0, sp, #0x40
     add r1, sp, #0x20
-    bl func_020050a4
+    bl VecFx32Object_Assign
     add r0, sp, #0x20
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add r0, sp, #0x30
-    bl func_02005058
+    bl VecFx32Object_Destroy
     b L_02008880
 L_0200880c:
     add r0, r4, #0x44
@@ -67,7 +67,7 @@ L_0200880c:
     bl ActorMotion_GetPosition
     mov r1, r0
     add r0, sp, #0x40
-    bl func_020050a4
+    bl VecFx32Object_Assign
     b L_02008880
 L_02008828:
     bl OS_Halt
@@ -78,7 +78,7 @@ L_02008830:
     bl ActorMotion_GetPosition
     mov r1, r0
     add r0, sp, #0x40
-    bl func_020050a4
+    bl VecFx32Object_Assign
     b L_02008880
 L_0200884c:
     mov r1, #0x10000
@@ -86,12 +86,12 @@ L_0200884c:
     add r0, sp, #0x10
     sub r2, r1, #0x20000
     mov r3, #0x0
-    bl func_0200500c
+    bl VecFx32Object_InitComponents
     add r0, sp, #0x40
     add r1, sp, #0x10
-    bl func_020050a4
+    bl VecFx32Object_Assign
     add r0, sp, #0x10
-    bl func_02005058
+    bl VecFx32Object_Destroy
     b L_02008880
 L_0200887c:
     bl OS_Halt
@@ -105,9 +105,9 @@ L_02008880:
     mov r0, r5
     bl func_02008378
     add r0, sp, #0x0
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add r0, sp, #0x40
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add sp, sp, #0x50
     ldmia sp!, {r3, r4, r5, pc}
     .size func_0200875c, .-func_0200875c

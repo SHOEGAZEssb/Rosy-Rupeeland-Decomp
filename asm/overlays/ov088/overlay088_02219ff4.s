@@ -6,7 +6,7 @@
 .extern data_ov088_0221b9fc
 .extern OverlayManager_LoadOverlay
 .extern OverlayManager_GetGlobal
-.extern func_02005058
+.extern VecFx32Object_Destroy
 .extern GamePhaseRuntime_GetActorCollection
 .extern func_02034a60
 .extern func_ov062_0220fe78
@@ -66,7 +66,7 @@ func_ov088_02219ff4:
     cmp r7, #0x0
     beq .L_0221a0b8
     add r0, sp, #0xc
-    bl func_02005058
+    bl VecFx32Object_Destroy
 .L_0221a0b8:
     add r0, r10, #0x200
     ldrh r3, [r0, #0x1a]

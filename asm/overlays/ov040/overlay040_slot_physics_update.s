@@ -2,7 +2,7 @@
 /* Exact fallback; see overlay040_object_update.c for portable C. */
     .extern Sound_Play
     .extern func_ov040_022021dc
-    .extern func_02005058
+    .extern VecFx32Object_Destroy
     .extern gSoundContext
 
     .global func_ov040_02203150
@@ -126,7 +126,7 @@ func_ov040_02203150:
     add r0, sp, #0x0
     add r2, r3, r2
     strh r2, [r1, #0x4]
-    bl func_02005058
+    bl VecFx32Object_Destroy
 .L_02203314:
     subs r9, r9, #0x1
     bpl .L_02203188

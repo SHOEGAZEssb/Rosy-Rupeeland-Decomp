@@ -2,7 +2,7 @@
 /* Exact fallback; see overlay039_final_update.c for portable C. */
     .extern GraphicsSpriteState_SetAnimationIndex
     .extern func_02059278
-    .extern func_020050a4
+    .extern VecFx32Object_Assign
     .extern func_020befec
     .extern GXx_SetMasterBrightness_
     .extern func_ov039_0220713c
@@ -72,7 +72,7 @@ L_02207580:
     ldr r0, [r5, #0x54]
     add r1, r4, #0x2c
     add r0, r0, #0x2c
-    bl func_020050a4
+    bl VecFx32Object_Assign
     ldmia sp!, {r3, r4, r5, pc}
 L_022075a4:
     cmp r2, #0xb4

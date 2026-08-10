@@ -8,10 +8,10 @@
 .extern data_ov089_022199fc
 .extern data_ov089_02219b48
 .extern data_ov089_02219b4c
-.extern func_02005030
-.extern func_02005058
-.extern func_020050a4
-.extern func_020050f0
+.extern VecFx32Object_InitCopy
+.extern VecFx32Object_Destroy
+.extern VecFx32Object_Assign
+.extern VecFx32Object_Subtract
 .extern func_0201f864
 .extern Actor_GetCollisionBounds
 .extern Actor_SnapshotTransientState
@@ -259,9 +259,9 @@ func_ov089_02217c60:
     bl func_ov089_022186b4
     add r1, sp, #0x64
     add r0, r10, #0x38
-    bl func_020050f0
+    bl VecFx32Object_Subtract
     add r0, sp, #0x64
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add r0, r10, #0x200
     ldrsh r0, [r0, #0x14]
     cmp r0, #0x1
@@ -528,7 +528,7 @@ func_ov089_02217c60:
     bne .L_02218660
     add r0, sp, #0x74
     add r1, r10, #0x18
-    bl func_02005030
+    bl VecFx32Object_InitCopy
     ldr r1, [r10, #0x240]
     mov r0, #0xc
     ldrb r2, [r1, #0x1a]
@@ -552,7 +552,7 @@ func_ov089_02217c60:
     ldr r0, [r0, #0xea4]
     add r1, r10, #0x18
     add r0, r0, #0x18
-    bl func_020050a4
+    bl VecFx32Object_Assign
     ldr r0, .L_02218684
     ldr r0, [r0, #0x0]
     add r0, r0, #0x2000
@@ -573,9 +573,9 @@ func_ov089_02217c60:
     add r0, r0, #0x2000
     ldr r0, [r0, #0xea8]
     add r0, r0, #0x18
-    bl func_020050a4
+    bl VecFx32Object_Assign
     add r0, sp, #0x54
-    bl func_02005058
+    bl VecFx32Object_Destroy
 .L_022184a4:
     ldr r2, [r10, #0x240]
     ldrb r1, [r10, #0xd4]
@@ -694,7 +694,7 @@ func_ov089_02217c60:
     bl GraphicsSpriteState_SetAnimationIndex
 .L_02218658:
     add r0, sp, #0x74
-    bl func_02005058
+    bl VecFx32Object_Destroy
 .L_02218660:
     mov r0, r10
     bl Actor_UpdateAnimationState

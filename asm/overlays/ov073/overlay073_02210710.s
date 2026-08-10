@@ -5,8 +5,8 @@
 .extern data_ov073_02210be4
 .extern data_ov073_02210c0c
 .extern data_ov073_02210c14
-.extern func_0200500c
-.extern func_02005058
+.extern VecFx32Object_InitComponents
+.extern VecFx32Object_Destroy
 .extern AnimationResource_Init
 .extern GamePhaseRuntime_GetActorCollection
 .extern func_0201e250
@@ -39,7 +39,7 @@ func_ov073_02210710:
     mov r1, r8
     mov r2, r7
     mov r3, r6
-    bl func_0200500c
+    bl VecFx32Object_InitComponents
     ldr r1, .L_022108ec
     ldr r3, .L_022108f0
     mov r0, #0x14
@@ -70,7 +70,7 @@ func_ov073_02210710:
     bl func_0201f864
 .L_022107dc:
     add r0, sp, #0x1c
-    bl func_02005058
+    bl VecFx32Object_Destroy
 .L_022107e4:
     ldr r1, .L_022108fc
     ldr r3, .L_022108f0

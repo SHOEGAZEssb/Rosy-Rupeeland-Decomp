@@ -1,6 +1,6 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov075/overlay075_recovery.c.
-.extern func_020050a4
+.extern VecFx32Object_Assign
 .extern Actor_GetCachedTerrainHeight
 
 .global func_ov075_02214f18
@@ -14,13 +14,13 @@ func_ov075_02214f18:
     ldr r1, [r4, #0x208]
     add r0, r4, #0x20c
     add r1, r1, #0x18
-    bl func_020050a4
+    bl VecFx32Object_Assign
     ldr r0, [r4, #0x208]
     bl Actor_GetCachedTerrainHeight
     str r0, [r4, #0x218]
     add r0, r4, #0x18
     add r1, r4, #0x20c
-    bl func_020050a4
+    bl VecFx32Object_Assign
     mov r0, #0x1
     strh r0, [r4, #0xd6]
     ldmia sp!, {r4, r5, r6, r7, r8, r9, r10, pc}
@@ -61,7 +61,7 @@ func_ov075_02214f18:
     str r0, [r4, #0x218]
     add r0, r4, #0x18
     add r1, r4, #0x20c
-    bl func_020050a4
+    bl VecFx32Object_Assign
     mov r0, #0x1
     ldmia sp!, {r4, r5, r6, r7, r8, r9, r10, pc}
 .size func_ov075_02214f18, . - func_ov075_02214f18

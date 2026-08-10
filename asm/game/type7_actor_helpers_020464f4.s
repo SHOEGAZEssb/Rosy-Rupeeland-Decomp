@@ -2,9 +2,9 @@
 .text
 .extern data_020e16b0
 .extern data_020e16d0
-.extern func_02005030
-.extern func_02005058
-.extern func_020050a4
+.extern VecFx32Object_InitCopy
+.extern VecFx32Object_Destroy
+.extern VecFx32Object_Assign
 .extern ActorRuntimeTriple_Assign
 .extern func_02031758
 .extern Actor_RefreshTerrainHeight
@@ -22,7 +22,7 @@ Type7Actor_ResetBaseTransformAndMotion: ; 0x020464f4
     mov r4, r0
     add r0, r4, #0x18
     add r1, r4, #0x214
-    bl func_020050a4
+    bl VecFx32Object_Assign
     mov r0, r4
     bl Actor_RefreshTerrainHeight
     mov r1, #0x0
@@ -48,7 +48,7 @@ Type7Actor_ForwardHelperEvent: ; 0x02046544
     bl func_02031758
     add r0, sp, #0x0
     add r1, r5, #0x18
-    bl func_02005030
+    bl VecFx32Object_InitCopy
     ldrsh r2, [r5, #0x6a]
     ldr r3, [sp, #0x8]
     ldr r1, .L_020465b4
@@ -67,7 +67,7 @@ Type7Actor_ForwardHelperEvent: ; 0x02046544
     bl func_0206dcac
 .L_020465a4:
     add r0, sp, #0x0
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add sp, sp, #0x10
     ldmia sp!, {r3, r4, r5, pc}
 .L_020465b4: .word 0xb33
@@ -114,7 +114,7 @@ Type7Actor_ApplyCallbackAdjustedMotionImpulse: ; 0x020465b8
     mov r2, #0x0
     bl Actor_ApplyMotionImpulse
     add r0, sp, #0x0
-    bl func_02005058
+    bl VecFx32Object_Destroy
 .L_02046650:
     add sp, sp, #0x10
     ldmia sp!, {r4, pc}

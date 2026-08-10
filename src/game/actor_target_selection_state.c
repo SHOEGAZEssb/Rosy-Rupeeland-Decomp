@@ -11,8 +11,8 @@ extern "C" {
 #endif
 extern void *GamePhaseRuntime_GetActorCollection(void *manager, u32 slot);
 extern void VecFx32_Subtract(void *output, const void *first, const void *second);
-extern s32 func_02005070(void *value);
-extern void func_02005058(void *value);
+extern s32 VecFx32Object_GetMagnitude(void *value);
+extern void VecFx32Object_Destroy(void *value);
 #ifdef __cplusplus
 }
 #endif
@@ -85,7 +85,7 @@ void func_02034ecc(void)
                     (*(void *(**)(void *))(*(u8 **)actor + 0x1c8))(actor);
                 VecFx32_Subtract(displacement, owner + 0x18, temporaryPosition);
                 *(s32 *)(displacement + 0x0c) = 0;
-                distance = func_02005070(displacement);
+                distance = VecFx32Object_GetMagnitude(displacement);
                 if (distance < smallest) smallest = distance;
                 threshold = *(s32 (**)(void *))(*(u8 **)actor + 0x1c4);
                 if (distance < threshold(actor)) {
@@ -96,7 +96,7 @@ void func_02034ecc(void)
                 }
                 finish = *(void (**)(void *))(*(u8 **)actor + 0x1b8);
                 finish(actor);
-                func_02005058(displacement);
+                VecFx32Object_Destroy(displacement);
             }
         }
         ++index;

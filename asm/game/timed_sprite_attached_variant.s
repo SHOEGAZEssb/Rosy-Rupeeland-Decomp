@@ -4,9 +4,9 @@
 .extern func_0201e290
 .extern func_0201e380
 .extern func_0201e3b8
-.extern func_02005058
-.extern func_020050a4
-.extern func_020050c8
+.extern VecFx32Object_Destroy
+.extern VecFx32Object_Assign
+.extern VecFx32Object_Add
 .extern GraphicsSpriteState_SetDepthOrderedWorldPositionFromOrigin
 .extern VecFx32_Subtract
 .extern S16BoundsCenter_Init
@@ -33,10 +33,10 @@ func_0201e6e4: ; 0x0201e6e4
     add r0, r5, #0x8
     add r1, r7, #0x10
     str r2, [r5, #0x34]
-    bl func_020050a4
+    bl VecFx32Object_Assign
     add r0, r5, #0x18
     add r1, r7, #0x20
-    bl func_020050a4
+    bl VecFx32Object_Assign
     ldr r0, [r7, #0x30]
     mov r1, r6
     str r0, [r5, #0x28]
@@ -122,7 +122,7 @@ func_0201e7d0: ; 0x0201e7d0
     blx r3
     add r0, r4, #0x8
     add r1, r4, #0x18
-    bl func_020050c8
+    bl VecFx32Object_Add
     mov r0, #0x0
 .L_0201e838:
     add sp, sp, #0x8
@@ -235,7 +235,7 @@ func_0201e888: ; 0x0201e888
     str r0, [r5, #0x20]
 .L_0201e9bc:
     add r0, sp, #0x0
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add sp, sp, #0x10
     ldmia sp!, {r4, r5, r6, pc}
 .L_0201e9cc: .word 0x40002b0

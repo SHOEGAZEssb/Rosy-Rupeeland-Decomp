@@ -1,7 +1,7 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov050/overlay050_effect_recovery.c.
 .extern DisplayController_GetSubScreenVerticalOffset
-.extern func_020050c8
+.extern VecFx32Object_Add
 .extern GraphicsSpriteState_SetAnimationIndex
 .extern gGameWork
 
@@ -12,7 +12,7 @@ func_ov050_0220d6e8:
     mov r4, r1
     add r0, r5, #0x8
     add r1, r5, #0x18
-    bl func_020050c8
+    bl VecFx32Object_Add
     ldr r0, .L_0220d7a8
     ldr r1, [r5, #0x20]
     ldr r0, [r0, #0x0]

@@ -11,10 +11,10 @@
 .extern data_020d63b8
 .extern data_020f4e14
 .extern data_020f4e18
-.extern func_0200500c
-.extern func_02005030
-.extern func_02005058
-.extern func_020050c8
+.extern VecFx32Object_InitComponents
+.extern VecFx32Object_InitCopy
+.extern VecFx32Object_Destroy
+.extern VecFx32Object_Add
 .extern func_02008378
 .extern func_0201e250
 .extern func_0201e28c

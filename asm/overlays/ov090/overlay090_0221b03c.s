@@ -1,6 +1,6 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov090/overlay090_recovery.c.
-.extern func_020050a4
+.extern VecFx32Object_Assign
 .extern func_02059278
 .extern func_0205929c
 .extern gSoundContext
@@ -12,7 +12,7 @@ func_ov090_0221b03c:
     mov r4, r1
     add r0, r5, #0x224
     add r1, r4, #0x18
-    bl func_020050a4
+    bl VecFx32Object_Assign
     mov r0, #0x0
     ldrb r2, [r5, #0x222]
     mov r1, r0

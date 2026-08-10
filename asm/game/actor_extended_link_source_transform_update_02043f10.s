@@ -1,8 +1,8 @@
 ; Matching retail form; see src/game/actor_extended_link_source_transform_update.c.
 .text
-.extern func_0200500c
-.extern func_02005058
-.extern func_020050a4
+.extern VecFx32Object_InitComponents
+.extern VecFx32Object_Destroy
+.extern VecFx32Object_Assign
 .extern func_02008378
 .extern ActorExtendedType2_RunRenderCallback
 .global ActorExtendedLinkSource_UpdatePartnerTransform
@@ -24,7 +24,7 @@ ActorExtendedLinkSource_UpdatePartnerTransform: ; 0x02043f10
     mov r3, r0
     add r0, sp, #0x20
     mov r2, r1
-    bl func_0200500c
+    bl VecFx32Object_InitComponents
     ldr r1, [r4, #0x298]
     add r0, sp, #0x10
     add r2, sp, #0x20
@@ -32,9 +32,9 @@ ActorExtendedLinkSource_UpdatePartnerTransform: ; 0x02043f10
     bl func_02008378
     add r0, r4, #0x18
     add r1, sp, #0x10
-    bl func_020050a4
+    bl VecFx32Object_Assign
     add r0, sp, #0x10
-    bl func_02005058
+    bl VecFx32Object_Destroy
     ldr r1, [r4, #0x298]
     add r0, sp, #0x0
     add r2, sp, #0x20
@@ -42,11 +42,11 @@ ActorExtendedLinkSource_UpdatePartnerTransform: ; 0x02043f10
     bl func_02008378
     add r0, r4, #0x28
     add r1, sp, #0x0
-    bl func_020050a4
+    bl VecFx32Object_Assign
     add r0, sp, #0x0
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add r0, sp, #0x20
-    bl func_02005058
+    bl VecFx32Object_Destroy
 .L_02043fac:
     mov r0, r6
     mov r1, r4

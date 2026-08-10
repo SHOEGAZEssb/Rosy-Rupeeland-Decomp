@@ -9,9 +9,9 @@
 .extern data_ov091_02218dc8
 .extern OverlayManager_LoadOverlay
 .extern OverlayManager_GetGlobal
-.extern func_0200500c
-.extern func_02005058
-.extern func_020050a4
+.extern VecFx32Object_InitComponents
+.extern VecFx32Object_Destroy
+.extern VecFx32Object_Assign
 .extern VecFx32Triple_Destroy
 .extern VecFx32Bezier_Evaluate3D
 .extern ActorMotion_BindActor
@@ -124,10 +124,10 @@ func_ov091_02217ce0:
 .L_02217e08:
     add r0, r4, #0x18
     add r1, r7, #0x18
-    bl func_020050a4
+    bl VecFx32Object_Assign
     add r0, r4, #0x210
     add r1, r4, #0x18
-    bl func_020050a4
+    bl VecFx32Object_Assign
     ldr r1, [r7, #0x230]
     ldr r0, .L_0221881c
     orr r1, r1, #0x20
@@ -196,7 +196,7 @@ func_ov091_02217ce0:
     movgt r0, #0x1000
     strgt r0, [r4, #0x220]
     add r0, r4, #0x210
-    bl func_020050a4
+    bl VecFx32Object_Assign
     ldr r0, .L_02218830
     ldr r0, [r0, #0x0]
     bl GamePhaseCurrencyHud_GetCurrency
@@ -262,7 +262,7 @@ func_ov091_02217ce0:
     ldr r1, [r4, #0x1f0]
     add r0, r4, #0x210
     add r1, r1, #0x18
-    bl func_020050a4
+    bl VecFx32Object_Assign
     mov r1, #0x0
     ldr r6, [r4, #0x1f4]
     mov r2, r1
@@ -362,7 +362,7 @@ func_ov091_02217ce0:
     add r0, r4, #0x224
     ldr r1, [r4, #0x1f0]
     add r1, r1, #0x18
-    bl func_020050a4
+    bl VecFx32Object_Assign
     ldr r0, .L_0221882c
     mov r1, #0x57
     ldr r0, [r0, #0x0]
@@ -416,12 +416,12 @@ func_ov091_02217ce0:
     ldr r2, [r4, #0x22c]
     add r0, sp, #0xf4
     mov r3, #0x4a000
-    bl func_0200500c
+    bl VecFx32Object_InitComponents
     ldr r1, [r4, #0x228]
     ldr r2, [r4, #0x22c]
     add r0, sp, #0xe4
     mov r3, #0x78000
-    bl func_0200500c
+    bl VecFx32Object_InitComponents
     add r0, sp, #0xb4
     add r2, sp, #0xf4
     add r3, sp, #0xe4
@@ -439,9 +439,9 @@ func_ov091_02217ce0:
     bl VecFx32Bezier_Evaluate3D
     add r0, r5, #0x18
     add r1, sp, #0x44
-    bl func_020050a4
+    bl VecFx32Object_Assign
     add r0, sp, #0x44
-    bl func_02005058
+    bl VecFx32Object_Destroy
     ldr r1, [r5, #0x1c]
     ldr r0, [r4, #0x1f0]
     str r1, [r0, #0x2ac]
@@ -477,7 +477,7 @@ func_ov091_02217ce0:
     movgt r0, #0x1000
     strgt r0, [r4, #0x220]
     add r0, r4, #0x210
-    bl func_020050a4
+    bl VecFx32Object_Assign
     add r0, r4, #0x100
     ldrh r1, [r0, #0xee]
     cmp r1, #0x28
@@ -488,7 +488,7 @@ func_ov091_02217ce0:
     add r0, r4, #0x224
     add r1, r5, #0x18
     strb r2, [r4, #0x1ec]
-    bl func_020050a4
+    bl VecFx32Object_Assign
     mov r0, #0xa
     str r0, [sp, #0x0]
     ldr r0, [r4, #0x230]
@@ -522,21 +522,21 @@ func_ov091_02217ce0:
     add r0, sp, #0xb4
     bl VecFx32Triple_Destroy
     add r0, sp, #0xe4
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add r0, sp, #0xf4
-    bl func_02005058
+    bl VecFx32Object_Destroy
     b .L_0221875c
 .L_0221841c:
     add r0, sp, #0xa4
     mov r1, #0xc8000
     mov r2, #0x54000
     mov r3, #0x20000
-    bl func_0200500c
+    bl VecFx32Object_InitComponents
     add r0, sp, #0x94
     mov r1, #0xc8000
     mov r2, #0x78000
     mov r3, #0xaa000
-    bl func_0200500c
+    bl VecFx32Object_InitComponents
     add r0, sp, #0x64
     add r2, sp, #0xa4
     add r3, sp, #0x94
@@ -554,9 +554,9 @@ func_ov091_02217ce0:
     bl VecFx32Bezier_Evaluate3D
     add r0, r5, #0x18
     add r1, sp, #0x34
-    bl func_020050a4
+    bl VecFx32Object_Assign
     add r0, sp, #0x34
-    bl func_02005058
+    bl VecFx32Object_Destroy
     ldr r2, [r5, #0x1c]
     ldr r1, [r4, #0x1f0]
     add r0, r4, #0x100
@@ -591,7 +591,7 @@ func_ov091_02217ce0:
     movgt r0, #0x1000
     strgt r0, [r4, #0x220]
     add r0, r4, #0x210
-    bl func_020050a4
+    bl VecFx32Object_Assign
     add r0, r4, #0x100
     ldrh r1, [r0, #0xee]
     cmp r1, #0x96
@@ -639,9 +639,9 @@ func_ov091_02217ce0:
     add r0, sp, #0x64
     bl VecFx32Triple_Destroy
     add r0, sp, #0x94
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add r0, sp, #0xa4
-    bl func_02005058
+    bl VecFx32Object_Destroy
     b .L_0221875c
 .L_022185e4:
     add r0, r4, #0x100
@@ -664,7 +664,7 @@ func_ov091_02217ce0:
     strgt r0, [r4, #0x220]
     add r0, r4, #0x210
     add r1, r1, #0x18
-    bl func_020050a4
+    bl VecFx32Object_Assign
     add r0, r4, #0x100
     ldrh r1, [r0, #0xee]
     cmp r1, #0x78
@@ -688,7 +688,7 @@ func_ov091_02217ce0:
     strgt r0, [r4, #0x220]
     add r0, r4, #0x210
     add r1, r1, #0x18
-    bl func_020050a4
+    bl VecFx32Object_Assign
     ldr r0, [r4, #0x1f4]
     ldr r1, [r0, #0x54]
     ldrh r1, [r1, #0x24]
@@ -714,7 +714,7 @@ func_ov091_02217ce0:
 .L_022186e4:
     add r0, r4, #0x210
     add r1, r7, #0x18
-    bl func_020050a4
+    bl VecFx32Object_Assign
     ldr r0, [r4, #0x220]
     add r0, r0, #0x10
     str r0, [r4, #0x220]
@@ -734,7 +734,7 @@ func_ov091_02217ce0:
 .L_02218730:
     add r0, r4, #0x210
     add r1, r7, #0x18
-    bl func_020050a4
+    bl VecFx32Object_Assign
     ldr r0, [r4, #0x220]
     add r0, r0, #0x7b
     str r0, [r4, #0x220]
@@ -763,13 +763,13 @@ func_ov091_02217ce0:
     bl func_ov091_022188f8
     add r1, sp, #0x4
     add r0, r4, #0x18
-    bl func_020050a4
+    bl VecFx32Object_Assign
     add r0, sp, #0x4
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add r0, sp, #0x14
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add r0, sp, #0x24
-    bl func_02005058
+    bl VecFx32Object_Destroy
     ldr r1, [r4, #0x24]
     add r0, sp, #0x54
     add r1, r1, r1, lsr #0x1f
@@ -779,7 +779,7 @@ func_ov091_02217ce0:
     mov r1, #0x80000
     rsb r1, r1, #0x0
     mov r3, #0x0
-    bl func_0200500c
+    bl VecFx32Object_InitComponents
     ldr r0, .L_0221881c
     add r1, sp, #0x54
     ldr r0, [r0, #0x0]
@@ -787,7 +787,7 @@ func_ov091_02217ce0:
     add r0, r0, #0x2c00
     bl ActorMotion_SetTarget
     add r0, sp, #0x54
-    bl func_02005058
+    bl VecFx32Object_Destroy
 .L_0221880c:
     add sp, sp, #0x104
     ldmia sp!, {r4, r5, r6, r7, pc}

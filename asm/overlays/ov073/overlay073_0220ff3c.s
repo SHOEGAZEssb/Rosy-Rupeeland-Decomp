@@ -1,7 +1,7 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov073/overlay073_recovery.c.
 .extern data_020c9670
-.extern func_02005058
+.extern VecFx32Object_Destroy
 .extern func_020adae4
 .extern func_020ae024
 .extern func_020befec
@@ -85,7 +85,7 @@ func_ov073_0220ff3c:
     str r1, [r5, #0x20]
 .L_02210060:
     add r0, sp, #0x0
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add sp, sp, #0x10
     ldmia sp!, {r3, r4, r5, pc}
 .L_02210070: .word data_020c9670

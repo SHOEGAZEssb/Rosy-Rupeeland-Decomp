@@ -21,7 +21,7 @@ extern s32 func_02030b7c(void *);
 extern void func_02057394(void *, s32);
 extern void Actor_GetCollisionCenter(void *, void *);
 extern void func_020571b4(void *, const void *, const void *);
-extern void func_02005058(void *);
+extern void VecFx32Object_Destroy(void *);
 extern u32 Actor_QueryTerrainCell(void *, s32, s32);
 extern void GraphicsSpriteState_SetAnimationIndex(void *, s32);
 #ifdef __cplusplus
@@ -127,7 +127,7 @@ void func_02031758(PresentationPoint *output, void *actorPointer,
         func_02057394(*(void **)(actor + 0x1e0), enabled);
         Actor_GetCollisionCenter(center, actor);
         func_020571b4(*(void **)(actor + 0x1e0), transform, center);
-        func_02005058(center);
+        VecFx32Object_Destroy(center);
     }
 
     attachment = *(u8 **)(actor + 0xa8);

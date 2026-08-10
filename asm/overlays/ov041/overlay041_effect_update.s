@@ -4,9 +4,9 @@
  * src/overlays/ov041/overlay041_effect_update.c. */
 .extern Sound_Play
 .extern data_020c9670
-.extern func_02004fe0
-.extern func_02005058
-.extern func_020050a4
+.extern VecFx32Object_Init
+.extern VecFx32Object_Destroy
+.extern VecFx32Object_Assign
 .extern func_ov004_021fb868
 .extern func_ov008_021fbd1c
 .extern func_ov041_021fd000
@@ -189,7 +189,7 @@ func_ov041_02202c34: ; 0x02202c34
     mov r2, #0x29
     add r0, sp, #0x14
     str r2, [r1, #0x1ac]
-    bl func_02004fe0
+    bl VecFx32Object_Init
     ldr r0, [r4, #0x6c]
     sub r0, r0, #0x80000
     str r0, [sp, #0x18]
@@ -225,9 +225,9 @@ func_ov041_02202c34: ; 0x02202c34
     ldr r0, [r4, #0x48]
     add r1, sp, #0x14
     add r0, r0, #0x19c
-    bl func_020050a4
+    bl VecFx32Object_Assign
     add r0, sp, #0x14
-    bl func_02005058
+    bl VecFx32Object_Destroy
     b .L_02203054
 .L_02202f20:
     cmp r2, #0x4

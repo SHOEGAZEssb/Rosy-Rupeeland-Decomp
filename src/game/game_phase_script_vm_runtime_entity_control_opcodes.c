@@ -82,9 +82,9 @@ s32 GamePhaseActorScriptVm_DispatchActiveType7ActorCommand(GamePhaseActorScriptV
     case 5:
         if (entity) {
             VecFx32Object position;
-            func_0200500c(&position, first << 12, second << 12, third << 12);
+            VecFx32Object_InitComponents(&position, first << 12, second << 12, third << 12);
             Type7Actor_SetMotionTargetWithTimer(entity, &position, 0xb4);
-            func_02005058(&position);
+            VecFx32Object_Destroy(&position);
         }
         break;
     case 6:

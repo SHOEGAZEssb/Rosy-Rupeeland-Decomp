@@ -1,8 +1,8 @@
 ; Matching retail form; see src/game/game_phase_script_vm_dual_effect_opcode.c.
 .text
 .extern OS_Halt
-.extern func_02004fe0
-.extern func_02005058
+.extern VecFx32Object_Init
+.extern VecFx32Object_Destroy
 .extern GamePhaseScriptVm_Pop
 .extern Position_AdjustForTerrainHeight
 .extern func_0204eb18
@@ -12,7 +12,7 @@ GamePhaseActorScriptVm_SpawnDualVariantEffect:
     sub sp, sp, #0x20
     mov r4, r0
     add r0, sp, #0x10
-    bl func_02004fe0
+    bl VecFx32Object_Init
     mov r0, r4
     bl GamePhaseScriptVm_Pop
     mov r5, r0, lsl #12
@@ -68,7 +68,7 @@ L_02017618:
     bl OS_Halt
 L_0201761c:
     add r0, sp, #0x10
-    bl func_02005058
+    bl VecFx32Object_Destroy
     mov r0, #0
     add sp, sp, #0x20
     ldmia sp!, {r3, r4, r5, pc}

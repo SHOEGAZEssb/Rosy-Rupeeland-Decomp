@@ -6,8 +6,8 @@
 .extern data_021052fc
 .extern data_02105310
 .extern data_ov082_02214aa4
-.extern func_0200500c
-.extern func_02005058
+.extern VecFx32Object_InitComponents
+.extern VecFx32Object_Destroy
 .extern ActorMotionAreaFollower_GetPosition
 .extern ActorRuntimeCollection_GetPendingAttachmentFlag
 .extern ActorRuntimeCollection_GetBusyState
@@ -123,7 +123,7 @@ func_ov082_02213538:
     mov r1, r6
     add r0, sp, #0x38
     mov r3, #0x0
-    bl func_0200500c
+    bl VecFx32Object_InitComponents
     mov r0, r5
     ldr r3, [r0, #0x0]
     add r1, sp, #0x38
@@ -254,9 +254,9 @@ func_ov082_02213538:
     add r1, r5, #0x18
     bl func_ov082_022139f4
     add r0, sp, #0x8
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add r0, sp, #0x18
-    bl func_02005058
+    bl VecFx32Object_Destroy
     ldr r0, .L_0221390c
     ldr r1, [sp, #0x34]
     ldr r0, [r0, #0x0]
@@ -274,9 +274,9 @@ func_ov082_02213538:
     mov r1, #0x1
     bl func_020a2894
     add r0, sp, #0x28
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add r0, sp, #0x38
-    bl func_02005058
+    bl VecFx32Object_Destroy
 .L_022138e0:
     mov r0, r5
     mov r1, r4

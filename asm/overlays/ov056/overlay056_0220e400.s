@@ -15,10 +15,10 @@
 .extern data_ov056_0220f6f4
 .extern func_020026ec
 .extern func_02003e20
-.extern func_02004fe0
-.extern func_0200500c
-.extern func_02005058
-.extern func_020050a4
+.extern VecFx32Object_Init
+.extern VecFx32Object_InitComponents
+.extern VecFx32Object_Destroy
+.extern VecFx32Object_Assign
 .extern func_020af7e8
 .extern func_020b57d4
 .extern func_ov056_0220e6dc
@@ -39,7 +39,7 @@ func_ov056_0220e400:
     add r0, r0, #0x800
     mov r5, r1
     mov r4, r2
-    bl func_02004fe0
+    bl VecFx32Object_Init
     add r0, r6, #0x1c
     mov r1, #0x0
     str r1, [r6, #0x814]
@@ -59,7 +59,7 @@ func_ov056_0220e400:
     bl GameFile_Init
     add r0, r6, #0x98
     add r0, r0, #0x800
-    bl func_02004fe0
+    bl VecFx32Object_Init
     mov r0, #0x0
     str r0, [r6, #0x8a8]
     bl func_020026ec
@@ -162,13 +162,13 @@ func_ov056_0220e400:
     add r0, sp, #0x2c
     mov r2, r1
     mov r3, r1
-    bl func_0200500c
+    bl VecFx32Object_InitComponents
     add r0, r6, #0x4
     add r1, sp, #0x2c
     add r0, r0, #0x800
-    bl func_020050a4
+    bl VecFx32Object_Assign
     add r0, sp, #0x2c
-    bl func_02005058
+    bl VecFx32Object_Destroy
     mov r0, r6
     bl func_ov056_0220e9a0
     cmp r4, #0x0

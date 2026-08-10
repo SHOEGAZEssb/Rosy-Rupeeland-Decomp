@@ -5,7 +5,7 @@
 .extern data_020e1920
 .extern data_020e1928
 .extern data_021052fc
-.extern func_020050a4
+.extern VecFx32Object_Assign
 .extern Type7Actor_HasSpecialCallbackPair
 .extern Type7Actor_SetCallbackPair
 .extern func_020adcac
@@ -74,7 +74,7 @@ Type7Actor_TryCancelDistantTarget: ; 0x0204820c
     beq .L_020482f0
     add r0, r4, #0x214
     add r1, r4, #0x224
-    bl func_020050a4
+    bl VecFx32Object_Assign
 .L_020482f0:
     mov r0, #0x0
     str r0, [r4, #0x210]

@@ -19,8 +19,8 @@ extern void *ActorMotionAreaFollower_GetPosition(void *object);
 extern void *ActorCollection_QueueActorForRemoval(void *value, void *actor);
 extern void *Actor_GetCollection(void *actor);
 extern s32 Actor_QueryTerrainHeight(void *actor, s32 x, s32 y);
-extern void func_020050a4(void *destination, const void *source);
-extern void func_020050c8(void *destination, const void *source);
+extern void VecFx32Object_Assign(void *destination, const void *source);
+extern void VecFx32Object_Add(void *destination, const void *source);
 extern s32 func_0204cfa4(s32 x, s32 y);
 extern void GraphicsSpriteState_SetAnimationIndex(void *presentation, u32 selection);
 extern s32 func_020adae4(s32 numerator, s32 denominator);
@@ -62,8 +62,8 @@ void func_0204d858(void *actor)
     if (state == 0) {
         void *presentation = FIELD(void *, actor, 0x54);
         FIELD(u16, presentation, 0x24) &= (u16)~4;
-        func_020050a4((u8 *)actor + 0x28, (u8 *)actor + 0x18);
-        func_020050c8((u8 *)actor + 0x18, (u8 *)actor + 0x38);
+        VecFx32Object_Assign((u8 *)actor + 0x28, (u8 *)actor + 0x18);
+        VecFx32Object_Add((u8 *)actor + 0x18, (u8 *)actor + 0x38);
 
         ActorScalarCallback callback =
             *(ActorScalarCallback *)((u8 *)FIELD(void *, actor, 0) + 0xb0);
@@ -167,7 +167,7 @@ void func_0204d858(void *actor)
             FIELD(s32, actor, 0x8c) = fx_mul(FIELD(s32, actor, 0x8c), 0xe66);
             FIELD(s32, actor, 0x90) = fx_mul(FIELD(s32, actor, 0x90), 0xe66);
             FIELD(s32, actor, 0x94) = fx_mul(FIELD(s32, actor, 0x94), 0xe66);
-            func_020050c8((u8 *)actor + 0x18, (u8 *)actor + 0x88);
+            VecFx32Object_Add((u8 *)actor + 0x18, (u8 *)actor + 0x88);
         }
     }
 

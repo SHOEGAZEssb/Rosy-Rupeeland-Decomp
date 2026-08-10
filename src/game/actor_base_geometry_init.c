@@ -56,8 +56,8 @@ extern u8 data_020def7c[];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_0200500c(ActorVector *, s32, s32, s32);
-extern void func_020050a4(ActorVector *, const ActorVector *);
+extern void VecFx32Object_InitComponents(ActorVector *, s32, s32, s32);
+extern void VecFx32Object_Assign(ActorVector *, const ActorVector *);
 #ifdef __cplusplus
 }
 #endif
@@ -112,14 +112,14 @@ ActorBaseGeometry *ActorBaseGeometry_Init(
     self->field_0c = 0;
     self->field_10 = descriptor->field_58;
     self->field_14 = 0;
-    func_0200500c(&self->position_18, descriptor->positionX_22 << 12,
+    VecFx32Object_InitComponents(&self->position_18, descriptor->positionX_22 << 12,
                   descriptor->positionY_24 << 12,
                   descriptor->positionZ_26 << 12);
-    func_0200500c(&self->previousPosition_28,
+    VecFx32Object_InitComponents(&self->previousPosition_28,
                   descriptor->positionX_22 << 12,
                   descriptor->positionY_24 << 12,
                   descriptor->positionZ_26 << 12);
-    func_0200500c(&self->field_38, 0, 0, 0);
+    VecFx32Object_InitComponents(&self->field_38, 0, 0, 0);
     self->field_48 = 0;
     self->field_49 = 0;
     self->field_4a = 0;
@@ -136,7 +136,7 @@ ActorBaseGeometry *ActorBaseGeometry_Init(
                           descriptor->boundsOffsetY_15);
     self->field_0c = descriptor->field_28;
     self->field_14 = descriptor->field_28;
-    func_020050a4(&self->previousPosition_28, &self->position_18);
+    VecFx32Object_Assign(&self->previousPosition_28, &self->position_18);
     self->descriptorValue_50 = descriptor->descriptorValue_50;
     return self;
 }

@@ -2,7 +2,7 @@
 
 /* VecFx32 virtual destructor table recovered from the retail RTTI block. */
 
-VecFx32VTable data_020d405c = {
-    func_02005058,
-    func_0200505c,
+VecFx32VTable gVecFx32ObjectVTable = {
+    VecFx32Object_Destroy,
+    VecFx32Object_DestroyAndFree,
 };

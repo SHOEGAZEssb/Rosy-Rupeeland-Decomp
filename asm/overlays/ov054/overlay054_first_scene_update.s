@@ -2,8 +2,8 @@
 ; Matching fallback for the portable implementation in src/overlays/ov054/overlay054_recovery.c.
 .extern GameWork_TestFlag
 .extern data_020c9670
-.extern func_0200500c
-.extern func_02005058
+.extern VecFx32Object_InitComponents
+.extern VecFx32Object_Destroy
 .extern func_020afd0c
 .extern func_ov054_0220e560
 .extern func_ov054_0220e96c
@@ -90,13 +90,13 @@ func_ov054_0220e75c:
     and r1, lr, r3
     and r2, r2, r3
     and r3, ip, r3
-    bl func_0200500c
+    bl VecFx32Object_InitComponents
     add r2, sp, #0x4
     mov r0, r4
     add r1, r4, #0x14
     bl func_ov054_0220e560
     add r0, sp, #0x4
-    bl func_02005058
+    bl VecFx32Object_Destroy
     ldr r1, .L_0220e95c
     ldr r0, .L_0220e960
     ldr r2, [r1, #0x64]

@@ -45,8 +45,8 @@ extern AuxiliarySpriteConfig *func_0201f0fc(AuxiliarySpriteConfig *config);
 extern void *AnimationResource_Init(void *self, s32 first, s32 second, s32 third);
 extern void *func_0201e584(void *self, AuxiliarySpriteConfig *config,
                            s32 spriteValue, s32 offset);
-extern void func_02005058(void *track);
-extern void func_020050a4(PresentationTrack *destination, const void *source);
+extern void VecFx32Object_Destroy(void *track);
+extern void VecFx32Object_Assign(PresentationTrack *destination, const void *source);
 extern void *ActorMotionAreaFollower_GetPosition(void *source);
 extern void func_0201ded4(void *manager, void *entry);
 #ifdef __cplusplus
@@ -75,7 +75,7 @@ static AuxiliaryTimedSpritePresentation *initialize_auxiliary_presentation(
     config.field04 = *(s32 *)(self->auxiliary0c + 4);
     config.field08 = *(s32 *)(self->auxiliary0c + 8);
     config.field0c = *(s32 *)(self->auxiliary0c + 0xc);
-    func_020050a4(&config.first10, trackSource);
+    VecFx32Object_Assign(&config.first10, trackSource);
     config.field34 = 2;
     config.lifetime30 = 120;
     *(s32 *)&config.second20.bytes[4] = 0;
@@ -90,8 +90,8 @@ static AuxiliaryTimedSpritePresentation *initialize_auxiliary_presentation(
     if (registerWithManager != 0) {
         func_0201ded4(data_021052fc + 0x2f7c, self);
     }
-    func_02005058(&config.second20);
-    func_02005058(&config.first10);
+    VecFx32Object_Destroy(&config.second20);
+    VecFx32Object_Destroy(&config.first10);
     return self;
 }
 

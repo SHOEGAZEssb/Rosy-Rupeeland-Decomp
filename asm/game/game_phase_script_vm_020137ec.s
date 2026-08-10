@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/game_phase_script_vm_actor_target_opcodes.c.
 .text
-.extern func_0200500c
-.extern func_02005058
+.extern VecFx32Object_InitComponents
+.extern VecFx32Object_Destroy
 .extern VecFx32Stepper_Reset
 .extern ActorRuntimeTriple_Assign
 .extern Actor_SetVelocity
@@ -40,12 +40,12 @@ L_02013854:
     add r0, sp, #0x0
     mov r2, r1
     mov r3, r1
-    bl func_0200500c
+    bl VecFx32Object_InitComponents
     add r1, sp, #0x0
     mov r0, r4
     bl Actor_SetVelocity
     add r0, sp, #0x0
-    bl func_02005058
+    bl VecFx32Object_Destroy
     ldr r1, [r4, #0x10]
     add r0, r4, #0x198
     bic r1, r1, #0x40

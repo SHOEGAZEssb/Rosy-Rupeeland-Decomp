@@ -2,7 +2,7 @@
 ; Matching fallback for the portable implementation in src/overlays/ov054/overlay054_recovery.c.
 .extern Heap_Free
 .extern data_ov054_0220f160
-.extern func_02005058
+.extern VecFx32Object_Destroy
 .extern func_0201e28c
 .extern func_02071eb8
 
@@ -14,13 +14,13 @@ func_ov054_0220ed54:
     mov r2, #0x0
     add r0, r4, #0x40
     str r2, [r1, #0x0]
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add r0, r4, #0x30
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add r0, r4, #0x24
     bl func_02071eb8
     add r0, r4, #0x8
-    bl func_02005058
+    bl VecFx32Object_Destroy
     mov r0, r4
     bl func_0201e28c
     mov r0, r4

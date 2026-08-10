@@ -5,7 +5,7 @@
  * embedded records before delegating to the shared runtime base destructor.
  */
 
-extern "C" void func_02005058(void *record);
+extern "C" void VecFx32Object_Destroy(void *record);
 extern "C" void func_02099fb0(void *object);
 
 /*
@@ -15,8 +15,8 @@ extern "C" void func_02099fb0(void *object);
  */
 extern "C" void *func_ov049_0220ba98(void *object)
 {
-    func_02005058((u8 *)object + 0x9c);
-    func_02005058((u8 *)object + 0x8c);
+    VecFx32Object_Destroy((u8 *)object + 0x9c);
+    VecFx32Object_Destroy((u8 *)object + 0x8c);
     func_02099fb0(object);
     return object;
 }

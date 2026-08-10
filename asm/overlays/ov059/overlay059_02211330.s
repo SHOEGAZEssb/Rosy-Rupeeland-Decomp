@@ -12,7 +12,7 @@
 .extern DisplayBrightness_StartSubTransition
 .extern DisplayBrightness_IsSubTransitionIncreasing
 .extern DisplayBrightness_IsSubTransitionDecreasing
-.extern func_02005058
+.extern VecFx32Object_Destroy
 .extern DebugSpriteText_SetTextResource
 .extern DebugSpriteText_DrawCentered
 .extern SplineMover_Update
@@ -237,7 +237,7 @@ func_ov059_02211330:
     add r0, sp, #0x10
     mov r1, r1, asr #0xc
     str r1, [r5, #0x50]
-    bl func_02005058
+    bl VecFx32Object_Destroy
     ldr r0, [r5, #0x3c]
     ldr r2, [r5, #0x50]
     mov r1, #0x0
@@ -291,7 +291,7 @@ func_ov059_02211330:
     add r0, sp, #0x0
     mov r1, r1, asr #0xc
     str r1, [r5, #0x50]
-    bl func_02005058
+    bl VecFx32Object_Destroy
     ldr r0, [r5, #0x3c]
     ldr r2, [r5, #0x50]
     mov r1, #0x0

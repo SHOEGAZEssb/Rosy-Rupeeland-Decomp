@@ -1,6 +1,6 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov084/overlay084_recovery.c.
-.extern func_020050a4
+.extern VecFx32Object_Assign
 .extern Actor_SaveAndForceFlags
 .extern func_ov084_022131fc
 
@@ -14,10 +14,10 @@ func_ov084_02213b2c:
     add r0, r4, #0x298
     add r1, r4, #0x18
     strh r3, [r2, #0xa8]
-    bl func_020050a4
+    bl VecFx32Object_Assign
     mov r1, r5
     add r0, r4, #0xb0
-    bl func_020050a4
+    bl VecFx32Object_Assign
     mov r0, r4
     bl Actor_SaveAndForceFlags
     mov r1, #0x0

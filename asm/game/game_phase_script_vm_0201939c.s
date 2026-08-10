@@ -3,9 +3,9 @@
 .extern data_021052fc
 .extern data_0210570c
 .extern data_02105710
-.extern func_0200500c
-.extern func_02005030
-.extern func_02005058
+.extern VecFx32Object_InitComponents
+.extern VecFx32Object_InitCopy
+.extern VecFx32Object_Destroy
 .extern VecFx32_Subtract
 .extern ActorBounds_GetWidth
 .extern ActorBounds_GetHeight
@@ -112,7 +112,7 @@ L_0201948c:
     add r2, r4, #0x18
     bl VecFx32_Subtract
     add r0, sp, #0x4
-    bl func_02005058
+    bl VecFx32Object_Destroy
     ldr r0, [sp, #0xe4]
     ldr r1, [sp, #0xe0]
     mov r0, r0, asr #0xc
@@ -188,7 +188,7 @@ L_0201948c:
     mov r1, r7
     bl GamePhaseScriptVm_SetResult
     add r0, sp, #0xdc
-    bl func_02005058
+    bl VecFx32Object_Destroy
     b L_02019878
 L_02019620:
     cmp r6, #0xe4
@@ -232,14 +232,14 @@ L_02019690:
     mov r1, r7, lsl #0xc
     mov r2, r5, lsl #0xc
     mov r3, r4, lsl #0xc
-    bl func_0200500c
+    bl VecFx32Object_InitComponents
     mov r0, r8, lsl #0x10
     mov r1, r0, asr #0x10
     add r2, sp, #0xcc
     mov r0, #0x12c
     bl func_0204e3f4
     add r0, sp, #0xcc
-    bl func_02005058
+    bl VecFx32Object_Destroy
     b L_02019878
 L_020196c4:
     mov r1, r6, lsl #0x10
@@ -251,13 +251,13 @@ L_020196c4:
     mov r1, r7, lsl #0xc
     mov r2, r5, lsl #0xc
     mov r3, r4, lsl #0xc
-    bl func_0200500c
+    bl VecFx32Object_InitComponents
     add r0, sp, #0x98
     add r1, sp, #0xa8
     mov r2, #0x12c
     bl func_0204f7e4
     add r0, sp, #0x98
-    bl func_02005058
+    bl VecFx32Object_Destroy
     b L_02019878
 L_02019708:
     ldr r0, L_02019884
@@ -278,20 +278,20 @@ L_02019740:
     ldr r1, [r9, #0x84]
     add r0, sp, #0x88
     add r1, r1, #0x18
-    bl func_02005030
+    bl VecFx32Object_InitCopy
     add r0, sp, #0x78
     mov r1, r7, lsl #0xc
     mov r2, r5, lsl #0xc
     mov r3, r4, lsl #0xc
-    bl func_0200500c
+    bl VecFx32Object_InitComponents
     add r1, sp, #0x88
     add r2, sp, #0x78
     mov r0, r6
     bl func_02050078
     add r0, sp, #0x78
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add r0, sp, #0x88
-    bl func_02005058
+    bl VecFx32Object_Destroy
     b L_02019878
 L_02019788:
     ldr r1, [sp, #0x0]
@@ -299,20 +299,20 @@ L_02019788:
     mov r1, r1, lsl #0xc
     mov r2, r11, lsl #0xc
     mov r3, r10, lsl #0xc
-    bl func_0200500c
+    bl VecFx32Object_InitComponents
     add r0, sp, #0x58
     mov r1, r7, lsl #0xc
     mov r2, r5, lsl #0xc
     mov r3, r4, lsl #0xc
-    bl func_0200500c
+    bl VecFx32Object_InitComponents
     add r1, sp, #0x68
     add r2, sp, #0x58
     mov r0, r6
     bl func_02050078
     add r0, sp, #0x58
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add r0, sp, #0x68
-    bl func_02005058
+    bl VecFx32Object_Destroy
     b L_02019878
 L_020197d8:
     ldr r0, [r9, #0x84]
@@ -342,21 +342,21 @@ L_02019818:
     mov r1, r7, lsl #0xc
     mov r2, r5, lsl #0xc
     mov r3, r4, lsl #0xc
-    bl func_0200500c
+    bl VecFx32Object_InitComponents
     ldr r1, [sp, #0x0]
     add r0, sp, #0x14
     mov r2, r11
     mov r3, r10
-    bl func_0200500c
+    bl VecFx32Object_InitComponents
     add r0, sp, #0x24
     add r1, sp, #0x14
     add r2, sp, #0x34
     mov r3, #0x12c
     bl func_0204f854
     add r0, sp, #0x14
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add r0, sp, #0x24
-    bl func_02005058
+    bl VecFx32Object_Destroy
 L_02019878:
     mov r0, #0x0
     add sp, sp, #0x150

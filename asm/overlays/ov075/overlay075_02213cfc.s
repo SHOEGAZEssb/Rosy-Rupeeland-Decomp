@@ -1,8 +1,8 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov075/overlay075_recovery.c.
-.extern func_02005030
-.extern func_02005058
-.extern func_020050a4
+.extern VecFx32Object_InitCopy
+.extern VecFx32Object_Destroy
+.extern VecFx32Object_Assign
 .extern func_02032228
 .extern Actor_QueryTerrainHeight
 .extern InteractionWaypointCursor_Advance
@@ -39,10 +39,10 @@ func_ov075_02213cfc:
     add r0, r5, #0x28
     add r1, r5, #0x22c
     str r2, [r5, #0x238]
-    bl func_020050a4
+    bl VecFx32Object_Assign
     mov r1, r0
     add r0, r5, #0x18
-    bl func_020050a4
+    bl VecFx32Object_Assign
     ldr r0, [r5, #0x26c]
     bl InteractionWaypointCursor_Advance
     ldr r0, [r5, #0x26c]
@@ -102,7 +102,7 @@ func_ov075_02213cfc:
     add r1, r5, #0x18
     and r2, r2, #0xe
     strb r2, [r5, #0xd4]
-    bl func_02005030
+    bl VecFx32Object_InitCopy
     ldr r0, [sp, #0xc]
     mov r4, #0x0
     sub r0, r0, #0x1000
@@ -130,7 +130,7 @@ func_ov075_02213cfc:
     cmp r4, r0
     blt .L_02213e78
     add r0, sp, #0x0
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add sp, sp, #0x10
     ldmia sp!, {r4, r5, r6, r7, r8, pc}
 .size func_ov075_02213cfc, . - func_ov075_02213cfc

@@ -3,7 +3,7 @@
 .extern data_021052fc
 .extern data_021e9ac0
 .extern gSoundContext
-.extern func_020050f0
+.extern VecFx32Object_Subtract
 .extern ActorMotionAreaFollower_GetPosition
 .extern ActorDerivedType1_TrySetStateVector
 .extern Type7Actor_ClearGlobalRelationshipToActor
@@ -65,7 +65,7 @@ func_0204f4d4: ; 0x0204f4d4
     bl ActorMotionAreaFollower_GetPosition
     mov r1, r0
     add r0, r4, #0x18
-    bl func_020050f0
+    bl VecFx32Object_Subtract
     mov r1, #0x0
     ldr r3, [r4, #0x20]
     ldr r2, [r4, #0x24]

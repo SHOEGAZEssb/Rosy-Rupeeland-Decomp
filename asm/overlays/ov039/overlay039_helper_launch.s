@@ -1,7 +1,7 @@
 .text
 /* Exact fallback; see overlay039_helper_launch.c for documented portable C. */
-    .extern func_02005030
-    .extern func_02005058
+    .extern VecFx32Object_InitCopy
+    .extern VecFx32Object_Destroy
     .extern func_020ae024
     .extern data_020c9670
 
@@ -16,7 +16,7 @@ func_ov039_021fd93c:
     add r1, r4, #0x1c
     mov r6, r2
     mov r5, r3
-    bl func_02005030
+    bl VecFx32Object_InitCopy
     ldr r1, [sp, #0x8]
     mov r0, #0x1e
     add r1, r1, #0xa000
@@ -86,7 +86,7 @@ L_021fda60:
     bpl L_021fd978
 L_021fda68:
     add r0, sp, #0x0
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add sp, sp, #0x10
     ldmia sp!, {r4, r5, r6, r7, r8, pc}
 L_021fda78: .word data_020c9670

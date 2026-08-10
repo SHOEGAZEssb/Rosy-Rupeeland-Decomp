@@ -25,7 +25,7 @@ void ActorMotionAreaFollower_RefreshCurrentArea(ActorMotionAreaFollower *self)
     self->previousArea = GamePhaseRegionTable_FindContainingRegion(self->areaContext,
                                        position.value.x >> 12,
                                        (position.value.y >> 12) - 0x10);
-    func_02005058(&position);
+    VecFx32Object_Destroy(&position);
 }
 
 /*
@@ -40,9 +40,9 @@ void ActorMotionAreaFollower_Reset(ActorMotionAreaFollower *self)
     ActorMotion_Reset(&self->jitter.base);
     self->jitter.remainingFrames = 0;
     self->jitter.radius = 0;
-    func_0200500c(&zero, 0, 0, 0);
-    func_020050a4(&self->offset, &zero);
-    func_02005058(&zero);
+    VecFx32Object_InitComponents(&zero, 0, 0, 0);
+    VecFx32Object_Assign(&self->offset, &zero);
+    VecFx32Object_Destroy(&zero);
     self->transitionActive = 0;
     self->transitionTimer = 0;
     self->previousArea = -1;

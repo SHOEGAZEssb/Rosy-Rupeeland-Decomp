@@ -5,8 +5,8 @@
 .extern data_021052fc
 .extern OverlayManager_LoadOverlay
 .extern OverlayManager_GetGlobal
-.extern func_0200500c
-.extern func_02005058
+.extern VecFx32Object_InitComponents
+.extern VecFx32Object_Destroy
 .extern GamePhaseScriptVm_Pop
 .extern ActorCollection_FindActorByDescriptorValue
 .extern Actor_GetCollection
@@ -52,7 +52,7 @@ L_02013f8c:
     mov r1, r5, lsl #0xc
     mov r2, r6, lsl #0xc
     mov r3, r7, lsl #0xc
-    bl func_0200500c
+    bl VecFx32Object_InitComponents
     cmp r4, #0x0
     bne L_0201400c
     bl OverlayManager_GetGlobal
@@ -111,7 +111,7 @@ L_0201406c:
     str r0, [r5, #0x10]
 L_02014078:
     add r0, sp, #0xc
-    bl func_02005058
+    bl VecFx32Object_Destroy
 L_02014080:
     mov r0, #0x0
     add sp, sp, #0x1c

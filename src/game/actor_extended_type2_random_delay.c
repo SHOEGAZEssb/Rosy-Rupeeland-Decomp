@@ -9,7 +9,7 @@ extern u8 data_020df9e8[];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_020050a4(void *destination, ...);
+extern void VecFx32Object_Assign(void *destination, ...);
 extern u32 genrand_int32(void);
 extern s32 func_020ada8c(s32 value, s32 divisor);
 #ifdef __cplusplus
@@ -28,7 +28,7 @@ s32 ActorExtendedType2_UpdateRandomCallbackDelay(void *self)
 {
     u8 *actor = (u8 *)self;
     *(u16 *)(actor + 0xd6) = 2;
-    func_020050a4(actor + 0x78, actor + 0x18);
+    VecFx32Object_Assign(actor + 0x78, actor + 0x18);
     if (*(s16 *)(actor + 0x25a) == 0) {
         *(u16 *)(actor + 0x258) =
             (u16)(func_020ada8c((s32)(genrand_int32() & 0x7fffffff), 120) + 120);

@@ -24,9 +24,9 @@ extern "C" {
 extern void func_ov039_022014f8(void *output, const void *first,
                                 const void *second);
 extern s32 func_020ae024(s32 y, s32 x);
-extern void func_0200500c(void *vector, s32 x, s32 y, s32 z);
-extern void func_02004fe0(void *vector);
-extern void func_02005058(void *vector);
+extern void VecFx32Object_InitComponents(void *vector, s32 x, s32 y, s32 z);
+extern void VecFx32Object_Init(void *vector);
+extern void VecFx32Object_Destroy(void *vector);
 extern void *func_0201e0ec(void *object);
 extern void func_0209c430(void *renderer, ...);
 extern void func_ov049_0220c2dc(void *system, void *input, s32 mode);
@@ -66,7 +66,7 @@ extern "C" void func_ov039_02203480(void *scene, s32 mode)
         if (delta < -0x8000) delta += 0x10000;
         if (delta > 0x258) velocity += 30;
         if (delta < -0x258) velocity -= 30;
-        func_02005058(&origin);
+        VecFx32Object_Destroy(&origin);
     }
     if (velocity < 0) velocity += 15;
     if (velocity > 0) velocity -= 15;
@@ -151,8 +151,8 @@ extern "C" void func_ov039_02203794(void *scene)
         if (FIELD(s32, helper, 0x18) != 0) continue;
         Overlay039HelperVector scale, position;
         s32 bounds[2] = {-8,-8}, packet[2] = {8,8};
-        func_0200500c(&scale, 0x1000, 0x1000, 0x1000);
-        func_02004fe0(&position);
+        VecFx32Object_InitComponents(&scale, 0x1000, 0x1000, 0x1000);
+        VecFx32Object_Init(&position);
         position.x_04 = FIELD(s32, helper, 4);
         position.y_08 = FIELD(s32, helper, 8);
         position.z_0c = 0;
@@ -160,8 +160,8 @@ extern "C" void func_ov039_02203794(void *scene)
                                        0x2f7c);
         func_0209c430(resource, &position, &scale, 0, bounds, 0,
                       sizes[FIELD(s32, helper, 0x1c) & 6], 0x7fff, packet);
-        func_02005058(&position);
-        func_02005058(&scale);
+        VecFx32Object_Destroy(&position);
+        VecFx32Object_Destroy(&scale);
     }
 }
 

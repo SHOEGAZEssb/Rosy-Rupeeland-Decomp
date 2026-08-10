@@ -5,8 +5,8 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_02005030(void *destination, const void *source);
-extern void func_02005058(void *value);
+extern void VecFx32Object_InitCopy(void *destination, const void *source);
+extern void VecFx32Object_Destroy(void *value);
 extern void VecFx32_Subtract(void *output, const void *first, const void *second);
 extern s32 ActorExtendedType2_GetDescriptorValue2C(const void *actor);
 extern s32 func_0204cfa4(s32 x, s32 y);
@@ -37,8 +37,8 @@ s32 ActorExtendedTable_ApplyTargetRelativeTransform(void *self, s32 mode)
     u32 displacement[4];
     s32 result;
 
-    func_02005030(targetTransform, target + 0x18);
-    func_02005030(actorTransform, actor + 0x18);
+    VecFx32Object_InitCopy(targetTransform, target + 0x18);
+    VecFx32Object_InitCopy(actorTransform, actor + 0x18);
     if (ActorExtendedType2_GetDescriptorValue2C(actor) > 0) {
         s32 magnitude;
         VecFx32_Subtract(displacement, actorTransform, targetTransform);
@@ -54,10 +54,10 @@ s32 ActorExtendedTable_ApplyTargetRelativeTransform(void *self, s32 mode)
             (*(void (**)(void *, void *, s32))(*(u8 **)actor + 0xb8))(
                 actor, displacement, 1);
         }
-        func_02005058(displacement);
+        VecFx32Object_Destroy(displacement);
     }
     result = func_02050078(mode, actorTransform, targetTransform);
-    func_02005058(actorTransform);
-    func_02005058(targetTransform);
+    VecFx32Object_Destroy(actorTransform);
+    VecFx32Object_Destroy(targetTransform);
     return result;
 }

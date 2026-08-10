@@ -6,7 +6,7 @@
 .extern data_020f4e18
 .extern data_ov050_0220e3c0
 .extern data_ov050_0220e3e8
-.extern func_02005030
+.extern VecFx32Object_InitCopy
 .extern func_0201e250
 .extern func_02071ea4
 .extern func_02071ee0
@@ -31,7 +31,7 @@ func_ov050_0220db84:
     mov r1, r5
     add r0, r10, #0x30
     str r6, [r10, #0x2c]
-    bl func_02005030
+    bl VecFx32Object_InitCopy
     mov r0, #0x0
     str r0, [r10, #0x40]
     str r0, [r10, #0x44]

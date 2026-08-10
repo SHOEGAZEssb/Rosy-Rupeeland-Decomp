@@ -22,7 +22,7 @@ void VecFx32Bezier_Evaluate2D(VecFx32Object *result, const VecFx32Triple *points
     fx32 controlWeight;
     fx32 secondWeight;
 
-    func_02004fe0(result);
+    VecFx32Object_Init(result);
     firstWeight = FX32_MUL(inverse, inverse);
     controlWeight = FX32_MUL(t * 2, inverse);
     secondWeight = FX32_MUL(t, t);
@@ -47,7 +47,7 @@ void VecFx32Bezier_Evaluate3D(VecFx32Object *result, const VecFx32Triple *points
     fx32 controlWeight;
     fx32 secondWeight;
 
-    func_02004fe0(result);
+    VecFx32Object_Init(result);
     firstWeight = FX32_MUL(inverse, inverse);
     controlWeight = FX32_MUL(t * 2, inverse);
     secondWeight = FX32_MUL(t, t);

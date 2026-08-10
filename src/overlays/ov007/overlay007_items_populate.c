@@ -23,9 +23,9 @@ extern s32 data_ov007_021fc284[20];
 extern void *func_0209a208(void *state, s32 firstId, s32 secondId, s32 thirdId,
                           s32 argument, s32 mode);
 extern void GraphicsSpriteState_SetAnimationIndex(void *member, s32 value);
-extern void func_0200500c(void *member, s32 first, s32 second, s32 third);
-extern void func_020050a4(void *destination, const void *source);
-extern void func_02005058(void *member);
+extern void VecFx32Object_InitComponents(void *member, s32 first, s32 second, s32 third);
+extern void VecFx32Object_Assign(void *destination, const void *source);
+extern void VecFx32Object_Destroy(void *member);
 #ifdef __cplusplus
 }
 #endif
@@ -75,7 +75,7 @@ static void overlay007_initialize_item_positions(void)
  *
  * When +0x4C already exists, clear bit 2 at its +0x42, on each indexed item
  * whose +0xA4 counter is <=8, and on +0x7C. In both paths, construct a zeroed
- * temporary member through func_0200500c, copy it into +0x80, destroy the
+ * temporary member through VecFx32Object_InitComponents, copy it into +0x80, destroy the
  * temporary, clear +0x98, bytes +0xA0/+0xA1, halfword +0xD8, word +0xCC, and
  * byte +0xD0, then set +0xD4 to one. Return no value. Allocation/object creation
  * is delegated; object IDs, positions, flags, and reset offsets are confirmed.
@@ -125,9 +125,9 @@ void func_ov007_021fb788(Overlay007ItemState *state, s32 argument)
         overlay007_show_object(FIELD(void *, state, 0x07c));
     }
 
-    func_0200500c(temporary, 0, 0, 0);
-    func_020050a4((u8 *)state + 0x80, temporary);
-    func_02005058(temporary);
+    VecFx32Object_InitComponents(temporary, 0, 0, 0);
+    VecFx32Object_Assign((u8 *)state + 0x80, temporary);
+    VecFx32Object_Destroy(temporary);
     FIELD(s32, state, 0x098) = 0;
     FIELD(u8, state, 0x0a0) = 0;
     FIELD(u8, state, 0x0a1) = 0;

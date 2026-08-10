@@ -1,9 +1,9 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov076/overlay076_recovery.c.
 .extern data_020c9670
-.extern func_02004fe0
-.extern func_02005030
-.extern func_02005058
+.extern VecFx32Object_Init
+.extern VecFx32Object_InitCopy
+.extern VecFx32Object_Destroy
 .extern GraphicsSpriteState_SetDepthOrderedWorldPositionWithMargins
 .extern ActorExtendedType2_RunRenderCallback
 
@@ -40,7 +40,7 @@ func_ov076_02213e64:
     ldrh r3, [r3, #0x28]
     sub r3, r3, #0x20
     strh r3, [r2, #0x28]
-    bl func_02005030
+    bl VecFx32Object_InitCopy
     ldr r1, [sp, #0x30]
     mvn r0, #0x5f
     strh r0, [sp, #0xc]
@@ -75,7 +75,7 @@ func_ov076_02213e64:
     ldrh r2, [r2, #0x28]
     sub r2, r2, #0x30
     strh r2, [r1, #0x28]
-    bl func_02004fe0
+    bl VecFx32Object_Init
     add r0, r7, #0x200
     ldrh r0, [r0, #0xca]
     ldr r2, .L_02214030
@@ -119,9 +119,9 @@ func_ov076_02213e64:
     ldrh r2, [r2, #0x28]
     add r2, r2, #0xc
     strh r2, [r1, #0x28]
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add r0, sp, #0x24
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add sp, sp, #0x34
     ldmia sp!, {r4, r5, r6, r7, pc}
 .L_02214030: .word data_020c9670

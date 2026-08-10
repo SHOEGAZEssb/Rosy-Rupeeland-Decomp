@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/direct_sprite_track_presentation.c.
 .text
-.extern func_02005058
+.extern VecFx32Object_Destroy
 .extern VecFx32_Subtract
 .extern func_02056f00
 
@@ -25,7 +25,7 @@ func_0201fdec: ; 0x0201fdec
     add r1, sp, #0x0
     bl func_02056f00
     add r0, sp, #0x0
-    bl func_02005058
+    bl VecFx32Object_Destroy
     ldr r0, [sp, #0x14]
     ldr r3, [sp, #0x18]
     mov r1, r0, asr #0xc
@@ -34,7 +34,7 @@ func_0201fdec: ; 0x0201fdec
     strh r1, [r2, #0x2c]
     mov r1, r3, asr #0xc
     strh r1, [r2, #0x2e]
-    bl func_02005058
+    bl VecFx32Object_Destroy
     mov r0, #0x0
 .L_0201fe60:
     add sp, sp, #0x20

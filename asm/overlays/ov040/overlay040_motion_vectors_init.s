@@ -1,8 +1,8 @@
     .text
 /* Exact fallback; see overlay040_motion_vectors_init.c for portable C. */
-    .extern func_0200500c
-    .extern func_02005058
-    .extern func_020050a4
+    .extern VecFx32Object_InitComponents
+    .extern VecFx32Object_Destroy
+    .extern VecFx32Object_Assign
     .extern func_020adc40
     .extern func_020adc90
     .extern func_ov040_02200378
@@ -17,42 +17,42 @@ func_ov040_02200128:
     mov r1, #0
     mov r2, #0x32000
     mov r3, #0xa000
-    bl func_0200500c
+    bl VecFx32Object_InitComponents
     add r1, sp, #0x30
     add r0, r6, #0x1a4
-    bl func_020050a4
+    bl VecFx32Object_Assign
     add r0, sp, #0x30
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add r0, sp, #0x20
     mov r1, #0
     mov r2, #0x32000
     mov r3, #0xa000
-    bl func_0200500c
+    bl VecFx32Object_InitComponents
     add r0, r6, #0x1b4
     add r1, sp, #0x20
-    bl func_020050a4
+    bl VecFx32Object_Assign
     add r0, sp, #0x20
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add r0, sp, #0x10
     mov r1, #0
     mov r2, #0x10000
     mov r3, #0xa000
-    bl func_0200500c
+    bl VecFx32Object_InitComponents
     add r0, r6, #0x204
     add r1, sp, #0x10
-    bl func_020050a4
+    bl VecFx32Object_Assign
     add r0, sp, #0x10
-    bl func_02005058
+    bl VecFx32Object_Destroy
     mov r1, #0
     add r0, sp, #0
     sub r2, r1, #0x38000
     sub r3, r1, #0x5000
-    bl func_0200500c
+    bl VecFx32Object_InitComponents
     add r0, r6, #0x244
     add r1, sp, #0
-    bl func_020050a4
+    bl VecFx32Object_Assign
     add r0, sp, #0
-    bl func_02005058
+    bl VecFx32Object_Destroy
     ldr r7, [r6, #0x11c]
     mvn r1, #0
     mov r0, r1, lsl #12

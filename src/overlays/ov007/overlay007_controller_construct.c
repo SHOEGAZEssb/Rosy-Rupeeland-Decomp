@@ -23,7 +23,7 @@ extern "C" {
 #endif
 extern const u8 data_ov007_021fc270[];
 extern void *func_ov007_021fb6e0(void *state);
-extern void func_02004fe0(void *member);
+extern void VecFx32Object_Init(void *member);
 #ifdef __cplusplus
 }
 #endif
@@ -42,7 +42,7 @@ Overlay007Controller *func_ov007_021fb720(Overlay007Controller *state,
 {
     func_ov007_021fb6e0(state);
     state->descriptor_000 = data_ov007_021fc270;
-    func_02004fe0(state->member_080);
+    VecFx32Object_Init(state->member_080);
     state->owner_048 = owner;
     state->field_04c = 0;
     state->field_0d4 = 0;

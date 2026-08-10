@@ -1,7 +1,7 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov075/overlay075_recovery.c.
 .extern data_ov075_02217290
-.extern func_020050a4
+.extern VecFx32Object_Assign
 .extern ActorExtendedLinkSource_LinkPartner
 .extern func_ov075_0221625c
 
@@ -57,7 +57,7 @@ func_ov075_02216174:
     add r1, r5, #0x18
     and r2, r4, r2
     strh r2, [r3, #0xa2]
-    bl func_020050a4
+    bl VecFx32Object_Assign
     ldr r0, .L_02216258
     ldr r1, [r0, #0xb0]
     ldr r0, [r0, #0xb4]

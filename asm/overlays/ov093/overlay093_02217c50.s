@@ -15,8 +15,8 @@
 .extern OverlayManager_GetGlobal
 .extern DisplayBrightness_StartTransition
 .extern DisplayBrightnessPair_GetScreen
-.extern func_0200500c
-.extern func_02005058
+.extern VecFx32Object_InitComponents
+.extern VecFx32Object_Destroy
 .extern ActorMotion_BindActor
 .extern ActorMotionAreaFollower_BindActor
 .extern func_0201e0ec
@@ -214,7 +214,7 @@ func_ov093_02217c50:
     mov r1, #0x180000
     mov r2, #0x194000
     mov r3, #0x0
-    bl func_0200500c
+    bl VecFx32Object_InitComponents
     ldr r1, .L_022184e8
     ldr r3, .L_022184d8
     mov r0, #0x14
@@ -247,7 +247,7 @@ func_ov093_02217c50:
     mov r2, #0x7
     bl Sound_Play
     add r0, sp, #0x18
-    bl func_02005058
+    bl VecFx32Object_Destroy
     b .L_02217f98
 .L_02217f60:
     ldrh r1, [r2, #0x24]

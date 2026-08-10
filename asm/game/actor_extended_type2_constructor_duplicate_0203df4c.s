@@ -6,8 +6,8 @@
 .extern data_020e00c0
 .extern data_020e83a0
 .extern data_02105778
-.extern func_02004fe0
-.extern func_020050a4
+.extern VecFx32Object_Init
+.extern VecFx32Object_Assign
 .extern Actor_AdjustPositionForTerrainHeight
 .extern ActorDerivedRuntime_Init
 .extern ActorExtendedRecordArray_Init
@@ -31,9 +31,9 @@ ActorExtendedType2_InitDuplicate: ; 0x0203df4c
     ldr r1, .L_0203e1fc
     add r0, r5, #0x22c
     str r1, [r5, #0x0]
-    bl func_02004fe0
+    bl VecFx32Object_Init
     add r0, r5, #0x23c
-    bl func_02004fe0
+    bl VecFx32Object_Init
     add r0, r5, #0x200
     mov r2, #0x0
     strh r2, [r0, #0x52]
@@ -45,7 +45,7 @@ ActorExtendedType2_InitDuplicate: ; 0x0203df4c
     add r0, r5, #0x22c
     add r1, r5, #0x18
     strb r2, [r5, #0x294]
-    bl func_020050a4
+    bl VecFx32Object_Assign
     mov r0, #0x2
     strb r0, [r5, #0x4d]
     ldr r0, [r5, #0x14]

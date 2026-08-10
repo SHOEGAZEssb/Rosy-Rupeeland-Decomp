@@ -7,10 +7,10 @@ extern "C" {
 #endif
 extern void *data_02105310;
 extern s32 ActorRuntimeCollection_GetPendingAttachmentFlag(void *state);
-extern void func_02005030(void *destination, const void *source);
-extern void func_02005058(void *vector);
-extern s32 func_02005070(const void *vector);
-extern void func_020050a4(void *destination, const void *source);
+extern void VecFx32Object_InitCopy(void *destination, const void *source);
+extern void VecFx32Object_Destroy(void *vector);
+extern s32 VecFx32Object_GetMagnitude(const void *vector);
+extern void VecFx32Object_Assign(void *destination, const void *source);
 extern void VecFx32_Subtract(void *destination, const void *target,
                           const void *source);
 extern void func_020328d0(void *vector, s32 angle);
@@ -54,15 +54,15 @@ void func_02051b48(void *actor, void *target, u32 unused1, u32 unused2)
         return;
 
     if (ActorRuntimeCollection_GetPendingAttachmentFlag(&data_02105310) == 0 && target != 0) {
-        func_02005030(response, (u8 *)actor + 0x88);
+        VecFx32Object_InitCopy(response, (u8 *)actor + 0x88);
         response[1] = func_020adae4(response[1], -8);
         response[2] = func_020adae4(response[2], -8);
         response[3] = 0;
         virtual_function(target, 0xb8)(target, response);
         VecFx32_Subtract(direction, (u8 *)actor + 0x18, (u8 *)target + 0x18);
-        func_020050a4((u8 *)actor + 0x88, direction);
-        func_02005058(direction);
-        length = func_02005070((u8 *)actor + 0x88);
+        VecFx32Object_Assign((u8 *)actor + 0x88, direction);
+        VecFx32Object_Destroy(direction);
+        length = VecFx32Object_GetMagnitude((u8 *)actor + 0x88);
         if (length < 4)
             length = 4;
         func_02050b34((u8 *)actor + 0x88, length);
@@ -70,7 +70,7 @@ void func_02051b48(void *actor, void *target, u32 unused1, u32 unused2)
                       (s32)FIELD(s16, FIELD(void *, actor, 0x1fc), 0x0a) << 4);
         if (FIELD(s32, actor, 0x24) <= Actor_GetCachedTerrainHeight(actor) + 0x8000)
             FIELD(s32, actor, 0x44) = 0x2000;
-        func_02005058(response);
+        VecFx32Object_Destroy(response);
     }
     FIELD(s32, actor, 0x40) = 0;
     FIELD(s32, actor, 0x3c) = 0;

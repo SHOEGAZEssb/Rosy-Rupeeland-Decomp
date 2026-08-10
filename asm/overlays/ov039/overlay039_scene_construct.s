@@ -8,7 +8,7 @@
     .extern __construct_array
     .extern func_ov039_021fce40
     .extern func_ov039_021fce5c
-    .extern func_02004fe0
+    .extern VecFx32Object_Init
     .extern func_ov039_021fd070
     .extern func_ov039_021fd254
     .extern Heap_Alloc
@@ -47,7 +47,7 @@ func_ov039_021fce84:
     bl func_ov039_021fce40
     add r0, r7, #0xda0
     add r0, r0, #0x1000
-    bl func_02004fe0
+    bl VecFx32Object_Init
     str r6, [r7, #0x48]
     str r6, [r7, #0x118]
     str r6, [r7, #0xafc]

@@ -20,10 +20,10 @@ extern void *gSoundContext;
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_02004fe0(void *vector);
-extern void func_0200500c(void *vector, s32 x, s32 y, s32 z);
-extern void func_020050a4(void *destination, const void *source);
-extern void func_02005058(void *vector);
+extern void VecFx32Object_Init(void *vector);
+extern void VecFx32Object_InitComponents(void *vector, s32 x, s32 y, s32 z);
+extern void VecFx32Object_Assign(void *destination, const void *source);
+extern void VecFx32Object_Destroy(void *vector);
 extern void func_020adff0(const void *first, const void *second, void *output);
 extern s32 func_020adc40(s32 squaredDistance);
 extern s32 func_020adc90(s32 numerator, s32 denominator);
@@ -58,7 +58,7 @@ extern "C" void func_ov039_022014e0(void *output, void *input)
 extern "C" void func_ov039_022014f8(void *output, const void *first,
                                      const void *second)
 {
-    func_02004fe0(output);
+    VecFx32Object_Init(output);
     if (first) first = (const u8 *)first + 4;
     if (second) second = (const u8 *)second + 4;
     func_020adff0(first, second, (u8 *)output + 4);
@@ -171,16 +171,16 @@ extern "C" void func_ov039_022017d0(void *scene)
     };
     Overlay039TargetVector vectors[16];
     for (s32 i = 0; i < 8; i++) {
-        func_0200500c(&vectors[i], late[i][0], late[i][1], late[i][2]);
-        func_0200500c(&vectors[8 + i], early[i][0], early[i][1], early[i][2]);
+        VecFx32Object_InitComponents(&vectors[i], late[i][0], late[i][1], late[i][2]);
+        VecFx32Object_InitComponents(&vectors[8 + i], early[i][0], early[i][1], early[i][2]);
     }
     if (FIELD(u16, scene, 0x1cde) == 1) {
         const Overlay039TargetVector *path =
             func_020befec(FIELD(s16, scene, 0x1ca4), 10) >= 3 ? vectors : vectors + 8;
         Overlay039TargetVector target, delta;
-        func_02004fe0(&target);
-        func_02004fe0(&delta);
-        func_020050a4(&target, &path[FIELD(u16, scene, 0x1ce0)]);
+        VecFx32Object_Init(&target);
+        VecFx32Object_Init(&delta);
+        VecFx32Object_Assign(&target, &path[FIELD(u16, scene, 0x1ce0)]);
         target.x_04 += 0x200000;
         target.y_08 += 0x118000;
         delta.x_04 = target.x_04 - FIELD(s32, scene, 0x30);
@@ -198,8 +198,8 @@ extern "C" void func_ov039_022017d0(void *scene)
             FIELD(u16, scene, 0x1ce0) = (FIELD(u16, scene, 0x1ce0) + 1) & 7;
             FIELD(u16, scene, 0x1cde) = 0;
         }
-        func_02005058(&delta);
-        func_02005058(&target);
+        VecFx32Object_Destroy(&delta);
+        VecFx32Object_Destroy(&target);
     }
-    for (s32 i = 15; i >= 0; i--) func_02005058(&vectors[i]);
+    for (s32 i = 15; i >= 0; i--) VecFx32Object_Destroy(&vectors[i]);
 }

@@ -26,10 +26,10 @@ extern void func_0205943c(void *context, s32 soundId, s32 mode, s32 parameter,
                           s32 horizontalPosition, s32 verticalPosition);
 extern void *func_0201e0ec(void *object);
 extern void *func_0209c3b4(void);
-extern void func_0200500c(void *vector, s32 x, s32 y, s32 z);
-extern void func_02004fe0(void *vector);
-extern void func_02005030(void *destination, const void *source);
-extern void func_02005058(void *vector);
+extern void VecFx32Object_InitComponents(void *vector, s32 x, s32 y, s32 z);
+extern void VecFx32Object_Init(void *vector);
+extern void VecFx32Object_InitCopy(void *destination, const void *source);
+extern void VecFx32Object_Destroy(void *vector);
 extern void func_0209c430(void *resource, ...);
 extern s32 func_020befec(s32 value, s32 divisor);
 extern void func_ov069_0220ff38(void *system, void *position, s32 value,
@@ -107,16 +107,16 @@ extern "C" void func_ov039_0220076c(void *scene, void *context)
         Overlay039RenderVector position;
         s32 bounds[2] = {-8, -8};
         s32 packetSize[2] = {8, 8};
-        func_0200500c(&scale, 0x1000, 0x1000, 0x1000);
-        func_02004fe0(&position);
+        VecFx32Object_InitComponents(&scale, 0x1000, 0x1000, 0x1000);
+        VecFx32Object_Init(&position);
         position.x_04 = FIELD(s32, helper, 4);
         position.y_08 = FIELD(s32, helper, 8);
         position.z_0c = 0;
         const s32 *selectedSize = sizePairs[FIELD(s32, helper, 0x1c) & 6];
         func_0209c430(renderer, resource, &position, &scale, 0,
                       bounds, 0, selectedSize, 0x7fff, 0, packetSize);
-        func_02005058(&position);
-        func_02005058(&scale);
+        VecFx32Object_Destroy(&position);
+        VecFx32Object_Destroy(&scale);
     }
 
     s32 count = FIELD(s32, scene, 0x1db0);
@@ -131,10 +131,10 @@ extern "C" void func_ov039_0220076c(void *scene, void *context)
                                 FIELD(u16, scene, 0x1caa), limit);
         } else {
             Overlay039RenderVector point;
-            func_02005030(&point, (u8 *)scene + 0x1da0);
+            VecFx32Object_InitCopy(&point, (u8 *)scene + 0x1da0);
             point.y_08 += step * 25;
             func_ov069_0220ff38((u8 *)scene + 0x118, &point, 0, 10);
-            func_02005058(&point);
+            VecFx32Object_Destroy(&point);
         }
         func_ov069_0221070c((u8 *)scene + 0x118,
                             FIELD(s16, scene, 0x1ca8));
@@ -148,18 +148,18 @@ extern "C" void func_ov039_0220076c(void *scene, void *context)
         0x40000, 0x40000);
 
     Overlay039RenderVector iterator;
-    func_02004fe0(&iterator);
+    VecFx32Object_Init(&iterator);
     while (func_ov049_0220c254((u8 *)scene + 0x454, &iterator)) {
         Overlay039RenderVector source;
-        func_02005030(&source,
+        VecFx32Object_InitCopy(&source,
             (u8 *)FIELD(void *, FIELD(void *, owner, 8), 0x48) + 0x2c);
         func_ov039_021fda80(scene, source.x_04,
                             source.y_08 - iterator.y_08 - 0x10000,
                             iterator.z_0c, source.z_0c);
-        func_02005058(&source);
+        VecFx32Object_Destroy(&source);
     }
     func_ov049_0220cf94((u8 *)scene + 0x454);
-    func_02005058(&iterator);
+    VecFx32Object_Destroy(&iterator);
 
     func_ov069_0221100c((u8 *)scene + 0xb50, 0);
     func_ov069_02211274((u8 *)scene + 0xb50);
@@ -170,11 +170,11 @@ extern "C" void func_ov039_0220076c(void *scene, void *context)
         s32 bounds[2] = {-32, -32};
         s32 packetSize[2] = {32, 32};
         s32 size[4] = {0x80000, 0x40000, 0xc0000, 0x80000};
-        func_0200500c(&scale, step, step, step);
-        func_02005030(&position, (u8 *)scene + 0x1da0);
+        VecFx32Object_InitComponents(&scale, step, step, step);
+        VecFx32Object_InitCopy(&position, (u8 *)scene + 0x1da0);
         func_0209c430(renderer, resource, &position, &scale, 0,
                       bounds, 0x1c, size, 0x7fff, 0x190, packetSize);
-        func_02005058(&position);
-        func_02005058(&scale);
+        VecFx32Object_Destroy(&position);
+        VecFx32Object_Destroy(&scale);
     }
 }

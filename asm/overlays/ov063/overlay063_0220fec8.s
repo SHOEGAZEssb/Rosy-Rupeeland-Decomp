@@ -7,7 +7,7 @@
 .extern data_ov063_022105dc
 .extern OverlayManager_UnloadOverlay
 .extern OverlayManager_GetGlobal
-.extern func_02005058
+.extern VecFx32Object_Destroy
 .extern func_020a6390
 .extern gGameWork
 
@@ -36,9 +36,9 @@ func_ov063_0220fec8:
     mov r1, #0x2
     bl OverlayManager_UnloadOverlay
     add r0, r5, #0x38
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add r0, r5, #0x28
-    bl func_02005058
+    bl VecFx32Object_Destroy
     mov r0, r5
     bl Scene_Destroy
     mov r0, r5

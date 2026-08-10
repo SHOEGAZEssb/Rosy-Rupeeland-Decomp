@@ -1,8 +1,8 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov076/overlay076_recovery.c.
-.extern func_02004fe0
-.extern func_02005058
-.extern func_02005084
+.extern VecFx32Object_Init
+.extern VecFx32Object_Destroy
+.extern VecFx32Object_Normalize
 .extern ActorExtendedType2_ApplyContactResponse
 .extern func_ov076_02212e18
 
@@ -98,14 +98,14 @@ func_ov076_02212c54:
     ble .L_02212df4
 .L_02212da4:
     add r0, sp, #0x0
-    bl func_02004fe0
+    bl VecFx32Object_Init
     cmp r4, #0x0
     cmpne r5, #0x0
     beq .L_02212dd4
     add r0, sp, #0x0
     str r4, [sp, #0x4]
     str r5, [sp, #0x8]
-    bl func_02005084
+    bl VecFx32Object_Normalize
     ldr r1, .L_02212e0c
     add r0, sp, #0x0
     bl func_ov076_02212e18
@@ -117,7 +117,7 @@ func_ov076_02212c54:
     mov r2, #0x0
     blx r3
     add r0, sp, #0x0
-    bl func_02005058
+    bl VecFx32Object_Destroy
 .L_02212df4:
     mov r0, r8
     mov r1, r7

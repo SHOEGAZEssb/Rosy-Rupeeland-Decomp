@@ -12,11 +12,11 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_02004fe0(void *vector);
+extern void VecFx32Object_Init(void *vector);
 extern void func_020adfbc(const void *left, const void *right, void *output);
 extern void func_020adff0(const void *left, const void *right, void *output);
-extern void *func_02005030(void *destination, const void *source);
-extern void *func_020050a4(void *destination, const void *source);
+extern void *VecFx32Object_InitCopy(void *destination, const void *source);
+extern void *VecFx32Object_Assign(void *destination, const void *source);
 extern void GraphicsSpriteState_SetAnimationIndex(void *renderer, u8 orientation);
 extern void func_02099fb0(void *object);
 extern void Heap_Free(void *allocation);
@@ -41,7 +41,7 @@ extern "C" void func_ov040_021fe18c(void *destination, const void *source)
 extern "C" void func_ov040_021ff3f4(void *output, const void *left,
                                       const void *right)
 {
-    func_02004fe0(output);
+    VecFx32Object_Init(output);
     if (right != 0) right = (const u8 *)right + 4;
     if (left != 0) left = (const u8 *)left + 4;
     func_020adfbc(left, right, (u8 *)output + 4);
@@ -53,7 +53,7 @@ extern "C" void func_ov040_021ff3f4(void *output, const void *left,
  */
 extern "C" void *func_ov040_02200108(void *destination, const void *source)
 {
-    return func_02005030(destination, (const u8 *)source + 0x2c);
+    return VecFx32Object_InitCopy(destination, (const u8 *)source + 0x2c);
 }
 
 /*
@@ -62,7 +62,7 @@ extern "C" void *func_ov040_02200108(void *destination, const void *source)
  */
 extern "C" void *func_ov040_02200118(void *destination, const void *source)
 {
-    return func_020050a4((u8 *)destination + 0x2c, source);
+    return VecFx32Object_Assign((u8 *)destination + 0x2c, source);
 }
 
 /*
@@ -84,7 +84,7 @@ extern "C" void func_ov040_022005d4(void *destination, const void *source)
 extern "C" void func_ov040_022021dc(void *output, const void *left,
                                       const void *right)
 {
-    func_02004fe0(output);
+    VecFx32Object_Init(output);
     if (right != 0) right = (const u8 *)right + 4;
     if (left != 0) left = (const u8 *)left + 4;
     func_020adff0(left, right, (u8 *)output + 4);

@@ -4,7 +4,7 @@
     .extern GraphicsResourceSet_ReleaseHandles
     .extern GraphicsResourceSet_Destroy
     .extern __destroy_arr
-    .extern func_02005058
+    .extern VecFx32Object_Destroy
     .extern func_ov040_021fd740
     .extern func_02099fb0
     .global func_ov040_021fd744
@@ -66,16 +66,16 @@ func_ov040_021fd744:
     ldr r3, L_021fd850
     bl __destroy_arr
     add r0, r4, #0x74
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add r0, r4, #0x5c
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add r0, r4, #0x4c
-    bl func_02005058
+    bl VecFx32Object_Destroy
     mov r0, r4
     bl func_02099fb0
     mov r0, r4
     ldmia sp!, {r4, pc}
 L_021fd84c: .word data_ov040_022042a8
-L_021fd850: .word func_02005058
+L_021fd850: .word VecFx32Object_Destroy
 L_021fd854: .word func_ov040_021fd740
     .size func_ov040_021fd744, .-func_ov040_021fd744

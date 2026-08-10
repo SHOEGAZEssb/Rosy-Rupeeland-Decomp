@@ -55,9 +55,9 @@ s32 GamePhaseActorScriptVm_ComputeAngle(GamePhaseActorScriptVm *self)
 s32 GamePhaseActorScriptVm_GetVectorX(GamePhaseActorScriptVm *self)
 {
     VecFx32Object value;
-    func_02005030(&value, (VecFx32Object *)((u8 *)self->actor + 0x18));
+    VecFx32Object_InitCopy(&value, (VecFx32Object *)((u8 *)self->actor + 0x18));
     GamePhaseScriptVm_SetResult(&self->base, value.value.x >> 12);
-    func_02005058(&value);
+    VecFx32Object_Destroy(&value);
     return 0;
 }
 
@@ -65,9 +65,9 @@ s32 GamePhaseActorScriptVm_GetVectorX(GamePhaseActorScriptVm *self)
 s32 GamePhaseActorScriptVm_GetVectorY(GamePhaseActorScriptVm *self)
 {
     VecFx32Object value;
-    func_02005030(&value, (VecFx32Object *)((u8 *)self->actor + 0x18));
+    VecFx32Object_InitCopy(&value, (VecFx32Object *)((u8 *)self->actor + 0x18));
     GamePhaseScriptVm_SetResult(&self->base, value.value.y >> 12);
-    func_02005058(&value);
+    VecFx32Object_Destroy(&value);
     return 0;
 }
 
@@ -75,8 +75,8 @@ s32 GamePhaseActorScriptVm_GetVectorY(GamePhaseActorScriptVm *self)
 s32 GamePhaseActorScriptVm_GetVectorZ(GamePhaseActorScriptVm *self)
 {
     VecFx32Object value;
-    func_02005030(&value, (VecFx32Object *)((u8 *)self->actor + 0x18));
+    VecFx32Object_InitCopy(&value, (VecFx32Object *)((u8 *)self->actor + 0x18));
     GamePhaseScriptVm_SetResult(&self->base, value.value.z >> 12);
-    func_02005058(&value);
+    VecFx32Object_Destroy(&value);
     return 0;
 }

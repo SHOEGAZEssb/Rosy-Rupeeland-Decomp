@@ -3,8 +3,8 @@
 .extern SceneManager_GetCurrent
 .extern data_020c9670
 .extern data_021052fc
-.extern func_02005058
-.extern func_020050a4
+.extern VecFx32Object_Destroy
+.extern VecFx32Object_Assign
 .extern GraphicsSpriteState_SetDepthOrderedWorldPosition
 .extern VecFx32Bezier_Evaluate3D
 .extern GamePhaseRuntime_UpdateActorPresentationState
@@ -59,7 +59,7 @@ func_ov062_022104d0:
     str r0, [sp, #0x1c]
     ldr r0, [r4, #0x24]
     add r0, r0, #0x18
-    bl func_020050a4
+    bl VecFx32Object_Assign
     mov r0, #0x4
     str r0, [sp, #0x0]
     ldr r0, [r4, #0x28]
@@ -101,12 +101,12 @@ func_ov062_022104d0:
     blx r1
 .L_02210620:
     add r0, sp, #0x10
-    bl func_02005058
+    bl VecFx32Object_Destroy
     mov r0, #0x1
     b .L_0221063c
 .L_02210630:
     add r0, sp, #0x10
-    bl func_02005058
+    bl VecFx32Object_Destroy
     mov r0, #0x0
 .L_0221063c:
     add sp, sp, #0x20

@@ -10,7 +10,7 @@ extern s16 data_020c9670[];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *func_020050a4(void *destination, const void *source);
+extern void *VecFx32Object_Assign(void *destination, const void *source);
 extern u32 genrand_int32(void);
 extern s32 func_020ada8c(s32 value, s32 divisor);
 extern s32 Actor_GetCachedTerrainHeight(void *actor);
@@ -52,7 +52,7 @@ s32 Type7Actor_UpdateRandomMotionState(void *self)
         s32 magnitude;
         s32 modulus;
         s32 index;
-        func_020050a4(actor + 0x78, actor + 0x214);
+        VecFx32Object_Assign(actor + 0x78, actor + 0x214);
         direction = genrand_int32() & 0xffff;
         modulus = (*(u8 **)(actor + 0x29c))[0x54] == 2 ? 0x80 : 0x18;
         magnitude = func_020ada8c(
@@ -69,9 +69,9 @@ s32 Type7Actor_UpdateRandomMotionState(void *self)
         || Type7Actor_TryAcquireTarget(actor, 1) != 0)
         return 0;
     if (*(s16 *)(actor + 0x264) > 0)
-        func_020050a4(actor + 0x78, actor + 0x18);
+        VecFx32Object_Assign(actor + 0x78, actor + 0x18);
     else if ((*(u32 *)(actor + 0x268) & 4) != 0)
-        func_020050a4(actor + 0x78, actor + 0x224);
+        VecFx32Object_Assign(actor + 0x78, actor + 0x224);
     Type7Actor_UpdateMotionTowardTransform(actor, actor + 0x78);
     if (*(s32 *)(actor + 0x3c) == 0 && *(s32 *)(actor + 0x40) == 0)
         Type7Actor_ResetInteractionState(actor);

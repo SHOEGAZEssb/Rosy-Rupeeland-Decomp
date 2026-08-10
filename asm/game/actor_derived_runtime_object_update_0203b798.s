@@ -1,9 +1,9 @@
 ; Matching retail form; see src/game/actor_derived_runtime_object_update.c.
 .text
-.extern func_0200500c
-.extern func_02005058
-.extern func_020050a4
-.extern func_020050c8
+.extern VecFx32Object_InitComponents
+.extern VecFx32Object_Destroy
+.extern VecFx32Object_Assign
+.extern VecFx32Object_Add
 .extern VecFx32Stepper_Update
 .extern VecFx32Stepper_GetStep
 .extern VecFx32Stepper_IsComplete
@@ -23,7 +23,7 @@ ActorDerivedRuntime_UpdateFrame: ; 0x0203b798
     beq .L_0203b990
     add r0, r4, #0x28
     add r1, r4, #0x18
-    bl func_020050a4
+    bl VecFx32Object_Assign
     ldr r0, [r4, #0x10]
     tst r0, #0x40
     beq .L_0203b8f4
@@ -62,20 +62,20 @@ ActorDerivedRuntime_UpdateFrame: ; 0x0203b798
     mov r2, r1
     mov r3, r1
     str ip, [r4, #0x10]
-    bl func_0200500c
+    bl VecFx32Object_InitComponents
     add r1, sp, #0x10
     add r0, r4, #0x38
-    bl func_020050a4
+    bl VecFx32Object_Assign
     add r0, sp, #0x10
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add r0, r4, #0x198
     bl VecFx32Stepper_GetTarget
     mov r1, r0
     add r0, r4, #0x28
-    bl func_020050a4
+    bl VecFx32Object_Assign
     mov r1, r0
     add r0, r4, #0x18
-    bl func_020050a4
+    bl VecFx32Object_Assign
     b .L_0203b8f4
 .L_0203b890:
     ldrb r0, [r4, #0x4b]
@@ -98,12 +98,12 @@ ActorDerivedRuntime_UpdateFrame: ; 0x0203b798
     mov r2, r1
     mov r3, r1
     str ip, [r4, #0x10]
-    bl func_0200500c
+    bl VecFx32Object_InitComponents
     add r1, sp, #0x0
     add r0, r4, #0x38
-    bl func_020050a4
+    bl VecFx32Object_Assign
     add r0, sp, #0x0
-    bl func_02005058
+    bl VecFx32Object_Destroy
 .L_0203b8f4:
     ldr r0, [r4, #0x14]
     tst r0, #0x100000
@@ -113,7 +113,7 @@ ActorDerivedRuntime_UpdateFrame: ; 0x0203b798
 .L_0203b908:
     add r0, r4, #0x18
     add r1, r4, #0x38
-    bl func_020050c8
+    bl VecFx32Object_Add
     ldr r0, [r4, #0x14]
     tst r0, #0x40
     bne .L_0203b980

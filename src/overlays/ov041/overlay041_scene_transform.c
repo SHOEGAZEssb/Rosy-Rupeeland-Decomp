@@ -10,8 +10,8 @@
 
 extern "C" {
 void func_0209a2ac(void *, const void *, s32);
-void func_02005030(void *, const void *);
-void func_02005058(void *);
+void VecFx32Object_InitCopy(void *, const void *);
+void VecFx32Object_Destroy(void *);
 void func_0209b7a0(void *, const void *);
 void func_0209c7e8(void *, s32);
 void func_0209c87c(void *, const void *, const void *, s32, s32);
@@ -39,7 +39,7 @@ extern "C" void func_ov041_021fffc8(void *object, const void *transform)
 {
     func_0209a2ac(object, transform, 1);
     u8 localTransform[0x10];
-    func_02005030(localTransform, transform);
+    VecFx32Object_InitCopy(localTransform, transform);
     ++FIELD(s32, object, 0x1a8);
 
     void *owner = FIELD(void *, object, 0x48);
@@ -97,5 +97,5 @@ extern "C" void func_ov041_021fffc8(void *object, const void *transform)
         }
         func_0209a2ac(FIELD(void *, object, 0x7c), transform, 1);
     }
-    func_02005058(localTransform);
+    VecFx32Object_Destroy(localTransform);
 }

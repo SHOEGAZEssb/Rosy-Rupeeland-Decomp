@@ -1,7 +1,7 @@
 .text
 /* Exact fallback; see overlay039_scene_lifecycle.c for portable C. */
     .extern func_ov039_021fce00
-    .extern func_02004fe0
+    .extern VecFx32Object_Init
     .extern func_ov039_0220482c
     .extern func_ov049_0220c124
     .extern func_ov069_022109c4
@@ -9,9 +9,9 @@
     .extern func_0201e0ec
     .extern func_0209a748
     .extern func_ov039_02200f9c
-    .extern func_0200500c
-    .extern func_020050a4
-    .extern func_02005058
+    .extern VecFx32Object_InitComponents
+    .extern VecFx32Object_Assign
+    .extern VecFx32Object_Destroy
     .extern Heap_Alloc
     .extern func_ov039_021fce60
     .extern func_ov039_02203ef0
@@ -32,7 +32,7 @@ func_ov039_02200cd8:
     ldr r1, L_02200f3c
     add r0, r6, #0xac
     str r1, [r6, #0x0]
-    bl func_02004fe0
+    bl VecFx32Object_Init
     add r0, r6, #0xbc
     bl func_ov039_0220482c
     add r0, r6, #0x64
@@ -88,12 +88,12 @@ func_ov039_02200cd8:
     add r0, sp, #0x0
     sub r2, r1, #0xa000
     mov r3, r1
-    bl func_0200500c
+    bl VecFx32Object_InitComponents
     add r0, r6, #0xac
     add r1, sp, #0x0
-    bl func_020050a4
+    bl VecFx32Object_Assign
     add r0, sp, #0x0
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add r0, r6, #0x1c00
     mov r2, #0x1
     mov r1, #0x0

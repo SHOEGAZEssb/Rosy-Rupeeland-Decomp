@@ -2,8 +2,8 @@
 .text
 .extern Heap_Free
 .extern data_020df61c
-.extern func_02004fe0
-.extern func_02005058
+.extern VecFx32Object_Init
+.extern VecFx32Object_Destroy
 .extern func_02033b38
 .extern ActorDerivedRuntime_Init
 .extern ActorDerivedRuntime_DestroyAlternate
@@ -33,11 +33,11 @@ ActorMotionProbe_Init: ; 0x0203c140
     mov r1, #0x1000
     add r0, r4, #0x210
     str r1, [r4, #0x20c]
-    bl func_02004fe0
+    bl VecFx32Object_Init
     add r0, r4, #0x220
-    bl func_02004fe0
+    bl VecFx32Object_Init
     add r0, r4, #0x230
-    bl func_02004fe0
+    bl VecFx32Object_Init
     mov r0, #0x0
     str r0, [r4, #0x240]
     mov r0, #0x10
@@ -60,11 +60,11 @@ ActorMotionProbe_Destroy: ; 0x0203c1c0
     stmdb sp!, {r4, lr}
     mov r4, r0
     add r0, r4, #0x230
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add r0, r4, #0x220
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add r0, r4, #0x210
-    bl func_02005058
+    bl VecFx32Object_Destroy
     mov r0, r4
     bl ActorDerivedRuntime_DestroyAlternate
     mov r0, r4
@@ -77,11 +77,11 @@ ActorMotionProbe_DestroyAndFree: ; 0x0203c1f0
     stmdb sp!, {r4, lr}
     mov r4, r0
     add r0, r4, #0x230
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add r0, r4, #0x220
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add r0, r4, #0x210
-    bl func_02005058
+    bl VecFx32Object_Destroy
     mov r0, r4
     bl ActorDerivedRuntime_DestroyAlternate
     mov r0, r4

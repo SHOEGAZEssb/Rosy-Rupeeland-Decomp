@@ -1,8 +1,8 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov070/overlay070_recovery.c.
-.extern func_02004fe0
-.extern func_02005058
-.extern func_020050a4
+.extern VecFx32Object_Init
+.extern VecFx32Object_Destroy
+.extern VecFx32Object_Assign
 .extern func_02059278
 .extern GraphicsSpriteState_SetAnimationIndex
 .extern func_020a29ac
@@ -332,7 +332,7 @@ func_ov070_022118b4:
     ldrh r1, [r2, #0x42]
     bic r1, r1, #0x4
     strh r1, [r2, #0x42]
-    bl func_02004fe0
+    bl VecFx32Object_Init
     ldr r0, [r4, #0x60]
     add r1, sp, #0x0
     sub r0, r0, #0x80000
@@ -341,9 +341,9 @@ func_ov070_022118b4:
     str r0, [sp, #0x8]
     ldr r0, [r4, #0x48]
     add r0, r0, #0x19c
-    bl func_020050a4
+    bl VecFx32Object_Assign
     add r0, sp, #0x0
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add sp, sp, #0x28
     ldmia sp!, {r4, pc}
 .L_02211db8: .word 0x5dc

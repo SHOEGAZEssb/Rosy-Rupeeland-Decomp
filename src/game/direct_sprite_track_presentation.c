@@ -38,8 +38,8 @@ extern void func_02071ee0(void *state, void *table, s32 field0c, s32 field10,
                           s32 field08);
 extern void func_02071f38(void *state);
 extern void func_02071eb8(void *state);
-extern void func_0200500c(PresentationValue *track, s32 x, s32 y, s32 z);
-extern void func_02005058(PresentationValue *value);
+extern void VecFx32Object_InitComponents(PresentationValue *track, s32 x, s32 y, s32 z);
+extern void VecFx32Object_Destroy(PresentationValue *value);
 extern void VecFx32_Subtract(PresentationValue *destination,
                           PresentationValue *track, s32 argument);
 extern void func_02056f00(PresentationValue *destination,
@@ -75,7 +75,7 @@ DirectSpriteTrackPresentation *func_0201fc28(
     self->vtable = (void **)data_020d6158;
     func_02071ea4(&self->resource08);
     self->sampleArgument18 = sampleArgument;
-    func_0200500c(&self->track1c, x << 12, y << 12, 0);
+    VecFx32Object_InitComponents(&self->track1c, x << 12, y << 12, 0);
     func_02071ee0(&self->resource08, data_020f4e18, field0c, field10, field08);
     resource = ActorCollection_GetSpriteOwner(
         GamePhaseRuntime_GetActorCollection(data_021052fc, selector == 0 ? 1 : 2));
@@ -105,7 +105,7 @@ DirectSpriteTrackPresentation *func_0201fd64(
     self->vtable = (void **)data_020d6158;
     GraphicsSpriteGroup_ReleaseState(*(void **)self->sprite14);
     func_02071f38(&self->resource08);
-    func_02005058(&self->track1c);
+    VecFx32Object_Destroy(&self->track1c);
     func_02071eb8(&self->resource08);
     return self;
 }
@@ -135,12 +135,12 @@ s32 func_0201fdec(DirectSpriteTrackPresentation *self)
     }
     VecFx32_Subtract(&sampled, &self->track1c, self->sampleArgument18);
     func_02056f00(&transformed, &sampled);
-    func_02005058(&sampled);
+    VecFx32Object_Destroy(&sampled);
     *(s16 *)(self->sprite14 + 0x2c) =
         (s16)(*(s32 *)&transformed.bytes[4] >> 12);
     *(s16 *)(self->sprite14 + 0x2e) =
         (s16)(*(s32 *)&transformed.bytes[8] >> 12);
-    func_02005058(&transformed);
+    VecFx32Object_Destroy(&transformed);
     return 0;
 }
 

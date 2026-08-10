@@ -7,12 +7,12 @@ extern s16 data_020c9670[];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_020050a4(void *destination, const void *source);
+extern void VecFx32Object_Assign(void *destination, const void *source);
 extern void VecFx32_Subtract(void *output, const void *first, const void *second);
 extern s32 func_0204cfa4(s32 x, s32 y);
 extern s32 func_020ae024(s32 y, s32 x);
 extern void func_0204cff4(s32 *x, s32 *y, s32 maximum);
-extern void func_02005058(void *vector);
+extern void VecFx32Object_Destroy(void *vector);
 #ifdef __cplusplus
 }
 #endif
@@ -39,7 +39,7 @@ void ActorExtendedType2_ApplyTargetImpulse(void *self, const void *target)
     u8 *actor = (u8 *)self;
     s32 displacement[4];
 
-    func_020050a4(actor + 0x78, target);
+    VecFx32Object_Assign(actor + 0x78, target);
     VecFx32_Subtract(displacement, actor + 0x78, actor + 0x18);
     if (func_0204cfa4(displacement[1], displacement[2]) > 0x4000) {
         u8 *record = data_020e8380 + *(u16 *)(actor + 0x4e) * 0x30;
@@ -64,5 +64,5 @@ void ActorExtendedType2_ApplyTargetImpulse(void *self, const void *target)
         *(s32 *)(actor + 0x90) = 0;
         *(s32 *)(actor + 0x94) = 0;
     }
-    func_02005058(displacement);
+    VecFx32Object_Destroy(displacement);
 }

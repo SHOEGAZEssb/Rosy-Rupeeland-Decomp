@@ -1,8 +1,8 @@
 ; Matching retail form; see src/game/actor_derived_type1_constructor.c.
 .text
 .extern data_020df3c8
-.extern func_02004fe0
-.extern func_0200500c
+.extern VecFx32Object_Init
+.extern VecFx32Object_InitComponents
 .extern ActorRuntimeTriple_Assign
 .extern ActorDerivedRuntime_Init
 .extern Type7MarkerPresentation_Init
@@ -19,7 +19,7 @@ ActorDerivedType1_Init: ; 0x02035060
     mov r3, r1
     add r0, r4, #0x238
     str ip, [r4, #0x0]
-    bl func_0200500c
+    bl VecFx32Object_InitComponents
     mov r2, #0x0
     str r2, [r4, #0x248]
     add r1, r4, #0x200
@@ -28,7 +28,7 @@ ActorDerivedType1_Init: ; 0x02035060
     strh r2, [r1, #0x50]
     add r0, r4, #0x254
     strh r2, [r1, #0x52]
-    bl func_02004fe0
+    bl VecFx32Object_Init
     add r0, r4, #0x200
     mov r1, #0x0
     strh r1, [r0, #0x66]
@@ -42,7 +42,7 @@ ActorDerivedType1_Init: ; 0x02035060
     strh r1, [r0, #0x80]
     strh r1, [r0, #0x82]
     add r0, r4, #0x284
-    bl func_02004fe0
+    bl VecFx32Object_Init
     mvn r1, #0x0
     add r0, r4, #0x200
     strh r1, [r0, #0x94]

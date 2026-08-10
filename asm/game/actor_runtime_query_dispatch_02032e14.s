@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/actor_runtime_query_dispatch.c.
 .text
-.extern func_02005030
-.extern func_02005058
+.extern VecFx32Object_InitCopy
+.extern VecFx32Object_Destroy
 .extern VecFx32Stepper_GetStep
 .extern ActorBounds_GetWidth
 .extern ActorBounds_GetHeight
@@ -95,31 +95,31 @@ Actor_QueryRuntimeProperty: ; 0x02032e14
 .L_02032f40:
     add r0, sp, #0x20
     add r1, r2, #0x18
-    bl func_02005030
+    bl VecFx32Object_InitCopy
     ldr r1, [sp, #0x24]
     add r0, sp, #0x20
     mov r4, r1, asr #0xc
-    bl func_02005058
+    bl VecFx32Object_Destroy
     mov r0, r4
     b .L_020330f4
 .L_02032f64:
     add r0, sp, #0x10
     add r1, r2, #0x18
-    bl func_02005030
+    bl VecFx32Object_InitCopy
     ldr r1, [sp, #0x18]
     add r0, sp, #0x10
     mov r4, r1, asr #0xc
-    bl func_02005058
+    bl VecFx32Object_Destroy
     mov r0, r4
     b .L_020330f4
 .L_02032f88:
     add r0, sp, #0x0
     add r1, r2, #0x18
-    bl func_02005030
+    bl VecFx32Object_InitCopy
     ldr r1, [sp, #0xc]
     add r0, sp, #0x0
     mov r4, r1, asr #0xc
-    bl func_02005058
+    bl VecFx32Object_Destroy
     mov r0, r4
     b .L_020330f4
 .L_02032fac:

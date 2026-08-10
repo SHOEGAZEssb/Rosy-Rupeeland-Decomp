@@ -9,7 +9,7 @@ extern "C" {
 extern s32 func_020adae4(s32 numerator, s32 denominator);
 extern s32 func_02034164(void *actor);
 extern void func_020328d0(void *vector, s32 scale);
-extern s32 func_02005070(void *vector);
+extern s32 VecFx32Object_GetMagnitude(void *vector);
 extern s32 Actor_QueryTerrainHeight(void *actor, s32 x, s32 y);
 extern void ActorFeedback_SpawnIndexedPresentation(void *actor, u32 resource, u16 value);
 extern void func_02032228(void *actor, s32 x, s32 y, s32 scale);
@@ -72,7 +72,7 @@ void ActorTableRecord_UpdateFrame(void *self)
     } else {
         func_020328d0(actor + 0x88, *(s16 *)(record + 8) * 16);
         *(u32 *)(actor + 0xd0) &= ~0x40;
-        if (func_02005070(actor + 0x88) < 410) {
+        if (VecFx32Object_GetMagnitude(actor + 0x88) < 410) {
             *(s32 *)(actor + 0x8c) = 0;
             *(s32 *)(actor + 0x90) = 0;
             *(s32 *)(actor + 0x94) = 0;
@@ -109,7 +109,7 @@ void ActorTableRecord_UpdateFrame(void *self)
     }
     if ((*(u32 *)(actor + 0x20c) & 0x2000) != 0) {
         *(u16 *)(*(u8 **)(actor + 0x54) + 0x36) =
-            (u16)func_020adae4(func_02005070(actor + 0x88), 16);
+            (u16)func_020adae4(VecFx32Object_GetMagnitude(actor + 0x88), 16);
         func_02032228(actor, *(s32 *)(actor + 0x8c),
                       *(s32 *)(actor + 0x90), 0x800);
     }

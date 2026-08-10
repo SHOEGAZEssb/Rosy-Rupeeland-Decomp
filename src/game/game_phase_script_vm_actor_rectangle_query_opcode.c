@@ -55,11 +55,11 @@ s32 GamePhaseActorScriptVm_IsCollection1ActorInRectangle(GamePhaseActorScriptVm 
     VecFx32Object position;
     RectS32 rect;
 
-    func_02005030(&position, (const VecFx32Object *)(actor + 0x18));
+    VecFx32Object_InitCopy(&position, (const VecFx32Object *)(actor + 0x18));
     RectS32_Init(&rect, left, top, right, bottom);
     GamePhaseScriptVm_SetResult(&self->base,
                   RectS32_ContainsPoint(&rect, position.value.x >> 12,
                                 position.value.y >> 12) != 0);
-    func_02005058(&position);
+    VecFx32Object_Destroy(&position);
     return 0;
 }

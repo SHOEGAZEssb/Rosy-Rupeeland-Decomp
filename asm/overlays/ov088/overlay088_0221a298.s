@@ -6,8 +6,8 @@
 .extern data_ov088_0221b9fc
 .extern OverlayManager_LoadOverlay
 .extern OverlayManager_GetGlobal
-.extern func_02005058
-.extern func_020050a4
+.extern VecFx32Object_Destroy
+.extern VecFx32Object_Assign
 .extern GamePhaseRuntime_GetActorCollection
 .extern func_02034a60
 .extern Actor_ReplaceAttachmentSlotResource
@@ -96,9 +96,9 @@ func_ov088_0221a298:
     bl func_ov088_0221a98c
     add r0, r4, #0x18
     add r1, sp, #0xc
-    bl func_020050a4
+    bl VecFx32Object_Assign
     add r0, sp, #0xc
-    bl func_02005058
+    bl VecFx32Object_Destroy
     ldr r1, .L_0221a578
     ldr r3, .L_0221a57c
     mov r0, #0x48

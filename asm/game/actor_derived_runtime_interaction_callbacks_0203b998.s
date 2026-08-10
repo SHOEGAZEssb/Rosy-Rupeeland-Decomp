@@ -1,8 +1,8 @@
 ; Matching retail form; see src/game/actor_derived_runtime_interaction_callbacks.c.
 .text
-.extern func_0200500c
-.extern func_02005058
-.extern func_020050a4
+.extern VecFx32Object_InitComponents
+.extern VecFx32Object_Destroy
+.extern VecFx32Object_Assign
 .extern VecFx32Stepper_Reset
 .extern func_02031758
 .extern func_02031cac
@@ -46,12 +46,12 @@ ActorDerivedRuntime_HandlePairActive: ; 0x0203b9dc
     add r0, sp, #0x0
     mov r2, r1
     mov r3, r1
-    bl func_0200500c
+    bl VecFx32Object_InitComponents
     add r1, sp, #0x0
     add r0, r6, #0x38
-    bl func_020050a4
+    bl VecFx32Object_Assign
     add r0, sp, #0x0
-    bl func_02005058
+    bl VecFx32Object_Destroy
     ldr r1, [r6, #0x10]
     tst r1, #0x40
     beq .L_0203ba58

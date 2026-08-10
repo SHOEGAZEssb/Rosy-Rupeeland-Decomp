@@ -9,8 +9,8 @@
 .extern data_020df4a4
 .extern data_021052fc
 .extern data_0210568c
-.extern func_0200500c
-.extern func_02005058
+.extern VecFx32Object_InitComponents
+.extern VecFx32Object_Destroy
 .extern func_02008378
 .extern ActorMotionAreaFollower_GetPosition
 .extern GamePhaseCurrencyHud_AddCurrency
@@ -178,13 +178,13 @@ ActorDerivedType1_UpdateFrameControl: ; 0x020372e4
     sub r1, r1, #0x6000
     add r0, sp, #0x18
     mov r2, #0x0
-    bl func_0200500c
+    bl VecFx32Object_InitComponents
     add r0, sp, #0x34
     add r1, r7, #0x18
     add r2, sp, #0x18
     bl func_02008378
     add r0, sp, #0x18
-    bl func_02005058
+    bl VecFx32Object_Destroy
     ldr r1, .L_02037a60
     ldr r3, .L_02037a64
     mov r0, #0x14
@@ -226,7 +226,7 @@ ActorDerivedType1_UpdateFrameControl: ; 0x020372e4
     mov r1, #0x1
     bl func_020a28e0
     add r0, sp, #0x34
-    bl func_02005058
+    bl VecFx32Object_Destroy
 .L_020375ac:
     ldrb r1, [r7, #0x2a1]
     add r0, r7, #0x200

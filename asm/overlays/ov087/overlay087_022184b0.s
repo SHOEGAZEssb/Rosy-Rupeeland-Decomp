@@ -7,7 +7,7 @@
 .extern data_ov087_02218aa4
 .extern OverlayManager_LoadOverlay
 .extern OverlayManager_GetGlobal
-.extern func_02005058
+.extern VecFx32Object_Destroy
 .extern AnimationResource_Init
 .extern func_ov062_0220fe78
 .extern func_ov087_02218678
@@ -72,7 +72,7 @@ func_ov087_022184b0:
     cmp r7, #0x0
     beq .L_02218584
     add r0, sp, #0xc
-    bl func_02005058
+    bl VecFx32Object_Destroy
 .L_02218584:
     add r0, r5, #0x200
     ldrh r3, [r0, #0x1a]

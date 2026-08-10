@@ -1,9 +1,9 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov075/overlay075_recovery.c.
-.extern func_02004fe0
-.extern func_0200500c
-.extern func_02005058
-.extern func_020050a4
+.extern VecFx32Object_Init
+.extern VecFx32Object_InitComponents
+.extern VecFx32Object_Destroy
+.extern VecFx32Object_Assign
 .extern VecFx32Triple_Set
 .extern VecFx32Triple_Destroy
 .extern Actor_GetCachedTerrainHeight
@@ -67,14 +67,14 @@ func_ov075_02213f08:
     add r0, sp, #0x50
     add r2, r5, r2, asr #0x1
     add r3, r6, r3, asr #0x1
-    bl func_0200500c
+    bl VecFx32Object_InitComponents
     add r5, sp, #0x20
     mov r0, r5
-    bl func_02004fe0
+    bl VecFx32Object_Init
     add r0, sp, #0x30
-    bl func_02004fe0
+    bl VecFx32Object_Init
     add r0, r5, #0x20
-    bl func_02004fe0
+    bl VecFx32Object_Init
     mov r0, r5
     add r1, r10, #0x22c
     add r2, r10, #0x2b0
@@ -101,9 +101,9 @@ func_ov075_02213f08:
     bl func_ov075_02213ec4
     add r1, sp, #0x10
     add r0, r10, #0x18
-    bl func_020050a4
+    bl VecFx32Object_Assign
     add r0, sp, #0x10
-    bl func_02005058
+    bl VecFx32Object_Destroy
     mov r0, r10
     bl Actor_GetCachedTerrainHeight
     ldr r1, [r10, #0x24]
@@ -193,7 +193,7 @@ func_ov075_02213f08:
     add r1, sp, #0x0
     bl func_ov075_022133a4
     add r0, sp, #0x0
-    bl func_02005058
+    bl VecFx32Object_Destroy
     cmp r6, #0x0
     mov r2, #0x300
     beq .L_022141b4
@@ -239,7 +239,7 @@ func_ov075_02213f08:
     movne r4, #0x0
     bl VecFx32Triple_Destroy
     add r0, sp, #0x50
-    bl func_02005058
+    bl VecFx32Object_Destroy
     mov r0, r4
 .L_02214240:
     add sp, sp, #0x60

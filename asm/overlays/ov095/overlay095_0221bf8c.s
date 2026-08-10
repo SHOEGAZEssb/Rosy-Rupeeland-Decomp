@@ -1,6 +1,6 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov095/overlay095_recovery.c.
-.extern func_020050a4
+.extern VecFx32Object_Assign
 .extern Actor_SetDirectionFromVector
 .extern func_0204cfa4
 
@@ -43,7 +43,7 @@ func_ov095_0221bf8c:
 .L_0221c014:
     add r0, r5, #0xb0
     add r1, r5, #0x22c
-    bl func_020050a4
+    bl VecFx32Object_Assign
     mov r0, r5
     ldr r2, [r0, #0x0]
     mov r1, #0x0

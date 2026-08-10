@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/game_phase_state_boundary_transition.c.
 .text
-.extern func_02005058
+.extern VecFx32Object_Destroy
 .extern func_02056f00
 
     .global GamePhaseState_GetBoundaryDirection
@@ -31,7 +31,7 @@ GamePhaseState_GetBoundaryDirection: ; 0x0200efe0
     mov r1, r0, lsl #0x4
     bge L_0200f054
     add r0, sp, #0x0
-    bl func_02005058
+    bl VecFx32Object_Destroy
     mov r0, #0x1
     b L_0200f0ac
 L_0200f054:
@@ -39,14 +39,14 @@ L_0200f054:
     cmp ip, r0
     ble L_0200f070
     add r0, sp, #0x0
-    bl func_02005058
+    bl VecFx32Object_Destroy
     mov r0, #0x2
     b L_0200f0ac
 L_0200f070:
     cmp r3, #0x20
     bge L_0200f088
     add r0, sp, #0x0
-    bl func_02005058
+    bl VecFx32Object_Destroy
     mov r0, #0x3
     b L_0200f0ac
 L_0200f088:
@@ -54,11 +54,11 @@ L_0200f088:
     cmp r3, r0
     add r0, sp, #0x0
     ble L_0200f0a4
-    bl func_02005058
+    bl VecFx32Object_Destroy
     mov r0, #0x4
     b L_0200f0ac
 L_0200f0a4:
-    bl func_02005058
+    bl VecFx32Object_Destroy
     mvn r0, #0x0
 L_0200f0ac:
     add sp, sp, #0x10

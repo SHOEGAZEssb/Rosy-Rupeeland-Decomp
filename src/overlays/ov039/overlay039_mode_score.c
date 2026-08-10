@@ -21,9 +21,9 @@ extern "C" {
 extern void GraphicsSpriteState_SetAnimationIndex(void *renderObject, u8 mode);
 extern void GraphicsSpriteState_SetFrameIndex(void *renderObject, s32 value);
 extern void func_020c10d4(void *destination, s32 size);
-extern void func_02004fe0(void *object);
-extern void func_020050a4(void *destination, const void *source);
-extern void func_02005058(void *object);
+extern void VecFx32Object_Init(void *object);
+extern void VecFx32Object_Assign(void *destination, const void *source);
+extern void VecFx32Object_Destroy(void *object);
 extern s32 func_020be334(s32 value);
 extern s32 func_020adc90(s32 numerator, s32 denominator);
 #ifdef __cplusplus
@@ -72,8 +72,8 @@ static s32 fixedMultiply(s32 first, s32 second)
 static s32 objectScore(void *object, const void *point, s32 verticalRadius)
 {
     Overlay039Vector position;
-    func_02004fe0(&position);
-    func_020050a4(&position, (u8 *)object + 0x1c);
+    VecFx32Object_Init(&position);
+    VecFx32Object_Assign(&position, (u8 *)object + 0x1c);
     s32 dx = FIELD(s32, point, 4) - position.x_04;
     s32 dy = FIELD(s32, point, 8) - position.y_08;
     s32 horizontal = func_020adc90(0x48000 - func_020be334(dx), 0x48000);
@@ -82,7 +82,7 @@ static s32 objectScore(void *object, const void *point, s32 verticalRadius)
     if (horizontal < 0) horizontal = 0;
     if (vertical < 0) vertical = 0;
     s32 result = fixedMultiply(fixedMultiply(horizontal, vertical), 0xe000);
-    func_02005058(&position);
+    VecFx32Object_Destroy(&position);
     return result;
 }
 

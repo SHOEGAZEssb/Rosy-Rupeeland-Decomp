@@ -15,8 +15,8 @@ extern u8 *data_021052fc;
 extern "C" {
 #endif
 extern s32 ActorExtendedRecordArray_ContainsPoint(const void *records, s32 x, s32 y);
-extern void func_02005030(void *temporary, const void *source);
-extern void func_02005058(void *temporary);
+extern void VecFx32Object_InitCopy(void *temporary, const void *source);
+extern void VecFx32Object_Destroy(void *temporary);
 #ifdef __cplusplus
 }
 #endif
@@ -43,7 +43,7 @@ static s32 callback_pair_matches(const u8 *object, u32 firstOffset,
  * callback pairs bypass that latter range rejection. Accepted targets produce
  * a 16-byte temporary copied from actor +0x18; its X/Y fields are displaced
  * toward or away from the target according to record +0x12, passed to virtual
- * +0xd0, then finalized by func_02005058. The function always returns zero.
+ * +0xd0, then finalized by VecFx32Object_Destroy. The function always returns zero.
  * Actor, target, virtual, and temporary transform state may change; no direct
  * hardware access occurs.
  */
@@ -126,7 +126,7 @@ s32 ActorExtendedType2_UpdateTargetValidationMotion(void *self, const void *desc
         }
     }
 
-    func_02005030(temporary, actor + 0x18);
+    VecFx32Object_InitCopy(temporary, actor + 0x18);
     {
         s16 threshold = *(const s16 *)(record + 0x12);
         if (targetDistance < threshold * threshold) {
@@ -138,6 +138,6 @@ s32 ActorExtendedType2_UpdateTargetValidationMotion(void *self, const void *desc
         }
     }
     (*(void (**)(void *, void *))(vtable + 0xd0))(actor, temporary);
-    func_02005058(temporary);
+    VecFx32Object_Destroy(temporary);
     return 0;
 }

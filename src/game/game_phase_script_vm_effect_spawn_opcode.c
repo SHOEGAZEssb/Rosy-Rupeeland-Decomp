@@ -48,7 +48,7 @@ s32 GamePhaseActorScriptVm_ConfigureOrSpawnOverlay62Effect(GamePhaseActorScriptV
         *(u32 *)(boundActor + 0x10) |= 0x400;
     } else {
         VecFx32Object position;
-        func_0200500c(&position, x << 12, y << 12, z << 12);
+        VecFx32Object_InitComponents(&position, x << 12, y << 12, z << 12);
         OverlayManager_LoadOverlay(OverlayManager_GetGlobal(), 2, 0x3e);
         if (selector == 0) {
             void *allocation = Heap_Alloc(0x48, data_020d5b2c, 4,
@@ -69,7 +69,7 @@ s32 GamePhaseActorScriptVm_ConfigureOrSpawnOverlay62Effect(GamePhaseActorScriptV
                                     first, 0, 0);
             *(u32 *)(target + 0x10) |= 0x400;
         }
-        func_02005058(&position);
+        VecFx32Object_Destroy(&position);
     }
     return 0;
 }

@@ -9,8 +9,8 @@
 extern "C" {
 #endif
 extern void *func_020695f4(void *actor, s32 *count);
-extern void func_02005030(void *temporary, const void *source);
-extern void func_02005058(void *temporary);
+extern void VecFx32Object_InitCopy(void *temporary, const void *source);
+extern void VecFx32Object_Destroy(void *temporary);
 extern void func_02062864(void *object, s32 enabled);
 extern void func_0204f7e4(void *temporary, void *object, s32 kind);
 extern void func_0204e3f4(s32 kind, s32 count, void *temporary);
@@ -61,7 +61,7 @@ s32 ActorExtendedType2_UpdateTerminalState18(void *self)
             s32 count;
             void *object = func_020695f4(actor, &count);
             u32 temporary[4];
-            func_02005030(temporary, actor + 0x18);
+            VecFx32Object_InitCopy(temporary, actor + 0x18);
             temporary[3] += 0x14000;
             if (object != 0) {
                 s32 i;
@@ -76,7 +76,7 @@ s32 ActorExtendedType2_UpdateTerminalState18(void *self)
                 else
                     func_0204e628(300, shortCount, temporary);
             }
-            func_02005058(temporary);
+            VecFx32Object_Destroy(temporary);
         }
         (*(void (**)(void *, s32))(vtable + 0x54))(actor, 0);
         Actor_RestoreSavedFlags(actor);

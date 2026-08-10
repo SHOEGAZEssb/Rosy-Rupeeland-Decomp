@@ -3,8 +3,8 @@
 .extern data_020c9670
 .extern data_020e0f28
 .extern data_021052fc
-.extern func_02005058
-.extern func_020050a4
+.extern VecFx32Object_Destroy
+.extern VecFx32Object_Assign
 .extern VecFx32_Subtract
 .extern GamePhaseRuntime_GetActorCollection
 .extern func_0204cfa4
@@ -26,7 +26,7 @@ ActorExtendedTransform_UpdateTargetMotion: ; 0x020441cc
     mov r3, #0x0
     add r0, r6, #0x78
     strh r3, [r2, #0x98]
-    bl func_020050a4
+    bl VecFx32Object_Assign
     add r0, sp, #0x38
     add r1, r6, #0x78
     add r2, r6, #0x18
@@ -150,7 +150,7 @@ ActorExtendedTransform_UpdateTargetMotion: ; 0x020441cc
     strne r0, [r6, #0x8c]
 .L_020443d4:
     add r0, sp, #0x38
-    bl func_02005058
+    bl VecFx32Object_Destroy
 .L_020443dc:
     add sp, sp, #0x48
     ldmia sp!, {r4, r5, r6, pc}

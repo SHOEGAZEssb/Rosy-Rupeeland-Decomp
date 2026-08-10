@@ -4,9 +4,9 @@
 .extern GameWork_TestFlag
 .extern data_020ed548
 .extern data_021052fc
-.extern func_0200500c
-.extern func_02005058
-.extern func_020050a4
+.extern VecFx32Object_InitComponents
+.extern VecFx32Object_Destroy
+.extern VecFx32Object_Assign
 .extern func_0204f848
 .extern func_020627a0
 .extern func_0207a19c
@@ -94,13 +94,13 @@ func_ov064_02211b4c:
     add r0, sp, #0x10
     mov r2, r1
     mov r3, #0x20000
-    bl func_0200500c
+    bl VecFx32Object_InitComponents
     add r0, sp, #0x20
     add r2, sp, #0x10
     mov r1, r8
     bl func_ov064_02211098
     add r0, sp, #0x10
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add r0, sp, #0x20
     add r1, sp, #0x30
     mov r2, #0x168
@@ -110,14 +110,14 @@ func_ov064_02211b4c:
     add r0, sp, #0x0
     mov r2, r1
     mov r3, #0x5000
-    bl func_0200500c
+    bl VecFx32Object_InitComponents
     add r0, r4, #0x38
     add r1, sp, #0x0
-    bl func_020050a4
+    bl VecFx32Object_Assign
     add r0, sp, #0x0
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add r0, sp, #0x20
-    bl func_02005058
+    bl VecFx32Object_Destroy
 .L_02211cd0:
     add sp, sp, #0x54
     ldmia sp!, {r4, r5, r6, r7, r8, r9, pc}

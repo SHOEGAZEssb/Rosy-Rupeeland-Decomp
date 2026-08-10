@@ -3,8 +3,8 @@
 .extern Heap_Alloc
 .extern data_021052fc
 .extern data_ov097_0221aa1c
-.extern func_02005030
-.extern func_02005058
+.extern VecFx32Object_InitCopy
+.extern VecFx32Object_Destroy
 .extern func_0201f864
 .extern func_02034a60
 .extern ActorExtendedType2_GetDescriptorValue25
@@ -124,7 +124,7 @@ func_ov097_02219228:
     bl func_02034a60
     add r0, sp, #0x18
     add r1, r7, #0x18
-    bl func_02005030
+    bl VecFx32Object_InitCopy
     ldr r1, .L_02219448
     ldr r3, .L_0221944c
     mov r0, #0x14
@@ -150,7 +150,7 @@ func_ov097_02219228:
     bl func_0201f864
 .L_02219428:
     add r0, sp, #0x18
-    bl func_02005058
+    bl VecFx32Object_Destroy
 .L_02219430:
     add sp, sp, #0x28
     ldmia sp!, {r4, r5, r6, r7, r8, pc}

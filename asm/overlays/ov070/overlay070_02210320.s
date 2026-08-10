@@ -1,9 +1,9 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov070/overlay070_recovery.c.
 .extern data_ov070_02212a70
-.extern func_02004fe0
-.extern func_02005058
-.extern func_020050a4
+.extern VecFx32Object_Init
+.extern VecFx32Object_Destroy
+.extern VecFx32Object_Assign
 
 .global func_ov070_02210320
 func_ov070_02210320:
@@ -11,7 +11,7 @@ func_ov070_02210320:
     sub sp, sp, #0x10
     mov r4, r0
     add r0, sp, #0x0
-    bl func_02004fe0
+    bl VecFx32Object_Init
     ldr r1, [r4, #0xd4]
     ldr r0, .L_022103d4
     sub r1, r1, #0x80000
@@ -48,9 +48,9 @@ func_ov070_02210320:
     ldr r0, [r4, #0x48]
     add r1, sp, #0x0
     add r0, r0, #0x19c
-    bl func_020050a4
+    bl VecFx32Object_Assign
     add r0, sp, #0x0
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add sp, sp, #0x10
     ldmia sp!, {r4, pc}
 .L_022103d4: .word data_ov070_02212a70

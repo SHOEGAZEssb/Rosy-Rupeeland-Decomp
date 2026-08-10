@@ -6,7 +6,7 @@
     .extern data_020f4e14
     .extern data_ov041_022058ec
     .extern func_02003e14
-    .extern func_02004fe0
+    .extern VecFx32Object_Init
     .extern GraphicsSpriteGroupOwner_CreateGroup
     .extern func_0209a748
     .extern func_020a6940
@@ -50,9 +50,9 @@ func_ov041_021fce04: ; 0x021fce04
     mov r2, #0xc
     bl __construct_array
     add r0, r5, #0x18c
-    bl func_02004fe0
+    bl VecFx32Object_Init
     add r0, r5, #0x19c
-    bl func_02004fe0
+    bl VecFx32Object_Init
     add r0, r5, #0x1b8
     bl func_ov041_021fd000
     str r4, [r5, #0x40]

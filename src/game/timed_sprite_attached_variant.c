@@ -44,9 +44,9 @@ extern AttachedTimedSprite *func_0201e290(AttachedTimedSprite *self,
                                           u8 *config);
 extern AttachedTimedSprite *func_0201e380(AttachedTimedSprite *self);
 extern void func_0201e3b8(AttachedTimedSprite *self, s32 enabled);
-extern void func_02005058(void *track);
-extern void func_020050a4(PresentationTrack *destination, const void *source);
-extern void func_020050c8(PresentationTrack *first,
+extern void VecFx32Object_Destroy(void *track);
+extern void VecFx32Object_Assign(PresentationTrack *destination, const void *source);
+extern void VecFx32Object_Add(PresentationTrack *first,
                           PresentationTrack *second);
 extern void GraphicsSpriteState_SetDepthOrderedWorldPositionFromOrigin(void *sprite, const void *position, s32 first,
                           s32 second, s32 third, s32 constant8);
@@ -72,8 +72,8 @@ AttachedTimedSprite *func_0201e6e4(AttachedTimedSprite *self, u8 *owner,
     self->vtable = (void **)data_020d6138;
     self->radialX30 = 0;
     self->radialScale34 = 0x1800;
-    func_020050a4(&self->first08, config + 0x10);
-    func_020050a4(&self->second18, config + 0x20);
+    VecFx32Object_Assign(&self->first08, config + 0x10);
+    VecFx32Object_Assign(&self->second18, config + 0x20);
     self->remaining28 = *(s32 *)(config + 0x30);
     *(u16 *)(self->sprite + 0x24) &= (u16)~2;
     GraphicsSpriteState_SetAnimationIndex(self->sprite, spriteValue);
@@ -127,7 +127,7 @@ s32 func_0201e7d0(AttachedTimedSprite *self)
     S16BoundsCenter_Init(&center, self->owner2c + 0x68);
     ((AttachedTimedSpriteApply)self->vtable[5])(
         self, self->owner2c + 0x18, &center);
-    func_020050c8(&self->first08, &self->second18);
+    VecFx32Object_Add(&self->first08, &self->second18);
     return 0;
 }
 
@@ -189,5 +189,5 @@ void func_0201e888(AttachedTimedSprite *self, s32 argument,
         product = (s64)data_020c9670[angleIndex] * self->radialScale34;
         *(s32 *)&self->second18.bytes[8] += (s32)((product + 0x800) >> 12);
     }
-    func_02005058(sample);
+    VecFx32Object_Destroy(sample);
 }

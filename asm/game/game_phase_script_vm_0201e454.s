@@ -4,8 +4,8 @@
 .extern func_0201e290
 .extern func_0201e380
 .extern func_0201e3b8
-.extern func_020050a4
-.extern func_020050c8
+.extern VecFx32Object_Assign
+.extern VecFx32Object_Add
 .extern func_020ae024
 .extern GraphicsSpriteState_SetAnimationIndex
 .extern GraphicsSpriteState_SetWorldPositionFromOrigin
@@ -20,10 +20,10 @@ func_0201e454: ; 0x0201e454
     add r0, r4, #0x8
     add r1, r5, #0x10
     str r2, [r4, #0x0]
-    bl func_020050a4
+    bl VecFx32Object_Assign
     add r0, r4, #0x18
     add r1, r5, #0x20
-    bl func_020050a4
+    bl VecFx32Object_Assign
     ldr r0, [r5, #0x30]
     str r0, [r4, #0x28]
     ldr r1, [r4, #0x4]

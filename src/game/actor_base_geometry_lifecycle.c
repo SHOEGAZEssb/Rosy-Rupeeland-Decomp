@@ -18,7 +18,7 @@ extern void *gSoundContext;
 extern "C" {
 #endif
 extern void func_02059424(void *, ActorBaseGeometryLifecycle *);
-extern void func_02005058(void *);
+extern void VecFx32Object_Destroy(void *);
 #ifdef __cplusplus
 }
 #endif
@@ -28,9 +28,9 @@ static ActorBaseGeometryLifecycle *destroyGeometry(
 {
     self->vtable_00 = data_020def7c;
     func_02059424(gSoundContext, self);
-    func_02005058(self->vector_38);
-    func_02005058(self->vector_28);
-    func_02005058(self->vector_18);
+    VecFx32Object_Destroy(self->vector_38);
+    VecFx32Object_Destroy(self->vector_28);
+    VecFx32Object_Destroy(self->vector_18);
     return self;
 }
 

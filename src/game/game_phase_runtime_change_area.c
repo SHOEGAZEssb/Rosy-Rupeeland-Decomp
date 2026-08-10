@@ -13,14 +13,14 @@ extern void *gLupyContext;
 extern "C" {
 #endif
 extern void *func_02028388(s32 areaId);
-extern void func_02004fe0(void *value);
+extern void VecFx32Object_Init(void *value);
 extern s32 func_020beb18(s32 value);
 extern s32 func_020be8c0(s32 a, s32 b);
 extern s32 func_020beb6c(s32 a, s32 b);
 extern s32 func_020beae4(s32 value);
 extern void *ActorMotionAreaFollower_GetPosition(void *object);
-extern void func_02005030(void *destination, const void *source);
-extern void func_020050c8(void *destination, const void *offset);
+extern void VecFx32Object_InitCopy(void *destination, const void *source);
+extern void VecFx32Object_Add(void *destination, const void *offset);
 extern void ActorMotion_SetPosition(void *object, const void *transform);
 extern void ActorRuntimeCollection_Reset(void *state);
 extern void GamePhaseRuntime_CreateSecondaryActorSubsystem(GamePhaseRuntime *self, void *area, s32 enabled);
@@ -34,8 +34,8 @@ extern void GamePhaseAreaScene_SetEnabled(void *actor, s32 value);
 extern void func_ov056_0220f054(void *object, const void *value);
 extern void func_02026174(void *object, void *area);
 extern void *GamePhaseRuntime_GetActorCollection(GamePhaseRuntime *self, s32 index);
-extern void func_020050a4(void *destination, const void *source);
-extern void func_02005058(void *value);
+extern void VecFx32Object_Assign(void *destination, const void *source);
+extern void VecFx32Object_Destroy(void *value);
 #ifdef __cplusplus
 }
 #endif
@@ -64,7 +64,7 @@ s32 GamePhaseRuntime_ChangeToNeighborArea(GamePhaseRuntime *self, s32 direction)
 
     area = (u8 *)func_02028388(areaId);
     *(u8 **)(b + 0x30bc) = area;
-    func_02004fe0(offset);
+    VecFx32Object_Init(offset);
 
     if (direction == 0 || direction == 1) {
         component = (s32)((u16)*(u32 *)(*(u8 **)(b + 0x2ed4) + 0x20) << 16);
@@ -86,8 +86,8 @@ s32 GamePhaseRuntime_ChangeToNeighborArea(GamePhaseRuntime *self, s32 direction)
         *(s32 *)(offset + 8) = func_020beae4(component);
     }
 
-    func_02005030(transform, ActorMotionAreaFollower_GetPosition(b + 0x2fbc));
-    func_020050c8(transform, offset);
+    VecFx32Object_InitCopy(transform, ActorMotionAreaFollower_GetPosition(b + 0x2fbc));
+    VecFx32Object_Add(transform, offset);
     ActorMotion_SetPosition(b + 0x2fbc, transform);
 
     object = *(void **)(b + 0x2ea8);
@@ -125,7 +125,7 @@ s32 GamePhaseRuntime_ChangeToNeighborArea(GamePhaseRuntime *self, s32 direction)
     *(void **)(b + 0x30f0) = *(void **)(b + 0x2ea4);
 
     object = GamePhaseRuntime_GetActorCollection(self, 1);
-    func_020050a4((u8 *)object + 0x2e94,
+    VecFx32Object_Assign((u8 *)object + 0x2e94,
                   (u8 *)*(void **)((u8 *)*(void **)(b + 0x2fb8) + 0x2ebc) + 0x18);
 
     object = *(void **)((u8 *)*(void **)(b + 0x2fb8) + 0x2ebc);
@@ -139,7 +139,7 @@ s32 GamePhaseRuntime_ChangeToNeighborArea(GamePhaseRuntime *self, s32 direction)
     object = *(void **)((u8 *)*(void **)(b + 0x2fb8) + 0x2ebc);
     *(s32 *)((u8 *)object + 0x24) = 0;
 
-    func_02005058(transform);
-    func_02005058(offset);
+    VecFx32Object_Destroy(transform);
+    VecFx32Object_Destroy(offset);
     return 1;
 }

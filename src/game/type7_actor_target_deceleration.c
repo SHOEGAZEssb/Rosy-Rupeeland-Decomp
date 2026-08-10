@@ -9,7 +9,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *func_020050a4(void *destination, const void *source);
+extern void *VecFx32Object_Assign(void *destination, const void *source);
 extern void Type7Actor_UpdateMotionTowardTransform(void *actor, const void *transform);
 extern void Type7Actor_DispatchCurrentCallback(void *actor);
 extern s32 func_020adae4(s32 value, s32 divisor);
@@ -51,9 +51,9 @@ s32 Type7Actor_UpdateTargetDeceleration(void *self)
     } else if (*(u16 *)(actor + 0x2a2) != 0) {
         --*(u16 *)(actor + 0x2a2);
     }
-    func_020050a4(actor + 0x78, related + 0x18);
+    VecFx32Object_Assign(actor + 0x78, related + 0x18);
     related = *(u8 **)(actor + 0x210);
-    func_020050a4(actor + 0x78, related + 0x18);
+    VecFx32Object_Assign(actor + 0x78, related + 0x18);
     Type7Actor_UpdateMotionTowardTransform(actor, actor + 0x78);
 
     if (*(s16 *)(actor + 0x24a) > 0) {

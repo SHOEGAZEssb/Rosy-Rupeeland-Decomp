@@ -37,21 +37,21 @@ void GamePhaseVisualEffect_UpdatePosition(GamePhaseVisualEffect *self,
 
     if (!self->resources.resource0 || !(self->flags & 1))
         return;
-    func_0200500c(&current, 0, 0, 0);
+    VecFx32Object_InitComponents(&current, 0, 0, 0);
     if (!(*((u8 *)runtime + 0x30cc) & 4)) {
         void *area;
         u8 *actor;
-        func_020050c8(&self->vectors[1], &self->vectors[3]);
+        VecFx32Object_Add(&self->vectors[1], &self->vectors[3]);
         area = GamePhaseRuntime_GetActorCollection(runtime, 1);
         actor = *(u8 **)((u8 *)area + 0x2e7c);
         if (!(*(u32 *)(actor + 0xd0) & 0x10))
-            func_0200500c(&temporary, data_02105684[0] * 8,
+            VecFx32Object_InitComponents(&temporary, data_02105684[0] * 8,
                           data_02105684[1] * -8, 0);
         else
-            func_0200500c(&temporary, data_02105684[0] * 32,
+            VecFx32Object_InitComponents(&temporary, data_02105684[0] * 32,
                           data_02105684[1] * -32, 0);
-        func_020050a4(&current, &temporary);
-        func_02005058(&temporary);
+        VecFx32Object_Assign(&current, &temporary);
+        VecFx32Object_Destroy(&temporary);
         if (current.value.x != self->vectors[2].value.x ||
             current.value.y != self->vectors[2].value.y ||
             current.value.z != self->vectors[2].value.z) {
@@ -61,27 +61,27 @@ void GamePhaseVisualEffect_UpdatePosition(GamePhaseVisualEffect *self,
             VecFx32Stepper_Destroy(&newStepper);
         }
         VecFx32Stepper_Update(&self->stepper);
-        func_020050a4(&self->vectors[2], VecFx32Stepper_GetCurrent(&self->stepper));
+        VecFx32Object_Assign(&self->vectors[2], VecFx32Stepper_GetCurrent(&self->stepper));
     } else {
-        func_0200500c(&temporary, 0, 0, 0);
-        func_020050a4(&self->vectors[2], &temporary);
-        func_02005058(&temporary);
+        VecFx32Object_InitComponents(&temporary, 0, 0, 0);
+        VecFx32Object_Assign(&self->vectors[2], &temporary);
+        VecFx32Object_Destroy(&temporary);
     }
 
     VecFx32_Subtract(&temporary, position, &self->vectors[0]);
-    func_020050a4(&current, &temporary);
-    func_02005058(&temporary);
+    VecFx32Object_Assign(&current, &temporary);
+    VecFx32Object_Destroy(&temporary);
     current.value.x = quantizeComponent(current.value.x);
     current.value.y = quantizeComponent(current.value.y);
-    func_020050a4(&self->vectors[0], position);
+    VecFx32Object_Assign(&self->vectors[0], position);
     VecFx32_Subtract(&temporary, &current, &self->vectors[2]);
-    func_020050a4(&current, &temporary);
-    func_02005058(&temporary);
+    VecFx32Object_Assign(&current, &temporary);
+    VecFx32Object_Destroy(&temporary);
     if (self->flags & 4) {
         current.value.x /= 2;
         current.value.y /= 2;
         current.value.z /= 2;
     }
-    func_020050c8(&self->vectors[1], &current);
-    func_02005058(&current);
+    VecFx32Object_Add(&self->vectors[1], &current);
+    VecFx32Object_Destroy(&current);
 }

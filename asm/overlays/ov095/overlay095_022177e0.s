@@ -4,7 +4,7 @@
 .extern data_ov095_0221cb8c
 .extern data_ov095_0221cba8
 .extern data_ov095_0221cca0
-.extern func_02004fe0
+.extern VecFx32Object_Init
 .extern func_ov075_02212ae0
 .extern func_ov095_02217980
 
@@ -27,9 +27,9 @@ func_ov095_022177e0:
     strh r2, [r1, #0xdc]
     add r0, r4, #0x2e0
     strh r2, [r1, #0xde]
-    bl func_02004fe0
+    bl VecFx32Object_Init
     add r0, r4, #0x2f0
-    bl func_02004fe0
+    bl VecFx32Object_Init
     ldr r1, [r4, #0x314]
     ldr r0, .L_02217970
     bic r1, r1, #0x1

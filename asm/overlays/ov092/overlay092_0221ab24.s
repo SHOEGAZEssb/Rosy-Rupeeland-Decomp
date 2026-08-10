@@ -1,8 +1,8 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov092/overlay092_recovery.c.
-.extern func_02005030
-.extern func_02005058
-.extern func_02005070
+.extern VecFx32Object_InitCopy
+.extern VecFx32Object_Destroy
+.extern VecFx32Object_GetMagnitude
 .extern ActorModeNibble_HandleContactFromField1FC
 .extern func_0204cfa4
 .extern func_02050260
@@ -37,7 +37,7 @@ func_ov092_0221ab24:
 .L_0221ab78:
     add r0, sp, #0x0
     add r1, r9, #0x38
-    bl func_02005030
+    bl VecFx32Object_InitCopy
     mov r0, #0x0
     str r0, [sp, #0xc]
     ldr r1, [r9, #0x1fc]
@@ -53,7 +53,7 @@ func_ov092_0221ab24:
     blx r3
     add r0, sp, #0x0
     mov r5, #0x4000
-    bl func_02005058
+    bl VecFx32Object_Destroy
     b .L_0221ac38
 .L_0221abc8:
     cmp r0, #0x3
@@ -66,7 +66,7 @@ func_ov092_0221ab24:
     cmpne r0, #0x10
     bne .L_0221ac38
     add r0, r9, #0x88
-    bl func_02005070
+    bl VecFx32Object_GetMagnitude
     cmp r0, #0x2000
     ble .L_0221ac34
     ldrsh r0, [r8, #0xd6]

@@ -15,10 +15,10 @@ extern u32 Actor_QueryTerrainCell(void *actor, s32 x, s32 y);
 extern s32 func_0203463c(void *actor, s32 x, s32 y, s32 height);
 extern s32 GameWork_TestFlag(void *work, u32 flag);
 extern void Sound_Play(void *context, s32 channel, s32 sound);
-extern void func_02005084(void *vector);
-extern void func_02005030(void *destination, const void *source);
-extern void func_020050a4(void *destination, const void *source);
-extern void func_02005058(void *vector);
+extern void VecFx32Object_Normalize(void *vector);
+extern void VecFx32Object_InitCopy(void *destination, const void *source);
+extern void VecFx32Object_Assign(void *destination, const void *source);
+extern void VecFx32Object_Destroy(void *vector);
 extern void func_02034800(void *actor, void *vector);
 #ifdef __cplusplus
 }
@@ -189,7 +189,7 @@ void Actor_UpdateGroundContactProbe(void *self)
             *(s32 *)(actor + 0xa0) = impulseY;
             *(s32 *)(actor + 0xa4) = 0;
             if (impulseX != 0 || impulseY != 0)
-                func_02005084(actor + 0x98);
+                VecFx32Object_Normalize(actor + 0x98);
         }
     }
     *(u16 *)(actor + 0x204) = duration;
@@ -207,10 +207,10 @@ updateCountdown:
         if (special && isTypeOne(actor) && *(u16 *)(actor + 0x2a2) != 0) {
             s32 vector[4];
             *(u32 *)(actor + 0xd0) |= 0x10000;
-            func_02005030(vector, actor + 0x28);
+            VecFx32Object_InitCopy(vector, actor + 0x28);
             func_02034800(actor, vector);
-            func_020050a4(actor + 0x284, vector);
-            func_02005058(vector);
+            VecFx32Object_Assign(actor + 0x284, vector);
+            VecFx32Object_Destroy(vector);
         }
     } else {
         *(u32 *)(actor + 0xd0) &= ~0x40;

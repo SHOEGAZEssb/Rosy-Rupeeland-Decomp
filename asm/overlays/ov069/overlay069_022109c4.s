@@ -1,8 +1,8 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov069/overlay069_recovery.c.
 .extern __construct_array
-.extern func_02004fe0
-.extern func_02005058
+.extern VecFx32Object_Init
+.extern VecFx32Object_Destroy
 .extern func_ov069_02210a24
 
 .global func_ov069_022109c4
@@ -29,6 +29,6 @@ func_ov069_022109c4:
     mov r0, r4
     add sp, sp, #0x4
     ldmia sp!, {r3, r4, pc}
-.L_02210a1c: .word func_02005058
-.L_02210a20: .word func_02004fe0
+.L_02210a1c: .word VecFx32Object_Destroy
+.L_02210a20: .word VecFx32Object_Init
 .size func_ov069_022109c4, . - func_ov069_022109c4

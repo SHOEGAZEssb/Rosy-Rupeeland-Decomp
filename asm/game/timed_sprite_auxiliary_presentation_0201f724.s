@@ -5,8 +5,8 @@
 .extern data_020d61a8
 .extern data_020d6270
 .extern data_021052fc
-.extern func_02005058
-.extern func_020050a4
+.extern VecFx32Object_Destroy
+.extern VecFx32Object_Assign
 .extern AnimationResource_Init
 .extern ActorMotionAreaFollower_GetPosition
 .extern func_0201ded4
@@ -54,7 +54,7 @@ func_0201f724: ; 0x0201f724
     ldr r2, [r4, #0xc]
     ldr r2, [r2, #0xc]
     str r2, [sp, #0xc]
-    bl func_020050a4
+    bl VecFx32Object_Assign
     mov r2, #0x0
     mov r3, #0x2
     mov r0, #0x78
@@ -91,9 +91,9 @@ func_0201f724: ; 0x0201f724
     bl func_0201ded4
 .L_0201f838:
     add r0, sp, #0x20
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add r0, sp, #0x10
-    bl func_02005058
+    bl VecFx32Object_Destroy
     mov r0, r4
     add sp, sp, #0x38
     ldmia sp!, {r3, r4, r5, r6, r7, pc}

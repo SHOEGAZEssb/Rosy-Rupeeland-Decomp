@@ -1,9 +1,9 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov095/overlay095_recovery.c.
-.extern func_0200500c
-.extern func_02005030
-.extern func_02005058
-.extern func_020050a4
+.extern VecFx32Object_InitComponents
+.extern VecFx32Object_InitCopy
+.extern VecFx32Object_Destroy
+.extern VecFx32Object_Assign
 .extern VecFx32Triple_Destroy
 .extern VecFx32Bezier_Evaluate3D
 .extern Actor_GetCachedTerrainHeight
@@ -41,11 +41,11 @@ func_ov095_0221a418:
     strh r1, [r0, #0xd6]
     add r0, r4, #0x2e0
     add r1, r4, #0x18
-    bl func_020050a4
+    bl VecFx32Object_Assign
     ldr r1, [r4, #0x300]
     add r0, r4, #0x2f0
     add r1, r1, #0x18
-    bl func_020050a4
+    bl VecFx32Object_Assign
     ldr r0, [r4, #0x2fc]
     add r0, r0, #0x10000
     str r0, [r4, #0x2fc]
@@ -132,9 +132,9 @@ func_ov095_0221a418:
     add r1, r4, #0x2e0
     bl func_ov095_02217d58
     add r0, sp, #0x28
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add r0, sp, #0x38
-    bl func_02005058
+    bl VecFx32Object_Destroy
     ldr r1, [r4, #0x2fc]
     add r0, sp, #0x78
     add r1, r1, #0x18000
@@ -156,13 +156,13 @@ func_ov095_0221a418:
     bl VecFx32Bezier_Evaluate3D
     add r0, r4, #0x18
     add r1, sp, #0x18
-    bl func_020050a4
+    bl VecFx32Object_Assign
     add r0, sp, #0x18
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add r0, sp, #0x78
     bl VecFx32Triple_Destroy
     add r0, sp, #0xa8
-    bl func_02005058
+    bl VecFx32Object_Destroy
     b .L_0221a864
 .L_0221a63c:
     mov r2, #0x15
@@ -188,13 +188,13 @@ func_ov095_0221a418:
     mov r1, #0x5000
     mov r2, #0x8000
     mov r3, #0x1a000
-    bl func_0200500c
+    bl VecFx32Object_InitComponents
     add r0, sp, #0x68
     add r2, sp, #0x8
     add r1, r4, #0x18
     bl func_ov095_02217d58
     add r0, sp, #0x8
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add r0, r4, #0x200
     ldrsh r0, [r0, #0xdc]
     cmp r0, #0x3c
@@ -205,10 +205,10 @@ func_ov095_0221a418:
     bne .L_0221a71c
     add r0, sp, #0x58
     add r1, sp, #0x68
-    bl func_02005030
+    bl VecFx32Object_InitCopy
     add r0, sp, #0x48
     add r1, sp, #0x68
-    bl func_02005030
+    bl VecFx32Object_InitCopy
     ldr r1, [sp, #0x50]
     mov r0, r4
     add r1, r1, #0x20000
@@ -220,9 +220,9 @@ func_ov095_0221a418:
     mov r0, #0x40
     bl func_02050078
     add r0, sp, #0x48
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add r0, sp, #0x58
-    bl func_02005058
+    bl VecFx32Object_Destroy
 .L_0221a71c:
     add r0, r4, #0x200
     ldrsh r1, [r0, #0xdc]
@@ -235,7 +235,7 @@ func_ov095_0221a418:
     movge r1, #0x0
     strgeh r1, [r0, #0xdc]
     add r0, sp, #0x68
-    bl func_02005058
+    bl VecFx32Object_Destroy
     b .L_0221a864
 .L_0221a750:
     add r1, r4, #0x200

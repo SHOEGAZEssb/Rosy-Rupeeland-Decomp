@@ -8,8 +8,8 @@
 .extern data_ov075_02217288
 .extern OverlayManager_LoadOverlay
 .extern OverlayManager_GetGlobal
-.extern func_02005030
-.extern func_02005058
+.extern VecFx32Object_InitCopy
+.extern VecFx32Object_Destroy
 .extern ActorRuntimeCollection_GetPendingAttachmentFlag
 .extern func_0201f864
 .extern Actor_SetRuntimeFlag80
@@ -150,7 +150,7 @@ func_ov075_022148d0:
     ldr r1, [r5, #0x208]
     add r0, sp, #0x28
     add r1, r1, #0x18
-    bl func_02005030
+    bl VecFx32Object_InitCopy
     add r1, sp, #0x28
     mov r0, r5
     bl func_ov075_02214770
@@ -256,7 +256,7 @@ func_ov075_022148d0:
     bl func_ov059_0220fd20
 .L_02214c2c:
     add r0, sp, #0x28
-    bl func_02005058
+    bl VecFx32Object_Destroy
     b .L_02214d58
 .L_02214c38:
     ldr r0, [r5, #0x3c]
@@ -312,7 +312,7 @@ func_ov075_022148d0:
     strh r1, [r0, #0x28]
 .L_02214cf8:
     add r0, sp, #0x28
-    bl func_02005058
+    bl VecFx32Object_Destroy
     b .L_02214d30
 .L_02214d04:
     ldr r0, [r5, #0x54]

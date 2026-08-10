@@ -1,8 +1,8 @@
     .text
 /* Exact fallback; see overlay040_state_setup.c for portable C. */
     .extern Sound_Play
-    .extern func_02005030
-    .extern func_02005058
+    .extern VecFx32Object_InitCopy
+    .extern VecFx32Object_Destroy
     .extern func_02059278
     .extern GraphicsSpriteState_SetAnimationIndex
     .extern func_0209a07c
@@ -152,14 +152,14 @@ func_ov040_021ff900: ; 0x021ff900
 .L_021ffb04:
     add r0, sp, #0x28
     add r1, sp, #0x58
-    bl func_02005030
+    bl VecFx32Object_InitCopy
     ldr r0, [r4, #0xb44]
     add r1, sp, #0x28
     bl func_ov040_02200118
     add r0, sp, #0x28
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add r0, sp, #0x58
-    bl func_02005058
+    bl VecFx32Object_Destroy
     b .L_021ffb98
 .L_021ffb30:
     ldr r0, [r4, #0xb84]
@@ -262,14 +262,14 @@ func_ov040_021ff900: ; 0x021ff900
 .L_021ffca8:
     add r0, sp, #0x18
     add r1, sp, #0x48
-    bl func_02005030
+    bl VecFx32Object_InitCopy
     ldr r0, [r4, #0xb44]
     add r1, sp, #0x18
     bl func_ov040_02200118
     add r0, sp, #0x18
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add r0, sp, #0x48
-    bl func_02005058
+    bl VecFx32Object_Destroy
 .L_021ffcd0:
     ldr r0, [r4, #0xb7c]
     cmp r0, #0x0
@@ -523,14 +523,14 @@ func_ov040_021ff900: ; 0x021ff900
 .L_02200088:
     add r0, sp, #0x8
     add r1, sp, #0x38
-    bl func_02005030
+    bl VecFx32Object_InitCopy
     ldr r0, [r4, #0xb44]
     add r1, sp, #0x8
     bl func_ov040_02200118
     add r0, sp, #0x8
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add r0, sp, #0x38
-    bl func_02005058
+    bl VecFx32Object_Destroy
 .L_022000b0:
     ldr r0, [r4, #0xb9c]
     cmp r0, #0x0

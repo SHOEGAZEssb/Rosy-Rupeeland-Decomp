@@ -1,6 +1,6 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov095/overlay095_recovery.c.
-.extern func_02004fe0
+.extern VecFx32Object_Init
 .extern VecFx32Triple_Set
 
 .global func_ov095_0221a250
@@ -10,11 +10,11 @@ func_ov095_0221a250:
     mov r6, r1
     mov r5, r2
     mov r4, r3
-    bl func_02004fe0
+    bl VecFx32Object_Init
     add r0, r7, #0x10
-    bl func_02004fe0
+    bl VecFx32Object_Init
     add r0, r7, #0x20
-    bl func_02004fe0
+    bl VecFx32Object_Init
     mov r1, r6
     mov r2, r5
     mov r3, r4

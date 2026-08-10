@@ -1,8 +1,8 @@
 ; Matching retail form; see src/game/actor_extended_type2_render_callback.c.
 .text
 .extern data_021052fc
-.extern func_02005030
-.extern func_02005058
+.extern VecFx32Object_InitCopy
+.extern VecFx32Object_Destroy
 .extern func_0201e0ec
 .extern func_02031758
 .extern func_020a25c8
@@ -59,7 +59,7 @@ ActorExtendedType2_RunRenderCallback: ; 0x0203efac
     bl func_02031758
     add r0, sp, #0xc
     add r1, r5, #0x18
-    bl func_02005030
+    bl VecFx32Object_InitCopy
     ldrsh r2, [r5, #0x6a]
     ldr r3, [sp, #0x14]
     ldr r1, .L_0203f0b8
@@ -73,7 +73,7 @@ ActorExtendedType2_RunRenderCallback: ; 0x0203efac
     mov r3, #0x0
     blx r5
     add r0, sp, #0xc
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add sp, sp, #0x1c
     ldmia sp!, {r3, r4, r5, r6, pc}
 .L_0203f0b4: .word data_021052fc

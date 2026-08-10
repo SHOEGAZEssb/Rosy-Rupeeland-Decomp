@@ -13,8 +13,8 @@ void func_ov041_021ff658(void *, s32);
 void GraphicsSpriteState_SetAnimationIndex(void *, s32);
 void Sound_Play(void *, s32, s32);
 void func_0205940c(void *, s32, s32);
-void func_02004fe0(void *);
-void func_02005058(void *);
+void VecFx32Object_Init(void *);
+void VecFx32Object_Destroy(void *);
 s32 func_ov041_021ff5a8(void *, s32, const void *);
 u32 genrand_int32(void);
 void func_ov041_021fd000(void *);
@@ -160,7 +160,7 @@ static void update_alternate_mode(void *object)
             }
         } else if (FIELD(s32, object, 0x1b4) != 0) {
             s32 point[4];
-            func_02004fe0(point);
+            VecFx32Object_Init(point);
             point[1] = FIELD(s32, object, 0xa4);
             point[2] = FIELD(s32, object, 0xa8) + 0xd2000;
             point[3] = 0;
@@ -170,7 +170,7 @@ static void update_alternate_mode(void *object)
             phases(object)[entry] =
                 (s16)(((s32)(genrand_int32() % 9) - 4) * 0x8c);
             ++FIELD(s32, object, 0x1a4);
-            func_02005058(point);
+            VecFx32Object_Destroy(point);
         }
         FIELD(s32, object, 0xa4) += ((s32)(genrand_int32() % 13) - 6) << 16;
         if (FIELD(s32, object, 0xa4) < 0x10000)

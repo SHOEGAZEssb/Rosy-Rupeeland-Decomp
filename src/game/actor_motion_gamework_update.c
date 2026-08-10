@@ -69,12 +69,12 @@ s32 ActorMotionGameWork_Update(ActorMotion *self, const s16 *bounds)
     *(s16 *)((u8 *)gGameWork + 0x232) =
         (s16)((self->position.value.x + offset.value.x -
                self->target.value.x) >> 12);
-    func_02005058(&offset);
+    VecFx32Object_Destroy(&offset);
 
     func_02008740(&offset, &self->state);
     *(s16 *)((u8 *)gGameWork + 0x234) =
         (s16)((self->position.value.y + offset.value.y -
                self->target.value.y) >> 12);
-    func_02005058(&offset);
+    VecFx32Object_Destroy(&offset);
     return result;
 }

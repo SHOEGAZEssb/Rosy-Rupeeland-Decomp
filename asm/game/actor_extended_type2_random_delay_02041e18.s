@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/actor_extended_type2_random_delay.c.
 .text
 .extern data_020df9e8
-.extern func_020050a4
+.extern VecFx32Object_Assign
 .extern func_020ada8c
 .extern genrand_int32
 .global ActorExtendedType2_UpdateRandomCallbackDelay
@@ -13,7 +13,7 @@ ActorExtendedType2_UpdateRandomCallbackDelay: ; 0x02041e18
     add r0, r4, #0x78
     add r1, r4, #0x18
     strh r2, [r4, #0xd6]
-    bl func_020050a4
+    bl VecFx32Object_Assign
     add r0, r4, #0x200
     ldrsh r1, [r0, #0x5a]
     cmp r1, #0x0

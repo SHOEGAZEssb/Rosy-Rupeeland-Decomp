@@ -4,7 +4,7 @@
 .extern data_020d6a70
 .extern data_020d6a90
 .extern data_020d6a98
-.extern func_02005030
+.extern VecFx32Object_InitCopy
 .extern AnimationResource_Init
 .extern func_0201e250
 .extern func_0206b628
@@ -25,7 +25,7 @@ func_02025300: ; 0x02025300
     mov r1, r7
     add r0, r6, #0x18
     str r2, [r6, #0x0]
-    bl func_02005030
+    bl VecFx32Object_InitCopy
     mov r0, #0x0
     str r0, [r6, #0x28]
     str r0, [r6, #0x2c]

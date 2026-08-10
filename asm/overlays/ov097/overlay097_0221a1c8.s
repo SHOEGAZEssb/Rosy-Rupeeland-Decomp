@@ -1,8 +1,8 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov097/overlay097_recovery.c.
 .extern data_02105310
-.extern func_02005030
-.extern func_02005058
+.extern VecFx32Object_InitCopy
+.extern VecFx32Object_Destroy
 .extern ActorRuntimeCollection_GetPendingAttachmentFlag
 .extern ActorCollection_QueueActorForRemoval
 .extern Actor_GetCollection
@@ -28,7 +28,7 @@ func_ov097_0221a1c8:
     add r0, sp, #0x0
     add r1, r6, #0x38
     mov r4, #0x1
-    bl func_02005030
+    bl VecFx32Object_InitCopy
     mov r0, #0x0
     str r0, [sp, #0xc]
     ldr r1, [r6, #0x1fc]
@@ -95,7 +95,7 @@ func_ov097_0221a1c8:
     blx r3
 .L_0221a2f8:
     add r0, sp, #0x0
-    bl func_02005058
+    bl VecFx32Object_Destroy
     b .L_0221a30c
 .L_0221a304:
     cmp r5, #0x0

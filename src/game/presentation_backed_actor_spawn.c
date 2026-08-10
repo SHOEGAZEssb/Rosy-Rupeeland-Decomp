@@ -12,7 +12,7 @@ extern void *data_021052fc;
 extern "C" {
 #endif
 extern void *GamePhaseRuntime_GetActorCollection(void *context, s32 index);
-extern void func_020050a4(void *destination, const void *source);
+extern void VecFx32Object_Assign(void *destination, const void *source);
 extern void *ActorCollection_SpawnActorFromDescriptor(void *manager, const void *descriptor);
 extern void ActorSpawnDescriptor_Init(void *destination, ...);
 extern void func_0204d82c(void *actor, u16 value_1f2, u16 value_1f4,
@@ -54,7 +54,7 @@ void *func_0204e2ac(s32 type, u32 value_1f4, u32 value_1f2,
     void *actor = ActorCollection_SpawnActorFromDescriptor(manager, descriptor);
     func_0204d82c(actor, value_1f2, value_1f4,
                   (u8)selection, (u8)value_1ef);
-    func_020050a4((u8 *)actor + 0x38, vector_38);
+    VecFx32Object_Assign((u8 *)actor + 0x38, vector_38);
     FIELD(u32, actor, 0x10) |= 0x1f0100;
     FIELD(s16, actor, 0x60) = -16;
     FIELD(s16, actor, 0x62) = -16;

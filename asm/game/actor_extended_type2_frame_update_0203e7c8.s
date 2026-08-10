@@ -11,7 +11,7 @@
 .extern data_020e6f94
 .extern data_020e8380
 .extern data_021052fc
-.extern func_02005058
+.extern VecFx32Object_Destroy
 .extern VecFx32_Subtract
 .extern GamePhaseRuntime_GetActorCollection
 .extern func_02032228
@@ -418,7 +418,7 @@ ActorExtendedType2_UpdateFrame: ; 0x0203e7c8
     blx r2
 .L_0203ed5c:
     add r0, sp, #0x0
-    bl func_02005058
+    bl VecFx32Object_Destroy
 .L_0203ed64:
     ldr r0, .L_0203ef2c
     ldr r2, [r6, #0x218]

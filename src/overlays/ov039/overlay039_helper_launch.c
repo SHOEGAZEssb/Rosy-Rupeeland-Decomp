@@ -20,8 +20,8 @@ extern const s16 data_020c9670[];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_02005030(Overlay039VectorObject *destination, void *source);
-extern void func_02005058(void *object);
+extern void VecFx32Object_InitCopy(Overlay039VectorObject *destination, void *source);
+extern void VecFx32Object_Destroy(void *object);
 extern s32 func_020ae024(s32 x, s32 y);
 #ifdef __cplusplus
 }
@@ -49,7 +49,7 @@ extern "C" void func_ov039_021fd93c(void *scene, s32 targetX, s32 targetY,
 {
     Overlay039VectorObject position;
     void *sourceObject = FIELD(void *, scene, 0x98);
-    func_02005030(&position, (u8 *)sourceObject + 0x1c);
+    VecFx32Object_InitCopy(&position, (u8 *)sourceObject + 0x1c);
     position.y_08 += 0xa000;
 
     for (s32 i = 29; i >= 0; i--) {
@@ -76,7 +76,7 @@ extern "C" void func_ov039_021fd93c(void *scene, s32 targetX, s32 targetY,
         FIELD(u32, helper, 0x1c) = 0;
         break;
     }
-    func_02005058(&position);
+    VecFx32Object_Destroy(&position);
 }
 
 /*

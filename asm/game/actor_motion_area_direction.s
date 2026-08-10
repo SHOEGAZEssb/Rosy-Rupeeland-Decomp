@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/actor_motion_area_direction.c for
 ; the documented portable implementation and recovered behavior.
 .text
-.extern func_02005058
+.extern VecFx32Object_Destroy
 .extern GamePhaseRegionTable_ClassifyContainedSide
 .extern func_02056f00
 .global ActorMotionAreaFollower_QueryCrossingDirection
@@ -33,7 +33,7 @@ ActorMotionAreaFollower_QueryCrossingDirection: ; 0x0200a124
     bl GamePhaseRegionTable_ClassifyContainedSide
     mov r4, r0
     add r0, sp, #0x8
-    bl func_02005058
+    bl VecFx32Object_Destroy
     mov r0, r4
     add sp, sp, #0x18
     ldmia sp!, {r3, r4, r5, pc}

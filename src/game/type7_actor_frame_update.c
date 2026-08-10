@@ -23,8 +23,8 @@ extern void Type7Actor_SetTarget(void *actor, void *worldObject, s32 value);
 extern void *func_02025d14(void *object);
 extern void func_02026588(void *object, s32 value);
 extern void Type7Actor_DispatchCurrentCallback(void *actor);
-extern void func_02005058(void *value);
-extern void *func_020050a4(void *destination, const void *source);
+extern void VecFx32Object_Destroy(void *value);
+extern void *VecFx32Object_Assign(void *destination, const void *source);
 extern s32 func_0206cd10(void *resource);
 extern void func_0206c978(void *resource);
 extern void GameWork_ClearFlag(void *work, u32 flag);
@@ -175,8 +175,8 @@ void Type7Actor_UpdateFrame(void *self)
     if (target != 0) {
         (*(void (**)(void *, void *, void *))(*(u8 **)target + 0xb4))(
             target, temporary, actor);
-        func_020050a4(actor + 0x214, temporary);
-        func_02005058(temporary);
+        VecFx32Object_Assign(actor + 0x214, temporary);
+        VecFx32Object_Destroy(temporary);
     }
     if (*(void **)(actor + 0x234) != 0
         && func_0206cd10(*(void **)(actor + 0x234)) == 2) {

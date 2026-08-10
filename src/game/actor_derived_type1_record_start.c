@@ -7,8 +7,8 @@ extern void *gSoundContext;
 extern "C" {
 #endif
 extern void ActorDerivedType1_TeardownActiveRecord(void *actor);
-extern void func_02005030(void *destination, const void *source);
-extern void func_02005058(void *value);
+extern void VecFx32Object_InitCopy(void *destination, const void *source);
+extern void VecFx32Object_Destroy(void *value);
 extern void *func_020541d4(void *records);
 extern void *func_02053f9c(void *records, const void *position, s32 mode);
 extern void ActorDerivedType1_ApplyActiveRecord(void *actor);
@@ -42,7 +42,7 @@ void ActorDerivedType1_StartRecord(void *self, void *records)
         return;
 
     ActorDerivedType1_TeardownActiveRecord(actor);
-    func_02005030(position, actor + 0x18);
+    VecFx32Object_InitCopy(position, actor + 0x18);
     descriptor = (u8 *)func_020541d4(records);
     *(u8 **)(actor + 0x27c) = descriptor;
     if (*(u16 *)(descriptor + 2) != 0) {
@@ -52,5 +52,5 @@ void ActorDerivedType1_StartRecord(void *self, void *records)
         Sound_Play(gSoundContext, sound >> 7, sound & 0x7f);
     }
     ActorDerivedType1_ApplyActiveRecord(actor);
-    func_02005058(position);
+    VecFx32Object_Destroy(position);
 }

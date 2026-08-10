@@ -114,7 +114,7 @@ s32 func_02016238(GamePhaseActorScriptVm *self)
         u8 *actor = *(u8 **)(runtime + 0x2ea4);
         VecFx32Object position;
         s32 x, y;
-        func_02005030(&position,
+        VecFx32Object_InitCopy(&position,
                       (const VecFx32Object *)ActorMotionAreaFollower_GetPosition(runtime + 0x2fbc));
         x = (*(s32 *)(actor + 0x1c) >> 12) - (position.value.y >> 12);
         y = (*(s32 *)(actor + 0x20) >> 12) - (*(s32 *)(actor + 0x24) >> 12)
@@ -123,7 +123,7 @@ s32 func_02016238(GamePhaseActorScriptVm *self)
         if (object != 0)
             object = func_020200bc(object, parameter, x, y, 30);
         func_0201ded4(runtime + 0x2f7c, object);
-        func_02005058(&position);
+        VecFx32Object_Destroy(&position);
         return 0;
     }
     case 15:

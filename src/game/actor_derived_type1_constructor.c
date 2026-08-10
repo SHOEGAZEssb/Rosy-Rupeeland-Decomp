@@ -7,8 +7,8 @@ extern u8 data_020df3c8[];
 extern "C" {
 #endif
 extern void *ActorDerivedRuntime_Init(void *self);
-extern void func_0200500c(void *vector, s32 x, s32 y, s32 z);
-extern void func_02004fe0(void *vector);
+extern void VecFx32Object_InitComponents(void *vector, s32 x, s32 y, s32 z);
+extern void VecFx32Object_Init(void *vector);
 extern void Type7MarkerPresentation_Init(void *state, void *owner);
 extern void ActorRuntimeTriple_Assign(void *state, s32 first, s32 second, s32 third);
 #ifdef __cplusplus
@@ -33,11 +33,11 @@ void *ActorDerivedType1_Init(void *self)
 
     ActorDerivedRuntime_Init(actor);
     *(void **)actor = data_020df3c8;
-    func_0200500c(actor + 0x238, 0, 0, 0);
+    VecFx32Object_InitComponents(actor + 0x238, 0, 0, 0);
     *(s32 *)(actor + 0x248) = 0;
     for (offset = 0x24c; offset <= 0x252; offset += 2)
         *(u16 *)(actor + offset) = 0;
-    func_02004fe0(actor + 0x254);
+    VecFx32Object_Init(actor + 0x254);
     *(u16 *)(actor + 0x266) = 0;
     *(u16 *)(actor + 0x268) = 0;
     actor[0x26b] = 0;
@@ -45,7 +45,7 @@ void *ActorDerivedType1_Init(void *self)
         *(u32 *)(actor + offset) = 0;
     *(u16 *)(actor + 0x280) = 0;
     *(u16 *)(actor + 0x282) = 0;
-    func_02004fe0(actor + 0x284);
+    VecFx32Object_Init(actor + 0x284);
     *(s16 *)(actor + 0x294) = -1;
     for (offset = 0x296; offset <= 0x29e; offset += 2)
         *(u16 *)(actor + offset) = 0;

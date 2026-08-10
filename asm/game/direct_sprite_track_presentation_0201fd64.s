@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/direct_sprite_track_presentation.c.
 .text
 .extern data_020d6158
-.extern func_02005058
+.extern VecFx32Object_Destroy
 .extern func_02071eb8
 .extern func_02071f38
 .extern GraphicsSpriteGroup_ReleaseState
@@ -19,7 +19,7 @@ func_0201fd64: ; 0x0201fd64
     add r0, r4, #0x8
     bl func_02071f38
     add r0, r4, #0x1c
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add r0, r4, #0x8
     bl func_02071eb8
     mov r0, r4

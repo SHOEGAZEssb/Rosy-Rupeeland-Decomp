@@ -6,8 +6,8 @@
 .extern data_020e6e68
 .extern data_021052fc
 .extern data_ov075_022177d0
-.extern func_0200500c
-.extern func_02005058
+.extern VecFx32Object_InitComponents
+.extern VecFx32Object_Destroy
 .extern ActorMotionAreaFollower_GetPosition
 .extern GamePhaseCurrencyHud_AddCurrency
 .extern func_0201ded4
@@ -114,7 +114,7 @@ func_ov075_0221647c:
     mov r3, #0x0
     mov r1, r4
     mov r2, r11
-    bl func_0200500c
+    bl VecFx32Object_InitComponents
     mov r0, r6
     ldr r3, [r0, #0x0]
     add r1, sp, #0x4c
@@ -261,9 +261,9 @@ func_ov075_0221647c:
     add r1, r6, #0x18
     bl func_ov075_022168f0
     add r0, sp, #0x1c
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add r0, sp, #0x2c
-    bl func_02005058
+    bl VecFx32Object_Destroy
     ldr r1, .L_02216884
     ldr r3, .L_02216888
     mov r0, #0x14
@@ -289,9 +289,9 @@ func_ov075_0221647c:
     bl func_0201f864
 .L_02216864:
     add r0, sp, #0x3c
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add r0, sp, #0x4c
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add sp, sp, #0x5c
     ldmia sp!, {r4, r5, r6, r7, r8, r9, r10, r11, pc}
 .L_0221687c: .word 0x3333

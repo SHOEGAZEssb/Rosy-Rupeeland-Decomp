@@ -16,8 +16,8 @@ extern void Actor_SetPosition(void *actor, const void *position);
 extern void ActorRuntimeTriple_Assign(void *value, s32 x, s32 y, s32 z);
 extern u32 genrand_int32(void);
 extern s32 func_020ada8c(s32 value, s32 divisor);
-extern void func_0200500c(void *vector, s32 x, s32 y, s32 z);
-extern void func_02005058(void *vector);
+extern void VecFx32Object_InitComponents(void *vector, s32 x, s32 y, s32 z);
+extern void VecFx32Object_Destroy(void *vector);
 extern void *ActorMotionAreaFollower_GetPosition(void *manager);
 #ifdef __cplusplus
 }
@@ -72,10 +72,10 @@ void ActorExtendedType2_InitializeReentryState(void *self, const void *position,
                 s32 x = (s32)(((s64)data_020c9670[index * 2 + 1] * 0x2800 + 0x800) >> 12);
                 s32 y = (s32)(((s64)data_020c9670[index * 2] * 0x2800 + 0x800) >> 12);
                 s32 vector[4];
-                func_0200500c(vector, x, y, 0);
+                VecFx32Object_InitComponents(vector, x, y, 0);
                 (*(void (**)(void *, void *, s32))(*(u8 **)actor + 0xb8))
                     (actor, vector, 1);
-                func_02005058(vector);
+                VecFx32Object_Destroy(vector);
             }
         }
         *(u16 *)(actor + 0x25a) = 120;

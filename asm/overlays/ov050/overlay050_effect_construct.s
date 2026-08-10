@@ -1,7 +1,7 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov050/overlay050_effect_recovery.c.
-.extern func_02004fe0
-.extern func_02005030
+.extern VecFx32Object_Init
+.extern VecFx32Object_InitCopy
 .extern GraphicsSpriteState_SetAnimationIndex
 .extern GraphicsSpriteGroup_CreateState
 .extern func_ov050_0220d7c4
@@ -15,9 +15,9 @@ func_ov050_0220d600:
     add r0, r5, #0x8
     mov r6, r2
     mov r4, r3
-    bl func_02005030
+    bl VecFx32Object_InitCopy
     add r0, r5, #0x18
-    bl func_02004fe0
+    bl VecFx32Object_Init
     ldr r2, [sp, #0x18]
     mov r1, #0x1
     ldr r2, [r2, #0x8]

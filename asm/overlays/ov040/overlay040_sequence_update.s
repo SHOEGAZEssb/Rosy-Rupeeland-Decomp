@@ -1,7 +1,7 @@
 .text
 /* Exact fallback; see overlay040_object_update.c for portable C. */
     .extern func_ov040_02202244
-    .extern func_020050a4
+    .extern VecFx32Object_Assign
     .extern func_ov040_02202f1c
 
     .global func_ov040_02201060
@@ -47,7 +47,7 @@ func_ov040_02201060:
     add r0, r4, #0x354
     add r0, r0, #0x800
     add r1, r4, #0x680
-    bl func_020050a4
+    bl VecFx32Object_Assign
     ldr r2, [r4, #0xb58]
     ldr r1, [r4, #0xb5c]
     add r0, r4, #0x3d8
@@ -81,7 +81,7 @@ func_ov040_02201060:
     add r0, r4, #0x354
     add r0, r0, #0x800
     add r1, r4, #0x670
-    bl func_020050a4
+    bl VecFx32Object_Assign
     ldr r2, [r4, #0xb58]
     ldr r1, [r4, #0xb5c]
     add r0, r4, #0x3d8
@@ -115,7 +115,7 @@ func_ov040_02201060:
     add r0, r4, #0x354
     add r0, r0, #0x800
     add r1, r4, #0x670
-    bl func_020050a4
+    bl VecFx32Object_Assign
     ldr r2, [r4, #0xb58]
     ldr r1, [r4, #0xb5c]
     add r0, r4, #0x3d8

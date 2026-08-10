@@ -1,7 +1,7 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov077/overlay077_recovery.c.
 .extern data_ov077_02217118
-.extern func_0200500c
+.extern VecFx32Object_InitComponents
 .extern ActorExtendedType2_Init
 
 .global func_ov077_02212ae0
@@ -21,12 +21,12 @@ func_ov077_02212ae0:
     add ip, r4, #0x200
     add r0, r4, #0x2a4
     strh r1, [ip, #0xa2]
-    bl func_0200500c
+    bl VecFx32Object_InitComponents
     mov r1, #0x0
     mov r2, r1
     mov r3, r1
     add r0, r4, #0x2b4
-    bl func_0200500c
+    bl VecFx32Object_InitComponents
     ldr r0, .L_02212b78
     ldr r2, [r4, #0x14]
     rsb r1, r0, #0x20

@@ -2,8 +2,8 @@
 
 /* Exact fallback for the documented portable C implementation in
  * src/overlays/ov041/overlay041_camera_interaction.c. */
-.extern func_02005030
-.extern func_02005058
+.extern VecFx32Object_InitCopy
+.extern VecFx32Object_Destroy
 .extern func_02059278
 .extern func_020a214c
 .extern func_020a6990
@@ -150,7 +150,7 @@ func_ov041_021feec8: ; 0x021feec8
     ldr r2, [r7, #0x194]
     add r1, r7, #0x18c
     str r2, [r7, #0x1b0]
-    bl func_02005030
+    bl VecFx32Object_InitCopy
     ldr r0, [r7, #0x1ec]
     cmp r0, #0x0
     moveq r1, #0xc0000
@@ -217,7 +217,7 @@ func_ov041_021feec8: ; 0x021feec8
     mov r0, r7
     bl func_ov041_021fe56c
     add r0, sp, #0x0
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add sp, sp, #0x10
     ldmia sp!, {r3, r4, r5, r6, r7, pc}
 .L_021ff1c0: .word 0xbd7

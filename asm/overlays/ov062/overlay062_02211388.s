@@ -5,9 +5,9 @@
 .extern Sound_Play
 .extern data_021052fc
 .extern data_ov062_02211c40
-.extern func_02004fe0
-.extern func_02005058
-.extern func_020050a4
+.extern VecFx32Object_Init
+.extern VecFx32Object_Destroy
+.extern VecFx32Object_Assign
 .extern GraphicsSpriteState_SetWorldPosition
 .extern GraphicsSpriteState_SetDepthOrderedWorldPosition
 .extern GamePhaseRuntime_UpdateActorPresentationState
@@ -114,7 +114,7 @@ func_ov062_02211388:
     add r0, r4, #0x24
     add r1, r4, #0x44
     str r2, [r4, #0x8]
-    bl func_020050a4
+    bl VecFx32Object_Assign
     b .L_022117e4
 .L_022114cc:
     cmp r1, #0x5
@@ -123,7 +123,7 @@ func_ov062_02211388:
     str r0, [r4, #0x8]
     add r0, r4, #0x24
     add r1, r4, #0x34
-    bl func_020050a4
+    bl VecFx32Object_Assign
     ldrsh r0, [r4, #0x54]
     cmp r0, #0x3
     addls pc, pc, r0, lsl #0x2
@@ -255,7 +255,7 @@ func_ov062_02211388:
     blt .L_022117e4
     add r0, sp, #0x3c
     mov r5, #0x0
-    bl func_02004fe0
+    bl VecFx32Object_Init
     ldr r0, .L_02211ab4
     ldr r7, [r4, #0x50]
     ldr r1, [r0, #0x0]
@@ -294,7 +294,7 @@ func_ov062_02211388:
     add r1, r4, #0x24
     str r2, [r4, #0x78]
     mov r5, #0x1
-    bl func_020050a4
+    bl VecFx32Object_Assign
 .L_02211768:
     cmp r4, #0x0
     beq .L_02211780
@@ -326,7 +326,7 @@ func_ov062_02211388:
     bl func_ov062_02210674
 .L_022117d4:
     add r0, sp, #0x3c
-    bl func_02005058
+    bl VecFx32Object_Destroy
     mov r0, #0x1
     b .L_02211aa0
 .L_022117e4:
@@ -347,13 +347,13 @@ func_ov062_02211388:
     bl func_ov062_0220fdbc
     add r1, sp, #0xc
     mov r0, r7
-    bl func_020050a4
+    bl VecFx32Object_Assign
     add r0, sp, #0xc
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add r0, sp, #0x1c
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add r0, sp, #0x2c
-    bl func_02005058
+    bl VecFx32Object_Destroy
     b .L_02211a1c
 .L_02211848:
     cmp r0, #0x3

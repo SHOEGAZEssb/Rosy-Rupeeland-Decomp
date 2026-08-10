@@ -12,11 +12,11 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *func_02005030(void *destination, const void *source);
-extern void func_02005058(void *vector);
-extern void func_020050a4(void *destination, const void *source);
-extern void func_020050c8(void *vector, const void *other);
-extern void func_0200500c(void *vector, s32 x, s32 y, s32 z);
+extern void *VecFx32Object_InitCopy(void *destination, const void *source);
+extern void VecFx32Object_Destroy(void *vector);
+extern void VecFx32Object_Assign(void *destination, const void *source);
+extern void VecFx32Object_Add(void *vector, const void *other);
+extern void VecFx32Object_InitComponents(void *vector, s32 x, s32 y, s32 z);
 extern void func_0209a2ac(void *object, const void *position, s32 enabled);
 extern void func_0209b7a0(void *renderer, const void *position);
 extern void func_0209b7ec(void *renderer, s32 value);
@@ -49,12 +49,12 @@ extern "C" void func_ov040_022013e0(void *scene, const void *offset,
     void *renderer = FIELD(void *, primary, 0x10);
 
     func_0209a2ac(scene, 0, 1);
-    func_02005030(translated, camera);
-    func_020050c8(translated, offset);
+    VecFx32Object_InitCopy(translated, camera);
+    VecFx32Object_Add(translated, offset);
     for (s32 index = 0; index < 4; index++)
         func_0209a2ac(FIELD(void *, scene, 0xb44 + index * 4), translated, 1);
 
-    func_020050a4(translated, camera);
+    VecFx32Object_Assign(translated, camera);
     s32 presentationPosition[4];
     func_ov040_02200108(presentationPosition, FIELD(void *, scene, 0xb44));
     FIELD(s32, translated, 4) +=
@@ -68,7 +68,7 @@ extern "C" void func_ov040_022013e0(void *scene, const void *offset,
     for (s32 index = 3; index >= 0; index--)
         func_0209a2ac(FIELD(void *, scene, 0xae8 + index * 4), offset, 1);
 
-    func_0200500c(zero, 0, 0, 0);
+    VecFx32Object_InitComponents(zero, 0, 0, 0);
     func_0209a2ac(FIELD(void *, scene, 0xba0), zero, 1);
     for (s32 index = 2; index >= 0; index--)
         func_0209a2ac(FIELD(void *, scene, 0xbc4 + index * 4), zero, 1);
@@ -107,7 +107,7 @@ extern "C" void func_ov040_022013e0(void *scene, const void *offset,
     func_020b1784((u8 *)FIELD(void *, scene, 0x1b7c) + 0x24 +
                   frame * data_ov040_022038a0[1] * 2, 0,
                   (void *)data_ov040_022038a0[0]);
-    func_02005058(zero);
-    func_02005058(presentationPosition);
-    func_02005058(translated);
+    VecFx32Object_Destroy(zero);
+    VecFx32Object_Destroy(presentationPosition);
+    VecFx32Object_Destroy(translated);
 }

@@ -13,7 +13,7 @@
 .extern data_ov041_02205918
 .extern data_ov041_0220593c
 .extern data_ov041_02205960
-.extern func_020050a4
+.extern VecFx32Object_Assign
 .extern func_0207043c
 .extern func_02070874
 .extern func_02070888
@@ -792,7 +792,7 @@ func_ov041_021fd01c: ; 0x021fd01c
     add r0, r4, #0x19c
     add r1, r4, #0x18c
     str r2, [r4, #0x194]
-    bl func_020050a4
+    bl VecFx32Object_Assign
     ldr r0, .L_021fdcfc
     mov r3, #0x0
     str r0, [r4, #0x1ac]

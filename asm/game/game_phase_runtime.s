@@ -5,7 +5,7 @@
 .extern data_02105310
 .extern FrameTaskList_Add
 .extern DisplayController_SetVerticalOffset
-.extern func_020050a4
+.extern VecFx32Object_Assign
 .extern TouchPoint_InitZero
 .extern OverlaySlot_Init
 .extern GamePhaseRuntime_SetDisplayRouting
@@ -184,7 +184,7 @@ GamePhaseRuntime_Configure:
     mov r7, r1, lsl #0xc
     str r7, [r5, #0x24]
     add r1, r5, #0x18
-    bl func_020050a4
+    bl VecFx32Object_Assign
     ldr r0, L_02006fc4
     ldr r1, L_02006fc8
     ldr r0, [r0, #0x0]
@@ -222,7 +222,7 @@ L_02006d1c:
     add r0, r5, #0x28
     add r1, r5, #0x18
     str r7, [r5, #0x24]
-    bl func_020050a4
+    bl VecFx32Object_Assign
     ldr r0, L_02006fc4
     ldr r1, L_02006fc8
     ldr r0, [r0, #0x0]

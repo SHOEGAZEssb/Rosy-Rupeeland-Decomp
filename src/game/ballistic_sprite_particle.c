@@ -34,14 +34,14 @@ typedef struct BallisticSpriteParticle {
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_02004fe0(ParticleVector *value);
-extern void func_0200500c(ParticleVector *value, s32 x, s32 y, s32 z);
-extern void func_02005030(ParticleVector *destination,
+extern void VecFx32Object_Init(ParticleVector *value);
+extern void VecFx32Object_InitComponents(ParticleVector *value, s32 x, s32 y, s32 z);
+extern void VecFx32Object_InitCopy(ParticleVector *destination,
                           const ParticleVector *source);
-extern void func_02005058(ParticleVector *value);
-extern void func_020050a4(ParticleVector *destination,
+extern void VecFx32Object_Destroy(ParticleVector *value);
+extern void VecFx32Object_Assign(ParticleVector *destination,
                           const ParticleVector *source);
-extern void func_020050c8(ParticleVector *position,
+extern void VecFx32Object_Add(ParticleVector *position,
                           const ParticleVector *velocity);
 extern u8 *GraphicsSpriteGroup_CreateState(void *owner, s32 resource, s32 palette,
                          s32 animation, s32 mode);
@@ -75,8 +75,8 @@ BallisticSpriteParticle *func_02023890(
     s32 horizontal;
     s32 vertical;
 
-    func_02005030(&self->position00, position);
-    func_02004fe0(&self->velocity10);
+    VecFx32Object_InitCopy(&self->position00, position);
+    VecFx32Object_Init(&self->velocity10);
     self->remaining24 = remaining;
     self->inactive28 = 0;
     self->angle2c = 0;
@@ -94,9 +94,9 @@ BallisticSpriteParticle *func_02023890(
     if (direction == 0) {
         horizontal = -horizontal;
     }
-    func_0200500c(&temporary, horizontal, vertical, 0);
-    func_020050a4(&self->velocity10, &temporary);
-    func_02005058(&temporary);
+    VecFx32Object_InitComponents(&temporary, horizontal, vertical, 0);
+    VecFx32Object_Assign(&self->velocity10, &temporary);
+    VecFx32Object_Destroy(&temporary);
 
     if (direction == 0) {
         self->angularVelocity2e = (s16)((func_020be4e4() & 0xff) << 4);
@@ -116,8 +116,8 @@ BallisticSpriteParticle *func_02023890(
 BallisticSpriteParticle *func_020239e8(BallisticSpriteParticle *self)
 {
     GraphicsSpriteGroup_ReleaseState(*(void **)self->sprite20, self->sprite20);
-    func_02005058(&self->velocity10);
-    func_02005058(&self->position00);
+    VecFx32Object_Destroy(&self->velocity10);
+    VecFx32Object_Destroy(&self->position00);
     return self;
 }
 
@@ -133,7 +133,7 @@ s32 func_02023a14(BallisticSpriteParticle *self)
     if (self->inactive28 != 0) {
         return 0;
     }
-    func_020050c8(&self->position00, &self->velocity10);
+    VecFx32Object_Add(&self->position00, &self->velocity10);
     self->velocity10.y08 += 0x200;
     self->angle2c = (u16)(self->angle2c + self->angularVelocity2e);
     *(u16 *)(self->sprite20 + 0x2c) = (u16)(self->position00.x04 >> 12);

@@ -33,8 +33,8 @@ s32 GamePhaseActorScriptVm_SpawnTieredEffect(GamePhaseActorScriptVm *self)
     s32 tierSource;
     s32 tier;
 
-    func_02004fe0(&position);
-    func_02004fe0(&secondary);
+    VecFx32Object_Init(&position);
+    VecFx32Object_Init(&secondary);
     first = (s32)GamePhaseScriptVm_Pop(&self->base);
     secondary.value.z = (s32)GamePhaseScriptVm_Pop(&self->base) << 4;
     secondary.value.y = (s32)GamePhaseScriptVm_Pop(&self->base) << 4;
@@ -61,7 +61,7 @@ s32 GamePhaseActorScriptVm_SpawnTieredEffect(GamePhaseActorScriptVm *self)
 
     func_0204e2ac(10, (s16)first, (s16)tierSource, &position, &secondary,
                   0x300d, 0x300e, 0x300f, tier, 7, 0);
-    func_02005058(&secondary);
-    func_02005058(&position);
+    VecFx32Object_Destroy(&secondary);
+    VecFx32Object_Destroy(&position);
     return 0;
 }

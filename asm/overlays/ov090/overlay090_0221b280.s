@@ -1,10 +1,10 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov090/overlay090_recovery.c.
-.extern func_0200500c
-.extern func_02005058
-.extern func_02005070
-.extern func_02005084
-.extern func_020050c8
+.extern VecFx32Object_InitComponents
+.extern VecFx32Object_Destroy
+.extern VecFx32Object_GetMagnitude
+.extern VecFx32Object_Normalize
+.extern VecFx32Object_Add
 .extern func_020adc90
 .extern func_020befec
 .extern func_ov090_0221b3d0
@@ -50,9 +50,9 @@ func_ov090_0221b280:
     bge .L_0221b3b0
     add r0, sp, #0x4
     mov r3, #0x0
-    bl func_0200500c
+    bl VecFx32Object_InitComponents
     add r0, sp, #0x4
-    bl func_02005084
+    bl VecFx32Object_Normalize
     add r0, sp, #0x4
     mov r1, #0x2000
     bl func_ov090_0221b3d0
@@ -60,11 +60,11 @@ func_ov090_0221b280:
     ldr r0, [r0, #0x1f4]
     add r1, sp, #0x4
     add r0, r0, #0x88
-    bl func_020050c8
+    bl VecFx32Object_Add
     add r0, r10, r9, lsl #0x2
     ldr r0, [r0, #0x1f4]
     add r0, r0, #0x88
-    bl func_02005070
+    bl VecFx32Object_GetMagnitude
     str r0, [sp, #0x0]
     cmp r0, #0x3000
     ble .L_0221b3a8
@@ -89,7 +89,7 @@ func_ov090_0221b280:
     bl func_ov090_0221b3d0
 .L_0221b3a8:
     add r0, sp, #0x4
-    bl func_02005058
+    bl VecFx32Object_Destroy
 .L_0221b3b0:
     add r8, r8, #0x1
     cmp r8, #0x2

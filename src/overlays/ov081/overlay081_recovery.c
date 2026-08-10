@@ -241,7 +241,7 @@ void func_ov081_02215224(void);
 /* Implements a minimal ABI helper with no observable state change or direct SDK effect; its encoded return behavior is preserved, while its semantic role remains unconfirmed. */
 void func_ov081_02215234(void);
 
-/* Processes the supplied ABI arguments and offset-based actor state, returns its encoded result, and invokes ActorDerivedRuntime_Init, func_02004fe0, func_020050a4 and other shared helpers; exact higher-level semantics remain unconfirmed. */
+/* Processes the supplied ABI arguments and offset-based actor state, returns its encoded result, and invokes ActorDerivedRuntime_Init, VecFx32Object_Init, VecFx32Object_Assign and other shared helpers; exact higher-level semantics remain unconfirmed. */
 void func_ov081_02215238(void);
 
 

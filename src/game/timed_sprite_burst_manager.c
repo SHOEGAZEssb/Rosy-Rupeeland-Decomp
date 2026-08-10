@@ -68,9 +68,9 @@ extern u8 *data_021052fc;
 extern void *gDebugFont;
 extern u32 genrand_int32(void);
 extern void TouchPoint_Init(TouchPointValue *point, s32 x, s32 y);
-extern void func_02004fe0(PresentationTrack *track);
-extern void func_02005030(PresentationTrack *track, const void *source);
-extern void func_02005058(void *track);
+extern void VecFx32Object_Init(PresentationTrack *track);
+extern void VecFx32Object_InitCopy(PresentationTrack *track, const void *source);
+extern void VecFx32Object_Destroy(void *track);
 extern void *func_02003e20(u32 size, const char *tag, s32 alignment,
                            HeapContext *heap);
 extern void func_02003e38(void *allocation);
@@ -153,8 +153,8 @@ TimedSpriteBurstManager *func_0201eefc(TimedSpriteBurstManager *self,
         func_0201e3b8(sprite, 1);
     }
     self->timer24 = 300;
-    func_02005058(&config.second20);
-    func_02005058(&config.first10);
+    VecFx32Object_Destroy(&config.second20);
+    VecFx32Object_Destroy(&config.first10);
     return self;
 }
 
@@ -180,8 +180,8 @@ void func_0201f0d0(OwnedPointerArray *array)
 /* Construct the two embedded tracks and return config. */
 BurstSpriteConfig *func_0201f0fc(BurstSpriteConfig *config)
 {
-    func_02004fe0(&config->first10);
-    func_02004fe0(&config->second20);
+    VecFx32Object_Init(&config->first10);
+    VecFx32Object_Init(&config->second20);
     return config;
 }
 
@@ -244,7 +244,7 @@ s32 func_0201f2b4(TimedSpriteBurstManager *self)
     PresentationTrack position;
     s32 index;
 
-    func_02005030(&position, ActorMotion_GetPosition(data_021052fc + 0x3044));
+    VecFx32Object_InitCopy(&position, ActorMotion_GetPosition(data_021052fc + 0x3044));
     switch (self->state14) {
     case 0:
         for (index = 0; index < self->sprites08.count; index++) {
@@ -257,10 +257,10 @@ s32 func_0201f2b4(TimedSpriteBurstManager *self)
         }
         break;
     case 1:
-        func_02005058(&position);
+        VecFx32Object_Destroy(&position);
         return 1;
     }
     GraphicsSpriteGroup_AdvanceAnimations(self->spriteGroup10);
-    func_02005058(&position);
+    VecFx32Object_Destroy(&position);
     return 0;
 }

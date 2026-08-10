@@ -20,7 +20,7 @@ extern void GraphicsResourceSet_ReleaseHandles(void *resourceSet);
 extern void GraphicsResourceSet_Destroy(void *resourceSet);
 extern void __destroy_arr(void *array, s32 count, s32 stride,
                           Overlay040ElementDestructor destructor);
-extern void func_02005058(void *object);
+extern void VecFx32Object_Destroy(void *object);
 extern void func_02099fb0(void *scene);
 extern void GraphicsSpriteState_SetAnimationIndex(void *renderer, u8 orientation);
 #ifdef __cplusplus
@@ -56,17 +56,17 @@ extern "C" void *func_ov040_021fd744(void *scene)
     FIELD(const void *, scene, 0) = data_ov040_022042a8;
     GraphicsResourceSet_ReleaseHandles((u8 *)scene + 0x1b7c);
     GraphicsResourceSet_Destroy((u8 *)scene + 0x1b7c);
-    __destroy_arr((u8 *)scene + 0x167c, 0x50, 0x10, func_02005058);
-    __destroy_arr((u8 *)scene + 0xbdc, 0x50, 0x10, func_02005058);
-    __destroy_arr((u8 *)scene + 0xb54, 2, 0x10, func_02005058);
-    __destroy_arr((u8 *)scene + 0x8c4, 0x1e, 0x10, func_02005058);
+    __destroy_arr((u8 *)scene + 0x167c, 0x50, 0x10, VecFx32Object_Destroy);
+    __destroy_arr((u8 *)scene + 0xbdc, 0x50, 0x10, VecFx32Object_Destroy);
+    __destroy_arr((u8 *)scene + 0xb54, 2, 0x10, VecFx32Object_Destroy);
+    __destroy_arr((u8 *)scene + 0x8c4, 0x1e, 0x10, VecFx32Object_Destroy);
     __destroy_arr((u8 *)scene + 0x894, 4, 0x0c, func_ov040_021fd740);
     __destroy_arr((u8 *)scene + 0x864, 4, 0x0c, func_ov040_021fd740);
-    __destroy_arr((u8 *)scene + 0x660, 0x1e, 0x10, func_02005058);
-    __destroy_arr((u8 *)scene + 0x84, 0x1e, 0x10, func_02005058);
-    func_02005058((u8 *)scene + 0x74);
-    func_02005058((u8 *)scene + 0x5c);
-    func_02005058((u8 *)scene + 0x4c);
+    __destroy_arr((u8 *)scene + 0x660, 0x1e, 0x10, VecFx32Object_Destroy);
+    __destroy_arr((u8 *)scene + 0x84, 0x1e, 0x10, VecFx32Object_Destroy);
+    VecFx32Object_Destroy((u8 *)scene + 0x74);
+    VecFx32Object_Destroy((u8 *)scene + 0x5c);
+    VecFx32Object_Destroy((u8 *)scene + 0x4c);
     func_02099fb0(scene);
     return scene;
 }

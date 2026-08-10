@@ -6,7 +6,7 @@
 .extern OverlayManager_UnloadOverlay
 .extern OverlayManager_GetGlobal
 .extern func_02003e38
-.extern func_02005058
+.extern VecFx32Object_Destroy
 .extern func_ov056_0220e690
 .extern func_ov056_0220e71c
 .extern func_ov056_0220e854
@@ -28,7 +28,7 @@ func_ov056_0220e79c:
     bl OverlayManager_UnloadOverlay
     add r0, r4, #0x98
     add r0, r0, #0x800
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add r0, r4, #0x4c
     add r0, r0, #0x800
     bl GameFile_Destroy
@@ -45,7 +45,7 @@ func_ov056_0220e79c:
     bl func_ov056_0220e690
     add r0, r4, #0x4
     add r0, r0, #0x800
-    bl func_02005058
+    bl VecFx32Object_Destroy
     mov r0, r4
     ldmia sp!, {r4, pc}
 .L_0220e824: .word data_ov056_0220f6a4

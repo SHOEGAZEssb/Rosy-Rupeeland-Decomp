@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/dual_layer_tile_renderer_runtime.c.
 .text
-.extern func_02005058
+.extern VecFx32Object_Destroy
 .extern VecFx32_Subtract
 .extern func_0202a2b0
 .extern func_0202b930
@@ -69,7 +69,7 @@ func_02029784: ; 0x02029784
     bl func_020b17ec
 .L_02029854:
     add r0, sp, #0x0
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add sp, sp, #0x10
     ldmia sp!, {r4, r5, r6, pc}
     .size func_02029784, . - func_02029784

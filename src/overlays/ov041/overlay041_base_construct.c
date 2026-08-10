@@ -17,7 +17,7 @@ extern void __construct_array(void *array, u32 count, u32 stride,
                               void (*destructor)(void *));
 extern void GraphicsResourceSet_Init(void *set);
 extern void GraphicsResourceSet_Destroy(void *set);
-extern void func_02004fe0(void *vector);
+extern void VecFx32Object_Init(void *vector);
 extern void func_0209a748(void *object, s32 value);
 extern void *GraphicsSpriteGroupOwner_CreateGroup(void *manager);
 extern void *func_02003e14(s32 size, void *heap, s32 alignment, void *context);
@@ -70,8 +70,8 @@ extern "C" void *func_ov041_021fce04(void *owner, s32 mode, void *argument,
                       GraphicsResourceSet_Init, GraphicsResourceSet_Destroy);
     __construct_array((u8 *)owner + 0xf0, 10, 0x0c,
                       GraphicsResourceSet_Init, GraphicsResourceSet_Destroy);
-    func_02004fe0((u8 *)owner + 0x18c);
-    func_02004fe0((u8 *)owner + 0x19c);
+    VecFx32Object_Init((u8 *)owner + 0x18c);
+    VecFx32Object_Init((u8 *)owner + 0x19c);
     func_ov041_021fd000((u8 *)owner + 0x1b8);
     FIELD(s32, owner, 0x40) = mode;
     FIELD(void *, owner, 0x18) = argument;

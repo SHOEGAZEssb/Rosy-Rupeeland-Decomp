@@ -7,7 +7,7 @@
 .extern data_ov074_02211d8c
 .extern OverlayManager_UnloadOverlay
 .extern OverlayManager_GetGlobal
-.extern func_02005058
+.extern VecFx32Object_Destroy
 .extern SplineMover_Destroy
 .extern GamePhaseTouchPrompt_SetEnabled
 .extern ActorDerivedType1_GetSingletonObject
@@ -48,11 +48,11 @@ func_ov074_022100fc:
     ldr r0, [r0, #0x0]
     bl GameWork_ClearFlag
     add r0, r4, #0x12c
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add r0, r4, #0x114
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add r0, r4, #0x104
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add r0, r4, #0xc8
     bl SplineMover_Destroy
     add r0, r4, #0x8c
@@ -60,9 +60,9 @@ func_ov074_022100fc:
     add r0, r4, #0x50
     bl SplineMover_Destroy
     add r0, r4, #0x40
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add r0, r4, #0x28
-    bl func_02005058
+    bl VecFx32Object_Destroy
     mov r0, r4
     bl Scene_Destroy
     mov r0, r4

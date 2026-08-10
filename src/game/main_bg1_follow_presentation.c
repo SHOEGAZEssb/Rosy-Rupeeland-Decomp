@@ -34,10 +34,10 @@ extern void func_0201e28c(void *);
 extern void func_0201ded4(void *, void *);
 extern const u8 *func_020284e0(s32);
 extern void *ActorMotionAreaFollower_GetPosition(void *);
-extern void func_02005030(void *, const void *);
+extern void VecFx32Object_InitCopy(void *, const void *);
 extern void func_02008740(void *, const void *);
-extern void func_020050c8(void *, const void *);
-extern void func_02005058(void *);
+extern void VecFx32Object_Add(void *, const void *);
+extern void VecFx32Object_Destroy(void *);
 extern void BgScroll_SetMainBg1(s32, s32);
 extern void func_02070f80(void *, s32);
 extern void func_020b44e8(void);
@@ -83,14 +83,14 @@ s32 func_020285a4(MainBg1FollowPresentation *self)
 {
     s32 sampled[4];
     s32 transformed[4];
-    func_02005030(sampled, ActorMotionAreaFollower_GetPosition(self->target_08));
+    VecFx32Object_InitCopy(sampled, ActorMotionAreaFollower_GetPosition(self->target_08));
     sampled[1] = (sampled[1] + (sampled[1] < 0)) / 2;
     sampled[2] = (sampled[2] + (sampled[2] < 0)) / 2;
     func_02008740(transformed, self->target_08 + 0x44);
-    func_020050c8(sampled, transformed);
-    func_02005058(transformed);
+    VecFx32Object_Add(sampled, transformed);
+    VecFx32Object_Destroy(transformed);
     BgScroll_SetMainBg1(sampled[1] >> 12, sampled[2] >> 12);
-    func_02005058(sampled);
+    VecFx32Object_Destroy(sampled);
     return 0;
 }
 

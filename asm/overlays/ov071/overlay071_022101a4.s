@@ -3,7 +3,7 @@
 .extern Heap_Free
 .extern __destroy_arr
 .extern data_ov071_02212394
-.extern func_02005058
+.extern VecFx32Object_Destroy
 .extern func_02099fb0
 .extern func_ov071_022101a0
 
@@ -36,9 +36,9 @@ func_ov071_022101a4:
     bl Heap_Free
 .L_02210208:
     add r0, r5, #0x5c
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add r0, r5, #0x4c
-    bl func_02005058
+    bl VecFx32Object_Destroy
     mov r0, r5
     bl func_02099fb0
     mov r0, r5

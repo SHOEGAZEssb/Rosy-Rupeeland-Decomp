@@ -1,9 +1,9 @@
 ; Matching retail form; see src/game/tracked_resource_actor_timed_collision.c.
 .extern data_02105310
-.extern func_02005030
-.extern func_02005058
-.extern func_02005070
-.extern func_020050a4
+.extern VecFx32Object_InitCopy
+.extern VecFx32Object_Destroy
+.extern VecFx32Object_GetMagnitude
+.extern VecFx32Object_Assign
 .extern VecFx32_Subtract
 .extern ActorRuntimeCollection_GetPendingAttachmentFlag
 .extern func_020328d0
@@ -31,7 +31,7 @@ func_02051b48:
     beq .L_02051c40
     add r0, sp, #0x10
     add r1, r5, #0x88
-    bl func_02005030
+    bl VecFx32Object_InitCopy
     ldr r0, [sp, #0x14]
     mvn r1, #0x7
     bl func_020adae4
@@ -53,11 +53,11 @@ func_02051b48:
     bl VecFx32_Subtract
     add r0, r5, #0x88
     add r1, sp, #0x0
-    bl func_020050a4
+    bl VecFx32Object_Assign
     add r0, sp, #0x0
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add r0, r5, #0x88
-    bl func_02005070
+    bl VecFx32Object_GetMagnitude
     mov r1, r0
     cmp r1, #0x4
     movlt r1, #0x4
@@ -76,7 +76,7 @@ func_02051b48:
     movle r0, #0x2000
     strle r0, [r5, #0x44]
     add r0, sp, #0x10
-    bl func_02005058
+    bl VecFx32Object_Destroy
 .L_02051c40:
     mov ip, #0x0
     str ip, [r5, #0x40]

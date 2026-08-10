@@ -13,8 +13,8 @@ extern void ActorExtendedType2_Destroy(void *actor);
 extern s32 ActorExtendedType2_TryDescriptorInteraction120(void *actor, void *record);
 extern s32 ActorExtendedType2_TryDescriptorInteraction128(void *actor, void *record);
 extern s32 ActorExtendedType2_GetDescriptorValue2A(const void *actor);
-extern void func_02005030(void *temporary, const void *source);
-extern void func_02005058(void *temporary);
+extern void VecFx32Object_InitCopy(void *temporary, const void *source);
+extern void VecFx32Object_Destroy(void *temporary);
 extern void ActorExtendedType2_UpdateTargetMotion(void *actor, const void *transform);
 #ifdef __cplusplus
 }
@@ -79,11 +79,11 @@ void ActorExtendedType3_ApplyTransformAndDampAxis(void *self, const void *source
 {
     u8 *actor = (u8 *)self;
     u32 temporary[4];
-    func_02005030(temporary, sourceTransform);
+    VecFx32Object_InitCopy(temporary, sourceTransform);
     ActorExtendedType2_UpdateTargetMotion(actor, temporary);
     if (*(s16 *)(actor + 0x298) == 0)
         *(s32 *)(actor + 0x40) /= 3;
     else if (*(s16 *)(actor + 0x298) == 1)
         *(s32 *)(actor + 0x3c) /= 3;
-    func_02005058(temporary);
+    VecFx32Object_Destroy(temporary);
 }

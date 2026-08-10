@@ -29,12 +29,12 @@ extern s32 func_020adc40(s32 value);
 extern s32 func_020adc90(s32 numerator, s32 denominator);
 extern s32 func_020ae024(s32 y, s32 x);
 extern s32 func_020befec(s32 value, s32 divisor);
-extern void func_0200500c(void *vector, s32 x, s32 y, s32 z);
-extern void func_02004fe0(void *vector);
-extern void func_02005030(void *destination, const void *source);
-extern void func_02005058(void *vector);
-extern void func_020050a4(void *destination, const void *source);
-extern void func_020050c8(void *destination, const void *source);
+extern void VecFx32Object_InitComponents(void *vector, s32 x, s32 y, s32 z);
+extern void VecFx32Object_Init(void *vector);
+extern void VecFx32Object_InitCopy(void *destination, const void *source);
+extern void VecFx32Object_Destroy(void *vector);
+extern void VecFx32Object_Assign(void *destination, const void *source);
+extern void VecFx32Object_Add(void *destination, const void *source);
 extern void GraphicsSpriteState_SetAnimationIndex(void *renderObject, u8 mode);
 extern void func_0209a2a4(void *object, void *parent);
 extern void func_0209a2ac(void *object, void *context, s32 enabled);
@@ -107,7 +107,7 @@ extern "C" void func_ov039_02205c18(void *scene, const void *direction)
     s32 newTier = func_020befec(FIELD(s16, scene, 0xba), 10);
     for (s32 i = newTier; i < oldTier; i++) {
         void *child = FIELD(void *, scene, 0x58 + i * 4);
-        func_020050c8((u8 *)child + 0x2c,
+        VecFx32Object_Add((u8 *)child + 0x2c,
                       (u8 *)FIELD(void *, scene, 0x48) + 0x2c);
         FIELD(u16, child, 0x40) = 1;
         func_0209a2a4(child, 0);
@@ -139,11 +139,11 @@ extern "C" void func_ov039_02205f64(void *scene, s32 index, void *output)
     };
     Overlay039FinalVector values[8];
     for (s32 i = 0; i < 8; i++)
-        func_0200500c(&values[i], offsets[i][0], offsets[i][1], offsets[i][2]);
+        VecFx32Object_InitComponents(&values[i], offsets[i][0], offsets[i][1], offsets[i][2]);
     FIELD(s32, output, 4) = values[index].x_04;
     FIELD(s32, output, 8) = values[index].y_08;
     FIELD(s32, output, 0x0c) = values[index].z_0c;
-    for (s32 i = 7; i >= 0; i--) func_02005058(&values[i]);
+    for (s32 i = 7; i >= 0; i--) VecFx32Object_Destroy(&values[i]);
 }
 
 /*
@@ -161,7 +161,7 @@ extern "C" void func_ov039_0220608c(void *scene)
        exposes their confirmed 8x10 table shape and consumer fields. */
     Overlay039FinalVector table[8][10];
     for (s32 f = 0; f < 8; f++) for (s32 i = 0; i < 10; i++)
-        func_0200500c(&table[f][i], 0, 0, 4 + f);
+        VecFx32Object_InitComponents(&table[f][i], 0, 0, 4 + f);
     for (s32 i = 9; i >= 0; i--) {
         void *child = FIELD(void *, scene, 0x58 + i * 4);
         if (FIELD(u16, child, 0x40) == 0) {
@@ -174,7 +174,7 @@ extern "C" void func_ov039_0220608c(void *scene)
     for (s32 i = func_020befec(FIELD(s16, scene, 0xba), 10); i >= 0; i--)
         FIELD(u16, FIELD(void *, scene, 0x58 + i * 4), 0x42) &= ~4;
     for (s32 f = 7; f >= 0; f--) for (s32 i = 9; i >= 0; i--)
-        func_02005058(&table[f][i]);
+        VecFx32Object_Destroy(&table[f][i]);
 }
 
 /*
@@ -308,7 +308,7 @@ extern "C" void func_ov039_022077b4(void *scene)
 extern "C" void func_ov039_02207f14(void *scene, void *context)
 {
     func_0209a2ac(scene, 0, 1);
-    func_020050a4((u8 *)scene + 0x2c, (u8 *)scene + 0xc4);
+    VecFx32Object_Assign((u8 *)scene + 0x2c, (u8 *)scene + 0xc4);
     s32 ownerState = FIELD(s32, FIELD(void *, scene, 0x80), 0x74);
     if (ownerState == 1 || (ownerState >= 0x17 && ownerState <= 0x1a)) {
         void *object = FIELD(void *, scene, 0x54);

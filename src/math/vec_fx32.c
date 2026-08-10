@@ -30,11 +30,11 @@ extern void func_020adfbc(const VecFx32Value *left,
  * Construct a zero vector and install the VecFx32 vtable. The object address
  * is returned; only its four words change and no SDK routine is called.
  */
-VecFx32Object *func_02004fe0(VecFx32Object *self)
+VecFx32Object *VecFx32Object_Init(VecFx32Object *self)
 {
     VecFx32Value *value = (VecFx32Value *)self;
 
-    self->vtable = &data_020d405c;
+    self->vtable = &gVecFx32ObjectVTable;
     if (self != 0) {
         value = &self->value;
     }
@@ -45,11 +45,12 @@ VecFx32Object *func_02004fe0(VecFx32Object *self)
 }
 
 /* Construct a vector from three fixed-point components and return the object. */
-VecFx32Object *func_0200500c(VecFx32Object *self, fx32 x, fx32 y, fx32 z)
+VecFx32Object *VecFx32Object_InitComponents(VecFx32Object *self, fx32 x,
+                                            fx32 y, fx32 z)
 {
     VecFx32Value *value = (VecFx32Value *)self;
 
-    self->vtable = &data_020d405c;
+    self->vtable = &gVecFx32ObjectVTable;
     if (self != 0) {
         value = &self->value;
     }
@@ -60,10 +61,10 @@ VecFx32Object *func_0200500c(VecFx32Object *self, fx32 x, fx32 y, fx32 z)
 }
 
 /* Copy another object's vector payload, install this vtable, and return self. */
-VecFx32Object *func_02005030(VecFx32Object *self,
-                             const VecFx32Object *source)
+VecFx32Object *VecFx32Object_InitCopy(VecFx32Object *self,
+                                      const VecFx32Object *source)
 {
-    self->vtable = &data_020d405c;
+    self->vtable = &gVecFx32ObjectVTable;
     self->value.x = source->value.x;
     self->value.y = source->value.y;
     self->value.z = source->value.z;
@@ -71,20 +72,20 @@ VecFx32Object *func_02005030(VecFx32Object *self,
 }
 
 /* Non-deleting destructor: the vector owns no resource and simply returns self. */
-VecFx32Object *func_02005058(VecFx32Object *self)
+VecFx32Object *VecFx32Object_Destroy(VecFx32Object *self)
 {
     return self;
 }
 
 /* Deleting destructor: release the object through the game heap and return its address. */
-VecFx32Object *func_0200505c(VecFx32Object *self)
+VecFx32Object *VecFx32Object_DestroyAndFree(VecFx32Object *self)
 {
     Heap_Free(self);
     return self;
 }
 
 /* Return the SDK-computed fixed-point magnitude without changing the vector. */
-fx32 func_02005070(const VecFx32Object *self)
+fx32 VecFx32Object_GetMagnitude(const VecFx32Object *self)
 {
     const VecFx32Value *value = self != 0
                                     ? &self->value
@@ -93,7 +94,7 @@ fx32 func_02005070(const VecFx32Object *self)
 }
 
 /* Normalize the wrapped vector in place through the NitroSDK vector helper. */
-void func_02005084(VecFx32Object *self)
+void VecFx32Object_Normalize(VecFx32Object *self)
 {
     VecFx32Value *destination = (VecFx32Value *)self;
     const VecFx32Value *source;
@@ -106,8 +107,8 @@ void func_02005084(VecFx32Object *self)
 }
 
 /* Assign another payload unless it is the same object; return the destination. */
-VecFx32Object *func_020050a4(VecFx32Object *self,
-                             const VecFx32Object *source)
+VecFx32Object *VecFx32Object_Assign(VecFx32Object *self,
+                                    const VecFx32Object *source)
 {
     if (self != source) {
         self->value.x = source->value.x;
@@ -117,8 +118,8 @@ VecFx32Object *func_020050a4(VecFx32Object *self,
     return self;
 }
 
-/* Apply the SDK operation at 0x020adff0 to self and other, storing into self. */
-void func_020050c8(VecFx32Object *self, const VecFx32Object *other)
+/* Add other's vector payload to self in place through the SDK helper. */
+void VecFx32Object_Add(VecFx32Object *self, const VecFx32Object *other)
 {
     VecFx32Value *destination = (VecFx32Value *)self;
     const VecFx32Value *right;
@@ -132,8 +133,8 @@ void func_020050c8(VecFx32Object *self, const VecFx32Object *other)
     func_020adff0(left, right, destination);
 }
 
-/* Apply the SDK operation at 0x020adfbc to self and other, storing into self. */
-void func_020050f0(VecFx32Object *self, const VecFx32Object *other)
+/* Subtract other's vector payload from self in place through the SDK helper. */
+void VecFx32Object_Subtract(VecFx32Object *self, const VecFx32Object *other)
 {
     VecFx32Value *destination = (VecFx32Value *)self;
     const VecFx32Value *right;

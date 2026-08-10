@@ -1,9 +1,9 @@
 .text
 /* Exact fallback; see overlay039_mode_score.c for portable C. */
     .extern func_020c10d4
-    .extern func_02004fe0
-    .extern func_020050a4
-    .extern func_02005058
+    .extern VecFx32Object_Init
+    .extern VecFx32Object_Assign
+    .extern VecFx32Object_Destroy
     .extern func_020be334
     .extern func_020adc90
 
@@ -17,7 +17,7 @@ func_ov039_021ff458:
     mov r1, #0xc
     bl func_020c10d4
     add r0, sp, #0x0
-    bl func_02004fe0
+    bl VecFx32Object_Init
     mov r7, #0x0
     add r5, sp, #0x10
     mov r4, #0xe000
@@ -27,7 +27,7 @@ L_021ff48c:
     ldr r1, [r1, #0x74]
     add r0, sp, #0x0
     add r1, r1, #0x1c
-    bl func_020050a4
+    bl VecFx32Object_Assign
     ldr r0, [sp, #0x4]
     ldmib r9, {r1, r2}
     sub r0, r1, r0
@@ -71,7 +71,7 @@ L_021ff48c:
     ldr r1, [r10, #0x7c]
     add r0, sp, #0x0
     add r1, r1, #0x1c
-    bl func_020050a4
+    bl VecFx32Object_Assign
     ldr r3, [r9, #0x4]
     ldr r0, [sp, #0x4]
     ldr r2, [r9, #0x8]
@@ -116,7 +116,7 @@ L_021ff48c:
     cmp r4, r0
     movlt r4, r0
     add r0, sp, #0x0
-    bl func_02005058
+    bl VecFx32Object_Destroy
     mov r0, r4
     add sp, sp, #0x1c
     ldmia sp!, {r4, r5, r6, r7, r8, r9, r10, r11, pc}

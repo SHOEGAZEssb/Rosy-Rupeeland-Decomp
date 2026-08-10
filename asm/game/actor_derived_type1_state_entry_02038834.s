@@ -3,8 +3,8 @@
 .extern DebugText_Printf
 .extern Sound_Play
 .extern data_021056e0
-.extern func_0200500c
-.extern func_02005058
+.extern VecFx32Object_InitComponents
+.extern VecFx32Object_Destroy
 .extern ActorRuntimeTriple_Assign
 .extern GamePhaseCurrencyHud_GetCurrency
 .extern Actor_SetPosition
@@ -62,7 +62,7 @@ ActorDerivedType1_EnterPositionedState: ; 0x02038834
     rsbne r1, r1, #0x0
     add r0, sp, #0x4
     mov r3, #0x0
-    bl func_0200500c
+    bl VecFx32Object_InitComponents
     ldr r3, .L_020389e0
     mov r0, r5
     ldrb r4, [r3, #0x0]
@@ -74,7 +74,7 @@ ActorDerivedType1_EnterPositionedState: ; 0x02038834
     ldr r3, [r3, #0xb8]
     blx r3
     add r0, sp, #0x4
-    bl func_02005058
+    bl VecFx32Object_Destroy
     b .L_020389b4
 .L_02038920:
     ldr r1, [r5, #0x230]

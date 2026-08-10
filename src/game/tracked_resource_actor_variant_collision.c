@@ -8,8 +8,8 @@ extern "C" {
 extern void *data_02105310;
 extern s32 ActorRuntimeCollection_GetPendingAttachmentFlag(void *state);
 extern void ActorRuntimeTriple_Assign(void *vector, s32 x, s32 y, s32 z);
-extern void func_02005030(void *destination, const void *source);
-extern void func_02005058(void *vector);
+extern void VecFx32Object_InitCopy(void *destination, const void *source);
+extern void VecFx32Object_Destroy(void *vector);
 extern void ActorCollection_QueueActorForRemoval(void *handle, void *actor);
 extern void func_020328d0(void *vector, s32 angle);
 extern void *Actor_GetCollection(void *actor);
@@ -43,12 +43,12 @@ void func_020511a4(void *actor, void *target, u32 unused1, u32 unused2)
     (void)unused1;
     (void)unused2;
     if (ActorRuntimeCollection_GetPendingAttachmentFlag(&data_02105310) == 0 && target != 0) {
-        func_02005030(vector, (u8 *)actor + 0x38);
+        VecFx32Object_InitCopy(vector, (u8 *)actor + 0x38);
         FIELD(s32, vector, 0x0c) = 0;
         func_020328d0(vector,
                       (s32)FIELD(s16, FIELD(void *, actor, 0x1fc), 0x2a) << 4);
         virtual_function(target, 0xb8)(target, vector);
-        func_02005058(vector);
+        VecFx32Object_Destroy(vector);
     }
     ActorRuntimeTriple_Assign((u8 *)actor + 0x38, 0, 0, 0);
     FIELD(u16, actor, 0x1f0) = (FIELD(u16, actor, 0x1f0) & 0x8000) | 2;

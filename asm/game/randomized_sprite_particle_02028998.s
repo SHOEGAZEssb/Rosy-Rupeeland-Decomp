@@ -1,9 +1,9 @@
 ; Matching retail form; see src/game/randomized_sprite_particle.c.
 .text
 .extern data_020c9670
-.extern func_02004fe0
-.extern func_02005058
-.extern func_020050c8
+.extern VecFx32Object_Init
+.extern VecFx32Object_Destroy
+.extern VecFx32Object_Add
 .extern VecFx32_Subtract
 .extern func_020adc90
 .extern func_020adcac
@@ -54,9 +54,9 @@ func_02028998: ; 0x02028998
     add r0, r7, #0x20
     add r1, r7, #0x30
     str r2, [r7, #0x3c]
-    bl func_020050c8
+    bl VecFx32Object_Add
     add r0, sp, #0x10
-    bl func_02004fe0
+    bl VecFx32Object_Init
     ldr r0, [r7, #0x24]
     mov r3, #0x0
     rsb r5, r0, #0x0
@@ -83,10 +83,10 @@ func_02028998: ; 0x02028998
     orr r3, r3, r2, lsl #0x14
     add r1, sp, #0x10
     str r3, [sp, #0x18]
-    bl func_020050c8
+    bl VecFx32Object_Add
     mov r0, r7
     add r1, r7, #0x20
-    bl func_020050c8
+    bl VecFx32Object_Add
     mov r2, r6
     add r0, sp, #0x0
     mov r1, r7
@@ -126,19 +126,19 @@ func_02028998: ; 0x02028998
     str r0, [r7, #0x48]
     add r0, sp, #0x0
     bpl .L_02028b74
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add r0, sp, #0x10
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add r0, sp, #0x20
-    bl func_02005058
+    bl VecFx32Object_Destroy
     mov r0, #0x1
     b .L_02028b8c
 .L_02028b74:
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add r0, sp, #0x10
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add r0, sp, #0x20
-    bl func_02005058
+    bl VecFx32Object_Destroy
     mov r0, #0x0
 .L_02028b8c:
     add sp, sp, #0x30

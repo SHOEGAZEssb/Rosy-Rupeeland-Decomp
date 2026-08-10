@@ -2,9 +2,9 @@
 .text
 .extern data_020c9670
 .extern data_021052fc
-.extern func_02004fe0
-.extern func_02005030
-.extern func_02005058
+.extern VecFx32Object_Init
+.extern VecFx32Object_InitCopy
+.extern VecFx32Object_Destroy
 .extern GamePhaseRuntime_GetActorCollection
 .extern func_02034a60
 .extern ActorDerivedType1_TrySetStateVector
@@ -42,7 +42,7 @@ ActorDerivedType1_ScanActiveRecordCollisions: ; 0x02039468
     mov r4, r0
     add r0, sp, #0x10
     add r1, r10, #0x18
-    bl func_02005030
+    bl VecFx32Object_InitCopy
     ldrb r0, [r10, #0xd4]
     ldr r1, .L_02039708
     ldr r5, [sp, #0x14]
@@ -152,7 +152,7 @@ ActorDerivedType1_ScanActiveRecordCollisions: ; 0x02039468
     cmp r4, r6
     bge .L_020396b8
     add r0, sp, #0x0
-    bl func_02004fe0
+    bl VecFx32Object_Init
     mov r0, r11
     mov r1, r4
     bl func_020adc90
@@ -168,7 +168,7 @@ ActorDerivedType1_ScanActiveRecordCollisions: ; 0x02039468
     mov r2, #0x1
     blx r3
     add r0, sp, #0x0
-    bl func_02005058
+    bl VecFx32Object_Destroy
 .L_020396b8:
     add r9, r9, #0x1
 .L_020396bc:
@@ -189,7 +189,7 @@ ActorDerivedType1_ScanActiveRecordCollisions: ; 0x02039468
     bl func_02034a60
 .L_020396f8:
     add r0, sp, #0x10
-    bl func_02005058
+    bl VecFx32Object_Destroy
 .L_02039700:
     add sp, sp, #0x20
     ldmia sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, pc}

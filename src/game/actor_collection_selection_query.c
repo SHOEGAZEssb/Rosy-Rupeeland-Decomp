@@ -32,8 +32,8 @@ extern s32 Actor_DispatchActivationMode1(void *actor);
 extern s32 ActorRuntimeCollection_GetPendingAttachmentFlag(const void *state);
 extern s32 Type7Actor_GetStateCode(void *actor);
 extern s32 ActorDerivedType1_IsIdleEligible(void *actor);
-extern void func_0200500c(void *storage, s32 first, s32 second);
-extern void func_02005058(void *storage);
+extern void VecFx32Object_InitComponents(void *storage, s32 first, s32 second);
+extern void VecFx32Object_Destroy(void *storage);
 extern void ActorDerivedType1_TrySetStateVector(void *actor, void *storage, s32 value, s32 mode);
 #ifdef __cplusplus
 }
@@ -147,9 +147,9 @@ s32 ActorCollection_ProcessSelectionQuery(ActorSelectionCollection *self,
                     s32 second = *(s32 *)((u8 *)actor + 0x24) -
                                  *(s32 *)((u8 *)candidate + 0x24) +
                                  (query->field_08 << 12);
-                    func_0200500c(&storage, query->field_04 << 12, second);
+                    VecFx32Object_InitComponents(&storage, query->field_04 << 12, second);
                     ActorDerivedType1_TrySetStateVector(actor, &storage, 0x14, 3);
-                    func_02005058(&storage);
+                    VecFx32Object_Destroy(&storage);
                 }
             }
         }

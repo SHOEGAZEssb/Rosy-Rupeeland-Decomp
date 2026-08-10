@@ -1,9 +1,9 @@
     .text
     .extern func_0209a208
     .extern GraphicsSpriteState_SetAnimationIndex
-    .extern func_0200500c
-    .extern func_020050a4
-    .extern func_02005058
+    .extern VecFx32Object_InitComponents
+    .extern VecFx32Object_Assign
+    .extern VecFx32Object_Destroy
     .extern data_ov007_021fc280
     .extern data_ov007_021fc28c
     .extern data_ov007_021fc294
@@ -211,12 +211,12 @@ L_021fba60:
     add r0, sp, #0x8
     mov r2, r1
     mov r3, r1
-    bl func_0200500c
+    bl VecFx32Object_InitComponents
     add r1, sp, #0x8
     add r0, r5, #0x80
-    bl func_020050a4
+    bl VecFx32Object_Assign
     add r0, sp, #0x8
-    bl func_02005058
+    bl VecFx32Object_Destroy
     mov r0, #0x0
     str r0, [r5, #0x98]
     strb r0, [r5, #0xa0]

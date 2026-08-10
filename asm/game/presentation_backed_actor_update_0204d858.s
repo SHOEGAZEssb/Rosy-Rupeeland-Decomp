@@ -2,8 +2,8 @@
 .extern SceneManager_GetCurrent
 .extern data_021052fc
 .extern gSceneManager
-.extern func_020050a4
-.extern func_020050c8
+.extern VecFx32Object_Assign
+.extern VecFx32Object_Add
 .extern ActorMotionAreaFollower_GetPosition
 .extern ActorCollection_QueueActorForRemoval
 .extern Actor_GetCollection
@@ -34,10 +34,10 @@ func_0204d858: ; 0x0204d858
     add r1, r6, #0x18
     bic r2, r2, #0x4
     strh r2, [r3, #0x24]
-    bl func_020050a4
+    bl VecFx32Object_Assign
     add r0, r6, #0x18
     add r1, r6, #0x38
-    bl func_020050c8
+    bl VecFx32Object_Add
     mov r0, r6
     ldr r1, [r0, #0x0]
     ldr r1, [r1, #0xb0]
@@ -384,7 +384,7 @@ func_0204d858: ; 0x0204d858
     mov r3, r3, lsr #0xc
     orr r3, r3, r2, lsl #0x14
     str r3, [r6, #0x94]
-    bl func_020050c8
+    bl VecFx32Object_Add
 .L_0204ddec:
     mov r0, r6
     ldr r1, [r0, #0x0]

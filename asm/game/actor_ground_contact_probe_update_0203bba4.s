@@ -3,10 +3,10 @@
 .extern GameWork_TestFlag
 .extern Sound_Play
 .extern gActorRuntimeFlags
-.extern func_02005030
-.extern func_02005058
-.extern func_02005084
-.extern func_020050a4
+.extern VecFx32Object_InitCopy
+.extern VecFx32Object_Destroy
+.extern VecFx32Object_Normalize
+.extern VecFx32Object_Assign
 .extern Actor_GetCachedTerrainHeight
 .extern Actor_QueryTerrainHeight
 .extern Actor_QueryTerrainCell
@@ -269,7 +269,7 @@ Actor_UpdateGroundContactProbe: ; 0x0203bba4
     cmpeq r6, #0x0
     beq .L_0203bf68
     add r0, r10, #0x98
-    bl func_02005084
+    bl VecFx32Object_Normalize
 .L_0203bf68:
     ldr r0, [sp, #0x0]
     add r1, r10, #0x200
@@ -319,15 +319,15 @@ Actor_UpdateGroundContactProbe: ; 0x0203bba4
     orr r2, r1, #0x10000
     add r1, r10, #0x28
     str r2, [r10, #0xd0]
-    bl func_02005030
+    bl VecFx32Object_InitCopy
     add r1, sp, #0x24
     mov r0, r10
     bl func_02034800
     add r1, sp, #0x24
     add r0, r10, #0x284
-    bl func_020050a4
+    bl VecFx32Object_Assign
     add r0, sp, #0x24
-    bl func_02005058
+    bl VecFx32Object_Destroy
     b .L_0203c11c
 .L_0203c048:
     ldr r0, [r10, #0xd0]

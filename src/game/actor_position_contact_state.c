@@ -5,7 +5,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *func_020050a4(void *, const void *);
+extern void *VecFx32Object_Assign(void *, const void *);
 #ifdef __cplusplus
 }
 #endif
@@ -22,8 +22,8 @@ void Actor_SetPosition(void *self, const void *source)
 
     *(u32 *)(actor + 0xd0) =
         (*(u32 *)(actor + 0xd0) & ~0x80) | 0x200;
-    copied = func_020050a4(actor + 0x28, source);
-    func_020050a4(actor + 0x18, copied);
+    copied = VecFx32Object_Assign(actor + 0x28, source);
+    VecFx32Object_Assign(actor + 0x18, copied);
 }
 
 /*

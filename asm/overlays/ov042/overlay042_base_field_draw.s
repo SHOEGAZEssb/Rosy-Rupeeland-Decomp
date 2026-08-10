@@ -1,6 +1,6 @@
 .text
-.extern func_0200500c
-.extern func_02005058
+.extern VecFx32Object_InitComponents
+.extern VecFx32Object_Destroy
 .extern func_0209d640
 .extern func_020b0880
 .extern func_020b0808
@@ -26,7 +26,7 @@ func_ov042_021fd158:
     add r0, sp, #0x30
     mov r2, r1
     mov r3, r1
-    bl func_0200500c
+    bl VecFx32Object_InitComponents
     ldr r0, [r10, #0x0]
     add r3, sp, #0x30
     ldr r0, [r0, #0x20]
@@ -121,14 +121,14 @@ func_ov042_021fd158:
     str r1, [r0, #0x0]
     bpl .L_021fd200
     add r0, sp, #0x30
-    bl func_02005058
+    bl VecFx32Object_Destroy
     b .L_021fd520
 .L_021fd310:
     ldr r2, [r10, #0x534]
     add r0, sp, #0x20
     mov r3, r1
     sub r2, r2, #0x2000
-    bl func_0200500c
+    bl VecFx32Object_InitComponents
     ldr r0, [r10, #0x0]
     add r3, sp, #0x20
     ldr r0, [r0, #0x20]
@@ -259,7 +259,7 @@ func_ov042_021fd158:
     mov r2, #0x1
     add r0, sp, #0x20
     str r2, [r1, #0x0]
-    bl func_02005058
+    bl VecFx32Object_Destroy
 .L_021fd520:
     add sp, sp, #0x338
     ldmia sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, pc}

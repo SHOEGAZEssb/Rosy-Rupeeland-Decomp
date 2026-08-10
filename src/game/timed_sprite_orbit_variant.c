@@ -46,7 +46,7 @@ extern OrbitTimedSprite *func_0201e6e4(OrbitTimedSprite *self, u8 *owner,
                                        u8 *config, s32 spriteValue);
 extern OrbitTimedSprite *func_0201e380(OrbitTimedSprite *self);
 extern void func_0201e3b8(OrbitTimedSprite *self, s32 enabled);
-extern void func_020050c8(PresentationTrack *first,
+extern void VecFx32Object_Add(PresentationTrack *first,
                           PresentationTrack *second);
 extern void GraphicsSpriteState_SetDepthOrderedWorldPositionFromOrigin(void *sprite, const void *position, s32 first,
                           s32 second, s32 third, s32 constant8);
@@ -125,7 +125,7 @@ s32 func_0201ea98(OrbitTimedSprite *self)
     S16BoundsCenter_Init(&center, self->owner2c + 0x68);
     ((OrbitTimedSpriteApply)self->vtable[5])(
         self, self->owner2c + 0x18, &center);
-    func_020050c8(&self->first08, &self->second18);
+    VecFx32Object_Add(&self->first08, &self->second18);
     self->angle38 = (u16)(self->angle38 + self->angleStep3a);
     return 0;
 }

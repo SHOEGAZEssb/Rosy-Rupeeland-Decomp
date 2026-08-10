@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/tracked_resource_actor_timed_proximity.c.
 .extern data_021052fc
-.extern func_02005058
-.extern func_02005070
+.extern VecFx32Object_Destroy
+.extern VecFx32Object_GetMagnitude
 .extern VecFx32_Subtract
 .extern Actor_SetInteractionFlag2000
 .extern ActorDerivedType1_TrySetStateVector
@@ -24,7 +24,7 @@ func_0205184c:
     mov r1, #0x0
     add r0, sp, #0x0
     str r1, [sp, #0xc]
-    bl func_02005070
+    bl VecFx32Object_GetMagnitude
     mov r6, r0
     cmp r6, #0x28000
     bge .L_02051944
@@ -77,7 +77,7 @@ func_0205184c:
     bl Actor_SetInteractionFlag2000
     mov r4, r0
     add r0, sp, #0x0
-    bl func_02005058
+    bl VecFx32Object_Destroy
     mov r0, r4
     add sp, sp, #0x10
     ldmia sp!, {r4, r5, r6, pc}

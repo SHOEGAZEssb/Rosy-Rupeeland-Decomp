@@ -5,7 +5,7 @@
 .extern GameWork_SetFlag
 .extern data_021052fc
 .extern data_ov090_0221cb10
-.extern func_02004fe0
+.extern VecFx32Object_Init
 .extern GamePhaseRuntime_GetActorCollection
 .extern func_0204d520
 .extern gGameWork
@@ -30,7 +30,7 @@ func_ov090_022177e0:
     str r2, [r10, #0x204]
     add r0, r10, #0x20c
     str r2, [r10, #0x208]
-    bl func_02004fe0
+    bl VecFx32Object_Init
     mov r2, #0x0
     str r2, [r10, #0x21c]
     add r0, r10, #0x200
@@ -39,7 +39,7 @@ func_ov090_022177e0:
     strb r2, [r10, #0x222]
     add r0, r10, #0x224
     strb r2, [r10, #0x223]
-    bl func_02004fe0
+    bl VecFx32Object_Init
     mov r8, #0x0
     mov r6, #0x1
     add r0, r10, #0x200

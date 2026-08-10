@@ -43,11 +43,11 @@ extern void *gGameWork;
 extern const s16 data_020c9670[];
 extern void func_0201e250(void *);
 extern void func_0201e28c(void *);
-extern void func_02004fe0(PresentationVector *);
-extern void func_0200500c(PresentationVector *, s32, s32, s32);
-extern void func_02005030(PresentationVector *, const PresentationVector *);
-extern void func_02005058(PresentationVector *);
-extern void func_020050a4(PresentationVector *, const PresentationVector *);
+extern void VecFx32Object_Init(PresentationVector *);
+extern void VecFx32Object_InitComponents(PresentationVector *, s32, s32, s32);
+extern void VecFx32Object_InitCopy(PresentationVector *, const PresentationVector *);
+extern void VecFx32Object_Destroy(PresentationVector *);
+extern void VecFx32Object_Assign(PresentationVector *, const PresentationVector *);
 extern void func_02071ea4(void *resource);
 extern void func_02071eb8(void *resource);
 extern void func_02071ee0(void *resource, void *owner, s32, s32, s32);
@@ -96,9 +96,9 @@ LaunchedSpritePairPresentation *func_02024b04(
     func_0201e250(self);
     self->vtable00 = (void **)data_020d68e4;
     self->anchor08 = anchor;
-    func_02005030(&self->position0c,
+    VecFx32Object_InitCopy(&self->position0c,
                   (const PresentationVector *)((u8 *)actor + 0x18));
-    func_02004fe0(&self->velocity1c);
+    VecFx32Object_Init(&self->velocity1c);
     func_02071ea4(self->resource3c);
     self->primaryOwner48 = ActorCollection_GetSpriteOwner(Actor_GetCollection(actor));
     record = func_02079a7c(data_021f3d68, recordIndex);
@@ -158,8 +158,8 @@ LaunchedSpritePairPresentation *func_02024d3c(
         GraphicsSpriteGroup_ReleaseState(self->secondaryOwner4c, self->secondarySprite54);
     }
     func_02071eb8(self->resource3c);
-    func_02005058(&self->velocity1c);
-    func_02005058(&self->position0c);
+    VecFx32Object_Destroy(&self->velocity1c);
+    VecFx32Object_Destroy(&self->position0c);
     func_0201e28c(self);
     return self;
 }

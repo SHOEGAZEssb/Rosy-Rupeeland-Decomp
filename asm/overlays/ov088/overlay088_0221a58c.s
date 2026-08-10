@@ -2,7 +2,7 @@
 ; Matching fallback for the portable implementation in src/overlays/ov088/overlay088_recovery.c.
 .extern GameWork_ClearFlag
 .extern data_021052fc
-.extern func_020050a4
+.extern VecFx32Object_Assign
 .extern GamePhaseRuntime_GetActorCollection
 .extern func_02034a60
 .extern Actor_ReplaceAttachmentSlotResource
@@ -43,7 +43,7 @@ func_ov088_0221a58c:
     add r0, r0, #0x2000
     ldr r4, [r0, #0xea4]
     add r0, r4, #0x18
-    bl func_020050a4
+    bl VecFx32Object_Assign
     ldr r1, [r10, #0xd0]
     ldr r0, .L_0221a7ac
     bic r1, r1, #0x100000

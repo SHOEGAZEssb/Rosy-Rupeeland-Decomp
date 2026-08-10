@@ -2,16 +2,16 @@
 ; the documented portable implementation and recovered behavior.
 .text
 .extern data_021052fc
-.extern func_02004fe0
-.extern func_02005058
-.extern func_020050c8
+.extern VecFx32Object_Init
+.extern VecFx32Object_Destroy
+.extern VecFx32Object_Add
 .global ActorMotion_UpdateFromBoundActor
 ActorMotion_UpdateFromBoundActor: ; 0x02009c20
     stmdb sp!, {r4, lr}
     sub sp, sp, #0x10
     mov r4, r0
     add r0, sp, #0x0
-    bl func_02004fe0
+    bl VecFx32Object_Init
     ldr r0, L_02009d08
     ldr r0, [r0, #0x0]
     add r0, r0, #0x3000
@@ -33,7 +33,7 @@ ActorMotion_UpdateFromBoundActor: ; 0x02009c20
     add r2, r2, r2, lsr #0x1f
     mov r2, r2, asr #0x1
     str r2, [r4, #0x10]
-    bl func_020050c8
+    bl VecFx32Object_Add
     b L_02009cf4
 L_02009c90:
     cmp r0, #0x1
@@ -52,7 +52,7 @@ L_02009c90:
     add r2, r2, r2, lsr #0x1f
     mov r2, r2, asr #0x1
     str r2, [r4, #0x10]
-    bl func_020050c8
+    bl VecFx32Object_Add
     b L_02009cf4
 L_02009cd8:
     ldr r2, [r1, #0x1c]
@@ -61,10 +61,10 @@ L_02009cd8:
     ldr r2, [r4, #0x4]
     ldr r2, [r2, #0x20]
     str r2, [r4, #0x10]
-    bl func_020050c8
+    bl VecFx32Object_Add
 L_02009cf4:
     add r0, sp, #0x0
-    bl func_02005058
+    bl VecFx32Object_Destroy
     mov r0, #0x0
     add sp, sp, #0x10
     ldmia sp!, {r4, pc}

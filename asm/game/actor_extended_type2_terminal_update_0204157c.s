@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/actor_extended_type2_terminal_update.c.
 .text
-.extern func_02005030
-.extern func_02005058
+.extern VecFx32Object_InitCopy
+.extern VecFx32Object_Destroy
 .extern Actor_RestoreSavedFlags
 .extern func_0204e3f4
 .extern func_0204e628
@@ -53,7 +53,7 @@ ActorExtendedType2_UpdateTerminalState18: ; 0x020415a8
     mov r7, r0
     add r0, sp, #0x4
     add r1, r4, #0x18
-    bl func_02005030
+    bl VecFx32Object_InitCopy
     ldr r0, [sp, #0x10]
     cmp r7, #0x0
     add r0, r0, #0x14000
@@ -93,7 +93,7 @@ ActorExtendedType2_UpdateTerminalState18: ; 0x020415a8
     bl func_0204e628
 .L_02041698:
     add r0, sp, #0x4
-    bl func_02005058
+    bl VecFx32Object_Destroy
 .L_020416a0:
     mov r0, r4
     ldr r2, [r0, #0x0]

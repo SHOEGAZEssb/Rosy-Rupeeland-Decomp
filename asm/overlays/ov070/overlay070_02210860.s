@@ -8,9 +8,9 @@
 .extern DisplayBrightness_StartTransition
 .extern DisplayBrightness_GetCurrent
 .extern DisplayBrightnessPair_GetScreen
-.extern func_02004fe0
-.extern func_02005058
-.extern func_020050a4
+.extern VecFx32Object_Init
+.extern VecFx32Object_Destroy
+.extern VecFx32Object_Assign
 .extern func_02058d40
 .extern func_020593ac
 .extern func_020594ec
@@ -994,7 +994,7 @@ func_ov070_02210860:
     cmp r0, #0x1
     beq .L_0221173c
     add r0, sp, #0x14
-    bl func_02004fe0
+    bl VecFx32Object_Init
     ldr r1, [r4, #0xd4]
     ldr r0, .L_02211868
     sub r1, r1, #0x80000
@@ -1031,9 +1031,9 @@ func_ov070_02210860:
     ldr r0, [r4, #0x48]
     add r1, sp, #0x14
     add r0, r0, #0x19c
-    bl func_020050a4
+    bl VecFx32Object_Assign
     add r0, sp, #0x14
-    bl func_02005058
+    bl VecFx32Object_Destroy
 .L_0221173c:
     ldr r2, [r4, #0x120]
     mvn r0, #0x0

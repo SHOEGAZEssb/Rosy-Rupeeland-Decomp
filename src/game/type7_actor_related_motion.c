@@ -8,8 +8,8 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *func_020050a4(void *destination, const void *source);
-extern void func_02005058(void *value);
+extern void *VecFx32Object_Assign(void *destination, const void *source);
+extern void VecFx32Object_Destroy(void *value);
 extern void Type7Actor_UpdateMotionTowardTransform(void *actor, const void *transform);
 extern void Type7Actor_ResetInteractionState(void *actor);
 extern void Type7Actor_UpdateFlag14Bit2FromCondition(void *actor, s32 condition);
@@ -35,7 +35,7 @@ static void set_actor_mode(u8 *actor, s32 mode)
  * related object +0x210 is absent, reset through Type7Actor_ResetInteractionState and return zero.
  * Otherwise call that object's virtual +0xb4 operation with a temporary
  * 16-byte value and the actor, update actor motion from the result, then
- * finalize the temporary value through func_02005058.
+ * finalize the temporary value through VecFx32Object_Destroy.
  *
  * When actor collision bit 0x40000 is set, select presentation halfword 14
  * unless the related object's bytes +0x4d/+0x4e identify subtype four with
@@ -67,7 +67,7 @@ s32 Type7Actor_UpdateMotionFromRelatedTransform(void *self)
     if ((*(u32 *)(actor + 0xd0) & 0x40000) != 0
         && !(related[0x4d] == 4 && *(u16 *)(related + 0x4e) == 0x12))
         *(u16 *)(actor + 0xd6) = 14;
-    func_02005058(value);
+    VecFx32Object_Destroy(value);
     return 0;
 }
 
@@ -146,9 +146,9 @@ s32 Type7Actor_UpdateAcquiredTargetMotion(void *self)
     if (Type7Actor_TryCancelDistantTarget(actor) != 0)
         return 0;
     if ((*(u32 *)(actor + 0x268) & 4) != 0)
-        func_020050a4(actor + 0x78, actor + 0x224);
+        VecFx32Object_Assign(actor + 0x78, actor + 0x224);
     related = *(u8 **)(actor + 0x210);
-    func_020050a4(actor + 0x78, related + 0x18);
+    VecFx32Object_Assign(actor + 0x78, related + 0x18);
     Type7Actor_AdjustDestinationForCollisions(actor);
     Type7Actor_UpdateMotionTowardTransform(actor, actor + 0x78);
     *(u16 *)(actor + 0xd6) = related[0x4d] == 1 ? 10 : 14;

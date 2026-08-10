@@ -1,8 +1,8 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov080/overlay080_recovery.c.
 .extern data_02105310
-.extern func_02005030
-.extern func_02005058
+.extern VecFx32Object_InitCopy
+.extern VecFx32Object_Destroy
 .extern ActorRuntimeCollection_GetPendingAttachmentFlag
 .extern Actor_GetCachedTerrainHeight
 .extern func_02050078
@@ -39,7 +39,7 @@ func_ov080_02213b24:
     ldr r1, [r4, #0x228]
     add r0, sp, #0x0
     add r1, r1, #0x18
-    bl func_02005030
+    bl VecFx32Object_InitCopy
     ldr r0, [r4, #0x29c]
     add r2, sp, #0x0
     ldrsh r0, [r0, #0x0]
@@ -52,7 +52,7 @@ func_ov080_02213b24:
     mov r2, #0x1e
     strh r3, [r1, #0x9a]
     strh r2, [r1, #0xa2]
-    bl func_02005058
+    bl VecFx32Object_Destroy
     b .L_02213be0
 .L_02213bd8:
     sub r1, r1, #0x1

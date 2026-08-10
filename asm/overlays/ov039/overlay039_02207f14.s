@@ -1,7 +1,7 @@
 .text
 /* Exact fallback; see overlay039_final_update.c for portable C. */
     .extern func_0209a2ac
-    .extern func_020050a4
+    .extern VecFx32Object_Assign
     .global func_ov039_02207f14
 func_ov039_02207f14:
     stmdb sp!, {r3, r4, r5, r6, r7, lr}
@@ -12,7 +12,7 @@ func_ov039_02207f14:
     bl func_0209a2ac
     add r0, r5, #0x2c
     add r1, r5, #0xc4
-    bl func_020050a4
+    bl VecFx32Object_Assign
     ldr r0, [r5, #0x80]
     ldr r0, [r0, #0x74]
     cmp r0, #0x1

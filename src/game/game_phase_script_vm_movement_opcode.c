@@ -54,7 +54,7 @@ s32 GamePhaseActorScriptVm_StartMovement(GamePhaseActorScriptVm *self)
     s32 duration;
     u8 movement[0x34];
 
-    func_02004fe0(&target);
+    VecFx32Object_Init(&target);
     if (actor[0xe6] == 1) {
         if ((mode & 1) == 0)
             Actor_UpdateAttachmentDirectionFromVector(actor, x, y);
@@ -106,6 +106,6 @@ s32 GamePhaseActorScriptVm_StartMovement(GamePhaseActorScriptVm *self)
     GamePhaseScriptVm_SetResult(&self->base, duration);
     if (*(s16 *)(actor + 0xe4) == 1 && *(void **)(actor + 0x54) != 0)
         *(u16 *)(*(u8 **)(actor + 0x54) + 0x24) &= (u16)~0x20;
-    func_02005058(&target);
+    VecFx32Object_Destroy(&target);
     return 0;
 }

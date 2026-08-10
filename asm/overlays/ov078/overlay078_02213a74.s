@@ -1,10 +1,10 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov078/overlay078_recovery.c.
 .extern data_021052fc
-.extern func_02004fe0
-.extern func_02005058
-.extern func_02005070
-.extern func_020050a4
+.extern VecFx32Object_Init
+.extern VecFx32Object_Destroy
+.extern VecFx32Object_GetMagnitude
+.extern VecFx32Object_Assign
 .extern func_ov078_02213ba8
 
 .global func_ov078_02213a74
@@ -14,7 +14,7 @@ func_ov078_02213a74:
     mov r6, r0
     add r0, sp, #0x20
     mov r5, r1
-    bl func_02004fe0
+    bl VecFx32Object_Init
     ldrh r0, [r5, #0x1a]
     tst r0, #0x10
     mvnne r4, #0x80000000
@@ -29,11 +29,11 @@ func_ov078_02213a74:
     bl func_ov078_02213ba8
     add r0, sp, #0x20
     add r1, sp, #0x10
-    bl func_020050a4
+    bl VecFx32Object_Assign
     add r0, sp, #0x10
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add r0, sp, #0x20
-    bl func_02005070
+    bl VecFx32Object_GetMagnitude
     mov r4, r0
 .L_02213adc:
     ldrh r0, [r5, #0x1a]
@@ -56,11 +56,11 @@ func_ov078_02213a74:
     bl func_ov078_02213ba8
     add r0, sp, #0x20
     add r1, sp, #0x0
-    bl func_020050a4
+    bl VecFx32Object_Assign
     add r0, sp, #0x0
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add r0, sp, #0x20
-    bl func_02005070
+    bl VecFx32Object_GetMagnitude
     add r1, r0, #0x18000
     b .L_02213b4c
 .L_02213b48:
@@ -87,7 +87,7 @@ func_ov078_02213a74:
     strne r0, [r6, #0x228]
 .L_02213b94:
     add r0, sp, #0x20
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add sp, sp, #0x30
     ldmia sp!, {r4, r5, r6, pc}
 .L_02213ba4: .word data_021052fc

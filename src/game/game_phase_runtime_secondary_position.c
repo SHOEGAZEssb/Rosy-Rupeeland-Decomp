@@ -7,7 +7,7 @@ extern "C" {
 #endif
 extern void func_02056f00(void *value, const void *position);
 extern void GamePhaseAreaScene_UpdateRegionAtPosition(void *actor, void *areaState, s32 x, s32 y);
-extern void func_02005058(void *value);
+extern void VecFx32Object_Destroy(void *value);
 #ifdef __cplusplus
 }
 #endif
@@ -30,7 +30,7 @@ void func_0200866c(GamePhaseRuntime *self)
         func_02056f00(value, (u8 *)*(void **)(b + 0x2ea4) + 0x18);
         GamePhaseAreaScene_UpdateRegionAtPosition(*(void **)(b + 0x2fb8), b + 0x2fa4,
                       *(s32 *)(value + 4), *(s32 *)(value + 8));
-        func_02005058(value);
+        VecFx32Object_Destroy(value);
     } else {
         GamePhaseAreaScene_UpdateRegionAtPosition(actor, b + 0x2fa4, 0, 0);
     }

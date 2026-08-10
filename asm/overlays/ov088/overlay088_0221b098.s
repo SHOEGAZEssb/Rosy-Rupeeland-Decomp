@@ -7,8 +7,8 @@
 .extern data_ov088_0221b9fc
 .extern OverlayManager_LoadOverlay
 .extern OverlayManager_GetGlobal
-.extern func_02005058
-.extern func_020050a4
+.extern VecFx32Object_Destroy
+.extern VecFx32Object_Assign
 .extern func_02034a60
 .extern Type7Actor_ResetMotionAndCooldown
 .extern GraphicsSpriteState_ReleaseFromGroup
@@ -59,10 +59,10 @@ func_ov088_0221b098:
     add r0, r4, #0x28
     add r2, r3, r2
     str r2, [sp, #0x24]
-    bl func_020050a4
+    bl VecFx32Object_Assign
     mov r1, r0
     add r0, r4, #0x18
-    bl func_020050a4
+    bl VecFx32Object_Assign
     ldr r1, [r4, #0x54]
     ldrh r0, [r1, #0x24]
     bic r0, r0, #0x4
@@ -97,7 +97,7 @@ func_ov088_0221b098:
     cmp r7, #0x0
     beq .L_0221b1cc
     add r0, sp, #0xc
-    bl func_02005058
+    bl VecFx32Object_Destroy
 .L_0221b1cc:
     ldr r1, [r4, #0x14]
     mov r0, r4
@@ -108,7 +108,7 @@ func_ov088_0221b098:
     str r1, [r4, #0x268]
     bl Type7Actor_ResetMotionAndCooldown
     add r0, sp, #0x1c
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add sp, sp, #0x2c
     ldmia sp!, {r4, r5, r6, r7, pc}
 .L_0221b1fc: .word data_021052fc

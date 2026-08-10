@@ -5,7 +5,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_02005030(void *destination, const void *source);
+extern void VecFx32Object_InitCopy(void *destination, const void *source);
 #ifdef __cplusplus
 }
 #endif
@@ -23,11 +23,11 @@ void *func_02034e08(void *self)
 
 /*
  * Construct/copy the vector at source+0x18 into destination through
- * func_02005030. Returns no explicit value; the helper may manage SDK value state.
+ * VecFx32Object_InitCopy. Returns no explicit value; the helper may manage SDK value state.
  */
 void func_02034e1c(void *destination, const void *source)
 {
-    func_02005030(destination, (const u8 *)source + 0x18);
+    VecFx32Object_InitCopy(destination, (const u8 *)source + 0x18);
 }
 
 /* Ignore self and return zero as the default query result. */

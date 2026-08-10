@@ -7,7 +7,7 @@
 .extern data_ov088_0221b9fc
 .extern OverlayManager_LoadOverlay
 .extern OverlayManager_GetGlobal
-.extern func_02005058
+.extern VecFx32Object_Destroy
 .extern AnimationResource_Init
 .extern ActorCollection_GetSpriteOwner
 .extern Actor_GetCollection
@@ -97,7 +97,7 @@ func_ov088_0221af2c:
     bl func_ov062_02210674
 .L_0221b054:
     add r0, sp, #0xc
-    bl func_02005058
+    bl VecFx32Object_Destroy
 .L_0221b05c:
     add r1, r6, #0x200
     ldrh r2, [r1, #0x1a]

@@ -14,7 +14,7 @@ extern u8 gHeapContext[];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_02004fe0(void *object);
+extern void VecFx32Object_Init(void *object);
 extern void func_02091b6c(void *object);
 extern void func_02092798(void *object);
 extern void Type7Actor_EnterFlag40000State(void *activeObject);
@@ -55,8 +55,8 @@ extern "C" void *func_ov033_021fd070(void *scene)
     void *primary;
     void *secondary;
 
-    func_02004fe0((u8 *)scene + 0x14);
-    func_02004fe0((u8 *)scene + 0x24);
+    VecFx32Object_Init((u8 *)scene + 0x14);
+    VecFx32Object_Init((u8 *)scene + 0x24);
     func_02091b6c((u8 *)scene + 0x4c);
     func_02091b6c((u8 *)scene + 0x68);
     func_02091b6c((u8 *)scene + 0x84);

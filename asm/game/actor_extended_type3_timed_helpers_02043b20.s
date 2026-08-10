@@ -1,8 +1,8 @@
 ; Matching retail form; see src/game/actor_extended_type3_timed_helpers.c.
 .text
 .extern data_020e0224
-.extern func_02005030
-.extern func_02005058
+.extern VecFx32Object_InitCopy
+.extern VecFx32Object_Destroy
 .extern ActorExtendedType2_UpdateTargetApproach
 .extern ActorExtendedType2_GetDescriptorValue2C
 .extern ActorExtendedType2_GetDescriptorValue25
@@ -83,14 +83,14 @@ ActorExtendedType3_ApplyDescriptorModeTransform: ; 0x02043bc8
     beq .L_02043c1c
     add r0, sp, #0x0
     add r1, r4, #0x18
-    bl func_02005030
+    bl VecFx32Object_InitCopy
     mov r0, r4
     bl ActorExtendedType2_GetDescriptorValue25
     add r1, sp, #0x0
     mov r2, r1
     bl func_02050078
     add r0, sp, #0x0
-    bl func_02005058
+    bl VecFx32Object_Destroy
 .L_02043c1c:
     add sp, sp, #0x10
     ldmia sp!, {r4, pc}

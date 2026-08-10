@@ -19,8 +19,8 @@ extern void *data_020d6740;extern const char data_020d6760[];
 extern const s16 data_020c9670[];extern u8 data_02105610;extern void *gSoundContext;
 extern void *func_0201e250(void *);extern void *func_0201e28c(void *);
 extern void *AnimationResource_Init(void *,s32,s32,s32);extern u8 *GraphicsSpriteState_Create(void *,void *,s32,s32,s32,s32,s32);
-extern void GraphicsSpriteState_SetDepthOrderedWorldPosition(void *,s32,s32,s32,s32);extern void func_02004fe0(void *);
-extern void func_02005058(void *);extern void VecFx32Triple_Destroy(void *);extern void VecFx32Bezier_Evaluate3D(void *,void *,s32);
+extern void GraphicsSpriteState_SetDepthOrderedWorldPosition(void *,s32,s32,s32,s32);extern void VecFx32Object_Init(void *);
+extern void VecFx32Object_Destroy(void *);extern void VecFx32Triple_Destroy(void *);extern void VecFx32Bezier_Evaluate3D(void *,void *,s32);
 extern void VecFx32Triple_InitWithValues(void *,const void *,const void *,const void *);extern void func_02008378(void *,const void *,const void *);
 extern void func_020233c8(void *,const void *,s32);extern s32 func_020befec(s32,s32);
 extern void GraphicsSpriteGroup_ReleaseState(void *,void *);extern void GraphicsSpriteGroup_ReplaceStateResources(void *,s32,s32,s32,s32);
@@ -50,10 +50,10 @@ ArcingSpriteEffectPresentation *func_02023434(
     if(self->secondDescriptor0c)AnimationResource_Init(self->secondDescriptor0c,0x1625,0x1626,0x1627);
     self->sprite10=GraphicsSpriteState_Create(spriteOwner,self->firstDescriptor08,0,0,0,10,0);
     func_020233c8(&a,first,0x4cd);func_020233c8(&b,second,0xb33);
-    func_02008378(&combined,&a,&b);func_02005058(&b);func_02005058(&a);
+    func_02008378(&combined,&a,&b);VecFx32Object_Destroy(&b);VecFx32Object_Destroy(&a);
     self->path1c=(u8 *)Heap_Alloc(0x30,data_020d6760,4,&gHeapContext);
     if(self->path1c)VecFx32Triple_InitWithValues(self->path1c,first,second,&combined);
-    func_02005058(&combined);return self;
+    VecFx32Object_Destroy(&combined);return self;
 }
 
 static ArcingSpriteEffectPresentation *teardown_arc(ArcingSpriteEffectPresentation *self)
@@ -93,7 +93,7 @@ s32 func_020236a0(ArcingSpriteEffectPresentation *self)
         value.z0c+=self->amplitude1a*data_020c9670[index];
         GraphicsSpriteState_SetDepthOrderedWorldPosition(self->sprite10,value.x04,value.y08,value.z0c,8);
         if(++self->frame14>self->duration16){self->frame14=self->duration16;if(self->switchResource20)self->state18=1;else{*(u16 *)(self->sprite10+0x24)|=8;self->state18=3;}}
-        func_02005058(&value);break;
+        VecFx32Object_Destroy(&value);break;
     case 1:
         GraphicsSpriteGroup_ReplaceStateResources(*(void **)self->sprite10,*(s32 *)(self->secondDescriptor0c+4),*(s32 *)(self->secondDescriptor0c+8),*(s32 *)(self->secondDescriptor0c+12),*(s32 *)(self->secondDescriptor0c+12));
         GraphicsSpriteState_SetAnimationIndex(self->sprite10,0);*(u16 *)(self->sprite10+0x24)&=(u16)~3;self->state18=2;

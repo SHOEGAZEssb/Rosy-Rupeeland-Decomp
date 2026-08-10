@@ -8,7 +8,7 @@
 .extern data_ov071_022122f4
 .extern data_ov071_02212340
 .extern data_ov071_022123e0
-.extern func_020050a4
+.extern VecFx32Object_Assign
 .extern func_020595b0
 .extern GraphicsSpriteState_SetAnimationIndex
 .extern func_020a1794
@@ -558,7 +558,7 @@ func_ov071_0221083c:
     ldr r1, [r6, #0xec]
     add r0, r0, #0x2c
     add r1, r1, #0x2c
-    bl func_020050a4
+    bl VecFx32Object_Assign
     ldr r0, .L_02211148
     ldr r1, .L_0221114c
     ldr r0, [r0, #0x0]

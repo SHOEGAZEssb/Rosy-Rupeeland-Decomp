@@ -21,13 +21,13 @@ extern "C" {
 extern s32 Actor_IsAtCachedTerrainHeight(void *actor);
 extern s32 ActorFeedback_DispatchEnvironment(void *actor);
 extern void func_020349b8(void *actor, u32 sound, s32 extra);
-extern void func_02004fe0(void *value);
-extern void func_02005030(void *temporary, const void *source);
-extern void func_02005058(void *temporary);
-extern void func_020050a4(void *destination, const void *source);
+extern void VecFx32Object_Init(void *value);
+extern void VecFx32Object_InitCopy(void *temporary, const void *source);
+extern void VecFx32Object_Destroy(void *temporary);
+extern void VecFx32Object_Assign(void *destination, const void *source);
 extern s32 func_020adcac(const void *first, const void *second);
 extern void VecFx32_Subtract(void *output, const void *first, const void *second);
-extern void func_02005084(void *value);
+extern void VecFx32Object_Normalize(void *value);
 extern void func_020328d0(void *value, s32 scale);
 extern void *GamePhaseRuntime_GetActorCollection(void *manager, u32 slot);
 extern s32 Actor_QueryTerrainHeight(void *actor, s32 x, s32 y);
@@ -153,8 +153,8 @@ s32 ActorDerivedType1_ProcessInteraction(void *self)
         *(s32 *)(actor + 0x40) = 0;
         *(s32 *)(actor + 0x8c) = 0;
         *(s32 *)(actor + 0x90) = 0;
-        func_02004fe0(origin);
-        func_02005030(actorPosition, actor + 0x18);
+        VecFx32Object_Init(origin);
+        VecFx32Object_InitCopy(actorPosition, actor + 0x18);
         directionPair(actor[0xd4], &first, &second);
         actorPosition[1] -= first << 4;
         actorPosition[2] += second << 4;
@@ -164,11 +164,11 @@ s32 ActorDerivedType1_ProcessInteraction(void *self)
             if ((*(s32 (**)(void *))(*(u8 **)target + 0x1d0))(target) != 0 &&
                 func_020adcac(target + 0x1c, actorPosition + 1) < 0x20000) {
                 VecFx32_Subtract(displacement, target + 0x18, actor + 0x18);
-                func_02005084(displacement);
+                VecFx32Object_Normalize(displacement);
                 func_020328d0(displacement, 0x1800);
                 (*(void (**)(void *, const void *, s32))
                     (*(u8 **)target + 0xb8))(target, displacement, 1);
-                func_02005058(displacement);
+                VecFx32Object_Destroy(displacement);
             }
         }
 
@@ -184,14 +184,14 @@ s32 ActorDerivedType1_ProcessInteraction(void *self)
                 func_020adcac(target + 0x1c, actorPosition + 1) < 0x20000) {
                 (*(void (**)(void *, s32))(*(u8 **)target + 0xc4))(target, 0);
                 VecFx32_Subtract(displacement, target + 0x18, actor + 0x18);
-                func_02005084(displacement);
+                VecFx32Object_Normalize(displacement);
                 func_020328d0(displacement, 0x3000);
-                func_020050a4(target + 0x38, displacement);
-                func_02005058(displacement);
+                VecFx32Object_Assign(target + 0x38, displacement);
+                VecFx32Object_Destroy(displacement);
             }
         }
-        func_02005058(actorPosition);
-        func_02005058(origin);
+        VecFx32Object_Destroy(actorPosition);
+        VecFx32Object_Destroy(origin);
         return 1;
     }
 

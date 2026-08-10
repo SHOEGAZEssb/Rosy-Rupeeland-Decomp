@@ -6,9 +6,9 @@
 .extern data_ov077_02216fc8
 .extern data_ov077_02217058
 .extern data_ov077_022174d8
-.extern func_0200500c
-.extern func_02005030
-.extern func_02005058
+.extern VecFx32Object_InitComponents
+.extern VecFx32Object_InitCopy
+.extern VecFx32Object_Destroy
 .extern ActorMotionJitter_EnsureMinimum
 .extern func_0201e0ec
 .extern func_0201f864
@@ -218,7 +218,7 @@ func_ov077_02215494:
     add r1, r5, #0x22c
     str r3, [r5, #0x218]
     str r2, [r5, #0x21c]
-    bl func_02005030
+    bl VecFx32Object_InitCopy
     ldr r1, [r5, #0x308]
     mov r0, #0x64
     mov r1, r1, asr #0x10
@@ -263,7 +263,7 @@ func_ov077_02215494:
     mov r0, r5
     bl func_02032228
     add r0, sp, #0x58
-    bl func_02005058
+    bl VecFx32Object_Destroy
     b .L_022158a8
 .L_02215810:
     ldr r1, .L_02215eec
@@ -273,7 +273,7 @@ func_ov077_02215494:
     add r1, r5, #0x22c
     str r3, [r5, #0x218]
     str r2, [r5, #0x21c]
-    bl func_02005030
+    bl VecFx32Object_InitCopy
     mov r0, r5
     ldr r2, [r0, #0x0]
     add r1, sp, #0x48
@@ -304,7 +304,7 @@ func_ov077_02215494:
     mov r0, r5
     bl func_02032228
     add r0, sp, #0x48
-    bl func_02005058
+    bl VecFx32Object_Destroy
 .L_022158a8:
     ldr r0, [r5, #0x298]
     bl func_ov090_0221c44c
@@ -399,7 +399,7 @@ func_ov077_02215494:
     add r1, r5, #0x18
     bic r2, r2, #0x70
     strb r2, [r5, #0x2e4]
-    bl func_02005030
+    bl VecFx32Object_InitCopy
     ldr r1, [sp, #0x44]
     mov r0, r5
     add r1, r1, #0x8000
@@ -433,7 +433,7 @@ func_ov077_02215494:
     rsb r1, r9, #0x3000
     mov r0, r11
     mov r3, #0x3000
-    bl func_0200500c
+    bl VecFx32Object_InitComponents
     ldrsh r1, [r4, #0xf0]
     mov r0, #0x168
     add r2, sp, #0x38
@@ -443,7 +443,7 @@ func_ov077_02215494:
     bic r1, r1, #0x200
     str r1, [r0, #0x14]
     mov r0, r11
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add r10, r10, #0x1
     cmp r10, #0xa
     blt .L_02215a60
@@ -471,7 +471,7 @@ func_ov077_02215494:
     add r0, r0, #0x2c00
     bl ActorMotionJitter_EnsureMinimum
     add r0, sp, #0x38
-    bl func_02005058
+    bl VecFx32Object_Destroy
     b .L_02215bc8
 .L_02215b30:
     ldr r1, .L_02215f14
@@ -537,7 +537,7 @@ func_ov077_02215494:
     bge .L_02215d34
     add r0, sp, #0x18
     add r1, r7, #0x18
-    bl func_02005030
+    bl VecFx32Object_InitCopy
     add r0, r5, #0x200
     ldrsh r2, [r0, #0xa2]
     mov r1, #0x1e
@@ -608,7 +608,7 @@ func_ov077_02215494:
     streqb r0, [r5, #0x2e5]
 .L_02215d28:
     add r0, sp, #0x18
-    bl func_02005058
+    bl VecFx32Object_Destroy
     b .L_02215d74
 .L_02215d34:
     add r0, r1, #0x1

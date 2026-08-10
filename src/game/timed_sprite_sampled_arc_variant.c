@@ -27,8 +27,8 @@ extern SampledArcTimedSprite *func_0201e290(SampledArcTimedSprite *self,
                                             u8 *config);
 extern SampledArcTimedSprite *func_0201e380(SampledArcTimedSprite *self);
 extern void func_0201e3b8(SampledArcTimedSprite *self, s32 enabled);
-extern void func_02005058(void *track);
-extern void func_020050a4(PresentationTrack *destination, const void *source);
+extern void VecFx32Object_Destroy(void *track);
+extern void VecFx32Object_Assign(PresentationTrack *destination, const void *source);
 extern void GraphicsSpriteState_SetScreenPositionCulled(void *sprite, s32 x, s32 y, s32 constant8);
 extern void VecFx32_Subtract(void *output, s32 argument,
                           PresentationTrack *track);
@@ -46,7 +46,7 @@ SampledArcTimedSprite *func_0201edd0(SampledArcTimedSprite *self, u8 *config)
     self->vtable = data_020d60ac;
     *(u16 *)(self->sprite + 0x24) &= (u16)~2;
     self->remaining28 = *(s32 *)(config + 0x30);
-    func_020050a4(&self->first08, config + 0x10);
+    VecFx32Object_Assign(&self->first08, config + 0x10);
     return self;
 }
 
@@ -88,6 +88,6 @@ s32 func_0201ee48(SampledArcTimedSprite *self, s32 argument)
                       - (*(s32 *)&self->first08.bytes[0xc] >> 12),
                   8);
     finished = (*(u16 *)(self->sprite + 0x24) & 8) != 0;
-    func_02005058(sample);
+    VecFx32Object_Destroy(sample);
     return finished;
 }

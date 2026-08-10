@@ -1,8 +1,8 @@
 ; Matching retail form; see src/game/actor_base_geometry_init.c.
 .text
 .extern data_020def7c
-.extern func_0200500c
-.extern func_020050a4
+.extern VecFx32Object_InitComponents
+.extern VecFx32Object_Assign
 .extern ActorBounds_Copy
 .extern ActorBounds_Set
 .extern ActorBounds_Translate
@@ -40,7 +40,7 @@ ActorBaseGeometry_Init: ; 0x02030b90
     mov r1, r1, lsl #0xc
     mov r2, r2, lsl #0xc
     mov r3, r3, lsl #0xc
-    bl func_0200500c
+    bl VecFx32Object_InitComponents
     add r0, r5, #0x28
     ldrsh r1, [r4, #0x22]
     ldrsh r2, [r4, #0x24]
@@ -48,12 +48,12 @@ ActorBaseGeometry_Init: ; 0x02030b90
     mov r1, r1, lsl #0xc
     mov r2, r2, lsl #0xc
     mov r3, r3, lsl #0xc
-    bl func_0200500c
+    bl VecFx32Object_InitComponents
     add r0, r5, #0x38
     mov r1, #0x0
     mov r2, r1
     mov r3, r1
-    bl func_0200500c
+    bl VecFx32Object_InitComponents
     mov r0, #0x0
     strb r0, [r5, #0x48]
     strb r0, [r5, #0x49]
@@ -95,7 +95,7 @@ ActorBaseGeometry_Init: ; 0x02030b90
     str r1, [r5, #0xc]
     str r1, [r5, #0x14]
     add r1, r5, #0x18
-    bl func_020050a4
+    bl VecFx32Object_Assign
     ldrsh r1, [r4, #0x50]
     mov r0, r5
     strh r1, [r5, #0x50]

@@ -29,12 +29,12 @@ s32 GamePhaseActorScriptVm_PlaceActorOnGridAndSetBounds(GamePhaseActorScriptVm *
     s32 left = -width / 2;
     s32 top = -height / 2;
 
-    func_0200500c(&position, (gridX * 16 + width / 2) << 12,
+    VecFx32Object_InitComponents(&position, (gridX * 16 + width / 2) << 12,
                   (gridY * 16 + height / 2) << 12, 0);
-    func_020050a4((VecFx32Object *)(actor + 0x28), &position);
-    func_020050a4((VecFx32Object *)(actor + 0x18),
+    VecFx32Object_Assign((VecFx32Object *)(actor + 0x28), &position);
+    VecFx32Object_Assign((VecFx32Object *)(actor + 0x18),
                   (VecFx32Object *)(actor + 0x28));
-    func_02005058(&position);
+    VecFx32Object_Destroy(&position);
     Actor_AdjustPositionForTerrainHeight(actor);
 
     actor[8] = (u8)left;

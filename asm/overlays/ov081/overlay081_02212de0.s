@@ -1,7 +1,7 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov081/overlay081_recovery.c.
 .extern data_02105310
-.extern func_02005070
+.extern VecFx32Object_GetMagnitude
 .extern ActorRuntimeCollection_GetPendingAttachmentFlag
 .extern Actor_SetRuntimeFlag80
 .extern func_02032228
@@ -121,7 +121,7 @@ func_ov081_02212de0:
     b .L_02212fb0
 .L_02212f70:
     add r0, r4, #0x98
-    bl func_02005070
+    bl VecFx32Object_GetMagnitude
     ldr r1, .L_02212fe0
     cmp r0, r1
     ble .L_02212f9c

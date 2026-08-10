@@ -11,9 +11,9 @@
 .extern data_021052fc
 .extern func_02003e20
 .extern func_02003e38
-.extern func_02004fe0
-.extern func_02005030
-.extern func_02005058
+.extern VecFx32Object_Init
+.extern VecFx32Object_InitCopy
+.extern VecFx32Object_Destroy
 .extern ActorMotion_GetPosition
 .extern func_0201e250
 .extern func_0201e3b8
@@ -141,9 +141,9 @@ func_0201eefc: ; 0x0201eefc
     mov r1, #0x12c
     add r0, sp, #0x2c
     str r1, [r10, #0x24]
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add r0, sp, #0x1c
-    bl func_02005058
+    bl VecFx32Object_Destroy
     mov r0, r10
     add sp, sp, #0x44
     ldmia sp!, {r4, r5, r6, r7, r8, r9, r10, r11, pc}

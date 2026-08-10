@@ -13,7 +13,7 @@ extern const u8 data_020f3058[];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_02004fe0(void *object);
+extern void VecFx32Object_Init(void *object);
 #ifdef __cplusplus
 }
 #endif
@@ -26,8 +26,8 @@ extern void func_02004fe0(void *object);
 extern "C" void *func_ov040_021fce00(void *object)
 {
     FIELD(const void *, object, 0) = data_020f3058;
-    func_02004fe0((u8 *)object + 0x1c);
-    func_02004fe0((u8 *)object + 0x2c);
+    VecFx32Object_Init((u8 *)object + 0x1c);
+    VecFx32Object_Init((u8 *)object + 0x2c);
     FIELD(u32, object, 4) = 0;
     FIELD(u32, object, 8) = 0;
     FIELD(u32, object, 0x0c) = 0;

@@ -6,17 +6,17 @@
     .extern func_ov039_021ff330
     .extern func_ov039_021fdb9c
     .extern Sound_Play
-    .extern func_02005030
+    .extern VecFx32Object_InitCopy
     .extern func_ov039_021fd93c
     .extern genrand_int32
     .extern func_020bf1f8
     .extern func_0205940c
-    .extern func_02004fe0
-    .extern func_020050a4
-    .extern func_02005058
+    .extern VecFx32Object_Init
+    .extern VecFx32Object_Assign
+    .extern VecFx32Object_Destroy
     .extern func_ov069_0220fe2c
     .extern func_ov069_0220fe3c
-    .extern func_020050c8
+    .extern VecFx32Object_Add
     .extern func_ov049_0220c6cc
     .extern data_ov039_02207fee
     .extern data_ov039_02207ff8
@@ -329,7 +329,7 @@ L_021fe49c:
     ldr r1, [r1, #0x8]
     ldr r1, [r1, #0x48]
     add r1, r1, #0x2c
-    bl func_02005030
+    bl VecFx32Object_InitCopy
     add r0, r6, #0x1c00
     ldrh r1, [r0, #0xba]
     ldr r3, [sp, #0x38]
@@ -596,7 +596,7 @@ L_021fe87c:
     strhih r1, [r0, #0xbc]
 L_021fe898:
     add r0, sp, #0x30
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add r0, r6, #0x1c00
     ldrh r1, [r0, #0xbc]
     cmp r1, #0x0
@@ -679,11 +679,11 @@ L_021fe9a8:
     b L_021fed48
 L_021fe9cc:
     add r0, sp, #0x20
-    bl func_02004fe0
+    bl VecFx32Object_Init
     ldr r1, [r6, #0x74]
     add r0, sp, #0x20
     add r1, r1, #0x1c
-    bl func_020050a4
+    bl VecFx32Object_Assign
     ldr r0, [sp, #0x28]
     add r1, sp, #0x20
     add r2, r0, #0x46000
@@ -691,7 +691,7 @@ L_021fe9cc:
     str r2, [sp, #0x28]
     bl func_ov069_0220fe2c
     add r0, sp, #0x20
-    bl func_02005058
+    bl VecFx32Object_Destroy
     ldr r0, [r6, #0x448]
     add r0, r0, #0xcd
     str r0, [r6, #0x448]
@@ -745,7 +745,7 @@ L_021fea9c:
     add r1, r6, #0x38
     add r0, r0, #0x400
     add r1, r1, #0x400
-    bl func_020050c8
+    bl VecFx32Object_Add
     ldr r0, [r6, #0x448]
     add r0, r0, #0x33
     add r0, r0, #0x300
@@ -780,11 +780,11 @@ L_021feb10:
     b L_021fed48
 L_021feb4c:
     add r0, sp, #0x10
-    bl func_02004fe0
+    bl VecFx32Object_Init
     ldr r1, [r6, #0x74]
     add r0, sp, #0x10
     add r1, r1, #0x1c
-    bl func_020050a4
+    bl VecFx32Object_Assign
     ldr r1, [sp, #0x18]
     add r0, r6, #0x54
     add r3, r1, #0x39000
@@ -815,7 +815,7 @@ L_021feb4c:
     mov r2, #0x9
     bl Sound_Play
     add r0, sp, #0x10
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add r0, r6, #0x1d00
     ldrh r1, [r0, #0x9c]
     add r1, r1, #0x1
@@ -832,11 +832,11 @@ L_021febf4:
     b L_021fed48
 L_021fec14:
     add r0, sp, #0x0
-    bl func_02004fe0
+    bl VecFx32Object_Init
     ldr r1, [r6, #0x74]
     add r0, sp, #0x0
     add r1, r1, #0x1c
-    bl func_020050a4
+    bl VecFx32Object_Assign
     ldr r0, [sp, #0x8]
     add r1, sp, #0x0
     add r0, r0, #0x46000
@@ -850,7 +850,7 @@ L_021fec14:
     moveq r1, #0x0
     streqh r1, [r0, #0x9c]
     add r0, sp, #0x0
-    bl func_02005058
+    bl VecFx32Object_Destroy
     ldr r1, [r6, #0x448]
     ldr r0, L_021fed94
     add r1, r1, #0xa4

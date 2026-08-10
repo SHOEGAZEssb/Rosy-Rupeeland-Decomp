@@ -6,7 +6,7 @@
 .extern data_021052fc
 .extern data_ov062_02211c14
 .extern data_ov062_02211c40
-.extern func_02004fe0
+.extern VecFx32Object_Init
 .extern AnimationResource_Init
 .extern GraphicsSpriteState_SetDepthOrderedWorldPosition
 .extern GraphicsSpriteState_Create
@@ -28,11 +28,11 @@ func_ov062_02210b38:
     ldr r1, .L_02211030
     add r0, r4, #0x24
     str r1, [r4, #0x0]
-    bl func_02004fe0
+    bl VecFx32Object_Init
     add r0, r4, #0x34
-    bl func_02004fe0
+    bl VecFx32Object_Init
     add r0, r4, #0x44
-    bl func_02004fe0
+    bl VecFx32Object_Init
     mov r1, #0x0
     str r1, [r4, #0x70]
     str r1, [r4, #0x74]

@@ -10,8 +10,8 @@
 .extern data_020e1cfc
 .extern data_02105310
 .extern gActorRuntimeFlags
-.extern func_02005030
-.extern func_02005058
+.extern VecFx32Object_InitCopy
+.extern VecFx32Object_Destroy
 .extern ActorRuntimeCollection_GetBusyState
 .extern func_02032a94
 .extern ActorDerivedType1_IsTargetStateEligible
@@ -287,7 +287,7 @@ Type7Actor_HandleContact: ; 0x02046660
     beq .L_02046a58
     add r0, sp, #0x8
     add r1, r6, #0x18
-    bl func_02005030
+    bl VecFx32Object_InitCopy
     mov r0, #0x14
     mov r1, #0x1e
     mul r2, r7, r0
@@ -303,7 +303,7 @@ Type7Actor_HandleContact: ; 0x02046660
     str r3, [sp, #0x10]
     bl Type7Actor_SetMotionTargetWithTimer
     add r0, sp, #0x8
-    bl func_02005058
+    bl VecFx32Object_Destroy
 .L_02046a58:
     add r0, r6, #0x200
     ldrh r0, [r0, #0x54]

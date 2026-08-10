@@ -7,7 +7,7 @@
 .extern data_020d6740
 .extern data_020d6760
 .extern data_02105610
-.extern func_02005058
+.extern VecFx32Object_Destroy
 .extern AnimationResource_Init
 .extern GraphicsSpriteState_SetDepthOrderedWorldPosition
 .extern GraphicsSpriteState_Create
@@ -91,7 +91,7 @@ func_020236a0: ; 0x020236a0
     strh r0, [r4, #0x18]
 .L_0202378c:
     add r0, sp, #0x4
-    bl func_02005058
+    bl VecFx32Object_Destroy
     b .L_02023858
 .L_02023798:
     ldr r3, [r4, #0xc]

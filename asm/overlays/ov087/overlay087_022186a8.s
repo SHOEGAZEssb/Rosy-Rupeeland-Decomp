@@ -7,7 +7,7 @@
 .extern data_ov087_02218aa4
 .extern OverlayManager_LoadOverlay
 .extern OverlayManager_GetGlobal
-.extern func_020050a4
+.extern VecFx32Object_Assign
 .extern Actor_SetDirectionFromVector
 .extern ActorDerivedType1_ResetToBaseState
 .extern func_0205940c
@@ -44,13 +44,13 @@ func_ov087_022186a8:
     ble .L_022187a0
     add r0, r4, #0x18
     add r1, r7, #0x18
-    bl func_020050a4
+    bl VecFx32Object_Assign
     ldr r1, [r4, #0x24]
     add r0, r4, #0x28
     add r2, r1, #0xa000
     add r1, r4, #0x18
     str r2, [r4, #0x24]
-    bl func_020050a4
+    bl VecFx32Object_Assign
     bl OverlayManager_GetGlobal
     mov r1, #0x2
     ldr r2, .L_022188cc
@@ -99,10 +99,10 @@ func_ov087_022186a8:
     bic r2, r0, #0x100
     add r0, r4, #0x18
     str r2, [r4, #0x230]
-    bl func_020050a4
+    bl VecFx32Object_Assign
     add r0, r4, #0x28
     add r1, r4, #0x18
-    bl func_020050a4
+    bl VecFx32Object_Assign
     add r0, r4, #0x38
     mov r1, #0x0
     mov r2, r1

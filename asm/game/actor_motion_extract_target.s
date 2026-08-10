@@ -1,15 +1,15 @@
 ; Matching retail form; see src/game/actor_motion_extract_target.c for
 ; the documented portable implementation and recovered behavior.
 .text
-.extern func_02004fe0
-.extern func_020050c8
+.extern VecFx32Object_Init
+.extern VecFx32Object_Add
 .extern Actor_GetCachedTerrainHeight
 .global ActorMotion_GetBoundActorTargetPosition
 ActorMotion_GetBoundActorTargetPosition: ; 0x02009514
     stmdb sp!, {r4, r5, r6, lr}
     mov r4, r1
     mov r5, r0
-    bl func_02004fe0
+    bl VecFx32Object_Init
     ldr r0, [r4, #0x4]
     ldrb r1, [r0, #0x4d]
     cmp r1, #0x1
@@ -43,7 +43,7 @@ L_02009590:
     str r0, [r5, #0x8]
     mov r0, r5
     add r1, r4, #0x34
-    bl func_020050c8
+    bl VecFx32Object_Add
     ldmia sp!, {r4, r5, r6, pc}
 L_020095a8:
     ldr r1, [r0, #0x1c]
@@ -53,7 +53,7 @@ L_020095a8:
     add r1, r4, #0x34
     ldr r2, [r2, #0x20]
     str r2, [r5, #0x8]
-    bl func_020050c8
+    bl VecFx32Object_Add
     ldmia sp!, {r4, r5, r6, pc}
     .size ActorMotion_GetBoundActorTargetPosition, .-ActorMotion_GetBoundActorTargetPosition
 

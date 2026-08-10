@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/actor_presentation_sync.c.
 .text
-.extern func_02005030
-.extern func_02005058
+.extern VecFx32Object_InitCopy
+.extern VecFx32Object_Destroy
 .extern RectS32_Set
 .extern func_02030b7c
 .extern Actor_GetCollisionCenter
@@ -210,7 +210,7 @@ func_02031758: ; 0x02031758
     ldr r1, [r0, #0xe7c]
     add r0, sp, #0x20
     add r1, r1, #0x18
-    bl func_02005030
+    bl VecFx32Object_InitCopy
     mov r0, r5
     bl Actor_GetCollection
     add r0, r0, #0x2000
@@ -219,7 +219,7 @@ func_02031758: ; 0x02031758
     add r2, sp, #0x20
     bl Actor_BuildCollisionRect
     add r0, sp, #0x20
-    bl func_02005058
+    bl VecFx32Object_Destroy
     mov r1, #0x0
     add r0, sp, #0x30
     mov r2, r1
@@ -280,7 +280,7 @@ func_02031758: ; 0x02031758
     mov r1, r4
     bl func_020571b4
     add r0, sp, #0x10
-    bl func_02005058
+    bl VecFx32Object_Destroy
 .L_02031b30:
     ldr r0, [r5, #0xa8]
     cmp r0, #0x0

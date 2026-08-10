@@ -11,7 +11,7 @@
 .extern DisplayBrightness_StartSubTransition
 .extern DisplayBrightness_IsMainTransitionComplete
 .extern DisplayBrightness_IsSubTransitionComplete
-.extern func_02005070
+.extern VecFx32Object_GetMagnitude
 .extern GamePhaseRuntime_StageAreaRequest
 .extern ActorRuntimeTriple_Assign
 .extern Actor_ClearTransientContactState
@@ -371,7 +371,7 @@ ActorDerivedType1_UpdateFrame: ; 0x02035538
     strne r0, [r5, #0x230]
 .L_02035a08:
     add r0, r5, #0x88
-    bl func_02005070
+    bl VecFx32Object_GetMagnitude
     ldr r2, .L_02035bc0
     mov r1, r0
     cmp r1, r2

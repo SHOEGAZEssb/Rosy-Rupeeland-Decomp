@@ -1,8 +1,8 @@
 ; Matching retail form; see src/game/actor_motion_oscillation_setup.c for
 ; the documented portable implementation and recovered behavior.
 .text
-.extern func_0200500c
-.extern func_02005058
+.extern VecFx32Object_InitComponents
+.extern VecFx32Object_Destroy
 .extern ActorMotionTriple_Assign
 .extern func_020befec
 .global ActorMotion_SetOscillation
@@ -18,7 +18,7 @@ ActorMotion_SetOscillation: ; 0x020095cc
     mov r1, r1, lsl #0xc
     mov r2, r2, lsl #0xc
     mov r3, #0x0
-    bl func_0200500c
+    bl VecFx32Object_InitComponents
     ldr r2, [sp, #0x1c]
     add r0, sp, #0x0
     mov r3, r4
@@ -36,7 +36,7 @@ ActorMotion_SetOscillation: ; 0x020095cc
     add r1, sp, #0xc
     bl ActorMotionTriple_Assign
     add r0, sp, #0x18
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add sp, sp, #0x28
     ldmia sp!, {r3, r4, r5, pc}
 

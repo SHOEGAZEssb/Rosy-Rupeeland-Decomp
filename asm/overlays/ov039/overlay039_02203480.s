@@ -2,7 +2,7 @@
 /* Exact fallback; see overlay039_helper_pool2.c for portable C. */
     .extern func_ov039_022014f8
     .extern func_020ae024
-    .extern func_02005058
+    .extern VecFx32Object_Destroy
     .global func_ov039_02203480
 func_ov039_02203480:
     stmdb sp!, {r4, lr}
@@ -50,7 +50,7 @@ func_ov039_02203480:
     sublt r1, r1, #0x1e
     strlt r1, [r0, #0xcd0]
     add r0, sp, #0x0
-    bl func_02005058
+    bl VecFx32Object_Destroy
 L_02203538:
     add r0, r4, #0x1000
     ldr r1, [r0, #0xcd0]

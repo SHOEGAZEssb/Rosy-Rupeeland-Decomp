@@ -5,9 +5,9 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_0200500c(void *vector, s32 x, s32 y, s32 z);
-extern void func_02005058(void *vector);
-extern void func_020050a4(void *destination, const void *source);
+extern void VecFx32Object_InitComponents(void *vector, s32 x, s32 y, s32 z);
+extern void VecFx32Object_Destroy(void *vector);
+extern void VecFx32Object_Assign(void *destination, const void *source);
 extern void func_02008378(void *destination, u32 transform, const void *vector);
 extern void ActorRuntimeTriple_Assign(void *vector, s32 x, s32 y, s32 z);
 #ifdef __cplusplus
@@ -30,11 +30,11 @@ void func_020513ac(void *actor, const void *record, u32 transform, u32 unused)
     u8 source[16];
     (void)unused;
     FIELD(const void *, actor, 0x1fc) = record;
-    func_0200500c(source, 0, 0, 0x100000);
+    VecFx32Object_InitComponents(source, 0, 0, 0x100000);
     func_02008378(position, transform, source);
-    func_020050a4((u8 *)actor + 0x18, position);
-    func_02005058(position);
-    func_02005058(source);
+    VecFx32Object_Assign((u8 *)actor + 0x18, position);
+    VecFx32Object_Destroy(position);
+    VecFx32Object_Destroy(source);
     ActorRuntimeTriple_Assign((u8 *)actor + 0x38, 0, 0, 0);
     FIELD(u32, actor, 0xd0) |= 0x2000;
     FIELD(u32, actor, 0x5c) = (FIELD(u32, actor, 0x5c) & 0xffff0000) | 8;

@@ -9,10 +9,10 @@
 .extern data_ov054_0220f160
 .extern OverlayManager_LoadOverlay
 .extern OverlayManager_GetGlobal
-.extern func_02004fe0
-.extern func_0200500c
-.extern func_02005058
-.extern func_020050a4
+.extern VecFx32Object_Init
+.extern VecFx32Object_InitComponents
+.extern VecFx32Object_Destroy
+.extern VecFx32Object_Assign
 .extern GamePhaseRuntime_GetActorCollection
 .extern ActorMotionAreaFollower_GetPosition
 .extern ActorRuntimeTriple_Assign
@@ -265,7 +265,7 @@ L_02014668:
     b L_0201553c
 L_02014680:
     add r0, sp, #0xa0
-    bl func_02004fe0
+    bl VecFx32Object_Init
     cmp r4, #0x0
     add r0, sp, #0xa0
     beq L_020146b4
@@ -279,7 +279,7 @@ L_02014680:
     b L_020146bc
 L_020146b4:
     add r1, r10, #0x18
-    bl func_020050a4
+    bl VecFx32Object_Assign
 L_020146bc:
     ldr r1, L_020154c8
     ldr r3, L_020154cc
@@ -306,7 +306,7 @@ L_020146bc:
     bl func_0201f864
 L_02014718:
     add r0, sp, #0xa0
-    bl func_02005058
+    bl VecFx32Object_Destroy
     b L_0201553c
 L_02014724:
     cmp r6, #0x0
@@ -361,7 +361,7 @@ L_020147b0:
     mov r1, r8
     mov r2, r7
     add r0, sp, #0x90
-    bl func_0200500c
+    bl VecFx32Object_InitComponents
     bl OverlayManager_GetGlobal
     ldr r2, L_020154d8
     mov r1, #0x2
@@ -417,7 +417,7 @@ L_02014868:
     bl func_ov065_022101bc
 L_020148a4:
     add r0, sp, #0x90
-    bl func_02005058
+    bl VecFx32Object_Destroy
     b L_0201553c
 L_020148b0:
     cmp r7, #0x0
@@ -472,7 +472,7 @@ L_0201493c:
     mov r1, r5
     mov r2, r4
     add r0, sp, #0x80
-    bl func_0200500c
+    bl VecFx32Object_InitComponents
     ldr r1, L_020154c8
     ldr r3, L_020154cc
     mov r0, #0x38
@@ -502,7 +502,7 @@ L_020149c0:
     add r0, r0, #0x2c00
     bl func_0201ded4
     add r0, sp, #0x80
-    bl func_02005058
+    bl VecFx32Object_Destroy
     b L_0201553c
 L_020149e4:
     cmp r7, #0x0
@@ -557,7 +557,7 @@ L_02014a70:
     mov r1, r9
     mov r2, r8
     add r0, sp, #0x70
-    bl func_0200500c
+    bl VecFx32Object_InitComponents
     cmp r4, #0x0
     mov r0, r4, lsl #0xc
     ble L_02014ac0
@@ -610,7 +610,7 @@ L_02014b2c:
     mov r1, r5
     mov r2, r4
     add r0, sp, #0x60
-    bl func_0200500c
+    bl VecFx32Object_InitComponents
     ldr r1, L_020154c8
     ldr r3, L_020154cc
     mov r0, #0x24
@@ -645,9 +645,9 @@ L_02014bc4:
     add r0, r0, #0x2c00
     bl func_0201ded4
     add r0, sp, #0x60
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add r0, sp, #0x70
-    bl func_02005058
+    bl VecFx32Object_Destroy
     b L_0201553c
 L_02014bf0:
     cmp r7, #0x0
@@ -702,7 +702,7 @@ L_02014c7c:
     mov r1, r9
     mov r2, r8
     add r0, sp, #0x50
-    bl func_0200500c
+    bl VecFx32Object_InitComponents
     cmp r4, #0x0
     mov r0, r4, lsl #0xc
     ble L_02014ccc
@@ -755,7 +755,7 @@ L_02014d38:
     mov r1, r5
     mov r2, r4
     add r0, sp, #0x40
-    bl func_0200500c
+    bl VecFx32Object_InitComponents
     ldr r1, L_020154c8
     ldr r3, L_020154cc
     mov r0, #0x24
@@ -790,9 +790,9 @@ L_02014dd0:
     add r0, r0, #0x2c00
     bl func_0201ded4
     add r0, sp, #0x40
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add r0, sp, #0x50
-    bl func_02005058
+    bl VecFx32Object_Destroy
     b L_0201553c
 L_02014dfc:
     ldr r0, L_020154d0
@@ -987,7 +987,7 @@ L_020150a4:
     mov r1, r9, lsl #0xc
     mov r2, r8, lsl #0xc
     mov r3, #0x0
-    bl func_0200500c
+    bl VecFx32Object_InitComponents
     ldr r0, L_020154d0
     ldr r0, [r0, #0x0]
     add r0, r0, #0x3bc
@@ -997,7 +997,7 @@ L_020150a4:
     add r1, sp, #0x20
     bl func_ov050_0220e1a0
     add r0, sp, #0x20
-    bl func_02005058
+    bl VecFx32Object_Destroy
     b L_0201553c
 L_020150f4:
     bl OverlayManager_GetGlobal

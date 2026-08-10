@@ -5,7 +5,7 @@
 .extern data_021052fc
 .extern data_0210570c
 .extern data_ov091_02218cd0
-.extern func_02005058
+.extern VecFx32Object_Destroy
 .extern ActorMotion_BindActor
 .extern ActorMotionAreaFollower_BindActor
 .extern ActorCollection_SpawnDescriptorsBySelector
@@ -114,9 +114,9 @@ func_ov091_02217b3c:
     cmp r6, #0x6
     blt .L_02217c8c
     add r0, r5, #0x224
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add r0, r5, #0x210
-    bl func_02005058
+    bl VecFx32Object_Destroy
     mov r0, r5
     bl func_0204d570
     mov r0, r5

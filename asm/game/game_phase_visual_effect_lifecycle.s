@@ -4,8 +4,8 @@
 .extern GraphicsResourceSet_Init
 .extern Heap_Free
 .extern data_020d55e0
-.extern func_02004fe0
-.extern func_02005058
+.extern VecFx32Object_Init
+.extern VecFx32Object_Destroy
 .extern VecFx32Stepper_Init
 .extern VecFx32Stepper_Destroy
 .extern GraphicsResourceSet_ReleaseHandles
@@ -26,13 +26,13 @@ GamePhaseVisualEffect_Init: ; 0x0200fa40
     mov r1, #0x1f
     add r0, r4, #0x20
     strh r1, [r4, #0x1e]
-    bl func_02004fe0
+    bl VecFx32Object_Init
     add r0, r4, #0x30
-    bl func_02004fe0
+    bl VecFx32Object_Init
     add r0, r4, #0x40
-    bl func_02004fe0
+    bl VecFx32Object_Init
     add r0, r4, #0x50
-    bl func_02004fe0
+    bl VecFx32Object_Init
     add r0, r4, #0x60
     bl VecFx32Stepper_Init
     ldr r1, [r4, #0x94]
@@ -102,13 +102,13 @@ GamePhaseVisualEffect_Destroy: ; 0x0200fb34
     strh r1, [r2, #0x50]
     bl VecFx32Stepper_Destroy
     add r0, r4, #0x50
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add r0, r4, #0x40
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add r0, r4, #0x30
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add r0, r4, #0x20
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add r0, r4, #0x4
     bl GraphicsResourceSet_Destroy
     mov r0, r4
@@ -143,13 +143,13 @@ GamePhaseVisualEffect_DestroyAndFree: ; 0x0200fbc8
     strh r1, [r2, #0x50]
     bl VecFx32Stepper_Destroy
     add r0, r4, #0x50
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add r0, r4, #0x40
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add r0, r4, #0x30
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add r0, r4, #0x20
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add r0, r4, #0x4
     bl GraphicsResourceSet_Destroy
     mov r0, r4

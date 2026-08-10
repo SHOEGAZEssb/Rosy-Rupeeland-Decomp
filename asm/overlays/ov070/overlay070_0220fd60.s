@@ -2,7 +2,7 @@
 ; Matching fallback for the portable implementation in src/overlays/ov070/overlay070_recovery.c.
 .extern __construct_array
 .extern data_ov070_02212a94
-.extern func_02004fe0
+.extern VecFx32Object_Init
 .extern GraphicsSpriteState_SetAnimationIndex
 .extern func_0209a208
 .extern func_ov070_0220fd20
@@ -20,9 +20,9 @@ func_ov070_0220fd60:
     ldr r1, .L_022101f8
     add r0, r10, #0x4c
     str r1, [r10, #0x0]
-    bl func_02004fe0
+    bl VecFx32Object_Init
     add r0, r10, #0x5c
-    bl func_02004fe0
+    bl VecFx32Object_Init
     ldr r1, .L_022101fc
     add r0, r10, #0xd0
     str r1, [sp, #0x0]

@@ -2,8 +2,8 @@
 ; the documented portable implementation and recovered behavior.
 .text
 .extern data_020c9670
-.extern func_0200500c
-.extern func_02005058
+.extern VecFx32Object_InitComponents
+.extern VecFx32Object_Destroy
 .extern VecFx32_Subtract
 .extern VecFx32_GetDirectionAngle
 .extern func_020adc40
@@ -27,7 +27,7 @@ ActorMotion_ConfigureGridTarget: ; 0x0200920c
     add r0, sp, #0x20
     add r1, ip, r1, lsl #0xc
     mov r3, #0x0
-    bl func_0200500c
+    bl VecFx32Object_InitComponents
     add r0, sp, #0x10
     add r1, sp, #0x20
     add r2, r5, #0x8
@@ -51,9 +51,9 @@ L_02009290:
     str r1, [r5, #0x24]
     ldr r1, [sp, #0x28]
     str r1, [r5, #0x28]
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add r0, sp, #0x20
-    bl func_02005058
+    bl VecFx32Object_Destroy
     b L_0200939c
 L_020092b8:
     add r2, r2, #0x14
@@ -61,7 +61,7 @@ L_020092b8:
     add r0, sp, #0x0
     add r1, ip, r1, lsl #0xc
     mov r3, #0x0
-    bl func_0200500c
+    bl VecFx32Object_InitComponents
     ldr r1, [sp, #0x4]
     ldr r0, [r5, #0xc]
     ldr r3, [sp, #0x8]
@@ -112,7 +112,7 @@ L_020092b8:
     str r1, [r5, #0x24]
     ldr r1, [sp, #0x8]
     str r1, [r5, #0x28]
-    bl func_02005058
+    bl VecFx32Object_Destroy
 L_0200939c:
     ldr r0, [r5, #0x2c]
     add sp, sp, #0x30

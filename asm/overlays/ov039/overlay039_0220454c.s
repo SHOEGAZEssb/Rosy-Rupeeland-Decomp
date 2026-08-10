@@ -1,10 +1,10 @@
 .text
 /* Exact fallback; see overlay039_resource_objects.c for portable C. */
     .extern func_0201e0ec
-    .extern func_0200500c
-    .extern func_02004fe0
+    .extern VecFx32Object_InitComponents
+    .extern VecFx32Object_Init
     .extern func_0209c430
-    .extern func_02005058
+    .extern VecFx32Object_Destroy
     .extern data_021052fc
     .global func_ov039_0220454c
 func_ov039_0220454c:
@@ -51,9 +51,9 @@ L_02204578:
     str lr, [r8, #0x0]
     str lr, [r8, #0x4]
     stmia ip, {r4, r6}
-    bl func_0200500c
+    bl VecFx32Object_InitComponents
     add r0, sp, #0x64
-    bl func_02004fe0
+    bl VecFx32Object_Init
     add r3, r10, r9, lsl #0x2
     ldr r0, [r3, #0x9c]
     mov r1, r6
@@ -134,9 +134,9 @@ L_022046b8:
     mov r3, r1
     str r5, [sp, #0x54]
     str r5, [sp, #0x58]
-    bl func_0200500c
+    bl VecFx32Object_InitComponents
     add r0, sp, #0x14
-    bl func_02004fe0
+    bl VecFx32Object_Init
     mov r0, #0xc
     mul r1, r8, r0
     ldr r0, [r6, #0x9c]
@@ -179,16 +179,16 @@ L_022046b8:
     mov r3, r3, lsr #0x10
     bl func_0209c430
     add r0, sp, #0x14
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add r0, sp, #0x24
-    bl func_02005058
+    bl VecFx32Object_Destroy
 L_022047fc:
     subs r8, r8, #0x1
     bpl L_022046b8
     add r0, sp, #0x64
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add r0, sp, #0x74
-    bl func_02005058
+    bl VecFx32Object_Destroy
 L_02204814:
     subs r9, r9, #0x1
     bpl L_02204578

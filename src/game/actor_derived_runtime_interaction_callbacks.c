@@ -9,9 +9,9 @@ extern "C" {
 extern void func_02031758(void *source);
 extern void func_02031cac(void *actor, const TouchPoint *point);
 extern void func_02032a94(void *actor, void *other, s32 mode);
-extern void func_0200500c(void *vector, s32 x, s32 y, s32 z);
-extern void func_020050a4(void *destination, const void *source);
-extern void func_02005058(void *vector);
+extern void VecFx32Object_InitComponents(void *vector, s32 x, s32 y, s32 z);
+extern void VecFx32Object_Assign(void *destination, const void *source);
+extern void VecFx32Object_Destroy(void *vector);
 extern void VecFx32Stepper_Reset(void *track);
 extern s32 Actor_TryDispatchActivationMode2(void *actor);
 #ifdef __cplusplus
@@ -51,9 +51,9 @@ s32 ActorDerivedRuntime_HandlePairActive(void *self, void *other, s32 mode)
     func_02032a94(actor, target, mode);
     if (mode == 0) {
         s32 zero[4];
-        func_0200500c(zero, 0, 0, 0);
-        func_020050a4(actor + 0x38, zero);
-        func_02005058(zero);
+        VecFx32Object_InitComponents(zero, 0, 0, 0);
+        VecFx32Object_Assign(actor + 0x38, zero);
+        VecFx32Object_Destroy(zero);
         if ((*(u32 *)(actor + 0x10) & 0x40) != 0 &&
             (*(u32 *)(actor + 0x14) & 0x40000000) != 0 &&
             (*(u32 *)(target + 0x14) & 0x10) == 0) {

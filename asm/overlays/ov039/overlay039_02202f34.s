@@ -1,7 +1,7 @@
 .text
 /* Exact fallback; see overlay039_script_render.c for portable C. */
     .extern func_ov039_022014f8
-    .extern func_02005058
+    .extern VecFx32Object_Destroy
     .extern data_020c9670
     .global func_ov039_02202f34
 func_ov039_02202f34:
@@ -72,12 +72,12 @@ func_ov039_02202f34:
     str r6, [r4, #0x4]
     add r0, sp, #0x0
     str r5, [r4, #0x8]
-    bl func_02005058
+    bl VecFx32Object_Destroy
     mov r0, #0x1
     b L_02203058
 L_0220304c:
     add r0, sp, #0x0
-    bl func_02005058
+    bl VecFx32Object_Destroy
 L_02203054:
     mov r0, #0x0
 L_02203058:

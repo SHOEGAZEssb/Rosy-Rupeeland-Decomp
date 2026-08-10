@@ -32,9 +32,9 @@ s32 GamePhaseActorScriptVm_CancelMovement(GamePhaseActorScriptVm *self)
     ActorRuntimeTriple_Assign(actor + 0x98, 0, 0, 0);
     if (actor[0x4d] == 1)
         ActorDerivedType1_ResetSpecialModeFlags(actor);
-    func_0200500c(&zero, 0, 0, 0);
+    VecFx32Object_InitComponents(&zero, 0, 0, 0);
     Actor_SetVelocity(actor, &zero);
-    func_02005058(&zero);
+    VecFx32Object_Destroy(&zero);
     *(u32 *)(actor + 0x10) &= ~0x40u;
     VecFx32Stepper_Reset(actor + 0x198);
     return 0;

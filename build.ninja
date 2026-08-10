@@ -3727,7 +3727,7 @@ build build/reports/vec_fx32.json: objdiff build/decomp/delinks/src/math/vec_fx3
 
 build build/reports/vec_fx32.txt: match_report build/reports/vec_fx32.json | tools/report_objdiff.py
   report_json = build/reports/vec_fx32.json
-  report_args = --section .text --function func_02004fe0 --function func_0200500c --function func_02005030 --function func_02005058 --function func_0200505c --function func_02005070 --function func_02005084 --function func_020050a4 --function func_020050c8 --function func_020050f0 --require-exact
+  report_args = --section .text --function VecFx32Object_Init --function VecFx32Object_InitComponents --function VecFx32Object_InitCopy --function VecFx32Object_Destroy --function VecFx32Object_DestroyAndFree --function VecFx32Object_GetMagnitude --function VecFx32Object_Normalize --function VecFx32Object_Assign --function VecFx32Object_Add --function VecFx32Object_Subtract --require-exact
 
 build build/reports/vec_fx32_data.json: objdiff build/decomp/delinks/src/math/vec_fx32_data.o | build/decomp/src/math/vec_fx32_data.o
   target_object = build/decomp/delinks/src/math/vec_fx32_data.o

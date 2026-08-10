@@ -7,8 +7,8 @@
 .extern ActorMotionAreaFollower_GetPosition
 .extern ActorRuntimeTriple_Assign
 .extern Actor_SetPosition
-.extern func_0200500c
-.extern func_02005058
+.extern VecFx32Object_InitComponents
+.extern VecFx32Object_Destroy
 .extern func_020ada8c
 .extern genrand_int32
 .global ActorExtendedType2_InitializeReentryState
@@ -113,7 +113,7 @@ ActorExtendedType2_InitializeReentryState: ; 0x020425d4
     add r0, sp, #0xc
     orr r1, r1, r5, lsl #0x14
     orr r2, r2, ip, lsl #0x14
-    bl func_0200500c
+    bl VecFx32Object_InitComponents
     mov r0, r4
     ldr r3, [r0, #0x0]
     add r1, sp, #0xc
@@ -121,7 +121,7 @@ ActorExtendedType2_InitializeReentryState: ; 0x020425d4
     mov r2, #0x1
     blx r3
     add r0, sp, #0xc
-    bl func_02005058
+    bl VecFx32Object_Destroy
 .L_0204277c:
     add r0, r4, #0x200
     mov r1, #0x78

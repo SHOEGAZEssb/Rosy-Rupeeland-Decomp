@@ -4,7 +4,7 @@
 .extern __destroy_arr
 .extern data_020d66b8
 .extern data_020d6718
-.extern func_02005058
+.extern VecFx32Object_Destroy
 .extern AnimationResource_Destroy
 .extern func_0201e28c
 .extern func_02023c0c
@@ -32,7 +32,7 @@ func_02023d1c: ; 0x02023d1c
     mov r2, #0x10
     bl __destroy_arr
     add r0, r4, #0x8
-    bl func_02005058
+    bl VecFx32Object_Destroy
     mov r0, r4
     bl func_0201e28c
     mov r0, r4

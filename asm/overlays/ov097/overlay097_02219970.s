@@ -2,9 +2,9 @@
 ; Matching fallback for the portable implementation in src/overlays/ov097/overlay097_recovery.c.
 .extern data_021052fc
 .extern data_ov097_0221a4c8
-.extern func_0200500c
-.extern func_02005058
-.extern func_020050a4
+.extern VecFx32Object_InitComponents
+.extern VecFx32Object_Destroy
+.extern VecFx32Object_Assign
 .extern ActorExtendedType2_InitializeTransformAndMotion
 .extern func_020593dc
 .extern func_ov097_022177e0
@@ -24,13 +24,13 @@ func_ov097_02219970:
     add r0, sp, #0x8
     mov r2, r1
     mov r3, r1
-    bl func_0200500c
+    bl VecFx32Object_InitComponents
     add r2, sp, #0x8
     mov r0, r6
     add r1, r5, #0x18
     bl ActorExtendedType2_InitializeTransformAndMotion
     add r0, sp, #0x8
-    bl func_02005058
+    bl VecFx32Object_Destroy
     mov r0, r6
     ldr r2, [r0, #0x0]
     mov r1, #0x1
@@ -58,7 +58,7 @@ func_ov097_02219970:
     bic r2, r2, #0x2000000
     str r2, [r6, #0x14]
     str r4, [r6, #0x2b4]
-    bl func_020050a4
+    bl VecFx32Object_Assign
     ldr r1, [r6, #0x24]
     ldr r0, .L_02219aa0
     add r1, r1, r4

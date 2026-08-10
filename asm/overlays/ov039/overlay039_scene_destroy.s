@@ -2,7 +2,7 @@
 /* Exact fallback; see overlay039_scene_destroy_place.c for portable C. */
     .extern data_ov039_022083d0
     .extern Heap_Free
-    .extern func_02005058
+    .extern VecFx32Object_Destroy
     .extern __destroy_arr
     .extern func_ov039_021fce5c
     .extern func_ov039_021fd01c
@@ -27,7 +27,7 @@ L_021fd748:
     bpl L_021fd734
     add r0, r4, #0xda0
     add r0, r0, #0x1000
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add r0, r4, #0x118
     ldr r3, L_021fd7e8
     add r0, r0, #0x1c00
@@ -64,6 +64,6 @@ L_021fd748:
     ldmia sp!, {r3, r4, r5, pc}
 L_021fd7e4: .word data_ov039_022083d0
 L_021fd7e8: .word func_ov039_021fce5c
-L_021fd7ec: .word func_02005058
+L_021fd7ec: .word VecFx32Object_Destroy
     .size func_ov039_021fd71c, .-func_ov039_021fd71c
 

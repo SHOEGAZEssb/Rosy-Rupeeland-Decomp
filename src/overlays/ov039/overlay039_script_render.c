@@ -24,10 +24,10 @@ extern "C" {
 #endif
 extern s32 func_020befec(s32 value, s32 divisor);
 extern s32 func_020adc40(s32 value);
-extern void func_02004fe0(void *vector);
-extern void func_0200500c(void *vector, s32 x, s32 y, s32 z);
-extern void func_020050a4(void *destination, const void *source);
-extern void func_02005058(void *vector);
+extern void VecFx32Object_Init(void *vector);
+extern void VecFx32Object_InitComponents(void *vector, s32 x, s32 y, s32 z);
+extern void VecFx32Object_Assign(void *destination, const void *source);
+extern void VecFx32Object_Destroy(void *vector);
 extern void func_ov039_022017d0(void *scene);
 extern void func_ov039_02202d04(void *scene);
 extern void func_ov039_02203f94(void *scene);
@@ -146,7 +146,7 @@ extern "C" void func_ov039_02201fec(void *scene)
     }
     FIELD(s32, scene, 0x30) += FIELD(s32, scene, 0x1cec);
     FIELD(s32, scene, 0x34) += FIELD(s32, scene, 0x1cf0);
-    func_02005058(&direction);
+    VecFx32Object_Destroy(&direction);
 }
 
 /*
@@ -223,7 +223,7 @@ extern "C" s32 func_ov039_02202f34(void *scene, void *result)
                    fixedMultiply(data_020c9670[index], dy);
     s32 rotatedY = fixedMultiply(data_020c9670[index], dx) +
                    fixedMultiply(data_020c9670[index + 1], dy);
-    func_02005058(&origin);
+    VecFx32Object_Destroy(&origin);
     if (rotatedX > -0x10000 + 0x800 && rotatedX < 0x10000 &&
         rotatedY > 0xb000) {
         FIELD(s32, result, 4) = dx;
@@ -248,13 +248,13 @@ extern "C" void func_ov039_02203064(void *scene)
     Overlay039ScriptVector scale, direction;
     s32 bounds[2] = {-16, -16};
     s32 packet[2] = {16, 16};
-    func_0200500c(&scale, 0x1000, 0x1000, 0x1000);
+    VecFx32Object_InitComponents(&scale, 0x1000, 0x1000, 0x1000);
     func_ov039_022014f8(&direction, (u8 *)scene + 0x2c,
                         (u8 *)scene + 0xac);
     func_0209c430(renderer, resource, &direction, &scale, 0,
                   bounds, 0, packet, 0x7fff, 0x1ea);
-    func_02005058(&direction);
-    func_02005058(&scale);
+    VecFx32Object_Destroy(&direction);
+    VecFx32Object_Destroy(&scale);
 }
 
 /* Copy the two words at source into destination; only destination changes. */

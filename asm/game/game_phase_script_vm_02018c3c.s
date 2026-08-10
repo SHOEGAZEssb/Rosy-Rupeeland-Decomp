@@ -4,8 +4,8 @@
 .extern data_020ea9b0
 .extern data_020ea9de
 .extern data_021052fc
-.extern func_0200500c
-.extern func_02005058
+.extern VecFx32Object_InitComponents
+.extern VecFx32Object_Destroy
 .extern GamePhaseScriptVm_Pop
 .extern GamePhaseScriptVm_SetResult
 .extern Type7Actor_SetMotionTargetWithTimer
@@ -100,13 +100,13 @@ L_02018d50:
     mov r1, r7, lsl #0xc
     mov r2, r4, lsl #0xc
     mov r3, r5, lsl #0xc
-    bl func_0200500c
+    bl VecFx32Object_InitComponents
     add r1, sp, #0x4
     mov r0, r8
     mov r2, #0xb4
     bl Type7Actor_SetMotionTargetWithTimer
     add r0, sp, #0x4
-    bl func_02005058
+    bl VecFx32Object_Destroy
     b L_02018ef4
 L_02018d88:
     cmp r8, #0x0

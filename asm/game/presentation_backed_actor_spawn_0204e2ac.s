@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/presentation_backed_actor_spawn.c.
 .extern data_021052fc
-.extern func_020050a4
+.extern VecFx32Object_Assign
 .extern GamePhaseRuntime_GetActorCollection
 .extern ActorCollection_SpawnActorFromDescriptor
 .extern ActorSpawnDescriptor_Init
@@ -76,7 +76,7 @@ func_0204e2ac: ; 0x0204e2ac
     bl func_0204d82c
     ldr r1, [sp, #0xc0]
     add r0, r4, #0x38
-    bl func_020050a4
+    bl VecFx32Object_Assign
     ldr r1, [r4, #0x10]
     mvn r0, #0xf
     orr r1, r1, #0x100

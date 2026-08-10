@@ -22,10 +22,10 @@ extern void func_ov040_021fd740(void *record);
 extern void func_ov040_021fd8ac(void *scene);
 extern void func_ov040_021fe1b0(void *scene);
 extern void *func_ov040_02202ea4(void *owner, s32, s32, s32);
-extern void func_02004fe0(void *vector);
-extern void func_02005058(void *vector);
-extern void func_0200500c(void *vector, s32 x, s32 y, s32 z);
-extern void func_020050a4(void *destination, const void *source);
+extern void VecFx32Object_Init(void *vector);
+extern void VecFx32Object_Destroy(void *vector);
+extern void VecFx32Object_InitComponents(void *vector, s32 x, s32 y, s32 z);
+extern void VecFx32Object_Assign(void *destination, const void *source);
 extern void __construct_array(void *array, u32 count, u32 stride,
                               void (*constructor)(void *),
                               void (*destructor)(void *));
@@ -85,17 +85,17 @@ extern "C" void *func_ov040_021fcebc(void *scene, void *argument,
 
     func_ov040_021fce00(scene);
     FIELD(const void *, scene, 0) = data_ov040_022042a8;
-    func_02004fe0((u8 *)scene + 0x4c);
-    func_02004fe0((u8 *)scene + 0x5c);
-    func_02004fe0((u8 *)scene + 0x74);
-    __construct_array((u8 *)scene + 0x84, 0x1e, 0x10, func_02004fe0, func_02005058);
-    __construct_array((u8 *)scene + 0x660, 0x1e, 0x10, func_02004fe0, func_02005058);
+    VecFx32Object_Init((u8 *)scene + 0x4c);
+    VecFx32Object_Init((u8 *)scene + 0x5c);
+    VecFx32Object_Init((u8 *)scene + 0x74);
+    __construct_array((u8 *)scene + 0x84, 0x1e, 0x10, VecFx32Object_Init, VecFx32Object_Destroy);
+    __construct_array((u8 *)scene + 0x660, 0x1e, 0x10, VecFx32Object_Init, VecFx32Object_Destroy);
     __construct_array((u8 *)scene + 0x864, 4, 0x0c, func_ov040_021fd724, func_ov040_021fd740);
     __construct_array((u8 *)scene + 0x894, 4, 0x0c, func_ov040_021fd724, func_ov040_021fd740);
-    __construct_array((u8 *)scene + 0x8c4, 0x1e, 0x10, func_02004fe0, func_02005058);
+    __construct_array((u8 *)scene + 0x8c4, 0x1e, 0x10, VecFx32Object_Init, VecFx32Object_Destroy);
     func_ov040_021fd724((u8 *)scene + 0xac8);
     func_ov040_021fd724((u8 *)scene + 0xb14);
-    __construct_array((u8 *)scene + 0xb54, 2, 0x10, func_02004fe0, func_02005058);
+    __construct_array((u8 *)scene + 0xb54, 2, 0x10, VecFx32Object_Init, VecFx32Object_Destroy);
     func_ov040_02202ea4((u8 *)scene + 0xbd8, 0, 0, 0);
     GraphicsResourceSet_Init((u8 *)scene + 0x1b7c);
     FIELD(void *, scene, 0x48) = argument;
@@ -190,9 +190,9 @@ extern "C" void *func_ov040_021fcebc(void *scene, void *argument,
         FIELD(u16, object, 0x42) |= 4;
     }
     FIELD(s32, scene, 0xbd0) = 0;
-    func_0200500c(vector, 0, 0x6e000, 0);
-    func_020050a4((u8 *)scene + 0x74, vector);
-    func_02005058(vector);
+    VecFx32Object_InitComponents(vector, 0, 0x6e000, 0);
+    VecFx32Object_Assign((u8 *)scene + 0x74, vector);
+    VecFx32Object_Destroy(vector);
 
     FIELD(s32, scene, 0xadc) = 0;
     FIELD(s32, scene, 0xae0) = 0;

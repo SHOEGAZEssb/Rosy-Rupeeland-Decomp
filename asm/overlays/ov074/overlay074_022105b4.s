@@ -5,7 +5,7 @@
 .extern Scene_ClearFlags03
 .extern data_021052fc
 .extern data_ov074_02211db8
-.extern func_02005058
+.extern VecFx32Object_Destroy
 .extern SplineMover_Destroy
 .extern SplineMover_Assign
 .extern SplineMover_Evaluate2D
@@ -48,7 +48,7 @@ func_ov074_022105b4:
     add r0, r0, #0x24
     bl GamePhaseState_ApplyPlacementState
     add r0, sp, #0x3c
-    bl func_02005058
+    bl VecFx32Object_Destroy
     ldr r0, .L_02210720
     mov r1, #0x1
     ldr r0, [r0, #0x0]

@@ -1,9 +1,9 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov092/overlay092_recovery.c.
 .extern data_020c9670
-.extern func_02004fe0
-.extern func_02005030
-.extern func_02005058
+.extern VecFx32Object_Init
+.extern VecFx32Object_InitCopy
+.extern VecFx32Object_Destroy
 .extern func_0204cfa4
 .extern func_02050b70
 .extern func_020adae4
@@ -44,7 +44,7 @@ func_ov092_0221a908:
     beq .L_0221aaa4
     add r0, sp, #0x10
     add r1, r4, #0x88
-    bl func_02005030
+    bl VecFx32Object_InitCopy
     ldr r1, [sp, #0x14]
     mov r0, #0x0
     str r0, [sp, #0x1c]
@@ -56,7 +56,7 @@ func_ov092_0221a908:
     bl func_020ae024
     mov r5, r0
     add r0, sp, #0x0
-    bl func_02004fe0
+    bl VecFx32Object_Init
     tst r6, #0x20
     movne r0, #0x1000
     rsbne r0, r0, #0x0
@@ -117,10 +117,10 @@ func_ov092_0221a908:
     str r3, [r4, #0x8c]
     orr r2, r2, r1, lsl #0x14
     str r2, [r4, #0x90]
-    bl func_02005058
+    bl VecFx32Object_Destroy
 .L_0221aa9c:
     add r0, sp, #0x10
-    bl func_02005058
+    bl VecFx32Object_Destroy
 .L_0221aaa4:
     mov r0, r4
     bl func_02050b70

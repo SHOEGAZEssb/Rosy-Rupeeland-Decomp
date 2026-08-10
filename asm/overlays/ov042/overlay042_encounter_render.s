@@ -1,15 +1,15 @@
 .text
 .extern func_0209a2ac
 .extern func_020c10d4
-.extern func_0200500c
+.extern VecFx32Object_InitComponents
 .extern func_020befec
-.extern func_020050a4
+.extern VecFx32Object_Assign
 .extern func_020a227c
 .extern func_0209b494
 .extern func_ov042_02204ee4
-.extern func_02004fe0
+.extern VecFx32Object_Init
 .extern func_020a1794
-.extern func_02005058
+.extern VecFx32Object_Destroy
 .extern func_ov042_02204e74
 .extern func_ov042_02205808
 .extern func_ov042_02208774
@@ -258,14 +258,14 @@ func_ov042_022036c4:
     mov r1, #0xc0
     mov r2, #0xa0
     mov r3, #0x70
-    bl func_0200500c
+    bl VecFx32Object_InitComponents
     ldr r1, [r10, #0xa8]
     ldr r2, [r10, #0xac]
     add r0, sp, #0xb8
     mov r1, r1, asr #0xc
     mov r2, r2, asr #0xc
     mov r3, #0xd2
-    bl func_0200500c
+    bl VecFx32Object_InitComponents
     ldr r2, [r10, #0x1d4]
     cmp r2, #0x0
     beq .L_02203ad4
@@ -423,7 +423,7 @@ func_ov042_022036c4:
     add r0, sp, #0xa8
     sub r2, r1, #0x32
     add r3, r1, #0xfa
-    bl func_0200500c
+    bl VecFx32Object_InitComponents
     ldr r0, .L_0220474c
     ldr r2, .L_0220473c
     ldrh r3, [r0, #0x0]
@@ -447,7 +447,7 @@ func_ov042_022036c4:
     ldr r0, [r10, #0x48]
     ldr r0, [r0, #0x20]
     add r0, r0, #0x70
-    bl func_020050a4
+    bl VecFx32Object_Assign
     mov r3, r4, lsl #0x10
     ldr r1, [r10, #0x1bc]
     ldr r0, .L_02204750
@@ -479,7 +479,7 @@ func_ov042_022036c4:
     mov r1, r1, asr #0x7
     mov r2, r2, asr #0x7
     mov r3, r3, asr #0x7
-    bl func_0200500c
+    bl VecFx32Object_InitComponents
     ldr r0, [r10, #0x48]
     mov r1, #0x26
     ldr r0, [r0, #0x20]
@@ -579,7 +579,7 @@ func_ov042_022036c4:
     mov r1, #0x1
     add r0, sp, #0x68
     str r1, [r10, #0x260]
-    bl func_02004fe0
+    bl VecFx32Object_Init
     ldr r0, [r10, #0x48]
     add r2, sp, #0x68
     add r1, r10, #0xa4
@@ -590,7 +590,7 @@ func_ov042_022036c4:
     str r1, [r10, #0x254]
     ldr r1, [sp, #0x70]
     str r1, [r10, #0x258]
-    bl func_02005058
+    bl VecFx32Object_Destroy
 .L_02203f44:
     ldr r0, [r10, #0x1bc]
     ldr r2, .L_02204750
@@ -704,13 +704,13 @@ func_ov042_022036c4:
     str r1, [r2, #-0xbc]
 .L_022040f0:
     add r0, sp, #0x98
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add r0, sp, #0xa8
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add r0, sp, #0xb8
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add r0, sp, #0xc8
-    bl func_02005058
+    bl VecFx32Object_Destroy
 .L_02204110:
     ldr r0, [r10, #0xa0]
     bl func_ov042_02205808

@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/type7_actor_related_motion.c.
-.extern func_02005058
-.extern func_020050a4
+.extern VecFx32Object_Destroy
+.extern VecFx32Object_Assign
 .extern Type7Actor_UpdateMotionTowardTransform
 .extern Type7Actor_ResetInteractionState
 .extern Type7Actor_UpdateFlag14Bit2FromCondition
@@ -55,7 +55,7 @@ Type7Actor_UpdateMotionFromRelatedTransform: ; 0x0204955c
     strneh r0, [r4, #0xd6]
 .L_020495f8:
     add r0, sp, #0x0
-    bl func_02005058
+    bl VecFx32Object_Destroy
     mov r0, #0x0
 .L_02049604:
     add sp, sp, #0x10
@@ -161,12 +161,12 @@ Type7Actor_UpdateAcquiredTargetMotion: ; 0x020496cc
     beq .L_02049758
     add r0, r4, #0x78
     add r1, r4, #0x224
-    bl func_020050a4
+    bl VecFx32Object_Assign
 .L_02049758:
     ldr r1, [r4, #0x210]
     add r0, r4, #0x78
     add r1, r1, #0x18
-    bl func_020050a4
+    bl VecFx32Object_Assign
     mov r0, r4
     bl Type7Actor_AdjustDestinationForCollisions
     mov r0, r4

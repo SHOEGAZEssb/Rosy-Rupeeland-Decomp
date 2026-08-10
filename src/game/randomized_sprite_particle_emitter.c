@@ -60,9 +60,9 @@ extern void AnimationResource_InitEmpty(void *);
 extern void AnimationResource_Init(void *, s32, s32, s32);
 extern void AnimationResource_Destroy(void *);
 extern void AnimationResource_Assign(void *, const void *);
-extern void func_0200500c(void *, s32, s32, s32);
-extern void func_02005030(void *, const void *);
-extern void func_02005058(void *);
+extern void VecFx32Object_InitComponents(void *, s32, s32, s32);
+extern void VecFx32Object_InitCopy(void *, const void *);
+extern void VecFx32Object_Destroy(void *);
 extern void VecFx32_Subtract(void *, const void *, const void *);
 extern void func_0201e250(void *);
 extern void func_0201e28c(void *);
@@ -102,8 +102,8 @@ RandomizedSpriteParticleEmitter *func_02028b98(
     func_0201e250(self);
     self->vtable_00 = (void **)data_020de8cc;
     self->projection_08 = projection;
-    func_02005030(&self->position_0c, position);
-    func_02005030(&self->target_1c, target);
+    VecFx32Object_InitCopy(&self->position_0c, position);
+    VecFx32Object_InitCopy(&self->target_1c, target);
     __construct_array(self->resources_2c, 2, 0x10,
                       (void (*)(void *))AnimationResource_InitEmpty, AnimationResource_Destroy);
     self->spawnTimer_54 = 0;
@@ -172,8 +172,8 @@ RandomizedSpriteParticleEmitter *func_02028d14(
     self->particles_5c.vtable_00 = (void **)data_020de89c;
     func_02028cd4(&self->particles_5c);
     __destroy_arr(self->resources_2c, 2, 0x10, AnimationResource_Destroy);
-    func_02005058(&self->target_1c);
-    func_02005058(&self->position_0c);
+    VecFx32Object_Destroy(&self->target_1c);
+    VecFx32Object_Destroy(&self->position_0c);
     func_0201e28c(self);
     return self;
 }
@@ -263,7 +263,7 @@ s32 func_02028f04(RandomizedSpriteParticleEmitter *self)
     }
     VecFx32_Subtract(&projected, &self->position_0c, self->projection_08);
     GraphicsSpriteGroup_AdvanceAnimations(self->spriteOwner_4c);
-    func_02005058(&projected);
+    VecFx32Object_Destroy(&projected);
     return 0;
 }
 
@@ -279,16 +279,16 @@ void *func_0202906c(const void *projection, s32 x0, s32 y0, s32 x1,
     EmitterVector target;
     RandomizedSpriteParticleEmitter *self;
     void *result;
-    func_0200500c(&position, x0 << 12, y0 << 12, 0);
-    func_0200500c(&target, x1 << 12, y1 << 12, 0);
+    VecFx32Object_InitComponents(&position, x0 << 12, y0 << 12, 0);
+    VecFx32Object_InitComponents(&target, x1 << 12, y1 << 12, 0);
     self = (RandomizedSpriteParticleEmitter *)Heap_Alloc(
         sizeof(RandomizedSpriteParticleEmitter), data_020de8f4, 4,
         &gHeapContext);
     if (self)
         self = func_02028b98(self, projection, &position, &target, frame);
     result = func_0201ded4(data_021052fc + 0x2f7c, self);
-    func_02005058(&target);
-    func_02005058(&position);
+    VecFx32Object_Destroy(&target);
+    VecFx32Object_Destroy(&position);
     return result;
 }
 

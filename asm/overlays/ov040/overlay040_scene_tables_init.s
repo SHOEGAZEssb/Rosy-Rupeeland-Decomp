@@ -1,8 +1,8 @@
     .text
 /* Exact fallback; see overlay040_scene_tables_init.c for portable C. */
-    .extern func_0200500c
-    .extern func_02005058
-    .extern func_020050a4
+    .extern VecFx32Object_InitComponents
+    .extern VecFx32Object_Destroy
+    .extern VecFx32Object_Assign
     .extern func_ov040_021fe18c
     .extern func_ov040_02202244
     .global func_ov040_021fd8ac
@@ -23,12 +23,12 @@ func_ov040_021fd8ac: ; 0x021fd8ac
     mov r0, r11
     mov r2, r1
     mov r3, r1
-    bl func_0200500c
+    bl VecFx32Object_InitComponents
     mov r1, r11
     add r0, r8, r9, lsl #0x4
-    bl func_020050a4
+    bl VecFx32Object_Assign
     mov r0, r11
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add r0, r10, r9, lsl #0x2
     str r7, [r0, #0x264]
     mla r1, r9, r4, r10

@@ -1,6 +1,6 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov088/overlay088_recovery.c.
-.extern func_02004fe0
+.extern VecFx32Object_Init
 
 .global func_ov088_02219168
 func_ov088_02219168:
@@ -8,7 +8,7 @@ func_ov088_02219168:
     mov r5, r1
     mov r6, r0
     mov r4, r2
-    bl func_02004fe0
+    bl VecFx32Object_Init
     ldr r0, [r5, #0x4]
     smull r2, r1, r0, r4
     adds r2, r2, #0x800

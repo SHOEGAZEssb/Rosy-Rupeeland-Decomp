@@ -3,7 +3,7 @@
 .extern GameWork_ClearFlag
 .extern Heap_Free
 .extern data_020df3c8
-.extern func_02005058
+.extern VecFx32Object_Destroy
 .extern func_02031488
 .extern ActorDerivedRuntime_DestroyAlternate
 .extern Type7MarkerPresentation_Destroy
@@ -74,11 +74,11 @@ ActorDerivedType1_DestroyAndFree: ; 0x02035290
     add r0, r4, #0x2a8
     bl Type7MarkerPresentation_Destroy
     add r0, r4, #0x284
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add r0, r4, #0x254
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add r0, r4, #0x238
-    bl func_02005058
+    bl VecFx32Object_Destroy
     mov r0, r4
     bl ActorDerivedRuntime_DestroyAlternate
     mov r0, r4

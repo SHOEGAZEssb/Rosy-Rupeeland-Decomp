@@ -55,15 +55,15 @@ void ActorMotionJitter_Update(ActorMotionJitter *self, const s16 *bounds)
     } else {
         VecFx32Object position;
 
-        func_02004fe0(&position);
+        VecFx32Object_Init(&position);
         if (motion->actor != 0) {
             VecFx32Object actorPosition;
 
             if (motion->mode == 0)
                 motion->mode = 1;
             ActorMotion_GetBoundActorTargetPosition(&actorPosition, motion);
-            func_020050a4(&position, &actorPosition);
-            func_02005058(&actorPosition);
+            VecFx32Object_Assign(&position, &actorPosition);
+            VecFx32Object_Destroy(&actorPosition);
 
             if (self->remainingFrames > 0) {
                 s32 span;
@@ -76,9 +76,9 @@ void ActorMotionJitter_Update(ActorMotionJitter *self, const s16 *bounds)
                 random = func_020bf1f8(genrand_int32(), span);
                 position.value.y += (self->radius - random) << 12;
             }
-            func_020050a4(&motion->position, &position);
+            VecFx32Object_Assign(&motion->position, &position);
         }
-        func_02005058(&position);
+        VecFx32Object_Destroy(&position);
     }
 
     if (motion->field_30 & 2)

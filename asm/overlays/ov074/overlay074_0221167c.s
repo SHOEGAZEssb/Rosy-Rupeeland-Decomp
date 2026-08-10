@@ -1,6 +1,6 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov074/overlay074_recovery.c.
-.extern func_02004fe0
+.extern VecFx32Object_Init
 .extern SplineMover_Init
 
 .global func_ov074_0221167c
@@ -11,7 +11,7 @@ func_ov074_0221167c:
     strh r1, [r4, #0x0]
     add r0, r4, #0x8
     strh r1, [r4, #0x2]
-    bl func_02004fe0
+    bl VecFx32Object_Init
     add r0, r4, #0x18
     bl SplineMover_Init
     mov r0, r4

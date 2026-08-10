@@ -1,8 +1,8 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov069/overlay069_recovery.c.
 .extern data_021052fc
-.extern func_0200500c
-.extern func_02005058
+.extern VecFx32Object_InitComponents
+.extern VecFx32Object_Destroy
 .extern func_0201e0ec
 .extern func_0209c430
 
@@ -15,7 +15,7 @@ func_ov069_02211274:
     add r0, sp, #0x24
     mov r2, r1
     mov r3, r1
-    bl func_0200500c
+    bl VecFx32Object_InitComponents
     mvn r6, #0x7
     add r2, sp, #0x114
     add ip, sp, #0x124
@@ -181,7 +181,7 @@ func_ov069_02211274:
     ldr r1, [ip, #0xa94]
     add r0, sp, #0x14
     mov r3, r3, asr #0xc
-    bl func_0200500c
+    bl VecFx32Object_InitComponents
     add r0, r4, r10, lsl #0x2
     ldr r1, [r0, #0x7c0]
     add r3, r4, r10, lsl #0x1
@@ -200,12 +200,12 @@ func_ov069_02211274:
     add r2, sp, #0x24
     bl func_0209c430
     add r0, sp, #0x14
-    bl func_02005058
+    bl VecFx32Object_Destroy
 .L_02211574:
     subs r10, r10, #0x1
     bpl .L_022114f4
     add r0, sp, #0x24
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add sp, sp, #0x194
     ldmia sp!, {r4, r5, r6, r7, r8, r9, r10, r11, pc}
 .L_0221158c: .word data_021052fc

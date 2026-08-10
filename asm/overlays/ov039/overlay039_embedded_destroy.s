@@ -1,6 +1,6 @@
 .text
 /* Exact fallback; see overlay039_embedded_destroy.c for portable C. */
-    .extern func_02005058
+    .extern VecFx32Object_Destroy
     .extern __destroy_arr
     .extern func_ov039_021fd06c
     .extern func_ov039_021fce5c
@@ -10,9 +10,9 @@ func_ov039_021fd01c:
     stmdb sp!, {r4, lr}
     mov r4, r0
     add r0, r4, #0x320
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add r0, r4, #0x310
-    bl func_02005058
+    bl VecFx32Object_Destroy
     ldr r3, L_021fd064
     add r0, r4, #0x1d8
     mov r1, #0x27

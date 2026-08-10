@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/rising_sprite_motion_controller.c.
 .text
-.extern func_02005058
+.extern VecFx32Object_Destroy
 .extern VecFx32Bezier_Evaluate3D
 .extern VecFx32_Subtract
 .extern ActorMotionOscillation_InitInterval
@@ -71,9 +71,9 @@ RisingSpriteMotionController_Update: ; 0x0202057c
     add r1, sp, #0x0
     bl func_02056f00
     add r0, sp, #0x0
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add r0, sp, #0x10
-    bl func_02005058
+    bl VecFx32Object_Destroy
     ldr r1, .L_020206e4
     ldr r3, [r5, #0x60]
     ldr r1, [r1, #0x64]
@@ -101,7 +101,7 @@ RisingSpriteMotionController_Update: ; 0x0202057c
     ldr r2, [r5, #0x0]
     strh r1, [r2, #0x32]
     strh r1, [r2, #0x34]
-    bl func_02005058
+    bl VecFx32Object_Destroy
     mov r0, #0x0
 .L_020206dc:
     add sp, sp, #0x3c

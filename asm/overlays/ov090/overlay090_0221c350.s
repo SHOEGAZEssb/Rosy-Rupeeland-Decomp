@@ -1,7 +1,7 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov090/overlay090_recovery.c.
-.extern func_02005070
-.extern func_02005084
+.extern VecFx32Object_GetMagnitude
+.extern VecFx32Object_Normalize
 .extern func_020be334
 .extern func_ov090_0221b3d0
 
@@ -11,7 +11,7 @@ func_ov090_0221c350:
     mov r6, r1
     mov r7, r0
     mov r0, r6
-    bl func_02005070
+    bl VecFx32Object_GetMagnitude
     ldr r1, [r7, #0xc]
     mov r4, r0
     sub r0, r4, r1
@@ -27,7 +27,7 @@ func_ov090_0221c350:
     cmpeq r0, #0x0
     beq .L_0221c3d4
     mov r0, r6
-    bl func_02005084
+    bl VecFx32Object_Normalize
     ldr r0, [r7, #0xc]
     cmp r4, r0
     bge .L_0221c3c0

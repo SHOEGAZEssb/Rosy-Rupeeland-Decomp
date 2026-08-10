@@ -1,8 +1,8 @@
 ; Matching retail form; see src/game/actor_extended_type3_countdown_motion.c.
 .text
 .extern data_020e0224
-.extern func_02005030
-.extern func_02005058
+.extern VecFx32Object_InitCopy
+.extern VecFx32Object_Destroy
 .extern ActorExtendedType3_ResetInteractionState
 .global ActorExtendedType3_UpdateCountdownMotion
 .type ActorExtendedType3_UpdateCountdownMotion, @function
@@ -46,7 +46,7 @@ ActorExtendedType3_UpdateCountdownMotion: ; 0x020439ec
 .L_02043a78:
     add r0, sp, #0x0
     add r1, r5, #0x18
-    bl func_02005030
+    bl VecFx32Object_InitCopy
     ldr r3, [r5, #0x228]
     ldr r2, [r5, #0x20]
     ldr r1, [r3, #0x20]
@@ -83,7 +83,7 @@ ActorExtendedType3_UpdateCountdownMotion: ; 0x020439ec
     ldr r2, [r2, #0xd0]
     blx r2
     add r0, sp, #0x0
-    bl func_02005058
+    bl VecFx32Object_Destroy
     mov r0, #0x0
 .L_02043b14:
     add sp, sp, #0x10

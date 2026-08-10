@@ -3,7 +3,7 @@
 .extern GameWork_TestFlag
 .extern data_ov097_0221a4c8
 .extern data_ov097_0221a5f4
-.extern func_02004fe0
+.extern VecFx32Object_Init
 .extern ActorExtendedType2_GetDescriptorValue25
 .extern func_ov075_02212ae0
 .extern func_ov097_022177e0
@@ -30,9 +30,9 @@ func_ov097_02217804:
     strh r2, [r0, #0xc2]
     add r0, r4, #0x2c8
     str r2, [r4, #0x2c4]
-    bl func_02004fe0
+    bl VecFx32Object_Init
     add r0, r4, #0x2d8
-    bl func_02004fe0
+    bl VecFx32Object_Init
     mov r2, #0x8
     str r2, [sp, #0x0]
     sub r1, r2, #0x26

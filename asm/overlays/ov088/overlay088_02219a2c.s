@@ -1,8 +1,8 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov088/overlay088_recovery.c.
 .extern data_02105310
-.extern func_0200500c
-.extern func_02005058
+.extern VecFx32Object_InitComponents
+.extern VecFx32Object_Destroy
 .extern ActorRuntimeCollection_GetPendingAttachmentFlag
 .extern func_02032a94
 .extern ActorDerivedRuntime_HandlePairActive
@@ -84,7 +84,7 @@ func_ov088_02219a2c:
     add r0, sp, #0x8
     mov r1, r7
     mov r3, #0x0
-    bl func_0200500c
+    bl VecFx32Object_InitComponents
     mov r0, r6
     ldr r3, [r0, #0x0]
     add r1, sp, #0x8
@@ -118,7 +118,7 @@ func_ov088_02219a2c:
     blx r3
 .L_02219bb8:
     add r0, sp, #0x8
-    bl func_02005058
+    bl VecFx32Object_Destroy
 .L_02219bc0:
     add r0, r6, #0x200
     ldrsh r1, [r0, #0x1e]

@@ -5,10 +5,10 @@
     .extern func_ov039_02202d04
     .extern func_ov039_02203f94
     .extern Sound_Play
-    .extern func_02004fe0
-    .extern func_020050a4
+    .extern VecFx32Object_Init
+    .extern VecFx32Object_Assign
     .extern func_ov049_0220c6cc
-    .extern func_02005058
+    .extern VecFx32Object_Destroy
     .extern func_ov039_02203480
     .extern data_ov039_02208107
     .extern data_ov039_0220811c
@@ -278,10 +278,10 @@ L_02201ec0:
     cmp r1, #0x28
     bne L_02201fa4
     add r0, sp, #0x0
-    bl func_02004fe0
+    bl VecFx32Object_Init
     add r0, sp, #0x0
     add r1, r5, #0x2c
-    bl func_020050a4
+    bl VecFx32Object_Assign
     ldr r1, [r5, #0x30]
     add r0, r5, #0x64
     sub r1, r1, #0x60000
@@ -327,7 +327,7 @@ L_02201ec0:
     mov r2, #0xe000
     bl func_ov049_0220c6cc
     add r0, sp, #0x0
-    bl func_02005058
+    bl VecFx32Object_Destroy
 L_02201fa4:
     add r0, r5, #0x1000
     ldr r1, [r0, #0xcc0]

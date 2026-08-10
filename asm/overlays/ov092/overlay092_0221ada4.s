@@ -2,8 +2,8 @@
 ; Matching fallback for the portable implementation in src/overlays/ov092/overlay092_recovery.c.
 .extern Heap_Alloc
 .extern data_ov092_0221c99c
-.extern func_0200500c
-.extern func_02005058
+.extern VecFx32Object_InitComponents
+.extern VecFx32Object_Destroy
 .extern func_0201f864
 .extern func_0204cfa4
 .extern func_0204cff4
@@ -126,13 +126,13 @@ func_ov092_0221ada4:
     mov r1, r7
     mov r2, r6
     add r0, sp, #0x18
-    bl func_0200500c
+    bl VecFx32Object_InitComponents
     add r0, sp, #0x38
     add r1, r5, #0x18
     add r2, sp, #0x18
     bl func_ov092_02219e54
     add r0, sp, #0x18
-    bl func_02005058
+    bl VecFx32Object_Destroy
     ldr r2, [r5, #0x208]
     mov r1, r8
     mul r0, r4, r2
@@ -147,7 +147,7 @@ func_ov092_0221ada4:
     ldr r3, [r5, #0x204]
     mov r1, r4
     add r0, sp, #0x28
-    bl func_0200500c
+    bl VecFx32Object_InitComponents
     ldr r2, [r5, #0x8c]
     ldr r1, [sp, #0x2c]
     add r0, r5, #0x8c
@@ -207,9 +207,9 @@ func_ov092_0221ada4:
     bl func_0201f864
 .L_0221b07c:
     add r0, sp, #0x28
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add r0, sp, #0x38
-    bl func_02005058
+    bl VecFx32Object_Destroy
 .L_0221b08c:
     mov r0, #0x14
     str r0, [r5, #0x210]

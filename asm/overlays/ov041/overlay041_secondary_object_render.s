@@ -3,10 +3,10 @@
 /* Exact fallback for the documented portable C implementation in
  * src/overlays/ov041/overlay041_secondary_object_render.c. */
 .extern data_020f4e14
-.extern func_0200500c
-.extern func_02005030
-.extern func_02005058
-.extern func_020050a4
+.extern VecFx32Object_InitComponents
+.extern VecFx32Object_InitCopy
+.extern VecFx32Object_Destroy
+.extern VecFx32Object_Assign
 .extern GraphicsSpriteCanvas_FillRect
 .extern func_0209a2ac
 .extern func_0209c9d4
@@ -24,7 +24,7 @@ func_ov041_02200ce8: ; 0x02200ce8
     bl func_0209a2ac
     add r0, sp, #0x54
     mov r1, r4
-    bl func_02005030
+    bl VecFx32Object_InitCopy
     mov r0, #0x4
     sub r7, r0, #0x1
     add r6, sp, #0x54
@@ -46,7 +46,7 @@ func_ov041_02200ce8: ; 0x02200ce8
     rsbeq r2, r2, #0x0
     movne r2, #0x0
     add r0, sp, #0x44
-    bl func_0200500c
+    bl VecFx32Object_InitComponents
     ldr r0, [r10, #0x5c]
     add r1, sp, #0x44
     mov r2, #0x1
@@ -60,9 +60,9 @@ func_ov041_02200ce8: ; 0x02200ce8
     cmp r0, #0x2
     bne .L_02200da8
     add r0, sp, #0x44
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add r0, sp, #0x54
-    bl func_02005058
+    bl VecFx32Object_Destroy
     b .L_0220104c
 .L_02200da8:
     ldr r0, [r1, #0x1ec]
@@ -94,7 +94,7 @@ func_ov041_02200ce8: ; 0x02200ce8
     mov r1, r4
     ldr r0, [r0, #0x18]
     add r0, r0, #0x84
-    bl func_020050a4
+    bl VecFx32Object_Assign
     ldr r0, [r10, #0x48]
     ldr r0, [r0, #0x18]
     bl func_0209c9d4
@@ -234,9 +234,9 @@ func_ov041_02200ce8: ; 0x02200ce8
     cmp r5, #0xa
     blt .L_02200e58
     add r0, sp, #0x44
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add r0, sp, #0x54
-    bl func_02005058
+    bl VecFx32Object_Destroy
 .L_0220104c:
     add sp, sp, #0x1a4
     ldmia sp!, {r4, r5, r6, r7, r8, r9, r10, r11, pc}

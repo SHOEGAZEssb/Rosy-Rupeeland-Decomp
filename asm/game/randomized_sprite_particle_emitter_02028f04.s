@@ -5,7 +5,7 @@
 .extern Heap_Free
 .extern data_020de860
 .extern data_020de8ec
-.extern func_02005058
+.extern VecFx32Object_Destroy
 .extern VecFx32_Subtract
 .extern func_02028860
 .extern func_0202895c
@@ -106,7 +106,7 @@ func_02028f04: ; 0x02028f04
     ldr r0, [r4, #0x4c]
     bl GraphicsSpriteGroup_AdvanceAnimations
     add r0, sp, #0x8
-    bl func_02005058
+    bl VecFx32Object_Destroy
     mov r0, #0x0
 .L_02029050:
     add sp, sp, #0x18

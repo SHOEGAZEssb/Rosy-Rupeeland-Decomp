@@ -28,9 +28,9 @@ void func_ov041_02202adc(void *);
 void func_ov004_021fb868(void *, s32, s32, s32);
 void func_ov008_021fbd1c(void *);
 void func_ov070_02210320(void *);
-void func_02004fe0(void *);
-void func_020050a4(void *, const void *);
-void func_02005058(void *);
+void VecFx32Object_Init(void *);
+void VecFx32Object_Assign(void *, const void *);
+void VecFx32Object_Destroy(void *);
 void Sound_Play(void *, s32, s32);
 extern void *gSoundContext;
 extern s16 data_020c9670[];
@@ -138,7 +138,7 @@ extern "C" void func_ov041_02202c34(void *object)
         void *owner = FIELD(void *, object, 0x48);
         FIELD(s32, owner, 0x1ac) = 41;
         s32 transform[3];
-        func_02004fe0(transform);
+        VecFx32Object_Init(transform);
         transform[1] = FIELD(s32, object, 0x6c) - 0x80000;
         transform[2] = FIELD(s32, object, 0x70) + 0x1e000;
         if (FIELD(s32, object, 0x91c) > 0) {
@@ -149,8 +149,8 @@ extern "C" void func_ov041_02202c34(void *object)
             transform[2] =
                 FIELD(s32, object, 0x70) + rise + 0x1e000;
         }
-        func_020050a4((u8 *)owner + 0x19c, transform);
-        func_02005058(transform);
+        VecFx32Object_Assign((u8 *)owner + 0x19c, transform);
+        VecFx32Object_Destroy(transform);
     } else if (mode == 4) {
         func_ov041_022017f8(object, &requestedTurn, &maxTurn);
     } else if (mode == 6 || mode == 7) {

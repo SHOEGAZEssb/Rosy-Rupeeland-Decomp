@@ -26,7 +26,7 @@ extern void VecFx32_Subtract(void *output, ...);
 extern s32 func_0204cfa4(s32 x, s32 y);
 extern s32 func_020ae024(s32 y, s32 x);
 extern void func_0204cff4(s32 *x, s32 *y, s32 maximum);
-extern void func_02005058(void *vector);
+extern void VecFx32Object_Destroy(void *vector);
 extern void Actor_UpdateGroundContactProbe(void *actor);
 extern void Actor_UpdateAnimationState(void *actor);
 extern void AttachmentController_SetEnabled(void *owner, s32 enabled);
@@ -225,7 +225,7 @@ void ActorExtendedType2_UpdateFrame(void *self)
                     (*(void (**)(void *, s32))(*(u8 **)actor + 0x13c))(
                         actor, 0);
                 }
-                func_02005058(temporary);
+                VecFx32Object_Destroy(temporary);
             }
         }
 

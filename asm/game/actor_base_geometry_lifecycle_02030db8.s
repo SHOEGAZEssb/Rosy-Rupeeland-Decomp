@@ -2,7 +2,7 @@
 .text
 .extern Heap_Free
 .extern data_020def7c
-.extern func_02005058
+.extern VecFx32Object_Destroy
 .extern func_02059424
 .extern gSoundContext
 
@@ -18,11 +18,11 @@ ActorBaseGeometry_DestroyAndFree: ; 0x02030db8
     mov r1, r4
     bl func_02059424
     add r0, r4, #0x38
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add r0, r4, #0x28
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add r0, r4, #0x18
-    bl func_02005058
+    bl VecFx32Object_Destroy
     mov r0, r4
     bl Heap_Free
     mov r0, r4

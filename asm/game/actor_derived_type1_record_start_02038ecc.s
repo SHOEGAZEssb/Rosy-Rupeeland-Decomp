@@ -1,8 +1,8 @@
 ; Matching retail form; see src/game/actor_derived_type1_record_start.c.
 .text
 .extern Sound_Play
-.extern func_02005030
-.extern func_02005058
+.extern VecFx32Object_InitCopy
+.extern VecFx32Object_Destroy
 .extern ActorDerivedType1_ApplyActiveRecord
 .extern ActorDerivedType1_TeardownActiveRecord
 .extern func_02053f9c
@@ -36,7 +36,7 @@ ActorDerivedType1_StartRecord: ; 0x02038ecc
     bl ActorDerivedType1_TeardownActiveRecord
     add r0, sp, #0x0
     add r1, r5, #0x18
-    bl func_02005030
+    bl VecFx32Object_InitCopy
     mov r0, r4
     bl func_020541d4
     str r0, [r5, #0x27c]
@@ -62,7 +62,7 @@ ActorDerivedType1_StartRecord: ; 0x02038ecc
     mov r0, r5
     bl ActorDerivedType1_ApplyActiveRecord
     add r0, sp, #0x0
-    bl func_02005058
+    bl VecFx32Object_Destroy
 .L_02038f8c:
     add sp, sp, #0x10
     ldmia sp!, {r3, r4, r5, pc}

@@ -7,9 +7,9 @@
 .extern data_020e1790
 .extern data_020e1870
 .extern data_020e18f8
-.extern func_02005030
-.extern func_02005058
-.extern func_020050a4
+.extern VecFx32Object_InitCopy
+.extern VecFx32Object_Destroy
+.extern VecFx32Object_Assign
 .extern Actor_SetInteractionFlag2000
 .extern Actor_TestQueryPoint
 .extern ActorDerivedType1_TrySetStateVector
@@ -184,7 +184,7 @@ Type7Actor_HandleTouchInteraction: ; 0x02047248
     bl TouchPoint_Init
     add r0, sp, #0x1c
     add r1, r5, #0x18
-    bl func_02005030
+    bl VecFx32Object_InitCopy
     ldr r3, [sp, #0x20]
     ldr r2, [sp, #0x30]
     ldr r1, [sp, #0x24]
@@ -202,7 +202,7 @@ Type7Actor_HandleTouchInteraction: ; 0x02047248
     add r1, r5, #0x200
     mvn r2, #0x9
     strh r2, [r1, #0x50]
-    bl func_02005058
+    bl VecFx32Object_Destroy
 .L_020474f8:
     mov r0, #0x1
     b .L_0204765c
@@ -237,7 +237,7 @@ Type7Actor_HandleTouchInteraction: ; 0x02047248
     bl Type7Actor_SetCallbackPair
     add r0, r5, #0x224
     add r1, r5, #0x18
-    bl func_020050a4
+    bl VecFx32Object_Assign
     add r0, r5, #0x200
     mov r1, #0x5a
     strh r1, [r0, #0x50]
@@ -279,7 +279,7 @@ Type7Actor_HandleTouchInteraction: ; 0x02047248
     beq .L_02047658
     add r0, sp, #0x0
     add r1, r5, #0x18
-    bl func_02005030
+    bl VecFx32Object_InitCopy
     ldr r3, [sp, #0x4]
     ldr r2, [sp, #0x14]
     ldr r1, [sp, #0x8]
@@ -294,7 +294,7 @@ Type7Actor_HandleTouchInteraction: ; 0x02047248
     mov r3, #0x0
     bl ActorDerivedType1_TrySetStateVector
     add r0, sp, #0x0
-    bl func_02005058
+    bl VecFx32Object_Destroy
 .L_02047658:
     mov r0, #0x1
 .L_0204765c:

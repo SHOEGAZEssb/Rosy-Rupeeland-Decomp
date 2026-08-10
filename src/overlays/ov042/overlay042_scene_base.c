@@ -10,7 +10,7 @@
 
 extern "C" {
 void Heap_Free(void *allocation);
-void func_02004fe0(void *state);
+void VecFx32Object_Init(void *state);
 void func_02099fb0(void *object);
 void func_ov042_021fcf9c(void *element);
 extern u8 data_020f3058[];
@@ -35,8 +35,8 @@ extern "C" void *func_ov042_021fd658(void *allocation)
 extern "C" void *func_ov042_021fd66c(void *object)
 {
     FIELD(void *, object, 0) = data_020f3058;
-    func_02004fe0((u8 *)object + 0x1c);
-    func_02004fe0((u8 *)object + 0x2c);
+    VecFx32Object_Init((u8 *)object + 0x1c);
+    VecFx32Object_Init((u8 *)object + 0x2c);
     FIELD(s32, object, 4) = 0;
     FIELD(s32, object, 8) = 0;
     FIELD(s32, object, 0xc) = 0;

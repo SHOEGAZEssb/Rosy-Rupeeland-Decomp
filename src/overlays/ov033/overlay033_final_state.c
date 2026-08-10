@@ -18,7 +18,7 @@ extern void func_0205929c(void *sound, s32 id, s32 duration);
 extern void func_02091b98(void *interpolator, s32 value);
 extern void func_020939d8(void *dialog);
 extern void func_ov033_021fd4cc(void *scene, s32 delta);
-extern void func_020050c8(void *destination, void *source);
+extern void VecFx32Object_Add(void *destination, void *source);
 extern s32 func_02091c7c(void *interpolator, s32 advance);
 extern void func_0205974c(void *sound, s32 id);
 extern void func_02059278(void *sound, s32 id, s32 value);
@@ -77,7 +77,7 @@ extern "C" s32 func_ov033_021fd9a0(void *scene)
             func_ov033_021fd4cc(scene, 0x800);
             FIELD(s32, scene, 0x1c) = 0;
             FIELD(s32, scene, 0x18) = 0;
-            func_020050c8((u8 *)FIELD(void *, scene, 4) + 0x18,
+            VecFx32Object_Add((u8 *)FIELD(void *, scene, 4) + 0x18,
                           (u8 *)scene + 0x14);
         }
     } else if (state == 2) {

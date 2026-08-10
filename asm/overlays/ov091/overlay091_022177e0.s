@@ -2,8 +2,8 @@
 ; Matching fallback for the portable implementation in src/overlays/ov091/overlay091_recovery.c.
 .extern data_021052fc
 .extern data_ov091_02218cd0
-.extern func_02004fe0
-.extern func_0200500c
+.extern VecFx32Object_Init
+.extern VecFx32Object_InitComponents
 .extern GamePhaseRuntime_GetActorCollection
 .extern func_0204d520
 
@@ -24,11 +24,11 @@ func_ov091_022177e0:
     mov r3, r1
     add r0, r10, #0x210
     str r1, [r10, #0x1f4]
-    bl func_0200500c
+    bl VecFx32Object_InitComponents
     mov r1, #0x0
     add r0, r10, #0x224
     str r1, [r10, #0x220]
-    bl func_02004fe0
+    bl VecFx32Object_Init
     mov r8, #0x0
     mov r11, #0x1
     mov r9, r8

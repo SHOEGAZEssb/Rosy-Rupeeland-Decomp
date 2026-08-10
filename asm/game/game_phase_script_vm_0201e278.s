@@ -1,9 +1,9 @@
 ; Matching retail form; see src/game/timed_sprite_presentation.c.
 .text
 .extern Heap_Free
-.extern func_0200500c
-.extern func_02005058
-.extern func_020050c8
+.extern VecFx32Object_InitComponents
+.extern VecFx32Object_Destroy
+.extern VecFx32Object_Add
 .extern VecFx32_Subtract
 .extern GraphicsSpriteGroup_CreateState
 .extern GraphicsSpriteGroup_ReleaseState

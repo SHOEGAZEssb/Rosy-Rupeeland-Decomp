@@ -8,9 +8,9 @@
 .extern data_ov092_0221b238
 .extern data_ov092_0221b356
 .extern data_ov092_0221b3de
-.extern func_0200500c
-.extern func_02005030
-.extern func_02005058
+.extern VecFx32Object_InitComponents
+.extern VecFx32Object_InitCopy
+.extern VecFx32Object_Destroy
 .extern Actor_SetActive
 .extern func_02050078
 .extern func_02059278
@@ -340,7 +340,7 @@ func_ov092_022196d0:
     ldrh r2, [r5, #0x24]
     orr r2, r2, #0x2
     strh r2, [r5, #0x24]
-    bl func_02005030
+    bl VecFx32Object_InitCopy
     ldr r2, [sp, #0x30]
     ldr r0, [sp, #0x2c]
     add r3, r2, #0x10000
@@ -351,13 +351,13 @@ func_ov092_022196d0:
     add r0, sp, #0x4
     mov r3, r1
     mov r2, #0x10000
-    bl func_0200500c
+    bl VecFx32Object_InitComponents
     add r0, sp, #0x14
     add r1, sp, #0x24
     add r2, sp, #0x4
     bl func_ov092_02219e54
     add r0, sp, #0x4
-    bl func_02005058
+    bl VecFx32Object_Destroy
     mov r0, #0xd
     add r1, sp, #0x24
     add r2, sp, #0x14
@@ -369,9 +369,9 @@ func_ov092_022196d0:
     strh r1, [r0, #0xee]
     add r0, sp, #0x14
     str r1, [r4, #0x10c]
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add r0, sp, #0x24
-    bl func_02005058
+    bl VecFx32Object_Destroy
     b .L_02219e08
 .L_02219bc4:
     add r0, r6, #0x100

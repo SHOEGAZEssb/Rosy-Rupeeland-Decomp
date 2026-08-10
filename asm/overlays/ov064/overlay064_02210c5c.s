@@ -6,9 +6,9 @@
 .extern data_021052fc
 .extern data_ov064_02211ecc
 .extern data_ov064_02211ed4
-.extern func_02005030
-.extern func_02005058
-.extern func_020050a4
+.extern VecFx32Object_InitCopy
+.extern VecFx32Object_Destroy
+.extern VecFx32Object_Assign
 .extern GraphicsSpriteState_SetDepthOrderedWorldPosition
 .extern VecFx32Bezier_Evaluate3D
 .extern ActorMotionAreaFollower_GetPosition
@@ -105,7 +105,7 @@ func_ov064_02210c5c:
     add r1, r4, #0x284
     orr r2, r2, #0x6
     strh r2, [r3, #0x24]
-    bl func_02005030
+    bl VecFx32Object_InitCopy
     ldr r2, .L_02211014
     add r0, sp, #0x18
     add r1, r4, #0x18
@@ -119,9 +119,9 @@ func_ov064_02210c5c:
     add r2, sp, #0x8
     bl func_ov064_02211098
     add r0, sp, #0x8
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add r0, sp, #0x18
-    bl func_02005058
+    bl VecFx32Object_Destroy
     ldr r1, .L_0221101c
     ldr r3, .L_02211020
     mov r0, #0x30
@@ -143,10 +143,10 @@ func_ov064_02210c5c:
     bl GamePhaseCurrencyHud_AddCurrency
     add r0, sp, #0x38
     add r1, r4, #0x18
-    bl func_02005030
+    bl VecFx32Object_InitCopy
     add r1, sp, #0x58
     add r0, r4, #0x18
-    bl func_020050a4
+    bl VecFx32Object_Assign
     ldr r1, .L_02211028
     ldr r3, .L_02211020
     mov r0, #0x44
@@ -182,13 +182,13 @@ func_ov064_02210c5c:
     bl func_ov064_02211b4c
     add r1, sp, #0x38
     add r0, r4, #0x18
-    bl func_020050a4
+    bl VecFx32Object_Assign
     add r0, sp, #0x38
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add r0, sp, #0x48
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add r0, sp, #0x58
-    bl func_02005058
+    bl VecFx32Object_Destroy
     b .L_02210ff8
 .L_02210ec4:
     ldrsh r0, [r6, #0x74]
@@ -208,7 +208,7 @@ func_ov064_02210c5c:
     bl VecFx32Bezier_Evaluate3D
     add r1, sp, #0x28
     add r0, r4, #0x18
-    bl func_020050a4
+    bl VecFx32Object_Assign
     mov r0, r4
     bl Actor_RefreshTerrainHeight
     ldr r1, [r4, #0x54]
@@ -241,7 +241,7 @@ func_ov064_02210c5c:
     ldr r1, [r6, #0x84]
     add r0, r4, #0x18
     add r1, r1, #0x10
-    bl func_020050a4
+    bl VecFx32Object_Assign
     ldr r0, [r6, #0x30]
     mov r1, #0x2
     bl GraphicsSpriteState_SetAnimationIndex
@@ -258,7 +258,7 @@ func_ov064_02210c5c:
     bl GraphicsSpriteState_SetDepthOrderedWorldPosition
 .L_02210fc4:
     add r0, sp, #0x28
-    bl func_02005058
+    bl VecFx32Object_Destroy
     b .L_02210ff8
 .L_02210fd0:
     ldr r0, [r6, #0x30]

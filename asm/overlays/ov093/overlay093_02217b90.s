@@ -4,7 +4,7 @@
 .extern GameWork_SetFlag
 .extern Heap_Free
 .extern data_ov093_022188f0
-.extern func_02005058
+.extern VecFx32Object_Destroy
 .extern func_0204d570
 .extern GraphicsSpriteState_ReleaseFromGroup
 .extern gGameWork
@@ -52,7 +52,7 @@ func_ov093_02217b90:
     blx r1
 .L_02217c24:
     add r0, r4, #0x1ec
-    bl func_02005058
+    bl VecFx32Object_Destroy
     mov r0, r4
     bl func_0204d570
     mov r0, r4

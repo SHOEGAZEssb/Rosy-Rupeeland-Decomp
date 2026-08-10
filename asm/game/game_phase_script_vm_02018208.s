@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/game_phase_script_vm_actor_subtype_command_opcode.c.
 .text
-.extern func_0200500c
-.extern func_02005058
+.extern VecFx32Object_InitComponents
+.extern VecFx32Object_Destroy
 .extern GamePhaseScriptVm_Pop
 .extern ActorCollection_FindActorByDescriptorValue
 .extern Actor_GetCollection
@@ -65,13 +65,13 @@ L_020182c4:
     mov r1, r5, lsl #0xc
     mov r2, r8, lsl #0xc
     mov r3, r6, lsl #0xc
-    bl func_0200500c
+    bl VecFx32Object_InitComponents
     add r1, sp, #0x10
     mov r0, r9
     mov r2, r7
     bl func_ov087_022186a8
     add r0, sp, #0x10
-    bl func_02005058
+    bl VecFx32Object_Destroy
     b L_020184c8
 L_020182f4:
     cmp r5, #0x0
@@ -150,13 +150,13 @@ L_020183f8:
     mov r1, r5, lsl #0xc
     mov r2, r8, lsl #0xc
     mov r3, r6, lsl #0xc
-    bl func_0200500c
+    bl VecFx32Object_InitComponents
     add r1, sp, #0x0
     mov r0, r9
     mov r2, r7
     bl func_ov089_02219224
     add r0, sp, #0x0
-    bl func_02005058
+    bl VecFx32Object_Destroy
     b L_020184c8
 L_02018428:
     cmp r5, #0x0

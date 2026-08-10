@@ -14,9 +14,9 @@ extern s16 data_020c9670[];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *func_020050a4(void *destination, const void *source);
+extern void *VecFx32Object_Assign(void *destination, const void *source);
 extern void VecFx32_Subtract(void *output, const void *first, const void *second);
-extern void func_02005058(void *value);
+extern void VecFx32Object_Destroy(void *value);
 extern s32 func_0204cfa4(s32 x, s32 y);
 extern s32 Type7Actor_HasSpecialCallbackPair(const void *actor);
 extern s32 func_020adae4(s32 value, s32 divisor);
@@ -47,7 +47,7 @@ static s32 callback_pair_matches(const u8 *actor, void *first, void *second)
 void Type7Actor_SetMotionTarget(void *self, const void *transform)
 {
     u8 *actor = (u8 *)self;
-    func_020050a4(actor + 0x224, transform);
+    VecFx32Object_Assign(actor + 0x224, transform);
     *(u32 *)(actor + 0x268) |= 4;
     *(u16 *)(actor + 0x250) = 180;
 }
@@ -61,7 +61,7 @@ void Type7Actor_SetMotionTargetWithTimer(void *self, const void *transform, s32 
 {
     u8 *actor = (u8 *)self;
     *(u32 *)(actor + 0x268) |= 0x0c;
-    func_020050a4(actor + 0x224, transform);
+    VecFx32Object_Assign(actor + 0x224, transform);
     *(u16 *)(actor + 0x250) = (u16)timer;
 }
 
@@ -95,7 +95,7 @@ void Type7Actor_UpdateMotionTowardTransform(void *self, const void *requestedTra
     s32 componentY;
     s32 angle;
 
-    func_020050a4(actor + 0x78, requestedTransform);
+    VecFx32Object_Assign(actor + 0x78, requestedTransform);
     VecFx32_Subtract(displacement, actor + 0x78, actor + 0x18);
     magnitude = func_0204cfa4((s32)displacement[1], (s32)displacement[2]);
     if (magnitude > 0x4000) {
@@ -187,5 +187,5 @@ void Type7Actor_UpdateMotionTowardTransform(void *self, const void *requestedTra
             *(u16 *)(actor + 0xd6) = 8;
         }
     }
-    func_02005058(displacement);
+    VecFx32Object_Destroy(displacement);
 }

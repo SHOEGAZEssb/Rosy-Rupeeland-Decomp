@@ -13,8 +13,8 @@ extern u16 data_02105788[];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_0200500c(void *vector, s32 x, s32 y, s32 z);
-extern void func_02005058(void *vector);
+extern void VecFx32Object_InitComponents(void *vector, s32 x, s32 y, s32 z);
+extern void VecFx32Object_Destroy(void *vector);
 extern void *func_0204e2ac(s32 type, u32 value_1f4, u32 value_1f2,
                            const void *position, const void *vector_38,
                            u32 descriptor_arg0, u32 descriptor_arg1,
@@ -50,7 +50,7 @@ void func_0204e3f4(u32 playback_value, s32 amount,
     s32 tier = 0;
     s32 spawned;
 
-    func_0200500c(&velocity, 0, 0, 0x2000);
+    VecFx32Object_InitComponents(&velocity, 0, 0, 0x2000);
     while (tier < 7 && data_020c3e78[tier] <= third)
         tier++;
     if (tier > 0)
@@ -76,6 +76,6 @@ void func_0204e3f4(u32 playback_value, s32 amount,
             }
         }
     }
-    func_02005058(&velocity);
+    VecFx32Object_Destroy(&velocity);
 }
 

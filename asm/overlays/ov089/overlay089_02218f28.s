@@ -6,7 +6,7 @@
 .extern data_ov089_02219a04
 .extern OverlayManager_LoadOverlay
 .extern OverlayManager_GetGlobal
-.extern func_02005058
+.extern VecFx32Object_Destroy
 .extern Type7Actor_GetStateCode
 .extern Type7Actor_SetActorEnabled
 .extern Type7Actor_EnterFlag40000State
@@ -96,7 +96,7 @@ func_ov089_02218f28:
     cmp r7, #0x0
     beq .L_02219054
     add r0, sp, #0x1c
-    bl func_02005058
+    bl VecFx32Object_Destroy
 .L_02219054:
     add r0, r5, #0x200
     ldrh r3, [r0, #0xc]
@@ -135,7 +135,7 @@ func_ov089_02218f28:
     cmp r7, #0x0
     beq .L_022190e4
     add r0, sp, #0xc
-    bl func_02005058
+    bl VecFx32Object_Destroy
 .L_022190e4:
     add r0, r5, #0x200
     ldrh r2, [r0, #0xc]

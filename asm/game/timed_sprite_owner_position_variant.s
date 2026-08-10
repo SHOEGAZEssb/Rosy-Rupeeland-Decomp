@@ -2,7 +2,7 @@
 .text
 .extern Heap_Free
 .extern data_020d60d8
-.extern func_020050a4
+.extern VecFx32Object_Assign
 .extern GraphicsSpriteState_SetDepthOrderedWorldPositionFromOrigin
 .extern func_0201e380
 .extern func_0201e3b8
@@ -70,7 +70,7 @@ func_0201ed1c: ; 0x0201ed1c
     ldr r1, [r0, #0x2c]
     add r0, r0, #0x8
     add r1, r1, #0x18
-    bl func_020050a4
+    bl VecFx32Object_Assign
     mov r0, #0x0
     ldmia sp!, {r3, pc}
     .size func_0201ed1c, .-func_0201ed1c

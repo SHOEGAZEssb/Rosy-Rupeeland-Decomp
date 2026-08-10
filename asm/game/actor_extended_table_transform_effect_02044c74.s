@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/actor_extended_table_transform_effect.c.
 .text
-.extern func_02005030
-.extern func_02005058
+.extern VecFx32Object_InitCopy
+.extern VecFx32Object_Destroy
 .extern VecFx32_Subtract
 .extern ActorExtendedType2_GetDescriptorValue2C
 .extern func_0204cfa4
@@ -17,10 +17,10 @@ ActorExtendedTable_ApplyTargetRelativeTransform: ; 0x02044c74
     mov r6, r1
     add r0, sp, #0x20
     add r1, r2, #0x18
-    bl func_02005030
+    bl VecFx32Object_InitCopy
     add r0, sp, #0x10
     add r1, r7, #0x18
-    bl func_02005030
+    bl VecFx32Object_InitCopy
     mov r0, r7
     bl ActorExtendedType2_GetDescriptorValue2C
     cmp r0, #0x0
@@ -66,7 +66,7 @@ ActorExtendedTable_ApplyTargetRelativeTransform: ; 0x02044c74
     blx r3
 .L_02044d4c:
     add r0, sp, #0x0
-    bl func_02005058
+    bl VecFx32Object_Destroy
 .L_02044d54:
     add r1, sp, #0x10
     add r2, sp, #0x20
@@ -74,9 +74,9 @@ ActorExtendedTable_ApplyTargetRelativeTransform: ; 0x02044c74
     bl func_02050078
     mov r4, r0
     add r0, sp, #0x10
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add r0, sp, #0x20
-    bl func_02005058
+    bl VecFx32Object_Destroy
     mov r0, r4
     add sp, sp, #0x30
     ldmia sp!, {r3, r4, r5, r6, r7, pc}

@@ -22,13 +22,13 @@ extern s32 Type7Actor_HasSpecialCallbackPair(const void *actor);
 extern void Type7Actor_PlayStateSound(void *actor, s32 mode);
 extern void Type7Actor_SetCallbackPair(void *actor, u32 first, u32 second, s32 duration);
 extern void TouchPoint_Init(void *point, s32 x, s32 y);
-extern void func_02005030(void *destination, const void *source);
-extern void func_02005058(void *value);
+extern void VecFx32Object_InitCopy(void *destination, const void *source);
+extern void VecFx32Object_Destroy(void *value);
 extern void ActorDerivedType1_TrySetStateVector(void *target, const void *transform, s32 duration,
                           s32 mode);
 extern s32 Actor_TestQueryPoint(void *actor, const void *input);
 extern s32 Type7Actor_CheckRandomInteractionAcceptance(void *actor);
-extern void *func_020050a4(void *destination, const void *source);
+extern void *VecFx32Object_Assign(void *destination, const void *source);
 extern u32 genrand_int32(void);
 extern s32 func_020ada8c(s32 value, s32 divisor);
 #ifdef __cplusplus
@@ -138,12 +138,12 @@ s32 Type7Actor_HandleTouchInteraction(void *self, const void *inputRecord)
         }
         if (target[0x4d] == 1) {
             initialize_relative_touch(point, actor, input);
-            func_02005030(transform, actor + 0x18);
+            VecFx32Object_InitCopy(transform, actor + 0x18);
             transform[1] += (s32)point[1] << 12;
             transform[2] += (s32)point[2] << 12;
             ActorDerivedType1_TrySetStateVector(target, transform, 20, 0);
             *(s16 *)(actor + 0x250) = -10;
-            func_02005058(transform);
+            VecFx32Object_Destroy(transform);
         }
         return 1;
     }
@@ -156,7 +156,7 @@ s32 Type7Actor_HandleTouchInteraction(void *self, const void *inputRecord)
         flags = *(u32 *)(actor + 0x268);
         *(u32 *)(actor + 0x268) = (flags | 4) & ~0xa0;
         Type7Actor_SetCallbackPair(actor, data_020e18f8[0], data_020e18f8[1], 20);
-        func_020050a4(actor + 0x224, actor + 0x18);
+        VecFx32Object_Assign(actor + 0x224, actor + 0x18);
         *(u16 *)(actor + 0x250) = 90;
         if (record[0x54] == 2)
             *(u16 *)(actor + 0x24e) =
@@ -168,11 +168,11 @@ s32 Type7Actor_HandleTouchInteraction(void *self, const void *inputRecord)
 
     initialize_relative_touch(point, actor, input);
     if (target[0x4d] == 1) {
-        func_02005030(transform, actor + 0x18);
+        VecFx32Object_InitCopy(transform, actor + 0x18);
         transform[1] += (s32)point[1] << 12;
         transform[2] += (s32)point[2] << 12;
         ActorDerivedType1_TrySetStateVector(target, transform, 20, 0);
-        func_02005058(transform);
+        VecFx32Object_Destroy(transform);
     }
     return 1;
 }

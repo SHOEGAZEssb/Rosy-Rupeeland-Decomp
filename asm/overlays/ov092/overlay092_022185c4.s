@@ -3,9 +3,9 @@
 .extern data_020f4e14
 .extern data_ov092_0221b17c
 .extern data_ov092_0221c828
-.extern func_0200500c
-.extern func_02005030
-.extern func_02005058
+.extern VecFx32Object_InitComponents
+.extern VecFx32Object_InitCopy
+.extern VecFx32Object_Destroy
 .extern GraphicsSpriteState_SetDepthOrderedWorldPosition
 .extern Actor_SetActive
 .extern func_02050078
@@ -147,10 +147,10 @@ func_ov092_022185c4:
     ldr r2, [r4, #0x280]
     add r0, sp, #0x18
     mov r3, #0x10000
-    bl func_0200500c
+    bl VecFx32Object_InitComponents
     add r0, sp, #0x8
     add r1, sp, #0x18
-    bl func_02005030
+    bl VecFx32Object_InitCopy
     ldr r1, [sp, #0x20]
     add r0, r4, #0x200
     add r1, r1, #0x10000
@@ -182,9 +182,9 @@ func_ov092_022185c4:
     mov r1, #0x2
     add r0, sp, #0x8
     strb r1, [r4, #0x278]
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add r0, sp, #0x18
-    bl func_02005058
+    bl VecFx32Object_Destroy
     b .L_02218904
 .L_02218834:
     mov r1, #0x2

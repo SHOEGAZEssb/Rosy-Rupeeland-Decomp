@@ -87,7 +87,7 @@ static void spawnActorSnapshot(GamePhaseActorScriptVm *self, s32 actorIndex,
 
     Actor_GetCollisionCenter(&position, actor);
     VecFx32_Subtract(&transform, &position, actor + 0x18);
-    func_02005058(&position);
+    VecFx32Object_Destroy(&position);
     descriptor[0x14] = (u8)(transform.value.y >> 12);
     descriptor[0x15] = (u8)(transform.value.x >> 12);
     descriptor[0x16] = ActorBounds_GetWidth(actor + 4);
@@ -120,7 +120,7 @@ static void spawnActorSnapshot(GamePhaseActorScriptVm *self, s32 actorIndex,
     *(s32 *)(descriptor + 0x58) = 0;
     ActorCollection_SpawnActorFromDescriptor(Actor_GetCollection(self->actor), descriptor);
     GamePhaseScriptVm_SetResult(&self->base, (u32)value);
-    func_02005058(&transform);
+    VecFx32Object_Destroy(&transform);
 }
 
 /*
@@ -146,7 +146,7 @@ s32 func_0201939c(GamePhaseActorScriptVm *self)
         break;
     case 1: {
         VecFx32Object position;
-        func_0200500c(&position, p5 << 12, p4 << 12, p3 << 12);
+        VecFx32Object_InitComponents(&position, p5 << 12, p4 << 12, p3 << 12);
         if (p6 >= 0xe4 && p6 <= 0xea) {
             static const s16 amounts[7] = {1, 5, 10, 20, 50, 100, 200};
             func_0204e3f4(300, amounts[p6 - 0xe4], &position);
@@ -155,7 +155,7 @@ s32 func_0201939c(GamePhaseActorScriptVm *self)
             func_02019890(descriptor, (u16)p6, 1);
             func_0204f7e4(&position, descriptor, 300);
         }
-        func_02005058(&position);
+        VecFx32Object_Destroy(&position);
         break;
     }
     case 2: {
@@ -167,12 +167,12 @@ s32 func_0201939c(GamePhaseActorScriptVm *self)
     case 3: {
         VecFx32Object actorPosition;
         VecFx32Object offset;
-        func_02005030(&actorPosition,
+        VecFx32Object_InitCopy(&actorPosition,
                       (const VecFx32Object *)((u8 *)self->actor + 0x18));
-        func_0200500c(&offset, p5 << 12, p4 << 12, p3 << 12);
+        VecFx32Object_InitComponents(&offset, p5 << 12, p4 << 12, p3 << 12);
         func_02050078(p6, &actorPosition, &offset);
-        func_02005058(&offset);
-        func_02005058(&actorPosition);
+        VecFx32Object_Destroy(&offset);
+        VecFx32Object_Destroy(&actorPosition);
         break;
     }
     case 4: {
@@ -188,11 +188,11 @@ s32 func_0201939c(GamePhaseActorScriptVm *self)
     case 6: {
         VecFx32Object first;
         VecFx32Object second;
-        func_0200500c(&first, p2 << 12, p1 << 12, p0 << 12);
-        func_0200500c(&second, p5 << 12, p4 << 12, p3 << 12);
+        VecFx32Object_InitComponents(&first, p2 << 12, p1 << 12, p0 << 12);
+        VecFx32Object_InitComponents(&second, p5 << 12, p4 << 12, p3 << 12);
         func_02050078(p6, &first, &second);
-        func_02005058(&second);
-        func_02005058(&first);
+        VecFx32Object_Destroy(&second);
+        VecFx32Object_Destroy(&first);
         break;
     }
     case 7: {
@@ -200,11 +200,11 @@ s32 func_0201939c(GamePhaseActorScriptVm *self)
         VecFx32Object first;
         VecFx32Object second;
         func_02019890(descriptor, (u16)p6, 1);
-        func_0200500c(&first, p5 << 12, p4 << 12, p3 << 12);
-        func_0200500c(&second, p2, p1, p0);
+        VecFx32Object_InitComponents(&first, p5 << 12, p4 << 12, p3 << 12);
+        VecFx32Object_InitComponents(&second, p2, p1, p0);
         func_0204f854(&first, &second, descriptor, 300);
-        func_02005058(&second);
-        func_02005058(&first);
+        VecFx32Object_Destroy(&second);
+        VecFx32Object_Destroy(&first);
         break;
     }
     }

@@ -53,8 +53,8 @@ extern u8 gActorRuntimeFlags[];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_02005030(CollisionWords *, const void *);
-extern void func_02005058(CollisionWords *);
+extern void VecFx32Object_InitCopy(CollisionWords *, const void *);
+extern void VecFx32Object_Destroy(CollisionWords *);
 extern void Actor_BuildCollisionRect(CollisionWords *, PairActor *,
                                      CollisionWords *);
 extern s32 func_02056f34(CollisionWords *, const CollisionWords *,
@@ -137,12 +137,12 @@ static s32 testPair(PairActor *actorA, PairActor *actorB, u32 *contact)
             0x1000)
         return 0;
 
-    func_02005030(&temporaryA, &actorA->field_18);
+    VecFx32Object_InitCopy(&temporaryA, &actorA->field_18);
     Actor_BuildCollisionRect(&shapeA, actorA, &temporaryA);
-    func_02005058(&temporaryA);
-    func_02005030(&temporaryB, &actorB->field_18);
+    VecFx32Object_Destroy(&temporaryA);
+    VecFx32Object_InitCopy(&temporaryB, &actorB->field_18);
     Actor_BuildCollisionRect(&shapeB, actorB, &temporaryB);
-    func_02005058(&temporaryB);
+    VecFx32Object_Destroy(&temporaryB);
     result = func_02056f34(&intersection, &shapeA, &shapeB, contact);
     if (result) {
         actorA->contactEdges_49 = (u8)(*contact & 0x0f);

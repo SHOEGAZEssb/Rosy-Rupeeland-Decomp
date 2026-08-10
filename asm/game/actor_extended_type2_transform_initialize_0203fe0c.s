@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/actor_extended_type2_transform_initialize.c.
 .text
-.extern func_020050a4
+.extern VecFx32Object_Assign
 .extern ActorRuntimeTriple_Assign
 .global ActorExtendedType2_InitializeTransformAndMotion
 .type ActorExtendedType2_InitializeTransformAndMotion, @function
@@ -9,13 +9,13 @@ ActorExtendedType2_InitializeTransformAndMotion: ; 0x0203fe0c
     mov r5, r0
     add r0, r5, #0x28
     mov r4, r2
-    bl func_020050a4
+    bl VecFx32Object_Assign
     mov r1, r0
     add r0, r5, #0x18
-    bl func_020050a4
+    bl VecFx32Object_Assign
     mov r1, r0
     add r0, r5, #0x22c
-    bl func_020050a4
+    bl VecFx32Object_Assign
     add r0, r5, #0x38
     mov r1, #0x0
     mov r2, r1

@@ -42,11 +42,11 @@ s32 GamePhaseActorScriptVm_SetPositionFromCoordinates3D(GamePhaseActorScriptVm *
     VecFx32Object value;
     u8 *actor = (u8 *)self->actor;
 
-    func_0200500c(&value, x << 12, y << 12, z << 12);
-    func_020050a4((VecFx32Object *)(actor + 0x18), &value);
-    func_020050a4((VecFx32Object *)(actor + 0x28),
+    VecFx32Object_InitComponents(&value, x << 12, y << 12, z << 12);
+    VecFx32Object_Assign((VecFx32Object *)(actor + 0x18), &value);
+    VecFx32Object_Assign((VecFx32Object *)(actor + 0x28),
                   (VecFx32Object *)(actor + 0x18));
-    func_02005058(&value);
+    VecFx32Object_Destroy(&value);
     return 0;
 }
 

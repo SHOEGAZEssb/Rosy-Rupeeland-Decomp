@@ -13,8 +13,8 @@ extern void *data_020d605c;
 extern TimedSprite *func_0201e290(TimedSprite *self,u8 *config);
 extern TimedSprite *func_0201e380(TimedSprite *self);
 extern void func_0201e3b8(TimedSprite *self,s32 enabled);
-extern void func_020050a4(Track *destination,const void *source);
-extern void func_020050c8(Track *first,Track *second);
+extern void VecFx32Object_Assign(Track *destination,const void *source);
+extern void VecFx32Object_Add(Track *first,Track *second);
 extern u16 func_020ae024(s32 x,s32 y);
 extern void GraphicsSpriteState_SetAnimationIndex(void *sprite,s32 value);
 extern void GraphicsSpriteState_SetWorldPositionFromOrigin(void *sprite,s32 argument,s32 first,s32 second,
@@ -33,8 +33,8 @@ TimedSprite *func_0201e454(TimedSprite *self,u8 *config)
     u16 angle;
     func_0201e290(self,config);
     self->vtable=data_020d605c;
-    func_020050a4(&self->first08,config+0x10);
-    func_020050a4(&self->second18,config+0x20);
+    VecFx32Object_Assign(&self->first08,config+0x10);
+    VecFx32Object_Assign(&self->second18,config+0x20);
     self->remaining28=*(s32 *)(config+0x30);
     *(u16 *)(self->sprite+0x24)|=2;
     angle=func_020ae024(-*(s32 *)&self->second18.bytes[4],
@@ -59,7 +59,7 @@ s32 func_0201e500(TimedSprite *self,s32 argument)
 {
     self->remaining28--;
     if(self->remaining28<0){func_0201e3b8(self,0);return 1;}
-    func_020050c8(&self->first08,&self->second18);
+    VecFx32Object_Add(&self->first08,&self->second18);
     GraphicsSpriteState_SetWorldPositionFromOrigin(self->sprite,argument,*(s32 *)&self->first08.bytes[4],
         *(s32 *)&self->first08.bytes[8],*(s32 *)&self->first08.bytes[0xc],8);
     return (*(u16 *)(self->sprite+0x24)&8)!=0;

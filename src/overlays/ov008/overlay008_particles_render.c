@@ -17,8 +17,8 @@ extern "C" {
 #endif
 extern const s32 data_ov008_021fc25c[22];
 extern const s16 data_020c9670[];
-extern void func_02005030(void *destination, const void *source);
-extern void func_02005058(void *member);
+extern void VecFx32Object_InitCopy(void *destination, const void *source);
+extern void VecFx32Object_Destroy(void *member);
 extern void func_0209a2ac(void *object, const void *transform, s32 mode);
 extern void func_0209b494(void *resource, s32 value, s32 zero);
 extern void func_0209c7e8(void *resource, s32 value);
@@ -77,7 +77,7 @@ void func_ov008_021fbe0c(void *state, const void *transform)
     s32 index;
 
     func_0209a2ac(state, 0, 1);
-    func_02005030(temporary, transform);
+    VecFx32Object_InitCopy(temporary, transform);
     func_0209c7e8(resource, 28);
 
     for (index = 59; index >= 0; index--) {
@@ -117,5 +117,5 @@ void func_ov008_021fbe0c(void *state, const void *transform)
         }
     }
 
-    func_02005058(temporary);
+    VecFx32Object_Destroy(temporary);
 }

@@ -2,7 +2,7 @@
 ; Matching fallback for the portable implementation in src/overlays/ov050/overlay050_manager_recovery.c.
 .extern Heap_Free
 .extern data_ov050_0220e384
-.extern func_02005058
+.extern VecFx32Object_Destroy
 .extern func_ov050_0220d6b0
 .extern func_ov050_0220d8b4
 .extern func_ov050_0220d95c
@@ -30,7 +30,7 @@ func_ov050_0220d8f4:
     cmp r4, #0x0
     bne .L_0220d904
     add r0, r6, #0x20
-    bl func_02005058
+    bl VecFx32Object_Destroy
     ldr r1, .L_0220d958
     mov r0, r6
     str r1, [r6, #0x0]

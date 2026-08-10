@@ -2,7 +2,7 @@
 .text
 .extern Heap_Free
 .extern data_020dfee4
-.extern func_02005058
+.extern VecFx32Object_Destroy
 .extern func_02031488
 .extern ActorDerivedRuntime_DestroyAlternate
 .extern Type7MarkerPresentation_Destroy
@@ -61,9 +61,9 @@ ActorExtendedType2_DestroyAndFree: ; 0x0203e3b4
     add r0, r4, #0x284
     bl Type7MarkerPresentation_Destroy
     add r0, r4, #0x23c
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add r0, r4, #0x22c
-    bl func_02005058
+    bl VecFx32Object_Destroy
     mov r0, r4
     bl ActorDerivedRuntime_DestroyAlternate
     mov r0, r4
@@ -129,9 +129,9 @@ ActorExtendedType2_Destroy: ; 0x0203e494
     add r0, r4, #0x284
     bl Type7MarkerPresentation_Destroy
     add r0, r4, #0x23c
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add r0, r4, #0x22c
-    bl func_02005058
+    bl VecFx32Object_Destroy
     mov r0, r4
     bl ActorDerivedRuntime_DestroyAlternate
     mov r0, r4

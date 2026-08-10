@@ -1,7 +1,7 @@
     .text
 /* Exact fallback; see overlay040_state_setup.c for portable C. */
     .extern Sound_Play
-    .extern func_02005058
+    .extern VecFx32Object_Destroy
     .extern func_ov040_02200108
     .extern func_ov040_02202244
     .extern data_ov040_022038d0
@@ -95,7 +95,7 @@ func_ov040_022022dc: ; 0x022022dc
     add r0, sp, #0x0
     rsb r1, r1, #0x80000
     str r1, [r6, #0xadc]
-    bl func_02005058
+    bl VecFx32Object_Destroy
     ldr r2, [r6, #0xadc]
     ldr r0, .L_02202554
     mov r1, #0x0

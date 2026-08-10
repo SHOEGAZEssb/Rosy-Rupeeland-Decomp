@@ -11,9 +11,9 @@
 .extern data_021052fc
 .extern func_02003e20
 .extern func_02003e38
-.extern func_02004fe0
-.extern func_02005030
-.extern func_02005058
+.extern VecFx32Object_Init
+.extern VecFx32Object_InitCopy
+.extern VecFx32Object_Destroy
 .extern ActorMotion_GetPosition
 .extern func_0201e250
 .extern func_0201e3b8

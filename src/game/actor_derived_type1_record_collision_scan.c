@@ -10,9 +10,9 @@ extern "C" {
 extern s32 ActorDerivedType1_IsActiveRecordType6F(void *actor);
 extern s32 func_020adae4(s32 numerator, s32 denominator);
 extern s32 func_020adc90(s32 numerator, s32 denominator);
-extern void func_02005030(void *destination, const void *source);
-extern void func_02005058(void *value);
-extern void func_02004fe0(void *value);
+extern void VecFx32Object_InitCopy(void *destination, const void *source);
+extern void VecFx32Object_Destroy(void *value);
+extern void VecFx32Object_Init(void *value);
 extern void *GamePhaseRuntime_GetActorCollection(void *runtime, s32 category);
 extern s32 func_0204cfa4(s32 x, s32 y);
 extern void func_02034a60(void *actor, u32 sound, s32 extra);
@@ -61,7 +61,7 @@ void ActorDerivedType1_ScanActiveRecordCollisions(void *self)
     descriptor = *(u8 **)(actor + 0x27c);
     radius = *(s16 *)(descriptor + 0x0c) << 12;
     projection = func_020adae4(radius, 3);
-    func_02005030(center, actor + 0x18);
+    VecFx32Object_InitCopy(center, actor + 0x18);
     index = ((actor[0xd4] & 7) << 9) * 2;
     center[1] -= projection * data_020c9670[index];
     center[2] += projection * data_020c9670[index + 1];
@@ -106,15 +106,15 @@ void ActorDerivedType1_ScanActiveRecordCollisions(void *self)
             distance = func_0204cfa4(dx, dy);
             if (distance < 0x1000 || distance >= radius)
                 continue;
-            func_02004fe0(direction);
+            VecFx32Object_Init(direction);
             direction[1] = func_020adc90(dx, distance);
             direction[2] = func_020adc90(dy, distance);
             (*(void (**)(void *, const void *, s32))
                 (*(u8 **)target + 0xb8))(target, direction, 1);
-            func_02005058(direction);
+            VecFx32Object_Destroy(direction);
         }
     }
     if (*(u16 *)(descriptor + 0x2e) != 0)
         func_02034a60(actor, *(u16 *)(descriptor + 0x2e), 0);
-    func_02005058(center);
+    VecFx32Object_Destroy(center);
 }

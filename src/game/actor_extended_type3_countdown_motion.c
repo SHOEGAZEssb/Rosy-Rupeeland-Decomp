@@ -10,8 +10,8 @@ extern u8 data_020e0224[];
 extern "C" {
 #endif
 extern s32 ActorExtendedType3_ResetInteractionState(void *actor);
-extern void func_02005030(void *temporary, const void *source);
-extern void func_02005058(void *temporary);
+extern void VecFx32Object_InitCopy(void *temporary, const void *source);
+extern void VecFx32Object_Destroy(void *temporary);
 #ifdef __cplusplus
 }
 #endif
@@ -53,7 +53,7 @@ s32 ActorExtendedType3_UpdateCountdownMotion(void *self, const void *descriptorR
         return 0;
     }
 
-    func_02005030(temporary, actor + 0x18);
+    VecFx32Object_InitCopy(temporary, actor + 0x18);
     {
         u8 *target = *(u8 **)(actor + 0x228);
         dy = (*(s32 *)(actor + 0x20) - *(s32 *)(target + 0x20)) >> 12;
@@ -68,6 +68,6 @@ s32 ActorExtendedType3_UpdateCountdownMotion(void *self, const void *descriptorR
         temporary[2] -= dy << 12;
     }
     (*(void (**)(void *, void *))(*(u8 **)actor + 0xd0))(actor, temporary);
-    func_02005058(temporary);
+    VecFx32Object_Destroy(temporary);
     return 0;
 }

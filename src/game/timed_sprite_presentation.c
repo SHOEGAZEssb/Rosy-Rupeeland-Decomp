@@ -17,9 +17,9 @@ extern "C" {
 #endif
 extern void *data_020d6248;
 extern void *data_020d6098;
-extern void func_0200500c(PresentationTrack *track,s32 first,s32 second,s32 third);
-extern void func_02005058(void *track);
-extern void func_020050c8(PresentationTrack *first,PresentationTrack *second);
+extern void VecFx32Object_InitComponents(PresentationTrack *track,s32 first,s32 second,s32 third);
+extern void VecFx32Object_Destroy(void *track);
+extern void VecFx32Object_Add(PresentationTrack *first,PresentationTrack *second);
 extern void VecFx32_Subtract(void *output,PresentationTrack *track,s32 argument);
 extern u8 *GraphicsSpriteGroup_CreateState(u32 first,u32 second,u32 third,u32 fourth,u32 fifth);
 extern void GraphicsSpriteGroup_ReleaseState(void *spriteOwner);
@@ -52,8 +52,8 @@ s32 func_0201e28c(s32 value) { return value; }
 TimedSpritePresentation *func_0201e290(TimedSpritePresentation *self,u8 *config)
 {
     self->vtable=data_020d6098;
-    func_0200500c(&self->first08,0,0,0);
-    func_0200500c(&self->second18,0,0,0);
+    VecFx32Object_InitComponents(&self->first08,0,0,0);
+    VecFx32Object_InitComponents(&self->second18,0,0,0);
     self->remaining28=0;
     self->sprite=GraphicsSpriteGroup_CreateState(*(u32 *)(config+0),*(u32 *)(config+4),
         *(u32 *)(config+8),*(u32 *)(config+0xc),*(u32 *)(config+0x34)&0xff);
@@ -66,8 +66,8 @@ TimedSpritePresentation *func_0201e308(TimedSpritePresentation *self)
 {
     self->vtable=data_020d6098;
     GraphicsSpriteGroup_ReleaseState(*(void **)self->sprite);
-    func_02005058(&self->second18);
-    func_02005058(&self->first08);
+    VecFx32Object_Destroy(&self->second18);
+    VecFx32Object_Destroy(&self->first08);
     return self;
 }
 
@@ -76,8 +76,8 @@ TimedSpritePresentation *func_0201e340(TimedSpritePresentation *self)
 {
     self->vtable=data_020d6098;
     GraphicsSpriteGroup_ReleaseState(*(void **)self->sprite);
-    func_02005058(&self->second18);
-    func_02005058(&self->first08);
+    VecFx32Object_Destroy(&self->second18);
+    VecFx32Object_Destroy(&self->first08);
     Heap_Free(self);
     return self;
 }
@@ -87,8 +87,8 @@ TimedSpritePresentation *func_0201e380(TimedSpritePresentation *self)
 {
     self->vtable=data_020d6098;
     GraphicsSpriteGroup_ReleaseState(*(void **)self->sprite);
-    func_02005058(&self->second18);
-    func_02005058(&self->first08);
+    VecFx32Object_Destroy(&self->second18);
+    VecFx32Object_Destroy(&self->first08);
     return self;
 }
 
@@ -109,10 +109,10 @@ s32 func_0201e3d8(TimedSpritePresentation *self,s32 argument)
     s32 sample[4];
     self->remaining28--;
     if(self->remaining28<0){func_0201e3b8(self,0);return 1;}
-    func_020050c8(&self->first08,&self->second18);
+    VecFx32Object_Add(&self->first08,&self->second18);
     VecFx32_Subtract(sample,&self->first08,argument);
     *(u16 *)(self->sprite+0x2c)=(u16)(sample[1]>>12);
     *(u16 *)(self->sprite+0x2e)=(u16)(sample[2]>>12);
-    func_02005058(sample);
+    VecFx32Object_Destroy(sample);
     return 0;
 }

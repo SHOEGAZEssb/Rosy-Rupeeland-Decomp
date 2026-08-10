@@ -7,7 +7,7 @@ extern void *gSoundContext;
 extern "C" {
 #endif
 extern s32 Actor_IsAtCachedTerrainHeight(void *actor);
-extern void *func_020050a4(void *destination, const void *source);
+extern void *VecFx32Object_Assign(void *destination, const void *source);
 extern void Sound_Play(void *context, s32 channel, s32 sound);
 #ifdef __cplusplus
 }
@@ -51,7 +51,7 @@ void ActorDerivedType1_TrySetStateVector(void *self, const void *vector, s32 val
     }
 
     actor[0x26a] = (u8)kind;
-    func_020050a4(actor + 0x254, vector);
+    VecFx32Object_Assign(actor + 0x254, vector);
     *(u16 *)(actor + 0x264) = (u16)value;
     *(u16 *)(actor + 0x266) = 5;
     *(u16 *)(actor + 0x252) = 15;

@@ -48,9 +48,9 @@ s32 func_0204d3e4(void *self, void *other, s32 mode)
     u8 *otherActor = (u8 *)other;
     VecFx32Object zero;
     func_02032a94(actor, otherActor, mode);
-    func_0200500c(&zero, 0, 0, 0);
-    func_020050a4((VecFx32Object *)(actor + 0x38), &zero);
-    func_02005058(&zero);
+    VecFx32Object_InitComponents(&zero, 0, 0, 0);
+    VecFx32Object_Assign((VecFx32Object *)(actor + 0x38), &zero);
+    VecFx32Object_Destroy(&zero);
 
     if (otherActor[0x4d] == 1 && mode == 0
         && *(void **)(actor + 0x188) != 0 && actor[0xe8] == 0

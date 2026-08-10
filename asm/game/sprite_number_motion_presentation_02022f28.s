@@ -4,12 +4,12 @@
 .extern Heap_Free
 .extern data_020d6658
 .extern data_020d6678
-.extern func_02004fe0
-.extern func_0200500c
-.extern func_02005030
-.extern func_02005058
-.extern func_020050a4
-.extern func_020050c8
+.extern VecFx32Object_Init
+.extern VecFx32Object_InitComponents
+.extern VecFx32Object_InitCopy
+.extern VecFx32Object_Destroy
+.extern VecFx32Object_Assign
+.extern VecFx32Object_Add
 .extern VecFx32_Subtract
 .extern func_0201e250
 .extern func_0201e28c
@@ -36,7 +36,7 @@ func_02022f28: ; 0x02022f28
     add r1, sp, #0x0
     bl func_02056f00
     add r0, sp, #0x0
-    bl func_02005058
+    bl VecFx32Object_Destroy
     ldr r1, [sp, #0x14]
     ldr r2, [sp, #0x18]
     ldr r0, [r4, #0x3c]
@@ -45,21 +45,21 @@ func_02022f28: ; 0x02022f28
     bl func_02022c30
     add r0, r4, #0xc
     add r1, r4, #0x1c
-    bl func_020050c8
+    bl VecFx32Object_Add
     add r0, r4, #0x1c
     add r1, r4, #0x2c
-    bl func_020050c8
+    bl VecFx32Object_Add
     ldr r0, [r4, #0x40]
     add r0, r0, #0x1
     str r0, [r4, #0x40]
     cmp r0, #0x3c
     add r0, sp, #0x10
     blt .L_02022fac
-    bl func_02005058
+    bl VecFx32Object_Destroy
     mov r0, #0x1
     b .L_02022fb4
 .L_02022fac:
-    bl func_02005058
+    bl VecFx32Object_Destroy
     mov r0, #0x0
 .L_02022fb4:
     add sp, sp, #0x20

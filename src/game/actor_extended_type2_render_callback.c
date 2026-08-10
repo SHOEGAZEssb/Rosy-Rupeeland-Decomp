@@ -10,8 +10,8 @@ extern void *func_0201e0ec(void *manager);
 extern void func_020a25c8(void *effect, s32 kind, s32 x, s32 y,
                           s32 width, s32 height, s32 duration);
 extern void func_02031758(void *context, void *actor, s32 argument);
-extern void func_02005030(void *vector, const void *source);
-extern void func_02005058(void *vector);
+extern void VecFx32Object_InitCopy(void *vector, const void *source);
+extern void VecFx32Object_Destroy(void *vector);
 #ifdef __cplusplus
 }
 #endif
@@ -47,12 +47,12 @@ void ActorExtendedType2_RunRenderCallback(void *context, void *self, s32 argumen
     }
 
     func_02031758(context, actor, argument);
-    func_02005030(position, actor + 0x18);
+    VecFx32Object_InitCopy(position, actor + 0x18);
     position[2] += *(s16 *)(actor + 0x6a) * 0xb33;
     {
         u8 *helper = actor + 0x284;
         (*(void (**)(void *, s32, void *, s32))(*(u8 **)helper + 0x0c))(
             helper, argument, position, 0);
     }
-    func_02005058(position);
+    VecFx32Object_Destroy(position);
 }

@@ -3,9 +3,9 @@
 .extern Heap_Alloc
 .extern data_020de8f4
 .extern data_021052fc
-.extern func_0200500c
-.extern func_02005030
-.extern func_02005058
+.extern VecFx32Object_InitComponents
+.extern VecFx32Object_InitCopy
+.extern VecFx32Object_Destroy
 .extern func_0201ded4
 .extern func_02028b98
 .extern gHeapContext
@@ -21,13 +21,13 @@ func_0202906c: ; 0x0202906c
     mov r1, r1, lsl #0xc
     mov r2, r2, lsl #0xc
     mov r3, #0x0
-    bl func_0200500c
+    bl VecFx32Object_InitComponents
     ldr r2, [sp, #0x58]
     add r0, sp, #0x24
     mov r1, r4, lsl #0xc
     mov r2, r2, lsl #0xc
     mov r3, #0x0
-    bl func_0200500c
+    bl VecFx32Object_InitComponents
     mov r5, #0x0
     ldr r1, .L_02029164
     ldr r3, .L_02029168
@@ -39,11 +39,11 @@ func_0202906c: ; 0x0202906c
     beq .L_0202910c
     add r0, sp, #0x14
     add r1, sp, #0x24
-    bl func_02005030
+    bl VecFx32Object_InitCopy
     add r0, sp, #0x4
     add r1, sp, #0x34
     mov r5, #0x1
-    bl func_02005030
+    bl VecFx32Object_InitCopy
     ldr r0, [sp, #0x5c]
     add r2, sp, #0x4
     str r0, [sp, #0x0]
@@ -64,17 +64,17 @@ func_0202906c: ; 0x0202906c
     cmp r6, #0x0
     beq .L_02029138
     add r0, sp, #0x4
-    bl func_02005058
+    bl VecFx32Object_Destroy
 .L_02029138:
     cmp r5, #0x0
     beq .L_02029148
     add r0, sp, #0x14
-    bl func_02005058
+    bl VecFx32Object_Destroy
 .L_02029148:
     add r0, sp, #0x24
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add r0, sp, #0x34
-    bl func_02005058
+    bl VecFx32Object_Destroy
     mov r0, r4
     add sp, sp, #0x44
     ldmia sp!, {r4, r5, r6, r7, pc}

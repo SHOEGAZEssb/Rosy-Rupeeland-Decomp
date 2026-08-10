@@ -10,8 +10,8 @@
 
 extern "C" u32 genrand_int32(void);
 extern "C" s32 func_020bf1f8(u32 numerator, s32 denominator);
-extern "C" void func_0200500c(void *matrix, s32 x, s32 y, s32 z);
-extern "C" void func_02005058(void *matrix);
+extern "C" void VecFx32Object_InitComponents(void *matrix, s32 x, s32 y, s32 z);
+extern "C" void VecFx32Object_Destroy(void *matrix);
 extern "C" void func_0209d640(void *resourceOwner, s32 zero, s32 selector,
                                 const void *matrix);
 extern "C" void func_020b0880(s16 x, s16 y);
@@ -45,7 +45,7 @@ extern "C" void func_ov042_021fd158(void *object, s32 selector)
     FIELD(s32, object, 4)++;
     if (FIELD(s32, object, 0x538) == -1) {
         s32 matrix[4];
-        func_0200500c(matrix, 0, 0, 0);
+        VecFx32Object_InitComponents(matrix, 0, 0, 0);
         func_0209d640(FIELD(void *, FIELD(void *, object, 0), 0x20),
                       0, selector, matrix);
         func_020b0880(data_020cd470[0x38], data_020cd470[0x39]);
@@ -79,12 +79,12 @@ extern "C" void func_ov042_021fd158(void *object, s32 selector)
             *end = 0;
             *(volatile u32 *)0x04000448 = 1;
         }
-        func_02005058(matrix);
+        VecFx32Object_Destroy(matrix);
         return;
     }
 
     s32 matrix[4];
-    func_0200500c(matrix, 0, 0, FIELD(s32, object, 0x534) - 0x2000);
+    VecFx32Object_InitComponents(matrix, 0, 0, FIELD(s32, object, 0x534) - 0x2000);
     func_0209d640(FIELD(void *, FIELD(void *, object, 0), 0x20),
                   0, selector, matrix);
 
@@ -131,5 +131,5 @@ extern "C" void func_ov042_021fd158(void *object, s32 selector)
         func_ov042_021fd578(object, vertices, texcoords, emitted - 2);
     }
     *(volatile u32 *)0x04000448 = 1;
-    func_02005058(matrix);
+    VecFx32Object_Destroy(matrix);
 }

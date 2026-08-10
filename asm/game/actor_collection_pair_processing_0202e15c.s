@@ -3,8 +3,8 @@
 .extern data_021052fc
 .extern data_02105310
 .extern gActorRuntimeFlags
-.extern func_02005030
-.extern func_02005058
+.extern VecFx32Object_InitCopy
+.extern VecFx32Object_Destroy
 .extern ActorCollision_ResolveCornerContacts
 .extern ActorCollision_ResolveSweptMovement
 .extern ActorRuntimeCollection_GetPendingAttachmentFlag
@@ -107,22 +107,22 @@ ActorCollection_ProcessCategory1And2Pairs: ; 0x0202e15c
 .L_0202e2a0:
     add r0, sp, #0x68
     add r1, r4, #0x18
-    bl func_02005030
+    bl VecFx32Object_InitCopy
     add r0, sp, #0x38
     mov r1, r4
     add r2, sp, #0x68
     bl Actor_BuildCollisionRect
     add r0, sp, #0x68
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add r0, sp, #0x78
     add r1, r5, #0x18
-    bl func_02005030
+    bl VecFx32Object_InitCopy
     add r0, sp, #0x48
     mov r1, r5
     add r2, sp, #0x78
     bl Actor_BuildCollisionRect
     add r0, sp, #0x78
-    bl func_02005058
+    bl VecFx32Object_Destroy
     mov r0, #0x0
     str r0, [sp, #0x58]
     str r0, [sp, #0x5c]

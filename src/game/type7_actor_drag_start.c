@@ -16,8 +16,8 @@ extern s32 Type7Actor_IsInteractionSceneActive(void *actor, const void *input);
 extern void Actor_TestQueryPointAndClearFlag2000(void *actor, const void *input);
 extern s32 Type7Actor_HasSpecialCallbackPair(const void *actor);
 extern void TouchPoint_Init(void *point, s32 x, s32 y);
-extern void func_02005030(void *destination, const void *source);
-extern void func_02005058(void *value);
+extern void VecFx32Object_InitCopy(void *destination, const void *source);
+extern void VecFx32Object_Destroy(void *value);
 extern void Type7Actor_SetMotionTarget(void *actor, const void *transform);
 extern void ActorDerivedType1_TrySetStateVector(void *target, const void *transform, s32 duration,
                           s32 mode);
@@ -107,11 +107,11 @@ void Type7Actor_HandleDragStart(void *self, const void *inputRecord)
     if (x * x + y * y <= 0x100)
         return;
 
-    func_02005030(transform, actor + 0x18);
+    VecFx32Object_InitCopy(transform, actor + 0x18);
     transform[1] += x << 12;
     transform[2] += y << 12;
     Type7Actor_SetMotionTarget(actor, transform);
     if (target[0x4d] == 1)
         ActorDerivedType1_TrySetStateVector(target, transform, 20, 0);
-    func_02005058(transform);
+    VecFx32Object_Destroy(transform);
 }

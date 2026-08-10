@@ -4,8 +4,8 @@
 .extern data_020d6180
 .extern data_021052fc
 .extern DisplayController_GetSubScreenVerticalOffset
-.extern func_02005030
-.extern func_02005058
+.extern VecFx32Object_InitCopy
+.extern VecFx32Object_Destroy
 .extern ActorMotionAreaFollower_GetPosition
 .extern func_0201f724
 .extern func_0201fa44

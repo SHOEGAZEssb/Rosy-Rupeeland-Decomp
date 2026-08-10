@@ -4,9 +4,9 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_0200500c(void *vector, s32 x, s32 y, s32 z);
-extern void func_020050a4(void *destination, const void *source);
-extern void func_02005058(void *vector);
+extern void VecFx32Object_InitComponents(void *vector, s32 x, s32 y, s32 z);
+extern void VecFx32Object_Assign(void *destination, const void *source);
+extern void VecFx32Object_Destroy(void *vector);
 #ifdef __cplusplus
 }
 #endif
@@ -15,9 +15,9 @@ extern void func_02005058(void *vector);
 static void clearVector(u8 *actor, u32 offset)
 {
     s32 zero[4];
-    func_0200500c(zero, 0, 0, 0);
-    func_020050a4(actor + offset, zero);
-    func_02005058(zero);
+    VecFx32Object_InitComponents(zero, 0, 0, 0);
+    VecFx32Object_Assign(actor + offset, zero);
+    VecFx32Object_Destroy(zero);
 }
 
 /*

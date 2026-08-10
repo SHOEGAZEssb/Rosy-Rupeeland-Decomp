@@ -6,9 +6,9 @@
 .extern data_ov064_02211de4
 .extern DisplayBrightness_StartTransition
 .extern DisplayBrightnessPair_GetScreen
-.extern func_0200500c
-.extern func_02005058
-.extern func_020050a4
+.extern VecFx32Object_InitComponents
+.extern VecFx32Object_Destroy
+.extern VecFx32Object_Assign
 .extern VecFx32Triple_Destroy
 .extern VecFx32Bezier_Evaluate3D
 .extern func_02058ce0
@@ -72,12 +72,12 @@ func_ov064_0221155c:
     mov r1, #0x100000
     mov r2, #0x20000
     mov r3, #0x0
-    bl func_0200500c
+    bl VecFx32Object_InitComponents
     add r0, sp, #0xf0
     mov r1, #0xc8000
     mov r2, #0x70000
     mov r3, #0x0
-    bl func_0200500c
+    bl VecFx32Object_InitComponents
     add r0, sp, #0x60
     add r1, sp, #0xf0
     add r2, sp, #0x100
@@ -91,9 +91,9 @@ func_ov064_0221155c:
     add r2, sp, #0x50
     bl func_ov064_02211098
     add r0, sp, #0x50
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add r0, sp, #0x60
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add r0, sp, #0xb0
     add r1, sp, #0x100
     add r2, sp, #0xf0
@@ -178,13 +178,13 @@ func_ov064_0221155c:
     bl func_ov064_02211098
     add r0, sp, #0xe0
     add r1, sp, #0x20
-    bl func_020050a4
+    bl VecFx32Object_Assign
     add r0, sp, #0x20
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add r0, sp, #0x30
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add r0, sp, #0x40
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add r0, sp, #0x70
     add r1, sp, #0x100
     add r2, sp, #0xf0
@@ -196,9 +196,9 @@ func_ov064_0221155c:
     bl VecFx32Bezier_Evaluate3D
     add r0, sp, #0xa0
     add r1, sp, #0x10
-    bl func_020050a4
+    bl VecFx32Object_Assign
     add r0, sp, #0x10
-    bl func_02005058
+    bl VecFx32Object_Destroy
     ldr r1, [sp, #0xa4]
     ldr r0, [sp, #0xa8]
     ldr r2, [r5, #0x3c]
@@ -209,15 +209,15 @@ func_ov064_0221155c:
     str r3, [r2, #0x1c]
     bl VecFx32Triple_Destroy
     add r0, sp, #0xa0
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add r0, sp, #0xb0
     bl VecFx32Triple_Destroy
     add r0, sp, #0xe0
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add r0, sp, #0xf0
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add r0, sp, #0x100
-    bl func_02005058
+    bl VecFx32Object_Destroy
 .L_02211840:
     ldrsh r0, [r5, #0x74]
     add r0, r0, #0x1

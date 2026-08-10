@@ -20,19 +20,19 @@ ActorMotion *ActorMotion_Init(ActorMotion *self)
 
     self->vtable = data_020d43f4;
     self->actor = 0;
-    func_02004fe0(&self->position);
+    VecFx32Object_Init(&self->position);
     self->mode = 0;
     self->field_30 = 0;
-    func_02004fe0(&self->target);
+    VecFx32Object_Init(&self->target);
     ActorMotionState_Init(&self->state);
     self->field_1c = 0;
     self->field_20 = 0;
     self->field_24 = 0;
     self->field_28 = 0;
     self->field_2c = 0;
-    func_0200500c(&temporary, -0x80000, -0x74000, 0);
-    func_020050a4(&self->target, &temporary);
-    func_02005058(&temporary);
+    VecFx32Object_InitComponents(&temporary, -0x80000, -0x74000, 0);
+    VecFx32Object_Assign(&self->target, &temporary);
+    VecFx32Object_Destroy(&temporary);
     return self;
 }
 
@@ -58,16 +58,16 @@ ActorMotionTriple *ActorMotionTriple_Clear(ActorMotionTriple *self)
 /* Destroy both owned vector wrappers in reverse order and return self. */
 ActorMotion *ActorMotion_Destroy(ActorMotion *self)
 {
-    func_02005058(&self->target);
-    func_02005058(&self->position);
+    VecFx32Object_Destroy(&self->target);
+    VecFx32Object_Destroy(&self->position);
     return self;
 }
 
 /* Destroy both vector wrappers, free the object, and return its old address. */
 ActorMotion *ActorMotion_DestroyAndFree(ActorMotion *self)
 {
-    func_02005058(&self->target);
-    func_02005058(&self->position);
+    VecFx32Object_Destroy(&self->target);
+    VecFx32Object_Destroy(&self->position);
     Heap_Free(self);
     return self;
 }
@@ -75,8 +75,8 @@ ActorMotion *ActorMotion_DestroyAndFree(ActorMotion *self)
 /* Alternate non-deleting destructor used by derived classes; returns self. */
 ActorMotion *ActorMotion_DestroyBase(ActorMotion *self)
 {
-    func_02005058(&self->target);
-    func_02005058(&self->position);
+    VecFx32Object_Destroy(&self->target);
+    VecFx32Object_Destroy(&self->position);
     return self;
 }
 
@@ -91,9 +91,9 @@ void ActorMotion_Reset(ActorMotion *self)
     VecFx32Object target;
 
     self->actor = 0;
-    func_0200500c(&zero, 0, 0, 0);
-    func_020050a4(&self->position, &zero);
-    func_02005058(&zero);
+    VecFx32Object_InitComponents(&zero, 0, 0, 0);
+    VecFx32Object_Assign(&self->position, &zero);
+    VecFx32Object_Destroy(&zero);
     self->mode = 0;
     self->field_30 = 0;
     self->field_1c = 0;
@@ -102,9 +102,9 @@ void ActorMotion_Reset(ActorMotion *self)
     self->field_28 = 0;
     self->field_2c = 0;
     ActorMotionState_Reset(&self->state);
-    func_0200500c(&target, -0x80000, -0x74000, 0);
-    func_020050a4(&self->target, &target);
-    func_02005058(&target);
+    VecFx32Object_InitComponents(&target, -0x80000, -0x74000, 0);
+    VecFx32Object_Assign(&self->target, &target);
+    VecFx32Object_Destroy(&target);
 }
 
 /*
@@ -153,7 +153,7 @@ void *ActorMotion_GetActor(const ActorMotion *self)
 VecFx32Object *ActorMotion_SetPosition(ActorMotion *self,
                              const VecFx32Object *position)
 {
-    return func_020050a4(&self->position, position);
+    return VecFx32Object_Assign(&self->position, position);
 }
 
 /* Select motion mode 2 without modifying any other state. */

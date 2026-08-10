@@ -13,8 +13,8 @@ extern u16 data_02105788[];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_0200500c(void *vector, s32 x, s32 y, s32 z);
-extern void func_02005058(void *vector);
+extern void VecFx32Object_InitComponents(void *vector, s32 x, s32 y, s32 z);
+extern void VecFx32Object_Destroy(void *vector);
 extern void *func_0204e2ac(s32 type, u32 value_1f4, u32 value_1f2,
                            const void *position, const void *vector_38,
                            u32 descriptor_arg0, u32 descriptor_arg1,
@@ -75,7 +75,7 @@ void func_0204e628(u32 playback_value, s32 amount, const void *position)
     s16 divided_amount = (s16)func_020adae4(amount, 3);
     s32 i;
 
-    func_0200500c(&velocity, 0, 0, 0x2000);
+    VecFx32Object_InitComponents(&velocity, 0, 0, 0x2000);
     for (i = 0; i < 3; i++) {
         s32 angle_index = (s16)data_02105788[0] >> 4;
         velocity.y = func_020adae4(
@@ -87,6 +87,6 @@ void func_0204e628(u32 playback_value, s32 amount, const void *position)
         data_02105788[0] = (u16)(data_02105788[0] +
             (genrand_int32() % 0x3000) + 0x3000);
     }
-    func_02005058(&velocity);
+    VecFx32Object_Destroy(&velocity);
 }
 

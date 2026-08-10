@@ -16,10 +16,10 @@ typedef struct {
 
 extern "C" {
 void func_0209a2ac(void *, const void *, s32);
-void func_02005030(void *, const void *);
-void func_020050a4(void *, const void *);
-void func_02005058(void *);
-void func_02004fe0(void *);
+void VecFx32Object_InitCopy(void *, const void *);
+void VecFx32Object_Assign(void *, const void *);
+void VecFx32Object_Destroy(void *);
+void VecFx32Object_Init(void *);
 void func_0209b7a0(void *, const void *);
 void func_0209c7e8(void *, s32);
 void func_0209c87c(void *, const Point2 *, const Point2 *, u16, s32);
@@ -248,7 +248,7 @@ extern "C" void func_ov041_02203434(void *object, const void *transform)
 {
     func_0209a2ac(object, 0, 1);
     u8 localTransform[0x80];
-    func_02005030(localTransform, transform);
+    VecFx32Object_InitCopy(localTransform, transform);
 
     s32 mode = FIELD(s32, object, 0x920);
     if (mode == 4 || mode == 6 || mode == 11 || mode == 8 ||
@@ -276,7 +276,7 @@ extern "C" void func_ov041_02203434(void *object, const void *transform)
         void *owner = FIELD(void *, object, 0x48);
         void *renderContext = FIELD(void *, owner, 0x18);
         func_0209b7a0(renderContext, localTransform);
-        func_020050a4((u8 *)renderContext + 0x84, localTransform);
+        VecFx32Object_Assign((u8 *)renderContext + 0x84, localTransform);
         func_0209c7e8(renderContext, 0);
 
         for (s32 slot = 0; slot < 7; ++slot) {
@@ -366,7 +366,7 @@ extern "C" void func_ov041_02203434(void *object, const void *transform)
 
     void *renderContext =
         FIELD(void *, FIELD(void *, object, 0x48), 0x18);
-    func_020050a4((u8 *)renderContext + 0x84, transform);
+    VecFx32Object_Assign((u8 *)renderContext + 0x84, transform);
     func_ov008_021fbe0c(FIELD(void *, object, 0x958), transform);
-    func_02005058(localTransform);
+    VecFx32Object_Destroy(localTransform);
 }

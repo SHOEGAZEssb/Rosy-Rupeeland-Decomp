@@ -1,10 +1,10 @@
     .text
     .extern func_0209a2ac
-    .extern func_02005030
+    .extern VecFx32Object_InitCopy
     .extern genrand_int32
-    .extern func_0200500c
-    .extern func_020050a4
-    .extern func_02005058
+    .extern VecFx32Object_InitComponents
+    .extern VecFx32Object_Assign
+    .extern VecFx32Object_Destroy
 
     /* Exact fallback; see the documented portable reconstruction in
      * src/overlays/ov007/overlay007_items_render.c. */
@@ -21,7 +21,7 @@ func_ov007_021fbfdc: ; 0x021fbfdc
     bl func_0209a2ac
     add r0, sp, #0x10
     add r1, r4, #0x80
-    bl func_02005030
+    bl VecFx32Object_InitCopy
     ldrb r0, [r4, #0xa1]
     cmp r0, #0x0
     beq L_021fc048
@@ -58,12 +58,12 @@ L_021fc068:
     add r0, sp, #0x0
     mov r2, r1
     mov r3, r1
-    bl func_0200500c
+    bl VecFx32Object_InitComponents
     add r0, sp, #0x10
     add r1, sp, #0x0
-    bl func_020050a4
+    bl VecFx32Object_Assign
     add r0, sp, #0x0
-    bl func_02005058
+    bl VecFx32Object_Destroy
     ldr r0, [r4, #0x78]
     add r1, sp, #0x10
     mov r2, #0x1
@@ -73,7 +73,7 @@ L_021fc068:
     mov r2, #0x1
     bl func_0209a2ac
     add r0, sp, #0x10
-    bl func_02005058
+    bl VecFx32Object_Destroy
 L_021fc0d4:
     add sp, sp, #0x20
     ldmia sp!, {r3, r4, r5, r6, r7, pc}

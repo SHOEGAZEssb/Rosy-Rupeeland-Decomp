@@ -35,11 +35,11 @@ extern void func_ov039_021fd93c(void *scene, s32 targetX, s32 targetY,
 extern void GraphicsSpriteState_SetAnimationIndex(void *renderObject, u8 orientation);
 extern void Sound_Play(void *context, s32 soundId, s32 parameter);
 extern void func_0205940c(void *context, s32 soundId, s32 parameter);
-extern void func_02005030(Overlay039Vector *destination, void *source);
-extern void func_02004fe0(void *object);
-extern void func_020050a4(void *destination, const void *source);
-extern void func_02005058(void *object);
-extern void func_020050c8(void *destination, const void *source);
+extern void VecFx32Object_InitCopy(Overlay039Vector *destination, void *source);
+extern void VecFx32Object_Init(void *object);
+extern void VecFx32Object_Assign(void *destination, const void *source);
+extern void VecFx32Object_Destroy(void *object);
+extern void VecFx32Object_Add(void *destination, const void *source);
 extern void func_ov069_0220fe2c(void *system, const void *position);
 extern void func_ov069_0220fe3c(void *system, const void *first,
                                 const void *second);
@@ -136,7 +136,7 @@ static void updateProjectilePattern(void *scene, s32 enableSpecial)
     Overlay039Vector target;
     void *owner = FIELD(void *, scene, 0x48);
     void *ownerChild = FIELD(void *, FIELD(void *, owner, 8), 0x48);
-    func_02005030(&target, (u8 *)ownerChild + 0x2c);
+    VecFx32Object_InitCopy(&target, (u8 *)ownerChild + 0x2c);
     s32 targetX = target.x_04;
     s32 targetY = target.y_08 - target.z_0c - 0x10000;
 
@@ -193,7 +193,7 @@ static void updateProjectilePattern(void *scene, s32 enableSpecial)
     default:
         break;
     }
-    func_02005058(&target);
+    VecFx32Object_Destroy(&target);
     if (patternTimer == 0) {
         timer = 0;
         GraphicsSpriteState_SetAnimationIndex(FIELD(void *, object98, 0x0c), 3);
@@ -223,11 +223,11 @@ static void updateEffectSequence(void *scene)
         break;
     case 1: case 3: case 8: case 10: {
         Overlay039Vector position;
-        func_02004fe0(&position);
-        func_020050a4(&position, (u8 *)anchor + 0x1c);
+        VecFx32Object_Init(&position);
+        VecFx32Object_Assign(&position, (u8 *)anchor + 0x1c);
         position.y_08 += 0x46000;
         func_ov069_0220fe2c((u8 *)scene + 0x118, &position);
-        func_02005058(&position);
+        VecFx32Object_Destroy(&position);
         offset += 0xcd;
         if (offset > 0x1000) state++;
         break;
@@ -249,7 +249,7 @@ static void updateEffectSequence(void *scene)
         void *ownerChild = FIELD(void *, FIELD(void *, scene, 0x48), 8);
         func_ov069_0220fe3c((u8 *)scene + 0x118, (u8 *)anchor + 0x1c,
                             (u8 *)FIELD(void *, ownerChild, 0x48) + 0x2c);
-        func_020050c8((u8 *)scene + 0x428, (u8 *)scene + 0x438);
+        VecFx32Object_Add((u8 *)scene + 0x428, (u8 *)scene + 0x438);
         offset += 0x333;
         if (offset > 0x1000) offset = 0x1000;
         if (++counter > 24) state++;
@@ -265,8 +265,8 @@ static void updateEffectSequence(void *scene)
         break;
     case 12: {
         Overlay039Vector position;
-        func_02004fe0(&position);
-        func_020050a4(&position, (u8 *)anchor + 0x1c);
+        VecFx32Object_Init(&position);
+        VecFx32Object_Assign(&position, (u8 *)anchor + 0x1c);
         position.y_08 += 0x39000;
         func_ov049_0220c6cc((u8 *)scene + 0x454, &position, 0x4000);
         position.x_04 += 0x19000;
@@ -274,7 +274,7 @@ static void updateEffectSequence(void *scene)
         position.x_04 -= 0x32000;
         func_ov049_0220c6cc((u8 *)scene + 0x454, &position, 0x8000);
         playSceneSound(9);
-        func_02005058(&position);
+        VecFx32Object_Destroy(&position);
         state++;
         break;
     }
@@ -284,12 +284,12 @@ static void updateEffectSequence(void *scene)
         break;
     case 14: {
         Overlay039Vector position;
-        func_02004fe0(&position);
-        func_020050a4(&position, (u8 *)anchor + 0x1c);
+        VecFx32Object_Init(&position);
+        VecFx32Object_Assign(&position, (u8 *)anchor + 0x1c);
         position.y_08 += 0x46000;
         func_ov069_0220fe2c((u8 *)scene + 0x118, &position);
         if (ownerStatus == 0) state = 0;
-        func_02005058(&position);
+        VecFx32Object_Destroy(&position);
         offset += 0xa4;
         if (offset > 0xe66) state++;
         break;

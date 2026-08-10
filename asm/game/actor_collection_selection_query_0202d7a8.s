@@ -5,9 +5,9 @@
 .extern ActorRuntimeCollection_GetPendingAttachmentFlag
 .extern Type7Actor_GetStateCode
 .extern ActorDerivedType1_IsIdleEligible
-.extern func_0200500c
+.extern VecFx32Object_InitComponents
 .extern ActorDerivedType1_TrySetStateVector
-.extern func_02005058
+.extern VecFx32Object_Destroy
 .extern Actor_DispatchActivationMode1
 .extern data_02105310
 .extern data_021052fc
@@ -217,14 +217,14 @@ ActorCollection_ProcessSelectionQuery: ; 0x0202d7a8
     add r0, sp, #0x0
     mov r1, r1, lsl #0xc
     add r2, r2, r5, lsl #0xc
-    bl func_0200500c
+    bl VecFx32Object_InitComponents
     add r1, sp, #0x0
     mov r0, r6
     mov r2, #0x14
     mov r3, #0x3
     bl ActorDerivedType1_TrySetStateVector
     add r0, sp, #0x0
-    bl func_02005058
+    bl VecFx32Object_Destroy
     b .L_0202dad8
 .L_0202dacc:
     mov r0, r5

@@ -11,8 +11,8 @@ extern u8 *data_021052fc;
 extern "C" {
 #endif
 extern void VecFx32_Subtract(void *output, const void *first, const void *second);
-extern void func_02005058(void *value);
-extern void func_020050f0(void *first, const void *second);
+extern void VecFx32Object_Destroy(void *value);
+extern void VecFx32Object_Subtract(void *first, const void *second);
 extern s32 func_020adae4(s32 value, s32 divisor);
 extern s32 func_020ae024(s32 y, s32 x);
 extern void func_0204cff4(s32 *x, s32 *y, s32 limit);
@@ -42,7 +42,7 @@ static s32 scale_shift_round(s32 value, s32 shift)
 /*
  * Inputs are actor, other type-two actor, value, and extra. Derive center-like
  * transforms from each object's +0x18/+0x28 and combine them through
- * func_020050f0. Let t=(value+extra)<<12 divided by 50. Evaluate the recovered
+ * VecFx32Object_Subtract. Let t=(value+extra)<<12 divided by 50. Evaluate the recovered
  * fixed-point polynomial from t, 1-t, t^2, (1-t)^2, and 2t(1-t), including a
  * 0x5000 coefficient, and clamp the resulting impulse magnitude to 0xa000.
  * Compute the actor-to-other angle, halve the combined-center +4/+8 components,
@@ -81,7 +81,7 @@ void Type7Actor_ApplyType2InteractionResponse(void *self, void *otherObject, s32
 
     VecFx32_Subtract(actorCenter, actor + 0x18, actor + 0x28);
     VecFx32_Subtract(otherCenter, other + 0x18, other + 0x28);
-    func_020050f0(actorCenter, otherCenter);
+    VecFx32Object_Subtract(actorCenter, otherCenter);
     t = func_020adae4(combined << 12, 50);
     remaining = 0x1000 - t;
     strength = multiply_fx_round(multiply_fx_round(t, t), 0x5000)
@@ -119,8 +119,8 @@ void Type7Actor_ApplyType2InteractionResponse(void *self, void *otherObject, s32
     VecFx32_Subtract(displacement, other + 0x18, actor + 0x18);
     ActorVector_DivideByScalar(scaled, displacement, 0x2000);
     func_02008378(effectTransform, actor + 0x18, scaled);
-    func_02005058(scaled);
-    func_02005058(displacement);
+    VecFx32Object_Destroy(scaled);
+    VecFx32Object_Destroy(displacement);
     {
         s32 originalY = *(s32 *)(effectTransform + 2);
         void *effect;
@@ -137,7 +137,7 @@ void Type7Actor_ApplyType2InteractionResponse(void *self, void *otherObject, s32
             Type7Actor_PlayStateSound(actor, 1);
         *(u16 *)(actor + 0x246) = 90;
     }
-    func_02005058(effectTransform);
-    func_02005058(otherCenter);
-    func_02005058(actorCenter);
+    VecFx32Object_Destroy(effectTransform);
+    VecFx32Object_Destroy(otherCenter);
+    VecFx32Object_Destroy(actorCenter);
 }

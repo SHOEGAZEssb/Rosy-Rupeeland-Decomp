@@ -8,14 +8,14 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_02004fe0(void *value);
+extern void VecFx32Object_Init(void *value);
 extern s32 GamePhaseRuntime_GetActiveAreaPlacementVariant(GamePhaseRuntime *self);
-extern void func_0200500c(void *value, s32 x, s32 y, s32 z);
+extern void VecFx32Object_InitComponents(void *value, s32 x, s32 y, s32 z);
 extern void *ActorMotion_GetPosition(void *object);
 extern void func_02008378(void *destination, const void *left,
                           const void *right);
-extern void func_020050a4(void *destination, const void *source);
-extern void func_02005058(void *value);
+extern void VecFx32Object_Assign(void *destination, const void *source);
+extern void VecFx32Object_Destroy(void *value);
 extern void OS_Halt(void);
 #ifdef __cplusplus
 }
@@ -39,31 +39,31 @@ void func_0200875c(void *destination, GamePhaseRuntime *self)
     u8 base[16];
     s32 variant;
 
-    func_02004fe0(base);
+    VecFx32Object_Init(base);
     switch (*(u32 *)(b + 0x30fc)) {
     case 0:
         break;
     case 1:
         variant = GamePhaseRuntime_GetActiveAreaPlacementVariant(self);
         if (variant == 0) {
-            func_0200500c(mode1Offset, -0x10000, -0x28000, 0);
+            VecFx32Object_InitComponents(mode1Offset, -0x10000, -0x28000, 0);
             func_02008378(combined, ActorMotion_GetPosition(b + 0x3044), mode1Offset);
-            func_020050a4(base, combined);
-            func_02005058(combined);
-            func_02005058(mode1Offset);
+            VecFx32Object_Assign(base, combined);
+            VecFx32Object_Destroy(combined);
+            VecFx32Object_Destroy(mode1Offset);
         } else if (variant == 1 || variant == 2) {
-            func_020050a4(base, ActorMotion_GetPosition(b + 0x3044));
+            VecFx32Object_Assign(base, ActorMotion_GetPosition(b + 0x3044));
         } else {
             OS_Halt();
         }
         break;
     case 2:
-        func_020050a4(base, ActorMotion_GetPosition(b + 0x3044));
+        VecFx32Object_Assign(base, ActorMotion_GetPosition(b + 0x3044));
         break;
     case 3:
-        func_0200500c(mode3Offset, -0x10000, -0x30000, 0);
-        func_020050a4(base, mode3Offset);
-        func_02005058(mode3Offset);
+        VecFx32Object_InitComponents(mode3Offset, -0x10000, -0x30000, 0);
+        VecFx32Object_Assign(base, mode3Offset);
+        VecFx32Object_Destroy(mode3Offset);
         break;
     default:
         OS_Halt();
@@ -71,6 +71,6 @@ void func_0200875c(void *destination, GamePhaseRuntime *self)
     }
     func_02008740(runtimeOffset, b + 0x3088);
     func_02008378(destination, base, runtimeOffset);
-    func_02005058(runtimeOffset);
-    func_02005058(base);
+    VecFx32Object_Destroy(runtimeOffset);
+    VecFx32Object_Destroy(base);
 }

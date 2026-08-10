@@ -8,8 +8,8 @@ extern "C" {
 extern void *data_02105310;
 extern s32 ActorRuntimeCollection_GetPendingAttachmentFlag(void *state);
 extern void ActorRuntimeTriple_Assign(void *vector, s32 x, s32 y, s32 z);
-extern void func_02005030(void *destination, const void *source);
-extern void func_02005058(void *vector);
+extern void VecFx32Object_InitCopy(void *destination, const void *source);
+extern void VecFx32Object_Destroy(void *vector);
 extern void func_020328d0(void *vector, s32 angle);
 #ifdef __cplusplus
 }
@@ -37,12 +37,12 @@ void func_02051fc0(void *actor, void *target, u32 unused1, u32 unused2)
     (void)unused1;
     (void)unused2;
     if (ActorRuntimeCollection_GetPendingAttachmentFlag(&data_02105310) == 0 && target != 0) {
-        func_02005030(vector, (u8 *)actor + 0x38);
+        VecFx32Object_InitCopy(vector, (u8 *)actor + 0x38);
         vector[3] = 0;
         func_020328d0(vector,
                       (s32)FIELD(s16, FIELD(void *, actor, 0x1fc), 0x2a) << 4);
         virtual_function(target, 0xb8)(target, vector, 1);
-        func_02005058(vector);
+        VecFx32Object_Destroy(vector);
     }
     ActorRuntimeTriple_Assign((u8 *)actor + 0x38, 0, 0, 0);
     virtual_function(actor, 0xc8)(actor);

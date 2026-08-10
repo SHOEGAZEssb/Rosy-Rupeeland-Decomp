@@ -1,7 +1,7 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov081/overlay081_recovery.c.
 .extern Heap_Free
-.extern func_02005058
+.extern VecFx32Object_Destroy
 .extern ActorDerivedRuntime_DestroyAlternate
 
 .global func_ov081_02212d3c
@@ -9,7 +9,7 @@ func_ov081_02212d3c:
     stmdb sp!, {r4, lr}
     mov r4, r0
     add r0, r4, #0x214
-    bl func_02005058
+    bl VecFx32Object_Destroy
     mov r0, r4
     bl ActorDerivedRuntime_DestroyAlternate
     mov r0, r4

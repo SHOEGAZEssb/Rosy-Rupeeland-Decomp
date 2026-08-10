@@ -5,12 +5,12 @@
 .extern data_020c9670
 .extern data_021052fc
 .extern data_ov088_0221ba04
-.extern func_0200500c
-.extern func_02005030
-.extern func_02005058
-.extern func_020050a4
-.extern func_020050c8
-.extern func_020050f0
+.extern VecFx32Object_InitComponents
+.extern VecFx32Object_InitCopy
+.extern VecFx32Object_Destroy
+.extern VecFx32Object_Assign
+.extern VecFx32Object_Add
+.extern VecFx32Object_Subtract
 .extern func_0201f864
 .extern Actor_UpdateAnimationState
 .extern Actor_GetCachedTerrainHeight
@@ -157,7 +157,7 @@ func_ov088_02218328:
     bne .L_022185e8
     add r0, sp, #0x68
     add r1, r4, #0x18
-    bl func_02005030
+    bl VecFx32Object_InitCopy
     bl genrand_int32
     ldr r1, .L_0221911c
     ldr r5, [sp, #0x6c]
@@ -207,7 +207,7 @@ func_ov088_02218328:
     orrne r0, r0, #0x40
     strneh r0, [r1, #0x24]
     add r0, sp, #0x68
-    bl func_02005058
+    bl VecFx32Object_Destroy
     b .L_022185e8
 .L_02218594:
     add r0, r4, #0x200
@@ -254,7 +254,7 @@ func_ov088_02218328:
     ldr r2, [r2, #0xc8]
     blx r2
     add r0, sp, #0x28
-    bl func_02005058
+    bl VecFx32Object_Destroy
     mov r0, r4
     bl func_ov088_0221a7c8
     mov r0, r4
@@ -379,7 +379,7 @@ func_ov088_02218328:
     add r0, sp, #0x58
     add r1, r4, #0x18
     strh r3, [r2, #0x34]
-    bl func_02005030
+    bl VecFx32Object_InitCopy
     bl genrand_int32
     mov r1, #0x18000
     bl func_020bf1f8
@@ -447,7 +447,7 @@ func_ov088_02218328:
     mov r0, r4
     bl func_02034a60
     add r0, sp, #0x58
-    bl func_02005058
+    bl VecFx32Object_Destroy
 .L_02218938:
     sub r5, r5, r6, lsr #0x6
 .L_0221893c:
@@ -474,10 +474,10 @@ func_ov088_02218328:
     add r0, sp, #0x48
     rsb r1, r6, #0x0
     mov r3, #0x0
-    bl func_0200500c
+    bl VecFx32Object_InitComponents
     add r1, sp, #0x48
     add r0, r4, #0x38
-    bl func_020050c8
+    bl VecFx32Object_Add
     add r0, r4, #0x3c
     add r1, r4, #0x40
     mov r2, #0x6000
@@ -709,7 +709,7 @@ func_ov088_02218328:
     strh r1, [r0, #0x36]
 .L_02218d00:
     add r0, sp, #0x48
-    bl func_02005058
+    bl VecFx32Object_Destroy
 .L_02218d08:
     add r0, r4, #0x200
     ldrsh r1, [r0, #0x32]
@@ -737,9 +737,9 @@ func_ov088_02218328:
     bl func_ov088_02219168
     add r1, sp, #0x18
     add r0, r4, #0x38
-    bl func_020050f0
+    bl VecFx32Object_Subtract
     add r0, sp, #0x18
-    bl func_02005058
+    bl VecFx32Object_Destroy
     mov r0, r4
     add r1, r4, #0x200
     mov r2, #0x0
@@ -855,7 +855,7 @@ func_ov088_02218328:
     bne .L_02218fd8
     add r0, sp, #0x38
     add r1, r4, #0x18
-    bl func_02005030
+    bl VecFx32Object_InitCopy
     bl genrand_int32
     mov r1, #0x28000
     mov r5, r0
@@ -895,7 +895,7 @@ func_ov088_02218328:
     bl func_0201f864
 .L_02218fd0:
     add r0, sp, #0x38
-    bl func_02005058
+    bl VecFx32Object_Destroy
 .L_02218fd8:
     cmp r6, #0x0
     movlt r6, #0x0
@@ -959,7 +959,7 @@ func_ov088_02218328:
     add r0, r0, #0x2000
     ldr r0, [r0, #0xea4]
     add r0, r0, #0x18
-    bl func_020050a4
+    bl VecFx32Object_Assign
     ldr r0, .L_02219108
     ldr r0, [r0, #0x0]
     add r0, r0, #0x2000

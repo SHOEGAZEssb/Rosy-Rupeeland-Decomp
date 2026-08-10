@@ -1,11 +1,11 @@
 .text
 /* Exact fallback; see overlay040_object_update.c for portable C. */
     .extern func_0209a2ac
-    .extern func_0200500c
+    .extern VecFx32Object_InitComponents
     .extern GraphicsSpriteCanvas_FillRect
     .extern func_020befec
     .extern GraphicsSpriteState_SetAnimationIndex
-    .extern func_02005058
+    .extern VecFx32Object_Destroy
     .extern gDebugFont
 
     .global func_ov040_02202cb4
@@ -23,7 +23,7 @@ func_ov040_02202cb4:
     add r0, sp, #0x8
     mov r2, r1
     mov r3, r1
-    bl func_0200500c
+    bl VecFx32Object_InitComponents
     ldr r0, [r5, #0x58]
     add r1, sp, #0x8
     mov r2, #0x1
@@ -129,7 +129,7 @@ func_ov040_02202cb4:
     bl GraphicsSpriteState_SetAnimationIndex
 .L_02202e7c:
     add r0, sp, #0x8
-    bl func_02005058
+    bl VecFx32Object_Destroy
 .L_02202e84:
     add sp, sp, #0x18
     ldmia sp!, {r4, r5, r6, pc}

@@ -3,8 +3,8 @@
 .extern SceneManager_GetCurrent
 .extern data_020c9670
 .extern data_021052fc
-.extern func_02005058
-.extern func_020050a4
+.extern VecFx32Object_Destroy
+.extern VecFx32Object_Assign
 .extern VecFx32Bezier_Evaluate3D
 .extern GamePhaseRuntime_UpdateActorPresentationState
 .extern ActorMotionAreaFollower_GetPosition
@@ -58,7 +58,7 @@ func_ov062_022109d4:
     str r0, [sp, #0x18]
     ldr r0, [r4, #0x24]
     add r0, r0, #0x18
-    bl func_020050a4
+    bl VecFx32Object_Assign
     ldr r0, [r4, #0x24]
     bl Actor_RefreshTerrainHeight
     ldr r0, .L_02210b0c
@@ -84,12 +84,12 @@ func_ov062_022109d4:
     blx r1
 .L_02210ae4:
     add r0, sp, #0xc
-    bl func_02005058
+    bl VecFx32Object_Destroy
     mov r0, #0x1
     b .L_02210b00
 .L_02210af4:
     add r0, sp, #0xc
-    bl func_02005058
+    bl VecFx32Object_Destroy
     mov r0, #0x0
 .L_02210b00:
     add sp, sp, #0x1c

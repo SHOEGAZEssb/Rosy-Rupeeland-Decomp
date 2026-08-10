@@ -1,9 +1,9 @@
 ; Matching retail form; see src/game/actor_motion_area_clamp.c for
 ; the documented portable implementation and recovered behavior.
 .text
-.extern func_02005030
-.extern func_02005058
-.extern func_020050a4
+.extern VecFx32Object_InitCopy
+.extern VecFx32Object_Destroy
+.extern VecFx32Object_Assign
 .extern S16Rectangle_Translate
 .extern GamePhaseRegionTable_GetRegion
 .extern Actor_GetCollisionBounds
@@ -15,7 +15,7 @@ ActorMotionAreaFollower_ClampToAreaBounds: ; 0x0200a1a0
     mov r8, r1
     add r0, sp, #0x10
     add r1, r9, #0x8
-    bl func_02005030
+    bl VecFx32Object_InitCopy
     ldr r0, [r9, #0x4]
     ldr r1, [r0, #0x20]
     ldr r5, [r0, #0x24]
@@ -85,9 +85,9 @@ L_0200a28c:
 L_0200a2c0:
     add r1, sp, #0x10
     add r0, r9, #0x8
-    bl func_020050a4
+    bl VecFx32Object_Assign
     add r0, sp, #0x10
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add sp, sp, #0x20
     ldmia sp!, {r3, r4, r5, r6, r7, r8, r9, pc}
     .size ActorMotionAreaFollower_ClampToAreaBounds, .-ActorMotionAreaFollower_ClampToAreaBounds

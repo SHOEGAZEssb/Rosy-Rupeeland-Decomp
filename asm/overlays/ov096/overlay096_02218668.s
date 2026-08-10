@@ -1,7 +1,7 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov096/overlay096_recovery.c.
 .extern data_020e6e68
-.extern func_02005070
+.extern VecFx32Object_GetMagnitude
 .extern ActorExtendedType2_GetDescriptorValue2A
 .extern func_020593dc
 .extern func_ov096_02218590
@@ -103,7 +103,7 @@ func_ov096_02218668:
     bl func_020593dc
 .L_022187c4:
     add r0, r6, #0x29c
-    bl func_02005070
+    bl VecFx32Object_GetMagnitude
     ldr r1, .L_02218808
     cmp r0, r1
     bge .L_022187f4

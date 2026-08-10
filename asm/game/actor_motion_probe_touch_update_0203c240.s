@@ -1,10 +1,10 @@
 ; Matching retail form; see src/game/actor_motion_probe_touch_update.c.
 .text
 .extern data_020c9670
-.extern func_0200500c
-.extern func_02005058
-.extern func_020050a4
-.extern func_020050c8
+.extern VecFx32Object_InitComponents
+.extern VecFx32Object_Destroy
+.extern VecFx32Object_Assign
+.extern VecFx32Object_Add
 .extern VecFx32_Subtract
 .extern func_02031758
 .extern func_02031cac
@@ -58,16 +58,16 @@ ActorMotionProbe_UpdateTouchMotion: ; 0x0203c240
     add r0, sp, #0x1c
     mov r3, #0x0
     orr r2, r2, r4, lsl #0x14
-    bl func_0200500c
+    bl VecFx32Object_InitComponents
     add r0, sp, #0xc
     add r1, sp, #0x1c
     add r2, r8, #0x210
     bl VecFx32_Subtract
     add r0, r8, #0x230
     add r1, sp, #0xc
-    bl func_020050a4
+    bl VecFx32Object_Assign
     add r0, sp, #0xc
-    bl func_02005058
+    bl VecFx32Object_Destroy
     ldr r0, [r8, #0x234]
     ldr r1, [r8, #0x24c]
     bl func_020befec
@@ -78,14 +78,14 @@ ActorMotionProbe_UpdateTouchMotion: ; 0x0203c240
     str r0, [r8, #0x238]
     add r0, r8, #0x220
     add r1, sp, #0x1c
-    bl func_020050a4
+    bl VecFx32Object_Assign
     add r0, sp, #0x1c
-    bl func_02005058
+    bl VecFx32Object_Destroy
     b .L_0203c358
 .L_0203c34c:
     add r0, r8, #0x210
     add r1, r8, #0x230
-    bl func_020050c8
+    bl VecFx32Object_Add
 .L_0203c358:
     add r0, r8, #0x200
     ldrh r3, [r0, #0x8]

@@ -1,8 +1,8 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov088/overlay088_recovery.c.
 .extern data_021052fc
-.extern func_02004fe0
-.extern func_02005058
+.extern VecFx32Object_Init
+.extern VecFx32Object_Destroy
 .extern ActorMotionAreaFollower_GetPosition
 .extern Actor_SnapshotTransientState
 .extern func_02050078
@@ -25,7 +25,7 @@ func_ov088_0221b428:
     cmp r0, #0x1
     bne .L_0221b4f8
     add r0, sp, #0x10
-    bl func_02004fe0
+    bl VecFx32Object_Init
     ldr r0, .L_0221b500
     ldr r1, .L_0221b504
     ldr r0, [r0, #0x0]
@@ -60,9 +60,9 @@ func_ov088_0221b428:
     add r2, sp, #0x10
     bl func_02050078
     add r0, sp, #0x0
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add r0, sp, #0x10
-    bl func_02005058
+    bl VecFx32Object_Destroy
 .L_0221b4f8:
     add sp, sp, #0x20
     ldmia sp!, {r3, r4, r5, pc}

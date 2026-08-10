@@ -1,6 +1,6 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov054/overlay054_recovery.c.
-.extern func_02005058
+.extern VecFx32Object_Destroy
 .extern func_02056f00
 .extern func_020adc40
 .extern gGameWork
@@ -84,7 +84,7 @@ func_ov054_0220e560:
     cmp r9, #0xc0
     blt .L_0220e5e4
     add r0, sp, #0x0
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add sp, sp, #0x10
     ldmia sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, pc}
 .L_0220e688: .word gGameWork

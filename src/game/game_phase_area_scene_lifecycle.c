@@ -77,7 +77,7 @@ GamePhaseAreaScene *GamePhaseAreaScene_Init(GamePhaseAreaScene *self,
     self->config = config;
     OverlaySlot_Init(self->overlaySlotStorage);
     self->secondaryActor = 0;
-    func_02004fe0(&self->position);
+    VecFx32Object_Init(&self->position);
     self->overlayObject = 0;
     self->regionEffectHandle = 0;
 
@@ -164,7 +164,7 @@ GamePhaseAreaScene *GamePhaseAreaScene_Destroy(GamePhaseAreaScene *self)
     if (self->subRenderer)
         ((void (*)(void *))(*(void ***)self->subRenderer)[1])(
             self->subRenderer);
-    func_02005058(&self->position);
+    VecFx32Object_Destroy(&self->position);
     OverlaySlot_Destroy(self->overlaySlotStorage);
     ActorCollection_Destructor(self->actorCollectionStorage);
     return self;

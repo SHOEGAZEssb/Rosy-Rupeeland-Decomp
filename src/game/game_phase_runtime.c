@@ -148,7 +148,7 @@ void GamePhaseRuntime_Configure(GamePhaseRuntime *self, const void *configPointe
     *(s32 *)((u8 *)entity + 0x1c) = x << 12;
     *(s32 *)((u8 *)entity + 0x20) = fixedY;
     *(s32 *)((u8 *)entity + 0x24) = fixedZ;
-    func_020050a4((VecFx32Object *)((u8 *)entity + 0x28),
+    VecFx32Object_Assign((VecFx32Object *)((u8 *)entity + 0x28),
                   (VecFx32Object *)((u8 *)entity + 0x18));
     if (GameWork_TestFlag(gGameWork, 0x3f2) != 0) {
         *(s32 *)((u8 *)entity + 0x24) = 0x60000;
@@ -164,7 +164,7 @@ void GamePhaseRuntime_Configure(GamePhaseRuntime *self, const void *configPointe
         *(s32 *)((u8 *)secondary + 0x1c) = (x + 0x14) << 12;
         *(s32 *)((u8 *)secondary + 0x20) = fixedY;
         *(s32 *)((u8 *)secondary + 0x24) = fixedZ;
-        func_020050a4((VecFx32Object *)((u8 *)secondary + 0x28),
+        VecFx32Object_Assign((VecFx32Object *)((u8 *)secondary + 0x28),
                       (VecFx32Object *)((u8 *)secondary + 0x18));
         if (GameWork_TestFlag(gGameWork, 0x3f2) != 0) {
             *(s32 *)((u8 *)secondary + 0x24) = 0x60000;

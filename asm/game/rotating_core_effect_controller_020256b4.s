@@ -4,11 +4,11 @@
 .extern data_020c9670
 .extern data_020d6aa0
 .extern data_021052fc
-.extern func_02004fe0
-.extern func_0200500c
-.extern func_02005030
-.extern func_02005058
-.extern func_020050a4
+.extern VecFx32Object_Init
+.extern VecFx32Object_InitComponents
+.extern VecFx32Object_InitCopy
+.extern VecFx32Object_Destroy
+.extern VecFx32Object_Assign
 .extern func_02008378
 .extern ActorMotionAreaFollower_GetPosition
 .extern func_0201e3b8
@@ -45,9 +45,9 @@ func_020256b4: ; 0x020256b4
     cmp r0, #0x0
     bne .L_02025918
     add r0, sp, #0x48
-    bl func_02004fe0
+    bl VecFx32Object_Init
     add r0, sp, #0x58
-    bl func_02004fe0
+    bl VecFx32Object_Init
     ldr r1, [r5, #0x8]
     add r0, sp, #0x48
     ldr r2, [r1, #0x4]
@@ -64,7 +64,7 @@ func_020256b4: ; 0x020256b4
     ldr r2, [r5, #0x2c]
     ldr r2, [r2, #0xc]
     str r2, [sp, #0x44]
-    bl func_020050a4
+    bl VecFx32Object_Assign
     ldr r1, [r5, #0x8]
     ldr r3, .L_02025a2c
     ldr r1, [r1, #0x2d8]
@@ -96,13 +96,13 @@ func_020256b4: ; 0x020256b4
     str ip, [sp, #0x68]
     str r1, [sp, #0x60]
     str r1, [sp, #0x5c]
-    bl func_0200500c
+    bl VecFx32Object_InitComponents
     add r0, sp, #0x28
     add r1, r5, #0x18
     add r2, sp, #0x8
     bl func_02008378
     add r0, sp, #0x8
-    bl func_02005058
+    bl VecFx32Object_Destroy
     ldr r1, .L_02025a30
     ldr r3, .L_02025a34
     mov r0, #0x50
@@ -143,11 +143,11 @@ func_020256b4: ; 0x020256b4
     mov r1, #0x1
     bl func_0201e3b8
     add r0, sp, #0x28
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add r0, sp, #0x58
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add r0, sp, #0x48
-    bl func_02005058
+    bl VecFx32Object_Destroy
     b .L_02025918
 .L_020258a8:
     mov r0, #0x8000
@@ -224,7 +224,7 @@ func_020256b4: ; 0x020256b4
     rsb r2, r3, r2, lsl #0x10
     add r2, r3, r2, ror #0x10
     str r2, [r4, #0x2d8]
-    bl func_02005030
+    bl VecFx32Object_InitCopy
     ldrsh r0, [r5, #0x32]
     cmp r0, #0x0
     ble .L_02025a0c
@@ -250,7 +250,7 @@ func_020256b4: ; 0x020256b4
     add r1, sp, #0x18
     bl func_0206bb18
     add r0, sp, #0x18
-    bl func_02005058
+    bl VecFx32Object_Destroy
     mov r0, #0x0
 .L_02025a24:
     add sp, sp, #0x70

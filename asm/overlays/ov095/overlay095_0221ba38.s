@@ -2,7 +2,7 @@
 ; Matching fallback for the portable implementation in src/overlays/ov095/overlay095_recovery.c.
 .extern data_ov095_0221cec0
 .extern data_ov095_0221ced0
-.extern func_020050a4
+.extern VecFx32Object_Assign
 .extern Actor_GetCachedTerrainHeight
 .extern Actor_QueryTerrainHeight
 .extern ActorExtendedType2_UpdateFrame
@@ -55,7 +55,7 @@ func_ov095_0221ba38:
     beq .L_0221bb7c
     add r0, r4, #0xb0
     add r1, r4, #0x22c
-    bl func_020050a4
+    bl VecFx32Object_Assign
     ldr r0, [r4, #0x228]
     ldr r1, [r4, #0x1c]
     ldr r0, [r0, #0x1c]

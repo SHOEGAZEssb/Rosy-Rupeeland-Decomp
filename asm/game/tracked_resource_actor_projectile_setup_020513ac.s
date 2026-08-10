@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/tracked_resource_actor_projectile_setup.c.
-.extern func_0200500c
-.extern func_02005058
-.extern func_020050a4
+.extern VecFx32Object_InitComponents
+.extern VecFx32Object_Destroy
+.extern VecFx32Object_Assign
 .extern func_02008378
 .extern ActorRuntimeTriple_Assign
 .text
@@ -16,18 +16,18 @@ func_020513ac:
     add r0, sp, #0x10
     mov r2, r1
     mov r3, #0x100000
-    bl func_0200500c
+    bl VecFx32Object_InitComponents
     add r0, sp, #0x0
     add r2, sp, #0x10
     mov r1, r5
     bl func_02008378
     add r1, sp, #0x0
     add r0, r4, #0x18
-    bl func_020050a4
+    bl VecFx32Object_Assign
     add r0, sp, #0x0
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add r0, sp, #0x10
-    bl func_02005058
+    bl VecFx32Object_Destroy
     mov r1, #0x0
     add r0, r4, #0x38
     mov r2, r1

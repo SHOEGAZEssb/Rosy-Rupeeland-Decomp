@@ -3,8 +3,8 @@
 .extern SceneManager_GetCurrent
 .extern data_0210568c
 .extern data_02105690
-.extern func_02005030
-.extern func_02005058
+.extern VecFx32Object_InitCopy
+.extern VecFx32Object_Destroy
 .extern func_02031758
 .extern func_02031cac
 .extern AttachmentController_SetEnabled
@@ -25,7 +25,7 @@ ActorDerivedType1_UpdatePresentationSteering: ; 0x02035be8
     mov r9, r1
     add r0, sp, #0x1c
     mov r1, r4
-    bl func_02005030
+    bl VecFx32Object_InitCopy
     ldr r1, [r9, #0x270]
     cmp r1, #0x0
     beq .L_02035c44
@@ -67,7 +67,7 @@ ActorDerivedType1_UpdatePresentationSteering: ; 0x02035be8
 .L_02035c98:
     add r0, sp, #0xc
     add r1, r9, #0x18
-    bl func_02005030
+    bl VecFx32Object_InitCopy
     ldrsh r2, [r9, #0x6a]
     ldr r3, [sp, #0x14]
     ldr r1, .L_0203601c
@@ -81,7 +81,7 @@ ActorDerivedType1_UpdatePresentationSteering: ; 0x02035be8
     mov r3, #0x0
     blx r5
     add r0, sp, #0xc
-    bl func_02005058
+    bl VecFx32Object_Destroy
     ldr r1, [r9, #0x244]
     mov r0, #0x5c
     mul r0, r1, r0
@@ -296,7 +296,7 @@ ActorDerivedType1_UpdatePresentationSteering: ; 0x02035be8
     str r2, [sp, #0x8]
     bl func_02031cac
     add r0, sp, #0x1c
-    bl func_02005058
+    bl VecFx32Object_Destroy
     add sp, sp, #0x2c
     ldmia sp!, {r4, r5, r6, r7, r8, r9, r10, r11, pc}
 .L_02036018: .word gSceneManager

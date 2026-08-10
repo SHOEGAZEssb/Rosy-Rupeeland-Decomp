@@ -26,8 +26,8 @@ extern "C" void func_0205943c(void *sound, s32 sequence, s32 parameter,
                                s32 value, s32 arg0, s32 arg1);
 extern "C" void func_020a1794(void *owner, const void *position,
                                const void *display, s32 arg);
-extern "C" void func_02004fe0(void *object);
-extern "C" void func_02005058(void *object);
+extern "C" void VecFx32Object_Init(void *object);
+extern "C" void VecFx32Object_Destroy(void *object);
 extern "C" void func_ov042_021fcf80(void *vector);
 extern "C" void func_ov042_021ff2f8(void *position, const void *velocity);
 extern "C" void func_ov042_021fde00(void *effects, s32 angle, const void *position);

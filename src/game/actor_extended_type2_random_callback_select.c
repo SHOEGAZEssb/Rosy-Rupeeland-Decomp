@@ -11,7 +11,7 @@ extern "C" {
 #endif
 extern u16 InteractionWaypointCursor_GetCurrentDurationFrames(void *object);
 extern void ActorExtendedType2_PlayDescriptorSoundIfEnabled(void *actor);
-extern void func_020050a4(void *destination, ...);
+extern void VecFx32Object_Assign(void *destination, ...);
 extern u32 genrand_int32(void);
 extern s32 func_020ada8c(s32 value, s32 divisor);
 #ifdef __cplusplus
@@ -70,7 +70,7 @@ s32 ActorExtendedType2_SelectRandomDescriptorCallback(void *self, const void *de
         }
     }
 
-    func_020050a4(actor + 0x78, actor + 0x18);
+    VecFx32Object_Assign(actor + 0x78, actor + 0x18);
     flags = *(const u16 *)(record + 0x18);
     if ((flags & 1) != 0)
         choices[count++] = 1;

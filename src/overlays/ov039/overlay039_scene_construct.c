@@ -26,7 +26,7 @@ extern void __construct_array(void *array, s32 count, s32 stride,
                               Overlay039ArrayFn destructor);
 extern void func_ov039_021fce40(void *helper);
 extern void func_ov039_021fce5c(void);
-extern void func_02004fe0(void *object);
+extern void VecFx32Object_Init(void *object);
 extern void func_ov039_021fd070(void *scene, void *argument);
 extern void func_ov039_021fd254(void *scene, void *argument);
 extern void *Heap_Alloc(s32 size, const void *tag, s32 alignment, void *heap);
@@ -61,7 +61,7 @@ extern "C" void *func_ov039_021fce84(void *scene, void *owner,
                       func_ov039_021fce40,
                       (Overlay039ArrayFn)func_ov039_021fce5c);
     func_ov039_021fce40((u8 *)scene + 0x1d90);
-    func_02004fe0((u8 *)scene + 0x1da0);
+    VecFx32Object_Init((u8 *)scene + 0x1da0);
 
     FIELD(void *, scene, 0x48) = owner;
     FIELD(void *, scene, 0x118) = owner;

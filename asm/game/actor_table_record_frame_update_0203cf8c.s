@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/actor_table_record_frame_update.c.
 .text
 .extern data_021052fc
-.extern func_02005070
+.extern VecFx32Object_GetMagnitude
 .extern func_02032228
 .extern func_020328d0
 .extern Actor_UpdateAnimationState
@@ -76,7 +76,7 @@ ActorTableRecord_UpdateFrame: ; 0x0203cf8c
     add r0, r4, #0x88
     bic r1, r1, #0x40
     str r1, [r4, #0xd0]
-    bl func_02005070
+    bl VecFx32Object_GetMagnitude
     ldr r1, .L_0203d258
     cmp r0, r1
     bge .L_0203d0ac
@@ -178,7 +178,7 @@ ActorTableRecord_UpdateFrame: ; 0x0203cf8c
     movs r0, r0, asr #0x1f
     beq .L_0203d238
     add r0, r4, #0x88
-    bl func_02005070
+    bl VecFx32Object_GetMagnitude
     mov r1, #0x10
     bl func_020adae4
     ldr r1, [r4, #0x54]

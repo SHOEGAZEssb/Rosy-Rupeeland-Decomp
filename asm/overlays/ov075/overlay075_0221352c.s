@@ -3,7 +3,7 @@
 .extern data_ov075_02216db0
 .extern data_ov075_02217168
 .extern func_02003e20
-.extern func_02004fe0
+.extern VecFx32Object_Init
 .extern ActorExtendedType2_GetDescriptorValue2A
 .extern func_ov075_02212ae0
 .extern gHeapContext
@@ -20,7 +20,7 @@ func_ov075_0221352c:
     strh r1, [r0, #0xa8]
     str r1, [r4, #0x2ac]
     add r0, r4, #0x2b0
-    bl func_02004fe0
+    bl VecFx32Object_Init
     ldr r1, [r4, #0x26c]
     mov r2, #0x0
     mov r0, r4
