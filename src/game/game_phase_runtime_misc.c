@@ -16,10 +16,11 @@ extern void func_020755bc(void *font);
 #endif
 
 /*
- * Consume runtime request bits 0x10 and 0x20 independently, refreshing the
- * associated debug text/font objects after each clear. Returns no value.
+ * Process pending presentation refresh bits 0x10 and 0x20 independently,
+ * clearing each request before refreshing its associated text/font object.
+ * Returns no value.
  */
-void func_02008ed0(GamePhaseRuntime *self)
+void GamePhaseRuntime_ProcessPendingPresentationRefreshes(GamePhaseRuntime *self)
 {
     u8 *b = (u8 *)self;
     u32 flags = *(u32 *)(b + 0x30b8);

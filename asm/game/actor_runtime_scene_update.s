@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/actor_runtime_scene_update.c for
 ; the documented portable implementation and recovered behavior.
 .text
-.extern func_02008ed0
+.extern GamePhaseRuntime_ProcessPendingPresentationRefreshes
 .extern GamePhaseRuntime_DispatchActorQueryRequest
 .extern func_02007908
 .extern func_0200866c
@@ -18,7 +18,7 @@ func_0200b6c4:
     ldr r1, L_0200b7ac
     mov r4, r0
     ldr r0, [r1, #0x0]
-    bl func_02008ed0
+    bl GamePhaseRuntime_ProcessPendingPresentationRefreshes
     ldr r0, [r4, #0x8]
     cmp r0, #0x0
     beq L_0200b6f0
@@ -79,4 +79,3 @@ L_0200b774:
 L_0200b7ac: .word data_021052fc
 L_0200b7b0: .word gLupyContext
 .size func_0200b6c4, . - func_0200b6c4
-

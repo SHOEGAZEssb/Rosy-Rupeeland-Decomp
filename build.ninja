@@ -10266,7 +10266,7 @@ build build/reports/game_phase_runtime_misc.json: objdiff build/decomp/delinks/s
 
 build build/reports/game_phase_runtime_misc.txt: match_report build/reports/game_phase_runtime_misc.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_runtime_misc.json
-  report_args = --section .text --function func_02008ed0 --function func_02008f2c --function func_02008f34 --function func_02008f58 --function func_02008f70 --function func_02008f7c --require-exact
+  report_args = --section .text --function GamePhaseRuntime_ProcessPendingPresentationRefreshes --function func_02008f2c --function func_02008f34 --function func_02008f58 --function func_02008f70 --function func_02008f7c --require-exact
 
 build build/reports/actor_motion_lifecycle.json: objdiff build/decomp/delinks/src/game/actor_motion_lifecycle.o | build/decomp/src/game/actor_motion_lifecycle.o
   target_object = build/decomp/delinks/src/game/actor_motion_lifecycle.o

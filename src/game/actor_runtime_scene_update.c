@@ -13,7 +13,7 @@ extern s32 func_02008148(void *context, s32 index);
 extern s32 GamePhaseRuntime_DispatchActorQueryRequest(void *runtime);
 extern void func_0200866c(void *context);
 extern void func_02008b50(void *context);
-extern void func_02008ed0(void *context);
+extern void GamePhaseRuntime_ProcessPendingPresentationRefreshes(void *runtime);
 extern void func_02010e68(void *context);
 extern void func_0201dcec(void *context, s32 value);
 #ifdef __cplusplus
@@ -32,7 +32,7 @@ s32 func_0200b6c4(ActorRuntimeScene *self)
 {
     u8 *root = (u8 *)data_021052fc;
 
-    func_02008ed0(root);
+    GamePhaseRuntime_ProcessPendingPresentationRefreshes(root);
     if (self->base.value08 == 0) {
         GamePhaseRuntime_DispatchActorQueryRequest(root);
         func_02007908(root, self->base.value04, 3);

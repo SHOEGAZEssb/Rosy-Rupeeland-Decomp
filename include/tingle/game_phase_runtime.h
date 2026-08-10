@@ -69,7 +69,7 @@ void func_02008b6c(void *destination, GamePhaseRuntime *self, const void *area);
 void func_02008bb8(GamePhaseRuntime *self, void *area, s32 enabled);
 void func_02008cf8(GamePhaseRuntime *self, s32 mode, void *area);
 void func_02008e10(GamePhaseRuntime *self, s32 mode);
-void func_02008ed0(GamePhaseRuntime *self);
+void GamePhaseRuntime_ProcessPendingPresentationRefreshes(GamePhaseRuntime *self);
 s32 func_02008f2c(void);
 s32 func_02008f34(void *counter);
 void func_02008f58(void *value);
