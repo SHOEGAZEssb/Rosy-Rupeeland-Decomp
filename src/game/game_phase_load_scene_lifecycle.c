@@ -31,8 +31,8 @@ typedef struct OwnedObject {
  * phase values, enable Scene flags 0/1, and snapshot POWCNT1 bit 15. The flag
  * at Lupy offset 0xb0 determines field_34 with inverted bit-0 polarity.
  */
-GamePhaseLoadScene *func_0200cf00(GamePhaseLoadScene *self, s32 phase,
-                                  s32 field30)
+GamePhaseLoadScene *GamePhaseLoadScene_Init(GamePhaseLoadScene *self, s32 phase,
+                                  s32 phaseArgument)
 {
     u16 lupyFlags;
 
@@ -44,15 +44,16 @@ GamePhaseLoadScene *func_0200cf00(GamePhaseLoadScene *self, s32 phase,
     OverlaySlot_Init(self->field_8c);
     self->base.value04 = 9;
     self->phase = phase;
-    self->field_30 = field30;
+    self->phaseArgument = phaseArgument;
     self->ownedObject = 0;
-    self->state = 0;
-    self->field_38 = 0;
-    self->field_3c = 1;
+    self->loadState = 0;
+    self->ownedObjectCallbacksEnabled = 0;
+    self->runtimeCallbacksEnabled = 1;
     Scene_SetFlags03(&self->base);
     lupyFlags = *(u16 *)((u8 *)gLupyContext + 0xb0);
     self->field_34 = (lupyFlags & 1) ? 0 : 1;
-    self->powerControlBit = (*(volatile u16 *)0x04000304 & 0x8000) >> 15;
+    self->savedPowerControlBit15 =
+        (*(volatile u16 *)0x04000304 & 0x8000) >> 15;
     return self;
 }
 
@@ -60,10 +61,10 @@ GamePhaseLoadScene *func_0200cf00(GamePhaseLoadScene *self, s32 phase,
  * Release the optional owned object, destroy embedded helpers in reverse
  * construction order, destroy the Scene base, and return self without freeing.
  */
-GamePhaseLoadScene *func_0200cfb0(GamePhaseLoadScene *self)
+GamePhaseLoadScene *GamePhaseLoadScene_Destroy(GamePhaseLoadScene *self)
 {
     self->base.vtable = &data_020d5460;
-    self->field_38 = 0;
+    self->ownedObjectCallbacksEnabled = 0;
     if (self->ownedObject != 0)
         ((OwnedObject *)self->ownedObject)->vtable->release(self->ownedObject);
     OverlaySlot_Destroy(self->field_8c);
@@ -82,10 +83,10 @@ GamePhaseLoadScene *func_0200d014(GamePhaseLoadScene *self)
 }
 
 /* Perform full lifecycle cleanup, free the Scene allocation, and return it. */
-GamePhaseLoadScene *func_0200d028(GamePhaseLoadScene *self)
+GamePhaseLoadScene *GamePhaseLoadScene_DestroyAndFree(GamePhaseLoadScene *self)
 {
     self->base.vtable = &data_020d5460;
-    self->field_38 = 0;
+    self->ownedObjectCallbacksEnabled = 0;
     if (self->ownedObject != 0)
         ((OwnedObject *)self->ownedObject)->vtable->release(self->ownedObject);
     OverlaySlot_Destroy(self->field_8c);

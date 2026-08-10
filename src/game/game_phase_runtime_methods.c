@@ -23,7 +23,7 @@ extern void GamePhaseState_UpdateRenderHelpers(void *sceneState);
 extern void GamePhaseState_ForwardVCount(void *sceneState, u16 scanline);
 extern void func_0201218c(void *object);
 extern void Sound_Play(void *context, s32 argument, s32 soundId);
-extern void func_0200cf00(void *object, s32 enabled, s32 argument);
+extern void GamePhaseLoadScene_Init(void *object, s32 enabled, s32 argument);
 
 #ifdef __cplusplus
 }
@@ -114,7 +114,7 @@ s32 GamePhaseRuntime_HandleEvent100(GamePhaseRuntime *self, s32 event)
         effect = Heap_Alloc(0x9c, (const char *)data_020d4358, 4,
                             &gHeapContext);
         if (effect != 0)
-            func_0200cf00(effect, 1, 0);
+            GamePhaseLoadScene_Init(effect, 1, 0);
     }
     return 0;
 }

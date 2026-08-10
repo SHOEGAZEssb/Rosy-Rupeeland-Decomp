@@ -25,7 +25,7 @@ extern void *func_020a042c(...);
 extern void *func_020200bc(...);
 extern void *func_0201cfd0(...);
 extern void *func_0206ec68(...);
-extern void *func_0200cf00(...);
+extern void *GamePhaseLoadScene_Init(...);
 extern void func_0201ded4(...);
 extern u8 *func_02079a7c(...);
 #ifdef __cplusplus
@@ -42,7 +42,7 @@ static void *allocCommandObject(u32 size, const char *tag)
  * Confirmed paths create runtime scenes/effects, register an effect relative
  * to the active actor, modify actor presentation flags, or push queried data.
  * Unsupported selectors halt. Most simple selectors map to a kind passed with
- * the parameter to a 0x9c-byte func_0200cf00 object. Selector 18 reaches that
+ * the parameter to a 0x9c-byte GamePhaseLoadScene object. Selector 18 reaches that
  * path with the incoming r7 value in retail; portable C uses zero while the
  * matching assembly preserves the register-dependent behavior.
  */
@@ -176,6 +176,6 @@ s32 func_02016238(GamePhaseActorScriptVm *self)
 
     object = allocCommandObject(0x9c, data_020d5b8c);
     if (object != 0)
-        func_0200cf00(object, kind, parameter);
+        GamePhaseLoadScene_Init(object, kind, parameter);
     return 0;
 }

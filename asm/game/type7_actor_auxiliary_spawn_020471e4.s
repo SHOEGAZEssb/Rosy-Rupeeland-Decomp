@@ -2,7 +2,7 @@
 .text
 .extern Heap_Alloc
 .extern data_020e1d04
-.extern func_0200cf00
+.extern GamePhaseLoadScene_Init
 .extern Actor_DestroyAuxiliaryCollisionResource
 .extern gHeapContext
 .global Type7Actor_SpawnAuxiliaryCollisionResource
@@ -29,7 +29,7 @@ Type7Actor_SpawnAuxiliaryCollisionResource: ; 0x020471e4
     ldmeqia sp!, {r3, pc}
     ldr r2, .L_02047244
     mov r1, #0xa
-    bl func_0200cf00
+    bl GamePhaseLoadScene_Init
     ldmia sp!, {r3, pc}
 .L_0204723c: .word data_020e1d04
 .L_02047240: .word gHeapContext

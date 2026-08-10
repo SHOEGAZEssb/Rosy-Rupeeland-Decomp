@@ -12,8 +12,8 @@
 .extern func_020923a0
 .extern gLupyContext
 
-    .global func_0200cf00
-func_0200cf00: ; 0x0200cf00
+    .global GamePhaseLoadScene_Init
+GamePhaseLoadScene_Init: ; 0x0200cf00
     stmdb sp!, {r4, r5, r6, lr}
     mov r4, r0
     mov r6, r1
@@ -58,10 +58,10 @@ func_0200cf00: ; 0x0200cf00
 L_0200cfa4: .word data_020d5460
 L_0200cfa8: .word gLupyContext
 L_0200cfac: .word 0x4000304
-    .size func_0200cf00, . - func_0200cf00
+    .size GamePhaseLoadScene_Init, . - GamePhaseLoadScene_Init
 
-    .global func_0200cfb0
-func_0200cfb0: ; 0x0200cfb0
+    .global GamePhaseLoadScene_Destroy
+GamePhaseLoadScene_Destroy: ; 0x0200cfb0
     stmdb sp!, {r4, lr}
     ldr r1, L_0200d010
     mov r4, r0
@@ -88,7 +88,7 @@ L_0200cfe0:
     mov r0, r4
     ldmia sp!, {r4, pc}
 L_0200d010: .word data_020d5460
-    .size func_0200cfb0, . - func_0200cfb0
+    .size GamePhaseLoadScene_Destroy, . - GamePhaseLoadScene_Destroy
 
     .global func_0200d014
 func_0200d014: ; 0x0200d014
@@ -99,8 +99,8 @@ func_0200d014: ; 0x0200d014
     ldmia sp!, {r4, pc}
     .size func_0200d014, . - func_0200d014
 
-    .global func_0200d028
-func_0200d028: ; 0x0200d028
+    .global GamePhaseLoadScene_DestroyAndFree
+GamePhaseLoadScene_DestroyAndFree: ; 0x0200d028
     stmdb sp!, {r4, lr}
     ldr r1, L_0200d090
     mov r4, r0
@@ -129,5 +129,5 @@ L_0200d058:
     mov r0, r4
     ldmia sp!, {r4, pc}
 L_0200d090: .word data_020d5460
-    .size func_0200d028, . - func_0200d028
+    .size GamePhaseLoadScene_DestroyAndFree, . - GamePhaseLoadScene_DestroyAndFree
 

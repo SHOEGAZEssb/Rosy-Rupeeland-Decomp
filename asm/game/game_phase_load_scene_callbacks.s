@@ -11,8 +11,8 @@
 .extern gDebugFont
 .extern gGameWork
 
-    .global func_0200e3d4
-func_0200e3d4: ; 0x0200e3d4
+    .global GamePhaseLoadScene_UpdateRenderHelpers
+GamePhaseLoadScene_UpdateRenderHelpers: ; 0x0200e3d4
     stmdb sp!, {r4, lr}
     mov r4, r0
     ldr r0, [r4, #0x3c]
@@ -35,10 +35,10 @@ L_0200e418:
     mov r0, #0x0
     ldmia sp!, {r4, pc}
 L_0200e420: .word data_021052fc
-    .size func_0200e3d4, . - func_0200e3d4
+    .size GamePhaseLoadScene_UpdateRenderHelpers, . - GamePhaseLoadScene_UpdateRenderHelpers
 
-    .global func_0200e424
-func_0200e424: ; 0x0200e424
+    .global GamePhaseLoadScene_ForwardCurrentVCount
+GamePhaseLoadScene_ForwardCurrentVCount: ; 0x0200e424
     stmdb sp!, {r4, lr}
     mov r4, r0
     ldr r0, [r4, #0x3c]
@@ -64,10 +64,10 @@ L_0200e470:
     ldmia sp!, {r4, pc}
 L_0200e478: .word 0x4000006
 L_0200e47c: .word data_021052fc
-    .size func_0200e424, . - func_0200e424
+    .size GamePhaseLoadScene_ForwardCurrentVCount, . - GamePhaseLoadScene_ForwardCurrentVCount
 
-    .global func_0200e480
-func_0200e480: ; 0x0200e480
+    .global GamePhase_ResetTransientState
+GamePhase_ResetTransientState: ; 0x0200e480
     stmdb sp!, {r4, r5, r6, lr}
     mov r6, #0x0
     ldr r5, L_0200e4cc
@@ -93,5 +93,5 @@ L_0200e4cc: .word data_020c3600
 L_0200e4d0: .word gGameWork
 L_0200e4d4: .word data_020f4e14
 L_0200e4d8: .word gDebugFont
-    .size func_0200e480, . - func_0200e480
+    .size GamePhase_ResetTransientState, . - GamePhase_ResetTransientState
 

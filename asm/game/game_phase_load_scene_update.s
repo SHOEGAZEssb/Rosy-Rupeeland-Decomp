@@ -84,8 +84,8 @@
 .extern gLupyContext
 .extern gSoundContext
 
-    .global func_0200d094
-func_0200d094: ; 0x0200d094
+    .global GamePhaseLoadScene_Update
+GamePhaseLoadScene_Update: ; 0x0200d094
     stmdb sp!, {r3, r4, r5, lr}
     mov r5, r0
     ldr r0, [r5, #0x28]
@@ -1438,5 +1438,5 @@ L_0200e3c4: .word 0x3ba
 L_0200e3c8: .word 0x48
 L_0200e3cc: .word data_020d553c
 L_0200e3d0: .word 0x3cd
-    .size func_0200d094, . - func_0200d094
+    .size GamePhaseLoadScene_Update, . - GamePhaseLoadScene_Update
 

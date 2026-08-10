@@ -4,7 +4,7 @@
 .extern GameWork_ClearPointerBank
 .extern GameWork_SetFlag
 .extern OverlaySlot_LoadOverlay
-.extern func_0200e480
+.extern GamePhase_ResetTransientState
 .extern func_0200f0b4
 .extern func_0202751c
 .extern func_020275b0
@@ -138,7 +138,7 @@ func_0200e780: ; 0x0200e780
     bl GameWork_ClearFlag
     bl func_02027f94
     bl func_02027f2c
-    bl func_0200e480
+    bl GamePhase_ResetTransientState
     ldr r0, [r4, #0x40]
     mov r0, r0, lsl #0x6
     mov r4, r0, asr #0x1f

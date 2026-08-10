@@ -10919,21 +10919,21 @@ build build/reports/game_phase_load_scene_lifecycle.json: objdiff build/decomp/d
   base_object = build/decomp/asm/game/game_phase_load_scene_lifecycle.o
 build build/reports/game_phase_load_scene_lifecycle.txt: match_report build/reports/game_phase_load_scene_lifecycle.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_load_scene_lifecycle.json
-  report_args = --section .text --function func_0200cf00 --function func_0200cfb0 --function func_0200d014 --function func_0200d028 --require-exact
+  report_args = --section .text --function GamePhaseLoadScene_Init --function GamePhaseLoadScene_Destroy --function func_0200d014 --function GamePhaseLoadScene_DestroyAndFree --require-exact
 
 build build/reports/game_phase_load_scene_update.json: objdiff build/decomp/delinks/asm/game/game_phase_load_scene_update.o | build/decomp/asm/game/game_phase_load_scene_update.o
   target_object = build/decomp/delinks/asm/game/game_phase_load_scene_update.o
   base_object = build/decomp/asm/game/game_phase_load_scene_update.o
 build build/reports/game_phase_load_scene_update.txt: match_report build/reports/game_phase_load_scene_update.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_load_scene_update.json
-  report_args = --section .text --function func_0200d094 --require-exact
+  report_args = --section .text --function GamePhaseLoadScene_Update --require-exact
 
 build build/reports/game_phase_load_scene_callbacks.json: objdiff build/decomp/delinks/asm/game/game_phase_load_scene_callbacks.o | build/decomp/asm/game/game_phase_load_scene_callbacks.o
   target_object = build/decomp/delinks/asm/game/game_phase_load_scene_callbacks.o
   base_object = build/decomp/asm/game/game_phase_load_scene_callbacks.o
 build build/reports/game_phase_load_scene_callbacks.txt: match_report build/reports/game_phase_load_scene_callbacks.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_load_scene_callbacks.json
-  report_args = --section .text --function func_0200e3d4 --function func_0200e424 --function func_0200e480 --require-exact
+  report_args = --section .text --function GamePhaseLoadScene_UpdateRenderHelpers --function GamePhaseLoadScene_ForwardCurrentVCount --function GamePhase_ResetTransientState --require-exact
 
 build build/reports/game_phase_state_0200e4dc.json: objdiff build/decomp/delinks/asm/game/game_phase_state_0200e4dc.o | build/decomp/asm/game/game_phase_state_0200e4dc.o
   target_object = build/decomp/delinks/asm/game/game_phase_state_0200e4dc.o

@@ -194,7 +194,8 @@ extern int module(...);
  * are decompiler-visible scratch registers passed through only to an unresolved
  * helper signature. Returns one after final teardown/dispatch, otherwise zero.
  */
-s32 func_0200d094(int *param_1, undefined4 param_2, undefined4 param_3, undefined4 param_4)
+s32 GamePhaseLoadScene_Update(int *param_1, undefined4 param_2,
+                             undefined4 param_3, undefined4 param_4)
 
 {
   int *piVar1;

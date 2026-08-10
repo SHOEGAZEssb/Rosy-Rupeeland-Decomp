@@ -8,7 +8,7 @@ extern const char data_020e1d04[];
 extern "C" {
 #endif
 extern void Actor_DestroyAuxiliaryCollisionResource(void *actor);
-extern void *func_0200cf00(void *allocation, s32 type, s32 value);
+extern void *GamePhaseLoadScene_Init(void *allocation, s32 type, s32 value);
 #ifdef __cplusplus
 }
 #endif
@@ -18,7 +18,7 @@ extern void *func_0200cf00(void *allocation, s32 type, s32 value);
  * Actor_DestroyAuxiliaryCollisionResource(actor) when pointer +0x1e0 is
  * nonnull, allocate 0x9c bytes with
  * label data_020e1d04/alignment four from gHeapContext, and, on success,
- * construct it through func_0200cf00(allocation,10,0x7fff). The routine has no
+ * construct a GamePhaseLoadScene with phase 10 and argument 0x7fff. The routine has no
  * meaningful return value; actor, heap ownership, and auxiliary state may
  * change.
  */
@@ -32,5 +32,5 @@ void Type7Actor_SpawnAuxiliaryCollisionResource(void *self)
         Actor_DestroyAuxiliaryCollisionResource(actor);
     allocation = Heap_Alloc(0x9c, data_020e1d04, 4, &gHeapContext);
     if (allocation != 0)
-        func_0200cf00(allocation, 10, 0x7fff);
+        GamePhaseLoadScene_Init(allocation, 10, 0x7fff);
 }

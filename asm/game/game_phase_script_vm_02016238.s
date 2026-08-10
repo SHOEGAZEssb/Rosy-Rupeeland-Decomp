@@ -18,7 +18,7 @@
 .extern func_02005030
 .extern func_02005058
 .extern ActorMotionAreaFollower_GetPosition
-.extern func_0200cf00
+.extern GamePhaseLoadScene_Init
 .extern func_02012704
 .extern func_020127f8
 .extern func_0201cfd0
@@ -448,7 +448,7 @@ L_020167a8:
     beq L_020167d0
     mov r1, r7
     mov r2, r4
-    bl func_0200cf00
+    bl GamePhaseLoadScene_Init
 L_020167d0:
     mov r0, #0
 L_020167d4:

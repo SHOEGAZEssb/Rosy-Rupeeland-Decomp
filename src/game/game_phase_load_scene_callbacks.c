@@ -31,30 +31,30 @@ typedef struct LoadPhaseObject {
 
 /*
  * During the load scene's method-0x0c hook, update runtime offset 0x24 when
- * field_3c is set and forward method 0x0c to the owned phase object when
- * field_38 permits it. This hook always returns zero.
+ * runtimeCallbacksEnabled is set and forward method 0x0c to the owned phase
+ * object when its callbacks are enabled. This hook always returns zero.
  */
-s32 func_0200e3d4(GamePhaseLoadScene *self)
+s32 GamePhaseLoadScene_UpdateRenderHelpers(GamePhaseLoadScene *self)
 {
-    if (self->field_3c)
+    if (self->runtimeCallbacksEnabled)
         GamePhaseState_UpdateRenderHelpers((u8 *)data_021052fc + 0x24);
-    if (self->field_38 && self->ownedObject)
+    if (self->ownedObjectCallbacksEnabled && self->ownedObject)
         ((LoadPhaseObject *)self->ownedObject)->vtable->method0c(
             self->ownedObject);
     return 0;
 }
 
 /*
- * During method 0x10, pass the current VCOUNT to runtime offset 0x24 when
- * field_3c is set and forward method 0x10 to the active phase object when
- * enabled. Returns zero.
+ * During method 0x10, pass the current VCOUNT to runtime offset 0x24 when its
+ * callbacks are enabled and forward method 0x10 to the active phase object
+ * when enabled. Returns zero.
  */
-s32 func_0200e424(GamePhaseLoadScene *self)
+s32 GamePhaseLoadScene_ForwardCurrentVCount(GamePhaseLoadScene *self)
 {
-    if (self->field_3c)
+    if (self->runtimeCallbacksEnabled)
         GamePhaseState_ForwardVCount((u8 *)data_021052fc + 0x24,
                       *(volatile u16 *)0x04000006);
-    if (self->field_38 && self->ownedObject)
+    if (self->ownedObjectCallbacksEnabled && self->ownedObject)
         ((LoadPhaseObject *)self->ownedObject)->vtable->method10(
             self->ownedObject);
     return 0;
@@ -64,7 +64,7 @@ s32 func_0200e424(GamePhaseLoadScene *self)
  * Clear the twelve transient GameWork flags listed at data_020c3600, then
  * reset the two shared debug/text render objects. No value is returned.
  */
-void func_0200e480(void)
+void GamePhase_ResetTransientState(void)
 {
     u32 i;
     for (i = 0; i < 12; i++)

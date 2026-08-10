@@ -19,7 +19,7 @@ extern void func_0202d68c(void *object, s32 value);
 extern void ActorDerivedType1_UpdateGameWorkRuntimeFlags(void *object, s32 enabled);
 extern void ActorInteractionRuntime_Start(void);
 extern void func_020598a0(void *sound, u16 value);
-extern void func_0200e480(void);
+extern void GamePhase_ResetTransientState(void);
 extern void func_0200f0b4(GamePhaseState *self, const void *configuration);
 extern void func_020a2348(void *object, s32 a, s32 b);
 extern void func_020a23a8(void *object, s32 a, s32 b);
@@ -132,7 +132,7 @@ void func_0200e780(GamePhaseState *self, const void *configuration)
     *(u16 *)(work + 0x218) = 0;
     func_02027f94();
     func_02027f2c();
-    func_0200e480();
+    GamePhase_ResetTransientState();
     *(s32 *)((u8 *)func_02027f94() + 8) =
         (s32)(config->flags40 << 6) >> 31;
     *(u16 *)(lupy + 0xcc) = 0xb4;
