@@ -3,12 +3,12 @@
 .extern data_020df9e0
 .extern data_020dfec0
 .extern func_02003e20
-.extern func_0203df48
+.extern ActorExtendedRecordArray_InitElementNoOp
 .extern func_020c09cc
 .extern gHeapContext
-    .global func_0203de48
-    .type func_0203de48, @function
-func_0203de48: ; 0x0203de48
+    .global ActorExtendedRecordArray_Init
+    .type ActorExtendedRecordArray_Init, @function
+ActorExtendedRecordArray_Init: ; 0x0203de48
     stmdb sp!, {r3, r4, r5, r6, r7, lr}
     sub sp, sp, #0x8
     ldr r2, .L_0203df38
@@ -78,5 +78,5 @@ func_0203de48: ; 0x0203de48
 .L_0203df38: .word data_020dfec0
 .L_0203df3c: .word data_020df9e0
 .L_0203df40: .word gHeapContext
-.L_0203df44: .word func_0203df48
-    .size func_0203de48, . - func_0203de48
+.L_0203df44: .word ActorExtendedRecordArray_InitElementNoOp
+    .size ActorExtendedRecordArray_Init, . - ActorExtendedRecordArray_Init

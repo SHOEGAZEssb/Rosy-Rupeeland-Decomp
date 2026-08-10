@@ -16582,7 +16582,7 @@ build build/reports/actor_extended_type2_record_array_0203de48.json: objdiff bui
   base_object = build/decomp/asm/game/actor_extended_type2_record_array_0203de48.o
 build build/reports/actor_extended_type2_record_array_0203de48.txt: match_report build/reports/actor_extended_type2_record_array_0203de48.json | tools/report_objdiff.py
   report_json = build/reports/actor_extended_type2_record_array_0203de48.json
-  report_args = --section .text --function func_0203de48 --require-exact
+  report_args = --section .text --function ActorExtendedRecordArray_Init --require-exact
 build build/decomp/asm/game/actor_extended_type2_record_array_0203df48.o: mwasmarm asm/game/actor_extended_type2_record_array_0203df48.s
 build build/decomp/delinks/asm/game/actor_extended_type2_record_array_0203df48.o: dsd_delink config/arm9/config.yaml config/arm9/delinks.txt config/arm9/symbols.txt config/arm9/relocs.txt
 build build/reports/actor_extended_type2_record_array_0203df48.json: objdiff build/decomp/delinks/asm/game/actor_extended_type2_record_array_0203df48.o | build/decomp/asm/game/actor_extended_type2_record_array_0203df48.o
@@ -16590,7 +16590,7 @@ build build/reports/actor_extended_type2_record_array_0203df48.json: objdiff bui
   base_object = build/decomp/asm/game/actor_extended_type2_record_array_0203df48.o
 build build/reports/actor_extended_type2_record_array_0203df48.txt: match_report build/reports/actor_extended_type2_record_array_0203df48.json | tools/report_objdiff.py
   report_json = build/reports/actor_extended_type2_record_array_0203df48.json
-  report_args = --section .text --function func_0203df48 --require-exact
+  report_args = --section .text --function ActorExtendedRecordArray_InitElementNoOp --require-exact
 build build/reports/actor_extended_type2_record_array.txt: phony build/reports/actor_extended_type2_record_array_0203de48.txt build/reports/actor_extended_type2_record_array_0203df48.txt
 
 build actor_extended_type2_record_array: phony build/decomp/src/game/actor_extended_type2_record_array.o build/decomp/asm/game/actor_extended_type2_record_array_0203de48.o build/decomp/asm/game/actor_extended_type2_record_array_0203df48.o build/reports/actor_extended_type2_record_array.txt
@@ -16624,7 +16624,7 @@ build build/reports/actor_extended_type2_lifecycle_0203e214.json: objdiff build/
   base_object = build/decomp/asm/game/actor_extended_type2_lifecycle_0203e214.o
 build build/reports/actor_extended_type2_lifecycle_0203e214.txt: match_report build/reports/actor_extended_type2_lifecycle_0203e214.json | tools/report_objdiff.py
   report_json = build/reports/actor_extended_type2_lifecycle_0203e214.json
-  report_args = --section .text --function ActorExtendedType2_ResetRuntimeState --function ActorExtendedType2_DestroyComplete --function func_0203e370 --require-exact
+  report_args = --section .text --function ActorExtendedType2_ResetRuntimeState --function ActorExtendedType2_DestroyComplete --function ActorExtendedRecordArray_DestroyAndFree --require-exact
 build build/reports/actor_extended_type2_lifecycle.txt: phony build/reports/actor_extended_type2_lifecycle_0203e214.txt
 
 build actor_extended_type2_lifecycle: phony build/decomp/src/game/actor_extended_type2_lifecycle.o build/decomp/asm/game/actor_extended_type2_lifecycle_0203e214.o build/reports/actor_extended_type2_lifecycle.txt

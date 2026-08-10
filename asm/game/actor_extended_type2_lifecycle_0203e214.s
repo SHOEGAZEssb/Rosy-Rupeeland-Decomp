@@ -114,10 +114,10 @@ ActorExtendedType2_DestroyComplete: ; 0x0203e298
 .L_0203e36c: .word data_020dfee4
     .size ActorExtendedType2_DestroyComplete, . - ActorExtendedType2_DestroyComplete
 
-    .global func_0203e370
-    .type func_0203e370, @function
+    .global ActorExtendedRecordArray_DestroyAndFree
+    .type ActorExtendedRecordArray_DestroyAndFree, @function
 
-func_0203e370: ; 0x0203e370
+ActorExtendedRecordArray_DestroyAndFree: ; 0x0203e370
     stmdb sp!, {r4, lr}
     ldr r1, .L_0203e3ac
     mov r4, r0
@@ -136,5 +136,5 @@ func_0203e370: ; 0x0203e370
     ldmia sp!, {r4, pc}
 .L_0203e3ac: .word data_020dfec0
 .L_0203e3b0: .word func_02004ac8
-    .size func_0203e370, . - func_0203e370
+    .size ActorExtendedRecordArray_DestroyAndFree, . - ActorExtendedRecordArray_DestroyAndFree
 

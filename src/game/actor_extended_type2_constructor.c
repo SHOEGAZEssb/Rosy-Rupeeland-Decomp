@@ -22,7 +22,7 @@ extern void func_02045288(void *object, u32 value, s32 x, s32 y);
 extern s32 *func_0204539c(void *object);
 extern s32 *func_020453b0(void *object);
 extern u16 func_020453c8(void *object);
-extern void *func_0203de48(void *allocation, u32 value);
+extern void *ActorExtendedRecordArray_Init(void *allocation, u32 value);
 extern u8 *func_0206899c(s32 index);
 #ifdef __cplusplus
 }
@@ -36,7 +36,8 @@ extern u8 *func_0206899c(s32 index);
  * and supplies X/Y; config +0x38 optionally allocates and initializes object
  * +0x26c, whose queried coordinates and halfword populate +0x230/+0x234/+0x26a.
  * Config +0x40 optionally allocates the 12-byte object initialized by
- * func_0203de48 and stored at +0x278; signed halfword +0x4c is copied to +0x27c.
+ * ActorExtendedRecordArray_Init and stored at +0x278; signed halfword +0x4c is
+ * copied to +0x27c.
  *
  * After virtual +0xc4, use actor index +0x4e to query the table rooted at
  * data_020e83a0 and func_0206899c, copying returned word +0x0c to +0x200/+0x1fc.
@@ -107,7 +108,7 @@ void *ActorExtendedType2_Init(void *self, const void *configuration)
     if (*(u32 *)(config + 0x40) != 0) {
         void *object = Heap_Alloc(12, data_020e00c0, 4, &gHeapContext);
         if (object != 0)
-            object = func_0203de48(object, *(u32 *)(config + 0x40));
+            object = ActorExtendedRecordArray_Init(object, *(u32 *)(config + 0x40));
         *(void **)(actor + 0x278) = object;
     } else {
         *(void **)(actor + 0x278) = 0;

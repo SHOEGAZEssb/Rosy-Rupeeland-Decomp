@@ -96,7 +96,7 @@ void *ActorExtendedType2_DestroyComplete(void *self)
  * elements through func_020c0c24 and func_02004ac8, then free self. Return the
  * original pointer value after the free; array and object heap state is released.
  */
-void *func_0203e370(void *self)
+void *ActorExtendedRecordArray_DestroyAndFree(void *self)
 {
     u8 *object = (u8 *)self;
 

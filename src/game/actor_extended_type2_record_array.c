@@ -11,7 +11,7 @@ extern "C" {
 extern void *func_020c09cc(void *allocation, s32 count, s32 elementSize,
                            s32 alignment, void (*constructor)(void *),
                            void (*destructor)(void *));
-void func_0203df48(void *element);
+void ActorExtendedRecordArray_InitElementNoOp(void *element);
 #ifdef __cplusplus
 }
 #endif
@@ -20,12 +20,13 @@ void func_0203df48(void *element);
  * Install vtable data_020dfec0 and count consecutive eight-byte input records
  * until the first signed halfword equals -1. For a positive count, allocate
  * count*8+8 bytes, initialize an eight-byte-element array through func_020c09cc
- * using func_0203df48 and no destructor, store it at +0x04, then copy all four
- * input halfwords into each element. For a non-positive count, store null at
+ * using ActorExtendedRecordArray_InitElementNoOp and no destructor, store it
+ * at +0x04, then copy all four input halfwords into each element. For a
+ * non-positive count, store null at
  * +0x04. Return self; heap and array-construction state change. As in retail,
  * allocation failure still leaves the subsequent copy loop without a guard.
  */
-void *func_0203de48(void *self, const void *records)
+void *ActorExtendedRecordArray_Init(void *self, const void *records)
 {
     u8 *object = (u8 *)self;
     const s16 *source = (const s16 *)records;
@@ -43,7 +44,7 @@ void *func_0203de48(void *self, const void *records)
                                          data_020df9e0, 4, &gHeapContext);
         if (allocation != 0) {
             allocation = func_020c09cc(allocation, count, 8, 8,
-                                       func_0203df48, 0);
+                                       ActorExtendedRecordArray_InitElementNoOp, 0);
         }
         *(void **)(object + 4) = allocation;
         for (index = 0; index < count; ++index) {
@@ -60,7 +61,7 @@ void *func_0203de48(void *self, const void *records)
 }
 
 /* Accept an array element and perform no initialization; returns no value. */
-void func_0203df48(void *element)
+void ActorExtendedRecordArray_InitElementNoOp(void *element)
 {
     (void)element;
 }

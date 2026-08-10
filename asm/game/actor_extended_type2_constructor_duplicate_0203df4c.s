@@ -10,7 +10,7 @@
 .extern func_020050a4
 .extern Actor_AdjustPositionForTerrainHeight
 .extern func_0203b514
-.extern func_0203de48
+.extern ActorExtendedRecordArray_Init
 .extern func_020450dc
 .extern func_02045210
 .extern func_02045288
@@ -137,7 +137,7 @@ ActorExtendedType2_InitDuplicate: ; 0x0203df4c
     cmp r0, #0x0
     beq .L_0203e10c
     ldr r1, [r4, #0x40]
-    bl func_0203de48
+    bl ActorExtendedRecordArray_Init
 .L_0203e10c:
     str r0, [r5, #0x278]
     b .L_0203e118
