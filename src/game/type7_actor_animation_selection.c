@@ -18,7 +18,7 @@ extern const u32 data_020e1878[];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_02035518(void *state, s32 enabled);
+extern void AttachmentController_SetEnabled(void *state, s32 enabled);
 extern void func_0204ced8(void *state, u32 index);
 extern void func_0204cf28(void *state);
 #ifdef __cplusplus
@@ -56,11 +56,11 @@ void func_0204b1e0(void *self)
 
     if ((flags & 0x202400) != 0
         || (*(u16 *)(*(u8 **)(actor + 0x54) + 0x24) & 0x14) != 0) {
-        func_02035518(helper, 0);
+        AttachmentController_SetEnabled(helper, 0);
         goto update;
     }
     if ((flags & 0x1000) != 0) {
-        func_02035518(helper, *(void **)(actor + 0x234) == 0);
+        AttachmentController_SetEnabled(helper, *(void **)(actor + 0x234) == 0);
         goto update;
     }
 
@@ -107,12 +107,12 @@ void func_0204b1e0(void *self)
     }
 
     if (animation == -1) {
-        func_02035518(helper, 0);
+        AttachmentController_SetEnabled(helper, 0);
     } else {
         if (*(s16 *)(actor + 0x2b6) != 0)
             func_0204cf28(helper);
         func_0204ced8(helper, (u8)animation);
-        func_02035518(helper, 1);
+        AttachmentController_SetEnabled(helper, 1);
     }
 
 update:

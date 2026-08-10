@@ -14,7 +14,7 @@
 .extern func_02005070
 .extern func_02007f24
 .extern func_0200b2c0
-.extern func_02031720
+.extern Actor_ClearTransientContactState
 .extern func_02032228
 .extern func_02032370
 .extern func_020328d0
@@ -454,7 +454,7 @@ ActorDerivedType1_UpdateFrame: ; 0x02035538
     ldr r1, [r1, #0x8]
     blx r1
     mov r0, r5
-    bl func_02031720
+    bl Actor_ClearTransientContactState
     ldr r1, .L_02035ba4
     ldr r0, [r1, #0x0]
     add r0, r0, #0x200

@@ -7,7 +7,7 @@
 .extern func_02005058
 .extern func_02031758
 .extern func_02031cac
-.extern func_02035518
+.extern AttachmentController_SetEnabled
 .extern func_0204cfa4
 .extern func_0206dcac
 .extern func_020adae4
@@ -63,7 +63,7 @@ func_02035be8: ; 0x02035be8
     beq .L_02035c98
     add r0, r9, #0x2a8
     mov r1, #0x0
-    bl func_02035518
+    bl AttachmentController_SetEnabled
 .L_02035c98:
     add r0, sp, #0xc
     add r1, r9, #0x18

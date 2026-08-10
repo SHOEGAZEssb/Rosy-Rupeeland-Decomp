@@ -7,7 +7,7 @@
  * and mask word 0xd0 with 0x801f37ee. Returns no value and calls no hardware or
  * SDK services.
  */
-void func_020316e8(void *self)
+void Actor_SnapshotTransientState(void *self)
 {
     u8 *actor = (u8 *)self;
     actor[0xd5] = actor[0xd4];
@@ -21,7 +21,7 @@ void func_020316e8(void *self)
  * Clear transient contact bytes 0x49-0x4b and mirror actor flag 0x2000 into
  * flag 0x4000, preserving all other flag bits. Returns no value.
  */
-void func_02031720(void *self)
+void Actor_ClearTransientContactState(void *self)
 {
     u8 *actor = (u8 *)self;
     u32 flags;
@@ -36,7 +36,7 @@ void func_02031720(void *self)
 }
 
 /* Set transient actor flag 0x80 at offset 0x10 and return no value. */
-void func_02031748(void *self)
+void Actor_SetRuntimeFlag80(void *self)
 {
     *(u32 *)((u8 *)self + 0x10) |= 0x80;
 }

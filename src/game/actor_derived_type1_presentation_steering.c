@@ -13,7 +13,7 @@ extern void func_02005030(void *temporary, const void *source);
 extern void func_02005058(void *temporary);
 extern void func_02031758(void *output, void *actor, const void *position);
 extern void *SceneManager_GetCurrent(void *manager);
-extern void func_02035518(void *owner, s32 enabled);
+extern void AttachmentController_SetEnabled(void *owner, s32 enabled);
 extern s32 func_020adae4(s32 dividend, s32 divisor);
 extern s32 func_0204cfa4(s32 x, s32 y);
 extern s32 func_020adc90(s32 numerator, s32 denominator);
@@ -75,7 +75,7 @@ void func_02035be8(void *output, void *self, const void *position)
 
     {
         s32 scene = *(s32 *)((u8 *)SceneManager_GetCurrent(gSceneManager) + 4);
-        if (scene != 1 && scene != 0x16) func_02035518(actor + 0x2a8, 0);
+        if (scene != 1 && scene != 0x16) AttachmentController_SetEnabled(actor + 0x2a8, 0);
     }
     func_02005030(actorPosition, actor + 0x18);
     actorPosition[2] += *(s16 *)(actor + 0x6a) * 0xb33;

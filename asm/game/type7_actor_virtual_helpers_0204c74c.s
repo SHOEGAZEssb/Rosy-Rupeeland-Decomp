@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/type7_actor_virtual_helpers.c.
 .extern SceneManager_GetCurrent
 .extern gSceneManager
-.extern func_02035518
+.extern AttachmentController_SetEnabled
 .text
     .global func_0204c74c
 func_0204c74c: ; 0x0204c74c
@@ -29,7 +29,7 @@ func_0204c780: ; 0x0204c780
     ldr ip, .L_0204c78c
     add r0, r0, #0x2a8
     bx ip
-.L_0204c78c: .word func_02035518
+.L_0204c78c: .word AttachmentController_SetEnabled
 .size func_0204c780, . - func_0204c780
 
     .global func_0204c790

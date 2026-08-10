@@ -4,7 +4,7 @@
 .extern func_02004fe0
 .extern func_02005058
 .extern func_02009d78
-.extern func_020316e8
+.extern Actor_SnapshotTransientState
 .extern func_02050078
 .extern func_ov088_0221a98c
 .extern gTouchPanelManager
@@ -14,7 +14,7 @@ func_ov088_0221b428:
     stmdb sp!, {r3, r4, r5, lr}
     sub sp, sp, #0x20
     mov r4, r0
-    bl func_020316e8
+    bl Actor_SnapshotTransientState
     add r0, r4, #0x200
     ldrh r1, [r0, #0x1a]
     tst r1, #0x800

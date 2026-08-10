@@ -21,5 +21,5 @@ func_020354e8: ; 0x020354e8
     ldmia sp!, {r3, r4, r5, pc}
     .size func_020354e8, . - func_020354e8
 
-    .global func_02035518
+    .global AttachmentController_SetEnabled
 

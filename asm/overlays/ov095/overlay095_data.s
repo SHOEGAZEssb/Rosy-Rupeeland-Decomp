@@ -8,7 +8,7 @@
 .extern func_ov095_0221b1ec
 .extern func_ov095_02217a38
 .extern func_020314b8
-.extern func_020316e8
+.extern Actor_SnapshotTransientState
 .extern func_ov095_02217aac
 .extern func_0203ef90
 .extern func_02031564
@@ -168,7 +168,7 @@
 .extern func_ov095_0221c71c
 .extern func_0204fe68
 .extern func_ov095_0221c3a0
-.extern func_02031720
+.extern Actor_ClearTransientContactState
 .extern func_0204ff0c
 .extern func_02032abc
 .extern func_ov095_0221c6a4
@@ -315,7 +315,7 @@ data_ov095_0221cca0:
     .word func_ov095_0221b1ec
     .word func_ov095_02217a38
     .word func_020314b8
-    .word func_020316e8
+    .word Actor_SnapshotTransientState
     .word func_ov095_02217aac
     .word func_0203ef90
     .word func_02031564
@@ -624,9 +624,9 @@ data_ov095_0221d1a4:
     .word func_ov095_0221c71c
     .word func_0204fe68
     .word func_020314b8
-    .word func_020316e8
+    .word Actor_SnapshotTransientState
     .word func_ov095_0221c3a0
-    .word func_02031720
+    .word Actor_ClearTransientContactState
     .word func_02031564
     .word func_0204ff0c
     .word func_02032abc
@@ -703,9 +703,9 @@ data_ov095_0221d2e8:
     .word func_ov095_0221c71c
     .word func_0204fe68
     .word func_020314b8
-    .word func_020316e8
+    .word Actor_SnapshotTransientState
     .word func_ov095_0221c8dc
-    .word func_02031720
+    .word Actor_ClearTransientContactState
     .word func_02031564
     .word func_0204ff0c
     .word func_02032abc

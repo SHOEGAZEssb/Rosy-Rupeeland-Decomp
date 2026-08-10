@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/type7_actor_special_state_control.c.
 .extern func_0200b2c0
-.extern func_02035518
+.extern AttachmentController_SetEnabled
 .extern func_0204aff4
 .extern func_0204b1e0
 .extern func_0204ced8
@@ -22,7 +22,7 @@ func_0204b5d8: ; 0x0204b5d8
     orr r1, r1, #0x200000
     str r1, [r4, #0x268]
     mov r1, #0x0
-    bl func_02035518
+    bl AttachmentController_SetEnabled
     ldr r0, [r4, #0x54]
     ldrb r2, [r4, #0xd4]
     ldrb r1, [r0, #0x38]
@@ -90,7 +90,7 @@ func_0204b6cc: ; 0x0204b6cc
     mov r1, #0x0
     add r0, r0, #0x2a8
     bx ip
-.L_0204b6e8: .word func_02035518
+.L_0204b6e8: .word AttachmentController_SetEnabled
 .size func_0204b6cc, . - func_0204b6cc
 
     .global func_0204b6ec
@@ -142,7 +142,7 @@ func_0204b6ec: ; 0x0204b6ec
     bl func_0204ced8
     add r0, r4, #0x2a8
     mov r1, #0x1
-    bl func_02035518
+    bl AttachmentController_SetEnabled
     add r0, r4, #0x2a8
     ldr r1, [r0, #0x0]
     ldr r1, [r1, #0x8]

@@ -41,7 +41,7 @@ extern s32 func_020adc90(s32 numerator, s32 denominator);
 extern void func_020328d0(void *state, s32 scale);
 extern void Actor_UpdateAnimationState(void *actor);
 extern void func_0204ced8(void *state, s32 mode);
-extern void func_02031720(void *actor);
+extern void Actor_ClearTransientContactState(void *actor);
 #ifdef __cplusplus
 }
 #endif
@@ -226,7 +226,7 @@ void ActorDerivedType1_UpdateFrame(void *self)
         func_0204ced8(actor + 0x2a8, -1);
     }
     (*(void (**)(void *))(*(u8 **)(actor + 0x2a8) + 8))(actor + 0x2a8);
-    func_02031720(actor);
+    Actor_ClearTransientContactState(actor);
 
     *(s16 *)((u8 *)gGameWork + 0x24a) = (s16)orientation;
     if ((*(u32 *)(actor + 0xd0) & 0x20) != 0)

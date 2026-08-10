@@ -7,7 +7,7 @@
  * attachment halfword flag 4 at +0x24; zero sets it. Returns no value and
  * invokes no hardware or SDK helper. The attachment pointer is a precondition.
  */
-void func_02035518(void *self, s32 enabled)
+void AttachmentController_SetEnabled(void *self, s32 enabled)
 {
     u8 *attachment = *(u8 **)((u8 *)self + 4);
 

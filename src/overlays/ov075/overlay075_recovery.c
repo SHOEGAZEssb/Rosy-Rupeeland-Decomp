@@ -43,7 +43,7 @@ void func_ov075_02212f20(void);
 /* Processes the supplied ABI arguments and offset-based actor state, returns its encoded result, and invokes func_020349b8, func_020405c8; exact higher-level semantics remain unconfirmed. */
 void func_ov075_02212f98(void);
 
-/* Processes the supplied ABI arguments and offset-based actor state, returns its encoded result, and invokes func_020050a4, func_02031720, Actor_GetCachedTerrainHeight and other shared helpers; exact higher-level semantics remain unconfirmed. */
+/* Processes the supplied ABI arguments and offset-based actor state, returns its encoded result, and invokes func_020050a4, Actor_ClearTransientContactState, Actor_GetCachedTerrainHeight and other shared helpers; exact higher-level semantics remain unconfirmed. */
 void func_ov075_02212fd8(void);
 
 /* Processes the supplied ABI arguments and offset-based actor state, returns its encoded result, and invokes func_020ae024; exact higher-level semantics remain unconfirmed. */
@@ -76,7 +76,7 @@ void func_ov075_022135e4(void);
 /* Processes the supplied ABI arguments and offset-based actor state, returns its encoded result, and invokes func_0201f864, Actor_SetPosition, func_020593dc and other shared helpers; exact higher-level semantics remain unconfirmed. */
 void func_ov075_0221360c(void);
 
-/* Processes the supplied ABI arguments and offset-based actor state, returns its encoded result, and invokes func_020050a4, func_02031720, Actor_GetCachedTerrainHeight and other shared helpers; exact higher-level semantics remain unconfirmed. */
+/* Processes the supplied ABI arguments and offset-based actor state, returns its encoded result, and invokes func_020050a4, Actor_ClearTransientContactState, Actor_GetCachedTerrainHeight and other shared helpers; exact higher-level semantics remain unconfirmed. */
 void func_ov075_022137a0(void);
 
 /* Processes the supplied ABI arguments using only local offset-based fields; observable mutations and the return value are preserved by the matching implementation, with no direct SDK call. */

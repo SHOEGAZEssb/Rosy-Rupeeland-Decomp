@@ -1,5 +1,5 @@
 ; Matching retail form; see src/game/trigger_presentation_actor_callbacks.c.
-.extern func_02031748
+.extern Actor_SetRuntimeFlag80
 .extern func_02032a94
 .extern func_02032abc
 .extern Actor_TryDispatchActivationMode2
@@ -10,7 +10,7 @@
 func_0204eaac: ; 0x0204eaac
     stmdb sp!, {r4, lr}
     mov r4, r0
-    bl func_02031748
+    bl Actor_SetRuntimeFlag80
     mov r0, r4
     bl func_02034164
     cmp r0, #0x0

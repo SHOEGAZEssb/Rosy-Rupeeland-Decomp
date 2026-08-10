@@ -8,7 +8,7 @@
 .extern func_020067fc
 .extern func_02006804
 .extern func_020068ac
-.extern func_02031748
+.extern Actor_SetRuntimeFlag80
 .extern Actor_UpdateTerrainMotionFeedback
 .extern func_02034164
     .global ActorDerivedRuntime_UpdateFrame
@@ -16,7 +16,7 @@ ActorDerivedRuntime_UpdateFrame: ; 0x0203b798
     stmdb sp!, {r4, lr}
     sub sp, sp, #0x20
     mov r4, r0
-    bl func_02031748
+    bl Actor_SetRuntimeFlag80
     mov r0, r4
     bl func_02034164
     cmp r0, #0x0

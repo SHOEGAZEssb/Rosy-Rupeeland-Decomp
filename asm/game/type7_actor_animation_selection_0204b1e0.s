@@ -7,7 +7,7 @@
 .extern data_020e1850
 .extern data_020e1868
 .extern data_020e1878
-.extern func_02035518
+.extern AttachmentController_SetEnabled
 .extern func_0204ced8
 .extern func_0204cf28
 .text
@@ -21,7 +21,7 @@ func_0204b1e0: ; 0x0204b1e0
     beq .L_0204b208
     add r0, r5, #0x2a8
     mov r1, #0x0
-    bl func_02035518
+    bl AttachmentController_SetEnabled
     b .L_0204b5a0
 .L_0204b208:
     ldr r1, [r5, #0x54]
@@ -32,7 +32,7 @@ func_0204b1e0: ; 0x0204b1e0
     beq .L_0204b230
     add r0, r5, #0x2a8
     mov r1, #0x0
-    bl func_02035518
+    bl AttachmentController_SetEnabled
     b .L_0204b5a0
 .L_0204b230:
     tst r0, #0x1000
@@ -42,11 +42,11 @@ func_0204b1e0: ; 0x0204b1e0
     add r0, r5, #0x2a8
     bne .L_0204b254
     mov r1, #0x1
-    bl func_02035518
+    bl AttachmentController_SetEnabled
     b .L_0204b5a0
 .L_0204b254:
     mov r1, #0x0
-    bl func_02035518
+    bl AttachmentController_SetEnabled
     b .L_0204b5a0
 .L_0204b260:
     ldr r4, .L_0204b5b8
@@ -275,12 +275,12 @@ func_0204b1e0: ; 0x0204b1e0
     bl func_0204ced8
     add r0, r5, #0x2a8
     mov r1, #0x1
-    bl func_02035518
+    bl AttachmentController_SetEnabled
     b .L_0204b5a0
 .L_0204b594:
     add r0, r5, #0x2a8
     mov r1, #0x0
-    bl func_02035518
+    bl AttachmentController_SetEnabled
 .L_0204b5a0:
     add r0, r5, #0x2a8
     ldr r1, [r0, #0x0]

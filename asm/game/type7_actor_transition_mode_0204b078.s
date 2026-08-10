@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/type7_actor_transition_mode.c.
 .extern data_021052fc
-.extern func_02035518
+.extern AttachmentController_SetEnabled
 .extern func_02039d54
 .extern func_02047d40
 .extern func_0204ced8
@@ -36,7 +36,7 @@ func_0204b078: ; 0x0204b078
     str r1, [r4, #0x268]
     add r0, r4, #0x2a8
     mov r1, #0x0
-    bl func_02035518
+    bl AttachmentController_SetEnabled
     ldr r0, [r4, #0x14]
     orr r0, r0, #0x6
     str r0, [r4, #0x14]
@@ -77,7 +77,7 @@ func_0204b148: ; 0x0204b148
     bic r2, r1, #0x3000
     mov r1, #0x0
     str r2, [r5, #0x268]
-    bl func_02035518
+    bl AttachmentController_SetEnabled
     ldmia sp!, {r3, r4, r5, pc}
 .L_0204b17c:
     add r0, r1, #0x1
@@ -88,7 +88,7 @@ func_0204b148: ; 0x0204b148
     add r0, r5, #0x2a8
     mov r1, #0x0
     str r2, [r5, #0x268]
-    bl func_02035518
+    bl AttachmentController_SetEnabled
     ldmia sp!, {r3, r4, r5, pc}
 .L_0204b1a4:
     orr r1, r1, #0x1000
@@ -105,7 +105,7 @@ func_0204b148: ; 0x0204b148
     bl func_0204ced8
     add r0, r5, #0x2a8
     mov r1, #0x1
-    bl func_02035518
+    bl AttachmentController_SetEnabled
     ldmia sp!, {r3, r4, r5, pc}
 .size func_0204b148, . - func_0204b148
 

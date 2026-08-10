@@ -3,7 +3,7 @@
 .extern data_020e18b0
 .extern data_020e18b8
 .extern func_0200b2c0
-.extern func_02035518
+.extern AttachmentController_SetEnabled
 .extern func_02047d40
 .extern func_020481dc
 .text
@@ -59,7 +59,7 @@ func_0204a200: ; 0x0204a200
     add r0, r4, #0x2a8
     bic r2, r2, #0x3000
     str r2, [r4, #0x268]
-    bl func_02035518
+    bl AttachmentController_SetEnabled
     add r1, r4, #0x200
     mov r2, #0x0
     strh r2, [r1, #0x46]

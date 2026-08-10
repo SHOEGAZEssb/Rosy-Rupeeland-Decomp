@@ -11,7 +11,7 @@ extern void *gSceneManager;
 extern "C" {
 #endif
 extern void *SceneManager_GetCurrent(void *manager);
-extern void func_02035518(void *state, s32 enabled);
+extern void AttachmentController_SetEnabled(void *state, s32 enabled);
 #ifdef __cplusplus
 }
 #endif
@@ -39,12 +39,12 @@ s32 func_0204c778(void)
 
 /*
  * Inputs are a type-seven actor and an enable value. Forward the value to
- * func_02035518 for embedded controller +0x2a8. The controller may change;
+ * AttachmentController_SetEnabled for embedded controller +0x2a8. The controller may change;
  * no value is returned and there are no direct hardware effects.
  */
 void func_0204c780(void *self, s32 enabled)
 {
-    func_02035518((u8 *)self + 0x2a8, enabled);
+    AttachmentController_SetEnabled((u8 *)self + 0x2a8, enabled);
 }
 
 /*

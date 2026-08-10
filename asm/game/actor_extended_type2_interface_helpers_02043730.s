@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/actor_extended_type2_interface_helpers.c.
 .text
-.extern func_02035518
+.extern AttachmentController_SetEnabled
 .global func_02043730
 .type func_02043730, @function
 func_02043730: ; 0x02043730
@@ -104,7 +104,7 @@ func_020437dc: ; 0x020437dc
     ldr ip, .L_020437e8
     add r0, r0, #0x284
     bx ip
-.L_020437e8: .word func_02035518
+.L_020437e8: .word AttachmentController_SetEnabled
 
 .size func_020437dc, . - func_020437dc
 

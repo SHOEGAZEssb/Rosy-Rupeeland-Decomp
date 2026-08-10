@@ -13804,19 +13804,19 @@ build build/reports/actor_runtime_frame_state_020316e8.json: objdiff build/decom
   base_object = build/decomp/asm/game/actor_runtime_frame_state_020316e8.o
 build build/reports/actor_runtime_frame_state_020316e8.txt: match_report build/reports/actor_runtime_frame_state_020316e8.json | tools/report_objdiff.py
   report_json = build/reports/actor_runtime_frame_state_020316e8.json
-  report_args = --section .text --function func_020316e8 --require-exact
+  report_args = --section .text --function Actor_SnapshotTransientState --require-exact
 build build/reports/actor_runtime_frame_state_02031720.json: objdiff build/decomp/delinks/asm/game/actor_runtime_frame_state_02031720.o | build/decomp/asm/game/actor_runtime_frame_state_02031720.o
   target_object = build/decomp/delinks/asm/game/actor_runtime_frame_state_02031720.o
   base_object = build/decomp/asm/game/actor_runtime_frame_state_02031720.o
 build build/reports/actor_runtime_frame_state_02031720.txt: match_report build/reports/actor_runtime_frame_state_02031720.json | tools/report_objdiff.py
   report_json = build/reports/actor_runtime_frame_state_02031720.json
-  report_args = --section .text --function func_02031720 --require-exact
+  report_args = --section .text --function Actor_ClearTransientContactState --require-exact
 build build/reports/actor_runtime_frame_state_02031748.json: objdiff build/decomp/delinks/asm/game/actor_runtime_frame_state_02031748.o | build/decomp/asm/game/actor_runtime_frame_state_02031748.o
   target_object = build/decomp/delinks/asm/game/actor_runtime_frame_state_02031748.o
   base_object = build/decomp/asm/game/actor_runtime_frame_state_02031748.o
 build build/reports/actor_runtime_frame_state_02031748.txt: match_report build/reports/actor_runtime_frame_state_02031748.json | tools/report_objdiff.py
   report_json = build/reports/actor_runtime_frame_state_02031748.json
-  report_args = --section .text --function func_02031748 --require-exact
+  report_args = --section .text --function Actor_SetRuntimeFlag80 --require-exact
 build build/reports/actor_runtime_frame_state.txt: phony build/reports/actor_runtime_frame_state_020316e8.txt build/reports/actor_runtime_frame_state_02031720.txt build/reports/actor_runtime_frame_state_02031748.txt
 
 build actor_runtime_frame_state: phony build/decomp/src/game/actor_runtime_frame_state.o build/decomp/asm/game/actor_runtime_frame_state_020316e8.o build/decomp/asm/game/actor_runtime_frame_state_02031720.o build/decomp/asm/game/actor_runtime_frame_state_02031748.o build/reports/actor_runtime_frame_state.txt
@@ -15080,7 +15080,7 @@ build build/reports/attachment_visibility_toggle_02035518.json: objdiff build/de
   base_object = build/decomp/asm/game/attachment_visibility_toggle_02035518.o
 build build/reports/attachment_visibility_toggle_02035518.txt: match_report build/reports/attachment_visibility_toggle_02035518.json | tools/report_objdiff.py
   report_json = build/reports/attachment_visibility_toggle_02035518.json
-  report_args = --section .text --function func_02035518 --require-exact
+  report_args = --section .text --function AttachmentController_SetEnabled --require-exact
 build build/reports/attachment_visibility_toggle.txt: phony build/reports/attachment_visibility_toggle_02035518.txt
 
 build attachment_visibility_toggle: phony build/decomp/src/game/attachment_visibility_toggle.o build/decomp/asm/game/attachment_visibility_toggle_02035518.o build/reports/attachment_visibility_toggle.txt

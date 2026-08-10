@@ -6,7 +6,7 @@ extern u8 data_021056e4[];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_02035518(void *owner, s32 enabled);
+extern void AttachmentController_SetEnabled(void *owner, s32 enabled);
 #ifdef __cplusplus
 }
 #endif
@@ -44,12 +44,12 @@ s32 func_02039e30(void *self)
 }
 
 /*
- * Forward actor subobject +0x2a8 and enabled to func_02035518. Returns no
+ * Forward actor subobject +0x2a8 and enabled to AttachmentController_SetEnabled. Returns no
  * value; the helper toggles attachment halfword flag four.
  */
 void func_02039e48(void *self, s32 enabled)
 {
-    func_02035518((u8 *)self + 0x2a8, enabled);
+    AttachmentController_SetEnabled((u8 *)self + 0x2a8, enabled);
 }
 
 /* Clear actor halfword +0x2a4. Returns no value and calls no helpers. */

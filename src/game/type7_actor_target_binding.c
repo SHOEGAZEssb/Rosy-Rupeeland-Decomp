@@ -14,7 +14,7 @@ extern void **func_02007f0c(void *world, s32 collection);
 extern s32 func_020adcac(const void *first, const void *second);
 extern void func_02048378(void *actor, void *other);
 extern void Actor_DestroyAuxiliaryCollisionResource(void *actor, void *object);
-extern void func_02035518(void *value, s32 mode);
+extern void AttachmentController_SetEnabled(void *value, s32 mode);
 #ifdef __cplusplus
 }
 #endif
@@ -110,6 +110,6 @@ void func_02048bcc(void *self)
     if (*(void **)(actor + 0x1e0) != 0)
         Actor_DestroyAuxiliaryCollisionResource(
             actor, *(void **)(actor + 0x1e0));
-    func_02035518(actor + 0x2a8, 0);
+    AttachmentController_SetEnabled(actor + 0x2a8, 0);
     *(u32 *)(actor + 0x108) = 0;
 }

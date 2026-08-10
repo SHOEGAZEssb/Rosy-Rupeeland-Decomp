@@ -1,5 +1,5 @@
 ; Matching retail form; see src/game/runtime_actor_variant_update.c.
-.extern func_02031748
+.extern Actor_SetRuntimeFlag80
 .extern func_0201b23c
 .extern func_0201273c
 .extern func_0200b058
@@ -16,7 +16,7 @@
 func_0204d308: ; 0x0204d308
     stmdb sp!, {r3, r4, r5, lr}
     mov r4, r0
-    bl func_02031748
+    bl Actor_SetRuntimeFlag80
     add r0, r4, #0xec
     bl func_0201b23c
     cmp r0, #0x0

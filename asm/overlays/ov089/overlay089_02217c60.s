@@ -14,7 +14,7 @@
 .extern func_020050f0
 .extern func_0201f864
 .extern Actor_GetCollisionBounds
-.extern func_020316e8
+.extern Actor_SnapshotTransientState
 .extern Actor_UpdateAnimationState
 .extern ActorDerivedRuntime_UpdateFrame
 .extern func_02072b68
@@ -68,7 +68,7 @@ func_ov089_02217c60:
     strne r0, [r1, #0x14]
 .L_02217cf0:
     mov r0, r10
-    bl func_020316e8
+    bl Actor_SnapshotTransientState
     mov r0, r10
     bl func_ov089_02218cb4
     add r0, r10, #0x200

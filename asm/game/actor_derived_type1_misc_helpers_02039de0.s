@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/actor_derived_type1_misc_helpers.c.
 .text
 .extern data_021056e4
-.extern func_02035518
+.extern AttachmentController_SetEnabled
 
     .global func_02039de0
     .type func_02039de0, @function
@@ -55,7 +55,7 @@ func_02039e48: ; 0x02039e48
     ldr ip, .L_02039e54
     add r0, r0, #0x2a8
     bx ip
-.L_02039e54: .word func_02035518
+.L_02039e54: .word AttachmentController_SetEnabled
     .size func_02039e48, . - func_02039e48
 
     .global func_02039e58

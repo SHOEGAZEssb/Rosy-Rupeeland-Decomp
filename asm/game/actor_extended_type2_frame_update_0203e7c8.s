@@ -19,7 +19,7 @@
 .extern Actor_UpdateAnimationState
 .extern Actor_SaveAndForceFlags
 .extern func_020349b8
-.extern func_02035518
+.extern AttachmentController_SetEnabled
 .extern func_0203bba4
 .extern func_02045184
 .extern func_0204ced8
@@ -469,7 +469,7 @@ func_0203e7c8: ; 0x0203e7c8
     bne .L_0203ee20
     add r0, r6, #0x284
     mov r1, #0x1
-    bl func_02035518
+    bl AttachmentController_SetEnabled
 .L_0203ee20:
     ldrb r0, [r6, #0x24c]
     cmp r0, r4
@@ -536,12 +536,12 @@ func_0203e7c8: ; 0x0203e7c8
     bl func_0204ced8
     add r0, r6, #0x284
     mov r1, #0x1
-    bl func_02035518
+    bl AttachmentController_SetEnabled
     b .L_0203ef04
 .L_0203eef8:
     add r0, r6, #0x284
     mov r1, #0x0
-    bl func_02035518
+    bl AttachmentController_SetEnabled
 .L_0203ef04:
     add r0, r6, #0x284
     ldr r1, [r0, #0x0]

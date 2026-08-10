@@ -10,7 +10,7 @@
 .extern func_020050c8
 .extern func_020050f0
 .extern func_02009d78
-.extern func_020316e8
+.extern Actor_SnapshotTransientState
 .extern Actor_UpdateAnimationState
 .extern ActorDerivedRuntime_UpdateFrame
 .extern func_020593ac
@@ -50,7 +50,7 @@ func_ov087_022179b0:
     strh r1, [r0, #0x1a]
 .L_02217a08:
     mov r0, r5
-    bl func_020316e8
+    bl Actor_SnapshotTransientState
     add r0, r5, #0x200
     ldrh r0, [r0, #0x1a]
     tst r0, #0x4

@@ -5,7 +5,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_02031720(void *actor);
+extern void Actor_ClearTransientContactState(void *actor);
 #ifdef __cplusplus
 }
 #endif
@@ -29,12 +29,12 @@ s32 func_0203ef88(void)
 }
 
 /*
- * Invoke func_02031720 on actor, then clear recovered flags 0x10, 0x80, and
+ * Invoke Actor_ClearTransientContactState on actor, then clear recovered flags 0x10, 0x80, and
  * 0x100 in actor word +0x260. Returns no value; base helper and actor state change.
  */
 void func_0203ef90(void *self)
 {
     u8 *actor = (u8 *)self;
-    func_02031720(actor);
+    Actor_ClearTransientContactState(actor);
     *(u32 *)(actor + 0x260) &= ~0x190;
 }

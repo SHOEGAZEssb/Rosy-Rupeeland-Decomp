@@ -1,7 +1,7 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov075/overlay075_recovery.c.
 .extern func_020050a4
-.extern func_02031720
+.extern Actor_ClearTransientContactState
 .extern Actor_GetCachedTerrainHeight
 .extern func_020593dc
 .extern func_02072b68
@@ -314,7 +314,7 @@ func_ov075_022137a0:
     strlt r0, [r7, #0x14]
 .L_02213bf0:
     mov r0, r7
-    bl func_02031720
+    bl Actor_ClearTransientContactState
 .L_02213bf8:
     add sp, sp, #0x38
     ldmia sp!, {r4, r5, r6, r7, r8, pc}

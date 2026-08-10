@@ -10,7 +10,7 @@ extern u8 *data_021052fc;
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_02035518(void *state, s32 enabled);
+extern void AttachmentController_SetEnabled(void *state, s32 enabled);
 extern void func_02039d54(void *object, s32 value);
 extern void func_02047d40(void *actor);
 extern void func_0204ced8(void *state, u32 value);
@@ -49,7 +49,7 @@ void func_0204b078(void *self, s32 enabled)
 
     *(u32 *)(actor + 0x268) =
         (*(u32 *)(actor + 0x268) | 0x400) & ~0x3000;
-    func_02035518(actor + 0x2a8, 0);
+    AttachmentController_SetEnabled(actor + 0x2a8, 0);
     *(u32 *)(actor + 0x14) |= 6;
     *(u16 *)(*(u8 **)(actor + 0x54) + 0x24) |= 0x10;
     attachment = *(u8 **)(actor + 0xa8);
@@ -73,17 +73,17 @@ void func_0204b148(void *self, s32 index)
     u8 *actor = (u8 *)self;
     if (index == -2) {
         *(u32 *)(actor + 0x268) &= ~0x3000;
-        func_02035518(actor + 0x2a8, 0);
+        AttachmentController_SetEnabled(actor + 0x2a8, 0);
         return;
     }
     if (index == -1) {
         *(u32 *)(actor + 0x268) |= 0x3000;
-        func_02035518(actor + 0x2a8, 0);
+        AttachmentController_SetEnabled(actor + 0x2a8, 0);
         return;
     }
     *(u32 *)(actor + 0x268) |= 0x1000;
     if (*(s16 *)(actor + 0x2b6) != 0)
         func_0204cf28(actor + 0x2a8);
     func_0204ced8(actor + 0x2a8, (u8)index);
-    func_02035518(actor + 0x2a8, 1);
+    AttachmentController_SetEnabled(actor + 0x2a8, 1);
 }

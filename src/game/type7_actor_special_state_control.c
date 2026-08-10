@@ -12,7 +12,7 @@ extern void *gSoundContext;
 extern "C" {
 #endif
 extern void func_0200b2c0(void *value, s32 x, s32 y, s32 z);
-extern void func_02035518(void *state, s32 enabled);
+extern void AttachmentController_SetEnabled(void *state, s32 enabled);
 extern s32 func_0204aff4(void *actor);
 extern void func_0204b1e0(void *actor);
 extern void func_0204ced8(void *state, u32 index);
@@ -39,7 +39,7 @@ void func_0204b5d8(void *self)
     if (func_0204aff4(actor) != 0)
         return;
     *(u32 *)(actor + 0x268) |= 0x200000;
-    func_02035518(actor + 0x2a8, 0);
+    AttachmentController_SetEnabled(actor + 0x2a8, 0);
     presentation = *(u8 **)(actor + 0x54);
     if (*(u8 *)(actor + 0xd4) == *(u8 *)(presentation + 0x38))
         func_02072b68(presentation, (u8)(*(u8 *)(actor + 0xd4) + 8));
@@ -77,7 +77,7 @@ void func_0204b6cc(void *self)
 {
     u8 *actor = (u8 *)self;
     *(u32 *)(actor + 0x268) |= 0x40000;
-    func_02035518(actor + 0x2a8, 0);
+    AttachmentController_SetEnabled(actor + 0x2a8, 0);
 }
 
 /*
@@ -108,7 +108,7 @@ void func_0204b6ec(void *self, s32 value, s32 selector)
     if (*(s16 *)(actor + 0x2b6) != 0)
         func_0204cf28(helper);
     func_0204ced8(helper, 0x19);
-    func_02035518(helper, 1);
+    AttachmentController_SetEnabled(helper, 1);
     helperVtable = *(void (***)(void *))helper;
     helperVtable[2](helper);
 }

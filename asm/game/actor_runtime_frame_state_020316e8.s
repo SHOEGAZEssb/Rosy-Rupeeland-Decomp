@@ -1,9 +1,9 @@
 ; Matching retail form; see src/game/actor_runtime_frame_state.c.
 .text
 
-    .global func_020316e8
-    .type func_020316e8, @function
-func_020316e8: ; 0x020316e8
+    .global Actor_SnapshotTransientState
+    .type Actor_SnapshotTransientState, @function
+Actor_SnapshotTransientState: ; 0x020316e8
     ldrb r2, [r0, #0xd4]
     ldr r1, .L_0203171c
     strb r2, [r0, #0xd5]
@@ -18,5 +18,5 @@ func_020316e8: ; 0x020316e8
     strh r1, [r0, #0xdc]
     bx lr
 .L_0203171c: .word 0x801f37ee
-    .size func_020316e8, . - func_020316e8
+    .size Actor_SnapshotTransientState, . - Actor_SnapshotTransientState
 

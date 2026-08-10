@@ -3,7 +3,7 @@
 .extern data_021052fc
 .extern func_02007f0c
 .extern Actor_DestroyAuxiliaryCollisionResource
-.extern func_02035518
+.extern AttachmentController_SetEnabled
 .extern func_02048378
 .extern func_020adcac
 .global func_02048a4c
@@ -136,7 +136,7 @@ func_02048bcc: ; 0x02048bcc
 .L_02048bf8:
     add r0, r4, #0x2a8
     mov r1, #0x0
-    bl func_02035518
+    bl AttachmentController_SetEnabled
     mov r0, #0x0
     str r0, [r4, #0x108]
     ldmia sp!, {r4, pc}

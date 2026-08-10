@@ -5,7 +5,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_02031748(void *actor);
+extern void Actor_SetRuntimeFlag80(void *actor);
 extern s32 func_02034164(void *actor);
 extern void *func_020050a4(void *destination, const void *source);
 extern void func_0200500c(void *vector, s32 x, s32 y, s32 z);
@@ -30,7 +30,7 @@ static void clearActorVector(u8 *actor, u32 offset)
 }
 
 /*
- * Run base frame helper func_02031748 and return early when func_02034164 says
+ * Run base frame helper Actor_SetRuntimeFlag80 and return early when func_02034164 says
  * the actor is inactive. Copy position +0x18 to +0x28. While +0x10 bit 0x40
  * permits track processing (with the recovered bit-one/+0x14 bit-0x10 gate),
  * advance track +0x198 and copy sampled components +4/+8/+0xc to motion
@@ -50,7 +50,7 @@ static void clearActorVector(u8 *actor, u32 offset)
 void ActorDerivedRuntime_UpdateFrame(void *self)
 {
     u8 *actor = (u8 *)self;
-    func_02031748(actor);
+    Actor_SetRuntimeFlag80(actor);
     if (func_02034164(actor) == 0)
         return;
     func_020050a4(actor + 0x28, actor + 0x18);

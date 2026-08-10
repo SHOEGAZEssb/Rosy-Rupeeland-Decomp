@@ -12,7 +12,7 @@
 .extern func_02005058
 .extern func_0200b04c
 .extern func_0201f864
-.extern func_02031748
+.extern Actor_SetRuntimeFlag80
 .extern Actor_UpdateAnimationState
 .extern Actor_QueryTerrainCell
 .extern ActorDerivedRuntime_UpdateFrame
@@ -43,7 +43,7 @@ func_ov075_022148d0:
     ldr r1, [r1, #0x18]
     blx r1
     mov r0, r5
-    bl func_02031748
+    bl Actor_SetRuntimeFlag80
     ldr r0, .L_02214d60
     bl func_0200b04c
     cmp r0, #0x0

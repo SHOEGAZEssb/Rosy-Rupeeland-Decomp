@@ -29,7 +29,7 @@ extern void func_0204cff4(s32 *x, s32 *y, s32 maximum);
 extern void func_02005058(void *vector);
 extern void func_0203bba4(void *actor);
 extern void Actor_UpdateAnimationState(void *actor);
-extern void func_02035518(void *owner, s32 enabled);
+extern void AttachmentController_SetEnabled(void *owner, s32 enabled);
 extern void func_0204cf28(void *owner);
 extern void func_0204ced8(void *owner, u32 animation);
 #ifdef __cplusplus
@@ -248,7 +248,7 @@ void func_0203e7c8(void *self)
 
         if (mode != 0 &&
             (*(u16 *)(*(u8 **)(actor + 0x288) + 0x24) & 4) != 0)
-            func_02035518(helper, 1);
+            AttachmentController_SetEnabled(helper, 1);
         if (mode != oldMode) {
             static const s8 animations[12] = {
                 -1, 0, 1, 24, 2, -1, 11, 4, 23, 13, 25, 26
@@ -258,9 +258,9 @@ void func_0203e7c8(void *self)
                 if (*(s16 *)(actor + 0x292) != 0)
                     func_0204cf28(helper);
                 func_0204ced8(helper, (u8)animation);
-                func_02035518(helper, 1);
+                AttachmentController_SetEnabled(helper, 1);
             } else {
-                func_02035518(helper, 0);
+                AttachmentController_SetEnabled(helper, 0);
             }
         }
         (*(void (**)(void *))(*(u8 **)helper + 8))(helper);

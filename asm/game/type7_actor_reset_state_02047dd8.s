@@ -3,7 +3,7 @@
 .extern GameWork_ClearFlag
 .extern Heap_Free
 .extern data_020e1930
-.extern func_02035518
+.extern AttachmentController_SetEnabled
 .extern func_020481dc
 .extern func_0206c978
 .extern func_0206e590
@@ -36,7 +36,7 @@ func_02047dd8: ; 0x02047dd8
     str r2, [r4, #0x268]
     strh r1, [r3, #0xa6]
     strh r1, [r3, #0x50]
-    bl func_02035518
+    bl AttachmentController_SetEnabled
     ldr r0, [r4, #0x234]
     cmp r0, #0x0
     beq .L_02047e7c

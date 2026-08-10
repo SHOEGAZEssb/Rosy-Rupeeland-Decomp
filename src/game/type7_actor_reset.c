@@ -14,7 +14,7 @@ extern void GameWork_SetFlag(void *gameWork, u32 flag);
 extern void GameWork_ClearFlag(void *gameWork, u32 flag);
 extern void func_02047dd8(void *actor);
 extern void func_0200b2c0(void *value, s32 x, s32 y, s32 z);
-extern void func_02035518(void *value, s32 mode);
+extern void AttachmentController_SetEnabled(void *value, s32 mode);
 extern void func_0206e590(void *resource, s32 mode);
 extern void func_0206c978(void *resource);
 extern void Heap_Free(void *allocation);
@@ -73,7 +73,7 @@ void func_02047dd8(void *self)
     *(u32 *)(actor + 0x268) &= 0xfff7f753;
     *(u16 *)(actor + 0x2a6) = 0;
     *(u16 *)(actor + 0x250) = 0;
-    func_02035518(actor + 0x2a8, 0);
+    AttachmentController_SetEnabled(actor + 0x2a8, 0);
 
     resource = *(void **)(actor + 0x234);
     if (resource != 0) {

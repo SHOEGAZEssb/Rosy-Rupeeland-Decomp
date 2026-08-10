@@ -3,7 +3,7 @@
 .extern data_ov075_02216cc8
 .extern data_ov075_02216d00
 .extern func_020050a4
-.extern func_02031720
+.extern Actor_ClearTransientContactState
 .extern Actor_GetCachedTerrainHeight
 .extern func_02072b68
 .extern func_ov075_02212d80
@@ -216,7 +216,7 @@ func_ov075_02212fd8:
     strlt r0, [r6, #0x14]
 .L_022132d4:
     mov r0, r6
-    bl func_02031720
+    bl Actor_ClearTransientContactState
     ldmia sp!, {r4, r5, r6, pc}
 .L_022132e0: .word data_ov075_02216cc8
 .L_022132e4: .word data_ov075_02216d00

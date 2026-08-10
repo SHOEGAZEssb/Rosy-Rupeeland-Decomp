@@ -8,7 +8,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern s32 func_02035518(void *embedded);
+extern s32 AttachmentController_SetEnabled(void *embedded);
 #ifdef __cplusplus
 }
 #endif
@@ -82,12 +82,12 @@ s32 func_020437c4(const void *self)
 }
 
 /*
- * Pass embedded object actor +0x284 to func_02035518 and return its result.
+ * Pass embedded object actor +0x284 to AttachmentController_SetEnabled and return its result.
  * The embedded query may update engine state; no direct hardware access occurs.
  */
 s32 func_020437dc(void *self)
 {
-    return func_02035518((u8 *)self + 0x284);
+    return AttachmentController_SetEnabled((u8 *)self + 0x284);
 }
 
 /* Return constant 0x20000; no inputs or state are used. */

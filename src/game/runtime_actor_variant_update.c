@@ -18,7 +18,7 @@ extern void func_0201b228(void *state);
 extern s32 func_0201b23c(void *state);
 extern void ActorCollection_QueueActorForRemoval(void *runtime, void *actor);
 extern void ActorCollection_EndTrackedPair(void *runtime, void *anchor, void *actor);
-extern void func_02031748(void *actor);
+extern void Actor_SetRuntimeFlag80(void *actor);
 extern void *Actor_GetCollection(void *actor);
 extern u8 *Actor_GetCollectionBySlot(void *actor, s32 category);
 #ifdef __cplusplus
@@ -26,7 +26,7 @@ extern u8 *Actor_GetCollectionBySlot(void *actor, s32 category);
 #endif
 
 /*
- * Input is a runtime actor variant. Run base update func_02031748. Continue
+ * Input is a runtime actor variant. Run base update Actor_SetRuntimeFlag80. Continue
  * only when embedded state +0xec passes func_0201b23c; then clear its recovered
  * value through func_0201273c and require actor +0x169 bit 0x01.
  *
@@ -44,7 +44,7 @@ void func_0204d308(void *self)
 {
     u8 *actor = (u8 *)self;
     void *state = actor + 0xec;
-    func_02031748(actor);
+    Actor_SetRuntimeFlag80(actor);
     if (func_0201b23c(state) == 0)
         return;
     func_0201273c(state, 0);

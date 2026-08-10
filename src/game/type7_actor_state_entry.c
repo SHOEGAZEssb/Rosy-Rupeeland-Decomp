@@ -13,7 +13,7 @@ extern u32 data_020e18b8[];
 extern "C" {
 #endif
 extern void func_0200b2c0(void *value, s32 x, s32 y, s32 z);
-extern void func_02035518(void *value, s32 mode);
+extern void AttachmentController_SetEnabled(void *value, s32 mode);
 extern void func_02047d40(void *actor);
 extern void func_020481dc(void *actor, u32 first, u32 second, s32 duration);
 #ifdef __cplusplus
@@ -59,7 +59,7 @@ void func_0204a200(void *self, s32 condition)
     *(u16 *)(actor + 0x264) = 0;
     *(u16 *)(actor + 0x24e) = 0;
     *(u32 *)(actor + 0x268) &= ~0x3000;
-    func_02035518(actor + 0x2a8, 0);
+    AttachmentController_SetEnabled(actor + 0x2a8, 0);
     *(u16 *)(actor + 0x246) = 0;
     *(u16 *)(actor + 0x266) = 0;
     func_02047d40(actor);

@@ -3,7 +3,7 @@
 .extern data_02105310
 .extern func_02005070
 .extern func_0200b04c
-.extern func_02031748
+.extern Actor_SetRuntimeFlag80
 .extern func_02032228
 .extern func_02032370
 .extern Actor_UpdateAnimationState
@@ -25,7 +25,7 @@ func_ov081_02212de0:
     ldr r1, [r1, #0x18]
     blx r1
     mov r0, r4
-    bl func_02031748
+    bl Actor_SetRuntimeFlag80
     mov r0, r4
     bl func_02034164
     ldr r0, .L_02212fdc
