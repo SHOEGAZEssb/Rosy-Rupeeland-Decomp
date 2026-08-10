@@ -9433,7 +9433,7 @@ gRuntimeContext kind:bss addr:0x021f5db0
 data_021f5db8 kind:bss addr:0x021f5db8
 data_021f5eb8 kind:bss addr:0x021f5eb8
 gActorRuntimeFlags kind:bss addr:0x021f5ebc
-data_021f5ec0 kind:bss addr:0x021f5ec0
+gActorRuntimeFlagsDestructorRecord kind:bss addr:0x021f5ec0
 data_021f5ecc kind:bss addr:0x021f5ecc
 data_021f5ed0 kind:bss addr:0x021f5ed0
 data_021f5ee8 kind:bss addr:0x021f5ee8

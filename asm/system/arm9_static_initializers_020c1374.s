@@ -75,7 +75,7 @@
 .extern data_021f512c
 .extern data_021f5138
 .extern gActorRuntimeFlags
-.extern data_021f5ec0
+.extern gActorRuntimeFlagsDestructorRecord
 .extern data_021f5f0c
 .extern data_021f5f18
 .extern OwnedPointerList_Destroy
@@ -451,7 +451,7 @@ __sinit_020c1798: ; 0x020c1798
     ldmia sp!, {r3, pc}
 .L_020c17b8: .word gActorRuntimeFlags
 .L_020c17bc: .word ActorRuntimeFlags_Destroy
-.L_020c17c0: .word data_021f5ec0
+.L_020c17c0: .word gActorRuntimeFlagsDestructorRecord
 
 __sinit_020c17c4: ; 0x020c17c4
     stmdb sp!, {r3, lr}

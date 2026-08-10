@@ -115,7 +115,7 @@ extern u8 data_021f3d5c[];
 extern u8 data_021f5138[];
 extern u8 data_021f512c[];
 extern u8 gActorRuntimeFlags[];
-extern u8 data_021f5ec0[];
+extern u8 gActorRuntimeFlagsDestructorRecord[];
 extern u8 data_021f5f18[];
 extern u8 data_021f5f0c[];
 #ifdef __cplusplus
@@ -346,13 +346,13 @@ void __sinit_020c176c(void)
 
 /*
  * No inputs. Clear gActorRuntimeFlags and register ActorRuntimeFlags_Destroy
- * with record data_021f5ec0. Global lifetime state changes; no value is
+ * with record gActorRuntimeFlagsDestructorRecord. Global lifetime state changes; no value is
  * returned and no hardware is accessed directly.
  */
 void __sinit_020c1798(void)
 {
     ActorRuntimeFlags_Init(gActorRuntimeFlags);
-    __register_global_object(gActorRuntimeFlags, ActorRuntimeFlags_Destroy, data_021f5ec0);
+    __register_global_object(gActorRuntimeFlags, ActorRuntimeFlags_Destroy, gActorRuntimeFlagsDestructorRecord);
 }
 
 /*
