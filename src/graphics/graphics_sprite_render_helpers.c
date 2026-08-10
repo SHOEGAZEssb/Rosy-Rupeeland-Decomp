@@ -11,7 +11,7 @@
  * ignored. The pool and entry links are unchanged, no value is returned, and
  * there is no SDK or graphics-hardware access.
  */
-void func_02073304(GraphicsRenderEntryPool *pool, u32 delta)
+void GraphicsRenderEntryPool_AddToTailPayload(GraphicsRenderEntryPool *pool, u32 delta)
 {
     GraphicsRenderEntry *tail = pool->tail;
 
@@ -25,7 +25,7 @@ void func_02073304(GraphicsRenderEntryPool *pool, u32 delta)
  * The explicit 16-bit accesses preserve the retail alignment contract. Returns
  * no value and has no SDK or graphics-hardware effects.
  */
-void func_0207331c(GraphicsSpriteRecord8 *destination,
+void GraphicsSpriteRecord8_Copy(GraphicsSpriteRecord8 *destination,
                    const GraphicsSpriteRecord8 *source)
 {
     destination->field_00 = source->field_00;

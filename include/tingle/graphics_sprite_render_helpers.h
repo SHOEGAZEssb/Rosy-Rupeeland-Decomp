@@ -18,7 +18,7 @@ typedef char GraphicsSpriteRecord8SizeCheck[
 extern "C" {
 #endif
 
-void func_0207331c(GraphicsSpriteRecord8 *destination,
+void GraphicsSpriteRecord8_Copy(GraphicsSpriteRecord8 *destination,
                    const GraphicsSpriteRecord8 *source);
 
 #ifdef __cplusplus

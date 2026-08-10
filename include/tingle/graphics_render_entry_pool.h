@@ -45,7 +45,7 @@ GraphicsRenderEntry *GraphicsRenderEntryPool_AllocateChain(
 void GraphicsRenderEntryPool_AppendRoot(GraphicsRenderEntryPool *pool,
                                         GraphicsRenderEntry *entry);
 void GraphicsRenderEntryPool_SortRoots(GraphicsRenderEntryPool *pool);
-void func_02073304(GraphicsRenderEntryPool *pool, u32 delta);
+void GraphicsRenderEntryPool_AddToTailPayload(GraphicsRenderEntryPool *pool, u32 delta);
 
 #ifdef __cplusplus
 }
