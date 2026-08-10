@@ -138,7 +138,12 @@ its three 90-phase pages, wrapping 10-by-9 grid, exact touch bounds, and
 the ARM9 image and decoded into host scalars. Its primary and secondary overlay
 IDs at offsets `0x1C`/`0x20` are loaded, and callback offsets `0x24`/`0x28` are
 validated as addresses inside their respective DS code ranges. The ARM
-callbacks remain addresses and are never called as host function pointers.
+callbacks are verified generated templates: their actor descriptor lists,
+runtime data, callback data, work storage, and secondary region table are
+translated to validated overlay-relative records. Fourteen 32-byte zero
+secondary images are omitted by the phase table; the decoder still represents
+such an image as an empty registration when read directly. The callbacks
+remain addresses and are never called as host function pointers.
 Execution then stops at the large phase-runtime construction boundary. Other menu entries likewise
 report their selected scene boundary until their graphics, sound, heap, and
 overlay dependencies have native implementations.

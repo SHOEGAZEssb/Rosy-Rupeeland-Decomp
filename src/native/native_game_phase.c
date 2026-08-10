@@ -24,6 +24,112 @@ static u32 ReadU32(const u8 *bytes)
            ((u32)bytes[2] << 16) | ((u32)bytes[3] << 24);
 }
 
+static s32 AddressInOverlay(const TingleNativeOverlayImage *overlay, u32 address,
+                            size_t size)
+{
+    size_t offset;
+
+    if (address < overlay->load_address) return 0;
+    offset = (size_t)(address - overlay->load_address);
+    return offset <= overlay->size && size <= overlay->size - offset;
+}
+
+static s32 CountDescriptors(const TingleNativeOverlayImage *overlay, u32 address,
+                            u32 *count)
+{
+    const u8 *bytes = (const u8 *)overlay->bytes;
+    size_t offset;
+    u32 result = 0;
+
+    if (!AddressInOverlay(overlay, address, 2)) return 0;
+    offset = (size_t)(address - overlay->load_address);
+    while (ReadU16(bytes + offset) != 0) {
+        if (!AddressInOverlay(overlay, address, 0x64)) return 0;
+        address += 0x64;
+        offset += 0x64;
+        result++;
+    }
+    *count = result;
+    return 1;
+}
+
+static s32 WordsMatch(const u8 *bytes, const u32 *expected, size_t count,
+                      size_t immediate_index)
+{
+    size_t index;
+
+    for (index = 0; index < count; ++index) {
+        u32 word = ReadU32(bytes + index * 4);
+        if (index == immediate_index) {
+            if ((word & 0xffffff00u) != 0xe3a01000u) return 0;
+        } else if (word != expected[index]) {
+            return 0;
+        }
+    }
+    return 1;
+}
+
+s32 TingleNativeGamePhase_ParseOverlayRegistration(
+    const TingleNativeOverlayImage *overlay, TingleNativePhaseOverlayKind kind,
+    TingleNativePhaseOverlayRegistration *registration)
+{
+    static const u32 primary_words[] = {
+        0xe92d4008, 0xe3500000, 0x18bd8008, 0xebf874fc,
+        0xe59f0024, 0xe59f2024, 0, 0xebf8772a,
+        0xe59f001c, 0xebf87530, 0xe59f0018, 0xebf7ae19,
+        0xe59f0014, 0xebf8772c, 0xe8bd8008
+    };
+    static const u32 secondary_words[] = {
+        0xe92d4008, 0xe59f001c, 0xe59f201c, 0,
+        0xebf81dc9, 0xe59f0014, 0xebf81dcf, 0xe59f0010,
+        0xebf77771, 0xe8bd8008
+    };
+    const u8 *bytes;
+    size_t index;
+
+    if (overlay == NULL || overlay->bytes == NULL || registration == NULL) return 0;
+    memset(registration, 0, sizeof(*registration));
+    bytes = (const u8 *)overlay->bytes;
+    if (kind == TINGLE_NATIVE_PHASE_OVERLAY_SECONDARY && overlay->code_size == 32) {
+        for (index = 0; index < overlay->code_size; ++index) {
+            if (bytes[index] != 0) return 0;
+        }
+        registration->kind = TINGLE_NATIVE_PHASE_OVERLAY_EMPTY;
+        return 1;
+    }
+
+    registration->kind = kind;
+    if (kind == TINGLE_NATIVE_PHASE_OVERLAY_PRIMARY) {
+        if (overlay->code_size < 0x50 ||
+            !WordsMatch(bytes, primary_words,
+                        sizeof(primary_words) / sizeof(primary_words[0]), 6)) return 0;
+        registration->work_address_0 = ReadU32(bytes + 0x3c);
+        registration->descriptor_address = ReadU32(bytes + 0x40);
+        registration->work_address_1 = ReadU32(bytes + 0x44);
+        registration->runtime_address = ReadU32(bytes + 0x48);
+        registration->callback_address = ReadU32(bytes + 0x4c);
+        if (!AddressInOverlay(overlay, registration->work_address_0, 4) ||
+            !AddressInOverlay(overlay, registration->work_address_1, 4) ||
+            !AddressInOverlay(overlay, registration->runtime_address, 1) ||
+            !AddressInOverlay(overlay, registration->callback_address, 1)) return 0;
+    } else if (kind == TINGLE_NATIVE_PHASE_OVERLAY_SECONDARY) {
+        if (overlay->code_size < 0x38 ||
+            !WordsMatch(bytes, secondary_words,
+                        sizeof(secondary_words) / sizeof(secondary_words[0]), 3)) return 0;
+        registration->work_address_0 = ReadU32(bytes + 0x28);
+        registration->descriptor_address = ReadU32(bytes + 0x2c);
+        registration->callback_address = ReadU32(bytes + 0x30);
+        registration->runtime_address = ReadU32(bytes + 0x34);
+        if (!AddressInOverlay(overlay, registration->work_address_0, 4) ||
+            !AddressInOverlay(overlay, registration->callback_address, 1) ||
+            !AddressInOverlay(overlay, registration->runtime_address, 4)) return 0;
+    } else {
+        return 0;
+    }
+    return CountDescriptors(overlay, registration->descriptor_address,
+                            &registration->descriptor_count);
+}
+
 s32 TingleNativeGamePhase_DecodeMetadata(s32 phase_id, const void *record,
                                          size_t size,
                                          TingleNativeGamePhaseMetadata *metadata)
@@ -90,6 +196,18 @@ s32 TingleNativeGamePhaseBoundary_Init(TingleNativeGamePhaseBoundary *boundary,
             boundary->metadata.callback_28 >= boundary->secondary_overlay.load_address &&
             boundary->metadata.callback_28 < end;
     }
+    if (boundary->primary_callback_valid) {
+        boundary->primary_callback_valid =
+            TingleNativeGamePhase_ParseOverlayRegistration(
+                &boundary->primary_overlay, TINGLE_NATIVE_PHASE_OVERLAY_PRIMARY,
+                &boundary->primary_registration);
+    }
+    if (boundary->secondary_callback_valid) {
+        boundary->secondary_callback_valid =
+            TingleNativeGamePhase_ParseOverlayRegistration(
+                &boundary->secondary_overlay, TINGLE_NATIVE_PHASE_OVERLAY_SECONDARY,
+                &boundary->secondary_registration);
+    }
     return boundary->metadata_loaded;
 }
 
@@ -150,6 +268,10 @@ void TingleNativeGamePhaseBoundary_Draw(
                        boundary->metadata.callback_28,
                        boundary->secondary_callback_valid ? "VALID" : "INVALID");
         TingleNativeCanvas_DrawText(canvas, 12, 250, text, 0x00d8e0d0u, 1);
+        (void)snprintf(text, sizeof(text), "ACTORS: %u + %u",
+                       boundary->primary_registration.descriptor_count,
+                       boundary->secondary_registration.descriptor_count);
+        TingleNativeCanvas_DrawText(canvas, 12, 180, text, 0x00e0b060u, 1);
         (void)snprintf(text, sizeof(text), "FLAGS 40: %08X", boundary->metadata.flags_40);
         TingleNativeCanvas_DrawText(canvas, 12, 264, text, 0x00d8e0d0u, 1);
         DrawField(canvas, 278, "FIELD 2C", boundary->metadata.field_2c);

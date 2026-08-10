@@ -10,6 +10,22 @@ enum {
     TINGLE_NATIVE_PHASE_COUNT = 270
 };
 
+typedef enum TingleNativePhaseOverlayKind {
+    TINGLE_NATIVE_PHASE_OVERLAY_EMPTY,
+    TINGLE_NATIVE_PHASE_OVERLAY_PRIMARY,
+    TINGLE_NATIVE_PHASE_OVERLAY_SECONDARY
+} TingleNativePhaseOverlayKind;
+
+typedef struct TingleNativePhaseOverlayRegistration {
+    TingleNativePhaseOverlayKind kind;
+    u32 descriptor_address;
+    u32 descriptor_count;
+    u32 callback_address;
+    u32 runtime_address;
+    u32 work_address_0;
+    u32 work_address_1;
+} TingleNativePhaseOverlayRegistration;
+
 typedef struct TingleNativeGamePhaseMetadata {
     s32 phase_id;
     s32 field_00;
@@ -35,12 +51,19 @@ typedef struct TingleNativeGamePhaseBoundary {
     TingleNativeGamePhaseMetadata metadata;
     TingleNativeOverlayImage primary_overlay;
     TingleNativeOverlayImage secondary_overlay;
+    TingleNativePhaseOverlayRegistration primary_registration;
+    TingleNativePhaseOverlayRegistration secondary_registration;
     s32 metadata_loaded;
     s32 primary_overlay_loaded;
     s32 secondary_overlay_loaded;
     s32 primary_callback_valid;
     s32 secondary_callback_valid;
 } TingleNativeGamePhaseBoundary;
+
+/* Decodes one verified generated phase-overlay entry callback as data. */
+s32 TingleNativeGamePhase_ParseOverlayRegistration(
+    const TingleNativeOverlayImage *overlay, TingleNativePhaseOverlayKind kind,
+    TingleNativePhaseOverlayRegistration *registration);
 
 /* Decodes confirmed fields without retaining pointers into ARM9 storage. */
 s32 TingleNativeGamePhase_DecodeMetadata(s32 phase_id, const void *record,
