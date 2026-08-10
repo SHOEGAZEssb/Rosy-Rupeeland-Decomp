@@ -5,8 +5,8 @@
 .extern GamePhaseScriptVm_Pop
 .extern Actor_GetCollection
 
-    .global func_02012f64
-func_02012f64: ; 0x02012f64
+    .global GamePhaseActorScriptVm_DispatchCollectionModeCommand
+GamePhaseActorScriptVm_DispatchCollectionModeCommand: ; 0x02012f64
     stmdb sp!, {r3, r4, r5, r6, r7, r8, lr}
     sub sp, sp, #0x4
     mov r8, r0
@@ -53,5 +53,5 @@ L_02013004:
     add sp, sp, #0x4
     ldmia sp!, {r3, r4, r5, r6, r7, r8, pc}
 L_02013010: .word data_021052fc
-    .size func_02012f64, . - func_02012f64
+    .size GamePhaseActorScriptVm_DispatchCollectionModeCommand, . - GamePhaseActorScriptVm_DispatchCollectionModeCommand
 

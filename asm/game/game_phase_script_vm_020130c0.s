@@ -2,8 +2,8 @@
 .text
 .extern GamePhaseScriptVm_Pop
 
-    .global func_020130c0
-func_020130c0: ; 0x020130c0
+    .global GamePhaseActorScriptVm_SetActorFlag4Inverse
+GamePhaseActorScriptVm_SetActorFlag4Inverse: ; 0x020130c0
     stmdb sp!, {r4, lr}
     mov r4, r0
     bl GamePhaseScriptVm_Pop
@@ -15,5 +15,5 @@ func_020130c0: ; 0x020130c0
     str r0, [r1, #0x14]
     mov r0, #0x0
     ldmia sp!, {r4, pc}
-    .size func_020130c0, . - func_020130c0
+    .size GamePhaseActorScriptVm_SetActorFlag4Inverse, . - GamePhaseActorScriptVm_SetActorFlag4Inverse
 

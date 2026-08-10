@@ -4,8 +4,8 @@
 .extern ActorRuntimeCollection_SelectObject
 .extern GamePhaseScriptVm_Pop
 
-    .global func_02012e98
-func_02012e98: ; 0x02012e98
+    .global GamePhaseActorScriptVm_DispatchActorModeCommand
+GamePhaseActorScriptVm_DispatchActorModeCommand: ; 0x02012e98
     stmdb sp!, {r3, r4, r5, lr}
     mov r5, r0
     bl GamePhaseScriptVm_Pop
@@ -53,5 +53,5 @@ L_02012f34:
     mov r0, #0x0
     ldmia sp!, {r3, r4, r5, pc}
 L_02012f3c: .word data_02105310
-    .size func_02012e98, . - func_02012e98
+    .size GamePhaseActorScriptVm_DispatchActorModeCommand, . - GamePhaseActorScriptVm_DispatchActorModeCommand
 

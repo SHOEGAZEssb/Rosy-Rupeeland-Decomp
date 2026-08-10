@@ -2,8 +2,8 @@
 .text
 .extern GamePhaseScriptVm_SetResult
 
-    .global func_02013014
-func_02013014: ; 0x02013014
+    .global GamePhaseActorScriptVm_GetAttachmentByte38
+GamePhaseActorScriptVm_GetAttachmentByte38: ; 0x02013014
     stmdb sp!, {r3, lr}
     ldr r1, [r0, #0x84]
     ldr r1, [r1, #0x54]
@@ -11,5 +11,5 @@ func_02013014: ; 0x02013014
     bl GamePhaseScriptVm_SetResult
     mov r0, #0x0
     ldmia sp!, {r3, pc}
-    .size func_02013014, . - func_02013014
+    .size GamePhaseActorScriptVm_GetAttachmentByte38, . - GamePhaseActorScriptVm_GetAttachmentByte38
 

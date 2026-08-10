@@ -2,8 +2,8 @@
 .text
 .extern GamePhaseScriptVm_SetResult
 
-    .global func_02012f40
-func_02012f40: ; 0x02012f40
+    .global GamePhaseActorScriptVm_IsActorFlag1Set
+GamePhaseActorScriptVm_IsActorFlag1Set: ; 0x02012f40
     stmdb sp!, {r3, lr}
     ldr r1, [r0, #0x84]
     ldr r1, [r1, #0x10]
@@ -13,5 +13,5 @@ func_02012f40: ; 0x02012f40
     bl GamePhaseScriptVm_SetResult
     mov r0, #0x0
     ldmia sp!, {r3, pc}
-    .size func_02012f40, . - func_02012f40
+    .size GamePhaseActorScriptVm_IsActorFlag1Set, . - GamePhaseActorScriptVm_IsActorFlag1Set
 
