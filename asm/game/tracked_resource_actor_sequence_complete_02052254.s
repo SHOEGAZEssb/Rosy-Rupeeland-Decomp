@@ -6,8 +6,8 @@
 .extern TrackedResourceActor_EmitRecordEffects
 .extern func_020505f0
 .text
-    .global func_02052254
-func_02052254:
+    .global TrackedResourceActorType27_Complete
+TrackedResourceActorType27_Complete:
     stmdb sp!, {r4, lr}
     mov r4, r0
     bl Actor_GetCollection
@@ -30,4 +30,4 @@ func_02052254:
     bl func_020505f0
     ldmia sp!, {r4, pc}
 .L_020522a4: .word data_021052fc
-    .size func_02052254, . - func_02052254
+    .size TrackedResourceActorType27_Complete, . - TrackedResourceActorType27_Complete

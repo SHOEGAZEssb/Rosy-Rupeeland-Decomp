@@ -21,7 +21,7 @@ extern void TrackedResourceActorImpulse_Update(void *actor);
  * sequence 0x4282. Both sequence requests use argument zero. Returns nothing;
  * animation and engine state can change without direct hardware access.
  */
-void func_02052170(void *actor, u32 unused1, u32 unused2, u32 unused3)
+void TrackedResourceActorType27_Update(void *actor, u32 unused1, u32 unused2, u32 unused3)
 {
     u16 initial_state = FIELD(u16, actor, 0x1f0) & 0x7fff;
     (void)unused1;

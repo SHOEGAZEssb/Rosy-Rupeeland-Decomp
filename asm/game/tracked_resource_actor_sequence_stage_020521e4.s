@@ -1,8 +1,8 @@
 ; Matching retail form; see src/game/tracked_resource_actor_sequence_stage.c.
 .extern GraphicsSpriteState_SetAnimationIndex
 .text
-    .global func_020521e4
-func_020521e4:
+    .global TrackedResourceActorType27_UpdateAnimationStage
+TrackedResourceActorType27_UpdateAnimationStage:
     stmdb sp!, {r4, lr}
     mov r4, r0
     add r0, r4, #0x100
@@ -32,4 +32,4 @@ func_020521e4:
     bic r0, r0, #0x1
     strh r0, [r1, #0x24]
     ldmia sp!, {r4, pc}
-    .size func_020521e4, . - func_020521e4
+    .size TrackedResourceActorType27_UpdateAnimationStage, . - TrackedResourceActorType27_UpdateAnimationStage

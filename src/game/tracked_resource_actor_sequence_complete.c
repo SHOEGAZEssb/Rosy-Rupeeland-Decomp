@@ -26,7 +26,7 @@ extern void func_020505f0(void *actor, ...);
  * the wrapper does not access hardware directly. Manager-field semantics and
  * numeric notification values are not yet confirmed.
  */
-void func_02052254(void *actor)
+void TrackedResourceActorType27_Complete(void *actor)
 {
     ActorCollection_QueueActorForRemoval(Actor_GetCollection(actor), actor);
     TrackedResourceActor_EmitRecordEffects(actor);

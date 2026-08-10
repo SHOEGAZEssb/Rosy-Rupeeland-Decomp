@@ -2,8 +2,8 @@
 .extern func_020349b8
 .extern TrackedResourceActorImpulse_Update
 .text
-    .global func_02052170
-func_02052170:
+    .global TrackedResourceActorType27_Update
+TrackedResourceActorType27_Update:
     stmdb sp!, {r3, r4, r5, lr}
     mov r4, r0
     add r1, r4, #0x100
@@ -34,4 +34,4 @@ func_02052170:
     ldmia sp!, {r3, r4, r5, pc}
 .L_020521dc: .word 0x4283
 .L_020521e0: .word 0x4282
-    .size func_02052170, . - func_02052170
+    .size TrackedResourceActorType27_Update, . - TrackedResourceActorType27_Update

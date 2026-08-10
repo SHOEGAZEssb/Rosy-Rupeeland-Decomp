@@ -20,7 +20,7 @@ extern void GraphicsSpriteState_SetAnimationIndex(void *presentation, u8 stage);
  * GraphicsSpriteState_SetAnimationIndex and clears presentation bit 0 at offset 0x24. Returns nothing;
  * presentation state changes but hardware is not accessed directly.
  */
-void func_020521e4(void *actor)
+void TrackedResourceActorType27_UpdateAnimationStage(void *actor)
 {
     s16 timer = ++FIELD(s16, actor, 0x1f8);
     const void *record = FIELD(const void *, actor, 0x1fc);

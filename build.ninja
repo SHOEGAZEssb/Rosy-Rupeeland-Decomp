@@ -19974,7 +19974,7 @@ build build/reports/tracked_resource_actor_sequence_update_02052170.json: objdif
   base_object = build/decomp/asm/game/tracked_resource_actor_sequence_update_02052170.o
 build build/reports/tracked_resource_actor_sequence_update_02052170.txt: match_report build/reports/tracked_resource_actor_sequence_update_02052170.json | tools/report_objdiff.py
   report_json = build/reports/tracked_resource_actor_sequence_update_02052170.json
-  report_args = --section .text --function func_02052170 --require-exact
+  report_args = --section .text --function TrackedResourceActorType27_Update --require-exact
 
 build tracked_resource_actor_sequence_update: phony build/decomp/src/game/tracked_resource_actor_sequence_update.o build/decomp/asm/game/tracked_resource_actor_sequence_update_02052170.o build/reports/tracked_resource_actor_sequence_update_02052170.txt
 
@@ -19989,7 +19989,7 @@ build build/reports/tracked_resource_actor_sequence_stage_020521e4.json: objdiff
   base_object = build/decomp/asm/game/tracked_resource_actor_sequence_stage_020521e4.o
 build build/reports/tracked_resource_actor_sequence_stage_020521e4.txt: match_report build/reports/tracked_resource_actor_sequence_stage_020521e4.json | tools/report_objdiff.py
   report_json = build/reports/tracked_resource_actor_sequence_stage_020521e4.json
-  report_args = --section .text --function func_020521e4 --require-exact
+  report_args = --section .text --function TrackedResourceActorType27_UpdateAnimationStage --require-exact
 
 build tracked_resource_actor_sequence_stage: phony build/decomp/src/game/tracked_resource_actor_sequence_stage.o build/decomp/asm/game/tracked_resource_actor_sequence_stage_020521e4.o build/reports/tracked_resource_actor_sequence_stage_020521e4.txt
 
@@ -20004,7 +20004,7 @@ build build/reports/tracked_resource_actor_sequence_complete_02052254.json: objd
   base_object = build/decomp/asm/game/tracked_resource_actor_sequence_complete_02052254.o
 build build/reports/tracked_resource_actor_sequence_complete_02052254.txt: match_report build/reports/tracked_resource_actor_sequence_complete_02052254.json | tools/report_objdiff.py
   report_json = build/reports/tracked_resource_actor_sequence_complete_02052254.json
-  report_args = --section .text --function func_02052254 --require-exact
+  report_args = --section .text --function TrackedResourceActorType27_Complete --require-exact
 
 build tracked_resource_actor_sequence_complete: phony build/decomp/src/game/tracked_resource_actor_sequence_complete.o build/decomp/asm/game/tracked_resource_actor_sequence_complete_02052254.o build/reports/tracked_resource_actor_sequence_complete_02052254.txt
 
