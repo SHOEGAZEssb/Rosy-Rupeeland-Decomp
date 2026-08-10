@@ -1,8 +1,8 @@
 ; Matching retail form; see src/game/game_phase_script_vm_multiply_divide_opcodes.c.
 .text
 .extern GamePhaseScriptVm_UpdateZeroFlag
-.global func_0201b57c
-func_0201b57c: ; 0x0201b57c
+.global GamePhaseScriptVm_MultiplyRegisters
+GamePhaseScriptVm_MultiplyRegisters: ; 0x0201b57c
     stmdb sp!, {r3, lr}
     ldr r1, [r0, #0x4]
     add ip, r0, #0x2c
@@ -20,4 +20,4 @@ func_0201b57c: ; 0x0201b57c
     bl GamePhaseScriptVm_UpdateZeroFlag
     mov r0, #0x0
     ldmia sp!, {r3, pc}
-.size func_0201b57c, . - func_0201b57c
+.size GamePhaseScriptVm_MultiplyRegisters, . - GamePhaseScriptVm_MultiplyRegisters

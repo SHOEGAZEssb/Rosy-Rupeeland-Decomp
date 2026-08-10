@@ -2,8 +2,8 @@
 .text
 .extern func_020befec
 .extern GamePhaseScriptVm_UpdateZeroFlag
-.global func_0201b6ac
-func_0201b6ac: ; 0x0201b6ac
+.global GamePhaseScriptVm_ModuloRegisters
+GamePhaseScriptVm_ModuloRegisters: ; 0x0201b6ac
     stmdb sp!, {r4, r5, r6, lr}
     mov r4, r0
     ldr r0, [r4, #0x4]
@@ -24,4 +24,4 @@ func_0201b6ac: ; 0x0201b6ac
     bl GamePhaseScriptVm_UpdateZeroFlag
     mov r0, #0x0
     ldmia sp!, {r4, r5, r6, pc}
-.size func_0201b6ac, . - func_0201b6ac
+.size GamePhaseScriptVm_ModuloRegisters, . - GamePhaseScriptVm_ModuloRegisters

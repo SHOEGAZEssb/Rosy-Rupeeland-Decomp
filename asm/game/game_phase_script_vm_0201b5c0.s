@@ -2,8 +2,8 @@
 .text
 .extern GamePhaseScriptVm_ReadU32Le
 .extern GamePhaseScriptVm_UpdateZeroFlag
-.global func_0201b5c0
-func_0201b5c0: ; 0x0201b5c0
+.global GamePhaseScriptVm_MultiplyImmediate
+GamePhaseScriptVm_MultiplyImmediate: ; 0x0201b5c0
     stmdb sp!, {r3, r4, r5, lr}
     mov r4, r0
     ldr r1, [r4, #0x4]
@@ -23,4 +23,4 @@ func_0201b5c0: ; 0x0201b5c0
     bl GamePhaseScriptVm_UpdateZeroFlag
     mov r0, #0x0
     ldmia sp!, {r3, r4, r5, pc}
-.size func_0201b5c0, . - func_0201b5c0
+.size GamePhaseScriptVm_MultiplyImmediate, . - GamePhaseScriptVm_MultiplyImmediate

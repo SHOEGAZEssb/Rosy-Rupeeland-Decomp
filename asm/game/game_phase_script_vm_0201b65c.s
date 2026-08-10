@@ -3,8 +3,8 @@
 .extern GamePhaseScriptVm_ReadU32Le
 .extern func_020befec
 .extern GamePhaseScriptVm_UpdateZeroFlag
-.global func_0201b65c
-func_0201b65c: ; 0x0201b65c
+.global GamePhaseScriptVm_DivideImmediate
+GamePhaseScriptVm_DivideImmediate: ; 0x0201b65c
     stmdb sp!, {r4, r5, r6, lr}
     mov r6, r0
     ldr r1, [r6, #0x4]
@@ -25,4 +25,4 @@ func_0201b65c: ; 0x0201b65c
     bl GamePhaseScriptVm_UpdateZeroFlag
     mov r0, #0x0
     ldmia sp!, {r4, r5, r6, pc}
-.size func_0201b65c, . - func_0201b65c
+.size GamePhaseScriptVm_DivideImmediate, . - GamePhaseScriptVm_DivideImmediate

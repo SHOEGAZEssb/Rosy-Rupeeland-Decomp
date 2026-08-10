@@ -3,7 +3,7 @@
 /* Add or subtract register and immediate operands in the compact script VM. */
 
 /* Add the encoded source register to the encoded destination, update zero state, return zero. */
-s32 func_0201b45c(GamePhaseScriptVm *self)
+s32 GamePhaseScriptVm_AddRegisters(GamePhaseScriptVm *self)
 {
     u8 operand = (u8)*self->cursor++;
     s32 destination = operand & 7;
@@ -14,7 +14,7 @@ s32 func_0201b45c(GamePhaseScriptVm *self)
 }
 
 /* Add a 32-bit immediate to the byte-selected register, update zero state, return zero. */
-s32 func_0201b4a0(GamePhaseScriptVm *self)
+s32 GamePhaseScriptVm_AddImmediate(GamePhaseScriptVm *self)
 {
     u8 destination = (u8)*self->cursor++;
     u32 immediate = GamePhaseScriptVm_ReadU32Le(self->cursor);
@@ -25,7 +25,7 @@ s32 func_0201b4a0(GamePhaseScriptVm *self)
 }
 
 /* Subtract the encoded source register from the destination, update zero state, return zero. */
-s32 func_0201b4ec(GamePhaseScriptVm *self)
+s32 GamePhaseScriptVm_SubtractRegisters(GamePhaseScriptVm *self)
 {
     u8 operand = (u8)*self->cursor++;
     s32 destination = operand & 7;
@@ -36,7 +36,7 @@ s32 func_0201b4ec(GamePhaseScriptVm *self)
 }
 
 /* Subtract a 32-bit immediate from the byte-selected register, update zero state, return zero. */
-s32 func_0201b530(GamePhaseScriptVm *self)
+s32 GamePhaseScriptVm_SubtractImmediate(GamePhaseScriptVm *self)
 {
     u8 destination = (u8)*self->cursor++;
     u32 immediate = GamePhaseScriptVm_ReadU32Le(self->cursor);
