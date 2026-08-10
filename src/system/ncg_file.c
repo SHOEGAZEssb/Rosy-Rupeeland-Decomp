@@ -27,7 +27,7 @@ extern void OS_Halt(void);
  */
 NcgFile *NcgFile_Init(NcgFile *self)
 {
-    func_02005118(&self->base);
+    NitroFile_Init(&self->base);
     self->base.vtable = &data_020d40cc;
     self->width = 0;
     self->height = 0;
@@ -37,14 +37,14 @@ NcgFile *NcgFile_Init(NcgFile *self)
 /* Destroy the inherited payload through NitroFile and return self. */
 NcgFile *NcgFile_Destroy(NcgFile *self)
 {
-    func_02005194(&self->base);
+    NitroFile_DestroyBase(&self->base);
     return self;
 }
 
 /* Destroy the inherited payload, free the object, and return its former address. */
 NcgFile *NcgFile_DestroyAndFree(NcgFile *self)
 {
-    func_02005194(&self->base);
+    NitroFile_DestroyBase(&self->base);
     Heap_Free(self);
     return self;
 }
@@ -83,8 +83,8 @@ s32 NcgFile_LoadCompressedFromFile(NcgFile *self, GameFile *file,
 {
     u8 *expanded;
 
-    func_020051c0(&self->base);
-    expanded = (u8 *)func_020051ec(&self->base, file, offset, compressedSize);
+    NitroFile_Clear(&self->base);
+    expanded = (u8 *)NitroFile_ReadCompressedLz8(&self->base, file, offset, compressedSize);
     if (*(const u32 *)(expanded + 4) != NcgFile_GetSignature(self)) {
         OS_Halt();
     }

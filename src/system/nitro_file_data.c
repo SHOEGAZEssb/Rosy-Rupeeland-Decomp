@@ -7,9 +7,9 @@
 
 extern const void *data_020d406c;
 
-NitroFileVTable data_020d40dc = {
-    func_02005134,
-    func_02005160,
+NitroFileVTable gNitroFileVTable = {
+    NitroFile_Destroy,
+    NitroFile_DestroyAndFree,
     0,
     &data_020d406c,
 };

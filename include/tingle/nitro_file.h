@@ -25,14 +25,14 @@ typedef char NitroFileSizeCheck[sizeof(NitroFile) == 0xc ? 1 : -1];
 extern "C" {
 #endif
 
-extern NitroFileVTable data_020d40dc;
+extern NitroFileVTable gNitroFileVTable;
 
-NitroFile *func_02005118(NitroFile *self);
-NitroFile *func_02005134(NitroFile *self);
-NitroFile *func_02005160(NitroFile *self);
-NitroFile *func_02005194(NitroFile *self);
-void func_020051c0(NitroFile *self);
-void *func_020051ec(NitroFile *self, GameFile *file, s32 offset,
+NitroFile *NitroFile_Init(NitroFile *self);
+NitroFile *NitroFile_Destroy(NitroFile *self);
+NitroFile *NitroFile_DestroyAndFree(NitroFile *self);
+NitroFile *NitroFile_DestroyBase(NitroFile *self);
+void NitroFile_Clear(NitroFile *self);
+void *NitroFile_ReadCompressedLz8(NitroFile *self, GameFile *file, s32 offset,
                     u32 compressedSize);
 
 #ifdef __cplusplus

@@ -277,12 +277,12 @@ VecFx32Object_Normalize kind:function(arm,size=0x20) addr:0x02005084
 VecFx32Object_Assign kind:function(arm,size=0x24) addr:0x020050a4
 VecFx32Object_Add kind:function(arm,size=0x28) addr:0x020050c8
 VecFx32Object_Subtract kind:function(arm,size=0x28) addr:0x020050f0
-func_02005118 kind:function(arm,size=0x1c) addr:0x02005118
-func_02005134 kind:function(arm,size=0x2c) addr:0x02005134
-func_02005160 kind:function(arm,size=0x34) addr:0x02005160
-func_02005194 kind:function(arm,size=0x2c) addr:0x02005194
-func_020051c0 kind:function(arm,size=0x2c) addr:0x020051c0
-func_020051ec kind:function(arm,size=0x98) addr:0x020051ec
+NitroFile_Init kind:function(arm,size=0x1c) addr:0x02005118
+NitroFile_Destroy kind:function(arm,size=0x2c) addr:0x02005134
+NitroFile_DestroyAndFree kind:function(arm,size=0x34) addr:0x02005160
+NitroFile_DestroyBase kind:function(arm,size=0x2c) addr:0x02005194
+NitroFile_Clear kind:function(arm,size=0x2c) addr:0x020051c0
+NitroFile_ReadCompressedLz8 kind:function(arm,size=0x98) addr:0x020051ec
 NcgFile_Init kind:function(arm,size=0x2c) addr:0x02005284
 NcgFile_Destroy kind:function(arm,size=0x14) addr:0x020052b0
 NcgFile_DestroyAndFree kind:function(arm,size=0x1c) addr:0x020052c4
@@ -6704,7 +6704,7 @@ data_020d409c kind:data(any) addr:0x020d409c
 data_020d40a8 kind:data(any) addr:0x020d40a8
 data_020d40b4 kind:data(any) addr:0x020d40b4
 data_020d40cc kind:data(any) addr:0x020d40cc
-data_020d40dc kind:data(any) addr:0x020d40dc
+gNitroFileVTable kind:data(any) addr:0x020d40dc
 data_020d40ec kind:data(any) addr:0x020d40ec
 data_020d40f4 kind:data(any) addr:0x020d40f4
 data_020d40fc kind:data(any) addr:0x020d40fc

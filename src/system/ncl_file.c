@@ -23,7 +23,7 @@ extern void OS_Halt(void);
 /* Construct the NitroFile base, install the CNclFile vtable, and return self. */
 NclFile *NclFile_Init(NclFile *self)
 {
-    func_02005118(&self->base);
+    NitroFile_Init(&self->base);
     self->base.vtable = (const NitroFileVTable *)&data_020d40ec;
     return self;
 }
@@ -31,14 +31,14 @@ NclFile *NclFile_Init(NclFile *self)
 /* Destroy the inherited palette payload through NitroFile and return self. */
 NclFile *NclFile_Destroy(NclFile *self)
 {
-    func_02005194(&self->base);
+    NitroFile_DestroyBase(&self->base);
     return self;
 }
 
 /* Destroy the inherited payload, free the object, and return its former address. */
 NclFile *NclFile_DestroyAndFree(NclFile *self)
 {
-    func_02005194(&self->base);
+    NitroFile_DestroyBase(&self->base);
     Heap_Free(self);
     return self;
 }
@@ -74,8 +74,8 @@ s32 NclFile_LoadCompressedFromFile(NclFile *self, GameFile *file,
 {
     u8 *expanded;
 
-    func_020051c0(&self->base);
-    expanded = (u8 *)func_020051ec(&self->base, file, offset, compressedSize);
+    NitroFile_Clear(&self->base);
+    expanded = (u8 *)NitroFile_ReadCompressedLz8(&self->base, file, offset, compressedSize);
     if (*(const u32 *)(expanded + 4) != NclFile_GetSignature(self)) {
         OS_Halt();
     }

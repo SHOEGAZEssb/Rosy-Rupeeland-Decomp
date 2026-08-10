@@ -23,9 +23,9 @@ extern void MI_UncompressLZ8(const void *source, void *destination);
  * Construct an empty owner, install the NitroFile vtable, and return self.
  * Only the object's three words change; no heap or SDK operation occurs.
  */
-NitroFile *func_02005118(NitroFile *self)
+NitroFile *NitroFile_Init(NitroFile *self)
 {
-    self->vtable = &data_020d40dc;
+    self->vtable = &gNitroFileVTable;
     self->data = 0;
     self->size = 0;
     return self;
@@ -35,9 +35,9 @@ NitroFile *func_02005118(NitroFile *self)
  * Destroy the owned buffer if present, restore the base vtable, and return
  * self. The buffer address is left unchanged because the object is ending.
  */
-NitroFile *func_02005134(NitroFile *self)
+NitroFile *NitroFile_Destroy(NitroFile *self)
 {
-    self->vtable = &data_020d40dc;
+    self->vtable = &gNitroFileVTable;
     if (self->data != 0) {
         func_02003e38(self->data);
     }
@@ -48,9 +48,9 @@ NitroFile *func_02005134(NitroFile *self)
  * Run the buffer-owning destructor, release the object itself through the
  * game heap, and return its former address for the C++ deleting-destructor ABI.
  */
-NitroFile *func_02005160(NitroFile *self)
+NitroFile *NitroFile_DestroyAndFree(NitroFile *self)
 {
-    self->vtable = &data_020d40dc;
+    self->vtable = &gNitroFileVTable;
     if (self->data != 0) {
         func_02003e38(self->data);
     }
@@ -62,9 +62,9 @@ NitroFile *func_02005160(NitroFile *self)
  * Alternate base-destructor entry used by derived resource classes. It
  * restores the NitroFile vtable, frees a present payload, and returns self.
  */
-NitroFile *func_02005194(NitroFile *self)
+NitroFile *NitroFile_DestroyBase(NitroFile *self)
 {
-    self->vtable = &data_020d40dc;
+    self->vtable = &gNitroFileVTable;
     if (self->data != 0) {
         func_02003e38(self->data);
     }
@@ -75,7 +75,7 @@ NitroFile *func_02005194(NitroFile *self)
  * Reset the payload to empty. Size becomes zero first; a present allocation
  * is freed through the game heap and the stored address is then cleared.
  */
-void func_020051c0(NitroFile *self)
+void NitroFile_Clear(NitroFile *self)
 {
     self->size = 0;
     if (self->data != 0) {
@@ -91,7 +91,7 @@ void func_020051c0(NitroFile *self)
  * to self; callers validate and adopt it. GameFile seek/read and the NitroSDK
  * decompressor provide the observable file and codec effects.
  */
-void *func_020051ec(NitroFile *self, GameFile *file, s32 offset,
+void *NitroFile_ReadCompressedLz8(NitroFile *self, GameFile *file, s32 offset,
                     u32 compressedSize)
 {
     void *compressed;

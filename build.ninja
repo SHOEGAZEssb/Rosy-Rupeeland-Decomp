@@ -3739,7 +3739,7 @@ build build/reports/nitro_file.json: objdiff build/decomp/delinks/src/system/nit
 
 build build/reports/nitro_file.txt: match_report build/reports/nitro_file.json | tools/report_objdiff.py
   report_json = build/reports/nitro_file.json
-  report_args = --section .text --function func_02005118 --function func_02005134 --function func_02005160 --function func_02005194 --function func_020051c0 --function func_020051ec --require-exact
+  report_args = --section .text --function NitroFile_Init --function NitroFile_Destroy --function NitroFile_DestroyAndFree --function NitroFile_DestroyBase --function NitroFile_Clear --function NitroFile_ReadCompressedLz8 --require-exact
 
 build build/reports/nitro_file_data.json: objdiff build/decomp/delinks/src/system/nitro_file_data.o | build/decomp/src/system/nitro_file_data.o
   target_object = build/decomp/delinks/src/system/nitro_file_data.o
