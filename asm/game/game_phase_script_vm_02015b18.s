@@ -3,8 +3,8 @@
 .extern RectS16_Copy
 .extern func_02008354
 .extern GamePhaseScriptVm_Pop
-.global func_02015b18
-func_02015b18:
+.global GamePhaseActorScriptVm_ExpandActorRectangleBottom
+GamePhaseActorScriptVm_ExpandActorRectangleBottom:
     stmdb sp!, {r3, r4, r5, lr}
     sub sp, sp, #8
     mov r5, r0
@@ -24,4 +24,4 @@ func_02015b18:
     mov r0, #0
     add sp, sp, #8
     ldmia sp!, {r3, r4, r5, pc}
-    .size func_02015b18, . - func_02015b18
+    .size GamePhaseActorScriptVm_ExpandActorRectangleBottom, . - GamePhaseActorScriptVm_ExpandActorRectangleBottom

@@ -2,8 +2,8 @@
 .text
 .extern func_02008354
 .extern GamePhaseScriptVm_Pop
-.global func_020159d4
-func_020159d4:
+.global GamePhaseActorScriptVm_SetActorRectangle
+GamePhaseActorScriptVm_SetActorRectangle:
     stmdb sp!, {r3, r4, r5, r6, r7, lr}
     sub sp, sp, #8
     mov r7, r0
@@ -28,4 +28,4 @@ func_020159d4:
     mov r0, #0
     add sp, sp, #8
     ldmia sp!, {r3, r4, r5, r6, r7, pc}
-    .size func_020159d4, . - func_020159d4
+    .size GamePhaseActorScriptVm_SetActorRectangle, . - GamePhaseActorScriptVm_SetActorRectangle
