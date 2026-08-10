@@ -42,7 +42,7 @@ src/overlays/ov090/overlay090_title_event_callback_a6d8.c:
 src/overlays/ov090/overlay090_title_event_callback_a738.c:
     categories: Game code
     .text start:0x0221a738 end:0x0221a784
-asm/overlays/ov090/overlay090_0221a784.s:
+src/overlays/ov090/overlay090_title_state0b_transition.c:
     categories: Game code
     .text start:0x0221a784 end:0x0221a8bc
 asm/overlays/ov090/overlay090_0221a8bc.s:

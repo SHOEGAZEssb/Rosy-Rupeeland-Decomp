@@ -43516,7 +43516,7 @@ build build/decomp/src/overlays/ov090/overlay090_title_virtual_dispatch.o: mwcca
 build build/decomp/src/overlays/ov090/overlay090_title_noop_hooks.o: mwccarm src/overlays/ov090/overlay090_title_noop_hooks.c | include/tingle/types.h
   source = src/overlays/ov090/overlay090_title_noop_hooks.c
   cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c
-build build/decomp/delinks/src/overlays/ov090/overlay090_title_vector_store.o build/decomp/delinks/src/overlays/ov090/overlay090_title_vector_helpers.o build/decomp/delinks/src/overlays/ov090/overlay090_title_virtual_dispatch.o build/decomp/delinks/src/overlays/ov090/overlay090_title_noop_hooks.o build/decomp/delinks/src/overlays/ov090/overlay090_title_countdown.o build/decomp/delinks/src/overlays/ov090/overlay090_title_event_callback_a6d8.o build/decomp/delinks/src/overlays/ov090/overlay090_title_event_callback_a738.o build/decomp/delinks/src/overlays/ov090/overlay090_title_state_classify.o build/decomp/delinks/src/overlays/ov090/overlay090_title_direction_query.o build/decomp/delinks/src/overlays/ov090/overlay090_title_state_active_query.o build/decomp/delinks/src/overlays/ov090/overlay090_title_vector_scale_in_place.o build/decomp/delinks/src/overlays/ov090/overlay090_title_sound_fade.o: dsd_delink config/arm9/config.yaml | config/arm9/overlays/ov090/delinks.txt config/arm9/overlays/ov090/symbols.txt config/arm9/overlays/ov090/relocs.txt
+build build/decomp/delinks/src/overlays/ov090/overlay090_title_vector_store.o build/decomp/delinks/src/overlays/ov090/overlay090_title_vector_helpers.o build/decomp/delinks/src/overlays/ov090/overlay090_title_virtual_dispatch.o build/decomp/delinks/src/overlays/ov090/overlay090_title_noop_hooks.o build/decomp/delinks/src/overlays/ov090/overlay090_title_countdown.o build/decomp/delinks/src/overlays/ov090/overlay090_title_event_callback_a6d8.o build/decomp/delinks/src/overlays/ov090/overlay090_title_event_callback_a738.o build/decomp/delinks/src/overlays/ov090/overlay090_title_state0b_transition.o build/decomp/delinks/src/overlays/ov090/overlay090_title_state_classify.o build/decomp/delinks/src/overlays/ov090/overlay090_title_direction_query.o build/decomp/delinks/src/overlays/ov090/overlay090_title_state_active_query.o build/decomp/delinks/src/overlays/ov090/overlay090_title_vector_scale_in_place.o build/decomp/delinks/src/overlays/ov090/overlay090_title_sound_fade.o: dsd_delink config/arm9/config.yaml | config/arm9/overlays/ov090/delinks.txt config/arm9/overlays/ov090/symbols.txt config/arm9/overlays/ov090/relocs.txt
 build build/reports/overlay090_title_vector_store_exact.json: objdiff build/decomp/delinks/src/overlays/ov090/overlay090_title_vector_store.o | build/decomp/src/overlays/ov090/overlay090_title_vector_store.o
   target_object = build/decomp/delinks/src/overlays/ov090/overlay090_title_vector_store.o
   base_object = build/decomp/src/overlays/ov090/overlay090_title_vector_store.o
@@ -43635,3 +43635,13 @@ build build/reports/overlay090_title_event_callbacks_a738.txt: match_report buil
   report_json = build/reports/overlay090_title_event_callbacks_a738.json
   report_args = --section .text --function func_ov090_0221a738 --require-exact
 build overlay090_title_event_callbacks: phony build/reports/overlay090_title_event_callbacks_a6d8.txt build/reports/overlay090_title_event_callbacks_a738.txt
+build build/decomp/src/overlays/ov090/overlay090_title_state0b_transition.o: mwccarm src/overlays/ov090/overlay090_title_state0b_transition.c | include/tingle/types.h
+  source = src/overlays/ov090/overlay090_title_state0b_transition.c
+  cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
+build build/reports/overlay090_title_state0b_transition.json: objdiff build/decomp/delinks/src/overlays/ov090/overlay090_title_state0b_transition.o | build/decomp/src/overlays/ov090/overlay090_title_state0b_transition.o
+  target_object = build/decomp/delinks/src/overlays/ov090/overlay090_title_state0b_transition.o
+  base_object = build/decomp/src/overlays/ov090/overlay090_title_state0b_transition.o
+build build/reports/overlay090_title_state0b_transition.txt: match_report build/reports/overlay090_title_state0b_transition.json | tools/report_objdiff.py
+  report_json = build/reports/overlay090_title_state0b_transition.json
+  report_args = --section .text --function func_ov090_0221a784 --require-exact
+build overlay090_title_state0b_transition: phony build/reports/overlay090_title_state0b_transition.txt
