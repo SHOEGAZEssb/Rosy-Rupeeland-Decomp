@@ -28,7 +28,7 @@
 .extern Actor_IsAtCachedTerrainHeight
 .extern ActorDerivedType1_HasBlockingStateFlags
 .extern func_02039468
-.extern func_02039db8
+.extern ActorDerivedType1_ResetSpecialModeFlags
 .extern ActorFeedback_DispatchEnvironment
 .extern ActorFeedback_ProcessSnapshotCell
 .extern func_02063820
@@ -418,7 +418,7 @@ ActorDerivedType1_ProcessInteraction: ; 0x02036a8c
     ldrh r1, [r2, #0x24]
     bic r1, r1, #0x1
     strh r1, [r2, #0x24]
-    bl func_02039db8
+    bl ActorDerivedType1_ResetSpecialModeFlags
     ldr r0, .L_0203728c
     mov r1, #0x41
     ldr r0, [r0, #0x0]

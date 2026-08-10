@@ -8,7 +8,7 @@
 .extern data_02105690
 .extern data_021056b8
 .extern Actor_GetCachedTerrainHeight
-.extern func_02039d0c
+.extern ActorDerivedType1_IsSpecialRecordActive
 .extern func_02046d8c
 .extern func_020481dc
 .extern func_020adcac
@@ -65,7 +65,7 @@ func_0204876c: ; 0x0204876c
     cmp r0, #0x0
     bne .L_02048830
     mov r0, r4
-    bl func_02039d0c
+    bl ActorDerivedType1_IsSpecialRecordActive
     cmp r0, #0x0
     beq .L_02048880
 .L_02048830:

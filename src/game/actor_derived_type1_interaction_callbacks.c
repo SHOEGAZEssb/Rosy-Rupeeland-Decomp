@@ -22,7 +22,7 @@ extern void *SceneManager_GetCurrent(void *manager);
 #endif
 
 /* Accept no inputs, change no state, and return no value. */
-void func_02039a50(void) {}
+void ActorDerivedType1_InteractionNoOp(void) {}
 
 /*
  * Return zero while optional object +0x270 has byte +0x10 bit one, actor
@@ -34,7 +34,7 @@ void func_02039a50(void) {}
  * object +0x4c virtual +0xcc and return its result. Heap, Lupy, manager, scene,
  * and virtual calls have observable engine state.
  */
-s32 func_02039a54(void *self, s32 amount, void *source)
+s32 ActorDerivedType1_TryApplyInteractionAmount(void *self, s32 amount, void *source)
 {
     u8 *actor = (u8 *)self;
     if (*(u8 **)(actor + 0x270) != 0 &&
@@ -65,7 +65,7 @@ s32 func_02039a54(void *self, s32 amount, void *source)
 }
 
 /* Ignore all inputs, change no state, and return zero. */
-s32 func_02039b98(void)
+s32 ActorDerivedType1_ReturnZeroInteraction(void)
 {
     return 0;
 }

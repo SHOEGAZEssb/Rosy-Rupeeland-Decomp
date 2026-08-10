@@ -15,7 +15,7 @@ extern void func_0201de8c(void *object, u16 vcount);
 extern void *func_0201e0ec(void *object);
 extern void *func_0202baec(void *object, s32 x, s32 y);
 extern void func_0202d3cc(void *object);
-extern void func_02039ba0(void *object);
+extern void ActorDerivedType1_ClearFailureCounter(void *object);
 extern void ActorFeedback_DestroyPresentations(void);
 extern void func_020a2324(void);
 extern void func_020a2348(void *object, s32 a, s32 b);
@@ -76,7 +76,7 @@ void func_0200ea48(GamePhaseState *self)
     if (self->owned_2eb0)
         ((PhaseVirtualMethod)phaseVirtual(self, 4))(self->owned_2eb0);
     func_0202d3cc(self->storage_0004);
-    func_02039ba0(self->storage_0004 + 0x2e7c);
+    ActorDerivedType1_ClearFailureCounter(self->storage_0004 + 0x2e7c);
     DebugText_BeginFrame();
 }
 

@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/type7_actor_transition_mode.c.
 .extern data_021052fc
 .extern AttachmentController_SetEnabled
-.extern func_02039d54
+.extern ActorDerivedType1_SetSpecialModeEnabled
 .extern func_02047d40
 .extern func_0204ced8
 .extern func_0204cf28
@@ -59,7 +59,7 @@ func_0204b078: ; 0x0204b078
     ldr r0, [r0, #0x0]
     add r0, r0, #0x2000
     ldr r0, [r0, #0xea4]
-    bl func_02039d54
+    bl ActorDerivedType1_SetSpecialModeEnabled
     ldmia sp!, {r4, pc}
 .L_0204b144: .word data_021052fc
 .size func_0204b078, . - func_0204b078

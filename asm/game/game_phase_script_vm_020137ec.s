@@ -5,7 +5,7 @@
 .extern func_02006818
 .extern func_0200b2c0
 .extern Actor_SetVelocity
-.extern func_02039db8
+.extern ActorDerivedType1_ResetSpecialModeFlags
 
     .global func_020137ec
 func_020137ec: ; 0x020137ec
@@ -34,7 +34,7 @@ func_020137ec: ; 0x020137ec
     cmp r0, #0x0
     beq L_02013854
     mov r0, r4
-    bl func_02039db8
+    bl ActorDerivedType1_ResetSpecialModeFlags
 L_02013854:
     mov r1, #0x0
     add r0, sp, #0x0

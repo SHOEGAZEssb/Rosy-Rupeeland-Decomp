@@ -39,7 +39,7 @@ extern void *SceneManager_GetCurrent(void *manager);
  * to virtual +0xc8 on current scene object +0x4c. Returns no value; Lupy, heap,
  * manager, auxiliary, sound, record, and scene calls alter engine state.
  */
-void func_020398a4(void *self, s32 amount, void *sourceValue)
+void ActorDerivedType1_DispatchInteractionAmount(void *self, s32 amount, void *sourceValue)
 {
     u8 *actor = (u8 *)self;
     u8 *source = (u8 *)sourceValue;

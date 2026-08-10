@@ -37,7 +37,7 @@ extern s32 GameWork_TestFlag(void *work, u32 flag);
 extern s32 func_0200b23c(void *state, const void *record);
 extern void func_0200b164(void *state, const void *record);
 extern void func_02072b68(void *attachment, u32 animation);
-extern void func_02039db8(void *actor);
+extern void ActorDerivedType1_ResetSpecialModeFlags(void *actor);
 extern void func_02063820(void *state, u32 value);
 extern void Sound_Play(void *context, u32 sound, u32 variant);
 extern void *func_0201e0ec(void *state);
@@ -229,7 +229,7 @@ s32 ActorDerivedType1_ProcessInteraction(void *self)
                           (actor[0xd4] + 0x10) & 0xff);
             *(u16 *)(*(u8 **)(actor + 0x54) + 0x24) &= (u16)~2;
             *(u16 *)(*(u8 **)(actor + 0x54) + 0x24) &= (u16)~1;
-            func_02039db8(actor);
+            ActorDerivedType1_ResetSpecialModeFlags(actor);
             func_02063820(data_021e9ac0, 0x41);
             if (*(u16 *)(descriptor + 0x1a) != 0)
                 Sound_Play(gSoundContext, *(u16 *)(descriptor + 0x1a) >> 7,

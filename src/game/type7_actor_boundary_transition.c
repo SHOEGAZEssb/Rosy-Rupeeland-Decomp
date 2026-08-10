@@ -19,7 +19,7 @@ extern void Heap_Free(void *allocation);
 extern s32 Actor_GetCachedTerrainHeight(void *actor);
 extern s32 func_02034568(void *actor, s32 x, s32 y, s32 height);
 extern s32 func_02034718(void *actor, s32 x, s32 y, s32 height);
-extern void func_02039d54(void *object, s32 value);
+extern void ActorDerivedType1_SetSpecialModeEnabled(void *object, s32 value);
 extern void func_020481dc(void *actor, u32 value0, u32 value1, s32 index);
 extern void func_0206c978(void *object);
 extern void func_0206e590(void *object, s32 value);
@@ -208,7 +208,7 @@ void func_0204a988(void *self, const VecFx32Object *destination, s32 direction)
         func_020481dc(actor, data_020e17e8[0], data_020e17e8[1], -1);
         *(u16 *)(*(u8 **)(actor + 0x54) + 0x24) &= (u16)~0x10;
         *(u16 *)(actor + 0x246) = 0;
-        func_02039d54(*(void **)(data_021052fc + 0x2ea4), 1);
+        ActorDerivedType1_SetSpecialModeEnabled(*(void **)(data_021052fc + 0x2ea4), 1);
     }
     *(u16 *)(actor + 0x2a6) = 0;
 }

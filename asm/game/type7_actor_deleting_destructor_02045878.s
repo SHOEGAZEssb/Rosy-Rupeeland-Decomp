@@ -7,7 +7,7 @@
 .extern data_021052fc
 .extern data_0210577c
 .extern func_02005058
-.extern func_02039d54
+.extern ActorDerivedType1_SetSpecialModeEnabled
 .extern func_0203b61c
 .extern func_0204cd7c
 .extern func_0206c978
@@ -26,7 +26,7 @@ func_02045878: ; 0x02045878
     cmp r0, #0x0
     beq .L_020458a8
     mov r1, #0x0
-    bl func_02039d54
+    bl ActorDerivedType1_SetSpecialModeEnabled
 .L_020458a8:
     mov r2, #0x0
     ldr r1, .L_020459c4

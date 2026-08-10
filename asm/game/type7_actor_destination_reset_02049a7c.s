@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/type7_actor_destination_motion.c.
 .extern data_021052fc
-.extern func_02039d54
+.extern ActorDerivedType1_SetSpecialModeEnabled
 .extern func_02048000
 .text
     .global func_02049a7c
@@ -22,7 +22,7 @@ func_02049a7c: ; 0x02049a7c
     ldr r0, [r2, #0x0]
     add r0, r0, #0x2000
     ldr r0, [r0, #0xea4]
-    bl func_02039d54
+    bl ActorDerivedType1_SetSpecialModeEnabled
     mov r0, r4
     bl func_02048000
     ldmia sp!, {r4, pc}

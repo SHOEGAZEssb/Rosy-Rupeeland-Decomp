@@ -16,7 +16,7 @@ extern u32 data_020e18e0[];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern s32 func_02039d0c(void *object);
+extern s32 ActorDerivedType1_IsSpecialRecordActive(void *object);
 extern s32 func_02046d8c(const void *actor);
 extern void func_020481dc(void *actor, u32 first, u32 second, s32 duration);
 extern s32 Actor_GetCachedTerrainHeight(void *actor);
@@ -43,7 +43,7 @@ static s32 invoke_a8_predicate(void *object)
  * immediately while either counter +0x256/+0x25a is nonzero.
  *
  * Except for record subtype two, first consider the global object at
- * data_021052fc+0x2ea4 when its virtual +0xa8 predicate or func_02039d0c
+ * data_021052fc+0x2ea4 when its virtual +0xa8 predicate or ActorDerivedType1_IsSpecialRecordActive
  * accepts it. Bind it at +0x210; unless func_02046d8c recognizes the actor
  * callback, install data_020e16e8 for 20 ticks in finite mode or
  * data_020e18f0 indefinitely. Return one after binding.
@@ -83,7 +83,7 @@ s32 func_0204876c(void *self, s32 finiteMode)
     if (subtype != 2) {
         u8 *globalObject = *(u8 **)(data_021052fc + 0x2ea4);
         if (invoke_a8_predicate(globalObject) != 0
-            || func_02039d0c(globalObject) != 0) {
+            || ActorDerivedType1_IsSpecialRecordActive(globalObject) != 0) {
             *(void **)(actor + 0x210) = globalObject;
             if (func_02046d8c(actor) == 0) {
                 if (finiteMode != 0)

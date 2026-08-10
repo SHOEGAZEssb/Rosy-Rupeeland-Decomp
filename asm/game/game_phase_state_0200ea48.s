@@ -6,7 +6,7 @@
 .extern func_0201df64
 .extern func_0201e0ec
 .extern func_0202d3cc
-.extern func_02039ba0
+.extern ActorDerivedType1_ClearFailureCounter
 .extern ActorFeedback_DestroyPresentations
 .extern func_020a2324
 .extern gGameWork
@@ -59,7 +59,7 @@ L_0200eaec:
     bl func_0202d3cc
     add r0, r4, #0x2000
     ldr r0, [r0, #0xe80]
-    bl func_02039ba0
+    bl ActorDerivedType1_ClearFailureCounter
     bl DebugText_BeginFrame
     ldmia sp!, {r4, pc}
 L_0200eb08: .word gGameWork

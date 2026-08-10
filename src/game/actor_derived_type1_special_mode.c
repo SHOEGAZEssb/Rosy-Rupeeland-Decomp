@@ -15,7 +15,7 @@ extern void func_02072b68(void *attachment, u8 index);
  * descriptor ID +0x00 is 0x7b, 0x7c, 0x80, or 0x8c, or when type byte +0x08
  * is 0x73 or 0x74; return zero for all other values. No state changes.
  */
-s32 func_02039d0c(void *self)
+s32 ActorDerivedType1_IsSpecialRecordActive(void *self)
 {
     u8 *descriptor = *(u8 **)((u8 *)self + 0x27c);
     s16 id;
@@ -33,7 +33,7 @@ s32 func_02039d0c(void *self)
  * clear bit 0x800000 only when previously set and then set actor +0xd0 bit
  * 0x1000. Returns no value; attachment dispatch can change presentation.
  */
-void func_02039d54(void *self, s32 enable)
+void ActorDerivedType1_SetSpecialModeEnabled(void *self, s32 enable)
 {
     u8 *actor = (u8 *)self;
     if (enable != 0) {
@@ -52,7 +52,7 @@ void func_02039d54(void *self, s32 enable)
  * Clear actor +0xd0 bit 0x4000, +0x230 bits 0x200000/0x400000, and signed
  * halfword +0x268. Returns no value and calls no helpers.
  */
-void func_02039db8(void *self)
+void ActorDerivedType1_ResetSpecialModeFlags(void *self)
 {
     u8 *actor = (u8 *)self;
     *(u32 *)(actor + 0xd0) &= ~0x4000;

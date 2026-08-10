@@ -19,7 +19,7 @@ extern void Type1Actor_EnterFailureState(void *actor);
 #endif
 
 /* Clear actor signed halfword +0x29e. Returns no value and calls no helpers. */
-void func_02039ba0(void *self)
+void ActorDerivedType1_ClearFailureCounter(void *self)
 {
     *(u16 *)((u8 *)self + 0x29e) = 0;
 }

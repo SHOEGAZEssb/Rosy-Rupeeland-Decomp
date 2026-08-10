@@ -15762,7 +15762,7 @@ build build/reports/actor_derived_type1_interaction_dispatch_020398a4.json: objd
   base_object = build/decomp/asm/game/actor_derived_type1_interaction_dispatch_020398a4.o
 build build/reports/actor_derived_type1_interaction_dispatch_020398a4.txt: match_report build/reports/actor_derived_type1_interaction_dispatch_020398a4.json | tools/report_objdiff.py
   report_json = build/reports/actor_derived_type1_interaction_dispatch_020398a4.json
-  report_args = --section .text --function func_020398a4 --require-exact
+  report_args = --section .text --function ActorDerivedType1_DispatchInteractionAmount --require-exact
 build build/reports/actor_derived_type1_interaction_dispatch.txt: phony build/reports/actor_derived_type1_interaction_dispatch_020398a4.txt
 
 build actor_derived_type1_interaction_dispatch: phony build/decomp/src/game/actor_derived_type1_interaction_dispatch.o build/decomp/asm/game/actor_derived_type1_interaction_dispatch_020398a4.o build/reports/actor_derived_type1_interaction_dispatch.txt
@@ -15779,7 +15779,7 @@ build build/reports/actor_derived_type1_interaction_callbacks_02039a50.json: obj
   base_object = build/decomp/asm/game/actor_derived_type1_interaction_callbacks_02039a50.o
 build build/reports/actor_derived_type1_interaction_callbacks_02039a50.txt: match_report build/reports/actor_derived_type1_interaction_callbacks_02039a50.json | tools/report_objdiff.py
   report_json = build/reports/actor_derived_type1_interaction_callbacks_02039a50.json
-  report_args = --section .text --function func_02039a50 --require-exact
+  report_args = --section .text --function ActorDerivedType1_InteractionNoOp --require-exact
 build build/decomp/asm/game/actor_derived_type1_interaction_callbacks_02039a54.o: mwasmarm asm/game/actor_derived_type1_interaction_callbacks_02039a54.s
 build build/decomp/delinks/asm/game/actor_derived_type1_interaction_callbacks_02039a54.o: dsd_delink config/arm9/config.yaml config/arm9/delinks.txt config/arm9/symbols.txt config/arm9/relocs.txt
 build build/reports/actor_derived_type1_interaction_callbacks_02039a54.json: objdiff build/decomp/delinks/asm/game/actor_derived_type1_interaction_callbacks_02039a54.o | build/decomp/asm/game/actor_derived_type1_interaction_callbacks_02039a54.o
@@ -15787,7 +15787,7 @@ build build/reports/actor_derived_type1_interaction_callbacks_02039a54.json: obj
   base_object = build/decomp/asm/game/actor_derived_type1_interaction_callbacks_02039a54.o
 build build/reports/actor_derived_type1_interaction_callbacks_02039a54.txt: match_report build/reports/actor_derived_type1_interaction_callbacks_02039a54.json | tools/report_objdiff.py
   report_json = build/reports/actor_derived_type1_interaction_callbacks_02039a54.json
-  report_args = --section .text --function func_02039a54 --require-exact
+  report_args = --section .text --function ActorDerivedType1_TryApplyInteractionAmount --require-exact
 build build/decomp/asm/game/actor_derived_type1_interaction_callbacks_02039b98.o: mwasmarm asm/game/actor_derived_type1_interaction_callbacks_02039b98.s
 build build/decomp/delinks/asm/game/actor_derived_type1_interaction_callbacks_02039b98.o: dsd_delink config/arm9/config.yaml config/arm9/delinks.txt config/arm9/symbols.txt config/arm9/relocs.txt
 build build/reports/actor_derived_type1_interaction_callbacks_02039b98.json: objdiff build/decomp/delinks/asm/game/actor_derived_type1_interaction_callbacks_02039b98.o | build/decomp/asm/game/actor_derived_type1_interaction_callbacks_02039b98.o
@@ -15795,7 +15795,7 @@ build build/reports/actor_derived_type1_interaction_callbacks_02039b98.json: obj
   base_object = build/decomp/asm/game/actor_derived_type1_interaction_callbacks_02039b98.o
 build build/reports/actor_derived_type1_interaction_callbacks_02039b98.txt: match_report build/reports/actor_derived_type1_interaction_callbacks_02039b98.json | tools/report_objdiff.py
   report_json = build/reports/actor_derived_type1_interaction_callbacks_02039b98.json
-  report_args = --section .text --function func_02039b98 --require-exact
+  report_args = --section .text --function ActorDerivedType1_ReturnZeroInteraction --require-exact
 build build/reports/actor_derived_type1_interaction_callbacks.txt: phony build/reports/actor_derived_type1_interaction_callbacks_02039a50.txt build/reports/actor_derived_type1_interaction_callbacks_02039a54.txt build/reports/actor_derived_type1_interaction_callbacks_02039b98.txt
 
 build actor_derived_type1_interaction_callbacks: phony build/decomp/src/game/actor_derived_type1_interaction_callbacks.o build/decomp/asm/game/actor_derived_type1_interaction_callbacks_02039a50.o build/decomp/asm/game/actor_derived_type1_interaction_callbacks_02039a54.o build/decomp/asm/game/actor_derived_type1_interaction_callbacks_02039b98.o build/reports/actor_derived_type1_interaction_callbacks.txt
@@ -15812,7 +15812,7 @@ build build/reports/actor_derived_type1_failure_state_02039ba0.json: objdiff bui
   base_object = build/decomp/asm/game/actor_derived_type1_failure_state_02039ba0.o
 build build/reports/actor_derived_type1_failure_state_02039ba0.txt: match_report build/reports/actor_derived_type1_failure_state_02039ba0.json | tools/report_objdiff.py
   report_json = build/reports/actor_derived_type1_failure_state_02039ba0.json
-  report_args = --section .text --function func_02039ba0 --require-exact
+  report_args = --section .text --function ActorDerivedType1_ClearFailureCounter --require-exact
 build build/decomp/asm/game/actor_derived_type1_failure_state_02039bb0.o: mwasmarm asm/game/actor_derived_type1_failure_state_02039bb0.s
 build build/decomp/delinks/asm/game/actor_derived_type1_failure_state_02039bb0.o: dsd_delink config/arm9/config.yaml config/arm9/delinks.txt config/arm9/symbols.txt config/arm9/relocs.txt
 build build/reports/actor_derived_type1_failure_state_02039bb0.json: objdiff build/decomp/delinks/asm/game/actor_derived_type1_failure_state_02039bb0.o | build/decomp/asm/game/actor_derived_type1_failure_state_02039bb0.o
@@ -15870,7 +15870,7 @@ build build/reports/actor_derived_type1_special_mode_02039d0c.json: objdiff buil
   base_object = build/decomp/asm/game/actor_derived_type1_special_mode_02039d0c.o
 build build/reports/actor_derived_type1_special_mode_02039d0c.txt: match_report build/reports/actor_derived_type1_special_mode_02039d0c.json | tools/report_objdiff.py
   report_json = build/reports/actor_derived_type1_special_mode_02039d0c.json
-  report_args = --section .text --function func_02039d0c --require-exact
+  report_args = --section .text --function ActorDerivedType1_IsSpecialRecordActive --require-exact
 build build/decomp/asm/game/actor_derived_type1_special_mode_02039d54.o: mwasmarm asm/game/actor_derived_type1_special_mode_02039d54.s
 build build/decomp/delinks/asm/game/actor_derived_type1_special_mode_02039d54.o: dsd_delink config/arm9/config.yaml config/arm9/delinks.txt config/arm9/symbols.txt config/arm9/relocs.txt
 build build/reports/actor_derived_type1_special_mode_02039d54.json: objdiff build/decomp/delinks/asm/game/actor_derived_type1_special_mode_02039d54.o | build/decomp/asm/game/actor_derived_type1_special_mode_02039d54.o
@@ -15878,7 +15878,7 @@ build build/reports/actor_derived_type1_special_mode_02039d54.json: objdiff buil
   base_object = build/decomp/asm/game/actor_derived_type1_special_mode_02039d54.o
 build build/reports/actor_derived_type1_special_mode_02039d54.txt: match_report build/reports/actor_derived_type1_special_mode_02039d54.json | tools/report_objdiff.py
   report_json = build/reports/actor_derived_type1_special_mode_02039d54.json
-  report_args = --section .text --function func_02039d54 --require-exact
+  report_args = --section .text --function ActorDerivedType1_SetSpecialModeEnabled --require-exact
 build build/decomp/asm/game/actor_derived_type1_special_mode_02039db8.o: mwasmarm asm/game/actor_derived_type1_special_mode_02039db8.s
 build build/decomp/delinks/asm/game/actor_derived_type1_special_mode_02039db8.o: dsd_delink config/arm9/config.yaml config/arm9/delinks.txt config/arm9/symbols.txt config/arm9/relocs.txt
 build build/reports/actor_derived_type1_special_mode_02039db8.json: objdiff build/decomp/delinks/asm/game/actor_derived_type1_special_mode_02039db8.o | build/decomp/asm/game/actor_derived_type1_special_mode_02039db8.o
@@ -15886,7 +15886,7 @@ build build/reports/actor_derived_type1_special_mode_02039db8.json: objdiff buil
   base_object = build/decomp/asm/game/actor_derived_type1_special_mode_02039db8.o
 build build/reports/actor_derived_type1_special_mode_02039db8.txt: match_report build/reports/actor_derived_type1_special_mode_02039db8.json | tools/report_objdiff.py
   report_json = build/reports/actor_derived_type1_special_mode_02039db8.json
-  report_args = --section .text --function func_02039db8 --require-exact
+  report_args = --section .text --function ActorDerivedType1_ResetSpecialModeFlags --require-exact
 build build/reports/actor_derived_type1_special_mode.txt: phony build/reports/actor_derived_type1_special_mode_02039d0c.txt build/reports/actor_derived_type1_special_mode_02039d54.txt build/reports/actor_derived_type1_special_mode_02039db8.txt
 
 build actor_derived_type1_special_mode: phony build/decomp/src/game/actor_derived_type1_special_mode.o build/decomp/asm/game/actor_derived_type1_special_mode_02039d0c.o build/decomp/asm/game/actor_derived_type1_special_mode_02039d54.o build/decomp/asm/game/actor_derived_type1_special_mode_02039db8.o build/reports/actor_derived_type1_special_mode.txt

@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/actor_derived_type1_interaction_callbacks.c.
 .text
-    .global func_02039a50
-    .type func_02039a50, @function
-func_02039a50: ; 0x02039a50
+    .global ActorDerivedType1_InteractionNoOp
+    .type ActorDerivedType1_InteractionNoOp, @function
+ActorDerivedType1_InteractionNoOp: ; 0x02039a50
     bx lr
-    .size func_02039a50, . - func_02039a50
+    .size ActorDerivedType1_InteractionNoOp, . - ActorDerivedType1_InteractionNoOp

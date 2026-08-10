@@ -14,7 +14,7 @@ extern void *gGameWork;
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_02039d54(void *object, s32 enabled);
+extern void ActorDerivedType1_SetSpecialModeEnabled(void *object, s32 enabled);
 extern void func_0206c978(void *resource);
 extern void GameWork_ClearFlag(void *work, u32 flag);
 extern void func_0204cd7c(void *helper);
@@ -26,7 +26,7 @@ extern void func_0203b61c(void *actor);
 
 /*
  * Restore vtable data_020e1c38. If world object *data_021052fc+0x2ea4 is
- * nonnull, pass it with zero to func_02039d54. Remove self from the first
+ * nonnull, pass it with zero to ActorDerivedType1_SetSpecialModeEnabled. Remove self from the first
  * matching data_0210577c slot. If owned pointer +0x234 exists, release it via
  * func_0206c978 and Heap_Free. Clear GameWork flag 0x3fd. For actor layer byte
  * +0x48 equal to one, write terminal state into data_020e16b0: +0x268 bit
@@ -46,7 +46,7 @@ void *func_02045724(void *self)
     *(void **)actor = data_020e1c38;
     worldObject = *(void **)(data_021052fc + 0x2ea4);
     if (worldObject != 0)
-        func_02039d54(worldObject, 0);
+        ActorDerivedType1_SetSpecialModeEnabled(worldObject, 0);
     for (i = 0; i < 3; ++i) {
         if (data_0210577c[i] == actor) {
             data_0210577c[i] = 0;

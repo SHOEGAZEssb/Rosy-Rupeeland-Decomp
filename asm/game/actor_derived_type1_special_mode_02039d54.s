@@ -1,9 +1,9 @@
 ; Matching retail form; see src/game/actor_derived_type1_special_mode.c.
 .text
 .extern func_02072b68
-    .global func_02039d54
-    .type func_02039d54, @function
-func_02039d54: ; 0x02039d54
+    .global ActorDerivedType1_SetSpecialModeEnabled
+    .type ActorDerivedType1_SetSpecialModeEnabled, @function
+ActorDerivedType1_SetSpecialModeEnabled: ; 0x02039d54
     stmdb sp!, {r3, lr}
     cmp r1, #0x0
     ldr r1, [r0, #0x230]
@@ -30,4 +30,4 @@ func_02039d54: ; 0x02039d54
     orrne r1, r1, #0x1000
     strne r1, [r0, #0xd0]
     ldmia sp!, {r3, pc}
-    .size func_02039d54, . - func_02039d54
+    .size ActorDerivedType1_SetSpecialModeEnabled, . - ActorDerivedType1_SetSpecialModeEnabled

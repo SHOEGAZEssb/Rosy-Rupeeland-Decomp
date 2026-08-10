@@ -11,7 +11,7 @@ extern u8 *data_021052fc;
 extern "C" {
 #endif
 extern void AttachmentController_SetEnabled(void *state, s32 enabled);
-extern void func_02039d54(void *object, s32 value);
+extern void ActorDerivedType1_SetSpecialModeEnabled(void *object, s32 value);
 extern void func_02047d40(void *actor);
 extern void func_0204ced8(void *state, u32 value);
 extern void func_0204cf28(void *state);
@@ -57,7 +57,7 @@ void func_0204b078(void *self, s32 enabled)
         *(u16 *)(attachment + 0x24) |= 0x10;
         *(u32 *)(actor + 0x14) &= ~0x02000000;
     }
-    func_02039d54(*(void **)(data_021052fc + 0x2ea4), 0);
+    ActorDerivedType1_SetSpecialModeEnabled(*(void **)(data_021052fc + 0x2ea4), 0);
 }
 
 /*

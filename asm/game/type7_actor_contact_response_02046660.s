@@ -16,7 +16,7 @@
 .extern func_02032a94
 .extern ActorDerivedType1_IsTargetStateEligible
 .extern ActorDerivedType1_StartRecord
-.extern func_02039d0c
+.extern ActorDerivedType1_IsSpecialRecordActive
 .extern func_02046d8c
 .extern func_02046e60
 .extern func_020478dc
@@ -332,7 +332,7 @@ func_02046660: ; 0x02046660
     cmp r0, r5
     bne .L_02046b58
     mov r0, r5
-    bl func_02039d0c
+    bl ActorDerivedType1_IsSpecialRecordActive
     cmp r0, #0x0
     beq .L_02046b58
     mov r0, r5

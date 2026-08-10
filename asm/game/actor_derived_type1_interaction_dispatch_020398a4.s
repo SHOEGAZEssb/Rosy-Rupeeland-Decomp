@@ -16,9 +16,9 @@
 .extern gLupyContext
 .extern gSceneManager
 
-    .global func_020398a4
-    .type func_020398a4, @function
-func_020398a4: ; 0x020398a4
+    .global ActorDerivedType1_DispatchInteractionAmount
+    .type ActorDerivedType1_DispatchInteractionAmount, @function
+ActorDerivedType1_DispatchInteractionAmount: ; 0x020398a4
     stmdb sp!, {r3, r4, r5, r6, r7, lr}
     sub sp, sp, #0x8
     mov r7, r0
@@ -132,4 +132,4 @@ func_020398a4: ; 0x020398a4
 .L_02039a44: .word gHeapContext
 .L_02039a48: .word data_021052fc
 .L_02039a4c: .word gSceneManager
-    .size func_020398a4, . - func_020398a4
+    .size ActorDerivedType1_DispatchInteractionAmount, . - ActorDerivedType1_DispatchInteractionAmount

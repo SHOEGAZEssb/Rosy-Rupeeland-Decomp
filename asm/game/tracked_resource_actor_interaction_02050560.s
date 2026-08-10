@@ -1,5 +1,5 @@
 ; Matching retail form; see src/game/tracked_resource_actor_interaction.c.
-.extern func_020398a4
+.extern ActorDerivedType1_DispatchInteractionAmount
 .extern func_0204b818
 .text
     .global func_02050560
@@ -20,7 +20,7 @@ func_02050560:
     ldr r3, [r2, #0x1fc]
     mov r0, r1
     ldrsh r1, [r3, #0xc]
-    bl func_020398a4
+    bl ActorDerivedType1_DispatchInteractionAmount
     ldmia sp!, {r3, pc}
 .L_020505a8:
     cmp r0, #0x7

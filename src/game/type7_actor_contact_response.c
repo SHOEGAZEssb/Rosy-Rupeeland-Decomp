@@ -36,7 +36,7 @@ extern s32 func_02046d8c(void *actor);
 extern void func_02005030(void *destination, const void *source);
 extern void func_02005058(void *value);
 extern void func_020478dc(void *actor, const void *transform, s32 value);
-extern s32 func_02039d0c(void *actor);
+extern s32 ActorDerivedType1_IsSpecialRecordActive(void *actor);
 extern void ActorDerivedType1_StartRecord(void *actor, s32 value);
 extern void func_0204b7bc(void *actor, s32 mode);
 extern void func_020593dc(void *soundContext, s32 group, s32 sound,
@@ -165,7 +165,7 @@ s32 func_02046660(void *self, void *otherObject, s32 context)
                     *(s32 *)(other + 0xa0) += dy;
                     if (func_02046d8c(actor) != 0
                         && *(void **)(actor + 0x210) == other
-                        && func_02039d0c(other) != 0) {
+                        && ActorDerivedType1_IsSpecialRecordActive(other) != 0) {
                         ActorDerivedType1_StartRecord(other, 0x88);
                         *(u16 *)(other + 0x268) = 0;
                         func_020481dc(actor, data_020e16b0[0],

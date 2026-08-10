@@ -13,9 +13,9 @@
 .extern gLupyContext
 .extern gSceneManager
 
-    .global func_02039a54
-    .type func_02039a54, @function
-func_02039a54: ; 0x02039a54
+    .global ActorDerivedType1_TryApplyInteractionAmount
+    .type ActorDerivedType1_TryApplyInteractionAmount, @function
+ActorDerivedType1_TryApplyInteractionAmount: ; 0x02039a54
     stmdb sp!, {r4, r5, r6, lr}
     sub sp, sp, #0x8
     mov r6, r0
@@ -102,4 +102,4 @@ func_02039a54: ; 0x02039a54
 .L_02039b8c: .word gHeapContext
 .L_02039b90: .word data_021052fc
 .L_02039b94: .word gSceneManager
-    .size func_02039a54, . - func_02039a54
+    .size ActorDerivedType1_TryApplyInteractionAmount, . - ActorDerivedType1_TryApplyInteractionAmount

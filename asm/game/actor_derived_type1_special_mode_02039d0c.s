@@ -1,8 +1,8 @@
 ; Matching retail form; see src/game/actor_derived_type1_special_mode.c.
 .text
-    .global func_02039d0c
-    .type func_02039d0c, @function
-func_02039d0c: ; 0x02039d0c
+    .global ActorDerivedType1_IsSpecialRecordActive
+    .type ActorDerivedType1_IsSpecialRecordActive, @function
+ActorDerivedType1_IsSpecialRecordActive: ; 0x02039d0c
     ldr r0, [r0, #0x27c]
     cmp r0, #0x0
     moveq r0, #0x0
@@ -23,4 +23,4 @@ func_02039d0c: ; 0x02039d0c
 .L_02039d4c:
     mov r0, #0x0
     bx lr
-    .size func_02039d0c, . - func_02039d0c
+    .size ActorDerivedType1_IsSpecialRecordActive, . - ActorDerivedType1_IsSpecialRecordActive

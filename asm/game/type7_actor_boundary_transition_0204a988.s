@@ -10,7 +10,7 @@
 .extern Actor_GetCachedTerrainHeight
 .extern func_02034568
 .extern func_02034718
-.extern func_02039d54
+.extern ActorDerivedType1_SetSpecialModeEnabled
 .extern func_020481dc
 .extern func_0206c978
 .extern func_0206e590
@@ -442,7 +442,7 @@ func_0204a988: ; 0x0204a988
     mov r1, #0x1
     add r0, r0, #0x2000
     ldr r0, [r0, #0xea4]
-    bl func_02039d54
+    bl ActorDerivedType1_SetSpecialModeEnabled
 .L_0204afac:
     add r0, r8, #0x200
     mov r1, #0x0
