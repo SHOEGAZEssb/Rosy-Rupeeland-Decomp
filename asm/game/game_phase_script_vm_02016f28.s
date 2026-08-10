@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/game_phase_script_vm_actor_rectangle_query_opcode.c.
 .text
-.global func_02016f28
-func_02016f28:
+.global RectS32_ContainsPoint
+RectS32_ContainsPoint:
     ldr r3, [r0, #0xc]
     cmp r2, r3
     movlt r12, #1
@@ -22,4 +22,4 @@ func_02016f28:
     and r0, r3, r0
     and r0, r12, r0
     bx lr
-    .size func_02016f28, . - func_02016f28
+    .size RectS32_ContainsPoint, . - RectS32_ContainsPoint

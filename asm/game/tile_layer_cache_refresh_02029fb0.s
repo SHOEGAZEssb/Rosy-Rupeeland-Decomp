@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/tile_layer_cache_refresh.c.
 .text
-.extern func_02016f14
-.extern func_02016f28
+.extern RectS32_Init
+.extern RectS32_ContainsPoint
 .extern func_0202a62c
 
     .global func_02029fb0
@@ -17,7 +17,7 @@ func_02029fb0: ; 0x02029fb0
     str r3, [sp, #0x0]
     ldrh r3, [r2, #0x2c]
     mov r2, r1
-    bl func_02016f14
+    bl RectS32_Init
     add r0, r10, #0x1000
     ldrb r1, [r0, #0x4]
     mov r6, #0x0
@@ -36,7 +36,7 @@ func_02029fb0: ; 0x02029fb0
     add r1, r7, r1
     add r2, r6, r2
     mov r8, r11
-    bl func_02016f28
+    bl RectS32_ContainsPoint
     cmp r0, #0x0
     beq .L_0202a058
     ldrsh r2, [r5, #0x28]

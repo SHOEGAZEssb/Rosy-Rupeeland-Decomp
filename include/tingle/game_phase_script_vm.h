@@ -176,7 +176,7 @@ s32 func_02016a84(GamePhaseActorScriptVm *self);
 s32 func_02016bc0(GamePhaseActorScriptVm *self);
 s32 func_02016c7c(GamePhaseActorScriptVm *self);
 s32 func_02016d60(GamePhaseActorScriptVm *self);
-s32 func_02016e44(GamePhaseActorScriptVm *self);
+s32 GamePhaseActorScriptVm_IsCollection1ActorInRectangle(GamePhaseActorScriptVm *self);
 s32 GamePhaseActorScriptVm_ConfigureMotionProbe(GamePhaseActorScriptVm *self);
 s32 GamePhaseActorScriptVm_ResetMotionProbe(GamePhaseActorScriptVm *self);
 s32 func_02017008(GamePhaseActorScriptVm *self);

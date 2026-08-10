@@ -12,9 +12,9 @@ typedef struct RectS32 {
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern RectS32 *func_02016f14(RectS32 *result, s32 left, s32 top, s32 right,
+extern RectS32 *RectS32_Init(RectS32 *result, s32 left, s32 top, s32 right,
                              s32 bottom);
-extern s32 func_02016f28(const RectS32 *rect, s32 x, s32 y);
+extern s32 RectS32_ContainsPoint(const RectS32 *rect, s32 x, s32 y);
 #ifdef __cplusplus
 }
 #endif
@@ -34,7 +34,7 @@ s32 func_0201add4(GamePhaseActorScriptVm *self)
     s32 x = (s32)GamePhaseScriptVm_Pop(&self->base);
     RectS32 rect;
 
-    func_02016f14(&rect, left, top, right, bottom);
-    GamePhaseScriptVm_SetResult(&self->base, (u32)func_02016f28(&rect, x, y));
+    RectS32_Init(&rect, left, top, right, bottom);
+    GamePhaseScriptVm_SetResult(&self->base, (u32)RectS32_ContainsPoint(&rect, x, y));
     return 0;
 }

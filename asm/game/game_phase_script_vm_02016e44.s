@@ -6,11 +6,11 @@
 .extern GamePhaseRuntime_GetActorCollection
 .extern GamePhaseScriptVm_Pop
 .extern GamePhaseScriptVm_SetResult
-.extern func_02016f14
-.extern func_02016f28
+.extern RectS32_Init
+.extern RectS32_ContainsPoint
 .extern ActorCollection_FindActorByDescriptorValue
-.global func_02016e44
-func_02016e44:
+.global GamePhaseActorScriptVm_IsCollection1ActorInRectangle
+GamePhaseActorScriptVm_IsCollection1ActorInRectangle:
     stmdb sp!, {r4, r5, r6, r7, r8, r9, lr}
     sub sp, sp, #0x24
     mov r4, r0
@@ -42,13 +42,13 @@ func_02016e44:
     mov r2, r7
     mov r3, r8
     add r0, sp, #4
-    bl func_02016f14
+    bl RectS32_Init
     ldr r1, [sp, #0x18]
     ldr r2, [sp, #0x1c]
     add r0, sp, #4
     mov r1, r1, asr #12
     mov r2, r2, asr #12
-    bl func_02016f28
+    bl RectS32_ContainsPoint
     cmp r0, #0
     mov r0, r4
     beq L_02016ef4
@@ -65,4 +65,4 @@ L_02016efc:
     add sp, sp, #0x24
     ldmia sp!, {r4, r5, r6, r7, r8, r9, pc}
 L_02016f10: .word data_021052fc
-    .size func_02016e44, . - func_02016e44
+    .size GamePhaseActorScriptVm_IsCollection1ActorInRectangle, . - GamePhaseActorScriptVm_IsCollection1ActorInRectangle

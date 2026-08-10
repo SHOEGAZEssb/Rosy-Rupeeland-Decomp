@@ -21,7 +21,7 @@ typedef struct RectS32 {
 } RectS32;
 
 /* Store four signed rectangle edges in order and return the result pointer. */
-RectS32 *func_02016f14(RectS32 *result, s32 left, s32 top, s32 right,
+RectS32 *RectS32_Init(RectS32 *result, s32 left, s32 top, s32 right,
                       s32 bottom)
 {
     result->left = left;
@@ -32,7 +32,7 @@ RectS32 *func_02016f14(RectS32 *result, s32 left, s32 top, s32 right,
 }
 
 /* Return whether x/y lies within the rectangle's half-open bounds. */
-s32 func_02016f28(const RectS32 *rect, s32 x, s32 y)
+s32 RectS32_ContainsPoint(const RectS32 *rect, s32 x, s32 y)
 {
     return x >= rect->left && x < rect->right &&
            y >= rect->top && y < rect->bottom;
@@ -44,7 +44,7 @@ s32 func_02016f28(const RectS32 *rect, s32 x, s32 y)
  * integers, test them against the half-open signed rectangle, push the boolean
  * result, destroy the temporary vector, and return zero.
  */
-s32 func_02016e44(GamePhaseActorScriptVm *self)
+s32 GamePhaseActorScriptVm_IsCollection1ActorInRectangle(GamePhaseActorScriptVm *self)
 {
     s32 bottom = (s32)GamePhaseScriptVm_Pop(&self->base);
     s32 right = (s32)GamePhaseScriptVm_Pop(&self->base);
@@ -56,9 +56,9 @@ s32 func_02016e44(GamePhaseActorScriptVm *self)
     RectS32 rect;
 
     func_02005030(&position, (const VecFx32Object *)(actor + 0x18));
-    func_02016f14(&rect, left, top, right, bottom);
+    RectS32_Init(&rect, left, top, right, bottom);
     GamePhaseScriptVm_SetResult(&self->base,
-                  func_02016f28(&rect, position.value.x >> 12,
+                  RectS32_ContainsPoint(&rect, position.value.x >> 12,
                                 position.value.y >> 12) != 0);
     func_02005058(&position);
     return 0;
