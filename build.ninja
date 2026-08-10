@@ -8191,37 +8191,37 @@ build build/reports/palette_cycle_presentation_02022580.json: objdiff build/deco
   base_object = build/decomp/asm/game/palette_cycle_presentation_02022580.o
 build build/reports/palette_cycle_presentation_02022580.txt: match_report build/reports/palette_cycle_presentation_02022580.json | tools/report_objdiff.py
   report_json = build/reports/palette_cycle_presentation_02022580.json
-  report_args = --section .text --function func_02022580 --require-exact
+  report_args = --section .text --function PaletteCyclePresentation_Init --require-exact
 build build/reports/palette_cycle_presentation_02022680.json: objdiff build/decomp/delinks/asm/game/palette_cycle_presentation_02022680.o | build/decomp/asm/game/palette_cycle_presentation_02022680.o
   target_object = build/decomp/delinks/asm/game/palette_cycle_presentation_02022680.o
   base_object = build/decomp/asm/game/palette_cycle_presentation_02022680.o
 build build/reports/palette_cycle_presentation_02022680.txt: match_report build/reports/palette_cycle_presentation_02022680.json | tools/report_objdiff.py
   report_json = build/reports/palette_cycle_presentation_02022680.json
-  report_args = --section .text --function func_02022680 --require-exact
+  report_args = --section .text --function PaletteCyclePresentation_Destroy --require-exact
 build build/reports/palette_cycle_presentation_0202269c.json: objdiff build/decomp/delinks/asm/game/palette_cycle_presentation_0202269c.o | build/decomp/asm/game/palette_cycle_presentation_0202269c.o
   target_object = build/decomp/delinks/asm/game/palette_cycle_presentation_0202269c.o
   base_object = build/decomp/asm/game/palette_cycle_presentation_0202269c.o
 build build/reports/palette_cycle_presentation_0202269c.txt: match_report build/reports/palette_cycle_presentation_0202269c.json | tools/report_objdiff.py
   report_json = build/reports/palette_cycle_presentation_0202269c.json
-  report_args = --section .text --function func_0202269c --require-exact
+  report_args = --section .text --function PaletteCyclePresentation_DestroyAndFree --require-exact
 build build/reports/palette_cycle_presentation_020226c0.json: objdiff build/decomp/delinks/asm/game/palette_cycle_presentation_020226c0.o | build/decomp/asm/game/palette_cycle_presentation_020226c0.o
   target_object = build/decomp/delinks/asm/game/palette_cycle_presentation_020226c0.o
   base_object = build/decomp/asm/game/palette_cycle_presentation_020226c0.o
 build build/reports/palette_cycle_presentation_020226c0.txt: match_report build/reports/palette_cycle_presentation_020226c0.json | tools/report_objdiff.py
   report_json = build/reports/palette_cycle_presentation_020226c0.json
-  report_args = --section .text --function func_020226c0 --require-exact
+  report_args = --section .text --function PaletteCyclePresentation_AdvancePalette --require-exact
 build build/reports/palette_cycle_presentation_02022880.json: objdiff build/decomp/delinks/asm/game/palette_cycle_presentation_02022880.o | build/decomp/asm/game/palette_cycle_presentation_02022880.o
   target_object = build/decomp/delinks/asm/game/palette_cycle_presentation_02022880.o
   base_object = build/decomp/asm/game/palette_cycle_presentation_02022880.o
 build build/reports/palette_cycle_presentation_02022880.txt: match_report build/reports/palette_cycle_presentation_02022880.json | tools/report_objdiff.py
   report_json = build/reports/palette_cycle_presentation_02022880.json
-  report_args = --section .text --function func_02022880 --require-exact
+  report_args = --section .text --function PaletteCyclePresentation_Update --require-exact
 build build/reports/palette_cycle_presentation_020228dc.json: objdiff build/decomp/delinks/asm/game/palette_cycle_presentation_020228dc.o | build/decomp/asm/game/palette_cycle_presentation_020228dc.o
   target_object = build/decomp/delinks/asm/game/palette_cycle_presentation_020228dc.o
   base_object = build/decomp/asm/game/palette_cycle_presentation_020228dc.o
 build build/reports/palette_cycle_presentation_020228dc.txt: match_report build/reports/palette_cycle_presentation_020228dc.json | tools/report_objdiff.py
   report_json = build/reports/palette_cycle_presentation_020228dc.json
-  report_args = --section .text --function func_020228dc --require-exact
+  report_args = --section .text --function PaletteCyclePresentation_UploadPalette --require-exact
 build build/reports/palette_cycle_presentation.txt: phony build/reports/palette_cycle_presentation_02022580.txt build/reports/palette_cycle_presentation_02022680.txt build/reports/palette_cycle_presentation_0202269c.txt build/reports/palette_cycle_presentation_020226c0.txt build/reports/palette_cycle_presentation_02022880.txt build/reports/palette_cycle_presentation_020228dc.txt
 build build/reports/presentation_base_teardown_0202290c.json: objdiff build/decomp/delinks/asm/game/presentation_base_teardown_0202290c.o | build/decomp/asm/game/presentation_base_teardown_0202290c.o
   target_object = build/decomp/delinks/asm/game/presentation_base_teardown_0202290c.o

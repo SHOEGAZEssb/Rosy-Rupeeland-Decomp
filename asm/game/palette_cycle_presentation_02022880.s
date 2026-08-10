@@ -7,11 +7,11 @@
 .extern GraphicsResourceSet_Load
 .extern Heap_Free
 .extern MIi_CpuCopy16
-.extern data_020d6514
+.extern gPaletteCyclePresentationVtable
 .extern data_020f4e18
 .extern func_0201e250
 .extern func_0201e28c
-.extern func_020226c0
+.extern PaletteCyclePresentation_AdvancePalette
 .extern func_02070874
 .extern func_02091b6c
 .extern func_02091b98
@@ -27,14 +27,14 @@
 .extern gGameWork
 .extern genrand_int32
 
-.global func_02022880
-    .type func_02022880, @function
-func_02022880: ; 0x02022880
+.global PaletteCyclePresentation_Update
+    .type PaletteCyclePresentation_Update, @function
+PaletteCyclePresentation_Update: ; 0x02022880
     stmdb sp!, {r4, lr}
     mov r4, r0
     mov r1, #0x1
     str r1, [r4, #0x444]
-    bl func_020226c0
+    bl PaletteCyclePresentation_AdvancePalette
     add r0, r4, #0x10
     mov r1, #0x200
     bl func_020b4554
@@ -53,5 +53,5 @@ func_02022880: ; 0x02022880
     ldmia sp!, {r4, pc}
 .L_020228d4: .word gGameWork
 .L_020228d8: .word 0x408
-    .size func_02022880, .-func_02022880
+    .size PaletteCyclePresentation_Update, .-PaletteCyclePresentation_Update
 

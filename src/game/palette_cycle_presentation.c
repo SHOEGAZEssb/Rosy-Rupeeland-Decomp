@@ -16,7 +16,7 @@ typedef struct PaletteCyclePresentation {
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *data_020d6514;
+extern void *gPaletteCyclePresentationVtable;
 extern void *data_020f4e18;
 extern void *gGameWork;
 extern void *func_0201e250(void *);
@@ -44,7 +44,7 @@ extern s32 GameWork_TestFlag(void *, s32);
 }
 #endif
 
-void func_020226c0(PaletteCyclePresentation *self);
+void PaletteCyclePresentation_AdvancePalette(PaletteCyclePresentation *self);
 
 /*
  * Initialize base, generator and fade helpers; set palette range 1..120; load
@@ -52,27 +52,27 @@ void func_020226c0(PaletteCyclePresentation *self);
  * generator mode 5, prewarm one update for each range step, clear flag 0x408,
  * enable base flag bit 1, destroy the temporary resource set, and return self.
  */
-PaletteCyclePresentation *func_02022580(PaletteCyclePresentation *self)
+PaletteCyclePresentation *PaletteCyclePresentation_Init(PaletteCyclePresentation *self)
 {
     void *resources[3]; s32 i;
-    func_0201e250(self); self->vtable=(void **)data_020d6514;
+    func_0201e250(self); self->vtable=(void **)gPaletteCyclePresentationVtable;
     func_02091d08(self->generator410); func_02091b6c(self->fade428);
     self->uploadEnabled444=0; self->firstIndex08=1; self->lastIndex0c=120;
     GraphicsResourceSet_Init(resources);
     GraphicsResourceSet_Load(resources,data_020f4e18,0x904b,0x904c,0x904f,0x904f);
     MIi_CpuCopy16(func_02070874(resources[1]),self->palette10,0x200);
     func_02091d24(self->generator410,1,0,0,5);
-    for(i=self->firstIndex08;i<self->lastIndex0c;i++) func_020226c0(self);
+    for(i=self->firstIndex08;i<self->lastIndex0c;i++) PaletteCyclePresentation_AdvancePalette(self);
     GameWork_ClearFlag(gGameWork,0x408); self->flags04|=2;
     GraphicsResourceSet_Destroy(resources); return self;
 }
 
 /* Disable uploads, tear down the recovered base, and return self. */
-PaletteCyclePresentation *func_02022680(PaletteCyclePresentation *self)
+PaletteCyclePresentation *PaletteCyclePresentation_Destroy(PaletteCyclePresentation *self)
 { self->uploadEnabled444=0; func_0201e28c(self); return self; }
 
-/* Perform func_02022680 teardown, free self, and return its old address. */
-PaletteCyclePresentation *func_0202269c(PaletteCyclePresentation *self)
+/* Disable uploads, tear down the recovered base, free self, and return its old address. */
+PaletteCyclePresentation *PaletteCyclePresentation_DestroyAndFree(PaletteCyclePresentation *self)
 { self->uploadEnabled444=0; func_0201e28c(self); Heap_Free(self); return self; }
 
 /*
@@ -82,7 +82,7 @@ PaletteCyclePresentation *func_0202269c(PaletteCyclePresentation *self)
  * generator state 0..5; retail writes each successive result to firstIndex, so
  * the sixth generated color remains observable.
  */
-void func_020226c0(PaletteCyclePresentation *self)
+void PaletteCyclePresentation_AdvancePalette(PaletteCyclePresentation *self)
 {
     s32 i, n;
     for(i=self->lastIndex0c;i>self->firstIndex08;i--)
@@ -106,16 +106,16 @@ void func_020226c0(PaletteCyclePresentation *self)
 }
 
 /* Enable uploads, advance/copy the palette, consume flag 0x408 and return one when set; otherwise return zero. */
-s32 func_02022880(PaletteCyclePresentation *self)
+s32 PaletteCyclePresentation_Update(PaletteCyclePresentation *self)
 {
-    self->uploadEnabled444=1; func_020226c0(self);
+    self->uploadEnabled444=1; PaletteCyclePresentation_AdvancePalette(self);
     func_020b4554(self->palette10,0x200);
     if(!GameWork_TestFlag(gGameWork,0x408)) return 0;
     GameWork_ClearFlag(gGameWork,0x408); return 1;
 }
 
 /* When enabled, begin palette transfer, upload all 0x200 bytes to slot zero, and finish the hardware transfer. */
-void func_020228dc(PaletteCyclePresentation *self)
+void PaletteCyclePresentation_UploadPalette(PaletteCyclePresentation *self)
 {
     if(!self->uploadEnabled444) return;
     func_020b13d4(); func_020b1360(self->palette10,0,0x200); func_020b1314();

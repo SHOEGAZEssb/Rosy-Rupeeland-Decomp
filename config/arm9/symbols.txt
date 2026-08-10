@@ -1186,12 +1186,12 @@ func_02022354 kind:function(arm,size=0x80) addr:0x02022354
 func_020223d4 kind:function(arm,size=0x15c) addr:0x020223d4
 func_02022530 kind:function(arm,size=0x28) addr:0x02022530
 func_02022558 kind:function(arm,size=0x28) addr:0x02022558
-func_02022580 kind:function(arm,size=0x100) addr:0x02022580
-func_02022680 kind:function(arm,size=0x1c) addr:0x02022680
-func_0202269c kind:function(arm,size=0x24) addr:0x0202269c
-func_020226c0 kind:function(arm,size=0x1c0) addr:0x020226c0
-func_02022880 kind:function(arm,size=0x5c) addr:0x02022880
-func_020228dc kind:function(arm,size=0x30) addr:0x020228dc
+PaletteCyclePresentation_Init kind:function(arm,size=0x100) addr:0x02022580
+PaletteCyclePresentation_Destroy kind:function(arm,size=0x1c) addr:0x02022680
+PaletteCyclePresentation_DestroyAndFree kind:function(arm,size=0x24) addr:0x0202269c
+PaletteCyclePresentation_AdvancePalette kind:function(arm,size=0x1c0) addr:0x020226c0
+PaletteCyclePresentation_Update kind:function(arm,size=0x5c) addr:0x02022880
+PaletteCyclePresentation_UploadPalette kind:function(arm,size=0x30) addr:0x020228dc
 func_0202290c kind:function(arm,size=0x1c) addr:0x0202290c
 func_02022928 kind:function(arm,size=0x14) addr:0x02022928
 func_0202293c kind:function(arm,size=0x14c) addr:0x0202293c
@@ -7001,7 +7001,7 @@ data_020d64c0 kind:data(any) addr:0x020d64c0
 data_020d64d0 kind:data(any) addr:0x020d64d0
 data_020d64e4 kind:data(any) addr:0x020d64e4
 data_020d64f8 kind:data(any) addr:0x020d64f8
-data_020d6514 kind:data(any) addr:0x020d6514
+gPaletteCyclePresentationVtable kind:data(any) addr:0x020d6514
 data_020d653c kind:data(any) addr:0x020d653c
 data_020d6564 kind:data(any) addr:0x020d6564
 data_020d658c kind:data(any) addr:0x020d658c

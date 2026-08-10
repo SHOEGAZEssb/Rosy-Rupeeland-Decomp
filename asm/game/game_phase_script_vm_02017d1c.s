@@ -28,7 +28,7 @@
 .extern SceneDisplayResources_Setup
 .extern DualArrayBlendPresentation_Init
 .extern func_0202225c
-.extern func_02022580
+.extern PaletteCyclePresentation_Init
 .extern func_02023fa0
 .extern func_020240cc
 .extern func_02024200
@@ -224,7 +224,7 @@ L_02017f8c:
     bl Heap_Alloc
     movs r1, r0
     beq L_02017fb0
-    bl func_02022580
+    bl PaletteCyclePresentation_Init
     mov r1, r0
 L_02017fb0:
     ldr r0, L_020181c4

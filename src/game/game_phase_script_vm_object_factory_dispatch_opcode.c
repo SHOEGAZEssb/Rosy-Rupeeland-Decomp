@@ -38,7 +38,7 @@ extern void *DisplayFadePresentation_Init(void *object, s32 mode, s32 value,
 extern void SceneDisplayResources_Setup(s32 sceneIndex);
 extern void *DualArrayBlendPresentation_Init(void *object, s32 value);
 extern void *func_0202225c(void *object);
-extern void *func_02022580(void *object);
+extern void *PaletteCyclePresentation_Init(void *object);
 extern void *func_02023fa0(void *object);
 extern void *func_020240cc(void *object, s32 value);
 extern void *func_02024200(void *object);
@@ -141,7 +141,7 @@ s32 GamePhaseActorScriptVm_DispatchObjectFactory(GamePhaseActorScriptVm *self)
         /* 0x448 is a confirmed allocation size; the object type is unknown. */
         object = allocateObject(0x448, data_020d5bc4);
         if (object)
-            object = func_02022580(object);
+            object = PaletteCyclePresentation_Init(object);
         func_0201df44(runtimeObjectList(), object);
         break;
     case 10:
