@@ -13,7 +13,7 @@
 .extern Type7Actor_HasSpecialCallbackPair
 .extern Type7Actor_SetMotionTarget
 .extern Type7Actor_SetCallbackPair
-.extern func_020486a8
+.extern Type7Actor_CheckRandomInteractionAcceptance
 .extern func_0204b7bc
 .extern func_0204c74c
 .extern gHeapContext
@@ -76,7 +76,7 @@ Type7Actor_HandleObjectInteraction: ; 0x02048378
     cmp r0, #0x0
     bne .L_02048678
     mov r0, r5
-    bl func_020486a8
+    bl Type7Actor_CheckRandomInteractionAcceptance
     cmp r0, #0x0
     beq .L_02048678
     add r0, r5, #0x200

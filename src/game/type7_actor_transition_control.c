@@ -16,7 +16,7 @@ extern void func_0201f864(void *allocation, const void *transform, u32 value,
                           s32 presentation, s32 negativeOne, s32 enabled);
 extern void Type7Actor_SelectRandomCallback(void *actor);
 extern void Type7Actor_DispatchCurrentCallback(void *actor);
-extern s32 func_0204876c(void *actor, s32 finiteMode);
+extern s32 Type7Actor_TryAcquireTarget(void *actor, s32 finiteMode);
 extern s32 func_020ada8c(s32 value, s32 divisor);
 #ifdef __cplusplus
 }
@@ -86,7 +86,7 @@ void func_0204988c(void *self)
     u8 *actor = (u8 *)self;
     if ((*(u32 *)(actor + 0x268) & 0x200) != 0) {
         *(u32 *)(actor + 0x268) &= ~0x200;
-        if (func_0204876c(actor, 0) != 0) {
+        if (Type7Actor_TryAcquireTarget(actor, 0) != 0) {
             *(u32 *)(actor + 0x14) &= ~(2 | 4);
             *(u32 *)(actor + 0x10) &= ~0x1f0000;
             return;

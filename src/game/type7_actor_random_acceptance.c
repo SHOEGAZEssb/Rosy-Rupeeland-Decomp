@@ -25,7 +25,7 @@ extern void Type7Actor_ResetCallbackState(void *actor);
  * actor callback, animation, resource, and game-work state may change through
  * the reset; there is no direct hardware access.
  */
-s32 func_020486a8(void *self)
+s32 Type7Actor_CheckRandomInteractionAcceptance(void *self)
 {
     u8 *actor = (u8 *)self;
     u8 subtype;

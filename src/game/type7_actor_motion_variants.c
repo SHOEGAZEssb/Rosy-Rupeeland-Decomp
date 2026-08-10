@@ -21,7 +21,7 @@ extern void Type7Actor_UpdateMotionTowardTransform(void *actor, const void *tran
 extern void Type7Actor_ResetInteractionState(void *actor);
 extern s32 Type7Actor_TryCancelDistantTarget(void *actor);
 extern s32 Type7Actor_TryInstallGlobalTargetCallback(void *actor);
-extern s32 func_0204876c(void *actor, s32 finiteMode);
+extern s32 Type7Actor_TryAcquireTarget(void *actor, s32 finiteMode);
 extern void func_0204a2e8(void *actor);
 extern void func_0204a360(void *actor);
 extern void func_0204a5dc(void *actor);
@@ -67,7 +67,7 @@ s32 func_02049148(void *self)
     }
 
     if (Type7Actor_TryInstallGlobalTargetCallback(actor) != 0 || Type7Actor_TryCancelDistantTarget(actor) != 0
-        || func_0204876c(actor, 1) != 0)
+        || Type7Actor_TryAcquireTarget(actor, 1) != 0)
         return 0;
     if (*(s16 *)(actor + 0x264) > 0)
         func_020050a4(actor + 0x78, actor + 0x18);
@@ -110,7 +110,7 @@ s32 func_0204929c(void *self)
     }
 
     if (Type7Actor_TryInstallGlobalTargetCallback(actor) != 0 || Type7Actor_TryCancelDistantTarget(actor) != 0
-        || func_0204876c(actor, 1) != 0)
+        || Type7Actor_TryAcquireTarget(actor, 1) != 0)
         return 0;
     if (*(s16 *)(actor + 0x264) > 0)
         func_020050a4(actor + 0x78, actor + 0x18);
@@ -163,7 +163,7 @@ s32 func_020493f8(void *self)
         }
     }
 
-    if (Type7Actor_TryInstallGlobalTargetCallback(actor) != 0 || func_0204876c(actor, 1) != 0)
+    if (Type7Actor_TryInstallGlobalTargetCallback(actor) != 0 || Type7Actor_TryAcquireTarget(actor, 1) != 0)
         return 0;
     if (*(s16 *)(actor + 0x264) > 0)
         func_020050a4(actor + 0x78, actor + 0x18);

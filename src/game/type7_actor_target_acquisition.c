@@ -58,7 +58,7 @@ static s32 invoke_a8_predicate(void *object)
  * data_020e18e0 indefinitely, then set +0x256/+0x25a to 60/0. Actor relation,
  * callback, and counters may change; no SDK or hardware effect occurs.
  */
-s32 func_0204876c(void *self, s32 finiteMode)
+s32 Type7Actor_TryAcquireTarget(void *self, s32 finiteMode)
 {
     u8 *actor = (u8 *)self;
     u8 subtype;

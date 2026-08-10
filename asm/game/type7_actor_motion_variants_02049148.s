@@ -6,7 +6,7 @@
 .extern Type7Actor_ResetInteractionState
 .extern Type7Actor_TryCancelDistantTarget
 .extern Type7Actor_TryInstallGlobalTargetCallback
-.extern func_0204876c
+.extern Type7Actor_TryAcquireTarget
 .extern func_0204a2e8
 .extern func_0204a360
 .extern func_0204a5dc
@@ -73,7 +73,7 @@ func_02049148: ; 0x02049148
     ldmneia sp!, {r4, pc}
     mov r0, r4
     mov r1, #0x1
-    bl func_0204876c
+    bl Type7Actor_TryAcquireTarget
     cmp r0, #0x0
     movne r0, #0x0
     ldmneia sp!, {r4, pc}
@@ -167,7 +167,7 @@ func_0204929c: ; 0x0204929c
     ldmneia sp!, {r4, pc}
     mov r0, r4
     mov r1, #0x1
-    bl func_0204876c
+    bl Type7Actor_TryAcquireTarget
     cmp r0, #0x0
     movne r0, #0x0
     ldmneia sp!, {r4, pc}
@@ -259,7 +259,7 @@ func_020493f8: ; 0x020493f8
     ldmneia sp!, {r4, r5, r6, pc}
     mov r0, r5
     mov r1, #0x1
-    bl func_0204876c
+    bl Type7Actor_TryAcquireTarget
     cmp r0, #0x0
     movne r0, #0x0
     ldmneia sp!, {r4, r5, r6, pc}

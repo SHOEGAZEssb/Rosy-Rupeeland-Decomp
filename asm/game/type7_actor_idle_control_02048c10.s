@@ -9,7 +9,7 @@
 .extern Type7Actor_TryCancelDistantTarget
 .extern Type7Actor_TryInstallGlobalTargetCallback
 .extern Type7Actor_SetCallbackPair
-.extern func_0204876c
+.extern Type7Actor_TryAcquireTarget
 .extern func_02048a4c
 .extern func_02048bcc
 .extern func_0206c978
@@ -132,7 +132,7 @@ func_02048d60: ; 0x02048d60
     ldmneia sp!, {r4, pc}
     mov r0, r4
     mov r1, #0x1
-    bl func_0204876c
+    bl Type7Actor_TryAcquireTarget
     cmp r0, #0x0
     movne r0, #0x0
     ldmneia sp!, {r4, pc}
@@ -162,7 +162,7 @@ func_02048dd0: ; 0x02048dd0
     ldmneia sp!, {r4, pc}
     mov r0, r4
     mov r1, #0x1
-    bl func_0204876c
+    bl Type7Actor_TryAcquireTarget
     cmp r0, #0x0
     movne r0, #0x0
     ldmneia sp!, {r4, pc}

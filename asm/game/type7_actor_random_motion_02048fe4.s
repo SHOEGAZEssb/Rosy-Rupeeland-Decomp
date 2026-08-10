@@ -7,7 +7,7 @@
 .extern Type7Actor_ResetInteractionState
 .extern Type7Actor_TryCancelDistantTarget
 .extern Type7Actor_TryInstallGlobalTargetCallback
-.extern func_0204876c
+.extern Type7Actor_TryAcquireTarget
 .extern func_020ada8c
 .extern genrand_int32
 .global func_02048fe4
@@ -73,7 +73,7 @@ func_02048fe4: ; 0x02048fe4
     ldmneia sp!, {r4, r5, r6, pc}
     mov r0, r4
     mov r1, #0x1
-    bl func_0204876c
+    bl Type7Actor_TryAcquireTarget
     cmp r0, #0x0
     movne r0, #0x0
     ldmneia sp!, {r4, r5, r6, pc}

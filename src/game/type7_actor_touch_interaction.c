@@ -27,7 +27,7 @@ extern void func_02005058(void *value);
 extern void ActorDerivedType1_TrySetStateVector(void *target, const void *transform, s32 duration,
                           s32 mode);
 extern s32 Actor_TestQueryPoint(void *actor, const void *input);
-extern s32 func_020486a8(void *actor);
+extern s32 Type7Actor_CheckRandomInteractionAcceptance(void *actor);
 extern void *func_020050a4(void *destination, const void *source);
 extern u32 genrand_int32(void);
 extern s32 func_020ada8c(s32 value, s32 divisor);
@@ -71,7 +71,7 @@ static void initialize_relative_touch(u32 point[3], const u8 *actor,
  * through ActorDerivedType1_TrySetStateVector, and set timer +0x250 to -10.
  *
  * For other callback forms, require actor flag 0x2000 and a clear flag four.
- * Successful Actor_TestQueryPoint/func_020486a8 gates initialize the
+ * Successful Actor_TestQueryPoint/Type7Actor_CheckRandomInteractionAcceptance gates initialize the
  * data_020e18f8
  * response, save the transform at +0x224, set timer +0x250 to 90, optionally
  * randomize +0x24e to 90..209 for record subtype two, clear +0x210, and select
@@ -151,7 +151,7 @@ s32 Type7Actor_HandleTouchInteraction(void *self, const void *inputRecord)
     if ((*(u32 *)(actor + 0x10) & 0x2000) == 0
         || (*(u32 *)(actor + 0x268) & 4) != 0)
         return 1;
-    if (Actor_TestQueryPoint(actor, input) != 0 && func_020486a8(actor) != 0) {
+    if (Actor_TestQueryPoint(actor, input) != 0 && Type7Actor_CheckRandomInteractionAcceptance(actor) != 0) {
         *(u16 *)(actor + 0x266) = 0;
         flags = *(u32 *)(actor + 0x268);
         *(u32 *)(actor + 0x268) = (flags | 4) & ~0xa0;

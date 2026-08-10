@@ -4,10 +4,10 @@
 .extern Type7Actor_ResetCallbackState
 .extern func_020ada8c
 .extern genrand_int32
-.global func_020486a8
-.type func_020486a8, @function
+.global Type7Actor_CheckRandomInteractionAcceptance
+.type Type7Actor_CheckRandomInteractionAcceptance, @function
 
-func_020486a8: ; 0x020486a8
+Type7Actor_CheckRandomInteractionAcceptance: ; 0x020486a8
     stmdb sp!, {r4, lr}
     mov r4, r0
     ldr r0, [r4, #0xd0]
@@ -63,5 +63,5 @@ func_020486a8: ; 0x020486a8
     mov r0, #0x0
     ldmia sp!, {r4, pc}
 
-.size func_020486a8, . - func_020486a8
+.size Type7Actor_CheckRandomInteractionAcceptance, . - Type7Actor_CheckRandomInteractionAcceptance
 

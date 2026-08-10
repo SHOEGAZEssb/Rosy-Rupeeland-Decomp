@@ -7,7 +7,7 @@
 .extern Type7Actor_UpdateFlag14Bit4FromCondition
 .extern Type7Actor_DispatchCurrentCallback
 .extern Type7Actor_TryCancelDistantTarget
-.extern func_0204876c
+.extern Type7Actor_TryAcquireTarget
 .extern func_0204a5dc
 .text
     .global func_0204955c
@@ -144,7 +144,7 @@ func_020496cc: ; 0x020496cc
     ldmia sp!, {r4, pc}
 .L_02049710:
     mov r1, #0x1
-    bl func_0204876c
+    bl Type7Actor_TryAcquireTarget
     cmp r0, #0x0
     mov r0, r4
     bne .L_02049730

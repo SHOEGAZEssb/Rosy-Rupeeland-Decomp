@@ -5,7 +5,7 @@
 .extern func_0201f864
 .extern Type7Actor_SelectRandomCallback
 .extern Type7Actor_DispatchCurrentCallback
-.extern func_0204876c
+.extern Type7Actor_TryAcquireTarget
 .extern func_020ada8c
 .text
     .global func_020497a8
@@ -88,7 +88,7 @@ func_0204988c: ; 0x0204988c
     bic r2, r1, #0x200
     mov r1, #0x0
     str r2, [r4, #0x268]
-    bl func_0204876c
+    bl Type7Actor_TryAcquireTarget
     cmp r0, #0x0
     beq .L_020498d8
     ldr r0, [r4, #0x14]

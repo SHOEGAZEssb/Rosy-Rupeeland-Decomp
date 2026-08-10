@@ -16,7 +16,7 @@
 .extern ActorDerivedRuntime_AcceptInteractionQuery
 .extern Type7Actor_HasSpecialCallbackPair
 .extern Type7Actor_SetCallbackPair
-.extern func_020486a8
+.extern Type7Actor_CheckRandomInteractionAcceptance
 .extern func_0204b7bc
 .extern func_0204c74c
 .extern func_020ada8c
@@ -220,7 +220,7 @@ Type7Actor_HandleTouchInteraction: ; 0x02047248
     cmp r0, #0x0
     beq .L_020475c8
     mov r0, r5
-    bl func_020486a8
+    bl Type7Actor_CheckRandomInteractionAcceptance
     cmp r0, #0x0
     beq .L_020475c8
     add r0, r5, #0x200

@@ -13,10 +13,10 @@
 .extern Type7Actor_SetCallbackPair
 .extern func_020adcac
 .extern func_020be334
-.global func_0204876c
-.type func_0204876c, @function
+.global Type7Actor_TryAcquireTarget
+.type Type7Actor_TryAcquireTarget, @function
 
-func_0204876c: ; 0x0204876c
+Type7Actor_TryAcquireTarget: ; 0x0204876c
     stmdb sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, lr}
     mov r10, r0
     ldr r0, [r10, #0x280]
@@ -219,5 +219,5 @@ func_0204876c: ; 0x0204876c
 .L_02048a44: .word data_020e18e8
 .L_02048a48: .word data_020e18e0
 
-.size func_0204876c, . - func_0204876c
+.size Type7Actor_TryAcquireTarget, . - Type7Actor_TryAcquireTarget
 

@@ -16,7 +16,7 @@ extern void Type7Actor_UpdateFlag14Bit2FromCondition(void *actor, s32 condition)
 extern void Type7Actor_UpdateFlag14Bit4FromCondition(void *actor, s32 condition);
 extern void Type7Actor_DispatchCurrentCallback(void *actor);
 extern s32 Type7Actor_TryCancelDistantTarget(void *actor);
-extern s32 func_0204876c(void *actor, s32 finiteMode);
+extern s32 Type7Actor_TryAcquireTarget(void *actor, s32 finiteMode);
 extern void func_0204a5dc(void *actor);
 #ifdef __cplusplus
 }
@@ -139,7 +139,7 @@ s32 func_020496cc(void *self)
         Type7Actor_ResetInteractionState(actor);
         return 0;
     }
-    if (func_0204876c(actor, 1) == 0) {
+    if (Type7Actor_TryAcquireTarget(actor, 1) == 0) {
         Type7Actor_DispatchCurrentCallback(actor);
         return 0;
     }
