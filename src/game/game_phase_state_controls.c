@@ -5,8 +5,8 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_0200fe0c(void *object, const void *state);
-extern void func_02010094(void *object, s32 value);
+extern void GamePhaseVisualEffect_UpdatePosition(void *object, const void *state);
+extern void GamePhaseVisualEffect_SetEnabled(void *object, s32 value);
 extern void func_0201e054(void *object, s32 value);
 extern void func_0202d68c(void *object, s32 value);
 #ifdef __cplusplus
@@ -25,7 +25,7 @@ void GamePhaseState_SetEnabled(GamePhaseState *self, s32 enabled)
     void **vtable = *(void ***)self->phaseObject;
     ((PhaseControlMethod)vtable[9])(self->phaseObject, enabled);
     func_0202d68c(self->actorCollectionStorage, enabled);
-    func_02010094(self->helper_2eb4, enabled);
+    GamePhaseVisualEffect_SetEnabled(self->helper_2eb4, enabled);
     func_0201e054(self->renderHelperStorage, enabled);
 }
 
@@ -38,5 +38,5 @@ void GamePhaseState_ApplyPlacementState(GamePhaseState *self,
 {
     void **vtable = *(void ***)self->phaseObject;
     ((PhasePlacementMethod)vtable[6])(self->phaseObject, placementState);
-    func_0200fe0c(self->helper_2eb4, placementState);
+    GamePhaseVisualEffect_UpdatePosition(self->helper_2eb4, placementState);
 }

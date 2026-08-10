@@ -1,8 +1,8 @@
 ; Matching retail form; see src/game/game_phase_script_vm_visual_effect_control_opcode.c.
 .text
 .extern data_021052fc
-.extern func_02010094
-.extern func_02010104
+.extern GamePhaseVisualEffect_SetEnabled
+.extern GamePhaseVisualEffect_SetBlendCoefficients
 .extern func_02012704
 .extern OS_Halt
 .global func_0201a130
@@ -44,7 +44,7 @@ L_0201a190:
     ldr r0, [r3, #0x0]
     add r0, r0, #0x2d8
     add r0, r0, #0x2c00
-    bl func_02010104
+    bl GamePhaseVisualEffect_SetBlendCoefficients
     b L_0201a1e4
 L_0201a1c4:
     ldr r0, L_0201a1ec
@@ -52,7 +52,7 @@ L_0201a1c4:
     ldr r0, [r0, #0x0]
     add r0, r0, #0x2d8
     add r0, r0, #0x2c00
-    bl func_02010094
+    bl GamePhaseVisualEffect_SetEnabled
     b L_0201a1e4
 L_0201a1e0:
     bl OS_Halt

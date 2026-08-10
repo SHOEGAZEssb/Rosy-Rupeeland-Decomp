@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/game_phase_state_controls.c.
 .text
-.extern func_0200fe0c
-.extern func_02010094
+.extern GamePhaseVisualEffect_UpdatePosition
+.extern GamePhaseVisualEffect_SetEnabled
 .extern func_0201e054
 .extern func_0202d68c
 
@@ -21,7 +21,7 @@ GamePhaseState_SetEnabled: ; 0x0200ec6c
     add r0, r5, #0x2b4
     mov r1, r4
     add r0, r0, #0x2c00
-    bl func_02010094
+    bl GamePhaseVisualEffect_SetEnabled
     add r0, r5, #0x358
     mov r1, r4
     add r0, r0, #0x2c00
@@ -42,7 +42,7 @@ GamePhaseState_ApplyPlacementState: ; 0x0200ecbc
     add r0, r5, #0x2b4
     mov r1, r4
     add r0, r0, #0x2c00
-    bl func_0200fe0c
+    bl GamePhaseVisualEffect_UpdatePosition
     ldmia sp!, {r3, r4, r5, pc}
     .size GamePhaseState_ApplyPlacementState, . - GamePhaseState_ApplyPlacementState
 

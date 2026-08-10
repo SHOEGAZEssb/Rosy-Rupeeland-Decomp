@@ -2,7 +2,7 @@
 .text
 .extern GX_SetBankForBG
 .extern GX_SetGraphicsMode
-.extern func_020100ac
+.extern GamePhaseVisualEffect_PrepareBackground
 .extern func_0201e0ec
 .extern func_020a2348
 .extern func_020a23a8
@@ -81,7 +81,7 @@ L_0200ec08:
     ldmltia sp!, {r3, r4, r5, pc}
     add r0, r5, #0x2b4
     add r0, r0, #0x2c00
-    bl func_020100ac
+    bl GamePhaseVisualEffect_PrepareBackground
     ldmia sp!, {r3, r4, r5, pc}
     .size GamePhaseState_ConfigureMainDisplay, . - GamePhaseState_ConfigureMainDisplay
 

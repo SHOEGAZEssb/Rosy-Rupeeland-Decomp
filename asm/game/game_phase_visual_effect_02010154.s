@@ -5,8 +5,8 @@
 .extern func_02070f34
 .extern func_02072000
 .extern func_020b44e8
-.global func_02010154
-func_02010154:
+.global GamePhaseVisualEffect_LoadResources
+GamePhaseVisualEffect_LoadResources:
     stmdb sp!, {r3, r4, r5, r6, r7, lr}
     mov r7, r0
     add r0, r7, #0x4
@@ -27,5 +27,5 @@ func_02010154:
     bl func_020b44e8
     ldmia sp!, {r3, r4, r5, r6, r7, pc}
 L_020101a0: .word data_020f4e18
-    .size func_02010154, . - func_02010154
+    .size GamePhaseVisualEffect_LoadResources, . - GamePhaseVisualEffect_LoadResources
 

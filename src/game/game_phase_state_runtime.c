@@ -7,8 +7,8 @@
 extern "C" {
 #endif
 extern void DebugText_BeginFrame(void);
-extern void *func_0200fc64(void *object);
-extern void func_020100ac(void *object);
+extern void *GamePhaseVisualEffect_Update(void *object);
+extern void GamePhaseVisualEffect_PrepareBackground(void *object);
 extern void func_0201155c(void *object);
 extern void func_0201de4c(void *object);
 extern void func_0201de8c(void *object, u16 vcount);
@@ -47,7 +47,7 @@ void GamePhaseState_UpdateRenderHelpers(GamePhaseState *self)
     func_0201de4c(self->renderHelperStorage);
     if (self->phaseObject)
         ((PhaseVirtualMethod)phaseVirtual(self, 0x1c))(self->phaseObject);
-    func_0200fc64(self->helper_2eb4);
+    GamePhaseVisualEffect_Update(self->helper_2eb4);
 }
 
 /* Forward VCOUNT to the render helper at offset 0x2f58. */
@@ -131,5 +131,5 @@ void GamePhaseState_ConfigureMainDisplay(GamePhaseState *self, s32 use3dMode)
     ((PhaseVirtualValueMethod)phaseVirtual(self, 0x20))(self->phaseObject, 1);
     ((PhaseVirtualMethod)phaseVirtual(self, 0x1c))(self->phaseObject);
     if (*(s16 *)(config + 0x12) >= 0)
-        func_020100ac(self->helper_2eb4);
+        GamePhaseVisualEffect_PrepareBackground(self->helper_2eb4);
 }

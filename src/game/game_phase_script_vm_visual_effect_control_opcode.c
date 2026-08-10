@@ -6,8 +6,8 @@
 extern "C" {
 #endif
 extern void *data_021052fc;
-extern void func_02010094(void *effect, s32 value);
-extern void func_02010104(void *effect, s32 first, s32 second);
+extern void GamePhaseVisualEffect_SetEnabled(void *effect, s32 value);
+extern void GamePhaseVisualEffect_SetBlendCoefficients(void *effect, s32 first, s32 second);
 extern void OS_Halt(void);
 #ifdef __cplusplus
 }
@@ -33,10 +33,10 @@ s32 func_0201a130(GamePhaseActorScriptVm *self)
             *(u32 *)(runtime + 0x2f6c) &= ~8;
         } else {
             *(u32 *)(runtime + 0x2f6c) |= 8;
-            func_02010104(effect, first, second);
+            GamePhaseVisualEffect_SetBlendCoefficients(effect, first, second);
         }
     } else if (mode == 2) {
-        func_02010094(effect, first);
+        GamePhaseVisualEffect_SetEnabled(effect, first);
     } else {
         OS_Halt();
     }

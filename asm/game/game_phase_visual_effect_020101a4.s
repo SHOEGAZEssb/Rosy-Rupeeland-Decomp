@@ -1,9 +1,9 @@
 ; Matching retail form; see src/game/game_phase_visual_effect_controls.c.
 .text
-.extern func_020100ac
-.extern func_02010154
-.global func_020101a4
-func_020101a4:
+.extern GamePhaseVisualEffect_PrepareBackground
+.extern GamePhaseVisualEffect_LoadResources
+.global GamePhaseVisualEffect_Configure
+GamePhaseVisualEffect_Configure:
     stmdb sp!, {r3, r4, r5, lr}
     mov r5, r0
     ldr ip, [r5, #0x94]
@@ -13,9 +13,9 @@ func_020101a4:
     orr r4, ip, r4, lsr #0x18
     str r4, [r5, #0x94]
     ldr r4, [sp, #0x1c]
-    bl func_02010154
+    bl GamePhaseVisualEffect_LoadResources
     mov r0, r5
-    bl func_020100ac
+    bl GamePhaseVisualEffect_PrepareBackground
     ldr r0, [r5, #0x94]
     ldr r1, [sp, #0x10]
     orr r0, r0, #0x8
@@ -34,5 +34,5 @@ func_020101a4:
     ldrsh r0, [r4, #0xa]
     strh r0, [r5, #0xa2]
     ldmia sp!, {r3, r4, r5, pc}
-    .size func_020101a4, . - func_020101a4
+    .size GamePhaseVisualEffect_Configure, . - GamePhaseVisualEffect_Configure
 

@@ -14,8 +14,8 @@
 .extern VecFx32Stepper_GetCurrent
 .extern GamePhaseRuntime_GetActorCollection
 
-    .global func_0200fe0c
-func_0200fe0c: ; 0x0200fe0c
+    .global GamePhaseVisualEffect_UpdatePosition
+GamePhaseVisualEffect_UpdatePosition: ; 0x0200fe0c
     stmdb sp!, {r4, r5, lr}
     sub sp, sp, #0x94
     mov r5, r0
@@ -185,5 +185,5 @@ L_02010084:
     ldmia sp!, {r4, r5, pc}
 L_0201008c: .word data_021052fc
 L_02010090: .word data_02105684
-    .size func_0200fe0c, . - func_0200fe0c
+    .size GamePhaseVisualEffect_UpdatePosition, . - GamePhaseVisualEffect_UpdatePosition
 

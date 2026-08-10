@@ -3,8 +3,8 @@
 .text
 .extern OverlaySlot_Init
 .extern OverlaySlot_Destroy
-.extern func_0200fa40
-.extern func_0200fb34
+.extern GamePhaseVisualEffect_Init
+.extern GamePhaseVisualEffect_Destroy
 .extern func_02011470
 .extern func_0201155c
 .extern func_0201dbc8
@@ -34,7 +34,7 @@ GamePhaseState_Init: ; 0x0200e4dc
     mov r2, #0x0
     add r0, r0, #0x2c00
     str r2, [r1, #0xeb0]
-    bl func_0200fa40
+    bl GamePhaseVisualEffect_Init
     add r0, r4, #0x358
     add r0, r0, #0x2c00
     bl func_0201dbc8
@@ -72,7 +72,7 @@ GamePhaseState_Destroy: ; 0x0200e574
     bl func_0201dc98
     add r0, r4, #0x2b4
     add r0, r0, #0x2c00
-    bl func_0200fb34
+    bl GamePhaseVisualEffect_Destroy
     add r0, r4, #0x2a4
     add r0, r0, #0x2c00
     bl OverlaySlot_Destroy

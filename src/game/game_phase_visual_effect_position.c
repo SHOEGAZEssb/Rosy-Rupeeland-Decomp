@@ -20,7 +20,7 @@ static s32 quantizeComponent(s32 value)
 }
 
 /*
- * When resources and flags_94 bit 0 are active, maintain a smoothed offset in
+ * When resources and flags bit 0 are active, maintain a smoothed offset in
  * vectors[2] using a 120-frame stepper toward an input-dependent target. The
  * target scale is 8 or 32 depending on the active actor's flag 0x10; runtime
  * flag 0x30cc bit 2 instead forces the smoothed vector to zero. Then derive
@@ -28,14 +28,14 @@ static s32 quantizeComponent(s32 value)
  * the smoothed offset, optionally halve all components for flags bit 2, and
  * accumulate the result into vectors[1].
  */
-void func_0200fe0c(GamePhaseVisualEffect *self,
+void GamePhaseVisualEffect_UpdatePosition(GamePhaseVisualEffect *self,
                    const VecFx32Object *position)
 {
     VecFx32Object current;
     VecFx32Object temporary;
     GamePhaseRuntime *runtime = (GamePhaseRuntime *)data_021052fc;
 
-    if (!self->resources.resource0 || !(self->flags_94 & 1))
+    if (!self->resources.resource0 || !(self->flags & 1))
         return;
     func_0200500c(&current, 0, 0, 0);
     if (!(*((u8 *)runtime + 0x30cc) & 4)) {
@@ -77,7 +77,7 @@ void func_0200fe0c(GamePhaseVisualEffect *self,
     VecFx32_Subtract(&temporary, &current, &self->vectors[2]);
     func_020050a4(&current, &temporary);
     func_02005058(&temporary);
-    if (self->flags_94 & 4) {
+    if (self->flags & 4) {
         current.value.x /= 2;
         current.value.y /= 2;
         current.value.z /= 2;

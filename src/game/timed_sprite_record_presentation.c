@@ -34,12 +34,12 @@ extern u8 *data_021052fc;
 extern void *func_0201e250(void *self);
 extern void *func_0201e28c(void *self);
 extern u8 *func_020284e0(s32 index);
-extern void func_020101a4(void *runtime, u32 field00, u32 field02,
+extern void GamePhaseVisualEffect_Configure(void *runtime, u32 field00, u32 field02,
                           u32 field04, u32 field06, u32 field08, u32 field0e,
                           void *copiedFields);
 extern void func_0200500c(PresentationValue *value, s32 x, s32 y, s32 z);
 extern void func_02005058(PresentationValue *value);
-extern void func_0201021c(void *runtime, PresentationValue *value);
+extern void GamePhaseVisualEffect_SetBaseOffset(void *runtime, PresentationValue *value);
 extern void func_0201ded4(void *manager, void *entry);
 #ifdef __cplusplus
 }
@@ -70,7 +70,7 @@ TimedSpriteRecordPresentation *func_0201ff2c(
     self->field1e = *(const s16 *)(config + 0x3e);
     self->state0c = 0;
     runtime = data_021052fc + 0x2ed8;
-    func_020101a4(runtime, *(u16 *)(self->record10 + 0x00),
+    GamePhaseVisualEffect_Configure(runtime, *(u16 *)(self->record10 + 0x00),
                   *(u16 *)(self->record10 + 0x02),
                   *(u16 *)(self->record10 + 0x04),
                   *(u16 *)(self->record10 + 0x06),
@@ -78,7 +78,7 @@ TimedSpriteRecordPresentation *func_0201ff2c(
                   *(u16 *)(self->record10 + 0x0e), &self->field14);
     func_0200500c(&position, *(s16 *)(self->record10 + 0x0a) << 4,
                   *(s16 *)(self->record10 + 0x0c) << 4, 0);
-    func_0201021c(runtime, &position);
+    GamePhaseVisualEffect_SetBaseOffset(runtime, &position);
     func_02005058(&position);
     return self;
 }

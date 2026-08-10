@@ -10,8 +10,8 @@
 .extern VecFx32Stepper_Destroy
 .extern func_02072000
 
-    .global func_0200fa40
-func_0200fa40: ; 0x0200fa40
+    .global GamePhaseVisualEffect_Init
+GamePhaseVisualEffect_Init: ; 0x0200fa40
     stmdb sp!, {r4, lr}
     mov r4, r0
     ldr r1, L_0200fb2c
@@ -73,10 +73,10 @@ func_0200fa40: ; 0x0200fa40
     ldmia sp!, {r4, pc}
 L_0200fb2c: .word data_020d55e0
 L_0200fb30: .word 0xffff000f
-    .size func_0200fa40, . - func_0200fa40
+    .size GamePhaseVisualEffect_Init, . - GamePhaseVisualEffect_Init
 
-    .global func_0200fb34
-func_0200fb34: ; 0x0200fb34
+    .global GamePhaseVisualEffect_Destroy
+GamePhaseVisualEffect_Destroy: ; 0x0200fb34
     stmdb sp!, {r4, lr}
     ldr r1, L_0200fbc4
     mov r4, r0
@@ -114,10 +114,10 @@ func_0200fb34: ; 0x0200fb34
     mov r0, r4
     ldmia sp!, {r4, pc}
 L_0200fbc4: .word data_020d55e0
-    .size func_0200fb34, . - func_0200fb34
+    .size GamePhaseVisualEffect_Destroy, . - GamePhaseVisualEffect_Destroy
 
-    .global func_0200fbc8
-func_0200fbc8: ; 0x0200fbc8
+    .global GamePhaseVisualEffect_DestroyAndFree
+GamePhaseVisualEffect_DestroyAndFree: ; 0x0200fbc8
     stmdb sp!, {r4, lr}
     ldr r1, L_0200fc60
     mov r4, r0
@@ -157,5 +157,5 @@ func_0200fbc8: ; 0x0200fbc8
     mov r0, r4
     ldmia sp!, {r4, pc}
 L_0200fc60: .word data_020d55e0
-    .size func_0200fbc8, . - func_0200fbc8
+    .size GamePhaseVisualEffect_DestroyAndFree, . - GamePhaseVisualEffect_DestroyAndFree
 

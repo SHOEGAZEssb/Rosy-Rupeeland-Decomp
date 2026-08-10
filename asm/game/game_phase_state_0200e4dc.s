@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/game_phase_state_lifecycle.c.
 .text
 .extern OverlaySlot_Init
-.extern func_0200fa40
+.extern GamePhaseVisualEffect_Init
 .extern func_02011470
 .extern func_0201dbc8
 .extern ActorCollection_Init
@@ -22,7 +22,7 @@ GamePhaseState_Init: ; 0x0200e4dc
     mov r2, #0x0
     add r0, r0, #0x2c00
     str r2, [r1, #0xeb0]
-    bl func_0200fa40
+    bl GamePhaseVisualEffect_Init
     add r0, r4, #0x358
     add r0, r0, #0x2c00
     bl func_0201dbc8

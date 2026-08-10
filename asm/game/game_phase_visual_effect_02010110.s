@@ -1,8 +1,8 @@
 ; Matching retail form; see src/game/game_phase_visual_effect_controls.c.
 .text
 .extern func_020afd0c
-.global func_02010110
-func_02010110:
+.global GamePhaseVisualEffect_ApplyBlend
+GamePhaseVisualEffect_ApplyBlend:
     stmdb sp!, {r3, lr}
     mov r3, r0
     ldr r0, [r3, #0x94]
@@ -20,5 +20,5 @@ func_02010110:
     bl func_020afd0c
     ldmia sp!, {r3, pc}
 L_02010150: .word 0x4000050
-    .size func_02010110, . - func_02010110
+    .size GamePhaseVisualEffect_ApplyBlend, . - GamePhaseVisualEffect_ApplyBlend
 

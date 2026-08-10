@@ -4130,49 +4130,49 @@ build build/reports/game_phase_visual_effect_02010094.json: objdiff build/decomp
   base_object = build/decomp/asm/game/game_phase_visual_effect_02010094.o
 build build/reports/game_phase_visual_effect_02010094.txt: match_report build/reports/game_phase_visual_effect_02010094.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_visual_effect_02010094.json
-  report_args = --section .text --function func_02010094 --require-exact
+  report_args = --section .text --function GamePhaseVisualEffect_SetEnabled --require-exact
 
 build build/reports/game_phase_visual_effect_020100ac.json: objdiff build/decomp/delinks/asm/game/game_phase_visual_effect_020100ac.o | build/decomp/asm/game/game_phase_visual_effect_020100ac.o
   target_object = build/decomp/delinks/asm/game/game_phase_visual_effect_020100ac.o
   base_object = build/decomp/asm/game/game_phase_visual_effect_020100ac.o
 build build/reports/game_phase_visual_effect_020100ac.txt: match_report build/reports/game_phase_visual_effect_020100ac.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_visual_effect_020100ac.json
-  report_args = --section .text --function func_020100ac --require-exact
+  report_args = --section .text --function GamePhaseVisualEffect_PrepareBackground --require-exact
 
 build build/reports/game_phase_visual_effect_02010104.json: objdiff build/decomp/delinks/asm/game/game_phase_visual_effect_02010104.o | build/decomp/asm/game/game_phase_visual_effect_02010104.o
   target_object = build/decomp/delinks/asm/game/game_phase_visual_effect_02010104.o
   base_object = build/decomp/asm/game/game_phase_visual_effect_02010104.o
 build build/reports/game_phase_visual_effect_02010104.txt: match_report build/reports/game_phase_visual_effect_02010104.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_visual_effect_02010104.json
-  report_args = --section .text --function func_02010104 --require-exact
+  report_args = --section .text --function GamePhaseVisualEffect_SetBlendCoefficients --require-exact
 
 build build/reports/game_phase_visual_effect_02010110.json: objdiff build/decomp/delinks/asm/game/game_phase_visual_effect_02010110.o | build/decomp/asm/game/game_phase_visual_effect_02010110.o
   target_object = build/decomp/delinks/asm/game/game_phase_visual_effect_02010110.o
   base_object = build/decomp/asm/game/game_phase_visual_effect_02010110.o
 build build/reports/game_phase_visual_effect_02010110.txt: match_report build/reports/game_phase_visual_effect_02010110.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_visual_effect_02010110.json
-  report_args = --section .text --function func_02010110 --require-exact
+  report_args = --section .text --function GamePhaseVisualEffect_ApplyBlend --require-exact
 
 build build/reports/game_phase_visual_effect_02010154.json: objdiff build/decomp/delinks/asm/game/game_phase_visual_effect_02010154.o | build/decomp/asm/game/game_phase_visual_effect_02010154.o
   target_object = build/decomp/delinks/asm/game/game_phase_visual_effect_02010154.o
   base_object = build/decomp/asm/game/game_phase_visual_effect_02010154.o
 build build/reports/game_phase_visual_effect_02010154.txt: match_report build/reports/game_phase_visual_effect_02010154.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_visual_effect_02010154.json
-  report_args = --section .text --function func_02010154 --require-exact
+  report_args = --section .text --function GamePhaseVisualEffect_LoadResources --require-exact
 
 build build/reports/game_phase_visual_effect_020101a4.json: objdiff build/decomp/delinks/asm/game/game_phase_visual_effect_020101a4.o | build/decomp/asm/game/game_phase_visual_effect_020101a4.o
   target_object = build/decomp/delinks/asm/game/game_phase_visual_effect_020101a4.o
   base_object = build/decomp/asm/game/game_phase_visual_effect_020101a4.o
 build build/reports/game_phase_visual_effect_020101a4.txt: match_report build/reports/game_phase_visual_effect_020101a4.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_visual_effect_020101a4.json
-  report_args = --section .text --function func_020101a4 --require-exact
+  report_args = --section .text --function GamePhaseVisualEffect_Configure --require-exact
 
 build build/reports/game_phase_visual_effect_0201021c.json: objdiff build/decomp/delinks/asm/game/game_phase_visual_effect_0201021c.o | build/decomp/asm/game/game_phase_visual_effect_0201021c.o
   target_object = build/decomp/delinks/asm/game/game_phase_visual_effect_0201021c.o
   base_object = build/decomp/asm/game/game_phase_visual_effect_0201021c.o
 build build/reports/game_phase_visual_effect_0201021c.txt: match_report build/reports/game_phase_visual_effect_0201021c.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_visual_effect_0201021c.json
-  report_args = --section .text --function func_0201021c --require-exact
+  report_args = --section .text --function GamePhaseVisualEffect_SetBaseOffset --require-exact
 
 build build/reports/game_phase_visual_effect_controls.txt: phony build/reports/game_phase_visual_effect_02010094.txt build/reports/game_phase_visual_effect_020100ac.txt build/reports/game_phase_visual_effect_02010104.txt build/reports/game_phase_visual_effect_02010110.txt build/reports/game_phase_visual_effect_02010154.txt build/reports/game_phase_visual_effect_020101a4.txt build/reports/game_phase_visual_effect_0201021c.txt
 
@@ -11178,21 +11178,21 @@ build build/reports/game_phase_visual_effect_lifecycle.json: objdiff build/decom
   base_object = build/decomp/asm/game/game_phase_visual_effect_lifecycle.o
 build build/reports/game_phase_visual_effect_lifecycle.txt: match_report build/reports/game_phase_visual_effect_lifecycle.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_visual_effect_lifecycle.json
-  report_args = --section .text --function func_0200fa40 --function func_0200fb34 --function func_0200fbc8 --require-exact
+  report_args = --section .text --function GamePhaseVisualEffect_Init --function GamePhaseVisualEffect_Destroy --function GamePhaseVisualEffect_DestroyAndFree --require-exact
 
 build build/reports/game_phase_visual_effect_update.json: objdiff build/decomp/delinks/asm/game/game_phase_visual_effect_update.o | build/decomp/asm/game/game_phase_visual_effect_update.o
   target_object = build/decomp/delinks/asm/game/game_phase_visual_effect_update.o
   base_object = build/decomp/asm/game/game_phase_visual_effect_update.o
 build build/reports/game_phase_visual_effect_update.txt: match_report build/reports/game_phase_visual_effect_update.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_visual_effect_update.json
-  report_args = --section .text --function func_0200fc64 --require-exact
+  report_args = --section .text --function GamePhaseVisualEffect_Update --require-exact
 
 build build/reports/game_phase_visual_effect_position.json: objdiff build/decomp/delinks/asm/game/game_phase_visual_effect_position.o | build/decomp/asm/game/game_phase_visual_effect_position.o
   target_object = build/decomp/delinks/asm/game/game_phase_visual_effect_position.o
   base_object = build/decomp/asm/game/game_phase_visual_effect_position.o
 build build/reports/game_phase_visual_effect_position.txt: match_report build/reports/game_phase_visual_effect_position.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_visual_effect_position.json
-  report_args = --section .text --function func_0200fe0c --require-exact
+  report_args = --section .text --function GamePhaseVisualEffect_UpdatePosition --require-exact
 
 build build/reports/graphics_sprite_group.json: objdiff build/decomp/delinks/src/graphics/graphics_sprite_group.o | build/decomp/src/graphics/graphics_sprite_group.o
   target_object = build/decomp/delinks/src/graphics/graphics_sprite_group.o

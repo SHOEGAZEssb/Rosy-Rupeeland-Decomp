@@ -10,7 +10,7 @@
 .extern SplineMover_Evaluate2D
 .extern GamePhaseRuntime_UpdateDualScreenUiPresentation
 .extern ActorMotionAreaFollower_RefreshCurrentArea
-.extern func_02010104
+.extern GamePhaseVisualEffect_SetBlendCoefficients
 .extern func_02010e68
 .extern func_020122a0
 .extern func_0201dcec
@@ -177,7 +177,7 @@ func_ov074_022101dc:
     mov r2, #0x10
     add r0, r0, #0x2d8
     add r0, r0, #0x2c00
-    bl func_02010104
+    bl GamePhaseVisualEffect_SetBlendCoefficients
 .L_022103f8:
     add r0, r4, #0x8c
     bl SplineMover_Update

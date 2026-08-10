@@ -4,8 +4,8 @@
 .extern data_021052fc
 .extern func_0200500c
 .extern func_02005058
-.extern func_020101a4
-.extern func_0201021c
+.extern GamePhaseVisualEffect_Configure
+.extern GamePhaseVisualEffect_SetBaseOffset
 .extern func_0201e250
 .extern func_020284e0
 
@@ -52,7 +52,7 @@ func_0201ff2c: ; 0x0201ff2c
     ldrh r1, [r3, #0x0]
     ldrh r2, [r3, #0x2]
     ldrh r3, [r3, #0x4]
-    bl func_020101a4
+    bl GamePhaseVisualEffect_Configure
     ldr r2, [r5, #0x10]
     add r0, sp, #0x10
     ldrsh r1, [r2, #0xa]
@@ -63,7 +63,7 @@ func_0201ff2c: ; 0x0201ff2c
     bl func_0200500c
     add r0, r4, #0x2c00
     add r1, sp, #0x10
-    bl func_0201021c
+    bl GamePhaseVisualEffect_SetBaseOffset
     add r0, sp, #0x10
     bl func_02005058
     mov r0, r5

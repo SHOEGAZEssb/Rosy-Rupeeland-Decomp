@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/game_phase_state_runtime.c.
 .text
-.extern func_0200fc64
+.extern GamePhaseVisualEffect_Update
 .extern func_0201de4c
 
     .global GamePhaseState_UpdateRenderHelpers
@@ -25,7 +25,7 @@ GamePhaseState_UpdateRenderHelpers: ; 0x0200e9e0
 L_0200ea24:
     add r0, r4, #0x2b4
     add r0, r0, #0x2c00
-    bl func_0200fc64
+    bl GamePhaseVisualEffect_Update
     ldmia sp!, {r4, pc}
     .size GamePhaseState_UpdateRenderHelpers, . - GamePhaseState_UpdateRenderHelpers
 

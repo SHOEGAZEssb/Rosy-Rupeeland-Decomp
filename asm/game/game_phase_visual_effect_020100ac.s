@@ -1,8 +1,8 @@
 ; Matching retail form; see src/game/game_phase_visual_effect_controls.c.
 .text
 .extern func_020af958
-.global func_020100ac
-func_020100ac:
+.global GamePhaseVisualEffect_PrepareBackground
+GamePhaseVisualEffect_PrepareBackground:
     stmdb sp!, {r4, lr}
     mov r4, r0
     ldr r0, [r4, #0x4]
@@ -25,5 +25,5 @@ func_020100ac:
     str r0, [r4, #0x94]
     ldmia sp!, {r4, pc}
 L_02010100: .word 0x400000a
-    .size func_020100ac, . - func_020100ac
+    .size GamePhaseVisualEffect_PrepareBackground, . - GamePhaseVisualEffect_PrepareBackground
 

@@ -4,7 +4,7 @@
 .extern GX_SetGraphicsMode
 .extern data_021052fc
 .extern GamePhaseState_UpdateRenderHelpers
-.extern func_0200fc64
+.extern GamePhaseVisualEffect_Update
 .extern func_0201218c
 .extern func_0201de4c
 .extern func_ov074_02211a0c
@@ -30,14 +30,14 @@ func_ov074_02210a3c:
     ldr r0, [r0, #0x0]
     add r0, r0, #0x2d8
     add r0, r0, #0x2c00
-    bl func_0200fc64
+    bl GamePhaseVisualEffect_Update
     b .L_02210b70
 .L_02210a88:
     ldr r0, .L_02210b8c
     ldr r0, [r0, #0x0]
     add r0, r0, #0x2d8
     add r0, r0, #0x2c00
-    bl func_0200fc64
+    bl GamePhaseVisualEffect_Update
     add r0, r4, #0x38
     bl func_ov074_02211a0c
     b .L_02210b70
