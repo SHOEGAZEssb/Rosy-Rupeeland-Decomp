@@ -19869,7 +19869,7 @@ build build/reports/tracked_resource_actor_impulse_setup_02051d40.json: objdiff 
   base_object = build/decomp/asm/game/tracked_resource_actor_impulse_setup_02051d40.o
 build build/reports/tracked_resource_actor_impulse_setup_02051d40.txt: match_report build/reports/tracked_resource_actor_impulse_setup_02051d40.json | tools/report_objdiff.py
   report_json = build/reports/tracked_resource_actor_impulse_setup_02051d40.json
-  report_args = --section .text --function func_02051d40 --require-exact
+  report_args = --section .text --function TrackedResourceActorImpulse_SetupFromRecord --require-exact
 
 build tracked_resource_actor_impulse_setup: phony build/decomp/src/game/tracked_resource_actor_impulse_setup.o build/decomp/asm/game/tracked_resource_actor_impulse_setup_02051d40.o build/reports/tracked_resource_actor_impulse_setup_02051d40.txt
 
@@ -19884,7 +19884,7 @@ build build/reports/tracked_resource_actor_impulse_update_02051e04.json: objdiff
   base_object = build/decomp/asm/game/tracked_resource_actor_impulse_update_02051e04.o
 build build/reports/tracked_resource_actor_impulse_update_02051e04.txt: match_report build/reports/tracked_resource_actor_impulse_update_02051e04.json | tools/report_objdiff.py
   report_json = build/reports/tracked_resource_actor_impulse_update_02051e04.json
-  report_args = --section .text --function func_02051e04 --require-exact
+  report_args = --section .text --function TrackedResourceActorImpulse_Update --require-exact
 
 build tracked_resource_actor_impulse_update: phony build/decomp/src/game/tracked_resource_actor_impulse_update.o build/decomp/asm/game/tracked_resource_actor_impulse_update_02051e04.o build/reports/tracked_resource_actor_impulse_update_02051e04.txt
 
@@ -19899,7 +19899,7 @@ build build/reports/tracked_resource_actor_impulse_ground_stop_02051fa4.json: ob
   base_object = build/decomp/asm/game/tracked_resource_actor_impulse_ground_stop_02051fa4.o
 build build/reports/tracked_resource_actor_impulse_ground_stop_02051fa4.txt: match_report build/reports/tracked_resource_actor_impulse_ground_stop_02051fa4.json | tools/report_objdiff.py
   report_json = build/reports/tracked_resource_actor_impulse_ground_stop_02051fa4.json
-  report_args = --section .text --function func_02051fa4 --require-exact
+  report_args = --section .text --function TrackedResourceActorImpulse_StopMotionAtGround --require-exact
 
 build tracked_resource_actor_impulse_ground_stop: phony build/decomp/src/game/tracked_resource_actor_impulse_ground_stop.o build/decomp/asm/game/tracked_resource_actor_impulse_ground_stop_02051fa4.o build/reports/tracked_resource_actor_impulse_ground_stop_02051fa4.txt
 
@@ -19914,7 +19914,7 @@ build build/reports/tracked_resource_actor_impulse_collision_02051fc0.json: objd
   base_object = build/decomp/asm/game/tracked_resource_actor_impulse_collision_02051fc0.o
 build build/reports/tracked_resource_actor_impulse_collision_02051fc0.txt: match_report build/reports/tracked_resource_actor_impulse_collision_02051fc0.json | tools/report_objdiff.py
   report_json = build/reports/tracked_resource_actor_impulse_collision_02051fc0.json
-  report_args = --section .text --function func_02051fc0 --require-exact
+  report_args = --section .text --function TrackedResourceActorImpulse_HandleCollision --require-exact
 
 build tracked_resource_actor_impulse_collision: phony build/decomp/src/game/tracked_resource_actor_impulse_collision.o build/decomp/asm/game/tracked_resource_actor_impulse_collision_02051fc0.o build/reports/tracked_resource_actor_impulse_collision_02051fc0.txt
 
@@ -19929,7 +19929,7 @@ build build/reports/tracked_resource_actor_impulse_reset_0205206c.json: objdiff 
   base_object = build/decomp/asm/game/tracked_resource_actor_impulse_reset_0205206c.o
 build build/reports/tracked_resource_actor_impulse_reset_0205206c.txt: match_report build/reports/tracked_resource_actor_impulse_reset_0205206c.json | tools/report_objdiff.py
   report_json = build/reports/tracked_resource_actor_impulse_reset_0205206c.json
-  report_args = --section .text --function func_0205206c --require-exact
+  report_args = --section .text --function TrackedResourceActorImpulse_ResetMotionState --require-exact
 
 build tracked_resource_actor_impulse_reset: phony build/decomp/src/game/tracked_resource_actor_impulse_reset.o build/decomp/asm/game/tracked_resource_actor_impulse_reset_0205206c.o build/reports/tracked_resource_actor_impulse_reset_0205206c.txt
 
@@ -19944,7 +19944,7 @@ build build/reports/tracked_resource_actor_impulse_callbacks_020520b4.json: objd
   base_object = build/decomp/asm/game/tracked_resource_actor_impulse_callbacks_020520b4.o
 build build/reports/tracked_resource_actor_impulse_callbacks_020520b4.txt: match_report build/reports/tracked_resource_actor_impulse_callbacks_020520b4.json | tools/report_objdiff.py
   report_json = build/reports/tracked_resource_actor_impulse_callbacks_020520b4.json
-  report_args = --section .text --function func_020520b4 --function func_020520d4 --require-exact
+  report_args = --section .text --function TrackedResourceActorImpulse_QueueRemovalAndEmitEffects --function TrackedResourceActorImpulse_UpdateExpirationFlash --require-exact
 
 build tracked_resource_actor_impulse_callbacks: phony build/decomp/src/game/tracked_resource_actor_impulse_callbacks.o build/decomp/asm/game/tracked_resource_actor_impulse_callbacks_020520b4.o build/reports/tracked_resource_actor_impulse_callbacks_020520b4.txt
 

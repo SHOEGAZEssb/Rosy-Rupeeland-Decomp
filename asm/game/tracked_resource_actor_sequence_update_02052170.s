@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/tracked_resource_actor_sequence_update.c.
 .extern func_020349b8
-.extern func_02051e04
+.extern TrackedResourceActorImpulse_Update
 .text
     .global func_02052170
 func_02052170:
@@ -19,7 +19,7 @@ func_02052170:
     bl func_020349b8
 .L_020521a4:
     mov r0, r4
-    bl func_02051e04
+    bl TrackedResourceActorImpulse_Update
     cmp r5, #0x0
     addeq r0, r4, #0x100
     ldreqh r0, [r0, #0xf0]

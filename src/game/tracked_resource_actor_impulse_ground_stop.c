@@ -10,7 +10,7 @@
  * Returns nothing and has no direct SDK or hardware effects. The fields are
  * treated as motion/height values based on surrounding behavior, not symbols.
  */
-void func_02051fa4(void *actor)
+void TrackedResourceActorImpulse_StopMotionAtGround(void *actor)
 {
     if (FIELD(s32, actor, 0x24) <= FIELD(s32, actor, 0x1dc)) {
         FIELD(s32, actor, 0x40) = 0;

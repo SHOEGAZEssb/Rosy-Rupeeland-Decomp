@@ -1,13 +1,13 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov095/overlay095_recovery.c.
 .extern func_02032228
-.extern func_02051d40
+.extern TrackedResourceActorImpulse_SetupFromRecord
 
 .global func_ov095_0221c77c
 func_ov095_0221c77c:
     stmdb sp!, {r4, lr}
     mov r4, r0
-    bl func_02051d40
+    bl TrackedResourceActorImpulse_SetupFromRecord
     ldr r1, [r4, #0x3c]
     ldr r2, [r4, #0x40]
     mov r0, r4

@@ -10,7 +10,7 @@
  * sets bit 0 of field 0x1F4 while preserving other bits. Returns nothing and
  * has no direct SDK or hardware effects. Motion-field semantics are inferred.
  */
-void func_0205206c(void *actor)
+void TrackedResourceActorImpulse_ResetMotionState(void *actor)
 {
     FIELD(s32, actor, 0x40) = 0;
     FIELD(s32, actor, 0x3c) = 0;

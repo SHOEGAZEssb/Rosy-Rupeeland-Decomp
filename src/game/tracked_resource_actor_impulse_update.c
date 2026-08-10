@@ -32,7 +32,7 @@ static VirtualFunction virtual_function(void *actor, u32 offset)
  * it calls slot 0xDC instead. Returns nothing; virtual callbacks mutate engine
  * state and may cross SDK boundaries, with no direct hardware access here.
  */
-void func_02051e04(void *actor)
+void TrackedResourceActorImpulse_Update(void *actor)
 {
     u16 state;
     s32 reference;

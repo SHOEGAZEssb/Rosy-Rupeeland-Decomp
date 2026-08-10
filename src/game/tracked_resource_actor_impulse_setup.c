@@ -28,7 +28,7 @@ typedef void (*ActorFunction)(void *);
  * nothing; helpers and the callback mutate engine state without direct hardware
  * access. Record-field semantics remain inferred.
  */
-void func_02051d40(void *actor, const void *record, u32 argument, u32 unused)
+void TrackedResourceActorImpulse_SetupFromRecord(void *actor, const void *record, u32 argument, u32 unused)
 {
     u8 vector[16];
     s32 length;

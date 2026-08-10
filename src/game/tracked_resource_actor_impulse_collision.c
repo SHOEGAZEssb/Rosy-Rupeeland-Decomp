@@ -31,7 +31,7 @@ static VirtualFunction virtual_function(void *actor, u32 offset)
  * invoke actor slot 0xC8, and clear actor flag 0x800000. Returns nothing; virtual
  * callbacks mutate engine state and this function does not access hardware.
  */
-void func_02051fc0(void *actor, void *target, u32 unused1, u32 unused2)
+void TrackedResourceActorImpulse_HandleCollision(void *actor, void *target, u32 unused1, u32 unused2)
 {
     s32 vector[4];
     (void)unused1;

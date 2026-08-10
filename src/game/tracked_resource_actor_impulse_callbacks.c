@@ -20,7 +20,7 @@ extern void TrackedResourceActor_EmitRecordEffects(void *actor);
  * effect helper TrackedResourceActor_EmitRecordEffects. Returns nothing; engine resources and effects
  * may change, but hardware is not accessed directly.
  */
-void func_020520b4(void *actor)
+void TrackedResourceActorImpulse_QueueRemovalAndEmitEffects(void *actor)
 {
     ActorCollection_QueueActorForRemoval(Actor_GetCollection(actor), actor);
     TrackedResourceActor_EmitRecordEffects(actor);
@@ -32,7 +32,7 @@ void func_020520b4(void *actor)
  * at presentation offset 0x24 according to timer bit 2; before that threshold
  * it changes nothing else. Returns nothing and has no direct hardware access.
  */
-void func_020520d4(void *actor)
+void TrackedResourceActorImpulse_UpdateExpirationFlash(void *actor)
 {
     s16 timer = ++FIELD(s16, actor, 0x1f8);
     const void *record = FIELD(const void *, actor, 0x1fc);

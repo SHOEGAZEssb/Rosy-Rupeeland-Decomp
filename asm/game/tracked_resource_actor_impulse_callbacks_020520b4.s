@@ -3,8 +3,8 @@
 .extern Actor_GetCollection
 .extern TrackedResourceActor_EmitRecordEffects
 .text
-    .global func_020520b4
-func_020520b4:
+    .global TrackedResourceActorImpulse_QueueRemovalAndEmitEffects
+TrackedResourceActorImpulse_QueueRemovalAndEmitEffects:
     stmdb sp!, {r4, lr}
     mov r4, r0
     bl Actor_GetCollection
@@ -13,10 +13,10 @@ func_020520b4:
     mov r0, r4
     bl TrackedResourceActor_EmitRecordEffects
     ldmia sp!, {r4, pc}
-    .size func_020520b4, . - func_020520b4
+    .size TrackedResourceActorImpulse_QueueRemovalAndEmitEffects, . - TrackedResourceActorImpulse_QueueRemovalAndEmitEffects
 
-    .global func_020520d4
-func_020520d4:
+    .global TrackedResourceActorImpulse_UpdateExpirationFlash
+TrackedResourceActorImpulse_UpdateExpirationFlash:
     add r1, r0, #0x100
     ldrsh r2, [r1, #0xf8]
     add r2, r2, #0x1
@@ -36,4 +36,4 @@ func_020520d4:
     biceq r0, r0, #0x4
     streqh r0, [r1, #0x24]
     bx lr
-    .size func_020520d4, . - func_020520d4
+    .size TrackedResourceActorImpulse_UpdateExpirationFlash, . - TrackedResourceActorImpulse_UpdateExpirationFlash

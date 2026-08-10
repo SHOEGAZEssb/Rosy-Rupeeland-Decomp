@@ -6,8 +6,8 @@
 .extern ActorRuntimeTriple_Assign
 .extern func_020328d0
 .text
-    .global func_02051fc0
-func_02051fc0:
+    .global TrackedResourceActorImpulse_HandleCollision
+TrackedResourceActorImpulse_HandleCollision:
     stmdb sp!, {r3, r4, r5, lr}
     sub sp, sp, #0x10
     mov r4, r0
@@ -52,4 +52,4 @@ func_02051fc0:
     add sp, sp, #0x10
     ldmia sp!, {r3, r4, r5, pc}
 .L_02052068: .word gActorRuntimeCollection
-    .size func_02051fc0, . - func_02051fc0
+    .size TrackedResourceActorImpulse_HandleCollision, . - TrackedResourceActorImpulse_HandleCollision
