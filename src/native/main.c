@@ -7,6 +7,7 @@
  */
 #include "tingle/native_debug_menu.h"
 #include "tingle/native_game_phase.h"
+#include "tingle/native_game_work.h"
 #include "tingle/native_phase_selector.h"
 #include "tingle/native_platform.h"
 #include "tingle/native_data.h"
@@ -27,6 +28,7 @@ int TingleNative_Run(int argc, char **argv)
     TingleNativeDebugMenu menu;
     TingleNativePhaseSelector phase_selector;
     TingleNativeGamePhaseBoundary game_phase = {0};
+    TingleNativeGameWork game_work;
     enum { NATIVE_SCENE_DEBUG_MENU, NATIVE_SCENE_PHASE_SELECTOR,
            NATIVE_SCENE_GAME_PHASE } scene =
         NATIVE_SCENE_DEBUG_MENU;
@@ -75,12 +77,15 @@ int TingleNative_Run(int argc, char **argv)
     canvas.stride = TINGLE_SCREEN_WIDTH;
     TingleNativeDebugMenu_Init(&menu);
     TingleNativePhaseSelector_Init(&phase_selector);
+    TingleNativeGameWork_Init(&game_work);
 
     while (TingleNativePlatform_Poll(platform, &input)) {
         if (scene == NATIVE_SCENE_DEBUG_MENU) {
             s32 activation = TingleNativeDebugMenu_Update(&menu, &input);
 
             if (activation == 0) {
+                /* The recovered phase-selector constructor resets GameWork. */
+                TingleNativeGameWork_Reset(&game_work);
                 TingleNativePhaseSelector_Init(&phase_selector);
                 scene = NATIVE_SCENE_PHASE_SELECTOR;
             }

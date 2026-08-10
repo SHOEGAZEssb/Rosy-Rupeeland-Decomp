@@ -72,11 +72,12 @@ The broad barriers currently known are:
 | Power management | `PM_GoSleepMode`, lid and card events | Window focus/suspend policy with compatible game-visible state | identified |
 | ARM7/PXI services | Cross-processor messages and ARM7-owned hardware | Host services replacing each message protocol | unmapped |
 | Save data | GameWork raw/LZ serialization, cartridge backup APIs, and device constraints | Compatible persistent save storage, codec, and validation | identified |
-| Memory/runtime | Fixed addresses, arenas, caches, DMA, fixed-point and ARM ABI assumptions | Portable allocation, transfer, numeric, and serialization layers | unmapped |
+| Memory/runtime | Fixed addresses, arenas, caches, DMA, fixed-point and ARM ABI assumptions | Portable allocation, transfer, numeric, and serialization layers | identified |
 
-The first detailed memory/runtime contract is the game-work allocator and
-32-byte `MI_CpuCopy8` use in [game_work.md](game_work.md). Its heap alignment and
-lifetime requirements are identified; the embedded state initialized through
+The first implemented memory/runtime contract is a fixed-layout native game-work
+image and its 32-byte default-name copy, described in
+[game_work.md](game_work.md). Its reset and flag storage preserve retail byte
+offsets without embedding host pointers. The embedded state initialized through
 `0x02027F94`/`0x02027BD4` remains unmapped.
 
 The adjacent [game-work flag accessors](game_flags.md) are already portable C

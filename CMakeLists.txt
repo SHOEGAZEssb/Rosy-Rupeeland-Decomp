@@ -11,6 +11,7 @@ add_executable(tingle_native WIN32
     src/native/native_debug_menu.c
     src/native/native_data.c
     src/native/native_game_phase.c
+    src/native/native_game_work.c
     src/native/native_input.c
     src/native/native_phase_selector.c
     src/native/native_render.c
@@ -106,4 +107,17 @@ if(BUILD_TESTING)
         target_compile_options(native_game_phase_test PRIVATE -Wall -Wextra -Werror)
     endif()
     add_test(NAME native_game_phase_test COMMAND native_game_phase_test)
+
+    add_executable(native_game_work_test
+        tests/native_game_work_test.c
+        src/native/native_game_work.c
+    )
+    target_include_directories(native_game_work_test PRIVATE include)
+    target_compile_features(native_game_work_test PRIVATE c_std_11)
+    if(MSVC)
+        target_compile_options(native_game_work_test PRIVATE /W4 /WX)
+    else()
+        target_compile_options(native_game_work_test PRIVATE -Wall -Wextra -Werror)
+    endif()
+    add_test(NAME native_game_work_test COMMAND native_game_work_test)
 endif()
