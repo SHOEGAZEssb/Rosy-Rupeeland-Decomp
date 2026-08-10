@@ -45,7 +45,7 @@
 .extern func_ov095_0221b0c8
 .extern func_02032520
 .extern func_ov095_0221b0bc
-.extern func_02032c08
+.extern Actor_SetResourceSlot
 .extern func_ov095_02217da8
 .extern func_ov095_0221b0ac
 .extern func_ov095_0221abc8
@@ -352,7 +352,7 @@ data_ov095_0221cca0:
     .word func_ov095_0221b0c8
     .word func_02032520
     .word func_ov095_0221b0bc
-    .word func_02032c08
+    .word Actor_SetResourceSlot
     .word func_ov095_02217da8
     .word func_ov095_0221b0ac
     .word func_ov095_0221abc8
@@ -516,7 +516,7 @@ data_ov095_0221cf4c:
     .word func_ov095_0221b0c8
     .word func_02032520
     .word func_ov095_0221b0bc
-    .word func_02032c08
+    .word Actor_SetResourceSlot
     .word func_02033f4c
     .word func_ov095_0221b0ac
     .word func_02043674
@@ -661,7 +661,7 @@ data_ov095_0221d1a4:
     .word func_ov095_0221b0c8
     .word func_02032520
     .word func_ov095_0221b0bc
-    .word func_02032c08
+    .word Actor_SetResourceSlot
     .word func_02033f4c
     .word func_ov095_0221b0ac
     .word func_02033f7c
@@ -740,7 +740,7 @@ data_ov095_0221d2e8:
     .word func_ov095_0221b0c8
     .word func_02032520
     .word func_ov095_0221b0bc
-    .word func_02032c08
+    .word Actor_SetResourceSlot
     .word func_02033f4c
     .word func_ov095_0221b0ac
     .word func_02033f7c

@@ -17,7 +17,7 @@
 .extern func_02032abc
 .extern func_02032aec
 .extern func_02032bd0
-.extern func_02032c08
+.extern Actor_SetResourceSlot
 .extern func_02032cc4
 .extern func_0203392c
 .extern func_02033940
@@ -167,7 +167,7 @@ data_ov093_022188f0:
     .word func_ov093_02218750
     .word func_02032520
     .word func_ov093_02218744
-    .word func_02032c08
+    .word Actor_SetResourceSlot
     .word func_02033f4c
     .word func_ov093_02218734
     .word func_02033f7c

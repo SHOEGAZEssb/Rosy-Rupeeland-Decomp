@@ -29,7 +29,7 @@ void func_02032bd0(void *self, void *resource)
 }
 
 /* Store value in resource slot 0x180+index*4 and return no value. */
-void func_02032c08(void *self, s32 index, void *value)
+void Actor_SetResourceSlot(void *self, s32 index, void *value)
 {
     *(void **)((u8 *)self + 0x180 + index * 4) = value;
 }
