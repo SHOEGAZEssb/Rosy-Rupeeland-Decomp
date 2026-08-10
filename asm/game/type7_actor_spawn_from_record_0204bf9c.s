@@ -5,7 +5,7 @@
 .extern func_0202d494
 .extern func_0203ae14
 .extern func_0202ecd0
-.extern func_02033828
+.extern Actor_RefreshTerrainHeight
 .extern func_02033f44
 .extern func_02048b94
 .extern func_0204a564
@@ -129,7 +129,7 @@ func_0204bf9c: ; 0x0204bf9c
     ldr r2, [r2, #0x54]
     blx r2
     mov r0, r5
-    bl func_02033828
+    bl Actor_RefreshTerrainHeight
     mov r0, r5
     bl func_02033f44
     str r0, [r5, #0x24]

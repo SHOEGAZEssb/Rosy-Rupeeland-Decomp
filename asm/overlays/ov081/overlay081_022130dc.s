@@ -1,7 +1,7 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov081/overlay081_recovery.c.
 .extern func_020050a4
-.extern func_02033828
+.extern Actor_RefreshTerrainHeight
 .extern func_ov081_0221312c
 
 .global func_ov081_022130dc
@@ -12,7 +12,7 @@ func_ov081_022130dc:
     add r1, r4, #0x214
     bl func_020050a4
     mov r0, r4
-    bl func_02033828
+    bl Actor_RefreshTerrainHeight
     mov r1, #0x0
     ldr r0, [r4, #0x1dc]
     mov r2, r1

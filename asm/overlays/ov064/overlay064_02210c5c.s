@@ -15,7 +15,7 @@
 .extern func_02010c00
 .extern func_0201ded4
 .extern func_02022cb0
-.extern func_02033828
+.extern Actor_RefreshTerrainHeight
 .extern func_0204fb64
 .extern func_0205557c
 .extern func_02072b68
@@ -210,7 +210,7 @@ func_ov064_02210c5c:
     add r0, r4, #0x18
     bl func_020050a4
     mov r0, r4
-    bl func_02033828
+    bl Actor_RefreshTerrainHeight
     ldr r1, [r4, #0x54]
     ldrh r0, [r1, #0x24]
     orr r0, r0, #0x4

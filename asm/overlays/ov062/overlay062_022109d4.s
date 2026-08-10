@@ -8,7 +8,7 @@
 .extern func_020064b8
 .extern func_02008e10
 .extern func_02009d78
-.extern func_02033828
+.extern Actor_RefreshTerrainHeight
 .extern func_020befec
 .extern gSceneManager
 
@@ -60,7 +60,7 @@ func_ov062_022109d4:
     add r0, r0, #0x18
     bl func_020050a4
     ldr r0, [r4, #0x24]
-    bl func_02033828
+    bl Actor_RefreshTerrainHeight
     ldr r0, .L_02210b0c
     ldr r0, [r0, #0x0]
     add r0, r0, #0x3bc

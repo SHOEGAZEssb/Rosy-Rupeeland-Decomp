@@ -46,7 +46,7 @@ void *func_02033810(void *unused, u32 slot)
  * classes clear that flag. The chosen integer height is stored shifted by 16.
  * Returns no value; the terrain helpers read global map/SDK-managed state.
  */
-void func_02033828(void *self)
+void Actor_RefreshTerrainHeight(void *self)
 {
     u8 *actor = (u8 *)self;
     s32 x;

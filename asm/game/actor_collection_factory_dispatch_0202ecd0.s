@@ -7,7 +7,7 @@
 .extern data_020ed470
 .extern func_020062a0
 .extern func_0202d110
-.extern func_02033828
+.extern Actor_RefreshTerrainHeight
 .extern func_02035060
 .extern func_0203b554
 .extern func_0203c140
@@ -2157,7 +2157,7 @@ func_0202ecd0: ; 0x0202ecd0
     streq r0, [r4, #0x14]
     beq .L_02030a40
     mov r0, r4
-    bl func_02033828
+    bl Actor_RefreshTerrainHeight
 .L_02030a40:
     ldrsh r0, [r5, #0x52]
     cmp r4, #0x0
@@ -2177,5 +2177,4 @@ func_0202ecd0: ; 0x0202ecd0
 .L_02030a78: .word 0x4f
 .L_02030a7c: .word data_020ed470
     .size func_0202ecd0, . - func_0202ecd0
-
 

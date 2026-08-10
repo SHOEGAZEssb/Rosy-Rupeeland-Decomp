@@ -123,7 +123,7 @@ DECLARE_ACTOR_CTOR(func_ov097_022195f4);
 DECLARE_ACTOR_CTOR(func_ov097_02219d20);
 #undef DECLARE_ACTOR_CTOR
 extern void OS_Halt(void);
-extern void func_02033828(FactoryActor *);
+extern void Actor_RefreshTerrainHeight(FactoryActor *);
 extern void func_0202d110(FactoryCollection *, FactoryActor *);
 #ifdef __cplusplus
 }
@@ -275,7 +275,7 @@ void *func_0202ecd0(FactoryCollection *self,
     if (self->mode_2e84 == 2)
         actor->flags_14 |= 0x04000000;
     else
-        func_02033828(actor);
+        Actor_RefreshTerrainHeight(actor);
     actor->descriptorValue_e4 = descriptor->value_52;
     func_0202d110(self, actor);
     return actor;

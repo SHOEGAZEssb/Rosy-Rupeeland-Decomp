@@ -6,7 +6,7 @@ extern void *gGameWork;
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_02033828(void *actor);
+extern void Actor_RefreshTerrainHeight(void *actor);
 extern void func_0204cff4(s32 *x, s32 *y, s32 maximum);
 extern void func_0200b2c0(void *state, s32 first, s32 second, s32 third);
 #ifdef __cplusplus
@@ -56,13 +56,13 @@ void func_02033f20(void *self, s32 first, s32 second)
 }
 
 /*
- * Refresh cached terrain state through func_02033828 unless actor flag
+ * Refresh cached terrain state through Actor_RefreshTerrainHeight unless actor flag
  * 0x01000000 at +0x14 is set. Returns no value; the helper reads map state.
  */
 void func_02033f2c(void *self)
 {
     if ((*(u32 *)((u8 *)self + 0x14) & 0x01000000) == 0)
-        func_02033828(self);
+        Actor_RefreshTerrainHeight(self);
 }
 
 /* Return the cached terrain-height word at actor+0x1dc. */

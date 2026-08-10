@@ -2,7 +2,7 @@
 .text
 .extern GameWork_ClearFlag
 .extern Heap_Free
-.extern func_02033828
+.extern Actor_RefreshTerrainHeight
 .extern func_0204c8d4
 .extern func_0206c978
 .extern gGameWork
@@ -52,7 +52,7 @@ func_02038aac: ; 0x02038aac
     str r1, [r4, #0x3c]
     mov r0, r4
     strb r1, [r4, #0x26b]
-    bl func_02033828
+    bl Actor_RefreshTerrainHeight
     ldr r0, [r4, #0x230]
     bic r0, r0, #0x800000
     str r0, [r4, #0x230]

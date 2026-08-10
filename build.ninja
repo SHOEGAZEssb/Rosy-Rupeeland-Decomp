@@ -14366,7 +14366,7 @@ build build/reports/actor_collection_terrain_context_02033828.json: objdiff buil
   base_object = build/decomp/asm/game/actor_collection_terrain_context_02033828.o
 build build/reports/actor_collection_terrain_context_02033828.txt: match_report build/reports/actor_collection_terrain_context_02033828.json | tools/report_objdiff.py
   report_json = build/reports/actor_collection_terrain_context_02033828.json
-  report_args = --section .text --function func_02033828 --require-exact
+  report_args = --section .text --function Actor_RefreshTerrainHeight --require-exact
 build build/reports/actor_collection_terrain_context.txt: phony build/reports/actor_collection_terrain_context_020337d4.txt build/reports/actor_collection_terrain_context_02033810.txt build/reports/actor_collection_terrain_context_02033828.txt
 
 build actor_collection_terrain_context: phony build/decomp/src/game/actor_collection_terrain_context.o build/decomp/asm/game/actor_collection_terrain_context_020337d4.o build/decomp/asm/game/actor_collection_terrain_context_02033810.o build/decomp/asm/game/actor_collection_terrain_context_02033828.o build/reports/actor_collection_terrain_context.txt

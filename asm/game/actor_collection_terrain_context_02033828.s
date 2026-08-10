@@ -4,9 +4,9 @@
 .extern func_0200eb14
 .extern func_02034464
 
-    .global func_02033828
-    .type func_02033828, @function
-func_02033828: ; 0x02033828
+    .global Actor_RefreshTerrainHeight
+    .type Actor_RefreshTerrainHeight, @function
+Actor_RefreshTerrainHeight: ; 0x02033828
     stmdb sp!, {r3, r4, r5, r6, r7, lr}
     sub sp, sp, #0x8
     mov r5, r0
@@ -57,7 +57,6 @@ func_02033828: ; 0x02033828
     add sp, sp, #0x8
     ldmia sp!, {r3, r4, r5, r6, r7, pc}
 .L_020338e0: .word data_021052fc
-    .size func_02033828, . - func_02033828
+    .size Actor_RefreshTerrainHeight, . - Actor_RefreshTerrainHeight
 
     .global func_020338e4
-

@@ -11,7 +11,7 @@ extern void func_0206c978(void *resource);
 extern void GameWork_ClearFlag(void *work, u32 flag);
 extern void func_0204c8d4(void *object);
 extern void func_0204c91c(void *object);
-extern void func_02033828(void *actor);
+extern void Actor_RefreshTerrainHeight(void *actor);
 #ifdef __cplusplus
 }
 #endif
@@ -32,7 +32,7 @@ static void releaseResource(u8 *actor)
  * Release auxiliary +0x26c, clear actor +0x10 bits 0x1f0000, enter state and
  * previous-state value one at +0xd6/+0xd8, and clear substates +0xda/+0xdc.
  * Call virtual +0x5c, notify optional object +0x270 through func_0204c8d4,
- * zero motion +0x3c/+0x40/+0x44 and byte +0x26b, call func_02033828, then
+ * zero motion +0x3c/+0x40/+0x44 and byte +0x26b, refresh terrain height, then
  * clear +0x230 bit 0x800000. Returns no value; resource, heap, GameWork,
  * virtual, and optional-object calls have observable engine state.
  */
@@ -52,7 +52,7 @@ void func_02038aac(void *self)
     *(s32 *)(actor + 0x40) = 0;
     *(s32 *)(actor + 0x3c) = 0;
     actor[0x26b] = 0;
-    func_02033828(actor);
+    Actor_RefreshTerrainHeight(actor);
     *(u32 *)(actor + 0x230) &= ~0x800000;
 }
 

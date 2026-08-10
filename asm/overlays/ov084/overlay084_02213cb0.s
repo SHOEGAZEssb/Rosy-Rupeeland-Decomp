@@ -7,7 +7,7 @@
 .extern func_0200637c
 .extern func_020064b8
 .extern func_02032370
-.extern func_02033828
+.extern Actor_RefreshTerrainHeight
 .extern func_020befec
 .extern func_ov084_02212d28
 .extern func_ov084_02213e10
@@ -100,7 +100,7 @@ func_ov084_02213cb0:
     str r2, [r4, #0x260]
     bl func_020050a4
     mov r0, r4
-    bl func_02033828
+    bl Actor_RefreshTerrainHeight
     mov r0, #0x2
 .L_02213e08:
     add sp, sp, #0x70

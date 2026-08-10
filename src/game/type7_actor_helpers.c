@@ -11,7 +11,7 @@ extern void *func_020050a4(void *destination, const void *source);
 extern void func_02005030(void *destination, const void *source);
 extern void func_02005058(void *value);
 extern void func_0200b2c0(void *vector, s32 x, s32 y, s32 z);
-extern void func_02033828(void *actor);
+extern void Actor_RefreshTerrainHeight(void *actor);
 extern void func_02031758(void *context, void *actor, void *value);
 extern void func_0206dcac(void *resource);
 extern void func_02033f7c(void *actor, const void *value, s32 mode);
@@ -21,7 +21,7 @@ extern void func_02038784(void *output, const void *input, s32 scale);
 #endif
 
 /*
- * Copy actor +0x214 to transform +0x18, invoke func_02033828, copy +0x1dc to
+ * Copy actor +0x214 to transform +0x18, refresh terrain height, copy +0x1dc to
  * +0x24, and zero vector-like fields +0x38 and +0x88. Returns no value; actor
  * transform/base motion state changes without direct hardware access.
  */
@@ -29,7 +29,7 @@ void func_020464f4(void *self)
 {
     u8 *actor = (u8 *)self;
     func_020050a4(actor + 0x18, actor + 0x214);
-    func_02033828(actor);
+    Actor_RefreshTerrainHeight(actor);
     *(u32 *)(actor + 0x24) = *(u32 *)(actor + 0x1dc);
     func_0200b2c0(actor + 0x38, 0, 0, 0);
     func_0200b2c0(actor + 0x88, 0, 0, 0);

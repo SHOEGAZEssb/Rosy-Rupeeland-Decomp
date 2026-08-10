@@ -14,5 +14,4 @@ func_02033810: ; 0x02033810
 .L_02033824: .word func_02007f0c
     .size func_02033810, . - func_02033810
 
-    .global func_02033828
-
+    .global Actor_RefreshTerrainHeight

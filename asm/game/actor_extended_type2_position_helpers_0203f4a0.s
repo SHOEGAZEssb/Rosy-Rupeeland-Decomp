@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/actor_extended_type2_position_helpers.c.
 .text
 .extern func_020050a4
-.extern func_02033828
+.extern Actor_RefreshTerrainHeight
 .extern func_02045364
 .extern func_0204539c
 .extern func_020453b0
@@ -81,7 +81,7 @@ func_0203f4f8: ; 0x0203f4f8
     str r0, [r4, #0x20]
 .L_0203f594:
     mov r0, r4
-    bl func_02033828
+    bl Actor_RefreshTerrainHeight
     ldr r2, [r4, #0x1dc]
     add r0, r4, #0x28
     add r1, r4, #0x18
@@ -93,4 +93,3 @@ func_0203f4f8: ; 0x0203f4f8
     str r0, [r4, #0x3c]
     ldmia sp!, {r3, r4, r5, pc}
     .size func_0203f4f8, . - func_0203f4f8
-
