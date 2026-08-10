@@ -3,7 +3,7 @@
 .extern func_02012704
 .extern func_020127f8
 .extern func_02030ad4
-.extern func_02032d64
+.extern Actor_UpdateAttachmentDirectionFromVector
 .extern func_020337d4
 
     .global func_0201389c
@@ -24,7 +24,7 @@ func_0201389c: ; 0x0201389c
     ldr r2, [r0, #0x20]
     sub r1, ip, r1
     sub r2, r3, r2
-    bl func_02032d64
+    bl Actor_UpdateAttachmentDirectionFromVector
     ldr r0, [r4, #0x84]
     ldr r0, [r0, #0x54]
     cmp r0, #0x0
@@ -41,4 +41,3 @@ L_0201390c:
     mov r0, #0x0
     ldmia sp!, {r3, r4, r5, pc}
     .size func_0201389c, . - func_0201389c
-

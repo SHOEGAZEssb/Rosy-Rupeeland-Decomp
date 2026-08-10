@@ -12,7 +12,7 @@ extern void Actor_SetVelocity(void *actor, const VecFx32Object *value);
 extern void func_02006818(void *movement);
 extern void *func_020337d4(void *actor);
 extern void *func_02030ad4(void *collection, s32 index);
-extern void func_02032d64(void *actor, fx32 x, fx32 y);
+extern void Actor_UpdateAttachmentDirectionFromVector(void *actor, fx32 x, fx32 y);
 #ifdef __cplusplus
 }
 #endif
@@ -53,7 +53,7 @@ s32 func_0201389c(GamePhaseActorScriptVm *self)
     fx32 dx = *(fx32 *)(target + 0x1c) - *(fx32 *)(actor + 0x1c);
     fx32 dy = *(fx32 *)(target + 0x20) - *(fx32 *)(actor + 0x20);
     u8 *object;
-    func_02032d64(actor, dx, dy);
+    Actor_UpdateAttachmentDirectionFromVector(actor, dx, dy);
     object = *(u8 **)(actor + 0x54);
     func_020127f8(&self->base, object != 0 ? object[0x38] : 0);
     return 0;

@@ -14226,7 +14226,7 @@ build build/reports/actor_attachment_animation_helpers_02032d64.json: objdiff bu
   base_object = build/decomp/asm/game/actor_attachment_animation_helpers_02032d64.o
 build build/reports/actor_attachment_animation_helpers_02032d64.txt: match_report build/reports/actor_attachment_animation_helpers_02032d64.json | tools/report_objdiff.py
   report_json = build/reports/actor_attachment_animation_helpers_02032d64.json
-  report_args = --section .text --function func_02032d64 --require-exact
+  report_args = --section .text --function Actor_UpdateAttachmentDirectionFromVector --require-exact
 build build/decomp/asm/game/actor_attachment_animation_helpers_02032dd4.o: mwasmarm asm/game/actor_attachment_animation_helpers_02032dd4.s
 build build/decomp/delinks/asm/game/actor_attachment_animation_helpers_02032dd4.o: dsd_delink config/arm9/config.yaml config/arm9/delinks.txt config/arm9/symbols.txt config/arm9/relocs.txt
 build build/reports/actor_attachment_animation_helpers_02032dd4.json: objdiff build/decomp/delinks/asm/game/actor_attachment_animation_helpers_02032dd4.o | build/decomp/asm/game/actor_attachment_animation_helpers_02032dd4.o

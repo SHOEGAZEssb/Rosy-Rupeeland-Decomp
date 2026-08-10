@@ -7,7 +7,7 @@
 .extern func_02006788
 .extern func_02012704
 .extern func_020127f8
-.extern func_02032d64
+.extern Actor_UpdateAttachmentDirectionFromVector
 .extern func_020adc40
 .extern func_020befec
 
@@ -57,14 +57,14 @@ L_0201316c: ; jump table
 L_0201318c:
     mov r1, r7
     mov r2, r6
-    bl func_02032d64
+    bl Actor_UpdateAttachmentDirectionFromVector
     b L_020131b0
 L_0201319c:
     ldr r1, [r0, #0x1c]
     ldr r2, [r0, #0x20]
     sub r1, r7, r1
     sub r2, r6, r2
-    bl func_02032d64
+    bl Actor_UpdateAttachmentDirectionFromVector
 L_020131b0:
     ldr r0, [r9, #0x84]
     ldr r1, [r0, #0x54]
@@ -219,4 +219,3 @@ L_020133d4:
     add sp, sp, #0x50
     ldmia sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, pc}
     .size func_020130ec, . - func_020130ec
-

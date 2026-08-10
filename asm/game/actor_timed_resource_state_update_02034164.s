@@ -11,7 +11,7 @@
 .extern func_0201b23c
 .extern func_0202d494
 .extern func_0202eba4
-.extern func_02032d64
+.extern Actor_UpdateAttachmentDirectionFromVector
 .extern func_020337d4
 
     .global func_02034164
@@ -67,7 +67,7 @@ func_02034164: ; 0x02034164
     adds r0, r1, r2
     beq .L_0203422c
     mov r0, r4
-    bl func_02032d64
+    bl Actor_UpdateAttachmentDirectionFromVector
 .L_0203422c:
     ldr r0, [r4, #0x14]
     tst r0, #0x20
@@ -86,4 +86,3 @@ func_02034164: ; 0x02034164
     .size func_02034164, . - func_02034164
 
     .global func_02034260
-

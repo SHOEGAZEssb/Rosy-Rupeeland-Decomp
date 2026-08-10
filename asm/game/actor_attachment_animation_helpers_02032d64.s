@@ -3,9 +3,9 @@
 .extern func_02057084
 .extern func_02072b68
 
-    .global func_02032d64
-    .type func_02032d64, @function
-func_02032d64: ; 0x02032d64
+    .global Actor_UpdateAttachmentDirectionFromVector
+    .type Actor_UpdateAttachmentDirectionFromVector, @function
+Actor_UpdateAttachmentDirectionFromVector: ; 0x02032d64
     stmdb sp!, {r4, lr}
     mov r4, r0
     ldr r0, [r4, #0x54]
@@ -34,4 +34,4 @@ func_02032d64: ; 0x02032d64
     orr r0, r0, #0x2
     strh r0, [r1, #0x24]
     ldmia sp!, {r4, pc}
-    .size func_02032d64, . - func_02032d64
+    .size Actor_UpdateAttachmentDirectionFromVector, . - Actor_UpdateAttachmentDirectionFromVector

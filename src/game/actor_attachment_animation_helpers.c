@@ -20,7 +20,7 @@ extern void func_020344b8(void *position);
  * at 0x24 have bits 0x40 and 1 cleared and bit 2 set. Returns no value; the
  * direction and animation helpers can update presentation state.
  */
-void func_02032d64(void *self, s32 x, s32 y)
+void Actor_UpdateAttachmentDirectionFromVector(void *self, s32 x, s32 y)
 {
     u8 *actor = (u8 *)self;
     u8 *attachment = *(u8 **)(actor + 0x54);

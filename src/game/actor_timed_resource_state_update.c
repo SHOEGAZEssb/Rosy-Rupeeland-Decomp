@@ -16,7 +16,7 @@ extern void func_0202eba4(void *collection, void *reference, void *actor);
 extern void *func_0200af04(void *effectState, s32 index);
 extern void func_0201b180(void *state, void *value);
 extern void func_0201b228(void *state);
-extern void func_02032d64(void *actor, s32 x, s32 y);
+extern void Actor_UpdateAttachmentDirectionFromVector(void *actor, s32 x, s32 y);
 extern void func_0202d494(void *collection, void *actor);
 #ifdef __cplusplus
 }
@@ -62,7 +62,7 @@ s32 func_02034164(void *self)
         func_0201b180(actor + 0xec, func_0200af04(data_02105310, 0));
         func_0201b228(actor + 0xec);
         if (*(s32 *)(actor + 0x3c) + *(s32 *)(actor + 0x40) != 0) {
-            func_02032d64(actor, *(s32 *)(actor + 0x3c),
+            Actor_UpdateAttachmentDirectionFromVector(actor, *(s32 *)(actor + 0x3c),
                           *(s32 *)(actor + 0x40));
         }
     }

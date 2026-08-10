@@ -6,7 +6,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_02032d64(void *actor, fx32 x, fx32 y);
+extern void Actor_UpdateAttachmentDirectionFromVector(void *actor, fx32 x, fx32 y);
 extern void *func_020066dc(void *self, const VecFx32Object *target,
                           const VecFx32Object *source, s32 duration);
 extern void func_0200676c(void *destination, const void *source);
@@ -57,9 +57,9 @@ s32 func_020130ec(GamePhaseActorScriptVm *self)
     func_02004fe0(&target);
     if (actor[0xe6] == 1) {
         if ((mode & 1) == 0)
-            func_02032d64(actor, x, y);
+            Actor_UpdateAttachmentDirectionFromVector(actor, x, y);
         else
-            func_02032d64(actor,
+            Actor_UpdateAttachmentDirectionFromVector(actor,
                           x - position->value.x,
                           y - position->value.y);
         {

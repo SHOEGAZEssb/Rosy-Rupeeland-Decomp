@@ -8,7 +8,7 @@
 .extern data_ov062_02211bd8
 .extern func_02005058
 .extern func_0201f864
-.extern func_02032d64
+.extern Actor_UpdateAttachmentDirectionFromVector
 .extern func_ov062_0220fd20
 .extern func_ov062_0220fd50
 .extern func_ov062_0220fdbc
@@ -101,7 +101,7 @@ func_ov062_02210674:
     ldr r2, [r0, #0x20]
     sub r1, ip, r1
     sub r2, r3, r2
-    bl func_02032d64
+    bl Actor_UpdateAttachmentDirectionFromVector
 .L_022107c0:
     ldr r1, .L_02210854
     ldr r3, .L_02210850
