@@ -3,10 +3,10 @@
 .extern data_020e0224
 .extern func_02005030
 .extern func_02005058
-.extern func_02043958
-.global func_020439ec
-.type func_020439ec, @function
-func_020439ec: ; 0x020439ec
+.extern ActorExtendedType3_ResetInteractionState
+.global ActorExtendedType3_UpdateCountdownMotion
+.type ActorExtendedType3_UpdateCountdownMotion, @function
+ActorExtendedType3_UpdateCountdownMotion: ; 0x020439ec
     stmdb sp!, {r3, r4, r5, lr}
     sub sp, sp, #0x10
     mov r5, r0
@@ -18,7 +18,7 @@ func_020439ec: ; 0x020439ec
     ldrsh r1, [r2, #0x9a]
     cmp r1, #0x0
     bgt .L_02043a24
-    bl func_02043958
+    bl ActorExtendedType3_ResetInteractionState
     mov r0, #0x0
     b .L_02043b14
 .L_02043a24:
@@ -90,5 +90,5 @@ func_020439ec: ; 0x020439ec
     ldmia sp!, {r3, r4, r5, pc}
 .L_02043b1c: .word data_020e0224
 
-    .global func_02043b20
-.size func_020439ec, . - func_020439ec
+    .global ActorExtendedType3_UpdateCountdownApproach
+.size ActorExtendedType3_UpdateCountdownMotion, . - ActorExtendedType3_UpdateCountdownMotion

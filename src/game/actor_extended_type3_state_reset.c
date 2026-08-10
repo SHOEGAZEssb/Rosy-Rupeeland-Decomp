@@ -26,7 +26,7 @@ extern void func_020349b8(void *actor, u32 sound, s32 extra);
  * handle, bookkeeping, callback, and sound state may change; func_020349b8 is
  * the sound boundary and there is no direct hardware access.
  */
-s32 func_02043958(void *self)
+s32 ActorExtendedType3_ResetInteractionState(void *self)
 {
     u8 *actor = (u8 *)self;
     u16 sound;

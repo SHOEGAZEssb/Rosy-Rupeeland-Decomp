@@ -17540,7 +17540,7 @@ build build/reports/actor_extended_type3_state_reset_02043958.json: objdiff buil
   base_object = build/decomp/asm/game/actor_extended_type3_state_reset_02043958.o
 build build/reports/actor_extended_type3_state_reset_02043958.txt: match_report build/reports/actor_extended_type3_state_reset_02043958.json | tools/report_objdiff.py
   report_json = build/reports/actor_extended_type3_state_reset_02043958.json
-  report_args = --section .text --function func_02043958 --require-exact
+  report_args = --section .text --function ActorExtendedType3_ResetInteractionState --require-exact
 build build/reports/actor_extended_type3_state_reset.txt: phony build/reports/actor_extended_type3_state_reset_02043958.txt
 build actor_extended_type3_state_reset: phony build/decomp/src/game/actor_extended_type3_state_reset.o build/decomp/asm/game/actor_extended_type3_state_reset_02043958.o build/reports/actor_extended_type3_state_reset.txt
 
@@ -17555,7 +17555,7 @@ build build/reports/actor_extended_type3_countdown_motion_020439ec.json: objdiff
   base_object = build/decomp/asm/game/actor_extended_type3_countdown_motion_020439ec.o
 build build/reports/actor_extended_type3_countdown_motion_020439ec.txt: match_report build/reports/actor_extended_type3_countdown_motion_020439ec.json | tools/report_objdiff.py
   report_json = build/reports/actor_extended_type3_countdown_motion_020439ec.json
-  report_args = --section .text --function func_020439ec --require-exact
+  report_args = --section .text --function ActorExtendedType3_UpdateCountdownMotion --require-exact
 build build/reports/actor_extended_type3_countdown_motion.txt: phony build/reports/actor_extended_type3_countdown_motion_020439ec.txt
 build actor_extended_type3_countdown_motion: phony build/decomp/src/game/actor_extended_type3_countdown_motion.o build/decomp/asm/game/actor_extended_type3_countdown_motion_020439ec.o build/reports/actor_extended_type3_countdown_motion.txt
 actor_extended_type3_timed_helpers_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
@@ -17569,7 +17569,7 @@ build build/reports/actor_extended_type3_timed_helpers_02043b20.json: objdiff bu
   base_object = build/decomp/asm/game/actor_extended_type3_timed_helpers_02043b20.o
 build build/reports/actor_extended_type3_timed_helpers_02043b20.txt: match_report build/reports/actor_extended_type3_timed_helpers_02043b20.json | tools/report_objdiff.py
   report_json = build/reports/actor_extended_type3_timed_helpers_02043b20.json
-  report_args = --section .text --function func_02043b20 --function func_02043b54 --function func_02043bc8 --require-exact
+  report_args = --section .text --function ActorExtendedType3_UpdateCountdownApproach --function ActorExtendedType3_UpdateRandomCallbackDelay --function ActorExtendedType3_ApplyDescriptorModeTransform --require-exact
 build build/reports/actor_extended_type3_timed_helpers.txt: phony build/reports/actor_extended_type3_timed_helpers_02043b20.txt
 build actor_extended_type3_timed_helpers: phony build/decomp/src/game/actor_extended_type3_timed_helpers.o build/decomp/asm/game/actor_extended_type3_timed_helpers_02043b20.o build/reports/actor_extended_type3_timed_helpers.txt
 

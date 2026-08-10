@@ -9,7 +9,7 @@ extern u8 data_020e0224[];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern s32 func_02043958(void *actor);
+extern s32 ActorExtendedType3_ResetInteractionState(void *actor);
 extern s32 func_020412a8(void *actor, const void *record);
 extern u32 genrand_int32(void);
 extern s32 ActorExtendedType2_GetDescriptorValue2C(const void *actor);
@@ -22,17 +22,17 @@ extern void func_02050078(s32 mode, void *destination, const void *source);
 #endif
 
 /*
- * Decrement signed timer actor +0x29a. At zero or below, invoke func_02043958
- * and return zero; otherwise forward actor and descriptorRecord to
+ * Decrement signed timer actor +0x29a. At zero or below, reset interaction
+ * state and return zero; otherwise forward actor and descriptorRecord to
  * func_020412a8 and return its result. Actor/base state may change and no direct
  * SDK or hardware operation occurs.
  */
-s32 func_02043b20(void *self, const void *descriptorRecord)
+s32 ActorExtendedType3_UpdateCountdownApproach(void *self, const void *descriptorRecord)
 {
     u8 *actor = (u8 *)self;
     --*(s16 *)(actor + 0x29a);
     if (*(s16 *)(actor + 0x29a) <= 0) {
-        func_02043958(actor);
+        ActorExtendedType3_ResetInteractionState(actor);
         return 0;
     }
     return func_020412a8(actor, descriptorRecord);
@@ -45,7 +45,7 @@ s32 func_02043b20(void *self, const void *descriptorRecord)
  * increment +0x25a and return zero. Actor, callback, and random state may change;
  * no direct hardware access occurs.
  */
-s32 func_02043b54(void *self)
+s32 ActorExtendedType3_UpdateRandomCallbackDelay(void *self)
 {
     u8 *actor = (u8 *)self;
     *(u16 *)(actor + 0xd6) = 2;
@@ -61,13 +61,13 @@ s32 func_02043b54(void *self)
 
 /*
  * Return without action when descriptor halfword +0x2c is nonzero or
- * signed-byte accessor ActorExtendedType2_GetDescriptorValue25 returns -1. Otherwise copy actor
- * transform +0x18 to a temporary, call func_02050078(mode,temporary,temporary)
+ * signed descriptor byte +0x25 returns -1. Otherwise copy actor transform
+ * +0x18 to a temporary, call func_02050078(mode,temporary,temporary)
  * using the signed-byte accessor as mode, then finalize the temporary. The
  * routine has no meaningful return value; transform/helper state may change
  * and no direct SDK or hardware access occurs.
  */
-void func_02043bc8(void *self)
+void ActorExtendedType3_ApplyDescriptorModeTransform(void *self)
 {
     u8 *actor = (u8 *)self;
     u32 temporary[4];

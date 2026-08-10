@@ -5,9 +5,9 @@
 .extern Actor_SaveAndForceFlags
 .extern func_020349b8
 .extern func_02045184
-.global func_02043958
-.type func_02043958, @function
-func_02043958: ; 0x02043958
+.global ActorExtendedType3_ResetInteractionState
+.type ActorExtendedType3_ResetInteractionState, @function
+ActorExtendedType3_ResetInteractionState: ; 0x02043958
     stmdb sp!, {r4, lr}
     mov r4, r0
     ldr r2, [r4, #0xd0]
@@ -48,5 +48,5 @@ func_02043958: ; 0x02043958
 .L_020439e4: .word data_020e0224
 .L_020439e8: .word data_020e6f94
 
-    .global func_020439ec
-.size func_02043958, . - func_02043958
+    .global ActorExtendedType3_UpdateCountdownMotion
+.size ActorExtendedType3_ResetInteractionState, . - ActorExtendedType3_ResetInteractionState

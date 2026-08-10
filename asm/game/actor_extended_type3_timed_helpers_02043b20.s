@@ -6,13 +6,13 @@
 .extern func_020412a8
 .extern ActorExtendedType2_GetDescriptorValue2C
 .extern ActorExtendedType2_GetDescriptorValue25
-.extern func_02043958
+.extern ActorExtendedType3_ResetInteractionState
 .extern func_02050078
 .extern func_020bf1f8
 .extern genrand_int32
-.global func_02043b20
-.type func_02043b20, @function
-func_02043b20: ; 0x02043b20
+.global ActorExtendedType3_UpdateCountdownApproach
+.type ActorExtendedType3_UpdateCountdownApproach, @function
+ActorExtendedType3_UpdateCountdownApproach: ; 0x02043b20
     stmdb sp!, {r3, lr}
     add r2, r0, #0x200
     ldrsh r3, [r2, #0x9a]
@@ -21,18 +21,18 @@ func_02043b20: ; 0x02043b20
     ldrsh r2, [r2, #0x9a]
     cmp r2, #0x0
     bgt .L_02043b4c
-    bl func_02043958
+    bl ActorExtendedType3_ResetInteractionState
     mov r0, #0x0
     ldmia sp!, {r3, pc}
 .L_02043b4c:
     bl func_020412a8
     ldmia sp!, {r3, pc}
 
-.size func_02043b20, . - func_02043b20
+.size ActorExtendedType3_UpdateCountdownApproach, . - ActorExtendedType3_UpdateCountdownApproach
 
-.global func_02043b54
-.type func_02043b54, @function
-func_02043b54: ; 0x02043b54
+.global ActorExtendedType3_UpdateRandomCallbackDelay
+.type ActorExtendedType3_UpdateRandomCallbackDelay, @function
+ActorExtendedType3_UpdateRandomCallbackDelay: ; 0x02043b54
     stmdb sp!, {r4, lr}
     mov r4, r0
     mov r0, #0x2
@@ -65,11 +65,11 @@ func_02043b54: ; 0x02043b54
     ldmia sp!, {r4, pc}
 .L_02043bc4: .word data_020e0224
 
-.size func_02043b54, . - func_02043b54
+.size ActorExtendedType3_UpdateRandomCallbackDelay, . - ActorExtendedType3_UpdateRandomCallbackDelay
 
-.global func_02043bc8
-.type func_02043bc8, @function
-func_02043bc8: ; 0x02043bc8
+.global ActorExtendedType3_ApplyDescriptorModeTransform
+.type ActorExtendedType3_ApplyDescriptorModeTransform, @function
+ActorExtendedType3_ApplyDescriptorModeTransform: ; 0x02043bc8
     stmdb sp!, {r4, lr}
     sub sp, sp, #0x10
     mov r4, r0
@@ -94,4 +94,4 @@ func_02043bc8: ; 0x02043bc8
 .L_02043c1c:
     add sp, sp, #0x10
     ldmia sp!, {r4, pc}
-.size func_02043bc8, . - func_02043bc8
+.size ActorExtendedType3_ApplyDescriptorModeTransform, . - ActorExtendedType3_ApplyDescriptorModeTransform

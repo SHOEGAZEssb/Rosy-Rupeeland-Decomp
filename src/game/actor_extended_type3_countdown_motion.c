@@ -9,7 +9,7 @@ extern u8 data_020e0224[];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern s32 func_02043958(void *actor);
+extern s32 ActorExtendedType3_ResetInteractionState(void *actor);
 extern void func_02005030(void *temporary, const void *source);
 extern void func_02005058(void *temporary);
 #ifdef __cplusplus
@@ -18,7 +18,8 @@ extern void func_02005058(void *temporary);
 
 /*
  * Decrement signed halfword actor +0x29a. At zero or below, invoke
- * func_02043958 and return zero. Otherwise set +0x260 bit 0x20, set mode byte
+ * ActorExtendedType3_ResetInteractionState and return zero. Otherwise set
+ * +0x260 bit 0x20, set mode byte
  * +0x24c to two, and stop if virtual +0x38 reports busy. Descriptor +0x1a bit
  * one installs callback pair data_020e0224+0x10/+0x14 at +0x218/+0x21c.
  * Otherwise copy transform +0x18, compute integer displacement from target
@@ -28,7 +29,7 @@ extern void func_02005058(void *temporary);
  * zero. Actor, target, transform, callback, and virtual state may change; no
  * direct SDK or hardware access occurs.
  */
-s32 func_020439ec(void *self, const void *descriptorRecord)
+s32 ActorExtendedType3_UpdateCountdownMotion(void *self, const void *descriptorRecord)
 {
     u8 *actor = (u8 *)self;
     const u8 *record = (const u8 *)descriptorRecord;
@@ -39,7 +40,7 @@ s32 func_020439ec(void *self, const void *descriptorRecord)
 
     --*(s16 *)(actor + 0x29a);
     if (*(s16 *)(actor + 0x29a) <= 0) {
-        func_02043958(actor);
+        ActorExtendedType3_ResetInteractionState(actor);
         return 0;
     }
     *(u32 *)(actor + 0x260) |= 0x20;
