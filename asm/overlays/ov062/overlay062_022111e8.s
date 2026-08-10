@@ -10,7 +10,7 @@
 .extern func_02005058
 .extern func_020050a4
 .extern ActorDerivedType1_ResetToBaseState
-.extern func_0204b680
+.extern Type7Actor_LeaveSpecialPresentationState
 .extern func_020597fc
 .extern func_02073ef8
 .extern func_ov062_0220fd20
@@ -103,7 +103,7 @@ func_ov062_022111e8:
     ldr r0, [r0, #0xea8]
     cmp r0, #0x0
     beq .L_02211334
-    bl func_0204b680
+    bl Type7Actor_LeaveSpecialPresentationState
 .L_02211334:
     ldr r0, [r4, #0x78]
     cmp r0, #0x0

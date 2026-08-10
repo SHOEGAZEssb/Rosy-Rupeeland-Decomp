@@ -21,7 +21,7 @@
 .extern Type7Actor_DispatchCurrentCallback
 .extern Type7Actor_SetTarget
 .extern Type7Actor_UpdateAttachmentControllerAnimation
-.extern func_0204b7bc
+.extern Type7Actor_PlayStateSound
 .extern func_0206c978
 .extern func_0206cd10
 .extern func_020adcac
@@ -89,7 +89,7 @@ Type7Actor_UpdateFrame: ; 0x02045a60
     bge .L_02045b48
     mov r0, r4
     mov r1, #0x1
-    bl func_0204b7bc
+    bl Type7Actor_PlayStateSound
 .L_02045b48:
     ldr r0, [r4, #0x268]
     tst r0, #0x100000

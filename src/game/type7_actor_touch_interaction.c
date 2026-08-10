@@ -19,7 +19,7 @@ extern void ActorDerivedRuntime_AcceptInteractionQuery(void *actor, const void *
 extern void Actor_SetInteractionFlag2000(void *actor, const void *input);
 extern s32 func_0204c74c(void *actor, const void *input);
 extern s32 Type7Actor_HasSpecialCallbackPair(const void *actor);
-extern void func_0204b7bc(void *actor, s32 mode);
+extern void Type7Actor_PlayStateSound(void *actor, s32 mode);
 extern void Type7Actor_SetCallbackPair(void *actor, u32 first, u32 second, s32 duration);
 extern void TouchPoint_Init(void *point, s32 x, s32 y);
 extern void func_02005030(void *destination, const void *source);
@@ -131,7 +131,7 @@ s32 Type7Actor_HandleTouchInteraction(void *self, const void *inputRecord)
         if ((*(u32 *)(actor + 0x268) & 0x4000) != 0) {
             *(u16 *)(actor + 0x2a0) = 180;
             *(s16 *)(actor + 0x264) = -20;
-            func_0204b7bc(actor, 4);
+            Type7Actor_PlayStateSound(actor, 4);
         } else {
             Type7Actor_SetCallbackPair(actor, data_020e1730[0], data_020e1730[1], 60);
             *(u16 *)(actor + 0x2a2) = 0;
@@ -163,7 +163,7 @@ s32 Type7Actor_HandleTouchInteraction(void *self, const void *inputRecord)
                 (u16)(func_020ada8c((s32)(genrand_int32() & 0x7fffffff), 120)
                       + 90);
         *(void **)(actor + 0x210) = 0;
-        func_0204b7bc(actor, 4);
+        Type7Actor_PlayStateSound(actor, 4);
     }
 
     initialize_relative_touch(point, actor, input);

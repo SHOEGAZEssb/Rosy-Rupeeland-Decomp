@@ -18,7 +18,7 @@ extern "C" {
 extern void ActorDerivedRuntime_UpdateFrame(void *actor);
 extern s32 func_020adcac(const void *first, const void *second);
 extern void Type7Actor_ResetMotionAndCooldown(void *actor);
-extern void func_0204b7bc(void *actor, s32 enabled);
+extern void Type7Actor_PlayStateSound(void *actor, s32 enabled);
 extern void Type7Actor_SetTarget(void *actor, void *worldObject, s32 value);
 extern void *func_02025d14(void *object);
 extern void func_02026588(void *object, s32 value);
@@ -58,7 +58,7 @@ static s32 callback_pair_matches(const u8 *actor, const void *first,
  * matching +0x180/+0x294, and either target distance above twice +0x25c or a
  * nonzero target vtable +0xa8 predicate; otherwise the frame ends. Acceptance
  * clears that bit and +0x180 and invokes Type7Actor_ResetMotionAndCooldown. With +0xd0 bit 0x4000,
- * update signed halfword +0x246 through func_0204b7bc, one-shot +0x268 bit
+ * update signed halfword +0x246 through Type7Actor_PlayStateSound, one-shot +0x268 bit
  * 0x100000, or record +0x29c halfword +0x40. Invoke actor vtable +0x18, mask
  * +0x268 with 0xaf7efe, decrement +0x254, enter state one, clear +0xda and
  * +0x3c/+0x40, and clear +0x14 bit 0x100.
@@ -114,7 +114,7 @@ void Type7Actor_UpdateFrame(void *self)
     }
     if ((*(u32 *)(actor + 0xd0) & 0x4000) != 0) {
         if (*(s16 *)(actor + 0x246) < 20)
-            func_0204b7bc(actor, 1);
+            Type7Actor_PlayStateSound(actor, 1);
         if ((*(u32 *)(actor + 0x268) & 0x100000) != 0) {
             *(u16 *)(actor + 0x246) = 180;
             *(u32 *)(actor + 0x268) &= ~0x100000u;

@@ -18,7 +18,7 @@ extern void func_02034a60(void *actor, s32 event, s32 value);
 extern void Type7Actor_SelectRandomCallback(void *actor);
 extern void Type7Actor_SelectRandomCallbackPair01(void *actor);
 extern void Type7Actor_DispatchCurrentCallback(void *actor);
-extern void func_0204b7bc(void *actor, s32 mode);
+extern void Type7Actor_PlayStateSound(void *actor, s32 mode);
 #ifdef __cplusplus
 }
 #endif
@@ -54,7 +54,7 @@ static void complete_related_interaction(u8 *actor)
 /*
  * Input is a type-seven actor. Set duration-like halfword +0x2a0 to 180,
  * signed field +0x250 to -60, and adjustment +0x2a2 to zero. Configure shared
- * state with func_0204b7bc mode four, then install the randomized two-choice
+ * state with Type7Actor_PlayStateSound mode four, then install the randomized two-choice
  * callback through Type7Actor_SelectRandomCallbackPair01. Actor timing, mode, random, and callback
  * state may change; there is no return value or direct hardware access.
  */
@@ -64,7 +64,7 @@ void Type7Actor_StartTargetCompletion(void *self)
     *(u16 *)(actor + 0x2a0) = 180;
     *(s16 *)(actor + 0x250) = -60;
     *(u16 *)(actor + 0x2a2) = 0;
-    func_0204b7bc(actor, 4);
+    Type7Actor_PlayStateSound(actor, 4);
     Type7Actor_SelectRandomCallbackPair01(actor);
 }
 

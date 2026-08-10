@@ -10,8 +10,8 @@
 .extern gGameWork
 .extern gSoundContext
 .text
-    .global func_0204b5d8
-func_0204b5d8: ; 0x0204b5d8
+    .global Type7Actor_EnterSpecialPresentationState
+Type7Actor_EnterSpecialPresentationState: ; 0x0204b5d8
     stmdb sp!, {r4, lr}
     mov r4, r0
     bl Type7Actor_GetStateCode
@@ -55,10 +55,10 @@ func_0204b5d8: ; 0x0204b5d8
     add r0, r4, #0x98
     bl func_0200b2c0
     ldmia sp!, {r4, pc}
-.size func_0204b5d8, . - func_0204b5d8
+.size Type7Actor_EnterSpecialPresentationState, . - Type7Actor_EnterSpecialPresentationState
 
-    .global func_0204b680
-func_0204b680: ; 0x0204b680
+    .global Type7Actor_LeaveSpecialPresentationState
+Type7Actor_LeaveSpecialPresentationState: ; 0x0204b680
     stmdb sp!, {r4, lr}
     mov r4, r0
     ldr r1, [r4, #0x268]
@@ -79,10 +79,10 @@ func_0204b680: ; 0x0204b680
     strh r2, [r3, #0x24]
     strh r1, [r0, #0xa6]
     ldmia sp!, {r4, pc}
-.size func_0204b680, . - func_0204b680
+.size Type7Actor_LeaveSpecialPresentationState, . - Type7Actor_LeaveSpecialPresentationState
 
-    .global func_0204b6cc
-func_0204b6cc: ; 0x0204b6cc
+    .global Type7Actor_EnterFlag40000State
+Type7Actor_EnterFlag40000State: ; 0x0204b6cc
     ldr r2, [r0, #0x268]
     ldr ip, .L_0204b6e8
     orr r2, r2, #0x40000
@@ -91,10 +91,10 @@ func_0204b6cc: ; 0x0204b6cc
     add r0, r0, #0x2a8
     bx ip
 .L_0204b6e8: .word AttachmentController_SetEnabled
-.size func_0204b6cc, . - func_0204b6cc
+.size Type7Actor_EnterFlag40000State, . - Type7Actor_EnterFlag40000State
 
-    .global func_0204b6ec
-func_0204b6ec: ; 0x0204b6ec
+    .global Type7Actor_StartAnimation19Interaction
+Type7Actor_StartAnimation19Interaction: ; 0x0204b6ec
     stmdb sp!, {r4, r5, r6, lr}
     mov r4, r0
     ldr r3, [r4, #0x294]
@@ -148,10 +148,10 @@ func_0204b6ec: ; 0x0204b6ec
     ldr r1, [r1, #0x8]
     blx r1
     ldmia sp!, {r4, r5, r6, pc}
-.size func_0204b6ec, . - func_0204b6ec
+.size Type7Actor_StartAnimation19Interaction, . - Type7Actor_StartAnimation19Interaction
 
-    .global func_0204b7bc
-func_0204b7bc: ; 0x0204b7bc
+    .global Type7Actor_PlayStateSound
+Type7Actor_PlayStateSound: ; 0x0204b7bc
     stmdb sp!, {r4, lr}
     sub sp, sp, #0x8
     ldr r2, .L_0204b810
@@ -175,10 +175,10 @@ func_0204b7bc: ; 0x0204b7bc
     ldmia sp!, {r4, pc}
 .L_0204b810: .word gGameWork
 .L_0204b814: .word gSoundContext
-.size func_0204b7bc, . - func_0204b7bc
+.size Type7Actor_PlayStateSound, . - Type7Actor_PlayStateSound
 
-    .global func_0204b818
-func_0204b818: ; 0x0204b818
+    .global Type7Actor_NoopTrackedResourceInteraction
+Type7Actor_NoopTrackedResourceInteraction: ; 0x0204b818
     bx lr
-.size func_0204b818, . - func_0204b818
+.size Type7Actor_NoopTrackedResourceInteraction, . - Type7Actor_NoopTrackedResourceInteraction
 

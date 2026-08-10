@@ -11,7 +11,7 @@
 .extern func_02005afc
 .extern func_02005c3c
 .extern Actor_SetDirectionFromVector
-.extern func_0204b5d8
+.extern Type7Actor_EnterSpecialPresentationState
 .extern func_020593ac
 .extern func_0205974c
 .extern func_02072b68
@@ -350,7 +350,7 @@ func_ov062_02210b38:
     ldr r0, [r0, #0xea8]
     cmp r0, #0x0
     beq .L_0221101c
-    bl func_0204b5d8
+    bl Type7Actor_EnterSpecialPresentationState
 .L_0221101c:
     mov r0, r4
     bl Scene_SetFlags03

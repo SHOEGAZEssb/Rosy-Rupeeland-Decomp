@@ -12,7 +12,7 @@
 .extern func_02007f24
 .extern func_020084b8
 .extern ActorDerivedType1_ResetRuntimeState
-.extern func_0204b680
+.extern Type7Actor_LeaveSpecialPresentationState
 .extern func_020597fc
 .extern func_02073ef8
 .extern func_02074330
@@ -164,7 +164,7 @@ func_ov064_0221089c:
     ldr r0, [r0, #0xea8]
     cmp r0, #0x0
     beq .L_02210aa8
-    bl func_0204b680
+    bl Type7Actor_LeaveSpecialPresentationState
 .L_02210aa8:
     bl func_020022dc
     mov r1, #0x2

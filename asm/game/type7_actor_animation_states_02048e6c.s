@@ -4,7 +4,7 @@
 .extern Actor_GetCachedTerrainHeight
 .extern Type7Actor_ResetInteractionState
 .extern Type7Actor_HasFlag4Target
-.extern func_0204b7bc
+.extern Type7Actor_PlayStateSound
 .extern func_020be328
 .global Type7Actor_UpdateAnimation3ByHeight
 .global Type7Actor_UpdateTargetProximityState
@@ -114,7 +114,7 @@ Type7Actor_UpdateAnimation6Response: ; 0x02048fb4
     cmp r1, #0xa
     bne .L_02048fd4
     mov r1, #0x0
-    bl func_0204b7bc
+    bl Type7Actor_PlayStateSound
 .L_02048fd4:
     mov r0, #0x6
     strh r0, [r4, #0xd6]

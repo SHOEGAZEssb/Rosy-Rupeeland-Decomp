@@ -23,7 +23,7 @@ extern void Type7Actor_DisableTargeting(void *entity);
 extern void Type7Actor_SetFlag40StateEnabled(void *entity, s32 value);
 extern void Type7Actor_SetActorEnabled(void *entity, s32 value);
 extern void Type7Actor_ConfigureAttachmentController(void *entity, s32 value);
-extern void func_0204b6ec(void *entity, u16 value, s32 enabled);
+extern void Type7Actor_StartAnimation19Interaction(void *entity, u16 value, s32 enabled);
 extern void func_0204bf9c(s32 first, void *owner, s32 second, s32 third,
                           s32 fourth);
 #ifdef __cplusplus
@@ -77,7 +77,7 @@ s32 func_02018c3c(GamePhaseActorScriptVm *self)
         break;
     case 4:
         if (entity)
-            func_0204b6ec(entity, (u16)first, second != 0);
+            Type7Actor_StartAnimation19Interaction(entity, (u16)first, second != 0);
         break;
     case 5:
         if (entity) {

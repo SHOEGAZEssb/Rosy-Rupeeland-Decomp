@@ -10,7 +10,7 @@
     .extern func_0200c680
     .extern func_02092c8c
     .extern func_ov033_021fd598
-    .extern func_0204b6cc
+    .extern Type7Actor_EnterFlag40000State
     .extern func_ov033_021fd04c
     .extern func_020740a4
     .extern data_ov033_021fdd60
@@ -142,7 +142,7 @@ L_021fd878:
     moveq r1, #0x0
     cmp r1, #0x0
     bne L_021fd910
-    bl func_0204b6cc
+    bl Type7Actor_EnterFlag40000State
     ldr r0, [r4, #0x8]
     mov r1, #0x0
     ldr r2, [r0, #0x0]

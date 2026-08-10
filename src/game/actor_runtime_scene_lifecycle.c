@@ -11,7 +11,7 @@ extern void *data_021052fc;
 extern void *func_02007f0c(void *context, s32 index);
 extern void func_02030b58(void *context, s32 value);
 extern void ActorDerivedType1_ClearStateVectorTimers(void *object);
-extern void func_0204b5d8(void *object);
+extern void Type7Actor_EnterSpecialPresentationState(void *object);
 extern void func_02072b68(u8 value);
 extern void func_0200ba00(ActorRuntimeScene *self);
 #ifdef __cplusplus
@@ -60,7 +60,7 @@ ActorRuntimeScene *func_0200b2d0(ActorRuntimeScene *self, void *object)
 
     context = *(void **)(root + 0x2ea8);
     if (context != 0)
-        func_0204b5d8(context);
+        Type7Actor_EnterSpecialPresentationState(context);
     func_0200ba00(self);
     context = func_02007f0c(data_021052fc, 1);
     func_02030b58(context, 0);

@@ -10,7 +10,7 @@
 .extern ActorDerivedType1_IsTargetStateEligible
 .extern ActorVector_DivideByScalar
 .extern Type7Actor_ResetInteractionState
-.extern func_0204b7bc
+.extern Type7Actor_PlayStateSound
 .extern func_0204cff4
 .extern func_020a2894
 .extern func_020adae4
@@ -232,7 +232,7 @@ Type7Actor_ApplyType2InteractionResponse: ; 0x02046e60
     bge .L_020471b0
     mov r0, r7
     mov r1, #0x1
-    bl func_0204b7bc
+    bl Type7Actor_PlayStateSound
 .L_020471b0:
     add r0, r7, #0x200
     mov r1, #0x5a

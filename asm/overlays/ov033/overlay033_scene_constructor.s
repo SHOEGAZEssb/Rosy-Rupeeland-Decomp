@@ -5,7 +5,7 @@
     .extern func_02004fe0
     .extern func_02091b6c
     .extern func_02092798
-    .extern func_0204b6cc
+    .extern Type7Actor_EnterFlag40000State
     .extern func_020742cc
     .extern Heap_Alloc
     .extern func_ov033_021fce1c
@@ -70,7 +70,7 @@ func_ov033_021fd070:
     movne r1, #0x1
     cmp r1, #0x0
     bne L_021fd148
-    bl func_0204b6cc
+    bl Type7Actor_EnterFlag40000State
     ldr r0, [r4, #0x8]
     mov r1, #0x0
     ldr r2, [r0, #0x0]

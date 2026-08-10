@@ -12,7 +12,7 @@
 .extern ActorCollection_GetSpriteOwner
 .extern Actor_GetCollection
 .extern func_02034a60
-.extern func_0204b6cc
+.extern Type7Actor_EnterFlag40000State
 .extern func_02073fc4
 .extern func_ov062_02210674
 .extern func_ov088_0221a98c
@@ -104,7 +104,7 @@ func_ov088_0221af2c:
     mov r0, r4
     orr r2, r2, #0x40
     strh r2, [r1, #0x1a]
-    bl func_0204b6cc
+    bl Type7Actor_EnterFlag40000State
     add sp, sp, #0x1c
     ldmia sp!, {r4, r5, r6, r7, pc}
 .L_0221b07c: .word data_021052fc

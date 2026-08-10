@@ -7,7 +7,7 @@
 .extern Type7Actor_SelectRandomCallback
 .extern Type7Actor_SelectRandomCallbackPair01
 .extern Type7Actor_DispatchCurrentCallback
-.extern func_0204b7bc
+.extern Type7Actor_PlayStateSound
 .text
     .global Type7Actor_StartTargetCompletion
 .type Type7Actor_StartTargetCompletion, @function
@@ -22,7 +22,7 @@ Type7Actor_StartTargetCompletion: ; 0x02049be8
     mov r3, #0x0
     mov r1, #0x4
     strh r3, [r2, #0xa2]
-    bl func_0204b7bc
+    bl Type7Actor_PlayStateSound
     mov r0, r4
     bl Type7Actor_SelectRandomCallbackPair01
     ldmia sp!, {r4, pc}

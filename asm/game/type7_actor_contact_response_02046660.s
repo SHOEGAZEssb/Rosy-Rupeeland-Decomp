@@ -21,7 +21,7 @@
 .extern Type7Actor_ApplyType2InteractionResponse
 .extern Type7Actor_SetMotionTargetWithTimer
 .extern Type7Actor_SetCallbackPair
-.extern func_0204b7bc
+.extern Type7Actor_PlayStateSound
 .extern func_0204c74c
 .extern func_0204cfa4
 .extern func_020593dc
@@ -351,7 +351,7 @@ Type7Actor_HandleContact: ; 0x02046660
     beq .L_02046b58
     mov r0, r6
     mov r1, #0x2
-    bl func_0204b7bc
+    bl Type7Actor_PlayStateSound
     b .L_02046b58
 .L_02046b14:
     cmp r0, #0x7
@@ -497,7 +497,7 @@ Type7Actor_HandleContact: ; 0x02046660
     beq .L_02046d48
     mov r0, r6
     mov r1, #0x2
-    bl func_0204b7bc
+    bl Type7Actor_PlayStateSound
 .L_02046d48:
     mov r0, r6
     mov r1, r5

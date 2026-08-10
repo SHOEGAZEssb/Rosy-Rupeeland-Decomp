@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/tracked_resource_actor_interaction.c.
 .extern ActorDerivedType1_DispatchInteractionAmount
-.extern func_0204b818
+.extern Type7Actor_NoopTrackedResourceInteraction
 .text
     .global func_02050560
 func_02050560:
@@ -31,7 +31,7 @@ func_02050560:
     ldr r2, [r2, #0x1fc]
     mov r0, r1
     ldrsh r1, [r2, #0xe]
-    bl func_0204b818
+    bl Type7Actor_NoopTrackedResourceInteraction
     ldmia sp!, {r3, pc}
 .size func_02050560, . - func_02050560
 

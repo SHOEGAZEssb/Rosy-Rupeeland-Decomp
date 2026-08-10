@@ -28,7 +28,7 @@
 .extern func_0202d68c
 .extern ActorCollection_GetSpriteOwner
 .extern Actor_ReplaceAttachmentSlotResource
-.extern func_0204b5d8
+.extern Type7Actor_EnterSpecialPresentationState
 .extern func_02058de0
 .extern func_0205974c
 .extern func_0206c978
@@ -625,7 +625,7 @@ func_ov064_0220fd20:
     ldr r0, [r0, #0xea8]
     cmp r0, #0x0
     beq .L_022105e0
-    bl func_0204b5d8
+    bl Type7Actor_EnterSpecialPresentationState
 .L_022105e0:
     mov r0, r4
     bl Scene_SetFlags03

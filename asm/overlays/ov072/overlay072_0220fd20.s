@@ -8,7 +8,7 @@
 .extern data_ov072_02210b38
 .extern func_02005580
 .extern func_02005c3c
-.extern func_0204b5d8
+.extern Type7Actor_EnterSpecialPresentationState
 .extern gHeapContext
 
 .global func_ov072_0220fd20
@@ -129,7 +129,7 @@ func_ov072_0220fd20:
     ldr r0, [r0, #0xea8]
     cmp r0, #0x0
     beq .L_0220fed0
-    bl func_0204b5d8
+    bl Type7Actor_EnterSpecialPresentationState
 .L_0220fed0:
     mov r0, r6
     bl Scene_SetFlags03

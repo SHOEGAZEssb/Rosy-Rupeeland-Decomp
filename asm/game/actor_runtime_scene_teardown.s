@@ -5,7 +5,7 @@
 .extern func_02007f0c
 .extern Actor_SetActive
 .extern GameWork_TestFlag
-.extern func_0204b680
+.extern Type7Actor_LeaveSpecialPresentationState
 .extern ActorDerivedType1_ResetToBaseState
 .extern GameWork_ClearFlag
 .extern Actor_GetCollection
@@ -49,7 +49,7 @@ func_0200b41c:
     ldr r0, [r0, #0xea8]
     cmp r0, #0x0
     beq L_0200b4a0
-    bl func_0204b680
+    bl Type7Actor_LeaveSpecialPresentationState
 L_0200b4a0:
     ldr r0, L_0200b560
     ldr r1, L_0200b564

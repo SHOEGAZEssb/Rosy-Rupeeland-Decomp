@@ -22,7 +22,7 @@ extern s32 func_0204c74c(void *actor, const void *other);
 extern s32 Type7Actor_CheckRandomInteractionAcceptance(void *actor);
 extern s32 Type7Actor_HasSpecialCallbackPair(const void *actor);
 extern void Type7Actor_SetCallbackPair(void *actor, u32 first, u32 second, s32 duration);
-extern void func_0204b7bc(void *actor, s32 mode);
+extern void Type7Actor_PlayStateSound(void *actor, s32 mode);
 extern void *func_0201f864(void *allocation, ...);
 extern void Type7Actor_SetMotionTarget(void *actor, const void *transform);
 #ifdef __cplusplus
@@ -103,7 +103,7 @@ void Type7Actor_HandleObjectInteraction(void *self, void *otherObject)
         Type7Actor_SetCallbackPair(actor, data_020e1798[0], data_020e1798[1], -1);
         *(u16 *)(actor + 0x256) = 60;
         *(u16 *)(actor + 0x25a) = 180;
-        func_0204b7bc(actor, 0);
+        Type7Actor_PlayStateSound(actor, 0);
         {
             void *allocation = Heap_Alloc(0x14, data_020e1d0c, 4,
                                           &gHeapContext);

@@ -32,7 +32,7 @@ extern void func_02072b68(void *presentation, u32 index);
  * func_0200b2c0. Otherwise do nothing. No value is returned. Actor and
  * presentation state change, with no direct hardware effects.
  */
-void func_0204b5d8(void *self)
+void Type7Actor_EnterSpecialPresentationState(void *self)
 {
     u8 *actor = (u8 *)self;
     u8 *presentation;
@@ -57,7 +57,7 @@ void func_0204b5d8(void *self)
  * No value is returned; actor/presentation state changes without direct SDK
  * or hardware effects.
  */
-void func_0204b680(void *self)
+void Type7Actor_LeaveSpecialPresentationState(void *self)
 {
     u8 *actor = (u8 *)self;
     if ((*(u32 *)(actor + 0x268) & 0x200000) != 0) {
@@ -73,7 +73,7 @@ void func_0204b680(void *self)
  * Input is a type-seven actor. Set +0x268 bit 0x40000 and disable embedded
  * helper +0x2a8. No value is returned and there are no direct hardware effects.
  */
-void func_0204b6cc(void *self)
+void Type7Actor_EnterFlag40000State(void *self)
 {
     u8 *actor = (u8 *)self;
     *(u32 *)(actor + 0x268) |= 0x40000;
@@ -89,7 +89,7 @@ void func_0204b6cc(void *self)
  * returned. Actor-owned objects and animation state change; there are no direct
  * hardware effects.
  */
-void func_0204b6ec(void *self, s32 value, s32 selector)
+void Type7Actor_StartAnimation19Interaction(void *self, s32 value, s32 selector)
 {
     u8 *actor = (u8 *)self;
     void *helper;
@@ -120,7 +120,7 @@ void func_0204b6ec(void *self, s32 value, s32 selector)
  * zero auxiliary value and volume 0x100. Sound context is read and audio state
  * may change; no value is returned and no hardware is accessed directly.
  */
-void func_0204b7bc(u32 argument, u32 selector)
+void Type7Actor_PlayStateSound(u32 argument, u32 selector)
 {
     u32 sound = (u16)(selector | *(s16 *)(gGameWork + 0x1d0));
     func_020593dc(gSoundContext, (s32)sound >> 7, sound & 0x7f,
@@ -131,6 +131,6 @@ void func_0204b7bc(u32 argument, u32 selector)
  * Empty recovered callback. It accepts no inputs, changes no state, returns no
  * value, and has no SDK or hardware effects.
  */
-void func_0204b818(void)
+void Type7Actor_NoopTrackedResourceInteraction(void)
 {
 }

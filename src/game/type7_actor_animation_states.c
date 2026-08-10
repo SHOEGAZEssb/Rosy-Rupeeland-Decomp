@@ -12,7 +12,7 @@ extern s32 Type7Actor_HasFlag4Target(void *actor);
 extern void Type7Actor_ResetInteractionState(void *actor);
 extern s32 Actor_GetCachedTerrainHeight(void *actor);
 extern s32 func_020be328(s32 value);
-extern void func_0204b7bc(void *actor, s32 mode);
+extern void Type7Actor_PlayStateSound(void *actor, s32 mode);
 #ifdef __cplusplus
 }
 #endif
@@ -91,14 +91,14 @@ s32 Type7Actor_SelectAnimation6Or7(void *self)
 
 /*
  * Input is a type-seven actor. When signed counter +0x248 equals ten, select
- * response mode zero through func_0204b7bc. Select animation six and return
+ * response mode zero through Type7Actor_PlayStateSound. Select animation six and return
  * zero. Actor response and animation may change; no hardware effect occurs.
  */
 s32 Type7Actor_UpdateAnimation6Response(void *self)
 {
     u8 *actor = (u8 *)self;
     if (*(s16 *)(actor + 0x248) == 10)
-        func_0204b7bc(actor, 0);
+        Type7Actor_PlayStateSound(actor, 0);
     *(u16 *)(actor + 0xd6) = 6;
     return 0;
 }

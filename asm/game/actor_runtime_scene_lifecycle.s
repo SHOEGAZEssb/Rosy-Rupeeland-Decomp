@@ -7,7 +7,7 @@
 .extern func_02072b68
 .extern ActorDerivedType1_ClearStateVectorTimers
 .extern func_0200b2c0
-.extern func_0204b5d8
+.extern Type7Actor_EnterSpecialPresentationState
 .extern func_0200ba00
 .extern func_02007f0c
 .extern func_02030b58
@@ -80,7 +80,7 @@ L_0200b364:
     ldr r0, [r0, #0xea8]
     cmp r0, #0x0
     beq L_0200b3d0
-    bl func_0204b5d8
+    bl Type7Actor_EnterSpecialPresentationState
 L_0200b3d0:
     mov r0, r5
     bl func_0200ba00

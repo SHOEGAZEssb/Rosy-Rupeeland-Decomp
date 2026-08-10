@@ -39,7 +39,7 @@ extern void func_02005058(void *value);
 extern void Type7Actor_SetMotionTargetWithTimer(void *actor, const void *transform, s32 value);
 extern s32 ActorDerivedType1_IsSpecialRecordActive(void *actor);
 extern void ActorDerivedType1_StartRecord(void *actor, s32 value);
-extern void func_0204b7bc(void *actor, s32 mode);
+extern void Type7Actor_PlayStateSound(void *actor, s32 mode);
 extern void func_020593dc(void *soundContext, s32 group, s32 sound,
                           void *actor, s32 extra, s32 volume);
 extern s32 func_02032a94(void *actor, void *other, s32 context);
@@ -174,7 +174,7 @@ s32 Type7Actor_HandleContact(void *self, void *otherObject, s32 context)
                         Type7Actor_SetCallbackPair(actor, data_020e16b0[0],
                                       data_020e16b0[1], 30);
                         if (*(s16 *)(actor + 0xd6) != 18)
-                            func_0204b7bc(actor, 2);
+                            Type7Actor_PlayStateSound(actor, 2);
                     }
                 }
             } else {
@@ -226,7 +226,7 @@ s32 Type7Actor_HandleContact(void *self, void *otherObject, s32 context)
                && *(u16 *)(other + 0x4e) != 0x20) {
         Type7Actor_SetCallbackPair(actor, data_020e1708[0], data_020e1708[1], 30);
         if (*(s16 *)(actor + 0xd6) != 18)
-            func_0204b7bc(actor, 2);
+            Type7Actor_PlayStateSound(actor, 2);
     }
     return func_02032a94(actor, other, context);
 }

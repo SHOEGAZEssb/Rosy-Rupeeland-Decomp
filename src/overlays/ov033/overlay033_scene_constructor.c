@@ -17,7 +17,7 @@ extern "C" {
 extern void func_02004fe0(void *object);
 extern void func_02091b6c(void *object);
 extern void func_02092798(void *object);
-extern void func_0204b6cc(void *activeObject);
+extern void Type7Actor_EnterFlag40000State(void *activeObject);
 extern void *func_020742cc(void *fontOrContext);
 extern void *Heap_Alloc(u32 size, const void *tag, s32 alignment,
                        void *heapContext);
@@ -77,7 +77,7 @@ extern "C" void *func_ov033_021fd070(void *scene)
             secondary = 0;
             FIELD(void *, scene, 8) = 0;
         } else {
-            func_0204b6cc(secondary);
+            Type7Actor_EnterFlag40000State(secondary);
             typedef void (*SecondaryMethod)(void *, s32);
             SecondaryMethod method =
                 FIELD(SecondaryMethod, FIELD(void *, secondary, 0), 0x54);

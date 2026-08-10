@@ -14,7 +14,7 @@
 .extern Type7Actor_SetMotionTarget
 .extern Type7Actor_SetCallbackPair
 .extern Type7Actor_CheckRandomInteractionAcceptance
-.extern func_0204b7bc
+.extern Type7Actor_PlayStateSound
 .extern func_0204c74c
 .extern gHeapContext
 .global Type7Actor_HandleObjectInteraction
@@ -147,7 +147,7 @@ Type7Actor_HandleObjectInteraction: ; 0x02048378
     mov r3, #0xb4
     mov r1, #0x0
     strh r3, [r2, #0x5a]
-    bl func_0204b7bc
+    bl Type7Actor_PlayStateSound
     ldr r1, .L_02048698
     ldr r3, .L_0204869c
     mov r0, #0x14

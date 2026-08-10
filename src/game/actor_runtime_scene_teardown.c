@@ -16,7 +16,7 @@ extern void Actor_SetActive(void *object, s32 value);
 extern void *Actor_GetCollection(void *object);
 extern void ActorCollection_UnregisterAndDestroyActor(void *result, void *object);
 extern void ActorDerivedType1_ResetToBaseState(void *object);
-extern void func_0204b680(void *object);
+extern void Type7Actor_LeaveSpecialPresentationState(void *object);
 #ifdef __cplusplus
 }
 #endif
@@ -49,7 +49,7 @@ ActorRuntimeScene *func_0200b41c(ActorRuntimeScene *self)
 
     context = *(void **)(root + 0x2ea8);
     if (context != 0)
-        func_0204b680(context);
+        Type7Actor_LeaveSpecialPresentationState(context);
     if (!GameWork_TestFlag(gGameWork, 0x3f3) &&
         !GameWork_TestFlag(gGameWork, 0x403)) {
         child = *(u8 **)(active + 0x54);

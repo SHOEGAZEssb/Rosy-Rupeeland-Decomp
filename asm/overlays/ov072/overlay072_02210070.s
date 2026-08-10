@@ -9,7 +9,7 @@
 .extern func_020022dc
 .extern func_02007f24
 .extern Actor_SetDirectionFromVector
-.extern func_0204b680
+.extern Type7Actor_LeaveSpecialPresentationState
 .extern func_02073ef8
 .extern func_ov072_0221004c
 .extern gGameWork
@@ -67,7 +67,7 @@ func_ov072_02210070:
     ldr r0, [r0, #0xea8]
     cmp r0, #0x0
     beq .L_02210134
-    bl func_0204b680
+    bl Type7Actor_LeaveSpecialPresentationState
 .L_02210134:
     ldr r0, [r4, #0x7c]
     cmp r0, #0x1

@@ -22,7 +22,7 @@ extern void *func_0201e0ec(void *world, s32 first, s32 second);
 extern void func_020a2894(void *effect, s32 mode, s32 x, s32 y, s32 extra);
 extern s32 ActorDerivedType1_IsTargetStateEligible(void *actor);
 extern void Type7Actor_ResetInteractionState(void *actor);
-extern void func_0204b7bc(void *actor, s32 mode);
+extern void Type7Actor_PlayStateSound(void *actor, s32 mode);
 #ifdef __cplusplus
 }
 #endif
@@ -134,7 +134,7 @@ void Type7Actor_ApplyType2InteractionResponse(void *self, void *otherObject, s32
     if (ActorDerivedType1_IsTargetStateEligible(other) != 0 || other[0x24c] == 3) {
         Type7Actor_ResetInteractionState(actor);
         if (*(s16 *)(actor + 0x246) < 60)
-            func_0204b7bc(actor, 1);
+            Type7Actor_PlayStateSound(actor, 1);
         *(u16 *)(actor + 0x246) = 90;
     }
     func_02005058(effectTransform);

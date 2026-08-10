@@ -17,7 +17,7 @@
 .extern Type7Actor_HasSpecialCallbackPair
 .extern Type7Actor_SetCallbackPair
 .extern Type7Actor_CheckRandomInteractionAcceptance
-.extern func_0204b7bc
+.extern Type7Actor_PlayStateSound
 .extern func_0204c74c
 .extern func_020ada8c
 .extern genrand_int32
@@ -152,7 +152,7 @@ Type7Actor_HandleTouchInteraction: ; 0x02047248
     sub r3, r1, #0xc8
     mov r1, #0x4
     strh r3, [r2, #0x64]
-    bl func_0204b7bc
+    bl Type7Actor_PlayStateSound
     b .L_0204745c
 .L_0204743c:
     ldr r1, .L_02047674
@@ -257,7 +257,7 @@ Type7Actor_HandleTouchInteraction: ; 0x02047248
     mov r0, r5
     mov r1, #0x4
     str r2, [r5, #0x210]
-    bl func_0204b7bc
+    bl Type7Actor_PlayStateSound
 .L_020475c8:
     ldr r0, [r5, #0x24]
     ldr r1, [r5, #0x20]

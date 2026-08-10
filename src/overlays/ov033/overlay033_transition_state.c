@@ -25,7 +25,7 @@ extern void *Heap_Alloc(u32 size, const void *tag, s32 alignment,
 extern void *func_0200c680(void *object);
 extern void func_02092c8c(s32 first, s32 second);
 extern void func_ov033_021fd598(void *scene);
-extern void func_0204b6cc(void *object);
+extern void Type7Actor_EnterFlag40000State(void *object);
 extern void func_ov033_021fd04c(void *scene, s32 callbackWord,
                                s32 adjustmentWord);
 extern void func_020740a4(void *spriteContext);
@@ -60,7 +60,7 @@ static void refresh_secondary(void *scene, void *global)
         FIELD(void *, scene, 8) = 0;
         return;
     }
-    func_0204b6cc(secondary);
+    Type7Actor_EnterFlag40000State(secondary);
     FIELD(Overlay033ActorMethod, FIELD(void *, secondary, 0), 0x54)(secondary, 0);
 }
 

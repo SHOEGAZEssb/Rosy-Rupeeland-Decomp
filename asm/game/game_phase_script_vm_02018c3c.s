@@ -15,7 +15,7 @@
 .extern Type7Actor_SetFlag40StateEnabled
 .extern Type7Actor_SetActorEnabled
 .extern Type7Actor_ConfigureAttachmentController
-.extern func_0204b6ec
+.extern Type7Actor_StartAnimation19Interaction
 .extern func_0204bf9c
 .global func_02018c3c
 func_02018c3c:
@@ -91,7 +91,7 @@ L_02018d28:
     moveq r2, #0x0
     mov r0, r8
     mov r1, r1, lsr #0x10
-    bl func_0204b6ec
+    bl Type7Actor_StartAnimation19Interaction
     b L_02018ef4
 L_02018d50:
     cmp r8, #0x0

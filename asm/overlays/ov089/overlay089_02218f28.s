@@ -9,7 +9,7 @@
 .extern func_02005058
 .extern Type7Actor_GetStateCode
 .extern Type7Actor_SetActorEnabled
-.extern func_0204b6cc
+.extern Type7Actor_EnterFlag40000State
 .extern func_ov062_0220fe78
 .extern func_ov062_02210674
 .extern func_ov089_022179dc
@@ -109,7 +109,7 @@ func_ov089_02218f28:
     ldr r0, [r1, #0x0]
     add r0, r0, #0x2000
     ldr r0, [r0, #0xea8]
-    bl func_0204b6cc
+    bl Type7Actor_EnterFlag40000State
 .L_02219084:
     ldr r1, .L_02219204
     ldr r3, .L_02219208
@@ -192,7 +192,7 @@ func_ov089_02218f28:
     ldr r0, [r0, #0x0]
     add r0, r0, #0x2000
     ldr r0, [r0, #0xea8]
-    bl func_0204b6cc
+    bl Type7Actor_EnterFlag40000State
     ldr r0, .L_022191fc
     mov r1, #0x0
     ldr r0, [r0, #0x0]
