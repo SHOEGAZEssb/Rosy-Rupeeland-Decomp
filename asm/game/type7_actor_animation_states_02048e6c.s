@@ -3,7 +3,7 @@
 .extern func_0200b2c0
 .extern Actor_GetCachedTerrainHeight
 .extern Type7Actor_ResetInteractionState
-.extern func_0204a5b8
+.extern Type7Actor_HasFlag4Target
 .extern func_0204b7bc
 .extern func_020be328
 .global Type7Actor_UpdateAnimation3ByHeight
@@ -53,7 +53,7 @@ Type7Actor_UpdateTargetProximityState: ; 0x02048e98
     tst r0, #0x20
     beq .L_02048f20
     mov r0, r4
-    bl func_0204a5b8
+    bl Type7Actor_HasFlag4Target
     cmp r0, #0x0
     beq .L_02048f20
     ldr r1, [r4, #0x268]

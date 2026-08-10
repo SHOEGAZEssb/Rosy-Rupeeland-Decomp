@@ -28,7 +28,7 @@ extern void ActorSpawnDescriptor_Init(
     s32, s32, s32, s32, s32, u16, u8, u8, u8, u8);
 extern void Type7Actor_SetTarget(void *actor, void *object);
 extern void Type7Actor_InitializeStationaryMotionState(void *actor);
-extern s32 func_0204a564(void *actor);
+extern s32 Type7Actor_MatchesGlobalRecordIndex(void *actor);
 extern u8 *func_0204c51c(s32 index);
 extern u8 *func_0204c55c(s32 index);
 extern s32 func_020be8c0(s32 left, s32 right);
@@ -146,7 +146,7 @@ s32 func_0204bf9c(s32 recordIndex, s32 phase, s32 x, s32 y, s32 field2b8)
     *(u32 *)(actor + 0x104) = 0;
     *(u32 *)(data_020e16b0 + 0x2cc) = record[0x55];
     if (*(s8 *)(actor + 0x48) == 1)
-        func_0204a564(actor);
+        Type7Actor_MatchesGlobalRecordIndex(actor);
 
     *(s32 *)(actor + 0x238) =
         func_020befec(*(u16 *)(record + 0x28) * 0x4b0, 100);

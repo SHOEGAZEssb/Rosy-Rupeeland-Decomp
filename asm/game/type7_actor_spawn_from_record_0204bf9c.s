@@ -8,7 +8,7 @@
 .extern Actor_RefreshTerrainHeight
 .extern Actor_GetCachedTerrainHeight
 .extern Type7Actor_SetTarget
-.extern func_0204a564
+.extern Type7Actor_MatchesGlobalRecordIndex
 .extern func_020befec
 .extern func_020beb18
 .extern func_020be8c0
@@ -180,7 +180,7 @@ func_0204bf9c: ; 0x0204bf9c
     cmp r0, #0x1
     bne .L_0204c200
     mov r0, r5
-    bl func_0204a564
+    bl Type7Actor_MatchesGlobalRecordIndex
 .L_0204c200:
     ldrh r2, [r4, #0x28]
     mov r0, #0x4b0

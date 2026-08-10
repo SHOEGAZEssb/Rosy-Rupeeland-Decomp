@@ -2,9 +2,9 @@
 .extern data_021052fc
 .extern func_0200eb0c
 .text
-    .global func_0204a564
-.type func_0204a564, @function
-func_0204a564: ; 0x0204a564
+    .global Type7Actor_MatchesGlobalRecordIndex
+.type Type7Actor_MatchesGlobalRecordIndex, @function
+Type7Actor_MatchesGlobalRecordIndex: ; 0x0204a564
     stmdb sp!, {r4, lr}
     mov r4, r0
     add r0, r4, #0x200
@@ -26,11 +26,11 @@ func_0204a564: ; 0x0204a564
     movne r0, #0x0
     ldmia sp!, {r4, pc}
 .L_0204a5b4: .word data_021052fc
-.size func_0204a564, . - func_0204a564
+.size Type7Actor_MatchesGlobalRecordIndex, . - Type7Actor_MatchesGlobalRecordIndex
 
-    .global func_0204a5b8
-.type func_0204a5b8, @function
-func_0204a5b8: ; 0x0204a5b8
+    .global Type7Actor_HasFlag4Target
+.type Type7Actor_HasFlag4Target, @function
+Type7Actor_HasFlag4Target: ; 0x0204a5b8
     ldr r1, [r0, #0x280]
     cmp r1, #0x0
     moveq r0, #0x0
@@ -40,5 +40,5 @@ func_0204a5b8: ; 0x0204a5b8
     movne r0, #0x1
     moveq r0, #0x0
     bx lr
-.size func_0204a5b8, . - func_0204a5b8
+.size Type7Actor_HasFlag4Target, . - Type7Actor_HasFlag4Target
 

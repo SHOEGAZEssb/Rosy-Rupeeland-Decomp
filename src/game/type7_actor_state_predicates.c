@@ -21,7 +21,7 @@ extern void *func_0200eb0c(void *state);
  * word with actor +0x27e, returning whether they match. Global state is read;
  * actor state is unchanged and there are no direct SDK or hardware effects.
  */
-s32 func_0204a564(void *self)
+s32 Type7Actor_MatchesGlobalRecordIndex(void *self)
 {
     u8 *actor = (u8 *)self;
     s16 expected = *(s16 *)(actor + 0x27e);
@@ -37,7 +37,7 @@ s32 func_0204a564(void *self)
  * is non-null and actor +0x10 flag four is set; otherwise return false. Actor
  * and target state are only observed, with no SDK or hardware effects.
  */
-s32 func_0204a5b8(void *self)
+s32 Type7Actor_HasFlag4Target(void *self)
 {
     u8 *actor = (u8 *)self;
     return *(void **)(actor + 0x280) != 0
