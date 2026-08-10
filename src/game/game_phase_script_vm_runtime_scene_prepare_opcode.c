@@ -6,7 +6,7 @@
 extern "C" {
 #endif
 extern void *data_021052fc;
-extern void *func_0200eb0c(void *state);
+extern void *GamePhaseState_GetConfiguration(void *state);
 extern void func_02026174(void *object, void *area);
 extern void GamePhaseRuntime_UpdateDualScreenUiPresentation(void *runtime);
 extern void GamePhaseRuntime_RefreshAreaAuxiliaryObject(void *runtime, void *area, s32 enabled);
@@ -32,12 +32,12 @@ s32 func_0201a090(GamePhaseActorScriptVm *self)
 {
     u8 *runtime = (u8 *)data_021052fc;
     void *object = *(void **)(runtime + 0x30e8);
-    void *area = func_0200eb0c(runtime + 0x24);
+    void *area = GamePhaseState_GetConfiguration(runtime + 0x24);
     (void)self;
     func_02026174(object, area);
     configureObject(object);
     GamePhaseRuntime_UpdateDualScreenUiPresentation(runtime);
-    area = func_0200eb0c(runtime + 0x24);
+    area = GamePhaseState_GetConfiguration(runtime + 0x24);
     GamePhaseRuntime_RefreshAreaAuxiliaryObject(runtime, area, 1);
     func_020122a0(*(void **)(runtime + 0x2fb8), 1);
     return 0;

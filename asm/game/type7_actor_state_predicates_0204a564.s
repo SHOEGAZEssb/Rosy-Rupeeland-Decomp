@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/type7_actor_state_predicates.c.
 .extern data_021052fc
-.extern func_0200eb0c
+.extern GamePhaseState_GetConfiguration
 .text
     .global Type7Actor_MatchesGlobalRecordIndex
 .type Type7Actor_MatchesGlobalRecordIndex, @function
@@ -16,7 +16,7 @@ Type7Actor_MatchesGlobalRecordIndex: ; 0x0204a564
     ldr r0, .L_0204a5b4
     ldr r0, [r0, #0x0]
     add r0, r0, #0x24
-    bl func_0200eb0c
+    bl GamePhaseState_GetConfiguration
     add r1, r4, #0x200
     ldr r0, [r0, #0x0]
     ldrsh r1, [r1, #0x7e]

@@ -6,12 +6,12 @@
 /* Large runtime state embedded at GamePhaseRuntime offset 0x24. */
 typedef struct GamePhaseState {
     void *configuration;
-    u8 storage_0004[0x2ea0];
-    u8 helper_2ea4[0x0c];
-    void *owned_2eb0;
+    u8 actorCollectionStorage[0x2ea0];
+    u8 overlaySlotStorage[0x0c];
+    void *phaseObject;
     u8 helper_2eb4[0xa4];
-    u8 helper_2f58[0x28];
-    u32 flags_2f7c;
+    u8 renderHelperStorage[0x28];
+    u32 renderFlags;
     u8 helper_2f80[0x10];
     u16 field_2f90;
     s16 field_2f92;
@@ -21,24 +21,29 @@ typedef struct GamePhaseState {
 extern "C" {
 #endif
 
-GamePhaseState *func_0200e4dc(GamePhaseState *self);
-GamePhaseState *func_0200e574(GamePhaseState *self);
-void func_0200e5bc(GamePhaseState *self);
-void func_0200e61c(GamePhaseState *self);
-void func_0200e650(GamePhaseState *self, const void *configuration);
-void func_0200e714(GamePhaseState *self, const void *configuration);
-void func_0200e780(GamePhaseState *self, const void *configuration);
+GamePhaseState *GamePhaseState_Init(GamePhaseState *self);
+GamePhaseState *GamePhaseState_Destroy(GamePhaseState *self);
+void GamePhaseState_UnloadPhase(GamePhaseState *self);
+void GamePhaseState_ResetRuntime(GamePhaseState *self);
+void GamePhaseState_ConfigureForPhase(GamePhaseState *self,
+                                      const void *configuration);
+void GamePhaseState_ApplyAreaChange(GamePhaseState *self,
+                                    const void *configuration);
+void GamePhaseState_ApplyConfiguration(GamePhaseState *self,
+                                       const void *configuration);
 void GamePhaseState_UpdateRenderHelpers(GamePhaseState *self);
 void GamePhaseState_ForwardVCount(GamePhaseState *self, u16 vcount);
-void func_0200ea48(GamePhaseState *self);
-void *func_0200eb0c(GamePhaseState *self);
-void *func_0200eb14(GamePhaseState *self, s32 x, s32 y);
-void func_0200eb58(GamePhaseState *self, s32 use3dMode);
-void func_0200ec6c(GamePhaseState *self, s32 enabled);
-void func_0200ecbc(GamePhaseState *self, s32 value);
-s32 func_0200ecf0(GamePhaseState *self);
-s32 func_0200efe0(GamePhaseState *self);
-void func_0200f0b4(GamePhaseState *self, const void *configuration);
+void GamePhaseState_ResetActivePhase(GamePhaseState *self);
+void *GamePhaseState_GetConfiguration(GamePhaseState *self);
+s32 GamePhaseState_QueryTerrainHeight(GamePhaseState *self, s32 x, s32 y);
+void GamePhaseState_ConfigureMainDisplay(GamePhaseState *self, s32 use3dMode);
+void GamePhaseState_SetEnabled(GamePhaseState *self, s32 enabled);
+void GamePhaseState_ApplyPlacementState(GamePhaseState *self,
+                                        const void *placementState);
+s32 GamePhaseState_TryStartBoundaryTransition(GamePhaseState *self);
+s32 GamePhaseState_GetBoundaryDirection(GamePhaseState *self);
+void GamePhaseState_CreatePhaseObject(GamePhaseState *self,
+                                      const void *configuration);
 
 #ifdef __cplusplus
 }

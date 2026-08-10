@@ -62,7 +62,7 @@ extern int func_02058eb8(...);
 extern int func_02092418(...);
 extern int func_020755bc(...);
 extern int func_02008570(...);
-extern int func_0200ec6c(...);
+extern int GamePhaseState_SetEnabled(...);
 extern int func_020122a0(...);
 extern int func_0201140c(...);
 extern int func_02074178(...);
@@ -364,7 +364,7 @@ code_r0x0200dd3c:
            ((uint)(*(int *)(*(int *)(*UNK_0200e0e4 + 0x30bc) + 0x40) << 0xc) >> 0x1e == 2)) {
           func_020755bc(*UNK_0200e0f0);
           func_02008570(*UNK_0200e0e4,0,1);
-          func_0200ec6c(*UNK_0200e0e4 + 0x24,1);
+          GamePhaseState_SetEnabled(*UNK_0200e0e4 + 0x24,1);
           func_02092c8c(1,0);
           goto code_r0x0200e2ac;
         }
@@ -389,7 +389,7 @@ code_r0x0200dd3c:
 code_r0x0200e038:
         func_020755bc(*UNK_0200e0f0);
         func_02008570(*UNK_0200e0e4,0,1);
-        func_0200ec6c(*UNK_0200e0e4 + 0x24,1);
+        GamePhaseState_SetEnabled(*UNK_0200e0e4 + 0x24,1);
         func_02092c8c(1,0);
         goto code_r0x0200e2ac;
       }
@@ -398,7 +398,7 @@ code_r0x0200e21c:
       func_020755bc(*UNK_0200e0fc);
       func_02008570(*UNK_0200e0e4,2,1);
       func_020122a0(*(undefined4 *)(*UNK_0200e0e4 + 0x2fb8),1);
-      func_0200ec6c(*UNK_0200e0e4 + 0x24,1);
+      GamePhaseState_SetEnabled(*UNK_0200e0e4 + 0x24,1);
       iVar5 = func_02001970(*UNK_0200e11c,UNK_0200e3c4);
       if (iVar5 == 0) {
         func_02092c8c(3,0);
@@ -465,7 +465,7 @@ code_r0x0200e2ac:
       }
       func_02008570(*UNK_0200e0e4,2,1);
       GamePhaseRuntime_SetPlacementMode(*UNK_0200e0e4,3,1);
-      func_0200ec6c(*UNK_0200e0e4 + 0x24,1);
+      GamePhaseState_SetEnabled(*UNK_0200e0e4 + 0x24,1);
       func_020122a0(*(undefined4 *)(*UNK_0200e0e4 + 0x2fb8),1);
       uVar3 = OverlayManager_GetGlobal();
       OverlayManager_LoadOverlay(uVar3,2,UNK_0200e214);
@@ -535,7 +535,7 @@ code_r0x0200d224:
     func_020923a4(param_1 + 0x10);
     piVar1 = UNK_0200e0e4;
     *UNK_0200e0ec = 0;
-    func_0200ec6c(*piVar1 + 0x24);
+    GamePhaseState_SetEnabled(*piVar1 + 0x24);
     GamePhaseRuntime_GetActorCollection(*UNK_0200e0e4,1);
     ActorCollection_GetSpriteOwner();
     func_02074154();
@@ -622,7 +622,7 @@ code_r0x0200d3bc:
     func_02008570(*UNK_0200e0e4,0,1);
     GamePhaseRuntime_SetPlacementMode(*UNK_0200e0e4,2,0);
     func_020122a0(*(undefined4 *)(*UNK_0200e0e4 + 0x2fb8),1);
-    func_0200ec6c(*UNK_0200e0e4 + 0x24,1);
+    GamePhaseState_SetEnabled(*UNK_0200e0e4 + 0x24,1);
     iVar5 = func_02003e14(UNK_0200e144,UNK_0200e148,4,UNK_0200e114);
     if (iVar5 != 0) {
       iVar5 = func_ov018_021fcf68(iVar5,param_1[0xc]);

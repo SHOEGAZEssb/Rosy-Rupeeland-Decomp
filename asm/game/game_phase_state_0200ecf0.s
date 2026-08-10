@@ -9,7 +9,7 @@
 .extern OverlayManager_GetGlobal
 .extern ActorRuntimeCollection_GetPendingAttachmentFlag
 .extern ActorRuntimeCollection_GetBusyState
-.extern func_0200efe0
+.extern GamePhaseState_GetBoundaryDirection
 .extern ActorDerivedType1_GetActiveRecordId
 .extern ActorDerivedType1_GetSingletonObject
 .extern func_ov074_0220fda8
@@ -17,8 +17,8 @@
 .extern gHeapContext
 .extern gSceneManager
 
-    .global func_0200ecf0
-func_0200ecf0: ; 0x0200ecf0
+    .global GamePhaseState_TryStartBoundaryTransition
+GamePhaseState_TryStartBoundaryTransition: ; 0x0200ecf0
     stmdb sp!, {r3, r4, r5, lr}
     mov r5, r0
     ldr r1, L_0200efc4
@@ -117,7 +117,7 @@ L_0200ee20:
     ldmneia sp!, {r3, r4, r5, pc}
 L_0200ee54:
     mov r0, r5
-    bl func_0200efe0
+    bl GamePhaseState_GetBoundaryDirection
     mvn r1, #0x0
     cmp r0, r1
     cmpne r0, #0x0
@@ -223,5 +223,5 @@ L_0200efd0: .word gSceneManager
 L_0200efd4: .word 0x4a
 L_0200efd8: .word data_020d5544
 L_0200efdc: .word gHeapContext
-    .size func_0200ecf0, . - func_0200ecf0
+    .size GamePhaseState_TryStartBoundaryTransition, . - GamePhaseState_TryStartBoundaryTransition
 

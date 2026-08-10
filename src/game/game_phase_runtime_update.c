@@ -37,7 +37,7 @@ extern void func_02078384(void *object);
 extern void func_020755bc(void *object);
 extern s32 func_02010b64(void *context);
 extern void func_02010e68(void *context);
-extern s32 func_0200ecf0(void *object);
+extern s32 GamePhaseState_TryStartBoundaryTransition(void *object);
 extern void func_0200866c(GamePhaseRuntime *self);
 extern s32 GamePhaseRuntime_SynchronizeActorPlacement(GamePhaseRuntime *self, s32 index);
 extern void func_0201dcec(void *object, s32 enabled);
@@ -147,7 +147,7 @@ s32 GamePhaseRuntime_Update(GamePhaseRuntime *self)
 
     if (!restricted) {
         GamePhaseRuntime_PrepareActorCollections(self, self->field_04, 3);
-        if (func_0200ecf0(b + 0x24))
+        if (GamePhaseState_TryStartBoundaryTransition(b + 0x24))
             return 0;
         func_0200866c(self);
         GamePhaseRuntime_SynchronizeActorPlacement(self, 0);

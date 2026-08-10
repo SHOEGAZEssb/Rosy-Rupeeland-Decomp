@@ -6,8 +6,8 @@
 .extern ActorFeedback_DestroyPresentations
 .extern func_020a2324
 
-    .global func_0200e61c
-func_0200e61c: ; 0x0200e61c
+    .global GamePhaseState_ResetRuntime
+GamePhaseState_ResetRuntime: ; 0x0200e61c
     stmdb sp!, {r4, lr}
     mov r4, r0
     add r0, r4, #0x358
@@ -21,5 +21,5 @@ func_0200e61c: ; 0x0200e61c
     add r0, r4, #0x4
     bl ActorCollection_UnregisterAndDestroyAllActors
     ldmia sp!, {r4, pc}
-    .size func_0200e61c, . - func_0200e61c
+    .size GamePhaseState_ResetRuntime, . - GamePhaseState_ResetRuntime
 

@@ -5,7 +5,7 @@
 .extern GameWork_SetFlag
 .extern OverlaySlot_LoadOverlay
 .extern GamePhase_ResetTransientState
-.extern func_0200f0b4
+.extern GamePhaseState_CreatePhaseObject
 .extern func_0202751c
 .extern func_020275b0
 .extern func_02027f2c
@@ -15,8 +15,8 @@
 .extern gLupyContext
 .extern gSoundContext
 
-    .global func_0200e780
-func_0200e780: ; 0x0200e780
+    .global GamePhaseState_ApplyConfiguration
+GamePhaseState_ApplyConfiguration: ; 0x0200e780
     stmdb sp!, {r3, r4, r5, lr}
     mov r4, r1
     ldr r1, [r4, #0x0]
@@ -28,7 +28,7 @@ func_0200e780: ; 0x0200e780
     bl func_020598a0
     mov r0, r5
     mov r1, r4
-    bl func_0200f0b4
+    bl GamePhaseState_CreatePhaseObject
     add r0, r5, #0x2a4
     ldr r1, [r4, #0x1c]
     add r0, r0, #0x2c00
@@ -169,5 +169,5 @@ L_0200e9d0: .word 0x417
 L_0200e9d4: .word 0x438
 L_0200e9d8: .word 0x419
 L_0200e9dc: .word gLupyContext
-    .size func_0200e780, . - func_0200e780
+    .size GamePhaseState_ApplyConfiguration, . - GamePhaseState_ApplyConfiguration
 

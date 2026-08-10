@@ -2,12 +2,12 @@
 
 /* Exact fallback; see src/overlays/ov033/overlay033_scene_motion.c for documented portable C. */
 
-    .extern func_0200efe0
+    .extern GamePhaseState_GetBoundaryDirection
     .extern Heap_Alloc
     .extern func_ov074_0220fda8
     .extern func_02093360
     .extern func_02091aa8
-    .extern func_0200eb14
+    .extern GamePhaseState_QueryTerrainHeight
     .extern data_021052fc
     .extern data_ov033_021fdec0
     .extern gHeapContext
@@ -22,7 +22,7 @@ func_ov033_021fd37c:
     mov r5, r0
     ldr r0, [r1, #0x0]
     add r0, r0, #0x24
-    bl func_0200efe0
+    bl GamePhaseState_GetBoundaryDirection
     mvn r1, #0x0
     cmp r0, r1
     cmpne r0, #0x0
@@ -144,7 +144,7 @@ func_ov033_021fd4cc:
     add r0, ip, #0x24
     mov r1, r1, asr #0x4
     mov r2, r2, asr #0x4
-    bl func_0200eb14
+    bl GamePhaseState_QueryTerrainHeight
     mov r3, r0, lsl #0x4
     ldr r2, [r4, #0x38]
     ldr r0, L_021fd594

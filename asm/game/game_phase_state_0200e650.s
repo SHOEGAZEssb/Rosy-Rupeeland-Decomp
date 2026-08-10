@@ -3,7 +3,7 @@
 .extern GX_DisableBankForLCDC
 .extern GX_SetBankForBG
 .extern GX_SetGraphicsMode
-.extern func_0200e780
+.extern GamePhaseState_ApplyConfiguration
 .extern func_0201e0ec
 .extern ActorCollection_SetSpriteMode
 .extern func_0202d68c
@@ -11,8 +11,8 @@
 .extern func_020a23a8
 .extern func_020ae740
 
-    .global func_0200e650
-func_0200e650: ; 0x0200e650
+    .global GamePhaseState_ConfigureForPhase
+GamePhaseState_ConfigureForPhase: ; 0x0200e650
     stmdb sp!, {r4, lr}
     mov r4, r0
     str r1, [r4, #0x0]
@@ -62,7 +62,7 @@ L_0200e6ec:
     bl func_0202d68c
     ldr r1, [r4, #0x0]
     mov r0, r4
-    bl func_0200e780
+    bl GamePhaseState_ApplyConfiguration
     ldmia sp!, {r4, pc}
-    .size func_0200e650, . - func_0200e650
+    .size GamePhaseState_ConfigureForPhase, . - GamePhaseState_ConfigureForPhase
 

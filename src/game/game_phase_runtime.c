@@ -28,7 +28,7 @@ extern void *gLupyContext;
 extern "C" {
 #endif
 
-extern void func_0200e4dc(void *object);
+extern void GamePhaseState_Init(void *object);
 extern void ActorMotionAreaFollower_Init(void *object, void *source);
 extern void ActorMotionGameWork_Init(void *object);
 extern void func_020ae90c(void *object);
@@ -39,7 +39,7 @@ extern void DisplayController_SetVerticalOffset(s32 value);
 extern void ActorMotionAreaFollower_Reset(void *object);
 extern void ActorMotion_Reset(void *object);
 extern void ActorRuntimeCollection_Reset(void *object);
-extern void func_0200e650(void *object, const void *config);
+extern void GamePhaseState_ConfigureForPhase(void *object, const void *config);
 extern void ActorInteractionRuntime_Start(void);
 extern void ActorDerivedType1_ResetToDisabledState(void *entity);
 extern void Actor_AdjustPositionForTerrainHeight(void *entity);
@@ -47,7 +47,7 @@ extern void ActorDerivedType1_UpdateGameWorkRuntimeFlags(void *entity, s32 enabl
 extern void ActorMotionAreaFollower_BindActor(void *object, void *entity);
 extern void ActorMotion_BindActor(void *object, void *entity);
 extern void ActorMotionAreaFollower_RefreshCurrentArea(void *object);
-extern void func_0200ec6c(void *object, s32 enabled);
+extern void GamePhaseState_SetEnabled(void *object, s32 enabled);
 extern void *ActorMotion_GetPosition(void *object);
 extern void *ActorMotionAreaFollower_GetPosition(void *object);
 extern void ActorCollection_DispatchEventToActors(void *object, void *value);
@@ -74,7 +74,7 @@ GamePhaseRuntime *GamePhaseRuntime_Init(GamePhaseRuntime *self)
 
     Scene_Init((Scene *)self);
     self->vtable = data_020d431c;
-    func_0200e4dc(bytes + 0x24);
+    GamePhaseState_Init(bytes + 0x24);
 
     /* These adjacent objects share storage at 0x2fa4..0x2fbf. */
     *(s32 *)(bytes + 0x2fb8) = 0;
@@ -139,7 +139,7 @@ void GamePhaseRuntime_Configure(GamePhaseRuntime *self, const void *configPointe
     ActorMotion_Reset(bytes + 0x3044);
     ActorRuntimeCollection_Reset(data_02105310);
     GamePhaseRuntime_CreateSecondaryActorSubsystem(self, (void *)configPointer, 1);
-    func_0200e650(bytes + 0x24, configPointer);
+    GamePhaseState_ConfigureForPhase(bytes + 0x24, configPointer);
     GamePhaseRuntime_RefreshAreaAuxiliaryObject(self, (void *)configPointer, 1);
     ((void (*)(s32))*(const void *const *)(config + 0x24))(0);
     ActorInteractionRuntime_Start();
@@ -181,7 +181,7 @@ void GamePhaseRuntime_Configure(GamePhaseRuntime *self, const void *configPointe
     GamePhaseRuntime_RecreateDualScreenUiPresentation(self, GamePhaseRuntime_GetActiveAreaPlacementVariant(self), (void *)configPointer);
     *(s32 *)(bytes + 0x30fc) = 1;
     GamePhaseRuntime_SetPlacementMode(self, 1, 0);
-    func_0200ec6c(bytes + 0x24, 1);
+    GamePhaseState_SetEnabled(bytes + 0x24, 1);
 
     ActorCollection_DispatchEventToActors((u8 *)*(void **)(bytes + 0x2fb8) + 8,
                   ActorMotion_GetPosition(bytes + 0x3044));

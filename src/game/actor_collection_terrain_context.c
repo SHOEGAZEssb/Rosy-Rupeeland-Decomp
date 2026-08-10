@@ -7,7 +7,7 @@ extern void *data_021052fc;
 extern "C" {
 #endif
 extern void *GamePhaseRuntime_GetActorCollection(void *manager, u32 slot);
-extern s32 func_0200eb14(void *terrain, s32 x, s32 y);
+extern s32 GamePhaseState_QueryTerrainHeight(void *terrain, s32 x, s32 y);
 extern u32 Actor_QueryTerrainCell(void *actor, s32 x, s32 y);
 #ifdef __cplusplus
 }
@@ -61,7 +61,7 @@ void Actor_RefreshTerrainHeight(void *self)
 
     x = *(s32 *)(actor + 0x1c) >> 16;
     y = *(s32 *)(actor + 0x20) >> 16;
-    height = func_0200eb14((u8 *)data_021052fc + 0x24, x, y);
+    height = GamePhaseState_QueryTerrainHeight((u8 *)data_021052fc + 0x24, x, y);
     terrainClass = Actor_QueryTerrainCell(actor, x, y);
 
     if (((terrainClass >> 5) & 0x1f) == 15) {

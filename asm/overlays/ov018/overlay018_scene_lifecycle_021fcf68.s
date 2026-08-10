@@ -9,7 +9,7 @@
     .extern data_ov018_021ffd3c
     .extern data_ov018_021ffd50
     .extern data_ov018_021ffd58
-    .extern func_0200eb0c
+    .extern GamePhaseState_GetConfiguration
     .extern func_02071ea4
     .extern func_02071ee0
     .extern func_02073e48
@@ -131,13 +131,13 @@ L_021fd06c:
     ldr r0, L_021fd348
     ldr r0, [r0, #0x0]
     add r0, r0, #0x24
-    bl func_0200eb0c
+    bl GamePhaseState_GetConfiguration
     ldr r1, [r0, #0x0]
     ldr r0, L_021fd348
     str r1, [r4, #0x198]
     ldr r0, [r0, #0x0]
     add r0, r0, #0x24
-    bl func_0200eb0c
+    bl GamePhaseState_GetConfiguration
     ldrsb r0, [r0, #0x4d]
     ldr r2, L_021fd348
     mov r3, #0x0

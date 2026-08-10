@@ -8,8 +8,8 @@
 .extern func_020a23a8
 .extern func_020ae9a4
 
-    .global func_0200eb58
-func_0200eb58: ; 0x0200eb58
+    .global GamePhaseState_ConfigureMainDisplay
+GamePhaseState_ConfigureMainDisplay: ; 0x0200eb58
     stmdb sp!, {r3, r4, r5, lr}
     mov r5, r0
     mov r4, r1
@@ -83,5 +83,5 @@ L_0200ec08:
     add r0, r0, #0x2c00
     bl func_020100ac
     ldmia sp!, {r3, r4, r5, pc}
-    .size func_0200eb58, . - func_0200eb58
+    .size GamePhaseState_ConfigureMainDisplay, . - GamePhaseState_ConfigureMainDisplay
 

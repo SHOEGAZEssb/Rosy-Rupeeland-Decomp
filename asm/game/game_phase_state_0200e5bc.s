@@ -1,11 +1,11 @@
 ; Matching retail form; see src/game/game_phase_state_lifecycle.c.
 .text
-.extern func_0200e61c
+.extern GamePhaseState_ResetRuntime
 .extern func_0201155c
 .extern ActorCollection_Deinit
 
-    .global func_0200e5bc
-func_0200e5bc: ; 0x0200e5bc
+    .global GamePhaseState_UnloadPhase
+GamePhaseState_UnloadPhase: ; 0x0200e5bc
     stmdb sp!, {r4, lr}
     mov r4, r0
     add r0, r4, #0x2b4
@@ -16,7 +16,7 @@ func_0200e5bc: ; 0x0200e5bc
     add r0, r4, #0x2f80
     bl func_0201155c
     mov r0, r4
-    bl func_0200e61c
+    bl GamePhaseState_ResetRuntime
     add r0, r4, #0x4
     bl ActorCollection_Deinit
     add r0, r4, #0x2000
@@ -31,5 +31,5 @@ L_0200e60c:
     mov r1, #0x0
     str r1, [r0, #0xeb0]
     ldmia sp!, {r4, pc}
-    .size func_0200e5bc, . - func_0200e5bc
+    .size GamePhaseState_UnloadPhase, . - GamePhaseState_UnloadPhase
 

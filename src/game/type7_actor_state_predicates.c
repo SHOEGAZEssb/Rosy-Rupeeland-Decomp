@@ -9,14 +9,14 @@ extern u8 *data_021052fc;
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *func_0200eb0c(void *state);
+extern void *GamePhaseState_GetConfiguration(void *state);
 #ifdef __cplusplus
 }
 #endif
 
 /*
  * Input is a type-seven actor. Return true immediately when signed halfword
- * +0x27e is -1. Otherwise call func_0200eb0c on global state
+ * +0x27e is -1. Otherwise call GamePhaseState_GetConfiguration on global state
  * data_021052fc+0x24 and compare the signed low halfword of its first result
  * word with actor +0x27e, returning whether they match. Global state is read;
  * actor state is unchanged and there are no direct SDK or hardware effects.
@@ -28,7 +28,7 @@ s32 Type7Actor_MatchesGlobalRecordIndex(void *self)
     u32 *record;
     if (expected == -1)
         return 1;
-    record = (u32 *)func_0200eb0c(data_021052fc + 0x24);
+    record = (u32 *)GamePhaseState_GetConfiguration(data_021052fc + 0x24);
     return expected == (s16)record[0];
 }
 

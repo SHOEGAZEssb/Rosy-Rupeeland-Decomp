@@ -14,8 +14,8 @@
 .extern GamePhaseRuntime_ChangeToNeighborArea
 .extern GamePhaseRuntime_GetActorCollection
 .extern GamePhaseRuntime_SynchronizeActorPlacement
-.extern func_0200ec6c
-.extern func_0200ecbc
+.extern GamePhaseState_SetEnabled
+.extern GamePhaseState_ApplyPlacementState
 .extern func_0200f878
 .extern func_020122a0
 .extern func_02029c94
@@ -46,14 +46,14 @@ func_ov074_022105b4:
     add r1, sp, #0x3c
     ldr r0, [r0, #0x0]
     add r0, r0, #0x24
-    bl func_0200ecbc
+    bl GamePhaseState_ApplyPlacementState
     add r0, sp, #0x3c
     bl func_02005058
     ldr r0, .L_02210720
     mov r1, #0x1
     ldr r0, [r0, #0x0]
     add r0, r0, #0x24
-    bl func_0200ec6c
+    bl GamePhaseState_SetEnabled
     ldr r0, .L_02210720
     mov r1, #0x1
     ldr r0, [r0, #0x0]

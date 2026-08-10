@@ -40,7 +40,7 @@
 .extern GamePhaseRuntime_GetActorCollection
 .extern func_02008570
 .extern GamePhaseRuntime_SetPlacementMode
-.extern func_0200ec6c
+.extern GamePhaseState_SetEnabled
 .extern func_0201140c
 .extern func_020122a0
 .extern func_0201e0f4
@@ -219,7 +219,7 @@ L_0200d23c:
     strh r1, [r2, #0x0]
     ldr r0, [r0, #0x0]
     add r0, r0, #0x24
-    bl func_0200ec6c
+    bl GamePhaseState_SetEnabled
     ldr r0, L_0200e0e4
     mov r1, #0x1
     ldr r0, [r0, #0x0]
@@ -443,7 +443,7 @@ L_0200d540:
     mov r1, #0x1
     ldr r0, [r0, #0x0]
     add r0, r0, #0x24
-    bl func_0200ec6c
+    bl GamePhaseState_SetEnabled
     ldr r0, L_0200e144
     ldr r1, L_0200e148
     mov r2, #0x4
@@ -1151,7 +1151,7 @@ L_0200df58:
     mov r1, #0x1
     ldr r0, [r0, #0x0]
     add r0, r0, #0x24
-    bl func_0200ec6c
+    bl GamePhaseState_SetEnabled
     ldr r0, L_0200e0e4
     mov r1, #0x1
     ldr r0, [r0, #0x0]
@@ -1210,7 +1210,7 @@ L_0200e038:
     mov r1, #0x1
     ldr r0, [r0, #0x0]
     add r0, r0, #0x24
-    bl func_0200ec6c
+    bl GamePhaseState_SetEnabled
     mov r0, #0x1
     mov r1, #0x0
     bl func_02092c8c
@@ -1237,7 +1237,7 @@ L_0200e07c:
     mov r1, #0x1
     ldr r0, [r0, #0x0]
     add r0, r0, #0x24
-    bl func_0200ec6c
+    bl GamePhaseState_SetEnabled
     mov r0, #0x1
     mov r1, #0x0
     bl func_02092c8c
@@ -1342,7 +1342,7 @@ L_0200e21c:
     mov r1, #0x1
     ldr r0, [r0, #0x0]
     add r0, r0, #0x24
-    bl func_0200ec6c
+    bl GamePhaseState_SetEnabled
     ldr r0, L_0200e11c
     ldr r1, L_0200e3c4
     ldr r0, [r0, #0x0]

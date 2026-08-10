@@ -7,7 +7,7 @@
 .extern func_02004fe0
 .extern func_02005058
 .extern func_020050c8
-.extern func_0200eb0c
+.extern GamePhaseState_GetConfiguration
 .extern func_ov054_0220ec4c
 .extern gGameWork
 
@@ -19,7 +19,7 @@ func_ov054_0220eda4:
     mov r5, r0
     ldr r0, [r1, #0x0]
     add r0, r0, #0x24
-    bl func_0200eb0c
+    bl GamePhaseState_GetConfiguration
     ldr r0, [r0, #0x40]
     mov r0, r0, lsl #0xc
     mov r0, r0, lsr #0x1e

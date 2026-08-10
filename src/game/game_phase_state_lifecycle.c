@@ -7,8 +7,8 @@ extern "C" {
 #endif
 extern void OverlaySlot_Init(void *object);
 extern void OverlaySlot_Destroy(void *object);
-extern void func_0200e5bc(GamePhaseState *self);
-extern void func_0200e61c(GamePhaseState *self);
+extern void GamePhaseState_UnloadPhase(GamePhaseState *self);
+extern void GamePhaseState_ResetRuntime(GamePhaseState *self);
 extern void func_0200fa40(void *object);
 extern void func_0200fb34(void *object);
 extern void func_02011470(void *object);
@@ -38,18 +38,18 @@ typedef struct PhaseOwned {
 
 /*
  * Initialize five embedded subsystems, clear the configuration/owned pointer,
- * set flags_2f7c bits 0/1, and initialize the halfword controls at 0x2f90 to
+ * set renderFlags bits 0/1, and initialize the halfword controls at 0x2f90 to
  * 1 and 0x2f92 to 0x0808. Returns self.
  */
-GamePhaseState *func_0200e4dc(GamePhaseState *self)
+GamePhaseState *GamePhaseState_Init(GamePhaseState *self)
 {
     self->configuration = 0;
-    ActorCollection_Init(self->storage_0004);
-    OverlaySlot_Init(self->helper_2ea4);
-    self->owned_2eb0 = 0;
+    ActorCollection_Init(self->actorCollectionStorage);
+    OverlaySlot_Init(self->overlaySlotStorage);
+    self->phaseObject = 0;
     func_0200fa40(self->helper_2eb4);
-    func_0201dbc8(self->helper_2f58);
-    self->flags_2f7c = (self->flags_2f7c & ~1) | 3;
+    func_0201dbc8(self->renderHelperStorage);
+    self->renderFlags = (self->renderFlags & ~1) | 3;
     func_02011470(self->helper_2f80);
     self->field_2f90 = 1;
     self->field_2f92 = (s16)((self->field_2f92 & ~0xff) | 8);
@@ -58,41 +58,41 @@ GamePhaseState *func_0200e4dc(GamePhaseState *self)
 }
 
 /* Fully release the state's active content and embedded subsystems. */
-GamePhaseState *func_0200e574(GamePhaseState *self)
+GamePhaseState *GamePhaseState_Destroy(GamePhaseState *self)
 {
-    func_0200e5bc(self);
+    GamePhaseState_UnloadPhase(self);
     func_0201155c(self->helper_2f80);
-    func_0201dc98(self->helper_2f58);
+    func_0201dc98(self->renderHelperStorage);
     func_0200fb34(self->helper_2eb4);
-    OverlaySlot_Destroy(self->helper_2ea4);
-    ActorCollection_Destructor(self->storage_0004);
+    OverlaySlot_Destroy(self->overlaySlotStorage);
+    ActorCollection_Destructor(self->actorCollectionStorage);
     return self;
 }
 
 /*
  * Tear down currently loaded phase content while retaining the outer state:
  * invoke helper_2eb4's first virtual method, reset graphics/runtime helpers,
- * release owned_2eb0 through its deleting destructor, and clear the pointer.
+ * release phaseObject through its deleting destructor, and clear the pointer.
  */
-void func_0200e5bc(GamePhaseState *self)
+void GamePhaseState_UnloadPhase(GamePhaseState *self)
 {
     PhaseOwned *helper = (PhaseOwned *)self->helper_2eb4;
     helper->vtable->destroy(helper);
     func_0201155c(self->helper_2f80);
-    func_0200e61c(self);
-    ActorCollection_Deinit(self->storage_0004);
-    if (self->owned_2eb0 != 0)
-        ((PhaseOwned *)self->owned_2eb0)->vtable->destroyAndFree(
-            self->owned_2eb0);
-    self->owned_2eb0 = 0;
+    GamePhaseState_ResetRuntime(self);
+    ActorCollection_Deinit(self->actorCollectionStorage);
+    if (self->phaseObject != 0)
+        ((PhaseOwned *)self->phaseObject)->vtable->destroyAndFree(
+            self->phaseObject);
+    self->phaseObject = 0;
 }
 
 /* Reset render/world helpers and the large subsystem rooted at offset 0x0004. */
-void func_0200e61c(GamePhaseState *self)
+void GamePhaseState_ResetRuntime(GamePhaseState *self)
 {
-    func_0201df64(self->helper_2f58);
-    func_0201e0ec(self->helper_2f58);
+    func_0201df64(self->renderHelperStorage);
+    func_0201e0ec(self->renderHelperStorage);
     func_020a2324();
     ActorFeedback_DestroyPresentations();
-    ActorCollection_UnregisterAndDestroyAllActors(self->storage_0004);
+    ActorCollection_UnregisterAndDestroyAllActors(self->actorCollectionStorage);
 }

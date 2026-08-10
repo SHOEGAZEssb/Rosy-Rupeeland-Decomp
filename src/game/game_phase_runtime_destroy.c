@@ -24,15 +24,15 @@ extern "C" {
 
 extern void func_020ae9a4(void);
 extern void func_020ae90c(void);
-extern void func_0200e61c(void *object);
+extern void GamePhaseState_ResetRuntime(void *object);
 extern void func_ov056_0220e79c(void *object);
-extern void func_0200e5bc(void *object);
+extern void GamePhaseState_UnloadPhase(void *object);
 extern void func_0200f824(void);
 extern void func_0200f314(void);
 extern void func_02058ce0(void *soundContext);
 extern void ActorMotionGameWork_Destroy(void *object);
 extern void ActorMotionAreaFollower_Destroy(void *object);
-extern void func_0200e574(void *object);
+extern void GamePhaseState_Destroy(void *object);
 
 #ifdef __cplusplus
 }
@@ -64,7 +64,7 @@ GamePhaseRuntime *GamePhaseRuntime_Destroy(GamePhaseRuntime *self)
         *(void **)(bytes + 0x30e8) = 0;
     }
 
-    func_0200e61c(bytes + 0x24);
+    GamePhaseState_ResetRuntime(bytes + 0x24);
     object = *(void **)(bytes + 0x2fb8);
     if (object != 0) {
         DeletingDestructor *vtable = *(DeletingDestructor **)object;
@@ -78,7 +78,7 @@ GamePhaseRuntime *GamePhaseRuntime_Destroy(GamePhaseRuntime *self)
         *(void **)(bytes + 0x30ec) = 0;
     }
 
-    func_0200e5bc(bytes + 0x24);
+    GamePhaseState_UnloadPhase(bytes + 0x24);
     GamePhaseRuntime_DestroyFieldLoader(self);
     func_0200f824();
     func_0200f314();
@@ -93,7 +93,7 @@ GamePhaseRuntime *GamePhaseRuntime_Destroy(GamePhaseRuntime *self)
     OverlaySlot_Destroy((OverlaySlot *)(bytes + 0x30c0));
     ActorMotionGameWork_Destroy(bytes + 0x3044);
     ActorMotionAreaFollower_Destroy(bytes + 0x2fbc);
-    func_0200e574(bytes + 0x24);
+    GamePhaseState_Destroy(bytes + 0x24);
     Scene_Destroy((Scene *)self);
     return self;
 }

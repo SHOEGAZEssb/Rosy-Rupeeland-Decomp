@@ -31,7 +31,7 @@ extern void func_020755bc(void *);
 extern void func_02075a04(...);
 extern void func_020122a0(...);
 extern void func_02008570(...);
-extern void func_0200ec6c(...);
+extern void GamePhaseState_SetEnabled(...);
 extern void TouchPanelManager_GetPoint(...);
 extern void func_020740a4(void *);
 extern void func_02010e68(void *);
@@ -72,7 +72,7 @@ extern "C" void func_ov032_021fde38(void *scene)
     func_02075a04(gDebugFont, 0, 0x10);
     func_020122a0(FIELD(void *, context, 0x2fb8), 0);
     func_02008570(context, 2, 1);
-    func_0200ec6c(context + 0x24, 1);
+    GamePhaseState_SetEnabled(context + 0x24, 1);
 }
 
 /*

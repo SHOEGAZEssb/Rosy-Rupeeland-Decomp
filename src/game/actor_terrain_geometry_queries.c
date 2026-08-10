@@ -6,7 +6,7 @@ extern void *data_021052fc;
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern s32 func_0200eb14(void *terrain, s32 x, s32 y);
+extern s32 GamePhaseState_QueryTerrainHeight(void *terrain, s32 x, s32 y);
 extern s32 func_020adae4(s32 dividend, s32 divisor);
 extern u32 Actor_QueryTerrainCell(void *actor, s32 x, s32 y);
 #ifdef __cplusplus
@@ -44,7 +44,7 @@ s32 Actor_QueryTerrainHeight(void *self, s32 x, s32 y)
     s32 height;
 
     if ((*(u32 *)(actor + 0x14) & 0x04000000) != 0) return 0;
-    height = func_0200eb14((u8 *)data_021052fc + 0x24, x, y);
+    height = GamePhaseState_QueryTerrainHeight((u8 *)data_021052fc + 0x24, x, y);
     if (((Actor_QueryTerrainCell(actor, x, y) >> 5) & 0x1f) == 15 &&
         height + 4 <= (*(s32 *)(actor + 0x24) >> 16)) {
         height += 4;
@@ -87,7 +87,7 @@ void Position_AdjustForTerrainHeight(void *value)
                               16) - 1;
 
     while (level >= 0) {
-        s32 height = func_0200eb14((u8 *)data_021052fc + 0x24,
+        s32 height = GamePhaseState_QueryTerrainHeight((u8 *)data_021052fc + 0x24,
                                    gridX, gridY);
         if (gridY == level - height) {
             s32 adjustment = height << 16;

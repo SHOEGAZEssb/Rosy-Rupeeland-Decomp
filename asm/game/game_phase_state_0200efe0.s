@@ -3,8 +3,8 @@
 .extern func_02005058
 .extern func_02056f00
 
-    .global func_0200efe0
-func_0200efe0: ; 0x0200efe0
+    .global GamePhaseState_GetBoundaryDirection
+GamePhaseState_GetBoundaryDirection: ; 0x0200efe0
     stmdb sp!, {r4, lr}
     sub sp, sp, #0x10
     mov r4, r0
@@ -63,5 +63,5 @@ L_0200f0a4:
 L_0200f0ac:
     add sp, sp, #0x10
     ldmia sp!, {r4, pc}
-    .size func_0200efe0, . - func_0200efe0
+    .size GamePhaseState_GetBoundaryDirection, . - GamePhaseState_GetBoundaryDirection
 

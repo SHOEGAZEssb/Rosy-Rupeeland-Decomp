@@ -24,7 +24,7 @@ extern void func_020050c8(void *destination, const void *offset);
 extern void ActorMotion_SetPosition(void *object, const void *transform);
 extern void ActorRuntimeCollection_Reset(void *state);
 extern void GamePhaseRuntime_CreateSecondaryActorSubsystem(GamePhaseRuntime *self, void *area, s32 enabled);
-extern void func_0200e714(void *state, void *area, const void *transform);
+extern void GamePhaseState_ApplyAreaChange(void *state, void *area, const void *transform);
 extern void ActorCollection_DispatchEventToActors(void *actor, const void *transform);
 extern void func_02020060(void *object, void *area);
 extern void func_0201140c(void *context, s32 enabled);
@@ -98,7 +98,7 @@ s32 GamePhaseRuntime_ChangeToNeighborArea(GamePhaseRuntime *self, s32 direction)
     ActorRuntimeCollection_Reset(data_02105310);
     GamePhaseRuntime_CreateSecondaryActorSubsystem(self, area, 1);
     *(u32 *)(b + 0x30b8) |= 0x30;
-    func_0200e714(b + 0x24, area, transform);
+    GamePhaseState_ApplyAreaChange(b + 0x24, area, transform);
     ActorCollection_DispatchEventToActors(b + 0x28, transform);
 
     if (*(s16 *)(area + 0x12) >= 0)

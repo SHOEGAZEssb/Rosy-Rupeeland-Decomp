@@ -6,8 +6,8 @@
 .extern func_0201dbc8
 .extern ActorCollection_Init
 
-    .global func_0200e4dc
-func_0200e4dc: ; 0x0200e4dc
+    .global GamePhaseState_Init
+GamePhaseState_Init: ; 0x0200e4dc
     stmdb sp!, {r4, lr}
     mov r4, r0
     mov r1, #0x0
@@ -46,5 +46,5 @@ func_0200e4dc: ; 0x0200e4dc
     orr r2, r2, #0x800
     strh r2, [r1, #0x92]
     ldmia sp!, {r4, pc}
-    .size func_0200e4dc, . - func_0200e4dc
+    .size GamePhaseState_Init, . - GamePhaseState_Init
 

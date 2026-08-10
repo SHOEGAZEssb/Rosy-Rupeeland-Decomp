@@ -8,7 +8,7 @@
 .extern data_ov046_0220cd1c
 .extern data_ov046_0220ce08
 .extern data_ov046_0220ce0c
-.extern func_0200eb0c
+.extern GamePhaseState_GetConfiguration
 .extern func_020befec
 .extern gGameWork
 
@@ -23,12 +23,12 @@ func_ov046_0220c4a0:
     strh r1, [r2, #0x24]
     ldr r0, [r0, #0x0]
     add r0, r0, #0x24
-    bl func_0200eb0c
+    bl GamePhaseState_GetConfiguration
     ldr r1, .L_0220c78c
     ldr r7, [r0, #0x0]
     ldr r0, [r1, #0x0]
     add r0, r0, #0x24
-    bl func_0200eb0c
+    bl GamePhaseState_GetConfiguration
     ldrsb r9, [r0, #0x4d]
     ldr r1, .L_0220c78c
     mov r0, #0x14

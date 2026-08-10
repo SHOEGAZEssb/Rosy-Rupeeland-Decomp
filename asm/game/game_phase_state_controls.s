@@ -5,8 +5,8 @@
 .extern func_0201e054
 .extern func_0202d68c
 
-    .global func_0200ec6c
-func_0200ec6c: ; 0x0200ec6c
+    .global GamePhaseState_SetEnabled
+GamePhaseState_SetEnabled: ; 0x0200ec6c
     stmdb sp!, {r3, r4, r5, lr}
     mov r5, r0
     add r0, r5, #0x2000
@@ -27,10 +27,10 @@ func_0200ec6c: ; 0x0200ec6c
     add r0, r0, #0x2c00
     bl func_0201e054
     ldmia sp!, {r3, r4, r5, pc}
-    .size func_0200ec6c, . - func_0200ec6c
+    .size GamePhaseState_SetEnabled, . - GamePhaseState_SetEnabled
 
-    .global func_0200ecbc
-func_0200ecbc: ; 0x0200ecbc
+    .global GamePhaseState_ApplyPlacementState
+GamePhaseState_ApplyPlacementState: ; 0x0200ecbc
     stmdb sp!, {r3, r4, r5, lr}
     mov r5, r0
     add r0, r5, #0x2000
@@ -44,5 +44,5 @@ func_0200ecbc: ; 0x0200ecbc
     add r0, r0, #0x2c00
     bl func_0200fe0c
     ldmia sp!, {r3, r4, r5, pc}
-    .size func_0200ecbc, . - func_0200ecbc
+    .size GamePhaseState_ApplyPlacementState, . - GamePhaseState_ApplyPlacementState
 

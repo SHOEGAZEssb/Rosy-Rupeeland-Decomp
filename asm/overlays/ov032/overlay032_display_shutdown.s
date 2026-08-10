@@ -6,7 +6,7 @@
 .extern data_020f4e14
 .extern data_021052fc
 .extern func_02008570
-.extern func_0200ec6c
+.extern GamePhaseState_SetEnabled
 .extern func_020122a0
 .extern func_020755bc
 .extern func_02075a04
@@ -72,7 +72,7 @@ func_ov032_021fde38:
     mov r1, #0x1
     ldr r0, [r0, #0x0]
     add r0, r0, #0x24
-    bl func_0200ec6c
+    bl GamePhaseState_SetEnabled
     ldmia sp!, {r4, pc}
 L_021fdf20: .word 0x4001000
 L_021fdf24: .word data_020f4e14

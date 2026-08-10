@@ -1,16 +1,16 @@
 ; Matching retail form; see src/game/game_phase_state_configuration.c.
 .text
-.extern func_0200e780
+.extern GamePhaseState_ApplyConfiguration
 .extern ActorDerivedType1_UpdateGameWorkRuntimeFlags
 .extern ActorInteractionRuntime_Start
 
-    .global func_0200e714
-func_0200e714: ; 0x0200e714
+    .global GamePhaseState_ApplyAreaChange
+GamePhaseState_ApplyAreaChange: ; 0x0200e714
     stmdb sp!, {r3, r4, r5, lr}
     mov r5, r1
     mov r4, r0
     str r5, [r4, #0x0]
-    bl func_0200e780
+    bl GamePhaseState_ApplyConfiguration
     ldr r1, [r5, #0x24]
     mov r0, #0x0
     blx r1
@@ -33,5 +33,5 @@ func_0200e714: ; 0x0200e714
     ldr r1, [r1, #0x0]
     blx r1
     ldmia sp!, {r3, r4, r5, pc}
-    .size func_0200e714, . - func_0200e714
+    .size GamePhaseState_ApplyAreaChange, . - GamePhaseState_ApplyAreaChange
 

@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/actor_terrain_geometry_queries.c.
 .text
 .extern data_021052fc
-.extern func_0200eb14
+.extern GamePhaseState_QueryTerrainHeight
 .extern func_020adae4
 
     .global Position_AdjustForTerrainHeight
@@ -36,7 +36,7 @@ Position_AdjustForTerrainHeight: ; 0x020344b8
     mov r1, r4
     mov r2, r5
     add r0, r0, #0x24
-    bl func_0200eb14
+    bl GamePhaseState_QueryTerrainHeight
     sub r1, r8, r0
     cmp r5, r1
     bne .L_02034554

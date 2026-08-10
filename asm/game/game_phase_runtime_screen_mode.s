@@ -3,7 +3,7 @@
 .text
 .extern GamePhaseRuntime_SetPlacementMode
 .extern GamePhaseRuntime_RefreshAreaAuxiliaryObject
-.extern func_0200eb58
+.extern GamePhaseState_ConfigureMainDisplay
 .extern func_020121f8
 .extern func_0201dff0
 .extern GameWork_SetFlag
@@ -25,7 +25,7 @@ func_02008570:
     orr r2, r0, #0x1000
     add r0, r5, #0x24
     str r2, [r3, #0x0]
-    bl func_0200eb58
+    bl GamePhaseState_ConfigureMainDisplay
     ldr r0, L_0200865c
     ldr r1, L_02008660
     ldr r0, [r0, #0x0]

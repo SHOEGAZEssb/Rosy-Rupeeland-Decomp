@@ -3,7 +3,7 @@
 .extern data_021052fc
 .extern GamePhaseRuntime_UpdateDualScreenUiPresentation
 .extern GamePhaseRuntime_RefreshAreaAuxiliaryObject
-.extern func_0200eb0c
+.extern GamePhaseState_GetConfiguration
 .extern func_020122a0
 .extern func_02026174
 .global func_0201a090
@@ -14,7 +14,7 @@ func_0201a090:
     add r0, r1, #0x3000
     ldr r4, [r0, #0xe8]
     add r0, r1, #0x24
-    bl func_0200eb0c
+    bl GamePhaseState_GetConfiguration
     mov r1, r0
     mov r0, r4
     bl func_02026174
@@ -33,7 +33,7 @@ func_0201a090:
     ldr r0, L_0201a12c
     ldr r0, [r0, #0x0]
     add r0, r0, #0x24
-    bl func_0200eb0c
+    bl GamePhaseState_GetConfiguration
     mov r1, r0
     ldr r0, L_0201a12c
     mov r2, #0x1

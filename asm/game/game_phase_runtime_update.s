@@ -19,7 +19,7 @@
 .extern GamePhaseTransitionScene_Init
 .extern GamePhaseApplyScene_Init
 .extern GamePhaseEffectScene_Init
-.extern func_0200ecf0
+.extern GamePhaseState_TryStartBoundaryTransition
 .extern func_02010b64
 .extern func_02010e68
 .extern func_0201dcec
@@ -226,7 +226,7 @@ L_020076a0:
     mov r2, #0x3
     bl GamePhaseRuntime_PrepareActorCollections
     add r0, r4, #0x24
-    bl func_0200ecf0
+    bl GamePhaseState_TryStartBoundaryTransition
     cmp r0, #0x0
     movne r0, #0x0
     ldmneia sp!, {r3, r4, r5, pc}

@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/actor_collection_terrain_context.c.
 .text
 .extern data_021052fc
-.extern func_0200eb14
+.extern GamePhaseState_QueryTerrainHeight
 .extern Actor_QueryTerrainCell
 
     .global Actor_RefreshTerrainHeight
@@ -24,7 +24,7 @@ Actor_RefreshTerrainHeight: ; 0x02033828
     mov r1, r6
     mov r2, r7
     add r0, r0, #0x24
-    bl func_0200eb14
+    bl GamePhaseState_QueryTerrainHeight
     mov r4, r0
     mov r0, r5
     mov r1, r6

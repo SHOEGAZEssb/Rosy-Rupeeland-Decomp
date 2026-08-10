@@ -12,7 +12,7 @@ extern void func_02008354(void *output, const void *input);
 extern void ActorMotionAreaFollower_Update(void *object, const void *value);
 extern void func_020086f8(void *state, GamePhaseRuntime *self);
 extern void func_0200875c(void *state, GamePhaseRuntime *self);
-extern void func_0200ecbc(void *object, const void *state);
+extern void GamePhaseState_ApplyPlacementState(void *object, const void *state);
 extern void func_02005058(void *state);
 extern s32 DisplayController_GetSubScreenVerticalOffset(void);
 extern void func_0200500c(void *vector, s32 x, s32 y, s32 z);
@@ -58,7 +58,7 @@ s32 GamePhaseRuntime_SynchronizeActorPlacement(GamePhaseRuntime *self, s32 actor
         func_02008354(compact, raw0);
         ActorMotionAreaFollower_Update(b + 0x2fbc, compact);
         func_020086f8(full0, self);
-        func_0200ecbc(b + 0x24, full0);
+        GamePhaseState_ApplyPlacementState(b + 0x24, full0);
         func_02005058(full0);
     } else if (actorIndex == 1) {
         orientation = (*(u32 *)(*(u8 **)(b + 0x30bc) + 0x40) << 12) >> 30;

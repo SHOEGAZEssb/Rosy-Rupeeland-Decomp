@@ -11,7 +11,7 @@ extern "C" {
 extern void *func_02011a5c(void *object, void *area, s32 enabled);
 extern void func_02011ebc(void *object);
 extern void ActorRuntimeObjectLists_ClearThird(void *loader);
-extern void func_0200e5bc(void *state);
+extern void GamePhaseState_UnloadPhase(void *state);
 extern void ActorRuntimeObjectLists_ClearSecond(void *loader);
 #ifdef __cplusplus
 }
@@ -58,6 +58,6 @@ void GamePhaseRuntime_TeardownActiveAreaState(GamePhaseRuntime *self)
     void *object = *(void **)(b + 0x2ed4);
     typedef void (*Method)(void *, s32);
     ((Method *)(*(void **)object))[9](object, 0);
-    func_0200e5bc(b + 0x24);
+    GamePhaseState_UnloadPhase(b + 0x24);
     ActorRuntimeObjectLists_ClearSecond(*(void **)(b + 0x30b4));
 }

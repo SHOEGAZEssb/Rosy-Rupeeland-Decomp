@@ -2,7 +2,7 @@
 ; Matching fallback for the portable implementation in src/overlays/ov074/overlay074_recovery.c.
 .extern data_020c9670
 .extern data_021052fc
-.extern func_0200eb0c
+.extern GamePhaseState_GetConfiguration
 .extern func_020b0808
 .extern func_020b0844
 .extern func_020b0880
@@ -53,7 +53,7 @@ func_ov074_022117d0:
     str r1, [r2, #0x38]
     ldr r0, [r0, #0x0]
     add r0, r0, #0x24
-    bl func_0200eb0c
+    bl GamePhaseState_GetConfiguration
     ldrsh r2, [r0, #0x56]
     mov r0, #0x0
     ldr r3, .L_02211948

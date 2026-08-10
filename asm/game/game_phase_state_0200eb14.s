@@ -2,8 +2,8 @@
 .text
 .extern func_0202baec
 
-    .global func_0200eb14
-func_0200eb14: ; 0x0200eb14
+    .global GamePhaseState_QueryTerrainHeight
+GamePhaseState_QueryTerrainHeight: ; 0x0200eb14
     stmdb sp!, {r3, lr}
     cmp r1, #0x0
     blt L_0200eb50
@@ -22,5 +22,5 @@ func_0200eb14: ; 0x0200eb14
 L_0200eb50:
     mov r0, #0x0
     ldmia sp!, {r3, pc}
-    .size func_0200eb14, . - func_0200eb14
+    .size GamePhaseState_QueryTerrainHeight, . - GamePhaseState_QueryTerrainHeight
 

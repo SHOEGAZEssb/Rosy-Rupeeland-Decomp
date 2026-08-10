@@ -25,7 +25,7 @@ extern void GameWork_SetFlag(void *, u32);
 extern void *Heap_Alloc(u32, const void *, s32, void *);
 extern void Heap_Free(void *);
 extern u32 genrand_int32(void);
-extern void *func_0200eb0c(void *);
+extern void *GamePhaseState_GetConfiguration(void *);
 extern void func_02071ea4(void *);
 extern void func_02071eb8(void *);
 extern void func_02071ee0(void *, void *, s32, s32, s32);
@@ -137,9 +137,9 @@ extern "C" void *func_ov018_021fcf68(void *state, void *context)
     func_020b4554((u8 *)descriptor + 4, 0x20);
 
     global = data_021052fc;
-    actorData = func_0200eb0c((u8 *)global + 0x24);
+    actorData = GamePhaseState_GetConfiguration((u8 *)global + 0x24);
     FIELD(s32, state, 0x198) = FIELD(s32, actorData, 0);
-    actorData = func_0200eb0c((u8 *)global + 0x24);
+    actorData = GamePhaseState_GetConfiguration((u8 *)global + 0x24);
     FIELD(s32, state, 0x19c) = FIELD(s8, actorData, 0x4d);
     actorData = FIELD(void *, (u8 *)global + 0x3000, 0xbc);
     FIELD(s32, state, 0x1a0) = FIELD(s8, actorData, 0x4e);

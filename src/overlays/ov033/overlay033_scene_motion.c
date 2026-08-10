@@ -14,13 +14,13 @@ extern u8 gHeapContext[];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern s32 func_0200efe0(void *state);
+extern s32 GamePhaseState_GetBoundaryDirection(void *state);
 extern void *Heap_Alloc(u32 size, const void *tag, s32 alignment,
                        void *heapContext);
 extern void *func_ov074_0220fda8(void *object, s32 selection);
 extern s32 func_02093360(void *dialog, const void *inputState);
 extern s32 func_02091aa8(s32 first, s32 second, s32 third, s32 selector);
-extern s32 func_0200eb14(void *state, s32 x, s32 y);
+extern s32 GamePhaseState_QueryTerrainHeight(void *state, s32 x, s32 y);
 extern void func_ov033_021fd4cc(void *scene, s32 delta);
 #ifdef __cplusplus
 }
@@ -37,7 +37,7 @@ extern void func_ov033_021fd4cc(void *scene, s32 delta);
  */
 extern "C" s32 func_ov033_021fd37c(void *owner)
 {
-    s32 selection = func_0200efe0((u8 *)data_021052fc + 0x24);
+    s32 selection = GamePhaseState_GetBoundaryDirection((u8 *)data_021052fc + 0x24);
     if (selection <= 0 || selection > 4)
         return 0;
 
@@ -113,7 +113,7 @@ extern "C" void func_ov033_021fd4cc(void *scene, s32 delta)
     void *primary = FIELD(void *, scene, 4);
     s32 xPixels = FIELD(s32, primary, 0x1c) >> 12;
     s32 yPixels = FIELD(s32, primary, 0x20) >> 12;
-    s32 tile = func_0200eb14((u8 *)data_021052fc + 0x24,
+    s32 tile = GamePhaseState_QueryTerrainHeight((u8 *)data_021052fc + 0x24,
                              div16_toward_zero(xPixels),
                              div16_toward_zero(yPixels));
     s16 wave = data_020c9670[(FIELD(s32, scene, 0x38) >> 4) * 2];

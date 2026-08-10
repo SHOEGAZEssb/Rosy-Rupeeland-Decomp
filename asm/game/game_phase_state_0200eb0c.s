@@ -2,9 +2,9 @@
 .text
 
 
-    .global func_0200eb0c
-func_0200eb0c: ; 0x0200eb0c
+    .global GamePhaseState_GetConfiguration
+GamePhaseState_GetConfiguration: ; 0x0200eb0c
     ldr r0, [r0, #0x0]
     bx lr
-    .size func_0200eb0c, . - func_0200eb0c
+    .size GamePhaseState_GetConfiguration, . - GamePhaseState_GetConfiguration
 

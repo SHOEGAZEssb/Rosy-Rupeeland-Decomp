@@ -1,17 +1,17 @@
 ; Matching retail form; see src/game/game_phase_state_lifecycle.c.
 .text
 .extern OverlaySlot_Destroy
-.extern func_0200e5bc
+.extern GamePhaseState_UnloadPhase
 .extern func_0200fb34
 .extern func_0201155c
 .extern func_0201dc98
 .extern ActorCollection_Destructor
 
-    .global func_0200e574
-func_0200e574: ; 0x0200e574
+    .global GamePhaseState_Destroy
+GamePhaseState_Destroy: ; 0x0200e574
     stmdb sp!, {r4, lr}
     mov r4, r0
-    bl func_0200e5bc
+    bl GamePhaseState_UnloadPhase
     add r0, r4, #0x2f80
     bl func_0201155c
     add r0, r4, #0x358
@@ -27,5 +27,5 @@ func_0200e574: ; 0x0200e574
     bl ActorCollection_Destructor
     mov r0, r4
     ldmia sp!, {r4, pc}
-    .size func_0200e574, . - func_0200e574
+    .size GamePhaseState_Destroy, . - GamePhaseState_Destroy
 

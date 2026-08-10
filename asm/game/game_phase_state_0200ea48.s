@@ -11,8 +11,8 @@
 .extern func_020a2324
 .extern gGameWork
 
-    .global func_0200ea48
-func_0200ea48: ; 0x0200ea48
+    .global GamePhaseState_ResetActivePhase
+GamePhaseState_ResetActivePhase: ; 0x0200ea48
     stmdb sp!, {r4, lr}
     ldr r1, L_0200eb08
     mov r3, #0x0
@@ -63,5 +63,5 @@ L_0200eaec:
     bl DebugText_BeginFrame
     ldmia sp!, {r4, pc}
 L_0200eb08: .word gGameWork
-    .size func_0200ea48, . - func_0200ea48
+    .size GamePhaseState_ResetActivePhase, . - GamePhaseState_ResetActivePhase
 

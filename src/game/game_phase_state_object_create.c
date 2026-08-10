@@ -29,7 +29,7 @@ typedef void (*ObjectConfigureMethod)(void *object, u32 value,
  * 0x5d, or the default, then configure it from descriptor offsets 0x04/0x34.
  * The helper at 0x2f80 also receives descriptor values 0x04 and 0x48.
  */
-void func_0200f0b4(GamePhaseState *self, const void *configuration)
+void GamePhaseState_CreatePhaseObject(GamePhaseState *self, const void *configuration)
 {
     const u8 *config = (const u8 *)configuration;
     u32 phaseId = *(u32 *)config;
@@ -59,7 +59,7 @@ void func_0200f0b4(GamePhaseState *self, const void *configuration)
                         &gHeapContext);
     if (object != 0)
         object = constructor(object);
-    self->owned_2eb0 = object;
+    self->phaseObject = object;
     ((ObjectConfigureMethod)(*(void ***)object)[5])(
         object, *(u32 *)(config + 4), 1, 0);
     func_02029ca4(object, config + 0x34);

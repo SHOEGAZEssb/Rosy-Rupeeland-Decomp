@@ -7,7 +7,7 @@ extern "C" {
 #endif
 extern void func_0200f824(void);
 extern void func_0200f52c(void);
-extern void func_0200e61c(void *state);
+extern void GamePhaseState_ResetRuntime(void *state);
 extern void GamePhaseRuntime_DestroySecondaryActorSubsystem(GamePhaseRuntime *self);
 extern void GamePhaseRuntime_TeardownActiveAreaState(GamePhaseRuntime *self);
 #ifdef __cplusplus
@@ -31,7 +31,7 @@ void GamePhaseRuntime_ApplyStagedAreaRequest(GamePhaseRuntime *self)
     *subDisplay = (*subDisplay & ~0x1f00) | 0x1000;
     func_0200f824();
     func_0200f52c();
-    func_0200e61c(b + 0x24);
+    GamePhaseState_ResetRuntime(b + 0x24);
     GamePhaseRuntime_DestroySecondaryActorSubsystem(self);
     GamePhaseRuntime_TeardownActiveAreaState(self);
     GamePhaseRuntime_Configure(self, *(void **)(b + 0x30d0),

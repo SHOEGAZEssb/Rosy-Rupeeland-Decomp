@@ -3,7 +3,7 @@
 .extern data_021052fc
 .extern GamePhaseRuntime_GetActorCollection
 .extern GamePhaseRuntime_SetPlacementMode
-.extern func_0200ec6c
+.extern GamePhaseState_SetEnabled
 .extern func_0201140c
 .extern func_0202d68c
 .extern gLupyContext
@@ -31,7 +31,7 @@ func_ov061_022100e4:
     mov r1, #0x0
     ldr r0, [r0, #0x0]
     add r0, r0, #0x24
-    bl func_0200ec6c
+    bl GamePhaseState_SetEnabled
     ldr r0, .L_022101cc
     mov r1, #0x1
     ldr r0, [r0, #0x0]

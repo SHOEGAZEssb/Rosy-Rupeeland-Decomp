@@ -25,9 +25,9 @@
 .extern ActorMotionAreaFollower_RefreshCurrentArea
 .extern ActorMotionAreaFollower_Reset
 .extern ActorRuntimeCollection_Reset
-.extern func_0200e4dc
-.extern func_0200e650
-.extern func_0200ec6c
+.extern GamePhaseState_Init
+.extern GamePhaseState_ConfigureForPhase
+.extern GamePhaseState_SetEnabled
 .extern func_0201022c
 .extern func_02010520
 .extern func_0201140c
@@ -58,7 +58,7 @@ GamePhaseRuntime_Init:
     ldr r1, L_02006bcc
     add r0, r4, #0x24
     str r1, [r4, #0x0]
-    bl func_0200e4dc
+    bl GamePhaseState_Init
     add r0, r4, #0x3bc
     add r1, r4, #0x3a4
     add r2, r4, #0x2000
@@ -161,7 +161,7 @@ GamePhaseRuntime_Configure:
     add r0, r4, #0x24
     add r1, r4, #0x3000
     ldr r1, [r1, #0xbc]
-    bl func_0200e650
+    bl GamePhaseState_ConfigureForPhase
     mov r0, r4
     add r1, r4, #0x3000
     ldr r1, [r1, #0xbc]
@@ -275,7 +275,7 @@ L_02006da0:
     bl GamePhaseRuntime_SetPlacementMode
     add r0, r4, #0x24
     mov r1, #0x1
-    bl func_0200ec6c
+    bl GamePhaseState_SetEnabled
     add r0, r4, #0x2000
     ldr r5, [r0, #0xfb8]
     add r0, r4, #0x44

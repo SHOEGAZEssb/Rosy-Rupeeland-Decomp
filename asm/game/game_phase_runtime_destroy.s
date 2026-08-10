@@ -6,9 +6,9 @@
 .extern GamePhaseRuntime_DestroyFieldLoader
 .extern ActorMotionGameWork_Destroy
 .extern ActorMotionAreaFollower_Destroy
-.extern func_0200e574
-.extern func_0200e5bc
-.extern func_0200e61c
+.extern GamePhaseState_Destroy
+.extern GamePhaseState_UnloadPhase
+.extern GamePhaseState_ResetRuntime
 .extern func_0200f314
 .extern func_0200f824
 .extern func_02058ce0
@@ -44,7 +44,7 @@ L_020070a0:
     str r1, [r0, #0xe8]
 L_020070ac:
     add r0, r4, #0x24
-    bl func_0200e61c
+    bl GamePhaseState_ResetRuntime
     add r0, r4, #0x2000
     ldr r0, [r0, #0xfb8]
     cmp r0, #0x0
@@ -68,7 +68,7 @@ L_020070f4:
     str r1, [r0, #0xec]
 L_02007100:
     add r0, r4, #0x24
-    bl func_0200e5bc
+    bl GamePhaseState_UnloadPhase
     mov r0, r4
     bl GamePhaseRuntime_DestroyFieldLoader
     bl func_0200f824
@@ -98,7 +98,7 @@ L_02007100:
     add r0, r0, #0x2c00
     bl ActorMotionAreaFollower_Destroy
     add r0, r4, #0x24
-    bl func_0200e574
+    bl GamePhaseState_Destroy
     mov r0, r4
     bl Scene_Destroy
     mov r0, r4

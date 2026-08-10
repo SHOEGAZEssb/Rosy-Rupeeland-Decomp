@@ -37,11 +37,12 @@ static s32 launchBoundaryOverlay(s32 direction)
 /*
  * Test global/scene/actor conditions required for a map-edge transition. The
  * normal path rejects busy transition systems, incompatible actor flags,
- * movement mismatches, and unsupported actor modes. If func_0200efe0 reports
- * an enabled edge in configuration fields 0x14..0x1a, allocate overlay 74 for
- * direction 0..3 and return one. Otherwise return zero.
+ * movement mismatches, and unsupported actor modes. If
+ * GamePhaseState_GetBoundaryDirection reports an enabled edge in configuration
+ * fields 0x14..0x1a, allocate overlay 74 for direction 0..3 and return one.
+ * Otherwise return zero.
  */
-s32 func_0200ecf0(GamePhaseState *self)
+s32 GamePhaseState_TryStartBoundaryTransition(GamePhaseState *self)
 {
     u8 *actor = *(u8 **)((u8 *)self + 0x2e80);
     u8 *config = (u8 *)self->configuration;
@@ -74,7 +75,7 @@ s32 func_0200ecf0(GamePhaseState *self)
             return 0;
     }
 
-    direction = func_0200efe0(self);
+    direction = GamePhaseState_GetBoundaryDirection(self);
     if (direction < 1 || direction > 4)
         return 0;
     if (*(s16 *)(config + 0x12 + direction * 2) < 0)
@@ -84,11 +85,11 @@ s32 func_0200ecf0(GamePhaseState *self)
 
 /*
  * Return 1/2/3/4 when the actor position lies within 32 pixels of the left,
- * right, top, or bottom map edge. Dimensions come from owned_2eb0 field 0x20
+ * right, top, or bottom map edge. Dimensions come from phaseObject field 0x20
  * as two 16-bit tile counts and positions are fx32. Return -1 when movement is
  * blocked by actor flag 0x10 or the actor remains inside all four boundaries.
  */
-s32 func_0200efe0(GamePhaseState *self)
+s32 GamePhaseState_GetBoundaryDirection(GamePhaseState *self)
 {
     u8 *actor = *(u8 **)((u8 *)self + 0x2e80);
     s32 vector[4];
@@ -100,7 +101,7 @@ s32 func_0200efe0(GamePhaseState *self)
     if (*(u32 *)(actor + 0xd0) & 0x10)
         return -1;
     func_02056f00(vector, actor + 0x18);
-    dimensions = *(u32 *)((u8 *)self->owned_2eb0 + 0x20);
+    dimensions = *(u32 *)((u8 *)self->phaseObject + 0x20);
     x = vector[1] >> 12;
     z = vector[2] >> 12;
     if (x < 32)

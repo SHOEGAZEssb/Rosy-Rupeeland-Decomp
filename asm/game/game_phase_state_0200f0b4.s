@@ -12,8 +12,8 @@
 .extern func_0202cbe0
 .extern gHeapContext
 
-    .global func_0200f0b4
-func_0200f0b4: ; 0x0200f0b4
+    .global GamePhaseState_CreatePhaseObject
+GamePhaseState_CreatePhaseObject: ; 0x0200f0b4
     stmdb sp!, {r3, r4, r5, lr}
     ldr r4, L_0200f250
     mov r2, #0x4000000
@@ -131,4 +131,4 @@ L_0200f250: .word 0x400000e
 L_0200f254: .word 0x187c
 L_0200f258: .word data_020d554c
 L_0200f25c: .word gHeapContext
-    .size func_0200f0b4, . - func_0200f0b4
+    .size GamePhaseState_CreatePhaseObject, . - GamePhaseState_CreatePhaseObject

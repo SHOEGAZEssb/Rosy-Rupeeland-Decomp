@@ -18,8 +18,8 @@
 .extern ActorFeedback_DestroyPresentations
 .extern func_020a2324
 
-    .global func_0200e4dc
-func_0200e4dc: ; 0x0200e4dc
+    .global GamePhaseState_Init
+GamePhaseState_Init: ; 0x0200e4dc
     stmdb sp!, {r4, lr}
     mov r4, r0
     mov r1, #0x0
@@ -58,13 +58,13 @@ func_0200e4dc: ; 0x0200e4dc
     orr r2, r2, #0x800
     strh r2, [r1, #0x92]
     ldmia sp!, {r4, pc}
-    .size func_0200e4dc, . - func_0200e4dc
+    .size GamePhaseState_Init, . - GamePhaseState_Init
 
-    .global func_0200e574
-func_0200e574: ; 0x0200e574
+    .global GamePhaseState_Destroy
+GamePhaseState_Destroy: ; 0x0200e574
     stmdb sp!, {r4, lr}
     mov r4, r0
-    bl func_0200e5bc
+    bl GamePhaseState_UnloadPhase
     add r0, r4, #0x2f80
     bl func_0201155c
     add r0, r4, #0x358
@@ -80,10 +80,10 @@ func_0200e574: ; 0x0200e574
     bl ActorCollection_Destructor
     mov r0, r4
     ldmia sp!, {r4, pc}
-    .size func_0200e574, . - func_0200e574
+    .size GamePhaseState_Destroy, . - GamePhaseState_Destroy
 
-    .global func_0200e5bc
-func_0200e5bc: ; 0x0200e5bc
+    .global GamePhaseState_UnloadPhase
+GamePhaseState_UnloadPhase: ; 0x0200e5bc
     stmdb sp!, {r4, lr}
     mov r4, r0
     add r0, r4, #0x2b4
@@ -94,7 +94,7 @@ func_0200e5bc: ; 0x0200e5bc
     add r0, r4, #0x2f80
     bl func_0201155c
     mov r0, r4
-    bl func_0200e61c
+    bl GamePhaseState_ResetRuntime
     add r0, r4, #0x4
     bl ActorCollection_Deinit
     add r0, r4, #0x2000
@@ -109,10 +109,10 @@ L_0200e60c:
     mov r1, #0x0
     str r1, [r0, #0xeb0]
     ldmia sp!, {r4, pc}
-    .size func_0200e5bc, . - func_0200e5bc
+    .size GamePhaseState_UnloadPhase, . - GamePhaseState_UnloadPhase
 
-    .global func_0200e61c
-func_0200e61c: ; 0x0200e61c
+    .global GamePhaseState_ResetRuntime
+GamePhaseState_ResetRuntime: ; 0x0200e61c
     stmdb sp!, {r4, lr}
     mov r4, r0
     add r0, r4, #0x358
@@ -126,5 +126,5 @@ func_0200e61c: ; 0x0200e61c
     add r0, r4, #0x4
     bl ActorCollection_UnregisterAndDestroyAllActors
     ldmia sp!, {r4, pc}
-    .size func_0200e61c, . - func_0200e61c
+    .size GamePhaseState_ResetRuntime, . - GamePhaseState_ResetRuntime
 

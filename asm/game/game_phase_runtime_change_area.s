@@ -14,7 +14,7 @@
 .extern ActorMotion_SetPosition
 .extern ActorMotionAreaFollower_GetPosition
 .extern ActorRuntimeCollection_Reset
-.extern func_0200e714
+.extern GamePhaseState_ApplyAreaChange
 .extern func_0201140c
 .extern func_020122a0
 .extern func_02012528
@@ -190,7 +190,7 @@ L_02007d24:
     str r1, [r0, #0xb8]
     ldr r1, [r0, #0xbc]
     add r0, r7, #0x24
-    bl func_0200e714
+    bl GamePhaseState_ApplyAreaChange
     add r1, sp, #0xc
     add r0, r7, #0x28
     bl ActorCollection_DispatchEventToActors

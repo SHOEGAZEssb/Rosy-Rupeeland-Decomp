@@ -11,7 +11,7 @@
 .extern func_0200875c
 .extern ActorMotionGameWork_Update
 .extern ActorMotionAreaFollower_Update
-.extern func_0200ecbc
+.extern GamePhaseState_ApplyPlacementState
 .extern func_02012150
 .extern func_020124f0
 .extern func_0201250c
@@ -61,7 +61,7 @@ L_02008168:
     bl func_020086f8
     add r1, sp, #0x54
     add r0, r4, #0x24
-    bl func_0200ecbc
+    bl GamePhaseState_ApplyPlacementState
     add r0, sp, #0x54
     bl func_02005058
     b L_02008348

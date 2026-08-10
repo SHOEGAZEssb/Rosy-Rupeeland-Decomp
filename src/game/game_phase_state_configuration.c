@@ -20,7 +20,8 @@ extern void ActorDerivedType1_UpdateGameWorkRuntimeFlags(void *object, s32 enabl
 extern void ActorInteractionRuntime_Start(void);
 extern void func_020598a0(void *sound, u16 value);
 extern void GamePhase_ResetTransientState(void);
-extern void func_0200f0b4(GamePhaseState *self, const void *configuration);
+extern void GamePhaseState_CreatePhaseObject(GamePhaseState *self,
+                                             const void *configuration);
 extern void func_020a2348(void *object, s32 a, s32 b);
 extern void func_020a23a8(void *object, s32 a, s32 b);
 extern void func_020ae740(void);
@@ -46,9 +47,10 @@ typedef struct PhaseConfiguration {
 /*
  * Configure the main BG bank and graphics mode according to configuration
  * flag bit 23, reset the phase-state render helpers, then apply the complete
- * descriptor through func_0200e780. Hardware writes affect main DISPCNT.
+ * descriptor through GamePhaseState_ApplyConfiguration. Hardware writes affect
+ * main DISPCNT.
  */
-void func_0200e650(GamePhaseState *self, const void *configuration)
+void GamePhaseState_ConfigureForPhase(GamePhaseState *self, const void *configuration)
 {
     const PhaseConfiguration *config =
         (const PhaseConfiguration *)configuration;
@@ -59,20 +61,20 @@ void func_0200e650(GamePhaseState *self, const void *configuration)
         GX_SetBankForBG(0x10);
         GX_DisableBankForLCDC();
         GX_SetGraphicsMode(1, 0, 1);
-        render = func_0201e0ec(self->helper_2f58);
+        render = func_0201e0ec(self->renderHelperStorage);
         func_020a23a8(render, 1, 1);
     } else {
         func_020ae740();
         GX_SetBankForBG(2);
-        render = func_0201e0ec(self->helper_2f58);
+        render = func_0201e0ec(self->renderHelperStorage);
         func_020a2348(render, 1, 0);
         GX_SetGraphicsMode(1, 0, 0);
         *(volatile u32 *)0x04000000 =
             (*(volatile u32 *)0x04000000 & ~0x1f00) | 0x1000;
     }
-    ActorCollection_SetSpriteMode(self->storage_0004, 1);
-    func_0202d68c(self->storage_0004, 0);
-    func_0200e780(self, configuration);
+    ActorCollection_SetSpriteMode(self->actorCollectionStorage, 1);
+    func_0202d68c(self->actorCollectionStorage, 0);
+    GamePhaseState_ApplyConfiguration(self, configuration);
 }
 
 /*
@@ -80,17 +82,17 @@ void func_0200e650(GamePhaseState *self, const void *configuration)
  * service, and select a helper mode for phase IDs 2..4. If field_12 is
  * negative, also invoke helper_2eb4's first virtual method.
  */
-void func_0200e714(GamePhaseState *self, const void *configuration)
+void GamePhaseState_ApplyAreaChange(GamePhaseState *self, const void *configuration)
 {
     const PhaseConfiguration *config =
         (const PhaseConfiguration *)configuration;
     typedef void (*HelperMethod)(void *self);
 
     self->configuration = (void *)configuration;
-    func_0200e780(self, configuration);
+    GamePhaseState_ApplyConfiguration(self, configuration);
     config->callback24(0);
     ActorInteractionRuntime_Start();
-    ActorDerivedType1_UpdateGameWorkRuntimeFlags(self->storage_0004 + 0x2e7c,
+    ActorDerivedType1_UpdateGameWorkRuntimeFlags(self->actorCollectionStorage + 0x2e7c,
                   config->phaseId >= 2 && config->phaseId <= 4);
     if (config->field_12 < 0)
         (*(HelperMethod **)self->helper_2eb4)[0](self->helper_2eb4);
@@ -100,9 +102,9 @@ void func_0200e714(GamePhaseState *self, const void *configuration)
  * Apply core descriptor fields and reset per-phase GameWork state. This clears
  * the pointer bank and 19 transient flags, updates current/previous phase IDs,
  * resets shared render/debug services, derives a signed mode from config bit
- * 25, seeds Lupy values 0xb4/3, and attaches owned_2eb0 to a new helper.
+ * 25, seeds Lupy values 0xb4/3, and attaches phaseObject to a new helper.
  */
-void func_0200e780(GamePhaseState *self, const void *configuration)
+void GamePhaseState_ApplyConfiguration(GamePhaseState *self, const void *configuration)
 {
     const PhaseConfiguration *config =
         (const PhaseConfiguration *)configuration;
@@ -117,8 +119,8 @@ void func_0200e780(GamePhaseState *self, const void *configuration)
     void *helper;
 
     func_020598a0(gSoundContext, (u16)config->phaseId);
-    func_0200f0b4(self, configuration);
-    OverlaySlot_LoadOverlay(self->helper_2ea4, config->helperValue1c);
+    GamePhaseState_CreatePhaseObject(self, configuration);
+    OverlaySlot_LoadOverlay(self->overlaySlotStorage, config->helperValue1c);
     GameWork_ClearPointerBank(gGameWork, 0);
     *(u16 *)(work + 0x228) = 0;
     GameWork_SetFlag(gGameWork, 0x3ec);
@@ -138,5 +140,5 @@ void func_0200e780(GamePhaseState *self, const void *configuration)
     *(u16 *)(lupy + 0xcc) = 0xb4;
     *(u16 *)(lupy + 0xce) = 3;
     helper = func_020275b0();
-    func_0202751c(helper, self->owned_2eb0);
+    func_0202751c(helper, self->phaseObject);
 }

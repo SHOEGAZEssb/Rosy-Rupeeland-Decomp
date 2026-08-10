@@ -7,7 +7,7 @@ extern void *gGameWork;
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_0200eb58(void *object, void *state);
+extern void GamePhaseState_ConfigureMainDisplay(void *object, void *state);
 extern void GameWork_SetFlag(void *work, s32 flag);
 extern void func_020121f8(void *actor);
 extern void GamePhaseRuntime_RefreshAreaAuxiliaryObject(GamePhaseRuntime *self, void *area, s32 enabled);
@@ -33,7 +33,7 @@ void func_02008570(GamePhaseRuntime *self, s32 mode, void *state)
 
     if (mode == 2 || mode == 0) {
         *mainDisplay = (*mainDisplay & ~0x1f00) | 0x1000;
-        func_0200eb58(b + 0x24, state);
+        GamePhaseState_ConfigureMainDisplay(b + 0x24, state);
         GameWork_SetFlag(gGameWork, 0x395);
     }
     if ((u32)(mode - 1) <= 1) {
