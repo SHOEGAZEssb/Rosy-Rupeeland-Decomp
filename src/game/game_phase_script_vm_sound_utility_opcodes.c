@@ -39,7 +39,7 @@ s32 func_0201a540(GamePhaseActorScriptVm *self)
  * the remaining commands only mutate sound state.  Other commands do nothing.
  * Return zero.
  */
-s32 func_0201a554(GamePhaseActorScriptVm *self)
+s32 GamePhaseActorScriptVm_DispatchSoundContextUtilityCommand(GamePhaseActorScriptVm *self)
 {
     s32 command = (s32)GamePhaseScriptVm_Pop(&self->base);
     switch (command) {

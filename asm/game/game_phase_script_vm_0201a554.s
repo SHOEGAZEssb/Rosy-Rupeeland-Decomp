@@ -9,8 +9,8 @@
 .extern func_020595ec
 .extern func_02059a00
 .extern gSoundContext
-.global func_0201a554
-func_0201a554:
+.global GamePhaseActorScriptVm_DispatchSoundContextUtilityCommand
+GamePhaseActorScriptVm_DispatchSoundContextUtilityCommand:
     stmdb sp!, {r4, lr}
     mov r4, r0
     bl GamePhaseScriptVm_Pop
@@ -68,4 +68,4 @@ L_0201a608:
     mov r0, #0x0
     ldmia sp!, {r4, pc}
 L_0201a610: .word gSoundContext
-.size func_0201a554, . - func_0201a554
+.size GamePhaseActorScriptVm_DispatchSoundContextUtilityCommand, . - GamePhaseActorScriptVm_DispatchSoundContextUtilityCommand

@@ -6330,7 +6330,7 @@ build build/reports/game_phase_script_vm_0201a554.json: objdiff build/decomp/del
   base_object = build/decomp/asm/game/game_phase_script_vm_0201a554.o
 build build/reports/game_phase_script_vm_0201a554.txt: match_report build/reports/game_phase_script_vm_0201a554.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_script_vm_0201a554.json
-  report_args = --section .text --function func_0201a554 --require-exact
+  report_args = --section .text --function GamePhaseActorScriptVm_DispatchSoundContextUtilityCommand --require-exact
 
 build build/reports/game_phase_script_vm_sound_utility_opcodes.txt: phony build/reports/game_phase_script_vm_0201a50c.txt build/reports/game_phase_script_vm_0201a540.txt build/reports/game_phase_script_vm_0201a554.txt
 build build/reports/game_phase_script_vm_0201a614.json: objdiff build/decomp/delinks/asm/game/game_phase_script_vm_0201a614.o | build/decomp/asm/game/game_phase_script_vm_0201a614.o
