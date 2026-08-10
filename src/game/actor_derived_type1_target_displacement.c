@@ -33,7 +33,7 @@ extern void *func_02022cb0(void *allocation, void *resource, void *owner,
 extern void func_0201ded4(void *manager, void *object);
 extern void func_020099c0(void *manager, s32 first, s32 second);
 extern void func_020349b8(void *actor, u32 sound, s32 extra);
-extern void func_02039bb0(void *actor);
+extern void Type1Actor_TryEnterFailureState(void *actor);
 #ifdef __cplusplus
 }
 #endif
@@ -68,7 +68,8 @@ static s32 displacementStrength(s32 total)
  * relative-angle gate then derive a randomized positive magnitude; when valid,
  * set cooldown 30, update Lupy state, allocate/register an object using manager
  * resource +0x2ea4, dispatch event (0x14,7), play actor sounds 0x26/0x0e, and
- * call func_02039bb0. Returns no value. Vector, target virtual, manager, random,
+ * call Type1Actor_TryEnterFailureState. Returns no value. Vector, target virtual,
+ * manager, random,
  * Lupy, heap, sound, and effect calls have observable engine/SDK effects.
  */
 void func_0203825c(void *self, void *other, s32 firstWeight, s32 secondWeight)
@@ -187,7 +188,7 @@ void func_0203825c(void *self, void *other, s32 firstWeight, s32 secondWeight)
             func_020099c0(data_021052fc + 0x2fbc, 0x14, 7);
             func_020349b8(actor, 0x26, 0);
             func_020349b8(actor, 0x0e, 0);
-            func_02039bb0(actor);
+            Type1Actor_TryEnterFailureState(actor);
             func_02005058(temporary);
             func_02005058(position);
         }

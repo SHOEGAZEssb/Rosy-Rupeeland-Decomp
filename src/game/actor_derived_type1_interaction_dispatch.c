@@ -17,7 +17,7 @@ extern void *func_02022cb0(void *allocation, void *resource, void *owner,
 extern void func_0201ded4(void *manager, void *object);
 extern void func_0203811c(void *actor);
 extern void func_020349b8(void *actor, u32 sound, s32 extra);
-extern void func_02039bb0(void *actor);
+extern void Type1Actor_TryEnterFailureState(void *actor);
 extern void func_02038ecc(void *actor, s32 record);
 extern void *SceneManager_GetCurrent(void *manager);
 #ifdef __cplusplus
@@ -31,7 +31,8 @@ extern void *SceneManager_GetCurrent(void *manager);
  * -amount, 0x2000, and -0xc0, then inspect source descriptor +0x1fc. IDs
  * 0x21/0x22/0x2e/0x2f/0x40 trigger auxiliary reset, sound 0x26, and actor
  * +0x230 bit 0x400000 when descriptor byte +0x2c is four or 0x200000 otherwise;
- * finally call func_02039bb0. Independently, descriptor halfword +0x2e other
+ * finally call Type1Actor_TryEnterFailureState. Independently, descriptor
+ * halfword +0x2e other
  * than -1 starts a record through func_02038ecc.
  *
  * With actor +0xd0 bit 0x40000 set, positive amount instead dispatches source
@@ -82,7 +83,7 @@ void func_020398a4(void *self, s32 amount, void *sourceValue)
             else
                 *(u32 *)(actor + 0x230) |= 0x200000;
         }
-        func_02039bb0(actor);
+        Type1Actor_TryEnterFailureState(actor);
     }
     descriptor = *(u8 **)(source + 0x1fc);
     if (*(s16 *)(descriptor + 0x2e) != -1)

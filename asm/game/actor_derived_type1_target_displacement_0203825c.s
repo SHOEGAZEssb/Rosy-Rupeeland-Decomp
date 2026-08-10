@@ -19,7 +19,7 @@
 .extern func_020349b8
 .extern func_020380f0
 .extern func_02038784
-.extern func_02039bb0
+.extern Type1Actor_TryEnterFailureState
 .extern func_020435d8
 .extern func_0204cff4
 .extern func_020a2894
@@ -351,7 +351,7 @@ func_0203825c: ; 0x0203825c
     mov r2, #0x0
     bl func_020349b8
     mov r0, r7
-    bl func_02039bb0
+    bl Type1Actor_TryEnterFailureState
     add r0, sp, #0x28
     bl func_02005058
     add r0, sp, #0x38
@@ -372,4 +372,3 @@ func_0203825c: ; 0x0203825c
 .L_0203877c: .word data_020df4a4
 .L_02038780: .word gHeapContext
     .size func_0203825c, . - func_0203825c
-

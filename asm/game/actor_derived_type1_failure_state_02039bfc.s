@@ -6,9 +6,9 @@
 .extern gGameWork
 .extern gSoundContext
 
-    .global func_02039bfc
-    .type func_02039bfc, @function
-func_02039bfc: ; 0x02039bfc
+    .global Type1Actor_EnterFailureState
+    .type Type1Actor_EnterFailureState, @function
+Type1Actor_EnterFailureState: ; 0x02039bfc
     stmdb sp!, {r4, lr}
     mov r4, r0
     bl func_020338e4
@@ -25,4 +25,4 @@ func_02039bfc: ; 0x02039bfc
 .L_02039c30: .word gGameWork
 .L_02039c34: .word 0x3f5
 .L_02039c38: .word gSoundContext
-    .size func_02039bfc, . - func_02039bfc
+    .size Type1Actor_EnterFailureState, . - Type1Actor_EnterFailureState

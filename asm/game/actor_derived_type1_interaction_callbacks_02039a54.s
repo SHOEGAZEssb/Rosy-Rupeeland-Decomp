@@ -8,7 +8,7 @@
 .extern func_02010c00
 .extern func_0201ded4
 .extern func_02022cb0
-.extern func_02039bb0
+.extern Type1Actor_TryEnterFailureState
 .extern gHeapContext
 .extern gLupyContext
 .extern gSceneManager
@@ -79,7 +79,7 @@ func_02039a54: ; 0x02039a54
     add r0, r0, #0x2c00
     bl func_0201ded4
     mov r0, r6
-    bl func_02039bb0
+    bl Type1Actor_TryEnterFailureState
     mov r0, #0x1
     b .L_02039b7c
 .L_02039b54:

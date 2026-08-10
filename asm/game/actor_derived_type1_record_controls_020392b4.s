@@ -3,7 +3,7 @@
 .extern func_02033f7c
 .extern Actor_IsAtCachedTerrainHeight
 .extern func_020390c8
-.extern func_02039bb0
+.extern Type1Actor_TryEnterFailureState
 
     .global func_020392b4
     .type func_020392b4, @function
@@ -46,6 +46,6 @@ func_020392b4: ; 0x020392b4
     mov r2, r4
     bl func_02033f7c
     mov r0, r6
-    bl func_02039bb0
+    bl Type1Actor_TryEnterFailureState
     ldmia sp!, {r4, r5, r6, pc}
     .size func_020392b4, . - func_020392b4

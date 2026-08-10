@@ -10,7 +10,7 @@
 .extern func_02032a64
 .extern func_02033f44
 .extern func_02039720
-.extern func_02039bfc
+.extern Type1Actor_EnterFailureState
 .extern gLupyContext
 .extern gSoundContext
 
@@ -91,7 +91,7 @@ func_02038834: ; 0x02038834
     b .L_020389b4
 .L_02038950:
     mov r0, r5
-    bl func_02039bfc
+    bl Type1Actor_EnterFailureState
     ldr r4, .L_020389e4
     mov r0, r5
     sub r2, r4, #0x1

@@ -25,7 +25,7 @@ extern void *func_02022cb0(void *allocation, void *resource, void *actor,
                            s32 value, s32 first, s32 second);
 extern void func_0201ded4(void *manager, void *object);
 extern void Sound_Play(void *context, u32 sound, u32 variant);
-extern void func_02039bb0(void *actor);
+extern void Type1Actor_TryEnterFailureState(void *actor);
 extern u32 genrand_int32(void);
 extern void func_0200500c(void *vector, s32 x, s32 y, s32 z);
 extern void func_02008378(void *output, const void *left, const void *right);
@@ -146,7 +146,7 @@ void func_020372e4(void *self)
             if (*(u16 *)(descriptor + 0x1a) != 0)
                 Sound_Play(gSoundContext, *(u16 *)(descriptor + 0x1a) >> 7,
                            *(u16 *)(descriptor + 0x1a) & 0x7f);
-            func_02039bb0(actor);
+            Type1Actor_TryEnterFailureState(actor);
         }
 
         if (kind == 0x73 && func_020ada8c(actor[0x2a1], 10) == 0) {

@@ -7,7 +7,7 @@
 .extern func_02010c00
 .extern func_0201ded4
 .extern func_02022cb0
-.extern func_02039bb0
+.extern Type1Actor_TryEnterFailureState
 .extern gHeapContext
 .extern gLupyContext
 
@@ -63,7 +63,7 @@ func_ov091_02218aa0:
     add r0, r0, #0x2c00
     bl func_0201ded4
     mov r0, r5
-    bl func_02039bb0
+    bl Type1Actor_TryEnterFailureState
 .L_02218b68:
     add sp, sp, #0x8
     ldmia sp!, {r4, r5, r6, pc}

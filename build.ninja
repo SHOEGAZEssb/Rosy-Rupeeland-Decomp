@@ -15820,7 +15820,7 @@ build build/reports/actor_derived_type1_failure_state_02039bb0.json: objdiff bui
   base_object = build/decomp/asm/game/actor_derived_type1_failure_state_02039bb0.o
 build build/reports/actor_derived_type1_failure_state_02039bb0.txt: match_report build/reports/actor_derived_type1_failure_state_02039bb0.json | tools/report_objdiff.py
   report_json = build/reports/actor_derived_type1_failure_state_02039bb0.json
-  report_args = --section .text --function func_02039bb0 --require-exact
+  report_args = --section .text --function Type1Actor_TryEnterFailureState --require-exact
 build build/decomp/asm/game/actor_derived_type1_failure_state_02039bfc.o: mwasmarm asm/game/actor_derived_type1_failure_state_02039bfc.s
 build build/decomp/delinks/asm/game/actor_derived_type1_failure_state_02039bfc.o: dsd_delink config/arm9/config.yaml config/arm9/delinks.txt config/arm9/symbols.txt config/arm9/relocs.txt
 build build/reports/actor_derived_type1_failure_state_02039bfc.json: objdiff build/decomp/delinks/asm/game/actor_derived_type1_failure_state_02039bfc.o | build/decomp/asm/game/actor_derived_type1_failure_state_02039bfc.o
@@ -15828,7 +15828,7 @@ build build/reports/actor_derived_type1_failure_state_02039bfc.json: objdiff bui
   base_object = build/decomp/asm/game/actor_derived_type1_failure_state_02039bfc.o
 build build/reports/actor_derived_type1_failure_state_02039bfc.txt: match_report build/reports/actor_derived_type1_failure_state_02039bfc.json | tools/report_objdiff.py
   report_json = build/reports/actor_derived_type1_failure_state_02039bfc.json
-  report_args = --section .text --function func_02039bfc --require-exact
+  report_args = --section .text --function Type1Actor_EnterFailureState --require-exact
 build build/reports/actor_derived_type1_failure_state.txt: phony build/reports/actor_derived_type1_failure_state_02039ba0.txt build/reports/actor_derived_type1_failure_state_02039bb0.txt build/reports/actor_derived_type1_failure_state_02039bfc.txt
 
 build actor_derived_type1_failure_state: phony build/decomp/src/game/actor_derived_type1_failure_state.o build/decomp/asm/game/actor_derived_type1_failure_state_02039ba0.o build/decomp/asm/game/actor_derived_type1_failure_state_02039bb0.o build/decomp/asm/game/actor_derived_type1_failure_state_02039bfc.o build/reports/actor_derived_type1_failure_state.txt

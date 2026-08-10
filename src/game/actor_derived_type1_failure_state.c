@@ -13,7 +13,7 @@ extern void GameWork_SetFlag(void *work, u32 flag);
 extern s32 func_02010b64(void *context);
 extern void func_020338e4(void *actor);
 extern void func_02058ce0(void *soundContext);
-extern void func_02039bfc(void *actor);
+extern void Type1Actor_EnterFailureState(void *actor);
 #ifdef __cplusplus
 }
 #endif
@@ -26,17 +26,18 @@ void func_02039ba0(void *self)
 
 /*
  * Return while GameWork flag 0x3f5 is already set or the Lupy query is
- * positive. Otherwise enter the failure state through func_02039bfc. Returns
+ * positive. Otherwise enter the failure state through
+ * Type1Actor_EnterFailureState. Returns
  * no value; GameWork/Lupy queries are read-only, while entry changes actor,
  * GameWork, and audio state.
  */
-void func_02039bb0(void *self)
+void Type1Actor_TryEnterFailureState(void *self)
 {
     if (GameWork_TestFlag(gGameWork, 0x3f5) != 0)
         return;
     if (func_02010b64(gLupyContext) > 0)
         return;
-    func_02039bfc(self);
+    Type1Actor_EnterFailureState(self);
 }
 
 /*
@@ -44,7 +45,7 @@ void func_02039bb0(void *self)
  * and pass the sound context to func_02058ce0. Returns no value; the helpers
  * alter actor collision/control state, persistent GameWork, and audio state.
  */
-void func_02039bfc(void *self)
+void Type1Actor_EnterFailureState(void *self)
 {
     u8 *actor = (u8 *)self;
     func_020338e4(actor);

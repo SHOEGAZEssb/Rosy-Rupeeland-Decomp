@@ -14,7 +14,7 @@ extern void func_0200b2c0(void *value, s32 x, s32 y, s32 z);
 extern void func_0200500c(void *value, s32 x, s32 y, s32 z);
 extern void func_02005058(void *value);
 extern s32 func_02033f44(void *actor);
-extern void func_02039bfc(void *actor);
+extern void Type1Actor_EnterFailureState(void *actor);
 extern void func_02039720(void *actor, s32 kind, s32 first, s32 second,
                           s32 third);
 extern void Sound_Play(void *context, s32 channel, s32 sound);
@@ -30,7 +30,8 @@ extern void Sound_Play(void *context, s32 channel, s32 sound);
  * global byte; zero mode instead sets +0x230 bit 0x400, vertical velocity
  * +0x44 to 0x4000, height +0x24 to the ground query plus 0x1000, and state 13.
  *
- * Otherwise invoke func_02039bfc, configure effect values 6/0x109d/0x1001/
+ * Otherwise invoke Type1Actor_EnterFailureState, configure effect values
+ * 6/0x109d/0x1001/
  * 0x109e through func_02039720, enter state 14 with the same velocity/height,
  * set +0xd0 bit 0x2000, and play sound 0x2d. Finally clear bit four in the
  * halfword at object +0x54/+0x24 and call actor virtual +0x5c. Returns no
@@ -64,7 +65,7 @@ void func_02038834(void *self, const void *position, s32 mode)
             *(u16 *)(actor + 0xd6) = 13;
         }
     } else {
-        func_02039bfc(actor);
+        Type1Actor_EnterFailureState(actor);
         func_02039720(actor, 6, 0x109d, 0x1001, 0x109e);
         *(u16 *)(actor + 0xd6) = 14;
         *(s32 *)(actor + 0x44) = 0x4000;

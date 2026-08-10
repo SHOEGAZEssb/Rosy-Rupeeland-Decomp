@@ -15,7 +15,7 @@ extern void *func_02009d78(void *manager);
 extern void *func_02022cb0(void *allocation, void *resource, void *owner,
                            s32 value, s32 first, s32 second);
 extern void func_0201ded4(void *manager, void *object);
-extern void func_02039bb0(void *actor);
+extern void Type1Actor_TryEnterFailureState(void *actor);
 extern void *SceneManager_GetCurrent(void *manager);
 #ifdef __cplusplus
 }
@@ -28,7 +28,8 @@ void func_02039a50(void) {}
  * Return zero while optional object +0x270 has byte +0x10 bit one, actor
  * +0x230 bit 0x20000 is set, or amount is nonpositive. With +0xd0 bit 0x40000
  * clear, subtract positive amount from Lupy, allocate/register a 0x44-byte
- * actor-owned effect with -amount, 0x2000, and -0xc0, call func_02039bb0, and
+ * actor-owned effect with -amount, 0x2000, and -0xc0, call
+ * Type1Actor_TryEnterFailureState, and
  * return one. With that bit set, instead dispatch source through current scene
  * object +0x4c virtual +0xcc and return its result. Heap, Lupy, manager, scene,
  * and virtual calls have observable engine state.
@@ -58,7 +59,7 @@ s32 func_02039a54(void *self, s32 amount, void *source)
                                    0x2000, -0xc0);
         }
         func_0201ded4(data_021052fc + 0x2f7c, effect);
-        func_02039bb0(actor);
+        Type1Actor_TryEnterFailureState(actor);
         return 1;
     }
 }

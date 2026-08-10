@@ -11,7 +11,7 @@ extern void func_020551f0(void *object);
 extern void func_02038f98(void *actor);
 extern s32 Actor_IsAtCachedTerrainHeight(void *actor);
 extern void func_02033f7c(void *actor, const void *vector, s32 mode);
-extern void func_02039bb0(void *actor);
+extern void Type1Actor_TryEnterFailureState(void *actor);
 #ifdef __cplusplus
 }
 #endif
@@ -57,7 +57,8 @@ void func_02039278(void *self, void *object)
  * Actor_IsAtCachedTerrainHeight and reject an
  * optional +0x270 object whose byte +0x10 has bit one. For nonzero mode, tear
  * down the active descriptor, then dispatch vector/mode through func_02033f7c
- * and finalize with func_02039bb0. Returns no value; helper calls may update
+ * and finalize with Type1Actor_TryEnterFailureState. Returns no value; helper
+ * calls may update
  * actor presentation, ownership, and motion state.
  */
 void func_020392b4(void *self, const void *vector, s32 mode)
@@ -77,7 +78,7 @@ void func_020392b4(void *self, const void *vector, s32 mode)
     if (mode != 0)
         func_020390c8(actor);
     func_02033f7c(actor, vector, mode);
-    func_02039bb0(actor);
+    Type1Actor_TryEnterFailureState(actor);
 }
 
 /*

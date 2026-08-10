@@ -22,7 +22,7 @@
 .extern Actor_IsAtCachedTerrainHeight
 .extern func_02038ecc
 .extern func_020390c8
-.extern func_02039bb0
+.extern Type1Actor_TryEnterFailureState
 .extern func_0203bba4
 .extern func_02058d40
 .extern func_02059278
@@ -153,7 +153,7 @@ func_020372e4: ; 0x020372e4
     bl Sound_Play
 .L_02037488:
     mov r0, r7
-    bl func_02039bb0
+    bl Type1Actor_TryEnterFailureState
 .L_02037490:
     cmp r4, #0x73
     bne .L_020375ac
