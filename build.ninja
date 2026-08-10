@@ -10474,7 +10474,7 @@ build build/reports/actor_collision_extent.json: objdiff build/decomp/delinks/sr
 
 build build/reports/actor_collision_extent.txt: match_report build/reports/actor_collision_extent.json | tools/report_objdiff.py
   report_json = build/reports/actor_collision_extent.json
-  report_args = --section .text --function func_0200ab18 --function func_0200ab30 --require-exact
+  report_args = --section .text --function ActorBounds_GetWidth --function ActorBounds_GetHeight --require-exact
 
 build build/reports/actor_collision_overlap_response.json: objdiff build/decomp/delinks/src/game/actor_collision_overlap_response.o | build/decomp/src/game/actor_collision_overlap_response.o
   target_object = build/decomp/delinks/src/game/actor_collision_overlap_response.o

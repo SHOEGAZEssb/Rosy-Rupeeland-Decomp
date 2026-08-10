@@ -132,8 +132,8 @@ void func_0200a6ac(ActorCollisionRange *result, void *collisionContext,
                    s32 z, s32 actorHeight);
 s32 func_0200a970(void *actor, s32 deltaX, s32 deltaY,
                   const ActorCollisionRange *other);
-s32 func_0200ab18(const s8 *bounds);
-s32 func_0200ab30(const s8 *bounds);
+s32 ActorBounds_GetWidth(const s8 *bounds);
+s32 ActorBounds_GetHeight(const s8 *bounds);
 void func_0200ab48(void *actor, s32 deltaX, s32 deltaY, u8 edgeFlags,
                    const ActorCollisionRange *intersection);
 void func_0200ac14(void *actor, void *collisionContext);

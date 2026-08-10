@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/actor_bounds_center_helpers.c.
 .text
-.extern func_0200ab30
+.extern ActorBounds_GetHeight
 
     .global func_02033798
     .type func_02033798, @function
@@ -15,7 +15,7 @@ func_02033798: ; 0x02033798
     strb r1, [r4, #0x0]
     add r1, r1, r2, asr #0x18
     strb r1, [r4, #0x2]
-    bl func_0200ab30
+    bl ActorBounds_GetHeight
     strb r5, [r4, #0x1]
     add r0, r5, r0
     strb r0, [r4, #0x3]
@@ -23,4 +23,3 @@ func_02033798: ; 0x02033798
     .size func_02033798, . - func_02033798
 
     .global func_020337d4
-

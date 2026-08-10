@@ -3,8 +3,8 @@
 .extern func_02005030
 .extern func_02005058
 .extern func_020067fc
-.extern func_0200ab18
-.extern func_0200ab30
+.extern ActorBounds_GetWidth
+.extern ActorBounds_GetHeight
 
     .global func_02032e14
     .type func_02032e14, @function
@@ -65,19 +65,19 @@ func_02032e14: ; 0x02032e14
     b .L_020330e4 ; case 46
 .L_02032ee8:
     add r0, r2, #0x8
-    bl func_0200ab18
+    bl ActorBounds_GetWidth
     b .L_020330f4
 .L_02032ef4:
     add r0, r2, #0x8
-    bl func_0200ab30
+    bl ActorBounds_GetHeight
     b .L_020330f4
 .L_02032f00:
     add r0, r2, #0x4
-    bl func_0200ab18
+    bl ActorBounds_GetWidth
     b .L_020330f4
 .L_02032f0c:
     add r0, r2, #0x4
-    bl func_0200ab30
+    bl ActorBounds_GetHeight
     b .L_020330f4
 .L_02032f18:
     ldr r0, [r2, #0x1dc]
@@ -234,4 +234,3 @@ func_02032e14: ; 0x02032e14
     .size func_02032e14, . - func_02032e14
 
     .global func_020330fc
-

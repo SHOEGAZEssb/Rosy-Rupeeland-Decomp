@@ -1,8 +1,8 @@
 ; Matching retail form; see src/game/actor_runtime_setter_dispatch.c.
 .text
 .extern func_020050a4
-.extern func_0200ab18
-.extern func_0200ab30
+.extern ActorBounds_GetWidth
+.extern ActorBounds_GetHeight
 .extern ActorBounds_Copy
 .extern ActorBounds_Set
 .extern func_02033738
@@ -78,7 +78,7 @@ func_020330fc: ; 0x020330fc
     add r1, r5, #0x8
     bl func_02033738
     add r0, r5, #0x8
-    bl func_0200ab30
+    bl ActorBounds_GetHeight
     mov r3, r4, lsl #0x18
     mov r1, #0x0
     str r0, [sp, #0x0]
@@ -94,7 +94,7 @@ func_020330fc: ; 0x020330fc
     bl func_020adae4
     mov r6, r0
     add r0, r5, #0x8
-    bl func_0200ab30
+    bl ActorBounds_GetHeight
     mvn r1, #0x1
     bl func_020adae4
     ldrsb r2, [sp, #0x30]
@@ -114,7 +114,7 @@ func_020330fc: ; 0x020330fc
     add r1, r5, #0x8
     bl func_02033738
     add r0, r5, #0x8
-    bl func_0200ab18
+    bl ActorBounds_GetWidth
     mov r3, r0
     mov r0, r4, lsl #0x18
     mov r2, r0, asr #0x18
@@ -127,7 +127,7 @@ func_020330fc: ; 0x020330fc
     add r0, r5, #0x8
     bl ActorBounds_Copy
     add r0, r5, #0x8
-    bl func_0200ab18
+    bl ActorBounds_GetWidth
     mvn r1, #0x1
     bl func_020adae4
     mov r6, r0
@@ -151,7 +151,7 @@ func_020330fc: ; 0x020330fc
     add r1, r5, #0x4
     bl func_02033738
     add r0, r5, #0x4
-    bl func_0200ab30
+    bl ActorBounds_GetHeight
     mov r3, r4, lsl #0x18
     mov r1, #0x0
     str r0, [sp, #0x0]
@@ -167,7 +167,7 @@ func_020330fc: ; 0x020330fc
     bl func_020adae4
     mov r6, r0
     add r0, r5, #0x4
-    bl func_0200ab30
+    bl ActorBounds_GetHeight
     mvn r1, #0x1
     bl func_020adae4
     ldrsb r2, [sp, #0x20]
@@ -187,7 +187,7 @@ func_020330fc: ; 0x020330fc
     add r1, r5, #0x4
     bl func_02033738
     add r0, r5, #0x4
-    bl func_0200ab18
+    bl ActorBounds_GetWidth
     mov r3, r0
     mov r0, r4, lsl #0x18
     mov r2, r0, asr #0x18
@@ -200,7 +200,7 @@ func_020330fc: ; 0x020330fc
     add r0, r5, #0x4
     bl ActorBounds_Copy
     add r0, r5, #0x4
-    bl func_0200ab18
+    bl ActorBounds_GetWidth
     mvn r1, #0x1
     bl func_020adae4
     mov r6, r0

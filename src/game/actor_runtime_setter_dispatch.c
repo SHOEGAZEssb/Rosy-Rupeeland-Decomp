@@ -4,8 +4,8 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern s32 func_0200ab18(const s8 *bounds);
-extern s32 func_0200ab30(const s8 *bounds);
+extern s32 ActorBounds_GetWidth(const s8 *bounds);
+extern s32 ActorBounds_GetHeight(const s8 *bounds);
 extern s32 func_020adae4(s32 dividend, s32 divisor);
 extern void ActorBounds_Copy(void *destination, const void *source);
 extern void ActorBounds_Set(void *bounds, s32 minX, s32 minY, s32 maxX,
@@ -28,16 +28,16 @@ static void setBoundsExtent(s8 *bounds, s32 value, s32 setHeight)
     s32 height;
 
     func_02033738(center, bounds);
-    width = func_0200ab18(bounds);
-    height = func_0200ab30(bounds);
+    width = ActorBounds_GetWidth(bounds);
+    height = ActorBounds_GetHeight(bounds);
     if (setHeight) {
         ActorBounds_Set(replacement, 0, 0, width, (s8)value);
     } else {
         ActorBounds_Set(replacement, 0, 0, (s8)value, height);
     }
     ActorBounds_Copy(bounds, replacement);
-    width = func_0200ab18(bounds);
-    height = func_0200ab30(bounds);
+    width = ActorBounds_GetWidth(bounds);
+    height = ActorBounds_GetHeight(bounds);
     func_02033798(bounds,
                   (s8)center[4] + func_020adae4(width, -2),
                   (s8)center[5] + func_020adae4(height, -2));

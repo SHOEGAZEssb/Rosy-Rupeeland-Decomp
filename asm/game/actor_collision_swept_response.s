@@ -3,8 +3,8 @@
 .text
 .extern func_0200a6ac
 .extern func_0200a970
-.extern func_0200ab18
-.extern func_0200ab30
+.extern ActorBounds_GetWidth
+.extern ActorBounds_GetHeight
 .extern Actor_GetCollisionBounds
 .extern func_02033f44
 .global func_0200ac14
@@ -22,11 +22,11 @@ func_0200ac14:
     sub r5, r6, r5
     sub r6, r3, r2
     bl Actor_GetCollisionBounds
-    bl func_0200ab18
+    bl ActorBounds_GetWidth
     mov r7, r0, lsl #0xc
     mov r0, r10
     bl Actor_GetCollisionBounds
-    bl func_0200ab30
+    bl ActorBounds_GetHeight
     mov r8, r0, lsl #0xc
     mov r0, r10
     bl func_02033f44

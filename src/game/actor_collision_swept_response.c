@@ -28,8 +28,8 @@ void func_0200ac14(void *actorPointer, void *collisionContext)
     s32 z = *(s32 *)(actor + 0x24) >> 16;
     s32 deltaX = *(s32 *)(actor + 0x1c) - *(s32 *)(actor + 0x2c);
     s32 deltaY = *(s32 *)(actor + 0x20) - *(s32 *)(actor + 0x30);
-    s32 width = func_0200ab18(Actor_GetCollisionBounds(actorPointer)) << 12;
-    s32 height = func_0200ab30(Actor_GetCollisionBounds(actorPointer)) << 12;
+    s32 width = ActorBounds_GetWidth(Actor_GetCollisionBounds(actorPointer)) << 12;
+    s32 height = ActorBounds_GetHeight(Actor_GetCollisionBounds(actorPointer)) << 12;
     s32 actorHeight = func_02033f44(actorPointer) >> 16;
     ActorCollisionRange sweep;
     ActorCollisionRange collision;

@@ -6,8 +6,8 @@ extern "C" {
 #endif
 extern s32 func_02034568(void *actor, s32 x, s32 y, s32 expectedHeight);
 extern s32 func_0203463c(void *actor, s32 x, s32 y, s32 expectedHeight);
-extern s32 func_0200ab18(const s8 *bounds);
-extern s32 func_0200ab30(const s8 *bounds);
+extern s32 ActorBounds_GetWidth(const s8 *bounds);
+extern s32 ActorBounds_GetHeight(const s8 *bounds);
 extern s32 func_020adae4(s32 dividend, s32 divisor);
 #ifdef __cplusplus
 }
@@ -32,8 +32,10 @@ s32 func_02034d34(void *self, s32 x, s32 y, s32 expectedHeight)
 
     if (func_02034568(actor, x >> 16, y >> 16, integerHeight) == 0)
         return 0;
-    strideX = (func_020adae4(func_0200ab18((s8 *)actor + 4), 2) + 2) << 12;
-    strideY = (func_020adae4(func_0200ab30((s8 *)actor + 4), 2) + 2) << 12;
+    strideX = (func_020adae4(ActorBounds_GetWidth((s8 *)actor + 4), 2) + 2)
+              << 12;
+    strideY = (func_020adae4(ActorBounds_GetHeight((s8 *)actor + 4), 2) + 2)
+              << 12;
 
     for (dx = -1; dx <= 1; ++dx) {
         for (dy = -1; dy <= 1; ++dy) {

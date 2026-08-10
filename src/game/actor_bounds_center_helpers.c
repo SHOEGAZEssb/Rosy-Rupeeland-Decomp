@@ -12,7 +12,7 @@ extern u8 data_020df030[];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern s32 func_0200ab30(const s8 *bounds);
+extern s32 ActorBounds_GetHeight(const s8 *bounds);
 #ifdef __cplusplus
 }
 #endif
@@ -61,7 +61,7 @@ void func_02033798(s8 *bounds, s32 minX, s32 minY)
 
     bounds[0] = (s8)minX;
     bounds[2] = (s8)(minX + width);
-    height = (s8)func_0200ab30(bounds);
+    height = (s8)ActorBounds_GetHeight(bounds);
     bounds[1] = (s8)minY;
     bounds[3] = (s8)(minY + height);
 }

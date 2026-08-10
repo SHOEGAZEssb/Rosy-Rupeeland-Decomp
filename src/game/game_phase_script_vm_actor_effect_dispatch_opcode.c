@@ -13,8 +13,8 @@ extern "C" {
 extern void *data_021052fc;
 extern s32 data_0210570c;
 extern s32 data_02105710;
-extern u8 func_0200ab18(const void *value);
-extern u8 func_0200ab30(const void *value);
+extern u8 ActorBounds_GetWidth(const void *value);
+extern u8 ActorBounds_GetHeight(const void *value);
 extern void func_020066a4(void *destination, const void *source,
                           const void *transform);
 extern void *func_0202d568(void *collection, s32 index);
@@ -81,16 +81,16 @@ static void spawnActorSnapshot(GamePhaseActorScriptVm *self, s32 actorIndex,
     *(s32 *)(descriptor + 0x0c) = resource2;
     descriptor[0x10] = presentationMode;
     descriptor[0x11] = presentationValue;
-    descriptor[0x12] = func_0200ab18(actor + 8);
-    descriptor[0x13] = func_0200ab30(actor + 8);
+    descriptor[0x12] = ActorBounds_GetWidth(actor + 8);
+    descriptor[0x13] = ActorBounds_GetHeight(actor + 8);
 
     Actor_GetCollisionCenter(&position, actor);
     func_020066a4(&transform, &position, actor + 0x18);
     func_02005058(&position);
     descriptor[0x14] = (u8)(transform.value.y >> 12);
     descriptor[0x15] = (u8)(transform.value.x >> 12);
-    descriptor[0x16] = func_0200ab18(actor + 4);
-    descriptor[0x17] = func_0200ab30(actor + 4);
+    descriptor[0x16] = ActorBounds_GetWidth(actor + 4);
+    descriptor[0x17] = ActorBounds_GetHeight(actor + 4);
     descriptor[0x18] = 0;
     descriptor[0x19] = 0;
     *(s16 *)(descriptor + 0x1a) = truncateSignedByte(*(s16 *)(actor + 0x68));

@@ -27,8 +27,8 @@ s32 func_0200a970(void *actorPointer, s32 deltaX, s32 deltaY,
                   const ActorCollisionRange *other)
 {
     u8 *actor = (u8 *)actorPointer;
-    s32 width = func_0200ab18(Actor_GetCollisionBounds(actorPointer)) << 12;
-    s32 height = func_0200ab30(Actor_GetCollisionBounds(actorPointer)) << 12;
+    s32 width = ActorBounds_GetWidth(Actor_GetCollisionBounds(actorPointer)) << 12;
+    s32 height = ActorBounds_GetHeight(Actor_GetCollisionBounds(actorPointer)) << 12;
     ActorCollisionRange actorRange;
     ActorCollisionRange intersection;
     u8 edges = 0;

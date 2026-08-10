@@ -1,8 +1,8 @@
 ; Matching retail form; see src/game/actor_collision_overlap.c for
 ; the documented portable implementation and recovered behavior.
 .text
-.extern func_0200ab18
-.extern func_0200ab30
+.extern ActorBounds_GetWidth
+.extern ActorBounds_GetHeight
 .extern func_0200ab48
 .extern Actor_GetCollisionBounds
 .global func_0200a970
@@ -14,11 +14,11 @@ func_0200a970: ; 0x0200a970
     mov r5, r2
     mov r4, r3
     bl Actor_GetCollisionBounds
-    bl func_0200ab18
+    bl ActorBounds_GetWidth
     mov r8, r0, lsl #0xc
     mov r0, r7
     bl Actor_GetCollisionBounds
-    bl func_0200ab30
+    bl ActorBounds_GetHeight
     mov r2, r0, lsl #0xc
     ldr r3, [r7, #0x2c]
     add r1, r8, r8, lsr #0x1f

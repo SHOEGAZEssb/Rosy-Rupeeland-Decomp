@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/actor_terrain_footprint_eligibility.c.
 .text
-.extern func_0200ab18
-.extern func_0200ab30
+.extern ActorBounds_GetWidth
+.extern ActorBounds_GetHeight
 .extern func_02034568
 .extern func_0203463c
 .extern func_020adae4
@@ -23,13 +23,13 @@ func_02034d34: ; 0x02034d34
     moveq r0, #0x0
     beq .L_02034e00
     add r0, r10, #0x4
-    bl func_0200ab18
+    bl ActorBounds_GetWidth
     mov r1, #0x2
     bl func_020adae4
     add r1, r0, #0x2
     add r0, r10, #0x4
     mov r4, r1, lsl #0xc
-    bl func_0200ab30
+    bl ActorBounds_GetHeight
     mov r1, #0x2
     bl func_020adae4
     add r0, r0, #0x2
@@ -71,4 +71,3 @@ func_02034d34: ; 0x02034d34
     .size func_02034d34, . - func_02034d34
 
     .global func_02034e08
-

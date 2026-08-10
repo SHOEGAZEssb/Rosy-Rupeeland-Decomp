@@ -4,8 +4,8 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern s32 func_0200ab18(void *bounds);
-extern s32 func_0200ab30(void *bounds);
+extern s32 ActorBounds_GetWidth(void *bounds);
+extern s32 ActorBounds_GetHeight(void *bounds);
 extern void func_02005030(void *temporary, const void *source);
 extern void func_02005058(void *temporary);
 extern void *func_020067fc(void *resourceState);
@@ -32,13 +32,13 @@ s32 func_02032e14(void *self, u32 selector)
 
     switch (selector) {
     case 0:
-        return func_0200ab18(actor + 8);
+        return ActorBounds_GetWidth(actor + 8);
     case 1:
-        return func_0200ab30(actor + 8);
+        return ActorBounds_GetHeight(actor + 8);
     case 2:
-        return func_0200ab18(actor + 4);
+        return ActorBounds_GetWidth(actor + 4);
     case 3:
-        return func_0200ab30(actor + 4);
+        return ActorBounds_GetHeight(actor + 4);
     case 4:
         return *(s32 *)(actor + 0x1dc);
     case 5:

@@ -7,8 +7,8 @@
 .extern func_02005030
 .extern func_02005058
 .extern func_020066a4
-.extern func_0200ab18
-.extern func_0200ab30
+.extern ActorBounds_GetWidth
+.extern ActorBounds_GetHeight
 .extern func_02012704
 .extern func_020127f8
 .extern func_02019890
@@ -99,10 +99,10 @@ L_0201948c:
     str r10, [sp, #0xf8]
     strb r1, [sp, #0xfc]
     strb r11, [sp, #0xfd]
-    bl func_0200ab18
+    bl ActorBounds_GetWidth
     strb r0, [sp, #0xfe]
     add r0, r4, #0x8
-    bl func_0200ab30
+    bl ActorBounds_GetHeight
     strb r0, [sp, #0xff]
     add r0, sp, #0x4
     mov r1, r4
@@ -120,10 +120,10 @@ L_0201948c:
     strb r0, [sp, #0x101]
     add r0, r4, #0x4
     strb r1, [sp, #0x100]
-    bl func_0200ab18
+    bl ActorBounds_GetWidth
     strb r0, [sp, #0x102]
     add r0, r4, #0x4
-    bl func_0200ab30
+    bl ActorBounds_GetHeight
     strb r0, [sp, #0x103]
     mov r0, #0x0
     strb r0, [sp, #0x104]
