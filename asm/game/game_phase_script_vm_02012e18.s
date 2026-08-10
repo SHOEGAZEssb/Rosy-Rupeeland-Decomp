@@ -4,8 +4,8 @@
 .extern func_02005058
 .extern GamePhaseScriptVm_SetResult
 
-    .global func_02012e18
-func_02012e18: ; 0x02012e18
+    .global GamePhaseActorScriptVm_GetVectorY
+GamePhaseActorScriptVm_GetVectorY: ; 0x02012e18
     stmdb sp!, {r4, lr}
     sub sp, sp, #0x10
     mov r4, r0
@@ -22,5 +22,5 @@ func_02012e18: ; 0x02012e18
     mov r0, #0x0
     add sp, sp, #0x10
     ldmia sp!, {r4, pc}
-    .size func_02012e18, . - func_02012e18
+    .size GamePhaseActorScriptVm_GetVectorY, . - GamePhaseActorScriptVm_GetVectorY
 

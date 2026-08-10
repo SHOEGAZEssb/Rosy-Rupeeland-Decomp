@@ -4,8 +4,8 @@
 .extern GamePhaseScriptVm_SetResult
 .extern func_020ae024
 
-    .global func_02012d90
-func_02012d90: ; 0x02012d90
+    .global GamePhaseActorScriptVm_ComputeAngle
+GamePhaseActorScriptVm_ComputeAngle: ; 0x02012d90
     stmdb sp!, {r3, r4, r5, lr}
     mov r5, r0
     bl GamePhaseScriptVm_Pop
@@ -24,5 +24,5 @@ func_02012d90: ; 0x02012d90
     bl GamePhaseScriptVm_SetResult
     mov r0, #0x0
     ldmia sp!, {r3, r4, r5, pc}
-    .size func_02012d90, . - func_02012d90
+    .size GamePhaseActorScriptVm_ComputeAngle, . - GamePhaseActorScriptVm_ComputeAngle
 

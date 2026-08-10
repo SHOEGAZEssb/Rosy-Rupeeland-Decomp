@@ -4,8 +4,8 @@
 .extern GamePhaseScriptVm_Pop
 .extern GamePhaseScriptVm_SetResult
 
-    .global func_02012d18
-func_02012d18: ; 0x02012d18
+    .global GamePhaseActorScriptVm_LookupAngleFirstComponent
+GamePhaseActorScriptVm_LookupAngleFirstComponent: ; 0x02012d18
     stmdb sp!, {r4, lr}
     mov r4, r0
     bl GamePhaseScriptVm_Pop
@@ -20,5 +20,5 @@ func_02012d18: ; 0x02012d18
     mov r0, #0x0
     ldmia sp!, {r4, pc}
 L_02012d4c: .word data_020c9670
-    .size func_02012d18, . - func_02012d18
+    .size GamePhaseActorScriptVm_LookupAngleFirstComponent, . - GamePhaseActorScriptVm_LookupAngleFirstComponent
 
