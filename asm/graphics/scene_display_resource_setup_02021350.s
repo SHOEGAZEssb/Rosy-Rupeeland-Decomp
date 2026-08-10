@@ -20,9 +20,9 @@
 .extern func_020b44e8
 .extern gGameWork
 
-.global func_02021350
-    .type func_02021350, @function
-func_02021350: ; 0x02021350
+.global SceneDisplayResources_Setup
+    .type SceneDisplayResources_Setup, @function
+SceneDisplayResources_Setup: ; 0x02021350
     stmdb sp!, {r4, r5, lr}
     sub sp, sp, #0x1c
     ldr r1, .L_02021580
@@ -175,5 +175,5 @@ func_02021350: ; 0x02021350
 .L_02021594: .word 0x400100e
 .L_02021598: .word data_020d6418
 .L_0202159c: .word data_020f4e18
-    .size func_02021350, .-func_02021350
+    .size SceneDisplayResources_Setup, .-SceneDisplayResources_Setup
 

@@ -35,7 +35,7 @@ extern void *func_020200bc(void *object, s32 value, s32 zero0, s32 zero1,
                            s32 parameter);
 extern void *DisplayFadePresentation_Init(void *object, s32 mode, s32 value,
                                           s32 parameter);
-extern void func_02021350(s32 value);
+extern void SceneDisplayResources_Setup(s32 sceneIndex);
 extern void *func_020215cc(void *object, s32 value);
 extern void *func_0202225c(void *object);
 extern void *func_02022580(void *object);
@@ -77,7 +77,7 @@ static void *runtimeObjectList(void)
  * invokes SDK/overlay-facing phase work, modes 18/19 alter debug-font backing
  * storage, and mode 7 is a no-op.  Return zero.
  */
-s32 func_02017d1c(GamePhaseActorScriptVm *self)
+s32 GamePhaseActorScriptVm_DispatchObjectFactory(GamePhaseActorScriptVm *self)
 {
     s32 parameter = (s32)GamePhaseScriptVm_Pop(&self->base);
     s32 value = (s32)GamePhaseScriptVm_Pop(&self->base);
@@ -181,7 +181,7 @@ s32 func_02017d1c(GamePhaseActorScriptVm *self)
         func_0201df44(runtimeObjectList(), object);
         break;
     case 3:
-        func_02021350(value);
+        SceneDisplayResources_Setup(value);
         break;
     case 2:
         object = allocateObject(0x3cc, data_020d5b34);

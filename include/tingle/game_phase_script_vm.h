@@ -216,7 +216,7 @@ s32 func_02017938(GamePhaseActorScriptVm *self);
 s32 GamePhaseActorScriptVm_SetRisingSpriteSwarmEnabled(GamePhaseActorScriptVm *self);
 s32 GamePhaseActorScriptVm_DispatchActorScaledVectorCommand(GamePhaseActorScriptVm *self);
 s32 func_02017ac8(GamePhaseActorScriptVm *self);
-s32 func_02017d1c(GamePhaseActorScriptVm *self);
+s32 GamePhaseActorScriptVm_DispatchObjectFactory(GamePhaseActorScriptVm *self);
 s32 func_02018208(GamePhaseActorScriptVm *self);
 s32 GamePhaseActorScriptVm_SetAuxiliaryCollisionPosition(GamePhaseActorScriptVm *self);
 s32 GamePhaseActorScriptVm_ReturnOne(GamePhaseActorScriptVm *self);

@@ -42,7 +42,7 @@ extern void func_02070eac(void *, s32, s32);
  * destroy both temporary sets.  The routine returns no value and directly
  * changes Nintendo DS display state.
  */
-void func_02021350(s32 index)
+void SceneDisplayResources_Setup(s32 index)
 {
     GraphicsResourceSet first;
     GraphicsResourceSet second;

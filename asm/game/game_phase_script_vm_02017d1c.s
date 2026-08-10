@@ -25,7 +25,7 @@
 .extern func_0201df44
 .extern func_020200bc
 .extern DisplayFadePresentation_Init
-.extern func_02021350
+.extern SceneDisplayResources_Setup
 .extern func_020215cc
 .extern func_0202225c
 .extern func_02022580
@@ -42,8 +42,8 @@
 .extern func_ov058_0220f484
 .extern gDebugFont
 .extern gHeapContext
-.global func_02017d1c
-func_02017d1c:
+.global GamePhaseActorScriptVm_DispatchObjectFactory
+GamePhaseActorScriptVm_DispatchObjectFactory:
     stmdb sp!, {r3, r4, r5, r6, lr}
     sub sp, sp, #0x4
     mov r4, r0
@@ -331,7 +331,7 @@ L_02018108:
     b L_020181b0
 L_02018120:
     mov r0, r6
-    bl func_02021350
+    bl SceneDisplayResources_Setup
     b L_020181b0
 L_0201812c:
     ldr r1, L_02018204
@@ -393,4 +393,4 @@ L_020181f8: .word data_020d5bd4
 L_020181fc: .word data_020d5bdc
 L_02018200: .word data_020d5be4
 L_02018204: .word data_020d5b34
-.size func_02017d1c, . - func_02017d1c
+.size GamePhaseActorScriptVm_DispatchObjectFactory, . - GamePhaseActorScriptVm_DispatchObjectFactory
