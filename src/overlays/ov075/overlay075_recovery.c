@@ -193,7 +193,7 @@ void func_ov075_022146a4(void);
 /* Processes the supplied ABI arguments and offset-based actor state, returns its encoded result, and invokes func_02005058, func_0203b61c; exact higher-level semantics remain unconfirmed. */
 void func_ov075_022146c4(void);
 
-/* Processes the supplied ABI arguments and offset-based actor state, returns its encoded result, and invokes func_02030acc, Actor_GetCollection, func_02071ee0 and other shared helpers; exact higher-level semantics remain unconfirmed. */
+/* Processes the supplied ABI arguments and offset-based actor state, returns its encoded result, and invokes ActorCollection_GetSpriteOwner, Actor_GetCollection, func_02071ee0 and other shared helpers; exact higher-level semantics remain unconfirmed. */
 void func_ov075_022146ec(void);
 
 /* Processes the supplied ABI arguments and offset-based actor state, returns its encoded result, and invokes func_02005058, func_020050a4, Actor_QueryTerrainCell and other shared helpers; exact higher-level semantics remain unconfirmed. */
@@ -208,7 +208,7 @@ void func_ov075_022148d0(void);
 /* Processes the supplied ABI arguments using only local offset-based fields; observable mutations and the return value are preserved by the matching implementation, with no direct SDK call. */
 void func_ov075_02214d88(void);
 
-/* Processes the supplied ABI arguments and offset-based actor state, returns its encoded result, and invokes func_02030acc, Actor_GetCollection, func_02072b68 and other shared helpers; exact higher-level semantics remain unconfirmed. */
+/* Processes the supplied ABI arguments and offset-based actor state, returns its encoded result, and invokes ActorCollection_GetSpriteOwner, Actor_GetCollection, func_02072b68 and other shared helpers; exact higher-level semantics remain unconfirmed. */
 void func_ov075_02214e28(void);
 
 /* Processes the supplied ABI arguments and offset-based actor state, returns its encoded result, and invokes func_020050a4, Actor_GetCachedTerrainHeight; exact higher-level semantics remain unconfirmed. */
@@ -316,7 +316,7 @@ void func_ov075_02215a28(void);
 /* Processes the supplied ABI arguments and offset-based actor state, returns its encoded result, and invokes func_02005058, func_02043e68; exact higher-level semantics remain unconfirmed. */
 void func_ov075_02215a48(void);
 
-/* Processes the supplied ABI arguments and offset-based actor state, returns its encoded result, and invokes func_02030acc, Actor_GetCollection, func_02072b68 and other shared helpers; exact higher-level semantics remain unconfirmed. */
+/* Processes the supplied ABI arguments and offset-based actor state, returns its encoded result, and invokes ActorCollection_GetSpriteOwner, Actor_GetCollection, func_02072b68 and other shared helpers; exact higher-level semantics remain unconfirmed. */
 void func_ov075_02215a70(void);
 
 /* Processes the supplied ABI arguments and offset-based actor state, returns its encoded result, and invokes func_02042810, func_020593dc, func_ov075_022152ac; exact higher-level semantics remain unconfirmed. */

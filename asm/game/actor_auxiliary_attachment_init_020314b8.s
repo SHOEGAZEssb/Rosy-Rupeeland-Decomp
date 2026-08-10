@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/actor_auxiliary_attachment_init.c.
 .text
 .extern data_020f4e18
-.extern func_02030acc
+.extern ActorCollection_GetSpriteOwner
 .extern Actor_GetCollection
 .extern func_02071e60
 .extern func_02071e70
@@ -36,7 +36,7 @@ func_020314b8: ; 0x020314b8
     mov r5, r0
     mov r0, r4
     bl Actor_GetCollection
-    bl func_02030acc
+    bl ActorCollection_GetSpriteOwner
     mov ip, #0x2
     mov r1, r7
     mov r2, r6

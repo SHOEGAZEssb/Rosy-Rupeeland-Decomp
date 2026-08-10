@@ -7,7 +7,7 @@ extern void *gGameWork;
 extern "C" {
 #endif
 extern void *Actor_GetCollection(void *actor);
-extern void *func_02030acc(void *collection);
+extern void *ActorCollection_GetSpriteOwner(void *collection);
 extern void func_020740c8(void *collectionData, void *attachment, u32 first,
                           u32 second, u32 third);
 extern void func_02072b68(void *attachment, u32 animation);
@@ -20,7 +20,7 @@ extern void func_020354e8(void *actor, u32 index);
 /* Apply one resource descriptor directly to the primary attachment. */
 static void applyDescriptor(u8 *actor, const u8 *resource)
 {
-    func_020740c8(func_02030acc(Actor_GetCollection(actor)),
+    func_020740c8(ActorCollection_GetSpriteOwner(Actor_GetCollection(actor)),
                   *(void **)(actor + 0x54), *(u32 *)(resource + 4),
                   *(u32 *)(resource + 8), *(u32 *)(resource + 0x0c));
 }

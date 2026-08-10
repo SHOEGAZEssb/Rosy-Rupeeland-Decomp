@@ -5,7 +5,7 @@
 .extern gHeapContext
 .extern func_0201e0ec
 .extern func_0201f864
-.extern func_02030acc
+.extern ActorCollection_GetSpriteOwner
 .extern Actor_GetCollection
 .extern func_02034a60
 .extern func_020a2614
@@ -190,7 +190,7 @@ func_02050260: ; 0x02050260
     ldr r5, [r6, #0x1fc]
     mov r0, r6
     bl Actor_GetCollection
-    bl func_02030acc
+    bl ActorCollection_GetSpriteOwner
     ldrh r1, [r5, #0x18]
     mov ip, #0x0
     sub r3, ip, #0x4

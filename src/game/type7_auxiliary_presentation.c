@@ -35,7 +35,7 @@ extern void *Heap_Alloc(u32 size, const char *source, u32 line,
 extern void Heap_Free(void *allocation);
 extern void *func_02005580(void *storage, u32 first, u32 second, u32 third);
 extern void Actor_GetCollection(void *owner);
-extern void *func_02030acc(void);
+extern void *ActorCollection_GetSpriteOwner(void);
 extern void *func_02073fc4(void *context, u32 first, u32 second, u32 third,
                            u32 mode);
 extern void func_02072b68(void *presentation, u32 index);
@@ -68,7 +68,7 @@ Type7AuxiliaryPresentation *func_0204c798(
     self->resource = resource;
     Actor_GetCollection(owner);
     self->presentation = func_02073fc4(
-        func_02030acc(), resource[1], resource[2], resource[3], 2);
+        ActorCollection_GetSpriteOwner(), resource[1], resource[2], resource[3], 2);
     func_02072b68(self->presentation, 0);
     *(u16 *)((u8 *)self->presentation + 0x2c) = 0;
     *(u16 *)((u8 *)self->presentation + 0x2e) = 0;

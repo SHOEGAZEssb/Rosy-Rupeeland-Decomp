@@ -26,7 +26,7 @@
 .extern ActorCollection_UnregisterAndDestroyAllActors
 .extern func_0202d3cc
 .extern func_0202d68c
-.extern func_02030acc
+.extern ActorCollection_GetSpriteOwner
 .extern Actor_ReplaceAttachmentSlotResource
 .extern func_0204b5d8
 .extern func_02058de0
@@ -109,7 +109,7 @@ func_ov064_0220fd20:
     ldr r0, [r1, #0x0]
     mov r1, #0x1
     bl func_02007f0c
-    bl func_02030acc
+    bl ActorCollection_GetSpriteOwner
     ldrh r3, [r6, #0x28]
     mov r2, #0x4
     mov r1, #0x2
@@ -192,7 +192,7 @@ func_ov064_0220fd20:
     ldr r0, [r1, #0x0]
     mov r1, #0x1
     bl func_02007f0c
-    bl func_02030acc
+    bl ActorCollection_GetSpriteOwner
     ldrh r3, [r6, #0x28]
     mov r2, #0x0
     mov r1, #0x2
@@ -245,7 +245,7 @@ func_ov064_0220fd20:
     mov r1, #0x1
     ldr r0, [r0, #0x0]
     bl func_02007f0c
-    bl func_02030acc
+    bl ActorCollection_GetSpriteOwner
     mov r1, #0x1
     mov r2, r0
     mov r0, r6
@@ -282,7 +282,7 @@ func_ov064_0220fd20:
     ldr r0, [r1, #0x0]
     mov r1, #0x1
     bl func_02007f0c
-    bl func_02030acc
+    bl ActorCollection_GetSpriteOwner
     ldrh r3, [r6, #0x28]
     mov r1, #0x4
     mov r2, #0x2

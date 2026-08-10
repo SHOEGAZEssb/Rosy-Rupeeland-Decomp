@@ -13,7 +13,7 @@ extern void *gGameWork;
 extern "C" {
 #endif
 extern void *func_02007f0c(void *, s32);
-extern void *func_02030acc(void *);
+extern void *ActorCollection_GetSpriteOwner(void *);
 extern void func_02091b98(void *, s32);
 #ifdef __cplusplus
 }
@@ -37,7 +37,7 @@ extern "C" void func_ov018_021fe5ac(void *state)
     void *node;
     (void)state;
 
-    collection = func_02030acc(func_02007f0c(data_021052fc, 2));
+    collection = ActorCollection_GetSpriteOwner(func_02007f0c(data_021052fc, 2));
     node = FIELD(void *, collection, 0xc);
     while (node != 0) {
         if (FIELD(s32, FIELD(void *, node, 0x18), 0x10) == 0x70)
@@ -58,7 +58,7 @@ extern "C" void func_ov018_021fe5f8(void *state)
     void *node;
     (void)state;
 
-    collection = func_02030acc(func_02007f0c(data_021052fc, 2));
+    collection = ActorCollection_GetSpriteOwner(func_02007f0c(data_021052fc, 2));
     node = FIELD(void *, collection, 0xc);
     while (node != 0) {
         if (FIELD(s32, FIELD(void *, node, 0x18), 0x10) == 0x70)

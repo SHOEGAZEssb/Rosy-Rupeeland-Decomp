@@ -3,7 +3,7 @@
 .extern Heap_Alloc
 .extern data_ov090_0221cc00
 .extern func_02005580
-.extern func_02030acc
+.extern ActorCollection_GetSpriteOwner
 .extern Actor_GetCollection
 .extern func_0204d3d8
 .extern func_02072b68
@@ -37,7 +37,7 @@ func_ov090_02217a3c:
     str r0, [r4, #0x240]
     mov r0, r4
     bl Actor_GetCollection
-    bl func_02030acc
+    bl ActorCollection_GetSpriteOwner
     mov r1, #0x1
     str r1, [sp, #0x0]
     ldmib r5, {r1, r2, r3}
@@ -73,7 +73,7 @@ func_ov090_02217a3c:
     str r0, [r4, #0x24c]
     mov r0, r4
     bl Actor_GetCollection
-    bl func_02030acc
+    bl ActorCollection_GetSpriteOwner
     mov r1, #0x2
     str r1, [sp, #0x0]
     ldmib r5, {r1, r2, r3}

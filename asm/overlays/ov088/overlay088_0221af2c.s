@@ -9,7 +9,7 @@
 .extern func_020022dc
 .extern func_02005058
 .extern func_02005580
-.extern func_02030acc
+.extern ActorCollection_GetSpriteOwner
 .extern Actor_GetCollection
 .extern func_02034a60
 .extern func_0204b6cc
@@ -45,7 +45,7 @@ func_ov088_0221af2c:
     str r0, [r6, #0x24c]
     mov r0, r6
     bl Actor_GetCollection
-    bl func_02030acc
+    bl ActorCollection_GetSpriteOwner
     mov r1, #0x2
     str r1, [sp, #0x0]
     ldmib r7, {r1, r2, r3}

@@ -6,7 +6,7 @@
 .extern data_020e6b74
 .extern data_020e6c0c
 .extern data_020e6ca4
-.extern func_02030acc
+.extern ActorCollection_GetSpriteOwner
 .extern Actor_GetCollection
 .extern func_02072b68
 .extern func_020740c8
@@ -135,7 +135,7 @@ func_0203f0bc: ; 0x0203f0bc
     ldr r8, [r0, #0x208]
     mov r0, r7
     bl Actor_GetCollection
-    bl func_02030acc
+    bl ActorCollection_GetSpriteOwner
     ldr r1, [r8, #0xc]
     str r1, [sp, #0x0]
     ldr r1, [r7, #0x54]

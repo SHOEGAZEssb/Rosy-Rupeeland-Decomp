@@ -4,7 +4,7 @@
 .extern data_020f4e18
 .extern data_ov088_0221b9fc
 .extern func_02005580
-.extern func_02030acc
+.extern ActorCollection_GetSpriteOwner
 .extern Actor_GetCollection
 .extern func_02071ee0
 .extern func_02073fc4
@@ -29,7 +29,7 @@ func_ov088_02217f38:
     bl func_02071ee0
     mov r0, r5
     bl Actor_GetCollection
-    bl func_02030acc
+    bl ActorCollection_GetSpriteOwner
     mov r1, #0x2
     str r1, [sp, #0x0]
     ldr r1, [r5, #0x1f0]
@@ -54,7 +54,7 @@ func_ov088_02217f38:
     str r0, [r5, #0x220]
     mov r0, r5
     bl Actor_GetCollection
-    bl func_02030acc
+    bl ActorCollection_GetSpriteOwner
     mov r1, #0x2
     str r1, [sp, #0x0]
     ldmib r6, {r1, r2, r3}
@@ -67,7 +67,7 @@ func_ov088_02217f38:
     strh r1, [r2, #0x24]
     ldr r6, [r5, #0x220]
     bl Actor_GetCollection
-    bl func_02030acc
+    bl ActorCollection_GetSpriteOwner
     mov r1, #0x2
     str r1, [sp, #0x0]
     ldmib r6, {r1, r2, r3}
@@ -80,7 +80,7 @@ func_ov088_02217f38:
     strh r1, [r2, #0x24]
     ldr r6, [r5, #0x220]
     bl Actor_GetCollection
-    bl func_02030acc
+    bl ActorCollection_GetSpriteOwner
     mov r1, #0x2
     str r1, [sp, #0x0]
     ldmib r6, {r1, r2, r3}
@@ -106,7 +106,7 @@ func_ov088_02217f38:
     str r0, [r5, #0x254]
     mov r0, r5
     bl Actor_GetCollection
-    bl func_02030acc
+    bl ActorCollection_GetSpriteOwner
     mov r1, #0x2
     str r1, [sp, #0x0]
     ldmib r6, {r1, r2, r3}

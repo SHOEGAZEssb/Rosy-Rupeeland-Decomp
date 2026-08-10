@@ -9,7 +9,7 @@ extern "C" {
 extern void func_02071ee0(void *resource, void *manager, s32 first,
                           s32 second, s32 third);
 extern void *Actor_GetCollection(void *actor);
-extern void *func_02030acc(void *collection);
+extern void *ActorCollection_GetSpriteOwner(void *collection);
 extern void *func_02073fc4(void *collectionData, s32 first, s32 second,
                            s32 third, s32 mode);
 extern void func_02072b68(void *attachment, u32 animation);
@@ -46,7 +46,7 @@ void Actor_InitializeFromDescriptor(void *self, const void *descriptor)
                       *(s32 *)(record + 4), *(s32 *)(record + 8),
                       *(s32 *)(record + 0x0c));
         attachment = (u8 *)func_02073fc4(
-            func_02030acc(Actor_GetCollection(actor)),
+            ActorCollection_GetSpriteOwner(Actor_GetCollection(actor)),
             *(s32 *)(actor + 0x1f0), *(s32 *)(actor + 0x1f4),
             *(s32 *)(actor + 0x1f8), record[0x10]);
         *(u8 **)(actor + 0x54) = attachment;

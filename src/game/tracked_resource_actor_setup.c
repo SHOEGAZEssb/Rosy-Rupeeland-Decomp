@@ -15,7 +15,7 @@ extern "C" {
 extern void *Heap_Alloc(u32 size, const void *tag, u32 align, void *heap);
 extern void *func_02005580(void *storage, u32 resource0, u32 resource1,
                            u32 resource2);
-extern void *func_02030acc(void);
+extern void *ActorCollection_GetSpriteOwner(void);
 extern void func_020313b4(void *actor, void *bundle, u32 mode);
 extern void Actor_GetCollection(void *actor);
 extern void func_02072b68(void *presentation, u32 selection);
@@ -50,7 +50,7 @@ void func_0204fe68(void *actor, const void *descriptor)
     FIELD(void *, actor, 0x1ec) = bundle;
     Actor_GetCollection(actor);
     void *presentation = func_02073fc4(
-        func_02030acc(), FIELD(void *, bundle, 4), FIELD(void *, bundle, 8),
+        ActorCollection_GetSpriteOwner(), FIELD(void *, bundle, 4), FIELD(void *, bundle, 8),
         FIELD(void *, bundle, 12), FIELD(u8, descriptor, 0x10));
     FIELD(void *, actor, 0x54) = presentation;
     func_02072b68(presentation, FIELD(u8, descriptor, 0x11));

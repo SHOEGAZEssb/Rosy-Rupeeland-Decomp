@@ -9,7 +9,7 @@ extern "C" {
 #endif
 extern void *func_02005580(void *allocation, u16 first, u16 second, u16 third);
 extern void *Actor_GetCollection(void *actor);
-extern void *func_02030acc(void *collection);
+extern void *ActorCollection_GetSpriteOwner(void *collection);
 extern void func_020740c8(void *context, void *attachment, s32 first,
                           s32 second, s32 third);
 #ifdef __cplusplus
@@ -27,7 +27,7 @@ u32 func_02039714(void *self)
  * and third; store it in actor pointer slot +0x208 + index*4. Before replacing
  * a nonnull old slot, compare old +0x04 against attachment +0x54/+0x14. On a
  * match, obtain the actor collection context through Actor_GetCollection followed by
- * func_02030acc and call func_020740c8 with attachment plus new resource words
+ * ActorCollection_GetSpriteOwner and call func_020740c8 with attachment plus new resource words
  * +0x04/+0x08/+0x0c. Then destroy the old object through virtual +0x04.
  * Returns no value. The retail matching path assumes allocation succeeds when
  * that old-resource comparison matches; heap and virtual calls change owned
@@ -45,7 +45,7 @@ void Actor_ReplaceAttachmentSlotResource(void *self, s32 index, u16 first,
     if (old != 0) {
         u8 *attachment = *(u8 **)(actor + 0x54);
         if (*(u32 *)(old + 4) == *(u32 *)(attachment + 0x14)) {
-            void *context = func_02030acc(Actor_GetCollection(actor));
+            void *context = ActorCollection_GetSpriteOwner(Actor_GetCollection(actor));
             func_020740c8(context, attachment, *(s32 *)(resource + 4),
                           *(s32 *)(resource + 8), *(s32 *)(resource + 0x0c));
         }

@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/actor_derived_type1_resource_apply.c.
 .text
-.extern func_02030acc
+.extern ActorCollection_GetSpriteOwner
 .extern Actor_GetCollection
 .extern func_020740c8
 
@@ -12,7 +12,7 @@ func_020354e8: ; 0x020354e8
     add r1, r5, r1, lsl #0x2
     ldr r4, [r1, #0x208]
     bl Actor_GetCollection
-    bl func_02030acc
+    bl ActorCollection_GetSpriteOwner
     ldr r1, [r4, #0xc]
     str r1, [sp, #0x0]
     ldr r1, [r5, #0x54]

@@ -5,7 +5,7 @@
 .extern data_020c3d90
 .extern data_020df48c
 .extern func_02005580
-.extern func_02030acc
+.extern ActorCollection_GetSpriteOwner
 .extern func_020313b4
 .extern Actor_GetCollection
 .extern Actor_InitializeFromDescriptor
@@ -82,7 +82,7 @@ func_020353a0: ; 0x020353a0
     mov r0, r10
     ldr r4, [r10, #0x208]
     bl Actor_GetCollection
-    bl func_02030acc
+    bl ActorCollection_GetSpriteOwner
     mov r1, #0x2
     str r1, [sp, #0x0]
     ldmib r4, {r1, r2, r3}

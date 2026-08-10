@@ -1,7 +1,7 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov075/overlay075_recovery.c.
 .extern data_020f4e18
-.extern func_02030acc
+.extern ActorCollection_GetSpriteOwner
 .extern Actor_GetCollection
 .extern func_02071ee0
 .extern func_02073fc4
@@ -20,7 +20,7 @@ func_ov075_022146ec:
     bl func_02071ee0
     mov r0, r4
     bl Actor_GetCollection
-    bl func_02030acc
+    bl ActorCollection_GetSpriteOwner
     ldrb r1, [r5, #0x10]
     str r1, [sp, #0x0]
     ldr r1, [r4, #0x1f0]

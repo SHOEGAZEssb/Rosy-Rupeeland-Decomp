@@ -21,7 +21,7 @@ extern "C" {
 #endif
 extern void Heap_Free(void *allocation);
 extern void Actor_GetCollection(void *owner);
-extern void *func_02030acc(void);
+extern void *ActorCollection_GetSpriteOwner(void);
 extern void *func_02071e60(void *resources, u32 id);
 extern void *func_02071e70(void *resources, u32 id);
 extern void *func_02071e80(void *resources, u32 id);
@@ -57,7 +57,7 @@ Type7MarkerPresentation *func_0204cca8(Type7MarkerPresentation *self,
     third = func_02071e80(data_020f4e18, 0x138b);
     Actor_GetCollection(owner);
     self->presentation = (u8 *)func_02073fc4(
-        func_02030acc(), first, second, third, 2);
+        ActorCollection_GetSpriteOwner(), first, second, third, 2);
     func_02072b68(self->presentation, 0);
     self->presentation[0x3a] = 1;
     *(u16 *)(self->presentation + 0x2c) = 0;

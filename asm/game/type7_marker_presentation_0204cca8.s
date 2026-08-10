@@ -3,7 +3,7 @@
 .extern func_02071e70
 .extern func_02071e80
 .extern Actor_GetCollection
-.extern func_02030acc
+.extern ActorCollection_GetSpriteOwner
 .extern func_02073fc4
 .extern func_02072b68
 .extern func_0204cdcc
@@ -37,7 +37,7 @@ func_0204cca8: ; 0x0204cca8
     mov r5, r0
     ldr r0, [r4, #0x8]
     bl Actor_GetCollection
-    bl func_02030acc
+    bl ActorCollection_GetSpriteOwner
     mov ip, #0x2
     mov r1, r7
     mov r2, r6

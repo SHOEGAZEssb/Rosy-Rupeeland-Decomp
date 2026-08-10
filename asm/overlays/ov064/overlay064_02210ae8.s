@@ -10,7 +10,7 @@
 .extern func_02010e68
 .extern func_0201dcec
 .extern ActorCollection_DispatchEventToActors
-.extern func_02030acc
+.extern ActorCollection_GetSpriteOwner
 .extern func_0203ad64
 .extern func_020740a4
 .extern gLupyContext
@@ -58,7 +58,7 @@ func_ov064_02210ae8:
     mov r1, #0x1
     ldr r0, [r0, #0x0]
     bl func_02007f0c
-    bl func_02030acc
+    bl ActorCollection_GetSpriteOwner
     bl func_020740a4
     ldr r1, .L_02210c54
     add r0, sp, #0x0
@@ -76,7 +76,7 @@ func_ov064_02210ae8:
     mov r1, #0x2
     ldr r0, [r0, #0x0]
     bl func_02007f0c
-    bl func_02030acc
+    bl ActorCollection_GetSpriteOwner
     bl func_020740a4
     ldr r0, .L_02210c54
     mov r1, #0x1

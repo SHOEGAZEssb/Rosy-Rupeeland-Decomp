@@ -3,7 +3,7 @@
 .extern data_ov096_02218b08
 .extern data_ov096_02218b18
 .extern data_ov096_02218b20
-.extern func_02030acc
+.extern ActorCollection_GetSpriteOwner
 .extern Actor_GetCollection
 .extern func_0203e7c8
 .extern func_020435f4
@@ -106,7 +106,7 @@ func_ov096_022178c0:
     strh r1, [r2, #0x24]
     ldr r5, [r4, #0x208]
     bl Actor_GetCollection
-    bl func_02030acc
+    bl ActorCollection_GetSpriteOwner
     ldr r1, [r5, #0xc]
     str r1, [sp, #0x0]
     ldr r1, [r4, #0x54]
@@ -194,7 +194,7 @@ func_ov096_022178c0:
     strh r1, [r2, #0x24]
     ldr r5, [r4, #0x208]
     bl Actor_GetCollection
-    bl func_02030acc
+    bl ActorCollection_GetSpriteOwner
     ldr r1, [r5, #0xc]
     str r1, [sp, #0x0]
     ldr r1, [r4, #0x54]
@@ -229,7 +229,7 @@ func_ov096_022178c0:
     strh r1, [r2, #0x24]
     ldr r5, [r4, #0x208]
     bl Actor_GetCollection
-    bl func_02030acc
+    bl ActorCollection_GetSpriteOwner
     ldr r1, [r5, #0xc]
     str r1, [sp, #0x0]
     ldr r1, [r4, #0x54]
@@ -271,7 +271,7 @@ func_ov096_022178c0:
     strb r1, [r4, #0x299]
     ldr r5, [r4, #0x208]
     bl Actor_GetCollection
-    bl func_02030acc
+    bl ActorCollection_GetSpriteOwner
     ldr r1, [r5, #0xc]
     str r1, [sp, #0x0]
     ldr r1, [r4, #0x54]
@@ -351,7 +351,7 @@ func_ov096_022178c0:
     strb r1, [r4, #0x299]
     ldr r5, [r4, #0x208]
     bl Actor_GetCollection
-    bl func_02030acc
+    bl ActorCollection_GetSpriteOwner
     ldr r1, [r5, #0xc]
     str r1, [sp, #0x0]
     ldr r1, [r4, #0x54]

@@ -11,7 +11,7 @@ extern void func_02071f38(void *resource);
 extern void func_02071ee0(void *resource, void *manager, s32 first,
                           s32 second, s32 third);
 extern void *Actor_GetCollection(void *actor);
-extern void *func_02030acc(void *collection);
+extern void *ActorCollection_GetSpriteOwner(void *collection);
 extern void *func_02073fc4(void *collectionData, s32 first, s32 second,
                            s32 third, s32 mode);
 extern void func_020313b4(void *actor, void *resource, u32 layer);
@@ -43,7 +43,7 @@ void *func_0203bae4(void *self, u16 first, u16 second, u16 third, u16 layer)
     func_02071f38(actor + 0x1f0);
     func_02071ee0(actor + 0x1f0, data_020f4e18, first, second, third);
     attachment = func_02073fc4(
-        func_02030acc(Actor_GetCollection(actor)),
+        ActorCollection_GetSpriteOwner(Actor_GetCollection(actor)),
         *(s32 *)(actor + 0x1f0), *(s32 *)(actor + 0x1f4),
         *(s32 *)(actor + 0x1f8), layer & 0xff);
     *(void **)(actor + 0x54) = attachment;

@@ -21,7 +21,7 @@ typedef struct DescriptorActor {
 typedef struct DescriptorActorCollection {
     DescriptorActor *actors_0000[128];
     u8 field_0200[0xc00];
-    void *field_0e00;
+    void *spriteOwner_0e00;
     u8 field_0e04[0x2070];
     s32 slotLimit_2e74;
     u32 flags_2e78;
@@ -56,10 +56,10 @@ void ActorCollection_SpawnDescriptorsBySelector(
     }
 }
 
-/* Return collection field 0x0e00 without changing state. */
-void *func_02030acc(DescriptorActorCollection *self)
+/* Return the collection's sprite-owner handle without changing state. */
+void *ActorCollection_GetSpriteOwner(DescriptorActorCollection *self)
 {
-    return self->field_0e00;
+    return self->spriteOwner_0e00;
 }
 
 /*

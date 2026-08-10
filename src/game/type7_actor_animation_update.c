@@ -8,7 +8,7 @@ extern u8 data_020e1720[];
 extern "C" {
 #endif
 extern void *Actor_GetCollection(void *actor);
-extern void *func_02030acc(void *value);
+extern void *ActorCollection_GetSpriteOwner(void *value);
 extern void func_020740c8(void *context, void *resource, void *first,
                           void *second, void *third);
 extern void func_02072b68(void *resource, u32 animation);
@@ -34,7 +34,7 @@ void func_02046208(void *self)
 {
     u8 *actor = (u8 *)self;
     u8 *resource = *(u8 **)(actor + 0x54);
-    void *context = func_02030acc(Actor_GetCollection(actor));
+    void *context = ActorCollection_GetSpriteOwner(Actor_GetCollection(actor));
     s32 state;
     u16 scale = 0x100;
     u32 animation;

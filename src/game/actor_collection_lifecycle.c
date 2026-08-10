@@ -14,7 +14,7 @@ typedef struct ActorCollection {
     void *actors_0000[128];
     void *relations_0200[5][128];
     void *field_0c00[128];
-    void *sprite_0e00;
+    void *spriteOwner_0e00;
     ActorCollectionOwner owner_0e04;
     ActorCollectionOwner owner_0e10;
     s32 actorCount_0e1c;
@@ -67,7 +67,7 @@ ActorCollection *ActorCollection_Init(ActorCollection *self)
     s32 i;
     s32 j;
 
-    self->sprite_0e00 = 0;
+    self->spriteOwner_0e00 = 0;
     func_02006268(&self->owner_0e04);
     func_02006268(&self->owner_0e10);
     ActorPairMatrix_ClearAll(self->relationshipMatrix_0e34);
@@ -100,9 +100,9 @@ ActorCollection *ActorCollection_Init(ActorCollection *self)
 void ActorCollection_SetSpriteMode(ActorCollection *self, s32 mode)
 {
     if (mode == 1)
-        self->sprite_0e00 = func_020742cc(data_020f4e14);
+        self->spriteOwner_0e00 = func_020742cc(data_020f4e14);
     else if (mode == 2)
-        self->sprite_0e00 = func_020742cc(gDebugFont);
+        self->spriteOwner_0e00 = func_020742cc(gDebugFont);
     self->spriteMode_2e84 = mode;
 }
 
@@ -118,17 +118,17 @@ ActorCollection *ActorCollection_Destructor(ActorCollection *self)
 /*
  * Remove all registered actors, return the optional sprite to the pool chosen
  * by spriteMode_2e84, clear its pointer, and finalize both embedded owners.
- * Modes other than one and two do not release sprite_0e00.
+ * Modes other than one and two do not release spriteOwner_0e00.
  */
 void ActorCollection_Deinit(ActorCollection *self)
 {
     ActorCollection_UnregisterAndDestroyAllActors(self);
     if (self->spriteMode_2e84 == 1) {
-        func_02074330(data_020f4e14, self->sprite_0e00);
-        self->sprite_0e00 = 0;
+        func_02074330(data_020f4e14, self->spriteOwner_0e00);
+        self->spriteOwner_0e00 = 0;
     } else if (self->spriteMode_2e84 == 2) {
-        func_02074330(gDebugFont, self->sprite_0e00);
-        self->sprite_0e00 = 0;
+        func_02074330(gDebugFont, self->spriteOwner_0e00);
+        self->spriteOwner_0e00 = 0;
     }
     func_020062f8(&self->owner_0e04);
     func_020062f8(&self->owner_0e10);

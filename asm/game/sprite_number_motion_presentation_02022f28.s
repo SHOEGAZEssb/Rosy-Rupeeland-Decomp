@@ -17,7 +17,7 @@
 .extern func_02022b70
 .extern func_02022c30
 .extern func_02022c80
-.extern func_02030acc
+.extern ActorCollection_GetSpriteOwner
 .extern Actor_GetCollection
 .extern func_02056f00
 .extern gHeapContext

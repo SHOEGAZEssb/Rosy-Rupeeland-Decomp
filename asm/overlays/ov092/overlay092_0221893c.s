@@ -12,7 +12,7 @@
 .extern func_020064b8
 .extern func_02007f0c
 .extern func_0201fafc
-.extern func_02030acc
+.extern ActorCollection_GetSpriteOwner
 .extern func_0203bae4
 .extern func_02059278
 .extern func_0205929c
@@ -370,7 +370,7 @@ func_ov092_0221893c:
     mov r1, #0x2
     ldr r0, [r0, #0x0]
     bl func_02007f0c
-    bl func_02030acc
+    bl ActorCollection_GetSpriteOwner
     ldr r2, .L_022191d8
     add r1, r10, #0x18
     stmia sp, {r2, r8}

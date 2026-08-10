@@ -14,7 +14,7 @@
 .extern func_02005580
 .extern func_02005c3c
 .extern func_02007f0c
-.extern func_02030acc
+.extern ActorCollection_GetSpriteOwner
 .extern func_02072b68
 .extern func_02074038
 .extern func_020740a4
@@ -63,7 +63,7 @@ L_0200ca80:
     ldr r0, [r1, #0x0]
     mov r1, #0x1
     bl func_02007f0c
-    bl func_02030acc
+    bl ActorCollection_GetSpriteOwner
     ldrh r3, [r4, #0x28]
     mov r2, #0x4
     mov r1, #0x2
@@ -99,7 +99,7 @@ L_0200cb08:
     ldr r0, [r1, #0x0]
     mov r1, #0x1
     bl func_02007f0c
-    bl func_02030acc
+    bl ActorCollection_GetSpriteOwner
     ldrh r3, [r4, #0x28]
     mov r2, #0x4
     mov r1, #0x2
@@ -135,7 +135,7 @@ L_0200cb90:
     ldr r0, [r1, #0x0]
     mov r1, #0x1
     bl func_02007f0c
-    bl func_02030acc
+    bl ActorCollection_GetSpriteOwner
     ldrh r3, [r4, #0x28]
     mov r2, #0x4
     mov r1, #0x2

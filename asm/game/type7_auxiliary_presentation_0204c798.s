@@ -2,7 +2,7 @@
 .extern Heap_Alloc
 .extern func_02005580
 .extern Actor_GetCollection
-.extern func_02030acc
+.extern ActorCollection_GetSpriteOwner
 .extern func_02073fc4
 .extern func_02072b68
 .extern func_0204c8d4
@@ -38,7 +38,7 @@ func_0204c798: ; 0x0204c798
     str r0, [r4, #0xc]
     mov r0, r6
     bl Actor_GetCollection
-    bl func_02030acc
+    bl ActorCollection_GetSpriteOwner
     mov r1, #0x2
     str r1, [sp, #0x0]
     ldmib r5, {r1, r2, r3}

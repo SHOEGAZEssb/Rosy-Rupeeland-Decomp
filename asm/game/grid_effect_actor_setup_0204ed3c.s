@@ -3,7 +3,7 @@
 .extern data_020e2724
 .extern gHeapContext
 .extern func_02005580
-.extern func_02030acc
+.extern ActorCollection_GetSpriteOwner
 .extern func_020313b4
 .extern Actor_GetCollection
 .extern func_02072b68
@@ -30,7 +30,7 @@ func_0204ed3c: ; 0x0204ed3c
     str r0, [r6, #0x1ec]
     mov r0, r6
     bl Actor_GetCollection
-    bl func_02030acc
+    bl ActorCollection_GetSpriteOwner
     ldrb r1, [r5, #0x10]
     str r1, [sp, #0x0]
     ldmib r4, {r1, r2, r3}

@@ -8,7 +8,7 @@
 .extern func_0201e0ec
 .extern func_02025d14
 .extern func_02026514
-.extern func_02030acc
+.extern ActorCollection_GetSpriteOwner
 .extern func_02038c1c
 .extern func_020390c8
 .extern func_02055688
@@ -82,7 +82,7 @@ L_02019b84:
     mov r1, #0x1
     ldr r0, [r0, #0x0]
     bl func_02007f0c
-    bl func_02030acc
+    bl ActorCollection_GetSpriteOwner
     bl func_02074154
     ldr r0, L_02019c5c
     ldr r0, [r0, #0x0]

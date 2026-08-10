@@ -2,7 +2,7 @@
 ; Matching fallback for the portable implementation in src/overlays/ov095/overlay095_recovery.c.
 .extern data_020e6adc
 .extern data_020e6b74
-.extern func_02030acc
+.extern ActorCollection_GetSpriteOwner
 .extern Actor_GetCollection
 .extern func_02072b68
 .extern func_020740c8
@@ -25,7 +25,7 @@ func_ov095_0221b38c:
 .L_0221b3b8:
     ldr r4, [r7, #0x20c]
     bl Actor_GetCollection
-    bl func_02030acc
+    bl ActorCollection_GetSpriteOwner
     ldr r1, [r4, #0xc]
     str r1, [sp, #0x0]
     ldr r1, [r7, #0x54]
@@ -49,7 +49,7 @@ func_ov095_0221b38c:
     ldr r4, [r7, #0x20c]
     mov r0, r7
     bl Actor_GetCollection
-    bl func_02030acc
+    bl ActorCollection_GetSpriteOwner
     ldr r1, [r4, #0xc]
     str r1, [sp, #0x0]
     ldr r1, [r7, #0x54]
@@ -60,7 +60,7 @@ func_ov095_0221b38c:
     ldr r4, [r7, #0x208]
     mov r0, r7
     bl Actor_GetCollection
-    bl func_02030acc
+    bl ActorCollection_GetSpriteOwner
     ldr r1, [r4, #0xc]
     str r1, [sp, #0x0]
     ldr r1, [r7, #0x54]
@@ -85,7 +85,7 @@ func_ov095_0221b38c:
 .L_0221b498:
     ldr r4, [r7, #0x20c]
     bl Actor_GetCollection
-    bl func_02030acc
+    bl ActorCollection_GetSpriteOwner
     ldr r1, [r4, #0xc]
     str r1, [sp, #0x0]
     ldr r1, [r7, #0x54]
@@ -210,7 +210,7 @@ func_ov095_0221b38c:
     ldr r8, [r0, #0x208]
     mov r0, r7
     bl Actor_GetCollection
-    bl func_02030acc
+    bl ActorCollection_GetSpriteOwner
     ldr r1, [r8, #0xc]
     str r1, [sp, #0x0]
     ldr r1, [r7, #0x54]

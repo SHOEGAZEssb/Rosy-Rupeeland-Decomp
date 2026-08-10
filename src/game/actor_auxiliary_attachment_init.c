@@ -17,7 +17,7 @@ extern u32 func_02071e60(void *, u32);
 extern u32 func_02071e70(void *, u32);
 extern u32 func_02071e80(void *, u32);
 extern void *Actor_GetCollection(ActorAuxiliaryAttachmentOwner *);
-extern void *func_02030acc(void *);
+extern void *ActorCollection_GetSpriteOwner(void *);
 extern void *func_02073fc4(void *, u32, u32, u32, s32);
 extern void func_02072b68(void *, s32);
 #ifdef __cplusplus
@@ -46,7 +46,7 @@ void func_020314b8(ActorAuxiliaryAttachmentOwner *self)
     second = func_02071e70(data_020f4e18, 0x1001);
     third = func_02071e80(data_020f4e18, 0x1387);
     self->attachment_a8 = func_02073fc4(
-        func_02030acc(Actor_GetCollection(self)), first, second, third, 2);
+        ActorCollection_GetSpriteOwner(Actor_GetCollection(self)), first, second, third, 2);
     func_02072b68(self->attachment_a8, 0);
     flags = (u16 *)((u8 *)self->attachment_a8 + 0x24);
     *flags |= 0x0a;

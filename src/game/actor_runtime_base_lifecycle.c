@@ -23,7 +23,7 @@ extern "C" {
 #endif
 extern void func_02031488(RuntimeActorLifecycle *);
 extern void *Actor_GetCollection(RuntimeActorLifecycle *);
-extern void *func_02030acc(void *);
+extern void *ActorCollection_GetSpriteOwner(void *);
 extern void func_02074038(void *, void *);
 extern void func_02057184(void *);
 extern void func_02006788(void *);
@@ -43,7 +43,7 @@ static RuntimeActorLifecycle *destroyRuntimeActor(RuntimeActorLifecycle *self)
     func_02031488(self);
     object = self->field_a8;
     if (object)
-        func_02074038(func_02030acc(Actor_GetCollection(self)), object);
+        func_02074038(ActorCollection_GetSpriteOwner(Actor_GetCollection(self)), object);
     object = self->field_1e0;
     if (object) {
         func_02057184(object);

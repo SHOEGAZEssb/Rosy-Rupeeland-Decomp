@@ -2,7 +2,7 @@
 .text
 .extern Heap_Alloc
 .extern data_020df208
-.extern func_02030acc
+.extern ActorCollection_GetSpriteOwner
 .extern Actor_GetCollection
 .extern func_020570c4
 .extern gHeapContext
@@ -24,7 +24,7 @@ Actor_EnsureAuxiliaryCollisionResource: ; 0x020342ac
     beq .L_020342f8
     mov r0, r5
     bl Actor_GetCollection
-    bl func_02030acc
+    bl ActorCollection_GetSpriteOwner
     mov r1, r0
     mov r0, r4
     bl func_020570c4

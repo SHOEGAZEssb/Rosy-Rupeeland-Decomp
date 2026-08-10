@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/presentation_backed_actor_setup.c.
 .extern data_020f4e18
-.extern func_02030acc
+.extern ActorCollection_GetSpriteOwner
 .extern Actor_GetCollection
 .extern func_02071e60
 .extern func_02071e70
@@ -31,7 +31,7 @@ func_0204d794:
     mov r6, r0
     mov r0, r5
     bl Actor_GetCollection
-    bl func_02030acc
+    bl ActorCollection_GetSpriteOwner
     ldrb ip, [r4, #0x10]
     mov r1, r8
     mov r2, r7

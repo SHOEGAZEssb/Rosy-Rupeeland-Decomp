@@ -5,7 +5,7 @@
 .extern data_ov092_0221c818
 .extern func_02005580
 .extern func_02005c3c
-.extern func_02030acc
+.extern ActorCollection_GetSpriteOwner
 .extern Actor_GetCollection
 .extern func_0204b078
 .extern func_0204d3d8
@@ -33,7 +33,7 @@ func_ov092_02217b7c:
     str r0, [r4, #0x244]
     mov r0, r4
     bl Actor_GetCollection
-    bl func_02030acc
+    bl ActorCollection_GetSpriteOwner
     mov r2, #0x0
     str r2, [sp, #0x0]
     mov r1, #0x6
@@ -64,7 +64,7 @@ func_ov092_02217b7c:
     str r0, [r4, #0x24c]
     mov r0, r4
     bl Actor_GetCollection
-    bl func_02030acc
+    bl ActorCollection_GetSpriteOwner
     mov r2, #0x0
     str r2, [sp, #0x0]
     mov r1, #0x6

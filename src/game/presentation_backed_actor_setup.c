@@ -11,7 +11,7 @@ extern void *data_020f4e18;
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *func_02030acc(void);
+extern void *ActorCollection_GetSpriteOwner(void);
 extern void Actor_GetCollection(void *actor);
 extern void *func_02071e60(void *archive, u32 resource_id);
 extern void *func_02071e70(void *archive, u32 resource_id);
@@ -44,7 +44,7 @@ void func_0204d794(void *actor, const void *descriptor)
 
     Actor_GetCollection(actor);
     FIELD(void *, actor, 0x54) =
-        func_02073fc4(func_02030acc(), resource0, resource1, resource2,
+        func_02073fc4(ActorCollection_GetSpriteOwner(), resource0, resource1, resource2,
                       FIELD(u8, descriptor, 0x10));
     func_02072b68(FIELD(void *, actor, 0x54), FIELD(u8, descriptor, 0x11));
     FIELD(u16, FIELD(void *, actor, 0x54), 0x24) |= 6;

@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/actor_derived_type1_animation_dispatch.c.
 .text
 .extern GameWork_TestFlag
-.extern func_02030acc
+.extern ActorCollection_GetSpriteOwner
 .extern Actor_GetCollection
 .extern func_020354e8
 .extern func_02072b68
@@ -22,7 +22,7 @@ func_02036030: ; 0x02036030
     cmp r6, #0x0
     beq .L_0203613c
     bl Actor_GetCollection
-    bl func_02030acc
+    bl ActorCollection_GetSpriteOwner
     ldr r1, [r6, #0xc]
     str r1, [sp, #0x0]
     ldr r1, [r4, #0x54]
@@ -289,7 +289,7 @@ func_02036030: ; 0x02036030
     beq .L_02036418
     mov r0, r4
     bl Actor_GetCollection
-    bl func_02030acc
+    bl ActorCollection_GetSpriteOwner
     ldr r1, [r10, #0xc]
     str r1, [sp, #0x0]
     ldr r1, [r4, #0x54]

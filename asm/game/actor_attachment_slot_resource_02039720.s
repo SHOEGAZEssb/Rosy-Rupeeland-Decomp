@@ -3,7 +3,7 @@
 .extern Heap_Alloc
 .extern data_020df48c
 .extern func_02005580
-.extern func_02030acc
+.extern ActorCollection_GetSpriteOwner
 .extern Actor_GetCollection
 .extern func_020740c8
 .extern gHeapContext
@@ -40,7 +40,7 @@ Actor_ReplaceAttachmentSlotResource: ; 0x02039720
     bne .L_020397a8
     mov r0, r8
     bl Actor_GetCollection
-    bl func_02030acc
+    bl ActorCollection_GetSpriteOwner
     ldr r2, [r5, #0xc]
     mov r1, r6
     str r2, [sp, #0x0]

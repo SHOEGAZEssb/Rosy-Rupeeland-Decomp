@@ -21,7 +21,7 @@
 .extern func_0200a114
 .extern func_0201e0ec
 .extern func_0201f864
-.extern func_02030acc
+.extern ActorCollection_GetSpriteOwner
 .extern Actor_GetCollection
 .extern func_0204d308
 .extern func_020593ac
@@ -224,7 +224,7 @@ func_ov093_02217c50:
     beq .L_02217f40
     mov r0, r4
     bl Actor_GetCollection
-    bl func_02030acc
+    bl ActorCollection_GetSpriteOwner
     ldr r3, .L_022184ec
     mov r2, r0
     str r3, [sp, #0x0]

@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/actor_primary_attachment_rebuild.c.
 .text
 .extern data_020f4e18
-.extern func_02030acc
+.extern ActorCollection_GetSpriteOwner
 .extern func_020313b4
 .extern Actor_GetCollection
 .extern func_02071ee0
@@ -41,7 +41,7 @@ func_0203bae4: ; 0x0203bae4
     bl func_02071ee0
     mov r0, r4
     bl Actor_GetCollection
-    bl func_02030acc
+    bl ActorCollection_GetSpriteOwner
     ldrh r1, [sp, #0x18]
     and r1, r1, #0xff
     str r1, [sp, #0x0]

@@ -3,7 +3,7 @@
 .extern data_021052fc
 .extern data_ov096_02218b08
 .extern func_020050a4
-.extern func_02030acc
+.extern ActorCollection_GetSpriteOwner
 .extern Actor_GetCollection
 .extern func_020593dc
 .extern func_02072b68
@@ -93,7 +93,7 @@ func_ov096_02217f6c:
     strh r1, [r2, #0x24]
     ldr r4, [r5, #0x208]
     bl Actor_GetCollection
-    bl func_02030acc
+    bl ActorCollection_GetSpriteOwner
     ldr r1, [r4, #0xc]
     str r1, [sp, #0x0]
     ldr r1, [r5, #0x54]

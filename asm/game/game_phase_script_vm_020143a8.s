@@ -36,7 +36,7 @@
 .extern func_02028630
 .extern func_02028814
 .extern func_0202906c
-.extern func_02030acc
+.extern ActorCollection_GetSpriteOwner
 .extern ActorCollection_FindActorByDescriptorValue
 .extern Actor_GetCollection
 .extern func_020a2310
@@ -290,7 +290,7 @@ L_020146bc:
     beq L_02014718
     mov r0, r10
     bl Actor_GetCollection
-    bl func_02030acc
+    bl ActorCollection_GetSpriteOwner
     str r8, [sp, #0x0]
     str r7, [sp, #0x4]
     str r6, [sp, #0x8]
@@ -482,7 +482,7 @@ L_0201493c:
     beq L_020149c0
     mov r0, r10
     bl Actor_GetCollection
-    bl func_02030acc
+    bl ActorCollection_GetSpriteOwner
     mov r3, r6, lsl #0x10
     mov r4, #0x1
     mov r2, r0
@@ -620,7 +620,7 @@ L_02014b2c:
     beq L_02014bc4
     mov r0, r10
     bl Actor_GetCollection
-    bl func_02030acc
+    bl ActorCollection_GetSpriteOwner
     mov r5, r0
     bl genrand_int32
     mov r1, #0x3
@@ -765,7 +765,7 @@ L_02014d38:
     beq L_02014dd0
     mov r0, r10
     bl Actor_GetCollection
-    bl func_02030acc
+    bl ActorCollection_GetSpriteOwner
     mov r5, r0
     bl genrand_int32
     mov r1, #0x3

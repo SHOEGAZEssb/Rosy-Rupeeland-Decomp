@@ -12,7 +12,7 @@ extern u8 data_020dfab0[];
 extern "C" {
 #endif
 extern void *Actor_GetCollection(void *actor);
-extern void *func_02030acc(void *value);
+extern void *ActorCollection_GetSpriteOwner(void *value);
 extern void func_020740c8(void *context, void *attachment,
                           u32 first, u32 second, u32 third);
 extern void func_02072b68(void *attachment, u32 animation);
@@ -36,7 +36,7 @@ static s32 pairMatches(u32 first, u32 second)
  * ordinary flag mode. The 5/6 resource-one selection additionally requires
  * pair +0x218/+0x21c to match the recovered globals.
  *
- * Resolve context through Actor_GetCollection then func_02030acc, configure attachment
+ * Resolve context through Actor_GetCollection then ActorCollection_GetSpriteOwner, configure attachment
  * +0x54 through func_020740c8 using resource words +0x04/+0x08/+0x0c, select
  * the animation, store +0x36 and zero +0x30. Special flag mode clears bits
  * zero/one of attachment +0x24; ordinary mode clears bit zero and sets bit one.
@@ -118,7 +118,7 @@ void func_0203f0bc(void *self)
     }
 
     resource = *(u32 **)(actor + 0x208 + resourceIndex * 4);
-    context = func_02030acc(Actor_GetCollection(actor));
+    context = ActorCollection_GetSpriteOwner(Actor_GetCollection(actor));
     attachment = *(u8 **)(actor + 0x54);
     func_020740c8(context, attachment, resource[1], resource[2], resource[3]);
     func_02072b68(attachment, animation & 0xff);

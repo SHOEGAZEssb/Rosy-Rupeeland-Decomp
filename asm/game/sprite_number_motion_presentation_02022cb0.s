@@ -17,7 +17,7 @@
 .extern func_02022b70
 .extern func_02022c30
 .extern func_02022c80
-.extern func_02030acc
+.extern ActorCollection_GetSpriteOwner
 .extern Actor_GetCollection
 .extern func_02056f00
 .extern gHeapContext
@@ -54,7 +54,7 @@ func_02022cb0: ; 0x02022cb0
     beq .L_02022d3c
     mov r0, r7
     bl Actor_GetCollection
-    bl func_02030acc
+    bl ActorCollection_GetSpriteOwner
     mov r1, r0
     mov r0, r5
     mov r2, r6

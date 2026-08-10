@@ -52,7 +52,7 @@ extern int func_02092c8c(...);
 extern int func_02002d94(...);
 extern int func_02002db0(...);
 extern int func_02007f0c(...);
-extern int func_02030acc(...);
+extern int ActorCollection_GetSpriteOwner(...);
 extern int func_020740a4(...);
 extern int func_02091fb0(...);
 extern int func_02001970(...);
@@ -245,7 +245,7 @@ code_r0x0200d17c:
     iVar5 = func_02002d94();
     if ((iVar5 == 0) || (iVar5 = func_02002db0(), iVar5 == 0)) {
       func_02007f0c(*UNK_0200e0e4,1);
-      func_02030acc();
+      ActorCollection_GetSpriteOwner();
       func_020740a4();
       return 0;
     }
@@ -410,7 +410,7 @@ code_r0x0200e2ac:
         func_0201140c(*UNK_0200e0f4,1);
       }
       func_02007f0c(*UNK_0200e0e4,1);
-      func_02030acc();
+      ActorCollection_GetSpriteOwner();
       func_02074178();
       if (param_1 != (int *)0x0) {
         (**(code **)(*param_1 + 4))();
@@ -536,7 +536,7 @@ code_r0x0200d224:
     *UNK_0200e0ec = 0;
     func_0200ec6c(*piVar1 + 0x24);
     func_02007f0c(*UNK_0200e0e4,1);
-    func_02030acc();
+    ActorCollection_GetSpriteOwner();
     func_02074154();
     func_020745c4(*UNK_0200e0f0,0);
   }

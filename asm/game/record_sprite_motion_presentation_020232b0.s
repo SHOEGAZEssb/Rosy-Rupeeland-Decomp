@@ -15,7 +15,7 @@
 .extern func_0201e250
 .extern func_0201e28c
 .extern func_02022fbc
-.extern func_02030acc
+.extern ActorCollection_GetSpriteOwner
 .extern Actor_GetCollection
 .extern func_02056f00
 .extern func_020627a0

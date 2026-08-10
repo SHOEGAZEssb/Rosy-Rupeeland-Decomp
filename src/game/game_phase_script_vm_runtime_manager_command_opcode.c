@@ -15,7 +15,7 @@ extern void func_0201df64(void *list);
 extern void func_0201e0ec(void *list);
 extern void *func_02025d14(void *state);
 extern void func_02026514(void *state);
-extern void *func_02030acc(void *collection);
+extern void *ActorCollection_GetSpriteOwner(void *collection);
 extern void func_02038c1c(void *manager);
 extern void func_020390c8(void *manager);
 extern void func_02055688(void);
@@ -64,7 +64,7 @@ s32 func_02019aa4(GamePhaseActorScriptVm *self)
         invokeModeZero(manager);
         if (entity)
             invokeModeZero(entity);
-        func_02074154(func_02030acc(func_02007f0c(runtime, 1)));
+        func_02074154(ActorCollection_GetSpriteOwner(func_02007f0c(runtime, 1)));
         func_02026514(func_02025d14(*(void **)(runtime + 0x30e8)));
         break;
     }

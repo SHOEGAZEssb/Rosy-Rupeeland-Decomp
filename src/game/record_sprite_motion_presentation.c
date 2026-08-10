@@ -23,7 +23,7 @@ extern void func_02005030(void *,const void *);extern void func_02004fe0(void *)
 extern void func_0200500c(void *,s32,s32,s32);extern void func_020050a4(void *,const void *);
 extern void func_02005058(void *);extern void func_020050c8(void *,const void *);
 extern void func_020066a4(void *,const void *,s32);extern void func_02056f00(void *,const void *);
-extern void *Actor_GetCollection(void *);extern void *func_02030acc(void *);
+extern void *Actor_GetCollection(void *);extern void *ActorCollection_GetSpriteOwner(void *);
 extern void func_02071ea4(void *);extern void func_02071eb8(void *);
 extern u8 *func_02073ffc(void *,void *,s32);extern void func_02072b68(void *,s32);
 extern void func_02074038(void *,void *);extern void func_02022fbc(void *);
@@ -52,7 +52,7 @@ RecordSpriteMotionPresentation *func_02022ff4(
     func_0201e250(self);self->vtable=(void **)data_020d6630;
     self->sampleArgument08=sampleArgument;func_02005030(&self->track0c,config+0x18);
     func_02004fe0(&self->firstOffset1c);func_02004fe0(&self->secondOffset2c);
-    self->spriteOwner44=func_02030acc(Actor_GetCollection((void *)config));
+    self->spriteOwner44=ActorCollection_GetSpriteOwner(Actor_GetCollection((void *)config));
     func_02071ea4(self->resource48);*(s32 *)&self->track0c.bytes[0x0c]+=0x10000;
     if(mode!=2&&mode!=3)OS_Halt();
     kind=func_02063658(data_021e9ac0,(u16)recordId);func_02022fbc(&record);

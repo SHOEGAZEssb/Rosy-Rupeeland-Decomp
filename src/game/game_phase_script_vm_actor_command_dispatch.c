@@ -18,7 +18,7 @@ extern void *func_02009d78(...);
 extern void *func_02007f0c(...);
 extern void *ActorCollection_FindActorByDescriptorValue(...);
 extern void *Actor_GetCollection(...);
-extern void *func_02030acc(...);
+extern void *ActorCollection_GetSpriteOwner(...);
 extern u32 *func_0200b2c0(void *object, u32 first, u32 second, u32 third);
 extern void *func_0201eefc(...);
 extern void *func_02022cb0(...);
@@ -180,7 +180,7 @@ s32 func_020143a8(GamePhaseActorScriptVm *self)
         object = Heap_Alloc(0x14, data_020d5b34, 4, &gHeapContext);
         if (object != 0)
             func_0201f864(object, &position,
-                          func_02030acc(Actor_GetCollection(actor)), a1,
+                          ActorCollection_GetSpriteOwner(Actor_GetCollection(actor)), a1,
                           a2, a3, a4, a5, -1, 1);
         func_02005058(&position);
         break;
@@ -211,7 +211,7 @@ s32 func_020143a8(GamePhaseActorScriptVm *self)
         object = Heap_Alloc(0x38, data_020d5b34, 4, &gHeapContext);
         if (object != 0)
             object = func_02025300(
-                object, &vector, func_02030acc(Actor_GetCollection(actor)),
+                object, &vector, ActorCollection_GetSpriteOwner(Actor_GetCollection(actor)),
                 (s16)a4, 1, 0);
         addScriptObject(object);
         func_02005058(&vector);
@@ -232,7 +232,7 @@ s32 func_020143a8(GamePhaseActorScriptVm *self)
         if (object != 0) {
             s16 variant = (s16)(func_020bf1f8(genrand_int32(), 3) + 0x28);
             object = func_02023434(
-                object, func_02030acc(Actor_GetCollection(actor)),
+                object, ActorCollection_GetSpriteOwner(Actor_GetCollection(actor)),
                 &firstVector, &secondVector, variant, selector == 10);
         }
         addScriptObject(object);

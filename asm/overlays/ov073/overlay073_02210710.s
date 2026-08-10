@@ -11,7 +11,7 @@
 .extern func_02007f0c
 .extern func_0201e250
 .extern func_0201f864
-.extern func_02030acc
+.extern ActorCollection_GetSpriteOwner
 .extern func_ov073_022100b4
 .extern gHeapContext
 
@@ -51,7 +51,7 @@ func_ov073_02210710:
     mov r1, #0x1
     ldr r0, [r0, #0x0]
     bl func_02007f0c
-    bl func_02030acc
+    bl ActorCollection_GetSpriteOwner
     ldr r3, .L_022108f8
     mov r2, r0
     str r3, [sp, #0x0]

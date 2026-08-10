@@ -9,7 +9,7 @@ extern void func_020086f8(void *state, GamePhaseRuntime *self);
 extern void func_0200875c(void *state, GamePhaseRuntime *self);
 extern void ActorCollection_DispatchEventToActors(void *actor, const void *state);
 extern void func_02005058(void *state);
-extern void func_02030acc(void *actor);
+extern void ActorCollection_GetSpriteOwner(void *actor);
 extern void func_020740a4(void);
 extern void ActorCollection_DrainRemovalQueue(void *actor);
 extern void func_0203ad64(void);
@@ -36,7 +36,7 @@ void func_02007a24(GamePhaseRuntime *self, s32 value, s32 mode)
         actor = b + 0x28;
         ActorCollection_DispatchEventToActors(actor, primaryState);
         func_02005058(primaryState);
-        func_02030acc(actor);
+        ActorCollection_GetSpriteOwner(actor);
         func_020740a4();
         ActorCollection_DrainRemovalQueue(actor);
     }
@@ -49,7 +49,7 @@ void func_02007a24(GamePhaseRuntime *self, s32 value, s32 mode)
             ActorCollection_DispatchEventToActors(actor, secondaryState);
             func_02005058(secondaryState);
             actor = (u8 *)*(void **)(b + 0x2fb8) + 8;
-            func_02030acc(actor);
+            ActorCollection_GetSpriteOwner(actor);
             func_020740a4();
             actor = (u8 *)*(void **)(b + 0x2fb8) + 8;
             ActorCollection_DrainRemovalQueue(actor);
