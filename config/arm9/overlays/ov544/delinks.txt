@@ -2,3 +2,8 @@
     .ctor       start:0x02233c98 end:0x02233c98 kind:rodata align:4
     .data       start:0x02233ca0 end:0x02234a20 kind:data align:32
     .bss        start:0x02234a20 end:0x02234a40 kind:bss align:32
+
+asm/overlays/ov544/overlay544_02233c60.s:
+    .text       start:0x02233c60 end:0x02233c98
+    .data       start:0x02233ca0 end:0x02234a20
+    .bss        start:0x02234a20 end:0x02234a40
