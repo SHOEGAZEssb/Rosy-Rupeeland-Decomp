@@ -17,7 +17,7 @@ extern s32 func_020befec(s32 dividend, s32 divisor);
  * 1/16, add base/256, push the result, and return zero.  Signed truncating
  * division is retained for the recovered arithmetic sequence.
  */
-s32 func_0201afc0(GamePhaseActorScriptVm *self)
+s32 GamePhaseActorScriptVm_CalculateScaledRuntimeValue(GamePhaseActorScriptVm *self)
 {
     s32 factor = (u16)GamePhaseScriptVm_Pop(&self->base);
     s32 base = (u16)GamePhaseScriptVm_Pop(&self->base);

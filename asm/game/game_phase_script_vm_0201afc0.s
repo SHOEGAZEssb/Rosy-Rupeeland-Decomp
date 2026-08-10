@@ -4,8 +4,8 @@
 .extern GamePhaseScriptVm_SetResult
 .extern func_020befec
 .extern data_021052fc
-.global func_0201afc0
-func_0201afc0: ; 0x0201afc0
+.global GamePhaseActorScriptVm_CalculateScaledRuntimeValue
+GamePhaseActorScriptVm_CalculateScaledRuntimeValue: ; 0x0201afc0
     stmdb sp!, {r3, r4, r5, lr}
     mov r5, r0
     bl GamePhaseScriptVm_Pop
@@ -38,4 +38,4 @@ func_0201afc0: ; 0x0201afc0
     mov r0, #0x0
     ldmia sp!, {r3, r4, r5, pc}
 L_0201b03c: .word data_021052fc
-.size func_0201afc0, . - func_0201afc0
+.size GamePhaseActorScriptVm_CalculateScaledRuntimeValue, . - GamePhaseActorScriptVm_CalculateScaledRuntimeValue
