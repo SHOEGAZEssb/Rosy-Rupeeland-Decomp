@@ -71,7 +71,7 @@ void GamePhaseRuntime_RecreateDualScreenUiPresentation(GamePhaseRuntime *self, s
 void GamePhaseRuntime_UpdateActorPresentationState(GamePhaseRuntime *self, s32 mode);
 void GamePhaseRuntime_ProcessPendingPresentationRefreshes(GamePhaseRuntime *self);
 s32 func_02008f2c(void);
-s32 func_02008f34(void *counter);
+s32 FrameCounter_Tick31(void *counter);
 void func_02008f58(void *value);
 void *GamePhaseRuntime_GetAuxiliaryOverlayObject(GamePhaseRuntime *self);
 void *Heap_FreeAndReturnPointer(void *allocation);

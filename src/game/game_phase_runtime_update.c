@@ -31,7 +31,7 @@ extern void func_020021c4(void);
 extern void func_020020c4(void);
 extern void func_02027f94(void);
 extern void func_02027654(void);
-extern s32 func_02008f34(void *object);
+extern s32 FrameCounter_Tick31(void *object);
 extern void func_020783cc(void *object);
 extern void func_02078384(void *object);
 extern void func_020755bc(void *object);
@@ -115,7 +115,7 @@ s32 GamePhaseRuntime_Update(GamePhaseRuntime *self)
             func_02027f94();
             func_02027654();
         }
-        if (func_02008f34(b + 0x30f0))
+        if (FrameCounter_Tick31(b + 0x30f0))
             func_020783cc(data_021f38fc);
         func_02078384(data_021f38fc);
     }

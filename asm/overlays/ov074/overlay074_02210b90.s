@@ -12,8 +12,8 @@
 .extern SplineMover_Evaluate2D
 .extern GamePhaseRuntime_GetActorCollection
 .extern func_0200875c
-.extern func_020091d0
-.extern func_020091d8
+.extern ActorMotion_GetActor
+.extern ActorMotion_SetPosition
 .extern func_02009d78
 .extern ActorDerivedType1_GetSingletonObject
 .extern Type7Actor_ProcessBoundaryTransition
@@ -39,7 +39,7 @@ func_ov074_02210b90:
     ldr r0, [r0, #0x0]
     add r0, r0, #0x3bc
     add r0, r0, #0x2c00
-    bl func_020091d0
+    bl ActorMotion_GetActor
     mov r1, r0
     add r0, r6, #0x28
     add r1, r1, #0x18
@@ -685,7 +685,7 @@ func_ov074_02210b90:
     ldr r0, [r0, #0x0]
     add r0, r0, #0x3bc
     add r0, r0, #0x2c00
-    bl func_020091d8
+    bl ActorMotion_SetPosition
     add r0, sp, #0x104
     bl func_02005058
     add r0, sp, #0xf4
@@ -696,7 +696,7 @@ func_ov074_02210b90:
     ldr r0, [r0, #0x0]
     add r0, r0, #0x44
     add r0, r0, #0x3000
-    bl func_020091d8
+    bl ActorMotion_SetPosition
     add r0, sp, #0xf4
     bl func_02005058
     add r0, sp, #0x500

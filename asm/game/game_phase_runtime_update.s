@@ -14,7 +14,7 @@
 .extern GamePhaseRuntime_SynchronizeActorPlacement
 .extern GamePhaseRuntime_DispatchActorQueryRequest
 .extern func_0200866c
-.extern func_02008f34
+.extern FrameCounter_Tick31
 .extern func_0200c244
 .extern func_0200c680
 .extern func_0200c8bc
@@ -154,7 +154,7 @@ L_02007548:
 L_020075b4:
     add r0, r4, #0xf0
     add r0, r0, #0x3000
-    bl func_02008f34
+    bl FrameCounter_Tick31
     cmp r0, #0x0
     beq L_020075d0
     ldr r0, L_02007850

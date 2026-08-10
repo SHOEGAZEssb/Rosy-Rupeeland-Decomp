@@ -1,7 +1,7 @@
     .text
     .extern GameWork_SetFlag
     .extern data_021052fc
-    .extern func_020091e8
+    .extern ActorMotion_SetMode2
     .extern func_0204fbdc
     .extern func_ov013_021fdbb0
     .extern gGameWork
@@ -66,7 +66,7 @@ L_021fea58:
     ldr r0, [r0, #0x0]
     add r0, r0, #0x3bc
     add r0, r0, #0x2c00
-    bl func_020091e8
+    bl ActorMotion_SetMode2
     b L_021fea98
 L_021fea90:
     mov r0, #0xf

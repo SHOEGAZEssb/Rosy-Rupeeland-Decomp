@@ -11,7 +11,7 @@ extern const void *data_020d43e4[];
 /* Construct the base object, install the GameWork-updating vtable, and return self. */
 ActorMotion *func_020099dc(ActorMotion *self)
 {
-    func_02008f90(self);
+    ActorMotion_Init(self);
     self->vtable = data_020d43e4;
     return self;
 }
@@ -19,14 +19,14 @@ ActorMotion *func_020099dc(ActorMotion *self)
 /* Run the base non-deleting destructor and return self. */
 ActorMotion *func_020099fc(ActorMotion *self)
 {
-    func_020090a0(self);
+    ActorMotion_DestroyBase(self);
     return self;
 }
 
 /* Run the base destructor, free the allocation, and return its old address. */
 ActorMotion *func_02009a10(ActorMotion *self)
 {
-    func_020090a0(self);
+    ActorMotion_DestroyBase(self);
     Heap_Free(self);
     return self;
 }

@@ -11,7 +11,7 @@
 .extern GamePhaseRuntime_CreateSecondaryActorSubsystem
 .extern GamePhaseRuntime_InitScaledAreaCoordinates
 .extern GamePhaseRuntime_RefreshAreaAuxiliaryObject
-.extern func_020091d8
+.extern ActorMotion_SetPosition
 .extern func_02009d78
 .extern func_0200ae8c
 .extern func_0200e714
@@ -160,7 +160,7 @@ L_02007cb8:
     add r0, r7, #0x3bc
     add r1, sp, #0xc
     add r0, r0, #0x2c00
-    bl func_020091d8
+    bl ActorMotion_SetPosition
     add r0, r7, #0x2000
     ldr r0, [r0, #0xea8]
     cmp r0, #0x0

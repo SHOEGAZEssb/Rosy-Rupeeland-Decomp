@@ -45,7 +45,7 @@ s32 func_02008f2c(void)
  * Increment the signed counter at offset four. Values above 30 reset to zero
  * and return one; all other values remain stored and return zero.
  */
-s32 func_02008f34(void *counter)
+s32 FrameCounter_Tick31(void *counter)
 {
     s32 value = ++*(s32 *)((u8 *)counter + 4);
     if (value > 30) {

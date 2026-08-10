@@ -14,7 +14,7 @@
 .extern func_020050a4
 .extern VecFx32Triple_Destroy
 .extern VecFx32Bezier_Evaluate3D
-.extern func_020091c0
+.extern ActorMotion_BindActor
 .extern func_02009780
 .extern func_020099c0
 .extern func_0200a114
@@ -69,7 +69,7 @@ func_ov091_02217ce0:
     ldr r0, [r0, #0x0]
     add r0, r0, #0x44
     add r0, r0, #0x3000
-    bl func_020091c0
+    bl ActorMotion_BindActor
     mov r0, r4
     bl func_0204d308
     ldr r1, .L_0221881c

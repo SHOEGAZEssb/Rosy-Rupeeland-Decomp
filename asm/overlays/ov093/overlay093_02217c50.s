@@ -17,7 +17,7 @@
 .extern DisplayBrightnessPair_GetScreen
 .extern func_0200500c
 .extern func_02005058
-.extern func_020091c0
+.extern ActorMotion_BindActor
 .extern func_0200a114
 .extern func_0201e0ec
 .extern func_0201f864
@@ -70,7 +70,7 @@ func_ov093_02217c50:
     ldr r0, [r0, #0x0]
     add r0, r0, #0x44
     add r0, r0, #0x3000
-    bl func_020091c0
+    bl ActorMotion_BindActor
     ldr r0, .L_022184cc
     ldr r0, [r0, #0x0]
     bl SceneManager_GetCurrent

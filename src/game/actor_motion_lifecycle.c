@@ -14,7 +14,7 @@ extern const void *data_020d43f4[];
  * the target position to (-0x80000, -0x74000, 0). Returns self; vector
  * construction/assignment has no hardware effects.
  */
-ActorMotion *func_02008f90(ActorMotion *self)
+ActorMotion *ActorMotion_Init(ActorMotion *self)
 {
     VecFx32Object temporary;
 
@@ -24,7 +24,7 @@ ActorMotion *func_02008f90(ActorMotion *self)
     self->mode = 0;
     self->field_30 = 0;
     func_02004fe0(&self->target);
-    func_0200901c(&self->state);
+    ActorMotionState_Init(&self->state);
     self->field_1c = 0;
     self->field_20 = 0;
     self->field_24 = 0;
@@ -37,17 +37,17 @@ ActorMotion *func_02008f90(ActorMotion *self)
 }
 
 /* Zero both triples and both trailing words of the embedded movement state. */
-ActorMotionState *func_0200901c(ActorMotionState *self)
+ActorMotionState *ActorMotionState_Init(ActorMotionState *self)
 {
-    func_02009044(&self->first);
-    func_02009044(&self->second);
+    ActorMotionTriple_Clear(&self->first);
+    ActorMotionTriple_Clear(&self->second);
     self->field_18 = 0;
     self->field_1c = 0;
     return self;
 }
 
 /* Zero the three signed components of a movement-state triple and return it. */
-ActorMotionTriple *func_02009044(ActorMotionTriple *self)
+ActorMotionTriple *ActorMotionTriple_Clear(ActorMotionTriple *self)
 {
     self->x = 0;
     self->y = 0;
@@ -56,7 +56,7 @@ ActorMotionTriple *func_02009044(ActorMotionTriple *self)
 }
 
 /* Destroy both owned vector wrappers in reverse order and return self. */
-ActorMotion *func_02009058(ActorMotion *self)
+ActorMotion *ActorMotion_Destroy(ActorMotion *self)
 {
     func_02005058(&self->target);
     func_02005058(&self->position);
@@ -64,7 +64,7 @@ ActorMotion *func_02009058(ActorMotion *self)
 }
 
 /* Destroy both vector wrappers, free the object, and return its old address. */
-ActorMotion *func_02009078(ActorMotion *self)
+ActorMotion *ActorMotion_DestroyAndFree(ActorMotion *self)
 {
     func_02005058(&self->target);
     func_02005058(&self->position);
@@ -73,7 +73,7 @@ ActorMotion *func_02009078(ActorMotion *self)
 }
 
 /* Alternate non-deleting destructor used by derived classes; returns self. */
-ActorMotion *func_020090a0(ActorMotion *self)
+ActorMotion *ActorMotion_DestroyBase(ActorMotion *self)
 {
     func_02005058(&self->target);
     func_02005058(&self->position);
@@ -85,7 +85,7 @@ ActorMotion *func_020090a0(ActorMotion *self)
  * actor, reconstructs a zero position, clears movement state and fields, and
  * restores the default target position. Returns no value.
  */
-void func_020090c0(ActorMotion *self)
+void ActorMotion_Reset(ActorMotion *self)
 {
     VecFx32Object zero;
     VecFx32Object target;
@@ -101,7 +101,7 @@ void func_020090c0(ActorMotion *self)
     self->field_24 = 0;
     self->field_28 = 0;
     self->field_2c = 0;
-    func_02009154(&self->state);
+    ActorMotionState_Reset(&self->state);
     func_0200500c(&target, -0x80000, -0x74000, 0);
     func_020050a4(&self->target, &target);
     func_02005058(&target);
@@ -111,21 +111,21 @@ void func_020090c0(ActorMotion *self)
  * Clear the two movement triples through the class copy helper and zero the
  * trailing words. Returns no value; temporary triples contain no resources.
  */
-void func_02009154(ActorMotionState *self)
+void ActorMotionState_Reset(ActorMotionState *self)
 {
     ActorMotionTriple first;
     ActorMotionTriple second;
 
-    func_02009044(&first);
-    func_0200919c(&self->first, &first);
-    func_02009044(&second);
-    func_0200919c(&self->second, &second);
+    ActorMotionTriple_Clear(&first);
+    ActorMotionTriple_Assign(&self->first, &first);
+    ActorMotionTriple_Clear(&second);
+    ActorMotionTriple_Assign(&self->second, &second);
     self->field_18 = 0;
     self->field_1c = 0;
 }
 
 /* Assign all three components unless source and destination are identical. */
-ActorMotionTriple *func_0200919c(ActorMotionTriple *self,
+ActorMotionTriple *ActorMotionTriple_Assign(ActorMotionTriple *self,
                                  const ActorMotionTriple *source)
 {
     if (self != source) {
@@ -137,33 +137,33 @@ ActorMotionTriple *func_0200919c(ActorMotionTriple *self,
 }
 
 /* Bind an actor and set motion mode 1; returns no value. */
-void func_020091c0(ActorMotion *self, void *actor)
+void ActorMotion_BindActor(ActorMotion *self, void *actor)
 {
     self->actor = actor;
     self->mode = 1;
 }
 
 /* Return the currently bound actor without changing state. */
-void *func_020091d0(const ActorMotion *self)
+void *ActorMotion_GetActor(const ActorMotion *self)
 {
     return self->actor;
 }
 
 /* Copy a supplied vector payload into the current position and return it. */
-VecFx32Object *func_020091d8(ActorMotion *self,
+VecFx32Object *ActorMotion_SetPosition(ActorMotion *self,
                              const VecFx32Object *position)
 {
     return func_020050a4(&self->position, position);
 }
 
 /* Select motion mode 2 without modifying any other state. */
-void func_020091e8(ActorMotion *self)
+void ActorMotion_SetMode2(ActorMotion *self)
 {
     self->mode = 2;
 }
 
 /* Select motion mode 1 and clear the two leading motion-result words. */
-void func_020091f4(ActorMotion *self)
+void ActorMotion_SetMode1AndClearOutputs(ActorMotion *self)
 {
     self->mode = 1;
     self->field_1c = 0;

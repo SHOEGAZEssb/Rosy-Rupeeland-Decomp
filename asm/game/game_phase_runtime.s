@@ -15,8 +15,8 @@
 .extern GamePhaseRuntime_GetActiveAreaPlacementVariant
 .extern GamePhaseRuntime_RefreshAreaAuxiliaryObject
 .extern GamePhaseRuntime_RecreateDualScreenUiPresentation
-.extern func_020090c0
-.extern func_020091c0
+.extern ActorMotion_Reset
+.extern ActorMotion_BindActor
 .extern func_020099dc
 .extern func_02009d0c
 .extern func_02009d14
@@ -150,7 +150,7 @@ GamePhaseRuntime_Configure:
     bl func_0200a35c
     add r0, r4, #0x44
     add r0, r0, #0x3000
-    bl func_020090c0
+    bl ActorMotion_Reset
     ldr r0, L_02006fc0
     bl func_0200ae8c
     mov r0, r4
@@ -256,7 +256,7 @@ L_02006da0:
     add r0, r4, #0x44
     ldr r1, [r1, #0xea4]
     add r0, r0, #0x3000
-    bl func_020091c0
+    bl ActorMotion_BindActor
     add r0, r4, #0x3bc
     add r0, r0, #0x2c00
     bl func_0200a310

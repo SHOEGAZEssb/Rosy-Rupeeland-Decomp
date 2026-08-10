@@ -11,8 +11,8 @@ extern void *GamePhaseRuntime_GetActorCollection(void *runtime, s32 index);
 extern void *ActorCollection_FindActorByDescriptorValue(void *collection, s32 index);
 extern u32 func_0200920c(void *collection, u32 a, u32 b, u32 c, u32 d);
 extern u32 func_020093cc(void *collection, u32 a, u32 b);
-extern void func_020091e8(void *collection);
-extern void func_020091f4(void *collection);
+extern void ActorMotion_SetMode2(void *collection);
+extern void ActorMotion_SetMode1AndClearOutputs(void *collection);
 extern void func_0200a114(void *collection, void *object);
 extern u32 genrand_int32(void);
 #ifdef __cplusplus
@@ -44,9 +44,9 @@ s32 func_02012814(GamePhaseScriptVm *self)
         break;
     case 3:
         if (a)
-            func_020091e8(runtime + 0x2fbc);
+            ActorMotion_SetMode2(runtime + 0x2fbc);
         else
-            func_020091f4(runtime + 0x2fbc);
+            ActorMotion_SetMode1AndClearOutputs(runtime + 0x2fbc);
         break;
     case 4:
         func_020127f8(self, *(u32 *)(runtime + 0x2fd4) == 2);
@@ -68,9 +68,9 @@ s32 func_02012814(GamePhaseScriptVm *self)
         break;
     case 9:
         if (a)
-            func_020091e8(runtime + 0x3044);
+            ActorMotion_SetMode2(runtime + 0x3044);
         else
-            func_020091f4(runtime + 0x3044);
+            ActorMotion_SetMode1AndClearOutputs(runtime + 0x3044);
         break;
     case 11:
         break;

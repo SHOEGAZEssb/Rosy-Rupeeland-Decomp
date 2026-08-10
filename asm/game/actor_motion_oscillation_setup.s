@@ -3,7 +3,7 @@
 .text
 .extern func_0200500c
 .extern func_02005058
-.extern func_0200919c
+.extern ActorMotionTriple_Assign
 .extern func_020befec
 .global func_020095cc
 func_020095cc: ; 0x020095cc
@@ -26,7 +26,7 @@ func_020095cc: ; 0x020095cc
     bl func_0200964c
     add r0, r5, #0x44
     add r1, sp, #0x0
-    bl func_0200919c
+    bl ActorMotionTriple_Assign
     ldr r2, [sp, #0x20]
     mov r3, r4
     add r0, sp, #0xc
@@ -34,7 +34,7 @@ func_020095cc: ; 0x020095cc
     bl func_0200964c
     add r0, r5, #0x50
     add r1, sp, #0xc
-    bl func_0200919c
+    bl ActorMotionTriple_Assign
     add r0, sp, #0x18
     bl func_02005058
     add sp, sp, #0x28

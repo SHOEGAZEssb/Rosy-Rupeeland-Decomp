@@ -61,22 +61,22 @@ typedef char ActorMotionAreaFollowerSizeCheck[
 extern "C" {
 #endif
 
-ActorMotion *func_02008f90(ActorMotion *self);
-ActorMotionState *func_0200901c(ActorMotionState *self);
-ActorMotionTriple *func_02009044(ActorMotionTriple *self);
-ActorMotion *func_02009058(ActorMotion *self);
-ActorMotion *func_02009078(ActorMotion *self);
-ActorMotion *func_020090a0(ActorMotion *self);
-void func_020090c0(ActorMotion *self);
-void func_02009154(ActorMotionState *self);
-ActorMotionTriple *func_0200919c(ActorMotionTriple *self,
+ActorMotion *ActorMotion_Init(ActorMotion *self);
+ActorMotionState *ActorMotionState_Init(ActorMotionState *self);
+ActorMotionTriple *ActorMotionTriple_Clear(ActorMotionTriple *self);
+ActorMotion *ActorMotion_Destroy(ActorMotion *self);
+ActorMotion *ActorMotion_DestroyAndFree(ActorMotion *self);
+ActorMotion *ActorMotion_DestroyBase(ActorMotion *self);
+void ActorMotion_Reset(ActorMotion *self);
+void ActorMotionState_Reset(ActorMotionState *self);
+ActorMotionTriple *ActorMotionTriple_Assign(ActorMotionTriple *self,
                                  const ActorMotionTriple *source);
-void func_020091c0(ActorMotion *self, void *actor);
-void *func_020091d0(const ActorMotion *self);
-VecFx32Object *func_020091d8(ActorMotion *self,
+void ActorMotion_BindActor(ActorMotion *self, void *actor);
+void *ActorMotion_GetActor(const ActorMotion *self);
+VecFx32Object *ActorMotion_SetPosition(ActorMotion *self,
                              const VecFx32Object *position);
-void func_020091e8(ActorMotion *self);
-void func_020091f4(ActorMotion *self);
+void ActorMotion_SetMode2(ActorMotion *self);
+void ActorMotion_SetMode1AndClearOutputs(ActorMotion *self);
 s32 func_0200920c(ActorMotion *self, s32 xIndex, s32 yIndex,
                   s32 divisor, s32 useDirectionTable);
 u32 func_020093ac(const VecFx32Object *from, const VecFx32Object *to);

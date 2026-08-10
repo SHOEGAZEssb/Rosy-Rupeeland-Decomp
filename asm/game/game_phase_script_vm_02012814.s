@@ -3,8 +3,8 @@
 .extern OS_Halt
 .extern data_021052fc
 .extern GamePhaseRuntime_GetActorCollection
-.extern func_020091e8
-.extern func_020091f4
+.extern ActorMotion_SetMode2
+.extern ActorMotion_SetMode1AndClearOutputs
 .extern func_0200920c
 .extern func_020093cc
 .extern func_0200a114
@@ -79,14 +79,14 @@ L_020128f0:
     ldr r0, [r0, #0x0]
     add r0, r0, #0x3bc
     add r0, r0, #0x2c00
-    bl func_020091e8
+    bl ActorMotion_SetMode2
     b L_02012a50
 L_02012910:
     ldr r0, L_02012a5c
     ldr r0, [r0, #0x0]
     add r0, r0, #0x3bc
     add r0, r0, #0x2c00
-    bl func_020091f4
+    bl ActorMotion_SetMode1AndClearOutputs
     b L_02012a50
 L_02012928:
     ldr r0, L_02012a5c
@@ -157,14 +157,14 @@ L_02012a0c:
     ldr r0, [r0, #0x0]
     add r0, r0, #0x44
     add r0, r0, #0x3000
-    bl func_020091e8
+    bl ActorMotion_SetMode2
     b L_02012a50
 L_02012a2c:
     ldr r0, L_02012a5c
     ldr r0, [r0, #0x0]
     add r0, r0, #0x44
     add r0, r0, #0x3000
-    bl func_020091f4
+    bl ActorMotion_SetMode1AndClearOutputs
     b L_02012a50
 L_02012a44:
     bl OS_Halt

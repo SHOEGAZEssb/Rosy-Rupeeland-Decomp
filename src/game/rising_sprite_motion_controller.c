@@ -35,7 +35,7 @@ typedef struct RisingSpriteMotionController {
 extern "C" {
 #endif
 extern u8 gSystemState[];
-extern void func_02009044(void *state);
+extern void ActorMotionTriple_Clear(void *state);
 extern void VecFx32Triple_Init(void *path);
 extern void VecFx32Triple_Destroy(void *value);
 extern void func_0200500c(PresentationValue *value, s32 x, s32 y, s32 z);
@@ -46,7 +46,7 @@ extern void VecFx32Triple_InitWithValues(void *destination, s32 first,
                           PresentationValue *source, s32 second);
 extern void VecFx32Triple_Assign(void *path, void *source);
 extern void func_0200964c(void *value, s32 first, s32 second, s32 third);
-extern void func_0200919c(void *state, void *source);
+extern void ActorMotionTriple_Assign(void *state, void *source);
 extern s32 func_020096f0(void *state, s32 time, s32 mode);
 extern void VecFx32Bezier_Evaluate3D(void *destination, void *path, s32 offset);
 extern void VecFx32_Subtract(PresentationValue *destination, void *source,
@@ -92,7 +92,7 @@ RisingSpriteMotionController *func_020203e4(
     self->sprite00 = 0;
     self->spriteOwner04 = spriteOwner;
     self->state08 = 0;
-    func_02009044(self->oscillation0c);
+    ActorMotionTriple_Clear(self->oscillation0c);
     self->frame18 = 0;
     VecFx32Triple_Init(self->path1c);
     func_02020364(&self->motion4c);
@@ -118,7 +118,7 @@ RisingSpriteMotionController *func_020203e4(
     *(s16 *)(self->sprite00 + 0x34) = 2;
     self->sprite00[0x3a] = 1;
     func_0200964c(oscillationValue, 0x10000, -0x10000, 60);
-    func_0200919c(self->oscillation0c, oscillationValue);
+    ActorMotionTriple_Assign(self->oscillation0c, oscillationValue);
     return self;
 }
 

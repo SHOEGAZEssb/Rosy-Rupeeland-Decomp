@@ -11,7 +11,7 @@ extern u8 gSystemState[];
 void func_02009694(ActorMotion *self)
 {
     self->field_30 &= ~2;
-    func_02009154(&self->state);
+    ActorMotionState_Reset(&self->state);
 }
 
 /*

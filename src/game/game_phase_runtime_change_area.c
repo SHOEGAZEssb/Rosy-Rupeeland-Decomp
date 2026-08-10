@@ -21,7 +21,7 @@ extern s32 func_020beae4(s32 value);
 extern void *func_02009d78(void *object);
 extern void func_02005030(void *destination, const void *source);
 extern void func_020050c8(void *destination, const void *offset);
-extern void func_020091d8(void *object, const void *transform);
+extern void ActorMotion_SetPosition(void *object, const void *transform);
 extern void func_0200ae8c(void *state);
 extern void GamePhaseRuntime_CreateSecondaryActorSubsystem(GamePhaseRuntime *self, void *area, s32 enabled);
 extern void func_0200e714(void *state, void *area, const void *transform);
@@ -88,7 +88,7 @@ s32 GamePhaseRuntime_ChangeToNeighborArea(GamePhaseRuntime *self, s32 direction)
 
     func_02005030(transform, func_02009d78(b + 0x2fbc));
     func_020050c8(transform, offset);
-    func_020091d8(b + 0x2fbc, transform);
+    ActorMotion_SetPosition(b + 0x2fbc, transform);
 
     object = *(void **)(b + 0x2ea8);
     if (object != 0 && (*(u32 *)((u8 *)object + 0x268) & 0x10) &&

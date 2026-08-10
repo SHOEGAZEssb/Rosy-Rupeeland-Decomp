@@ -27,7 +27,7 @@ ActorMotionAreaFollower *func_02009d14(ActorMotionAreaFollower *self,
 ActorMotionAreaFollower *func_02009d58(ActorMotionAreaFollower *self)
 {
     func_02005058(&self->offset);
-    func_020090a0(&self->jitter.base);
+    ActorMotion_DestroyBase(&self->jitter.base);
     return self;
 }
 

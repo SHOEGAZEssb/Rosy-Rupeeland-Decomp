@@ -10266,7 +10266,7 @@ build build/reports/game_phase_runtime_misc.json: objdiff build/decomp/delinks/s
 
 build build/reports/game_phase_runtime_misc.txt: match_report build/reports/game_phase_runtime_misc.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_runtime_misc.json
-  report_args = --section .text --function GamePhaseRuntime_ProcessPendingPresentationRefreshes --function func_02008f2c --function func_02008f34 --function func_02008f58 --function GamePhaseRuntime_GetAuxiliaryOverlayObject --function Heap_FreeAndReturnPointer --require-exact
+  report_args = --section .text --function GamePhaseRuntime_ProcessPendingPresentationRefreshes --function func_02008f2c --function FrameCounter_Tick31 --function func_02008f58 --function GamePhaseRuntime_GetAuxiliaryOverlayObject --function Heap_FreeAndReturnPointer --require-exact
 
 build build/reports/actor_motion_lifecycle.json: objdiff build/decomp/delinks/src/game/actor_motion_lifecycle.o | build/decomp/src/game/actor_motion_lifecycle.o
   target_object = build/decomp/delinks/src/game/actor_motion_lifecycle.o
@@ -10274,7 +10274,7 @@ build build/reports/actor_motion_lifecycle.json: objdiff build/decomp/delinks/sr
 
 build build/reports/actor_motion_lifecycle.txt: match_report build/reports/actor_motion_lifecycle.json | tools/report_objdiff.py
   report_json = build/reports/actor_motion_lifecycle.json
-  report_args = --section .text --function func_02008f90 --function func_0200901c --function func_02009044 --function func_02009058 --function func_02009078 --function func_020090a0 --function func_020090c0 --function func_02009154 --function func_0200919c --function func_020091c0 --function func_020091d0 --function func_020091d8 --function func_020091e8 --function func_020091f4
+  report_args = --section .text --function ActorMotion_Init --function ActorMotionState_Init --function ActorMotionTriple_Clear --function ActorMotion_Destroy --function ActorMotion_DestroyAndFree --function ActorMotion_DestroyBase --function ActorMotion_Reset --function ActorMotionState_Reset --function ActorMotionTriple_Assign --function ActorMotion_BindActor --function ActorMotion_GetActor --function ActorMotion_SetPosition --function ActorMotion_SetMode2 --function ActorMotion_SetMode1AndClearOutputs
 
 build build/reports/actor_motion_grid_target.json: objdiff build/decomp/delinks/asm/game/actor_motion_grid_target.o | build/decomp/asm/game/actor_motion_grid_target.o
   target_object = build/decomp/delinks/asm/game/actor_motion_grid_target.o

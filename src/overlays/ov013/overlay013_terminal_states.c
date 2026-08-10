@@ -11,7 +11,7 @@ extern "C" {
 #endif
 extern void func_0204fbdc(void);
 extern void GameWork_SetFlag(void *, s32);
-extern void func_020091e8(void *);
+extern void ActorMotion_SetMode2(void *);
 extern void func_ov013_021fdbb0(void *);
 extern void func_0201218c(void *);
 #ifdef __cplusplus
@@ -50,7 +50,7 @@ s32 func_ov013_021fe9c8(void *state)
         case 3:
             GameWork_SetFlag(gGameWork, 0x3f2);
             GameWork_SetFlag(gGameWork, 0x393);
-            func_020091e8(data_021052fc + 0x2fbc);
+            ActorMotion_SetMode2(data_021052fc + 0x2fbc);
             break;
         case 4:
             FIELD(s32, state, 0x980) = 15;

@@ -6,7 +6,7 @@
 .extern data_0210570c
 .extern data_ov091_02218cd0
 .extern func_02005058
-.extern func_020091c0
+.extern ActorMotion_BindActor
 .extern func_0200a114
 .extern ActorCollection_SpawnDescriptorsBySelector
 .extern Actor_SetActive
@@ -48,7 +48,7 @@ func_ov091_02217b3c:
     ldr r0, [r0, #0x0]
     add r0, r0, #0x44
     add r0, r0, #0x3000
-    bl func_020091c0
+    bl ActorMotion_BindActor
     ldr r0, [r5, #0x238]
     bl func_02073ef8
     ldr r0, [r5, #0x234]

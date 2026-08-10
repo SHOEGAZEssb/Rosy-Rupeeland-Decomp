@@ -37,7 +37,7 @@ void func_0200a35c(ActorMotionAreaFollower *self)
 {
     VecFx32Object zero;
 
-    func_020090c0(&self->jitter.base);
+    ActorMotion_Reset(&self->jitter.base);
     self->jitter.remainingFrames = 0;
     self->jitter.radius = 0;
     func_0200500c(&zero, 0, 0, 0);

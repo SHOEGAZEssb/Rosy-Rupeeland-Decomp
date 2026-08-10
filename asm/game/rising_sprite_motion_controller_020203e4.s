@@ -7,8 +7,8 @@
 .extern VecFx32Triple_InitWithValues
 .extern VecFx32Triple_Assign
 .extern func_02008378
-.extern func_02009044
-.extern func_0200919c
+.extern ActorMotionTriple_Clear
+.extern ActorMotionTriple_Assign
 .extern func_0200964c
 .extern func_02020364
 .extern func_02020374
@@ -29,7 +29,7 @@ func_020203e4: ; 0x020203e4
     add r0, r4, #0xc
     mov r5, r3
     str r2, [r4, #0x8]
-    bl func_02009044
+    bl ActorMotionTriple_Clear
     mov r1, #0x0
     add r0, r4, #0x1c
     str r1, [r4, #0x18]
@@ -108,7 +108,7 @@ func_020203e4: ; 0x020203e4
     bl func_0200964c
     add r1, sp, #0x4
     add r0, r4, #0xc
-    bl func_0200919c
+    bl ActorMotionTriple_Assign
     mov r0, r4
     add sp, sp, #0x70
     ldmia sp!, {r3, r4, r5, r6, r7, pc}

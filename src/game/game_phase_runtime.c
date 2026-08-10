@@ -37,7 +37,7 @@ extern void GamePhaseRuntime_CreateFieldLoader(GamePhaseRuntime *runtime);
 extern void GXS_SetGraphicsMode(u32 bgMode);
 extern void DisplayController_SetVerticalOffset(s32 value);
 extern void func_0200a35c(void *object);
-extern void func_020090c0(void *object);
+extern void ActorMotion_Reset(void *object);
 extern void func_0200ae8c(void *object);
 extern void func_0200e650(void *object, const void *config);
 extern void ActorInteractionRuntime_Start(void);
@@ -45,7 +45,7 @@ extern void ActorDerivedType1_ResetToDisabledState(void *entity);
 extern void Actor_AdjustPositionForTerrainHeight(void *entity);
 extern void ActorDerivedType1_UpdateGameWorkRuntimeFlags(void *entity, s32 enabled);
 extern void func_0200a114(void *object, void *entity);
-extern void func_020091c0(void *object, void *entity);
+extern void ActorMotion_BindActor(void *object, void *entity);
 extern void func_0200a310(void *object);
 extern void func_0200ec6c(void *object, s32 enabled);
 extern void *func_02009d0c(void *object);
@@ -136,7 +136,7 @@ void GamePhaseRuntime_Configure(GamePhaseRuntime *self, const void *configPointe
 
     DisplayController_SetVerticalOffset(*(const s16 *)(config + 0x54));
     func_0200a35c(bytes + 0x2fbc);
-    func_020090c0(bytes + 0x3044);
+    ActorMotion_Reset(bytes + 0x3044);
     func_0200ae8c(data_02105310);
     GamePhaseRuntime_CreateSecondaryActorSubsystem(self, (void *)configPointer, 1);
     func_0200e650(bytes + 0x24, configPointer);
@@ -176,7 +176,7 @@ void GamePhaseRuntime_Configure(GamePhaseRuntime *self, const void *configPointe
     ActorDerivedType1_UpdateGameWorkRuntimeFlags(entity,
                   (u32)(*(const s32 *)config - 2) <= 2 ? 1 : 0);
     func_0200a114(bytes + 0x2fbc, entity);
-    func_020091c0(bytes + 0x3044, entity);
+    ActorMotion_BindActor(bytes + 0x3044, entity);
     func_0200a310(bytes + 0x2fbc);
     GamePhaseRuntime_RecreateDualScreenUiPresentation(self, GamePhaseRuntime_GetActiveAreaPlacementVariant(self), (void *)configPointer);
     *(s32 *)(bytes + 0x30fc) = 1;

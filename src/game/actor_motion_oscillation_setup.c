@@ -29,10 +29,10 @@ void func_020095cc(ActorMotion *self, s32 xAmplitude, s32 yAmplitude,
     func_0200500c(&amplitudes, xAmplitude << 12, yAmplitude << 12, 0);
     func_0200964c(&first, -amplitudes.value.x,
                   amplitudes.value.x, duration);
-    func_0200919c(&self->state.first, &first);
+    ActorMotionTriple_Assign(&self->state.first, &first);
     func_0200964c(&second, -amplitudes.value.y,
                   amplitudes.value.y, duration);
-    func_0200919c(&self->state.second, &second);
+    ActorMotionTriple_Assign(&self->state.second, &second);
     func_02005058(&amplitudes);
 }
 
