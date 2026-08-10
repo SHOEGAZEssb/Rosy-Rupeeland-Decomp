@@ -43,7 +43,7 @@ extern void func_0204a5dc(void *actor);
  * zero. The function always returns zero; it mutates actor, target, random,
  * and motion state and has no direct hardware effects.
  */
-s32 func_02049148(void *self)
+s32 Type7Actor_UpdateRandomOffsetMotion(void *self)
 {
     u8 *actor = (u8 *)self;
     *(u32 *)(actor + 0x268) |= 0x8000;
@@ -80,13 +80,13 @@ s32 func_02049148(void *self)
 }
 
 /*
- * Input and return behavior match func_02049148, but set +0xd0 bit one instead
+ * Input and return behavior match Type7Actor_UpdateRandomOffsetMotion, but set +0xd0 bit one instead
  * of clearing it. After the shared gates and destination selection, call
  * func_0204a5dc before updating motion. The exact additional state maintained
  * by that helper is not yet known. Actor, target, random, and motion state may
  * change; no direct hardware access occurs.
  */
-s32 func_0204929c(void *self)
+s32 Type7Actor_UpdateRandomOffsetMotionVariant(void *self)
 {
     u8 *actor = (u8 *)self;
     *(u32 *)(actor + 0x268) |= 0x8000;
@@ -138,7 +138,7 @@ s32 func_0204929c(void *self)
  * temporary destination falls below 0x28000. Always return zero. The helper
  * calls may change actor and target state; no direct hardware access occurs.
  */
-s32 func_020493f8(void *self)
+s32 Type7Actor_UpdateRelatedTargetMotion(void *self)
 {
     u8 *actor = (u8 *)self;
     u8 *related;

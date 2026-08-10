@@ -15,9 +15,9 @@
 .extern func_020be328
 .extern genrand_int32
     .text
-    .global func_02049148
-.type func_02049148, @function
-func_02049148: ; 0x02049148
+    .global Type7Actor_UpdateRandomOffsetMotion
+.type Type7Actor_UpdateRandomOffsetMotion, @function
+Type7Actor_UpdateRandomOffsetMotion: ; 0x02049148
     stmdb sp!, {r4, lr}
     mov r4, r0
     ldr r1, [r4, #0x268]
@@ -107,11 +107,11 @@ func_02049148: ; 0x02049148
     mov r0, #0x0
     ldmia sp!, {r4, pc}
 .L_02049298: .word data_020c9670
-.size func_02049148, . - func_02049148
+.size Type7Actor_UpdateRandomOffsetMotion, . - Type7Actor_UpdateRandomOffsetMotion
 
-    .global func_0204929c
-.type func_0204929c, @function
-func_0204929c: ; 0x0204929c
+    .global Type7Actor_UpdateRandomOffsetMotionVariant
+.type Type7Actor_UpdateRandomOffsetMotionVariant, @function
+Type7Actor_UpdateRandomOffsetMotionVariant: ; 0x0204929c
     stmdb sp!, {r4, lr}
     mov r4, r0
     ldr r1, [r4, #0x268]
@@ -203,11 +203,11 @@ func_0204929c: ; 0x0204929c
     mov r0, #0x0
     ldmia sp!, {r4, pc}
 .L_020493f4: .word data_020c9670
-.size func_0204929c, . - func_0204929c
+.size Type7Actor_UpdateRandomOffsetMotionVariant, . - Type7Actor_UpdateRandomOffsetMotionVariant
 
-    .global func_020493f8
-.type func_020493f8, @function
-func_020493f8: ; 0x020493f8
+    .global Type7Actor_UpdateRelatedTargetMotion
+.type Type7Actor_UpdateRelatedTargetMotion, @function
+Type7Actor_UpdateRelatedTargetMotion: ; 0x020493f8
     stmdb sp!, {r4, r5, r6, lr}
     mov r5, r0
     ldr r1, [r5, #0x268]
@@ -303,4 +303,4 @@ func_020493f8: ; 0x020493f8
 .L_02049554:
     mov r0, #0x0
     ldmia sp!, {r4, r5, r6, pc}
-.size func_020493f8, . - func_020493f8
+.size Type7Actor_UpdateRelatedTargetMotion, . - Type7Actor_UpdateRelatedTargetMotion
