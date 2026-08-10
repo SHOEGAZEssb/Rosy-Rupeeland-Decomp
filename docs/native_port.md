@@ -65,7 +65,7 @@ The broad barriers currently known are:
 | --- | --- | --- | --- |
 | Main loop and timing | VBlank waits, VCOUNT, OS timing and interrupts | Host clock, deterministic frame scheduler, and event loop | implemented |
 | Input | Key registers, `PAD_Read`, touch input | Keyboard/controller/mouse mapping with DS-compatible edge and repeat behavior | implemented |
-| Graphics | 2D/3D engines, VRAM banks, GX/G2 commands, display capture | PC renderer reproducing both DS screens and resource semantics | unmapped |
+| Graphics | 2D/3D engines, VRAM banks, GX/G2 commands, display capture | PC renderer reproducing both DS screens and resource semantics | identified |
 | Audio | ARM7 sound services, command queues, Nitro sound formats | Host mixer and sequencer with decoded game resources | unmapped |
 | Files and resources | NitroFS/FS calls and archive formats | ROM-backed or extracted-data virtual filesystem | implemented |
 | Overlays | `FS_LoadOverlay`, `FS_StartOverlay`, unload lifecycle | Static registration or host-side scene/module lifecycle | identified |
@@ -126,8 +126,13 @@ cmake -S . -B build/native
 cmake --build build/native --config Release
 ```
 
-The diagnostic image is intentionally game-data independent. The next native
-step is to replace that frame producer with an early reconstructed scene.
+The harness runs a portable presentation model of the recovered hidden debug
+menu. Its directional priority, unusual 13-entry wrapping, horizontal column
+toggle, and A-button activation order match `DebugMenu_Update`. The menu uses a
+host-owned XRGB8888 software canvas and bitmap font; the original DS debug-text
+renderer is not reused. Activation reports the selected scene boundary but does
+not yet call the retail constructors, whose graphics, sound, heap, and overlay
+dependencies still require native implementations.
 
 Supply game data from either a user-owned ROM or an extracted NitroFS root:
 

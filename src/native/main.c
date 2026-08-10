@@ -2,43 +2,15 @@
  * Native harness entry point.
  *
  * This owns the platform-neutral frame loop used while reconstructed scenes
- * are moved off the Nintendo DS runtime. It currently presents a diagnostic
- * dual-screen image and consumes DS-compatible input snapshots.
+ * are moved off the Nintendo DS runtime. It presents the first host rendering
+ * of the recovered debug-menu behavior and consumes DS-compatible input.
  */
+#include "tingle/native_debug_menu.h"
 #include "tingle/native_platform.h"
 #include "tingle/native_data.h"
 
 #include <stdlib.h>
 #include <string.h>
-
-static void FillDiagnosticFrame(u32 *pixels, u32 frame, const TingleNativeInput *input,
-                                int data_ready)
-{
-    s32 x;
-    s32 y;
-
-    for (y = 0; y < TINGLE_FRAMEBUFFER_HEIGHT; ++y) {
-        u32 base = y < TINGLE_SCREEN_HEIGHT ? 0x00182838u : 0x00381828u;
-        for (x = 0; x < TINGLE_SCREEN_WIDTH; ++x) {
-            u32 pulse = (u32)((x + y + (s32)frame) & 0x1f);
-            pixels[y * TINGLE_SCREEN_WIDTH + x] = base + (pulse << 8);
-        }
-    }
-
-    if (input->held != 0) {
-        for (y = 8; y < 24; ++y) {
-            for (x = 8; x < 24; ++x) {
-                pixels[y * TINGLE_SCREEN_WIDTH + x] = 0x00ffffffu;
-            }
-        }
-    }
-
-    for (y = 8; y < 24; ++y) {
-        for (x = TINGLE_SCREEN_WIDTH - 24; x < TINGLE_SCREEN_WIDTH - 8; ++x) {
-            pixels[y * TINGLE_SCREEN_WIDTH + x] = data_ready ? 0x0000ff00u : 0x00ff2020u;
-        }
-    }
-}
 
 /* Runs until the platform requests shutdown; returns failure only on setup errors. */
 int TingleNative_Run(int argc, char **argv)
@@ -49,7 +21,8 @@ int TingleNative_Run(int argc, char **argv)
     void *probe = NULL;
     size_t probe_size = 0;
     u32 *pixels;
-    u32 frame = 0;
+    TingleNativeCanvas canvas;
+    TingleNativeDebugMenu menu;
     int data_ready = 0;
     int i;
 
@@ -89,8 +62,15 @@ int TingleNative_Run(int argc, char **argv)
         return EXIT_FAILURE;
     }
 
+    canvas.pixels = pixels;
+    canvas.width = TINGLE_SCREEN_WIDTH;
+    canvas.height = TINGLE_FRAMEBUFFER_HEIGHT;
+    canvas.stride = TINGLE_SCREEN_WIDTH;
+    TingleNativeDebugMenu_Init(&menu);
+
     while (TingleNativePlatform_Poll(platform, &input)) {
-        FillDiagnosticFrame(pixels, frame++, &input, data_ready);
+        (void)TingleNativeDebugMenu_Update(&menu, &input);
+        TingleNativeDebugMenu_Draw(&menu, &canvas, data_ready);
         TingleNativePlatform_Present(platform, pixels);
         TingleNativePlatform_WaitFrame(platform);
     }
