@@ -4,9 +4,9 @@
 .extern func_02040000
 .extern ActorExtendedType2_IsDirectionToActorAccepted
 .extern func_020be334
-.global func_0203fea0
-.type func_0203fea0, @function
-func_0203fea0: ; 0x0203fea0
+.global ActorExtendedType2_AccumulateProximityInteraction
+.type ActorExtendedType2_AccumulateProximityInteraction, @function
+ActorExtendedType2_AccumulateProximityInteraction: ; 0x0203fea0
     stmdb sp!, {r3, r4, r5, r6, r7, lr}
     mov r6, r1
     ldr r1, [r6, #0xd0]
@@ -101,5 +101,5 @@ func_0203fea0: ; 0x0203fea0
     ldmia sp!, {r3, r4, r5, r6, r7, pc}
 .L_0203fff8: .word 0x1770
 .L_0203fffc: .word data_020df9e8
-.size func_0203fea0, . - func_0203fea0
+.size ActorExtendedType2_AccumulateProximityInteraction, . - ActorExtendedType2_AccumulateProximityInteraction
 

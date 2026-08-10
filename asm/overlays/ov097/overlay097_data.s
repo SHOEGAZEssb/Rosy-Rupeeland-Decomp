@@ -76,7 +76,7 @@
 .extern func_020400a4
 .extern func_ov075_02213368
 .extern func_02040334
-.extern func_02040284
+.extern ActorExtendedType2_DispatchProximityCallback
 .extern func_0204022c
 .extern func_02040234
 .extern func_02040400
@@ -358,7 +358,7 @@ data_ov097_0221a5f4:
     .word func_020400a4
     .word func_ov075_02213368 ; func_ov078_02213368
     .word func_02040334
-    .word func_02040284
+    .word ActorExtendedType2_DispatchProximityCallback
     .word func_0204022c
     .word func_02040234
     .word func_02040400
@@ -493,7 +493,7 @@ data_ov097_0221a80c:
     .word func_020400a4
     .word func_ov075_02213368 ; func_ov078_02213368
     .word func_02040334
-    .word func_02040284
+    .word ActorExtendedType2_DispatchProximityCallback
     .word func_0204022c
     .word func_02040234
     .word func_02040400

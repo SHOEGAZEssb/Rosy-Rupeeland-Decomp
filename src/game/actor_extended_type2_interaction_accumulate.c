@@ -24,7 +24,7 @@ extern s32 func_02040000(void *records, s32 x, s32 y);
  * install global pair +0x20/+0x24 at +0x220/+0x224, and return one. Actor and
  * virtual interaction state may change.
  */
-s32 func_0203fea0(void *self, void *otherObject, const void *descriptorRecord)
+s32 ActorExtendedType2_AccumulateProximityInteraction(void *self, void *otherObject, const void *descriptorRecord)
 {
     u8 *a=(u8 *)self,*o=(u8 *)otherObject; const u8 *d=(const u8 *)descriptorRecord; s32 inside=0;
     if((*(u32 *)(o+0xd0)&0x100)!=0)return 0;

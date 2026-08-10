@@ -2,9 +2,9 @@
 .text
 .extern data_020df9e8
 .extern ActorExtendedType2_IsDirectionToActorAccepted
-.global func_02040284
-.type func_02040284, @function
-func_02040284: ; 0x02040284
+.global ActorExtendedType2_DispatchProximityCallback
+.type ActorExtendedType2_DispatchProximityCallback, @function
+ActorExtendedType2_DispatchProximityCallback: ; 0x02040284
     stmdb sp!, {r4, r5, r6, lr}
     mov r4, r2
     ldrh r3, [r4, #0x1e]
@@ -49,5 +49,5 @@ func_02040284: ; 0x02040284
     str r1, [r6, #0x224]
     ldmia sp!, {r4, r5, r6, pc}
 .L_02040330: .word data_020df9e8
-.size func_02040284, . - func_02040284
+.size ActorExtendedType2_DispatchProximityCallback, . - ActorExtendedType2_DispatchProximityCallback
 

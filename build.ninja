@@ -16887,7 +16887,7 @@ build build/reports/actor_extended_type2_interaction_accumulate_0203fea0.json: o
   base_object = build/decomp/asm/game/actor_extended_type2_interaction_accumulate_0203fea0.o
 build build/reports/actor_extended_type2_interaction_accumulate_0203fea0.txt: match_report build/reports/actor_extended_type2_interaction_accumulate_0203fea0.json | tools/report_objdiff.py
   report_json = build/reports/actor_extended_type2_interaction_accumulate_0203fea0.json
-  report_args = --section .text --function func_0203fea0 --require-exact
+  report_args = --section .text --function ActorExtendedType2_AccumulateProximityInteraction --require-exact
 build build/reports/actor_extended_type2_interaction_accumulate.txt: phony build/reports/actor_extended_type2_interaction_accumulate_0203fea0.txt
 build actor_extended_type2_interaction_accumulate: phony build/decomp/src/game/actor_extended_type2_interaction_accumulate.o build/decomp/asm/game/actor_extended_type2_interaction_accumulate_0203fea0.o build/reports/actor_extended_type2_interaction_accumulate.txt
 
@@ -16962,7 +16962,7 @@ build build/reports/actor_extended_type2_proximity_callback_02040284.json: objdi
   base_object = build/decomp/asm/game/actor_extended_type2_proximity_callback_02040284.o
 build build/reports/actor_extended_type2_proximity_callback_02040284.txt: match_report build/reports/actor_extended_type2_proximity_callback_02040284.json | tools/report_objdiff.py
   report_json = build/reports/actor_extended_type2_proximity_callback_02040284.json
-  report_args = --section .text --function func_02040284 --require-exact
+  report_args = --section .text --function ActorExtendedType2_DispatchProximityCallback --require-exact
 build build/reports/actor_extended_type2_proximity_callback.txt: phony build/reports/actor_extended_type2_proximity_callback_02040284.txt
 build actor_extended_type2_proximity_callback: phony build/decomp/src/game/actor_extended_type2_proximity_callback.o build/decomp/asm/game/actor_extended_type2_proximity_callback_02040284.o build/reports/actor_extended_type2_proximity_callback.txt
 

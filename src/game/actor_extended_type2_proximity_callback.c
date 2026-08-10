@@ -14,7 +14,7 @@ extern "C" { extern s32 ActorExtendedType2_IsDirectionToActorAccepted(void *self
  * +0x220/+0x224, and return one. Return zero otherwise; virtual and actor
  * callback-pair state may change only on success.
  */
-s32 func_02040284(void *self,void *other,const void *descriptorRecord)
+s32 ActorExtendedType2_DispatchProximityCallback(void *self,void *other,const void *descriptorRecord)
 {
  u8 *a=(u8 *)self,*o=(u8 *)other;const u8 *d=(const u8 *)descriptorRecord;s32 x,y,r;
  if(!ActorExtendedType2_IsDirectionToActorAccepted(a,*(u16 *)(d+0x1e)&3,o)||(*(u32 *)(o+0xd0)&0x100)!=0)return 0;

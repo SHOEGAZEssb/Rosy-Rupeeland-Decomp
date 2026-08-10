@@ -11,7 +11,7 @@ extern u8 data_020e0ae0[];
 extern "C" {
 #endif
 extern void func_0203f2ec(void *actor, void *output);
-extern s32 func_0203fea0(void *actor, void *first, void *second);
+extern s32 ActorExtendedType2_AccumulateProximityInteraction(void *actor, void *first, void *second);
 extern s32 func_02043610(const void *actor);
 #ifdef __cplusplus
 }
@@ -79,11 +79,11 @@ s32 func_02044760(const void *self)
 /*
  * When func_02043610 is zero and func_02044760 succeeds, return zero without
  * forwarding. In every other case forward actor and the remaining inputs to
- * func_0203fea0 and return its result; base interaction state may change.
+ * ActorExtendedType2_AccumulateProximityInteraction and return its result; base interaction state may change.
  */
 s32 func_020447a8(void *self, void *first, void *second)
 {
     if (func_02043610(self) == 0 && func_02044760(self) != 0)
         return 0;
-    return func_0203fea0(self, first, second);
+    return ActorExtendedType2_AccumulateProximityInteraction(self, first, second);
 }
