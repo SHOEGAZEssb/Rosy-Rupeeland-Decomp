@@ -31,8 +31,8 @@
 .extern data_020f3784
 .extern data_020f37a0
 .extern gPackedTimerArray
-.extern data_020f4dbc
-.extern data_020f4dc8
+.extern gDisplayBrightnessStorage
+.extern gDisplayBrightnessPair
 .extern data_020f4e20
 .extern data_020f4e2c
 .extern data_020f4e38
@@ -176,9 +176,9 @@ __sinit_020c13cc: ; 0x020c13cc
     ldr r2, .L_020c13f4
     bl __register_global_object
     ldmia sp!, {r3, pc}
-.L_020c13ec: .word data_020f4dc8
+.L_020c13ec: .word gDisplayBrightnessPair
 .L_020c13f0: .word DisplayBrightnessPair_Destroy
-.L_020c13f4: .word data_020f4dbc
+.L_020c13f4: .word gDisplayBrightnessStorage
 
 __sinit_020c13f8: ; 0x020c13f8
     stmdb sp!, {r3, lr}

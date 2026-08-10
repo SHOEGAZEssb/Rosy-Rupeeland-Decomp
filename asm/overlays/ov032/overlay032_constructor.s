@@ -2,7 +2,7 @@
 
 /* Exact fallback; see src/overlays/ov032/overlay032_constructor.c for documented portable C. */
 .extern __construct_array
-.extern data_020f4dc8
+.extern gDisplayBrightnessPair
 .extern data_020f4e14
 .extern data_020f4e18
 .extern data_ov032_02202220
@@ -641,7 +641,7 @@ L_021fd760: .word func_ov032_021fd7e0
 L_021fd764: .word func_ov032_021fd7c0
 L_021fd768: .word gSoundContext
 L_021fd76c: .word gGameWork
-L_021fd770: .word data_020f4dc8
+L_021fd770: .word gDisplayBrightnessPair
 L_021fd774: .word data_020f4e18
 L_021fd778: .word 0x7007
 L_021fd77c: .word data_ov032_02202340

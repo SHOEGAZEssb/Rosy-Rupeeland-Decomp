@@ -2,7 +2,7 @@
 ; Matching fallback for the portable implementation in src/overlays/ov064/overlay064_recovery.c.
 .extern DebugText_BeginFrame
 .extern Sound_Play
-.extern data_020f4dc8
+.extern gDisplayBrightnessPair
 .extern data_ov064_02211de4
 .extern DisplayBrightness_StartTransition
 .extern DisplayBrightnessPair_GetScreen
@@ -385,5 +385,5 @@ func_ov064_0221155c:
 .L_02211aac: .word gSoundContext
 .L_02211ab0: .word 0x20a
 .L_02211ab4: .word 0x167
-.L_02211ab8: .word data_020f4dc8
+.L_02211ab8: .word gDisplayBrightnessPair
 .size func_ov064_0221155c, . - func_ov064_0221155c

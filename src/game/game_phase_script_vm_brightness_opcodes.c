@@ -3,14 +3,14 @@
 
 /* Implement fixed-duration script opcodes for main/sub display brightness transitions. */
 
-extern DisplayBrightnessPair data_020f4dc8;
+extern DisplayBrightnessPair gDisplayBrightnessPair;
 
 /* Start a 16-step main-screen transition from its current brightness to zero. */
 s32 GamePhaseActorScriptVm_StartMainBrightnessToZero(GamePhaseActorScriptVm *self)
 {
     DisplayBrightness *state;
     (void)self;
-    state = DisplayBrightnessPair_GetScreen(&data_020f4dc8, 0);
+    state = DisplayBrightnessPair_GetScreen(&gDisplayBrightnessPair, 0);
     DisplayBrightness_StartTransition(state, DisplayBrightness_GetCurrent(state), 0, 16);
     return 0;
 }
@@ -20,7 +20,7 @@ s32 GamePhaseActorScriptVm_StartMainBrightnessToMinus8(GamePhaseActorScriptVm *s
 {
     DisplayBrightness *state;
     (void)self;
-    state = DisplayBrightnessPair_GetScreen(&data_020f4dc8, 0);
+    state = DisplayBrightnessPair_GetScreen(&gDisplayBrightnessPair, 0);
     DisplayBrightness_StartTransition(state, DisplayBrightness_GetCurrent(state), -8, 16);
     return 0;
 }
@@ -30,7 +30,7 @@ s32 GamePhaseActorScriptVm_StartSubBrightnessToZero(GamePhaseActorScriptVm *self
 {
     DisplayBrightness *state;
     (void)self;
-    state = DisplayBrightnessPair_GetScreen(&data_020f4dc8, 1);
+    state = DisplayBrightnessPair_GetScreen(&gDisplayBrightnessPair, 1);
     DisplayBrightness_StartTransition(state, DisplayBrightness_GetCurrent(state), 0, 16);
     return 0;
 }
@@ -40,7 +40,7 @@ s32 GamePhaseActorScriptVm_StartSubBrightnessToMinus8(GamePhaseActorScriptVm *se
 {
     DisplayBrightness *state;
     (void)self;
-    state = DisplayBrightnessPair_GetScreen(&data_020f4dc8, 1);
+    state = DisplayBrightnessPair_GetScreen(&gDisplayBrightnessPair, 1);
     DisplayBrightness_StartTransition(state, DisplayBrightness_GetCurrent(state), -8, 16);
     return 0;
 }

@@ -14,7 +14,7 @@ extern "C" s32 data_ov042_0220acd8[];
 extern "C" s32 data_ov042_0220ad68[];
 extern "C" s32 data_ov042_0220af24[];
 extern "C" s32 data_ov042_0220b564[];
-extern "C" u8 data_020f4dc8[];
+extern "C" u8 gDisplayBrightnessPair[];
 extern "C" u32 genrand_int32(void);
 extern "C" s32 func_020bf1f8(u32 value, s32 modulus);
 extern "C" s32 func_020befec(s32 numerator, s32 denominator);
@@ -54,8 +54,8 @@ static void submit_displays(void *scene, s32 offset, s32 count,
 /* Configure the confirmed brightness ramp on both Nintendo DS screens. */
 static void start_brightness_ramp(s32 start, s32 end, s32 duration)
 {
-    DisplayBrightness_StartTransition(DisplayBrightnessPair_GetScreen(data_020f4dc8, 0), start, end, duration);
-    DisplayBrightness_StartTransition(DisplayBrightnessPair_GetScreen(data_020f4dc8, 1), start, end, duration);
+    DisplayBrightness_StartTransition(DisplayBrightnessPair_GetScreen(gDisplayBrightnessPair, 0), start, end, duration);
+    DisplayBrightness_StartTransition(DisplayBrightnessPair_GetScreen(gDisplayBrightnessPair, 1), start, end, duration);
 }
 
 /* Emit a single reconstructed billboard through the overlay geometry helper. */

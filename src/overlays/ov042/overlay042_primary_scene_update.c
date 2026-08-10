@@ -11,7 +11,7 @@
 extern "C" void *gSoundContext;
 extern "C" s16 data_020c9670[];
 extern "C" s32 data_ov042_0220b190[];
-extern "C" u8 data_020f4dc8[];
+extern "C" u8 gDisplayBrightnessPair[];
 extern "C" u32 genrand_int32(void);
 extern "C" s32 func_020bf1f8(u32 value, s32 modulus);
 extern "C" s32 func_020befec(s32 numerator, s32 denominator);
@@ -273,15 +273,15 @@ extern "C" void func_ov042_02207114(void *scene)
             FIELD(s32, owner, 0x1ec) = 1;
         }
         if (tick == 210) {
-            DisplayBrightness_StartTransition(DisplayBrightnessPair_GetScreen(data_020f4dc8, 0), 0, 16, 17);
-            DisplayBrightness_StartTransition(DisplayBrightnessPair_GetScreen(data_020f4dc8, 1), 0, 16, 17);
+            DisplayBrightness_StartTransition(DisplayBrightnessPair_GetScreen(gDisplayBrightnessPair, 0), 0, 16, 17);
+            DisplayBrightness_StartTransition(DisplayBrightnessPair_GetScreen(gDisplayBrightnessPair, 1), 0, 16, 17);
             func_0205929c(gSoundContext, 0x16, 0);
         }
         if (tick > 210 && tick < 234 &&
-            DisplayBrightness_GetCurrent(DisplayBrightnessPair_GetScreen(data_020f4dc8, 0)) == 16 &&
-            DisplayBrightness_GetCurrent(DisplayBrightnessPair_GetScreen(data_020f4dc8, 1)) == 16) {
-            DisplayBrightness_StartTransition(DisplayBrightnessPair_GetScreen(data_020f4dc8, 0), 16, 0, 16);
-            DisplayBrightness_StartTransition(DisplayBrightnessPair_GetScreen(data_020f4dc8, 1), 16, 0, 16);
+            DisplayBrightness_GetCurrent(DisplayBrightnessPair_GetScreen(gDisplayBrightnessPair, 0)) == 16 &&
+            DisplayBrightness_GetCurrent(DisplayBrightnessPair_GetScreen(gDisplayBrightnessPair, 1)) == 16) {
+            DisplayBrightness_StartTransition(DisplayBrightnessPair_GetScreen(gDisplayBrightnessPair, 0), 16, 0, 16);
+            DisplayBrightness_StartTransition(DisplayBrightnessPair_GetScreen(gDisplayBrightnessPair, 1), 16, 0, 16);
             FIELD(s32, scene, 0x24c) = FIELD(s32, scene, 0x1c0) = 0;
             FIELD(s32, scene, 0x1bc) = 234;
             FIELD(s32, scene, 0xac) -= 0x20000;

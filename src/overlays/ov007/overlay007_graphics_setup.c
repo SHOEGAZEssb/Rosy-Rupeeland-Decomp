@@ -23,7 +23,7 @@ typedef struct Overlay007AffineMatrix {
 extern "C" {
 #endif
 extern void *data_020f4e18;
-extern void *data_020f4dc8;
+extern void *gDisplayBrightnessPair;
 extern void GXS_SetGraphicsMode(s32 mode);
 extern void GX_SetBankForSubBG(s32 bank);
 extern void func_020aea7c(s32 value);
@@ -62,7 +62,7 @@ extern void GraphicsResourceSet_Destroy(Overlay007GraphicsResourceSet *set);
  *
  * Apply the identity 20.12 matrix {0x1000,0,0,0x1000} with zero extents/centers
  * to sub BG2/BG3 blocks 0x04001020/0x04001030. Set state +0xD4 to 2, call
- * DisplayBrightnessPair_GetScreen(data_020f4dc8,1,2), pass its result to
+ * DisplayBrightnessPair_GetScreen(gDisplayBrightnessPair,1,2), pass its result to
  * DisplayBrightness_StartTransition(result,-16,0,10), destroy the temporary resource set, and
  * return no value. All MMIO destinations, resource IDs, and transfer ordering
  * are confirmed; helper-level SDK semantics remain partially unidentified.
@@ -104,7 +104,7 @@ void func_ov007_021fbaf0(void *state)
     func_020afd28((volatile void *)0x04001020, &matrix, 0, 0, 0, 0);
     func_020afd28((volatile void *)0x04001030, &matrix, 0, 0, 0, 0);
     *(s32 *)((u8 *)state + 0xd4) = 2;
-    effect = DisplayBrightnessPair_GetScreen(data_020f4dc8, 1, 2);
+    effect = DisplayBrightnessPair_GetScreen(gDisplayBrightnessPair, 1, 2);
     DisplayBrightness_StartTransition(effect, -16, 0, 10);
     GraphicsResourceSet_Destroy(&set);
 }

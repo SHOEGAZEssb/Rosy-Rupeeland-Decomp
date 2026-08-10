@@ -17,7 +17,7 @@
     .extern DisplayBrightness_StartTransition
     .extern GraphicsResourceSet_Destroy
     .extern data_020f4e18
-    .extern data_020f4dc8
+    .extern gDisplayBrightnessPair
 
     /* Exact fallback; see the documented portable reconstruction in
      * src/overlays/ov007/overlay007_graphics_setup.c. */
@@ -122,6 +122,6 @@ L_021fbc6c: .word 0x9063
 L_021fbc70: .word data_020f4e18
 L_021fbc74: .word 0x4001020
 L_021fbc78: .word 0x4001030
-L_021fbc7c: .word data_020f4dc8
+L_021fbc7c: .word gDisplayBrightnessPair
 
     .size func_ov007_021fbaf0, .-func_ov007_021fbaf0

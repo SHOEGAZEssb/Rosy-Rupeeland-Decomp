@@ -33,7 +33,7 @@ void *func_02003e20(s32, const void *, s32, void *);
 void func_ov041_021fce00(void *);
 extern void *gSoundContext;
 extern u8 gHeapContext;
-extern u8 data_020f4dc8;
+extern u8 gDisplayBrightnessPair;
 extern const char data_ov041_02205984[];
 }
 
@@ -86,9 +86,9 @@ extern "C" void func_ov041_021fdfd0(void *owner)
     func_ov041_021ff6f8(FIELD(void *, owner, 0x10), FIELD(void *, owner, 0));
     FIELD(s32, owner, 0x1f8) = 0;
 
-    void *transition = DisplayBrightnessPair_GetScreen(&data_020f4dc8, 0);
+    void *transition = DisplayBrightnessPair_GetScreen(&gDisplayBrightnessPair, 0);
     DisplayBrightness_StartTransition(transition, 0x10, 0, 0x1e);
-    transition = DisplayBrightnessPair_GetScreen(&data_020f4dc8, 1);
+    transition = DisplayBrightnessPair_GetScreen(&gDisplayBrightnessPair, 1);
     DisplayBrightness_StartTransition(transition, 0x10, 0, 0x1e);
     func_ov041_022013cc(FIELD(void *, owner, 0x0c), 0x0e, 0xa000, 0x140000);
     Sound_Play(gSoundContext, 0xf8, 0);

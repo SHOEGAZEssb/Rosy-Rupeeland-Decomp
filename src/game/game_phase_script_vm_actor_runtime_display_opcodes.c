@@ -8,7 +8,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *data_020f4dc8;
+extern void *gDisplayBrightnessPair;
 extern void *DisplayBrightnessPair_GetScreen(void *state, s32 screen);
 extern void DisplayBrightness_StartTransition(void *state, s32 first, s32 second, s32 third);
 extern void Actor_EnsureAuxiliaryCollisionResource(void *actor);
@@ -79,10 +79,10 @@ s32 GamePhaseActorScriptVm_StartSelectedDisplayBrightnessTransitions(GamePhaseAc
     s32 first = (s32)GamePhaseScriptVm_Pop(&self->base);
     s32 screenMask = (s32)GamePhaseScriptVm_Pop(&self->base);
     if (screenMask & 1)
-        DisplayBrightness_StartTransition(DisplayBrightnessPair_GetScreen(data_020f4dc8, 0),
+        DisplayBrightness_StartTransition(DisplayBrightnessPair_GetScreen(gDisplayBrightnessPair, 0),
                       first, second, third);
     if (screenMask & 2)
-        DisplayBrightness_StartTransition(DisplayBrightnessPair_GetScreen(data_020f4dc8, 1),
+        DisplayBrightness_StartTransition(DisplayBrightnessPair_GetScreen(gDisplayBrightnessPair, 1),
                       first, second, third);
     return 0;
 }

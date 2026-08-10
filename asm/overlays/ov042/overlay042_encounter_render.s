@@ -28,7 +28,7 @@
 .extern data_ov042_0220acd8
 .extern data_ov042_0220af24
 .extern data_ov042_0220b564
-.extern data_020f4dc8
+.extern gDisplayBrightnessPair
 .extern data_ov042_0220ad68
 
     .global func_ov042_022036c4
@@ -1596,7 +1596,7 @@ func_ov042_022036c4:
 .L_02204e54: .word 0x400048c
 .L_02204e58: .word 0x4000448
 .L_02204e5c: .word 0x14cd
-.L_02204e60: .word data_020f4dc8
+.L_02204e60: .word gDisplayBrightnessPair
 .L_02204e64: .word 0x400046c
 .L_02204e68: .word 0x539c
 .L_02204e6c: .word data_ov042_0220ad68

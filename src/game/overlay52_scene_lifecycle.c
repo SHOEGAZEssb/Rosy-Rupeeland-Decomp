@@ -21,7 +21,7 @@ extern "C" {
 #endif
 extern SceneVTable data_020d5d24;
 extern char data_020d5d84[];
-extern DisplayBrightnessPair data_020f4dc8;
+extern DisplayBrightnessPair gDisplayBrightnessPair;
 extern void *gDebugFont;
 extern void *gSoundContext;
 extern HeapContext gHeapContext;
@@ -53,7 +53,7 @@ Overlay52Scene *func_0201cfd0(Overlay52Scene *self, u32 parameter)
     self->base.vtable = &data_020d5d24;
     self->parameter24 = parameter;
     self->child28 = 0;
-    brightness = DisplayBrightnessPair_GetScreen(&data_020f4dc8, 1);
+    brightness = DisplayBrightnessPair_GetScreen(&gDisplayBrightnessPair, 1);
     DisplayBrightness_StartTransition(brightness, 0, -16, 8);
     OverlayManager_LoadOverlay(OverlayManager_GetGlobal(), 0, 0x34);
     Scene_SetFlags03(&self->base);
@@ -103,7 +103,7 @@ s32 func_0201d0f4(Overlay52Scene *self)
     Overlay52Child *child;
 
     if (self->child28 == 0) {
-        brightness = DisplayBrightnessPair_GetScreen(&data_020f4dc8, 1);
+        brightness = DisplayBrightnessPair_GetScreen(&gDisplayBrightnessPair, 1);
         if (DisplayBrightness_GetCurrent(brightness) == -16) {
             GraphicsSpriteRenderer_ClearTextBuffer(gDebugFont);
             child = (Overlay52Child *)Heap_Alloc(
@@ -113,7 +113,7 @@ s32 func_0201d0f4(Overlay52Scene *self)
             self->child28 = child;
             func_ov052_0220e14c(child, (u16)self->parameter24, 0);
             Sound_Play(gSoundContext, 0, 0x6f);
-            brightness = DisplayBrightnessPair_GetScreen(&data_020f4dc8, 1);
+            brightness = DisplayBrightnessPair_GetScreen(&gDisplayBrightnessPair, 1);
             DisplayBrightness_StartTransition(brightness, -16, 0, 4);
         }
     } else {

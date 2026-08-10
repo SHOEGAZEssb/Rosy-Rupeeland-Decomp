@@ -6,15 +6,15 @@
  */
 
     .bss
-    .global data_020f4dbc
-data_020f4dbc:
+    .global gDisplayBrightnessStorage
+gDisplayBrightnessStorage:
     .space 0xc
 
-    .global data_020f4dc8
-data_020f4dc8:
+    .global gDisplayBrightnessPair
+gDisplayBrightnessPair:
     .space 0x14
 
-    .global data_020f4ddc
-data_020f4ddc:
+    .global gSubDisplayBrightness
+gSubDisplayBrightness:
     /* The brightness state occupies 0x14 bytes; retail reserves 8 more. */
     .space 0x1c

@@ -15,15 +15,15 @@ typedef struct GlobalDisplayBrightnessStorage {
 } GlobalDisplayBrightnessStorage;
 
 #ifndef MATCHING
-GlobalDisplayBrightnessStorage data_020f4dbc;
-#define MAIN_BRIGHTNESS (&data_020f4dbc.pair.screens[0])
-#define SUB_BRIGHTNESS  (&data_020f4dbc.pair.screens[1])
+GlobalDisplayBrightnessStorage gDisplayBrightnessStorage;
+#define MAIN_BRIGHTNESS (&gDisplayBrightnessStorage.pair.screens[0])
+#define SUB_BRIGHTNESS  (&gDisplayBrightnessStorage.pair.screens[1])
 #else
-extern GlobalDisplayBrightnessStorage data_020f4dbc;
-extern DisplayBrightness data_020f4dc8;
-extern DisplayBrightness data_020f4ddc;
-#define MAIN_BRIGHTNESS (&data_020f4dc8)
-#define SUB_BRIGHTNESS  (&data_020f4ddc)
+extern GlobalDisplayBrightnessStorage gDisplayBrightnessStorage;
+extern DisplayBrightness gDisplayBrightnessPair;
+extern DisplayBrightness gSubDisplayBrightness;
+#define MAIN_BRIGHTNESS (&gDisplayBrightnessPair)
+#define SUB_BRIGHTNESS  (&gSubDisplayBrightness)
 #endif
 
 /*
@@ -85,31 +85,31 @@ void DisplayBrightness_StartSubTransition(s32 direction, fx32 transitionDivisor)
 /* Return TRUE exactly when the main-screen transition direction is idle. */
 s32 DisplayBrightness_IsMainTransitionComplete(void)
 {
-    return data_020f4dbc.pair.screens[0].direction == 0;
+    return gDisplayBrightnessStorage.pair.screens[0].direction == 0;
 }
 
 /* Return TRUE exactly when the sub-screen transition direction is idle. */
 s32 DisplayBrightness_IsSubTransitionComplete(void)
 {
-    return data_020f4dbc.pair.screens[1].direction == 0;
+    return gDisplayBrightnessStorage.pair.screens[1].direction == 0;
 }
 
 /* Return TRUE when the sub-screen packed transition mode is positive one. */
 s32 DisplayBrightness_IsSubTransitionIncreasing(void)
 {
-    return data_020f4dbc.pair.screens[1].mode == 1;
+    return gDisplayBrightnessStorage.pair.screens[1].mode == 1;
 }
 
 /* Return TRUE when the main-screen packed transition mode is negative one. */
 s32 DisplayBrightness_IsMainTransitionDecreasing(void)
 {
-    return data_020f4dbc.pair.screens[0].mode == -1;
+    return gDisplayBrightnessStorage.pair.screens[0].mode == -1;
 }
 
 /* Return TRUE when the sub-screen packed transition mode is negative one. */
 s32 DisplayBrightness_IsSubTransitionDecreasing(void)
 {
-    return data_020f4dbc.pair.screens[1].mode == -1;
+    return gDisplayBrightnessStorage.pair.screens[1].mode == -1;
 }
 
 /* Return the unclassified display offset retained at SystemState offset 0x5e. */

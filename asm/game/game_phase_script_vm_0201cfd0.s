@@ -22,7 +22,7 @@
 .extern GamePhaseState_UpdateRenderHelpers
 .extern data_020d5d24
 .extern data_020d5d84
-.extern data_020f4dc8
+.extern gDisplayBrightnessPair
 .extern gDebugFont
 .extern gHeapContext
 .extern gSoundContext
@@ -54,7 +54,7 @@ func_0201cfd0: ; 0x0201cfd0
     mov r0, r5
     ldmia sp!, {r3, r4, r5, pc}
 L_0201d030: .word data_020d5d24
-L_0201d034: .word data_020f4dc8
+L_0201d034: .word gDisplayBrightnessPair
 L_0201d038: .word 0x34
 
 

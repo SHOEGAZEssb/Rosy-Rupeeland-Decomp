@@ -1,7 +1,7 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov070/overlay070_recovery.c.
 .extern Sound_Play
-.extern data_020f4dc8
+.extern gDisplayBrightnessPair
 .extern data_ov070_022129dc
 .extern data_ov070_022129f0
 .extern data_ov070_02212a70
@@ -1110,7 +1110,7 @@ func_ov070_02210860:
 .L_0221184c: .word 0xb33
 .L_02211850: .word 0x77bb
 .L_02211854: .word 0x9c4
-.L_02211858: .word data_020f4dc8
+.L_02211858: .word gDisplayBrightnessPair
 .L_0221185c: .word data_ov070_022129f0
 .L_02211860: .word gSystemState
 .L_02211864: .word 0xf85

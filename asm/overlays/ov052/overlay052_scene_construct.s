@@ -1,7 +1,7 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov052/overlay052_recovery.c.
 .extern Heap_Alloc
-.extern data_020f4dc8
+.extern gDisplayBrightnessPair
 .extern data_020f4e18
 .extern data_021052fc
 .extern data_ov052_0220e200
@@ -179,7 +179,7 @@ func_ov052_0220d618:
 .L_0220d86c: .word gDebugFont
 .L_0220d870: .word data_ov052_0220e224
 .L_0220d874: .word 0x14ec
-.L_0220d878: .word data_020f4dc8
+.L_0220d878: .word gDisplayBrightnessPair
 .L_0220d87c: .word gLupyContext
 .L_0220d880: .word data_021052fc
 .size func_ov052_0220d618, . - func_ov052_0220d618

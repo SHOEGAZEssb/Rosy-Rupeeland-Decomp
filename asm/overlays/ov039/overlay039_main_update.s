@@ -37,7 +37,7 @@
     .extern data_ov039_02207fd8
     .extern data_ov039_02208010
     .extern data_021052fc
-    .extern data_020f4dc8
+    .extern gDisplayBrightnessPair
     .extern gSoundContext
 
     .global func_ov039_021ff610
@@ -970,7 +970,7 @@ L_022003e8: .word 0x1c5
 L_022003ec: .word 0x2b33
 L_022003f0: .word data_021052fc
 L_022003f4: .word 0x186
-L_022003f8: .word data_020f4dc8
+L_022003f8: .word gDisplayBrightnessPair
 L_022003fc: .word data_ov039_02207fe0
 L_02200400: .word data_ov039_02207fe7
 L_02200404: .word data_ov039_02207fdc

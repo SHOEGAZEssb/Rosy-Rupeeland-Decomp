@@ -9184,9 +9184,9 @@ data_020f43bc kind:bss addr:0x020f43bc
 gMtState kind:bss addr:0x020f43ec
 gHeapAllocationSizeAccumulator kind:bss addr:0x020f4dac
 gHeapContext kind:bss addr:0x020f4db0
-data_020f4dbc kind:bss addr:0x020f4dbc
-data_020f4dc8 kind:bss addr:0x020f4dc8
-data_020f4ddc kind:bss addr:0x020f4ddc
+gDisplayBrightnessStorage kind:bss addr:0x020f4dbc
+gDisplayBrightnessPair kind:bss addr:0x020f4dc8
+gSubDisplayBrightness kind:bss addr:0x020f4ddc
 gDebugTextRenderer kind:bss addr:0x020f4df8
 gSceneState020F4DFC kind:bss addr:0x020f4dfc
 gSceneManager kind:bss addr:0x020f4e00

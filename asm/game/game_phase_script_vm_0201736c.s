@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/game_phase_script_vm_brightness_opcodes.c.
 .text
-.extern data_020f4dc8
+.extern gDisplayBrightnessPair
 .extern DisplayBrightness_StartTransition
 .extern DisplayBrightness_GetCurrent
 .extern DisplayBrightnessPair_GetScreen
@@ -19,5 +19,5 @@ GamePhaseActorScriptVm_StartMainBrightnessToMinus8:
     bl DisplayBrightness_StartTransition
     mov r0, #0
     ldmia sp!, {r4, pc}
-L_020173a0: .word data_020f4dc8
+L_020173a0: .word gDisplayBrightnessPair
     .size GamePhaseActorScriptVm_StartMainBrightnessToMinus8, . - GamePhaseActorScriptVm_StartMainBrightnessToMinus8

@@ -10,7 +10,7 @@
 .extern Scene_ClearFlag02
 .extern Sound_Play
 .extern data_020c9670
-.extern data_020f4dc8
+.extern gDisplayBrightnessPair
 .extern data_020f4e14
 .extern data_021052fc
 .extern data_ov090_0221cc08
@@ -1120,7 +1120,7 @@ func_ov090_02217d70:
 .L_02218cf8: .word 0x3f
 .L_02218cfc: .word data_ov090_0221cc08
 .L_02218d00: .word gHeapContext
-.L_02218d04: .word data_020f4dc8
+.L_02218d04: .word gDisplayBrightnessPair
 .L_02218d08: .word 0x109d
 .L_02218d0c: .word data_ov090_0221cc10
 .L_02218d10: .word 0x162c
@@ -2634,5 +2634,5 @@ func_ov090_02217d70:
 .L_0221a3bc: .word 0x19a
 .L_0221a3c0: .word 0x163d
 .L_0221a3c4: .word 0x2ee
-.L_0221a3c8: .word data_020f4dc8
+.L_0221a3c8: .word gDisplayBrightnessPair
 .size func_ov090_02217d70, . - func_ov090_02217d70

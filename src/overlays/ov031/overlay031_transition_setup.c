@@ -6,7 +6,7 @@
 
 extern const u8 data_ov031_021fe6e0[];
 extern void *data_020f4e18[];
-extern void *data_020f4dc8[];
+extern void *gDisplayBrightnessPair[];
 
 #ifdef __cplusplus
 extern "C" {
@@ -150,7 +150,7 @@ extern "C" void func_ov031_021fe1a8(void *scene)
     func_02070eac((void *)resources[2], 0, 0);
     FIELD(s32, FIELD(void *, scene, 0x58), 0x20) = 1;
     *(volatile u32 *)0x04001010 = 0;
-    void *transition = DisplayBrightnessPair_GetScreen(data_020f4dc8[0]);
+    void *transition = DisplayBrightnessPair_GetScreen(gDisplayBrightnessPair[0]);
     DisplayBrightness_StartTransition(transition, -16, 0, 8);
     GraphicsResourceSet_Destroy(resources);
 }

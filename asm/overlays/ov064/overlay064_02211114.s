@@ -3,7 +3,7 @@
 .extern DebugText_BeginFrame
 .extern Heap_Alloc
 .extern Sound_Play
-.extern data_020f4dc8
+.extern gDisplayBrightnessPair
 .extern data_021052fc
 .extern data_ov064_02211ecc
 .extern DisplayBrightness_StartTransition
@@ -184,5 +184,5 @@ func_ov064_02211114:
 .L_02211364: .word gLupyContext
 .L_02211368: .word data_ov064_02211ecc
 .L_0221136c: .word gHeapContext
-.L_02211370: .word data_020f4dc8
+.L_02211370: .word gDisplayBrightnessPair
 .size func_ov064_02211114, . - func_ov064_02211114

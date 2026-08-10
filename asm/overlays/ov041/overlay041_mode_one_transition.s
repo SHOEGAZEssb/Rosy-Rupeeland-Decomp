@@ -3,7 +3,7 @@
 /* Exact fallback for the documented portable C implementation in
  * src/overlays/ov041/overlay041_resource_transition.c. */
 .extern Sound_Play
-.extern data_020f4dc8
+.extern gDisplayBrightnessPair
 .extern DisplayBrightness_StartTransition
 .extern DisplayBrightnessPair_GetScreen
 .extern func_02058d28
@@ -61,6 +61,6 @@ func_ov041_021fdfd0: ; 0x021fdfd0
     bl Sound_Play
     ldmia sp!, {r4, pc}
 .L_021fe080: .word gSoundContext
-.L_021fe084: .word data_020f4dc8
+.L_021fe084: .word gDisplayBrightnessPair
     .size func_ov041_021fdfd0, . - func_ov041_021fdfd0
 

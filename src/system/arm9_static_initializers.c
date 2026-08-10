@@ -71,8 +71,8 @@ extern u8 gFrameTaskList[];
 extern u8 data_020f3784[];
 extern u8 gPackedTimerArray[];
 extern u8 data_020f37a0[];
-extern u8 data_020f4dc8[];
-extern u8 data_020f4dbc[];
+extern u8 gDisplayBrightnessPair[];
+extern u8 gDisplayBrightnessStorage[];
 extern u8 data_020f4e50[];
 extern u8 data_020f4e2c[];
 extern u8 data_020f5058[];
@@ -147,14 +147,17 @@ void __sinit_020c13a0(void)
 }
 
 /*
- * No inputs. Construct data_020f4dc8 and register DisplayBrightnessPair_Destroy with record
- * data_020f4dbc. Global subsystem lifetime state changes; this routine returns
- * no value and has no direct hardware effect.
+ * No inputs. Construct gDisplayBrightnessPair and register
+ * DisplayBrightnessPair_Destroy with record gDisplayBrightnessStorage. Global
+ * subsystem lifetime state changes; this routine returns no value and has no
+ * direct hardware effect.
  */
 void __sinit_020c13cc(void)
 {
-    DisplayBrightnessPair_Init(data_020f4dc8);
-    __register_global_object(data_020f4dc8, DisplayBrightnessPair_Destroy, data_020f4dbc);
+    DisplayBrightnessPair_Init(gDisplayBrightnessPair);
+    __register_global_object(gDisplayBrightnessPair,
+                             DisplayBrightnessPair_Destroy,
+                             gDisplayBrightnessStorage);
 }
 
 /*

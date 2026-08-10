@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/game_phase_script_vm_actor_runtime_display_opcodes.c.
 .text
-.extern data_020f4dc8
+.extern gDisplayBrightnessPair
 .extern DisplayBrightness_StartTransition
 .extern DisplayBrightnessPair_GetScreen
 .extern GamePhaseScriptVm_Pop
@@ -41,5 +41,5 @@ L_020185c4:
 L_020185e8:
     mov r0, #0x0
     ldmia sp!, {r3, r4, r5, r6, r7, pc}
-L_020185f0: .word data_020f4dc8
+L_020185f0: .word gDisplayBrightnessPair
 .size GamePhaseActorScriptVm_StartSelectedDisplayBrightnessTransitions, . - GamePhaseActorScriptVm_StartSelectedDisplayBrightnessTransitions

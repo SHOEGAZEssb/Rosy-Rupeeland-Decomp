@@ -22,7 +22,7 @@
 .extern GamePhaseState_UpdateRenderHelpers
 .extern data_020d5d24
 .extern data_020d5d84
-.extern data_020f4dc8
+.extern gDisplayBrightnessPair
 .extern gDebugFont
 .extern gHeapContext
 .extern gSoundContext
@@ -103,7 +103,7 @@ L_0201d1f0:
     bl GamePhaseRuntime_UpdateActorPresentationState
     mov r0, #0x0
     ldmia sp!, {r4, pc}
-L_0201d208: .word data_020f4dc8
+L_0201d208: .word gDisplayBrightnessPair
 L_0201d20c: .word gDebugFont
 L_0201d210: .word data_020d5d84
 L_0201d214: .word gHeapContext

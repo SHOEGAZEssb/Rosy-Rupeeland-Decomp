@@ -4,7 +4,7 @@
  * src/overlays/ov041/overlay041_effect_finale_state.c. */
 .extern GXx_SetMasterBrightness_
 .extern Sound_Play
-.extern data_020f4dc8
+.extern gDisplayBrightnessPair
 .extern DisplayBrightness_StartTransition
 .extern DisplayBrightnessPair_GetScreen
 .extern func_020befec
@@ -296,6 +296,6 @@ func_ov041_022025b0: ; 0x022025b0
 .L_022029bc: .word gSoundContext
 .L_022029c0: .word 0x400006c
 .L_022029c4: .word 0x400106c
-.L_022029c8: .word data_020f4dc8
+.L_022029c8: .word gDisplayBrightnessPair
     .size func_ov041_022025b0, . - func_ov041_022025b0
 

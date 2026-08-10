@@ -6,7 +6,7 @@
 .extern SceneManager_GetCurrent
 .extern Scene_ClearFlag02
 .extern Sound_Play
-.extern data_020f4dc8
+.extern gDisplayBrightnessPair
 .extern data_021052fc
 .extern data_ov093_022187f0
 .extern data_ov093_022189e8
@@ -623,7 +623,7 @@ func_ov093_02217c50:
 .L_022184e4: .word 0x499a
 .L_022184e8: .word data_ov093_022189f0
 .L_022184ec: .word 0x163d
-.L_022184f0: .word data_020f4dc8
+.L_022184f0: .word gDisplayBrightnessPair
 .L_022184f4: .word 0x7fff
 .L_022184f8: .word data_ov093_022187f0
 .L_022184fc: .word 0x3e3

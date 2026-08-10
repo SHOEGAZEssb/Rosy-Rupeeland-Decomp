@@ -1,6 +1,6 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov061/overlay061_recovery.c.
-.extern data_020f4dc8
+.extern gDisplayBrightnessPair
 .extern data_020f4e14
 .extern data_021052fc
 .extern DisplayBrightness_StartTransition
@@ -139,7 +139,7 @@ func_ov061_0220fedc:
     add sp, sp, #0x8
     ldmia sp!, {r3, r4, r5, pc}
 .L_0221008c: .word data_021052fc
-.L_02210090: .word data_020f4dc8
+.L_02210090: .word gDisplayBrightnessPair
 .L_02210094: .word data_020f4e14
 .L_02210098: .word gDebugFont
 .size func_ov061_0220fedc, . - func_ov061_0220fedc

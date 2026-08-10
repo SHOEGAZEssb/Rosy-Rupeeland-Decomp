@@ -16,7 +16,7 @@ void GXx_SetMasterBrightness_(u32, s32);
 void *DisplayBrightnessPair_GetScreen(void *, s32);
 void DisplayBrightness_StartTransition(void *, s32, s32, s32);
 extern void *gSoundContext;
-extern u8 data_020f4dc8[];
+extern u8 gDisplayBrightnessPair[];
 }
 
 /*
@@ -106,9 +106,9 @@ extern "C" void func_ov041_022025b0(void *object)
             return;
         for (s32 slot = 6; slot >= 0; --slot)
             FIELD(s32, object, 0x8fc + slot * 4) = 0;
-        void *firstResource = DisplayBrightnessPair_GetScreen(data_020f4dc8, 0);
+        void *firstResource = DisplayBrightnessPair_GetScreen(gDisplayBrightnessPair, 0);
         DisplayBrightness_StartTransition(firstResource, 16, 0, 24);
-        void *secondResource = DisplayBrightnessPair_GetScreen(data_020f4dc8, 1);
+        void *secondResource = DisplayBrightnessPair_GetScreen(gDisplayBrightnessPair, 1);
         DisplayBrightness_StartTransition(secondResource, 16, 0, 24);
         FIELD(s32, object, 0x918) = 0;
         FIELD(s32, object, 0x930) = 0;

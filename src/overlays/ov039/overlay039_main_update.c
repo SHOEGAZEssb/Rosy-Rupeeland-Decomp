@@ -28,7 +28,7 @@ extern const u8 data_ov039_02207fdc[4];
 extern const u8 data_ov039_02207fd8[4];
 extern const s32 data_ov039_02208010[3];
 extern void *data_021052fc;
-extern void *data_020f4dc8;
+extern void *gDisplayBrightnessPair;
 extern void *gSoundContext;
 
 #ifdef __cplusplus
@@ -234,14 +234,14 @@ static void updateTimedSequence(void *scene, s32 variant)
         FIELD(s32, owner, 0x44) = 20;
         FIELD(s32, owner, 0x48) = 7;
         if (which == 2 && variant == 1) {
-            void *screen = DisplayBrightnessPair_GetScreen(data_020f4dc8, 0);
+            void *screen = DisplayBrightnessPair_GetScreen(gDisplayBrightnessPair, 0);
             DisplayBrightness_StartTransition(screen, 0, 0x10, 0x30);
         }
     } else if (time == 0x1f4 && variant == 0) {
         FIELD(s32, owner, 0x74) = 0x19;
         if (ownerEffect != 0) func_ov069_022119bc(ownerEffect);
     } else if (time >= 0x1f4 && variant != 0) {
-        void *screen = DisplayBrightnessPair_GetScreen(data_020f4dc8, 0);
+        void *screen = DisplayBrightnessPair_GetScreen(gDisplayBrightnessPair, 0);
         if (DisplayBrightness_GetCurrent(screen) == 0x10) FIELD(s32, owner, 0x74) = 0x2b;
     }
 }

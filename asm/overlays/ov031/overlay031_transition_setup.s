@@ -1,7 +1,7 @@
 .text
 
 /* Exact fallback; see src/overlays/ov031/overlay031_transition_setup.c for documented portable C. */
-.extern data_020f4dc8
+.extern gDisplayBrightnessPair
 .extern data_020f4e18
 .extern DisplayBrightness_StartTransition
 .extern DisplayBrightnessPair_GetScreen
@@ -74,5 +74,5 @@ L_021fe278: .word 0x400106c
 L_021fe27c: .word 0x900b
 L_021fe280: .word data_020f4e18
 L_021fe284: .word 0x4001010
-L_021fe288: .word data_020f4dc8
+L_021fe288: .word gDisplayBrightnessPair
 .size func_ov031_021fe1a8, .-func_ov031_021fe1a8

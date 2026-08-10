@@ -5,7 +5,7 @@
     .extern GraphicsResourceSet_Load
     .extern GX_SetBankForSubBG
     .extern GXS_SetGraphicsMode
-    .extern data_020f4dc8
+    .extern gDisplayBrightnessPair
     .extern data_020f4e18
     .extern DisplayBrightness_StartTransition
     .extern DisplayBrightnessPair_GetScreen
@@ -266,7 +266,7 @@ func_ov040_02202640: ; 0x02202640
 .L_022029f0: .word data_020f4e18
 .L_022029f4: .word 0x4001020
 .L_022029f8: .word 0x4001030
-.L_022029fc: .word data_020f4dc8
+.L_022029fc: .word gDisplayBrightnessPair
 .L_02202a00: .word 0x13c3
 .L_02202a04: .word 0x13c6
 .L_02202a08: .word gDebugFont

@@ -22,7 +22,7 @@
 .extern GamePhaseState_UpdateRenderHelpers
 .extern data_020d5d24
 .extern data_020d5d84
-.extern data_020f4dc8
+.extern gDisplayBrightnessPair
 .extern gDebugFont
 .extern gHeapContext
 .extern gSoundContext

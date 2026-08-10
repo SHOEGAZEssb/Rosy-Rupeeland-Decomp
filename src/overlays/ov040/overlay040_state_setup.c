@@ -64,7 +64,7 @@ extern void *data_ov040_0220429c[];
 extern void *gSoundContext;
 extern void *gDebugFont;
 extern void *data_020f4e18;
-extern void *data_020f4dc8;
+extern void *gDisplayBrightnessPair;
 #ifdef __cplusplus
 }
 #endif
@@ -360,7 +360,7 @@ extern "C" void func_ov040_02202640(void *scene, void *argument)
 
     func_020afd28((volatile void *)0x04001020, transform, 0, 0, 0, 0);
     func_020afd28((volatile void *)0x04001030, transform, 0, 0, 0, 0);
-    DisplayBrightness_StartTransition(DisplayBrightnessPair_GetScreen(data_020f4dc8, 1), -0x10, 0, 10);
+    DisplayBrightness_StartTransition(DisplayBrightnessPair_GetScreen(gDisplayBrightnessPair, 1), -0x10, 0, 10);
 
     FIELD(void *, scene, 0x58) =
         create_sub_object(scene, 0x13c3, argument, 0xdc000, 0x5f000, 0);

@@ -1,6 +1,6 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov052/overlay052_recovery.c.
-.extern data_020f4dc8
+.extern gDisplayBrightnessPair
 .extern data_021052fc
 .extern data_ov052_0220e1e0
 .extern data_ov052_0220e1e4
@@ -250,7 +250,7 @@ func_ov052_0220da54:
     ldmia sp!, {r3, r4, r5, pc}
 .L_0220dd90: .word gPadState1
 .L_0220dd94: .word data_021052fc
-.L_0220dd98: .word data_020f4dc8
+.L_0220dd98: .word gDisplayBrightnessPair
 .L_0220dd9c: .word data_ov052_0220e1ec
 .L_0220dda0: .word gTouchPanelManager
 .L_0220dda4: .word data_ov052_0220e1e0
