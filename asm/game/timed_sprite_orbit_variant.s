@@ -5,7 +5,7 @@
 .extern data_020d6118
 .extern func_020050c8
 .extern GraphicsSpriteState_SetDepthOrderedWorldPositionFromOrigin
-.extern func_020188fc
+.extern S16BoundsCenter_Init
 .extern func_0201e380
 .extern func_0201e3b8
 .extern func_0201e6e4
@@ -97,7 +97,7 @@ func_0201ea98: ; 0x0201ea98
     ldr r1, [r4, #0x2c]
     add r0, sp, #0x0
     add r1, r1, #0x68
-    bl func_020188fc
+    bl S16BoundsCenter_Init
     mov r0, r4
     ldr r3, [r0, #0x0]
     ldr r1, [r4, #0x2c]

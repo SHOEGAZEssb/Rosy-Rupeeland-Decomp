@@ -36,12 +36,12 @@ extern s32 func_02056f34(void *result, const void *first, const void *second,
 }
 #endif
 
-s32 func_020188e4(const ActorBounds *bounds);
-BoundsCenter *func_020188fc(BoundsCenter *center, const ActorBounds *bounds);
-void func_02018958(BoundsCenter *center);
-void func_0201895c(ActorBounds *bounds, s16 left, s16 top);
-s32 func_02018998(const ActorBounds *bounds);
-void func_020189b0(ActorBounds *bounds, s32 horizontal, s32 vertical);
+s32 S16Bounds_GetHeight(const ActorBounds *bounds);
+BoundsCenter *S16BoundsCenter_Init(BoundsCenter *center, const ActorBounds *bounds);
+void S16BoundsCenter_Destroy(BoundsCenter *center);
+void S16Bounds_MoveTo(ActorBounds *bounds, s16 left, s16 top);
+s32 S16Bounds_GetWidth(const ActorBounds *bounds);
+void S16Bounds_Expand(ActorBounds *bounds, s32 horizontal, s32 vertical);
 
 /*
  * Pop four signed-16-bit values followed by a command.  Commands replace or
@@ -51,7 +51,7 @@ void func_020189b0(ActorBounds *bounds, s32 horizontal, s32 vertical);
  * the actor bounds-application routine.  Unsupported commands do nothing.
  * Return zero.
  */
-s32 func_0201863c(GamePhaseActorScriptVm *self)
+s32 GamePhaseActorScriptVm_DispatchActorBoundsCommand(GamePhaseActorScriptVm *self)
 {
     s16 fourth = (s16)GamePhaseScriptVm_Pop(&self->base);
     s16 third = (s16)GamePhaseScriptVm_Pop(&self->base);
@@ -81,24 +81,24 @@ s32 func_0201863c(GamePhaseActorScriptVm *self)
         bounds->bottom = first;
         break;
     case 6: {
-        s16 height = (s16)func_020188e4(bounds);
+        s16 height = (s16)S16Bounds_GetHeight(bounds);
         BoundsCenter center;
         ActorBounds replacement;
-        func_020188fc(&center, bounds);
+        S16BoundsCenter_Init(&center, bounds);
         func_020083b0(&replacement, 0, 0, first, height);
         Actor_SetInteractionBounds(actor, &replacement);
-        func_0201895c(bounds, (s16)(center.x - first / 2),
+        S16Bounds_MoveTo(bounds, (s16)(center.x - first / 2),
                       (s16)(center.y - height / 2));
         break;
     }
     case 7: {
-        s16 width = (s16)func_02018998(bounds);
+        s16 width = (s16)S16Bounds_GetWidth(bounds);
         BoundsCenter center;
         ActorBounds replacement;
-        func_020188fc(&center, bounds);
+        S16BoundsCenter_Init(&center, bounds);
         func_020083b0(&replacement, 0, 0, width, first);
         Actor_SetInteractionBounds(actor, &replacement);
-        func_0201895c(bounds, (s16)(center.x - width / 2),
+        S16Bounds_MoveTo(bounds, (s16)(center.x - width / 2),
                       (s16)(center.y - first / 2));
         break;
     }
@@ -106,7 +106,7 @@ s32 func_0201863c(GamePhaseActorScriptVm *self)
         S16Rectangle_Translate((s16 *)bounds, first, second);
         break;
     case 9:
-        func_020189b0(bounds, first, second);
+        S16Bounds_Expand(bounds, first, second);
         break;
     case 10: {
         u32 firstState[4];
@@ -129,7 +129,7 @@ s32 func_0201863c(GamePhaseActorScriptVm *self)
 }
 
 /* Return the bounds height (bottom minus top), truncated to signed 16 bits. */
-s32 func_020188e4(const ActorBounds *bounds)
+s32 S16Bounds_GetHeight(const ActorBounds *bounds)
 {
     return (s16)(bounds->bottom - bounds->top);
 }
@@ -138,7 +138,7 @@ s32 func_020188e4(const ActorBounds *bounds)
  * Initialize center with the recovered vtable and the midpoint of each bounds
  * axis, using signed division rounded toward zero.  Return center.
  */
-BoundsCenter *func_020188fc(BoundsCenter *center, const ActorBounds *bounds)
+BoundsCenter *S16BoundsCenter_Init(BoundsCenter *center, const ActorBounds *bounds)
 {
     center->vtable = data_020d5b10;
     center->x = (s16)(bounds->left + (s16)(bounds->right - bounds->left) / 2);
@@ -147,16 +147,16 @@ BoundsCenter *func_020188fc(BoundsCenter *center, const ActorBounds *bounds)
 }
 
 /* No-op destructor for the temporary recovered bounds-center value. */
-void func_02018958(BoundsCenter *center)
+void S16BoundsCenter_Destroy(BoundsCenter *center)
 {
     (void)center;
 }
 
 /* Move bounds to left/top while preserving its current width and height. */
-void func_0201895c(ActorBounds *bounds, s16 left, s16 top)
+void S16Bounds_MoveTo(ActorBounds *bounds, s16 left, s16 top)
 {
     s16 width = (s16)(bounds->right - bounds->left);
-    s16 height = (s16)func_020188e4(bounds);
+    s16 height = (s16)S16Bounds_GetHeight(bounds);
     bounds->left = left;
     bounds->right = (s16)(left + width);
     bounds->top = top;
@@ -164,13 +164,13 @@ void func_0201895c(ActorBounds *bounds, s16 left, s16 top)
 }
 
 /* Return the bounds width (right minus left), truncated to signed 16 bits. */
-s32 func_02018998(const ActorBounds *bounds)
+s32 S16Bounds_GetWidth(const ActorBounds *bounds)
 {
     return (s16)(bounds->right - bounds->left);
 }
 
 /* Expand bounds symmetrically by horizontal and vertical script units. */
-void func_020189b0(ActorBounds *bounds, s32 horizontal, s32 vertical)
+void S16Bounds_Expand(ActorBounds *bounds, s32 horizontal, s32 vertical)
 {
     bounds->left = (s16)(bounds->left - horizontal);
     bounds->right = (s16)(bounds->right + horizontal);

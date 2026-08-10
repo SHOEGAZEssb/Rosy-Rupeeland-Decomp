@@ -4,13 +4,13 @@
 .extern func_020083b0
 .extern S16Rectangle_Translate
 .extern GamePhaseScriptVm_Pop
-.extern func_020188e4
-.extern func_020188fc
-.extern func_0201895c
-.extern func_02018998
-.extern func_020189b0
-.global func_020189e4
-func_020189e4:
+.extern S16Bounds_GetHeight
+.extern S16BoundsCenter_Init
+.extern S16Bounds_MoveTo
+.extern S16Bounds_GetWidth
+.extern S16Bounds_Expand
+.global GamePhaseActorScriptVm_DispatchInteractionBoundsCommand
+GamePhaseActorScriptVm_DispatchInteractionBoundsCommand:
     stmdb sp!, {r3, r4, r5, r6, r7, r8, lr}
     sub sp, sp, #0x2c
     mov r8, r0
@@ -78,12 +78,12 @@ L_02018ac0:
 L_02018acc:
     ldr r0, [r8, #0x84]
     add r0, r0, #0x60
-    bl func_020188e4
+    bl S16Bounds_GetHeight
     ldr r1, [r8, #0x84]
     mov r4, r0
     add r0, sp, #0x24
     add r1, r1, #0x60
-    bl func_020188fc
+    bl S16BoundsCenter_Init
     mov r1, #0x0
     add r0, sp, #0xc
     mov r2, r1
@@ -108,17 +108,17 @@ L_02018acc:
     mov r2, r2, lsl #0x10
     mov r1, r1, asr #0x10
     mov r2, r2, asr #0x10
-    bl func_0201895c
+    bl S16Bounds_MoveTo
     b L_02018c08
 L_02018b54:
     ldr r0, [r8, #0x84]
     add r0, r0, #0x60
-    bl func_02018998
+    bl S16Bounds_GetWidth
     ldr r1, [r8, #0x84]
     mov r4, r0
     add r0, sp, #0x1c
     add r1, r1, #0x60
-    bl func_020188fc
+    bl S16BoundsCenter_Init
     mov r1, #0x0
     add r0, sp, #0x4
     mov r2, r1
@@ -143,7 +143,7 @@ L_02018b54:
     add r2, r3, r2, asr #0x1
     mov r2, r2, lsl #0x10
     mov r2, r2, asr #0x10
-    bl func_0201895c
+    bl S16Bounds_MoveTo
     b L_02018c08
 L_02018bdc:
     ldr r0, [r8, #0x84]
@@ -157,9 +157,9 @@ L_02018bf4:
     mov r1, r7
     mov r2, r6
     add r0, r0, #0x60
-    bl func_020189b0
+    bl S16Bounds_Expand
 L_02018c08:
     mov r0, #0x0
     add sp, sp, #0x2c
     ldmia sp!, {r3, r4, r5, r6, r7, r8, pc}
-.size func_020189e4, . - func_020189e4
+.size GamePhaseActorScriptVm_DispatchInteractionBoundsCommand, . - GamePhaseActorScriptVm_DispatchInteractionBoundsCommand

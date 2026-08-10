@@ -1,8 +1,8 @@
 ; Matching retail form; see src/game/game_phase_script_vm_actor_bounds_opcode.c.
 .text
 .extern data_020d5b10
-.global func_020188fc
-func_020188fc:
+.global S16BoundsCenter_Init
+S16BoundsCenter_Init:
     ldr r3, L_02018954
     mov r2, #0x0
     str r3, [r0, #0x0]
@@ -26,4 +26,4 @@ func_020188fc:
     strh r1, [r0, #0x6]
     bx lr
 L_02018954: .word data_020d5b10
-.size func_020188fc, . - func_020188fc
+.size S16BoundsCenter_Init, . - S16BoundsCenter_Init

@@ -9,7 +9,7 @@
 .extern func_020050c8
 .extern GraphicsSpriteState_SetDepthOrderedWorldPositionFromOrigin
 .extern VecFx32_Subtract
-.extern func_020188fc
+.extern S16BoundsCenter_Init
 .extern func_020adae4
 .extern func_020ae024
 .extern func_02072b68
@@ -112,7 +112,7 @@ func_0201e7d0: ; 0x0201e7d0
     ldr r1, [r4, #0x2c]
     add r0, sp, #0x0
     add r1, r1, #0x68
-    bl func_020188fc
+    bl S16BoundsCenter_Init
     mov r0, r4
     ldr r3, [r0, #0x0]
     ldr r1, [r4, #0x2c]

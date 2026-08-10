@@ -4,18 +4,18 @@
 .extern S16Rectangle_Translate
 .extern GamePhaseScriptVm_Pop
 .extern GamePhaseScriptVm_SetResult
-.extern func_020188e4
-.extern func_020188fc
-.extern func_0201895c
-.extern func_02018998
-.extern func_020189b0
+.extern S16Bounds_GetHeight
+.extern S16BoundsCenter_Init
+.extern S16Bounds_MoveTo
+.extern S16Bounds_GetWidth
+.extern S16Bounds_Expand
 .extern ActorCollection_FindActorByDescriptorValue
 .extern Actor_GetCollection
 .extern Actor_BuildWorldInteractionBounds
 .extern Actor_SetInteractionBounds
 .extern func_02056f34
-.global func_0201863c
-func_0201863c:
+.global GamePhaseActorScriptVm_DispatchActorBoundsCommand
+GamePhaseActorScriptVm_DispatchActorBoundsCommand:
     stmdb sp!, {r4, r5, r6, r7, r8, lr}
     sub sp, sp, #0x68
     mov r8, r0
@@ -83,12 +83,12 @@ L_02018718:
 L_02018724:
     ldr r0, [r8, #0x84]
     add r0, r0, #0x70
-    bl func_020188e4
+    bl S16Bounds_GetHeight
     ldr r1, [r8, #0x84]
     mov r4, r0
     add r0, sp, #0x28
     add r1, r1, #0x70
-    bl func_020188fc
+    bl S16BoundsCenter_Init
     mov r0, r4, lsl #0x10
     mov r2, r0, asr #0x10
     mov r1, #0x0
@@ -114,17 +114,17 @@ L_02018724:
     mov r2, r2, lsl #0x10
     mov r1, r1, asr #0x10
     mov r2, r2, asr #0x10
-    bl func_0201895c
+    bl S16Bounds_MoveTo
     b L_020188d8
 L_020187b0:
     ldr r0, [r8, #0x84]
     add r0, r0, #0x70
-    bl func_02018998
+    bl S16Bounds_GetWidth
     ldr r1, [r8, #0x84]
     mov r4, r0
     add r0, sp, #0x20
     add r1, r1, #0x70
-    bl func_020188fc
+    bl S16BoundsCenter_Init
     mov r2, r4, lsl #0x10
     mov r1, #0x0
     mov r3, r2, asr #0x10
@@ -149,7 +149,7 @@ L_020187b0:
     add r2, r3, r2, asr #0x1
     mov r2, r2, lsl #0x10
     mov r2, r2, asr #0x10
-    bl func_0201895c
+    bl S16Bounds_MoveTo
     b L_020188d8
 L_02018838:
     ldr r0, [r8, #0x84]
@@ -163,7 +163,7 @@ L_02018850:
     mov r1, r7
     mov r2, r6
     add r0, r0, #0x70
-    bl func_020189b0
+    bl S16Bounds_Expand
     b L_020188d8
 L_02018868:
     ldr r5, [r8, #0x84]
@@ -198,4 +198,4 @@ L_020188d8:
     mov r0, #0x0
     add sp, sp, #0x68
     ldmia sp!, {r4, r5, r6, r7, r8, pc}
-.size func_0201863c, . - func_0201863c
+.size GamePhaseActorScriptVm_DispatchActorBoundsCommand, . - GamePhaseActorScriptVm_DispatchActorBoundsCommand

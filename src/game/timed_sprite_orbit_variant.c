@@ -50,7 +50,7 @@ extern void func_020050c8(PresentationTrack *first,
                           PresentationTrack *second);
 extern void GraphicsSpriteState_SetDepthOrderedWorldPositionFromOrigin(void *sprite, const void *position, s32 first,
                           s32 second, s32 third, s32 constant8);
-extern BoundsCenter *func_020188fc(BoundsCenter *center, const void *bounds);
+extern BoundsCenter *S16BoundsCenter_Init(BoundsCenter *center, const void *bounds);
 extern u32 genrand_int32(void);
 #ifdef __cplusplus
 }
@@ -122,7 +122,7 @@ s32 func_0201ea98(OrbitTimedSprite *self)
         func_0201e3b8(self, 0);
         return 1;
     }
-    func_020188fc(&center, self->owner2c + 0x68);
+    S16BoundsCenter_Init(&center, self->owner2c + 0x68);
     ((OrbitTimedSpriteApply)self->vtable[5])(
         self, self->owner2c + 0x18, &center);
     func_020050c8(&self->first08, &self->second18);

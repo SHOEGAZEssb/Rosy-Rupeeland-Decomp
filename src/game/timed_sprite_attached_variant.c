@@ -52,7 +52,7 @@ extern void GraphicsSpriteState_SetDepthOrderedWorldPositionFromOrigin(void *spr
                           s32 second, s32 third, s32 constant8);
 extern void VecFx32_Subtract(void *output, s32 argument,
                           PresentationTrack *track);
-extern BoundsCenter *func_020188fc(BoundsCenter *center, const void *bounds);
+extern BoundsCenter *S16BoundsCenter_Init(BoundsCenter *center, const void *bounds);
 extern s32 func_020adae4(s32 dividend, s32 divisor);
 extern u16 func_020ae024(s32 x, s32 y);
 extern void func_02072b68(void *sprite, s32 value);
@@ -124,7 +124,7 @@ s32 func_0201e7d0(AttachedTimedSprite *self)
         func_0201e3b8(self, 0);
         return 1;
     }
-    func_020188fc(&center, self->owner2c + 0x68);
+    S16BoundsCenter_Init(&center, self->owner2c + 0x68);
     ((AttachedTimedSpriteApply)self->vtable[5])(
         self, self->owner2c + 0x18, &center);
     func_020050c8(&self->first08, &self->second18);

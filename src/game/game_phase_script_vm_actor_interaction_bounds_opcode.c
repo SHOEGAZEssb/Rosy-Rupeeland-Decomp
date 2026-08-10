@@ -24,11 +24,11 @@ typedef struct InteractionBoundsCenter {
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern s32 func_020188e4(const void *bounds);
-extern void *func_020188fc(void *center, const void *bounds);
-extern void func_0201895c(void *bounds, s16 left, s16 top);
-extern s32 func_02018998(const void *bounds);
-extern void func_020189b0(void *bounds, s32 horizontal, s32 vertical);
+extern s32 S16Bounds_GetHeight(const void *bounds);
+extern void *S16BoundsCenter_Init(void *center, const void *bounds);
+extern void S16Bounds_MoveTo(void *bounds, s16 left, s16 top);
+extern s32 S16Bounds_GetWidth(const void *bounds);
+extern void S16Bounds_Expand(void *bounds, s32 horizontal, s32 vertical);
 #ifdef __cplusplus
 }
 #endif
@@ -40,7 +40,7 @@ extern void func_020189b0(void *bounds, s32 horizontal, s32 vertical);
  * center while changing width or height.  Unsupported commands do nothing.
  * Return zero.
  */
-s32 func_020189e4(GamePhaseActorScriptVm *self)
+s32 GamePhaseActorScriptVm_DispatchInteractionBoundsCommand(GamePhaseActorScriptVm *self)
 {
     s16 fourth = (s16)GamePhaseScriptVm_Pop(&self->base);
     s16 third = (s16)GamePhaseScriptVm_Pop(&self->base);
@@ -70,24 +70,24 @@ s32 func_020189e4(GamePhaseActorScriptVm *self)
         bounds->bottom = first;
         break;
     case 6: {
-        s16 height = (s16)func_020188e4(bounds);
+        s16 height = (s16)S16Bounds_GetHeight(bounds);
         InteractionBoundsCenter center;
         ActorInteractionBounds replacement;
-        func_020188fc(&center, bounds);
+        S16BoundsCenter_Init(&center, bounds);
         func_020083b0(&replacement, 0, 0, first, height);
         func_02008354(bounds, &replacement);
-        func_0201895c(bounds, (s16)(center.x - first / 2),
+        S16Bounds_MoveTo(bounds, (s16)(center.x - first / 2),
                       (s16)(center.y - height / 2));
         break;
     }
     case 7: {
-        s16 width = (s16)func_02018998(bounds);
+        s16 width = (s16)S16Bounds_GetWidth(bounds);
         InteractionBoundsCenter center;
         ActorInteractionBounds replacement;
-        func_020188fc(&center, bounds);
+        S16BoundsCenter_Init(&center, bounds);
         func_020083b0(&replacement, 0, 0, width, first);
         func_02008354(bounds, &replacement);
-        func_0201895c(bounds, (s16)(center.x - width / 2),
+        S16Bounds_MoveTo(bounds, (s16)(center.x - width / 2),
                       (s16)(center.y - first / 2));
         break;
     }
@@ -95,7 +95,7 @@ s32 func_020189e4(GamePhaseActorScriptVm *self)
         S16Rectangle_Translate((s16 *)bounds, first, second);
         break;
     case 9:
-        func_020189b0(bounds, first, second);
+        S16Bounds_Expand(bounds, first, second);
         break;
     }
     return 0;
