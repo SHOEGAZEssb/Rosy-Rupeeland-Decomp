@@ -48,7 +48,8 @@ ActorBaseGeometryLifecycle *func_02030d70(ActorBaseGeometryLifecycle *self)
  * Perform the base geometry teardown, free self through Heap_Free, and return
  * its former address. The returned pointer no longer owns live storage.
  */
-ActorBaseGeometryLifecycle *func_02030db8(ActorBaseGeometryLifecycle *self)
+ActorBaseGeometryLifecycle *ActorBaseGeometry_DestroyAndFree(
+    ActorBaseGeometryLifecycle *self)
 {
     destroyGeometry(self);
     Heap_Free(self);

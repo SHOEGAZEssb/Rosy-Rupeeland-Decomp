@@ -6,9 +6,9 @@
 .extern func_02059424
 .extern gSoundContext
 
-    .global func_02030db8
-    .type func_02030db8, @function
-func_02030db8: ; 0x02030db8
+    .global ActorBaseGeometry_DestroyAndFree
+    .type ActorBaseGeometry_DestroyAndFree, @function
+ActorBaseGeometry_DestroyAndFree: ; 0x02030db8
     stmdb sp!, {r4, lr}
     ldr r1, .L_02030e00
     mov r4, r0
@@ -29,5 +29,4 @@ func_02030db8: ; 0x02030db8
     ldmia sp!, {r4, pc}
 .L_02030e00: .word data_020def7c
 .L_02030e04: .word gSoundContext
-    .size func_02030db8, . - func_02030db8
-
+    .size ActorBaseGeometry_DestroyAndFree, . - ActorBaseGeometry_DestroyAndFree
