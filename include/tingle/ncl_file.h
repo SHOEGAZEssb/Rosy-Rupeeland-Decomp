@@ -18,7 +18,7 @@ typedef char NclFileSizeCheck[sizeof(NclFile) == 0xc ? 1 : -1];
 extern "C" {
 #endif
 
-extern NclFileVTable data_020d40ec;
+extern NclFileVTable gNclFileVTable;
 
 NclFile *NclFile_Init(NclFile *self);
 NclFile *NclFile_Destroy(NclFile *self);

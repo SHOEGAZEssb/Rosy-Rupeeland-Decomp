@@ -16,7 +16,7 @@ typedef char NcgFileSizeCheck[sizeof(NcgFile) == 0x14 ? 1 : -1];
 extern "C" {
 #endif
 
-extern NitroFileVTable data_020d40cc;
+extern NitroFileVTable gNcgFileVTable;
 
 NcgFile *NcgFile_Init(NcgFile *self);
 NcgFile *NcgFile_Destroy(NcgFile *self);

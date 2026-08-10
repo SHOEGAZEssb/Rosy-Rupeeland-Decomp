@@ -6703,13 +6703,13 @@ data_020d4090 kind:data(any) addr:0x020d4090
 data_020d409c kind:data(any) addr:0x020d409c
 data_020d40a8 kind:data(any) addr:0x020d40a8
 data_020d40b4 kind:data(any) addr:0x020d40b4
-data_020d40cc kind:data(any) addr:0x020d40cc
+gNcgFileVTable kind:data(any) addr:0x020d40cc
 gNitroFileVTable kind:data(any) addr:0x020d40dc
-data_020d40ec kind:data(any) addr:0x020d40ec
+gNclFileVTable kind:data(any) addr:0x020d40ec
 data_020d40f4 kind:data(any) addr:0x020d40f4
 data_020d40fc kind:data(any) addr:0x020d40fc
-data_020d4104 kind:data(any) addr:0x020d4104
-data_020d410c kind:data(any) addr:0x020d410c
+gNcgFileBufferTag kind:data(any) addr:0x020d4104
+gNclFileBufferTag kind:data(any) addr:0x020d410c
 data_020d4114 kind:data(any) addr:0x020d4114
 data_020d411c kind:data(any) addr:0x020d411c
 data_020d4124 kind:data(any) addr:0x020d4124

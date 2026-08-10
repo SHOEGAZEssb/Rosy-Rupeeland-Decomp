@@ -11,7 +11,7 @@
 extern "C" {
 #endif
 
-extern char data_020d410c[];
+extern char gNclFileBufferTag[];
 extern void MI_CpuCopy8(const void *source, void *destination, u32 size);
 extern void func_020b4554(void *address, u32 size);
 extern void OS_Halt(void);
@@ -24,7 +24,7 @@ extern void OS_Halt(void);
 NclFile *NclFile_Init(NclFile *self)
 {
     NitroFile_Init(&self->base);
-    self->base.vtable = (const NitroFileVTable *)&data_020d40ec;
+    self->base.vtable = (const NitroFileVTable *)&gNclFileVTable;
     return self;
 }
 
@@ -56,7 +56,7 @@ s32 NclFile_ParseResource(NclFile *self, const void *resource)
     u32 size = (*(const u32 *)(block + 0x8) *
                 *(const u32 *)(block + 0xc)) << 1;
 
-    self->base.data = func_02003e20(size, data_020d410c, 4, &gHeapContext);
+    self->base.data = func_02003e20(size, gNclFileBufferTag, 4, &gHeapContext);
     MI_CpuCopy8(block + 0x10, self->base.data, size);
     func_020b4554(self->base.data, size);
     self->base.size = size;

@@ -12,7 +12,7 @@
 extern "C" {
 #endif
 
-extern char data_020d4104[];
+extern char gNcgFileBufferTag[];
 extern void MI_CpuCopy8(const void *source, void *destination, u32 size);
 extern void func_020b4554(void *address, u32 size);
 extern void OS_Halt(void);
@@ -28,7 +28,7 @@ extern void OS_Halt(void);
 NcgFile *NcgFile_Init(NcgFile *self)
 {
     NitroFile_Init(&self->base);
-    self->base.vtable = &data_020d40cc;
+    self->base.vtable = &gNcgFileVTable;
     self->width = 0;
     self->height = 0;
     return self;
@@ -65,7 +65,7 @@ s32 NcgFile_ParseResource(NcgFile *self, const void *resource)
     self->height = *(const u32 *)(block + 0xc);
     self->format = *(const u32 *)(block + 0x10);
     size = NcgFile_GetPayloadSize(self);
-    self->base.data = func_02003e20(size, data_020d4104, 4, &gHeapContext);
+    self->base.data = func_02003e20(size, gNcgFileBufferTag, 4, &gHeapContext);
     MI_CpuCopy8(block + 0x14, self->base.data, size);
     func_020b4554(self->base.data, size);
     self->base.size = size;
