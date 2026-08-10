@@ -7,9 +7,9 @@
 .extern func_020570c4
 .extern gHeapContext
 
-    .global func_020342ac
-    .type func_020342ac, @function
-func_020342ac: ; 0x020342ac
+    .global Actor_EnsureAuxiliaryCollisionResource
+    .type Actor_EnsureAuxiliaryCollisionResource, @function
+Actor_EnsureAuxiliaryCollisionResource: ; 0x020342ac
     stmdb sp!, {r3, r4, r5, lr}
     mov r5, r0
     ldr r0, [r5, #0x1e0]
@@ -41,7 +41,6 @@ func_020342ac: ; 0x020342ac
     ldmia sp!, {r3, r4, r5, pc}
 .L_02034318: .word data_020df208
 .L_0203431c: .word gHeapContext
-    .size func_020342ac, . - func_020342ac
+    .size Actor_EnsureAuxiliaryCollisionResource, . - Actor_EnsureAuxiliaryCollisionResource
 
-    .global func_02034320
-
+    .global Actor_DestroyAuxiliaryCollisionResource

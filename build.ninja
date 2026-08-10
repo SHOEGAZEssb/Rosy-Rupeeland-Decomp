@@ -14639,7 +14639,7 @@ build build/reports/actor_auxiliary_collision_resource_020342ac.json: objdiff bu
   base_object = build/decomp/asm/game/actor_auxiliary_collision_resource_020342ac.o
 build build/reports/actor_auxiliary_collision_resource_020342ac.txt: match_report build/reports/actor_auxiliary_collision_resource_020342ac.json | tools/report_objdiff.py
   report_json = build/reports/actor_auxiliary_collision_resource_020342ac.json
-  report_args = --section .text --function func_020342ac --require-exact
+  report_args = --section .text --function Actor_EnsureAuxiliaryCollisionResource --require-exact
 build build/decomp/asm/game/actor_auxiliary_collision_resource_02034320.o: mwasmarm asm/game/actor_auxiliary_collision_resource_02034320.s
 build build/decomp/delinks/asm/game/actor_auxiliary_collision_resource_02034320.o: dsd_delink config/arm9/config.yaml config/arm9/delinks.txt config/arm9/symbols.txt config/arm9/relocs.txt
 build build/reports/actor_auxiliary_collision_resource_02034320.json: objdiff build/decomp/delinks/asm/game/actor_auxiliary_collision_resource_02034320.o | build/decomp/asm/game/actor_auxiliary_collision_resource_02034320.o
@@ -14647,7 +14647,7 @@ build build/reports/actor_auxiliary_collision_resource_02034320.json: objdiff bu
   base_object = build/decomp/asm/game/actor_auxiliary_collision_resource_02034320.o
 build build/reports/actor_auxiliary_collision_resource_02034320.txt: match_report build/reports/actor_auxiliary_collision_resource_02034320.json | tools/report_objdiff.py
   report_json = build/reports/actor_auxiliary_collision_resource_02034320.json
-  report_args = --section .text --function func_02034320 --require-exact
+  report_args = --section .text --function Actor_DestroyAuxiliaryCollisionResource --require-exact
 build build/decomp/asm/game/actor_auxiliary_collision_resource_02034354.o: mwasmarm asm/game/actor_auxiliary_collision_resource_02034354.s
 build build/decomp/delinks/asm/game/actor_auxiliary_collision_resource_02034354.o: dsd_delink config/arm9/config.yaml config/arm9/delinks.txt config/arm9/symbols.txt config/arm9/relocs.txt
 build build/reports/actor_auxiliary_collision_resource_02034354.json: objdiff build/decomp/delinks/asm/game/actor_auxiliary_collision_resource_02034354.o | build/decomp/asm/game/actor_auxiliary_collision_resource_02034354.o
@@ -14655,7 +14655,7 @@ build build/reports/actor_auxiliary_collision_resource_02034354.json: objdiff bu
   base_object = build/decomp/asm/game/actor_auxiliary_collision_resource_02034354.o
 build build/reports/actor_auxiliary_collision_resource_02034354.txt: match_report build/reports/actor_auxiliary_collision_resource_02034354.json | tools/report_objdiff.py
   report_json = build/reports/actor_auxiliary_collision_resource_02034354.json
-  report_args = --section .text --function func_02034354 --require-exact
+  report_args = --section .text --function Actor_GetAuxiliaryCollisionResource --require-exact
 build build/decomp/asm/game/actor_auxiliary_collision_resource_0203435c.o: mwasmarm asm/game/actor_auxiliary_collision_resource_0203435c.s
 build build/decomp/delinks/asm/game/actor_auxiliary_collision_resource_0203435c.o: dsd_delink config/arm9/config.yaml config/arm9/delinks.txt config/arm9/symbols.txt config/arm9/relocs.txt
 build build/reports/actor_auxiliary_collision_resource_0203435c.json: objdiff build/decomp/delinks/asm/game/actor_auxiliary_collision_resource_0203435c.o | build/decomp/asm/game/actor_auxiliary_collision_resource_0203435c.o
@@ -14663,7 +14663,7 @@ build build/reports/actor_auxiliary_collision_resource_0203435c.json: objdiff bu
   base_object = build/decomp/asm/game/actor_auxiliary_collision_resource_0203435c.o
 build build/reports/actor_auxiliary_collision_resource_0203435c.txt: match_report build/reports/actor_auxiliary_collision_resource_0203435c.json | tools/report_objdiff.py
   report_json = build/reports/actor_auxiliary_collision_resource_0203435c.json
-  report_args = --section .text --function func_0203435c --require-exact
+  report_args = --section .text --function Actor_SetAuxiliaryCollisionPosition --require-exact
 build build/reports/actor_auxiliary_collision_resource.txt: phony build/reports/actor_auxiliary_collision_resource_020342ac.txt build/reports/actor_auxiliary_collision_resource_02034320.txt build/reports/actor_auxiliary_collision_resource_02034354.txt build/reports/actor_auxiliary_collision_resource_0203435c.txt
 
 build actor_auxiliary_collision_resource: phony build/decomp/src/game/actor_auxiliary_collision_resource.o build/decomp/asm/game/actor_auxiliary_collision_resource_020342ac.o build/decomp/asm/game/actor_auxiliary_collision_resource_02034320.o build/decomp/asm/game/actor_auxiliary_collision_resource_02034354.o build/decomp/asm/game/actor_auxiliary_collision_resource_0203435c.o build/reports/actor_auxiliary_collision_resource.txt

@@ -23,7 +23,7 @@ extern void func_02057184(void *resource);
  * failed, so successful allocation is an ownership precondition. Returns no
  * value; heap and constructor helpers manage SDK/resource state.
  */
-void func_020342ac(void *self)
+void Actor_EnsureAuxiliaryCollisionResource(void *self)
 {
     u8 *actor = (u8 *)self;
     u8 *resource = *(u8 **)(actor + 0x1e0);
@@ -45,7 +45,7 @@ void func_020342ac(void *self)
  * If actor+0x1e0 is non-null, run its destructor and free the allocation, then
  * clear the actor field. Returns no value; heap/resource ownership is released.
  */
-void func_02034320(void *self)
+void Actor_DestroyAuxiliaryCollisionResource(void *self)
 {
     u8 *actor = (u8 *)self;
     void *resource = *(void **)(actor + 0x1e0);
@@ -58,7 +58,7 @@ void func_02034320(void *self)
 }
 
 /* Return the auxiliary resource pointer stored at actor+0x1e0. */
-void *func_02034354(void *self)
+void *Actor_GetAuxiliaryCollisionResource(void *self)
 {
     return *(void **)((u8 *)self + 0x1e0);
 }
@@ -67,7 +67,7 @@ void *func_02034354(void *self)
  * If the auxiliary resource exists, store integer X/Y at +0x18/+0x1c after
  * converting both to 20.12 fixed point. Returns no value.
  */
-void func_0203435c(void *self, s32 x, s32 y)
+void Actor_SetAuxiliaryCollisionPosition(void *self, s32 x, s32 y)
 {
     u8 *resource = *(u8 **)((u8 *)self + 0x1e0);
 

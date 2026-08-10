@@ -3,7 +3,7 @@
 .extern Heap_Alloc
 .extern data_020e1d04
 .extern func_0200cf00
-.extern func_02034320
+.extern Actor_DestroyAuxiliaryCollisionResource
 .extern gHeapContext
 .global func_020471e4
 .type func_020471e4, @function
@@ -18,7 +18,7 @@ func_020471e4: ; 0x020471e4
     ldr r1, [r0, #0x1e0]
     cmp r1, #0x0
     beq .L_02047210
-    bl func_02034320
+    bl Actor_DestroyAuxiliaryCollisionResource
 .L_02047210:
     ldr r1, .L_0204723c
     ldr r3, .L_02047240

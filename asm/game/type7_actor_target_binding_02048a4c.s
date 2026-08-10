@@ -2,7 +2,7 @@
 .text
 .extern data_021052fc
 .extern func_02007f0c
-.extern func_02034320
+.extern Actor_DestroyAuxiliaryCollisionResource
 .extern func_02035518
 .extern func_02048378
 .extern func_020adcac
@@ -114,7 +114,7 @@ func_02048b94: ; 0x02048b94
     ldr r1, [r4, #0x1e0]
     cmp r1, #0x0
     beq .L_02048bbc
-    bl func_02034320
+    bl Actor_DestroyAuxiliaryCollisionResource
 .L_02048bbc:
     ldr r0, [r4, #0xd0]
     bic r0, r0, #0x100
@@ -132,7 +132,7 @@ func_02048bcc: ; 0x02048bcc
     ldr r1, [r4, #0x1e0]
     cmp r1, #0x0
     beq .L_02048bf8
-    bl func_02034320
+    bl Actor_DestroyAuxiliaryCollisionResource
 .L_02048bf8:
     add r0, r4, #0x2a8
     mov r1, #0x0
@@ -144,4 +144,3 @@ func_02048bcc: ; 0x02048bcc
 .size func_02048a4c, func_02048b94 - func_02048a4c
 .size func_02048b94, func_02048bcc - func_02048b94
 .size func_02048bcc, . - func_02048bcc
-

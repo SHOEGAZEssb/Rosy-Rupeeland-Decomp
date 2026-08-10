@@ -3,9 +3,9 @@
 .extern Heap_Free
 .extern func_02057184
 
-    .global func_02034320
-    .type func_02034320, @function
-func_02034320: ; 0x02034320
+    .global Actor_DestroyAuxiliaryCollisionResource
+    .type Actor_DestroyAuxiliaryCollisionResource, @function
+Actor_DestroyAuxiliaryCollisionResource: ; 0x02034320
     stmdb sp!, {r3, r4, r5, lr}
     mov r5, r0
     ldr r4, [r5, #0x1e0]
@@ -20,7 +20,6 @@ func_02034320: ; 0x02034320
     mov r0, #0x0
     str r0, [r5, #0x1e0]
     ldmia sp!, {r3, r4, r5, pc}
-    .size func_02034320, . - func_02034320
+    .size Actor_DestroyAuxiliaryCollisionResource, . - Actor_DestroyAuxiliaryCollisionResource
 
-    .global func_02034354
-
+    .global Actor_GetAuxiliaryCollisionResource

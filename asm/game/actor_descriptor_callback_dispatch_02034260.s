@@ -26,5 +26,4 @@ func_02034260: ; 0x02034260
     ldmia sp!, {r3, pc}
     .size func_02034260, . - func_02034260
 
-    .global func_020342ac
-
+    .global Actor_EnsureAuxiliaryCollisionResource

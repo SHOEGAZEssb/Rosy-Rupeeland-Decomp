@@ -13,7 +13,7 @@ extern "C" {
 extern void **func_02007f0c(void *world, s32 collection);
 extern s32 func_020adcac(const void *first, const void *second);
 extern void func_02048378(void *actor, void *other);
-extern void func_02034320(void *actor, void *object);
+extern void Actor_DestroyAuxiliaryCollisionResource(void *actor, void *object);
 extern void func_02035518(void *value, s32 mode);
 #ifdef __cplusplus
 }
@@ -79,7 +79,9 @@ s32 func_02048a4c(void *self)
 
 /*
  * Inputs are actor and target. Store target at +0x280, set actor flag 0x10,
- * notify +0x1e0 through func_02034320 when non-null, and clear +0xd0 bit 0x100.
+ * destroy the auxiliary collision resource when non-null, forwarding that
+ * resource as the retail call's ignored second argument, and clear +0xd0 bit
+ * 0x100.
  * Actor relation, callback, and subordinate object state may change; no value
  * is returned and there is no direct hardware effect.
  */
@@ -89,15 +91,16 @@ void func_02048b94(void *self, void *target)
     *(void **)(actor + 0x280) = target;
     *(u32 *)(actor + 0x268) |= 0x10;
     if (*(void **)(actor + 0x1e0) != 0)
-        func_02034320(actor, *(void **)(actor + 0x1e0));
+        Actor_DestroyAuxiliaryCollisionResource(
+            actor, *(void **)(actor + 0x1e0));
     *(u32 *)(actor + 0xd0) &= ~0x100;
 }
 
 /*
  * Input is a type-seven actor. Null target +0x280, clear actor flag 0x10,
- * notify +0x1e0 through func_02034320 when non-null, reset subobject +0x2a8
- * with mode zero, and clear word +0x108. Actor relation and subordinate state
- * may change; no value is returned and no hardware is accessed directly.
+ * destroy the auxiliary collision resource when non-null, reset subobject
+ * +0x2a8 with mode zero, and clear word +0x108. Actor relation and subordinate
+ * state may change; no value is returned and no hardware is accessed directly.
  */
 void func_02048bcc(void *self)
 {
@@ -105,7 +108,8 @@ void func_02048bcc(void *self)
     *(void **)(actor + 0x280) = 0;
     *(u32 *)(actor + 0x268) &= ~0x10;
     if (*(void **)(actor + 0x1e0) != 0)
-        func_02034320(actor, *(void **)(actor + 0x1e0));
+        Actor_DestroyAuxiliaryCollisionResource(
+            actor, *(void **)(actor + 0x1e0));
     func_02035518(actor + 0x2a8, 0);
     *(u32 *)(actor + 0x108) = 0;
 }

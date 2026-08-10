@@ -11,9 +11,10 @@ extern "C" {
 extern void *data_020f4dc8;
 extern void *func_02002d28(void *state, s32 screen);
 extern void func_02002ac0(void *state, s32 first, s32 second, s32 third);
-extern void func_020342ac(void *actor);
-extern void func_02034320(void *actor);
-extern void func_0203435c(void *actor, s32 first, s32 second);
+extern void Actor_EnsureAuxiliaryCollisionResource(void *actor);
+extern void Actor_DestroyAuxiliaryCollisionResource(void *actor);
+extern void Actor_SetAuxiliaryCollisionPosition(void *actor, s32 first,
+                                                s32 second);
 extern void func_0204ea8c(void *actor, s32 value);
 #ifdef __cplusplus
 }
@@ -28,7 +29,7 @@ s32 func_020184d4(GamePhaseActorScriptVm *self)
 {
     s32 second = (s32)func_02012704(&self->base);
     s32 first = (s32)func_02012704(&self->base);
-    func_0203435c(self->actor_84, first, second);
+    Actor_SetAuxiliaryCollisionPosition(self->actor_84, first, second);
     return 0;
 }
 
@@ -96,10 +97,10 @@ s32 func_020185f4(GamePhaseActorScriptVm *self)
     s32 enabled = (s32)func_02012704(&self->base);
     u32 *flags = (u32 *)((u8 *)self->actor_84 + 0x14);
     if (enabled) {
-        func_020342ac(self->actor_84);
+        Actor_EnsureAuxiliaryCollisionResource(self->actor_84);
         *flags |= 0x08000000;
     } else {
-        func_02034320(self->actor_84);
+        Actor_DestroyAuxiliaryCollisionResource(self->actor_84);
         *flags &= ~0x08000000;
     }
     return 0;

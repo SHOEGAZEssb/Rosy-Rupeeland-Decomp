@@ -13,7 +13,7 @@ extern "C" {
 extern void *data_021052fc;
 extern const u8 data_020ea9b0[];
 extern s32 data_020e1964;
-extern void *func_02034354(void *actor);
+extern void *Actor_GetAuxiliaryCollisionResource(void *actor);
 extern void func_020573fc(void *state, s32 value);
 extern void func_020478dc(void *entity, const VecFx32Object *position,
                           s32 angle);
@@ -37,7 +37,7 @@ extern void func_0204bf9c(s32 first, void *owner, s32 second, s32 third,
 s32 func_02018c14(GamePhaseActorScriptVm *self)
 {
     s32 value = (s32)func_02012704(&self->base);
-    func_020573fc(func_02034354(self->actor_84), value);
+    func_020573fc(Actor_GetAuxiliaryCollisionResource(self->actor_84), value);
     return 0;
 }
 
