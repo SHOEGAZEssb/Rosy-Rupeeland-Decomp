@@ -26,7 +26,7 @@ extern void TrackedResourceActor_ScaleVectorComponents(void *vector, s32 length)
  * 0x5C with 8. Returns nothing; transform and presentation state change without
  * direct hardware access. The halfword is treated as an angle only by inference.
  */
-void func_0205232c(void *actor, const void *record, u32 argument, u32 unused)
+void TrackedResourceActorType28_SetupFromRecord(void *actor, const void *record, u32 argument, u32 unused)
 {
     u8 vector[16];
     s32 length;

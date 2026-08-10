@@ -20034,7 +20034,7 @@ build build/reports/tracked_resource_actor_oriented_setup_0205232c.json: objdiff
   base_object = build/decomp/asm/game/tracked_resource_actor_oriented_setup_0205232c.o
 build build/reports/tracked_resource_actor_oriented_setup_0205232c.txt: match_report build/reports/tracked_resource_actor_oriented_setup_0205232c.json | tools/report_objdiff.py
   report_json = build/reports/tracked_resource_actor_oriented_setup_0205232c.json
-  report_args = --section .text --function func_0205232c --require-exact
+  report_args = --section .text --function TrackedResourceActorType28_SetupFromRecord --require-exact
 
 build tracked_resource_actor_oriented_setup: phony build/decomp/src/game/tracked_resource_actor_oriented_setup.o build/decomp/asm/game/tracked_resource_actor_oriented_setup_0205232c.o build/reports/tracked_resource_actor_oriented_setup_0205232c.txt
 
@@ -20049,7 +20049,7 @@ build build/reports/tracked_resource_actor_oriented_update_020523c8.json: objdif
   base_object = build/decomp/asm/game/tracked_resource_actor_oriented_update_020523c8.o
 build build/reports/tracked_resource_actor_oriented_update_020523c8.txt: match_report build/reports/tracked_resource_actor_oriented_update_020523c8.json | tools/report_objdiff.py
   report_json = build/reports/tracked_resource_actor_oriented_update_020523c8.json
-  report_args = --section .text --function func_020523c8 --require-exact
+  report_args = --section .text --function TrackedResourceActorType28_Update --require-exact
 
 build tracked_resource_actor_oriented_update: phony build/decomp/src/game/tracked_resource_actor_oriented_update.o build/decomp/asm/game/tracked_resource_actor_oriented_update_020523c8.o build/reports/tracked_resource_actor_oriented_update_020523c8.txt
 
@@ -20064,7 +20064,7 @@ build build/reports/tracked_resource_actor_oriented_collision_02052464.json: obj
   base_object = build/decomp/asm/game/tracked_resource_actor_oriented_collision_02052464.o
 build build/reports/tracked_resource_actor_oriented_collision_02052464.txt: match_report build/reports/tracked_resource_actor_oriented_collision_02052464.json | tools/report_objdiff.py
   report_json = build/reports/tracked_resource_actor_oriented_collision_02052464.json
-  report_args = --section .text --function func_02052464 --require-exact
+  report_args = --section .text --function TrackedResourceActorType28_HandleCollision --require-exact
 
 build tracked_resource_actor_oriented_collision: phony build/decomp/src/game/tracked_resource_actor_oriented_collision.o build/decomp/asm/game/tracked_resource_actor_oriented_collision_02052464.o build/reports/tracked_resource_actor_oriented_collision_02052464.txt
 

@@ -6,8 +6,8 @@
 .extern func_020328d0
 .extern TrackedResourceActor_ScaleVectorComponents
 .text
-    .global func_0205232c
-func_0205232c:
+    .global TrackedResourceActorType28_SetupFromRecord
+TrackedResourceActorType28_SetupFromRecord:
     stmdb sp!, {r3, r4, r5, lr}
     sub sp, sp, #0x10
     mov r4, r0
@@ -47,5 +47,5 @@ func_0205232c:
     str r0, [r4, #0x5c]
     add sp, sp, #0x10
     ldmia sp!, {r3, r4, r5, pc}
-    .size func_0205232c, . - func_0205232c
+    .size TrackedResourceActorType28_SetupFromRecord, . - TrackedResourceActorType28_SetupFromRecord
 

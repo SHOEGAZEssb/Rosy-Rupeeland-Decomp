@@ -26,7 +26,7 @@ static VirtualFunction virtual_function(void *actor, u32 offset)
  * 0xD4 and 0xA4, Actor_UpdateAnimationState, and virtual slot 0x20. Returns nothing; engine
  * callbacks mutate actor/presentation state, with no direct hardware access.
  */
-void func_020523c8(void *actor)
+void TrackedResourceActorType28_Update(void *actor)
 {
     void *presentation;
     virtual_function(actor, 0x18)(actor);

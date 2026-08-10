@@ -1,8 +1,8 @@
 ; Matching retail form; see src/game/tracked_resource_actor_oriented_update.c.
 .extern Actor_UpdateAnimationState
 .text
-    .global func_020523c8
-func_020523c8:
+    .global TrackedResourceActorType28_Update
+TrackedResourceActorType28_Update:
     stmdb sp!, {r4, lr}
     ldr r1, [r0, #0x0]
     mov r4, r0
@@ -43,4 +43,4 @@ func_020523c8:
     ldr r1, [r1, #0x20]
     blx r1
     ldmia sp!, {r4, pc}
-    .size func_020523c8, . - func_020523c8
+    .size TrackedResourceActorType28_Update, . - TrackedResourceActorType28_Update

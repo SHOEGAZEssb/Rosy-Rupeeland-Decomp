@@ -38,7 +38,7 @@ static VirtualFunction virtual_function(void *actor, u32 offset)
  * 0x800000, and invoke notification, effect, and interaction helpers. Returns
  * nothing; callbacks mutate engine state without direct hardware access.
  */
-void func_02052464(void *actor, void *target, u32 unused1, u32 unused2)
+void TrackedResourceActorType28_HandleCollision(void *actor, void *target, u32 unused1, u32 unused2)
 {
     s32 vector[4];
     const void *record = FIELD(const void *, actor, 0x1fc);
