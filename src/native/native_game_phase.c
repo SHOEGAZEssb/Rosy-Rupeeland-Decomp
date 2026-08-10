@@ -6,6 +6,7 @@
  * treating embedded ARM addresses as callable host pointers.
  */
 #include "tingle/native_game_phase.h"
+#include "tingle/native_actor_factory.h"
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -116,6 +117,24 @@ static s32 DecodeDescriptorList(
         }
     }
     *descriptors = result;
+    return 1;
+}
+
+static s32 ResolveDescriptorList(
+    const TingleNativeActorFactoryCatalog *catalog,
+    TingleNativeActorDescriptor *descriptors, u32 count)
+{
+    u32 index;
+
+    for (index = 0; index < count; ++index) {
+        TingleNativeActorFactorySpec spec;
+
+        if (!TingleNativeActorFactoryCatalog_Resolve(
+                catalog, &descriptors[index], &spec))
+            return 0;
+        descriptors[index].allocation_size = spec.allocation_size;
+        descriptors[index].factory_variant = spec.factory_variant;
+    }
     return 1;
 }
 
@@ -230,6 +249,7 @@ s32 TingleNativeGamePhase_DecodeMetadata(s32 phase_id, const void *record,
 s32 TingleNativeGamePhaseBoundary_Init(TingleNativeGamePhaseBoundary *boundary,
                                        TingleNativeData *data, s32 phase_id)
 {
+    TingleNativeActorFactoryCatalog factory_catalog;
     void *record = NULL;
     u32 address;
 
@@ -281,6 +301,16 @@ s32 TingleNativeGamePhaseBoundary_Init(TingleNativeGamePhaseBoundary *boundary,
             boundary->secondary_descriptors_decoded = DecodeDescriptorList(
                 &boundary->secondary_overlay, &boundary->secondary_registration,
                 &boundary->secondary_descriptors);
+    }
+    if (boundary->primary_descriptors_decoded &&
+        boundary->secondary_descriptors_decoded &&
+        TingleNativeActorFactoryCatalog_Init(&factory_catalog, data)) {
+        boundary->primary_factories_resolved = ResolveDescriptorList(
+            &factory_catalog, boundary->primary_descriptors,
+            boundary->primary_registration.descriptor_count);
+        boundary->secondary_factories_resolved = ResolveDescriptorList(
+            &factory_catalog, boundary->secondary_descriptors,
+            boundary->secondary_registration.descriptor_count);
     }
     return boundary->metadata_loaded;
 }
@@ -352,10 +382,12 @@ void TingleNativeGamePhaseBoundary_Draw(
                        boundary->primary_registration.eligible_descriptor_count,
                        boundary->secondary_registration.eligible_descriptor_count);
         TingleNativeCanvas_DrawText(canvas, 12, 194, text, 0x00e0b060u, 1);
-        (void)snprintf(text, sizeof(text), "DESCRIPTORS: %s",
+        (void)snprintf(text, sizeof(text), "FACTORIES: %s",
                        boundary->primary_descriptors_decoded &&
-                               boundary->secondary_descriptors_decoded
-                           ? "DECODED"
+                               boundary->secondary_descriptors_decoded &&
+                               boundary->primary_factories_resolved &&
+                               boundary->secondary_factories_resolved
+                           ? "RESOLVED"
                            : "UNAVAILABLE");
         TingleNativeCanvas_DrawText(canvas, 132, 180, text,
                                     0x00e0b060u, 1);

@@ -43,6 +43,8 @@ typedef struct TingleNativeActorDescriptor {
     s16 selector_50;
     s16 value_52;
     u32 reference_58;
+    u16 allocation_size;
+    s16 factory_variant;
 } TingleNativeActorDescriptor;
 
 typedef struct TingleNativeGamePhaseMetadata {
@@ -81,6 +83,8 @@ typedef struct TingleNativeGamePhaseBoundary {
     s32 secondary_callback_valid;
     s32 primary_descriptors_decoded;
     s32 secondary_descriptors_decoded;
+    s32 primary_factories_resolved;
+    s32 secondary_factories_resolved;
 } TingleNativeGamePhaseBoundary;
 
 /* Decodes one verified generated phase-overlay entry callback as data. */

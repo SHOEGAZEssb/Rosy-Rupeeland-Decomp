@@ -145,7 +145,11 @@ translated to validated overlay-relative records. Descriptor kinds are checked
 against the recovered 1-9 factory range, and signed selector offset `0x50`
 determines initial eligibility. Confirmed common descriptor fields--kind,
 subtype, byte bounds, signed position, flags, selector, retained value, and the
-raw reference at `0x58`--are copied into host-owned scalar records. Fourteen 32-byte zero
+raw reference at `0x58`--are copied into host-owned scalar records. The
+recovered factory's kind/subtype matrix and its two ARM9 selector tables
+then resolve every record to a retail allocation size and a type-local
+constructor route. Constructors themselves remain behind the native runtime
+boundary. Fourteen 32-byte zero
 secondary images are omitted by the phase table; the decoder still represents
 such an image as an empty registration when read directly. The callbacks
 remain addresses and are never called as host function pointers.

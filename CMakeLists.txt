@@ -7,6 +7,7 @@ if(NOT WIN32)
 endif()
 
 add_executable(tingle_native WIN32
+    src/native/native_actor_factory.c
     src/native/main.c
     src/native/native_debug_menu.c
     src/native/native_data.c
@@ -94,6 +95,7 @@ if(BUILD_TESTING)
 
     add_executable(native_game_phase_test
         tests/native_game_phase_test.c
+        src/native/native_actor_factory.c
         src/native/native_data.c
         src/native/native_game_phase.c
         src/native/native_render.c

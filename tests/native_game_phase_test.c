@@ -1,5 +1,6 @@
 /* Verifies host-safe decoding and presentation of fixed phase metadata. */
 #include "tingle/native_game_phase.h"
+#include "tingle/native_actor_factory.h"
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -17,6 +18,39 @@ static void WriteU32(u8 *bytes, u32 value)
     bytes[1] = (u8)(value >> 8);
     bytes[2] = (u8)(value >> 16);
     bytes[3] = (u8)(value >> 24);
+}
+
+static int TestFactoryResolution(void)
+{
+    TingleNativeActorFactoryCatalog catalog = {{0}, {0}, 1};
+    TingleNativeActorDescriptor descriptor = {0};
+    TingleNativeActorFactorySpec spec;
+
+    catalog.kind2_classes[7] = 18;
+    catalog.kind9_classes[2] = 1;
+    descriptor.kind = 2;
+    descriptor.subtype = 7;
+    if (!TingleNativeActorFactoryCatalog_Resolve(&catalog, &descriptor, &spec) ||
+        spec.allocation_size != 0x30C || spec.factory_variant != 18)
+        return 0;
+    descriptor.kind = 4;
+    descriptor.subtype = 113;
+    if (!TingleNativeActorFactoryCatalog_Resolve(&catalog, &descriptor, &spec) ||
+        spec.allocation_size != 0x20C || spec.factory_variant != 113)
+        return 0;
+    descriptor.kind = 6;
+    descriptor.subtype = 3;
+    if (!TingleNativeActorFactoryCatalog_Resolve(&catalog, &descriptor, &spec) ||
+        spec.allocation_size != 0x2A4 || spec.factory_variant != 3)
+        return 0;
+    descriptor.kind = 9;
+    descriptor.subtype = 2;
+    if (!TingleNativeActorFactoryCatalog_Resolve(&catalog, &descriptor, &spec) ||
+        spec.allocation_size != 0x274 || spec.factory_variant != 1)
+        return 0;
+    descriptor.kind = 4;
+    descriptor.subtype = 23;
+    return !TingleNativeActorFactoryCatalog_Resolve(&catalog, &descriptor, &spec);
 }
 
 static int TestOverlayRegistration(void)
@@ -105,7 +139,9 @@ static int ProbeMetadata(const char *kind, const char *source, const char *phase
                  boundary.primary_overlay_loaded && boundary.secondary_overlay_loaded &&
                  boundary.primary_callback_valid && boundary.secondary_callback_valid &&
                  boundary.primary_descriptors_decoded &&
-                 boundary.secondary_descriptors_decoded;
+                 boundary.secondary_descriptors_decoded &&
+                 boundary.primary_factories_resolved &&
+                 boundary.secondary_factories_resolved;
             if (!ok) {
                 TingleNativeGamePhaseBoundary_Destroy(&boundary);
                 TingleNativeData_Close(data);
@@ -125,7 +161,9 @@ static int ProbeMetadata(const char *kind, const char *source, const char *phase
     }
     ok = data != NULL && TingleNativeGamePhaseBoundary_Init(&boundary, data, phase_id) &&
              boundary.primary_overlay_loaded && boundary.secondary_overlay_loaded &&
-             boundary.primary_callback_valid && boundary.secondary_callback_valid;
+             boundary.primary_callback_valid && boundary.secondary_callback_valid &&
+             boundary.primary_factories_resolved &&
+             boundary.secondary_factories_resolved;
 
     if (ok) {
         (void)printf("phase %d: ov1=%u cb1=%08X ov2=%u cb2=%08X flags40=%08X\n",
@@ -151,7 +189,7 @@ int main(int argc, char **argv)
     if (argc == 4 && (strcmp(argv[1], "--rom") == 0 ||
                       strcmp(argv[1], "--data") == 0))
         return ProbeMetadata(argv[1], argv[2], argv[3]);
-    if (!TestOverlayRegistration()) return EXIT_FAILURE;
+    if (!TestOverlayRegistration() || !TestFactoryResolution()) return EXIT_FAILURE;
 
     WriteU32(record + 0x00, 7);
     WriteU16(record + 0x12, (u16)-2);
