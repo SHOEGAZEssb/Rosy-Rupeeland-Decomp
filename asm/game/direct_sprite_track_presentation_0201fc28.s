@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/direct_sprite_track_presentation.c.
 .text
-.extern data_020d6158
+.extern gDirectSpriteTrackPresentationVtable
 .extern data_020f4e18
 .extern data_021052fc
 .extern VecFx32Object_InitComponents
@@ -12,9 +12,9 @@
 .extern GraphicsSpriteState_SetAnimationIndex
 .extern GraphicsSpriteGroup_CreateState
 
-.global func_0201fc28
-    .type func_0201fc28, @function
-func_0201fc28: ; 0x0201fc28
+.global DirectSpriteTrackPresentation_Init
+    .type DirectSpriteTrackPresentation_Init, @function
+DirectSpriteTrackPresentation_Init: ; 0x0201fc28
     stmdb sp!, {r3, r4, r5, r6, r7, lr}
     mov r7, r0
     mov r6, r1
@@ -93,7 +93,7 @@ func_0201fc28: ; 0x0201fc28
     strh r1, [r2, #0x32]
     strh r1, [r2, #0x34]
     ldmia sp!, {r3, r4, r5, r6, r7, pc}
-.L_0201fd58: .word data_020d6158
+.L_0201fd58: .word gDirectSpriteTrackPresentationVtable
 .L_0201fd5c: .word data_020f4e18
 .L_0201fd60: .word data_021052fc
-    .size func_0201fc28, .-func_0201fc28
+    .size DirectSpriteTrackPresentation_Init, .-DirectSpriteTrackPresentation_Init

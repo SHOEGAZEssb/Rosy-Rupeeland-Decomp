@@ -1,16 +1,16 @@
 ; Matching retail form; see src/game/direct_sprite_track_presentation.c.
 .text
 .extern Heap_Alloc
-.extern data_020d6278
+.extern gDirectSpriteTrackPresentationAllocationTag
 .extern data_021052fc
 .extern ActorMotionAreaFollower_GetPosition
 .extern func_0201df44
-.extern func_0201fc28
+.extern DirectSpriteTrackPresentation_Init
 .extern gHeapContext
 
-.global func_0201fe68
-    .type func_0201fe68, @function
-func_0201fe68: ; 0x0201fe68
+.global DirectSpriteTrackPresentation_SpawnAndRegister
+    .type DirectSpriteTrackPresentation_SpawnAndRegister, @function
+DirectSpriteTrackPresentation_SpawnAndRegister: ; 0x0201fe68
     stmdb sp!, {r4, r5, r6, r7, r8, lr}
     sub sp, sp, #0x20
     mov r7, r1
@@ -47,7 +47,7 @@ func_0201fe68: ; 0x0201fe68
     mov r1, r8
     mov r2, r7
     mov r3, r6
-    bl func_0201fc28
+    bl DirectSpriteTrackPresentation_Init
     mov r4, r0
 .L_0201ff00:
     ldr r0, .L_0201ff28
@@ -58,7 +58,7 @@ func_0201fe68: ; 0x0201fe68
     bl func_0201df44
     add sp, sp, #0x20
     ldmia sp!, {r4, r5, r6, r7, r8, pc}
-.L_0201ff20: .word data_020d6278
+.L_0201ff20: .word gDirectSpriteTrackPresentationAllocationTag
 .L_0201ff24: .word gHeapContext
 .L_0201ff28: .word data_021052fc
-    .size func_0201fe68, .-func_0201fe68
+    .size DirectSpriteTrackPresentation_SpawnAndRegister, .-DirectSpriteTrackPresentation_SpawnAndRegister

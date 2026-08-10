@@ -7776,31 +7776,31 @@ build build/reports/direct_sprite_track_presentation_0201fc28.json: objdiff buil
   base_object = build/decomp/asm/game/direct_sprite_track_presentation_0201fc28.o
 build build/reports/direct_sprite_track_presentation_0201fc28.txt: match_report build/reports/direct_sprite_track_presentation_0201fc28.json | tools/report_objdiff.py
   report_json = build/reports/direct_sprite_track_presentation_0201fc28.json
-  report_args = --section .text --function func_0201fc28 --require-exact
+  report_args = --section .text --function DirectSpriteTrackPresentation_Init --require-exact
 build build/reports/direct_sprite_track_presentation_0201fd64.json: objdiff build/decomp/delinks/asm/game/direct_sprite_track_presentation_0201fd64.o | build/decomp/asm/game/direct_sprite_track_presentation_0201fd64.o
   target_object = build/decomp/delinks/asm/game/direct_sprite_track_presentation_0201fd64.o
   base_object = build/decomp/asm/game/direct_sprite_track_presentation_0201fd64.o
 build build/reports/direct_sprite_track_presentation_0201fd64.txt: match_report build/reports/direct_sprite_track_presentation_0201fd64.json | tools/report_objdiff.py
   report_json = build/reports/direct_sprite_track_presentation_0201fd64.json
-  report_args = --section .text --function func_0201fd64 --require-exact
+  report_args = --section .text --function DirectSpriteTrackPresentation_Destroy --require-exact
 build build/reports/direct_sprite_track_presentation_0201fda4.json: objdiff build/decomp/delinks/asm/game/direct_sprite_track_presentation_0201fda4.o | build/decomp/asm/game/direct_sprite_track_presentation_0201fda4.o
   target_object = build/decomp/delinks/asm/game/direct_sprite_track_presentation_0201fda4.o
   base_object = build/decomp/asm/game/direct_sprite_track_presentation_0201fda4.o
 build build/reports/direct_sprite_track_presentation_0201fda4.txt: match_report build/reports/direct_sprite_track_presentation_0201fda4.json | tools/report_objdiff.py
   report_json = build/reports/direct_sprite_track_presentation_0201fda4.json
-  report_args = --section .text --function func_0201fda4 --require-exact
+  report_args = --section .text --function DirectSpriteTrackPresentation_DestroyAndFree --require-exact
 build build/reports/direct_sprite_track_presentation_0201fdec.json: objdiff build/decomp/delinks/asm/game/direct_sprite_track_presentation_0201fdec.o | build/decomp/asm/game/direct_sprite_track_presentation_0201fdec.o
   target_object = build/decomp/delinks/asm/game/direct_sprite_track_presentation_0201fdec.o
   base_object = build/decomp/asm/game/direct_sprite_track_presentation_0201fdec.o
 build build/reports/direct_sprite_track_presentation_0201fdec.txt: match_report build/reports/direct_sprite_track_presentation_0201fdec.json | tools/report_objdiff.py
   report_json = build/reports/direct_sprite_track_presentation_0201fdec.json
-  report_args = --section .text --function func_0201fdec --require-exact
+  report_args = --section .text --function DirectSpriteTrackPresentation_Update --require-exact
 build build/reports/direct_sprite_track_presentation_0201fe68.json: objdiff build/decomp/delinks/asm/game/direct_sprite_track_presentation_0201fe68.o | build/decomp/asm/game/direct_sprite_track_presentation_0201fe68.o
   target_object = build/decomp/delinks/asm/game/direct_sprite_track_presentation_0201fe68.o
   base_object = build/decomp/asm/game/direct_sprite_track_presentation_0201fe68.o
 build build/reports/direct_sprite_track_presentation_0201fe68.txt: match_report build/reports/direct_sprite_track_presentation_0201fe68.json | tools/report_objdiff.py
   report_json = build/reports/direct_sprite_track_presentation_0201fe68.json
-  report_args = --section .text --function func_0201fe68 --require-exact
+  report_args = --section .text --function DirectSpriteTrackPresentation_SpawnAndRegister --require-exact
 build build/reports/direct_sprite_track_presentation.txt: phony build/reports/direct_sprite_track_presentation_0201fc28.txt build/reports/direct_sprite_track_presentation_0201fd64.txt build/reports/direct_sprite_track_presentation_0201fda4.txt build/reports/direct_sprite_track_presentation_0201fdec.txt build/reports/direct_sprite_track_presentation_0201fe68.txt
 build build/reports/timed_sprite_record_presentation_0201ff2c.json: objdiff build/decomp/delinks/asm/game/timed_sprite_record_presentation_0201ff2c.o | build/decomp/asm/game/timed_sprite_record_presentation_0201ff2c.o
   target_object = build/decomp/delinks/asm/game/timed_sprite_record_presentation_0201ff2c.o

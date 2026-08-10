@@ -26,7 +26,7 @@
 .extern func_0201e0ec
 .extern TimedSpriteBurstManager_Init
 .extern AuxiliaryTimedSpritePresentation_Init
-.extern func_0201fe68
+.extern DirectSpriteTrackPresentation_SpawnAndRegister
 .extern func_02022cb0
 .extern func_02022ff4
 .extern func_02023434
@@ -1155,7 +1155,7 @@ L_02015308:
     mov r3, r7
     mov r0, #0x0
     str r4, [sp, #0x14]
-    bl func_0201fe68
+    bl DirectSpriteTrackPresentation_SpawnAndRegister
     mov r1, r0
     mov r0, r11
     bl GamePhaseScriptVm_SetResult
@@ -1174,7 +1174,7 @@ L_02015350:
     mov r3, r7
     mov r0, #0x1
     str r4, [sp, #0x14]
-    bl func_0201fe68
+    bl DirectSpriteTrackPresentation_SpawnAndRegister
     mov r1, r0
     mov r0, r11
     bl GamePhaseScriptVm_SetResult

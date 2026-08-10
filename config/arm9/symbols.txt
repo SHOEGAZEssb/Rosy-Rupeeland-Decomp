@@ -1119,11 +1119,11 @@ RisingAuxiliaryTimedSpritePresentation_Init kind:function(arm,size=0x58) addr:0x
 RisingAuxiliaryTimedSpritePresentation_Destroy kind:function(arm,size=0x14) addr:0x0201fb54
 RisingAuxiliaryTimedSpritePresentation_DestroyAndFree kind:function(arm,size=0x1c) addr:0x0201fb68
 RisingAuxiliaryTimedSpritePresentation_Update kind:function(arm,size=0xa4) addr:0x0201fb84
-func_0201fc28 kind:function(arm,size=0x13c) addr:0x0201fc28
-func_0201fd64 kind:function(arm,size=0x40) addr:0x0201fd64
-func_0201fda4 kind:function(arm,size=0x48) addr:0x0201fda4
-func_0201fdec kind:function(arm,size=0x7c) addr:0x0201fdec
-func_0201fe68 kind:function(arm,size=0xc4) addr:0x0201fe68
+DirectSpriteTrackPresentation_Init kind:function(arm,size=0x13c) addr:0x0201fc28
+DirectSpriteTrackPresentation_Destroy kind:function(arm,size=0x40) addr:0x0201fd64
+DirectSpriteTrackPresentation_DestroyAndFree kind:function(arm,size=0x48) addr:0x0201fda4
+DirectSpriteTrackPresentation_Update kind:function(arm,size=0x7c) addr:0x0201fdec
+DirectSpriteTrackPresentation_SpawnAndRegister kind:function(arm,size=0xc4) addr:0x0201fe68
 func_0201ff2c kind:function(arm,size=0xec) addr:0x0201ff2c
 func_02020018 kind:function(arm,size=0x14) addr:0x02020018
 func_0202002c kind:function(arm,size=0x1c) addr:0x0202002c
@@ -6962,7 +6962,7 @@ data_020d60d8 kind:data(any) addr:0x020d60d8
 data_020d60f8 kind:data(any) addr:0x020d60f8
 data_020d6118 kind:data(any) addr:0x020d6118
 data_020d6138 kind:data(any) addr:0x020d6138
-data_020d6158 kind:data(any) addr:0x020d6158
+gDirectSpriteTrackPresentationVtable kind:data(any) addr:0x020d6158
 gRisingAuxiliaryTimedSpritePresentationVtable kind:data(any) addr:0x020d6180
 gAuxiliaryTimedSpritePresentationVtable kind:data(any) addr:0x020d61a8
 gTimedSpriteSampledArcPresentationVtable kind:data(any) addr:0x020d61d0
@@ -6971,7 +6971,7 @@ gTimedSpriteBurstManagerVtable kind:data(any) addr:0x020d6220
 data_020d6248 kind:data(any) addr:0x020d6248
 gTimedSpritePresentationAllocationTag kind:data(any) addr:0x020d6268
 gTimedSpriteAuxiliaryAllocationTag kind:data(any) addr:0x020d6270
-data_020d6278 kind:data(any) addr:0x020d6278
+gDirectSpriteTrackPresentationAllocationTag kind:data(any) addr:0x020d6278
 data_020d6288 kind:data(any) addr:0x020d6288
 data_020d6294 kind:data(any) addr:0x020d6294
 data_020d62b0 kind:data(any) addr:0x020d62b0

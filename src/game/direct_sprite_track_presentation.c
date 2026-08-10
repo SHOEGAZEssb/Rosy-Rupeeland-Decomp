@@ -28,8 +28,8 @@ typedef struct DirectSpriteTrackPresentation {
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *data_020d6158;
-extern const char data_020d6278[];
+extern void *gDirectSpriteTrackPresentationVtable;
+extern const char gDirectSpriteTrackPresentationAllocationTag[];
 extern void *data_020f4e18;
 extern u8 *data_021052fc;
 extern void *func_0201e250(void *self);
@@ -63,7 +63,7 @@ extern void func_0201df44(void *manager, void *entry);
  * selector is zero or resource 2 otherwise.  Create the sprite in mode 2 and
  * apply the recovered byte/halfword render fields before returning self.
  */
-DirectSpriteTrackPresentation *func_0201fc28(
+DirectSpriteTrackPresentation *DirectSpriteTrackPresentation_Init(
     DirectSpriteTrackPresentation *self, s32 selector, s32 field0c,
     s32 field10, s32 field08, s32 spriteValue, s32 x, s32 y, s32 signedField,
     s32 field28, s32 field3a, s32 sampleArgument)
@@ -72,7 +72,7 @@ DirectSpriteTrackPresentation *func_0201fc28(
     s16 signedValue;
 
     func_0201e250(self);
-    self->vtable = (void **)data_020d6158;
+    self->vtable = (void **)gDirectSpriteTrackPresentationVtable;
     func_02071ea4(&self->resource08);
     self->sampleArgument18 = sampleArgument;
     VecFx32Object_InitComponents(&self->track1c, x << 12, y << 12, 0);
@@ -99,10 +99,10 @@ DirectSpriteTrackPresentation *func_0201fc28(
  * tear down both resource-state phases and the position track, and return self
  * without freeing its allocation.
  */
-DirectSpriteTrackPresentation *func_0201fd64(
+DirectSpriteTrackPresentation *DirectSpriteTrackPresentation_Destroy(
     DirectSpriteTrackPresentation *self)
 {
-    self->vtable = (void **)data_020d6158;
+    self->vtable = (void **)gDirectSpriteTrackPresentationVtable;
     GraphicsSpriteGroup_ReleaseState(*(void **)self->sprite14);
     func_02071f38(&self->resource08);
     VecFx32Object_Destroy(&self->track1c);
@@ -110,11 +110,11 @@ DirectSpriteTrackPresentation *func_0201fd64(
     return self;
 }
 
-/* Perform func_0201fd64's teardown, free self, and return its old address. */
-DirectSpriteTrackPresentation *func_0201fda4(
+/* Tear down the owned sprite resource and track, free self, and return its old address. */
+DirectSpriteTrackPresentation *DirectSpriteTrackPresentation_DestroyAndFree(
     DirectSpriteTrackPresentation *self)
 {
-    func_0201fd64(self);
+    DirectSpriteTrackPresentation_Destroy(self);
     Heap_Free(self);
     return self;
 }
@@ -125,7 +125,7 @@ DirectSpriteTrackPresentation *func_0201fda4(
  * fixed-point X/Y components to sprite halfwords 0x2c/0x2e, destroy both
  * temporaries, and return zero.
  */
-s32 func_0201fdec(DirectSpriteTrackPresentation *self)
+s32 DirectSpriteTrackPresentation_Update(DirectSpriteTrackPresentation *self)
 {
     PresentationValue sampled;
     PresentationValue transformed;
@@ -151,17 +151,18 @@ s32 func_0201fdec(DirectSpriteTrackPresentation *self)
  * the runtime manager at offset 0x2f7c.  This entry point has no observable
  * C-level return value in the recovered call sequence.
  */
-void func_0201fe68(s32 selector, s32 field0c, s32 field10, s32 field08,
-                   s32 spriteValue, s32 x, s32 y, s32 signedField,
-                   s32 field28, s32 field3a)
+void DirectSpriteTrackPresentation_SpawnAndRegister(
+    s32 selector, s32 field0c, s32 field10, s32 field08, s32 spriteValue,
+    s32 x, s32 y, s32 signedField, s32 field28, s32 field3a)
 {
     DirectSpriteTrackPresentation *self =
         (DirectSpriteTrackPresentation *)Heap_Alloc(
-            0x2c, data_020d6278, 4, &gHeapContext);
+            0x2c, gDirectSpriteTrackPresentationAllocationTag, 4, &gHeapContext);
     if (self != 0) {
         void *position = ActorMotionAreaFollower_GetPosition(data_021052fc + 0x2fbc);
-        func_0201fc28(self, selector, field0c, field10, field08, spriteValue,
-                      x, y, signedField, field28, field3a, (s32)position);
+        DirectSpriteTrackPresentation_Init(
+            self, selector, field0c, field10, field08, spriteValue, x, y,
+            signedField, field28, field3a, (s32)position);
     }
     func_0201df44(data_021052fc + 0x2f7c, self);
 }

@@ -49,7 +49,7 @@ extern void func_020a29f8(...);
 extern void func_020a2a4c(...);
 extern void func_020a2310(...);
 extern void func_02028630(...);
-extern u32 func_0201fe68(...);
+extern u32 DirectSpriteTrackPresentation_SpawnAndRegister(...);
 extern void func_02023ed4(...);
 extern void func_02028814(...);
 extern void func_0202906c(...);
@@ -349,7 +349,7 @@ s32 func_020143a8(GamePhaseActorScriptVm *self)
     case 33:
         GamePhaseScriptVm_SetResult(
             &self->base,
-            func_0201fe68(selector == 33, a1, a2, a3, a4, a5, a6,
+            DirectSpriteTrackPresentation_SpawnAndRegister(selector == 33, a1, a2, a3, a4, a5, a6,
                           0x100, *(u32 *)(actor + 0x110),
                           *(u32 *)(actor + 0x114)));
         break;

@@ -4,9 +4,9 @@
 .extern VecFx32_Subtract
 .extern func_02056f00
 
-.global func_0201fdec
-    .type func_0201fdec, @function
-func_0201fdec: ; 0x0201fdec
+.global DirectSpriteTrackPresentation_Update
+    .type DirectSpriteTrackPresentation_Update, @function
+DirectSpriteTrackPresentation_Update: ; 0x0201fdec
     stmdb sp!, {r4, lr}
     sub sp, sp, #0x20
     mov r4, r0
@@ -39,4 +39,4 @@ func_0201fdec: ; 0x0201fdec
 .L_0201fe60:
     add sp, sp, #0x20
     ldmia sp!, {r4, pc}
-    .size func_0201fdec, .-func_0201fdec
+    .size DirectSpriteTrackPresentation_Update, .-DirectSpriteTrackPresentation_Update

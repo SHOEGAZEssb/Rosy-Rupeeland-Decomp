@@ -1,15 +1,15 @@
 ; Matching retail form; see src/game/direct_sprite_track_presentation.c.
 .text
 .extern Heap_Free
-.extern data_020d6158
+.extern gDirectSpriteTrackPresentationVtable
 .extern VecFx32Object_Destroy
 .extern func_02071eb8
 .extern func_02071f38
 .extern GraphicsSpriteGroup_ReleaseState
 
-.global func_0201fda4
-    .type func_0201fda4, @function
-func_0201fda4: ; 0x0201fda4
+.global DirectSpriteTrackPresentation_DestroyAndFree
+    .type DirectSpriteTrackPresentation_DestroyAndFree, @function
+DirectSpriteTrackPresentation_DestroyAndFree: ; 0x0201fda4
     stmdb sp!, {r4, lr}
     ldr r1, .L_0201fde8
     mov r4, r0
@@ -27,5 +27,5 @@ func_0201fda4: ; 0x0201fda4
     bl Heap_Free
     mov r0, r4
     ldmia sp!, {r4, pc}
-.L_0201fde8: .word data_020d6158
-    .size func_0201fda4, .-func_0201fda4
+.L_0201fde8: .word gDirectSpriteTrackPresentationVtable
+    .size DirectSpriteTrackPresentation_DestroyAndFree, .-DirectSpriteTrackPresentation_DestroyAndFree
