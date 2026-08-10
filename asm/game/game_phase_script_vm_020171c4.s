@@ -3,8 +3,8 @@
 .extern GamePhaseCurrencyHud_GetCurrency
 .extern GamePhaseScriptVm_SetResult
 .extern gLupyContext
-.global func_020171c4
-func_020171c4:
+.global GamePhaseActorScriptVm_GetCurrency
+GamePhaseActorScriptVm_GetCurrency:
     stmdb sp!, {r4, lr}
     ldr r1, L_020171ec
     mov r4, r0
@@ -16,4 +16,4 @@ func_020171c4:
     mov r0, #0
     ldmia sp!, {r4, pc}
 L_020171ec: .word gLupyContext
-    .size func_020171c4, . - func_020171c4
+    .size GamePhaseActorScriptVm_GetCurrency, . - GamePhaseActorScriptVm_GetCurrency

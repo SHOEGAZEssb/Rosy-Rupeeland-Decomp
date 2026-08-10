@@ -3,8 +3,8 @@
 .extern GamePhaseCurrencyHud_SetCurrency
 .extern GamePhaseScriptVm_Pop
 .extern gLupyContext
-.global func_02017150
-func_02017150:
+.global GamePhaseActorScriptVm_SetCurrency
+GamePhaseActorScriptVm_SetCurrency:
     stmdb sp!, {r3, lr}
     bl GamePhaseScriptVm_Pop
     ldr r2, L_02017170
@@ -14,4 +14,4 @@ func_02017150:
     mov r0, #0
     ldmia sp!, {r3, pc}
 L_02017170: .word gLupyContext
-    .size func_02017150, . - func_02017150
+    .size GamePhaseActorScriptVm_SetCurrency, . - GamePhaseActorScriptVm_SetCurrency

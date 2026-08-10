@@ -10,7 +10,7 @@ extern GamePhaseCurrencyHud *gLupyContext;
  * duration, and return zero. This also has the GameWork, HUD, sound, and
  * threshold effects documented by GamePhaseCurrencyHud_AddCurrency.
  */
-s32 func_02017128(GamePhaseActorScriptVm *self)
+s32 GamePhaseActorScriptVm_AddCurrency(GamePhaseActorScriptVm *self)
 {
     s32 delta = (s32)GamePhaseScriptVm_Pop(&self->base);
     GamePhaseCurrencyHud_AddCurrency(gLupyContext, delta, 0);
@@ -21,7 +21,7 @@ s32 func_02017128(GamePhaseActorScriptVm *self)
  * Pop a currency value, set it through GamePhaseCurrencyHud_SetCurrency, and return zero. The
  * callee updates GameWork and refreshes the HUD subject to its actor guard.
  */
-s32 func_02017150(GamePhaseActorScriptVm *self)
+s32 GamePhaseActorScriptVm_SetCurrency(GamePhaseActorScriptVm *self)
 {
     s32 value = (s32)GamePhaseScriptVm_Pop(&self->base);
     GamePhaseCurrencyHud_SetCurrency(gLupyContext, value);
@@ -33,7 +33,7 @@ s32 func_02017150(GamePhaseActorScriptVm *self)
  * GamePhaseCurrencyHud_SetVisible; store the two dimensions in HUD halfwords 0xbc/0xbe; and
  * return zero.
  */
-s32 func_02017174(GamePhaseActorScriptVm *self)
+s32 GamePhaseActorScriptVm_SetCurrencyHudVisibleAndPosition(GamePhaseActorScriptVm *self)
 {
     s32 height = (s32)GamePhaseScriptVm_Pop(&self->base);
     s32 width = (s32)GamePhaseScriptVm_Pop(&self->base);
@@ -45,7 +45,7 @@ s32 func_02017174(GamePhaseActorScriptVm *self)
 }
 
 /* Read the current GameWork currency, push it onto the VM value stack, and return zero. */
-s32 func_020171c4(GamePhaseActorScriptVm *self)
+s32 GamePhaseActorScriptVm_GetCurrency(GamePhaseActorScriptVm *self)
 {
     u32 value = GamePhaseCurrencyHud_GetCurrency();
     GamePhaseScriptVm_SetResult(&self->base, value);

@@ -3,8 +3,8 @@
 .extern GamePhaseCurrencyHud_SetVisible
 .extern GamePhaseScriptVm_Pop
 .extern gLupyContext
-.global func_02017174
-func_02017174:
+.global GamePhaseActorScriptVm_SetCurrencyHudVisibleAndPosition
+GamePhaseActorScriptVm_SetCurrencyHudVisibleAndPosition:
     stmdb sp!, {r4, r5, r6, lr}
     mov r6, r0
     bl GamePhaseScriptVm_Pop
@@ -25,4 +25,4 @@ func_02017174:
     strh r5, [r1, #0xbe]
     ldmia sp!, {r4, r5, r6, pc}
 L_020171c0: .word gLupyContext
-    .size func_02017174, . - func_02017174
+    .size GamePhaseActorScriptVm_SetCurrencyHudVisibleAndPosition, . - GamePhaseActorScriptVm_SetCurrencyHudVisibleAndPosition
