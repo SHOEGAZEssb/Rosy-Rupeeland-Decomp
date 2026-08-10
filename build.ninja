@@ -4437,21 +4437,21 @@ build build/reports/game_phase_area_scene_02011a5c.json: objdiff build/decomp/de
   base_object = build/decomp/asm/game/game_phase_area_scene_02011a5c.o
 build build/reports/game_phase_area_scene_02011a5c.txt: match_report build/reports/game_phase_area_scene_02011a5c.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_area_scene_02011a5c.json
-  report_args = --section .text --function func_02011a5c --require-exact
+  report_args = --section .text --function GamePhaseAreaScene_Init --require-exact
 
 build build/reports/game_phase_area_scene_02011ebc.json: objdiff build/decomp/delinks/asm/game/game_phase_area_scene_02011ebc.o | build/decomp/asm/game/game_phase_area_scene_02011ebc.o
   target_object = build/decomp/delinks/asm/game/game_phase_area_scene_02011ebc.o
   base_object = build/decomp/asm/game/game_phase_area_scene_02011ebc.o
 build build/reports/game_phase_area_scene_02011ebc.txt: match_report build/reports/game_phase_area_scene_02011ebc.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_area_scene_02011ebc.json
-  report_args = --section .text --function func_02011ebc --require-exact
+  report_args = --section .text --function GamePhaseAreaScene_Start --require-exact
 
 build build/reports/game_phase_area_scene_02011f24.json: objdiff build/decomp/delinks/asm/game/game_phase_area_scene_02011f24.o | build/decomp/asm/game/game_phase_area_scene_02011f24.o
   target_object = build/decomp/delinks/asm/game/game_phase_area_scene_02011f24.o
   base_object = build/decomp/asm/game/game_phase_area_scene_02011f24.o
 build build/reports/game_phase_area_scene_02011f24.txt: match_report build/reports/game_phase_area_scene_02011f24.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_area_scene_02011f24.json
-  report_args = --section .text --function func_02011f24 --require-exact
+  report_args = --section .text --function GamePhaseAreaScene_Destroy --require-exact
 
 build build/reports/game_phase_area_scene_lifecycle.txt: phony build/reports/game_phase_area_scene_02011a5c.txt build/reports/game_phase_area_scene_02011ebc.txt build/reports/game_phase_area_scene_02011f24.txt
 
@@ -4460,28 +4460,28 @@ build build/reports/game_phase_area_scene_02011f98.json: objdiff build/decomp/de
   base_object = build/decomp/asm/game/game_phase_area_scene_02011f98.o
 build build/reports/game_phase_area_scene_02011f98.txt: match_report build/reports/game_phase_area_scene_02011f98.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_area_scene_02011f98.json
-  report_args = --section .text --function func_02011f98 --require-exact
+  report_args = --section .text --function GamePhaseAreaScene_DestroyAndFree --require-exact
 
 build build/reports/game_phase_area_scene_02012014.json: objdiff build/decomp/delinks/asm/game/game_phase_area_scene_02012014.o | build/decomp/asm/game/game_phase_area_scene_02012014.o
   target_object = build/decomp/delinks/asm/game/game_phase_area_scene_02012014.o
   base_object = build/decomp/asm/game/game_phase_area_scene_02012014.o
 build build/reports/game_phase_area_scene_02012014.txt: match_report build/reports/game_phase_area_scene_02012014.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_area_scene_02012014.json
-  report_args = --section .text --function func_02012014 --require-exact
+  report_args = --section .text --function GamePhaseAreaScene_UpdateRegionAtPosition --require-exact
 
 build build/reports/game_phase_area_scene_02012150.json: objdiff build/decomp/delinks/asm/game/game_phase_area_scene_02012150.o | build/decomp/asm/game/game_phase_area_scene_02012150.o
   target_object = build/decomp/delinks/asm/game/game_phase_area_scene_02012150.o
   base_object = build/decomp/asm/game/game_phase_area_scene_02012150.o
 build build/reports/game_phase_area_scene_02012150.txt: match_report build/reports/game_phase_area_scene_02012150.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_area_scene_02012150.json
-  report_args = --section .text --function func_02012150 --require-exact
+  report_args = --section .text --function GamePhaseAreaScene_ApplyPlacementState --require-exact
 
 build build/reports/game_phase_area_scene_0201218c.json: objdiff build/decomp/delinks/asm/game/game_phase_area_scene_0201218c.o | build/decomp/asm/game/game_phase_area_scene_0201218c.o
   target_object = build/decomp/delinks/asm/game/game_phase_area_scene_0201218c.o
   base_object = build/decomp/asm/game/game_phase_area_scene_0201218c.o
 build build/reports/game_phase_area_scene_0201218c.txt: match_report build/reports/game_phase_area_scene_0201218c.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_area_scene_0201218c.json
-  report_args = --section .text --function func_0201218c --require-exact
+  report_args = --section .text --function GamePhaseAreaScene_Update --require-exact
 
 build build/reports/game_phase_area_scene_runtime.txt: phony build/reports/game_phase_area_scene_02011f98.txt build/reports/game_phase_area_scene_02012014.txt build/reports/game_phase_area_scene_02012150.txt build/reports/game_phase_area_scene_0201218c.txt
 
@@ -4490,21 +4490,21 @@ build build/reports/game_phase_area_scene_020121f8.json: objdiff build/decomp/de
   base_object = build/decomp/asm/game/game_phase_area_scene_020121f8.o
 build build/reports/game_phase_area_scene_020121f8.txt: match_report build/reports/game_phase_area_scene_020121f8.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_area_scene_020121f8.json
-  report_args = --section .text --function func_020121f8 --require-exact
+  report_args = --section .text --function GamePhaseAreaScene_RestoreSubDisplay --require-exact
 
 build build/reports/game_phase_area_scene_020122a0.json: objdiff build/decomp/delinks/asm/game/game_phase_area_scene_020122a0.o | build/decomp/asm/game/game_phase_area_scene_020122a0.o
   target_object = build/decomp/delinks/asm/game/game_phase_area_scene_020122a0.o
   base_object = build/decomp/asm/game/game_phase_area_scene_020122a0.o
 build build/reports/game_phase_area_scene_020122a0.txt: match_report build/reports/game_phase_area_scene_020122a0.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_area_scene_020122a0.json
-  report_args = --section .text --function func_020122a0 --require-exact
+  report_args = --section .text --function GamePhaseAreaScene_SetEnabled --require-exact
 
 build build/reports/game_phase_area_scene_02012438.json: objdiff build/decomp/delinks/asm/game/game_phase_area_scene_02012438.o | build/decomp/asm/game/game_phase_area_scene_02012438.o
   target_object = build/decomp/delinks/asm/game/game_phase_area_scene_02012438.o
   base_object = build/decomp/asm/game/game_phase_area_scene_02012438.o
 build build/reports/game_phase_area_scene_02012438.txt: match_report build/reports/game_phase_area_scene_02012438.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_area_scene_02012438.json
-  report_args = --section .text --function func_02012438 --require-exact
+  report_args = --section .text --function GamePhaseAreaScene_GetConfig --require-exact
 
 build build/reports/game_phase_area_scene_controls.txt: phony build/reports/game_phase_area_scene_020121f8.txt build/reports/game_phase_area_scene_020122a0.txt build/reports/game_phase_area_scene_02012438.txt
 
@@ -4513,28 +4513,28 @@ build build/reports/game_phase_area_scene_02012444.json: objdiff build/decomp/de
   base_object = build/decomp/asm/game/game_phase_area_scene_02012444.o
 build build/reports/game_phase_area_scene_02012444.txt: match_report build/reports/game_phase_area_scene_02012444.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_area_scene_02012444.json
-  report_args = --section .text --function func_02012444 --require-exact
+  report_args = --section .text --function GamePhaseAreaScene_RegisterEnabledRegions --require-exact
 
 build build/reports/game_phase_area_scene_020124f0.json: objdiff build/decomp/delinks/asm/game/game_phase_area_scene_020124f0.o | build/decomp/asm/game/game_phase_area_scene_020124f0.o
   target_object = build/decomp/delinks/asm/game/game_phase_area_scene_020124f0.o
   base_object = build/decomp/asm/game/game_phase_area_scene_020124f0.o
 build build/reports/game_phase_area_scene_020124f0.txt: match_report build/reports/game_phase_area_scene_020124f0.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_area_scene_020124f0.json
-  report_args = --section .text --function func_020124f0 --require-exact
+  report_args = --section .text --function GamePhaseAreaScene_GetSubRendererLowCoordinate --require-exact
 
 build build/reports/game_phase_area_scene_0201250c.json: objdiff build/decomp/delinks/asm/game/game_phase_area_scene_0201250c.o | build/decomp/asm/game/game_phase_area_scene_0201250c.o
   target_object = build/decomp/delinks/asm/game/game_phase_area_scene_0201250c.o
   base_object = build/decomp/asm/game/game_phase_area_scene_0201250c.o
 build build/reports/game_phase_area_scene_0201250c.txt: match_report build/reports/game_phase_area_scene_0201250c.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_area_scene_0201250c.json
-  report_args = --section .text --function func_0201250c --require-exact
+  report_args = --section .text --function GamePhaseAreaScene_GetSubRendererHighCoordinate --require-exact
 
 build build/reports/game_phase_area_scene_02012528.json: objdiff build/decomp/delinks/asm/game/game_phase_area_scene_02012528.o | build/decomp/asm/game/game_phase_area_scene_02012528.o
   target_object = build/decomp/delinks/asm/game/game_phase_area_scene_02012528.o
   base_object = build/decomp/asm/game/game_phase_area_scene_02012528.o
 build build/reports/game_phase_area_scene_02012528.txt: match_report build/reports/game_phase_area_scene_02012528.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_area_scene_02012528.json
-  report_args = --section .text --function func_02012528 --require-exact
+  report_args = --section .text --function GamePhaseAreaScene_SetOverlayObject --require-exact
 
 build build/reports/game_phase_area_scene_helpers.txt: phony build/reports/game_phase_area_scene_02012444.txt build/reports/game_phase_area_scene_020124f0.txt build/reports/game_phase_area_scene_0201250c.txt build/reports/game_phase_area_scene_02012528.txt
 

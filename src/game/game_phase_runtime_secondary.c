@@ -8,8 +8,8 @@ extern u8 data_020d4368[];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *func_02011a5c(void *object, void *area, s32 enabled);
-extern void func_02011ebc(void *object);
+extern void *GamePhaseAreaScene_Init(void *object, void *area, s32 enabled);
+extern void GamePhaseAreaScene_Start(void *object);
 extern void ActorRuntimeObjectLists_ClearThird(void *loader);
 extern void GamePhaseState_UnloadPhase(void *state);
 extern void ActorRuntimeObjectLists_ClearSecond(void *loader);
@@ -28,9 +28,9 @@ void GamePhaseRuntime_CreateSecondaryActorSubsystem(GamePhaseRuntime *self, void
     void *object = Heap_Alloc(0x2ed8, (const char *)data_020d4368, 4,
                               &gHeapContext);
     if (object != 0)
-        object = func_02011a5c(object, area, enabled);
+        object = GamePhaseAreaScene_Init(object, area, enabled);
     *(void **)(b + 0x2fb8) = object;
-    func_02011ebc(object);
+    GamePhaseAreaScene_Start(object);
 }
 
 /*

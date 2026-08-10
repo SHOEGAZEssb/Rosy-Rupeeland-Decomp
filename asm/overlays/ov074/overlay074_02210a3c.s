@@ -5,7 +5,7 @@
 .extern data_021052fc
 .extern GamePhaseState_UpdateRenderHelpers
 .extern GamePhaseVisualEffect_Update
-.extern func_0201218c
+.extern GamePhaseAreaScene_Update
 .extern func_0201de4c
 .extern func_ov074_02211a0c
 
@@ -48,7 +48,7 @@ func_ov074_02210a3c:
     ldr r0, [r0, #0xfb8]
     cmp r0, #0x0
     beq .L_02210b70
-    bl func_0201218c
+    bl GamePhaseAreaScene_Update
     b .L_02210b70
 .L_02210ac8:
     ldr r0, .L_02210b8c
@@ -61,7 +61,7 @@ func_ov074_02210a3c:
     ldr r0, [r0, #0xfb8]
     cmp r0, #0x0
     beq .L_02210b70
-    bl func_0201218c
+    bl GamePhaseAreaScene_Update
     b .L_02210b70
 .L_02210af8:
     ldr r0, [r4, #0x140]
@@ -82,7 +82,7 @@ func_ov074_02210a3c:
     ldr r0, [r0, #0xfb8]
     cmp r0, #0x0
     beq .L_02210b70
-    bl func_0201218c
+    bl GamePhaseAreaScene_Update
     b .L_02210b70
 .L_02210b44:
     ldr r0, .L_02210b8c
@@ -95,7 +95,7 @@ func_ov074_02210a3c:
     ldr r0, [r0, #0xfb8]
     cmp r0, #0x0
     beq .L_02210b70
-    bl func_0201218c
+    bl GamePhaseAreaScene_Update
 .L_02210b70:
     ldr r0, .L_02210b8c
     ldr r0, [r0, #0x0]

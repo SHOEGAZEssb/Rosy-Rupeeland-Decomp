@@ -9,7 +9,7 @@ extern "C" {
 #endif
 extern SceneVTable data_020d5384;
 extern void *data_021052fc;
-extern void func_020122a0(void *object, s32 enabled);
+extern void GamePhaseAreaScene_SetEnabled(void *object, s32 enabled);
 extern void ActorDescriptorBatch_ApplyCategoryCallback(s32 value);
 #ifdef __cplusplus
 }
@@ -64,7 +64,7 @@ s32 GamePhaseApplyScene_Update(GamePhaseApplyScene *self)
     case 2:
         GamePhaseRuntime_CreateSecondaryActorSubsystem(runtime, self->area, 1);
         GamePhaseRuntime_RefreshAreaAuxiliaryObject(runtime, self->area, 1);
-        func_020122a0(*(void **)((u8 *)runtime + 0x2fb8), 1);
+        GamePhaseAreaScene_SetEnabled(*(void **)((u8 *)runtime + 0x2fb8), 1);
         if (self != 0)
             self->base.vtable->destroyAndFree(&self->base);
         *((u8 *)runtime + 0x30cc) &= (u8)~8;

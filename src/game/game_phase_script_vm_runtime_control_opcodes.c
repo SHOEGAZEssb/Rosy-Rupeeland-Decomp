@@ -8,7 +8,7 @@ extern "C" {
 #endif
 extern void *data_021052fc;
 extern void func_0202d68c(void *object, s32 value);
-extern void func_020122a0(void *object, s32 enabled);
+extern void GamePhaseAreaScene_SetEnabled(void *object, s32 enabled);
 #ifdef __cplusplus
 }
 #endif
@@ -25,7 +25,7 @@ s32 func_02017638(GamePhaseActorScriptVm *self)
 s32 func_02017668(GamePhaseActorScriptVm *self)
 {
     s32 enabled = (s32)func_02012704(&self->base);
-    func_020122a0(*(void **)((u8 *)data_021052fc + 0x2fb8), enabled);
+    GamePhaseAreaScene_SetEnabled(*(void **)((u8 *)data_021052fc + 0x2fb8), enabled);
     return 0;
 }
 

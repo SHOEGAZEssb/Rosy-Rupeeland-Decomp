@@ -21,8 +21,8 @@
 .extern gGameWork
 .extern gHeapContext
 
-    .global func_02011a5c
-func_02011a5c: ; 0x02011a5c
+    .global GamePhaseAreaScene_Init
+GamePhaseAreaScene_Init: ; 0x02011a5c
     stmdb sp!, {r4, r5, r6, lr}
     ldr r3, L_02011e98
     mov r6, r0
@@ -320,5 +320,5 @@ L_02011eac: .word 0x400100c
 L_02011eb0: .word 0x4001050
 L_02011eb4: .word gGameWork
 L_02011eb8: .word 0x3e9
-    .size func_02011a5c, . - func_02011a5c
+    .size GamePhaseAreaScene_Init, . - GamePhaseAreaScene_Init
 

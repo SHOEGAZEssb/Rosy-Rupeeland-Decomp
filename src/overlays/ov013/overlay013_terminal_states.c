@@ -13,7 +13,7 @@ extern void func_0204fbdc(void);
 extern void GameWork_SetFlag(void *, s32);
 extern void ActorMotion_SetMode2(void *);
 extern void func_ov013_021fdbb0(void *);
-extern void func_0201218c(void *);
+extern void GamePhaseAreaScene_Update(void *);
 #ifdef __cplusplus
 }
 #endif
@@ -71,7 +71,7 @@ s32 func_ov013_021fe9c8(void *state)
 
 /*
  * If +0x97C is nonzero, pass the pointer stored at global +0x2FB8 to
- * func_0201218c. When state flag bit 0x400 at +0x20 is set, invoke vtable slot
+ * GamePhaseAreaScene_Update. When state flag bit 0x400 at +0x20 is set, invoke vtable slot
  * +0x0C on optional object +0x9A8, then replace DISPCNT bits 8..12 with +0x48
  * shifted by eight. Return zero. The mapped register write is a confirmed
  * Nintendo DS display hardware effect.
@@ -82,7 +82,7 @@ extern "C"
 s32 func_ov013_021feacc(void *state)
 {
     if (FIELD(s32, state, 0x97c) != 0)
-        func_0201218c(FIELD(void *, data_021052fc, 0x2fb8));
+        GamePhaseAreaScene_Update(FIELD(void *, data_021052fc, 0x2fb8));
     if (FIELD(u32, state, 0x20) & 0x400) {
         void *object = FIELD(void *, state, 0x9a8);
         volatile u32 *dispcnt = (volatile u32 *)0x04000000;

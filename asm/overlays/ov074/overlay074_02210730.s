@@ -6,7 +6,7 @@
 .extern SplineMover_Evaluate2D
 .extern GamePhaseRuntime_GetActorCollection
 .extern GamePhaseState_ApplyPlacementState
-.extern func_020122a0
+.extern GamePhaseAreaScene_SetEnabled
 .extern ActorCollection_DispatchEventToActors
 .extern ActorDerivedType1_GetSingletonObject
 .extern func_ov074_022107f8
@@ -60,7 +60,7 @@ func_ov074_02210730:
     ldr r0, [r0, #0x0]
     add r0, r0, #0x2000
     ldr r0, [r0, #0xfb8]
-    bl func_020122a0
+    bl GamePhaseAreaScene_SetEnabled
     add r0, sp, #0x0
     bl func_02005058
     add sp, sp, #0x10

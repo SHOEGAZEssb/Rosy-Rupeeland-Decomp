@@ -2,7 +2,7 @@
 /* Exact fallback; see src/overlays/ov019/overlay019_display_callback.c. */
     .extern data_021052fc
     .extern GamePhaseState_UpdateRenderHelpers
-    .extern func_0201218c
+    .extern GamePhaseAreaScene_Update
 
 .global func_ov019_021fd4d8
 func_ov019_021fd4d8:
@@ -19,7 +19,7 @@ func_ov019_021fd4d8:
     ldr r0, [r0, #0x0]
     add r0, r0, #0x2000
     ldr r0, [r0, #0xfb8]
-    bl func_0201218c
+    bl GamePhaseAreaScene_Update
     mov r2, #0x4000000
     ldr r1, [r2, #0x0]
     ldr r0, [r4, #0x48]

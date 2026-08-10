@@ -4,7 +4,7 @@
 .extern GamePhaseRuntime_SetPlacementMode
 .extern GamePhaseRuntime_RefreshAreaAuxiliaryObject
 .extern GamePhaseState_ConfigureMainDisplay
-.extern func_020121f8
+.extern GamePhaseAreaScene_RestoreSubDisplay
 .extern func_0201dff0
 .extern GameWork_SetFlag
 .extern gGameWork
@@ -41,7 +41,7 @@ L_020085b8:
     orr r1, r1, #0x1000
     str r1, [r2, #0x0]
     ldr r0, [r0, #0xfb8]
-    bl func_020121f8
+    bl GamePhaseAreaScene_RestoreSubDisplay
     add r0, r5, #0x3000
     ldr r1, [r0, #0xbc]
     mov r0, r5

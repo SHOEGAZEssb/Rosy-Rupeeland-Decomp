@@ -2,12 +2,12 @@
 .text
 .extern GXS_SetGraphicsMode
 .extern GX_SetBankForSubBG
-.extern func_020122a0
+.extern GamePhaseAreaScene_SetEnabled
 .extern func_020aea7c
 .extern func_ov056_0220ee78
 
-    .global func_020121f8
-func_020121f8: ; 0x020121f8
+    .global GamePhaseAreaScene_RestoreSubDisplay
+GamePhaseAreaScene_RestoreSubDisplay: ; 0x020121f8
     stmdb sp!, {r4, lr}
     mov r4, r0
     mov r0, #0x4
@@ -49,8 +49,8 @@ L_02012254:
 L_0201228c:
     mov r0, r4
     mov r1, #0x1
-    bl func_020122a0
+    bl GamePhaseAreaScene_SetEnabled
     ldmia sp!, {r4, pc}
 L_0201229c: .word 0x400100c
-    .size func_020121f8, . - func_020121f8
+    .size GamePhaseAreaScene_RestoreSubDisplay, . - GamePhaseAreaScene_RestoreSubDisplay
 

@@ -17,7 +17,7 @@
 .extern GamePhaseState_SetEnabled
 .extern GamePhaseState_ApplyPlacementState
 .extern GamePhaseResumeScene_Init
-.extern func_020122a0
+.extern GamePhaseAreaScene_SetEnabled
 .extern func_02029c94
 .extern func_0202d68c
 .extern func_ov074_02210878
@@ -86,7 +86,7 @@ func_ov074_022105b4:
     ldr r0, [r0, #0x0]
     add r0, r0, #0x2000
     ldr r0, [r0, #0xfb8]
-    bl func_020122a0
+    bl GamePhaseAreaScene_SetEnabled
     b .L_022106c4
 .L_022106ac:
     ldr r0, .L_02210720

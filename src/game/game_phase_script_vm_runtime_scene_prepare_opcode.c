@@ -10,7 +10,7 @@ extern void *GamePhaseState_GetConfiguration(void *state);
 extern void func_02026174(void *object, void *area);
 extern void GamePhaseRuntime_UpdateDualScreenUiPresentation(void *runtime);
 extern void GamePhaseRuntime_RefreshAreaAuxiliaryObject(void *runtime, void *area, s32 enabled);
-extern void func_020122a0(void *state, s32 enabled);
+extern void GamePhaseAreaScene_SetEnabled(void *state, s32 enabled);
 #ifdef __cplusplus
 }
 #endif
@@ -39,6 +39,6 @@ s32 func_0201a090(GamePhaseActorScriptVm *self)
     GamePhaseRuntime_UpdateDualScreenUiPresentation(runtime);
     area = GamePhaseState_GetConfiguration(runtime + 0x24);
     GamePhaseRuntime_RefreshAreaAuxiliaryObject(runtime, area, 1);
-    func_020122a0(*(void **)(runtime + 0x2fb8), 1);
+    GamePhaseAreaScene_SetEnabled(*(void **)(runtime + 0x2fb8), 1);
     return 0;
 }

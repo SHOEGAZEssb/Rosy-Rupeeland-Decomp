@@ -8,8 +8,8 @@
 .extern ActorCollection_Destructor
 .extern ActorCollection_UnregisterAndDestroyAllActors
 
-    .global func_02011f24
-func_02011f24: ; 0x02011f24
+    .global GamePhaseAreaScene_Destroy
+GamePhaseAreaScene_Destroy: ; 0x02011f24
     stmdb sp!, {r4, lr}
     ldr r1, L_02011f90
     mov r4, r0
@@ -40,5 +40,5 @@ L_02011f6c:
     ldmia sp!, {r4, pc}
 L_02011f90: .word data_020d5680
 L_02011f94: .word data_021052fc
-    .size func_02011f24, . - func_02011f24
+    .size GamePhaseAreaScene_Destroy, . - GamePhaseAreaScene_Destroy
 

@@ -12,9 +12,9 @@
 .extern ActorMotionGameWork_Update
 .extern ActorMotionAreaFollower_Update
 .extern GamePhaseState_ApplyPlacementState
-.extern func_02012150
-.extern func_020124f0
-.extern func_0201250c
+.extern GamePhaseAreaScene_ApplyPlacementState
+.extern GamePhaseAreaScene_GetSubRendererLowCoordinate
+.extern GamePhaseAreaScene_GetSubRendererHighCoordinate
 
     .global GamePhaseRuntime_SynchronizeActorPlacement
 .type GamePhaseRuntime_SynchronizeActorPlacement, @function
@@ -90,7 +90,7 @@ L_020081fc:
     add r0, r4, #0x2000
     ldr r0, [r0, #0xfb8]
     add r1, sp, #0x34
-    bl func_02012150
+    bl GamePhaseAreaScene_ApplyPlacementState
     add r0, sp, #0x34
     bl func_02005058
     add r0, sp, #0x44
@@ -103,11 +103,11 @@ L_0200827c:
     bne L_020082d4
     add r0, r4, #0x2000
     ldr r0, [r0, #0xfb8]
-    bl func_020124f0
+    bl GamePhaseAreaScene_GetSubRendererLowCoordinate
     add r1, r4, #0x2000
     mov r5, r0
     ldr r0, [r1, #0xfb8]
-    bl func_0201250c
+    bl GamePhaseAreaScene_GetSubRendererHighCoordinate
     mov r0, r0, lsl #0x10
     mov ip, r0, asr #0x10
     mov r3, r5, lsl #0x10
@@ -149,7 +149,7 @@ L_020082f8:
     add r0, r4, #0x2000
     ldr r0, [r0, #0xfb8]
     add r1, sp, #0x24
-    bl func_02012150
+    bl GamePhaseAreaScene_ApplyPlacementState
     add r0, sp, #0x24
     bl func_02005058
 L_02008348:

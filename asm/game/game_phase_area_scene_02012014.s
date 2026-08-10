@@ -11,8 +11,8 @@
 .extern func_02026f38
 .extern gHeapContext
 
-    .global func_02012014
-func_02012014: ; 0x02012014
+    .global GamePhaseAreaScene_UpdateRegionAtPosition
+GamePhaseAreaScene_UpdateRegionAtPosition: ; 0x02012014
     stmdb sp!, {r4, r5, r6, r7, r8, r9, r10, lr}
     sub sp, sp, #0x8
     mov r9, r1
@@ -95,5 +95,5 @@ L_02012138:
 L_02012144: .word data_020d5690
 L_02012148: .word gHeapContext
 L_0201214c: .word data_021052fc
-    .size func_02012014, . - func_02012014
+    .size GamePhaseAreaScene_UpdateRegionAtPosition, . - GamePhaseAreaScene_UpdateRegionAtPosition
 

@@ -29,7 +29,7 @@ extern void GX_SetGraphicsMode(...);
 extern void GXS_SetGraphicsMode(...);
 extern void func_020755bc(void *);
 extern void func_02075a04(...);
-extern void func_020122a0(...);
+extern void GamePhaseAreaScene_SetEnabled(...);
 extern void func_02008570(...);
 extern void GamePhaseState_SetEnabled(...);
 extern void TouchPanelManager_GetPoint(...);
@@ -70,7 +70,7 @@ extern "C" void func_ov032_021fde38(void *scene)
     func_020755bc(gDebugFont);
     func_02075a04(data_020f4e14[0], 0, 0x10);
     func_02075a04(gDebugFont, 0, 0x10);
-    func_020122a0(FIELD(void *, context, 0x2fb8), 0);
+    GamePhaseAreaScene_SetEnabled(FIELD(void *, context, 0x2fb8), 0);
     func_02008570(context, 2, 1);
     GamePhaseState_SetEnabled(context + 0x24, 1);
 }

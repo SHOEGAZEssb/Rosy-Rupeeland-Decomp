@@ -42,7 +42,7 @@
 .extern GamePhaseRuntime_SetPlacementMode
 .extern GamePhaseState_SetEnabled
 .extern GamePhaseCurrencyHud_SetVisible
-.extern func_020122a0
+.extern GamePhaseAreaScene_SetEnabled
 .extern func_0201e0f4
 .extern ActorCollection_GetSpriteOwner
 .extern func_0204fbdc
@@ -266,7 +266,7 @@ L_0200d2f0:
     ldr r0, [r0, #0x0]
     add r0, r0, #0x2000
     ldr r0, [r0, #0xfb8]
-    bl func_020122a0
+    bl GamePhaseAreaScene_SetEnabled
     ldr r0, L_0200e0fc
     mov r1, #0x0
     ldr r0, [r0, #0x0]
@@ -438,7 +438,7 @@ L_0200d540:
     ldr r0, [r0, #0x0]
     add r0, r0, #0x2000
     ldr r0, [r0, #0xfb8]
-    bl func_020122a0
+    bl GamePhaseAreaScene_SetEnabled
     ldr r0, L_0200e0e4
     mov r1, #0x1
     ldr r0, [r0, #0x0]
@@ -1099,7 +1099,7 @@ L_0200de94:
     ldr r0, [r0, #0x0]
     add r0, r0, #0x2000
     ldr r0, [r0, #0xfb8]
-    bl func_020122a0
+    bl GamePhaseAreaScene_SetEnabled
 L_0200dedc:
     str r4, [r5, #0x2c]
     mov r0, #0x0
@@ -1157,7 +1157,7 @@ L_0200df58:
     ldr r0, [r0, #0x0]
     add r0, r0, #0x2000
     ldr r0, [r0, #0xfb8]
-    bl func_020122a0
+    bl GamePhaseAreaScene_SetEnabled
     bl OverlayManager_GetGlobal
     mov r1, #0x2
     ldr r2, L_0200e214
@@ -1337,7 +1337,7 @@ L_0200e21c:
     ldr r0, [r0, #0x0]
     add r0, r0, #0x2000
     ldr r0, [r0, #0xfb8]
-    bl func_020122a0
+    bl GamePhaseAreaScene_SetEnabled
     ldr r0, L_0200e0e4
     mov r1, #0x1
     ldr r0, [r0, #0x0]

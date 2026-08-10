@@ -16,8 +16,8 @@
 .extern ActorRuntimeCollection_Reset
 .extern GamePhaseState_ApplyAreaChange
 .extern GamePhaseCurrencyHud_SetVisible
-.extern func_020122a0
-.extern func_02012528
+.extern GamePhaseAreaScene_SetEnabled
+.extern GamePhaseAreaScene_SetOverlayObject
 .extern func_02020060
 .extern func_02026174
 .extern func_02028388
@@ -234,11 +234,11 @@ L_02007ddc:
     ldr r0, [r0, #0xfb8]
     bne L_02007e0c
     ldr r1, [r1, #0xec]
-    bl func_02012528
+    bl GamePhaseAreaScene_SetOverlayObject
     b L_02007e14
 L_02007e0c:
     mov r1, #0x0
-    bl func_020122a0
+    bl GamePhaseAreaScene_SetEnabled
 L_02007e14:
     add r0, r7, #0x3000
     ldr r1, [r0, #0xec]

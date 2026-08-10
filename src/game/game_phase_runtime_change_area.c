@@ -29,8 +29,8 @@ extern void ActorCollection_DispatchEventToActors(void *actor, const void *trans
 extern void func_02020060(void *object, void *area);
 extern void GamePhaseCurrencyHud_SetVisible(void *context, s32 enabled);
 extern void GamePhaseRuntime_RefreshAreaAuxiliaryObject(GamePhaseRuntime *self, void *area, s32 enabled);
-extern void func_02012528(void *actor, void *object);
-extern void func_020122a0(void *actor, s32 value);
+extern void GamePhaseAreaScene_SetOverlayObject(void *actor, void *object);
+extern void GamePhaseAreaScene_SetEnabled(void *actor, s32 value);
 extern void func_ov056_0220f054(void *object, const void *value);
 extern void func_02026174(void *object, void *area);
 extern void *GamePhaseRuntime_GetActorCollection(GamePhaseRuntime *self, s32 index);
@@ -113,9 +113,9 @@ s32 GamePhaseRuntime_ChangeToNeighborArea(GamePhaseRuntime *self, s32 direction)
 
     object = *(void **)(b + 0x2fb8);
     if (((*(u32 *)(area + 0x40) << 12) >> 30) == 1)
-        func_02012528(object, *(void **)(b + 0x30ec));
+        GamePhaseAreaScene_SetOverlayObject(object, *(void **)(b + 0x30ec));
     else
-        func_020122a0(object, 0);
+        GamePhaseAreaScene_SetEnabled(object, 0);
 
     if (*(void **)(b + 0x30ec) != 0) {
         GamePhaseRuntime_InitScaledAreaCoordinates(optionalValue, self, area);

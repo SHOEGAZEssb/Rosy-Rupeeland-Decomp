@@ -2,8 +2,8 @@
 .text
 .extern func_ov056_0220ed9c
 
-    .global func_0201218c
-func_0201218c: ; 0x0201218c
+    .global GamePhaseAreaScene_Update
+GamePhaseAreaScene_Update: ; 0x0201218c
     stmdb sp!, {r4, lr}
     mov r4, r0
     add r0, r4, #0x2000
@@ -33,5 +33,5 @@ L_020121e4:
     strh r1, [r0, #0x0]
     ldmia sp!, {r4, pc}
 L_020121f4: .word 0x5000400
-    .size func_0201218c, . - func_0201218c
+    .size GamePhaseAreaScene_Update, . - GamePhaseAreaScene_Update
 

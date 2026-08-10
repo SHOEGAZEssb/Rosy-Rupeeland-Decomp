@@ -6,7 +6,7 @@
 extern "C" {
 #endif
 extern void func_02056f00(void *value, const void *position);
-extern void func_02012014(void *actor, void *areaState, s32 x, s32 y);
+extern void GamePhaseAreaScene_UpdateRegionAtPosition(void *actor, void *areaState, s32 x, s32 y);
 extern void func_02005058(void *value);
 #ifdef __cplusplus
 }
@@ -28,10 +28,10 @@ void func_0200866c(GamePhaseRuntime *self)
     if (actor != 0 &&
         ((*(u32 *)(*(u8 **)(b + 0x30bc) + 0x40) << 12) >> 30) == 2) {
         func_02056f00(value, (u8 *)*(void **)(b + 0x2ea4) + 0x18);
-        func_02012014(*(void **)(b + 0x2fb8), b + 0x2fa4,
+        GamePhaseAreaScene_UpdateRegionAtPosition(*(void **)(b + 0x2fb8), b + 0x2fa4,
                       *(s32 *)(value + 4), *(s32 *)(value + 8));
         func_02005058(value);
     } else {
-        func_02012014(actor, b + 0x2fa4, 0, 0);
+        GamePhaseAreaScene_UpdateRegionAtPosition(actor, b + 0x2fa4, 0, 0);
     }
 }

@@ -12,7 +12,7 @@
 .extern ActorMotionAreaFollower_RefreshCurrentArea
 .extern GamePhaseVisualEffect_SetBlendCoefficients
 .extern GamePhaseCurrencyHud_Update
-.extern func_020122a0
+.extern GamePhaseAreaScene_SetEnabled
 .extern func_0201dcec
 .extern func_0201e0ec
 .extern Type7Actor_ClearBoundaryTransitionFlags
@@ -115,7 +115,7 @@ func_ov074_022101dc:
     ldr r0, [r0, #0x0]
     add r0, r0, #0x2000
     ldr r0, [r0, #0xfb8]
-    bl func_020122a0
+    bl GamePhaseAreaScene_SetEnabled
 .L_02210314:
     mov r1, #0x0
     mov r2, r1

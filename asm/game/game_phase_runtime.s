@@ -31,7 +31,7 @@
 .extern GamePhaseTouchPrompt_Init
 .extern GamePhaseTouchPrompt_SetEnabled
 .extern GamePhaseCurrencyHud_SetVisible
-.extern func_02012444
+.extern GamePhaseAreaScene_RegisterEnabledRegions
 .extern func_02020060
 .extern ActorCollection_DispatchEventToActors
 .extern Actor_AdjustPositionForTerrainHeight
@@ -361,7 +361,7 @@ L_02006f0c:
     add r1, r4, #0x3a4
     ldr r0, [r0, #0xfb8]
     add r1, r1, #0x2c00
-    bl func_02012444
+    bl GamePhaseAreaScene_RegisterEnabledRegions
 L_02006f80:
     add r0, r4, #0x2000
     ldr r2, [r0, #0xea4]

@@ -4,8 +4,8 @@
 .extern func_0202d68c
 .extern func_ov056_0220ee20
 
-    .global func_020122a0
-func_020122a0: ; 0x020122a0
+    .global GamePhaseAreaScene_SetEnabled
+GamePhaseAreaScene_SetEnabled: ; 0x020122a0
     stmdb sp!, {r3, r4, r5, lr}
     mov r5, r0
     add r0, r5, #0x2000
@@ -116,5 +116,5 @@ L_0201240c:
     bic r1, r1, #0x20
     str r1, [r0, #0xea8]
     ldmia sp!, {r3, r4, r5, pc}
-    .size func_020122a0, . - func_020122a0
+    .size GamePhaseAreaScene_SetEnabled, . - GamePhaseAreaScene_SetEnabled
 

@@ -21,7 +21,7 @@ extern "C" {
 
 extern void GamePhaseState_UpdateRenderHelpers(void *sceneState);
 extern void GamePhaseState_ForwardVCount(void *sceneState, u16 scanline);
-extern void func_0201218c(void *object);
+extern void GamePhaseAreaScene_Update(void *object);
 extern void Sound_Play(void *context, s32 argument, s32 soundId);
 extern void GamePhaseLoadScene_Init(void *object, s32 enabled, s32 argument);
 
@@ -41,7 +41,7 @@ s32 GamePhaseRuntime_UpdateRenderHelpers(GamePhaseRuntime *self)
     GamePhaseState_UpdateRenderHelpers(bytes + 0x24);
     object = *(void **)(bytes + 0x2fb8);
     if (object != 0)
-        func_0201218c(object);
+        GamePhaseAreaScene_Update(object);
     return 0;
 }
 

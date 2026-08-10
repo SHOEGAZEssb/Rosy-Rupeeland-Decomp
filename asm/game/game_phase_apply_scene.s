@@ -9,7 +9,7 @@
 .extern GamePhaseRuntime_CreateSecondaryActorSubsystem
 .extern GamePhaseRuntime_DestroySecondaryActorSubsystem
 .extern GamePhaseRuntime_RefreshAreaAuxiliaryObject
-.extern func_020122a0
+.extern GamePhaseAreaScene_SetEnabled
 .extern ActorDescriptorBatch_ApplyCategoryCallback
 
 .global GamePhaseApplyScene_Init
@@ -89,7 +89,7 @@ L_0200c970:
     ldr r0, [r0, #0x0]
     add r0, r0, #0x2000
     ldr r0, [r0, #0xfb8]
-    bl func_020122a0
+    bl GamePhaseAreaScene_SetEnabled
     cmp r4, #0x0
     beq L_0200c9c8
     mov r0, r4

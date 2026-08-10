@@ -5,8 +5,8 @@
 .extern GamePhaseRegionTable_GetCount
 .extern func_02029bfc
 
-    .global func_02012444
-func_02012444: ; 0x02012444
+    .global GamePhaseAreaScene_RegisterEnabledRegions
+GamePhaseAreaScene_RegisterEnabledRegions: ; 0x02012444
     stmdb sp!, {r3, r4, r5, r6, r7, r8, lr}
     sub sp, sp, #0xc
     mov r8, r0
@@ -54,5 +54,5 @@ L_020124d8:
 L_020124e8:
     add sp, sp, #0xc
     ldmia sp!, {r3, r4, r5, r6, r7, r8, pc}
-    .size func_02012444, . - func_02012444
+    .size GamePhaseAreaScene_RegisterEnabledRegions, . - GamePhaseAreaScene_RegisterEnabledRegions
 

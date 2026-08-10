@@ -63,7 +63,7 @@ extern int func_02092418(...);
 extern int func_020755bc(...);
 extern int func_02008570(...);
 extern int GamePhaseState_SetEnabled(...);
-extern int func_020122a0(...);
+extern int GamePhaseAreaScene_SetEnabled(...);
 extern int GamePhaseCurrencyHud_SetVisible(...);
 extern int func_02074178(...);
 extern int OverlayManager_GetGlobal(...);
@@ -397,7 +397,7 @@ code_r0x0200e21c:
       func_020755bc(*UNK_0200e0f0);
       func_020755bc(*UNK_0200e0fc);
       func_02008570(*UNK_0200e0e4,2,1);
-      func_020122a0(*(undefined4 *)(*UNK_0200e0e4 + 0x2fb8),1);
+      GamePhaseAreaScene_SetEnabled(*(undefined4 *)(*UNK_0200e0e4 + 0x2fb8),1);
       GamePhaseState_SetEnabled(*UNK_0200e0e4 + 0x24,1);
       iVar5 = func_02001970(*UNK_0200e11c,UNK_0200e3c4);
       if (iVar5 == 0) {
@@ -442,7 +442,7 @@ code_r0x0200e2ac:
     case 1:
       if ((uint)(*(int *)(*(int *)(*UNK_0200e0e4 + 0x30bc) + 0x40) << 0xc) >> 0x1e == 2) {
         func_02008570(*UNK_0200e0e4,1,1);
-        func_020122a0(*(undefined4 *)(*UNK_0200e0e4 + 0x2fb8),1);
+        GamePhaseAreaScene_SetEnabled(*(undefined4 *)(*UNK_0200e0e4 + 0x2fb8),1);
       }
       break;
     case 2:
@@ -466,7 +466,7 @@ code_r0x0200e2ac:
       func_02008570(*UNK_0200e0e4,2,1);
       GamePhaseRuntime_SetPlacementMode(*UNK_0200e0e4,3,1);
       GamePhaseState_SetEnabled(*UNK_0200e0e4 + 0x24,1);
-      func_020122a0(*(undefined4 *)(*UNK_0200e0e4 + 0x2fb8),1);
+      GamePhaseAreaScene_SetEnabled(*(undefined4 *)(*UNK_0200e0e4 + 0x2fb8),1);
       uVar3 = OverlayManager_GetGlobal();
       OverlayManager_LoadOverlay(uVar3,2,UNK_0200e214);
       iVar5 = func_02003e14(0x90,UNK_0200e218,4,UNK_0200e114);
@@ -552,7 +552,7 @@ code_r0x0200d224:
 code_r0x0200d2f0:
     *UNK_0200e0f8 = 0;
     GamePhaseRuntime_SetPlacementMode(*piVar1,0,1);
-    func_020122a0(*(undefined4 *)(*UNK_0200e0e4 + 0x2fb8),0);
+    GamePhaseAreaScene_SetEnabled(*(undefined4 *)(*UNK_0200e0e4 + 0x2fb8),0);
     func_020745c4(*UNK_0200e0fc,0);
     GamePhaseCurrencyHud_SetVisible(*UNK_0200e0f4,0);
   }
@@ -621,7 +621,7 @@ code_r0x0200d3bc:
     OverlaySlot_LoadOverlay(param_1 + 0x20,UNK_0200e140);
     func_02008570(*UNK_0200e0e4,0,1);
     GamePhaseRuntime_SetPlacementMode(*UNK_0200e0e4,2,0);
-    func_020122a0(*(undefined4 *)(*UNK_0200e0e4 + 0x2fb8),1);
+    GamePhaseAreaScene_SetEnabled(*(undefined4 *)(*UNK_0200e0e4 + 0x2fb8),1);
     GamePhaseState_SetEnabled(*UNK_0200e0e4 + 0x24,1);
     iVar5 = func_02003e14(UNK_0200e144,UNK_0200e148,4,UNK_0200e114);
     if (iVar5 != 0) {

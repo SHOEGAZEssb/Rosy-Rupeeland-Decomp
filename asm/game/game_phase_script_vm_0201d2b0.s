@@ -10,7 +10,7 @@
 .extern OverlaySlot_UnloadOverlay
 .extern func_02092c8c
 .extern DisplayBrightness_IsSubTransitionComplete
-.extern func_020122a0
+.extern GamePhaseAreaScene_SetEnabled
 .extern GamePhaseCurrencyHud_SetVisible
 .extern GamePhaseRuntime_SetPlacementMode
 .extern func_02008570

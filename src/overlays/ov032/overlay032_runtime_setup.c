@@ -35,7 +35,7 @@ extern void __destroy_arr(...);
 extern void func_0201e0f4(void *);
 extern void func_020755bc(void *);
 extern void GamePhaseState_SetEnabled(...);
-extern void func_020122a0(...);
+extern void GamePhaseAreaScene_SetEnabled(...);
 extern void GX_SetBankForBG(...);
 extern void GX_SetGraphicsMode(...);
 extern void GXS_SetGraphicsMode(...);
@@ -157,7 +157,7 @@ extern "C" void func_ov032_021fd994(void *scene)
     func_020755bc(data_020f4e14[0]);
     func_020755bc(gDebugFont);
     GamePhaseState_SetEnabled(context + 0x24, 0);
-    func_020122a0(FIELD(void *, context, 0x2fb8), 0);
+    GamePhaseAreaScene_SetEnabled(FIELD(void *, context, 0x2fb8), 0);
 
     FIELD(s32, scene, 0xb50) = (REG16(0x04000304) & 0x8000) >> 15;
     REG16(0x04000050) = 0;

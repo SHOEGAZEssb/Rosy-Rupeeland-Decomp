@@ -4,7 +4,7 @@
 .extern GamePhaseRuntime_UpdateDualScreenUiPresentation
 .extern GamePhaseRuntime_RefreshAreaAuxiliaryObject
 .extern GamePhaseState_GetConfiguration
-.extern func_020122a0
+.extern GamePhaseAreaScene_SetEnabled
 .extern func_02026174
 .global func_0201a090
 func_0201a090:
@@ -44,7 +44,7 @@ func_0201a090:
     ldr r0, [r0, #0x0]
     add r0, r0, #0x2000
     ldr r0, [r0, #0xfb8]
-    bl func_020122a0
+    bl GamePhaseAreaScene_SetEnabled
     mov r0, #0x0
     ldmia sp!, {r4, pc}
 L_0201a12c: .word data_021052fc

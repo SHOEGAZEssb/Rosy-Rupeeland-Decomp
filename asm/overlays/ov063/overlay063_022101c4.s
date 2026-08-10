@@ -5,7 +5,7 @@
 .extern func_02005058
 .extern ActorMotionAreaFollower_GetPosition
 .extern GamePhaseState_UpdateRenderHelpers
-.extern func_0201218c
+.extern GamePhaseAreaScene_Update
 .extern func_020a6aa8
 
 .global func_ov063_022101c4
@@ -57,7 +57,7 @@ func_ov063_022101c4:
     ldr r0, [r0, #0x0]
     add r0, r0, #0x2000
     ldr r0, [r0, #0xfb8]
-    bl func_0201218c
+    bl GamePhaseAreaScene_Update
 .L_0221027c:
     mov r0, #0x0
     add sp, sp, #0x10

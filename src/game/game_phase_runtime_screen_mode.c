@@ -9,7 +9,7 @@ extern "C" {
 #endif
 extern void GamePhaseState_ConfigureMainDisplay(void *object, void *state);
 extern void GameWork_SetFlag(void *work, s32 flag);
-extern void func_020121f8(void *actor);
+extern void GamePhaseAreaScene_RestoreSubDisplay(void *actor);
 extern void GamePhaseRuntime_RefreshAreaAuxiliaryObject(GamePhaseRuntime *self, void *area, s32 enabled);
 extern void GamePhaseRuntime_SetPlacementMode(GamePhaseRuntime *self, s32 enabled, s32 value);
 extern void func_0201dff0(void *object, s32 mode);
@@ -41,7 +41,7 @@ void func_02008570(GamePhaseRuntime *self, s32 mode, void *state)
         volatile u16 *palette = (volatile u16 *)0x05000400;
         void *volatile *workAddress = &gGameWork;
         *subDisplay = (*subDisplay & ~0x1f00) | 0x1000;
-        func_020121f8(*(void **)(b + 0x2fb8));
+        GamePhaseAreaScene_RestoreSubDisplay(*(void **)(b + 0x2fb8));
         GamePhaseRuntime_RefreshAreaAuxiliaryObject(self, *(void **)(b + 0x30bc), 1);
         object = *(void **)(b + 0x30e8);
         (*(void (***)(void *))object)[2](object);

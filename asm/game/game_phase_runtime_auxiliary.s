@@ -5,7 +5,7 @@
 .extern OverlayManager_LoadOverlay
 .extern OverlayManager_GetGlobal
 .extern GamePhaseRuntime_InitScaledAreaCoordinates
-.extern func_02012528
+.extern GamePhaseAreaScene_SetOverlayObject
 .extern func_0202844c
 .extern func_0202852c
 .extern func_ov054_0220e400
@@ -41,7 +41,7 @@ L_02008bf8:
     str r1, [r0, #0xec]
     add r0, r6, #0x2000
     ldr r0, [r0, #0xfb8]
-    bl func_02012528
+    bl GamePhaseAreaScene_SetOverlayObject
 L_02008c10:
     ldr r0, [r5, #0x40]
     mov r0, r0, lsl #0xc
@@ -84,7 +84,7 @@ L_02008c9c:
     add r0, r6, #0x2000
     ldr r0, [r0, #0xfb8]
     ldr r1, [r1, #0xec]
-    bl func_02012528
+    bl GamePhaseAreaScene_SetOverlayObject
     add r0, sp, #0x0
     mov r1, r6
     mov r2, r5

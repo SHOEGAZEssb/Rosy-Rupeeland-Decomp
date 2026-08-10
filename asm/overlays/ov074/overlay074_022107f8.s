@@ -3,7 +3,7 @@
 .extern data_021052fc
 .extern func_02005058
 .extern SplineMover_Evaluate2D
-.extern func_02012150
+.extern GamePhaseAreaScene_ApplyPlacementState
 .extern ActorCollection_DispatchEventToActors
 
 .global func_ov074_022107f8
@@ -26,7 +26,7 @@ func_ov074_022107f8:
     bl SplineMover_Evaluate2D
     add r1, sp, #0x10
     mov r0, r4
-    bl func_02012150
+    bl GamePhaseAreaScene_ApplyPlacementState
     add r0, sp, #0x10
     bl func_02005058
     add r0, sp, #0x0

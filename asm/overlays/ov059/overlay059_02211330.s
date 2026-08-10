@@ -23,8 +23,8 @@
 .extern func_02008570
 .extern GamePhaseRuntime_UpdateActorPresentationState
 .extern func_02008f2c
-.extern func_02012438
-.extern func_02012444
+.extern GamePhaseAreaScene_GetConfig
+.extern GamePhaseAreaScene_RegisterEnabledRegions
 .extern func_02028404
 .extern func_020740a4
 .extern func_020755bc
@@ -248,7 +248,7 @@ func_ov059_02211330:
     ldr r0, [r0, #0x0]
     add r0, r0, #0x2000
     ldr r0, [r0, #0xfb8]
-    bl func_02012438
+    bl GamePhaseAreaScene_GetConfig
     bl func_02028404
     mov r1, r0, lsl #0x10
     add r0, r5, #0x40
@@ -302,7 +302,7 @@ func_ov059_02211330:
     ldr r0, [r0, #0x0]
     add r0, r0, #0x2000
     ldr r0, [r0, #0xfb8]
-    bl func_02012438
+    bl GamePhaseAreaScene_GetConfig
     bl func_02028404
     mov r1, r0, lsl #0x10
     add r0, r5, #0x40
@@ -346,7 +346,7 @@ func_ov059_02211330:
     ldr r0, [r0, #0xfb8]
     add r1, r1, #0x3a4
     add r1, r1, #0x2c00
-    bl func_02012444
+    bl GamePhaseAreaScene_RegisterEnabledRegions
     ldr r0, .L_0221184c
     mov r1, #0x1
     ldr r0, [r0, #0x0]

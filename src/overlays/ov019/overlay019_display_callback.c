@@ -10,7 +10,7 @@ extern void *data_021052fc;
 extern "C" {
 #endif
 extern void GamePhaseState_UpdateRenderHelpers(void *);
-extern void func_0201218c(void *);
+extern void GamePhaseAreaScene_Update(void *);
 #ifdef __cplusplus
 }
 #endif
@@ -29,7 +29,7 @@ extern "C" s32 func_ov019_021fd4d8(void *state)
         volatile u32 *display;
         s32 layer;
         if (FIELD(void *, state, 0x58) == 0) {
-            func_0201218c(FIELD(void *, (u8 *)data_021052fc + 0x2000,
+            GamePhaseAreaScene_Update(FIELD(void *, (u8 *)data_021052fc + 0x2000,
                                0xfb8));
             display = (volatile u32 *)0x04000000;
             layer = FIELD(s32, state, 0x48);

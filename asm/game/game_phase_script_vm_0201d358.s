@@ -10,7 +10,7 @@
 .extern OverlaySlot_UnloadOverlay
 .extern func_02092c8c
 .extern DisplayBrightness_IsSubTransitionComplete
-.extern func_020122a0
+.extern GamePhaseAreaScene_SetEnabled
 .extern GamePhaseCurrencyHud_SetVisible
 .extern GamePhaseRuntime_SetPlacementMode
 .extern func_02008570
@@ -63,7 +63,7 @@ L_0201d3ac:
     cmp r0, #0x0
     beq L_0201d3d8
     mov r1, #0x0
-    bl func_020122a0
+    bl GamePhaseAreaScene_SetEnabled
 L_0201d3d8:
     ldr r0, [r4, #0x28]
     cmp r0, #0x0

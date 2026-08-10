@@ -55,35 +55,36 @@ static void loadRenderer(void *renderer, void *resource, s32 second)
  * Initialize the embedded renderer/state/vector objects and retain config. If
  * createRenderer is nonzero, configure sub-BG VRAM and choose one of four
  * special renderers for area IDs 2/199, 3, 4, or 93; otherwise select the
- * generic renderer and resource from config flags40 bits 18-21. All renderer
+ * generic renderer and resource from config flags bits 18-21. All renderer
  * variants receive their resource through virtual method 0x14. BG0/BG1
  * priorities are set to 1/2 except for area 93, and mode 0/3 renderers receive
- * config field34. The routine also clears sub-engine blending, rolls GameWork
- * halfwords 0x242/0x244, clears pointer bank 1 and flag 0x3e9, and returns self.
+ * config subRendererConfig. The routine also clears sub-engine blending,
+ * rolls GameWork halfwords 0x242/0x244, clears pointer bank 1 and flag 0x3e9,
+ * and returns self.
  * Hardware effects include sub DISPCNT, BGxCNT, VRAM-bank, graphics-mode, and
  * BLDCNT writes. Offsets and flag slices remain address-derived.
  */
-GamePhaseAreaScene *func_02011a5c(GamePhaseAreaScene *self,
-                                  GamePhaseAreaSceneConfig *config,
-                                  s32 createSubRenderer)
+GamePhaseAreaScene *GamePhaseAreaScene_Init(GamePhaseAreaScene *self,
+                                            GamePhaseAreaSceneConfig *config,
+                                            s32 createSubRenderer)
 {
     u32 mode;
     self->vtable = data_020d5680;
-    self->subRenderer_04 = 0;
-    ActorCollection_Init(self->renderer_08);
-    self->rendererFlags_2ea8 =
-        (self->rendererFlags_2ea8 & ~0x1f) | 0x3f;
-    self->config_2eac = config;
-    OverlaySlot_Init(self->state_2eb0);
-    self->field_2ebc = 0;
-    func_02004fe0(&self->position_2ec0);
-    self->field_2ed0 = 0;
-    self->field_2ed4 = 0;
+    self->subRenderer = 0;
+    ActorCollection_Init(self->actorCollectionStorage);
+    self->stateFlags =
+        (self->stateFlags & ~0x1f) | 0x3f;
+    self->config = config;
+    OverlaySlot_Init(self->overlaySlotStorage);
+    self->secondaryActor = 0;
+    func_02004fe0(&self->position);
+    self->overlayObject = 0;
+    self->regionEffectHandle = 0;
 
     if (createSubRenderer) {
         volatile u32 *subDisplay = (volatile u32 *)0x04001000;
         volatile u16 *subBg0 = (volatile u16 *)0x0400100c;
-        mode = (config->flags40 >> 18) & 3;
+        mode = (config->flags >> 18) & 3;
         if (mode != 1) {
             u32 planes = (*subDisplay & 0x1f00) >> 8;
             *subDisplay = (*subDisplay & ~0x1f00) |
@@ -91,31 +92,31 @@ GamePhaseAreaScene *func_02011a5c(GamePhaseAreaScene *self,
         }
         GX_SetBankForSubBG(4);
         func_020aea7c(0x80);
-        if (config->areaId_00 == 2 || config->areaId_00 == 199) {
+        if (config->areaId == 2 || config->areaId == 199) {
             GXS_SetGraphicsMode(0);
-            self->subRenderer_04 = createRenderer(func_0202bc18);
-            loadRenderer(self->subRenderer_04, config->resource08, 0);
-        } else if (config->areaId_00 == 3) {
+            self->subRenderer = createRenderer(func_0202bc18);
+            loadRenderer(self->subRenderer, config->resource08, 0);
+        } else if (config->areaId == 3) {
             GXS_SetGraphicsMode(0);
-            self->subRenderer_04 = createRenderer(func_0202c0b8);
-            loadRenderer(self->subRenderer_04, config->resource08, 0);
-        } else if (config->areaId_00 == 4) {
+            self->subRenderer = createRenderer(func_0202c0b8);
+            loadRenderer(self->subRenderer, config->resource08, 0);
+        } else if (config->areaId == 4) {
             GXS_SetGraphicsMode(0);
-            self->subRenderer_04 = createRenderer(func_0202c4f4);
-            loadRenderer(self->subRenderer_04, config->resource08, 0);
-        } else if (config->areaId_00 == 93) {
+            self->subRenderer = createRenderer(func_0202c4f4);
+            loadRenderer(self->subRenderer, config->resource08, 0);
+        } else if (config->areaId == 93) {
             GXS_SetGraphicsMode(0);
-            self->subRenderer_04 = createRenderer(func_0202c8a8);
-            loadRenderer(self->subRenderer_04, config->resource08, 0);
+            self->subRenderer = createRenderer(func_0202c8a8);
+            loadRenderer(self->subRenderer, config->resource08, 0);
             goto rendererConfigured;
         } else if (mode != 1) {
             void *resource = mode == 3 ? config->resource04 : config->resource08;
-            u32 variant = (config->flags40 >> 20) & 3;
+            u32 variant = (config->flags >> 20) & 3;
             if (variant == 0 || variant == 1) {
                 GXS_SetGraphicsMode(0);
-                self->subRenderer_04 = createRenderer(func_02029218);
-                func_02029360(self->subRenderer_04, 4, 28, 30);
-                loadRenderer(self->subRenderer_04, resource,
+                self->subRenderer = createRenderer(func_02029218);
+                func_02029360(self->subRenderer, 4, 28, 30);
+                loadRenderer(self->subRenderer, resource,
                              variant == 1 ? 2 : 0);
             }
         }
@@ -123,30 +124,31 @@ GamePhaseAreaScene *func_02011a5c(GamePhaseAreaScene *self,
         subBg0[1] = (u16)((subBg0[1] & ~3) | 2);
 rendererConfigured:
         if (mode == 0 || mode == 3)
-            func_02029ca4(self->subRenderer_04, config->field34);
+            func_02029ca4(self->subRenderer, config->subRendererConfig);
         *(volatile u16 *)0x04001050 = 0;
     }
 
     *(s16 *)((u8 *)gGameWork + 0x242) =
         *(s16 *)((u8 *)gGameWork + 0x244);
-    *(s16 *)((u8 *)gGameWork + 0x244) = (s16)config->areaId_00;
+    *(s16 *)((u8 *)gGameWork + 0x244) = (s16)config->areaId;
     GameWork_ClearPointerBank(gGameWork, 1);
     GameWork_ClearFlag(gGameWork, 0x3e9);
     return self;
 }
 
 /*
- * Configure embedded rendering mode 2 and scale 0x1000, copy config field20
- * into state_2eb0, invoke config callback28 with zero, create a 3/3 renderer
- * handle into field_2ebc, and return no value.
+ * Configure embedded rendering mode 2 and scale 0x1000, copy config overlayId
+ * into overlaySlotStorage, invoke config loadCallback with zero, create a 3/3
+ * renderer handle into secondaryActor, and return no value.
  */
-void func_02011ebc(GamePhaseAreaScene *self)
+void GamePhaseAreaScene_Start(GamePhaseAreaScene *self)
 {
-    ActorCollection_SetSpriteMode(self->renderer_08, 2);
-    ActorCollection_SetActorScale(self->renderer_08, 0x1000);
-    OverlaySlot_LoadOverlay(self->state_2eb0, self->config_2eac->field20);
-    self->config_2eac->callback28(0);
-    self->field_2ebc = ActorCollection_FindActorByTypeAndId(self->renderer_08, 3, 3);
+    ActorCollection_SetSpriteMode(self->actorCollectionStorage, 2);
+    ActorCollection_SetActorScale(self->actorCollectionStorage, 0x1000);
+    OverlaySlot_LoadOverlay(self->overlaySlotStorage, self->config->overlayId);
+    self->config->loadCallback(0);
+    self->secondaryActor = ActorCollection_FindActorByTypeAndId(
+        self->actorCollectionStorage, 3, 3);
 }
 
 /*
@@ -154,16 +156,16 @@ void func_02011ebc(GamePhaseAreaScene *self)
  * optional sub-renderer virtually, then destroy the vector, state, and base
  * renderer objects. Returns self without freeing its outer storage.
  */
-GamePhaseAreaScene *func_02011f24(GamePhaseAreaScene *self)
+GamePhaseAreaScene *GamePhaseAreaScene_Destroy(GamePhaseAreaScene *self)
 {
     self->vtable = data_020d5680;
     func_0201e1b0((u8 *)data_021052fc + 0x2f7c, 0x37);
-    ActorCollection_UnregisterAndDestroyAllActors(self->renderer_08);
-    if (self->subRenderer_04)
-        ((void (*)(void *))(*(void ***)self->subRenderer_04)[1])(
-            self->subRenderer_04);
-    func_02005058(&self->position_2ec0);
-    OverlaySlot_Destroy(self->state_2eb0);
-    ActorCollection_Destructor(self->renderer_08);
+    ActorCollection_UnregisterAndDestroyAllActors(self->actorCollectionStorage);
+    if (self->subRenderer)
+        ((void (*)(void *))(*(void ***)self->subRenderer)[1])(
+            self->subRenderer);
+    func_02005058(&self->position);
+    OverlaySlot_Destroy(self->overlaySlotStorage);
+    ActorCollection_Destructor(self->actorCollectionStorage);
     return self;
 }

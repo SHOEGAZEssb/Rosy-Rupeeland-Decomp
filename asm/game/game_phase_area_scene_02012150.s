@@ -2,8 +2,8 @@
 .text
 .extern func_ov056_0220ef34
 
-    .global func_02012150
-func_02012150: ; 0x02012150
+    .global GamePhaseAreaScene_ApplyPlacementState
+GamePhaseAreaScene_ApplyPlacementState: ; 0x02012150
     stmdb sp!, {r3, lr}
     ldr r2, [r0, #0x4]
     cmp r2, #0x0
@@ -20,5 +20,5 @@ L_02012174:
     ldmeqia sp!, {r3, pc}
     bl func_ov056_0220ef34
     ldmia sp!, {r3, pc}
-    .size func_02012150, . - func_02012150
+    .size GamePhaseAreaScene_ApplyPlacementState, . - GamePhaseAreaScene_ApplyPlacementState
 

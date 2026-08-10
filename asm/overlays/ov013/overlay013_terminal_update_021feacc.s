@@ -1,6 +1,6 @@
     .text
     .extern data_021052fc
-    .extern func_0201218c
+    .extern GamePhaseAreaScene_Update
 
 /* Exact fallback; see the documented portable reconstruction in
  * src/overlays/ov013/overlay013_terminal_states.c. */
@@ -16,7 +16,7 @@ func_ov013_021feacc:
     ldr r0, [r0, #0x0]
     add r0, r0, #0x2000
     ldr r0, [r0, #0xfb8]
-    bl func_0201218c
+    bl GamePhaseAreaScene_Update
 L_021feaf4:
     ldr r0, [r4, #0x20]
     mov r0, r0, lsl #0x15

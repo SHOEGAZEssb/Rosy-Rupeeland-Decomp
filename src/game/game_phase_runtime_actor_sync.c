@@ -17,9 +17,9 @@ extern void func_02005058(void *state);
 extern s32 DisplayController_GetSubScreenVerticalOffset(void);
 extern void func_0200500c(void *vector, s32 x, s32 y, s32 z);
 extern void func_02008378(void *output, const void *state, const void *offset);
-extern void func_02012150(void *actor, const void *state);
-extern s32 func_020124f0(void *actor);
-extern s32 func_0201250c(void *actor);
+extern void GamePhaseAreaScene_ApplyPlacementState(void *actor, const void *state);
+extern s32 GamePhaseAreaScene_GetSubRendererLowCoordinate(void *actor);
+extern s32 GamePhaseAreaScene_GetSubRendererHighCoordinate(void *actor);
 extern void ActorMotionGameWork_Update(void *object, const void *value);
 #ifdef __cplusplus
 }
@@ -66,7 +66,7 @@ s32 GamePhaseRuntime_SynchronizeActorPlacement(GamePhaseRuntime *self, s32 actor
             func_0200500c(offset, 0, -(DisplayController_GetSubScreenVerticalOffset() << 12), 0);
             func_020086f8(full1, self);
             func_02008378(full2, full1, offset);
-            func_02012150(*(void **)(b + 0x2fb8), full2);
+            GamePhaseAreaScene_ApplyPlacementState(*(void **)(b + 0x2fb8), full2);
             func_02005058(full2);
             func_02005058(full1);
             func_02005058(offset);
@@ -74,8 +74,8 @@ s32 GamePhaseRuntime_SynchronizeActorPlacement(GamePhaseRuntime *self, s32 actor
             if (orientation == 0) {
                 actor = *(u8 **)(b + 0x2fb8);
                 func_020083b0(raw1, 0, 0,
-                              (s16)func_020124f0(actor),
-                              (s16)func_0201250c(*(void **)(b + 0x2fb8)));
+                              (s16)GamePhaseAreaScene_GetSubRendererLowCoordinate(actor),
+                              (s16)GamePhaseAreaScene_GetSubRendererHighCoordinate(*(void **)(b + 0x2fb8)));
                 func_02008354(compact, raw1);
             } else {
                 func_020083b0(raw1, 0, 0, 0, 0);
@@ -85,7 +85,7 @@ s32 GamePhaseRuntime_SynchronizeActorPlacement(GamePhaseRuntime *self, s32 actor
             if (*(void **)(b + 0x30fc) != 0 &&
                 *(void **)(b + 0x2fb8) != 0) {
                 func_0200875c(full0, self);
-                func_02012150(*(void **)(b + 0x2fb8), full0);
+                GamePhaseAreaScene_ApplyPlacementState(*(void **)(b + 0x2fb8), full0);
                 func_02005058(full0);
             }
         }

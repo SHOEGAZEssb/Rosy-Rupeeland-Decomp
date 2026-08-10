@@ -7,7 +7,7 @@
 .extern data_021052fc
 .extern func_02008570
 .extern GamePhaseState_SetEnabled
-.extern func_020122a0
+.extern GamePhaseAreaScene_SetEnabled
 .extern func_020755bc
 .extern func_02075a04
 .extern func_02092418
@@ -62,7 +62,7 @@ func_ov032_021fde38:
     ldr r0, [r0, #0x0]
     add r0, r0, #0x2000
     ldr r0, [r0, #0xfb8]
-    bl func_020122a0
+    bl GamePhaseAreaScene_SetEnabled
     ldr r0, L_021fdf2c
     mov r1, #0x2
     ldr r0, [r0, #0x0]

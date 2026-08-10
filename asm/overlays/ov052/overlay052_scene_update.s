@@ -9,7 +9,7 @@
 .extern DisplayBrightness_StartTransition
 .extern DisplayBrightness_GetCurrent
 .extern DisplayBrightnessPair_GetScreen
-.extern func_020122a0
+.extern GamePhaseAreaScene_SetEnabled
 .extern func_02072b68
 .extern func_020740a4
 .extern func_02076428
@@ -51,7 +51,7 @@ func_ov052_0220da54:
     cmp r0, #0x0
     beq .L_0220dac0
     mov r1, #0x0
-    bl func_020122a0
+    bl GamePhaseAreaScene_SetEnabled
 .L_0220dac0:
     mov r0, r4
     bl func_ov052_0220ddb4

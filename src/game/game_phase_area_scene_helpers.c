@@ -23,16 +23,16 @@ static s32 halfCoordinate(s16 value)
  * set and register its halved bounds through func_02029bfc with enabled=1 and
  * trailing value zero. The region table is unchanged; renderer state changes.
  */
-void func_02012444(GamePhaseAreaScene *self, void *tablePointer)
+void GamePhaseAreaScene_RegisterEnabledRegions(
+    GamePhaseAreaScene *self, GamePhaseRegionTable *table)
 {
-    GamePhaseRegionTable *table = (GamePhaseRegionTable *)tablePointer;
     s32 i;
-    if (!self->subRenderer_04)
+    if (!self->subRenderer)
         return;
     for (i = 0; i < GamePhaseRegionTable_GetCount(table); i++) {
         if (GamePhaseRegionTable_IsRegionEnabled(table, i)) {
             GamePhaseRegion *region = GamePhaseRegionTable_GetRegion(table, i);
-            func_02029bfc(self->subRenderer_04, 1,
+            func_02029bfc(self->subRenderer, 1,
                           halfCoordinate(region->left),
                           halfCoordinate(region->top),
                           halfCoordinate(region->right),
@@ -41,30 +41,31 @@ void func_02012444(GamePhaseAreaScene *self, void *tablePointer)
     }
 }
 
-/* Return subRenderer_04 field 0x20's low halfword scaled by 16, or zero. */
-s32 func_020124f0(GamePhaseAreaScene *self)
+/* Return subRenderer field 0x20's low halfword scaled by 16, or zero. */
+s32 GamePhaseAreaScene_GetSubRendererLowCoordinate(GamePhaseAreaScene *self)
 {
-    if (!self->subRenderer_04)
+    if (!self->subRenderer)
         return 0;
-    return (*(u32 *)((u8 *)self->subRenderer_04 + 0x20) & 0xffff) << 4;
+    return (*(u32 *)((u8 *)self->subRenderer + 0x20) & 0xffff) << 4;
 }
 
-/* Return subRenderer_04 field 0x20's high halfword scaled by 16, or zero. */
-s32 func_0201250c(GamePhaseAreaScene *self)
+/* Return subRenderer field 0x20's high halfword scaled by 16, or zero. */
+s32 GamePhaseAreaScene_GetSubRendererHighCoordinate(GamePhaseAreaScene *self)
 {
-    if (!self->subRenderer_04)
+    if (!self->subRenderer)
         return 0;
-    return (*(u32 *)((u8 *)self->subRenderer_04 + 0x20) >> 16) << 4;
+    return (*(u32 *)((u8 *)self->subRenderer + 0x20) >> 16) << 4;
 }
 
 /*
- * Store overlayObject at field_2ed0. A nonnull object also selects sub BG0/BG1
- * priorities 3/2; null performs no hardware writes.
+ * Retain overlayObject. A nonnull object also selects sub BG0/BG1 priorities
+ * 3/2; null performs no hardware writes.
  */
-void func_02012528(GamePhaseAreaScene *self, void *overlayObject)
+void GamePhaseAreaScene_SetOverlayObject(GamePhaseAreaScene *self,
+                                         void *overlayObject)
 {
     volatile u16 *subBg0 = (volatile u16 *)0x0400100c;
-    self->field_2ed0 = (u32)overlayObject;
+    self->overlayObject = overlayObject;
     if (!overlayObject)
         return;
     *subBg0 = (u16)((*subBg0 & ~3) | 3);

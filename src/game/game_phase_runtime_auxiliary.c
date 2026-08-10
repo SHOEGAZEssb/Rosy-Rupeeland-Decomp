@@ -13,7 +13,7 @@ extern "C" {
 #endif
 extern void GX_VBlankIntr(s32 enabled);
 extern void func_ov056_0220e79c(void *object);
-extern void func_02012528(void *actor, void *object);
+extern void GamePhaseAreaScene_SetOverlayObject(void *actor, void *object);
 extern s32 func_0202844c(void *area);
 extern s32 OverlayManager_GetGlobal(void);
 extern void OverlayManager_LoadOverlay(s32 overlay, s32 mode, s32 mask);
@@ -45,7 +45,7 @@ void GamePhaseRuntime_RefreshAreaAuxiliaryObject(GamePhaseRuntime *self, void *a
         func_ov056_0220e79c(object);
         Heap_Free(object);
         *(void **)(b + 0x30ec) = 0;
-        func_02012528(*(void **)(b + 0x2fb8), 0);
+        GamePhaseAreaScene_SetOverlayObject(*(void **)(b + 0x2fb8), 0);
     }
 
     if (((*(u32 *)((u8 *)area + 0x40) << 12) >> 30) == 1 &&
@@ -60,7 +60,7 @@ void GamePhaseRuntime_RefreshAreaAuxiliaryObject(GamePhaseRuntime *self, void *a
         if (object != 0)
             object = func_ov054_0220e400(object, variant, enabled);
         *(void **)(b + 0x30ec) = object;
-        func_02012528(*(void **)(b + 0x2fb8), object);
+        GamePhaseAreaScene_SetOverlayObject(*(void **)(b + 0x2fb8), object);
         GamePhaseRuntime_InitScaledAreaCoordinates(areaValue, self, area);
         func_ov056_0220f054(*(void **)(b + 0x30ec), areaValue);
     }

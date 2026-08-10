@@ -8,7 +8,7 @@
 .extern GamePhaseRuntime_GetActiveAreaPlacementVariant
 .extern ActorMotion_SetTarget
 .extern ActorMotion_UpdateFromBoundActor
-.extern func_020122a0
+.extern GamePhaseAreaScene_SetEnabled
 .extern OS_Halt
 
     .global GamePhaseRuntime_SetPlacementMode
@@ -39,7 +39,7 @@ L_020088f0:
     add r0, r7, #0x2000
     ldr r0, [r0, #0xfb8]
     mov r1, #0x0
-    bl func_020122a0
+    bl GamePhaseAreaScene_SetEnabled
     b L_02008aa8
 L_0200891c:
     bl GamePhaseRuntime_GetActiveAreaPlacementVariant
@@ -72,7 +72,7 @@ L_02008938:
     add r0, r7, #0x2000
     ldr r0, [r0, #0xfb8]
     mov r1, #0x1
-    bl func_020122a0
+    bl GamePhaseAreaScene_SetEnabled
     b L_02008aa8
 L_02008998:
     add r0, r7, #0x3000
@@ -97,7 +97,7 @@ L_02008998:
     add r0, r7, #0x2000
     ldr r0, [r0, #0xfb8]
     mov r1, #0x1
-    bl func_020122a0
+    bl GamePhaseAreaScene_SetEnabled
     b L_02008aa8
 L_020089f8:
     ldr r0, [r1, #0xe8]
@@ -124,7 +124,7 @@ L_020089f8:
     add r0, r7, #0x2000
     ldr r0, [r0, #0xfb8]
     mov r1, #0x1
-    bl func_020122a0
+    bl GamePhaseAreaScene_SetEnabled
     b L_02008aa8
 L_02008a60:
     mov r1, #0x58000
@@ -142,7 +142,7 @@ L_02008a60:
     add r0, r7, #0x2000
     ldr r0, [r0, #0xfb8]
     mov r1, #0x1
-    bl func_020122a0
+    bl GamePhaseAreaScene_SetEnabled
     b L_02008aa8
 L_02008aa4:
     bl OS_Halt

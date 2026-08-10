@@ -30,7 +30,7 @@ extern void *gLupyContext;
 extern void *gDebugFont;
 extern void func_02092c8c(s32 screen, s32 brightness);
 extern s32 func_02091fb0(void *object, s32 mode);
-extern void func_020122a0(void *object, s32 value);
+extern void GamePhaseAreaScene_SetEnabled(void *object, s32 value);
 extern void GamePhaseCurrencyHud_SetVisible(void *context, s32 enabled);
 extern void GamePhaseRuntime_SetPlacementMode(void *runtime, s32 first, s32 second);
 extern void func_02008570(void *runtime, s32 first, s32 second);
@@ -119,7 +119,7 @@ s32 func_0201d358(OverlayTransitionScene *self)
             break;
         runtimeObject = *(void **)((u8 *)runtime + 0x2fb8);
         if (runtimeObject != 0)
-            func_020122a0(runtimeObject, 0);
+            GamePhaseAreaScene_SetEnabled(runtimeObject, 0);
         if (self->restoreLupy28 != 0)
             GamePhaseCurrencyHud_SetVisible(gLupyContext, 0);
         GamePhaseRuntime_SetPlacementMode(runtime, 0, 1);
