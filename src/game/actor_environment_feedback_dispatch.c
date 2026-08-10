@@ -17,7 +17,7 @@ extern void VecFx32Object_InitCopy(void *destination, const void *source);
 extern void VecFx32Object_Destroy(void *value);
 extern s32 func_02008514(void *runtime, s32 x, s32 y);
 extern void *TimedSpriteOffsetPresentation_Init(void *allocation, ...);
-extern void *func_0201f598(void *allocation, ...);
+extern void *TimedSpriteSampledArcPresentation_Init(void *allocation, ...);
 extern void func_0201ded4(void *manager, void *presentation);
 extern s32 Actor_QueryTerrainHeight(void *actor, s32 x, s32 y);
 extern void *ActorFeedbackResources_GetResource(u32 index);
@@ -154,7 +154,7 @@ scanComplete:
                     void *presentation = 0;
                     void *group = **(void ***)(data_021052fc + 0x2ea4 + 0x54);
                     if (allocation != 0)
-                        presentation = func_0201f598(
+                        presentation = TimedSpriteSampledArcPresentation_Init(
                             allocation, position, group,
                             *(s32 *)(resource + 4), *(s32 *)(resource + 8),
                             *(s32 *)(resource + 0x0c), 0xfde8);

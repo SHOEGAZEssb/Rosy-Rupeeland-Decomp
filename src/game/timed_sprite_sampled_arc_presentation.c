@@ -22,11 +22,11 @@ typedef struct SampledArcSpriteConfig {
     s32 field34;
 } SampledArcSpriteConfig;
 
-typedef struct SampledArcPresentation {
+typedef struct TimedSpriteSampledArcPresentation {
     void **vtable;
     u32 field04;
     void *presentation08;
-} SampledArcPresentation;
+} TimedSpriteSampledArcPresentation;
 
 typedef void *(*PresentationDestroy)(void *presentation);
 typedef s32 (*PresentationUpdate)(void *presentation, const void *position);
@@ -34,7 +34,7 @@ typedef s32 (*PresentationUpdate)(void *presentation, const void *position);
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *data_020d61d0;
+extern void *gTimedSpriteSampledArcPresentationVtable;
 extern const char gTimedSpritePresentationAllocationTag[];
 extern u8 *data_021052fc;
 extern void *func_0201e250(void *self);
@@ -57,8 +57,9 @@ extern void *ActorMotionAreaFollower_GetPosition(void *source);
  * destroy both temporary tracks, and return self.  The retail path dereferences
  * the retained child after allocation without a null guard.
  */
-SampledArcPresentation *func_0201f598(
-    SampledArcPresentation *self, const PresentationTrack *trackSource,
+TimedSpriteSampledArcPresentation *TimedSpriteSampledArcPresentation_Init(
+    TimedSpriteSampledArcPresentation *self,
+    const PresentationTrack *trackSource,
     void *spriteGroup, s32 field04, s32 field08, s32 field0c,
     s32 spriteOffset)
 {
@@ -67,7 +68,7 @@ SampledArcPresentation *func_0201f598(
     u8 *sprite;
 
     func_0201e250(self);
-    self->vtable = (void **)data_020d61d0;
+    self->vtable = (void **)gTimedSpriteSampledArcPresentationVtable;
     TimedSpriteConfig_InitTracks(&config);
     config.spriteGroup = spriteGroup;
     config.field04 = field04;
@@ -92,9 +93,10 @@ SampledArcPresentation *func_0201f598(
 }
 
 /* Install this vtable, destroy the nonnull child through slot 1, and return self. */
-SampledArcPresentation *func_0201f670(SampledArcPresentation *self)
+TimedSpriteSampledArcPresentation *TimedSpriteSampledArcPresentation_Destroy(
+    TimedSpriteSampledArcPresentation *self)
 {
-    self->vtable = (void **)data_020d61d0;
+    self->vtable = (void **)gTimedSpriteSampledArcPresentationVtable;
     if (self->presentation08 != 0) {
         ((PresentationDestroy)(*(void ***)self->presentation08)[1])(
             self->presentation08);
@@ -102,10 +104,11 @@ SampledArcPresentation *func_0201f670(SampledArcPresentation *self)
     return self;
 }
 
-/* Perform func_0201f670's teardown, free self, and return its old address. */
-SampledArcPresentation *func_0201f6a4(SampledArcPresentation *self)
+/* Destroy the owned child, free self, and return its old address. */
+TimedSpriteSampledArcPresentation *TimedSpriteSampledArcPresentation_DestroyAndFree(
+    TimedSpriteSampledArcPresentation *self)
 {
-    func_0201f670(self);
+    TimedSpriteSampledArcPresentation_Destroy(self);
     Heap_Free(self);
     return self;
 }
@@ -114,7 +117,8 @@ SampledArcPresentation *func_0201f6a4(SampledArcPresentation *self)
  * Obtain the global runtime position at offset 0x2fbc, pass it to child vtable
  * slot 2, and return the child's result normalized to zero or one.
  */
-s32 func_0201f6e0(SampledArcPresentation *self)
+s32 TimedSpriteSampledArcPresentation_Update(
+    TimedSpriteSampledArcPresentation *self)
 {
     const void *position = ActorMotionAreaFollower_GetPosition(data_021052fc + 0x2fbc);
     return ((PresentationUpdate)(*(void ***)self->presentation08)[2])(

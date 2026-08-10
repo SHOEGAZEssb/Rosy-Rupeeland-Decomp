@@ -7689,25 +7689,25 @@ build build/reports/timed_sprite_sampled_arc_presentation_0201f598.json: objdiff
   base_object = build/decomp/asm/game/timed_sprite_sampled_arc_presentation_0201f598.o
 build build/reports/timed_sprite_sampled_arc_presentation_0201f598.txt: match_report build/reports/timed_sprite_sampled_arc_presentation_0201f598.json | tools/report_objdiff.py
   report_json = build/reports/timed_sprite_sampled_arc_presentation_0201f598.json
-  report_args = --section .text --function func_0201f598 --require-exact
+  report_args = --section .text --function TimedSpriteSampledArcPresentation_Init --require-exact
 build build/reports/timed_sprite_sampled_arc_presentation_0201f670.json: objdiff build/decomp/delinks/asm/game/timed_sprite_sampled_arc_presentation_0201f670.o | build/decomp/asm/game/timed_sprite_sampled_arc_presentation_0201f670.o
   target_object = build/decomp/delinks/asm/game/timed_sprite_sampled_arc_presentation_0201f670.o
   base_object = build/decomp/asm/game/timed_sprite_sampled_arc_presentation_0201f670.o
 build build/reports/timed_sprite_sampled_arc_presentation_0201f670.txt: match_report build/reports/timed_sprite_sampled_arc_presentation_0201f670.json | tools/report_objdiff.py
   report_json = build/reports/timed_sprite_sampled_arc_presentation_0201f670.json
-  report_args = --section .text --function func_0201f670 --require-exact
+  report_args = --section .text --function TimedSpriteSampledArcPresentation_Destroy --require-exact
 build build/reports/timed_sprite_sampled_arc_presentation_0201f6a4.json: objdiff build/decomp/delinks/asm/game/timed_sprite_sampled_arc_presentation_0201f6a4.o | build/decomp/asm/game/timed_sprite_sampled_arc_presentation_0201f6a4.o
   target_object = build/decomp/delinks/asm/game/timed_sprite_sampled_arc_presentation_0201f6a4.o
   base_object = build/decomp/asm/game/timed_sprite_sampled_arc_presentation_0201f6a4.o
 build build/reports/timed_sprite_sampled_arc_presentation_0201f6a4.txt: match_report build/reports/timed_sprite_sampled_arc_presentation_0201f6a4.json | tools/report_objdiff.py
   report_json = build/reports/timed_sprite_sampled_arc_presentation_0201f6a4.json
-  report_args = --section .text --function func_0201f6a4 --require-exact
+  report_args = --section .text --function TimedSpriteSampledArcPresentation_DestroyAndFree --require-exact
 build build/reports/timed_sprite_sampled_arc_presentation_0201f6e0.json: objdiff build/decomp/delinks/asm/game/timed_sprite_sampled_arc_presentation_0201f6e0.o | build/decomp/asm/game/timed_sprite_sampled_arc_presentation_0201f6e0.o
   target_object = build/decomp/delinks/asm/game/timed_sprite_sampled_arc_presentation_0201f6e0.o
   base_object = build/decomp/asm/game/timed_sprite_sampled_arc_presentation_0201f6e0.o
 build build/reports/timed_sprite_sampled_arc_presentation_0201f6e0.txt: match_report build/reports/timed_sprite_sampled_arc_presentation_0201f6e0.json | tools/report_objdiff.py
   report_json = build/reports/timed_sprite_sampled_arc_presentation_0201f6e0.json
-  report_args = --section .text --function func_0201f6e0 --require-exact
+  report_args = --section .text --function TimedSpriteSampledArcPresentation_Update --require-exact
 build build/reports/timed_sprite_sampled_arc_presentation.txt: phony build/reports/timed_sprite_sampled_arc_presentation_0201f598.txt build/reports/timed_sprite_sampled_arc_presentation_0201f670.txt build/reports/timed_sprite_sampled_arc_presentation_0201f6a4.txt build/reports/timed_sprite_sampled_arc_presentation_0201f6e0.txt
 build build/reports/timed_sprite_auxiliary_presentation_0201f724.json: objdiff build/decomp/delinks/asm/game/timed_sprite_auxiliary_presentation_0201f724.o | build/decomp/asm/game/timed_sprite_auxiliary_presentation_0201f724.o
   target_object = build/decomp/delinks/asm/game/timed_sprite_auxiliary_presentation_0201f724.o

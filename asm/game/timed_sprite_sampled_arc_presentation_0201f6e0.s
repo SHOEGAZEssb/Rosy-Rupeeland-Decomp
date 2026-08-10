@@ -2,7 +2,7 @@
 .text
 .extern Heap_Alloc
 .extern Heap_Free
-.extern data_020d61d0
+.extern gTimedSpriteSampledArcPresentationVtable
 .extern gTimedSpritePresentationAllocationTag
 .extern data_021052fc
 .extern VecFx32Object_Destroy
@@ -13,9 +13,9 @@
 .extern TimedSpriteConfig_InitTracks
 .extern gHeapContext
 
-.global func_0201f6e0
-    .type func_0201f6e0, @function
-func_0201f6e0: ; 0x0201f6e0
+.global TimedSpriteSampledArcPresentation_Update
+    .type TimedSpriteSampledArcPresentation_Update, @function
+TimedSpriteSampledArcPresentation_Update: ; 0x0201f6e0
     stmdb sp!, {r4, lr}
     ldr r1, .L_0201f720
     mov r4, r0
@@ -33,5 +33,5 @@ func_0201f6e0: ; 0x0201f6e0
     moveq r0, #0x0
     ldmia sp!, {r4, pc}
 .L_0201f720: .word data_021052fc
-    .size func_0201f6e0, .-func_0201f6e0
+    .size TimedSpriteSampledArcPresentation_Update, .-TimedSpriteSampledArcPresentation_Update
 

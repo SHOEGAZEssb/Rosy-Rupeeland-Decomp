@@ -12,7 +12,7 @@
 .extern func_02008514
 .extern func_0201ded4
 .extern TimedSpriteOffsetPresentation_Init
-.extern func_0201f598
+.extern TimedSpriteSampledArcPresentation_Init
 .extern Actor_QueryTerrainHeight
 .extern ActorFeedbackResources_GetResource
 .extern GraphicsSpriteState_SetFrameIndex
@@ -201,7 +201,7 @@ ActorFeedback_DispatchEnvironment: ; 0x0203a314
     add r1, sp, #0x3c
     ldr r2, [r2, #0x54]
     ldr r2, [r2, #0x0]
-    bl func_0201f598
+    bl TimedSpriteSampledArcPresentation_Init
     mov r10, r0
 .L_0203a5b4:
     cmp r7, #0x0

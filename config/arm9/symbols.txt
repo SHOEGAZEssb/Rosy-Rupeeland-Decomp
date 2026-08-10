@@ -1105,10 +1105,10 @@ TimedSpriteOffsetPresentation_Destroy kind:function(arm,size=0x34) addr:0x0201f3
 TimedSpriteOffsetPresentation_DestroyAndFree kind:function(arm,size=0x3c) addr:0x0201f41c
 TimedSpriteOffsetPresentation_CreateSprite kind:function(arm,size=0xc8) addr:0x0201f458
 TimedSpriteOffsetPresentation_Update kind:function(arm,size=0x78) addr:0x0201f520
-func_0201f598 kind:function(arm,size=0xd8) addr:0x0201f598
-func_0201f670 kind:function(arm,size=0x34) addr:0x0201f670
-func_0201f6a4 kind:function(arm,size=0x3c) addr:0x0201f6a4
-func_0201f6e0 kind:function(arm,size=0x44) addr:0x0201f6e0
+TimedSpriteSampledArcPresentation_Init kind:function(arm,size=0xd8) addr:0x0201f598
+TimedSpriteSampledArcPresentation_Destroy kind:function(arm,size=0x34) addr:0x0201f670
+TimedSpriteSampledArcPresentation_DestroyAndFree kind:function(arm,size=0x3c) addr:0x0201f6a4
+TimedSpriteSampledArcPresentation_Update kind:function(arm,size=0x44) addr:0x0201f6e0
 func_0201f724 kind:function(arm,size=0x140) addr:0x0201f724
 func_0201f864 kind:function(arm,size=0x140) addr:0x0201f864
 func_0201f9a4 kind:function(arm,size=0x4c) addr:0x0201f9a4
@@ -6965,7 +6965,7 @@ data_020d6138 kind:data(any) addr:0x020d6138
 data_020d6158 kind:data(any) addr:0x020d6158
 data_020d6180 kind:data(any) addr:0x020d6180
 data_020d61a8 kind:data(any) addr:0x020d61a8
-data_020d61d0 kind:data(any) addr:0x020d61d0
+gTimedSpriteSampledArcPresentationVtable kind:data(any) addr:0x020d61d0
 gTimedSpriteOffsetPresentationVtable kind:data(any) addr:0x020d61f8
 gTimedSpriteBurstManagerVtable kind:data(any) addr:0x020d6220
 data_020d6248 kind:data(any) addr:0x020d6248
