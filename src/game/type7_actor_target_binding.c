@@ -32,7 +32,7 @@ extern void AttachmentController_SetEnabled(void *value, s32 mode);
  * none exists. Actor interaction state may change through that dispatcher; no
  * direct SDK or hardware effects occur.
  */
-s32 func_02048a4c(void *self)
+s32 Type7Actor_TryInteractWithNearbyType4Object(void *self)
 {
     u8 *actor = (u8 *)self;
     u8 *best = 0;
@@ -85,7 +85,7 @@ s32 func_02048a4c(void *self)
  * Actor relation, callback, and subordinate object state may change; no value
  * is returned and there is no direct hardware effect.
  */
-void func_02048b94(void *self, void *target)
+void Type7Actor_SetTarget(void *self, void *target)
 {
     u8 *actor = (u8 *)self;
     *(void **)(actor + 0x280) = target;
@@ -102,7 +102,7 @@ void func_02048b94(void *self, void *target)
  * +0x2a8 with mode zero, and clear word +0x108. Actor relation and subordinate
  * state may change; no value is returned and no hardware is accessed directly.
  */
-void func_02048bcc(void *self)
+void Type7Actor_ClearTarget(void *self)
 {
     u8 *actor = (u8 *)self;
     *(void **)(actor + 0x280) = 0;

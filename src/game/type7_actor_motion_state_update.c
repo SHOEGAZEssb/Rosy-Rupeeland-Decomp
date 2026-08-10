@@ -12,7 +12,7 @@ extern "C" {
 #endif
 extern void Actor_SetPosition(void *actor);
 extern void Type7Actor_UpdateMotionTowardTransform(void *actor, const void *transform);
-extern void func_02048bcc(void *actor);
+extern void Type7Actor_ClearTarget(void *actor);
 extern void func_0204a014(void *actor);
 extern void func_0204a0d8(void *actor, s32 condition);
 #ifdef __cplusplus
@@ -28,7 +28,7 @@ extern void func_0204a0d8(void *actor, s32 condition);
  * actor's current transform +0x18.
  *
  * Finally, when signed countdown +0x258 is positive, decrement it and call
- * func_02048bcc exactly when it reaches zero. Actor, motion, callback, and
+ * Type7Actor_ClearTarget exactly when it reaches zero. Actor, motion, callback, and
  * game-work-derived state may change. GameWork_TestFlag reads the global game
  * state; there is no direct hardware access and no return value.
  */
@@ -50,6 +50,6 @@ void func_02049f78(void *self, s32 unused, s32 condition)
     if (*(s16 *)(actor + 0x258) > 0) {
         --*(s16 *)(actor + 0x258);
         if (*(s16 *)(actor + 0x258) == 0)
-            func_02048bcc(actor);
+            Type7Actor_ClearTarget(actor);
     }
 }

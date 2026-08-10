@@ -10,7 +10,7 @@
 .extern func_020127f8
 .extern Type7Actor_SetMotionTargetWithTimer
 .extern Type7Actor_ResetMotionAndCooldown
-.extern func_02048bcc
+.extern Type7Actor_ClearTarget
 .extern func_02048c10
 .extern func_0204a200
 .extern func_0204b078
@@ -73,7 +73,7 @@ L_02018cfc:
     cmp r8, #0x0
     beq L_02018ef4
     mov r0, r8
-    bl func_02048bcc
+    bl Type7Actor_ClearTarget
     b L_02018ef4
 L_02018d10:
     cmp r8, #0x0

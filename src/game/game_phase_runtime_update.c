@@ -43,7 +43,7 @@ extern s32 func_02008148(GamePhaseRuntime *self, s32 index);
 extern void func_0201dcec(void *object, s32 enabled);
 extern s32 GamePhaseRuntime_DispatchActorQueryRequest(GamePhaseRuntime *self);
 extern void func_020338e4(void *object);
-extern void func_02048bcc(void *object);
+extern void Type7Actor_ClearTarget(void *object);
 extern void *SceneManager_GetCurrent(void *manager);
 extern s32 Actor_TrySpawnTerrainGateObject(void);
 #ifdef __cplusplus
@@ -163,7 +163,7 @@ s32 func_02007430(GamePhaseRuntime *self)
         func_020338e4(*(void **)(b + 0x2ea4));
         object = *(void **)(b + 0x2ea8);
         if (object != 0 && (*(u32 *)((u8 *)object + 0x268) & 0x10))
-            func_02048bcc(object);
+            Type7Actor_ClearTarget(object);
         func_0200222c(func_020022dc(), 2, 0x40);
         object = allocRuntimeObject(0x88);
         if (object != 0)

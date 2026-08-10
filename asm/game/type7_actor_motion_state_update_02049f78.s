@@ -3,7 +3,7 @@
 .extern GameWork_TestFlag
 .extern Actor_SetPosition
 .extern Type7Actor_UpdateMotionTowardTransform
-.extern func_02048bcc
+.extern Type7Actor_ClearTarget
 .extern func_0204a014
 .extern func_0204a0d8
 .text
@@ -39,7 +39,7 @@ func_02049f78: ; 0x02049f78
     cmp r0, #0x0
     ldmneia sp!, {r3, r4, r5, pc}
     mov r0, r4
-    bl func_02048bcc
+    bl Type7Actor_ClearTarget
     ldmia sp!, {r3, r4, r5, pc}
 .L_02049ff4:
     ldr r1, [r4, #0x10]

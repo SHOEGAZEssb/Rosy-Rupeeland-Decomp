@@ -18326,7 +18326,7 @@ build build/reports/type7_actor_target_binding_02048a4c.json: objdiff build/deco
   base_object = build/decomp/asm/game/type7_actor_target_binding_02048a4c.o
 build build/reports/type7_actor_target_binding_02048a4c.txt: match_report build/reports/type7_actor_target_binding_02048a4c.json | tools/report_objdiff.py
   report_json = build/reports/type7_actor_target_binding_02048a4c.json
-  report_args = --section .text --function func_02048a4c --function func_02048b94 --function func_02048bcc --require-exact
+  report_args = --section .text --function Type7Actor_TryInteractWithNearbyType4Object --function Type7Actor_SetTarget --function Type7Actor_ClearTarget --require-exact
 build type7_actor_target_binding: phony build/decomp/src/game/type7_actor_target_binding.o build/decomp/asm/game/type7_actor_target_binding_02048a4c.o build/reports/type7_actor_target_binding_02048a4c.txt
 
 type7_actor_idle_control_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++

@@ -6,14 +6,14 @@
 .extern AttachmentController_SetEnabled
 .extern Type7Actor_HandleObjectInteraction
 .extern func_020adcac
-.global func_02048a4c
-.global func_02048b94
-.global func_02048bcc
-.type func_02048a4c, @function
-.type func_02048b94, @function
-.type func_02048bcc, @function
+.global Type7Actor_TryInteractWithNearbyType4Object
+.global Type7Actor_SetTarget
+.global Type7Actor_ClearTarget
+.type Type7Actor_TryInteractWithNearbyType4Object, @function
+.type Type7Actor_SetTarget, @function
+.type Type7Actor_ClearTarget, @function
 
-func_02048a4c: ; 0x02048a4c
+Type7Actor_TryInteractWithNearbyType4Object: ; 0x02048a4c
     stmdb sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, lr}
     mov r10, r0
     add r0, r10, #0x200
@@ -104,7 +104,7 @@ func_02048a4c: ; 0x02048a4c
     ldmia sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, pc}
 .L_02048b90: .word data_021052fc
 
-func_02048b94: ; 0x02048b94
+Type7Actor_SetTarget: ; 0x02048b94
     stmdb sp!, {r4, lr}
     mov r4, r0
     str r1, [r4, #0x280]
@@ -121,7 +121,7 @@ func_02048b94: ; 0x02048b94
     str r0, [r4, #0xd0]
     ldmia sp!, {r4, pc}
 
-func_02048bcc: ; 0x02048bcc
+Type7Actor_ClearTarget: ; 0x02048bcc
     stmdb sp!, {r4, lr}
     mov r4, r0
     mov r1, #0x0
@@ -141,6 +141,6 @@ func_02048bcc: ; 0x02048bcc
     str r0, [r4, #0x108]
     ldmia sp!, {r4, pc}
 
-.size func_02048a4c, func_02048b94 - func_02048a4c
-.size func_02048b94, func_02048bcc - func_02048b94
-.size func_02048bcc, . - func_02048bcc
+.size Type7Actor_TryInteractWithNearbyType4Object, Type7Actor_SetTarget - Type7Actor_TryInteractWithNearbyType4Object
+.size Type7Actor_SetTarget, Type7Actor_ClearTarget - Type7Actor_SetTarget
+.size Type7Actor_ClearTarget, . - Type7Actor_ClearTarget

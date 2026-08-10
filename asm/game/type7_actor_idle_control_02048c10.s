@@ -10,8 +10,8 @@
 .extern Type7Actor_TryInstallGlobalTargetCallback
 .extern Type7Actor_SetCallbackPair
 .extern Type7Actor_TryAcquireTarget
-.extern func_02048a4c
-.extern func_02048bcc
+.extern Type7Actor_TryInteractWithNearbyType4Object
+.extern Type7Actor_ClearTarget
 .extern func_0206c978
 .extern func_0206cc68
 .extern func_0206e3d0
@@ -28,7 +28,7 @@
 func_02048c10: ; 0x02048c10
     stmdb sp!, {r4, lr}
     mov r4, r0
-    bl func_02048bcc
+    bl Type7Actor_ClearTarget
     ldr r0, [r4, #0x268]
     orr r0, r0, #0x10000
     str r0, [r4, #0x268]
@@ -173,7 +173,7 @@ func_02048dd0: ; 0x02048dd0
     cmp r0, #0x0
     beq .L_02048e4c
     mov r0, r4
-    bl func_02048a4c
+    bl Type7Actor_TryInteractWithNearbyType4Object
     cmp r0, #0x0
     movne r0, #0x0
     ldmneia sp!, {r4, pc}

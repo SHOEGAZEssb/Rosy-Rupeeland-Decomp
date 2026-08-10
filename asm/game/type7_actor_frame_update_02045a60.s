@@ -19,7 +19,7 @@
 .extern Actor_UpdateGroundContactProbe
 .extern Type7Actor_ResetMotionAndCooldown
 .extern Type7Actor_DispatchCurrentCallback
-.extern func_02048b94
+.extern Type7Actor_SetTarget
 .extern func_0204b1e0
 .extern func_0204b7bc
 .extern func_0206c978
@@ -202,7 +202,7 @@ Type7Actor_UpdateFrame: ; 0x02045a60
     ldr r1, [r2, #0x0]
     add r1, r1, #0x2000
     ldr r1, [r1, #0xea4]
-    bl func_02048b94
+    bl Type7Actor_SetTarget
     ldr r0, .L_020461f0
     ldr r0, [r0, #0x0]
     add r0, r0, #0x3000

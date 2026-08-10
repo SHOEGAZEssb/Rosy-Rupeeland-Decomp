@@ -7,7 +7,7 @@
 .extern ActorCollection_SpawnActorFromDescriptor
 .extern Actor_RefreshTerrainHeight
 .extern Actor_GetCachedTerrainHeight
-.extern func_02048b94
+.extern Type7Actor_SetTarget
 .extern func_0204a564
 .extern func_020befec
 .extern func_020beb18
@@ -142,7 +142,7 @@ func_0204bf9c: ; 0x0204bf9c
     ldr r1, [r1, #0x0]
     add r1, r1, #0x2000
     ldr r1, [r1, #0xea4]
-    bl func_02048b94
+    bl Type7Actor_SetTarget
     ldr r0, [r5, #0x10]
     bic r0, r0, #0x1000000
     str r0, [r5, #0x10]

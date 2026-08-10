@@ -27,7 +27,7 @@
 .extern func_02027f94
 .extern func_020338e4
 .extern Actor_TrySpawnTerrainGateObject
-.extern func_02048bcc
+.extern Type7Actor_ClearTarget
 .extern func_0206ec68
 .extern func_020755bc
 .extern func_02078384
@@ -270,7 +270,7 @@ L_02007720:
     moveq r1, #0x0
     cmp r1, #0x0
     beq L_0200776c
-    bl func_02048bcc
+    bl Type7Actor_ClearTarget
 L_0200776c:
     bl func_020022dc
     ldr r2, L_02007840

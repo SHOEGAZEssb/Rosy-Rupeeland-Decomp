@@ -26,7 +26,7 @@ extern s32 Actor_GetCachedTerrainHeight(void *actor);
 extern void ActorSpawnDescriptor_Init(
     void *, u16, u16, s32, s32, s32, u8, u8, u16, u16, u16, u8, u8,
     s32, s32, s32, s32, s32, u16, u8, u8, u8, u8);
-extern void func_02048b94(void *actor, void *object);
+extern void Type7Actor_SetTarget(void *actor, void *object);
 extern void func_0204a014(void *actor);
 extern s32 func_0204a564(void *actor);
 extern u8 *func_0204c51c(s32 index);
@@ -126,7 +126,7 @@ s32 func_0204bf9c(s32 recordIndex, s32 phase, s32 x, s32 y, s32 field2b8)
     *(s32 *)(actor + 0x24) = Actor_GetCachedTerrainHeight(actor);
     *(s16 *)(actor + 0x27e) = (s16)phase;
     *(u32 *)(actor + 0x200) = *(u16 *)(record + 0x20);
-    func_02048b94(actor, *(void **)(data_021052fc + 0x2ea4));
+    Type7Actor_SetTarget(actor, *(void **)(data_021052fc + 0x2ea4));
     *(u32 *)(actor + 0x10) &= ~0x01000000;
 
     if (*(s8 *)(actor + 0x48) == 1) {

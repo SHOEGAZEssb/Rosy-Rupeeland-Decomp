@@ -25,7 +25,7 @@
 .extern ActorDerivedType1_UpdateHorizontalInputMotion
 .extern ActorDerivedType1_UpdateAuxiliaryResourceMotion
 .extern ActorDerivedRuntime_UpdateFrame
-.extern func_02048bcc
+.extern Type7Actor_ClearTarget
 .extern func_0204c798
 .extern func_0204cc14
 .extern func_0204ced8
@@ -200,7 +200,7 @@ ActorDerivedType1_UpdateFrame: ; 0x02035538
     moveq r1, #0x0
     cmp r1, #0x0
     beq .L_02035798
-    bl func_02048bcc
+    bl Type7Actor_ClearTarget
 .L_02035798:
     ldr r0, .L_02035ba4
     mov r1, #0x0

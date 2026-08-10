@@ -19,7 +19,7 @@ extern void ActorDerivedRuntime_UpdateFrame(void *actor);
 extern s32 func_020adcac(const void *first, const void *second);
 extern void Type7Actor_ResetMotionAndCooldown(void *actor);
 extern void func_0204b7bc(void *actor, s32 enabled);
-extern void func_02048b94(void *actor, void *worldObject, s32 value);
+extern void Type7Actor_SetTarget(void *actor, void *worldObject, s32 value);
 extern void *func_02025d14(void *object);
 extern void func_02026588(void *object, s32 value);
 extern void Type7Actor_DispatchCurrentCallback(void *actor);
@@ -66,7 +66,7 @@ static s32 callback_pair_matches(const u8 *actor, const void *first,
  * With no +0x280 target, an exact set of idle/descriptor conditions may copy
  * +0x1fc and record +0x56/+0x58 to +0x10c/+0x110/+0x114 and call vtable +0x74
  * with +0x298. Positive +0x108 commits +0x104/+0x200 and record +0x30 to shared
- * scene/actor state, calls func_02048b94 and the world +0x30e8 helpers, then
+ * scene/actor state, calls Type7Actor_SetTarget and the world +0x30e8 helpers, then
  * Type7Actor_DispatchCurrentCallback. A target at +0x280 may instead supply a transform through its
  * vtable +0xb4 into actor +0x214. Completed owned resource +0x234 is released
  * and GameWork flag 0x3fd cleared.
@@ -165,7 +165,7 @@ void Type7Actor_UpdateFrame(void *self)
         record = *(u8 **)(actor + 0x29c);
         *(u16 *)(actor + 0x258) = *(u16 *)(record + 0x30);
         worldObject = *(void **)(data_021052fc + 0x2ea4);
-        func_02048b94(actor, worldObject, *(s16 *)(record + 0x30));
+        Type7Actor_SetTarget(actor, worldObject, *(s16 *)(record + 0x30));
         worldHelper = *(void **)(data_021052fc + 0x30e8);
         func_02026588(func_02025d14(worldHelper), 0);
         *((u8 *)func_02025d14(worldHelper) + 0x8d) = 0;

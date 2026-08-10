@@ -14,7 +14,7 @@ extern u32 data_020e18d0[];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_02048bcc(void *actor);
+extern void Type7Actor_ClearTarget(void *actor);
 extern s32 func_0206e3d0(void *object, void *resource);
 extern void func_0206c978(void *resource);
 extern void GameWork_ClearFlag(void *gameWork, u32 flag);
@@ -24,7 +24,7 @@ extern void func_020099c0(void *context, s32 id, s32 mode);
 extern s32 Type7Actor_TryInstallGlobalTargetCallback(void *actor);
 extern s32 Type7Actor_TryCancelDistantTarget(void *actor);
 extern s32 Type7Actor_TryAcquireTarget(void *actor, s32 finiteMode);
-extern s32 func_02048a4c(void *actor);
+extern s32 Type7Actor_TryInteractWithNearbyType4Object(void *actor);
 #ifdef __cplusplus
 }
 #endif
@@ -38,14 +38,14 @@ static void set_virtual_mode(u8 *actor, s32 mode)
 }
 
 /*
- * Input is a type-seven actor. Run func_02048bcc to clear its target, then set
+ * Input is a type-seven actor. Run Type7Actor_ClearTarget to clear its target, then set
  * actor flag 0x10000. Target, subordinate, and flag state may change; this
  * routine has no return value or direct SDK/hardware effect.
  */
 void func_02048c10(void *self)
 {
     u8 *actor = (u8 *)self;
-    func_02048bcc(actor);
+    Type7Actor_ClearTarget(actor);
     *(u32 *)(actor + 0x268) |= 0x10000;
 }
 
@@ -109,7 +109,7 @@ s32 func_02048d60(void *self)
 /*
  * Input is a type-seven actor. Set flag 0x8000 and run the same three target
  * transitions as func_02048d60. If none succeeds and collision bit
- * +0xd0/0x40000 is set, also scan type-four objects through func_02048a4c.
+ * +0xd0/0x40000 is set, also scan type-four objects through Type7Actor_TryInteractWithNearbyType4Object.
  * When all decline, select animation eleven below the +0x1dc height or two
  * otherwise. Return zero on every path. Actor target, callback, flags, and
  * animation may change; no SDK or hardware effect occurs directly.
@@ -122,7 +122,7 @@ s32 func_02048dd0(void *self)
         || Type7Actor_TryAcquireTarget(actor, 1) != 0)
         return 0;
     if ((*(u32 *)(actor + 0xd0) & 0x40000) != 0
-        && func_02048a4c(actor) != 0)
+        && Type7Actor_TryInteractWithNearbyType4Object(actor) != 0)
         return 0;
     *(u16 *)(actor + 0xd6) =
         *(s32 *)(actor + 0x1dc) < *(s32 *)(actor + 0x24) ? 11 : 2;
