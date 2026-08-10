@@ -21,7 +21,7 @@
 .extern func_0207a13c
 .extern func_0207a16c
 .extern func_0207c38c
-.extern func_02082890
+.extern ActorRuntimeFlags_Init
 .extern func_02092364
 .extern func_020983c8
 .extern MainBgExtendedPaletteBuffer_Destroy
@@ -74,7 +74,7 @@
 .extern data_021f4090
 .extern data_021f512c
 .extern data_021f5138
-.extern data_021f5ebc
+.extern gActorRuntimeFlags
 .extern data_021f5ec0
 .extern data_021f5f0c
 .extern data_021f5f18
@@ -98,7 +98,7 @@
 .extern func_0207a14c
 .extern func_0207a17c
 .extern func_0207c424
-.extern func_0208289c
+.extern ActorRuntimeFlags_Destroy
 .extern func_020923a0
 .extern func_02098450
 .extern gFrameTaskList
@@ -443,14 +443,14 @@ __sinit_020c176c: ; 0x020c176c
 __sinit_020c1798: ; 0x020c1798
     stmdb sp!, {r3, lr}
     ldr r0, .L_020c17b8
-    bl func_02082890
+    bl ActorRuntimeFlags_Init
     ldr r0, .L_020c17b8
     ldr r1, .L_020c17bc
     ldr r2, .L_020c17c0
     bl __register_global_object
     ldmia sp!, {r3, pc}
-.L_020c17b8: .word data_021f5ebc
-.L_020c17bc: .word func_0208289c
+.L_020c17b8: .word gActorRuntimeFlags
+.L_020c17bc: .word ActorRuntimeFlags_Destroy
 .L_020c17c0: .word data_021f5ec0
 
 __sinit_020c17c4: ; 0x020c17c4

@@ -2,7 +2,7 @@
 .text
 .extern data_021052fc
 .extern data_02105310
-.extern data_021f5ebc
+.extern gActorRuntimeFlags
 .extern func_02005030
 .extern func_02005058
 .extern ActorCollision_ResolveCornerContacts
@@ -14,7 +14,7 @@
 .extern ActorCollection_NotifyPairEnded
 .extern Actor_BuildCollisionRect
 .extern func_02056f34
-.extern func_020828a0
+.extern ActorRuntimeFlags_Test
 .extern func_020adc90
 .extern func_020be334
 
@@ -456,7 +456,7 @@ ActorCollection_ProcessCategory1And2Pairs: ; 0x0202e15c
     bne .L_0202e814
     ldr r0, .L_0202e848
     mov r1, #0x1
-    bl func_020828a0
+    bl ActorRuntimeFlags_Test
     cmp r0, #0x0
     bne .L_0202e814
     ldr r0, .L_0202e84c
@@ -498,6 +498,6 @@ ActorCollection_ProcessCategory1And2Pairs: ; 0x0202e15c
     add sp, sp, #0x88
     ldmia sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, pc}
 .L_0202e844: .word data_021052fc
-.L_0202e848: .word data_021f5ebc
+.L_0202e848: .word gActorRuntimeFlags
 .L_0202e84c: .word data_02105310
     .size ActorCollection_ProcessCategory1And2Pairs, . - ActorCollection_ProcessCategory1And2Pairs

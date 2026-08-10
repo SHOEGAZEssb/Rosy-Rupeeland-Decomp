@@ -18,7 +18,7 @@ typedef struct Overlay039FinalVector {
 extern void *gSoundContext;
 extern void *gSystemState;
 extern void *data_021052fc;
-extern void *data_021f5ebc;
+extern void *gActorRuntimeFlags;
 extern const s16 data_020c9670[];
 extern const s32 data_ov039_022083fc[];
 
@@ -43,7 +43,7 @@ extern void func_0209e35c(void *object);
 extern void *func_0201e0ec(void *object);
 extern void func_020a27a0(void *resource, ...);
 extern void func_020a68fc(void *object);
-extern s32 func_020828a0(void *object, s32 mode);
+extern s32 ActorRuntimeFlags_Test(void *object, s32 mode);
 extern void func_ov049_0220bbdc(void *system, const void *position,
                                 s32 index, s32 mode);
 extern void func_ov007_021fc16c(void *object);

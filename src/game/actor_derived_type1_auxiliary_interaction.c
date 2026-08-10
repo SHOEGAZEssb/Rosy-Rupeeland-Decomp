@@ -4,7 +4,7 @@
 /* Dispatch type-1 interactions that create, update, or hand off an auxiliary resource. */
 extern void *gSceneManager;
 extern u8 data_02105310[];
-extern void *data_021f5ebc;
+extern void *gActorRuntimeFlags;
 extern const char data_020df48c[];
 extern void *gGameWork;
 extern u8 *data_021052fc;
@@ -17,7 +17,7 @@ extern void *SceneManager_GetCurrent(void *manager);
 extern s32 ActorRuntimeCollection_GetBusyState(void *state);
 extern s32 ActorDerivedType1_HasBlockingStateFlags(void *actor);
 extern s32 Actor_IsAtCachedTerrainHeight(void *actor);
-extern s32 func_020828a0(void *state, s32 mask);
+extern s32 ActorRuntimeFlags_Test(void *state, s32 mask);
 extern void ActorDerivedType1_TeardownActiveRecord(void *actor);
 extern void func_0206c978(void *resource);
 extern void *func_0206c68c(void *allocation, void *actor);
@@ -75,7 +75,7 @@ s32 ActorDerivedType1_HandleAuxiliaryInteraction(void *self, void *other)
         return 1;
 
     if (target[0x4d] == 2) {
-        if (func_020828a0(data_021f5ebc, 0x40) != 0 ||
+        if (ActorRuntimeFlags_Test(gActorRuntimeFlags, 0x40) != 0 ||
             *(s16 *)(actor + 0x268) > 0)
             return 1;
         ActorDerivedType1_TeardownActiveRecord(actor);
@@ -103,7 +103,7 @@ s32 ActorDerivedType1_HandleAuxiliaryInteraction(void *self, void *other)
     } else if (target[0x4d] == 7) {
         void *targetResource;
         s32 eligible = 0;
-        if (func_020828a0(data_021f5ebc, 0x40) != 0) return 1;
+        if (ActorRuntimeFlags_Test(gActorRuntimeFlags, 0x40) != 0) return 1;
         targetResource = *(void **)(target + 0x234);
         if (targetResource != 0 && func_0206e3a4(targetResource) == 0)
             eligible = 1;

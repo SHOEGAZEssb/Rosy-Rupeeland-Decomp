@@ -42,12 +42,12 @@ typedef struct ActorCollectionTerrainUpdate {
     s32 categoryCounts_0e20[5];
 } ActorCollectionTerrainUpdate;
 
-extern u8 data_021f5ebc[];
+extern u8 gActorRuntimeFlags[];
 
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern s32 func_020828a0(void *, s32);
+extern s32 ActorRuntimeFlags_Test(void *, s32);
 extern s32 Actor_GetCachedTerrainHeight(TerrainUpdateActor *);
 extern u32 Actor_QueryTerrainCell(TerrainUpdateActor *, s32, s32);
 extern void ActorRuntimeTriple_Assign(void *, s32, s32, s32);
@@ -87,7 +87,7 @@ static s32 terrainCodeIsRestricted(u32 terrain)
 void ActorCollection_UpdateCategory3TerrainActors(ActorCollectionTerrainUpdate *self)
 {
     s32 count = self->categoryCounts_0e20[3];
-    s32 checksEnabled = !func_020828a0(data_021f5ebc, 1);
+    s32 checksEnabled = !ActorRuntimeFlags_Test(gActorRuntimeFlags, 1);
     s32 i;
 
     for (i = 0; i < count; i++) {

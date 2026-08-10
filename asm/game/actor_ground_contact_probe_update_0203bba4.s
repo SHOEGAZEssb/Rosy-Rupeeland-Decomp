@@ -2,7 +2,7 @@
 .text
 .extern GameWork_TestFlag
 .extern Sound_Play
-.extern data_021f5ebc
+.extern gActorRuntimeFlags
 .extern func_02005030
 .extern func_02005058
 .extern func_02005084
@@ -12,7 +12,7 @@
 .extern Actor_QueryTerrainCell
 .extern func_0203463c
 .extern func_02034800
-.extern func_020828a0
+.extern ActorRuntimeFlags_Test
 .extern gGameWork
 .extern gSoundContext
     .global Actor_UpdateGroundContactProbe
@@ -25,7 +25,7 @@ Actor_UpdateGroundContactProbe: ; 0x0203bba4
     bne .L_0203c11c
     ldr r0, .L_0203c124
     mov r1, #0x1
-    bl func_020828a0
+    bl ActorRuntimeFlags_Test
     cmp r0, #0x0
     bne .L_0203c11c
     ldr r0, [r10, #0xd0]
@@ -390,7 +390,7 @@ Actor_UpdateGroundContactProbe: ; 0x0203bba4
 .L_0203c11c:
     add sp, sp, #0x34
     ldmia sp!, {r4, r5, r6, r7, r8, r9, r10, r11, pc}
-.L_0203c124: .word data_021f5ebc
+.L_0203c124: .word gActorRuntimeFlags
 .L_0203c128: .word gGameWork
 .L_0203c12c: .word 0x25d
 .L_0203c130: .word gSoundContext

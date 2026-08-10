@@ -1,26 +1,26 @@
 #include "tingle/game_phase_script_vm.h"
 
-/* Implement a conditional script command against the recovered global object at 0x021f5ebc. */
+/* Implement a conditional script opcode that sets a global actor-runtime flag. */
 
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern u8 data_021f5ebc[];
-extern void func_020828ac(void *object, u32 value);
+extern u8 gActorRuntimeFlags[];
+extern void ActorRuntimeFlags_Set(void *object, u32 value);
 #ifdef __cplusplus
 }
 #endif
 
 /*
- * Pop and discard two operands, then pop a condition. When it is zero, call
- * func_020828ac for data_021f5ebc with value 0x100. Return zero. The discarded
- * operands may be retained for bytecode-format compatibility.
+ * Pop and discard two operands, then pop a condition. When it is zero, set
+ * mask 0x100 in gActorRuntimeFlags. Return zero. The discarded operands may
+ * be retained for bytecode-format compatibility.
  */
-s32 func_020178fc(GamePhaseActorScriptVm *self)
+s32 GamePhaseActorScriptVm_SetActorRuntimeFlag100WhenZero(GamePhaseActorScriptVm *self)
 {
     (void)GamePhaseScriptVm_Pop(&self->base);
     (void)GamePhaseScriptVm_Pop(&self->base);
     if (GamePhaseScriptVm_Pop(&self->base) == 0)
-        func_020828ac(data_021f5ebc, 0x100);
+        ActorRuntimeFlags_Set(gActorRuntimeFlags, 0x100);
     return 0;
 }

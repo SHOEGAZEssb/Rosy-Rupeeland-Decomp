@@ -1,14 +1,14 @@
 #include "tingle/types.h"
 
 /* Probe predicted actor ground contact, manage a contact cooldown, and derive escape motion. */
-extern u8 data_021f5ebc[];
+extern u8 gActorRuntimeFlags[];
 extern void *gGameWork;
 extern void *gSoundContext;
 
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern s32 func_020828a0(void *state, s32 index);
+extern s32 ActorRuntimeFlags_Test(void *state, s32 index);
 extern s32 Actor_QueryTerrainHeight(void *actor, s32 x, s32 y);
 extern s32 Actor_GetCachedTerrainHeight(void *actor);
 extern u32 Actor_QueryTerrainCell(void *actor, s32 x, s32 y);
@@ -39,7 +39,7 @@ static s32 isTypeOne(const u8 *actor)
 
 /*
  * Return immediately for actor +0x14 bit two, global state query
- * func_020828a0(data_021f5ebc,1), or +0xd0 bit 0x80000. Bit 0x10000 selects
+ * ActorRuntimeFlags_Test(gActorRuntimeFlags,1), or +0xd0 bit 0x80000. Bit 0x10000 selects
  * the landing-release path: probe terrain at position plus all primary and
  * secondary motion; once actor Z +0x24 is not above it, clear bit 0x10000 only
  * when bit 0x10 is clear and Z equals floor +0x1dc.
@@ -85,7 +85,7 @@ void Actor_UpdateGroundContactProbe(void *self)
     u16 duration;
 
     if ((*(u32 *)(actor + 0x14) & 2) != 0 ||
-        func_020828a0(data_021f5ebc, 1) != 0)
+        ActorRuntimeFlags_Test(gActorRuntimeFlags, 1) != 0)
         return;
     flags = *(u32 *)(actor + 0xd0);
     if ((flags & 0x80000) != 0)

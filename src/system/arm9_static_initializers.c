@@ -62,8 +62,8 @@ extern void func_0207a16c(void *);
 extern void func_0207a17c(void *);
 extern void func_0207c38c(void *);
 extern void func_0207c424(void *);
-extern void func_02082890(void *);
-extern void func_0208289c(void *);
+extern void ActorRuntimeFlags_Init(void *);
+extern void ActorRuntimeFlags_Destroy(void *);
 extern void func_020983c8(void *);
 extern void func_02098450(void *);
 
@@ -114,7 +114,7 @@ extern u8 data_021f3d68[];
 extern u8 data_021f3d5c[];
 extern u8 data_021f5138[];
 extern u8 data_021f512c[];
-extern u8 data_021f5ebc[];
+extern u8 gActorRuntimeFlags[];
 extern u8 data_021f5ec0[];
 extern u8 data_021f5f18[];
 extern u8 data_021f5f0c[];
@@ -338,14 +338,14 @@ void __sinit_020c176c(void)
 }
 
 /*
- * No inputs. Construct data_021f5ebc and register func_0208289c with record
- * data_021f5ec0. Global lifetime state changes; no value is returned and no
- * hardware is accessed directly.
+ * No inputs. Clear gActorRuntimeFlags and register ActorRuntimeFlags_Destroy
+ * with record data_021f5ec0. Global lifetime state changes; no value is
+ * returned and no hardware is accessed directly.
  */
 void __sinit_020c1798(void)
 {
-    func_02082890(data_021f5ebc);
-    __register_global_object(data_021f5ebc, func_0208289c, data_021f5ec0);
+    ActorRuntimeFlags_Init(gActorRuntimeFlags);
+    __register_global_object(gActorRuntimeFlags, ActorRuntimeFlags_Destroy, data_021f5ec0);
 }
 
 /*

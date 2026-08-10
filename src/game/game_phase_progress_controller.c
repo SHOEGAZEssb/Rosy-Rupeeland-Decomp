@@ -51,11 +51,11 @@ extern u8 data_02105310[];
 extern u32 data_02105634;
 extern u8 data_02105638[];
 extern GamePhaseProgressController data_02105644;
-extern u8 data_021f5ebc[];
+extern u8 gActorRuntimeFlags[];
 extern void __register_global_object(void *, void (*)(void *), void *);
 extern s32 ActorRuntimeCollection_GetBusyState(void *);
 extern void ActorRuntimeCollection_QueueValue(void *, void *);
-extern void func_020828a0(void *, s32);
+extern u32 ActorRuntimeFlags_Test(const void *, u32);
 extern s32 func_020befec(s32, s32);
 extern s32 func_020bf1f8(s32, s32);
 void func_02027604(GamePhaseProgressController *);
@@ -114,7 +114,7 @@ void func_02027654(GamePhaseProgressController *self)
     if (self->updateState_0c != 1)
         return;
 
-    func_020828a0(data_021f5ebc, 0x100);
+    ActorRuntimeFlags_Test(gActorRuntimeFlags, 0x100);
     self->elapsedTicks_28++;
     self->counter_00--;
     if (self->counter_00 == 0 && self->warningState_10 == 2 &&

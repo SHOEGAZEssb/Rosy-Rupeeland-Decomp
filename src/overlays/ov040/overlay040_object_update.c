@@ -35,12 +35,12 @@ extern void func_ov040_021fcea0(void *object, s32 x, s32 y, s32 z);
 extern void func_ov040_021fceb0(void *object, s32 first, s32 second);
 extern void func_020a2614(void *context, s32 type, s32 x, s32 y, s32 value);
 extern void func_020a27a0(void *context, s32 type, s32 x, s32 y);
-extern s32 func_020828a0(const void *input, s32 mask);
+extern s32 ActorRuntimeFlags_Test(const void *input, s32 mask);
 extern void func_0209c3b4(void *context);
 extern void func_0209c430(void *context, const void *position,
                           const void *scale, u16 value, const void *bounds,
                           s32 zero1, const void *region, s32 mask, s32 zero2);
-extern const u8 data_021f5ebc[];
+extern const u8 gActorRuntimeFlags[];
 extern const s32 data_ov040_02207d48[];
 #ifdef __cplusplus
 }
@@ -351,7 +351,7 @@ extern "C" void func_ov040_02200bf4(void *scene)
     }
 
     if ((FIELD(u16, followup, 0x42) & 4) == 0) {
-        if (func_020828a0(data_021f5ebc, 0x80) == 0 &&
+        if (ActorRuntimeFlags_Test(gActorRuntimeFlags, 0x80) == 0 &&
             FIELD(s32, scene, 0xb94) == 0 &&
             FIELD(s32, scene, 0xad4) == 0 &&
             FIELD(s32, scene, 0xb9c) == 0) {

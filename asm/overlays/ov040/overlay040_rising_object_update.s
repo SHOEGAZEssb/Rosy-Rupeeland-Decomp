@@ -1,8 +1,8 @@
     .text
 /* Exact fallback; see overlay040_object_update.c for portable C. */
-    .extern data_021f5ebc
+    .extern gActorRuntimeFlags
     .extern GraphicsSpriteState_SetAnimationIndex
-    .extern func_020828a0
+    .extern ActorRuntimeFlags_Test
     .extern func_020a2614
     .extern func_020a27a0
     .extern func_ov040_021fcea0
@@ -123,7 +123,7 @@ func_ov040_02200bf4: ; 0x02200bf4
     bne .L_02200ea8
     ldr r0, .L_02200eb4
     mov r1, #0x80
-    bl func_020828a0
+    bl ActorRuntimeFlags_Test
     cmp r0, #0x0
     ldreq r0, [r4, #0xb94]
     cmpeq r0, #0x0
@@ -195,5 +195,5 @@ func_ov040_02200bf4: ; 0x02200bf4
     add sp, sp, #0x4
     ldmia sp!, {r3, r4, pc}
 .L_02200eb0: .word 0x1ff
-.L_02200eb4: .word data_021f5ebc
+.L_02200eb4: .word gActorRuntimeFlags
     .size func_ov040_02200bf4, . - func_ov040_02200bf4

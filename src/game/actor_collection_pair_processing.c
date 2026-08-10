@@ -48,7 +48,7 @@ typedef struct CollisionWords {
 
 extern void *data_021052fc;
 extern u8 data_02105310[];
-extern u8 data_021f5ebc[];
+extern u8 gActorRuntimeFlags[];
 
 #ifdef __cplusplus
 extern "C" {
@@ -65,7 +65,7 @@ extern s32 ActorPairMatrix_Get(u8 *, s32, s32);
 extern void ActorPairMatrix_Clear(u8 *, s32, s32);
 extern s32 ActorCollection_NotifyPairActive(ActorPairCollection *, PairActor *, PairActor *, s32);
 extern void ActorCollection_NotifyPairEnded(ActorPairCollection *, PairActor *, PairActor *);
-extern s32 func_020828a0(void *, s32);
+extern s32 ActorRuntimeFlags_Test(void *, s32);
 extern s32 ActorRuntimeCollection_GetPendingAttachmentFlag(void *);
 extern void ActorCollision_ResolveCornerContacts(PairActor *, void *);
 extern void ActorCollision_ResolveSweptMovement(PairActor *, void *);
@@ -240,7 +240,7 @@ void ActorCollection_ProcessCategory1And2Pairs(ActorPairCollection *self)
         if (actorA->field_54 &&
             (actorA->type_4d == 1 || actorA->type_4d == 7)) {
             if (!(actorA->flags_14 & 0x40) &&
-                !func_020828a0(data_021f5ebc, 1)) {
+                !ActorRuntimeFlags_Test(gActorRuntimeFlags, 1)) {
                 if (!ActorRuntimeCollection_GetPendingAttachmentFlag(data_02105310))
                     ActorCollision_ResolveCornerContacts(actorA, contextValue);
                 ActorCollision_ResolveSweptMovement(actorA, contextValue);

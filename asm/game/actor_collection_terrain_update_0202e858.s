@@ -1,10 +1,10 @@
 ; Matching retail form; see src/game/actor_collection_terrain_update.c.
 .text
-.extern data_021f5ebc
+.extern gActorRuntimeFlags
 .extern ActorRuntimeTriple_Assign
 .extern Actor_GetCachedTerrainHeight
 .extern Actor_QueryTerrainCell
-.extern func_020828a0
+.extern ActorRuntimeFlags_Test
 
     .global ActorCollection_UpdateCategory3TerrainActors
     .type ActorCollection_UpdateCategory3TerrainActors, @function
@@ -15,7 +15,7 @@ ActorCollection_UpdateCategory3TerrainActors: ; 0x0202e858
     ldr r7, [r0, #0xe2c]
     ldr r0, .L_0202eb14
     mov r1, #0x1
-    bl func_020828a0
+    bl ActorRuntimeFlags_Test
     cmp r0, #0x0
     moveq r4, #0x1
     mov r5, #0x1
@@ -196,5 +196,5 @@ ActorCollection_UpdateCategory3TerrainActors: ; 0x0202e858
     blt .L_0202e890
     add sp, sp, #0x8
     ldmia sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, pc}
-.L_0202eb14: .word data_021f5ebc
+.L_0202eb14: .word gActorRuntimeFlags
     .size ActorCollection_UpdateCategory3TerrainActors, . - ActorCollection_UpdateCategory3TerrainActors

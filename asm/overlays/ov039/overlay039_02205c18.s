@@ -5,7 +5,7 @@
     .extern GraphicsSpriteState_SetAnimationIndex
     .extern func_ov007_021fc16c
     .extern func_020befec
-    .extern func_020828a0
+    .extern ActorRuntimeFlags_Test
     .extern func_02005030
     .extern func_ov049_0220bbdc
     .extern func_02005058
@@ -16,7 +16,7 @@
     .extern genrand_int32
     .extern func_02058d40
     .extern func_0205940c
-    .extern data_021f5ebc
+    .extern gActorRuntimeFlags
     .extern gSoundContext
     .global func_ov039_02205c18
 func_ov039_02205c18:
@@ -86,7 +86,7 @@ func_ov039_02205c18:
     mov r2, #0x8
     ldr r0, L_02205f58
     strh r2, [r4, #0xb6]
-    bl func_020828a0
+    bl ActorRuntimeFlags_Test
     cmp r0, #0x0
     ldreqsh r0, [r4, #0xba]
     subeq r0, r0, #0xa
@@ -101,7 +101,7 @@ L_02205d4c:
     mov r2, #0x23
     ldr r0, L_02205f58
     strh r2, [r4, #0xb6]
-    bl func_020828a0
+    bl ActorRuntimeFlags_Test
     cmp r0, #0x0
     ldreqsh r0, [r4, #0xba]
     subeq r0, r0, #0x1e
@@ -236,7 +236,7 @@ L_02205f28:
     bl func_0205940c
     add sp, sp, #0x10
     ldmia sp!, {r3, r4, r5, r6, r7, r8, r9, pc}
-L_02205f58: .word data_021f5ebc
+L_02205f58: .word gActorRuntimeFlags
 L_02205f5c: .word gSoundContext
 L_02205f60: .word 0x1c5
     .size func_ov039_02205c18, .-func_ov039_02205c18

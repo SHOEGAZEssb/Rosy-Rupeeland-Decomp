@@ -9,7 +9,7 @@
 .extern data_020e1708
 .extern data_020e1cfc
 .extern data_02105310
-.extern data_021f5ebc
+.extern gActorRuntimeFlags
 .extern func_02005030
 .extern func_02005058
 .extern ActorRuntimeCollection_GetBusyState
@@ -29,7 +29,7 @@
 .extern func_0206c978
 .extern func_0206cb04
 .extern func_0206e590
-.extern func_020828a0
+.extern ActorRuntimeFlags_Test
 .extern func_020adae4
 .extern func_020adc90
 .extern gGameWork
@@ -55,7 +55,7 @@ Type7Actor_HandleContact: ; 0x02046660
     beq .L_02046d48
     ldr r0, .L_02046d64
     mov r1, #0x40
-    bl func_020828a0
+    bl ActorRuntimeFlags_Test
     cmp r0, #0x0
     bne .L_02046d48
     ldr r0, [r6, #0x10]
@@ -506,7 +506,7 @@ Type7Actor_HandleContact: ; 0x02046660
     add sp, sp, #0x18
     ldmia sp!, {r3, r4, r5, r6, r7, r8, r9, pc}
 .L_02046d60: .word data_02105310
-.L_02046d64: .word data_021f5ebc
+.L_02046d64: .word gActorRuntimeFlags
 .L_02046d68: .word data_020e1cfc
 .L_02046d6c: .word gHeapContext
 .L_02046d70: .word data_020e16d8

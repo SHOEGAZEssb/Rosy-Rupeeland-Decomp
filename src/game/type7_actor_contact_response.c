@@ -6,7 +6,7 @@
  * type-specific separation, interaction cues, and then delegates to base contact.
  */
 extern u8 data_02105310[];
-extern u8 data_021f5ebc[];
+extern u8 gActorRuntimeFlags[];
 extern const char data_020e1cfc[];
 extern u32 data_020e16d8[];
 extern u32 data_020e16b0[];
@@ -19,7 +19,7 @@ extern "C" {
 #endif
 extern s32 Type7Actor_IsInteractionSceneActive(void *actor, void *other, s32 context);
 extern s32 ActorRuntimeCollection_GetBusyState(void *state);
-extern s32 func_020828a0(void *state, s32 mask);
+extern s32 ActorRuntimeFlags_Test(void *state, s32 mask);
 extern void *func_0206c68c(void *resource, void *actor);
 extern void func_0206cb04(void *resource, void *other, s32 mode);
 extern void func_0206e590(void *resource, s32 mode);
@@ -50,7 +50,7 @@ extern s32 func_02032a94(void *actor, void *other, s32 context);
 /*
  * Inputs are actor, other object, and contact context. Custom processing first
  * requires Type7Actor_IsInteractionSceneActive success, clear global state from ActorRuntimeCollection_GetBusyState and
- * func_020828a0, nonnull actor target +0x280, and clear actor +0x10 bit
+ * ActorRuntimeFlags_Test, nonnull actor target +0x280, and clear actor +0x10 bit
  * 0x01000000. A qualifying type-two object can allocate/construct the 0xb4-byte
  * owned resource at +0x234, install data_020e16d8 through Type7Actor_SetCallbackPair, set
  * GameWork flag 0x3fd, and submit the object to func_0206cb04. Other type-two
@@ -80,7 +80,7 @@ s32 Type7Actor_HandleContact(void *self, void *otherObject, s32 context)
     if (Type7Actor_IsInteractionSceneActive(actor, other, context) == 0
         || ActorRuntimeCollection_GetBusyState(data_02105310) != 0
         || *(void **)(actor + 0x280) == 0
-        || func_020828a0(data_021f5ebc, 0x40) != 0
+        || ActorRuntimeFlags_Test(gActorRuntimeFlags, 0x40) != 0
         || (*(u32 *)(actor + 0x10) & 0x01000000) != 0) {
         return func_02032a94(actor, other, context);
     }

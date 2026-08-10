@@ -2,10 +2,10 @@
 .text
 .extern data_020c37ec
 .extern data_020c37f0
-.extern data_021f5ebc
+.extern gActorRuntimeFlags
 .extern func_02027788
 .extern func_02027d7c
-.extern func_020828a0
+.extern ActorRuntimeFlags_Test
 
     .global func_02027654
     .type func_02027654, @function
@@ -35,7 +35,7 @@ func_02027654: ; 0x02027654
 .L_020276a8:
     ldr r0, .L_0202777c
     mov r1, #0x100
-    bl func_020828a0
+    bl ActorRuntimeFlags_Test
     ldr r0, [r4, #0x28]
     add r0, r0, #0x1
     str r0, [r4, #0x28]
@@ -88,7 +88,7 @@ func_02027654: ; 0x02027654
     addne r0, r0, #0x1
     strne r0, [r4, #0x10]
     ldmia sp!, {r4, pc}
-.L_0202777c: .word data_021f5ebc
+.L_0202777c: .word gActorRuntimeFlags
 .L_02027780: .word data_020c37ec
 .L_02027784: .word data_020c37f0
     .size func_02027654, . - func_02027654

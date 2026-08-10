@@ -7,7 +7,7 @@
 .extern data_020df48c
 .extern data_021052fc
 .extern data_02105310
-.extern data_021f5ebc
+.extern gActorRuntimeFlags
 .extern ActorMotionJitter_EnsureMinimum
 .extern ActorRuntimeCollection_GetBusyState
 .extern func_02032a94
@@ -22,7 +22,7 @@
 .extern func_0206c978
 .extern func_0206cb04
 .extern func_0206e3a4
-.extern func_020828a0
+.extern ActorRuntimeFlags_Test
 .extern gGameWork
 .extern gHeapContext
 .extern gSceneManager
@@ -81,7 +81,7 @@ ActorDerivedType1_HandleAuxiliaryInteraction: ; 0x02037d98
 .L_02037e58:
     ldr r0, .L_02038090
     mov r1, #0x40
-    bl func_020828a0
+    bl ActorRuntimeFlags_Test
     cmp r0, #0x0
     bne .L_02038080
     add r0, r5, #0x200
@@ -178,7 +178,7 @@ ActorDerivedType1_HandleAuxiliaryInteraction: ; 0x02037d98
 .L_02037fc0:
     ldr r0, .L_02038090
     mov r1, #0x40
-    bl func_020828a0
+    bl ActorRuntimeFlags_Test
     cmp r0, #0x0
     bne .L_02038080
     ldr r6, [r4, #0x234]
@@ -234,7 +234,7 @@ ActorDerivedType1_HandleAuxiliaryInteraction: ; 0x02037d98
     ldmia sp!, {r3, r4, r5, r6, r7, pc}
 .L_02038088: .word gSceneManager
 .L_0203808c: .word data_02105310
-.L_02038090: .word data_021f5ebc
+.L_02038090: .word gActorRuntimeFlags
 .L_02038094: .word data_020df48c
 .L_02038098: .word gHeapContext
 .L_0203809c: .word gGameWork
