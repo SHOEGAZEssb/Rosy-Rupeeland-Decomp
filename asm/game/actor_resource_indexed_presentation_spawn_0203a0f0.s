@@ -6,7 +6,7 @@
 .extern data_021052fc
 .extern gActorInteractionResourceState
 .extern func_0201ded4
-.extern func_0201f378
+.extern TimedSpriteOffsetPresentation_Init
 .extern ActorFeedbackResources_GetResource
 .extern gHeapContext
 .extern gSoundContext
@@ -53,7 +53,7 @@ ActorFeedback_SpawnIndexedPresentation: ; 0x0203a0f0
     ldr r3, [r8, #0x54]
     mov r2, #0x0
     ldr r3, [r3, #0x0]
-    bl func_0201f378
+    bl TimedSpriteOffsetPresentation_Init
     mov r5, r0
 .L_0203a18c:
     ldr r0, .L_0203a308
@@ -95,7 +95,7 @@ ActorFeedback_SpawnIndexedPresentation: ; 0x0203a0f0
     add r4, r4, r3, lsl #0x1
     ldr r3, [r2, #0x0]
     and r2, r4, #0xff
-    bl func_0201f378
+    bl TimedSpriteOffsetPresentation_Init
     mov r5, r0
 .L_0203a22c:
     ldrb r0, [r8, #0x4d]
@@ -139,7 +139,7 @@ ActorFeedback_SpawnIndexedPresentation: ; 0x0203a0f0
     ldr r3, [r8, #0x54]
     ldrb r2, [r8, #0xd4]
     ldr r3, [r3, #0x0]
-    bl func_0201f378
+    bl TimedSpriteOffsetPresentation_Init
     mov r5, r0
 .L_0203a2d4:
     ldr r0, .L_0203a310

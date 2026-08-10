@@ -5,7 +5,7 @@
 .extern data_020e7444
 .extern data_021052fc
 .extern func_0201ded4
-.extern func_0201f378
+.extern TimedSpriteOffsetPresentation_Init
 .extern func_020349b8
 .extern gHeapContext
 .global ActorExtendedType2_PlayDescriptorSoundIfEnabled
@@ -60,7 +60,7 @@ ActorExtendedType2_SpawnOptionalPresentation: ; 0x020405c8
     str r3, [sp, #0x10]
     ldr r3, [r7, #0x54]
     ldr r3, [r3, #0x0]
-    bl func_0201f378
+    bl TimedSpriteOffsetPresentation_Init
     mov r1, r0
 .L_02040648:
     ldr r2, [r1, #0x8]

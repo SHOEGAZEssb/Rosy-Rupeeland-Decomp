@@ -1100,11 +1100,11 @@ OwnedPointerArray_Resize kind:function(arm,size=0x40) addr:0x0201f11c
 TimedSpriteBurstManager_Destroy kind:function(arm,size=0xa8) addr:0x0201f15c
 TimedSpriteBurstManager_DestroyAndFree kind:function(arm,size=0xb0) addr:0x0201f204
 TimedSpriteBurstManager_Update kind:function(arm,size=0xc4) addr:0x0201f2b4
-func_0201f378 kind:function(arm,size=0x70) addr:0x0201f378
-func_0201f3e8 kind:function(arm,size=0x34) addr:0x0201f3e8
-func_0201f41c kind:function(arm,size=0x3c) addr:0x0201f41c
-func_0201f458 kind:function(arm,size=0xc8) addr:0x0201f458
-func_0201f520 kind:function(arm,size=0x78) addr:0x0201f520
+TimedSpriteOffsetPresentation_Init kind:function(arm,size=0x70) addr:0x0201f378
+TimedSpriteOffsetPresentation_Destroy kind:function(arm,size=0x34) addr:0x0201f3e8
+TimedSpriteOffsetPresentation_DestroyAndFree kind:function(arm,size=0x3c) addr:0x0201f41c
+TimedSpriteOffsetPresentation_CreateSprite kind:function(arm,size=0xc8) addr:0x0201f458
+TimedSpriteOffsetPresentation_Update kind:function(arm,size=0x78) addr:0x0201f520
 func_0201f598 kind:function(arm,size=0xd8) addr:0x0201f598
 func_0201f670 kind:function(arm,size=0x34) addr:0x0201f670
 func_0201f6a4 kind:function(arm,size=0x3c) addr:0x0201f6a4
@@ -6966,7 +6966,7 @@ data_020d6158 kind:data(any) addr:0x020d6158
 data_020d6180 kind:data(any) addr:0x020d6180
 data_020d61a8 kind:data(any) addr:0x020d61a8
 data_020d61d0 kind:data(any) addr:0x020d61d0
-data_020d61f8 kind:data(any) addr:0x020d61f8
+gTimedSpriteOffsetPresentationVtable kind:data(any) addr:0x020d61f8
 gTimedSpriteBurstManagerVtable kind:data(any) addr:0x020d6220
 data_020d6248 kind:data(any) addr:0x020d6248
 gTimedSpritePresentationAllocationTag kind:data(any) addr:0x020d6268

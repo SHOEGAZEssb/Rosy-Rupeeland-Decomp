@@ -2,7 +2,7 @@
 .text
 .extern Heap_Alloc
 .extern Heap_Free
-.extern data_020d61f8
+.extern gTimedSpriteOffsetPresentationVtable
 .extern gTimedSpritePresentationAllocationTag
 .extern data_021052fc
 .extern VecFx32Object_Destroy
@@ -11,12 +11,12 @@
 .extern func_0201e250
 .extern func_0201e584
 .extern TimedSpriteConfig_InitTracks
-.extern func_0201f458
+.extern TimedSpriteOffsetPresentation_CreateSprite
 .extern gHeapContext
 
-.global func_0201f520
-    .type func_0201f520, @function
-func_0201f520: ; 0x0201f520
+.global TimedSpriteOffsetPresentation_Update
+    .type TimedSpriteOffsetPresentation_Update, @function
+TimedSpriteOffsetPresentation_Update: ; 0x0201f520
     stmdb sp!, {r4, lr}
     ldr r1, .L_0201f594
     mov r4, r0
@@ -47,5 +47,5 @@ func_0201f520: ; 0x0201f520
     movge r0, #0x0
     ldmia sp!, {r4, pc}
 .L_0201f594: .word data_021052fc
-    .size func_0201f520, .-func_0201f520
+    .size TimedSpriteOffsetPresentation_Update, .-TimedSpriteOffsetPresentation_Update
 

@@ -12,7 +12,7 @@ extern "C" {
 #endif
 extern void *ActorFeedbackResources_GetResource(u32 index);
 extern u32 genrand_int32(void);
-extern void *func_0201f378(void *allocation, ...);
+extern void *TimedSpriteOffsetPresentation_Init(void *allocation, ...);
 extern void Sound_Play(void *context, s32 channel, s32 sound);
 extern void func_0201ded4(void *manager, void *object);
 #ifdef __cplusplus
@@ -61,7 +61,7 @@ void ActorFeedback_SpawnIndexedPresentation(void *self, u32 index, u16 value)
             variant = actor[0xd4];
             constant = 0x12;
         }
-        presentation = func_0201f378(
+        presentation = TimedSpriteOffsetPresentation_Init(
             allocation, actor + 0x18, variant,
             **(void ***)(actor + 0x54), *(s32 *)(resource + 4),
             *(s32 *)(resource + 8), *(s32 *)(resource + 0x0c), constant, 2);

@@ -38,7 +38,7 @@ typedef s32 (*PresentationUpdate)(void *presentation, const void *position);
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *data_020d61f8;
+extern void *gTimedSpriteOffsetPresentationVtable;
 extern const char gTimedSpritePresentationAllocationTag[];
 extern u8 *data_021052fc;
 extern void *func_0201e250(void *self);
@@ -52,24 +52,25 @@ extern void *ActorMotionAreaFollower_GetPosition(void *source);
 }
 #endif
 
-void func_0201f458(TimedSpriteOffsetPresentation *self,
-                   const PresentationTrack *trackSource, s32 spriteValue,
-                   void *spriteGroup, s32 field04, s32 field08, s32 field0c,
-                   s32 offset, s32 spriteByte);
+void TimedSpriteOffsetPresentation_CreateSprite(
+    TimedSpriteOffsetPresentation *self,
+    const PresentationTrack *trackSource, s32 spriteValue, void *spriteGroup,
+    s32 field04, s32 field08, s32 field0c, s32 offset, s32 spriteByte);
 
 /*
  * Initialize the recovered base, install this wrapper's vtable, forward all
- * remaining inputs to func_0201f458, and return self.
+ * remaining inputs to the sprite creation helper, and return self.
  */
-TimedSpriteOffsetPresentation *func_0201f378(
+TimedSpriteOffsetPresentation *TimedSpriteOffsetPresentation_Init(
     TimedSpriteOffsetPresentation *self,
     const PresentationTrack *trackSource, s32 spriteValue, void *spriteGroup,
     s32 field04, s32 field08, s32 field0c, s32 offset, s32 spriteByte)
 {
     func_0201e250(self);
-    self->vtable = (void **)data_020d61f8;
-    func_0201f458(self, trackSource, spriteValue, spriteGroup, field04,
-                  field08, field0c, offset, spriteByte);
+    self->vtable = (void **)gTimedSpriteOffsetPresentationVtable;
+    TimedSpriteOffsetPresentation_CreateSprite(
+        self, trackSource, spriteValue, spriteGroup, field04, field08, field0c,
+        offset, spriteByte);
     return self;
 }
 
@@ -77,10 +78,10 @@ TimedSpriteOffsetPresentation *func_0201f378(
  * Install the wrapper vtable and invoke vtable slot 1 on presentation08 when
  * nonnull.  Return self without freeing it.
  */
-TimedSpriteOffsetPresentation *func_0201f3e8(
+TimedSpriteOffsetPresentation *TimedSpriteOffsetPresentation_Destroy(
     TimedSpriteOffsetPresentation *self)
 {
-    self->vtable = (void **)data_020d61f8;
+    self->vtable = (void **)gTimedSpriteOffsetPresentationVtable;
     if (self->presentation08 != 0) {
         ((PresentationDestroy)(*(void ***)self->presentation08)[1])(
             self->presentation08);
@@ -88,11 +89,11 @@ TimedSpriteOffsetPresentation *func_0201f3e8(
     return self;
 }
 
-/* Perform func_0201f3e8's teardown, free self, and return its old address. */
-TimedSpriteOffsetPresentation *func_0201f41c(
+/* Destroy the owned presentation, free self, and return its old address. */
+TimedSpriteOffsetPresentation *TimedSpriteOffsetPresentation_DestroyAndFree(
     TimedSpriteOffsetPresentation *self)
 {
-    func_0201f3e8(self);
+    TimedSpriteOffsetPresentation_Destroy(self);
     Heap_Free(self);
     return self;
 }
@@ -105,10 +106,10 @@ TimedSpriteOffsetPresentation *func_0201f41c(
  * retain it at 0x08, set the wrapper's 900-frame timer and spriteByte, then
  * destroy both temporary tracks.  Allocation failure remains a null pointer.
  */
-void func_0201f458(TimedSpriteOffsetPresentation *self,
-                   const PresentationTrack *trackSource, s32 spriteValue,
-                   void *spriteGroup, s32 field04, s32 field08, s32 field0c,
-                   s32 offset, s32 spriteByte)
+void TimedSpriteOffsetPresentation_CreateSprite(
+    TimedSpriteOffsetPresentation *self,
+    const PresentationTrack *trackSource, s32 spriteValue, void *spriteGroup,
+    s32 field04, s32 field08, s32 field0c, s32 offset, s32 spriteByte)
 {
     OffsetSpriteConfig config;
     void *presentation;
@@ -141,7 +142,7 @@ void func_0201f458(TimedSpriteOffsetPresentation *self,
  * Otherwise apply spriteByte12 to nested sprite byte 0x3a unless it is -1,
  * decrement timer10, and return whether that timer became negative.
  */
-s32 func_0201f520(TimedSpriteOffsetPresentation *self)
+s32 TimedSpriteOffsetPresentation_Update(TimedSpriteOffsetPresentation *self)
 {
     const void *position = ActorMotionAreaFollower_GetPosition(data_021052fc + 0x2fbc);
     s32 finished =

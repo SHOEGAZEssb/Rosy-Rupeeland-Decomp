@@ -17,7 +17,7 @@ extern void VecFx32Object_Destroy(void *vector);
 extern void Position_AdjustForTerrainHeight(void *vector);
 extern u32 genrand_int32(void);
 extern void *ActorFeedbackResources_GetResource(u32 index);
-extern void *func_0201f378(void *allocation, ...);
+extern void *TimedSpriteOffsetPresentation_Init(void *allocation, ...);
 extern void func_0201ded4(void *manager, void *presentation);
 extern void func_020593ac(void *context, s32 sound, s32 variant,
                           s32 volume, s32 pan, s32 extra);
@@ -93,7 +93,7 @@ s32 ActorFeedback_ProcessSnapshotCell(const void *snapshot)
         void *allocation = Heap_Alloc(0x14, data_020df4f0, 4, &gHeapContext);
         if (allocation != 0) {
             void *group = **(void ***)(data_021052fc + 0x2ea4 + 0x54);
-            presentation = func_0201f378(
+            presentation = TimedSpriteOffsetPresentation_Init(
                 allocation, position, variant, group,
                 *(s32 *)(resource + 4), *(s32 *)(resource + 8),
                 *(s32 *)(resource + 0x0c), 0, -1);

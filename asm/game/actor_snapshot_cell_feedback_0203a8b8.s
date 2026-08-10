@@ -8,7 +8,7 @@
 .extern VecFx32Object_InitComponents
 .extern VecFx32Object_Destroy
 .extern func_0201ded4
-.extern func_0201f378
+.extern TimedSpriteOffsetPresentation_Init
 .extern Position_AdjustForTerrainHeight
 .extern ActorFeedbackResources_GetResource
 .extern func_020593ac
@@ -135,7 +135,7 @@ ActorFeedback_ProcessSnapshotCell: ; 0x0203a8b8
     mov r2, r4
     ldr r3, [r3, #0x54]
     ldr r3, [r3, #0x0]
-    bl func_0201f378
+    bl TimedSpriteOffsetPresentation_Init
     mov r1, r0
 .L_0203aa84:
     ldr r0, .L_0203aaac

@@ -11,7 +11,7 @@
 .extern VecFx32Object_Destroy
 .extern func_02008514
 .extern func_0201ded4
-.extern func_0201f378
+.extern TimedSpriteOffsetPresentation_Init
 .extern func_0201f598
 .extern Actor_QueryTerrainHeight
 .extern ActorFeedbackResources_GetResource
@@ -275,7 +275,7 @@ ActorFeedback_DispatchEnvironment: ; 0x0203a314
     mov r2, #0x0
     ldr r3, [r3, #0x54]
     ldr r3, [r3, #0x0]
-    bl func_0201f378
+    bl TimedSpriteOffsetPresentation_Init
     mov r1, r0
 .L_0203a6c8:
     ldr r0, .L_0203a898
@@ -326,7 +326,7 @@ ActorFeedback_DispatchEnvironment: ; 0x0203a314
     mov r2, #0x0
     ldr r3, [r3, #0x54]
     ldr r3, [r3, #0x0]
-    bl func_0201f378
+    bl TimedSpriteOffsetPresentation_Init
     mov r1, r0
 .L_0203a788:
     ldr r0, .L_0203a898
@@ -375,7 +375,7 @@ ActorFeedback_DispatchEnvironment: ; 0x0203a314
     mov r2, #0x0
     ldr r3, [r3, #0x54]
     ldr r3, [r3, #0x0]
-    bl func_0201f378
+    bl TimedSpriteOffsetPresentation_Init
     mov r1, r0
 .L_0203a840:
     ldr r0, .L_0203a898

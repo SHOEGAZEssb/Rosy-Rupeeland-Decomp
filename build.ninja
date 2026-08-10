@@ -7658,31 +7658,31 @@ build build/reports/timed_sprite_offset_presentation_0201f378.json: objdiff buil
   base_object = build/decomp/asm/game/timed_sprite_offset_presentation_0201f378.o
 build build/reports/timed_sprite_offset_presentation_0201f378.txt: match_report build/reports/timed_sprite_offset_presentation_0201f378.json | tools/report_objdiff.py
   report_json = build/reports/timed_sprite_offset_presentation_0201f378.json
-  report_args = --section .text --function func_0201f378 --require-exact
+  report_args = --section .text --function TimedSpriteOffsetPresentation_Init --require-exact
 build build/reports/timed_sprite_offset_presentation_0201f3e8.json: objdiff build/decomp/delinks/asm/game/timed_sprite_offset_presentation_0201f3e8.o | build/decomp/asm/game/timed_sprite_offset_presentation_0201f3e8.o
   target_object = build/decomp/delinks/asm/game/timed_sprite_offset_presentation_0201f3e8.o
   base_object = build/decomp/asm/game/timed_sprite_offset_presentation_0201f3e8.o
 build build/reports/timed_sprite_offset_presentation_0201f3e8.txt: match_report build/reports/timed_sprite_offset_presentation_0201f3e8.json | tools/report_objdiff.py
   report_json = build/reports/timed_sprite_offset_presentation_0201f3e8.json
-  report_args = --section .text --function func_0201f3e8 --require-exact
+  report_args = --section .text --function TimedSpriteOffsetPresentation_Destroy --require-exact
 build build/reports/timed_sprite_offset_presentation_0201f41c.json: objdiff build/decomp/delinks/asm/game/timed_sprite_offset_presentation_0201f41c.o | build/decomp/asm/game/timed_sprite_offset_presentation_0201f41c.o
   target_object = build/decomp/delinks/asm/game/timed_sprite_offset_presentation_0201f41c.o
   base_object = build/decomp/asm/game/timed_sprite_offset_presentation_0201f41c.o
 build build/reports/timed_sprite_offset_presentation_0201f41c.txt: match_report build/reports/timed_sprite_offset_presentation_0201f41c.json | tools/report_objdiff.py
   report_json = build/reports/timed_sprite_offset_presentation_0201f41c.json
-  report_args = --section .text --function func_0201f41c --require-exact
+  report_args = --section .text --function TimedSpriteOffsetPresentation_DestroyAndFree --require-exact
 build build/reports/timed_sprite_offset_presentation_0201f458.json: objdiff build/decomp/delinks/asm/game/timed_sprite_offset_presentation_0201f458.o | build/decomp/asm/game/timed_sprite_offset_presentation_0201f458.o
   target_object = build/decomp/delinks/asm/game/timed_sprite_offset_presentation_0201f458.o
   base_object = build/decomp/asm/game/timed_sprite_offset_presentation_0201f458.o
 build build/reports/timed_sprite_offset_presentation_0201f458.txt: match_report build/reports/timed_sprite_offset_presentation_0201f458.json | tools/report_objdiff.py
   report_json = build/reports/timed_sprite_offset_presentation_0201f458.json
-  report_args = --section .text --function func_0201f458 --require-exact
+  report_args = --section .text --function TimedSpriteOffsetPresentation_CreateSprite --require-exact
 build build/reports/timed_sprite_offset_presentation_0201f520.json: objdiff build/decomp/delinks/asm/game/timed_sprite_offset_presentation_0201f520.o | build/decomp/asm/game/timed_sprite_offset_presentation_0201f520.o
   target_object = build/decomp/delinks/asm/game/timed_sprite_offset_presentation_0201f520.o
   base_object = build/decomp/asm/game/timed_sprite_offset_presentation_0201f520.o
 build build/reports/timed_sprite_offset_presentation_0201f520.txt: match_report build/reports/timed_sprite_offset_presentation_0201f520.json | tools/report_objdiff.py
   report_json = build/reports/timed_sprite_offset_presentation_0201f520.json
-  report_args = --section .text --function func_0201f520 --require-exact
+  report_args = --section .text --function TimedSpriteOffsetPresentation_Update --require-exact
 build build/reports/timed_sprite_offset_presentation.txt: phony build/reports/timed_sprite_offset_presentation_0201f378.txt build/reports/timed_sprite_offset_presentation_0201f3e8.txt build/reports/timed_sprite_offset_presentation_0201f41c.txt build/reports/timed_sprite_offset_presentation_0201f458.txt build/reports/timed_sprite_offset_presentation_0201f520.txt
 build build/reports/timed_sprite_sampled_arc_presentation_0201f598.json: objdiff build/decomp/delinks/asm/game/timed_sprite_sampled_arc_presentation_0201f598.o | build/decomp/asm/game/timed_sprite_sampled_arc_presentation_0201f598.o
   target_object = build/decomp/delinks/asm/game/timed_sprite_sampled_arc_presentation_0201f598.o
