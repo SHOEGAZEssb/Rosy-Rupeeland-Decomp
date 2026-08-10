@@ -66,7 +66,7 @@ static s32 isTypeOne(const u8 *actor)
  * value. Terrain, GameWork, sound, vector, and transform calls have observable
  * engine or SDK effects. Raw kind meanings remain intentionally unnamed.
  */
-void func_0203bba4(void *self)
+void Actor_UpdateGroundContactProbe(void *self)
 {
     u8 *actor = (u8 *)self;
     u32 flags;

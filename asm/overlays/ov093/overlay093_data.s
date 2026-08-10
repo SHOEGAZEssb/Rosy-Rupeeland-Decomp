@@ -11,7 +11,7 @@
 .extern func_0203213c
 .extern func_02032144
 .extern func_02032208
-.extern func_020324dc
+.extern Actor_ConvergeToTargetHeight
 .extern Actor_IntegrateMotion
 .extern Actor_SetPosition
 .extern func_02032abc
@@ -160,7 +160,7 @@ data_ov093_022188f0:
     .word func_02033b38
     .word Actor_RefreshTerrainHeightIfEnabled
     .word func_ov093_02218774
-    .word func_020324dc
+    .word Actor_ConvergeToTargetHeight
     .word func_ov093_02218770
     .word func_ov093_0221876c
     .word func_ov093_02218764

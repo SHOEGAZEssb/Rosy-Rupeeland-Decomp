@@ -15,8 +15,8 @@
 .extern func_020828a0
 .extern gGameWork
 .extern gSoundContext
-    .global func_0203bba4
-func_0203bba4: ; 0x0203bba4
+    .global Actor_UpdateGroundContactProbe
+Actor_UpdateGroundContactProbe: ; 0x0203bba4
     stmdb sp!, {r4, r5, r6, r7, r8, r9, r10, r11, lr}
     sub sp, sp, #0x34
     mov r10, r0
@@ -395,5 +395,5 @@ func_0203bba4: ; 0x0203bba4
 .L_0203c12c: .word 0x25d
 .L_0203c130: .word gSoundContext
 
-    .size func_0203bba4, . - func_0203bba4
+    .size Actor_UpdateGroundContactProbe, . - Actor_UpdateGroundContactProbe
 

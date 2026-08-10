@@ -3,9 +3,9 @@
 .extern func_020adae4
 .extern func_020be334
 
-    .global func_020324dc
-    .type func_020324dc, @function
-func_020324dc: ; 0x020324dc
+    .global Actor_ConvergeToTargetHeight
+    .type Actor_ConvergeToTargetHeight, @function
+Actor_ConvergeToTargetHeight: ; 0x020324dc
     stmdb sp!, {r3, r4, r5, lr}
     mov r4, r0
     ldr r0, [r4, #0x24]
@@ -23,4 +23,4 @@ func_020324dc: ; 0x020324dc
     bicge r0, r0, #0x20
     str r0, [r4, #0xd0]
     ldmia sp!, {r3, r4, r5, pc}
-    .size func_020324dc, . - func_020324dc
+    .size Actor_ConvergeToTargetHeight, . - Actor_ConvergeToTargetHeight

@@ -23,7 +23,7 @@
 .extern func_02038ecc
 .extern func_020390c8
 .extern Type1Actor_TryEnterFailureState
-.extern func_0203bba4
+.extern Actor_UpdateGroundContactProbe
 .extern func_02058d40
 .extern func_02059278
 .extern func_0205958c
@@ -528,7 +528,7 @@ func_020372e4: ; 0x020372e4
     cmp r0, #0x0
     bne .L_02037a24
     mov r0, r7
-    bl func_0203bba4
+    bl Actor_UpdateGroundContactProbe
 .L_02037a24:
     ldr r0, [r7, #0xd0]
     tst r0, #0x4

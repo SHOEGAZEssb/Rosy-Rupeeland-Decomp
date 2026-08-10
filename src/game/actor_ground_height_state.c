@@ -23,7 +23,7 @@ s32 func_020324c8(const void *self)
  * difference is below 0x4000, otherwise clear it. Returns no value; arithmetic
  * helpers have no hardware effects.
  */
-void func_020324dc(void *self)
+void Actor_ConvergeToTargetHeight(void *self)
 {
     u8 *actor = (u8 *)self;
     s32 target = *(s32 *)(actor + 0x84);

@@ -13993,7 +13993,7 @@ build build/reports/actor_ground_height_state_020324dc.json: objdiff build/decom
   base_object = build/decomp/asm/game/actor_ground_height_state_020324dc.o
 build build/reports/actor_ground_height_state_020324dc.txt: match_report build/reports/actor_ground_height_state_020324dc.json | tools/report_objdiff.py
   report_json = build/reports/actor_ground_height_state_020324dc.json
-  report_args = --section .text --function func_020324dc --require-exact
+  report_args = --section .text --function Actor_ConvergeToTargetHeight --require-exact
 build build/reports/actor_ground_height_state.txt: phony build/reports/actor_ground_height_state_020324c8.txt build/reports/actor_ground_height_state_020324dc.txt
 
 build actor_ground_height_state: phony build/decomp/src/game/actor_ground_height_state.o build/decomp/asm/game/actor_ground_height_state_020324c8.o build/decomp/asm/game/actor_ground_height_state_020324dc.o build/reports/actor_ground_height_state.txt
@@ -16226,7 +16226,7 @@ build build/reports/actor_ground_contact_probe_update_0203bba4.json: objdiff bui
   base_object = build/decomp/asm/game/actor_ground_contact_probe_update_0203bba4.o
 build build/reports/actor_ground_contact_probe_update_0203bba4.txt: match_report build/reports/actor_ground_contact_probe_update_0203bba4.json | tools/report_objdiff.py
   report_json = build/reports/actor_ground_contact_probe_update_0203bba4.json
-  report_args = --section .text --function func_0203bba4 --require-exact
+  report_args = --section .text --function Actor_UpdateGroundContactProbe --require-exact
 build build/reports/actor_ground_contact_probe_update.txt: phony build/reports/actor_ground_contact_probe_update_0203bba4.txt
 
 build actor_ground_contact_probe_update: phony build/decomp/src/game/actor_ground_contact_probe_update.o build/decomp/asm/game/actor_ground_contact_probe_update_0203bba4.o build/reports/actor_ground_contact_probe_update.txt

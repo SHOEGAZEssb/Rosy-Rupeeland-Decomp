@@ -38,7 +38,7 @@
 .extern func_02042864
 .extern Actor_RefreshTerrainHeightIfEnabled
 .extern func_0204330c
-.extern func_020324dc
+.extern Actor_ConvergeToTargetHeight
 .extern func_ov096_022182e8
 .extern func_ov096_022181ac
 .extern func_ov096_022181a4
@@ -229,7 +229,7 @@ data_ov096_02218b98:
     .word func_02042864
     .word Actor_RefreshTerrainHeightIfEnabled
     .word func_0204330c
-    .word func_020324dc
+    .word Actor_ConvergeToTargetHeight
     .word func_ov096_022182e8
     .word func_ov096_022181ac
     .word func_ov096_022181a4
@@ -376,7 +376,7 @@ data_ov096_02218de8:
     .word func_02042864
     .word Actor_RefreshTerrainHeightIfEnabled
     .word func_0204330c
-    .word func_020324dc
+    .word Actor_ConvergeToTargetHeight
     .word func_ov096_022182e8
     .word func_ov096_022181ac
     .word func_ov096_022181a4

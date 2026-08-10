@@ -27,7 +27,7 @@ extern s32 func_0204cfa4(s32 x, s32 y);
 extern s32 func_020ae024(s32 y, s32 x);
 extern void func_0204cff4(s32 *x, s32 *y, s32 maximum);
 extern void func_02005058(void *vector);
-extern void func_0203bba4(void *actor);
+extern void Actor_UpdateGroundContactProbe(void *actor);
 extern void Actor_UpdateAnimationState(void *actor);
 extern void AttachmentController_SetEnabled(void *owner, s32 enabled);
 extern void func_0204cf28(void *owner);
@@ -238,7 +238,7 @@ void func_0203e7c8(void *self)
     }
 
     if ((*(u32 *)(actor + 0xd0) & 4) == 0)
-        func_0203bba4(actor);
+        Actor_UpdateGroundContactProbe(actor);
     (*(void (**)(void *))(*(u8 **)actor + 0xa4))(actor);
     Actor_UpdateAnimationState(actor);
 

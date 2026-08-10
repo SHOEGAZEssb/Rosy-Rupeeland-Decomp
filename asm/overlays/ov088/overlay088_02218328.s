@@ -17,7 +17,7 @@
 .extern func_02034a60
 .extern Actor_ReplaceAttachmentSlotResource
 .extern ActorDerivedRuntime_UpdateFrame
-.extern func_0203bba4
+.extern Actor_UpdateGroundContactProbe
 .extern func_0204cfa4
 .extern func_0204cff4
 .extern func_020593ac
@@ -744,7 +744,7 @@ func_ov088_02218328:
     add r1, r4, #0x200
     mov r2, #0x0
     strh r2, [r1, #0x14]
-    bl func_0203bba4
+    bl Actor_UpdateGroundContactProbe
     mov r0, r4
     ldr r1, [r0, #0x0]
     ldr r1, [r1, #0xa4]

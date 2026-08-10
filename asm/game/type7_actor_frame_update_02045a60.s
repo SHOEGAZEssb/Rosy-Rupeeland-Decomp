@@ -16,7 +16,7 @@
 .extern Actor_UpdateAnimationState
 .extern Actor_GetCachedTerrainHeight
 .extern ActorDerivedRuntime_UpdateFrame
-.extern func_0203bba4
+.extern Actor_UpdateGroundContactProbe
 .extern func_02047d40
 .extern func_02048148
 .extern func_02048b94
@@ -390,7 +390,7 @@ func_02045a60: ; 0x02045a60
     cmp r0, #0x0
     bne .L_02045fbc
     mov r0, r4
-    bl func_0203bba4
+    bl Actor_UpdateGroundContactProbe
     mov r0, r4
     ldr r1, [r0, #0x0]
     ldr r1, [r1, #0xa4]

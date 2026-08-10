@@ -20,7 +20,7 @@
 .extern Actor_SaveAndForceFlags
 .extern func_020349b8
 .extern AttachmentController_SetEnabled
-.extern func_0203bba4
+.extern Actor_UpdateGroundContactProbe
 .extern func_02045184
 .extern func_0204ced8
 .extern func_0204cf28
@@ -444,7 +444,7 @@ func_0203e7c8: ; 0x0203e7c8
     tst r0, #0x4
     bne .L_0203edc0
     mov r0, r6
-    bl func_0203bba4
+    bl Actor_UpdateGroundContactProbe
 .L_0203edc0:
     mov r0, r6
     ldr r1, [r0, #0x0]

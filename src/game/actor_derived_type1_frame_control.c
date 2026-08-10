@@ -44,7 +44,7 @@ extern s32 func_020adae4(s32 numerator, s32 denominator);
 extern void Actor_TryInitializeHeightBandFromPoint(void *actor,
                                                   const void *record);
 extern s32 func_020be334(s32 value);
-extern void func_0203bba4(void *actor);
+extern void Actor_UpdateGroundContactProbe(void *actor);
 #ifdef __cplusplus
 }
 #endif
@@ -85,7 +85,7 @@ static s32 directionWord(const s32 *table, s32 direction)
  * Actor_TryInitializeHeightBandFromPoint.
  * Resource +0x274 scales motion by descriptor +0x0a and IDs 0x67/0x68/0x7b
  * apply additional accumulated-motion rules. The function also updates scale
- * halfword +0xde, invokes func_0203bba4 unless bit 0x20000 is set, and clears
+ * halfword +0xde, invokes Actor_UpdateGroundContactProbe unless bit 0x20000 is set, and clears
  * secondary motion when virtual query +0x30 requests it. Returns no value.
  * Allocation, manager, sound, GameWork, random, scene-effect, and virtual calls
  * have observable engine/SDK effects.
@@ -269,7 +269,7 @@ void func_020372e4(void *self)
     }
 
     *(u16 *)(actor + 0xde) = actor[0x26b] != 0 ? 0x300 : 0x100;
-    if ((*(u32 *)(actor + 0x230) & 0x20000) == 0) func_0203bba4(actor);
+    if ((*(u32 *)(actor + 0x230) & 0x20000) == 0) Actor_UpdateGroundContactProbe(actor);
     if ((*(u32 *)(actor + 0xd0) & 4) != 0 &&
         (*(s32 (**)(void *))(*(u8 **)actor + 0x30))(actor) != 0) {
         *(s32 *)(actor + 0x8c) = 0;
