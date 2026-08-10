@@ -4,8 +4,8 @@
 .extern GamePhaseRuntime_StageAreaRequest
 .extern GamePhaseScriptVm_Pop
 
-    .global func_0201416c
-func_0201416c: ; 0x0201416c
+    .global GamePhaseActorScriptVm_StageAreaRequest
+GamePhaseActorScriptVm_StageAreaRequest: ; 0x0201416c
     stmdb sp!, {r3, r4, r5, r6, r7, lr}
     sub sp, sp, #0x8
     mov r7, r0
@@ -32,5 +32,5 @@ func_0201416c: ; 0x0201416c
     add sp, sp, #0x8
     ldmia sp!, {r3, r4, r5, r6, r7, pc}
 L_020141d0: .word data_021052fc
-    .size func_0201416c, . - func_0201416c
+    .size GamePhaseActorScriptVm_StageAreaRequest, . - GamePhaseActorScriptVm_StageAreaRequest
 

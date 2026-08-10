@@ -120,7 +120,7 @@ s32 func_02013f10(GamePhaseActorScriptVm *self);
 s32 GamePhaseActorScriptVm_SetPositionFromCoordinates(GamePhaseActorScriptVm *self);
 s32 GamePhaseActorScriptVm_TranslateSecondaryBounds(GamePhaseActorScriptVm *self);
 s32 GamePhaseActorScriptVm_TranslateCollisionBounds(GamePhaseActorScriptVm *self);
-s32 func_0201416c(GamePhaseActorScriptVm *self);
+s32 GamePhaseActorScriptVm_StageAreaRequest(GamePhaseActorScriptVm *self);
 s32 func_020141d4(GamePhaseActorScriptVm *self);
 s32 func_02014250(GamePhaseActorScriptVm *self);
 s32 func_020142cc(GamePhaseActorScriptVm *self);

@@ -17,7 +17,7 @@ extern void GamePhaseRuntime_StageAreaRequest(void *runtime, u32 first, u32 seco
  * GamePhaseRuntime_StageAreaRequest on the global phase runtime, and return one. Returning one
  * stops the current VM dispatch loop after the request is queued.
  */
-s32 func_0201416c(GamePhaseActorScriptVm *self)
+s32 GamePhaseActorScriptVm_StageAreaRequest(GamePhaseActorScriptVm *self)
 {
     u32 fourth = GamePhaseScriptVm_Pop(&self->base);
     u32 third = GamePhaseScriptVm_Pop(&self->base);
