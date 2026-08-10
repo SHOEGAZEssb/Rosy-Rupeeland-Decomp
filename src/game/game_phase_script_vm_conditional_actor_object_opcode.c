@@ -12,23 +12,27 @@ extern void *data_021052fc;
 extern const char data_020d5b34[];
 extern void *ActorCollection_FindActorByDescriptorValue(void *collection, s32 index);
 extern void *ActorMotionAreaFollower_GetPosition(void *motion);
-extern void *func_02020794(void *object, void *position, void *actor, s32 value);
+extern void *RisingSpriteSwarmPresentation_Init(void *object,
+                                                 void *referencePosition,
+                                                 void *actorConfig,
+                                                 s32 trackZ);
 extern void func_0201ded4(void *list, void *object);
 #ifdef __cplusplus
 }
 #endif
 
 /*
- * Pop actor index, object value, and enable. When enabled, resolve the actor
- * from runtime collection 1, allocate 0x4c bytes, initialize it through
- * func_02020794 using the motion at runtime offset 0x2fbc, and append even a
- * null allocation result to the list at offset 0x2f7c. When disabled, call
- * func_02001944 on GameWork with 0x408. Return zero.
+ * Pop actor index, track Z, and enable. When enabled, resolve the actor from
+ * runtime collection 1, allocate a 0x4c-byte swarm presentation, initialize it
+ * using the motion reference at runtime offset 0x2fbc, and append even a null
+ * allocation result to the list at offset 0x2f7c. When disabled, set GameWork
+ * flag 0x408, which the active swarm observes as its retraction request. Return
+ * zero.
  */
-s32 func_0201797c(GamePhaseActorScriptVm *self)
+s32 GamePhaseActorScriptVm_SetRisingSpriteSwarmEnabled(GamePhaseActorScriptVm *self)
 {
     s32 actorIndex = (s32)GamePhaseScriptVm_Pop(&self->base);
-    s32 value = (s32)GamePhaseScriptVm_Pop(&self->base);
+    s32 trackZ = (s32)GamePhaseScriptVm_Pop(&self->base);
     s32 enabled = (s32)GamePhaseScriptVm_Pop(&self->base);
     u8 *runtime = (u8 *)data_021052fc;
     if (enabled) {
@@ -36,8 +40,10 @@ s32 func_0201797c(GamePhaseActorScriptVm *self)
             GamePhaseRuntime_GetActorCollection((GamePhaseRuntime *)runtime, 1), actorIndex);
         void *object = Heap_Alloc(0x4c, data_020d5b34, 4, &gHeapContext);
         if (object)
-            object = func_02020794(object, ActorMotionAreaFollower_GetPosition(runtime + 0x2fbc),
-                                   actor, value);
+            object = RisingSpriteSwarmPresentation_Init(
+                object,
+                ActorMotionAreaFollower_GetPosition(runtime + 0x2fbc), actor,
+                trackZ);
         func_0201ded4(runtime + 0x2f7c, object);
     } else {
         GameWork_SetFlag(gGameWork, 0x408);

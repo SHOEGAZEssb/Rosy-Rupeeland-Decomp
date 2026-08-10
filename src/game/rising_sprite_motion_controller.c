@@ -57,16 +57,17 @@ extern u8 *func_02073fc4(void *owner, s32 first, s32 second, s32 third,
                          s32 mode);
 extern void GraphicsSpriteState_SetAnimationIndex(void *sprite, s32 value);
 extern void func_02074038(void *owner, void *sprite);
-extern void func_02020364(SpriteMotionDelta *self);
-extern SpriteMotionDelta *func_02020374(SpriteMotionDelta *self, s32 first,
-                                        s32 second, s32 scale);
-extern void func_020203b0(SpriteMotionDelta *self,
+extern void SpriteMotionDelta_Init(SpriteMotionDelta *self);
+extern SpriteMotionDelta *SpriteMotionDelta_Configure(SpriteMotionDelta *self,
+                                                       s32 first, s32 second,
+                                                       s32 scale);
+extern void SpriteMotionDelta_Copy(SpriteMotionDelta *self,
                           const SpriteMotionDelta *source);
 #ifdef __cplusplus
 }
 #endif
 
-s32 func_020206e8(SpriteMotionDelta *self);
+s32 SpriteMotionDelta_Step(SpriteMotionDelta *self);
 
 /*
  * Initialize the recovered oscillation/path helpers and a zeroed controller,
@@ -78,7 +79,7 @@ s32 func_020206e8(SpriteMotionDelta *self);
  * oscillation0c from 0x10000, -0x10000, and 60 and return self.  The recovered
  * third register argument is unused.
  */
-RisingSpriteMotionController *func_020203e4(
+RisingSpriteMotionController *RisingSpriteMotionController_Init(
     RisingSpriteMotionController *self, void *spriteOwner, s32 unused,
     const s32 *spriteConfig, s32 pathArgument)
 {
@@ -95,7 +96,7 @@ RisingSpriteMotionController *func_020203e4(
     ActorMotionTriple_Clear(self->oscillation0c);
     self->frame18 = 0;
     VecFx32Triple_Init(self->path1c);
-    func_02020364(&self->motion4c);
+    SpriteMotionDelta_Init(&self->motion4c);
     self->offset5c = 0;
     self->systemTime60 = *(s32 *)(gSystemState + 0x64);
     func_0200500c(&value60, 0, 0, 0x46000);
@@ -105,8 +106,8 @@ RisingSpriteMotionController *func_020203e4(
     VecFx32Triple_Destroy(pathValue20);
     func_02005058(&value50);
     func_02005058(&value60);
-    func_02020374(&motion, 0x100000, 0x2000, 0x78);
-    func_020203b0(&self->motion4c, &motion);
+    SpriteMotionDelta_Configure(&motion, 0x100000, 0x2000, 0x78);
+    SpriteMotionDelta_Copy(&self->motion4c, &motion);
     self->sprite00 = func_02073fc4(spriteOwner, spriteConfig[0],
                                    spriteConfig[1], spriteConfig[2], 2);
     GraphicsSpriteState_SetAnimationIndex(self->sprite00, 0);
@@ -123,7 +124,7 @@ RisingSpriteMotionController *func_020203e4(
 }
 
 /* Release the owned sprite, destroy path1c, and return self. */
-RisingSpriteMotionController *func_02020558(
+RisingSpriteMotionController *RisingSpriteMotionController_Destroy(
     RisingSpriteMotionController *self)
 {
     func_02074038(self->spriteOwner04, self->sprite00);
@@ -139,7 +140,8 @@ RisingSpriteMotionController *func_02020558(
  * with system time, write sprite coordinates and equal scale fields, clear
  * sprite flag bit 2, destroy temporaries, and return zero.
  */
-s32 func_0202057c(RisingSpriteMotionController *self, s32 argument)
+s32 RisingSpriteMotionController_Update(RisingSpriteMotionController *self,
+                                        s32 referencePosition)
 {
     s32 scale;
     s32 x;
@@ -151,14 +153,14 @@ s32 func_0202057c(RisingSpriteMotionController *self, s32 argument)
 
     if (self->state08 == 0) {
         self->offset5c += 0x22;
-        func_020206e8(&self->motion4c);
+        SpriteMotionDelta_Step(&self->motion4c);
         self->frame18++;
     } else if (self->state08 == 2) {
         self->offset5c -= 0x22;
         if (self->offset5c < 0) {
             return 1;
         }
-        func_020206e8(&self->motion4c);
+        SpriteMotionDelta_Step(&self->motion4c);
     }
     scale = (self->motion4c.second04 +
              ActorMotionOscillation_Sample(self->oscillation0c,
@@ -168,7 +170,7 @@ s32 func_0202057c(RisingSpriteMotionController *self, s32 argument)
     }
     ActorMotionOscillation_InitInterval(oscillationSample, -scale << 6, scale << 6, 0xc8);
     VecFx32Bezier_Evaluate3D(pathSample, self->path1c, self->offset5c);
-    VecFx32_Subtract(&sampled, pathSample, argument);
+    VecFx32_Subtract(&sampled, pathSample, referencePosition);
     func_02056f00(&transformed, &sampled);
     func_02005058(&sampled);
     func_02005058((PresentationValue *)pathSample);
@@ -192,7 +194,7 @@ s32 func_0202057c(RisingSpriteMotionController *self, s32 argument)
  * add delta08 to second04 and return one.  Inactive and finished records return
  * zero.  The switch's explicit state-two compare is preserved from retail.
  */
-s32 func_020206e8(SpriteMotionDelta *self)
+s32 SpriteMotionDelta_Step(SpriteMotionDelta *self)
 {
     if (self->active0e == 1) {
         self->scale0c--;
@@ -214,13 +216,14 @@ s32 func_020206e8(SpriteMotionDelta *self)
  * Store state08.  When selecting state two, replace motion4c with a new motion
  * from its current second04 value to zero over 0x78 steps.
  */
-void func_02020754(RisingSpriteMotionController *self, s32 state)
+void RisingSpriteMotionController_SetState(RisingSpriteMotionController *self,
+                                           s32 state)
 {
     SpriteMotionDelta motion;
 
     self->state08 = state;
     if (state == 2) {
-        func_02020374(&motion, 0, self->motion4c.second04, 0x78);
-        func_020203b0(&self->motion4c, &motion);
+        SpriteMotionDelta_Configure(&motion, 0, self->motion4c.second04, 0x78);
+        SpriteMotionDelta_Copy(&self->motion4c, &motion);
     }
 }

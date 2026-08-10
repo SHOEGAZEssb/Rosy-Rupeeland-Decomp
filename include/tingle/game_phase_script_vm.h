@@ -213,7 +213,7 @@ s32 func_0201787c(GamePhaseActorScriptVm *self);
 s32 func_020178bc(GamePhaseActorScriptVm *self);
 s32 GamePhaseActorScriptVm_SetActorRuntimeFlag100WhenZero(GamePhaseActorScriptVm *self);
 s32 func_02017938(GamePhaseActorScriptVm *self);
-s32 func_0201797c(GamePhaseActorScriptVm *self);
+s32 GamePhaseActorScriptVm_SetRisingSpriteSwarmEnabled(GamePhaseActorScriptVm *self);
 s32 GamePhaseActorScriptVm_DispatchActorScaledVectorCommand(GamePhaseActorScriptVm *self);
 s32 func_02017ac8(GamePhaseActorScriptVm *self);
 s32 func_02017d1c(GamePhaseActorScriptVm *self);

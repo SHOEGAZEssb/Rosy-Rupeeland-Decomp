@@ -1,9 +1,9 @@
 ; Matching retail form; see src/game/rising_sprite_motion_controller.c.
 .text
 
-.global func_020206e8
-    .type func_020206e8, @function
-func_020206e8: ; 0x020206e8
+.global SpriteMotionDelta_Step
+    .type SpriteMotionDelta_Step, @function
+SpriteMotionDelta_Step: ; 0x020206e8
     ldrh r1, [r0, #0xe]
     cmp r1, #0x0
     beq .L_0202074c
@@ -34,4 +34,4 @@ func_020206e8: ; 0x020206e8
 .L_0202074c:
     mov r0, #0x0
     bx lr
-    .size func_020206e8, .-func_020206e8
+    .size SpriteMotionDelta_Step, .-SpriteMotionDelta_Step

@@ -5,13 +5,13 @@
 .extern VecFx32_Subtract
 .extern ActorMotionOscillation_InitInterval
 .extern ActorMotionOscillation_Sample
-.extern func_020206e8
+.extern SpriteMotionDelta_Step
 .extern func_02056f00
 .extern gSystemState
 
-.global func_0202057c
-    .type func_0202057c, @function
-func_0202057c: ; 0x0202057c
+.global RisingSpriteMotionController_Update
+    .type RisingSpriteMotionController_Update, @function
+RisingSpriteMotionController_Update: ; 0x0202057c
     stmdb sp!, {r3, r4, r5, r6, lr}
     sub sp, sp, #0x3c
     mov r5, r0
@@ -29,7 +29,7 @@ func_0202057c: ; 0x0202057c
     add r0, r5, #0x4c
     add r1, r1, #0x22
     str r1, [r5, #0x5c]
-    bl func_020206e8
+    bl SpriteMotionDelta_Step
     ldr r0, [r5, #0x18]
     add r0, r0, #0x1
     str r0, [r5, #0x18]
@@ -41,7 +41,7 @@ func_0202057c: ; 0x0202057c
     movmi r0, #0x1
     bmi .L_020206dc
     add r0, r5, #0x4c
-    bl func_020206e8
+    bl SpriteMotionDelta_Step
 .L_020205ec:
     ldr r0, .L_020206e4
     ldr r6, [r5, #0x50]
@@ -107,4 +107,4 @@ func_0202057c: ; 0x0202057c
     add sp, sp, #0x3c
     ldmia sp!, {r3, r4, r5, r6, pc}
 .L_020206e4: .word gSystemState
-    .size func_0202057c, .-func_0202057c
+    .size RisingSpriteMotionController_Update, .-RisingSpriteMotionController_Update

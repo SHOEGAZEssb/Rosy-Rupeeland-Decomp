@@ -28,7 +28,7 @@ typedef struct ControllerList {
 typedef struct RisingSpriteSwarmPresentation {
     void **vtable;
     u32 field04;
-    s32 sampleArgument08;
+    s32 referencePosition08;
     ControllerList controllers0c;
     s32 state1c;
     s32 timer20;
@@ -69,39 +69,45 @@ extern void func_020740a4(void *resource);
 extern void GameWork_ClearFlag(void *gameWork, s32 flag);
 extern s32 GameWork_TestFlag(void *gameWork, s32 flag);
 extern void GameWork_SetFlag(void *gameWork, s32 flag);
-extern void *func_020203e4(void *self, void *resource24, void *resource28,
-                           void *spriteConfig, s32 pathArgument,
-                           s32 sequence);
-extern void *func_02020558(void *controller);
-extern s32 func_0202057c(void *controller, s32 sampleArgument);
-extern void func_02020754(void *controller, s32 state);
+extern void *RisingSpriteMotionController_Init(void *self, void *resource24,
+                                                void *resource28,
+                                                void *spriteConfig,
+                                                s32 pathArgument,
+                                                s32 sequence);
+extern void *RisingSpriteMotionController_Destroy(void *controller);
+extern s32 RisingSpriteMotionController_Update(void *controller,
+                                                s32 referencePosition);
+extern void RisingSpriteMotionController_SetState(void *controller, s32 state);
 #ifdef __cplusplus
 }
 #endif
 
-void func_020208e4(ControllerList *self);
-ControllerList *func_020208a4(ControllerList *self);
-void func_02020a54(ControllerList *self, ControllerListNode *node);
-void func_02020c38(RisingSpriteSwarmPresentation *self);
-void func_02020d48(RisingSpriteSwarmPresentation *self, s32 state);
+void RisingSpriteControllerList_Clear(ControllerList *self);
+ControllerList *RisingSpriteControllerList_Init(ControllerList *self);
+void RisingSpriteControllerList_RemoveNode(ControllerList *self,
+                                           ControllerListNode *node);
+void RisingSpriteSwarmPresentation_SpawnController(RisingSpriteSwarmPresentation *self);
+void RisingSpriteSwarmPresentation_SetControllerState(
+    RisingSpriteSwarmPresentation *self, s32 state);
 
 /*
  * Initialize the recovered base, list owner, sprite-resource state, and track;
- * retain sampleArgument and add a fixed-point Z offset from trackZ.  Acquire
+ * retain referencePosition and add a fixed-point Z offset from trackZ. Acquire
  * two graphics resources, initialize spriteConfig2c from the global resource
  * table and IDs 0x1658..0x165a, clear GameWork flags 0x408/0x409, reset the
  * state/timers and child sequence, and return self.
  */
-RisingSpriteSwarmPresentation *func_02020794(
-    RisingSpriteSwarmPresentation *self, s32 sampleArgument, const u8 *config,
+RisingSpriteSwarmPresentation *RisingSpriteSwarmPresentation_Init(
+    RisingSpriteSwarmPresentation *self, s32 referencePosition,
+    const u8 *config,
     s32 trackZ)
 {
     PresentationValue offset;
 
     func_0201e250(self);
     self->vtable = (void **)data_020d6398;
-    self->sampleArgument08 = sampleArgument;
-    func_020208a4(&self->controllers0c);
+    self->referencePosition08 = referencePosition;
+    RisingSpriteControllerList_Init(&self->controllers0c);
     self->state1c = 0;
     self->timer20 = 0;
     self->resource24 = 0;
@@ -122,7 +128,7 @@ RisingSpriteSwarmPresentation *func_02020794(
 }
 
 /* Install the list vtable and clear head, tail, and count. */
-ControllerList *func_020208a4(ControllerList *self)
+ControllerList *RisingSpriteControllerList_Init(ControllerList *self)
 {
     self->vtable = (void **)data_020d6358;
     self->head04 = 0;
@@ -132,15 +138,15 @@ ControllerList *func_020208a4(ControllerList *self)
 }
 
 /* Install the list vtable, clear and free all nodes, and return self. */
-ControllerList *func_020208c4(ControllerList *self)
+ControllerList *RisingSpriteControllerList_Destroy(ControllerList *self)
 {
     self->vtable = (void **)data_020d6358;
-    func_020208e4(self);
+    RisingSpriteControllerList_Clear(self);
     return self;
 }
 
 /* Free every node reachable from head04, then zero head, tail, and count. */
-void func_020208e4(ControllerList *self)
+void RisingSpriteControllerList_Clear(ControllerList *self)
 {
     ControllerListNode *node = self->head04;
 
@@ -164,10 +170,10 @@ static RisingSpriteSwarmPresentation *teardown_swarm(
     while (node != 0) {
         void *controller = node->controller08;
         if (controller != 0) {
-            func_02020558(controller);
+            RisingSpriteMotionController_Destroy(controller);
             Heap_Free(controller);
         }
-        func_02020a54(&self->controllers0c, node);
+        RisingSpriteControllerList_RemoveNode(&self->controllers0c, node);
         /* Retail reloads next00 through the just-freed node allocation. */
         node = node->next00;
     }
@@ -176,20 +182,20 @@ static RisingSpriteSwarmPresentation *teardown_swarm(
     func_02005058(&self->track38);
     func_02071eb8(self->spriteConfig2c);
     self->controllers0c.vtable = (void **)data_020d6358;
-    func_020208e4(&self->controllers0c);
+    RisingSpriteControllerList_Clear(&self->controllers0c);
     func_0201e28c(self);
     return self;
 }
 
 /* Destroy all children and owned resources, tear down the base, and return self. */
-RisingSpriteSwarmPresentation *func_02020924(
+RisingSpriteSwarmPresentation *RisingSpriteSwarmPresentation_Destroy(
     RisingSpriteSwarmPresentation *self)
 {
     return teardown_swarm(self);
 }
 
-/* Perform func_02020924's teardown, free self, and return its old address. */
-RisingSpriteSwarmPresentation *func_020209b8(
+/* Perform the normal teardown, free self, and return its old address. */
+RisingSpriteSwarmPresentation *RisingSpriteSwarmPresentation_DestroyAndFree(
     RisingSpriteSwarmPresentation *self)
 {
     teardown_swarm(self);
@@ -201,7 +207,8 @@ RisingSpriteSwarmPresentation *func_020209b8(
  * Unlink node from both list ends/neighbors, free it when nonnull, decrement
  * count, and clear the list again when the count reaches zero.
  */
-void func_02020a54(ControllerList *self, ControllerListNode *node)
+void RisingSpriteControllerList_RemoveNode(ControllerList *self,
+                                           ControllerListNode *node)
 {
     if (node == self->head04) {
         self->head04 = node->next00;
@@ -218,18 +225,20 @@ void func_02020a54(ControllerList *self, ControllerListNode *node)
     }
     self->count0c--;
     if (self->count0c == 0) {
-        func_020208e4(self);
+        RisingSpriteControllerList_Clear(self);
     }
 }
 
 /*
  * Drive the five-state spawn/retract sequence, returning one only once state
  * four has no remaining children (and setting flag 0x409).  Every other call
- * updates all children with sampleArgument08, removes finished children, then
+ * updates all children with referencePosition08, removes finished children,
+ * then
  * refreshes both graphics resources and returns zero.  Retail advances list
- * iteration through a node after func_02020a54 frees that node.
+ * iteration through a node after RisingSpriteControllerList_RemoveNode frees
+ * that node.
  */
-s32 func_02020abc(RisingSpriteSwarmPresentation *self)
+s32 RisingSpriteSwarmPresentation_Update(RisingSpriteSwarmPresentation *self)
 {
     ControllerListNode *node;
 
@@ -239,7 +248,7 @@ s32 func_02020abc(RisingSpriteSwarmPresentation *self)
         break;
     case 1:
         if (--self->timer20 <= 0) {
-            func_02020c38(self);
+            RisingSpriteSwarmPresentation_SpawnController(self);
             self->timer20 = 0x23;
             if (self->controllers0c.count0c < 4) {
                 self->state1c = 0;
@@ -251,13 +260,13 @@ s32 func_02020abc(RisingSpriteSwarmPresentation *self)
         break;
     case 2:
         if (--self->timer20 <= 0) {
-            func_02020d48(self, 1);
+            RisingSpriteSwarmPresentation_SetControllerState(self, 1);
             self->state1c++;
         }
         break;
     case 3:
         if (GameWork_TestFlag(gGameWork, 0x408) != 0) {
-            func_02020d48(self, 2);
+            RisingSpriteSwarmPresentation_SetControllerState(self, 2);
             self->state1c++;
         }
         break;
@@ -271,10 +280,11 @@ s32 func_02020abc(RisingSpriteSwarmPresentation *self)
     node = self->controllers0c.head04;
     while (node != 0) {
         void *controller = node->controller08;
-        if (func_0202057c(controller, self->sampleArgument08) != 0) {
-            func_02020a54(&self->controllers0c, node);
+        if (RisingSpriteMotionController_Update(
+                controller, self->referencePosition08) != 0) {
+            RisingSpriteControllerList_RemoveNode(&self->controllers0c, node);
             if (controller != 0) {
-                func_02020558(controller);
+                RisingSpriteMotionController_Destroy(controller);
                 Heap_Free(controller);
             }
         }
@@ -292,7 +302,7 @@ s32 func_02020abc(RisingSpriteSwarmPresentation *self)
  * child (including null on child allocation failure), append it, and increment
  * both the list count and nextPathArgument48.
  */
-void func_02020c38(RisingSpriteSwarmPresentation *self)
+void RisingSpriteSwarmPresentation_SpawnController(RisingSpriteSwarmPresentation *self)
 {
     PresentationValue base;
     PresentationValue path;
@@ -301,7 +311,7 @@ void func_02020c38(RisingSpriteSwarmPresentation *self)
     if (controller != 0) {
         func_0200500c(&base, 0, 0, 0x20000);
         func_02008378(&path, self->nextPathArgument48, &base);
-        func_020203e4(controller, self->resource24, self->resource28,
+        RisingSpriteMotionController_Init(controller, self->resource24, self->resource28,
                       self->spriteConfig2c, (s32)&path,
                       self->nextPathArgument48);
         func_02005058(&path);
@@ -328,20 +338,21 @@ void func_02020c38(RisingSpriteSwarmPresentation *self)
 }
 
 /* Apply state to every child controller currently in the list. */
-void func_02020d48(RisingSpriteSwarmPresentation *self, s32 state)
+void RisingSpriteSwarmPresentation_SetControllerState(
+    RisingSpriteSwarmPresentation *self, s32 state)
 {
     ControllerListNode *node = self->controllers0c.head04;
     while (node != 0) {
-        func_02020754(node->controller08, state);
+        RisingSpriteMotionController_SetState(node->controller08, state);
         node = node->next00;
     }
 }
 
 /* Install the list vtable, clear it, free self, and return its old address. */
-ControllerList *func_02020d74(ControllerList *self)
+ControllerList *RisingSpriteControllerList_DestroyAndFree(ControllerList *self)
 {
     self->vtable = (void **)data_020d6358;
-    func_020208e4(self);
+    RisingSpriteControllerList_Clear(self);
     Heap_Free(self);
     return self;
 }

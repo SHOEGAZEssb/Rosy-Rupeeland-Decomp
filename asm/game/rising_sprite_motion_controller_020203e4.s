@@ -10,16 +10,16 @@
 .extern ActorMotionTriple_Clear
 .extern ActorMotionTriple_Assign
 .extern ActorMotionOscillation_InitInterval
-.extern func_02020364
-.extern func_02020374
-.extern func_020203b0
+.extern SpriteMotionDelta_Init
+.extern SpriteMotionDelta_Configure
+.extern SpriteMotionDelta_Copy
 .extern GraphicsSpriteState_SetAnimationIndex
 .extern func_02073fc4
 .extern gSystemState
 
-.global func_020203e4
-    .type func_020203e4, @function
-func_020203e4: ; 0x020203e4
+.global RisingSpriteMotionController_Init
+    .type RisingSpriteMotionController_Init, @function
+RisingSpriteMotionController_Init: ; 0x020203e4
     stmdb sp!, {r3, r4, r5, r6, r7, lr}
     sub sp, sp, #0x70
     mov r4, r0
@@ -35,7 +35,7 @@ func_020203e4: ; 0x020203e4
     str r1, [r4, #0x18]
     bl VecFx32Triple_Init
     add r0, r4, #0x4c
-    bl func_02020364
+    bl SpriteMotionDelta_Init
     mov r1, #0x0
     ldr r2, .L_02020554
     str r1, [r4, #0x5c]
@@ -67,10 +67,10 @@ func_020203e4: ; 0x020203e4
     mov r1, #0x100000
     mov r2, #0x2000
     mov r3, #0x78
-    bl func_02020374
+    bl SpriteMotionDelta_Configure
     add r0, r4, #0x4c
     add r1, sp, #0x10
-    bl func_020203b0
+    bl SpriteMotionDelta_Copy
     mov r1, #0x2
     str r1, [sp, #0x0]
     ldmia r5, {r1, r2, r3}
@@ -113,4 +113,4 @@ func_020203e4: ; 0x020203e4
     add sp, sp, #0x70
     ldmia sp!, {r3, r4, r5, r6, r7, pc}
 .L_02020554: .word gSystemState
-    .size func_020203e4, .-func_020203e4
+    .size RisingSpriteMotionController_Init, .-RisingSpriteMotionController_Init

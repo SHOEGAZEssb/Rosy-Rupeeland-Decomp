@@ -23,7 +23,7 @@ extern s32 func_020befec(s32 value, s32 scale);
 #endif
 
 /* Clear scale0c and active0e; the three word fields remain unchanged. */
-void func_02020364(SpriteMotionDelta *self)
+void SpriteMotionDelta_Init(SpriteMotionDelta *self)
 {
     self->scale0c = 0;
     self->active0e = 0;
@@ -33,8 +33,9 @@ void func_02020364(SpriteMotionDelta *self)
  * Store both endpoints and scale, transform first minus second through
  * func_020befec using the signed scale, set active0e to one, and return self.
  */
-SpriteMotionDelta *func_02020374(SpriteMotionDelta *self, s32 first,
-                                 s32 second, s32 scale)
+SpriteMotionDelta *SpriteMotionDelta_Configure(SpriteMotionDelta *self,
+                                                s32 first, s32 second,
+                                                s32 scale)
 {
     self->first00 = first;
     self->second04 = second;
@@ -45,7 +46,8 @@ SpriteMotionDelta *func_02020374(SpriteMotionDelta *self, s32 first,
 }
 
 /* Copy all recovered fields unless source and destination are identical. */
-void func_020203b0(SpriteMotionDelta *self, const SpriteMotionDelta *source)
+void SpriteMotionDelta_Copy(SpriteMotionDelta *self,
+                            const SpriteMotionDelta *source)
 {
     if (self != source) {
         self->first00 = source->first00;

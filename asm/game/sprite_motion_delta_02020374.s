@@ -2,9 +2,9 @@
 .text
 .extern func_020befec
 
-.global func_02020374
-    .type func_02020374, @function
-func_02020374: ; 0x02020374
+.global SpriteMotionDelta_Configure
+    .type SpriteMotionDelta_Configure, @function
+SpriteMotionDelta_Configure: ; 0x02020374
     stmdb sp!, {r4, lr}
     mov r4, r0
     stmia r4, {r1, r2}
@@ -20,4 +20,4 @@ func_02020374: ; 0x02020374
     mov r0, r4
     strh r1, [r4, #0xe]
     ldmia sp!, {r4, pc}
-    .size func_02020374, .-func_02020374
+    .size SpriteMotionDelta_Configure, .-SpriteMotionDelta_Configure

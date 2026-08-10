@@ -8,12 +8,12 @@
 .extern ActorMotionAreaFollower_GetPosition
 .extern GamePhaseScriptVm_Pop
 .extern func_0201ded4
-.extern func_02020794
+.extern RisingSpriteSwarmPresentation_Init
 .extern ActorCollection_FindActorByDescriptorValue
 .extern gGameWork
 .extern gHeapContext
-.global func_0201797c
-func_0201797c:
+.global GamePhaseActorScriptVm_SetRisingSpriteSwarmEnabled
+GamePhaseActorScriptVm_SetRisingSpriteSwarmEnabled:
     stmdb sp!, {r4, r5, r6, lr}
     mov r6, r0
     bl GamePhaseScriptVm_Pop
@@ -48,7 +48,7 @@ func_0201797c:
     mov r0, r6
     mov r2, r4
     mov r3, r5
-    bl func_02020794
+    bl RisingSpriteSwarmPresentation_Init
     mov r6, r0
 L_02017a0c:
     ldr r0, L_02017a40
@@ -71,4 +71,4 @@ L_02017a44: .word data_020d5b34
 L_02017a48: .word gHeapContext
 L_02017a4c: .word gGameWork
 L_02017a50: .word 0x00000408
-    .size func_0201797c, . - func_0201797c
+    .size GamePhaseActorScriptVm_SetRisingSpriteSwarmEnabled, . - GamePhaseActorScriptVm_SetRisingSpriteSwarmEnabled

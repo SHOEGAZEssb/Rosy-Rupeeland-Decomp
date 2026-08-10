@@ -1,11 +1,11 @@
 ; Matching retail form; see src/game/rising_sprite_motion_controller.c.
 .text
-.extern func_02020374
-.extern func_020203b0
+.extern SpriteMotionDelta_Configure
+.extern SpriteMotionDelta_Copy
 
-.global func_02020754
-    .type func_02020754, @function
-func_02020754: ; 0x02020754
+.global RisingSpriteMotionController_SetState
+    .type RisingSpriteMotionController_SetState, @function
+RisingSpriteMotionController_SetState: ; 0x02020754
     stmdb sp!, {r4, lr}
     sub sp, sp, #0x10
     mov r4, r0
@@ -16,11 +16,11 @@ func_02020754: ; 0x02020754
     add r0, sp, #0x0
     mov r1, #0x0
     mov r3, #0x78
-    bl func_02020374
+    bl SpriteMotionDelta_Configure
     add r1, sp, #0x0
     add r0, r4, #0x4c
-    bl func_020203b0
+    bl SpriteMotionDelta_Copy
 .L_0202078c:
     add sp, sp, #0x10
     ldmia sp!, {r4, pc}
-    .size func_02020754, .-func_02020754
+    .size RisingSpriteMotionController_SetState, .-RisingSpriteMotionController_SetState

@@ -18,15 +18,15 @@
 .extern func_02008378
 .extern func_0201e250
 .extern func_0201e28c
-.extern func_020203e4
-.extern func_02020558
-.extern func_0202057c
-.extern func_02020754
-.extern func_020208a4
-.extern func_020208e4
-.extern func_02020a54
-.extern func_02020c38
-.extern func_02020d48
+.extern RisingSpriteMotionController_Init
+.extern RisingSpriteMotionController_Destroy
+.extern RisingSpriteMotionController_Update
+.extern RisingSpriteMotionController_SetState
+.extern RisingSpriteControllerList_Init
+.extern RisingSpriteControllerList_Clear
+.extern RisingSpriteControllerList_RemoveNode
+.extern RisingSpriteSwarmPresentation_SpawnController
+.extern RisingSpriteSwarmPresentation_SetControllerState
 .extern func_02071ea4
 .extern func_02071eb8
 .extern func_02071ee0
@@ -37,9 +37,9 @@
 .extern gGameWork
 .extern gHeapContext
 
-.global func_020208a4
-    .type func_020208a4, @function
-func_020208a4: ; 0x020208a4
+.global RisingSpriteControllerList_Init
+    .type RisingSpriteControllerList_Init, @function
+RisingSpriteControllerList_Init: ; 0x020208a4
     ldr r2, .L_020208c0
     mov r1, #0x0
     str r2, [r0, #0x0]
@@ -48,5 +48,5 @@ func_020208a4: ; 0x020208a4
     str r1, [r0, #0xc]
     bx lr
 .L_020208c0: .word data_020d6358
-    .size func_020208a4, .-func_020208a4
+    .size RisingSpriteControllerList_Init, .-RisingSpriteControllerList_Init
 

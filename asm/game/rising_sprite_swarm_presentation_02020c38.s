@@ -18,15 +18,15 @@
 .extern func_02008378
 .extern func_0201e250
 .extern func_0201e28c
-.extern func_020203e4
-.extern func_02020558
-.extern func_0202057c
-.extern func_02020754
-.extern func_020208a4
-.extern func_020208e4
-.extern func_02020a54
-.extern func_02020c38
-.extern func_02020d48
+.extern RisingSpriteMotionController_Init
+.extern RisingSpriteMotionController_Destroy
+.extern RisingSpriteMotionController_Update
+.extern RisingSpriteMotionController_SetState
+.extern RisingSpriteControllerList_Init
+.extern RisingSpriteControllerList_Clear
+.extern RisingSpriteControllerList_RemoveNode
+.extern RisingSpriteSwarmPresentation_SpawnController
+.extern RisingSpriteSwarmPresentation_SetControllerState
 .extern func_02071ea4
 .extern func_02071eb8
 .extern func_02071ee0
@@ -37,9 +37,9 @@
 .extern gGameWork
 .extern gHeapContext
 
-.global func_02020c38
-    .type func_02020c38, @function
-func_02020c38: ; 0x02020c38
+.global RisingSpriteSwarmPresentation_SpawnController
+    .type RisingSpriteSwarmPresentation_SpawnController, @function
+RisingSpriteSwarmPresentation_SpawnController: ; 0x02020c38
     stmdb sp!, {r3, r4, r5, r6, r7, lr}
     sub sp, sp, #0x28
     ldr r1, .L_02020d3c
@@ -71,7 +71,7 @@ func_02020c38: ; 0x02020c38
     ldr r2, [r4, #0x28]
     add r3, r4, #0x2c
     mov r6, r5
-    bl func_020203e4
+    bl RisingSpriteMotionController_Init
     mov r7, r0
 .L_02020cbc:
     cmp r6, #0x0
@@ -111,5 +111,5 @@ func_02020c38: ; 0x02020c38
 .L_02020d3c: .word data_020d63b8
 .L_02020d40: .word gHeapContext
 .L_02020d44: .word data_020d632c
-    .size func_02020c38, .-func_02020c38
+    .size RisingSpriteSwarmPresentation_SpawnController, .-RisingSpriteSwarmPresentation_SpawnController
 
