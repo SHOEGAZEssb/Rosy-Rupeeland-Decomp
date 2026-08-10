@@ -16,7 +16,7 @@ extern void Actor_ApplyMotionImpulse(void *actor);
 #endif
 
 /* Return signed descriptor byte +0x25 for actor index +0x4e; state is unchanged. */
-s32 func_0204362c(const void *self)
+s32 ActorExtendedType2_GetDescriptorValue25(const void *self)
 {
     const u8 *actor = (const u8 *)self;
     return *(s8 *)(data_020e83a5 + *(u16 *)(actor + 0x4e) * 0x30);
@@ -27,7 +27,7 @@ s32 func_0204362c(const void *self)
  * and return one when value is at least that threshold, otherwise zero. Inputs
  * and descriptor data are read only; no SDK or hardware operation occurs.
  */
-s32 func_02043648(const void *self, s32 value)
+s32 ActorExtendedType2_IsValueAtLeastDescriptorThreshold0(const void *self, s32 value)
 {
     const u8 *actor = (const u8 *)self;
     s16 encoded = *(s16 *)(data_020e8380 + *(u16 *)(actor + 0x4e) * 0x30 + 0x2e);
@@ -40,7 +40,7 @@ s32 func_02043648(const void *self, s32 value)
  * has no meaningful return value and may change actor bookkeeping; no direct
  * SDK or hardware operation occurs.
  */
-void func_02043674(void *self)
+void ActorExtendedType2_ApplyMotionImpulseIfEnabled(void *self)
 {
     u8 *actor = (u8 *)self;
     if ((*(u32 *)(actor + 0x260) & 0x8000) == 0)
@@ -55,7 +55,7 @@ void func_02043674(void *self)
  * that result. Actor flags are read only, but virtual +0xa8 may have observable
  * engine effects; no direct hardware operation occurs.
  */
-s32 func_0204368c(void *self)
+s32 ActorExtendedType2_IsInteractionActive(void *self)
 {
     u8 *actor = (u8 *)self;
     s32 active;

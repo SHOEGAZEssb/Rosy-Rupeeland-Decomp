@@ -13,7 +13,7 @@ extern s32 func_02043958(void *actor);
 extern s32 func_020412a8(void *actor, const void *record);
 extern u32 genrand_int32(void);
 extern s32 ActorExtendedType2_GetDescriptorValue2C(const void *actor);
-extern s32 func_0204362c(const void *actor);
+extern s32 ActorExtendedType2_GetDescriptorValue25(const void *actor);
 extern void func_02005030(void *temporary, const void *source);
 extern void func_02005058(void *temporary);
 extern void func_02050078(s32 mode, void *destination, const void *source);
@@ -61,7 +61,7 @@ s32 func_02043b54(void *self)
 
 /*
  * Return without action when descriptor halfword +0x2c is nonzero or
- * signed-byte accessor func_0204362c returns -1. Otherwise copy actor
+ * signed-byte accessor ActorExtendedType2_GetDescriptorValue25 returns -1. Otherwise copy actor
  * transform +0x18 to a temporary, call func_02050078(mode,temporary,temporary)
  * using the signed-byte accessor as mode, then finalize the temporary. The
  * routine has no meaningful return value; transform/helper state may change
@@ -74,11 +74,11 @@ void func_02043bc8(void *self)
     s32 mode;
     if (ActorExtendedType2_GetDescriptorValue2C(actor) != 0)
         return;
-    mode = func_0204362c(actor);
+    mode = ActorExtendedType2_GetDescriptorValue25(actor);
     if (mode == -1)
         return;
     func_02005030(temporary, actor + 0x18);
-    mode = func_0204362c(actor);
+    mode = ActorExtendedType2_GetDescriptorValue25(actor);
     func_02050078(mode, temporary, temporary);
     func_02005058(temporary);
 }

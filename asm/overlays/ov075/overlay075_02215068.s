@@ -1,7 +1,7 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov075/overlay075_recovery.c.
 .extern data_ov075_02217410
-.extern func_0204362c
+.extern ActorExtendedType2_GetDescriptorValue25
 .extern ActorExtendedLinked_Init
 .extern func_ov075_02215044
 .extern func_ov075_022158bc
@@ -22,7 +22,7 @@ func_ov075_02215068:
     mov r0, r4
     orr r1, r1, #0x200000
     str r1, [r4, #0x260]
-    bl func_0204362c
+    bl ActorExtendedType2_GetDescriptorValue25
     mvn r1, #0x0
     cmp r0, r1
     beq .L_022150b8

@@ -3,7 +3,7 @@
 .extern data_021052fc
 .extern func_0201e0ec
 .extern ActorExtendedType2_GetDescriptorValue2C
-.extern func_0204362c
+.extern ActorExtendedType2_GetDescriptorValue25
 .extern func_020593dc
 .extern func_020a28e0
 .extern func_020bf1f8
@@ -16,7 +16,7 @@ func_ov082_022132e8:
     stmdb sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, lr}
     sub sp, sp, #0x8
     mov r10, r0
-    bl func_0204362c
+    bl ActorExtendedType2_GetDescriptorValue25
     cmp r0, #0x1
     bne .L_022133fc
     mov r0, r10

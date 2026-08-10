@@ -19,7 +19,7 @@
 .extern func_02032a94
 .extern func_02038ecc
 .extern ActorExtendedType2_GetDescriptorValue28
-.extern func_0204362c
+.extern ActorExtendedType2_GetDescriptorValue25
 .extern func_0204cfa4
 .extern func_020a2894
 .extern func_020adc90
@@ -91,7 +91,7 @@ func_ov082_02213538:
     ble .L_022138e0
     mov r0, r5
     mov r10, #0x0
-    bl func_0204362c
+    bl ActorExtendedType2_GetDescriptorValue25
     cmp r0, #0x0
     beq .L_0221364c
     cmp r0, #0x1

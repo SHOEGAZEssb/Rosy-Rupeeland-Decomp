@@ -6,7 +6,7 @@
 .extern ActorExtendedType2_UpdateFrame
 .extern ActorExtendedType2_GetDescriptorValue2A
 .extern ActorExtendedType2_GetDescriptorValue2C
-.extern func_0204362c
+.extern ActorExtendedType2_GetDescriptorValue25
 .extern func_02050078
 .extern func_020be334
 
@@ -62,7 +62,7 @@ func_ov082_02212d90:
     add r1, r7, r1
     mov r0, r5
     str r1, [r5, #0x24]
-    bl func_0204362c
+    bl ActorExtendedType2_GetDescriptorValue25
     mvn r1, #0x0
     cmp r0, r1
     beq .L_02212ee4
@@ -86,7 +86,7 @@ func_ov082_02212d90:
     cmp r0, #0x4000
     bge .L_02212ee4
     mov r0, r5
-    bl func_0204362c
+    bl ActorExtendedType2_GetDescriptorValue25
     add r1, r5, #0x18
     mov r2, r1
     bl func_02050078

@@ -3,7 +3,7 @@
 .extern ActorCollection_FindActorByDescriptorValue
 .extern Actor_GetCollection
 .extern ActorExtendedType2_UpdateFrame
-.extern func_0204362c
+.extern ActorExtendedType2_GetDescriptorValue25
 .extern func_ov097_02217fd8
 .extern gGameWork
 
@@ -17,7 +17,7 @@ func_ov097_02218034:
     ldrb r1, [r4, #0x2bd]
     cmp r1, #0x0
     beq .L_02218094
-    bl func_0204362c
+    bl ActorExtendedType2_GetDescriptorValue25
     cmp r0, #0x0
     ldr r0, .L_022180b4
     movne r2, #0x1

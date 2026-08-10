@@ -6,7 +6,7 @@
 .extern ActorCollection_GetSpriteOwner
 .extern Actor_GetCollection
 .extern Actor_GetCachedTerrainHeight
-.extern func_0204362c
+.extern ActorExtendedType2_GetDescriptorValue25
 .extern func_02072b68
 .extern func_020740c8
 
@@ -57,7 +57,7 @@ func_ov082_02212b30:
     bne .L_02212cfc
 .L_02212bd4:
     mov r0, r7
-    bl func_0204362c
+    bl ActorExtendedType2_GetDescriptorValue25
     mvn r1, #0x0
     cmp r0, r1
     beq .L_02212c00
@@ -74,7 +74,7 @@ func_ov082_02212b30:
     ldrb r5, [r7, #0xd4]
     b .L_02212cfc
 .L_02212c10:
-    bl func_0204362c
+    bl ActorExtendedType2_GetDescriptorValue25
     mvn r1, #0x0
     cmp r0, r1
     beq .L_02212c40
@@ -94,7 +94,7 @@ func_ov082_02212b30:
     mov r5, #0x11
     b .L_02212cfc
 .L_02212c54:
-    bl func_0204362c
+    bl ActorExtendedType2_GetDescriptorValue25
     mvn r1, #0x0
     cmp r0, r1
     beq .L_02212c88

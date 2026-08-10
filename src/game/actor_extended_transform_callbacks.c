@@ -8,14 +8,14 @@ extern "C" {
 extern void func_0200b2c0(void *vector, s32 x, s32 y, s32 z);
 extern s32 Actor_IsAtCachedTerrainHeight(void *actor, ...);
 extern s32 ActorExtendedType2_GetDescriptorValue2A(const void *actor);
-extern void func_02043674(void *actor, void *first, void *second);
+extern void ActorExtendedType2_ApplyMotionImpulseIfEnabled(void *actor, void *first, void *second);
 #ifdef __cplusplus
 }
 #endif
 
 /*
  * Clear halfword +0x298 and word +0x44, zero the value at +0x29c, then forward
- * actor and both remaining inputs to func_02043674. Returns no value; actor and
+ * actor and both remaining inputs to ActorExtendedType2_ApplyMotionImpulseIfEnabled. Returns no value; actor and
  * descriptor-related state may change.
  */
 void func_020443f0(void *self, void *first, void *second)
@@ -24,7 +24,7 @@ void func_020443f0(void *self, void *first, void *second)
     *(u16 *)(actor + 0x298) = 0;
     *(u32 *)(actor + 0x44) = 0;
     func_0200b2c0(actor + 0x29c, 0, 0, 0);
-    func_02043674(actor, first, second);
+    ActorExtendedType2_ApplyMotionImpulseIfEnabled(actor, first, second);
 }
 
 /*

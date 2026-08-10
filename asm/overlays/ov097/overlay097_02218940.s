@@ -3,7 +3,7 @@
 .extern data_021052fc
 .extern data_ov097_0221a4c8
 .extern func_0201e0ec
-.extern func_0204362c
+.extern ActorExtendedType2_GetDescriptorValue25
 .extern func_020593dc
 .extern func_020a291c
 .extern func_020befec
@@ -52,7 +52,7 @@ func_ov097_02218940:
     cmp r0, #0xa
     bge .L_022189e4
     mov r0, r8
-    bl func_0204362c
+    bl ActorExtendedType2_GetDescriptorValue25
     cmp r0, #0x1
     ldreq r0, [r8, #0x260]
     biceq r0, r0, #0x8
@@ -118,7 +118,7 @@ func_ov097_02218940:
     str r3, [r8, #0x2a4]
     str r2, [r8, #0x2a8]
     strb r1, [r8, #0x2bc]
-    bl func_0204362c
+    bl ActorExtendedType2_GetDescriptorValue25
     cmp r0, #0x0
     ldr r0, .L_02218b18
     moveq r2, #0x4

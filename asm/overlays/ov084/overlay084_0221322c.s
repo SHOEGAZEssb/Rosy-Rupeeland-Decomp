@@ -5,7 +5,7 @@
 .extern func_02005030
 .extern func_02005058
 .extern func_02007f0c
-.extern func_0204362c
+.extern ActorExtendedType2_GetDescriptorValue25
 .extern func_020befec
 .extern func_ov084_022134f0
 
@@ -18,7 +18,7 @@ func_ov084_0221322c:
     mov r4, r1
     bic r1, r2, #0x40
     str r1, [r5, #0x14]
-    bl func_0204362c
+    bl ActorExtendedType2_GetDescriptorValue25
     cmp r0, #0x0
     bne .L_022132dc
     add r0, r5, #0x200

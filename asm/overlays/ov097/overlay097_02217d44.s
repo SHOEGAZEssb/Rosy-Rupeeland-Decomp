@@ -8,7 +8,7 @@
 .extern Actor_GetCollection
 .extern func_02034a60
 .extern func_020425d4
-.extern func_0204362c
+.extern ActorExtendedType2_GetDescriptorValue25
 .extern func_0206e590
 .extern func_020a2844
 .extern func_ov097_022177e0
@@ -32,7 +32,7 @@ func_ov097_02217d44:
     str r3, [r7, #0x2a4]
     str r2, [r7, #0x2a8]
     strb r1, [r7, #0x2bc]
-    bl func_0204362c
+    bl ActorExtendedType2_GetDescriptorValue25
     cmp r0, #0x0
     ldr r0, .L_02217fc4
     moveq r2, #0x4
@@ -70,7 +70,7 @@ func_ov097_02217d44:
     mov r5, r0
     bl func_020a2844
     mov r0, r7
-    bl func_0204362c
+    bl ActorExtendedType2_GetDescriptorValue25
     cmp r0, #0x0
     moveq r4, #0x1
     ldr r0, .L_02217fc4
@@ -96,7 +96,7 @@ func_ov097_02217d44:
     bl GameWork_SetFlag
 .L_02217e6c:
     mov r0, r7
-    bl func_0204362c
+    bl ActorExtendedType2_GetDescriptorValue25
     cmp r0, #0x0
     ldr r0, .L_02217fc4
     moveq r2, #0x5

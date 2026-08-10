@@ -1,6 +1,6 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov095/overlay095_recovery.c.
-.extern func_0204362c
+.extern ActorExtendedType2_GetDescriptorValue25
 .extern func_020593dc
 .extern func_ov095_0221b6d8
 .extern gSoundContext
@@ -15,7 +15,7 @@ func_ov095_0221bed0:
     movne r4, #0x1
     mov r0, r5
     moveq r4, #0x0
-    bl func_0204362c
+    bl ActorExtendedType2_GetDescriptorValue25
     cmp r0, #0x0
     beq .L_0221bf0c
     cmp r0, #0x1

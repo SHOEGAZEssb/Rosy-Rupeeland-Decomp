@@ -3,7 +3,7 @@
 .extern data_ov082_0221483c
 .extern func_02034a60
 .extern ActorExtendedType2_GetDescriptorValue2A
-.extern func_0204362c
+.extern ActorExtendedType2_GetDescriptorValue25
 
 .global func_ov082_0221340c
 func_ov082_0221340c:
@@ -57,7 +57,7 @@ func_ov082_0221340c:
     ldr r1, [r1, #0x14]
     str r2, [r4, #0x220]
     str r1, [r4, #0x224]
-    bl func_0204362c
+    bl ActorExtendedType2_GetDescriptorValue25
     cmp r0, #0x0
     bne .L_022134e8
     ldr r1, .L_022134f4

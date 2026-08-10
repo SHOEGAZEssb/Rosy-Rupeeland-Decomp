@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/actor_extended_type2_long_delay_audio.c.
 .text
 .extern data_020df9e8
-.extern func_0204362c
+.extern ActorExtendedType2_GetDescriptorValue25
 .extern func_020593dc
 .extern func_020ada8c
 .extern gSoundContext
@@ -30,7 +30,7 @@ func_02042170: ; 0x02042170
     cmp r0, #0x0
     beq .L_020422d0
     mov r0, r4
-    bl func_0204362c
+    bl ActorExtendedType2_GetDescriptorValue25
     cmp r0, #0x0
     beq .L_020421dc
     cmp r0, #0x1
@@ -79,7 +79,7 @@ func_02042170: ; 0x02042170
     cmp r0, #0x0
     beq .L_020422d0
     mov r0, r4
-    bl func_0204362c
+    bl ActorExtendedType2_GetDescriptorValue25
     cmp r0, #0x0
     bne .L_020422d0
     mov r0, #0x0

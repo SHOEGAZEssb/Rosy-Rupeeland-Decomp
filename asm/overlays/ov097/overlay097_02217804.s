@@ -4,7 +4,7 @@
 .extern data_ov097_0221a4c8
 .extern data_ov097_0221a5f4
 .extern func_02004fe0
-.extern func_0204362c
+.extern ActorExtendedType2_GetDescriptorValue25
 .extern func_ov075_02212ae0
 .extern func_ov097_022177e0
 .extern func_ov097_02217934
@@ -51,7 +51,7 @@ func_ov097_02217804:
     str r3, [r4, #0x2a4]
     str r2, [r4, #0x2a8]
     strh r1, [r4, #0xda]
-    bl func_0204362c
+    bl ActorExtendedType2_GetDescriptorValue25
     cmp r0, #0x0
     ldr r0, .L_02217928
     moveq r2, #0x4
@@ -61,7 +61,7 @@ func_ov097_02217804:
     mov r3, r1
     bl func_ov097_022177e0
     mov r0, r4
-    bl func_0204362c
+    bl ActorExtendedType2_GetDescriptorValue25
     cmp r0, #0x0
     moveq r0, #0x1
     movne r0, #0x0

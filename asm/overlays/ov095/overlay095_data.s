@@ -118,7 +118,7 @@
 .extern func_ov095_0221b224
 .extern func_ov095_0221b0e4
 .extern func_ov095_0221b21c
-.extern func_0204368c
+.extern ActorExtendedType2_IsInteractionActive
 .extern func_ov095_02217df4
 .extern func_ov095_0221a3f8
 .extern func_ov078_02213e78
@@ -148,7 +148,7 @@
 .extern func_ov095_0221b798
 .extern func_ov095_0221c054
 .extern func_02033f4c
-.extern func_02043674
+.extern ActorExtendedType2_ApplyMotionImpulseIfEnabled
 .extern func_ov095_0221c0ac
 .extern func_02042408
 .extern func_02042810
@@ -425,7 +425,7 @@ data_ov095_0221cca0:
     .word func_ov095_0221b224
     .word func_ov095_0221b0e4
     .word func_ov095_0221b21c
-    .word func_0204368c
+    .word ActorExtendedType2_IsInteractionActive
     .word func_ov095_02217df4
     .word func_ov095_0221a3f8
     .word func_ov078_02213e78 ; data_ov080_02213e78, data_ov083_02213e78
@@ -519,7 +519,7 @@ data_ov095_0221cf4c:
     .word Actor_SetResourceSlot
     .word func_02033f4c
     .word func_ov095_0221b0ac
-    .word func_02043674
+    .word ActorExtendedType2_ApplyMotionImpulseIfEnabled
     .word func_02031464
     .word func_0203baac
     .word ActorExtendedType2_ResetRuntimeState
@@ -589,7 +589,7 @@ data_ov095_0221cf4c:
     .word func_ov095_0221c064
     .word func_ov095_0221b0e4
     .word func_ov095_0221c05c
-    .word func_0204368c
+    .word ActorExtendedType2_IsInteractionActive
     .word data_020f35e0
     .word data_ov095_0221cba0
     .word data_020f35d0

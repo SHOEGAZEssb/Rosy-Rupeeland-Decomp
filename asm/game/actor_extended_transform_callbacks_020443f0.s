@@ -3,7 +3,7 @@
 .extern func_0200b2c0
 .extern Actor_IsAtCachedTerrainHeight
 .extern ActorExtendedType2_GetDescriptorValue2A
-.extern func_02043674
+.extern ActorExtendedType2_ApplyMotionImpulseIfEnabled
 .global func_020443f0
 .type func_020443f0, @function
 .global func_02044434
@@ -26,7 +26,7 @@ func_020443f0: ; 0x020443f0
     mov r0, r6
     mov r1, r5
     mov r2, r4
-    bl func_02043674
+    bl ActorExtendedType2_ApplyMotionImpulseIfEnabled
     ldmia sp!, {r4, r5, r6, pc}
 
 .size func_020443f0, . - func_020443f0

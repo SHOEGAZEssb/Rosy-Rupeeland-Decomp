@@ -3,9 +3,9 @@
 .extern data_020e8380
 .extern data_020e83a5
 .extern Actor_ApplyMotionImpulse
-.global func_0204362c
-.type func_0204362c, @function
-func_0204362c: ; 0x0204362c
+.global ActorExtendedType2_GetDescriptorValue25
+.type ActorExtendedType2_GetDescriptorValue25, @function
+ActorExtendedType2_GetDescriptorValue25: ; 0x0204362c
     ldrh r2, [r0, #0x4e]
     mov r0, #0x30
     ldr r1, .L_02043644
@@ -14,11 +14,11 @@ func_0204362c: ; 0x0204362c
     bx lr
 .L_02043644: .word data_020e83a5
 
-.size func_0204362c, . - func_0204362c
+.size ActorExtendedType2_GetDescriptorValue25, . - ActorExtendedType2_GetDescriptorValue25
 
-.global func_02043648
-.type func_02043648, @function
-func_02043648: ; 0x02043648
+.global ActorExtendedType2_IsValueAtLeastDescriptorThreshold0
+.type ActorExtendedType2_IsValueAtLeastDescriptorThreshold0, @function
+ActorExtendedType2_IsValueAtLeastDescriptorThreshold0: ; 0x02043648
     ldrh r3, [r0, #0x4e]
     ldr r2, .L_02043670
     mov r0, #0x30
@@ -31,11 +31,11 @@ func_02043648: ; 0x02043648
     bx lr
 .L_02043670: .word data_020e8380
 
-.size func_02043648, . - func_02043648
+.size ActorExtendedType2_IsValueAtLeastDescriptorThreshold0, . - ActorExtendedType2_IsValueAtLeastDescriptorThreshold0
 
-.global func_02043674
-.type func_02043674, @function
-func_02043674: ; 0x02043674
+.global ActorExtendedType2_ApplyMotionImpulseIfEnabled
+.type ActorExtendedType2_ApplyMotionImpulseIfEnabled, @function
+ActorExtendedType2_ApplyMotionImpulseIfEnabled: ; 0x02043674
     stmdb sp!, {r3, lr}
     ldr r3, [r0, #0x260]
     tst r3, #0x8000
@@ -43,11 +43,11 @@ func_02043674: ; 0x02043674
     bl Actor_ApplyMotionImpulse
     ldmia sp!, {r3, pc}
 
-.size func_02043674, . - func_02043674
+.size ActorExtendedType2_ApplyMotionImpulseIfEnabled, . - ActorExtendedType2_ApplyMotionImpulseIfEnabled
 
-.global func_0204368c
-.type func_0204368c, @function
-func_0204368c: ; 0x0204368c
+.global ActorExtendedType2_IsInteractionActive
+.type ActorExtendedType2_IsInteractionActive, @function
+ActorExtendedType2_IsInteractionActive: ; 0x0204368c
     stmdb sp!, {r4, lr}
     mov r4, r0
     ldr r1, [r4, #0x10]
@@ -96,4 +96,4 @@ func_0204368c: ; 0x0204368c
 .L_02043728:
     mov r0, #0x1
     ldmia sp!, {r4, pc}
-.size func_0204368c, . - func_0204368c
+.size ActorExtendedType2_IsInteractionActive, . - ActorExtendedType2_IsInteractionActive

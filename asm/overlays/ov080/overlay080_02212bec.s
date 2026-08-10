@@ -5,7 +5,7 @@
 .extern data_020e6c0c
 .extern ActorCollection_GetSpriteOwner
 .extern Actor_GetCollection
-.extern func_0204362c
+.extern ActorExtendedType2_GetDescriptorValue25
 .extern func_02072b68
 .extern func_020740c8
 
@@ -59,7 +59,7 @@ func_ov080_02212bec:
     bne .L_02212d50
 .L_02212c9c:
     mov r0, r7
-    bl func_0204362c
+    bl ActorExtendedType2_GetDescriptorValue25
     mvn r1, #0x0
     cmp r0, r1
     beq .L_02212cc8
