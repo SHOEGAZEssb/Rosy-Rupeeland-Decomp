@@ -31,7 +31,8 @@ static s32 actor_is_eligible(void *actor, const void *query)
  * hook with query, and return the first nonzero result; return zero if none.
  * The predicate and virtual hook may mutate actor state.
  */
-s32 func_0202daec(QueryDispatchCollection *self, const void *query)
+s32 ActorCollection_DispatchQueryUntilHandled(QueryDispatchCollection *self,
+                                               const void *query)
 {
     s32 i;
     for (i = 0; i < self->slotLimit_2e74; i++) {
@@ -52,7 +53,8 @@ s32 func_0202daec(QueryDispatchCollection *self, const void *query)
  * offset-0x50 hook with query. No result is collected; predicate and hook
  * effects are observable on actor state.
  */
-void func_0202db78(QueryDispatchCollection *self, const void *query)
+void ActorCollection_BroadcastQuery(QueryDispatchCollection *self,
+                                    const void *query)
 {
     s32 i;
     for (i = 0; i < self->slotLimit_2e74; i++) {

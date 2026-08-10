@@ -9,8 +9,10 @@ extern void func_020057dc(void *point);
 extern void *func_02009d78(void *object);
 extern s32 ActorCollection_ProcessSelectionQuery(void *collection,
                                                   const void *query);
-extern s32 func_0202daec(void *actor, const void *point);
-extern s32 func_0202db78(void *actor, const void *point);
+extern s32 ActorCollection_DispatchQueryUntilHandled(void *collection,
+                                                      const void *query);
+extern void ActorCollection_BroadcastQuery(void *collection,
+                                           const void *query);
 #ifdef __cplusplus
 }
 #endif
@@ -49,11 +51,11 @@ s32 func_020083c8(GamePhaseRuntime *self)
     }
     if (flags & 2) {
         *(u32 *)(b + 0x30b8) = flags & ~2;
-        return func_0202daec(b + 0x28, point);
+        return ActorCollection_DispatchQueryUntilHandled(b + 0x28, point);
     }
     if (flags & 4) {
         *(u32 *)(b + 0x30b8) = flags & ~4;
-        func_0202db78(b + 0x28, point);
+        ActorCollection_BroadcastQuery(b + 0x28, point);
     }
 returnZero:
     return 0;

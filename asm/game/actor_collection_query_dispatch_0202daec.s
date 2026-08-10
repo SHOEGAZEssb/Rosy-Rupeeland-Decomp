@@ -2,9 +2,9 @@
 .text
 .extern Actor_TestQueryPoint
 
-    .global func_0202daec
-    .type func_0202daec, @function
-func_0202daec: ; 0x0202daec
+    .global ActorCollection_DispatchQueryUntilHandled
+    .type ActorCollection_DispatchQueryUntilHandled, @function
+ActorCollection_DispatchQueryUntilHandled: ; 0x0202daec
     stmdb sp!, {r4, r5, r6, r7, r8, r9, r10, lr}
     mov r6, #0x0
     mov r9, r0
@@ -44,4 +44,4 @@ func_0202daec: ; 0x0202daec
 .L_0202db70:
     mov r0, r6
     ldmia sp!, {r4, r5, r6, r7, r8, r9, r10, pc}
-    .size func_0202daec, . - func_0202daec
+    .size ActorCollection_DispatchQueryUntilHandled, . - ActorCollection_DispatchQueryUntilHandled

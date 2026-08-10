@@ -1,9 +1,9 @@
 ; Matching retail form; see src/game/actor_collection_query_dispatch.c.
 .text
 
-    .global func_0202db78
-    .type func_0202db78, @function
-func_0202db78: ; 0x0202db78
+    .global ActorCollection_BroadcastQuery
+    .type ActorCollection_BroadcastQuery, @function
+ActorCollection_BroadcastQuery: ; 0x0202db78
     stmdb sp!, {r3, r4, r5, r6, r7, r8, r9, lr}
     mov r8, r0
     mov r6, #0x0
@@ -33,4 +33,4 @@ func_0202db78: ; 0x0202db78
     cmp r6, r0
     blt .L_0202db98
     ldmia sp!, {r3, r4, r5, r6, r7, r8, r9, pc}
-    .size func_0202db78, . - func_0202db78
+    .size ActorCollection_BroadcastQuery, . - ActorCollection_BroadcastQuery
