@@ -14,7 +14,7 @@ extern u8 gHeapContext[];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_020088b8(void *, s32, s32);
+extern void GamePhaseRuntime_SetPlacementMode(void *, s32, s32);
 extern void *Heap_Alloc(u32, const char *, s32, void *);
 extern void *func_ov006_021fb708(void *);
 extern void *func_020959d4(void *, s32, s32);
@@ -51,7 +51,7 @@ void func_ov013_021fda40(void *state)
 {
     void *object;
 
-    func_020088b8(data_021052fc, 0, 1);
+    GamePhaseRuntime_SetPlacementMode(data_021052fc, 0, 1);
     object = Heap_Alloc(0xb8, data_ov013_021fed88, 4, gHeapContext);
     if (object != 0)
         object = func_ov006_021fb708(object);

@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/game_phase_script_vm_runtime_scene_mode_opcode.c.
 .text
 .extern func_02012704
-.extern func_020088b8
+.extern GamePhaseRuntime_SetPlacementMode
 .extern GamePhaseRuntime_GetActorCollection
 .extern func_0202d68c
 .extern data_021052fc
@@ -15,14 +15,14 @@ func_0201af00: ; 0x0201af00
     mov r1, #0x1
     ldr r0, [r0, #0x0]
     mov r2, r1
-    bl func_020088b8
+    bl GamePhaseRuntime_SetPlacementMode
     b L_0201af7c
 L_0201af28:
     ldr r0, L_0201af84
     mov r1, #0x0
     ldr r0, [r0, #0x0]
     mov r2, #0x1
-    bl func_020088b8
+    bl GamePhaseRuntime_SetPlacementMode
     ldr r0, L_0201af84
     mov r1, #0x2
     ldr r0, [r0, #0x0]

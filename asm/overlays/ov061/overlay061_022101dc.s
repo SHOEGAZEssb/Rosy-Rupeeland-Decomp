@@ -2,7 +2,7 @@
 ; Matching fallback for the portable implementation in src/overlays/ov061/overlay061_recovery.c.
 .extern data_021052fc
 .extern func_02008570
-.extern func_020088b8
+.extern GamePhaseRuntime_SetPlacementMode
 .extern func_0200ec6c
 .extern func_0201140c
 .extern gLupyContext
@@ -35,7 +35,7 @@ func_ov061_022101dc:
     mov r1, #0x1
     ldr r0, [r0, #0x0]
     mov r2, r1
-    bl func_020088b8
+    bl GamePhaseRuntime_SetPlacementMode
 .L_02210244:
     ldr r0, .L_0221025c
     ldr r1, [r4, #0x30]

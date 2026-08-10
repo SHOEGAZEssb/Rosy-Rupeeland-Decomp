@@ -3,7 +3,7 @@
     .extern data_021052fc
     .extern data_ov013_021fed88
     .extern data_ov013_021fed90
-    .extern func_020088b8
+    .extern GamePhaseRuntime_SetPlacementMode
     .extern func_02072b68
     .extern func_02095958
     .extern func_020959d4
@@ -37,7 +37,7 @@ func_ov013_021fda40:
     ldr r0, [r1, #0x0]
     mov r1, #0x0
     mov r2, #0x1
-    bl func_020088b8
+    bl GamePhaseRuntime_SetPlacementMode
     ldr r1, L_021fda94
     ldr r3, L_021fda98
     mov r0, #0xb8

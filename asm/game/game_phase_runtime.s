@@ -11,8 +11,8 @@
 .extern GamePhaseRuntime_SetDisplayRouting
 .extern GamePhaseRuntime_CreateFieldLoader
 .extern GamePhaseRuntime_CreateSecondaryActorSubsystem
-.extern func_020088b8
-.extern func_02008af8
+.extern GamePhaseRuntime_SetPlacementMode
+.extern GamePhaseRuntime_GetActiveAreaPlacementVariant
 .extern func_02008bb8
 .extern func_02008cf8
 .extern func_020090c0
@@ -261,7 +261,7 @@ L_02006da0:
     add r0, r0, #0x2c00
     bl func_0200a310
     mov r0, r4
-    bl func_02008af8
+    bl GamePhaseRuntime_GetActiveAreaPlacementVariant
     add r2, r4, #0x3000
     mov r1, r0
     ldr r2, [r2, #0xbc]
@@ -272,7 +272,7 @@ L_02006da0:
     str r1, [r0, #0xfc]
     mov r0, r4
     mov r2, #0x0
-    bl func_020088b8
+    bl GamePhaseRuntime_SetPlacementMode
     add r0, r4, #0x24
     mov r1, #0x1
     bl func_0200ec6c

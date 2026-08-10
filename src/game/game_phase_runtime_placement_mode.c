@@ -8,7 +8,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern s32 func_02008af8(GamePhaseRuntime *self);
+extern s32 GamePhaseRuntime_GetActiveAreaPlacementVariant(GamePhaseRuntime *self);
 extern void func_0200500c(void *value, s32 x, s32 y, s32 z);
 extern void func_02009780(void *object, const void *value);
 extern void func_02005058(void *value);
@@ -33,7 +33,7 @@ static void callSceneMode(GamePhaseRuntime *self, s32 enabled)
  * and mode is not zero, primary/secondary transition state and virtual slot
  * four of object 0x30e8 are updated before the new mode is stored.
  */
-s32 func_020088b8(GamePhaseRuntime *self, s32 mode, s32 synchronize)
+s32 GamePhaseRuntime_SetPlacementMode(GamePhaseRuntime *self, s32 mode, s32 synchronize)
 {
     u8 *b = (u8 *)self;
     u8 mode3Value[16];
@@ -49,7 +49,7 @@ s32 func_020088b8(GamePhaseRuntime *self, s32 mode, s32 synchronize)
         func_020122a0(*(void **)(b + 0x2fb8), 0);
         break;
     case 1:
-        variant = func_02008af8(self);
+        variant = GamePhaseRuntime_GetActiveAreaPlacementVariant(self);
         if (variant == 0) {
             callSceneMode(self, 1);
             func_0200500c(mode1Value, -0x58000, -0x44000, 0);

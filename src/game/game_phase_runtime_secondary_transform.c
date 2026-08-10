@@ -9,7 +9,7 @@
 extern "C" {
 #endif
 extern void func_02004fe0(void *value);
-extern s32 func_02008af8(GamePhaseRuntime *self);
+extern s32 GamePhaseRuntime_GetActiveAreaPlacementVariant(GamePhaseRuntime *self);
 extern void func_0200500c(void *value, s32 x, s32 y, s32 z);
 extern void *func_02009d0c(void *object);
 extern void func_02008378(void *destination, const void *left,
@@ -44,7 +44,7 @@ void func_0200875c(void *destination, GamePhaseRuntime *self)
     case 0:
         break;
     case 1:
-        variant = func_02008af8(self);
+        variant = GamePhaseRuntime_GetActiveAreaPlacementVariant(self);
         if (variant == 0) {
             func_0200500c(mode1Offset, -0x10000, -0x28000, 0);
             func_02008378(combined, func_02009d0c(b + 0x3044), mode1Offset);

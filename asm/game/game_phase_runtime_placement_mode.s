@@ -5,15 +5,15 @@
 .extern func_02005058
 .extern GamePhaseRuntime_PrepareActorCollections
 .extern GamePhaseRuntime_SynchronizeActorPlacement
-.extern func_02008af8
+.extern GamePhaseRuntime_GetActiveAreaPlacementVariant
 .extern func_02009780
 .extern func_02009c20
 .extern func_020122a0
 .extern OS_Halt
 
-    .global func_020088b8
-.type func_020088b8, @function
-func_020088b8:
+    .global GamePhaseRuntime_SetPlacementMode
+.type GamePhaseRuntime_SetPlacementMode, @function
+GamePhaseRuntime_SetPlacementMode:
     stmdb sp!, {r3, r4, r5, r6, r7, lr}
     sub sp, sp, #0x40
     mov r7, r0
@@ -42,7 +42,7 @@ L_020088f0:
     bl func_020122a0
     b L_02008aa8
 L_0200891c:
-    bl func_02008af8
+    bl GamePhaseRuntime_GetActiveAreaPlacementVariant
     cmp r0, #0x0
     beq L_02008938
     cmp r0, #0x1
@@ -168,5 +168,5 @@ L_02008ae4:
     str r6, [r1, #0xfc]
     add sp, sp, #0x40
     ldmia sp!, {r3, r4, r5, r6, r7, pc}
-    .size func_020088b8, .-func_020088b8
+    .size GamePhaseRuntime_SetPlacementMode, .-GamePhaseRuntime_SetPlacementMode
 

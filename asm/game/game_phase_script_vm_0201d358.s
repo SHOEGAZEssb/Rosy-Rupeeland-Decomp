@@ -12,7 +12,7 @@
 .extern DisplayBrightness_IsSubTransitionComplete
 .extern func_020122a0
 .extern func_0201140c
-.extern func_020088b8
+.extern GamePhaseRuntime_SetPlacementMode
 .extern func_02008570
 .extern func_020755bc
 .extern func_02008e10
@@ -77,7 +77,7 @@ L_0201d3f4:
     mov r1, #0x0
     ldr r0, [r0, #0x0]
     mov r2, #0x1
-    bl func_020088b8
+    bl GamePhaseRuntime_SetPlacementMode
     ldr r0, [r4, #0x38]
     cmp r0, #0x0
     beq L_0201d420
@@ -182,7 +182,7 @@ L_0201d534:
     mov r1, #0x1
     ldr r0, [r0, #0x0]
     mov r2, r1
-    bl func_020088b8
+    bl GamePhaseRuntime_SetPlacementMode
 L_0201d588:
     ldr r0, [r4, #0x28]
     cmp r0, #0x0

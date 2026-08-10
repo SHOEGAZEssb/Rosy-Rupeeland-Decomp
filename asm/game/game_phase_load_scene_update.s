@@ -39,7 +39,7 @@
 .extern OverlaySlot_UnloadOverlay
 .extern GamePhaseRuntime_GetActorCollection
 .extern func_02008570
-.extern func_020088b8
+.extern GamePhaseRuntime_SetPlacementMode
 .extern func_0200ec6c
 .extern func_0201140c
 .extern func_020122a0
@@ -260,7 +260,7 @@ L_0200d2f0:
     strh r1, [r2, #0x0]
     ldr r0, [r0, #0x0]
     mov r2, #0x1
-    bl func_020088b8
+    bl GamePhaseRuntime_SetPlacementMode
     ldr r0, L_0200e0e4
     mov r1, #0x0
     ldr r0, [r0, #0x0]
@@ -432,7 +432,7 @@ L_0200d540:
     mov r1, #0x2
     ldr r0, [r0, #0x0]
     mov r2, #0x0
-    bl func_020088b8
+    bl GamePhaseRuntime_SetPlacementMode
     ldr r0, L_0200e0e4
     mov r1, #0x1
     ldr r0, [r0, #0x0]
@@ -1146,7 +1146,7 @@ L_0200df58:
     mov r1, #0x3
     ldr r0, [r0, #0x0]
     mov r2, #0x1
-    bl func_020088b8
+    bl GamePhaseRuntime_SetPlacementMode
     ldr r0, L_0200e0e4
     mov r1, #0x1
     ldr r0, [r0, #0x0]

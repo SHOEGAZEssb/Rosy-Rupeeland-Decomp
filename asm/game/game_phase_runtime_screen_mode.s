@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/game_phase_runtime_screen_mode.c for
 ; the documented portable implementation and recovered behavior.
 .text
-.extern func_020088b8
+.extern GamePhaseRuntime_SetPlacementMode
 .extern func_02008bb8
 .extern func_0200eb58
 .extern func_020121f8
@@ -55,7 +55,7 @@ L_020085b8:
     mov r0, r5
     mov r1, #0x1
     mov r2, #0x0
-    bl func_020088b8
+    bl GamePhaseRuntime_SetPlacementMode
     mov r2, #0x0
     ldr r1, L_02008668
     ldr r0, L_0200865c

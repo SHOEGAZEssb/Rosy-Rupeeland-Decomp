@@ -11,7 +11,7 @@
 .extern DisplayBrightnessPair_GetScreen
 .extern AnimationResource_Init
 .extern GraphicsSpriteState_Create
-.extern func_020088b8
+.extern GamePhaseRuntime_SetPlacementMode
 .extern func_0201140c
 .extern func_02071980
 .extern func_020742cc
@@ -164,7 +164,7 @@ func_ov052_0220d618:
     mov r1, #0x0
     ldr r0, [r0, #0x0]
     mov r2, #0x1
-    bl func_020088b8
+    bl GamePhaseRuntime_SetPlacementMode
     ldr r0, .L_0220d86c
     ldr r0, [r0, #0x0]
     bl func_020755bc

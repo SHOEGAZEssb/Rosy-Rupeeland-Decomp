@@ -10226,7 +10226,7 @@ build build/reports/game_phase_runtime_placement_mode.json: objdiff build/decomp
 
 build build/reports/game_phase_runtime_placement_mode.txt: match_report build/reports/game_phase_runtime_placement_mode.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_runtime_placement_mode.json
-  report_args = --section .text --function func_020088b8 --require-exact
+  report_args = --section .text --function GamePhaseRuntime_SetPlacementMode --require-exact
 
 build build/reports/game_phase_runtime_area_helpers.json: objdiff build/decomp/delinks/src/game/game_phase_runtime_area_helpers.o | build/decomp/src/game/game_phase_runtime_area_helpers.o
   target_object = build/decomp/delinks/src/game/game_phase_runtime_area_helpers.o
@@ -10234,7 +10234,7 @@ build build/reports/game_phase_runtime_area_helpers.json: objdiff build/decomp/d
 
 build build/reports/game_phase_runtime_area_helpers.txt: match_report build/reports/game_phase_runtime_area_helpers.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_runtime_area_helpers.json
-  report_args = --section .text --function func_02008af8 --function func_02008b50 --function func_02008b6c --require-exact
+  report_args = --section .text --function GamePhaseRuntime_GetActiveAreaPlacementVariant --function func_02008b50 --function func_02008b6c --require-exact
 
 build build/reports/game_phase_runtime_auxiliary.json: objdiff build/decomp/delinks/asm/game/game_phase_runtime_auxiliary.o | build/decomp/asm/game/game_phase_runtime_auxiliary.o
   target_object = build/decomp/delinks/asm/game/game_phase_runtime_auxiliary.o

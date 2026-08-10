@@ -18,7 +18,7 @@ extern void func_0202839c(void *destination, u32 areaValue);
  * two, one/two map to zero, and three maps to one. Invalid values halt. This
  * function changes no state and returns the mapped variant.
  */
-s32 func_02008af8(GamePhaseRuntime *self)
+s32 GamePhaseRuntime_GetActiveAreaPlacementVariant(GamePhaseRuntime *self)
 {
     u8 *b = (u8 *)self;
     s32 result;

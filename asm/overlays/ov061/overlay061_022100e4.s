@@ -2,7 +2,7 @@
 ; Matching fallback for the portable implementation in src/overlays/ov061/overlay061_recovery.c.
 .extern data_021052fc
 .extern GamePhaseRuntime_GetActorCollection
-.extern func_020088b8
+.extern GamePhaseRuntime_SetPlacementMode
 .extern func_0200ec6c
 .extern func_0201140c
 .extern func_0202d68c
@@ -55,7 +55,7 @@ func_ov061_022100e4:
     ldr r0, [r0, #0x0]
     mov r1, #0x0
     mov r2, #0x1
-    bl func_020088b8
+    bl GamePhaseRuntime_SetPlacementMode
 .L_02210198:
     ldr r0, .L_022101d8
     ldr r0, [r0, #0x0]

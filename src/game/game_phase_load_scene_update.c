@@ -70,7 +70,7 @@ extern int OverlayManager_GetGlobal(...);
 extern int OverlayManager_LoadOverlay(...);
 extern int func_02003e14(...);
 extern int func_ov059_0220fd20(...);
-extern int func_020088b8(...);
+extern int GamePhaseRuntime_SetPlacementMode(...);
 extern int func_ov059_02210fec(...);
 extern int func_02001944(...);
 extern int GX_VBlankIntr(...);
@@ -463,7 +463,7 @@ code_r0x0200e2ac:
         (**(code **)(*param_1 + 4))();
       }
       func_02008570(*UNK_0200e0e4,2,1);
-      func_020088b8(*UNK_0200e0e4,3,1);
+      GamePhaseRuntime_SetPlacementMode(*UNK_0200e0e4,3,1);
       func_0200ec6c(*UNK_0200e0e4 + 0x24,1);
       func_020122a0(*(undefined4 *)(*UNK_0200e0e4 + 0x2fb8),1);
       uVar3 = OverlayManager_GetGlobal();
@@ -550,7 +550,7 @@ code_r0x0200d224:
   else if (iVar5 != 0x12 && iVar5 != 0x17) {
 code_r0x0200d2f0:
     *UNK_0200e0f8 = 0;
-    func_020088b8(*piVar1,0,1);
+    GamePhaseRuntime_SetPlacementMode(*piVar1,0,1);
     func_020122a0(*(undefined4 *)(*UNK_0200e0e4 + 0x2fb8),0);
     func_020745c4(*UNK_0200e0fc,0);
     func_0201140c(*UNK_0200e0f4,0);
@@ -619,7 +619,7 @@ code_r0x0200d3bc:
     OverlaySlot_LoadOverlay(param_1 + 0x1d,UNK_0200e13c);
     OverlaySlot_LoadOverlay(param_1 + 0x20,UNK_0200e140);
     func_02008570(*UNK_0200e0e4,0,1);
-    func_020088b8(*UNK_0200e0e4,2,0);
+    GamePhaseRuntime_SetPlacementMode(*UNK_0200e0e4,2,0);
     func_020122a0(*(undefined4 *)(*UNK_0200e0e4 + 0x2fb8),1);
     func_0200ec6c(*UNK_0200e0e4 + 0x24,1);
     iVar5 = func_02003e14(UNK_0200e144,UNK_0200e148,4,UNK_0200e114);

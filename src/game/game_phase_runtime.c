@@ -178,9 +178,9 @@ void GamePhaseRuntime_Configure(GamePhaseRuntime *self, const void *configPointe
     func_0200a114(bytes + 0x2fbc, entity);
     func_020091c0(bytes + 0x3044, entity);
     func_0200a310(bytes + 0x2fbc);
-    func_02008cf8(self, func_02008af8(self), (void *)configPointer);
+    func_02008cf8(self, GamePhaseRuntime_GetActiveAreaPlacementVariant(self), (void *)configPointer);
     *(s32 *)(bytes + 0x30fc) = 1;
-    func_020088b8(self, 1, 0);
+    GamePhaseRuntime_SetPlacementMode(self, 1, 0);
     func_0200ec6c(bytes + 0x24, 1);
 
     ActorCollection_DispatchEventToActors((u8 *)*(void **)(bytes + 0x2fb8) + 8,

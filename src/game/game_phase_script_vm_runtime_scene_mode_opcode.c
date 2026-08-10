@@ -8,7 +8,7 @@ typedef void (*RuntimeObjectToggleMethod)(void *self, s32 enabled);
 extern "C" {
 #endif
 extern void *data_021052fc;
-extern void func_020088b8(void *runtime, s32 mode, s32 synchronize);
+extern void GamePhaseRuntime_SetPlacementMode(void *runtime, s32 mode, s32 synchronize);
 extern void *GamePhaseRuntime_GetActorCollection(void *runtime, s32 index);
 extern void func_0202d68c(void *object, s32 enabled);
 #ifdef __cplusplus
@@ -27,13 +27,13 @@ s32 func_0201af00(GamePhaseActorScriptVm *self)
     u8 *runtime = (u8 *)data_021052fc;
 
     if (enabled != 0) {
-        func_020088b8(runtime, 1, 1);
+        GamePhaseRuntime_SetPlacementMode(runtime, 1, 1);
     } else {
         u8 *owner;
         void *object;
         void **vtable;
 
-        func_020088b8(runtime, 0, 1);
+        GamePhaseRuntime_SetPlacementMode(runtime, 0, 1);
         func_0202d68c(GamePhaseRuntime_GetActorCollection(runtime, 2), 1);
         owner = *(u8 **)(runtime + 0x2fb8);
         object = *(void **)(owner + 0x2ebc);

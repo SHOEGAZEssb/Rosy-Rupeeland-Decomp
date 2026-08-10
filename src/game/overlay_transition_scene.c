@@ -32,7 +32,7 @@ extern void func_02092c8c(s32 screen, s32 brightness);
 extern s32 func_02091fb0(void *object, s32 mode);
 extern void func_020122a0(void *object, s32 value);
 extern void func_0201140c(void *context, s32 enabled);
-extern void func_020088b8(void *runtime, s32 first, s32 second);
+extern void GamePhaseRuntime_SetPlacementMode(void *runtime, s32 first, s32 second);
 extern void func_02008570(void *runtime, s32 first, s32 second);
 extern void func_020755bc(void *renderer);
 extern void func_02008e10(void *runtime, s32 mode);
@@ -122,7 +122,7 @@ s32 func_0201d358(OverlayTransitionScene *self)
             func_020122a0(runtimeObject, 0);
         if (self->restoreLupy28 != 0)
             func_0201140c(gLupyContext, 0);
-        func_020088b8(runtime, 0, 1);
+        GamePhaseRuntime_SetPlacementMode(runtime, 0, 1);
         if (self->kind38 == 0) {
             OverlaySlot_LoadOverlay(&self->overlay2c, 0x1f);
             object = (OverlayTransitionObject *)Heap_Alloc(
@@ -164,7 +164,7 @@ s32 func_0201d358(OverlayTransitionScene *self)
         runtimeObject = *(void **)((u8 *)runtime + 0x2fb8);
         if (runtimeObject != 0) {
             func_02008570(runtime, 1, 1);
-            func_020088b8(runtime, 1, 1);
+            GamePhaseRuntime_SetPlacementMode(runtime, 1, 1);
         }
         if (self->restoreLupy28 != 0)
             func_0201140c(gLupyContext, 1);

@@ -7,7 +7,7 @@
 .extern func_020050a4
 .extern func_02008378
 .extern func_02008740
-.extern func_02008af8
+.extern GamePhaseRuntime_GetActiveAreaPlacementVariant
 .extern func_02009d0c
 .extern OS_Halt
 
@@ -32,7 +32,7 @@ L_02008788: ; jump table
     b L_0200884c ; case 3
 L_02008798:
     mov r0, r4
-    bl func_02008af8
+    bl GamePhaseRuntime_GetActiveAreaPlacementVariant
     cmp r0, #0x0
     beq L_020087b8
     cmp r0, #0x1

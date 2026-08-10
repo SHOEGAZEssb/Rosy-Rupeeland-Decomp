@@ -12,7 +12,7 @@
 .extern DisplayBrightness_IsSubTransitionComplete
 .extern func_020122a0
 .extern func_0201140c
-.extern func_020088b8
+.extern GamePhaseRuntime_SetPlacementMode
 .extern func_02008570
 .extern func_020755bc
 .extern func_02008e10
