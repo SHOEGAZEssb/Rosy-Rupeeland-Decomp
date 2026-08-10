@@ -6,7 +6,7 @@
 extern "C" {
 #endif
 extern void *func_02051cdc(void *actor);
-extern void *func_0204fdc0(void *actor);
+extern void *TrackedResourceActor_Destroy(void *actor);
 extern void Heap_Free(void *allocation);
 extern u32 data_020e321c[];
 #ifdef __cplusplus
@@ -27,12 +27,12 @@ void *func_02052120(void *actor)
 
 /*
  * Input is a sequence-subclass instance. Runs tracked-resource base teardown
- * func_0204fdc0 and returns the instance without freeing it. The direct base
+ * TrackedResourceActor_Destroy and returns the instance without freeing it. The direct base
  * call rather than an address-derived parent destructor is confirmed.
  */
 void *func_02052140(void *actor)
 {
-    func_0204fdc0(actor);
+    TrackedResourceActor_Destroy(actor);
     return actor;
 }
 
@@ -43,7 +43,7 @@ void *func_02052140(void *actor)
  */
 void *func_02052154(void *actor)
 {
-    func_0204fdc0(actor);
+    TrackedResourceActor_Destroy(actor);
     Heap_Free(actor);
     return actor;
 }

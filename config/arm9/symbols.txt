@@ -2300,10 +2300,10 @@ GridEffectActorRegistry_BroadcastStateValue0 kind:function(arm,size=0x40) addr:0
 GridEffectActorRegistry_FinalizeDepartingActors kind:function(arm,size=0x90) addr:0x0204fbdc
 GridEffectActorRegistry_CountDepartingOrFinishedActors kind:function(arm,size=0x44) addr:0x0204fc6c
 GridEffectActor_ReturnFx100000 kind:function(arm,size=0x8) addr:0x0204fcb0
-func_0204fcb8 kind:function(arm,size=0x50) addr:0x0204fcb8
-func_0204fd08 kind:function(arm,size=0x58) addr:0x0204fd08
-func_0204fd60 kind:function(arm,size=0x60) addr:0x0204fd60
-func_0204fdc0 kind:function(arm,size=0x58) addr:0x0204fdc0
+TrackedResourceActor_Init kind:function(arm,size=0x50) addr:0x0204fcb8
+TrackedResourceActor_DestroyComplete kind:function(arm,size=0x58) addr:0x0204fd08
+TrackedResourceActor_DestroyAndFree kind:function(arm,size=0x60) addr:0x0204fd60
+TrackedResourceActor_Destroy kind:function(arm,size=0x58) addr:0x0204fdc0
 func_0204fe18 kind:function(arm,size=0x50) addr:0x0204fe18
 TrackedResourceActor_SetupPresentationResources kind:function(arm,size=0xa4) addr:0x0204fe68
 func_0204ff0c kind:function(arm,size=0x34) addr:0x0204ff0c
@@ -7668,7 +7668,7 @@ data_020e2c2b kind:data(any) addr:0x020e2c2b
 data_020e2cd8 kind:data(any) addr:0x020e2cd8
 data_020e2cdc kind:data(any) addr:0x020e2cdc
 data_020e2dbc kind:data(any) addr:0x020e2dbc
-data_020e2e9c kind:data(any) addr:0x020e2e9c
+gTrackedResourceActorVtable kind:data(any) addr:0x020e2e9c
 data_020e2f7c kind:data(any) addr:0x020e2f7c
 data_020e305c kind:data(any) addr:0x020e305c
 data_020e313c kind:data(any) addr:0x020e313c

@@ -5,8 +5,8 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *func_0204fcb8(void *actor);
-extern void *func_0204fdc0(void *actor);
+extern void *TrackedResourceActor_Init(void *actor);
+extern void *TrackedResourceActor_Destroy(void *actor);
 extern void Heap_Free(void *allocation);
 extern u32 data_020e3308[];
 #ifdef __cplusplus
@@ -20,7 +20,7 @@ extern u32 data_020e3308[];
  */
 void *func_02051cdc(void *actor)
 {
-    func_0204fcb8(actor);
+    TrackedResourceActor_Init(actor);
     *(u32 **)actor = data_020e3308;
     return actor;
 }
@@ -31,7 +31,7 @@ void *func_02051cdc(void *actor)
  */
 void *func_02051cfc(void *actor)
 {
-    func_0204fdc0(actor);
+    TrackedResourceActor_Destroy(actor);
     return actor;
 }
 
@@ -41,7 +41,7 @@ void *func_02051cfc(void *actor)
  */
 void *func_02051d10(void *actor)
 {
-    func_0204fdc0(actor);
+    TrackedResourceActor_Destroy(actor);
     Heap_Free(actor);
     return actor;
 }
@@ -53,6 +53,6 @@ void *func_02051d10(void *actor)
  */
 void *func_02051d2c(void *actor)
 {
-    func_0204fdc0(actor);
+    TrackedResourceActor_Destroy(actor);
     return actor;
 }

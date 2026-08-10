@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/tracked_resource_actor_sequence_lifecycle.c.
 .extern Heap_Free
 .extern data_020e321c
-.extern func_0204fdc0
+.extern TrackedResourceActor_Destroy
 .extern func_02051cdc
 .text
     .global func_02052120
@@ -20,7 +20,7 @@ func_02052120:
 func_02052140:
     stmdb sp!, {r4, lr}
     mov r4, r0
-    bl func_0204fdc0
+    bl TrackedResourceActor_Destroy
     mov r0, r4
     ldmia sp!, {r4, pc}
     .size func_02052140, . - func_02052140
@@ -29,7 +29,7 @@ func_02052140:
 func_02052154:
     stmdb sp!, {r4, lr}
     mov r4, r0
-    bl func_0204fdc0
+    bl TrackedResourceActor_Destroy
     mov r0, r4
     bl Heap_Free
     mov r0, r4

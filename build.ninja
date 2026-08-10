@@ -19352,7 +19352,7 @@ build build/reports/tracked_resource_actor_lifecycle_0204fcb8.json: objdiff buil
   base_object = build/decomp/asm/game/tracked_resource_actor_lifecycle_0204fcb8.o
 build build/reports/tracked_resource_actor_lifecycle_0204fcb8.txt: match_report build/reports/tracked_resource_actor_lifecycle_0204fcb8.json | tools/report_objdiff.py
   report_json = build/reports/tracked_resource_actor_lifecycle_0204fcb8.json
-  report_args = --section .text --function func_0204fcb8 --function func_0204fd08 --function func_0204fd60 --function func_0204fdc0 --require-exact
+  report_args = --section .text --function TrackedResourceActor_Init --function TrackedResourceActor_DestroyComplete --function TrackedResourceActor_DestroyAndFree --function TrackedResourceActor_Destroy --require-exact
 build tracked_resource_actor_lifecycle: phony build/decomp/src/game/tracked_resource_actor_lifecycle.o build/decomp/asm/game/tracked_resource_actor_lifecycle_0204fcb8.o build/reports/tracked_resource_actor_lifecycle_0204fcb8.txt
 
 tracked_resource_actor_touch_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++

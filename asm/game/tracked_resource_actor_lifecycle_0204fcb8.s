@@ -1,14 +1,14 @@
 ; Matching retail form; see src/game/tracked_resource_actor_lifecycle.c.
 .extern Heap_Free
-.extern data_020e2e9c
+.extern gTrackedResourceActorVtable
 .extern func_02030f98
 .extern func_0203130c
 .extern func_02031488
 .extern Type7Actor_ClearGlobalRelationshipToActor
 .text
 
-    .global func_0204fcb8
-func_0204fcb8: ; 0x0204fcb8
+    .global TrackedResourceActor_Init
+TrackedResourceActor_Init: ; 0x0204fcb8
     stmdb sp!, {r4, lr}
     mov r4, r0
     bl func_02030f98
@@ -28,12 +28,12 @@ func_0204fcb8: ; 0x0204fcb8
     strh ip, [r2, #0xf8]
     str ip, [r4, #0x1fc]
     ldmia sp!, {r4, pc}
-.L_0204fd04: .word data_020e2e9c
-.size func_0204fcb8, . - func_0204fcb8
+.L_0204fd04: .word gTrackedResourceActorVtable
+.size TrackedResourceActor_Init, . - TrackedResourceActor_Init
 
-    .global func_0204fd08
+    .global TrackedResourceActor_DestroyComplete
 
-func_0204fd08: ; 0x0204fd08
+TrackedResourceActor_DestroyComplete: ; 0x0204fd08
     stmdb sp!, {r4, lr}
     ldr r1, .L_0204fd5c
     mov r4, r0
@@ -56,12 +56,12 @@ func_0204fd08: ; 0x0204fd08
     bl func_0203130c
     mov r0, r4
     ldmia sp!, {r4, pc}
-.L_0204fd5c: .word data_020e2e9c
-.size func_0204fd08, . - func_0204fd08
+.L_0204fd5c: .word gTrackedResourceActorVtable
+.size TrackedResourceActor_DestroyComplete, . - TrackedResourceActor_DestroyComplete
 
-    .global func_0204fd60
+    .global TrackedResourceActor_DestroyAndFree
 
-func_0204fd60: ; 0x0204fd60
+TrackedResourceActor_DestroyAndFree: ; 0x0204fd60
     stmdb sp!, {r4, lr}
     ldr r1, .L_0204fdbc
     mov r4, r0
@@ -86,12 +86,12 @@ func_0204fd60: ; 0x0204fd60
     bl Heap_Free
     mov r0, r4
     ldmia sp!, {r4, pc}
-.L_0204fdbc: .word data_020e2e9c
-.size func_0204fd60, . - func_0204fd60
+.L_0204fdbc: .word gTrackedResourceActorVtable
+.size TrackedResourceActor_DestroyAndFree, . - TrackedResourceActor_DestroyAndFree
 
-    .global func_0204fdc0
+    .global TrackedResourceActor_Destroy
 
-func_0204fdc0: ; 0x0204fdc0
+TrackedResourceActor_Destroy: ; 0x0204fdc0
     stmdb sp!, {r4, lr}
     ldr r1, .L_0204fe14
     mov r4, r0
@@ -114,6 +114,6 @@ func_0204fdc0: ; 0x0204fdc0
     bl func_0203130c
     mov r0, r4
     ldmia sp!, {r4, pc}
-.L_0204fe14: .word data_020e2e9c
-.size func_0204fdc0, . - func_0204fdc0
+.L_0204fe14: .word gTrackedResourceActorVtable
+.size TrackedResourceActor_Destroy, . - TrackedResourceActor_Destroy
 
