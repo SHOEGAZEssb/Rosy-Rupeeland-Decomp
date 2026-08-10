@@ -14,8 +14,8 @@
 .extern data_020d52f8
 .extern gHeapContext
 .extern gSystemState
-.global func_0200c360
-func_0200c360:
+.global DebugPhaseSelector_Update
+DebugPhaseSelector_Update:
     stmdb sp!, {r3, r4, r5, lr}
     mov r4, r0
     bl DebugText_BeginFrame
@@ -178,5 +178,5 @@ L_0200c5a4: .word gSystemState
 L_0200c5a8: .word 0x4001000
 L_0200c5ac: .word data_020d52f8
 L_0200c5b0: .word gHeapContext
-.size func_0200c360, . - func_0200c360
+.size DebugPhaseSelector_Update, . - DebugPhaseSelector_Update
 

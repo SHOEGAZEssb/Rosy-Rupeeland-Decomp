@@ -21,12 +21,12 @@ typedef char DebugPhaseSelectorSizeCheck[
 extern "C" {
 #endif
 
-DebugPhaseSelector *func_0200c244(DebugPhaseSelector *self);
-DebugPhaseSelector *func_0200c2f8(DebugPhaseSelector *self);
-DebugPhaseSelector *func_0200c328(DebugPhaseSelector *self);
-s32 func_0200c360(DebugPhaseSelector *self);
-s32 func_0200c5b4(DebugPhaseSelector *self, const TouchPoint *point);
-s32 func_0200c650(DebugPhaseSelector *self);
+DebugPhaseSelector *DebugPhaseSelector_Init(DebugPhaseSelector *self);
+DebugPhaseSelector *DebugPhaseSelector_Destroy(DebugPhaseSelector *self);
+DebugPhaseSelector *DebugPhaseSelector_DestroyAndFree(DebugPhaseSelector *self);
+s32 DebugPhaseSelector_Update(DebugPhaseSelector *self);
+s32 DebugPhaseSelector_SelectTouchPoint(DebugPhaseSelector *self, const TouchPoint *point);
+s32 DebugPhaseSelector_RestoreSubBg2(DebugPhaseSelector *self);
 
 #ifdef __cplusplus
 }

@@ -15,7 +15,7 @@
 .extern GamePhaseRuntime_DispatchActorQueryRequest
 .extern func_0200866c
 .extern FrameCounter_Tick31
-.extern func_0200c244
+.extern DebugPhaseSelector_Init
 .extern func_0200c680
 .extern func_0200c8bc
 .extern func_0200c9fc
@@ -64,7 +64,7 @@ L_0200745c:
     bl Heap_Alloc
     cmp r0, #0x0
     beq L_0200747c
-    bl func_0200c244
+    bl DebugPhaseSelector_Init
 L_0200747c:
     mov r0, #0x1
     ldmia sp!, {r3, r4, r5, pc}

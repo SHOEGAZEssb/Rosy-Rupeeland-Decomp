@@ -16,7 +16,7 @@ extern s32 func_020befec(s32 dividend, s32 divisor);
  * column. Always returns 0. Only selector state changes; division is delegated
  * to the recovered signed helper and no hardware is accessed.
  */
-s32 func_0200c5b4(DebugPhaseSelector *self, const TouchPoint *point)
+s32 DebugPhaseSelector_SelectTouchPoint(DebugPhaseSelector *self, const TouchPoint *point)
 {
     if (point->y < 0xba && point->y >= 6 &&
         point->x >= 9 && point->x < 0xf9) {

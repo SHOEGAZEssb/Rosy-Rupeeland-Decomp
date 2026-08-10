@@ -7,7 +7,7 @@
  * preserving other DISPCNT bits. self is unused and the register write directly
  * re-enables the BG2 mode used by the phase grid.
  */
-s32 func_0200c650(DebugPhaseSelector *self)
+s32 DebugPhaseSelector_RestoreSubBg2(DebugPhaseSelector *self)
 {
     volatile u32 *displayControl = (volatile u32 *)0x04001000;
     u32 mode = (*displayControl & 0x1f00) >> 8;

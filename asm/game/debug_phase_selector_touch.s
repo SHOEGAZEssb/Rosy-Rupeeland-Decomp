@@ -2,8 +2,8 @@
 ; the documented portable implementation and recovered behavior.
 .text
 .extern func_020befec
-.global func_0200c5b4
-func_0200c5b4:
+.global DebugPhaseSelector_SelectTouchPoint
+DebugPhaseSelector_SelectTouchPoint:
     stmdb sp!, {r3, r4, r5, lr}
     mov r4, r1
     ldr r1, [r4, #0x8]
@@ -44,5 +44,5 @@ func_0200c5b4:
 L_0200c648:
     mov r0, #0x0
     ldmia sp!, {r3, r4, r5, pc}
-.size func_0200c5b4, . - func_0200c5b4
+.size DebugPhaseSelector_SelectTouchPoint, . - DebugPhaseSelector_SelectTouchPoint
 

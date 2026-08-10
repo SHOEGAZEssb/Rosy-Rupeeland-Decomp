@@ -25,7 +25,7 @@ extern void func_020ae90c(void);
  * to the selected LCD. State starts at 0, selectedPhase at -1, and row/column
  * at zero. Returns self; SDK calls and display registers are modified.
  */
-DebugPhaseSelector *func_0200c244(DebugPhaseSelector *self)
+DebugPhaseSelector *DebugPhaseSelector_Init(DebugPhaseSelector *self)
 {
     volatile u32 *displayControl = (volatile u32 *)0x04000000;
 
@@ -52,7 +52,7 @@ DebugPhaseSelector *func_0200c244(DebugPhaseSelector *self)
  * Restore the scene vtable, run address-derived debug cleanup, destroy the
  * embedded canvas and Scene base, and return self without freeing it.
  */
-DebugPhaseSelector *func_0200c2f8(DebugPhaseSelector *self)
+DebugPhaseSelector *DebugPhaseSelector_Destroy(DebugPhaseSelector *self)
 {
     self->base.vtable = &data_020d52c8;
     func_020ae90c();
@@ -61,10 +61,10 @@ DebugPhaseSelector *func_0200c2f8(DebugPhaseSelector *self)
     return self;
 }
 
-/* Perform func_0200c2f8's teardown, free self, and return its old address. */
-DebugPhaseSelector *func_0200c328(DebugPhaseSelector *self)
+/* Perform DebugPhaseSelector_Destroy's teardown, free self, and return its old address. */
+DebugPhaseSelector *DebugPhaseSelector_DestroyAndFree(DebugPhaseSelector *self)
 {
-    func_0200c2f8(self);
+    DebugPhaseSelector_Destroy(self);
     Heap_Free(self);
     return self;
 }

@@ -6,8 +6,8 @@
 .extern Scene_Destroy
 .extern Heap_Free
 .extern data_020d52c8
-.global func_0200c328
-func_0200c328:
+.global DebugPhaseSelector_DestroyAndFree
+DebugPhaseSelector_DestroyAndFree:
     stmdb sp!, {r4, lr}
     ldr r1, L_0200c35c
     mov r4, r0
@@ -22,5 +22,5 @@ func_0200c328:
     mov r0, r4
     ldmia sp!, {r4, pc}
 L_0200c35c: .word data_020d52c8
-.size func_0200c328, . - func_0200c328
+.size DebugPhaseSelector_DestroyAndFree, . - DebugPhaseSelector_DestroyAndFree
 

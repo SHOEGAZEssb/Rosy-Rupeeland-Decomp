@@ -5,8 +5,8 @@
 .extern SoftwareCanvas_Destroy
 .extern Scene_Destroy
 .extern data_020d52c8
-.global func_0200c2f8
-func_0200c2f8:
+.global DebugPhaseSelector_Destroy
+DebugPhaseSelector_Destroy:
     stmdb sp!, {r4, lr}
     ldr r1, L_0200c324
     mov r4, r0
@@ -19,5 +19,5 @@ func_0200c2f8:
     mov r0, r4
     ldmia sp!, {r4, pc}
 L_0200c324: .word data_020d52c8
-.size func_0200c2f8, . - func_0200c2f8
+.size DebugPhaseSelector_Destroy, . - DebugPhaseSelector_Destroy
 

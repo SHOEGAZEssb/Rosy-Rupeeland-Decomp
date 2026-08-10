@@ -29,7 +29,7 @@ extern void *func_02082db4(void *allocation);
  * mutates debug graphics, scene ownership, display control, and game-phase
  * state through the noted helpers.
  */
-s32 func_0200c360(DebugPhaseSelector *self)
+s32 DebugPhaseSelector_Update(DebugPhaseSelector *self)
 {
     u16 pressed;
 

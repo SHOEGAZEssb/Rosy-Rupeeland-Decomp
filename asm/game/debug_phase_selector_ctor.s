@@ -11,8 +11,8 @@
 .extern GameWork_Reset
 .extern NdsDisplay_SetScreenSwap
 .extern data_020d52c8
-.global func_0200c244
-func_0200c244:
+.global DebugPhaseSelector_Init
+DebugPhaseSelector_Init:
     stmdb sp!, {r4, lr}
     mov r4, r0
     bl Scene_Init
@@ -58,5 +58,5 @@ func_0200c244:
 L_0200c2ec: .word data_020d52c8
 L_0200c2f0: .word 0x400006c
 L_0200c2f4: .word 0x400106c
-.size func_0200c244, . - func_0200c244
+.size DebugPhaseSelector_Init, . - DebugPhaseSelector_Init
 
