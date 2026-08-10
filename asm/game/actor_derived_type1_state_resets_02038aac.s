@@ -7,9 +7,9 @@
 .extern func_0206c978
 .extern gGameWork
 
-    .global func_02038aac
-    .type func_02038aac, @function
-func_02038aac: ; 0x02038aac
+    .global ActorDerivedType1_ResetToBaseState
+    .type ActorDerivedType1_ResetToBaseState, @function
+ActorDerivedType1_ResetToBaseState: ; 0x02038aac
     stmdb sp!, {r3, r4, r5, lr}
     mov r4, r0
     ldr r5, [r4, #0x26c]
@@ -59,4 +59,4 @@ func_02038aac: ; 0x02038aac
     ldmia sp!, {r3, r4, r5, pc}
 .L_02038b5c: .word gGameWork
 .L_02038b60: .word 0x3ee
-    .size func_02038aac, . - func_02038aac
+    .size ActorDerivedType1_ResetToBaseState, . - ActorDerivedType1_ResetToBaseState

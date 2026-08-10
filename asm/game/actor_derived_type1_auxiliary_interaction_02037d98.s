@@ -14,7 +14,7 @@
 .extern Actor_IsAtCachedTerrainHeight
 .extern func_020372b4
 .extern func_020380f0
-.extern func_0203811c
+.extern ActorDerivedType1_ReleaseAuxiliaryAndSpawnResetEffect
 .extern func_0203825c
 .extern ActorDerivedType1_TeardownActiveRecord
 .extern func_02048c2c
@@ -167,7 +167,7 @@ func_02037d98: ; 0x02037d98
     beq .L_02037fa8
 .L_02037fa0:
     mov r0, r5
-    bl func_0203811c
+    bl ActorDerivedType1_ReleaseAuxiliaryAndSpawnResetEffect
 .L_02037fa8:
     mov r0, r5
     mov r1, r4

@@ -15,7 +15,7 @@ extern void *func_02009d78(void *manager);
 extern void *func_02022cb0(void *allocation, void *resource, void *owner,
                            s32 value, s32 first, s32 second);
 extern void func_0201ded4(void *manager, void *object);
-extern void func_0203811c(void *actor);
+extern void ActorDerivedType1_ReleaseAuxiliaryAndSpawnResetEffect(void *actor);
 extern void func_020349b8(void *actor, u32 sound, s32 extra);
 extern void Type1Actor_TryEnterFailureState(void *actor);
 extern void ActorDerivedType1_StartRecord(void *actor, s32 record);
@@ -76,7 +76,7 @@ void func_020398a4(void *self, s32 amount, void *sourceValue)
         if (*(s16 *)descriptor == 0x21 || *(s16 *)descriptor == 0x22 ||
             *(s16 *)descriptor == 0x2e || *(s16 *)descriptor == 0x2f ||
             *(s16 *)descriptor == 0x40) {
-            func_0203811c(actor);
+            ActorDerivedType1_ReleaseAuxiliaryAndSpawnResetEffect(actor);
             func_020349b8(actor, 0x26, 0);
             if (*(s8 *)(descriptor + 0x2c) == 4)
                 *(u32 *)(actor + 0x230) |= 0x400000;

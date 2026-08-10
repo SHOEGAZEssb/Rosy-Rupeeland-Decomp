@@ -41,7 +41,7 @@ extern void func_020090c0(void *object);
 extern void func_0200ae8c(void *object);
 extern void func_0200e650(void *object, const void *config);
 extern void ActorInteractionRuntime_Start(void);
-extern void func_02038b64(void *entity);
+extern void ActorDerivedType1_ResetToDisabledState(void *entity);
 extern void Actor_AdjustPositionForTerrainHeight(void *entity);
 extern void func_02038e50(void *entity, s32 enabled);
 extern void func_0200a114(void *object, void *entity);
@@ -152,7 +152,7 @@ void func_02006bdc(GamePhaseRuntime *self, const void *configPointer,
                   (VecFx32Object *)((u8 *)entity + 0x18));
     if (GameWork_TestFlag(gGameWork, 0x3f2) != 0) {
         *(s32 *)((u8 *)entity + 0x24) = 0x60000;
-        func_02038b64(entity);
+        ActorDerivedType1_ResetToDisabledState(entity);
     } else if (*(s32 *)((u8 *)entity + 0x24) == 0) {
         Actor_AdjustPositionForTerrainHeight(entity);
     }

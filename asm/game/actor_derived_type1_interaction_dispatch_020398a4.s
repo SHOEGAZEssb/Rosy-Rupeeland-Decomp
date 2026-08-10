@@ -9,7 +9,7 @@
 .extern func_0201ded4
 .extern func_02022cb0
 .extern func_020349b8
-.extern func_0203811c
+.extern ActorDerivedType1_ReleaseAuxiliaryAndSpawnResetEffect
 .extern ActorDerivedType1_StartRecord
 .extern Type1Actor_TryEnterFailureState
 .extern gHeapContext
@@ -88,7 +88,7 @@ func_020398a4: ; 0x020398a4
     cmpne r0, #0x40
     bne .L_020399e4
     mov r0, r7
-    bl func_0203811c
+    bl ActorDerivedType1_ReleaseAuxiliaryAndSpawnResetEffect
     mov r0, r7
     mov r1, #0x26
     mov r2, #0x0

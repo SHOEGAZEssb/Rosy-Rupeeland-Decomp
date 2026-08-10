@@ -8,7 +8,7 @@
 .extern func_020022dc
 .extern func_02005058
 .extern func_020050a4
-.extern func_02038aac
+.extern ActorDerivedType1_ResetToBaseState
 .extern func_0204b680
 .extern func_020597fc
 .extern func_02073ef8
@@ -77,7 +77,7 @@ func_ov062_02211050:
     bic r0, r0, #0x100
     str r0, [r1, #0x230]
     ldr r0, [r4, #0x58]
-    bl func_02038aac
+    bl ActorDerivedType1_ResetToBaseState
     ldr r0, [r4, #0x58]
     mov r1, #0x0
     add r0, r0, #0x38

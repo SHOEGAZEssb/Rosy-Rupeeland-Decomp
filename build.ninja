@@ -15342,7 +15342,7 @@ build build/reports/actor_derived_type1_auxiliary_reset_effect_0203811c.json: ob
   base_object = build/decomp/asm/game/actor_derived_type1_auxiliary_reset_effect_0203811c.o
 build build/reports/actor_derived_type1_auxiliary_reset_effect_0203811c.txt: match_report build/reports/actor_derived_type1_auxiliary_reset_effect_0203811c.json | tools/report_objdiff.py
   report_json = build/reports/actor_derived_type1_auxiliary_reset_effect_0203811c.json
-  report_args = --section .text --function func_0203811c --require-exact
+  report_args = --section .text --function ActorDerivedType1_ReleaseAuxiliaryAndSpawnResetEffect --require-exact
 build build/reports/actor_derived_type1_auxiliary_reset_effect.txt: phony build/reports/actor_derived_type1_auxiliary_reset_effect_0203811c.txt
 
 build actor_derived_type1_auxiliary_reset_effect: phony build/decomp/src/game/actor_derived_type1_auxiliary_reset_effect.o build/decomp/asm/game/actor_derived_type1_auxiliary_reset_effect_0203811c.o build/reports/actor_derived_type1_auxiliary_reset_effect.txt
@@ -15393,7 +15393,7 @@ build build/reports/actor_derived_type1_contact_reset_020387cc.json: objdiff bui
   base_object = build/decomp/asm/game/actor_derived_type1_contact_reset_020387cc.o
 build build/reports/actor_derived_type1_contact_reset_020387cc.txt: match_report build/reports/actor_derived_type1_contact_reset_020387cc.json | tools/report_objdiff.py
   report_json = build/reports/actor_derived_type1_contact_reset_020387cc.json
-  report_args = --section .text --function func_020387cc --require-exact
+  report_args = --section .text --function ActorDerivedType1_DecrementContactCount --require-exact
 build build/decomp/asm/game/actor_derived_type1_contact_reset_020387d8.o: mwasmarm asm/game/actor_derived_type1_contact_reset_020387d8.s
 build build/decomp/delinks/asm/game/actor_derived_type1_contact_reset_020387d8.o: dsd_delink config/arm9/config.yaml config/arm9/delinks.txt config/arm9/symbols.txt config/arm9/relocs.txt
 build build/reports/actor_derived_type1_contact_reset_020387d8.json: objdiff build/decomp/delinks/asm/game/actor_derived_type1_contact_reset_020387d8.o | build/decomp/asm/game/actor_derived_type1_contact_reset_020387d8.o
@@ -15401,7 +15401,7 @@ build build/reports/actor_derived_type1_contact_reset_020387d8.json: objdiff bui
   base_object = build/decomp/asm/game/actor_derived_type1_contact_reset_020387d8.o
 build build/reports/actor_derived_type1_contact_reset_020387d8.txt: match_report build/reports/actor_derived_type1_contact_reset_020387d8.json | tools/report_objdiff.py
   report_json = build/reports/actor_derived_type1_contact_reset_020387d8.json
-  report_args = --section .text --function func_020387d8 --require-exact
+  report_args = --section .text --function ActorDerivedType1_ResetContactState --require-exact
 build build/reports/actor_derived_type1_contact_reset.txt: phony build/reports/actor_derived_type1_contact_reset_020387cc.txt build/reports/actor_derived_type1_contact_reset_020387d8.txt
 
 build actor_derived_type1_contact_reset: phony build/decomp/src/game/actor_derived_type1_contact_reset.o build/decomp/asm/game/actor_derived_type1_contact_reset_020387cc.o build/decomp/asm/game/actor_derived_type1_contact_reset_020387d8.o build/reports/actor_derived_type1_contact_reset.txt
@@ -15452,7 +15452,7 @@ build build/reports/actor_derived_type1_state_resets_02038aac.json: objdiff buil
   base_object = build/decomp/asm/game/actor_derived_type1_state_resets_02038aac.o
 build build/reports/actor_derived_type1_state_resets_02038aac.txt: match_report build/reports/actor_derived_type1_state_resets_02038aac.json | tools/report_objdiff.py
   report_json = build/reports/actor_derived_type1_state_resets_02038aac.json
-  report_args = --section .text --function func_02038aac --require-exact
+  report_args = --section .text --function ActorDerivedType1_ResetToBaseState --require-exact
 build build/decomp/asm/game/actor_derived_type1_state_resets_02038b64.o: mwasmarm asm/game/actor_derived_type1_state_resets_02038b64.s
 build build/decomp/delinks/asm/game/actor_derived_type1_state_resets_02038b64.o: dsd_delink config/arm9/config.yaml config/arm9/delinks.txt config/arm9/symbols.txt config/arm9/relocs.txt
 build build/reports/actor_derived_type1_state_resets_02038b64.json: objdiff build/decomp/delinks/asm/game/actor_derived_type1_state_resets_02038b64.o | build/decomp/asm/game/actor_derived_type1_state_resets_02038b64.o
@@ -15460,7 +15460,7 @@ build build/reports/actor_derived_type1_state_resets_02038b64.json: objdiff buil
   base_object = build/decomp/asm/game/actor_derived_type1_state_resets_02038b64.o
 build build/reports/actor_derived_type1_state_resets_02038b64.txt: match_report build/reports/actor_derived_type1_state_resets_02038b64.json | tools/report_objdiff.py
   report_json = build/reports/actor_derived_type1_state_resets_02038b64.json
-  report_args = --section .text --function func_02038b64 --require-exact
+  report_args = --section .text --function ActorDerivedType1_ResetToDisabledState --require-exact
 build build/reports/actor_derived_type1_state_resets.txt: phony build/reports/actor_derived_type1_state_resets_02038aac.txt build/reports/actor_derived_type1_state_resets_02038b64.txt
 
 build actor_derived_type1_state_resets: phony build/decomp/src/game/actor_derived_type1_state_resets.o build/decomp/asm/game/actor_derived_type1_state_resets_02038aac.o build/decomp/asm/game/actor_derived_type1_state_resets_02038b64.o build/reports/actor_derived_type1_state_resets.txt
@@ -15645,7 +15645,7 @@ build build/reports/actor_derived_type1_runtime_reset_0203936c.json: objdiff bui
   base_object = build/decomp/asm/game/actor_derived_type1_runtime_reset_0203936c.o
 build build/reports/actor_derived_type1_runtime_reset_0203936c.txt: match_report build/reports/actor_derived_type1_runtime_reset_0203936c.json | tools/report_objdiff.py
   report_json = build/reports/actor_derived_type1_runtime_reset_0203936c.json
-  report_args = --section .text --function func_0203936c --require-exact
+  report_args = --section .text --function ActorDerivedType1_ResetRuntimeState --require-exact
 build build/reports/actor_derived_type1_runtime_reset.txt: phony build/reports/actor_derived_type1_runtime_reset_0203936c.txt
 
 build actor_derived_type1_runtime_reset: phony build/decomp/src/game/actor_derived_type1_runtime_reset.o build/decomp/asm/game/actor_derived_type1_runtime_reset_0203936c.o build/reports/actor_derived_type1_runtime_reset.txt

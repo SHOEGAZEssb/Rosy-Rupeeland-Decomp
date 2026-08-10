@@ -35,7 +35,7 @@
 .extern func_02020060
 .extern ActorCollection_DispatchEventToActors
 .extern Actor_AdjustPositionForTerrainHeight
-.extern func_02038b64
+.extern ActorDerivedType1_ResetToDisabledState
 .extern func_02038e50
 .extern ActorInteractionRuntime_Start
 .extern func_020ae90c
@@ -194,7 +194,7 @@ func_02006bdc:
     mov r1, #0x60000
     mov r0, r5
     str r1, [r5, #0x24]
-    bl func_02038b64
+    bl ActorDerivedType1_ResetToDisabledState
     b L_02006d1c
 L_02006d08:
     ldr r0, [r5, #0x24]

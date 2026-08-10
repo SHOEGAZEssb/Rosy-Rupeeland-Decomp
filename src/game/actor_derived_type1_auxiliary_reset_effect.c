@@ -30,7 +30,7 @@ extern void *func_0201f864(void *allocation, ...);
  * no value. Resource, heap, GameWork, manager, vector, and presentation calls
  * have observable engine/SDK effects.
  */
-void func_0203811c(void *self)
+void ActorDerivedType1_ReleaseAuxiliaryAndSpawnResetEffect(void *self)
 {
     u8 *actor = (u8 *)self;
     void *resource = *(void **)(actor + 0x26c);

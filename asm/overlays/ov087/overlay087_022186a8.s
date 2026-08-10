@@ -9,7 +9,7 @@
 .extern func_020022dc
 .extern func_020050a4
 .extern Actor_SetDirectionFromVector
-.extern func_02038aac
+.extern ActorDerivedType1_ResetToBaseState
 .extern func_0205940c
 .extern func_ov062_0220fe78
 .extern func_ov087_02218698
@@ -123,7 +123,7 @@ func_ov087_022186a8:
     mov r2, #0x1000
     bl Actor_SetDirectionFromVector
     mov r0, r4
-    bl func_02038aac
+    bl ActorDerivedType1_ResetToBaseState
 .L_02218844:
     ldr r0, .L_022188d8
     mov r1, #0x67

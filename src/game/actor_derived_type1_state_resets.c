@@ -36,7 +36,7 @@ static void releaseResource(u8 *actor)
  * clear +0x230 bit 0x800000. Returns no value; resource, heap, GameWork,
  * virtual, and optional-object calls have observable engine state.
  */
-void func_02038aac(void *self)
+void ActorDerivedType1_ResetToBaseState(void *self)
 {
     u8 *actor = (u8 *)self;
     releaseResource(actor);
@@ -64,7 +64,7 @@ void func_02038aac(void *self)
  * value and has the same resource/heap/GameWork/virtual effects as the base
  * reset plus the optional-object notification.
  */
-void func_02038b64(void *self)
+void ActorDerivedType1_ResetToDisabledState(void *self)
 {
     u8 *actor = (u8 *)self;
     releaseResource(actor);

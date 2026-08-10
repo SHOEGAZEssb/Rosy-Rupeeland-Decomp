@@ -14,7 +14,7 @@ extern void func_020020f8(void *manager, s16 id, u16 first, u16 second,
 extern u8 *func_020020ec(void *manager, s32 id);
 extern void func_02001f14(void *state);
 extern void func_02001f40(void *state);
-extern void func_02038aac(void *actor);
+extern void ActorDerivedType1_ResetToBaseState(void *actor);
 extern void func_020313b4(void *actor, void *state, s32 mode);
 extern void func_02074038(void *object);
 #ifdef __cplusplus
@@ -75,7 +75,7 @@ s32 func_02019a10(GamePhaseActorScriptVm *self)
 {
     u8 *actor = (u8 *)self->actor_84;
     if (*(s16 *)(actor + 0xe4) == 0) {
-        func_02038aac(actor);
+        ActorDerivedType1_ResetToBaseState(actor);
         *(u16 *)(*(u8 **)(actor + 0x54) + 0x36) = 0;
     }
     return 0;

@@ -16,7 +16,7 @@ extern void func_0204cc30(void *object);
  * result unchanged. This address-derived wrapper has no additional state
  * effects; func_02032abc clears actor flag one when the count reaches zero.
  */
-void func_020387cc(void *actor)
+void ActorDerivedType1_DecrementContactCount(void *actor)
 {
     func_02032abc(actor);
 }
@@ -27,7 +27,7 @@ void func_020387cc(void *actor)
  * eight, +0x230 bits 0x40/0x100, and halfwords +0x250/+0x268. Returns no
  * value; the optional object call may change runtime attachment state.
  */
-void func_020387d8(void *self)
+void ActorDerivedType1_ResetContactState(void *self)
 {
     u8 *actor = (u8 *)self;
     u8 *object;

@@ -6,9 +6,9 @@
 .extern func_0206c978
 .extern gGameWork
 
-    .global func_02038b64
-    .type func_02038b64, @function
-func_02038b64: ; 0x02038b64
+    .global ActorDerivedType1_ResetToDisabledState
+    .type ActorDerivedType1_ResetToDisabledState, @function
+ActorDerivedType1_ResetToDisabledState: ; 0x02038b64
     stmdb sp!, {r3, r4, r5, lr}
     mov r4, r0
     ldr r5, [r4, #0x26c]
@@ -58,4 +58,4 @@ func_02038b64: ; 0x02038b64
     ldmia sp!, {r3, r4, r5, pc}
 .L_02038c14: .word gGameWork
 .L_02038c18: .word 0x3ee
-    .size func_02038b64, . - func_02038b64
+    .size ActorDerivedType1_ResetToDisabledState, . - ActorDerivedType1_ResetToDisabledState

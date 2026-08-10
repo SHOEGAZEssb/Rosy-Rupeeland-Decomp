@@ -15,9 +15,9 @@
 .extern gGameWork
 .extern gHeapContext
 
-    .global func_0203811c
-    .type func_0203811c, @function
-func_0203811c: ; 0x0203811c
+    .global ActorDerivedType1_ReleaseAuxiliaryAndSpawnResetEffect
+    .type ActorDerivedType1_ReleaseAuxiliaryAndSpawnResetEffect, @function
+ActorDerivedType1_ReleaseAuxiliaryAndSpawnResetEffect: ; 0x0203811c
     stmdb sp!, {r3, r4, r5, lr}
     sub sp, sp, #0x38
     mov r4, r0
@@ -102,5 +102,5 @@ func_0203811c: ; 0x0203811c
 .L_02038250: .word data_020df4a4
 .L_02038254: .word gHeapContext
 .L_02038258: .word 0x21e1
-    .size func_0203811c, . - func_0203811c
+    .size ActorDerivedType1_ReleaseAuxiliaryAndSpawnResetEffect, . - ActorDerivedType1_ReleaseAuxiliaryAndSpawnResetEffect
 

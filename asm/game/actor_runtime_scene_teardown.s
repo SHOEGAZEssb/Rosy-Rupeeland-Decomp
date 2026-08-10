@@ -6,7 +6,7 @@
 .extern Actor_SetActive
 .extern GameWork_TestFlag
 .extern func_0204b680
-.extern func_02038aac
+.extern ActorDerivedType1_ResetToBaseState
 .extern GameWork_ClearFlag
 .extern Actor_GetCollection
 .extern ActorCollection_UnregisterAndDestroyActor
@@ -68,7 +68,7 @@ L_0200b4a0:
     ldrh r1, [r2, #0x24]
     bic r1, r1, #0x20
     strh r1, [r2, #0x24]
-    bl func_02038aac
+    bl ActorDerivedType1_ResetToBaseState
 L_0200b4e8:
     ldr r0, L_0200b560
     ldr r1, L_0200b568

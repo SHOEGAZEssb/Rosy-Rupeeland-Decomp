@@ -25,7 +25,7 @@ extern void GameWork_SetFlag(void *work, u32 flag);
 extern s32 func_0206cb04(void *resource, void *target, s32 mode);
 extern void func_020099c0(void *manager, s32 first, s32 second);
 extern s32 func_020380f0(void *target);
-extern void func_0203811c(void *actor);
+extern void ActorDerivedType1_ReleaseAuxiliaryAndSpawnResetEffect(void *actor);
 extern void func_0203825c(void *actor, void *target, s32 distance, s32 offset);
 extern s32 func_0206e3a4(void *resource);
 extern void func_02048c2c(void *target, void *resource);
@@ -48,8 +48,9 @@ static void *createAuxiliary(u8 *actor)
  * all paths. Scene mode 2, global state, actor state/flag, disabled target,
  * and height gates suppress further work. Target type 2 can reset the actor,
  * recreate +0x26c, attach it with func_0206cb04, play a manager event, or use
- * target +0x260/+0x27f/+0x29e to dispatch func_0203811c/func_0203825c. Target
- * type 7 can create +0x26c when its +0x234 resource is eligible and hand that
+ * target +0x260/+0x27f/+0x29e to dispatch
+ * ActorDerivedType1_ReleaseAuxiliaryAndSpawnResetEffect or func_0203825c.
+ * Target type 7 can create +0x26c when its +0x234 resource is eligible and hand that
  * auxiliary resource to func_02048c2c. Allocation, freeing, GameWork, scene,
  * manager, target virtual, and resource calls have observable engine/SDK
  * effects; the target itself may also be modified by the called handlers.
@@ -94,7 +95,7 @@ s32 func_02037d98(void *self, void *other)
             if (func_020380f0(target) != 0)
                 offset += *(s16 *)(target + 0x29e);
             if (func_020380f0(target) != 0 || target[0x24c] == 3)
-                func_0203811c(actor);
+                ActorDerivedType1_ReleaseAuxiliaryAndSpawnResetEffect(actor);
             func_0203825c(actor, target, 0x14, offset);
         }
     } else if (target[0x4d] == 7) {

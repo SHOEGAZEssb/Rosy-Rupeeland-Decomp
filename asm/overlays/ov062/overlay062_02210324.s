@@ -11,7 +11,7 @@
 .extern func_020050a4
 .extern func_0200637c
 .extern Actor_SetDirectionFromVector
-.extern func_02038aac
+.extern ActorDerivedType1_ResetToBaseState
 .extern func_02073ef8
 .extern func_ov062_0220fd20
 .extern gGameWork
@@ -94,7 +94,7 @@ func_ov062_02210324:
     sub r2, r3, r2
     bl Actor_SetDirectionFromVector
     ldr r0, [r4, #0x24]
-    bl func_02038aac
+    bl ActorDerivedType1_ResetToBaseState
 .L_02210454:
     ldr r5, [r4, #0x30]
     cmp r5, #0x0

@@ -13,7 +13,7 @@
 .extern func_0201df64
 .extern func_0201e0ec
 .extern func_02028388
-.extern func_02038aac
+.extern ActorDerivedType1_ResetToBaseState
 .extern func_02039e70
 .extern func_0204fb9c
 .extern func_02059880
@@ -173,7 +173,7 @@ func_ov074_0220fda8:
     ldr r0, [r0, #0x0]
     add r0, r0, #0x2000
     ldr r0, [r0, #0xea4]
-    bl func_02038aac
+    bl ActorDerivedType1_ResetToBaseState
     mov r0, r4
     bl Scene_SetFlags03
     mov r0, r4

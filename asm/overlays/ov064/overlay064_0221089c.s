@@ -11,7 +11,7 @@
 .extern func_0200637c
 .extern func_02007f24
 .extern func_020084b8
-.extern func_0203936c
+.extern ActorDerivedType1_ResetRuntimeState
 .extern func_0204b680
 .extern func_020597fc
 .extern func_02073ef8
@@ -80,7 +80,7 @@ func_ov064_0221089c:
     ldrh r1, [r2, #0x24]
     bic r1, r1, #0x4
     strh r1, [r2, #0x24]
-    bl func_0203936c
+    bl ActorDerivedType1_ResetRuntimeState
     ldrb r0, [r4, #0x77]
     cmp r0, #0x3
     addls pc, pc, r0, lsl #0x2

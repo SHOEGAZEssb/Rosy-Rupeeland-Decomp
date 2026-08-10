@@ -2,9 +2,9 @@
 .text
 .extern func_0204cc30
 
-    .global func_020387d8
-    .type func_020387d8, @function
-func_020387d8: ; 0x020387d8
+    .global ActorDerivedType1_ResetContactState
+    .type ActorDerivedType1_ResetContactState, @function
+ActorDerivedType1_ResetContactState: ; 0x020387d8
     stmdb sp!, {r4, lr}
     mov r4, r0
     ldr r0, [r4, #0xd0]
@@ -29,4 +29,4 @@ func_020387d8: ; 0x020387d8
     strh r1, [r0, #0x50]
     strh r1, [r0, #0x68]
     ldmia sp!, {r4, pc}
-    .size func_020387d8, . - func_020387d8
+    .size ActorDerivedType1_ResetContactState, . - ActorDerivedType1_ResetContactState
