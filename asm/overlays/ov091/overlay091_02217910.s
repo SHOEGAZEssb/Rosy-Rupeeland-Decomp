@@ -3,7 +3,7 @@
 .extern Heap_Alloc
 .extern data_ov091_02218dc0
 .extern AnimationResource_Init
-.extern func_02005c3c
+.extern GraphicsSpriteState_Create
 .extern ActorCollection_GetSpriteOwner
 .extern Actor_GetCollection
 .extern func_0204d3d8
@@ -37,7 +37,7 @@ func_ov091_02217910:
     stmib sp, {r1, r2}
     ldr r1, [r4, #0x234]
     mov r3, r2
-    bl func_02005c3c
+    bl GraphicsSpriteState_Create
     str r0, [r4, #0x238]
     mov r1, #0x7d
     strh r1, [r0, #0x2c]

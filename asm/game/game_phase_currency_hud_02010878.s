@@ -2,7 +2,7 @@
 .text
 .extern data_020f4e14
 .extern data_020f4e18
-.extern func_02005c3c
+.extern GraphicsSpriteState_Create
 .extern func_02010854
 .extern func_020112f0
 .extern func_0201140c
@@ -106,7 +106,7 @@ L_020109c8:
     mov r2, r11
     mov r3, r11
     add r1, r10, #0x8
-    bl func_02005c3c
+    bl GraphicsSpriteState_Create
     add r2, r8, r7, lsl #0x2
     sub r1, r6, #0x10
     str r0, [r2, #0x48]
@@ -137,7 +137,7 @@ L_02010a24:
     ldr r0, [r10, r9, lsl #0x2]
     mov r3, r2
     add r1, r10, #0x18
-    bl func_02005c3c
+    bl GraphicsSpriteState_Create
     add r3, r10, r9, lsl #0x2
     mvn r1, #0x7f
     str r0, [r3, #0x80]
@@ -154,7 +154,7 @@ L_02010a24:
     ldr r0, [r10, r9, lsl #0x2]
     mov r3, r2
     add r1, r10, #0x28
-    bl func_02005c3c
+    bl GraphicsSpriteState_Create
     add r1, r10, r9, lsl #0x2
     str r0, [r1, #0x88]
     mov r8, #0x0
@@ -172,7 +172,7 @@ L_02010ac8:
     mov r2, r11
     mov r3, #0x0
     add r1, r10, #0x38
-    bl func_02005c3c
+    bl GraphicsSpriteState_Create
     add r1, r4, r8, lsl #0x2
     add r8, r8, #0x1
     str r0, [r1, #0x90]

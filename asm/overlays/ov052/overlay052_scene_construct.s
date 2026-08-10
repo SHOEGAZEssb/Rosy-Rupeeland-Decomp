@@ -10,7 +10,7 @@
 .extern DisplayBrightness_StartTransition
 .extern DisplayBrightnessPair_GetScreen
 .extern AnimationResource_Init
-.extern func_02005c3c
+.extern GraphicsSpriteState_Create
 .extern func_020088b8
 .extern func_0201140c
 .extern func_02071980
@@ -108,7 +108,7 @@ func_ov052_0220d618:
     ldr r0, [r4, #0x1c]
     ldr r1, [r4, #0x20]
     mov r3, r2
-    bl func_02005c3c
+    bl GraphicsSpriteState_Create
     str r0, [r4, #0x18]
     mov r1, #0x26
     strh r1, [r0, #0x2c]
@@ -121,7 +121,7 @@ func_ov052_0220d618:
     str r2, [sp, #0x8]
     ldr r0, [r4, #0x1c]
     ldr r1, [r4, #0x20]
-    bl func_02005c3c
+    bl GraphicsSpriteState_Create
     mov r2, r0
     str r0, [r4, #0x14]
     mov r0, #0x26

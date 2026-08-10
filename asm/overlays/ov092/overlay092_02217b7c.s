@@ -4,7 +4,7 @@
 .extern data_021052fc
 .extern data_ov092_0221c818
 .extern AnimationResource_Init
-.extern func_02005c3c
+.extern GraphicsSpriteState_Create
 .extern ActorCollection_GetSpriteOwner
 .extern Actor_GetCollection
 .extern Type7Actor_SetActorEnabled
@@ -40,7 +40,7 @@ func_ov092_02217b7c:
     stmib sp, {r1, r2}
     ldr r1, [r4, #0x244]
     mov r3, r2
-    bl func_02005c3c
+    bl GraphicsSpriteState_Create
     str r0, [r4, #0x248]
     mov r1, #0x7d
     strh r1, [r0, #0x2c]
@@ -71,7 +71,7 @@ func_ov092_02217b7c:
     stmib sp, {r1, r2}
     ldr r1, [r4, #0x24c]
     mov r3, r2
-    bl func_02005c3c
+    bl GraphicsSpriteState_Create
     str r0, [r4, #0x250]
     mov r1, #0x80
     strh r1, [r0, #0x2c]

@@ -3,7 +3,7 @@
 .extern Heap_Alloc
 .extern data_ov065_02210be4
 .extern data_ov065_02210c00
-.extern func_02005c3c
+.extern GraphicsSpriteState_Create
 .extern func_02006328
 .extern gHeapContext
 
@@ -27,7 +27,7 @@ func_ov065_0220fd20:
     ldr r0, [r1, #0x24]
     ldr r1, [r1, #0x14c]
     mov r3, r2
-    bl func_02005c3c
+    bl GraphicsSpriteState_Create
     str r0, [r4, #0x0]
     ldr r1, .L_0220fda4
     ldr r3, .L_0220fda8

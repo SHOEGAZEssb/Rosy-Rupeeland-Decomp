@@ -10,7 +10,7 @@
 .extern func_02005058
 .extern AnimationResource_Init
 .extern GraphicsSpriteState_SetDepthOrderedWorldPosition
-.extern func_02005c3c
+.extern GraphicsSpriteState_Create
 .extern func_0200637c
 .extern func_020064b8
 .extern func_02006918
@@ -79,7 +79,7 @@ func_02023434: ; 0x02023434
     ldr r1, [r7, #0x8]
     mov r0, r6
     mov r3, r2
-    bl func_02005c3c
+    bl GraphicsSpriteState_Create
     str r0, [r7, #0x10]
     ldr r2, .L_02023598
     add r0, sp, #0x1c

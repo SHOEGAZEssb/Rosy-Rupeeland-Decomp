@@ -9,7 +9,7 @@
 .extern func_02004fe0
 .extern AnimationResource_Init
 .extern GraphicsSpriteState_SetDepthOrderedWorldPosition
-.extern func_02005c3c
+.extern GraphicsSpriteState_Create
 .extern Actor_SetDirectionFromVector
 .extern Type7Actor_EnterSpecialPresentationState
 .extern func_020593ac
@@ -255,7 +255,7 @@ func_ov062_02210b38:
     ldr r0, [r0, #0x54]
     mov r3, r2
     ldr r0, [r0, #0x0]
-    bl func_02005c3c
+    bl GraphicsSpriteState_Create
     str r0, [r4, #0x64]
     ldrsh r0, [r4, #0x54]
     cmp r0, #0x3
@@ -329,7 +329,7 @@ func_ov062_02210b38:
     ldr r0, [r0, #0x54]
     mov r3, r2
     ldr r0, [r0, #0x0]
-    bl func_02005c3c
+    bl GraphicsSpriteState_Create
     ldr r1, .L_0221104c
     str r0, [r4, #0x6c]
     ldr r0, [r1, #0x0]

@@ -7,7 +7,7 @@
 .extern data_ov072_02210b0c
 .extern data_ov072_02210b38
 .extern AnimationResource_Init
-.extern func_02005c3c
+.extern GraphicsSpriteState_Create
 .extern Type7Actor_EnterSpecialPresentationState
 .extern gHeapContext
 
@@ -70,7 +70,7 @@ func_ov072_0220fd20:
     ldrb r3, [r5, #0x3a]
     ldr r0, [r5, #0x0]
     ldr r1, [r6, #0x24]
-    bl func_02005c3c
+    bl GraphicsSpriteState_Create
     str r0, [r6, #0x2c]
     strh r7, [r0, #0x2c]
     strh r8, [r0, #0x2e]
@@ -116,7 +116,7 @@ func_ov072_0220fd20:
     ldrb r3, [r5, #0x3a]
     ldr r0, [r5, #0x0]
     ldr r1, [r6, #0x28]
-    bl func_02005c3c
+    bl GraphicsSpriteState_Create
     add r1, r6, r4, lsl #0x2
     str r0, [r1, #0x30]
     add r4, r4, #0x1

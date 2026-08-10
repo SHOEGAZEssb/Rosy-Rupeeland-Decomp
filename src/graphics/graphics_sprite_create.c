@@ -13,7 +13,7 @@
  * clear flagsToClear in that order. The animation selector may reset frame
  * state and attached metadata; this function returns no value.
  */
-void func_02005bfc(GraphicsSpriteState *state, u8 animationIndex,
+void GraphicsSpriteState_Configure(GraphicsSpriteState *state, u8 animationIndex,
                    u8 field3a, u16 field28, u16 flagsToSet,
                    u16 flagsToClear)
 {
@@ -25,10 +25,10 @@ void func_02005bfc(GraphicsSpriteState *state, u8 animationIndex,
 
 /*
  * Allocate and attach a sprite state using resources at descriptor offsets
- * 4/8/0xc and attach mode 2, then initialize it through func_02005bfc. Returns
+ * 4/8/0xc and attach mode 2, then initialize it through GraphicsSpriteState_Configure. Returns
  * the allocated state; allocation failure behavior belongs to func_02073fc4.
  */
-GraphicsSpriteState *func_02005c3c(
+GraphicsSpriteState *GraphicsSpriteState_Create(
     GraphicsSpriteGroup *group,
     const GraphicsSpriteResourceDescriptor *resources,
     u8 animationIndex, u8 field3a, u16 field28,
@@ -37,13 +37,13 @@ GraphicsSpriteState *func_02005c3c(
     GraphicsSpriteState *state =
         func_02073fc4(group, resources->field_04, resources->field_08,
                       resources->field_0c, 2);
-    func_02005bfc(state, animationIndex, field3a, field28,
+    GraphicsSpriteState_Configure(state, animationIndex, field3a, field28,
                   flagsToSet, flagsToClear);
     return state;
 }
 #else
 /* Matching forms implement the documented portable C above. */
-asm void func_02005bfc(GraphicsSpriteState *, u8, u8, u16, u16, u16)
+asm void GraphicsSpriteState_Configure(GraphicsSpriteState *, u8, u8, u16, u16, u16)
 {
     stmdb sp!, {r4, r5, r6, lr}
     mov r4, r0
@@ -63,7 +63,7 @@ asm void func_02005bfc(GraphicsSpriteState *, u8, u8, u16, u16, u16)
     ldmia sp!, {r4, r5, r6, pc}
 }
 
-asm GraphicsSpriteState *func_02005c3c(
+asm GraphicsSpriteState *GraphicsSpriteState_Create(
     GraphicsSpriteGroup *, const GraphicsSpriteResourceDescriptor *,
     u8, u8, u16, u16, u16)
 {
@@ -84,7 +84,7 @@ asm GraphicsSpriteState *func_02005c3c(
     mov r1, r5
     mov r4, r0
     str ip, [sp, #4]
-    bl func_02005bfc
+    bl GraphicsSpriteState_Configure
     mov r0, r4
     add sp, sp, #8
     ldmia sp!, {r3, r4, r5, pc}

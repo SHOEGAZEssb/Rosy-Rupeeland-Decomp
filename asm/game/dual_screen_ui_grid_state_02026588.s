@@ -5,7 +5,7 @@
 .extern data_020d6b58
 .extern data_021052fc
 .extern AnimationResource_Init
-.extern func_02005c3c
+.extern GraphicsSpriteState_Create
 .extern func_02026990
 .extern func_020269a4
 .extern func_02026e44
@@ -84,7 +84,7 @@ func_02026588: ; 0x02026588
     ldr r1, [r9, #0x8]
     mov r2, r4
     mov r3, r5
-    bl func_02005c3c
+    bl GraphicsSpriteState_Create
     mov r2, r6, lsr #0x1f
     rsb r1, r2, r6, lsl #0x1e
     add r2, r2, r1, ror #0x1e
@@ -108,7 +108,7 @@ func_02026588: ; 0x02026588
     stmib sp, {r0, r3}
     ldmia r9, {r0, r1}
     mov r2, #0x1
-    bl func_02005c3c
+    bl GraphicsSpriteState_Create
     mov r2, #0x0
     str r0, [r9, #0x64]
     mov r1, #0xd8
@@ -121,7 +121,7 @@ func_02026588: ; 0x02026588
     stmib sp, {r0, r2}
     ldmia r9, {r0, r1}
     mov r3, r2
-    bl func_02005c3c
+    bl GraphicsSpriteState_Create
     str r0, [r9, #0x68]
     mov r2, #0xd8
     strh r2, [r0, #0x2c]
@@ -148,7 +148,7 @@ func_02026588: ; 0x02026588
     ldr r0, [r9, #0x0]
     ldr r1, [r9, #0x10]
     mov r2, #0x1
-    bl func_02005c3c
+    bl GraphicsSpriteState_Create
     str r0, [r9, #0x70]
     mov r1, #0xd8
     strh r1, [r0, #0x2c]
@@ -179,7 +179,7 @@ func_02026588: ; 0x02026588
     ldr r0, [r9, #0x0]
     ldr r1, [r9, #0xc]
     mov r3, r2
-    bl func_02005c3c
+    bl GraphicsSpriteState_Create
     str r0, [r9, #0x6c]
     mov r1, #0xd8
     strh r1, [r0, #0x2c]

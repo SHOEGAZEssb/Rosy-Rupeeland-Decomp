@@ -72,7 +72,7 @@ GamePhaseCurrencyHud *func_02010878(GamePhaseCurrencyHud *self)
     for (display = 0; display < 2; display++) {
         s16 x = 0;
         for (digit = 0; digit < 7; digit++) {
-            GraphicsSpriteState *sprite = func_02005c3c(
+            GraphicsSpriteState *sprite = GraphicsSpriteState_Create(
                 self->groups[display],
                 (GraphicsSpriteResourceDescriptor *)&self->resources[0],
                 0, 0, 0xc0, 0, 0);
@@ -83,20 +83,20 @@ GamePhaseCurrencyHud *func_02010878(GamePhaseCurrencyHud *self)
             if (digit == 2 || digit == 5)
                 x -= 4;
         }
-        self->marker[display] = func_02005c3c(
+        self->marker[display] = GraphicsSpriteState_Create(
             self->groups[display],
             (GraphicsSpriteResourceDescriptor *)&self->resources[1],
             0, 0, 0xc0, 1, 2);
         self->marker[display]->field_2c = -128;
         self->marker[display]->field_2e = -12;
-        self->backdrop[display] = func_02005c3c(
+        self->backdrop[display] = GraphicsSpriteState_Create(
             self->groups[display],
             (GraphicsSpriteResourceDescriptor *)&self->resources[2],
             0, 0, 0x100, 1, 2);
         self->backdrop[display]->field_2c = 0;
         self->backdrop[display]->field_2e = 0;
         for (digit = 0; digit < 4; digit++)
-            self->ornaments[display][digit] = func_02005c3c(
+            self->ornaments[display][digit] = GraphicsSpriteState_Create(
                 self->groups[display],
                 (GraphicsSpriteResourceDescriptor *)&self->resources[3],
                 2, 0, 0xdf, 4, 2);

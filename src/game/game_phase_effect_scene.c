@@ -55,7 +55,7 @@ GamePhaseEffectScene *func_0200c9fc(GamePhaseEffectScene *self, s32 mode)
         self->resources = createResources((void *)0x100b, (void *)0x100c);
         func_02007f0c(runtime, 1);
         group = ActorCollection_GetSpriteOwner();
-        self->sprite = func_02005c3c(group,
+        self->sprite = GraphicsSpriteState_Create(group,
             (const GraphicsSpriteResourceDescriptor *)self->resources,
             0x24, source->field_3a, source->field_28, 4, 2);
         self->callbackWord = data_020d53b8[0];
@@ -65,7 +65,7 @@ GamePhaseEffectScene *func_0200c9fc(GamePhaseEffectScene *self, s32 mode)
         self->resources = createResources((void *)0x101b, (void *)0x101c);
         func_02007f0c(runtime, 1);
         group = ActorCollection_GetSpriteOwner();
-        self->sprite = func_02005c3c(group,
+        self->sprite = GraphicsSpriteState_Create(group,
             (const GraphicsSpriteResourceDescriptor *)self->resources,
             0x35, source->field_3a, source->field_28, 4, 2);
         self->callbackWord = data_020d53b8[2];
@@ -75,7 +75,7 @@ GamePhaseEffectScene *func_0200c9fc(GamePhaseEffectScene *self, s32 mode)
         self->resources = createResources((void *)0x1003, (void *)0x1004);
         func_02007f0c(runtime, 1);
         group = ActorCollection_GetSpriteOwner();
-        self->sprite = func_02005c3c(group,
+        self->sprite = GraphicsSpriteState_Create(group,
             (const GraphicsSpriteResourceDescriptor *)self->resources,
             0x16, source->field_3a, source->field_28, 4, 2);
         self->callbackWord = data_020d53b8[6];

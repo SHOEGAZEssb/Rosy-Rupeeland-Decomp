@@ -64,7 +64,7 @@ extern void func_02074038(void *, void *);
 extern void func_020740a4(void *);
 extern void func_02074110(void *);
 extern void *AnimationResource_Init(void *, s32, s32, s32);
-extern u8 *func_02005c3c(void *, void *, s32, s32, s32, s32, s32);
+extern u8 *GraphicsSpriteState_Create(void *, void *, s32, s32, s32, s32, s32);
 extern void func_02072b68(void *, s32);
 extern s32 func_020befec(s32, s32);
 extern s32 Type7Actor_GetStateCode(void *);
@@ -168,18 +168,18 @@ void func_02026588(DualScreenUiGridState *self, s32 alternateMode)
         if (self->descriptor08)
             AnimationResource_Init(self->descriptor08, 0x32b5, 0x32b3, 0x32b6);
         for (index = 0; index < 20; index++) {
-            self->gridSprites14[index] = func_02005c3c(
+            self->gridSprites14[index] = GraphicsSpriteState_Create(
                 self->spriteOwner00, self->descriptor08, 2, 0, 0, 0, 2);
             *(u16 *)(self->gridSprites14[index] + 0x2c) =
                 (u16)(207 + (index & 3) * 12);
             *(u16 *)(self->gridSprites14[index] + 0x2e) =
                 (u16)(106 + (index / 4) * 15);
         }
-        self->auxiliary64 = func_02005c3c(
+        self->auxiliary64 = GraphicsSpriteState_Create(
             self->spriteOwner00, self->descriptor04, 1, 0, 0, 2, 0);
         *(u16 *)(self->auxiliary64 + 0x2c) = 216;
         *(u16 *)(self->auxiliary64 + 0x2e) = 49;
-        self->auxiliary68 = func_02005c3c(
+        self->auxiliary68 = GraphicsSpriteState_Create(
             self->spriteOwner00, self->descriptor04, 0, 0, 0x40, 2, 0);
         *(u16 *)(self->auxiliary68 + 0x2c) = 216;
         *(u16 *)(self->auxiliary68 + 0x2e) = 50;
@@ -187,7 +187,7 @@ void func_02026588(DualScreenUiGridState *self, s32 alternateMode)
             0x10, data_020d6b58, 4, &gHeapContext);
         if (self->descriptor10)
             AnimationResource_Init(self->descriptor10, 0x1664, 0x1665, 0x1666);
-        self->progressSprite70 = func_02005c3c(
+        self->progressSprite70 = GraphicsSpriteState_Create(
             self->spriteOwner00, self->descriptor10, 1, 0, 0, 0, 2);
         *(u16 *)(self->progressSprite70 + 0x2c) = 216;
         *(u16 *)(self->progressSprite70 + 0x2e) = 89;
@@ -202,7 +202,7 @@ void func_02026588(DualScreenUiGridState *self, s32 alternateMode)
                       *(u16 *)(record + 0x1a), *(u16 *)(record + 0x1c),
                       *(u16 *)(record + 0x1e));
     }
-    self->runtimeSprite6c = func_02005c3c(
+    self->runtimeSprite6c = GraphicsSpriteState_Create(
         self->spriteOwner00, self->runtimeDescriptor0c, 0, 0, 0x20, 0, 2);
     *(u16 *)(self->runtimeSprite6c + 0x2c) = 216;
     *(u16 *)(self->runtimeSprite6c + 0x2e) = 49;

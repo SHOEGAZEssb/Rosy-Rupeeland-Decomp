@@ -5,8 +5,8 @@
 .extern data_ov093_022187f0
 .extern data_ov093_022189e0
 .extern AnimationResource_Init
-.extern func_02005bfc
-.extern func_02005c3c
+.extern GraphicsSpriteState_Configure
+.extern GraphicsSpriteState_Create
 .extern ActorCollection_GetSpriteOwner
 .extern Actor_GetCollection
 .extern Type7Actor_SetActorEnabled
@@ -48,7 +48,7 @@ func_ov093_02217908:
     ldr r0, [r4, #0x204]
     mov r2, r1
     mov r3, r1
-    bl func_02005bfc
+    bl GraphicsSpriteState_Configure
     ldr r1, .L_02217ac0
     ldr r3, .L_02217ac4
     mov r0, #0x10
@@ -71,7 +71,7 @@ func_ov093_02217908:
     stmib sp, {r1, r3}
     ldr r1, [r4, #0x20c]
     mov r2, #0x1
-    bl func_02005c3c
+    bl GraphicsSpriteState_Create
     str r0, [r4, #0x210]
     mov r0, r4
     ldr r5, [r4, #0x200]
@@ -89,7 +89,7 @@ func_ov093_02217908:
     ldr r0, [r4, #0x208]
     mov r1, #0x1
     mov r3, r2
-    bl func_02005bfc
+    bl GraphicsSpriteState_Configure
     ldr r0, .L_02217ad0
     ldr r0, [r0, #0x0]
     add r0, r0, #0x2000
@@ -121,7 +121,7 @@ func_ov093_02217908:
     ldr r1, [r10, #0x10]
     mov r2, r11
     mov r3, r11
-    bl func_02005bfc
+    bl GraphicsSpriteState_Configure
     add r0, r4, r9, lsl #0x2
     ldr r1, [r10, #0x4]
     add r9, r9, #0x1

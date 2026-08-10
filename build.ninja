@@ -4067,7 +4067,7 @@ build build/reports/graphics_sprite_create.json: objdiff build/decomp/delinks/sr
 
 build build/reports/graphics_sprite_create.txt: match_report build/reports/graphics_sprite_create.json | tools/report_objdiff.py
   report_json = build/reports/graphics_sprite_create.json
-  report_args = --section .text --function func_02005bfc --function func_02005c3c --require-exact
+  report_args = --section .text --function GraphicsSpriteState_Configure --function GraphicsSpriteState_Create --require-exact
 
 build build/reports/software_canvas_lifecycle.json: objdiff build/decomp/delinks/src/graphics/software_canvas_lifecycle.o | build/decomp/src/graphics/software_canvas_lifecycle.o
   target_object = build/decomp/delinks/src/graphics/software_canvas_lifecycle.o

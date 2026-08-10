@@ -16,7 +16,7 @@
 .extern data_ov064_02211ec4
 .extern data_ov064_02211ecc
 .extern AnimationResource_Init
-.extern func_02005c3c
+.extern GraphicsSpriteState_Create
 .extern func_02007f0c
 .extern func_02010520
 .extern func_0201140c
@@ -119,7 +119,7 @@ func_ov064_0220fd20:
     ldrb r3, [r6, #0x3a]
     ldr r1, [r4, #0x24]
     mov r2, #0x0
-    bl func_02005c3c
+    bl GraphicsSpriteState_Create
     ldr r1, .L_02210610
     str r0, [r4, #0x30]
     ldr r2, [r1, #0x0]
@@ -203,7 +203,7 @@ func_ov064_0220fd20:
     ldrb r3, [r6, #0x3a]
     ldr r1, [r4, #0x24]
     mov r2, #0x10
-    bl func_02005c3c
+    bl GraphicsSpriteState_Create
     ldr r1, .L_02210610
     str r0, [r4, #0x30]
     ldr r2, [r1, #0x18]
@@ -290,7 +290,7 @@ func_ov064_0220fd20:
     stmib sp, {r1, r2}
     ldrb r3, [r6, #0x3a]
     ldr r1, [r4, #0x24]
-    bl func_02005c3c
+    bl GraphicsSpriteState_Create
     str r0, [r4, #0x30]
     ldr r1, .L_02210610
     ldr r0, .L_022105f8
@@ -419,7 +419,7 @@ func_ov064_0220fd20:
     ldr r0, [r4, #0x3c]
     ldr r1, [r4, #0x24]
     mov r3, r2
-    bl func_02005c3c
+    bl GraphicsSpriteState_Create
     str r0, [r4, #0x30]
     mov r1, #0x0
     mov r2, #0x1
@@ -429,7 +429,7 @@ func_ov064_0220fd20:
     ldr r0, [r4, #0x3c]
     ldr r1, [r4, #0x24]
     mov r3, r2
-    bl func_02005c3c
+    bl GraphicsSpriteState_Create
     str r0, [r4, #0x34]
     ldr r1, [r6, #0x14]
     ldr r0, [r1, #0x10]
@@ -493,7 +493,7 @@ func_ov064_0220fd20:
     ldr r0, [r4, #0x40]
     ldr r1, [r4, #0x28]
     mov r3, r2
-    bl func_02005c3c
+    bl GraphicsSpriteState_Create
     mov r6, r0
     str r0, [r4, #0x68]
     mov r0, #0x100
@@ -520,7 +520,7 @@ func_ov064_0220fd20:
     str r2, [sp, #0x8]
     ldr r0, [r4, #0x40]
     ldr r1, [r4, #0x2c]
-    bl func_02005c3c
+    bl GraphicsSpriteState_Create
     str r0, [r4, #0x44]
     mov r1, #0x80
     strh r1, [r0, #0x2c]
@@ -547,7 +547,7 @@ func_ov064_0220fd20:
     ldr r0, [r4, #0x40]
     ldr r1, [r4, #0x28]
     mov r3, r7
-    bl func_02005c3c
+    bl GraphicsSpriteState_Create
     add r2, r4, r10, lsl #0x2
     mov r1, r10, lsl #0x4
     add r10, r10, #0x1

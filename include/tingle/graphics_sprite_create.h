@@ -15,10 +15,10 @@ typedef struct GraphicsSpriteResourceDescriptor {
 extern "C" {
 #endif
 
-void func_02005bfc(GraphicsSpriteState *state, u8 animationIndex,
+void GraphicsSpriteState_Configure(GraphicsSpriteState *state, u8 animationIndex,
                    u8 field3a, u16 field28, u16 flagsToSet,
                    u16 flagsToClear);
-GraphicsSpriteState *func_02005c3c(
+GraphicsSpriteState *GraphicsSpriteState_Create(
     GraphicsSpriteGroup *group,
     const GraphicsSpriteResourceDescriptor *resources,
     u8 animationIndex, u8 field3a, u16 field28,

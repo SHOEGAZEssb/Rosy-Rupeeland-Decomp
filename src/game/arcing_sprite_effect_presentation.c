@@ -18,7 +18,7 @@ extern "C" {
 extern void *data_020d6740;extern const char data_020d6760[];
 extern const s16 data_020c9670[];extern u8 data_02105610;extern void *gSoundContext;
 extern void *func_0201e250(void *);extern void *func_0201e28c(void *);
-extern void *AnimationResource_Init(void *,s32,s32,s32);extern u8 *func_02005c3c(void *,void *,s32,s32,s32,s32,s32);
+extern void *AnimationResource_Init(void *,s32,s32,s32);extern u8 *GraphicsSpriteState_Create(void *,void *,s32,s32,s32,s32,s32);
 extern void GraphicsSpriteState_SetDepthOrderedWorldPosition(void *,s32,s32,s32,s32);extern void func_02004fe0(void *);
 extern void func_02005058(void *);extern void func_0200637c(void *);extern void func_020064b8(void *,void *,s32);
 extern void func_02006918(void *,const void *,const void *,const void *);extern void func_02008378(void *,const void *,const void *);
@@ -31,7 +31,7 @@ extern void func_02072b68(void *,s32);extern void Sound_Play(void *,s32,s32);
 
 /*
  * Initialize base/state, allocate descriptors for IDs 0x1714..0x1716 and
- * 0x1625..0x1627, create the initial sprite through func_02005c3c, scale the two
+ * 0x1625..0x1627, create the initial sprite through GraphicsSpriteState_Create, scale the two
  * input vectors by 0x4cd/0xb33, combine them, and allocate/construct a 0x30-byte
  * path from both inputs and the combined value. Retain duration and switch flag,
  * set amplitude 0x30, destroy temporaries, and return self.
@@ -48,7 +48,7 @@ ArcingSpriteEffectPresentation *func_02023434(
     if(self->firstDescriptor08)AnimationResource_Init(self->firstDescriptor08,0x1714,0x1715,0x1716);
     self->secondDescriptor0c=(u8 *)Heap_Alloc(0x10,data_020d6760,4,&gHeapContext);
     if(self->secondDescriptor0c)AnimationResource_Init(self->secondDescriptor0c,0x1625,0x1626,0x1627);
-    self->sprite10=func_02005c3c(spriteOwner,self->firstDescriptor08,0,0,0,10,0);
+    self->sprite10=GraphicsSpriteState_Create(spriteOwner,self->firstDescriptor08,0,0,0,10,0);
     func_020233c8(&a,first,0x4cd);func_020233c8(&b,second,0xb33);
     func_02008378(&combined,&a,&b);func_02005058(&b);func_02005058(&a);
     self->path1c=(u8 *)Heap_Alloc(0x30,data_020d6760,4,&gHeapContext);

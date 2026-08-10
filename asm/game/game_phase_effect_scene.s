@@ -12,7 +12,7 @@
 .extern data_020cdc1c
 .extern data_021052fc
 .extern AnimationResource_Init
-.extern func_02005c3c
+.extern GraphicsSpriteState_Create
 .extern func_02007f0c
 .extern ActorCollection_GetSpriteOwner
 .extern func_02072b68
@@ -73,7 +73,7 @@ L_0200ca80:
     ldrb r3, [r4, #0x3a]
     ldr r1, [r6, #0x24]
     mov r2, #0x24
-    bl func_02005c3c
+    bl GraphicsSpriteState_Create
     ldr r1, L_0200cc34
     str r0, [r6, #0x28]
     ldr r2, [r1, #0x0]
@@ -109,7 +109,7 @@ L_0200cb08:
     ldrb r3, [r4, #0x3a]
     ldr r1, [r6, #0x24]
     mov r2, #0x35
-    bl func_02005c3c
+    bl GraphicsSpriteState_Create
     ldr r1, L_0200cc34
     str r0, [r6, #0x28]
     ldr r2, [r1, #0x8]
@@ -145,7 +145,7 @@ L_0200cb90:
     ldrb r3, [r4, #0x3a]
     ldr r1, [r6, #0x24]
     mov r2, #0x16
-    bl func_02005c3c
+    bl GraphicsSpriteState_Create
     ldr r1, L_0200cc34
     str r0, [r6, #0x28]
     ldr r2, [r1, #0x18]

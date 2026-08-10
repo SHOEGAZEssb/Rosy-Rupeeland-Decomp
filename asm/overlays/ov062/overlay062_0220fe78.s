@@ -12,7 +12,7 @@
 .extern data_ov062_02211b70
 .extern func_02005058
 .extern AnimationResource_Init
-.extern func_02005c3c
+.extern GraphicsSpriteState_Create
 .extern func_0201f864
 .extern func_02072b68
 .extern func_ov062_0220fd20
@@ -158,7 +158,7 @@ func_ov062_0220fe78:
     ldr r0, [r0, #0x54]
     mov r3, r2
     ldr r0, [r0, #0x0]
-    bl func_02005c3c
+    bl GraphicsSpriteState_Create
     str r0, [r6, #0x28]
     and r1, r4, #0xff
     bl func_02072b68
