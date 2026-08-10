@@ -15,9 +15,9 @@ extern "C" {
 extern void Heap_Free(void *);
 extern void *func_02002700(u32, const void *, u32, void *);
 extern void func_02002728(void *);
-extern s32 func_02077d4c(void *);
-extern s32 func_02077d5c(void *);
-extern s32 func_02077d6c(void *);
+extern s32 Graphics3DResourceBinding_GetTextureFormat(void *);
+extern s32 Graphics3DResourceBinding_GetTextureWidthClass(void *);
+extern s32 Graphics3DResourceBinding_GetTextureHeightClass(void *);
 extern void func_020afddc(void *);
 extern void func_020afe00(void *, s32);
 extern void func_020afe28(void *, s32, s32);
@@ -51,15 +51,15 @@ extern "C" void *func_ov026_021fd9c4(void *object, void *resource,
     FIELD(void *, object, 0x28) = buffer;
     func_020b24cc((u8 *)object + 0x14, buffer, 0x300);
     func_020afebc((u8 *)object + 0x14, 1, 0, 2, 1, 0x1f, 0x8000);
-    s32 a = func_02077d4c(resource);
-    s32 b = func_02077d5c(resource);
-    s32 c = func_02077d6c(resource);
+    s32 a = Graphics3DResourceBinding_GetTextureFormat(resource);
+    s32 b = Graphics3DResourceBinding_GetTextureWidthClass(resource);
+    s32 c = Graphics3DResourceBinding_GetTextureHeightClass(resource);
     func_020afe64((u8 *)object + 0x14, a, 1, b, c,
-                  func_02077d6c(resource), 3, 0, 0,
+                  Graphics3DResourceBinding_GetTextureHeightClass(resource), 3, 0, 0,
                   FIELD(s32, FIELD(void *, resource, 0x10), 0xc));
     func_020afe28((u8 *)object + 0x14,
                   FIELD(s32, FIELD(void *, resource, 0x14), 0xc),
-                  func_02077d4c(resource));
+                  Graphics3DResourceBinding_GetTextureFormat(resource));
     func_020afe00((u8 *)object + 0x14, 2);
 
     s32 outer_u = radius << 18;

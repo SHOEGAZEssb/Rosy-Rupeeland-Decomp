@@ -5,7 +5,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_02077d08(void *); extern void Heap_Free(void *);
+extern void Graphics3DResourceBinding_Destroy(void *); extern void Heap_Free(void *);
 extern void func_0207733c(void *, void *); extern void func_02072140(void *);
 #ifdef __cplusplus
 }
@@ -17,7 +17,7 @@ extern "C"
 void func_ov010_021fd408(void *state)
 {
     void *p=FIELD(void *,state,0x12c);
-    if(p){func_02077d08(p);Heap_Free(p);FIELD(void *,state,0x12c)=0;return;}
+    if(p){Graphics3DResourceBinding_Destroy(p);Heap_Free(p);FIELD(void *,state,0x12c)=0;return;}
     func_0207733c(FIELD(void *,state,0x88),FIELD(void *,state,0x8c));
     FIELD(void *,state,0x8c)=0; func_02072140((u8 *)state+0x7c);
 }

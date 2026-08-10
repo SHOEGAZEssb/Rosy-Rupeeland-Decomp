@@ -9,10 +9,10 @@
 .extern data_ov026_02204a40
 .extern data_ov026_02204a48
 .extern func_02002700
-.extern func_02077ca0
-.extern func_02077d4c
-.extern func_02077d5c
-.extern func_02077d6c
+.extern Graphics3DResourceBinding_Init
+.extern Graphics3DResourceBinding_GetTextureFormat
+.extern Graphics3DResourceBinding_GetTextureWidthClass
+.extern Graphics3DResourceBinding_GetTextureHeightClass
 .extern func_020949ec
 .extern func_020afddc
 .extern func_020afe00
@@ -57,7 +57,7 @@ func_ov026_021fd030:
     ldrh r3, [r2, r5]
     ldr r1, [r1, #0x0]
     mov r2, r4
-    bl func_02077ca0
+    bl Graphics3DResourceBinding_Init
 L_021fd09c:
     ldr r1, L_021fd260
     str r0, [r10, #0x9c]
@@ -80,13 +80,13 @@ L_021fd09c:
     bl func_020afebc
     ldr r6, [r10, #0x9c]
     mov r0, r6
-    bl func_02077d4c
+    bl Graphics3DResourceBinding_GetTextureFormat
     mov r5, r0
     ldr r0, [r10, #0x9c]
-    bl func_02077d5c
+    bl Graphics3DResourceBinding_GetTextureWidthClass
     mov r4, r0
     mov r0, r6
-    bl func_02077d6c
+    bl Graphics3DResourceBinding_GetTextureHeightClass
     str r0, [sp, #0x0]
     mov r2, #0x1
     str r2, [sp, #0x4]
@@ -103,7 +103,7 @@ L_021fd09c:
     ldr r0, [r10, #0x9c]
     ldr r1, [r0, #0x14]
     ldr r4, [r1, #0xc]
-    bl func_02077d4c
+    bl Graphics3DResourceBinding_GetTextureFormat
     mov r2, r0
     mov r1, r4
     add r0, r10, #0xa0

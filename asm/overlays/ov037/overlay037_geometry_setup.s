@@ -2,9 +2,9 @@
 
 /* Exact fallback; see src/overlays/ov037/overlay037_geometry_setup.c for documented portable C. */
 
-    .extern func_02077d4c
-    .extern func_02077d5c
-    .extern func_02077d6c
+    .extern Graphics3DResourceBinding_GetTextureFormat
+    .extern Graphics3DResourceBinding_GetTextureWidthClass
+    .extern Graphics3DResourceBinding_GetTextureHeightClass
     .extern func_02070454
     .extern func_02070464
     .extern func_ov037_021fd4e0
@@ -32,13 +32,13 @@ func_ov037_021fd324:
     str r0, [r5, #0x28]
     ldr r7, [r4, #0x9c]
     mov r0, r7
-    bl func_02077d4c
+    bl Graphics3DResourceBinding_GetTextureFormat
     mov r6, r0
     ldr r0, [r4, #0x9c]
-    bl func_02077d5c
+    bl Graphics3DResourceBinding_GetTextureWidthClass
     mov r5, r0
     mov r0, r7
-    bl func_02077d6c
+    bl Graphics3DResourceBinding_GetTextureHeightClass
     mov r1, #0x3
     str r1, [sp, #0x0]
     mov r1, #0x0
@@ -53,7 +53,7 @@ func_ov037_021fd324:
     str ip, [sp, #0xc]
     bl func_ov037_021fd4e0
     ldr r0, [r4, #0x9c]
-    bl func_02077d4c
+    bl Graphics3DResourceBinding_GetTextureFormat
     cmp r0, #0x2
     ldr r0, [r4, #0x9c]
     moveq r1, #0x1

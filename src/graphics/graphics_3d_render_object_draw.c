@@ -34,14 +34,14 @@ extern u32 func_02070580(const void *resource);
 
 /*
  * Push and reset the position-vector matrix, submit polygon attributes using
- * field_0e as polygon ID, and configure the bound texture/palette from their
+ * polygonId, and configure the bound texture/palette from their
  * region offsets and decoded metadata. Emit a 0x2000-by-0x2000 quadrilateral
  * with texture coordinates spanning 0x1000 by 0x0c00 at the low 16 bits of
- * field_08, then end and pop. All volatile geometry writes and metadata calls
+ * depth, then end and pop. All volatile geometry writes and metadata calls
  * are ordered observable effects; the binding and regions must be valid.
  */
 #ifndef MATCHING
-void func_02077e24(Graphics3DRenderObject *object)
+void Graphics3DRenderObject_Draw(Graphics3DRenderObject *object)
 {
     Graphics3DResourceBinding *binding = object->binding;
     u32 format;
@@ -55,11 +55,11 @@ void func_02077e24(Graphics3DRenderObject *object)
     REG_G3_MTX_MODE = 2;
     REG_G3_MTX_IDENTITY = 0;
 
-    func_020771f4(0, 0, 3, object->field_0e, 0x1f, 0);
+    func_020771f4(0, 0, 3, object->polygonId, 0x1f, 0);
 
-    height = func_02077d6c(binding);
-    width = func_02077d5c(binding);
-    format = func_02077d4c(binding);
+    height = Graphics3DResourceBinding_GetTextureHeightClass(binding);
+    width = Graphics3DResourceBinding_GetTextureWidthClass(binding);
+    format = Graphics3DResourceBinding_GetTextureFormat(binding);
     REG_G3_TEXIMAGE_PARAM =
         (format << 26) | (binding->textureRegion->offset >> 3) |
         0x40000000 | (width << 20) | (height << 23) | 0x30000 |
@@ -69,11 +69,11 @@ void func_02077e24(Graphics3DRenderObject *object)
     REG_G3_PLTT_BASE = binding->paletteRegion->offset >> paletteShift;
 
     REG_G3_BEGIN_VTXS = 1;
-    REG_G3_COLOR = object->field_0c;
+    REG_G3_COLOR = object->color;
 
     REG_G3_TEXCOORD = 0;
     REG_G3_VTX_16 = 0x1000f000;
-    REG_G3_VTX_16 = object->field_08 & 0xffff;
+    REG_G3_VTX_16 = object->depth & 0xffff;
 
     REG_G3_TEXCOORD = 0x00001000;
     REG_G3_VTX_XZ = 0x10001000;
@@ -87,7 +87,7 @@ void func_02077e24(Graphics3DRenderObject *object)
 }
 #else
 /* This matching fallback implements the documented portable C directly above. */
-asm void func_02077e24(Graphics3DRenderObject *object)
+asm void Graphics3DRenderObject_Draw(Graphics3DRenderObject *object)
 {
     stmdb sp!, {r4, r5, r6, r7, r8, lr}
     sub sp, sp, #8

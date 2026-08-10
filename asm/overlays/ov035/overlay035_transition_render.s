@@ -3,9 +3,9 @@
 /* Exact fallback; see src/overlays/ov035/overlay035_transition_render.c for documented portable C. */
 
     .extern func_020b00f0
-    .extern func_02077d4c
-    .extern func_02077d5c
-    .extern func_02077d6c
+    .extern Graphics3DResourceBinding_GetTextureFormat
+    .extern Graphics3DResourceBinding_GetTextureWidthClass
+    .extern Graphics3DResourceBinding_GetTextureHeightClass
     .extern func_ov035_021fd7b0
     .extern func_ov035_021fe88c
     .extern func_02070454
@@ -39,13 +39,13 @@ func_ov035_021fe6e4:
     str r0, [r1, #0x0]
     ldr r7, [r4, #0x9c]
     mov r0, r7
-    bl func_02077d4c
+    bl Graphics3DResourceBinding_GetTextureFormat
     mov r6, r0
     ldr r0, [r4, #0x9c]
-    bl func_02077d5c
+    bl Graphics3DResourceBinding_GetTextureWidthClass
     mov r5, r0
     mov r0, r7
-    bl func_02077d6c
+    bl Graphics3DResourceBinding_GetTextureHeightClass
     mov r1, #0x3
     str r1, [sp, #0x0]
     mov r1, #0x0
@@ -62,7 +62,7 @@ func_ov035_021fe6e4:
     ldr r0, [r4, #0x9c]
     ldr r1, [r0, #0x14]
     ldr r5, [r1, #0xc]
-    bl func_02077d4c
+    bl Graphics3DResourceBinding_GetTextureFormat
     mov r1, r0
     mov r0, r5
     bl func_ov035_021fe88c

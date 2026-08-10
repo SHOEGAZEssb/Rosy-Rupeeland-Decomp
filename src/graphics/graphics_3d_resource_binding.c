@@ -26,11 +26,10 @@ extern void func_02071c38(void *archive, void *resource);
  * Returns binding. Retail assumes every lookup and acquisition succeeds; all
  * archive, owner, resource, and region pointers become observable in binding.
  */
-Graphics3DResourceBinding *func_02077ca0(Graphics3DResourceBinding *binding,
-                                         void *archive,
-                                         Graphics3DResourceOwner *owner,
-                                         u32 textureResourceId,
-                                         u16 paletteResourceId)
+Graphics3DResourceBinding *Graphics3DResourceBinding_Init(
+    Graphics3DResourceBinding *binding, void *archive,
+    Graphics3DResourceOwner *owner, u32 textureResourceId,
+    u16 paletteResourceId)
 {
     binding->archive = archive;
     binding->owner = owner;
@@ -49,7 +48,8 @@ Graphics3DResourceBinding *func_02077ca0(Graphics3DResourceBinding *binding,
  * archive resources through their type-specific operations. Returns binding;
  * retail leaves all six stored pointers intact, so they are stale afterward.
  */
-Graphics3DResourceBinding *func_02077d08(Graphics3DResourceBinding *binding)
+Graphics3DResourceBinding *Graphics3DResourceBinding_Destroy(
+    Graphics3DResourceBinding *binding)
 {
     func_0207684c(&binding->owner->textureRegions, binding->textureRegion);
     func_02076a70(&binding->owner->paletteRegions, binding->paletteRegion);

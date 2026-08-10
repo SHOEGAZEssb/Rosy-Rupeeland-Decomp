@@ -25,9 +25,9 @@
     .extern func_02075858
     .extern Graphics3DLight_Apply
     .extern func_02077b44
-    .extern func_02077d4c
-    .extern func_02077d5c
-    .extern func_02077d6c
+    .extern Graphics3DResourceBinding_GetTextureFormat
+    .extern Graphics3DResourceBinding_GetTextureWidthClass
+    .extern Graphics3DResourceBinding_GetTextureHeightClass
     .extern func_020b0300
     .extern func_020b0558
     .extern func_ov012_021fcef4
@@ -738,13 +738,13 @@ L_021fe040:
     bl func_ov012_021fe348
     ldr r6, [r9, #0x154]
     mov r0, r6
-    bl func_02077d4c
+    bl Graphics3DResourceBinding_GetTextureFormat
     mov r8, r0
     ldr r0, [r9, #0x154]
-    bl func_02077d5c
+    bl Graphics3DResourceBinding_GetTextureWidthClass
     mov r7, r0
     mov r0, r6
-    bl func_02077d6c
+    bl Graphics3DResourceBinding_GetTextureHeightClass
     mov r1, #0x3
     str r1, [sp, #0x0]
     mov r1, #0x0
@@ -759,7 +759,7 @@ L_021fe040:
     str r6, [sp, #0xc]
     bl func_ov012_021fe374
     ldr r0, [r9, #0x154]
-    bl func_02077d4c
+    bl Graphics3DResourceBinding_GetTextureFormat
     cmp r0, #0x2
     moveq r6, #0x1
     movne r6, #0x0

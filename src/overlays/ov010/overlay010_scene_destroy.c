@@ -9,7 +9,7 @@ extern "C" {
 extern const void *data_ov010_021fec34[];
 extern const void *data_ov010_021fec68[];
 extern void *data_020f4e14;
-extern void func_02077d08(void *); extern void Heap_Free(void *);
+extern void Graphics3DResourceBinding_Destroy(void *); extern void Heap_Free(void *);
 extern void func_02002728(void *); extern void func_020775d8(void *);
 extern void func_02075020(void *); extern void func_02092418(void *);
 extern void DebugText_BeginFrame(void); extern void func_020923a0(void *);
@@ -27,8 +27,8 @@ void *func_ov010_021fd1e8(void *state)
     s32 i; void *p;
     FIELD(const void *, state, 0) = data_ov010_021fec34;
     FIELD(const void *, state, 0x24) = data_ov010_021fec68;
-    p = FIELD(void *, state, 0x12c); if (p) { func_02077d08(p); Heap_Free(p); }
-    p = FIELD(void *, state, 0x130); if (p) { func_02077d08(p); Heap_Free(p); }
+    p = FIELD(void *, state, 0x12c); if (p) { Graphics3DResourceBinding_Destroy(p); Heap_Free(p); }
+    p = FIELD(void *, state, 0x130); if (p) { Graphics3DResourceBinding_Destroy(p); Heap_Free(p); }
     for (i = 0; i < 2; i++) func_02002728(FIELD(void *, state, 0x90 + i * 4));
     p = FIELD(void *, state, 0x78); if (p) { func_020775d8(p); Heap_Free(p); }
     func_02075020(data_020f4e14);

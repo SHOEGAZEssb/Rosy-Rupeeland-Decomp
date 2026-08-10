@@ -47,7 +47,7 @@ extern void *func_02077624(void *);
 extern void func_020779ac(void *, void *);
 extern void Graphics3DLightSet_Init(void *);
 extern void func_02077ae8(void *);
-extern void *func_02077d7c(void *, void *, void *, s32, s32);
+extern void *Graphics3DRenderObject_Init(void *, void *, void *, s32, s32);
 extern s32 func_020918f4(void *, s32);
 extern void func_02091e28(void *);
 extern void func_02092364(void *);
@@ -253,7 +253,7 @@ extern "C" void *func_ov017_021feab4(void *state, s32 effectCount,
     FIELD(void *, state, 0x25c) = object;
     object = Heap_Alloc(0x10, data_ov017_022016a4, 4, gHeapContext);
     if (object != 0) {
-        object = func_02077d7c(object, data_020f4e18[0],
+        object = Graphics3DRenderObject_Init(object, data_020f4e18[0],
                                FIELD(void *, state, 0x240), 0x6122, 0x6123);
     }
     FIELD(void *, state, 0x2bc) = object;

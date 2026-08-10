@@ -21,15 +21,18 @@ typedef char Graphics3DResourceBindingSizeCheck[
 extern "C" {
 #endif
 
-Graphics3DResourceBinding *func_02077ca0(Graphics3DResourceBinding *binding,
-                                         void *archive,
-                                         Graphics3DResourceOwner *owner,
-                                         u32 textureResourceId,
-                                         u16 paletteResourceId);
-Graphics3DResourceBinding *func_02077d08(Graphics3DResourceBinding *binding);
-u32 func_02077d4c(const Graphics3DResourceBinding *binding);
-u32 func_02077d5c(const Graphics3DResourceBinding *binding);
-u32 func_02077d6c(const Graphics3DResourceBinding *binding);
+Graphics3DResourceBinding *Graphics3DResourceBinding_Init(
+    Graphics3DResourceBinding *binding, void *archive,
+    Graphics3DResourceOwner *owner, u32 textureResourceId,
+    u16 paletteResourceId);
+Graphics3DResourceBinding *Graphics3DResourceBinding_Destroy(
+    Graphics3DResourceBinding *binding);
+u32 Graphics3DResourceBinding_GetTextureFormat(
+    const Graphics3DResourceBinding *binding);
+u32 Graphics3DResourceBinding_GetTextureWidthClass(
+    const Graphics3DResourceBinding *binding);
+u32 Graphics3DResourceBinding_GetTextureHeightClass(
+    const Graphics3DResourceBinding *binding);
 
 #ifdef __cplusplus
 }

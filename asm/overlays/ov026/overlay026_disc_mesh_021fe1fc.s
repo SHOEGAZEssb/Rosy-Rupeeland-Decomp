@@ -3,7 +3,7 @@
 /* Exact fallback; see src/overlays/ov026/overlay026_disc_mesh.c. */
 .extern data_ov026_022048c8
 .extern func_02002728
-.extern func_02077d08
+.extern Graphics3DResourceBinding_Destroy
 .extern Heap_Free
 
 
@@ -19,7 +19,7 @@ func_ov026_021fe1fc:
     cmp r4, #0x0
     beq L_021fe230
     mov r0, r4
-    bl func_02077d08
+    bl Graphics3DResourceBinding_Destroy
     mov r0, r4
     bl Heap_Free
 L_021fe230:

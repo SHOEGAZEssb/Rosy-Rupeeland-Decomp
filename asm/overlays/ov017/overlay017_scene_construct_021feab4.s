@@ -36,7 +36,7 @@
     .extern func_020779ac
     .extern Graphics3DLightSet_Init
     .extern func_02077ae8
-    .extern func_02077d7c
+    .extern Graphics3DRenderObject_Init
     .extern func_020918f4
     .extern func_02091e28
     .extern func_02092364
@@ -449,7 +449,7 @@ L_021ff034:
     ldr r1, [r1, #0x0]
     ldr r2, [r10, #0x240]
     sub r3, r3, #0x1
-    bl func_02077d7c
+    bl Graphics3DRenderObject_Init
 L_021ff070:
     str r0, [r10, #0x2bc]
     ldr r0, L_021ff140

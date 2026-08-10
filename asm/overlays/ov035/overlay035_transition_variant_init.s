@@ -4,7 +4,7 @@
 
     .extern func_020949ec
     .extern Heap_Alloc
-    .extern func_02077ca0
+    .extern Graphics3DResourceBinding_Init
     .extern data_ov035_02203ccc
     .extern data_ov035_02203d30
     .extern gHeapContext
@@ -32,7 +32,7 @@ func_ov035_021fe8e4:
     ldr r1, [r1, #0x0]
     mov r2, r4
     sub r3, r3, #0x1
-    bl func_02077ca0
+    bl Graphics3DResourceBinding_Init
 L_021fe934:
     str r0, [r5, #0x9c]
     mov r0, r5

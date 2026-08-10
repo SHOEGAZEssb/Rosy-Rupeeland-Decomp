@@ -9,7 +9,7 @@
     .extern func_020720d4
     .extern func_02075020
     .extern func_020775d8
-    .extern func_02077d08
+    .extern Graphics3DResourceBinding_Destroy
     .extern func_020923a0
     .extern func_02092418
 
@@ -26,7 +26,7 @@ func_ov010_021fd2b4: ; 0x021fd2b4
     cmp r5, #0x0
     beq L_021fd2e8
     mov r0, r5
-    bl func_02077d08
+    bl Graphics3DResourceBinding_Destroy
     mov r0, r5
     bl Heap_Free
 L_021fd2e8:
@@ -34,7 +34,7 @@ L_021fd2e8:
     cmp r5, #0x0
     beq L_021fd304
     mov r0, r5
-    bl func_02077d08
+    bl Graphics3DResourceBinding_Destroy
     mov r0, r5
     bl Heap_Free
 L_021fd304:

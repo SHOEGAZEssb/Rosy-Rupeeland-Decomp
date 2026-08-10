@@ -2,7 +2,7 @@
 
 /* Exact fallback; see src/overlays/ov036/overlay036_secondary_resource_object.c for documented portable C. */
 
-    .extern func_02077d08
+    .extern Graphics3DResourceBinding_Destroy
     .extern Heap_Free
     .extern func_ov036_021fcf30
     .extern data_ov036_022060d0
@@ -17,7 +17,7 @@ func_ov036_02200014:
     cmp r4, #0x0
     beq L_02200040
     mov r0, r4
-    bl func_02077d08
+    bl Graphics3DResourceBinding_Destroy
     mov r0, r4
     bl Heap_Free
 L_02200040:

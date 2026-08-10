@@ -7,7 +7,7 @@ extern "C" {
 #endif
 extern void *data_020f4e18; extern const char data_ov010_021fec8c[]; extern u8 gHeapContext[];
 extern void func_020720e8(void *,void *,s32,s32,s32); extern void *func_02077308(void *,void *);
-extern void *Heap_Alloc(s32,const char *,s32,void *); extern void *func_02077ca0(void *,void *,void *,s32,s32);
+extern void *Heap_Alloc(s32,const char *,s32,void *); extern void *Graphics3DResourceBinding_Init(void *,void *,void *,s32,s32);
 #ifdef __cplusplus
 }
 #endif
@@ -24,7 +24,7 @@ void func_ov010_021fd45c(void *state)
         p=func_02077308(FIELD(void *,state,0x88),(u8 *)state+0x7c); FIELD(void *,state,0x8c)=p; FIELD(u8,p,0x59)=3;
     }else{
         p=Heap_Alloc(0x18,data_ov010_021fec8c,4,gHeapContext);
-        if(p)func_02077ca0(p,data_020f4e18,FIELD(void *,state,0x78),FIELD(u16,r,0),FIELD(u16,r,4));
+        if(p)Graphics3DResourceBinding_Init(p,data_020f4e18,FIELD(void *,state,0x78),FIELD(u16,r,0),FIELD(u16,r,4));
         FIELD(void *,state,0x12c)=p;
     }
 }

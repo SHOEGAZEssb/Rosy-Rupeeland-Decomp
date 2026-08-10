@@ -12,7 +12,7 @@
 .extern data_ov026_02204a60
 .extern data_ov026_02204a68
 .extern func_02071adc
-.extern func_02077ca0
+.extern Graphics3DResourceBinding_Init
 .extern func_020948d4
 .extern func_020949ec
 .extern func_02094bbc
@@ -53,7 +53,7 @@ L_021fefcc:
     str r1, [sp, #0x0]
     ldrh r3, [r5, r3]
     ldr r1, [r4, #0x0]
-    bl func_02077ca0
+    bl Graphics3DResourceBinding_Init
 L_021ff008:
     add r1, r10, r8, lsl #0x2
     add r8, r8, #0x1

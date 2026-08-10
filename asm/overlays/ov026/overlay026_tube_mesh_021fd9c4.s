@@ -5,9 +5,9 @@
 .extern data_ov026_022048e8
 .extern data_ov026_02204a48
 .extern func_02002700
-.extern func_02077d4c
-.extern func_02077d5c
-.extern func_02077d6c
+.extern Graphics3DResourceBinding_GetTextureFormat
+.extern Graphics3DResourceBinding_GetTextureWidthClass
+.extern Graphics3DResourceBinding_GetTextureHeightClass
 .extern func_020afddc
 .extern func_020afe00
 .extern func_020afe28
@@ -55,13 +55,13 @@ func_ov026_021fd9c4:
     bl func_020afebc
     ldr r8, [r6, #0x4]
     mov r0, r8
-    bl func_02077d4c
+    bl Graphics3DResourceBinding_GetTextureFormat
     mov r7, r0
     ldr r0, [r6, #0x4]
-    bl func_02077d5c
+    bl Graphics3DResourceBinding_GetTextureWidthClass
     mov r4, r0
     mov r0, r8
-    bl func_02077d6c
+    bl Graphics3DResourceBinding_GetTextureHeightClass
     str r0, [sp, #0x0]
     mov r0, #0x3
     str r0, [sp, #0x4]
@@ -79,7 +79,7 @@ func_ov026_021fd9c4:
     ldr r0, [r6, #0x4]
     ldr r1, [r0, #0x14]
     ldr r4, [r1, #0xc]
-    bl func_02077d4c
+    bl Graphics3DResourceBinding_GetTextureFormat
     mov r2, r0
     mov r1, r4
     add r0, r6, #0x14

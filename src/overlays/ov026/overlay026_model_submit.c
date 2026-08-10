@@ -11,9 +11,9 @@ extern "C" {
 #endif
 extern s32 func_02070454(void *);
 extern s32 func_02070464(void *);
-extern s32 func_02077d4c(void *);
-extern s32 func_02077d5c(void *);
-extern s32 func_02077d6c(void *);
+extern s32 Graphics3DResourceBinding_GetTextureFormat(void *);
+extern s32 Graphics3DResourceBinding_GetTextureWidthClass(void *);
+extern s32 Graphics3DResourceBinding_GetTextureHeightClass(void *);
 extern void func_020b00f0(s32);
 extern void func_020b0808(s32, s32);
 extern void func_020b0844(s32, s32);
@@ -58,13 +58,13 @@ extern "C" void func_ov026_021fd6b0(void *object, s32 matrix_mode)
     *scale_port = FIELD(u32, object, 0x70);
 
     void *resource = FIELD(void *, object, 0x9c);
-    s32 a = func_02077d4c(resource);
-    s32 b = func_02077d5c(resource);
-    s32 c = func_02077d6c(resource);
+    s32 a = Graphics3DResourceBinding_GetTextureFormat(resource);
+    s32 b = Graphics3DResourceBinding_GetTextureWidthClass(resource);
+    s32 c = Graphics3DResourceBinding_GetTextureHeightClass(resource);
     s32 word = FIELD(s32, FIELD(void *, resource, 0x10), 0xc);
     func_ov026_021fd900(a, 1, b, c, 3, 0, 0, word);
     s32 auxiliary = FIELD(s32, FIELD(void *, resource, 0x14), 0xc);
-    func_ov026_021fd940(auxiliary, func_02077d4c(resource));
+    func_ov026_021fd940(auxiliary, Graphics3DResourceBinding_GetTextureFormat(resource));
 
     void *shape = FIELD(void *, resource, 4);
     s32 width = func_02070454(shape) * 3 << 12;

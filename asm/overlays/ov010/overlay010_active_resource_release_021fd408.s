@@ -2,7 +2,7 @@
     .extern Heap_Free
     .extern func_02072140
     .extern func_0207733c
-    .extern func_02077d08
+    .extern Graphics3DResourceBinding_Destroy
 
 /* Exact fallback; see src/overlays/ov010/overlay010_active_resource_release.c. */
     .global func_ov010_021fd408
@@ -14,7 +14,7 @@ func_ov010_021fd408: ; 0x021fd408
     beq L_021fd43c
     beq L_021fd430
     mov r0, r4
-    bl func_02077d08
+    bl Graphics3DResourceBinding_Destroy
     mov r0, r4
     bl Heap_Free
 L_021fd430:

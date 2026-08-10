@@ -4,7 +4,7 @@
     .extern data_ov010_021fec8c
     .extern func_020720e8
     .extern func_02077308
-    .extern func_02077ca0
+    .extern Graphics3DResourceBinding_Init
     .extern gHeapContext
 
 /* Exact fallback; see src/overlays/ov010/overlay010_active_resource_create.c. */
@@ -54,7 +54,7 @@ L_021fd4c4:
     mov r3, r3, lsl #0x10
     ldr r2, [r5, #0x78]
     mov r3, r3, lsr #0x10
-    bl func_02077ca0
+    bl Graphics3DResourceBinding_Init
 L_021fd50c:
     str r0, [r5, #0x12c]
     ldmia sp!, {r3, r4, r5, pc}

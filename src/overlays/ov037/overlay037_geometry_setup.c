@@ -8,9 +8,9 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern s32 func_02077d4c(void *binding);
-extern s32 func_02077d5c(void *binding);
-extern s32 func_02077d6c(void *binding);
+extern s32 Graphics3DResourceBinding_GetTextureFormat(void *binding);
+extern s32 Graphics3DResourceBinding_GetTextureWidthClass(void *binding);
+extern s32 Graphics3DResourceBinding_GetTextureHeightClass(void *binding);
 extern s32 func_02070454(void *resource);
 extern s32 func_02070464(void *resource);
 extern void func_ov037_021fd0a8(u32 lightMask, u32 polygonMode,
@@ -67,14 +67,14 @@ extern "C" void func_ov037_021fd324(void *object)
     REG32(0x0400046c) = 0x10000;
     REG32(0x0400046c) = 0x1000;
 
-    s32 format = func_02077d4c(binding);
-    s32 repeat = func_02077d5c(binding);
-    s32 flip = func_02077d6c(binding);
+    s32 format = Graphics3DResourceBinding_GetTextureFormat(binding);
+    s32 repeat = Graphics3DResourceBinding_GetTextureWidthClass(binding);
+    s32 flip = Graphics3DResourceBinding_GetTextureHeightClass(binding);
     u32 textureAddress = FIELD(u32, FIELD(void *, binding, 0x10), 0x0c);
     func_ov037_021fd4e0(format, 1, repeat, flip, 3, 0, 0,
                         textureAddress);
 
-    s32 shift = 4 - (func_02077d4c(binding) == 2);
+    s32 shift = 4 - (Graphics3DResourceBinding_GetTextureFormat(binding) == 2);
     REG32(0x040004ac) = FIELD(u32, FIELD(void *, binding, 0x14), 0x0c) >> shift;
 
     void *resource = FIELD(void *, binding, 4);

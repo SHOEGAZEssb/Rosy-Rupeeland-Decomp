@@ -21,16 +21,15 @@ extern u8 gHeapContext[];
 
 /*
  * Allocate and initialize a 0x18-byte resource binding from the supplied
- * archive, owner, and two resource IDs. Initialize the object's opaque words
- * to zero, field_0c to 0x7fff, and field_0e to 0x3f, then return object.
+ * archive, owner, and two resource IDs. Initialize the opaque word and depth
+ * to zero, color to RGB555 white, and polygonId to 0x3f, then return object.
  * Retail records a null binding if allocation fails and otherwise assumes the
  * delegated binding construction succeeds.
  */
-Graphics3DRenderObject *func_02077d7c(Graphics3DRenderObject *object,
-                                      void *archive,
-                                      Graphics3DResourceOwner *owner,
-                                      u32 textureResourceId,
-                                      u16 paletteResourceId)
+Graphics3DRenderObject *Graphics3DRenderObject_Init(
+    Graphics3DRenderObject *object, void *archive,
+    Graphics3DResourceOwner *owner, u32 textureResourceId,
+    u16 paletteResourceId)
 {
     Graphics3DResourceBinding *binding =
         (Graphics3DResourceBinding *)Heap_Alloc(
@@ -38,14 +37,14 @@ Graphics3DRenderObject *func_02077d7c(Graphics3DRenderObject *object,
             gHeapContext);
 
     if (binding != 0) {
-        binding = func_02077ca0(binding, archive, owner, textureResourceId,
-                                paletteResourceId);
+        binding = Graphics3DResourceBinding_Init(
+            binding, archive, owner, textureResourceId, paletteResourceId);
     }
     object->binding = binding;
-    object->field_0c = 0x7fff;
+    object->color = 0x7fff;
     object->field_04 = 0;
-    object->field_0e = 0x3f;
-    object->field_08 = 0;
+    object->polygonId = 0x3f;
+    object->depth = 0;
     return object;
 }
 
@@ -54,12 +53,13 @@ Graphics3DRenderObject *func_02077d7c(Graphics3DRenderObject *object,
  * storage. Return object. The binding pointer is deliberately not cleared and
  * is stale after this call; callers must not destroy or render the object twice.
  */
-Graphics3DRenderObject *func_02077df8(Graphics3DRenderObject *object)
+Graphics3DRenderObject *Graphics3DRenderObject_Destroy(
+    Graphics3DRenderObject *object)
 {
     Graphics3DResourceBinding *binding = object->binding;
 
     if (binding != 0) {
-        func_02077d08(binding);
+        Graphics3DResourceBinding_Destroy(binding);
         Heap_Free(binding);
     }
     return object;

@@ -2,9 +2,9 @@
 
 /* Exact fallback; see src/overlays/ov036/overlay036_resource_object_render.c for documented portable C. */
 
-    .extern func_02077d4c
-    .extern func_02077d5c
-    .extern func_02077d6c
+    .extern Graphics3DResourceBinding_GetTextureFormat
+    .extern Graphics3DResourceBinding_GetTextureWidthClass
+    .extern Graphics3DResourceBinding_GetTextureHeightClass
     .extern func_ov036_021fdef0
     .extern func_ov036_021fe1c0
     .extern func_02070454
@@ -33,13 +33,13 @@ func_ov036_021fe028:
     str r0, [r5, #0x28]
     ldr r7, [r4, #0x9c]
     mov r0, r7
-    bl func_02077d4c
+    bl Graphics3DResourceBinding_GetTextureFormat
     mov r6, r0
     ldr r0, [r4, #0x9c]
-    bl func_02077d5c
+    bl Graphics3DResourceBinding_GetTextureWidthClass
     mov r5, r0
     mov r0, r7
-    bl func_02077d6c
+    bl Graphics3DResourceBinding_GetTextureHeightClass
     mov r2, r5
     mov r3, r0
     mov r0, r6
@@ -56,7 +56,7 @@ func_ov036_021fe028:
     ldr r0, [r4, #0x9c]
     ldr r1, [r0, #0x14]
     ldr r5, [r1, #0xc]
-    bl func_02077d4c
+    bl Graphics3DResourceBinding_GetTextureFormat
     mov r1, r0
     mov r0, r5
     bl func_ov036_021fe1c0

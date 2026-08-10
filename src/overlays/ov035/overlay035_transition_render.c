@@ -9,9 +9,9 @@
 extern "C" {
 #endif
 extern void func_020b00f0(s32 mode);
-extern s32 func_02077d4c(void *resource);
-extern s32 func_02077d5c(void *resource);
-extern s32 func_02077d6c(void *resource);
+extern s32 Graphics3DResourceBinding_GetTextureFormat(void *resource);
+extern s32 Graphics3DResourceBinding_GetTextureWidthClass(void *resource);
+extern s32 Graphics3DResourceBinding_GetTextureHeightClass(void *resource);
 extern s32 func_02070454(void *record);
 extern s32 func_02070464(void *record);
 extern void func_ov035_021fd7b0(s32 format, s32 transform, s32 sizeS,
@@ -46,14 +46,14 @@ extern "C" void func_ov035_021fe6e4(void *object, s32 mode)
     REG32(0x0400046c) = 0x1000;
 
     void *resource = FIELD(void *, object, 0x9c);
-    s32 textureBase = func_02077d4c(resource);
-    s32 format = func_02077d5c(resource);
-    s32 sizeT = func_02077d6c(resource);
+    s32 textureBase = Graphics3DResourceBinding_GetTextureFormat(resource);
+    s32 format = Graphics3DResourceBinding_GetTextureWidthClass(resource);
+    s32 sizeT = Graphics3DResourceBinding_GetTextureHeightClass(resource);
     u32 address = FIELD(u32, FIELD(void *, resource, 0x10), 0x0c);
     func_ov035_021fd7b0(textureBase, 1, format, sizeT, 3, 0, 0, address);
 
     u32 paletteBase = FIELD(u32, FIELD(void *, resource, 0x14), 0x0c);
-    func_ov035_021fe88c(paletteBase, func_02077d4c(resource));
+    func_ov035_021fe88c(paletteBase, Graphics3DResourceBinding_GetTextureFormat(resource));
     void *record = FIELD(void *, resource, 4);
     s32 width = func_02070454(record) << 12;
     s32 height = func_02070464(record) << 12;

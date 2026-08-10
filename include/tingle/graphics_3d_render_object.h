@@ -8,9 +8,9 @@
 typedef struct Graphics3DRenderObject {
     Graphics3DResourceBinding *binding;
     u32 field_04;
-    u32 field_08;
-    u16 field_0c;
-    u16 field_0e;
+    u32 depth;
+    u16 color;
+    u16 polygonId;
 } Graphics3DRenderObject;
 
 typedef char Graphics3DRenderObjectSizeCheck[
@@ -20,13 +20,13 @@ typedef char Graphics3DRenderObjectSizeCheck[
 extern "C" {
 #endif
 
-Graphics3DRenderObject *func_02077d7c(Graphics3DRenderObject *object,
-                                      void *archive,
-                                      Graphics3DResourceOwner *owner,
-                                      u32 textureResourceId,
-                                      u16 paletteResourceId);
-Graphics3DRenderObject *func_02077df8(Graphics3DRenderObject *object);
-void func_02077e24(Graphics3DRenderObject *object);
+Graphics3DRenderObject *Graphics3DRenderObject_Init(
+    Graphics3DRenderObject *object, void *archive,
+    Graphics3DResourceOwner *owner, u32 textureResourceId,
+    u16 paletteResourceId);
+Graphics3DRenderObject *Graphics3DRenderObject_Destroy(
+    Graphics3DRenderObject *object);
+void Graphics3DRenderObject_Draw(Graphics3DRenderObject *object);
 
 #ifdef __cplusplus
 }

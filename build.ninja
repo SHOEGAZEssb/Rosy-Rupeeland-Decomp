@@ -11488,7 +11488,7 @@ build build/reports/graphics_3d_resource_binding.json: objdiff build/decomp/deli
 
 build build/reports/graphics_3d_resource_binding.txt: match_report build/reports/graphics_3d_resource_binding.json | tools/report_objdiff.py
   report_json = build/reports/graphics_3d_resource_binding.json
-  report_args = --section .text --function func_02077ca0 --function func_02077d08
+  report_args = --section .text --function Graphics3DResourceBinding_Init --function Graphics3DResourceBinding_Destroy
 
 build build/reports/graphics_3d_resource_binding_queries.json: objdiff build/decomp/delinks/src/graphics/graphics_3d_resource_binding_queries.o | build/decomp/src/graphics/graphics_3d_resource_binding_queries.o
   target_object = build/decomp/delinks/src/graphics/graphics_3d_resource_binding_queries.o
@@ -11496,7 +11496,7 @@ build build/reports/graphics_3d_resource_binding_queries.json: objdiff build/dec
 
 build build/reports/graphics_3d_resource_binding_queries.txt: match_report build/reports/graphics_3d_resource_binding_queries.json | tools/report_objdiff.py
   report_json = build/reports/graphics_3d_resource_binding_queries.json
-  report_args = --section .text --function func_02077d4c --function func_02077d5c --function func_02077d6c
+  report_args = --section .text --function Graphics3DResourceBinding_GetTextureFormat --function Graphics3DResourceBinding_GetTextureWidthClass --function Graphics3DResourceBinding_GetTextureHeightClass
 
 build build/reports/graphics_3d_render_object.json: objdiff build/decomp/delinks/src/graphics/graphics_3d_render_object.o | build/decomp/src/graphics/graphics_3d_render_object.o
   target_object = build/decomp/delinks/src/graphics/graphics_3d_render_object.o
@@ -11504,7 +11504,7 @@ build build/reports/graphics_3d_render_object.json: objdiff build/decomp/delinks
 
 build build/reports/graphics_3d_render_object.txt: match_report build/reports/graphics_3d_render_object.json | tools/report_objdiff.py
   report_json = build/reports/graphics_3d_render_object.json
-  report_args = --section .text --function func_02077d7c --function func_02077df8
+  report_args = --section .text --function Graphics3DRenderObject_Init --function Graphics3DRenderObject_Destroy
 
 build build/reports/graphics_3d_render_object_draw.json: objdiff build/decomp/delinks/src/graphics/graphics_3d_render_object_draw.o | build/decomp/src/graphics/graphics_3d_render_object_draw.o
   target_object = build/decomp/delinks/src/graphics/graphics_3d_render_object_draw.o
@@ -11512,7 +11512,7 @@ build build/reports/graphics_3d_render_object_draw.json: objdiff build/decomp/de
 
 build build/reports/graphics_3d_render_object_draw.txt: match_report build/reports/graphics_3d_render_object_draw.json | tools/report_objdiff.py
   report_json = build/reports/graphics_3d_render_object_draw.json
-  report_args = --section .text --function func_02077e24
+  report_args = --section .text --function Graphics3DRenderObject_Draw
 
 build build/reports/graphics_display.json: objdiff build/decomp/delinks/src/system/graphics_display.o | build/decomp/src/system/graphics_display.o
   target_object = build/decomp/delinks/src/system/graphics_display.o

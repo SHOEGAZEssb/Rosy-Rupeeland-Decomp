@@ -4,7 +4,7 @@
 .extern data_020f4e18
 .extern data_ov026_02204960
 .extern func_02071e04
-.extern func_02077d08
+.extern Graphics3DResourceBinding_Destroy
 .extern func_ov026_021fce50
 .extern Heap_Free
 
@@ -22,7 +22,7 @@ L_021ff2e4:
     cmp r6, #0x0
     beq L_021ff304
     mov r0, r6
-    bl func_02077d08
+    bl Graphics3DResourceBinding_Destroy
     mov r0, r6
     bl Heap_Free
 L_021ff304:

@@ -7,9 +7,9 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern s32 func_02077d4c(void *);
-extern s32 func_02077d5c(void *);
-extern s32 func_02077d6c(void *);
+extern s32 Graphics3DResourceBinding_GetTextureFormat(void *);
+extern s32 Graphics3DResourceBinding_GetTextureWidthClass(void *);
+extern s32 Graphics3DResourceBinding_GetTextureHeightClass(void *);
 extern s32 func_02070454(void *);
 extern s32 func_02070464(void *);
 extern void func_ov027_021fd0b0(u32, u32, u32, u32, u32, u32, u32, u32);
@@ -40,13 +40,13 @@ extern "C" void func_ov027_021fcefc(void *object)
     matrix[10] = 0x1000;
 
     void *resource = FIELD(void *, object, 0x9c);
-    s32 field0 = func_02077d4c(resource);
-    s32 field1 = func_02077d5c(resource);
-    s32 field2 = func_02077d6c(resource);
+    s32 field0 = Graphics3DResourceBinding_GetTextureFormat(resource);
+    s32 field1 = Graphics3DResourceBinding_GetTextureWidthClass(resource);
+    s32 field2 = Graphics3DResourceBinding_GetTextureHeightClass(resource);
     func_ov027_021fd0b0(field0, 1, field1, field2, 3, 0, 0,
                          FIELD(u32, FIELD(void *, resource, 0x10), 0xc));
 
-    s32 shift = func_02077d4c(resource) == 2 ? 3 : 4;
+    s32 shift = Graphics3DResourceBinding_GetTextureFormat(resource) == 2 ? 3 : 4;
     *(volatile u32 *)0x040004ac =
         FIELD(u32, FIELD(void *, resource, 0x14), 0xc) >> shift;
 

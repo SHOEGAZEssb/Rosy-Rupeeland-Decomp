@@ -16,9 +16,9 @@ extern void *Heap_Alloc(u32, const void *, u32, void *);
 extern void *func_02071adc(void *, s32);
 extern s32 func_02070454(void *);
 extern s32 func_02070464(void *);
-extern s32 func_02077d4c(void *);
-extern s32 func_02077d5c(void *);
-extern s32 func_02077d6c(void *);
+extern s32 Graphics3DResourceBinding_GetTextureFormat(void *);
+extern s32 Graphics3DResourceBinding_GetTextureWidthClass(void *);
+extern s32 Graphics3DResourceBinding_GetTextureHeightClass(void *);
 extern void func_020948d4(void *, s32);
 extern void func_020949ec(void *);
 extern void func_02094bbc(void *, s32, s32, s32);
@@ -47,13 +47,13 @@ extern "C" void func_ov026_021fea4c(void *object)
     *matrix = FIELD(u32, object, 0x30);
 
     void *resource = FIELD(void *, object, 0x9c);
-    s32 a = func_02077d4c(resource);
-    s32 b = func_02077d5c(resource);
-    s32 c = func_02077d6c(resource);
+    s32 a = Graphics3DResourceBinding_GetTextureFormat(resource);
+    s32 b = Graphics3DResourceBinding_GetTextureWidthClass(resource);
+    s32 c = Graphics3DResourceBinding_GetTextureHeightClass(resource);
     func_ov026_021fd900(a, 1, b, c, 3, 0, 0,
                         FIELD(s32, FIELD(void *, resource, 0x10), 0xc));
     func_ov026_021fd940(FIELD(s32, FIELD(void *, resource, 0x14), 0xc),
-                        func_02077d4c(resource));
+                        Graphics3DResourceBinding_GetTextureFormat(resource));
     s32 width = func_02070454(FIELD(void *, resource, 4)) << 12;
     s32 height = func_02070464(FIELD(void *, resource, 4)) << 12;
 

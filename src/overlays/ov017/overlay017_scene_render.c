@@ -12,7 +12,7 @@ extern "C" {
 extern void func_020779d8(void *, void *);
 extern void Graphics3DLight_Apply(void *, s32);
 extern void func_02077b44(void *);
-extern void func_02077e24(void *);
+extern void Graphics3DRenderObject_Draw(void *);
 extern void func_020b0558(void);
 extern void func_ov017_021fd414(void *);
 extern void func_ov017_021fd60c(s32, s32, s32, s32, s32, s32);
@@ -39,7 +39,7 @@ extern "C" void func_ov017_022008ac(void *state)
     void *node;
 
     func_020b0558();
-    func_02077e24(FIELD(void *, state, 0x2bc));
+    Graphics3DRenderObject_Draw(FIELD(void *, state, 0x2bc));
     func_02077b44((u8 *)state + 0x310);
 
     for (i = 0; i < 4; i++) {

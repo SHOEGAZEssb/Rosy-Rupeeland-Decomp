@@ -32,7 +32,7 @@ extern void func_020b4554(void *, s32);
 extern void G3X_Init(void);
 extern void *Heap_Alloc(s32, const char *, s32, void *);
 extern void *func_020774ac(void *, s32, s32);
-extern void *func_02077ca0(void *, void *, void *, s32, s32);
+extern void *Graphics3DResourceBinding_Init(void *, void *, void *, s32, s32);
 extern void func_ov012_021fce00(void *);
 extern void func_ov012_021fd5ac(void *);
 extern void func_ov012_021fd004(u32);
@@ -104,7 +104,7 @@ void *func_ov012_021fd170(void *state)
 
     allocation = Heap_Alloc(0x18, data_ov012_021fe6e4, 4, gHeapContext);
     if (allocation != 0) {
-        allocation = func_02077ca0(allocation, data_020f4e18,
+        allocation = Graphics3DResourceBinding_Init(allocation, data_020f4e18,
                                     FIELD(void *, state, 0x78), 0x611a,
                                     0x611b);
     }

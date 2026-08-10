@@ -20,11 +20,11 @@ extern void *Heap_Alloc(u32, const void *, u32, void *);
 extern void Heap_Free(void *);
 extern void *func_02002700(u32, const void *, u32, void *);
 extern void func_02002728(void *);
-extern void *func_02077ca0(void *, void *, s32, s32, s32);
-extern void func_02077d08(void *);
-extern s32 func_02077d4c(void *);
-extern s32 func_02077d5c(void *);
-extern s32 func_02077d6c(void *);
+extern void *Graphics3DResourceBinding_Init(void *, void *, s32, s32, s32);
+extern void Graphics3DResourceBinding_Destroy(void *);
+extern s32 Graphics3DResourceBinding_GetTextureFormat(void *);
+extern s32 Graphics3DResourceBinding_GetTextureWidthClass(void *);
+extern s32 Graphics3DResourceBinding_GetTextureHeightClass(void *);
 extern void func_020949ec(void *);
 extern void func_020afddc(void *);
 extern void func_020afe00(void *, s32);
@@ -59,7 +59,7 @@ extern "C" void *func_ov026_021fd030(void *object, s32 resource_id, s32 variant)
     void *resource = Heap_Alloc(0x18, data_ov026_02204a40, 4, gHeapContext);
     if (resource) {
         s32 table_offset = variant * 4;
-        resource = func_02077ca0(resource, data_020f4e18, resource_id,
+        resource = Graphics3DResourceBinding_Init(resource, data_020f4e18, resource_id,
                                  data_ov026_022042fc[table_offset],
                                  data_ov026_022042fe[table_offset]);
     }
@@ -70,15 +70,15 @@ extern "C" void *func_ov026_021fd030(void *object, s32 resource_id, s32 variant)
     func_020b24cc((u8 *)object + 0xa0, buffer, 0x200);
     func_020afebc((u8 *)object + 0xa0, 1, 0, 1, 0, 0x1f, 0);
 
-    s32 a = func_02077d4c(resource);
-    s32 b = func_02077d5c(resource);
-    s32 c = func_02077d6c(resource);
+    s32 a = Graphics3DResourceBinding_GetTextureFormat(resource);
+    s32 b = Graphics3DResourceBinding_GetTextureWidthClass(resource);
+    s32 c = Graphics3DResourceBinding_GetTextureHeightClass(resource);
     s32 resource_word = FIELD(s32, FIELD(void *, resource, 0x10), 0xc);
     func_020afe64((u8 *)object + 0xa0, a, 1, b, c, 1, 1, 0,
                   resource_word);
     s32 auxiliary = FIELD(s32, FIELD(void *, resource, 0x14), 0xc);
     func_020afe28((u8 *)object + 0xa0, auxiliary,
-                  func_02077d4c(resource));
+                  Graphics3DResourceBinding_GetTextureFormat(resource));
     func_020afe00((u8 *)object + 0xa0, 2);
 
     for (s32 i = 0; i <= 16; ++i) {
@@ -110,7 +110,7 @@ extern "C" void *func_ov026_021fd268(void *object)
     func_02002728(FIELD(void *, object, 0xb4));
     void *resource = FIELD(void *, object, 0x9c);
     if (resource) {
-        func_02077d08(resource);
+        Graphics3DResourceBinding_Destroy(resource);
         Heap_Free(resource);
     }
     func_ov026_021fce50(object);

@@ -26,7 +26,7 @@
     .extern func_020774ac
     .extern func_02077624
     .extern func_02077ae8
-    .extern func_02077ca0
+    .extern Graphics3DResourceBinding_Init
     .extern func_02091e28
     .extern func_02092364
     .extern func_020923a4
@@ -148,7 +148,7 @@ L_021fcff8:
     ldr r1, [r1, #0x0]
     ldr r2, [r10, #0x78]
     sub r3, r3, #0x1
-    bl func_02077ca0
+    bl Graphics3DResourceBinding_Init
 L_021fd044:
     str r0, [r10, #0x130]
     mov r1, #0x0

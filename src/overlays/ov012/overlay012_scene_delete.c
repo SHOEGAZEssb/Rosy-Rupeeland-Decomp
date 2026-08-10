@@ -9,7 +9,7 @@ extern const void *data_ov012_021fe6a4[];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_02077d08(void *);
+extern void Graphics3DResourceBinding_Destroy(void *);
 extern void Heap_Free(void *);
 extern void func_02002728(void *);
 extern void func_020775d8(void *);
@@ -35,7 +35,7 @@ void *func_ov012_021fd4fc(void *state)
     FIELD(const void *, state, 0x24) = data_ov012_021fe6a4;
     resource = FIELD(void *, state, 0x154);
     if (resource != 0) {
-        func_02077d08(resource);
+        Graphics3DResourceBinding_Destroy(resource);
         Heap_Free(resource);
     }
     func_02002728(FIELD(void *, state, 0x7c));

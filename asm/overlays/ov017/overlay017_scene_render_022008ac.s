@@ -4,7 +4,7 @@
     .extern func_020779d8
     .extern Graphics3DLight_Apply
     .extern func_02077b44
-    .extern func_02077e24
+    .extern Graphics3DRenderObject_Draw
     .extern func_020b0558
     .extern func_ov017_021fd414
     .extern func_ov017_021fd60c
@@ -20,7 +20,7 @@ func_ov017_022008ac:
     mov r5, r0
     bl func_020b0558
     ldr r0, [r5, #0x2bc]
-    bl func_02077e24
+    bl Graphics3DRenderObject_Draw
     add r0, r5, #0x310
     bl func_02077b44
     mov r6, #0x0

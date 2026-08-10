@@ -23,8 +23,8 @@ extern void *Heap_Alloc(u32, const void *, u32, void *);
 extern void Heap_Free(void *);
 extern void func_02071e04(void *, void *);
 extern void *func_02071adc(void *, s32);
-extern void *func_02077ca0(void *, void *, void *, u16, u16);
-extern void func_02077d08(void *);
+extern void *Graphics3DResourceBinding_Init(void *, void *, void *, u16, u16);
+extern void Graphics3DResourceBinding_Destroy(void *);
 extern void func_020948d4(void *, s32);
 extern void func_020949ec(void *);
 extern void func_02094bbc(void *, s32, s32, s32);
@@ -63,7 +63,7 @@ extern "C" void *func_ov026_021fef9c(void *object, void *resource_arg)
     for (s32 i = 0; i < 8; ++i) {
         void *record = Heap_Alloc(0x18, data_ov026_02204a40, 4, gHeapContext);
         if (record != 0)
-            record = func_02077ca0(record, data_020f4e18, resource_arg,
+            record = Graphics3DResourceBinding_Init(record, data_020f4e18, resource_arg,
                                    data_ov026_022040cc[i * 2],
                                    data_ov026_022040cc[i * 2 + 1]);
         FIELD(void *, object, 0xfc + i * 4) = record;
@@ -134,7 +134,7 @@ static void teardown_effect_container(void *object)
     for (s32 i = 0; i < 8; ++i) {
         void *record = FIELD(void *, object, 0xfc + i * 4);
         if (record != 0) {
-            func_02077d08(record);
+            Graphics3DResourceBinding_Destroy(record);
             Heap_Free(record);
         }
     }

@@ -8,9 +8,9 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern s32 func_02077d4c(void *resource);
-extern s32 func_02077d5c(void *resource);
-extern s32 func_02077d6c(void *resource);
+extern s32 Graphics3DResourceBinding_GetTextureFormat(void *resource);
+extern s32 Graphics3DResourceBinding_GetTextureWidthClass(void *resource);
+extern s32 Graphics3DResourceBinding_GetTextureHeightClass(void *resource);
 extern s32 func_02070454(void *resource);
 extern s32 func_02070464(void *resource);
 extern void func_ov036_021fd128(s32, s32, s32, s32, s32, s32);
@@ -41,14 +41,14 @@ extern "C" void func_ov036_021fe028(void *object)
     REG32(0x0400046c) = 0x1000;
 
     void *resource = FIELD(void *, object, 0x9c);
-    s32 value0 = func_02077d4c(resource);
-    s32 value2 = func_02077d5c(resource);
-    s32 value3 = func_02077d6c(resource);
+    s32 value0 = Graphics3DResourceBinding_GetTextureFormat(resource);
+    s32 value2 = Graphics3DResourceBinding_GetTextureWidthClass(resource);
+    s32 value3 = Graphics3DResourceBinding_GetTextureHeightClass(resource);
     s32 value7 = FIELD(s32, FIELD(void *, resource, 0x10), 0xc);
     func_ov036_021fdef0(value0, 1, value2, value3, 3, 0, 0, value7);
 
     s32 mode = FIELD(s32, FIELD(void *, resource, 0x14), 0xc);
-    func_ov036_021fe1c0(mode, func_02077d4c(resource));
+    func_ov036_021fe1c0(mode, Graphics3DResourceBinding_GetTextureFormat(resource));
 
     s32 width = func_02070454(FIELD(void *, resource, 4)) << 12;
     s32 height = func_02070464(FIELD(void *, resource, 4)) << 12;
