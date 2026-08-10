@@ -2,8 +2,8 @@
 .text
 .extern func_0201da9c
 
-    .global func_020156c8
-func_020156c8: ; 0x020156c8
+    .global GamePhaseActorScriptVm_CreateOverlay60PresentationPreset1372
+GamePhaseActorScriptVm_CreateOverlay60PresentationPreset1372: ; 0x020156c8
     stmdb sp!, {r3, lr}
     sub sp, sp, #0x8
     ldr r1, L_020156f8
@@ -17,5 +17,5 @@ func_020156c8: ; 0x020156c8
     add sp, sp, #0x8
     ldmia sp!, {r3, pc}
 L_020156f8: .word 0x1372
-    .size func_020156c8, . - func_020156c8
+    .size GamePhaseActorScriptVm_CreateOverlay60PresentationPreset1372, . - GamePhaseActorScriptVm_CreateOverlay60PresentationPreset1372
 

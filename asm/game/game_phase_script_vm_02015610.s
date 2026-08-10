@@ -9,8 +9,8 @@
 .extern func_0201da34
 .extern Actor_GetCollection
 
-    .global func_02015610
-func_02015610: ; 0x02015610
+    .global GamePhaseActorScriptVm_OpenDebugHudFromCollectionMode
+GamePhaseActorScriptVm_OpenDebugHudFromCollectionMode: ; 0x02015610
     stmdb sp!, {r4, r5, r6, lr}
     mov r5, r0
     bl GamePhaseScriptVm_Pop
@@ -43,5 +43,5 @@ func_02015610: ; 0x02015610
     bl DebugHudState_Open
     mov r0, #0x1
     ldmia sp!, {r4, r5, r6, pc}
-    .size func_02015610, . - func_02015610
+    .size GamePhaseActorScriptVm_OpenDebugHudFromCollectionMode, . - GamePhaseActorScriptVm_OpenDebugHudFromCollectionMode
 

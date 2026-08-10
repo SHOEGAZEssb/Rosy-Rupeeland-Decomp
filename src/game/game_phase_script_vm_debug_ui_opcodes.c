@@ -26,7 +26,7 @@ extern void func_0201da9c(GamePhaseActorScriptVm *self,
  * refresh the global debug-HUD rectangle, and open the HUD with font reset
  * enabled. Returns one to stop the VM loop.
  */
-s32 func_02015610(GamePhaseActorScriptVm *self)
+s32 GamePhaseActorScriptVm_OpenDebugHudFromCollectionMode(GamePhaseActorScriptVm *self)
 {
     void *first;
     void *second;
@@ -53,7 +53,7 @@ s32 func_02015610(GamePhaseActorScriptVm *self)
  * Submit the fixed ID tuple 0x136f/0x1370/0x1371 and values 0x79/0x7a to
  * func_0201da9c for this VM, then return zero.
  */
-s32 func_02015690(GamePhaseActorScriptVm *self)
+s32 GamePhaseActorScriptVm_CreateOverlay60PresentationPreset136f(GamePhaseActorScriptVm *self)
 {
     func_0201da9c(self, 0x136f, 0x1370, 0x1371, 0x79, 0x7a);
     return 0;
@@ -63,7 +63,7 @@ s32 func_02015690(GamePhaseActorScriptVm *self)
  * Submit the fixed ID tuple 0x1372/0x1373/0x1374 and two -1 values to
  * func_0201da9c for this VM, then return zero.
  */
-s32 func_020156c8(GamePhaseActorScriptVm *self)
+s32 GamePhaseActorScriptVm_CreateOverlay60PresentationPreset1372(GamePhaseActorScriptVm *self)
 {
     func_0201da9c(self, 0x1372, 0x1373, 0x1374, -1, -1);
     return 0;
