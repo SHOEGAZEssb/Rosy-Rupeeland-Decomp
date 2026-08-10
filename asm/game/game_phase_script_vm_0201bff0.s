@@ -1,13 +1,13 @@
 ; Matching retail form; see src/game/game_phase_script_vm_stack_storage_opcodes.c.
 .text
-.extern func_0201b278
+.extern GamePhaseScriptVm_ReadU32Le
 .extern GamePhaseScriptVm_Push
 .global func_0201bff0
 func_0201bff0: ; 0x0201bff0
     stmdb sp!, {r4, lr}
     mov r4, r0
     ldr r0, [r4, #0x4]
-    bl func_0201b278
+    bl GamePhaseScriptVm_ReadU32Le
     mov r1, r0
     mov r0, r4
     bl GamePhaseScriptVm_Push

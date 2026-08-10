@@ -6,7 +6,7 @@
 s32 func_0201be48(GamePhaseScriptVm *self)
 {
     GamePhaseScriptVm_Push(self, (u32)(self->cursor + 4));
-    self->cursor = (const s8 *)func_0201b278(self->cursor);
+    self->cursor = (const s8 *)GamePhaseScriptVm_ReadU32Le(self->cursor);
     return 0;
 }
 

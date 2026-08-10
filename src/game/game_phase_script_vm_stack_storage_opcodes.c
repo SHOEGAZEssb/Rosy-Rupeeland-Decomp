@@ -13,7 +13,7 @@ extern void *gGameWork;
 /* Push a 32-bit immediate, advance past it, and return zero. */
 s32 func_0201bff0(GamePhaseScriptVm *self)
 {
-    GamePhaseScriptVm_Push(self, func_0201b278(self->cursor));
+    GamePhaseScriptVm_Push(self, GamePhaseScriptVm_ReadU32Le(self->cursor));
     self->cursor += 4;
     return 0;
 }

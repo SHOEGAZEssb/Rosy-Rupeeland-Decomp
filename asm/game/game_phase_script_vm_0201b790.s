@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/game_phase_script_vm_bitwise_opcodes.c.
 .text
-.extern func_0201b278
+.extern GamePhaseScriptVm_ReadU32Le
 .extern func_0201b2b4
 .global func_0201b790
 func_0201b790: ; 0x0201b790
@@ -10,7 +10,7 @@ func_0201b790: ; 0x0201b790
     add r0, r1, #0x1
     str r0, [r4, #0x4]
     ldrb r5, [r1, #0x0]
-    bl func_0201b278
+    bl GamePhaseScriptVm_ReadU32Le
     ldr r1, [r4, #0x4]
     add r3, r4, #0x2c
     add r1, r1, #0x4

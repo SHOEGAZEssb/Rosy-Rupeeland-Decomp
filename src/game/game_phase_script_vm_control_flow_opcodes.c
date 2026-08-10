@@ -21,13 +21,13 @@ s32 func_0201b2d4(GamePhaseScriptVm *self)
 /* Replace the cursor with the little-endian address stored at it and return one. */
 s32 func_0201b2e8(GamePhaseScriptVm *self)
 {
-    self->cursor = (const s8 *)func_0201b278(self->cursor);
+    self->cursor = (const s8 *)GamePhaseScriptVm_ReadU32Le(self->cursor);
     return 1;
 }
 
 /* Replace the cursor with the little-endian address stored at it and return zero. */
 s32 func_0201b304(GamePhaseScriptVm *self)
 {
-    self->cursor = (const s8 *)func_0201b278(self->cursor);
+    self->cursor = (const s8 *)GamePhaseScriptVm_ReadU32Le(self->cursor);
     return 0;
 }

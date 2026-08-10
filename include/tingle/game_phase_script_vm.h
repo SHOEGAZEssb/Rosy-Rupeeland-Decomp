@@ -298,8 +298,8 @@ GamePhaseActorScriptVm *GamePhaseActorScriptVm_DestroyAndFree(
 s32 GamePhaseActorScriptVm_DispatchOpcode(GamePhaseActorScriptVm *self, s32 index);
 void GamePhaseActorScriptVm_Activate(GamePhaseActorScriptVm *self);
 s32 GamePhaseActorScriptVm_IsActive(const GamePhaseActorScriptVm *self);
-s32 func_0201b260(const s8 *bytes);
-u32 func_0201b278(const s8 *bytes);
+s32 GamePhaseScriptVm_ReadS16Le(const s8 *bytes);
+u32 GamePhaseScriptVm_ReadU32Le(const s8 *bytes);
 void func_0201b2b4(GamePhaseScriptVm *self, s32 index);
 s32 func_0201b2d4(GamePhaseScriptVm *self);
 s32 func_0201b2e8(GamePhaseScriptVm *self);

@@ -46,7 +46,7 @@ static s32 compareRegisters(GamePhaseScriptVm *self, VmComparison comparison)
 static s32 compareImmediate(GamePhaseScriptVm *self, VmComparison comparison)
 {
     s32 destination = (u8)*self->cursor++ & 7;
-    s32 immediate = (s32)func_0201b278(self->cursor);
+    s32 immediate = (s32)GamePhaseScriptVm_ReadU32Le(self->cursor);
     self->cursor += 4;
     storeComparison(self, destination,
                     compareValues((s32)self->registers[destination],

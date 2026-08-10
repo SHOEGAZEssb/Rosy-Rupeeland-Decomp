@@ -39,7 +39,7 @@ s32 func_0201b3c8(GamePhaseScriptVm *self)
 /* Read a signed 16-bit immediate, push its sign-extended value, advance, and return zero. */
 s32 func_0201b3f4(GamePhaseScriptVm *self)
 {
-    GamePhaseScriptVm_Push(self, (u32)func_0201b260(self->cursor));
+    GamePhaseScriptVm_Push(self, (u32)GamePhaseScriptVm_ReadS16Le(self->cursor));
     self->cursor += 2;
     return 0;
 }
@@ -48,7 +48,7 @@ s32 func_0201b3f4(GamePhaseScriptVm *self)
 s32 func_0201b424(GamePhaseScriptVm *self)
 {
     u8 destination = (u8)*self->cursor++;
-    self->registers[destination] = func_0201b278(self->cursor);
+    self->registers[destination] = GamePhaseScriptVm_ReadU32Le(self->cursor);
     self->cursor += 4;
     return 0;
 }

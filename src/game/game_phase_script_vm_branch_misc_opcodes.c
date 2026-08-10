@@ -17,7 +17,7 @@ s32 func_0201b8fc(GamePhaseScriptVm *self)
 s32 func_0201b92c(GamePhaseScriptVm *self)
 {
     if (self->stateFlags & 2)
-        self->cursor = (const s8 *)func_0201b278(self->cursor);
+        self->cursor = (const s8 *)GamePhaseScriptVm_ReadU32Le(self->cursor);
     else
         self->cursor += 4;
     return 0;
@@ -27,7 +27,7 @@ s32 func_0201b92c(GamePhaseScriptVm *self)
 s32 func_0201b958(GamePhaseScriptVm *self)
 {
     if (!(self->stateFlags & 2))
-        self->cursor = (const s8 *)func_0201b278(self->cursor);
+        self->cursor = (const s8 *)GamePhaseScriptVm_ReadU32Le(self->cursor);
     else
         self->cursor += 4;
     return 0;
@@ -45,7 +45,7 @@ s32 func_0201b984(GamePhaseScriptVm *self)
 s32 func_0201b9a8(GamePhaseScriptVm *self)
 {
     u8 destination = (u8)*self->cursor++;
-    self->registers[destination] = func_0201b278(self->cursor);
+    self->registers[destination] = GamePhaseScriptVm_ReadU32Le(self->cursor);
     self->cursor += 4;
     return 0;
 }

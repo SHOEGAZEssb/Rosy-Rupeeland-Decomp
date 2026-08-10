@@ -9,7 +9,7 @@ static u8 readOperand(GamePhaseScriptVm *self)
 
 static u32 readImmediate(GamePhaseScriptVm *self)
 {
-    u32 value = func_0201b278(self->cursor);
+    u32 value = GamePhaseScriptVm_ReadU32Le(self->cursor);
     self->cursor += 4;
     return value;
 }

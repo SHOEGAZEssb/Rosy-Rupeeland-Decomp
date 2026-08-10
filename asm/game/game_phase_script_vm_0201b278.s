@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/game_phase_script_vm_byte_read_helpers.c.
 .text
-.global func_0201b278
-func_0201b278: ; 0x0201b278
+.global GamePhaseScriptVm_ReadU32Le
+GamePhaseScriptVm_ReadU32Le: ; 0x0201b278
     stmdb sp!, {r3}
     sub sp, sp, #0x4
     ldrsb r1, [r0, #0x0]
@@ -17,4 +17,4 @@ func_0201b278: ; 0x0201b278
     add sp, sp, #0x4
     ldmia sp!, {r3}
     bx lr
-.size func_0201b278, . - func_0201b278
+.size GamePhaseScriptVm_ReadU32Le, . - GamePhaseScriptVm_ReadU32Le

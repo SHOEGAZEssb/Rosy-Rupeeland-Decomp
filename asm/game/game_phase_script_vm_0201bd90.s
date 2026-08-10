@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/game_phase_script_vm_comparison_opcodes.c.
 .text
-.extern func_0201b278
+.extern GamePhaseScriptVm_ReadU32Le
 .global func_0201bd90
 func_0201bd90: ; 0x0201bd90
     stmdb sp!, {r3, r4, r5, lr}
@@ -10,7 +10,7 @@ func_0201bd90: ; 0x0201bd90
     str r0, [r4, #0x4]
     ldrb r1, [r1, #0x0]
     and r5, r1, #0x7
-    bl func_0201b278
+    bl GamePhaseScriptVm_ReadU32Le
     ldr r1, [r4, #0x4]
     add r2, r4, r5, lsl #0x2
     add r1, r1, #0x4

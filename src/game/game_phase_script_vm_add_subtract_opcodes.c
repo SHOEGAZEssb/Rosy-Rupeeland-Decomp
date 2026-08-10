@@ -17,7 +17,7 @@ s32 func_0201b45c(GamePhaseScriptVm *self)
 s32 func_0201b4a0(GamePhaseScriptVm *self)
 {
     u8 destination = (u8)*self->cursor++;
-    u32 immediate = func_0201b278(self->cursor);
+    u32 immediate = GamePhaseScriptVm_ReadU32Le(self->cursor);
     self->cursor += 4;
     self->registers[destination] += immediate;
     func_0201b2b4(self, destination);
@@ -39,7 +39,7 @@ s32 func_0201b4ec(GamePhaseScriptVm *self)
 s32 func_0201b530(GamePhaseScriptVm *self)
 {
     u8 destination = (u8)*self->cursor++;
-    u32 immediate = func_0201b278(self->cursor);
+    u32 immediate = GamePhaseScriptVm_ReadU32Le(self->cursor);
     self->cursor += 4;
     self->registers[destination] -= immediate;
     func_0201b2b4(self, destination);
