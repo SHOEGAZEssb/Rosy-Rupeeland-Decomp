@@ -43645,3 +43645,33 @@ build build/reports/overlay090_title_state0b_transition.txt: match_report build/
   report_json = build/reports/overlay090_title_state0b_transition.json
   report_args = --section .text --function func_ov090_0221a784 --require-exact
 build overlay090_title_state0b_transition: phony build/reports/overlay090_title_state0b_transition.txt
+build build/decomp/src/overlays/ov090/overlay090_title_render_callback.o: mwccarm src/overlays/ov090/overlay090_title_render_callback.c | include/tingle/graphics_sprite_position.h include/tingle/types.h include/tingle/vec_fx32.h
+  source = src/overlays/ov090/overlay090_title_render_callback.c
+  cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c
+build build/reports/overlay090_title_render_callback.json: objdiff build/decomp/delinks/asm/overlays/ov090/overlay090_0221a544.o | build/decomp/src/overlays/ov090/overlay090_title_render_callback.o
+  target_object = build/decomp/delinks/asm/overlays/ov090/overlay090_0221a544.o
+  base_object = build/decomp/src/overlays/ov090/overlay090_title_render_callback.o
+build build/reports/overlay090_title_render_callback.txt: match_report build/reports/overlay090_title_render_callback.json | tools/report_objdiff.py
+  report_json = build/reports/overlay090_title_render_callback.json
+  report_args = --section .text --function func_ov090_0221a544
+build overlay090_title_render_callback: phony build/reports/overlay090_title_render_callback.txt
+build build/decomp/src/overlays/ov090/overlay090_title_progress_bar.o: mwccarm src/overlays/ov090/overlay090_title_progress_bar.c | include/tingle/graphics_sprite_canvas.h include/tingle/types.h
+  source = src/overlays/ov090/overlay090_title_progress_bar.c
+  cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c
+build build/reports/overlay090_title_progress_bar.json: objdiff build/decomp/delinks/asm/overlays/ov090/overlay090_0221a8bc.o | build/decomp/src/overlays/ov090/overlay090_title_progress_bar.o
+  target_object = build/decomp/delinks/asm/overlays/ov090/overlay090_0221a8bc.o
+  base_object = build/decomp/src/overlays/ov090/overlay090_title_progress_bar.o
+build build/reports/overlay090_title_progress_bar.txt: match_report build/reports/overlay090_title_progress_bar.json | tools/report_objdiff.py
+  report_json = build/reports/overlay090_title_progress_bar.json
+  report_args = --section .text --function func_ov090_0221a8bc
+build overlay090_title_progress_bar: phony build/reports/overlay090_title_progress_bar.txt
+build build/decomp/src/overlays/ov090/overlay090_title_sprite_replace.o: mwccarm src/overlays/ov090/overlay090_title_sprite_replace.c | include/tingle/animation_resource.h include/tingle/graphics_sprite_group.h include/tingle/heap.h include/tingle/types.h
+  source = src/overlays/ov090/overlay090_title_sprite_replace.c
+  cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c
+build build/reports/overlay090_title_sprite_replace.json: objdiff build/decomp/delinks/asm/overlays/ov090/overlay090_0221ad64.o | build/decomp/src/overlays/ov090/overlay090_title_sprite_replace.o
+  target_object = build/decomp/delinks/asm/overlays/ov090/overlay090_0221ad64.o
+  base_object = build/decomp/src/overlays/ov090/overlay090_title_sprite_replace.o
+build build/reports/overlay090_title_sprite_replace.txt: match_report build/reports/overlay090_title_sprite_replace.json | tools/report_objdiff.py
+  report_json = build/reports/overlay090_title_sprite_replace.json
+  report_args = --section .text --function func_ov090_0221ad64
+build overlay090_title_sprite_replace: phony build/reports/overlay090_title_sprite_replace.txt
