@@ -9,9 +9,9 @@
 .extern Type7Actor_DispatchCurrentCallback
 .extern func_0204b7bc
 .text
-    .global func_02049be8
-.type func_02049be8, @function
-func_02049be8: ; 0x02049be8
+    .global Type7Actor_StartTargetCompletion
+.type Type7Actor_StartTargetCompletion, @function
+Type7Actor_StartTargetCompletion: ; 0x02049be8
     stmdb sp!, {r4, lr}
     mov r4, r0
     mov r1, #0xb4
@@ -26,11 +26,11 @@ func_02049be8: ; 0x02049be8
     mov r0, r4
     bl Type7Actor_SelectRandomCallbackPair01
     ldmia sp!, {r4, pc}
-.size func_02049be8, . - func_02049be8
+.size Type7Actor_StartTargetCompletion, . - Type7Actor_StartTargetCompletion
 
-    .global func_02049c20
-.type func_02049c20, @function
-func_02049c20: ; 0x02049c20
+    .global Type7Actor_UpdateTargetCompletion
+.type Type7Actor_UpdateTargetCompletion, @function
+Type7Actor_UpdateTargetCompletion: ; 0x02049c20
     stmdb sp!, {r4, lr}
     sub sp, sp, #0x18
     mov r4, r0
@@ -114,11 +114,11 @@ func_02049c20: ; 0x02049c20
 .L_02049d58: .word data_020e1d0c
 .L_02049d5c: .word gHeapContext
 .L_02049d60: .word 0x162c
-.size func_02049c20, . - func_02049c20
+.size Type7Actor_UpdateTargetCompletion, . - Type7Actor_UpdateTargetCompletion
 
-    .global func_02049d64
-.type func_02049d64, @function
-func_02049d64: ; 0x02049d64
+    .global Type7Actor_FinishTargetCompletion
+.type Type7Actor_FinishTargetCompletion, @function
+Type7Actor_FinishTargetCompletion: ; 0x02049d64
     stmdb sp!, {r4, lr}
     sub sp, sp, #0x18
     mov r4, r0
@@ -179,5 +179,5 @@ func_02049d64: ; 0x02049d64
 .L_02049e44: .word data_020e1d0c
 .L_02049e48: .word gHeapContext
 .L_02049e4c: .word 0x162c
-.size func_02049d64, . - func_02049d64
+.size Type7Actor_FinishTargetCompletion, . - Type7Actor_FinishTargetCompletion
 

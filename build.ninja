@@ -18460,7 +18460,7 @@ build build/reports/type7_actor_target_completion_02049be8.json: objdiff build/d
   base_object = build/decomp/asm/game/type7_actor_target_completion_02049be8.o
 build build/reports/type7_actor_target_completion_02049be8.txt: match_report build/reports/type7_actor_target_completion_02049be8.json | tools/report_objdiff.py
   report_json = build/reports/type7_actor_target_completion_02049be8.json
-  report_args = --section .text --function func_02049be8 --function func_02049c20 --function func_02049d64 --require-exact
+  report_args = --section .text --function Type7Actor_StartTargetCompletion --function Type7Actor_UpdateTargetCompletion --function Type7Actor_FinishTargetCompletion --require-exact
 build type7_actor_target_completion: phony build/decomp/src/game/type7_actor_target_completion.o build/decomp/asm/game/type7_actor_target_completion_02049be8.o build/reports/type7_actor_target_completion_02049be8.txt
 
 type7_actor_presentation_states_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++

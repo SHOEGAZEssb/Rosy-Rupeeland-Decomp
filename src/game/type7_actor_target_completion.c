@@ -58,7 +58,7 @@ static void complete_related_interaction(u8 *actor)
  * callback through Type7Actor_SelectRandomCallbackPair01. Actor timing, mode, random, and callback
  * state may change; there is no return value or direct hardware access.
  */
-void func_02049be8(void *self)
+void Type7Actor_StartTargetCompletion(void *self)
 {
     u8 *actor = (u8 *)self;
     *(u16 *)(actor + 0x2a0) = 180;
@@ -77,7 +77,7 @@ void func_02049be8(void *self)
  * effect. Always return zero. Actor, target, event, callback, and heap-owned
  * presentation state may change; Heap_Alloc is the SDK-facing effect.
  */
-s32 func_02049c20(void *self)
+s32 Type7Actor_UpdateTargetCompletion(void *self)
 {
     u8 *actor = (u8 *)self;
     u8 *related;
@@ -100,12 +100,12 @@ s32 func_02049c20(void *self)
 /*
  * Input is a type-seven actor. If related object +0x210 has subtype byte four
  * and halfword ID 0x68, perform the same event, virtual callback, and effect
- * creation as func_02049c20. Then always select a fresh randomized callback
+ * creation as Type7Actor_UpdateTargetCompletion. Then always select a fresh randomized callback
  * through Type7Actor_SelectRandomCallback. Actor, target, event, random, callback, and heap-owned
  * presentation state may change; Heap_Alloc is the SDK-facing effect. No value
  * is returned.
  */
-void func_02049d64(void *self)
+void Type7Actor_FinishTargetCompletion(void *self)
 {
     u8 *actor = (u8 *)self;
     u8 *related = *(u8 **)(actor + 0x210);
