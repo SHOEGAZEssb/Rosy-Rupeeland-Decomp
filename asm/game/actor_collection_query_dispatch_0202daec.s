@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/actor_collection_query_dispatch.c.
 .text
-.extern func_02033974
+.extern Actor_TestQueryPoint
 
     .global func_0202daec
     .type func_0202daec, @function
@@ -25,7 +25,7 @@ func_0202daec: ; 0x0202daec
     cmp r1, #0x0
     beq .L_0202db60
     mov r1, r8
-    bl func_02033974
+    bl Actor_TestQueryPoint
     cmp r0, #0x0
     beq .L_0202db60
     ldr r0, [r9, r7, lsl #0x2]

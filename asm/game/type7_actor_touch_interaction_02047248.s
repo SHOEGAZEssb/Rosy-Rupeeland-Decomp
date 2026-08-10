@@ -11,7 +11,7 @@
 .extern func_02005058
 .extern func_020050a4
 .extern func_0203392c
-.extern func_02033974
+.extern Actor_TestQueryPoint
 .extern func_02038d38
 .extern func_0203bab0
 .extern func_02046d8c
@@ -216,7 +216,7 @@ func_02047248: ; 0x02047248
     bne .L_02047658
     mov r0, r5
     mov r1, r4
-    bl func_02033974
+    bl Actor_TestQueryPoint
     cmp r0, #0x0
     beq .L_020475c8
     mov r0, r5
@@ -307,4 +307,3 @@ func_02047248: ; 0x02047248
 .L_02047674: .word data_020e1730
 .L_02047678: .word data_020e18f8
 .size func_02047248, . - func_02047248
-

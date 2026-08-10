@@ -2,7 +2,7 @@
 
 /*
  * Dispatch an opaque query across registered actors. Actors with offset-0x14
- * flag 0x200000 are skipped; eligible actors must also pass func_02033974
+ * flag 0x200000 are skipped; eligible actors must also pass Actor_TestQueryPoint
  * before the selected virtual hook is invoked.
  */
 typedef struct QueryDispatchCollection {
@@ -14,7 +14,7 @@ typedef struct QueryDispatchCollection {
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern s32 func_02033974(void *actor, const void *query);
+extern s32 Actor_TestQueryPoint(void *actor, const void *query);
 #ifdef __cplusplus
 }
 #endif
@@ -23,7 +23,7 @@ static s32 actor_is_eligible(void *actor, const void *query)
 {
     return actor &&
            !(*(u32 *)((u8 *)actor + 0x14) & 0x200000) &&
-           func_02033974(actor, query);
+           Actor_TestQueryPoint(actor, query);
 }
 
 /*

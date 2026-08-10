@@ -10,7 +10,7 @@ extern void func_0200500c(void *vector, s32 x, s32 y, s32 z);
 extern void func_02005058(void *vector);
 extern u32 func_020573e4(void *resource);
 extern void func_0205740c(void *output, void *resource, const void *position);
-extern u32 func_02033974(void *self, const void *query);
+extern u32 Actor_TestQueryPoint(void *self, const void *query);
 #ifdef __cplusplus
 }
 #endif
@@ -57,14 +57,14 @@ s32 func_02033940(void *self)
 }
 
 /*
- * Run func_02033974 with the supplied query. If it returns zero, clear actor
+ * Run Actor_TestQueryPoint with the supplied query. If it returns zero, clear actor
  * flag 0x2000 and return the resulting entire flags word; otherwise return the
  * nonzero query result unchanged. This unusual zero-path return is confirmed.
  */
 u32 func_02033954(void *self, const void *query)
 {
     u8 *actor = (u8 *)self;
-    u32 result = func_02033974(actor, query);
+    u32 result = Actor_TestQueryPoint(actor, query);
 
     if (result == 0) {
         *(u32 *)(actor + 0x10) &= ~0x2000;
@@ -81,7 +81,7 @@ u32 func_02033954(void *self, const void *query)
  * first. Returns the combined nonzero/zero result. Vector and resource helpers
  * may manage SDK-owned temporary state; actor fields are not modified.
  */
-u32 func_02033974(void *self, const void *query)
+u32 Actor_TestQueryPoint(void *self, const void *query)
 {
     u8 *actor = (u8 *)self;
     const u8 *queryBytes = (const u8 *)query;

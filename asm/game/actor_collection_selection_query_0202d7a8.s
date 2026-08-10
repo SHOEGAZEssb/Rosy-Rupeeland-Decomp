@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/actor_collection_selection_query.c.
 .text
-.extern func_02033974
+.extern Actor_TestQueryPoint
 .extern func_02034060
 .extern func_0200b04c
 .extern func_0204aff4
@@ -30,7 +30,7 @@ func_0202d7a8: ; 0x0202d7a8
     beq .L_0202d818
     mov r0, r6
     mov r1, r9
-    bl func_02033974
+    bl Actor_TestQueryPoint
     cmp r0, #0x0
     beq .L_0202d818
     mov r0, r6
@@ -64,7 +64,7 @@ func_0202d7a8: ; 0x0202d7a8
     beq .L_0202d8a4
     mov r0, r7
     mov r1, r9
-    bl func_02033974
+    bl Actor_TestQueryPoint
     cmp r0, #0x0
     beq .L_0202d8a4
     mov r0, r7
@@ -97,7 +97,7 @@ func_0202d7a8: ; 0x0202d7a8
     beq .L_0202d9a0
     mov r0, r4
     mov r1, r9
-    bl func_02033974
+    bl Actor_TestQueryPoint
     cmp r0, #0x0
     beq .L_0202d9a0
     ldr r0, [r4, #0x10]

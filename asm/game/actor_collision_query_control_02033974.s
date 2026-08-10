@@ -7,9 +7,9 @@
 .extern func_020573e4
 .extern func_0205740c
 
-    .global func_02033974
-    .type func_02033974, @function
-func_02033974: ; 0x02033974
+    .global Actor_TestQueryPoint
+    .type Actor_TestQueryPoint, @function
+Actor_TestQueryPoint: ; 0x02033974
     stmdb sp!, {r4, r5, r6, r7, r8, lr}
     sub sp, sp, #0x28
     mov r6, r0
@@ -73,6 +73,6 @@ func_02033974: ; 0x02033974
     mov r0, r4
     add sp, sp, #0x28
     ldmia sp!, {r4, r5, r6, r7, r8, pc}
-    .size func_02033974, . - func_02033974
+    .size Actor_TestQueryPoint, . - Actor_TestQueryPoint
 
     .global func_02033a6c

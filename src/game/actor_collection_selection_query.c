@@ -25,7 +25,8 @@ extern "C" {
 #endif
 extern u8 data_02105310[];
 extern void *data_021052fc;
-extern s32 func_02033974(void *actor, const ActorSelectionQuery *query);
+extern s32 Actor_TestQueryPoint(void *actor,
+                                const ActorSelectionQuery *query);
 extern s32 func_02034060(void *actor);
 extern s32 func_02034044(void *actor);
 extern s32 func_0200b04c(const void *state);
@@ -63,7 +64,7 @@ static u16 actor_rank(void *actor)
 
 /*
  * Query reserved actor zero first when flag 0x200000 is clear and
- * func_02033974 accepts it. Preserve its vtable-0x48 return value and mark it
+ * Actor_TestQueryPoint accepts it. Preserve its vtable-0x48 return value and mark it
  * as candidate when func_02034060 succeeds. If neither yields a result, scan
  * ordinary slots 2..slotLimit-1 under the same eligibility tests, call their
  * query hooks, and choose the nonnull-offset-0x184 actor with the smallest
@@ -88,7 +89,7 @@ s32 func_0202d7a8(ActorSelectionCollection *self,
     u8 *scene;
 
     if (!(read_u32(actor, 0x14) & 0x200000) &&
-        func_02033974(actor, query)) {
+        Actor_TestQueryPoint(actor, query)) {
         result = call_query_hook(actor, query);
         if (func_02034060(actor))
             candidate = actor;
@@ -99,7 +100,7 @@ s32 func_0202d7a8(ActorSelectionCollection *self,
         for (i = 2; i < self->slotLimit_2e74; i++) {
             actor = self->actors_0000[i];
             if (actor && !(read_u32(actor, 0x14) & 0x200000) &&
-                func_02033974(actor, query)) {
+                Actor_TestQueryPoint(actor, query)) {
                 call_query_hook(actor, query);
                 if (read_pointer(actor, 0x184) && actor_rank(actor) <= bestRank) {
                     bestRank = actor_rank(actor);
@@ -110,7 +111,7 @@ s32 func_0202d7a8(ActorSelectionCollection *self,
 
         actor = self->actors_0000[1];
         if (actor && !(read_u32(actor, 0x14) & 0x200000) &&
-            func_02033974(actor, query)) {
+            Actor_TestQueryPoint(actor, query)) {
             if (read_u32(actor, 0x10) & 0x01000000) {
                 call_query_hook(actor, query);
                 if (actor_rank(actor) <= bestRank &&
