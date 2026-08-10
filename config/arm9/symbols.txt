@@ -8180,9 +8180,9 @@ data_020e6992 kind:data(any) addr:0x020e6992
 data_020e69e4 kind:data(any) addr:0x020e69e4
 data_020e69ec kind:data(any) addr:0x020e69ec
 data_020e69f4 kind:data(any) addr:0x020e69f4
-data_020e69fc kind:data(any) addr:0x020e69fc
-data_020e6a04 kind:data(any) addr:0x020e6a04
-data_020e6a0c kind:data(any) addr:0x020e6a0c
+gGraphicsAnimationInstanceManagerAllocationTag kind:data(any) addr:0x020e69fc
+gGraphicsAnimationInstanceAllocationTag kind:data(any) addr:0x020e6a04
+gGraphics3DResourceBindingAllocationTag kind:data(any) addr:0x020e6a0c
 data_020e6a14 kind:data(any) addr:0x020e6a14
 data_020e6a1c kind:data(any) addr:0x020e6a1c
 data_020e6a34 kind:data(any) addr:0x020e6a34

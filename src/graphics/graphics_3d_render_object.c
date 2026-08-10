@@ -12,7 +12,7 @@ extern "C" {
 
 extern void *Heap_Alloc(u32 size, const char *tag, s32 alignment, void *heap);
 extern void Heap_Free(void *allocation);
-extern const char data_020e6a0c[];
+extern const char gGraphics3DResourceBindingAllocationTag[];
 extern u8 gHeapContext[];
 
 #ifdef __cplusplus
@@ -33,7 +33,7 @@ Graphics3DRenderObject *Graphics3DRenderObject_Init(
 {
     Graphics3DResourceBinding *binding =
         (Graphics3DResourceBinding *)Heap_Alloc(
-            sizeof(Graphics3DResourceBinding), data_020e6a0c, 4,
+            sizeof(Graphics3DResourceBinding), gGraphics3DResourceBindingAllocationTag, 4,
             gHeapContext);
 
     if (binding != 0) {

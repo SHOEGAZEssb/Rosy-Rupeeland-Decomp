@@ -12,7 +12,7 @@ extern "C" {
 
 extern void *Heap_Alloc(u32 size, const char *tag, s32 alignment, void *heap);
 extern void Heap_Free(void *allocation);
-extern const char data_020e69fc[];
+extern const char gGraphicsAnimationInstanceManagerAllocationTag[];
 extern u8 gHeapContext[];
 
 #ifdef __cplusplus
@@ -21,7 +21,7 @@ extern u8 gHeapContext[];
 
 /*
  * Allocate and initialize one 0x28-byte manager, append it to owner's manager
- * list, and increment managerCount. Heap allocation uses tag data_020e69fc,
+ * list, and increment managerCount. Heap allocation uses tag gGraphicsAnimationInstanceManagerAllocationTag,
  * four-byte alignment, and gHeapContext. Retail assumes allocation succeeds:
  * a null result still reaches the link stores and is outside the valid path.
  * Although the recovered C signature is void, retail leaves the new manager in
@@ -32,7 +32,7 @@ void Graphics3DResourceOwner_CreateManager(Graphics3DResourceOwner *owner)
 {
     GraphicsAnimationInstanceManager *manager =
         (GraphicsAnimationInstanceManager *)Heap_Alloc(
-            sizeof(GraphicsAnimationInstanceManager), data_020e69fc, 4,
+            sizeof(GraphicsAnimationInstanceManager), gGraphicsAnimationInstanceManagerAllocationTag, 4,
             gHeapContext);
 
     if (manager != 0) {
@@ -52,7 +52,7 @@ void Graphics3DResourceOwner_CreateManager(Graphics3DResourceOwner *owner)
 asm void Graphics3DResourceOwner_CreateManager(Graphics3DResourceOwner *owner)
 {
     stmdb sp!, {r4, lr}
-    /* Load allocation tag data_020e69fc from the trailing literal. */
+    /* Load allocation tag gGraphicsAnimationInstanceManagerAllocationTag from the trailing literal. */
     DCD 0xE59F1050
     mov r4, r0
     /* Load gHeapContext from the trailing literal. */
@@ -78,7 +78,7 @@ graphics_3d_owner_manager_append:
     str r1, [r4, #0x10]
     ldmia sp!, {r4, pc}
 graphics_3d_owner_manager_tag:
-    DCD data_020e69fc
+    DCD gGraphicsAnimationInstanceManagerAllocationTag
 graphics_3d_owner_manager_heap:
     DCD gHeapContext
 }

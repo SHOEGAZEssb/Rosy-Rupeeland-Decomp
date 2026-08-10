@@ -13,7 +13,7 @@ extern "C" {
 
 extern void *Heap_Alloc(u32 size, const char *tag, s32 alignment, void *heap);
 extern void Heap_Free(void *allocation);
-extern const char data_020e6a04[];
+extern const char gGraphicsAnimationInstanceAllocationTag[];
 extern u8 gHeapContext[];
 extern GraphicsSpriteRegion *Graphics3DResourceOwner_AcquireTextureRegion(
     Graphics3DResourceOwner *owner, void *resource);
@@ -25,7 +25,7 @@ extern GraphicsSpriteRegion *Graphics3DResourceOwner_AcquirePaletteRegion(
 #endif
 
 /*
- * Allocate a 0x5c-byte instance with tag data_020e6a04, initialize it with the
+ * Allocate a 0x5c-byte instance with tag gGraphicsAnimationInstanceAllocationTag, initialize it with the
  * supplied manager owner, retain the three resource pointers, acquire texture
  * and palette regions from the resource owner, and return it. Retail assumes
  * allocation and both acquisitions succeed; no cleanup path handles failure.
@@ -38,7 +38,7 @@ GraphicsAnimationInstance *Graphics3DResourceOwner_CreateAnimationInstance(
 {
     GraphicsAnimationInstance *instance =
         (GraphicsAnimationInstance *)Heap_Alloc(
-            sizeof(GraphicsAnimationInstance), data_020e6a04, 4,
+            sizeof(GraphicsAnimationInstance), gGraphicsAnimationInstanceAllocationTag, 4,
             gHeapContext);
 
     if (instance != 0) {
@@ -63,7 +63,7 @@ asm GraphicsAnimationInstance *Graphics3DResourceOwner_CreateAnimationInstance(
     mov r5, r3
     mov r8, r0
     mov r6, r2
-    /* Load allocation tag data_020e6a04 from the trailing literal. */
+    /* Load allocation tag gGraphicsAnimationInstanceAllocationTag from the trailing literal. */
     DCD 0xE59F1054
     /* Load gHeapContext from the trailing literal. */
     DCD 0xE59F3054
@@ -90,7 +90,7 @@ graphics_animation_instance_resource_init_done:
     mov r0, r4
     ldmia sp!, {r4, r5, r6, r7, r8, pc}
 graphics_animation_instance_resource_tag:
-    DCD data_020e6a04
+    DCD gGraphicsAnimationInstanceAllocationTag
 graphics_animation_instance_resource_heap:
     DCD gHeapContext
 }
