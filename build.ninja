@@ -11248,7 +11248,7 @@ build build/reports/graphics_sprite_renderer.json: objdiff build/decomp/delinks/
 
 build build/reports/graphics_sprite_renderer.txt: match_report build/reports/graphics_sprite_renderer.json | tools/report_objdiff.py
   report_json = build/reports/graphics_sprite_renderer.json
-  report_args = --section .text --function func_02074200
+  report_args = --section .text --function GraphicsSpriteRenderer_Init
 
 build build/reports/graphics_sprite_renderer_hw.json: objdiff build/decomp/delinks/src/graphics/graphics_sprite_renderer_hw.o | build/decomp/src/graphics/graphics_sprite_renderer_hw.o
   target_object = build/decomp/delinks/src/graphics/graphics_sprite_renderer_hw.o

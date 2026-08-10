@@ -44,7 +44,7 @@ typedef char GraphicsSpriteRendererSizeCheck[
 extern "C" {
 #endif
 
-GraphicsSpriteRenderer *func_02074200(GraphicsSpriteRenderer *renderer,
+GraphicsSpriteRenderer *GraphicsSpriteRenderer_Init(GraphicsSpriteRenderer *renderer,
                                       u32 engine, u32 field28, u32 field2c);
 void GraphicsSpriteRenderer_ConfigureObjectDisplay(
     GraphicsSpriteRenderer *renderer);

@@ -15,7 +15,7 @@
  * and may establish renderer/platform state, but this function directly writes
  * no graphics registers.
  */
-GraphicsSpriteRenderer *func_02074200(GraphicsSpriteRenderer *renderer,
+GraphicsSpriteRenderer *GraphicsSpriteRenderer_Init(GraphicsSpriteRenderer *renderer,
                                       u32 engine, u32 field28, u32 field2c)
 {
     GraphicsVramAllocator_Init(&renderer->vramAllocator);

@@ -16,7 +16,7 @@ extern void *gHeapContext;
 extern void func_0207139c(void);
 extern void *func_02071294(void *manager);
 extern void GraphicsSpriteState_InitGlobalPool(void);
-extern void *func_02074200(void *state, int engine, int arg2, int arg3);
+extern void *GraphicsSpriteRenderer_Init(void *state, int engine, int arg2, int arg3);
 extern void *func_02071568(void *manager, u32 resourceId);
 extern void *func_020716bc(void *manager, u32 resourceId);
 extern void func_02075398(void *state, void *resourceC000,
@@ -77,7 +77,7 @@ void GraphicsSystem_Init(void)
     state = Heap_Alloc(GRAPHICS_ENGINE_STATE_SIZE,
                        gGraphicsSystemTags.mainEngine, 4, gHeapContext);
     if (state != 0) {
-        state = func_02074200(state, 0, 0, 1);
+        state = GraphicsSpriteRenderer_Init(state, 0, 0, 1);
     }
     GRAPHICS_STATE_FIELD(void *, 0x0C) = state;
 
@@ -112,7 +112,7 @@ void GraphicsSystem_CreateEngine(int engine)
         state = Heap_Alloc(GRAPHICS_ENGINE_STATE_SIZE,
                            gGraphicsSystemTags.mainEngine, 4, gHeapContext);
         if (state != 0) {
-            state = func_02074200(state, 0, 0, 1);
+            state = GraphicsSpriteRenderer_Init(state, 0, 0, 1);
         }
         GRAPHICS_STATE_FIELD(void *, 0x0C) = state;
         return;
@@ -122,7 +122,7 @@ void GraphicsSystem_CreateEngine(int engine)
         state = Heap_Alloc(GRAPHICS_ENGINE_STATE_SIZE,
                            gGraphicsSystemTags.subEngine, 4, gHeapContext);
         if (state != 0) {
-            state = func_02074200(state, 1, 2, 3);
+            state = GraphicsSpriteRenderer_Init(state, 1, 2, 3);
         }
         GRAPHICS_STATE_FIELD(void *, 0x08) = state;
     }
@@ -158,7 +158,7 @@ graphics_init_manager_done:
     mov r1, #0
     mov r2, r1
     mov r3, #1
-    bl func_02074200
+    bl GraphicsSpriteRenderer_Init
 graphics_init_main_done:
     ldr r1, =gGraphicsState020F4E08
     str r0, [r1, #0xc]
@@ -215,7 +215,7 @@ asm void GraphicsSystem_CreateEngine(int engine)
     mov r1, #0
     mov r2, r1
     mov r3, #1
-    bl func_02074200
+    bl GraphicsSpriteRenderer_Init
 graphics_create_main_done:
     ldr r1, =gGraphicsState020F4E08
     str r0, [r1, #0xc]
@@ -233,7 +233,7 @@ graphics_create_check_sub:
     mov r1, #1
     mov r2, #2
     mov r3, #3
-    bl func_02074200
+    bl GraphicsSpriteRenderer_Init
 graphics_create_sub_done:
     ldr r1, =gGraphicsState020F4E08
     str r0, [r1, #8]
