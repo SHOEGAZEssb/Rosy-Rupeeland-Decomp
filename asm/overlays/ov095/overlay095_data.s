@@ -98,14 +98,14 @@
 .extern ActorExtendedType2_EnterState2WithCallbacks
 .extern ActorExtendedType2_ReturnFalseLateState
 .extern ActorExtendedType2_DispatchNearTargetState
-.extern func_0204194c
-.extern func_02041aec
+.extern ActorExtendedType2_DispatchTargetTransform
+.extern ActorExtendedType2_LookupSpecialTarget65
 .extern ActorExtendedType2_UpdateState22Countdown
-.extern func_02041c18
-.extern func_02041c48
-.extern func_02041e18
-.extern func_02041e9c
-.extern func_02042034
+.extern ActorExtendedType2_CancelTargetState
+.extern ActorExtendedType2_SelectRandomDescriptorCallback
+.extern ActorExtendedType2_UpdateRandomCallbackDelay
+.extern ActorExtendedType2_UpdateRandomWaypoint
+.extern ActorExtendedType2_UpdateCenterWaypoint
 .extern func_02042170
 .extern func_ov095_0221b150
 .extern func_ov095_0221b13c
@@ -405,14 +405,14 @@ data_ov095_0221cca0:
     .word ActorExtendedType2_EnterState2WithCallbacks
     .word ActorExtendedType2_ReturnFalseLateState
     .word ActorExtendedType2_DispatchNearTargetState
-    .word func_0204194c
-    .word func_02041aec
+    .word ActorExtendedType2_DispatchTargetTransform
+    .word ActorExtendedType2_LookupSpecialTarget65
     .word ActorExtendedType2_UpdateState22Countdown
-    .word func_02041c18
-    .word func_02041c48
-    .word func_02041e18
-    .word func_02041e9c
-    .word func_02042034
+    .word ActorExtendedType2_CancelTargetState
+    .word ActorExtendedType2_SelectRandomDescriptorCallback
+    .word ActorExtendedType2_UpdateRandomCallbackDelay
+    .word ActorExtendedType2_UpdateRandomWaypoint
+    .word ActorExtendedType2_UpdateCenterWaypoint
     .word func_02042170
     .word func_ov095_0221b150
     .word func_ov095_0221b13c
@@ -569,14 +569,14 @@ data_ov095_0221cf4c:
     .word ActorExtendedType2_EnterState2WithCallbacks
     .word ActorExtendedType2_ReturnFalseLateState
     .word func_ov095_0221bbf0
-    .word func_0204194c
-    .word func_02041aec
+    .word ActorExtendedType2_DispatchTargetTransform
+    .word ActorExtendedType2_LookupSpecialTarget65
     .word ActorExtendedType2_UpdateState22Countdown
-    .word func_02041c18
-    .word func_02041c48
-    .word func_02041e18
+    .word ActorExtendedType2_CancelTargetState
+    .word ActorExtendedType2_SelectRandomDescriptorCallback
+    .word ActorExtendedType2_UpdateRandomCallbackDelay
     .word func_ov095_0221bda4
-    .word func_02042034
+    .word ActorExtendedType2_UpdateCenterWaypoint
     .word func_02042170
     .word func_ov095_0221b150
     .word func_ov095_0221b13c

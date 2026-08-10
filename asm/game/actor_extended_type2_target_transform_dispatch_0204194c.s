@@ -1,9 +1,9 @@
 ; Matching retail form; see src/game/actor_extended_type2_target_transform_dispatch.c.
 .text
 .extern data_020df9e8
-.global func_0204194c
-.type func_0204194c, @function
-func_0204194c: ; 0x0204194c
+.global ActorExtendedType2_DispatchTargetTransform
+.type ActorExtendedType2_DispatchTargetTransform, @function
+ActorExtendedType2_DispatchTargetTransform: ; 0x0204194c
     stmdb sp!, {r3, r4, r5, lr}
     mov r5, r0
     ldr r2, [r5, #0x260]
@@ -113,4 +113,4 @@ func_0204194c: ; 0x0204194c
     mov r0, #0x0
     ldmia sp!, {r3, r4, r5, pc}
 .L_02041ae8: .word data_020df9e8
-.size func_0204194c, . - func_0204194c
+.size ActorExtendedType2_DispatchTargetTransform, . - ActorExtendedType2_DispatchTargetTransform

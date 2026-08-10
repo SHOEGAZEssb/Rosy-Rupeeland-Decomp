@@ -3,9 +3,9 @@
 .extern data_020df9e8
 .extern func_020ada8c
 .extern genrand_int32
-.global func_02041e9c
-.type func_02041e9c, @function
-func_02041e9c: ; 0x02041e9c
+.global ActorExtendedType2_UpdateRandomWaypoint
+.type ActorExtendedType2_UpdateRandomWaypoint, @function
+ActorExtendedType2_UpdateRandomWaypoint: ; 0x02041e9c
     stmdb sp!, {r3, r4, r5, r6, r7, lr}
     mov r6, r0
     add r2, r6, #0x200
@@ -116,4 +116,4 @@ func_02041e9c: ; 0x02041e9c
     strh r2, [r1, #0x5a]
     ldmia sp!, {r3, r4, r5, r6, r7, pc}
 .L_02042030: .word data_020df9e8
-.size func_02041e9c, . - func_02041e9c
+.size ActorExtendedType2_UpdateRandomWaypoint, . - ActorExtendedType2_UpdateRandomWaypoint

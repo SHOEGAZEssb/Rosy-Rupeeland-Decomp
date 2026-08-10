@@ -2,9 +2,9 @@
 .text
 .extern data_020df9e8
 .extern func_020536b8
-.global func_02041aec
-.type func_02041aec, @function
-func_02041aec: ; 0x02041aec
+.global ActorExtendedType2_LookupSpecialTarget65
+.type ActorExtendedType2_LookupSpecialTarget65, @function
+ActorExtendedType2_LookupSpecialTarget65: ; 0x02041aec
     stmdb sp!, {r3, r4, r5, lr}
     mov r5, r0
     ldr r2, [r5, #0x260]
@@ -84,4 +84,4 @@ func_02041aec: ; 0x02041aec
     mov r0, #0x0
     ldmia sp!, {r3, r4, r5, pc}
 .L_02041c14: .word data_020df9e8
-.size func_02041aec, . - func_02041aec
+.size ActorExtendedType2_LookupSpecialTarget65, . - ActorExtendedType2_LookupSpecialTarget65

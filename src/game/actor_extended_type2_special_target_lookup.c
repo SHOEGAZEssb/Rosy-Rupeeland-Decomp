@@ -26,7 +26,7 @@ extern void *func_020536b8(void *actor);
  * +0xd0. Always returns zero. Actor, target, lookup, and virtual state may
  * change; no direct SDK or hardware operation occurs.
  */
-s32 func_02041aec(void *self, void *descriptorRecord)
+s32 ActorExtendedType2_LookupSpecialTarget65(void *self, void *descriptorRecord)
 {
     u8 *actor = (u8 *)self;
     u8 *record = (u8 *)descriptorRecord;

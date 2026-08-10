@@ -1,6 +1,6 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov096/overlay096_recovery.c.
-.extern func_02041c48
+.extern ActorExtendedType2_SelectRandomDescriptorCallback
 
 .global func_ov096_02217f4c
 func_ov096_02217f4c:
@@ -11,5 +11,5 @@ func_ov096_02217f4c:
     bicne r2, r2, #0x1
     strneh r2, [r1, #0x18]
     bx ip
-.L_02217f68: .word func_02041c48
+.L_02217f68: .word ActorExtendedType2_SelectRandomDescriptorCallback
 .size func_ov096_02217f4c, . - func_ov096_02217f4c

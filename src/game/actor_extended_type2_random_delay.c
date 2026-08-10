@@ -24,7 +24,7 @@ extern s32 func_020ada8c(s32 value, s32 divisor);
  * zero. Actor, transform, and random state may change; no direct hardware or
  * SDK operation occurs.
  */
-s32 func_02041e18(void *self)
+s32 ActorExtendedType2_UpdateRandomCallbackDelay(void *self)
 {
     u8 *actor = (u8 *)self;
     *(u16 *)(actor + 0xd6) = 2;

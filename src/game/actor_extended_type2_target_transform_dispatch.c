@@ -18,7 +18,7 @@ extern u8 data_020df9e8[];
  * split has no observable semantic difference. Always returns zero. Actor and
  * virtual state may change; no direct SDK or hardware operation occurs.
  */
-s32 func_0204194c(void *self, void *descriptorRecord)
+s32 ActorExtendedType2_DispatchTargetTransform(void *self, void *descriptorRecord)
 {
     u8 *actor = (u8 *)self;
     u8 *record = (u8 *)descriptorRecord;

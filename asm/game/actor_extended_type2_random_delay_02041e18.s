@@ -4,9 +4,9 @@
 .extern func_020050a4
 .extern func_020ada8c
 .extern genrand_int32
-.global func_02041e18
-.type func_02041e18, @function
-func_02041e18: ; 0x02041e18
+.global ActorExtendedType2_UpdateRandomCallbackDelay
+.type ActorExtendedType2_UpdateRandomCallbackDelay, @function
+ActorExtendedType2_UpdateRandomCallbackDelay: ; 0x02041e18
     stmdb sp!, {r4, lr}
     mov r4, r0
     mov r2, #0x2
@@ -42,4 +42,4 @@ func_02041e18: ; 0x02041e18
     strh r2, [r1, #0x5a]
     ldmia sp!, {r4, pc}
 .L_02041e98: .word data_020df9e8
-.size func_02041e18, . - func_02041e18
+.size ActorExtendedType2_UpdateRandomCallbackDelay, . - ActorExtendedType2_UpdateRandomCallbackDelay

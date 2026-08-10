@@ -3,9 +3,9 @@
 .extern data_020df9e8
 .extern func_020ada8c
 .extern genrand_int32
-.global func_02042034
-.type func_02042034, @function
-func_02042034: ; 0x02042034
+.global ActorExtendedType2_UpdateCenterWaypoint
+.type ActorExtendedType2_UpdateCenterWaypoint, @function
+ActorExtendedType2_UpdateCenterWaypoint: ; 0x02042034
     stmdb sp!, {r3, r4, r5, r6, r7, lr}
     mov r7, r0
     ldr r3, [r7, #0xd0]
@@ -88,4 +88,4 @@ func_02042034: ; 0x02042034
     strh r2, [r1, #0x5a]
     ldmia sp!, {r3, r4, r5, r6, r7, pc}
 .L_0204216c: .word data_020df9e8
-.size func_02042034, . - func_02042034
+.size ActorExtendedType2_UpdateCenterWaypoint, . - ActorExtendedType2_UpdateCenterWaypoint

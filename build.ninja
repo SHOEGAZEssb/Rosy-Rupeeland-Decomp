@@ -17187,7 +17187,7 @@ build build/reports/actor_extended_type2_target_transform_dispatch_0204194c.json
   base_object = build/decomp/asm/game/actor_extended_type2_target_transform_dispatch_0204194c.o
 build build/reports/actor_extended_type2_target_transform_dispatch_0204194c.txt: match_report build/reports/actor_extended_type2_target_transform_dispatch_0204194c.json | tools/report_objdiff.py
   report_json = build/reports/actor_extended_type2_target_transform_dispatch_0204194c.json
-  report_args = --section .text --function func_0204194c --require-exact
+  report_args = --section .text --function ActorExtendedType2_DispatchTargetTransform --require-exact
 build build/reports/actor_extended_type2_target_transform_dispatch.txt: phony build/reports/actor_extended_type2_target_transform_dispatch_0204194c.txt
 build actor_extended_type2_target_transform_dispatch: phony build/decomp/src/game/actor_extended_type2_target_transform_dispatch.o build/decomp/asm/game/actor_extended_type2_target_transform_dispatch_0204194c.o build/reports/actor_extended_type2_target_transform_dispatch.txt
 
@@ -17202,7 +17202,7 @@ build build/reports/actor_extended_type2_special_target_lookup_02041aec.json: ob
   base_object = build/decomp/asm/game/actor_extended_type2_special_target_lookup_02041aec.o
 build build/reports/actor_extended_type2_special_target_lookup_02041aec.txt: match_report build/reports/actor_extended_type2_special_target_lookup_02041aec.json | tools/report_objdiff.py
   report_json = build/reports/actor_extended_type2_special_target_lookup_02041aec.json
-  report_args = --section .text --function func_02041aec --require-exact
+  report_args = --section .text --function ActorExtendedType2_LookupSpecialTarget65 --require-exact
 build build/reports/actor_extended_type2_special_target_lookup.txt: phony build/reports/actor_extended_type2_special_target_lookup_02041aec.txt
 build actor_extended_type2_special_target_lookup: phony build/decomp/src/game/actor_extended_type2_special_target_lookup.o build/decomp/asm/game/actor_extended_type2_special_target_lookup_02041aec.o build/reports/actor_extended_type2_special_target_lookup.txt
 
@@ -17217,7 +17217,7 @@ build build/reports/actor_extended_type2_random_callback_select_02041c18.json: o
   base_object = build/decomp/asm/game/actor_extended_type2_random_callback_select_02041c18.o
 build build/reports/actor_extended_type2_random_callback_select_02041c18.txt: match_report build/reports/actor_extended_type2_random_callback_select_02041c18.json | tools/report_objdiff.py
   report_json = build/reports/actor_extended_type2_random_callback_select_02041c18.json
-  report_args = --section .text --function func_02041c18 --function func_02041c48 --require-exact
+  report_args = --section .text --function ActorExtendedType2_CancelTargetState --function ActorExtendedType2_SelectRandomDescriptorCallback --require-exact
 build build/reports/actor_extended_type2_random_callback_select.txt: phony build/reports/actor_extended_type2_random_callback_select_02041c18.txt
 build actor_extended_type2_random_callback_select: phony build/decomp/src/game/actor_extended_type2_random_callback_select.o build/decomp/asm/game/actor_extended_type2_random_callback_select_02041c18.o build/reports/actor_extended_type2_random_callback_select.txt
 
@@ -17232,7 +17232,7 @@ build build/reports/actor_extended_type2_random_delay_02041e18.json: objdiff bui
   base_object = build/decomp/asm/game/actor_extended_type2_random_delay_02041e18.o
 build build/reports/actor_extended_type2_random_delay_02041e18.txt: match_report build/reports/actor_extended_type2_random_delay_02041e18.json | tools/report_objdiff.py
   report_json = build/reports/actor_extended_type2_random_delay_02041e18.json
-  report_args = --section .text --function func_02041e18 --require-exact
+  report_args = --section .text --function ActorExtendedType2_UpdateRandomCallbackDelay --require-exact
 build build/reports/actor_extended_type2_random_delay.txt: phony build/reports/actor_extended_type2_random_delay_02041e18.txt
 build actor_extended_type2_random_delay: phony build/decomp/src/game/actor_extended_type2_random_delay.o build/decomp/asm/game/actor_extended_type2_random_delay_02041e18.o build/reports/actor_extended_type2_random_delay.txt
 
@@ -17247,7 +17247,7 @@ build build/reports/actor_extended_type2_random_waypoint_02041e9c.json: objdiff 
   base_object = build/decomp/asm/game/actor_extended_type2_random_waypoint_02041e9c.o
 build build/reports/actor_extended_type2_random_waypoint_02041e9c.txt: match_report build/reports/actor_extended_type2_random_waypoint_02041e9c.json | tools/report_objdiff.py
   report_json = build/reports/actor_extended_type2_random_waypoint_02041e9c.json
-  report_args = --section .text --function func_02041e9c --require-exact
+  report_args = --section .text --function ActorExtendedType2_UpdateRandomWaypoint --require-exact
 build build/reports/actor_extended_type2_random_waypoint.txt: phony build/reports/actor_extended_type2_random_waypoint_02041e9c.txt
 build actor_extended_type2_random_waypoint: phony build/decomp/src/game/actor_extended_type2_random_waypoint.o build/decomp/asm/game/actor_extended_type2_random_waypoint_02041e9c.o build/reports/actor_extended_type2_random_waypoint.txt
 
@@ -17262,7 +17262,7 @@ build build/reports/actor_extended_type2_center_waypoint_02042034.json: objdiff 
   base_object = build/decomp/asm/game/actor_extended_type2_center_waypoint_02042034.o
 build build/reports/actor_extended_type2_center_waypoint_02042034.txt: match_report build/reports/actor_extended_type2_center_waypoint_02042034.json | tools/report_objdiff.py
   report_json = build/reports/actor_extended_type2_center_waypoint_02042034.json
-  report_args = --section .text --function func_02042034 --require-exact
+  report_args = --section .text --function ActorExtendedType2_UpdateCenterWaypoint --require-exact
 build build/reports/actor_extended_type2_center_waypoint.txt: phony build/reports/actor_extended_type2_center_waypoint_02042034.txt
 build actor_extended_type2_center_waypoint: phony build/decomp/src/game/actor_extended_type2_center_waypoint.o build/decomp/asm/game/actor_extended_type2_center_waypoint_02042034.o build/reports/actor_extended_type2_center_waypoint.txt
 

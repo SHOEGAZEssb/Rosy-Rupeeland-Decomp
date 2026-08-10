@@ -23,7 +23,7 @@ extern s32 func_020ada8c(s32 value, s32 divisor);
  * and return zero. Actor and virtual state may change; no direct SDK or
  * hardware operation occurs.
  */
-s32 func_02041c18(void *self)
+s32 ActorExtendedType2_CancelTargetState(void *self)
 {
     u8 *actor = (u8 *)self;
     *(u32 *)(actor + 0x260) &= ~1;
@@ -48,7 +48,7 @@ s32 func_02041c18(void *self)
  * object, random, virtual, and presentation state may change; no direct
  * hardware access occurs.
  */
-s32 func_02041c48(void *self, const void *descriptorRecord)
+s32 ActorExtendedType2_SelectRandomDescriptorCallback(void *self, const void *descriptorRecord)
 {
     u8 *actor = (u8 *)self;
     const u8 *record = (const u8 *)descriptorRecord;

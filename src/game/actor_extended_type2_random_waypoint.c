@@ -27,7 +27,7 @@ extern s32 func_020ada8c(s32 value, s32 divisor);
  * the function returns zero. Actor, random, callback, and virtual state may
  * change; no direct SDK or hardware operation occurs.
  */
-s32 func_02041e9c(void *self, const void *descriptorRecord)
+s32 ActorExtendedType2_UpdateRandomWaypoint(void *self, const void *descriptorRecord)
 {
     u8 *actor = (u8 *)self;
     const u8 *record = (const u8 *)descriptorRecord;

@@ -6,9 +6,9 @@
 .extern func_020453c8
 .extern func_020ada8c
 .extern genrand_int32
-.global func_02041c18
-.type func_02041c18, @function
-func_02041c18: ; 0x02041c18
+.global ActorExtendedType2_CancelTargetState
+.type ActorExtendedType2_CancelTargetState, @function
+ActorExtendedType2_CancelTargetState: ; 0x02041c18
     stmdb sp!, {r4, lr}
     mov r4, r0
     ldr r1, [r4, #0x260]
@@ -21,11 +21,11 @@ func_02041c18: ; 0x02041c18
     mov r0, #0x0
     strh r0, [r1, #0x54]
     ldmia sp!, {r4, pc}
-.size func_02041c18, . - func_02041c18
+.size ActorExtendedType2_CancelTargetState, . - ActorExtendedType2_CancelTargetState
 
-.global func_02041c48
-.type func_02041c48, @function
-func_02041c48: ; 0x02041c48
+.global ActorExtendedType2_SelectRandomDescriptorCallback
+.type ActorExtendedType2_SelectRandomDescriptorCallback, @function
+ActorExtendedType2_SelectRandomDescriptorCallback: ; 0x02041c48
     stmdb sp!, {r3, r4, r5, lr}
     sub sp, sp, #0x40
     mov r5, r0
@@ -150,4 +150,4 @@ func_02041c48: ; 0x02041c48
     add sp, sp, #0x40
     ldmia sp!, {r3, r4, r5, pc}
 .L_02041e14: .word data_020df9e8
-.size func_02041c48, . - func_02041c48
+.size ActorExtendedType2_SelectRandomDescriptorCallback, . - ActorExtendedType2_SelectRandomDescriptorCallback
