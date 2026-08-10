@@ -18,7 +18,7 @@ extern s32 func_0204fc6c(void);
  * Pop a value, resolve actor zero from runtime collection 2, send command
  * 0x2a with that value, and return zero.
  */
-s32 func_0201b098(GamePhaseActorScriptVm *self)
+s32 GamePhaseActorScriptVm_SendCommand2aToCollection2Actor0(GamePhaseActorScriptVm *self)
 {
     s32 value = (s32)GamePhaseScriptVm_Pop(&self->base);
     void *collection = GamePhaseRuntime_GetActorCollection(data_021052fc, 2);

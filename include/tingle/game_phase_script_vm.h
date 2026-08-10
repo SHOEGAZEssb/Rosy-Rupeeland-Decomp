@@ -280,7 +280,7 @@ s32 func_0201af88(GamePhaseActorScriptVm *self);
 s32 func_0201afc0(GamePhaseActorScriptVm *self);
 s32 func_0201b040(GamePhaseActorScriptVm *self);
 s32 GamePhaseActorScriptVm_GetOneBasedPhaseRecordByte4c(GamePhaseActorScriptVm *self);
-s32 func_0201b098(GamePhaseActorScriptVm *self);
+s32 GamePhaseActorScriptVm_SendCommand2aToCollection2Actor0(GamePhaseActorScriptVm *self);
 s32 func_0201b0d4(GamePhaseActorScriptVm *self);
 GamePhaseActorScriptVm *GamePhaseActorScriptVm_Init(GamePhaseActorScriptVm *self);
 GamePhaseActorScriptVm *GamePhaseActorScriptVm_InitWithScript(

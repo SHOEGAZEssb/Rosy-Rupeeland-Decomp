@@ -5,8 +5,8 @@
 .extern ActorCollection_FindActorByDescriptorValue
 .extern func_020330fc
 .extern data_021052fc
-.global func_0201b098
-func_0201b098: ; 0x0201b098
+.global GamePhaseActorScriptVm_SendCommand2aToCollection2Actor0
+GamePhaseActorScriptVm_SendCommand2aToCollection2Actor0: ; 0x0201b098
     stmdb sp!, {r4, lr}
     bl GamePhaseScriptVm_Pop
     ldr r1, L_0201b0d0
@@ -22,4 +22,4 @@ func_0201b098: ; 0x0201b098
     mov r0, #0x0
     ldmia sp!, {r4, pc}
 L_0201b0d0: .word data_021052fc
-.size func_0201b098, . - func_0201b098
+.size GamePhaseActorScriptVm_SendCommand2aToCollection2Actor0, . - GamePhaseActorScriptVm_SendCommand2aToCollection2Actor0
