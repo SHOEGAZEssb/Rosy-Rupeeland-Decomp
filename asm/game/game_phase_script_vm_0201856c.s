@@ -4,8 +4,8 @@
 .extern DisplayBrightness_StartTransition
 .extern DisplayBrightnessPair_GetScreen
 .extern GamePhaseScriptVm_Pop
-.global func_0201856c
-func_0201856c:
+.global GamePhaseActorScriptVm_StartSelectedDisplayBrightnessTransitions
+GamePhaseActorScriptVm_StartSelectedDisplayBrightnessTransitions:
     stmdb sp!, {r3, r4, r5, r6, r7, lr}
     mov r7, r0
     bl GamePhaseScriptVm_Pop
@@ -42,4 +42,4 @@ L_020185e8:
     mov r0, #0x0
     ldmia sp!, {r3, r4, r5, r6, r7, pc}
 L_020185f0: .word data_020f4dc8
-.size func_0201856c, . - func_0201856c
+.size GamePhaseActorScriptVm_StartSelectedDisplayBrightnessTransitions, . - GamePhaseActorScriptVm_StartSelectedDisplayBrightnessTransitions

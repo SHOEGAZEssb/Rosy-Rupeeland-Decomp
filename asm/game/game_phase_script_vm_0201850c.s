@@ -2,8 +2,8 @@
 .text
 .extern GamePhaseScriptVm_Pop
 .extern func_0204ea8c
-.global func_0201850c
-func_0201850c:
+.global GamePhaseActorScriptVm_DispatchActorSigned16Command
+GamePhaseActorScriptVm_DispatchActorSigned16Command:
     stmdb sp!, {r3, r4, r5, lr}
     mov r5, r0
     bl GamePhaseScriptVm_Pop
@@ -16,4 +16,4 @@ func_0201850c:
     bl func_0204ea8c
     mov r0, #0x0
     ldmia sp!, {r3, r4, r5, pc}
-.size func_0201850c, . - func_0201850c
+.size GamePhaseActorScriptVm_DispatchActorSigned16Command, . - GamePhaseActorScriptVm_DispatchActorSigned16Command

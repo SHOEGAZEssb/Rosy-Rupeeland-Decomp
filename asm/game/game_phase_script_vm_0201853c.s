@@ -1,8 +1,8 @@
 ; Matching retail form; see src/game/game_phase_script_vm_actor_runtime_display_opcodes.c.
 .text
 .extern GamePhaseScriptVm_Pop
-.global func_0201853c
-func_0201853c:
+.global GamePhaseActorScriptVm_SetActorFlag10
+GamePhaseActorScriptVm_SetActorFlag10:
     stmdb sp!, {r4, lr}
     mov r4, r0
     bl GamePhaseScriptVm_Pop
@@ -15,4 +15,4 @@ func_0201853c:
     str r0, [r1, #0x14]
     mov r0, #0x0
     ldmia sp!, {r4, pc}
-.size func_0201853c, . - func_0201853c
+.size GamePhaseActorScriptVm_SetActorFlag10, . - GamePhaseActorScriptVm_SetActorFlag10

@@ -2,8 +2,8 @@
 .text
 .extern GamePhaseScriptVm_Pop
 .extern Actor_SetAuxiliaryCollisionPosition
-.global func_020184d4
-func_020184d4:
+.global GamePhaseActorScriptVm_SetAuxiliaryCollisionPosition
+GamePhaseActorScriptVm_SetAuxiliaryCollisionPosition:
     stmdb sp!, {r3, r4, r5, lr}
     mov r5, r0
     bl GamePhaseScriptVm_Pop
@@ -16,4 +16,4 @@ func_020184d4:
     bl Actor_SetAuxiliaryCollisionPosition
     mov r0, #0x0
     ldmia sp!, {r3, r4, r5, pc}
-.size func_020184d4, . - func_020184d4
+.size GamePhaseActorScriptVm_SetAuxiliaryCollisionPosition, . - GamePhaseActorScriptVm_SetAuxiliaryCollisionPosition

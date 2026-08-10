@@ -3,8 +3,8 @@
 .extern GamePhaseScriptVm_Pop
 .extern Actor_EnsureAuxiliaryCollisionResource
 .extern Actor_DestroyAuxiliaryCollisionResource
-.global func_020185f4
-func_020185f4:
+.global GamePhaseActorScriptVm_SetAuxiliaryCollisionResourceEnabled
+GamePhaseActorScriptVm_SetAuxiliaryCollisionResourceEnabled:
     stmdb sp!, {r4, lr}
     mov r4, r0
     bl GamePhaseScriptVm_Pop
@@ -25,4 +25,4 @@ L_02018630:
     str r0, [r1, #0x14]
     mov r0, #0x0
     ldmia sp!, {r4, pc}
-.size func_020185f4, . - func_020185f4
+.size GamePhaseActorScriptVm_SetAuxiliaryCollisionResourceEnabled, . - GamePhaseActorScriptVm_SetAuxiliaryCollisionResourceEnabled
