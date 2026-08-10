@@ -28,8 +28,8 @@ extern void ByteTileMapOwner_Init(void *);
 extern void ByteTileMapOwner_Destroy(void *);
 extern void VecFx32Object_Init(void *);
 extern void VecFx32Object_Destroy(void *);
-extern void func_0202b730(void *);
-extern void func_0202b834(void *);
+extern void AnimatedTileStagingBuffer_Init(void *);
+extern void AnimatedTileStagingBuffer_Destroy(void *);
 void DualLayerTileRendererBase_DestroyOwnedLayers(DualLayerTileRendererBase *);
 #ifdef __cplusplus
 }
@@ -44,7 +44,7 @@ DualLayerTileRendererBase *DualLayerTileRendererBase_InitBase(DualLayerTileRende
     ByteTileMapOwner_Init(self);
     *(void ***)self = (void **)gDualLayerTileRendererBaseVtable;
     VecFx32Object_Init(self->vector_50);
-    func_0202b730(self->renderer_60);
+    AnimatedTileStagingBuffer_Init(self->renderer_60);
     self->layers_28[0] = 0;
     self->layers_28[1] = 0;
     self->field_44 = 0;
@@ -59,7 +59,7 @@ DualLayerTileRendererBase *DualLayerTileRendererBase_Init(DualLayerTileRendererB
     ByteTileMapOwner_Init(self);
     *(void ***)self = (void **)gDualLayerTileRendererBaseVtable;
     VecFx32Object_Init(self->vector_50);
-    func_0202b730(self->renderer_60);
+    AnimatedTileStagingBuffer_Init(self->renderer_60);
     self->layers_28[0] = 0;
     self->layers_28[1] = 0;
     self->field_44 = 0;
@@ -73,7 +73,7 @@ DualLayerTileRendererBase *DualLayerTileRendererBase_DestroyComplete(DualLayerTi
 {
     *(void ***)self = (void **)gDualLayerTileRendererBaseVtable;
     DualLayerTileRendererBase_DestroyOwnedLayers(self);
-    func_0202b834(self->renderer_60);
+    AnimatedTileStagingBuffer_Destroy(self->renderer_60);
     VecFx32Object_Destroy(self->vector_50);
     ByteTileMapOwner_Destroy(self);
     return self;
@@ -84,7 +84,7 @@ DualLayerTileRendererBase *DualLayerTileRendererBase_DestroyAndFree(DualLayerTil
 {
     *(void ***)self = (void **)gDualLayerTileRendererBaseVtable;
     DualLayerTileRendererBase_DestroyOwnedLayers(self);
-    func_0202b834(self->renderer_60);
+    AnimatedTileStagingBuffer_Destroy(self->renderer_60);
     VecFx32Object_Destroy(self->vector_50);
     ByteTileMapOwner_Destroy(self);
     Heap_Free(self);
@@ -96,7 +96,7 @@ DualLayerTileRendererBase *DualLayerTileRendererBase_Destroy(DualLayerTileRender
 {
     *(void ***)self = (void **)gDualLayerTileRendererBaseVtable;
     DualLayerTileRendererBase_DestroyOwnedLayers(self);
-    func_0202b834(self->renderer_60);
+    AnimatedTileStagingBuffer_Destroy(self->renderer_60);
     VecFx32Object_Destroy(self->vector_50);
     ByteTileMapOwner_Destroy(self);
     return self;

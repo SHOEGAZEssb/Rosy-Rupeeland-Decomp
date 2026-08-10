@@ -7,9 +7,9 @@
 .extern NcgFile_Init
 .extern NcgFile_Destroy
 .extern NcgFile_LoadCompressedFromFile
-.extern func_0202b750
-.extern func_0202b834
-.extern func_0202b838
+.extern AnimatedTileStagingBuffer_InitFromSource
+.extern AnimatedTileStagingBuffer_Destroy
+.extern AnimatedTileStagingBuffer_Assign
 
     .global DualLayerTileRenderer_LoadEmbeddedRendererEntry
     .type DualLayerTileRenderer_LoadEmbeddedRendererEntry, @function
@@ -37,12 +37,12 @@ DualLayerTileRenderer_LoadEmbeddedRendererEntry: ; 0x02029ca4
     mov r2, r4
     add r0, sp, #0x14
     add r1, sp, #0x0
-    bl func_0202b750
+    bl AnimatedTileStagingBuffer_InitFromSource
     add r0, r5, #0x60
     add r1, sp, #0x14
-    bl func_0202b838
+    bl AnimatedTileStagingBuffer_Assign
     add r0, sp, #0x14
-    bl func_0202b834
+    bl AnimatedTileStagingBuffer_Destroy
     add r0, sp, #0x1800
     add r0, r0, #0x30
     bl GameFile_Destroy

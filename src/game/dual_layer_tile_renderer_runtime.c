@@ -80,7 +80,7 @@ extern void func_0202badc(void *);
 extern void VecFx32_Subtract(void *, const void *, const void *);
 extern void VecFx32Object_Destroy(void *);
 extern void TileLayer_ScrollToPixelPosition(void *, s32, s32);
-extern void func_0202b930(void *);
+extern void AnimatedTileStagingBuffer_Advance(void *);
 extern void func_020b1854(void *, s32, s32);
 extern void func_020b17ec(void *, s32, s32);
 extern void func_020b44e8(void);
@@ -102,10 +102,10 @@ extern void TileLayer_SetMetatileIndex(void *, s32, s32, s32);
 extern u16 TileLayer_GetSourceCell(void *, ...);
 extern void TileLayer_SetSourceCellUpperBits(void *, s32, s32, s32);
 extern void ByteTileMapOwner_SetCell(void *, s32, s32, s32);
-extern void *func_0202b9bc(void *);
-extern void func_0202b750(void *, void *, s32);
-extern void func_0202b838(void *, const void *);
-extern void func_0202b834(void *);
+extern void AnimatedTileStagingBuffer_SetPaused(void *, s32);
+extern void AnimatedTileStagingBuffer_InitFromSource(void *, const void *, const void *);
+extern void AnimatedTileStagingBuffer_Assign(void *, const void *);
+extern void AnimatedTileStagingBuffer_Destroy(void *);
 extern void DualLayerTileRenderer_UploadGraphics(DualLayerTileRenderer *);
 extern void DualLayerTileRenderer_UploadPalette(DualLayerTileRenderer *);
 #ifdef __cplusplus
@@ -245,7 +245,7 @@ void DualLayerTileRenderer_UpdatePosition(DualLayerTileRenderer *self, const voi
     if (self->layers_28[1])
         TileLayer_ScrollToPixelPosition(self->layers_28[1], x, y);
     if (*(u32 *)(self->base_00 + 0x1878) & 1) {
-        func_0202b930(self->embeddedRenderer_60);
+        AnimatedTileStagingBuffer_Advance(self->embeddedRenderer_60);
         if ((self->flags_24 >> 1) & 1) {
             void *handle = *(void **)(self->base_00 + 0x1874);
             if (self->engineMode_30 == 1)
@@ -390,14 +390,15 @@ void DualLayerTileRenderer_FillTileRectangle(DualLayerTileRenderer *self, s32 la
             ((RendererTileMethod)(*(void ***)self)[12])(self, layer, value, x, y);
 }
 
-/* Return the query result for the embedded renderer at offset 0x60. */
-void *DualLayerTileRenderer_GetEmbeddedRendererState(DualLayerTileRenderer *self)
+/* Forward the pause state to the animated tile staging buffer at offset 0x60. */
+void DualLayerTileRenderer_SetEmbeddedAnimationPaused(DualLayerTileRenderer *self, s32 paused)
 {
-    return func_0202b9bc(self->embeddedRenderer_60);
+    AnimatedTileStagingBuffer_SetPaused(self->embeddedRenderer_60, paused);
 }
 
-/* Load fixed archive data into a temporary large renderer and copy it into offset 0x60. */
-void DualLayerTileRenderer_LoadEmbeddedRendererEntry(DualLayerTileRenderer *self, s32 index)
+/* Load fixed archive graphics into a temporary animated staging buffer and copy it into offset 0x60. */
+void DualLayerTileRenderer_LoadEmbeddedRendererEntry(DualLayerTileRenderer *self,
+                                                     const void *schedule)
 {
     u8 resource[0x14];
     u8 file[0x4c];
@@ -408,9 +409,9 @@ void DualLayerTileRenderer_LoadEmbeddedRendererEntry(DualLayerTileRenderer *self
     NcgFile_LoadCompressedFromFile(resource, file,
                   *(const u32 *)(self->config_1c + 0),
                   *(const u32 *)(self->config_1c + 4));
-    func_0202b750(temporary, resource, index);
-    func_0202b838(self->embeddedRenderer_60, temporary);
-    func_0202b834(temporary);
+    AnimatedTileStagingBuffer_InitFromSource(temporary, resource, schedule);
+    AnimatedTileStagingBuffer_Assign(self->embeddedRenderer_60, temporary);
+    AnimatedTileStagingBuffer_Destroy(temporary);
     GameFile_Destroy(file);
     NcgFile_Destroy(resource);
 }

@@ -2,9 +2,9 @@
 .text
 .extern MI_CpuCopy8
 
-    .global func_0202b750
-    .type func_0202b750, @function
-func_0202b750: ; 0x0202b750
+    .global AnimatedTileStagingBuffer_InitFromSource
+    .type AnimatedTileStagingBuffer_InitFromSource, @function
+AnimatedTileStagingBuffer_InitFromSource: ; 0x0202b750
     stmdb sp!, {r4, r5, r6, lr}
     mov r5, r0
     add r3, r5, #0x1000
@@ -63,4 +63,4 @@ func_0202b750: ; 0x0202b750
     mov r0, r5
     ldmia sp!, {r4, r5, r6, pc}
 .L_0202b830: .word 0xffff000f
-    .size func_0202b750, . - func_0202b750
+    .size AnimatedTileStagingBuffer_InitFromSource, . - AnimatedTileStagingBuffer_InitFromSource

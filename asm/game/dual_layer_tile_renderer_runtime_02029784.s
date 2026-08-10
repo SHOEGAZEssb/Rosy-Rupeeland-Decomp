@@ -3,7 +3,7 @@
 .extern VecFx32Object_Destroy
 .extern VecFx32_Subtract
 .extern TileLayer_ScrollToPixelPosition
-.extern func_0202b930
+.extern AnimatedTileStagingBuffer_Advance
 .extern func_0202badc
 .extern func_020b17ec
 .extern func_020b1854
@@ -43,7 +43,7 @@ DualLayerTileRenderer_UpdatePosition: ; 0x02029784
     tst r0, #0x1
     beq .L_02029854
     add r0, r4, #0x60
-    bl func_0202b930
+    bl AnimatedTileStagingBuffer_Advance
     ldr r0, [r4, #0x24]
     mov r0, r0, lsl #0x1e
     movs r0, r0, lsr #0x1f

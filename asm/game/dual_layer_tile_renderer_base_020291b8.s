@@ -2,7 +2,7 @@
 .text
 .extern gDualLayerTileRendererBaseVtable
 .extern VecFx32Object_Init
-.extern func_0202b730
+.extern AnimatedTileStagingBuffer_Init
 .extern ByteTileMapOwner_Init
 
     .global DualLayerTileRendererBase_InitBase
@@ -16,7 +16,7 @@ DualLayerTileRendererBase_InitBase: ; 0x020291b8
     str r1, [r4, #0x0]
     bl VecFx32Object_Init
     add r0, r4, #0x60
-    bl func_0202b730
+    bl AnimatedTileStagingBuffer_Init
     mov r2, #0x0
     mov r1, r2
 .L_020291e4:

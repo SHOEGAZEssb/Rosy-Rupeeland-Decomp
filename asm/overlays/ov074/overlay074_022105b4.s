@@ -18,7 +18,7 @@
 .extern GamePhaseState_ApplyPlacementState
 .extern GamePhaseResumeScene_Init
 .extern GamePhaseAreaScene_SetEnabled
-.extern DualLayerTileRenderer_GetEmbeddedRendererState
+.extern DualLayerTileRenderer_SetEmbeddedAnimationPaused
 .extern ActorCollection_SetEnabled
 .extern func_ov074_02210878
 .extern gHeapContext
@@ -59,7 +59,7 @@ func_ov074_022105b4:
     ldr r0, [r0, #0x0]
     add r0, r0, #0x2000
     ldr r0, [r0, #0xed4]
-    bl DualLayerTileRenderer_GetEmbeddedRendererState
+    bl DualLayerTileRenderer_SetEmbeddedAnimationPaused
     ldr r0, .L_02210720
     mov r1, #0x1
     ldr r0, [r0, #0x0]
@@ -101,7 +101,7 @@ func_ov074_022105b4:
     ldr r0, [r0, #0x0]
     add r0, r0, #0x2000
     ldr r0, [r0, #0xed4]
-    bl DualLayerTileRenderer_GetEmbeddedRendererState
+    bl DualLayerTileRenderer_SetEmbeddedAnimationPaused
     mov r0, #0x28
     ldr r1, .L_02210724
     ldr r3, .L_02210728

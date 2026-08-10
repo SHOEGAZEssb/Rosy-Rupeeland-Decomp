@@ -3,9 +3,9 @@
 .extern func_020b4554
 .extern func_020b581c
 
-    .global func_0202b854
-    .type func_0202b854, @function
-func_0202b854: ; 0x0202b854
+    .global AnimatedTileStagingBuffer_CopyFrom
+    .type AnimatedTileStagingBuffer_CopyFrom, @function
+AnimatedTileStagingBuffer_CopyFrom: ; 0x0202b854
     stmdb sp!, {r3, r4, r5, r6, r7, r8, r9, lr}
     mov r5, r1
     add r1, r5, #0x1000
@@ -63,4 +63,4 @@ func_0202b854: ; 0x0202b854
     blt .L_0202b8d8
     ldmia sp!, {r3, r4, r5, r6, r7, r8, r9, pc}
 .L_0202b92c: .word 0xffff000f
-    .size func_0202b854, . - func_0202b854
+    .size AnimatedTileStagingBuffer_CopyFrom, . - AnimatedTileStagingBuffer_CopyFrom

@@ -4,7 +4,7 @@
 .extern gDualLayerTileRendererBaseVtable
 .extern VecFx32Object_Destroy
 .extern DualLayerTileRendererBase_DestroyOwnedLayers
-.extern func_0202b834
+.extern AnimatedTileStagingBuffer_Destroy
 .extern ByteTileMapOwner_Destroy
 
     .global DualLayerTileRendererBase_DestroyAndFree
@@ -16,7 +16,7 @@ DualLayerTileRendererBase_DestroyAndFree: ; 0x020292b0
     str r1, [r4, #0x0]
     bl DualLayerTileRendererBase_DestroyOwnedLayers
     add r0, r4, #0x60
-    bl func_0202b834
+    bl AnimatedTileStagingBuffer_Destroy
     add r0, r4, #0x50
     bl VecFx32Object_Destroy
     mov r0, r4

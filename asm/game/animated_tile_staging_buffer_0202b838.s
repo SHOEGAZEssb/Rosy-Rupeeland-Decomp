@@ -1,15 +1,15 @@
 ; Matching retail form; see src/game/animated_tile_staging_buffer.c.
 .text
-.extern func_0202b854
+.extern AnimatedTileStagingBuffer_CopyFrom
 
-    .global func_0202b838
-    .type func_0202b838, @function
-func_0202b838: ; 0x0202b838
+    .global AnimatedTileStagingBuffer_Assign
+    .type AnimatedTileStagingBuffer_Assign, @function
+AnimatedTileStagingBuffer_Assign: ; 0x0202b838
     stmdb sp!, {r4, lr}
     mov r4, r0
     cmp r4, r1
     ldmeqia sp!, {r4, pc}
-    bl func_0202b854
+    bl AnimatedTileStagingBuffer_CopyFrom
     mov r0, r4
     ldmia sp!, {r4, pc}
-    .size func_0202b838, . - func_0202b838
+    .size AnimatedTileStagingBuffer_Assign, . - AnimatedTileStagingBuffer_Assign

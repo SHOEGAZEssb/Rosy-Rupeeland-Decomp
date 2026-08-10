@@ -1,9 +1,9 @@
 ; Matching retail form; see src/game/animated_tile_staging_buffer.c.
 .text
 
-    .global func_0202b930
-    .type func_0202b930, @function
-func_0202b930: ; 0x0202b930
+    .global AnimatedTileStagingBuffer_Advance
+    .type AnimatedTileStagingBuffer_Advance, @function
+AnimatedTileStagingBuffer_Advance: ; 0x0202b930
     add r1, r0, #0x1000
     ldr r2, [r1, #0x818]
     tst r2, #0x1
@@ -40,4 +40,4 @@ func_0202b930: ; 0x0202b930
     sub r0, r2, #0x1
     str r0, [r1, #0x810]
     bx lr
-    .size func_0202b930, . - func_0202b930
+    .size AnimatedTileStagingBuffer_Advance, . - AnimatedTileStagingBuffer_Advance

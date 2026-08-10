@@ -31,14 +31,14 @@ extern "C" {
 extern void MI_CpuCopy8(const void *source, void *destination, u32 size);
 extern void func_020b4554(void *address, u32 size);
 extern void func_020b581c(const void *source, void *destination, u32 size);
-void func_0202b854(AnimatedTileStagingBuffer *self,
-                   const AnimatedTileStagingBuffer *source);
+void AnimatedTileStagingBuffer_CopyFrom(AnimatedTileStagingBuffer *self,
+                                        const AnimatedTileStagingBuffer *source);
 #ifdef __cplusplus
 }
 #endif
 
 /* Initialize the animation cursor to entry three and clear timing, selection, and flags. */
-void func_0202b730(AnimatedTileStagingBuffer *self)
+void AnimatedTileStagingBuffer_Init(AnimatedTileStagingBuffer *self)
 {
     self->scheduleIndex_180c = 3;
     self->delay_1810 = 0;
@@ -53,13 +53,13 @@ void func_0202b730(AnimatedTileStagingBuffer *self)
  * A disabled schedule returns without an explicit value in the recovered
  * control flow; callers observed in this unit do not consume that path's r0.
  */
-AnimatedTileStagingBuffer *func_0202b750(AnimatedTileStagingBuffer *self,
-                                        const AnimatedTileSource *source,
-                                        const AnimatedTileSchedule *schedule)
+AnimatedTileStagingBuffer *AnimatedTileStagingBuffer_InitFromSource(
+    AnimatedTileStagingBuffer *self, const AnimatedTileSource *source,
+    const AnimatedTileSchedule *schedule)
 {
     s32 i;
 
-    func_0202b730(self);
+    AnimatedTileStagingBuffer_Init(self);
     if (!schedule->enabled_00)
         return self;
     self->flags_1818 |= 1;
@@ -77,17 +77,17 @@ AnimatedTileStagingBuffer *func_0202b750(AnimatedTileStagingBuffer *self,
 }
 
 /* Perform no cleanup; all frame and schedule storage is embedded in self. */
-void func_0202b834(AnimatedTileStagingBuffer *self)
+void AnimatedTileStagingBuffer_Destroy(AnimatedTileStagingBuffer *self)
 {
     (void)self;
 }
 
 /* Copy source into self when distinct and return self. */
-AnimatedTileStagingBuffer *func_0202b838(AnimatedTileStagingBuffer *self,
-                                        const AnimatedTileStagingBuffer *source)
+AnimatedTileStagingBuffer *AnimatedTileStagingBuffer_Assign(
+    AnimatedTileStagingBuffer *self, const AnimatedTileStagingBuffer *source)
 {
     if (self != source)
-        func_0202b854(self, source);
+        AnimatedTileStagingBuffer_CopyFrom(self, source);
     return self;
 }
 
@@ -98,8 +98,8 @@ AnimatedTileStagingBuffer *func_0202b838(AnimatedTileStagingBuffer *self,
  * or hardware-facing effects of the two address-derived routines remain
  * unresolved.
  */
-void func_0202b854(AnimatedTileStagingBuffer *self,
-                   const AnimatedTileStagingBuffer *source)
+void AnimatedTileStagingBuffer_CopyFrom(AnimatedTileStagingBuffer *self,
+                                        const AnimatedTileStagingBuffer *source)
 {
     s32 i;
 
@@ -126,7 +126,7 @@ void func_0202b854(AnimatedTileStagingBuffer *self,
  * signed low nibble selects an 0x800-byte-relative frame address. Negative or
  * out-of-range selectors are preserved exactly; schedule data is trusted.
  */
-void func_0202b930(AnimatedTileStagingBuffer *self)
+void AnimatedTileStagingBuffer_Advance(AnimatedTileStagingBuffer *self)
 {
     s16 entry;
     s32 selector;
@@ -147,7 +147,7 @@ void func_0202b930(AnimatedTileStagingBuffer *self)
 }
 
 /* Set flag bit one when paused is nonzero, or clear it otherwise. */
-void func_0202b9bc(AnimatedTileStagingBuffer *self, s32 paused)
+void AnimatedTileStagingBuffer_SetPaused(AnimatedTileStagingBuffer *self, s32 paused)
 {
     if (paused)
         self->flags_1818 |= 2;
