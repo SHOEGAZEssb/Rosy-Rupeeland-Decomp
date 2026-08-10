@@ -26,7 +26,7 @@ static void clearVector(u8 *actor, u32 offset)
  * +0x220, +0x210, and +0x230 in that order. Returns no value; vector helpers
  * run their normal temporary-state lifecycle and actor configuration changes.
  */
-void func_0203c438(void *self)
+void ActorMotionProbe_ResetMotion(void *self)
 {
     u8 *actor = (u8 *)self;
     *(s32 *)(actor + 0x244) = 0;

@@ -1,13 +1,14 @@
 #include "tingle/game_phase_script_vm.h"
 
-/* Implement script opcodes that configure and stop the bound actor's recovered sequence subsystem. */
+/* Implement script opcodes that configure and reset motion-probe movement. */
 
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_0203c418(void *actor, s32 first, s32 second, s32 count,
-                          s32 fourth, s32 fifth);
-extern void func_0203c438(void *actor);
+extern void ActorMotionProbe_ConfigureMotion(void *actor, s32 first,
+                                             s32 second, s32 count,
+                                             s32 fourth, s32 fifth);
+extern void ActorMotionProbe_ResetMotion(void *actor);
 #ifdef __cplusplus
 }
 #endif
@@ -15,9 +16,9 @@ extern void func_0203c438(void *actor);
 /*
  * Pop fifth, fourth, count, second, and first parameters; clamp first and
  * second to at least zero and count to at least one; pass all five to
- * func_0203c418 for the bound actor; and return zero.
+ * ActorMotionProbe_ConfigureMotion for the bound actor; and return zero.
  */
-s32 func_02016f78(GamePhaseActorScriptVm *self)
+s32 GamePhaseActorScriptVm_ConfigureMotionProbe(GamePhaseActorScriptVm *self)
 {
     s32 fifth = (s32)func_02012704(&self->base);
     s32 fourth = (s32)func_02012704(&self->base);
@@ -30,13 +31,17 @@ s32 func_02016f78(GamePhaseActorScriptVm *self)
         second = 0;
     if (count < 1)
         count = 1;
-    func_0203c418(self->actor_84, first, second, count, fourth, fifth);
+    ActorMotionProbe_ConfigureMotion(self->actor_84, first, second, count,
+                                     fourth, fifth);
     return 0;
 }
 
-/* Stop or reset the bound actor's sequence through func_0203c438 and return zero. */
-s32 func_02016ff4(GamePhaseActorScriptVm *self)
+/*
+ * Reset the bound motion-probe actor through ActorMotionProbe_ResetMotion and
+ * return zero.
+ */
+s32 GamePhaseActorScriptVm_ResetMotionProbe(GamePhaseActorScriptVm *self)
 {
-    func_0203c438(self->actor_84);
+    ActorMotionProbe_ResetMotion(self->actor_84);
     return 0;
 }

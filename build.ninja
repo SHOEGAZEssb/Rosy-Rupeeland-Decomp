@@ -5246,7 +5246,7 @@ build build/reports/game_phase_script_vm_0201555c.json: objdiff build/decomp/del
   base_object = build/decomp/asm/game/game_phase_script_vm_0201555c.o
 build build/reports/game_phase_script_vm_0201555c.txt: match_report build/reports/game_phase_script_vm_0201555c.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_script_vm_0201555c.json
-  report_args = --section .text --function func_0201555c --require-exact
+  report_args = --section .text --function GamePhaseActorScriptVm_SetMotionProbeScale --require-exact
 
 build build/reports/game_phase_script_vm_02015580.json: objdiff build/decomp/delinks/asm/game/game_phase_script_vm_02015580.o | build/decomp/asm/game/game_phase_script_vm_02015580.o
   target_object = build/decomp/delinks/asm/game/game_phase_script_vm_02015580.o
@@ -5629,14 +5629,14 @@ build build/reports/game_phase_script_vm_02016f78.json: objdiff build/decomp/del
   base_object = build/decomp/asm/game/game_phase_script_vm_02016f78.o
 build build/reports/game_phase_script_vm_02016f78.txt: match_report build/reports/game_phase_script_vm_02016f78.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_script_vm_02016f78.json
-  report_args = --section .text --function func_02016f78 --require-exact
+  report_args = --section .text --function GamePhaseActorScriptVm_ConfigureMotionProbe --require-exact
 
 build build/reports/game_phase_script_vm_02016ff4.json: objdiff build/decomp/delinks/asm/game/game_phase_script_vm_02016ff4.o | build/decomp/asm/game/game_phase_script_vm_02016ff4.o
   target_object = build/decomp/delinks/asm/game/game_phase_script_vm_02016ff4.o
   base_object = build/decomp/asm/game/game_phase_script_vm_02016ff4.o
 build build/reports/game_phase_script_vm_02016ff4.txt: match_report build/reports/game_phase_script_vm_02016ff4.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_script_vm_02016ff4.json
-  report_args = --section .text --function func_02016ff4 --require-exact
+  report_args = --section .text --function GamePhaseActorScriptVm_ResetMotionProbe --require-exact
 
 build build/reports/game_phase_script_vm_actor_sequence_opcodes.txt: phony build/reports/game_phase_script_vm_02016f78.txt build/reports/game_phase_script_vm_02016ff4.txt
 
@@ -16243,7 +16243,7 @@ build build/reports/actor_motion_probe_object_lifecycle_0203c134.json: objdiff b
   base_object = build/decomp/asm/game/actor_motion_probe_object_lifecycle_0203c134.o
 build build/reports/actor_motion_probe_object_lifecycle_0203c134.txt: match_report build/reports/actor_motion_probe_object_lifecycle_0203c134.json | tools/report_objdiff.py
   report_json = build/reports/actor_motion_probe_object_lifecycle_0203c134.json
-  report_args = --section .text --function func_0203c134 --function func_0203c140 --function func_0203c1c0 --function func_0203c1f0 --function func_0203c228 --function func_0203c234 --require-exact
+  report_args = --section .text --function ActorMotionProbe_DrawDebugInfo --function ActorMotionProbe_Init --function ActorMotionProbe_Destroy --function ActorMotionProbe_DestroyAndFree --function ActorMotionProbe_InitializeFromDescriptor --function ActorMotionProbe_UpdateFrame --require-exact
 build build/reports/actor_motion_probe_object_lifecycle.txt: phony build/reports/actor_motion_probe_object_lifecycle_0203c134.txt
 
 build actor_motion_probe_object_lifecycle: phony build/decomp/src/game/actor_motion_probe_object_lifecycle.o build/decomp/asm/game/actor_motion_probe_object_lifecycle_0203c134.o build/reports/actor_motion_probe_object_lifecycle.txt
@@ -16260,7 +16260,7 @@ build build/reports/actor_motion_probe_touch_update_0203c240.json: objdiff build
   base_object = build/decomp/asm/game/actor_motion_probe_touch_update_0203c240.o
 build build/reports/actor_motion_probe_touch_update_0203c240.txt: match_report build/reports/actor_motion_probe_touch_update_0203c240.json | tools/report_objdiff.py
   report_json = build/reports/actor_motion_probe_touch_update_0203c240.json
-  report_args = --section .text --function func_0203c240 --require-exact
+  report_args = --section .text --function ActorMotionProbe_UpdateTouchMotion --require-exact
 build build/reports/actor_motion_probe_touch_update.txt: phony build/reports/actor_motion_probe_touch_update_0203c240.txt
 
 build actor_motion_probe_touch_update: phony build/decomp/src/game/actor_motion_probe_touch_update.o build/decomp/asm/game/actor_motion_probe_touch_update_0203c240.o build/reports/actor_motion_probe_touch_update.txt
@@ -16277,7 +16277,7 @@ build build/reports/actor_motion_probe_configuration_0203c410.json: objdiff buil
   base_object = build/decomp/asm/game/actor_motion_probe_configuration_0203c410.o
 build build/reports/actor_motion_probe_configuration_0203c410.txt: match_report build/reports/actor_motion_probe_configuration_0203c410.json | tools/report_objdiff.py
   report_json = build/reports/actor_motion_probe_configuration_0203c410.json
-  report_args = --section .text --function func_0203c410 --function func_0203c418 --require-exact
+  report_args = --section .text --function ActorMotionProbe_SetScale --function ActorMotionProbe_ConfigureMotion --require-exact
 build build/reports/actor_motion_probe_configuration.txt: phony build/reports/actor_motion_probe_configuration_0203c410.txt
 
 build actor_motion_probe_configuration: phony build/decomp/src/game/actor_motion_probe_configuration.o build/decomp/asm/game/actor_motion_probe_configuration_0203c410.o build/reports/actor_motion_probe_configuration.txt
@@ -16294,7 +16294,7 @@ build build/reports/actor_motion_probe_reset_0203c438.json: objdiff build/decomp
   base_object = build/decomp/asm/game/actor_motion_probe_reset_0203c438.o
 build build/reports/actor_motion_probe_reset_0203c438.txt: match_report build/reports/actor_motion_probe_reset_0203c438.json | tools/report_objdiff.py
   report_json = build/reports/actor_motion_probe_reset_0203c438.json
-  report_args = --section .text --function func_0203c438 --require-exact
+  report_args = --section .text --function ActorMotionProbe_ResetMotion --require-exact
 build build/reports/actor_motion_probe_reset.txt: phony build/reports/actor_motion_probe_reset_0203c438.txt
 
 build actor_motion_probe_reset: phony build/decomp/src/game/actor_motion_probe_reset.o build/decomp/asm/game/actor_motion_probe_reset_0203c438.o build/reports/actor_motion_probe_reset.txt

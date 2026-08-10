@@ -52,7 +52,7 @@ static s32 centeredRandom(s32 range)
  * func_02031cac. Returns no value; RNG, vector lifecycles, attachment writes,
  * and touch dispatch mutate global/actor/presentation state.
  */
-void func_0203c240(void *source, void *self)
+void ActorMotionProbe_UpdateTouchMotion(void *source, void *self)
 {
     u8 *output = (u8 *)source;
     u8 *actor = (u8 *)self;

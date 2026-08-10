@@ -1,9 +1,9 @@
 ; Matching retail form; see src/game/game_phase_script_vm_actor_sequence_opcodes.c.
 .text
 .extern func_02012704
-.extern func_0203c418
-.global func_02016f78
-func_02016f78:
+.extern ActorMotionProbe_ConfigureMotion
+.global GamePhaseActorScriptVm_ConfigureMotionProbe
+GamePhaseActorScriptVm_ConfigureMotionProbe:
     stmdb sp!, {r4, r5, r6, r7, r8, lr}
     sub sp, sp, #8
     mov r8, r0
@@ -31,8 +31,8 @@ func_02016f78:
     ldr r0, [r8, #0x84]
     mov r2, r7
     mov r3, r6
-    bl func_0203c418
+    bl ActorMotionProbe_ConfigureMotion
     mov r0, #0
     add sp, sp, #8
     ldmia sp!, {r4, r5, r6, r7, r8, pc}
-    .size func_02016f78, . - func_02016f78
+    .size GamePhaseActorScriptVm_ConfigureMotionProbe, . - GamePhaseActorScriptVm_ConfigureMotionProbe

@@ -12,9 +12,9 @@
 .extern func_020bf1f8
 .extern gSceneTouchInitialData
 .extern genrand_int32
-    .global func_0203c240
-    .type func_0203c240, @function
-func_0203c240: ; 0x0203c240
+    .global ActorMotionProbe_UpdateTouchMotion
+    .type ActorMotionProbe_UpdateTouchMotion, @function
+ActorMotionProbe_UpdateTouchMotion: ; 0x0203c240
     stmdb sp!, {r4, r5, r6, r7, r8, r9, lr}
     sub sp, sp, #0x2c
     mov r8, r1
@@ -134,5 +134,5 @@ func_0203c240: ; 0x0203c240
 .L_0203c408: .word data_020c9670
 .L_0203c40c: .word gSceneTouchInitialData
 
-    .size func_0203c240, . - func_0203c240
+    .size ActorMotionProbe_UpdateTouchMotion, . - ActorMotionProbe_UpdateTouchMotion
 

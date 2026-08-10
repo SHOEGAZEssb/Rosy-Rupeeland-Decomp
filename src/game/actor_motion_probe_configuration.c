@@ -1,9 +1,9 @@
 #include "tingle/types.h"
 
-/* Configure the recovered motion-probe actor's scale and randomized motion parameters. */
+/* Configure the motion-probe actor's scale and randomized motion parameters. */
 
 /* Store scale at actor word +0x20c; return no value and affect no external state. */
-void func_0203c410(void *self, s32 scale)
+void ActorMotionProbe_SetScale(void *self, s32 scale)
 {
     *(s32 *)((u8 *)self + 0x20c) = scale;
 }
@@ -13,8 +13,9 @@ void func_0203c410(void *self, s32 scale)
  * stack-supplied oscillation values at +0x250/+0x254. Return no value; only the
  * supplied actor's recovered configuration fields change.
  */
-void func_0203c418(void *self, s32 xRange, s32 yRange, s32 duration,
-                   s32 amplitude, s32 phaseStep)
+void ActorMotionProbe_ConfigureMotion(void *self, s32 xRange, s32 yRange,
+                                      s32 duration, s32 amplitude,
+                                      s32 phaseStep)
 {
     u8 *actor = (u8 *)self;
     *(s32 *)(actor + 0x244) = xRange;

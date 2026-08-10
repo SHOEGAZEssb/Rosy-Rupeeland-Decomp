@@ -9,17 +9,17 @@
 .extern ActorDerivedRuntime_DestroyAlternate
 .extern Actor_InitializeFromDescriptor
 .extern ActorDerivedRuntime_UpdateFrame
-    .global func_0203c134
-    .type func_0203c134, @function
-func_0203c134: ; 0x0203c134
+    .global ActorMotionProbe_DrawDebugInfo
+    .type ActorMotionProbe_DrawDebugInfo, @function
+ActorMotionProbe_DrawDebugInfo: ; 0x0203c134
     ldr ip, .L_0203c13c
     bx ip
 .L_0203c13c: .word func_02033b38
-    .size func_0203c134, . - func_0203c134
+    .size ActorMotionProbe_DrawDebugInfo, . - ActorMotionProbe_DrawDebugInfo
 
-    .global func_0203c140
-    .type func_0203c140, @function
-func_0203c140: ; 0x0203c140
+    .global ActorMotionProbe_Init
+    .type ActorMotionProbe_Init, @function
+ActorMotionProbe_Init: ; 0x0203c140
     stmdb sp!, {r4, lr}
     mov r4, r0
     bl ActorDerivedRuntime_Init
@@ -52,11 +52,11 @@ func_0203c140: ; 0x0203c140
     str r1, [r4, #0x254]
     ldmia sp!, {r4, pc}
 .L_0203c1bc: .word data_020df61c
-    .size func_0203c140, . - func_0203c140
+    .size ActorMotionProbe_Init, . - ActorMotionProbe_Init
 
-    .global func_0203c1c0
-    .type func_0203c1c0, @function
-func_0203c1c0: ; 0x0203c1c0
+    .global ActorMotionProbe_Destroy
+    .type ActorMotionProbe_Destroy, @function
+ActorMotionProbe_Destroy: ; 0x0203c1c0
     stmdb sp!, {r4, lr}
     mov r4, r0
     add r0, r4, #0x230
@@ -69,11 +69,11 @@ func_0203c1c0: ; 0x0203c1c0
     bl ActorDerivedRuntime_DestroyAlternate
     mov r0, r4
     ldmia sp!, {r4, pc}
-    .size func_0203c1c0, . - func_0203c1c0
+    .size ActorMotionProbe_Destroy, . - ActorMotionProbe_Destroy
 
-    .global func_0203c1f0
-    .type func_0203c1f0, @function
-func_0203c1f0: ; 0x0203c1f0
+    .global ActorMotionProbe_DestroyAndFree
+    .type ActorMotionProbe_DestroyAndFree, @function
+ActorMotionProbe_DestroyAndFree: ; 0x0203c1f0
     stmdb sp!, {r4, lr}
     mov r4, r0
     add r0, r4, #0x230
@@ -88,21 +88,21 @@ func_0203c1f0: ; 0x0203c1f0
     bl Heap_Free
     mov r0, r4
     ldmia sp!, {r4, pc}
-    .size func_0203c1f0, . - func_0203c1f0
+    .size ActorMotionProbe_DestroyAndFree, . - ActorMotionProbe_DestroyAndFree
 
-    .global func_0203c228
-    .type func_0203c228, @function
-func_0203c228: ; 0x0203c228
+    .global ActorMotionProbe_InitializeFromDescriptor
+    .type ActorMotionProbe_InitializeFromDescriptor, @function
+ActorMotionProbe_InitializeFromDescriptor: ; 0x0203c228
     ldr ip, .L_0203c230
     bx ip
 .L_0203c230: .word Actor_InitializeFromDescriptor
-    .size func_0203c228, . - func_0203c228
+    .size ActorMotionProbe_InitializeFromDescriptor, . - ActorMotionProbe_InitializeFromDescriptor
 
-    .global func_0203c234
-    .type func_0203c234, @function
-func_0203c234: ; 0x0203c234
+    .global ActorMotionProbe_UpdateFrame
+    .type ActorMotionProbe_UpdateFrame, @function
+ActorMotionProbe_UpdateFrame: ; 0x0203c234
     ldr ip, .L_0203c23c
     bx ip
 .L_0203c23c: .word ActorDerivedRuntime_UpdateFrame
-    .size func_0203c234, . - func_0203c234
+    .size ActorMotionProbe_UpdateFrame, . - ActorMotionProbe_UpdateFrame
 

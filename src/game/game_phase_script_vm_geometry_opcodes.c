@@ -5,7 +5,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_0203c410(void *actor, s32 valueFx);
+extern void ActorMotionProbe_SetScale(void *actor, s32 valueFx);
 extern void func_02072bdc(void *object, u8 value);
 extern s32 func_020adc40(s32 value);
 #ifdef __cplusplus
@@ -22,11 +22,14 @@ u32 *func_02015548(u32 *result, s32 left, s32 top, s32 right, s32 bottom)
     return result;
 }
 
-/* Pop a value, shift it left four, pass it to func_0203c410, and return zero. */
-s32 func_0201555c(GamePhaseActorScriptVm *self)
+/*
+ * Pop a value, shift it left four, pass it to ActorMotionProbe_SetScale, and
+ * return zero.
+ */
+s32 GamePhaseActorScriptVm_SetMotionProbeScale(GamePhaseActorScriptVm *self)
 {
     s32 value = (s32)func_02012704(&self->base);
-    func_0203c410(self->actor_84, value << 4);
+    ActorMotionProbe_SetScale(self->actor_84, value << 4);
     return 0;
 }
 

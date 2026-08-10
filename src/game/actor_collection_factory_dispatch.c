@@ -48,7 +48,7 @@ extern "C" {
 #define DECLARE_ACTOR_CTOR(name) extern void *name(void *, const void *)
 DECLARE_ACTOR_CTOR(ActorDerivedType1_Init);
 DECLARE_ACTOR_CTOR(ActorDerivedRuntime_InitAlternate);
-DECLARE_ACTOR_CTOR(func_0203c140);
+DECLARE_ACTOR_CTOR(ActorMotionProbe_Init);
 DECLARE_ACTOR_CTOR(func_0203c4e0);
 DECLARE_ACTOR_CTOR(func_0203ca28);
 DECLARE_ACTOR_CTOR(func_0203d2a8);
@@ -154,7 +154,7 @@ static const ActorFactorySpec sKind2Specs[36] = {
 };
 
 static const ActorFactorySpec sKind3Specs[25] = {
-    SPEC(0x208, ActorDerivedRuntime_InitAlternate), SPEC(0x258, func_0203c140),
+    SPEC(0x208, ActorDerivedRuntime_InitAlternate), SPEC(0x258, ActorMotionProbe_Init),
     SPEC(0x208, ActorDerivedRuntime_InitAlternate), SPEC(0x218, func_0204d068),
     SPEC(0x208, ActorDerivedRuntime_InitAlternate), SPEC(0x20c, func_0204d488),
     SPEC(0x244, func_ov081_02212c40), SPEC(0x244, func_ov081_02212c40),

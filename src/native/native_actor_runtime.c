@@ -349,7 +349,7 @@ static void InitializeModeNibbleActor(TingleNativeActorImage *actor)
     actor->initialization_stages |= TINGLE_NATIVE_ACTOR_STAGE_KIND3_DERIVED;
 }
 
-/* Reproduce the complete vector and scalar extension in func_0203c140. */
+/* Reproduce the complete vector and scalar extension in ActorMotionProbe_Init. */
 static void InitializeMotionProbeActor(TingleNativeActorImage *actor)
 {
     u8 *bytes = actor->bytes;

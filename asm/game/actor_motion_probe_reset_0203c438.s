@@ -3,9 +3,9 @@
 .extern func_0200500c
 .extern func_02005058
 .extern func_020050a4
-    .global func_0203c438
-    .type func_0203c438, @function
-func_0203c438: ; 0x0203c438
+    .global ActorMotionProbe_ResetMotion
+    .type ActorMotionProbe_ResetMotion, @function
+ActorMotionProbe_ResetMotion: ; 0x0203c438
     stmdb sp!, {r4, lr}
     sub sp, sp, #0x30
     mov r1, #0x0
@@ -49,5 +49,5 @@ func_0203c438: ; 0x0203c438
     add sp, sp, #0x30
     ldmia sp!, {r4, pc}
 
-    .size func_0203c438, . - func_0203c438
+    .size ActorMotionProbe_ResetMotion, . - ActorMotionProbe_ResetMotion
 

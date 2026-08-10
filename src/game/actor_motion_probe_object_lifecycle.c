@@ -1,7 +1,10 @@
 #include "tingle/heap.h"
 #include "tingle/types.h"
 
-/* Construct, destroy, debug-render, initialize, and update a motion-probe actor subclass. */
+/*
+ * Construct, destroy, debug-render, initialize, and update the motion-probe
+ * actor subclass.
+ */
 extern void *data_020df61c;
 
 #ifdef __cplusplus
@@ -20,19 +23,19 @@ extern void ActorDerivedRuntime_UpdateFrame(void *actor);
 #endif
 
 /* Forward actor and debug column to func_02033b38; return no value. */
-void func_0203c134(void *actor, s32 column)
+void ActorMotionProbe_DrawDebugInfo(void *actor, s32 column)
 {
     func_02033b38(actor, column);
 }
 
 /*
- * Initialize the recovered base through ActorDerivedRuntime_Init, install this subclass
- * vtable, set halfwords +0x208/+0x20a to 0x4000/zero and word +0x20c to
- * 0x1000, initialize vectors +0x210/+0x220/+0x230, clear +0x240, and set
- * +0x244/+0x248/+0x24c/+0x250/+0x254 to 16/16/30/5/1600. Return self; base
- * and vector initialization establish actor-owned runtime state.
+ * Initialize the recovered base through ActorDerivedRuntime_Init, install the
+ * motion-probe vtable, set halfwords +0x208/+0x20a to 0x4000/zero and word
+ * +0x20c to 0x1000, initialize vectors +0x210/+0x220/+0x230, clear +0x240,
+ * and set +0x244/+0x248/+0x24c/+0x250/+0x254 to 16/16/30/5/1600. Return
+ * self; base and vector initialization establish actor-owned runtime state.
  */
-void *func_0203c140(void *self)
+void *ActorMotionProbe_Init(void *self)
 {
     u8 *actor = (u8 *)ActorDerivedRuntime_Init(self);
     *(void **)actor = data_020df61c;
@@ -51,8 +54,11 @@ void *func_0203c140(void *self)
     return actor;
 }
 
-/* Destroy vectors +0x230/+0x220/+0x210 in reverse order, run base teardown, and return self. */
-void *func_0203c1c0(void *self)
+/*
+ * Destroy vectors +0x230/+0x220/+0x210 in reverse order, run base teardown,
+ * and return self.
+ */
+void *ActorMotionProbe_Destroy(void *self)
 {
     u8 *actor = (u8 *)self;
     func_02005058(actor + 0x230);
@@ -62,22 +68,28 @@ void *func_0203c1c0(void *self)
     return actor;
 }
 
-/* Perform func_0203c1c0's teardown, free self, and return its former address. */
-void *func_0203c1f0(void *self)
+/*
+ * Perform ActorMotionProbe_Destroy's teardown, free self, and return its
+ * former address.
+ */
+void *ActorMotionProbe_DestroyAndFree(void *self)
 {
-    void *result = func_0203c1c0(self);
+    void *result = ActorMotionProbe_Destroy(self);
     Heap_Free(self);
     return result;
 }
 
 /* Forward actor and descriptor to Actor_InitializeFromDescriptor. */
-void func_0203c228(void *actor, const void *descriptor)
+void ActorMotionProbe_InitializeFromDescriptor(void *actor, const void *descriptor)
 {
     Actor_InitializeFromDescriptor(actor, descriptor);
 }
 
-/* Forward actor to base per-frame update ActorDerivedRuntime_UpdateFrame; return no value. */
-void func_0203c234(void *actor)
+/*
+ * Forward actor to base per-frame update ActorDerivedRuntime_UpdateFrame;
+ * return no value.
+ */
+void ActorMotionProbe_UpdateFrame(void *actor)
 {
     ActorDerivedRuntime_UpdateFrame(actor);
 }
