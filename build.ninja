@@ -17097,7 +17097,7 @@ build build/reports/actor_extended_type2_target_motion_02040f4c.json: objdiff bu
   base_object = build/decomp/asm/game/actor_extended_type2_target_motion_02040f4c.o
 build build/reports/actor_extended_type2_target_motion_02040f4c.txt: match_report build/reports/actor_extended_type2_target_motion_02040f4c.json | tools/report_objdiff.py
   report_json = build/reports/actor_extended_type2_target_motion_02040f4c.json
-  report_args = --section .text --function func_02040f4c --require-exact
+  report_args = --section .text --function ActorExtendedType2_UpdateTargetValidationMotion --require-exact
 build build/reports/actor_extended_type2_target_validation_motion.txt: phony build/reports/actor_extended_type2_target_motion_02040f4c.txt
 build actor_extended_type2_target_validation_motion: phony build/decomp/src/game/actor_extended_type2_target_validation_motion.o build/decomp/asm/game/actor_extended_type2_target_motion_02040f4c.o build/reports/actor_extended_type2_target_validation_motion.txt
 
@@ -17112,7 +17112,7 @@ build build/reports/actor_extended_type2_target_approach_020412a8.json: objdiff 
   base_object = build/decomp/asm/game/actor_extended_type2_target_approach_020412a8.o
 build build/reports/actor_extended_type2_target_approach_020412a8.txt: match_report build/reports/actor_extended_type2_target_approach_020412a8.json | tools/report_objdiff.py
   report_json = build/reports/actor_extended_type2_target_approach_020412a8.json
-  report_args = --section .text --function func_020412a8 --require-exact
+  report_args = --section .text --function ActorExtendedType2_UpdateTargetApproach --require-exact
 build build/reports/actor_extended_type2_target_approach.txt: phony build/reports/actor_extended_type2_target_approach_020412a8.txt
 build actor_extended_type2_target_approach: phony build/decomp/src/game/actor_extended_type2_target_approach.o build/decomp/asm/game/actor_extended_type2_target_approach_020412a8.o build/reports/actor_extended_type2_target_approach.txt
 
@@ -17127,7 +17127,7 @@ build build/reports/actor_extended_type2_target_follow_effect_02041424.json: obj
   base_object = build/decomp/asm/game/actor_extended_type2_target_follow_effect_02041424.o
 build build/reports/actor_extended_type2_target_follow_effect_02041424.txt: match_report build/reports/actor_extended_type2_target_follow_effect_02041424.json | tools/report_objdiff.py
   report_json = build/reports/actor_extended_type2_target_follow_effect_02041424.json
-  report_args = --section .text --function func_02041424 --require-exact
+  report_args = --section .text --function ActorExtendedType2_UpdateTargetFollowEffect --require-exact
 build build/reports/actor_extended_type2_target_follow_effect.txt: phony build/reports/actor_extended_type2_target_follow_effect_02041424.txt
 build actor_extended_type2_target_follow_effect: phony build/decomp/src/game/actor_extended_type2_target_follow_effect.o build/decomp/asm/game/actor_extended_type2_target_follow_effect_02041424.o build/reports/actor_extended_type2_target_follow_effect.txt
 
@@ -17142,7 +17142,7 @@ build build/reports/actor_extended_type2_terminal_update_0204157c.json: objdiff 
   base_object = build/decomp/asm/game/actor_extended_type2_terminal_update_0204157c.o
 build build/reports/actor_extended_type2_terminal_update_0204157c.txt: match_report build/reports/actor_extended_type2_terminal_update_0204157c.json | tools/report_objdiff.py
   report_json = build/reports/actor_extended_type2_terminal_update_0204157c.json
-  report_args = --section .text --function func_0204157c --function func_020415a8 --require-exact
+  report_args = --section .text --function ActorExtendedType2_ResetTerminalAttachmentState --function ActorExtendedType2_UpdateTerminalState18 --require-exact
 build build/reports/actor_extended_type2_terminal_update.txt: phony build/reports/actor_extended_type2_terminal_update_0204157c.txt
 build actor_extended_type2_terminal_update: phony build/decomp/src/game/actor_extended_type2_terminal_update.o build/decomp/asm/game/actor_extended_type2_terminal_update_0204157c.o build/reports/actor_extended_type2_terminal_update.txt
 
@@ -17157,7 +17157,7 @@ build build/reports/actor_extended_type2_late_state_callbacks_02041710.json: obj
   base_object = build/decomp/asm/game/actor_extended_type2_late_state_callbacks_02041710.o
 build build/reports/actor_extended_type2_late_state_callbacks_02041710.txt: match_report build/reports/actor_extended_type2_late_state_callbacks_02041710.json | tools/report_objdiff.py
   report_json = build/reports/actor_extended_type2_late_state_callbacks_02041710.json
-  report_args = --section .text --function func_02041710 --function func_0204176c --function func_020417d4 --require-exact
+  report_args = --section .text --function ActorExtendedType2_EnterState2WithCallbacks --function ActorExtendedType2_UpdateState22Countdown --function ActorExtendedType2_ReturnFalseLateState --require-exact
 build build/reports/actor_extended_type2_late_state_callbacks.txt: phony build/reports/actor_extended_type2_late_state_callbacks_02041710.txt
 build actor_extended_type2_late_state_callbacks: phony build/decomp/src/game/actor_extended_type2_late_state_callbacks.o build/decomp/asm/game/actor_extended_type2_late_state_callbacks_02041710.o build/reports/actor_extended_type2_late_state_callbacks.txt
 
@@ -17172,7 +17172,7 @@ build build/reports/actor_extended_type2_near_target_dispatch_020417dc.json: obj
   base_object = build/decomp/asm/game/actor_extended_type2_near_target_dispatch_020417dc.o
 build build/reports/actor_extended_type2_near_target_dispatch_020417dc.txt: match_report build/reports/actor_extended_type2_near_target_dispatch_020417dc.json | tools/report_objdiff.py
   report_json = build/reports/actor_extended_type2_near_target_dispatch_020417dc.json
-  report_args = --section .text --function func_020417dc --require-exact
+  report_args = --section .text --function ActorExtendedType2_DispatchNearTargetState --require-exact
 build build/reports/actor_extended_type2_near_target_dispatch.txt: phony build/reports/actor_extended_type2_near_target_dispatch_020417dc.txt
 build actor_extended_type2_near_target_dispatch: phony build/decomp/src/game/actor_extended_type2_near_target_dispatch.o build/decomp/asm/game/actor_extended_type2_near_target_dispatch_020417dc.o build/reports/actor_extended_type2_near_target_dispatch.txt
 

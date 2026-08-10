@@ -30,7 +30,7 @@ extern void *func_0201f864(void *allocation, ...);
  * may change actor, target, heap, random, and effect state; heap allocation is
  * the only direct SDK-style resource operation.
  */
-s32 func_02041424(void *self)
+s32 ActorExtendedType2_UpdateTargetFollowEffect(void *self)
 {
     u8 *actor = (u8 *)self;
     u8 *vtable = *(u8 **)actor;

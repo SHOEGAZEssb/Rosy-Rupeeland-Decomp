@@ -5,7 +5,8 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern s32 func_02040f4c(void *actor, void *descriptorRecord);
+extern s32 ActorExtendedType2_UpdateTargetValidationMotion(
+    void *actor, void *descriptorRecord);
 #ifdef __cplusplus
 }
 #endif
@@ -21,7 +22,8 @@ extern s32 func_02040f4c(void *actor, void *descriptorRecord);
  * ActorExtendedTable_UpdateStagedCounters. Cycle zero may next advance +0x2a0/+0x2a2. Finally increment
  * +0x298; a positive cycle remains in state 13 and returns zero, while cycle
  * zero falls through. The fallthrough path sets +0x260 bit 0x20 and returns
- * func_02040f4c(actor,descriptorRecord). Actor and callback state may change.
+ * ActorExtendedType2_UpdateTargetValidationMotion(actor, descriptorRecord).
+ * Actor and callback state may change.
  */
 s32 ActorExtendedTableCyclic_UpdateStagedCounters(void *self, void *descriptorRecord)
 {
@@ -80,5 +82,5 @@ s32 ActorExtendedTableCyclic_UpdateStagedCounters(void *self, void *descriptorRe
         }
     }
     *(u32 *)(actor + 0x260) |= 0x20;
-    return func_02040f4c(actor, descriptorRecord);
+    return ActorExtendedType2_UpdateTargetValidationMotion(actor, descriptorRecord);
 }

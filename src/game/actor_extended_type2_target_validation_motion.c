@@ -47,7 +47,7 @@ static s32 callback_pair_matches(const u8 *object, u32 firstOffset,
  * Actor, target, virtual, and temporary transform state may change; no direct
  * hardware access occurs.
  */
-s32 func_02040f4c(void *self, const void *descriptorRecord)
+s32 ActorExtendedType2_UpdateTargetValidationMotion(void *self, const void *descriptorRecord)
 {
     u8 *actor = (u8 *)self;
     const u8 *record = (const u8 *)descriptorRecord;

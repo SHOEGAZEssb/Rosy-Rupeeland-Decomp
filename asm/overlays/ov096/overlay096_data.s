@@ -90,17 +90,17 @@
 .extern func_ov096_02217ef8
 .extern ActorExtendedType2_RouteDescriptorTransition
 .extern ActorExtendedType2_TryCompleteAttachmentGate
-.extern func_02040f4c
-.extern func_020412a8
-.extern func_02041424
-.extern func_0204157c
-.extern func_020415a8
-.extern func_02041710
-.extern func_020417d4
-.extern func_020417dc
+.extern ActorExtendedType2_UpdateTargetValidationMotion
+.extern ActorExtendedType2_UpdateTargetApproach
+.extern ActorExtendedType2_UpdateTargetFollowEffect
+.extern ActorExtendedType2_ResetTerminalAttachmentState
+.extern ActorExtendedType2_UpdateTerminalState18
+.extern ActorExtendedType2_EnterState2WithCallbacks
+.extern ActorExtendedType2_ReturnFalseLateState
+.extern ActorExtendedType2_DispatchNearTargetState
 .extern func_0204194c
 .extern func_02041aec
-.extern func_0204176c
+.extern ActorExtendedType2_UpdateState22Countdown
 .extern func_02041c18
 .extern func_ov096_02217f4c
 .extern func_ov096_02217f6c
@@ -281,17 +281,17 @@ data_ov096_02218b98:
     .word func_ov096_02217ef8
     .word ActorExtendedType2_RouteDescriptorTransition
     .word ActorExtendedType2_TryCompleteAttachmentGate
-    .word func_02040f4c
-    .word func_020412a8
-    .word func_02041424
-    .word func_0204157c
-    .word func_020415a8
-    .word func_02041710
-    .word func_020417d4
-    .word func_020417dc
+    .word ActorExtendedType2_UpdateTargetValidationMotion
+    .word ActorExtendedType2_UpdateTargetApproach
+    .word ActorExtendedType2_UpdateTargetFollowEffect
+    .word ActorExtendedType2_ResetTerminalAttachmentState
+    .word ActorExtendedType2_UpdateTerminalState18
+    .word ActorExtendedType2_EnterState2WithCallbacks
+    .word ActorExtendedType2_ReturnFalseLateState
+    .word ActorExtendedType2_DispatchNearTargetState
     .word func_0204194c
     .word func_02041aec
-    .word func_0204176c
+    .word ActorExtendedType2_UpdateState22Countdown
     .word func_02041c18
     .word func_ov096_02217f4c
     .word func_ov096_02217f6c
@@ -429,16 +429,16 @@ data_ov096_02218de8:
     .word ActorExtendedType2_RouteDescriptorTransition
     .word ActorExtendedType2_TryCompleteAttachmentGate
     .word func_ov096_02218958
-    .word func_020412a8
-    .word func_02041424
-    .word func_0204157c
-    .word func_020415a8
-    .word func_02041710
-    .word func_020417d4
-    .word func_020417dc
+    .word ActorExtendedType2_UpdateTargetApproach
+    .word ActorExtendedType2_UpdateTargetFollowEffect
+    .word ActorExtendedType2_ResetTerminalAttachmentState
+    .word ActorExtendedType2_UpdateTerminalState18
+    .word ActorExtendedType2_EnterState2WithCallbacks
+    .word ActorExtendedType2_ReturnFalseLateState
+    .word ActorExtendedType2_DispatchNearTargetState
     .word func_0204194c
     .word func_ov096_02218aa4
-    .word func_0204176c
+    .word ActorExtendedType2_UpdateState22Countdown
     .word func_02041c18
     .word func_02041c48
     .word func_02041e18

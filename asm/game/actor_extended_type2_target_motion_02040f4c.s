@@ -8,9 +8,9 @@
 .extern func_02005030
 .extern func_02005058
 .extern ActorExtendedRecordArray_ContainsPoint
-.global func_02040f4c
-.type func_02040f4c, @function
-func_02040f4c: ; 0x02040f4c
+.global ActorExtendedType2_UpdateTargetValidationMotion
+.type ActorExtendedType2_UpdateTargetValidationMotion, @function
+ActorExtendedType2_UpdateTargetValidationMotion: ; 0x02040f4c
     stmdb sp!, {r3, r4, r5, r6, r7, r8, r9, lr}
     sub sp, sp, #0x10
     mov r8, r0
@@ -243,4 +243,4 @@ func_02040f4c: ; 0x02040f4c
 .L_0204129c: .word data_020dfad8
 .L_020412a0: .word data_020dfba0
 .L_020412a4: .word data_020dfa50
-.size func_02040f4c, . - func_02040f4c
+.size ActorExtendedType2_UpdateTargetValidationMotion, . - ActorExtendedType2_UpdateTargetValidationMotion

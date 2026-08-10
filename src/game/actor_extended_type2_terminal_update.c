@@ -25,7 +25,7 @@ extern void Actor_RestoreSavedFlags(void *actor);
  * +0x24 bit two, and return zero. Only actor/attachment state changes; no SDK
  * or hardware operation occurs.
  */
-s32 func_0204157c(void *self)
+s32 ActorExtendedType2_ResetTerminalAttachmentState(void *self)
 {
     u8 *actor = (u8 *)self;
     u8 *attachment = *(u8 **)(actor + 0x54);
@@ -48,7 +48,7 @@ s32 func_0204157c(void *self)
  * The routine always returns zero and may change actor, attachment, virtual,
  * selected-object, and emitted-object state; no direct hardware access occurs.
  */
-s32 func_020415a8(void *self)
+s32 ActorExtendedType2_UpdateTerminalState18(void *self)
 {
     u8 *actor = (u8 *)self;
     u8 *vtable = *(u8 **)actor;

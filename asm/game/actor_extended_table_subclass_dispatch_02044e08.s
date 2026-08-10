@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/actor_extended_table_subclass_dispatch.c.
 .text
-.extern func_02040f4c
+.extern ActorExtendedType2_UpdateTargetValidationMotion
 .global ActorExtendedTableCyclic_UpdateStagedCounters
 .type ActorExtendedTableCyclic_UpdateStagedCounters, @function
 ActorExtendedTableCyclic_UpdateStagedCounters: ; 0x02044e08
@@ -136,6 +136,6 @@ ActorExtendedTableCyclic_UpdateStagedCounters: ; 0x02044e08
     orr r2, r1, #0x20
     mov r1, r4
     str r2, [r5, #0x260]
-    bl func_02040f4c
+    bl ActorExtendedType2_UpdateTargetValidationMotion
     ldmia sp!, {r3, r4, r5, pc}
 .size ActorExtendedTableCyclic_UpdateStagedCounters, . - ActorExtendedTableCyclic_UpdateStagedCounters

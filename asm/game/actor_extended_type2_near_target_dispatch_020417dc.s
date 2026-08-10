@@ -1,9 +1,9 @@
 ; Matching retail form; see src/game/actor_extended_type2_near_target_dispatch.c.
 .text
 .extern data_020df9e8
-.global func_020417dc
-.type func_020417dc, @function
-func_020417dc: ; 0x020417dc
+.global ActorExtendedType2_DispatchNearTargetState
+.type ActorExtendedType2_DispatchNearTargetState, @function
+ActorExtendedType2_DispatchNearTargetState: ; 0x020417dc
     stmdb sp!, {r3, r4, r5, lr}
     ldr r2, [r0, #0x0]
     mov r5, r0
@@ -99,4 +99,4 @@ func_020417dc: ; 0x020417dc
     mov r0, #0x0
     ldmia sp!, {r3, r4, r5, pc}
 .L_02041948: .word data_020df9e8
-.size func_020417dc, . - func_020417dc
+.size ActorExtendedType2_DispatchNearTargetState, . - ActorExtendedType2_DispatchNearTargetState

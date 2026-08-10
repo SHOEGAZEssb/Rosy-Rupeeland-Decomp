@@ -8,9 +8,9 @@
 .extern func_0204f7e4
 .extern func_02062864
 .extern func_020695f4
-.global func_0204157c
-.type func_0204157c, @function
-func_0204157c: ; 0x0204157c
+.global ActorExtendedType2_ResetTerminalAttachmentState
+.type ActorExtendedType2_ResetTerminalAttachmentState, @function
+ActorExtendedType2_ResetTerminalAttachmentState: ; 0x0204157c
     ldr r2, [r0, #0x260]
     mov r1, #0x0
     bic r2, r2, #0x3
@@ -22,11 +22,11 @@ func_0204157c: ; 0x0204157c
     orr r1, r1, #0x4
     strh r1, [r2, #0x24]
     bx lr
-.size func_0204157c, . - func_0204157c
+.size ActorExtendedType2_ResetTerminalAttachmentState, . - ActorExtendedType2_ResetTerminalAttachmentState
 
-.global func_020415a8
-.type func_020415a8, @function
-func_020415a8: ; 0x020415a8
+.global ActorExtendedType2_UpdateTerminalState18
+.type ActorExtendedType2_UpdateTerminalState18, @function
+ActorExtendedType2_UpdateTerminalState18: ; 0x020415a8
     stmdb sp!, {r4, r5, r6, r7, r8, r9, lr}
     sub sp, sp, #0x14
     mov r4, r0
@@ -125,4 +125,4 @@ func_020415a8: ; 0x020415a8
     mov r0, #0x0
     add sp, sp, #0x14
     ldmia sp!, {r4, r5, r6, r7, r8, r9, pc}
-.size func_020415a8, . - func_020415a8
+.size ActorExtendedType2_UpdateTerminalState18, . - ActorExtendedType2_UpdateTerminalState18

@@ -20,7 +20,7 @@ extern void Actor_RestoreSavedFlags(void *actor);
  * enter state two, and return zero. Actor/callback state may change; no direct
  * SDK or hardware operation occurs.
  */
-s32 func_02041710(void *self)
+s32 ActorExtendedType2_EnterState2WithCallbacks(void *self)
 {
     u8 *actor = (u8 *)self;
     Actor_RestoreSavedFlags(actor);
@@ -40,7 +40,7 @@ s32 func_02041710(void *self)
  * pairs +0x278/+0x27c and +0x270/+0x274 at +0x218..+0x224. Always return zero;
  * only actor/callback state changes and no SDK or hardware operation occurs.
  */
-s32 func_0204176c(void *self)
+s32 ActorExtendedType2_UpdateState22Countdown(void *self)
 {
     u8 *actor = (u8 *)self;
     *(u32 *)(actor + 0x260) &= ~1;
@@ -60,7 +60,7 @@ s32 func_0204176c(void *self)
  * Constant-false callback predicate. It ignores all caller context, changes no
  * state, performs no SDK or hardware operation, and returns zero.
  */
-s32 func_020417d4(void)
+s32 ActorExtendedType2_ReturnFalseLateState(void)
 {
     return 0;
 }

@@ -1,7 +1,7 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov096/overlay096_recovery.c.
 .extern func_02005070
-.extern func_02040f4c
+.extern ActorExtendedType2_UpdateTargetValidationMotion
 .extern func_020593dc
 .extern func_ov096_0221880c
 .extern func_ov096_0221881c
@@ -90,7 +90,7 @@ func_ov096_02218958:
     b .L_02218a94
 .L_02218a8c:
     mov r0, r4
-    bl func_02040f4c
+    bl ActorExtendedType2_UpdateTargetValidationMotion
 .L_02218a94:
     add sp, sp, #0x8
     ldmia sp!, {r4, pc}

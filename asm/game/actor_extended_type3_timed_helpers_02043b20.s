@@ -3,7 +3,7 @@
 .extern data_020e0224
 .extern func_02005030
 .extern func_02005058
-.extern func_020412a8
+.extern ActorExtendedType2_UpdateTargetApproach
 .extern ActorExtendedType2_GetDescriptorValue2C
 .extern ActorExtendedType2_GetDescriptorValue25
 .extern ActorExtendedType3_ResetInteractionState
@@ -25,7 +25,7 @@ ActorExtendedType3_UpdateCountdownApproach: ; 0x02043b20
     mov r0, #0x0
     ldmia sp!, {r3, pc}
 .L_02043b4c:
-    bl func_020412a8
+    bl ActorExtendedType2_UpdateTargetApproach
     ldmia sp!, {r3, pc}
 
 .size ActorExtendedType3_UpdateCountdownApproach, . - ActorExtendedType3_UpdateCountdownApproach

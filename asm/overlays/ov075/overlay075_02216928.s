@@ -9,7 +9,7 @@
 .extern func_0200637c
 .extern func_020064b8
 .extern func_02032370
-.extern func_020417dc
+.extern ActorExtendedType2_DispatchNearTargetState
 .extern ActorExtendedLinkSource_LinkPartner
 .extern func_020befec
 .extern func_ov075_02214898
@@ -158,7 +158,7 @@ func_ov075_02216928:
     str r0, [r4, #0x14]
     b .L_02216b4c
 .L_02216b48:
-    bl func_020417dc
+    bl ActorExtendedType2_DispatchNearTargetState
 .L_02216b4c:
     mov r0, #0x0
     add sp, sp, #0x80

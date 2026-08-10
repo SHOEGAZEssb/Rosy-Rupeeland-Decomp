@@ -7,9 +7,9 @@
 .extern func_020ada8c
 .extern gHeapContext
 .extern genrand_int32
-.global func_02041424
-.type func_02041424, @function
-func_02041424: ; 0x02041424
+.global ActorExtendedType2_UpdateTargetFollowEffect
+.type ActorExtendedType2_UpdateTargetFollowEffect, @function
+ActorExtendedType2_UpdateTargetFollowEffect: ; 0x02041424
     stmdb sp!, {r4, r5, r6, lr}
     sub sp, sp, #0x18
     mov r4, r0
@@ -102,4 +102,4 @@ func_02041424: ; 0x02041424
 .L_02041570: .word data_020e00c8
 .L_02041574: .word gHeapContext
 .L_02041578: .word 0x135c
-.size func_02041424, . - func_02041424
+.size ActorExtendedType2_UpdateTargetFollowEffect, . - ActorExtendedType2_UpdateTargetFollowEffect

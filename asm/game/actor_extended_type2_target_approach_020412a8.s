@@ -5,9 +5,9 @@
 .extern func_02005030
 .extern func_02005058
 .extern func_02007f0c
-.global func_020412a8
-.type func_020412a8, @function
-func_020412a8: ; 0x020412a8
+.global ActorExtendedType2_UpdateTargetApproach
+.type ActorExtendedType2_UpdateTargetApproach, @function
+ActorExtendedType2_UpdateTargetApproach: ; 0x020412a8
     stmdb sp!, {r4, r5, r6, lr}
     sub sp, sp, #0x10
     mov r6, r0
@@ -109,4 +109,4 @@ func_020412a8: ; 0x020412a8
     ldmia sp!, {r4, r5, r6, pc}
 .L_0204141c: .word data_020df9e8
 .L_02041420: .word data_021052fc
-.size func_020412a8, . - func_020412a8
+.size ActorExtendedType2_UpdateTargetApproach, . - ActorExtendedType2_UpdateTargetApproach

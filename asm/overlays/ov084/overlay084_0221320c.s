@@ -1,7 +1,7 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov084/overlay084_recovery.c.
 .extern data_021056e4
-.extern func_0204157c
+.extern ActorExtendedType2_ResetTerminalAttachmentState
 
 .global func_ov084_0221320c
 func_ov084_0221320c:
@@ -12,5 +12,5 @@ func_ov084_0221320c:
     strh r3, [r2, #0x0]
     bx ip
 .L_02213224: .word data_021056e4
-.L_02213228: .word func_0204157c
+.L_02213228: .word ActorExtendedType2_ResetTerminalAttachmentState
 .size func_ov084_0221320c, . - func_ov084_0221320c

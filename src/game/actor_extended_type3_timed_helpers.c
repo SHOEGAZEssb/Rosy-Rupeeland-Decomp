@@ -10,7 +10,8 @@ extern u8 data_020e0224[];
 extern "C" {
 #endif
 extern s32 ActorExtendedType3_ResetInteractionState(void *actor);
-extern s32 func_020412a8(void *actor, const void *record);
+extern s32 ActorExtendedType2_UpdateTargetApproach(
+    void *actor, const void *record);
 extern u32 genrand_int32(void);
 extern s32 ActorExtendedType2_GetDescriptorValue2C(const void *actor);
 extern s32 ActorExtendedType2_GetDescriptorValue25(const void *actor);
@@ -24,8 +25,8 @@ extern void func_02050078(s32 mode, void *destination, const void *source);
 /*
  * Decrement signed timer actor +0x29a. At zero or below, reset interaction
  * state and return zero; otherwise forward actor and descriptorRecord to
- * func_020412a8 and return its result. Actor/base state may change and no direct
- * SDK or hardware operation occurs.
+ * ActorExtendedType2_UpdateTargetApproach and return its result. Actor/base
+ * state may change and no direct SDK or hardware operation occurs.
  */
 s32 ActorExtendedType3_UpdateCountdownApproach(void *self, const void *descriptorRecord)
 {
@@ -35,7 +36,7 @@ s32 ActorExtendedType3_UpdateCountdownApproach(void *self, const void *descripto
         ActorExtendedType3_ResetInteractionState(actor);
         return 0;
     }
-    return func_020412a8(actor, descriptorRecord);
+    return ActorExtendedType2_UpdateTargetApproach(actor, descriptorRecord);
 }
 
 /*

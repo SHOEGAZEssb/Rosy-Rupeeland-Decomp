@@ -2,9 +2,9 @@
 .text
 .extern data_020df9e8
 .extern Actor_RestoreSavedFlags
-.global func_02041710
-.type func_02041710, @function
-func_02041710: ; 0x02041710
+.global ActorExtendedType2_EnterState2WithCallbacks
+.type ActorExtendedType2_EnterState2WithCallbacks, @function
+ActorExtendedType2_EnterState2WithCallbacks: ; 0x02041710
     stmdb sp!, {r4, lr}
     mov r4, r0
     bl Actor_RestoreSavedFlags
@@ -28,11 +28,11 @@ func_02041710: ; 0x02041710
     strh r1, [r4, #0xd6]
     ldmia sp!, {r4, pc}
 .L_02041768: .word data_020df9e8
-.size func_02041710, . - func_02041710
+.size ActorExtendedType2_EnterState2WithCallbacks, . - ActorExtendedType2_EnterState2WithCallbacks
 
-.global func_0204176c
-.type func_0204176c, @function
-func_0204176c: ; 0x0204176c
+.global ActorExtendedType2_UpdateState22Countdown
+.type ActorExtendedType2_UpdateState22Countdown, @function
+ActorExtendedType2_UpdateState22Countdown: ; 0x0204176c
     ldr r2, [r0, #0x260]
     mov r1, #0x8
     bic r2, r2, #0x1
@@ -60,11 +60,11 @@ func_0204176c: ; 0x0204176c
     mov r0, #0x0
     bx lr
 .L_020417d0: .word data_020df9e8
-.size func_0204176c, . - func_0204176c
+.size ActorExtendedType2_UpdateState22Countdown, . - ActorExtendedType2_UpdateState22Countdown
 
-.global func_020417d4
-.type func_020417d4, @function
-func_020417d4: ; 0x020417d4
+.global ActorExtendedType2_ReturnFalseLateState
+.type ActorExtendedType2_ReturnFalseLateState, @function
+ActorExtendedType2_ReturnFalseLateState: ; 0x020417d4
     mov r0, #0x0
     bx lr
-.size func_020417d4, . - func_020417d4
+.size ActorExtendedType2_ReturnFalseLateState, . - ActorExtendedType2_ReturnFalseLateState

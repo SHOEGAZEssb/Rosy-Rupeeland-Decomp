@@ -30,7 +30,7 @@ extern void func_02005058(void *temporary);
  * finalizes it. The routine always returns zero; actor and virtual state may
  * change, with no direct hardware access.
  */
-s32 func_020412a8(void *self, const void *descriptorRecord)
+s32 ActorExtendedType2_UpdateTargetApproach(void *self, const void *descriptorRecord)
 {
     u8 *actor = (u8 *)self;
     const u8 *record = (const u8 *)descriptorRecord;

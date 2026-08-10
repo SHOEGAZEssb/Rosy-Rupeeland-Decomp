@@ -17,7 +17,7 @@ extern u8 data_020df9e8[];
  * virtual +0xd0 receives actor +0x22c. Actor and virtual state may change; no
  * direct SDK or hardware operation occurs.
  */
-s32 func_020417dc(void *self, void *descriptorRecord)
+s32 ActorExtendedType2_DispatchNearTargetState(void *self, void *descriptorRecord)
 {
     u8 *actor = (u8 *)self;
     u8 *record = (u8 *)descriptorRecord;
