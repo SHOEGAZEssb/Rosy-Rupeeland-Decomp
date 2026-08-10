@@ -1,8 +1,8 @@
 ; Matching retail form; see src/game/game_phase_script_vm_stack_storage_opcodes.c.
 .text
 .extern gGameWork
-.global func_0201c0a4
-func_0201c0a4: ; 0x0201c0a4
+.global GamePhaseScriptVm_StoreRegisterToGameWorkWord
+GamePhaseScriptVm_StoreRegisterToGameWorkWord: ; 0x0201c0a4
     ldr r2, [r0, #0x4]
     ldr r1, L_0201c0e4
     add ip, r2, #0x1
@@ -20,4 +20,4 @@ func_0201c0a4: ; 0x0201c0a4
     mov r0, #0x0
     bx lr
 L_0201c0e4: .word gGameWork
-.size func_0201c0a4, . - func_0201c0a4
+.size GamePhaseScriptVm_StoreRegisterToGameWorkWord, . - GamePhaseScriptVm_StoreRegisterToGameWorkWord

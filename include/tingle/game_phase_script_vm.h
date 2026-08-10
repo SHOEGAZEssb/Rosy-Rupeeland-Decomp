@@ -351,14 +351,14 @@ s32 func_0201bf04(GamePhaseScriptVm *self);
 s32 GamePhaseScriptVm_LoadRegisterFromGameWorkHalfword(GamePhaseScriptVm *self);
 s32 GamePhaseScriptVm_LoadRegisterFromContextSlot(GamePhaseScriptVm *self);
 s32 func_0201bfb8(GamePhaseScriptVm *self);
-s32 func_0201bff0(GamePhaseScriptVm *self);
-s32 func_0201c020(GamePhaseScriptVm *self);
-s32 func_0201c054(GamePhaseScriptVm *self);
+s32 GamePhaseScriptVm_PushImmediateU32(GamePhaseScriptVm *self);
+s32 GamePhaseScriptVm_PushGameWorkHalfword(GamePhaseScriptVm *self);
+s32 GamePhaseScriptVm_PushContextSlot(GamePhaseScriptVm *self);
 s32 func_0201c07c(GamePhaseScriptVm *self);
-s32 func_0201c0a4(GamePhaseScriptVm *self);
-s32 func_0201c0e8(GamePhaseScriptVm *self);
-s32 func_0201c12c(GamePhaseScriptVm *self);
-s32 func_0201c160(GamePhaseScriptVm *self);
+s32 GamePhaseScriptVm_StoreRegisterToGameWorkWord(GamePhaseScriptVm *self);
+s32 GamePhaseScriptVm_LoadRegisterFromGameWorkWord(GamePhaseScriptVm *self);
+s32 GamePhaseScriptVm_PushGameWorkWord(GamePhaseScriptVm *self);
+s32 GamePhaseScriptVm_PushZero(GamePhaseScriptVm *self);
 #ifdef __cplusplus
 }
 #endif

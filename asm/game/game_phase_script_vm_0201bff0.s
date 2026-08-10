@@ -2,8 +2,8 @@
 .text
 .extern GamePhaseScriptVm_ReadU32Le
 .extern GamePhaseScriptVm_Push
-.global func_0201bff0
-func_0201bff0: ; 0x0201bff0
+.global GamePhaseScriptVm_PushImmediateU32
+GamePhaseScriptVm_PushImmediateU32: ; 0x0201bff0
     stmdb sp!, {r4, lr}
     mov r4, r0
     ldr r0, [r4, #0x4]
@@ -16,4 +16,4 @@ func_0201bff0: ; 0x0201bff0
     add r1, r1, #0x4
     str r1, [r4, #0x4]
     ldmia sp!, {r4, pc}
-.size func_0201bff0, . - func_0201bff0
+.size GamePhaseScriptVm_PushImmediateU32, . - GamePhaseScriptVm_PushImmediateU32

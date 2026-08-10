@@ -2,8 +2,8 @@
 .text
 .extern gGameWork
 .extern GamePhaseScriptVm_Push
-.global func_0201c12c
-func_0201c12c: ; 0x0201c12c
+.global GamePhaseScriptVm_PushGameWorkWord
+GamePhaseScriptVm_PushGameWorkWord: ; 0x0201c12c
     stmdb sp!, {r3, lr}
     ldr r3, [r0, #0x4]
     ldr r1, L_0201c15c
@@ -17,4 +17,4 @@ func_0201c12c: ; 0x0201c12c
     mov r0, #0x0
     ldmia sp!, {r3, pc}
 L_0201c15c: .word gGameWork
-.size func_0201c12c, . - func_0201c12c
+.size GamePhaseScriptVm_PushGameWorkWord, . - GamePhaseScriptVm_PushGameWorkWord

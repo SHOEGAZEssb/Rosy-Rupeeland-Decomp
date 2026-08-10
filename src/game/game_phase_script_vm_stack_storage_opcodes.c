@@ -11,7 +11,7 @@ extern void *gGameWork;
 #endif
 
 /* Push a 32-bit immediate, advance past it, and return zero. */
-s32 func_0201bff0(GamePhaseScriptVm *self)
+s32 GamePhaseScriptVm_PushImmediateU32(GamePhaseScriptVm *self)
 {
     GamePhaseScriptVm_Push(self, GamePhaseScriptVm_ReadU32Le(self->cursor));
     self->cursor += 4;
@@ -19,7 +19,7 @@ s32 func_0201bff0(GamePhaseScriptVm *self)
 }
 
 /* Push a signed halfword from game-work's byte-indexed array and return zero. */
-s32 func_0201c020(GamePhaseScriptVm *self)
+s32 GamePhaseScriptVm_PushGameWorkHalfword(GamePhaseScriptVm *self)
 {
     u8 index = (u8)*self->cursor++;
     GamePhaseScriptVm_Push(self, (u32)*(s16 *)((u8 *)gGameWork + 0x4c + index * 2));
@@ -27,14 +27,14 @@ s32 func_0201c020(GamePhaseScriptVm *self)
 }
 
 /* Push an unsigned-byte-indexed context slot and return zero. */
-s32 func_0201c054(GamePhaseScriptVm *self)
+s32 GamePhaseScriptVm_PushContextSlot(GamePhaseScriptVm *self)
 {
     u8 index = (u8)*self->cursor++;
     GamePhaseScriptVm_Push(self, ((u32 *)self->context)[index]);
     return 0;
 }
 
-/* Push an indexed callback slot and return zero. */
+/* Push an indexed pointer-sized slot from VM offset 0x0c and return zero. */
 s32 func_0201c07c(GamePhaseScriptVm *self)
 {
     u8 index = (u8)*self->cursor++;
@@ -43,7 +43,7 @@ s32 func_0201c07c(GamePhaseScriptVm *self)
 }
 
 /* Store the selected register in game-work's u32 array at offset 0x7cc and return zero. */
-s32 func_0201c0a4(GamePhaseScriptVm *self)
+s32 GamePhaseScriptVm_StoreRegisterToGameWorkWord(GamePhaseScriptVm *self)
 {
     s32 source = (u8)*self->cursor++ & 7;
     u8 index = (u8)*self->cursor++;
@@ -52,7 +52,7 @@ s32 func_0201c0a4(GamePhaseScriptVm *self)
 }
 
 /* Load game-work's u32 array entry into the selected register and return zero. */
-s32 func_0201c0e8(GamePhaseScriptVm *self)
+s32 GamePhaseScriptVm_LoadRegisterFromGameWorkWord(GamePhaseScriptVm *self)
 {
     s32 destination = (u8)*self->cursor++ & 7;
     u8 index = (u8)*self->cursor++;
@@ -61,7 +61,7 @@ s32 func_0201c0e8(GamePhaseScriptVm *self)
 }
 
 /* Push game-work's byte-indexed u32 array entry at offset 0x7cc and return zero. */
-s32 func_0201c12c(GamePhaseScriptVm *self)
+s32 GamePhaseScriptVm_PushGameWorkWord(GamePhaseScriptVm *self)
 {
     u8 index = (u8)*self->cursor++;
     GamePhaseScriptVm_Push(self, *(u32 *)((u8 *)gGameWork + 0x7cc + index * 4));
@@ -69,7 +69,7 @@ s32 func_0201c12c(GamePhaseScriptVm *self)
 }
 
 /* Push the constant zero and return zero. */
-s32 func_0201c160(GamePhaseScriptVm *self)
+s32 GamePhaseScriptVm_PushZero(GamePhaseScriptVm *self)
 {
     GamePhaseScriptVm_Push(self, 0);
     return 0;
