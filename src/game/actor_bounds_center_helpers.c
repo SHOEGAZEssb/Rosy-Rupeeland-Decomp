@@ -29,7 +29,7 @@ void func_02033734(void *self)
  * s8 and division by two rounds toward zero. Returns no value and touches no
  * hardware or SDK state.
  */
-void func_02033738(BoundsCenterSnapshot *self, const s8 *bounds)
+void BoundsCenterSnapshot_Init(BoundsCenterSnapshot *self, const s8 *bounds)
 {
     s8 width;
     s8 height;
@@ -54,7 +54,7 @@ void func_02033794(BoundsCenterSnapshot *self)
  * previously truncated width and height. Returns no value; byte arithmetic
  * wraps exactly as stored and no hardware or SDK state is touched.
  */
-void func_02033798(s8 *bounds, s32 minX, s32 minY)
+void ActorBounds_SetMinimum(s8 *bounds, s32 minX, s32 minY)
 {
     s8 width = (s8)(bounds[2] - bounds[0]);
     s8 height;

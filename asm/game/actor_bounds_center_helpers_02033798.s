@@ -2,9 +2,9 @@
 .text
 .extern ActorBounds_GetHeight
 
-    .global func_02033798
-    .type func_02033798, @function
-func_02033798: ; 0x02033798
+    .global ActorBounds_SetMinimum
+    .type ActorBounds_SetMinimum, @function
+ActorBounds_SetMinimum: ; 0x02033798
     stmdb sp!, {r3, r4, r5, lr}
     mov r4, r0
     ldrsb ip, [r4, #0x2]
@@ -20,6 +20,6 @@ func_02033798: ; 0x02033798
     add r0, r5, r0
     strb r0, [r4, #0x3]
     ldmia sp!, {r3, r4, r5, pc}
-    .size func_02033798, . - func_02033798
+    .size ActorBounds_SetMinimum, . - ActorBounds_SetMinimum
 
     .global func_020337d4

@@ -10,8 +10,8 @@ extern s32 func_020adae4(s32 dividend, s32 divisor);
 extern void ActorBounds_Copy(void *destination, const void *source);
 extern void ActorBounds_Set(void *bounds, s32 minX, s32 minY, s32 maxX,
                             s32 maxY);
-extern void func_02033738(void *center, const void *bounds);
-extern void func_02033798(void *bounds, s32 minX, s32 minY);
+extern void BoundsCenterSnapshot_Init(void *center, const void *bounds);
+extern void ActorBounds_SetMinimum(void *bounds, s32 minX, s32 minY);
 extern void func_02034be4(void *actor, s32 value);
 extern void func_02033ae8(void *actor, s32 value);
 extern void func_020050a4(void *destination, const void *source);
@@ -27,7 +27,7 @@ static void setBoundsExtent(s8 *bounds, s32 value, s32 setHeight)
     s32 width;
     s32 height;
 
-    func_02033738(center, bounds);
+    BoundsCenterSnapshot_Init(center, bounds);
     width = ActorBounds_GetWidth(bounds);
     height = ActorBounds_GetHeight(bounds);
     if (setHeight) {
@@ -38,9 +38,9 @@ static void setBoundsExtent(s8 *bounds, s32 value, s32 setHeight)
     ActorBounds_Copy(bounds, replacement);
     width = ActorBounds_GetWidth(bounds);
     height = ActorBounds_GetHeight(bounds);
-    func_02033798(bounds,
-                  (s8)center[4] + func_020adae4(width, -2),
-                  (s8)center[5] + func_020adae4(height, -2));
+    ActorBounds_SetMinimum(bounds,
+                           (s8)center[4] + func_020adae4(width, -2),
+                           (s8)center[5] + func_020adae4(height, -2));
 }
 
 /* Set or clear one actor word flag according to a zero/nonzero value. */

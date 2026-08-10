@@ -3,7 +3,7 @@
 .extern func_0200500c
 .extern func_02005058
 .extern func_02011738
-.extern func_02033738
+.extern BoundsCenterSnapshot_Init
 .extern func_020573e4
 .extern func_0205740c
 
@@ -47,7 +47,7 @@ func_02033974: ; 0x02033974
     beq .L_02033a60
     add r0, sp, #0x8
     add r1, r6, #0x8
-    bl func_02033738
+    bl BoundsCenterSnapshot_Init
     ldrsb r0, [sp, #0xd]
     ldr r1, [r6, #0x20]
     ldrsb ip, [sp, #0xc]
@@ -76,4 +76,3 @@ func_02033974: ; 0x02033974
     .size func_02033974, . - func_02033974
 
     .global func_02033a6c
-

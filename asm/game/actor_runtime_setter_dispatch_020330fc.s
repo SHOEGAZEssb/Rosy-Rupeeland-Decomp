@@ -5,8 +5,8 @@
 .extern ActorBounds_GetHeight
 .extern ActorBounds_Copy
 .extern ActorBounds_Set
-.extern func_02033738
-.extern func_02033798
+.extern BoundsCenterSnapshot_Init
+.extern ActorBounds_SetMinimum
 .extern func_02033ae8
 .extern func_02034be4
 .extern func_020adae4
@@ -76,7 +76,7 @@ func_020330fc: ; 0x020330fc
 .L_020331e4:
     add r0, sp, #0x2c
     add r1, r5, #0x8
-    bl func_02033738
+    bl BoundsCenterSnapshot_Init
     add r0, r5, #0x8
     bl ActorBounds_GetHeight
     mov r3, r4, lsl #0x18
@@ -107,12 +107,12 @@ func_020330fc: ; 0x020330fc
     mov r2, r2, lsl #0x18
     mov r1, r1, asr #0x18
     mov r2, r2, asr #0x18
-    bl func_02033798
+    bl ActorBounds_SetMinimum
     b .L_0203372c
 .L_02033270:
     add r0, sp, #0x24
     add r1, r5, #0x8
-    bl func_02033738
+    bl BoundsCenterSnapshot_Init
     add r0, r5, #0x8
     bl ActorBounds_GetWidth
     mov r3, r0
@@ -144,12 +144,12 @@ func_020330fc: ; 0x020330fc
     mov r2, r2, lsl #0x18
     mov r1, r1, asr #0x18
     mov r2, r2, asr #0x18
-    bl func_02033798
+    bl ActorBounds_SetMinimum
     b .L_0203372c
 .L_02033300:
     add r0, sp, #0x1c
     add r1, r5, #0x4
-    bl func_02033738
+    bl BoundsCenterSnapshot_Init
     add r0, r5, #0x4
     bl ActorBounds_GetHeight
     mov r3, r4, lsl #0x18
@@ -180,12 +180,12 @@ func_020330fc: ; 0x020330fc
     mov r2, r2, lsl #0x18
     mov r1, r1, asr #0x18
     mov r2, r2, asr #0x18
-    bl func_02033798
+    bl ActorBounds_SetMinimum
     b .L_0203372c
 .L_0203338c:
     add r0, sp, #0x14
     add r1, r5, #0x4
-    bl func_02033738
+    bl BoundsCenterSnapshot_Init
     add r0, r5, #0x4
     bl ActorBounds_GetWidth
     mov r3, r0
@@ -217,7 +217,7 @@ func_020330fc: ; 0x020330fc
     mov r2, r2, lsl #0x18
     mov r1, r1, asr #0x18
     mov r2, r2, asr #0x18
-    bl func_02033798
+    bl ActorBounds_SetMinimum
     b .L_0203372c
 .L_0203341c:
     ldr r0, [r5, #0x14]
