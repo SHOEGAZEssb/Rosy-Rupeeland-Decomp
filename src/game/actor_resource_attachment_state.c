@@ -19,7 +19,7 @@ extern void func_02072b68(void *, s32);
  * with zero, then set flag 0x01000000. Returns no value; the virtual callback
  * may change resource or presentation state.
  */
-void func_02032bd0(void *self, void *resource)
+void Actor_AssignPrimaryResource(void *self, void *resource)
 {
     u8 *actor = (u8 *)self;
     *(u32 *)(actor + 0x10) |= 8;

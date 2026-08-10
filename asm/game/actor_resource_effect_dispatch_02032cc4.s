@@ -7,9 +7,9 @@
 .extern func_020337d4
 .extern gGameWork
 
-    .global func_02032cc4
-    .type func_02032cc4, @function
-func_02032cc4: ; 0x02032cc4
+    .global Actor_AssignPrimaryResourceWithEffect
+    .type Actor_AssignPrimaryResourceWithEffect, @function
+Actor_AssignPrimaryResourceWithEffect: ; 0x02032cc4
     stmdb sp!, {r3, r4, r5, lr}
     sub sp, sp, #0x128
     mov r5, r0
@@ -52,5 +52,4 @@ func_02032cc4: ; 0x02032cc4
     ldmia sp!, {r3, r4, r5, pc}
 .L_02032d5c: .word gGameWork
 .L_02032d60: .word data_02105310
-    .size func_02032cc4, . - func_02032cc4
-
+    .size Actor_AssignPrimaryResourceWithEffect, . - Actor_AssignPrimaryResourceWithEffect

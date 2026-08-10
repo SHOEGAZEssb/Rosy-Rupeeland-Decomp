@@ -30,8 +30,8 @@
 .extern func_ov096_022182a0
 .extern func_ov096_02218288
 .extern func_ov096_022181f4
-.extern func_02032cc4
-.extern func_02032bd0
+.extern Actor_AssignPrimaryResourceWithEffect
+.extern Actor_AssignPrimaryResource
 .extern func_02032aec
 .extern func_020423c8
 .extern func_020425d4
@@ -221,8 +221,8 @@ data_ov096_02218b98:
     .word func_ov096_022182a0
     .word func_ov096_02218288
     .word func_ov096_022181f4
-    .word func_02032cc4
-    .word func_02032bd0
+    .word Actor_AssignPrimaryResourceWithEffect
+    .word Actor_AssignPrimaryResource
     .word func_02032aec
     .word func_020423c8
     .word func_020425d4
@@ -368,8 +368,8 @@ data_ov096_02218de8:
     .word func_ov096_022182a0
     .word func_ov096_02218288
     .word func_ov096_022181f4
-    .word func_02032cc4
-    .word func_02032bd0
+    .word Actor_AssignPrimaryResourceWithEffect
+    .word Actor_AssignPrimaryResource
     .word func_02032aec
     .word func_020423c8
     .word func_020425d4

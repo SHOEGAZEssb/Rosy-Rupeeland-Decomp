@@ -22,7 +22,7 @@ extern void func_0201b1e0(void *);
  * the temporary. Returns no value; resource/effect helpers may update SDK or
  * presentation state.
  */
-void func_02032cc4(void *self, void *resource)
+void Actor_AssignPrimaryResourceWithEffect(void *self, void *resource)
 {
     u8 *actor = (u8 *)self;
     u8 temporary[0x94];
