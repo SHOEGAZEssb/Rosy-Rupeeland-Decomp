@@ -5,7 +5,7 @@
 .extern GamePhaseRuntime_SetPlacementMode
 .extern GamePhaseState_SetEnabled
 .extern GamePhaseCurrencyHud_SetVisible
-.extern func_0202d68c
+.extern ActorCollection_SetEnabled
 .extern gLupyContext
 
 .global func_ov061_022100e4
@@ -37,7 +37,7 @@ func_ov061_022100e4:
     ldr r0, [r0, #0x0]
     bl GamePhaseRuntime_GetActorCollection
     mov r1, #0x0
-    bl func_0202d68c
+    bl ActorCollection_SetEnabled
     b .L_02210198
 .L_02210158:
     ldr ip, .L_022101d0

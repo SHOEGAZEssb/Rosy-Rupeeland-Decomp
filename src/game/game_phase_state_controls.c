@@ -8,7 +8,7 @@ extern "C" {
 extern void GamePhaseVisualEffect_UpdatePosition(void *object, const void *state);
 extern void GamePhaseVisualEffect_SetEnabled(void *object, s32 value);
 extern void func_0201e054(void *object, s32 value);
-extern void func_0202d68c(void *object, s32 value);
+extern void ActorCollection_SetEnabled(void *object, s32 value);
 #ifdef __cplusplus
 }
 #endif
@@ -24,7 +24,7 @@ void GamePhaseState_SetEnabled(GamePhaseState *self, s32 enabled)
 {
     void **vtable = *(void ***)self->phaseObject;
     ((PhaseControlMethod)vtable[9])(self->phaseObject, enabled);
-    func_0202d68c(self->actorCollectionStorage, enabled);
+    ActorCollection_SetEnabled(self->actorCollectionStorage, enabled);
     GamePhaseVisualEffect_SetEnabled(self->helper_2eb4, enabled);
     func_0201e054(self->renderHelperStorage, enabled);
 }

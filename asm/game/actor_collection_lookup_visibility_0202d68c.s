@@ -2,9 +2,9 @@
 .text
 .extern func_02074110
 
-    .global func_0202d68c
-    .type func_0202d68c, @function
-func_0202d68c: ; 0x0202d68c
+    .global ActorCollection_SetEnabled
+    .type ActorCollection_SetEnabled, @function
+ActorCollection_SetEnabled: ; 0x0202d68c
     stmdb sp!, {r3, r4, r5, r6, r7, lr}
     mov r4, r0
     cmp r1, #0x0
@@ -84,4 +84,4 @@ func_0202d68c: ; 0x0202d68c
     ldr r0, [r0, #0xc]
     bl func_02074110
     ldmia sp!, {r3, r4, r5, r6, r7, pc}
-    .size func_0202d68c, . - func_0202d68c
+    .size ActorCollection_SetEnabled, . - ActorCollection_SetEnabled

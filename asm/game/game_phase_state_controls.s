@@ -3,7 +3,7 @@
 .extern GamePhaseVisualEffect_UpdatePosition
 .extern GamePhaseVisualEffect_SetEnabled
 .extern func_0201e054
-.extern func_0202d68c
+.extern ActorCollection_SetEnabled
 
     .global GamePhaseState_SetEnabled
 GamePhaseState_SetEnabled: ; 0x0200ec6c
@@ -17,7 +17,7 @@ GamePhaseState_SetEnabled: ; 0x0200ec6c
     blx r2
     mov r1, r4
     add r0, r5, #0x4
-    bl func_0202d68c
+    bl ActorCollection_SetEnabled
     add r0, r5, #0x2b4
     mov r1, r4
     add r0, r0, #0x2c00

@@ -59,7 +59,7 @@ LookupActor *ActorCollection_FindActorByTypeAndId(ActorCollectionLookupVisibilit
  * call actor hooks with zero. The concrete graphics-library meaning of the
  * field and address-derived helper is inferred as visibility, not confirmed.
  */
-void func_0202d68c(ActorCollectionLookupVisibility *self, s32 enabled)
+void ActorCollection_SetEnabled(ActorCollectionLookupVisibility *self, s32 enabled)
 {
     s32 i;
     void (*setActorState)(LookupActor *, s32);

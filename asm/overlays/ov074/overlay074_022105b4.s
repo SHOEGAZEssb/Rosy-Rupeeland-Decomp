@@ -19,7 +19,7 @@
 .extern GamePhaseResumeScene_Init
 .extern GamePhaseAreaScene_SetEnabled
 .extern func_02029c94
-.extern func_0202d68c
+.extern ActorCollection_SetEnabled
 .extern func_ov074_02210878
 .extern gHeapContext
 .extern gSceneManager
@@ -94,7 +94,7 @@ func_ov074_022105b4:
     ldr r0, [r0, #0x0]
     bl GamePhaseRuntime_GetActorCollection
     mov r1, #0x0
-    bl func_0202d68c
+    bl ActorCollection_SetEnabled
 .L_022106c4:
     ldr r0, .L_02210720
     mov r1, #0x0

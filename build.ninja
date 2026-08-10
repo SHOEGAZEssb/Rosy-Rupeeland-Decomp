@@ -5786,7 +5786,7 @@ build build/reports/game_phase_script_vm_02017638.json: objdiff build/decomp/del
   base_object = build/decomp/asm/game/game_phase_script_vm_02017638.o
 build build/reports/game_phase_script_vm_02017638.txt: match_report build/reports/game_phase_script_vm_02017638.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_script_vm_02017638.json
-  report_args = --section .text --function func_02017638 --require-exact
+  report_args = --section .text --function GamePhaseActorScriptVm_SetRuntimeCollection2Enabled --require-exact
 
 build build/reports/game_phase_script_vm_02017668.json: objdiff build/decomp/delinks/asm/game/game_phase_script_vm_02017668.o | build/decomp/asm/game/game_phase_script_vm_02017668.o
   target_object = build/decomp/delinks/asm/game/game_phase_script_vm_02017668.o
@@ -13201,7 +13201,7 @@ build build/reports/actor_collection_lookup_visibility_0202d68c.json: objdiff bu
   base_object = build/decomp/asm/game/actor_collection_lookup_visibility_0202d68c.o
 build build/reports/actor_collection_lookup_visibility_0202d68c.txt: match_report build/reports/actor_collection_lookup_visibility_0202d68c.json | tools/report_objdiff.py
   report_json = build/reports/actor_collection_lookup_visibility_0202d68c.json
-  report_args = --section .text --function func_0202d68c --require-exact
+  report_args = --section .text --function ActorCollection_SetEnabled --require-exact
 build build/reports/actor_collection_lookup_visibility.txt: phony build/reports/actor_collection_lookup_visibility_0202d640.txt build/reports/actor_collection_lookup_visibility_0202d68c.txt
 
 build actor_collection_lookup_visibility: phony build/decomp/src/game/actor_collection_lookup_visibility.o build/decomp/asm/game/actor_collection_lookup_visibility_0202d640.o build/decomp/asm/game/actor_collection_lookup_visibility_0202d68c.o build/reports/actor_collection_lookup_visibility.txt

@@ -198,7 +198,7 @@ s32 func_0201741c(GamePhaseActorScriptVm *self);
 s32 func_02017450(GamePhaseActorScriptVm *self);
 s32 func_020174dc(GamePhaseActorScriptVm *self);
 s32 GamePhaseActorScriptVm_SpawnDualVariantEffect(GamePhaseActorScriptVm *self);
-s32 func_02017638(GamePhaseActorScriptVm *self);
+s32 GamePhaseActorScriptVm_SetRuntimeCollection2Enabled(GamePhaseActorScriptVm *self);
 s32 func_02017668(GamePhaseActorScriptVm *self);
 s32 func_02017694(GamePhaseActorScriptVm *self);
 s32 func_020176c8(GamePhaseActorScriptVm *self);

@@ -10,7 +10,7 @@ extern "C" {
 extern void *data_021052fc;
 extern void GamePhaseRuntime_SetPlacementMode(void *runtime, s32 mode, s32 synchronize);
 extern void *GamePhaseRuntime_GetActorCollection(void *runtime, s32 index);
-extern void func_0202d68c(void *object, s32 enabled);
+extern void ActorCollection_SetEnabled(void *object, s32 enabled);
 #ifdef __cplusplus
 }
 #endif
@@ -34,7 +34,7 @@ s32 GamePhaseActorScriptVm_SetPlacementModeAndSynchronize(GamePhaseActorScriptVm
         void **vtable;
 
         GamePhaseRuntime_SetPlacementMode(runtime, 0, 1);
-        func_0202d68c(GamePhaseRuntime_GetActorCollection(runtime, 2), 1);
+        ActorCollection_SetEnabled(GamePhaseRuntime_GetActorCollection(runtime, 2), 1);
         owner = *(u8 **)(runtime + 0x2fb8);
         object = *(void **)(owner + 0x2ebc);
         vtable = *(void ***)object;

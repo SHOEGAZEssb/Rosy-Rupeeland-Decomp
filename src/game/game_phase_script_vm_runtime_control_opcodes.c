@@ -7,17 +7,17 @@
 extern "C" {
 #endif
 extern void *data_021052fc;
-extern void func_0202d68c(void *object, s32 value);
+extern void ActorCollection_SetEnabled(void *object, s32 value);
 extern void GamePhaseAreaScene_SetEnabled(void *object, s32 enabled);
 #ifdef __cplusplus
 }
 #endif
 
-/* Pop a value, apply it to runtime collection 2 through func_0202d68c, and return zero. */
-s32 func_02017638(GamePhaseActorScriptVm *self)
+/* Pop a value, apply it to runtime collection 2 through ActorCollection_SetEnabled, and return zero. */
+s32 GamePhaseActorScriptVm_SetRuntimeCollection2Enabled(GamePhaseActorScriptVm *self)
 {
     s32 value = (s32)GamePhaseScriptVm_Pop(&self->base);
-    func_0202d68c(GamePhaseRuntime_GetActorCollection((GamePhaseRuntime *)data_021052fc, 2), value);
+    ActorCollection_SetEnabled(GamePhaseRuntime_GetActorCollection((GamePhaseRuntime *)data_021052fc, 2), value);
     return 0;
 }
 

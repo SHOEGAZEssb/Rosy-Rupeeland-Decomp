@@ -5,7 +5,7 @@
 .extern data_021052fc
 .extern GamePhaseRuntime_GetActorCollection
 .extern func_02008570
-.extern func_0202d68c
+.extern ActorCollection_SetEnabled
 .extern func_ov051_0220d688
 .extern gGameWork
 
@@ -18,7 +18,7 @@ func_ov051_0220da24:
     mov r1, #0x2
     bl GamePhaseRuntime_GetActorCollection
     mov r1, #0x1
-    bl func_0202d68c
+    bl ActorCollection_SetEnabled
     ldr r0, .L_0220da9c
     ldr r1, .L_0220daa0
     ldr r0, [r0, #0x0]

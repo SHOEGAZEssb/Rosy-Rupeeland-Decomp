@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/game_phase_area_scene_controls.c.
 .text
 .extern func_0202844c
-.extern func_0202d68c
+.extern ActorCollection_SetEnabled
 .extern func_ov056_0220ee20
 
     .global GamePhaseAreaScene_SetEnabled
@@ -18,7 +18,7 @@ GamePhaseAreaScene_SetEnabled: ; 0x020122a0
     bne L_0201233c
     mov r1, r4
     add r0, r5, #0x8
-    bl func_0202d68c
+    bl ActorCollection_SetEnabled
     ldr r0, [r5, #0x4]
     cmp r0, #0x0
     beq L_020122f0
@@ -59,7 +59,7 @@ L_0201233c:
     beq L_020123cc
     add r0, r5, #0x8
     mov r1, #0x1
-    bl func_0202d68c
+    bl ActorCollection_SetEnabled
     ldr r0, [r5, #0x4]
     cmp r0, #0x0
     beq L_02012388
@@ -89,7 +89,7 @@ L_020123a0:
 L_020123cc:
     add r0, r5, #0x8
     mov r1, #0x0
-    bl func_0202d68c
+    bl ActorCollection_SetEnabled
     ldr r0, [r5, #0x4]
     cmp r0, #0x0
     beq L_020123f4

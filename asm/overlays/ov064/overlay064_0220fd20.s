@@ -25,7 +25,7 @@
 .extern func_02025300
 .extern ActorCollection_UnregisterAndDestroyAllActors
 .extern func_0202d3cc
-.extern func_0202d68c
+.extern ActorCollection_SetEnabled
 .extern ActorCollection_GetSpriteOwner
 .extern Actor_ReplaceAttachmentSlotResource
 .extern Type7Actor_EnterSpecialPresentationState
@@ -376,7 +376,7 @@ func_ov064_0220fd20:
     ldr r0, [r0, #0x0]
     bl GamePhaseRuntime_GetActorCollection
     mov r1, #0x0
-    bl func_0202d68c
+    bl ActorCollection_SetEnabled
     ldr r0, .L_022105f8
     mov r1, #0x0
     ldr r0, [r0, #0x0]

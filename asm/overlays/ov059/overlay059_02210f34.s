@@ -2,7 +2,7 @@
 ; Matching fallback for the portable implementation in src/overlays/ov059/overlay059_recovery.c.
 .extern data_021052fc
 .extern GamePhaseRuntime_GetActorCollection
-.extern func_0202d68c
+.extern ActorCollection_SetEnabled
 
 .global func_ov059_02210f34
 func_ov059_02210f34:
@@ -14,7 +14,7 @@ func_ov059_02210f34:
     bl GamePhaseRuntime_GetActorCollection
     mov r1, r6
     mov r4, r0
-    bl func_0202d68c
+    bl ActorCollection_SetEnabled
     mov r5, #0x0
     add r7, r4, #0x2000
     mov r8, r5

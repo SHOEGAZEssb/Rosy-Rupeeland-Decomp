@@ -6,7 +6,7 @@
 .extern GamePhaseState_ApplyConfiguration
 .extern func_0201e0ec
 .extern ActorCollection_SetSpriteMode
-.extern func_0202d68c
+.extern ActorCollection_SetEnabled
 .extern func_020a2348
 .extern func_020a23a8
 .extern func_020ae740
@@ -59,7 +59,7 @@ L_0200e6ec:
     bl ActorCollection_SetSpriteMode
     add r0, r4, #0x4
     mov r1, #0x0
-    bl func_0202d68c
+    bl ActorCollection_SetEnabled
     ldr r1, [r4, #0x0]
     mov r0, r4
     bl GamePhaseState_ApplyConfiguration

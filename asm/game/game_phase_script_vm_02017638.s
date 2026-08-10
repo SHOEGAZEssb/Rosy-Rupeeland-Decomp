@@ -3,9 +3,9 @@
 .extern data_021052fc
 .extern GamePhaseRuntime_GetActorCollection
 .extern GamePhaseScriptVm_Pop
-.extern func_0202d68c
-.global func_02017638
-func_02017638:
+.extern ActorCollection_SetEnabled
+.global GamePhaseActorScriptVm_SetRuntimeCollection2Enabled
+GamePhaseActorScriptVm_SetRuntimeCollection2Enabled:
     stmdb sp!, {r4, lr}
     bl GamePhaseScriptVm_Pop
     ldr r1, L_02017664
@@ -14,8 +14,8 @@ func_02017638:
     mov r1, #2
     bl GamePhaseRuntime_GetActorCollection
     mov r1, r4
-    bl func_0202d68c
+    bl ActorCollection_SetEnabled
     mov r0, #0
     ldmia sp!, {r4, pc}
 L_02017664: .word data_021052fc
-    .size func_02017638, . - func_02017638
+    .size GamePhaseActorScriptVm_SetRuntimeCollection2Enabled, . - GamePhaseActorScriptVm_SetRuntimeCollection2Enabled
