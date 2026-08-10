@@ -175,6 +175,11 @@ Overlay 81's kind-three subtypes 6 through 8 likewise have their complete
 host-independent motion-state layout and mandatory overlay-local initializer.
 Their terrain-height refresh remains an explicit map-context boundary, and a
 nonzero descriptor word `0x2C` remains an explicit resource-script boundary.
+Kind-two factory variants zero and four now receive the recovered common
+extended-type-two layout, including their vectors, descriptor-derived scalar
+state, marker helper header, and fixed flag initialization. The marker sprite,
+interaction-record allocators, terrain-dependent placement, and virtual
+configuration callbacks remain explicit native-service boundaries.
 The category-two singleton-tracker bootstrap has its complete constructor
 image. The category-one bootstrap includes its full type-one scalar/vector
 extension and the known header of its marker helper; resource lookup and host

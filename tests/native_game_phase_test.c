@@ -246,6 +246,53 @@ static int TestRuntimeVariantActor(void)
     return ok;
 }
 
+static int TestExtendedType2Actor(void)
+{
+    TingleNativeActorDescriptor descriptor = {0};
+    TingleNativeActorRuntime *runtime;
+    const TingleNativeActorImage *actor;
+    u32 expected_stages = TINGLE_NATIVE_ACTOR_STAGE_GEOMETRY |
+                          TINGLE_NATIVE_ACTOR_STAGE_COMMON_RUNTIME |
+                          TINGLE_NATIVE_ACTOR_STAGE_SHARED_DERIVED |
+                          TINGLE_NATIVE_ACTOR_STAGE_EXTENDED_TYPE2;
+    int ok;
+
+    descriptor.kind = 2;
+    descriptor.subtype = 0x68;
+    descriptor.factory_variant = 0;
+    descriptor.selector_50 = 0;
+    descriptor.position_x = 12;
+    descriptor.position_y = -7;
+    descriptor.position_z = 3;
+    descriptor.flags_28 = 0x400;
+    descriptor.allocation_size = 0x298;
+    WriteU16(descriptor.raw + 0x30, 0x1234);
+    WriteU16(descriptor.raw + 0x4C, (u16)-9);
+    WriteU32(descriptor.raw + 0x48, 0xFFFFFFFFu);
+    WriteU16(descriptor.raw + 0x54, 0x5678);
+    runtime = TingleNativeActorRuntime_Create(&descriptor, 1, NULL, 0);
+    actor = TingleNativeActorRuntime_GetActor(runtime, 0);
+    ok = runtime != NULL && actor != NULL && actor->size == 0x298 &&
+         actor->initialization_stages == expected_stages &&
+         actor->pending_external_state ==
+             (TINGLE_NATIVE_ACTOR_PENDING_MARKER_PRESENTATION |
+              TINGLE_NATIVE_ACTOR_PENDING_TYPE2_CONFIGURATION) &&
+         ReadU32At(actor->bytes, 0x00) == 0x020DFEE4 &&
+         actor->bytes[0x4D] == 2 &&
+         (ReadU32At(actor->bytes, 0xD0) & 4) != 0 &&
+         ReadU32At(actor->bytes, 0x22C) == 0x020D405C &&
+         ReadU32At(actor->bytes, 0x230) == 12 * 0x1000 &&
+         ReadU32At(actor->bytes, 0x234) == (u32)(-7 * 0x1000) &&
+         ReadU32At(actor->bytes, 0x238) == 3 * 0x1000 &&
+         ReadU16At(actor->bytes, 0x250) == 0x5678 &&
+         ReadU16At(actor->bytes, 0x272) == 0x1234 &&
+         ReadU16At(actor->bytes, 0x27C) == (u16)-9 &&
+         (ReadU32At(actor->bytes, 0x260) & 0x100008) == 0x100008 &&
+         ReadU32At(actor->bytes, 0x284) == 0x020E1ED8;
+    TingleNativeActorRuntime_Destroy(runtime);
+    return ok;
+}
+
 static int TestKind3DerivedActors(void)
 {
     TingleNativeActorDescriptor descriptors[7] = {{0}};
@@ -585,7 +632,8 @@ int main(int argc, char **argv)
         return ProbeMetadata(argv[1], argv[2], argv[3]);
     if (!TestOverlayRegistration() || !TestFactoryResolution() ||
         !TestActorRuntime() || !TestActorBootstrapRuntime() ||
-        !TestRuntimeVariantActor() || !TestKind3DerivedActors())
+        !TestRuntimeVariantActor() || !TestExtendedType2Actor() ||
+        !TestKind3DerivedActors())
         return EXIT_FAILURE;
 
     WriteU32(record + 0x00, 7);
