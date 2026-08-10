@@ -5,8 +5,8 @@
 .extern GamePhaseVisualEffect_SetBlendCoefficients
 .extern GamePhaseScriptVm_Pop
 .extern OS_Halt
-.global func_0201a130
-func_0201a130:
+.global GamePhaseActorScriptVm_DispatchVisualEffectControl
+GamePhaseActorScriptVm_DispatchVisualEffectControl:
     stmdb sp!, {r4, r5, r6, lr}
     mov r6, r0
     bl GamePhaseScriptVm_Pop
@@ -60,4 +60,4 @@ L_0201a1e4:
     mov r0, #0x0
     ldmia sp!, {r4, r5, r6, pc}
 L_0201a1ec: .word data_021052fc
-.size func_0201a130, . - func_0201a130
+.size GamePhaseActorScriptVm_DispatchVisualEffectControl, . - GamePhaseActorScriptVm_DispatchVisualEffectControl

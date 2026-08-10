@@ -20,7 +20,7 @@ extern void OS_Halt(void);
  * alternate effect operation.  Invalid modes invoke the SDK halt routine.
  * Return zero on the non-halting paths.
  */
-s32 func_0201a130(GamePhaseActorScriptVm *self)
+s32 GamePhaseActorScriptVm_DispatchVisualEffectControl(GamePhaseActorScriptVm *self)
 {
     s32 second = (s32)GamePhaseScriptVm_Pop(&self->base);
     s32 first = (s32)GamePhaseScriptVm_Pop(&self->base);

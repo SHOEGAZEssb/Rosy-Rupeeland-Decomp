@@ -256,7 +256,7 @@ s32 func_02019f8c(GamePhaseActorScriptVm *self);
 s32 func_0201a00c(GamePhaseActorScriptVm *self);
 s32 func_0201a03c(GamePhaseActorScriptVm *self);
 s32 func_0201a090(GamePhaseActorScriptVm *self);
-s32 func_0201a130(GamePhaseActorScriptVm *self);
+s32 GamePhaseActorScriptVm_DispatchVisualEffectControl(GamePhaseActorScriptVm *self);
 s32 GamePhaseActorScriptVm_DispatchOptionalSingletonControl(GamePhaseActorScriptVm *self);
 s32 GamePhaseActorScriptVm_DispatchOptionalSingletonQuery(GamePhaseActorScriptVm *self);
 s32 GamePhaseActorScriptVm_GenerateModeBasedValue(GamePhaseActorScriptVm *self);
