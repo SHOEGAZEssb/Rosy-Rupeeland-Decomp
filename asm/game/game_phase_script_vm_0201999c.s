@@ -4,8 +4,8 @@
 .extern func_020021c4
 .extern GamePhaseScriptVm_Pop
 .extern GamePhaseScriptVm_SetResult
-.global func_0201999c
-func_0201999c:
+.global GamePhaseActorScriptVm_GetManagerEntryField06
+GamePhaseActorScriptVm_GetManagerEntryField06:
     stmdb sp!, {r3, r4, r5, lr}
     mov r5, r0
     bl GamePhaseScriptVm_Pop
@@ -18,4 +18,4 @@ func_0201999c:
     bl GamePhaseScriptVm_SetResult
     mov r0, #0x0
     ldmia sp!, {r3, r4, r5, pc}
-.size func_0201999c, . - func_0201999c
+.size GamePhaseActorScriptVm_GetManagerEntryField06, . - GamePhaseActorScriptVm_GetManagerEntryField06

@@ -26,7 +26,7 @@ extern void func_02074038(void *object);
  * recovered manager entry, resolve it again, trigger its first operation, and
  * return zero.
  */
-s32 func_020198d0(GamePhaseActorScriptVm *self)
+s32 GamePhaseActorScriptVm_ConfigureAndStartManagerEntry(GamePhaseActorScriptVm *self)
 {
     u16 fourth = (u16)(s16)GamePhaseScriptVm_Pop(&self->base);
     u16 third = (u16)GamePhaseScriptVm_Pop(&self->base);
@@ -39,7 +39,7 @@ s32 func_020198d0(GamePhaseActorScriptVm *self)
 }
 
 /* Pop an entry id, trigger its second recovered operation, and return zero. */
-s32 func_02019978(GamePhaseActorScriptVm *self)
+s32 GamePhaseActorScriptVm_TriggerManagerEntrySecondOperation(GamePhaseActorScriptVm *self)
 {
     s32 id = (s32)GamePhaseScriptVm_Pop(&self->base);
     func_02001f40(func_020020ec(func_020021c4(), id));
@@ -47,7 +47,7 @@ s32 func_02019978(GamePhaseActorScriptVm *self)
 }
 
 /* Pop an entry id, push its u16 field at offset 0x06, and return zero. */
-s32 func_0201999c(GamePhaseActorScriptVm *self)
+s32 GamePhaseActorScriptVm_GetManagerEntryField06(GamePhaseActorScriptVm *self)
 {
     s32 id = (s32)GamePhaseScriptVm_Pop(&self->base);
     GamePhaseScriptVm_SetResult(&self->base,
@@ -59,7 +59,7 @@ s32 func_0201999c(GamePhaseActorScriptVm *self)
  * Pop an entry id and push whether bits 29..31 of its word at offset 0x08
  * encode recovered state 1 or 2.  Return zero.
  */
-s32 func_020199cc(GamePhaseActorScriptVm *self)
+s32 GamePhaseActorScriptVm_IsManagerEntryState1Or2(GamePhaseActorScriptVm *self)
 {
     s32 id = (s32)GamePhaseScriptVm_Pop(&self->base);
     u32 state = *(u32 *)(func_020020ec(func_020021c4(), id) + 8) >> 29;
@@ -71,7 +71,7 @@ s32 func_020199cc(GamePhaseActorScriptVm *self)
  * If signed actor field 0xe4 is zero, invoke the recovered actor reset and
  * clear halfword 0x36 of its primary presentation object.  Return zero.
  */
-s32 func_02019a10(GamePhaseActorScriptVm *self)
+s32 GamePhaseActorScriptVm_ResetType1ActorWhenFieldE4Zero(GamePhaseActorScriptVm *self)
 {
     u8 *actor = (u8 *)self->actor;
     if (*(s16 *)(actor + 0xe4) == 0) {
@@ -82,7 +82,7 @@ s32 func_02019a10(GamePhaseActorScriptVm *self)
 }
 
 /* Set actor flag bit 0 and apply mode 2 to state at offset 0x1ec; return zero. */
-s32 func_02019a44(GamePhaseActorScriptVm *self)
+s32 GamePhaseActorScriptVm_SetActorFlag1AndApplyStateMode2(GamePhaseActorScriptVm *self)
 {
     u8 *actor = (u8 *)self->actor;
     *(u32 *)(actor + 0x14) |= 1;
@@ -94,7 +94,7 @@ s32 func_02019a44(GamePhaseActorScriptVm *self)
  * Destroy the actor's secondary presentation object at offset 0x58, clear its
  * pointer and actor flag bit 0, and return zero.
  */
-s32 func_02019a6c(GamePhaseActorScriptVm *self)
+s32 GamePhaseActorScriptVm_DestroySecondaryPresentationAndClearFlag1(GamePhaseActorScriptVm *self)
 {
     u8 *actor = (u8 *)self->actor;
     func_02074038(*(void **)(actor + 0x58));

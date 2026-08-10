@@ -5,8 +5,8 @@
 .extern func_020020f8
 .extern func_020021c4
 .extern GamePhaseScriptVm_Pop
-.global func_020198d0
-func_020198d0:
+.global GamePhaseActorScriptVm_ConfigureAndStartManagerEntry
+GamePhaseActorScriptVm_ConfigureAndStartManagerEntry:
     stmdb sp!, {r4, r5, r6, r7, r8, lr}
     sub sp, sp, #0x8
     mov r7, r0
@@ -49,4 +49,4 @@ func_020198d0:
     mov r0, #0x0
     add sp, sp, #0x8
     ldmia sp!, {r4, r5, r6, r7, r8, pc}
-.size func_020198d0, . - func_020198d0
+.size GamePhaseActorScriptVm_ConfigureAndStartManagerEntry, . - GamePhaseActorScriptVm_ConfigureAndStartManagerEntry

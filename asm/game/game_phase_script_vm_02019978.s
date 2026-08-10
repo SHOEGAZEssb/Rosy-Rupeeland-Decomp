@@ -4,8 +4,8 @@
 .extern func_020020ec
 .extern func_020021c4
 .extern GamePhaseScriptVm_Pop
-.global func_02019978
-func_02019978:
+.global GamePhaseActorScriptVm_TriggerManagerEntrySecondOperation
+GamePhaseActorScriptVm_TriggerManagerEntrySecondOperation:
     stmdb sp!, {r4, lr}
     bl GamePhaseScriptVm_Pop
     mov r4, r0
@@ -15,4 +15,4 @@ func_02019978:
     bl func_02001f40
     mov r0, #0x0
     ldmia sp!, {r4, pc}
-.size func_02019978, . - func_02019978
+.size GamePhaseActorScriptVm_TriggerManagerEntrySecondOperation, . - GamePhaseActorScriptVm_TriggerManagerEntrySecondOperation
