@@ -33,7 +33,9 @@ extern "C" {
 #endif
 
 extern GraphicsSpriteStatePool data_021ede68;
-extern GraphicsVramRangeNode *func_02074a88(void *owner, void *resource);
+extern GraphicsVramRangeNode *
+GraphicsSpriteRenderer_AcquireGraphicsVramBinding(void *owner,
+                                                  void *resource);
 extern void GraphicsSpriteRenderer_ReleaseIndexedEntry(void *owner,
                                                        void *allocation);
 
@@ -62,7 +64,8 @@ GraphicsSpriteState *GraphicsSpriteStatePool_Allocate(
     state->field_18 = field18;
     state->animationResource = field1c;
     if (attach == 1) {
-        state->field_0c = func_02074a88(owner, field14);
+        state->field_0c =
+            GraphicsSpriteRenderer_AcquireGraphicsVramBinding(owner, field14);
         state->field_3b |= 1;
     }
     return state;
@@ -116,7 +119,8 @@ void GraphicsSpriteState_ReplaceResources(void *ownerPointer,
         state->field_0c = 0;
         state->field_14 = field14;
         if ((state->field_3b & 1) != 0) {
-            state->field_0c = func_02074a88(owner, field14);
+            state->field_0c = GraphicsSpriteRenderer_AcquireGraphicsVramBinding(
+                owner, field14);
         }
     }
     if (state->field_18 != field18) {
@@ -170,7 +174,7 @@ asm void GraphicsSpriteState_ReplaceResources(void *owner,
     beq sprite_replace_field18
     mov r0, r8
     mov r1, r6
-    bl func_02074a88
+    bl GraphicsSpriteRenderer_AcquireGraphicsVramBinding
     str r0, [r7, #0xc]
 sprite_replace_field18:
     ldr r0, [r7, #0x18]

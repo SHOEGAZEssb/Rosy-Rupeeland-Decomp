@@ -51,13 +51,15 @@ extern u32 GX_VBlankIntr(u32 state);
  * retail contract because the returned node is dereferenced immediately.
  */
 #ifndef MATCHING
-GraphicsVramRangeNode *func_02074a88(void *rendererPointer, void *resourcePointer)
+GraphicsVramRangeNode *GraphicsSpriteRenderer_AcquireGraphicsVramBinding(
+    void *rendererPointer, void *resourcePointer)
 {
     GraphicsSpriteVramRenderer *renderer =
         (GraphicsSpriteVramRenderer *)rendererPointer;
     GraphicsSpriteGraphicsResource *resource =
         (GraphicsSpriteGraphicsResource *)resourcePointer;
-    GraphicsVramRangeNode *node = func_02074b6c(renderer, resource, 1);
+    GraphicsVramRangeNode *node =
+        GraphicsSpriteRenderer_FindVramBinding(renderer, resource, 1);
 
     if (node == 0) {
         s32 size;
@@ -86,14 +88,15 @@ GraphicsVramRangeNode *func_02074a88(void *rendererPointer, void *resourcePointe
 }
 #else
 /* This matching fallback implements the documented portable C directly above. */
-asm GraphicsVramRangeNode *func_02074a88(void *renderer, void *resource)
+asm GraphicsVramRangeNode *GraphicsSpriteRenderer_AcquireGraphicsVramBinding(
+    void *renderer, void *resource)
 {
     stmdb sp!, {r3, r4, r5, r6, r7, r8, lr}
     sub sp, sp, #4
     mov r2, #1
     mov r6, r0
     mov r5, r1
-    bl func_02074b6c
+    bl GraphicsSpriteRenderer_FindVramBinding
     movs r4, r0
     bne sprite_vram_binding_retain
     ldr r0, [r5, #0x14]
@@ -156,8 +159,8 @@ sprite_vram_binding_done:
  * node or null. No state changes and there are no SDK/hardware effects.
  */
 #ifndef MATCHING
-GraphicsVramRangeNode *func_02074b6c(void *rendererPointer, void *resource,
-                                     u8 type)
+GraphicsVramRangeNode *GraphicsSpriteRenderer_FindVramBinding(
+    void *rendererPointer, void *resource, u8 type)
 {
     GraphicsSpriteVramRenderer *renderer =
         (GraphicsSpriteVramRenderer *)rendererPointer;
@@ -173,8 +176,8 @@ GraphicsVramRangeNode *func_02074b6c(void *rendererPointer, void *resource,
 }
 #else
 /* This matching fallback implements the documented portable C directly above. */
-asm GraphicsVramRangeNode *func_02074b6c(void *renderer, void *resource,
-                                         u8 type)
+asm GraphicsVramRangeNode *GraphicsSpriteRenderer_FindVramBinding(
+    void *renderer, void *resource, u8 type)
 {
     add r0, r0, #0x48
     add r0, r0, #0x400

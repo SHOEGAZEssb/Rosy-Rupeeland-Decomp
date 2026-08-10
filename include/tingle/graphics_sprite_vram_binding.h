@@ -7,8 +7,10 @@
 extern "C" {
 #endif
 
-GraphicsVramRangeNode *func_02074a88(void *renderer, void *resource);
-GraphicsVramRangeNode *func_02074b6c(void *renderer, void *resource, u8 type);
+GraphicsVramRangeNode *GraphicsSpriteRenderer_AcquireGraphicsVramBinding(
+    void *renderer, void *resource);
+GraphicsVramRangeNode *GraphicsSpriteRenderer_FindVramBinding(
+    void *renderer, void *resource, u8 type);
 
 #ifdef __cplusplus
 }

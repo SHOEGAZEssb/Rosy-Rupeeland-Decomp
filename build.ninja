@@ -11232,7 +11232,7 @@ build build/reports/graphics_sprite_vram_binding.json: objdiff build/decomp/deli
 
 build build/reports/graphics_sprite_vram_binding.txt: match_report build/reports/graphics_sprite_vram_binding.json | tools/report_objdiff.py
   report_json = build/reports/graphics_sprite_vram_binding.json
-  report_args = --section .text --function func_02074a88 --function func_02074b6c
+  report_args = --section .text --function GraphicsSpriteRenderer_AcquireGraphicsVramBinding --function GraphicsSpriteRenderer_FindVramBinding
 
 build build/reports/graphics_sprite_indexed_release.json: objdiff build/decomp/delinks/src/graphics/graphics_sprite_indexed_release.o | build/decomp/src/graphics/graphics_sprite_indexed_release.o
   target_object = build/decomp/delinks/src/graphics/graphics_sprite_indexed_release.o
