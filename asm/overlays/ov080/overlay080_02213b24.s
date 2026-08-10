@@ -3,7 +3,7 @@
 .extern data_02105310
 .extern func_02005030
 .extern func_02005058
-.extern func_0200b04c
+.extern ActorRuntimeCollection_GetPendingAttachmentFlag
 .extern Actor_GetCachedTerrainHeight
 .extern func_02050078
 
@@ -18,7 +18,7 @@ func_ov080_02213b24:
     subne r1, r1, #0x1
     strneh r1, [r0, #0xa2]
     ldr r0, .L_02213be8
-    bl func_0200b04c
+    bl ActorRuntimeCollection_GetPendingAttachmentFlag
     cmp r0, #0x0
     bne .L_02213be0
     ldr r0, [r4, #0x29c]

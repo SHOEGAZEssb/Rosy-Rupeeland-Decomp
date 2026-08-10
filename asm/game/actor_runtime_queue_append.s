@@ -4,8 +4,8 @@
 .extern Heap_Alloc
 .extern data_020d43fc
 .extern gHeapContext
-.global func_0200b100
-func_0200b100:
+.global ActorRuntimeOwnedList_Append
+ActorRuntimeOwnedList_Append:
     stmdb sp!, {r3, r4, r5, lr}
     mov r4, r1
     mov r5, r0
@@ -31,5 +31,5 @@ func_0200b100:
     ldmia sp!, {r3, r4, r5, pc}
 L_0200b15c: .word data_020d43fc
 L_0200b160: .word gHeapContext
-.size func_0200b100, . - func_0200b100
+.size ActorRuntimeOwnedList_Append, . - ActorRuntimeOwnedList_Append
 

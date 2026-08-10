@@ -3,7 +3,7 @@
 .extern data_02105310
 .extern func_0200500c
 .extern func_02005058
-.extern func_0200b04c
+.extern ActorRuntimeCollection_GetPendingAttachmentFlag
 .extern func_02032a94
 .extern ActorDerivedRuntime_HandlePairActive
 .extern func_0204cfa4
@@ -22,7 +22,7 @@ func_ov088_02219a2c:
     tst r0, #0x1000000
     bne .L_02219a5c
     ldr r0, .L_02219bf8
-    bl func_0200b04c
+    bl ActorRuntimeCollection_GetPendingAttachmentFlag
     cmp r0, #0x0
     beq .L_02219a70
 .L_02219a5c:

@@ -22,7 +22,7 @@ extern void *ActorMotionAreaFollower_GetPosition(void *object);
 extern void func_02005030(void *destination, const void *source);
 extern void func_020050c8(void *destination, const void *offset);
 extern void ActorMotion_SetPosition(void *object, const void *transform);
-extern void func_0200ae8c(void *state);
+extern void ActorRuntimeCollection_Reset(void *state);
 extern void GamePhaseRuntime_CreateSecondaryActorSubsystem(GamePhaseRuntime *self, void *area, s32 enabled);
 extern void func_0200e714(void *state, void *area, const void *transform);
 extern void ActorCollection_DispatchEventToActors(void *actor, const void *transform);
@@ -95,7 +95,7 @@ s32 GamePhaseRuntime_ChangeToNeighborArea(GamePhaseRuntime *self, s32 direction)
         !(*(u32 *)((u8 *)object + 0x268) & 0x20))
         *(u16 *)((u8 *)object + 0x27e) = (u16)(areaId + 1);
 
-    func_0200ae8c(data_02105310);
+    ActorRuntimeCollection_Reset(data_02105310);
     GamePhaseRuntime_CreateSecondaryActorSubsystem(self, area, 1);
     *(u32 *)(b + 0x30b8) |= 0x30;
     func_0200e714(b + 0x24, area, transform);

@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/actor_resource_variant_apply.c.
 .text
 .extern data_02105310
-.extern func_0200afd0
+.extern ActorRuntimeCollection_AttachObject
 .extern func_0201b124
 .extern func_0201b180
 .extern func_0201b1e0
@@ -30,7 +30,7 @@ Actor_SetResourceVariant: ; 0x02032aec
     orr r2, r1, #0x100
     mov r1, r5
     str r2, [r5, #0x10]
-    bl func_0200afd0
+    bl ActorRuntimeCollection_AttachObject
 .L_02032b30:
     mov r0, r5
     bl Actor_GetCollection

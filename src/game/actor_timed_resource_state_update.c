@@ -9,11 +9,11 @@ extern "C" {
 #endif
 extern s32 func_0201b23c(void *state);
 extern void func_0201273c(void *state, s32 value);
-extern s32 func_0200b058(void *effectState, void *actor);
+extern s32 ActorRuntimeCollection_TryCompleteAttachment(void *effectState, void *actor);
 extern void *GamePhaseRuntime_GetActorCollection(void *manager, u32 slot);
 extern void *Actor_GetCollection(void *actor);
 extern void ActorCollection_EndTrackedPair(void *collection, void *reference, void *actor);
-extern void *func_0200af04(void *effectState, s32 index);
+extern void *ActorRuntimeCollection_GetPrimaryContainer(void *effectState, s32 index);
 extern void func_0201b180(void *state, void *value);
 extern void func_0201b228(void *state);
 extern void Actor_UpdateAttachmentDirectionFromVector(void *actor, s32 x, s32 y);
@@ -49,7 +49,7 @@ s32 func_02034164(void *self)
     }
 
     if (actor[0xe8] != 0) {
-        if (func_0200b058(data_02105310, actor) == 0) {
+        if (ActorRuntimeCollection_TryCompleteAttachment(data_02105310, actor) == 0) {
             return 0;
         }
         if (actor[0xe8] != 2) {
@@ -59,7 +59,7 @@ s32 func_02034164(void *self)
                           *(void **)((u8 *)slotOne + 0x2e7c), actor);
         }
         actor[0xe8] = 0;
-        func_0201b180(actor + 0xec, func_0200af04(data_02105310, 0));
+        func_0201b180(actor + 0xec, ActorRuntimeCollection_GetPrimaryContainer(data_02105310, 0));
         func_0201b228(actor + 0xec);
         if (*(s32 *)(actor + 0x3c) + *(s32 *)(actor + 0x40) != 0) {
             Actor_UpdateAttachmentDirectionFromVector(actor, *(s32 *)(actor + 0x3c),

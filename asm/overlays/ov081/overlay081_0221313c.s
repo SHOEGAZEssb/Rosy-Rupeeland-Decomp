@@ -1,7 +1,7 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov081/overlay081_recovery.c.
 .extern data_02105310
-.extern func_0200b04c
+.extern ActorRuntimeCollection_GetPendingAttachmentFlag
 .extern ActorDerivedRuntime_HandlePairActive
 .extern func_0204cfa4
 .extern func_020593dc
@@ -16,7 +16,7 @@ func_ov081_0221313c:
     ldr r0, .L_02213364
     mov r5, r1
     mov r4, r2
-    bl func_0200b04c
+    bl ActorRuntimeCollection_GetPendingAttachmentFlag
     cmp r0, #0x0
     ldreq r0, [r6, #0x114]
     cmpeq r0, #0x0

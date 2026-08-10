@@ -14,10 +14,10 @@ extern void ActorCollection_ProcessCategory1And2Pairs(void *actor);
 extern void ActorCollection_UpdateCategory3TerrainActors(void *actor);
 extern void ActorCollection_UpdateCategory0Actors(void *actor);
 extern void ActorCollection_RebuildBaseCategories(void *actor);
-extern s32 func_0200b04c(void *state);
-extern s32 func_0200b180(void *state);
-extern s32 func_0200b294(void *state);
-extern void func_0200af8c(void *state);
+extern s32 ActorRuntimeCollection_GetPendingAttachmentFlag(void *state);
+extern s32 ActorRuntimeCollection_DispatchQueuedValue(void *state);
+extern s32 ActorRuntimeCollection_GetBusyState(void *state);
+extern void ActorRuntimeCollection_ReleaseSelectedObject(void *state);
 #ifdef __cplusplus
 }
 #endif
@@ -65,9 +65,9 @@ void GamePhaseRuntime_PrepareActorCollections(GamePhaseRuntime *self, s32 value,
         }
     }
 
-    if (!func_0200b04c(data_02105310) && value != 2 &&
+    if (!ActorRuntimeCollection_GetPendingAttachmentFlag(data_02105310) && value != 2 &&
         func_02007868(*(void **)(b + 0x2ea4)) &&
-        !func_0200b180(data_02105310) &&
-        func_0200b294(data_02105310))
-        func_0200af8c(data_02105310);
+        !ActorRuntimeCollection_DispatchQueuedValue(data_02105310) &&
+        ActorRuntimeCollection_GetBusyState(data_02105310))
+        ActorRuntimeCollection_ReleaseSelectedObject(data_02105310);
 }

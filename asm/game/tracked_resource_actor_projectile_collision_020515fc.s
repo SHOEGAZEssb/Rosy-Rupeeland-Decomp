@@ -3,7 +3,7 @@
 .extern func_02004fe0
 .extern func_02005058
 .extern func_020050a4
-.extern func_0200b04c
+.extern ActorRuntimeCollection_GetPendingAttachmentFlag
 .extern ActorCollection_QueueActorForRemoval
 .extern Actor_GetCollection
 .extern func_02050260
@@ -32,7 +32,7 @@ func_020515fc:
     sub r1, r0, #0x1000
     ldr r0, .L_0205170c
     str r1, [sp, #0x8]
-    bl func_0200b04c
+    bl ActorRuntimeCollection_GetPendingAttachmentFlag
     cmp r0, #0x0
     bne .L_02051674
     cmp r4, #0x0

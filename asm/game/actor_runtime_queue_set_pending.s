@@ -2,9 +2,9 @@
 ; the documented portable implementation and recovered behavior.
 .text
 
-.global func_0200b0d0
-func_0200b0d0:
+.global ActorRuntimeCollection_SetPendingValue
+ActorRuntimeCollection_SetPendingValue:
     str r1, [r0, #0x134]
     bx lr
-.size func_0200b0d0, . - func_0200b0d0
+.size ActorRuntimeCollection_SetPendingValue, . - ActorRuntimeCollection_SetPendingValue
 

@@ -2,11 +2,11 @@
 .extern Actor_SetRuntimeFlag80
 .extern func_0201b23c
 .extern func_0201273c
-.extern func_0200b058
+.extern ActorRuntimeCollection_TryCompleteAttachment
 .extern Actor_GetCollectionBySlot
 .extern Actor_GetCollection
 .extern ActorCollection_EndTrackedPair
-.extern func_0200af04
+.extern ActorRuntimeCollection_GetPrimaryContainer
 .extern func_0201b180
 .extern func_0201b228
 .extern ActorCollection_QueueActorForRemoval
@@ -32,7 +32,7 @@ func_0204d308: ; 0x0204d308
     beq .L_0204d3b4
     ldr r0, .L_0204d3d4
     mov r1, r4
-    bl func_0200b058
+    bl ActorRuntimeCollection_TryCompleteAttachment
     cmp r0, #0x0
     ldmeqia sp!, {r3, r4, r5, pc}
     ldrb r0, [r4, #0xe8]
@@ -52,7 +52,7 @@ func_0204d308: ; 0x0204d308
     ldr r0, .L_0204d3d4
     mov r1, #0x0
     strb r1, [r4, #0xe8]
-    bl func_0200af04
+    bl ActorRuntimeCollection_GetPrimaryContainer
     mov r1, r0
     add r0, r4, #0xec
     bl func_0201b180

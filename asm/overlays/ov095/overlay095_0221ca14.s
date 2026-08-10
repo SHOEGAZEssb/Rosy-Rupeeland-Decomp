@@ -1,7 +1,7 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov095/overlay095_recovery.c.
 .extern data_02105310
-.extern func_0200b04c
+.extern ActorRuntimeCollection_GetPendingAttachmentFlag
 .extern func_02050260
 .extern func_020505f0
 
@@ -11,7 +11,7 @@ func_ov095_0221ca14:
     mov r4, r0
     ldr r0, .L_0221cadc
     mov r5, r1
-    bl func_0200b04c
+    bl ActorRuntimeCollection_GetPendingAttachmentFlag
     cmp r0, #0x0
     bne .L_0221cabc
     cmp r5, #0x0

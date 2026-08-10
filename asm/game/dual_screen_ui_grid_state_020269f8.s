@@ -3,8 +3,8 @@
 .extern Sound_Play
 .extern data_021052fc
 .extern data_02105310
-.extern func_0200b04c
-.extern func_0200b294
+.extern ActorRuntimeCollection_GetPendingAttachmentFlag
+.extern ActorRuntimeCollection_GetBusyState
 .extern func_02026514
 .extern func_02026588
 .extern func_02026990
@@ -178,11 +178,11 @@ func_020269f8: ; 0x020269f8
     cmp r0, #0x0
     beq .L_02026c74
     ldr r0, .L_02026e2c
-    bl func_0200b04c
+    bl ActorRuntimeCollection_GetPendingAttachmentFlag
     cmp r0, #0x0
     bne .L_02026c74
     ldr r0, .L_02026e2c
-    bl func_0200b294
+    bl ActorRuntimeCollection_GetBusyState
     cmp r0, #0x0
     bne .L_02026c74
     ldr r0, .L_02026e30

@@ -12,7 +12,7 @@ extern void *Actor_GetCollection(void *actor);
 extern void *ActorCollection_FindActorByDescriptorValue(void *collection, s32 index);
 extern void *GamePhaseRuntime_GetActorCollection(void *runtime, s32 index);
 extern void Actor_SetActive(void *actor, s32 active);
-extern s32 func_0200b04c(void *state);
+extern s32 ActorRuntimeCollection_GetPendingAttachmentFlag(void *state);
 extern void Actor_SetAttachmentAnimation(void *actor, u32 value);
 extern void Actor_SetAttachmentEnabled(void *actor, u32 value);
 #ifdef __cplusplus
@@ -78,13 +78,13 @@ s32 func_02012afc(GamePhaseActorScriptVm *self)
     }
 
     if (value != 0) {
-        if (func_0200b04c(data_02105310) &&
+        if (ActorRuntimeCollection_GetPendingAttachmentFlag(data_02105310) &&
             *(void **)(data_02105310 + 4) == target)
             callActorValueMethod(target, 0x70, value);
         else
             callActorValueMethod(target, 0x74, value);
     }
-    if (func_0200b04c(data_02105310))
+    if (ActorRuntimeCollection_GetPendingAttachmentFlag(data_02105310))
         Actor_SetActive(target, 1);
     return 0;
 }

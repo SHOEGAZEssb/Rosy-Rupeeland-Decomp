@@ -2,7 +2,7 @@
 .extern data_02105310
 .extern func_02005030
 .extern func_02005058
-.extern func_0200b04c
+.extern ActorRuntimeCollection_GetPendingAttachmentFlag
 .extern func_0200b2c0
 .extern func_020328d0
 .text
@@ -13,7 +13,7 @@ func_02051fc0:
     mov r4, r0
     ldr r0, .L_02052068
     mov r5, r1
-    bl func_0200b04c
+    bl ActorRuntimeCollection_GetPendingAttachmentFlag
     cmp r0, #0x0
     bne .L_02052030
     cmp r5, #0x0

@@ -19,13 +19,13 @@ extern void Heap_Free(void *allocation);
  * and the owned-node list. Returns self; container constructors may initialize
  * additional internal state, and no hardware is accessed directly.
  */
-ActorRuntimeCollection *func_0200ad90(ActorRuntimeCollection *self)
+ActorRuntimeCollection *ActorRuntimeCollection_Init(ActorRuntimeCollection *self)
 {
     self->flags = 0;
     func_0201b0f4(self->firstContainer);
     func_0201b0f4(self->secondContainer);
     self->field_134 = 0;
-    func_0200adc8(&self->ownedList);
+    ActorRuntimeOwnedList_Init(&self->ownedList);
     return self;
 }
 
@@ -34,7 +34,7 @@ ActorRuntimeCollection *func_0200ad90(ActorRuntimeCollection *self)
  * vtable after the base vtable. Returns self and performs no allocation or
  * hardware access. The vtable roles are inferred from destructor behavior.
  */
-ActorRuntimeOwnedList *func_0200adc8(ActorRuntimeOwnedList *self)
+ActorRuntimeOwnedList *ActorRuntimeOwnedList_Init(ActorRuntimeOwnedList *self)
 {
     self->vtable = data_020d4468;
     self->head = 0;
@@ -48,10 +48,10 @@ ActorRuntimeOwnedList *func_0200adc8(ActorRuntimeOwnedList *self)
  * Restore the base list vtable, release every linked allocation, and return
  * self. Heap_Free is the only SDK/runtime side effect.
  */
-ActorRuntimeOwnedList *func_0200adf0(ActorRuntimeOwnedList *self)
+ActorRuntimeOwnedList *ActorRuntimeOwnedList_Destroy(ActorRuntimeOwnedList *self)
 {
     self->vtable = data_020d4468;
-    func_0200ae4c(self);
+    ActorRuntimeOwnedList_Clear(self);
     return self;
 }
 
@@ -60,11 +60,11 @@ ActorRuntimeOwnedList *func_0200adf0(ActorRuntimeOwnedList *self)
  * embedded containers. Returns self; owned heap nodes and container resources
  * are released through the called runtime helpers.
  */
-ActorRuntimeCollection *func_0200ae10(ActorRuntimeCollection *self)
+ActorRuntimeCollection *ActorRuntimeCollection_Destroy(ActorRuntimeCollection *self)
 {
-    func_0200ae4c(&self->ownedList);
+    ActorRuntimeOwnedList_Clear(&self->ownedList);
     self->ownedList.vtable = data_020d4468;
-    func_0200ae4c(&self->ownedList);
+    ActorRuntimeOwnedList_Clear(&self->ownedList);
     func_0201b1e0(self->secondContainer);
     func_0201b1e0(self->firstContainer);
     return self;
@@ -75,7 +75,7 @@ ActorRuntimeCollection *func_0200ae10(ActorRuntimeCollection *self)
  * the next pointer, then clear all three list links. Accepts an initialized
  * list, returns no value, mutates list ownership state, and calls Heap_Free.
  */
-void func_0200ae4c(ActorRuntimeOwnedList *self)
+void ActorRuntimeOwnedList_Clear(ActorRuntimeOwnedList *self)
 {
     ActorRuntimeOwnedNode *node = self->head;
 

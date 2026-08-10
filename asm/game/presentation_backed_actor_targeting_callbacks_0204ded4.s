@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/presentation_backed_actor_targeting.c.
 .extern data_021052fc
 .extern data_02105310
-.extern func_0200b04c
+.extern ActorRuntimeCollection_GetPendingAttachmentFlag
 .extern func_02031758
 .extern func_02032a94
 .text
@@ -30,7 +30,7 @@ func_0204deec: ; 0x0204deec
     cmp r0, #0x1
     bne .L_0204df30
     ldr r0, .L_0204df38
-    bl func_0200b04c
+    bl ActorRuntimeCollection_GetPendingAttachmentFlag
     cmp r0, #0x0
     bne .L_0204df30
     ldr r0, .L_0204df3c

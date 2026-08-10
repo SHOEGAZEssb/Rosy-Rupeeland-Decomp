@@ -8,7 +8,7 @@ extern const u8 data_02105310[];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern s32 func_0200b04c(const void *state);
+extern s32 ActorRuntimeCollection_GetPendingAttachmentFlag(const void *state);
 #ifdef __cplusplus
 }
 #endif
@@ -24,7 +24,7 @@ extern s32 func_0200b04c(const void *state);
 s32 func_0204f478(void *actor)
 {
     if ((FIELD(u16, actor, 0x1f0) & 3) == 1 &&
-        func_0200b04c(data_02105310) == 0) {
+        ActorRuntimeCollection_GetPendingAttachmentFlag(data_02105310) == 0) {
         void *primary = FIELD(void *, data_021052fc, 0x2ea4);
         if ((FIELD(u32, primary, 0xd0) & 0x100) == 0)
             return 1;

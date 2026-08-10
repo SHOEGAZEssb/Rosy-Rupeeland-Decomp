@@ -31,8 +31,8 @@ extern void MainBgExtendedPaletteBuffer_Init(void *);
 extern void MainBgExtendedPaletteBuffer_Destroy(void *);
 extern void SubBgExtendedPaletteBuffer_Init(void *);
 extern void SubBgExtendedPaletteBuffer_Destroy(void *);
-extern void func_0200ad90(void *);
-extern void func_0200ae10(void *);
+extern void ActorRuntimeCollection_Init(void *);
+extern void ActorRuntimeCollection_Destroy(void *);
 extern void func_020083b0(void *, s32, s32, s32, s32);
 extern void func_02004ac8(void *);
 extern void func_02092364(void *);
@@ -180,14 +180,14 @@ void __sinit_020c13f8(void)
 }
 
 /*
- * No inputs. Construct data_02105310 and register func_0200ae10 with record
+ * No inputs. Construct data_02105310 and register ActorRuntimeCollection_Destroy with record
  * data_02105304. Global object lifetime state changes; no value is returned and
  * no hardware is accessed directly.
  */
 void __sinit_020c1490(void)
 {
-    func_0200ad90(data_02105310);
-    __register_global_object(data_02105310, func_0200ae10, data_02105304);
+    ActorRuntimeCollection_Init(data_02105310);
+    __register_global_object(data_02105310, ActorRuntimeCollection_Destroy, data_02105304);
 }
 
 /*

@@ -8,7 +8,7 @@
 .extern data_ov081_02215358
 .extern data_ov081_02215360
 .extern ActorMotionAreaFollower_GetPosition
-.extern func_0200b04c
+.extern ActorRuntimeCollection_GetPendingAttachmentFlag
 .extern Type7MarkerPresentation_SelectAnimation
 .extern Type7MarkerPresentation_ReloadResources
 .extern func_020573e4
@@ -99,7 +99,7 @@ func_ov081_02214104:
     tst r0, #0x1000000
     bne .L_02214258
     ldr r0, .L_0221450c
-    bl func_0200b04c
+    bl ActorRuntimeCollection_GetPendingAttachmentFlag
     cmp r0, #0x0
     bne .L_02214258
     ldr r0, [r6, #0x14]

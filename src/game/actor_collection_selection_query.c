@@ -29,7 +29,7 @@ extern s32 Actor_TestQueryPoint(void *actor,
                                 const ActorSelectionQuery *query);
 extern s32 Actor_IsInteractionEligible(void *actor);
 extern s32 Actor_DispatchActivationMode1(void *actor);
-extern s32 func_0200b04c(const void *state);
+extern s32 ActorRuntimeCollection_GetPendingAttachmentFlag(const void *state);
 extern s32 Type7Actor_GetStateCode(void *actor);
 extern s32 ActorDerivedType1_IsIdleEligible(void *actor);
 extern void func_0200500c(void *storage, s32 first, s32 second);
@@ -119,7 +119,7 @@ s32 ActorCollection_ProcessSelectionQuery(ActorSelectionCollection *self,
                     (!candidate || !Actor_IsInteractionEligible(candidate)))
                     candidate = actor;
             } else if ((!candidate || !Actor_IsInteractionEligible(candidate)) &&
-                       !func_0200b04c(data_02105310) &&
+                       !ActorRuntimeCollection_GetPendingAttachmentFlag(data_02105310) &&
                        (read_u32(actor, 0x268) & 0x8000) &&
                        Type7Actor_GetStateCode(actor) != 5) {
                 call_query_hook(actor, query);
@@ -130,7 +130,7 @@ s32 ActorCollection_ProcessSelectionQuery(ActorSelectionCollection *self,
     if (candidate) {
         scene = (u8 *)data_021052fc;
         actor = *(void **)(scene + 0x2ea4);
-        if (ActorDerivedType1_IsIdleEligible(actor) && !func_0200b04c(data_02105310)) {
+        if (ActorDerivedType1_IsIdleEligible(actor) && !ActorRuntimeCollection_GetPendingAttachmentFlag(data_02105310)) {
             if (Actor_IsInteractionEligible(candidate)) {
                 result = Actor_DispatchActivationMode1(candidate);
             } else if (read_u32(candidate, 0x14) & 0x08000000) {

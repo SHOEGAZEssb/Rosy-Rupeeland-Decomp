@@ -9,8 +9,8 @@
 .extern func_0200500c
 .extern func_02005058
 .extern ActorMotionAreaFollower_GetPosition
-.extern func_0200b04c
-.extern func_0200b294
+.extern ActorRuntimeCollection_GetPendingAttachmentFlag
+.extern ActorRuntimeCollection_GetBusyState
 .extern func_02010c00
 .extern func_0201ded4
 .extern func_0201e0ec
@@ -39,11 +39,11 @@ func_ov082_02213538:
     ldr r0, .L_022138f8
     mov r4, r1
     mov r11, r2
-    bl func_0200b04c
+    bl ActorRuntimeCollection_GetPendingAttachmentFlag
     cmp r0, #0x0
     bne .L_022138e0
     ldr r0, .L_022138f8
-    bl func_0200b294
+    bl ActorRuntimeCollection_GetBusyState
     cmp r0, #0x0
     bne .L_022138e0
     add r0, r5, #0x200

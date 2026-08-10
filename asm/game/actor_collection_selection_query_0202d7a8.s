@@ -2,7 +2,7 @@
 .text
 .extern Actor_TestQueryPoint
 .extern Actor_IsInteractionEligible
-.extern func_0200b04c
+.extern ActorRuntimeCollection_GetPendingAttachmentFlag
 .extern Type7Actor_GetStateCode
 .extern ActorDerivedType1_IsIdleEligible
 .extern func_0200500c
@@ -130,7 +130,7 @@ ActorCollection_ProcessSelectionQuery: ; 0x0202d7a8
     bne .L_0202d9a0
 .L_0202d954:
     ldr r0, .L_0202dae4
-    bl func_0200b04c
+    bl ActorRuntimeCollection_GetPendingAttachmentFlag
     cmp r0, #0x0
     bne .L_0202d9a0
     ldr r0, [r4, #0x268]
@@ -160,7 +160,7 @@ ActorCollection_ProcessSelectionQuery: ; 0x0202d7a8
     cmp r0, #0x0
     beq .L_0202dad8
     ldr r0, .L_0202dae4
-    bl func_0200b04c
+    bl ActorRuntimeCollection_GetPendingAttachmentFlag
     cmp r0, #0x0
     bne .L_0202dad8
     mov r0, r5

@@ -18,9 +18,9 @@
 .extern func_020050a4
 .extern VecFx32_Subtract
 .extern GamePhaseRuntime_GetActorCollection
-.extern func_0200b164
-.extern func_0200b23c
-.extern func_0200b294
+.extern ActorRuntimeCollection_QueueValue
+.extern ActorRuntimeCollection_IsQueuedValueMissing
+.extern ActorRuntimeCollection_GetBusyState
 .extern func_0201e0ec
 .extern func_020328d0
 .extern Actor_QueryTerrainHeight
@@ -376,7 +376,7 @@ ActorDerivedType1_ProcessInteraction: ; 0x02036a8c
     cmp r0, #0x0
     beq .L_02037110
     ldr r0, .L_02037280
-    bl func_0200b294
+    bl ActorRuntimeCollection_GetBusyState
     cmp r0, #0x0
     bne .L_02037110
     ldr r0, .L_02037284
@@ -398,12 +398,12 @@ ActorDerivedType1_ProcessInteraction: ; 0x02036a8c
     bgt .L_02037110
     ldr r0, .L_02037280
     ldr r1, .L_02037288
-    bl func_0200b23c
+    bl ActorRuntimeCollection_IsQueuedValueMissing
     cmp r0, #0x0
     bne .L_02037110
     ldr r0, .L_02037280
     ldr r1, .L_02037288
-    bl func_0200b164
+    bl ActorRuntimeCollection_QueueValue
     ldrb r1, [r10, #0xd4]
     ldr r0, [r10, #0x54]
     add r1, r1, #0x10

@@ -9,7 +9,7 @@
 .extern data_02105310
 .extern data_021f5ebc
 .extern ActorMotionJitter_EnsureMinimum
-.extern func_0200b294
+.extern ActorRuntimeCollection_GetBusyState
 .extern func_02032a94
 .extern Actor_IsAtCachedTerrainHeight
 .extern ActorDerivedType1_HasBlockingStateFlags
@@ -42,7 +42,7 @@ ActorDerivedType1_HandleAuxiliaryInteraction: ; 0x02037d98
     moveq r0, #0x1
     ldmeqia sp!, {r3, r4, r5, r6, r7, pc}
     ldr r0, .L_0203808c
-    bl func_0200b294
+    bl ActorRuntimeCollection_GetBusyState
     cmp r0, #0x0
     movne r0, #0x1
     ldmneia sp!, {r3, r4, r5, r6, r7, pc}

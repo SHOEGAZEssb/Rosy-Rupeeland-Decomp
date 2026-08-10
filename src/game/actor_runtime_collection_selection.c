@@ -21,7 +21,7 @@ extern void OS_Halt(void);
  * retained, while equal classifications enter OS_Halt. Returns no value and
  * mutates collection and persistent game state.
  */
-void func_0200af0c(ActorRuntimeCollection *self, void *candidate)
+void ActorRuntimeCollection_SelectObject(ActorRuntimeCollection *self, void *candidate)
 {
     if (self->flags & 2) {
         void *current = *ACTOR_RUNTIME_SELECTED_SLOT(self);

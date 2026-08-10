@@ -8,7 +8,7 @@ extern "C" {
 extern void *data_021052fc;
 extern u8 data_02105310[];
 extern void *GamePhaseRuntime_GetActorCollection(void *runtime, s32 index);
-extern s32 func_0200b04c(void *state);
+extern s32 ActorRuntimeCollection_GetPendingAttachmentFlag(void *state);
 extern void *ActorCollection_FindActorByDescriptorValue(void *collection, s32 index);
 extern void Actor_SetActive(void *actor, s32 active);
 extern void *Actor_GetCollection(void *actor);
@@ -64,7 +64,7 @@ s32 func_02015b64(GamePhaseActorScriptVm *self)
         callActorValueMethod(target, 0x70, value);
     } else {
         if (value != 0) {
-            if (func_0200b04c(data_02105310) &&
+            if (ActorRuntimeCollection_GetPendingAttachmentFlag(data_02105310) &&
                 *(void **)(data_02105310 + 4) == target)
                 callActorValueMethod(target, 0x70, value);
             else

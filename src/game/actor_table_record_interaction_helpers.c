@@ -9,7 +9,7 @@ extern "C" {
 extern s32 func_0204cfa4(s32 x, s32 y);
 extern s32 func_020adc90(s32 numerator, s32 denominator);
 extern void func_0204cff4(s32 *x, s32 *y, s32 limit);
-extern s32 func_0200b04c(void *state);
+extern s32 ActorRuntimeCollection_GetPendingAttachmentFlag(void *state);
 extern void ActorTableRecord_ApplyCollisionResponse(void *self, void *other,
                                                     s32 directionalMode,
                                                     s32 scale);
@@ -46,14 +46,14 @@ void ActorTableRecord_ApplySeparationImpulse(void *self, void *targetObject)
 }
 
 /*
- * When func_0200b04c(data_02105310) returns zero, dispatch the table-record
+ * When ActorRuntimeCollection_GetPendingAttachmentFlag(data_02105310) returns zero, dispatch the table-record
  * response with directional mode one and scale 0x1000. Always forward self,
  * other, and mode to func_02032a94 afterward. Returns no value; state query,
  * interaction, and base callback calls have observable actor state.
  */
 void ActorTableRecord_HandlePairActive(void *self, void *other, s32 mode)
 {
-    if (func_0200b04c(data_02105310) == 0)
+    if (ActorRuntimeCollection_GetPendingAttachmentFlag(data_02105310) == 0)
         ActorTableRecord_ApplyCollisionResponse(self, other, 1, 0x1000);
     func_02032a94(self, other, mode);
 }

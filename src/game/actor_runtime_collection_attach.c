@@ -21,7 +21,7 @@ extern void *func_0200b2d0(void *handler, void *object);
  * handler initialized by func_0200b2d0. Returns no value; allocation failure
  * leaves the attachment flags/state installed but creates no handler.
  */
-void func_0200afd0(ActorRuntimeCollection *self, void *object)
+void ActorRuntimeCollection_AttachObject(ActorRuntimeCollection *self, void *object)
 {
     void *handler;
 

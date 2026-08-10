@@ -14,13 +14,13 @@ typedef void (*ActorRuntimeDetachMethod)(void *object, s32 reason, s32 value);
 
 /*
  * Clear the collection flags, address-derived field 0x134, and every owned
- * node. Returns no value; owned allocations are freed through func_0200ae4c.
+ * node. Returns no value; owned allocations are freed through ActorRuntimeOwnedList_Clear.
  */
-void func_0200ae8c(ActorRuntimeCollection *self)
+void ActorRuntimeCollection_Reset(ActorRuntimeCollection *self)
 {
     self->flags = 0;
     self->field_134 = 0;
-    func_0200ae4c(&self->ownedList);
+    ActorRuntimeOwnedList_Clear(&self->ownedList);
 }
 
 /*
@@ -29,7 +29,7 @@ void func_0200ae8c(ActorRuntimeCollection *self)
  * clear field 0x04 and flag bit 0. Returns no value; the virtual call's wider
  * gameplay effect is not yet confirmed and no hardware is touched directly.
  */
-void func_0200aea8(ActorRuntimeCollection *self)
+void ActorRuntimeCollection_DetachActiveObject(ActorRuntimeCollection *self)
 {
     if (self->flags & 4) {
         void *object;
@@ -49,13 +49,13 @@ void func_0200aea8(ActorRuntimeCollection *self)
  * return the helper's result. The source contract and any indirect resource
  * ownership changes remain unconfirmed; no hardware is accessed directly.
  */
-void *func_0200aef4(ActorRuntimeCollection *self, const void *source)
+void *ActorRuntimeCollection_CopyPrimaryContainerState(ActorRuntimeCollection *self, const void *source)
 {
     return func_0201b180(self->firstContainer, source);
 }
 
 /* Return the first embedded container at offset 0x08 without changing state. */
-void *func_0200af04(ActorRuntimeCollection *self)
+void *ActorRuntimeCollection_GetPrimaryContainer(ActorRuntimeCollection *self)
 {
     return self->firstContainer;
 }

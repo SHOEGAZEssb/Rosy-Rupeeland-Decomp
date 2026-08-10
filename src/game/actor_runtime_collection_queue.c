@@ -18,7 +18,7 @@ typedef void (*ActorRuntimeDispatchMethod)(void *object, s32 reason,
 typedef void (*ActorRuntimeFinishMethod)(void *object, s32 reason);
 
 /* Store an address-derived pending value at offset 0x134; returns no value. */
-void func_0200b0d0(ActorRuntimeCollection *self, u32 value)
+void ActorRuntimeCollection_SetPendingValue(ActorRuntimeCollection *self, u32 value)
 {
     self->field_134 = value;
 }
@@ -26,15 +26,15 @@ void func_0200b0d0(ActorRuntimeCollection *self, u32 value)
 /*
  * Append field 0x134 to the owned queue when the queue has at most eight
  * entries and the field is nonzero. Returns no value; a 12-byte node may be
- * allocated through func_0200b100 and no hardware is touched directly.
+ * allocated through ActorRuntimeOwnedList_Append and no hardware is touched directly.
  */
-void func_0200b0d8(ActorRuntimeCollection *self)
+void ActorRuntimeCollection_QueuePendingValue(ActorRuntimeCollection *self)
 {
     if (self->ownedList.count > 8)
         return;
     if (self->field_134 == 0)
         return;
-    func_0200b100(&self->ownedList, (void *)self->field_134);
+    ActorRuntimeOwnedList_Append(&self->ownedList, (void *)self->field_134);
 }
 
 /*
@@ -43,7 +43,7 @@ void func_0200b0d8(ActorRuntimeCollection *self)
  * matching the original control flow. Returns no value; Heap_Alloc is the only
  * runtime side effect.
  */
-void func_0200b100(ActorRuntimeOwnedList *list, void *value)
+void ActorRuntimeOwnedList_Append(ActorRuntimeOwnedList *list, void *value)
 {
     ActorRuntimeOwnedNode *node =
         (ActorRuntimeOwnedNode *)Heap_Alloc(0xc, (const char *)data_020d43fc,
@@ -65,11 +65,11 @@ void func_0200b100(ActorRuntimeOwnedList *list, void *value)
 }
 
 /* Append value when the owned queue contains at most eight entries. */
-void func_0200b164(ActorRuntimeCollection *self, void *value)
+void ActorRuntimeCollection_QueueValue(ActorRuntimeCollection *self, void *value)
 {
     if (self->ownedList.count > 8)
         return;
-    func_0200b100(&self->ownedList, value);
+    ActorRuntimeOwnedList_Append(&self->ownedList, value);
 }
 
 /*
@@ -78,7 +78,7 @@ void func_0200b164(ActorRuntimeCollection *self, void *value)
  * return 1. An empty queue returns 0. The node is freed before dispatch; the
  * external context and virtual method effects are not yet fully recovered.
  */
-s32 func_0200b180(ActorRuntimeCollection *self)
+s32 ActorRuntimeCollection_DispatchQueuedValue(ActorRuntimeCollection *self)
 {
     ActorRuntimeOwnedNode *node;
     void *runtimeObject;
@@ -101,7 +101,7 @@ s32 func_0200b180(ActorRuntimeCollection *self)
 
     self->ownedList.count--;
     if (self->ownedList.count == 0)
-        func_0200ae4c(&self->ownedList);
+        ActorRuntimeOwnedList_Clear(&self->ownedList);
 
     vtable = *(void ***)runtimeObject;
     ((ActorRuntimeDispatchMethod)vtable[0xac / 4])(runtimeObject, 4, value);
@@ -114,7 +114,7 @@ s32 func_0200b180(ActorRuntimeCollection *self)
  * Return 1 when a nonempty queue does not contain value, otherwise return 0.
  * Performs a read-only pointer comparison and has no SDK or hardware effects.
  */
-s32 func_0200b23c(const ActorRuntimeCollection *self, const void *value)
+s32 ActorRuntimeCollection_IsQueuedValueMissing(const ActorRuntimeCollection *self, const void *value)
 {
     const ActorRuntimeOwnedNode *node;
     s32 found = 0;
@@ -129,7 +129,7 @@ s32 func_0200b23c(const ActorRuntimeCollection *self, const void *value)
 }
 
 /* Return selection flag bit 1 OR queue-nonempty bit 0 without changing state. */
-u32 func_0200b294(const ActorRuntimeCollection *self)
+u32 ActorRuntimeCollection_GetBusyState(const ActorRuntimeCollection *self)
 {
     return (self->flags & 2) | (self->ownedList.count != 0);
 }

@@ -2,8 +2,8 @@
 ; the documented portable implementation and recovered behavior.
 .text
 
-.global func_0200b294
-func_0200b294:
+.global ActorRuntimeCollection_GetBusyState
+ActorRuntimeCollection_GetBusyState:
     ldr r1, [r0, #0x144]
     ldr r0, [r0, #0x0]
     cmp r1, #0x0
@@ -15,5 +15,5 @@ func_0200b294:
     and r0, r0, #0x2
     orr r0, r0, r1
     bx lr
-.size func_0200b294, . - func_0200b294
+.size ActorRuntimeCollection_GetBusyState, . - ActorRuntimeCollection_GetBusyState
 

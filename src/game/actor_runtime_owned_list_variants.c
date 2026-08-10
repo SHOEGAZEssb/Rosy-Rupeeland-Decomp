@@ -18,7 +18,7 @@ extern const u8 data_020d4468[];
 ActorRuntimeOwnedList *func_0200bac4(ActorRuntimeOwnedList *self)
 {
     self->vtable = data_020d4468;
-    func_0200ae4c(self);
+    ActorRuntimeOwnedList_Clear(self);
     Heap_Free(self);
     return self;
 }
@@ -30,7 +30,7 @@ ActorRuntimeOwnedList *func_0200bac4(ActorRuntimeOwnedList *self)
 ActorRuntimeOwnedList *func_0200baec(ActorRuntimeOwnedList *self)
 {
     self->vtable = data_020d4468;
-    func_0200ae4c(self);
+    ActorRuntimeOwnedList_Clear(self);
     Heap_Free(self);
     return self;
 }
@@ -39,6 +39,6 @@ ActorRuntimeOwnedList *func_0200baec(ActorRuntimeOwnedList *self)
 ActorRuntimeOwnedList *func_0200bb14(ActorRuntimeOwnedList *self)
 {
     self->vtable = data_020d4468;
-    func_0200ae4c(self);
+    ActorRuntimeOwnedList_Clear(self);
     return self;
 }

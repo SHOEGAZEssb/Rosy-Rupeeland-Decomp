@@ -6,8 +6,8 @@ extern u8 data_02105310[];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern s32 func_0200b294(void *state);
-extern s32 func_0200b04c(void *state);
+extern s32 ActorRuntimeCollection_GetBusyState(void *state);
+extern s32 ActorRuntimeCollection_GetPendingAttachmentFlag(void *state);
 #ifdef __cplusplus
 }
 #endif
@@ -24,8 +24,8 @@ s32 Actor_TryDispatchActivationMode2(void *self)
     u8 *actor = (u8 *)self;
     void (*callback)(void *, s32);
 
-    if (func_0200b294(data_02105310) != 0 || actor[0xe8] != 0 ||
-        func_0200b04c(data_02105310) != 0) {
+    if (ActorRuntimeCollection_GetBusyState(data_02105310) != 0 || actor[0xe8] != 0 ||
+        ActorRuntimeCollection_GetPendingAttachmentFlag(data_02105310) != 0) {
         return 0;
     }
     callback = *(void (**)(void *, s32))(*(u8 **)actor + 0x78);

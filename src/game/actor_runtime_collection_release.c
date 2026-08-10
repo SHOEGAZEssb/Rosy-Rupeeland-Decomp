@@ -11,7 +11,7 @@ typedef void (*ActorRuntimeReleaseMethod)(void *object, s32 reason);
  * with reason 3. Returns no value; the virtual method's broader effect is not
  * yet confirmed and no hardware is accessed directly.
  */
-void func_0200af8c(ActorRuntimeCollection *self)
+void ActorRuntimeCollection_ReleaseSelectedObject(ActorRuntimeCollection *self)
 {
     void *selected;
     void **vtable;

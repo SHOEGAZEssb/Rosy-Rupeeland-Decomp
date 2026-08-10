@@ -11,8 +11,8 @@ extern "C" {
 extern const u8 data_020d5544[];
 extern u8 data_02105310[];
 extern void *ActorDerivedType1_GetSingletonObject(void);
-extern s32 func_0200b04c(void *object);
-extern s32 func_0200b294(void *object);
+extern s32 ActorRuntimeCollection_GetPendingAttachmentFlag(void *object);
+extern s32 ActorRuntimeCollection_GetBusyState(void *object);
 extern s32 ActorDerivedType1_GetActiveRecordId(void *actor);
 extern void OverlayManager_LoadOverlay(s32 value, s32 mode, s32 mask);
 extern s32 OverlayManager_GetGlobal(void);
@@ -51,7 +51,7 @@ s32 func_0200ecf0(GamePhaseState *self)
     s32 direction;
 
     if (GameWork_TestFlag(gGameWork, 0x3ee) ||
-        func_0200b04c(data_02105310) || func_0200b294(data_02105310))
+        ActorRuntimeCollection_GetPendingAttachmentFlag(data_02105310) || ActorRuntimeCollection_GetBusyState(data_02105310))
         return 0;
     current = SceneManager_GetCurrent(gSceneManager);
     if (current->value04 != 1)

@@ -10498,7 +10498,7 @@ build build/reports/actor_runtime_collection_ctor.json: objdiff build/decomp/del
 
 build build/reports/actor_runtime_collection_ctor.txt: match_report build/reports/actor_runtime_collection_ctor.json | tools/report_objdiff.py
   report_json = build/reports/actor_runtime_collection_ctor.json
-  report_args = --section .text --function func_0200ad90 --require-exact
+  report_args = --section .text --function ActorRuntimeCollection_Init --require-exact
 
 build build/reports/actor_runtime_owned_list_ctor.json: objdiff build/decomp/delinks/asm/game/actor_runtime_owned_list_ctor.o | build/decomp/asm/game/actor_runtime_owned_list_ctor.o
   target_object = build/decomp/delinks/asm/game/actor_runtime_owned_list_ctor.o
@@ -10506,7 +10506,7 @@ build build/reports/actor_runtime_owned_list_ctor.json: objdiff build/decomp/del
 
 build build/reports/actor_runtime_owned_list_ctor.txt: match_report build/reports/actor_runtime_owned_list_ctor.json | tools/report_objdiff.py
   report_json = build/reports/actor_runtime_owned_list_ctor.json
-  report_args = --section .text --function func_0200adc8 --require-exact
+  report_args = --section .text --function ActorRuntimeOwnedList_Init --require-exact
 
 build build/reports/actor_runtime_owned_list_dtor.json: objdiff build/decomp/delinks/asm/game/actor_runtime_owned_list_dtor.o | build/decomp/asm/game/actor_runtime_owned_list_dtor.o
   target_object = build/decomp/delinks/asm/game/actor_runtime_owned_list_dtor.o
@@ -10514,7 +10514,7 @@ build build/reports/actor_runtime_owned_list_dtor.json: objdiff build/decomp/del
 
 build build/reports/actor_runtime_owned_list_dtor.txt: match_report build/reports/actor_runtime_owned_list_dtor.json | tools/report_objdiff.py
   report_json = build/reports/actor_runtime_owned_list_dtor.json
-  report_args = --section .text --function func_0200adf0 --require-exact
+  report_args = --section .text --function ActorRuntimeOwnedList_Destroy --require-exact
 
 build build/reports/actor_runtime_collection_dtor.json: objdiff build/decomp/delinks/asm/game/actor_runtime_collection_dtor.o | build/decomp/asm/game/actor_runtime_collection_dtor.o
   target_object = build/decomp/delinks/asm/game/actor_runtime_collection_dtor.o
@@ -10522,7 +10522,7 @@ build build/reports/actor_runtime_collection_dtor.json: objdiff build/decomp/del
 
 build build/reports/actor_runtime_collection_dtor.txt: match_report build/reports/actor_runtime_collection_dtor.json | tools/report_objdiff.py
   report_json = build/reports/actor_runtime_collection_dtor.json
-  report_args = --section .text --function func_0200ae10 --require-exact
+  report_args = --section .text --function ActorRuntimeCollection_Destroy --require-exact
 
 build build/reports/actor_runtime_owned_list_clear.json: objdiff build/decomp/delinks/asm/game/actor_runtime_owned_list_clear.o | build/decomp/asm/game/actor_runtime_owned_list_clear.o
   target_object = build/decomp/delinks/asm/game/actor_runtime_owned_list_clear.o
@@ -10530,7 +10530,7 @@ build build/reports/actor_runtime_owned_list_clear.json: objdiff build/decomp/de
 
 build build/reports/actor_runtime_owned_list_clear.txt: match_report build/reports/actor_runtime_owned_list_clear.json | tools/report_objdiff.py
   report_json = build/reports/actor_runtime_owned_list_clear.json
-  report_args = --section .text --function func_0200ae4c --require-exact
+  report_args = --section .text --function ActorRuntimeOwnedList_Clear --require-exact
 
 build build/reports/actor_runtime_collection_state.json: objdiff build/decomp/delinks/src/game/actor_runtime_collection_state.o | build/decomp/src/game/actor_runtime_collection_state.o
   target_object = build/decomp/delinks/src/game/actor_runtime_collection_state.o
@@ -10538,7 +10538,7 @@ build build/reports/actor_runtime_collection_state.json: objdiff build/decomp/de
 
 build build/reports/actor_runtime_collection_state.txt: match_report build/reports/actor_runtime_collection_state.json | tools/report_objdiff.py
   report_json = build/reports/actor_runtime_collection_state.json
-  report_args = --section .text --function func_0200ae8c --function func_0200aea8 --function func_0200aef4 --function func_0200af04 --require-exact
+  report_args = --section .text --function ActorRuntimeCollection_Reset --function ActorRuntimeCollection_DetachActiveObject --function ActorRuntimeCollection_CopyPrimaryContainerState --function ActorRuntimeCollection_GetPrimaryContainer --require-exact
 
 build build/reports/actor_runtime_collection_selection.json: objdiff build/decomp/delinks/asm/game/actor_runtime_collection_select.o | build/decomp/asm/game/actor_runtime_collection_select.o
   target_object = build/decomp/delinks/asm/game/actor_runtime_collection_select.o
@@ -10546,7 +10546,7 @@ build build/reports/actor_runtime_collection_selection.json: objdiff build/decom
 
 build build/reports/actor_runtime_collection_selection.txt: match_report build/reports/actor_runtime_collection_selection.json | tools/report_objdiff.py
   report_json = build/reports/actor_runtime_collection_selection.json
-  report_args = --section .text --function func_0200af0c --require-exact
+  report_args = --section .text --function ActorRuntimeCollection_SelectObject --require-exact
 
 build build/reports/actor_runtime_collection_release.json: objdiff build/decomp/delinks/src/game/actor_runtime_collection_release.o | build/decomp/src/game/actor_runtime_collection_release.o
   target_object = build/decomp/delinks/src/game/actor_runtime_collection_release.o
@@ -10554,7 +10554,7 @@ build build/reports/actor_runtime_collection_release.json: objdiff build/decomp/
 
 build build/reports/actor_runtime_collection_release.txt: match_report build/reports/actor_runtime_collection_release.json | tools/report_objdiff.py
   report_json = build/reports/actor_runtime_collection_release.json
-  report_args = --section .text --function func_0200af8c --require-exact
+  report_args = --section .text --function ActorRuntimeCollection_ReleaseSelectedObject --require-exact
 
 build build/reports/actor_runtime_collection_attach.json: objdiff build/decomp/delinks/src/game/actor_runtime_collection_attach.o | build/decomp/src/game/actor_runtime_collection_attach.o
   target_object = build/decomp/delinks/src/game/actor_runtime_collection_attach.o
@@ -10562,7 +10562,7 @@ build build/reports/actor_runtime_collection_attach.json: objdiff build/decomp/d
 
 build build/reports/actor_runtime_collection_attach.txt: match_report build/reports/actor_runtime_collection_attach.json | tools/report_objdiff.py
   report_json = build/reports/actor_runtime_collection_attach.json
-  report_args = --section .text --function func_0200afd0 --require-exact
+  report_args = --section .text --function ActorRuntimeCollection_AttachObject --require-exact
 
 build build/reports/actor_runtime_collection_transition.json: objdiff build/decomp/delinks/src/game/actor_runtime_collection_transition.o | build/decomp/src/game/actor_runtime_collection_transition.o
   target_object = build/decomp/delinks/src/game/actor_runtime_collection_transition.o
@@ -10570,56 +10570,56 @@ build build/reports/actor_runtime_collection_transition.json: objdiff build/deco
 
 build build/reports/actor_runtime_collection_transition.txt: match_report build/reports/actor_runtime_collection_transition.json | tools/report_objdiff.py
   report_json = build/reports/actor_runtime_collection_transition.json
-  report_args = --section .text --function func_0200b04c --function func_0200b058 --require-exact
+  report_args = --section .text --function ActorRuntimeCollection_GetPendingAttachmentFlag --function ActorRuntimeCollection_TryCompleteAttachment --require-exact
 
 build build/reports/actor_runtime_queue_set_pending.json: objdiff build/decomp/delinks/asm/game/actor_runtime_queue_set_pending.o | build/decomp/asm/game/actor_runtime_queue_set_pending.o
   target_object = build/decomp/delinks/asm/game/actor_runtime_queue_set_pending.o
   base_object = build/decomp/asm/game/actor_runtime_queue_set_pending.o
 build build/reports/actor_runtime_queue_set_pending.txt: match_report build/reports/actor_runtime_queue_set_pending.json | tools/report_objdiff.py
   report_json = build/reports/actor_runtime_queue_set_pending.json
-  report_args = --section .text --function func_0200b0d0 --require-exact
+  report_args = --section .text --function ActorRuntimeCollection_SetPendingValue --require-exact
 
 build build/reports/actor_runtime_queue_append_pending.json: objdiff build/decomp/delinks/asm/game/actor_runtime_queue_append_pending.o | build/decomp/asm/game/actor_runtime_queue_append_pending.o
   target_object = build/decomp/delinks/asm/game/actor_runtime_queue_append_pending.o
   base_object = build/decomp/asm/game/actor_runtime_queue_append_pending.o
 build build/reports/actor_runtime_queue_append_pending.txt: match_report build/reports/actor_runtime_queue_append_pending.json | tools/report_objdiff.py
   report_json = build/reports/actor_runtime_queue_append_pending.json
-  report_args = --section .text --function func_0200b0d8 --require-exact
+  report_args = --section .text --function ActorRuntimeCollection_QueuePendingValue --require-exact
 
 build build/reports/actor_runtime_queue_append.json: objdiff build/decomp/delinks/asm/game/actor_runtime_queue_append.o | build/decomp/asm/game/actor_runtime_queue_append.o
   target_object = build/decomp/delinks/asm/game/actor_runtime_queue_append.o
   base_object = build/decomp/asm/game/actor_runtime_queue_append.o
 build build/reports/actor_runtime_queue_append.txt: match_report build/reports/actor_runtime_queue_append.json | tools/report_objdiff.py
   report_json = build/reports/actor_runtime_queue_append.json
-  report_args = --section .text --function func_0200b100 --require-exact
+  report_args = --section .text --function ActorRuntimeOwnedList_Append --require-exact
 
 build build/reports/actor_runtime_queue_append_value.json: objdiff build/decomp/delinks/asm/game/actor_runtime_queue_append_value.o | build/decomp/asm/game/actor_runtime_queue_append_value.o
   target_object = build/decomp/delinks/asm/game/actor_runtime_queue_append_value.o
   base_object = build/decomp/asm/game/actor_runtime_queue_append_value.o
 build build/reports/actor_runtime_queue_append_value.txt: match_report build/reports/actor_runtime_queue_append_value.json | tools/report_objdiff.py
   report_json = build/reports/actor_runtime_queue_append_value.json
-  report_args = --section .text --function func_0200b164 --require-exact
+  report_args = --section .text --function ActorRuntimeCollection_QueueValue --require-exact
 
 build build/reports/actor_runtime_queue_dispatch.json: objdiff build/decomp/delinks/asm/game/actor_runtime_queue_dispatch.o | build/decomp/asm/game/actor_runtime_queue_dispatch.o
   target_object = build/decomp/delinks/asm/game/actor_runtime_queue_dispatch.o
   base_object = build/decomp/asm/game/actor_runtime_queue_dispatch.o
 build build/reports/actor_runtime_queue_dispatch.txt: match_report build/reports/actor_runtime_queue_dispatch.json | tools/report_objdiff.py
   report_json = build/reports/actor_runtime_queue_dispatch.json
-  report_args = --section .text --function func_0200b180 --require-exact
+  report_args = --section .text --function ActorRuntimeCollection_DispatchQueuedValue --require-exact
 
 build build/reports/actor_runtime_queue_missing.json: objdiff build/decomp/delinks/asm/game/actor_runtime_queue_missing.o | build/decomp/asm/game/actor_runtime_queue_missing.o
   target_object = build/decomp/delinks/asm/game/actor_runtime_queue_missing.o
   base_object = build/decomp/asm/game/actor_runtime_queue_missing.o
 build build/reports/actor_runtime_queue_missing.txt: match_report build/reports/actor_runtime_queue_missing.json | tools/report_objdiff.py
   report_json = build/reports/actor_runtime_queue_missing.json
-  report_args = --section .text --function func_0200b23c --require-exact
+  report_args = --section .text --function ActorRuntimeCollection_IsQueuedValueMissing --require-exact
 
 build build/reports/actor_runtime_queue_status.json: objdiff build/decomp/delinks/asm/game/actor_runtime_queue_status.o | build/decomp/asm/game/actor_runtime_queue_status.o
   target_object = build/decomp/delinks/asm/game/actor_runtime_queue_status.o
   base_object = build/decomp/asm/game/actor_runtime_queue_status.o
 build build/reports/actor_runtime_queue_status.txt: match_report build/reports/actor_runtime_queue_status.json | tools/report_objdiff.py
   report_json = build/reports/actor_runtime_queue_status.json
-  report_args = --section .text --function func_0200b294 --require-exact
+  report_args = --section .text --function ActorRuntimeCollection_GetBusyState --require-exact
 
 build build/reports/actor_runtime_scene_triple.json: objdiff build/decomp/delinks/src/game/actor_runtime_scene_triple.o | build/decomp/src/game/actor_runtime_scene_triple.o
   target_object = build/decomp/delinks/src/game/actor_runtime_scene_triple.o

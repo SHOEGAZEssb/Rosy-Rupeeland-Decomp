@@ -14,7 +14,7 @@ extern "C" {
 #endif
 extern void func_02032a94(void *actor);
 extern void *SceneManager_GetCurrent(void *manager);
-extern s32 func_0200b294(void *state);
+extern s32 ActorRuntimeCollection_GetBusyState(void *state);
 extern s32 ActorDerivedType1_HasBlockingStateFlags(void *actor);
 extern s32 Actor_IsAtCachedTerrainHeight(void *actor);
 extern s32 func_020828a0(void *state, s32 mask);
@@ -65,7 +65,7 @@ s32 ActorDerivedType1_HandleAuxiliaryInteraction(void *self, void *other)
 
     func_02032a94(actor);
     scene = SceneManager_GetCurrent(gSceneManager);
-    if (*(s32 *)((u8 *)scene + 4) == 2 || func_0200b294(data_02105310) != 0 ||
+    if (*(s32 *)((u8 *)scene + 4) == 2 || ActorRuntimeCollection_GetBusyState(data_02105310) != 0 ||
         ActorDerivedType1_HasBlockingStateFlags(actor) != 0 || *(s16 *)(actor + 0xd6) == 0x0d ||
         (*(u32 *)(actor + 0x230) & 0x20000) != 0)
         return 1;

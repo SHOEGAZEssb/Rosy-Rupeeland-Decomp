@@ -6,17 +6,17 @@
 extern "C" {
 #endif
 extern u8 data_02105310[];
-extern void func_0200b0d0(void *state, u32 value);
+extern void ActorRuntimeCollection_SetPendingValue(void *state, u32 value);
 extern void Actor_SetAttachmentBaseScale(void *actor, s32 scaleX, s32 scaleY);
 #ifdef __cplusplus
 }
 #endif
 
-/* Pop a value, pass it to data_02105310 through func_0200b0d0, and return zero. */
+/* Pop a value, pass it to data_02105310 through ActorRuntimeCollection_SetPendingValue, and return zero. */
 s32 func_020142cc(GamePhaseActorScriptVm *self)
 {
     u32 value = func_02012704(&self->base);
-    func_0200b0d0(data_02105310, value);
+    ActorRuntimeCollection_SetPendingValue(data_02105310, value);
     return 0;
 }
 

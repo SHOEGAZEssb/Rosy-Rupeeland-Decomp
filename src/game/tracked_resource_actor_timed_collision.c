@@ -6,7 +6,7 @@
 extern "C" {
 #endif
 extern void *data_02105310;
-extern s32 func_0200b04c(void *state);
+extern s32 ActorRuntimeCollection_GetPendingAttachmentFlag(void *state);
 extern void func_02005030(void *destination, const void *source);
 extern void func_02005058(void *vector);
 extern s32 func_02005070(const void *vector);
@@ -53,7 +53,7 @@ void func_02051b48(void *actor, void *target, u32 unused1, u32 unused2)
     if (FIELD(s16, actor, 0x200) >= 1)
         return;
 
-    if (func_0200b04c(&data_02105310) == 0 && target != 0) {
+    if (ActorRuntimeCollection_GetPendingAttachmentFlag(&data_02105310) == 0 && target != 0) {
         func_02005030(response, (u8 *)actor + 0x88);
         response[1] = func_020adae4(response[1], -8);
         response[2] = func_020adae4(response[2], -8);

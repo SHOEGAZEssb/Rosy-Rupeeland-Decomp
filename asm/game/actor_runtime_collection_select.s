@@ -4,8 +4,8 @@
 .extern GameWork_SetFlag
 .extern OS_Halt
 .extern gGameWork
-.global func_0200af0c
-func_0200af0c:
+.global ActorRuntimeCollection_SelectObject
+ActorRuntimeCollection_SelectObject:
     stmdb sp!, {r3, r4, r5, lr}
     mov r5, r0
     ldr r0, [r5, #0x0]
@@ -41,5 +41,5 @@ L_0200af64:
     str r4, [r5, #0x9c]
     ldmia sp!, {r3, r4, r5, pc}
 L_0200af88: .word gGameWork
-.size func_0200af0c, . - func_0200af0c
+.size ActorRuntimeCollection_SelectObject, . - ActorRuntimeCollection_SelectObject
 

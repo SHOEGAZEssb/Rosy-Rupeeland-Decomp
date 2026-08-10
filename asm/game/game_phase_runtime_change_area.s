@@ -13,7 +13,7 @@
 .extern GamePhaseRuntime_RefreshAreaAuxiliaryObject
 .extern ActorMotion_SetPosition
 .extern ActorMotionAreaFollower_GetPosition
-.extern func_0200ae8c
+.extern ActorRuntimeCollection_Reset
 .extern func_0200e714
 .extern func_0201140c
 .extern func_020122a0
@@ -177,7 +177,7 @@ L_02007cb8:
     streqh r1, [r0, #0x7e]
 L_02007d24:
     ldr r0, L_02007f00
-    bl func_0200ae8c
+    bl ActorRuntimeCollection_Reset
     add r0, r7, #0x3000
     ldr r1, [r0, #0xbc]
     mov r0, r7

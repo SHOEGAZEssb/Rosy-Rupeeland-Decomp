@@ -12,7 +12,7 @@
 .extern data_021f5ebc
 .extern func_02005030
 .extern func_02005058
-.extern func_0200b294
+.extern ActorRuntimeCollection_GetBusyState
 .extern func_02032a94
 .extern ActorDerivedType1_IsTargetStateEligible
 .extern ActorDerivedType1_StartRecord
@@ -47,7 +47,7 @@ Type7Actor_HandleContact: ; 0x02046660
     cmp r0, #0x0
     beq .L_02046d48
     ldr r0, .L_02046d60
-    bl func_0200b294
+    bl ActorRuntimeCollection_GetBusyState
     cmp r0, #0x0
     bne .L_02046d48
     ldr r0, [r6, #0x280]

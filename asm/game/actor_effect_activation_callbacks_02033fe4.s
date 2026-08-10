@@ -1,8 +1,8 @@
 ; Matching retail form; see src/game/actor_effect_activation_callbacks.c.
 .text
 .extern data_02105310
-.extern func_0200b04c
-.extern func_0200b294
+.extern ActorRuntimeCollection_GetPendingAttachmentFlag
+.extern ActorRuntimeCollection_GetBusyState
 
     .global Actor_TryDispatchActivationMode2
     .type Actor_TryDispatchActivationMode2, @function
@@ -10,7 +10,7 @@ Actor_TryDispatchActivationMode2: ; 0x02033fe4
     stmdb sp!, {r4, lr}
     mov r4, r0
     ldr r0, .L_02034040
-    bl func_0200b294
+    bl ActorRuntimeCollection_GetBusyState
     cmp r0, #0x0
     movne r0, #0x0
     ldmneia sp!, {r4, pc}
@@ -19,7 +19,7 @@ Actor_TryDispatchActivationMode2: ; 0x02033fe4
     movne r0, #0x0
     ldmneia sp!, {r4, pc}
     ldr r0, .L_02034040
-    bl func_0200b04c
+    bl ActorRuntimeCollection_GetPendingAttachmentFlag
     cmp r0, #0x0
     movne r0, #0x0
     ldmneia sp!, {r4, pc}

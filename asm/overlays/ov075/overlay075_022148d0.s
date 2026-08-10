@@ -10,7 +10,7 @@
 .extern OverlayManager_GetGlobal
 .extern func_02005030
 .extern func_02005058
-.extern func_0200b04c
+.extern ActorRuntimeCollection_GetPendingAttachmentFlag
 .extern func_0201f864
 .extern Actor_SetRuntimeFlag80
 .extern Actor_UpdateAnimationState
@@ -45,7 +45,7 @@ func_ov075_022148d0:
     mov r0, r5
     bl Actor_SetRuntimeFlag80
     ldr r0, .L_02214d60
-    bl func_0200b04c
+    bl ActorRuntimeCollection_GetPendingAttachmentFlag
     cmp r0, #0x0
     beq .L_02214928
     mov r0, r5

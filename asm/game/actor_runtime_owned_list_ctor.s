@@ -3,8 +3,8 @@
 .text
 .extern data_020d4458
 .extern data_020d4468
-.global func_0200adc8
-func_0200adc8:
+.global ActorRuntimeOwnedList_Init
+ActorRuntimeOwnedList_Init:
     ldr r1, L_0200ade8
     mov r2, #0x0
     stmia r0, {r1, r2}
@@ -15,5 +15,5 @@ func_0200adc8:
     bx lr
 L_0200ade8: .word data_020d4468
 L_0200adec: .word data_020d4458
-.size func_0200adc8, . - func_0200adc8
+.size ActorRuntimeOwnedList_Init, . - ActorRuntimeOwnedList_Init
 

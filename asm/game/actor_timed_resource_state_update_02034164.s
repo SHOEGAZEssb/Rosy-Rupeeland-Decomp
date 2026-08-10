@@ -3,8 +3,8 @@
 .extern data_021052fc
 .extern data_02105310
 .extern GamePhaseRuntime_GetActorCollection
-.extern func_0200af04
-.extern func_0200b058
+.extern ActorRuntimeCollection_GetPrimaryContainer
+.extern ActorRuntimeCollection_TryCompleteAttachment
 .extern func_0201273c
 .extern func_0201b180
 .extern func_0201b228
@@ -34,7 +34,7 @@ func_02034164: ; 0x02034164
     beq .L_0203422c
     ldr r0, .L_02034258
     mov r1, r4
-    bl func_0200b058
+    bl ActorRuntimeCollection_TryCompleteAttachment
     cmp r0, #0x0
     moveq r0, #0x0
     ldmeqia sp!, {r3, r4, r5, pc}
@@ -56,7 +56,7 @@ func_02034164: ; 0x02034164
     ldr r0, .L_02034258
     mov r1, #0x0
     strb r1, [r4, #0xe8]
-    bl func_0200af04
+    bl ActorRuntimeCollection_GetPrimaryContainer
     mov r1, r0
     add r0, r4, #0xec
     bl func_0201b180

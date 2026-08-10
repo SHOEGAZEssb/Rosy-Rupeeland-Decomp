@@ -9,7 +9,7 @@
 .extern data_ov085_022143f8
 .extern data_ov085_02214400
 .extern data_ov085_02214408
-.extern func_0200b04c
+.extern ActorRuntimeCollection_GetPendingAttachmentFlag
 .extern ActorDerivedRuntime_HandlePairActive
 .extern func_0204cfa4
 .extern func_020adc90
@@ -26,7 +26,7 @@ func_ov085_02213214:
     tst r0, #0x1000000
     bne .L_02213444
     ldr r0, .L_02213458
-    bl func_0200b04c
+    bl ActorRuntimeCollection_GetPendingAttachmentFlag
     cmp r0, #0x0
     bne .L_02213444
     ldrb r0, [r5, #0x4d]

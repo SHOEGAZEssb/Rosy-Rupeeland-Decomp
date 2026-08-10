@@ -9,7 +9,7 @@
 .extern data_ov081_02215378
 .extern data_ov081_02215380
 .extern data_ov081_0221551c
-.extern func_0200b04c
+.extern ActorRuntimeCollection_GetPendingAttachmentFlag
 .extern ActorDerivedType1_TrySetStateVector
 .extern ActorDerivedRuntime_AcceptInteractionQuery
 .extern func_020573e4
@@ -24,7 +24,7 @@ func_ov081_0221487c:
     mov r5, r0
     ldr r0, .L_02214b24
     mov r4, r1
-    bl func_0200b04c
+    bl ActorRuntimeCollection_GetPendingAttachmentFlag
     cmp r0, #0x0
     bne .L_02214b10
     ldr r0, [r5, #0x14]

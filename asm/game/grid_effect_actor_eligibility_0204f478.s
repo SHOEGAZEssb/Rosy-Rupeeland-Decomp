@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/grid_effect_actor_eligibility.c.
 .extern data_021052fc
 .extern data_02105310
-.extern func_0200b04c
+.extern ActorRuntimeCollection_GetPendingAttachmentFlag
 .text
     .global func_0204f478
 func_0204f478:
@@ -13,7 +13,7 @@ func_0204f478:
     cmp r0, #0x1
     bne .L_0204f4c4
     ldr r0, .L_0204f4cc
-    bl func_0200b04c
+    bl ActorRuntimeCollection_GetPendingAttachmentFlag
     cmp r0, #0x0
     bne .L_0204f4c4
     ldr r0, .L_0204f4d0

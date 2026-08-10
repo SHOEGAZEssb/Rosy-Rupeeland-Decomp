@@ -32,10 +32,10 @@ extern void func_020328d0(void *value, s32 scale);
 extern void *GamePhaseRuntime_GetActorCollection(void *manager, u32 slot);
 extern s32 Actor_QueryTerrainHeight(void *actor, s32 x, s32 y);
 extern s32 ActorDerivedType1_HasBlockingStateFlags(void *actor);
-extern s32 func_0200b294(void *state);
+extern s32 ActorRuntimeCollection_GetBusyState(void *state);
 extern s32 GameWork_TestFlag(void *work, u32 flag);
-extern s32 func_0200b23c(void *state, const void *record);
-extern void func_0200b164(void *state, const void *record);
+extern s32 ActorRuntimeCollection_IsQueuedValueMissing(void *state, const void *record);
+extern void ActorRuntimeCollection_QueueValue(void *state, const void *record);
 extern void func_02072b68(void *attachment, u32 animation);
 extern void ActorDerivedType1_ResetSpecialModeFlags(void *actor);
 extern void func_02063820(void *state, u32 value);
@@ -219,13 +219,13 @@ s32 ActorDerivedType1_ProcessInteraction(void *self)
                     *(s16 *)(actor + 0x268) == 0 &&
                     (*(u32 *)(actor + 0xd0) & 0x4000) == 0);
 
-        if (eligible && func_0200b294(data_02105310) == 0 &&
+        if (eligible && ActorRuntimeCollection_GetBusyState(data_02105310) == 0 &&
             GameWork_TestFlag(gGameWork, 0x11) == 0 &&
             GameWork_TestFlag(gGameWork, 0x12) != 0 && terrainField == 1 &&
             heightDelta >= 0 && heightDelta <= 0x10 &&
-            func_0200b23c(data_02105310, data_020d37dc) == 0) {
+            ActorRuntimeCollection_IsQueuedValueMissing(data_02105310, data_020d37dc) == 0) {
             u8 snapshot[12];
-            func_0200b164(data_02105310, data_020d37dc);
+            ActorRuntimeCollection_QueueValue(data_02105310, data_020d37dc);
             func_02072b68(*(void **)(actor + 0x54),
                           (actor[0xd4] + 0x10) & 0xff);
             *(u16 *)(*(u8 **)(actor + 0x54) + 0x24) &= (u16)~2;

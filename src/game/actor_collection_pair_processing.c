@@ -66,7 +66,7 @@ extern void ActorPairMatrix_Clear(u8 *, s32, s32);
 extern s32 ActorCollection_NotifyPairActive(ActorPairCollection *, PairActor *, PairActor *, s32);
 extern void ActorCollection_NotifyPairEnded(ActorPairCollection *, PairActor *, PairActor *);
 extern s32 func_020828a0(void *, s32);
-extern s32 func_0200b04c(void *);
+extern s32 ActorRuntimeCollection_GetPendingAttachmentFlag(void *);
 extern void ActorCollision_ResolveCornerContacts(PairActor *, void *);
 extern void ActorCollision_ResolveSweptMovement(PairActor *, void *);
 #ifdef __cplusplus
@@ -241,7 +241,7 @@ void ActorCollection_ProcessCategory1And2Pairs(ActorPairCollection *self)
             (actorA->type_4d == 1 || actorA->type_4d == 7)) {
             if (!(actorA->flags_14 & 0x40) &&
                 !func_020828a0(data_021f5ebc, 1)) {
-                if (!func_0200b04c(data_02105310))
+                if (!ActorRuntimeCollection_GetPendingAttachmentFlag(data_02105310))
                     ActorCollision_ResolveCornerContacts(actorA, contextValue);
                 ActorCollision_ResolveSweptMovement(actorA, contextValue);
             }

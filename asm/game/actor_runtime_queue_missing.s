@@ -2,8 +2,8 @@
 ; the documented portable implementation and recovered behavior.
 .text
 
-.global func_0200b23c
-func_0200b23c:
+.global ActorRuntimeCollection_IsQueuedValueMissing
+ActorRuntimeCollection_IsQueuedValueMissing:
     stmdb sp!, {r3, lr}
     ldr r2, [r0, #0x144]
     mov r3, #0x0
@@ -29,5 +29,5 @@ L_0200b27c:
 L_0200b28c:
     mov r0, r3
     ldmia sp!, {r3, pc}
-.size func_0200b23c, . - func_0200b23c
+.size ActorRuntimeCollection_IsQueuedValueMissing, . - ActorRuntimeCollection_IsQueuedValueMissing
 

@@ -4,8 +4,8 @@
 .extern GameWork_TestFlag
 .extern data_020d3a59
 .extern data_02105310
-.extern func_0200b164
-.extern func_0200b294
+.extern ActorRuntimeCollection_QueueValue
+.extern ActorRuntimeCollection_GetBusyState
 .extern gGameWork
 
     .global func_02027788
@@ -17,7 +17,7 @@ func_02027788: ; 0x02027788
     cmp r0, #0x0
     beq .L_02027800
     ldr r0, .L_02027808
-    bl func_0200b294
+    bl ActorRuntimeCollection_GetBusyState
     cmp r0, #0x0
     bne .L_02027800
     cmp r4, #0x3
@@ -39,7 +39,7 @@ func_02027788: ; 0x02027788
     ldr r1, .L_02027814
     add r2, r2, #0x100
     strh r4, [r2, #0xe2]
-    bl func_0200b164
+    bl ActorRuntimeCollection_QueueValue
     mov r0, #0x1
     ldmia sp!, {r4, pc}
 .L_02027800:

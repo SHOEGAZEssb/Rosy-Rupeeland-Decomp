@@ -38,7 +38,7 @@ extern void GXS_SetGraphicsMode(u32 bgMode);
 extern void DisplayController_SetVerticalOffset(s32 value);
 extern void ActorMotionAreaFollower_Reset(void *object);
 extern void ActorMotion_Reset(void *object);
-extern void func_0200ae8c(void *object);
+extern void ActorRuntimeCollection_Reset(void *object);
 extern void func_0200e650(void *object, const void *config);
 extern void ActorInteractionRuntime_Start(void);
 extern void ActorDerivedType1_ResetToDisabledState(void *entity);
@@ -137,7 +137,7 @@ void GamePhaseRuntime_Configure(GamePhaseRuntime *self, const void *configPointe
     DisplayController_SetVerticalOffset(*(const s16 *)(config + 0x54));
     ActorMotionAreaFollower_Reset(bytes + 0x2fbc);
     ActorMotion_Reset(bytes + 0x3044);
-    func_0200ae8c(data_02105310);
+    ActorRuntimeCollection_Reset(data_02105310);
     GamePhaseRuntime_CreateSecondaryActorSubsystem(self, (void *)configPointer, 1);
     func_0200e650(bytes + 0x24, configPointer);
     GamePhaseRuntime_RefreshAreaAuxiliaryObject(self, (void *)configPointer, 1);

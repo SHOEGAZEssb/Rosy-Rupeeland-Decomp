@@ -3,10 +3,10 @@
 .text
 .extern GamePhaseRuntime_GetActorCollection
 .extern Heap_Free
-.extern func_0200ae4c
+.extern ActorRuntimeOwnedList_Clear
 .extern data_021052fc
-.global func_0200b180
-func_0200b180:
+.global ActorRuntimeCollection_DispatchQueuedValue
+ActorRuntimeCollection_DispatchQueuedValue:
     stmdb sp!, {r4, r5, r6, lr}
     mov r5, r0
     ldr r1, [r5, #0x144]
@@ -40,7 +40,7 @@ L_0200b1ec:
     str r0, [r5, #0x144]
     bne L_0200b204
     add r0, r5, #0x138
-    bl func_0200ae4c
+    bl ActorRuntimeOwnedList_Clear
 L_0200b204:
     mov r0, r4
     ldr r3, [r0, #0x0]
@@ -56,5 +56,5 @@ L_0200b204:
     mov r0, #0x1
     ldmia sp!, {r4, r5, r6, pc}
 L_0200b238: .word data_021052fc
-.size func_0200b180, . - func_0200b180
+.size ActorRuntimeCollection_DispatchQueuedValue, . - ActorRuntimeCollection_DispatchQueuedValue
 

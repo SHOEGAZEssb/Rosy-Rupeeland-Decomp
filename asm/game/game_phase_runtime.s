@@ -24,7 +24,7 @@
 .extern ActorMotionAreaFollower_BindActor
 .extern ActorMotionAreaFollower_RefreshCurrentArea
 .extern ActorMotionAreaFollower_Reset
-.extern func_0200ae8c
+.extern ActorRuntimeCollection_Reset
 .extern func_0200e4dc
 .extern func_0200e650
 .extern func_0200ec6c
@@ -152,7 +152,7 @@ GamePhaseRuntime_Configure:
     add r0, r0, #0x3000
     bl ActorMotion_Reset
     ldr r0, L_02006fc0
-    bl func_0200ae8c
+    bl ActorRuntimeCollection_Reset
     mov r0, r4
     add r1, r4, #0x3000
     ldr r1, [r1, #0xbc]

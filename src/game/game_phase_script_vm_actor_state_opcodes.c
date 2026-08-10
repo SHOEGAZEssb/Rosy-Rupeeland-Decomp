@@ -9,7 +9,7 @@ extern void *data_021052fc;
 extern u8 data_02105310[];
 extern void *Actor_GetCollection(void *actor);
 extern void *GamePhaseRuntime_GetActorCollection(void *runtime, s32 index);
-extern void func_0200af0c(void *state, void *actor, u32 value);
+extern void ActorRuntimeCollection_SelectObject(void *state, void *actor, u32 value);
 extern void OS_Halt(void);
 #ifdef __cplusplus
 }
@@ -34,7 +34,7 @@ s32 func_02012e98(GamePhaseActorScriptVm *self)
     method = *(ActorModeMethod *)((u8 *)*(void **)self->actor_84 + 0xac);
     method(self->actor_84, mode, value);
     if (mode == 3) {
-        func_0200af0c(data_02105310, self->actor_84, value);
+        ActorRuntimeCollection_SelectObject(data_02105310, self->actor_84, value);
         return 1;
     }
     return 0;

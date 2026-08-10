@@ -8,7 +8,7 @@ extern u8 data_02105310[];
 extern "C" {
 #endif
 extern void Actor_SavePrimaryAttachmentState(void *);
-extern void func_0200afd0(void *, void *);
+extern void ActorRuntimeCollection_AttachObject(void *, void *);
 extern void *Actor_GetCollection(void *);
 extern void func_0201b124(void *, void *, void *, void *);
 extern void func_0201b180(void *, const void *);
@@ -39,7 +39,7 @@ void Actor_SetResourceVariant(void *self, s32 variant)
         Actor_SavePrimaryAttachmentState(actor);
     if (variant) {
         *(u32 *)(actor + 0x10) |= 0x100;
-        func_0200afd0(data_02105310, actor);
+        ActorRuntimeCollection_AttachObject(data_02105310, actor);
     }
     collection = Actor_GetCollection(actor);
     gameData = (u8 *)gGameWork +

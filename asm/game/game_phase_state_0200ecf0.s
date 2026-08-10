@@ -7,8 +7,8 @@
 .extern data_02105310
 .extern OverlayManager_LoadOverlay
 .extern OverlayManager_GetGlobal
-.extern func_0200b04c
-.extern func_0200b294
+.extern ActorRuntimeCollection_GetPendingAttachmentFlag
+.extern ActorRuntimeCollection_GetBusyState
 .extern func_0200efe0
 .extern ActorDerivedType1_GetActiveRecordId
 .extern ActorDerivedType1_GetSingletonObject
@@ -31,12 +31,12 @@ func_0200ecf0: ; 0x0200ecf0
     movne r0, #0x0
     ldmneia sp!, {r3, r4, r5, pc}
     ldr r0, L_0200efcc
-    bl func_0200b04c
+    bl ActorRuntimeCollection_GetPendingAttachmentFlag
     cmp r0, #0x0
     movne r0, #0x0
     ldmneia sp!, {r3, r4, r5, pc}
     ldr r0, L_0200efcc
-    bl func_0200b294
+    bl ActorRuntimeCollection_GetBusyState
     cmp r0, #0x0
     movne r0, #0x0
     ldmneia sp!, {r3, r4, r5, pc}

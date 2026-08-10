@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/game_phase_script_vm_actor_state_opcodes.c.
 .text
 .extern data_02105310
-.extern func_0200af0c
+.extern ActorRuntimeCollection_SelectObject
 .extern func_02012704
 
     .global func_02012e98
@@ -39,7 +39,7 @@ L_02012eec:
     ldr r0, L_02012f3c
     mov r1, r5
     mov r2, r4
-    bl func_0200af0c
+    bl ActorRuntimeCollection_SelectObject
     mov r0, #0x1
     ldmia sp!, {r3, r4, r5, pc}
 L_02012f1c:

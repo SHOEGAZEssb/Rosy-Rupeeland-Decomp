@@ -18,7 +18,7 @@ extern void *gSoundContext;
 extern "C" {
 #endif
 extern s32 Type7Actor_IsInteractionSceneActive(void *actor, void *other, s32 context);
-extern s32 func_0200b294(void *state);
+extern s32 ActorRuntimeCollection_GetBusyState(void *state);
 extern s32 func_020828a0(void *state, s32 mask);
 extern void *func_0206c68c(void *resource, void *actor);
 extern void func_0206cb04(void *resource, void *other, s32 mode);
@@ -49,7 +49,7 @@ extern s32 func_02032a94(void *actor, void *other, s32 context);
 
 /*
  * Inputs are actor, other object, and contact context. Custom processing first
- * requires Type7Actor_IsInteractionSceneActive success, clear global state from func_0200b294 and
+ * requires Type7Actor_IsInteractionSceneActive success, clear global state from ActorRuntimeCollection_GetBusyState and
  * func_020828a0, nonnull actor target +0x280, and clear actor +0x10 bit
  * 0x01000000. A qualifying type-two object can allocate/construct the 0xb4-byte
  * owned resource at +0x234, install data_020e16d8 through Type7Actor_SetCallbackPair, set
@@ -78,7 +78,7 @@ s32 Type7Actor_HandleContact(void *self, void *otherObject, s32 context)
     s32 type;
 
     if (Type7Actor_IsInteractionSceneActive(actor, other, context) == 0
-        || func_0200b294(data_02105310) != 0
+        || ActorRuntimeCollection_GetBusyState(data_02105310) != 0
         || *(void **)(actor + 0x280) == 0
         || func_020828a0(data_021f5ebc, 0x40) != 0
         || (*(u32 *)(actor + 0x10) & 0x01000000) != 0) {

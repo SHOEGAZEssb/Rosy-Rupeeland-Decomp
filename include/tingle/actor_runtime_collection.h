@@ -29,27 +29,27 @@ typedef struct ActorRuntimeCollection {
 extern "C" {
 #endif
 
-ActorRuntimeCollection *func_0200ad90(ActorRuntimeCollection *self);
-ActorRuntimeOwnedList *func_0200adc8(ActorRuntimeOwnedList *self);
-ActorRuntimeOwnedList *func_0200adf0(ActorRuntimeOwnedList *self);
-ActorRuntimeCollection *func_0200ae10(ActorRuntimeCollection *self);
-void func_0200ae4c(ActorRuntimeOwnedList *self);
-void func_0200ae8c(ActorRuntimeCollection *self);
-void func_0200aea8(ActorRuntimeCollection *self);
-void *func_0200aef4(ActorRuntimeCollection *self, const void *source);
-void *func_0200af04(ActorRuntimeCollection *self);
-void func_0200af0c(ActorRuntimeCollection *self, void *candidate);
-void func_0200af8c(ActorRuntimeCollection *self);
-void func_0200afd0(ActorRuntimeCollection *self, void *object);
-u32 func_0200b04c(const ActorRuntimeCollection *self);
-s32 func_0200b058(ActorRuntimeCollection *self, void *object);
-void func_0200b0d0(ActorRuntimeCollection *self, u32 value);
-void func_0200b0d8(ActorRuntimeCollection *self);
-void func_0200b100(ActorRuntimeOwnedList *list, void *value);
-void func_0200b164(ActorRuntimeCollection *self, void *value);
-s32 func_0200b180(ActorRuntimeCollection *self);
-s32 func_0200b23c(const ActorRuntimeCollection *self, const void *value);
-u32 func_0200b294(const ActorRuntimeCollection *self);
+ActorRuntimeCollection *ActorRuntimeCollection_Init(ActorRuntimeCollection *self);
+ActorRuntimeOwnedList *ActorRuntimeOwnedList_Init(ActorRuntimeOwnedList *self);
+ActorRuntimeOwnedList *ActorRuntimeOwnedList_Destroy(ActorRuntimeOwnedList *self);
+ActorRuntimeCollection *ActorRuntimeCollection_Destroy(ActorRuntimeCollection *self);
+void ActorRuntimeOwnedList_Clear(ActorRuntimeOwnedList *self);
+void ActorRuntimeCollection_Reset(ActorRuntimeCollection *self);
+void ActorRuntimeCollection_DetachActiveObject(ActorRuntimeCollection *self);
+void *ActorRuntimeCollection_CopyPrimaryContainerState(ActorRuntimeCollection *self, const void *source);
+void *ActorRuntimeCollection_GetPrimaryContainer(ActorRuntimeCollection *self);
+void ActorRuntimeCollection_SelectObject(ActorRuntimeCollection *self, void *candidate);
+void ActorRuntimeCollection_ReleaseSelectedObject(ActorRuntimeCollection *self);
+void ActorRuntimeCollection_AttachObject(ActorRuntimeCollection *self, void *object);
+u32 ActorRuntimeCollection_GetPendingAttachmentFlag(const ActorRuntimeCollection *self);
+s32 ActorRuntimeCollection_TryCompleteAttachment(ActorRuntimeCollection *self, void *object);
+void ActorRuntimeCollection_SetPendingValue(ActorRuntimeCollection *self, u32 value);
+void ActorRuntimeCollection_QueuePendingValue(ActorRuntimeCollection *self);
+void ActorRuntimeOwnedList_Append(ActorRuntimeOwnedList *list, void *value);
+void ActorRuntimeCollection_QueueValue(ActorRuntimeCollection *self, void *value);
+s32 ActorRuntimeCollection_DispatchQueuedValue(ActorRuntimeCollection *self);
+s32 ActorRuntimeCollection_IsQueuedValueMissing(const ActorRuntimeCollection *self, const void *value);
+u32 ActorRuntimeCollection_GetBusyState(const ActorRuntimeCollection *self);
 ActorRuntimeOwnedList *func_0200bac4(ActorRuntimeOwnedList *self);
 ActorRuntimeOwnedList *func_0200baec(ActorRuntimeOwnedList *self);
 ActorRuntimeOwnedList *func_0200bb14(ActorRuntimeOwnedList *self);

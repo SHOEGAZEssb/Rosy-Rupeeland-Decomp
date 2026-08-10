@@ -5,7 +5,7 @@
 .extern func_02005070
 .extern func_020050a4
 .extern VecFx32_Subtract
-.extern func_0200b04c
+.extern ActorRuntimeCollection_GetPendingAttachmentFlag
 .extern func_020328d0
 .extern Actor_GetCachedTerrainHeight
 .extern func_02050260
@@ -24,7 +24,7 @@ func_02051b48:
     cmp r0, #0x0
     bgt .L_02051c84
     ldr r0, .L_02051c8c
-    bl func_0200b04c
+    bl ActorRuntimeCollection_GetPendingAttachmentFlag
     cmp r0, #0x0
     bne .L_02051c40
     cmp r4, #0x0

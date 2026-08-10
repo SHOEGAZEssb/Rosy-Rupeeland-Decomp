@@ -53,8 +53,8 @@ extern u8 data_02105638[];
 extern GamePhaseProgressController data_02105644;
 extern u8 data_021f5ebc[];
 extern void __register_global_object(void *, void (*)(void *), void *);
-extern s32 func_0200b294(void *);
-extern void func_0200b164(void *, void *);
+extern s32 ActorRuntimeCollection_GetBusyState(void *);
+extern void ActorRuntimeCollection_QueueValue(void *, void *);
 extern void func_020828a0(void *, s32);
 extern s32 func_020befec(s32, s32);
 extern s32 func_020bf1f8(s32, s32);
@@ -141,12 +141,12 @@ void func_02027654(GamePhaseProgressController *self)
  */
 s32 func_02027788(GamePhaseProgressController *self, s32 mode)
 {
-    if (!self->presentationEnabled_08 || func_0200b294(data_02105310))
+    if (!self->presentationEnabled_08 || ActorRuntimeCollection_GetBusyState(data_02105310))
         return 0;
     if (mode == 3 && !GameWork_TestFlag(gGameWork, 0x401))
         GameWork_SetFlag(gGameWork, 0x401);
     *(u16 *)((u8 *)gGameWork + 0x1e2) = (u16)mode;
-    func_0200b164(data_02105310, data_020d3a59);
+    ActorRuntimeCollection_QueueValue(data_02105310, data_020d3a59);
     return 1;
 }
 

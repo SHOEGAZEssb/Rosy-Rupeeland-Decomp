@@ -10,7 +10,7 @@
 .extern func_02002068
 .extern DisplayBrightnessPair_Init
 .extern func_020083b0
-.extern func_0200ad90
+.extern ActorRuntimeCollection_Init
 .extern func_02059a48
 .extern func_020645d8
 .extern func_0206f750
@@ -82,7 +82,7 @@
 .extern func_020020a0
 .extern DisplayBrightnessPair_Destroy
 .extern func_02004ac8
-.extern func_0200ae10
+.extern ActorRuntimeCollection_Destroy
 .extern func_02022fbc
 .extern func_02059a64
 .extern func_02059a68
@@ -223,14 +223,14 @@ __sinit_020c13f8: ; 0x020c13f8
 __sinit_020c1490: ; 0x020c1490
     stmdb sp!, {r3, lr}
     ldr r0, .L_020c14b0
-    bl func_0200ad90
+    bl ActorRuntimeCollection_Init
     ldr r0, .L_020c14b0
     ldr r1, .L_020c14b4
     ldr r2, .L_020c14b8
     bl __register_global_object
     ldmia sp!, {r3, pc}
 .L_020c14b0: .word data_02105310
-.L_020c14b4: .word func_0200ae10
+.L_020c14b4: .word ActorRuntimeCollection_Destroy
 .L_020c14b8: .word data_02105304
 
 __sinit_020c14bc: ; 0x020c14bc

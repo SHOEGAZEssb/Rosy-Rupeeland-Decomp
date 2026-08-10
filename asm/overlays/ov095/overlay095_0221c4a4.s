@@ -3,7 +3,7 @@
 .extern data_021052fc
 .extern data_02105310
 .extern func_02005058
-.extern func_0200b04c
+.extern ActorRuntimeCollection_GetPendingAttachmentFlag
 .extern func_0201e0ec
 .extern ActorCollection_QueueActorForRemoval
 .extern Actor_GetCollection
@@ -22,7 +22,7 @@ func_ov095_0221c4a4:
     mov r6, r0
     ldr r0, .L_0221c688
     mov r5, r1
-    bl func_0200b04c
+    bl ActorRuntimeCollection_GetPendingAttachmentFlag
     cmp r0, #0x0
     bne .L_0221c654
     cmp r5, #0x0

@@ -11,7 +11,7 @@ extern u8 data_02105310[];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern s32 func_0200b04c(void *registry);
+extern s32 ActorRuntimeCollection_GetPendingAttachmentFlag(void *registry);
 extern void func_02032a94(void *actor, void *other, s32 mode);
 #ifdef __cplusplus
 }
@@ -38,7 +38,7 @@ void func_0204d3e0(void)
  * zero VecFx32Object, assign it into actor vector +0x38, and destroy the
  * temporary. If the other actor's type byte +0x4d is one, mode is zero, actor
  * pointer +0x188 is non-null, actor byte +0xe8 is zero, and registry predicate
- * func_0200b04c(data_02105310) is zero, invoke actor virtual slot 0x78 with
+ * ActorRuntimeCollection_GetPendingAttachmentFlag(data_02105310) is zero, invoke actor virtual slot 0x78 with
  * state two. Return one on every path. Actor/base/vector and virtual state may
  * change; there are no direct hardware effects.
  */
@@ -54,7 +54,7 @@ s32 func_0204d3e4(void *self, void *other, s32 mode)
 
     if (otherActor[0x4d] == 1 && mode == 0
         && *(void **)(actor + 0x188) != 0 && actor[0xe8] == 0
-        && func_0200b04c(data_02105310) == 0) {
+        && ActorRuntimeCollection_GetPendingAttachmentFlag(data_02105310) == 0) {
         void (**vtable)(void *, s32) = *(void (***)(void *, s32))actor;
         vtable[0x78 / 4](actor, 2);
     }

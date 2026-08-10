@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/actor_table_record_interaction_helpers.c.
 .text
 .extern data_02105310
-.extern func_0200b04c
+.extern ActorRuntimeCollection_GetPendingAttachmentFlag
 .extern func_02032a94
 .extern ActorTableRecord_ApplyCollisionResponse
 .extern func_0204cfa4
@@ -62,7 +62,7 @@ ActorTableRecord_HandlePairActive: ; 0x0203cf40
     ldr r0, .L_0203cf88
     mov r5, r1
     mov r4, r2
-    bl func_0200b04c
+    bl ActorRuntimeCollection_GetPendingAttachmentFlag
     cmp r0, #0x0
     bne .L_0203cf74
     mov r0, r6

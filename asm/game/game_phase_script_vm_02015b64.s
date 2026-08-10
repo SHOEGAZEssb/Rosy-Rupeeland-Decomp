@@ -4,7 +4,7 @@
 .extern data_021052fc
 .extern data_02105310
 .extern GamePhaseRuntime_GetActorCollection
-.extern func_0200b04c
+.extern ActorRuntimeCollection_GetPendingAttachmentFlag
 .extern func_02012704
 .extern func_020127f8
 .extern ActorCollection_FindActorByDescriptorValue
@@ -96,7 +96,7 @@ L_02015c90:
     cmp r5, #0
     beq L_02015ce4
     ldr r0, L_02015d08
-    bl func_0200b04c
+    bl ActorRuntimeCollection_GetPendingAttachmentFlag
     cmp r0, #0
     beq L_02015cd0
     ldr r0, L_02015d08

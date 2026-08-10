@@ -9,7 +9,7 @@ extern u8 data_02105310[];
 extern "C" {
 #endif
 extern void GameWork_SetFlag(void *work, s32 flag);
-extern void func_0200b0d8(void *state);
+extern void ActorRuntimeCollection_QueuePendingValue(void *state);
 #ifdef __cplusplus
 }
 #endif
@@ -26,7 +26,7 @@ s32 func_020084b8(GamePhaseRuntime *self, s32 x, s32 y)
     *(u16 *)((u8 *)gGameWork + 0x5e) = (u16)(x >> 12);
     *(u16 *)((u8 *)gGameWork + 0x60) = (u16)(y >> 12);
     *(u16 *)((u8 *)gGameWork + 0x5c) = 2;
-    func_0200b0d8(data_02105310);
+    ActorRuntimeCollection_QueuePendingValue(data_02105310);
     return 1;
 }
 
@@ -41,6 +41,6 @@ s32 func_02008514(GamePhaseRuntime *self, s32 x, s32 y)
     *(u16 *)((u8 *)gGameWork + 0x5e) = (u16)(x >> 12);
     *(u16 *)((u8 *)gGameWork + 0x60) = (u16)(y >> 12);
     *(u16 *)((u8 *)gGameWork + 0x5c) = 1;
-    func_0200b0d8(data_02105310);
+    ActorRuntimeCollection_QueuePendingValue(data_02105310);
     return 1;
 }

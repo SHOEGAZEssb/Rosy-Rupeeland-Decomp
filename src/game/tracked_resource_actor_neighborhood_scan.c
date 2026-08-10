@@ -7,7 +7,7 @@ extern "C" {
 #endif
 extern void *data_021052fc;
 extern void *data_02105310;
-extern s32 func_0200b04c(void *state);
+extern s32 ActorRuntimeCollection_GetPendingAttachmentFlag(void *state);
 extern void func_02004fe0(void *vector);
 extern void func_0200500c(void *vector, s32 x, s32 y, s32 z);
 extern void func_02005058(void *vector);
@@ -65,7 +65,7 @@ void func_020505f0(void *actor, u32 unused1, u32 unused2, u32 unused3)
     (void)unused2;
     (void)unused3;
 
-    if (func_0200b04c(&data_02105310) != 0)
+    if (ActorRuntimeCollection_GetPendingAttachmentFlag(&data_02105310) != 0)
         return;
 
     record = FIELD(void *, actor, 0x1fc);

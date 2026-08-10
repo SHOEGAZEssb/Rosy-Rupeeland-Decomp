@@ -7,7 +7,7 @@
 .extern func_02005058
 .extern ActorCollision_ResolveCornerContacts
 .extern ActorCollision_ResolveSweptMovement
-.extern func_0200b04c
+.extern ActorRuntimeCollection_GetPendingAttachmentFlag
 .extern ActorPairMatrix_Get
 .extern ActorPairMatrix_Clear
 .extern ActorCollection_NotifyPairActive
@@ -460,7 +460,7 @@ ActorCollection_ProcessCategory1And2Pairs: ; 0x0202e15c
     cmp r0, #0x0
     bne .L_0202e814
     ldr r0, .L_0202e84c
-    bl func_0200b04c
+    bl ActorRuntimeCollection_GetPendingAttachmentFlag
     cmp r0, #0x0
     bne .L_0202e7dc
     ldr r1, [sp, #0x24]

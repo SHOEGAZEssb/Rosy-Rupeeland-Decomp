@@ -68,8 +68,8 @@ extern u8 *GraphicsSpriteState_Create(void *, void *, s32, s32, s32, s32, s32);
 extern void func_02072b68(void *, s32);
 extern s32 func_020befec(s32, s32);
 extern s32 Type7Actor_GetStateCode(void *);
-extern s32 func_0200b04c(void *);
-extern s32 func_0200b294(void *);
+extern s32 ActorRuntimeCollection_GetPendingAttachmentFlag(void *);
+extern s32 ActorRuntimeCollection_GetBusyState(void *);
 extern s32 func_020adc90(s32, s32);
 extern void Sound_Play(void *, s32, s32);
 extern void func_02025cd0(void *, s32);
@@ -323,8 +323,8 @@ void func_020269f8(DualScreenUiGridState *self)
             *(u16 *)(self->progressSprite70 + 0x24) &= (u16)~1;
             if (self->soundCount8d < 4) {
                 if (self->soundCount8d != 0 &&
-                    !func_0200b04c(data_02105310) &&
-                    !func_0200b294(data_02105310))
+                    !ActorRuntimeCollection_GetPendingAttachmentFlag(data_02105310) &&
+                    !ActorRuntimeCollection_GetBusyState(data_02105310))
                     Sound_Play(gSoundContext, 0, 0x71);
                 self->soundCount8d++;
             }

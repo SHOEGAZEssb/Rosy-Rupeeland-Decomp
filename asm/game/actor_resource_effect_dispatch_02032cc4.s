@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/actor_resource_effect_dispatch.c.
 .text
 .extern data_02105310
-.extern func_0200aef4
+.extern ActorRuntimeCollection_CopyPrimaryContainerState
 .extern func_0201b124
 .extern func_0201b1e0
 .extern Actor_GetCollection
@@ -29,7 +29,7 @@ Actor_AssignPrimaryResourceWithEffect: ; 0x02032cc4
     bl func_0201b124
     ldr r0, .L_02032d60
     add r1, sp, #0x94
-    bl func_0200aef4
+    bl ActorRuntimeCollection_CopyPrimaryContainerState
     add r0, sp, #0x94
     bl func_0201b1e0
     b .L_02032d54
@@ -44,7 +44,7 @@ Actor_AssignPrimaryResourceWithEffect: ; 0x02032cc4
     bl func_0201b124
     ldr r0, .L_02032d60
     add r1, sp, #0x0
-    bl func_0200aef4
+    bl ActorRuntimeCollection_CopyPrimaryContainerState
     add r0, sp, #0x0
     bl func_0201b1e0
 .L_02032d54:

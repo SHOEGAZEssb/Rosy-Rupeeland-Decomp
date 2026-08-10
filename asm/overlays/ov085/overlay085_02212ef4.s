@@ -5,7 +5,7 @@
 .extern data_ov085_02214330
 .extern data_ov085_02214348
 .extern data_ov085_022143d0
-.extern func_0200b04c
+.extern ActorRuntimeCollection_GetPendingAttachmentFlag
 .extern Type7MarkerPresentation_SelectAnimation
 .extern Type7MarkerPresentation_ReloadResources
 .extern func_020593dc
@@ -60,7 +60,7 @@ func_ov085_02212ef4:
     tst r0, #0x1000000
     bne .L_02212fc8
     ldr r0, .L_0221317c
-    bl func_0200b04c
+    bl ActorRuntimeCollection_GetPendingAttachmentFlag
     cmp r0, #0x0
     bne .L_02212fc8
     ldr r0, [r5, #0x14]

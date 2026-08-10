@@ -10,7 +10,7 @@ extern u32 genrand_int32(void);
 extern void func_02004fe0(void *vector);
 extern void func_02005058(void *vector);
 extern void func_020050a4(void *destination, const void *source);
-extern s32 func_0200b04c(void *state);
+extern s32 ActorRuntimeCollection_GetPendingAttachmentFlag(void *state);
 extern void ActorCollection_QueueActorForRemoval(void *handle, void *actor);
 extern void *Actor_GetCollection(void *actor);
 extern void func_02050260(void *actor);
@@ -49,7 +49,7 @@ void func_020515fc(void *actor, void *target)
     random = genrand_int32();
     vector[1] = func_020ada8c((s32)(random & 0x7fffffff), 0x2000) - 0x1000;
     vector[2] = func_020ada8c((s32)((random & 0x7fffffff) >> 4), 0x2000) - 0x1000;
-    if (func_0200b04c(&data_02105310) == 0 && target != 0)
+    if (ActorRuntimeCollection_GetPendingAttachmentFlag(&data_02105310) == 0 && target != 0)
         virtual_function(target, 0xb8)(target, vector, 1);
     vector[1] = -vector[1];
     vector[2] = -vector[2];

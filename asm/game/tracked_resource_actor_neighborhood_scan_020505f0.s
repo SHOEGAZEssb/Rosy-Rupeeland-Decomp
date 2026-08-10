@@ -6,7 +6,7 @@
 .extern func_02005058
 .extern func_02005084
 .extern GamePhaseRuntime_GetActorCollection
-.extern func_0200b04c
+.extern ActorRuntimeCollection_GetPendingAttachmentFlag
 .extern func_020328d0
 .extern ActorDerivedType1_StartRecord
 .extern func_0204cfa4
@@ -19,7 +19,7 @@ func_020505f0:
     sub sp, sp, #0x28
     mov r9, r0
     ldr r0, .L_02050a00
-    bl func_0200b04c
+    bl ActorRuntimeCollection_GetPendingAttachmentFlag
     cmp r0, #0x0
     bne .L_020509f8
     ldr r0, [r9, #0x1fc]
