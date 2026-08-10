@@ -33,7 +33,7 @@ extern void ActorFeedback_SpawnIndexedPresentation(void *, s32);
  * and reset the counter to -1. Other terrain resets it to -1. Returns no value;
  * virtual and terrain queries may observe gameplay state.
  */
-void func_02032394(void *self)
+void Actor_UpdateTerrainMotionFeedback(void *self)
 {
     u8 *actor = (u8 *)self;
     TerrainToggleVTable *vtable = *(TerrainToggleVTable **)actor;

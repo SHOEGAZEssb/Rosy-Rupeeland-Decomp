@@ -8,4 +8,4 @@ Type1Actor_GetDefaultIndex: ; 0x02036a84
     bx lr
     .size Type1Actor_GetDefaultIndex, . - Type1Actor_GetDefaultIndex
 
-    .global func_02036a8c
+    .global ActorDerivedType1_ProcessInteraction

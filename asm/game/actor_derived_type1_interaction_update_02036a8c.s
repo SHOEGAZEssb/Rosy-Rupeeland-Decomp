@@ -40,9 +40,9 @@
 .extern gSoundContext
 .extern gSystemState
 
-    .global func_02036a8c
-    .type func_02036a8c, @function
-func_02036a8c: ; 0x02036a8c
+    .global ActorDerivedType1_ProcessInteraction
+    .type ActorDerivedType1_ProcessInteraction, @function
+ActorDerivedType1_ProcessInteraction: ; 0x02036a8c
     stmdb sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, lr}
     sub sp, sp, #0x70
     mov r10, r0
@@ -583,4 +583,4 @@ func_02036a8c: ; 0x02036a8c
 .L_0203728c: .word data_021e9ac0
 .L_02037290: .word gSoundContext
 .L_02037294: .word gSceneTouchInitialData
-    .size func_02036a8c, . - func_02036a8c
+    .size ActorDerivedType1_ProcessInteraction, . - ActorDerivedType1_ProcessInteraction

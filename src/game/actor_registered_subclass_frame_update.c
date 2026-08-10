@@ -10,7 +10,7 @@ extern u8 *data_021052fc;
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_0203cf8c(void *actor);
+extern void ActorTableRecord_UpdateFrame(void *actor);
 extern s32 Actor_GetCachedTerrainHeight(void *actor);
 extern void func_0203d86c(void *actor);
 extern void *func_0201e0ec(void *manager);
@@ -40,7 +40,7 @@ void func_0203d540(void *self)
     u8 *actor = (u8 *)self;
     s16 state;
 
-    func_0203cf8c(actor);
+    ActorTableRecord_UpdateFrame(actor);
     if (Actor_GetCachedTerrainHeight(actor) == 0 && *(s32 *)(actor + 0x24) > 0 &&
         *(s32 *)(actor + 0x24) < Actor_GetCachedTerrainHeight(actor) + 0x18000) {
         *(u32 *)(actor + 0x14) |= 0x800000;

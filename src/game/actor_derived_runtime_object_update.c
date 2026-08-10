@@ -15,7 +15,7 @@ extern void func_020067b0(void *track);
 extern void *func_020067fc(void *track);
 extern s32 func_02006804(void *track);
 extern void *func_020068ac(void *track);
-extern void func_02032394(void *actor);
+extern void Actor_UpdateTerrainMotionFeedback(void *actor);
 #ifdef __cplusplus
 }
 #endif
@@ -39,7 +39,7 @@ static void clearActorVector(u8 *actor, u32 offset)
  * +0x28 and +0x18. An incomplete track can instead be cancelled when byte
  * +0x4b or virtual +0xa0 is true and +0x14 bit 0x40000000 is set.
  *
- * Invoke func_02032394 for +0x14 bit 0x100000, add motion +0x38 to position,
+ * Invoke Actor_UpdateTerrainMotionFeedback for +0x14 bit 0x100000, add motion +0x38 to position,
  * and process the +0x10 bit-0x400 height correction unless +0x14 bit 0x40 is
  * set. Above floor +0x1dc, subtract virtual +0xb0 from vertical motion +0x44;
  * at or below it, clamp a strictly lower height, clear +0x14 bit 0x20000000,
@@ -86,7 +86,7 @@ void func_0203b798(void *self)
         }
     }
     if ((*(u32 *)(actor + 0x14) & 0x100000) != 0)
-        func_02032394(actor);
+        Actor_UpdateTerrainMotionFeedback(actor);
     func_020050c8(actor + 0x18, actor + 0x38);
     if ((*(u32 *)(actor + 0x14) & 0x40) == 0 &&
         (*(u32 *)(actor + 0x10) & 0x400) != 0) {

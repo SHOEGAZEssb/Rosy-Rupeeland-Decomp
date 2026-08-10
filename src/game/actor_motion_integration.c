@@ -20,7 +20,7 @@ extern void func_020050c8(void *, const void *);
 extern void func_0200b2c0(void *, s32, s32, s32);
 extern s32 func_020adae4(s32, s32);
 extern s32 func_020adc90(s32, s32);
-extern void func_02032394(void *);
+extern void Actor_UpdateTerrainMotionFeedback(void *);
 extern void func_020328d0(void *, s32);
 #ifdef __cplusplus
 }
@@ -52,7 +52,7 @@ void func_02032520(void *self)
 
     func_020050a4(actor + 0x28, actor + 0x18);
     if (*(u32 *)(actor + 0x14) & 0x100000)
-        func_02032394(actor);
+        Actor_UpdateTerrainMotionFeedback(actor);
     if (*(s16 *)(actor + 0xac) != 0xff)
         return;
 

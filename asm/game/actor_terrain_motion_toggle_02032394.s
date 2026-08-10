@@ -4,9 +4,9 @@
 .extern ActorFeedbackResources_GetPackedSound
 .extern ActorFeedback_SpawnIndexedPresentation
 
-    .global func_02032394
-    .type func_02032394, @function
-func_02032394: ; 0x02032394
+    .global Actor_UpdateTerrainMotionFeedback
+    .type Actor_UpdateTerrainMotionFeedback, @function
+Actor_UpdateTerrainMotionFeedback: ; 0x02032394
     stmdb sp!, {r4, lr}
     sub sp, sp, #0x8
     mov r4, r0
@@ -90,5 +90,5 @@ func_02032394: ; 0x02032394
     add sp, sp, #0x8
     ldmia sp!, {r4, pc}
 .L_020324c4: .word data_021052fc
-    .size func_02032394, . - func_02032394
+    .size Actor_UpdateTerrainMotionFeedback, . - Actor_UpdateTerrainMotionFeedback
 

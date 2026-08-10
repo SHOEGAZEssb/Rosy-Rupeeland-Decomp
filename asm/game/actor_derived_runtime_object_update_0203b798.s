@@ -9,7 +9,7 @@
 .extern func_02006804
 .extern func_020068ac
 .extern func_02031748
-.extern func_02032394
+.extern Actor_UpdateTerrainMotionFeedback
 .extern func_02034164
     .global func_0203b798
 func_0203b798: ; 0x0203b798
@@ -109,7 +109,7 @@ func_0203b798: ; 0x0203b798
     tst r0, #0x100000
     beq .L_0203b908
     mov r0, r4
-    bl func_02032394
+    bl Actor_UpdateTerrainMotionFeedback
 .L_0203b908:
     add r0, r4, #0x18
     add r1, r4, #0x38

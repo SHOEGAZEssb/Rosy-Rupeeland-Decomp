@@ -6,7 +6,7 @@
 .extern func_020050a4
 .extern func_020050c8
 .extern func_0200b2c0
-.extern func_02032394
+.extern Actor_UpdateTerrainMotionFeedback
 .extern func_020328d0
 .extern func_020adae4
 .extern func_020adc90
@@ -24,7 +24,7 @@ func_02032520: ; 0x02032520
     tst r0, #0x100000
     beq .L_0203254c
     mov r0, r4
-    bl func_02032394
+    bl Actor_UpdateTerrainMotionFeedback
 .L_0203254c:
     ldrsh r0, [r4, #0xac]
     cmp r0, #0xff

@@ -93,7 +93,7 @@ static void reduceScaleCounter(u8 *actor)
  * handled, zero otherwise. Virtual, terrain, resource, sound, scene, and effect
  * helpers have observable engine/SDK/hardware effects.
  */
-s32 func_02036a8c(void *self)
+s32 ActorDerivedType1_ProcessInteraction(void *self)
 {
     u8 *actor = (u8 *)self;
     u8 *descriptor;

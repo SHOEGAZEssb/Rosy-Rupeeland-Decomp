@@ -9,9 +9,9 @@
 .extern Actor_QueryTerrainHeight
 .extern ActorFeedback_SpawnIndexedPresentation
 .extern func_020adae4
-    .global func_0203cf8c
-    .type func_0203cf8c, @function
-func_0203cf8c: ; 0x0203cf8c
+    .global ActorTableRecord_UpdateFrame
+    .type ActorTableRecord_UpdateFrame, @function
+ActorTableRecord_UpdateFrame: ; 0x0203cf8c
     stmdb sp!, {r3, r4, r5, r6, r7, lr}
     sub sp, sp, #0x8
     ldr r1, [r0, #0x0]
@@ -201,4 +201,4 @@ func_0203cf8c: ; 0x0203cf8c
 .L_0203d258: .word 0x19a
 .L_0203d25c: .word data_021052fc
 
-    .size func_0203cf8c, . - func_0203cf8c
+    .size ActorTableRecord_UpdateFrame, . - ActorTableRecord_UpdateFrame

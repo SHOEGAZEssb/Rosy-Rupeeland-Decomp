@@ -48,7 +48,7 @@ static s32 squareFxRound(s32 value)
  * virtual +0x20. Returns no value; map, presentation, vector, and virtual calls
  * have observable actor/engine effects.
  */
-void func_0203cf8c(void *self)
+void ActorTableRecord_UpdateFrame(void *self)
 {
     u8 *actor = (u8 *)self;
     u8 *record;

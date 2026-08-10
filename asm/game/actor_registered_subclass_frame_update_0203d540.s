@@ -3,7 +3,7 @@
 .extern data_021052fc
 .extern func_0201e0ec
 .extern Actor_GetCachedTerrainHeight
-.extern func_0203cf8c
+.extern ActorTableRecord_UpdateFrame
 .extern func_0203d86c
 .extern func_020a28e0
 .extern func_020befec
@@ -13,7 +13,7 @@
 func_0203d540: ; 0x0203d540
     stmdb sp!, {r3, r4, r5, lr}
     mov r5, r0
-    bl func_0203cf8c
+    bl ActorTableRecord_UpdateFrame
     mov r0, r5
     bl Actor_GetCachedTerrainHeight
     cmp r0, #0x0
