@@ -4,8 +4,8 @@
 .extern GamePhaseScriptVm_Pop
 .extern func_02079ac0
 
-    .global func_020159b4
-func_020159b4: ; 0x020159b4
+    .global GamePhaseActorScriptVm_UpdateDataTableValue
+GamePhaseActorScriptVm_UpdateDataTableValue: ; 0x020159b4
     stmdb sp!, {r3, lr}
     bl GamePhaseScriptVm_Pop
     mov r1, r0
@@ -14,5 +14,5 @@ func_020159b4: ; 0x020159b4
     mov r0, #0x0
     ldmia sp!, {r3, pc}
 L_020159d0: .word data_021f3d68
-    .size func_020159b4, . - func_020159b4
+    .size GamePhaseActorScriptVm_UpdateDataTableValue, . - GamePhaseActorScriptVm_UpdateDataTableValue
 

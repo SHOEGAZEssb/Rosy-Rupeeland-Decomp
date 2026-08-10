@@ -5,8 +5,8 @@
 .extern GamePhaseScriptVm_SetResult
 .extern func_02079ba4
 
-    .global func_0201597c
-func_0201597c: ; 0x0201597c
+    .global GamePhaseActorScriptVm_HasDataTableValue
+GamePhaseActorScriptVm_HasDataTableValue: ; 0x0201597c
     stmdb sp!, {r4, lr}
     mov r4, r0
     bl GamePhaseScriptVm_Pop
@@ -21,5 +21,5 @@ func_0201597c: ; 0x0201597c
     mov r0, #0x0
     ldmia sp!, {r4, pc}
 L_020159b0: .word data_021f3d68
-    .size func_0201597c, . - func_0201597c
+    .size GamePhaseActorScriptVm_HasDataTableValue, . - GamePhaseActorScriptVm_HasDataTableValue
 
