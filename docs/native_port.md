@@ -63,8 +63,8 @@ The broad barriers currently known are:
 
 | Area | NDS-side dependencies | Native-port requirement | Status |
 | --- | --- | --- | --- |
-| Main loop and timing | VBlank waits, VCOUNT, OS timing and interrupts | Host clock, deterministic frame scheduler, and event loop | identified |
-| Input | Key registers, `PAD_Read`, touch input | Keyboard/controller/mouse mapping with DS-compatible edge and repeat behavior | identified |
+| Main loop and timing | VBlank waits, VCOUNT, OS timing and interrupts | Host clock, deterministic frame scheduler, and event loop | implemented |
+| Input | Key registers, `PAD_Read`, touch input | Keyboard/controller/mouse mapping with DS-compatible edge and repeat behavior | implemented |
 | Graphics | 2D/3D engines, VRAM banks, GX/G2 commands, display capture | PC renderer reproducing both DS screens and resource semantics | unmapped |
 | Audio | ARM7 sound services, command queues, Nitro sound formats | Host mixer and sequencer with decoded game resources | unmapped |
 | Files and resources | NitroFS/FS calls and archive formats | ROM-backed or extracted-data virtual filesystem | identified |
@@ -108,3 +108,24 @@ Code that exists solely to initialize Nintendo DS hardware or implement an SDK
 internally does not need a literal native translation. Its game-visible
 contract must still be understood and documented before native platform layers
 can replace it safely.
+
+## Initial Windows harness
+
+The `tingle_native` CMake target creates a resizable window whose client area
+contains the two 256-by-192 DS screens stacked vertically. The portable loop
+receives active-high held, pressed, and released masks plus bottom-screen mouse
+coordinates. The Windows mapping is Z/A, X/B, Backspace/Select, Enter/Start,
+arrow keys/D-pad, Q/L, and W/R. A monotonic host clock maintains a 60 Hz frame
+boundary; a long stall resets accumulated timing debt instead of running an
+unbounded catch-up loop.
+
+Configure and build this target with a Windows CMake toolchain:
+
+```text
+cmake -S . -B build/native
+cmake --build build/native --config Release
+```
+
+The diagnostic image is intentionally game-data independent. The next native
+step is a user-supplied ROM or extracted-directory filesystem boundary, after
+which an early reconstructed scene can replace the diagnostic frame producer.
