@@ -19,6 +19,8 @@ enum {
     ACTOR_MODE_NIBBLE_VTABLE_ADDRESS = 0x020DF774,
     ACTOR_INDEXED_STATE_VTABLE_ADDRESS = 0x020E212C,
     ACTOR_TABLE_RECORD_VTABLE_ADDRESS = 0x020DF910,
+    ACTOR_OV075_VECTOR_VTABLE_ADDRESS = 0x022171BC,
+    ACTOR_OV088_SIMPLE_VTABLE_ADDRESS = 0x0221B780,
     MARKER_PRESENTATION_VTABLE_ADDRESS = 0x020E1ED8,
     VECTOR_VTABLE_ADDRESS = 0x020D405C,
     ACTOR_SCRIPT_VM_VTABLE_ADDRESS = 0x020D5B20,
@@ -212,6 +214,18 @@ static s32 UsesTableRecordConstructor(
     return desc->kind == 3 && desc->subtype == 17;
 }
 
+static s32 UsesOv075VectorConstructor(
+    const TingleNativeActorDescriptor *desc)
+{
+    return desc->kind == 3 && desc->subtype == 20;
+}
+
+static s32 UsesOv088SimpleConstructor(
+    const TingleNativeActorDescriptor *desc)
+{
+    return desc->kind == 3 && desc->subtype == 22;
+}
+
 static s32 UsesKnownSharedBaseConstructor(
     const TingleNativeActorDescriptor *desc)
 {
@@ -220,7 +234,9 @@ static s32 UsesKnownSharedBaseConstructor(
            UsesModeNibbleConstructor(desc) ||
            UsesMotionProbeConstructor(desc) ||
            UsesIndexedStateConstructor(desc) ||
-           UsesTableRecordConstructor(desc);
+           UsesTableRecordConstructor(desc) ||
+           UsesOv075VectorConstructor(desc) ||
+           UsesOv088SimpleConstructor(desc);
 }
 
 /* Reproduce func_0203b554 after its common-base constructor has returned. */
@@ -376,6 +392,36 @@ static void InitializeTableRecordActor(TingleNativeActorImage *actor)
     actor->initialization_stages |= TINGLE_NATIVE_ACTOR_STAGE_KIND3_DERIVED;
 }
 
+/* Reproduce the host-independent overlay-75 subtype-20 constructor writes. */
+static void InitializeOv075VectorActor(TingleNativeActorImage *actor)
+{
+    u8 *bytes = actor->bytes;
+
+    WriteU32(bytes, 0x00, ACTOR_OV075_VECTOR_VTABLE_ADDRESS);
+    InitializeVector(bytes, 0x20C, 0, 0, 0);
+    WriteU32(bytes, 0x210, ReadU32(bytes, 0x1C));
+    WriteU32(bytes, 0x214, ReadU32(bytes, 0x20));
+    WriteU32(bytes, 0x218, ReadU32(bytes, 0x24));
+    WriteU32(bytes, 0x21C, ReadU32(actor->descriptor.raw, 0x34));
+    WriteU16(bytes, 0x220, 0);
+    WriteU16(bytes, 0x222, 0);
+    WriteU32(bytes, 0x224, 0);
+    WriteU16(bytes, 0x228, 0);
+    WriteU16(bytes, 0xD6, 0);
+    WriteU32(bytes, 0x10, ReadU32(bytes, 0x10) | 0x1F0000u);
+    if (ReadU32(actor->descriptor.raw, 0x2C) != 0)
+        actor->pending_external_state |=
+            TINGLE_NATIVE_ACTOR_PENDING_DESCRIPTOR_HOOK;
+    actor->initialization_stages |= TINGLE_NATIVE_ACTOR_STAGE_KIND3_DERIVED;
+}
+
+/* Reproduce overlay 88's subtype-22 constructor, which only replaces vtable. */
+static void InitializeOv088SimpleActor(TingleNativeActorImage *actor)
+{
+    WriteU32(actor->bytes, 0x00, ACTOR_OV088_SIMPLE_VTABLE_ADDRESS);
+    actor->initialization_stages |= TINGLE_NATIVE_ACTOR_STAGE_KIND3_DERIVED;
+}
+
 static s32 InitializeActor(TingleNativeActorImage *actor,
                            const TingleNativeActorDescriptor *descriptor,
                            u32 category, s32 synthetic)
@@ -438,6 +484,10 @@ static s32 InitializeActor(TingleNativeActorImage *actor,
     else if (actor->size >= 0x218 && UsesTableRecordConstructor(descriptor) &&
              descriptor->constructor_record_valid)
         InitializeTableRecordActor(actor);
+    else if (actor->size >= 0x22C && UsesOv075VectorConstructor(descriptor))
+        InitializeOv075VectorActor(actor);
+    else if (actor->size >= 0x208 && UsesOv088SimpleConstructor(descriptor))
+        InitializeOv088SimpleActor(actor);
     else if (!UsesSharedDerivedConstructor(descriptor) &&
              !UsesRuntimeVariantConstructor(descriptor))
         actor->pending_external_state |=

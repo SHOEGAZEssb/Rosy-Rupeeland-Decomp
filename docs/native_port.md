@@ -168,6 +168,9 @@ Kind-three motion-probe subtype 1, indexed-state subtype 5, and mode-nibble
 subtypes 12 through 16 and 19 also have complete constructor images. Subtype
 17 resolves its signed key through the recovered twelve-record ARM9 table and
 retains the selected retail record address in its completed actor image.
+Overlay-backed kind-three subtype 22 has its complete vtable-only extension;
+subtype 20 also has its complete vector/scalar extension unless descriptor word
+`0x2C` requests the still-pending virtual resource hook.
 The category-two singleton-tracker bootstrap has its complete constructor
 image. The category-one bootstrap includes its full type-one scalar/vector
 extension and the known header of its marker helper; resource lookup and host

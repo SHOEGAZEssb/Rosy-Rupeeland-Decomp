@@ -248,12 +248,14 @@ static int TestRuntimeVariantActor(void)
 
 static int TestKind3DerivedActors(void)
 {
-    TingleNativeActorDescriptor descriptors[4] = {{0}};
+    TingleNativeActorDescriptor descriptors[6] = {{0}};
     TingleNativeActorRuntime *runtime;
     const TingleNativeActorImage *mode_actor;
     const TingleNativeActorImage *probe_actor;
     const TingleNativeActorImage *indexed_actor;
     const TingleNativeActorImage *table_actor;
+    const TingleNativeActorImage *ov075_actor;
+    const TingleNativeActorImage *ov088_actor;
     u32 expected_stages = TINGLE_NATIVE_ACTOR_STAGE_GEOMETRY |
                           TINGLE_NATIVE_ACTOR_STAGE_COMMON_RUNTIME |
                           TINGLE_NATIVE_ACTOR_STAGE_SHARED_DERIVED |
@@ -277,12 +279,23 @@ static int TestKind3DerivedActors(void)
     descriptors[3].constructor_record_address = 0x020ED654;
     WriteU16(descriptors[3].constructor_record + 4, 7);
     descriptors[3].constructor_record[0x0D] = 1;
-    runtime = TingleNativeActorRuntime_Create(descriptors, 4, NULL, 0);
+    descriptors[4] = descriptors[0];
+    descriptors[4].subtype = 20;
+    descriptors[4].allocation_size = 0x22C;
+    descriptors[4].position_x = 12;
+    descriptors[4].position_y = -8;
+    WriteU32(descriptors[4].raw + 0x34, 0x12345678);
+    descriptors[5] = descriptors[0];
+    descriptors[5].subtype = 22;
+    descriptors[5].allocation_size = 0x208;
+    runtime = TingleNativeActorRuntime_Create(descriptors, 6, NULL, 0);
     mode_actor = TingleNativeActorRuntime_GetActor(runtime, 0);
     probe_actor = TingleNativeActorRuntime_GetActor(runtime, 1);
     indexed_actor = TingleNativeActorRuntime_GetActor(runtime, 2);
     table_actor = TingleNativeActorRuntime_GetActor(runtime, 3);
-    ok = runtime != NULL && runtime->actor_count == 4 &&
+    ov075_actor = TingleNativeActorRuntime_GetActor(runtime, 4);
+    ov088_actor = TingleNativeActorRuntime_GetActor(runtime, 5);
+    ok = runtime != NULL && runtime->actor_count == 6 &&
          mode_actor != NULL && mode_actor->initialization_stages == expected_stages &&
          mode_actor->pending_external_state == 0 &&
          ReadU32At(mode_actor->bytes, 0x00) == 0x020DF774 &&
@@ -306,7 +319,19 @@ static int TestKind3DerivedActors(void)
          ReadU32At(table_actor->bytes, 0x00) == 0x020DF910 &&
          ReadU16At(table_actor->bytes, 0x208) == 7 &&
          ReadU32At(table_actor->bytes, 0x20C) == 0x2007 &&
-         ReadU32At(table_actor->bytes, 0x214) == 0x020ED654;
+         ReadU32At(table_actor->bytes, 0x214) == 0x020ED654 &&
+         ov075_actor != NULL &&
+         ov075_actor->initialization_stages == expected_stages &&
+         ov075_actor->pending_external_state == 0 &&
+         ReadU32At(ov075_actor->bytes, 0x00) == 0x022171BC &&
+         ReadU32At(ov075_actor->bytes, 0x210) == 12 * 0x1000 &&
+         ReadU32At(ov075_actor->bytes, 0x214) == (u32)(-8 * 0x1000) &&
+         ReadU32At(ov075_actor->bytes, 0x21C) == 0x12345678 &&
+         (ReadU32At(ov075_actor->bytes, 0x10) & 0x1F0000) == 0x1F0000 &&
+         ov088_actor != NULL &&
+         ov088_actor->initialization_stages == expected_stages &&
+         ov088_actor->pending_external_state == 0 &&
+         ReadU32At(ov088_actor->bytes, 0x00) == 0x0221B780;
     TingleNativeActorRuntime_Destroy(runtime);
     return ok;
 }
