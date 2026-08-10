@@ -19,8 +19,8 @@
 .extern gGameWork
 .extern gHeapContext
 .extern gLupyContext
-.global func_0200c6d8
-func_0200c6d8:
+.global GamePhaseTransitionScene_Update
+GamePhaseTransitionScene_Update:
     stmdb sp!, {r4, lr}
     mov r4, r0
     ldr r1, [r4, #0x8]
@@ -156,5 +156,5 @@ L_0200c8ac: .word data_021052fc
 L_0200c8b0: .word data_020d53b0
 L_0200c8b4: .word gHeapContext
 L_0200c8b8: .word 0x386
-.size func_0200c6d8, . - func_0200c6d8
+.size GamePhaseTransitionScene_Update, . - GamePhaseTransitionScene_Update
 

@@ -7,7 +7,7 @@
     .extern GameWork_SetFlag
     .extern GamePhaseRuntime_StageAreaRequest
     .extern Heap_Alloc
-    .extern func_0200c680
+    .extern GamePhaseTransitionScene_Init
     .extern func_02092c8c
     .extern func_ov033_021fd598
     .extern Type7Actor_EnterFlag40000State
@@ -86,7 +86,7 @@ L_021fd7b0:
     bl Heap_Alloc
     cmp r0, #0x0
     beq L_021fd82c
-    bl func_0200c680
+    bl GamePhaseTransitionScene_Init
 L_021fd82c:
     ldr r0, [r4, #0xd0]
     add r0, r0, #0x1

@@ -11,10 +11,10 @@ typedef struct GamePhaseTransitionScene {
 extern "C" {
 #endif
 
-GamePhaseTransitionScene *func_0200c680(GamePhaseTransitionScene *self);
-GamePhaseTransitionScene *func_0200c6a8(GamePhaseTransitionScene *self);
-GamePhaseTransitionScene *func_0200c6bc(GamePhaseTransitionScene *self);
-s32 func_0200c6d8(GamePhaseTransitionScene *self);
+GamePhaseTransitionScene *GamePhaseTransitionScene_Init(GamePhaseTransitionScene *self);
+GamePhaseTransitionScene *GamePhaseTransitionScene_Destroy(GamePhaseTransitionScene *self);
+GamePhaseTransitionScene *GamePhaseTransitionScene_DestroyAndFree(GamePhaseTransitionScene *self);
+s32 GamePhaseTransitionScene_Update(GamePhaseTransitionScene *self);
 
 #ifdef __cplusplus
 }

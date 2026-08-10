@@ -16,7 +16,7 @@
 .extern func_0200866c
 .extern FrameCounter_Tick31
 .extern DebugPhaseSelector_Init
-.extern func_0200c680
+.extern GamePhaseTransitionScene_Init
 .extern func_0200c8bc
 .extern func_0200c9fc
 .extern func_0200ecf0
@@ -80,7 +80,7 @@ L_02007484:
     bl Heap_Alloc
     cmp r0, #0x0
     beq L_020074b4
-    bl func_0200c680
+    bl GamePhaseTransitionScene_Init
 L_020074b4:
     add r0, r4, #0x3000
     ldr r0, [r0, #0xe4]

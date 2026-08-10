@@ -35,7 +35,7 @@ typedef void (*GamePhaseTransitionMethod)(void *object, s32 value,
  * mode-1 object. State 3 destroys this scene, consumes flag 0x386 or starts
  * screen-1 fades, and returns 1. Other/incomplete states return 0.
  */
-s32 func_0200c6d8(GamePhaseTransitionScene *self)
+s32 GamePhaseTransitionScene_Update(GamePhaseTransitionScene *self)
 {
     if (self->base.value08 == 0) {
         if (GameWork_TestFlag(gGameWork, 0x3f8)) {
