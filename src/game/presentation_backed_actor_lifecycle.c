@@ -17,7 +17,7 @@ extern void Heap_Free(void *allocation);
 extern void *func_02030f98(void *actor);
 extern void func_0203130c(void *actor);
 extern void func_02031488(void *actor);
-extern void func_0204a4bc(void *actor);
+extern void Type7Actor_ClearGlobalRelationshipToActor(void *actor);
 #ifdef __cplusplus
 }
 #endif
@@ -59,7 +59,7 @@ void *func_0204d620(void *self)
 
 /*
  * Input is an actor. Restore data_020e238c, tear down owned state through
- * func_0204a4bc and vtable slot 0xBC, release inherited presentation state,
+ * Type7Actor_ClearGlobalRelationshipToActor and vtable slot 0xBC, release inherited presentation state,
  * decrement the type-10 count when applicable, then run final base teardown.
  * Return self; heap storage is retained and no hardware is touched directly.
  */
@@ -67,7 +67,7 @@ void *func_0204d678(void *self)
 {
     void (**vtable)(void *) = (void (**)(void *))data_020e238c;
     FIELD(const void *, self, 0x000) = data_020e238c;
-    func_0204a4bc(self);
+    Type7Actor_ClearGlobalRelationshipToActor(self);
     vtable[0xbc / sizeof(void *)](self);
     func_02031488(self);
     if (FIELD(u16, self, 0x04e) == 10) {

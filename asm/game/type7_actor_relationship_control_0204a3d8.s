@@ -7,9 +7,9 @@
 .extern data_021052fc
 .extern Type7Actor_SetCallbackPair
 .text
-    .global func_0204a3d8
-.type func_0204a3d8, @function
-func_0204a3d8: ; 0x0204a3d8
+    .global Type7Actor_TryAssignRelatedObject
+.type Type7Actor_TryAssignRelatedObject, @function
+Type7Actor_TryAssignRelatedObject: ; 0x0204a3d8
     stmdb sp!, {r4, lr}
     ldr r3, .L_0204a4a8
     mov r2, #0x1
@@ -71,11 +71,11 @@ func_0204a3d8: ; 0x0204a3d8
 .L_0204a4b0: .word data_020e1890
 .L_0204a4b4: .word data_020e1758
 .L_0204a4b8: .word data_020e1760
-.size func_0204a3d8, . - func_0204a3d8
+.size Type7Actor_TryAssignRelatedObject, . - Type7Actor_TryAssignRelatedObject
 
-    .global func_0204a4bc
-.type func_0204a4bc, @function
-func_0204a4bc: ; 0x0204a4bc
+    .global Type7Actor_ClearGlobalRelationshipToActor
+.type Type7Actor_ClearGlobalRelationshipToActor, @function
+Type7Actor_ClearGlobalRelationshipToActor: ; 0x0204a4bc
     ldr r1, .L_0204a4ec
     ldr r1, [r1, #0x0]
     add r1, r1, #0x2000
@@ -89,5 +89,5 @@ func_0204a4bc: ; 0x0204a4bc
     streq r0, [r2, #0x210]
     bx lr
 .L_0204a4ec: .word data_021052fc
-.size func_0204a4bc, . - func_0204a4bc
+.size Type7Actor_ClearGlobalRelationshipToActor, . - Type7Actor_ClearGlobalRelationshipToActor
 

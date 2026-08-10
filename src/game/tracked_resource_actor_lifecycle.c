@@ -15,7 +15,7 @@ extern void Heap_Free(void *allocation);
 extern void *func_02030f98(void *actor);
 extern void func_0203130c(void *actor);
 extern void func_02031488(void *actor);
-extern void func_0204a4bc(void *actor);
+extern void Type7Actor_ClearGlobalRelationshipToActor(void *actor);
 #ifdef __cplusplus
 }
 #endif
@@ -49,7 +49,7 @@ void *func_0204fcb8(void *self)
 void *func_0204fd08(void *self)
 {
     FIELD(const void *, self, 0) = data_020e2e9c;
-    func_0204a4bc(self);
+    Type7Actor_ClearGlobalRelationshipToActor(self);
     void (**vtable)(void *) = (void (**)(void *))data_020e2e9c;
     vtable[0xbc / sizeof(void *)](self);
     func_02031488(self);

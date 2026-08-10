@@ -18544,7 +18544,7 @@ build build/reports/type7_actor_relationship_control_0204a3d8.json: objdiff buil
   base_object = build/decomp/asm/game/type7_actor_relationship_control_0204a3d8.o
 build build/reports/type7_actor_relationship_control_0204a3d8.txt: match_report build/reports/type7_actor_relationship_control_0204a3d8.json | tools/report_objdiff.py
   report_json = build/reports/type7_actor_relationship_control_0204a3d8.json
-  report_args = --section .text --function func_0204a3d8 --function func_0204a4bc --require-exact
+  report_args = --section .text --function Type7Actor_TryAssignRelatedObject --function Type7Actor_ClearGlobalRelationshipToActor --require-exact
 build type7_actor_relationship_control: phony build/decomp/src/game/type7_actor_relationship_control.o build/decomp/asm/game/type7_actor_relationship_control_0204a3d8.o build/reports/type7_actor_relationship_control_0204a3d8.txt
 
 type7_actor_global_interaction_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++

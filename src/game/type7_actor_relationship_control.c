@@ -38,7 +38,7 @@ static s32 callback_pair_matches(const u8 *actor, const void *first,
  * Actor relationship and callback state may change; there is no return value
  * and no SDK or hardware effect.
  */
-void func_0204a3d8(void *self, void *candidate)
+void Type7Actor_TryAssignRelatedObject(void *self, void *candidate)
 {
     u8 *actor = (u8 *)self;
     s32 allowed = callback_pair_matches(
@@ -65,7 +65,7 @@ void func_0204a3d8(void *self, void *candidate)
  * Global relationship state may change; there is no return value or direct
  * SDK/hardware effect.
  */
-void func_0204a4bc(void *actor)
+void Type7Actor_ClearGlobalRelationshipToActor(void *actor)
 {
     u8 *globalActor = *(u8 **)(data_021052fc + 0x2ea8);
     if (globalActor != 0 && *(void **)(globalActor + 0x210) != 0

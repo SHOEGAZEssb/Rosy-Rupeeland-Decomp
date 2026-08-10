@@ -16,7 +16,7 @@ extern void func_02022fbc(void *subobject);
 extern void *func_02030f98(void *actor);
 extern void func_0203130c(void *actor);
 extern void func_02031488(void *actor);
-extern void func_0204a4bc(void *actor);
+extern void Type7Actor_ClearGlobalRelationshipToActor(void *actor);
 extern void func_0204fa48(void *actor);
 #ifdef __cplusplus
 }
@@ -54,7 +54,7 @@ void *func_0204ec0c(void *self)
 void *func_0204ec74(void *self)
 {
     FIELD(const void *, self, 0) = data_020e2664;
-    func_0204a4bc(self);
+    Type7Actor_ClearGlobalRelationshipToActor(self);
     void (**vtable)(void *) = (void (**)(void *))data_020e2664;
     vtable[0xbc / sizeof(void *)](self);
     func_02031488(self);

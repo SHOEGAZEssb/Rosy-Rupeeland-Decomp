@@ -6,7 +6,7 @@
 .extern func_020050f0
 .extern func_02009d78
 .extern ActorDerivedType1_TrySetStateVector
-.extern func_0204a4bc
+.extern Type7Actor_ClearGlobalRelationshipToActor
 .extern func_0204faac
 .extern func_02064a18
 .text
@@ -40,7 +40,7 @@ func_0204f4d4: ; 0x0204f4d4
     bl ActorDerivedType1_TrySetStateVector
 .L_0204f538:
     mov r0, r4
-    bl func_0204a4bc
+    bl Type7Actor_ClearGlobalRelationshipToActor
     add r0, r4, #0x100
     ldrh r3, [r0, #0xf0]
     mov r1, #0x0

@@ -5,7 +5,7 @@
 .extern func_02030f98
 .extern func_0203130c
 .extern func_02031488
-.extern func_0204a4bc
+.extern Type7Actor_ClearGlobalRelationshipToActor
 .extern func_0204fa48
 .text
 
@@ -46,7 +46,7 @@ func_0204ec74: ; 0x0204ec74
     ldr r1, .L_0204ecd0
     mov r4, r0
     str r1, [r4, #0x0]
-    bl func_0204a4bc
+    bl Type7Actor_ClearGlobalRelationshipToActor
     mov r0, r4
     ldr r1, [r0, #0x0]
     ldr r1, [r1, #0xbc]
@@ -76,7 +76,7 @@ func_0204ecd4: ; 0x0204ecd4
     ldr r1, .L_0204ed38
     mov r4, r0
     str r1, [r4, #0x0]
-    bl func_0204a4bc
+    bl Type7Actor_ClearGlobalRelationshipToActor
     mov r0, r4
     ldr r1, [r0, #0x0]
     ldr r1, [r1, #0xbc]

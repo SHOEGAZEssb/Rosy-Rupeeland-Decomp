@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/presentation_backed_actor_lifecycle.c.
 .extern func_02030f98
-.extern func_0204a4bc
+.extern Type7Actor_ClearGlobalRelationshipToActor
 .extern func_02031488
 .extern func_0203130c
 .extern Heap_Free
@@ -65,7 +65,7 @@ func_0204d678:
     ldr r1, .L_0204d6cc
     mov r4, r0
     str r1, [r4, #0x0]
-    bl func_0204a4bc
+    bl Type7Actor_ClearGlobalRelationshipToActor
     mov r0, r4
     ldr r1, [r0, #0x0]
     ldr r1, [r1, #0xbc]
@@ -92,7 +92,7 @@ func_0204d6d4:
     ldr r1, .L_0204d730
     mov r4, r0
     str r1, [r4, #0x0]
-    bl func_0204a4bc
+    bl Type7Actor_ClearGlobalRelationshipToActor
     mov r0, r4
     ldr r1, [r0, #0x0]
     ldr r1, [r1, #0xbc]
@@ -121,7 +121,7 @@ func_0204d738:
     ldr r1, .L_0204d78c
     mov r4, r0
     str r1, [r4, #0x0]
-    bl func_0204a4bc
+    bl Type7Actor_ClearGlobalRelationshipToActor
     mov r0, r4
     ldr r1, [r0, #0x0]
     ldr r1, [r1, #0xbc]

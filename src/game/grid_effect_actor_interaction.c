@@ -18,7 +18,7 @@ extern void *func_02009d78(void *object);
 extern void func_020050f0(void *destination, const void *source);
 extern void ActorDerivedType1_TrySetStateVector(void *actor, const void *position, s32 value,
                           s32 mode);
-extern void func_0204a4bc(void *actor);
+extern void Type7Actor_ClearGlobalRelationshipToActor(void *actor);
 extern s32 func_0204faac(void);
 extern void func_02064a18(void *context, void *subobject);
 #ifdef __cplusplus
@@ -51,7 +51,7 @@ void func_0204f4d4(void *actor, const void *trigger)
             ActorDerivedType1_TrySetStateVector(primary, (u8 *)actor + 0x18, 15, 2);
     }
 
-    func_0204a4bc(actor);
+    Type7Actor_ClearGlobalRelationshipToActor(actor);
     FIELD(u16, actor, 0x1f0) =
         (FIELD(u16, actor, 0x1f0) & (u16)~3) | 2;
     FIELD(u16, actor, 0x1f2) = 0;
