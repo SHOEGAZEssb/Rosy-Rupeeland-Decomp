@@ -4,8 +4,8 @@
 .extern GamePhaseScriptVm_SetResult
 .extern Actor_QueryTerrainHeight
 
-    .global func_02013e64
-func_02013e64: ; 0x02013e64
+    .global GamePhaseActorScriptVm_QueryTerrainHeight
+GamePhaseActorScriptVm_QueryTerrainHeight: ; 0x02013e64
     stmdb sp!, {r3, r4, r5, lr}
     mov r5, r0
     bl GamePhaseScriptVm_Pop
@@ -21,4 +21,4 @@ func_02013e64: ; 0x02013e64
     bl GamePhaseScriptVm_SetResult
     mov r0, #0x0
     ldmia sp!, {r3, r4, r5, pc}
-    .size func_02013e64, . - func_02013e64
+    .size GamePhaseActorScriptVm_QueryTerrainHeight, . - GamePhaseActorScriptVm_QueryTerrainHeight

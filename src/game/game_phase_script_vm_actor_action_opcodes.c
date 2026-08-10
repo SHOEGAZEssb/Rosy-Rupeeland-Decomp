@@ -29,7 +29,7 @@ s32 func_02013e14(GamePhaseActorScriptVm *self)
 }
 
 /* Pop X/Y, push Actor_QueryTerrainHeight for the bound actor, and return zero. */
-s32 func_02013e64(GamePhaseActorScriptVm *self)
+s32 GamePhaseActorScriptVm_QueryTerrainHeight(GamePhaseActorScriptVm *self)
 {
     u32 second = GamePhaseScriptVm_Pop(&self->base);
     u32 first = GamePhaseScriptVm_Pop(&self->base);
@@ -38,21 +38,21 @@ s32 func_02013e64(GamePhaseActorScriptVm *self)
 }
 
 /* Pop and discard one script operand, then return zero. */
-s32 func_02013ea0(GamePhaseActorScriptVm *self)
+s32 GamePhaseActorScriptVm_DiscardValue(GamePhaseActorScriptVm *self)
 {
     (void)GamePhaseScriptVm_Pop(&self->base);
     return 0;
 }
 
 /* Save the bound actor's primary attachment state and return zero. */
-s32 func_02013eb0(GamePhaseActorScriptVm *self)
+s32 GamePhaseActorScriptVm_SavePrimaryAttachmentState(GamePhaseActorScriptVm *self)
 {
     Actor_SavePrimaryAttachmentState(self->actor);
     return 0;
 }
 
 /* Restore the bound actor's primary attachment state and return zero. */
-s32 func_02013ec4(GamePhaseActorScriptVm *self)
+s32 GamePhaseActorScriptVm_RestorePrimaryAttachmentState(GamePhaseActorScriptVm *self)
 {
     Actor_RestorePrimaryAttachmentState(self->actor);
     return 0;
