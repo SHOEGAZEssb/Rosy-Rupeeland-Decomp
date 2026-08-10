@@ -21,7 +21,7 @@ extern void AttachmentController_SetEnabled(void *state, s32 enabled);
  * scene ID 1 or 0x16, otherwise zero. Scene-manager state is read through its
  * SDK-facing helper; no state or hardware is changed directly.
  */
-s32 func_0204c74c(void)
+s32 Type7Actor_IsInteractionSceneActive(void)
 {
     u8 *scene = (u8 *)SceneManager_GetCurrent(gSceneManager);
     s32 sceneId = *(s32 *)(scene + 4);
@@ -32,7 +32,7 @@ s32 func_0204c74c(void)
  * Recovered constant virtual callback. Any register arguments are ignored;
  * return zero without changing state or invoking SDK/hardware operations.
  */
-s32 func_0204c778(void)
+s32 Type7Actor_ReturnZero(void)
 {
     return 0;
 }
@@ -42,7 +42,7 @@ s32 func_0204c778(void)
  * AttachmentController_SetEnabled for embedded controller +0x2a8. The controller may change;
  * no value is returned and there are no direct hardware effects.
  */
-void func_0204c780(void *self, s32 enabled)
+void Type7Actor_SetAttachmentControllerEnabled(void *self, s32 enabled)
 {
     AttachmentController_SetEnabled((u8 *)self + 0x2a8, enabled);
 }
@@ -51,7 +51,7 @@ void func_0204c780(void *self, s32 enabled)
  * Recovered constant virtual callback. Any register arguments are ignored;
  * return mask 0x80000 without changing state or touching SDK/hardware state.
  */
-u32 func_0204c790(void)
+u32 Type7Actor_ReturnFlag80000(void)
 {
     return 0x80000;
 }

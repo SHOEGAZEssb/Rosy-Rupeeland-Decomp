@@ -18,7 +18,7 @@
 .extern Type7Actor_SetCallbackPair
 .extern Type7Actor_CheckRandomInteractionAcceptance
 .extern Type7Actor_PlayStateSound
-.extern func_0204c74c
+.extern Type7Actor_IsInteractionSceneActive
 .extern func_020ada8c
 .extern genrand_int32
 .global Type7Actor_HandleTouchInteraction
@@ -41,7 +41,7 @@ Type7Actor_HandleTouchInteraction: ; 0x02047248
     movne r0, #0x1
     bne .L_0204765c
     bl Actor_SetInteractionFlag2000
-    bl func_0204c74c
+    bl Type7Actor_IsInteractionSceneActive
     cmp r0, #0x0
     moveq r0, #0x1
     beq .L_0204765c

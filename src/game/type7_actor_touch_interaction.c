@@ -17,7 +17,7 @@ extern "C" {
 #endif
 extern void ActorDerivedRuntime_AcceptInteractionQuery(void *actor, const void *input);
 extern void Actor_SetInteractionFlag2000(void *actor, const void *input);
-extern s32 func_0204c74c(void *actor, const void *input);
+extern s32 Type7Actor_IsInteractionSceneActive(void *actor, const void *input);
 extern s32 Type7Actor_HasSpecialCallbackPair(const void *actor);
 extern void Type7Actor_PlayStateSound(void *actor, s32 mode);
 extern void Type7Actor_SetCallbackPair(void *actor, u32 first, u32 second, s32 duration);
@@ -60,7 +60,7 @@ static void initialize_relative_touch(u32 point[3], const u8 *actor,
  * contract. A +0x01000000 actor is delegated immediately to
  * ActorDerivedRuntime_AcceptInteractionQuery.
  * Otherwise require the recovered readiness bits, timers, target pointer, and
- * func_0204c74c gate. Set actor flag 0x100 once those preliminary gates pass.
+ * Type7Actor_IsInteractionSceneActive gate. Set actor flag 0x100 once those preliminary gates pass.
  * Three callback-pair representations are exclusion states; their symbol
  * offsets are retained because their semantic identities are not confirmed.
  *
@@ -96,7 +96,7 @@ s32 Type7Actor_HandleTouchInteraction(void *self, const void *inputRecord)
     if (*(u16 *)(actor + 0x2a6) != 0)
         return 1;
     Actor_SetInteractionFlag2000(actor, input);
-    if (func_0204c74c(actor, input) == 0)
+    if (Type7Actor_IsInteractionSceneActive(actor, input) == 0)
         return 1;
 
     target = *(u8 **)(actor + 0x280);

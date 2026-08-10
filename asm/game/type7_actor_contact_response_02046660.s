@@ -22,7 +22,7 @@
 .extern Type7Actor_SetMotionTargetWithTimer
 .extern Type7Actor_SetCallbackPair
 .extern Type7Actor_PlayStateSound
-.extern func_0204c74c
+.extern Type7Actor_IsInteractionSceneActive
 .extern func_0204cfa4
 .extern func_020593dc
 .extern func_0206c68c
@@ -43,7 +43,7 @@ Type7Actor_HandleContact: ; 0x02046660
     mov r6, r0
     mov r5, r1
     mov r4, r2
-    bl func_0204c74c
+    bl Type7Actor_IsInteractionSceneActive
     cmp r0, #0x0
     beq .L_02046d48
     ldr r0, .L_02046d60

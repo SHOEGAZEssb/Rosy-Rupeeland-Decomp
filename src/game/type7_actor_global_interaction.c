@@ -14,13 +14,13 @@ extern void ActorDerivedType1_TrySetStateVector(void *globalObject, const void *
                           s32 distance, s32 mode);
 extern void Type7Actor_HandleObjectInteraction(void *actor, void *trigger);
 extern s32 Type7Actor_GetStateCode(void *actor);
-extern s32 func_0204c74c(void);
+extern s32 Type7Actor_IsInteractionSceneActive(void);
 #ifdef __cplusplus
 }
 #endif
 
 /*
- * Input is an interaction trigger. Return immediately unless func_0204c74c
+ * Input is an interaction trigger. Return immediately unless Type7Actor_IsInteractionSceneActive
  * permits processing and the global actor at data_021052fc+0x2ea8 exists.
  * Update the global object at +0x2ea4 from that actor's transform +0x18 with
  * recovered distance 20 and mode zero. Continue only when descriptor +0x29c
@@ -34,7 +34,7 @@ void Type7Actor_ProcessGlobalInteractionTrigger(void *trigger)
     u8 *state;
     u8 *actor;
 
-    if (func_0204c74c() == 0)
+    if (Type7Actor_IsInteractionSceneActive() == 0)
         return;
     state = data_021052fc;
     actor = *(u8 **)(state + 0x2ea8);

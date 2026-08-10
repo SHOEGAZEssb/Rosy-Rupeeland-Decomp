@@ -3,8 +3,8 @@
 .extern gSceneManager
 .extern AttachmentController_SetEnabled
 .text
-    .global func_0204c74c
-func_0204c74c: ; 0x0204c74c
+    .global Type7Actor_IsInteractionSceneActive
+Type7Actor_IsInteractionSceneActive: ; 0x0204c74c
     stmdb sp!, {r3, lr}
     ldr r0, .L_0204c774
     ldr r0, [r0, #0x0]
@@ -16,25 +16,25 @@ func_0204c74c: ; 0x0204c74c
     movne r0, #0x0
     ldmia sp!, {r3, pc}
 .L_0204c774: .word gSceneManager
-.size func_0204c74c, . - func_0204c74c
+.size Type7Actor_IsInteractionSceneActive, . - Type7Actor_IsInteractionSceneActive
 
-    .global func_0204c778
-func_0204c778: ; 0x0204c778
+    .global Type7Actor_ReturnZero
+Type7Actor_ReturnZero: ; 0x0204c778
     mov r0, #0x0
     bx lr
-.size func_0204c778, . - func_0204c778
+.size Type7Actor_ReturnZero, . - Type7Actor_ReturnZero
 
-    .global func_0204c780
-func_0204c780: ; 0x0204c780
+    .global Type7Actor_SetAttachmentControllerEnabled
+Type7Actor_SetAttachmentControllerEnabled: ; 0x0204c780
     ldr ip, .L_0204c78c
     add r0, r0, #0x2a8
     bx ip
 .L_0204c78c: .word AttachmentController_SetEnabled
-.size func_0204c780, . - func_0204c780
+.size Type7Actor_SetAttachmentControllerEnabled, . - Type7Actor_SetAttachmentControllerEnabled
 
-    .global func_0204c790
-func_0204c790: ; 0x0204c790
+    .global Type7Actor_ReturnFlag80000
+Type7Actor_ReturnFlag80000: ; 0x0204c790
     mov r0, #0x80000
     bx lr
-.size func_0204c790, . - func_0204c790
+.size Type7Actor_ReturnFlag80000, . - Type7Actor_ReturnFlag80000
 

@@ -11,7 +11,7 @@
 .extern ActorDerivedRuntime_TestInteractionQuery
 .extern Type7Actor_HasSpecialCallbackPair
 .extern Type7Actor_SetMotionTarget
-.extern func_0204c74c
+.extern Type7Actor_IsInteractionSceneActive
 .global Type7Actor_HandleDragStart
 .type Type7Actor_HandleDragStart, @function
 Type7Actor_HandleDragStart: ; 0x0204767c
@@ -25,7 +25,7 @@ Type7Actor_HandleDragStart: ; 0x0204767c
     bl ActorDerivedRuntime_TestInteractionQuery
     b .L_0204789c
 .L_020476a0:
-    bl func_0204c74c
+    bl Type7Actor_IsInteractionSceneActive
     cmp r0, #0x0
     beq .L_0204789c
     add r0, r5, #0x200

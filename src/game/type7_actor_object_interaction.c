@@ -18,7 +18,7 @@ extern u32 data_020e1750[];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern s32 func_0204c74c(void *actor, const void *other);
+extern s32 Type7Actor_IsInteractionSceneActive(void *actor, const void *other);
 extern s32 Type7Actor_CheckRandomInteractionAcceptance(void *actor);
 extern s32 Type7Actor_HasSpecialCallbackPair(const void *actor);
 extern void Type7Actor_SetCallbackPair(void *actor, u32 first, u32 second, s32 duration);
@@ -39,7 +39,7 @@ static s32 callback_pair_matches(const u8 *actor, void *first, void *second)
 
 /*
  * Inputs are a type-seven actor and another actor-like object. Require the
- * func_0204c74c gate, clear +0x2a6, a non-null +0x280 target, actor flag
+ * Type7Actor_IsInteractionSceneActive gate, clear +0x2a6, a non-null +0x280 target, actor flag
  * 0x8000, timer +0x246 at most zero, neither excluded callback pair
  * data_020e16b0+0x268/data_020e1918 nor +0xf8/data_020e17a8, and acceptance by
  * Type7Actor_CheckRandomInteractionAcceptance. Clear counters +0x2a0/+0x266 before dispatching on the other
@@ -67,7 +67,7 @@ void Type7Actor_HandleObjectInteraction(void *self, void *otherObject)
     u8 *other = (u8 *)otherObject;
     u8 *record;
 
-    if (func_0204c74c(actor, other) == 0 || *(u16 *)(actor + 0x2a6) != 0
+    if (Type7Actor_IsInteractionSceneActive(actor, other) == 0 || *(u16 *)(actor + 0x2a6) != 0
         || *(void **)(actor + 0x280) == 0
         || (*(u32 *)(actor + 0x268) & 0x8000) == 0
         || *(s16 *)(actor + 0x246) > 0)

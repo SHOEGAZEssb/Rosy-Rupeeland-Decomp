@@ -12,7 +12,7 @@ extern u8 data_020e17c8[];
 extern "C" {
 #endif
 extern void ActorDerivedRuntime_TestInteractionQuery(void *actor, const void *input);
-extern s32 func_0204c74c(void *actor, const void *input);
+extern s32 Type7Actor_IsInteractionSceneActive(void *actor, const void *input);
 extern void Actor_TestQueryPointAndClearFlag2000(void *actor, const void *input);
 extern s32 Type7Actor_HasSpecialCallbackPair(const void *actor);
 extern void TouchPoint_Init(void *point, s32 x, s32 y);
@@ -68,7 +68,7 @@ void Type7Actor_HandleDragStart(void *self, const void *inputRecord)
         ActorDerivedRuntime_TestInteractionQuery(actor, input);
         return;
     }
-    if (func_0204c74c(actor, input) == 0 || *(u16 *)(actor + 0x2a6) != 0)
+    if (Type7Actor_IsInteractionSceneActive(actor, input) == 0 || *(u16 *)(actor + 0x2a6) != 0)
         return;
     Actor_TestQueryPointAndClearFlag2000(actor, input);
     record = *(u8 **)(actor + 0x29c);

@@ -15,7 +15,7 @@
 .extern Type7Actor_SetCallbackPair
 .extern Type7Actor_CheckRandomInteractionAcceptance
 .extern Type7Actor_PlayStateSound
-.extern func_0204c74c
+.extern Type7Actor_IsInteractionSceneActive
 .extern gHeapContext
 .global Type7Actor_HandleObjectInteraction
 .type Type7Actor_HandleObjectInteraction, @function
@@ -25,7 +25,7 @@ Type7Actor_HandleObjectInteraction: ; 0x02048378
     sub sp, sp, #0x18
     mov r5, r0
     mov r4, r1
-    bl func_0204c74c
+    bl Type7Actor_IsInteractionSceneActive
     cmp r0, #0x0
     beq .L_02048678
     add r0, r5, #0x200

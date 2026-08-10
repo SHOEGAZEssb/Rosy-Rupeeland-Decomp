@@ -3,14 +3,14 @@
 .extern ActorDerivedType1_TrySetStateVector
 .extern Type7Actor_HandleObjectInteraction
 .extern Type7Actor_GetStateCode
-.extern func_0204c74c
+.extern Type7Actor_IsInteractionSceneActive
 .text
     .global Type7Actor_ProcessGlobalInteractionTrigger
 .type Type7Actor_ProcessGlobalInteractionTrigger, @function
 Type7Actor_ProcessGlobalInteractionTrigger: ; 0x0204a4f0
     stmdb sp!, {r3, r4, r5, lr}
     mov r4, r0
-    bl func_0204c74c
+    bl Type7Actor_IsInteractionSceneActive
     cmp r0, #0x0
     ldrne r0, .L_0204a560
     ldrne r0, [r0, #0x0]

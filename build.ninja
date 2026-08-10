@@ -18740,7 +18740,7 @@ build build/reports/type7_actor_virtual_helpers_0204c74c.json: objdiff build/dec
   base_object = build/decomp/asm/game/type7_actor_virtual_helpers_0204c74c.o
 build build/reports/type7_actor_virtual_helpers_0204c74c.txt: match_report build/reports/type7_actor_virtual_helpers_0204c74c.json | tools/report_objdiff.py
   report_json = build/reports/type7_actor_virtual_helpers_0204c74c.json
-  report_args = --section .text --function func_0204c74c --function func_0204c778 --function func_0204c780 --function func_0204c790 --require-exact
+  report_args = --section .text --function Type7Actor_IsInteractionSceneActive --function Type7Actor_ReturnZero --function Type7Actor_SetAttachmentControllerEnabled --function Type7Actor_ReturnFlag80000 --require-exact
 build type7_actor_virtual_helpers: phony build/decomp/src/game/type7_actor_virtual_helpers.o build/decomp/asm/game/type7_actor_virtual_helpers_0204c74c.o build/reports/type7_actor_virtual_helpers_0204c74c.txt
 
 type7_auxiliary_presentation_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
