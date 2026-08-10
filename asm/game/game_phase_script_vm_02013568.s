@@ -2,8 +2,8 @@
 .text
 .extern GamePhaseScriptVm_Pop
 
-    .global func_02013568
-func_02013568: ; 0x02013568
+    .global GamePhaseActorScriptVm_SetField3c
+GamePhaseActorScriptVm_SetField3c: ; 0x02013568
     stmdb sp!, {r4, lr}
     mov r4, r0
     bl GamePhaseScriptVm_Pop
@@ -11,5 +11,5 @@ func_02013568: ; 0x02013568
     str r0, [r1, #0x3c]
     mov r0, #0x0
     ldmia sp!, {r4, pc}
-    .size func_02013568, . - func_02013568
+    .size GamePhaseActorScriptVm_SetField3c, . - GamePhaseActorScriptVm_SetField3c
 

@@ -2,8 +2,8 @@
 .text
 .extern GamePhaseScriptVm_Pop
 
-    .global func_020134d0
-func_020134d0: ; 0x020134d0
+    .global GamePhaseActorScriptVm_SetField5cLowHalfword
+GamePhaseActorScriptVm_SetField5cLowHalfword: ; 0x020134d0
     stmdb sp!, {r4, lr}
     mov r4, r0
     bl GamePhaseScriptVm_Pop
@@ -19,5 +19,5 @@ func_020134d0: ; 0x020134d0
     str r0, [r3, #0x5c]
     mov r0, #0x0
     ldmia sp!, {r4, pc}
-    .size func_020134d0, . - func_020134d0
+    .size GamePhaseActorScriptVm_SetField5cLowHalfword, . - GamePhaseActorScriptVm_SetField5cLowHalfword
 

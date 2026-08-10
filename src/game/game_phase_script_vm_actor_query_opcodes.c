@@ -16,7 +16,7 @@ extern s32 func_020ae024(fx32 first, fx32 second);
 #endif
 
 /* Pop a value into the low halfword of actor offset 0x5c, preserving its high half. */
-s32 func_020134d0(GamePhaseActorScriptVm *self)
+s32 GamePhaseActorScriptVm_SetField5cLowHalfword(GamePhaseActorScriptVm *self)
 {
     s16 value = (s16)GamePhaseScriptVm_Pop(&self->base);
     u32 *field = (u32 *)((u8 *)self->actor + 0x5c);
@@ -39,14 +39,14 @@ s32 func_0201350c(GamePhaseActorScriptVm *self)
 }
 
 /* Pop a word into actor offset 0x3c and return zero. */
-s32 func_02013568(GamePhaseActorScriptVm *self)
+s32 GamePhaseActorScriptVm_SetField3c(GamePhaseActorScriptVm *self)
 {
     *(u32 *)((u8 *)self->actor + 0x3c) = GamePhaseScriptVm_Pop(&self->base);
     return 0;
 }
 
 /* Pop a word into actor offset 0x40 and return zero. */
-s32 func_02013584(GamePhaseActorScriptVm *self)
+s32 GamePhaseActorScriptVm_SetField40(GamePhaseActorScriptVm *self)
 {
     *(u32 *)((u8 *)self->actor + 0x40) = GamePhaseScriptVm_Pop(&self->base);
     return 0;
@@ -58,7 +58,7 @@ s32 func_02013584(GamePhaseActorScriptVm *self)
  * index the signed-byte direction table at data_020d5af8, push it, and return
  * zero. The table's semantic labels remain unconfirmed.
  */
-s32 func_020135a0(GamePhaseActorScriptVm *self)
+s32 GamePhaseActorScriptVm_LookupDirectionTowardCoordinates(GamePhaseActorScriptVm *self)
 {
     s32 targetY = (s32)GamePhaseScriptVm_Pop(&self->base);
     s32 targetX = (s32)GamePhaseScriptVm_Pop(&self->base);
@@ -70,7 +70,7 @@ s32 func_020135a0(GamePhaseActorScriptVm *self)
 }
 
 /* Resolve runtime collection 1's actor at offset 0x2e7c and push integer x. */
-s32 func_020135f4(GamePhaseActorScriptVm *self)
+s32 GamePhaseActorScriptVm_GetCollection1ActorVectorX(GamePhaseActorScriptVm *self)
 {
     u8 *collection = (u8 *)GamePhaseRuntime_GetActorCollection(data_021052fc, 1);
     VecFx32Object value;
@@ -82,7 +82,7 @@ s32 func_020135f4(GamePhaseActorScriptVm *self)
 }
 
 /* Resolve runtime collection 1's actor at offset 0x2e7c and push integer y. */
-s32 func_0201364c(GamePhaseActorScriptVm *self)
+s32 GamePhaseActorScriptVm_GetCollection1ActorVectorY(GamePhaseActorScriptVm *self)
 {
     u8 *collection = (u8 *)GamePhaseRuntime_GetActorCollection(data_021052fc, 1);
     VecFx32Object value;
@@ -94,7 +94,7 @@ s32 func_0201364c(GamePhaseActorScriptVm *self)
 }
 
 /* Resolve runtime collection 1's actor at offset 0x2e7c and push integer z. */
-s32 func_020136a4(GamePhaseActorScriptVm *self)
+s32 GamePhaseActorScriptVm_GetCollection1ActorVectorZ(GamePhaseActorScriptVm *self)
 {
     u8 *collection = (u8 *)GamePhaseRuntime_GetActorCollection(data_021052fc, 1);
     VecFx32Object value;

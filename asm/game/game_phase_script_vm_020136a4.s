@@ -6,8 +6,8 @@
 .extern GamePhaseRuntime_GetActorCollection
 .extern GamePhaseScriptVm_SetResult
 
-    .global func_020136a4
-func_020136a4: ; 0x020136a4
+    .global GamePhaseActorScriptVm_GetCollection1ActorVectorZ
+GamePhaseActorScriptVm_GetCollection1ActorVectorZ: ; 0x020136a4
     stmdb sp!, {r4, lr}
     sub sp, sp, #0x10
     ldr r1, L_020136f8
@@ -30,5 +30,5 @@ func_020136a4: ; 0x020136a4
     add sp, sp, #0x10
     ldmia sp!, {r4, pc}
 L_020136f8: .word data_021052fc
-    .size func_020136a4, . - func_020136a4
+    .size GamePhaseActorScriptVm_GetCollection1ActorVectorZ, . - GamePhaseActorScriptVm_GetCollection1ActorVectorZ
 

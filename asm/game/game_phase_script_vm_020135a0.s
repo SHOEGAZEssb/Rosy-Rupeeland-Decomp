@@ -5,8 +5,8 @@
 .extern GamePhaseScriptVm_SetResult
 .extern func_020ae024
 
-    .global func_020135a0
-func_020135a0: ; 0x020135a0
+    .global GamePhaseActorScriptVm_LookupDirectionTowardCoordinates
+GamePhaseActorScriptVm_LookupDirectionTowardCoordinates: ; 0x020135a0
     stmdb sp!, {r3, r4, r5, lr}
     mov r4, r0
     bl GamePhaseScriptVm_Pop
@@ -28,5 +28,5 @@ func_020135a0: ; 0x020135a0
     mov r0, #0x0
     ldmia sp!, {r3, r4, r5, pc}
 L_020135f0: .word data_020d5af8
-    .size func_020135a0, . - func_020135a0
+    .size GamePhaseActorScriptVm_LookupDirectionTowardCoordinates, . - GamePhaseActorScriptVm_LookupDirectionTowardCoordinates
 
