@@ -3,7 +3,7 @@
 .extern func_0201b23c
 .extern func_0201273c
 .extern func_0200b058
-.extern func_02033810
+.extern Actor_GetCollectionBySlot
 .extern func_020337d4
 .extern func_0202eba4
 .extern func_0200af04
@@ -40,7 +40,7 @@ func_0204d308: ; 0x0204d308
     beq .L_0204d390
     mov r0, r4
     mov r1, #0x1
-    bl func_02033810
+    bl Actor_GetCollectionBySlot
     mov r5, r0
     mov r0, r4
     bl func_020337d4
@@ -69,4 +69,3 @@ func_0204d308: ; 0x0204d308
     ldmia sp!, {r3, r4, r5, pc}
 .L_0204d3d4: .word data_02105310
 .size func_0204d308, . - func_0204d308
-

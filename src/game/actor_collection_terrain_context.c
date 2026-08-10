@@ -31,7 +31,7 @@ void *func_020337d4(void *self)
  * unused by the retail forwarding stub; the second is passed to the global
  * manager lookup. Returns that lookup result with no direct state changes.
  */
-void *func_02033810(void *unused, u32 slot)
+void *Actor_GetCollectionBySlot(void *unused, u32 slot)
 {
     (void)unused;
     return func_02007f0c(data_021052fc, slot);

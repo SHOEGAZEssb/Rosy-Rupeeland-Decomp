@@ -15,7 +15,7 @@
 .extern func_0201e250
 .extern func_02030acc
 .extern func_020337d4
-.extern func_02033810
+.extern Actor_GetCollectionBySlot
 .extern func_02071ea4
 .extern func_02071ee0
 .extern func_02072b68
@@ -86,7 +86,7 @@ func_02024b04: ; 0x02024b04
 .L_02024be8:
     mov r0, r5
     mov r1, #0x2
-    bl func_02033810
+    bl Actor_GetCollectionBySlot
     bl func_02030acc
     str r0, [r6, #0x4c]
     add r1, r6, #0x3c

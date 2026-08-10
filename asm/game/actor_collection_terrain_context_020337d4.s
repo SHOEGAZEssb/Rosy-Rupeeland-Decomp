@@ -24,5 +24,4 @@ func_020337d4: ; 0x020337d4
 .L_0203380c: .word data_021052fc
     .size func_020337d4, . - func_020337d4
 
-    .global func_02033810
-
+    .global Actor_GetCollectionBySlot

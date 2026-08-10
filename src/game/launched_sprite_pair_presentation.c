@@ -53,7 +53,7 @@ extern void func_02071eb8(void *resource);
 extern void func_02071ee0(void *resource, void *owner, s32, s32, s32);
 extern void func_02071f38(void *resource);
 extern void *func_020337d4(void *actor);
-extern void *func_02033810(void *actor, s32 index);
+extern void *Actor_GetCollectionBySlot(void *actor, s32 index);
 extern void *func_02030acc(void *resource);
 extern u8 *func_02079a7c(void *table, s32 index);
 extern u8 *func_02073ffc(void *owner, void *resource, s32 mode);
@@ -112,7 +112,8 @@ LaunchedSpritePairPresentation *func_02024b04(
     kind = *(s32 *)(runtimeObject + 0x00);
     mode = (*(u32 *)(runtimeObject + 0x40) >> 18) & 3;
     if (mode == 3 || (u32)(kind - 2) <= 2) {
-        self->secondaryOwner4c = func_02030acc(func_02033810(actor, 2));
+        self->secondaryOwner4c =
+            func_02030acc(Actor_GetCollectionBySlot(actor, 2));
         self->secondarySprite54 =
             func_02073ffc(self->secondaryOwner4c, self->resource3c, 2);
         func_02072b68(self->secondarySprite54, record[0x0d]);
