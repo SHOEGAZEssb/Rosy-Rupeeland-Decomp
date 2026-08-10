@@ -43,7 +43,7 @@ extern SampledArcSpriteConfig *func_0201f0fc(
 extern void *func_0201edd0(void *self, SampledArcSpriteConfig *config);
 extern void func_02005058(void *track);
 extern void func_020050a4(PresentationTrack *destination, const void *source);
-extern void *func_02009d78(void *source);
+extern void *ActorMotionAreaFollower_GetPosition(void *source);
 #ifdef __cplusplus
 }
 #endif
@@ -116,7 +116,7 @@ SampledArcPresentation *func_0201f6a4(SampledArcPresentation *self)
  */
 s32 func_0201f6e0(SampledArcPresentation *self)
 {
-    const void *position = func_02009d78(data_021052fc + 0x2fbc);
+    const void *position = ActorMotionAreaFollower_GetPosition(data_021052fc + 0x2fbc);
     return ((PresentationUpdate)(*(void ***)self->presentation08)[2])(
                self->presentation08, position)
            != 0;

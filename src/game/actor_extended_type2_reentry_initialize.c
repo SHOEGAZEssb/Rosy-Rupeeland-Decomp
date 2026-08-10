@@ -18,7 +18,7 @@ extern u32 genrand_int32(void);
 extern s32 func_020ada8c(s32 value, s32 divisor);
 extern void func_0200500c(void *vector, s32 x, s32 y, s32 z);
 extern void func_02005058(void *vector);
-extern void *func_02009d78(void *manager);
+extern void *ActorMotionAreaFollower_GetPosition(void *manager);
 #ifdef __cplusplus
 }
 #endif
@@ -82,7 +82,7 @@ void ActorExtendedType2_InitializeReentryState(void *self, const void *position,
         *(u16 *)(actor + 0xd6) = 20;
         (*(void (**)(void *))(*(u8 **)actor + 0x5c))(actor);
         {
-            void *resource = func_02009d78(data_021052fc + 0x2fbc);
+            void *resource = ActorMotionAreaFollower_GetPosition(data_021052fc + 0x2fbc);
             (*(void (**)(void *, void *, void *))(*(u8 **)actor + 0x58))
                 (output, actor, resource);
         }

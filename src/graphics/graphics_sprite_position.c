@@ -12,7 +12,7 @@ extern u8 *data_021052fc;
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern GraphicsPositionSource *func_02009d78(void *object);
+extern GraphicsPositionSource *ActorMotionAreaFollower_GetPosition(void *object);
 #ifdef __cplusplus
 }
 #endif
@@ -63,7 +63,7 @@ void GraphicsSpriteState_SetWorldPosition(GraphicsSpriteState *state,
                                           s32 depth, u16 cullFlag)
 {
     GraphicsPositionSource *origin =
-        func_02009d78(data_021052fc + 0x2fbc);
+        ActorMotionAreaFollower_GetPosition(data_021052fc + 0x2fbc);
     GraphicsSpriteState_SetWorldPositionFromOrigin(
         state, origin, positionX, positionY, depth, cullFlag);
 }
@@ -118,7 +118,7 @@ void GraphicsSpriteState_SetDepthOrderedWorldPosition(
     u16 cullFlag)
 {
     GraphicsPositionSource *origin =
-        func_02009d78(data_021052fc + 0x2fbc);
+        ActorMotionAreaFollower_GetPosition(data_021052fc + 0x2fbc);
     GraphicsSpriteState_SetDepthOrderedWorldPositionFromOrigin(
         state, origin, positionX, positionY, depth, cullFlag);
 }
@@ -180,7 +180,7 @@ asm void GraphicsSpriteState_SetWorldPosition(GraphicsSpriteState *, s32, s32,
     add r0, r0, #0x2c00
     mov r6, r2
     mov r5, r3
-    bl func_02009d78
+    bl ActorMotionAreaFollower_GetPosition
     ldrh ip, [sp, #0x20]
     mov r1, r0
     mov r0, r4
@@ -278,7 +278,7 @@ asm void GraphicsSpriteState_SetDepthOrderedWorldPosition(
     add r0, r0, #0x2c00
     mov r6, r2
     mov r5, r3
-    bl func_02009d78
+    bl ActorMotionAreaFollower_GetPosition
     ldrh ip, [sp, #0x20]
     mov r1, r0
     mov r0, r4

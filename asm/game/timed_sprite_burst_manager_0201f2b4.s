@@ -14,7 +14,7 @@
 .extern func_02004fe0
 .extern func_02005030
 .extern func_02005058
-.extern func_02009d0c
+.extern ActorMotion_GetPosition
 .extern func_0201e250
 .extern func_0201e3b8
 .extern func_0201e454
@@ -47,7 +47,7 @@ func_0201f2b4: ; 0x0201f2b4
     ldr r0, [r1, #0x0]
     add r0, r0, #0x44
     add r0, r0, #0x3000
-    bl func_02009d0c
+    bl ActorMotion_GetPosition
     mov r1, r0
     add r0, sp, #0x0
     bl func_02005030

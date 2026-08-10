@@ -14,10 +14,10 @@ extern "C" {
 #endif
 extern void func_02056f00(VecFx32Object *result, const void *source);
 extern s32 func_020116e8(void *context, s32 x, s32 y);
-extern s32 func_0200a124(ActorMotionAreaFollower *self, void *actor,
+extern s32 ActorMotionAreaFollower_QueryCrossingDirection(ActorMotionAreaFollower *self, void *actor,
                          s32 area);
 extern const s16 *func_02011788(void *context, s32 area);
-extern void func_0200a1a0(ActorMotionAreaFollower *self, s32 area,
+extern void ActorMotionAreaFollower_ClampToAreaBounds(ActorMotionAreaFollower *self, s32 area,
                           const s16 *bounds);
 extern s32 Type7Actor_GetStateCode(void *actor);
 extern void func_02008740(VecFx32Object *result,
@@ -49,7 +49,7 @@ static s32 area_follower_multiply_fx32(s32 left, s32 right)
  * no direct hardware access occurs. Helper meanings beyond these observed
  * effects remain inferred from their call and field relationships.
  */
-s32 func_02009d80(ActorMotionAreaFollower *self, const s16 *bounds)
+s32 ActorMotionAreaFollower_Update(ActorMotionAreaFollower *self, const s16 *bounds)
 {
     ActorMotion *motion = &self->jitter.base;
     u8 *actor = (u8 *)motion->actor;
@@ -64,11 +64,11 @@ s32 func_02009d80(ActorMotionAreaFollower *self, const s16 *bounds)
                          (transformed.value.y >> 12) - 0x10);
 
     if (GameWork_TestFlag(gGameWork, 0x404) == 0 && area >= 0) {
-        s32 direction = func_0200a124(self, actor, area);
+        s32 direction = ActorMotionAreaFollower_QueryCrossingDirection(self, actor, area);
         const s16 *areaBounds = func_02011788(self->areaContext, area);
 
         ActorMotionJitter_Update(&self->jitter, areaBounds);
-        func_0200a1a0(self, area, bounds);
+        ActorMotionAreaFollower_ClampToAreaBounds(self, area, bounds);
         if (self->previousArea != -1 && self->previousArea != area) {
             u8 *runtime;
             u8 *companion = 0;

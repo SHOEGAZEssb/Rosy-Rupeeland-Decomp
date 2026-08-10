@@ -31,7 +31,7 @@ extern void *data_021052fc;
 extern void *func_020a1f80(void *self, s32 value);
 extern void func_020a20d4(void *self);
 extern void func_020a214c(void *self, void *value, s32 argument);
-extern void *func_02009d78(void *object);
+extern void *ActorMotionAreaFollower_GetPosition(void *object);
 extern PresentationList *func_0201dc18(PresentationList *self);
 extern void func_0201dc58(PresentationList *self);
 extern void func_0201dde4(PresentationList *self, PresentationNode *node);
@@ -134,7 +134,7 @@ s32 func_0201dcec(RuntimePresentationManager *self, s32 argument)
         node = next;
     }
     if (self->auxiliary != 0 && self->auxiliary[0x50a] != 0) {
-        value = func_02009d78((u8 *)data_021052fc + 0x2fbc);
+        value = ActorMotionAreaFollower_GetPosition((u8 *)data_021052fc + 0x2fbc);
         func_020a214c(self->auxiliary, value, argument);
     }
     return 0;

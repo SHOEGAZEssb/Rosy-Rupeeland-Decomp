@@ -6,7 +6,7 @@
  * Add X to rectangle elements 0/2 and Y to elements 1/3, truncating each
  * result to s16 like retail. Returns no value and changes no external state.
  */
-void func_0200a2dc(s16 *rectangle, s32 x, s32 y)
+void S16Rectangle_Translate(s16 *rectangle, s32 x, s32 y)
 {
     rectangle[0] = (s16)(rectangle[0] + x);
     rectangle[1] = (s16)(rectangle[1] + y);

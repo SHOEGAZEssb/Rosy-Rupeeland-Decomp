@@ -19,7 +19,7 @@ static s32 actor_motion_half_toward_zero(s32 value)
  * Returns zero. The temporary vector is a retail C++ lifetime artifact; no
  * hardware or global state changes, though the motion position is mutated.
  */
-s32 func_02009c20(ActorMotion *self)
+s32 ActorMotion_UpdateFromBoundActor(ActorMotion *self)
 {
     VecFx32Object temporary;
     u8 *actor = (u8 *)self->actor;
@@ -49,7 +49,7 @@ s32 func_02009c20(ActorMotion *self)
 }
 
 /* Return the address of the current position wrapper; changes no state. */
-VecFx32Object *func_02009d0c(ActorMotion *self)
+VecFx32Object *ActorMotion_GetPosition(ActorMotion *self)
 {
     return &self->position;
 }

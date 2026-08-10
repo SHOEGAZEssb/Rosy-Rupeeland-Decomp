@@ -9,8 +9,8 @@
 .extern func_020083b0
 .extern func_020086f8
 .extern func_0200875c
-.extern func_02009a2c
-.extern func_02009d80
+.extern ActorMotionGameWork_Update
+.extern ActorMotionAreaFollower_Update
 .extern func_0200ecbc
 .extern func_02012150
 .extern func_020124f0
@@ -55,7 +55,7 @@ L_02008168:
     add r0, r4, #0x3bc
     add r1, sp, #0x1c
     add r0, r0, #0x2c00
-    bl func_02009d80
+    bl ActorMotionAreaFollower_Update
     add r0, sp, #0x54
     mov r1, r4
     bl func_020086f8
@@ -135,7 +135,7 @@ L_020082f8:
     add r0, r4, #0x44
     add r1, sp, #0x1c
     add r0, r0, #0x3000
-    bl func_02009a2c
+    bl ActorMotionGameWork_Update
     add r0, r4, #0x3000
     ldr r0, [r0, #0xfc]
     cmp r0, #0x0

@@ -47,7 +47,7 @@ extern void *func_0201e584(void *self, OffsetSpriteConfig *config,
                            s32 spriteValue, s32 offset);
 extern void func_02005058(void *track);
 extern void func_020050a4(PresentationTrack *destination, const void *source);
-extern void *func_02009d78(void *source);
+extern void *ActorMotionAreaFollower_GetPosition(void *source);
 #ifdef __cplusplus
 }
 #endif
@@ -143,7 +143,7 @@ void func_0201f458(TimedSpriteOffsetPresentation *self,
  */
 s32 func_0201f520(TimedSpriteOffsetPresentation *self)
 {
-    const void *position = func_02009d78(data_021052fc + 0x2fbc);
+    const void *position = ActorMotionAreaFollower_GetPosition(data_021052fc + 0x2fbc);
     s32 finished =
         ((PresentationUpdate)(*(void ***)self->presentation08)[2])(
             self->presentation08, position);

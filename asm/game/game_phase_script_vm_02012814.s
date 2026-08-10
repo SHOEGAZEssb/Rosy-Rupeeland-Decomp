@@ -7,7 +7,7 @@
 .extern ActorMotion_SetMode1AndClearOutputs
 .extern ActorMotion_ConfigureGridTarget
 .extern ActorMotion_ConfigureBoundActorTarget
-.extern func_0200a114
+.extern ActorMotionAreaFollower_BindActor
 .extern func_02012704
 .extern func_020127f8
 .extern ActorCollection_FindActorByDescriptorValue
@@ -111,7 +111,7 @@ L_02012950:
     ldr r0, [r2, #0x0]
     add r0, r0, #0x3bc
     add r0, r0, #0x2c00
-    bl func_0200a114
+    bl ActorMotionAreaFollower_BindActor
     b L_02012a50
 L_02012984:
     ldr r0, L_02012a5c

@@ -4,8 +4,8 @@
 .extern FrameTaskList_DestroyNode
 .extern OverlaySlot_Destroy
 .extern GamePhaseRuntime_DestroyFieldLoader
-.extern func_020099fc
-.extern func_02009d58
+.extern ActorMotionGameWork_Destroy
+.extern ActorMotionAreaFollower_Destroy
 .extern func_0200e574
 .extern func_0200e5bc
 .extern func_0200e61c
@@ -93,10 +93,10 @@ L_02007238:
     bl OverlaySlot_Destroy
     add r0, r4, #0x44
     add r0, r0, #0x3000
-    bl func_020099fc
+    bl ActorMotionGameWork_Destroy
     add r0, r4, #0x3bc
     add r0, r0, #0x2c00
-    bl func_02009d58
+    bl ActorMotionAreaFollower_Destroy
     add r0, r4, #0x24
     bl func_0200e574
     mov r0, r4

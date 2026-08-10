@@ -22,7 +22,7 @@ extern const s16 *func_02011788(void *context, s32 area);
  * fallbackBounds parameter is not observed by the retail body. Returns no
  * value; only current motion position changes, and no hardware is touched.
  */
-void func_0200a1a0(ActorMotionAreaFollower *self, s32 area,
+void ActorMotionAreaFollower_ClampToAreaBounds(ActorMotionAreaFollower *self, s32 area,
                    const s16 *fallbackBounds)
 {
     ActorMotion *motion = &self->jitter.base;
@@ -47,13 +47,13 @@ void func_0200a1a0(ActorMotionAreaFollower *self, s32 area,
     lowerRectangle[1] = (s16)(-42 - actorZ);
     lowerRectangle[2] = collision[2];
     lowerRectangle[3] = (s16)-actorZ;
-    func_0200a2dc(lowerRectangle, actorX, actorY);
+    S16Rectangle_Translate(lowerRectangle, actorX, actorY);
 
     actorRectangle[0] = collision[0];
     actorRectangle[1] = (s16)(collision[1] - 8);
     actorRectangle[2] = collision[2];
     actorRectangle[3] = collision[3];
-    func_0200a2dc(actorRectangle, actorX, actorY);
+    S16Rectangle_Translate(actorRectangle, actorX, actorY);
 
     bounds = func_02011788(self->areaContext, area);
     if ((position.value.x >> 12) < bounds[0])

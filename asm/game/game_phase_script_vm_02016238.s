@@ -17,7 +17,7 @@
 .extern data_021f3d68
 .extern func_02005030
 .extern func_02005058
-.extern func_02009d78
+.extern ActorMotionAreaFollower_GetPosition
 .extern func_0200cf00
 .extern func_02012704
 .extern func_020127f8
@@ -243,7 +243,7 @@ L_02016508:
     add r1, r1, #0x2000
     add r0, r0, #0x2c00
     ldr r5, [r1, #0xea4]
-    bl func_02009d78
+    bl ActorMotionAreaFollower_GetPosition
     mov r1, r0
     add r0, sp, #4
     bl func_02005030

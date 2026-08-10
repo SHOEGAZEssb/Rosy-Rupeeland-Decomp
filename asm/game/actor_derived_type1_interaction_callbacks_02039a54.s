@@ -4,7 +4,7 @@
 .extern SceneManager_GetCurrent
 .extern data_020df4a4
 .extern data_021052fc
-.extern func_02009d78
+.extern ActorMotionAreaFollower_GetPosition
 .extern func_02010c00
 .extern func_0201ded4
 .extern func_02022cb0
@@ -60,7 +60,7 @@ ActorDerivedType1_TryApplyInteractionAmount: ; 0x02039a54
     ldr r0, [r0, #0x0]
     add r0, r0, #0x3bc
     add r0, r0, #0x2c00
-    bl func_02009d78
+    bl ActorMotionAreaFollower_GetPosition
     mov ip, #0x2000
     mov r1, r0
     mov r0, r5

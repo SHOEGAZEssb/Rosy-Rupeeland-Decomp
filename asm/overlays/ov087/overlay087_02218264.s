@@ -1,7 +1,7 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov087/overlay087_recovery.c.
 .extern data_021052fc
-.extern func_02009d78
+.extern ActorMotionAreaFollower_GetPosition
 .extern func_020593ac
 .extern gSoundContext
 
@@ -41,7 +41,7 @@ func_ov087_02218264:
     ldr r0, [r0, #0x0]
     add r0, r0, #0x3bc
     add r0, r0, #0x2c00
-    bl func_02009d78
+    bl ActorMotionAreaFollower_GetPosition
     ldr r1, [r0, #0x4]
     ldr r2, [r6, #0x1c]
     mvn r0, #0x7f

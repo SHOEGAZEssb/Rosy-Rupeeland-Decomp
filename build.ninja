@@ -10362,7 +10362,7 @@ build build/reports/actor_motion_gamework_lifecycle.json: objdiff build/decomp/d
 
 build build/reports/actor_motion_gamework_lifecycle.txt: match_report build/reports/actor_motion_gamework_lifecycle.json | tools/report_objdiff.py
   report_json = build/reports/actor_motion_gamework_lifecycle.json
-  report_args = --section .text --function func_020099dc --function func_020099fc --function func_02009a10 --require-exact
+  report_args = --section .text --function ActorMotionGameWork_Init --function ActorMotionGameWork_Destroy --function ActorMotionGameWork_DestroyAndFree --require-exact
 
 build build/reports/actor_motion_gamework_update.json: objdiff build/decomp/delinks/asm/game/actor_motion_gamework_update.o | build/decomp/asm/game/actor_motion_gamework_update.o
   target_object = build/decomp/delinks/asm/game/actor_motion_gamework_update.o
@@ -10370,7 +10370,7 @@ build build/reports/actor_motion_gamework_update.json: objdiff build/decomp/deli
 
 build build/reports/actor_motion_gamework_update.txt: match_report build/reports/actor_motion_gamework_update.json | tools/report_objdiff.py
   report_json = build/reports/actor_motion_gamework_update.json
-  report_args = --section .text --function func_02009a2c --require-exact
+  report_args = --section .text --function ActorMotionGameWork_Update --require-exact
 
 build build/reports/actor_motion_follow_actor.json: objdiff build/decomp/delinks/asm/game/actor_motion_follow_actor.o | build/decomp/asm/game/actor_motion_follow_actor.o
   target_object = build/decomp/delinks/asm/game/actor_motion_follow_actor.o
@@ -10378,7 +10378,7 @@ build build/reports/actor_motion_follow_actor.json: objdiff build/decomp/delinks
 
 build build/reports/actor_motion_follow_actor.txt: match_report build/reports/actor_motion_follow_actor.json | tools/report_objdiff.py
   report_json = build/reports/actor_motion_follow_actor.json
-  report_args = --section .text --function func_02009c20 --function func_02009d0c --require-exact
+  report_args = --section .text --function ActorMotion_UpdateFromBoundActor --function ActorMotion_GetPosition --require-exact
 
 build build/reports/actor_motion_area_follower_lifecycle.json: objdiff build/decomp/delinks/src/game/actor_motion_area_follower_lifecycle.o | build/decomp/src/game/actor_motion_area_follower_lifecycle.o
   target_object = build/decomp/delinks/src/game/actor_motion_area_follower_lifecycle.o
@@ -10386,7 +10386,7 @@ build build/reports/actor_motion_area_follower_lifecycle.json: objdiff build/dec
 
 build build/reports/actor_motion_area_follower_lifecycle.txt: match_report build/reports/actor_motion_area_follower_lifecycle.json | tools/report_objdiff.py
   report_json = build/reports/actor_motion_area_follower_lifecycle.json
-  report_args = --section .text --function func_02009d14 --function func_02009d58 --function func_02009d78 --require-exact
+  report_args = --section .text --function ActorMotionAreaFollower_Init --function ActorMotionAreaFollower_Destroy --function ActorMotionAreaFollower_GetPosition --require-exact
 
 build build/reports/actor_motion_area_follower_update.json: objdiff build/decomp/delinks/asm/game/actor_motion_area_follower_update.o | build/decomp/asm/game/actor_motion_area_follower_update.o
   target_object = build/decomp/delinks/asm/game/actor_motion_area_follower_update.o
@@ -10394,7 +10394,7 @@ build build/reports/actor_motion_area_follower_update.json: objdiff build/decomp
 
 build build/reports/actor_motion_area_follower_update.txt: match_report build/reports/actor_motion_area_follower_update.json | tools/report_objdiff.py
   report_json = build/reports/actor_motion_area_follower_update.json
-  report_args = --section .text --function func_02009d80 --require-exact
+  report_args = --section .text --function ActorMotionAreaFollower_Update --require-exact
 
 build build/reports/actor_motion_area_bind.json: objdiff build/decomp/delinks/src/game/actor_motion_area_bind.o | build/decomp/src/game/actor_motion_area_bind.o
   target_object = build/decomp/delinks/src/game/actor_motion_area_bind.o
@@ -10402,7 +10402,7 @@ build build/reports/actor_motion_area_bind.json: objdiff build/decomp/delinks/sr
 
 build build/reports/actor_motion_area_bind.txt: match_report build/reports/actor_motion_area_bind.json | tools/report_objdiff.py
   report_json = build/reports/actor_motion_area_bind.json
-  report_args = --section .text --function func_0200a114 --require-exact
+  report_args = --section .text --function ActorMotionAreaFollower_BindActor --require-exact
 
 build build/reports/actor_motion_area_direction.json: objdiff build/decomp/delinks/asm/game/actor_motion_area_direction.o | build/decomp/asm/game/actor_motion_area_direction.o
   target_object = build/decomp/delinks/asm/game/actor_motion_area_direction.o
@@ -10410,7 +10410,7 @@ build build/reports/actor_motion_area_direction.json: objdiff build/decomp/delin
 
 build build/reports/actor_motion_area_direction.txt: match_report build/reports/actor_motion_area_direction.json | tools/report_objdiff.py
   report_json = build/reports/actor_motion_area_direction.json
-  report_args = --section .text --function func_0200a124 --require-exact
+  report_args = --section .text --function ActorMotionAreaFollower_QueryCrossingDirection --require-exact
 
 build build/reports/actor_motion_area_clamp.json: objdiff build/decomp/delinks/asm/game/actor_motion_area_clamp.o | build/decomp/asm/game/actor_motion_area_clamp.o
   target_object = build/decomp/delinks/asm/game/actor_motion_area_clamp.o
@@ -10418,7 +10418,7 @@ build build/reports/actor_motion_area_clamp.json: objdiff build/decomp/delinks/a
 
 build build/reports/actor_motion_area_clamp.txt: match_report build/reports/actor_motion_area_clamp.json | tools/report_objdiff.py
   report_json = build/reports/actor_motion_area_clamp.json
-  report_args = --section .text --function func_0200a1a0 --require-exact
+  report_args = --section .text --function ActorMotionAreaFollower_ClampToAreaBounds --require-exact
 
 build build/reports/actor_motion_rectangle_translate.json: objdiff build/decomp/delinks/src/game/actor_motion_rectangle_translate.o | build/decomp/src/game/actor_motion_rectangle_translate.o
   target_object = build/decomp/delinks/src/game/actor_motion_rectangle_translate.o
@@ -10426,7 +10426,7 @@ build build/reports/actor_motion_rectangle_translate.json: objdiff build/decomp/
 
 build build/reports/actor_motion_rectangle_translate.txt: match_report build/reports/actor_motion_rectangle_translate.json | tools/report_objdiff.py
   report_json = build/reports/actor_motion_rectangle_translate.json
-  report_args = --section .text --function func_0200a2dc --require-exact
+  report_args = --section .text --function S16Rectangle_Translate --require-exact
 
 build build/reports/actor_motion_area_state.json: objdiff build/decomp/delinks/src/game/actor_motion_area_state.o | build/decomp/src/game/actor_motion_area_state.o
   target_object = build/decomp/delinks/src/game/actor_motion_area_state.o
@@ -10434,7 +10434,7 @@ build build/reports/actor_motion_area_state.json: objdiff build/decomp/delinks/s
 
 build build/reports/actor_motion_area_state.txt: match_report build/reports/actor_motion_area_state.json | tools/report_objdiff.py
   report_json = build/reports/actor_motion_area_state.json
-  report_args = --section .text --function func_0200a310 --function func_0200a35c --require-exact
+  report_args = --section .text --function ActorMotionAreaFollower_RefreshCurrentArea --function ActorMotionAreaFollower_Reset --require-exact
 
 build build/reports/actor_collision_corner_response.json: objdiff build/decomp/delinks/asm/game/actor_collision_corner_response.o | build/decomp/asm/game/actor_collision_corner_response.o
   target_object = build/decomp/delinks/asm/game/actor_collision_corner_response.o

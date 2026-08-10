@@ -7,7 +7,7 @@
 .extern GamePhaseRuntime_SynchronizeActorPlacement
 .extern GamePhaseRuntime_GetActiveAreaPlacementVariant
 .extern ActorMotion_SetTarget
-.extern func_02009c20
+.extern ActorMotion_UpdateFromBoundActor
 .extern func_020122a0
 .extern OS_Halt
 
@@ -120,7 +120,7 @@ L_020089f8:
     bl func_02005058
     add r0, r7, #0x44
     add r0, r0, #0x3000
-    bl func_02009c20
+    bl ActorMotion_UpdateFromBoundActor
     add r0, r7, #0x2000
     ldr r0, [r0, #0xfb8]
     mov r1, #0x1

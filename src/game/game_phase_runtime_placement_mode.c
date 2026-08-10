@@ -13,7 +13,7 @@ extern void func_0200500c(void *value, s32 x, s32 y, s32 z);
 extern void ActorMotion_SetTarget(void *object, const void *value);
 extern void func_02005058(void *value);
 extern void func_020122a0(void *actor, s32 enabled);
-extern void func_02009c20(void *object);
+extern void ActorMotion_UpdateFromBoundActor(void *object);
 extern void OS_Halt(void);
 #ifdef __cplusplus
 }
@@ -69,7 +69,7 @@ s32 GamePhaseRuntime_SetPlacementMode(GamePhaseRuntime *self, s32 mode, s32 sync
         func_0200500c(mode2Value, -0x80000, -0x60000, 0);
         ActorMotion_SetTarget(b + 0x3044, mode2Value);
         func_02005058(mode2Value);
-        func_02009c20(b + 0x3044);
+        ActorMotion_UpdateFromBoundActor(b + 0x3044);
         func_020122a0(*(void **)(b + 0x2fb8), 1);
         break;
     case 3:

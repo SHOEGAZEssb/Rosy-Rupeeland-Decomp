@@ -4,8 +4,8 @@
 .extern func_02005058
 .extern func_02011794
 .extern func_02056f00
-.global func_0200a124
-func_0200a124: ; 0x0200a124
+.global ActorMotionAreaFollower_QueryCrossingDirection
+ActorMotionAreaFollower_QueryCrossingDirection: ; 0x0200a124
     stmdb sp!, {r3, r4, r5, lr}
     sub sp, sp, #0x18
     mov r5, r0
@@ -37,5 +37,5 @@ func_0200a124: ; 0x0200a124
     mov r0, r4
     add sp, sp, #0x18
     ldmia sp!, {r3, r4, r5, pc}
-    .size func_0200a124, .-func_0200a124
+    .size ActorMotionAreaFollower_QueryCrossingDirection, .-ActorMotionAreaFollower_QueryCrossingDirection
 

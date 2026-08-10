@@ -74,7 +74,7 @@ extern void func_02005058(void *track);
 extern void *func_02003e20(u32 size, const char *tag, s32 alignment,
                            HeapContext *heap);
 extern void func_02003e38(void *allocation);
-extern void *func_02009d0c(void *source);
+extern void *ActorMotion_GetPosition(void *source);
 extern void *func_0201e250(void *self);
 extern void *func_0201e454(void *self, BurstSpriteConfig *config);
 extern void func_0201e3b8(void *sprite, s32 enabled);
@@ -244,7 +244,7 @@ s32 func_0201f2b4(TimedSpriteBurstManager *self)
     PresentationTrack position;
     s32 index;
 
-    func_02005030(&position, func_02009d0c(data_021052fc + 0x3044));
+    func_02005030(&position, ActorMotion_GetPosition(data_021052fc + 0x3044));
     switch (self->state14) {
     case 0:
         for (index = 0; index < self->sprites08.count; index++) {

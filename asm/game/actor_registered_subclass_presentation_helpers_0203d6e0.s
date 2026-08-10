@@ -3,7 +3,7 @@
 .extern Heap_Alloc
 .extern data_020df9d8
 .extern data_021052fc
-.extern func_02009d78
+.extern ActorMotionAreaFollower_GetPosition
 .extern func_0201f864
 .extern func_02050078
 .extern func_020593ac
@@ -28,7 +28,7 @@ ActorRegisteredSubclass_EmitImpactFeedback: ; 0x0203d6e0
     ldr r0, [r0, #0x0]
     add r0, r0, #0x3bc
     add r0, r0, #0x2c00
-    bl func_02009d78
+    bl ActorMotionAreaFollower_GetPosition
     ldr r1, [r0, #0x4]
     ldr r2, [r5, #0x1c]
     mvn r0, #0x7f

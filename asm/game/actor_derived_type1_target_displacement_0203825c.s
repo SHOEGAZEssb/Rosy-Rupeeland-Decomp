@@ -11,7 +11,7 @@
 .extern VecFx32_Subtract
 .extern func_02008378
 .extern ActorMotionJitter_EnsureMinimum
-.extern func_02009d78
+.extern ActorMotionAreaFollower_GetPosition
 .extern func_02010c00
 .extern func_0201ded4
 .extern func_0201e0ec
@@ -316,7 +316,7 @@ ActorDerivedType1_ApplyWeightedCollisionDisplacement: ; 0x0203825c
     ldr r6, [r0, #0x0]
     add r0, r6, #0x3bc
     add r0, r0, #0x2c00
-    bl func_02009d78
+    bl ActorMotionAreaFollower_GetPosition
     mov r2, #0x2000
     mov r1, r0
     str r2, [sp, #0x0]

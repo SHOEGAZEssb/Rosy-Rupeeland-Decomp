@@ -7,7 +7,7 @@
 .extern gHeapContext
 .extern gLupyContext
 .extern gSoundContext
-.extern func_02009d78
+.extern ActorMotionAreaFollower_GetPosition
 .extern func_02010c00
 .extern func_0201ded4
 .extern func_0201e0ec
@@ -106,7 +106,7 @@ func_0204df40: ; 0x0204df40
     ldr r0, [r0, #0x0]
     add r0, r0, #0x3bc
     add r0, r0, #0x2c00
-    bl func_02009d78
+    bl ActorMotionAreaFollower_GetPosition
     mov r1, #0x2000
     str r1, [sp, #0x0]
     sub r2, r1, #0x20c0

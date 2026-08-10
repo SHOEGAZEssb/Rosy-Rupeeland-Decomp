@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/game_phase_script_vm_actor_bounds_opcode.c.
 .text
 .extern func_020083b0
-.extern func_0200a2dc
+.extern S16Rectangle_Translate
 .extern func_02012704
 .extern func_020127f8
 .extern func_020188e4
@@ -156,7 +156,7 @@ L_02018838:
     mov r1, r7
     mov r2, r6
     add r0, r0, #0x70
-    bl func_0200a2dc
+    bl S16Rectangle_Translate
     b L_020188d8
 L_02018850:
     ldr r0, [r8, #0x84]

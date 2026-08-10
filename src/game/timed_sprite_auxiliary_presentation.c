@@ -47,7 +47,7 @@ extern void *func_0201e584(void *self, AuxiliarySpriteConfig *config,
                            s32 spriteValue, s32 offset);
 extern void func_02005058(void *track);
 extern void func_020050a4(PresentationTrack *destination, const void *source);
-extern void *func_02009d78(void *source);
+extern void *ActorMotionAreaFollower_GetPosition(void *source);
 extern void func_0201ded4(void *manager, void *entry);
 #ifdef __cplusplus
 }
@@ -169,7 +169,7 @@ AuxiliaryTimedSpritePresentation *func_0201fa44(
  */
 s32 func_0201fa90(AuxiliaryTimedSpritePresentation *self)
 {
-    const void *position = func_02009d78(data_021052fc + 0x2fbc);
+    const void *position = ActorMotionAreaFollower_GetPosition(data_021052fc + 0x2fbc);
     ((ChildUpdate)(*(void ***)self->presentation08)[2])(
         self->presentation08, position);
     if (self->spriteByte12 != -1) {

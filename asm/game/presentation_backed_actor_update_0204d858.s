@@ -4,7 +4,7 @@
 .extern gSceneManager
 .extern func_020050a4
 .extern func_020050c8
-.extern func_02009d78
+.extern ActorMotionAreaFollower_GetPosition
 .extern ActorCollection_QueueActorForRemoval
 .extern Actor_GetCollection
 .extern Actor_QueryTerrainHeight
@@ -249,7 +249,7 @@ func_0204d858: ; 0x0204d858
     ldr r0, [r0, #0x0]
     add r0, r0, #0x3bc
     add r0, r0, #0x2c00
-    bl func_02009d78
+    bl ActorMotionAreaFollower_GetPosition
     ldrh r1, [r6, #0x4e]
     cmp r1, #0xa
     bne .L_0204dca4

@@ -6,7 +6,7 @@
 extern "C" {
 #endif
 extern void TouchPoint_InitZero(void *point);
-extern void *func_02009d78(void *object);
+extern void *ActorMotionAreaFollower_GetPosition(void *object);
 extern s32 ActorCollection_ProcessSelectionQuery(void *collection,
                                                   const void *query);
 extern s32 ActorCollection_DispatchQueryUntilHandled(void *collection,
@@ -38,9 +38,9 @@ s32 GamePhaseRuntime_DispatchActorQueryRequest(GamePhaseRuntime *self)
 
     TouchPoint_InitZero(point);
     *(s32 *)(point + 4) = *(s32 *)(b + 0x30ac) +
-        (*(s32 *)((u8 *)func_02009d78(b + 0x2fbc) + 4) >> 12);
+        (*(s32 *)((u8 *)ActorMotionAreaFollower_GetPosition(b + 0x2fbc) + 4) >> 12);
     *(s32 *)(point + 8) = *(s32 *)(b + 0x30b0) +
-        (*(s32 *)((u8 *)func_02009d78(b + 0x2fbc) + 8) >> 12);
+        (*(s32 *)((u8 *)ActorMotionAreaFollower_GetPosition(b + 0x2fbc) + 8) >> 12);
 
     flags = *(u32 *)(b + 0x30b8);
     if (flags & 1) {

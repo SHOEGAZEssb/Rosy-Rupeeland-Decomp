@@ -4,11 +4,11 @@
 .extern func_02005030
 .extern func_02005058
 .extern func_020050a4
-.extern func_0200a2dc
+.extern S16Rectangle_Translate
 .extern func_02011788
 .extern Actor_GetCollisionBounds
-.global func_0200a1a0
-func_0200a1a0: ; 0x0200a1a0
+.global ActorMotionAreaFollower_ClampToAreaBounds
+ActorMotionAreaFollower_ClampToAreaBounds: ; 0x0200a1a0
     stmdb sp!, {r3, r4, r5, r6, r7, r8, r9, lr}
     sub sp, sp, #0x20
     mov r9, r0
@@ -38,7 +38,7 @@ func_0200a1a0: ; 0x0200a1a0
     strh r5, [sp, #0xc]
     strh r3, [sp, #0xa]
     mov r2, r6
-    bl func_0200a2dc
+    bl S16Rectangle_Translate
     ldrsb r3, [r4, #0x0]
     mov r1, r7
     mov r2, r6
@@ -51,7 +51,7 @@ func_0200a1a0: ; 0x0200a1a0
     strh r3, [sp, #0x4]
     ldrsb r3, [r4, #0x3]
     strh r3, [sp, #0x6]
-    bl func_0200a2dc
+    bl S16Rectangle_Translate
     ldr r0, [r9, #0x68]
     mov r1, r8
     bl func_02011788
@@ -90,4 +90,4 @@ L_0200a2c0:
     bl func_02005058
     add sp, sp, #0x20
     ldmia sp!, {r3, r4, r5, r6, r7, r8, r9, pc}
-    .size func_0200a1a0, .-func_0200a1a0
+    .size ActorMotionAreaFollower_ClampToAreaBounds, .-ActorMotionAreaFollower_ClampToAreaBounds

@@ -103,7 +103,7 @@ s32 func_0201863c(GamePhaseActorScriptVm *self)
         break;
     }
     case 8:
-        func_0200a2dc((s16 *)bounds, first, second);
+        S16Rectangle_Translate((s16 *)bounds, first, second);
         break;
     case 9:
         func_020189b0(bounds, first, second);

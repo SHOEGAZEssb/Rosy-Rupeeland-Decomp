@@ -15,7 +15,7 @@ extern void *gSceneManager;
 extern "C" {
 #endif
 extern void *SceneManager_GetCurrent(void *manager);
-extern void *func_02009d78(void *object);
+extern void *ActorMotionAreaFollower_GetPosition(void *object);
 extern void *ActorCollection_QueueActorForRemoval(void *value, void *actor);
 extern void *Actor_GetCollection(void *actor);
 extern s32 Actor_QueryTerrainHeight(void *actor, s32 x, s32 y);
@@ -139,7 +139,7 @@ void func_0204d858(void *actor)
         FIELD(u8, FIELD(void *, actor, 0x54), 0x3a) = 0;
         s16 duration = FIELD(u16, actor, 0x4e) == 10 ? 20 : 40;
         if (++FIELD(s16, actor, 0x1f0) < duration) {
-            void *point = func_02009d78((u8 *)data_021052fc + 0x2fbc);
+            void *point = ActorMotionAreaFollower_GetPosition((u8 *)data_021052fc + 0x2fbc);
             if (FIELD(u16, actor, 0x4e) == 10) {
                 FIELD(s32, actor, 0x1c) =
                     fx_mul(FIELD(s32, actor, 0x1c), 0xc00) +

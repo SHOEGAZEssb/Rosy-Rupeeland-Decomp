@@ -18,7 +18,7 @@ extern "C" {
 #endif
 extern void *Heap_Alloc(u32 size, const void *tag, u32 align, void *heap);
 extern void Sound_Play(void *context, s32 bank, s32 sound);
-extern void *func_02009d78(void *object);
+extern void *ActorMotionAreaFollower_GetPosition(void *object);
 extern void func_02010c00(void *context, s32 value, s32 mode);
 extern void func_0201ded4(void *manager, void *effect);
 extern void *func_0201e0ec(void *manager);
@@ -83,7 +83,7 @@ s32 func_0204df40(void *actor, void *trigger)
         func_02010c00(gLupyContext, FIELD(s16, actor, 0x1f2), 0);
         void *effect = Heap_Alloc(0x44, data_020e251c, 4, gHeapContext);
         if (effect != 0) {
-            void *point = func_02009d78((u8 *)data_021052fc + 0x2fbc);
+            void *point = ActorMotionAreaFollower_GetPosition((u8 *)data_021052fc + 0x2fbc);
             effect = func_02022cb0(effect, point, actor,
                                    FIELD(s16, actor, 0x1f2), 0x2000, -0xc0);
         }

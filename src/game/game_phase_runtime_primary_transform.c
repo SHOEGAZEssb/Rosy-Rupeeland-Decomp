@@ -5,7 +5,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *func_02009d78(void *object);
+extern void *ActorMotionAreaFollower_GetPosition(void *object);
 extern void func_02008378(void *destination, const void *left,
                           const void *right);
 extern void func_02005058(void *value);
@@ -24,7 +24,7 @@ void func_020086f8(void *destination, GamePhaseRuntime *self)
     u8 offset[16];
     u8 *b = (u8 *)self;
     func_02008740(offset, b + 0x3000);
-    func_02008378(destination, func_02009d78(b + 0x2fbc), offset);
+    func_02008378(destination, ActorMotionAreaFollower_GetPosition(b + 0x2fbc), offset);
     func_02005058(offset);
 }
 

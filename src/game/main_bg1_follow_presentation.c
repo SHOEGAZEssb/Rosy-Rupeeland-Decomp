@@ -33,7 +33,7 @@ extern void func_0201e250(void *);
 extern void func_0201e28c(void *);
 extern void func_0201ded4(void *, void *);
 extern const u8 *func_020284e0(s32);
-extern void *func_02009d78(void *);
+extern void *ActorMotionAreaFollower_GetPosition(void *);
 extern void func_02005030(void *, const void *);
 extern void func_02008740(void *, const void *);
 extern void func_020050c8(void *, const void *);
@@ -83,7 +83,7 @@ s32 func_020285a4(MainBg1FollowPresentation *self)
 {
     s32 sampled[4];
     s32 transformed[4];
-    func_02005030(sampled, func_02009d78(self->target_08));
+    func_02005030(sampled, ActorMotionAreaFollower_GetPosition(self->target_08));
     sampled[1] = (sampled[1] + (sampled[1] < 0)) / 2;
     sampled[2] = (sampled[2] + (sampled[2] < 0)) / 2;
     func_02008740(transformed, self->target_08 + 0x44);

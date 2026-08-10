@@ -9,7 +9,7 @@
 .extern func_020050a4
 .extern func_020050c8
 .extern func_020050f0
-.extern func_02009d78
+.extern ActorMotionAreaFollower_GetPosition
 .extern Actor_SnapshotTransientState
 .extern Actor_UpdateAnimationState
 .extern ActorDerivedRuntime_UpdateFrame
@@ -290,7 +290,7 @@ func_ov087_022179b0:
     ldr r0, [r0, #0x0]
     add r0, r0, #0x3bc
     add r0, r0, #0x2c00
-    bl func_02009d78
+    bl ActorMotionAreaFollower_GetPosition
     ldr r1, [r0, #0x4]
     ldr r2, [r5, #0x1c]
     mvn r0, #0x7f

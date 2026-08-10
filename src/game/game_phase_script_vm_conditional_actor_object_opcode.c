@@ -11,7 +11,7 @@ extern "C" {
 extern void *data_021052fc;
 extern const char data_020d5b34[];
 extern void *ActorCollection_FindActorByDescriptorValue(void *collection, s32 index);
-extern void *func_02009d78(void *motion);
+extern void *ActorMotionAreaFollower_GetPosition(void *motion);
 extern void *func_02020794(void *object, void *position, void *actor, s32 value);
 extern void func_0201ded4(void *list, void *object);
 #ifdef __cplusplus
@@ -36,7 +36,7 @@ s32 func_0201797c(GamePhaseActorScriptVm *self)
             GamePhaseRuntime_GetActorCollection((GamePhaseRuntime *)runtime, 1), actorIndex);
         void *object = Heap_Alloc(0x4c, data_020d5b34, 4, &gHeapContext);
         if (object)
-            object = func_02020794(object, func_02009d78(runtime + 0x2fbc),
+            object = func_02020794(object, ActorMotionAreaFollower_GetPosition(runtime + 0x2fbc),
                                    actor, value);
         func_0201ded4(runtime + 0x2f7c, object);
     } else {

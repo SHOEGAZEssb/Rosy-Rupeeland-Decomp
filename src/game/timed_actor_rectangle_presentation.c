@@ -24,7 +24,7 @@ extern void *data_020f4e14;
 extern void func_0201e250(void *);
 extern void func_0201e28c(void *);
 extern void func_0201ded4(void *, void *);
-extern const s32 *func_02009d78(void *);
+extern const s32 *ActorMotionAreaFollower_GetPosition(void *);
 extern s32 func_020befec(s32, s32);
 extern void func_02076428(void *, s32, s32, s32, s32, s32);
 #ifdef __cplusplus
@@ -85,7 +85,7 @@ s32 func_020251ac(TimedActorRectanglePresentation *self)
     s32 verticalAdjustment;
 
     if (--self->remaining10 <= 0) return 1;
-    camera = func_02009d78(data_021052fc + 0x2fbc);
+    camera = ActorMotionAreaFollower_GetPosition(data_021052fc + 0x2fbc);
     x = (*(s32 *)(self->actor08 + 0x1c) >> 12) - (camera[1] >> 12);
     verticalAdjustment =
         func_020befec(7 * (*(s16 *)(self->actor08 + 0x6e) -

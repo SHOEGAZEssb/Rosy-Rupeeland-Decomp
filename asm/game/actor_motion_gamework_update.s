@@ -5,10 +5,10 @@
 .extern func_02005058
 .extern func_02008740
 .extern ActorMotion_UpdateOscillation
-.extern func_02009c20
+.extern ActorMotion_UpdateFromBoundActor
 .extern gGameWork
-.global func_02009a2c
-func_02009a2c: ; 0x02009a2c
+.global ActorMotionGameWork_Update
+ActorMotionGameWork_Update: ; 0x02009a2c
     stmdb sp!, {r4, r5, r6, lr}
     sub sp, sp, #0x20
     mov r6, r0
@@ -50,7 +50,7 @@ L_02009aa4:
     str r4, [r6, #0x20]
     b L_02009ad0
 L_02009ac8:
-    bl func_02009c20
+    bl ActorMotion_UpdateFromBoundActor
     mov r4, r0
 L_02009ad0:
     ldrsh r0, [r5, #0x6]
@@ -139,5 +139,5 @@ L_02009b98:
     add sp, sp, #0x20
     ldmia sp!, {r4, r5, r6, pc}
 L_02009c1c: .word gGameWork
-    .size func_02009a2c, .-func_02009a2c
+    .size ActorMotionGameWork_Update, .-ActorMotionGameWork_Update
 

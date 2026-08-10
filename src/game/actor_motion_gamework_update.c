@@ -9,7 +9,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern s32 func_02009c20(ActorMotion *self);
+extern s32 ActorMotion_UpdateFromBoundActor(ActorMotion *self);
 extern void func_02008740(VecFx32Object *result,
                           const ActorMotionState *state);
 #ifdef __cplusplus
@@ -18,15 +18,15 @@ extern void func_02008740(VecFx32Object *result,
 
 /*
  * Advance mode-2 deltas while the signed count is positive, otherwise snap to
- * the destination, or refresh non-mode-2 position through func_02009c20. If at
+ * the destination, or refresh non-mode-2 position through ActorMotion_UpdateFromBoundActor. If at
  * least one boundary word is nonzero, clamp X to [left, right-256] and Y to
  * [top, bottom-192]. Configured oscillation is sampled, then position plus its
  * sampled offset minus the base target is converted from 20.12 fixed point and
- * written to GameWork offsets 0x232/0x234. Returns func_02009c20's result (zero
+ * written to GameWork offsets 0x232/0x234. Returns ActorMotion_UpdateFromBoundActor's result (zero
  * in the currently recovered implementation), or zero in mode 2. No hardware
  * is touched, but GameWork and this motion object change.
  */
-s32 func_02009a2c(ActorMotion *self, const s16 *bounds)
+s32 ActorMotionGameWork_Update(ActorMotion *self, const s16 *bounds)
 {
     s32 result = 0;
     VecFx32Object offset;
@@ -47,7 +47,7 @@ s32 func_02009a2c(ActorMotion *self, const s16 *bounds)
             }
         }
     } else {
-        result = func_02009c20(self);
+        result = ActorMotion_UpdateFromBoundActor(self);
     }
 
     if (bounds[0] != 0 || bounds[1] != 0 ||

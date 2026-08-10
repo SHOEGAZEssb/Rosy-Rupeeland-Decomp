@@ -11,7 +11,7 @@
  * ownership, construct a zero offset, clear transition state, set the previous
  * area sentinel to -1, and return self. No hardware or SDK service is called.
  */
-ActorMotionAreaFollower *func_02009d14(ActorMotionAreaFollower *self,
+ActorMotionAreaFollower *ActorMotionAreaFollower_Init(ActorMotionAreaFollower *self,
                                        void *areaContext)
 {
     ActorMotionJitter_Init(&self->jitter);
@@ -24,7 +24,7 @@ ActorMotionAreaFollower *func_02009d14(ActorMotionAreaFollower *self,
 }
 
 /* Destroy the added vector and base motion wrappers, then return self. */
-ActorMotionAreaFollower *func_02009d58(ActorMotionAreaFollower *self)
+ActorMotionAreaFollower *ActorMotionAreaFollower_Destroy(ActorMotionAreaFollower *self)
 {
     func_02005058(&self->offset);
     ActorMotion_DestroyBase(&self->jitter.base);
@@ -32,7 +32,7 @@ ActorMotionAreaFollower *func_02009d58(ActorMotionAreaFollower *self)
 }
 
 /* Return the base motion's current-position wrapper; changes no state. */
-VecFx32Object *func_02009d78(ActorMotionAreaFollower *self)
+VecFx32Object *ActorMotionAreaFollower_GetPosition(ActorMotionAreaFollower *self)
 {
     return &self->jitter.base.position;
 }

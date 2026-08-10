@@ -30,8 +30,8 @@ extern void func_0200e5bc(void *object);
 extern void func_0200f824(void);
 extern void func_0200f314(void);
 extern void func_02058ce0(void *soundContext);
-extern void func_020099fc(void *object);
-extern void func_02009d58(void *object);
+extern void ActorMotionGameWork_Destroy(void *object);
+extern void ActorMotionAreaFollower_Destroy(void *object);
 extern void func_0200e574(void *object);
 
 #ifdef __cplusplus
@@ -91,8 +91,8 @@ GamePhaseRuntime *GamePhaseRuntime_Destroy(GamePhaseRuntime *self)
     FrameTaskList_DestroyNode(data_021052fc.taskNode);
     func_02058ce0(gSoundContext);
     OverlaySlot_Destroy((OverlaySlot *)(bytes + 0x30c0));
-    func_020099fc(bytes + 0x3044);
-    func_02009d58(bytes + 0x2fbc);
+    ActorMotionGameWork_Destroy(bytes + 0x3044);
+    ActorMotionAreaFollower_Destroy(bytes + 0x2fbc);
     func_0200e574(bytes + 0x24);
     Scene_Destroy((Scene *)self);
     return self;

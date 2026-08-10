@@ -18,7 +18,7 @@ extern void func_020050a4(void *, const void *);
 extern void func_0201b0f4(void *);
 extern void VecFx32Stepper_Init(void *);
 extern void func_02032228(void *, s32, s32, s32);
-extern void *func_02009d78(void *);
+extern void *ActorMotionAreaFollower_GetPosition(void *);
 #ifdef __cplusplus
 }
 #endif
@@ -84,7 +84,7 @@ void *func_02030f98(void *self, const void *descriptor)
     *(u32 *)(actor + 0xc4) = 0;
     func_02032228(actor, 0, 0x1000, 0x800);
     func_020050a4(actor + 0x78,
-                  func_02009d78((u8 *)data_021052fc + 0x2fbc));
+                  ActorMotionAreaFollower_GetPosition((u8 *)data_021052fc + 0x2fbc));
     actor[0x194] = actor[0x195] = 0;
     *(u16 *)(actor + 0x196) = 0;
     for (i = 0; i < 5; i++)

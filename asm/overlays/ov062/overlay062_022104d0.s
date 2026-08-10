@@ -8,7 +8,7 @@
 .extern GraphicsSpriteState_SetDepthOrderedWorldPosition
 .extern VecFx32Bezier_Evaluate3D
 .extern GamePhaseRuntime_UpdateActorPresentationState
-.extern func_02009d78
+.extern ActorMotionAreaFollower_GetPosition
 .extern Actor_RefreshTerrainHeight
 .extern func_020befec
 .extern gSceneManager
@@ -77,7 +77,7 @@ func_ov062_022104d0:
     ldr r0, [r0, #0x0]
     add r0, r0, #0x3bc
     add r0, r0, #0x2c00
-    bl func_02009d78
+    bl ActorMotionAreaFollower_GetPosition
     ldr r1, [r4, #0x24]
     mov r2, r0
     ldr r3, [r1, #0x0]

@@ -19,7 +19,7 @@
 .extern GamePhaseRuntime_FinalizeActorCollections
 .extern GamePhaseRuntime_SynchronizeActorPlacement
 .extern func_0201dcec
-.extern func_02009d78
+.extern ActorMotionAreaFollower_GetPosition
 .extern func_02010e68
 .extern data_020d5dcc
 .extern data_020d5df8

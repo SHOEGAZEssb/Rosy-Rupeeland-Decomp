@@ -7,7 +7,7 @@
 .extern data_ov081_02215340
 .extern data_ov081_02215358
 .extern data_ov081_02215360
-.extern func_02009d78
+.extern ActorMotionAreaFollower_GetPosition
 .extern func_0200b04c
 .extern Type7MarkerPresentation_SelectAnimation
 .extern Type7MarkerPresentation_ReloadResources
@@ -62,7 +62,7 @@ func_ov081_02214104:
     ldr r0, [r0, #0x0]
     add r0, r0, #0x3bc
     add r0, r0, #0x2c00
-    bl func_02009d78
+    bl ActorMotionAreaFollower_GetPosition
     ldr r2, [r6, #0x1c]
     ldr r0, [r0, #0x4]
     mvn r1, #0x5f
@@ -261,7 +261,7 @@ func_ov081_02214104:
     ldr r0, [r0, #0x0]
     add r0, r0, #0x3bc
     add r0, r0, #0x2c00
-    bl func_02009d78
+    bl ActorMotionAreaFollower_GetPosition
     ldr r2, [r6, #0x1c]
     ldr r0, [r0, #0x4]
     mvn r1, #0x5f

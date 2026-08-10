@@ -11,7 +11,7 @@
 .extern func_020050a4
 .extern GraphicsSpriteState_SetDepthOrderedWorldPosition
 .extern VecFx32Bezier_Evaluate3D
-.extern func_02009d78
+.extern ActorMotionAreaFollower_GetPosition
 .extern func_02010c00
 .extern func_0201ded4
 .extern func_02022cb0
@@ -158,7 +158,7 @@ func_ov064_02210c5c:
     ldr r0, [r0, #0x0]
     add r0, r0, #0x3bc
     add r0, r0, #0x2c00
-    bl func_02009d78
+    bl ActorMotionAreaFollower_GetPosition
     mov r1, #0x2000
     str r1, [sp, #0x0]
     sub r1, r1, #0x20c0

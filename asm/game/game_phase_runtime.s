@@ -17,13 +17,13 @@
 .extern GamePhaseRuntime_RecreateDualScreenUiPresentation
 .extern ActorMotion_Reset
 .extern ActorMotion_BindActor
-.extern func_020099dc
-.extern func_02009d0c
-.extern func_02009d14
-.extern func_02009d78
-.extern func_0200a114
-.extern func_0200a310
-.extern func_0200a35c
+.extern ActorMotionGameWork_Init
+.extern ActorMotion_GetPosition
+.extern ActorMotionAreaFollower_Init
+.extern ActorMotionAreaFollower_GetPosition
+.extern ActorMotionAreaFollower_BindActor
+.extern ActorMotionAreaFollower_RefreshCurrentArea
+.extern ActorMotionAreaFollower_Reset
 .extern func_0200ae8c
 .extern func_0200e4dc
 .extern func_0200e650
@@ -66,10 +66,10 @@ GamePhaseRuntime_Init:
     add r0, r0, #0x2c00
     add r1, r1, #0x2c00
     str r3, [r2, #0xfb8]
-    bl func_02009d14
+    bl ActorMotionAreaFollower_Init
     add r0, r4, #0x44
     add r0, r0, #0x3000
-    bl func_020099dc
+    bl ActorMotionGameWork_Init
     add r0, r4, #0xa8
     add r0, r0, #0x3000
     bl TouchPoint_InitZero
@@ -147,7 +147,7 @@ GamePhaseRuntime_Configure:
     bl DisplayController_SetVerticalOffset
     add r0, r4, #0x3bc
     add r0, r0, #0x2c00
-    bl func_0200a35c
+    bl ActorMotionAreaFollower_Reset
     add r0, r4, #0x44
     add r0, r0, #0x3000
     bl ActorMotion_Reset
@@ -251,7 +251,7 @@ L_02006da0:
     add r0, r4, #0x3bc
     ldr r1, [r1, #0xea4]
     add r0, r0, #0x2c00
-    bl func_0200a114
+    bl ActorMotionAreaFollower_BindActor
     add r1, r4, #0x2000
     add r0, r4, #0x44
     ldr r1, [r1, #0xea4]
@@ -259,7 +259,7 @@ L_02006da0:
     bl ActorMotion_BindActor
     add r0, r4, #0x3bc
     add r0, r0, #0x2c00
-    bl func_0200a310
+    bl ActorMotionAreaFollower_RefreshCurrentArea
     mov r0, r4
     bl GamePhaseRuntime_GetActiveAreaPlacementVariant
     add r2, r4, #0x3000
@@ -280,13 +280,13 @@ L_02006da0:
     ldr r5, [r0, #0xfb8]
     add r0, r4, #0x44
     add r0, r0, #0x3000
-    bl func_02009d0c
+    bl ActorMotion_GetPosition
     mov r1, r0
     add r0, r5, #0x8
     bl ActorCollection_DispatchEventToActors
     add r0, r4, #0x3bc
     add r0, r0, #0x2c00
-    bl func_02009d78
+    bl ActorMotionAreaFollower_GetPosition
     mov r1, r0
     add r0, r4, #0x28
     bl ActorCollection_DispatchEventToActors
@@ -319,7 +319,7 @@ L_02006ec8:
     blt L_02006f0c
     add r0, r4, #0x3bc
     add r0, r0, #0x2c00
-    bl func_02009d78
+    bl ActorMotionAreaFollower_GetPosition
     mov r1, r5
     bl func_02020060
     b L_02006f0c
@@ -329,7 +329,7 @@ L_02006eec:
     blt L_02006f0c
     add r0, r4, #0x3bc
     add r0, r0, #0x2c00
-    bl func_02009d78
+    bl ActorMotionAreaFollower_GetPosition
     mov r1, r5
     bl func_02020060
 L_02006f0c:

@@ -29,14 +29,14 @@ extern "C" {
 #endif
 
 extern void func_0200e4dc(void *object);
-extern void func_02009d14(void *object, void *source);
-extern void func_020099dc(void *object);
+extern void ActorMotionAreaFollower_Init(void *object, void *source);
+extern void ActorMotionGameWork_Init(void *object);
 extern void func_020ae90c(void *object);
 extern void *func_0201022c(void *task, GamePhaseRuntime *runtime);
 extern void GamePhaseRuntime_CreateFieldLoader(GamePhaseRuntime *runtime);
 extern void GXS_SetGraphicsMode(u32 bgMode);
 extern void DisplayController_SetVerticalOffset(s32 value);
-extern void func_0200a35c(void *object);
+extern void ActorMotionAreaFollower_Reset(void *object);
 extern void ActorMotion_Reset(void *object);
 extern void func_0200ae8c(void *object);
 extern void func_0200e650(void *object, const void *config);
@@ -44,12 +44,12 @@ extern void ActorInteractionRuntime_Start(void);
 extern void ActorDerivedType1_ResetToDisabledState(void *entity);
 extern void Actor_AdjustPositionForTerrainHeight(void *entity);
 extern void ActorDerivedType1_UpdateGameWorkRuntimeFlags(void *entity, s32 enabled);
-extern void func_0200a114(void *object, void *entity);
+extern void ActorMotionAreaFollower_BindActor(void *object, void *entity);
 extern void ActorMotion_BindActor(void *object, void *entity);
-extern void func_0200a310(void *object);
+extern void ActorMotionAreaFollower_RefreshCurrentArea(void *object);
 extern void func_0200ec6c(void *object, s32 enabled);
-extern void *func_02009d0c(void *object);
-extern void *func_02009d78(void *object);
+extern void *ActorMotion_GetPosition(void *object);
+extern void *ActorMotionAreaFollower_GetPosition(void *object);
 extern void ActorCollection_DispatchEventToActors(void *object, void *value);
 extern void GamePhaseRuntime_SetDisplayRouting(s32 value);
 extern void func_02020060(void *object, const void *config);
@@ -78,8 +78,8 @@ GamePhaseRuntime *GamePhaseRuntime_Init(GamePhaseRuntime *self)
 
     /* These adjacent objects share storage at 0x2fa4..0x2fbf. */
     *(s32 *)(bytes + 0x2fb8) = 0;
-    func_02009d14(bytes + 0x2fbc, bytes + 0x2fa4);
-    func_020099dc(bytes + 0x3044);
+    ActorMotionAreaFollower_Init(bytes + 0x2fbc, bytes + 0x2fa4);
+    ActorMotionGameWork_Init(bytes + 0x3044);
     TouchPoint_InitZero((TouchPoint *)(bytes + 0x30a8));
 
     *(s32 *)(bytes + 0x30b4) = 0;
@@ -135,7 +135,7 @@ void GamePhaseRuntime_Configure(GamePhaseRuntime *self, const void *configPointe
         (*(volatile u32 *)0x04001000 & ~0x1f00) | 0x1000;
 
     DisplayController_SetVerticalOffset(*(const s16 *)(config + 0x54));
-    func_0200a35c(bytes + 0x2fbc);
+    ActorMotionAreaFollower_Reset(bytes + 0x2fbc);
     ActorMotion_Reset(bytes + 0x3044);
     func_0200ae8c(data_02105310);
     GamePhaseRuntime_CreateSecondaryActorSubsystem(self, (void *)configPointer, 1);
@@ -175,17 +175,17 @@ void GamePhaseRuntime_Configure(GamePhaseRuntime *self, const void *configPointe
 
     ActorDerivedType1_UpdateGameWorkRuntimeFlags(entity,
                   (u32)(*(const s32 *)config - 2) <= 2 ? 1 : 0);
-    func_0200a114(bytes + 0x2fbc, entity);
+    ActorMotionAreaFollower_BindActor(bytes + 0x2fbc, entity);
     ActorMotion_BindActor(bytes + 0x3044, entity);
-    func_0200a310(bytes + 0x2fbc);
+    ActorMotionAreaFollower_RefreshCurrentArea(bytes + 0x2fbc);
     GamePhaseRuntime_RecreateDualScreenUiPresentation(self, GamePhaseRuntime_GetActiveAreaPlacementVariant(self), (void *)configPointer);
     *(s32 *)(bytes + 0x30fc) = 1;
     GamePhaseRuntime_SetPlacementMode(self, 1, 0);
     func_0200ec6c(bytes + 0x24, 1);
 
     ActorCollection_DispatchEventToActors((u8 *)*(void **)(bytes + 0x2fb8) + 8,
-                  func_02009d0c(bytes + 0x3044));
-    ActorCollection_DispatchEventToActors(bytes + 0x28, func_02009d78(bytes + 0x2fbc));
+                  ActorMotion_GetPosition(bytes + 0x3044));
+    ActorCollection_DispatchEventToActors(bytes + 0x28, ActorMotionAreaFollower_GetPosition(bytes + 0x2fbc));
 
     modeBits = *(const u32 *)(config + 0x40);
     if ((s32)(modeBits << 9) < 0)
@@ -196,11 +196,11 @@ void GamePhaseRuntime_Configure(GamePhaseRuntime *self, const void *configPointe
     switch ((modeBits >> 18) & 3) {
     case 1:
         if (*(const s16 *)(config + 0x12) >= 0)
-            func_02020060(func_02009d78(bytes + 0x2fbc), configPointer);
+            func_02020060(ActorMotionAreaFollower_GetPosition(bytes + 0x2fbc), configPointer);
         break;
     case 2:
         if (*(const s16 *)(config + 0x12) >= 0)
-            func_02020060(func_02009d78(bytes + 0x2fbc), configPointer);
+            func_02020060(ActorMotionAreaFollower_GetPosition(bytes + 0x2fbc), configPointer);
         break;
     }
 

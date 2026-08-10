@@ -14,7 +14,7 @@
 .extern func_02005058
 .extern func_020050a4
 .extern GamePhaseRuntime_GetActorCollection
-.extern func_02009d78
+.extern ActorMotionAreaFollower_GetPosition
 .extern func_0200b2c0
 .extern func_02012704
 .extern func_020127f8
@@ -202,7 +202,7 @@ L_02014570:
     ldr r5, [r0, #0x0]
     add r0, r5, #0x3bc
     add r0, r0, #0x2c00
-    bl func_02009d78
+    bl ActorMotionAreaFollower_GetPosition
     mov r2, #0x2000
     mov r1, r0
     str r2, [sp, #0x0]
@@ -234,7 +234,7 @@ L_020145e8:
     ldr r5, [r0, #0x0]
     add r0, r5, #0x3bc
     add r0, r0, #0x2c00
-    bl func_02009d78
+    bl ActorMotionAreaFollower_GetPosition
     str r8, [sp, #0x0]
     mov r2, #0x2000
     str r7, [sp, #0x4]
@@ -961,7 +961,7 @@ L_02015038:
     ldr r0, [r0, #0x0]
     add r0, r0, #0x3bc
     add r0, r0, #0x2c00
-    bl func_02009d78
+    bl ActorMotionAreaFollower_GetPosition
     str r8, [sp, #0x0]
     str r7, [sp, #0x4]
     mov r1, r0
@@ -992,7 +992,7 @@ L_020150a4:
     ldr r0, [r0, #0x0]
     add r0, r0, #0x3bc
     add r0, r0, #0x2c00
-    bl func_02009d78
+    bl ActorMotionAreaFollower_GetPosition
     mov r2, r7
     add r1, sp, #0x20
     bl func_ov050_0220e1a0
@@ -1035,7 +1035,7 @@ L_02015144:
     ldr r0, [r0, #0x0]
     add r0, r0, #0x3bc
     add r0, r0, #0x2c00
-    bl func_02009d78
+    bl ActorMotionAreaFollower_GetPosition
     ldr r2, L_020154d0
     mov r1, r0
     ldr r0, [r2, #0x0]
@@ -1101,7 +1101,7 @@ L_02015238:
     ldr r0, [r1, #0x0]
     add r0, r0, #0x3bc
     add r0, r0, #0x2c00
-    bl func_02009d78
+    bl ActorMotionAreaFollower_GetPosition
     bl func_ov054_0220ef80
     ldr r1, L_020154d0
     mov r5, r0
@@ -1283,7 +1283,7 @@ L_02015508:
     ldr r0, [r0, #0x0]
     add r0, r0, #0x3bc
     add r0, r0, #0x2c00
-    bl func_02009d78
+    bl ActorMotionAreaFollower_GetPosition
     str r6, [sp, #0x0]
     mov r1, r9
     mov r2, r8

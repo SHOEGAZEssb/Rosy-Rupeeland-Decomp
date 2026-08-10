@@ -5,7 +5,7 @@
 .extern func_020a1f80
 .extern func_020a20d4
 .extern func_020a214c
-.extern func_02009d78
+.extern ActorMotionAreaFollower_GetPosition
 .extern func_0201dc18
 .extern func_0201dc58
 .extern func_0201dde4

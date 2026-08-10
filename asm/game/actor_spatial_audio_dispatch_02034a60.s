@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/actor_spatial_audio_dispatch.c.
 .text
 .extern data_021052fc
-.extern func_02009d78
+.extern ActorMotionAreaFollower_GetPosition
 .extern func_020593ac
 .extern func_020adae4
 .extern func_020adc40
@@ -20,7 +20,7 @@ func_02034a60: ; 0x02034a60
     add r0, r0, #0x3bc
     add r0, r0, #0x2c00
     mov r5, r2
-    bl func_02009d78
+    bl ActorMotionAreaFollower_GetPosition
     ldr r1, [r0, #0x4]
     ldr r2, [r7, #0x1c]
     mvn r0, #0xfe
@@ -34,7 +34,7 @@ func_02034a60: ; 0x02034a60
     ldr r0, [r0, #0x0]
     add r0, r0, #0x3bc
     add r0, r0, #0x2c00
-    bl func_02009d78
+    bl ActorMotionAreaFollower_GetPosition
     ldr r1, [r0, #0x8]
     ldr r2, [r7, #0x20]
     mvn r0, #0xfe

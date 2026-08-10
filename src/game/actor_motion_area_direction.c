@@ -17,7 +17,7 @@ extern s32 func_02011794(void *context, s32 area, const s16 *rectangle);
  * and original Y-32..Y. Returns the helper's observed direction code; only
  * temporary state changes and no hardware or global state is touched.
  */
-s32 func_0200a124(ActorMotionAreaFollower *self, void *actor, s32 area)
+s32 ActorMotionAreaFollower_QueryCrossingDirection(ActorMotionAreaFollower *self, void *actor, s32 area)
 {
     VecFx32Object position;
     s16 rectangle[4];

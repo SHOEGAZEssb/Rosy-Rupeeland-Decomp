@@ -5,7 +5,7 @@
 .extern func_02005058
 .extern func_020050c8
 .extern func_02008740
-.extern func_02009d78
+.extern ActorMotionAreaFollower_GetPosition
 
     .global func_020285a4
     .type func_020285a4, @function
@@ -14,7 +14,7 @@ func_020285a4: ; 0x020285a4
     sub sp, sp, #0x20
     mov r4, r0
     ldr r0, [r4, #0x8]
-    bl func_02009d78
+    bl ActorMotionAreaFollower_GetPosition
     mov r1, r0
     add r0, sp, #0x10
     bl func_02005030

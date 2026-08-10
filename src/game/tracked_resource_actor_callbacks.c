@@ -11,7 +11,7 @@ extern void *data_021052fc;
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *func_02009d78(void *object);
+extern void *ActorMotionAreaFollower_GetPosition(void *object);
 extern void func_02032a94(void *actor, void *context, s32 condition);
 extern void Actor_SetInteractionFlag2000(void *actor, void *context);
 extern void func_02034a60(void *actor, u16 value, s32 mode,
@@ -69,7 +69,7 @@ void func_0204ff98(void *actor)
     void *object = FIELD(void *, actor, 0x1fc);
     u16 value = FIELD(u16, object, 0x1e);
     if (value != 0) {
-        void *point = func_02009d78((u8 *)data_021052fc + 0x2fbc);
+        void *point = ActorMotionAreaFollower_GetPosition((u8 *)data_021052fc + 0x2fbc);
         s32 left = FIELD(s16, actor, 0x68);
         s32 top = FIELD(s16, actor, 0x6a);
         s32 right = FIELD(s16, actor, 0x6c);

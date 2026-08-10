@@ -11,7 +11,7 @@ extern "C" {
 extern void func_02004fe0(void *value);
 extern s32 GamePhaseRuntime_GetActiveAreaPlacementVariant(GamePhaseRuntime *self);
 extern void func_0200500c(void *value, s32 x, s32 y, s32 z);
-extern void *func_02009d0c(void *object);
+extern void *ActorMotion_GetPosition(void *object);
 extern void func_02008378(void *destination, const void *left,
                           const void *right);
 extern void func_020050a4(void *destination, const void *source);
@@ -47,18 +47,18 @@ void func_0200875c(void *destination, GamePhaseRuntime *self)
         variant = GamePhaseRuntime_GetActiveAreaPlacementVariant(self);
         if (variant == 0) {
             func_0200500c(mode1Offset, -0x10000, -0x28000, 0);
-            func_02008378(combined, func_02009d0c(b + 0x3044), mode1Offset);
+            func_02008378(combined, ActorMotion_GetPosition(b + 0x3044), mode1Offset);
             func_020050a4(base, combined);
             func_02005058(combined);
             func_02005058(mode1Offset);
         } else if (variant == 1 || variant == 2) {
-            func_020050a4(base, func_02009d0c(b + 0x3044));
+            func_020050a4(base, ActorMotion_GetPosition(b + 0x3044));
         } else {
             OS_Halt();
         }
         break;
     case 2:
-        func_020050a4(base, func_02009d0c(b + 0x3044));
+        func_020050a4(base, ActorMotion_GetPosition(b + 0x3044));
         break;
     case 3:
         func_0200500c(mode3Offset, -0x10000, -0x30000, 0);

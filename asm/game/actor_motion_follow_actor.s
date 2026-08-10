@@ -5,8 +5,8 @@
 .extern func_02004fe0
 .extern func_02005058
 .extern func_020050c8
-.global func_02009c20
-func_02009c20: ; 0x02009c20
+.global ActorMotion_UpdateFromBoundActor
+ActorMotion_UpdateFromBoundActor: ; 0x02009c20
     stmdb sp!, {r4, lr}
     sub sp, sp, #0x10
     mov r4, r0
@@ -70,11 +70,11 @@ L_02009cf4:
     ldmia sp!, {r4, pc}
 L_02009d08: .word data_021052fc
 
-    .size func_02009c20, .-func_02009c20
+    .size ActorMotion_UpdateFromBoundActor, .-ActorMotion_UpdateFromBoundActor
 
-    .global func_02009d0c
-func_02009d0c: ; 0x02009d0c
+    .global ActorMotion_GetPosition
+ActorMotion_GetPosition: ; 0x02009d0c
     add r0, r0, #0x8
     bx lr
-    .size func_02009d0c, .-func_02009d0c
+    .size ActorMotion_GetPosition, .-ActorMotion_GetPosition
 

@@ -32,7 +32,7 @@
 .extern ActorMotion_BindActor
 .extern ActorMotion_SetTarget
 .extern ActorMotionJitter_EnsureMinimum
-.extern func_0200a114
+.extern ActorMotionAreaFollower_BindActor
 .extern func_0201e0ec
 .extern func_0201f864
 .extern func_020349b8
@@ -93,7 +93,7 @@ func_ov090_02217d70:
     mov r1, r4
     add r0, r0, #0x3bc
     add r0, r0, #0x2c00
-    bl func_0200a114
+    bl ActorMotionAreaFollower_BindActor
     ldr r0, .L_02218cf0
     mov r1, r4
     ldr r0, [r0, #0x0]

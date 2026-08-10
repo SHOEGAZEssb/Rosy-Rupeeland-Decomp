@@ -3,7 +3,7 @@
 .extern data_021052fc
 .extern func_02005030
 .extern func_02005058
-.extern func_02009d78
+.extern ActorMotionAreaFollower_GetPosition
 .extern func_ov073_02210338
 .extern func_ov073_022106d0
 
@@ -67,7 +67,7 @@ func_ov073_02210a08:
     ldrh r5, [r1, #0x28]
     add r0, r0, #0x3bc
     add r0, r0, #0x2c00
-    bl func_02009d78
+    bl ActorMotionAreaFollower_GetPosition
     mov r1, r0
     ldr r0, [r4, #0x8]
     mov r2, r5
@@ -76,7 +76,7 @@ func_ov073_02210a08:
     ldr r0, [r0, #0x0]
     add r0, r0, #0x3bc
     add r0, r0, #0x2c00
-    bl func_02009d78
+    bl ActorMotionAreaFollower_GetPosition
     mov r1, r0
     ldr r0, [r4, #0xc]
     mov r2, r5

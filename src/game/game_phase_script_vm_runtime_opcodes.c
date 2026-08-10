@@ -13,7 +13,7 @@ extern u32 ActorMotion_ConfigureGridTarget(void *collection, u32 a, u32 b, u32 c
 extern u32 ActorMotion_ConfigureBoundActorTarget(void *collection, u32 a, u32 b);
 extern void ActorMotion_SetMode2(void *collection);
 extern void ActorMotion_SetMode1AndClearOutputs(void *collection);
-extern void func_0200a114(void *collection, void *object);
+extern void ActorMotionAreaFollower_BindActor(void *collection, void *object);
 extern u32 genrand_int32(void);
 #ifdef __cplusplus
 }
@@ -54,7 +54,7 @@ s32 func_02012814(GamePhaseScriptVm *self)
     case 5: {
         void *collection = GamePhaseRuntime_GetActorCollection(runtime, 1);
         void *object = ActorCollection_FindActorByDescriptorValue(collection, a);
-        func_0200a114(runtime + 0x2fbc, object);
+        ActorMotionAreaFollower_BindActor(runtime + 0x2fbc, object);
         break;
     }
     case 6:

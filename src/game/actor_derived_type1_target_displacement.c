@@ -27,7 +27,7 @@ extern s32 func_020ada8c(s32 value, s32 divisor);
 extern void func_02010c00(void *context, s32 value, s32 extra);
 extern void func_0200500c(void *vector, s32 x, s32 y, s32 z);
 extern void func_02004fe0(void *vector);
-extern void *func_02009d78(void *manager);
+extern void *ActorMotionAreaFollower_GetPosition(void *manager);
 extern void *func_02022cb0(void *allocation, void *resource, void *owner,
                            s32 value, s32 first, s32 second);
 extern void func_0201ded4(void *manager, void *object);
@@ -180,7 +180,7 @@ void ActorDerivedType1_ApplyWeightedCollisionDisplacement(
             object = Heap_Alloc(0x44, data_020df4a4, 4, &gHeapContext);
             if (object != 0) {
                 void *managerResource =
-                    func_02009d78(data_021052fc + 0x2fbc);
+                    ActorMotionAreaFollower_GetPosition(data_021052fc + 0x2fbc);
                 object = func_02022cb0(object, managerResource,
                                       *(void **)(data_021052fc + 0x2ea4),
                                       negative, 0x2000, -0xc0);

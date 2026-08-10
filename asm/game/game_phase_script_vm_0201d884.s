@@ -19,7 +19,7 @@
 .extern GamePhaseRuntime_FinalizeActorCollections
 .extern GamePhaseRuntime_SynchronizeActorPlacement
 .extern func_0201dcec
-.extern func_02009d78
+.extern ActorMotionAreaFollower_GetPosition
 .extern func_02010e68
 .extern data_020d5dcc
 .extern data_020d5df8
@@ -99,7 +99,7 @@ L_0201d920:
     ldr r0, [r0, #0x0]
     add r0, r0, #0x3bc
     add r0, r0, #0x2c00
-    bl func_02009d78
+    bl ActorMotionAreaFollower_GetPosition
     mov r1, r0
     ldr r0, [r4, #0x3c]
     bl func_ov033_021fd324 ; func_ov037_021fd324

@@ -7,7 +7,7 @@
 .extern data_021052fc
 .extern func_02005058
 .extern func_020050a4
-.extern func_02009d78
+.extern ActorMotionAreaFollower_GetPosition
 .extern func_0201e250
 .extern func_0201edd0
 .extern func_0201f0fc

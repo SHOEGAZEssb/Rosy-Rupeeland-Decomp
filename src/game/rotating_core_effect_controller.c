@@ -76,7 +76,7 @@ extern void func_0206c0b0(void *, s32, s32);
 extern void func_0206bb18(void *, const ControllerVector *);
 extern void *func_0201ebac(void *, const void *, u8 *, s32, s16, s16);
 extern void func_0201e3b8(void *, s32);
-extern const void *func_02009d78(void *);
+extern const void *ActorMotionAreaFollower_GetPosition(void *);
 extern u32 genrand_int32(void);
 extern u64 func_020bf1f8(u32, u32);
 #ifdef __cplusplus
@@ -280,7 +280,7 @@ s32 func_020256b4(RotatingCoreEffectController *self)
             self->effect28 = 0;
         } else {
             ((ObjectCameraUpdate)self->effect28->vtable00[4])(
-                self->effect28, func_02009d78(data_021052fc + 0x2fbc));
+                self->effect28, ActorMotionAreaFollower_GetPosition(data_021052fc + 0x2fbc));
         }
     }
     func_0206c0b0(self->core08, self->value30, -1);

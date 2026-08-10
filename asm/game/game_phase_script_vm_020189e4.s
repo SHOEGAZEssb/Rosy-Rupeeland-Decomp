@@ -2,7 +2,7 @@
 .text
 .extern func_02008354
 .extern func_020083b0
-.extern func_0200a2dc
+.extern S16Rectangle_Translate
 .extern func_02012704
 .extern func_020188e4
 .extern func_020188fc
@@ -150,7 +150,7 @@ L_02018bdc:
     mov r1, r7
     mov r2, r6
     add r0, r0, #0x60
-    bl func_0200a2dc
+    bl S16Rectangle_Translate
     b L_02018c08
 L_02018bf4:
     ldr r0, [r8, #0x84]

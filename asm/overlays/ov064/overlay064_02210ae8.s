@@ -6,7 +6,7 @@
 .extern GamePhaseRuntime_SynchronizeActorPlacement
 .extern func_0200875c
 .extern GamePhaseRuntime_UpdateDualScreenUiPresentation
-.extern func_02009d78
+.extern ActorMotionAreaFollower_GetPosition
 .extern func_02010e68
 .extern func_0201dcec
 .extern ActorCollection_DispatchEventToActors
@@ -50,7 +50,7 @@ func_ov064_02210ae8:
     ldr r0, [r1, #0x0]
     add r0, r0, #0x3bc
     add r0, r0, #0x2c00
-    bl func_02009d78
+    bl ActorMotionAreaFollower_GetPosition
     mov r1, r0
     mov r0, r6
     bl ActorCollection_DispatchEventToActors

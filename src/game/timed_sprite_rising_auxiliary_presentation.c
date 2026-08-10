@@ -36,7 +36,7 @@ extern RisingAuxiliaryPresentation *func_0201fa44(
     RisingAuxiliaryPresentation *self);
 extern void func_02005030(PresentationTrack *track, const void *source);
 extern void func_02005058(void *track);
-extern void *func_02009d78(void *source);
+extern void *ActorMotionAreaFollower_GetPosition(void *source);
 extern s32 DisplayController_GetSubScreenVerticalOffset(void);
 #ifdef __cplusplus
 }
@@ -88,7 +88,7 @@ s32 func_0201fb84(RisingAuxiliaryPresentation *self)
     PresentationTrack position;
     s32 finished;
 
-    func_02005030(&position, func_02009d78(data_021052fc + 0x2fbc));
+    func_02005030(&position, ActorMotionAreaFollower_GetPosition(data_021052fc + 0x2fbc));
     *(s32 *)&position.bytes[8] -= DisplayController_GetSubScreenVerticalOffset() << 12;
     ((ChildUpdate)(*(void ***)self->presentation08)[2])(
         self->presentation08, &position);

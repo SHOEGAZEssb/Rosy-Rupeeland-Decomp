@@ -3,7 +3,7 @@
 .extern data_021052fc
 .extern func_02004fe0
 .extern func_02005058
-.extern func_02009d78
+.extern ActorMotionAreaFollower_GetPosition
 .extern Actor_SnapshotTransientState
 .extern func_02050078
 .extern func_ov088_0221a98c
@@ -32,7 +32,7 @@ func_ov088_0221b428:
     ldr r5, [r1, #0x0]
     add r0, r0, #0x3bc
     add r0, r0, #0x2c00
-    bl func_02009d78
+    bl ActorMotionAreaFollower_GetPosition
     ldr r1, .L_0221b500
     ldrh r3, [r5, #0x40]
     ldr r2, .L_0221b504
@@ -43,7 +43,7 @@ func_ov088_0221b428:
     ldr r5, [r2, #0x0]
     str r1, [sp, #0x14]
     add r0, r0, #0x2c00
-    bl func_02009d78
+    bl ActorMotionAreaFollower_GetPosition
     ldr r3, [r0, #0x8]
     ldrh r2, [r5, #0x42]
     ldr r1, [sp, #0x1c]

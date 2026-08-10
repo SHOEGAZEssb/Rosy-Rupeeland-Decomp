@@ -8,16 +8,16 @@
 .extern func_020050a4
 .extern func_02008740
 .extern ActorMotionJitter_Update
-.extern func_0200a124
-.extern func_0200a1a0
+.extern ActorMotionAreaFollower_QueryCrossingDirection
+.extern ActorMotionAreaFollower_ClampToAreaBounds
 .extern func_020116e8
 .extern func_02011788
 .extern Type7Actor_GetStateCode
 .extern func_02056f00
 .extern func_020adcac
 .extern gGameWork
-.global func_02009d80
-func_02009d80: ; 0x02009d80
+.global ActorMotionAreaFollower_Update
+ActorMotionAreaFollower_Update: ; 0x02009d80
     stmdb sp!, {r3, r4, r5, r6, r7, r8, r9, lr}
     sub sp, sp, #0x50
     mov r4, r0
@@ -45,7 +45,7 @@ func_02009d80: ; 0x02009d80
     mov r0, r4
     mov r1, r7
     mov r2, r5
-    bl func_0200a124
+    bl ActorMotionAreaFollower_QueryCrossingDirection
     mov r6, r0
     ldr r0, [r4, #0x68]
     mov r1, r5
@@ -56,7 +56,7 @@ func_02009d80: ; 0x02009d80
     mov r0, r4
     mov r1, r5
     mov r2, r9
-    bl func_0200a1a0
+    bl ActorMotionAreaFollower_ClampToAreaBounds
     ldr r1, [r4, #0x84]
     mvn r0, #0x0
     cmp r1, r0
@@ -255,5 +255,5 @@ L_0200a070:
 L_0200a108: .word gGameWork
 L_0200a10c: .word 0x404
 L_0200a110: .word data_021052fc
-    .size func_02009d80, .-func_02009d80
+    .size ActorMotionAreaFollower_Update, .-ActorMotionAreaFollower_Update
 

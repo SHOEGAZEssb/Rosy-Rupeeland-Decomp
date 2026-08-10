@@ -9,7 +9,7 @@
 extern "C" {
 #endif
 extern void func_02008354(void *output, const void *input);
-extern void func_02009d80(void *object, const void *value);
+extern void ActorMotionAreaFollower_Update(void *object, const void *value);
 extern void func_020086f8(void *state, GamePhaseRuntime *self);
 extern void func_0200875c(void *state, GamePhaseRuntime *self);
 extern void func_0200ecbc(void *object, const void *state);
@@ -20,7 +20,7 @@ extern void func_02008378(void *output, const void *state, const void *offset);
 extern void func_02012150(void *actor, const void *state);
 extern s32 func_020124f0(void *actor);
 extern s32 func_0201250c(void *actor);
-extern void func_02009a2c(void *object, const void *value);
+extern void ActorMotionGameWork_Update(void *object, const void *value);
 #ifdef __cplusplus
 }
 #endif
@@ -56,7 +56,7 @@ s32 GamePhaseRuntime_SynchronizeActorPlacement(GamePhaseRuntime *self, s32 actor
                       (s32)((packed & 0xffff) << 20) >> 16,
                       (s32)((packed >> 16) << 20) >> 16);
         func_02008354(compact, raw0);
-        func_02009d80(b + 0x2fbc, compact);
+        ActorMotionAreaFollower_Update(b + 0x2fbc, compact);
         func_020086f8(full0, self);
         func_0200ecbc(b + 0x24, full0);
         func_02005058(full0);
@@ -81,7 +81,7 @@ s32 GamePhaseRuntime_SynchronizeActorPlacement(GamePhaseRuntime *self, s32 actor
                 func_020083b0(raw1, 0, 0, 0, 0);
                 func_02008354(compact, raw1);
             }
-            func_02009a2c(b + 0x3044, compact);
+            ActorMotionGameWork_Update(b + 0x3044, compact);
             if (*(void **)(b + 0x30fc) != 0 &&
                 *(void **)(b + 0x2fb8) != 0) {
                 func_0200875c(full0, self);

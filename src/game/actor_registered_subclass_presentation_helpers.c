@@ -15,7 +15,7 @@ extern "C" {
 extern s32 func_020be334(s32 value);
 extern s32 func_020be328(s32 value);
 extern s32 func_020adae4(s32 dividend, s32 divisor);
-extern void *func_02009d78(void *manager);
+extern void *ActorMotionAreaFollower_GetPosition(void *manager);
 extern void func_020593ac(void *context, s32 sound, s32 variant,
                           s32 volume, s32 pan, s32 extra);
 extern void *func_0201f864(void *allocation, ...);
@@ -39,7 +39,7 @@ void ActorRegisteredSubclass_EmitImpactFeedback(void *self)
     s32 magnitude = func_020be334(*(s32 *)(actor + 0x44));
 
     if (magnitude > 0x1000) {
-        u8 *reference = (u8 *)func_02009d78(data_021052fc + 0x2fbc);
+        u8 *reference = (u8 *)ActorMotionAreaFollower_GetPosition(data_021052fc + 0x2fbc);
         s32 pan = (*(s32 *)(actor + 0x1c) - *(s32 *)(reference + 4) -
                    0x80000) >> 12;
         s32 volume;

@@ -11,7 +11,7 @@ extern void *gSceneManager;
 extern "C" {
 #endif
 extern void func_02010c00(void *context, s32 value, s32 extra);
-extern void *func_02009d78(void *manager);
+extern void *ActorMotionAreaFollower_GetPosition(void *manager);
 extern void *func_02022cb0(void *allocation, void *resource, void *owner,
                            s32 value, s32 first, s32 second);
 extern void func_0201ded4(void *manager, void *object);
@@ -54,7 +54,7 @@ s32 ActorDerivedType1_TryApplyInteractionAmount(void *self, s32 amount, void *so
         func_02010c00(gLupyContext, negative, 0);
         allocation = Heap_Alloc(0x44, data_020df4a4, 4, &gHeapContext);
         if (allocation != 0) {
-            void *resource = func_02009d78(data_021052fc + 0x2fbc);
+            void *resource = ActorMotionAreaFollower_GetPosition(data_021052fc + 0x2fbc);
             effect = func_02022cb0(allocation, resource, actor, negative,
                                    0x2000, -0xc0);
         }

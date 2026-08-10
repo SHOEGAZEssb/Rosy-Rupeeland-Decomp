@@ -9,7 +9,7 @@
 .extern SplineMover_Update
 .extern SplineMover_Evaluate2D
 .extern GamePhaseRuntime_UpdateDualScreenUiPresentation
-.extern func_0200a310
+.extern ActorMotionAreaFollower_RefreshCurrentArea
 .extern func_02010104
 .extern func_02010e68
 .extern func_020122a0
@@ -190,7 +190,7 @@ func_ov074_022101dc:
     ldr r0, [r0, #0x0]
     add r0, r0, #0x3bc
     add r0, r0, #0x2c00
-    bl func_0200a310
+    bl ActorMotionAreaFollower_RefreshCurrentArea
     ldr r0, [r4, #0x140]
     orr r0, r0, #0x1
     str r0, [r4, #0x140]

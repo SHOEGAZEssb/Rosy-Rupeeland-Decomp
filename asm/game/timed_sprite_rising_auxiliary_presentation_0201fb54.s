@@ -6,7 +6,7 @@
 .extern DisplayController_GetSubScreenVerticalOffset
 .extern func_02005030
 .extern func_02005058
-.extern func_02009d78
+.extern ActorMotionAreaFollower_GetPosition
 .extern func_0201f724
 .extern func_0201fa44
 

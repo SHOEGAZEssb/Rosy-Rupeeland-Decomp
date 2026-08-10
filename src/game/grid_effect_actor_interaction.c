@@ -14,7 +14,7 @@ extern void *gSoundContext;
 extern "C" {
 #endif
 extern void Sound_Play(void *context, s32 bank, s32 sound);
-extern void *func_02009d78(void *object);
+extern void *ActorMotionAreaFollower_GetPosition(void *object);
 extern void func_020050f0(void *destination, const void *source);
 extern void ActorDerivedType1_TrySetStateVector(void *actor, const void *position, s32 value,
                           s32 mode);
@@ -58,7 +58,7 @@ void func_0204f4d4(void *actor, const void *trigger)
     FIELD(u8, FIELD(void *, actor, 0x54), 0x3a) = 1;
     FIELD(u16, FIELD(void *, actor, 0x54), 0x24) &= (u16)~4;
     FIELD(u32, actor, 0x14) |= 0x1000000;
-    void *point = func_02009d78((u8 *)data_021052fc + 0x2fbc);
+    void *point = ActorMotionAreaFollower_GetPosition((u8 *)data_021052fc + 0x2fbc);
     func_020050f0((u8 *)actor + 0x18, point);
     FIELD(s32, actor, 0x20) -= FIELD(s32, actor, 0x24);
     FIELD(s32, actor, 0x24) = 0;

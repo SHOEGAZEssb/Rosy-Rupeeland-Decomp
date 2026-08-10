@@ -16,7 +16,7 @@ extern s32 func_020116e8(void *context, s32 x, s32 y);
  * integer X and Y-16 position, and store the returned area as previousArea.
  * Returns no value; only this helper changes and no hardware is touched.
  */
-void func_0200a310(ActorMotionAreaFollower *self)
+void ActorMotionAreaFollower_RefreshCurrentArea(ActorMotionAreaFollower *self)
 {
     VecFx32Object position;
     u8 *actor = (u8 *)self->jitter.base.actor;
@@ -33,7 +33,7 @@ void func_0200a310(ActorMotionAreaFollower *self)
  * transition fields, assign a zero offset vector, and restore previousArea to
  * -1. Returns no value and affects no external or hardware state.
  */
-void func_0200a35c(ActorMotionAreaFollower *self)
+void ActorMotionAreaFollower_Reset(ActorMotionAreaFollower *self)
 {
     VecFx32Object zero;
 

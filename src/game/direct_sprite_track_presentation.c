@@ -50,7 +50,7 @@ extern u8 *func_02073fc4(void *resource, s32 field08, s32 field0c,
                          s32 field10, s32 mode);
 extern void func_02072b68(void *sprite, s32 value);
 extern void func_02074038(void *spriteOwner);
-extern void *func_02009d78(void *source);
+extern void *ActorMotionAreaFollower_GetPosition(void *source);
 extern void func_0201df44(void *manager, void *entry);
 #ifdef __cplusplus
 }
@@ -159,7 +159,7 @@ void func_0201fe68(s32 selector, s32 field0c, s32 field10, s32 field08,
         (DirectSpriteTrackPresentation *)Heap_Alloc(
             0x2c, data_020d6278, 4, &gHeapContext);
     if (self != 0) {
-        void *position = func_02009d78(data_021052fc + 0x2fbc);
+        void *position = ActorMotionAreaFollower_GetPosition(data_021052fc + 0x2fbc);
         func_0201fc28(self, selector, field0c, field10, field08, spriteValue,
                       x, y, signedField, field28, field3a, (s32)position);
     }

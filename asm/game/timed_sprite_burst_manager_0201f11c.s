@@ -14,7 +14,7 @@
 .extern func_02004fe0
 .extern func_02005030
 .extern func_02005058
-.extern func_02009d0c
+.extern ActorMotion_GetPosition
 .extern func_0201e250
 .extern func_0201e3b8
 .extern func_0201e454

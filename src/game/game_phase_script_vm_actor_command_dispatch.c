@@ -14,7 +14,7 @@ extern const char data_020d5b34[];
 extern const char data_020d5b2c[];
 extern void *data_ov054_0220f160;
 extern void OS_Halt(void);
-extern void *func_02009d78(...);
+extern void *ActorMotionAreaFollower_GetPosition(...);
 extern void *GamePhaseRuntime_GetActorCollection(...);
 extern void *ActorCollection_FindActorByDescriptorValue(...);
 extern void *Actor_GetCollection(...);
@@ -79,7 +79,7 @@ static void *getScriptObjectManager(void)
 /* Resolve the global runtime context stored through the object at offset 0x2fbc. */
 static void *getScriptEffectContext(void)
 {
-    return func_02009d78((u8 *)data_021052fc + 0x2fbc);
+    return ActorMotionAreaFollower_GetPosition((u8 *)data_021052fc + 0x2fbc);
 }
 
 /* Resolve the manager's address-derived secondary interface. */

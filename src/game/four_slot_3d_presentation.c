@@ -48,7 +48,7 @@ extern void func_02091bac(DisplayControlElement *, s32, s32, s32, s32);
 extern s32 func_02091c7c(DisplayControlElement *, s32);
 extern s32 GameWork_TestFlag(void *, u16);
 extern u32 genrand_int32(void);
-extern const void *func_02009d78(void *);
+extern const void *ActorMotionAreaFollower_GetPosition(void *);
 extern s32 func_020ae024(s32, s32);
 extern void func_020b0a54(s32, s32, s32, s32, s32, s32, s32, s32, s32);
 #ifdef __cplusplus
@@ -123,7 +123,7 @@ s32 func_020246d8(FourSlot3dPresentation *self)
     if ((data_021052fc[0x30cc] & 4) != 0) {
         return 0;
     }
-    camera = (const s32 *)func_02009d78(data_021052fc + 0x2fbc);
+    camera = (const s32 *)ActorMotionAreaFollower_GetPosition(data_021052fc + 0x2fbc);
     for (index = 0; index < 4; index++) {
         if (!GameWork_TestFlag(gGameWork, data_020d6780[index])) {
             self->intensity0c[index] += 0x10;

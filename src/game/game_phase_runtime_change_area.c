@@ -18,7 +18,7 @@ extern s32 func_020beb18(s32 value);
 extern s32 func_020be8c0(s32 a, s32 b);
 extern s32 func_020beb6c(s32 a, s32 b);
 extern s32 func_020beae4(s32 value);
-extern void *func_02009d78(void *object);
+extern void *ActorMotionAreaFollower_GetPosition(void *object);
 extern void func_02005030(void *destination, const void *source);
 extern void func_020050c8(void *destination, const void *offset);
 extern void ActorMotion_SetPosition(void *object, const void *transform);
@@ -86,7 +86,7 @@ s32 GamePhaseRuntime_ChangeToNeighborArea(GamePhaseRuntime *self, s32 direction)
         *(s32 *)(offset + 8) = func_020beae4(component);
     }
 
-    func_02005030(transform, func_02009d78(b + 0x2fbc));
+    func_02005030(transform, ActorMotionAreaFollower_GetPosition(b + 0x2fbc));
     func_020050c8(transform, offset);
     ActorMotion_SetPosition(b + 0x2fbc, transform);
 
@@ -102,7 +102,7 @@ s32 GamePhaseRuntime_ChangeToNeighborArea(GamePhaseRuntime *self, s32 direction)
     ActorCollection_DispatchEventToActors(b + 0x28, transform);
 
     if (*(s16 *)(area + 0x12) >= 0)
-        func_02020060(func_02009d78(b + 0x2fbc), area);
+        func_02020060(ActorMotionAreaFollower_GetPosition(b + 0x2fbc), area);
 
     func_0201140c(gLupyContext, 1);
     *(u16 *)((u8 *)gLupyContext + 0xbc) = 250;

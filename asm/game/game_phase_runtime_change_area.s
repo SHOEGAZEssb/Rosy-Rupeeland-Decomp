@@ -12,7 +12,7 @@
 .extern GamePhaseRuntime_InitScaledAreaCoordinates
 .extern GamePhaseRuntime_RefreshAreaAuxiliaryObject
 .extern ActorMotion_SetPosition
-.extern func_02009d78
+.extern ActorMotionAreaFollower_GetPosition
 .extern func_0200ae8c
 .extern func_0200e714
 .extern func_0201140c
@@ -150,7 +150,7 @@ L_02007cb0:
 L_02007cb8:
     add r0, r7, #0x3bc
     add r0, r0, #0x2c00
-    bl func_02009d78
+    bl ActorMotionAreaFollower_GetPosition
     mov r1, r0
     add r0, sp, #0xc
     bl func_02005030
@@ -201,7 +201,7 @@ L_02007d24:
     blt L_02007d94
     add r0, r7, #0x3bc
     add r0, r0, #0x2c00
-    bl func_02009d78
+    bl ActorMotionAreaFollower_GetPosition
     mov r1, r5
     bl func_02020060
 L_02007d94:

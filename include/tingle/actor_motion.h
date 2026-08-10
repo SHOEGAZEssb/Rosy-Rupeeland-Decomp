@@ -98,24 +98,24 @@ ActorMotionJitter *ActorMotionJitter_DestroyAndFree(ActorMotionJitter *self);
 void ActorMotionJitter_Update(ActorMotionJitter *self, const s16 *bounds);
 void ActorMotionJitter_EnsureMinimum(ActorMotionJitter *self, s32 minimumFrames,
                    s32 minimumRadius);
-ActorMotion *func_020099dc(ActorMotion *self);
-ActorMotion *func_020099fc(ActorMotion *self);
-ActorMotion *func_02009a10(ActorMotion *self);
-s32 func_02009a2c(ActorMotion *self, const s16 *bounds);
-s32 func_02009c20(ActorMotion *self);
-VecFx32Object *func_02009d0c(ActorMotion *self);
-ActorMotionAreaFollower *func_02009d14(ActorMotionAreaFollower *self,
+ActorMotion *ActorMotionGameWork_Init(ActorMotion *self);
+ActorMotion *ActorMotionGameWork_Destroy(ActorMotion *self);
+ActorMotion *ActorMotionGameWork_DestroyAndFree(ActorMotion *self);
+s32 ActorMotionGameWork_Update(ActorMotion *self, const s16 *bounds);
+s32 ActorMotion_UpdateFromBoundActor(ActorMotion *self);
+VecFx32Object *ActorMotion_GetPosition(ActorMotion *self);
+ActorMotionAreaFollower *ActorMotionAreaFollower_Init(ActorMotionAreaFollower *self,
                                        void *areaContext);
-ActorMotionAreaFollower *func_02009d58(ActorMotionAreaFollower *self);
-VecFx32Object *func_02009d78(ActorMotionAreaFollower *self);
-s32 func_02009d80(ActorMotionAreaFollower *self, const s16 *bounds);
-void func_0200a114(ActorMotion *self, void *actor);
-s32 func_0200a124(ActorMotionAreaFollower *self, void *actor, s32 area);
-void func_0200a1a0(ActorMotionAreaFollower *self, s32 area,
+ActorMotionAreaFollower *ActorMotionAreaFollower_Destroy(ActorMotionAreaFollower *self);
+VecFx32Object *ActorMotionAreaFollower_GetPosition(ActorMotionAreaFollower *self);
+s32 ActorMotionAreaFollower_Update(ActorMotionAreaFollower *self, const s16 *bounds);
+void ActorMotionAreaFollower_BindActor(ActorMotion *self, void *actor);
+s32 ActorMotionAreaFollower_QueryCrossingDirection(ActorMotionAreaFollower *self, void *actor, s32 area);
+void ActorMotionAreaFollower_ClampToAreaBounds(ActorMotionAreaFollower *self, s32 area,
                    const s16 *fallbackBounds);
-void func_0200a2dc(s16 *rectangle, s32 x, s32 y);
-void func_0200a310(ActorMotionAreaFollower *self);
-void func_0200a35c(ActorMotionAreaFollower *self);
+void S16Rectangle_Translate(s16 *rectangle, s32 x, s32 y);
+void ActorMotionAreaFollower_RefreshCurrentArea(ActorMotionAreaFollower *self);
+void ActorMotionAreaFollower_Reset(ActorMotionAreaFollower *self);
 void func_0200a3b8(void *actor, void *collisionContext);
 s32 func_0200a63c(void *collisionContext, s32 x, s32 y, s32 z,
                   s32 actorHeight);

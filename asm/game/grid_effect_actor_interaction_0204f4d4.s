@@ -4,7 +4,7 @@
 .extern data_021e9ac0
 .extern gSoundContext
 .extern func_020050f0
-.extern func_02009d78
+.extern ActorMotionAreaFollower_GetPosition
 .extern ActorDerivedType1_TrySetStateVector
 .extern Type7Actor_ClearGlobalRelationshipToActor
 .extern func_0204faac
@@ -62,7 +62,7 @@ func_0204f4d4: ; 0x0204f4d4
     ldr r0, [r0, #0x0]
     add r0, r0, #0x3bc
     add r0, r0, #0x2c00
-    bl func_02009d78
+    bl ActorMotionAreaFollower_GetPosition
     mov r1, r0
     add r0, r4, #0x18
     bl func_020050f0

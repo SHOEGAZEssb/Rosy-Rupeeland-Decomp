@@ -14,7 +14,7 @@ extern const char data_020d5b54[], data_020d5b5c[], data_020d5b64[];
 extern const char data_020d5b6c[], data_020d5b74[], data_020d5b7c[];
 extern const char data_020d5b84[], data_020d5b8c[];
 extern void OS_Halt(void);
-extern void *func_02009d78(...);
+extern void *ActorMotionAreaFollower_GetPosition(...);
 extern void *ActorCollection_FindActorByDescriptorValue(...);
 extern void *Actor_GetCollection(...);
 extern void *func_02098490(...);
@@ -115,7 +115,7 @@ s32 func_02016238(GamePhaseActorScriptVm *self)
         VecFx32Object position;
         s32 x, y;
         func_02005030(&position,
-                      (const VecFx32Object *)func_02009d78(runtime + 0x2fbc));
+                      (const VecFx32Object *)ActorMotionAreaFollower_GetPosition(runtime + 0x2fbc));
         x = (*(s32 *)(actor + 0x1c) >> 12) - (position.value.y >> 12);
         y = (*(s32 *)(actor + 0x20) >> 12) - (*(s32 *)(actor + 0x24) >> 12)
             - (position.value.z >> 12) - 16;

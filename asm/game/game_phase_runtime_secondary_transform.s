@@ -8,7 +8,7 @@
 .extern func_02008378
 .extern func_02008740
 .extern GamePhaseRuntime_GetActiveAreaPlacementVariant
-.extern func_02009d0c
+.extern ActorMotion_GetPosition
 .extern OS_Halt
 
     .global func_0200875c
@@ -48,7 +48,7 @@ L_020087b8:
     bl func_0200500c
     add r0, r4, #0x44
     add r0, r0, #0x3000
-    bl func_02009d0c
+    bl ActorMotion_GetPosition
     mov r1, r0
     add r0, sp, #0x20
     add r2, sp, #0x30
@@ -64,7 +64,7 @@ L_020087b8:
 L_0200880c:
     add r0, r4, #0x44
     add r0, r0, #0x3000
-    bl func_02009d0c
+    bl ActorMotion_GetPosition
     mov r1, r0
     add r0, sp, #0x40
     bl func_020050a4
@@ -75,7 +75,7 @@ L_02008828:
 L_02008830:
     add r0, r4, #0x44
     add r0, r0, #0x3000
-    bl func_02009d0c
+    bl ActorMotion_GetPosition
     mov r1, r0
     add r0, sp, #0x40
     bl func_020050a4
