@@ -6,7 +6,7 @@
 .extern func_ov096_0221787c
 .extern func_ov096_02218178
 .extern func_ov096_02218308
-.extern func_0203e56c
+.extern ActorExtendedType2_InitializePresentation
 .extern func_020314b8
 .extern Actor_SnapshotTransientState
 .extern func_ov096_022178c0
@@ -197,7 +197,7 @@ data_ov096_02218b98:
     .word func_ov096_0221787c
     .word func_ov096_02218178
     .word func_ov096_02218308
-    .word func_0203e56c
+    .word ActorExtendedType2_InitializePresentation
     .word func_020314b8
     .word Actor_SnapshotTransientState
     .word func_ov096_022178c0
@@ -344,7 +344,7 @@ data_ov096_02218de8:
     .word func_ov096_02218370
     .word func_ov096_02218178
     .word func_ov096_02218308
-    .word func_0203e56c
+    .word ActorExtendedType2_InitializePresentation
     .word func_020314b8
     .word Actor_SnapshotTransientState
     .word func_ov096_022185d8

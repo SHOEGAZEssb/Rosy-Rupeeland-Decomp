@@ -15,9 +15,9 @@
 .extern func_02073fc4
 .extern genrand_int32
 .extern gHeapContext
-    .global func_0203e56c
-    .type func_0203e56c, @function
-func_0203e56c: ; 0x0203e56c
+    .global ActorExtendedType2_InitializePresentation
+    .type ActorExtendedType2_InitializePresentation, @function
+ActorExtendedType2_InitializePresentation: ; 0x0203e56c
     stmdb sp!, {r3, r4, r5, r6, r7, r8, lr}
     sub sp, sp, #0x4
     mov r7, r0
@@ -182,5 +182,5 @@ func_0203e56c: ; 0x0203e56c
 .L_0203e7bc: .word data_020e7570
 .L_0203e7c0: .word data_020e7ffc
 .L_0203e7c4: .word data_020e8394
-    .size func_0203e56c, . - func_0203e56c
+    .size ActorExtendedType2_InitializePresentation, . - ActorExtendedType2_InitializePresentation
 

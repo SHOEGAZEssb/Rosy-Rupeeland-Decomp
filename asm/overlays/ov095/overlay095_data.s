@@ -136,7 +136,7 @@
 .extern func_ov095_0221b214
 .extern func_ov095_0221b2a0
 .extern func_ov095_0221b2c0
-.extern func_0203e56c
+.extern ActorExtendedType2_InitializePresentation
 .extern func_ov095_0221b2e8
 .extern func_ov095_0221ba38
 .extern func_ov095_0221b304
@@ -477,7 +477,7 @@ data_ov095_0221cf4c:
     .word func_ov095_0221b2c0
     .word func_ov095_0221b0a4
     .word func_ov095_0221b1ec
-    .word func_0203e56c
+    .word ActorExtendedType2_InitializePresentation
     .word func_020314b8
     .word func_ov095_0221b2e8
     .word func_ov095_0221ba38

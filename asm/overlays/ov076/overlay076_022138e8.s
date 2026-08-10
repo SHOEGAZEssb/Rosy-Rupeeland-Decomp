@@ -2,7 +2,7 @@
 ; Matching fallback for the portable implementation in src/overlays/ov076/overlay076_recovery.c.
 .extern ActorCollection_GetSpriteOwner
 .extern Actor_GetCollection
-.extern func_0203e56c
+.extern ActorExtendedType2_InitializePresentation
 .extern func_02072b68
 .extern func_02073fc4
 
@@ -10,7 +10,7 @@
 func_ov076_022138e8:
     stmdb sp!, {r3, r4, r5, lr}
     mov r4, r0
-    bl func_0203e56c
+    bl ActorExtendedType2_InitializePresentation
     ldr r3, [r4, #0x54]
     mvn r0, #0x0
     ldrh r2, [r3, #0x24]

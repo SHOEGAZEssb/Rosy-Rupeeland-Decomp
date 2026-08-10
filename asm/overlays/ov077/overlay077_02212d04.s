@@ -6,7 +6,7 @@
 .extern func_02007f0c
 .extern func_02028388
 .extern ActorCollection_GetSpriteOwner
-.extern func_0203e56c
+.extern ActorExtendedType2_InitializePresentation
 .extern ActorExtendedType2_GetDescriptorValue2A
 .extern func_020b57d4
 .extern func_ov090_0221bc84
@@ -20,7 +20,7 @@ func_ov077_02212d04:
     stmdb sp!, {r3, r4, r5, r6, r7, lr}
     sub sp, sp, #0x50
     mov r6, r0
-    bl func_0203e56c
+    bl ActorExtendedType2_InitializePresentation
     mov r0, r6
     bl ActorExtendedType2_GetDescriptorValue2A
     mov r3, r0, lsl #0x10

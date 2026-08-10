@@ -3,7 +3,7 @@
 .extern Heap_Alloc
 .extern data_020e00c8
 .extern func_0201f864
-.extern func_0203f858
+.extern ActorExtendedType2_ApplyTargetImpulse
 .extern func_020ada8c
 .extern gHeapContext
 .extern genrand_int32
@@ -52,7 +52,7 @@ ActorExtendedType2_UpdateTargetFollowEffect: ; 0x02041424
     mov r0, r4
     bne .L_020414cc
     add r1, r1, #0x18
-    bl func_0203f858
+    bl ActorExtendedType2_ApplyTargetImpulse
     b .L_020414d8
 .L_020414cc:
     ldr r1, [r0, #0x0]

@@ -34,7 +34,7 @@ static s32 multiplyFxRound(s32 first, s32 second)
  * +0x94. Destroy the temporary displacement. Returns no value; target, motion,
  * virtual, and temporary-vector state change.
  */
-void func_0203f858(void *self, const void *target)
+void ActorExtendedType2_ApplyTargetImpulse(void *self, const void *target)
 {
     u8 *actor = (u8 *)self;
     s32 displacement[4];

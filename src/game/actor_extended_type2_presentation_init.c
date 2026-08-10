@@ -51,7 +51,7 @@ static void *createResource(const u16 *record)
  * into +0x24e; otherwise decrement a positive +0x250. Returns no value; heap,
  * RNG, attachment, virtual, and actor presentation state may change.
  */
-void func_0203e56c(void *self, const void *configuration)
+void ActorExtendedType2_InitializePresentation(void *self, const void *configuration)
 {
     u8 *actor = (u8 *)self;
     const u8 *config = (const u8 *)configuration;

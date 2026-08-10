@@ -10,7 +10,7 @@ extern char data_020e00c8[];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_0203f858(void *actor, const void *targetTransform);
+extern void ActorExtendedType2_ApplyTargetImpulse(void *actor, const void *targetTransform);
 extern s32 func_020ada8c(s32 value, s32 divisor);
 extern u32 genrand_int32(void);
 extern void *func_0201f864(void *allocation, ...);
@@ -23,8 +23,9 @@ extern void *func_0201f864(void *allocation, ...);
  * virtual +0x38 reports busy. Counter +0x254 then increments; after 180 ticks,
  * with no target +0x228, or when target virtual +0xa8 reports inactive, actor
  * virtual +0xe8 is invoked. A live target with +0xd0 bit 0x100 also invokes
- * +0xe8; otherwise func_0203f858 applies its transform at +0x18. Every 16th
- * tick, a 0x14-byte heap allocation is initialized through func_0201f864 using
+ * +0xe8; otherwise ActorExtendedType2_ApplyTargetImpulse applies its transform
+ * at +0x18. Every 16th tick, a 0x14-byte heap allocation is initialized through
+ * func_0201f864 using
  * actor position, attachment resource, IDs 0x135b..0x135d, a random value in
  * [0,2], and fixed trailing parameters. The routine always returns zero and
  * may change actor, target, heap, random, and effect state; heap allocation is
@@ -51,7 +52,7 @@ s32 ActorExtendedType2_UpdateTargetFollowEffect(void *self)
     if ((*(u32 *)(target + 0xd0) & 0x100) != 0)
         (*(void (**)(void *))(vtable + 0xe8))(actor);
     else
-        func_0203f858(actor, target + 0x18);
+        ActorExtendedType2_ApplyTargetImpulse(actor, target + 0x18);
 
     if (func_020ada8c(*(u16 *)(actor + 0x254), 16) == 0) {
         void *allocation = Heap_Alloc(0x14, data_020e00c8, 4, &gHeapContext);

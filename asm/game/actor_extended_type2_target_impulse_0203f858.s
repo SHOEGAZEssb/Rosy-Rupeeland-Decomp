@@ -8,9 +8,9 @@
 .extern func_0204cfa4
 .extern func_0204cff4
 .extern func_020ae024
-    .global func_0203f858
-    .type func_0203f858, @function
-func_0203f858: ; 0x0203f858
+    .global ActorExtendedType2_ApplyTargetImpulse
+    .type ActorExtendedType2_ApplyTargetImpulse, @function
+ActorExtendedType2_ApplyTargetImpulse: ; 0x0203f858
     stmdb sp!, {r3, r4, r5, lr}
     sub sp, sp, #0x10
     mov r5, r0
@@ -102,5 +102,5 @@ func_0203f858: ; 0x0203f858
     ldmia sp!, {r3, r4, r5, pc}
 .L_0203f9a4: .word data_020e8380
 .L_0203f9a8: .word data_020c9670
-    .size func_0203f858, . - func_0203f858
+    .size ActorExtendedType2_ApplyTargetImpulse, . - ActorExtendedType2_ApplyTargetImpulse
 

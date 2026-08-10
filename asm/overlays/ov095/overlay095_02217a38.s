@@ -5,7 +5,7 @@
 .extern func_02005580
 .extern ActorCollection_GetSpriteOwner
 .extern Actor_GetCollection
-.extern func_0203e56c
+.extern ActorExtendedType2_InitializePresentation
 .extern func_020740c8
 .extern gHeapContext
 
@@ -13,7 +13,7 @@
 func_ov095_02217a38:
     stmdb sp!, {r3, r4, r5, lr}
     mov r5, r0
-    bl func_0203e56c
+    bl ActorExtendedType2_InitializePresentation
     ldr r1, .L_02217a9c
     ldr r3, .L_02217aa0
     mov r0, #0x10
