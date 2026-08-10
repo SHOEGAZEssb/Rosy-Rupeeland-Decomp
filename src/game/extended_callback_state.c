@@ -15,13 +15,14 @@ typedef struct ExtendedCallbackState {
 } ExtendedCallbackState;
 
 /* No-op array-element destructor; it has no observable state or SDK effects. */
-void func_020215a0(void *element)
+void BlendElement_DestroyNoOp(void *element)
 {
     (void)element;
 }
 
 /* Store two callback inputs, clear words 0x10/0x14, and preserve bytes 0x00..0x07. */
-void func_020215a4(ExtendedCallbackState *self, void *first, void *second)
+void ExtendedCallbackState_SetReferencesAndReset(
+    ExtendedCallbackState *self, void *first, void *second)
 {
     self->first08 = first;
     self->second0c = second;

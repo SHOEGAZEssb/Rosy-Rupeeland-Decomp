@@ -13,13 +13,13 @@
 .extern data_021055dc
 .extern func_0201e250
 .extern func_0201e28c
-.extern func_020215a0
-.extern func_020215a4
-.extern func_020218c0
-.extern func_02021934
-.extern func_0202194c
-.extern func_020219bc
-.extern func_02021ad8
+.extern BlendElement_DestroyNoOp
+.extern ExtendedCallbackState_SetReferencesAndReset
+.extern DualArrayBlendPresentation_RetargetMirrored
+.extern BlendElement_StartDuration
+.extern DualArrayBlendPresentation_RetargetSeparated
+.extern DualArrayBlendPresentation_UpdateTransition
+.extern DualArrayBlendPresentation_RetargetCompletedRandomly
 .extern func_0209189c
 .extern func_020918f4
 .extern func_02092418
@@ -32,10 +32,10 @@
 .extern gSystemState
 .extern genrand_int32
 
-.global func_02021f58
-    .type func_02021f58, @function
-func_02021f58: ; 0x02021f58
+.global DualArrayBlendPresentation_ReportComplete
+    .type DualArrayBlendPresentation_ReportComplete, @function
+DualArrayBlendPresentation_ReportComplete: ; 0x02021f58
     mov r0, #0x1
     bx lr
-    .size func_02021f58, .-func_02021f58
+    .size DualArrayBlendPresentation_ReportComplete, .-DualArrayBlendPresentation_ReportComplete
 

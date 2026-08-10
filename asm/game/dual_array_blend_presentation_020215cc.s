@@ -13,13 +13,13 @@
 .extern data_021055dc
 .extern func_0201e250
 .extern func_0201e28c
-.extern func_020215a0
-.extern func_020215a4
-.extern func_020218c0
-.extern func_02021934
-.extern func_0202194c
-.extern func_020219bc
-.extern func_02021ad8
+.extern BlendElement_DestroyNoOp
+.extern ExtendedCallbackState_SetReferencesAndReset
+.extern DualArrayBlendPresentation_RetargetMirrored
+.extern BlendElement_StartDuration
+.extern DualArrayBlendPresentation_RetargetSeparated
+.extern DualArrayBlendPresentation_UpdateTransition
+.extern DualArrayBlendPresentation_RetargetCompletedRandomly
 .extern func_0209189c
 .extern func_020918f4
 .extern func_02092418
@@ -32,9 +32,9 @@
 .extern gSystemState
 .extern genrand_int32
 
-.global func_020215cc
-    .type func_020215cc, @function
-func_020215cc: ; 0x020215cc
+.global DualArrayBlendPresentation_Init
+    .type DualArrayBlendPresentation_Init, @function
+DualArrayBlendPresentation_Init: ; 0x020215cc
     stmdb sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, lr}
     mov r10, r0
     mov r5, r1
@@ -96,14 +96,14 @@ func_020215cc: ; 0x020215cc
     str r0, [r10, #0x4]
     mov r0, r10
     ldmia r1, {r1, r2}
-    bl func_020215a4
+    bl ExtendedCallbackState_SetReferencesAndReset
     mov r0, r10
     ldmia sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, pc}
 .L_020216c8: .word data_020d658c
-.L_020216cc: .word func_020215a0
+.L_020216cc: .word BlendElement_DestroyNoOp
 .L_020216d0: .word func_02094ad4
 .L_020216d4: .word gGameWork
 .L_020216d8: .word 0x3d2
 .L_020216dc: .word data_020d63d0
-    .size func_020215cc, .-func_020215cc
+    .size DualArrayBlendPresentation_Init, .-DualArrayBlendPresentation_Init
 

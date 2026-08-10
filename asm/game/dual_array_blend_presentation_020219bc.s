@@ -13,13 +13,13 @@
 .extern data_021055dc
 .extern func_0201e250
 .extern func_0201e28c
-.extern func_020215a0
-.extern func_020215a4
-.extern func_020218c0
-.extern func_02021934
-.extern func_0202194c
-.extern func_020219bc
-.extern func_02021ad8
+.extern BlendElement_DestroyNoOp
+.extern ExtendedCallbackState_SetReferencesAndReset
+.extern DualArrayBlendPresentation_RetargetMirrored
+.extern BlendElement_StartDuration
+.extern DualArrayBlendPresentation_RetargetSeparated
+.extern DualArrayBlendPresentation_UpdateTransition
+.extern DualArrayBlendPresentation_RetargetCompletedRandomly
 .extern func_0209189c
 .extern func_020918f4
 .extern func_02092418
@@ -32,9 +32,9 @@
 .extern gSystemState
 .extern genrand_int32
 
-.global func_020219bc
-    .type func_020219bc, @function
-func_020219bc: ; 0x020219bc
+.global DualArrayBlendPresentation_UpdateTransition
+    .type DualArrayBlendPresentation_UpdateTransition, @function
+DualArrayBlendPresentation_UpdateTransition: ; 0x020219bc
     stmdb sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, lr}
     mov r10, r0
     mov r9, r1
@@ -109,5 +109,5 @@ func_020219bc: ; 0x020219bc
 .L_02021acc: .word 0x4000050
 .L_02021ad0: .word 0x4001050
 .L_02021ad4: .word 0x4001000
-    .size func_020219bc, .-func_020219bc
+    .size DualArrayBlendPresentation_UpdateTransition, .-DualArrayBlendPresentation_UpdateTransition
 

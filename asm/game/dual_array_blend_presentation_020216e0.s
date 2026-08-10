@@ -13,13 +13,13 @@
 .extern data_021055dc
 .extern func_0201e250
 .extern func_0201e28c
-.extern func_020215a0
-.extern func_020215a4
-.extern func_020218c0
-.extern func_02021934
-.extern func_0202194c
-.extern func_020219bc
-.extern func_02021ad8
+.extern BlendElement_DestroyNoOp
+.extern ExtendedCallbackState_SetReferencesAndReset
+.extern DualArrayBlendPresentation_RetargetMirrored
+.extern BlendElement_StartDuration
+.extern DualArrayBlendPresentation_RetargetSeparated
+.extern DualArrayBlendPresentation_UpdateTransition
+.extern DualArrayBlendPresentation_RetargetCompletedRandomly
 .extern func_0209189c
 .extern func_020918f4
 .extern func_02092418
@@ -32,9 +32,9 @@
 .extern gSystemState
 .extern genrand_int32
 
-.global func_020216e0
-    .type func_020216e0, @function
-func_020216e0: ; 0x020216e0
+.global DualArrayBlendPresentation_Destroy
+    .type DualArrayBlendPresentation_Destroy, @function
+DualArrayBlendPresentation_Destroy: ; 0x020216e0
     stmdb sp!, {r4, lr}
     ldr r1, .L_0202179c
     mov r4, r0
@@ -87,6 +87,6 @@ func_020216e0: ; 0x020216e0
 .L_0202179c: .word data_020d658c
 .L_020217a0: .word 0x4001000
 .L_020217a4: .word data_021055dc
-.L_020217a8: .word func_020215a0
-    .size func_020216e0, .-func_020216e0
+.L_020217a8: .word BlendElement_DestroyNoOp
+    .size DualArrayBlendPresentation_Destroy, .-DualArrayBlendPresentation_Destroy
 

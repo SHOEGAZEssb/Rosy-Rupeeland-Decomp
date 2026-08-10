@@ -8062,92 +8062,92 @@ build build/reports/extended_callback_state_020215a0.json: objdiff build/decomp/
   base_object = build/decomp/asm/game/extended_callback_state_020215a0.o
 build build/reports/extended_callback_state_020215a0.txt: match_report build/reports/extended_callback_state_020215a0.json | tools/report_objdiff.py
   report_json = build/reports/extended_callback_state_020215a0.json
-  report_args = --section .text --function func_020215a0 --require-exact
+  report_args = --section .text --function BlendElement_DestroyNoOp --require-exact
 build build/reports/extended_callback_state_020215a4.json: objdiff build/decomp/delinks/asm/game/extended_callback_state_020215a4.o | build/decomp/asm/game/extended_callback_state_020215a4.o
   target_object = build/decomp/delinks/asm/game/extended_callback_state_020215a4.o
   base_object = build/decomp/asm/game/extended_callback_state_020215a4.o
 build build/reports/extended_callback_state_020215a4.txt: match_report build/reports/extended_callback_state_020215a4.json | tools/report_objdiff.py
   report_json = build/reports/extended_callback_state_020215a4.json
-  report_args = --section .text --function func_020215a4 --require-exact
+  report_args = --section .text --function ExtendedCallbackState_SetReferencesAndReset --require-exact
 build build/reports/extended_callback_state.txt: phony build/reports/extended_callback_state_020215a0.txt build/reports/extended_callback_state_020215a4.txt
 build build/reports/dual_array_blend_presentation_020215cc.json: objdiff build/decomp/delinks/asm/game/dual_array_blend_presentation_020215cc.o | build/decomp/asm/game/dual_array_blend_presentation_020215cc.o
   target_object = build/decomp/delinks/asm/game/dual_array_blend_presentation_020215cc.o
   base_object = build/decomp/asm/game/dual_array_blend_presentation_020215cc.o
 build build/reports/dual_array_blend_presentation_020215cc.txt: match_report build/reports/dual_array_blend_presentation_020215cc.json | tools/report_objdiff.py
   report_json = build/reports/dual_array_blend_presentation_020215cc.json
-  report_args = --section .text --function func_020215cc --require-exact
+  report_args = --section .text --function DualArrayBlendPresentation_Init --require-exact
 build build/reports/dual_array_blend_presentation_020216e0.json: objdiff build/decomp/delinks/asm/game/dual_array_blend_presentation_020216e0.o | build/decomp/asm/game/dual_array_blend_presentation_020216e0.o
   target_object = build/decomp/delinks/asm/game/dual_array_blend_presentation_020216e0.o
   base_object = build/decomp/asm/game/dual_array_blend_presentation_020216e0.o
 build build/reports/dual_array_blend_presentation_020216e0.txt: match_report build/reports/dual_array_blend_presentation_020216e0.json | tools/report_objdiff.py
   report_json = build/reports/dual_array_blend_presentation_020216e0.json
-  report_args = --section .text --function func_020216e0 --require-exact
+  report_args = --section .text --function DualArrayBlendPresentation_Destroy --require-exact
 build build/reports/dual_array_blend_presentation_020217ac.json: objdiff build/decomp/delinks/asm/game/dual_array_blend_presentation_020217ac.o | build/decomp/asm/game/dual_array_blend_presentation_020217ac.o
   target_object = build/decomp/delinks/asm/game/dual_array_blend_presentation_020217ac.o
   base_object = build/decomp/asm/game/dual_array_blend_presentation_020217ac.o
 build build/reports/dual_array_blend_presentation_020217ac.txt: match_report build/reports/dual_array_blend_presentation_020217ac.json | tools/report_objdiff.py
   report_json = build/reports/dual_array_blend_presentation_020217ac.json
-  report_args = --section .text --function func_020217ac --require-exact
+  report_args = --section .text --function DualArrayBlendPresentation_DestroyAndFree --require-exact
 build build/reports/dual_array_blend_presentation_02021880.json: objdiff build/decomp/delinks/asm/game/dual_array_blend_presentation_02021880.o | build/decomp/asm/game/dual_array_blend_presentation_02021880.o
   target_object = build/decomp/delinks/asm/game/dual_array_blend_presentation_02021880.o
   base_object = build/decomp/asm/game/dual_array_blend_presentation_02021880.o
 build build/reports/dual_array_blend_presentation_02021880.txt: match_report build/reports/dual_array_blend_presentation_02021880.json | tools/report_objdiff.py
   report_json = build/reports/dual_array_blend_presentation_02021880.json
-  report_args = --section .text --function func_02021880 --require-exact
+  report_args = --section .text --function DualArrayBlendPresentation_DispatchCallback --require-exact
 build build/reports/dual_array_blend_presentation_020218c0.json: objdiff build/decomp/delinks/asm/game/dual_array_blend_presentation_020218c0.o | build/decomp/asm/game/dual_array_blend_presentation_020218c0.o
   target_object = build/decomp/delinks/asm/game/dual_array_blend_presentation_020218c0.o
   base_object = build/decomp/asm/game/dual_array_blend_presentation_020218c0.o
 build build/reports/dual_array_blend_presentation_020218c0.txt: match_report build/reports/dual_array_blend_presentation_020218c0.json | tools/report_objdiff.py
   report_json = build/reports/dual_array_blend_presentation_020218c0.json
-  report_args = --section .text --function func_020218c0 --require-exact
+  report_args = --section .text --function DualArrayBlendPresentation_RetargetMirrored --require-exact
 build build/reports/dual_array_blend_presentation_02021934.json: objdiff build/decomp/delinks/asm/game/dual_array_blend_presentation_02021934.o | build/decomp/asm/game/dual_array_blend_presentation_02021934.o
   target_object = build/decomp/delinks/asm/game/dual_array_blend_presentation_02021934.o
   base_object = build/decomp/asm/game/dual_array_blend_presentation_02021934.o
 build build/reports/dual_array_blend_presentation_02021934.txt: match_report build/reports/dual_array_blend_presentation_02021934.json | tools/report_objdiff.py
   report_json = build/reports/dual_array_blend_presentation_02021934.json
-  report_args = --section .text --function func_02021934 --require-exact
+  report_args = --section .text --function BlendElement_StartDuration --require-exact
 build build/reports/dual_array_blend_presentation_0202194c.json: objdiff build/decomp/delinks/asm/game/dual_array_blend_presentation_0202194c.o | build/decomp/asm/game/dual_array_blend_presentation_0202194c.o
   target_object = build/decomp/delinks/asm/game/dual_array_blend_presentation_0202194c.o
   base_object = build/decomp/asm/game/dual_array_blend_presentation_0202194c.o
 build build/reports/dual_array_blend_presentation_0202194c.txt: match_report build/reports/dual_array_blend_presentation_0202194c.json | tools/report_objdiff.py
   report_json = build/reports/dual_array_blend_presentation_0202194c.json
-  report_args = --section .text --function func_0202194c --require-exact
+  report_args = --section .text --function DualArrayBlendPresentation_RetargetSeparated --require-exact
 build build/reports/dual_array_blend_presentation_020219bc.json: objdiff build/decomp/delinks/asm/game/dual_array_blend_presentation_020219bc.o | build/decomp/asm/game/dual_array_blend_presentation_020219bc.o
   target_object = build/decomp/delinks/asm/game/dual_array_blend_presentation_020219bc.o
   base_object = build/decomp/asm/game/dual_array_blend_presentation_020219bc.o
 build build/reports/dual_array_blend_presentation_020219bc.txt: match_report build/reports/dual_array_blend_presentation_020219bc.json | tools/report_objdiff.py
   report_json = build/reports/dual_array_blend_presentation_020219bc.json
-  report_args = --section .text --function func_020219bc --require-exact
+  report_args = --section .text --function DualArrayBlendPresentation_UpdateTransition --require-exact
 build build/reports/dual_array_blend_presentation_02021ad8.json: objdiff build/decomp/delinks/asm/game/dual_array_blend_presentation_02021ad8.o | build/decomp/asm/game/dual_array_blend_presentation_02021ad8.o
   target_object = build/decomp/delinks/asm/game/dual_array_blend_presentation_02021ad8.o
   base_object = build/decomp/asm/game/dual_array_blend_presentation_02021ad8.o
 build build/reports/dual_array_blend_presentation_02021ad8.txt: match_report build/reports/dual_array_blend_presentation_02021ad8.json | tools/report_objdiff.py
   report_json = build/reports/dual_array_blend_presentation_02021ad8.json
-  report_args = --section .text --function func_02021ad8 --require-exact
+  report_args = --section .text --function DualArrayBlendPresentation_RetargetCompletedRandomly --require-exact
 build build/reports/dual_array_blend_presentation_02021bb4.json: objdiff build/decomp/delinks/asm/game/dual_array_blend_presentation_02021bb4.o | build/decomp/asm/game/dual_array_blend_presentation_02021bb4.o
   target_object = build/decomp/delinks/asm/game/dual_array_blend_presentation_02021bb4.o
   base_object = build/decomp/asm/game/dual_array_blend_presentation_02021bb4.o
 build build/reports/dual_array_blend_presentation_02021bb4.txt: match_report build/reports/dual_array_blend_presentation_02021bb4.json | tools/report_objdiff.py
   report_json = build/reports/dual_array_blend_presentation_02021bb4.json
-  report_args = --section .text --function func_02021bb4 --require-exact
+  report_args = --section .text --function DualArrayBlendPresentation_Update --require-exact
 build build/reports/dual_array_blend_presentation_02021f58.json: objdiff build/decomp/delinks/asm/game/dual_array_blend_presentation_02021f58.o | build/decomp/asm/game/dual_array_blend_presentation_02021f58.o
   target_object = build/decomp/delinks/asm/game/dual_array_blend_presentation_02021f58.o
   base_object = build/decomp/asm/game/dual_array_blend_presentation_02021f58.o
 build build/reports/dual_array_blend_presentation_02021f58.txt: match_report build/reports/dual_array_blend_presentation_02021f58.json | tools/report_objdiff.py
   report_json = build/reports/dual_array_blend_presentation_02021f58.json
-  report_args = --section .text --function func_02021f58 --require-exact
+  report_args = --section .text --function DualArrayBlendPresentation_ReportComplete --require-exact
 build build/reports/dual_array_blend_presentation_02021f60.json: objdiff build/decomp/delinks/asm/game/dual_array_blend_presentation_02021f60.o | build/decomp/asm/game/dual_array_blend_presentation_02021f60.o
   target_object = build/decomp/delinks/asm/game/dual_array_blend_presentation_02021f60.o
   base_object = build/decomp/asm/game/dual_array_blend_presentation_02021f60.o
 build build/reports/dual_array_blend_presentation_02021f60.txt: match_report build/reports/dual_array_blend_presentation_02021f60.json | tools/report_objdiff.py
   report_json = build/reports/dual_array_blend_presentation_02021f60.json
-  report_args = --section .text --function func_02021f60 --require-exact
+  report_args = --section .text --function DualArrayBlendPresentation_ApplyFrameOffsets --require-exact
 build build/reports/dual_array_blend_presentation_02022040.json: objdiff build/decomp/delinks/asm/game/dual_array_blend_presentation_02022040.o | build/decomp/asm/game/dual_array_blend_presentation_02022040.o
   target_object = build/decomp/delinks/asm/game/dual_array_blend_presentation_02022040.o
   base_object = build/decomp/asm/game/dual_array_blend_presentation_02022040.o
 build build/reports/dual_array_blend_presentation_02022040.txt: match_report build/reports/dual_array_blend_presentation_02022040.json | tools/report_objdiff.py
   report_json = build/reports/dual_array_blend_presentation_02022040.json
-  report_args = --section .text --function func_02022040 --require-exact
+  report_args = --section .text --function DualArrayBlendPresentation_ApplyScanlineOffsets --require-exact
 build build/reports/dual_array_blend_presentation.txt: phony build/reports/dual_array_blend_presentation_020215cc.txt build/reports/dual_array_blend_presentation_020216e0.txt build/reports/dual_array_blend_presentation_020217ac.txt build/reports/dual_array_blend_presentation_02021880.txt build/reports/dual_array_blend_presentation_020218c0.txt build/reports/dual_array_blend_presentation_02021934.txt build/reports/dual_array_blend_presentation_0202194c.txt build/reports/dual_array_blend_presentation_020219bc.txt build/reports/dual_array_blend_presentation_02021ad8.txt build/reports/dual_array_blend_presentation_02021bb4.txt build/reports/dual_array_blend_presentation_02021f58.txt build/reports/dual_array_blend_presentation_02021f60.txt build/reports/dual_array_blend_presentation_02022040.txt
 build build/reports/overlay_prompt_presentation_0202225c.json: objdiff build/decomp/delinks/asm/game/overlay_prompt_presentation_0202225c.o | build/decomp/asm/game/overlay_prompt_presentation_0202225c.o
   target_object = build/decomp/delinks/asm/game/overlay_prompt_presentation_0202225c.o

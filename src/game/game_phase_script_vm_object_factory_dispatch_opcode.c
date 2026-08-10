@@ -36,7 +36,7 @@ extern void *func_020200bc(void *object, s32 value, s32 zero0, s32 zero1,
 extern void *DisplayFadePresentation_Init(void *object, s32 mode, s32 value,
                                           s32 parameter);
 extern void SceneDisplayResources_Setup(s32 sceneIndex);
-extern void *func_020215cc(void *object, s32 value);
+extern void *DualArrayBlendPresentation_Init(void *object, s32 value);
 extern void *func_0202225c(void *object);
 extern void *func_02022580(void *object);
 extern void *func_02023fa0(void *object);
@@ -186,7 +186,7 @@ s32 GamePhaseActorScriptVm_DispatchObjectFactory(GamePhaseActorScriptVm *self)
     case 2:
         object = allocateObject(0x3cc, data_020d5b34);
         if (object)
-            object = func_020215cc(object, value);
+            object = DualArrayBlendPresentation_Init(object, value);
         func_0201df44(runtimeObjectList(), object);
         break;
     default:

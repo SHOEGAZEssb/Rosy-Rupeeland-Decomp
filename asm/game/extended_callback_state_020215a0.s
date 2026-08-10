@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/extended_callback_state.c.
 .text
-.global func_020215a0
-    .type func_020215a0, @function
-func_020215a0:
+.global BlendElement_DestroyNoOp
+    .type BlendElement_DestroyNoOp, @function
+BlendElement_DestroyNoOp:
     bx lr
-    .size func_020215a0, .-func_020215a0
+    .size BlendElement_DestroyNoOp, .-BlendElement_DestroyNoOp

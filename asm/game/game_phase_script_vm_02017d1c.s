@@ -26,7 +26,7 @@
 .extern func_020200bc
 .extern DisplayFadePresentation_Init
 .extern SceneDisplayResources_Setup
-.extern func_020215cc
+.extern DualArrayBlendPresentation_Init
 .extern func_0202225c
 .extern func_02022580
 .extern func_02023fa0
@@ -342,7 +342,7 @@ L_0201812c:
     movs r1, r0
     beq L_02018154
     mov r1, r6
-    bl func_020215cc
+    bl DualArrayBlendPresentation_Init
     mov r1, r0
 L_02018154:
     ldr r0, L_020181c4

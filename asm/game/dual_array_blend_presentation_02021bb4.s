@@ -13,13 +13,13 @@
 .extern data_021055dc
 .extern func_0201e250
 .extern func_0201e28c
-.extern func_020215a0
-.extern func_020215a4
-.extern func_020218c0
-.extern func_02021934
-.extern func_0202194c
-.extern func_020219bc
-.extern func_02021ad8
+.extern BlendElement_DestroyNoOp
+.extern ExtendedCallbackState_SetReferencesAndReset
+.extern DualArrayBlendPresentation_RetargetMirrored
+.extern BlendElement_StartDuration
+.extern DualArrayBlendPresentation_RetargetSeparated
+.extern DualArrayBlendPresentation_UpdateTransition
+.extern DualArrayBlendPresentation_RetargetCompletedRandomly
 .extern func_0209189c
 .extern func_020918f4
 .extern func_02092418
@@ -32,9 +32,9 @@
 .extern gSystemState
 .extern genrand_int32
 
-.global func_02021bb4
-    .type func_02021bb4, @function
-func_02021bb4: ; 0x02021bb4
+.global DualArrayBlendPresentation_Update
+    .type DualArrayBlendPresentation_Update, @function
+DualArrayBlendPresentation_Update: ; 0x02021bb4
     stmdb sp!, {r3, r4, lr}
     sub sp, sp, #0x4
     ldr r1, .L_02021f34
@@ -99,7 +99,7 @@ func_02021bb4: ; 0x02021bb4
     str r0, [r2, #0x0]
 .L_02021ca0:
     mov r0, r4
-    bl func_0202194c
+    bl DualArrayBlendPresentation_RetargetSeparated
     ldr r1, [r4, #0x10]
     mov r0, #0x0
     add r1, r1, #0x1
@@ -109,7 +109,7 @@ func_02021bb4: ; 0x02021bb4
     mov r0, r4
     mov r1, #0x0
     mov r2, #0x20
-    bl func_020219bc
+    bl DualArrayBlendPresentation_UpdateTransition
     cmp r0, #0x0
     beq .L_02021f28
     ldr r0, .L_02021f34
@@ -138,7 +138,7 @@ func_02021bb4: ; 0x02021bb4
     ldr r0, [r0, #0x0]
     bl GameWork_SetFlag
     mov r0, r4
-    bl func_020218c0
+    bl DualArrayBlendPresentation_RetargetMirrored
     ldr r1, [r4, #0x10]
     mov r0, #0x0
     add r1, r1, #0x1
@@ -147,13 +147,13 @@ func_02021bb4: ; 0x02021bb4
     b .L_02021f28
 .L_02021d54:
     mov r0, r4
-    bl func_02021ad8
+    bl DualArrayBlendPresentation_RetargetCompletedRandomly
     b .L_02021f28
 .L_02021d60:
     mov r0, r4
     mov r1, #0x20
     mov r2, #0x0
-    bl func_020219bc
+    bl DualArrayBlendPresentation_UpdateTransition
     cmp r0, #0x0
     beq .L_02021f28
     ldr r0, .L_02021f34
@@ -182,7 +182,7 @@ func_02021bb4: ; 0x02021bb4
     ldr r0, [r0, #0x0]
     bl GameWork_SetFlag
     mov r0, r4
-    bl func_0202194c
+    bl DualArrayBlendPresentation_RetargetSeparated
     ldr r1, [r4, #0x10]
     mov r0, #0x0
     add r1, r1, #0x1
@@ -193,7 +193,7 @@ func_02021bb4: ; 0x02021bb4
     mov r0, r4
     mov r1, #0x0
     mov r2, #0x20
-    bl func_020219bc
+    bl DualArrayBlendPresentation_UpdateTransition
     cmp r0, #0x0
     beq .L_02021f28
     ldr r0, .L_02021f34
@@ -222,7 +222,7 @@ func_02021bb4: ; 0x02021bb4
     ldr r0, [r0, #0x0]
     bl GameWork_SetFlag
     mov r0, r4
-    bl func_020218c0
+    bl DualArrayBlendPresentation_RetargetMirrored
     mov r0, #0x3
     str r0, [r4, #0x10]
     mov r0, #0x0
@@ -244,7 +244,7 @@ func_02021bb4: ; 0x02021bb4
     ldr r0, [r0, #0x0]
     bl GameWork_SetFlag
     mov r0, r4
-    bl func_020218c0
+    bl DualArrayBlendPresentation_RetargetMirrored
     ldr r1, [r4, #0x10]
     mov r0, #0x0
     add r1, r1, #0x1
@@ -253,13 +253,13 @@ func_02021bb4: ; 0x02021bb4
     b .L_02021f28
 .L_02021ee4:
     mov r0, r4
-    bl func_02021ad8
+    bl DualArrayBlendPresentation_RetargetCompletedRandomly
     b .L_02021f28
 .L_02021ef0:
     mov r0, r4
     mov r1, #0x20
     mov r2, #0x0
-    bl func_020219bc
+    bl DualArrayBlendPresentation_UpdateTransition
     cmp r0, #0x0
     beq .L_02021f28
     ldr r0, .L_02021f34
@@ -269,7 +269,7 @@ func_02021bb4: ; 0x02021bb4
     ldr r1, .L_02021f54
     mov r0, r4
     ldmia r1, {r1, r2}
-    bl func_020215a4
+    bl ExtendedCallbackState_SetReferencesAndReset
 .L_02021f28:
     mov r0, #0x0
 .L_02021f2c:
@@ -284,5 +284,5 @@ func_02021bb4: ; 0x02021bb4
 .L_02021f4c: .word 0x3cf
 .L_02021f50: .word 0x3d1
 .L_02021f54: .word data_020d63e0
-    .size func_02021bb4, .-func_02021bb4
+    .size DualArrayBlendPresentation_Update, .-DualArrayBlendPresentation_Update
 

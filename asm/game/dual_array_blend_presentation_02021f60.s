@@ -13,13 +13,13 @@
 .extern data_021055dc
 .extern func_0201e250
 .extern func_0201e28c
-.extern func_020215a0
-.extern func_020215a4
-.extern func_020218c0
-.extern func_02021934
-.extern func_0202194c
-.extern func_020219bc
-.extern func_02021ad8
+.extern BlendElement_DestroyNoOp
+.extern ExtendedCallbackState_SetReferencesAndReset
+.extern DualArrayBlendPresentation_RetargetMirrored
+.extern BlendElement_StartDuration
+.extern DualArrayBlendPresentation_RetargetSeparated
+.extern DualArrayBlendPresentation_UpdateTransition
+.extern DualArrayBlendPresentation_RetargetCompletedRandomly
 .extern func_0209189c
 .extern func_020918f4
 .extern func_02092418
@@ -32,9 +32,9 @@
 .extern gSystemState
 .extern genrand_int32
 
-.global func_02021f60
-    .type func_02021f60, @function
-func_02021f60: ; 0x02021f60
+.global DualArrayBlendPresentation_ApplyFrameOffsets
+    .type DualArrayBlendPresentation_ApplyFrameOffsets, @function
+DualArrayBlendPresentation_ApplyFrameOffsets: ; 0x02021f60
     ldr r1, [r0, #0x1c]
     cmp r1, #0x0
     bxeq lr
@@ -92,5 +92,5 @@ func_02021f60: ; 0x02021f60
 .L_02022034: .word 0x1ff
 .L_02022038: .word 0x4000010
 .L_0202203c: .word 0x4001018
-    .size func_02021f60, .-func_02021f60
+    .size DualArrayBlendPresentation_ApplyFrameOffsets, .-DualArrayBlendPresentation_ApplyFrameOffsets
 
