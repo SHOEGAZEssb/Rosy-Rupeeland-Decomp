@@ -6,7 +6,7 @@
 extern "C" {
 #endif
 extern void Actor_SetRuntimeFlag80(void *actor);
-extern s32 func_02034164(void *actor);
+extern s32 Actor_UpdateTimedResourceState(void *actor);
 extern void *VecFx32Object_Assign(void *destination, const void *source);
 extern void VecFx32Object_InitComponents(void *vector, s32 x, s32 y, s32 z);
 extern void VecFx32Object_Destroy(void *vector);
@@ -30,7 +30,7 @@ static void clearActorVector(u8 *actor, u32 offset)
 }
 
 /*
- * Run base frame helper Actor_SetRuntimeFlag80 and return early when func_02034164 says
+ * Run base frame helper Actor_SetRuntimeFlag80 and return early when Actor_UpdateTimedResourceState says
  * the actor is inactive. Copy position +0x18 to +0x28. While +0x10 bit 0x40
  * permits track processing (with the recovered bit-one/+0x14 bit-0x10 gate),
  * advance track +0x198 and copy sampled components +4/+8/+0xc to motion
@@ -51,7 +51,7 @@ void ActorDerivedRuntime_UpdateFrame(void *self)
 {
     u8 *actor = (u8 *)self;
     Actor_SetRuntimeFlag80(actor);
-    if (func_02034164(actor) == 0)
+    if (Actor_UpdateTimedResourceState(actor) == 0)
         return;
     VecFx32Object_Assign(actor + 0x28, actor + 0x18);
 

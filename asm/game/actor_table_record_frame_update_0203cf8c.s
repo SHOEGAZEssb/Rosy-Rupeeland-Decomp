@@ -5,7 +5,7 @@
 .extern func_02032228
 .extern func_020328d0
 .extern Actor_UpdateAnimationState
-.extern func_02034164
+.extern Actor_UpdateTimedResourceState
 .extern Actor_QueryTerrainHeight
 .extern ActorFeedback_SpawnIndexedPresentation
 .extern func_020adae4
@@ -45,7 +45,7 @@ ActorTableRecord_UpdateFrame: ; 0x0203cf8c
     tst r0, #0x1000000
     beq .L_0203d01c
     mov r0, r4
-    bl func_02034164
+    bl Actor_UpdateTimedResourceState
     cmp r0, #0x0
     beq .L_0203d250
 .L_0203d01c:

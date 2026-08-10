@@ -10,7 +10,7 @@
 .extern VecFx32Stepper_GetTarget
 .extern Actor_SetRuntimeFlag80
 .extern Actor_UpdateTerrainMotionFeedback
-.extern func_02034164
+.extern Actor_UpdateTimedResourceState
     .global ActorDerivedRuntime_UpdateFrame
 ActorDerivedRuntime_UpdateFrame: ; 0x0203b798
     stmdb sp!, {r4, lr}
@@ -18,7 +18,7 @@ ActorDerivedRuntime_UpdateFrame: ; 0x0203b798
     mov r4, r0
     bl Actor_SetRuntimeFlag80
     mov r0, r4
-    bl func_02034164
+    bl Actor_UpdateTimedResourceState
     cmp r0, #0x0
     beq .L_0203b990
     add r0, r4, #0x28

@@ -5,7 +5,7 @@
 .extern gActorInteractionMagnitude
 .extern gActorInteractionSmoothedDisplacement
 .extern gActorInteractionResourceState
-.extern func_02034ecc
+.extern ActorTargetSelection_Populate
 .extern ActorRegisteredSubclass_ProcessRegistry
 .extern InteractionTimingState_Tick
 .extern func_0204cfa4
@@ -51,7 +51,7 @@ ActorInteractionRuntime_Update: ; 0x0203ac9c
     strlt r1, [r0, #0x4]
     strlt r1, [r0, #0x0]
 .L_0203ad30:
-    bl func_02034ecc
+    bl ActorTargetSelection_Populate
     bl func_02053560
     bl ActorRegisteredSubclass_ProcessRegistry
     ldr r0, .L_0203ad60

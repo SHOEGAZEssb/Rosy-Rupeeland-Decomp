@@ -22,7 +22,7 @@ extern void VecFx32Object_Destroy(void *value);
  * in gActorTargetSelectionMetadata, and clear word +0x278 of global manager object +0x2ea4.
  * Returns no value; only global selection/runtime state changes.
  */
-void func_02034e58(void)
+void ActorTargetSelection_Reset(void)
 {
     u32 i;
     u8 *owner;
@@ -35,7 +35,7 @@ void func_02034e58(void)
 }
 
 /* Clear the ten cached actor pointers and return no value. */
-void func_02034ea8(void)
+void ActorTargetSelection_ClearCandidates(void)
 {
     u32 i;
 
@@ -54,7 +54,7 @@ void func_02034ea8(void)
  * pointer entries. Returns no value; virtual and vector helpers may affect
  * actor or SDK-managed state.
  */
-void func_02034ecc(void)
+void ActorTargetSelection_Populate(void)
 {
     u8 *manager = (u8 *)data_021052fc;
     u8 *owner = *(u8 **)(manager + 0x2ea4);

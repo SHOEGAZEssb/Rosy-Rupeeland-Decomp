@@ -7,7 +7,7 @@ extern u8 *data_021052fc;
 extern "C" {
 #endif
 extern s32 func_020adae4(s32 numerator, s32 denominator);
-extern s32 func_02034164(void *actor);
+extern s32 Actor_UpdateTimedResourceState(void *actor);
 extern void func_020328d0(void *vector, s32 scale);
 extern s32 VecFx32Object_GetMagnitude(void *vector);
 extern s32 Actor_QueryTerrainHeight(void *actor, s32 x, s32 y);
@@ -28,7 +28,7 @@ static s32 squareFxRound(s32 value)
  * Invoke virtual +0x18. Average halfwords +0x208/+0x20a and low 13 bits of
  * word +0x20c, store the result back into those low 13 bits while preserving
  * higher flags, clear +0x20a, and clear bits 0x4000/0x8000. When actor +0x10
- * bit 0x01000000 is set, return early if func_02034164 is false.
+ * bit 0x01000000 is set, return early if Actor_UpdateTimedResourceState is false.
  *
  * While byte +0x210 is nonzero, decrement it and scale vector +0x88 by record
  * +0x214 signed halfword +0x06 times 16. Otherwise use record halfword +0x08,
@@ -62,7 +62,7 @@ void ActorTableRecord_UpdateFrame(void *self)
     *(u16 *)(actor + 0x20a) = 0;
     *(u32 *)(actor + 0x20c) &= ~(0x4000 | 0x8000);
     if ((*(u32 *)(actor + 0x10) & 0x01000000) != 0 &&
-        func_02034164(actor) == 0)
+        Actor_UpdateTimedResourceState(actor) == 0)
         return;
 
     record = *(u8 **)(actor + 0x214);

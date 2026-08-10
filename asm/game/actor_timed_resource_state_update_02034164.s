@@ -14,9 +14,9 @@
 .extern Actor_UpdateAttachmentDirectionFromVector
 .extern Actor_GetCollection
 
-    .global func_02034164
-    .type func_02034164, @function
-func_02034164: ; 0x02034164
+    .global Actor_UpdateTimedResourceState
+    .type Actor_UpdateTimedResourceState, @function
+Actor_UpdateTimedResourceState: ; 0x02034164
     stmdb sp!, {r3, r4, r5, lr}
     mov r4, r0
     add r0, r4, #0xec
@@ -83,6 +83,6 @@ func_02034164: ; 0x02034164
     ldmia sp!, {r3, r4, r5, pc}
 .L_02034258: .word gActorRuntimeCollection
 .L_0203425c: .word data_021052fc
-    .size func_02034164, . - func_02034164
+    .size Actor_UpdateTimedResourceState, . - Actor_UpdateTimedResourceState
 
     .global func_02034260

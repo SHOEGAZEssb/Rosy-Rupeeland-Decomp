@@ -11,7 +11,7 @@ extern u8 gActorInteractionResourceState[];
 extern "C" {
 #endif
 extern s32 func_0204cfa4(void);
-extern void func_02034ecc(void);
+extern void ActorTargetSelection_Populate(void);
 extern void func_02053560(void);
 extern void ActorRegisteredSubclass_ProcessRegistry(void);
 extern void InteractionTimingState_Tick(void);
@@ -45,7 +45,7 @@ void ActorInteractionRuntime_Update(void)
         gActorInteractionSmoothedDisplacement[0] = 0;
         gActorInteractionSmoothedDisplacement[1] = 0;
     }
-    func_02034ecc();
+    ActorTargetSelection_Populate();
     func_02053560();
     ActorRegisteredSubclass_ProcessRegistry();
     *(u16 *)gActorInteractionResourceState = 0;

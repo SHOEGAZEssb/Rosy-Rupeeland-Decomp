@@ -20,8 +20,8 @@ extern void InteractionRecordAllocatorPool_DestroyContents(void *object);
 extern void ActorFeedbackResources_Load(void);
 extern void ActorFeedbackResources_Unload(void);
 extern void ActorRegisteredSubclass_ResetRegistry(void);
-extern void func_02034e58(void);
-extern void func_02034ea8(void);
+extern void ActorTargetSelection_Reset(void);
+extern void ActorTargetSelection_ClearCandidates(void);
 extern void ActorExtendedPairing_UpdateLinks(void);
 extern void InteractionTimingState_Reset(void);
 extern void Type7ActorRegistry_Populate(void);
@@ -70,7 +70,7 @@ void ActorInteractionRuntime_Init(void)
  */
 void ActorInteractionRuntime_Start(void)
 {
-    func_02034e58();
+    ActorTargetSelection_Reset();
     gActorExtendedType2ReentryAngleAccumulator = 0;
     *(u16 *)gActorInteractionResourceState = 0;
     ActorExtendedPairing_UpdateLinks();
@@ -124,6 +124,6 @@ void ActorInteractionRuntime_Shutdown(void)
         Heap_Free(gInteractionRecordAllocatorPool);
     }
     gInteractionRecordAllocatorPool = 0;
-    func_02034ea8();
+    ActorTargetSelection_ClearCandidates();
     ActorFeedbackResources_Unload();
 }

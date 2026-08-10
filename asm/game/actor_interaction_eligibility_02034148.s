@@ -15,5 +15,5 @@ Actor_PollInteractionResource: ; 0x02034148
     ldmia sp!, {r3, pc}
     .size Actor_PollInteractionResource, . - Actor_PollInteractionResource
 
-    .global func_02034164
+    .global Actor_UpdateTimedResourceState
 

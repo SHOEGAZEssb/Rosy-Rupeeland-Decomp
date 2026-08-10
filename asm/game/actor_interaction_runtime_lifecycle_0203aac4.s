@@ -9,8 +9,8 @@
 .extern gActorExtendedLinkDestinationCount
 .extern gActorExtendedType2ReentryAngleAccumulator
 .extern gInteractionRecordAllocatorPool
-.extern func_02034e58
-.extern func_02034ea8
+.extern ActorTargetSelection_Reset
+.extern ActorTargetSelection_ClearCandidates
 .extern ActorDerivedType1_SetSingletonFieldE4To20E
 .extern ActorFeedbackResources_Load
 .extern ActorFeedbackResources_Unload
@@ -84,7 +84,7 @@ ActorInteractionRuntime_Init: ; 0x0203aac4
     .type ActorInteractionRuntime_Start, @function
 ActorInteractionRuntime_Start: ; 0x0203ab6c
     stmdb sp!, {r3, lr}
-    bl func_02034e58
+    bl ActorTargetSelection_Reset
     ldr r1, .L_0203aba4
     mov r2, #0x0
     ldr r0, .L_0203aba8
@@ -175,7 +175,7 @@ ActorInteractionRuntime_Shutdown: ; 0x0203abf4
     ldr r0, .L_0203ac98
     mov r1, #0x0
     str r1, [r0, #0x0]
-    bl func_02034ea8
+    bl ActorTargetSelection_ClearCandidates
     bl ActorFeedbackResources_Unload
     ldmia sp!, {r4, pc}
 .L_0203ac94: .word gSoundContext

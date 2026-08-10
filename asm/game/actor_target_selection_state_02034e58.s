@@ -4,9 +4,9 @@
 .extern gActorTargetSelectionMetadata
 .extern gActorTargetSelectionCandidates
 
-    .global func_02034e58
-    .type func_02034e58, @function
-func_02034e58: ; 0x02034e58
+    .global ActorTargetSelection_Reset
+    .type ActorTargetSelection_Reset, @function
+ActorTargetSelection_Reset: ; 0x02034e58
     mov r1, #0x0
     ldr r0, .L_02034e9c
     mov r3, r1
@@ -28,7 +28,7 @@ func_02034e58: ; 0x02034e58
 .L_02034e9c: .word gActorTargetSelectionCandidates
 .L_02034ea0: .word gActorTargetSelectionMetadata
 .L_02034ea4: .word data_021052fc
-    .size func_02034e58, . - func_02034e58
+    .size ActorTargetSelection_Reset, . - ActorTargetSelection_Reset
 
-    .global func_02034ea8
+    .global ActorTargetSelection_ClearCandidates
 

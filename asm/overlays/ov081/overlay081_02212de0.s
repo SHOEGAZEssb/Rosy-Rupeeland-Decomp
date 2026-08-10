@@ -7,7 +7,7 @@
 .extern func_02032228
 .extern func_02032370
 .extern Actor_UpdateAnimationState
-.extern func_02034164
+.extern Actor_UpdateTimedResourceState
 .extern ActorDerivedRuntime_UpdateFrame
 .extern func_ov081_0221367c
 
@@ -27,7 +27,7 @@ func_ov081_02212de0:
     mov r0, r4
     bl Actor_SetRuntimeFlag80
     mov r0, r4
-    bl func_02034164
+    bl Actor_UpdateTimedResourceState
     ldr r0, .L_02212fdc
     bl ActorRuntimeCollection_GetPendingAttachmentFlag
     cmp r0, #0x0

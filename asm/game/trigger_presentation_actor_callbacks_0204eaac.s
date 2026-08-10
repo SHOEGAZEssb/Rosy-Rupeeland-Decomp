@@ -3,7 +3,7 @@
 .extern func_02032a94
 .extern func_02032abc
 .extern Actor_TryDispatchActivationMode2
-.extern func_02034164
+.extern Actor_UpdateTimedResourceState
 .text
 
     .global func_0204eaac
@@ -12,7 +12,7 @@ func_0204eaac: ; 0x0204eaac
     mov r4, r0
     bl Actor_SetRuntimeFlag80
     mov r0, r4
-    bl func_02034164
+    bl Actor_UpdateTimedResourceState
     cmp r0, #0x0
     ldmia sp!, {r4, pc}
 .size func_0204eaac, . - func_0204eaac

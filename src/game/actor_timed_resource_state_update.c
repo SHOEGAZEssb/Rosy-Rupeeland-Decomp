@@ -34,7 +34,7 @@ extern void ActorCollection_QueueActorForRemoval(void *collection, void *actor);
  * zero; all other completed paths return one. Helpers may mutate collection,
  * presentation, or SDK-managed timed state.
  */
-s32 func_02034164(void *self)
+s32 Actor_UpdateTimedResourceState(void *self)
 {
     u8 *actor = (u8 *)self;
     void *slotOne;

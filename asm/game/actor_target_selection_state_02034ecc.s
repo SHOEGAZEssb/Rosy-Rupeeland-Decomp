@@ -9,9 +9,9 @@
 .extern VecFx32_Subtract
 .extern GamePhaseRuntime_GetActorCollection
 
-    .global func_02034ecc
-    .type func_02034ecc, @function
-func_02034ecc: ; 0x02034ecc
+    .global ActorTargetSelection_Populate
+    .type ActorTargetSelection_Populate, @function
+ActorTargetSelection_Populate: ; 0x02034ecc
     stmdb sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, lr}
     sub sp, sp, #0x10
     ldr r11, .L_02035040
@@ -117,7 +117,7 @@ func_02034ecc: ; 0x02034ecc
 .L_02035044: .word gActorTargetSelectionMetadata
 .L_02035048: .word gActorTargetSelectionCandidates
 .L_0203504c: .word gActorTargetSelectionPriorities
-    .size func_02034ecc, . - func_02034ecc
+    .size ActorTargetSelection_Populate, . - ActorTargetSelection_Populate
 
     .global func_02035050
 

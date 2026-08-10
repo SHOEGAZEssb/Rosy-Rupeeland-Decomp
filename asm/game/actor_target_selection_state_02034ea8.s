@@ -2,9 +2,9 @@
 .text
 .extern gActorTargetSelectionCandidates
 
-    .global func_02034ea8
-    .type func_02034ea8, @function
-func_02034ea8: ; 0x02034ea8
+    .global ActorTargetSelection_ClearCandidates
+    .type ActorTargetSelection_ClearCandidates, @function
+ActorTargetSelection_ClearCandidates: ; 0x02034ea8
     mov r2, #0x0
     ldr r0, .L_02034ec8
     mov r1, r2
@@ -15,7 +15,7 @@ func_02034ea8: ; 0x02034ea8
     blt .L_02034eb4
     bx lr
 .L_02034ec8: .word gActorTargetSelectionCandidates
-    .size func_02034ea8, . - func_02034ea8
+    .size ActorTargetSelection_ClearCandidates, . - ActorTargetSelection_ClearCandidates
 
-    .global func_02034ecc
+    .global ActorTargetSelection_Populate
 

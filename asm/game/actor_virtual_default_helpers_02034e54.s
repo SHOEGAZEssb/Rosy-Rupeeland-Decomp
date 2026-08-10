@@ -7,5 +7,5 @@ func_02034e54: ; 0x02034e54
     bx lr
     .size func_02034e54, . - func_02034e54
 
-    .global func_02034e58
+    .global ActorTargetSelection_Reset
 
