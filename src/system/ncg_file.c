@@ -25,7 +25,7 @@ extern void OS_Halt(void);
  * Construct the NitroFile base, install the CNcgFile vtable, clear both tile
  * dimensions, and return self. The format word remains unspecified by retail.
  */
-NcgFile *func_02005284(NcgFile *self)
+NcgFile *NcgFile_Init(NcgFile *self)
 {
     func_02005118(&self->base);
     self->base.vtable = &data_020d40cc;
@@ -35,14 +35,14 @@ NcgFile *func_02005284(NcgFile *self)
 }
 
 /* Destroy the inherited payload through NitroFile and return self. */
-NcgFile *func_020052b0(NcgFile *self)
+NcgFile *NcgFile_Destroy(NcgFile *self)
 {
     func_02005194(&self->base);
     return self;
 }
 
 /* Destroy the inherited payload, free the object, and return its former address. */
-NcgFile *func_020052c4(NcgFile *self)
+NcgFile *NcgFile_DestroyAndFree(NcgFile *self)
 {
     func_02005194(&self->base);
     Heap_Free(self);
@@ -55,7 +55,7 @@ NcgFile *func_020052c4(NcgFile *self)
  * payload begins at +0x14. A tagged aligned buffer is allocated, copied, cache
  * flushed through func_020b4554, attached to self, and success (one) returned.
  */
-s32 func_020052e0(NcgFile *self, const void *resource)
+s32 NcgFile_ParseResource(NcgFile *self, const void *resource)
 {
     const u8 *header = (const u8 *)resource;
     const u8 *block = header + *(const u16 *)(header + 0xc);
@@ -64,7 +64,7 @@ s32 func_020052e0(NcgFile *self, const void *resource)
     self->width = *(const u32 *)(block + 0x8);
     self->height = *(const u32 *)(block + 0xc);
     self->format = *(const u32 *)(block + 0x10);
-    size = func_020053b8(self);
+    size = NcgFile_GetPayloadSize(self);
     self->base.data = func_02003e20(size, data_020d4104, 4, &gHeapContext);
     MI_CpuCopy8(block + 0x14, self->base.data, size);
     func_020b4554(self->base.data, size);
@@ -78,17 +78,17 @@ s32 func_020052e0(NcgFile *self, const void *resource)
  * OS_Halt; otherwise the inner resource at +4 is parsed, the temporary expanded
  * buffer is freed, and one is returned.
  */
-s32 func_02005354(NcgFile *self, GameFile *file, s32 offset,
-                  u32 compressedSize)
+s32 NcgFile_LoadCompressedFromFile(NcgFile *self, GameFile *file,
+                                   s32 offset, u32 compressedSize)
 {
     u8 *expanded;
 
     func_020051c0(&self->base);
     expanded = (u8 *)func_020051ec(&self->base, file, offset, compressedSize);
-    if (*(const u32 *)(expanded + 4) != func_020053f4(self)) {
+    if (*(const u32 *)(expanded + 4) != NcgFile_GetSignature(self)) {
         OS_Halt();
     }
-    func_020052e0(self, expanded + 4);
+    NcgFile_ParseResource(self, expanded + 4);
     func_02003e38(expanded);
     return 1;
 }
@@ -99,7 +99,7 @@ s32 func_02005354(NcgFile *self, GameFile *file, s32 offset,
  * 64. For other formats retail returns the incoming object address value.
  */
 #ifndef MATCHING
-u32 func_020053b8(const NcgFile *self)
+u32 NcgFile_GetPayloadSize(const NcgFile *self)
 {
     if (self->format != 0) {
         if (self->format == 1 || self->format == 2) {
@@ -111,7 +111,7 @@ u32 func_020053b8(const NcgFile *self)
 }
 #else
 /* Matching counterpart of the documented portable size calculation above. */
-asm u32 func_020053b8(const NcgFile *self)
+asm u32 NcgFile_GetPayloadSize(const NcgFile *self)
 {
     ldr r1, [r0, #0x10]
     cmp r1, #0
@@ -134,7 +134,7 @@ zero_format:
 
 /* Build and return the confirmed four-byte CNcgFile resource signature. */
 #ifndef MATCHING
-u32 func_020053f4(const NcgFile *self)
+u32 NcgFile_GetSignature(const NcgFile *self)
 {
     u8 signature[4];
 
@@ -147,7 +147,7 @@ u32 func_020053f4(const NcgFile *self)
 }
 #else
 /* Matching counterpart of the documented portable signature builder above. */
-asm u32 func_020053f4(const NcgFile *self)
+asm u32 NcgFile_GetSignature(const NcgFile *self)
 {
     stmdb sp!, {r3}
     sub sp, sp, #4

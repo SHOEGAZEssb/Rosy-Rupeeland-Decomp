@@ -21,7 +21,7 @@ extern void OS_Halt(void);
 #endif
 
 /* Construct the NitroFile base, install the CNclFile vtable, and return self. */
-NclFile *func_0200542c(NclFile *self)
+NclFile *NclFile_Init(NclFile *self)
 {
     func_02005118(&self->base);
     self->base.vtable = (const NitroFileVTable *)&data_020d40ec;
@@ -29,14 +29,14 @@ NclFile *func_0200542c(NclFile *self)
 }
 
 /* Destroy the inherited palette payload through NitroFile and return self. */
-NclFile *func_0200544c(NclFile *self)
+NclFile *NclFile_Destroy(NclFile *self)
 {
     func_02005194(&self->base);
     return self;
 }
 
 /* Destroy the inherited payload, free the object, and return its former address. */
-NclFile *func_02005460(NclFile *self)
+NclFile *NclFile_DestroyAndFree(NclFile *self)
 {
     func_02005194(&self->base);
     Heap_Free(self);
@@ -49,7 +49,7 @@ NclFile *func_02005460(NclFile *self)
  * gives the byte count for 16-bit colors beginning at +0x10. The function
  * allocates, copies, cache-flushes, attaches the payload, and returns one.
  */
-s32 func_0200547c(NclFile *self, const void *resource)
+s32 NclFile_ParseResource(NclFile *self, const void *resource)
 {
     const u8 *header = (const u8 *)resource;
     const u8 *block = header + *(const u16 *)(header + 0xc);
@@ -69,24 +69,24 @@ s32 func_0200547c(NclFile *self, const void *resource)
  * OS_Halt; success parses the inner resource, frees the temporary, and returns
  * one. File, heap, decompression, and cache effects come from the shared path.
  */
-s32 func_020054e4(NclFile *self, GameFile *file, s32 offset,
-                  u32 compressedSize)
+s32 NclFile_LoadCompressedFromFile(NclFile *self, GameFile *file,
+                                   s32 offset, u32 compressedSize)
 {
     u8 *expanded;
 
     func_020051c0(&self->base);
     expanded = (u8 *)func_020051ec(&self->base, file, offset, compressedSize);
-    if (*(const u32 *)(expanded + 4) != func_02005548(self)) {
+    if (*(const u32 *)(expanded + 4) != NclFile_GetSignature(self)) {
         OS_Halt();
     }
-    func_0200547c(self, expanded + 4);
+    NclFile_ParseResource(self, expanded + 4);
     func_02003e38(expanded);
     return 1;
 }
 
 /* Build and return the confirmed four-byte CNclFile resource signature. */
 #ifndef MATCHING
-u32 func_02005548(const NclFile *self)
+u32 NclFile_GetSignature(const NclFile *self)
 {
     u8 signature[4];
 

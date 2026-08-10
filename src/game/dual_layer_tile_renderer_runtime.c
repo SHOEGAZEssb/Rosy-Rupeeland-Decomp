@@ -64,7 +64,7 @@ extern void GameFile_Init(void *);
 extern void GameFile_Destroy(void *);
 extern void GameFile_Open(void *, const char *);
 extern void GameFile_Close(void *);
-extern void func_020054e4(void *, void *, u32, u32);
+extern void NclFile_LoadCompressedFromFile(void *, void *, u32, u32);
 extern void func_0202b520(void *, void *, u32, u32);
 extern void func_0202b408(void *, void *, u32, u32);
 extern void *func_0202b5f4(void *);
@@ -84,9 +84,9 @@ extern void func_0202b930(void *);
 extern void func_020b1854(void *, s32, s32);
 extern void func_020b17ec(void *, s32, s32);
 extern void func_020b44e8(void);
-extern void func_02005284(void *);
-extern void func_020052b0(void *);
-extern void func_02005354(void *, void *, u32, u32);
+extern void NcgFile_Init(void *);
+extern void NcgFile_Destroy(void *);
+extern void NcgFile_LoadCompressedFromFile(void *, void *, u32, u32);
 extern void *func_020af838(void);
 extern void *func_020af7e8(void);
 extern void func_020b581c(void *, void *, s32);
@@ -129,7 +129,7 @@ void func_02029370(DualLayerTileRenderer *self,
     self->config_1c = (const u8 *)config;
     GameFile_Init(file);
     GameFile_Open(file, data_020de970);
-    func_020054e4(&self->palette_10, file, config->resourceOffset_08,
+    NclFile_LoadCompressedFromFile(&self->palette_10, file, config->resourceOffset_08,
                   config->resourceSize_0c);
     func_0202b520(self->resource_04, file, config->mapOffset_10,
                   config->mapSize_14);
@@ -264,10 +264,10 @@ void func_02029864(DualLayerTileRenderer *self)
     u8 file[0x4c];
     s32 units = self->layerVariant_31 == 0 ? 0x20 : 0x40;
     func_020b44e8();
-    func_02005284(resource);
+    NcgFile_Init(resource);
     GameFile_Init(file);
     GameFile_Open(file, data_020de970);
-    func_02005354(resource, file,
+    NcgFile_LoadCompressedFromFile(resource, file,
                   *(const u32 *)(self->config_1c + 0),
                   *(const u32 *)(self->config_1c + 4));
     if (self->engineMode_30 == 1)
@@ -275,7 +275,7 @@ void func_02029864(DualLayerTileRenderer *self)
     else if (self->engineMode_30 == 2)
         func_020b581c(*(void **)(resource + 4), func_020af7e8(), units << 10);
     GameFile_Destroy(file);
-    func_020052b0(resource);
+    NcgFile_Destroy(resource);
 }
 
 /* Upload or split the loaded palette according to engine mode and layer variant. */
@@ -402,17 +402,17 @@ void func_02029ca4(DualLayerTileRenderer *self, s32 index)
     u8 resource[0x14];
     u8 file[0x4c];
     u8 temporary[0x181c];
-    func_02005284(resource);
+    NcgFile_Init(resource);
     GameFile_Init(file);
     GameFile_Open(file, data_020de970);
-    func_02005354(resource, file,
+    NcgFile_LoadCompressedFromFile(resource, file,
                   *(const u32 *)(self->config_1c + 0),
                   *(const u32 *)(self->config_1c + 4));
     func_0202b750(temporary, resource, index);
     func_0202b838(self->embeddedRenderer_60, temporary);
     func_0202b834(temporary);
     GameFile_Destroy(file);
-    func_020052b0(resource);
+    NcgFile_Destroy(resource);
 }
 
 /* Recovered empty renderer hook; it has no inputs, state changes, or return value. */

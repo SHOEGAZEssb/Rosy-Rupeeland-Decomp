@@ -20,13 +20,13 @@ extern "C" {
 
 extern NclFileVTable data_020d40ec;
 
-NclFile *func_0200542c(NclFile *self);
-NclFile *func_0200544c(NclFile *self);
-NclFile *func_02005460(NclFile *self);
-s32 func_0200547c(NclFile *self, const void *resource);
-s32 func_020054e4(NclFile *self, GameFile *file, s32 offset,
-                  u32 compressedSize);
-u32 func_02005548(const NclFile *self);
+NclFile *NclFile_Init(NclFile *self);
+NclFile *NclFile_Destroy(NclFile *self);
+NclFile *NclFile_DestroyAndFree(NclFile *self);
+s32 NclFile_ParseResource(NclFile *self, const void *resource);
+s32 NclFile_LoadCompressedFromFile(NclFile *self, GameFile *file,
+                                   s32 offset, u32 compressedSize);
+u32 NclFile_GetSignature(const NclFile *self);
 
 #ifdef __cplusplus
 }

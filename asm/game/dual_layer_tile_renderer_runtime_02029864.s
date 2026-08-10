@@ -4,9 +4,9 @@
 .extern GameFile_Init
 .extern GameFile_Open
 .extern data_020de970
-.extern func_02005284
-.extern func_020052b0
-.extern func_02005354
+.extern NcgFile_Init
+.extern NcgFile_Destroy
+.extern NcgFile_LoadCompressedFromFile
 .extern func_020af7e8
 .extern func_020af838
 .extern func_020b44e8
@@ -24,7 +24,7 @@ func_02029864: ; 0x02029864
     movne r4, #0x40
     bl func_020b44e8
     add r0, sp, #0x0
-    bl func_02005284
+    bl NcgFile_Init
     add r0, sp, #0x14
     bl GameFile_Init
     ldr r1, .L_02029910
@@ -34,7 +34,7 @@ func_02029864: ; 0x02029864
     add r0, sp, #0x0
     add r1, sp, #0x14
     ldmia r3, {r2, r3}
-    bl func_02005354
+    bl NcgFile_LoadCompressedFromFile
     ldrb r0, [r5, #0x30]
     cmp r0, #0x1
     beq .L_020298cc
@@ -58,7 +58,7 @@ func_02029864: ; 0x02029864
     add r0, sp, #0x14
     bl GameFile_Destroy
     add r0, sp, #0x0
-    bl func_020052b0
+    bl NcgFile_Destroy
     add sp, sp, #0x60
     ldmia sp!, {r3, r4, r5, pc}
 .L_02029910: .word data_020de970

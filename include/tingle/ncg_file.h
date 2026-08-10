@@ -18,14 +18,14 @@ extern "C" {
 
 extern NitroFileVTable data_020d40cc;
 
-NcgFile *func_02005284(NcgFile *self);
-NcgFile *func_020052b0(NcgFile *self);
-NcgFile *func_020052c4(NcgFile *self);
-s32 func_020052e0(NcgFile *self, const void *resource);
-s32 func_02005354(NcgFile *self, GameFile *file, s32 offset,
-                  u32 compressedSize);
-u32 func_020053b8(const NcgFile *self);
-u32 func_020053f4(const NcgFile *self);
+NcgFile *NcgFile_Init(NcgFile *self);
+NcgFile *NcgFile_Destroy(NcgFile *self);
+NcgFile *NcgFile_DestroyAndFree(NcgFile *self);
+s32 NcgFile_ParseResource(NcgFile *self, const void *resource);
+s32 NcgFile_LoadCompressedFromFile(NcgFile *self, GameFile *file,
+                                   s32 offset, u32 compressedSize);
+u32 NcgFile_GetPayloadSize(const NcgFile *self);
+u32 NcgFile_GetSignature(const NcgFile *self);
 
 #ifdef __cplusplus
 }

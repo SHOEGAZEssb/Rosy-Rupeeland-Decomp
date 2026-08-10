@@ -2,7 +2,7 @@
 .text
 .extern func_0202b4d4
 .extern func_0202b3bc
-.extern func_0200542c
+.extern NclFile_Init
 .extern data_020deb5c
 
     .global func_0202b9dc
@@ -17,7 +17,7 @@ func_0202b9dc: ; 0x0202b9dc
     add r0, r4, #0xc
     bl func_0202b3bc
     add r0, r4, #0x10
-    bl func_0200542c
+    bl NclFile_Init
     ldr r1, [r4, #0x24]
     mov r0, #0x10000
     bic r1, r1, #0x1

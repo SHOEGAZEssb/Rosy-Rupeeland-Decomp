@@ -1,7 +1,7 @@
 .text
-.global func_02005548
-.type func_02005548, @function
-func_02005548:
+.global NclFile_GetSignature
+.type NclFile_GetSignature, @function
+NclFile_GetSignature:
     stmdb sp!, {r3}
     sub sp, sp, #4
     add r3, sp, #0
@@ -16,4 +16,4 @@ func_02005548:
     add sp, sp, #4
     ldmia sp!, {r3}
     bx lr
-    .size func_02005548, .-func_02005548
+    .size NclFile_GetSignature, .-NclFile_GetSignature

@@ -3751,7 +3751,7 @@ build build/reports/ncg_file.json: objdiff build/decomp/delinks/src/system/ncg_f
 
 build build/reports/ncg_file.txt: match_report build/reports/ncg_file.json | tools/report_objdiff.py
   report_json = build/reports/ncg_file.json
-  report_args = --section .text --function func_02005284 --function func_020052b0 --function func_020052c4 --function func_020052e0 --function func_02005354 --function func_020053b8 --function func_020053f4 --require-exact
+  report_args = --section .text --function NcgFile_Init --function NcgFile_Destroy --function NcgFile_DestroyAndFree --function NcgFile_ParseResource --function NcgFile_LoadCompressedFromFile --function NcgFile_GetPayloadSize --function NcgFile_GetSignature --require-exact
 
 build build/reports/ncg_file_data.json: objdiff build/decomp/delinks/src/system/ncg_file_data.o | build/decomp/src/system/ncg_file_data.o
   target_object = build/decomp/delinks/src/system/ncg_file_data.o
@@ -3767,7 +3767,7 @@ build build/reports/ncl_file.json: objdiff build/decomp/delinks/src/system/ncl_f
 
 build build/reports/ncl_file.txt: match_report build/reports/ncl_file.json | tools/report_objdiff.py
   report_json = build/reports/ncl_file.json
-  report_args = --section .text --function func_0200542c --function func_0200544c --function func_02005460 --function func_0200547c --function func_020054e4 --require-exact
+  report_args = --section .text --function NclFile_Init --function NclFile_Destroy --function NclFile_DestroyAndFree --function NclFile_ParseResource --function NclFile_LoadCompressedFromFile --require-exact
 
 build build/reports/ncl_file_signature.json: objdiff build/decomp/delinks/asm/system/ncl_file_signature.o | build/decomp/asm/system/ncl_file_signature.o
   target_object = build/decomp/delinks/asm/system/ncl_file_signature.o
@@ -3775,7 +3775,7 @@ build build/reports/ncl_file_signature.json: objdiff build/decomp/delinks/asm/sy
 
 build build/reports/ncl_file_signature.txt: match_report build/reports/ncl_file_signature.json | tools/report_objdiff.py
   report_json = build/reports/ncl_file_signature.json
-  report_args = --section .text --function func_02005548 --require-exact
+  report_args = --section .text --function NclFile_GetSignature --require-exact
 
 build build/reports/ncl_file_data.json: objdiff build/decomp/delinks/src/system/ncl_file_data.o | build/decomp/src/system/ncl_file_data.o
   target_object = build/decomp/delinks/src/system/ncl_file_data.o

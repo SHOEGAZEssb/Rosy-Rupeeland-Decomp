@@ -27,8 +27,8 @@ extern void *func_0202b3c8(void *self);
 extern s32 func_0202b4c0(const void *self);
 extern u8 func_0202b3f0(void *self, s32 index);
 extern void func_0202b3fc(void *self, s32 index, u8 value);
-extern void func_0200542c(void *self);
-extern void func_0200544c(void *self);
+extern void NclFile_Init(void *self);
+extern void NclFile_Destroy(void *self);
 #ifdef __cplusplus
 }
 #endif
@@ -43,7 +43,7 @@ ByteTileMapOwner *func_0202b9dc(ByteTileMapOwner *self)
     self->vtable_00 = (void **)data_020deb5c;
     func_0202b4d4(self->sizedBuffer_04);
     func_0202b3bc(self->tileBytes_0c);
-    func_0200542c(self->metadata_10);
+    NclFile_Init(self->metadata_10);
     self->flags_24 &= ~1u;
     self->flags_24 |= 2;
     self->dimensions_20 &= 0xffff;
@@ -54,7 +54,7 @@ ByteTileMapOwner *func_0202b9dc(ByteTileMapOwner *self)
 /* Destroy metadata and both owned buffers, then return self without freeing it. */
 ByteTileMapOwner *func_0202ba4c(ByteTileMapOwner *self)
 {
-    func_0200544c(self->metadata_10);
+    NclFile_Destroy(self->metadata_10);
     func_0202b3c8(self->tileBytes_0c);
     func_0202b4e4(self->sizedBuffer_04);
     return self;
@@ -63,7 +63,7 @@ ByteTileMapOwner *func_0202ba4c(ByteTileMapOwner *self)
 /* Destroy all embedded owners, free self, and return its former address. */
 ByteTileMapOwner *func_0202ba74(ByteTileMapOwner *self)
 {
-    func_0200544c(self->metadata_10);
+    NclFile_Destroy(self->metadata_10);
     func_0202b3c8(self->tileBytes_0c);
     func_0202b4e4(self->sizedBuffer_04);
     Heap_Free(self);
@@ -73,7 +73,7 @@ ByteTileMapOwner *func_0202ba74(ByteTileMapOwner *self)
 /* Destroy all embedded owners and return self; this is a second non-freeing virtual destructor. */
 ByteTileMapOwner *func_0202baa4(ByteTileMapOwner *self)
 {
-    func_0200544c(self->metadata_10);
+    NclFile_Destroy(self->metadata_10);
     func_0202b3c8(self->tileBytes_0c);
     func_0202b4e4(self->sizedBuffer_04);
     return self;

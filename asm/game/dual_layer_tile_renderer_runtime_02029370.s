@@ -7,7 +7,7 @@
 .extern Heap_Alloc
 .extern data_020de970
 .extern data_020de984
-.extern func_020054e4
+.extern NclFile_LoadCompressedFromFile
 .extern func_02029864
 .extern func_02029914
 .extern func_0202a7fc
@@ -42,7 +42,7 @@ func_02029370: ; 0x02029370
     ldr r3, [r5, #0xc]
     add r0, r6, #0x10
     add r1, sp, #0x10
-    bl func_020054e4
+    bl NclFile_LoadCompressedFromFile
     ldr r2, [r5, #0x10]
     ldr r3, [r5, #0x14]
     add r0, r6, #0x4

@@ -8,8 +8,8 @@
 extern const void *data_020d4064;
 
 NitroFileVTable data_020d40cc = {
-    (NitroFile *(*)(NitroFile *))func_020052b0,
-    (NitroFile *(*)(NitroFile *))func_020052c4,
+    (NitroFile *(*)(NitroFile *))NcgFile_Destroy,
+    (NitroFile *(*)(NitroFile *))NcgFile_DestroyAndFree,
     0,
     &data_020d4064,
 };
