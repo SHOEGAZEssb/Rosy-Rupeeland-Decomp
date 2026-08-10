@@ -155,3 +155,9 @@ paths through validated FNT/FAT ranges and ARM9 reads through validated header
 offsets; directory reads reject absolute paths and dot traversal. Returned
 buffers are always owned by the caller, giving reconstructed loaders one
 consistent native contract.
+
+ARM9 overlays use the same provider. ROM mode validates the 32-byte overlay
+table record and FAT extent; extracted mode reads the corresponding metadata
+and binary under `arm9_overlays/`. Uncompressed code is copied into owned
+storage with zero-filled BSS and its DS load/constructor addresses retained as
+metadata. Compressed images are rejected until a native decoder is specified.

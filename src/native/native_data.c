@@ -21,6 +21,8 @@ struct TingleNativeData {
     size_t fnt_size;
     unsigned char *fat;
     size_t fat_size;
+    unsigned char *overlay_table;
+    size_t overlay_table_size;
     size_t rom_size;
     size_t arm9_offset;
     size_t arm9_size;
@@ -164,9 +166,10 @@ TingleNativeData *TingleNativeData_OpenDirectory(const char *root)
 
 TingleNativeData *TingleNativeData_OpenRom(const char *path)
 {
-    unsigned char header[0x50];
+    unsigned char header[0x58];
     size_t fnt_offset;
     size_t fat_offset;
+    size_t overlay_table_offset;
     long rom_size;
     TingleNativeData *data = (TingleNativeData *)calloc(1, sizeof(*data));
     if (data == NULL || path == NULL || *path == '\0') {
@@ -184,14 +187,20 @@ TingleNativeData *TingleNativeData_OpenRom(const char *path)
     data->fnt_size = ReadU32(header + 0x44);
     fat_offset = ReadU32(header + 0x48);
     data->fat_size = ReadU32(header + 0x4c);
+    overlay_table_offset = ReadU32(header + 0x50);
+    data->overlay_table_size = ReadU32(header + 0x54);
     data->arm9_offset = ReadU32(header + 0x20);
     data->arm9_address = ReadU32(header + 0x28);
     data->arm9_size = ReadU32(header + 0x2c);
-    if ((data->fat_size & 7) != 0 || data->fnt_size < 9 ||
+    if ((data->fat_size & 7) != 0 || (data->overlay_table_size & 31) != 0 ||
+        data->fnt_size < 9 ||
         data->arm9_size == 0 ||
         !RangeValid(data->arm9_offset, data->arm9_size, data->rom_size) ||
         !LoadTable(data->rom, fnt_offset, data->fnt_size, data->rom_size, &data->fnt) ||
-        !LoadTable(data->rom, fat_offset, data->fat_size, data->rom_size, &data->fat)) goto fail;
+        !LoadTable(data->rom, fat_offset, data->fat_size, data->rom_size, &data->fat) ||
+        (data->overlay_table_size != 0 &&
+         !LoadTable(data->rom, overlay_table_offset, data->overlay_table_size,
+                    data->rom_size, &data->overlay_table))) goto fail;
     data->kind = DATA_ROM;
     return data;
 fail:
@@ -206,6 +215,7 @@ void TingleNativeData_Close(TingleNativeData *data)
     free(data->root);
     free(data->fnt);
     free(data->fat);
+    free(data->overlay_table);
     free(data->arm9_path);
     free(data);
 }
@@ -321,6 +331,20 @@ static int ReadRomFile(TingleNativeData *data, const char *path,
     return ReadStreamRange(data->rom, start, end - start, bytes, size);
 }
 
+static int ReadRomFileById(TingleNativeData *data, u32 file_id,
+                           void **bytes, size_t *size)
+{
+    size_t fat_entry = (size_t)file_id * 8;
+    size_t start;
+    size_t end;
+
+    if (!RangeValid(fat_entry, 8, data->fat_size)) return 0;
+    start = ReadU32(data->fat + fat_entry);
+    end = ReadU32(data->fat + fat_entry + 4);
+    if (end < start || !RangeValid(start, end - start, data->rom_size)) return 0;
+    return ReadStreamRange(data->rom, start, end - start, bytes, size);
+}
+
 int TingleNativeData_ReadFile(TingleNativeData *data, const char *path,
                               void **bytes, size_t *size)
 {
@@ -354,4 +378,190 @@ int TingleNativeData_ReadArm9(TingleNativeData *data, u32 address,
     result = ReadStreamRange(file, relative, size, bytes, &ignored_size);
     fclose(file);
     return result;
+}
+
+static int ParseUnsignedField(const char *line, const char *field, u32 *value)
+{
+    size_t field_size = strlen(field);
+    char *end;
+    unsigned long parsed;
+
+    while (*line == ' ') ++line;
+    if (strncmp(line, field, field_size) != 0) return 0;
+    parsed = strtoul(line + field_size, &end, 0);
+    if (end == line + field_size || parsed > 0xffffffffUL) return 0;
+    *value = (u32)parsed;
+    return 1;
+}
+
+static int OverlayMetadataValid(const TingleNativeOverlayImage *overlay)
+{
+    u32 code_end = overlay->load_address + overlay->code_size;
+    u32 image_end = code_end + overlay->bss_size;
+
+    if (overlay->load_address == 0 || overlay->code_size == 0 ||
+        code_end < overlay->load_address || image_end < code_end) return 0;
+    if (overlay->constructor_start == 0 && overlay->constructor_end == 0) return 1;
+    return overlay->constructor_start >= overlay->load_address &&
+           overlay->constructor_start <= overlay->constructor_end &&
+           overlay->constructor_end <= code_end;
+}
+
+static int ParseExtractedOverlay(TingleNativeData *data, u32 overlay_id,
+                                 TingleNativeOverlayImage *overlay,
+                                 char *file_name, size_t file_name_size)
+{
+    char *table_path = JoinPath(data->root, "arm9_overlays/overlays.yaml");
+    FILE *table;
+    char line[256];
+    u32 current_id = 0xffffffffu;
+    int compressed = 0;
+    int found = 0;
+
+    if (table_path == NULL) return 0;
+    table = fopen(table_path, "r");
+    free(table_path);
+    if (table == NULL) return 0;
+    while (fgets(line, sizeof(line), table) != NULL) {
+        u32 value;
+        char *text = line;
+
+        while (*text == ' ') ++text;
+        if (strncmp(text, "- id:", 5) == 0) {
+            if (found) break;
+            current_id = (u32)strtoul(text + 5, NULL, 0);
+            found = current_id == overlay_id;
+            continue;
+        }
+        if (!found) continue;
+        if (ParseUnsignedField(text, "base_address:", &value)) overlay->load_address = value;
+        else if (ParseUnsignedField(text, "code_size:", &value)) overlay->code_size = value;
+        else if (ParseUnsignedField(text, "bss_size:", &value)) overlay->bss_size = value;
+        else if (ParseUnsignedField(text, "ctor_start:", &value)) overlay->constructor_start = value;
+        else if (ParseUnsignedField(text, "ctor_end:", &value)) overlay->constructor_end = value;
+        else if (strncmp(text, "compressed:", 11) == 0) compressed = strstr(text + 11, "true") != NULL;
+        else if (strncmp(text, "file_name:", 10) == 0) {
+            char *name = text + 10;
+            size_t length;
+            while (*name == ' ') ++name;
+            length = strcspn(name, "\r\n");
+            if (length == 0 || length >= file_name_size) {
+                found = 0;
+                break;
+            }
+            memcpy(file_name, name, length);
+            file_name[length] = '\0';
+        }
+    }
+    fclose(table);
+    overlay->id = overlay_id;
+    return found && !compressed && OverlayMetadataValid(overlay) &&
+           file_name[0] != '\0' &&
+           SafeRelativePath(file_name);
+}
+
+static int ReadExtractedOverlay(TingleNativeData *data, u32 overlay_id,
+                                TingleNativeOverlayImage *overlay)
+{
+    char file_name[128] = {0};
+    char relative[160];
+    char *path;
+    FILE *file;
+    long file_size;
+
+    if (!data->extracted_layout ||
+        !ParseExtractedOverlay(data, overlay_id, overlay, file_name, sizeof(file_name)))
+        return 0;
+    if (snprintf(relative, sizeof(relative), "arm9_overlays/%s", file_name) < 0)
+        return 0;
+    path = JoinPath(data->root, relative);
+    if (path == NULL) return 0;
+    file = fopen(path, "rb");
+    free(path);
+    if (file == NULL || fseek(file, 0, SEEK_END) != 0) {
+        if (file != NULL) fclose(file);
+        return 0;
+    }
+    file_size = ftell(file);
+    if (file_size < 0 || (u32)file_size != overlay->code_size ||
+        fseek(file, 0, SEEK_SET) != 0) {
+        fclose(file);
+        return 0;
+    }
+    overlay->size = (size_t)overlay->code_size + overlay->bss_size;
+    if (overlay->size < overlay->code_size) {
+        fclose(file);
+        return 0;
+    }
+    overlay->bytes = calloc(overlay->size == 0 ? 1 : overlay->size, 1);
+    if (overlay->bytes == NULL ||
+        fread(overlay->bytes, 1, overlay->code_size, file) != overlay->code_size) {
+        fclose(file);
+        TingleNativeData_CloseOverlay(overlay);
+        return 0;
+    }
+    fclose(file);
+    return 1;
+}
+
+static int ReadRomOverlay(TingleNativeData *data, u32 overlay_id,
+                          TingleNativeOverlayImage *overlay)
+{
+    size_t offset;
+
+    for (offset = 0; offset < data->overlay_table_size; offset += 32) {
+        const u8 *entry = data->overlay_table + offset;
+        u32 flags;
+        u32 file_id;
+        void *code = NULL;
+        size_t code_size = 0;
+
+        if (ReadU32(entry) != overlay_id) continue;
+        flags = ReadU32(entry + 28);
+        if ((flags & 0x01000000u) != 0) return 0;
+        overlay->id = overlay_id;
+        overlay->load_address = ReadU32(entry + 4);
+        overlay->code_size = ReadU32(entry + 8);
+        overlay->bss_size = ReadU32(entry + 12);
+        overlay->constructor_start = ReadU32(entry + 16);
+        overlay->constructor_end = ReadU32(entry + 20);
+        file_id = ReadU32(entry + 24);
+        if (!OverlayMetadataValid(overlay)) return 0;
+        if (!ReadRomFileById(data, file_id, &code, &code_size) ||
+            code_size != overlay->code_size) {
+            free(code);
+            return 0;
+        }
+        overlay->size = (size_t)overlay->code_size + overlay->bss_size;
+        if (overlay->size < overlay->code_size) {
+            free(code);
+            return 0;
+        }
+        overlay->bytes = calloc(overlay->size == 0 ? 1 : overlay->size, 1);
+        if (overlay->bytes == NULL) {
+            free(code);
+            return 0;
+        }
+        memcpy(overlay->bytes, code, code_size);
+        free(code);
+        return 1;
+    }
+    return 0;
+}
+
+int TingleNativeData_ReadOverlay(TingleNativeData *data, u32 overlay_id,
+                                 TingleNativeOverlayImage *overlay)
+{
+    if (data == NULL || overlay == NULL) return 0;
+    memset(overlay, 0, sizeof(*overlay));
+    return data->kind == DATA_ROM
+        ? ReadRomOverlay(data, overlay_id, overlay)
+        : ReadExtractedOverlay(data, overlay_id, overlay);
+}
+
+void TingleNativeData_CloseOverlay(TingleNativeOverlayImage *overlay)
+{
+    if (overlay == NULL) return;
+    free(overlay->bytes);
+    memset(overlay, 0, sizeof(*overlay));
 }

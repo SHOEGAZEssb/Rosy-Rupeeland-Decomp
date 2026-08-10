@@ -7,6 +7,17 @@
 
 typedef struct TingleNativeData TingleNativeData;
 
+typedef struct TingleNativeOverlayImage {
+    u32 id;
+    u32 load_address;
+    u32 code_size;
+    u32 bss_size;
+    u32 constructor_start;
+    u32 constructor_end;
+    void *bytes;
+    size_t size;
+} TingleNativeOverlayImage;
+
 /* Opens an extracted NitroFS root; files remain owned by the caller's directory. */
 TingleNativeData *TingleNativeData_OpenDirectory(const char *root);
 
@@ -32,5 +43,15 @@ int TingleNativeData_ReadFile(TingleNativeData *data, const char *path,
  */
 int TingleNativeData_ReadArm9(TingleNativeData *data, u32 address,
                               size_t size, void **bytes);
+
+/*
+ * Loads an uncompressed ARM9 overlay by ID, appends zeroed BSS, and returns its
+ * validated DS load metadata. The caller releases bytes with CloseOverlay.
+ */
+int TingleNativeData_ReadOverlay(TingleNativeData *data, u32 overlay_id,
+                                 TingleNativeOverlayImage *overlay);
+
+/* Releases the owned image bytes and clears all returned overlay metadata. */
+void TingleNativeData_CloseOverlay(TingleNativeOverlayImage *overlay);
 
 #endif
