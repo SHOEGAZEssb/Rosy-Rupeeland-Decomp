@@ -5,8 +5,8 @@
 .extern ActorRuntimeTriple_Assign
 .extern Actor_SetVelocity
 
-    .global func_020133e8
-func_020133e8: ; 0x020133e8
+    .global GamePhaseActorScriptVm_WaitForMovementCompletion
+GamePhaseActorScriptVm_WaitForMovementCompletion: ; 0x020133e8
     stmdb sp!, {r3, r4, r5, lr}
     sub sp, sp, #0x10
     mov r4, r0
@@ -54,4 +54,4 @@ func_020133e8: ; 0x020133e8
 L_02013498:
     add sp, sp, #0x10
     ldmia sp!, {r3, r4, r5, pc}
-    .size func_020133e8, . - func_020133e8
+    .size GamePhaseActorScriptVm_WaitForMovementCompletion, . - GamePhaseActorScriptVm_WaitForMovementCompletion

@@ -2,8 +2,8 @@
 .text
 .extern GamePhaseScriptVm_SetResult
 
-    .global func_020134a0
-func_020134a0: ; 0x020134a0
+    .global GamePhaseActorScriptVm_IsMovementActive
+GamePhaseActorScriptVm_IsMovementActive: ; 0x020134a0
     stmdb sp!, {r3, lr}
     ldr r1, [r0, #0x84]
     ldr r1, [r1, #0x10]
@@ -18,5 +18,5 @@ L_020134c0:
 L_020134c8:
     mov r0, #0x0
     ldmia sp!, {r3, pc}
-    .size func_020134a0, . - func_020134a0
+    .size GamePhaseActorScriptVm_IsMovementActive, . - GamePhaseActorScriptVm_IsMovementActive
 

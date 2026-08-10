@@ -19,7 +19,7 @@ extern void Actor_SetVelocity(void *actor, const VecFx32Object *value);
  * at offsets 0x38/0x88/0x98 are zeroed, and Actor_SetVelocity receives a zero
  * vector. Returns zero after that cleanup.
  */
-s32 func_020133e8(GamePhaseActorScriptVm *self)
+s32 GamePhaseActorScriptVm_WaitForMovementCompletion(GamePhaseActorScriptVm *self)
 {
     u8 *actor = (u8 *)self->actor;
     VecFx32Object zero;
@@ -39,7 +39,7 @@ s32 func_020133e8(GamePhaseActorScriptVm *self)
 }
 
 /* Push whether actor flag 0x40 is set and return zero. */
-s32 func_020134a0(GamePhaseActorScriptVm *self)
+s32 GamePhaseActorScriptVm_IsMovementActive(GamePhaseActorScriptVm *self)
 {
     u32 flags = *(u32 *)((u8 *)self->actor + 0x10);
     GamePhaseScriptVm_SetResult(&self->base, (flags & 0x40) != 0);
