@@ -3,7 +3,7 @@
 .extern func_02005030
 .extern func_02005058
 .extern func_020066a4
-.extern func_02043610
+.extern ActorExtendedType2_GetDescriptorValue2C
 .extern func_0204cfa4
 .extern func_02050078
 .extern func_020adc90
@@ -22,7 +22,7 @@ func_02044c74: ; 0x02044c74
     add r1, r7, #0x18
     bl func_02005030
     mov r0, r7
-    bl func_02043610
+    bl ActorExtendedType2_GetDescriptorValue2C
     cmp r0, #0x0
     ble .L_02044d54
     add r0, sp, #0x0
@@ -38,7 +38,7 @@ func_02044c74: ; 0x02044c74
     cmp r4, #0x1000
     ble .L_02044d4c
     mov r0, r7
-    bl func_02043610
+    bl ActorExtendedType2_GetDescriptorValue2C
     mov r5, r0, lsl #0x4
     ldr r0, [sp, #0x4]
     mov r1, r4

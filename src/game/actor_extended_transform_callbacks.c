@@ -7,7 +7,7 @@ extern "C" {
 #endif
 extern void func_0200b2c0(void *vector, s32 x, s32 y, s32 z);
 extern s32 Actor_IsAtCachedTerrainHeight(void *actor, ...);
-extern s32 func_020435f4(const void *actor);
+extern s32 ActorExtendedType2_GetDescriptorValue2A(const void *actor);
 extern void func_02043674(void *actor, void *first, void *second);
 #ifdef __cplusplus
 }
@@ -30,7 +30,8 @@ void func_020443f0(void *self, void *first, void *second)
 /*
  * Query Actor_IsAtCachedTerrainHeight(actor,x,y). When nonzero, set +0x29c
  * from *x and *y,
- * then set +0x44 to func_020435f4(actor)<<4. Otherwise replace *x and *y with
+ * then set +0x44 to descriptor value +0x2a shifted left by four. Otherwise
+ * replace *x and *y with
  * truncating halves added to truncating halves of actor +0x2a0/+0x2a4.
  * Returns no value; actor or caller-owned coordinates may change.
  */
@@ -39,7 +40,7 @@ void func_02044434(void *self, s32 *x, s32 *y)
     u8 *actor = (u8 *)self;
     if (Actor_IsAtCachedTerrainHeight(actor, x, y) != 0) {
         func_0200b2c0(actor + 0x29c, *x, *y, 0);
-        *(s32 *)(actor + 0x44) = func_020435f4(actor) << 4;
+        *(s32 *)(actor + 0x44) = ActorExtendedType2_GetDescriptorValue2A(actor) << 4;
     } else {
         s32 ax = *(s32 *)(actor + 0x2a0);
         s32 ay = *(s32 *)(actor + 0x2a4);

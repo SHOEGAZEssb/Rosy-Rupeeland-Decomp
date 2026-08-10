@@ -7,7 +7,7 @@
 .extern func_0203f5c4
 .extern func_020400a4
 .extern func_02040334
-.extern func_020435f4
+.extern ActorExtendedType2_GetDescriptorValue2A
 .extern func_020befec
 .global func_02043864
 .type func_02043864, @function
@@ -42,7 +42,7 @@ func_02043894: ; 0x02043894
     movs r4, r0
     beq .L_020438b8
     mov r0, r5
-    bl func_020435f4
+    bl ActorExtendedType2_GetDescriptorValue2A
     add r1, r5, #0x200
     strh r0, [r1, #0x9a]
 .L_020438b8:
@@ -60,7 +60,7 @@ func_020438c0: ; 0x020438c0
     movs r4, r0
     beq .L_020438e4
     mov r0, r5
-    bl func_020435f4
+    bl ActorExtendedType2_GetDescriptorValue2A
     add r1, r5, #0x200
     strh r0, [r1, #0x9a]
 .L_020438e4:

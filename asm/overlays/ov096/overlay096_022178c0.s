@@ -6,7 +6,7 @@
 .extern ActorCollection_GetSpriteOwner
 .extern Actor_GetCollection
 .extern ActorExtendedType2_UpdateFrame
-.extern func_020435f4
+.extern ActorExtendedType2_GetDescriptorValue2A
 .extern func_020593dc
 .extern func_02072b68
 .extern func_020740c8
@@ -390,7 +390,7 @@ func_ov096_022178c0:
     beq .L_02217e4c
     bic r1, r1, #0x2000
     str r1, [r4, #0x260]
-    bl func_020435f4
+    bl ActorExtendedType2_GetDescriptorValue2A
     cmp r0, #0x0
     ldreq r0, [r4, #0x10]
     biceq r0, r0, #0x1f0000
@@ -399,7 +399,7 @@ func_ov096_022178c0:
 .L_02217e4c:
     orr r1, r1, #0x2000
     str r1, [r4, #0x260]
-    bl func_020435f4
+    bl ActorExtendedType2_GetDescriptorValue2A
     cmp r0, #0x0
     ldreq r0, [r4, #0x10]
     orreq r0, r0, #0x1f0000

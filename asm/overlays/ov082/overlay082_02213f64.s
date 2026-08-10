@@ -5,7 +5,7 @@
 .extern func_0201e0ec
 .extern func_02034a60
 .extern ActorExtendedType2_UpdateFrame
-.extern func_020435f4
+.extern ActorExtendedType2_GetDescriptorValue2A
 .extern func_0204362c
 .extern func_020a28e0
 .extern func_020befec
@@ -55,7 +55,7 @@ func_ov082_02213f64:
     subne r1, r1, #0x1
     strneh r1, [r0, #0x9a]
     mov r0, r4
-    bl func_020435f4
+    bl ActorExtendedType2_GetDescriptorValue2A
     add r1, r4, #0x200
     ldrh r1, [r1, #0x9a]
     sub r0, r0, #0x1e

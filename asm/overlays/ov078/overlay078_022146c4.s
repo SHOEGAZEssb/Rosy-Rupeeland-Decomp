@@ -1,7 +1,7 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov078/overlay078_recovery.c.
 .extern func_02034a60
-.extern func_020435f4
+.extern ActorExtendedType2_GetDescriptorValue2A
 .extern func_ov078_02213be0
 
 .global func_ov078_022146c4
@@ -13,7 +13,7 @@ func_ov078_022146c4:
     mov r0, r4
     orr r1, r1, #0x8
     str r1, [r4, #0x260]
-    bl func_020435f4
+    bl ActorExtendedType2_GetDescriptorValue2A
     cmp r0, #0x2
     ldmltia sp!, {r4, pc}
     ldr r1, .L_02214700

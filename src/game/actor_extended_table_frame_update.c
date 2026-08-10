@@ -10,7 +10,7 @@ extern "C" {
 #endif
 extern void ActorExtendedType2_UpdateFrame(void *actor);
 extern void func_02032228(void *actor, s32 first, s32 second, s32 third);
-extern s32 func_02043610(const void *actor);
+extern s32 ActorExtendedType2_GetDescriptorValue2C(const void *actor);
 extern s32 ActorExtendedTable_MatchesCallbackPair18(const void *actor);
 extern s32 ActorExtendedTable_MatchesCallbackPair00(const void *actor);
 #ifdef __cplusplus
@@ -19,8 +19,8 @@ extern s32 ActorExtendedTable_MatchesCallbackPair00(const void *actor);
 
 /*
  * Return immediately while actor +0x14 bit 0x200000 is set. Otherwise clear
- * actor +0x260 bit 0x400 whenever func_02043610 is nonzero or the callback pair
- * at +0x218/+0x21c matches either known table callback pair, the
+ * actor +0x260 bit 0x400 whenever descriptor value +0x2c is nonzero or the
+ * callback pair at +0x218/+0x21c matches either known table callback pair, the
  * data_020e0ac8+0x10/data_020e0ad8+4 pair, or the
  * data_020e0ac8+8/data_020e0ad0+4 pair. For all other callback pairs, set bit
  * 0x400, obtain a value from vtable +0x140, and call
@@ -36,7 +36,7 @@ void ActorExtendedTable_UpdateFrame(void *self)
 
     if ((*(u32 *)(actor + 0x14) & 0x200000) != 0)
         return;
-    if (func_02043610(actor) != 0) {
+    if (ActorExtendedType2_GetDescriptorValue2C(actor) != 0) {
         recognized = 1;
     } else if (ActorExtendedTable_MatchesCallbackPair18(actor) != 0 ||
                ActorExtendedTable_MatchesCallbackPair00(actor) != 0) {

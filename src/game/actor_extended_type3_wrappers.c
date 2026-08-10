@@ -12,7 +12,7 @@ extern "C" {
 extern void ActorExtendedType2_Destroy(void *actor);
 extern s32 func_020400a4(void *actor, void *record);
 extern s32 func_02040334(void *actor, void *record);
-extern s32 func_020435f4(const void *actor);
+extern s32 ActorExtendedType2_GetDescriptorValue2A(const void *actor);
 extern void func_02005030(void *temporary, const void *source);
 extern void func_02005058(void *temporary);
 extern void func_0203f5c4(void *actor, const void *transform);
@@ -40,27 +40,27 @@ void *func_02043878(void *self)
 
 /*
  * Forward actor and record to func_020400a4. When it returns nonzero, copy
- * signed descriptor halfword exposed by func_020435f4 into actor +0x29a.
+ * signed descriptor halfword +0x2a into actor +0x29a.
  * Return the forwarded result; actor/base interaction state may change.
  */
 s32 func_02043894(void *self, void *record)
 {
     s32 result = func_020400a4(self, record);
     if (result != 0)
-        *(u16 *)((u8 *)self + 0x29a) = (u16)func_020435f4(self);
+        *(u16 *)((u8 *)self + 0x29a) = (u16)ActorExtendedType2_GetDescriptorValue2A(self);
     return result;
 }
 
 /*
  * Forward actor and record to func_02040334. When it returns nonzero, copy
- * signed descriptor halfword exposed by func_020435f4 into actor +0x29a.
+ * signed descriptor halfword +0x2a into actor +0x29a.
  * Return the forwarded result; actor/base interaction state may change.
  */
 s32 func_020438c0(void *self, void *record)
 {
     s32 result = func_02040334(self, record);
     if (result != 0)
-        *(u16 *)((u8 *)self + 0x29a) = (u16)func_020435f4(self);
+        *(u16 *)((u8 *)self + 0x29a) = (u16)ActorExtendedType2_GetDescriptorValue2A(self);
     return result;
 }
 

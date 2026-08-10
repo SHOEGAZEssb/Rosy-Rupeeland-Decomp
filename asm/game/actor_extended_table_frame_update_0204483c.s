@@ -5,7 +5,7 @@
 .extern data_020e0ad8
 .extern func_02032228
 .extern ActorExtendedType2_UpdateFrame
-.extern func_02043610
+.extern ActorExtendedType2_GetDescriptorValue2C
 .extern ActorExtendedTable_MatchesCallbackPair18
 .extern ActorExtendedTable_MatchesCallbackPair00
 .global ActorExtendedTable_UpdateFrame
@@ -20,7 +20,7 @@ ActorExtendedTable_UpdateFrame: ; 0x0204483c
     cmp r0, #0x0
     ldmeqia sp!, {r4, pc}
     mov r0, r4
-    bl func_02043610
+    bl ActorExtendedType2_GetDescriptorValue2C
     cmp r0, #0x0
     bne .L_02044958
     mov r0, r4

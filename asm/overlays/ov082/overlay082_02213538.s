@@ -18,7 +18,7 @@
 .extern func_02032228
 .extern func_02032a94
 .extern func_02038ecc
-.extern func_020435d8
+.extern ActorExtendedType2_GetDescriptorValue28
 .extern func_0204362c
 .extern func_0204cfa4
 .extern func_020a2894
@@ -170,7 +170,7 @@ func_ov082_02213538:
     blx r3
 .L_02213740:
     mov r0, r5
-    bl func_020435d8
+    bl ActorExtendedType2_GetDescriptorValue28
     add r1, r5, #0x200
     ldrh r1, [r1, #0x9c]
     mov r6, r0

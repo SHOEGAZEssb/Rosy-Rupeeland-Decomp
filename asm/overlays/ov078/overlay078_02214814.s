@@ -4,7 +4,7 @@
 .extern func_02005030
 .extern func_02005058
 .extern func_020405c8
-.extern func_020435f4
+.extern ActorExtendedType2_GetDescriptorValue2A
 .extern func_020593dc
 .extern func_020befec
 .extern func_ov078_02213a74
@@ -39,7 +39,7 @@ func_ov078_02214814:
     sub r5, r3, r2
     bl func_02005030
     mov r0, r8
-    bl func_020435f4
+    bl ActorExtendedType2_GetDescriptorValue2A
     mov r6, r0
     cmp r6, #0x2
     blt .L_02214964

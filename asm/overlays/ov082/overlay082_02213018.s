@@ -1,13 +1,13 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov082/overlay082_recovery.c.
 .extern ActorExtendedType2_TriggerContactFeedback
-.extern func_02043610
+.extern ActorExtendedType2_GetDescriptorValue2C
 
 .global func_ov082_02213018
 func_ov082_02213018:
     stmdb sp!, {r4, lr}
     mov r4, r0
-    bl func_02043610
+    bl ActorExtendedType2_GetDescriptorValue2C
     cmp r0, #0x1
     bne .L_0221303c
     ldr r1, [r4, #0x24]

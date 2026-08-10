@@ -14,7 +14,7 @@ extern void *ActorExtendedType2_Init(void *actor, const void *configuration);
 extern void *ActorExtendedType2_Destroy(void *actor);
 extern void func_0200500c(void *value, s32 x, s32 y, s32 z);
 extern void func_02005058(void *value);
-extern s32 func_02043610(const void *actor);
+extern s32 ActorExtendedType2_GetDescriptorValue2C(const void *actor);
 #ifdef __cplusplus
 }
 #endif
@@ -22,7 +22,8 @@ extern s32 func_02043610(const void *actor);
 /*
  * Initialize the base actor from configuration, install vtable data_020e08ec,
  * clear halfword +0x298, construct a zero value at +0x29c, and store the
- * func_02043610 result at +0x29a. Return self; actor/owned-value state changes.
+ * descriptor value +0x2c at +0x29a. Return self; actor/owned-value state
+ * changes.
  */
 void *func_020440cc(void *self, const void *configuration)
 {
@@ -31,7 +32,7 @@ void *func_020440cc(void *self, const void *configuration)
     *(void **)actor = data_020e08ec;
     *(u16 *)(actor + 0x298) = 0;
     func_0200500c(actor + 0x29c, 0, 0, 0);
-    *(u16 *)(actor + 0x29a) = (u16)func_02043610(actor);
+    *(u16 *)(actor + 0x29a) = (u16)ActorExtendedType2_GetDescriptorValue2C(actor);
     return actor;
 }
 
@@ -43,7 +44,7 @@ void *func_02044118(void *self, const void *configuration)
     *(void **)actor = data_020e08ec;
     *(u16 *)(actor + 0x298) = 0;
     func_0200500c(actor + 0x29c, 0, 0, 0);
-    *(u16 *)(actor + 0x29a) = (u16)func_02043610(actor);
+    *(u16 *)(actor + 0x29a) = (u16)ActorExtendedType2_GetDescriptorValue2C(actor);
     return actor;
 }
 

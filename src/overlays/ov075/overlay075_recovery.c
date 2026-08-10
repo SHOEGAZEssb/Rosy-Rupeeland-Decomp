@@ -13,7 +13,7 @@ void func_ov075_02212ae0(void);
 /* Processes the supplied ABI arguments and offset-based actor state, returns its encoded result, and invokes ActorExtendedType2_Init; exact higher-level semantics remain unconfirmed. */
 void func_ov075_02212bb8(void);
 
-/* Processes the supplied ABI arguments and offset-based actor state, returns its encoded result, and invokes func_02007f0c, func_020435f4, func_ov075_02212d80 and other shared helpers; exact higher-level semantics remain unconfirmed. */
+/* Processes the supplied ABI arguments and offset-based actor state, returns its encoded result, and invokes func_02007f0c, ActorExtendedType2_GetDescriptorValue2A, func_ov075_02212d80 and other shared helpers; exact higher-level semantics remain unconfirmed. */
 void func_ov075_02212c90(void);
 
 /* Processes the supplied ABI arguments using only local offset-based fields; observable mutations and the return value are preserved by the matching implementation, with no direct SDK call. */
@@ -64,7 +64,7 @@ void func_ov075_02213480(void);
 /* Empty or constant ABI helper: accepts its implicit arguments, changes no observable state, returns its encoded ABI result, and performs no SDK or hardware work. */
 void func_ov075_02213528(void);
 
-/* Processes the supplied ABI arguments and offset-based actor state, returns its encoded result, and invokes func_02003e20, func_02004fe0, func_020435f4 and other shared helpers; exact higher-level semantics remain unconfirmed. */
+/* Processes the supplied ABI arguments and offset-based actor state, returns its encoded result, and invokes func_02003e20, func_02004fe0, ActorExtendedType2_GetDescriptorValue2A and other shared helpers; exact higher-level semantics remain unconfirmed. */
 void func_ov075_0221352c(void);
 
 /* Processes the supplied ABI arguments and offset-based actor state, returns its encoded result, and invokes func_02005058, ActorExtendedType2_Destroy; exact higher-level semantics remain unconfirmed. */

@@ -20,7 +20,7 @@
 .extern func_020380f0
 .extern func_02038784
 .extern Type1Actor_TryEnterFailureState
-.extern func_020435d8
+.extern ActorExtendedType2_GetDescriptorValue28
 .extern func_0204cff4
 .extern func_020a2894
 .extern func_020ada8c
@@ -265,7 +265,7 @@ func_0203825c: ; 0x0203825c
     mov r9, #0x1
 .L_020385e4:
     mov r0, r6
-    bl func_020435d8
+    bl ActorExtendedType2_GetDescriptorValue28
     mov r1, #0xa
     mov r8, r0
     bl func_020adae4

@@ -29,7 +29,7 @@ extern void *func_02053780(void *actor);
  * meaning remains unknown. The routine has no meaningful return value and may
  * change actor query state; no direct SDK or hardware operation occurs.
  */
-void func_02043534(void *self)
+void ActorExtendedType2_UpdateDescriptorQueryFlags(void *self)
 {
     u8 *actor = (u8 *)self;
     s16 encoded = *(s16 *)(data_020e8380 + *(u16 *)(actor + 0x4e) * 0x30 + 0x2e);
@@ -48,21 +48,21 @@ void func_02043534(void *self)
 }
 
 /* Read and return signed descriptor halfword +0x28; state is unchanged. */
-s32 func_020435d8(const void *self)
+s32 ActorExtendedType2_GetDescriptorValue28(const void *self)
 {
     const u8 *actor = (const u8 *)self;
     return *(s16 *)(data_020e83a8 + *(u16 *)(actor + 0x4e) * 0x30);
 }
 
 /* Read and return signed descriptor halfword +0x2a; state is unchanged. */
-s32 func_020435f4(const void *self)
+s32 ActorExtendedType2_GetDescriptorValue2A(const void *self)
 {
     const u8 *actor = (const u8 *)self;
     return *(s16 *)(data_020e83aa + *(u16 *)(actor + 0x4e) * 0x30);
 }
 
 /* Read and return signed descriptor halfword +0x2c; state is unchanged. */
-s32 func_02043610(const void *self)
+s32 ActorExtendedType2_GetDescriptorValue2C(const void *self)
 {
     const u8 *actor = (const u8 *)self;
     return *(s16 *)(data_020e83ac + *(u16 *)(actor + 0x4e) * 0x30);

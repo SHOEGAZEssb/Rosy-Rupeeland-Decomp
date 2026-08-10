@@ -12,7 +12,7 @@ extern "C" {
 #endif
 extern void func_0203f2ec(void *actor, void *output);
 extern s32 ActorExtendedType2_AccumulateProximityInteraction(void *actor, void *first, void *second);
-extern s32 func_02043610(const void *actor);
+extern s32 ActorExtendedType2_GetDescriptorValue2C(const void *actor);
 #ifdef __cplusplus
 }
 #endif
@@ -22,7 +22,8 @@ s32 ActorExtendedTable_MatchesCallbackPair00(const void *self);
 
 /*
  * Run base output update func_0203f2ec(actor,output). Leave that output intact
- * when func_02043610 is nonzero or the callback pair matches table entry +0x18.
+ * when ActorExtendedType2_GetDescriptorValue2C is nonzero or the callback pair
+ * matches table entry +0x18.
  * Otherwise, if the pair also fails to match table entry +0x00, clear the first
  * three output halfwords. Returns no
  * meaningful value; base actor and caller-owned output state may change.
@@ -30,7 +31,7 @@ s32 ActorExtendedTable_MatchesCallbackPair00(const void *self);
 void ActorExtendedTable_FilterDescriptorOutput(void *self, void *output)
 {
     func_0203f2ec(self, output);
-    if (func_02043610(self) != 0)
+    if (ActorExtendedType2_GetDescriptorValue2C(self) != 0)
         return;
     if (ActorExtendedTable_MatchesCallbackPair18(self) != 0)
         return;
@@ -78,14 +79,15 @@ s32 ActorExtendedTable_MatchesCallbackPair00(const void *self)
 }
 
 /*
- * When func_02043610 is zero and the callback pair matches table entry +0x00,
- * return zero without
- * forwarding. In every other case forward actor and the remaining inputs to
- * ActorExtendedType2_AccumulateProximityInteraction and return its result; base interaction state may change.
+ * When ActorExtendedType2_GetDescriptorValue2C is zero and the callback pair
+ * matches table entry +0x00, return zero without forwarding. In every other
+ * case forward actor and the remaining inputs to
+ * ActorExtendedType2_AccumulateProximityInteraction and return its result;
+ * base interaction state may change.
  */
 s32 ActorExtendedTable_ForwardProximityInteraction(void *self, void *first, void *second)
 {
-    if (func_02043610(self) == 0 && ActorExtendedTable_MatchesCallbackPair00(self) != 0)
+    if (ActorExtendedType2_GetDescriptorValue2C(self) == 0 && ActorExtendedTable_MatchesCallbackPair00(self) != 0)
         return 0;
     return ActorExtendedType2_AccumulateProximityInteraction(self, first, second);
 }

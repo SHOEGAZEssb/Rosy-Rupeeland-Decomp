@@ -2,7 +2,7 @@
 ; Matching fallback for the portable implementation in src/overlays/ov096/overlay096_recovery.c.
 .extern data_020e6e68
 .extern func_02005070
-.extern func_020435f4
+.extern ActorExtendedType2_GetDescriptorValue2A
 .extern func_020593dc
 .extern func_ov096_02218590
 .extern func_ov096_0221880c
@@ -47,7 +47,7 @@ func_ov096_02218668:
     ldr r2, [r4, #0x0]
     bl func_ov096_0221880c
     mov r0, r6
-    bl func_020435f4
+    bl ActorExtendedType2_GetDescriptorValue2A
     mov r0, r0, lsl #0x4
     str r0, [r6, #0x44]
 .L_02218700:

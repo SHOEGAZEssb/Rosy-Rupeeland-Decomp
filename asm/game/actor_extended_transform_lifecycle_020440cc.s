@@ -6,7 +6,7 @@
 .extern func_02005058
 .extern ActorExtendedType2_Init
 .extern ActorExtendedType2_Destroy
-.extern func_02043610
+.extern ActorExtendedType2_GetDescriptorValue2C
 .global func_020440cc
 .type func_020440cc, @function
 .global func_02044118
@@ -31,7 +31,7 @@ func_020440cc: ; 0x020440cc
     strh r1, [ip, #0x98]
     bl func_0200500c
     mov r0, r4
-    bl func_02043610
+    bl ActorExtendedType2_GetDescriptorValue2C
     add r1, r4, #0x200
     strh r0, [r1, #0x9a]
     mov r0, r4
@@ -53,7 +53,7 @@ func_02044118: ; 0x02044118
     strh r1, [ip, #0x98]
     bl func_0200500c
     mov r0, r4
-    bl func_02043610
+    bl ActorExtendedType2_GetDescriptorValue2C
     add r1, r4, #0x200
     strh r0, [r1, #0x9a]
     mov r0, r4

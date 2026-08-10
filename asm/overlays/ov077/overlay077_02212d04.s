@@ -7,7 +7,7 @@
 .extern func_02028388
 .extern ActorCollection_GetSpriteOwner
 .extern func_0203e56c
-.extern func_020435f4
+.extern ActorExtendedType2_GetDescriptorValue2A
 .extern func_020b57d4
 .extern func_ov090_0221bc84
 .extern func_ov090_0221c3dc
@@ -22,7 +22,7 @@ func_ov077_02212d04:
     mov r6, r0
     bl func_0203e56c
     mov r0, r6
-    bl func_020435f4
+    bl ActorExtendedType2_GetDescriptorValue2A
     mov r3, r0, lsl #0x10
     add r1, sp, #0x10
     mov r0, #0x0

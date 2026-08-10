@@ -21,7 +21,7 @@ extern void func_02008378(void *output, const void *left, const void *right);
 extern void *func_0201e0ec(void *manager);
 extern void func_020a2894(void *effect, s32 kind, s32 x, s32 y, s32 extra);
 extern s32 func_020380f0(void *target);
-extern s32 func_020435d8(void *target);
+extern s32 ActorExtendedType2_GetDescriptorValue28(void *target);
 extern u32 genrand_int32(void);
 extern s32 func_020ada8c(s32 value, s32 divisor);
 extern void func_02010c00(void *context, s32 value, s32 extra);
@@ -157,7 +157,7 @@ void func_0203825c(void *self, void *other, s32 firstWeight, s32 secondWeight)
         }
 
         countGate = baseCount + angleBonus;
-        targetValue = func_020435d8(target);
+        targetValue = ActorExtendedType2_GetDescriptorValue28(target);
         tenth = func_020adae4(targetValue, 10);
         magnitude = targetValue - func_020adae4(tenth, 2) +
                     func_020adae4(tenth *

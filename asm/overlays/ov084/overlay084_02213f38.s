@@ -7,7 +7,7 @@
 .extern Actor_SaveAndForceFlags
 .extern func_020349b8
 .extern ActorExtendedType2_UpdateFrame
-.extern func_020435f4
+.extern ActorExtendedType2_GetDescriptorValue2A
 .extern func_02045184
 
 .global func_ov084_02213f38
@@ -55,7 +55,7 @@ func_ov084_02213f38:
     cmp r4, #0x0
     beq .L_022140cc
     mov r0, r5
-    bl func_020435f4
+    bl ActorExtendedType2_GetDescriptorValue2A
     add r1, r5, #0x200
     ldrsh r2, [r1, #0x98]
     cmp r2, r0

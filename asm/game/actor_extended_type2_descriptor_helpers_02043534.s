@@ -7,9 +7,9 @@
 .extern func_020536b8
 .extern func_02053728
 .extern func_02053780
-.global func_02043534
-.type func_02043534, @function
-func_02043534: ; 0x02043534
+.global ActorExtendedType2_UpdateDescriptorQueryFlags
+.type ActorExtendedType2_UpdateDescriptorQueryFlags, @function
+ActorExtendedType2_UpdateDescriptorQueryFlags: ; 0x02043534
     stmdb sp!, {r4, lr}
     mov r4, r0
     bl func_020536b8
@@ -53,11 +53,11 @@ func_02043534: ; 0x02043534
     ldmia sp!, {r4, pc}
 .L_020435d4: .word data_020e8380
 
-.size func_02043534, . - func_02043534
+.size ActorExtendedType2_UpdateDescriptorQueryFlags, . - ActorExtendedType2_UpdateDescriptorQueryFlags
 
-.global func_020435d8
-.type func_020435d8, @function
-func_020435d8: ; 0x020435d8
+.global ActorExtendedType2_GetDescriptorValue28
+.type ActorExtendedType2_GetDescriptorValue28, @function
+ActorExtendedType2_GetDescriptorValue28: ; 0x020435d8
     ldrh r2, [r0, #0x4e]
     mov r0, #0x30
     ldr r1, .L_020435f0
@@ -66,11 +66,11 @@ func_020435d8: ; 0x020435d8
     bx lr
 .L_020435f0: .word data_020e83a8
 
-.size func_020435d8, . - func_020435d8
+.size ActorExtendedType2_GetDescriptorValue28, . - ActorExtendedType2_GetDescriptorValue28
 
-.global func_020435f4
-.type func_020435f4, @function
-func_020435f4: ; 0x020435f4
+.global ActorExtendedType2_GetDescriptorValue2A
+.type ActorExtendedType2_GetDescriptorValue2A, @function
+ActorExtendedType2_GetDescriptorValue2A: ; 0x020435f4
     ldrh r2, [r0, #0x4e]
     mov r0, #0x30
     ldr r1, .L_0204360c
@@ -79,11 +79,11 @@ func_020435f4: ; 0x020435f4
     bx lr
 .L_0204360c: .word data_020e83aa
 
-.size func_020435f4, . - func_020435f4
+.size ActorExtendedType2_GetDescriptorValue2A, . - ActorExtendedType2_GetDescriptorValue2A
 
-.global func_02043610
-.type func_02043610, @function
-func_02043610: ; 0x02043610
+.global ActorExtendedType2_GetDescriptorValue2C
+.type ActorExtendedType2_GetDescriptorValue2C, @function
+ActorExtendedType2_GetDescriptorValue2C: ; 0x02043610
     ldrh r2, [r0, #0x4e]
     mov r0, #0x30
     ldr r1, .L_02043628
@@ -91,4 +91,4 @@ func_02043610: ; 0x02043610
     ldrsh r0, [r1, r0]
     bx lr
 .L_02043628: .word data_020e83ac
-.size func_02043610, . - func_02043610
+.size ActorExtendedType2_GetDescriptorValue2C, . - ActorExtendedType2_GetDescriptorValue2C

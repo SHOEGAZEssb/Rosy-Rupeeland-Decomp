@@ -2,7 +2,7 @@
 .text
 .extern func_0200b2c0
 .extern Actor_IsAtCachedTerrainHeight
-.extern func_020435f4
+.extern ActorExtendedType2_GetDescriptorValue2A
 .extern func_02043674
 .global func_020443f0
 .type func_020443f0, @function
@@ -44,7 +44,7 @@ func_02044434: ; 0x02044434
     mov r3, #0x0
     bl func_0200b2c0
     mov r0, r6
-    bl func_020435f4
+    bl ActorExtendedType2_GetDescriptorValue2A
     mov r0, r0, lsl #0x4
     str r0, [r6, #0x44]
     ldmia sp!, {r4, r5, r6, pc}

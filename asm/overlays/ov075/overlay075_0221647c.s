@@ -17,7 +17,7 @@
 .extern func_02039348
 .extern func_02039e70
 .extern Actor_RandomizeValueByTenPercent
-.extern func_020435d8
+.extern ActorExtendedType2_GetDescriptorValue28
 .extern func_020ae024
 .extern func_020befec
 .extern func_ov075_02212f10
@@ -157,7 +157,7 @@ func_ov075_0221647c:
     mov r2, r2, lsr #0xc
     orr r2, r2, r1, lsl #0x14
     str r2, [sp, #0x58]
-    bl func_020435d8
+    bl ActorExtendedType2_GetDescriptorValue28
     bl Actor_RandomizeValueByTenPercent
     mov r7, r0
     ldrb r0, [r5, #0x4d]

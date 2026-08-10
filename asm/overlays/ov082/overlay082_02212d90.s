@@ -4,8 +4,8 @@
 .extern data_ov082_022145f0
 .extern Actor_GetCachedTerrainHeight
 .extern ActorExtendedType2_UpdateFrame
-.extern func_020435f4
-.extern func_02043610
+.extern ActorExtendedType2_GetDescriptorValue2A
+.extern ActorExtendedType2_GetDescriptorValue2C
 .extern func_0204362c
 .extern func_02050078
 .extern func_020be334
@@ -75,7 +75,7 @@ func_ov082_02212d90:
     cmp r0, #0x0
     bne .L_02212ee4
     mov r0, r5
-    bl func_020435f4
+    bl ActorExtendedType2_GetDescriptorValue2A
     add r1, r5, #0x200
     ldrh r1, [r1, #0x98]
     cmp r1, r0
@@ -137,7 +137,7 @@ func_ov082_02212d90:
     strge r0, [r5, #0x24]
 .L_02212f70:
     mov r0, r5
-    bl func_02043610
+    bl ActorExtendedType2_GetDescriptorValue2C
     cmp r0, #0x1
     ldmneia sp!, {r3, r4, r5, r6, r7, pc}
     ldr r0, [r5, #0x238]

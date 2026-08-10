@@ -112,7 +112,7 @@
 .extern func_ov097_02219be8
 .extern func_02040d64
 .extern func_ov097_022179a4
-.extern func_02043534
+.extern ActorExtendedType2_UpdateDescriptorQueryFlags
 .extern func_ov097_02219458
 .extern func_ov097_02219d1c
 .extern func_ov097_022195e0
@@ -394,7 +394,7 @@ data_ov097_0221a5f4:
     .word func_ov097_02219be8
     .word func_02040d64
     .word func_ov097_022179a4
-    .word func_02043534
+    .word ActorExtendedType2_UpdateDescriptorQueryFlags
     .word func_ov097_02219458
     .word func_ov097_02219d1c
     .word func_ov097_022195e0
@@ -529,7 +529,7 @@ data_ov097_0221a80c:
     .word func_ov097_02219be8
     .word func_02040d64
     .word func_ov078_022138c0
-    .word func_02043534
+    .word ActorExtendedType2_UpdateDescriptorQueryFlags
     .word func_ov097_02219bc8
     .word func_ov097_02219bb0
     .word func_ov097_02219ba8

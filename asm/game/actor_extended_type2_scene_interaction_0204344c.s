@@ -72,5 +72,5 @@ func_0204344c: ; 0x0204344c
 .L_0204352c: .word gSceneManager
 .L_02043530: .word data_021052fc
 
-    .global func_02043534
+    .global ActorExtendedType2_UpdateDescriptorQueryFlags
 .size func_0204344c, . - func_0204344c

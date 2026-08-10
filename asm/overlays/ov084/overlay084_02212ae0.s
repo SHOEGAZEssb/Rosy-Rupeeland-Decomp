@@ -5,7 +5,7 @@
 .extern data_ov084_0221439c
 .extern func_02006328
 .extern ActorExtendedType2_Init
-.extern func_020435f4
+.extern ActorExtendedType2_GetDescriptorValue2A
 .extern gHeapContext
 
 .global func_ov084_02212ae0
@@ -36,7 +36,7 @@ func_ov084_02212ae0:
 .L_02212b3c:
     str r0, [r4, #0x2a4]
     mov r0, r4
-    bl func_020435f4
+    bl ActorExtendedType2_GetDescriptorValue2A
     str r0, [r4, #0x114]
     mov r0, r4
     ldmia sp!, {r4, pc}

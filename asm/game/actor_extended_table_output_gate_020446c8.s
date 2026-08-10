@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/actor_extended_table_descriptor_gates.c.
 .text
 .extern func_0203f2ec
-.extern func_02043610
+.extern ActorExtendedType2_GetDescriptorValue2C
 .extern ActorExtendedTable_MatchesCallbackPair18
 .extern ActorExtendedTable_MatchesCallbackPair00
 .global ActorExtendedTable_FilterDescriptorOutput
@@ -12,7 +12,7 @@ ActorExtendedTable_FilterDescriptorOutput: ; 0x020446c8
     mov r4, r1
     bl func_0203f2ec
     mov r0, r5
-    bl func_02043610
+    bl ActorExtendedType2_GetDescriptorValue2C
     cmp r0, #0x0
     ldmneia sp!, {r3, r4, r5, pc}
     mov r0, r5

@@ -4,7 +4,7 @@
 .extern func_02005030
 .extern func_02005058
 .extern func_020412a8
-.extern func_02043610
+.extern ActorExtendedType2_GetDescriptorValue2C
 .extern func_0204362c
 .extern func_02043958
 .extern func_02050078
@@ -73,7 +73,7 @@ func_02043bc8: ; 0x02043bc8
     stmdb sp!, {r4, lr}
     sub sp, sp, #0x10
     mov r4, r0
-    bl func_02043610
+    bl ActorExtendedType2_GetDescriptorValue2C
     cmp r0, #0x0
     bne .L_02043c1c
     mov r0, r4

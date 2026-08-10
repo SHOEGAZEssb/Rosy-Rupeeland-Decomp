@@ -4,7 +4,7 @@
 .extern data_ov075_02217168
 .extern func_02003e20
 .extern func_02004fe0
-.extern func_020435f4
+.extern ActorExtendedType2_GetDescriptorValue2A
 .extern func_ov075_02212ae0
 .extern gHeapContext
 
@@ -25,12 +25,12 @@ func_ov075_0221352c:
     mov r2, #0x0
     mov r0, r4
     str r2, [r1, #0x4]
-    bl func_020435f4
+    bl ActorExtendedType2_GetDescriptorValue2A
     cmp r0, #0x0
     movle r0, #0x1
     ble .L_02213580
     mov r0, r4
-    bl func_020435f4
+    bl ActorExtendedType2_GetDescriptorValue2A
 .L_02213580:
     add r1, r4, #0x200
     strh r0, [r1, #0xaa]

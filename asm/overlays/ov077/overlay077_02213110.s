@@ -4,7 +4,7 @@
 .extern data_020e83a0
 .extern data_ov077_02216fc8
 .extern data_ov077_022172f4
-.extern func_02043610
+.extern ActorExtendedType2_GetDescriptorValue2C
 .extern func_020541d4
 .extern func_0206899c
 .extern func_020befec
@@ -81,7 +81,7 @@ func_ov077_02213110:
     strh r2, [r1, #0xce]
     mov r0, r4
     strh r2, [r1, #0xcc]
-    bl func_02043610
+    bl ActorExtendedType2_GetDescriptorValue2C
     cmp r0, #0x0
     beq .L_02213234
     cmp r0, #0x1

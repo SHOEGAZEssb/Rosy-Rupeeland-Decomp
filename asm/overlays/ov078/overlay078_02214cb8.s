@@ -7,8 +7,8 @@
 .extern Actor_GetCachedTerrainHeight
 .extern func_02034a60
 .extern func_020405c8
-.extern func_020435f4
-.extern func_02043610
+.extern ActorExtendedType2_GetDescriptorValue2A
+.extern ActorExtendedType2_GetDescriptorValue2C
 .extern func_0204cfa4
 .extern func_020593dc
 .extern func_020adae4
@@ -62,7 +62,7 @@ func_ov078_02214cb8:
     ldr r2, [r2, #0xd0]
     blx r2
     mov r0, r6
-    bl func_020435f4
+    bl ActorExtendedType2_GetDescriptorValue2A
     cmp r0, #0x0
     bgt .L_02214db8
     ldr r0, [r6, #0x8c]
@@ -298,7 +298,7 @@ func_ov078_02214cb8:
     cmp r0, #0x0
     beq .L_02215224
     mov r0, r6
-    bl func_02043610
+    bl ActorExtendedType2_GetDescriptorValue2C
     mvn r1, #0x0
     cmp r0, r1
     bne .L_02215224

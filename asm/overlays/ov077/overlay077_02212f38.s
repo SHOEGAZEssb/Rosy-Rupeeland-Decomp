@@ -5,7 +5,7 @@
 .extern func_02005058
 .extern func_020050a4
 .extern ActorExtendedType2_UpdateFrame
-.extern func_02043610
+.extern ActorExtendedType2_GetDescriptorValue2C
 .extern func_020ae024
 .extern func_ov077_022130b8
 .extern func_ov090_0221be40
@@ -76,7 +76,7 @@ func_ov077_02212f38:
     add r2, r4, #0x2a4
     bl func_ov077_022130b8
     mov r0, r4
-    bl func_02043610
+    bl ActorExtendedType2_GetDescriptorValue2C
     cmp r0, #0x0
     beq .L_0221304c
     cmp r0, #0x1
