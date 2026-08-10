@@ -3,9 +3,9 @@
 .extern DualLayerTileRendererBase_Destroy
 .extern Heap_Free
 
-    .global func_0202cc14
-    .type func_0202cc14, @function
-func_0202cc14: ; 0x0202cc14
+    .global MainThreeLayerResourceRenderer_DestroyAndFree
+    .type MainThreeLayerResourceRenderer_DestroyAndFree, @function
+MainThreeLayerResourceRenderer_DestroyAndFree: ; 0x0202cc14
     stmdb sp!, {r4, lr}
     mov r4, r0
     bl DualLayerTileRendererBase_Destroy
@@ -13,4 +13,4 @@ func_0202cc14: ; 0x0202cc14
     bl Heap_Free
     mov r0, r4
     ldmia sp!, {r4, pc}
-    .size func_0202cc14, . - func_0202cc14
+    .size MainThreeLayerResourceRenderer_DestroyAndFree, . - MainThreeLayerResourceRenderer_DestroyAndFree

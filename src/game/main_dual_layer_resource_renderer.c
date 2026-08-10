@@ -16,7 +16,7 @@ typedef struct MainDualLayerResourceRenderer {
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *data_020dec4c;
+extern void *gMainDualLayerResourceRendererVtable;
 extern void *data_020f4e18;
 extern PaletteBuffer gMainBgPaletteBuffer;
 extern void DualLayerTileRendererBase_InitBase(void *self);
@@ -27,28 +27,28 @@ extern void func_020b44e8(void);
 extern void func_02070638(void *resource, s32 background, s32 value);
 extern void func_02070e0c(void *resource, s32 background, s32 value);
 extern u8 *func_02070874(void *resource);
-void func_0202bf4c(MainDualLayerResourceRenderer *self);
+void MainDualLayerResourceRenderer_LoadBgResources(MainDualLayerResourceRenderer *self);
 #ifdef __cplusplus
 }
 #endif
 
 /* Construct the common renderer, install this variant's vtable, and return self. */
-MainDualLayerResourceRenderer *func_0202becc(MainDualLayerResourceRenderer *self)
+MainDualLayerResourceRenderer *MainDualLayerResourceRenderer_Init(MainDualLayerResourceRenderer *self)
 {
     DualLayerTileRendererBase_InitBase(self);
-    self->vtable_00 = (void **)data_020dec4c;
+    self->vtable_00 = (void **)gMainDualLayerResourceRendererVtable;
     return self;
 }
 
 /* Run common renderer teardown and return self without freeing it. */
-MainDualLayerResourceRenderer *func_0202beec(MainDualLayerResourceRenderer *self)
+MainDualLayerResourceRenderer *MainDualLayerResourceRenderer_DestroyComplete(MainDualLayerResourceRenderer *self)
 {
     DualLayerTileRendererBase_Destroy(self);
     return self;
 }
 
 /* Run common renderer teardown, free self, and return its former address. */
-MainDualLayerResourceRenderer *func_0202bf00(MainDualLayerResourceRenderer *self)
+MainDualLayerResourceRenderer *MainDualLayerResourceRenderer_DestroyAndFree(MainDualLayerResourceRenderer *self)
 {
     DualLayerTileRendererBase_Destroy(self);
     Heap_Free(self);
@@ -56,17 +56,17 @@ MainDualLayerResourceRenderer *func_0202bf00(MainDualLayerResourceRenderer *self
 }
 
 /* Run the first common activation path, then perform this variant's resource setup. */
-void func_0202bf1c(MainDualLayerResourceRenderer *self)
+void MainDualLayerResourceRenderer_ActivatePrimary(MainDualLayerResourceRenderer *self)
 {
     DualLayerTileRenderer_LoadFromConfig(self);
-    func_0202bf4c(self);
+    MainDualLayerResourceRenderer_LoadBgResources(self);
 }
 
 /* Run the second common activation path, then perform this variant's resource setup. */
-void func_0202bf34(MainDualLayerResourceRenderer *self)
+void MainDualLayerResourceRenderer_ActivateSecondary(MainDualLayerResourceRenderer *self)
 {
     DualLayerTileRenderer_ActivateLayers(self);
-    func_0202bf4c(self);
+    MainDualLayerResourceRenderer_LoadBgResources(self);
 }
 
 /*
@@ -77,7 +77,7 @@ void func_0202bf34(MainDualLayerResourceRenderer *self)
  * VRAM/cache state, the main BG palette buffer, BG0CNT/BG1CNT, and main
  * DISPCNT plane-enable bits.
  */
-void func_0202bf4c(MainDualLayerResourceRenderer *self)
+void MainDualLayerResourceRenderer_LoadBgResources(MainDualLayerResourceRenderer *self)
 {
     GraphicsResourceSet resources;
     u8 *palette;

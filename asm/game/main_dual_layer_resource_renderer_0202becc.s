@@ -1,11 +1,11 @@
 ; Matching retail form; see src/game/main_dual_layer_resource_renderer.c.
 .text
 .extern DualLayerTileRendererBase_InitBase
-.extern data_020dec4c
+.extern gMainDualLayerResourceRendererVtable
 
-    .global func_0202becc
-    .type func_0202becc, @function
-func_0202becc: ; 0x0202becc
+    .global MainDualLayerResourceRenderer_Init
+    .type MainDualLayerResourceRenderer_Init, @function
+MainDualLayerResourceRenderer_Init: ; 0x0202becc
     stmdb sp!, {r4, lr}
     mov r4, r0
     bl DualLayerTileRendererBase_InitBase
@@ -13,5 +13,5 @@ func_0202becc: ; 0x0202becc
     mov r0, r4
     str r1, [r4, #0x0]
     ldmia sp!, {r4, pc}
-.L_0202bee8: .word data_020dec4c
-    .size func_0202becc, . - func_0202becc
+.L_0202bee8: .word gMainDualLayerResourceRendererVtable
+    .size MainDualLayerResourceRenderer_Init, . - MainDualLayerResourceRenderer_Init

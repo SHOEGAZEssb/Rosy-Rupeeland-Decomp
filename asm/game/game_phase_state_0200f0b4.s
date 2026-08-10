@@ -6,10 +6,10 @@
 .extern GamePhaseRegionTable_SetGameWorkFlagBase
 .extern DualLayerTileRendererBase_Init
 .extern DualLayerTileRenderer_LoadEmbeddedRendererEntry
-.extern func_0202becc
-.extern func_0202c308
-.extern func_0202c744
-.extern func_0202cbe0
+.extern MainDualLayerResourceRenderer_Init
+.extern MainDualLayerResourceRendererAlt_Init
+.extern MainBg0ResourceRenderer_Init
+.extern MainThreeLayerResourceRenderer_Init
 .extern gHeapContext
 
     .global GamePhaseState_CreatePhaseObject
@@ -50,7 +50,7 @@ GamePhaseState_CreatePhaseObject: ; 0x0200f0b4
     bl Heap_Alloc
     cmp r0, #0x0
     beq L_0200f148
-    bl func_0202becc
+    bl MainDualLayerResourceRenderer_Init
 L_0200f148:
     add r1, r5, #0x2000
     str r0, [r1, #0xeb0]
@@ -64,7 +64,7 @@ L_0200f154:
     bl Heap_Alloc
     cmp r0, #0x0
     beq L_0200f178
-    bl func_0202c308
+    bl MainDualLayerResourceRendererAlt_Init
 L_0200f178:
     add r1, r5, #0x2000
     str r0, [r1, #0xeb0]
@@ -78,7 +78,7 @@ L_0200f184:
     bl Heap_Alloc
     cmp r0, #0x0
     beq L_0200f1a8
-    bl func_0202c744
+    bl MainBg0ResourceRenderer_Init
 L_0200f1a8:
     add r1, r5, #0x2000
     str r0, [r1, #0xeb0]
@@ -92,7 +92,7 @@ L_0200f1b4:
     bl Heap_Alloc
     cmp r0, #0x0
     beq L_0200f1d8
-    bl func_0202cbe0
+    bl MainThreeLayerResourceRenderer_Init
 L_0200f1d8:
     add r1, r5, #0x2000
     str r0, [r1, #0xeb0]

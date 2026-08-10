@@ -4,7 +4,7 @@
 /*
  * Implement a second main-engine dual-layer renderer type. It has a distinct
  * vtable and lifecycle entry points, but its resource-loading and BG0/BG1
- * hardware setup body is equivalent to func_0202bf4c.
+ * hardware setup body is equivalent to MainDualLayerResourceRenderer_LoadBgResources.
  */
 typedef struct MainDualLayerResourceRendererAlt {
     void **vtable_00;
@@ -13,34 +13,34 @@ typedef struct MainDualLayerResourceRendererAlt {
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *data_020ded3c;
+extern void *gMainDualLayerResourceRendererAltVtable;
 extern void DualLayerTileRendererBase_InitBase(void *self);
 extern void DualLayerTileRendererBase_Destroy(void *self);
 extern void DualLayerTileRenderer_LoadFromConfig(void *self);
 extern void DualLayerTileRenderer_ActivateLayers(void *self);
-extern void func_0202bf4c(void *self);
-void func_0202c388(MainDualLayerResourceRendererAlt *self);
+extern void MainDualLayerResourceRenderer_LoadBgResources(void *self);
+void MainDualLayerResourceRendererAlt_LoadBgResources(MainDualLayerResourceRendererAlt *self);
 #ifdef __cplusplus
 }
 #endif
 
 /* Construct the common renderer, install this variant's vtable, and return self. */
-MainDualLayerResourceRendererAlt *func_0202c308(MainDualLayerResourceRendererAlt *self)
+MainDualLayerResourceRendererAlt *MainDualLayerResourceRendererAlt_Init(MainDualLayerResourceRendererAlt *self)
 {
     DualLayerTileRendererBase_InitBase(self);
-    self->vtable_00 = (void **)data_020ded3c;
+    self->vtable_00 = (void **)gMainDualLayerResourceRendererAltVtable;
     return self;
 }
 
 /* Run common renderer teardown and return self without freeing it. */
-MainDualLayerResourceRendererAlt *func_0202c328(MainDualLayerResourceRendererAlt *self)
+MainDualLayerResourceRendererAlt *MainDualLayerResourceRendererAlt_DestroyComplete(MainDualLayerResourceRendererAlt *self)
 {
     DualLayerTileRendererBase_Destroy(self);
     return self;
 }
 
 /* Run common renderer teardown, free self, and return its former address. */
-MainDualLayerResourceRendererAlt *func_0202c33c(MainDualLayerResourceRendererAlt *self)
+MainDualLayerResourceRendererAlt *MainDualLayerResourceRendererAlt_DestroyAndFree(MainDualLayerResourceRendererAlt *self)
 {
     DualLayerTileRendererBase_Destroy(self);
     Heap_Free(self);
@@ -48,27 +48,27 @@ MainDualLayerResourceRendererAlt *func_0202c33c(MainDualLayerResourceRendererAlt
 }
 
 /* Run the first common activation path, then perform this variant's resource setup. */
-void func_0202c358(MainDualLayerResourceRendererAlt *self)
+void MainDualLayerResourceRendererAlt_ActivatePrimary(MainDualLayerResourceRendererAlt *self)
 {
     DualLayerTileRenderer_LoadFromConfig(self);
-    func_0202c388(self);
+    MainDualLayerResourceRendererAlt_LoadBgResources(self);
 }
 
 /* Run the second common activation path, then perform this variant's resource setup. */
-void func_0202c370(MainDualLayerResourceRendererAlt *self)
+void MainDualLayerResourceRendererAlt_ActivateSecondary(MainDualLayerResourceRendererAlt *self)
 {
     DualLayerTileRenderer_ActivateLayers(self);
-    func_0202c388(self);
+    MainDualLayerResourceRendererAlt_LoadBgResources(self);
 }
 
 /*
- * Perform the same confirmed setup as func_0202bf4c: configure main BG0 with
+ * Perform the same confirmed setup as MainDualLayerResourceRenderer_LoadBgResources: configure main BG0 with
  * resource IDs 0xa006..0xa008, route palette bytes into the main BG palette
  * buffer, configure main BG1 with IDs 0xa000..0xa002, upload both tile maps,
  * and enable their DISPCNT planes. The retail body is duplicated rather than
  * called; the portable form delegates to the documented equivalent.
  */
-void func_0202c388(MainDualLayerResourceRendererAlt *self)
+void MainDualLayerResourceRendererAlt_LoadBgResources(MainDualLayerResourceRendererAlt *self)
 {
-    func_0202bf4c(self);
+    MainDualLayerResourceRenderer_LoadBgResources(self);
 }

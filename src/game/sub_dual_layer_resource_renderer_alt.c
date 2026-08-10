@@ -28,7 +28,7 @@ typedef struct SubDualLayerResourceRendererAlt {
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *data_020decc4;
+extern void *gSubDualLayerResourceRendererAltVtable;
 extern void *data_020f4e18;
 extern void DualLayerTileRendererBase_InitBase(void *self);
 extern void DualLayerTileRendererBase_Destroy(void *self);
@@ -40,28 +40,28 @@ extern void func_020706c4(void *resource, s32 background, s32 value);
 extern void func_02070eac(void *resource, s32 background, s32 value);
 extern u8 *func_02070874(void *resource);
 extern void MIi_CpuCopy16(const void *source, void *destination, u32 size);
-void func_0202c138(SubDualLayerResourceRendererAlt *self);
+void SubDualLayerResourceRendererAlt_LoadBgResources(SubDualLayerResourceRendererAlt *self);
 #ifdef __cplusplus
 }
 #endif
 
 /* Construct the common renderer, install this variant's vtable, and return self. */
-SubDualLayerResourceRendererAlt *func_0202c0b8(SubDualLayerResourceRendererAlt *self)
+SubDualLayerResourceRendererAlt *SubDualLayerResourceRendererAlt_Init(SubDualLayerResourceRendererAlt *self)
 {
     DualLayerTileRendererBase_InitBase(self);
-    self->vtable_00 = (void **)data_020decc4;
+    self->vtable_00 = (void **)gSubDualLayerResourceRendererAltVtable;
     return self;
 }
 
 /* Run common renderer teardown and return self without freeing it. */
-SubDualLayerResourceRendererAlt *func_0202c0d8(SubDualLayerResourceRendererAlt *self)
+SubDualLayerResourceRendererAlt *SubDualLayerResourceRendererAlt_DestroyComplete(SubDualLayerResourceRendererAlt *self)
 {
     DualLayerTileRendererBase_Destroy(self);
     return self;
 }
 
 /* Run common renderer teardown, free self, and return its former address. */
-SubDualLayerResourceRendererAlt *func_0202c0ec(SubDualLayerResourceRendererAlt *self)
+SubDualLayerResourceRendererAlt *SubDualLayerResourceRendererAlt_DestroyAndFree(SubDualLayerResourceRendererAlt *self)
 {
     DualLayerTileRendererBase_Destroy(self);
     Heap_Free(self);
@@ -69,17 +69,17 @@ SubDualLayerResourceRendererAlt *func_0202c0ec(SubDualLayerResourceRendererAlt *
 }
 
 /* Run the first common activation path, then perform this variant's resource setup. */
-void func_0202c108(SubDualLayerResourceRendererAlt *self)
+void SubDualLayerResourceRendererAlt_ActivatePrimary(SubDualLayerResourceRendererAlt *self)
 {
     DualLayerTileRenderer_LoadFromConfig(self);
-    func_0202c138(self);
+    SubDualLayerResourceRendererAlt_LoadBgResources(self);
 }
 
 /* Run the second common activation path, then perform this variant's resource setup. */
-void func_0202c120(SubDualLayerResourceRendererAlt *self)
+void SubDualLayerResourceRendererAlt_ActivateSecondary(SubDualLayerResourceRendererAlt *self)
 {
     DualLayerTileRenderer_ActivateLayers(self);
-    func_0202c138(self);
+    SubDualLayerResourceRendererAlt_LoadBgResources(self);
 }
 
 /*
@@ -90,7 +90,7 @@ void func_0202c120(SubDualLayerResourceRendererAlt *self)
  * release the temporary resources. This mutates VRAM, cache/palette state,
  * BG0CNT, BG1CNT, and sub DISPCNT.
  */
-void func_0202c138(SubDualLayerResourceRendererAlt *self)
+void SubDualLayerResourceRendererAlt_LoadBgResources(SubDualLayerResourceRendererAlt *self)
 {
     GraphicsResourceSet resources;
     TileMapResourceAlt *tileMap;

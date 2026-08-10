@@ -1,15 +1,15 @@
 ; Matching retail form; see src/game/main_bg2_resource_renderer.c.
 .text
 .extern DualLayerTileRenderer_LoadFromConfig
-.extern func_0202c7c4
+.extern MainBg0ResourceRenderer_LoadBgResources
 
-    .global func_0202c794
-    .type func_0202c794, @function
-func_0202c794: ; 0x0202c794
+    .global MainBg0ResourceRenderer_ActivatePrimary
+    .type MainBg0ResourceRenderer_ActivatePrimary, @function
+MainBg0ResourceRenderer_ActivatePrimary: ; 0x0202c794
     stmdb sp!, {r4, lr}
     mov r4, r0
     bl DualLayerTileRenderer_LoadFromConfig
     mov r0, r4
-    bl func_0202c7c4
+    bl MainBg0ResourceRenderer_LoadBgResources
     ldmia sp!, {r4, pc}
-    .size func_0202c794, . - func_0202c794
+    .size MainBg0ResourceRenderer_ActivatePrimary, . - MainBg0ResourceRenderer_ActivatePrimary

@@ -14,9 +14,9 @@
 .extern data_020f4e18
 .extern gMainBgPaletteBuffer
 
-    .global func_0202cc88
-    .type func_0202cc88, @function
-func_0202cc88: ; 0x0202cc88
+    .global MainThreeLayerResourceRenderer_LoadBgResources
+    .type MainThreeLayerResourceRenderer_LoadBgResources, @function
+MainThreeLayerResourceRenderer_LoadBgResources: ; 0x0202cc88
     stmdb sp!, {r3, lr}
     sub sp, sp, #0x10
     add r0, sp, #0x4
@@ -179,4 +179,4 @@ func_0202cc88: ; 0x0202cc88
 .L_0202cf04: .word 0x400000a
 .L_0202cf08: .word 0xa110
 .L_0202cf0c: .word 0x400000e
-    .size func_0202cc88, . - func_0202cc88
+    .size MainThreeLayerResourceRenderer_LoadBgResources, . - MainThreeLayerResourceRenderer_LoadBgResources

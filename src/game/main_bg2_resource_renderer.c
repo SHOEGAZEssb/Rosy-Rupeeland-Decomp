@@ -13,7 +13,7 @@ typedef struct MainBg0ResourceRenderer { void **vtable_00; } MainBg0ResourceRend
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *data_020dee2c;
+extern void *gMainBg0ResourceRendererVtable;
 extern void *data_020f4e18;
 extern PaletteBuffer gMainBgPaletteBuffer;
 extern void DualLayerTileRendererBase_InitBase(void *);
@@ -24,28 +24,28 @@ extern void func_020b44e8(void);
 extern void func_02070638(void *, s32, s32);
 extern void func_02070e0c(void *, s32, s32);
 extern u8 *func_02070874(void *);
-void func_0202c7c4(MainBg0ResourceRenderer *);
+void MainBg0ResourceRenderer_LoadBgResources(MainBg0ResourceRenderer *);
 #ifdef __cplusplus
 }
 #endif
 
 /* Construct the common renderer, install this variant's vtable, and return self. */
-MainBg0ResourceRenderer *func_0202c744(MainBg0ResourceRenderer *self)
+MainBg0ResourceRenderer *MainBg0ResourceRenderer_Init(MainBg0ResourceRenderer *self)
 {
     DualLayerTileRendererBase_InitBase(self);
-    self->vtable_00 = (void **)data_020dee2c;
+    self->vtable_00 = (void **)gMainBg0ResourceRendererVtable;
     return self;
 }
 
 /* Run common renderer teardown and return self without freeing it. */
-MainBg0ResourceRenderer *func_0202c764(MainBg0ResourceRenderer *self)
+MainBg0ResourceRenderer *MainBg0ResourceRenderer_DestroyComplete(MainBg0ResourceRenderer *self)
 {
     DualLayerTileRendererBase_Destroy(self);
     return self;
 }
 
 /* Run common renderer teardown, free self, and return its former address. */
-MainBg0ResourceRenderer *func_0202c778(MainBg0ResourceRenderer *self)
+MainBg0ResourceRenderer *MainBg0ResourceRenderer_DestroyAndFree(MainBg0ResourceRenderer *self)
 {
     DualLayerTileRendererBase_Destroy(self);
     Heap_Free(self);
@@ -53,17 +53,17 @@ MainBg0ResourceRenderer *func_0202c778(MainBg0ResourceRenderer *self)
 }
 
 /* Run the first common activation path, then load and upload the BG0 resources. */
-void func_0202c794(MainBg0ResourceRenderer *self)
+void MainBg0ResourceRenderer_ActivatePrimary(MainBg0ResourceRenderer *self)
 {
     DualLayerTileRenderer_LoadFromConfig(self);
-    func_0202c7c4(self);
+    MainBg0ResourceRenderer_LoadBgResources(self);
 }
 
 /* Run the second common activation path, then load and upload the BG0 resources. */
-void func_0202c7ac(MainBg0ResourceRenderer *self)
+void MainBg0ResourceRenderer_ActivateSecondary(MainBg0ResourceRenderer *self)
 {
     DualLayerTileRenderer_ActivateLayers(self);
-    func_0202c7c4(self);
+    MainBg0ResourceRenderer_LoadBgResources(self);
 }
 
 /*
@@ -72,7 +72,7 @@ void func_0202c7ac(MainBg0ResourceRenderer *self)
  * palette bytes from resource1+0x180 to main palette offset 0x180. Release and
  * destroy the temporary set; calls may update VRAM and cache state.
  */
-void func_0202c7c4(MainBg0ResourceRenderer *self)
+void MainBg0ResourceRenderer_LoadBgResources(MainBg0ResourceRenderer *self)
 {
     GraphicsResourceSet set;
     volatile u16 *bg0 = (volatile u16 *)0x04000008;

@@ -1,15 +1,15 @@
 ; Matching retail form; see src/game/sub_dual_layer_resource_renderer_swapped.c.
 .text
 .extern DualLayerTileRenderer_LoadFromConfig
-.extern func_0202c574
+.extern SubDualLayerResourceRendererSwapped_LoadBgResources
 
-    .global func_0202c544
-    .type func_0202c544, @function
-func_0202c544: ; 0x0202c544
+    .global SubDualLayerResourceRendererSwapped_ActivatePrimary
+    .type SubDualLayerResourceRendererSwapped_ActivatePrimary, @function
+SubDualLayerResourceRendererSwapped_ActivatePrimary: ; 0x0202c544
     stmdb sp!, {r4, lr}
     mov r4, r0
     bl DualLayerTileRenderer_LoadFromConfig
     mov r0, r4
-    bl func_0202c574
+    bl SubDualLayerResourceRendererSwapped_LoadBgResources
     ldmia sp!, {r4, pc}
-    .size func_0202c544, . - func_0202c544
+    .size SubDualLayerResourceRendererSwapped_ActivatePrimary, . - SubDualLayerResourceRendererSwapped_ActivatePrimary

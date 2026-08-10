@@ -2,12 +2,12 @@
 .text
 .extern DualLayerTileRendererBase_Destroy
 
-    .global func_0202cc00
-    .type func_0202cc00, @function
-func_0202cc00: ; 0x0202cc00
+    .global MainThreeLayerResourceRenderer_DestroyComplete
+    .type MainThreeLayerResourceRenderer_DestroyComplete, @function
+MainThreeLayerResourceRenderer_DestroyComplete: ; 0x0202cc00
     stmdb sp!, {r4, lr}
     mov r4, r0
     bl DualLayerTileRendererBase_Destroy
     mov r0, r4
     ldmia sp!, {r4, pc}
-    .size func_0202cc00, . - func_0202cc00
+    .size MainThreeLayerResourceRenderer_DestroyComplete, . - MainThreeLayerResourceRenderer_DestroyComplete

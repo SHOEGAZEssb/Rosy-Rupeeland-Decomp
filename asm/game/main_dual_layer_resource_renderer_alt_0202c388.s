@@ -12,9 +12,9 @@
 .extern data_020f4e18
 .extern gMainBgPaletteBuffer
 
-    .global func_0202c388
-    .type func_0202c388, @function
-func_0202c388: ; 0x0202c388
+    .global MainDualLayerResourceRendererAlt_LoadBgResources
+    .type MainDualLayerResourceRendererAlt_LoadBgResources, @function
+MainDualLayerResourceRendererAlt_LoadBgResources: ; 0x0202c388
     stmdb sp!, {r4, lr}
     sub sp, sp, #0x10
     add r0, sp, #0x4
@@ -106,4 +106,4 @@ func_0202c388: ; 0x0202c388
 .L_0202c4e8: .word gMainBgPaletteBuffer
 .L_0202c4ec: .word 0x400000a
 .L_0202c4f0: .word 0xa002
-    .size func_0202c388, . - func_0202c388
+    .size MainDualLayerResourceRendererAlt_LoadBgResources, . - MainDualLayerResourceRendererAlt_LoadBgResources

@@ -12,9 +12,9 @@
 .extern data_020f4e18
 .extern gMainBgPaletteBuffer
 
-    .global func_0202c7c4
-    .type func_0202c7c4, @function
-func_0202c7c4: ; 0x0202c7c4
+    .global MainBg0ResourceRenderer_LoadBgResources
+    .type MainBg0ResourceRenderer_LoadBgResources, @function
+MainBg0ResourceRenderer_LoadBgResources: ; 0x0202c7c4
     stmdb sp!, {r3, r4, r5, lr}
     sub sp, sp, #0x10
     add r0, sp, #0x4
@@ -72,4 +72,4 @@ func_0202c7c4: ; 0x0202c7c4
 .L_0202c89c: .word 0xa00e
 .L_0202c8a0: .word data_020f4e18
 .L_0202c8a4: .word gMainBgPaletteBuffer
-    .size func_0202c7c4, . - func_0202c7c4
+    .size MainBg0ResourceRenderer_LoadBgResources, . - MainBg0ResourceRenderer_LoadBgResources

@@ -26,7 +26,7 @@ typedef struct SubDualLayerResourceRendererSwapped {
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *data_020dedb4;
+extern void *gSubDualLayerResourceRendererSwappedVtable;
 extern void *data_020f4e18;
 extern void DualLayerTileRendererBase_InitBase(void *);
 extern void DualLayerTileRendererBase_Destroy(void *);
@@ -38,28 +38,28 @@ extern void func_020706c4(void *, s32, s32);
 extern void func_02070eac(void *, s32, s32);
 extern u8 *func_02070874(void *);
 extern void MIi_CpuCopy16(const void *, void *, u32);
-void func_0202c574(SubDualLayerResourceRendererSwapped *);
+void SubDualLayerResourceRendererSwapped_LoadBgResources(SubDualLayerResourceRendererSwapped *);
 #ifdef __cplusplus
 }
 #endif
 
 /* Construct the common renderer, install this variant's vtable, and return self. */
-SubDualLayerResourceRendererSwapped *func_0202c4f4(SubDualLayerResourceRendererSwapped *self)
+SubDualLayerResourceRendererSwapped *SubDualLayerResourceRendererSwapped_Init(SubDualLayerResourceRendererSwapped *self)
 {
     DualLayerTileRendererBase_InitBase(self);
-    self->vtable_00 = (void **)data_020dedb4;
+    self->vtable_00 = (void **)gSubDualLayerResourceRendererSwappedVtable;
     return self;
 }
 
 /* Run common renderer teardown and return self without freeing it. */
-SubDualLayerResourceRendererSwapped *func_0202c514(SubDualLayerResourceRendererSwapped *self)
+SubDualLayerResourceRendererSwapped *SubDualLayerResourceRendererSwapped_DestroyComplete(SubDualLayerResourceRendererSwapped *self)
 {
     DualLayerTileRendererBase_Destroy(self);
     return self;
 }
 
 /* Run common renderer teardown, free self, and return its former address. */
-SubDualLayerResourceRendererSwapped *func_0202c528(SubDualLayerResourceRendererSwapped *self)
+SubDualLayerResourceRendererSwapped *SubDualLayerResourceRendererSwapped_DestroyAndFree(SubDualLayerResourceRendererSwapped *self)
 {
     DualLayerTileRendererBase_Destroy(self);
     Heap_Free(self);
@@ -67,17 +67,17 @@ SubDualLayerResourceRendererSwapped *func_0202c528(SubDualLayerResourceRendererS
 }
 
 /* Run the first common activation path, then perform the swapped resource setup. */
-void func_0202c544(SubDualLayerResourceRendererSwapped *self)
+void SubDualLayerResourceRendererSwapped_ActivatePrimary(SubDualLayerResourceRendererSwapped *self)
 {
     DualLayerTileRenderer_LoadFromConfig(self);
-    func_0202c574(self);
+    SubDualLayerResourceRendererSwapped_LoadBgResources(self);
 }
 
 /* Run the second common activation path, then perform the swapped resource setup. */
-void func_0202c55c(SubDualLayerResourceRendererSwapped *self)
+void SubDualLayerResourceRendererSwapped_ActivateSecondary(SubDualLayerResourceRendererSwapped *self)
 {
     DualLayerTileRenderer_ActivateLayers(self);
-    func_0202c574(self);
+    SubDualLayerResourceRendererSwapped_LoadBgResources(self);
 }
 
 /*
@@ -86,7 +86,7 @@ void func_0202c55c(SubDualLayerResourceRendererSwapped *self)
  * upload both maps, copy 0xc0 palette bytes into paletteBuffer_14+0x140, run
  * common post-load work, enable both display planes, and destroy resources.
  */
-void func_0202c574(SubDualLayerResourceRendererSwapped *self)
+void SubDualLayerResourceRendererSwapped_LoadBgResources(SubDualLayerResourceRendererSwapped *self)
 {
     GraphicsResourceSet set;
     SwappedTileMapResource *map;

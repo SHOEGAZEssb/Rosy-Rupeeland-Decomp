@@ -13,9 +13,9 @@
 .extern DualLayerTileRendererBase_SetLayoutParameters
 .extern DualLayerTileRenderer_LoadEmbeddedRendererEntry
 .extern SubDualLayerResourceRenderer_Init
-.extern func_0202c0b8
-.extern func_0202c4f4
-.extern func_0202c8a8
+.extern SubDualLayerResourceRendererAlt_Init
+.extern SubDualLayerResourceRendererSwapped_Init
+.extern SubThreeLayerResourceRenderer_Init
 .extern ActorCollection_Init
 .extern func_020aea7c
 .extern gGameWork
@@ -121,7 +121,7 @@ L_02011bac:
     bl Heap_Alloc
     cmp r0, #0x0
     beq L_02011bdc
-    bl func_0202c0b8
+    bl SubDualLayerResourceRendererAlt_Init
 L_02011bdc:
     str r0, [r6, #0x4]
     add r1, r6, #0x2000
@@ -154,7 +154,7 @@ L_02011c28:
     bl Heap_Alloc
     cmp r0, #0x0
     beq L_02011c58
-    bl func_0202c4f4
+    bl SubDualLayerResourceRendererSwapped_Init
 L_02011c58:
     str r0, [r6, #0x4]
     add r1, r6, #0x2000
@@ -187,7 +187,7 @@ L_02011ca4:
     bl Heap_Alloc
     cmp r0, #0x0
     beq L_02011cd4
-    bl func_0202c8a8
+    bl SubThreeLayerResourceRenderer_Init
 L_02011cd4:
     str r0, [r6, #0x4]
     add r1, r6, #0x2000

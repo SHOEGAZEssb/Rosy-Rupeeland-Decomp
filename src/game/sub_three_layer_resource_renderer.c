@@ -22,7 +22,7 @@ typedef struct SubThreeLayerResourceRenderer {
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *data_020deea4;
+extern void *gSubThreeLayerResourceRendererVtable;
 extern void *data_020f4e18;
 extern PaletteBuffer gSubBgPaletteBuffer;
 extern void DualLayerTileRendererBase_InitBase(void *);
@@ -35,28 +35,28 @@ extern void func_02070eac(void *, s32, s32);
 extern void func_02070bc4(void *, s32);
 extern void func_02070f80(void *, s32);
 extern u8 *func_02070874(void *);
-void func_0202c950(SubThreeLayerResourceRenderer *);
+void SubThreeLayerResourceRenderer_LoadBgResources(SubThreeLayerResourceRenderer *);
 #ifdef __cplusplus
 }
 #endif
 
 /* Construct the common renderer, install this variant's vtable, and return self. */
-SubThreeLayerResourceRenderer *func_0202c8a8(SubThreeLayerResourceRenderer *self)
+SubThreeLayerResourceRenderer *SubThreeLayerResourceRenderer_Init(SubThreeLayerResourceRenderer *self)
 {
     DualLayerTileRendererBase_InitBase(self);
-    self->vtable_00 = (void **)data_020deea4;
+    self->vtable_00 = (void **)gSubThreeLayerResourceRendererVtable;
     return self;
 }
 
 /* Run common renderer teardown and return self without freeing it. */
-SubThreeLayerResourceRenderer *func_0202c8c8(SubThreeLayerResourceRenderer *self)
+SubThreeLayerResourceRenderer *SubThreeLayerResourceRenderer_DestroyComplete(SubThreeLayerResourceRenderer *self)
 {
     DualLayerTileRendererBase_Destroy(self);
     return self;
 }
 
 /* Run common renderer teardown, free self, and return its former address. */
-SubThreeLayerResourceRenderer *func_0202c8dc(SubThreeLayerResourceRenderer *self)
+SubThreeLayerResourceRenderer *SubThreeLayerResourceRenderer_DestroyAndFree(SubThreeLayerResourceRenderer *self)
 {
     DualLayerTileRendererBase_Destroy(self);
     Heap_Free(self);
@@ -67,19 +67,19 @@ SubThreeLayerResourceRenderer *func_0202c8dc(SubThreeLayerResourceRenderer *self
  * Run first-path activation, clear status bit zero on both attached layers,
  * then configure and upload the three fixed background resource sets.
  */
-void func_0202c8f8(SubThreeLayerResourceRenderer *self)
+void SubThreeLayerResourceRenderer_ActivatePrimary(SubThreeLayerResourceRenderer *self)
 {
     DualLayerTileRenderer_LoadFromConfig(self);
     self->layer_28->status_1030 &= ~1u;
     self->layer_2c->status_1030 &= ~1u;
-    func_0202c950(self);
+    SubThreeLayerResourceRenderer_LoadBgResources(self);
 }
 
 /* Run second-path activation, then configure and upload the three resource sets. */
-void func_0202c938(SubThreeLayerResourceRenderer *self)
+void SubThreeLayerResourceRenderer_ActivateSecondary(SubThreeLayerResourceRenderer *self)
 {
     DualLayerTileRenderer_ActivateLayers(self);
-    func_0202c950(self);
+    SubThreeLayerResourceRenderer_LoadBgResources(self);
 }
 
 /*
@@ -92,7 +92,7 @@ void func_0202c938(SubThreeLayerResourceRenderer *self)
  * upload APIs, and releases the temporary set. VRAM, cache, palette, and sub
  * display hardware state are mutated.
  */
-void func_0202c950(SubThreeLayerResourceRenderer *self)
+void SubThreeLayerResourceRenderer_LoadBgResources(SubThreeLayerResourceRenderer *self)
 {
     GraphicsResourceSet set;
     volatile u32 *disp = (volatile u32 *)0x04001000;

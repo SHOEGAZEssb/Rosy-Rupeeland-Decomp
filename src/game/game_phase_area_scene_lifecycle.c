@@ -20,9 +20,9 @@ extern void OverlaySlot_Init(void *state);
 extern void OverlaySlot_Destroy(void *state);
 extern void OverlaySlot_LoadOverlay(void *state, u32 value);
 extern void *SubDualLayerResourceRenderer_Init(void *self);
-extern void *func_0202c0b8(void *self);
-extern void *func_0202c4f4(void *self);
-extern void *func_0202c8a8(void *self);
+extern void *SubDualLayerResourceRendererAlt_Init(void *self);
+extern void *SubDualLayerResourceRendererSwapped_Init(void *self);
+extern void *SubThreeLayerResourceRenderer_Init(void *self);
 extern void *DualLayerTileRendererBase_Init(void *self);
 extern void DualLayerTileRendererBase_SetLayoutParameters(void *self, s32 a, s32 b, s32 c);
 extern void DualLayerTileRenderer_LoadEmbeddedRendererEntry(void *self, const void *config);
@@ -98,15 +98,15 @@ GamePhaseAreaScene *GamePhaseAreaScene_Init(GamePhaseAreaScene *self,
             loadRenderer(self->subRenderer, config->resource08, 0);
         } else if (config->areaId == 3) {
             GXS_SetGraphicsMode(0);
-            self->subRenderer = createRenderer(func_0202c0b8);
+            self->subRenderer = createRenderer(SubDualLayerResourceRendererAlt_Init);
             loadRenderer(self->subRenderer, config->resource08, 0);
         } else if (config->areaId == 4) {
             GXS_SetGraphicsMode(0);
-            self->subRenderer = createRenderer(func_0202c4f4);
+            self->subRenderer = createRenderer(SubDualLayerResourceRendererSwapped_Init);
             loadRenderer(self->subRenderer, config->resource08, 0);
         } else if (config->areaId == 93) {
             GXS_SetGraphicsMode(0);
-            self->subRenderer = createRenderer(func_0202c8a8);
+            self->subRenderer = createRenderer(SubThreeLayerResourceRenderer_Init);
             loadRenderer(self->subRenderer, config->resource08, 0);
             goto rendererConfigured;
         } else if (mode != 1) {

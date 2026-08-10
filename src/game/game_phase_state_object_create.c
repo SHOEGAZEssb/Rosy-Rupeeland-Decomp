@@ -9,10 +9,10 @@ extern "C" {
 extern const u8 gGamePhaseStateRendererAllocationTag[];
 extern void *DualLayerTileRendererBase_Init(void *object);
 extern void DualLayerTileRenderer_LoadEmbeddedRendererEntry(void *object, const void *configuration);
-extern void *func_0202becc(void *object);
-extern void *func_0202c308(void *object);
-extern void *func_0202c744(void *object);
-extern void *func_0202cbe0(void *object);
+extern void *MainDualLayerResourceRenderer_Init(void *object);
+extern void *MainDualLayerResourceRendererAlt_Init(void *object);
+extern void *MainBg0ResourceRenderer_Init(void *object);
+extern void *MainThreeLayerResourceRenderer_Init(void *object);
 extern void GamePhaseRegionTable_Load(void *object, u32 value);
 extern void GamePhaseRegionTable_SetGameWorkFlagBase(void *object, u32 value);
 #ifdef __cplusplus
@@ -45,13 +45,13 @@ void GamePhaseState_CreatePhaseObject(GamePhaseState *self, const void *configur
     *(volatile u32 *)0x04000000 &= ~0x38000000;
 
     if (phaseId == 2 || phaseId == 0xc7)
-        constructor = func_0202becc;
+        constructor = MainDualLayerResourceRenderer_Init;
     else if (phaseId == 3)
-        constructor = func_0202c308;
+        constructor = MainDualLayerResourceRendererAlt_Init;
     else if (phaseId == 4)
-        constructor = func_0202c744;
+        constructor = MainBg0ResourceRenderer_Init;
     else if (phaseId == 0x5d)
-        constructor = func_0202cbe0;
+        constructor = MainThreeLayerResourceRenderer_Init;
     else
         constructor = DualLayerTileRendererBase_Init;
 

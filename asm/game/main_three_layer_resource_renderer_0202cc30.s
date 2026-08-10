@@ -1,11 +1,11 @@
 ; Matching retail form; see src/game/main_three_layer_resource_renderer.c.
 .text
 .extern DualLayerTileRenderer_LoadFromConfig
-.extern func_0202cc88
+.extern MainThreeLayerResourceRenderer_LoadBgResources
 
-    .global func_0202cc30
-    .type func_0202cc30, @function
-func_0202cc30: ; 0x0202cc30
+    .global MainThreeLayerResourceRenderer_ActivatePrimary
+    .type MainThreeLayerResourceRenderer_ActivatePrimary, @function
+MainThreeLayerResourceRenderer_ActivatePrimary: ; 0x0202cc30
     stmdb sp!, {r4, lr}
     mov r4, r0
     bl DualLayerTileRenderer_LoadFromConfig
@@ -20,6 +20,6 @@ func_0202cc30: ; 0x0202cc30
     ldrb r2, [r1, #0x30]
     bic r2, r2, #0x1
     strb r2, [r1, #0x30]
-    bl func_0202cc88
+    bl MainThreeLayerResourceRenderer_LoadBgResources
     ldmia sp!, {r4, pc}
-    .size func_0202cc30, . - func_0202cc30
+    .size MainThreeLayerResourceRenderer_ActivatePrimary, . - MainThreeLayerResourceRenderer_ActivatePrimary
