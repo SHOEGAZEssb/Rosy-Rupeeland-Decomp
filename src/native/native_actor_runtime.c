@@ -83,9 +83,10 @@ static void InitializeVectorStepper(u8 *bytes)
 }
 
 /*
- * Apply the byte-exact, host-independent portion of func_02030f98. The final
- * +0x78 vector payload comes from phase-global state and remains explicitly
- * pending; its object identity and zero-constructor state are still retained.
+ * Apply the byte-exact, host-independent portion of func_02030f98. The +0x78
+ * payload copied from the phase-global area follower is zero here: retail
+ * resets that follower immediately before constructing the phase subsystem
+ * and binds its actor only after the subsystem has finished construction.
  */
 static void InitializeCommonRuntime(TingleNativeActorImage *actor)
 {
@@ -153,7 +154,6 @@ static void InitializeCommonRuntime(TingleNativeActorImage *actor)
     WriteU16(bytes, 0x76, (u16)((s8)bytes[0x0B] + expand));
 
     actor->initialization_stages |= TINGLE_NATIVE_ACTOR_STAGE_COMMON_RUNTIME;
-    actor->pending_external_state |= TINGLE_NATIVE_ACTOR_PENDING_PHASE_VECTOR;
 }
 
 static s32 UsesSharedDerivedConstructor(const TingleNativeActorDescriptor *desc)

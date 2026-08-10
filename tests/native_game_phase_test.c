@@ -109,8 +109,7 @@ static int TestActorRuntime(void)
             (TINGLE_NATIVE_ACTOR_STAGE_GEOMETRY |
              TINGLE_NATIVE_ACTOR_STAGE_COMMON_RUNTIME |
              TINGLE_NATIVE_ACTOR_STAGE_SHARED_DERIVED) ||
-        actor->pending_external_state !=
-            TINGLE_NATIVE_ACTOR_PENDING_PHASE_VECTOR ||
+        actor->pending_external_state != 0 ||
         actor->bytes[4] != (u8)-12 || actor->bytes[8] != (u8)-10 ||
         ReadU32At(actor->bytes, 0x0C) != 0x12345678 ||
         (ReadU32At(actor->bytes, 0x14) & 0x80) == 0 ||
@@ -167,8 +166,7 @@ static int TestActorBootstrapRuntime(void)
                   TINGLE_NATIVE_ACTOR_STAGE_SHARED_DERIVED |
                   TINGLE_NATIVE_ACTOR_STAGE_TYPE1_DERIVED) &&
              first->pending_external_state ==
-                 (TINGLE_NATIVE_ACTOR_PENDING_PHASE_VECTOR |
-                  TINGLE_NATIVE_ACTOR_PENDING_MARKER_PRESENTATION) &&
+                 TINGLE_NATIVE_ACTOR_PENDING_MARKER_PRESENTATION &&
              ReadU32At(first->bytes, 0x00) == 0x020DF3C8 &&
              (ReadU32At(first->bytes, 0x14) & 0x100000) != 0 &&
              ReadU32At(first->bytes, 0x238) == 0x020D405C &&
@@ -193,8 +191,7 @@ static int TestActorBootstrapRuntime(void)
                   TINGLE_NATIVE_ACTOR_STAGE_COMMON_RUNTIME |
                   TINGLE_NATIVE_ACTOR_STAGE_SHARED_DERIVED |
                   TINGLE_NATIVE_ACTOR_STAGE_SINGLETON_TRACKER) &&
-             third->pending_external_state ==
-                 TINGLE_NATIVE_ACTOR_PENDING_PHASE_VECTOR &&
+             third->pending_external_state == 0 &&
              ReadU32At(third->bytes, 0x00) == 0x020E1F2C &&
              ReadU32At(third->bytes, 0x214) == 0 &&
              fourth != NULL && fourth->synthetic &&

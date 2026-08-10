@@ -156,10 +156,12 @@ of that size for each initially eligible descriptor and applies the recovered
 geometry and common runtime constructors, including fixed-point positions,
 collision bounds, packed descriptor state, embedded vectors, the empty actor
 script VM, its three-vector stepper, raw NDS vtable identities, and descriptor
-value `0x52`. The phase-global vector copied into actor offset `0x78` remains
-an explicit external-state dependency. Kind-three subtypes that use the shared
-`0x208` constructor also receive their recovered embedded animation-resource
-state and terminal fields. Other derived constructors remain marked pending.
+value `0x52`. The phase-global vector copied into actor offset `0x78` is zero at
+this point: the runtime resets its area-motion helper immediately before phase
+subsystem construction and binds the controlling actor afterward. Kind-three
+subtypes that use the shared `0x208` constructor also receive their recovered
+embedded animation-resource state and terminal fields. Other derived
+constructors remain marked pending.
 The category-two singleton-tracker bootstrap has its complete constructor
 image. The category-one bootstrap includes its full type-one scalar/vector
 extension and the known header of its marker helper; resource lookup and host
