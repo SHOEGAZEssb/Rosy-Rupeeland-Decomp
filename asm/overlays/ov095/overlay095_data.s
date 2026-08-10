@@ -60,13 +60,13 @@
 .extern func_0203fae0
 .extern func_0203fa70
 .extern func_0203faa8
-.extern func_0203fb24
-.extern func_0203fb70
-.extern func_0203fbc4
+.extern ActorExtendedType2_ConfigureCallbacks00And170
+.extern ActorExtendedType2_ConfigureCallbacks78And70
+.extern ActorExtendedType2_ConfigureCallbacks18And240
 .extern func_020422f4
-.extern func_0203fc0c
+.extern ActorExtendedType2_ConfigureCallback08
 .extern func_0203fc68
-.extern func_0203fc48
+.extern ActorExtendedType2_RunVirtualFCAndResetProgress
 .extern func_ov095_0221b208
 .extern func_02042514
 .extern func_ov095_0221b1f8
@@ -367,13 +367,13 @@ data_ov095_0221cca0:
     .word func_0203fae0
     .word func_0203fa70
     .word func_0203faa8
-    .word func_0203fb24
-    .word func_0203fb70
-    .word func_0203fbc4
+    .word ActorExtendedType2_ConfigureCallbacks00And170
+    .word ActorExtendedType2_ConfigureCallbacks78And70
+    .word ActorExtendedType2_ConfigureCallbacks18And240
     .word func_020422f4
-    .word func_0203fc0c
+    .word ActorExtendedType2_ConfigureCallback08
     .word func_0203fc68
-    .word func_0203fc48
+    .word ActorExtendedType2_RunVirtualFCAndResetProgress
     .word func_ov095_0221b208
     .word func_02042514
     .word func_ov095_0221b1f8
@@ -531,13 +531,13 @@ data_ov095_0221cf4c:
     .word func_0203fae0
     .word func_0203fa70
     .word func_0203faa8
-    .word func_0203fb24
-    .word func_0203fb70
-    .word func_0203fbc4
+    .word ActorExtendedType2_ConfigureCallbacks00And170
+    .word ActorExtendedType2_ConfigureCallbacks78And70
+    .word ActorExtendedType2_ConfigureCallbacks18And240
     .word func_020422f4
-    .word func_0203fc0c
+    .word ActorExtendedType2_ConfigureCallback08
     .word func_0203fc68
-    .word func_0203fc48
+    .word ActorExtendedType2_RunVirtualFCAndResetProgress
     .word func_02042408
     .word func_02042514
     .word func_02042810

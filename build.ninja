@@ -16827,7 +16827,7 @@ build build/reports/actor_extended_type2_callback_pair_resets_0203fb24.json: obj
   base_object = build/decomp/asm/game/actor_extended_type2_callback_pair_resets_0203fb24.o
 build build/reports/actor_extended_type2_callback_pair_resets_0203fb24.txt: match_report build/reports/actor_extended_type2_callback_pair_resets_0203fb24.json | tools/report_objdiff.py
   report_json = build/reports/actor_extended_type2_callback_pair_resets_0203fb24.json
-  report_args = --section .text --function func_0203fb24 --function func_0203fb70 --function func_0203fbc4 --function func_0203fc0c --function func_0203fc48 --require-exact
+  report_args = --section .text --function ActorExtendedType2_ConfigureCallbacks00And170 --function ActorExtendedType2_ConfigureCallbacks78And70 --function ActorExtendedType2_ConfigureCallbacks18And240 --function ActorExtendedType2_ConfigureCallback08 --function ActorExtendedType2_RunVirtualFCAndResetProgress --require-exact
 build build/reports/actor_extended_type2_callback_pair_resets.txt: phony build/reports/actor_extended_type2_callback_pair_resets_0203fb24.txt
 build actor_extended_type2_callback_pair_resets: phony build/decomp/src/game/actor_extended_type2_callback_pair_resets.o build/decomp/asm/game/actor_extended_type2_callback_pair_resets_0203fb24.o build/reports/actor_extended_type2_callback_pair_resets.txt
 

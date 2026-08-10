@@ -2,9 +2,9 @@
 .text
 .extern data_020df9e8
 .extern func_0203fd00
-    .global func_0203fb24
-    .type func_0203fb24, @function
-func_0203fb24: ; 0x0203fb24
+    .global ActorExtendedType2_ConfigureCallbacks00And170
+    .type ActorExtendedType2_ConfigureCallbacks00And170, @function
+ActorExtendedType2_ConfigureCallbacks00And170: ; 0x0203fb24
     add r1, r0, #0x200
     mov r2, #0x78
     strh r2, [r1, #0x54]
@@ -24,12 +24,12 @@ func_0203fb24: ; 0x0203fb24
     str r1, [r0, #0x224]
     bx lr
 .L_0203fb6c: .word data_020df9e8
-    .size func_0203fb24, . - func_0203fb24
+    .size ActorExtendedType2_ConfigureCallbacks00And170, . - ActorExtendedType2_ConfigureCallbacks00And170
 
-    .global func_0203fb70
-    .type func_0203fb70, @function
+    .global ActorExtendedType2_ConfigureCallbacks78And70
+    .type ActorExtendedType2_ConfigureCallbacks78And70, @function
 
-func_0203fb70: ; 0x0203fb70
+ActorExtendedType2_ConfigureCallbacks78And70: ; 0x0203fb70
     add r1, r0, #0x200
     mov r2, #0xf0
     strh r2, [r1, #0x54]
@@ -51,12 +51,12 @@ func_0203fb70: ; 0x0203fb70
     str r1, [r0, #0x224]
     bx lr
 .L_0203fbc0: .word data_020df9e8
-    .size func_0203fb70, . - func_0203fb70
+    .size ActorExtendedType2_ConfigureCallbacks78And70, . - ActorExtendedType2_ConfigureCallbacks78And70
 
-    .global func_0203fbc4
-    .type func_0203fbc4, @function
+    .global ActorExtendedType2_ConfigureCallbacks18And240
+    .type ActorExtendedType2_ConfigureCallbacks18And240, @function
 
-func_0203fbc4: ; 0x0203fbc4
+ActorExtendedType2_ConfigureCallbacks18And240: ; 0x0203fbc4
     add r1, r0, #0x200
     mov r2, #0x0
     strh r2, [r1, #0x54]
@@ -75,12 +75,12 @@ func_0203fbc4: ; 0x0203fbc4
     str r1, [r0, #0x224]
     bx lr
 .L_0203fc08: .word data_020df9e8
-    .size func_0203fbc4, . - func_0203fbc4
+    .size ActorExtendedType2_ConfigureCallbacks18And240, . - ActorExtendedType2_ConfigureCallbacks18And240
 
-    .global func_0203fc0c
-    .type func_0203fc0c, @function
+    .global ActorExtendedType2_ConfigureCallback08
+    .type ActorExtendedType2_ConfigureCallback08, @function
 
-func_0203fc0c: ; 0x0203fc0c
+ActorExtendedType2_ConfigureCallback08: ; 0x0203fc0c
     ldr r3, [r0, #0x54]
     ldr r1, .L_0203fc44
     ldrh r2, [r3, #0x24]
@@ -96,12 +96,12 @@ func_0203fc0c: ; 0x0203fc0c
     strne r1, [r0, #0x10]
     bx lr
 .L_0203fc44: .word data_020df9e8
-    .size func_0203fc0c, . - func_0203fc0c
+    .size ActorExtendedType2_ConfigureCallback08, . - ActorExtendedType2_ConfigureCallback08
 
-    .global func_0203fc48
-    .type func_0203fc48, @function
+    .global ActorExtendedType2_RunVirtualFCAndResetProgress
+    .type ActorExtendedType2_RunVirtualFCAndResetProgress, @function
 
-func_0203fc48: ; 0x0203fc48
+ActorExtendedType2_RunVirtualFCAndResetProgress: ; 0x0203fc48
     stmdb sp!, {r4, lr}
     ldr r1, [r0, #0x0]
     mov r4, r0
@@ -110,5 +110,5 @@ func_0203fc48: ; 0x0203fc48
     mov r0, r4
     bl func_0203fd00
     ldmia sp!, {r4, pc}
-    .size func_0203fc48, . - func_0203fc48
+    .size ActorExtendedType2_RunVirtualFCAndResetProgress, . - ActorExtendedType2_RunVirtualFCAndResetProgress
 
