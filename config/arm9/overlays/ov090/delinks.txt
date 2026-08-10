@@ -84,72 +84,9 @@ asm/overlays/ov090/overlay090_0221b428.s:
 src/overlays/ov090/overlay090_title_sound_fade.c:
     categories: Game code
     .text start:0x0221b7e0 end:0x0221b8c8
-asm/overlays/ov090/overlay090_0221b8c8.s:
+src/overlays/ov090/overlay090_title_participant_virtuals.c:
     categories: Game code
-    .text start:0x0221b8c8 end:0x0221b8d0
-asm/overlays/ov090/overlay090_0221b8d0.s:
-    categories: Game code
-    .text start:0x0221b8d0 end:0x0221b8d8
-asm/overlays/ov090/overlay090_0221b8d8.s:
-    categories: Game code
-    .text start:0x0221b8d8 end:0x0221b8e8
-asm/overlays/ov090/overlay090_0221b8e8.s:
-    categories: Game code
-    .text start:0x0221b8e8 end:0x0221b8f4
-asm/overlays/ov090/overlay090_0221b8f4.s:
-    categories: Game code
-    .text start:0x0221b8f4 end:0x0221b908
-asm/overlays/ov090/overlay090_0221b908.s:
-    categories: Game code
-    .text start:0x0221b908 end:0x0221b910
-asm/overlays/ov090/overlay090_0221b910.s:
-    categories: Game code
-    .text start:0x0221b910 end:0x0221b914
-asm/overlays/ov090/overlay090_0221b914.s:
-    categories: Game code
-    .text start:0x0221b914 end:0x0221b918
-asm/overlays/ov090/overlay090_0221b918.s:
-    categories: Game code
-    .text start:0x0221b918 end:0x0221b91c
-asm/overlays/ov090/overlay090_0221b91c.s:
-    categories: Game code
-    .text start:0x0221b91c end:0x0221b92c
-asm/overlays/ov090/overlay090_0221b92c.s:
-    categories: Game code
-    .text start:0x0221b92c end:0x0221b934
-asm/overlays/ov090/overlay090_0221b934.s:
-    categories: Game code
-    .text start:0x0221b934 end:0x0221b93c
-asm/overlays/ov090/overlay090_0221b93c.s:
-    categories: Game code
-    .text start:0x0221b93c end:0x0221b944
-asm/overlays/ov090/overlay090_0221b944.s:
-    categories: Game code
-    .text start:0x0221b944 end:0x0221b94c
-asm/overlays/ov090/overlay090_0221b94c.s:
-    categories: Game code
-    .text start:0x0221b94c end:0x0221b950
-asm/overlays/ov090/overlay090_0221b950.s:
-    categories: Game code
-    .text start:0x0221b950 end:0x0221b954
-asm/overlays/ov090/overlay090_0221b954.s:
-    categories: Game code
-    .text start:0x0221b954 end:0x0221b958
-asm/overlays/ov090/overlay090_0221b958.s:
-    categories: Game code
-    .text start:0x0221b958 end:0x0221b964
-asm/overlays/ov090/overlay090_0221b964.s:
-    categories: Game code
-    .text start:0x0221b964 end:0x0221b96c
-asm/overlays/ov090/overlay090_0221b96c.s:
-    categories: Game code
-    .text start:0x0221b96c end:0x0221b974
-asm/overlays/ov090/overlay090_0221b974.s:
-    categories: Game code
-    .text start:0x0221b974 end:0x0221b97c
-asm/overlays/ov090/overlay090_0221b97c.s:
-    categories: Game code
-    .text start:0x0221b97c end:0x0221b9a0
+    .text start:0x0221b8c8 end:0x0221b9a0
 asm/overlays/ov090/overlay090_0221b9a0.s:
     categories: Game code
     .text start:0x0221b9a0 end:0x0221ba6c
