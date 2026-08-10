@@ -22,7 +22,7 @@ extern void func_0204b7bc(void *actor, s32 mode);
  * when +0x1dc is below +0x24, or animation three otherwise. Return zero. Actor
  * flags and animation change; no SDK or hardware effects occur.
  */
-s32 func_02048e6c(void *self)
+s32 Type7Actor_UpdateAnimation3ByHeight(void *self)
 {
     u8 *actor = (u8 *)self;
     *(u32 *)(actor + 0x268) &= ~0x8000;
@@ -43,7 +43,7 @@ s32 func_02048e6c(void *self)
  * path. Actor motion, callback, resource, flags, and animation may change; no
  * direct hardware access occurs.
  */
-s32 func_02048e98(void *self)
+s32 Type7Actor_UpdateTargetProximityState(void *self)
 {
     u8 *actor = (u8 *)self;
     u8 *target;
@@ -81,7 +81,7 @@ s32 func_02048e98(void *self)
  * or animation six otherwise, then return zero. No SDK or hardware effects
  * occur.
  */
-s32 func_02048f98(void *self)
+s32 Type7Actor_SelectAnimation6Or7(void *self)
 {
     u8 *actor = (u8 *)self;
     *(u16 *)(actor + 0xd6) =
@@ -94,7 +94,7 @@ s32 func_02048f98(void *self)
  * response mode zero through func_0204b7bc. Select animation six and return
  * zero. Actor response and animation may change; no hardware effect occurs.
  */
-s32 func_02048fb4(void *self)
+s32 Type7Actor_UpdateAnimation6Response(void *self)
 {
     u8 *actor = (u8 *)self;
     if (*(s16 *)(actor + 0x248) == 10)

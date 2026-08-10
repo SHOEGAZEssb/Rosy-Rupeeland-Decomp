@@ -6,16 +6,16 @@
 .extern func_0204a5b8
 .extern func_0204b7bc
 .extern func_020be328
-.global func_02048e6c
-.global func_02048e98
-.global func_02048f98
-.global func_02048fb4
-.type func_02048e6c, @function
-.type func_02048e98, @function
-.type func_02048f98, @function
-.type func_02048fb4, @function
+.global Type7Actor_UpdateAnimation3ByHeight
+.global Type7Actor_UpdateTargetProximityState
+.global Type7Actor_SelectAnimation6Or7
+.global Type7Actor_UpdateAnimation6Response
+.type Type7Actor_UpdateAnimation3ByHeight, @function
+.type Type7Actor_UpdateTargetProximityState, @function
+.type Type7Actor_SelectAnimation6Or7, @function
+.type Type7Actor_UpdateAnimation6Response, @function
 
-func_02048e6c: ; 0x02048e6c
+Type7Actor_UpdateAnimation3ByHeight: ; 0x02048e6c
     ldr r1, [r0, #0x268]
     bic r1, r1, #0x8000
     str r1, [r0, #0x268]
@@ -28,7 +28,7 @@ func_02048e6c: ; 0x02048e6c
     mov r0, #0x0
     bx lr
 
-func_02048e98: ; 0x02048e98
+Type7Actor_UpdateTargetProximityState: ; 0x02048e98
     stmdb sp!, {r3, r4, r5, lr}
     mov r1, #0x0
     mov r4, r0
@@ -97,7 +97,7 @@ func_02048e98: ; 0x02048e98
     mov r0, #0x0
     ldmia sp!, {r3, r4, r5, pc}
 
-func_02048f98: ; 0x02048f98
+Type7Actor_SelectAnimation6Or7: ; 0x02048f98
     ldr r1, [r0, #0x268]
     tst r1, #0x4
     movne r1, #0x7
@@ -106,7 +106,7 @@ func_02048f98: ; 0x02048f98
     mov r0, #0x0
     bx lr
 
-func_02048fb4: ; 0x02048fb4
+Type7Actor_UpdateAnimation6Response: ; 0x02048fb4
     stmdb sp!, {r4, lr}
     mov r4, r0
     add r1, r4, #0x200
@@ -121,8 +121,8 @@ func_02048fb4: ; 0x02048fb4
     mov r0, #0x0
     ldmia sp!, {r4, pc}
 
-.size func_02048e6c, func_02048e98 - func_02048e6c
-.size func_02048e98, func_02048f98 - func_02048e98
-.size func_02048f98, func_02048fb4 - func_02048f98
-.size func_02048fb4, . - func_02048fb4
+.size Type7Actor_UpdateAnimation3ByHeight, Type7Actor_UpdateTargetProximityState - Type7Actor_UpdateAnimation3ByHeight
+.size Type7Actor_UpdateTargetProximityState, Type7Actor_SelectAnimation6Or7 - Type7Actor_UpdateTargetProximityState
+.size Type7Actor_SelectAnimation6Or7, Type7Actor_UpdateAnimation6Response - Type7Actor_SelectAnimation6Or7
+.size Type7Actor_UpdateAnimation6Response, . - Type7Actor_UpdateAnimation6Response
 
