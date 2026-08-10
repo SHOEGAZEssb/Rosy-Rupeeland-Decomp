@@ -23,7 +23,7 @@ extern void __construct_array(void *array, u32 count, u32 elementSize,
  * Clear both list links, the offset-0x08 field, and record pointer in entry.
  * The descriptor changes in place; there is no return value or hardware I/O.
  */
-void func_0207298c(GraphicsLookupCacheEntry *entry)
+void GraphicsLookupCacheEntry_Init(GraphicsLookupCacheEntry *entry)
 {
     entry->field_08 = 0;
     entry->next = 0;
@@ -35,7 +35,7 @@ void func_0207298c(GraphicsLookupCacheEntry *entry)
  * No-op descriptor destructor used by the Metrowerks array runtime. It changes
  * no state, returns no value, and has no SDK or graphics-hardware effects.
  */
-void func_020729a4(GraphicsLookupCacheEntry *entry)
+void GraphicsLookupCacheEntry_Destroy(GraphicsLookupCacheEntry *entry)
 {
     (void)entry;
 }
@@ -45,15 +45,15 @@ void func_020729a4(GraphicsLookupCacheEntry *entry)
  * to the descriptor array, clear the other list state, and link entries through
  * next. Returns cache and performs no graphics-hardware operation.
  */
-GraphicsLookupCache *func_020729a8(GraphicsLookupCache *cache)
+GraphicsLookupCache *GraphicsLookupCache_Init(GraphicsLookupCache *cache)
 {
     s32 i;
 
     __construct_array(
         cache->entries, GRAPHICS_LOOKUP_CACHE_CAPACITY,
         sizeof(GraphicsLookupCacheEntry),
-        (void (*)(void *))func_0207298c,
-        (void (*)(void *))func_020729a4);
+        (void (*)(void *))GraphicsLookupCacheEntry_Init,
+        (void (*)(void *))GraphicsLookupCacheEntry_Destroy);
 
     cache->field_284 = 0;
     cache->field_280 = 0;
@@ -75,7 +75,7 @@ GraphicsLookupCache *func_020729a8(GraphicsLookupCache *cache)
  * all 32 descriptors, returns no value, and does not copy or own record storage.
  * The caller must keep that external storage alive while cache entries use it.
  */
-void func_02072a38(GraphicsLookupCache *cache, void *records)
+void GraphicsLookupCache_BindRecords(GraphicsLookupCache *cache, void *records)
 {
     s32 i;
 
@@ -90,8 +90,8 @@ void func_02072a38(GraphicsLookupCache *cache, void *records)
  * signed halfwords at offsets 0, 8, 16, and 24 equal key[0..3]. Returns the
  * first matching descriptor or null. No cache state or hardware is changed.
  */
-GraphicsLookupCacheEntry *func_02072a64(GraphicsLookupCache *cache,
-                                        const s16 key[4])
+GraphicsLookupCacheEntry *GraphicsLookupCache_Find(GraphicsLookupCache *cache,
+                                                    const s16 key[4])
 {
     GraphicsLookupCacheEntry *entry = cache->searchHead;
 
@@ -116,7 +116,8 @@ GraphicsLookupCacheEntry *func_02072a64(GraphicsLookupCache *cache,
  * through next. Returns null when that boundary pointer is null. Other links
  * and fields remain untouched; the operation has no hardware effects.
  */
-GraphicsLookupCacheEntry *func_02072acc(GraphicsLookupCache *cache)
+GraphicsLookupCacheEntry *GraphicsLookupCache_TakeSearchEnd(
+    GraphicsLookupCache *cache)
 {
     GraphicsLookupCacheEntry *entry = cache->searchEnd;
     GraphicsLookupCacheEntry *result = 0;

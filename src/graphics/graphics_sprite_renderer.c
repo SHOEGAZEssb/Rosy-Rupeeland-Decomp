@@ -32,7 +32,7 @@ GraphicsSpriteRenderer *func_02074200(GraphicsSpriteRenderer *renderer,
     GraphicsIndexedChainPool_Init(&renderer->indexedPool0);
     GraphicsIndexedChainPool_Init(&renderer->indexedPool1);
     GraphicsRenderEntryPool_Init(&renderer->renderEntryPool);
-    func_020729a8(&renderer->lookupCache);
+    GraphicsLookupCache_Init(&renderer->lookupCache);
     GraphicsTransferQueue_Init(&renderer->transferQueue);
     renderer->engine = engine;
     renderer->field_28 = field28;
@@ -44,7 +44,8 @@ GraphicsSpriteRenderer *func_02074200(GraphicsSpriteRenderer *renderer,
     renderer->groupHead = 0;
     func_02074f0c(renderer);
     GraphicsRenderEntryPool_Reset(&renderer->renderEntryPool);
-    func_02072a38(&renderer->lookupCache, renderer->shadowBuffer);
+    GraphicsLookupCache_BindRecords(
+        &renderer->lookupCache, renderer->shadowBuffer);
     renderer->field_38 = 1;
     renderer->field_1c = 0;
     renderer->field_20 = 0x10;

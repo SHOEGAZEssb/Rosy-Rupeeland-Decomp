@@ -35,13 +35,15 @@ typedef char GraphicsLookupCacheSizeCheck[
 extern "C" {
 #endif
 
-void func_0207298c(GraphicsLookupCacheEntry *entry);
-void func_020729a4(GraphicsLookupCacheEntry *entry);
-GraphicsLookupCache *func_020729a8(GraphicsLookupCache *cache);
-void func_02072a38(GraphicsLookupCache *cache, void *records);
-GraphicsLookupCacheEntry *func_02072a64(GraphicsLookupCache *cache,
-                                        const s16 key[4]);
-GraphicsLookupCacheEntry *func_02072acc(GraphicsLookupCache *cache);
+void GraphicsLookupCacheEntry_Init(GraphicsLookupCacheEntry *entry);
+void GraphicsLookupCacheEntry_Destroy(GraphicsLookupCacheEntry *entry);
+GraphicsLookupCache *GraphicsLookupCache_Init(GraphicsLookupCache *cache);
+void GraphicsLookupCache_BindRecords(GraphicsLookupCache *cache,
+                                     void *records);
+GraphicsLookupCacheEntry *GraphicsLookupCache_Find(GraphicsLookupCache *cache,
+                                                    const s16 key[4]);
+GraphicsLookupCacheEntry *GraphicsLookupCache_TakeSearchEnd(
+    GraphicsLookupCache *cache);
 
 #ifdef __cplusplus
 }
