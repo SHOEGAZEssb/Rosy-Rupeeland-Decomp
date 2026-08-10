@@ -20,7 +20,7 @@
 .extern Type7Actor_ResetMotionAndCooldown
 .extern Type7Actor_DispatchCurrentCallback
 .extern Type7Actor_SetTarget
-.extern func_0204b1e0
+.extern Type7Actor_UpdateAttachmentControllerAnimation
 .extern func_0204b7bc
 .extern func_0206c978
 .extern func_0206cd10
@@ -399,7 +399,7 @@ Type7Actor_UpdateFrame: ; 0x02045a60
     mov r0, r4
     bl Actor_UpdateAnimationState
     mov r0, r4
-    bl func_0204b1e0
+    bl Type7Actor_UpdateAttachmentControllerAnimation
     add r0, r4, #0x200
     ldrsh r1, [r0, #0x50]
     cmp r1, #0x0

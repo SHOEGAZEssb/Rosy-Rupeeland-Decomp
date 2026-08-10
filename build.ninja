@@ -18656,7 +18656,7 @@ build build/reports/type7_actor_animation_selection_0204b1e0.json: objdiff build
   base_object = build/decomp/asm/game/type7_actor_animation_selection_0204b1e0.o
 build build/reports/type7_actor_animation_selection_0204b1e0.txt: match_report build/reports/type7_actor_animation_selection_0204b1e0.json | tools/report_objdiff.py
   report_json = build/reports/type7_actor_animation_selection_0204b1e0.json
-  report_args = --section .text --function func_0204b1e0 --require-exact
+  report_args = --section .text --function Type7Actor_UpdateAttachmentControllerAnimation --require-exact
 build type7_actor_animation_selection: phony build/decomp/src/game/type7_actor_animation_selection.o build/decomp/asm/game/type7_actor_animation_selection_0204b1e0.o build/reports/type7_actor_animation_selection_0204b1e0.txt
 
 type7_actor_special_state_control_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++

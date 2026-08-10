@@ -34,7 +34,7 @@ extern s32 Actor_GetCachedTerrainHeight(void *actor);
 extern s32 func_020be328(s32 value);
 extern void Actor_UpdateGroundContactProbe(void *actor);
 extern void Actor_UpdateAnimationState(void *actor);
-extern void func_0204b1e0(void *actor);
+extern void Type7Actor_UpdateAttachmentControllerAnimation(void *actor);
 #ifdef __cplusplus
 }
 #endif
@@ -77,7 +77,7 @@ static s32 callback_pair_matches(const u8 *actor, const void *first,
  * target +0x210 transform +0x18, +0x224, or current +0x3c/+0x40. Positive
  * +0x246 cancels velocity, decrements, and enters state 15. Target angular
  * separation controls +0x268 bit 0x800000; bit 0x80000 invokes Actor_UpdateGroundContactProbe
- * and vtable +0xa4. Finish Actor_UpdateAnimationState/func_0204b1e0, update signed timer
+ * and vtable +0xa4. Finish Actor_UpdateAnimationState/Type7Actor_UpdateAttachmentControllerAnimation, update signed timer
  * +0x250 with target/callback/motion-dependent penalties and clamping, tick
  * +0x256/+0x25a, move +0x264 toward zero (clearing +0x250), decrement +0x24e
  * and start +0x264 at 90 on expiry, reduce +0x266 by 20 toward zero, decrement
@@ -247,7 +247,7 @@ void Type7Actor_UpdateFrame(void *self)
         (*(void (**)(void *))(*(u8 **)actor + 0xa4))(actor);
     }
     Actor_UpdateAnimationState(actor);
-    func_0204b1e0(actor);
+    Type7Actor_UpdateAttachmentControllerAnimation(actor);
 
     if (*(s16 *)(actor + 0x250) > 0) {
         --*(s16 *)(actor + 0x250);

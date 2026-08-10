@@ -2,7 +2,7 @@
 .extern func_0200b2c0
 .extern AttachmentController_SetEnabled
 .extern Type7Actor_GetStateCode
-.extern func_0204b1e0
+.extern Type7Actor_UpdateAttachmentControllerAnimation
 .extern func_0204ced8
 .extern func_0204cf28
 .extern func_020593dc
@@ -69,7 +69,7 @@ func_0204b680: ; 0x0204b680
     ldr r1, [r4, #0xd0]
     orr r1, r1, #0x1000
     str r1, [r4, #0xd0]
-    bl func_0204b1e0
+    bl Type7Actor_UpdateAttachmentControllerAnimation
 .L_0204b6ac:
     ldr r3, [r4, #0x54]
     add r0, r4, #0x200

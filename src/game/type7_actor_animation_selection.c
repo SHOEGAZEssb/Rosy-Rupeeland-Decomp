@@ -44,7 +44,7 @@ extern void func_0204cf28(void *state);
  * Actor-owned animation state changes and descriptor globals are read; there
  * are no direct SDK or hardware effects and no value is returned.
  */
-void func_0204b1e0(void *self)
+void Type7Actor_UpdateAttachmentControllerAnimation(void *self)
 {
     u8 *actor = (u8 *)self;
     u32 flags = *(u32 *)(actor + 0x268);

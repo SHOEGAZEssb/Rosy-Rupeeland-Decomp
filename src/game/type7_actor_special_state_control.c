@@ -14,7 +14,7 @@ extern "C" {
 extern void func_0200b2c0(void *value, s32 x, s32 y, s32 z);
 extern void AttachmentController_SetEnabled(void *state, s32 enabled);
 extern s32 Type7Actor_GetStateCode(void *actor);
-extern void func_0204b1e0(void *actor);
+extern void Type7Actor_UpdateAttachmentControllerAnimation(void *actor);
 extern void func_0204ced8(void *state, u32 index);
 extern void func_0204cf28(void *state);
 extern void func_020593dc(void *soundContext, s32 group, s32 index,
@@ -52,7 +52,7 @@ void func_0204b5d8(void *self)
 
 /*
  * Input is a type-seven actor. When +0x268 bit 0x200000 is set, clear it, set
- * +0xd0 bit 0x1000, and refresh animation selection through func_0204b1e0.
+ * +0xd0 bit 0x1000, and refresh animation selection through Type7Actor_UpdateAttachmentControllerAnimation.
  * Always clear presentation +0x24 bit 0x20 and set halfword +0x2a6 to 0x1e.
  * No value is returned; actor/presentation state changes without direct SDK
  * or hardware effects.
@@ -63,7 +63,7 @@ void func_0204b680(void *self)
     if ((*(u32 *)(actor + 0x268) & 0x200000) != 0) {
         *(u32 *)(actor + 0x268) &= ~0x200000;
         *(u32 *)(actor + 0xd0) |= 0x1000;
-        func_0204b1e0(actor);
+        Type7Actor_UpdateAttachmentControllerAnimation(actor);
     }
     *(u16 *)(*(u8 **)(actor + 0x54) + 0x24) &= (u16)~0x20;
     *(u16 *)(actor + 0x2a6) = 0x1e;

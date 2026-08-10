@@ -11,8 +11,8 @@
 .extern func_0204ced8
 .extern func_0204cf28
 .text
-    .global func_0204b1e0
-func_0204b1e0: ; 0x0204b1e0
+    .global Type7Actor_UpdateAttachmentControllerAnimation
+Type7Actor_UpdateAttachmentControllerAnimation: ; 0x0204b1e0
     stmdb sp!, {r4, r5, r6, r7, r8, r9, r10, lr}
     mov r5, r0
     ldr r0, [r5, #0x268]
@@ -296,5 +296,5 @@ func_0204b1e0: ; 0x0204b1e0
 .L_0204b5cc: .word data_020e1840
 .L_0204b5d0: .word data_020e1848
 .L_0204b5d4: .word data_020e1850
-.size func_0204b1e0, . - func_0204b1e0
+.size Type7Actor_UpdateAttachmentControllerAnimation, . - Type7Actor_UpdateAttachmentControllerAnimation
 
