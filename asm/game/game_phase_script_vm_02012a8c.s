@@ -5,8 +5,8 @@
 .extern func_020050a4
 .extern GamePhaseScriptVm_Pop
 
-    .global func_02012a8c
-func_02012a8c: ; 0x02012a8c
+    .global GamePhaseActorScriptVm_SetPositionFromCoordinates3D
+GamePhaseActorScriptVm_SetPositionFromCoordinates3D: ; 0x02012a8c
     stmdb sp!, {r4, r5, r6, lr}
     sub sp, sp, #0x10
     mov r6, r0
@@ -35,5 +35,5 @@ func_02012a8c: ; 0x02012a8c
     mov r0, #0x0
     add sp, sp, #0x10
     ldmia sp!, {r4, r5, r6, pc}
-    .size func_02012a8c, . - func_02012a8c
+    .size GamePhaseActorScriptVm_SetPositionFromCoordinates3D, . - GamePhaseActorScriptVm_SetPositionFromCoordinates3D
 

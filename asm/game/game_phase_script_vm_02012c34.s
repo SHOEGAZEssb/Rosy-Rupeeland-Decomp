@@ -2,8 +2,8 @@
 .text
 .extern GamePhaseScriptVm_Pop
 
-    .global func_02012c34
-func_02012c34: ; 0x02012c34
+    .global GamePhaseActorScriptVm_ConfigureAttachmentFlagsForEnabledState
+GamePhaseActorScriptVm_ConfigureAttachmentFlagsForEnabledState: ; 0x02012c34
     stmdb sp!, {r4, lr}
     mov r4, r0
     bl GamePhaseScriptVm_Pop
@@ -30,5 +30,5 @@ L_02012c78:
     bic r1, r1, #0x1
     strh r1, [r2, #0x24]
     ldmia sp!, {r4, pc}
-    .size func_02012c34, . - func_02012c34
+    .size GamePhaseActorScriptVm_ConfigureAttachmentFlagsForEnabledState, . - GamePhaseActorScriptVm_ConfigureAttachmentFlagsForEnabledState
 

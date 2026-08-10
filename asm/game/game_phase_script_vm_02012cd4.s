@@ -3,8 +3,8 @@
 .extern GamePhaseScriptVm_Pop
 .extern Actor_SetAttachmentEnabled
 
-    .global func_02012cd4
-func_02012cd4: ; 0x02012cd4
+    .global GamePhaseActorScriptVm_SetAttachmentEnabledIfPresent
+GamePhaseActorScriptVm_SetAttachmentEnabledIfPresent: ; 0x02012cd4
     stmdb sp!, {r4, lr}
     mov r4, r0
     bl GamePhaseScriptVm_Pop
@@ -17,4 +17,4 @@ func_02012cd4: ; 0x02012cd4
 L_02012cf8:
     mov r0, #0x0
     ldmia sp!, {r4, pc}
-    .size func_02012cd4, . - func_02012cd4
+    .size GamePhaseActorScriptVm_SetAttachmentEnabledIfPresent, . - GamePhaseActorScriptVm_SetAttachmentEnabledIfPresent

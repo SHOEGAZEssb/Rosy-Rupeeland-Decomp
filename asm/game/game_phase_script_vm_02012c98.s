@@ -2,13 +2,13 @@
 .text
 .extern GamePhaseScriptVm_Pop
 
-    .global func_02012c98
-func_02012c98: ; 0x02012c98
+    .global GamePhaseActorScriptVm_SetWaitCountdown
+GamePhaseActorScriptVm_SetWaitCountdown: ; 0x02012c98
     stmdb sp!, {r4, lr}
     mov r4, r0
     bl GamePhaseScriptVm_Pop
     str r0, [r4, #0x88]
     mov r0, #0x0
     ldmia sp!, {r4, pc}
-    .size func_02012c98, . - func_02012c98
+    .size GamePhaseActorScriptVm_SetWaitCountdown, . - GamePhaseActorScriptVm_SetWaitCountdown
 

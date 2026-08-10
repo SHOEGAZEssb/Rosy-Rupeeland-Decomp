@@ -34,7 +34,7 @@ static void callActorValueMethod(void *actor, u32 offset, u32 value)
  * The vector helper constructors/destructors provide the observable SDK-style
  * object effects; the opcode returns zero.
  */
-s32 func_02012a8c(GamePhaseActorScriptVm *self)
+s32 GamePhaseActorScriptVm_SetPositionFromCoordinates3D(GamePhaseActorScriptVm *self)
 {
     s32 z = (s32)GamePhaseScriptVm_Pop(&self->base);
     s32 y = (s32)GamePhaseScriptVm_Pop(&self->base);
@@ -57,7 +57,7 @@ s32 func_02012a8c(GamePhaseActorScriptVm *self)
  * 0x2e7c. The global state at data_02105310 affects method selection and may
  * reactivate the target through Actor_SetActive. Returns zero.
  */
-s32 func_02012afc(GamePhaseActorScriptVm *self)
+s32 GamePhaseActorScriptVm_DispatchIndexedActorValueCommand(GamePhaseActorScriptVm *self)
 {
     u32 value = GamePhaseScriptVm_Pop(&self->base);
     s32 index = (s32)GamePhaseScriptVm_Pop(&self->base);
@@ -90,7 +90,7 @@ s32 func_02012afc(GamePhaseActorScriptVm *self)
 }
 
 /* Pop an attachment animation command, apply it to the bound actor, and return zero. */
-s32 func_02012c14(GamePhaseActorScriptVm *self)
+s32 GamePhaseActorScriptVm_SetAttachmentAnimation(GamePhaseActorScriptVm *self)
 {
     u32 value = GamePhaseScriptVm_Pop(&self->base);
     Actor_SetAttachmentAnimation(self->actor, value);
@@ -102,7 +102,7 @@ s32 func_02012c14(GamePhaseActorScriptVm *self)
  * actor->0x54->0x24. Enabling sets bit 1 and clears bit 5; disabling clears
  * bit 1. Both paths clear bit 0. Returns zero.
  */
-s32 func_02012c34(GamePhaseActorScriptVm *self)
+s32 GamePhaseActorScriptVm_ConfigureAttachmentFlagsForEnabledState(GamePhaseActorScriptVm *self)
 {
     u32 enabled = GamePhaseScriptVm_Pop(&self->base);
     u16 *flags = (u16 *)((u8 *)*(void **)((u8 *)self->actor + 0x54) + 0x24);
@@ -117,7 +117,7 @@ s32 func_02012c34(GamePhaseActorScriptVm *self)
 }
 
 /* Pop a signed countdown value into offset 0x88 and return zero. */
-s32 func_02012c98(GamePhaseActorScriptVm *self)
+s32 GamePhaseActorScriptVm_SetWaitCountdown(GamePhaseActorScriptVm *self)
 {
     self->waitCounter = (s32)GamePhaseScriptVm_Pop(&self->base);
     return 0;
@@ -128,7 +128,7 @@ s32 func_02012c98(GamePhaseActorScriptVm *self)
  * otherwise rewind the bytecode cursor by two bytes and return one so the VM
  * execution loop repeats this opcode on a later update.
  */
-s32 func_02012cb0(GamePhaseActorScriptVm *self)
+s32 GamePhaseActorScriptVm_WaitForCountdown(GamePhaseActorScriptVm *self)
 {
     if (--self->waitCounter < 0)
         return 0;
@@ -141,7 +141,7 @@ s32 func_02012cb0(GamePhaseActorScriptVm *self)
  * actor's pointer
  * at offset 0x54 is non-null. Returns zero whether or not the pointer exists.
  */
-s32 func_02012cd4(GamePhaseActorScriptVm *self)
+s32 GamePhaseActorScriptVm_SetAttachmentEnabledIfPresent(GamePhaseActorScriptVm *self)
 {
     u32 value = GamePhaseScriptVm_Pop(&self->base);
     void *object = *(void **)((u8 *)self->actor + 0x54);
@@ -151,7 +151,7 @@ s32 func_02012cd4(GamePhaseActorScriptVm *self)
 }
 
 /* Set bit 5 in the bound actor's word at offset 0x14 and return zero. */
-s32 func_02012d00(GamePhaseActorScriptVm *self)
+s32 GamePhaseActorScriptVm_SetActorFlag20(GamePhaseActorScriptVm *self)
 {
     *(u32 *)((u8 *)self->actor + 0x14) |= 0x20;
     return 0;

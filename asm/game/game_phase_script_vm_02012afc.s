@@ -9,8 +9,8 @@
 .extern Actor_SetActive
 .extern Actor_GetCollection
 
-    .global func_02012afc
-func_02012afc: ; 0x02012afc
+    .global GamePhaseActorScriptVm_DispatchIndexedActorValueCommand
+GamePhaseActorScriptVm_DispatchIndexedActorValueCommand: ; 0x02012afc
     stmdb sp!, {r4, r5, r6, lr}
     mov r6, r0
     bl GamePhaseScriptVm_Pop
@@ -86,4 +86,4 @@ L_02012c04:
     ldmia sp!, {r4, r5, r6, pc}
 L_02012c0c: .word data_021052fc
 L_02012c10: .word data_02105310
-    .size func_02012afc, . - func_02012afc
+    .size GamePhaseActorScriptVm_DispatchIndexedActorValueCommand, . - GamePhaseActorScriptVm_DispatchIndexedActorValueCommand
