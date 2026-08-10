@@ -57,8 +57,8 @@
 .extern data_020e1e34
 .extern data_020e1e48
 .text
-    .global func_0204b81c
-func_0204b81c: ; 0x0204b81c
+    .global Type7Actor_PrintDebugState
+Type7Actor_PrintDebugState: ; 0x0204b81c
     stmdb sp!, {r4, r5, lr}
     sub sp, sp, #0xc
     mov r5, r0
@@ -565,4 +565,4 @@ func_0204b81c: ; 0x0204b81c
 .L_0204bf90: .word data_020e1e24
 .L_0204bf94: .word data_020e1e34
 .L_0204bf98: .word data_020e1e48
-.size func_0204b81c, . - func_0204b81c
+.size Type7Actor_PrintDebugState, . - Type7Actor_PrintDebugState

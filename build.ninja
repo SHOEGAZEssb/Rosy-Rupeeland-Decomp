@@ -18684,7 +18684,7 @@ build build/reports/type7_actor_debug_display_0204b81c.json: objdiff build/decom
   base_object = build/decomp/asm/game/type7_actor_debug_display_0204b81c.o
 build build/reports/type7_actor_debug_display_0204b81c.txt: match_report build/reports/type7_actor_debug_display_0204b81c.json | tools/report_objdiff.py
   report_json = build/reports/type7_actor_debug_display_0204b81c.json
-  report_args = --section .text --function func_0204b81c --require-exact
+  report_args = --section .text --function Type7Actor_PrintDebugState --require-exact
 build type7_actor_debug_display: phony build/decomp/src/game/type7_actor_debug_display.o build/decomp/asm/game/type7_actor_debug_display_0204b81c.o build/reports/type7_actor_debug_display_0204b81c.txt
 
 type7_actor_spawn_from_record_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++

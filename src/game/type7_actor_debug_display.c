@@ -98,7 +98,7 @@ typedef struct Type7DebugDescriptor {
  * the printing calls; there are no direct hardware effects and no value is
  * returned.
  */
-void func_0204b81c(void *self, s32 displayArgument)
+void Type7Actor_PrintDebugState(void *self, s32 displayArgument)
 {
     static const Type7DebugDescriptor descriptors[] = {
         {0x1a8, data_020e1858, data_020e1d5c},
