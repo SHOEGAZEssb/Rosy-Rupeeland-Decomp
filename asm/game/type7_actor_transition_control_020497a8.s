@@ -8,9 +8,9 @@
 .extern Type7Actor_TryAcquireTarget
 .extern func_020ada8c
 .text
-    .global func_020497a8
-.type func_020497a8, @function
-func_020497a8: ; 0x020497a8
+    .global Type7Actor_EnterMode1WithPresentation12
+.type Type7Actor_EnterMode1WithPresentation12, @function
+Type7Actor_EnterMode1WithPresentation12: ; 0x020497a8
     stmdb sp!, {r4, lr}
     ldr r2, [r0, #0x0]
     mov r1, #0x1
@@ -21,11 +21,11 @@ func_020497a8: ; 0x020497a8
     strh r0, [r4, #0xd6]
     mov r0, #0x0
     ldmia sp!, {r4, pc}
-.size func_020497a8, . - func_020497a8
+.size Type7Actor_EnterMode1WithPresentation12, . - Type7Actor_EnterMode1WithPresentation12
 
-    .global func_020497d0
-.type func_020497d0, @function
-func_020497d0: ; 0x020497d0
+    .global Type7Actor_UpdateFlag200PresentationEffect
+.type Type7Actor_UpdateFlag200PresentationEffect, @function
+Type7Actor_UpdateFlag200PresentationEffect: ; 0x020497d0
     stmdb sp!, {r4, lr}
     sub sp, sp, #0x18
     mov r4, r0
@@ -75,11 +75,11 @@ func_020497d0: ; 0x020497d0
 .L_02049880: .word data_020e1d0c
 .L_02049884: .word gHeapContext
 .L_02049888: .word 0x162c
-.size func_020497d0, . - func_020497d0
+.size Type7Actor_UpdateFlag200PresentationEffect, . - Type7Actor_UpdateFlag200PresentationEffect
 
-    .global func_0204988c
-.type func_0204988c, @function
-func_0204988c: ; 0x0204988c
+    .global Type7Actor_ResolveFlag200TargetTransition
+.type Type7Actor_ResolveFlag200TargetTransition, @function
+Type7Actor_ResolveFlag200TargetTransition: ; 0x0204988c
     stmdb sp!, {r4, lr}
     mov r4, r0
     ldr r1, [r4, #0x268]
@@ -103,11 +103,11 @@ func_0204988c: ; 0x0204988c
     mov r0, r4
     bl Type7Actor_SelectRandomCallback
     ldmia sp!, {r4, pc}
-.size func_0204988c, . - func_0204988c
+.size Type7Actor_ResolveFlag200TargetTransition, . - Type7Actor_ResolveFlag200TargetTransition
 
-    .global func_020498e4
-.type func_020498e4, @function
-func_020498e4: ; 0x020498e4
+    .global Type7Actor_DispatchCallbackOrReturnToMode0
+.type Type7Actor_DispatchCallbackOrReturnToMode0, @function
+Type7Actor_DispatchCallbackOrReturnToMode0: ; 0x020498e4
     stmdb sp!, {r3, lr}
     ldr r1, [r0, #0x10]
     tst r1, #0x4
@@ -124,5 +124,5 @@ func_020498e4: ; 0x020498e4
 .L_02049914:
     mov r0, #0x0
     ldmia sp!, {r3, pc}
-.size func_020498e4, . - func_020498e4
+.size Type7Actor_DispatchCallbackOrReturnToMode0, . - Type7Actor_DispatchCallbackOrReturnToMode0
 

@@ -35,7 +35,7 @@ static void set_actor_mode(u8 *actor, s32 mode)
  * halfword +0xd6 to 12, and return zero. Actor mode and presentation state may
  * change; no SDK or hardware effects occur directly.
  */
-s32 func_020497a8(void *self)
+s32 Type7Actor_EnterMode1WithPresentation12(void *self)
 {
     u8 *actor = (u8 *)self;
     set_actor_mode(actor, 1);
@@ -53,7 +53,7 @@ s32 func_020497a8(void *self)
  * (0, 12, -1, 1). Always return zero. Presentation and heap-owned effect state
  * may change; Heap_Alloc is the SDK-facing allocator effect.
  */
-s32 func_020497d0(void *self)
+s32 Type7Actor_UpdateFlag200PresentationEffect(void *self)
 {
     u8 *actor = (u8 *)self;
     if ((*(u32 *)(actor + 0x268) & 0x200) == 0) {
@@ -81,7 +81,7 @@ s32 func_020497d0(void *self)
  * and callback state may change; there is no return value or direct hardware
  * access.
  */
-void func_0204988c(void *self)
+void Type7Actor_ResolveFlag200TargetTransition(void *self)
 {
     u8 *actor = (u8 *)self;
     if ((*(u32 *)(actor + 0x268) & 0x200) != 0) {
@@ -101,7 +101,7 @@ void func_0204988c(void *self)
  * mode zero. Return zero. Callback, presentation, and actor mode may change;
  * no SDK or hardware effects occur directly.
  */
-s32 func_020498e4(void *self)
+s32 Type7Actor_DispatchCallbackOrReturnToMode0(void *self)
 {
     u8 *actor = (u8 *)self;
     if ((*(u32 *)(actor + 0x10) & 4) == 0) {
