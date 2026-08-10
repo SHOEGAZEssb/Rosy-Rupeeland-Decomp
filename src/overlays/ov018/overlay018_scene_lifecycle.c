@@ -33,7 +33,7 @@ extern void func_02073e48(void *, s32, s32, s32, s32, s32, s32);
 extern void *func_02073ffc(void *, void *, s32);
 extern void func_0207419c(void *);
 extern void *func_020742cc(void *);
-extern void func_02075a04(void *, s32, s32);
+extern void GraphicsSpriteRenderer_ConfigureTextGridPriority(void *, s32, s32);
 extern void func_02091b6c(void *);
 extern void func_02091e28(void *);
 extern void func_02092798(void *);
@@ -226,7 +226,7 @@ static void destroyScene(void *state)
     func_0207419c(FIELD(void *, state, 0xc4));
     func_0207419c(FIELD(void *, state, 0xcc));
     func_0207419c(FIELD(void *, state, 0xc8));
-    func_02075a04(gDebugFont, 0, 0x10);
+    GraphicsSpriteRenderer_ConfigureTextGridPriority(gDebugFont, 0, 0x10);
     {
         void *actor = FIELD(void *, state, 0x184);
         typedef void (*ActorMethod)(void *, s32);

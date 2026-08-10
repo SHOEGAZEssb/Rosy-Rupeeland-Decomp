@@ -11288,7 +11288,7 @@ build build/reports/graphics_sprite_text_oam.json: objdiff build/decomp/delinks/
 
 build build/reports/graphics_sprite_text_oam.txt: match_report build/reports/graphics_sprite_text_oam.json | tools/report_objdiff.py
   report_json = build/reports/graphics_sprite_text_oam.json
-  report_args = --section .text --function func_0207593c --function func_02075a04 --function func_02075a88
+  report_args = --section .text --function GraphicsSpriteRenderer_SetTextGridPosition --function GraphicsSpriteRenderer_ConfigureTextGridPriority --function GraphicsSpriteRenderer_SetTextGridObjectMode
 
 build build/reports/graphics_sprite_font_lookup.json: objdiff build/decomp/delinks/src/graphics/graphics_sprite_font_lookup.o | build/decomp/src/graphics/graphics_sprite_font_lookup.o
   target_object = build/decomp/delinks/src/graphics/graphics_sprite_font_lookup.o

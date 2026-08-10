@@ -9,7 +9,7 @@
 .extern func_020740a4
 .extern func_0207419c
 .extern func_02074dc8
-.extern func_0207593c
+.extern GraphicsSpriteRenderer_SetTextGridPosition
 .extern func_02091e1c
 .extern func_020958d8
 .extern func_020befec
@@ -33,7 +33,7 @@ L_021fd294:
     mov r1, #0x0
     ldr r0, [r4, #0x0]
     mov r2, r1
-    bl func_0207593c
+    bl GraphicsSpriteRenderer_SetTextGridPosition
     add r0, r4, #0x1e8
     bl func_02091e1c
     add r0, r4, #0x1e0
@@ -110,7 +110,7 @@ L_021fd394:
     ldr r2, [r4, #0x1c4]
     ldr r0, [r4, #0x0]
     rsb r2, r2, #0x0
-    bl func_0207593c
+    bl GraphicsSpriteRenderer_SetTextGridPosition
     ldr r0, [r4, #0x28]
     bl func_020740a4
     ldr r0, [r4, #0x2c]

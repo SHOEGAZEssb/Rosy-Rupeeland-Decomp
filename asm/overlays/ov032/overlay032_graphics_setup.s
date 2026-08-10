@@ -22,7 +22,7 @@
 .extern func_02070eac
 .extern func_02072000
 .extern GraphicsSpriteRenderer_ClearTextBuffer
-.extern func_02075a04
+.extern GraphicsSpriteRenderer_ConfigureTextGridPriority
 .extern func_020923a4
 .extern func_020925f8
 .extern func_02092618
@@ -299,12 +299,12 @@ func_ov032_021fd994:
     mov r1, #0x2
     ldr r0, [r0, #0x0]
     mov r2, #0x0
-    bl func_02075a04
+    bl GraphicsSpriteRenderer_ConfigureTextGridPriority
     ldr r0, L_021fdde4
     mov r1, #0x3
     ldr r0, [r0, #0x0]
     mov r2, #0x0
-    bl func_02075a04
+    bl GraphicsSpriteRenderer_ConfigureTextGridPriority
     mov r0, #0x1
     str r0, [r4, #0xf2c]
     add r0, sp, #0x4

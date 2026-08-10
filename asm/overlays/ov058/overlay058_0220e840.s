@@ -13,7 +13,7 @@
 .extern func_0201e250
 .extern func_020742cc
 .extern GraphicsSpriteRenderer_GetObjectPaletteAddress
-.extern func_02075a04
+.extern GraphicsSpriteRenderer_ConfigureTextGridPriority
 .extern func_02092798
 .extern func_02092814
 .extern func_ov058_0220e400
@@ -55,12 +55,12 @@ func_ov058_0220e840:
     str r2, [r4, #0xa8]
     ldr r0, [r0, #0x0]
     mov r2, #0x10
-    bl func_02075a04
+    bl GraphicsSpriteRenderer_ConfigureTextGridPriority
     ldr r0, .L_0220ea48
     mov r1, #0x2
     ldr r0, [r0, #0x0]
     mov r2, #0x10
-    bl func_02075a04
+    bl GraphicsSpriteRenderer_ConfigureTextGridPriority
     ldr r0, .L_0220ea44
     ldr r0, [r0, #0x0]
     bl func_020742cc

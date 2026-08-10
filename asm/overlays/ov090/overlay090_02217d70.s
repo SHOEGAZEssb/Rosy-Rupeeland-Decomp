@@ -49,7 +49,7 @@
 .extern func_02059484
 .extern func_0205958c
 .extern GraphicsSpriteState_SetAnimationIndex
-.extern func_0207593c
+.extern GraphicsSpriteRenderer_SetTextGridPosition
 .extern func_0209a748
 .extern func_020a2844
 .extern func_020a28e0
@@ -778,7 +778,7 @@ func_ov090_02217d70:
     str r1, [r3, #0x38]
     ldr r0, [r0, #0x0]
     mov r2, #0xaa
-    bl func_0207593c
+    bl GraphicsSpriteRenderer_SetTextGridPosition
     mov r2, #0x0
 .L_022187e4:
     add r0, r4, r2, lsl #0x2

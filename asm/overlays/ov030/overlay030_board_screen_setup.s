@@ -4,7 +4,7 @@
 .extern data_020f4e14
 .extern data_020f4e18
 .extern func_02072048
-.extern func_02075a88
+.extern GraphicsSpriteRenderer_SetTextGridObjectMode
 .extern func_02076004
 .extern func_020b44e8
 .extern func_ov030_021fe3e0
@@ -123,7 +123,7 @@ L_021fe6c4:
     ldr r0, L_021fe764
     mov r1, #0x2
     ldr r0, [r0, #0x0]
-    bl func_02075a88
+    bl GraphicsSpriteRenderer_SetTextGridObjectMode
     mov r2, #0x4000000
     ldr r1, [r2, #0x0]
     add r0, sp, #0x4

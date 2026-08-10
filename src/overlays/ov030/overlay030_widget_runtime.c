@@ -17,7 +17,7 @@ extern void GraphicsSpriteState_SetAnimationIndex(void *, s32);
 extern void func_020740a4(void *);
 extern void func_0207419c(void *);
 extern void func_02074dc8(void *);
-extern void func_0207593c(void *, s32, s32);
+extern void GraphicsSpriteRenderer_SetTextGridPosition(void *, s32, s32);
 extern void func_02091e1c(void *);
 extern void func_020958d8(void *);
 extern s32 func_020befec(s32, s32);
@@ -39,7 +39,7 @@ extern "C" void *func_ov030_021fd27c(void *widget)
         Heap_Free(FIELD(void *, widget, 0x1b0));
     func_0207419c(FIELD(void *, widget, 0x28));
     func_0207419c(FIELD(void *, widget, 0x2c));
-    func_0207593c(FIELD(void *, widget, 0), 0, 0);
+    GraphicsSpriteRenderer_SetTextGridPosition(FIELD(void *, widget, 0), 0, 0);
     func_02091e1c((u8 *)widget + 0x1e8);
     func_02091e1c((u8 *)widget + 0x1e0);
     func_02091e1c((u8 *)widget + 0x1d8);
@@ -79,7 +79,7 @@ extern "C" void func_ov030_021fd304(void *widget)
     s32 scroll = FIELD(s32, widget, 0x1c4);
     FIELD(s32, FIELD(void *, widget, 0x28), 0x18) = 0;
     FIELD(s32, FIELD(void *, widget, 0x28), 0x1c) = -scroll;
-    func_0207593c(FIELD(void *, widget, 0), 0, -scroll);
+    GraphicsSpriteRenderer_SetTextGridPosition(FIELD(void *, widget, 0), 0, -scroll);
     func_020740a4(FIELD(void *, widget, 0x28));
     func_020740a4(FIELD(void *, widget, 0x2c));
 }

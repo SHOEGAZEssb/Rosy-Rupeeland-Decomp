@@ -3,7 +3,7 @@
 .extern GameWork_TestFlag
 .extern data_020f4e14
 .extern func_020740a4
-.extern func_0207593c
+.extern GraphicsSpriteRenderer_SetTextGridPosition
 .extern func_020befec
 .extern func_ov058_0220e598
 .extern func_ov058_0220e63c
@@ -102,13 +102,13 @@ func_ov058_0220efa4:
     ldr r0, [r0, #0x0]
     rsb r1, r1, #0x0
     mov r2, #0x0
-    bl func_0207593c
+    bl GraphicsSpriteRenderer_SetTextGridPosition
     ldr r0, .L_0220f118
     ldr r1, [r4, #0x48]
     ldr r0, [r0, #0x0]
     rsb r1, r1, #0x0
     mov r2, #0x0
-    bl func_0207593c
+    bl GraphicsSpriteRenderer_SetTextGridPosition
     mov r0, #0x0
     ldmia sp!, {r3, r4, r5, pc}
 .L_0220f10c: .word gGameWork

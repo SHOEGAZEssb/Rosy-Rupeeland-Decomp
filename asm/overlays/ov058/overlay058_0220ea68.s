@@ -11,7 +11,7 @@
 .extern func_02071eb8
 .extern func_0207419c
 .extern GraphicsSpriteRenderer_QueuePaletteUploads
-.extern func_02075a04
+.extern GraphicsSpriteRenderer_ConfigureTextGridPriority
 .extern func_020927b8
 .extern gDebugFont
 
@@ -31,12 +31,12 @@ func_ov058_0220ea68:
     mov r1, #0x0
     ldr r0, [r0, #0x0]
     mov r2, #0x10
-    bl func_02075a04
+    bl GraphicsSpriteRenderer_ConfigureTextGridPriority
     ldr r0, .L_0220eb48
     mov r1, #0x0
     ldr r0, [r0, #0x0]
     mov r2, #0x10
-    bl func_02075a04
+    bl GraphicsSpriteRenderer_ConfigureTextGridPriority
     ldr r5, [r4, #0x14]
     cmp r5, #0x0
     beq .L_0220eadc

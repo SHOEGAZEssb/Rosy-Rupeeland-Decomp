@@ -8,7 +8,7 @@
 .extern func_02071eb8
 .extern func_0207419c
 .extern GraphicsSpriteRenderer_QueuePaletteUploads
-.extern func_02075a88
+.extern GraphicsSpriteRenderer_SetTextGridObjectMode
 .extern func_020927b8
 .extern func_ov030_021fcf18
 .extern func_ov030_021fd27c
@@ -80,7 +80,7 @@ L_021fe018:
     bic r2, r2, #0xe000
     str r2, [r3, #0x0]
     ldr r0, [r0, #0x0]
-    bl func_02075a88
+    bl GraphicsSpriteRenderer_SetTextGridObjectMode
     ldr r0, L_021fe0bc
     ldr r0, [r0, #0x0]
     bl GraphicsSpriteRenderer_QueuePaletteUploads
@@ -171,7 +171,7 @@ L_021fe164:
     bic r2, r2, #0xe000
     str r2, [r3, #0x0]
     ldr r0, [r0, #0x0]
-    bl func_02075a88
+    bl GraphicsSpriteRenderer_SetTextGridObjectMode
     ldr r0, L_021fe210
     ldr r0, [r0, #0x0]
     bl GraphicsSpriteRenderer_QueuePaletteUploads

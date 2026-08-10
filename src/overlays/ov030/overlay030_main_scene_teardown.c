@@ -18,7 +18,7 @@ extern void func_0207419c(void *);
 extern void func_ov045_0220b8cc(void *);
 extern void *func_ov030_021fd27c(void *);
 extern void func_02071c38(void *, void *);
-extern void func_02075a88(void *);
+extern void GraphicsSpriteRenderer_SetTextGridObjectMode(void *);
 extern void GraphicsSpriteRenderer_QueuePaletteUploads(void *);
 extern void func_ov030_021fcf18(void *);
 extern void func_02071eb8(void *);
@@ -65,7 +65,7 @@ static void teardown_main_scene(void *scene)
     *(volatile u16 *)0x04000050 = 0;
     *(volatile u16 *)0x04001050 = 0;
     *(volatile u32 *)0x04000000 &= ~0xe000;
-    func_02075a88(data_020f4e14[0]);
+    GraphicsSpriteRenderer_SetTextGridObjectMode(data_020f4e14[0]);
     GraphicsSpriteRenderer_QueuePaletteUploads(data_020f4e14[0]);
     GraphicsSpriteRenderer_QueuePaletteUploads(gDebugFont);
     func_ov030_021fcf18((u8 *)scene + 0x210);

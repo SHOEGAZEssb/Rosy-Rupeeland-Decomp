@@ -18,7 +18,7 @@ extern void GraphicsResourceSet_Destroy(void *);
 extern void func_020b44e8(void);
 extern void func_02072048(void *, s32, u32);
 extern void func_02076004(void *, s32, u32, s32);
-extern void func_02075a88(void *, s32);
+extern void GraphicsSpriteRenderer_SetTextGridObjectMode(void *, s32);
 #ifdef __cplusplus
 }
 #endif
@@ -67,7 +67,7 @@ extern "C" void func_ov030_021fe554(void *scene)
     func_02072048(resources, 1, 0x4000);
     FIELD(s32, scene, 0x33c) = 0x10;
     FIELD(s32, scene, 0x338) = 0x10;
-    func_02075a88(data_020f4e14[0], 2);
+    GraphicsSpriteRenderer_SetTextGridObjectMode(data_020f4e14[0], 2);
 
     volatile u32 *dispCnt = (volatile u32 *)0x04000000;
     *dispCnt = (*dispCnt & ~0xe000) | 0x8000;

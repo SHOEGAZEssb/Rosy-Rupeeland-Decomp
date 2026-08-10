@@ -59,10 +59,10 @@ void GraphicsSpriteRenderer_Printf(GraphicsSpriteRenderer *renderer, s32 x, s32 
                    const char *format, ...);
 void DebugText_Printf(GraphicsSpriteRenderer *renderer, s32 x, s32 y,
                       u32 mode, const char *format, ...);
-void func_0207593c(GraphicsSpriteRenderer *renderer, s32 x, s32 y);
-void func_02075a04(GraphicsSpriteRenderer *renderer, s32 priority,
+void GraphicsSpriteRenderer_SetTextGridPosition(GraphicsSpriteRenderer *renderer, s32 x, s32 y);
+void GraphicsSpriteRenderer_ConfigureTextGridPriority(GraphicsSpriteRenderer *renderer, s32 priority,
                    u32 field20);
-void func_02075a88(GraphicsSpriteRenderer *renderer, s32 objectMode);
+void GraphicsSpriteRenderer_SetTextGridObjectMode(GraphicsSpriteRenderer *renderer, s32 objectMode);
 u32 func_02075e48(GraphicsSpriteRenderer *renderer, s32 glyphIndex,
                   u32 destinationX, u32 destinationY, u32 mode);
 u8 func_02075ea8(GraphicsSpriteRenderer *renderer, s32 glyphIndex);

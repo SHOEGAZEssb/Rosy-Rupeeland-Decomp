@@ -55,7 +55,7 @@ extern void func_02070e0c(...);
 extern void func_02070eac(...);
 extern void func_02072000(GraphicsResourceSet *);
 extern void func_020afd0c(...);
-extern void func_02075a04(...);
+extern void GraphicsSpriteRenderer_ConfigureTextGridPriority(...);
 extern void *func_ov032_021fd7e0(void *);
 extern void func_ov032_021fce00(void *);
 extern void func_ov032_021fd938(void *);
@@ -195,8 +195,8 @@ extern "C" void func_ov032_021fd994(void *scene)
     REG16(0x05000400) = 0x24a3;
     func_020afd0c((void *)0x04000050, 2, 0x3c, 0xc, 8);
     func_020afd0c((void *)0x04001050, 4, 0x38, 0xc, 8);
-    func_02075a04(data_020f4e14[0], 2, 0);
-    func_02075a04(gDebugFont, 3, 0);
+    GraphicsSpriteRenderer_ConfigureTextGridPriority(data_020f4e14[0], 2, 0);
+    GraphicsSpriteRenderer_ConfigureTextGridPriority(gDebugFont, 3, 0);
     FIELD(s32, scene, 0xf2c) = 1;
     GraphicsResourceSet_Destroy(&set);
 }

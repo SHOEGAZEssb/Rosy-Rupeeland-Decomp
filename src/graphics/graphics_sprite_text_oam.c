@@ -34,7 +34,7 @@ typedef char GraphicsSpriteTextOamRecordSizeCheck[
  * value and updates only the twelve shadow OAM records.
  */
 #ifndef MATCHING
-void func_0207593c(GraphicsSpriteRenderer *renderer, s32 x, s32 y)
+void GraphicsSpriteRenderer_SetTextGridPosition(GraphicsSpriteRenderer *renderer, s32 x, s32 y)
 {
     GraphicsSpriteTextOamRecord *records =
         (GraphicsSpriteTextOamRecord *)renderer->field_0c;
@@ -68,7 +68,7 @@ void func_0207593c(GraphicsSpriteRenderer *renderer, s32 x, s32 y)
 }
 #else
 /* This matching fallback implements the documented portable C directly above. */
-asm void func_0207593c(GraphicsSpriteRenderer *renderer, s32 x, s32 y)
+asm void GraphicsSpriteRenderer_SetTextGridPosition(GraphicsSpriteRenderer *renderer, s32 x, s32 y)
 {
     stmdb sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, lr}
     ldr r3, [r0, #0x0c]
@@ -135,7 +135,7 @@ text_oam_position_next:
  * skips OAM writes. Returns no value; renderer state and shadow OAM may change.
  */
 #ifndef MATCHING
-void func_02075a04(GraphicsSpriteRenderer *renderer, s32 priority,
+void GraphicsSpriteRenderer_ConfigureTextGridPriority(GraphicsSpriteRenderer *renderer, s32 priority,
                    u32 field20)
 {
     GraphicsSpriteTextOamRecord *records;
@@ -162,7 +162,7 @@ void func_02075a04(GraphicsSpriteRenderer *renderer, s32 priority,
 }
 #else
 /* This matching fallback implements the documented portable C directly above. */
-asm void func_02075a04(GraphicsSpriteRenderer *renderer, s32 priority,
+asm void GraphicsSpriteRenderer_ConfigureTextGridPriority(GraphicsSpriteRenderer *renderer, s32 priority,
                        u32 field20)
 {
     stmdb sp!, {r3, lr}
@@ -209,7 +209,7 @@ text_oam_priority_loop:
  * field_0c is ignored. Returns no value and changes shadow OAM only.
  */
 #ifndef MATCHING
-void func_02075a88(GraphicsSpriteRenderer *renderer, s32 objectMode)
+void GraphicsSpriteRenderer_SetTextGridObjectMode(GraphicsSpriteRenderer *renderer, s32 objectMode)
 {
     GraphicsSpriteTextOamRecord *records =
         (GraphicsSpriteTextOamRecord *)renderer->field_0c;
@@ -226,7 +226,7 @@ void func_02075a88(GraphicsSpriteRenderer *renderer, s32 objectMode)
 }
 #else
 /* This matching fallback implements the documented portable C directly above. */
-asm void func_02075a88(GraphicsSpriteRenderer *renderer, s32 objectMode)
+asm void GraphicsSpriteRenderer_SetTextGridObjectMode(GraphicsSpriteRenderer *renderer, s32 objectMode)
 {
     stmdb sp!, {r3, lr}
     ldr r2, [r0, #0x0c]

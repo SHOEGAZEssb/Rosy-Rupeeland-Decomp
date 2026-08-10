@@ -9,7 +9,7 @@
 .extern GamePhaseState_SetEnabled
 .extern GamePhaseAreaScene_SetEnabled
 .extern GraphicsSpriteRenderer_ClearTextBuffer
-.extern func_02075a04
+.extern GraphicsSpriteRenderer_ConfigureTextGridPriority
 .extern func_02092418
 .extern func_ov032_021fde1c
 .extern gDebugFont
@@ -51,12 +51,12 @@ func_ov032_021fde38:
     mov r1, #0x0
     ldr r0, [r0, #0x0]
     mov r2, #0x10
-    bl func_02075a04
+    bl GraphicsSpriteRenderer_ConfigureTextGridPriority
     ldr r0, L_021fdf28
     mov r1, #0x0
     ldr r0, [r0, #0x0]
     mov r2, #0x10
-    bl func_02075a04
+    bl GraphicsSpriteRenderer_ConfigureTextGridPriority
     ldr r0, L_021fdf2c
     mov r1, #0x0
     ldr r0, [r0, #0x0]

@@ -7,7 +7,7 @@
     .extern data_ov018_021ffd3c
     .extern func_02071eb8
     .extern func_0207419c
-    .extern func_02075a04
+    .extern GraphicsSpriteRenderer_ConfigureTextGridPriority
     .extern func_020927b8
     .extern func_02095308
     .extern func_ov001_021fb7d4
@@ -59,7 +59,7 @@ L_021fd3cc:
     mov r1, #0x0
     ldr r0, [r0, #0x0]
     mov r2, #0x10
-    bl func_02075a04
+    bl GraphicsSpriteRenderer_ConfigureTextGridPriority
     ldr r0, [r4, #0x184]
     mov r1, #0x1
     ldr r2, [r0, #0x0]
@@ -137,7 +137,7 @@ L_021fd4ec:
     mov r1, #0x0
     ldr r0, [r0, #0x0]
     mov r2, #0x10
-    bl func_02075a04
+    bl GraphicsSpriteRenderer_ConfigureTextGridPriority
     ldr r0, [r4, #0x184]
     mov r1, #0x1
     ldr r2, [r0, #0x0]

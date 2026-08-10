@@ -9,7 +9,7 @@
 .extern func_0204d570
 .extern func_02073ef8
 .extern func_02074110
-.extern func_0207593c
+.extern GraphicsSpriteRenderer_SetTextGridPosition
 .extern gDebugFont
 
 .global func_ov090_02217c6c
@@ -72,7 +72,7 @@ func_ov090_02217c6c:
     str r3, [r2, #0x38]
     ldr r0, [r0, #0x0]
     mov r2, r1
-    bl func_0207593c
+    bl GraphicsSpriteRenderer_SetTextGridPosition
     add r0, r4, #0x224
     bl func_02005058
     add r0, r4, #0x20c
