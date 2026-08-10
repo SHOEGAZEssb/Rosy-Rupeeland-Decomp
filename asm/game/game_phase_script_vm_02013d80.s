@@ -3,8 +3,8 @@
 .extern GamePhaseScriptVm_Pop
 .extern GamePhaseScriptVm_SetResult
 
-    .global func_02013d80
-func_02013d80: ; 0x02013d80
+    .global GamePhaseActorScriptVm_MaskValueByBit
+GamePhaseActorScriptVm_MaskValueByBit: ; 0x02013d80
     stmdb sp!, {r3, r4, r5, lr}
     mov r5, r0
     bl GamePhaseScriptVm_Pop
@@ -17,5 +17,5 @@ func_02013d80: ; 0x02013d80
     bl GamePhaseScriptVm_SetResult
     mov r0, #0x0
     ldmia sp!, {r3, r4, r5, pc}
-    .size func_02013d80, . - func_02013d80
+    .size GamePhaseActorScriptVm_MaskValueByBit, . - GamePhaseActorScriptVm_MaskValueByBit
 

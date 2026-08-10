@@ -10,7 +10,7 @@ extern "C" {
 #endif
 extern void *data_021052fc;
 extern void *GamePhaseRuntime_GetActorCollection(void *runtime, s32 index);
-extern void func_02013dfc(void *actor, s32 enabled);
+extern void Actor_SetFlag200000Inverse(void *actor, s32 enabled);
 extern void func_0201df64(void *list);
 extern void func_0201e0ec(void *list);
 extern void *func_02025d14(void *state);
@@ -75,7 +75,7 @@ s32 func_02019aa4(GamePhaseActorScriptVm *self)
         for (index = 0; index < count; index++) {
             u8 *actor = *(u8 **)(collection + index * 4);
             if (actor && *(s16 *)(actor + 0x50) == first)
-                func_02013dfc(actor, second);
+                Actor_SetFlag200000Inverse(actor, second);
         }
         break;
     }

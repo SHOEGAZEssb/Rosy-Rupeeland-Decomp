@@ -8,7 +8,7 @@
  * 0x80. Selector 1 only clears that word flag. Other selectors have no effect.
  * Returns zero.
  */
-s32 func_02013cf8(GamePhaseActorScriptVm *self)
+s32 GamePhaseActorScriptVm_ConfigureAttachmentByte3aAndFlag80(GamePhaseActorScriptVm *self)
 {
     u32 value = GamePhaseScriptVm_Pop(&self->base);
     u32 selector = GamePhaseScriptVm_Pop(&self->base);
@@ -27,14 +27,14 @@ s32 func_02013cf8(GamePhaseActorScriptVm *self)
 }
 
 /* Push the bound actor's halfword at offset 0x4e and return zero. */
-s32 func_02013d68(GamePhaseActorScriptVm *self)
+s32 GamePhaseActorScriptVm_GetActorField4e(GamePhaseActorScriptVm *self)
 {
     GamePhaseScriptVm_SetResult(&self->base, *(u16 *)((u8 *)self->actor + 0x4e));
     return 0;
 }
 
 /* Pop a bit index and value, push value masked by that single bit, and return zero. */
-s32 func_02013d80(GamePhaseActorScriptVm *self)
+s32 GamePhaseActorScriptVm_MaskValueByBit(GamePhaseActorScriptVm *self)
 {
     u32 bit = GamePhaseScriptVm_Pop(&self->base);
     u32 value = GamePhaseScriptVm_Pop(&self->base);
@@ -43,7 +43,7 @@ s32 func_02013d80(GamePhaseActorScriptVm *self)
 }
 
 /* Pop a boolean, mirror it into actor word flag 0x8 at offset 0x14, and return zero. */
-s32 func_02013db0(GamePhaseActorScriptVm *self)
+s32 GamePhaseActorScriptVm_SetActorFlag8(GamePhaseActorScriptVm *self)
 {
     u32 enabled = GamePhaseScriptVm_Pop(&self->base);
     u32 *flags = (u32 *)((u8 *)self->actor + 0x14);
@@ -54,11 +54,11 @@ s32 func_02013db0(GamePhaseActorScriptVm *self)
     return 0;
 }
 
-/* Pop a boolean, apply func_02013dfc to the bound actor, and return zero. */
-s32 func_02013ddc(GamePhaseActorScriptVm *self)
+/* Pop a boolean, apply Actor_SetFlag200000Inverse to the bound actor, and return zero. */
+s32 GamePhaseActorScriptVm_SetActorFlag200000Inverse(GamePhaseActorScriptVm *self)
 {
     s32 enabled = (s32)GamePhaseScriptVm_Pop(&self->base);
-    func_02013dfc(self->actor, enabled);
+    Actor_SetFlag200000Inverse(self->actor, enabled);
     return 0;
 }
 
@@ -66,7 +66,7 @@ s32 func_02013ddc(GamePhaseActorScriptVm *self)
  * Clear actor word flag 0x200000 when enabled is nonzero and set it when zero.
  * This inverted polarity is confirmed; the flag's semantic name is unknown.
  */
-void func_02013dfc(void *actor, s32 enabled)
+void Actor_SetFlag200000Inverse(void *actor, s32 enabled)
 {
     u32 *flags = (u32 *)((u8 *)actor + 0x14);
     if (enabled != 0)

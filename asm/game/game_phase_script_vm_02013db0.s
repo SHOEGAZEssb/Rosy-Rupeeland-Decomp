@@ -2,8 +2,8 @@
 .text
 .extern GamePhaseScriptVm_Pop
 
-    .global func_02013db0
-func_02013db0: ; 0x02013db0
+    .global GamePhaseActorScriptVm_SetActorFlag8
+GamePhaseActorScriptVm_SetActorFlag8: ; 0x02013db0
     stmdb sp!, {r4, lr}
     mov r4, r0
     bl GamePhaseScriptVm_Pop
@@ -15,5 +15,5 @@ func_02013db0: ; 0x02013db0
     str r0, [r1, #0x14]
     mov r0, #0x0
     ldmia sp!, {r4, pc}
-    .size func_02013db0, . - func_02013db0
+    .size GamePhaseActorScriptVm_SetActorFlag8, . - GamePhaseActorScriptVm_SetActorFlag8
 

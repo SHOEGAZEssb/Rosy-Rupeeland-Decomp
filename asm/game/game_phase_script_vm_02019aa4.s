@@ -2,7 +2,7 @@
 .text
 .extern data_021052fc
 .extern GamePhaseRuntime_GetActorCollection
-.extern func_02013dfc
+.extern Actor_SetFlag200000Inverse
 .extern GamePhaseScriptVm_Pop
 .extern func_0201df64
 .extern func_0201e0ec
@@ -107,7 +107,7 @@ L_02019bc8:
     cmp r7, r1
     bne L_02019bf4
     mov r1, r8
-    bl func_02013dfc
+    bl Actor_SetFlag200000Inverse
 L_02019bf4:
     add r9, r9, #0x1
 L_02019bf8:

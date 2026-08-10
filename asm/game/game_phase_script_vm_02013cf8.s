@@ -2,8 +2,8 @@
 .text
 .extern GamePhaseScriptVm_Pop
 
-    .global func_02013cf8
-func_02013cf8: ; 0x02013cf8
+    .global GamePhaseActorScriptVm_ConfigureAttachmentByte3aAndFlag80
+GamePhaseActorScriptVm_ConfigureAttachmentByte3aAndFlag80: ; 0x02013cf8
     stmdb sp!, {r3, r4, r5, lr}
     mov r5, r0
     bl GamePhaseScriptVm_Pop
@@ -34,5 +34,5 @@ L_02013d30:
 L_02013d60:
     mov r0, #0x0
     ldmia sp!, {r3, r4, r5, pc}
-    .size func_02013cf8, . - func_02013cf8
+    .size GamePhaseActorScriptVm_ConfigureAttachmentByte3aAndFlag80, . - GamePhaseActorScriptVm_ConfigureAttachmentByte3aAndFlag80
 
