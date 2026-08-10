@@ -15,7 +15,7 @@ extern "C" {
 #endif
 extern void VecFx32Object_InitComponents(void *vector, s32 x, s32 y, s32 z);
 extern void VecFx32Object_Destroy(void *vector);
-extern void *func_0204e2ac(s32 type, u32 value_1f4, u32 value_1f2,
+extern void *PresentationBackedActor_Spawn(s32 type, u32 value_1f4, u32 value_1f2,
                            const void *position, const void *vector_38,
                            u32 descriptor_arg0, u32 descriptor_arg1,
                            u32 descriptor_arg2, u32 selection,
@@ -42,7 +42,7 @@ typedef struct FxVector3 {
  * remainder modulo 0x3000 plus 0x1800. Returns nothing; actor-manager and RNG
  * state change, while hardware is not accessed directly.
  */
-void func_0204e3f4(u32 playback_value, s32 amount,
+void PresentationBackedActor_SpawnSplitAmount(u32 playback_value, s32 amount,
                    const void *position, u32 descriptor_arg)
 {
     FxVector3 velocity;
@@ -67,7 +67,7 @@ void func_0204e3f4(u32 playback_value, s32 amount,
                     data_020c9670[angle_index * 2 + 1] * 3, 2);
                 velocity.z = func_020adae4(
                     data_020c9670[angle_index * 2] * 3, 2);
-                func_0204e2ac(10, playback_value, denomination, position,
+                PresentationBackedActor_Spawn(10, playback_value, denomination, position,
                               &velocity, 0x300d, 0x300e, 0x300f,
                               candidate, 7, 1);
                 gPresentationBackedActorRuntimeState[0] = (u16)(gPresentationBackedActorRuntimeState[0] +

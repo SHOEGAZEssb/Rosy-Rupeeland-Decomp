@@ -19030,7 +19030,7 @@ build build/reports/presentation_backed_actor_spawn_0204e2ac.json: objdiff build
   base_object = build/decomp/asm/game/presentation_backed_actor_spawn_0204e2ac.o
 build build/reports/presentation_backed_actor_spawn_0204e2ac.txt: match_report build/reports/presentation_backed_actor_spawn_0204e2ac.json | tools/report_objdiff.py
   report_json = build/reports/presentation_backed_actor_spawn_0204e2ac.json
-  report_args = --section .text --function func_0204e2ac --require-exact
+  report_args = --section .text --function PresentationBackedActor_Spawn --require-exact
 build presentation_backed_actor_spawn: phony build/decomp/src/game/presentation_backed_actor_spawn.o build/decomp/asm/game/presentation_backed_actor_spawn_0204e2ac.o build/reports/presentation_backed_actor_spawn_0204e2ac.txt
 
 presentation_backed_actor_split_spawn_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
@@ -19044,7 +19044,7 @@ build build/reports/presentation_backed_actor_split_spawn_0204e3f4.json: objdiff
   base_object = build/decomp/asm/game/presentation_backed_actor_split_spawn_0204e3f4.o
 build build/reports/presentation_backed_actor_split_spawn_0204e3f4.txt: match_report build/reports/presentation_backed_actor_split_spawn_0204e3f4.json | tools/report_objdiff.py
   report_json = build/reports/presentation_backed_actor_split_spawn_0204e3f4.json
-  report_args = --section .text --function func_0204e3f4 --require-exact
+  report_args = --section .text --function PresentationBackedActor_SpawnSplitAmount --require-exact
 build presentation_backed_actor_split_spawn: phony build/decomp/src/game/presentation_backed_actor_split_spawn.o build/decomp/asm/game/presentation_backed_actor_split_spawn_0204e3f4.o build/reports/presentation_backed_actor_split_spawn_0204e3f4.txt
 
 presentation_backed_actor_spawn_variants_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
@@ -19058,7 +19058,7 @@ build build/reports/presentation_backed_actor_spawn_variants_0204e584.json: objd
   base_object = build/decomp/asm/game/presentation_backed_actor_spawn_variants_0204e584.o
 build build/reports/presentation_backed_actor_spawn_variants_0204e584.txt: match_report build/reports/presentation_backed_actor_spawn_variants_0204e584.json | tools/report_objdiff.py
   report_json = build/reports/presentation_backed_actor_spawn_variants_0204e584.json
-  report_args = --section .text --function func_0204e584 --function func_0204e628 --require-exact
+  report_args = --section .text --function PresentationBackedActor_SpawnAmountVariant --function PresentationBackedActor_SpawnTripleVariant --require-exact
 build presentation_backed_actor_spawn_variants: phony build/decomp/src/game/presentation_backed_actor_spawn_variants.o build/decomp/asm/game/presentation_backed_actor_spawn_variants_0204e584.o build/reports/presentation_backed_actor_spawn_variants_0204e584.txt
 
 effect_handle_actor_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++

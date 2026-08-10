@@ -7,8 +7,8 @@
 .extern func_0204d82c
 .text
 
-    .global func_0204e2ac
-func_0204e2ac: ; 0x0204e2ac
+    .global PresentationBackedActor_Spawn
+PresentationBackedActor_Spawn: ; 0x0204e2ac
     stmdb sp!, {r3, r4, r5, lr}
     sub sp, sp, #0xb0
     mov ip, r0
@@ -92,5 +92,5 @@ func_0204e2ac: ; 0x0204e2ac
     ldmia sp!, {r3, r4, r5, pc}
 .L_0204e3ec: .word 0x8018
 .L_0204e3f0: .word data_021052fc
-.size func_0204e2ac, . - func_0204e2ac
+.size PresentationBackedActor_Spawn, . - PresentationBackedActor_Spawn
 

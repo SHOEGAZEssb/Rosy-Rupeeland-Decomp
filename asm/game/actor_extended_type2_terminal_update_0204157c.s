@@ -3,8 +3,8 @@
 .extern VecFx32Object_InitCopy
 .extern VecFx32Object_Destroy
 .extern Actor_RestoreSavedFlags
-.extern func_0204e3f4
-.extern func_0204e628
+.extern PresentationBackedActor_SpawnSplitAmount
+.extern PresentationBackedActor_SpawnTripleVariant
 .extern func_0204f7e4
 .extern func_02062864
 .extern func_020695f4
@@ -87,10 +87,10 @@ ActorExtendedType2_UpdateTerminalState18: ; 0x020415a8
     add r2, sp, #0x4
     mov r0, #0x12c
     bgt .L_02041694
-    bl func_0204e3f4
+    bl PresentationBackedActor_SpawnSplitAmount
     b .L_02041698
 .L_02041694:
-    bl func_0204e628
+    bl PresentationBackedActor_SpawnTripleVariant
 .L_02041698:
     add r0, sp, #0x4
     bl VecFx32Object_Destroy

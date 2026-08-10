@@ -3,7 +3,7 @@
 .extern VecFx32Object_Init
 .extern VecFx32Object_Destroy
 .extern GamePhaseScriptVm_Pop
-.extern func_0204e2ac
+.extern PresentationBackedActor_Spawn
 .global GamePhaseActorScriptVm_SpawnTieredEffect
 GamePhaseActorScriptVm_SpawnTieredEffect:
     stmdb sp!, {r4, r5, lr}
@@ -79,7 +79,7 @@ L_020172c8:
     mov r1, r1, asr #16
     mov r0, #10
     str r4, [sp, #0x18]
-    bl func_0204e2ac
+    bl PresentationBackedActor_Spawn
     add r0, sp, #0x1c
     bl VecFx32Object_Destroy
     add r0, sp, #0x2c

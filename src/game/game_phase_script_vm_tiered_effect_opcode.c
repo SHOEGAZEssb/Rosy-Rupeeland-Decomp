@@ -3,13 +3,13 @@
 
 /*
  * Implement the script opcode that converts eight operands into two fixed-point
- * vectors and dispatches a tiered recovered effect through func_0204e2ac.
+ * vectors and dispatches a tiered recovered effect through PresentationBackedActor_Spawn.
  */
 
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_0204e2ac(s32 kind, s16 first, s16 tierSource,
+extern void PresentationBackedActor_Spawn(s32 kind, s16 first, s16 tierSource,
                           const VecFx32Object *position,
                           const VecFx32Object *secondary,
                           s32 resource0, s32 resource1, s32 resource2,
@@ -22,7 +22,7 @@ extern void func_0204e2ac(s32 kind, s16 first, s16 tierSource,
  * Pop eight values. The first and eighth become signed 16-bit call operands;
  * the middle six form one 20.12 vector and one vector scaled by 16. Convert
  * the eighth operand to tier 0..6 at thresholds 5, 10, 20, 50, 100, and 200,
- * then call func_0204e2ac with kind 10, resources 0x300d..0x300f, count 7,
+ * then call PresentationBackedActor_Spawn with kind 10, resources 0x300d..0x300f, count 7,
  * and trailing zero. Destroy both temporary vectors and return zero.
  */
 s32 GamePhaseActorScriptVm_SpawnTieredEffect(GamePhaseActorScriptVm *self)
@@ -59,7 +59,7 @@ s32 GamePhaseActorScriptVm_SpawnTieredEffect(GamePhaseActorScriptVm *self)
     else
         tier = 0;
 
-    func_0204e2ac(10, (s16)first, (s16)tierSource, &position, &secondary,
+    PresentationBackedActor_Spawn(10, (s16)first, (s16)tierSource, &position, &secondary,
                   0x300d, 0x300e, 0x300f, tier, 7, 0);
     VecFx32Object_Destroy(&secondary);
     VecFx32Object_Destroy(&position);

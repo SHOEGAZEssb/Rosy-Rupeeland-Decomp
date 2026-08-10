@@ -13,8 +13,8 @@ extern void VecFx32Object_InitCopy(void *temporary, const void *source);
 extern void VecFx32Object_Destroy(void *temporary);
 extern void func_02062864(void *object, s32 enabled);
 extern void func_0204f7e4(void *temporary, void *object, s32 kind);
-extern void func_0204e3f4(s32 kind, s32 count, void *temporary);
-extern void func_0204e628(s32 kind, s32 count, void *temporary);
+extern void PresentationBackedActor_SpawnSplitAmount(s32 kind, s32 count, void *temporary);
+extern void PresentationBackedActor_SpawnTripleVariant(s32 kind, s32 count, void *temporary);
 extern void Actor_RestoreSavedFlags(void *actor);
 #ifdef __cplusplus
 }
@@ -42,8 +42,8 @@ s32 ActorExtendedType2_ResetTerminalAttachmentState(void *self)
  * unless +0x260 bit 0x2000 is set, func_020695f4 selects an object or count and
  * a temporary transform copied from +0x18 is raised by 0x14000. A selected
  * object is enabled and submitted once per halfword +4 entry with kind 300;
- * without one, positive counts choose func_0204e3f4 through 1000 and
- * func_0204e628 above it. The transform is finalized, then virtual +0x54 is
+ * without one, positive counts choose PresentationBackedActor_SpawnSplitAmount through 1000 and
+ * PresentationBackedActor_SpawnTripleVariant above it. The transform is finalized, then virtual +0x54 is
  * called with zero, Actor_RestoreSavedFlags runs, and virtual +0x100 completes the state.
  * The routine always returns zero and may change actor, attachment, virtual,
  * selected-object, and emitted-object state; no direct hardware access occurs.
@@ -72,9 +72,9 @@ s32 ActorExtendedType2_UpdateTerminalState18(void *self)
             } else if (count > 0) {
                 s16 shortCount = (s16)count;
                 if (count <= 1000)
-                    func_0204e3f4(300, shortCount, temporary);
+                    PresentationBackedActor_SpawnSplitAmount(300, shortCount, temporary);
                 else
-                    func_0204e628(300, shortCount, temporary);
+                    PresentationBackedActor_SpawnTripleVariant(300, shortCount, temporary);
             }
             VecFx32Object_Destroy(temporary);
         }

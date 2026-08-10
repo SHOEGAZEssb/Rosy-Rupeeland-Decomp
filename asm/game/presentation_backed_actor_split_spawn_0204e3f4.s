@@ -4,14 +4,14 @@
 .extern gPresentationBackedActorRuntimeState
 .extern VecFx32Object_InitComponents
 .extern VecFx32Object_Destroy
-.extern func_0204e2ac
+.extern PresentationBackedActor_Spawn
 .extern func_020adae4
 .extern func_020bf1f8
 .extern genrand_int32
 .text
 
-    .global func_0204e3f4
-func_0204e3f4: ; 0x0204e3f4
+    .global PresentationBackedActor_SpawnSplitAmount
+PresentationBackedActor_SpawnSplitAmount: ; 0x0204e3f4
     stmdb sp!, {r3, r4, r5, r6, r7, r8, r9, r10, lr}
     sub sp, sp, #0x2c
     mov r5, r1
@@ -91,7 +91,7 @@ func_0204e3f4: ; 0x0204e3f4
     mov r0, #0xa
     mov r1, r6
     mov r3, r4
-    bl func_0204e2ac
+    bl PresentationBackedActor_Spawn
     bl genrand_int32
     mov r1, #0x3000
     bl func_020bf1f8
@@ -122,5 +122,5 @@ func_0204e3f4: ; 0x0204e3f4
 .L_0204e578: .word gPresentationBackedActorRuntimeState
 .L_0204e57c: .word data_020c9670
 .L_0204e580: .word 0x300d
-.size func_0204e3f4, . - func_0204e3f4
+.size PresentationBackedActor_SpawnSplitAmount, . - PresentationBackedActor_SpawnSplitAmount
 

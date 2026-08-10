@@ -32,7 +32,7 @@ extern void func_0204d82c(void *actor, u16 value_1f2, u16 value_1f4,
  * and install -16/+16 bounds at 0x60..0x66. Return the new actor. Allocation
  * and engine manager state change; no hardware registers are touched directly.
  */
-void *func_0204e2ac(s32 type, u32 value_1f4, u32 value_1f2,
+void *PresentationBackedActor_Spawn(s32 type, u32 value_1f4, u32 value_1f2,
                     const void *position, const void *vector_38,
                     u32 descriptor_arg0, u32 descriptor_arg1,
                     u32 descriptor_arg2, u32 selection,

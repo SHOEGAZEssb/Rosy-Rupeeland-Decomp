@@ -16,7 +16,7 @@
 .extern func_02032370
 .extern func_020349b8
 .extern ActorExtendedType2_IncrementSavedProgressCounter
-.extern func_0204e584
+.extern PresentationBackedActor_SpawnAmountVariant
 .extern func_020538a4
 .extern func_020a27a0
 .extern func_020ada8c
@@ -438,7 +438,7 @@ func_ov077_02215494:
     mov r0, #0x168
     add r2, sp, #0x38
     mov r3, r11
-    bl func_0204e584
+    bl PresentationBackedActor_SpawnAmountVariant
     ldr r1, [r0, #0x14]
     bic r1, r1, #0x200
     str r1, [r0, #0x14]

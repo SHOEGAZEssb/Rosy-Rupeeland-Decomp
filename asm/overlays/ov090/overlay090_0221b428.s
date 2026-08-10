@@ -11,7 +11,7 @@
 .extern func_0201e0ec
 .extern ActorCollection_QueueActorForRemoval
 .extern func_020349b8
-.extern func_0204e2ac
+.extern PresentationBackedActor_Spawn
 .extern func_020594ec
 .extern func_020a2614
 .extern func_020befec
@@ -196,7 +196,7 @@ func_ov090_0221b428:
     str r0, [sp, #0x18]
     ldr r1, [sp, #0x1c]
     mov r0, #0x12
-    bl func_0204e2ac
+    bl PresentationBackedActor_Spawn
     mov r10, r0
     tst r8, #0x1
     ldrne r1, [r10, #0x54]

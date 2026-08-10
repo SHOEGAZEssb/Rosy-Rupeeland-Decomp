@@ -26,7 +26,7 @@ extern void *Actor_GetCollisionCenter(VecFx32Object *destination, void *actor);
 extern void *Actor_GetCollection(void *actor);
 extern void ActorDerivedType1_StartRecord(void *manager, s32 value);
 extern s32 ActorDerivedType1_IsIdleEligible(void *manager);
-extern void func_0204e3f4(s32 duration, s16 amount,
+extern void PresentationBackedActor_SpawnSplitAmount(s32 duration, s16 amount,
                           const VecFx32Object *position);
 extern void func_0204f7e4(const VecFx32Object *position,
                           const void *descriptor, s32 duration);
@@ -149,7 +149,7 @@ s32 func_0201939c(GamePhaseActorScriptVm *self)
         VecFx32Object_InitComponents(&position, p5 << 12, p4 << 12, p3 << 12);
         if (p6 >= 0xe4 && p6 <= 0xea) {
             static const s16 amounts[7] = {1, 5, 10, 20, 50, 100, 200};
-            func_0204e3f4(300, amounts[p6 - 0xe4], &position);
+            PresentationBackedActor_SpawnSplitAmount(300, amounts[p6 - 0xe4], &position);
         } else {
             u8 descriptor[0x24];
             func_02019890(descriptor, (u16)p6, 1);

@@ -20,7 +20,7 @@
 .extern Actor_GetCollection
 .extern ActorDerivedType1_StartRecord
 .extern ActorDerivedType1_IsIdleEligible
-.extern func_0204e3f4
+.extern PresentationBackedActor_SpawnSplitAmount
 .extern func_0204f7e4
 .extern func_0204f854
 .extern func_02050078
@@ -237,7 +237,7 @@ L_02019690:
     mov r1, r0, asr #0x10
     add r2, sp, #0xcc
     mov r0, #0x12c
-    bl func_0204e3f4
+    bl PresentationBackedActor_SpawnSplitAmount
     add r0, sp, #0xcc
     bl VecFx32Object_Destroy
     b L_02019878

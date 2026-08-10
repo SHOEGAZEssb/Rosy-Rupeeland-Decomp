@@ -15,7 +15,7 @@ extern "C" {
 #endif
 extern void VecFx32Object_InitComponents(void *vector, s32 x, s32 y, s32 z);
 extern void VecFx32Object_Destroy(void *vector);
-extern void *func_0204e2ac(s32 type, u32 value_1f4, u32 value_1f2,
+extern void *PresentationBackedActor_Spawn(s32 type, u32 value_1f4, u32 value_1f2,
                            const void *position, const void *vector_38,
                            u32 descriptor_arg0, u32 descriptor_arg1,
                            u32 descriptor_arg2, u32 selection,
@@ -40,7 +40,7 @@ typedef struct FxVector3 {
  * selector 1. Return the spawned actor; manager state changes, with no direct
  * hardware effects.
  */
-void *func_0204e584(u32 playback_value, s32 amount,
+void *PresentationBackedActor_SpawnAmountVariant(u32 playback_value, s32 amount,
                     const void *position, const void *vector)
 {
     s32 index = 0;
@@ -56,7 +56,7 @@ void *func_0204e584(u32 playback_value, s32 amount,
     else if (index >= 7)
         index = 6;
 
-    return func_0204e2ac(10, playback_value, data_020c3e78[index],
+    return PresentationBackedActor_Spawn(10, playback_value, data_020c3e78[index],
                          position, vector, 0x300d, 0x300e, 0x300f,
                          index, 7, 1);
 }
@@ -69,7 +69,7 @@ void *func_0204e584(u32 playback_value, s32 amount,
  * random remainder modulo 0x3000 plus 0x3000 after every spawn. Returns nothing;
  * actor-manager and RNG state change and hardware is not accessed directly.
  */
-void func_0204e628(u32 playback_value, s32 amount, const void *position)
+void PresentationBackedActor_SpawnTripleVariant(u32 playback_value, s32 amount, const void *position)
 {
     FxVector3 velocity;
     s16 divided_amount = (s16)func_020adae4(amount, 3);
@@ -82,7 +82,7 @@ void func_0204e628(u32 playback_value, s32 amount, const void *position)
             data_020c9670[angle_index * 2 + 1] * 3, 2);
         velocity.z = func_020adae4(
             data_020c9670[angle_index * 2] * 3, 2);
-        func_0204e2ac(19, playback_value, divided_amount, position,
+        PresentationBackedActor_Spawn(19, playback_value, divided_amount, position,
                       &velocity, 0x3010, 0x300e, 0x3011, 0, 7, 1);
         gPresentationBackedActorRuntimeState[0] = (u16)(gPresentationBackedActorRuntimeState[0] +
             (genrand_int32() % 0x3000) + 0x3000);

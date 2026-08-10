@@ -4,14 +4,14 @@
 .extern gPresentationBackedActorRuntimeState
 .extern VecFx32Object_InitComponents
 .extern VecFx32Object_Destroy
-.extern func_0204e2ac
+.extern PresentationBackedActor_Spawn
 .extern func_020adae4
 .extern func_020bf1f8
 .extern genrand_int32
 .text
 
-    .global func_0204e584
-func_0204e584: ; 0x0204e584
+    .global PresentationBackedActor_SpawnAmountVariant
+PresentationBackedActor_SpawnAmountVariant: ; 0x0204e584
     stmdb sp!, {r3, r4, lr}
     sub sp, sp, #0x1c
     mov lr, r2
@@ -52,16 +52,16 @@ func_0204e584: ; 0x0204e584
     mov r3, lr
     mov r0, #0xa
     str ip, [sp, #0x18]
-    bl func_0204e2ac
+    bl PresentationBackedActor_Spawn
     add sp, sp, #0x1c
     ldmia sp!, {r3, r4, pc}
 .L_0204e620: .word data_020c3e78
 .L_0204e624: .word 0x300d
-.size func_0204e584, . - func_0204e584
+.size PresentationBackedActor_SpawnAmountVariant, . - PresentationBackedActor_SpawnAmountVariant
 
-    .global func_0204e628
+    .global PresentationBackedActor_SpawnTripleVariant
 
-func_0204e628: ; 0x0204e628
+PresentationBackedActor_SpawnTripleVariant: ; 0x0204e628
     stmdb sp!, {r4, r5, r6, r7, r8, r9, r10, r11, lr}
     sub sp, sp, #0x2c
     mov r10, r0
@@ -115,7 +115,7 @@ func_0204e628: ; 0x0204e628
     mov r0, #0x13
     mov r2, r5
     mov r3, r9
-    bl func_0204e2ac
+    bl PresentationBackedActor_Spawn
     bl genrand_int32
     mov r1, #0x3000
     bl func_020bf1f8
@@ -133,5 +133,5 @@ func_0204e628: ; 0x0204e628
 .L_0204e734: .word 0x3010
 .L_0204e738: .word data_020c9670
 .L_0204e73c: .word gPresentationBackedActorRuntimeState
-.size func_0204e628, . - func_0204e628
+.size PresentationBackedActor_SpawnTripleVariant, . - PresentationBackedActor_SpawnTripleVariant
 
