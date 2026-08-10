@@ -2,7 +2,7 @@
 ; Matching fallback for the portable implementation in src/overlays/ov091/overlay091_recovery.c.
 .extern GameWork_SetFlag
 .extern data_021052fc
-.extern data_0210570c
+.extern gActorCategory1DescriptorTable
 .extern data_ov091_02218cd0
 .extern VecFx32Object_Destroy
 .extern ActorMotion_BindActor
@@ -123,5 +123,5 @@ func_ov091_022179a0:
 .L_02217b2c: .word data_ov091_02218cd0
 .L_02217b30: .word data_021052fc
 .L_02217b34: .word gGameWork
-.L_02217b38: .word data_0210570c
+.L_02217b38: .word gActorCategory1DescriptorTable
 .size func_ov091_022179a0, . - func_ov091_022179a0

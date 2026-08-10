@@ -11,8 +11,8 @@
 extern "C" {
 #endif
 extern void *data_021052fc;
-extern s32 data_0210570c;
-extern s32 data_02105710;
+extern s32 gActorCategory1DescriptorTable;
+extern s32 gActorCategory2DescriptorTable;
 extern u8 ActorBounds_GetWidth(const void *value);
 extern u8 ActorBounds_GetHeight(const void *value);
 extern void VecFx32_Subtract(void *destination, const void *source,
@@ -177,7 +177,7 @@ s32 func_0201939c(GamePhaseActorScriptVm *self)
     }
     case 4: {
         s32 selection = (*(u32 *)((u8 *)self->actor + 0x14) & 0x04000000)
-                            ? data_02105710 : data_0210570c;
+                            ? gActorCategory2DescriptorTable : gActorCategory1DescriptorTable;
         ActorCollection_SpawnDescriptorsBySelector(
             Actor_GetCollection(self->actor), (void *)selection, p6);
         break;

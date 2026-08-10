@@ -4,7 +4,8 @@
 extern u8 *data_021052fc;
 extern void *gGameWork;
 extern s32 data_020e1964[];
-extern void *data_0210570c[2];
+extern void *gActorCategory1DescriptorTable;
+extern void *gActorCategory2DescriptorTable;
 
 typedef struct ActorSpawnDescriptor {
     u8 bytes[0x64];
@@ -47,9 +48,10 @@ static void *addDescriptor(s32 category, ActorSpawnDescriptor *descriptor,
  * value one. Clear GameWork flag 0x10 in phase 0x29. Phase 0x5a disables the
  * shared transition record; otherwise, when singleton +0x2e80 is absent and
  * the flag is clear, derive transition coordinates from data_020e1964 or the
- * singleton and call Type7Actor_SpawnFromRecord when all raw gates pass. Store descriptors
- * in data_0210570c[0]. Category two creates its distinct bootstrap descriptor
- * and stores the input at slot one.
+ * singleton and call Type7Actor_SpawnFromRecord when all raw gates pass. Store
+ * descriptors in gActorCategory1DescriptorTable. Category two creates its
+ * distinct bootstrap descriptor and stores the input in
+ * gActorCategory2DescriptorTable.
  *
  * For every category, construct and add the common type-three descriptor with
  * post-init +0x52 equal to two. Then walk inputDescriptors in 0x64-byte records
@@ -121,13 +123,13 @@ void ActorDescriptorBatch_RegisterAndSpawn(void *unused0, void *unused1,
                 }
             }
         }
-        data_0210570c[0] = inputDescriptors;
+        gActorCategory1DescriptorTable = inputDescriptors;
     } else if (category == 2) {
         ActorSpawnDescriptor_Init(&descriptor, 3, 3, 0x138a, 0x1078, 0x138b,
                        2, 0x1d, 0, 0, 0, 0, 0, 0x04088008,
                        0, 0, 0, 0, 1, 0, 0, 0, 0);
         addDescriptor(2, &descriptor, 0);
-        data_0210570c[1] = inputDescriptors;
+        gActorCategory2DescriptorTable = inputDescriptors;
     }
 
     ActorSpawnDescriptor_Init(&descriptor, 3, 4, -1, -1, -1, 0, (u8)-100,

@@ -9267,8 +9267,8 @@ gActorAlternatingMotionCounter kind:bss addr:0x021056e0
 gActorInteractionResourceState kind:bss addr:0x021056e4
 data_021056f0 kind:bss addr:0x021056f0
 gActorFeedbackPresentations kind:bss addr:0x021056f4
-data_0210570c kind:bss addr:0x0210570c
-data_02105710 kind:bss addr:0x02105710
+gActorCategory1DescriptorTable kind:bss addr:0x0210570c
+gActorCategory2DescriptorTable kind:bss addr:0x02105710
 gActorRegisteredSubclassCounters kind:bss addr:0x02105714
 gActorRegisteredSubclassRegistry kind:bss addr:0x02105718
 gActorExtendedLinkSourceCount kind:bss addr:0x02105728

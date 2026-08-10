@@ -1,8 +1,8 @@
 ; Matching retail form; see src/game/game_phase_script_vm_actor_effect_dispatch_opcode.c.
 .text
 .extern data_021052fc
-.extern data_0210570c
-.extern data_02105710
+.extern gActorCategory1DescriptorTable
+.extern gActorCategory2DescriptorTable
 .extern VecFx32Object_InitComponents
 .extern VecFx32Object_InitCopy
 .extern VecFx32Object_Destroy
@@ -362,6 +362,6 @@ L_02019878:
     add sp, sp, #0x150
     ldmia sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, pc}
 L_02019884: .word data_021052fc
-L_02019888: .word data_02105710
-L_0201988c: .word data_0210570c
+L_02019888: .word gActorCategory2DescriptorTable
+L_0201988c: .word gActorCategory1DescriptorTable
 .size func_0201939c, . - func_0201939c

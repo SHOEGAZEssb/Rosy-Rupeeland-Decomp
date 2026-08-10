@@ -3,7 +3,7 @@
 .extern GameWork_SetFlag
 .extern Heap_Free
 .extern data_021052fc
-.extern data_0210570c
+.extern gActorCategory1DescriptorTable
 .extern data_ov091_02218cd0
 .extern VecFx32Object_Destroy
 .extern ActorMotion_BindActor
@@ -126,5 +126,5 @@ func_ov091_02217b3c:
 .L_02217cd0: .word data_ov091_02218cd0
 .L_02217cd4: .word data_021052fc
 .L_02217cd8: .word gGameWork
-.L_02217cdc: .word data_0210570c
+.L_02217cdc: .word gActorCategory1DescriptorTable
 .size func_ov091_02217b3c, . - func_ov091_02217b3c

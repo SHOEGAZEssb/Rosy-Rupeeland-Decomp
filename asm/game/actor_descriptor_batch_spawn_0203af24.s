@@ -4,7 +4,7 @@
 .extern GameWork_TestFlag
 .extern data_020e1964
 .extern data_021052fc
-.extern data_0210570c
+.extern gActorCategory1DescriptorTable
 .extern GamePhaseRuntime_GetActorCollection
 .extern func_02028508
 .extern ActorCollection_SpawnActorFromDescriptor
@@ -303,7 +303,7 @@ ActorDescriptorBatch_RegisterAndSpawn: ; 0x0203af24
 .L_0203b370: .word data_021052fc
 .L_0203b374: .word gGameWork
 .L_0203b378: .word data_020e1964
-.L_0203b37c: .word data_0210570c
+.L_0203b37c: .word gActorCategory1DescriptorTable
 .L_0203b380: .word 0x1078
 .L_0203b384: .word 0x138b
 .L_0203b388: .word 0x4088008
