@@ -5,16 +5,16 @@
 .extern ActorCollection_GetSpriteOwner
 .extern func_02073fc4
 .extern func_02072b68
-.extern func_0204c8d4
+.extern Type7AuxiliaryPresentation_Reset
 .extern func_02073ef8
 .extern Heap_Free
-.extern func_0204cc14
+.extern Type7AuxiliaryPresentation_Activate
 .extern data_020e1ea4
 .extern data_020e1eb4
 .extern gHeapContext
 .text
-    .global func_0204c798
-func_0204c798: ; 0x0204c798
+    .global Type7AuxiliaryPresentation_Init
+Type7AuxiliaryPresentation_Init: ; 0x0204c798
     stmdb sp!, {r3, r4, r5, r6, lr}
     sub sp, sp, #0x4
     ldr r2, .L_0204c844
@@ -55,7 +55,7 @@ func_0204c798: ; 0x0204c798
     ldrh r1, [r2, #0x24]
     bic r1, r1, #0x2
     strh r1, [r2, #0x24]
-    bl func_0204c8d4
+    bl Type7AuxiliaryPresentation_Reset
     mov r0, r4
     add sp, sp, #0x4
     ldmia sp!, {r3, r4, r5, r6, pc}
@@ -63,10 +63,10 @@ func_0204c798: ; 0x0204c798
 .L_0204c848: .word data_020e1eb4
 .L_0204c84c: .word gHeapContext
 .L_0204c850: .word 0x1157
-.size func_0204c798, . - func_0204c798
+.size Type7AuxiliaryPresentation_Init, . - Type7AuxiliaryPresentation_Init
 
-    .global func_0204c854
-func_0204c854: ; 0x0204c854
+    .global Type7AuxiliaryPresentation_Destroy
+Type7AuxiliaryPresentation_Destroy: ; 0x0204c854
     stmdb sp!, {r4, lr}
     ldr r1, .L_0204c88c
     mov r4, r0
@@ -83,10 +83,10 @@ func_0204c854: ; 0x0204c854
     mov r0, r4
     ldmia sp!, {r4, pc}
 .L_0204c88c: .word data_020e1ea4
-.size func_0204c854, . - func_0204c854
+.size Type7AuxiliaryPresentation_Destroy, . - Type7AuxiliaryPresentation_Destroy
 
-    .global func_0204c890
-func_0204c890: ; 0x0204c890
+    .global Type7AuxiliaryPresentation_DestroyAndFree
+Type7AuxiliaryPresentation_DestroyAndFree: ; 0x0204c890
     stmdb sp!, {r4, lr}
     ldr r1, .L_0204c8d0
     mov r4, r0
@@ -105,10 +105,10 @@ func_0204c890: ; 0x0204c890
     mov r0, r4
     ldmia sp!, {r4, pc}
 .L_0204c8d0: .word data_020e1ea4
-.size func_0204c890, . - func_0204c890
+.size Type7AuxiliaryPresentation_DestroyAndFree, . - Type7AuxiliaryPresentation_DestroyAndFree
 
-    .global func_0204c8d4
-func_0204c8d4: ; 0x0204c8d4
+    .global Type7AuxiliaryPresentation_Reset
+Type7AuxiliaryPresentation_Reset: ; 0x0204c8d4
     mov r1, #0x0
     str r1, [r0, #0x18]
     str r1, [r0, #0x14]
@@ -127,13 +127,13 @@ func_0204c8d4: ; 0x0204c8d4
     strh r2, [r3, #0x24]
     strb r1, [r0, #0x11]
     bx lr
-.size func_0204c8d4, . - func_0204c8d4
+.size Type7AuxiliaryPresentation_Reset, . - Type7AuxiliaryPresentation_Reset
 
-    .global func_0204c91c
-func_0204c91c: ; 0x0204c91c
+    .global Type7AuxiliaryPresentation_EnterRaisedState
+Type7AuxiliaryPresentation_EnterRaisedState: ; 0x0204c91c
     stmdb sp!, {r4, lr}
     mov r4, r0
-    bl func_0204cc14
+    bl Type7AuxiliaryPresentation_Activate
     ldr r1, [r4, #0x28]
     mov r0, #0x3
     add r1, r1, #0x1e000
@@ -151,5 +151,5 @@ func_0204c91c: ; 0x0204c91c
     strh r1, [r2, #0x24]
     strb r0, [r4, #0x11]
     ldmia sp!, {r4, pc}
-.size func_0204c91c, . - func_0204c91c
+.size Type7AuxiliaryPresentation_EnterRaisedState, . - Type7AuxiliaryPresentation_EnterRaisedState
 

@@ -8,8 +8,8 @@
 .extern data_020e1e64
 .extern gSoundContext
 .text
-    .global func_0204c96c
-func_0204c96c: ; 0x0204c96c
+    .global Type7AuxiliaryPresentation_UpdateMotion
+Type7AuxiliaryPresentation_UpdateMotion: ; 0x0204c96c
     ldrb r1, [r0, #0x10]
     tst r1, #0x1
     beq .L_0204ca2c
@@ -65,10 +65,10 @@ func_0204c96c: ; 0x0204c96c
     str r1, [r0, #0x14]
     bx lr
 .L_0204ca3c: .word data_020c9670
-.size func_0204c96c, . - func_0204c96c
+.size Type7AuxiliaryPresentation_UpdateMotion, . - Type7AuxiliaryPresentation_UpdateMotion
 
-    .global func_0204ca40
-func_0204ca40: ; 0x0204ca40
+    .global Type7AuxiliaryPresentation_UpdateAnimationAndPosition
+Type7AuxiliaryPresentation_UpdateAnimationAndPosition: ; 0x0204ca40
     stmdb sp!, {r3, r4, r5, lr}
     mov r5, r0
     ldrb r0, [r5, #0x10]
@@ -191,10 +191,10 @@ func_0204ca40: ; 0x0204ca40
 .L_0204cc08: .word data_020e1e60
 .L_0204cc0c: .word data_020e1e62
 .L_0204cc10: .word data_020e1e64
-.size func_0204ca40, . - func_0204ca40
+.size Type7AuxiliaryPresentation_UpdateAnimationAndPosition, . - Type7AuxiliaryPresentation_UpdateAnimationAndPosition
 
-    .global func_0204cc14
-func_0204cc14: ; 0x0204cc14
+    .global Type7AuxiliaryPresentation_Activate
+Type7AuxiliaryPresentation_Activate: ; 0x0204cc14
     ldrb r1, [r0, #0x10]
     tst r1, #0x4
     orreq r1, r1, #0x1
@@ -202,10 +202,10 @@ func_0204cc14: ; 0x0204cc14
     moveq r1, #0x0
     streqb r1, [r0, #0x12]
     bx lr
-.size func_0204cc14, . - func_0204cc14
+.size Type7AuxiliaryPresentation_Activate, . - Type7AuxiliaryPresentation_Activate
 
-    .global func_0204cc30
-func_0204cc30: ; 0x0204cc30
+    .global Type7AuxiliaryPresentation_BeginShutdown
+Type7AuxiliaryPresentation_BeginShutdown: ; 0x0204cc30
     stmdb sp!, {r4, lr}
     mov r4, r0
     ldrb r1, [r4, #0x10]
@@ -236,5 +236,5 @@ func_0204cc30: ; 0x0204cc30
     bl Sound_Play
     ldmia sp!, {r4, pc}
 .L_0204cca4: .word gSoundContext
-.size func_0204cc30, . - func_0204cc30
+.size Type7AuxiliaryPresentation_BeginShutdown, . - Type7AuxiliaryPresentation_BeginShutdown
 

@@ -26,8 +26,8 @@
 .extern ActorDerivedType1_UpdateAuxiliaryResourceMotion
 .extern ActorDerivedRuntime_UpdateFrame
 .extern Type7Actor_ClearTarget
-.extern func_0204c798
-.extern func_0204cc14
+.extern Type7AuxiliaryPresentation_Init
+.extern Type7AuxiliaryPresentation_Activate
 .extern func_0204ced8
 .extern func_0205940c
 .extern func_020ada8c
@@ -312,7 +312,7 @@ ActorDerivedType1_UpdateFrame: ; 0x02035538
     cmp r0, #0x0
     beq .L_0203593c
     mov r1, r5
-    bl func_0204c798
+    bl Type7AuxiliaryPresentation_Init
 .L_0203593c:
     ldr r1, .L_02035ba4
     str r0, [r5, #0x270]
@@ -320,7 +320,7 @@ ActorDerivedType1_UpdateFrame: ; 0x02035538
     ldr r1, .L_02035bb4
     bl GameWork_ClearFlag
     ldr r0, [r5, #0x270]
-    bl func_0204cc14
+    bl Type7AuxiliaryPresentation_Activate
     ldr r0, [r5, #0xd0]
     orr r0, r0, #0x8
     str r0, [r5, #0xd0]

@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/actor_derived_type1_contact_reset.c.
 .text
-.extern func_0204cc30
+.extern Type7AuxiliaryPresentation_BeginShutdown
 
     .global ActorDerivedType1_ResetContactState
     .type ActorDerivedType1_ResetContactState, @function
@@ -16,7 +16,7 @@ ActorDerivedType1_ResetContactState: ; 0x020387d8
     ldrb r1, [r0, #0x10]
     tst r1, #0x1
     beq .L_02038808
-    bl func_0204cc30
+    bl Type7AuxiliaryPresentation_BeginShutdown
 .L_02038808:
     ldr r1, [r4, #0xd0]
     add r0, r4, #0x200

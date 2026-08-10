@@ -9,7 +9,7 @@
 .extern func_020022dc
 .extern Actor_IsAtCachedTerrainHeight
 .extern ActorDerivedType1_TeardownActiveRecord
-.extern func_0204cc14
+.extern Type7AuxiliaryPresentation_Activate
 .extern func_ov059_0220fd20
 .extern gGameWork
 .extern gHeapContext
@@ -264,7 +264,7 @@ ActorDerivedType1_ClassifyState: ; 0x0203647c
     streqh r0, [r4, #0xd6]
     beq .L_020369d8
     ldr r0, [r4, #0x270]
-    bl func_0204cc14
+    bl Type7AuxiliaryPresentation_Activate
     ldr r0, .L_02036a80
     mov r1, #0x60
     ldr r0, [r0, #0x0]

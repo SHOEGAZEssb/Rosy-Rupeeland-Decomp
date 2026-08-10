@@ -9,8 +9,8 @@ extern "C" {
 #endif
 extern void func_0206c978(void *resource);
 extern void GameWork_ClearFlag(void *work, u32 flag);
-extern void func_0204c8d4(void *object);
-extern void func_0204c91c(void *object);
+extern void Type7AuxiliaryPresentation_Reset(void *object);
+extern void Type7AuxiliaryPresentation_EnterRaisedState(void *object);
 extern void Actor_RefreshTerrainHeight(void *actor);
 #ifdef __cplusplus
 }
@@ -31,7 +31,7 @@ static void releaseResource(u8 *actor)
 /*
  * Release auxiliary +0x26c, clear actor +0x10 bits 0x1f0000, enter state and
  * previous-state value one at +0xd6/+0xd8, and clear substates +0xda/+0xdc.
- * Call virtual +0x5c, notify optional object +0x270 through func_0204c8d4,
+ * Call virtual +0x5c, notify optional object +0x270 through Type7AuxiliaryPresentation_Reset,
  * zero motion +0x3c/+0x40/+0x44 and byte +0x26b, refresh terrain height, then
  * clear +0x230 bit 0x800000. Returns no value; resource, heap, GameWork,
  * virtual, and optional-object calls have observable engine state.
@@ -47,7 +47,7 @@ void ActorDerivedType1_ResetToBaseState(void *self)
     *(u16 *)(actor + 0xda) = 0;
     (*(void (**)(void *))(*(u8 **)actor + 0x5c))(actor);
     if (*(void **)(actor + 0x270) != 0)
-        func_0204c8d4(*(void **)(actor + 0x270));
+        Type7AuxiliaryPresentation_Reset(*(void **)(actor + 0x270));
     *(s32 *)(actor + 0x44) = 0;
     *(s32 *)(actor + 0x40) = 0;
     *(s32 *)(actor + 0x3c) = 0;
@@ -60,7 +60,7 @@ void ActorDerivedType1_ResetToBaseState(void *self)
  * Release auxiliary +0x26c, enter state/previous-state eight at +0xd6/+0xd8,
  * clear substates +0xda/+0xdc, and call virtual +0x5c. Set +0xd0 bits 0x18,
  * clear +0x230 bit 0x800000, notify optional object +0x270 through
- * func_0204c91c, and zero vectors +0x8c..+0x94 and +0x3c..+0x44. Returns no
+ * Type7AuxiliaryPresentation_EnterRaisedState, and zero vectors +0x8c..+0x94 and +0x3c..+0x44. Returns no
  * value and has the same resource/heap/GameWork/virtual effects as the base
  * reset plus the optional-object notification.
  */
@@ -76,7 +76,7 @@ void ActorDerivedType1_ResetToDisabledState(void *self)
     *(u32 *)(actor + 0xd0) |= 0x18;
     *(u32 *)(actor + 0x230) &= ~0x800000;
     if (*(void **)(actor + 0x270) != 0)
-        func_0204c91c(*(void **)(actor + 0x270));
+        Type7AuxiliaryPresentation_EnterRaisedState(*(void **)(actor + 0x270));
     *(s32 *)(actor + 0x94) = 0;
     *(s32 *)(actor + 0x90) = 0;
     *(s32 *)(actor + 0x8c) = 0;

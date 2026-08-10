@@ -8,7 +8,7 @@ extern "C" {
 #endif
 extern void *data_021052fc;
 extern void *func_02007f0c(void *runtime, s32 index);
-extern void func_0204cc30(void *object);
+extern void Type7AuxiliaryPresentation_BeginShutdown(void *object);
 extern s32 Actor_GetCachedTerrainHeight(void *actor);
 #ifdef __cplusplus
 }
@@ -50,13 +50,13 @@ s32 func_020168a0(GamePhaseActorScriptVm *self)
     return 0;
 }
 
-/* Pass runtime actor 0x2ea4's object at offset 0x270 to func_0204cc30 and return zero. */
+/* Pass runtime actor 0x2ea4's object at offset 0x270 to Type7AuxiliaryPresentation_BeginShutdown and return zero. */
 s32 func_020168a8(GamePhaseActorScriptVm *self)
 {
     u8 *runtime = (u8 *)data_021052fc;
     u8 *actor = *(u8 **)(runtime + 0x2ea4);
     (void)self;
-    func_0204cc30(*(void **)(actor + 0x270));
+    Type7AuxiliaryPresentation_BeginShutdown(*(void **)(actor + 0x270));
     return 0;
 }
 

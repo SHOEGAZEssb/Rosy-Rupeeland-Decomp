@@ -2,7 +2,7 @@
 .text
 .extern GameWork_ClearFlag
 .extern Heap_Free
-.extern func_0204c91c
+.extern Type7AuxiliaryPresentation_EnterRaisedState
 .extern func_0206c978
 .extern gGameWork
 
@@ -46,7 +46,7 @@ ActorDerivedType1_ResetToDisabledState: ; 0x02038b64
     ldr r0, [r4, #0x270]
     cmp r0, #0x0
     beq .L_02038bf4
-    bl func_0204c91c
+    bl Type7AuxiliaryPresentation_EnterRaisedState
 .L_02038bf4:
     mov r0, #0x0
     str r0, [r4, #0x94]

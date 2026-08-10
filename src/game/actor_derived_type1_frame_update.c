@@ -31,8 +31,8 @@ extern void func_02007f24(void *manager, s32 first, s32 second, s32 third,
 extern void ActorDerivedRuntime_UpdateFrame(void *actor);
 extern s32 func_02032370(void *actor, void *state, s32 step);
 extern s32 func_02032228(void *actor, s32 x, s32 y, s32 step);
-extern void *func_0204c798(void *storage, void *actor);
-extern void func_0204cc14(void *object);
+extern void *Type7AuxiliaryPresentation_Init(void *storage, void *actor);
+extern void Type7AuxiliaryPresentation_Activate(void *object);
 extern void ActorDerivedType1_ClassifyState(void *actor);
 extern s32 Actor_IsAtCachedTerrainHeight(void *actor);
 extern s32 func_02005070(void *state);
@@ -167,10 +167,10 @@ void ActorDerivedType1_UpdateFrame(void *self)
         *(void **)(actor + 0x270) == 0) {
         object = Heap_Alloc(0x2c, (const char *)data_020df494, 4,
                             &gHeapContext);
-        if (object != 0) object = func_0204c798(object, actor);
+        if (object != 0) object = Type7AuxiliaryPresentation_Init(object, actor);
         *(void **)(actor + 0x270) = object;
         GameWork_ClearFlag(gGameWork, 0x3f2);
-        func_0204cc14(object); /* Retail calls this even after allocation failure. */
+        Type7AuxiliaryPresentation_Activate(object); /* Retail calls this even after allocation failure. */
         *(u32 *)(actor + 0xd0) |= 8;
     }
 

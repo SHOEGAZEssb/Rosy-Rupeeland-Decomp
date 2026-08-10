@@ -40,8 +40,8 @@ extern void *func_02073fc4(void *context, u32 first, u32 second, u32 third,
                            u32 mode);
 extern void func_02072b68(void *presentation, u32 index);
 extern void func_02073ef8(void *presentation);
-extern void func_0204c8d4(Type7AuxiliaryPresentation *self);
-extern void func_0204cc14(Type7AuxiliaryPresentation *self);
+extern void Type7AuxiliaryPresentation_Reset(Type7AuxiliaryPresentation *self);
+extern void Type7AuxiliaryPresentation_Activate(Type7AuxiliaryPresentation *self);
 #ifdef __cplusplus
 }
 #endif
@@ -52,11 +52,11 @@ extern void func_0204cc14(Type7AuxiliaryPresentation *self);
  * 0x1157..0x1159, notify the owner, create presentation mode two from the
  * resource's three payload words, select presentation index zero, clear
  * halfwords +0x2c/+0x2e and presentation flag two, then reset local state via
- * func_0204c8d4. Return the destination. Heap, resource, owner, and presentation
+ * Type7AuxiliaryPresentation_Reset. Return the destination. Heap, resource, owner, and presentation
  * state may change; SDK-facing helpers are called but hardware is not accessed
  * directly. Retail code assumes resource allocation succeeds.
  */
-Type7AuxiliaryPresentation *func_0204c798(
+Type7AuxiliaryPresentation *Type7AuxiliaryPresentation_Init(
     Type7AuxiliaryPresentation *self, void *owner)
 {
     u32 *resource;
@@ -73,7 +73,7 @@ Type7AuxiliaryPresentation *func_0204c798(
     *(u16 *)((u8 *)self->presentation + 0x2c) = 0;
     *(u16 *)((u8 *)self->presentation + 0x2e) = 0;
     *(u16 *)((u8 *)self->presentation + 0x24) &= (u16)~2;
-    func_0204c8d4(self);
+    Type7AuxiliaryPresentation_Reset(self);
     return self;
 }
 
@@ -83,7 +83,7 @@ Type7AuxiliaryPresentation *func_0204c798(
  * +0x0c. Return self without freeing its storage. Owned presentation/resource
  * state changes; no direct hardware effects occur.
  */
-Type7AuxiliaryPresentation *func_0204c854(Type7AuxiliaryPresentation *self)
+Type7AuxiliaryPresentation *Type7AuxiliaryPresentation_Destroy(Type7AuxiliaryPresentation *self)
 {
     self->vtable = data_020e1ea4;
     func_02073ef8(self->presentation);
@@ -96,11 +96,11 @@ Type7AuxiliaryPresentation *func_0204c854(Type7AuxiliaryPresentation *self)
 
 /*
  * Input is an auxiliary presentation object. Perform the same owned-object
- * teardown as func_0204c854, then release self through Heap_Free. Return the
+ * teardown as Type7AuxiliaryPresentation_Destroy, then release self through Heap_Free. Return the
  * original address as in retail code. Heap and owned object state change;
  * there are no direct hardware effects.
  */
-Type7AuxiliaryPresentation *func_0204c890(Type7AuxiliaryPresentation *self)
+Type7AuxiliaryPresentation *Type7AuxiliaryPresentation_DestroyAndFree(Type7AuxiliaryPresentation *self)
 {
     self->vtable = data_020e1ea4;
     func_02073ef8(self->presentation);
@@ -118,7 +118,7 @@ Type7AuxiliaryPresentation *func_0204c890(Type7AuxiliaryPresentation *self)
  * set byte +0x11 to 0xff and set presentation +0x24 bit eight. No value is
  * returned. Only object/presentation state changes, without SDK/hardware calls.
  */
-void func_0204c8d4(Type7AuxiliaryPresentation *self)
+void Type7AuxiliaryPresentation_Reset(Type7AuxiliaryPresentation *self)
 {
     self->field18 = 0;
     self->field14 = 0;
@@ -135,15 +135,15 @@ void func_0204c8d4(Type7AuxiliaryPresentation *self)
 }
 
 /*
- * Input is an auxiliary presentation object. Let func_0204cc14 refresh its
+ * Input is an auxiliary presentation object. Let Type7AuxiliaryPresentation_Activate refresh its
  * base value, set +0x14/+0x18 to +0x28 plus 0x1e000, set bytes +0x12/+0x13 to
  * three, select presentation index 0x10, clear presentation +0x24 bit eight,
  * and set +0x11 to 0xff. No value is returned. Object/presentation state and
  * the helper called at entry may change; there are no direct hardware effects.
  */
-void func_0204c91c(Type7AuxiliaryPresentation *self)
+void Type7AuxiliaryPresentation_EnterRaisedState(Type7AuxiliaryPresentation *self)
 {
-    func_0204cc14(self);
+    Type7AuxiliaryPresentation_Activate(self);
     self->field18 = self->field28 + 0x1e000;
     self->field14 = self->field18;
     self->field13 = 3;

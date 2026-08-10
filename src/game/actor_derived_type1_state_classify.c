@@ -16,7 +16,7 @@ extern void *func_020022dc(void *value);
 extern void func_0200222c(void *value, s32 mode, u32 mask);
 extern s32 GameWork_TestFlag(void *work, u32 flag);
 extern void *func_ov059_0220fd20(void *storage, s32 variant, s32 value);
-extern void func_0204cc14(void *object);
+extern void Type7AuxiliaryPresentation_Activate(void *object);
 extern void Sound_Play(void *soundContext, u32 sound, u32 variant);
 #ifdef __cplusplus
 }
@@ -171,7 +171,7 @@ void ActorDerivedType1_ClassifyState(void *self)
             if ((*(u32 *)(actor + 0xd0) & 8) == 0) {
                 *(s16 *)(actor + 0xd6) = 1;
             } else {
-                func_0204cc14(*(void **)(actor + 0x270));
+                Type7AuxiliaryPresentation_Activate(*(void **)(actor + 0x270));
                 Sound_Play(gSoundContext, 0x60, 1);
                 *(s16 *)(actor + 0xd6) = 8;
                 *(s16 *)(actor + 0xda) = 1;

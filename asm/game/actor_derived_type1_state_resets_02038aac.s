@@ -3,7 +3,7 @@
 .extern GameWork_ClearFlag
 .extern Heap_Free
 .extern Actor_RefreshTerrainHeight
-.extern func_0204c8d4
+.extern Type7AuxiliaryPresentation_Reset
 .extern func_0206c978
 .extern gGameWork
 
@@ -44,7 +44,7 @@ ActorDerivedType1_ResetToBaseState: ; 0x02038aac
     ldr r0, [r4, #0x270]
     cmp r0, #0x0
     beq .L_02038b30
-    bl func_0204c8d4
+    bl Type7AuxiliaryPresentation_Reset
 .L_02038b30:
     mov r1, #0x0
     str r1, [r4, #0x44]

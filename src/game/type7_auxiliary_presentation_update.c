@@ -46,7 +46,7 @@ extern void Sound_Play(void *soundContext, s32 group, s32 index);
  * clear, zero +0x14/+0x18. No value is returned. Only object state and the
  * read-only lookup table are involved; there are no SDK or hardware effects.
  */
-void func_0204c96c(Type7AuxiliaryPresentation *self)
+void Type7AuxiliaryPresentation_UpdateMotion(Type7AuxiliaryPresentation *self)
 {
     if ((self->flags10 & 1) != 0) {
         self->targetHeight18 = self->baseHeight28 + 0x1e000;
@@ -77,7 +77,7 @@ void func_0204c96c(Type7AuxiliaryPresentation *self)
  * +0x2c/+0x2e/+0x28, then store direction at +0x11. Object and presentation
  * state change via func_02072b68; there are no direct hardware effects.
  */
-void func_0204ca40(Type7AuxiliaryPresentation *self, s32 direction)
+void Type7AuxiliaryPresentation_UpdateAnimationAndPosition(Type7AuxiliaryPresentation *self, s32 direction)
 {
     u16 presentationFlags;
     u8 *ownerPresentation = *(u8 **)(self->owner + 0x54);
@@ -125,7 +125,7 @@ void func_0204ca40(Type7AuxiliaryPresentation *self, s32 direction)
  * set active bit 0x01 and reset animation stage +0x12 to zero. No value is
  * returned; only local state changes, with no SDK or hardware effects.
  */
-void func_0204cc14(Type7AuxiliaryPresentation *self)
+void Type7AuxiliaryPresentation_Activate(Type7AuxiliaryPresentation *self)
 {
     if ((self->flags10 & 4) == 0) {
         self->flags10 |= 1;
@@ -140,7 +140,7 @@ void func_0204cc14(Type7AuxiliaryPresentation *self)
  * sound 0x1b through the global sound context. No value is returned. Object,
  * presentation, and sound state may change; hardware is not accessed directly.
  */
-void func_0204cc30(Type7AuxiliaryPresentation *self)
+void Type7AuxiliaryPresentation_BeginShutdown(Type7AuxiliaryPresentation *self)
 {
     s32 direction = self->direction11;
     self->flags10 = (self->flags10 & (u8)~1) | 4;

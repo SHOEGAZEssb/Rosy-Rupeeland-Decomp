@@ -18754,7 +18754,7 @@ build build/reports/type7_auxiliary_presentation_0204c798.json: objdiff build/de
   base_object = build/decomp/asm/game/type7_auxiliary_presentation_0204c798.o
 build build/reports/type7_auxiliary_presentation_0204c798.txt: match_report build/reports/type7_auxiliary_presentation_0204c798.json | tools/report_objdiff.py
   report_json = build/reports/type7_auxiliary_presentation_0204c798.json
-  report_args = --section .text --function func_0204c798 --function func_0204c854 --function func_0204c890 --function func_0204c8d4 --function func_0204c91c --require-exact
+  report_args = --section .text --function Type7AuxiliaryPresentation_Init --function Type7AuxiliaryPresentation_Destroy --function Type7AuxiliaryPresentation_DestroyAndFree --function Type7AuxiliaryPresentation_Reset --function Type7AuxiliaryPresentation_EnterRaisedState --require-exact
 build type7_auxiliary_presentation: phony build/decomp/src/game/type7_auxiliary_presentation.o build/decomp/asm/game/type7_auxiliary_presentation_0204c798.o build/reports/type7_auxiliary_presentation_0204c798.txt
 
 type7_auxiliary_presentation_update_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
@@ -18768,7 +18768,7 @@ build build/reports/type7_auxiliary_presentation_update_0204c96c.json: objdiff b
   base_object = build/decomp/asm/game/type7_auxiliary_presentation_update_0204c96c.o
 build build/reports/type7_auxiliary_presentation_update_0204c96c.txt: match_report build/reports/type7_auxiliary_presentation_update_0204c96c.json | tools/report_objdiff.py
   report_json = build/reports/type7_auxiliary_presentation_update_0204c96c.json
-  report_args = --section .text --function func_0204c96c --function func_0204ca40 --function func_0204cc14 --function func_0204cc30 --require-exact
+  report_args = --section .text --function Type7AuxiliaryPresentation_UpdateMotion --function Type7AuxiliaryPresentation_UpdateAnimationAndPosition --function Type7AuxiliaryPresentation_Activate --function Type7AuxiliaryPresentation_BeginShutdown --require-exact
 build type7_auxiliary_presentation_update: phony build/decomp/src/game/type7_auxiliary_presentation_update.o build/decomp/asm/game/type7_auxiliary_presentation_update_0204c96c.o build/reports/type7_auxiliary_presentation_update_0204c96c.txt
 
 type7_marker_presentation_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
