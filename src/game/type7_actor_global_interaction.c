@@ -29,7 +29,7 @@ extern s32 func_0204c74c(void);
  * actor interaction, and callback state may change. No value is returned and
  * no direct SDK or hardware effects occur.
  */
-void func_0204a4f0(void *trigger)
+void Type7Actor_ProcessGlobalInteractionTrigger(void *trigger)
 {
     u8 *state;
     u8 *actor;

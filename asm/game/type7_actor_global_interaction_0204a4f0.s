@@ -5,9 +5,9 @@
 .extern func_0204aff4
 .extern func_0204c74c
 .text
-    .global func_0204a4f0
-.type func_0204a4f0, @function
-func_0204a4f0: ; 0x0204a4f0
+    .global Type7Actor_ProcessGlobalInteractionTrigger
+.type Type7Actor_ProcessGlobalInteractionTrigger, @function
+Type7Actor_ProcessGlobalInteractionTrigger: ; 0x0204a4f0
     stmdb sp!, {r3, r4, r5, lr}
     mov r4, r0
     bl func_0204c74c
@@ -37,5 +37,5 @@ func_0204a4f0: ; 0x0204a4f0
     bl Type7Actor_HandleObjectInteraction
     ldmia sp!, {r3, r4, r5, pc}
 .L_0204a560: .word data_021052fc
-.size func_0204a4f0, . - func_0204a4f0
+.size Type7Actor_ProcessGlobalInteractionTrigger, . - Type7Actor_ProcessGlobalInteractionTrigger
 
