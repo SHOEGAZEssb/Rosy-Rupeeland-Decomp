@@ -11,8 +11,8 @@
 .extern AnimationResource_Init
 .extern GraphicsSpriteState_SetDepthOrderedWorldPosition
 .extern GraphicsSpriteState_Create
-.extern func_0200637c
-.extern func_020064b8
+.extern VecFx32Triple_Destroy
+.extern VecFx32Bezier_Evaluate3D
 .extern func_02006918
 .extern func_02008378
 .extern func_0201e250
@@ -48,7 +48,7 @@ func_020236a0: ; 0x020236a0
     mov r2, r0
     ldr r1, [r4, #0x1c]
     add r0, sp, #0x4
-    bl func_020064b8
+    bl VecFx32Bezier_Evaluate3D
     ldrsh r0, [r4, #0x14]
     ldrsh r1, [r4, #0x16]
     mov r0, r0, lsl #0xf

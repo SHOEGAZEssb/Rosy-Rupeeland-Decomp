@@ -1,7 +1,7 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov075/overlay075_recovery.c.
 .extern data_020c9670
-.extern func_020064b8
+.extern VecFx32Bezier_Evaluate3D
 
 .global func_ov075_02213ec4
 func_ov075_02213ec4:
@@ -10,7 +10,7 @@ func_ov075_02213ec4:
     mov r1, r2
     mov r2, r5
     mov r4, r0
-    bl func_020064b8
+    bl VecFx32Bezier_Evaluate3D
     mov r0, r5, lsl #0x13
     mov r0, r0, lsr #0x10
     mov r1, r0, asr #0x4

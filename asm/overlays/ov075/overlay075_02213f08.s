@@ -4,8 +4,8 @@
 .extern func_0200500c
 .extern func_02005058
 .extern func_020050a4
-.extern func_0200634c
-.extern func_0200637c
+.extern VecFx32Triple_Set
+.extern VecFx32Triple_Destroy
 .extern Actor_GetCachedTerrainHeight
 .extern func_02072b68
 .extern func_020befec
@@ -79,7 +79,7 @@ func_ov075_02213f08:
     add r1, r10, #0x22c
     add r2, r10, #0x2b0
     add r3, sp, #0x50
-    bl func_0200634c
+    bl VecFx32Triple_Set
     add r0, r10, #0x200
     ldrh r0, [r0, #0x6a]
     mov r1, #0x78
@@ -237,7 +237,7 @@ func_ov075_02213f08:
     moveq r4, #0x1
     add r0, sp, #0x20
     movne r4, #0x0
-    bl func_0200637c
+    bl VecFx32Triple_Destroy
     add r0, sp, #0x50
     bl func_02005058
     mov r0, r4

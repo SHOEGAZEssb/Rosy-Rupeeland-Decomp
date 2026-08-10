@@ -4,7 +4,7 @@
 .extern data_ov065_02210be4
 .extern data_ov065_02210c00
 .extern GraphicsSpriteState_Create
-.extern func_02006328
+.extern VecFx32Triple_Init
 .extern gHeapContext
 
 .global func_ov065_0220fd20
@@ -36,7 +36,7 @@ func_ov065_0220fd20:
     bl Heap_Alloc
     cmp r0, #0x0
     beq .L_0220fd90
-    bl func_02006328
+    bl VecFx32Triple_Init
 .L_0220fd90:
     str r0, [r4, #0x10]
     mov r0, r4

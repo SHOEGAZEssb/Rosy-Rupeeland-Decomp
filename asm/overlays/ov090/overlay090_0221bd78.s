@@ -2,7 +2,7 @@
 ; Matching fallback for the portable implementation in src/overlays/ov090/overlay090_recovery.c.
 .extern data_ov090_0221cc78
 .extern func_02003e38
-.extern func_0200637c
+.extern VecFx32Triple_Destroy
 
 .global func_ov090_0221bd78
 func_ov090_0221bd78:
@@ -29,7 +29,7 @@ func_ov090_0221bd78:
     ldr r0, [r5, #0x4]
     bl func_02003e38
     add r0, r5, #0x18
-    bl func_0200637c
+    bl VecFx32Triple_Destroy
     mov r0, r5
     ldmia sp!, {r3, r4, r5, pc}
 .L_0221bdd4: .word data_ov090_0221cc78

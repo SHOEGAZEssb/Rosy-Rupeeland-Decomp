@@ -5,9 +5,9 @@
 .extern func_02005030
 .extern func_02005058
 .extern func_020050a4
-.extern func_0200634c
-.extern func_0200637c
-.extern func_020064b8
+.extern VecFx32Triple_Set
+.extern VecFx32Triple_Destroy
+.extern VecFx32Bezier_Evaluate3D
 .extern func_02032370
 .extern ActorExtendedType2_DispatchNearTargetState
 .extern ActorExtendedLinkSource_LinkPartner
@@ -86,7 +86,7 @@ func_ov075_02216928:
     add r1, r4, #0x2ac
     add r2, sp, #0x70
     add r3, sp, #0x60
-    bl func_0200634c
+    bl VecFx32Triple_Set
     add r0, r4, #0x200
     ldrsh r0, [r0, #0xa0]
     mov r1, #0x1e
@@ -95,14 +95,14 @@ func_ov075_02216928:
     mov r2, r0
     add r0, sp, #0x0
     mov r1, r5
-    bl func_020064b8
+    bl VecFx32Bezier_Evaluate3D
     add r1, sp, #0x0
     add r0, r4, #0x18
     bl func_020050a4
     add r0, sp, #0x0
     bl func_02005058
     mov r0, r5
-    bl func_0200637c
+    bl VecFx32Triple_Destroy
     add r0, sp, #0x60
     bl func_02005058
     add r0, sp, #0x70

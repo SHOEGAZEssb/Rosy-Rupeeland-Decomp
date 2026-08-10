@@ -5,7 +5,7 @@
 .extern data_021052fc
 .extern func_02005058
 .extern func_020050a4
-.extern func_020064b8
+.extern VecFx32Bezier_Evaluate3D
 .extern func_02008e10
 .extern func_02009d78
 .extern Actor_RefreshTerrainHeight
@@ -40,7 +40,7 @@ func_ov062_022109d4:
     mov r2, r0
     ldr r1, [r4, #0x28]
     add r0, sp, #0xc
-    bl func_020064b8
+    bl VecFx32Bezier_Evaluate3D
     ldr r0, [r4, #0x2c]
     ldr r1, [r4, #0x30]
     mov r0, r0, lsl #0xf

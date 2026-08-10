@@ -6,7 +6,7 @@
  */
 
 /* Construct three zero vectors in forward order and return the aggregate. */
-VecFx32Triple *func_02006328(VecFx32Triple *self)
+VecFx32Triple *VecFx32Triple_Init(VecFx32Triple *self)
 {
     func_02004fe0(&self->first);
     func_02004fe0(&self->second);
@@ -18,7 +18,7 @@ VecFx32Triple *func_02006328(VecFx32Triple *self)
  * Copy first, second, and third into the aggregate's corresponding vector
  * payloads. No allocation or SDK effect occurs and no value is returned.
  */
-void func_0200634c(VecFx32Triple *self, const VecFx32Object *first,
+void VecFx32Triple_Set(VecFx32Triple *self, const VecFx32Object *first,
                    const VecFx32Object *second, const VecFx32Object *third)
 {
     func_020050a4(&self->first, first);
@@ -27,7 +27,7 @@ void func_0200634c(VecFx32Triple *self, const VecFx32Object *first,
 }
 
 /* Destroy the three non-owning vectors in reverse order and return self. */
-VecFx32Triple *func_0200637c(VecFx32Triple *self)
+VecFx32Triple *VecFx32Triple_Destroy(VecFx32Triple *self)
 {
     func_02005058(&self->third);
     func_02005058(&self->second);

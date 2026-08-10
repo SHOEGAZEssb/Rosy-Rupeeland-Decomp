@@ -1,7 +1,7 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov084/overlay084_recovery.c.
 .extern func_02005058
-.extern func_0200634c
+.extern VecFx32Triple_Set
 .extern func_ov084_02212cbc
 .extern func_ov084_02212d28
 
@@ -36,7 +36,7 @@ func_ov084_02212c28:
     add r1, r4, #0x18
     add r3, sp, #0x20
     add r2, r2, #0x18
-    bl func_0200634c
+    bl VecFx32Triple_Set
     ldr r1, [r4, #0x14]
     add r0, sp, #0x20
     orr r1, r1, #0x6

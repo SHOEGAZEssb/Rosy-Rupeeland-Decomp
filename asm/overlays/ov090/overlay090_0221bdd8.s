@@ -3,7 +3,7 @@
 .extern Heap_Free
 .extern data_ov090_0221cc78
 .extern func_02003e38
-.extern func_0200637c
+.extern VecFx32Triple_Destroy
 
 .global func_ov090_0221bdd8
 func_ov090_0221bdd8:
@@ -30,7 +30,7 @@ func_ov090_0221bdd8:
     ldr r0, [r5, #0x4]
     bl func_02003e38
     add r0, r5, #0x18
-    bl func_0200637c
+    bl VecFx32Triple_Destroy
     mov r0, r5
     bl Heap_Free
     mov r0, r5

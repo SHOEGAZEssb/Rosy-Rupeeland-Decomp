@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/rising_sprite_motion_controller.c.
 .text
 .extern func_02005058
-.extern func_020064b8
+.extern VecFx32Bezier_Evaluate3D
 .extern func_020066a4
 .extern func_0200964c
 .extern func_020096f0
@@ -62,7 +62,7 @@ func_0202057c: ; 0x0202057c
     ldr r2, [r5, #0x5c]
     add r0, sp, #0x10
     add r1, r5, #0x1c
-    bl func_020064b8
+    bl VecFx32Bezier_Evaluate3D
     add r0, sp, #0x0
     add r1, sp, #0x10
     mov r2, r4

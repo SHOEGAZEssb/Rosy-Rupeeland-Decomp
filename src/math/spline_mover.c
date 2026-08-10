@@ -29,7 +29,7 @@ void *func_020068ac(void *self)
 SplineMover *func_020068b0(SplineMover *self)
 {
     self->vtable = data_020d4218;
-    func_02006328(&self->points);
+    VecFx32Triple_Init(&self->points);
     self->parameter = 0;
     self->parameterStep = 0;
     return self;
@@ -38,14 +38,14 @@ SplineMover *func_020068b0(SplineMover *self)
 /* Destroy the three non-owning control vectors and return self. */
 SplineMover *func_020068e0(SplineMover *self)
 {
-    func_0200637c(&self->points);
+    VecFx32Triple_Destroy(&self->points);
     return self;
 }
 
 /* Destroy control vectors, free the mover object, and return its old address. */
 SplineMover *func_020068f8(SplineMover *self)
 {
-    func_0200637c(&self->points);
+    VecFx32Triple_Destroy(&self->points);
     Heap_Free(self);
     return self;
 }
@@ -143,5 +143,5 @@ s32 func_02006a94(SplineMover *self)
 /* Evaluate the mover's x/y spline position into result; no state changes. */
 void func_02006acc(VecFx32Object *result, const SplineMover *self)
 {
-    func_020063a4(result, &self->points, self->parameter);
+    VecFx32Bezier_Evaluate2D(result, &self->points, self->parameter);
 }

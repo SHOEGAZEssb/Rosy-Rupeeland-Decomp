@@ -2,8 +2,8 @@
 .text
 .extern func_0200500c
 .extern func_02005058
-.extern func_02006328
-.extern func_0200637c
+.extern VecFx32Triple_Init
+.extern VecFx32Triple_Destroy
 .extern func_02006918
 .extern func_02006a2c
 .extern func_02008378
@@ -33,7 +33,7 @@ func_020203e4: ; 0x020203e4
     mov r1, #0x0
     add r0, r4, #0x1c
     str r1, [r4, #0x18]
-    bl func_02006328
+    bl VecFx32Triple_Init
     add r0, r4, #0x4c
     bl func_02020364
     mov r1, #0x0
@@ -58,7 +58,7 @@ func_020203e4: ; 0x020203e4
     add r1, sp, #0x20
     bl func_02006a2c
     add r0, sp, #0x20
-    bl func_0200637c
+    bl VecFx32Triple_Destroy
     add r0, sp, #0x50
     bl func_02005058
     add r0, sp, #0x60

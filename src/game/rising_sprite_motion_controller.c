@@ -36,8 +36,8 @@ extern "C" {
 #endif
 extern u8 gSystemState[];
 extern void func_02009044(void *state);
-extern void func_02006328(void *path);
-extern void func_0200637c(void *value);
+extern void VecFx32Triple_Init(void *path);
+extern void VecFx32Triple_Destroy(void *value);
 extern void func_0200500c(PresentationValue *value, s32 x, s32 y, s32 z);
 extern void func_02005058(PresentationValue *value);
 extern void func_02008378(PresentationValue *destination, s32 argument,
@@ -48,7 +48,7 @@ extern void func_02006a2c(void *path, void *source);
 extern void func_0200964c(void *value, s32 first, s32 second, s32 third);
 extern void func_0200919c(void *state, void *source);
 extern s32 func_020096f0(void *state, s32 time, s32 mode);
-extern void func_020064b8(void *destination, void *path, s32 offset);
+extern void VecFx32Bezier_Evaluate3D(void *destination, void *path, s32 offset);
 extern void func_020066a4(PresentationValue *destination, void *source,
                           s32 argument);
 extern void func_02056f00(PresentationValue *destination,
@@ -94,7 +94,7 @@ RisingSpriteMotionController *func_020203e4(
     self->state08 = 0;
     func_02009044(self->oscillation0c);
     self->frame18 = 0;
-    func_02006328(self->path1c);
+    VecFx32Triple_Init(self->path1c);
     func_02020364(&self->motion4c);
     self->offset5c = 0;
     self->systemTime60 = *(s32 *)(gSystemState + 0x64);
@@ -102,7 +102,7 @@ RisingSpriteMotionController *func_020203e4(
     func_02008378(&value50, pathArgument, &value60);
     func_02006918(pathValue20, pathArgument, &value50, pathArgument);
     func_02006a2c(self->path1c, pathValue20);
-    func_0200637c(pathValue20);
+    VecFx32Triple_Destroy(pathValue20);
     func_02005058(&value50);
     func_02005058(&value60);
     func_02020374(&motion, 0x100000, 0x2000, 0x78);
@@ -127,7 +127,7 @@ RisingSpriteMotionController *func_02020558(
     RisingSpriteMotionController *self)
 {
     func_02074038(self->spriteOwner04, self->sprite00);
-    func_0200637c(self->path1c);
+    VecFx32Triple_Destroy(self->path1c);
     return self;
 }
 
@@ -167,7 +167,7 @@ s32 func_0202057c(RisingSpriteMotionController *self, s32 argument)
         scale = 2;
     }
     func_0200964c(oscillationSample, -scale << 6, scale << 6, 0xc8);
-    func_020064b8(pathSample, self->path1c, self->offset5c);
+    VecFx32Bezier_Evaluate3D(pathSample, self->path1c, self->offset5c);
     func_020066a4(&sampled, pathSample, argument);
     func_02056f00(&transformed, &sampled);
     func_02005058(&sampled);

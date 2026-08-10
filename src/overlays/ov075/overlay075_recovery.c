@@ -91,7 +91,7 @@ void func_ov075_02213cc0(void);
 /* Processes the supplied ABI arguments and offset-based actor state, returns its encoded result, and invokes func_02005030, func_02005058, func_020050a4 and other shared helpers; exact higher-level semantics remain unconfirmed. */
 void func_ov075_02213cfc(void);
 
-/* Processes the supplied ABI arguments and offset-based actor state, returns its encoded result, and invokes func_020064b8; exact higher-level semantics remain unconfirmed. */
+/* Processes the supplied ABI arguments and offset-based actor state, returns its encoded result, and invokes VecFx32Bezier_Evaluate3D; exact higher-level semantics remain unconfirmed. */
 void func_ov075_02213ec4(void);
 
 /* Processes the supplied ABI arguments and offset-based actor state, returns its encoded result, and invokes func_02004fe0, func_0200500c, func_02005058 and other shared helpers; exact higher-level semantics remain unconfirmed. */

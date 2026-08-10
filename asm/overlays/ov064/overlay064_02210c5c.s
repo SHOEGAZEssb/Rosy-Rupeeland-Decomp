@@ -10,7 +10,7 @@
 .extern func_02005058
 .extern func_020050a4
 .extern GraphicsSpriteState_SetDepthOrderedWorldPosition
-.extern func_020064b8
+.extern VecFx32Bezier_Evaluate3D
 .extern func_02009d78
 .extern func_02010c00
 .extern func_0201ded4
@@ -205,7 +205,7 @@ func_ov064_02210c5c:
     mov r2, r0
     ldr r1, [r6, #0x84]
     add r0, sp, #0x28
-    bl func_020064b8
+    bl VecFx32Bezier_Evaluate3D
     add r1, sp, #0x28
     add r0, r4, #0x18
     bl func_020050a4

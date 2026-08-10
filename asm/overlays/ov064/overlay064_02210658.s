@@ -8,7 +8,7 @@
 .extern data_ov064_02211e98
 .extern OverlayManager_UnloadOverlay
 .extern OverlayManager_GetGlobal
-.extern func_0200637c
+.extern VecFx32Triple_Destroy
 .extern func_02007f24
 .extern func_020084b8
 .extern ActorDerivedType1_ResetRuntimeState
@@ -68,7 +68,7 @@ func_ov064_02210658:
     cmp r5, #0x0
     beq .L_02210708
     mov r0, r5
-    bl func_0200637c
+    bl VecFx32Triple_Destroy
     mov r0, r5
     bl Heap_Free
 .L_02210708:

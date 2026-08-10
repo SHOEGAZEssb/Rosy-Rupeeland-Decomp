@@ -7,7 +7,7 @@
 .extern OverlayManager_UnloadOverlay
 .extern OverlayManager_GetGlobal
 .extern func_020050a4
-.extern func_0200637c
+.extern VecFx32Triple_Destroy
 
 .global func_ov062_0221085c
 func_ov062_0221085c:
@@ -47,7 +47,7 @@ func_ov062_0221085c:
     cmp r5, #0x0
     beq .L_022108f4
     mov r0, r5
-    bl func_0200637c
+    bl VecFx32Triple_Destroy
     mov r0, r5
     bl Heap_Free
 .L_022108f4:

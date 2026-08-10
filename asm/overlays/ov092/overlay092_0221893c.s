@@ -8,8 +8,8 @@
 .extern func_0200500c
 .extern func_02005058
 .extern func_020050a4
-.extern func_0200637c
-.extern func_020064b8
+.extern VecFx32Triple_Destroy
+.extern VecFx32Bezier_Evaluate3D
 .extern func_02007f0c
 .extern func_0201fafc
 .extern ActorCollection_GetSpriteOwner
@@ -140,7 +140,7 @@ func_ov092_0221893c:
     add r0, sp, #0x24
     add r1, sp, #0x94
     mov r2, r8
-    bl func_020064b8
+    bl VecFx32Bezier_Evaluate3D
     add r0, r10, #0x18
     add r1, sp, #0x24
     bl func_020050a4
@@ -150,7 +150,7 @@ func_ov092_0221893c:
     add r0, sp, #0x24
     bl func_02005058
     add r0, sp, #0x94
-    bl func_0200637c
+    bl VecFx32Triple_Destroy
     add r9, r9, #0x1
     cmp r9, #0x5
     blt .L_02218a90
@@ -480,7 +480,7 @@ func_ov092_0221893c:
     add r0, sp, #0x14
     add r1, sp, #0x34
     mov r2, r8
-    bl func_020064b8
+    bl VecFx32Bezier_Evaluate3D
     add r0, r10, #0x18
     add r1, sp, #0x14
     bl func_020050a4
@@ -490,7 +490,7 @@ func_ov092_0221893c:
     add r0, sp, #0x14
     bl func_02005058
     add r0, sp, #0x34
-    bl func_0200637c
+    bl VecFx32Triple_Destroy
     add r9, r9, #0x1
     cmp r9, #0x5
     blt .L_02218f90

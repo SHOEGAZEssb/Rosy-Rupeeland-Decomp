@@ -2,7 +2,7 @@
 ; Matching fallback for the portable implementation in src/overlays/ov065/overlay065_recovery.c.
 .extern data_ov065_02210c00
 .extern func_02005058
-.extern func_0200634c
+.extern VecFx32Triple_Set
 .extern func_02072b68
 .extern func_020740c8
 .extern func_ov065_0220fe7c
@@ -35,7 +35,7 @@ func_ov065_0220fdac:
     mov r1, r7
     mov r2, r6
     add r3, sp, #0x24
-    bl func_0200634c
+    bl VecFx32Triple_Set
     mov r2, #0x0
     ldr r1, [sp, #0x4c]
     strh r2, [r5, #0x4]

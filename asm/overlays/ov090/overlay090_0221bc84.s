@@ -4,7 +4,7 @@
 .extern data_ov090_0221cc78
 .extern data_ov090_0221cc98
 .extern func_02003e20
-.extern func_02006328
+.extern VecFx32Triple_Init
 .extern func_020befec
 .extern func_ov090_0221b9a0
 .extern gHeapContext
@@ -30,7 +30,7 @@ func_ov090_0221bc84:
     mov r7, r3
     str r4, [r10, #0x14]
     ldr r5, [sp, #0x3c]
-    bl func_02006328
+    bl VecFx32Triple_Init
     ldrsh r0, [sp, #0x38]
     ldr r1, .L_0221bd70
     ldr r3, .L_0221bd74

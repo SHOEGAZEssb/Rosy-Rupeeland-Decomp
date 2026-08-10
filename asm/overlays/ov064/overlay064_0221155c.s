@@ -9,8 +9,8 @@
 .extern func_0200500c
 .extern func_02005058
 .extern func_020050a4
-.extern func_0200637c
-.extern func_020064b8
+.extern VecFx32Triple_Destroy
+.extern VecFx32Bezier_Evaluate3D
 .extern func_02058ce0
 .extern func_02059604
 .extern func_02072b68
@@ -107,7 +107,7 @@ func_ov064_0221155c:
     add r0, sp, #0xa0
     add r1, sp, #0xb0
     mov r2, r4
-    bl func_020064b8
+    bl VecFx32Bezier_Evaluate3D
     ldr r0, [sp, #0xa8]
     ldr r1, [r5, #0x68]
     mov r2, r0, asr #0xc
@@ -193,7 +193,7 @@ func_ov064_0221155c:
     mov r2, r4
     add r0, sp, #0x10
     add r1, sp, #0x70
-    bl func_020064b8
+    bl VecFx32Bezier_Evaluate3D
     add r0, sp, #0xa0
     add r1, sp, #0x10
     bl func_020050a4
@@ -207,11 +207,11 @@ func_ov064_0221155c:
     str r1, [r2, #0x18]
     add r0, sp, #0x70
     str r3, [r2, #0x1c]
-    bl func_0200637c
+    bl VecFx32Triple_Destroy
     add r0, sp, #0xa0
     bl func_02005058
     add r0, sp, #0xb0
-    bl func_0200637c
+    bl VecFx32Triple_Destroy
     add r0, sp, #0xe0
     bl func_02005058
     add r0, sp, #0xf0

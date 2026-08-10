@@ -10018,7 +10018,7 @@ build build/reports/vec_fx32_triple.json: objdiff build/decomp/delinks/src/math/
 
 build build/reports/vec_fx32_triple.txt: match_report build/reports/vec_fx32_triple.json | tools/report_objdiff.py
   report_json = build/reports/vec_fx32_triple.json
-  report_args = --section .text --function func_02006328 --function func_0200634c --function func_0200637c --require-exact
+  report_args = --section .text --function VecFx32Triple_Init --function VecFx32Triple_Set --function VecFx32Triple_Destroy --require-exact
 
 build build/reports/vec_fx32_bezier.json: objdiff build/decomp/delinks/asm/math/vec_fx32_bezier.o | build/decomp/asm/math/vec_fx32_bezier.o
   target_object = build/decomp/delinks/asm/math/vec_fx32_bezier.o
@@ -10026,7 +10026,7 @@ build build/reports/vec_fx32_bezier.json: objdiff build/decomp/delinks/asm/math/
 
 build build/reports/vec_fx32_bezier.txt: match_report build/reports/vec_fx32_bezier.json | tools/report_objdiff.py
   report_json = build/reports/vec_fx32_bezier.json
-  report_args = --section .text --function func_020063a4 --function func_020064b8 --require-exact
+  report_args = --section .text --function VecFx32Bezier_Evaluate2D --function VecFx32Bezier_Evaluate3D --require-exact
 
 build build/reports/vec_fx32_stepper.json: objdiff build/decomp/delinks/src/math/vec_fx32_stepper.o | build/decomp/src/math/vec_fx32_stepper.o
   target_object = build/decomp/delinks/src/math/vec_fx32_stepper.o

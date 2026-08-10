@@ -16,13 +16,13 @@ typedef char VecFx32TripleSizeCheck[
 extern "C" {
 #endif
 
-VecFx32Triple *func_02006328(VecFx32Triple *self);
-void func_0200634c(VecFx32Triple *self, const VecFx32Object *first,
+VecFx32Triple *VecFx32Triple_Init(VecFx32Triple *self);
+void VecFx32Triple_Set(VecFx32Triple *self, const VecFx32Object *first,
                    const VecFx32Object *second, const VecFx32Object *third);
-VecFx32Triple *func_0200637c(VecFx32Triple *self);
-void func_020063a4(VecFx32Object *result, const VecFx32Triple *points,
+VecFx32Triple *VecFx32Triple_Destroy(VecFx32Triple *self);
+void VecFx32Bezier_Evaluate2D(VecFx32Object *result, const VecFx32Triple *points,
                    fx32 t);
-void func_020064b8(VecFx32Object *result, const VecFx32Triple *points,
+void VecFx32Bezier_Evaluate3D(VecFx32Object *result, const VecFx32Triple *points,
                    fx32 t);
 
 #ifdef __cplusplus

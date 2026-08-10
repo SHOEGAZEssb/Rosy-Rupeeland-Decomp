@@ -2,9 +2,9 @@
 .extern func_02004fe0
 
 /* Matching evaluators; see vec_fx32_bezier.c for the portable formulas. */
-.global func_020063a4
-.type func_020063a4, @function
-func_020063a4:
+.global VecFx32Bezier_Evaluate2D
+.type VecFx32Bezier_Evaluate2D, @function
+VecFx32Bezier_Evaluate2D:
     stmdb sp!, {r3, r4, r5, r6, r7, lr}
     mov r6, r2
     mov r5, r0
@@ -74,11 +74,11 @@ func_020063a4:
     add r0, r3, r1
     str r0, [r5, #8]
     ldmia sp!, {r3, r4, r5, r6, r7, pc}
-    .size func_020063a4, .-func_020063a4
+    .size VecFx32Bezier_Evaluate2D, .-VecFx32Bezier_Evaluate2D
 
-.global func_020064b8
-.type func_020064b8, @function
-func_020064b8:
+.global VecFx32Bezier_Evaluate3D
+.type VecFx32Bezier_Evaluate3D, @function
+VecFx32Bezier_Evaluate3D:
     stmdb sp!, {r4, r5, r6, r7, r8, lr}
     mov r6, r2
     mov r5, r0
@@ -178,4 +178,4 @@ func_020064b8:
     add r0, r7, r1
     str r0, [r5, #0xc]
     ldmia sp!, {r4, r5, r6, r7, r8, pc}
-    .size func_020064b8, .-func_020064b8
+    .size VecFx32Bezier_Evaluate3D, .-VecFx32Bezier_Evaluate3D

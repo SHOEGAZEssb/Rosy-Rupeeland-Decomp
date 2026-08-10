@@ -20,7 +20,7 @@ extern const s16 data_020c9670[];extern u8 data_02105610;extern void *gSoundCont
 extern void *func_0201e250(void *);extern void *func_0201e28c(void *);
 extern void *AnimationResource_Init(void *,s32,s32,s32);extern u8 *GraphicsSpriteState_Create(void *,void *,s32,s32,s32,s32,s32);
 extern void GraphicsSpriteState_SetDepthOrderedWorldPosition(void *,s32,s32,s32,s32);extern void func_02004fe0(void *);
-extern void func_02005058(void *);extern void func_0200637c(void *);extern void func_020064b8(void *,void *,s32);
+extern void func_02005058(void *);extern void VecFx32Triple_Destroy(void *);extern void VecFx32Bezier_Evaluate3D(void *,void *,s32);
 extern void func_02006918(void *,const void *,const void *,const void *);extern void func_02008378(void *,const void *,const void *);
 extern void func_020233c8(void *,const void *,s32);extern s32 func_020befec(s32,s32);
 extern void func_02074038(void *,void *);extern void func_020740c8(void *,s32,s32,s32,s32);
@@ -59,7 +59,7 @@ ArcingSpriteEffectPresentation *func_02023434(
 static ArcingSpriteEffectPresentation *teardown_arc(ArcingSpriteEffectPresentation *self)
 {
     self->vtable=(void **)data_020d6740;func_02074038(*(void **)self->sprite10,self->sprite10);
-    if(self->path1c){func_0200637c(self->path1c);Heap_Free(self->path1c);}
+    if(self->path1c){VecFx32Triple_Destroy(self->path1c);Heap_Free(self->path1c);}
     if(self->firstDescriptor08)((void (*)(void *))(*(void ***)self->firstDescriptor08)[1])(self->firstDescriptor08);
     if(self->secondDescriptor0c)((void (*)(void *))(*(void ***)self->secondDescriptor0c)[1])(self->secondDescriptor0c);
     func_0201e28c(self);return self;
@@ -88,7 +88,7 @@ s32 func_020236a0(ArcingSpriteEffectPresentation *self)
     switch(self->state18){
     case 0:
         progress=func_020befec(self->frame14<<12,self->duration16);
-        func_020064b8(&value,self->path1c,progress);
+        VecFx32Bezier_Evaluate3D(&value,self->path1c,progress);
         index=(func_020befec(self->frame14<<15,self->duration16)&0xffff)>>4;
         value.z0c+=self->amplitude1a*data_020c9670[index];
         GraphicsSpriteState_SetDepthOrderedWorldPosition(self->sprite10,value.x04,value.y08,value.z0c,8);

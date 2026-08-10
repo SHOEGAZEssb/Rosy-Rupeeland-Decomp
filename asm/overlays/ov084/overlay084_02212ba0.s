@@ -2,7 +2,7 @@
 ; Matching fallback for the portable implementation in src/overlays/ov084/overlay084_recovery.c.
 .extern Heap_Free
 .extern data_ov084_022141c8
-.extern func_0200637c
+.extern VecFx32Triple_Destroy
 .extern ActorExtendedType2_Destroy
 
 .global func_ov084_02212ba0
@@ -15,7 +15,7 @@ func_ov084_02212ba0:
     cmp r4, #0x0
     beq .L_02212bcc
     mov r0, r4
-    bl func_0200637c
+    bl VecFx32Triple_Destroy
     mov r0, r4
     bl Heap_Free
 .L_02212bcc:

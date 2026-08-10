@@ -14,7 +14,7 @@
  * leaves z at zero. Inputs and output use 20.12 fixed point, each product is
  * rounded independently, no external state changes, and no value is returned.
  */
-void func_020063a4(VecFx32Object *result, const VecFx32Triple *points,
+void VecFx32Bezier_Evaluate2D(VecFx32Object *result, const VecFx32Triple *points,
                    fx32 t)
 {
     fx32 inverse = FX32_ONE - t;
@@ -39,7 +39,7 @@ void func_020063a4(VecFx32Object *result, const VecFx32Triple *points,
  * Construct result and evaluate x/y/z with the same independently rounded
  * quadratic weights. Only result changes and no value is returned.
  */
-void func_020064b8(VecFx32Object *result, const VecFx32Triple *points,
+void VecFx32Bezier_Evaluate3D(VecFx32Object *result, const VecFx32Triple *points,
                    fx32 t)
 {
     fx32 inverse = FX32_ONE - t;

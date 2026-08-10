@@ -3,7 +3,7 @@
 .extern Heap_Alloc
 .extern data_ov084_022141c8
 .extern data_ov084_0221439c
-.extern func_02006328
+.extern VecFx32Triple_Init
 .extern ActorExtendedType2_Init
 .extern ActorExtendedType2_GetDescriptorValue2A
 .extern gHeapContext
@@ -32,7 +32,7 @@ func_ov084_02212ae0:
     bl Heap_Alloc
     cmp r0, #0x0
     beq .L_02212b3c
-    bl func_02006328
+    bl VecFx32Triple_Init
 .L_02212b3c:
     str r0, [r4, #0x2a4]
     mov r0, r4

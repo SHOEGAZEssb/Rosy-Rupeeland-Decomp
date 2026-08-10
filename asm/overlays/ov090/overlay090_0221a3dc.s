@@ -1,7 +1,7 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov090/overlay090_recovery.c.
 .extern func_02004fe0
-.extern func_0200634c
+.extern VecFx32Triple_Set
 
 .global func_ov090_0221a3dc
 func_ov090_0221a3dc:
@@ -19,7 +19,7 @@ func_ov090_0221a3dc:
     mov r2, r5
     mov r3, r4
     mov r0, r7
-    bl func_0200634c
+    bl VecFx32Triple_Set
     mov r0, r7
     ldmia sp!, {r3, r4, r5, r6, r7, pc}
 .size func_ov090_0221a3dc, . - func_ov090_0221a3dc
