@@ -35,7 +35,7 @@ extern s32 func_020ae024(s32 y, s32 x);
  * +0x30 predicate clear +0x8c/+0x90/+0x94. The temporary displacement is
  * finalized. Actor, transform, virtual, and world-query state may change.
  */
-void func_020441cc(void *self, const void *targetTransform)
+void ActorExtendedTransform_UpdateTargetMotion(void *self, const void *targetTransform)
 {
     u8 *actor = (u8 *)self;
     u8 displacement[0x10];

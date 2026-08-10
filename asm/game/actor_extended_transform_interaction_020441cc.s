@@ -9,9 +9,9 @@
 .extern func_02007f0c
 .extern func_0204cfa4
 .extern func_020ae024
-.global func_020441cc
-.type func_020441cc, @function
-func_020441cc: ; 0x020441cc
+.global ActorExtendedTransform_UpdateTargetMotion
+.type ActorExtendedTransform_UpdateTargetMotion, @function
+ActorExtendedTransform_UpdateTargetMotion: ; 0x020441cc
     stmdb sp!, {r4, r5, r6, lr}
     sub sp, sp, #0x48
     ldr r2, [r0, #0x0]
@@ -157,4 +157,4 @@ func_020441cc: ; 0x020441cc
 .L_020443e4: .word data_021052fc
 .L_020443e8: .word data_020e0f28
 .L_020443ec: .word data_020c9670
-.size func_020441cc, . - func_020441cc
+.size ActorExtendedTransform_UpdateTargetMotion, . - ActorExtendedTransform_UpdateTargetMotion
