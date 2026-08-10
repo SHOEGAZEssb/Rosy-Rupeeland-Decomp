@@ -26,7 +26,7 @@ typedef struct DescriptorActorCollection {
     s32 slotLimit_2e74;
     u32 flags_2e78;
     u8 field_2e7c[0x0c];
-    s32 field_2e88;
+    s32 actorScale_2e88;
 } DescriptorActorCollection;
 
 #ifdef __cplusplus
@@ -34,7 +34,7 @@ extern "C" {
 #endif
 extern void *ActorCollection_SpawnActorFromDescriptor(
     DescriptorActorCollection *, CollectionDescriptor *);
-extern void func_02033f18(DescriptorActor *, s32);
+extern void Actor_SetScale(DescriptorActor *, s32);
 #ifdef __cplusplus
 }
 #endif
@@ -81,18 +81,19 @@ DescriptorActor *ActorCollection_FindActorByDescriptorValue(DescriptorActorColle
 }
 
 /*
- * Store value at collection offset 0x2e88 and pass it through func_02033f18 to
- * every nonnull actor slot. Returns no value; the helper may mutate actors.
+ * Store the Q12 actor scale at collection offset 0x2e88 and apply it to every
+ * nonnull actor slot. Returns no value and updates each actor's presentation
+ * scale through Actor_SetScale.
  */
-void func_02030b18(DescriptorActorCollection *self, s32 value)
+void ActorCollection_SetActorScale(DescriptorActorCollection *self, s32 scale)
 {
     s32 i;
 
-    self->field_2e88 = value;
+    self->actorScale_2e88 = scale;
     for (i = 0; i < self->slotLimit_2e74; i++) {
         DescriptorActor *actor = self->actors_0000[i];
         if (actor)
-            func_02033f18(actor, self->field_2e88);
+            Actor_SetScale(actor, self->actorScale_2e88);
     }
 }
 

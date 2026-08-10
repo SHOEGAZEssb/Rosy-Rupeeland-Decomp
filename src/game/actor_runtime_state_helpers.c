@@ -42,10 +42,10 @@ void Actor_RestoreSavedFlags(void *self)
     }
 }
 
-/* Store value at actor+0x1d0 and return no value. */
-void func_02033f18(void *self, s32 value)
+/* Store the actor's Q12 presentation scale at +0x1d0 and return no value. */
+void Actor_SetScale(void *self, s32 scale)
 {
-    *(s32 *)((u8 *)self + 0x1d0) = value;
+    *(s32 *)((u8 *)self + 0x1d0) = scale;
 }
 
 /* Store first/second at actor+0x1d4/+0x1d8 and return no value. */

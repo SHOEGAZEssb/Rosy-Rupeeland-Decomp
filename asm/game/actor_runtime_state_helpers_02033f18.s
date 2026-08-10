@@ -1,12 +1,12 @@
 ; Matching retail form; see src/game/actor_runtime_state_helpers.c.
 .text
 
-    .global func_02033f18
-    .type func_02033f18, @function
-func_02033f18: ; 0x02033f18
+    .global Actor_SetScale
+    .type Actor_SetScale, @function
+Actor_SetScale: ; 0x02033f18
     str r1, [r0, #0x1d0]
     bx lr
-    .size func_02033f18, . - func_02033f18
+    .size Actor_SetScale, . - Actor_SetScale
 
     .global func_02033f20
 

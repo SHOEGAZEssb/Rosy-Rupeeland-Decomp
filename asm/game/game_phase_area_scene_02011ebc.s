@@ -3,7 +3,7 @@
 .extern func_020062a0
 .extern ActorCollection_SetSpriteMode
 .extern ActorCollection_FindActorByTypeAndId
-.extern func_02030b18
+.extern ActorCollection_SetActorScale
 
     .global func_02011ebc
 func_02011ebc: ; 0x02011ebc
@@ -14,7 +14,7 @@ func_02011ebc: ; 0x02011ebc
     bl ActorCollection_SetSpriteMode
     add r0, r4, #0x8
     mov r1, #0x1000
-    bl func_02030b18
+    bl ActorCollection_SetActorScale
     add r0, r4, #0x2000
     ldr r1, [r0, #0xeac]
     add r0, r4, #0xeb0

@@ -1,10 +1,10 @@
 ; Matching retail form; see src/game/actor_collection_descriptor_helpers.c.
 .text
-.extern func_02033f18
+.extern Actor_SetScale
 
-    .global func_02030b18
-    .type func_02030b18, @function
-func_02030b18: ; 0x02030b18
+    .global ActorCollection_SetActorScale
+    .type ActorCollection_SetActorScale, @function
+ActorCollection_SetActorScale: ; 0x02030b18
     stmdb sp!, {r4, r5, r6, lr}
     mov r6, r0
     add r4, r6, #0x2000
@@ -16,7 +16,7 @@ func_02030b18: ; 0x02030b18
     cmp r0, #0x0
     beq .L_02030b44
     ldr r1, [r4, #0xe88]
-    bl func_02033f18
+    bl Actor_SetScale
 .L_02030b44:
     add r5, r5, #0x1
 .L_02030b48:
@@ -24,5 +24,5 @@ func_02030b18: ; 0x02030b18
     cmp r5, r0
     blt .L_02030b30
     ldmia sp!, {r4, r5, r6, pc}
-    .size func_02030b18, . - func_02030b18
+    .size ActorCollection_SetActorScale, . - ActorCollection_SetActorScale
 

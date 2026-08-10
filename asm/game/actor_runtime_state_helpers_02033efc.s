@@ -13,5 +13,5 @@ Actor_RestoreSavedFlags: ; 0x02033efc
     bx lr
     .size Actor_RestoreSavedFlags, . - Actor_RestoreSavedFlags
 
-    .global func_02033f18
+    .global Actor_SetScale
 

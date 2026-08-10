@@ -25,7 +25,7 @@ typedef struct ActorCollection {
     void *specialActor_2e7c;
     void *secondaryActor_2e80;
     s32 spriteMode_2e84;
-    s32 field_2e88;
+    s32 actorScale_2e88;
     u8 field_2e8c[4];
     s32 field_2e90[4];
 } ActorCollection;
@@ -58,9 +58,10 @@ void ActorPairMatrix_ClearAll(u8 *matrix)
  * Initialize both embedded owners, clear the triangular relationship matrix,
  * zero all actor/relation/auxiliary slots, set the first usable actor slot and
  * slot limit to two, preserve flags other than clearing bit zero and setting
- * bit one, clear special pointers, set field_2e88 to 0x1000, initialize four
- * trailing indices to -1, and return self. Embedded owner calls may establish
- * allocation or SDK state not yet semantically identified.
+ * bit one, clear special pointers, set the collection-wide actor scale to Q12
+ * unity (0x1000), initialize four trailing indices to -1, and return self.
+ * Embedded owner calls may establish allocation or SDK state not yet
+ * semantically identified.
  */
 ActorCollection *ActorCollection_Init(ActorCollection *self)
 {
@@ -73,7 +74,7 @@ ActorCollection *ActorCollection_Init(ActorCollection *self)
     ActorPairMatrix_ClearAll(self->relationshipMatrix_0e34);
     self->flags_2e78 |= 2;
     self->spriteMode_2e84 = 0;
-    self->field_2e88 = 0x1000;
+    self->actorScale_2e88 = 0x1000;
     for (i = 0; i < 128; i++) {
         self->actors_0000[i] = 0;
         for (j = 0; j < 5; j++)

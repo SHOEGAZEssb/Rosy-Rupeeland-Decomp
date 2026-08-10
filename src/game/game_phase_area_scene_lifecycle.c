@@ -12,7 +12,7 @@ extern const char data_020d5688[];
 extern void *data_021052fc;
 extern void ActorCollection_Init(void *renderer);
 extern void ActorCollection_SetSpriteMode(void *renderer, s32 value);
-extern void func_02030b18(void *renderer, s32 value);
+extern void ActorCollection_SetActorScale(void *renderer, s32 scale);
 extern void *ActorCollection_FindActorByTypeAndId(void *renderer, s32 first, s32 second);
 extern void ActorCollection_UnregisterAndDestroyAllActors(void *renderer);
 extern void ActorCollection_Destructor(void *renderer);
@@ -143,7 +143,7 @@ rendererConfigured:
 void func_02011ebc(GamePhaseAreaScene *self)
 {
     ActorCollection_SetSpriteMode(self->renderer_08, 2);
-    func_02030b18(self->renderer_08, 0x1000);
+    ActorCollection_SetActorScale(self->renderer_08, 0x1000);
     func_020062a0(self->state_2eb0, self->config_2eac->field20);
     self->config_2eac->callback28(0);
     self->field_2ebc = ActorCollection_FindActorByTypeAndId(self->renderer_08, 3, 3);
