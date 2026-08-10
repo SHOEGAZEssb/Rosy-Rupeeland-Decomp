@@ -5,7 +5,7 @@
 .extern func_02005030
 .extern func_02005058
 .extern func_02005b50
-.extern func_0203efac
+.extern ActorExtendedType2_RunRenderCallback
 
 .global func_ov076_02213e64
 func_ov076_02213e64:
@@ -16,7 +16,7 @@ func_ov076_02213e64:
     mov r6, r2
     ldr r3, [r3, #0x54]
     ldrb r4, [r3, #0x3a]
-    bl func_0203efac
+    bl ActorExtendedType2_RunRenderCallback
     add r1, r7, #0x200
     ldrh r3, [r1, #0xd0]
     ldr r2, .L_02214030

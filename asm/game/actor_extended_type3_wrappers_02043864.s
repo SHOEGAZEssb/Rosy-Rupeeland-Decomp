@@ -4,7 +4,7 @@
 .extern func_02005030
 .extern func_02005058
 .extern ActorExtendedType2_Destroy
-.extern func_0203f5c4
+.extern ActorExtendedType2_UpdateTargetMotion
 .extern func_020400a4
 .extern func_02040334
 .extern ActorExtendedType2_GetDescriptorValue2A
@@ -79,7 +79,7 @@ ActorExtendedType3_ApplyTransformAndDampAxis: ; 0x020438ec
     bl func_02005030
     add r1, sp, #0x0
     mov r0, r4
-    bl func_0203f5c4
+    bl ActorExtendedType2_UpdateTargetMotion
     add r0, r4, #0x200
     ldrsh r0, [r0, #0x98]
     cmp r0, #0x0

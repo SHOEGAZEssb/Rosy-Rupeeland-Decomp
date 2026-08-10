@@ -27,7 +27,7 @@ extern void func_02005058(void *vector);
  * the temporary vector. Returns no value; effect, actor, helper, and temporary
  * vector state may change.
  */
-void func_0203efac(void *context, void *self, s32 argument)
+void ActorExtendedType2_RunRenderCallback(void *context, void *self, s32 argument)
 {
     u8 *actor = (u8 *)self;
     s32 position[4];

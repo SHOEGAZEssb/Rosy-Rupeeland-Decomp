@@ -42,7 +42,7 @@ static s32 pairMatches(u32 first, u32 second)
  * zero/one of attachment +0x24; ordinary mode clears bit zero and sets bit one.
  * Returns no value; attachment resource, animation, and flags change.
  */
-void func_0203f0bc(void *self)
+void ActorExtendedType2_ApplyAttachmentState(void *self)
 {
     u8 *actor = (u8 *)self;
     s16 state = *(s16 *)(actor + 0xd6);

@@ -10,9 +10,9 @@
 .extern func_0204cfa4
 .extern func_020adae4
 .extern func_020ae024
-    .global func_0203f5c4
-    .type func_0203f5c4, @function
-func_0203f5c4: ; 0x0203f5c4
+    .global ActorExtendedType2_UpdateTargetMotion
+    .type ActorExtendedType2_UpdateTargetMotion, @function
+ActorExtendedType2_UpdateTargetMotion: ; 0x0203f5c4
     stmdb sp!, {r3, r4, r5, r6, r7, r8, r9, lr}
     sub sp, sp, #0x40
     mov r6, r0
@@ -186,5 +186,5 @@ func_0203f5c4: ; 0x0203f5c4
 .L_0203f84c: .word data_020e0f28
 .L_0203f850: .word data_020c9670
 .L_0203f854: .word 0x19a
-    .size func_0203f5c4, . - func_0203f5c4
+    .size ActorExtendedType2_UpdateTargetMotion, . - ActorExtendedType2_UpdateTargetMotion
 

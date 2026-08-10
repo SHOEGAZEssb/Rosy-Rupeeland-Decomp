@@ -22,7 +22,7 @@ extern void Actor_RefreshTerrainHeight(void *actor);
  * path/object and actor position-target state change. Retail assumes +0x26c is
  * valid on this path.
  */
-void func_0203f4a0(void *self)
+void ActorExtendedType2_AdvancePositionTarget(void *self)
 {
     u8 *actor = (u8 *)self;
     void *object;
@@ -44,7 +44,7 @@ void func_0203f4a0(void *self)
  * +0x18 to vector +0x28, and zero motion words +0x3c/+0x40/+0x44. Returns no
  * value; RNG, actor transform, and motion state change.
  */
-void func_0203f4f8(void *self)
+void ActorExtendedType2_RestoreRandomizedPosition(void *self)
 {
     u8 *actor = (u8 *)self;
     u16 flags;

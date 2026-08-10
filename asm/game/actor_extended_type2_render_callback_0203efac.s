@@ -6,9 +6,9 @@
 .extern func_0201e0ec
 .extern func_02031758
 .extern func_020a25c8
-    .global func_0203efac
-    .type func_0203efac, @function
-func_0203efac: ; 0x0203efac
+    .global ActorExtendedType2_RunRenderCallback
+    .type ActorExtendedType2_RunRenderCallback, @function
+ActorExtendedType2_RunRenderCallback: ; 0x0203efac
     stmdb sp!, {r3, r4, r5, r6, lr}
     sub sp, sp, #0x1c
     mov r5, r1
@@ -78,5 +78,5 @@ func_0203efac: ; 0x0203efac
     ldmia sp!, {r3, r4, r5, r6, pc}
 .L_0203f0b4: .word data_021052fc
 .L_0203f0b8: .word 0xb33
-    .size func_0203efac, . - func_0203efac
+    .size ActorExtendedType2_RunRenderCallback, . - ActorExtendedType2_RunRenderCallback
 

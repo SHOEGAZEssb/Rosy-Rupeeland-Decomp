@@ -15,7 +15,7 @@ extern s32 func_02040334(void *actor, void *record);
 extern s32 ActorExtendedType2_GetDescriptorValue2A(const void *actor);
 extern void func_02005030(void *temporary, const void *source);
 extern void func_02005058(void *temporary);
-extern void func_0203f5c4(void *actor, const void *transform);
+extern void ActorExtendedType2_UpdateTargetMotion(void *actor, const void *transform);
 #ifdef __cplusplus
 }
 #endif
@@ -65,9 +65,11 @@ s32 ActorExtendedType3_ForwardInteractionGateB(void *self, void *record)
 }
 
 /*
- * Copy sourceTransform into a temporary transform, pass it with actor to
- * func_0203f5c4, then inspect signed mode +0x298. Mode zero divides actor +0x40
- * by three; mode one divides +0x3c by three. Finalize the temporary transform.
+ * Copy sourceTransform into a temporary transform, then call
+ * ActorExtendedType2_UpdateTargetMotion with actor; the matching call leaves
+ * the otherwise-unused temporary pointer in r1. Next inspect signed mode
+ * +0x298. Mode zero divides actor +0x40 by three; mode one divides +0x3c by
+ * three. Finalize the temporary transform.
  * The routine has no meaningful return value and may change actor/motion state;
  * no direct hardware operation occurs.
  */
@@ -76,7 +78,7 @@ void ActorExtendedType3_ApplyTransformAndDampAxis(void *self, const void *source
     u8 *actor = (u8 *)self;
     u32 temporary[4];
     func_02005030(temporary, sourceTransform);
-    func_0203f5c4(actor, temporary);
+    ActorExtendedType2_UpdateTargetMotion(actor, temporary);
     if (*(s16 *)(actor + 0x298) == 0)
         *(s32 *)(actor + 0x40) /= 3;
     else if (*(s16 *)(actor + 0x298) == 1)

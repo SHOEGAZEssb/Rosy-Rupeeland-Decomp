@@ -16709,7 +16709,7 @@ build build/reports/actor_extended_type2_render_callback_0203efac.json: objdiff 
   base_object = build/decomp/asm/game/actor_extended_type2_render_callback_0203efac.o
 build build/reports/actor_extended_type2_render_callback_0203efac.txt: match_report build/reports/actor_extended_type2_render_callback_0203efac.json | tools/report_objdiff.py
   report_json = build/reports/actor_extended_type2_render_callback_0203efac.json
-  report_args = --section .text --function func_0203efac --require-exact
+  report_args = --section .text --function ActorExtendedType2_RunRenderCallback --require-exact
 build build/reports/actor_extended_type2_render_callback.txt: phony build/reports/actor_extended_type2_render_callback_0203efac.txt
 
 build actor_extended_type2_render_callback: phony build/decomp/src/game/actor_extended_type2_render_callback.o build/decomp/asm/game/actor_extended_type2_render_callback_0203efac.o build/reports/actor_extended_type2_render_callback.txt
@@ -16726,7 +16726,7 @@ build build/reports/actor_extended_type2_attachment_state_0203f0bc.json: objdiff
   base_object = build/decomp/asm/game/actor_extended_type2_attachment_state_0203f0bc.o
 build build/reports/actor_extended_type2_attachment_state_0203f0bc.txt: match_report build/reports/actor_extended_type2_attachment_state_0203f0bc.json | tools/report_objdiff.py
   report_json = build/reports/actor_extended_type2_attachment_state_0203f0bc.json
-  report_args = --section .text --function func_0203f0bc --require-exact
+  report_args = --section .text --function ActorExtendedType2_ApplyAttachmentState --require-exact
 build build/reports/actor_extended_type2_attachment_state.txt: phony build/reports/actor_extended_type2_attachment_state_0203f0bc.txt
 
 build actor_extended_type2_attachment_state: phony build/decomp/src/game/actor_extended_type2_attachment_state.o build/decomp/asm/game/actor_extended_type2_attachment_state_0203f0bc.o build/reports/actor_extended_type2_attachment_state.txt
@@ -16760,7 +16760,7 @@ build build/reports/actor_extended_type2_position_helpers_0203f4a0.json: objdiff
   base_object = build/decomp/asm/game/actor_extended_type2_position_helpers_0203f4a0.o
 build build/reports/actor_extended_type2_position_helpers_0203f4a0.txt: match_report build/reports/actor_extended_type2_position_helpers_0203f4a0.json | tools/report_objdiff.py
   report_json = build/reports/actor_extended_type2_position_helpers_0203f4a0.json
-  report_args = --section .text --function func_0203f4a0 --function func_0203f4f8 --require-exact
+  report_args = --section .text --function ActorExtendedType2_AdvancePositionTarget --function ActorExtendedType2_RestoreRandomizedPosition --require-exact
 build build/reports/actor_extended_type2_position_helpers.txt: phony build/reports/actor_extended_type2_position_helpers_0203f4a0.txt
 
 build actor_extended_type2_position_helpers: phony build/decomp/src/game/actor_extended_type2_position_helpers.o build/decomp/asm/game/actor_extended_type2_position_helpers_0203f4a0.o build/reports/actor_extended_type2_position_helpers.txt
@@ -16777,7 +16777,7 @@ build build/reports/actor_extended_type2_target_motion_0203f5c4.json: objdiff bu
   base_object = build/decomp/asm/game/actor_extended_type2_target_motion_0203f5c4.o
 build build/reports/actor_extended_type2_target_motion_0203f5c4.txt: match_report build/reports/actor_extended_type2_target_motion_0203f5c4.json | tools/report_objdiff.py
   report_json = build/reports/actor_extended_type2_target_motion_0203f5c4.json
-  report_args = --section .text --function func_0203f5c4 --require-exact
+  report_args = --section .text --function ActorExtendedType2_UpdateTargetMotion --require-exact
 build build/reports/actor_extended_type2_target_motion.txt: phony build/reports/actor_extended_type2_target_motion_0203f5c4.txt
 
 build actor_extended_type2_target_motion: phony build/decomp/src/game/actor_extended_type2_target_motion.o build/decomp/asm/game/actor_extended_type2_target_motion_0203f5c4.o build/reports/actor_extended_type2_target_motion.txt

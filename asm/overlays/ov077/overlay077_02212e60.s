@@ -1,7 +1,7 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov077/overlay077_recovery.c.
 .extern func_02031cac
-.extern func_0203efac
+.extern ActorExtendedType2_RunRenderCallback
 .extern func_ov077_02212f18
 .extern func_ov090_0221c318
 
@@ -12,7 +12,7 @@ func_ov077_02212e60:
     mov r4, r2
     mov r6, r0
     mov r5, r1
-    bl func_0203efac
+    bl ActorExtendedType2_RunRenderCallback
     ldr r0, [r4, #0x4]
     ldr r1, [r5, #0x1c]
     mov r0, r0, asr #0xc

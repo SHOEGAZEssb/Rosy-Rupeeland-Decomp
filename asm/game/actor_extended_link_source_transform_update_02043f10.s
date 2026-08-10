@@ -4,7 +4,7 @@
 .extern func_02005058
 .extern func_020050a4
 .extern func_02008378
-.extern func_0203efac
+.extern ActorExtendedType2_RunRenderCallback
 .global ActorExtendedLinkSource_UpdatePartnerTransform
 .type ActorExtendedLinkSource_UpdatePartnerTransform, @function
 ActorExtendedLinkSource_UpdatePartnerTransform: ; 0x02043f10
@@ -51,7 +51,7 @@ ActorExtendedLinkSource_UpdatePartnerTransform: ; 0x02043f10
     mov r0, r6
     mov r1, r4
     mov r2, r5
-    bl func_0203efac
+    bl ActorExtendedType2_RunRenderCallback
     ldr r0, [r4, #0x29c]
     tst r0, #0x1
     ldrne r0, [r4, #0x298]

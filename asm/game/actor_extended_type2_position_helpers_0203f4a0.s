@@ -6,9 +6,9 @@
 .extern func_0204539c
 .extern func_020453b0
 .extern genrand_int32
-    .global func_0203f4a0
-    .type func_0203f4a0, @function
-func_0203f4a0: ; 0x0203f4a0
+    .global ActorExtendedType2_AdvancePositionTarget
+    .type ActorExtendedType2_AdvancePositionTarget, @function
+ActorExtendedType2_AdvancePositionTarget: ; 0x0203f4a0
     stmdb sp!, {r4, lr}
     mov r4, r0
     add r0, r4, #0x200
@@ -31,12 +31,12 @@ func_0203f4a0: ; 0x0203f4a0
     mov r1, #0x0
     strh r1, [r0, #0x5a]
     ldmia sp!, {r4, pc}
-    .size func_0203f4a0, . - func_0203f4a0
+    .size ActorExtendedType2_AdvancePositionTarget, . - ActorExtendedType2_AdvancePositionTarget
 
-    .global func_0203f4f8
-    .type func_0203f4f8, @function
+    .global ActorExtendedType2_RestoreRandomizedPosition
+    .type ActorExtendedType2_RestoreRandomizedPosition, @function
 
-func_0203f4f8: ; 0x0203f4f8
+ActorExtendedType2_RestoreRandomizedPosition: ; 0x0203f4f8
     stmdb sp!, {r3, r4, r5, lr}
     mov r4, r0
     add r0, r4, #0x18
@@ -92,4 +92,4 @@ func_0203f4f8: ; 0x0203f4f8
     str r0, [r4, #0x40]
     str r0, [r4, #0x3c]
     ldmia sp!, {r3, r4, r5, pc}
-    .size func_0203f4f8, . - func_0203f4f8
+    .size ActorExtendedType2_RestoreRandomizedPosition, . - ActorExtendedType2_RestoreRandomizedPosition

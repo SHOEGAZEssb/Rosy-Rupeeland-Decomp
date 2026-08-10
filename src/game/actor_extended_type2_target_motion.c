@@ -38,7 +38,7 @@ extern void func_02005058(void *transform);
  * actor, virtual, transform, and world-query state may change, with no direct
  * hardware access.
  */
-void func_0203f5c4(void *self)
+void ActorExtendedType2_UpdateTargetMotion(void *self)
 {
     u8 *actor = (u8 *)self;
     u8 query[0x30];

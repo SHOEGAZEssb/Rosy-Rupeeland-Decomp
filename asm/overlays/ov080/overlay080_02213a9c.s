@@ -1,13 +1,13 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov080/overlay080_recovery.c.
-.extern func_0203f5c4
+.extern ActorExtendedType2_UpdateTargetMotion
 .extern func_020befec
 
 .global func_ov080_02213a9c
 func_ov080_02213a9c:
     stmdb sp!, {r4, lr}
     mov r4, r0
-    bl func_0203f5c4
+    bl ActorExtendedType2_UpdateTargetMotion
     ldr r0, [r4, #0x9c]
     mov r1, #0x6
     bl func_020befec

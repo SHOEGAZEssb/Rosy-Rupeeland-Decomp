@@ -24,7 +24,7 @@
 .extern func_0203bac0
 .extern func_0203bad8
 .extern Actor_RequestAttachmentActivation
-.extern func_0203efac
+.extern ActorExtendedType2_RunRenderCallback
 .extern func_ov078_02212bc0
 .extern func_ov095_0221b1a0
 .extern func_ov095_0221b188
@@ -53,8 +53,8 @@
 .extern func_0203baac
 .extern ActorExtendedType2_ResetRuntimeState
 .extern ActorExtendedType2_CopyAdjustedDescriptor
-.extern func_0203f4f8
-.extern func_0203f5c4
+.extern ActorExtendedType2_RestoreRandomizedPosition
+.extern ActorExtendedType2_UpdateTargetMotion
 .extern func_0203f9ac
 .extern func_ov095_022180dc
 .extern func_0203fae0
@@ -80,7 +80,7 @@
 .extern func_0204022c
 .extern func_02040234
 .extern func_02040400
-.extern func_0203f4a0
+.extern ActorExtendedType2_AdvancePositionTarget
 .extern ActorExtendedType2_TrackCandidate
 .extern func_ov095_0221b1c0
 .extern func_ov095_0221b1b8
@@ -331,7 +331,7 @@ data_ov095_0221cca0:
     .word func_0203bac0
     .word func_0203bad8
     .word Actor_RequestAttachmentActivation
-    .word func_0203efac
+    .word ActorExtendedType2_RunRenderCallback
     .word func_ov078_02212bc0
     .word func_ov095_0221b1a0
     .word func_ov095_0221b188
@@ -360,8 +360,8 @@ data_ov095_0221cca0:
     .word func_0203baac
     .word ActorExtendedType2_ResetRuntimeState
     .word ActorExtendedType2_CopyAdjustedDescriptor
-    .word func_0203f4f8
-    .word func_0203f5c4
+    .word ActorExtendedType2_RestoreRandomizedPosition
+    .word ActorExtendedType2_UpdateTargetMotion
     .word func_0203f9ac
     .word func_ov095_022180dc
     .word func_0203fae0
@@ -387,7 +387,7 @@ data_ov095_0221cca0:
     .word func_0204022c
     .word func_02040234
     .word func_02040400
-    .word func_0203f4a0
+    .word ActorExtendedType2_AdvancePositionTarget
     .word ActorExtendedType2_TrackCandidate
     .word func_ov095_0221b1c0
     .word func_ov095_0221b1b8
@@ -495,7 +495,7 @@ data_ov095_0221cf4c:
     .word func_0203bac0
     .word func_0203bad8
     .word Actor_RequestAttachmentActivation
-    .word func_0203efac
+    .word ActorExtendedType2_RunRenderCallback
     .word func_ov095_0221b38c
     .word func_ov095_0221b1a0
     .word func_ov095_0221b188
@@ -524,8 +524,8 @@ data_ov095_0221cf4c:
     .word func_0203baac
     .word ActorExtendedType2_ResetRuntimeState
     .word ActorExtendedType2_CopyAdjustedDescriptor
-    .word func_0203f4f8
-    .word func_0203f5c4
+    .word ActorExtendedType2_RestoreRandomizedPosition
+    .word ActorExtendedType2_UpdateTargetMotion
     .word func_0203f9ac
     .word func_ov095_0221c0ac
     .word func_0203fae0
@@ -551,7 +551,7 @@ data_ov095_0221cf4c:
     .word func_0204022c
     .word func_02040234
     .word func_02040400
-    .word func_0203f4a0
+    .word ActorExtendedType2_AdvancePositionTarget
     .word ActorExtendedType2_TrackCandidate
     .word func_ov095_0221b1c0
     .word func_ov095_0221b1b8
