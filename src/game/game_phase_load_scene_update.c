@@ -65,7 +65,7 @@ extern int func_02008570(...);
 extern int GamePhaseState_SetEnabled(...);
 extern int GamePhaseAreaScene_SetEnabled(...);
 extern int GamePhaseCurrencyHud_SetVisible(...);
-extern int func_02074178(...);
+extern int GraphicsSpriteGroup_PrepareResources(...);
 extern int OverlayManager_GetGlobal(...);
 extern int OverlayManager_LoadOverlay(...);
 extern int func_02003e14(...);
@@ -77,7 +77,7 @@ extern int GX_VBlankIntr(...);
 extern int GridEffectActorRegistry_FinalizeDepartingActors(...);
 extern int func_020923a4(...);
 extern int func_0201e0f4(...);
-extern int func_02074154(...);
+extern int GraphicsSpriteGroup_ReleaseResources(...);
 extern int func_020745c4(...);
 extern int OverlaySlot_LoadOverlay(...);
 extern int func_ov013_021fce2c(...);
@@ -412,7 +412,7 @@ code_r0x0200e2ac:
       }
       GamePhaseRuntime_GetActorCollection(*UNK_0200e0e4,1);
       ActorCollection_GetSpriteOwner();
-      func_02074178();
+      GraphicsSpriteGroup_PrepareResources();
       if (param_1 != (int *)0x0) {
         (**(code **)(*param_1 + 4))();
       }
@@ -538,7 +538,7 @@ code_r0x0200d224:
     GamePhaseState_SetEnabled(*piVar1 + 0x24);
     GamePhaseRuntime_GetActorCollection(*UNK_0200e0e4,1);
     ActorCollection_GetSpriteOwner();
-    func_02074154();
+    GraphicsSpriteGroup_ReleaseResources();
     func_020745c4(*UNK_0200e0f0,0);
   }
   piVar1 = UNK_0200e0e4;

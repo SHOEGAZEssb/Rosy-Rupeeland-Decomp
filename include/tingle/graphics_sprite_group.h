@@ -29,8 +29,8 @@ typedef char GraphicsSpriteGroupSizeCheck[
 extern "C" {
 #endif
 
-void func_02073e90(GraphicsSpriteState *state);
-void func_02073ed4(GraphicsSpriteState *state);
+void GraphicsSpriteState_ReleaseResources(GraphicsSpriteState *state);
+void GraphicsSpriteState_PrepareResources(GraphicsSpriteState *state);
 void func_02073ef8(GraphicsSpriteState *state);
 GraphicsSpriteGroup *GraphicsSpriteGroup_Init(GraphicsSpriteGroup *group,
                                               void *owner);
@@ -51,8 +51,8 @@ void func_020740c8(GraphicsSpriteGroup *group, GraphicsSpriteState *state,
 void func_020740e8(GraphicsSpriteGroup *group, GraphicsSpriteState *state,
                    const GraphicsSpriteSource3 *source);
 void func_02074110(GraphicsSpriteGroup *group);
-void func_02074154(GraphicsSpriteGroup *group);
-void func_02074178(GraphicsSpriteGroup *group);
+void GraphicsSpriteGroup_ReleaseResources(GraphicsSpriteGroup *group);
+void GraphicsSpriteGroup_PrepareResources(GraphicsSpriteGroup *group);
 void func_0207419c(GraphicsSpriteGroup *group);
 void func_020741b0(void);
 GraphicsSpriteGroup *func_020742cc(void *owner);

@@ -12,7 +12,7 @@
 .extern ActorDerivedType1_UpdateOrientationFlag
 .extern ActorDerivedType1_TeardownActiveRecord
 .extern func_02055688
-.extern func_02074154
+.extern GraphicsSpriteGroup_ReleaseResources
 .extern func_020a2324
 .global func_02019aa4
 func_02019aa4:
@@ -83,7 +83,7 @@ L_02019b84:
     ldr r0, [r0, #0x0]
     bl GamePhaseRuntime_GetActorCollection
     bl ActorCollection_GetSpriteOwner
-    bl func_02074154
+    bl GraphicsSpriteGroup_ReleaseResources
     ldr r0, L_02019c5c
     ldr r0, [r0, #0x0]
     add r0, r0, #0x3000

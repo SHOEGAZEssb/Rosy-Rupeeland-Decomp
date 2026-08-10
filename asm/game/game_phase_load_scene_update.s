@@ -49,8 +49,8 @@
 .extern func_02058eb8
 .extern func_02068444
 .extern func_020740a4
-.extern func_02074154
-.extern func_02074178
+.extern GraphicsSpriteGroup_ReleaseResources
+.extern GraphicsSpriteGroup_PrepareResources
 .extern func_020745c4
 .extern func_020755bc
 .extern func_02091fb0
@@ -225,7 +225,7 @@ L_0200d23c:
     ldr r0, [r0, #0x0]
     bl GamePhaseRuntime_GetActorCollection
     bl ActorCollection_GetSpriteOwner
-    bl func_02074154
+    bl GraphicsSpriteGroup_ReleaseResources
     ldr r0, L_0200e0f0
     mov r1, #0x0
     ldr r0, [r0, #0x0]
@@ -1372,7 +1372,7 @@ L_0200e2c8:
     ldr r0, [r0, #0x0]
     bl GamePhaseRuntime_GetActorCollection
     bl ActorCollection_GetSpriteOwner
-    bl func_02074178
+    bl GraphicsSpriteGroup_PrepareResources
     cmp r5, #0x0
     beq L_0200e2f8
     mov r0, r5

@@ -49,7 +49,7 @@ extern void func_02074d40(void *owner, void *allocation);
  * not, invalidate the attached state byte and release the other two resources.
  * Returns no value and performs resource-manager effects through its callees.
  */
-void func_02073e90(GraphicsSpriteState *state)
+void GraphicsSpriteState_ReleaseResources(GraphicsSpriteState *state)
 {
     func_020703d8(state->field_14);
     if (((GraphicsSpriteResource14 *)state->field_14)->field_24 != 0) {
@@ -67,7 +67,7 @@ void func_02073e90(GraphicsSpriteState *state)
  * their required family order. State fields are unchanged; resource-manager
  * state may change through the called helpers and no value is returned.
  */
-void func_02073ed4(GraphicsSpriteState *state)
+void GraphicsSpriteState_PrepareResources(GraphicsSpriteState *state)
 {
     func_02070418(state->field_14);
     func_02070860(state->field_18);
@@ -328,23 +328,23 @@ void func_02074110(GraphicsSpriteGroup *group)
 }
 
 /* Release/deactivate each state's three resource families in list order. */
-void func_02074154(GraphicsSpriteGroup *group)
+void GraphicsSpriteGroup_ReleaseResources(GraphicsSpriteGroup *group)
 {
     GraphicsSpriteState *state = group->head;
 
     while (state != 0) {
-        func_02073e90(state);
+        GraphicsSpriteState_ReleaseResources(state);
         state = (GraphicsSpriteState *)state->field_08;
     }
 }
 
 /* Prepare/retain each state's three resource families in list order. */
-void func_02074178(GraphicsSpriteGroup *group)
+void GraphicsSpriteGroup_PrepareResources(GraphicsSpriteGroup *group)
 {
     GraphicsSpriteState *state = group->head;
 
     while (state != 0) {
-        func_02073ed4(state);
+        GraphicsSpriteState_PrepareResources(state);
         state = (GraphicsSpriteState *)state->field_08;
     }
 }
