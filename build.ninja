@@ -15249,7 +15249,7 @@ build build/reports/actor_derived_type1_frame_control_020372e4.json: objdiff bui
   base_object = build/decomp/asm/game/actor_derived_type1_frame_control_020372e4.o
 build build/reports/actor_derived_type1_frame_control_020372e4.txt: match_report build/reports/actor_derived_type1_frame_control_020372e4.json | tools/report_objdiff.py
   report_json = build/reports/actor_derived_type1_frame_control_020372e4.json
-  report_args = --section .text --function func_020372e4 --require-exact
+  report_args = --section .text --function ActorDerivedType1_UpdateFrameControl --require-exact
 build build/reports/actor_derived_type1_frame_control.txt: phony build/reports/actor_derived_type1_frame_control_020372e4.txt
 
 build actor_derived_type1_frame_control: phony build/decomp/src/game/actor_derived_type1_frame_control.o build/decomp/asm/game/actor_derived_type1_frame_control_020372e4.o build/reports/actor_derived_type1_frame_control.txt
@@ -16675,7 +16675,7 @@ build build/reports/actor_extended_type2_frame_update_0203e7c8.json: objdiff bui
   base_object = build/decomp/asm/game/actor_extended_type2_frame_update_0203e7c8.o
 build build/reports/actor_extended_type2_frame_update_0203e7c8.txt: match_report build/reports/actor_extended_type2_frame_update_0203e7c8.json | tools/report_objdiff.py
   report_json = build/reports/actor_extended_type2_frame_update_0203e7c8.json
-  report_args = --section .text --function func_0203e7c8 --require-exact
+  report_args = --section .text --function ActorExtendedType2_UpdateFrame --require-exact
 build build/reports/actor_extended_type2_frame_update.txt: phony build/reports/actor_extended_type2_frame_update_0203e7c8.txt
 
 build actor_extended_type2_frame_update: phony build/decomp/src/game/actor_extended_type2_frame_update.o build/decomp/asm/game/actor_extended_type2_frame_update_0203e7c8.o build/reports/actor_extended_type2_frame_update.txt
@@ -18062,7 +18062,7 @@ build build/reports/type7_actor_frame_update_02045a60.json: objdiff build/decomp
   base_object = build/decomp/asm/game/type7_actor_frame_update_02045a60.o
 build build/reports/type7_actor_frame_update_02045a60.txt: match_report build/reports/type7_actor_frame_update_02045a60.json | tools/report_objdiff.py
   report_json = build/reports/type7_actor_frame_update_02045a60.json
-  report_args = --section .text --function func_02045a60 --require-exact
+  report_args = --section .text --function Type7Actor_UpdateFrame --require-exact
 build type7_actor_frame_update: phony build/decomp/src/game/type7_actor_frame_update.o build/decomp/asm/game/type7_actor_frame_update_02045a60.o build/reports/type7_actor_frame_update_02045a60.txt
 
 type7_actor_animation_update_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++

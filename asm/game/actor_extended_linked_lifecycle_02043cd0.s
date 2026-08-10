@@ -6,7 +6,7 @@
 .extern data_0210572c
 .extern func_0203db80
 .extern func_0203e494
-.extern func_0203e7c8
+.extern ActorExtendedType2_UpdateFrame
 .extern func_02043340
 .global func_02043cd0
 .type func_02043cd0, @function
@@ -67,7 +67,7 @@ func_02043d4c: ; 0x02043d4c
 func_02043d60: ; 0x02043d60
     ldr ip, .L_02043d68
     bx ip
-.L_02043d68: .word func_0203e7c8
+.L_02043d68: .word ActorExtendedType2_UpdateFrame
 .size func_02043d60, . - func_02043d60
 func_02043d6c: ; 0x02043d6c
     ldr ip, .L_02043d74

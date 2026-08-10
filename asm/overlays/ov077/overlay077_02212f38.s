@@ -4,7 +4,7 @@
 .extern func_02005030
 .extern func_02005058
 .extern func_020050a4
-.extern func_0203e7c8
+.extern ActorExtendedType2_UpdateFrame
 .extern func_02043610
 .extern func_020ae024
 .extern func_ov077_022130b8
@@ -22,7 +22,7 @@ func_ov077_02212f38:
     cmp r0, #0x0
     beq .L_022130ac
     mov r0, r4
-    bl func_0203e7c8
+    bl ActorExtendedType2_UpdateFrame
     ldrb r0, [r4, #0x2a0]
     ldr r1, .L_022130b4
     add r0, r0, #0x3

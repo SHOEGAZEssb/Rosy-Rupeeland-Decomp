@@ -27,9 +27,9 @@
 .extern func_020adcac
 .extern func_020be328
 .extern gGameWork
-.global func_02045a60
-.type func_02045a60, @function
-func_02045a60: ; 0x02045a60
+.global Type7Actor_UpdateFrame
+.type Type7Actor_UpdateFrame, @function
+Type7Actor_UpdateFrame: ; 0x02045a60
     stmdb sp!, {r4, r5, r6, lr}
     sub sp, sp, #0x10
     mov r4, r0
@@ -552,4 +552,4 @@ func_02045a60: ; 0x02045a60
 .L_020461fc: .word data_020e1748
 .L_02046200: .word data_020e1838
 .L_02046204: .word 0xfffff7f3
-.size func_02045a60, . - func_02045a60
+.size Type7Actor_UpdateFrame, . - Type7Actor_UpdateFrame

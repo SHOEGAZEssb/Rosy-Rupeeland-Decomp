@@ -5,7 +5,7 @@
 .extern data_ov096_02218b20
 .extern ActorCollection_GetSpriteOwner
 .extern Actor_GetCollection
-.extern func_0203e7c8
+.extern ActorExtendedType2_UpdateFrame
 .extern func_020435f4
 .extern func_020593dc
 .extern func_02072b68
@@ -406,7 +406,7 @@ func_ov096_022178c0:
     streq r0, [r4, #0x10]
 .L_02217e68:
     mov r0, r4
-    bl func_0203e7c8
+    bl ActorExtendedType2_UpdateFrame
 .L_02217e70:
     add sp, sp, #0x8
     ldmia sp!, {r3, r4, r5, pc}

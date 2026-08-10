@@ -5,7 +5,7 @@
 .extern func_020050a4
 .extern Actor_GetCachedTerrainHeight
 .extern Actor_QueryTerrainHeight
-.extern func_0203e7c8
+.extern ActorExtendedType2_UpdateFrame
 .extern func_ov095_0221b6d8
 
 .global func_ov095_0221ba38
@@ -113,7 +113,7 @@ func_ov095_0221ba38:
     str r0, [r4, #0xd0]
 .L_0221bbb8:
     mov r0, r4
-    bl func_0203e7c8
+    bl ActorExtendedType2_UpdateFrame
     ldmia sp!, {r4, pc}
 .L_0221bbc4: .word data_ov095_0221cec0
 .L_0221bbc8: .word data_ov095_0221ced0

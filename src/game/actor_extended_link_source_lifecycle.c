@@ -14,7 +14,7 @@ extern "C" {
 #endif
 extern void *func_0203db80(void *actor, const void *configuration);
 extern void *func_0203e494(void *actor);
-extern void func_0203e7c8(void *actor);
+extern void ActorExtendedType2_UpdateFrame(void *actor);
 #ifdef __cplusplus
 }
 #endif
@@ -73,6 +73,6 @@ void func_02043e7c(void *self)
     u8 *actor = (u8 *)self;
     if ((*(u32 *)(actor + 0x14) & 0x200000) != 0)
         return;
-    func_0203e7c8(actor);
+    ActorExtendedType2_UpdateFrame(actor);
     *(u32 *)(actor + 0x29c) &= ~2u;
 }

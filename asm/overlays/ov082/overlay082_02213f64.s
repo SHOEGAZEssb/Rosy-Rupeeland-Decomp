@@ -4,7 +4,7 @@
 .extern data_ov082_0221483c
 .extern func_0201e0ec
 .extern func_02034a60
-.extern func_0203e7c8
+.extern ActorExtendedType2_UpdateFrame
 .extern func_020435f4
 .extern func_0204362c
 .extern func_020a28e0
@@ -201,7 +201,7 @@ func_ov082_02213f64:
     str r0, [r4, #0x260]
 .L_02214228:
     mov r0, r4
-    bl func_0203e7c8
+    bl ActorExtendedType2_UpdateFrame
 .L_02214230:
     add sp, sp, #0x4
     ldmia sp!, {r3, r4, r5, r6, pc}

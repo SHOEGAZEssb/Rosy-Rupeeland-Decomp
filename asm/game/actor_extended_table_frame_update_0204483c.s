@@ -4,7 +4,7 @@
 .extern data_020e0ad0
 .extern data_020e0ad8
 .extern func_02032228
-.extern func_0203e7c8
+.extern ActorExtendedType2_UpdateFrame
 .extern func_02043610
 .extern func_02044718
 .extern func_02044760
@@ -91,7 +91,7 @@ func_0204483c: ; 0x0204483c
     str r0, [r4, #0x260]
 .L_02044964:
     mov r0, r4
-    bl func_0203e7c8
+    bl ActorExtendedType2_UpdateFrame
     ldmia sp!, {r4, pc}
 .L_02044970: .word data_020e0ac8
 .L_02044974: .word data_020e0ad8

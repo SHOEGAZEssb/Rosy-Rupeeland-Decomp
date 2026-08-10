@@ -68,7 +68,7 @@ static s32 multiplyFxRound(s32 first, s32 second)
  * virtual +0x20. Returns no value; callbacks, actor/target motion, temporary
  * vector lifetime, attachment presentation, and global runtime state change.
  */
-void func_0203e7c8(void *self)
+void ActorExtendedType2_UpdateFrame(void *self)
 {
     u8 *actor = (u8 *)self;
     u8 temporary[0x40];

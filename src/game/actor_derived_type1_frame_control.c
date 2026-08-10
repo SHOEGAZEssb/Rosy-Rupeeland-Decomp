@@ -90,7 +90,7 @@ static s32 directionWord(const s32 *table, s32 direction)
  * Allocation, manager, sound, GameWork, random, scene-effect, and virtual calls
  * have observable engine/SDK effects.
  */
-void func_020372e4(void *self)
+void ActorDerivedType1_UpdateFrameControl(void *self)
 {
     u8 *actor = (u8 *)self;
     u8 *descriptor;

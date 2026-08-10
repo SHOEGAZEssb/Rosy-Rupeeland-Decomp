@@ -136,7 +136,7 @@
 .extern func_ov097_02219d14
 .extern func_ov097_02219718
 .extern func_ov097_0221972c
-.extern func_0203e7c8
+.extern ActorExtendedType2_UpdateFrame
 .extern func_ov078_0221361c
 .extern func_020423c8
 .extern func_020425d4
@@ -426,7 +426,7 @@ data_ov097_0221a80c:
     .word func_ov078_02212bb4
     .word func_020314b8
     .word Actor_SnapshotTransientState
-    .word func_0203e7c8
+    .word ActorExtendedType2_UpdateFrame
     .word func_0203ef90
     .word func_02031564
     .word func_ov078_0221361c

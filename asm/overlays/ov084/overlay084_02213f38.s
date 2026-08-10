@@ -6,7 +6,7 @@
 .extern data_ov084_022145ec
 .extern Actor_SaveAndForceFlags
 .extern func_020349b8
-.extern func_0203e7c8
+.extern ActorExtendedType2_UpdateFrame
 .extern func_020435f4
 .extern func_02045184
 
@@ -122,7 +122,7 @@ func_ov084_02213f38:
     strh r1, [r0, #0x98]
 .L_022140cc:
     mov r0, r5
-    bl func_0203e7c8
+    bl ActorExtendedType2_UpdateFrame
     ldmia sp!, {r3, r4, r5, pc}
 .L_022140d8: .word data_ov084_022145d4
 .L_022140dc: .word data_ov084_022145e4

@@ -3,7 +3,7 @@
 .extern data_ov082_02214aac
 .extern data_ov082_02214abc
 .extern data_ov082_02214ac4
-.extern func_0203e7c8
+.extern ActorExtendedType2_UpdateFrame
 
 .global func_ov082_022144e8
 func_ov082_022144e8:
@@ -61,7 +61,7 @@ func_ov082_022144e8:
     blx r2
 .L_022145ac:
     mov r0, r4
-    bl func_0203e7c8
+    bl ActorExtendedType2_UpdateFrame
     ldmia sp!, {r4, pc}
 .L_022145b8: .word data_ov082_02214aac
 .L_022145bc: .word data_ov082_02214ac4

@@ -8,7 +8,7 @@ extern u8 data_020e0ad8[];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_0203e7c8(void *actor);
+extern void ActorExtendedType2_UpdateFrame(void *actor);
 extern void func_02032228(void *actor, s32 first, s32 second, s32 third);
 extern s32 func_02043610(const void *actor);
 extern s32 func_02044718(const void *actor);
@@ -24,7 +24,7 @@ extern s32 func_02044760(const void *actor);
  * data_020e0ac8+0x10/data_020e0ad8+4 pair, or the
  * data_020e0ac8+8/data_020e0ad0+4 pair. For all other callback pairs, set bit
  * 0x400, obtain a value from vtable +0x140, and call
- * func_02032228(actor,0,0x1000,value). Finish with func_0203e7c8. Actor, virtual,
+ * func_02032228(actor,0,0x1000,value). Finish with ActorExtendedType2_UpdateFrame. Actor, virtual,
  * and motion state may change; no direct SDK or hardware operation occurs.
  */
 void func_0204483c(void *self)
@@ -59,5 +59,5 @@ void func_0204483c(void *self)
         value = (*(s32 (**)(void *))(*(u8 **)actor + 0x140))(actor);
         func_02032228(actor, 0, 0x1000, value);
     }
-    func_0203e7c8(actor);
+    ActorExtendedType2_UpdateFrame(actor);
 }

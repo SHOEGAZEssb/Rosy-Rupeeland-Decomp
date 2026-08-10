@@ -2,7 +2,7 @@
 ; Matching fallback for the portable implementation in src/overlays/ov097/overlay097_recovery.c.
 .extern ActorCollection_FindActorByDescriptorValue
 .extern Actor_GetCollection
-.extern func_0203e7c8
+.extern ActorExtendedType2_UpdateFrame
 .extern func_0204362c
 .extern func_ov097_02217fd8
 .extern gGameWork
@@ -35,7 +35,7 @@ func_ov097_02218034:
     strb r0, [r4, #0x2bd]
 .L_02218094:
     mov r0, r4
-    bl func_0203e7c8
+    bl ActorExtendedType2_UpdateFrame
     ldrb r0, [r4, #0x24c]
     cmp r0, #0x8
     mvneq r0, #0x5b

@@ -14,7 +14,7 @@ extern "C" {
 #endif
 extern void *func_0203db80(void *actor, const void *configuration);
 extern void *func_0203e494(void *actor);
-extern void func_0203e7c8(void *actor);
+extern void ActorExtendedType2_UpdateFrame(void *actor);
 extern s32 func_02043340(void *actor, void *other, s32 context);
 #ifdef __cplusplus
 }
@@ -64,10 +64,10 @@ void *func_02043d4c(void *self)
     return self;
 }
 
-/* Forward actor to base frame update func_0203e7c8; actor state may change. */
+/* Forward actor to base frame update ActorExtendedType2_UpdateFrame; actor state may change. */
 void func_02043d60(void *self)
 {
-    func_0203e7c8(self);
+    ActorExtendedType2_UpdateFrame(self);
 }
 
 /*

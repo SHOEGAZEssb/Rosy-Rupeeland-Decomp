@@ -84,7 +84,7 @@ static s32 callback_pair_matches(const u8 *actor, const void *first,
  * +0x2a0/+0x2a4/+0x2a6, and invoke vtable +0x20. Actor, target, world,
  * GameWork, resource, callback, and motion state may change.
  */
-void func_02045a60(void *self)
+void Type7Actor_UpdateFrame(void *self)
 {
     u8 *actor = (u8 *)self;
     u8 *target;

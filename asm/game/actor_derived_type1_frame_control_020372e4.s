@@ -39,9 +39,9 @@
 .extern gSystemState
 .extern genrand_int32
 
-    .global func_020372e4
-    .type func_020372e4, @function
-func_020372e4: ; 0x020372e4
+    .global ActorDerivedType1_UpdateFrameControl
+    .type ActorDerivedType1_UpdateFrameControl, @function
+ActorDerivedType1_UpdateFrameControl: ; 0x020372e4
     stmdb sp!, {r4, r5, r6, r7, lr}
     sub sp, sp, #0x44
     mov r7, r0
@@ -559,4 +559,4 @@ func_020372e4: ; 0x020372e4
 .L_02037a88: .word data_020df258
 .L_02037a8c: .word gSceneTouchInitialData
 .L_02037a90: .word 0x4cd
-    .size func_020372e4, . - func_020372e4
+    .size ActorDerivedType1_UpdateFrameControl, . - ActorDerivedType1_UpdateFrameControl

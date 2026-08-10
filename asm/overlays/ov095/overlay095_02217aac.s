@@ -1,6 +1,6 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov095/overlay095_recovery.c.
-.extern func_0203e7c8
+.extern ActorExtendedType2_UpdateFrame
 .extern func_0205940c
 .extern func_020594a4
 .extern gSoundContext
@@ -26,7 +26,7 @@ func_ov095_02217aac:
     bl func_0205940c
 .L_02217af0:
     mov r0, r4
-    bl func_0203e7c8
+    bl ActorExtendedType2_UpdateFrame
     ldrb r0, [r4, #0x24c]
     cmp r0, #0x8
     mvneq r0, #0x47

@@ -3,7 +3,7 @@
 .extern data_ov082_022145e8
 .extern data_ov082_022145f0
 .extern Actor_GetCachedTerrainHeight
-.extern func_0203e7c8
+.extern ActorExtendedType2_UpdateFrame
 .extern func_020435f4
 .extern func_02043610
 .extern func_0204362c
@@ -32,7 +32,7 @@ func_ov082_02212d90:
     bichi r0, r0, #0x40
     str r0, [r5, #0x14]
     mov r0, r5
-    bl func_0203e7c8
+    bl ActorExtendedType2_UpdateFrame
     ldr r0, [r5, #0x14]
     tst r0, #0x40
     beq .L_02212ee4

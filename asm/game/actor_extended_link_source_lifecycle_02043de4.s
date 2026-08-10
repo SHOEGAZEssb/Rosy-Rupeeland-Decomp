@@ -6,7 +6,7 @@
 .extern data_0210574c
 .extern func_0203db80
 .extern func_0203e494
-.extern func_0203e7c8
+.extern ActorExtendedType2_UpdateFrame
 .global func_02043de4
 .type func_02043de4, @function
 .global func_02043e38
@@ -77,7 +77,7 @@ func_02043e7c: ; 0x02043e7c
     cmp r0, #0x0
     ldmeqia sp!, {r4, pc}
     mov r0, r4
-    bl func_0203e7c8
+    bl ActorExtendedType2_UpdateFrame
     ldr r0, [r4, #0x29c]
     bic r0, r0, #0x2
     str r0, [r4, #0x29c]

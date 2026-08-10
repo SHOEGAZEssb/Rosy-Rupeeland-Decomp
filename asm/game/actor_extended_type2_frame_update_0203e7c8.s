@@ -27,9 +27,9 @@
 .extern func_0204cfa4
 .extern func_0204cff4
 .extern func_020ae024
-    .global func_0203e7c8
-    .type func_0203e7c8, @function
-func_0203e7c8: ; 0x0203e7c8
+    .global ActorExtendedType2_UpdateFrame
+    .type ActorExtendedType2_UpdateFrame, @function
+ActorExtendedType2_UpdateFrame: ; 0x0203e7c8
     stmdb sp!, {r4, r5, r6, lr}
     sub sp, sp, #0x40
     mov r6, r0
@@ -568,4 +568,4 @@ func_0203e7c8: ; 0x0203e7c8
 .L_0203ef54: .word 0x11f
 .L_0203ef58: .word data_020c9670
 .L_0203ef5c: .word data_020dfa48
-    .size func_0203e7c8, . - func_0203e7c8
+    .size ActorExtendedType2_UpdateFrame, . - ActorExtendedType2_UpdateFrame

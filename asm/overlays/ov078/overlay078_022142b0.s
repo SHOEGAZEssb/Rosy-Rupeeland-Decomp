@@ -1,6 +1,6 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov078/overlay078_recovery.c.
-.extern func_0203e7c8
+.extern ActorExtendedType2_UpdateFrame
 
 .global func_ov078_022142b0
 func_ov078_022142b0:
@@ -11,5 +11,5 @@ func_ov078_022142b0:
     subgt r2, r2, #0x1
     strgth r2, [r1, #0xc4]
     bx ip
-.L_022142cc: .word func_0203e7c8
+.L_022142cc: .word ActorExtendedType2_UpdateFrame
 .size func_ov078_022142b0, . - func_ov078_022142b0
