@@ -5,7 +5,7 @@
 .extern data_ov097_0221aa1c
 .extern VecFx32Object_InitCopy
 .extern VecFx32Object_Destroy
-.extern func_0201f864
+.extern AuxiliaryTimedSpritePresentation_Init
 .extern func_02034a60
 .extern ActorExtendedType2_GetDescriptorValue25
 .extern func_0204cfa4
@@ -147,7 +147,7 @@ func_ov097_02219228:
     ldr r3, .L_02219454
     ldr r2, [r2, #0x0]
     add r1, sp, #0x18
-    bl func_0201f864
+    bl AuxiliaryTimedSpritePresentation_Init
 .L_02219428:
     add r0, sp, #0x18
     bl VecFx32Object_Destroy

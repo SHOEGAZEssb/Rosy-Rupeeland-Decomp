@@ -4,7 +4,7 @@
 .extern data_ov078_02216450
 .extern VecFx32Object_InitComponents
 .extern VecFx32Object_Destroy
-.extern func_0201f864
+.extern AuxiliaryTimedSpritePresentation_Init
 .extern func_ov078_022147dc
 .extern gHeapContext
 .extern genrand_int32
@@ -56,7 +56,7 @@ func_ov078_02214704:
     ldr r3, .L_022147d8
     ldr r2, [r2, #0x0]
     add r1, sp, #0x28
-    bl func_0201f864
+    bl AuxiliaryTimedSpritePresentation_Init
 .L_022147bc:
     add r0, sp, #0x28
     bl VecFx32Object_Destroy

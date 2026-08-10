@@ -9,7 +9,7 @@
 .extern VecFx32Object_Assign
 .extern VecFx32Object_Add
 .extern func_0201e0ec
-.extern func_0201f864
+.extern AuxiliaryTimedSpritePresentation_Init
 .extern func_020593ac
 .extern func_020593dc
 .extern func_0205940c
@@ -406,7 +406,7 @@ func_ov076_02212ee0:
     mov r2, r7
     rsb r3, r8, #0x1640
     str r4, [sp, #0x14]
-    bl func_0201f864
+    bl AuxiliaryTimedSpritePresentation_Init
 .L_02213494:
     add r0, sp, #0x30
     bl VecFx32Object_Destroy

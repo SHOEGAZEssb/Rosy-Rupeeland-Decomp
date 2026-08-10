@@ -3,7 +3,7 @@
 .extern Heap_Alloc
 .extern data_ov097_0221a4a4
 .extern data_ov097_0221aa1c
-.extern func_0201f864
+.extern AuxiliaryTimedSpritePresentation_Init
 .extern gHeapContext
 
 .global func_ov097_0221951c
@@ -50,7 +50,7 @@ func_ov097_0221951c:
     ldrh r3, [r1, r5]
     ldr r2, [r2, #0x0]
     add r1, r4, #0x18
-    bl func_0201f864
+    bl AuxiliaryTimedSpritePresentation_Init
 .L_022195c4:
     add sp, sp, #0x24
     ldmia sp!, {r3, r4, r5, r6, pc}

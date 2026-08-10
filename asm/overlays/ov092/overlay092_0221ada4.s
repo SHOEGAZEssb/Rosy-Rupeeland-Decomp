@@ -4,7 +4,7 @@
 .extern data_ov092_0221c99c
 .extern VecFx32Object_InitComponents
 .extern VecFx32Object_Destroy
-.extern func_0201f864
+.extern AuxiliaryTimedSpritePresentation_Init
 .extern func_0204cfa4
 .extern func_0204cff4
 .extern func_020adae4
@@ -204,7 +204,7 @@ func_ov092_0221ada4:
     add r1, sp, #0x38
     ldr r2, [r2, #0x0]
     sub r3, r3, #0x1
-    bl func_0201f864
+    bl AuxiliaryTimedSpritePresentation_Init
 .L_0221b07c:
     add r0, sp, #0x28
     bl VecFx32Object_Destroy

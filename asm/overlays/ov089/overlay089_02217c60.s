@@ -12,7 +12,7 @@
 .extern VecFx32Object_Destroy
 .extern VecFx32Object_Assign
 .extern VecFx32Object_Subtract
-.extern func_0201f864
+.extern AuxiliaryTimedSpritePresentation_Init
 .extern Actor_GetCollisionBounds
 .extern Actor_SnapshotTransientState
 .extern Actor_UpdateAnimationState
@@ -648,7 +648,7 @@ func_ov089_02217c60:
     add r1, sp, #0x74
     ldr r2, [r2, #0x0]
     sub r3, r3, #0x1
-    bl func_0201f864
+    bl AuxiliaryTimedSpritePresentation_Init
 .L_022185b8:
     add r0, r10, #0x200
     ldrh r0, [r0, #0x3c]

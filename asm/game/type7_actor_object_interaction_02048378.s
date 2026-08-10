@@ -9,7 +9,7 @@
 .extern data_020e1908
 .extern data_020e1918
 .extern gType7ActorPresentationEffectAllocationTag
-.extern func_0201f864
+.extern AuxiliaryTimedSpritePresentation_Init
 .extern Type7Actor_HasSpecialCallbackPair
 .extern Type7Actor_SetMotionTarget
 .extern Type7Actor_SetCallbackPair
@@ -171,7 +171,7 @@ Type7Actor_HandleObjectInteraction: ; 0x02048378
     add r1, r5, #0x18
     ldr r2, [r2, #0x0]
     sub r3, r3, #0x1
-    bl func_0201f864
+    bl AuxiliaryTimedSpritePresentation_Init
     b .L_02048678
 .L_020485c0:
     ldr r0, [r5, #0xd0]

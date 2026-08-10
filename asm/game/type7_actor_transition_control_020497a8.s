@@ -2,7 +2,7 @@
 .extern gType7ActorPresentationEffectAllocationTag
 .extern gHeapContext
 .extern Heap_Alloc
-.extern func_0201f864
+.extern AuxiliaryTimedSpritePresentation_Init
 .extern Type7Actor_SelectRandomCallback
 .extern Type7Actor_DispatchCurrentCallback
 .extern Type7Actor_TryAcquireTarget
@@ -63,7 +63,7 @@ Type7Actor_UpdateFlag200PresentationEffect: ; 0x020497d0
     add r1, r4, #0x18
     ldr r2, [r2, #0x0]
     sub r3, r3, #0x1
-    bl func_0201f864
+    bl AuxiliaryTimedSpritePresentation_Init
     b .L_02049874
 .L_0204986c:
     mov r0, #0xd

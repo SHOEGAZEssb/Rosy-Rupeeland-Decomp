@@ -2,7 +2,7 @@
 ; Matching fallback for the portable implementation in src/overlays/ov095/overlay095_recovery.c.
 .extern Heap_Alloc
 .extern data_ov095_0221d3cc
-.extern func_0201f864
+.extern AuxiliaryTimedSpritePresentation_Init
 .extern func_020349b8
 .extern GraphicsSpriteState_SetAnimationIndex
 .extern gHeapContext
@@ -56,7 +56,7 @@ func_ov095_0221c7d4:
     ldr r3, [r5, #0x4]
     ldr r2, [r2, #0x0]
     ldr r3, [r3, #0x10]
-    bl func_0201f864
+    bl AuxiliaryTimedSpritePresentation_Init
 .L_0221c890:
     mov r2, #0x200
     mov r0, r4

@@ -8,7 +8,7 @@ extern void *gSoundContext;
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *func_0201f864(void *allocation, ...);
+extern void *AuxiliaryTimedSpritePresentation_Init(void *allocation, ...);
 extern void func_020349b8(void *actor, u32 sound, s32 extra);
 extern void func_0205940c(void *context, s32 channel, s32 sound);
 extern void ActorDerivedType1_ApplyResourceIndex(void *actor, s32 value);
@@ -42,7 +42,7 @@ void ActorDerivedType1_TeardownActiveRecord(void *self)
             void *allocation = Heap_Alloc(0x14, data_020df4a4, 4,
                                           &gHeapContext);
             if (allocation != 0)
-                func_0201f864(allocation, actor + 0x18,
+                AuxiliaryTimedSpritePresentation_Init(allocation, actor + 0x18,
                               **(void ***)(actor + 0x54),
                               *(u16 *)(descriptor + 0x14),
                               *(u16 *)(descriptor + 0x16),

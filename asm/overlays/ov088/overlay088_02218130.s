@@ -4,7 +4,7 @@
 .extern data_ov088_0221ba04
 .extern VecFx32Object_InitCopy
 .extern VecFx32Object_Destroy
-.extern func_0201f864
+.extern AuxiliaryTimedSpritePresentation_Init
 .extern Actor_RefreshTerrainHeight
 .extern Actor_SetDirectionFromVector
 .extern func_ov088_02218280
@@ -90,7 +90,7 @@ func_ov088_02218130:
     add r1, sp, #0x18
     ldr r2, [r2, #0x0]
     add r3, r3, #0x2
-    bl func_0201f864
+    bl AuxiliaryTimedSpritePresentation_Init
 .L_02218264:
     add r0, sp, #0x18
     bl VecFx32Object_Destroy

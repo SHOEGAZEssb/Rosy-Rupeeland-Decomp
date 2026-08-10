@@ -15,7 +15,7 @@ extern "C" {
 #endif
 extern void *Heap_Alloc(u32 size, const void *tag, u32 align, void *heap);
 extern void *func_0201e0ec(void *manager);
-extern void func_0201f864(void *storage, const void *position, void *context,
+extern void AuxiliaryTimedSpritePresentation_Init(void *storage, const void *position, void *context,
                           u16 id, u16 value0, u16 value1, s32 arg0,
                           s32 arg1, s32 arg2, s32 arg3);
 extern void *ActorCollection_GetSpriteOwner(void);
@@ -93,7 +93,7 @@ void TrackedResourceActor_EmitRecordEffects(void *actor)
         void *object = Heap_Alloc(0x14, gTrackedResourceActorSpriteEffectAllocationTag, 4, gHeapContext);
         if (object != 0) {
             Actor_GetCollection(actor);
-            func_0201f864(object, (u8 *)actor + 0x18, ActorCollection_GetSpriteOwner(),
+            AuxiliaryTimedSpritePresentation_Init(object, (u8 *)actor + 0x18, ActorCollection_GetSpriteOwner(),
                           FIELD(u16, record, 0x16),
                           FIELD(u16, record, 0x18),
                           FIELD(u16, record, 0x1a), 0, -4, -1, 1);

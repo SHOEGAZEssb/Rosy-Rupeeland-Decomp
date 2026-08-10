@@ -2,7 +2,7 @@
 .text
 .extern Heap_Alloc
 .extern gActorRegisteredSubclassPresentationAllocationTag
-.extern func_0201f864
+.extern AuxiliaryTimedSpritePresentation_Init
 .extern gHeapContext
     .global ActorRegisteredSubclass_StartTimedState
     .type ActorRegisteredSubclass_StartTimedState, @function
@@ -47,7 +47,7 @@ ActorRegisteredSubclass_StartTimedState: ; 0x0203d48c
     ldr r3, [r6, #0x14]
     ldr r2, [r6, #0x0]
     ldr r3, [r3, #0x10]
-    bl func_0201f864
+    bl AuxiliaryTimedSpritePresentation_Init
 .L_0203d530:
     add sp, sp, #0x18
     ldmia sp!, {r4, r5, r6, pc}

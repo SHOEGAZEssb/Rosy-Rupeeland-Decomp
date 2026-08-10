@@ -2,7 +2,7 @@
 .text
 .extern Heap_Alloc
 .extern gActorExtendedType2SpritePresentationAllocationTag
-.extern func_0201f864
+.extern AuxiliaryTimedSpritePresentation_Init
 .extern ActorExtendedType2_ApplyTargetImpulse
 .extern func_020ada8c
 .extern gHeapContext
@@ -93,7 +93,7 @@ ActorExtendedType2_UpdateTargetFollowEffect: ; 0x02041424
     mov r2, r6
     sub r3, lr, #0x1
     str r4, [sp, #0x14]
-    bl func_0201f864
+    bl AuxiliaryTimedSpritePresentation_Init
 .L_02041564:
     mov r0, #0x0
 .L_02041568:

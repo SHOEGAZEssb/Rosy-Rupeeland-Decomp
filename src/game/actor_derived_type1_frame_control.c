@@ -30,7 +30,7 @@ extern u32 genrand_int32(void);
 extern void VecFx32Object_InitComponents(void *vector, s32 x, s32 y, s32 z);
 extern void func_02008378(void *output, const void *left, const void *right);
 extern void VecFx32Object_Destroy(void *vector);
-extern void *func_0201f864(void *allocation, ...);
+extern void *AuxiliaryTimedSpritePresentation_Init(void *allocation, ...);
 extern void *func_0201e0ec(void *manager);
 extern void func_020a28e0(void *effect, s32 kind, s32 x, s32 y, s32 duration);
 extern s32 GameWork_TestFlag(void *work, u32 flag);
@@ -165,7 +165,7 @@ void ActorDerivedType1_UpdateFrameControl(void *self)
             allocation = Heap_Alloc(0x14, data_020df4a4, 4, &gHeapContext);
             if (allocation != 0) {
                 void *attachment = *(void **)(actor + 0x54);
-                func_0201f864(allocation, position, *(void **)attachment,
+                AuxiliaryTimedSpritePresentation_Init(allocation, position, *(void **)attachment,
                               0x1075, 0x1001, 0x1076, 0, 16, -1, 1);
             }
             effect = func_0201e0ec(data_021052fc + 0x2f7c);

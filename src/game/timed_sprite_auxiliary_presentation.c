@@ -37,7 +37,7 @@ typedef s32 (*ChildUpdate)(void *child, const void *position);
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *data_020d61a8;
+extern void *gAuxiliaryTimedSpritePresentationVtable;
 extern const char gTimedSpriteAuxiliaryAllocationTag[];
 extern u8 *data_021052fc;
 extern void *func_0201e250(void *self);
@@ -63,7 +63,7 @@ static AuxiliaryTimedSpritePresentation *initialize_auxiliary_presentation(
     void *child;
 
     func_0201e250(self);
-    self->vtable = (void **)data_020d61a8;
+    self->vtable = (void **)gAuxiliaryTimedSpritePresentationVtable;
     self->auxiliary0c =
         (u8 *)Heap_Alloc(0x10, gTimedSpriteAuxiliaryAllocationTag, 4, &gHeapContext);
     if (self->auxiliary0c != 0) {
@@ -104,7 +104,7 @@ static AuxiliaryTimedSpritePresentation *initialize_auxiliary_presentation(
  * runtime manager at offset 0x2f7c; destroy temporary tracks and return self.
  * Retail code dereferences the auxiliary even when its allocation failed.
  */
-AuxiliaryTimedSpritePresentation *func_0201f724(
+AuxiliaryTimedSpritePresentation *AuxiliaryTimedSpritePresentation_InitBase(
     AuxiliaryTimedSpritePresentation *self,
     const PresentationTrack *trackSource, void *spriteGroup, s32 auxiliaryFirst,
     s32 auxiliarySecond, s32 auxiliaryThird, s32 spriteValue, s32 offset,
@@ -116,7 +116,7 @@ AuxiliaryTimedSpritePresentation *func_0201f724(
 }
 
 /* Duplicate constructor retained for its distinct retail entry point. */
-AuxiliaryTimedSpritePresentation *func_0201f864(
+AuxiliaryTimedSpritePresentation *AuxiliaryTimedSpritePresentation_Init(
     AuxiliaryTimedSpritePresentation *self,
     const PresentationTrack *trackSource, void *spriteGroup, s32 auxiliaryFirst,
     s32 auxiliarySecond, s32 auxiliaryThird, s32 spriteValue, s32 offset,
@@ -131,10 +131,10 @@ AuxiliaryTimedSpritePresentation *func_0201f864(
  * Install this vtable, destroy the child and auxiliary through vtable slot 1
  * when nonnull, and return self without freeing it.
  */
-AuxiliaryTimedSpritePresentation *func_0201f9a4(
+AuxiliaryTimedSpritePresentation *AuxiliaryTimedSpritePresentation_Destroy(
     AuxiliaryTimedSpritePresentation *self)
 {
-    self->vtable = (void **)data_020d61a8;
+    self->vtable = (void **)gAuxiliaryTimedSpritePresentationVtable;
     if (self->presentation08 != 0) {
         ((OwnedDestroy)(*(void ***)self->presentation08)[1])(
             self->presentation08);
@@ -145,20 +145,20 @@ AuxiliaryTimedSpritePresentation *func_0201f9a4(
     return self;
 }
 
-/* Perform func_0201f9a4's teardown, free self, and return its old address. */
-AuxiliaryTimedSpritePresentation *func_0201f9f0(
+/* Destroy both owned objects, free self, and return its old address. */
+AuxiliaryTimedSpritePresentation *AuxiliaryTimedSpritePresentation_DestroyAndFree(
     AuxiliaryTimedSpritePresentation *self)
 {
-    func_0201f9a4(self);
+    AuxiliaryTimedSpritePresentation_Destroy(self);
     Heap_Free(self);
     return self;
 }
 
 /* Duplicate non-freeing teardown retained for a distinct virtual-table slot. */
-AuxiliaryTimedSpritePresentation *func_0201fa44(
+AuxiliaryTimedSpritePresentation *AuxiliaryTimedSpritePresentation_DestroyBase(
     AuxiliaryTimedSpritePresentation *self)
 {
-    return func_0201f9a4(self);
+    return AuxiliaryTimedSpritePresentation_Destroy(self);
 }
 
 /*
@@ -167,7 +167,7 @@ AuxiliaryTimedSpritePresentation *func_0201fa44(
  * sprite byte 0x3a unless it is -1, decrement timer10, and return whether the
  * timer became negative.
  */
-s32 func_0201fa90(AuxiliaryTimedSpritePresentation *self)
+s32 AuxiliaryTimedSpritePresentation_Update(AuxiliaryTimedSpritePresentation *self)
 {
     const void *position = ActorMotionAreaFollower_GetPosition(data_021052fc + 0x2fbc);
     ((ChildUpdate)(*(void ***)self->presentation08)[2])(

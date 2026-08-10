@@ -13,7 +13,7 @@ extern "C" {
 #endif
 extern u32 genrand_int32(void);
 extern s32 func_020ada8c(s32 value, s32 divisor);
-extern void *func_0201f864(void *allocation, ...);
+extern void *AuxiliaryTimedSpritePresentation_Init(void *allocation, ...);
 #ifdef __cplusplus
 }
 #endif
@@ -38,7 +38,7 @@ s32 ActorExtendedType2_BindTargetAndSpawnEffect(void *self, void *target)
     if (allocation != 0) {
         u32 random = genrand_int32() & 0x7fffffff;
         void *resource = **(void ***)(actor + 0x54);
-        func_0201f864(allocation, actor + 0x18, resource, 0x135b,
+        AuxiliaryTimedSpritePresentation_Init(allocation, actor + 0x18, resource, 0x135b,
                       0x135c, 0x135d,
                       func_020ada8c((s32)random, 3) & 0xff,
                       0x12, -1, 1);

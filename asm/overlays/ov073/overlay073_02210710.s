@@ -10,7 +10,7 @@
 .extern AnimationResource_Init
 .extern GamePhaseRuntime_GetActorCollection
 .extern func_0201e250
-.extern func_0201f864
+.extern AuxiliaryTimedSpritePresentation_Init
 .extern ActorCollection_GetSpriteOwner
 .extern func_ov073_022100b4
 .extern gHeapContext
@@ -67,7 +67,7 @@ func_ov073_02210710:
     mov r0, r4
     sub r3, r3, #0x1
     add r1, sp, #0x1c
-    bl func_0201f864
+    bl AuxiliaryTimedSpritePresentation_Init
 .L_022107dc:
     add r0, sp, #0x1c
     bl VecFx32Object_Destroy

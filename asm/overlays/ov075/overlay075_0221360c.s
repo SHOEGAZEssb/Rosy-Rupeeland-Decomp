@@ -3,7 +3,7 @@
 .extern Heap_Alloc
 .extern data_ov075_02216cc8
 .extern data_ov075_02217170
-.extern func_0201f864
+.extern AuxiliaryTimedSpritePresentation_Init
 .extern Actor_SetPosition
 .extern func_020593dc
 .extern GraphicsSpriteState_SetAnimationIndex
@@ -109,7 +109,7 @@ func_ov075_0221360c:
     add r1, r4, #0x18
     ldr r2, [r2, #0x0]
     sub r3, r3, #0x1
-    bl func_0201f864
+    bl AuxiliaryTimedSpritePresentation_Init
 .L_02213784:
     add sp, sp, #0x18
     ldmia sp!, {r4, pc}

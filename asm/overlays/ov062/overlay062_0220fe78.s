@@ -13,7 +13,7 @@
 .extern VecFx32Object_Destroy
 .extern AnimationResource_Init
 .extern GraphicsSpriteState_Create
-.extern func_0201f864
+.extern AuxiliaryTimedSpritePresentation_Init
 .extern GraphicsSpriteState_SetAnimationIndex
 .extern func_ov062_0220fd20
 .extern func_ov062_0220fd30
@@ -190,7 +190,7 @@ func_ov062_0220fe78:
     add r1, r4, #0x18
     ldr r2, [r2, #0x0]
     sub r3, r3, #0x1
-    bl func_0201f864
+    bl AuxiliaryTimedSpritePresentation_Init
 .L_022100fc:
     ldr r0, .L_0221017c
     mov r1, #0x0

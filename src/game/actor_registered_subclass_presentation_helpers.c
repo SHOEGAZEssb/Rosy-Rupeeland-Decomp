@@ -18,7 +18,7 @@ extern s32 func_020adae4(s32 dividend, s32 divisor);
 extern void *ActorMotionAreaFollower_GetPosition(void *manager);
 extern void func_020593ac(void *context, s32 sound, s32 variant,
                           s32 volume, s32 pan, s32 extra);
-extern void *func_0201f864(void *allocation, ...);
+extern void *AuxiliaryTimedSpritePresentation_Init(void *allocation, ...);
 extern void GraphicsSpriteState_SetAnimationIndex(void *attachment, u32 animation);
 extern void *TrackedResourceActor_SpawnFromKey(s32 effect, const void *first, const void *second);
 #ifdef __cplusplus
@@ -59,7 +59,7 @@ void ActorRegisteredSubclass_EmitImpactFeedback(void *self)
         allocation = Heap_Alloc(0x14, gActorRegisteredSubclassPresentationAllocationTag, 4, &gHeapContext);
         if (allocation != 0) {
             u8 *attachment = *(u8 **)(actor + 0x54);
-            (void)func_0201f864(allocation, actor + 0x18,
+            (void)AuxiliaryTimedSpritePresentation_Init(allocation, actor + 0x18,
                                 *(void **)attachment, 0x162b,
                                 0x162c, 0x162d, 0, 0x80, 2, 1);
         }

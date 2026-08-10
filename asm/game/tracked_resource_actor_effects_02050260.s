@@ -4,7 +4,7 @@
 .extern data_021052fc
 .extern gHeapContext
 .extern func_0201e0ec
-.extern func_0201f864
+.extern AuxiliaryTimedSpritePresentation_Init
 .extern ActorCollection_GetSpriteOwner
 .extern Actor_GetCollection
 .extern func_02034a60
@@ -207,7 +207,7 @@ TrackedResourceActor_EmitRecordEffects: ; 0x02050260
     ldrh r3, [r5, #0x16]
     mov r0, r4
     add r1, r6, #0x18
-    bl func_0201f864
+    bl AuxiliaryTimedSpritePresentation_Init
 .L_02050530:
     ldr r0, [r6, #0x1fc]
     ldrh r1, [r0, #0x1c]

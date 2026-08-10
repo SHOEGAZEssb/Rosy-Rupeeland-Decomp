@@ -14,7 +14,7 @@
 .extern VecFx32Bezier_Evaluate3D
 .extern ActorMotionJitter_EnsureMinimum
 .extern func_0201e0ec
-.extern func_0201f864
+.extern AuxiliaryTimedSpritePresentation_Init
 .extern Actor_GetCachedTerrainHeight
 .extern func_02034a60
 .extern ActorExtendedType2_InitializeTransformAndMotion
@@ -384,7 +384,7 @@ func_ov095_0221858c:
     add r1, sp, #0x2a8
     ldr r2, [r2, #0x0]
     sub r3, r3, #0x1
-    bl func_0201f864
+    bl AuxiliaryTimedSpritePresentation_Init
 .L_02218a84:
     mov r0, #0x0
     mov r1, #0x200
@@ -564,7 +564,7 @@ func_ov095_0221858c:
     add r1, sp, #0x298
     ldr r2, [r2, #0x0]
     sub r3, r3, #0x1
-    bl func_0201f864
+    bl AuxiliaryTimedSpritePresentation_Init
 .L_02218d38:
     add r0, sp, #0x298
     bl VecFx32Object_Destroy
@@ -923,7 +923,7 @@ func_ov095_0221858c:
     add r1, r4, #0x18
     ldr r2, [r2, #0x0]
     sub r3, r3, #0x1
-    bl func_0201f864
+    bl AuxiliaryTimedSpritePresentation_Init
 .L_022192a8:
     add r0, r4, #0x200
     ldrsh r1, [r0, #0xd4]
@@ -1041,7 +1041,7 @@ func_ov095_0221858c:
     add r1, r4, #0x18
     ldr r2, [r2, #0x0]
     sub r3, r3, #0x1
-    bl func_0201f864
+    bl AuxiliaryTimedSpritePresentation_Init
 .L_02219478:
     ldr r0, .L_0221949c
     mov r1, #0xd0
@@ -1359,7 +1359,7 @@ func_ov095_0221858c:
     add r1, sp, #0x1c8
     ldr r2, [r2, #0x0]
     add r3, r3, #0x2
-    bl func_0201f864
+    bl AuxiliaryTimedSpritePresentation_Init
     b .L_022199a8
 .L_02219948:
     bl func_02034a60
@@ -1385,7 +1385,7 @@ func_ov095_0221858c:
     add r1, sp, #0x1c8
     ldr r2, [r2, #0x0]
     add r3, r3, #0x2
-    bl func_0201f864
+    bl AuxiliaryTimedSpritePresentation_Init
 .L_022199a8:
     add r0, sp, #0x1c8
     bl VecFx32Object_Destroy
@@ -1644,7 +1644,7 @@ func_ov095_0221858c:
     add r1, sp, #0x198
     ldr r2, [r2, #0x0]
     add r3, r3, #0x2
-    bl func_0201f864
+    bl AuxiliaryTimedSpritePresentation_Init
 .L_02219d98:
     mov r2, #0x0
     mov r1, #0x200

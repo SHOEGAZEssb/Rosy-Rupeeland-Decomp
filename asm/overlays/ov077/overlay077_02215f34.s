@@ -8,7 +8,7 @@
 .extern VecFx32Object_InitCopy
 .extern VecFx32Object_Destroy
 .extern ActorMotionJitter_EnsureMinimum
-.extern func_0201f864
+.extern AuxiliaryTimedSpritePresentation_Init
 .extern func_02032228
 .extern func_02032370
 .extern func_020349b8
@@ -389,7 +389,7 @@ func_ov077_02215f34:
     ldr r2, [r1, #0x0]
     add r1, r3, #0x18
     add r3, r4, #0xe
-    bl func_0201f864
+    bl AuxiliaryTimedSpritePresentation_Init
 .L_02216498:
     ldrsh r0, [r8, #0xda]
     mov r1, r8

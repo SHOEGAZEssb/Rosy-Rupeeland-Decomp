@@ -23,7 +23,7 @@ extern s32 Type7Actor_CheckRandomInteractionAcceptance(void *actor);
 extern s32 Type7Actor_HasSpecialCallbackPair(const void *actor);
 extern void Type7Actor_SetCallbackPair(void *actor, u32 first, u32 second, s32 duration);
 extern void Type7Actor_PlayStateSound(void *actor, s32 mode);
-extern void *func_0201f864(void *allocation, ...);
+extern void *AuxiliaryTimedSpritePresentation_Init(void *allocation, ...);
 extern void Type7Actor_SetMotionTarget(void *actor, const void *transform);
 #ifdef __cplusplus
 }
@@ -108,7 +108,7 @@ void Type7Actor_HandleObjectInteraction(void *self, void *otherObject)
             void *allocation = Heap_Alloc(0x14, gType7ActorPresentationEffectAllocationTag, 4,
                                           &gHeapContext);
             if (allocation != 0)
-                func_0201f864(allocation, actor + 0x18,
+                AuxiliaryTimedSpritePresentation_Init(allocation, actor + 0x18,
                               **(void ***)(actor + 0x54), 0x162b,
                               0x162c, 0x162d, 0, 4, 2, 1);
         }

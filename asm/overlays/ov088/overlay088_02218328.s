@@ -11,7 +11,7 @@
 .extern VecFx32Object_Assign
 .extern VecFx32Object_Add
 .extern VecFx32Object_Subtract
-.extern func_0201f864
+.extern AuxiliaryTimedSpritePresentation_Init
 .extern Actor_UpdateAnimationState
 .extern Actor_GetCachedTerrainHeight
 .extern func_02034a60
@@ -198,7 +198,7 @@ func_ov088_02218328:
     add r1, sp, #0x68
     ldr r2, [r2, #0x0]
     add r3, r3, #0x2
-    bl func_0201f864
+    bl AuxiliaryTimedSpritePresentation_Init
 .L_02218570:
     ldr r0, [r0, #0x8]
     tst r5, #0x100
@@ -417,7 +417,7 @@ func_ov088_02218328:
     ldr r8, [r4, #0x54]
     ldrh r3, [r2, #0x1a]
     ldr r2, [r8, #0x0]
-    bl func_0201f864
+    bl AuxiliaryTimedSpritePresentation_Init
 .L_022188c4:
     ldr r3, [r4, #0x3c]
     mov r1, #0x1800
@@ -892,7 +892,7 @@ func_ov088_02218328:
     add r1, sp, #0x38
     ldr r2, [r2, #0x0]
     sub r3, r3, #0x1
-    bl func_0201f864
+    bl AuxiliaryTimedSpritePresentation_Init
 .L_02218fd0:
     add r0, sp, #0x38
     bl VecFx32Object_Destroy

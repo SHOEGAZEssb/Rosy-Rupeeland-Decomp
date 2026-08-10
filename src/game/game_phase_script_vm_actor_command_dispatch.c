@@ -23,7 +23,7 @@ extern u32 *ActorRuntimeTriple_Assign(void *object, u32 first, u32 second, u32 t
 extern void *TimedSpriteBurstManager_Init(...);
 extern void *func_02022cb0(...);
 extern void *func_02022ff4(...);
-extern void *func_0201f864(...);
+extern void *AuxiliaryTimedSpritePresentation_Init(...);
 extern void *func_02025300(...);
 extern void *func_02023434(...);
 extern void *func_02024b04(...);
@@ -179,7 +179,7 @@ s32 func_020143a8(GamePhaseActorScriptVm *self)
             VecFx32Object_Assign(&position, (VecFx32Object *)(actor + 0x18));
         object = Heap_Alloc(0x14, data_020d5b34, 4, &gHeapContext);
         if (object != 0)
-            func_0201f864(object, &position,
+            AuxiliaryTimedSpritePresentation_Init(object, &position,
                           ActorCollection_GetSpriteOwner(Actor_GetCollection(actor)), a1,
                           a2, a3, a4, a5, -1, 1);
         VecFx32Object_Destroy(&position);

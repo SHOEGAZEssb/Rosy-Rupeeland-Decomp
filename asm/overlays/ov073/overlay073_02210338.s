@@ -8,7 +8,7 @@
 .extern VecFx32Object_Destroy
 .extern VecFx32Object_Assign
 .extern GamePhaseRuntime_GetActorCollection
-.extern func_0201f864
+.extern AuxiliaryTimedSpritePresentation_Init
 .extern ActorCollection_GetSpriteOwner
 .extern func_020adae4
 .extern func_020be334
@@ -235,7 +235,7 @@ func_ov073_02210338:
     add r1, sp, #0x2c
     mov r0, r6
     add r3, r3, #0x2
-    bl func_0201f864
+    bl AuxiliaryTimedSpritePresentation_Init
     mov r6, r0
 .L_02210688:
     ldr r0, [r6, #0x8]

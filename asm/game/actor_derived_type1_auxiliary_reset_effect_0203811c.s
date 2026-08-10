@@ -9,7 +9,7 @@
 .extern VecFx32Object_Destroy
 .extern func_02008378
 .extern ActorMotionJitter_EnsureMinimum
-.extern func_0201f864
+.extern AuxiliaryTimedSpritePresentation_Init
 .extern func_0206c978
 .extern func_0206e590
 .extern gGameWork
@@ -89,7 +89,7 @@ ActorDerivedType1_ReleaseAuxiliaryAndSpawnResetEffect: ; 0x0203811c
     add r1, sp, #0x28
     ldr r2, [r2, #0x0]
     sub r3, r3, #0x1
-    bl func_0201f864
+    bl AuxiliaryTimedSpritePresentation_Init
 .L_02038234:
     add r0, sp, #0x28
     bl VecFx32Object_Destroy

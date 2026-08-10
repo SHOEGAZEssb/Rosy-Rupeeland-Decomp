@@ -11,7 +11,7 @@
 .extern VecFx32Object_Destroy
 .extern VecFx32Object_Assign
 .extern ActorMotionJitter_EnsureMinimum
-.extern func_0201f864
+.extern AuxiliaryTimedSpritePresentation_Init
 .extern Actor_GetCachedTerrainHeight
 .extern func_02034a60
 .extern ActorExtendedType2_GetDescriptorValue2A
@@ -198,7 +198,7 @@ func_ov097_022181a0:
     add r1, sp, #0x58
     ldr r2, [r2, #0x0]
     sub r3, r3, #0x1
-    bl func_0201f864
+    bl AuxiliaryTimedSpritePresentation_Init
 .L_02218428:
     ldrb r0, [r6, #0xd4]
     ldr r4, .L_022188dc
@@ -253,7 +253,7 @@ func_ov097_022181a0:
     add r1, sp, #0x58
     ldr r2, [r2, #0x0]
     sub r3, r3, #0x1
-    bl func_0201f864
+    bl AuxiliaryTimedSpritePresentation_Init
 .L_02218500:
     ldr r0, [r6, #0x10]
     tst r0, #0x4

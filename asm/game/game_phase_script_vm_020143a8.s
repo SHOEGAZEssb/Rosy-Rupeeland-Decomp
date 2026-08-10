@@ -25,7 +25,7 @@
 .extern func_0201df5c
 .extern func_0201e0ec
 .extern TimedSpriteBurstManager_Init
-.extern func_0201f864
+.extern AuxiliaryTimedSpritePresentation_Init
 .extern func_0201fe68
 .extern func_02022cb0
 .extern func_02022ff4
@@ -303,7 +303,7 @@ L_020146bc:
     str r5, [sp, #0x10]
     mov r4, #0x1
     str r4, [sp, #0x14]
-    bl func_0201f864
+    bl AuxiliaryTimedSpritePresentation_Init
 L_02014718:
     add r0, sp, #0xa0
     bl VecFx32Object_Destroy

@@ -2,7 +2,7 @@
 .text
 .extern Heap_Alloc
 .extern Heap_Free
-.extern data_020d61a8
+.extern gAuxiliaryTimedSpritePresentationVtable
 .extern gTimedSpriteAuxiliaryAllocationTag
 .extern data_021052fc
 .extern VecFx32Object_Destroy
@@ -15,9 +15,9 @@
 .extern TimedSpriteConfig_InitTracks
 .extern gHeapContext
 
-.global func_0201fa90
-    .type func_0201fa90, @function
-func_0201fa90: ; 0x0201fa90
+.global AuxiliaryTimedSpritePresentation_Update
+    .type AuxiliaryTimedSpritePresentation_Update, @function
+AuxiliaryTimedSpritePresentation_Update: ; 0x0201fa90
     stmdb sp!, {r4, lr}
     ldr r1, .L_0201faf8
     mov r4, r0
@@ -45,5 +45,5 @@ func_0201fa90: ; 0x0201fa90
     movge r0, #0x0
     ldmia sp!, {r4, pc}
 .L_0201faf8: .word data_021052fc
-    .size func_0201fa90, .-func_0201fa90
+    .size AuxiliaryTimedSpritePresentation_Update, .-AuxiliaryTimedSpritePresentation_Update
 

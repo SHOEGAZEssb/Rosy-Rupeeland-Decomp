@@ -11,7 +11,7 @@ extern char gType7ActorPresentationEffectAllocationTag[];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_0201f864(void *allocation, const void *transform, u32 value,
+extern void AuxiliaryTimedSpritePresentation_Init(void *allocation, const void *transform, u32 value,
                           s32 firstId, s32 centerId, s32 lastId, s32 zero,
                           s32 presentation, s32 variant, s32 enabled);
 extern void func_02034a60(void *actor, s32 event, s32 value);
@@ -45,7 +45,7 @@ static void complete_related_interaction(u8 *actor)
     callback(related, 0);
     allocation = Heap_Alloc(20, gType7ActorPresentationEffectAllocationTag, 4, &gHeapContext);
     if (allocation != 0) {
-        func_0201f864(allocation, actor + 0x18,
+        AuxiliaryTimedSpritePresentation_Init(allocation, actor + 0x18,
                       **(u32 **)(actor + 0x54),
                       0x162b, 0x162c, 0x162d, 0, 4, 2, 1);
     }

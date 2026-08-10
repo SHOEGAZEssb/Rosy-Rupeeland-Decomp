@@ -7,7 +7,7 @@
 .extern data_ov062_02211bd0
 .extern data_ov062_02211bd8
 .extern VecFx32Object_Destroy
-.extern func_0201f864
+.extern AuxiliaryTimedSpritePresentation_Init
 .extern Actor_UpdateAttachmentDirectionFromVector
 .extern func_ov062_0220fd20
 .extern func_ov062_0220fd50
@@ -127,7 +127,7 @@ func_ov062_02210674:
     add r1, r4, #0x18
     ldr r2, [r2, #0x0]
     sub r3, r3, #0x1
-    bl func_0201f864
+    bl AuxiliaryTimedSpritePresentation_Init
 .L_02210824:
     mov r0, r5
     bl Scene_SetFlags03

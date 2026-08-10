@@ -4,7 +4,7 @@
 .extern gActorRegisteredSubclassPresentationAllocationTag
 .extern data_021052fc
 .extern ActorMotionAreaFollower_GetPosition
-.extern func_0201f864
+.extern AuxiliaryTimedSpritePresentation_Init
 .extern TrackedResourceActor_SpawnFromKey
 .extern func_020593ac
 .extern GraphicsSpriteState_SetAnimationIndex
@@ -83,7 +83,7 @@ ActorRegisteredSubclass_EmitImpactFeedback: ; 0x0203d6e0
     add r1, r5, #0x18
     ldr r2, [r2, #0x0]
     sub r3, r3, #0x1
-    bl func_0201f864
+    bl AuxiliaryTimedSpritePresentation_Init
 .L_0203d7e8:
     add sp, sp, #0x18
     ldmia sp!, {r4, r5, r6, pc}

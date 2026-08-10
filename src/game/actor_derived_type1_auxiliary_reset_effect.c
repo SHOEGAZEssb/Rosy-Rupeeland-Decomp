@@ -16,7 +16,7 @@ extern void ActorMotionJitter_EnsureMinimum(void *manager, s32 first, s32 second
 extern void VecFx32Object_InitComponents(void *vector, s32 x, s32 y, s32 z);
 extern void func_02008378(void *output, const void *left, const void *right);
 extern void VecFx32Object_Destroy(void *vector);
-extern void *func_0201f864(void *allocation, ...);
+extern void *AuxiliaryTimedSpritePresentation_Init(void *allocation, ...);
 #ifdef __cplusplus
 }
 #endif
@@ -59,7 +59,7 @@ void ActorDerivedType1_ReleaseAuxiliaryAndSpawnResetEffect(void *self)
         allocation = Heap_Alloc(0x14, data_020df4a4, 4, &gHeapContext);
         if (allocation != 0) {
             void *attachment = *(void **)(actor + 0x54);
-            func_0201f864(allocation, position, *(void **)attachment,
+            AuxiliaryTimedSpritePresentation_Init(allocation, position, *(void **)attachment,
                           0x21e0, 0x21e1, 0x21e2, 0, -4, -1, 1);
         }
         VecFx32Object_Destroy(position);

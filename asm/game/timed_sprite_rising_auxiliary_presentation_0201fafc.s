@@ -7,8 +7,8 @@
 .extern VecFx32Object_InitCopy
 .extern VecFx32Object_Destroy
 .extern ActorMotionAreaFollower_GetPosition
-.extern func_0201f724
-.extern func_0201fa44
+.extern AuxiliaryTimedSpritePresentation_InitBase
+.extern AuxiliaryTimedSpritePresentation_DestroyBase
 
 .global func_0201fafc
     .type func_0201fafc, @function
@@ -28,7 +28,7 @@ func_0201fafc: ; 0x0201fafc
     mov ip, #0x1
     mov r4, r0
     str ip, [sp, #0x14]
-    bl func_0201f724
+    bl AuxiliaryTimedSpritePresentation_InitBase
     ldr r1, .L_0201fb50
     mov r0, r4
     str r1, [r4, #0x0]

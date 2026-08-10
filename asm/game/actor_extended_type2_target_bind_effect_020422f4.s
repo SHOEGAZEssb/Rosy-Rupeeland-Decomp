@@ -3,7 +3,7 @@
 .extern Heap_Alloc
 .extern data_020df9e8
 .extern gActorExtendedType2SpritePresentationAllocationTag
-.extern func_0201f864
+.extern AuxiliaryTimedSpritePresentation_Init
 .extern func_020ada8c
 .extern gHeapContext
 .extern genrand_int32
@@ -51,7 +51,7 @@ ActorExtendedType2_BindTargetAndSpawnEffect: ; 0x020422f4
     mov r1, #0x1
     str r1, [sp, #0x14]
     add r1, r5, #0x18
-    bl func_0201f864
+    bl AuxiliaryTimedSpritePresentation_Init
 .L_0204239c:
     str r4, [r5, #0x228]
     mov r0, #0x0

@@ -73,7 +73,7 @@ void func_ov075_022135c4(void);
 /* Processes the supplied ABI arguments and offset-based actor state, returns its encoded result, and invokes VecFx32Object_Destroy, ActorExtendedType2_Destroy; exact higher-level semantics remain unconfirmed. */
 void func_ov075_022135e4(void);
 
-/* Processes the supplied ABI arguments and offset-based actor state, returns its encoded result, and invokes func_0201f864, Actor_SetPosition, func_020593dc and other shared helpers; exact higher-level semantics remain unconfirmed. */
+/* Processes the supplied ABI arguments and offset-based actor state, returns its encoded result, and invokes AuxiliaryTimedSpritePresentation_Init, Actor_SetPosition, func_020593dc and other shared helpers; exact higher-level semantics remain unconfirmed. */
 void func_ov075_0221360c(void);
 
 /* Processes the supplied ABI arguments and offset-based actor state, returns its encoded result, and invokes VecFx32Object_Assign, Actor_ClearTransientContactState, Actor_GetCachedTerrainHeight and other shared helpers; exact higher-level semantics remain unconfirmed. */

@@ -34,7 +34,7 @@
 .extern ActorMotionJitter_EnsureMinimum
 .extern ActorMotionAreaFollower_BindActor
 .extern func_0201e0ec
-.extern func_0201f864
+.extern AuxiliaryTimedSpritePresentation_Init
 .extern func_020349b8
 .extern Actor_SetDirectionFromVector
 .extern ActorDerivedType1_StartRecord
@@ -384,7 +384,7 @@ func_ov090_02217d70:
     add r1, r9, #0x18
     ldr r2, [r2, #0x0]
     sub r3, r3, #0x1
-    bl func_0201f864
+    bl AuxiliaryTimedSpritePresentation_Init
 .L_02218204:
     ldr r0, .L_02218cf0
     mov r1, #0x2d
@@ -911,7 +911,7 @@ func_ov090_02217d70:
     ldr r3, [r2, #0x14]
     ldr r2, [r5, #0x0]
     ldr r3, [r3, #0x10]
-    bl func_0201f864
+    bl AuxiliaryTimedSpritePresentation_Init
 .L_022189e0:
     ldr r1, .L_02218d38
     mov r0, r4
@@ -1699,7 +1699,7 @@ func_ov090_02217d70:
     add r1, r9, #0x18
     ldr r2, [r2, #0x0]
     sub r3, r3, #0x1
-    bl func_0201f864
+    bl AuxiliaryTimedSpritePresentation_Init
 .L_022195b4:
     ldr r0, .L_02218d14
     mov r1, #0x0
@@ -1831,7 +1831,7 @@ func_ov090_02217d70:
     add r1, r9, #0x18
     ldr r2, [r2, #0x0]
     sub r3, r3, #0x1
-    bl func_0201f864
+    bl AuxiliaryTimedSpritePresentation_Init
 .L_022197b0:
     ldr r0, .L_02218cf0
     mov r1, #0x2d
@@ -2240,7 +2240,7 @@ func_ov090_02217d70:
     add r1, r9, #0x18
     ldr r2, [r2, #0x0]
     sub r3, r3, #0x1
-    bl func_0201f864
+    bl AuxiliaryTimedSpritePresentation_Init
 .L_02219de4:
     ldr r0, .L_0221a3ac
     mov r1, #0x0
@@ -2430,7 +2430,7 @@ func_ov090_02217d70:
     mov r2, r6
     rsb r3, r7, #0x1640
     str r5, [sp, #0x14]
-    bl func_0201f864
+    bl AuxiliaryTimedSpritePresentation_Init
 .L_0221a0cc:
     add r0, sp, #0xe8
     bl VecFx32Object_Destroy

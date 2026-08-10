@@ -13,7 +13,7 @@ extern s32 Actor_SetInteractionFlag2000(void *actor);
 extern void func_020349b8(void *actor, u32 sound, s32 extra);
 extern void ActorDerivedType1_StartRecord(void *actor, s32 value);
 extern void Actor_SetDirectionFromVector(void *actor, s32 x, s32 y);
-extern void *func_0201f864(void *allocation, ...);
+extern void *AuxiliaryTimedSpritePresentation_Init(void *allocation, ...);
 void ActorRegisteredSubclass_StartTimedState(void *self, u16 limit);
 #ifdef __cplusplus
 }
@@ -71,7 +71,7 @@ void ActorRegisteredSubclass_TriggerPrimaryInteraction(void *self)
  * Return unless signed state +0xd6 is at most one. Clamp halfword +0x21a down
  * to limit, set state +0xd6 to one, and set +0xd0 bit 0x1000. Allocate a
  * 0x14-byte tagged presentation and, when successful, initialize it through
- * func_0201f864 using actor position +0x18, primary attachment +0x54 recovered
+ * AuxiliaryTimedSpritePresentation_Init using actor position +0x18, primary attachment +0x54 recovered
  * words +0x00, +0x14/+0x10, +0x18/+0x10, +0x1c/+0x10 and constants
  * 2,-4,-1,1. Returns no value; heap and presentation calls establish owned
  * presentation state, although the returned presentation is not retained here.
@@ -91,7 +91,7 @@ void ActorRegisteredSubclass_StartTimedState(void *self, u16 limit)
     if (allocation == 0)
         return;
     attachment = *(u8 **)(actor + 0x54);
-    (void)func_0201f864(
+    (void)AuxiliaryTimedSpritePresentation_Init(
         allocation, actor + 0x18, *(void **)attachment,
         *(s32 *)(*(u8 **)(attachment + 0x14) + 0x10),
         *(s32 *)(*(u8 **)(attachment + 0x18) + 0x10),

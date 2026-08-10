@@ -2,7 +2,7 @@
 .text
 .extern Heap_Alloc
 .extern data_020df4a4
-.extern func_0201f864
+.extern AuxiliaryTimedSpritePresentation_Init
 .extern func_020349b8
 .extern ActorDerivedType1_ApplyResourceIndex
 .extern func_0205940c
@@ -49,7 +49,7 @@ ActorDerivedType1_TeardownActiveRecord: ; 0x020390c8
     ldr r2, [r4, #0x54]
     ldrh r3, [r6, #0x14]
     ldr r2, [r2, #0x0]
-    bl func_0201f864
+    bl AuxiliaryTimedSpritePresentation_Init
 .L_02039160:
     ldr r0, [r4, #0x27c]
     ldrh r1, [r0, #0x1a]

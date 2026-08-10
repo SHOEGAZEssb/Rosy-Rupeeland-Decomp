@@ -16,7 +16,7 @@
 .extern GamePhaseCurrencyHud_AddCurrency
 .extern func_0201ded4
 .extern func_0201e0ec
-.extern func_0201f864
+.extern AuxiliaryTimedSpritePresentation_Init
 .extern func_02022cb0
 .extern Actor_TryInitializeHeightBandFromPoint
 .extern Actor_IsAtCachedTerrainHeight
@@ -208,7 +208,7 @@ ActorDerivedType1_UpdateFrameControl: ; 0x020372e4
     add r1, sp, #0x34
     ldr r2, [r2, #0x0]
     add r3, r3, #0x74
-    bl func_0201f864
+    bl AuxiliaryTimedSpritePresentation_Init
 .L_02037568:
     ldr r0, .L_02037a68
     ldr r0, [r0, #0x0]

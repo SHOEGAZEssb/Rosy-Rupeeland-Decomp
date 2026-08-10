@@ -13,7 +13,7 @@ extern "C" {
 extern void ActorExtendedType2_ApplyTargetImpulse(void *actor, const void *targetTransform);
 extern s32 func_020ada8c(s32 value, s32 divisor);
 extern u32 genrand_int32(void);
-extern void *func_0201f864(void *allocation, ...);
+extern void *AuxiliaryTimedSpritePresentation_Init(void *allocation, ...);
 #ifdef __cplusplus
 }
 #endif
@@ -25,7 +25,7 @@ extern void *func_0201f864(void *allocation, ...);
  * virtual +0xe8 is invoked. A live target with +0xd0 bit 0x100 also invokes
  * +0xe8; otherwise ActorExtendedType2_ApplyTargetImpulse applies its transform
  * at +0x18. Every 16th tick, a 0x14-byte heap allocation is initialized through
- * func_0201f864 using
+ * AuxiliaryTimedSpritePresentation_Init using
  * actor position, attachment resource, IDs 0x135b..0x135d, a random value in
  * [0,2], and fixed trailing parameters. The routine always returns zero and
  * may change actor, target, heap, random, and effect state; heap allocation is
@@ -59,7 +59,7 @@ s32 ActorExtendedType2_UpdateTargetFollowEffect(void *self)
         if (allocation != 0) {
             u32 random = genrand_int32() & 0x7fffffff;
             void *resource = **(void ***)(actor + 0x54);
-            func_0201f864(allocation, actor + 0x18, resource, 0x135b,
+            AuxiliaryTimedSpritePresentation_Init(allocation, actor + 0x18, resource, 0x135b,
                           0x135c, 0x135d,
                           func_020ada8c((s32)random, 3) & 0xff,
                           0x12, -1, 1);

@@ -7,8 +7,8 @@
 .extern VecFx32Object_InitCopy
 .extern VecFx32Object_Destroy
 .extern ActorMotionAreaFollower_GetPosition
-.extern func_0201f724
-.extern func_0201fa44
+.extern AuxiliaryTimedSpritePresentation_InitBase
+.extern AuxiliaryTimedSpritePresentation_DestroyBase
 
 .global func_0201fb84
     .type func_0201fb84, @function

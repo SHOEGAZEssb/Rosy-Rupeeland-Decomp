@@ -11,7 +11,7 @@
 .extern ActorMotionAreaFollower_GetPosition
 .extern GamePhaseCurrencyHud_AddCurrency
 .extern func_0201ded4
-.extern func_0201f864
+.extern AuxiliaryTimedSpritePresentation_Init
 .extern func_02022cb0
 .extern func_02032228
 .extern ActorDerivedType1_TeardownRecordAndApplyMotionImpulse
@@ -286,7 +286,7 @@ func_ov075_0221647c:
     ldr r3, .L_022168a4
     ldr r2, [r2, #0x0]
     add r1, sp, #0x3c
-    bl func_0201f864
+    bl AuxiliaryTimedSpritePresentation_Init
 .L_02216864:
     add r0, sp, #0x3c
     bl VecFx32Object_Destroy

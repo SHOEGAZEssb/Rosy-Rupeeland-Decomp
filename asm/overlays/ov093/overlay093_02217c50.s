@@ -20,7 +20,7 @@
 .extern ActorMotion_BindActor
 .extern ActorMotionAreaFollower_BindActor
 .extern func_0201e0ec
-.extern func_0201f864
+.extern AuxiliaryTimedSpritePresentation_Init
 .extern ActorCollection_GetSpriteOwner
 .extern Actor_GetCollection
 .extern func_0204d308
@@ -239,7 +239,7 @@ func_ov093_02217c50:
     mov r0, r5
     sub r3, r3, #0x1
     add r1, sp, #0x18
-    bl func_0201f864
+    bl AuxiliaryTimedSpritePresentation_Init
 .L_02217f40:
     ldr r0, .L_022184dc
     ldr r1, .L_022184e0

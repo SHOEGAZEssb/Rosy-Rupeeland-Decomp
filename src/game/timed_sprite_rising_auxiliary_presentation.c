@@ -27,12 +27,12 @@ extern "C" {
 #endif
 extern void *data_020d6180;
 extern u8 *data_021052fc;
-extern RisingAuxiliaryPresentation *func_0201f724(
+extern RisingAuxiliaryPresentation *AuxiliaryTimedSpritePresentation_InitBase(
     RisingAuxiliaryPresentation *self,
     const PresentationTrack *trackSource, void *spriteGroup, s32 auxiliaryFirst,
     s32 auxiliarySecond, s32 auxiliaryThird, s32 spriteValue, s32 offset,
     s32 spriteByte, s32 registerWithManager);
-extern RisingAuxiliaryPresentation *func_0201fa44(
+extern RisingAuxiliaryPresentation *AuxiliaryTimedSpritePresentation_DestroyBase(
     RisingAuxiliaryPresentation *self);
 extern void VecFx32Object_InitCopy(PresentationTrack *track, const void *source);
 extern void VecFx32Object_Destroy(void *track);
@@ -52,7 +52,7 @@ RisingAuxiliaryPresentation *func_0201fafc(
     s32 auxiliarySecond, s32 auxiliaryThird, s32 spriteValue, s32 offset,
     s32 spriteByte)
 {
-    func_0201f724(self, trackSource, spriteGroup, auxiliaryFirst,
+    AuxiliaryTimedSpritePresentation_InitBase(self, trackSource, spriteGroup, auxiliaryFirst,
                   auxiliarySecond, auxiliaryThird, spriteValue, offset,
                   spriteByte, 1);
     self->vtable = (void **)data_020d6180;
@@ -63,7 +63,7 @@ RisingAuxiliaryPresentation *func_0201fafc(
 RisingAuxiliaryPresentation *func_0201fb54(
     RisingAuxiliaryPresentation *self)
 {
-    func_0201fa44(self);
+    AuxiliaryTimedSpritePresentation_DestroyBase(self);
     return self;
 }
 
@@ -71,7 +71,7 @@ RisingAuxiliaryPresentation *func_0201fb54(
 RisingAuxiliaryPresentation *func_0201fb68(
     RisingAuxiliaryPresentation *self)
 {
-    func_0201fa44(self);
+    AuxiliaryTimedSpritePresentation_DestroyBase(self);
     Heap_Free(self);
     return self;
 }
