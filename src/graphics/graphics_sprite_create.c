@@ -26,7 +26,7 @@ void GraphicsSpriteState_Configure(GraphicsSpriteState *state, u8 animationIndex
 /*
  * Allocate and attach a sprite state using resources at descriptor offsets
  * 4/8/0xc and attach mode 2, then initialize it through GraphicsSpriteState_Configure. Returns
- * the allocated state; allocation failure behavior belongs to func_02073fc4.
+ * the allocated state; allocation failure behavior belongs to GraphicsSpriteGroup_CreateState.
  */
 GraphicsSpriteState *GraphicsSpriteState_Create(
     GraphicsSpriteGroup *group,
@@ -35,7 +35,7 @@ GraphicsSpriteState *GraphicsSpriteState_Create(
     u16 flagsToSet, u16 flagsToClear)
 {
     GraphicsSpriteState *state =
-        func_02073fc4(group, resources->field_04, resources->field_08,
+        GraphicsSpriteGroup_CreateState(group, resources->field_04, resources->field_08,
                       resources->field_0c, 2);
     GraphicsSpriteState_Configure(state, animationIndex, field3a, field28,
                   flagsToSet, flagsToClear);
@@ -75,7 +75,7 @@ asm GraphicsSpriteState *GraphicsSpriteState_Create(
     mov r5, r2
     mov r4, r3
     ldmib ip, {r1, r2, r3}
-    bl func_02073fc4
+    bl GraphicsSpriteGroup_CreateState
     ldrh r1, [sp, #0x1c]
     mov r2, r4
     ldrh ip, [sp, #0x20]

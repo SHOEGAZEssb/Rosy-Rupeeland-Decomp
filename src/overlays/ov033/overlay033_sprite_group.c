@@ -19,7 +19,7 @@ extern void __construct_array(void *base, s32 count, s32 size,
                               void *constructor, void *destructor);
 extern void func_02071ee0(void *descriptor, void *resourceContext,
                          s32 first, s32 second, s32 third);
-extern void *func_02073ffc(void *spriteContext, void *descriptor, s32 mode);
+extern void *GraphicsSpriteGroup_CreateStateFromSource(void *spriteContext, void *descriptor, s32 mode);
 extern void func_02073e48(void *sprite, s32 animation, s32 x, s32 y,
                          s32 initialFrame, s32 attribute, s32 priority);
 #ifdef __cplusplus
@@ -105,7 +105,7 @@ extern "C" void *func_ov033_021fce1c(void *group, void *spriteContext)
                           spec->resourceThird);
         }
 
-        void *sprite = func_02073ffc(spriteContext, descriptor,
+        void *sprite = GraphicsSpriteGroup_CreateStateFromSource(spriteContext, descriptor,
                                      spec->mode & 0xff);
         FIELD(void *, group, 0x108 + i * 4) = sprite;
         func_02073e48(sprite, spec->animation, spec->x, spec->y,

@@ -13,7 +13,7 @@
 .extern Actor_GetCollection
 .extern func_02034a60
 .extern Type7Actor_EnterFlag40000State
-.extern func_02073fc4
+.extern GraphicsSpriteGroup_CreateState
 .extern func_ov062_02210674
 .extern func_ov088_0221a98c
 .extern gHeapContext
@@ -49,7 +49,7 @@ func_ov088_0221af2c:
     mov r1, #0x2
     str r1, [sp, #0x0]
     ldmib r7, {r1, r2, r3}
-    bl func_02073fc4
+    bl GraphicsSpriteGroup_CreateState
     str r0, [r6, #0x250]
     ldrh r1, [r0, #0x24]
     cmp r5, #0x0

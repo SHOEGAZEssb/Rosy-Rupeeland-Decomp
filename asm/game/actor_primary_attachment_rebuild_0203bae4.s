@@ -6,8 +6,8 @@
 .extern Actor_GetCollection
 .extern func_02071ee0
 .extern func_02071f38
-.extern func_02073fc4
-.extern func_02074038
+.extern GraphicsSpriteGroup_CreateState
+.extern GraphicsSpriteGroup_ReleaseState
     .global Actor_RebuildPrimaryAttachment
     .type Actor_RebuildPrimaryAttachment, @function
 Actor_RebuildPrimaryAttachment: ; 0x0203bae4
@@ -20,13 +20,13 @@ Actor_RebuildPrimaryAttachment: ; 0x0203bae4
     cmp r1, #0x0
     beq .L_0203bb0c
     ldr r0, [r1, #0x0]
-    bl func_02074038
+    bl GraphicsSpriteGroup_ReleaseState
 .L_0203bb0c:
     ldr r1, [r4, #0x58]
     cmp r1, #0x0
     beq .L_0203bb20
     ldr r0, [r1, #0x0]
-    bl func_02074038
+    bl GraphicsSpriteGroup_ReleaseState
 .L_0203bb20:
     mov r1, #0x0
     add r0, r4, #0x1f0
@@ -48,7 +48,7 @@ Actor_RebuildPrimaryAttachment: ; 0x0203bae4
     ldr r1, [r4, #0x1f0]
     ldr r2, [r4, #0x1f4]
     ldr r3, [r4, #0x1f8]
-    bl func_02073fc4
+    bl GraphicsSpriteGroup_CreateState
     str r0, [r4, #0x54]
     ldr r0, [r4, #0x14]
     tst r0, #0x1

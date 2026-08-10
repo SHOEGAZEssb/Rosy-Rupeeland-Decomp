@@ -19,7 +19,7 @@ extern "C" {
 extern void *Heap_Alloc(u32, const void *, u32, void *);
 extern void *func_02003e20(u32, const void *, u32, void *);
 extern s32 GamePhaseCurrencyHud_GetCurrency(void *);
-extern void func_02074110(void *);
+extern void GraphicsSpriteGroup_ReleaseIndexedEntries(void *);
 extern void func_02092798(void *);
 extern void func_020927b8(void *);
 extern void func_02092814(void *, s32);
@@ -90,7 +90,7 @@ extern "C" void *func_ov022_021fd8a4(void *menu, s32 capacity)
     }
     func_02094550(FIELD(void *, menu, 0x30), 0);
     func_02094574(FIELD(void *, menu, 0x30));
-    func_02074110(FIELD(void *, FIELD(void *, menu, 0x30), 0x50));
+    GraphicsSpriteGroup_ReleaseIndexedEntries(FIELD(void *, FIELD(void *, menu, 0x30), 0x50));
     func_02092814(menu, gSystemState[0x5f] != 0 ? 0x7006 : 0x7007);
     return menu;
 }
@@ -154,6 +154,6 @@ extern "C" void func_ov022_021fdafc(void *menu)
         if (FIELD(s32, ui, 8) < FIELD(s32, ui, 4))
             FIELD(s32, FIELD(void *, ui, 0x50), 0x20) = 1;
     } else {
-        func_02074110(FIELD(void *, ui, 0x50));
+        GraphicsSpriteGroup_ReleaseIndexedEntries(FIELD(void *, ui, 0x50));
     }
 }

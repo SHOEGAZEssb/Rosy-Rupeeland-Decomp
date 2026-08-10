@@ -1,6 +1,6 @@
     .text
 /* Exact fallback; see src/overlays/ov022/overlay022_status_widget.c. */
-    .extern func_020742cc
+    .extern GraphicsSpriteGroupOwner_CreateGroup
     .extern gDebugFont
     .extern genrand_int32
 
@@ -10,7 +10,7 @@ func_ov022_021fd48c:
     ldr r1, L_021fd4d0
     mov r4, r0
     ldr r0, [r1, #0x0]
-    bl func_020742cc
+    bl GraphicsSpriteGroupOwner_CreateGroup
     str r0, [r4, #0x1c]
     mov r1, #0x60
     str r1, [r0, #0x1c]

@@ -1,7 +1,7 @@
 .text
 
 /* Exact fallback; see src/overlays/ov025/overlay025_selection_helpers.c. */
-.extern func_02074110
+.extern GraphicsSpriteGroup_ReleaseIndexedEntries
 .extern func_020954f4
 
 
@@ -11,9 +11,9 @@ func_ov025_022005e4:
     mov r5, r0
     ldr r4, [r5, #0x508]
     ldr r0, [r4, #0xe0]
-    bl func_02074110
+    bl GraphicsSpriteGroup_ReleaseIndexedEntries
     ldr r0, [r4, #0xe4]
-    bl func_02074110
+    bl GraphicsSpriteGroup_ReleaseIndexedEntries
     ldr r0, [r5, #0xdc]
     bl func_020954f4
     ldr r0, [r5, #0xe0]

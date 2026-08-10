@@ -14,9 +14,9 @@ extern "C" {
 #endif
 extern s32 func_0209189c(void *, s32, s32);
 extern void func_020948e4(void *, s32, s32);
-extern void func_020740a4(void *);
+extern void GraphicsSpriteGroup_AdvanceAnimations(void *);
 extern void func_ov031_021fd684(void *, s32);
-extern void *func_02073ffc(void *, void *, s32);
+extern void *GraphicsSpriteGroup_CreateStateFromSource(void *, void *, s32);
 extern void GraphicsSpriteState_SetAnimationIndex(void *, s32);
 extern void *Heap_Alloc(u32, const void *, s32, void *);
 extern void Heap_Free(void *);
@@ -60,8 +60,8 @@ extern "C" void func_ov031_021fd5c0(void *effect)
     void *renderer = FIELD(void *, effect, 0x54);
     FIELD(s32, renderer, 0x18) = FIELD(s32, effect, 0xc4) / 256;
     FIELD(s32, renderer, 0x1c) = FIELD(s32, effect, 0xd4) / 256;
-    func_020740a4(renderer);
-    func_020740a4(FIELD(void *, effect, 0x58));
+    GraphicsSpriteGroup_AdvanceAnimations(renderer);
+    GraphicsSpriteGroup_AdvanceAnimations(FIELD(void *, effect, 0x58));
 }
 
 /*
@@ -88,7 +88,7 @@ extern "C" void func_ov031_021fd69c(void *effect)
     for (s32 i = 0; i < 16; ++i) {
         if (FIELD(void *, effect, 0x74 + i * 4) != 0)
             continue;
-        void *sprite = func_02073ffc(FIELD(void *, effect, 0x54),
+        void *sprite = GraphicsSpriteGroup_CreateStateFromSource(FIELD(void *, effect, 0x54),
                                      (u8 *)effect + 0x5c, 1);
         GraphicsSpriteState_SetAnimationIndex(sprite,
             func_0209189c((u8 *)effect + 0x150, 4, 7) & 0xff);

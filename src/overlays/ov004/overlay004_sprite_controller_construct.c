@@ -22,7 +22,7 @@ extern "C" {
 extern const char data_ov004_021fcdd0[];
 extern const char data_ov004_021fcdd8[];
 extern void *gHeapContext;
-extern void *func_02073ffc(void *context, void *resource, s32 kind);
+extern void *GraphicsSpriteGroup_CreateStateFromSource(void *context, void *resource, s32 kind);
 extern void func_02073e48(void *sprite, s32 value, s32 x, s32 y, s32 mode,
                           s32 scale, s32 extra);
 extern void *Heap_Alloc(u32 size, const char *tag, s32 alignment,
@@ -32,7 +32,7 @@ extern void func_02094bbc(void *object, s32 x, s32 y, s32 z);
 extern void func_02095508(void *child);
 extern void func_020954f4(void *child);
 extern s32 func_020b35b0(char *output, const char *format, s32 value);
-extern void func_02074110(void *context);
+extern void GraphicsSpriteGroup_ReleaseIndexedEntries(void *context);
 #ifdef __cplusplus
 }
 #endif
@@ -40,7 +40,7 @@ extern void func_02074110(void *context);
 static void *overlay004_create_sprite(void *context, void *resource, s32 value,
                                       s32 x, s32 y)
 {
-    void *sprite = func_02073ffc(context, resource, 1);
+    void *sprite = GraphicsSpriteGroup_CreateStateFromSource(context, resource, 1);
     func_02073e48(sprite, value, x, y, 0, 0, 0);
     return sprite;
 }
@@ -122,6 +122,6 @@ void func_ov004_021fbf40(Overlay004SpriteControllerState *state)
     }
     overlay004_create_sprite(state->primaryContext_060, state->resource_054,
                              0x0c, x, 0x61);
-    func_02074110(state->primaryContext_060);
+    GraphicsSpriteGroup_ReleaseIndexedEntries(state->primaryContext_060);
     func_02094bbc(state->controller_06c, 0, 0xc0, 0);
 }

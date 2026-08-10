@@ -9,7 +9,7 @@
     .extern data_ov017_022016f8
     .extern data_ov017_0220170c
     .extern data_ov017_02201754
-    .extern func_020740a4
+    .extern GraphicsSpriteGroup_AdvanceAnimations
     .extern GraphicsAnimationInstance_GetSequenceDuration
     .extern GraphicsAnimationInstanceManager_CreateInstance
     .extern GraphicsAnimationInstanceManager_Update
@@ -467,7 +467,7 @@ L_022007d0:
     ldr r0, [r10, #0x244]
     bl GraphicsAnimationInstanceManager_Update
     ldr r0, [r10, #0x58]
-    bl func_020740a4
+    bl GraphicsSpriteGroup_AdvanceAnimations
     ldr r0, [r10, #0x2c0]
     bl func_ov017_021fcf6c
     ldr r0, L_02200874

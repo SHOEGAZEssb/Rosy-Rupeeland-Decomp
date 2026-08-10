@@ -16,7 +16,7 @@ extern void PackedTimer_Start(void *state);
 extern void PackedTimer_MarkComplete(void *state);
 extern void ActorDerivedType1_ResetToBaseState(void *actor);
 extern void func_020313b4(void *actor, void *state, s32 mode);
-extern void func_02074038(void *object);
+extern void GraphicsSpriteGroup_ReleaseState(void *object);
 #ifdef __cplusplus
 }
 #endif
@@ -101,7 +101,7 @@ s32 GamePhaseActorScriptVm_SetActorFlag1AndApplyStateMode2(GamePhaseActorScriptV
 s32 GamePhaseActorScriptVm_DestroySecondaryPresentationAndClearFlag1(GamePhaseActorScriptVm *self)
 {
     u8 *actor = (u8 *)self->actor;
-    func_02074038(*(void **)(actor + 0x58));
+    GraphicsSpriteGroup_ReleaseState(*(void **)(actor + 0x58));
     *(void **)(actor + 0x58) = 0;
     *(u32 *)(actor + 0x14) &= ~1;
     return 0;

@@ -78,12 +78,12 @@ extern void *ActorMotion_GetPosition(void *source);
 extern void *func_0201e250(void *self);
 extern void *func_0201e454(void *self, BurstSpriteConfig *config);
 extern void func_0201e3b8(void *sprite, s32 enabled);
-extern void *func_020742cc(void *font);
-extern void func_02074330(void *font, void *spriteGroup);
+extern void *GraphicsSpriteGroupOwner_CreateGroup(void *font);
+extern void GraphicsSpriteGroupOwner_DestroyGroup(void *font, void *spriteGroup);
 extern void func_02071bdc(void *owner, void *resource);
 extern void func_02071c38(void *owner, void *resource);
 extern void func_02071c94(void *owner, void *resource);
-extern void func_020740a4(void *spriteGroup);
+extern void GraphicsSpriteGroup_AdvanceAnimations(void *spriteGroup);
 #ifdef __cplusplus
 }
 #endif
@@ -116,7 +116,7 @@ TimedSpriteBurstManager *func_0201eefc(TimedSpriteBurstManager *self,
     self->sprites08.count = 0;
     self->state14 = 0;
     func_0201f0fc(&config);
-    self->spriteGroup10 = func_020742cc(gDebugFont);
+    self->spriteGroup10 = GraphicsSpriteGroupOwner_CreateGroup(gDebugFont);
     config.spriteGroup = self->spriteGroup10;
     config.field04 = 0;
     config.field08 = 0;
@@ -216,7 +216,7 @@ TimedSpriteBurstManager *func_0201f15c(TimedSpriteBurstManager *self)
         }
     }
     func_0201f0d0(&self->sprites08);
-    func_02074330(gDebugFont, self->spriteGroup10);
+    GraphicsSpriteGroupOwner_DestroyGroup(gDebugFont, self->spriteGroup10);
     func_02071bdc(data_020f4e18, self->resource18);
     func_02071c38(data_020f4e18, self->resource1c);
     func_02071c94(data_020f4e18, self->resource20);
@@ -260,7 +260,7 @@ s32 func_0201f2b4(TimedSpriteBurstManager *self)
         func_02005058(&position);
         return 1;
     }
-    func_020740a4(self->spriteGroup10);
+    GraphicsSpriteGroup_AdvanceAnimations(self->spriteGroup10);
     func_02005058(&position);
     return 0;
 }

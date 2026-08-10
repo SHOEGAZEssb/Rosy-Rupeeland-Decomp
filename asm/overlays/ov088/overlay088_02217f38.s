@@ -7,7 +7,7 @@
 .extern ActorCollection_GetSpriteOwner
 .extern Actor_GetCollection
 .extern func_02071ee0
-.extern func_02073fc4
+.extern GraphicsSpriteGroup_CreateState
 .extern func_ov088_02219960
 .extern func_ov088_0221ad9c
 .extern gHeapContext
@@ -35,7 +35,7 @@ func_ov088_02217f38:
     ldr r1, [r5, #0x1f0]
     ldr r2, [r5, #0x1f4]
     ldr r3, [r5, #0x1f8]
-    bl func_02073fc4
+    bl GraphicsSpriteGroup_CreateState
     str r0, [r5, #0x54]
     mov r0, #0x10
     ldr r1, .L_02218124
@@ -58,7 +58,7 @@ func_ov088_02217f38:
     mov r1, #0x2
     str r1, [sp, #0x0]
     ldmib r6, {r1, r2, r3}
-    bl func_02073fc4
+    bl GraphicsSpriteGroup_CreateState
     mov r2, r0
     str r0, [r5, #0x224]
     ldrh r1, [r2, #0x24]
@@ -71,7 +71,7 @@ func_ov088_02217f38:
     mov r1, #0x2
     str r1, [sp, #0x0]
     ldmib r6, {r1, r2, r3}
-    bl func_02073fc4
+    bl GraphicsSpriteGroup_CreateState
     str r0, [r5, #0x228]
     mov r2, r0
     ldrh r1, [r2, #0x24]
@@ -84,7 +84,7 @@ func_ov088_02217f38:
     mov r1, #0x2
     str r1, [sp, #0x0]
     ldmib r6, {r1, r2, r3}
-    bl func_02073fc4
+    bl GraphicsSpriteGroup_CreateState
     str r0, [r5, #0x22c]
     mov r3, r0
     ldrh r2, [r3, #0x24]
@@ -110,7 +110,7 @@ func_ov088_02217f38:
     mov r1, #0x2
     str r1, [sp, #0x0]
     ldmib r6, {r1, r2, r3}
-    bl func_02073fc4
+    bl GraphicsSpriteGroup_CreateState
     str r0, [r5, #0x258]
     mov r1, #0xf0
     strh r1, [r0, #0x2c]

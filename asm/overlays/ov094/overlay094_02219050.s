@@ -5,8 +5,8 @@
 .extern Heap_Alloc
 .extern data_ov094_02219bd8
 .extern data_ov094_02219f14
-.extern func_02073ffc
-.extern func_020740a4
+.extern GraphicsSpriteGroup_CreateStateFromSource
+.extern GraphicsSpriteGroup_AdvanceAnimations
 .extern func_02091b98
 .extern func_02091c7c
 .extern func_02095274
@@ -52,12 +52,12 @@ func_ov094_02219050:
     ldr r0, [r6, #0x10]
     add r1, r6, #0x4
     mov r2, #0x1
-    bl func_02073ffc
+    bl GraphicsSpriteGroup_CreateStateFromSource
     mov r5, r0
     ldr r0, [r6, #0x14]
     add r1, r6, #0x4
     mov r2, #0x1
-    bl func_02073ffc
+    bl GraphicsSpriteGroup_CreateStateFromSource
     ldrh r2, [r5, #0x24]
     mov r4, r0
     ldr r1, .L_022191f0
@@ -124,9 +124,9 @@ func_ov094_02219050:
     add r0, r6, #0x18
     bl func_02095360
     ldr r0, [r6, #0x10]
-    bl func_020740a4
+    bl GraphicsSpriteGroup_AdvanceAnimations
     ldr r0, [r6, #0x14]
-    bl func_020740a4
+    bl GraphicsSpriteGroup_AdvanceAnimations
     mov r0, #0x0
     ldmia sp!, {r4, r5, r6, pc}
 .L_022191e8: .word gGameWork

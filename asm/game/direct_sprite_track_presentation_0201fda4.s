@@ -5,7 +5,7 @@
 .extern func_02005058
 .extern func_02071eb8
 .extern func_02071f38
-.extern func_02074038
+.extern GraphicsSpriteGroup_ReleaseState
 
 .global func_0201fda4
     .type func_0201fda4, @function
@@ -16,7 +16,7 @@ func_0201fda4: ; 0x0201fda4
     str r1, [r4, #0x0]
     ldr r1, [r4, #0x14]
     ldr r0, [r1, #0x0]
-    bl func_02074038
+    bl GraphicsSpriteGroup_ReleaseState
     add r0, r4, #0x8
     bl func_02071f38
     add r0, r4, #0x1c

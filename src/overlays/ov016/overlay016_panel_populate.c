@@ -22,7 +22,7 @@ extern s32 func_02063190(void *);
 extern void func_02071ee0(void *, void *, s32, s32, s32);
 extern void GraphicsSpriteState_SetAnimationIndex(void *, s32);
 extern void func_02073e48(void *, s32, s32, s32, s32, s32, s32);
-extern void *func_02073ffc(void *, void *, s32);
+extern void *GraphicsSpriteGroup_CreateStateFromSource(void *, void *, s32);
 extern void GraphicsSpriteRenderer_SetFontResource(void *, void *);
 extern void GraphicsSpriteRenderer_DrawText(void *, s32, s32, s32, s32, s32, s32);
 extern void GraphicsSpriteCanvas_FillRect(void *, s32, s32, s32, s32, s32);
@@ -93,7 +93,7 @@ extern "C" void func_ov016_021fdaa0(void *state, void *selection, s32 image)
         GraphicsSpriteState_SetAnimationIndex(FIELD(void *, state, 0x88), (func_020629a0(header) + 6) & 0xff);
         overlay016_show_sprite(FIELD(void *, state, 0x88));
         overlay016_load_row_resource((u8 *)state + 0x18, header);
-        sprite = func_02073ffc(FIELD(void *, state, 4), (u8 *)state + 0x18, 2);
+        sprite = GraphicsSpriteGroup_CreateStateFromSource(FIELD(void *, state, 4), (u8 *)state + 0x18, 2);
         func_02073e48(sprite, func_02063190(func_02062918(header, 0)),
                       0x44, 0x36, 1, 0, 0);
 
@@ -103,7 +103,7 @@ extern "C" void func_ov016_021fdaa0(void *state, void *selection, s32 image)
                 void *rowResource = (u8 *)state + 0x24 + i * 0xc;
 
                 overlay016_load_row_resource(rowResource, row);
-                sprite = func_02073ffc(FIELD(void *, state, 4), rowResource, 2);
+                sprite = GraphicsSpriteGroup_CreateStateFromSource(FIELD(void *, state, 4), rowResource, 2);
                 func_02073e48(sprite, func_02063190(func_02062918(row, 0)),
                               x + 0x26, y + 0x60, 1, 0, 0);
                 if (FIELD(u8, selection, 0xe + i) == 2) {

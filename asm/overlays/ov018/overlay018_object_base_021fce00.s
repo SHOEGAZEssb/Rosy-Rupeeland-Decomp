@@ -8,7 +8,7 @@
     .extern func_02071eb8
     .extern func_02071ee0
     .extern func_02073e48
-    .extern func_02073ffc
+    .extern GraphicsSpriteGroup_CreateStateFromSource
     .extern func_02095308
     .extern func_020953c8
     .extern func_0209548c
@@ -37,7 +37,7 @@ func_ov018_021fce00:
     mov r0, r7
     add r1, r5, #0xa0
     mov r2, #0x2
-    bl func_02073ffc
+    bl GraphicsSpriteGroup_CreateStateFromSource
     mov r2, r6
     str r0, [r5, #0x9c]
     mov r0, #0x2

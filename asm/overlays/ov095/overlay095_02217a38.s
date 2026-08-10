@@ -6,7 +6,7 @@
 .extern ActorCollection_GetSpriteOwner
 .extern Actor_GetCollection
 .extern ActorExtendedType2_InitializePresentation
-.extern func_020740c8
+.extern GraphicsSpriteGroup_ReplaceStateResources
 .extern gHeapContext
 
 .global func_ov095_02217a38
@@ -35,7 +35,7 @@ func_ov095_02217a38:
     str r1, [sp, #0x0]
     ldr r1, [r5, #0xa8]
     ldmib r4, {r2, r3}
-    bl func_020740c8
+    bl GraphicsSpriteGroup_ReplaceStateResources
     ldmia sp!, {r3, r4, r5, pc}
 .L_02217a9c: .word data_ov095_0221ceb0
 .L_02217aa0: .word gHeapContext

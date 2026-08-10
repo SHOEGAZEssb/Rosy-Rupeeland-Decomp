@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/game_phase_script_vm_audio_actor_state_opcodes.c.
 .text
-.extern func_02074038
+.extern GraphicsSpriteGroup_ReleaseState
 .global GamePhaseActorScriptVm_DestroySecondaryPresentationAndClearFlag1
 GamePhaseActorScriptVm_DestroySecondaryPresentationAndClearFlag1:
     stmdb sp!, {r4, lr}
@@ -8,7 +8,7 @@ GamePhaseActorScriptVm_DestroySecondaryPresentationAndClearFlag1:
     ldr r0, [r4, #0x84]
     ldr r1, [r0, #0x58]
     ldr r0, [r1, #0x0]
-    bl func_02074038
+    bl GraphicsSpriteGroup_ReleaseState
     ldr r1, [r4, #0x84]
     mov r0, #0x0
     str r0, [r1, #0x58]

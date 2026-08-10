@@ -3,7 +3,7 @@
 /* Exact fallback; see src/overlays/ov022/overlay022_ui_runtime.c. */
 .extern data_021f5ee8
 .extern GamePhaseCurrencyHud_Update
-.extern func_020740a4
+.extern GraphicsSpriteGroup_AdvanceAnimations
 .extern func_02092b70
 .extern func_02094574
 .extern func_02095360
@@ -40,7 +40,7 @@ L_021ff0f8:
     ldr r1, [r1, #0x0]
     blx r1
     ldr r0, [r5, #0x1c]
-    bl func_020740a4
+    bl GraphicsSpriteGroup_AdvanceAnimations
 L_021ff130:
     ldr r0, [r4, #0x2b8]
     cmp r0, #0x0
@@ -65,11 +65,11 @@ L_021ff174:
     add r0, r5, #0x48
     bl func_02095360
     ldr r0, [r5, #0x0]
-    bl func_020740a4
+    bl GraphicsSpriteGroup_AdvanceAnimations
     ldr r0, [r4, #0x9c]
-    bl func_020740a4
+    bl GraphicsSpriteGroup_AdvanceAnimations
     ldr r0, [r4, #0xa0]
-    bl func_020740a4
+    bl GraphicsSpriteGroup_AdvanceAnimations
     ldr r0, [r4, #0x370]
     cmp r0, #0x10
     ldmgeia sp!, {r3, r4, r5, r6, r7, pc}

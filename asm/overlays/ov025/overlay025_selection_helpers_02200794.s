@@ -3,7 +3,7 @@
 /* Exact fallback; see src/overlays/ov025/overlay025_selection_helpers.c. */
 .extern data_ov025_022033b4
 .extern func_02071eb8
-.extern func_0207419c
+.extern GraphicsSpriteGroup_Destroy
 .extern func_020927b8
 .extern func_ov025_021fd5dc
 .extern gHeapContext
@@ -21,7 +21,7 @@ func_ov025_02200794:
     cmp r5, #0x0
     beq L_022007d0
     ldr r0, [r5, #0xc]
-    bl func_0207419c
+    bl GraphicsSpriteGroup_Destroy
     add r0, r5, #0x30
     bl func_020927b8
     mov r0, r5

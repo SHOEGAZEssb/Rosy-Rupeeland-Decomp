@@ -22,7 +22,7 @@
     .extern func_02002700
     .extern func_02071ea4
     .extern func_02072048
-    .extern func_020742cc
+    .extern GraphicsSpriteGroupOwner_CreateGroup
     .extern GraphicsSpriteRenderer_ClearTextBuffer
     .extern func_02091e28
     .extern func_02092364
@@ -109,7 +109,7 @@ L_021fcf84:
     blt L_021fcf08
     ldr r0, L_021fd170
     ldr r0, [r0, #0x0]
-    bl func_020742cc
+    bl GraphicsSpriteGroupOwner_CreateGroup
     str r0, [r10, #0x84]
     mov r1, #0x0
     str r1, [r10, #0x88]

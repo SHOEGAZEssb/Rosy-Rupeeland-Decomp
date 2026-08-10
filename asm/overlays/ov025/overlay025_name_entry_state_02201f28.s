@@ -18,8 +18,8 @@
 .extern data_ov025_022033bc
 .extern DisplayBrightness_IsMainTransitionComplete
 .extern func_02071eb8
-.extern func_02074110
-.extern func_0207419c
+.extern GraphicsSpriteGroup_ReleaseIndexedEntries
+.extern GraphicsSpriteGroup_Destroy
 .extern GraphicsSpriteRenderer_ClearTextBuffer
 .extern func_020791e0
 .extern func_0207f248
@@ -148,7 +148,7 @@ L_02202018:
     add r0, r5, r4, lsl #0x2
     ldr r0, [r0, #0xe4]
     ldr r0, [r0, #0xc]
-    bl func_02074110
+    bl GraphicsSpriteGroup_ReleaseIndexedEntries
     add r4, r4, #0x1
     cmp r4, #0x3
     blt L_02202018
@@ -742,7 +742,7 @@ L_02202888:
     cmp r4, #0x0
     beq L_022028e0
     ldr r0, [r4, #0xc]
-    bl func_0207419c
+    bl GraphicsSpriteGroup_Destroy
     add r0, r4, #0x30
     bl func_020927b8
     mov r0, r4
@@ -794,7 +794,7 @@ L_02202964:
     cmp r4, #0x0
     beq L_02202994
     ldr r0, [r4, #0x0]
-    bl func_0207419c
+    bl GraphicsSpriteGroup_Destroy
     add r0, r4, #0x4
     bl func_02071eb8
     mov r0, r4

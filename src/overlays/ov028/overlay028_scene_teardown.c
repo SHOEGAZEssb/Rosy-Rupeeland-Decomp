@@ -14,8 +14,8 @@ extern "C" {
 extern void Heap_Free(void *);
 extern void func_02071eb8(void *);
 extern void GraphicsSpriteState_SetAnimationIndex(void *, s32);
-extern void func_020740c8(void *, s32, s32, s32);
-extern void func_0207419c(void *);
+extern void GraphicsSpriteGroup_ReplaceStateResources(void *, s32, s32, s32);
+extern void GraphicsSpriteGroup_Destroy(void *);
 extern void GraphicsSpriteRenderer_QueuePaletteUploads(void *);
 extern void func_020927b8(void *);
 extern void func_02095308(void *);
@@ -47,7 +47,7 @@ extern "C" void *func_ov028_021fdfa8(void *state)
     FIELD(u32, state, 0x20) &= ~0x400u;
     void *sprite = FIELD(void *, state, 0x90);
     if (sprite != 0) {
-        func_020740c8(FIELD(void *, sprite, 0),
+        GraphicsSpriteGroup_ReplaceStateResources(FIELD(void *, sprite, 0),
                       FIELD(s32, state, 0x80), FIELD(s32, state, 0x84),
                       FIELD(s32, state, 0x88));
         GraphicsSpriteState_SetAnimationIndex(sprite, FIELD(u8, state, 0x94));
@@ -63,8 +63,8 @@ extern "C" void *func_ov028_021fdfa8(void *state)
         Heap_Free(child);
     }
     func_02095308((u8 *)state + 0x264);
-    func_0207419c(FIELD(void *, state, 0x54));
-    func_0207419c(FIELD(void *, state, 0x58));
+    GraphicsSpriteGroup_Destroy(FIELD(void *, state, 0x54));
+    GraphicsSpriteGroup_Destroy(FIELD(void *, state, 0x58));
     GraphicsSpriteRenderer_QueuePaletteUploads(data_020f4e14[0]);
     FIELD(const void *, state, 0x264) = data_ov028_021ff29c;
     func_02095308((u8 *)state + 0x264);

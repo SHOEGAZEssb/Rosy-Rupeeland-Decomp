@@ -13,7 +13,7 @@ extern "C" {
 #endif
 extern void func_020280d8(void *label);
 extern void func_ov046_0220ba80(void *panel);
-extern void func_0207419c(void *resourceOwner);
+extern void GraphicsSpriteGroup_Destroy(void *resourceOwner);
 extern void func_020927b8(void *transform);
 extern void func_ov038_021fce00(void *list);
 extern void func_02071eb8(void *resource);
@@ -35,7 +35,7 @@ static void releasePresentationContents(void *presentation)
         func_ov046_0220ba80(panel);
         Heap_Free(panel);
     }
-    func_0207419c(FIELD(void *, presentation, 0x60));
+    GraphicsSpriteGroup_Destroy(FIELD(void *, presentation, 0x60));
     void *model = FIELD(void *, presentation, 0x314);
     if (model != 0) {
         Overlay038DeleteFn *vtable = FIELD(Overlay038DeleteFn *, model, 0);

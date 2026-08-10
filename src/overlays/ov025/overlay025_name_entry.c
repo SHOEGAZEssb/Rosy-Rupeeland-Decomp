@@ -18,8 +18,8 @@ extern void func_02071ea4(void *);
 extern void func_02071ee0(void *, void *, s32, s32, s32);
 extern void GraphicsSpriteState_SetAnimationIndex(void *, s32);
 extern void func_02073e48(void *, s32, s32, s32, s32, s32, s32);
-extern void *func_02073ffc(void *, void *, s32);
-extern void *func_020742cc(void *);
+extern void *GraphicsSpriteGroup_CreateStateFromSource(void *, void *, s32);
+extern void *GraphicsSpriteGroupOwner_CreateGroup(void *);
 extern void GraphicsSpriteRenderer_SetFontResource(void *, void *);
 extern void GraphicsSpriteRenderer_ClearTextBuffer(void *);
 extern void GraphicsSpriteRenderer_DrawGlyph(void *, u16, s32, s32, s32);
@@ -54,11 +54,11 @@ extern "C" void *func_ov025_021fce00(void *widget)
     if (locale) FIELD(const u16 *, widget, 0x178) = data_ov025_02202fc0;
     func_02071ee0((u8 *)widget + 4, data_020f4e18,
                   0x4006, 0x4007, 0x4008);
-    FIELD(void *, widget, 0) = func_020742cc(data_020f4e14);
+    FIELD(void *, widget, 0) = GraphicsSpriteGroupOwner_CreateGroup(data_020f4e14);
     for (s32 i = 0; i < 16; ++i) FIELD(u16, widget, 0x180 + i * 2) = 0;
 
     for (s32 i = 0; i < 8; ++i) {
-        void *sprite = func_02073ffc(FIELD(void *, widget, 0),
+        void *sprite = GraphicsSpriteGroup_CreateStateFromSource(FIELD(void *, widget, 0),
                                      (u8 *)widget + 4, 1);
         FIELD(void *, widget, 0x10 + i * 4) = sprite;
         func_02073e48(sprite, 5, 0x33 + 22 * i, 13, 2, 0x100, 1);
@@ -66,7 +66,7 @@ extern "C" void *func_ov025_021fce00(void *widget)
 
     const u8 *special = data_ov025_02202f40 + locale * 16;
     for (s32 i = 0; i < 4; ++i) {
-        void *sprite = func_02073ffc(FIELD(void *, widget, 0),
+        void *sprite = GraphicsSpriteGroup_CreateStateFromSource(FIELD(void *, widget, 0),
                                      (u8 *)widget + 4, 1);
         FIELD(void *, widget, 0x30 + i * 4) = sprite;
         func_02073e48(sprite, 1, FIELD(s16, special, i * 4 + 2),
@@ -78,7 +78,7 @@ extern "C" void *func_ov025_021fce00(void *widget)
     for (s32 row = 0; row < 7; ++row) {
         for (s32 column = 0; column < 11; ++column) {
             s32 index = row * 11 + column;
-            void *sprite = func_02073ffc(FIELD(void *, widget, 0),
+            void *sprite = GraphicsSpriteGroup_CreateStateFromSource(FIELD(void *, widget, 0),
                                          (u8 *)widget + 4, 1);
             FIELD(void *, widget, 0x40 + index * 4) = sprite;
             s32 x = 0x13 + 22 * column + ((row & 1) ? 2 : -2);

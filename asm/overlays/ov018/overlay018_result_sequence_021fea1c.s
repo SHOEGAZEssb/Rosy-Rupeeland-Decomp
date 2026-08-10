@@ -7,7 +7,7 @@
     .extern data_ov018_021ffd68
     .extern func_02059344
     .extern func_02073e48
-    .extern func_02073ffc
+    .extern GraphicsSpriteGroup_CreateStateFromSource
     .extern GraphicsSpriteRenderer_ClearTextBuffer
     .extern func_020918f4
     .extern func_02091b98
@@ -229,7 +229,7 @@ L_021fec50:
     add r0, r10, r0, lsr #0x14
     add r10, r3, r0, asr #0xc
     ldr r0, [r4, #0xcc]
-    bl func_02073ffc
+    bl GraphicsSpriteGroup_CreateStateFromSource
     mov r11, r0
     add r0, r4, #0x3dc
     mov r1, #0x4

@@ -7,7 +7,7 @@
 .extern func_02071e70
 .extern func_02071e80
 .extern GraphicsSpriteState_SetAnimationIndex
-.extern func_02073fc4
+.extern GraphicsSpriteGroup_CreateState
 .text
 
     .global func_0204e9e8
@@ -39,7 +39,7 @@ func_0204e9e8: ; 0x0204e9e8
     mov r2, r7
     mov r3, r6
     str ip, [sp, #0x0]
-    bl func_02073fc4
+    bl GraphicsSpriteGroup_CreateState
     str r0, [r5, #0x54]
     ldrb r1, [r4, #0x11]
     bl GraphicsSpriteState_SetAnimationIndex

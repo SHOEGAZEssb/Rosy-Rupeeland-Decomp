@@ -18,9 +18,9 @@ extern void func_02091e28(void *);
 extern void func_02071ea4(void *);
 extern void func_02094ad4(void *);
 extern u32 genrand_int32(void);
-extern void *func_020742cc(void *);
+extern void *GraphicsSpriteGroupOwner_CreateGroup(void *);
 extern void func_02071ee0(void *, void *, s32, s32, s32);
-extern void *func_02073ffc(void *, void *, s32);
+extern void *GraphicsSpriteGroup_CreateStateFromSource(void *, void *, s32);
 extern void func_02073e48(void *, s32, s32, s32, s32, s32, s32);
 extern void *Heap_Alloc(u32, const void *, s32, void *);
 extern void Heap_Free(void *);
@@ -28,7 +28,7 @@ extern void *func_020953f4(void *, void *);
 extern void func_02094bbc(void *, s32, s32, s32);
 extern void func_02095508(void *);
 extern void *func_ov031_021fd1c0(void *);
-extern void func_0207419c(void *);
+extern void GraphicsSpriteGroup_Destroy(void *);
 extern void func_ov031_021fd254(void *);
 extern void func_02071eb8(void *);
 #ifdef __cplusplus
@@ -58,8 +58,8 @@ static void teardown_effect(void *effect)
             Heap_Free(motion);
         }
     }
-    func_0207419c(FIELD(void *, effect, 0x54));
-    func_0207419c(FIELD(void *, effect, 0x58));
+    GraphicsSpriteGroup_Destroy(FIELD(void *, effect, 0x54));
+    GraphicsSpriteGroup_Destroy(FIELD(void *, effect, 0x58));
     func_ov031_021fd254((u8 *)effect + 0xb4);
     func_02071eb8((u8 *)effect + 0x5c);
 }
@@ -83,30 +83,30 @@ extern "C" void *func_ov031_021fd258(void *effect)
     func_02094ad4((u8 *)effect + 0xb4);
     FIELD(u32, effect, 0x150) = 0;
     FIELD(u32, effect, 0x150) = genrand_int32();
-    FIELD(void *, effect, 0x54) = func_020742cc(gDebugFont);
-    FIELD(void *, effect, 0x58) = func_020742cc(gDebugFont);
+    FIELD(void *, effect, 0x54) = GraphicsSpriteGroupOwner_CreateGroup(gDebugFont);
+    FIELD(void *, effect, 0x58) = GraphicsSpriteGroupOwner_CreateGroup(gDebugFont);
     func_02071ee0((u8 *)effect + 0x5c, data_020f4e18[0],
                   0x23ae, 0x23af, 0x23b0);
     FIELD(s32, effect, 0x6c) = FIELD(s16, gGameWork, 0x1ce);
 
-    void *sprite = func_02073ffc(FIELD(void *, effect, 0x54),
+    void *sprite = GraphicsSpriteGroup_CreateStateFromSource(FIELD(void *, effect, 0x54),
                                   (u8 *)effect + 0x5c, 1);
     func_02073e48(sprite, 0, 0xa0, 0x48, 3, 0x2000, 0);
-    sprite = func_02073ffc(FIELD(void *, effect, 0x58),
+    sprite = GraphicsSpriteGroup_CreateStateFromSource(FIELD(void *, effect, 0x58),
                            (u8 *)effect + 0x5c, 1);
     func_02073e48(sprite, 2, 0xa0, 0x80, 3, 0, 0);
-    sprite = func_02073ffc(FIELD(void *, effect, 0x58),
+    sprite = GraphicsSpriteGroup_CreateStateFromSource(FIELD(void *, effect, 0x58),
                            (u8 *)effect + 0x5c, 1);
     func_02073e48(sprite, 0, 0xd1, 0x11, 3, 0, 0);
     if (FIELD(s32, effect, 0x6c) == 0) {
-        sprite = func_02073ffc(FIELD(void *, effect, 0x58),
+        sprite = GraphicsSpriteGroup_CreateStateFromSource(FIELD(void *, effect, 0x58),
                                (u8 *)effect + 0x5c, 1);
         func_02073e48(sprite, 8, 0xa0, 0x48, 3, 0x1800, 0);
     }
     FIELD(s32, effect, 0x68) = 0;
     void *composite = Heap_Alloc(0xa0, data_ov031_021fe788, 4, gHeapContext);
     if (composite != 0) {
-        sprite = func_02073ffc(FIELD(void *, effect, 0x54),
+        sprite = GraphicsSpriteGroup_CreateStateFromSource(FIELD(void *, effect, 0x54),
                                (u8 *)effect + 0x5c, 1);
         composite = func_020953f4(composite, sprite);
     }

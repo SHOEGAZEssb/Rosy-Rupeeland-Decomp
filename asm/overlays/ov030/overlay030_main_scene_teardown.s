@@ -6,7 +6,7 @@
 .extern data_ov030_021ff8b0
 .extern func_02071c38
 .extern func_02071eb8
-.extern func_0207419c
+.extern GraphicsSpriteGroup_Destroy
 .extern GraphicsSpriteRenderer_QueuePaletteUploads
 .extern GraphicsSpriteRenderer_SetTextGridObjectMode
 .extern func_020927b8
@@ -34,7 +34,7 @@ func_ov030_021fdf78:
     bl func_ov045_0220d2d8
 L_021fdfa8:
     ldr r0, [r4, #0x78]
-    bl func_0207419c
+    bl GraphicsSpriteGroup_Destroy
     ldr r5, [r4, #0x2c8]
     cmp r5, #0x0
     beq L_021fdfcc
@@ -125,7 +125,7 @@ func_ov030_021fe0c4:
     bl func_ov045_0220d2d8
 L_021fe0f4:
     ldr r0, [r4, #0x78]
-    bl func_0207419c
+    bl GraphicsSpriteGroup_Destroy
     ldr r5, [r4, #0x2c8]
     cmp r5, #0x0
     beq L_021fe118

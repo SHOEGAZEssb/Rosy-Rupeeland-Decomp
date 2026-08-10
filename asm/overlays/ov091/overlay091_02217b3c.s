@@ -12,7 +12,7 @@
 .extern Actor_SetActive
 .extern Actor_GetCollection
 .extern func_0204d570
-.extern func_02073ef8
+.extern GraphicsSpriteState_ReleaseFromGroup
 .extern gGameWork
 
 .global func_ov091_02217b3c
@@ -50,7 +50,7 @@ func_ov091_02217b3c:
     add r0, r0, #0x3000
     bl ActorMotion_BindActor
     ldr r0, [r5, #0x238]
-    bl func_02073ef8
+    bl GraphicsSpriteState_ReleaseFromGroup
     ldr r0, [r5, #0x234]
     cmp r0, #0x0
     beq .L_02217bdc

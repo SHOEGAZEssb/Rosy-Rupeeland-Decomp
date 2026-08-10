@@ -2,7 +2,7 @@
     .extern data_ov004_021fcda0
     .extern gSoundContext
     .extern func_020597fc
-    .extern func_0207419c
+    .extern GraphicsSpriteGroup_Destroy
     .extern func_ov004_021fb6e0
     .extern func_02071eb8
     .extern Heap_Free
@@ -30,9 +30,9 @@ L_021fb918:
     blx r1
 L_021fb930:
     ldr r0, [r4, #0x60]
-    bl func_0207419c
+    bl GraphicsSpriteGroup_Destroy
     ldr r0, [r4, #0x64]
-    bl func_0207419c
+    bl GraphicsSpriteGroup_Destroy
     add r0, r4, #0x6c
     bl func_ov004_021fb6e0
     add r0, r4, #0x54

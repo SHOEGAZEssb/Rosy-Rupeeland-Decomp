@@ -24,7 +24,7 @@ extern s32 func_02094c48(void *state);
 extern s32 func_02091c7c(void *animation, s32 channel);
 extern void func_02091b98(void *animation, s32 value);
 extern s32 func_020918f4(u32 *randomState, s32 selector);
-extern void *func_02073ffc(void *owner, void *resource, s32 mode);
+extern void *GraphicsSpriteGroup_CreateStateFromSource(void *owner, void *resource, s32 mode);
 extern s32 func_0209189c(u32 *randomState, s32 minimum, s32 maximum);
 extern void func_02073e48(void *drawObject, s32 mode, s32 x, s32 y,
                           s32 layer, s32 companionY, u16 scale);
@@ -64,7 +64,7 @@ s32 func_ov005_021fb75c(Overlay005RenderEffect *state)
 
         func_02091b98(state->animation_0b0, 8);
         scale = func_020918f4(&state->random_0ac, 2) ? 0x140 : 0x100;
-        drawObject = func_02073ffc(state->owner_0a8, state->resource_09c, 1);
+        drawObject = GraphicsSpriteGroup_CreateStateFromSource(state->owner_0a8, state->resource_09c, 1);
         x += func_0209189c(&state->random_0ac, -32, 32);
         func_02073e48(drawObject, 0, x, y, 3, 0x7fff - y, scale);
     }

@@ -13,13 +13,13 @@ typedef struct Overlay001SpriteOwnerState {
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_020740a4(void *owner);
+extern void GraphicsSpriteGroup_AdvanceAnimations(void *owner);
 #ifdef __cplusplus
 }
 #endif
 
 /*
- * Pass spriteOwner_04 to func_020740a4 and return no value. The callee owns any
+ * Pass spriteOwner_04 to GraphicsSpriteGroup_AdvanceAnimations and return no value. The callee owns any
  * graphics/SDK state effects; this wrapper changes no other state and performs
  * no direct hardware access.
  */
@@ -28,5 +28,5 @@ extern "C"
 #endif
 void func_ov001_021fbaa8(Overlay001SpriteOwnerState *state)
 {
-    func_020740a4(state->spriteOwner_04);
+    GraphicsSpriteGroup_AdvanceAnimations(state->spriteOwner_04);
 }

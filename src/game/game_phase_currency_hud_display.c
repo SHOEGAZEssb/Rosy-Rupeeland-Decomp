@@ -58,5 +58,5 @@ void GamePhaseCurrencyHud_SetVisible(GamePhaseCurrencyHud *self, s32 visible)
     self->flags |= 1;
     self->thresholdReminderTimer = 0;
     for (display = 0; display < 2; display++)
-        func_02074110(self->groups[display]);
+        GraphicsSpriteGroup_ReleaseIndexedEntries(self->groups[display]);
 }

@@ -9,8 +9,8 @@
 .extern func_02071ea4
 .extern func_02071eb8
 .extern func_02071ee0
-.extern func_02073ffc
-.extern func_020742cc
+.extern GraphicsSpriteGroup_CreateStateFromSource
+.extern GraphicsSpriteGroupOwner_CreateGroup
 .extern func_020918f4
 .extern func_020949ec
 .extern func_ov025_021fe4cc
@@ -57,11 +57,11 @@ L_021fdf1c:
     ldr r1, L_021fe0b8
     str r0, [r6, #0xf8]
     ldr r0, [r1, #0x0]
-    bl func_020742cc
+    bl GraphicsSpriteGroupOwner_CreateGroup
     ldr r1, L_021fe0bc
     str r0, [r6, #0xe0]
     ldr r0, [r1, #0x0]
-    bl func_020742cc
+    bl GraphicsSpriteGroupOwner_CreateGroup
     str r0, [r6, #0xe4]
     mov r1, #0x0
     str r1, [r0, #0x18]
@@ -70,7 +70,7 @@ L_021fdf1c:
     ldr r0, [r6, #0xe0]
     add r1, r6, #0xb0
     mov r2, #0x2
-    bl func_02073ffc
+    bl GraphicsSpriteGroup_CreateStateFromSource
     str r0, [r6, #0xe8]
     mov r1, #0x3
     strb r1, [r0, #0x3a]
@@ -83,7 +83,7 @@ L_021fdf1c:
     orr r0, r0, #0x6
     strh r0, [r3, #0x24]
     ldr r0, [r6, #0xe4]
-    bl func_02073ffc
+    bl GraphicsSpriteGroup_CreateStateFromSource
     str r0, [r6, #0xf0]
     mov r1, #0x3
     strb r1, [r0, #0x3a]
@@ -104,7 +104,7 @@ L_021fdf1c:
     ldr r0, [r6, #0xe0]
     add r1, r6, #0xd4
     mov r2, #0x1
-    bl func_02073ffc
+    bl GraphicsSpriteGroup_CreateStateFromSource
     str r0, [r6, #0xec]
     mov r1, #0x3
     strb r1, [r0, #0x3a]
@@ -117,7 +117,7 @@ L_021fdf1c:
     orr r0, r0, #0x6
     strh r0, [r3, #0x24]
     ldr r0, [r6, #0xe4]
-    bl func_02073ffc
+    bl GraphicsSpriteGroup_CreateStateFromSource
     str r0, [r6, #0xf4]
     mov r1, #0x3
     strb r1, [r0, #0x3a]

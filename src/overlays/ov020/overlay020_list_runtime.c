@@ -26,10 +26,10 @@ extern void func_02071ea4(void *);
 extern void func_02071eb8(void *);
 extern void func_02071ee0(void *, void *, s32, s32, s32);
 extern void func_02073e48(void *, s32, s32, s32, s32, s32, s32);
-extern void func_02073ef8(void *);
-extern void *func_02073ffc(void *, void *, s32);
-extern void func_0207419c(void *);
-extern void *func_020742cc(void *);
+extern void GraphicsSpriteState_ReleaseFromGroup(void *);
+extern void *GraphicsSpriteGroup_CreateStateFromSource(void *, void *, s32);
+extern void GraphicsSpriteGroup_Destroy(void *);
+extern void *GraphicsSpriteGroupOwner_CreateGroup(void *);
 extern void GraphicsSpriteRenderer_SetFontResource(void *, void *);
 extern void GraphicsSpriteRenderer_ClearTextBuffer(void *);
 extern void GraphicsSpriteRenderer_DrawText(void *, const void *, s32, s32, s32, s32, s32);
@@ -66,7 +66,7 @@ extern "C" void *func_ov020_021fce18(void *state, void *font, s32 capacity)
     func_02071ea4((u8 *)state + 8);
     func_02092798((u8 *)state + 0x14);
     FIELD(void *, state, 0) = font;
-    FIELD(void *, state, 4) = func_020742cc(font);
+    FIELD(void *, state, 4) = GraphicsSpriteGroupOwner_CreateGroup(font);
     FIELD(s32, FIELD(void *, state, 4), 0x18) = 0x2f;
     FIELD(s32, FIELD(void *, state, 4), 0x1c) = 0x1c;
     func_02071ee0((u8 *)state + 8, data_020f4e18[0],
@@ -108,7 +108,7 @@ extern "C" void *func_ov020_021fce18(void *state, void *font, s32 capacity)
  */
 extern "C" void *func_ov020_021fcfd4(void *state)
 {
-    func_0207419c(FIELD(void *, state, 4));
+    GraphicsSpriteGroup_Destroy(FIELD(void *, state, 4));
     void *controller = FIELD(void *, state, 0x44);
     if (controller != 0) {
         typedef void (*Destructor)(void *);
@@ -170,7 +170,7 @@ extern "C" void func_ov020_021fd100(void *state, s32 index)
     if (index < FIELD(s32, state, 0x40)) {
         Overlay020Row *row = &FIELD(Overlay020Row *, state, 0x38)[index];
         if (row->sprite == 0) {
-            row->sprite = func_02073ffc(FIELD(void *, state, 4),
+            row->sprite = GraphicsSpriteGroup_CreateStateFromSource(FIELD(void *, state, 4),
                                         (u8 *)state + 8, 1);
             func_02073e48(row->sprite, FIELD(u8, row->descriptor, 0x12),
                           row->x, row->y, 0, 0, 0);
@@ -187,7 +187,7 @@ extern "C" void func_ov020_021fd184(void *state, s32 index)
     if (index < FIELD(s32, state, 0x40)) {
         Overlay020Row *row = &FIELD(Overlay020Row *, state, 0x38)[index];
         if (row->sprite != 0) {
-            func_02073ef8(row->sprite);
+            GraphicsSpriteState_ReleaseFromGroup(row->sprite);
             row->sprite = 0;
         }
     }

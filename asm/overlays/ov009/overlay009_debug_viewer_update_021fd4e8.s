@@ -31,7 +31,7 @@
     .extern GraphicsSpriteState_SetFrameIndex
     .extern GraphicsSpriteState_ResetFrame
     .extern func_02073aa8
-    .extern func_020740a4
+    .extern GraphicsSpriteGroup_AdvanceAnimations
     .extern func_02074dc8
     .extern GraphicsSpriteRenderer_ClearTextBuffer
     .extern GraphicsSpriteRenderer_Printf
@@ -697,7 +697,7 @@ L_021fde4c:
     tst r0, #0x800
     bne L_021fde64
     ldr r0, [r9, #0x84]
-    bl func_020740a4
+    bl GraphicsSpriteGroup_AdvanceAnimations
 L_021fde64:
     ldr r1, [r9, #0x88]
     ldrh r0, [r1, #0x24]

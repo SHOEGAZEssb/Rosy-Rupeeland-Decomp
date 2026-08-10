@@ -1,11 +1,11 @@
 .text
-.extern func_0207419c
+.extern GraphicsSpriteGroup_Destroy
 .extern func_020c0c24
 .extern func_020927b8
 .extern func_02071eb8
-.extern func_02074110
+.extern GraphicsSpriteGroup_ReleaseIndexedEntries
 .extern func_ov044_0220baa0
-.extern func_02073ffc
+.extern GraphicsSpriteGroup_CreateStateFromSource
 .extern func_ov044_0220bb48
 .extern func_02073e48
 .extern func_020683f4
@@ -15,7 +15,7 @@ func_ov044_0220b8e4:
     stmdb sp!, {r4, lr}
     mov r4, r0
     ldr r0, [r4, #0x4]
-    bl func_0207419c
+    bl GraphicsSpriteGroup_Destroy
     ldr r0, [r4, #0x44]
     cmp r0, #0x0
     beq .L_0220b90c
@@ -95,7 +95,7 @@ func_ov044_0220b9c8:
 .L_0220b9fc:
     ldr r0, [r4, #0x44]
     ldr r0, [r0, #0x50]
-    bl func_02074110
+    bl GraphicsSpriteGroup_ReleaseIndexedEntries
 .L_0220ba08:
     ldr r0, [r4, #0x4]
     mov r1, #0x1
@@ -111,9 +111,9 @@ func_ov044_0220ba18:
     str r0, [r4, #0x48]
     ldr r0, [r4, #0x44]
     ldr r0, [r0, #0x50]
-    bl func_02074110
+    bl GraphicsSpriteGroup_ReleaseIndexedEntries
     ldr r0, [r4, #0x4]
-    bl func_02074110
+    bl GraphicsSpriteGroup_ReleaseIndexedEntries
     ldmia sp!, {r4, pc}
 .size func_ov044_0220ba18, . - func_ov044_0220ba18
 
@@ -165,7 +165,7 @@ func_ov044_0220baa0:
     ldr r0, [r7, #0x4]
     add r1, r7, #0x8
     mov r2, #0x1
-    bl func_02073ffc
+    bl GraphicsSpriteGroup_CreateStateFromSource
     ldr r1, [r7, #0x38]
     mov r4, r0
     add r0, r1, r6, lsl #0x5

@@ -57,12 +57,12 @@ extern u8 *data_021052fc;
 extern u8 data_02105310[];
 extern void *gDebugFont;
 extern void *gSoundContext;
-extern void *func_020742cc(void *);
-extern void func_02074330(void *, void *);
-extern void func_02074058(void *);
-extern void func_02074038(void *, void *);
-extern void func_020740a4(void *);
-extern void func_02074110(void *);
+extern void *GraphicsSpriteGroupOwner_CreateGroup(void *);
+extern void GraphicsSpriteGroupOwner_DestroyGroup(void *, void *);
+extern void GraphicsSpriteGroup_Clear(void *);
+extern void GraphicsSpriteGroup_ReleaseState(void *, void *);
+extern void GraphicsSpriteGroup_AdvanceAnimations(void *);
+extern void GraphicsSpriteGroup_ReleaseIndexedEntries(void *);
 extern void *AnimationResource_Init(void *, s32, s32, s32);
 extern u8 *GraphicsSpriteState_Create(void *, void *, s32, s32, s32, s32, s32);
 extern void GraphicsSpriteState_SetAnimationIndex(void *, s32);
@@ -124,10 +124,10 @@ void func_02026514(DualScreenUiGridState *self)
     s32 index;
     func_02025cd0(self, 0);
     if (self->spriteOwner00) {
-        func_02074058(self->spriteOwner00);
+        GraphicsSpriteGroup_Clear(self->spriteOwner00);
         for (index = 0; index < 4; index++)
             destroy_object(((void **)&self->descriptor04)[index]);
-        func_02074330(gDebugFont, self->spriteOwner00);
+        GraphicsSpriteGroupOwner_DestroyGroup(gDebugFont, self->spriteOwner00);
         self->spriteOwner00 = 0;
     }
     self->runtimeId74 = -1;
@@ -155,10 +155,10 @@ void func_02026588(DualScreenUiGridState *self, s32 alternateMode)
     s32 index;
     self->runtimeId74 = *(u16 *)(runtime + 0x4e);
     if (self->spriteOwner00) {
-        func_02074038(self->spriteOwner00, self->runtimeSprite6c);
+        GraphicsSpriteGroup_ReleaseState(self->spriteOwner00, self->runtimeSprite6c);
         destroy_object(self->runtimeDescriptor0c);
     } else {
-        self->spriteOwner00 = (u8 *)func_020742cc(gDebugFont);
+        self->spriteOwner00 = (u8 *)GraphicsSpriteGroupOwner_CreateGroup(gDebugFont);
         self->descriptor04 = (GridResourceDescriptor *)Heap_Alloc(
             0x10, data_020d6b58, 4, &gHeapContext);
         if (self->descriptor04)
@@ -273,7 +273,7 @@ static s32 rounded_fx_mul(s32 first, s32 second)
  * and sound 0x71, integrate the recovered damped spring, publish its angle to
  * runtimeSprite6c/auxiliary68, mirror a runtime virtual predicate into flags8c
  * bit 1, and update the sprite owner. Invalid state hides the owner through
- * func_02074110 before the final update.
+ * GraphicsSpriteGroup_ReleaseIndexedEntries before the final update.
  */
 void func_020269f8(DualScreenUiGridState *self)
 {
@@ -295,8 +295,8 @@ void func_020269f8(DualScreenUiGridState *self)
     }
     if (!self->spriteOwner00) return;
     if (!runtime || (self->flags8c & 1) || !func_020269a4(runtime)) {
-        func_02074110(self->spriteOwner00);
-        func_020740a4(self->spriteOwner00);
+        GraphicsSpriteGroup_ReleaseIndexedEntries(self->spriteOwner00);
+        GraphicsSpriteGroup_AdvanceAnimations(self->spriteOwner00);
         return;
     }
 
@@ -362,7 +362,7 @@ void func_020269f8(DualScreenUiGridState *self)
         self->flags8c |= 2;
     else
         self->flags8c &= (u8)~2;
-    func_020740a4(self->spriteOwner00);
+    GraphicsSpriteGroup_AdvanceAnimations(self->spriteOwner00);
 }
 
 /* Return field 0xd0 bit 7 from the supplied larger UI-derived object. */

@@ -23,7 +23,7 @@ extern "C" {
 #endif
 extern void func_02058eb8(...);
 extern void func_020597fc(...);
-extern void func_02074330(...);
+extern void GraphicsSpriteGroupOwner_DestroyGroup(...);
 extern void func_02071d4c(...);
 extern void GraphicsResourceSet_Init(GraphicsResourceSet *);
 extern void GraphicsResourceSet_Load(...);
@@ -82,8 +82,8 @@ extern "C" void *func_ov032_021fd7f8(void *scene)
         ((VirtualDestructor)vtable[1])(owned);
     }
 
-    func_02074330(gDebugFont, FIELD(void *, scene, 4));
-    func_02074330(data_020f4e14[0], FIELD(void *, scene, 0));
+    GraphicsSpriteGroupOwner_DestroyGroup(gDebugFont, FIELD(void *, scene, 4));
+    GraphicsSpriteGroupOwner_DestroyGroup(data_020f4e14[0], FIELD(void *, scene, 0));
     func_02071d4c(data_020f4e18[0], FIELD(void *, scene, 8));
     GraphicsResourceSet_Destroy((GraphicsResourceSet *)((u8 *)scene + 0xf18));
     __destroy_arr((u8 *)scene + 0xc44, 5, 0x6c, func_ov032_021fd7e0);

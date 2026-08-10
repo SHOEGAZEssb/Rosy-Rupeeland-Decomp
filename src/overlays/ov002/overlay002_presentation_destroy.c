@@ -16,7 +16,7 @@ typedef struct Overlay002PresentationDestroyState {
 extern "C" {
 #endif
 extern void *gSoundContext;
-extern void func_0207419c(void *resource);
+extern void GraphicsSpriteGroup_Destroy(void *resource);
 extern void func_020597fc(void *context, s32 value);
 extern void func_02071eb8(void *resource);
 #ifdef __cplusplus
@@ -34,8 +34,8 @@ extern "C"
 Overlay002PresentationDestroyState *func_ov002_021fb9c4(
     Overlay002PresentationDestroyState *state)
 {
-    func_0207419c(state->resourceA_010);
-    func_0207419c(state->resourceB_014);
+    GraphicsSpriteGroup_Destroy(state->resourceA_010);
+    GraphicsSpriteGroup_Destroy(state->resourceB_014);
     func_020597fc(gSoundContext, 0x79);
     func_02071eb8(state->resource_004);
     return state;

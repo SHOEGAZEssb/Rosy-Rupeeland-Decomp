@@ -6,8 +6,8 @@
 .extern func_02071bdc
 .extern func_02071c38
 .extern func_02071c94
-.extern func_02074058
-.extern func_02074330
+.extern GraphicsSpriteGroup_Clear
+.extern GraphicsSpriteGroupOwner_DestroyGroup
 .extern func_ov066_02210534
 
 .global func_ov066_0221096c
@@ -31,11 +31,11 @@ func_ov066_0221096c:
     cmp r5, r0
     blt .L_0221097c
     ldr r0, [r4, #0x1a4]
-    bl func_02074058
+    bl GraphicsSpriteGroup_Clear
     ldr r0, .L_022109f8
     ldr r1, [r4, #0x1a4]
     ldr r0, [r0, #0x0]
-    bl func_02074330
+    bl GraphicsSpriteGroupOwner_DestroyGroup
     ldr r0, .L_022109fc
     ldr r1, [r4, #0x1a8]
     ldr r0, [r0, #0x0]

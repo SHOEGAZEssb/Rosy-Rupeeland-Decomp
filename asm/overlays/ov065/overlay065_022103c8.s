@@ -10,8 +10,8 @@
 .extern OverlayManager_GetGlobal
 .extern func_02005058
 .extern VecFx32Triple_Destroy
-.extern func_02074058
-.extern func_02074330
+.extern GraphicsSpriteGroup_Clear
+.extern GraphicsSpriteGroupOwner_DestroyGroup
 
 .global func_ov065_022103c8
 func_ov065_022103c8:
@@ -49,11 +49,11 @@ func_ov065_022103c8:
     cmp r5, #0x2
     blt .L_022103e8
     ldr r0, [r10, #0x24]
-    bl func_02074058
+    bl GraphicsSpriteGroup_Clear
     ldr r0, .L_022104d8
     ldr r1, [r10, #0x24]
     ldr r0, [r0, #0x0]
-    bl func_02074330
+    bl GraphicsSpriteGroupOwner_DestroyGroup
     ldr r0, [r10, #0x14c]
     cmp r0, #0x0
     beq .L_0221046c

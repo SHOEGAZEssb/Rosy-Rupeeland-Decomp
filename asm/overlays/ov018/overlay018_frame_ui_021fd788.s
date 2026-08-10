@@ -3,7 +3,7 @@
     .extern data_021052fc
     .extern data_021f3ecc
     .extern GamePhaseRuntime_UpdateActorPresentationState
-    .extern func_020740a4
+    .extern GraphicsSpriteGroup_AdvanceAnimations
     .extern GraphicsSpriteRenderer_SetFontResource
     .extern GraphicsSpriteRenderer_DrawText
     .extern GraphicsSpriteCanvas_FillRect
@@ -48,9 +48,9 @@ L_021fd7c8:
     strh r0, [r1, #0x2c]
     strh r2, [r1, #0x2e]
     ldr r0, [r4, #0xc4]
-    bl func_020740a4
+    bl GraphicsSpriteGroup_AdvanceAnimations
     ldr r0, [r4, #0xc8]
-    bl func_020740a4
+    bl GraphicsSpriteGroup_AdvanceAnimations
     ldr r0, [r4, #0x5c]
     ldr r2, [r4, #0x60]
     ldr r1, [r4, #0xcc]
@@ -59,7 +59,7 @@ L_021fd7c8:
     rsb r0, r2, #0x0
     str r0, [r1, #0x1c]
     ldr r0, [r4, #0xcc]
-    bl func_020740a4
+    bl GraphicsSpriteGroup_AdvanceAnimations
     ldr r0, [r4, #0x400]
     cmp r0, #0x0
     beq L_021fd8f4

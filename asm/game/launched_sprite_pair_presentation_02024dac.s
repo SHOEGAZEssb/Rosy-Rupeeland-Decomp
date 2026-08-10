@@ -6,7 +6,7 @@
 .extern func_02005058
 .extern func_0201e28c
 .extern func_02071eb8
-.extern func_02074038
+.extern GraphicsSpriteGroup_ReleaseState
 .extern gGameWork
 
     .global func_02024dac
@@ -22,12 +22,12 @@ func_02024dac: ; 0x02024dac
     bl GameWork_SetFlag
     ldr r0, [r4, #0x48]
     ldr r1, [r4, #0x50]
-    bl func_02074038
+    bl GraphicsSpriteGroup_ReleaseState
     ldr r0, [r4, #0x4c]
     cmp r0, #0x0
     beq .L_02024dec
     ldr r1, [r4, #0x54]
-    bl func_02074038
+    bl GraphicsSpriteGroup_ReleaseState
 .L_02024dec:
     add r0, r4, #0x3c
     bl func_02071eb8

@@ -11,7 +11,7 @@
 .extern data_ov058_0220fcf4
 .extern data_ov058_0220fd0c
 .extern func_0201e250
-.extern func_020742cc
+.extern GraphicsSpriteGroupOwner_CreateGroup
 .extern GraphicsSpriteRenderer_GetObjectPaletteAddress
 .extern GraphicsSpriteRenderer_ConfigureTextGridPriority
 .extern func_02092798
@@ -63,11 +63,11 @@ func_ov058_0220e840:
     bl GraphicsSpriteRenderer_ConfigureTextGridPriority
     ldr r0, .L_0220ea44
     ldr r0, [r0, #0x0]
-    bl func_020742cc
+    bl GraphicsSpriteGroupOwner_CreateGroup
     str r0, [r4, #0xc]
     ldr r0, .L_0220ea48
     ldr r0, [r0, #0x0]
-    bl func_020742cc
+    bl GraphicsSpriteGroupOwner_CreateGroup
     str r0, [r4, #0x10]
     mov r0, #0x34
     ldr r1, .L_0220ea4c

@@ -7,7 +7,7 @@
 .extern GamePhaseCurrencyHud_UpdateDigits
 .extern GamePhaseCurrencyHud_SetVisible
 .extern func_02071ee0
-.extern func_020742cc
+.extern GraphicsSpriteGroupOwner_CreateGroup
 .extern gDebugFont
 .extern gGameWork
 
@@ -37,11 +37,11 @@ GamePhaseCurrencyHud_Init: ; 0x02010878
     ldr r0, L_02010b44
     strh r1, [r10, #0xce]
     ldr r0, [r0, #0x0]
-    bl func_020742cc
+    bl GraphicsSpriteGroupOwner_CreateGroup
     ldr r1, L_02010b48
     str r0, [r10, #0x0]
     ldr r0, [r1, #0x0]
-    bl func_020742cc
+    bl GraphicsSpriteGroupOwner_CreateGroup
     str r0, [r10, #0x4]
     mov r0, #0x100
     strh r0, [r10, #0xbc]

@@ -2,7 +2,7 @@
 ; Matching fallback for the portable implementation in src/overlays/ov094/overlay094_recovery.c.
 .extern Heap_Free
 .extern data_ov094_02219eb8
-.extern func_02073ef8
+.extern GraphicsSpriteState_ReleaseFromGroup
 .extern func_0209548c
 
 .global func_ov094_022179dc
@@ -12,7 +12,7 @@ func_ov094_022179dc:
     mov r4, r0
     str r1, [r4, #0x0]
     ldr r0, [r4, #0xa0]
-    bl func_02073ef8
+    bl GraphicsSpriteState_ReleaseFromGroup
     mov r0, r4
     bl func_0209548c
     mov r0, r4

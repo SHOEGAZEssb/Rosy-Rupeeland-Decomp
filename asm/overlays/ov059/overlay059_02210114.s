@@ -1,8 +1,8 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov059/overlay059_recovery.c.
 .extern func_02071f38
-.extern func_02074058
-.extern func_02074330
+.extern GraphicsSpriteGroup_Clear
+.extern GraphicsSpriteGroupOwner_DestroyGroup
 .extern gDebugFont
 
 .global func_ov059_02210114
@@ -12,11 +12,11 @@ func_ov059_02210114:
     ldr r0, [r4, #0x0]
     cmp r0, #0x0
     beq .L_02210144
-    bl func_02074058
+    bl GraphicsSpriteGroup_Clear
     ldr r0, .L_02210174
     ldr r1, [r4, #0x0]
     ldr r0, [r0, #0x0]
-    bl func_02074330
+    bl GraphicsSpriteGroupOwner_DestroyGroup
     mov r0, #0x0
     str r0, [r4, #0x0]
 .L_02210144:

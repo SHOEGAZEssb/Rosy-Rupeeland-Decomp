@@ -27,15 +27,15 @@ extern void func_020957bc(void *);
 extern void func_02091b6c(void *);
 extern void func_0201e14c(void *, s32);
 extern u32 genrand_int32(void);
-extern void *func_020742cc(void *);
-extern void *func_02073ffc(void *, void *, s32);
+extern void *GraphicsSpriteGroupOwner_CreateGroup(void *);
+extern void *GraphicsSpriteGroup_CreateStateFromSource(void *, void *, s32);
 extern void GraphicsSpriteState_SetAnimationIndex(void *, s32);
 extern void *Heap_Alloc(u32, const char *, s32, void *);
 extern void Heap_Free(void *);
 extern void *func_020953f4(void *, void *);
 extern void func_02094cf0(void *, const void *, s32);
 extern void func_02095508(void *);
-extern void func_0207419c(void *);
+extern void GraphicsSpriteGroup_Destroy(void *);
 extern void GraphicsSpriteRenderer_QueuePaletteUploads(void *);
 extern void GamePhaseRuntime_FinalizeActorCollections(void *, s32, s32);
 extern void func_ov013_021fce00(void *);
@@ -111,10 +111,10 @@ void *func_ov013_021fce2c(void *state)
     if ((FIELD(u32, FIELD(u8 *, data_021052fc, 0x30bc), 0x40) >> 18 & 3) == 2)
         FIELD(s32, state, 0x97c) = 1;
     FIELD(s32, state, 0x974) = 0;
-    FIELD(void *, state, 0x84) = func_020742cc(data_020f4e14);
-    FIELD(void *, state, 0x88) = func_020742cc(data_020f4e14);
+    FIELD(void *, state, 0x84) = GraphicsSpriteGroupOwner_CreateGroup(data_020f4e14);
+    FIELD(void *, state, 0x88) = GraphicsSpriteGroupOwner_CreateGroup(data_020f4e14);
 
-    selected = func_02073ffc(FIELD(void *, state, 0x84),
+    selected = GraphicsSpriteGroup_CreateStateFromSource(FIELD(void *, state, 0x84),
                               (u8 *)state + 0x54, 2);
     GraphicsSpriteState_SetAnimationIndex(selected, 2);
     FIELD(u8, selected, 0x3a) = 3;
@@ -150,8 +150,8 @@ void *func_ov013_021fd09c(void *state)
     overlay013_destroy_dynamic(FIELD(void *, state, 0x948), 1);
     overlay013_destroy_dynamic(FIELD(void *, state, 0x9a4), 1);
     overlay013_destroy_dynamic(FIELD(void *, state, 0x9a8), 2);
-    func_0207419c(FIELD(void *, state, 0x84));
-    func_0207419c(FIELD(void *, state, 0x88));
+    GraphicsSpriteGroup_Destroy(FIELD(void *, state, 0x84));
+    GraphicsSpriteGroup_Destroy(FIELD(void *, state, 0x88));
     GraphicsSpriteRenderer_QueuePaletteUploads(data_020f4e14);
     func_0201e14c((u8 *)data_021052fc + 0x2f7c, 0);
     func_ov013_021fce00((u8 *)state + 0x89c);

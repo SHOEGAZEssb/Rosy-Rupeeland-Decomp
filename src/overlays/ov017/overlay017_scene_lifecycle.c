@@ -18,7 +18,7 @@ extern void GX_SetGraphicsMode(s32, s32, s32);
 extern void func_020597fc(void *, s32);
 extern void func_02071eb8(void *);
 extern void func_020720d4(void *);
-extern void func_0207419c(void *);
+extern void GraphicsSpriteGroup_Destroy(void *);
 extern void func_02075290(void *);
 extern void Graphics3DResourceOwner_Destroy(void *);
 extern void Graphics3DLightSet_Destroy(void *);
@@ -78,7 +78,7 @@ extern "C" void *func_ov017_021ff16c(void *state)
     }
     owned = FIELD(void *, state, 0x25c);
     if (owned != 0) {
-        func_0207419c(FIELD(void *, owned, 0));
+        GraphicsSpriteGroup_Destroy(FIELD(void *, owned, 0));
         func_02071eb8((u8 *)owned + 0x10);
         func_02071eb8((u8 *)owned + 4);
         Heap_Free(owned);
@@ -94,7 +94,7 @@ extern "C" void *func_ov017_021ff16c(void *state)
         Heap_Free(owned);
     }
 
-    func_0207419c(FIELD(void *, state, 0x58));
+    GraphicsSpriteGroup_Destroy(FIELD(void *, state, 0x58));
     func_02092418((u8 *)state + 0x404);
     func_02075290(data_020f4e14);
     GX_SetGraphicsMode(1, 0, 0);

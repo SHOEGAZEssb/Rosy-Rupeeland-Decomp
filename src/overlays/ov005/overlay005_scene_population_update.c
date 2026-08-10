@@ -31,7 +31,7 @@ extern void func_020948d4(void *object, s32 value);
 extern void func_020948f8(void *object, s32 mode, s32 value);
 extern void func_02095274(void *container, void *object);
 extern void func_02095360(void *container);
-extern s32 func_020740a4(void *context);
+extern s32 GraphicsSpriteGroup_AdvanceAnimations(void *context);
 #ifdef __cplusplus
 }
 #endif
@@ -50,7 +50,7 @@ extern s32 func_020740a4(void *context);
  * +0x1C with mode 2/value 0x18000, set child +0x7C/+0x80 to 64/0, and enqueue
  * it into +0x148. The original assumes allocation succeeds before dereference.
  * Always advance +0x148 through func_02095360, update context +0x04 through
- * func_020740a4, and return that final result. MMIO destinations and random
+ * GraphicsSpriteGroup_AdvanceAnimations, and return that final result. MMIO destinations and random
  * ranges are confirmed; visual identities and +0x100's semantic name are not.
  */
 #ifdef __cplusplus
@@ -103,7 +103,7 @@ s32 func_ov005_021fbbe8(Overlay005ScenePopulation *state)
     }
 
     func_02095360((u8 *)state + 0x148);
-    return func_020740a4(FIELD(void *, state, 0x004));
+    return GraphicsSpriteGroup_AdvanceAnimations(FIELD(void *, state, 0x004));
 }
 
 #undef FIELD

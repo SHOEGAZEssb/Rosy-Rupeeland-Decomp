@@ -2,7 +2,7 @@
 /* Exact fallback; see src/overlays/ov021/overlay021_panel_runtime.c. */
     .extern data_021f5ee8
     .extern GamePhaseCurrencyHud_Update
-    .extern func_020740a4
+    .extern GraphicsSpriteGroup_AdvanceAnimations
     .extern func_02092b70
     .extern func_02094574
     .extern func_020958d8
@@ -39,7 +39,7 @@ L_021feecc:
     ldr r0, [r5, #0x58]
     bl func_02094574
     ldr r0, [r5, #0x1c]
-    bl func_020740a4
+    bl GraphicsSpriteGroup_AdvanceAnimations
 L_021feefc:
     ldr r0, [r4, #0x38c]
     cmp r0, #0x0
@@ -71,7 +71,7 @@ L_021fef54:
     ldr r0, [r4, #0x3ec]
     bl func_ov045_0220b908
     ldr r0, [r4, #0x94]
-    bl func_020740a4
+    bl GraphicsSpriteGroup_AdvanceAnimations
     ldr r0, [r4, #0x3f8]
     cmp r0, #0x10
     ldmgeia sp!, {r3, r4, r5, r6, r7, pc}

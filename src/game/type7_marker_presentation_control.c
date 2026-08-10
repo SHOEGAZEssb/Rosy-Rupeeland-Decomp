@@ -29,7 +29,7 @@ extern void *func_02071e60(void *resources, u32 id);
 extern void *func_02071e70(void *resources, u32 id);
 extern void *func_02071e80(void *resources, u32 id);
 extern void GraphicsSpriteState_SetAnimationIndex(void *presentation, u32 index);
-extern void func_020740c8(const void *presentationVtable, void *presentation,
+extern void GraphicsSpriteGroup_ReplaceStateResources(const void *presentationVtable, void *presentation,
                           void *first, void *second, void *third);
 extern s16 func_020ae024(s32 y, s32 x);
 #ifdef __cplusplus
@@ -95,7 +95,7 @@ void Type7MarkerPresentation_SelectAnimation(Type7MarkerPresentation *self, u32 
 /*
  * Input is a marker presentation. Reload resource IDs 0x138a/0x1078/0x138b
  * from data_020f4e18, pass them with the presentation and its leading word to
- * func_020740c8, then clear local halfword +0x0e. Resource/presentation state
+ * GraphicsSpriteGroup_ReplaceStateResources, then clear local halfword +0x0e. Resource/presentation state
  * may change through SDK-facing helpers; no value is returned and hardware is
  * not accessed directly.
  */
@@ -104,7 +104,7 @@ void Type7MarkerPresentation_ReloadResources(Type7MarkerPresentation *self)
     void *first = func_02071e60(data_020f4e18, 0x138a);
     void *second = func_02071e70(data_020f4e18, 0x1078);
     void *third = func_02071e80(data_020f4e18, 0x138b);
-    func_020740c8(*(const void **)self->presentation, self->presentation,
+    GraphicsSpriteGroup_ReplaceStateResources(*(const void **)self->presentation, self->presentation,
                   first, second, third);
     self->field0e = 0;
 }

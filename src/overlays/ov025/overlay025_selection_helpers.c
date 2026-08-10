@@ -18,8 +18,8 @@ extern void Heap_Free(void *);
 extern void GameWork_SetFlag(void *, s32);
 extern void func_020593ac(void *, s32, s32, s32, s32, s32);
 extern void func_02071eb8(void *);
-extern void func_02074110(void *);
-extern void func_0207419c(void *);
+extern void GraphicsSpriteGroup_ReleaseIndexedEntries(void *);
+extern void GraphicsSpriteGroup_Destroy(void *);
 extern s32 func_0209189c(void *, s32, s32);
 extern s32 func_020918f4(void *, s32);
 extern void func_02091b98(void *, s32);
@@ -78,8 +78,8 @@ extern "C" void func_ov025_0220058c(void *scene)
 extern "C" void func_ov025_022005e4(void *scene)
 {
     void *effect = FIELD(void *, scene, 0x508);
-    func_02074110(FIELD(void *, effect, 0xe0));
-    func_02074110(FIELD(void *, effect, 0xe4));
+    GraphicsSpriteGroup_ReleaseIndexedEntries(FIELD(void *, effect, 0xe0));
+    GraphicsSpriteGroup_ReleaseIndexedEntries(FIELD(void *, effect, 0xe4));
     func_020954f4(FIELD(void *, scene, 0xdc));
     func_020954f4(FIELD(void *, scene, 0xe0));
     for (s32 i = 0; i < 6; ++i)
@@ -111,7 +111,7 @@ extern "C" void func_ov025_02200648(void *scene, s32 selected)
 static void destroy_record_row(void *row)
 {
     if (row) {
-        func_0207419c(FIELD(void *, row, 0xc));
+        GraphicsSpriteGroup_Destroy(FIELD(void *, row, 0xc));
         func_020927b8((u8 *)row + 0x30);
         func_02071eb8(row);
         Heap_Free(row);

@@ -5,8 +5,8 @@
 .extern func_02005058
 .extern func_020050c8
 .extern VecFx32_Subtract
-.extern func_02073fc4
-.extern func_02074038
+.extern GraphicsSpriteGroup_CreateState
+.extern GraphicsSpriteGroup_ReleaseState
 .extern func_0201e3b8
 .extern data_020d6248
 .extern data_020d6098
@@ -18,7 +18,7 @@ func_0201e380: ; 0x0201e380
     str r1, [r4, #0x0]
     ldr r1, [r4, #0x4]
     ldr r0, [r1, #0x0]
-    bl func_02074038
+    bl GraphicsSpriteGroup_ReleaseState
     add r0, r4, #0x18
     bl func_02005058
     add r0, r4, #0x8

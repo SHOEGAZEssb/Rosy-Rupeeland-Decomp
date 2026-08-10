@@ -7,8 +7,8 @@
 .extern func_02071ee0
 .extern func_02071f38
 .extern GraphicsSpriteState_SetAnimationIndex
-.extern func_02073ffc
-.extern func_02074038
+.extern GraphicsSpriteGroup_CreateStateFromSource
+.extern GraphicsSpriteGroup_ReleaseState
 .extern func_02091a70
 .extern gGameWork
 .extern genrand_int32
@@ -49,12 +49,12 @@ func_02024e24: ; 0x02024e24
     str r0, [r4, #0x18]
     ldr r0, [r4, #0x48]
     ldr r1, [r4, #0x50]
-    bl func_02074038
+    bl GraphicsSpriteGroup_ReleaseState
     ldr r0, [r4, #0x4c]
     cmp r0, #0x0
     beq .L_02024eb4
     ldr r1, [r4, #0x54]
-    bl func_02074038
+    bl GraphicsSpriteGroup_ReleaseState
 .L_02024eb4:
     add r0, r4, #0x3c
     bl func_02071f38
@@ -69,7 +69,7 @@ func_02024e24: ; 0x02024e24
     ldr r0, [r4, #0x48]
     add r1, r4, #0x3c
     mov r2, #0x2
-    bl func_02073ffc
+    bl GraphicsSpriteGroup_CreateStateFromSource
     str r0, [r4, #0x50]
     mov r1, #0x1
     bl GraphicsSpriteState_SetAnimationIndex
@@ -79,7 +79,7 @@ func_02024e24: ; 0x02024e24
     ldr r0, [r4, #0x4c]
     add r1, r4, #0x3c
     mov r2, #0x2
-    bl func_02073ffc
+    bl GraphicsSpriteGroup_CreateStateFromSource
     mov r1, #0x1
     str r0, [r4, #0x54]
     bl GraphicsSpriteState_SetAnimationIndex

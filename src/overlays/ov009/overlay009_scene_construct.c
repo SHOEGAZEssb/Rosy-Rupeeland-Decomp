@@ -28,7 +28,7 @@ extern void func_02071ea4(void *member);
 extern void func_02092364(void *member);
 extern void func_020923a4(void *member);
 extern void GraphicsSpriteRenderer_ClearTextBuffer(void *manager);
-extern void *func_020742cc(void *manager);
+extern void *GraphicsSpriteGroupOwner_CreateGroup(void *manager);
 extern void *func_02002700(s32 size, const char *tag, s32 alignment,
                           void *heapContext);
 extern void func_020b4554(void *address, s32 size);
@@ -59,7 +59,7 @@ extern void func_0209285c(s32 value);
  * read it, flush/process it through func_020b4554 only on a full read, and then
  * close it. Failed opens or short reads leave the fields established so far.
  *
- * Retain func_020742cc's result at +0x84; clear +0x88, +0xD8/+0xDC/+0xE0,
+ * Retain GraphicsSpriteGroupOwner_CreateGroup's result at +0x84; clear +0x88, +0xD8/+0xDC/+0xE0,
  * +0xEC and +0x11C; set +0xA4 to one; and invoke the recovered setup helpers.
  * Select display routing zero, enable the main display, configure main display
  * mode/bank/BG2/BG3, write negative +0xF0/+0xF4 scroll values to both main BG2
@@ -117,7 +117,7 @@ void *func_ov009_021fce9c(void *state)
         CheckedFS_CloseFile(&file);
     }
 
-    FIELD(void *, state, 0x84) = func_020742cc(manager);
+    FIELD(void *, state, 0x84) = GraphicsSpriteGroupOwner_CreateGroup(manager);
     FIELD(s32, state, 0x88) = 0;
     FIELD(s32, state, 0xa4) = 1;
     FIELD(s32, state, 0xd8) = 0;

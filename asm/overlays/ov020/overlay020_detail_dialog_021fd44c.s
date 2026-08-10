@@ -7,8 +7,8 @@
     .extern func_02071ee0
     .extern func_02071f38
     .extern func_02073e48
-    .extern func_02073ffc
-    .extern func_02074058
+    .extern GraphicsSpriteGroup_CreateStateFromSource
+    .extern GraphicsSpriteGroup_Clear
     .extern GraphicsSpriteRenderer_SetFontResource
     .extern GraphicsSpriteRenderer_ClearTextBuffer
     .extern GraphicsSpriteRenderer_DrawGlyph
@@ -36,7 +36,7 @@ func_ov020_021fd44c:
     add r0, r6, #0x10
     bl func_02071f38
     ldr r0, [r6, #0xc]
-    bl func_02074058
+    bl GraphicsSpriteGroup_Clear
     ldr r1, L_021fd804
     mov r0, #0x18
     mla r8, r4, r0, r1
@@ -52,7 +52,7 @@ func_ov020_021fd44c:
     ldr r0, [r6, #0xc]
     add r1, r6, #0x10
     mov r2, #0x2
-    bl func_02073ffc
+    bl GraphicsSpriteGroup_CreateStateFromSource
     mov r1, #0x2
     str r1, [sp, #0x0]
     mov r1, #0x0
@@ -84,7 +84,7 @@ L_021fd530:
     ldr r0, [r6, #0xc]
     mov r2, #0x1
     add r1, r6, #0x1c
-    bl func_02073ffc
+    bl GraphicsSpriteGroup_CreateStateFromSource
     mov r1, #0x1
     str r1, [sp, #0x0]
     mov r1, #0x0
@@ -112,7 +112,7 @@ L_021fd598:
     ldr r0, [r6, #0xc]
     mov r2, #0x1
     add r1, r6, #0x1c
-    bl func_02073ffc
+    bl GraphicsSpriteGroup_CreateStateFromSource
     mov r1, #0x1
     str r1, [sp, #0x0]
     mov r1, #0x0
@@ -137,7 +137,7 @@ L_021fd5f4:
     ldr r0, [r6, #0xc]
     mov r2, #0x1
     add r1, r6, #0x1c
-    bl func_02073ffc
+    bl GraphicsSpriteGroup_CreateStateFromSource
     mov r1, #0x1
     str r1, [sp, #0x0]
     mov r1, #0x0

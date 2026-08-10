@@ -29,9 +29,9 @@
 .extern func_02071bdc
 .extern func_02071c38
 .extern func_02071c94
-.extern func_020740a4
-.extern func_020742cc
-.extern func_02074330
+.extern GraphicsSpriteGroup_AdvanceAnimations
+.extern GraphicsSpriteGroupOwner_CreateGroup
+.extern GraphicsSpriteGroupOwner_DestroyGroup
 .extern gDebugFont
 .extern gHeapContext
 .extern genrand_int32
@@ -65,7 +65,7 @@ func_0201f15c: ; 0x0201f15c
     ldr r0, .L_0201f1fc
     ldr r1, [r4, #0x10]
     ldr r0, [r0, #0x0]
-    bl func_02074330
+    bl GraphicsSpriteGroupOwner_DestroyGroup
     ldr r0, .L_0201f200
     ldr r1, [r4, #0x18]
     ldr r0, [r0, #0x0]

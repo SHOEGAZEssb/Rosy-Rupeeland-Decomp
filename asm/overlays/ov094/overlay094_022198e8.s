@@ -1,6 +1,6 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov094/overlay094_recovery.c.
-.extern func_02074110
+.extern GraphicsSpriteGroup_ReleaseIndexedEntries
 
 .global func_ov094_022198e8
 func_ov094_022198e8:
@@ -13,8 +13,8 @@ func_ov094_022198e8:
     ldreq r0, [r4, #0x10]
     streq r1, [r0, #0x20]
     ldmeqia sp!, {r4, pc}
-    bl func_02074110
+    bl GraphicsSpriteGroup_ReleaseIndexedEntries
     ldr r0, [r4, #0x10]
-    bl func_02074110
+    bl GraphicsSpriteGroup_ReleaseIndexedEntries
     ldmia sp!, {r4, pc}
 .size func_ov094_022198e8, . - func_ov094_022198e8

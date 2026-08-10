@@ -30,9 +30,9 @@ extern void func_02071ea4(void *);
 extern void func_02071eb8(void *);
 extern void func_02071ee0(void *, void *, s32, s32, s32);
 extern void func_02073e48(void *, s32, s32, s32, s32, s32, s32);
-extern void *func_02073ffc(void *, void *, s32);
-extern void func_0207419c(void *);
-extern void *func_020742cc(void *);
+extern void *GraphicsSpriteGroup_CreateStateFromSource(void *, void *, s32);
+extern void GraphicsSpriteGroup_Destroy(void *);
+extern void *GraphicsSpriteGroupOwner_CreateGroup(void *);
 extern void GraphicsSpriteRenderer_ConfigureTextGridPriority(void *, s32, s32);
 extern void func_02091b6c(void *);
 extern void func_02091e28(void *);
@@ -154,11 +154,11 @@ extern "C" void *func_ov018_021fcf68(void *state, void *context)
                   0x4000, 0x4001, 0x4002);
     func_02071ee0((u8 *)state + 0xb8, data_020f4e18[0],
                   0x1003, 0x1001, 0x1004);
-    FIELD(void *, state, 0xc4) = func_020742cc(data_020f4e14);
-    FIELD(void *, state, 0xc8) = func_020742cc(gDebugFont);
-    FIELD(void *, state, 0xcc) = func_020742cc(gDebugFont);
+    FIELD(void *, state, 0xc4) = GraphicsSpriteGroupOwner_CreateGroup(data_020f4e14);
+    FIELD(void *, state, 0xc8) = GraphicsSpriteGroupOwner_CreateGroup(gDebugFont);
+    FIELD(void *, state, 0xcc) = GraphicsSpriteGroupOwner_CreateGroup(gDebugFont);
 
-    sprite = func_02073ffc(FIELD(void *, state, 0xc8),
+    sprite = GraphicsSpriteGroup_CreateStateFromSource(FIELD(void *, state, 0xc8),
                            (u8 *)state + 0x94, 1);
     func_020957f0((u8 *)state + 0xd8, sprite, 6, 0, 0);
     func_02095820((u8 *)state + 0xd8, 0xe8, 0xb4);
@@ -178,13 +178,13 @@ extern "C" void *func_ov018_021fcf68(void *state, void *context)
         method(actor, 0);
     }
 
-    sprite = func_02073ffc(FIELD(void *, state, 0xc4),
+    sprite = GraphicsSpriteGroup_CreateStateFromSource(FIELD(void *, state, 0xc4),
                            (u8 *)state + 0xb8, 2);
     FIELD(void *, state, 0xd0) = sprite;
     func_02073e48(sprite, 0x21, FIELD(s16, actorData, 0x2c),
                   FIELD(s16, actorData, 0x2e), FIELD(u8, actorData, 0x3a),
                   FIELD(u16, actorData, 0x28), 0);
-    sprite = func_02073ffc(FIELD(void *, state, 0xc8),
+    sprite = GraphicsSpriteGroup_CreateStateFromSource(FIELD(void *, state, 0xc8),
                            (u8 *)state + 0xa0, 2);
     FIELD(void *, state, 0xd4) = sprite;
     func_02073e48(sprite, 0x18, 0xec, 0xac, 0, 0, 6);
@@ -223,9 +223,9 @@ static void destroyScene(void *state)
     func_ov018_021fdbd4(state);
     destroyVirtual(FIELD(void *, state, 0x418));
     func_02095308((u8 *)state + 0x3cc);
-    func_0207419c(FIELD(void *, state, 0xc4));
-    func_0207419c(FIELD(void *, state, 0xcc));
-    func_0207419c(FIELD(void *, state, 0xc8));
+    GraphicsSpriteGroup_Destroy(FIELD(void *, state, 0xc4));
+    GraphicsSpriteGroup_Destroy(FIELD(void *, state, 0xcc));
+    GraphicsSpriteGroup_Destroy(FIELD(void *, state, 0xc8));
     GraphicsSpriteRenderer_ConfigureTextGridPriority(gDebugFont, 0, 0x10);
     {
         void *actor = FIELD(void *, state, 0x184);

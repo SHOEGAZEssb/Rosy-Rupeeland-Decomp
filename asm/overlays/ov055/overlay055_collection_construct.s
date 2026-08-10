@@ -8,7 +8,7 @@
 .extern func_02071eb8
 .extern func_02071ee0
 .extern GraphicsSpriteState_SetAnimationIndex
-.extern func_02073fc4
+.extern GraphicsSpriteGroup_CreateState
 .extern func_ov055_0220e400
 .extern gHeapContext
 
@@ -59,13 +59,13 @@ func_ov055_0220e574:
     str r0, [sp, #0x0]
     ldmia r6, {r1, r2, r3}
     ldr r0, [r6, #0x24]
-    bl func_02073fc4
+    bl GraphicsSpriteGroup_CreateState
     str r0, [r6, #0x2c]
     mov r0, #0x2
     str r0, [sp, #0x0]
     ldmia r6, {r1, r2, r3}
     ldr r0, [r6, #0x24]
-    bl func_02073fc4
+    bl GraphicsSpriteGroup_CreateState
     str r0, [r6, #0x30]
     ldr r2, [r6, #0x2c]
     mov r1, #0x3
@@ -112,7 +112,7 @@ func_ov055_0220e574:
     ldr r1, [r6, #0xc]
     ldr r2, [r6, #0x10]
     ldr r3, [r6, #0x14]
-    bl func_02073fc4
+    bl GraphicsSpriteGroup_CreateState
     str r0, [r6, #0x34]
     mov r1, #0x0
     bl GraphicsSpriteState_SetAnimationIndex
@@ -129,7 +129,7 @@ func_ov055_0220e574:
     ldr r1, [r6, #0xc]
     ldr r2, [r6, #0x10]
     ldr r3, [r6, #0x14]
-    bl func_02073fc4
+    bl GraphicsSpriteGroup_CreateState
     str r0, [r6, #0x34]
     mov r1, #0x0
     bl GraphicsSpriteState_SetAnimationIndex

@@ -27,8 +27,8 @@
 .extern func_02071ea4
 .extern func_02071eb8
 .extern GraphicsSpriteState_SetAnimationIndex
-.extern func_02073ffc
-.extern func_02074038
+.extern GraphicsSpriteGroup_CreateStateFromSource
+.extern GraphicsSpriteGroup_ReleaseState
 
 .global func_02022ff4
     .type func_02022ff4, @function
@@ -101,7 +101,7 @@ func_02022ff4: ; 0x02022ff4
     ldr r0, [r4, #0x44]
     add r1, r4, #0x48
     mov r2, #0x2
-    bl func_02073ffc
+    bl GraphicsSpriteGroup_CreateStateFromSource
     str r0, [r4, #0x3c]
     add r0, sp, #0x60
     mov r1, #0x0

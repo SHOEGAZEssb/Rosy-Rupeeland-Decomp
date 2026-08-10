@@ -1,6 +1,6 @@
     .text
 /* Exact fallback; see src/overlays/ov020/overlay020_scene_helpers.c. */
-    .extern func_020740a4
+    .extern GraphicsSpriteGroup_AdvanceAnimations
     .extern func_02094574
     .extern func_020958d8
     .extern func_ov020_021fd44c
@@ -20,7 +20,7 @@ func_ov020_021fde6c:
     bl func_02094574
 L_021fde90:
     ldr r0, [r4, #0x6c]
-    bl func_020740a4
+    bl GraphicsSpriteGroup_AdvanceAnimations
     ldmia sp!, {r4, pc}
     .size func_ov020_021fde6c, . - func_ov020_021fde6c
 func_ov020_021fde9c:

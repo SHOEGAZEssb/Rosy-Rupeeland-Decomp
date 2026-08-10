@@ -2,7 +2,7 @@
     .extern data_020f4e18
     .extern func_020708c4
     .extern func_02071ee0
-    .extern func_02073ffc
+    .extern GraphicsSpriteGroup_CreateStateFromSource
 
 /* Exact fallback; see documented portable reconstruction in
  * src/overlays/ov009/overlay009_active_object_create.c. */
@@ -32,7 +32,7 @@ func_ov009_021fd360: ; 0x021fd360
     ldr r0, [r4, #0x84]
     add r1, r4, #0x78
     and r2, r2, #0xff
-    bl func_02073ffc
+    bl GraphicsSpriteGroup_CreateStateFromSource
     str r0, [r4, #0x88]
     mov r1, #0x3
     strb r1, [r0, #0x3a]

@@ -11200,7 +11200,7 @@ build build/reports/graphics_sprite_group.json: objdiff build/decomp/delinks/src
 
 build build/reports/graphics_sprite_group.txt: match_report build/reports/graphics_sprite_group.json | tools/report_objdiff.py
   report_json = build/reports/graphics_sprite_group.json
-  report_args = --section .text --function GraphicsSpriteState_ReleaseResources --function GraphicsSpriteState_PrepareResources --function func_02073ef8 --function GraphicsSpriteGroup_Init --function GraphicsSpriteGroup_AppendState --function GraphicsSpriteGroup_RemoveState --function func_02073fc4 --function func_02073ffc --function func_02074038 --function func_02074058 --function func_020740a4 --function func_020740c8 --function func_020740e8 --function func_02074110 --function GraphicsSpriteGroup_ReleaseResources --function GraphicsSpriteGroup_PrepareResources --function func_0207419c --function GraphicsSpriteState_InitGlobalPool
+  report_args = --section .text --function GraphicsSpriteState_ReleaseResources --function GraphicsSpriteState_PrepareResources --function GraphicsSpriteState_ReleaseFromGroup --function GraphicsSpriteGroup_Init --function GraphicsSpriteGroup_AppendState --function GraphicsSpriteGroup_RemoveState --function GraphicsSpriteGroup_CreateState --function GraphicsSpriteGroup_CreateStateFromSource --function GraphicsSpriteGroup_ReleaseState --function GraphicsSpriteGroup_Clear --function GraphicsSpriteGroup_AdvanceAnimations --function GraphicsSpriteGroup_ReplaceStateResources --function GraphicsSpriteGroup_ReplaceStateResourcesFromSource --function GraphicsSpriteGroup_ReleaseIndexedEntries --function GraphicsSpriteGroup_ReleaseResources --function GraphicsSpriteGroup_PrepareResources --function GraphicsSpriteGroup_Destroy --function GraphicsSpriteState_InitGlobalPool
 
 build build/reports/graphics_sprite_group_owner.json: objdiff build/decomp/delinks/src/graphics/graphics_sprite_group_owner.o | build/decomp/src/graphics/graphics_sprite_group_owner.o
   target_object = build/decomp/delinks/src/graphics/graphics_sprite_group_owner.o
@@ -11208,7 +11208,7 @@ build build/reports/graphics_sprite_group_owner.json: objdiff build/decomp/delin
 
 build build/reports/graphics_sprite_group_owner.txt: match_report build/reports/graphics_sprite_group_owner.json | tools/report_objdiff.py
   report_json = build/reports/graphics_sprite_group_owner.json
-  report_args = --section .text --function func_020742cc --function func_02074330
+  report_args = --section .text --function GraphicsSpriteGroupOwner_CreateGroup --function GraphicsSpriteGroupOwner_DestroyGroup
 
 build build/reports/graphics_sprite_pool.json: objdiff build/decomp/delinks/src/graphics/graphics_sprite_pool.o | build/decomp/src/graphics/graphics_sprite_pool.o
   target_object = build/decomp/delinks/src/graphics/graphics_sprite_pool.o

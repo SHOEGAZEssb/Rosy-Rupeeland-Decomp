@@ -14,10 +14,10 @@ typedef struct Overlay028Row {
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_02074110(void *);
+extern void GraphicsSpriteGroup_ReleaseIndexedEntries(void *);
 extern void func_02073e48(void *, s32, s32, s32, s32, s32, s32);
-extern void func_02073ef8(void *);
-extern void *func_02073ffc(void *, void *, s32);
+extern void GraphicsSpriteState_ReleaseFromGroup(void *);
+extern void *GraphicsSpriteGroup_CreateStateFromSource(void *, void *, s32);
 extern void func_ov028_021fd390(void *, s32);
 extern void func_ov028_021fd420(void *, s32);
 #ifdef __cplusplus
@@ -31,8 +31,8 @@ extern void func_ov028_021fd420(void *, s32);
 extern "C" void func_ov028_021fd2c4(void *state)
 {
     FIELD(s32, state, 0x48) = 0;
-    func_02074110(FIELD(void *, FIELD(void *, state, 0x44), 0x50));
-    func_02074110(FIELD(void *, state, 4));
+    GraphicsSpriteGroup_ReleaseIndexedEntries(FIELD(void *, FIELD(void *, state, 0x44), 0x50));
+    GraphicsSpriteGroup_ReleaseIndexedEntries(FIELD(void *, state, 4));
 }
 
 /*
@@ -75,7 +75,7 @@ extern "C" void func_ov028_021fd390(void *state, s32 index)
     if (index < FIELD(s32, state, 0x40)) {
         Overlay028Row *row = &FIELD(Overlay028Row *, state, 0x38)[index];
         if (row->sprite == 0) {
-            row->sprite = func_02073ffc(FIELD(void *, state, 4),
+            row->sprite = GraphicsSpriteGroup_CreateStateFromSource(FIELD(void *, state, 4),
                                         (u8 *)state + 8, 1);
             s32 selector = index;
             if (row->descriptor != 0)
@@ -94,7 +94,7 @@ extern "C" void func_ov028_021fd420(void *state, s32 index)
     if (index < FIELD(s32, state, 0x40)) {
         Overlay028Row *row = &FIELD(Overlay028Row *, state, 0x38)[index];
         if (row->sprite != 0) {
-            func_02073ef8(row->sprite);
+            GraphicsSpriteState_ReleaseFromGroup(row->sprite);
             row->sprite = 0;
         }
     }

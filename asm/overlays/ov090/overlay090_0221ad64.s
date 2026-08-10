@@ -5,8 +5,8 @@
 .extern AnimationResource_Init
 .extern ActorCollection_GetSpriteOwner
 .extern Actor_GetCollection
-.extern func_02073ef8
-.extern func_02073fc4
+.extern GraphicsSpriteState_ReleaseFromGroup
+.extern GraphicsSpriteGroup_CreateState
 .extern gHeapContext
 
 .global func_ov090_0221ad64
@@ -19,7 +19,7 @@ func_ov090_0221ad64:
     mov r5, r3
     cmp r0, #0x0
     beq .L_0221ad88
-    bl func_02073ef8
+    bl GraphicsSpriteState_ReleaseFromGroup
 .L_0221ad88:
     ldr r0, [r4, #0x204]
     cmp r0, #0x0
@@ -51,7 +51,7 @@ func_ov090_0221ad64:
     mov r1, #0x2
     str r1, [sp, #0x0]
     ldmib r5, {r1, r2, r3}
-    bl func_02073fc4
+    bl GraphicsSpriteGroup_CreateState
     str r0, [r4, #0x200]
     ldmia sp!, {r3, r4, r5, r6, r7, pc}
 .L_0221ae04:

@@ -3,7 +3,7 @@
 .extern Heap_Free
 .extern data_ov094_02219ef0
 .extern func_02071eb8
-.extern func_02073ef8
+.extern GraphicsSpriteState_ReleaseFromGroup
 .extern func_0209548c
 
 .global func_ov094_02218b48
@@ -13,7 +13,7 @@ func_ov094_02218b48:
     mov r4, r0
     str r1, [r4, #0x0]
     ldr r0, [r4, #0xb4]
-    bl func_02073ef8
+    bl GraphicsSpriteState_ReleaseFromGroup
     add r0, r4, #0xa4
     bl func_02071eb8
     mov r0, r4

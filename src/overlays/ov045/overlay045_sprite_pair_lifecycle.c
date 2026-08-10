@@ -27,9 +27,9 @@ extern "C" void func_02071ea4(void *owner);
 extern "C" void func_02071eb8(void *owner);
 extern "C" void func_02071ee0(void *owner, void *archive, s32 first,
                                s32 second, s32 third);
-extern "C" void *func_020742cc(void *font);
-extern "C" void func_0207419c(void *resource);
-extern "C" void *func_02073ffc(void *fontState, void *owner, s32 selector);
+extern "C" void *GraphicsSpriteGroupOwner_CreateGroup(void *font);
+extern "C" void GraphicsSpriteGroup_Destroy(void *resource);
+extern "C" void *GraphicsSpriteGroup_CreateStateFromSource(void *fontState, void *owner, s32 selector);
 extern "C" void func_02073e48(void *sprite, s32 value, s32 x, s32 y,
                                s32 enabled, s32 zero1, s32 zero2);
 extern "C" u32 genrand_int32(void);
@@ -74,11 +74,11 @@ extern "C" void *func_ov045_0220be4c(void *object, s32 first, s32 second,
                    0x49, 0x4a, 0x4b);
     SpritePairFields *fields = (SpritePairFields *)object;
     SpritePairEntry *firstSprite = fields->sprite20 = (SpritePairEntry *)
-        func_02073ffc(FIELD(void *, object, 0x1c), (u8 *)object + 4, 2);
+        GraphicsSpriteGroup_CreateStateFromSource(FIELD(void *, object, 0x1c), (u8 *)object + 4, 2);
     firstSprite->field3A = 1;
     firstSprite->field28 = 0x10;
     FIELD(void *, object, 0x24) =
-        func_02073ffc(FIELD(void *, object, 0x1c), (u8 *)object + 0x10, 1);
+        GraphicsSpriteGroup_CreateStateFromSource(FIELD(void *, object, 0x1c), (u8 *)object + 0x10, 1);
     func_02073e48(FIELD(void *, object, 0x24), spriteValue,
                    0x54, 0x54, 1, 0, 0);
     return object;
@@ -91,7 +91,7 @@ extern "C" void *func_ov045_0220be4c(void *object, s32 first, s32 second,
 extern "C" void *func_ov045_0220bf38(void *object)
 {
     FIELD(void *, object, 0) = data_ov045_0220d594;
-    func_0207419c(FIELD(void *, object, 0x1c));
+    GraphicsSpriteGroup_Destroy(FIELD(void *, object, 0x1c));
     func_02071eb8((u8 *)object + 0x10);
     func_02071eb8((u8 *)object + 4);
     return object;
@@ -104,7 +104,7 @@ extern "C" void *func_ov045_0220bf38(void *object)
 extern "C" void *func_ov045_0220bf6c(void *object)
 {
     FIELD(void *, object, 0) = data_ov045_0220d594;
-    func_0207419c(FIELD(void *, object, 0x1c));
+    GraphicsSpriteGroup_Destroy(FIELD(void *, object, 0x1c));
     func_02071eb8((u8 *)object + 0x10);
     func_02071eb8((u8 *)object + 4);
     Heap_Free(object);
@@ -118,7 +118,7 @@ extern "C" void *func_ov045_0220bf6c(void *object)
 extern "C" void *func_ov045_0220bfa8(void *object)
 {
     FIELD(void *, object, 0) = data_ov045_0220d594;
-    func_0207419c(FIELD(void *, object, 0x1c));
+    GraphicsSpriteGroup_Destroy(FIELD(void *, object, 0x1c));
     func_02071eb8((u8 *)object + 0x10);
     func_02071eb8((u8 *)object + 4);
     return object;
@@ -132,7 +132,7 @@ extern "C" void *func_ov045_0220bfa8(void *object)
  */
 extern "C" void func_ov045_0220bfdc(void *object)
 {
-    FIELD(void *, object, 0x1c) = func_020742cc(gDebugFont);
+    FIELD(void *, object, 0x1c) = GraphicsSpriteGroupOwner_CreateGroup(gDebugFont);
     FIELD(s32, FIELD(void *, object, 0x1c), 0x1c) = 0x60;
     FIELD(void *, object, 0x20) = 0;
     FIELD(void *, object, 0x24) = 0;

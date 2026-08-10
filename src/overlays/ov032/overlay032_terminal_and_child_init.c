@@ -19,7 +19,7 @@ extern const u8 data_ov032_02202348[];
 extern "C" {
 #endif
 extern void func_02058ce0(void *);
-extern void func_02074330(...);
+extern void GraphicsSpriteGroupOwner_DestroyGroup(...);
 extern void func_020b44e8(void);
 extern void GraphicsSpriteRenderer_ClearTextBuffer(void *);
 extern void GraphicsResourceSet_Load(...);
@@ -60,8 +60,8 @@ extern "C" s32 func_ov032_02200da4(void *scene)
             void **vtable = FIELD(void **, owned, 0);
             ((VirtualDestructor)vtable[1])(owned);
         }
-        func_02074330(gDebugFont, FIELD(void *, scene, 4));
-        func_02074330(data_020f4e14[0], FIELD(void *, scene, 0));
+        GraphicsSpriteGroupOwner_DestroyGroup(gDebugFont, FIELD(void *, scene, 4));
+        GraphicsSpriteGroupOwner_DestroyGroup(data_020f4e14[0], FIELD(void *, scene, 0));
         REG32(0x04000000) = (REG32(0x04000000) & ~0x1f00) | 0x1400;
         REG32(0x04001000) &= ~0x1f00;
         func_020b44e8();

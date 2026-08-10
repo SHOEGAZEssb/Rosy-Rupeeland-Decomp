@@ -10,7 +10,7 @@
 .extern Actor_GetCollection
 .extern Actor_InitializeFromDescriptor
 .extern GraphicsSpriteState_SetAnimationIndex
-.extern func_02073fc4
+.extern GraphicsSpriteGroup_CreateState
 .extern gGameWork
 .extern gHeapContext
 
@@ -86,7 +86,7 @@ ActorDerivedType1_InitializeResources: ; 0x020353a0
     mov r1, #0x2
     str r1, [sp, #0x0]
     ldmib r4, {r1, r2, r3}
-    bl func_02073fc4
+    bl GraphicsSpriteGroup_CreateState
     str r0, [r10, #0x54]
     mov r1, #0x0
     bl GraphicsSpriteState_SetAnimationIndex

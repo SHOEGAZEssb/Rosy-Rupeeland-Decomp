@@ -9,7 +9,7 @@
 #define FIELD(type, base, offset) (*(type *)((u8 *)(base) + (offset)))
 
 extern "C" void func_020958d8(void *presentation);
-extern "C" void func_020740a4(void *resource);
+extern "C" void GraphicsSpriteGroup_AdvanceAnimations(void *resource);
 extern "C" void func_02094574(void *viewport);
 extern "C" void func_ov001_021fbaa8(void *preview);
 
@@ -23,11 +23,11 @@ extern "C" void func_ov044_0220c880(void *object)
 {
     func_020958d8((u8 *)object + 0xd0);
     func_020958d8((u8 *)object + 0x17c);
-    func_020740a4(FIELD(void *, object, 0xbc));
+    GraphicsSpriteGroup_AdvanceAnimations(FIELD(void *, object, 0xbc));
     void *panel = FIELD(void *, object, 0x228);
     if (panel) {
         func_02094574(FIELD(void *, panel, 0x44));
-        func_020740a4(FIELD(void *, panel, 4));
+        GraphicsSpriteGroup_AdvanceAnimations(FIELD(void *, panel, 4));
     }
     void *preview = FIELD(void *, object, 0x22c);
     if (preview)

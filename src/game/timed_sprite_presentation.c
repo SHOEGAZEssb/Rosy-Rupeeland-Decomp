@@ -21,8 +21,8 @@ extern void func_0200500c(PresentationTrack *track,s32 first,s32 second,s32 thir
 extern void func_02005058(void *track);
 extern void func_020050c8(PresentationTrack *first,PresentationTrack *second);
 extern void VecFx32_Subtract(void *output,PresentationTrack *track,s32 argument);
-extern u8 *func_02073fc4(u32 first,u32 second,u32 third,u32 fourth,u32 fifth);
-extern void func_02074038(void *spriteOwner);
+extern u8 *GraphicsSpriteGroup_CreateState(u32 first,u32 second,u32 third,u32 fourth,u32 fifth);
+extern void GraphicsSpriteGroup_ReleaseState(void *spriteOwner);
 #ifdef __cplusplus
 }
 #endif
@@ -55,7 +55,7 @@ TimedSpritePresentation *func_0201e290(TimedSpritePresentation *self,u8 *config)
     func_0200500c(&self->first08,0,0,0);
     func_0200500c(&self->second18,0,0,0);
     self->remaining28=0;
-    self->sprite=func_02073fc4(*(u32 *)(config+0),*(u32 *)(config+4),
+    self->sprite=GraphicsSpriteGroup_CreateState(*(u32 *)(config+0),*(u32 *)(config+4),
         *(u32 *)(config+8),*(u32 *)(config+0xc),*(u32 *)(config+0x34)&0xff);
     *(u16 *)(self->sprite+0x24)|=4;
     return self;
@@ -65,7 +65,7 @@ TimedSpritePresentation *func_0201e290(TimedSpritePresentation *self,u8 *config)
 TimedSpritePresentation *func_0201e308(TimedSpritePresentation *self)
 {
     self->vtable=data_020d6098;
-    func_02074038(*(void **)self->sprite);
+    GraphicsSpriteGroup_ReleaseState(*(void **)self->sprite);
     func_02005058(&self->second18);
     func_02005058(&self->first08);
     return self;
@@ -75,7 +75,7 @@ TimedSpritePresentation *func_0201e308(TimedSpritePresentation *self)
 TimedSpritePresentation *func_0201e340(TimedSpritePresentation *self)
 {
     self->vtable=data_020d6098;
-    func_02074038(*(void **)self->sprite);
+    GraphicsSpriteGroup_ReleaseState(*(void **)self->sprite);
     func_02005058(&self->second18);
     func_02005058(&self->first08);
     Heap_Free(self);
@@ -86,7 +86,7 @@ TimedSpritePresentation *func_0201e340(TimedSpritePresentation *self)
 TimedSpritePresentation *func_0201e380(TimedSpritePresentation *self)
 {
     self->vtable=data_020d6098;
-    func_02074038(*(void **)self->sprite);
+    GraphicsSpriteGroup_ReleaseState(*(void **)self->sprite);
     func_02005058(&self->second18);
     func_02005058(&self->first08);
     return self;

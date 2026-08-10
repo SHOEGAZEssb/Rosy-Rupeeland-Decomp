@@ -16,9 +16,9 @@ extern void *gLupyContext;
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *func_02073ffc(void *, void *, s32);
+extern void *GraphicsSpriteGroup_CreateStateFromSource(void *, void *, s32);
 extern void func_02073e48(void *, s32, s32, s32, ...);
-extern void func_020740a4(void *);
+extern void GraphicsSpriteGroup_AdvanceAnimations(void *);
 extern void GraphicsSpriteRenderer_SetFontResource(void *, void *);
 extern void GraphicsSpriteText_FormatDecimal(void *, s32, u32, s32);
 extern const void *func_020791e0(const void *, u16);
@@ -59,20 +59,20 @@ extern void func_ov022_021ff2c4(void *, s32);
  */
 extern "C" void func_ov022_021fee3c(void *scene)
 {
-    void *sprite = func_02073ffc(FIELD(void *, scene, 0x9c),
+    void *sprite = GraphicsSpriteGroup_CreateStateFromSource(FIELD(void *, scene, 0x9c),
                                  (u8 *)scene + 0x84, 1);
     func_020957f0((u8 *)scene + 0x154, sprite, 0, 1, 0);
     func_02095820((u8 *)scene + 0x154, -64, 64);
-    sprite = func_02073ffc(FIELD(void *, scene, 0x9c),
+    sprite = GraphicsSpriteGroup_CreateStateFromSource(FIELD(void *, scene, 0x9c),
                            (u8 *)scene + 0x84, 1);
     func_020957f0((u8 *)scene + 0x200, sprite, 2, 1, 0);
     func_02095820((u8 *)scene + 0x200, -64, 112);
     func_ov022_021fef48(scene);
 
-    FIELD(void *, scene, 0xa4) = func_02073ffc(
+    FIELD(void *, scene, 0xa4) = GraphicsSpriteGroup_CreateStateFromSource(
         FIELD(void *, scene, 0x9c), (u8 *)scene + 0x78, 1);
     func_02073e48(FIELD(void *, scene, 0xa4), 0x14, 0x86, 0x1c, 1, 0, 6);
-    sprite = func_02073ffc(FIELD(void *, scene, 0x9c),
+    sprite = GraphicsSpriteGroup_CreateStateFromSource(FIELD(void *, scene, 0x9c),
                            (u8 *)scene + 0x78, 1);
     func_020957f0((u8 *)scene + 0xa8, sprite, 2, 1, 0);
     func_02095820((u8 *)scene + 0xa8, 0xe4, 0xaa);
@@ -160,7 +160,7 @@ extern "C" void func_ov022_021ff0d0(void *scene)
     if (status != 0) {
         typedef void (*Destructor)(void *);
         ((Destructor)FIELD(void *, FIELD(void *, status, 0), 0))(status);
-        func_020740a4(FIELD(void *, status, 0x1c));
+        GraphicsSpriteGroup_AdvanceAnimations(FIELD(void *, status, 0x1c));
     }
     void *menu = FIELD(void *, scene, 0x2b8);
     if (menu != 0)
@@ -175,9 +175,9 @@ extern "C" void func_ov022_021ff0d0(void *scene)
     }
     void *owner = FIELD(void *, scene, 0x354);
     func_02095360((u8 *)owner + 0x48);
-    func_020740a4(FIELD(void *, owner, 0));
-    func_020740a4(FIELD(void *, scene, 0x9c));
-    func_020740a4(FIELD(void *, scene, 0xa0));
+    GraphicsSpriteGroup_AdvanceAnimations(FIELD(void *, owner, 0));
+    GraphicsSpriteGroup_AdvanceAnimations(FIELD(void *, scene, 0x9c));
+    GraphicsSpriteGroup_AdvanceAnimations(FIELD(void *, scene, 0xa0));
     if (FIELD(s32, scene, 0x370) < 0x10) {
         ++FIELD(s32, scene, 0x370);
         func_02092b70(FIELD(void *, scene, 0x368),

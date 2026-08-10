@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/dual_screen_ui_presentation_base.c.
 .text
 .extern GraphicsSpriteState_SetAnimationIndex
-.extern func_02073ffc
+.extern GraphicsSpriteGroup_CreateStateFromSource
 
     .global func_02025ed4
     .type func_02025ed4, @function
@@ -11,7 +11,7 @@ func_02025ed4: ; 0x02025ed4
     ldr r0, [r4, #0xa8]
     add r1, r4, #0xb8
     mov r2, #0x2
-    bl func_02073ffc
+    bl GraphicsSpriteGroup_CreateStateFromSource
     str r0, [r4, #0xb4]
     mov r1, #0x68
     strh r1, [r0, #0x2c]

@@ -20,9 +20,9 @@ extern void func_02071ea4(void *);
 extern void func_02071ee0(void *, void *, s32, s32, s32);
 extern void func_02071f38(void *);
 extern void func_02073e48(void *, s32, s32, s32, s32, s32, s32);
-extern void *func_02073ffc(void *, void *, s32);
-extern void func_02074058(void *);
-extern void *func_020742cc(void *);
+extern void *GraphicsSpriteGroup_CreateStateFromSource(void *, void *, s32);
+extern void GraphicsSpriteGroup_Clear(void *);
+extern void *GraphicsSpriteGroupOwner_CreateGroup(void *);
 extern void GraphicsSpriteRenderer_SetFontResource(void *, void *);
 extern void GraphicsSpriteRenderer_ClearTextBuffer(void *);
 extern void GraphicsSpriteRenderer_DrawGlyph(void *, s32, s32, s32, s32);
@@ -55,7 +55,7 @@ extern "C" void *func_ov020_021fd320(void *state, void *font)
     func_02092798((u8 *)state + 0x28);
     FIELD(s32, state, 0) = -1;
     FIELD(void *, state, 8) = font;
-    FIELD(void *, state, 0xc) = func_020742cc(font);
+    FIELD(void *, state, 0xc) = GraphicsSpriteGroupOwner_CreateGroup(font);
     func_02092814((u8 *)state + 0x28, 0x7000);
     func_02092814((u8 *)state + 0x28, 0x7005);
     func_02092814((u8 *)state + 0x28, 0x7007);
@@ -73,7 +73,7 @@ extern "C" void *func_ov020_021fd320(void *state, void *font)
 /* Create one icon sprite with fixed mode 1 and zero trailing values. */
 static void createQuantitySprite(void *state, s32 animation, s32 x, s32 y)
 {
-    void *sprite = func_02073ffc(FIELD(void *, state, 0xc),
+    void *sprite = GraphicsSpriteGroup_CreateStateFromSource(FIELD(void *, state, 0xc),
                                  (u8 *)state + 0x1c, 1);
     func_02073e48(sprite, animation, x, y, 1, 0, 0);
 }
@@ -99,13 +99,13 @@ extern "C" s32 func_ov020_021fd44c(void *state, s32 selection, void *unused)
     if (FIELD(s32, state, 0) != selection) {
         FIELD(s32, state, 0) = -1;
         func_02071f38((u8 *)state + 0x10);
-        func_02074058(FIELD(void *, state, 0xc));
+        GraphicsSpriteGroup_Clear(FIELD(void *, state, 0xc));
         entry = data_020ea650 + selection * 0x18;
         FIELD(s32, state, 0) = selection;
         func_02071ee0((u8 *)state + 0x10, data_020f4e18[0],
                       FIELD(u16, entry, 2), FIELD(u16, entry, 4),
                       FIELD(u16, entry, 6));
-        void *header = func_02073ffc(FIELD(void *, state, 0xc),
+        void *header = GraphicsSpriteGroup_CreateStateFromSource(FIELD(void *, state, 0xc),
                                      (u8 *)state + 0x10, 2);
         func_02073e48(header, 3, 0x30, 0x28, 2, 0, 0);
 

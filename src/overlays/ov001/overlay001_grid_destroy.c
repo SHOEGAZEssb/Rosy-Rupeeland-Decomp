@@ -34,7 +34,7 @@ extern "C" {
 extern void *data_ov001_021fcc80;
 extern void func_020683f4(void *cell);
 extern void func_02071eb8(void *resource);
-extern void func_0207419c(void *group);
+extern void GraphicsSpriteGroup_Destroy(void *group);
 extern void GraphicsSpriteRenderer_ClearFontResource(void *owner);
 extern void func_020927b8(void *state);
 extern void func_020c0c24(void *array, s32 elementSize, s32 alignment,
@@ -66,8 +66,8 @@ Overlay001GridDestroyState *func_ov001_021fbe6c(
         controller->vtable->destroy_04(controller);
     }
     GraphicsSpriteRenderer_ClearFontResource(state->owner_004);
-    func_0207419c(state->spriteGroup_00c);
-    func_0207419c(state->spriteGroup_008);
+    GraphicsSpriteGroup_Destroy(state->spriteGroup_00c);
+    GraphicsSpriteGroup_Destroy(state->spriteGroup_008);
     func_020927b8(state->rendererState_180);
     func_ov001_021fbab8(state->element_0d4);
     func_ov001_021fbab8(state->element_028);

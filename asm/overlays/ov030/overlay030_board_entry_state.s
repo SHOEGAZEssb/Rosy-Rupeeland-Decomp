@@ -6,7 +6,7 @@
 .extern data_ov030_021ff7b0
 .extern data_ov030_021ff8dc
 .extern DisplayBrightness_IsMainTransitionComplete
-.extern func_02074110
+.extern GraphicsSpriteGroup_ReleaseIndexedEntries
 .extern func_020922f0
 .extern func_02092c8c
 .extern func_020939d8
@@ -52,7 +52,7 @@ L_021feebc:
     cmp r0, #0x0
     beq L_021ff000
     ldr r0, [r4, #0x78]
-    bl func_02074110
+    bl GraphicsSpriteGroup_ReleaseIndexedEntries
     ldr r1, L_021ff014
     ldr r3, L_021ff018
     mov r0, #0x1f0

@@ -1,7 +1,7 @@
     .text
 
 /* Exact fallback; see src/overlays/ov016/overlay016_scene_update.c. */
-    .extern func_020740a4
+    .extern GraphicsSpriteGroup_AdvanceAnimations
     .extern func_020958d8
     .extern func_02096304
     .extern func_ov000_021fc164
@@ -23,7 +23,7 @@ func_ov016_021ff7bc:
     add r0, r4, #0x398
     bl func_020958d8
     ldr r0, [r4, #0xe0]
-    bl func_020740a4
+    bl GraphicsSpriteGroup_AdvanceAnimations
     ldr r0, [r4, #0x444]
     cmp r0, #0x0
     beq L_021ff804

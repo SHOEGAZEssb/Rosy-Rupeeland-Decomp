@@ -3,8 +3,8 @@
 .extern __destroy_arr
 .extern func_02071eb8
 .extern func_02071f38
-.extern func_02074058
-.extern func_02074330
+.extern GraphicsSpriteGroup_Clear
+.extern GraphicsSpriteGroupOwner_DestroyGroup
 .extern gDebugFont
 
 .global func_ov059_02210968
@@ -12,11 +12,11 @@ func_ov059_02210968:
     stmdb sp!, {r4, lr}
     mov r4, r0
     ldr r0, [r4, #0x0]
-    bl func_02074058
+    bl GraphicsSpriteGroup_Clear
     ldr r0, .L_022109b4
     ldr r1, [r4, #0x0]
     ldr r0, [r0, #0x0]
-    bl func_02074330
+    bl GraphicsSpriteGroupOwner_DestroyGroup
     add r0, r4, #0x4
     bl func_02071f38
     add r0, r4, #0x10

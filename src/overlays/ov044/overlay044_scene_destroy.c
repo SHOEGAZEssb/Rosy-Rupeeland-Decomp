@@ -14,7 +14,7 @@ extern "C" void *gDebugFont;
 extern "C" void func_ov044_0220b8e4(void *panel);
 extern "C" void Heap_Free(void *allocation);
 extern "C" void func_ov001_021fb7d4(void *debugFont);
-extern "C" void func_0207419c(void *resource);
+extern "C" void GraphicsSpriteGroup_Destroy(void *resource);
 extern "C" void GraphicsSpriteRenderer_QueuePaletteUploads(void *resource);
 extern "C" void func_ov044_0220be34(void *component);
 extern "C" void func_02071eb8(void *component);
@@ -54,7 +54,7 @@ extern "C" void *func_ov044_0220bfd4(void *object)
     }
     destroy_owned_interface(FIELD(void *, object, 0x238), 4);
     destroy_owned_interface(FIELD(void *, object, 0x23c), 8);
-    func_0207419c(FIELD(void *, object, 0xbc));
+    GraphicsSpriteGroup_Destroy(FIELD(void *, object, 0xbc));
     GraphicsSpriteRenderer_QueuePaletteUploads((void *)data_020f4e14);
     GraphicsSpriteRenderer_QueuePaletteUploads(gDebugFont);
     func_ov044_0220be34((u8 *)object + 0x17c);

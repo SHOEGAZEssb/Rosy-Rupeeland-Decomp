@@ -12,7 +12,7 @@
 .extern func_020313b4
 .extern Actor_GetCollection
 .extern GraphicsSpriteState_SetAnimationIndex
-.extern func_02073fc4
+.extern GraphicsSpriteGroup_CreateState
 .extern genrand_int32
 .extern gHeapContext
     .global ActorExtendedType2_InitializePresentation
@@ -109,7 +109,7 @@ ActorExtendedType2_InitializePresentation: ; 0x0203e56c
     mov r1, #0x2
     str r1, [sp, #0x0]
     ldmib r4, {r1, r2, r3}
-    bl func_02073fc4
+    bl GraphicsSpriteGroup_CreateState
     str r0, [r7, #0x54]
     ldrh r0, [r7, #0x4e]
     cmp r0, #0x30

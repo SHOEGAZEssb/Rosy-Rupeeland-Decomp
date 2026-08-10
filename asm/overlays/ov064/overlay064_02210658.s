@@ -14,8 +14,8 @@
 .extern ActorDerivedType1_ResetRuntimeState
 .extern Type7Actor_LeaveSpecialPresentationState
 .extern func_020597fc
-.extern func_02073ef8
-.extern func_02074330
+.extern GraphicsSpriteState_ReleaseFromGroup
+.extern GraphicsSpriteGroupOwner_DestroyGroup
 .extern gDebugFont
 .extern gGameWork
 .extern gSoundContext
@@ -28,20 +28,20 @@ func_ov064_02210658:
     mov r4, r0
     str r1, [r4, #0x0]
     ldr r0, [r4, #0x30]
-    bl func_02073ef8
+    bl GraphicsSpriteState_ReleaseFromGroup
     ldr r1, [r4, #0x3c]
     cmp r1, #0x0
     beq .L_0221068c
     ldr r0, .L_02210888
     ldr r0, [r0, #0x0]
-    bl func_02074330
+    bl GraphicsSpriteGroupOwner_DestroyGroup
 .L_0221068c:
     ldr r1, [r4, #0x40]
     cmp r1, #0x0
     beq .L_022106a4
     ldr r0, .L_0221088c
     ldr r0, [r0, #0x0]
-    bl func_02074330
+    bl GraphicsSpriteGroupOwner_DestroyGroup
 .L_022106a4:
     ldr r0, [r4, #0x28]
     cmp r0, #0x0

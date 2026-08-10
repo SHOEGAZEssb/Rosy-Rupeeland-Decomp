@@ -3,10 +3,10 @@
 .extern AnimationResource_Init
 .extern Actor_GetCollection
 .extern ActorCollection_GetSpriteOwner
-.extern func_02073fc4
+.extern GraphicsSpriteGroup_CreateState
 .extern GraphicsSpriteState_SetAnimationIndex
 .extern Type7AuxiliaryPresentation_Reset
-.extern func_02073ef8
+.extern GraphicsSpriteState_ReleaseFromGroup
 .extern Heap_Free
 .extern Type7AuxiliaryPresentation_Activate
 .extern data_020e1ea4
@@ -42,7 +42,7 @@ Type7AuxiliaryPresentation_Init: ; 0x0204c798
     mov r1, #0x2
     str r1, [sp, #0x0]
     ldmib r5, {r1, r2, r3}
-    bl func_02073fc4
+    bl GraphicsSpriteGroup_CreateState
     str r0, [r4, #0x4]
     mov r1, #0x0
     bl GraphicsSpriteState_SetAnimationIndex
@@ -72,7 +72,7 @@ Type7AuxiliaryPresentation_Destroy: ; 0x0204c854
     mov r4, r0
     str r1, [r4, #0x0]
     ldr r0, [r4, #0x4]
-    bl func_02073ef8
+    bl GraphicsSpriteState_ReleaseFromGroup
     ldr r0, [r4, #0xc]
     cmp r0, #0x0
     beq .L_0204c884
@@ -92,7 +92,7 @@ Type7AuxiliaryPresentation_DestroyAndFree: ; 0x0204c890
     mov r4, r0
     str r1, [r4, #0x0]
     ldr r0, [r4, #0x4]
-    bl func_02073ef8
+    bl GraphicsSpriteState_ReleaseFromGroup
     ldr r0, [r4, #0xc]
     cmp r0, #0x0
     beq .L_0204c8c0

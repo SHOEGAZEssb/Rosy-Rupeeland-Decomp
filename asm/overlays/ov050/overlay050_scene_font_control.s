@@ -1,6 +1,6 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov050/overlay050_scene_helpers.c.
-.extern func_02074110
+.extern GraphicsSpriteGroup_ReleaseIndexedEntries
 
 .global func_ov050_0220e294
 func_ov050_0220e294:
@@ -13,8 +13,8 @@ func_ov050_0220e294:
     ldrne r0, [r4, #0x18]
     strne r1, [r0, #0x20]
     ldmneia sp!, {r4, pc}
-    bl func_02074110
+    bl GraphicsSpriteGroup_ReleaseIndexedEntries
     ldr r0, [r4, #0x18]
-    bl func_02074110
+    bl GraphicsSpriteGroup_ReleaseIndexedEntries
     ldmia sp!, {r4, pc}
 .size func_ov050_0220e294, . - func_ov050_0220e294

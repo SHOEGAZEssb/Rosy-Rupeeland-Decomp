@@ -40,7 +40,7 @@ extern void DebugSpriteText_DrawCentered(void *helper, s32 x, s32 y);
 extern s32 func_0202844c(void *source);
 extern u16 func_02028404(void *source);
 extern void GraphicsSpriteRenderer_ClearTextBuffer(void *font);
-extern void func_020740a4(void *spriteOwner);
+extern void GraphicsSpriteGroup_AdvanceAnimations(void *spriteOwner);
 #ifdef __cplusplus
 }
 #endif
@@ -135,7 +135,7 @@ void func_0202613c(DualScreenUiStandardPresentation *self)
     if (self->drawEnabledd0)
         DebugSpriteText_DrawCentered(self->helperc8, 104, 171);
     func_020269f8(self->embedded04);
-    func_020740a4(self->spriteOwnera8);
+    GraphicsSpriteGroup_AdvanceAnimations(self->spriteOwnera8);
 }
 
 /*

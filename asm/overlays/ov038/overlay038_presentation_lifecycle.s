@@ -5,7 +5,7 @@
     .extern func_020280d8
     .extern Heap_Free
     .extern func_ov046_0220ba80
-    .extern func_0207419c
+    .extern GraphicsSpriteGroup_Destroy
     .extern func_020927b8
     .extern func_ov038_021fce00
     .extern func_02071eb8
@@ -37,7 +37,7 @@ L_021fd110:
     bl Heap_Free
 L_021fd12c:
     ldr r0, [r5, #0x60]
-    bl func_0207419c
+    bl GraphicsSpriteGroup_Destroy
     ldr r0, [r5, #0x314]
     cmp r0, #0x0
     beq L_021fd14c
@@ -82,7 +82,7 @@ L_021fd1a8:
     bl Heap_Free
 L_021fd1c4:
     ldr r0, [r5, #0x60]
-    bl func_0207419c
+    bl GraphicsSpriteGroup_Destroy
     ldr r0, [r5, #0x314]
     cmp r0, #0x0
     beq L_021fd1e4

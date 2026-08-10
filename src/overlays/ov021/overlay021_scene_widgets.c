@@ -14,7 +14,7 @@ extern "C" {
 #endif
 extern void *Heap_Alloc(u32, const void *, s32, void *);
 extern void func_02073e48(void *, s32, s32, s32, s32, s32, s32);
-extern void *func_02073ffc(void *, void *, s32);
+extern void *GraphicsSpriteGroup_CreateStateFromSource(void *, void *, s32);
 extern s32 func_0207abd8(void *, s32);
 extern void func_02093d50(void *, s32);
 extern void func_02093d7c(void *, s32);
@@ -93,7 +93,7 @@ extern "C" void func_ov021_021fe6b0(void *state)
     for (i = 0; i < 2; i++) {
         s32 animation = i * 2 +
             (FIELD(void *, state, 0x2a4 + i * 4) != 0 ? 0x16 : 0x17);
-        void *sprite = func_02073ffc(FIELD(void *, state, 0x94),
+        void *sprite = GraphicsSpriteGroup_CreateStateFromSource(FIELD(void *, state, 0x94),
                                      (u8 *)state + 0x7c, 1);
         void *helper = (u8 *)state + 0x14c + i * 0xac;
         func_020957f0(helper, sprite, animation, 1, 0);
@@ -109,15 +109,15 @@ extern "C" void func_ov021_021fe6b0(void *state)
     }
 
     FIELD(void *, state, 0x98) =
-        func_02073ffc(FIELD(void *, state, 0x94), (u8 *)state + 0x7c, 1);
+        GraphicsSpriteGroup_CreateStateFromSource(FIELD(void *, state, 0x94), (u8 *)state + 0x7c, 1);
     func_02073e48(FIELD(void *, state, 0x98), 0x14, 0x86, 0x1c,
                   1, 0, 6);
     void *inputSprite =
-        func_02073ffc(FIELD(void *, state, 0x94), (u8 *)state + 0x7c, 1);
+        GraphicsSpriteGroup_CreateStateFromSource(FIELD(void *, state, 0x94), (u8 *)state + 0x7c, 1);
     func_020957f0((u8 *)state + 0xa0, inputSprite, 2, 1, 0);
     func_02095820((u8 *)state + 0xa0, 0xe4, 0xaa);
     FIELD(void *, state, 0x9c) =
-        func_02073ffc(FIELD(void *, state, 0x94), (u8 *)state + 0x88, 1);
+        GraphicsSpriteGroup_CreateStateFromSource(FIELD(void *, state, 0x94), (u8 *)state + 0x88, 1);
     func_02073e48(FIELD(void *, state, 0x9c), 0, 0x54, 0xe,
                   1, 0, 4);
 }

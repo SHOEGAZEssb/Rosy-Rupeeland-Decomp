@@ -8,7 +8,7 @@
 
 #define FIELD(type, base, offset) (*(type *)((u8 *)(base) + (offset)))
 
-extern "C" void func_02074110(void *state);
+extern "C" void GraphicsSpriteGroup_ReleaseIndexedEntries(void *state);
 
 /*
  * Write `value` to +0x30 of each of four child pointers at scene +0x1C..+0x28.
@@ -49,7 +49,7 @@ extern "C" void func_ov050_0220e26c(void *scene, s32 value)
 
 /*
  * If `enabled` is nonzero, write one to +0x20 of states +0x14/+0x18;
- * otherwise release both through func_02074110. SDK sprite/font state changes,
+ * otherwise release both through GraphicsSpriteGroup_ReleaseIndexedEntries. SDK sprite/font state changes,
  * nothing is returned, and no direct MMIO occurs.
  */
 extern "C" void func_ov050_0220e294(void *scene, s32 enabled)
@@ -59,6 +59,6 @@ extern "C" void func_ov050_0220e294(void *scene, s32 enabled)
         FIELD(s32, FIELD(void *, scene, 0x18), 0x20) = 1;
         return;
     }
-    func_02074110(FIELD(void *, scene, 0x14));
-    func_02074110(FIELD(void *, scene, 0x18));
+    GraphicsSpriteGroup_ReleaseIndexedEntries(FIELD(void *, scene, 0x14));
+    GraphicsSpriteGroup_ReleaseIndexedEntries(FIELD(void *, scene, 0x18));
 }

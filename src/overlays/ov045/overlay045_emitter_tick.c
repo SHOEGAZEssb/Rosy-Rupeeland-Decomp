@@ -28,7 +28,7 @@ extern "C" s32 func_0209189c(void *seed, s32 minimum, s32 maximum);
 extern "C" s32 func_020918f4(void *seed, s32 modulus);
 extern "C" void func_020593ac(void *context, s32 first, s32 second,
                                s32 third, s32 fourth, s32 fifth);
-extern "C" void *func_02073ffc(void *fontState, void *owner, s32 selector);
+extern "C" void *GraphicsSpriteGroup_CreateStateFromSource(void *fontState, void *owner, s32 selector);
 extern "C" void func_02073e48(void *sprite, s32 variant, s32 x, s32 y,
                                s32 zero1, s32 zero2, s32 zero3);
 extern "C" void *Heap_Alloc(s32 size, const void *tag, s32 alignment,
@@ -83,7 +83,7 @@ extern "C" void func_ov045_0220b9b8(void *object)
 
         EmitterCoordinateRange *primary =
             FIELD(EmitterCoordinateRange *, object, 0x68);
-        void *sprite = func_02073ffc(FIELD(void *, object, 0),
+        void *sprite = GraphicsSpriteGroup_CreateStateFromSource(FIELD(void *, object, 0),
                                       (u8 *)object + 4, 1);
         func_02073e48(sprite, thresholdIndex, primary->x, primary->y,
                        0, 0, 0);

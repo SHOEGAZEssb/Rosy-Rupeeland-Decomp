@@ -6,7 +6,7 @@
     .extern data_ov009_021feec0
     .extern func_02002728
     .extern func_02071eb8
-    .extern func_0207419c
+    .extern GraphicsSpriteGroup_Destroy
     .extern func_020923a0
     .extern func_02092418
 
@@ -29,7 +29,7 @@ L_021fd224:
     cmp r4, #0x6
     blt L_021fd224
     ldr r0, [r5, #0x84]
-    bl func_0207419c
+    bl GraphicsSpriteGroup_Destroy
     add r0, r5, #0x13c
     bl func_02092418
     bl DebugText_BeginFrame

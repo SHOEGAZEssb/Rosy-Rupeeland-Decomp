@@ -2,7 +2,7 @@
 /* Exact fallback; see src/overlays/ov022/overlay022_status_widget.c. */
     .extern data_ov022_02200608
     .extern func_02071eb8
-    .extern func_0207419c
+    .extern GraphicsSpriteGroup_Destroy
 
 .global func_ov022_021fd458
 func_ov022_021fd458:
@@ -11,7 +11,7 @@ func_ov022_021fd458:
     mov r4, r0
     str r1, [r4, #0x0]
     ldr r0, [r4, #0x1c]
-    bl func_0207419c
+    bl GraphicsSpriteGroup_Destroy
     add r0, r4, #0x10
     bl func_02071eb8
     add r0, r4, #0x4

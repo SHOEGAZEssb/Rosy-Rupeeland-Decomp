@@ -27,8 +27,8 @@ extern void func_02071ea4(void *);
 extern void func_02071ee0(void *, void *, s32, s32, s32);
 extern void GraphicsSpriteState_SetAnimationIndex(void *, s32);
 extern void func_02073e48(void *, s32, s32, s32, s32, s32, s32);
-extern void *func_02073ffc(void *, void *, s32);
-extern void *func_020742cc(void *);
+extern void *GraphicsSpriteGroup_CreateStateFromSource(void *, void *, s32);
+extern void *GraphicsSpriteGroupOwner_CreateGroup(void *);
 extern void GraphicsSpriteRenderer_SetFontResource(void *, void *);
 extern void GraphicsSpriteRenderer_DrawText(void *, const void *, s32, s32, s32, s32, s32);
 extern u32 func_02079160(const void *, s32);
@@ -65,10 +65,10 @@ extern "C" void *func_ov021_021fce18(void *state, void *font,
     func_02071ea4((u8 *)state + 0x10);
     func_02092798((u8 *)state + 0x28);
     FIELD(void *, state, 0) = font;
-    FIELD(void *, state, 0x1c) = func_020742cc(font);
+    FIELD(void *, state, 0x1c) = GraphicsSpriteGroupOwner_CreateGroup(font);
     FIELD(s32, FIELD(void *, state, 0x1c), 0x18) = 0x2c;
     FIELD(s32, FIELD(void *, state, 0x1c), 0x1c) = 0x1c;
-    FIELD(void *, state, 0x20) = func_020742cc(font);
+    FIELD(void *, state, 0x20) = GraphicsSpriteGroupOwner_CreateGroup(font);
 
     u32 length = func_02079160(data_021f3ecc, 0x2e5);
     MIi_CpuCopy16(func_020791e0(data_021f3ecc, 0x2e5),
@@ -77,7 +77,7 @@ extern "C" void *func_ov021_021fce18(void *state, void *font,
     func_02071ee0((u8 *)state + 0x10, data_020f4e18[0],
                   0x329b, 0x329c, 0x329d);
     FIELD(void *, state, 0x24) =
-        func_02073ffc(FIELD(void *, state, 0x20), (u8 *)state + 4, 1);
+        GraphicsSpriteGroup_CreateStateFromSource(FIELD(void *, state, 0x20), (u8 *)state + 4, 1);
     func_02073e48(FIELD(void *, state, 0x24), 0x1c, 0x38, 0x86, 1, 0, 4);
 
     FIELD(s32, state, 0x60) = mode;

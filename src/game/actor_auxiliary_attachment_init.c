@@ -18,7 +18,7 @@ extern u32 func_02071e70(void *, u32);
 extern u32 func_02071e80(void *, u32);
 extern void *Actor_GetCollection(ActorAuxiliaryAttachmentOwner *);
 extern void *ActorCollection_GetSpriteOwner(void *);
-extern void *func_02073fc4(void *, u32, u32, u32, s32);
+extern void *GraphicsSpriteGroup_CreateState(void *, u32, u32, u32, s32);
 extern void GraphicsSpriteState_SetAnimationIndex(void *, s32);
 #ifdef __cplusplus
 }
@@ -45,7 +45,7 @@ void func_020314b8(ActorAuxiliaryAttachmentOwner *self)
     first = func_02071e60(data_020f4e18, 0x1386);
     second = func_02071e70(data_020f4e18, 0x1001);
     third = func_02071e80(data_020f4e18, 0x1387);
-    self->attachment_a8 = func_02073fc4(
+    self->attachment_a8 = GraphicsSpriteGroup_CreateState(
         ActorCollection_GetSpriteOwner(Actor_GetCollection(self)), first, second, third, 2);
     GraphicsSpriteState_SetAnimationIndex(self->attachment_a8, 0);
     flags = (u16 *)((u8 *)self->attachment_a8 + 0x24);

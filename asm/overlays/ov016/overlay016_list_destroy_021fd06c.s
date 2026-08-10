@@ -1,6 +1,6 @@
     .text
     .extern func_02071eb8
-    .extern func_0207419c
+    .extern GraphicsSpriteGroup_Destroy
     .extern func_020927b8
     .extern func_020c0c24
     .extern func_ov016_021fd0dc
@@ -12,9 +12,9 @@ func_ov016_021fd06c:
     stmdb sp!, {r4, lr}
     mov r4, r0
     ldr r0, [r4, #0x4]
-    bl func_0207419c
+    bl GraphicsSpriteGroup_Destroy
     ldr r0, [r4, #0x8]
-    bl func_0207419c
+    bl GraphicsSpriteGroup_Destroy
     ldr r0, [r4, #0x58]
     cmp r0, #0x0
     beq L_021fd09c

@@ -4,7 +4,7 @@
 
     .extern func_020958d8
     .extern func_02094574
-    .extern func_020740a4
+    .extern GraphicsSpriteGroup_AdvanceAnimations
     .extern func_ov046_0220c1a4
     .extern func_02091c7c
     .extern func_02091b98
@@ -31,7 +31,7 @@ func_ov038_021fd37c:
     bl func_02094574
 L_021fd39c:
     ldr r0, [r4, #0x60]
-    bl func_020740a4
+    bl GraphicsSpriteGroup_AdvanceAnimations
     ldr r0, [r4, #0x340]
     bl func_ov046_0220c1a4
     add r0, r4, #0x348

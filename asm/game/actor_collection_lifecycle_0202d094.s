@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/actor_collection_lifecycle.c.
 .text
 .extern ActorCollection_UnregisterAndDestroyAllActors
-.extern func_02074330
+.extern GraphicsSpriteGroupOwner_DestroyGroup
 .extern OverlaySlot_UnloadOverlay
 .extern data_020f4e14
 .extern gDebugFont
@@ -23,7 +23,7 @@ ActorCollection_Deinit: ; 0x0202d094
     ldr r0, .L_0202d108
     ldr r1, [r4, #0xe00]
     ldr r0, [r0, #0x0]
-    bl func_02074330
+    bl GraphicsSpriteGroupOwner_DestroyGroup
     mov r0, #0x0
     str r0, [r4, #0xe00]
     b .L_0202d0f0
@@ -31,7 +31,7 @@ ActorCollection_Deinit: ; 0x0202d094
     ldr r0, .L_0202d10c
     ldr r1, [r4, #0xe00]
     ldr r0, [r0, #0x0]
-    bl func_02074330
+    bl GraphicsSpriteGroupOwner_DestroyGroup
     mov r0, #0x0
     str r0, [r4, #0xe00]
 .L_0202d0f0:

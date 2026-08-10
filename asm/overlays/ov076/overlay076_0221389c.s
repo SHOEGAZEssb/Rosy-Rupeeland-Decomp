@@ -4,7 +4,7 @@
 .extern data_ov076_02214d08
 .extern func_02005058
 .extern ActorExtendedLinkSource_Destroy
-.extern func_02073ef8
+.extern GraphicsSpriteState_ReleaseFromGroup
 
 .global func_ov076_0221389c
 func_ov076_0221389c:
@@ -13,9 +13,9 @@ func_ov076_0221389c:
     mov r4, r0
     str r1, [r4, #0x0]
     ldr r0, [r4, #0x2a0]
-    bl func_02073ef8
+    bl GraphicsSpriteState_ReleaseFromGroup
     ldr r0, [r4, #0x2a4]
-    bl func_02073ef8
+    bl GraphicsSpriteState_ReleaseFromGroup
     add r0, r4, #0x2b8
     bl func_02005058
     add r0, r4, #0x2a8

@@ -23,9 +23,9 @@ extern void *data_020f4e18;
 extern void func_02071ea4(void *);
 extern void func_02071eb8(void *);
 extern void func_02071ee0(void *,void *,s32,s32,s32);
-extern u8 *func_02073ffc(void *,void *,s32);
+extern u8 *GraphicsSpriteGroup_CreateStateFromSource(void *,void *,s32);
 extern void GraphicsSpriteState_SetAnimationIndex(void *,s32);
-extern void func_02074038(void *,void *);
+extern void GraphicsSpriteGroup_ReleaseState(void *,void *);
 extern s32 func_020befec(s32,s32);
 #ifdef __cplusplus
 }
@@ -51,13 +51,13 @@ SpriteNumberGroup *func_0202293c(SpriteNumberGroup *self,void *spriteOwner,s32 v
     func_02071ea4(self->resource18);
     func_02071ee0(self->resource18,data_020f4e18,0x1717,0x1001,0x1718);
     while(remaining>0) {
-        u8 *sprite=func_02073ffc(spriteOwner,self->resource18,2);
+        u8 *sprite=GraphicsSpriteGroup_CreateStateFromSource(spriteOwner,self->resource18,2);
         s32 quotient=remaining/10,remainder=remaining%10;
         GraphicsSpriteState_SetAnimationIndex(sprite,base+remainder); func_02022b08(&self->nodes04,sprite);
         remaining=quotient; digits++;
     }
-    { u8 *s=func_02073ffc(spriteOwner,self->resource18,2); GraphicsSpriteState_SetAnimationIndex(s,value<0?12:1); func_02022b08(&self->nodes04,s); }
-    { u8 *s=func_02073ffc(spriteOwner,self->resource18,2); GraphicsSpriteState_SetAnimationIndex(s,0); func_02022b08(&self->nodes04,s); }
+    { u8 *s=GraphicsSpriteGroup_CreateStateFromSource(spriteOwner,self->resource18,2); GraphicsSpriteState_SetAnimationIndex(s,value<0?12:1); func_02022b08(&self->nodes04,s); }
+    { u8 *s=GraphicsSpriteGroup_CreateStateFromSource(spriteOwner,self->resource18,2); GraphicsSpriteState_SetAnimationIndex(s,0); func_02022b08(&self->nodes04,s); }
     self->width14=(s16)((digits+1)*10+8); return self;
 }
 
@@ -89,7 +89,7 @@ SpriteNode *func_02022b08(SpriteNodeList *self,u8 *sprite)
 SpriteNumberGroup *func_02022b70(SpriteNumberGroup *self)
 {
     SpriteNode *n=self->nodes04.head08;
-    while(n){func_02074038(self->spriteOwner00,n->sprite08);func_02022bc8(&self->nodes04,n);n=n->next00;}
+    while(n){GraphicsSpriteGroup_ReleaseState(self->spriteOwner00,n->sprite08);func_02022bc8(&self->nodes04,n);n=n->next00;}
     func_02071eb8(self->resource18);self->nodes04.vtable=(void **)data_020d660c;func_02022ac8(&self->nodes04);return self;
 }
 

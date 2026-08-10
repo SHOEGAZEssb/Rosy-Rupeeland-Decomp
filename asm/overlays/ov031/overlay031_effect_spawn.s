@@ -3,7 +3,7 @@
 /* Exact fallback; see src/overlays/ov031/overlay031_effect_runtime.c for documented portable C. */
 .extern data_ov031_021fe790
 .extern GraphicsSpriteState_SetAnimationIndex
-.extern func_02073ffc
+.extern GraphicsSpriteGroup_CreateStateFromSource
 .extern func_0209189c
 .extern func_ov031_021fd19c
 .extern gHeapContext
@@ -33,7 +33,7 @@ L_021fd6ac:
     ldr r0, [r7, #0x54]
     add r1, r7, #0x5c
     mov r2, #0x1
-    bl func_02073ffc
+    bl GraphicsSpriteGroup_CreateStateFromSource
     mov r5, r0
     add r0, r7, #0x150
     mov r1, #0x4

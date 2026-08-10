@@ -17,7 +17,7 @@ extern "C" {
 extern void *Heap_Alloc(u32, const void *, u32, void *);
 extern void func_020593ac(void *, s32, s32, s32, ...);
 extern void *func_02073e48(void *, s32, s32, s32, ...);
-extern void *func_02073ffc(void *, void *, s32);
+extern void *GraphicsSpriteGroup_CreateStateFromSource(void *, void *, s32);
 extern s32 func_0209189c(void *, s32, s32);
 extern s32 func_020918f4(void *, s32);
 extern s32 func_02091a70(s32, s32, s32, s32);
@@ -98,7 +98,7 @@ extern "C" void func_ov022_021fd068(void *emitter)
             ++frame;
         }
 
-        void *font_resource = func_02073ffc(
+        void *font_resource = GraphicsSpriteGroup_CreateStateFromSource(
             FIELD(void *, emitter, 0), (u8 *)emitter + 4, 1);
         const s32 *start = FIELD(const s32 *, emitter, 0x68);
         void *sprite_resource = func_02073e48(font_resource, frame,

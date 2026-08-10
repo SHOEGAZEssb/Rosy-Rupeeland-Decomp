@@ -3,7 +3,7 @@
 /* Exact fallback; see src/overlays/ov025/overlay025_effect_controller.c. */
 .extern data_ov025_02202c84
 .extern func_02073e48
-.extern func_020740e8
+.extern GraphicsSpriteGroup_ReplaceStateResourcesFromSource
 
 
     .global func_ov025_021fe174
@@ -27,11 +27,11 @@ func_ov025_021fe174:
     ldr r0, [r6, #0xe0]
     mov r1, ip
     add r2, r8, r7
-    bl func_020740e8
+    bl GraphicsSpriteGroup_ReplaceStateResourcesFromSource
     ldr r0, [r6, #0xe4]
     ldr r1, [r6, #0xf0]
     add r2, r8, r7
-    bl func_020740e8
+    bl GraphicsSpriteGroup_ReplaceStateResourcesFromSource
 L_021fe1d4:
     ldr ip, [r6, #0xe8]
     mov r3, #0x3

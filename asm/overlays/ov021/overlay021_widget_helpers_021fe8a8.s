@@ -1,13 +1,13 @@
     .text
 /* Exact fallback; see src/overlays/ov021/overlay021_widget_helpers.c. */
-    .extern func_02074058
+    .extern GraphicsSpriteGroup_Clear
 
 .global func_ov021_021fe8a8
 func_ov021_021fe8a8:
     stmdb sp!, {r4, lr}
     mov r4, r0
     ldr r0, [r4, #0x94]
-    bl func_02074058
+    bl GraphicsSpriteGroup_Clear
     mov r3, #0x0
     mov r2, r3
     mov r0, #0xac

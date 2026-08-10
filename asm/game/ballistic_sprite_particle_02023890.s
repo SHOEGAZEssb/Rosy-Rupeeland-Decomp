@@ -7,8 +7,8 @@
 .extern func_020050a4
 .extern func_020050c8
 .extern GraphicsSpriteState_SetAnimationIndex
-.extern func_02073fc4
-.extern func_02074038
+.extern GraphicsSpriteGroup_CreateState
+.extern GraphicsSpriteGroup_ReleaseState
 .extern func_020be4e4
 .extern func_020bf1f8
 .extern genrand_int32
@@ -35,7 +35,7 @@ func_02023890: ; 0x02023890
     str r1, [sp, #0x0]
     ldmib r5, {r1, r2, r3}
     mov r0, r6
-    bl func_02073fc4
+    bl GraphicsSpriteGroup_CreateState
     str r0, [r4, #0x20]
     bl genrand_int32
     mov r1, #0x7

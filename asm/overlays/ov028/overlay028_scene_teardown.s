@@ -6,8 +6,8 @@
 .extern data_ov028_021ff2ac
 .extern func_02071eb8
 .extern GraphicsSpriteState_SetAnimationIndex
-.extern func_020740c8
-.extern func_0207419c
+.extern GraphicsSpriteGroup_ReplaceStateResources
+.extern GraphicsSpriteGroup_Destroy
 .extern GraphicsSpriteRenderer_QueuePaletteUploads
 .extern func_020927b8
 .extern func_02095308
@@ -42,7 +42,7 @@ func_ov028_021fdfa8:
     ldr r0, [r1, #0x0]
     ldr r2, [r4, #0x80]
     ldr r3, [r4, #0x84]
-    bl func_020740c8
+    bl GraphicsSpriteGroup_ReplaceStateResources
     ldr r1, [r4, #0x94]
     ldr r0, [r4, #0x90]
     and r1, r1, #0xff
@@ -67,9 +67,9 @@ L_021fe030:
     add r0, r4, #0x264
     bl func_02095308
     ldr r0, [r4, #0x54]
-    bl func_0207419c
+    bl GraphicsSpriteGroup_Destroy
     ldr r0, [r4, #0x58]
-    bl func_0207419c
+    bl GraphicsSpriteGroup_Destroy
     ldr r0, L_021fe0a0
     ldr r0, [r0, #0x0]
     bl GraphicsSpriteRenderer_QueuePaletteUploads
@@ -112,7 +112,7 @@ func_ov028_021fe0a8:
     ldr r0, [r1, #0x0]
     ldr r2, [r4, #0x80]
     ldr r3, [r4, #0x84]
-    bl func_020740c8
+    bl GraphicsSpriteGroup_ReplaceStateResources
     ldr r1, [r4, #0x94]
     ldr r0, [r4, #0x90]
     and r1, r1, #0xff
@@ -137,9 +137,9 @@ L_021fe130:
     add r0, r4, #0x264
     bl func_02095308
     ldr r0, [r4, #0x54]
-    bl func_0207419c
+    bl GraphicsSpriteGroup_Destroy
     ldr r0, [r4, #0x58]
-    bl func_0207419c
+    bl GraphicsSpriteGroup_Destroy
     ldr r0, L_021fe1a8
     ldr r0, [r0, #0x0]
     bl GraphicsSpriteRenderer_QueuePaletteUploads

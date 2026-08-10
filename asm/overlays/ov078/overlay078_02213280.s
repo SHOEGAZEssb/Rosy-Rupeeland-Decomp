@@ -3,7 +3,7 @@
 .extern ActorCollection_GetSpriteOwner
 .extern Actor_GetCollection
 .extern GraphicsSpriteState_SetAnimationIndex
-.extern func_020740c8
+.extern GraphicsSpriteGroup_ReplaceStateResources
 
 .global func_ov078_02213280
 func_ov078_02213280:
@@ -23,7 +23,7 @@ func_ov078_02213280:
     str r1, [sp, #0x0]
     ldr r1, [r4, #0x54]
     ldmib r5, {r2, r3}
-    bl func_020740c8
+    bl GraphicsSpriteGroup_ReplaceStateResources
     ldrb r1, [r4, #0xd4]
     ldr r0, [r4, #0x54]
     add r1, r1, #0x15
@@ -46,7 +46,7 @@ func_ov078_02213280:
     str r1, [sp, #0x0]
     ldr r1, [r4, #0x54]
     ldmib r5, {r2, r3}
-    bl func_020740c8
+    bl GraphicsSpriteGroup_ReplaceStateResources
     ldrb r1, [r4, #0xd4]
     ldr r0, [r4, #0x54]
     add r1, r1, #0x1d

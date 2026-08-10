@@ -2,7 +2,7 @@
 .text
 .extern func_02025cd0
 .extern func_020269f8
-.extern func_020740a4
+.extern GraphicsSpriteGroup_AdvanceAnimations
 
     .global func_02025c20
     .type func_02025c20, @function
@@ -44,7 +44,7 @@ func_02025c20: ; 0x02025c20
     strh r0, [r1, #0x24]
 .L_02025ca8:
     ldr r0, [r6, #0xa8]
-    bl func_020740a4
+    bl GraphicsSpriteGroup_AdvanceAnimations
     tst r4, #0x1
     ldmeqia sp!, {r4, r5, r6, pc}
     mov r1, r5

@@ -20,7 +20,7 @@ extern void OverlaySlot_LoadOverlay(void *, s32);
 extern void GamePhaseCurrencyHud_Update(void *);
 extern void func_02064d90(void *, s32);
 extern void func_0206563c(void *, s32);
-extern void func_020740a4(void *);
+extern void GraphicsSpriteGroup_AdvanceAnimations(void *);
 extern void func_02092b70(void *, void *, s32);
 extern void func_02094574(void *);
 extern void func_020958d8(void *);
@@ -180,7 +180,7 @@ extern "C" void func_ov021_021feea4(void *state)
     void *list = FIELD(void *, state, 0x2c0);
     if (list != 0) {
         func_02094574(FIELD(void *, list, 0x58));
-        func_020740a4(FIELD(void *, list, 0x1c));
+        GraphicsSpriteGroup_AdvanceAnimations(FIELD(void *, list, 0x1c));
     }
     if (FIELD(void *, state, 0x38c) != 0)
         func_ov045_0220c18c(FIELD(void *, state, 0x38c));
@@ -196,7 +196,7 @@ extern "C" void func_ov021_021feea4(void *state)
     if (FIELD(void *, state, 0x358) != 0)
         func_ov001_021fbf7c(FIELD(void *, state, 0x358));
     func_ov045_0220b908(FIELD(void *, state, 0x3ec));
-    func_020740a4(FIELD(void *, state, 0x94));
+    GraphicsSpriteGroup_AdvanceAnimations(FIELD(void *, state, 0x94));
 
     s32 timer = FIELD(s32, state, 0x3f8);
     if (timer < 0x10) {

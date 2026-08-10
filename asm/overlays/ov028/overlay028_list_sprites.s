@@ -1,10 +1,10 @@
 .text
 
 /* Exact fallback; see src/overlays/ov028/overlay028_list_sprites.c. */
-.extern func_02074110
+.extern GraphicsSpriteGroup_ReleaseIndexedEntries
 .extern func_02073e48
-.extern func_02073ef8
-.extern func_02073ffc
+.extern GraphicsSpriteState_ReleaseFromGroup
+.extern GraphicsSpriteGroup_CreateStateFromSource
 .extern func_ov028_021fd390
 .extern func_ov028_021fd420
 
@@ -16,9 +16,9 @@ func_ov028_021fd2c4:
     str r0, [r4, #0x48]
     ldr r0, [r4, #0x44]
     ldr r0, [r0, #0x50]
-    bl func_02074110
+    bl GraphicsSpriteGroup_ReleaseIndexedEntries
     ldr r0, [r4, #0x4]
-    bl func_02074110
+    bl GraphicsSpriteGroup_ReleaseIndexedEntries
     ldmia sp!, {r4, pc}
 .size func_ov028_021fd2c4, .-func_ov028_021fd2c4
 
@@ -95,7 +95,7 @@ func_ov028_021fd390:
     ldr r0, [r6, #0x4]
     add r1, r6, #0x8
     mov r2, #0x1
-    bl func_02073ffc
+    bl GraphicsSpriteGroup_CreateStateFromSource
     ldr r1, [r6, #0x38]
     cmp r7, #0x0
     add r1, r1, r4
@@ -130,7 +130,7 @@ func_ov028_021fd420:
     ldr r0, [r0, #0x4]
     cmp r0, #0x0
     ldmeqia sp!, {r3, r4, r5, pc}
-    bl func_02073ef8
+    bl GraphicsSpriteState_ReleaseFromGroup
     ldr r0, [r5, #0x38]
     mov r1, #0x0
     add r0, r0, r4

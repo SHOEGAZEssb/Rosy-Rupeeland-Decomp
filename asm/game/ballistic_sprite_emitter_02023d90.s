@@ -5,8 +5,8 @@
 .extern func_020239e8
 .extern func_02023a14
 .extern func_02023c0c
-.extern func_02073fc4
-.extern func_020740a4
+.extern GraphicsSpriteGroup_CreateState
+.extern GraphicsSpriteGroup_AdvanceAnimations
 .extern func_020be4e4
 .extern func_020befec
 .extern gSoundContext
@@ -77,7 +77,7 @@ func_02023d90: ; 0x02023d90
     ldr r1, [r10, #0x2c]
     ldr r2, [r10, #0x30]
     ldr r3, [r10, #0x34]
-    bl func_02073fc4
+    bl GraphicsSpriteGroup_CreateState
     ldrh r1, [r0, #0x24]
     orr r1, r1, #0x100
     strh r1, [r0, #0x24]
@@ -92,7 +92,7 @@ func_02023d90: ; 0x02023d90
     cmp r9, #0x0
     bne .L_02023db4
     ldr r0, [r10, #0x38]
-    bl func_020740a4
+    bl GraphicsSpriteGroup_AdvanceAnimations
     ldr r0, [r10, #0x48]
     cmp r0, #0x0
     moveq r0, #0x1

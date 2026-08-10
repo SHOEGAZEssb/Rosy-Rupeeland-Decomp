@@ -2,7 +2,7 @@
 
 /* Exact fallback; see src/overlays/ov031/overlay031_scene_states.c for documented portable C. */
 .extern data_ov031_021fe6f8
-.extern func_020740a4
+.extern GraphicsSpriteGroup_AdvanceAnimations
 .extern func_02092260
 .extern func_ov031_021fce84
 .extern func_ov031_021fce98
@@ -165,7 +165,7 @@ L_021fe47c:
     mov r1, #0x0
     bl func_ov031_021fdf20
     ldr r0, [r4, #0x58]
-    bl func_020740a4
+    bl GraphicsSpriteGroup_AdvanceAnimations
     ldr r0, [r4, #0x548]
     bl func_ov031_021fd5c0
     mov r0, #0x0

@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/actor_collection_lifecycle.c.
 .text
-.extern func_020742cc
+.extern GraphicsSpriteGroupOwner_CreateGroup
 .extern data_020f4e14
 .extern gDebugFont
 
@@ -18,13 +18,13 @@ ActorCollection_SetSpriteMode: ; 0x0202d014
 .L_0202d034:
     ldr r0, .L_0202d064
     ldr r0, [r0, #0x0]
-    bl func_020742cc
+    bl GraphicsSpriteGroupOwner_CreateGroup
     str r0, [r5, #0xe00]
     b .L_0202d058
 .L_0202d048:
     ldr r0, .L_0202d068
     ldr r0, [r0, #0x0]
-    bl func_020742cc
+    bl GraphicsSpriteGroupOwner_CreateGroup
     str r0, [r5, #0xe00]
 .L_0202d058:
     add r0, r5, #0x2000

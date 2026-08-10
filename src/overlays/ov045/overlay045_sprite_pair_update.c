@@ -10,7 +10,7 @@
 
 #define FIELD(type, base, offset) (*(type *)((u8 *)(base) + (offset)))
 
-extern "C" void *func_020740a4(void *resource);
+extern "C" void *GraphicsSpriteGroup_AdvanceAnimations(void *resource);
 extern "C" s32 func_0209189c(void *seed, s32 minimum, s32 maximum);
 extern "C" s32 func_020918f4(void *seed, s32 modulus);
 extern "C" void GraphicsSpriteState_SetAnimationIndex(void *sprite, s32 animation);
@@ -30,7 +30,7 @@ public:
 extern "C" void func_ov045_0220c18c(void *object)
 {
     ((SpritePairVirtual *)object)->slot2();
-    func_020740a4(FIELD(void *, object, 0x1c));
+    GraphicsSpriteGroup_AdvanceAnimations(FIELD(void *, object, 0x1c));
 }
 
 /*

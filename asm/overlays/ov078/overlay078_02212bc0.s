@@ -9,7 +9,7 @@
 .extern ActorCollection_GetSpriteOwner
 .extern Actor_GetCollection
 .extern GraphicsSpriteState_SetAnimationIndex
-.extern func_020740c8
+.extern GraphicsSpriteGroup_ReplaceStateResources
 
 .global func_ov078_02212bc0
 func_ov078_02212bc0:
@@ -81,7 +81,7 @@ func_ov078_02212bc0:
     str r1, [sp, #0x0]
     ldr r1, [r5, #0x54]
     ldmib r6, {r2, r3}
-    bl func_020740c8
+    bl GraphicsSpriteGroup_ReplaceStateResources
     ldrb r1, [r5, #0xd4]
     ldr r0, [r5, #0x54]
     bl GraphicsSpriteState_SetAnimationIndex
@@ -93,7 +93,7 @@ func_ov078_02212bc0:
     str r1, [sp, #0x0]
     ldr r1, [r5, #0x54]
     ldmib r6, {r2, r3}
-    bl func_020740c8
+    bl GraphicsSpriteGroup_ReplaceStateResources
     ldrb r1, [r5, #0xd4]
     ldr r0, [r5, #0x54]
     bl GraphicsSpriteState_SetAnimationIndex
@@ -115,7 +115,7 @@ func_ov078_02212bc0:
     str r1, [sp, #0x0]
     ldr r1, [r5, #0x54]
     ldmib r6, {r2, r3}
-    bl func_020740c8
+    bl GraphicsSpriteGroup_ReplaceStateResources
     ldrb r1, [r5, #0xd4]
     ldr r0, [r5, #0x54]
     bl GraphicsSpriteState_SetAnimationIndex
@@ -136,7 +136,7 @@ func_ov078_02212bc0:
     str r1, [sp, #0x0]
     ldr r1, [r5, #0x54]
     ldmib r6, {r2, r3}
-    bl func_020740c8
+    bl GraphicsSpriteGroup_ReplaceStateResources
     ldrb r1, [r5, #0xd4]
     ldr r0, [r5, #0x54]
     add r1, r1, #0x8
@@ -159,7 +159,7 @@ func_ov078_02212bc0:
     str r1, [sp, #0x0]
     ldr r1, [r5, #0x54]
     ldmib r6, {r2, r3}
-    bl func_020740c8
+    bl GraphicsSpriteGroup_ReplaceStateResources
     ldrb r1, [r5, #0xd4]
     ldr r0, [r5, #0x54]
     add r1, r1, #0x45
@@ -182,7 +182,7 @@ func_ov078_02212bc0:
     str r1, [sp, #0x0]
     ldr r1, [r5, #0x54]
     ldmib r6, {r2, r3}
-    bl func_020740c8
+    bl GraphicsSpriteGroup_ReplaceStateResources
     add r0, r5, #0x200
     ldrsb r0, [r0, #0x7e]
     cmp r0, #0x1
@@ -223,7 +223,7 @@ func_ov078_02212bc0:
     str r1, [sp, #0x0]
     ldr r1, [r5, #0x54]
     ldmib r6, {r2, r3}
-    bl func_020740c8
+    bl GraphicsSpriteGroup_ReplaceStateResources
     ldrb r1, [r5, #0xd4]
     ldr r0, [r5, #0x54]
     add r1, r1, #0x1e
@@ -242,7 +242,7 @@ func_ov078_02212bc0:
     str r1, [sp, #0x0]
     ldr r1, [r5, #0x54]
     ldmib r4, {r2, r3}
-    bl func_020740c8
+    bl GraphicsSpriteGroup_ReplaceStateResources
     ldrb r1, [r5, #0xd4]
     ldr r0, [r5, #0x54]
     add r1, r1, #0x8
@@ -266,7 +266,7 @@ func_ov078_02212bc0:
     str r1, [sp, #0x0]
     ldr r1, [r5, #0x54]
     ldmib r6, {r2, r3}
-    bl func_020740c8
+    bl GraphicsSpriteGroup_ReplaceStateResources
     ldr r0, [r5, #0x54]
     mov r1, #0x0
     bl GraphicsSpriteState_SetAnimationIndex
@@ -292,7 +292,7 @@ func_ov078_02212bc0:
     str r1, [sp, #0x0]
     ldr r1, [r5, #0x54]
     ldmib r6, {r2, r3}
-    bl func_020740c8
+    bl GraphicsSpriteGroup_ReplaceStateResources
     ldr r0, [r5, #0x54]
     mov r1, #0x11
     bl GraphicsSpriteState_SetAnimationIndex
@@ -309,7 +309,7 @@ func_ov078_02212bc0:
     str r1, [sp, #0x0]
     ldr r1, [r5, #0x54]
     ldmib r6, {r2, r3}
-    bl func_020740c8
+    bl GraphicsSpriteGroup_ReplaceStateResources
     ldr r0, [r5, #0x54]
     mov r1, #0x13
     bl GraphicsSpriteState_SetAnimationIndex
@@ -335,7 +335,7 @@ func_ov078_02212bc0:
     str r1, [sp, #0x0]
     ldr r1, [r5, #0x54]
     ldmib r6, {r2, r3}
-    bl func_020740c8
+    bl GraphicsSpriteGroup_ReplaceStateResources
     ldr r0, [r5, #0x54]
     mov r1, #0x10
     bl GraphicsSpriteState_SetAnimationIndex
@@ -351,7 +351,7 @@ func_ov078_02212bc0:
     str r1, [sp, #0x0]
     ldr r1, [r5, #0x54]
     ldmib r6, {r2, r3}
-    bl func_020740c8
+    bl GraphicsSpriteGroup_ReplaceStateResources
     ldr r0, [r5, #0x54]
     mov r1, #0x0
     bl GraphicsSpriteState_SetAnimationIndex
@@ -377,7 +377,7 @@ func_ov078_02212bc0:
     str r1, [sp, #0x0]
     ldr r1, [r5, #0x54]
     ldmib r6, {r2, r3}
-    bl func_020740c8
+    bl GraphicsSpriteGroup_ReplaceStateResources
     ldr r0, [r5, #0x54]
     mov r1, #0x11
     bl GraphicsSpriteState_SetAnimationIndex
@@ -394,7 +394,7 @@ func_ov078_02212bc0:
     str r1, [sp, #0x0]
     ldr r1, [r5, #0x54]
     ldmib r6, {r2, r3}
-    bl func_020740c8
+    bl GraphicsSpriteGroup_ReplaceStateResources
     ldrb r1, [r5, #0xd4]
     ldr r0, [r5, #0x54]
     add r1, r1, #0x8
@@ -422,7 +422,7 @@ func_ov078_02212bc0:
     str r1, [sp, #0x0]
     ldr r1, [r5, #0x54]
     ldmib r6, {r2, r3}
-    bl func_020740c8
+    bl GraphicsSpriteGroup_ReplaceStateResources
     ldr r1, [r5, #0x54]
     ldrh r0, [r1, #0x24]
     bic r0, r0, #0x3
@@ -441,7 +441,7 @@ func_ov078_02212bc0:
     str r1, [sp, #0x0]
     ldr r1, [r5, #0x54]
     ldmib r6, {r2, r3}
-    bl func_020740c8
+    bl GraphicsSpriteGroup_ReplaceStateResources
     ldrb r1, [r5, #0xd4]
     ldr r0, [r5, #0x54]
     add r1, r1, #0x1e

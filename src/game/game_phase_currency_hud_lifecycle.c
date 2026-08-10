@@ -50,8 +50,8 @@ GamePhaseCurrencyHud *GamePhaseCurrencyHud_Init(GamePhaseCurrencyHud *self)
     self->soundCooldown = 0;
     self->thresholdReminderTimer = 30;
     self->thresholdReminderCount = 0;
-    self->groups[0] = func_020742cc(data_020f4e14);
-    self->groups[1] = func_020742cc(gDebugFont);
+    self->groups[0] = GraphicsSpriteGroupOwner_CreateGroup(data_020f4e14);
+    self->groups[1] = GraphicsSpriteGroupOwner_CreateGroup(gDebugFont);
     self->baseX = 0x100;
     self->baseY = 0xc0;
     for (display = 0; display < 2; display++) {

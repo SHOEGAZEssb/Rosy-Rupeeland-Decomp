@@ -23,8 +23,8 @@ extern void GraphicsSpriteRenderer_DrawText(...);
 extern void *func_02093cb4(void *);
 extern void func_02071ea4(void *);
 extern void func_02071ee0(...);
-extern void *func_020742cc(void *);
-extern void *func_02073ffc(...);
+extern void *GraphicsSpriteGroupOwner_CreateGroup(void *);
+extern void *GraphicsSpriteGroup_CreateStateFromSource(...);
 extern void func_02073e48(...);
 extern void *Heap_Alloc(...);
 extern void Heap_Free(void *);
@@ -33,7 +33,7 @@ extern void func_02094bbc(...);
 extern void func_02095508(void *);
 extern void func_02093d20(...);
 extern void func_020944f0(void *);
-extern void func_02074110(void *);
+extern void GraphicsSpriteGroup_ReleaseIndexedEntries(void *);
 extern void func_02094494(void *);
 #ifdef __cplusplus
 }
@@ -112,17 +112,17 @@ extern "C" void *func_ov032_02201f80(void *object, void *canvas, s32 arg2, s32 a
     FIELD(void *, object, 0x4c) = canvas;
     FIELD(s32, object, 0x6c) = height;
     func_02071ee0((u8 *)object + 0x54, data_020f4e18[0], 7, 8, 9);
-    void *resource = func_020742cc(canvas);
+    void *resource = GraphicsSpriteGroupOwner_CreateGroup(canvas);
     FIELD(void *, object, 0x50) = resource;
     FIELD(s32, resource, 0x18) = arg4;
     FIELD(s32, resource, 0x1c) = arg5;
 
-    void *sprite = func_02073ffc(resource, (u8 *)object + 0x54, 1);
+    void *sprite = GraphicsSpriteGroup_CreateStateFromSource(resource, (u8 *)object + 0x54, 1);
     func_02073e48(sprite, 6, 0, 0x2e, 2, 0x4000, 0);
-    sprite = func_02073ffc(resource, (u8 *)object + 0x54, 1);
+    sprite = GraphicsSpriteGroup_CreateStateFromSource(resource, (u8 *)object + 0x54, 1);
     func_02073e48(sprite, 7, 0, height + 0x2e, 2, 0x4000, 0);
     if (height > 0) {
-        sprite = func_02073ffc(resource, (u8 *)object + 0x54, 1);
+        sprite = GraphicsSpriteGroup_CreateStateFromSource(resource, (u8 *)object + 0x54, 1);
         func_02073e48(sprite, 8, 0, height / 2 + 0x2e, 2, 0x4001, 0);
     }
 
@@ -130,7 +130,7 @@ extern "C" void *func_ov032_02201f80(void *object, void *canvas, s32 arg2, s32 a
     for (s32 i = 0; i < 2; ++i) {
         void *part = Heap_Alloc(0xa0, data_ov032_02202358, 4, gHeapContext);
         if (part != 0)
-            part = func_020953f4(part, func_02073ffc(resource, (u8 *)object + 0x54, 1));
+            part = func_020953f4(part, GraphicsSpriteGroup_CreateStateFromSource(resource, (u8 *)object + 0x54, 1));
         FIELD(void *, object, 0x64 + i * 4) = part;
         void *sdk = FIELD(void *, part, 0x9c);
         FIELD(u8, sdk, 0x3a) = 2;
@@ -138,7 +138,7 @@ extern "C" void *func_ov032_02201f80(void *object, void *canvas, s32 arg2, s32 a
         func_02094bbc(part, 0, i == 0 ? 0 : secondOffset, 0);
         func_02095508(part);
     }
-    FIELD(void *, object, 0x60) = func_02073ffc(resource, (u8 *)object + 0x54, 1);
+    FIELD(void *, object, 0x60) = GraphicsSpriteGroup_CreateStateFromSource(resource, (u8 *)object + 0x54, 1);
     func_02073e48(FIELD(void *, object, 0x60), 4, 0, 0, 2, 0x2000, 0);
     func_02093d20(object, arg2, arg3, 0);
     FIELD(s32, object, 0x3c) = 0;
@@ -147,7 +147,7 @@ extern "C" void *func_ov032_02201f80(void *object, void *canvas, s32 arg2, s32 a
     func_020944f0(object);
     if (FIELD(s32, object, 8) >= FIELD(s32, object, 4)) {
         FIELD(u16, FIELD(void *, object, 0x60), 0x24) |= 4;
-        func_02074110(resource);
+        GraphicsSpriteGroup_ReleaseIndexedEntries(resource);
     }
     return object;
 }

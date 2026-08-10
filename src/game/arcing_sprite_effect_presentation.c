@@ -23,7 +23,7 @@ extern void GraphicsSpriteState_SetDepthOrderedWorldPosition(void *,s32,s32,s32,
 extern void func_02005058(void *);extern void VecFx32Triple_Destroy(void *);extern void VecFx32Bezier_Evaluate3D(void *,void *,s32);
 extern void VecFx32Triple_InitWithValues(void *,const void *,const void *,const void *);extern void func_02008378(void *,const void *,const void *);
 extern void func_020233c8(void *,const void *,s32);extern s32 func_020befec(s32,s32);
-extern void func_02074038(void *,void *);extern void func_020740c8(void *,s32,s32,s32,s32);
+extern void GraphicsSpriteGroup_ReleaseState(void *,void *);extern void GraphicsSpriteGroup_ReplaceStateResources(void *,s32,s32,s32,s32);
 extern void GraphicsSpriteState_SetAnimationIndex(void *,s32);extern void Sound_Play(void *,s32,s32);
 #ifdef __cplusplus
 }
@@ -58,7 +58,7 @@ ArcingSpriteEffectPresentation *func_02023434(
 
 static ArcingSpriteEffectPresentation *teardown_arc(ArcingSpriteEffectPresentation *self)
 {
-    self->vtable=(void **)data_020d6740;func_02074038(*(void **)self->sprite10,self->sprite10);
+    self->vtable=(void **)data_020d6740;GraphicsSpriteGroup_ReleaseState(*(void **)self->sprite10,self->sprite10);
     if(self->path1c){VecFx32Triple_Destroy(self->path1c);Heap_Free(self->path1c);}
     if(self->firstDescriptor08)((void (*)(void *))(*(void ***)self->firstDescriptor08)[1])(self->firstDescriptor08);
     if(self->secondDescriptor0c)((void (*)(void *))(*(void ***)self->secondDescriptor0c)[1])(self->secondDescriptor0c);
@@ -95,7 +95,7 @@ s32 func_020236a0(ArcingSpriteEffectPresentation *self)
         if(++self->frame14>self->duration16){self->frame14=self->duration16;if(self->switchResource20)self->state18=1;else{*(u16 *)(self->sprite10+0x24)|=8;self->state18=3;}}
         func_02005058(&value);break;
     case 1:
-        func_020740c8(*(void **)self->sprite10,*(s32 *)(self->secondDescriptor0c+4),*(s32 *)(self->secondDescriptor0c+8),*(s32 *)(self->secondDescriptor0c+12),*(s32 *)(self->secondDescriptor0c+12));
+        GraphicsSpriteGroup_ReplaceStateResources(*(void **)self->sprite10,*(s32 *)(self->secondDescriptor0c+4),*(s32 *)(self->secondDescriptor0c+8),*(s32 *)(self->secondDescriptor0c+12),*(s32 *)(self->secondDescriptor0c+12));
         GraphicsSpriteState_SetAnimationIndex(self->sprite10,0);*(u16 *)(self->sprite10+0x24)&=(u16)~3;self->state18=2;
         if(data_02105610==0){Sound_Play(gSoundContext,0,15);data_02105610=10;}
         /* Retail falls through to state two. */

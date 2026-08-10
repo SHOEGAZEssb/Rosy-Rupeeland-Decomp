@@ -33,7 +33,7 @@ typedef struct ActorCollectionLookupVisibility {
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_02074110(void *object);
+extern void GraphicsSpriteGroup_ReleaseIndexedEntries(void *object);
 #ifdef __cplusplus
 }
 #endif
@@ -55,7 +55,7 @@ LookupActor *ActorCollection_FindActorByTypeAndId(ActorCollectionLookupVisibilit
  * When enabled is nonzero, write one to sprite_0e00->enabled_20, call every
  * actor's vtable offset-0x54 hook with one, and write one to auxiliary sprite
  * field 0x20 when the reserved actors' offset-0x26c/0x234 holders exist.
- * When disabled, pass each corresponding sprite object to func_02074110 and
+ * When disabled, pass each corresponding sprite object to GraphicsSpriteGroup_ReleaseIndexedEntries and
  * call actor hooks with zero. The concrete graphics-library meaning of the
  * field and address-derived helper is inferred as visibility, not confirmed.
  */
@@ -87,7 +87,7 @@ void ActorCollection_SetEnabled(ActorCollectionLookupVisibility *self, s32 enabl
         return;
     }
 
-    func_02074110(self->sprite_0e00);
+    GraphicsSpriteGroup_ReleaseIndexedEntries(self->sprite_0e00);
     for (i = 0; i < self->slotLimit_2e74; i++) {
         LookupActor *actor = self->actors_0000[i];
         if (actor) {
@@ -98,11 +98,11 @@ void ActorCollection_SetEnabled(ActorCollectionLookupVisibility *self, s32 enabl
     if (self->specialActor_2e7c) {
         holder = *(VisibilityHolder **)((u8 *)self->specialActor_2e7c + 0x26c);
         if (holder)
-            func_02074110(holder->object_0c);
+            GraphicsSpriteGroup_ReleaseIndexedEntries(holder->object_0c);
     }
     if (self->secondaryActor_2e80) {
         holder = *(VisibilityHolder **)((u8 *)self->secondaryActor_2e80 + 0x234);
         if (holder)
-            func_02074110(holder->object_0c);
+            GraphicsSpriteGroup_ReleaseIndexedEntries(holder->object_0c);
     }
 }

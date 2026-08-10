@@ -9,7 +9,7 @@
 .extern GamePhaseRuntime_StageAreaRequest
 .extern Actor_SetDirectionFromVector
 .extern Type7Actor_LeaveSpecialPresentationState
-.extern func_02073ef8
+.extern GraphicsSpriteState_ReleaseFromGroup
 .extern func_ov072_0221004c
 .extern gGameWork
 
@@ -21,12 +21,12 @@ func_ov072_0220ff04:
     mov r4, r0
     str r1, [r4, #0x0]
     ldr r0, [r4, #0x2c]
-    bl func_02073ef8
+    bl GraphicsSpriteState_ReleaseFromGroup
     mov r5, #0x0
 .L_0220ff24:
     add r0, r4, r5, lsl #0x2
     ldr r0, [r0, #0x30]
-    bl func_02073ef8
+    bl GraphicsSpriteState_ReleaseFromGroup
     add r5, r5, #0x1
     cmp r5, #0x8
     blt .L_0220ff24

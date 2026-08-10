@@ -24,10 +24,10 @@ extern void func_02092814(void *, s32);
 extern void *Heap_Alloc(u32, const void *, s32, void *);
 extern void *func_02092cc0(void *, void *, void *);
 extern void func_ov031_021fd91c(void *, s32, s32, s32, s32);
-extern void *func_020742cc(void *);
-extern void func_02074110(void *);
+extern void *GraphicsSpriteGroupOwner_CreateGroup(void *);
+extern void GraphicsSpriteGroup_ReleaseIndexedEntries(void *);
 extern void func_02071ee0(void *, void *, s32, s32, s32);
-extern void *func_02073ffc(void *, void *, s32);
+extern void *GraphicsSpriteGroup_CreateStateFromSource(void *, void *, s32);
 extern void func_02073e48(void *, s32, s32, s32, s32, s32, s32);
 extern void *func_ov031_021fd258(void *);
 extern void func_ov031_021fdfa8(void *);
@@ -83,16 +83,16 @@ extern "C" void *func_ov031_021fd95c(void *scene, void *owner)
     FIELD(s32, dialog, 0xd4) = 0;
     FIELD(s32, dialog, 0xbc) = -2;
 
-    void *renderer = func_020742cc(gDebugFont);
+    void *renderer = GraphicsSpriteGroupOwner_CreateGroup(gDebugFont);
     FIELD(void *, scene, 0x58) = renderer;
-    func_02074110(renderer);
+    GraphicsSpriteGroup_ReleaseIndexedEntries(renderer);
     func_02071ee0((u8 *)scene + 0x5c, data_020f4e18[0],
                   0x14ec, 0x14ed, 0x14ee);
-    void *sprite = func_02073ffc(renderer, (u8 *)scene + 0x5c, 1);
+    void *sprite = GraphicsSpriteGroup_CreateStateFromSource(renderer, (u8 *)scene + 0x5c, 1);
     FIELD(void *, scene, 0x6c) = sprite;
     func_02073e48(sprite, 0, 0x26, 0x5b, 0, 0, 0);
     FIELD(s32, scene, 0x94) = 4;
-    sprite = func_02073ffc(renderer, (u8 *)scene + 0x5c, 1);
+    sprite = GraphicsSpriteGroup_CreateStateFromSource(renderer, (u8 *)scene + 0x5c, 1);
     FIELD(void *, scene, 0x68) = sprite;
     func_02073e48(sprite, 2, 0x26, 0x6d, 0, 0, 2);
     FIELD(s32, scene, 0x9c) = 0;

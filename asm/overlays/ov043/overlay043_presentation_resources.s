@@ -1,12 +1,12 @@
 .text
 .extern func_02071ee0
-.extern func_020742cc
-.extern func_02073ffc
+.extern GraphicsSpriteGroupOwner_CreateGroup
+.extern GraphicsSpriteGroup_CreateStateFromSource
 .extern func_020957f0
-.extern func_0207419c
+.extern GraphicsSpriteGroup_Destroy
 .extern func_02071f38
 .extern func_020958d8
-.extern func_020740a4
+.extern GraphicsSpriteGroup_AdvanceAnimations
 .extern data_020f4e18
 .extern data_020f4e14
 
@@ -25,11 +25,11 @@ func_ov043_0220bc2c:
     bl func_02071ee0
     ldr r0, .L_0220bcf0
     ldr r0, [r0, #0x0]
-    bl func_020742cc
+    bl GraphicsSpriteGroupOwner_CreateGroup
     add r1, r4, #0x80
     mov r2, #0x1
     str r0, [r4, #0x8c]
-    bl func_02073ffc
+    bl GraphicsSpriteGroup_CreateStateFromSource
     mov r2, #0x0
     mov r1, r0
     str r2, [sp, #0x0]
@@ -39,7 +39,7 @@ func_ov043_0220bc2c:
     ldr r0, [r4, #0x8c]
     add r1, r4, #0x80
     mov r2, #0x1
-    bl func_02073ffc
+    bl GraphicsSpriteGroup_CreateStateFromSource
     mov r1, r0
     mov r0, #0x0
     str r0, [sp, #0x0]
@@ -50,7 +50,7 @@ func_ov043_0220bc2c:
     ldr r0, [r4, #0x8c]
     add r1, r4, #0x80
     mov r2, #0x1
-    bl func_02073ffc
+    bl GraphicsSpriteGroup_CreateStateFromSource
     mov r2, #0x0
     str r2, [sp, #0x0]
     mov r2, #0x2
@@ -69,7 +69,7 @@ func_ov043_0220bcf4:
     stmdb sp!, {r4, lr}
     mov r4, r0
     ldr r0, [r4, #0x8c]
-    bl func_0207419c
+    bl GraphicsSpriteGroup_Destroy
     mov r1, #0x0
     str r1, [r4, #0x8c]
     str r1, [r4, #0x1d8]
@@ -93,7 +93,7 @@ func_ov043_0220bd24:
     ldr r0, [r4, #0x8c]
     cmp r0, #0x0
     ldmeqia sp!, {r4, pc}
-    bl func_020740a4
+    bl GraphicsSpriteGroup_AdvanceAnimations
     ldmia sp!, {r4, pc}
 .size func_ov043_0220bd24, . - func_ov043_0220bd24
 

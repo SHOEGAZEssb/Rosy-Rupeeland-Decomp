@@ -30,9 +30,9 @@
 .extern func_02071ea4
 .extern func_02071eb8
 .extern func_02071ee0
-.extern func_02074058
-.extern func_020740a4
-.extern func_020742cc
+.extern GraphicsSpriteGroup_Clear
+.extern GraphicsSpriteGroup_AdvanceAnimations
+.extern GraphicsSpriteGroupOwner_CreateGroup
 .extern gDebugFont
 .extern gGameWork
 .extern gHeapContext
@@ -137,9 +137,9 @@ RisingSpriteSwarmPresentation_Update: ; 0x02020abc
     cmp r5, #0x0
     bne .L_02020bcc
     ldr r0, [r4, #0x24]
-    bl func_020740a4
+    bl GraphicsSpriteGroup_AdvanceAnimations
     ldr r0, [r4, #0x28]
-    bl func_020740a4
+    bl GraphicsSpriteGroup_AdvanceAnimations
     mov r0, #0x0
     ldmia sp!, {r4, r5, r6, pc}
 .L_02020c2c: .word gGameWork

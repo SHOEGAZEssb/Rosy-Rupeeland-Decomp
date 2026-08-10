@@ -33,7 +33,7 @@ extern u8 gHeapContext[];
  * precondition. Heap state and owner list state change, with no SDK access.
  */
 #ifndef MATCHING
-GraphicsSpriteGroup *func_020742cc(void *ownerPointer)
+GraphicsSpriteGroup *GraphicsSpriteGroupOwner_CreateGroup(void *ownerPointer)
 {
     GraphicsSpriteGroupOwner *owner =
         (GraphicsSpriteGroupOwner *)ownerPointer;
@@ -55,7 +55,7 @@ GraphicsSpriteGroup *func_020742cc(void *ownerPointer)
 }
 #else
 /* This matching fallback implements the documented portable C directly above. */
-asm GraphicsSpriteGroup *func_020742cc(void *owner)
+asm GraphicsSpriteGroup *GraphicsSpriteGroupOwner_CreateGroup(void *owner)
 {
     stmdb sp!, {r4, lr}
     ldr r1, =data_020e69e4
@@ -90,7 +90,8 @@ sprite_group_alloc_append:
  * observable result; valid callers must pass a group belonging to owner.
  */
 #ifndef MATCHING
-void func_02074330(void *ownerPointer, GraphicsSpriteGroup *group)
+void GraphicsSpriteGroupOwner_DestroyGroup(void *ownerPointer,
+                                           GraphicsSpriteGroup *group)
 {
     GraphicsSpriteGroupOwner *owner =
         (GraphicsSpriteGroupOwner *)ownerPointer;
@@ -108,13 +109,14 @@ void func_02074330(void *ownerPointer, GraphicsSpriteGroup *group)
     } else {
         owner->groupTail = group->previous;
     }
-    func_02074058(group);
+    GraphicsSpriteGroup_Clear(group);
     Heap_Free(group);
     owner->groupCount--;
 }
 #else
 /* This matching fallback implements the documented portable C directly above. */
-asm void func_02074330(void *owner, GraphicsSpriteGroup *group)
+asm void GraphicsSpriteGroupOwner_DestroyGroup(void *owner,
+                                               GraphicsSpriteGroup *group)
 {
     stmdb sp!, {r3, r4, r5, lr}
     movs r4, r1
@@ -143,7 +145,7 @@ sprite_group_owner_found:
     cmp r4, #0
     beq sprite_group_owner_count
     mov r0, r4
-    bl func_02074058
+    bl GraphicsSpriteGroup_Clear
     mov r0, r4
     bl Heap_Free
 sprite_group_owner_count:

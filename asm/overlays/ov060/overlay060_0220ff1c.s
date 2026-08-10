@@ -9,8 +9,8 @@
 .extern data_ov060_0221064c
 .extern func_02071ea4
 .extern func_02071ee0
-.extern func_02073fc4
-.extern func_020742cc
+.extern GraphicsSpriteGroup_CreateState
+.extern GraphicsSpriteGroupOwner_CreateGroup
 .extern func_ov060_0220fd20
 .extern func_ov060_0220fd84
 .extern func_ov060_0220fe50
@@ -40,7 +40,7 @@ func_ov060_0220ff1c:
     bl func_02071ee0
     ldr r0, .L_0221008c
     ldr r0, [r0, #0x0]
-    bl func_020742cc
+    bl GraphicsSpriteGroupOwner_CreateGroup
     str r0, [r7, #0x0]
     mov r0, r6
     bl Scene_GetEmbedded10
@@ -71,7 +71,7 @@ func_ov060_0220ff1c:
     mov r0, #0x1
     str r0, [sp, #0x0]
     ldmia r7, {r0, r1, r2, r3}
-    bl func_02073fc4
+    bl GraphicsSpriteGroup_CreateState
     mov r1, r0
     mov r0, r8
     mov r2, #0x0
@@ -100,7 +100,7 @@ func_ov060_0220ff1c:
     mov r0, #0x1
     str r0, [sp, #0x0]
     ldmia r7, {r0, r1, r2, r3}
-    bl func_02073fc4
+    bl GraphicsSpriteGroup_CreateState
     mov r1, r0
     mov r0, r8
     mov r2, #0x2

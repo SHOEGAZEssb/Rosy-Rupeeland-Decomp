@@ -17,10 +17,10 @@ extern "C" {
 extern void func_02071eb8(void *);
 extern void GraphicsSpriteState_SetAnimationIndex(void *, s32);
 extern void func_02073e48(void *, s32, s32, s32, s32, s32, s32);
-extern void func_02073ef8(void *);
-extern void *func_02073ffc(void *, void *, s32);
-extern void func_02074110(void *);
-extern void func_0207419c(void *);
+extern void GraphicsSpriteState_ReleaseFromGroup(void *);
+extern void *GraphicsSpriteGroup_CreateStateFromSource(void *, void *, s32);
+extern void GraphicsSpriteGroup_ReleaseIndexedEntries(void *);
+extern void GraphicsSpriteGroup_Destroy(void *);
 extern s32 func_020befec(s32, s32);
 extern void func_020927b8(void *);
 extern void func_020c0c24(void *, s32, s32, void (*)(void *));
@@ -54,8 +54,8 @@ extern "C" void func_ov021_021fce00(Overlay021Row *row)
  */
 extern "C" void *func_ov021_021fd074(void *state)
 {
-    func_0207419c(FIELD(void *, state, 0x1c));
-    func_0207419c(FIELD(void *, state, 0x20));
+    GraphicsSpriteGroup_Destroy(FIELD(void *, state, 0x1c));
+    GraphicsSpriteGroup_Destroy(FIELD(void *, state, 0x20));
     void *controller = FIELD(void *, state, 0x58);
     if (controller != 0) {
         typedef void (*Destructor)(void *);
@@ -131,7 +131,7 @@ extern "C" u32 func_ov021_021fd1b8(const void *descriptor)
  * Mark the list visible at +0x5C. For nonempty lists, request the controller's
  * +0x50 object when its +8 position trails +4; for empty lists, hide that
  * object. Mark both renderers +0x1C/+0x20 visible and return void. UI state
- * changes through func_02074110 or direct visibility words; no MMIO.
+ * changes through GraphicsSpriteGroup_ReleaseIndexedEntries or direct visibility words; no MMIO.
  */
 extern "C" void func_ov021_021fd1cc(void *state)
 {
@@ -141,7 +141,7 @@ extern "C" void func_ov021_021fd1cc(void *state)
         if (FIELD(s32, controller, 8) < FIELD(s32, controller, 4))
             FIELD(s32, FIELD(void *, controller, 0x50), 0x20) = 1;
     } else {
-        func_02074110(FIELD(void *, controller, 0x50));
+        GraphicsSpriteGroup_ReleaseIndexedEntries(FIELD(void *, controller, 0x50));
     }
     FIELD(s32, FIELD(void *, state, 0x1c), 0x20) = 1;
     FIELD(s32, FIELD(void *, state, 0x20), 0x20) = 1;
@@ -149,15 +149,15 @@ extern "C" void func_ov021_021fd1cc(void *state)
 
 /*
  * Clear visible flag +0x5C and hide the controller +0x50 object plus renderers
- * +0x1C/+0x20. UI visibility changes through func_02074110; returns void and
+ * +0x1C/+0x20. UI visibility changes through GraphicsSpriteGroup_ReleaseIndexedEntries; returns void and
  * performs no direct hardware access.
  */
 extern "C" void func_ov021_021fd224(void *state)
 {
     FIELD(s32, state, 0x5c) = 0;
-    func_02074110(FIELD(void *, FIELD(void *, state, 0x58), 0x50));
-    func_02074110(FIELD(void *, state, 0x1c));
-    func_02074110(FIELD(void *, state, 0x20));
+    GraphicsSpriteGroup_ReleaseIndexedEntries(FIELD(void *, FIELD(void *, state, 0x58), 0x50));
+    GraphicsSpriteGroup_ReleaseIndexedEntries(FIELD(void *, state, 0x1c));
+    GraphicsSpriteGroup_ReleaseIndexedEntries(FIELD(void *, state, 0x20));
 }
 
 /*
@@ -189,7 +189,7 @@ extern "C" void func_ov021_021fd2b4(void *state, s32 index)
     Overlay021Row *row = &FIELD(Overlay021Row *, state, 0x4c)[index];
     if (row->descriptor == 0 || row->sprite != 0)
         return;
-    row->sprite = func_02073ffc(FIELD(void *, state, 0x1c),
+    row->sprite = GraphicsSpriteGroup_CreateStateFromSource(FIELD(void *, state, 0x1c),
                                 (u8 *)state + 0x10, 1);
     const u8 *record = FIELD(const u8 *, row->descriptor, 4);
     func_02073e48(row->sprite, FIELD(u16, record, 4) >= 2 ? 3 : 1,
@@ -205,7 +205,7 @@ extern "C" void func_ov021_021fd354(void *state, s32 index)
     if (index < FIELD(s32, state, 0x54)) {
         Overlay021Row *row = &FIELD(Overlay021Row *, state, 0x4c)[index];
         if (row->sprite != 0) {
-            func_02073ef8(row->sprite);
+            GraphicsSpriteState_ReleaseFromGroup(row->sprite);
             row->sprite = 0;
         }
     }

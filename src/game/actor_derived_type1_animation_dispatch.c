@@ -8,7 +8,7 @@ extern "C" {
 #endif
 extern void *Actor_GetCollection(void *actor);
 extern void *ActorCollection_GetSpriteOwner(void *collection);
-extern void func_020740c8(void *collectionData, void *attachment, u32 first,
+extern void GraphicsSpriteGroup_ReplaceStateResources(void *collectionData, void *attachment, u32 first,
                           u32 second, u32 third);
 extern void GraphicsSpriteState_SetAnimationIndex(void *attachment, u32 animation);
 extern s32 GameWork_TestFlag(void *work, u32 flag);
@@ -20,7 +20,7 @@ extern void ActorDerivedType1_ApplyResourceIndex(void *actor, u32 index);
 /* Apply one resource descriptor directly to the primary attachment. */
 static void applyDescriptor(u8 *actor, const u8 *resource)
 {
-    func_020740c8(ActorCollection_GetSpriteOwner(Actor_GetCollection(actor)),
+    GraphicsSpriteGroup_ReplaceStateResources(ActorCollection_GetSpriteOwner(Actor_GetCollection(actor)),
                   *(void **)(actor + 0x54), *(u32 *)(resource + 4),
                   *(u32 *)(resource + 8), *(u32 *)(resource + 0x0c));
 }

@@ -14,13 +14,13 @@ typedef struct Overlay002PresentationUpdateState {
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_020740a4(void *resource);
+extern void GraphicsSpriteGroup_AdvanceAnimations(void *resource);
 #ifdef __cplusplus
 }
 #endif
 
 /*
- * Pass resourceA_010 and resourceB_014 to func_020740a4 in order. Returns no
+ * Pass resourceA_010 and resourceB_014 to GraphicsSpriteGroup_AdvanceAnimations in order. Returns no
  * value; any animation/rendering state changes occur in that callee, with no
  * direct hardware access here.
  */
@@ -29,6 +29,6 @@ extern "C"
 #endif
 void func_ov002_021fba00(Overlay002PresentationUpdateState *state)
 {
-    func_020740a4(state->resourceA_010);
-    func_020740a4(state->resourceB_014);
+    GraphicsSpriteGroup_AdvanceAnimations(state->resourceA_010);
+    GraphicsSpriteGroup_AdvanceAnimations(state->resourceB_014);
 }

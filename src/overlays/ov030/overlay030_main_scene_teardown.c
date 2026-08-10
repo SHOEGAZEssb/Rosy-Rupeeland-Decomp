@@ -14,7 +14,7 @@ extern "C" {
 #endif
 extern void Heap_Free(void *);
 extern void func_ov045_0220d2d8(s32);
-extern void func_0207419c(void *);
+extern void GraphicsSpriteGroup_Destroy(void *);
 extern void func_ov045_0220b8cc(void *);
 extern void *func_ov030_021fd27c(void *);
 extern void func_02071c38(void *, void *);
@@ -45,7 +45,7 @@ static void teardown_main_scene(void *scene)
     FIELD(u32, scene, 0x20) &= ~0x400;
     if (FIELD(s32, scene, 0x35c) != -1)
         func_ov045_0220d2d8(FIELD(s32, scene, 0x35c));
-    func_0207419c(FIELD(void *, scene, 0x78));
+    GraphicsSpriteGroup_Destroy(FIELD(void *, scene, 0x78));
 
     void *object = FIELD(void *, scene, 0x2c8);
     if (object != 0) {

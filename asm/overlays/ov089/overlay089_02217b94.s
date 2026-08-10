@@ -4,7 +4,7 @@
 .extern func_02071bdc
 .extern func_02071c38
 .extern func_02071c94
-.extern func_02074038
+.extern GraphicsSpriteGroup_ReleaseState
 
 .global func_ov089_02217b94
 func_ov089_02217b94:
@@ -14,7 +14,7 @@ func_ov089_02217b94:
     cmp r1, #0x0
     beq .L_02217be8
     ldr r0, [r1, #0x0]
-    bl func_02074038
+    bl GraphicsSpriteGroup_ReleaseState
     ldr r0, .L_02217c10
     ldr r1, [r4, #0x8]
     ldr r0, [r0, #0x0]

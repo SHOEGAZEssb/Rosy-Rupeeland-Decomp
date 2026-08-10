@@ -7,7 +7,7 @@
     .extern OverlaySlot_Destroy
     .extern func_02071c38
     .extern func_02071eb8
-    .extern func_0207419c
+    .extern GraphicsSpriteGroup_Destroy
     .extern GraphicsSpriteRenderer_QueuePaletteUploads
     .extern func_020927b8
     .extern func_ov002_021fb9c4
@@ -99,7 +99,7 @@ L_021fdc84:
     cmp r5, #0x2
     blt L_021fdc64
     ldr r0, [r4, #0x94]
-    bl func_0207419c
+    bl GraphicsSpriteGroup_Destroy
     ldr r0, L_021fdd20
     ldr r1, [r4, #0x400]
     ldr r0, [r0, #0x0]

@@ -1,7 +1,7 @@
 .text
 
 /* Exact fallback; see src/overlays/ov031/overlay031_transition_setup.c for documented portable C. */
-.extern func_02074110
+.extern GraphicsSpriteGroup_ReleaseIndexedEntries
 .extern func_ov031_021fce00
 
 
@@ -26,7 +26,7 @@ func_ov031_021fe17c:
     stmdb sp!, {r4, lr}
     mov r4, r0
     ldr r0, [r4, #0x58]
-    bl func_02074110
+    bl GraphicsSpriteGroup_ReleaseIndexedEntries
     add r0, r4, #0xa4
     mov r1, #0x1
     mov r2, #0x8

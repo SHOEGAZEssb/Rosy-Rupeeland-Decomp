@@ -10,7 +10,7 @@
 extern "C" u8 data_ov043_0220c4bc[];
 extern "C" void *data_020f4e14;
 extern "C" void *gDebugFont;
-extern "C" void func_0207419c(void *object);
+extern "C" void GraphicsSpriteGroup_Destroy(void *object);
 extern "C" void GraphicsSpriteRenderer_QueuePaletteUploads(void *font);
 extern "C" void OverlaySlot_Destroy(void *object);
 extern "C" void func_ov043_0220b740(void *component);
@@ -30,7 +30,7 @@ static void destroy_members(void *object)
         ((void (*)(void *))vtable[2])(child);
     }
     if (FIELD(void *, object, 0x8c))
-        func_0207419c(FIELD(void *, object, 0x8c));
+        GraphicsSpriteGroup_Destroy(FIELD(void *, object, 0x8c));
     GraphicsSpriteRenderer_QueuePaletteUploads(data_020f4e14);
     GraphicsSpriteRenderer_QueuePaletteUploads(gDebugFont);
     OverlaySlot_Destroy((u8 *)object + 0x2e8);

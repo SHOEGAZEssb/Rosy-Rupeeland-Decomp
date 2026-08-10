@@ -3,7 +3,7 @@
 .extern data_020d5604
 .extern func_02006138
 .extern func_02071eb8
-.extern func_0207419c
+.extern GraphicsSpriteGroup_Destroy
 .global GamePhaseTouchPrompt_Destroy
 GamePhaseTouchPrompt_Destroy:
     stmdb sp!, {r4, lr}
@@ -18,7 +18,7 @@ GamePhaseTouchPrompt_Destroy:
     blx r1
 L_02010360:
     ldr r0, [r4, #0x18]
-    bl func_0207419c
+    bl GraphicsSpriteGroup_Destroy
     add r0, r4, #0xc
     bl func_02071eb8
     mov r0, r4

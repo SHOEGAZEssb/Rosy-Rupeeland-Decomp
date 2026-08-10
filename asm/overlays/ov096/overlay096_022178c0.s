@@ -9,7 +9,7 @@
 .extern ActorExtendedType2_GetDescriptorValue2A
 .extern func_020593dc
 .extern GraphicsSpriteState_SetAnimationIndex
-.extern func_020740c8
+.extern GraphicsSpriteGroup_ReplaceStateResources
 .extern func_ov096_02217e88
 .extern func_ov096_0221811c
 .extern gSoundContext
@@ -111,7 +111,7 @@ func_ov096_022178c0:
     str r1, [sp, #0x0]
     ldr r1, [r4, #0x54]
     ldmib r5, {r2, r3}
-    bl func_020740c8
+    bl GraphicsSpriteGroup_ReplaceStateResources
     ldr r0, [r4, #0x54]
     mov r1, #0x13
     bl GraphicsSpriteState_SetAnimationIndex
@@ -199,7 +199,7 @@ func_ov096_022178c0:
     str r1, [sp, #0x0]
     ldr r1, [r4, #0x54]
     ldmib r5, {r2, r3}
-    bl func_020740c8
+    bl GraphicsSpriteGroup_ReplaceStateResources
     ldr r0, [r4, #0x54]
     mov r1, #0x13
     bl GraphicsSpriteState_SetAnimationIndex
@@ -234,7 +234,7 @@ func_ov096_022178c0:
     str r1, [sp, #0x0]
     ldr r1, [r4, #0x54]
     ldmib r5, {r2, r3}
-    bl func_020740c8
+    bl GraphicsSpriteGroup_ReplaceStateResources
     ldr r0, [r4, #0x54]
     mov r1, #0x14
     bl GraphicsSpriteState_SetAnimationIndex
@@ -276,7 +276,7 @@ func_ov096_022178c0:
     str r1, [sp, #0x0]
     ldr r1, [r4, #0x54]
     ldmib r5, {r2, r3}
-    bl func_020740c8
+    bl GraphicsSpriteGroup_ReplaceStateResources
     ldr r0, [r4, #0x54]
     mov r1, #0x15
     bl GraphicsSpriteState_SetAnimationIndex
@@ -356,7 +356,7 @@ func_ov096_022178c0:
     str r1, [sp, #0x0]
     ldr r1, [r4, #0x54]
     ldmib r5, {r2, r3}
-    bl func_020740c8
+    bl GraphicsSpriteGroup_ReplaceStateResources
     ldr r0, [r4, #0x54]
     mov r1, #0x15
     bl GraphicsSpriteState_SetAnimationIndex

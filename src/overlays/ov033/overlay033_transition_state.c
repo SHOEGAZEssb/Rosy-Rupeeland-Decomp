@@ -28,7 +28,7 @@ extern void func_ov033_021fd598(void *scene);
 extern void Type7Actor_EnterFlag40000State(void *object);
 extern void func_ov033_021fd04c(void *scene, s32 callbackWord,
                                s32 adjustmentWord);
-extern void func_020740a4(void *spriteContext);
+extern void GraphicsSpriteGroup_AdvanceAnimations(void *spriteContext);
 #ifdef __cplusplus
 }
 #endif
@@ -124,6 +124,6 @@ extern "C" s32 func_ov033_021fd738(void *scene)
         func_ov033_021fd598(scene);
     }
 
-    func_020740a4(FIELD(void *, scene, 0));
+    GraphicsSpriteGroup_AdvanceAnimations(FIELD(void *, scene, 0));
     return 0;
 }

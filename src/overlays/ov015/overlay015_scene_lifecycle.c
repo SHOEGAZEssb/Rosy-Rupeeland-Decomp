@@ -26,10 +26,10 @@ extern void func_020957bc(void *); extern void func_02092754(void *,s32); extern
 extern void *Heap_Alloc(u32,const char *,s32,void *); extern void Heap_Free(void *);
 extern void *func_ov001_021fb6f8(void *,void *); extern void func_ov001_021fb7d4(void *);
 extern void *func_ov001_021fbabc(void *,void *); extern void func_0206550c(void *,s32);
-extern void func_02071ee0(void *,void *,s32,s32,s32); extern void *func_020742cc(void *);
-extern void *func_02073ffc(void *,void *,s32); extern void func_020957f0(void *,void *,s32,s32,s32);
+extern void func_02071ee0(void *,void *,s32,s32,s32); extern void *GraphicsSpriteGroupOwner_CreateGroup(void *);
+extern void *GraphicsSpriteGroup_CreateStateFromSource(void *,void *,s32); extern void func_020957f0(void *,void *,s32,s32,s32);
 extern void func_02073e48(void *,s32,s32,s32,s32,s32,s32); extern void func_020afd0c(void *,s32,s32,s32,s32);
-extern void func_0205974c(void *,s32); extern void func_020597fc(void *,s32); extern void func_0207419c(void *);
+extern void func_0205974c(void *,s32); extern void func_020597fc(void *,s32); extern void GraphicsSpriteGroup_Destroy(void *);
 extern void func_ov015_021fce00(void *); extern void func_ov015_021fce14(void *); extern void func_ov015_021fce30(void *,s32,s32,s32);
 extern void func_ov015_021fd230(void *,const void *); extern void func_ov015_021fd41c(void *);
 extern void func_ov015_021fda50(void *); extern void func_ov015_021fd8a8(void *,s32); extern void func_ov015_021fd8ec(void *);
@@ -71,10 +71,10 @@ extern "C" void *func_ov015_021fce58(void *state,const void *parameters,s32 soun
     if(soundMode)func_0205974c(gSoundContext,0x82);
     func_02071ee0((u8 *)state+0x58,data_020f4e18,0,1,2);
     func_02071ee0((u8 *)state+0x64,data_020f4e18,0x47,0x45,0x48);
-    FIELD(void *,state,0x54)=func_020742cc(data_020f4e14);
-    for(i=0;i<3;i++){selected=func_02073ffc(FIELD(void *,state,0x54),(u8 *)state+0x58,1);func_020957f0((u8 *)state+0xfc+i*0xac,selected,0,2,0);}
+    FIELD(void *,state,0x54)=GraphicsSpriteGroupOwner_CreateGroup(data_020f4e14);
+    for(i=0;i<3;i++){selected=GraphicsSpriteGroup_CreateStateFromSource(FIELD(void *,state,0x54),(u8 *)state+0x58,1);func_020957f0((u8 *)state+0xfc+i*0xac,selected,0,2,0);}
     FIELD(s32,state,0x300)=0;func_ov015_021fda50(state);func_ov015_021fd8a8(state,0);func_ov015_021fd8ec(state);func_ov015_021fda50(state);
-    selected=func_02073ffc(FIELD(void *,state,0x54),(u8 *)state+0x64,1);FIELD(void *,state,0x70)=selected;func_02073e48(selected,0,0x9c,0xe,1,0,4);
+    selected=GraphicsSpriteGroup_CreateStateFromSource(FIELD(void *,state,0x54),(u8 *)state+0x64,1);FIELD(void *,state,0x70)=selected;func_02073e48(selected,0,0x9c,0xe,1,0,4);
     func_020afd0c((void *)0x04000050,0,4,4,0xc);FIELD(u32,state,0x20)|=0x400;
     func_ov015_021fce30(state,data_ov015_021fec48[0],data_ov015_021fec48[1],0);return state;
 }
@@ -86,7 +86,7 @@ extern "C" void *func_ov015_021fd24c(void *state)
     if(FIELD(s32,state,0xec))func_020597fc(gSoundContext,0x82);*(volatile u16 *)0x04000050=0;
     o=FIELD(void *,state,0xf8);if(o){void **v=FIELD(void **,o,0);((Overlay015Destructor)v[1])(o);}
     o=FIELD(void *,state,0xf4);if(o){func_ov001_021fb7d4(o);Heap_Free(o);}o=FIELD(void *,state,0xdc);if(o){void **v=FIELD(void **,o,0);((Overlay015Destructor)v[1])(o);}
-    func_0207419c(FIELD(void *,state,0x54));for(i=2;i>=0;i--)func_ov015_021fce14((u8 *)state+0xfc+i*0xac);
+    GraphicsSpriteGroup_Destroy(FIELD(void *,state,0x54));for(i=2;i>=0;i--)func_ov015_021fce14((u8 *)state+0xfc+i*0xac);
     func_020926f8((u8 *)state+0x98);func_020927b8((u8 *)state+0x74);func_02071eb8((u8 *)state+0x64);func_02071eb8((u8 *)state+0x58);return state;
 }
 

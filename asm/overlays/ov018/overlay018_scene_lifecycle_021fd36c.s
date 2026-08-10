@@ -6,7 +6,7 @@
     .extern data_ov018_021ffd00
     .extern data_ov018_021ffd3c
     .extern func_02071eb8
-    .extern func_0207419c
+    .extern GraphicsSpriteGroup_Destroy
     .extern GraphicsSpriteRenderer_ConfigureTextGridPriority
     .extern func_020927b8
     .extern func_02095308
@@ -50,11 +50,11 @@ L_021fd3cc:
     add r0, r4, #0x3cc
     bl func_02095308
     ldr r0, [r4, #0xc4]
-    bl func_0207419c
+    bl GraphicsSpriteGroup_Destroy
     ldr r0, [r4, #0xcc]
-    bl func_0207419c
+    bl GraphicsSpriteGroup_Destroy
     ldr r0, [r4, #0xc8]
-    bl func_0207419c
+    bl GraphicsSpriteGroup_Destroy
     ldr r0, L_021fd498
     mov r1, #0x0
     ldr r0, [r0, #0x0]
@@ -128,11 +128,11 @@ L_021fd4ec:
     add r0, r4, #0x3cc
     bl func_02095308
     ldr r0, [r4, #0xc4]
-    bl func_0207419c
+    bl GraphicsSpriteGroup_Destroy
     ldr r0, [r4, #0xcc]
-    bl func_0207419c
+    bl GraphicsSpriteGroup_Destroy
     ldr r0, [r4, #0xc8]
-    bl func_0207419c
+    bl GraphicsSpriteGroup_Destroy
     ldr r0, L_021fd5c0
     mov r1, #0x0
     ldr r0, [r0, #0x0]

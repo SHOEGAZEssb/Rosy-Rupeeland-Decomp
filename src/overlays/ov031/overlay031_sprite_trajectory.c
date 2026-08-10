@@ -7,7 +7,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_02073ef8(void *);
+extern void GraphicsSpriteState_ReleaseFromGroup(void *);
 #ifdef __cplusplus
 }
 #endif
@@ -36,7 +36,7 @@ extern "C" void func_ov031_021fd19c(void *motion, void *sprite,
 extern "C" void *func_ov031_021fd1c0(void *motion)
 {
     if (FIELD(void *, motion, 0) != 0)
-        func_02073ef8(FIELD(void *, motion, 0));
+        GraphicsSpriteState_ReleaseFromGroup(FIELD(void *, motion, 0));
     return motion;
 }
 

@@ -19,8 +19,8 @@
 .extern func_0201e28c
 .extern func_020233c8
 .extern GraphicsSpriteState_SetAnimationIndex
-.extern func_02074038
-.extern func_020740c8
+.extern GraphicsSpriteGroup_ReleaseState
+.extern GraphicsSpriteGroup_ReplaceStateResources
 .extern func_020befec
 .extern gHeapContext
 .extern gSoundContext

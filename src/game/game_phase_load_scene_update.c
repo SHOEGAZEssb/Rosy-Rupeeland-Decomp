@@ -53,7 +53,7 @@ extern int DisplayBrightness_IsMainTransitionComplete(...);
 extern int DisplayBrightness_IsSubTransitionComplete(...);
 extern int GamePhaseRuntime_GetActorCollection(...);
 extern int ActorCollection_GetSpriteOwner(...);
-extern int func_020740a4(...);
+extern int GraphicsSpriteGroup_AdvanceAnimations(...);
 extern int func_02091fb0(...);
 extern int func_02001970(...);
 extern int func_0200199c(...);
@@ -247,7 +247,7 @@ code_r0x0200d17c:
     if ((iVar5 == 0) || (iVar5 = DisplayBrightness_IsSubTransitionComplete(), iVar5 == 0)) {
       GamePhaseRuntime_GetActorCollection(*UNK_0200e0e4,1);
       ActorCollection_GetSpriteOwner();
-      func_020740a4();
+      GraphicsSpriteGroup_AdvanceAnimations();
       return 0;
     }
     break;

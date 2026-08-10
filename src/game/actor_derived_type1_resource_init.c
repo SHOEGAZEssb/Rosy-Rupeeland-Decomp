@@ -13,7 +13,7 @@ extern void *AnimationResource_Init(void *storage, u32 first, u32 second, u32 th
 extern s32 GameWork_TestFlag(void *work, u32 flag);
 extern void *Actor_GetCollection(void *actor);
 extern void *ActorCollection_GetSpriteOwner(void *collection);
-extern void *func_02073fc4(void *collectionData, u32 first, u32 second,
+extern void *GraphicsSpriteGroup_CreateState(void *collectionData, u32 first, u32 second,
                            u32 third, u32 mode);
 extern void GraphicsSpriteState_SetAnimationIndex(void *attachment, u32 animation);
 extern void func_020313b4(void *actor, void *resource, u32 layer);
@@ -65,7 +65,7 @@ void ActorDerivedType1_InitializeResources(void *self, const void *descriptor)
         *(void **)(actor + 0x22c) = 0;
 
     first = *(u8 **)(actor + 0x208);
-    attachment = func_02073fc4(ActorCollection_GetSpriteOwner(Actor_GetCollection(actor)),
+    attachment = GraphicsSpriteGroup_CreateState(ActorCollection_GetSpriteOwner(Actor_GetCollection(actor)),
                                *(u32 *)(first + 4), *(u32 *)(first + 8),
                                *(u32 *)(first + 0x0c), 2);
     *(void **)(actor + 0x54) = attachment;

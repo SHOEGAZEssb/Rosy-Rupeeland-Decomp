@@ -1,7 +1,7 @@
 ; Matching retail form; see src/overlays/ov000/overlay000_grid_update.c.
 .text
 .extern data_020c9670
-.extern func_020740a4
+.extern GraphicsSpriteGroup_AdvanceAnimations
 .extern func_02094574
 .extern func_020958d8
 .global func_ov000_021fc164
@@ -15,9 +15,9 @@ func_ov000_021fc164: ; 0x021fc164
     add r0, r4, #0x17c
     bl func_020958d8
     ldr r0, [r4, #0x8]
-    bl func_020740a4
+    bl GraphicsSpriteGroup_AdvanceAnimations
     ldr r0, [r4, #0xc]
-    bl func_020740a4
+    bl GraphicsSpriteGroup_AdvanceAnimations
     ldr r0, [r4, #0x26c]
     bl func_02094574
     ldr r0, [r4, #0x1c]

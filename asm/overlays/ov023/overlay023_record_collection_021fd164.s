@@ -3,7 +3,7 @@
 /* Exact fallback; see src/overlays/ov023/overlay023_record_collection.c. */
 .extern data_021f5128
 .extern func_02073e48
-.extern func_02073ffc
+.extern GraphicsSpriteGroup_CreateStateFromSource
 .extern func_0207b4e8
 
 
@@ -34,7 +34,7 @@ func_ov023_021fd164:
     add r1, r2, #0x4
     mov r2, #0x2
     ldr r7, [r4, r3, lsl #0x2]
-    bl func_02073ffc
+    bl GraphicsSpriteGroup_CreateStateFromSource
     ldr r1, [r6, #0x2c]
     mov r4, r0
     add r0, r1, r5

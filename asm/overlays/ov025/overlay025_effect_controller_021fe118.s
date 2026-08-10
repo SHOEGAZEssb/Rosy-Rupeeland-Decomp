@@ -4,7 +4,7 @@
 .extern __destroy_arr
 .extern data_ov025_02203354
 .extern func_02071eb8
-.extern func_0207419c
+.extern GraphicsSpriteGroup_Destroy
 .extern func_ov025_021fdec8
 .extern Heap_Free
 
@@ -16,9 +16,9 @@ func_ov025_021fe118:
     mov r4, r0
     str r1, [r4, #0x0]
     ldr r0, [r4, #0xe0]
-    bl func_0207419c
+    bl GraphicsSpriteGroup_Destroy
     ldr r0, [r4, #0xe4]
-    bl func_0207419c
+    bl GraphicsSpriteGroup_Destroy
     add r0, r4, #0xd4
     bl func_02071eb8
     add r0, r4, #0xb0

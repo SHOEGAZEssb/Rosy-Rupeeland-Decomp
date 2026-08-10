@@ -3,7 +3,7 @@
 .extern func_02004fe0
 .extern func_02005030
 .extern GraphicsSpriteState_SetAnimationIndex
-.extern func_02073fc4
+.extern GraphicsSpriteGroup_CreateState
 .extern func_ov050_0220d7c4
 
 .global func_ov050_0220d600
@@ -25,7 +25,7 @@ func_ov050_0220d600:
     str r2, [r5, #0x28]
     str r1, [sp, #0x0]
     ldmia r4, {r1, r2, r3}
-    bl func_02073fc4
+    bl GraphicsSpriteGroup_CreateState
     str r0, [r5, #0x0]
     mov r1, #0x0
     bl GraphicsSpriteState_SetAnimationIndex
@@ -38,7 +38,7 @@ func_ov050_0220d600:
     str r1, [sp, #0x0]
     ldmia r4, {r1, r2, r3}
     mov r0, r6
-    bl func_02073fc4
+    bl GraphicsSpriteGroup_CreateState
     str r0, [r5, #0x4]
     mov r1, #0x0
     bl GraphicsSpriteState_SetAnimationIndex

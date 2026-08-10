@@ -11,7 +11,7 @@
 .extern Actor_GetCollection
 .extern Type7Actor_SetActorEnabled
 .extern func_0204d3d8
-.extern func_02073fc4
+.extern GraphicsSpriteGroup_CreateState
 .extern gHeapContext
 
 .global func_ov093_02217908
@@ -40,7 +40,7 @@ func_ov093_02217908:
     mov r1, #0x1
     str r1, [sp, #0x0]
     ldmib r5, {r1, r2, r3}
-    bl func_02073fc4
+    bl GraphicsSpriteGroup_CreateState
     mov r1, #0x0
     str r0, [r4, #0x204]
     mov r0, #0x6
@@ -80,7 +80,7 @@ func_ov093_02217908:
     mov r1, #0x1
     str r1, [sp, #0x0]
     ldmib r5, {r1, r2, r3}
-    bl func_02073fc4
+    bl GraphicsSpriteGroup_CreateState
     str r0, [r4, #0x208]
     mov r0, #0x6
     mov r2, #0x0
@@ -112,7 +112,7 @@ func_ov093_02217908:
     bl ActorCollection_GetSpriteOwner
     str r8, [sp, #0x0]
     ldmib r10, {r1, r2, r3}
-    bl func_02073fc4
+    bl GraphicsSpriteGroup_CreateState
     add r1, r4, r9, lsl #0x2
     str r0, [r1, #0x214]
     stmia sp, {r6, r11}

@@ -16,7 +16,7 @@ extern s32 func_02091c7c(void *interpolator, s32 advance);
 extern s32 func_02091cf0(void *interpolator);
 extern void func_ov033_021fd04c(void *scene, s32 callbackWord,
                                s32 adjustmentWord);
-extern void func_020740a4(void *spriteContext);
+extern void GraphicsSpriteGroup_AdvanceAnimations(void *spriteContext);
 #ifdef __cplusplus
 }
 #endif
@@ -58,6 +58,6 @@ extern "C" s32 func_ov033_021fd624(void *scene)
         }
     }
 
-    func_020740a4(FIELD(void *, scene, 0));
+    GraphicsSpriteGroup_AdvanceAnimations(FIELD(void *, scene, 0));
     return 0;
 }

@@ -3,7 +3,7 @@
 .extern Heap_Alloc
 .extern data_ov089_022199f4
 .extern AnimationResource_Init
-.extern func_02073fc4
+.extern GraphicsSpriteGroup_CreateState
 .extern gHeapContext
 
 .global func_ov089_02217b04
@@ -31,7 +31,7 @@ func_ov089_02217b04:
     str r1, [sp, #0x0]
     ldmib r3, {r1, r2, r3}
     ldr r0, [sp, #0x18]
-    bl func_02073fc4
+    bl GraphicsSpriteGroup_CreateState
     str r0, [r4, #0x4]
     mov r0, #0x1
     str r0, [r4, #0x14]

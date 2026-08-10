@@ -18,10 +18,10 @@ extern void func_02071eb8(void *);
 extern void func_02071ee0(void *, void *, s32, s32, s32);
 extern void func_02071f38(void *);
 extern void func_02073e48(void *, s32, s32, s32, s32, s32, s32);
-extern void *func_02073ffc(void *, void *, s32);
-extern void func_02074058(void *);
-extern void func_0207419c(void *);
-extern void *func_020742cc(void *);
+extern void *GraphicsSpriteGroup_CreateStateFromSource(void *, void *, s32);
+extern void GraphicsSpriteGroup_Clear(void *);
+extern void GraphicsSpriteGroup_Destroy(void *);
+extern void *GraphicsSpriteGroupOwner_CreateGroup(void *);
 extern void GraphicsSpriteCanvas_FillRect(void *, s32, s32, s32, s32, s32);
 extern s32 func_0209189c(void *, s32, s32);
 extern s32 func_020918f4(void *, s32);
@@ -53,7 +53,7 @@ extern "C" void *func_ov028_021fd680(void *state, void *font)
     FIELD(u32, state, 0x54) = 0;
     func_02091b6c((u8 *)state + 0x58);
     FIELD(void *, state, 0) = font;
-    FIELD(void *, state, 4) = func_020742cc(font);
+    FIELD(void *, state, 4) = GraphicsSpriteGroupOwner_CreateGroup(font);
     func_02071ee0((u8 *)state + 0x14, data_020f4e18[0], 0x60, 0x61, 0x62);
     func_02071ee0((u8 *)state + 0x20, data_020f4e18[0],
                   0x4000, 0x4001, 0x4002);
@@ -82,7 +82,7 @@ extern "C" void *func_ov028_021fd790(void *state)
         typedef void (*Destructor)(void *);
         FIELD(Destructor *, controller, 0)[1](controller);
     }
-    func_0207419c(FIELD(void *, state, 4));
+    GraphicsSpriteGroup_Destroy(FIELD(void *, state, 4));
     func_020927b8((u8 *)state + 0x2c);
     func_02071eb8((u8 *)state + 0x20);
     func_02071eb8((u8 *)state + 0x14);
@@ -98,7 +98,7 @@ extern "C" void *func_ov028_021fd790(void *state)
  */
 extern "C" void func_ov028_021fd7e0(void *state)
 {
-    void *sprite = func_02073ffc(FIELD(void *, state, 4),
+    void *sprite = GraphicsSpriteGroup_CreateStateFromSource(FIELD(void *, state, 4),
                                  (u8 *)state + 0x20, 1);
     s32 selector = func_020918f4((u8 *)state + 0x54, 5);
     s32 x = func_0209189c((u8 *)state + 0x54, 0x20, 0x50);
@@ -116,6 +116,6 @@ extern "C" void func_ov028_021fd86c(void *state)
 {
     GraphicsSpriteCanvas_FillRect(FIELD(void *, state, 0), 0, 0, 0xff, 0xb0, 0);
     func_02093998(FIELD(void *, state, 0x50));
-    func_02074058(FIELD(void *, state, 4));
+    GraphicsSpriteGroup_Clear(FIELD(void *, state, 4));
     func_02071f38((u8 *)state + 8);
 }

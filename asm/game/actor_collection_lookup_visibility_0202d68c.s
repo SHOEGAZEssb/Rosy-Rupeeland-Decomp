@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/actor_collection_lookup_visibility.c.
 .text
-.extern func_02074110
+.extern GraphicsSpriteGroup_ReleaseIndexedEntries
 
     .global ActorCollection_SetEnabled
     .type ActorCollection_SetEnabled, @function
@@ -48,7 +48,7 @@ ActorCollection_SetEnabled: ; 0x0202d68c
     strne r1, [r0, #0x20]
     ldmia sp!, {r3, r4, r5, r6, r7, pc}
 .L_0202d728:
-    bl func_02074110
+    bl GraphicsSpriteGroup_ReleaseIndexedEntries
     add r5, r4, #0x2000
     mov r6, r7
     b .L_0202d758
@@ -73,7 +73,7 @@ ActorCollection_SetEnabled: ; 0x0202d68c
     cmpne r0, #0x0
     beq .L_0202d784
     ldr r0, [r0, #0xc]
-    bl func_02074110
+    bl GraphicsSpriteGroup_ReleaseIndexedEntries
 .L_0202d784:
     add r0, r4, #0x2000
     ldr r0, [r0, #0xe80]
@@ -82,6 +82,6 @@ ActorCollection_SetEnabled: ; 0x0202d68c
     cmpne r0, #0x0
     ldmeqia sp!, {r3, r4, r5, r6, r7, pc}
     ldr r0, [r0, #0xc]
-    bl func_02074110
+    bl GraphicsSpriteGroup_ReleaseIndexedEntries
     ldmia sp!, {r3, r4, r5, r6, r7, pc}
     .size ActorCollection_SetEnabled, . - ActorCollection_SetEnabled

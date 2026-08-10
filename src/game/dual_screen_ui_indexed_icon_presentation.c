@@ -49,7 +49,7 @@ extern void DebugSpriteText_SetTextResource(void *helper, u16 value);
 extern void DebugSpriteText_DrawCentered(void *helper, s32 x, s32 y);
 extern u16 func_02028404(void *source);
 extern void GraphicsSpriteRenderer_ClearTextBuffer(void *font);
-extern void func_020740a4(void *spriteOwner);
+extern void GraphicsSpriteGroup_AdvanceAnimations(void *spriteOwner);
 extern void *AnimationBinding_Init(void *, void *, s32, s32, s32, s32);
 extern void AnimationBinding_Destroy(void *wrapper);
 #ifdef __cplusplus
@@ -150,7 +150,7 @@ void func_020263d4(DualScreenUiIndexedIconPresentation *self)
     if (self->drawEnabledd4)
         DebugSpriteText_DrawCentered(self->helperc8, 104, 171);
     func_020269f8(self->embedded04);
-    func_020740a4(self->spriteOwnera8);
+    GraphicsSpriteGroup_AdvanceAnimations(self->spriteOwnera8);
 }
 
 /*

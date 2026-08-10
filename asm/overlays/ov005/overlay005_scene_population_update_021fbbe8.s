@@ -10,7 +10,7 @@
     .extern func_020948f8
     .extern func_02095274
     .extern func_02095360
-    .extern func_020740a4
+    .extern GraphicsSpriteGroup_AdvanceAnimations
     .extern data_020f4e14
     .extern data_ov005_021fcb04
     .extern gHeapContext
@@ -113,7 +113,7 @@ L_021fbd38:
     add r0, r4, #0x148
     bl func_02095360
     ldr r0, [r4, #0x4]
-    bl func_020740a4
+    bl GraphicsSpriteGroup_AdvanceAnimations
     ldmia sp!, {r3, r4, r5, pc}
 L_021fbd4c: .word data_020f4e14
 L_021fbd50: .word 0x4000050

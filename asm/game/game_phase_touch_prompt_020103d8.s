@@ -7,7 +7,7 @@
 .extern GamePhaseTouchPrompt_UpdateAlternateHideSequence
 .extern ActorDerivedType1_IsActiveRecordType69
 .extern ActorDerivedType1_IsActiveRecordType6A
-.extern func_020740a4
+.extern GraphicsSpriteGroup_AdvanceAnimations
 .extern func_020954c0
 .extern func_020954d4
 .extern gSceneManager
@@ -61,7 +61,7 @@ L_02010470:
     ldr r1, [r1, #0x8]
     blx r1
     ldr r0, [r4, #0x18]
-    bl func_020740a4
+    bl GraphicsSpriteGroup_AdvanceAnimations
     ldr r0, [r5, #0x230]
     tst r0, #0x800
     beq L_020104f4

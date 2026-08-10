@@ -14,9 +14,9 @@
 .extern func_02071ee0
 .extern GraphicsSpriteState_SetAnimationIndex
 .extern func_02073e48
-.extern func_02073ffc
-.extern func_020740c8
-.extern func_020742cc
+.extern GraphicsSpriteGroup_CreateStateFromSource
+.extern GraphicsSpriteGroup_ReplaceStateResources
+.extern GraphicsSpriteGroupOwner_CreateGroup
 .extern func_02091e28
 .extern func_02092798
 .extern func_02092814
@@ -110,11 +110,11 @@ func_ov028_021fdb00:
     bl func_02071ee0
     ldr r0, L_021fdf74
     ldr r0, [r0, #0x0]
-    bl func_020742cc
+    bl GraphicsSpriteGroupOwner_CreateGroup
     ldr r1, L_021fdf78
     str r0, [r10, #0x54]
     ldr r0, [r1, #0x0]
-    bl func_020742cc
+    bl GraphicsSpriteGroupOwner_CreateGroup
     str r0, [r10, #0x58]
     mov r0, r10
     bl func_ov028_021fe1b0
@@ -123,7 +123,7 @@ func_ov028_021fdb00:
     ldr r0, [r10, #0x54]
     add r1, r10, #0x68
     mov r2, #0x1
-    bl func_02073ffc
+    bl GraphicsSpriteGroup_CreateStateFromSource
     str r0, [r10, #0x8c]
     mov r1, #0x1
     str r1, [sp, #0x0]
@@ -138,7 +138,7 @@ func_ov028_021fdb00:
     ldr r0, [r10, #0x54]
     add r1, r10, #0x5c
     mov r2, #0x1
-    bl func_02073ffc
+    bl GraphicsSpriteGroup_CreateStateFromSource
     mov r1, r0
     mov r0, #0x0
     str r0, [sp, #0x0]
@@ -153,7 +153,7 @@ func_ov028_021fdb00:
     ldr r0, [r10, #0x54]
     add r1, r10, #0x5c
     mov r2, #0x1
-    bl func_02073ffc
+    bl GraphicsSpriteGroup_CreateStateFromSource
     mov r1, r0
     mov r2, #0x0
     str r2, [sp, #0x0]
@@ -175,7 +175,7 @@ func_ov028_021fdb00:
     ldr r0, [r10, #0x58]
     add r1, r10, #0x74
     mov r2, #0x1
-    bl func_02073ffc
+    bl GraphicsSpriteGroup_CreateStateFromSource
     mov r1, r0
     mov r0, r4
     bl func_020953f4
@@ -216,7 +216,7 @@ L_021fdd84:
     ldr r0, [r10, #0x54]
     add r1, r10, #0x5c
     mov r2, r11
-    bl func_02073ffc
+    bl GraphicsSpriteGroup_CreateStateFromSource
     mov r1, r0
     mov r0, r8
     bl func_020953f4
@@ -287,7 +287,7 @@ L_021fde58:
     str r0, [sp, #0x0]
     ldr r0, [r1, #0x0]
     ldmib r3, {r2, r3}
-    bl func_020740c8
+    bl GraphicsSpriteGroup_ReplaceStateResources
     ldr r0, [r10, #0x90]
     mov r1, #0xc
     bl GraphicsSpriteState_SetAnimationIndex

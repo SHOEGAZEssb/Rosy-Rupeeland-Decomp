@@ -17,9 +17,9 @@ extern "C" {
 extern void *Actor_GetCollection(ActorRenderAttachmentOwner *);
 extern void *GamePhaseRuntime_GetActorCollection(void *, s32);
 extern void *ActorCollection_GetSpriteOwner(void *);
-extern void *func_02073fc4(void *, u32, u32, u32, s32);
+extern void *GraphicsSpriteGroup_CreateState(void *, u32, u32, u32, s32);
 extern void GraphicsSpriteState_SetAnimationIndex(void *, s32);
-extern void func_02073ef8(void *);
+extern void GraphicsSpriteState_ReleaseFromGroup(void *);
 #ifdef __cplusplus
 }
 #endif
@@ -46,7 +46,7 @@ void func_020313b4(ActorRenderAttachmentOwner *self, void *unused,
     if (*(s32 *)((u8 *)collection + 0x2e84) != 1)
         return;
     config = (u8 *)self->attachmentConfig_54;
-    self->attachment_58 = func_02073fc4(
+    self->attachment_58 = GraphicsSpriteGroup_CreateState(
         ActorCollection_GetSpriteOwner(GamePhaseRuntime_GetActorCollection(data_021052fc, 2)),
         *(u32 *)(config + 0x14), *(u32 *)(config + 0x18),
         *(u32 *)(config + 0x1c), finalArg);
@@ -59,13 +59,13 @@ void func_020313b4(ActorRenderAttachmentOwner *self, void *unused,
 }
 
 /*
- * If attachment/config field 0x54 is nonnull, release it through func_02073ef8
+ * If attachment/config field 0x54 is nonnull, release it through GraphicsSpriteState_ReleaseFromGroup
  * and clear the field. Returns no value; the helper owns render-state effects.
  */
 void func_02031464(ActorRenderAttachmentOwner *self)
 {
     if (self->attachmentConfig_54) {
-        func_02073ef8(self->attachmentConfig_54);
+        GraphicsSpriteState_ReleaseFromGroup(self->attachmentConfig_54);
         self->attachmentConfig_54 = 0;
     }
 }
@@ -73,12 +73,12 @@ void func_02031464(ActorRenderAttachmentOwner *self)
 /*
  * If attachment field 0x58 is nonnull, release it, clear the field, and clear
  * actor flag one. A null field leaves both state locations unchanged. Returns
- * no value; func_02073ef8 owns render-state effects.
+ * no value; GraphicsSpriteState_ReleaseFromGroup owns render-state effects.
  */
 void func_02031488(ActorRenderAttachmentOwner *self)
 {
     if (self->attachment_58) {
-        func_02073ef8(self->attachment_58);
+        GraphicsSpriteState_ReleaseFromGroup(self->attachment_58);
         self->attachment_58 = 0;
         self->flags_14 &= ~1;
     }

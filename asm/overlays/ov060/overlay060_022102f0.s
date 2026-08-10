@@ -8,7 +8,7 @@
 .extern GamePhaseRuntime_UpdateActorPresentationState
 .extern DebugHudState_PollInput
 .extern DebugHudState_GetGlobal
-.extern func_020740a4
+.extern GraphicsSpriteGroup_AdvanceAnimations
 .extern func_ov060_02210584
 
 .global func_ov060_022102f0
@@ -85,7 +85,7 @@ func_ov060_022102f0:
 .L_022103f8:
     ldr r0, [r4, #0x24]
     ldr r0, [r0, #0x0]
-    bl func_020740a4
+    bl GraphicsSpriteGroup_AdvanceAnimations
     mov r0, r4
     bl Scene_GetEmbedded10
     bl TouchRegionManager_Tick

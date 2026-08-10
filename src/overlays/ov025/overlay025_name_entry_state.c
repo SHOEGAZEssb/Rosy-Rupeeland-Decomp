@@ -33,8 +33,8 @@ extern void *Heap_Alloc(u32, const void *, u32, void *);
 extern void Heap_Free(void *);
 extern s32 DisplayBrightness_IsMainTransitionComplete(void);
 extern void func_02071eb8(void *);
-extern void func_02074110(void *);
-extern void func_0207419c(void *);
+extern void GraphicsSpriteGroup_ReleaseIndexedEntries(void *);
+extern void GraphicsSpriteGroup_Destroy(void *);
 extern void GraphicsSpriteRenderer_ClearTextBuffer(void *);
 extern void *func_020791e0(const void *, s32);
 extern s32 func_0207f248(void *);
@@ -100,7 +100,7 @@ static void transition_pair(void *scene, const u32 *pair)
 static void destroy_row(void *row)
 {
     if (row) {
-        func_0207419c(FIELD(void *, row, 0xc));
+        GraphicsSpriteGroup_Destroy(FIELD(void *, row, 0xc));
         func_020927b8((u8 *)row + 0x30);
         func_02071eb8(row);
         Heap_Free(row);
@@ -110,7 +110,7 @@ static void destroy_row(void *row)
 static void destroy_editor(void *editor)
 {
     if (editor) {
-        func_0207419c(FIELD(void *, editor, 0));
+        GraphicsSpriteGroup_Destroy(FIELD(void *, editor, 0));
         func_02071eb8((u8 *)editor + 4);
         Heap_Free(editor);
     }
@@ -206,7 +206,7 @@ static void setup_editor(void *scene)
     func_ov025_022005e4(scene);
     func_ov094_022198e8(FIELD(void *, scene, 0x5c0), 0);
     for (s32 i = 0; i < 3; ++i)
-        func_02074110(FIELD(void *, FIELD(void *, scene, 0xe4 + i * 4), 0xc));
+        GraphicsSpriteGroup_ReleaseIndexedEntries(FIELD(void *, FIELD(void *, scene, 0xe4 + i * 4), 0xc));
     GraphicsSpriteRenderer_ClearTextBuffer(data_020f4e14);
     GraphicsSpriteRenderer_ClearTextBuffer(gDebugFont);
     void *font = func_020791e0(data_021f3ecc, 0x6b);

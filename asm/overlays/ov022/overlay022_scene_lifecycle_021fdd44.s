@@ -11,7 +11,7 @@
     .extern func_020716bc
     .extern func_02071ea4
     .extern func_02071ee0
-    .extern func_020742cc
+    .extern GraphicsSpriteGroupOwner_CreateGroup
     .extern func_02091e28
     .extern func_02092798
     .extern func_02092814
@@ -125,11 +125,11 @@ L_021fde94:
     ldr r1, L_021fdff8
     str r0, [r4, #0x350]
     ldr r0, [r1, #0x0]
-    bl func_020742cc
+    bl GraphicsSpriteGroupOwner_CreateGroup
     ldr r1, L_021fdff8
     str r0, [r4, #0x9c]
     ldr r0, [r1, #0x0]
-    bl func_020742cc
+    bl GraphicsSpriteGroupOwner_CreateGroup
     str r0, [r4, #0xa0]
     mov r0, r4
     bl func_ov022_021fe3c0

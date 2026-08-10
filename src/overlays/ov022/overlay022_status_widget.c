@@ -13,13 +13,13 @@ extern void *gDebugFont;
 extern "C" {
 #endif
 extern void *func_02073e48(void *, s32, s32, s32, ...);
-extern void *func_02073ffc(void *, void *, s32);
+extern void *GraphicsSpriteGroup_CreateStateFromSource(void *, void *, s32);
 extern void func_02071ea4(void *);
 extern void func_02071eb8(void *);
 extern void func_02071ee0(void *, void *, s32, s32, s32);
 extern void GraphicsSpriteState_SetAnimationIndex(void *, s32);
-extern void func_0207419c(void *);
-extern void *func_020742cc(void *);
+extern void GraphicsSpriteGroup_Destroy(void *);
+extern void *GraphicsSpriteGroupOwner_CreateGroup(void *);
 extern void GraphicsSpriteRenderer_DrawText(void *, s32, s32, s32, ...);
 extern s32 GraphicsSpriteRenderer_MeasureText(void *, s32, s32, s32);
 extern s32 func_0207b44c(void *);
@@ -70,12 +70,12 @@ extern "C" void *func_ov022_021fd370(void *widget)
                   0x156f, 0x1570, 0x1571);
     func_02071ee0((u8 *)widget + 0x10, data_020f4e18,
                   0x49, 0x4a, 0x4b);
-    void *main_sprite = func_02073ffc(
+    void *main_sprite = GraphicsSpriteGroup_CreateStateFromSource(
         FIELD(void *, widget, 0x1c), (u8 *)widget + 4, 2);
     FIELD(void *, widget, 0x20) = main_sprite;
     FIELD(u8, main_sprite, 0x3a) = 2;
     FIELD(u16, main_sprite, 0x28) = 0x10;
-    void *secondary = func_02073ffc(
+    void *secondary = GraphicsSpriteGroup_CreateStateFromSource(
         FIELD(void *, widget, 0x1c), (u8 *)widget + 0x10, 1);
     FIELD(void *, widget, 0x24) = secondary;
     func_02073e48(secondary, 0, 0x40, 0x54, 2, 0, 0);
@@ -90,7 +90,7 @@ extern "C" void *func_ov022_021fd370(void *widget)
 extern "C" void *func_ov022_021fd458(void *widget)
 {
     FIELD(const void *, widget, 0) = data_ov022_02200608;
-    func_0207419c(FIELD(void *, widget, 0x1c));
+    GraphicsSpriteGroup_Destroy(FIELD(void *, widget, 0x1c));
     func_02071eb8((u8 *)widget + 0x10);
     func_02071eb8((u8 *)widget + 4);
     return widget;
@@ -104,7 +104,7 @@ extern "C" void *func_ov022_021fd458(void *widget)
  */
 extern "C" void func_ov022_021fd48c(void *widget)
 {
-    void *font = func_020742cc(gDebugFont);
+    void *font = GraphicsSpriteGroupOwner_CreateGroup(gDebugFont);
     FIELD(void *, widget, 0x1c) = font;
     FIELD(s32, font, 0x1c) = 0x60;
     FIELD(void *, widget, 0x20) = 0;

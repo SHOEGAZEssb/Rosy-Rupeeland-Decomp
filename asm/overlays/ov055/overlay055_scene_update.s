@@ -3,7 +3,7 @@
 .extern func_0200500c
 .extern func_02005058
 .extern func_020050a4
-.extern func_020740a4
+.extern GraphicsSpriteGroup_AdvanceAnimations
 .extern func_ov055_0220e804
 .extern func_ov055_0220eefc
 
@@ -36,7 +36,7 @@ func_ov055_0220eb68:
     strne r0, [r1, #0x18]
     str r0, [r1, #0x1c]
     ldr r0, [r4, #0x1c]
-    bl func_020740a4
+    bl GraphicsSpriteGroup_AdvanceAnimations
     mov r0, #0x0
     mov r1, #0x5000000
     strh r0, [r1, #0x0]

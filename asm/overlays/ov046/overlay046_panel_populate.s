@@ -5,7 +5,7 @@
 .extern data_ov046_0220cd14
 .extern data_ov046_0220cdf0
 .extern GraphicsSpriteState_SetAnimationIndex
-.extern func_020740e8
+.extern GraphicsSpriteGroup_ReplaceStateResourcesFromSource
 .extern func_ov046_0220bd14
 .extern gGameWork
 
@@ -67,7 +67,7 @@ func_ov046_0220bffc:
     ldr r0, [r9, #0x4]
     ldr r1, [r1, #0x3c]
     smlabb r2, r3, r2, r11
-    bl func_020740e8
+    bl GraphicsSpriteGroup_ReplaceStateResourcesFromSource
     ldrsh r1, [r4, #0x4]
     add r0, r9, r5, lsl #0x2
     ldr r0, [r0, #0x3c]

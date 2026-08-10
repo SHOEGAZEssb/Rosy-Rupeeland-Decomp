@@ -7,7 +7,7 @@
 .extern Actor_GetCollection
 .extern ActorExtendedType2_GetDescriptorValue25
 .extern GraphicsSpriteState_SetAnimationIndex
-.extern func_020740c8
+.extern GraphicsSpriteGroup_ReplaceStateResources
 
 .global func_ov080_02212bec
 func_ov080_02212bec:
@@ -123,7 +123,7 @@ func_ov080_02212bec:
     str r1, [sp, #0x0]
     ldr r1, [r7, #0x54]
     ldmib r6, {r2, r3}
-    bl func_020740c8
+    bl GraphicsSpriteGroup_ReplaceStateResources
     ldr r0, [r7, #0x54]
     ldrb r1, [r0, #0x38]
     cmp r4, r1

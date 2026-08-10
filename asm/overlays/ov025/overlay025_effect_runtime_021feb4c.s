@@ -1,7 +1,7 @@
 .text
 
 /* Exact fallback; see src/overlays/ov025/overlay025_effect_runtime.c. */
-.extern func_020740a4
+.extern GraphicsSpriteGroup_AdvanceAnimations
 .extern func_020918f4
 .extern func_020948e4
 .extern func_02094dd4
@@ -391,9 +391,9 @@ L_021ff074:
     bl func_ov025_021fe3f8
 L_021ff098:
     ldr r0, [r4, #0xe0]
-    bl func_020740a4
+    bl GraphicsSpriteGroup_AdvanceAnimations
     ldr r0, [r4, #0xe4]
-    bl func_020740a4
+    bl GraphicsSpriteGroup_AdvanceAnimations
     mov r0, #0x0
     ldmia sp!, {r4, pc}
 .size func_ov025_021feb4c, .-func_ov025_021feb4c

@@ -43,7 +43,7 @@ extern void func_02091b6c(void *animation);
 extern void func_02071ee0(void *resource, void *manager, s32 first, s32 second,
                           s32 third);
 extern void func_020708c4(void *resourceMember);
-extern void *func_020742cc(void *owner);
+extern void *GraphicsSpriteGroupOwner_CreateGroup(void *owner);
 extern void func_02091bac(void *animation, s32 mode, s32 value, s32 target,
                           s32 duration);
 extern void func_ov004_021fbf40(Overlay004PresentationState *state);
@@ -85,8 +85,8 @@ Overlay004PresentationState *func_ov004_021fb70c(
     func_02071ee0(state->resource_054, data_020f4e18, 0x23b1, 0x23b2,
                   0x23b3);
     func_020708c4(state->resource_054 + 4);
-    state->context_060 = func_020742cc(data_020f4e14);
-    state->fontContext_064 = func_020742cc(gDebugFont);
+    state->context_060 = GraphicsSpriteGroupOwner_CreateGroup(data_020f4e14);
+    state->fontContext_064 = GraphicsSpriteGroupOwner_CreateGroup(gDebugFont);
     func_ov004_021fbf40(state);
     state->field_110 = 0;
     state->width_108 = 0x100;

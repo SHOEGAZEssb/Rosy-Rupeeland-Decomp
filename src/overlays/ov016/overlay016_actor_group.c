@@ -16,10 +16,10 @@ extern void func_02071ea4(void *);
 extern void func_02071eb8(void *);
 extern void func_02071ee0(void *, void *, s32, s32, s32);
 extern void func_02073e48(void *, s32, s32, s32, s32, s32, s32);
-extern void *func_02073ffc(void *, void *, s32);
-extern void *func_020742cc(void *);
+extern void *GraphicsSpriteGroup_CreateStateFromSource(void *, void *, s32);
+extern void *GraphicsSpriteGroupOwner_CreateGroup(void *);
 extern s32 func_02091a70(s32, s32, s32, s32);
-extern void func_0207419c(void *);
+extern void GraphicsSpriteGroup_Destroy(void *);
 extern void func_020948e4(void *, s32, s32);
 extern void func_02095308(void *);
 extern void func_020957bc(void *);
@@ -53,14 +53,14 @@ extern "C" void *func_ov016_021fe118(void *state, s32 index)
     FIELD(s32, state, 0xe0) = (index + 1) * 5;
     FIELD(u32, state, 0xe4) = data_ov016_02201394[index];
     FIELD(void *, state, 0xcc) = 0;
-    FIELD(void *, state, 0x18) = func_020742cc(FIELD(void *, data_020f4e14, 0));
+    FIELD(void *, state, 0x18) = GraphicsSpriteGroupOwner_CreateGroup(FIELD(void *, data_020f4e14, 0));
     func_02071ee0(state, data_020f4e18, 0xd, 0xe, 0xf);
     func_02071ee0((u8 *)state + 0xc, data_020f4e18, 0x19, 0x1a, 0x1b);
-    sprite = func_02073ffc(FIELD(void *, state, 0x18), state, 1);
+    sprite = GraphicsSpriteGroup_CreateStateFromSource(FIELD(void *, state, 0x18), state, 1);
     func_020957f0((u8 *)state + 0x20, sprite, 1, 1, 0);
     func_02095820((u8 *)state + 0x20, 0x80, 0xaa);
     func_02095940((u8 *)state + 0x20);
-    FIELD(void *, state, 0x1c) = func_02073ffc(FIELD(void *, state, 0x18),
+    FIELD(void *, state, 0x1c) = GraphicsSpriteGroup_CreateStateFromSource(FIELD(void *, state, 0x18),
                                                (u8 *)state + 0xc, 2);
     func_02073e48(FIELD(void *, state, 0x1c), FIELD(u32, state, 0xe4),
                   0x26, 0xaa, 1, 0, 0);
@@ -84,7 +84,7 @@ extern "C" void *func_ov016_021fe24c(void *state)
         DeleteFunction *vtable = *(DeleteFunction **)object;
         vtable[1](object);
     }
-    func_0207419c(FIELD(void *, state, 0x18));
+    GraphicsSpriteGroup_Destroy(FIELD(void *, state, 0x18));
     FIELD(const u32 *, state, 0xd0) = data_ov016_02201520;
     func_02095308((u8 *)state + 0xd0);
     func_ov016_021fe0d4((u8 *)state + 0x20);

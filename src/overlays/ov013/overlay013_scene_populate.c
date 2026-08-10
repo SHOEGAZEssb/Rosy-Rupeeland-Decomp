@@ -24,7 +24,7 @@ extern "C" {
 #endif
 extern void GameWork_SetFlag(void *, s32);
 extern s32 GameWork_TestFlag(void *, s32);
-extern void *func_02073ffc(void *, void *, s32);
+extern void *GraphicsSpriteGroup_CreateStateFromSource(void *, void *, s32);
 extern void func_020957f0(void *, void *, s32, s32, s32);
 extern void func_02095820(void *, s32, s32);
 extern void func_02073e48(void *, s32, s32, s32, s32, s32, s32);
@@ -89,14 +89,14 @@ void func_ov013_021fd310(void *state)
     for (i = 0; i < 7; ++i) {
         const u8 *descriptor = data_ov013_021fec18 + i * 0x18;
         u8 *record = (u8 *)state + 0x8c + i * 0xac;
-        void *selected = func_02073ffc(FIELD(void *, state, 0x84),
+        void *selected = GraphicsSpriteGroup_CreateStateFromSource(FIELD(void *, state, 0x84),
                                        (u8 *)state + 0x54, 2);
         void *associated;
 
         func_020957f0(record, selected, FIELD(s32, descriptor, 0), 3, 8);
         func_02095820(record, FIELD(s32, descriptor, 8),
                      FIELD(s32, descriptor, 0x0c));
-        associated = func_02073ffc(FIELD(void *, state, 0x84),
+        associated = GraphicsSpriteGroup_CreateStateFromSource(FIELD(void *, state, 0x84),
                                    (u8 *)state + 0x54, 2);
         FIELD(void *, state, 0x950 + i * 4) = associated;
         func_02073e48(associated, FIELD(s32, descriptor, 4),
@@ -138,11 +138,11 @@ void func_ov013_021fd310(void *state)
 
     if (GameWork_TestFlag(gGameWork, 0x889)) {
         u8 *record = (u8 *)state + 0x89c;
-        void *selected = func_02073ffc(FIELD(void *, state, 0x84),
+        void *selected = GraphicsSpriteGroup_CreateStateFromSource(FIELD(void *, state, 0x84),
                                        (u8 *)state + 0x6c, 2);
         func_020957f0(record, selected, 0, 3, 8);
         func_02095820(record, 0x80, 0x92);
-        FIELD(void *, state, 0x94c) = func_02073ffc(
+        FIELD(void *, state, 0x94c) = GraphicsSpriteGroup_CreateStateFromSource(
             FIELD(void *, state, 0x84), (u8 *)state + 0x6c, 2);
         func_02073e48(FIELD(void *, state, 0x94c), 2, 0x80, 0xb2,
                       3, 0, 4);
@@ -150,7 +150,7 @@ void func_ov013_021fd310(void *state)
         for (i = 0; i < 5; ++i) {
             const u8 *descriptor = data_ov013_021febb4 + i * 0x14;
             u8 *record = (u8 *)state + 0x540 + i * 0xac;
-            void *selected = func_02073ffc(FIELD(void *, state, 0x84),
+            void *selected = GraphicsSpriteGroup_CreateStateFromSource(FIELD(void *, state, 0x84),
                                            (u8 *)state + 0x60, 2);
             func_020957f0(record, selected, FIELD(s32, descriptor, 0), 3, 8);
             func_02095820(record, FIELD(s32, descriptor, 8), 0x9c);
@@ -169,7 +169,7 @@ void func_ov013_021fd310(void *state)
                 func_02095940(record);
             }
         }
-        FIELD(void *, state, 0x94c) = func_02073ffc(
+        FIELD(void *, state, 0x94c) = GraphicsSpriteGroup_CreateStateFromSource(
             FIELD(void *, state, 0x84), (u8 *)state + 0x60, 2);
         func_02073e48(FIELD(void *, state, 0x94c), 15, 0x80, 0xb2,
                       3, 0, 4);

@@ -15,8 +15,8 @@
 .extern func_02071980
 .extern func_02071ea4
 .extern func_02071ee0
-.extern func_02074110
-.extern func_020742cc
+.extern GraphicsSpriteGroup_ReleaseIndexedEntries
+.extern GraphicsSpriteGroupOwner_CreateGroup
 .extern func_02092364
 .extern func_02092cc0
 .extern func_020adc90
@@ -223,14 +223,14 @@ L_021fd09c:
     str r1, [r2, #0xd0]
     str r3, [r2, #0xd4]
     ldr r0, [r0, #0x0]
-    bl func_020742cc
+    bl GraphicsSpriteGroupOwner_CreateGroup
     str r0, [r4, #0x4]
-    bl func_02074110
+    bl GraphicsSpriteGroup_ReleaseIndexedEntries
     ldr r0, L_021fd788
     ldr r0, [r0, #0x0]
-    bl func_020742cc
+    bl GraphicsSpriteGroupOwner_CreateGroup
     str r0, [r4, #0x0]
-    bl func_02074110
+    bl GraphicsSpriteGroup_ReleaseIndexedEntries
     add r0, r4, #0x44
     mov r7, #0x0
     add r6, r0, #0xc00

@@ -10,7 +10,7 @@ extern void func_0200875c(void *state, GamePhaseRuntime *self);
 extern void ActorCollection_DispatchEventToActors(void *actor, const void *state);
 extern void func_02005058(void *state);
 extern void ActorCollection_GetSpriteOwner(void *actor);
-extern void func_020740a4(void);
+extern void GraphicsSpriteGroup_AdvanceAnimations(void);
 extern void ActorCollection_DrainRemovalQueue(void *actor);
 extern void ActorFeedback_UpdatePresentations(void);
 #ifdef __cplusplus
@@ -37,7 +37,7 @@ void GamePhaseRuntime_FinalizeActorCollections(GamePhaseRuntime *self, s32 value
         ActorCollection_DispatchEventToActors(actor, primaryState);
         func_02005058(primaryState);
         ActorCollection_GetSpriteOwner(actor);
-        func_020740a4();
+        GraphicsSpriteGroup_AdvanceAnimations();
         ActorCollection_DrainRemovalQueue(actor);
     }
 
@@ -50,7 +50,7 @@ void GamePhaseRuntime_FinalizeActorCollections(GamePhaseRuntime *self, s32 value
             func_02005058(secondaryState);
             actor = (u8 *)*(void **)(b + 0x2fb8) + 8;
             ActorCollection_GetSpriteOwner(actor);
-            func_020740a4();
+            GraphicsSpriteGroup_AdvanceAnimations();
             actor = (u8 *)*(void **)(b + 0x2fb8) + 8;
             ActorCollection_DrainRemovalQueue(actor);
         }

@@ -1,5 +1,5 @@
 .text
-.extern func_02073ef8
+.extern GraphicsSpriteState_ReleaseFromGroup
 
     .global func_ov044_0220bb60
 func_ov044_0220bb60:
@@ -14,7 +14,7 @@ func_ov044_0220bb60:
     ldr r0, [r0, #0x10]
     cmp r0, #0x0
     ldmeqia sp!, {r3, r4, r5, pc}
-    bl func_02073ef8
+    bl GraphicsSpriteState_ReleaseFromGroup
     ldr r0, [r5, #0x38]
     mov r1, #0x0
     add r0, r0, r4, lsl #0x5

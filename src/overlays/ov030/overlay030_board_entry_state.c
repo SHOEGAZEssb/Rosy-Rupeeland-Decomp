@@ -17,7 +17,7 @@ extern "C" {
 extern void func_ov030_021fea00(void *);
 extern void func_020922f0(void *, s32);
 extern s32 DisplayBrightness_IsMainTransitionComplete(void);
-extern void func_02074110(void *);
+extern void GraphicsSpriteGroup_ReleaseIndexedEntries(void *);
 extern void *Heap_Alloc(u32, const void *, s32, void *);
 extern void *func_ov030_021fcf20(void *, void *, void *, s32);
 extern void func_ov030_021fe554(void *);
@@ -55,7 +55,7 @@ extern "C" s32 func_ov030_021fee6c(void *scene)
         /* Recovered control flow intentionally continues into state 1. */
     case 1:
         if (DisplayBrightness_IsMainTransitionComplete() != 0) {
-            func_02074110(FIELD(void *, scene, 0x78));
+            GraphicsSpriteGroup_ReleaseIndexedEntries(FIELD(void *, scene, 0x78));
             void *widget = Heap_Alloc(0x1f0, data_ov030_021ff8dc,
                                       4, gHeapContext);
             if (widget != 0)

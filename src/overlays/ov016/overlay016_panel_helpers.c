@@ -10,8 +10,8 @@ extern "C" {
 extern void __destroy_arr(void *, s32, s32, void (*)(void *));
 extern void func_02071eb8(void *);
 extern void func_02071f38(void *);
-extern void func_02074058(void *);
-extern void func_0207419c(void *);
+extern void GraphicsSpriteGroup_Clear(void *);
+extern void GraphicsSpriteGroup_Destroy(void *);
 extern void GraphicsSpriteCanvas_FillRect(void *, s32, s32, s32, s32, s32);
 extern void func_020927b8(void *);
 #ifdef __cplusplus
@@ -26,8 +26,8 @@ extern void func_020927b8(void *);
  */
 extern "C" void *func_ov016_021fd97c(void *state)
 {
-    func_0207419c(FIELD(void *, state, 8));
-    func_0207419c(FIELD(void *, state, 4));
+    GraphicsSpriteGroup_Destroy(FIELD(void *, state, 8));
+    GraphicsSpriteGroup_Destroy(FIELD(void *, state, 4));
     func_020927b8((u8 *)state + 0xd4);
     func_02071eb8((u8 *)state + 0x78);
     func_02071eb8((u8 *)state + 0x6c);
@@ -52,7 +52,7 @@ extern "C" void func_ov016_021fd9dc(void *state, s32 clearText)
     if (clearText != 0) {
         GraphicsSpriteCanvas_FillRect(FIELD(void *, state, 0), 0x20, 0x28, 0xf8, 0xb8, 0);
     }
-    func_02074058(FIELD(void *, state, 4));
+    GraphicsSpriteGroup_Clear(FIELD(void *, state, 4));
     func_02071f38((u8 *)state + 0x18);
     for (i = 0; i < 6; i++) {
         func_02071f38((u8 *)state + 0x24 + i * 0xc);

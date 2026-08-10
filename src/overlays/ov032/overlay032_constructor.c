@@ -37,8 +37,8 @@ extern void *func_02071980(void *, s32);
 extern void *Heap_Alloc(u32, const void *, s32, void *);
 extern void *func_02092cc0(void *, void *, void *);
 extern void func_ov032_021fce08(void *, s32, s32, s32, s32);
-extern void *func_020742cc(void *);
-extern void func_02074110(void *);
+extern void *GraphicsSpriteGroupOwner_CreateGroup(void *);
+extern void GraphicsSpriteGroup_ReleaseIndexedEntries(void *);
 extern void func_ov032_02200f88(void *, void *, s32, void *);
 extern void func_02071ee0(void *, void *, s32, s32, s32);
 extern void func_ov032_02201450(void *, void *, void *);
@@ -167,10 +167,10 @@ extern "C" void *func_ov032_021fce20(void *object)
     FIELD(s32, dialog, 0xbc) = -2;
     FIELD(s32, dialog, 0xd0) = 0xc;
     FIELD(s32, dialog, 0xd4) = 0;
-    FIELD(void *, object, 4) = func_020742cc(gDebugFont);
-    func_02074110(FIELD(void *, object, 4));
-    FIELD(void *, object, 0) = func_020742cc(data_020f4e14[0]);
-    func_02074110(FIELD(void *, object, 0));
+    FIELD(void *, object, 4) = GraphicsSpriteGroupOwner_CreateGroup(gDebugFont);
+    GraphicsSpriteGroup_ReleaseIndexedEntries(FIELD(void *, object, 4));
+    FIELD(void *, object, 0) = GraphicsSpriteGroupOwner_CreateGroup(data_020f4e14[0]);
+    GraphicsSpriteGroup_ReleaseIndexedEntries(FIELD(void *, object, 0));
     for (s32 i = 0; i < 5; ++i)
         func_ov032_02200f88((u8 *)object + 0xc44 + i * 0x6c,
                             object, i, FIELD(void *, object, 0));

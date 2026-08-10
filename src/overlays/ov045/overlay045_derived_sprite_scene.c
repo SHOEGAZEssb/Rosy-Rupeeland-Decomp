@@ -40,7 +40,7 @@ extern "C" void func_02070f34(void *resource, s32 value);
 extern "C" void func_020b44e8(void);
 extern "C" void func_02071ee0(void *owner, void *archive, s32 first,
                                s32 second, s32 third);
-extern "C" void *func_02073ffc(void *fontState, void *owner, s32 selector);
+extern "C" void *GraphicsSpriteGroup_CreateStateFromSource(void *fontState, void *owner, s32 selector);
 extern "C" void func_02073e48(void *sprite, s32 value, s32 x, s32 y,
                                s32 enabled, s32 zero1, s32 zero2);
 extern "C" void Heap_Free(void *allocation);
@@ -78,13 +78,13 @@ extern "C" void *func_ov045_0220c314(void *object)
                    0x49, 0x4a, 0x4b);
 
     SceneSpriteEntry *firstSprite =
-        (SceneSpriteEntry *)func_02073ffc(FIELD(void *, object, 0x1c),
+        (SceneSpriteEntry *)GraphicsSpriteGroup_CreateStateFromSource(FIELD(void *, object, 0x1c),
                                            (u8 *)object + 4, 2);
     FIELD(void *, object, 0x20) = firstSprite;
     firstSprite->field3A = 1;
     firstSprite->field28 = 0x10;
     FIELD(void *, object, 0x24) =
-        func_02073ffc(FIELD(void *, object, 0x1c),
+        GraphicsSpriteGroup_CreateStateFromSource(FIELD(void *, object, 0x1c),
                        (u8 *)object + 0x10, 1);
     func_02073e48(FIELD(void *, object, 0x24), 0,
                    0x54, 0x54, 1, 0, 0);

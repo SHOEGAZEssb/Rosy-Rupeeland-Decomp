@@ -12,7 +12,7 @@
 .extern func_02028cd4
 .extern func_02028e9c
 .extern func_02071f38
-.extern func_02074330
+.extern GraphicsSpriteGroupOwner_DestroyGroup
 
     .global func_02028d14
     .type func_02028d14, @function
@@ -42,7 +42,7 @@ func_02028d14: ; 0x02028d14
     ldr r0, .L_02028dc8
     ldr r1, [r6, #0x4c]
     ldr r0, [r0, #0x0]
-    bl func_02074330
+    bl GraphicsSpriteGroupOwner_DestroyGroup
     add r0, r6, #0x30
     bl func_02071f38
     add r0, r6, #0x40

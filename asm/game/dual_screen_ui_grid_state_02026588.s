@@ -10,8 +10,8 @@
 .extern func_020269a4
 .extern func_02026e44
 .extern GraphicsSpriteState_SetAnimationIndex
-.extern func_02074038
-.extern func_020742cc
+.extern GraphicsSpriteGroup_ReleaseState
+.extern GraphicsSpriteGroupOwner_CreateGroup
 .extern func_020befec
 .extern gDebugFont
 .extern gHeapContext
@@ -33,7 +33,7 @@ func_02026588: ; 0x02026588
     cmp r0, #0x0
     beq .L_020265e0
     ldr r1, [r9, #0x6c]
-    bl func_02074038
+    bl GraphicsSpriteGroup_ReleaseState
     ldr r0, [r9, #0xc]
     cmp r0, #0x0
     beq .L_02026798
@@ -44,7 +44,7 @@ func_02026588: ; 0x02026588
 .L_020265e0:
     ldr r0, .L_02026974
     ldr r0, [r0, #0x0]
-    bl func_020742cc
+    bl GraphicsSpriteGroupOwner_CreateGroup
     str r0, [r9, #0x0]
     ldr r1, .L_02026978
     ldr r3, .L_0202697c

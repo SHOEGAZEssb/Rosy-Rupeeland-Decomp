@@ -29,9 +29,9 @@
 .extern func_02071bdc
 .extern func_02071c38
 .extern func_02071c94
-.extern func_020740a4
-.extern func_020742cc
-.extern func_02074330
+.extern GraphicsSpriteGroup_AdvanceAnimations
+.extern GraphicsSpriteGroupOwner_CreateGroup
+.extern GraphicsSpriteGroupOwner_DestroyGroup
 .extern gDebugFont
 .extern gHeapContext
 .extern genrand_int32

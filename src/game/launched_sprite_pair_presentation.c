@@ -56,9 +56,9 @@ extern void *Actor_GetCollection(void *actor);
 extern void *Actor_GetCollectionBySlot(void *actor, s32 index);
 extern void *ActorCollection_GetSpriteOwner(void *resource);
 extern u8 *func_02079a7c(void *table, s32 index);
-extern u8 *func_02073ffc(void *owner, void *resource, s32 mode);
+extern u8 *GraphicsSpriteGroup_CreateStateFromSource(void *owner, void *resource, s32 mode);
 extern void GraphicsSpriteState_SetAnimationIndex(void *sprite, s32 frame);
-extern void func_02074038(void *owner, void *sprite);
+extern void GraphicsSpriteGroup_ReleaseState(void *owner, void *sprite);
 extern s32 DisplayController_GetVerticalOffset(void);
 extern s32 func_02091a70(s32, s32, s32, s32);
 extern s32 GameWork_TestFlag(void *, u16);
@@ -104,7 +104,7 @@ LaunchedSpritePairPresentation *func_02024b04(
     record = func_02079a7c(data_021f3d68, recordIndex);
     func_02071ee0(self->resource3c, data_020f4e18, 0x300a, 0x300b, 0x300c);
     self->primarySprite50 =
-        func_02073ffc(self->primaryOwner48, self->resource3c, 2);
+        GraphicsSpriteGroup_CreateStateFromSource(self->primaryOwner48, self->resource3c, 2);
     GraphicsSpriteState_SetAnimationIndex(self->primarySprite50, 0);
     *(u16 *)(self->primarySprite50 + 0x24) |= 2;
 
@@ -115,7 +115,7 @@ LaunchedSpritePairPresentation *func_02024b04(
         self->secondaryOwner4c =
             ActorCollection_GetSpriteOwner(Actor_GetCollectionBySlot(actor, 2));
         self->secondarySprite54 =
-            func_02073ffc(self->secondaryOwner4c, self->resource3c, 2);
+            GraphicsSpriteGroup_CreateStateFromSource(self->secondaryOwner4c, self->resource3c, 2);
         GraphicsSpriteState_SetAnimationIndex(self->secondarySprite54, record[0x0d]);
     } else {
         self->secondaryOwner4c = 0;
@@ -153,9 +153,9 @@ LaunchedSpritePairPresentation *func_02024d3c(
 {
     self->vtable00 = (void **)data_020d68e4;
     GameWork_SetFlag(gGameWork, 0x3e0);
-    func_02074038(self->primaryOwner48, self->primarySprite50);
+    GraphicsSpriteGroup_ReleaseState(self->primaryOwner48, self->primarySprite50);
     if (self->secondaryOwner4c != 0) {
-        func_02074038(self->secondaryOwner4c, self->secondarySprite54);
+        GraphicsSpriteGroup_ReleaseState(self->secondaryOwner4c, self->secondarySprite54);
     }
     func_02071eb8(self->resource3c);
     func_02005058(&self->velocity1c);
@@ -199,18 +199,18 @@ s32 func_02024e24(LaunchedSpritePairPresentation *self)
     case 1:
         if (!GameWork_TestFlag(gGameWork, 0x385)) {
             self->position0c.z0c -= 0x8000;
-            func_02074038(self->primaryOwner48, self->primarySprite50);
+            GraphicsSpriteGroup_ReleaseState(self->primaryOwner48, self->primarySprite50);
             if (self->secondaryOwner4c != 0)
-                func_02074038(self->secondaryOwner4c, self->secondarySprite54);
+                GraphicsSpriteGroup_ReleaseState(self->secondaryOwner4c, self->secondarySprite54);
             func_02071f38(self->resource3c);
             func_02071ee0(self->resource3c, data_020f4e18,
                           0x115a, 0x115b, 0x115c);
             self->primarySprite50 =
-                func_02073ffc(self->primaryOwner48, self->resource3c, 2);
+                GraphicsSpriteGroup_CreateStateFromSource(self->primaryOwner48, self->resource3c, 2);
             GraphicsSpriteState_SetAnimationIndex(self->primarySprite50, 1);
             if (self->secondarySprite54 != 0) {
                 self->secondarySprite54 =
-                    func_02073ffc(self->secondaryOwner4c, self->resource3c, 2);
+                    GraphicsSpriteGroup_CreateStateFromSource(self->secondaryOwner4c, self->resource3c, 2);
                 GraphicsSpriteState_SetAnimationIndex(self->secondarySprite54, 1);
             }
             self->state38++;

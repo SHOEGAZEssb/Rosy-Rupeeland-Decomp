@@ -1,7 +1,7 @@
     .text
 /* Exact fallback; see src/overlays/ov020/overlay020_list_runtime.c. */
     .extern func_02071eb8
-    .extern func_0207419c
+    .extern GraphicsSpriteGroup_Destroy
     .extern func_020927b8
     .extern func_020c0c24
     .extern func_ov020_021fd034
@@ -11,7 +11,7 @@ func_ov020_021fcfd4:
     stmdb sp!, {r4, lr}
     mov r4, r0
     ldr r0, [r4, #0x4]
-    bl func_0207419c
+    bl GraphicsSpriteGroup_Destroy
     ldr r0, [r4, #0x44]
     cmp r0, #0x0
     beq L_021fcffc

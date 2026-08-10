@@ -18,7 +18,7 @@ extern void func_02004fe0(void *object);
 extern void func_02091b6c(void *object);
 extern void func_02092798(void *object);
 extern void Type7Actor_EnterFlag40000State(void *activeObject);
-extern void *func_020742cc(void *fontOrContext);
+extern void *GraphicsSpriteGroupOwner_CreateGroup(void *fontOrContext);
 extern void *Heap_Alloc(u32 size, const void *tag, s32 alignment,
                        void *heapContext);
 extern void *func_ov033_021fce1c(void *group, void *spriteContext);
@@ -89,7 +89,7 @@ extern "C" void *func_ov033_021fd070(void *scene)
     FIELD(s32, scene, 0x3c) = 0;
     FIELD(s32, scene, 0x40) = 0;
     FIELD(s32, scene, 0x44) = -0x18;
-    FIELD(void *, scene, 0) = func_020742cc(data_020f4e14[0]);
+    FIELD(void *, scene, 0) = GraphicsSpriteGroupOwner_CreateGroup(data_020f4e14[0]);
 
     void *group = Heap_Alloc(0x134, data_ov033_021fdeb0, 4, gHeapContext);
     if (group != 0)

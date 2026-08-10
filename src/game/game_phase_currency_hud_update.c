@@ -82,11 +82,11 @@ void GamePhaseCurrencyHud_Update(GamePhaseCurrencyHud *self)
     }
 
     if ((*(volatile u16 *)0x04000304 & 0x8000) != 0) {
-        func_02074110(self->groups[1]);
+        GraphicsSpriteGroup_ReleaseIndexedEntries(self->groups[1]);
         activeGroup = self->groups[0];
         activeRow = 0;
     } else {
-        func_02074110(self->groups[0]);
+        GraphicsSpriteGroup_ReleaseIndexedEntries(self->groups[0]);
         activeGroup = self->groups[1];
         activeRow = 1;
     }
@@ -188,5 +188,5 @@ render:
     if (self->transitionState != 1)
         self->flags &= ~0x18;
     for (i = 0; i < 2; i++)
-        func_020740a4(self->groups[i]);
+        GraphicsSpriteGroup_AdvanceAnimations(self->groups[i]);
 }

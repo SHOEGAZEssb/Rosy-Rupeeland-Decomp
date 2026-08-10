@@ -13,7 +13,7 @@ extern "C" {
 #endif
 extern void Heap_Free(void *);
 extern void func_02071eb8(void *);
-extern void func_0207419c(void *);
+extern void GraphicsSpriteGroup_Destroy(void *);
 extern void GraphicsSpriteRenderer_QueuePaletteUploads(void *);
 extern void func_020926f8(void *);
 extern void func_020927b8(void *);
@@ -65,7 +65,7 @@ static void overlay016_release_scene(void *state)
     }
     overlay016_delete_virtual(FIELD(void *, state, 0x460));
     overlay016_delete_virtual(FIELD(void *, state, 0x464));
-    func_0207419c(FIELD(void *, state, 0xe0));
+    GraphicsSpriteGroup_Destroy(FIELD(void *, state, 0xe0));
 
     *(volatile u16 *)0x04000050 = 0;
     *(volatile u16 *)0x04001050 = 0;

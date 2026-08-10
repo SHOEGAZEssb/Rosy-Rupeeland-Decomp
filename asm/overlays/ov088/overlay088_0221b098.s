@@ -11,7 +11,7 @@
 .extern func_020050a4
 .extern func_02034a60
 .extern Type7Actor_ResetMotionAndCooldown
-.extern func_02073ef8
+.extern GraphicsSpriteState_ReleaseFromGroup
 .extern func_ov062_02210674
 .extern func_ov088_0221a98c
 .extern func_ov088_0221a9c0
@@ -27,7 +27,7 @@ func_ov088_0221b098:
     ldr r0, [r5, #0x250]
     add r1, r1, #0x2000
     ldr r4, [r1, #0xea8]
-    bl func_02073ef8
+    bl GraphicsSpriteState_ReleaseFromGroup
     mov r0, #0x0
     str r0, [r5, #0x250]
     ldr r0, [r5, #0x24c]

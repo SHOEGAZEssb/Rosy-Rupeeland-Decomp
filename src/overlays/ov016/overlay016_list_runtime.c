@@ -9,9 +9,9 @@ extern "C" {
 #endif
 extern void GraphicsSpriteState_SetAnimationIndex(void *, s32);
 extern void func_02073e48(void *, s32, s32, s32, s32, s32, s32);
-extern void func_02073ef8(void *);
-extern void *func_02073ffc(void *, void *, s32);
-extern void func_020740a4(void *);
+extern void GraphicsSpriteState_ReleaseFromGroup(void *);
+extern void *GraphicsSpriteGroup_CreateStateFromSource(void *, void *, s32);
+extern void GraphicsSpriteGroup_AdvanceAnimations(void *);
 extern void func_02094574(void *);
 extern void func_ov016_021fd270(void *, s32);
 extern void *func_ov016_021fd628(void *);
@@ -57,7 +57,7 @@ extern "C" void func_ov016_021fd270(void *state, s32 index)
     if (FIELD(void *, descriptor, 4) != 0) {
         return;
     }
-    sprite = func_02073ffc(FIELD(void *, state, 4), (u8 *)state + 0xc, 1);
+    sprite = GraphicsSpriteGroup_CreateStateFromSource(FIELD(void *, state, 4), (u8 *)state + 0xc, 1);
     FIELD(void *, descriptor, 4) = sprite;
     resourceIndex = index;
     if ((FIELD(u16, descriptor, 0xc) & 7) == 0) {
@@ -81,7 +81,7 @@ extern "C" void func_ov016_021fd310(void *state, s32 index)
     }
     descriptor = (u8 *)FIELD(void *, state, 0x4c) + index * 0x14;
     if (FIELD(void *, descriptor, 4) != 0) {
-        func_02073ef8(FIELD(void *, descriptor, 4));
+        GraphicsSpriteState_ReleaseFromGroup(FIELD(void *, descriptor, 4));
         FIELD(void *, descriptor, 4) = 0;
     }
 }
@@ -113,6 +113,6 @@ extern "C" void func_ov016_021fd358(void *state)
         GraphicsSpriteState_SetAnimationIndex(FIELD(void *, state, 0x24),
                       (FIELD(u32, state, 0x60) + sum) & 0xff);
     }
-    func_020740a4(FIELD(void *, state, 4));
-    func_020740a4(FIELD(void *, state, 8));
+    GraphicsSpriteGroup_AdvanceAnimations(FIELD(void *, state, 4));
+    GraphicsSpriteGroup_AdvanceAnimations(FIELD(void *, state, 8));
 }

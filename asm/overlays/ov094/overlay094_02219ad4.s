@@ -2,7 +2,7 @@
 ; Matching fallback for the portable implementation in src/overlays/ov094/overlay094_recovery.c.
 .extern GameWork_ClearFlag
 .extern GameWork_TestFlag
-.extern func_020740a4
+.extern GraphicsSpriteGroup_AdvanceAnimations
 .extern func_ov094_02219a08
 .extern gGameWork
 
@@ -36,9 +36,9 @@ func_ov094_02219ad4:
     bl func_ov094_02219a08
 .L_02219b3c:
     ldr r0, [r4, #0xc]
-    bl func_020740a4
+    bl GraphicsSpriteGroup_AdvanceAnimations
     ldr r0, [r4, #0x10]
-    bl func_020740a4
+    bl GraphicsSpriteGroup_AdvanceAnimations
 .L_02219b4c:
     ldr r0, .L_02219b6c
     mov r1, #0x3d4

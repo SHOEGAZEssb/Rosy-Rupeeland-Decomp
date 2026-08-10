@@ -1,8 +1,8 @@
 ; Matching retail form; see src/game/dual_screen_ui_grid_state.c.
 .text
 .extern func_02025cd0
-.extern func_02074058
-.extern func_02074330
+.extern GraphicsSpriteGroup_Clear
+.extern GraphicsSpriteGroupOwner_DestroyGroup
 .extern gDebugFont
 
     .global func_02026514
@@ -15,7 +15,7 @@ func_02026514: ; 0x02026514
     ldr r0, [r5, #0x0]
     cmp r0, #0x0
     beq .L_02026578
-    bl func_02074058
+    bl GraphicsSpriteGroup_Clear
     mov r4, #0x0
 .L_02026538:
     add r0, r5, r4, lsl #0x2
@@ -32,7 +32,7 @@ func_02026514: ; 0x02026514
     ldr r0, .L_02026584
     ldr r1, [r5, #0x0]
     ldr r0, [r0, #0x0]
-    bl func_02074330
+    bl GraphicsSpriteGroupOwner_DestroyGroup
     mov r0, #0x0
     str r0, [r5, #0x0]
 .L_02026578:

@@ -1,7 +1,7 @@
 .text
 
 /* Exact fallback; see src/overlays/ov023/overlay023_record_collection.c. */
-.extern func_02073ef8
+.extern GraphicsSpriteState_ReleaseFromGroup
 
 
     .global func_ov023_021fd220
@@ -18,7 +18,7 @@ func_ov023_021fd220:
     ldr r0, [r0, #0x10]
     cmp r0, #0x0
     ldmeqia sp!, {r3, r4, r5, pc}
-    bl func_02073ef8
+    bl GraphicsSpriteState_ReleaseFromGroup
     ldr r0, [r5, #0x2c]
     mov r1, #0x0
     add r0, r0, r4

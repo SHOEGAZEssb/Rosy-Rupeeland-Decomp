@@ -47,10 +47,10 @@ extern void func_020683f4(void *);
 extern void func_02071ea4(void *resource);
 extern void func_02071ee0(void *resource, void *manager, s32 first,
                           s32 second, s32 third);
-extern void *func_02073ffc(void *owner, void *resource, s32 mode);
+extern void *GraphicsSpriteGroup_CreateStateFromSource(void *owner, void *resource, s32 mode);
 extern void func_02073e48(void *sprite, s32 animation, s32 x, s32 y,
                           s32 enabled, s32 field28, s32 flags);
-extern void *func_020742cc(void *owner);
+extern void *GraphicsSpriteGroupOwner_CreateGroup(void *owner);
 extern void func_02092798(void *state);
 extern void func_02092814(void *state, s32 resourceId);
 extern void func_02093a88(void *state);
@@ -108,24 +108,24 @@ Overlay000GridState *func_ov000_021fbcc4(Overlay000GridState *state,
     state->field_2ac = 0x1e;
 
     func_02071ee0(state->resource_010, data_020f4e18, 0, 1, 2);
-    state->spriteGroup_008 = func_020742cc(owner);
-    state->spriteGroup_00c = func_020742cc(owner);
+    state->spriteGroup_008 = GraphicsSpriteGroupOwner_CreateGroup(owner);
+    state->spriteGroup_00c = GraphicsSpriteGroupOwner_CreateGroup(owner);
     FIELD(s32, state->spriteGroup_00c, 0x18) = 0;
     FIELD(s32, state->spriteGroup_00c, 0x1c) = -state->scrollOffset_264;
 
     state->sprite_020 =
-        func_02073ffc(state->spriteGroup_00c, state->resource_010, 1);
+        GraphicsSpriteGroup_CreateStateFromSource(state->spriteGroup_00c, state->resource_010, 1);
     func_02073e48(state->sprite_020, 2, 0x38, 0x38, 2, 0, 2);
 
-    sprite = func_02073ffc(state->spriteGroup_00c, state->resource_010, 1);
+    sprite = GraphicsSpriteGroup_CreateStateFromSource(state->spriteGroup_00c, state->resource_010, 1);
     func_020957f0(state->element_024, sprite, 0x3a, 2, 0);
     func_02095820(state->element_024, 0xec, 0xaa);
     func_02095940(state->element_024);
-    sprite = func_02073ffc(state->spriteGroup_00c, state->resource_010, 1);
+    sprite = GraphicsSpriteGroup_CreateStateFromSource(state->spriteGroup_00c, state->resource_010, 1);
     func_020957f0(state->element_0d0, sprite, 4, 2, 0);
     func_02095820(state->element_0d0, 0x40, 0x10);
     func_02095940(state->element_0d0);
-    sprite = func_02073ffc(state->spriteGroup_00c, state->resource_010, 1);
+    sprite = GraphicsSpriteGroup_CreateStateFromSource(state->spriteGroup_00c, state->resource_010, 1);
     func_020957f0(state->element_17c, sprite, 0x43, 2, 0);
     func_02095820(state->element_17c, 0xdc, 0x10);
     func_02095940(state->element_17c);

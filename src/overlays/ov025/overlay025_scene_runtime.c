@@ -15,9 +15,9 @@ extern "C" {
 extern void *Heap_Alloc(u32, const void *, u32, void *);
 extern void func_02070e0c(s32, s32, s32);
 extern void func_02073e48(void *, s32, s32, s32, s32, s32, s32);
-extern void func_02073ef8(void *);
-extern void *func_02073ffc(void *, void *, s32);
-extern void func_020740a4(void *);
+extern void GraphicsSpriteState_ReleaseFromGroup(void *);
+extern void *GraphicsSpriteGroup_CreateStateFromSource(void *, void *, s32);
+extern void GraphicsSpriteGroup_AdvanceAnimations(void *);
 extern void GraphicsSpriteCanvas_FillRect(void *, s32, s32, s32, s32, s32);
 extern void func_02092790(void *, s32);
 extern void func_02095360(void *);
@@ -58,10 +58,10 @@ extern "C" void func_ov025_02200178(void *scene)
     func_020958d8((u8 *)scene + 0x248);
     for (s32 i = 0; i < 3; ++i)
         func_020958d8((u8 *)scene + 0x2f4 + i * 0xac);
-    func_020740a4(FIELD(void *, scene, 0xb0));
-    func_020740a4(FIELD(void *, scene, 0xb4));
+    GraphicsSpriteGroup_AdvanceAnimations(FIELD(void *, scene, 0xb0));
+    GraphicsSpriteGroup_AdvanceAnimations(FIELD(void *, scene, 0xb4));
     if (FIELD(void *, scene, 0x598))
-        func_020740a4(FIELD(void *, FIELD(void *, scene, 0x598), 0));
+        GraphicsSpriteGroup_AdvanceAnimations(FIELD(void *, FIELD(void *, scene, 0x598), 0));
 }
 
 /* Redraws all three record widgets +0xE4/+0xE8/+0xEC at zero offset. */
@@ -111,7 +111,7 @@ extern "C" void func_ov025_022002f8(void *scene)
 {
     func_02092790((u8 *)scene + 0x530, 1);
     func_02070e0c(1, 1, 0);
-    void *sprite = func_02073ffc(FIELD(void *, scene, 0xb0),
+    void *sprite = GraphicsSpriteGroup_CreateStateFromSource(FIELD(void *, scene, 0xb0),
                                   (u8 *)scene + 0x68, 2);
     FIELD(void *, scene, 0xb8) = sprite;
     func_02073e48(sprite, 1, 0x38, 0x44, 0, 0, 2);
@@ -128,7 +128,7 @@ extern "C" void func_ov025_02200398(void *scene, s32 mode, s32 animation)
 {
     func_02092790((u8 *)scene + 0x530, mode);
     func_02070e0c(1, 1, 0);
-    void *sprite = func_02073ffc(FIELD(void *, scene, 0xb0),
+    void *sprite = GraphicsSpriteGroup_CreateStateFromSource(FIELD(void *, scene, 0xb0),
                                   (u8 *)scene + 0x68, 2);
     FIELD(void *, scene, 0xb8) = sprite;
     func_02073e48(sprite, animation, 0x39, 0x3c, 0, 0, 2);
@@ -142,7 +142,7 @@ extern "C" void func_ov025_02200398(void *scene, s32 mode, s32 animation)
  */
 extern "C" void func_ov025_02200438(void *scene, s32 clear_mode)
 {
-    func_02073ef8(FIELD(void *, scene, 0xb8));
+    GraphicsSpriteState_ReleaseFromGroup(FIELD(void *, scene, 0xb8));
     FIELD(void *, scene, 0xb8) = 0;
     if (clear_mode) FIELD(u32, scene, 0x48) &= ~2u;
 }

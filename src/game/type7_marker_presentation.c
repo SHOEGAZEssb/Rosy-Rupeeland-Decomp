@@ -26,8 +26,8 @@ extern void *func_02071e60(void *resources, u32 id);
 extern void *func_02071e70(void *resources, u32 id);
 extern void *func_02071e80(void *resources, u32 id);
 extern void GraphicsSpriteState_SetAnimationIndex(void *presentation, u32 index);
-extern void func_02073ef8(void *presentation);
-extern void *func_02073fc4(void *context, void *first, void *second,
+extern void GraphicsSpriteState_ReleaseFromGroup(void *presentation);
+extern void *GraphicsSpriteGroup_CreateState(void *context, void *first, void *second,
                            void *third, u32 mode);
 extern void Type7MarkerPresentation_Reset(Type7MarkerPresentation *self);
 extern void Type7MarkerPresentation_ReloadResources(void *state);
@@ -56,7 +56,7 @@ Type7MarkerPresentation *Type7MarkerPresentation_Init(Type7MarkerPresentation *s
     second = func_02071e70(data_020f4e18, 0x1078);
     third = func_02071e80(data_020f4e18, 0x138b);
     Actor_GetCollection(owner);
-    self->presentation = (u8 *)func_02073fc4(
+    self->presentation = (u8 *)GraphicsSpriteGroup_CreateState(
         ActorCollection_GetSpriteOwner(), first, second, third, 2);
     GraphicsSpriteState_SetAnimationIndex(self->presentation, 0);
     self->presentation[0x3a] = 1;
@@ -76,7 +76,7 @@ Type7MarkerPresentation *Type7MarkerPresentation_Init(Type7MarkerPresentation *s
 Type7MarkerPresentation *Type7MarkerPresentation_Destroy(Type7MarkerPresentation *self)
 {
     self->vtable = data_020e1ed8;
-    func_02073ef8(self->presentation);
+    GraphicsSpriteState_ReleaseFromGroup(self->presentation);
     return self;
 }
 
@@ -88,7 +88,7 @@ Type7MarkerPresentation *Type7MarkerPresentation_Destroy(Type7MarkerPresentation
 Type7MarkerPresentation *Type7MarkerPresentation_DestroyAndFree(Type7MarkerPresentation *self)
 {
     self->vtable = data_020e1ed8;
-    func_02073ef8(self->presentation);
+    GraphicsSpriteState_ReleaseFromGroup(self->presentation);
     Heap_Free(self);
     return self;
 }

@@ -1,5 +1,5 @@
 .text
-.extern func_0207419c
+.extern GraphicsSpriteGroup_Destroy
 .extern GraphicsSpriteRenderer_QueuePaletteUploads
 .extern OverlaySlot_Destroy
 .extern func_ov043_0220b740
@@ -29,7 +29,7 @@ func_ov043_0220b864:
     ldr r0, [r4, #0x8c]
     cmp r0, #0x0
     beq .L_0220b8a8
-    bl func_0207419c
+    bl GraphicsSpriteGroup_Destroy
 .L_0220b8a8:
     ldr r0, .L_0220b904
     ldr r0, [r0, #0x0]
@@ -77,7 +77,7 @@ func_ov043_0220b90c:
     ldr r0, [r4, #0x8c]
     cmp r0, #0x0
     beq .L_0220b950
-    bl func_0207419c
+    bl GraphicsSpriteGroup_Destroy
 .L_0220b950:
     ldr r0, .L_0220b9b4
     ldr r0, [r0, #0x0]

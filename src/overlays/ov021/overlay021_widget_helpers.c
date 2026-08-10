@@ -13,7 +13,7 @@ extern void Heap_Free(void *);
 extern void OverlaySlot_UnloadOverlay(void *, s32);
 extern s32 func_02062b28(void *);
 extern void func_02064d90(void *, s32);
-extern void func_02074058(void *);
+extern void GraphicsSpriteGroup_Clear(void *);
 extern void func_02095988(void *, s32);
 extern void func_ov000_021fcb4c(void *, void *);
 extern void func_ov021_021fd074(void *);
@@ -69,7 +69,7 @@ extern "C" void func_ov021_021fe84c(void *state)
  */
 extern "C" void func_ov021_021fe8a8(void *state)
 {
-    func_02074058(FIELD(void *, state, 0x94));
+    GraphicsSpriteGroup_Clear(FIELD(void *, state, 0x94));
     s32 i;
     for (i = 0; i < 2; i++)
         FIELD(s32, state, 0x1e8 + i * 0xac) = 0;

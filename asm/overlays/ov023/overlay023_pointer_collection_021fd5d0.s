@@ -2,7 +2,7 @@
 
 /* Exact fallback; see src/overlays/ov023/overlay023_pointer_collection.c. */
 .extern func_02071eb8
-.extern func_0207419c
+.extern GraphicsSpriteGroup_Destroy
 .extern func_020927b8
 .extern func_020c0c24
 .extern func_ov023_021fd630
@@ -13,7 +13,7 @@ func_ov023_021fd5d0:
     stmdb sp!, {r4, lr}
     mov r4, r0
     ldr r0, [r4, #0x4]
-    bl func_0207419c
+    bl GraphicsSpriteGroup_Destroy
     ldr r0, [r4, #0x48]
     cmp r0, #0x0
     beq L_021fd5f8

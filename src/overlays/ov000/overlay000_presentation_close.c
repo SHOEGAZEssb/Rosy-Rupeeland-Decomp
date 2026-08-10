@@ -19,7 +19,7 @@ typedef struct Overlay000PresentationState {
 extern "C" {
 #endif
 extern void func_02071f38(void *resource);
-extern void func_02074058(void *owner);
+extern void GraphicsSpriteGroup_Clear(void *owner);
 extern void GraphicsSpriteCanvas_FillRect(void *owner, s32 value1, s32 value2, s32 value3,
                           s32 value4, s32 value5);
 extern void func_02093998(void *presentation);
@@ -45,6 +45,6 @@ void func_ov000_021fb890(Overlay000PresentationState *state,
         GraphicsSpriteCanvas_FillRect(state->owner_00, 0x5c, 0x34, 0xdc, 0x54, 0);
     }
     func_02093998(state->presentation_44);
-    func_02074058(state->spriteOwner_04);
+    GraphicsSpriteGroup_Clear(state->spriteOwner_04);
     func_02071f38(state->resource_14);
 }

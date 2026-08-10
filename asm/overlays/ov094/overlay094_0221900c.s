@@ -2,7 +2,7 @@
 ; Matching fallback for the portable implementation in src/overlays/ov094/overlay094_recovery.c.
 .extern data_ov094_02219e70
 .extern func_02071eb8
-.extern func_0207419c
+.extern GraphicsSpriteGroup_Destroy
 .extern func_02095308
 
 .global func_ov094_0221900c
@@ -12,9 +12,9 @@ func_ov094_0221900c:
     add r0, r4, #0x18
     bl func_02095308
     ldr r0, [r4, #0x10]
-    bl func_0207419c
+    bl GraphicsSpriteGroup_Destroy
     ldr r0, [r4, #0x14]
-    bl func_0207419c
+    bl GraphicsSpriteGroup_Destroy
     ldr r1, .L_0221904c
     add r0, r4, #0x18
     str r1, [r4, #0x18]

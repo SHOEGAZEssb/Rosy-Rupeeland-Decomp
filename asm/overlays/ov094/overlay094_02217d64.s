@@ -2,8 +2,8 @@
 ; Matching fallback for the portable implementation in src/overlays/ov094/overlay094_recovery.c.
 .extern Heap_Alloc
 .extern data_ov094_02219f04
-.extern func_02073ffc
-.extern func_020740a4
+.extern GraphicsSpriteGroup_CreateStateFromSource
+.extern GraphicsSpriteGroup_AdvanceAnimations
 .extern func_0209189c
 .extern func_020918f4
 .extern func_02095274
@@ -34,12 +34,12 @@ func_ov094_02217d64:
     ldr r0, [r8, #0xc]
     mov r1, r8
     mov r2, #0x1
-    bl func_02073ffc
+    bl GraphicsSpriteGroup_CreateStateFromSource
     mov r6, r0
     ldr r0, [r8, #0x10]
     mov r1, r8
     mov r2, #0x1
-    bl func_02073ffc
+    bl GraphicsSpriteGroup_CreateStateFromSource
     mov r5, r0
     ldr r1, .L_02217e8c
     ldr r3, .L_02217e90
@@ -83,9 +83,9 @@ func_ov094_02217d64:
     add r0, r8, #0x14
     bl func_02095360
     ldr r0, [r8, #0xc]
-    bl func_020740a4
+    bl GraphicsSpriteGroup_AdvanceAnimations
     ldr r0, [r8, #0x10]
-    bl func_020740a4
+    bl GraphicsSpriteGroup_AdvanceAnimations
     mov r0, #0x0
 .L_02217e80:
     add sp, sp, #0xc

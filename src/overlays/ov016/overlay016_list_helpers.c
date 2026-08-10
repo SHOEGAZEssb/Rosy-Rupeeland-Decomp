@@ -7,7 +7,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_02074110(void *);
+extern void GraphicsSpriteGroup_ReleaseIndexedEntries(void *);
 #ifdef __cplusplus
 }
 #endif
@@ -87,7 +87,7 @@ extern "C" void func_ov016_021fd188(void *state)
             FIELD(s32, FIELD(void *, presentation, 0x50), 0x20) = 1;
         }
     } else {
-        func_02074110(FIELD(void *, presentation, 0x50));
+        GraphicsSpriteGroup_ReleaseIndexedEntries(FIELD(void *, presentation, 0x50));
     }
     FIELD(s32, FIELD(void *, state, 4), 0x20) = 1;
     FIELD(s32, FIELD(void *, state, 8), 0x20) = 1;
@@ -101,7 +101,7 @@ extern "C" void func_ov016_021fd188(void *state)
 extern "C" void func_ov016_021fd1e0(void *state)
 {
     FIELD(s32, state, 0x5c) = 0;
-    func_02074110(FIELD(void *, FIELD(void *, state, 0x58), 0x50));
-    func_02074110(FIELD(void *, state, 4));
-    func_02074110(FIELD(void *, state, 8));
+    GraphicsSpriteGroup_ReleaseIndexedEntries(FIELD(void *, FIELD(void *, state, 0x58), 0x50));
+    GraphicsSpriteGroup_ReleaseIndexedEntries(FIELD(void *, state, 4));
+    GraphicsSpriteGroup_ReleaseIndexedEntries(FIELD(void *, state, 8));
 }

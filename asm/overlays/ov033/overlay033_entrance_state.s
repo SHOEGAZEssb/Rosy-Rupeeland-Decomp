@@ -7,7 +7,7 @@
     .extern func_02091c7c
     .extern func_02091cf0
     .extern func_ov033_021fd04c
-    .extern func_020740a4
+    .extern GraphicsSpriteGroup_AdvanceAnimations
     .extern data_ov033_021fdd00
 
     .global func_ov033_021fd624
@@ -79,7 +79,7 @@ L_021fd6b8:
     bl func_ov033_021fd04c
 L_021fd720:
     ldr r0, [r4, #0x0]
-    bl func_020740a4
+    bl GraphicsSpriteGroup_AdvanceAnimations
     mov r0, #0x0
     add sp, sp, #0x4
     ldmia sp!, {r3, r4, pc}

@@ -15,8 +15,8 @@ extern void func_02071ea4(void *);
 extern void func_02071ee0(void *, void *, s32, s32, s32);
 extern void func_020708c4(void *);
 extern void func_02073e48(void *, s32, s32, s32, s32, s32, s32);
-extern void *func_02073ffc(void *, void *, s32);
-extern void *func_020742cc(void *);
+extern void *GraphicsSpriteGroup_CreateStateFromSource(void *, void *, s32);
+extern void *GraphicsSpriteGroupOwner_CreateGroup(void *);
 extern void func_02091e0c(void *, s32);
 extern void func_020957bc(void *);
 extern void func_020957f0(void *, void *, s32, s32, s32);
@@ -82,16 +82,16 @@ extern "C" void *func_ov030_021fcf20(void *widget, void *font,
     func_020708c4(FIELD(void *, widget, 8));
     func_02071ee0((u8 *)widget + 0x10, data_020f4e18[0], 0x42, 1, 0x43);
 
-    FIELD(void *, widget, 0x28) = func_020742cc(font);
-    FIELD(void *, widget, 0x2c) = func_020742cc(font);
-    FIELD(void *, widget, 0x30) = func_02073ffc(
+    FIELD(void *, widget, 0x28) = GraphicsSpriteGroupOwner_CreateGroup(font);
+    FIELD(void *, widget, 0x2c) = GraphicsSpriteGroupOwner_CreateGroup(font);
+    FIELD(void *, widget, 0x30) = GraphicsSpriteGroup_CreateStateFromSource(
         FIELD(void *, widget, 0x2c), (u8 *)widget + 0x1c, 2);
     sourceObject = func_02062918(source, 0);
     func_02073e48(FIELD(void *, widget, 0x30),
                   func_02063190(sourceObject), 0x20, 0xb0, 0, 0x100, 0);
 
     for (s32 i = 0; i < 7; ++i) {
-        void *sprite = func_02073ffc(FIELD(void *, widget, 0x28),
+        void *sprite = GraphicsSpriteGroup_CreateStateFromSource(FIELD(void *, widget, 0x28),
                                      (u8 *)widget + 4, 1);
         FIELD(void *, widget, 0x34 + i * 4) = sprite;
         const s16 *entry = &data_ov030_021ff708[i * 4];
@@ -100,18 +100,18 @@ extern "C" void *func_ov030_021fcf20(void *widget, void *font,
         func_02073e48(sprite, 0, x, y, 1, 0, 4);
     }
     for (s32 i = 0; i < 2; ++i) {
-        void *sprite = func_02073ffc(FIELD(void *, widget, 0x2c),
+        void *sprite = GraphicsSpriteGroup_CreateStateFromSource(FIELD(void *, widget, 0x2c),
                                      (u8 *)widget + 0x10, 1);
         FIELD(void *, widget, 0x50 + i * 4) = sprite;
         func_02073e48(sprite, 0, 0x32 + i * 8, 0xb0, 0, i, 0);
     }
 
-    void *sprite = func_02073ffc(FIELD(void *, widget, 0x2c),
+    void *sprite = GraphicsSpriteGroup_CreateStateFromSource(FIELD(void *, widget, 0x2c),
                                  (u8 *)widget + 0x10, 1);
     func_020957f0((u8 *)widget + 0x58, sprite, 4, 0, 0);
     func_02095820((u8 *)widget + 0x58, 0x80, 0xb0);
     func_02095940((u8 *)widget + 0x58);
-    sprite = func_02073ffc(FIELD(void *, widget, 0x2c),
+    sprite = GraphicsSpriteGroup_CreateStateFromSource(FIELD(void *, widget, 0x2c),
                            (u8 *)widget + 0x10, 1);
     func_020957f0((u8 *)widget + 0x104, sprite, 6, 0, 0);
     func_02095820((u8 *)widget + 0x104, 0xe4, 0xb0);

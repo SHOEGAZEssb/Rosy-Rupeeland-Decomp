@@ -13,7 +13,7 @@ extern "C" u8 data_ov046_0220cf28[];
 extern "C" void func_020280d8(void *object);
 extern "C" void Heap_Free(void *allocation);
 extern "C" void *func_ov046_0220ba80(void *panel);
-extern "C" void func_0207419c(void *fontState);
+extern "C" void GraphicsSpriteGroup_Destroy(void *fontState);
 extern "C" void func_02071eb8(void *owner);
 
 /*
@@ -36,7 +36,7 @@ extern "C" void *func_ov046_0220ca40(void *scene)
         func_ov046_0220ba80(panel);
         Heap_Free(panel);
     }
-    func_0207419c(FIELD(void *, scene, 0x60));
+    GraphicsSpriteGroup_Destroy(FIELD(void *, scene, 0x60));
     func_02071eb8((u8 *)scene + 0x54);
     return scene;
 }
@@ -60,7 +60,7 @@ extern "C" void *func_ov046_0220cab0(void *scene)
         func_ov046_0220ba80(panel);
         Heap_Free(panel);
     }
-    func_0207419c(FIELD(void *, scene, 0x60));
+    GraphicsSpriteGroup_Destroy(FIELD(void *, scene, 0x60));
     func_02071eb8((u8 *)scene + 0x54);
     Heap_Free(scene);
     return scene;

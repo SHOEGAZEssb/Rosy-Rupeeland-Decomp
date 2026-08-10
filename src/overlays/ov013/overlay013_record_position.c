@@ -7,7 +7,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *func_02073ffc(void *, void *, s32);
+extern void *GraphicsSpriteGroup_CreateStateFromSource(void *, void *, s32);
 extern s32 func_020918f4(void *, s32);
 extern void GraphicsSpriteState_SetAnimationIndex(void *, s32);
 extern s32 func_0209189c(void *, s32, s32);
@@ -30,7 +30,7 @@ extern "C"
 void func_ov013_021fdfd4(void *state, void *record, s32 horizontalRange,
                          s32 verticalRange)
 {
-    void *target = func_02073ffc(FIELD(void *, state, 0x84),
+    void *target = GraphicsSpriteGroup_CreateStateFromSource(FIELD(void *, state, 0x84),
                                  (u8 *)state + 0x78, 1);
     s32 selector = func_020918f4((u8 *)state + 0x978, 4);
     s32 fixed;

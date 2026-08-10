@@ -36,10 +36,10 @@ extern void func_02092814(void *, s32);
 extern void func_02071ea4(void *);
 extern void func_02071eb8(void *);
 extern void func_02071ee0(void *, void *, s32, s32, s32);
-extern u8 *func_020742cc(void *);
-extern void func_0207419c(void *);
-extern void func_02074110(void *);
-extern u8 *func_02073ffc(void *, void *, s32);
+extern u8 *GraphicsSpriteGroupOwner_CreateGroup(void *);
+extern void GraphicsSpriteGroup_Destroy(void *);
+extern void GraphicsSpriteGroup_ReleaseIndexedEntries(void *);
+extern u8 *GraphicsSpriteGroup_CreateStateFromSource(void *, void *, s32);
 extern void func_02073e48(void *, s32, s32, s32, s32, s32, s32);
 extern void GraphicsSpriteState_SetAnimationIndex(void *, s32);
 extern void GraphicsSpriteRenderer_ClearTextBuffer(void *);
@@ -65,24 +65,24 @@ AreaInfoPanelPresentation *func_02027fe8(AreaInfoPanelPresentation *self,
     func_02092798(self);
     func_02071ea4(self->resources_24);
     self->uiContext_30 = uiContext;
-    self->spriteOwner_34 = func_020742cc(uiContext);
+    self->spriteOwner_34 = GraphicsSpriteGroupOwner_CreateGroup(uiContext);
     func_02092814(self, 0x7005);
     func_02092814(self, 0x7007);
     func_02071ee0(self->resources_24, data_020f4e18,
                   0x3326, 0x3327, 0x3328);
     self->primarySprite_38 =
-        func_02073ffc(self->spriteOwner_34, self->resources_24, 1);
+        GraphicsSpriteGroup_CreateStateFromSource(self->spriteOwner_34, self->resources_24, 1);
     func_02073e48(self->primarySprite_38, 0, 0x1e, 0xa2, 1, 0, 0);
-    secondary = func_02073ffc(self->spriteOwner_34, self->resources_24, 1);
+    secondary = GraphicsSpriteGroup_CreateStateFromSource(self->spriteOwner_34, self->resources_24, 1);
     func_02073e48(secondary, 1, 5, 0xbd, 1, 0, 0);
-    func_02074110(self->spriteOwner_34);
+    GraphicsSpriteGroup_ReleaseIndexedEntries(self->spriteOwner_34);
     return self;
 }
 
 /* Destroy the sprite owner, resource triplet, and panel base; return self. */
 AreaInfoPanelPresentation *func_020280d8(AreaInfoPanelPresentation *self)
 {
-    func_0207419c(self->spriteOwner_34);
+    GraphicsSpriteGroup_Destroy(self->spriteOwner_34);
     func_02071eb8(self->resources_24);
     func_020927b8(self);
     return self;
@@ -146,5 +146,5 @@ void func_02028100(AreaInfoPanelPresentation *self, s32 index)
 void func_0202836c(AreaInfoPanelPresentation *self)
 {
     GraphicsSpriteRenderer_ClearTextBuffer(self->uiContext_30);
-    func_02074110(self->spriteOwner_34);
+    GraphicsSpriteGroup_ReleaseIndexedEntries(self->spriteOwner_34);
 }

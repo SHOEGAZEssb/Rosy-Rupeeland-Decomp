@@ -4,7 +4,7 @@
 .extern func_02005058
 .extern VecFx32Triple_Set
 .extern GraphicsSpriteState_SetAnimationIndex
-.extern func_020740c8
+.extern GraphicsSpriteGroup_ReplaceStateResources
 .extern func_ov065_0220fe7c
 .extern func_ov065_0220fee8
 
@@ -51,7 +51,7 @@ func_ov065_0220fdac:
     str r0, [sp, #0x0]
     ldr r0, [r1, #0x0]
     ldmib r3, {r2, r3}
-    bl func_020740c8
+    bl GraphicsSpriteGroup_ReplaceStateResources
     ldr r0, [r5, #0x0]
     and r1, r4, #0xff
     bl GraphicsSpriteState_SetAnimationIndex

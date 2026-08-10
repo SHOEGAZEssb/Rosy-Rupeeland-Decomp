@@ -1,6 +1,6 @@
     .text
     .extern GraphicsSpriteState_SetAnimationIndex
-    .extern func_020740a4
+    .extern GraphicsSpriteGroup_AdvanceAnimations
     .extern func_02094d28
     .extern func_020958d8
 
@@ -19,7 +19,7 @@ func_ov016_021fe63c:
     and r1, r1, #0xff
     bl GraphicsSpriteState_SetAnimationIndex
     ldr r0, [r4, #0x18]
-    bl func_020740a4
+    bl GraphicsSpriteGroup_AdvanceAnimations
     ldr r0, [r4, #0xcc]
     cmp r0, #0x0
     beq L_021fe6cc

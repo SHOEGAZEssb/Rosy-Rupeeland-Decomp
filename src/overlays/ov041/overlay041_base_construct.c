@@ -19,7 +19,7 @@ extern void GraphicsResourceSet_Init(void *set);
 extern void GraphicsResourceSet_Destroy(void *set);
 extern void func_02004fe0(void *vector);
 extern void func_0209a748(void *object, s32 value);
-extern void *func_020742cc(void *manager);
+extern void *GraphicsSpriteGroupOwner_CreateGroup(void *manager);
 extern void *func_02003e14(s32 size, void *heap, s32 alignment, void *context);
 extern void *func_ov070_0220fd60(void *storage, void *owner, void *context);
 extern void *func_ov041_0220106c(void *storage, void *owner, void *context);
@@ -82,7 +82,7 @@ extern "C" void *func_ov041_021fce04(void *owner, s32 mode, void *argument,
     for (s32 offset = 0x16c; offset <= 0x1fc; offset += 4)
         if (offset != 0x1ec && offset != 0x1f4) FIELD(s32, owner, offset) = 0;
 
-    FIELD(void *, owner, 0) = func_020742cc(data_020f4e14);
+    FIELD(void *, owner, 0) = GraphicsSpriteGroupOwner_CreateGroup(data_020f4e14);
     void *storage = func_02003e14(0x208, data_ov041_022058ec, 4, gHeapContext);
     FIELD(void *, owner, 8) = storage ? func_ov070_0220fd60(storage, owner, FIELD(void *, owner, 0)) : 0;
     if (mode == 2) FIELD(void *, owner, 0x0c) = 0;

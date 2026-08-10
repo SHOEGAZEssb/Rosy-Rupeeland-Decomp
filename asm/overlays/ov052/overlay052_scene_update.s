@@ -11,7 +11,7 @@
 .extern DisplayBrightnessPair_GetScreen
 .extern GamePhaseAreaScene_SetEnabled
 .extern GraphicsSpriteState_SetAnimationIndex
-.extern func_020740a4
+.extern GraphicsSpriteGroup_AdvanceAnimations
 .extern GraphicsSpriteCanvas_FillRect
 .extern func_02093360
 .extern func_ov052_0220ddb4
@@ -243,7 +243,7 @@ func_ov052_0220da54:
     beq .L_0220dd88
 .L_0220dd7c:
     ldr r0, [r4, #0x1c]
-    bl func_020740a4
+    bl GraphicsSpriteGroup_AdvanceAnimations
     mov r0, #0x0
 .L_0220dd88:
     add sp, sp, #0x30

@@ -7,7 +7,7 @@
 .extern data_ov023_021ffbc4
 .extern func_02071c38
 .extern func_02071eb8
-.extern func_0207419c
+.extern GraphicsSpriteGroup_Destroy
 .extern GraphicsSpriteRenderer_QueuePaletteUploads
 .extern func_020926f8
 .extern func_020927b8
@@ -78,7 +78,7 @@ L_021fdec4:
     cmp r5, #0x12
     blt L_021fdea4
     ldr r0, [r4, #0xc8]
-    bl func_0207419c
+    bl GraphicsSpriteGroup_Destroy
     ldr r0, L_021fdf5c
     ldr r1, [r4, #0x4c0]
     ldr r0, [r0, #0x0]

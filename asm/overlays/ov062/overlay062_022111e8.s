@@ -12,7 +12,7 @@
 .extern ActorDerivedType1_ResetToBaseState
 .extern Type7Actor_LeaveSpecialPresentationState
 .extern func_020597fc
-.extern func_02073ef8
+.extern GraphicsSpriteState_ReleaseFromGroup
 .extern func_ov062_0220fd20
 .extern gSoundContext
 
@@ -28,9 +28,9 @@ func_ov062_022111e8:
     ldr r0, [r0, #0x0]
     bl func_020597fc
     ldr r0, [r4, #0x64]
-    bl func_02073ef8
+    bl GraphicsSpriteState_ReleaseFromGroup
     ldr r0, [r4, #0x6c]
-    bl func_02073ef8
+    bl GraphicsSpriteState_ReleaseFromGroup
     ldr r0, [r4, #0x5c]
     cmp r0, #0x0
     beq .L_02211234

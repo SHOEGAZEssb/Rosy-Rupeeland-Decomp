@@ -25,7 +25,7 @@ extern void GraphicsSpriteState_SetFrameIndex(void *object, s32 value);
 extern void func_02070958(void *member, s32 x, s32 y, s32 z);
 extern void func_02070a78(void *member, s32 delta, s32 first, s32 last);
 extern void func_02074dc8(void *manager, void *object);
-extern void func_020740a4(void *owner);
+extern void GraphicsSpriteGroup_AdvanceAnimations(void *owner);
 #ifdef __cplusplus
 }
 #endif
@@ -271,7 +271,7 @@ s32 func_ov009_021fd4e8(void *state)
         FIELD(u16, object, 0x34) =
             (u16)(FIELD(s32, state, 0x100) ? FIELD(s32, state, 0x100) : 8);
         FIELD(u16, object, 0x36) = (u16)FIELD(s32, state, 0x104);
-        if ((repeated & 0x800) == 0) func_020740a4(owner);
+        if ((repeated & 0x800) == 0) GraphicsSpriteGroup_AdvanceAnimations(owner);
         if ((FIELD(u16, object, 0x24) & 1) == 0)
             FIELD(s32, state, 0xdc) = FIELD(u8, object, 0x39);
     }

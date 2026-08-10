@@ -29,7 +29,7 @@ extern "C" {
 extern void *gSoundContext;
 extern u8 data_ov004_021fcda0[];
 extern void func_020597fc(void *context, s32 soundId);
-extern void func_0207419c(void *resource);
+extern void GraphicsSpriteGroup_Destroy(void *resource);
 extern void func_ov004_021fb6e0(void *controller);
 extern void func_02071eb8(void *resource);
 #ifdef __cplusplus
@@ -60,8 +60,8 @@ Overlay004PresentationDestroyState *func_ov004_021fb868(
             FIELD(Overlay004ChildDestroy, FIELD(void *, state->child_068, 0), 4);
         destroy(state->child_068);
     }
-    func_0207419c(state->context_060);
-    func_0207419c(state->fontContext_064);
+    GraphicsSpriteGroup_Destroy(state->context_060);
+    GraphicsSpriteGroup_Destroy(state->fontContext_064);
     func_ov004_021fb6e0(state->controller_06c);
     func_02071eb8(state->resource_054);
     return state;

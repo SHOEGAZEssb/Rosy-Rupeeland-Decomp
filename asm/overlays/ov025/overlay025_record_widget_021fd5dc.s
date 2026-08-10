@@ -9,9 +9,9 @@
 .extern func_02071ee0
 .extern GraphicsSpriteState_SetAnimationIndex
 .extern func_02073e48
-.extern func_02073ffc
-.extern func_02074110
-.extern func_020742cc
+.extern GraphicsSpriteGroup_CreateStateFromSource
+.extern GraphicsSpriteGroup_ReleaseIndexedEntries
+.extern GraphicsSpriteGroupOwner_CreateGroup
 .extern func_02092798
 .extern func_02092814
 .extern func_020befec
@@ -60,7 +60,7 @@ L_021fd630:
     bl func_02071ee0
     ldr r0, L_021fd9c8
     ldr r0, [r0, #0x0]
-    bl func_020742cc
+    bl GraphicsSpriteGroupOwner_CreateGroup
     mov r1, #0x3c
     mul r1, r9, r1
     str r0, [r10, #0xc]
@@ -71,7 +71,7 @@ L_021fd630:
     ldr r0, [r10, #0xc]
     mov r1, r10
     mov r2, #0x1
-    bl func_02073ffc
+    bl GraphicsSpriteGroup_CreateStateFromSource
     str r0, [r10, #0x10]
     ldrh r0, [r4, #0x0]
     cmp r0, #0x1
@@ -110,7 +110,7 @@ L_021fd6b8:
     ldr r0, [r10, #0xc]
     mov r1, r10
     mov r2, #0x1
-    bl func_02073ffc
+    bl GraphicsSpriteGroup_CreateStateFromSource
     str r0, [r10, #0x14]
     mov r0, #0x1
     str r0, [sp, #0x0]
@@ -128,7 +128,7 @@ L_021fd6b8:
     ldr r0, [r10, #0xc]
     mov r1, r10
     mov r2, #0x1
-    bl func_02073ffc
+    bl GraphicsSpriteGroup_CreateStateFromSource
     str r0, [r10, #0x18]
     mov r0, #0x1
     str r0, [sp, #0x0]
@@ -145,7 +145,7 @@ L_021fd6b8:
     ldr r0, [r10, #0xc]
     mov r1, r10
     mov r2, #0x1
-    bl func_02073ffc
+    bl GraphicsSpriteGroup_CreateStateFromSource
     str r0, [r10, #0x1c]
     mov r0, #0x1
     str r0, [sp, #0x0]
@@ -178,7 +178,7 @@ L_021fd824:
     ldr r0, [r10, #0xc]
     mov r1, r10
     mov r2, #0x1
-    bl func_02073ffc
+    bl GraphicsSpriteGroup_CreateStateFromSource
     add r1, r10, r7, lsl #0x2
     str r0, [r1, #0x14]
     mov r0, #0x1
@@ -207,7 +207,7 @@ L_021fd89c:
     ldr r0, [r10, #0xc]
     mov r1, r10
     mov r2, r4
-    bl func_02073ffc
+    bl GraphicsSpriteGroup_CreateStateFromSource
     add r2, r10, r7, lsl #0x2
     str r0, [r2, #0x14]
     mov r0, r4
@@ -243,7 +243,7 @@ L_021fd920:
     ldr r0, [r10, #0xc]
     mov r1, r10
     mov r2, #0x1
-    bl func_02073ffc
+    bl GraphicsSpriteGroup_CreateStateFromSource
     str r0, [r10, #0x2c]
     mov r0, #0x1
     mov r2, #0x0
@@ -278,7 +278,7 @@ L_021fd994:
     add r0, r10, #0x30
     bl func_02092814
     ldr r0, [r10, #0xc]
-    bl func_02074110
+    bl GraphicsSpriteGroup_ReleaseIndexedEntries
     mov r0, r10
     add sp, sp, #0xc
     ldmia sp!, {r4, r5, r6, r7, r8, r9, r10, r11, pc}

@@ -12,8 +12,8 @@
     .extern func_02071ea4
     .extern func_02071ee0
     .extern GraphicsSpriteState_SetAnimationIndex
-    .extern func_02073ffc
-    .extern func_020742cc
+    .extern GraphicsSpriteGroup_CreateStateFromSource
+    .extern GraphicsSpriteGroupOwner_CreateGroup
     .extern func_02091b6c
     .extern func_02091e28
     .extern func_02094cf0
@@ -128,15 +128,15 @@ func_ov013_021fce2c:
     ldr r0, L_021fd088
     str r1, [r4, #0x974]
     ldr r0, [r0, #0x0]
-    bl func_020742cc
+    bl GraphicsSpriteGroupOwner_CreateGroup
     ldr r1, L_021fd088
     str r0, [r4, #0x84]
     ldr r0, [r1, #0x0]
-    bl func_020742cc
+    bl GraphicsSpriteGroupOwner_CreateGroup
     add r1, r4, #0x54
     mov r2, #0x2
     str r0, [r4, #0x88]
-    bl func_02073ffc
+    bl GraphicsSpriteGroup_CreateStateFromSource
     mov r1, #0x2
     mov r5, r0
     bl GraphicsSpriteState_SetAnimationIndex

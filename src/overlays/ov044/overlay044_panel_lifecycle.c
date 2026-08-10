@@ -8,14 +8,14 @@
 
 #define FIELD(type, base, offset) (*(type *)((u8 *)(base) + (offset)))
 
-extern "C" void func_0207419c(void *object);
+extern "C" void GraphicsSpriteGroup_Destroy(void *object);
 extern "C" void func_020c0c24(void *records, s32 stride, s32 alignment,
                                void (*destroy)(void *));
 extern "C" void func_020927b8(void *presentation);
 extern "C" void func_02071eb8(void *owner);
 extern "C" void func_020683f4(void *record);
-extern "C" void func_02074110(void *object);
-extern "C" void *func_02073ffc(void *font, void *owner, s32 value);
+extern "C" void GraphicsSpriteGroup_ReleaseIndexedEntries(void *object);
+extern "C" void *GraphicsSpriteGroup_CreateStateFromSource(void *font, void *owner, s32 value);
 extern "C" s32 func_ov044_0220bb48(void *record, s32 mode);
 extern "C" void func_02073e48(void *binding, s32 row, s32 x, s32 y,
                                s32 visible, s32 first, s32 second);
@@ -30,7 +30,7 @@ extern "C" void func_ov044_0220baa0(void *object, s32 index);
  */
 extern "C" void *func_ov044_0220b8e4(void *object)
 {
-    func_0207419c(FIELD(void *, object, 4));
+    GraphicsSpriteGroup_Destroy(FIELD(void *, object, 4));
     void *child = FIELD(void *, object, 0x44);
     if (child) {
         void **vtable = FIELD(void **, child, 0);
@@ -78,20 +78,20 @@ extern "C" void func_ov044_0220b9c8(void *object)
         if (FIELD(s32, child, 8) < FIELD(s32, child, 4))
             FIELD(s32, FIELD(void *, child, 0x50), 0x20) = 1;
     } else {
-        func_02074110(FIELD(void *, child, 0x50));
+        GraphicsSpriteGroup_ReleaseIndexedEntries(FIELD(void *, child, 0x50));
     }
     FIELD(s32, FIELD(void *, object, 4), 0x20) = 1;
 }
 
 /*
  * Hide the panel. Clear +0x48 and deactivate the child display +0x50 and font
- * +0x04 through func_02074110. UI visibility state changes only.
+ * +0x04 through GraphicsSpriteGroup_ReleaseIndexedEntries. UI visibility state changes only.
  */
 extern "C" void func_ov044_0220ba18(void *object)
 {
     FIELD(s32, object, 0x48) = 0;
-    func_02074110(FIELD(void *, FIELD(void *, object, 0x44), 0x50));
-    func_02074110(FIELD(void *, object, 4));
+    GraphicsSpriteGroup_ReleaseIndexedEntries(FIELD(void *, FIELD(void *, object, 0x44), 0x50));
+    GraphicsSpriteGroup_ReleaseIndexedEntries(FIELD(void *, object, 4));
 }
 
 /*
@@ -123,7 +123,7 @@ extern "C" void func_ov044_0220baa0(void *object, s32 index)
     void *record = (u8 *)FIELD(void *, object, 0x38) + index * 0x20;
     if (FIELD(void *, record, 0x10))
         return;
-    void *binding = func_02073ffc(FIELD(void *, object, 4),
+    void *binding = GraphicsSpriteGroup_CreateStateFromSource(FIELD(void *, object, 4),
                                    (u8 *)object + 8, 1);
     FIELD(void *, record, 0x10) = binding;
     s32 row = index - 1;

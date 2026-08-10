@@ -14,8 +14,8 @@ extern void Heap_Free(void *);
 extern void func_02070958(void *, s32, s32, s32);
 extern void func_02071eb8(void *);
 extern void GraphicsSpriteState_SetAnimationIndex(void *, s32);
-extern void func_020740a4(void *);
-extern void func_0207419c(void *);
+extern void GraphicsSpriteGroup_AdvanceAnimations(void *);
+extern void GraphicsSpriteGroup_Destroy(void *);
 extern void func_02074dc8(void *);
 extern void GraphicsSpriteRenderer_SetTextGridPosition(void *, s32, s32);
 extern void func_02091e1c(void *);
@@ -37,8 +37,8 @@ extern "C" void *func_ov030_021fd27c(void *widget)
 {
     if (FIELD(void *, widget, 0x1b0) != 0)
         Heap_Free(FIELD(void *, widget, 0x1b0));
-    func_0207419c(FIELD(void *, widget, 0x28));
-    func_0207419c(FIELD(void *, widget, 0x2c));
+    GraphicsSpriteGroup_Destroy(FIELD(void *, widget, 0x28));
+    GraphicsSpriteGroup_Destroy(FIELD(void *, widget, 0x2c));
     GraphicsSpriteRenderer_SetTextGridPosition(FIELD(void *, widget, 0), 0, 0);
     func_02091e1c((u8 *)widget + 0x1e8);
     func_02091e1c((u8 *)widget + 0x1e0);
@@ -80,8 +80,8 @@ extern "C" void func_ov030_021fd304(void *widget)
     FIELD(s32, FIELD(void *, widget, 0x28), 0x18) = 0;
     FIELD(s32, FIELD(void *, widget, 0x28), 0x1c) = -scroll;
     GraphicsSpriteRenderer_SetTextGridPosition(FIELD(void *, widget, 0), 0, -scroll);
-    func_020740a4(FIELD(void *, widget, 0x28));
-    func_020740a4(FIELD(void *, widget, 0x2c));
+    GraphicsSpriteGroup_AdvanceAnimations(FIELD(void *, widget, 0x28));
+    GraphicsSpriteGroup_AdvanceAnimations(FIELD(void *, widget, 0x2c));
 }
 
 /*

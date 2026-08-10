@@ -4,7 +4,7 @@
     .extern data_ov015_021fec74
     .extern func_020597fc
     .extern func_02071eb8
-    .extern func_0207419c
+    .extern GraphicsSpriteGroup_Destroy
     .extern func_020926f8
     .extern func_020927b8
     .extern func_ov001_021fb7d4
@@ -56,7 +56,7 @@ L_021fd3a8:
     blx r1
 L_021fd3c0:
     ldr r0, [r4, #0x54]
-    bl func_0207419c
+    bl GraphicsSpriteGroup_Destroy
     ldr r3, L_021fd418
     add r0, r4, #0xfc
     mov r1, #0x3

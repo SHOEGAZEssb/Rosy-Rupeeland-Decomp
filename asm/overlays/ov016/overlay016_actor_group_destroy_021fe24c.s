@@ -1,7 +1,7 @@
     .text
     .extern data_ov016_02201520
     .extern func_02071eb8
-    .extern func_0207419c
+    .extern GraphicsSpriteGroup_Destroy
     .extern func_02095308
     .extern func_ov016_021fe0d4
 
@@ -21,7 +21,7 @@ func_ov016_021fe24c:
     blx r1
 L_021fe274:
     ldr r0, [r4, #0x18]
-    bl func_0207419c
+    bl GraphicsSpriteGroup_Destroy
     ldr r1, L_021fe2ac
     add r0, r4, #0xd0
     str r1, [r4, #0xd0]

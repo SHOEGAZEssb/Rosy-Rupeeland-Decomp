@@ -12,7 +12,7 @@ extern void GamePhaseTouchPrompt_UpdateHideSequence(GamePhaseTouchPrompt *self);
 extern void GamePhaseTouchPrompt_UpdateAlternateHideSequence(GamePhaseTouchPrompt *self);
 extern s32 ActorDerivedType1_IsActiveRecordType69(void *actor);
 extern s32 ActorDerivedType1_IsActiveRecordType6A(void *actor);
-extern void func_020740a4(GraphicsSpriteGroup *group);
+extern void GraphicsSpriteGroup_AdvanceAnimations(GraphicsSpriteGroup *group);
 extern s32 func_020954d4(void *actor);
 extern void func_020954c0(void *actor, s32 animation);
 extern void func_020954e0(void *actor);
@@ -53,7 +53,7 @@ s32 GamePhaseTouchPrompt_Update(GamePhaseTouchPrompt *self)
     }
 
     (*(PromptVirtualUpdate *)(*(u8 **)self->actor + 8))(self->actor);
-    func_020740a4(self->spriteGroup);
+    GraphicsSpriteGroup_AdvanceAnimations(self->spriteGroup);
     if (*(u32 *)(phaseActor + 0x230) & 0x800) {
         if (ActorDerivedType1_IsActiveRecordType69(phaseActor))
             animation = 3;

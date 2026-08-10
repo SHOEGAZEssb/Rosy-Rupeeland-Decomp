@@ -3,7 +3,7 @@
     .extern data_ov016_0220155c
     .extern func_02071ea4
     .extern func_02071ee0
-    .extern func_02073ffc
+    .extern GraphicsSpriteGroup_CreateStateFromSource
     .extern func_020953c8
 
 /* Exact fallbacks for sprite-wrapper construction; see src/overlays/ov016/overlay016_sprite_wrapper.c. */
@@ -35,7 +35,7 @@ func_ov016_021fe004:
     mov r0, r4
     add r1, r6, #0xa0
     mov r2, #0x2
-    bl func_02073ffc
+    bl GraphicsSpriteGroup_CreateStateFromSource
     str r0, [r6, #0x9c]
     mov r1, #0x1
     strb r1, [r0, #0x3a]

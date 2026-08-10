@@ -19,11 +19,11 @@ extern void *func_02003e20(u32, const void *, u32, void *);
 extern void func_02071ea4(void *);
 extern void func_02071eb8(void *);
 extern void func_02071ee0(void *, void *, s32, s32, s32);
-extern void *func_02073ffc(void *, void *, s32);
+extern void *GraphicsSpriteGroup_CreateStateFromSource(void *, void *, s32);
 extern void func_02073e48(void *, s32, s32, s32, ...);
-extern void func_02074110(void *);
-extern void func_0207419c(void *);
-extern void *func_020742cc(void *);
+extern void GraphicsSpriteGroup_ReleaseIndexedEntries(void *);
+extern void GraphicsSpriteGroup_Destroy(void *);
+extern void *GraphicsSpriteGroupOwner_CreateGroup(void *);
 extern void GraphicsSpriteRenderer_SetFontResource(void *, void *);
 extern void GraphicsSpriteRenderer_DrawText(void *, const void *, s32, s32, ...);
 extern void GraphicsSpriteCanvas_FillRect(void *, s32, s32, s32, ...);
@@ -61,7 +61,7 @@ extern "C" void *func_ov023_021fd444(void *collection, void *font, s32 capacity)
     func_02071ea4((u8 *)collection + 8);
     func_02092798((u8 *)collection + 0x18);
     FIELD(void *, collection, 0) = font;
-    FIELD(void *, collection, 4) = func_020742cc(font);
+    FIELD(void *, collection, 4) = GraphicsSpriteGroupOwner_CreateGroup(font);
     FIELD(s32, collection, 0x40) = capacity;
     FIELD(s32, collection, 0x44) = 0;
     FIELD(void *, collection, 0x14) = 0;
@@ -93,7 +93,7 @@ extern "C" void *func_ov023_021fd444(void *collection, void *font, s32 capacity)
  */
 extern "C" void *func_ov023_021fd5d0(void *collection)
 {
-    func_0207419c(FIELD(void *, collection, 4));
+    GraphicsSpriteGroup_Destroy(FIELD(void *, collection, 4));
     void *ui = FIELD(void *, collection, 0x48);
     if (ui) {
         typedef void (*Dtor)(void *);
@@ -127,7 +127,7 @@ extern "C" void *func_ov023_021fd634(void *collection, void *record)
         s32 b = func_0207b490((u8 *)bank + 0x660);
         s32 c = func_0207b4bc((u8 *)bank + 0x660);
         func_02071ee0((u8 *)collection + 8, data_020f4e18, a, b, c);
-        FIELD(void *, collection, 0x14) = func_02073ffc(
+        FIELD(void *, collection, 0x14) = GraphicsSpriteGroup_CreateStateFromSource(
             FIELD(void *, collection, 4), (u8 *)collection + 8, 2);
         func_02073e48(FIELD(void *, collection, 0x14),
                       func_0207b4e8((u8 *)bank + 0x660), 42, 48, 1, 0, 0);
@@ -144,7 +144,7 @@ extern "C" void func_ov023_021fd730(void *collection)
     if (FIELD(s32, collection, 0x44)) {
         if (FIELD(s32, ui, 8) < FIELD(s32, ui, 4))
             FIELD(s32, FIELD(void *, ui, 0x50), 0x20) = 1;
-    } else func_02074110(FIELD(void *, ui, 0x50));
+    } else GraphicsSpriteGroup_ReleaseIndexedEntries(FIELD(void *, ui, 0x50));
     FIELD(s32, FIELD(void *, collection, 4), 0x20) = 1;
 }
 
@@ -152,8 +152,8 @@ extern "C" void func_ov023_021fd730(void *collection)
 extern "C" void func_ov023_021fd780(void *collection)
 {
     FIELD(s32, collection, 0x4c) = 0;
-    func_02074110(FIELD(void *, FIELD(void *, collection, 0x48), 0x50));
-    func_02074110(FIELD(void *, collection, 4));
+    GraphicsSpriteGroup_ReleaseIndexedEntries(FIELD(void *, FIELD(void *, collection, 0x48), 0x50));
+    GraphicsSpriteGroup_ReleaseIndexedEntries(FIELD(void *, collection, 4));
 }
 
 /*

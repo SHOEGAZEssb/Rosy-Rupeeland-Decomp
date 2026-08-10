@@ -14,7 +14,7 @@ extern void *data_020f4e18;
 extern void func_02071ee0(void *member, void *archive, s32 first, s32 second,
                           s32 third);
 extern void func_020708c4(void *member);
-extern void *func_02073ffc(void *owner, void *member, u8 variant);
+extern void *GraphicsSpriteGroup_CreateStateFromSource(void *owner, void *member, u8 variant);
 #ifdef __cplusplus
 }
 #endif
@@ -47,7 +47,7 @@ void func_ov009_021fd360(void *state)
                   FIELD(s32, record, 0), FIELD(s32, record, 4),
                   FIELD(s32, record, 8));
     func_020708c4(FIELD(void *, state, 0x7c));
-    object = func_02073ffc(FIELD(void *, state, 0x84), (u8 *)state + 0x78,
+    object = GraphicsSpriteGroup_CreateStateFromSource(FIELD(void *, state, 0x84), (u8 *)state + 0x78,
                           (u8)FIELD(s32, state, 0xf8));
     FIELD(void *, state, 0x88) = object;
     FIELD(u8, object, 0x3a) = 3;

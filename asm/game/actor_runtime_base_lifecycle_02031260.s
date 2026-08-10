@@ -10,7 +10,7 @@
 .extern func_02031488
 .extern Actor_GetCollection
 .extern func_02057184
-.extern func_02074038
+.extern GraphicsSpriteGroup_ReleaseState
 
     .global func_02031260
     .type func_02031260, @function
@@ -31,7 +31,7 @@ func_02031260: ; 0x02031260
     bl Actor_GetCollection
     bl ActorCollection_GetSpriteOwner
     mov r1, r4
-    bl func_02074038
+    bl GraphicsSpriteGroup_ReleaseState
 .L_020312a4:
     ldr r4, [r5, #0x1e0]
     cmp r4, #0x0

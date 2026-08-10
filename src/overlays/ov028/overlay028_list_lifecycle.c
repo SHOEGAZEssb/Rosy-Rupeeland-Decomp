@@ -24,9 +24,9 @@ extern void *func_02003e20(u32, const void *, s32, void *);
 extern void func_02071ea4(void *);
 extern void func_02071eb8(void *);
 extern void func_02071ee0(void *, void *, s32, s32, s32);
-extern void func_02074110(void *);
-extern void func_0207419c(void *);
-extern void *func_020742cc(void *);
+extern void GraphicsSpriteGroup_ReleaseIndexedEntries(void *);
+extern void GraphicsSpriteGroup_Destroy(void *);
+extern void *GraphicsSpriteGroupOwner_CreateGroup(void *);
 extern void func_02092798(void *);
 extern void func_020927b8(void *);
 extern void func_02092814(void *, s32);
@@ -55,7 +55,7 @@ extern "C" void *func_ov028_021fd00c(void *state, void *font, s32 capacity)
     func_02071ea4((u8 *)state + 8);
     func_02092798((u8 *)state + 0x14);
     FIELD(void *, state, 0) = font;
-    FIELD(void *, state, 4) = func_020742cc(font);
+    FIELD(void *, state, 4) = GraphicsSpriteGroupOwner_CreateGroup(font);
     FIELD(s32, FIELD(void *, state, 4), 0x18) = 0x2f;
     FIELD(s32, FIELD(void *, state, 4), 0x1c) = 0x1c;
     func_02071ee0((u8 *)state + 8, data_020f4e18[0], 0x60, 0x61, 0x62);
@@ -93,7 +93,7 @@ extern "C" void *func_ov028_021fd00c(void *state, void *font, s32 capacity)
  */
 extern "C" void *func_ov028_021fd1a8(void *state)
 {
-    func_0207419c(FIELD(void *, state, 4));
+    GraphicsSpriteGroup_Destroy(FIELD(void *, state, 4));
     void *controller = FIELD(void *, state, 0x44);
     if (controller != 0) {
         typedef void (*Destructor)(void *);
@@ -147,7 +147,7 @@ extern "C" void func_ov028_021fd274(void *state)
         if (FIELD(s32, controller, 8) < FIELD(s32, controller, 4))
             FIELD(s32, FIELD(void *, controller, 0x50), 0x20) = 1;
     } else {
-        func_02074110(FIELD(void *, controller, 0x50));
+        GraphicsSpriteGroup_ReleaseIndexedEntries(FIELD(void *, controller, 0x50));
     }
     FIELD(s32, FIELD(void *, state, 4), 0x20) = 1;
 }

@@ -24,10 +24,10 @@ extern void func_02071eb8(void *);
 extern void func_02071ee0(void *, void *, s32, s32, s32);
 extern void GraphicsSpriteState_SetAnimationIndex(void *, s32);
 extern void func_02073e48(void *, s32, s32, s32, s32, s32, s32);
-extern void *func_02073ffc(void *, void *, s32);
-extern void func_020740e8(void *, void *, void *);
-extern void func_0207419c(void *);
-extern void *func_020742cc(void *);
+extern void *GraphicsSpriteGroup_CreateStateFromSource(void *, void *, s32);
+extern void GraphicsSpriteGroup_ReplaceStateResourcesFromSource(void *, void *, void *);
+extern void GraphicsSpriteGroup_Destroy(void *);
+extern void *GraphicsSpriteGroupOwner_CreateGroup(void *);
 extern s32 func_0209189c(u32 *, s32, s32);
 extern s32 func_020918f4(u32 *, s32);
 extern void func_020948e4(void *, s32, s32);
@@ -80,23 +80,23 @@ extern "C" void *func_ov025_021fdecc(void *object)
                       FIELD(u16, entry, 4));
     }
     FIELD(u32, object, 0xf8) = genrand_int32();
-    FIELD(void *, object, 0xe0) = func_020742cc(data_020f4e14);
-    FIELD(void *, object, 0xe4) = func_020742cc(gDebugFont);
+    FIELD(void *, object, 0xe0) = GraphicsSpriteGroupOwner_CreateGroup(data_020f4e14);
+    FIELD(void *, object, 0xe4) = GraphicsSpriteGroupOwner_CreateGroup(gDebugFont);
     FIELD(s32, FIELD(void *, object, 0xe4), 0x18) = 0;
     FIELD(s32, FIELD(void *, object, 0xe4), 0x1c) = 0x100;
 
-    FIELD(void *, object, 0xe8) = func_02073ffc(FIELD(void *, object, 0xe0),
+    FIELD(void *, object, 0xe8) = GraphicsSpriteGroup_CreateStateFromSource(FIELD(void *, object, 0xe0),
                                                 (u8 *)object + 0xb0, 2);
     prepare_effect_sprite(FIELD(void *, object, 0xe8), 0x2000);
-    FIELD(void *, object, 0xf0) = func_02073ffc(FIELD(void *, object, 0xe4),
+    FIELD(void *, object, 0xf0) = GraphicsSpriteGroup_CreateStateFromSource(FIELD(void *, object, 0xe4),
                                                 (u8 *)object + 0xb0, 2);
     prepare_effect_sprite(FIELD(void *, object, 0xf0), 0x2000);
     func_02071ee0((u8 *)object + 0xd4, data_020f4e18,
                   0x1154, 0x1155, 0x1156);
-    FIELD(void *, object, 0xec) = func_02073ffc(FIELD(void *, object, 0xe0),
+    FIELD(void *, object, 0xec) = GraphicsSpriteGroup_CreateStateFromSource(FIELD(void *, object, 0xe0),
                                                 (u8 *)object + 0xd4, 1);
     prepare_effect_sprite(FIELD(void *, object, 0xec), 0x2100);
-    FIELD(void *, object, 0xf4) = func_02073ffc(FIELD(void *, object, 0xe4),
+    FIELD(void *, object, 0xf4) = GraphicsSpriteGroup_CreateStateFromSource(FIELD(void *, object, 0xe4),
                                                 (u8 *)object + 0xd4, 1);
     prepare_effect_sprite(FIELD(void *, object, 0xf4), 0x2100);
     FIELD(s32, object, 0xa8) = 0;
@@ -108,8 +108,8 @@ extern "C" void *func_ov025_021fdecc(void *object)
 static void cleanup_effect(void *object)
 {
     FIELD(const void *, object, 0) = data_ov025_02203354;
-    func_0207419c(FIELD(void *, object, 0xe0));
-    func_0207419c(FIELD(void *, object, 0xe4));
+    GraphicsSpriteGroup_Destroy(FIELD(void *, object, 0xe0));
+    GraphicsSpriteGroup_Destroy(FIELD(void *, object, 0xe4));
     func_02071eb8((u8 *)object + 0xd4);
     __destroy_arr((u8 *)object + 0xb0, 3, 0xc, (void *)func_02071eb8);
     func_ov025_021fdec8(object);
@@ -152,8 +152,8 @@ extern "C" void func_ov025_021fe174(void *object, s32 resource_index,
     const u8 *entry = data_ov025_02202c84 + resource_index * 8;
     if (FIELD(u16, entry, 0) != FIELD(u32, FIELD(void *, main_sprite, 0x14), 0x10)) {
         void *descriptor = (u8 *)object + 0xb0 + resource_index * 0xc;
-        func_020740e8(FIELD(void *, object, 0xe0), main_sprite, descriptor);
-        func_020740e8(FIELD(void *, object, 0xe4),
+        GraphicsSpriteGroup_ReplaceStateResourcesFromSource(FIELD(void *, object, 0xe0), main_sprite, descriptor);
+        GraphicsSpriteGroup_ReplaceStateResourcesFromSource(FIELD(void *, object, 0xe4),
                       FIELD(void *, object, 0xf0), descriptor);
     }
     void *sprites[2] = { main_sprite, FIELD(void *, object, 0xf0) };

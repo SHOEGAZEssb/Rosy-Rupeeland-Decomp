@@ -17,9 +17,9 @@ extern void func_02071ea4(void *);
 extern void func_02071ee0(void *, void *, s32, s32, s32);
 extern void GraphicsSpriteState_SetAnimationIndex(void *, s32);
 extern void func_02073e48(void *, s32, s32, s32, s32, s32, s32);
-extern void *func_02073ffc(void *, void *, s32);
-extern void func_020740a4(void *);
-extern void *func_020742cc(void *);
+extern void *GraphicsSpriteGroup_CreateStateFromSource(void *, void *, s32);
+extern void GraphicsSpriteGroup_AdvanceAnimations(void *);
+extern void *GraphicsSpriteGroupOwner_CreateGroup(void *);
 extern s32 func_02091a70(s32, s32, s32, s32);
 #ifdef __cplusplus
 }
@@ -42,16 +42,16 @@ extern "C" void *func_ov017_021fe75c(void *group, s32 duration, s32 current)
     FIELD(s32, group, 0x5c) = duration;
     FIELD(s32, group, 0x60) = current;
     FIELD(s32, group, 0x64) = 0;
-    FIELD(void *, group, 0) = func_020742cc(gDebugFont);
+    FIELD(void *, group, 0) = GraphicsSpriteGroupOwner_CreateGroup(gDebugFont);
     func_02071ee0((u8 *)group + 4, data_020f4e18[0], 0x3293, 0x3294,
                   0x3295);
     func_02071ee0((u8 *)group + 0x10, data_020f4e18[0], 0x3296, 0x3294,
                   0x3297);
     FIELD(void *, group, 0x1c) =
-        func_02073ffc(FIELD(void *, group, 0), (u8 *)group + 4, 1);
+        GraphicsSpriteGroup_CreateStateFromSource(FIELD(void *, group, 0), (u8 *)group + 4, 1);
     func_02073e48(FIELD(void *, group, 0x1c), 0, 0xdc, 0x86, 1, 0, 0);
     for (i = 0; i < 15; i++) {
-        void *sprite = func_02073ffc(FIELD(void *, group, 0),
+        void *sprite = GraphicsSpriteGroup_CreateStateFromSource(FIELD(void *, group, 0),
                                      (u8 *)group + 0x10, 1);
         FIELD(void *, group, 0x20 + i * 4) = sprite;
         func_02073e48(sprite, 0, i * 0x10 + 0x10, 0xb0, 1, 0, 2);
@@ -104,5 +104,5 @@ extern "C" void func_ov017_021fe894(void *group)
             }
         }
     }
-    func_020740a4(FIELD(void *, group, 0));
+    GraphicsSpriteGroup_AdvanceAnimations(FIELD(void *, group, 0));
 }

@@ -73,11 +73,11 @@ extern void *func_02023890(void *particle, void *spriteOwner,
                            s32 direction);
 extern void *func_020239e8(void *particle);
 extern s32 func_02023a14(void *particle);
-extern void *func_020742cc(void *owner);
-extern void func_02074330(void *owner, void *spriteOwner);
-extern u8 *func_02073fc4(void *owner, s32 resource, s32 palette,
+extern void *GraphicsSpriteGroupOwner_CreateGroup(void *owner);
+extern void GraphicsSpriteGroupOwner_DestroyGroup(void *owner, void *spriteOwner);
+extern u8 *GraphicsSpriteGroup_CreateState(void *owner, s32 resource, s32 palette,
                          s32 animation, s32 mode);
-extern void func_020740a4(void *owner);
+extern void GraphicsSpriteGroup_AdvanceAnimations(void *owner);
 extern u32 func_020be4e4(void);
 extern u64 func_020befec(s32 dividend, s32 divisor);
 extern void Sound_Play(void *context, s32 first, s32 soundId);
@@ -116,7 +116,7 @@ BallisticSpriteEmitter *func_02023a8c(BallisticSpriteEmitter *self,
     AnimationResource_Init(&temporary, 0x1688, 0x1689, 0x168a);
     AnimationResource_Assign(&self->resources18[1], &temporary);
     AnimationResource_Destroy(&temporary);
-    self->spriteOwner38 = func_020742cc(gDebugFont);
+    self->spriteOwner38 = GraphicsSpriteGroupOwner_CreateGroup(gDebugFont);
 
     for (index = 0; index < 6; index++) {
         void *particle = Heap_Alloc(0x34, data_020d6768, 4, &gHeapContext);
@@ -194,7 +194,7 @@ void func_02023c4c(ParticleList *self, void *particle)
 BallisticSpriteEmitter *func_02023cb0(BallisticSpriteEmitter *self)
 {
     self->vtable00 = (void **)data_020d6718;
-    func_02074330(gDebugFont, self->spriteOwner38);
+    GraphicsSpriteGroupOwner_DestroyGroup(gDebugFont, self->spriteOwner38);
     self->particles3c.vtable00 = (void **)data_020d66b8;
     func_02023c0c(&self->particles3c);
     AnimationResource_Destroy(&self->resources18[1]);
@@ -253,7 +253,7 @@ s32 func_02023d90(BallisticSpriteEmitter *self)
         } else {
             u64 division = func_020befec((s32)func_020be4e4(), 50);
             if ((s32)(division >> 32) == 25) {
-                u8 *sprite = func_02073fc4(
+                u8 *sprite = GraphicsSpriteGroup_CreateState(
                     self->spriteOwner38, self->resources18[1].resource04,
                     self->resources18[1].palette08,
                     self->resources18[1].animation0c, 2);
@@ -266,7 +266,7 @@ s32 func_02023d90(BallisticSpriteEmitter *self)
         }
         node = next;
     }
-    func_020740a4(self->spriteOwner38);
+    GraphicsSpriteGroup_AdvanceAnimations(self->spriteOwner38);
     return self->particles3c.count0c == 0;
 }
 

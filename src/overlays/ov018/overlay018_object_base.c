@@ -16,7 +16,7 @@ extern void func_02071ea4(void *);
 extern void func_02071eb8(void *);
 extern void func_02071ee0(void *, void *, s32, s32, s32);
 extern void func_02073e48(void *, s32, s32, s32, s32, s32, s32);
-extern void *func_02073ffc(void *, void *, s32);
+extern void *GraphicsSpriteGroup_CreateStateFromSource(void *, void *, s32);
 extern void func_02095308(void *);
 extern void func_020953c8(void *, s32);
 extern void func_0209548c(void *);
@@ -43,7 +43,7 @@ extern "C" void *func_ov018_021fce00(void *state, void *renderer,
     func_02071ee0((u8 *)state + 0xa0, data_020f4e18[0],
                   FIELD(u16, descriptor, 4), FIELD(u16, descriptor, 6),
                   FIELD(u16, descriptor, 8));
-    sprite = func_02073ffc(renderer, (u8 *)state + 0xa0, 2);
+    sprite = GraphicsSpriteGroup_CreateStateFromSource(renderer, (u8 *)state + 0xa0, 2);
     FIELD(void *, state, 0x9c) = sprite;
     func_02073e48(sprite, FIELD(u16, descriptor, 0xa), x, y, 2, 0, 4);
     FIELD(u16, sprite, 0x2a) = 1;

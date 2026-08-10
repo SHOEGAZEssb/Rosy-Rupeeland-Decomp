@@ -7,7 +7,7 @@
 .extern __destroy_arr
 .extern data_020f4e14
 .extern func_02005058
-.extern func_02074330
+.extern GraphicsSpriteGroupOwner_DestroyGroup
 .extern func_02075020
 .extern func_02099fb0
 .extern func_ov041_021fce00
@@ -78,7 +78,7 @@ func_ov041_021fdd64: ; 0x021fdd64
     ldr r0, .L_021fdea8
     ldr r1, [r4, #0x0]
     ldr r0, [r0, #0x0]
-    bl func_02074330
+    bl GraphicsSpriteGroupOwner_DestroyGroup
     ldr r0, .L_021fdeac
     ldr r0, [r0, #0x0]
     bl func_02075020

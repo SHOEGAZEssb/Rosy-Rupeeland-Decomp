@@ -7,7 +7,7 @@
 .extern Actor_GetCollection
 .extern func_0204d3d8
 .extern GraphicsSpriteState_SetAnimationIndex
-.extern func_02073fc4
+.extern GraphicsSpriteGroup_CreateState
 .extern func_ov090_0221ad64
 .extern gHeapContext
 
@@ -41,7 +41,7 @@ func_ov090_02217a3c:
     mov r1, #0x1
     str r1, [sp, #0x0]
     ldmib r5, {r1, r2, r3}
-    bl func_02073fc4
+    bl GraphicsSpriteGroup_CreateState
     str r0, [r4, #0x23c]
     mov r1, #0x31
     strh r1, [r0, #0x2c]
@@ -77,7 +77,7 @@ func_ov090_02217a3c:
     mov r1, #0x2
     str r1, [sp, #0x0]
     ldmib r5, {r1, r2, r3}
-    bl func_02073fc4
+    bl GraphicsSpriteGroup_CreateState
     str r0, [r4, #0x248]
     mov r1, #0x0
     strb r1, [r0, #0x3a]

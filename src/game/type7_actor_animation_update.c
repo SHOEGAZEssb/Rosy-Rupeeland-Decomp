@@ -9,7 +9,7 @@ extern "C" {
 #endif
 extern void *Actor_GetCollection(void *actor);
 extern void *ActorCollection_GetSpriteOwner(void *value);
-extern void func_020740c8(void *context, void *resource, void *first,
+extern void GraphicsSpriteGroup_ReplaceStateResources(void *context, void *resource, void *first,
                           void *second, void *third);
 extern void GraphicsSpriteState_SetAnimationIndex(void *resource, u32 animation);
 #ifdef __cplusplus
@@ -17,7 +17,7 @@ extern void GraphicsSpriteState_SetAnimationIndex(void *resource, u32 animation)
 #endif
 
 /*
- * Refresh actor resource +0x54 through func_020740c8 using the transformed
+ * Refresh actor resource +0x54 through GraphicsSpriteGroup_ReplaceStateResources using the transformed
  * Actor_GetCollection context and actor fields +0x1f0/+0x1f4/+0x1f8. Select animation
  * from signed state +0xd6: states 1,2,3,6,7,11 use actor byte +0xd4 plus eight;
  * 4,5,17 use 0x21; 12 uses 0x12; 13 uses 0x11; 15 uses 0x10; state 16 ensures
@@ -40,7 +40,7 @@ void Type7Actor_UpdateAnimationState(void *self)
     u32 animation;
     s32 ordinary = 0;
 
-    func_020740c8(context, resource, *(void **)(actor + 0x1f0),
+    GraphicsSpriteGroup_ReplaceStateResources(context, resource, *(void **)(actor + 0x1f0),
                   *(void **)(actor + 0x1f4), *(void **)(actor + 0x1f8));
     state = *(s16 *)(actor + 0xd6);
     switch (state) {

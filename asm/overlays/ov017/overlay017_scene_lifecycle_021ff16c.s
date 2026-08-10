@@ -9,7 +9,7 @@
     .extern func_020597fc
     .extern func_02071eb8
     .extern func_020720d4
-    .extern func_0207419c
+    .extern GraphicsSpriteGroup_Destroy
     .extern func_02075290
     .extern Graphics3DResourceOwner_Destroy
     .extern Graphics3DLightSet_Destroy
@@ -74,7 +74,7 @@ L_021ff20c:
     cmp r5, #0x0
     beq L_021ff238
     ldr r0, [r5, #0x0]
-    bl func_0207419c
+    bl GraphicsSpriteGroup_Destroy
     add r0, r5, #0x10
     bl func_02071eb8
     add r0, r5, #0x4
@@ -99,7 +99,7 @@ L_021ff254:
     bl Heap_Free
 L_021ff270:
     ldr r0, [r4, #0x58]
-    bl func_0207419c
+    bl GraphicsSpriteGroup_Destroy
     add r0, r4, #0x4
     add r0, r0, #0x400
     bl func_02092418

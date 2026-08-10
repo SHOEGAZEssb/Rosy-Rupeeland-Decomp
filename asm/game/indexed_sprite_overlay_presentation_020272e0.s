@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/indexed_sprite_overlay_presentation.c.
 .text
-.extern func_02074110
+.extern GraphicsSpriteGroup_ReleaseIndexedEntries
 
     .global func_020272e0
     .type func_020272e0, @function
@@ -11,6 +11,6 @@ func_020272e0: ; 0x020272e0
     movne r1, #0x1
     strne r1, [r0, #0x20]
     ldmneia sp!, {r3, pc}
-    bl func_02074110
+    bl GraphicsSpriteGroup_ReleaseIndexedEntries
     ldmia sp!, {r3, pc}
     .size func_020272e0, . - func_020272e0

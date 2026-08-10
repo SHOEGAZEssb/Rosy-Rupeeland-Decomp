@@ -19,11 +19,11 @@ extern "C" void func_02071ea4(void *owner);
 extern "C" void func_02071eb8(void *owner);
 extern "C" void func_02091b6c(void *track);
 extern "C" u32 genrand_int32(void);
-extern "C" void *func_020742cc(void *font);
+extern "C" void *GraphicsSpriteGroupOwner_CreateGroup(void *font);
 extern "C" void func_02071ee0(void *owner, void *archive, s32 first,
                                s32 second, s32 third);
-extern "C" void func_0207419c(void *resource);
-extern "C" void func_020740a4(void *resource);
+extern "C" void GraphicsSpriteGroup_Destroy(void *resource);
+extern "C" void GraphicsSpriteGroup_AdvanceAnimations(void *resource);
 extern "C" s32 func_02091a70(s32 minimum, s32 maximum, s32 seed, s32 span);
 extern "C" void func_02091bac(void *track, s32 mode, s32 start, s32 end,
                                s32 duration);
@@ -69,7 +69,7 @@ extern "C" void *func_ov045_0220b83c(void *object)
     func_ov045_0220b7fc((u8 *)object + 0x48);
     FIELD(u32, object, 0x64) = 0;
     FIELD(u32, object, 0x64) = genrand_int32();
-    FIELD(void *, object, 0) = func_020742cc(gDebugFont);
+    FIELD(void *, object, 0) = GraphicsSpriteGroupOwner_CreateGroup(gDebugFont);
     func_02071ee0((u8 *)object + 4, data_020f4e18,
                    0x1714, 0x1715, 0x1716);
     FIELD(s32, object, 0x58) = 0;
@@ -85,7 +85,7 @@ extern "C" void *func_ov045_0220b83c(void *object)
 extern "C" void *func_ov045_0220b8cc(void *object)
 {
     func_02095308((u8 *)object + 0x48);
-    func_0207419c(FIELD(void *, object, 0));
+    GraphicsSpriteGroup_Destroy(FIELD(void *, object, 0));
     FIELD(void *, object, 0x48) = data_ov045_0220d570;
     func_02095308((u8 *)object + 0x48);
     func_02071eb8((u8 *)object + 4);
@@ -99,7 +99,7 @@ extern "C" void *func_ov045_0220b8cc(void *object)
 extern "C" void func_ov045_0220b908(void *object)
 {
     func_02095360((u8 *)object + 0x48);
-    func_020740a4(FIELD(void *, object, 0));
+    GraphicsSpriteGroup_AdvanceAnimations(FIELD(void *, object, 0));
 }
 
 /*

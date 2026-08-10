@@ -3,7 +3,7 @@
     .extern Sound_Play
     .extern data_ov017_022016e0
     .extern GraphicsSpriteState_SetAnimationIndex
-    .extern func_020740a4
+    .extern GraphicsSpriteGroup_AdvanceAnimations
     .extern func_02091a70
     .extern gSoundContext
 .global func_ov017_021fe894
@@ -88,7 +88,7 @@ L_021fe9a0:
     blt L_021fe94c
 L_021fe9a8:
     ldr r0, [r10, #0x0]
-    bl func_020740a4
+    bl GraphicsSpriteGroup_AdvanceAnimations
     ldmia sp!, {r4, r5, r6, r7, r8, r9, r10, pc}
 L_021fe9b4: .word data_ov017_022016e0
 L_021fe9b8: .word gSoundContext

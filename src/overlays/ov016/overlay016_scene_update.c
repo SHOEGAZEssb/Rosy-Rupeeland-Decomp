@@ -7,7 +7,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_020740a4(void *);
+extern void GraphicsSpriteGroup_AdvanceAnimations(void *);
 extern void func_020958d8(void *);
 extern void func_02096304(void *);
 extern void func_ov000_021fc164(void *);
@@ -32,7 +32,7 @@ extern "C" void func_ov016_021ff7bc(void *state)
     func_020958d8((u8 *)state + 0x240);
     func_020958d8((u8 *)state + 0x2ec);
     func_020958d8((u8 *)state + 0x398);
-    func_020740a4(FIELD(void *, state, 0xe0));
+    GraphicsSpriteGroup_AdvanceAnimations(FIELD(void *, state, 0xe0));
     if (FIELD(void *, state, 0x444) != 0) {
         func_ov016_021fd358(FIELD(void *, state, 0x444));
     }

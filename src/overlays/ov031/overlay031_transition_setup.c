@@ -24,7 +24,7 @@ extern void func_020706c4(void *, s32, s32);
 extern void func_02070bc4(void *, s32);
 extern void func_02070eac(void *, s32, s32);
 extern void func_02072000(void *);
-extern void func_02074110(void *);
+extern void GraphicsSpriteGroup_ReleaseIndexedEntries(void *);
 extern void func_ov031_021fce00(void *, s32, s32);
 extern void GXx_SetMasterBrightness_(void *, s32);
 extern void func_ov031_021fe148(s32, s32, s32, s32, s32);
@@ -122,7 +122,7 @@ extern "C" void func_ov031_021fe148(s32 priority, s32 characterBase,
  */
 extern "C" void func_ov031_021fe17c(void *scene)
 {
-    func_02074110(FIELD(void *, scene, 0x58));
+    GraphicsSpriteGroup_ReleaseIndexedEntries(FIELD(void *, scene, 0x58));
     func_ov031_021fce00((u8 *)scene + 0xa4, 1, 8);
     FIELD(s32, scene, 0xa0) = 1;
 }

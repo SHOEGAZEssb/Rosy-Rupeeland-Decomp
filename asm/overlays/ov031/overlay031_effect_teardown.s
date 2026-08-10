@@ -3,7 +3,7 @@
 /* Exact fallback; see src/overlays/ov031/overlay031_effect_lifecycle.c for documented portable C. */
 .extern data_ov031_021fe758
 .extern func_02071eb8
-.extern func_0207419c
+.extern GraphicsSpriteGroup_Destroy
 .extern func_ov031_021fd1c0
 .extern func_ov031_021fd254
 .extern Heap_Free
@@ -37,9 +37,9 @@ L_021fd4fc:
     cmp r4, #0x10
     blt L_021fd4dc
     ldr r0, [r6, #0x54]
-    bl func_0207419c
+    bl GraphicsSpriteGroup_Destroy
     ldr r0, [r6, #0x58]
-    bl func_0207419c
+    bl GraphicsSpriteGroup_Destroy
     add r0, r6, #0xb4
     bl func_ov031_021fd254
     add r0, r6, #0x5c
@@ -76,9 +76,9 @@ L_021fd580:
     cmp r4, #0x10
     blt L_021fd560
     ldr r0, [r6, #0x54]
-    bl func_0207419c
+    bl GraphicsSpriteGroup_Destroy
     ldr r0, [r6, #0x58]
-    bl func_0207419c
+    bl GraphicsSpriteGroup_Destroy
     add r0, r6, #0xb4
     bl func_ov031_021fd254
     add r0, r6, #0x5c

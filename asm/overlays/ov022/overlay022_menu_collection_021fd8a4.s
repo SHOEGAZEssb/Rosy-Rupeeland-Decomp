@@ -4,7 +4,7 @@
     .extern data_ov022_022006c4
     .extern data_ov022_022006cc
     .extern func_02003e20
-    .extern func_02074110
+    .extern GraphicsSpriteGroup_ReleaseIndexedEntries
     .extern func_02092798
     .extern func_02092814
     .extern func_02094154
@@ -97,7 +97,7 @@ L_021fd9b0:
     bl func_02094574
     ldr r0, [r4, #0x30]
     ldr r0, [r0, #0x50]
-    bl func_02074110
+    bl GraphicsSpriteGroup_ReleaseIndexedEntries
     ldr r0, L_021fda1c
     ldrb r0, [r0, #0x5f]
     cmp r0, #0x0

@@ -22,7 +22,7 @@ extern void *Heap_Alloc(u32, const void *, s32, void *);
 extern void *GraphicsAnimationInstanceManager_CreateInstance(void *, void *);
 extern s32 GraphicsAnimationInstance_GetSequenceDuration(void *);
 extern void GraphicsAnimationInstanceManager_Update(void *);
-extern void func_020740a4(void *);
+extern void GraphicsSpriteGroup_AdvanceAnimations(void *);
 extern s32 func_0209189c(void *, s32, s32);
 extern s32 func_020918f4(void *, s32);
 extern void func_02092260(void *, s32);
@@ -253,7 +253,7 @@ extern "C" void func_ov017_02200188(void *state)
     func_020958d8((u8 *)state + 0x80);
     func_ov017_021fe894(FIELD(void *, state, 0x25c));
     GraphicsAnimationInstanceManager_Update(FIELD(void *, state, 0x244));
-    func_020740a4(FIELD(void *, state, 0x58));
+    GraphicsSpriteGroup_AdvanceAnimations(FIELD(void *, state, 0x58));
     func_ov017_021fcf6c(FIELD(void *, state, 0x2c0));
     if (func_ov017_0220087c(data_ov017_022016f0))
         func_02092260(state, 0x21);

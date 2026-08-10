@@ -8,7 +8,7 @@
 .extern func_02005058
 .extern func_0201e28c
 .extern func_02071eb8
-.extern func_02074330
+.extern GraphicsSpriteGroupOwner_DestroyGroup
 .extern func_ov050_0220d8f4
 .extern gDebugFont
 
@@ -35,11 +35,11 @@ func_ov050_0220dd50:
     ldr r0, .L_0220dde8
     ldr r1, [r6, #0x14]
     ldr r0, [r0, #0x0]
-    bl func_02074330
+    bl GraphicsSpriteGroupOwner_DestroyGroup
     ldr r0, .L_0220ddec
     ldr r1, [r6, #0x18]
     ldr r0, [r0, #0x0]
-    bl func_02074330
+    bl GraphicsSpriteGroupOwner_DestroyGroup
     bl OverlayManager_GetGlobal
     mov r1, #0x0
     bl OverlayManager_UnloadOverlay

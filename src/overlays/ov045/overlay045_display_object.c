@@ -16,11 +16,11 @@ extern "C" void func_02071ea4(void *owner);
 extern "C" void func_02071eb8(void *owner);
 extern "C" void func_02071ee0(void *owner, void *archive, s32 first,
                                s32 second, s32 third);
-extern "C" void *func_020742cc(void *font);
-extern "C" void *func_02073ffc(void *fontState, void *owner, s32 selector);
+extern "C" void *GraphicsSpriteGroupOwner_CreateGroup(void *font);
+extern "C" void *GraphicsSpriteGroup_CreateStateFromSource(void *fontState, void *owner, s32 selector);
 extern "C" void func_02094bbc(void *object, s32 x, s32 y, s32 z);
-extern "C" void func_0207419c(void *resource);
-extern "C" void *func_020740a4(void *resource);
+extern "C" void GraphicsSpriteGroup_Destroy(void *resource);
+extern "C" void *GraphicsSpriteGroup_AdvanceAnimations(void *resource);
 extern "C" void GraphicsSpriteState_SetAnimationIndex(void *sprite, s32 mode);
 extern "C" void Heap_Free(void *allocation);
 
@@ -59,9 +59,9 @@ extern "C" void *func_ov045_0220bc40(void *object)
     func_02071ea4((u8 *)object + 0x9c);
     func_02071ee0((u8 *)object + 0x9c, data_020f4e18,
                    0x1560, 0x1561, 0x1562);
-    FIELD(void *, object, 0xa8) = func_020742cc(gDebugFont);
+    FIELD(void *, object, 0xa8) = GraphicsSpriteGroupOwner_CreateGroup(gDebugFont);
     FIELD(void *, object, 0xac) =
-        func_02073ffc(FIELD(void *, object, 0xa8), (u8 *)object + 0x9c, 2);
+        GraphicsSpriteGroup_CreateStateFromSource(FIELD(void *, object, 0xa8), (u8 *)object + 0x9c, 2);
     FIELD(u16, FIELD(void *, object, 0xac), 0x24) |= 2;
     FIELD(u8, FIELD(void *, object, 0xac), 0x3a) = 1;
     func_02094bbc(object, 0x160, 0x60, 0);
@@ -77,7 +77,7 @@ extern "C" void *func_ov045_0220bc40(void *object)
 extern "C" void *func_ov045_0220bcfc(void *object)
 {
     FIELD(void *, object, 0) = data_ov045_0220d5a8;
-    func_0207419c(FIELD(void *, object, 0xa8));
+    GraphicsSpriteGroup_Destroy(FIELD(void *, object, 0xa8));
     func_02071eb8((u8 *)object + 0x9c);
     func_ov045_0220bc3c(object);
     return object;
@@ -90,7 +90,7 @@ extern "C" void *func_ov045_0220bcfc(void *object)
 extern "C" void *func_ov045_0220bd30(void *object)
 {
     FIELD(void *, object, 0) = data_ov045_0220d5a8;
-    func_0207419c(FIELD(void *, object, 0xa8));
+    GraphicsSpriteGroup_Destroy(FIELD(void *, object, 0xa8));
     func_02071eb8((u8 *)object + 0x9c);
     func_ov045_0220bc3c(object);
     Heap_Free(object);
@@ -108,7 +108,7 @@ extern "C" void *func_ov045_0220bd6c(void *object)
     void *sprite = FIELD(void *, object, 0xac);
     FIELD(s16, sprite, 0x2c) = FIELD(s32, object, 0x10);
     FIELD(s16, sprite, 0x2e) = y;
-    return func_020740a4(FIELD(void *, object, 0xa8));
+    return GraphicsSpriteGroup_AdvanceAnimations(FIELD(void *, object, 0xa8));
 }
 
 /* Select sprite animation mode 1 unless it is already active. */

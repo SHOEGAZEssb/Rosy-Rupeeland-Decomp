@@ -8,9 +8,9 @@
 .extern func_02071ea4
 .extern func_02071eb8
 .extern func_02071ee0
-.extern func_02074110
-.extern func_0207419c
-.extern func_020742cc
+.extern GraphicsSpriteGroup_ReleaseIndexedEntries
+.extern GraphicsSpriteGroup_Destroy
+.extern GraphicsSpriteGroupOwner_CreateGroup
 .extern func_02092798
 .extern func_020927b8
 .extern func_02092814
@@ -37,7 +37,7 @@ func_ov028_021fd00c:
     bl func_02092798
     str r4, [r5, #0x0]
     mov r0, r4
-    bl func_020742cc
+    bl GraphicsSpriteGroupOwner_CreateGroup
     str r0, [r5, #0x4]
     mov r1, #0x2f
     str r1, [r0, #0x18]
@@ -141,7 +141,7 @@ func_ov028_021fd1a8:
     stmdb sp!, {r4, lr}
     mov r4, r0
     ldr r0, [r4, #0x4]
-    bl func_0207419c
+    bl GraphicsSpriteGroup_Destroy
     ldr r0, [r4, #0x44]
     cmp r0, #0x0
     beq L_021fd1d0
@@ -220,7 +220,7 @@ func_ov028_021fd274:
 L_021fd2a8:
     ldr r0, [r4, #0x44]
     ldr r0, [r0, #0x50]
-    bl func_02074110
+    bl GraphicsSpriteGroup_ReleaseIndexedEntries
 L_021fd2b4:
     ldr r0, [r4, #0x4]
     mov r1, #0x1

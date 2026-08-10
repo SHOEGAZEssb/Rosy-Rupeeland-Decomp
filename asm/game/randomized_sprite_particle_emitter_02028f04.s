@@ -11,7 +11,7 @@
 .extern func_0202895c
 .extern func_02028998
 .extern func_02028e9c
-.extern func_020740a4
+.extern GraphicsSpriteGroup_AdvanceAnimations
 .extern func_020bf1f8
 .extern gGameWork
 .extern gHeapContext
@@ -104,7 +104,7 @@ func_02028f04: ; 0x02028f04
     add r1, r4, #0xc
     bl VecFx32_Subtract
     ldr r0, [r4, #0x4c]
-    bl func_020740a4
+    bl GraphicsSpriteGroup_AdvanceAnimations
     add r0, sp, #0x8
     bl func_02005058
     mov r0, #0x0

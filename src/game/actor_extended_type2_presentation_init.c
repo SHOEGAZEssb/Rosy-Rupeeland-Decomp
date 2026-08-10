@@ -16,7 +16,7 @@ extern "C" {
 extern void *AnimationResource_Init(void *allocation, u16 first, u16 second, u16 third);
 extern void *Actor_GetCollection(void *actor);
 extern void *ActorCollection_GetSpriteOwner(void *value);
-extern void *func_02073fc4(void *context, u32 first, u32 second, u32 third,
+extern void *GraphicsSpriteGroup_CreateState(void *context, u32 first, u32 second, u32 third,
                            s32 kind);
 extern void GraphicsSpriteState_SetAnimationIndex(void *attachment, u32 animation);
 extern void func_020313b4(void *actor, void *resource, u8 value);
@@ -38,7 +38,7 @@ static void *createResource(const u16 *record)
  * data_020e7c78, creating resources +0x208/+0x20c. Records from data_020e7570
  * and data_020e7ffc create optional +0x210/+0x214 resources only when their
  * first halfword is nonzero. Resolve Actor_GetCollection then ActorCollection_GetSpriteOwner and build
- * attachment +0x54 through func_02073fc4 using words +0x04/+0x08/+0x0c of the
+ * attachment +0x54 through GraphicsSpriteGroup_CreateState using words +0x04/+0x08/+0x0c of the
  * first resource and kind two.
  *
  * Normally select attachment animation eight. Index 0x30 instead samples the
@@ -72,7 +72,7 @@ void ActorExtendedType2_InitializePresentation(void *self, const void *configura
     context = ActorCollection_GetSpriteOwner(Actor_GetCollection(actor));
     {
         u32 *resource = (u32 *)*(void **)(actor + 0x208);
-        attachment = (u8 *)func_02073fc4(context, resource[1], resource[2],
+        attachment = (u8 *)GraphicsSpriteGroup_CreateState(context, resource[1], resource[2],
                                          resource[3], 2);
     }
     *(u8 **)(actor + 0x54) = attachment;

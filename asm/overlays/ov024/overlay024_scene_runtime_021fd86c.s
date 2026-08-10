@@ -3,7 +3,7 @@
 /* Exact fallback; see src/overlays/ov024/overlay024_scene_runtime.c. */
 .extern func_02028100
 .extern func_0202836c
-.extern func_020740a4
+.extern GraphicsSpriteGroup_AdvanceAnimations
 .extern func_02091b98
 .extern func_02091c7c
 .extern func_020958d8
@@ -26,7 +26,7 @@ func_ov024_021fd86c:
     ldr r0, [r4, #0x2bc]
     bl func_ov005_021fbbe8
     ldr r0, [r4, #0x7c]
-    bl func_020740a4
+    bl GraphicsSpriteGroup_AdvanceAnimations
     add r0, r4, #0x2c8
     mov r1, #0x2
     bl func_02091c7c

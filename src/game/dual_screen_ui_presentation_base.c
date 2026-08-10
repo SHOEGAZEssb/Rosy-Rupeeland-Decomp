@@ -38,11 +38,11 @@ extern void func_020269f8(void *embedded);
 extern void func_02071ea4(void *resource);
 extern void func_02071eb8(void *resource);
 extern void func_02071ee0(void *resource, void *owner, s32, s32, s32);
-extern void *func_020742cc(void *owner);
-extern void func_02074330(void *owner, void *spriteOwner);
-extern void func_020740a4(void *spriteOwner);
-extern void func_02074110(void *spriteOwner);
-extern u8 *func_02073ffc(void *owner, void *resource, s32 mode);
+extern void *GraphicsSpriteGroupOwner_CreateGroup(void *owner);
+extern void GraphicsSpriteGroupOwner_DestroyGroup(void *owner, void *spriteOwner);
+extern void GraphicsSpriteGroup_AdvanceAnimations(void *spriteOwner);
+extern void GraphicsSpriteGroup_ReleaseIndexedEntries(void *spriteOwner);
+extern u8 *GraphicsSpriteGroup_CreateStateFromSource(void *owner, void *resource, s32 mode);
 extern void GraphicsSpriteState_SetAnimationIndex(void *sprite, s32 frame);
 extern void GraphicsResourceSet_Init(GraphicsResourceSet *);
 extern void GraphicsResourceSet_Load(GraphicsResourceSet *, void *, s32, s32,
@@ -66,7 +66,7 @@ static DualScreenUiPresentationBase *initialize_base(
     self->sourceac = source;
     func_02071ea4(self->resourceb8);
     self->flagsc4 &= ~3u;
-    self->spriteOwnera8 = (u8 *)func_020742cc(gDebugFont);
+    self->spriteOwnera8 = (u8 *)GraphicsSpriteGroupOwner_CreateGroup(gDebugFont);
     *(u32 *)(self->spriteOwnera8 + 0x20) = 1;
     func_02071ee0(self->resourceb8, data_020f4e18,
                   0x32b7, 0x32b8, 0x32b9);
@@ -98,7 +98,7 @@ static DualScreenUiPresentationBase *teardown_base(
     DualScreenUiPresentationBase *self)
 {
     self->vtable00 = (void **)data_020d6b3c;
-    func_02074330(gDebugFont, self->spriteOwnera8);
+    GraphicsSpriteGroupOwner_DestroyGroup(gDebugFont, self->spriteOwnera8);
     func_02071eb8(self->resourceb8);
     func_02026514(self->embedded04);
     return self;
@@ -150,7 +150,7 @@ void func_02025c20(DualScreenUiPresentationBase *self, s32 value, u32 mask)
         else
             *(u16 *)(self->secondarySpriteb4 + 0x24) |= 4;
     }
-    func_020740a4(self->spriteOwnera8);
+    GraphicsSpriteGroup_AdvanceAnimations(self->spriteOwnera8);
     if (mask & 1) {
         func_02025cd0(self->embedded04, value);
         func_020269f8(self->embedded04);
@@ -159,8 +159,8 @@ void func_02025c20(DualScreenUiPresentationBase *self, s32 value, u32 mask)
 
 /*
  * Store embedded byte-0x8c bit 0 as the inverse of enabled.  Disabling an
- * embedded state with a nonnull owner at offset zero also calls func_02074110
- * followed by func_020740a4; enabling requires no owner operation.
+ * embedded state with a nonnull owner at offset zero also calls GraphicsSpriteGroup_ReleaseIndexedEntries
+ * followed by GraphicsSpriteGroup_AdvanceAnimations; enabling requires no owner operation.
  */
 void func_02025cd0(void *embedded, s32 enabled)
 {
@@ -171,8 +171,8 @@ void func_02025cd0(void *embedded, s32 enabled)
     }
     state[0x8c] |= 1;
     if (*(void **)state != 0) {
-        func_02074110(*(void **)state);
-        func_020740a4(*(void **)state);
+        GraphicsSpriteGroup_ReleaseIndexedEntries(*(void **)state);
+        GraphicsSpriteGroup_AdvanceAnimations(*(void **)state);
     }
 }
 
@@ -240,7 +240,7 @@ void func_02025dd8(DualScreenUiPresentationBase *self)
 void func_02025e88(DualScreenUiPresentationBase *self)
 {
     self->primarySpriteb0 =
-        func_02073ffc(self->spriteOwnera8, self->resourceb8, 2);
+        GraphicsSpriteGroup_CreateStateFromSource(self->spriteOwnera8, self->resourceb8, 2);
     *(u16 *)(self->primarySpriteb0 + 0x2c) = 104;
     *(u16 *)(self->primarySpriteb0 + 0x2e) = 178;
     *(u16 *)(self->primarySpriteb0 + 0x28) = 1000;
@@ -254,7 +254,7 @@ void func_02025e88(DualScreenUiPresentationBase *self)
 void func_02025ed4(DualScreenUiPresentationBase *self)
 {
     self->secondarySpriteb4 =
-        func_02073ffc(self->spriteOwnera8, self->resourceb8, 2);
+        GraphicsSpriteGroup_CreateStateFromSource(self->spriteOwnera8, self->resourceb8, 2);
     *(u16 *)(self->secondarySpriteb4 + 0x2c) = 104;
     *(u16 *)(self->secondarySpriteb4 + 0x2e) = 107;
     GraphicsSpriteState_SetAnimationIndex(self->secondarySpriteb4, 1);

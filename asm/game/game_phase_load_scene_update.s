@@ -48,7 +48,7 @@
 .extern GridEffectActorRegistry_FinalizeDepartingActors
 .extern func_02058eb8
 .extern func_02068444
-.extern func_020740a4
+.extern GraphicsSpriteGroup_AdvanceAnimations
 .extern GraphicsSpriteGroup_ReleaseResources
 .extern GraphicsSpriteGroup_PrepareResources
 .extern func_020745c4
@@ -903,7 +903,7 @@ L_0200dbf4:
     ldr r0, [r0, #0x0]
     bl GamePhaseRuntime_GetActorCollection
     bl ActorCollection_GetSpriteOwner
-    bl func_020740a4
+    bl GraphicsSpriteGroup_AdvanceAnimations
     b L_0200e3bc
 L_0200dc10:
     ldr r0, [r5, #0x24]

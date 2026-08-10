@@ -6,7 +6,7 @@
 .extern data_ov093_022188f0
 .extern func_02005058
 .extern func_0204d570
-.extern func_02073ef8
+.extern GraphicsSpriteState_ReleaseFromGroup
 .extern gGameWork
 
 .global func_ov093_02217b90
@@ -24,16 +24,16 @@ func_ov093_02217b90:
     ldr r0, [r0, #0x0]
     bl GameWork_ClearFlag
     ldr r0, [r4, #0x204]
-    bl func_02073ef8
+    bl GraphicsSpriteState_ReleaseFromGroup
     ldr r0, [r4, #0x208]
-    bl func_02073ef8
+    bl GraphicsSpriteState_ReleaseFromGroup
     ldr r0, [r4, #0x210]
-    bl func_02073ef8
+    bl GraphicsSpriteState_ReleaseFromGroup
     mov r5, #0x0
 .L_02217bdc:
     add r0, r4, r5, lsl #0x2
     ldr r0, [r0, #0x214]
-    bl func_02073ef8
+    bl GraphicsSpriteState_ReleaseFromGroup
     add r5, r5, #0x1
     cmp r5, #0x5
     blt .L_02217bdc

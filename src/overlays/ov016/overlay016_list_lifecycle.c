@@ -20,9 +20,9 @@ extern void func_02071ea4(void *);
 extern void func_02071eb8(void *);
 extern void func_02071ee0(void *, void *, s32, s32, s32);
 extern void func_02073e48(void *, u32, s32, s32, s32, s32, s32);
-extern void *func_02073ffc(void *, void *, s32);
-extern void func_0207419c(void *);
-extern void *func_020742cc(void *);
+extern void *GraphicsSpriteGroup_CreateStateFromSource(void *, void *, s32);
+extern void GraphicsSpriteGroup_Destroy(void *);
+extern void *GraphicsSpriteGroupOwner_CreateGroup(void *);
 extern void func_02092798(void *);
 extern void func_020927b8(void *);
 extern void func_02092814(void *, s32);
@@ -57,10 +57,10 @@ extern "C" void *func_ov016_021fce34(void *state, void *owner, s32 tableIndex)
     func_02092798((u8 *)state + 0x28);
     FIELD(u32, state, 0x60) = data_ov016_02201394[tableIndex];
     FIELD(void *, state, 0) = owner;
-    FIELD(void *, state, 4) = func_020742cc(owner);
+    FIELD(void *, state, 4) = GraphicsSpriteGroupOwner_CreateGroup(owner);
     FIELD(s32, FIELD(void *, state, 4), 0x18) = 0x30;
     FIELD(s32, FIELD(void *, state, 4), 0x1c) = 0x20;
-    FIELD(void *, state, 8) = func_020742cc(owner);
+    FIELD(void *, state, 8) = GraphicsSpriteGroupOwner_CreateGroup(owner);
     func_02071ee0((u8 *)state + 0x18, data_020f4e18, 0x19, 0x1a, 0x1b);
     func_02071ee0((u8 *)state + 0xc, data_020f4e18, 0x60, 0x61, 0x62);
 
@@ -80,7 +80,7 @@ extern "C" void *func_ov016_021fce34(void *state, void *owner, s32 tableIndex)
             object = func_02094154(object, owner, capacity, 5, 0xd6, 0x1c, 0xc);
         }
         FIELD(void *, state, 0x58) = object;
-        FIELD(void *, state, 0x24) = func_02073ffc(FIELD(void *, state, 8),
+        FIELD(void *, state, 0x24) = GraphicsSpriteGroup_CreateStateFromSource(FIELD(void *, state, 8),
                                                    (u8 *)state + 0x18, 2);
         func_02073e48(FIELD(void *, state, 0x24), FIELD(u32, state, 0x60),
                       0x26, 0xaa, 1, 0, 0);
@@ -111,8 +111,8 @@ extern "C" void *func_ov016_021fd06c(void *state)
     typedef void (*DeleteFunction)(void *);
     void *presentation;
 
-    func_0207419c(FIELD(void *, state, 4));
-    func_0207419c(FIELD(void *, state, 8));
+    GraphicsSpriteGroup_Destroy(FIELD(void *, state, 4));
+    GraphicsSpriteGroup_Destroy(FIELD(void *, state, 8));
     presentation = FIELD(void *, state, 0x58);
     if (presentation != 0) {
         DeleteFunction *vtable = *(DeleteFunction **)presentation;

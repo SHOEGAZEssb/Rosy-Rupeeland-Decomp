@@ -1,5 +1,5 @@
     .text
-    .extern func_020740a4
+    .extern GraphicsSpriteGroup_AdvanceAnimations
     .extern func_02091b98
     .extern func_02091c7c
 
@@ -52,9 +52,9 @@ L_021fdfd8:
     bl func_02091b98
 L_021fdff0:
     ldr r0, [r4, #0x4]
-    bl func_020740a4
+    bl GraphicsSpriteGroup_AdvanceAnimations
     ldr r0, [r4, #0x8]
-    bl func_020740a4
+    bl GraphicsSpriteGroup_AdvanceAnimations
     ldmia sp!, {r4, pc}
 
     .size func_ov016_021fdf50, . - func_ov016_021fdf50

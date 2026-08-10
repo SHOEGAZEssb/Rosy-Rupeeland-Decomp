@@ -7,8 +7,8 @@
 .extern ActorCollection_GetSpriteOwner
 .extern Actor_GetCollection
 .extern func_0204d570
-.extern func_02073ef8
-.extern func_02074110
+.extern GraphicsSpriteState_ReleaseFromGroup
+.extern GraphicsSpriteGroup_ReleaseIndexedEntries
 .extern GraphicsSpriteRenderer_SetTextGridPosition
 .extern gDebugFont
 
@@ -20,21 +20,21 @@ func_ov090_02217c6c:
     str r1, [r4, #0x0]
     bl Actor_GetCollection
     bl ActorCollection_GetSpriteOwner
-    bl func_02074110
+    bl GraphicsSpriteGroup_ReleaseIndexedEntries
     ldr r0, [r4, #0x200]
     cmp r0, #0x0
     beq .L_02217c98
-    bl func_02073ef8
+    bl GraphicsSpriteState_ReleaseFromGroup
 .L_02217c98:
     ldr r0, [r4, #0x23c]
     cmp r0, #0x0
     beq .L_02217ca8
-    bl func_02073ef8
+    bl GraphicsSpriteState_ReleaseFromGroup
 .L_02217ca8:
     ldr r0, [r4, #0x248]
     cmp r0, #0x0
     beq .L_02217cb8
-    bl func_02073ef8
+    bl GraphicsSpriteState_ReleaseFromGroup
 .L_02217cb8:
     ldr r0, [r4, #0x240]
     cmp r0, #0x0

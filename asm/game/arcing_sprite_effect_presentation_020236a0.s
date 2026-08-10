@@ -19,8 +19,8 @@
 .extern func_0201e28c
 .extern func_020233c8
 .extern GraphicsSpriteState_SetAnimationIndex
-.extern func_02074038
-.extern func_020740c8
+.extern GraphicsSpriteGroup_ReleaseState
+.extern GraphicsSpriteGroup_ReplaceStateResources
 .extern func_020befec
 .extern gHeapContext
 .extern gSoundContext
@@ -100,7 +100,7 @@ func_020236a0: ; 0x020236a0
     str r0, [sp, #0x0]
     ldr r0, [r1, #0x0]
     ldmib r3, {r2, r3}
-    bl func_020740c8
+    bl GraphicsSpriteGroup_ReplaceStateResources
     ldr r0, [r4, #0x10]
     mov r1, #0x0
     bl GraphicsSpriteState_SetAnimationIndex

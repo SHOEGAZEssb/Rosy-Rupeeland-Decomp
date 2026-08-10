@@ -1,7 +1,7 @@
 .text
 
 /* Exact fallback; see src/overlays/ov031/overlay031_sprite_trajectory.c for documented portable C. */
-.extern func_02073ef8
+.extern GraphicsSpriteState_ReleaseFromGroup
 
 
     .global func_ov031_021fd19c
@@ -23,7 +23,7 @@ func_ov031_021fd1c0:
     ldr r0, [r4, #0x0]
     cmp r0, #0x0
     beq L_021fd1d8
-    bl func_02073ef8
+    bl GraphicsSpriteState_ReleaseFromGroup
 L_021fd1d8:
     mov r0, r4
     ldmia sp!, {r4, pc}

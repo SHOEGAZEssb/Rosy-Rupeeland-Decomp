@@ -31,10 +31,10 @@ extern void func_02091e28(void *state);
 extern void func_02071ea4(void *resource);
 extern void func_02071ee0(void *resource, void *manager, s32 first,
                           s32 second, s32 third);
-extern void *func_020742cc(void *owner);
+extern void *GraphicsSpriteGroupOwner_CreateGroup(void *owner);
 extern void *Heap_Alloc(s32 size, const void *tag, s32 alignment,
                         void *heapContext);
-extern void *func_02073ffc(void *context, void *resource, s32 mode);
+extern void *GraphicsSpriteGroup_CreateStateFromSource(void *context, void *resource, s32 mode);
 extern void *func_020953f4(void *memory, void *drawObject);
 extern void func_02094bbc(void *object, s32 first, s32 second, s32 third);
 extern void func_02094cf0(void *object, const void *data, s32 mode);
@@ -98,11 +98,11 @@ Overlay005Presentation *func_ov005_021fbe6c(Overlay005Presentation *state)
     func_02071ea4((u8 *)state + 0x54);
     func_02071ee0((u8 *)state + 0x54, data_020f4e18, 0x1023, 0x1024,
                   0x1025);
-    FIELD(void *, state, 0x060) = func_020742cc(gDebugFont);
+    FIELD(void *, state, 0x060) = GraphicsSpriteGroupOwner_CreateGroup(gDebugFont);
 
     controller = Heap_Alloc(0xa0, data_ov005_021fcb0c, 4, gHeapContext);
     if (controller != 0) {
-        void *draw = func_02073ffc(FIELD(void *, state, 0x060),
+        void *draw = GraphicsSpriteGroup_CreateStateFromSource(FIELD(void *, state, 0x060),
                                    (u8 *)state + 0x54, 2);
         controller = func_020953f4(controller, draw);
     }

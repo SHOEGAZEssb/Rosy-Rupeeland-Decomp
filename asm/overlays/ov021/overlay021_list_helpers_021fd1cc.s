@@ -1,6 +1,6 @@
     .text
 /* Exact fallback; see src/overlays/ov021/overlay021_list_helpers.c. */
-    .extern func_02074110
+    .extern GraphicsSpriteGroup_ReleaseIndexedEntries
 
 .global func_ov021_021fd1cc
 func_ov021_021fd1cc:
@@ -20,7 +20,7 @@ func_ov021_021fd1cc:
 L_021fd200:
     ldr r0, [r4, #0x58]
     ldr r0, [r0, #0x50]
-    bl func_02074110
+    bl GraphicsSpriteGroup_ReleaseIndexedEntries
 L_021fd20c:
     ldr r0, [r4, #0x1c]
     mov r1, #0x1

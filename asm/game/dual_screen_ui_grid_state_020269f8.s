@@ -12,8 +12,8 @@
 .extern func_02026e44
 .extern func_02026ed4
 .extern GraphicsSpriteState_SetAnimationIndex
-.extern func_020740a4
-.extern func_02074110
+.extern GraphicsSpriteGroup_AdvanceAnimations
+.extern GraphicsSpriteGroup_ReleaseIndexedEntries
 .extern func_020adc90
 .extern func_020befec
 .extern gSoundContext
@@ -299,10 +299,10 @@ func_020269f8: ; 0x020269f8
     b .L_02026e1c
 .L_02026e14:
     ldr r0, [r6, #0x0]
-    bl func_02074110
+    bl GraphicsSpriteGroup_ReleaseIndexedEntries
 .L_02026e1c:
     ldr r0, [r6, #0x0]
-    bl func_020740a4
+    bl GraphicsSpriteGroup_AdvanceAnimations
     ldmia sp!, {r3, r4, r5, r6, r7, pc}
 .L_02026e28: .word data_021052fc
 .L_02026e2c: .word data_02105310

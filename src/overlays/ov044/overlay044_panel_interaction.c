@@ -10,7 +10,7 @@
 
 extern "C" u8 data_021f3ecc[];
 extern "C" void *gSystemState;
-extern "C" void func_02073ef8(void *binding);
+extern "C" void GraphicsSpriteState_ReleaseFromGroup(void *binding);
 extern "C" void GraphicsSpriteCanvas_FillRect(void *font, s32 x, s32 y, s32 color,
                                s32 width, s32 flags);
 extern "C" void *GraphicsSpriteRenderer_SetFontResource(void *font, void *presentation);
@@ -38,7 +38,7 @@ extern "C" u32 func_ov044_0220bb48(void *record, u32 mask)
 /*
  * Release row binding +0x10 for an index below appended count +0x40, then
  * clear the pointer. Invalid or unbound indices are ignored. Resource state
- * changes through func_02073ef8; no value is returned.
+ * changes through GraphicsSpriteState_ReleaseFromGroup; no value is returned.
  */
 extern "C" void func_ov044_0220bb60(void *object, s32 index)
 {
@@ -47,7 +47,7 @@ extern "C" void func_ov044_0220bb60(void *object, s32 index)
     void *record = (u8 *)FIELD(void *, object, 0x38) + index * 0x20;
     if (!FIELD(void *, record, 0x10))
         return;
-    func_02073ef8(FIELD(void *, record, 0x10));
+    GraphicsSpriteState_ReleaseFromGroup(FIELD(void *, record, 0x10));
     FIELD(void *, record, 0x10) = 0;
 }
 

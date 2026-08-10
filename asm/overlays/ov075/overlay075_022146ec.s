@@ -4,7 +4,7 @@
 .extern ActorCollection_GetSpriteOwner
 .extern Actor_GetCollection
 .extern func_02071ee0
-.extern func_02073fc4
+.extern GraphicsSpriteGroup_CreateState
 
 .global func_ov075_022146ec
 func_ov075_022146ec:
@@ -26,7 +26,7 @@ func_ov075_022146ec:
     ldr r1, [r4, #0x1f0]
     ldr r2, [r4, #0x1f4]
     ldr r3, [r4, #0x1f8]
-    bl func_02073fc4
+    bl GraphicsSpriteGroup_CreateState
     str r0, [r4, #0x54]
     ldr r0, [r4, #0x14]
     tst r0, #0x80

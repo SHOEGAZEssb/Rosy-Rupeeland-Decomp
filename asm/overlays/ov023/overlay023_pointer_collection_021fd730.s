@@ -1,7 +1,7 @@
 .text
 
 /* Exact fallback; see src/overlays/ov023/overlay023_pointer_collection.c. */
-.extern func_02074110
+.extern GraphicsSpriteGroup_ReleaseIndexedEntries
 
 
     .global func_ov023_021fd730
@@ -22,7 +22,7 @@ func_ov023_021fd730:
 L_021fd764:
     ldr r0, [r4, #0x48]
     ldr r0, [r0, #0x50]
-    bl func_02074110
+    bl GraphicsSpriteGroup_ReleaseIndexedEntries
 L_021fd770:
     ldr r0, [r4, #0x4]
     mov r1, #0x1

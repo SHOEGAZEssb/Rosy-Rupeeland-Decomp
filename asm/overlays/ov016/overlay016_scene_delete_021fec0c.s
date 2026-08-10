@@ -3,7 +3,7 @@
     .extern data_020f4e14
     .extern data_ov016_02201540
     .extern func_02071eb8
-    .extern func_0207419c
+    .extern GraphicsSpriteGroup_Destroy
     .extern GraphicsSpriteRenderer_QueuePaletteUploads
     .extern func_020926f8
     .extern func_020927b8
@@ -79,7 +79,7 @@ L_021fecc8:
     blx r1
 L_021fece0:
     ldr r0, [r4, #0xe0]
-    bl func_0207419c
+    bl GraphicsSpriteGroup_Destroy
     ldr r0, L_021fed70
     mov r2, #0x0
     strh r2, [r0, #0x0]

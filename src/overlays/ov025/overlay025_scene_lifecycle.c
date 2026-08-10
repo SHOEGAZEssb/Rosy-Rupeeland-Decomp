@@ -38,9 +38,9 @@ extern void func_02071ea4(void *);
 extern void func_02071eb8(void *);
 extern void func_02071ee0(void *, void *, s32, s32, s32);
 extern void func_02073e48(void *, s32, s32, s32, s32, s32, s32);
-extern void *func_02073ffc(void *, void *, s32);
-extern void func_0207419c(void *);
-extern void *func_020742cc(void *);
+extern void *GraphicsSpriteGroup_CreateStateFromSource(void *, void *, s32);
+extern void GraphicsSpriteGroup_Destroy(void *);
+extern void *GraphicsSpriteGroupOwner_CreateGroup(void *);
 extern void GraphicsSpriteRenderer_ClearTextBuffer(void *);
 extern void GraphicsSpriteRenderer_QueuePaletteUploads(void *);
 extern void func_02091b6c(void *);
@@ -88,7 +88,7 @@ static void virtual_destroy(void *object)
 static void setup_controller(void *scene, s32 offset, s32 animation,
                              s32 x, s32 y)
 {
-    void *sprite = func_02073ffc(FIELD(void *, scene, 0xb0),
+    void *sprite = GraphicsSpriteGroup_CreateStateFromSource(FIELD(void *, scene, 0xb0),
                                   (u8 *)scene + 0x5c, 1);
     func_020957f0((u8 *)scene + offset, sprite, animation, 1, 16);
     func_02095820((u8 *)scene + offset, x, y);
@@ -149,31 +149,31 @@ extern "C" void *func_ov025_021ff27c(void *scene)
     func_02071ee0((u8 *)scene + 0x80, data_020f4e18, 0x2421, 0x2422, 0x2423);
     func_02071ee0((u8 *)scene + 0x8c, data_020f4e18, 0x2427, 0x2428, 0x2429);
     func_02071ee0((u8 *)scene + 0xa4, data_020f4e18, 0x242d, 0x242e, 0x242f);
-    FIELD(void *, scene, 0xb0) = func_020742cc(data_020f4e14);
-    FIELD(void *, scene, 0xb4) = func_020742cc(gDebugFont);
+    FIELD(void *, scene, 0xb0) = GraphicsSpriteGroupOwner_CreateGroup(data_020f4e14);
+    FIELD(void *, scene, 0xb4) = GraphicsSpriteGroupOwner_CreateGroup(gDebugFont);
     FIELD(s32, FIELD(void *, scene, 0xb4), 0x18) = 0;
     FIELD(s32, FIELD(void *, scene, 0xb4), 0x1c) = 0x100;
     for (s32 i = 0; i < 3; ++i) FIELD(void *, scene, 0xe4 + i * 4) = 0;
 
     for (s32 i = 0; i < 3; ++i) {
-        void *sprite = func_02073ffc(FIELD(void *, scene, 0xb0),
+        void *sprite = GraphicsSpriteGroup_CreateStateFromSource(FIELD(void *, scene, 0xb0),
                                      (u8 *)scene + 0x5c, 1);
         func_020957f0((u8 *)scene + 0x2f4 + i * 0xac,
                       sprite, 0x20 + i * 2, 1, 16);
         func_02095820((u8 *)scene + 0x2f4 + i * 0xac, 0xd4, 0);
         func_02095940((u8 *)scene + 0x2f4 + i * 0xac);
     }
-    FIELD(void *, scene, 0xbc) = func_02073ffc(FIELD(void *, scene, 0xb0),
+    FIELD(void *, scene, 0xbc) = GraphicsSpriteGroup_CreateStateFromSource(FIELD(void *, scene, 0xb0),
                                                 (u8 *)scene + 0x8c, 2);
     func_02073e48(FIELD(void *, scene, 0xbc), 0, 0x80, 0x60, 0, 0, 6);
     for (s32 i = 0; i < 6; ++i) {
-        void *sprite = func_02073ffc(FIELD(void *, scene, 0xb4),
+        void *sprite = GraphicsSpriteGroup_CreateStateFromSource(FIELD(void *, scene, 0xb4),
                                      (u8 *)scene + 0xa4, 2);
         FIELD(void *, scene, 0xc4 + i * 4) = sprite;
         func_02073e48(sprite, i, data_ov025_02202c9c[i],
                       data_ov025_02202cb4[i] - 0x100, 1, 0xf000, 2);
     }
-    FIELD(void *, scene, 0xc0) = func_02073ffc(FIELD(void *, scene, 0xb4),
+    FIELD(void *, scene, 0xc0) = GraphicsSpriteGroup_CreateStateFromSource(FIELD(void *, scene, 0xb4),
                                                 (u8 *)scene + 0x98, 2);
     func_02073e48(FIELD(void *, scene, 0xc0), 8, 0x80, -0xa0, 1, 0, 6);
     setup_controller(scene, 0xf0, 0x2c, 0x94, 0xb3);
@@ -185,7 +185,7 @@ extern "C" void *func_ov025_021ff27c(void *scene)
     FIELD(void *, scene, 0x508) = effect;
     func_02095274((u8 *)scene + 0x4f8, effect);
 
-    void *sprite = func_02073ffc(FIELD(void *, scene, 0xb4),
+    void *sprite = GraphicsSpriteGroup_CreateStateFromSource(FIELD(void *, scene, 0xb4),
                                   (u8 *)scene + 0x74, 2);
     func_02073e48(sprite, 0, 0, 0, 1, 0x4000, 2);
     effect = Heap_Alloc(0xa0, data_ov025_0220338c, 4, gHeapContext);
@@ -194,7 +194,7 @@ extern "C" void *func_ov025_021ff27c(void *scene)
     func_02095274((u8 *)scene + 0x4f8, effect);
     func_02094cf0(effect, data_ov025_02202d68, 1);
 
-    sprite = func_02073ffc(FIELD(void *, scene, 0xb4),
+    sprite = GraphicsSpriteGroup_CreateStateFromSource(FIELD(void *, scene, 0xb4),
                             (u8 *)scene + 0x80, 2);
     func_02073e48(sprite, 0, 0x80, 0xb0, 1, 0x4000, 2);
     effect = Heap_Alloc(0xa0, data_ov025_02203394, 4, gHeapContext);
@@ -241,20 +241,20 @@ static void cleanup_scene(void *scene)
     for (s32 i = 0; i < 3; ++i) {
         void *widget = FIELD(void *, scene, 0xe4 + i * 4);
         if (!widget) continue;
-        func_0207419c(FIELD(void *, widget, 0xc));
+        GraphicsSpriteGroup_Destroy(FIELD(void *, widget, 0xc));
         func_020927b8((u8 *)widget + 0x30);
         func_02071eb8(widget);
         Heap_Free(widget);
     }
     void *name_entry = FIELD(void *, scene, 0x598);
     if (name_entry) {
-        func_0207419c(FIELD(void *, name_entry, 0));
+        GraphicsSpriteGroup_Destroy(FIELD(void *, name_entry, 0));
         func_02071eb8((u8 *)name_entry + 4);
         Heap_Free(name_entry);
     }
     virtual_destroy(FIELD(void *, scene, 0x59c));
-    func_0207419c(FIELD(void *, scene, 0xb0));
-    func_0207419c(FIELD(void *, scene, 0xb4));
+    GraphicsSpriteGroup_Destroy(FIELD(void *, scene, 0xb0));
+    GraphicsSpriteGroup_Destroy(FIELD(void *, scene, 0xb4));
     GraphicsSpriteRenderer_QueuePaletteUploads(data_020f4e14);
     func_020927b8((u8 *)scene + 0x574);
     func_020926f8((u8 *)scene + 0x530);

@@ -10,7 +10,7 @@ extern void func_02071ee0(void *resource, void *manager, s32 first,
                           s32 second, s32 third);
 extern void *Actor_GetCollection(void *actor);
 extern void *ActorCollection_GetSpriteOwner(void *collection);
-extern void *func_02073fc4(void *collectionData, s32 first, s32 second,
+extern void *GraphicsSpriteGroup_CreateState(void *collectionData, s32 first, s32 second,
                            s32 third, s32 mode);
 extern void GraphicsSpriteState_SetAnimationIndex(void *attachment, u32 animation);
 extern void func_020313b4(void *actor, void *resource, u32 layer);
@@ -45,7 +45,7 @@ void Actor_InitializeFromDescriptor(void *self, const void *descriptor)
         func_02071ee0(actor + 0x1f0, data_020f4e18,
                       *(s32 *)(record + 4), *(s32 *)(record + 8),
                       *(s32 *)(record + 0x0c));
-        attachment = (u8 *)func_02073fc4(
+        attachment = (u8 *)GraphicsSpriteGroup_CreateState(
             ActorCollection_GetSpriteOwner(Actor_GetCollection(actor)),
             *(s32 *)(actor + 0x1f0), *(s32 *)(actor + 0x1f4),
             *(s32 *)(actor + 0x1f8), record[0x10]);

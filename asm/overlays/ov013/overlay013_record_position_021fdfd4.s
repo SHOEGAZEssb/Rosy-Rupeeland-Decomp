@@ -1,6 +1,6 @@
     .text
     .extern GraphicsSpriteState_SetAnimationIndex
-    .extern func_02073ffc
+    .extern GraphicsSpriteGroup_CreateStateFromSource
     .extern func_0209189c
     .extern func_020918f4
 
@@ -16,7 +16,7 @@ func_ov013_021fdfd4:
     add r1, r9, #0x78
     mov r2, #0x1
     mov r6, r3
-    bl func_02073ffc
+    bl GraphicsSpriteGroup_CreateStateFromSource
     add r1, r9, #0x178
     mov r5, r0
     add r0, r1, #0x800

@@ -43,10 +43,10 @@ extern void func_020050a4(ParticleVector *destination,
                           const ParticleVector *source);
 extern void func_020050c8(ParticleVector *position,
                           const ParticleVector *velocity);
-extern u8 *func_02073fc4(void *owner, s32 resource, s32 palette,
+extern u8 *GraphicsSpriteGroup_CreateState(void *owner, s32 resource, s32 palette,
                          s32 animation, s32 mode);
 extern void GraphicsSpriteState_SetAnimationIndex(void *sprite, s32 frame);
-extern void func_02074038(void *owner, void *sprite);
+extern void GraphicsSpriteGroup_ReleaseState(void *owner, void *sprite);
 extern u32 genrand_int32(void);
 extern u32 func_020be4e4(void);
 /* The helper returns quotient in the low word and remainder in the high word. */
@@ -81,7 +81,7 @@ BallisticSpriteParticle *func_02023890(
     self->inactive28 = 0;
     self->angle2c = 0;
     self->angularVelocity2e = 0;
-    self->sprite20 = func_02073fc4(spriteOwner, config->resource04,
+    self->sprite20 = GraphicsSpriteGroup_CreateState(spriteOwner, config->resource04,
                                    config->palette08, config->animation0c, 2);
     division = func_020bf1f8(genrand_int32(), 7);
     GraphicsSpriteState_SetAnimationIndex(self->sprite20, (u8)(division >> 32));
@@ -115,7 +115,7 @@ BallisticSpriteParticle *func_02023890(
  */
 BallisticSpriteParticle *func_020239e8(BallisticSpriteParticle *self)
 {
-    func_02074038(*(void **)self->sprite20, self->sprite20);
+    GraphicsSpriteGroup_ReleaseState(*(void **)self->sprite20, self->sprite20);
     func_02005058(&self->velocity10);
     func_02005058(&self->position00);
     return self;

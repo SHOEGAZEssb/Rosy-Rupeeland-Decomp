@@ -16,7 +16,7 @@ extern void func_0202836c(void *);
 extern s32 func_02091a70(s32, s32, s32, s32);
 extern void func_02091b98(void *, s32);
 extern s32 func_02091c7c(void *, s32);
-extern void func_020740a4(void *);
+extern void GraphicsSpriteGroup_AdvanceAnimations(void *);
 extern void func_020958d8(void *);
 extern void func_02095928(void *);
 extern void func_02095940(void *);
@@ -47,7 +47,7 @@ extern "C" void func_ov024_021fd86c(void *scene)
     func_020958d8((u8 *)scene + 0x1d8);
     func_ov046_0220c1a4(FIELD(void *, scene, 0x2c0));
     func_ov005_021fbbe8(FIELD(void *, scene, 0x2bc));
-    func_020740a4(FIELD(void *, scene, 0x7c));
+    GraphicsSpriteGroup_AdvanceAnimations(FIELD(void *, scene, 0x7c));
     if (func_02091c7c((u8 *)scene + 0x2c8, 2)) {
         func_02091b98((u8 *)scene + 0x2c8, 60);
         FIELD(s32, scene, 0x2e4) = !FIELD(s32, scene, 0x2e4);

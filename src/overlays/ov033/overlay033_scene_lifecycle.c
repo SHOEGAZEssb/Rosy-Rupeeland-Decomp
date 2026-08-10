@@ -7,10 +7,10 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_0207419c(void *spriteContext);
+extern void GraphicsSpriteGroup_Destroy(void *spriteContext);
 extern void func_020927b8(void *resourceOwner);
 extern void func_02005058(void *embeddedObject);
-extern void func_020740a4(void *spriteContext);
+extern void GraphicsSpriteGroup_AdvanceAnimations(void *spriteContext);
 extern void func_ov033_021fcff4(void *group);
 #ifdef __cplusplus
 }
@@ -40,7 +40,7 @@ extern "C" void *func_ov033_021fd260(void *scene)
     void *primary = FIELD(void *, scene, 4);
     FIELD(u16, FIELD(void *, primary, 0x54), 0x24) &= (u16)~0x10;
     FIELD(u16, FIELD(void *, primary, 0xa8), 0x24) &= (u16)~0x10;
-    func_0207419c(FIELD(void *, scene, 0));
+    GraphicsSpriteGroup_Destroy(FIELD(void *, scene, 0));
     func_020927b8((u8 *)scene + 0xa0);
     func_02005058((u8 *)scene + 0x24);
     func_02005058((u8 *)scene + 0x14);
@@ -48,13 +48,13 @@ extern "C" void *func_ov033_021fd260(void *scene)
 }
 
 /*
- * Forwards the scene's sprite context at +0 to func_020740a4 and returns that
+ * Forwards the scene's sprite context at +0 to GraphicsSpriteGroup_AdvanceAnimations and returns that
  * callee's result according to the ABI. Sprite-engine state may change; there
  * is no direct MMIO in this wrapper.
  */
 extern "C" void func_ov033_021fd2e8(void *scene)
 {
-    func_020740a4(FIELD(void *, scene, 0));
+    GraphicsSpriteGroup_AdvanceAnimations(FIELD(void *, scene, 0));
 }
 
 /*

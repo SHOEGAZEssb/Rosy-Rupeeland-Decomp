@@ -19,7 +19,7 @@ extern void *Heap_Alloc(u32, const void *, u32, void *);
 extern void Heap_Free(void *);
 extern s32 DisplayBrightness_IsMainTransitionComplete(void);
 extern void func_02071eb8(void *);
-extern void func_0207419c(void *);
+extern void GraphicsSpriteGroup_Destroy(void *);
 extern s32 func_0207f248(void *);
 extern void func_0207f2e0(void *, s32);
 extern void func_020802f4(void *, s32, s32);
@@ -56,7 +56,7 @@ static void transition_pair(void *scene, const u32 *pair)
 static void destroy_row(void *row)
 {
     if (row) {
-        func_0207419c(FIELD(void *, row, 0xc));
+        GraphicsSpriteGroup_Destroy(FIELD(void *, row, 0xc));
         func_020927b8((u8 *)row + 0x30);
         func_02071eb8(row);
         Heap_Free(row);

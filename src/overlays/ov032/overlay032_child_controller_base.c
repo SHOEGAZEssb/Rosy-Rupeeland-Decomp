@@ -7,8 +7,8 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *func_02073ffc(...);
-extern void func_02074038(...);
+extern void *GraphicsSpriteGroup_CreateStateFromSource(...);
+extern void GraphicsSpriteGroup_ReleaseState(...);
 extern void func_02070934(void *);
 extern void func_02073e48(...);
 #ifdef __cplusplus
@@ -60,7 +60,7 @@ extern "C" void func_ov032_0220142c(void *controller)
 extern "C" void *func_ov032_02201450(void *controller, void *renderer, void *resource)
 {
     FIELD(void *, controller, 4) = resource;
-    void *object = func_02073ffc(renderer, resource, 2);
+    void *object = GraphicsSpriteGroup_CreateStateFromSource(renderer, resource, 2);
     FIELD(void *, controller, 0) = object;
     FIELD(void *, controller, 8) = renderer;
     return object;
@@ -75,7 +75,7 @@ extern "C" void func_ov032_0220147c(void *controller)
 {
     void *renderer = FIELD(void *, controller, 8);
     void *object = FIELD(void *, controller, 0);
-    if (renderer != 0 && object != 0) func_02074038(renderer, object);
+    if (renderer != 0 && object != 0) GraphicsSpriteGroup_ReleaseState(renderer, object);
     FIELD(void *, controller, 0) = 0;
     void *resource = FIELD(void *, controller, 4);
     if (resource != 0 && FIELD(void *, resource, 4) != 0)

@@ -11,14 +11,14 @@ extern "C" void *data_020f4e18;
 extern "C" void *data_020f4e14;
 extern "C" void func_02071ee0(void *owner, void *archive, s32 first,
                                s32 second, s32 third, s32 fourth);
-extern "C" void *func_020742cc(void *font);
-extern "C" void *func_02073ffc(void *fontObject, void *owner, s32 value);
+extern "C" void *GraphicsSpriteGroupOwner_CreateGroup(void *font);
+extern "C" void *GraphicsSpriteGroup_CreateStateFromSource(void *fontObject, void *owner, s32 value);
 extern "C" void func_020957f0(void *canvas, void *fontBinding,
                                s32 engine, s32 mode, s32 flags);
-extern "C" void func_0207419c(void *object);
+extern "C" void GraphicsSpriteGroup_Destroy(void *object);
 extern "C" void func_02071f38(void *owner);
 extern "C" void func_020958d8(void *canvas);
-extern "C" void func_020740a4(void *object);
+extern "C" void GraphicsSpriteGroup_AdvanceAnimations(void *object);
 
 /*
  * Create the embedded presentation resources for object. Initialize owner
@@ -31,14 +31,14 @@ extern "C" void func_ov043_0220bc2c(void *object)
 {
     func_02071ee0((u8 *)object + 0x80, data_020f4e18,
                    0x16, 0x17, 0x18, 0x18);
-    FIELD(void *, object, 0x8c) = func_020742cc(data_020f4e14);
-    void *binding = func_02073ffc(FIELD(void *, object, 0x8c),
+    FIELD(void *, object, 0x8c) = GraphicsSpriteGroupOwner_CreateGroup(data_020f4e14);
+    void *binding = GraphicsSpriteGroup_CreateStateFromSource(FIELD(void *, object, 0x8c),
                                    (u8 *)object + 0x80, 1);
     func_020957f0((u8 *)object + 0x13c, binding, 0, 2, 0);
-    binding = func_02073ffc(FIELD(void *, object, 0x8c),
+    binding = GraphicsSpriteGroup_CreateStateFromSource(FIELD(void *, object, 0x8c),
                              (u8 *)object + 0x80, 1);
     func_020957f0((u8 *)object + 0x1e8, binding, 1, 2, 0);
-    binding = func_02073ffc(FIELD(void *, object, 0x8c),
+    binding = GraphicsSpriteGroup_CreateStateFromSource(FIELD(void *, object, 0x8c),
                              (u8 *)object + 0x80, 1);
     func_020957f0((u8 *)object + 0x90, binding, 2, 2, 0);
 }
@@ -50,7 +50,7 @@ extern "C" void func_ov043_0220bc2c(void *object)
  */
 extern "C" void func_ov043_0220bcf4(void *object)
 {
-    func_0207419c(FIELD(void *, object, 0x8c));
+    GraphicsSpriteGroup_Destroy(FIELD(void *, object, 0x8c));
     FIELD(void *, object, 0x8c) = 0;
     FIELD(u32, object, 0x1d8) = 0;
     FIELD(u32, object, 0x284) = 0;
@@ -69,5 +69,5 @@ extern "C" void func_ov043_0220bd24(void *object)
     func_020958d8((u8 *)object + 0x1e8);
     func_020958d8((u8 *)object + 0x90);
     if (FIELD(void *, object, 0x8c))
-        func_020740a4(FIELD(void *, object, 0x8c));
+        GraphicsSpriteGroup_AdvanceAnimations(FIELD(void *, object, 0x8c));
 }

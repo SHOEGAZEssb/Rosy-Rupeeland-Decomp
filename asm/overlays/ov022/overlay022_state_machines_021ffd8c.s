@@ -7,7 +7,7 @@
 .extern data_ov022_02200548
 .extern data_ov022_02200560
 .extern DisplayBrightness_IsMainTransitionComplete
-.extern func_02074110
+.extern GraphicsSpriteGroup_ReleaseIndexedEntries
 .extern GraphicsSpriteRenderer_ClearTextBuffer
 .extern func_02092260
 .extern func_02092c8c
@@ -294,7 +294,7 @@ L_022000f4:
     ldr r0, [r5, #0x2b8]
     ldr r0, [r0, #0x30]
     ldr r0, [r0, #0x50]
-    bl func_02074110
+    bl GraphicsSpriteGroup_ReleaseIndexedEntries
     mov r0, #0x1
     mov r1, #0x0
     bl func_02092c8c

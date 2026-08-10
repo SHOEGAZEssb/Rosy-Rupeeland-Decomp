@@ -8,8 +8,8 @@
 .extern func_02006108
 .extern func_02071ea4
 .extern func_02071ee0
-.extern func_02073ffc
-.extern func_020742cc
+.extern GraphicsSpriteGroup_CreateStateFromSource
+.extern GraphicsSpriteGroupOwner_CreateGroup
 .extern func_02094bbc
 .extern func_020953f4
 .extern func_020954c0
@@ -35,7 +35,7 @@ GamePhaseTouchPrompt_Init:
     ldr r0, L_02010324
     str r1, [r4, #0x24]
     ldr r0, [r0, #0x0]
-    bl func_020742cc
+    bl GraphicsSpriteGroupOwner_CreateGroup
     ldr r3, L_02010328
     str r0, [r4, #0x18]
     ldr r1, L_0201032c
@@ -55,7 +55,7 @@ GamePhaseTouchPrompt_Init:
     ldr r0, [r4, #0x18]
     add r1, r4, #0xc
     mov r2, #0x2
-    bl func_02073ffc
+    bl GraphicsSpriteGroup_CreateStateFromSource
     mov r1, r0
     mov r0, r5
     bl func_020953f4

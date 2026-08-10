@@ -7,7 +7,7 @@
 .extern data_ov025_022033b4
 .extern DisplayBrightness_IsMainTransitionComplete
 .extern func_02071eb8
-.extern func_0207419c
+.extern GraphicsSpriteGroup_Destroy
 .extern func_0207f248
 .extern func_0207f2e0
 .extern func_020802f4
@@ -262,7 +262,7 @@ L_02200d00:
     cmp r5, #0x0
     beq L_02200d40
     ldr r0, [r5, #0xc]
-    bl func_0207419c
+    bl GraphicsSpriteGroup_Destroy
     add r0, r5, #0x30
     bl func_020927b8
     mov r0, r5

@@ -19,7 +19,7 @@ extern s32 data_020c37e4;
 extern "C" {
 #endif
 extern u32 genrand_int32(void);
-extern void *func_02073ffc(void *, void *, s32);
+extern void *GraphicsSpriteGroup_CreateStateFromSource(void *, void *, s32);
 extern void func_02073e48(void *, s32, s32, s32, ...);
 extern void GraphicsSpriteText_FormatDecimal(void *, s32, u32, s32);
 extern void *func_02079f3c(const void *, u16);
@@ -51,7 +51,7 @@ extern void func_ov022_021ff2c4(void *, s32);
  */
 extern "C" void func_ov022_021fe9e8(void *scene)
 {
-    void *sprite = func_02073ffc(FIELD(void *, scene, 0xa0),
+    void *sprite = GraphicsSpriteGroup_CreateStateFromSource(FIELD(void *, scene, 0xa0),
                                  (u8 *)scene + 0x90, 1);
     u32 table_index = ((genrand_int32() & 0xffff) >> 4) * 2;
     s32 x_term = data_020c9670[table_index] * 12;

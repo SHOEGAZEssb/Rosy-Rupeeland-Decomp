@@ -15,7 +15,7 @@ extern void Heap_Free(void *);
 extern void func_02071ea4(void *);
 extern void func_02071eb8(void *);
 extern void func_02071ee0(void *, void *, s32, s32, s32);
-extern void *func_02073ffc(void *, void *, s32);
+extern void *GraphicsSpriteGroup_CreateStateFromSource(void *, void *, s32);
 extern void func_02095308(void *);
 extern void func_020953c8(void *, s32);
 extern void func_0209548c(void *);
@@ -40,7 +40,7 @@ extern "C" void *func_ov016_021fe004(void *state, void *descriptor, void *owner)
                   FIELD(s32, FIELD(void *, descriptor, 0), 0x10),
                   FIELD(s32, FIELD(void *, descriptor, 4), 0x10),
                   FIELD(s32, FIELD(void *, descriptor, 8), 0x10));
-    FIELD(void *, state, 0x9c) = func_02073ffc(owner, (u8 *)state + 0xa0, 2);
+    FIELD(void *, state, 0x9c) = GraphicsSpriteGroup_CreateStateFromSource(owner, (u8 *)state + 0xa0, 2);
     FIELD(u8, FIELD(void *, state, 0x9c), 0x3a) = 1;
     return state;
 }

@@ -1,6 +1,6 @@
     .text
     .extern data_020c9670
-    .extern func_020740a4
+    .extern GraphicsSpriteGroup_AdvanceAnimations
     .extern func_02094574
     .extern func_020958d8
     .global func_ov001_021fbf7c
@@ -12,9 +12,9 @@ func_ov001_021fbf7c: ; 0x021fbf7c
     add r0, r4, #0xd4
     bl func_020958d8
     ldr r0, [r4, #0x8]
-    bl func_020740a4
+    bl GraphicsSpriteGroup_AdvanceAnimations
     ldr r0, [r4, #0xc]
-    bl func_020740a4
+    bl GraphicsSpriteGroup_AdvanceAnimations
     ldr r0, [r4, #0x1bc]
     bl func_02094574
     ldr r0, [r4, #0x1c]

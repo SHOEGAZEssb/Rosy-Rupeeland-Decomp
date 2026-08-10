@@ -14,7 +14,7 @@
 .extern func_02070b50
 .extern func_02070e0c
 .extern func_02072000
-.extern func_02074330
+.extern GraphicsSpriteGroupOwner_DestroyGroup
 .extern GraphicsSpriteRenderer_ClearTextBuffer
 .extern func_020959d4
 .extern func_02095c30
@@ -51,11 +51,11 @@ L_02200df4:
     ldr r0, L_02200f6c
     ldr r1, [r4, #0x4]
     ldr r0, [r0, #0x0]
-    bl func_02074330
+    bl GraphicsSpriteGroupOwner_DestroyGroup
     ldr r0, L_02200f70
     ldr r1, [r4, #0x0]
     ldr r0, [r0, #0x0]
-    bl func_02074330
+    bl GraphicsSpriteGroupOwner_DestroyGroup
     mov r2, #0x4000000
     ldr r0, [r2, #0x0]
     add r1, r2, #0x1000

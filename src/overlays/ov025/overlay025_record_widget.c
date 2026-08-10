@@ -20,9 +20,9 @@ extern void func_02071ea4(void *);
 extern void func_02071ee0(void *, void *, s32, s32, s32);
 extern void GraphicsSpriteState_SetAnimationIndex(void *, s32);
 extern void func_02073e48(void *, s32, s32, s32, s32, s32, s32);
-extern void *func_02073ffc(void *, void *, s32);
-extern void func_02074110(void *);
-extern void *func_020742cc(void *);
+extern void *GraphicsSpriteGroup_CreateStateFromSource(void *, void *, s32);
+extern void GraphicsSpriteGroup_ReleaseIndexedEntries(void *);
+extern void *GraphicsSpriteGroupOwner_CreateGroup(void *);
 extern void GraphicsSpriteRenderer_SetFontResource(void *, void *);
 extern s32 GraphicsSpriteRenderer_DrawGlyph(void *, u16, s32, s32, s32);
 extern s32 GraphicsSpriteFont_MapCharacterToGlyph(u16);
@@ -37,7 +37,7 @@ extern void func_ov025_021fde58(void *);
 
 static void *create_sprite(void *widget, s32 animation, s32 x, s32 y)
 {
-    void *sprite = func_02073ffc(FIELD(void *, widget, 0xc), widget, 1);
+    void *sprite = GraphicsSpriteGroup_CreateStateFromSource(FIELD(void *, widget, 0xc), widget, 1);
     func_02073e48(sprite, animation, x, y, 1, 15, 0);
     return sprite;
 }
@@ -63,11 +63,11 @@ extern "C" void *func_ov025_021fd5dc(void *widget, s32 index)
     FIELD(s32, widget, 0x8c) = 0;
 
     func_02071ee0(widget, data_020f4e18, 0x4f, 0x50, 0x51);
-    void *owner = func_020742cc(data_020f4e14);
+    void *owner = GraphicsSpriteGroupOwner_CreateGroup(data_020f4e14);
     FIELD(void *, widget, 0xc) = owner;
     FIELD(s32, owner, 0x18) = 0x58;
     FIELD(s32, owner, 0x1c) = 0x28 + index * 0x3c;
-    FIELD(void *, widget, 0x10) = func_02073ffc(owner, widget, 1);
+    FIELD(void *, widget, 0x10) = GraphicsSpriteGroup_CreateStateFromSource(owner, widget, 1);
 
     u16 type = FIELD(u16, record, 0);
     if (type == 1) {
@@ -125,7 +125,7 @@ extern "C" void *func_ov025_021fd5dc(void *widget, s32 index)
     }
     func_02092814((u8 *)widget + 0x30, 0x7001);
     func_02092814((u8 *)widget + 0x30, 0x7005);
-    func_02074110(owner);
+    GraphicsSpriteGroup_ReleaseIndexedEntries(owner);
     return widget;
 }
 

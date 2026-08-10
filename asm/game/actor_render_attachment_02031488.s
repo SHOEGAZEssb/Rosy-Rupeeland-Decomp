@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/actor_render_attachment.c.
 .text
-.extern func_02073ef8
+.extern GraphicsSpriteState_ReleaseFromGroup
 
     .global func_02031488
     .type func_02031488, @function
@@ -10,7 +10,7 @@ func_02031488: ; 0x02031488
     ldr r0, [r4, #0x58]
     cmp r0, #0x0
     ldmeqia sp!, {r4, pc}
-    bl func_02073ef8
+    bl GraphicsSpriteState_ReleaseFromGroup
     mov r0, #0x0
     str r0, [r4, #0x58]
     ldr r0, [r4, #0x14]

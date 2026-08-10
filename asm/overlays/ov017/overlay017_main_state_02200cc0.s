@@ -13,7 +13,7 @@
     .extern func_020628c8
     .extern func_0206514c
     .extern func_0206fcec
-    .extern func_020740e8
+    .extern GraphicsSpriteGroup_ReplaceStateResourcesFromSource
     .extern func_02092260
     .extern func_020922f0
     .extern func_02094cf0
@@ -89,7 +89,7 @@ L_02200d7c:
     ldr r0, [r4, #0x58]
     ldr r1, [r1, #0x9c]
     add r2, r4, #0x74
-    bl func_020740e8
+    bl GraphicsSpriteGroup_ReplaceStateResourcesFromSource
     b L_02200d9c
 L_02200d94:
     ldr r1, L_02201324

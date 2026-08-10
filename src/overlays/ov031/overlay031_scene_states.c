@@ -23,7 +23,7 @@ extern void GameWork_SetFlag(void *, s32);
 extern void func_ov031_021fdd04(void *, s32);
 extern void func_ov031_021fd934(void *, s32, s32);
 extern void func_ov031_021fdf20(void *, s32);
-extern void func_020740a4(void *);
+extern void GraphicsSpriteGroup_AdvanceAnimations(void *);
 extern void func_ov031_021fd5c0(void *);
 extern s32 func_ov031_021fddbc(void *);
 extern void GraphicsSpriteRenderer_ClearTextBuffer(void *);
@@ -36,7 +36,7 @@ extern s32 func_ov031_021fd7fc(void *);
 static void service_scene(void *scene)
 {
     func_ov031_021fdf20(scene, 0);
-    func_020740a4(FIELD(void *, scene, 0x58));
+    GraphicsSpriteGroup_AdvanceAnimations(FIELD(void *, scene, 0x58));
     func_ov031_021fd5c0(FIELD(void *, scene, 0x548));
 }
 

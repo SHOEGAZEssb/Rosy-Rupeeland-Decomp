@@ -11,8 +11,8 @@
 .extern func_02071ea4
 .extern func_02071ee0
 .extern GraphicsSpriteState_SetAnimationIndex
-.extern func_02073ffc
-.extern func_020742cc
+.extern GraphicsSpriteGroup_CreateStateFromSource
+.extern GraphicsSpriteGroupOwner_CreateGroup
 .extern func_02094cf0
 .extern func_020953f4
 .extern gHeapContext
@@ -41,11 +41,11 @@ func_02027150: ; 0x02027150
     bl func_02071ee0
     ldr r0, .L_0202720c
     ldr r0, [r0, #0x0]
-    bl func_020742cc
+    bl GraphicsSpriteGroupOwner_CreateGroup
     add r1, r5, #0x8
     mov r2, #0x2
     str r0, [r5, #0x14]
-    bl func_02073ffc
+    bl GraphicsSpriteGroup_CreateStateFromSource
     and r1, r4, #0xff
     mov r4, r0
     bl GraphicsSpriteState_SetAnimationIndex

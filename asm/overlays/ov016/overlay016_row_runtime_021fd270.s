@@ -1,9 +1,9 @@
     .text
     .extern GraphicsSpriteState_SetAnimationIndex
     .extern func_02073e48
-    .extern func_02073ef8
-    .extern func_02073ffc
-    .extern func_020740a4
+    .extern GraphicsSpriteState_ReleaseFromGroup
+    .extern GraphicsSpriteGroup_CreateStateFromSource
+    .extern GraphicsSpriteGroup_AdvanceAnimations
     .extern func_02094574
     .extern func_ov016_021fd628
 
@@ -30,7 +30,7 @@ func_ov016_021fd270:
     ldr r0, [r6, #0x4]
     add r1, r6, #0xc
     mov r2, #0x1
-    bl func_02073ffc
+    bl GraphicsSpriteGroup_CreateStateFromSource
     ldr r1, [r6, #0x4c]
     add r1, r1, r4
     str r0, [r1, #0x4]
@@ -69,7 +69,7 @@ func_ov016_021fd310:
     ldr r0, [r0, #0x4]
     cmp r0, #0x0
     ldmeqia sp!, {r3, r4, r5, pc}
-    bl func_02073ef8
+    bl GraphicsSpriteState_ReleaseFromGroup
     ldr r0, [r5, #0x4c]
     mov r1, #0x0
     add r0, r0, r4
@@ -118,9 +118,9 @@ L_021fd3d4:
     bl GraphicsSpriteState_SetAnimationIndex
 L_021fd3e4:
     ldr r0, [r4, #0x4]
-    bl func_020740a4
+    bl GraphicsSpriteGroup_AdvanceAnimations
     ldr r0, [r4, #0x8]
-    bl func_020740a4
+    bl GraphicsSpriteGroup_AdvanceAnimations
     ldmia sp!, {r4, pc}
 
     .size func_ov016_021fd270, func_ov016_021fd310 - func_ov016_021fd270

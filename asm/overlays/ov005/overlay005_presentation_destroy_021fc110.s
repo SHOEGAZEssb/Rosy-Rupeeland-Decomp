@@ -1,5 +1,5 @@
     .text
-    .extern func_0207419c
+    .extern GraphicsSpriteGroup_Destroy
     .extern func_020280d8
     .extern Heap_Free
     .extern func_ov005_021fbb78
@@ -26,7 +26,7 @@ func_ov005_021fc110: ; 0x021fc110
     blx r1
 L_021fc144:
     ldr r0, [r4, #0x60]
-    bl func_0207419c
+    bl GraphicsSpriteGroup_Destroy
     ldr r5, [r4, #0x78]
     cmp r5, #0x0
     beq L_021fc168

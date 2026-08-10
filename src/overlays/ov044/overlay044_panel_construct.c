@@ -13,7 +13,7 @@ extern "C" u8 data_ov044_0220d330[];
 extern "C" u8 data_ov044_0220d338[];
 extern "C" void func_02071ea4(void *owner);
 extern "C" void func_02092798(void *presentation);
-extern "C" void *func_020742cc(void *font);
+extern "C" void *GraphicsSpriteGroupOwner_CreateGroup(void *font);
 extern "C" void func_02071ee0(void *owner, void *archive, s32 first,
                                s32 second, s32 third, s32 fourth);
 extern "C" void *func_02003e20(s32 size, const void *tag,
@@ -46,7 +46,7 @@ extern "C" void *func_ov044_0220b740(void *object, void *font, s32 rowCount)
     func_02071ea4((u8 *)object + 8);
     func_02092798((u8 *)object + 0x14);
     FIELD(void *, object, 0) = font;
-    FIELD(void *, object, 4) = func_020742cc(font);
+    FIELD(void *, object, 4) = GraphicsSpriteGroupOwner_CreateGroup(font);
     FIELD(s32, FIELD(void *, object, 4), 0x18) = 0x30;
     FIELD(s32, FIELD(void *, object, 4), 0x1c) = 0x20;
     func_02071ee0((u8 *)object + 8, data_020f4e18,

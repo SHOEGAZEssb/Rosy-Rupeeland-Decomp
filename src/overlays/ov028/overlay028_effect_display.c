@@ -13,8 +13,8 @@ extern "C" {
 #endif
 extern void func_02071ee0(void *, void *, s32, s32, s32);
 extern void func_02073e48(void *, s32, s32, s32, s32, s32, s32);
-extern void *func_02073ffc(void *, void *, s32);
-extern void func_020740a4(void *);
+extern void *GraphicsSpriteGroup_CreateStateFromSource(void *, void *, s32);
+extern void GraphicsSpriteGroup_AdvanceAnimations(void *);
 extern void GraphicsSpriteRenderer_SetFontResource(void *, void *);
 extern void GraphicsSpriteRenderer_DrawText(void *, const void *, s32, s32, s32, s32, s32);
 extern u32 func_02079d60(const void *);
@@ -54,18 +54,18 @@ extern "C" void func_ov028_021fd8b8(void *state, const void *descriptor,
         const s32 *ids = FIELD(const s32 *, descriptor, 4);
         func_02071ee0((u8 *)state + 8, data_020f4e18[0],
                       ids[1], ids[2], ids[3]);
-        void *sprite = func_02073ffc(FIELD(void *, state, 4),
+        void *sprite = GraphicsSpriteGroup_CreateStateFromSource(FIELD(void *, state, 4),
                                      (u8 *)state + 8, 2);
         func_02073e48(sprite, FIELD(u8, descriptor, 0xc),
                       0x39, 0x38, 1, 0, 0);
-        sprite = func_02073ffc(FIELD(void *, state, 4),
+        sprite = GraphicsSpriteGroup_CreateStateFromSource(FIELD(void *, state, 4),
                                (u8 *)state + 0x14, 2);
         func_02073e48(sprite, variant + 0x32, 0x3a, 0x5e, 1, 0, 0);
     } else {
         GraphicsSpriteRenderer_SetFontResource(font, FIELD(void *, state, 0x30));
         const void *text = func_02079f3c(data_021f3ecc, 0x188);
         GraphicsSpriteRenderer_DrawText(font, (u8 *)text + 2, 0x60, 0x1d, 1, 6, 0);
-        void *sprite = func_02073ffc(FIELD(void *, state, 4),
+        void *sprite = GraphicsSpriteGroup_CreateStateFromSource(FIELD(void *, state, 4),
                                      (u8 *)state + 0x14, 2);
         func_02073e48(sprite, variant, 0x3a, 0x5e, 1, 0, 0);
     }
@@ -83,7 +83,7 @@ extern "C" void func_ov028_021fda4c(void *state)
         func_ov028_021fd7e0(state);
         func_02091b98((u8 *)state + 0x58, 3);
     }
-    func_020740a4(FIELD(void *, state, 4));
+    GraphicsSpriteGroup_AdvanceAnimations(FIELD(void *, state, 4));
 }
 
 /* No-op callback: ignores `object`, changes no state, and returns void. */

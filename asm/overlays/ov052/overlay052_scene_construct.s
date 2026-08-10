@@ -14,7 +14,7 @@
 .extern GamePhaseRuntime_SetPlacementMode
 .extern GamePhaseCurrencyHud_SetVisible
 .extern func_02071980
-.extern func_020742cc
+.extern GraphicsSpriteGroupOwner_CreateGroup
 .extern GraphicsSpriteRenderer_ClearTextBuffer
 .extern func_02092cc0
 .extern func_ov052_0220d600
@@ -85,7 +85,7 @@ func_ov052_0220d618:
     ldr r0, .L_0220d86c
     str r2, [r1, #0xbc]
     ldr r0, [r0, #0x0]
-    bl func_020742cc
+    bl GraphicsSpriteGroupOwner_CreateGroup
     str r0, [r4, #0x1c]
     ldr r1, .L_0220d870
     ldr r3, .L_0220d868

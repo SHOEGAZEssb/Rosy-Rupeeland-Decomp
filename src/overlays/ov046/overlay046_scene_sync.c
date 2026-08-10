@@ -10,7 +10,7 @@
 
 extern "C" void func_ov046_0220c1d8(void *panel);
 extern "C" void func_ov046_0220c1a4(void *panel);
-extern "C" void func_020740a4(void *fontState);
+extern "C" void GraphicsSpriteGroup_AdvanceAnimations(void *fontState);
 
 /*
  * If bit 10 of scene flags +0x20 is set, update panel OAM hardware through
@@ -36,5 +36,5 @@ extern "C" void func_ov046_0220cb4c(void *scene)
     void *fontState = FIELD(void *, scene, 0x60);
     FIELD(s32, fontState, 0x18) = 0x80 - FIELD(s32, panel, 0x10c);
     FIELD(s32, fontState, 0x1c) = 0x60 - FIELD(s32, panel, 0x110);
-    func_020740a4(fontState);
+    GraphicsSpriteGroup_AdvanceAnimations(fontState);
 }

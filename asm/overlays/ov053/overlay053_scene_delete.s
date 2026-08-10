@@ -7,7 +7,7 @@
 .extern AnimationResource_Destroy
 .extern func_0201e28c
 .extern func_02071f38
-.extern func_02074330
+.extern GraphicsSpriteGroupOwner_DestroyGroup
 .extern gDebugFont
 
 .global func_ov053_0220d850
@@ -19,7 +19,7 @@ func_ov053_0220d850:
     ldr r0, .L_0220d8a8
     ldr r1, [r4, #0x8]
     ldr r0, [r0, #0x0]
-    bl func_02074330
+    bl GraphicsSpriteGroupOwner_DestroyGroup
     add r0, r4, #0x28
     bl func_02071f38
     bl OverlayManager_GetGlobal

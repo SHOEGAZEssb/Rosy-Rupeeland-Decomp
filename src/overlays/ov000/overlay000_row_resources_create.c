@@ -26,7 +26,7 @@ extern s32 func_02063084(void *component);
 extern s32 func_02063190(void *component);
 extern void func_02071ee0(void *metadata, void *config, s32 first, s32 second,
                           s32 third);
-extern void *func_02073ffc(void *context, void *metadata, s32 kind);
+extern void *GraphicsSpriteGroup_CreateStateFromSource(void *context, void *metadata, s32 kind);
 extern void func_02073e48(void *resource, s32 value, s32 x, s32 y, s32 mode,
                           s32 scale, s32 extra);
 extern s32 func_ov000_021fc834(const void *metadata, s32 mask);
@@ -72,7 +72,7 @@ void func_ov000_021fc84c(Overlay000RowResourcesState *state, s32 row)
         second = func_02063074(func_02062918(cell, 0));
         third = func_02063084(func_02062918(cell, 0));
         func_02071ee0(metadata, data_020f4e18, first, second, third);
-        resource = func_02073ffc(state->resourceContext_008, metadata, 2);
+        resource = GraphicsSpriteGroup_CreateStateFromSource(state->resourceContext_008, metadata, 2);
         value = func_02063190(func_02062918(cell, 0));
         func_02073e48(resource, value, FIELD(s32, metadata, 0x14),
                       FIELD(s32, metadata, 0x18), 2, 0x3000, 0);

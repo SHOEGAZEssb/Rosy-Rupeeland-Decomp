@@ -7,8 +7,8 @@
 .extern data_ov094_02219f14
 .extern data_ov094_02219f1c
 .extern GraphicsSpriteState_SetAnimationIndex
-.extern func_02073ffc
-.extern func_020740a4
+.extern GraphicsSpriteGroup_CreateStateFromSource
+.extern GraphicsSpriteGroup_AdvanceAnimations
 .extern func_0209189c
 .extern func_020918f4
 .extern func_02095274
@@ -54,12 +54,12 @@ func_ov094_022196e8:
     mov r1, r6
     mov r2, #0x1
     and r7, r3, #0xff
-    bl func_02073ffc
+    bl GraphicsSpriteGroup_CreateStateFromSource
     mov r5, r0
     ldr r0, [r6, #0x10]
     mov r1, r6
     mov r2, #0x1
-    bl func_02073ffc
+    bl GraphicsSpriteGroup_CreateStateFromSource
     mov r4, r0
     mov r0, r5
     mov r1, r7
@@ -134,9 +134,9 @@ func_ov094_022196e8:
     add r0, r6, #0x34
     bl func_02095360
     ldr r0, [r6, #0xc]
-    bl func_020740a4
+    bl GraphicsSpriteGroup_AdvanceAnimations
     ldr r0, [r6, #0x10]
-    bl func_020740a4
+    bl GraphicsSpriteGroup_AdvanceAnimations
 .L_022198a8:
     ldr r0, .L_022198cc
     mov r1, #0x3d4

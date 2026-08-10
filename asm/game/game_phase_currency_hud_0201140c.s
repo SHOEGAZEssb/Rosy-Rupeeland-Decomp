@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/game_phase_currency_hud_display.c.
 .text
 .extern GamePhaseCurrencyHud_SetCurrency
-.extern func_02074110
+.extern GraphicsSpriteGroup_ReleaseIndexedEntries
 .extern gGameWork
 
     .global GamePhaseCurrencyHud_SetVisible
@@ -27,7 +27,7 @@ L_02011444:
     strh r4, [r5, #0xcc]
 L_02011454:
     ldr r0, [r5, r4, lsl #0x2]
-    bl func_02074110
+    bl GraphicsSpriteGroup_ReleaseIndexedEntries
     add r4, r4, #0x1
     cmp r4, #0x2
     blt L_02011454

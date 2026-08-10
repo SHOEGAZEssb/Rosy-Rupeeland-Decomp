@@ -6,8 +6,8 @@
 .extern data_ov028_021ff29c
 .extern func_02071ee0
 .extern func_02073e48
-.extern func_02073ffc
-.extern func_020740a4
+.extern GraphicsSpriteGroup_CreateStateFromSource
+.extern GraphicsSpriteGroup_AdvanceAnimations
 .extern GraphicsSpriteRenderer_SetFontResource
 .extern GraphicsSpriteRenderer_DrawText
 .extern func_02079d60
@@ -64,7 +64,7 @@ func_ov028_021fd8b8:
     ldr r0, [r6, #0x4]
     add r1, r6, #0x8
     mov r2, #0x2
-    bl func_02073ffc
+    bl GraphicsSpriteGroup_CreateStateFromSource
     mov r1, #0x1
     str r1, [sp, #0x0]
     mov r1, #0x0
@@ -77,7 +77,7 @@ func_ov028_021fd8b8:
     ldr r0, [r6, #0x4]
     add r1, r6, #0x14
     mov r2, #0x2
-    bl func_02073ffc
+    bl GraphicsSpriteGroup_CreateStateFromSource
     mov r2, #0x1
     str r2, [sp, #0x0]
     mov r2, #0x0
@@ -110,7 +110,7 @@ L_021fd9c0:
     ldr r0, [r6, #0x4]
     add r1, r6, #0x14
     mov r2, #0x2
-    bl func_02073ffc
+    bl GraphicsSpriteGroup_CreateStateFromSource
     mov r1, r4
     mov r2, #0x1
     str r2, [sp, #0x0]
@@ -146,7 +146,7 @@ func_ov028_021fda4c:
     bl func_02091b98
 L_021fda88:
     ldr r0, [r4, #0x4]
-    bl func_020740a4
+    bl GraphicsSpriteGroup_AdvanceAnimations
     ldmia sp!, {r4, pc}
 .size func_ov028_021fda4c, .-func_ov028_021fda4c
 

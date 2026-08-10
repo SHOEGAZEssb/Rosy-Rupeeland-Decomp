@@ -2,7 +2,7 @@
 .text
 .extern DebugSpriteText_DrawCentered
 .extern func_020269f8
-.extern func_020740a4
+.extern GraphicsSpriteGroup_AdvanceAnimations
 
     .global func_0202613c
     .type func_0202613c, @function
@@ -20,6 +20,6 @@ func_0202613c: ; 0x0202613c
     add r0, r4, #0x4
     bl func_020269f8
     ldr r0, [r4, #0xa8]
-    bl func_020740a4
+    bl GraphicsSpriteGroup_AdvanceAnimations
     ldmia sp!, {r4, pc}
     .size func_0202613c, . - func_0202613c

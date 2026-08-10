@@ -4,7 +4,7 @@
     .extern data_ov022_022006b4
     .extern func_020593ac
     .extern func_02073e48
-    .extern func_02073ffc
+    .extern GraphicsSpriteGroup_CreateStateFromSource
     .extern func_0209189c
     .extern func_020918f4
     .extern func_02091b98
@@ -89,7 +89,7 @@ L_021fd150:
     ldr r0, [r6, #0x0]
     add r1, r6, #0x4
     mov r2, #0x1
-    bl func_02073ffc
+    bl GraphicsSpriteGroup_CreateStateFromSource
     ldr r3, [r6, #0x68]
     mov r1, #0x0
     str r1, [sp, #0x0]

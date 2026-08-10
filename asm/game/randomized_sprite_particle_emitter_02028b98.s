@@ -10,7 +10,7 @@
 .extern AnimationResource_InitEmpty
 .extern func_0201e250
 .extern func_02028c94
-.extern func_020742cc
+.extern GraphicsSpriteGroupOwner_CreateGroup
 
     .global func_02028b98
     .type func_02028b98, @function
@@ -66,7 +66,7 @@ func_02028b98: ; 0x02028b98
     bl AnimationResource_Destroy
     ldr r0, .L_02028c90
     ldr r0, [r0, #0x0]
-    bl func_020742cc
+    bl GraphicsSpriteGroupOwner_CreateGroup
     str r0, [r4, #0x4c]
     mov r0, r4
     add sp, sp, #0x24

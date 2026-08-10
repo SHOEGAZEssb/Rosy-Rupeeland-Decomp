@@ -3,7 +3,7 @@
 .type UtilAnimationResource_Init, @function
     .extern data_020d4168
     .extern TouchPoint_InitZero
-    .extern func_02073fc4
+    .extern GraphicsSpriteGroup_CreateState
 
 UtilAnimationResource_Init:
     stmdb sp!, {r3, r4, r5, r6, lr}
@@ -25,7 +25,7 @@ UtilAnimationResource_Init:
     ldr r2, [sp, #0x20]
     ldr r3, [sp, #0x24]
     mov r0, r6
-    bl func_02073fc4
+    bl GraphicsSpriteGroup_CreateState
     ldr r2, [sp, #0x18]
     str r0, [r4, #4]
     mov r12, r0
@@ -38,7 +38,7 @@ UtilAnimationResource_Init:
     ldr r2, [sp, #0x20]
     ldr r3, [sp, #0x24]
     mov r0, r5
-    bl func_02073fc4
+    bl GraphicsSpriteGroup_CreateState
     str r0, [r4, #8]
     ldrh r2, [r0, #0x24]
     mov r1, #0

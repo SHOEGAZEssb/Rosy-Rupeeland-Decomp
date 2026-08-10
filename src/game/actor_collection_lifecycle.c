@@ -38,8 +38,8 @@ extern void *gDebugFont;
 extern void OverlaySlot_Init(void *owner);
 extern void OverlaySlot_Destroy(void *owner);
 extern void OverlaySlot_UnloadOverlay(void *owner);
-extern void *func_020742cc(void *pool);
-extern void func_02074330(void *pool, void *sprite);
+extern void *GraphicsSpriteGroupOwner_CreateGroup(void *pool);
+extern void GraphicsSpriteGroupOwner_DestroyGroup(void *pool, void *sprite);
 extern void ActorCollection_UnregisterAndDestroyAllActors(ActorCollection *self);
 extern void ActorCollection_Deinit(ActorCollection *self);
 #ifdef __cplusplus
@@ -101,9 +101,9 @@ ActorCollection *ActorCollection_Init(ActorCollection *self)
 void ActorCollection_SetSpriteMode(ActorCollection *self, s32 mode)
 {
     if (mode == 1)
-        self->spriteOwner_0e00 = func_020742cc(data_020f4e14);
+        self->spriteOwner_0e00 = GraphicsSpriteGroupOwner_CreateGroup(data_020f4e14);
     else if (mode == 2)
-        self->spriteOwner_0e00 = func_020742cc(gDebugFont);
+        self->spriteOwner_0e00 = GraphicsSpriteGroupOwner_CreateGroup(gDebugFont);
     self->spriteMode_2e84 = mode;
 }
 
@@ -125,10 +125,10 @@ void ActorCollection_Deinit(ActorCollection *self)
 {
     ActorCollection_UnregisterAndDestroyAllActors(self);
     if (self->spriteMode_2e84 == 1) {
-        func_02074330(data_020f4e14, self->spriteOwner_0e00);
+        GraphicsSpriteGroupOwner_DestroyGroup(data_020f4e14, self->spriteOwner_0e00);
         self->spriteOwner_0e00 = 0;
     } else if (self->spriteMode_2e84 == 2) {
-        func_02074330(gDebugFont, self->spriteOwner_0e00);
+        GraphicsSpriteGroupOwner_DestroyGroup(gDebugFont, self->spriteOwner_0e00);
         self->spriteOwner_0e00 = 0;
     }
     OverlaySlot_UnloadOverlay(&self->owner_0e04);

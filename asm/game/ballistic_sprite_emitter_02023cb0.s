@@ -7,7 +7,7 @@
 .extern AnimationResource_Destroy
 .extern func_0201e28c
 .extern func_02023c0c
-.extern func_02074330
+.extern GraphicsSpriteGroupOwner_DestroyGroup
 .extern gDebugFont
 
     .global func_02023cb0
@@ -20,7 +20,7 @@ func_02023cb0: ; 0x02023cb0
     ldr r0, .L_02023d10
     ldr r1, [r4, #0x38]
     ldr r0, [r0, #0x0]
-    bl func_02074330
+    bl GraphicsSpriteGroupOwner_DestroyGroup
     ldr r1, .L_02023d14
     add r0, r4, #0x3c
     str r1, [r4, #0x3c]

@@ -5,7 +5,7 @@
 .extern ActorCollection_GetSpriteOwner
 .extern Actor_GetCollection
 .extern GraphicsSpriteState_SetAnimationIndex
-.extern func_02073fc4
+.extern GraphicsSpriteGroup_CreateState
 
     .global func_020313b4
     .type func_020313b4, @function
@@ -32,7 +32,7 @@ func_020313b4: ; 0x020313b4
     ldr r1, [r5, #0x14]
     ldr r2, [r5, #0x18]
     ldr r3, [r5, #0x1c]
-    bl func_02073fc4
+    bl GraphicsSpriteGroup_CreateState
     str r0, [r4, #0x58]
     ldr r1, [r4, #0x54]
     ldrb r1, [r1, #0x38]

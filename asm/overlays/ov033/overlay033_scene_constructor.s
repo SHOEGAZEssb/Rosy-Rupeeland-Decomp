@@ -6,7 +6,7 @@
     .extern func_02091b6c
     .extern func_02092798
     .extern Type7Actor_EnterFlag40000State
-    .extern func_020742cc
+    .extern GraphicsSpriteGroupOwner_CreateGroup
     .extern Heap_Alloc
     .extern func_ov033_021fce1c
     .extern func_02092814
@@ -85,7 +85,7 @@ L_021fd148:
     ldr r0, L_021fd248
     str r1, [r4, #0x44]
     ldr r0, [r0, #0x0]
-    bl func_020742cc
+    bl GraphicsSpriteGroupOwner_CreateGroup
     str r0, [r4, #0x0]
     ldr r1, L_021fd24c
     ldr r3, L_021fd250

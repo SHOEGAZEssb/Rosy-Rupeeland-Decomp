@@ -22,7 +22,7 @@ extern void *func_020628c8(void *);
 extern void func_02062874(void *, u16);
 extern s32 func_0206514c(void *, s32);
 extern void func_0206fcec(void *);
-extern void func_020740e8(void *, s32, void *);
+extern void GraphicsSpriteGroup_ReplaceStateResourcesFromSource(void *, s32, void *);
 extern void func_02092260(void *, s32);
 extern void func_020922f0(void *, s32);
 extern void func_02094cf0(void *, void *, s32);
@@ -65,7 +65,7 @@ extern "C" s32 func_ov017_02200cc0(void *state)
                 if (FIELD(s32, state, 0x3bc) != 0) {
                     func_020954c0(FIELD(void *, state, 0x260), 1);
                 } else {
-                    func_020740e8(FIELD(void *, state, 0x58),
+                    GraphicsSpriteGroup_ReplaceStateResourcesFromSource(FIELD(void *, state, 0x58),
                                   FIELD(s32, FIELD(void *, state, 0x260), 0x9c),
                                   (u8 *)state + 0x74);
                 }

@@ -27,8 +27,8 @@ extern void func_02092798(void *transform);
 extern void func_02091b6c(void *timer);
 extern void func_02071ee0(void *resource, void *archive, s32 firstId,
                           s32 mode, s32 lastId);
-extern void *func_020742cc(void *resource);
-extern void *func_02073ffc(void *resource, void *owner, s32 mode);
+extern void *GraphicsSpriteGroupOwner_CreateGroup(void *resource);
+extern void *GraphicsSpriteGroup_CreateStateFromSource(void *resource, void *owner, s32 mode);
 extern void func_020957f0(void *list, void *resource, s32 count, s32 mode,
                           s32 initial);
 extern void func_02095820(void *list, s32 width, s32 height);
@@ -77,9 +77,9 @@ extern "C" void *func_ov038_021fce2c(void *presentation, void *argument)
 
     func_02071ee0((u8 *)presentation + 0x54, data_020f4e18[0],
                   0x38, 1, 0x39);
-    void *owner = func_020742cc(data_020f4e14[0]);
+    void *owner = GraphicsSpriteGroupOwner_CreateGroup(data_020f4e14[0]);
     FIELD(void *, presentation, 0x60) = owner;
-    void *resource = func_02073ffc((u8 *)presentation + 0x54, owner, 2);
+    void *resource = GraphicsSpriteGroup_CreateStateFromSource((u8 *)presentation + 0x54, owner, 2);
     func_020957f0((u8 *)presentation + 0x64, resource, 6, 1, 0);
     func_02095820((u8 *)presentation + 0x64, 0xe8, 0xa0);
 

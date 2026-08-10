@@ -31,32 +31,37 @@ extern "C" {
 
 void GraphicsSpriteState_ReleaseResources(GraphicsSpriteState *state);
 void GraphicsSpriteState_PrepareResources(GraphicsSpriteState *state);
-void func_02073ef8(GraphicsSpriteState *state);
+void GraphicsSpriteState_ReleaseFromGroup(GraphicsSpriteState *state);
 GraphicsSpriteGroup *GraphicsSpriteGroup_Init(GraphicsSpriteGroup *group,
                                               void *owner);
 void GraphicsSpriteGroup_AppendState(GraphicsSpriteGroup *group,
                                      GraphicsSpriteState *state);
 void GraphicsSpriteGroup_RemoveState(GraphicsSpriteGroup *group,
                                      GraphicsSpriteState *state);
-GraphicsSpriteState *func_02073fc4(GraphicsSpriteGroup *group, void *field14,
-                                    void *field18, void *field1c, u8 attach);
-GraphicsSpriteState *func_02073ffc(GraphicsSpriteGroup *group,
-                                    const GraphicsSpriteSource3 *source,
-                                    u8 attach);
-void func_02074038(GraphicsSpriteGroup *group, GraphicsSpriteState *state);
-void func_02074058(GraphicsSpriteGroup *group);
-void func_020740a4(GraphicsSpriteGroup *group);
-void func_020740c8(GraphicsSpriteGroup *group, GraphicsSpriteState *state,
-                   void *field14, void *field18, void *field1c);
-void func_020740e8(GraphicsSpriteGroup *group, GraphicsSpriteState *state,
-                   const GraphicsSpriteSource3 *source);
-void func_02074110(GraphicsSpriteGroup *group);
+GraphicsSpriteState *GraphicsSpriteGroup_CreateState(
+    GraphicsSpriteGroup *group, void *field14, void *field18, void *field1c,
+    u8 attach);
+GraphicsSpriteState *GraphicsSpriteGroup_CreateStateFromSource(
+    GraphicsSpriteGroup *group, const GraphicsSpriteSource3 *source,
+    u8 attach);
+void GraphicsSpriteGroup_ReleaseState(GraphicsSpriteGroup *group,
+                                      GraphicsSpriteState *state);
+void GraphicsSpriteGroup_Clear(GraphicsSpriteGroup *group);
+void GraphicsSpriteGroup_AdvanceAnimations(GraphicsSpriteGroup *group);
+void GraphicsSpriteGroup_ReplaceStateResources(
+    GraphicsSpriteGroup *group, GraphicsSpriteState *state, void *field14,
+    void *field18, void *field1c);
+void GraphicsSpriteGroup_ReplaceStateResourcesFromSource(
+    GraphicsSpriteGroup *group, GraphicsSpriteState *state,
+    const GraphicsSpriteSource3 *source);
+void GraphicsSpriteGroup_ReleaseIndexedEntries(GraphicsSpriteGroup *group);
 void GraphicsSpriteGroup_ReleaseResources(GraphicsSpriteGroup *group);
 void GraphicsSpriteGroup_PrepareResources(GraphicsSpriteGroup *group);
-void func_0207419c(GraphicsSpriteGroup *group);
+void GraphicsSpriteGroup_Destroy(GraphicsSpriteGroup *group);
 void GraphicsSpriteState_InitGlobalPool(void);
-GraphicsSpriteGroup *func_020742cc(void *owner);
-void func_02074330(void *owner, GraphicsSpriteGroup *group);
+GraphicsSpriteGroup *GraphicsSpriteGroupOwner_CreateGroup(void *owner);
+void GraphicsSpriteGroupOwner_DestroyGroup(void *owner,
+                                           GraphicsSpriteGroup *group);
 
 #ifdef __cplusplus
 }

@@ -68,10 +68,10 @@ extern void func_0201e250(void *);
 extern void func_0201e28c(void *);
 extern void *func_0201ded4(void *, void *);
 extern void func_02071f38(void *);
-extern u8 *func_020742cc(void *);
-extern void func_02074330(void *, void *);
-extern void func_020740a4(void *);
-extern void func_02074110(void *);
+extern u8 *GraphicsSpriteGroupOwner_CreateGroup(void *);
+extern void GraphicsSpriteGroupOwner_DestroyGroup(void *, void *);
+extern void GraphicsSpriteGroup_AdvanceAnimations(void *);
+extern void GraphicsSpriteGroup_ReleaseIndexedEntries(void *);
 extern void *func_02028860(void *, void *, void *, const void *,
                            const void *, s32);
 extern void *func_0202895c(void *);
@@ -115,7 +115,7 @@ RandomizedSpriteParticleEmitter *func_02028b98(
     AnimationResource_Init(temporary, 0x168b, 0x168c, 0x168d);
     AnimationResource_Assign(self->resources_2c + 0x10, temporary);
     AnimationResource_Destroy(temporary);
-    self->spriteOwner_4c = func_020742cc(data_020f4e14);
+    self->spriteOwner_4c = GraphicsSpriteGroupOwner_CreateGroup(data_020f4e14);
     return self;
 }
 
@@ -166,7 +166,7 @@ RandomizedSpriteParticleEmitter *func_02028d14(
         }
         node = next;
     }
-    func_02074330(data_020f4e14, self->spriteOwner_4c);
+    GraphicsSpriteGroupOwner_DestroyGroup(data_020f4e14, self->spriteOwner_4c);
     func_02071f38(self->resources_2c + 4);
     func_02071f38(self->resources_2c + 0x14);
     self->particles_5c.vtable_00 = (void **)data_020de89c;
@@ -262,7 +262,7 @@ s32 func_02028f04(RandomizedSpriteParticleEmitter *self)
         node = next;
     }
     VecFx32_Subtract(&projected, &self->position_0c, self->projection_08);
-    func_020740a4(self->spriteOwner_4c);
+    GraphicsSpriteGroup_AdvanceAnimations(self->spriteOwner_4c);
     func_02005058(&projected);
     return 0;
 }
@@ -298,7 +298,7 @@ void func_02029170(RandomizedSpriteParticleEmitter *self, s32 enabled)
     if (enabled)
         *(u32 *)(self->spriteOwner_4c + 0x20) = 1;
     else
-        func_02074110(self->spriteOwner_4c);
+        GraphicsSpriteGroup_ReleaseIndexedEntries(self->spriteOwner_4c);
 }
 
 /* Destroy an independently allocated particle list, free it, and return its old address. */

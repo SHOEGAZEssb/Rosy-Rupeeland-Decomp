@@ -20,14 +20,14 @@ typedef struct Overlay004ContextUpdateState {
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_020740a4(void *context);
+extern void GraphicsSpriteGroup_AdvanceAnimations(void *context);
 #ifdef __cplusplus
 }
 #endif
 
 /*
  * Copy state fields +0x7C/+0x8C to primaryContext_060 offsets +0x18/+0x1C,
- * then pass primaryContext_060 and secondaryContext_064 to func_020740a4.
+ * then pass primaryContext_060 and secondaryContext_064 to GraphicsSpriteGroup_AdvanceAnimations.
  * Returns no value. Renderer/animation effects occur in the callee; no direct
  * hardware access is performed here, and the forwarded field semantics remain
  * unconfirmed.
@@ -39,6 +39,6 @@ void func_ov004_021fbf10(Overlay004ContextUpdateState *state)
 {
     FIELD(s32, state->primaryContext_060, 0x18) = state->forwarded_07c;
     FIELD(s32, state->primaryContext_060, 0x1c) = state->forwarded_08c;
-    func_020740a4(state->primaryContext_060);
-    func_020740a4(state->secondaryContext_064);
+    GraphicsSpriteGroup_AdvanceAnimations(state->primaryContext_060);
+    GraphicsSpriteGroup_AdvanceAnimations(state->secondaryContext_064);
 }

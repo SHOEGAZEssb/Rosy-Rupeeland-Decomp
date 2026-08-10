@@ -63,9 +63,9 @@ extern void func_02071ea4(void *state);
 extern void func_02071eb8(void *state);
 extern void func_02071ee0(void *state, void *table, s32 first, s32 second,
                           s32 third);
-extern void *func_020742cc(void *resource);
-extern void func_02074058(void *resource);
-extern void func_020740a4(void *resource);
+extern void *GraphicsSpriteGroupOwner_CreateGroup(void *resource);
+extern void GraphicsSpriteGroup_Clear(void *resource);
+extern void GraphicsSpriteGroup_AdvanceAnimations(void *resource);
 extern void GameWork_ClearFlag(void *gameWork, s32 flag);
 extern s32 GameWork_TestFlag(void *gameWork, s32 flag);
 extern void GameWork_SetFlag(void *gameWork, s32 flag);
@@ -118,8 +118,8 @@ RisingSpriteSwarmPresentation *RisingSpriteSwarmPresentation_Init(
     func_0200500c(&offset, 0, 0, trackZ << 12);
     func_020050c8(&self->track38, &offset);
     func_02005058(&offset);
-    self->resource24 = func_020742cc(data_020f4e14);
-    self->resource28 = func_020742cc(gDebugFont);
+    self->resource24 = GraphicsSpriteGroupOwner_CreateGroup(data_020f4e14);
+    self->resource28 = GraphicsSpriteGroupOwner_CreateGroup(gDebugFont);
     func_02071ee0(self->spriteConfig2c, data_020f4e18, 0x1658, 0x1659,
                   0x165a);
     GameWork_ClearFlag(gGameWork, 0x408);
@@ -177,8 +177,8 @@ static RisingSpriteSwarmPresentation *teardown_swarm(
         /* Retail reloads next00 through the just-freed node allocation. */
         node = node->next00;
     }
-    func_02074058(self->resource24);
-    func_02074058(self->resource28);
+    GraphicsSpriteGroup_Clear(self->resource24);
+    GraphicsSpriteGroup_Clear(self->resource28);
     func_02005058(&self->track38);
     func_02071eb8(self->spriteConfig2c);
     self->controllers0c.vtable = (void **)data_020d6358;
@@ -290,8 +290,8 @@ s32 RisingSpriteSwarmPresentation_Update(RisingSpriteSwarmPresentation *self)
         }
         node = node->next00;
     }
-    func_020740a4(self->resource24);
-    func_020740a4(self->resource28);
+    GraphicsSpriteGroup_AdvanceAnimations(self->resource24);
+    GraphicsSpriteGroup_AdvanceAnimations(self->resource28);
     return 0;
 }
 

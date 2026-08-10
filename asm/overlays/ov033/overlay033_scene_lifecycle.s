@@ -2,10 +2,10 @@
 
 /* Exact fallback; see src/overlays/ov033/overlay033_scene_lifecycle.c for documented portable C. */
 
-    .extern func_0207419c
+    .extern GraphicsSpriteGroup_Destroy
     .extern func_020927b8
     .extern func_02005058
-    .extern func_020740a4
+    .extern GraphicsSpriteGroup_AdvanceAnimations
     .extern func_ov033_021fcff4
 
     .global func_ov033_021fd260
@@ -37,7 +37,7 @@ L_021fd298:
     bic r0, r0, #0x10
     strh r0, [r1, #0x24]
     ldr r0, [r4, #0x0]
-    bl func_0207419c
+    bl GraphicsSpriteGroup_Destroy
     add r0, r4, #0xa0
     bl func_020927b8
     add r0, r4, #0x24
@@ -53,7 +53,7 @@ func_ov033_021fd2e8:
     ldr ip, L_021fd2f4
     ldr r0, [r0, #0x0]
     bx ip
-L_021fd2f4: .word func_020740a4
+L_021fd2f4: .word GraphicsSpriteGroup_AdvanceAnimations
 .size func_ov033_021fd2e8, .-func_ov033_021fd2e8
 
     .global func_ov033_021fd2f8

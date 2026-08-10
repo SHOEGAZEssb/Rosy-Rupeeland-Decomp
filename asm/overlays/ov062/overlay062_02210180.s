@@ -12,7 +12,7 @@
 .extern VecFx32Triple_Destroy
 .extern Actor_SetDirectionFromVector
 .extern ActorDerivedType1_ResetToBaseState
-.extern func_02073ef8
+.extern GraphicsSpriteState_ReleaseFromGroup
 .extern func_ov062_0220fd20
 .extern gGameWork
 
@@ -24,7 +24,7 @@ func_ov062_02210180:
     str r1, [r4, #0x0]
     bl Scene_ClearFlags03
     ldr r0, [r4, #0x28]
-    bl func_02073ef8
+    bl GraphicsSpriteState_ReleaseFromGroup
     ldr r0, [r4, #0x2c]
     cmp r0, #0x0
     beq .L_022101b4

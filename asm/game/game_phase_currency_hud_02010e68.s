@@ -7,8 +7,8 @@
 .extern GamePhaseCurrencyHud_UpdateDigits
 .extern GamePhaseCurrencyHud_SetVisible
 .extern GraphicsSpriteState_SetAnimationIndex
-.extern func_020740a4
-.extern func_02074110
+.extern GraphicsSpriteGroup_AdvanceAnimations
+.extern GraphicsSpriteGroup_ReleaseIndexedEntries
 .extern func_02091a70
 .extern func_020bf1f8
 .extern gGameWork
@@ -109,12 +109,12 @@ L_02010f9c:
     ldr r0, [r10, #0x4]
     ldr r5, [r10, #0x0]
     mov r9, #0x0
-    bl func_02074110
+    bl GraphicsSpriteGroup_ReleaseIndexedEntries
     b L_02010fd4
 L_02010fc8:
     ldmia r10, {r0, r5}
     mov r9, #0x1
-    bl func_02074110
+    bl GraphicsSpriteGroup_ReleaseIndexedEntries
 L_02010fd4:
     mov r0, #0x1
     str r0, [r5, #0x20]
@@ -319,7 +319,7 @@ L_020112a8:
     strneh r0, [r10, #0xb0]
 L_020112c0:
     ldr r0, [r10, r4, lsl #0x2]
-    bl func_020740a4
+    bl GraphicsSpriteGroup_AdvanceAnimations
     add r4, r4, #0x1
     cmp r4, #0x2
     blt L_020112c0

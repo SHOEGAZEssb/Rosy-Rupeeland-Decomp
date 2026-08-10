@@ -3,7 +3,7 @@
 .extern DebugText_BeginFrame
 .extern data_ov068_022107c0
 .extern GraphicsSpriteState_SetAnimationIndex
-.extern func_020740a4
+.extern GraphicsSpriteGroup_AdvanceAnimations
 .extern func_020befec
 .extern func_020bf1f8
 .extern gSystemState
@@ -347,7 +347,7 @@ func_ov068_022101d8:
     strh r1, [r0, #0x32]
     strh r1, [r0, #0x34]
     ldr r0, [r4, #0x24]
-    bl func_020740a4
+    bl GraphicsSpriteGroup_AdvanceAnimations
     bl DebugText_BeginFrame
     ldr r1, [r4, #0x54]
     mov r0, #0x0

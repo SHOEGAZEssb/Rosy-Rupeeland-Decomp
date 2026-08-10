@@ -32,8 +32,8 @@ extern void func_02071c38(void *, void *);
 extern void func_02071ea4(void *);
 extern void func_02071eb8(void *);
 extern void func_02071ee0(void *, void *, s32, s32, s32);
-extern void func_0207419c(void *);
-extern void *func_020742cc(void *);
+extern void GraphicsSpriteGroup_Destroy(void *);
+extern void *GraphicsSpriteGroupOwner_CreateGroup(void *);
 extern void GraphicsSpriteRenderer_QueuePaletteUploads(void *);
 extern u32 func_02079160(const void *, s32);
 extern const void *func_020791e0(const void *, s32);
@@ -104,7 +104,7 @@ static void destroy_scene_members(void *state)
         }
     }
 
-    func_0207419c(FIELD(void *, state, 0x94));
+    GraphicsSpriteGroup_Destroy(FIELD(void *, state, 0x94));
     func_02071c38(data_020f4e18, FIELD(void *, state, 0x400));
     *(volatile u16 *)0x04000050 = 0;
     *(volatile u16 *)0x04001050 = 0;
@@ -185,7 +185,7 @@ extern "C" void *func_ov021_021fd7e8(void *state, s32 mode)
     func_02071ee0((u8 *)state + 0x7c, data_020f4e18, 0x3d, 0x3e, 0x3f);
     func_02071ee0((u8 *)state + 0x88, data_020f4e18, 0x44, 0x45, 0x46);
     FIELD(void *, state, 0x38c) = func_ov045_0220c48c(mode, 0, 0);
-    FIELD(void *, state, 0x94) = func_020742cc(data_020f4e14);
+    FIELD(void *, state, 0x94) = GraphicsSpriteGroupOwner_CreateGroup(data_020f4e14);
 
     func_ov021_021fdf88(state);
     func_ov021_021fe098(state);

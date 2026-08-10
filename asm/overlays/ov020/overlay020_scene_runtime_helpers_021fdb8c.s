@@ -3,7 +3,7 @@
     .extern Heap_Free
     .extern data_ov020_021fe504
     .extern func_02071eb8
-    .extern func_0207419c
+    .extern GraphicsSpriteGroup_Destroy
     .extern func_020927b8
     .extern func_ov020_021fcfd4
     .extern func_ov020_021fd404
@@ -19,7 +19,7 @@ func_ov020_021fdb8c:
     bic r0, r0, #0x400
     str r0, [r5, #0x20]
     ldr r0, [r5, #0x6c]
-    bl func_0207419c
+    bl GraphicsSpriteGroup_Destroy
     ldr r4, [r5, #0x1e0]
     cmp r4, #0x0
     beq L_021fdbcc

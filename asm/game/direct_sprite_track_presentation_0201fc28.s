@@ -10,7 +10,7 @@
 .extern func_02071ea4
 .extern func_02071ee0
 .extern GraphicsSpriteState_SetAnimationIndex
-.extern func_02073fc4
+.extern GraphicsSpriteGroup_CreateState
 
 .global func_0201fc28
     .type func_0201fc28, @function
@@ -54,7 +54,7 @@ func_0201fc28: ; 0x0201fc28
     ldr r1, [r7, #0x8]
     ldr r2, [r7, #0xc]
     ldr r3, [r7, #0x10]
-    bl func_02073fc4
+    bl GraphicsSpriteGroup_CreateState
     b .L_0201fcf8
 .L_0201fccc:
     ldr r0, .L_0201fd60
@@ -67,7 +67,7 @@ func_0201fc28: ; 0x0201fc28
     ldr r1, [r7, #0x8]
     ldr r2, [r7, #0xc]
     ldr r3, [r7, #0x10]
-    bl func_02073fc4
+    bl GraphicsSpriteGroup_CreateState
 .L_0201fcf8:
     ldr r1, [sp, #0x1c]
     str r0, [r7, #0x14]

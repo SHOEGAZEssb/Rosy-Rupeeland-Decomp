@@ -33,8 +33,8 @@
 .extern func_0205974c
 .extern func_0206c978
 .extern GraphicsSpriteState_SetAnimationIndex
-.extern func_02073fc4
-.extern func_020742cc
+.extern GraphicsSpriteGroup_CreateState
+.extern GraphicsSpriteGroupOwner_CreateGroup
 .extern func_0207a19c
 .extern func_020ae1fc
 .extern gDebugFont
@@ -393,11 +393,11 @@ func_ov064_0220fd20:
     bl GamePhaseTouchPrompt_SetEnabled
     ldr r0, .L_02210634
     ldr r0, [r0, #0x0]
-    bl func_020742cc
+    bl GraphicsSpriteGroupOwner_CreateGroup
     str r0, [r4, #0x3c]
     ldr r0, .L_02210638
     ldr r0, [r0, #0x0]
-    bl func_020742cc
+    bl GraphicsSpriteGroupOwner_CreateGroup
     str r0, [r4, #0x40]
     ldr r1, .L_02210604
     ldr r3, .L_02210608
@@ -450,7 +450,7 @@ func_ov064_0220fd20:
     str r0, [sp, #0x0]
     ldr r0, [r4, #0x3c]
     ldmib r3, {r1, r2, r3}
-    bl func_02073fc4
+    bl GraphicsSpriteGroup_CreateState
     mov r1, #0x1
     str r0, [r4, #0x38]
     bl GraphicsSpriteState_SetAnimationIndex
@@ -461,7 +461,7 @@ func_ov064_0220fd20:
     ldr r0, [r4, #0x3c]
     ldr r2, [r6, #0x18]
     ldr r3, [r6, #0x1c]
-    bl func_02073fc4
+    bl GraphicsSpriteGroup_CreateState
     str r0, [r4, #0x38]
     ldrb r1, [r6, #0x38]
     bl GraphicsSpriteState_SetAnimationIndex

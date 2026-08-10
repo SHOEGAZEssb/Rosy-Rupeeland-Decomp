@@ -45,12 +45,12 @@ GamePhaseTouchPrompt *GamePhaseTouchPrompt_Init(GamePhaseTouchPrompt *self, void
     self->state = 3;
     self->savedState = 3;
     self->timer = 0;
-    self->spriteGroup = func_020742cc(data_020f4e14);
+    self->spriteGroup = GraphicsSpriteGroupOwner_CreateGroup(data_020f4e14);
     func_02071ee0(&self->resources, data_020f4e18,
                   (void *)0x3298, (void *)0x3299, (void *)0x329a);
     allocation = Heap_Alloc(0xa0, data_020d5628, 4, &gHeapContext);
     if (allocation) {
-        sprite = func_02073ffc(self->spriteGroup,
+        sprite = GraphicsSpriteGroup_CreateStateFromSource(self->spriteGroup,
                                &self->resources, 2);
         allocation = func_020953f4(allocation, sprite);
     }
@@ -73,7 +73,7 @@ GamePhaseTouchPrompt *GamePhaseTouchPrompt_Destroy(GamePhaseTouchPrompt *self)
     self->vtable = data_020d5604;
     if (self->actor)
         ((void (*)(void *))(*(void ***)self->actor)[1])(self->actor);
-    func_0207419c(self->spriteGroup);
+    GraphicsSpriteGroup_Destroy(self->spriteGroup);
     func_02071eb8(&self->resources);
     func_02006138(self);
     return self;

@@ -5,7 +5,7 @@
 .extern data_020f4e18
 .extern func_02071ea4
 .extern func_02071ee0
-.extern func_020742cc
+.extern GraphicsSpriteGroupOwner_CreateGroup
 .extern gDebugFont
 .extern gGameWork
 
@@ -27,11 +27,11 @@ func_ov094_0221991c:
     bl func_02071ee0
     ldr r0, .L_022199c8
     ldr r0, [r0, #0x0]
-    bl func_020742cc
+    bl GraphicsSpriteGroupOwner_CreateGroup
     ldr r1, .L_022199cc
     str r0, [r4, #0xc]
     ldr r0, [r1, #0x0]
-    bl func_020742cc
+    bl GraphicsSpriteGroupOwner_CreateGroup
     ldr r1, .L_022199d0
     str r0, [r4, #0x10]
     ldr r0, [r1, #0x0]

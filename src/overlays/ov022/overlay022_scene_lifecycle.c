@@ -29,8 +29,8 @@ extern void func_02071c38(void *, void *);
 extern void func_02071ea4(void *);
 extern void func_02071eb8(void *);
 extern void func_02071ee0(void *, void *, s32, s32, s32);
-extern void func_0207419c(void *);
-extern void *func_020742cc(void *);
+extern void GraphicsSpriteGroup_Destroy(void *);
+extern void *GraphicsSpriteGroupOwner_CreateGroup(void *);
 extern void GraphicsSpriteRenderer_QueuePaletteUploads(void *);
 extern void func_02091e28(void *);
 extern void func_02092798(void *);
@@ -94,8 +94,8 @@ static void destroy_scene_members(void *scene)
         func_ov022_021fda28(menu);
         Heap_Free(menu);
     }
-    func_0207419c(FIELD(void *, scene, 0x9c));
-    func_0207419c(FIELD(void *, scene, 0xa0));
+    GraphicsSpriteGroup_Destroy(FIELD(void *, scene, 0x9c));
+    GraphicsSpriteGroup_Destroy(FIELD(void *, scene, 0xa0));
     func_02071c38(data_020f4e18, FIELD(void *, scene, 0x374));
     *(volatile u16 *)0x04000050 = 0;
     *(volatile u16 *)0x04001050 = 0;
@@ -158,8 +158,8 @@ extern "C" void *func_ov022_021fdd44(void *scene)
     if (status != 0)
         status = func_ov022_021fd370(status);
     FIELD(void *, scene, 0x350) = status;
-    FIELD(void *, scene, 0x9c) = func_020742cc(data_020f4e14);
-    FIELD(void *, scene, 0xa0) = func_020742cc(data_020f4e14);
+    FIELD(void *, scene, 0x9c) = GraphicsSpriteGroupOwner_CreateGroup(data_020f4e14);
+    FIELD(void *, scene, 0xa0) = GraphicsSpriteGroupOwner_CreateGroup(data_020f4e14);
     func_ov022_021fe3c0(scene);
     func_ov022_021fe498(scene);
     func_ov022_021fe544(scene);

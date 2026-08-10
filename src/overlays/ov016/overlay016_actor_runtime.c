@@ -12,7 +12,7 @@ extern "C" {
 #endif
 extern void *Heap_Alloc(u32, const void *, s32, void *);
 extern void GraphicsSpriteState_SetAnimationIndex(void *, s32);
-extern void func_020740a4(void *);
+extern void GraphicsSpriteGroup_AdvanceAnimations(void *);
 extern s32 func_02092910(void *, void *);
 extern void func_020948f8(void *, s32, s32);
 extern void func_02094bbc(void *, s32, s32, s32);
@@ -116,7 +116,7 @@ extern "C" void func_ov016_021fe63c(void *state)
     func_020958d8((u8 *)state + 0x20);
     GraphicsSpriteState_SetAnimationIndex(FIELD(void *, state, 0x1c),
                   (FIELD(s32, state, 0xe4) + FIELD(s32, state, 0xdc)) & 0xff);
-    func_020740a4(FIELD(void *, state, 0x18));
+    GraphicsSpriteGroup_AdvanceAnimations(FIELD(void *, state, 0x18));
     actor = FIELD(void *, state, 0xcc);
     if (actor != 0) {
         UpdateFunction *vtable = *(UpdateFunction **)actor;

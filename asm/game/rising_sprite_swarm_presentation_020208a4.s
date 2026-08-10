@@ -30,9 +30,9 @@
 .extern func_02071ea4
 .extern func_02071eb8
 .extern func_02071ee0
-.extern func_02074058
-.extern func_020740a4
-.extern func_020742cc
+.extern GraphicsSpriteGroup_Clear
+.extern GraphicsSpriteGroup_AdvanceAnimations
+.extern GraphicsSpriteGroupOwner_CreateGroup
 .extern gDebugFont
 .extern gGameWork
 .extern gHeapContext

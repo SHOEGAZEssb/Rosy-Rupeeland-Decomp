@@ -7,7 +7,7 @@
 .extern func_020313b4
 .extern Actor_GetCollection
 .extern GraphicsSpriteState_SetAnimationIndex
-.extern func_02073fc4
+.extern GraphicsSpriteGroup_CreateState
 .text
 
     .global func_0204fe68
@@ -34,7 +34,7 @@ func_0204fe68: ; 0x0204fe68
     ldrb r1, [r5, #0x10]
     str r1, [sp, #0x0]
     ldmib r4, {r1, r2, r3}
-    bl func_02073fc4
+    bl GraphicsSpriteGroup_CreateState
     str r0, [r6, #0x54]
     ldrb r1, [r5, #0x11]
     bl GraphicsSpriteState_SetAnimationIndex

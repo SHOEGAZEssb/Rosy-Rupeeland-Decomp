@@ -1,6 +1,6 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov066/overlay066_recovery.c.
-.extern func_020740a4
+.extern GraphicsSpriteGroup_AdvanceAnimations
 .extern func_ov066_02210550
 .extern func_ov066_02210b20
 
@@ -43,6 +43,6 @@ func_ov066_02210a9c:
     cmp r5, r0
     blt .L_02210af0
     ldr r0, [r4, #0x1a4]
-    bl func_020740a4
+    bl GraphicsSpriteGroup_AdvanceAnimations
     ldmia sp!, {r4, r5, r6, r7, r8, pc}
 .size func_ov066_02210a9c, . - func_ov066_02210a9c

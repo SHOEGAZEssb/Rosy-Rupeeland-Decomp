@@ -15,7 +15,7 @@
 .extern func_02063190
 .extern func_02071ee0
 .extern func_02073e48
-.extern func_02073ffc
+.extern GraphicsSpriteGroup_CreateStateFromSource
 .extern GraphicsSpriteRenderer_SetFontResource
 .extern GraphicsSpriteRenderer_DrawText
 .extern GraphicsSpriteCanvas_FillRect
@@ -107,7 +107,7 @@ func_ov000_021fb8f0: ; 0x021fb8f0
     ldr r0, [r6, #0x4]
     add r1, r6, #0x8
     mov r2, #0x1
-    bl func_02073ffc
+    bl GraphicsSpriteGroup_CreateStateFromSource
     mov r1, #0x1
     str r1, [sp, #0x0]
     mov r2, #0x0
@@ -187,7 +187,7 @@ L_021fba5c:
     ldr r0, [r6, #0x4]
     add r1, r6, #0x8
     mov r2, #0x1
-    bl func_02073ffc
+    bl GraphicsSpriteGroup_CreateStateFromSource
     mov r1, #0x1
     str r1, [sp, #0x0]
     mov r1, #0x0
@@ -246,7 +246,7 @@ L_021fbb94:
     ldr r0, [r6, #0x4]
     add r1, r6, #0x14
     mov r2, #0x2
-    bl func_02073ffc
+    bl GraphicsSpriteGroup_CreateStateFromSource
     mov r4, r0
     mov r0, r5
     mov r1, #0x0

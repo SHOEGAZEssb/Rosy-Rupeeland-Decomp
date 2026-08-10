@@ -1,5 +1,5 @@
     .text
-    .extern func_02073ef8
+    .extern GraphicsSpriteState_ReleaseFromGroup
     .extern func_02071f38
     .global func_ov001_021fc5dc
 func_ov001_021fc5dc: ; 0x021fc5dc
@@ -19,7 +19,7 @@ L_021fc5f4:
     ldr r0, [r0, #0x10]
     cmp r0, #0x0
     beq L_021fc634
-    bl func_02073ef8
+    bl GraphicsSpriteState_ReleaseFromGroup
     ldr r0, [r8, #0x20c]
     add r0, r0, r7, lsl #0x5
     str r4, [r0, #0x10]

@@ -39,8 +39,8 @@ extern void func_02071ea4(void *);
 extern void func_02071ee0(void *, void *, s32, s32, s32);
 extern void func_020720c0(void *);
 extern void func_020720e8(void *, void *, s32, s32, s32);
-extern void *func_02073ffc(void *, void *, s32);
-extern void *func_020742cc(void *);
+extern void *GraphicsSpriteGroup_CreateStateFromSource(void *, void *, s32);
+extern void *GraphicsSpriteGroupOwner_CreateGroup(void *);
 extern void func_02075358(void *, s32);
 extern void *Graphics3DResourceOwner_Init(void *, s32, s32);
 extern void *Graphics3DResourceOwner_CreateManager(void *);
@@ -157,12 +157,12 @@ extern "C" void *func_ov017_021feab4(void *state, s32 effectCount,
     func_02092754((u8 *)state + 0x1fc, 0x8002);
     func_02092754((u8 *)state + 0x1fc, 0x8003);
 
-    FIELD(void *, state, 0x58) = func_020742cc(data_020f4e14);
-    object = func_02073ffc(FIELD(void *, state, 0x58), (u8 *)state + 0x5c, 1);
+    FIELD(void *, state, 0x58) = GraphicsSpriteGroupOwner_CreateGroup(data_020f4e14);
+    object = GraphicsSpriteGroup_CreateStateFromSource(FIELD(void *, state, 0x58), (u8 *)state + 0x5c, 1);
     func_020957f0((u8 *)state + 0x12c, object, 5, 2, 0);
     func_02095820((u8 *)state + 0x12c, 0x50, 0xa0);
     func_02095940((u8 *)state + 0x12c);
-    object = func_02073ffc(FIELD(void *, state, 0x58), (u8 *)state + 0x5c, 1);
+    object = GraphicsSpriteGroup_CreateStateFromSource(FIELD(void *, state, 0x58), (u8 *)state + 0x5c, 1);
     func_020957f0((u8 *)state + 0x80, object, 3, 2, 0);
     func_02095820((u8 *)state + 0x80, 0xb0, 0xa0);
     func_02095940((u8 *)state + 0x80);
@@ -170,7 +170,7 @@ extern "C" void *func_ov017_021feab4(void *state, s32 effectCount,
     object = Heap_Alloc(0xa0, data_ov017_0220168c, 4, gHeapContext);
     if (object != 0) {
         object = func_020953f4(
-            object, func_02073ffc(FIELD(void *, state, 0x58),
+            object, GraphicsSpriteGroup_CreateStateFromSource(FIELD(void *, state, 0x58),
                                   (u8 *)state + 0x68, 1));
     }
     FIELD(void *, state, 0x260) = object;

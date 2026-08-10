@@ -26,13 +26,13 @@ extern void func_02091bac(void *interpolator, s32 mode, s32 start,
                          s32 end, s32 duration);
 extern s32 func_02091cf0(void *interpolator);
 extern void func_ov033_021fce04(void *group, s32 index);
-extern void func_020740c8(void *context, void *sprite, s32 first,
+extern void GraphicsSpriteGroup_ReplaceStateResources(void *context, void *sprite, s32 first,
                          s32 second, s32 third);
 extern void GraphicsSpriteState_SetAnimationIndex(void *sprite, s32 animation);
 extern void Sound_Play(void *sound, s32 id, s32 parameter);
 extern void Type7Actor_ResetMotionAndCooldown(void *actor);
 extern void func_020597fc(void *sound, s32 id);
-extern void func_020740a4(void *spriteContext);
+extern void GraphicsSpriteGroup_AdvanceAnimations(void *spriteContext);
 #ifdef __cplusplus
 }
 #endif
@@ -101,7 +101,7 @@ extern "C" s32 func_ov033_021fd9a0(void *scene)
             void *primary = FIELD(void *, scene, 4);
             void *sprite = FIELD(void *, primary, 0x54);
             void *record = FIELD(void *, primary, 0x21c);
-            func_020740c8(FIELD(void *, sprite, 0), sprite,
+            GraphicsSpriteGroup_ReplaceStateResources(FIELD(void *, sprite, 0), sprite,
                           FIELD(s32, record, 4), FIELD(s32, record, 8),
                           FIELD(s32, record, 0xc));
             GraphicsSpriteState_SetAnimationIndex(sprite, 9);
@@ -141,7 +141,7 @@ extern "C" s32 func_ov033_021fd9a0(void *scene)
         return 1;
     }
 
-    func_020740a4(FIELD(void *, scene, 0));
+    GraphicsSpriteGroup_AdvanceAnimations(FIELD(void *, scene, 0));
     return 0;
 }
 

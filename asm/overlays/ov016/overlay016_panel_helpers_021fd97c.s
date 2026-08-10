@@ -2,8 +2,8 @@
     .extern __destroy_arr
     .extern func_02071eb8
     .extern func_02071f38
-    .extern func_02074058
-    .extern func_0207419c
+    .extern GraphicsSpriteGroup_Clear
+    .extern GraphicsSpriteGroup_Destroy
     .extern GraphicsSpriteCanvas_FillRect
     .extern func_020927b8
 
@@ -15,9 +15,9 @@ func_ov016_021fd97c:
     stmdb sp!, {r4, lr}
     mov r4, r0
     ldr r0, [r4, #0x8]
-    bl func_0207419c
+    bl GraphicsSpriteGroup_Destroy
     ldr r0, [r4, #0x4]
-    bl func_0207419c
+    bl GraphicsSpriteGroup_Destroy
     add r0, r4, #0xd4
     bl func_020927b8
     add r0, r4, #0x78
@@ -55,7 +55,7 @@ func_ov016_021fd9dc:
     bl GraphicsSpriteCanvas_FillRect
 L_021fda14:
     ldr r0, [r6, #0x4]
-    bl func_02074058
+    bl GraphicsSpriteGroup_Clear
     add r0, r6, #0x18
     bl func_02071f38
     mov r5, #0x0

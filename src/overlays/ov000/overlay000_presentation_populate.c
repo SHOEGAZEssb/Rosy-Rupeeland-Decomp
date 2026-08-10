@@ -36,7 +36,7 @@ extern u32 func_02063064(void);
 extern u32 func_02063074(void);
 extern u32 func_02063084(void);
 extern u32 func_02063190(void);
-extern void *func_02073ffc(void *owner, void *resource, s32 mode);
+extern void *GraphicsSpriteGroup_CreateStateFromSource(void *owner, void *resource, s32 mode);
 extern void func_02073e48(void *sprite, s32 animation, s32 x, s32 y,
                           s32 enabled, s32 field28, s32 flags);
 extern void GraphicsSpriteRenderer_SetFontResource(void *renderer, const void *source);
@@ -127,7 +127,7 @@ void func_ov000_021fb8f0(Overlay000PresentationState *state, void *record)
                       0x8a, 0xe, 4, 0);
     }
 
-    sprite = func_02073ffc(state->spriteOwner_04, state->resource_08, 1);
+    sprite = GraphicsSpriteGroup_CreateStateFromSource(state->spriteOwner_04, state->resource_08, 1);
     func_02073e48(sprite, 1, 0x5c, 0x44, 1, 0, 0);
 
     GraphicsSpriteRenderer_SetFontResource(state->renderer_00, state->textSource_28);
@@ -143,7 +143,7 @@ void func_ov000_021fb8f0(Overlay000PresentationState *state, void *record)
     resource2 = func_02063084();
     func_02071ee0(state->resource_14, data_020f4e18,
                   resource0, resource1, resource2);
-    sprite = func_02073ffc(state->spriteOwner_04, state->resource_14, 2);
+    sprite = GraphicsSpriteGroup_CreateStateFromSource(state->spriteOwner_04, state->resource_14, 2);
     func_02062918(record, 0);
     resource3 = func_02063190();
     func_02073e48(sprite, resource3, 0x48, 0x44, 1, 0, 0);

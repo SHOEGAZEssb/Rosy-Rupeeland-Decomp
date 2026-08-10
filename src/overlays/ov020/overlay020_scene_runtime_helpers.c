@@ -22,7 +22,7 @@ extern void GraphicsResourceSet_Load(void *, void *, s32, s32, s32);
 extern void func_02070f80(void *, s32);
 extern void func_02071eb8(void *);
 extern void func_02072048(void *, s32, s32);
-extern void func_0207419c(void *);
+extern void GraphicsSpriteGroup_Destroy(void *);
 extern void GraphicsSpriteRenderer_ClearTextBuffer(void *);
 extern void func_020925a4(s32);
 extern void func_020925dc(s32);
@@ -49,7 +49,7 @@ static void destroySceneContents(void *state)
 {
     FIELD(const u32 *, state, 0) = data_ov020_021fe504;
     FIELD(u32, state, 0x20) &= ~0x400U;
-    func_0207419c(FIELD(void *, state, 0x6c));
+    GraphicsSpriteGroup_Destroy(FIELD(void *, state, 0x6c));
     void *detail = FIELD(void *, state, 0x1e0);
     if (detail != 0) {
         func_ov020_021fd404(detail);

@@ -7,7 +7,7 @@
 .extern func_02034260
 .extern func_02071ee0
 .extern GraphicsSpriteState_SetAnimationIndex
-.extern func_02073fc4
+.extern GraphicsSpriteGroup_CreateState
     .global Actor_InitializeFromDescriptor
     .type Actor_InitializeFromDescriptor, @function
 Actor_InitializeFromDescriptor: ; 0x0203b65c
@@ -43,7 +43,7 @@ Actor_InitializeFromDescriptor: ; 0x0203b65c
     ldr r1, [r5, #0x1f0]
     ldr r2, [r5, #0x1f4]
     ldr r3, [r5, #0x1f8]
-    bl func_02073fc4
+    bl GraphicsSpriteGroup_CreateState
     str r0, [r5, #0x54]
     ldr r0, [r5, #0x14]
     tst r0, #0x10000000

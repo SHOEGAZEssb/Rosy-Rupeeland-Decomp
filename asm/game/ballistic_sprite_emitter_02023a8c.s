@@ -13,7 +13,7 @@
 .extern func_02023890
 .extern func_02023bcc
 .extern func_02023c4c
-.extern func_020742cc
+.extern GraphicsSpriteGroupOwner_CreateGroup
 .extern gDebugFont
 .extern gHeapContext
 
@@ -63,7 +63,7 @@ func_02023a8c: ; 0x02023a8c
     bl AnimationResource_Destroy
     ldr r0, .L_02023bc0
     ldr r0, [r0, #0x0]
-    bl func_020742cc
+    bl GraphicsSpriteGroupOwner_CreateGroup
     ldr r5, .L_02023bc4
     ldr r11, .L_02023bc8
     str r0, [r10, #0x38]

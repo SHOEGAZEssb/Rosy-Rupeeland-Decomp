@@ -12,7 +12,7 @@ extern void *gDebugFont;
 extern "C" {
 #endif
 extern void GamePhaseRuntime_UpdateActorPresentationState(void *, s32);
-extern void func_020740a4(void *);
+extern void GraphicsSpriteGroup_AdvanceAnimations(void *);
 extern void GraphicsSpriteRenderer_SetFontResource(void *, void *);
 extern s32 GraphicsSpriteRenderer_DrawText(void *, void *, s32, s32, s32, s32, s32);
 extern void GraphicsSpriteCanvas_FillRect(void *, s32, s32, s32, s32, s32);
@@ -56,13 +56,13 @@ extern "C" void func_ov018_021fd788(void *state)
         FIELD(u16, sprite, 0x2c) = FIELD(u16, actorData, 0x2c);
         FIELD(u16, sprite, 0x2e) = FIELD(u16, actorData, 0x2e);
     }
-    func_020740a4(FIELD(void *, state, 0xc4));
-    func_020740a4(FIELD(void *, state, 0xc8));
+    GraphicsSpriteGroup_AdvanceAnimations(FIELD(void *, state, 0xc4));
+    GraphicsSpriteGroup_AdvanceAnimations(FIELD(void *, state, 0xc8));
     FIELD(s32, FIELD(void *, state, 0xcc), 0x18) =
         -FIELD(s32, state, 0x5c);
     FIELD(s32, FIELD(void *, state, 0xcc), 0x1c) =
         -FIELD(s32, state, 0x60);
-    func_020740a4(FIELD(void *, state, 0xcc));
+    GraphicsSpriteGroup_AdvanceAnimations(FIELD(void *, state, 0xcc));
 
     if (FIELD(s32, state, 0x400) != 0) {
         if (func_02091c7c((u8 *)state + 0x3e0, 2)) {

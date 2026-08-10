@@ -4,7 +4,7 @@
 .extern GameWork_TestFlag
 .extern Sound_Play
 .extern GraphicsSpriteState_SetAnimationIndex
-.extern func_020740a4
+.extern GraphicsSpriteGroup_AdvanceAnimations
 .extern gGameWork
 .extern gSoundContext
 
@@ -84,7 +84,7 @@ func_ov053_0220d8ac:
     ldr r0, [r4, #0x20]
     strh r1, [r0, #0x30]
     ldr r0, [r4, #0x8]
-    bl func_020740a4
+    bl GraphicsSpriteGroup_AdvanceAnimations
     ldr r0, .L_0220da04
     ldr r1, .L_0220da08
     ldr r0, [r0, #0x0]

@@ -11,8 +11,8 @@
 .extern AnimationResource_Assign
 .extern func_0201e250
 .extern GraphicsSpriteState_SetAnimationIndex
-.extern func_02073ffc
-.extern func_020742cc
+.extern GraphicsSpriteGroup_CreateStateFromSource
+.extern GraphicsSpriteGroupOwner_CreateGroup
 .extern func_ov053_0220d600
 .extern func_ov053_0220da60
 .extern gDebugFont
@@ -37,7 +37,7 @@ func_ov053_0220d624:
     bl func_ov053_0220da60
     ldr r0, .L_0220d7e0
     ldr r0, [r0, #0x0]
-    bl func_020742cc
+    bl GraphicsSpriteGroupOwner_CreateGroup
     ldr r1, .L_0220d7e4
     str r0, [r10, #0x8]
     add r0, sp, #0x0
@@ -60,7 +60,7 @@ func_ov053_0220d624:
     ldr r0, [r10, #0x8]
     mov r2, r8
     add r1, r10, #0x28
-    bl func_02073ffc
+    bl GraphicsSpriteGroup_CreateStateFromSource
     add r1, r10, r9, lsl #0x2
     str r0, [r1, #0xc]
     mov r0, r9, lsl #0x1
@@ -99,7 +99,7 @@ func_ov053_0220d624:
     ldr r0, [r10, #0x8]
     add r1, r10, #0x28
     mov r2, #0x2
-    bl func_02073ffc
+    bl GraphicsSpriteGroup_CreateStateFromSource
     str r0, [r10, #0x20]
     ldrh r1, [r10, #0x34]
     add r1, r1, #0x6

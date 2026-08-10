@@ -5,7 +5,7 @@
 .extern ActorCollection_GetSpriteOwner
 .extern Actor_GetCollection
 .extern GraphicsSpriteState_SetAnimationIndex
-.extern func_020740c8
+.extern GraphicsSpriteGroup_ReplaceStateResources
 .global Type7Actor_UpdateAnimationState
 .type Type7Actor_UpdateAnimationState, @function
 Type7Actor_UpdateAnimationState: ; 0x02046208
@@ -18,7 +18,7 @@ Type7Actor_UpdateAnimationState: ; 0x02046208
     ldr r1, [r5, #0x54]
     ldr r2, [r5, #0x1f0]
     ldr r3, [r5, #0x1f4]
-    bl func_020740c8
+    bl GraphicsSpriteGroup_ReplaceStateResources
     ldrsh r0, [r5, #0xd6]
     mov r4, #0x100
     cmp r0, #0x12

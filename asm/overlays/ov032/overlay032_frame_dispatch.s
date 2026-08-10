@@ -3,7 +3,7 @@
 /* Exact fallback; see src/overlays/ov032/overlay032_input_runtime.c for documented portable C. */
 .extern TouchPanelManager_GetPoint
 .extern GamePhaseCurrencyHud_Update
-.extern func_020740a4
+.extern GraphicsSpriteGroup_AdvanceAnimations
 .extern func_ov032_021fe024
 .extern gLupyContext
 .extern gPadState1
@@ -60,9 +60,9 @@ L_021fdfb8:
     movs r5, r0
     bne L_021fe00c
     ldr r0, [r4, #0x4]
-    bl func_020740a4
+    bl GraphicsSpriteGroup_AdvanceAnimations
     ldr r0, [r4, #0x0]
-    bl func_020740a4
+    bl GraphicsSpriteGroup_AdvanceAnimations
     ldr r0, L_021fe020
     ldr r0, [r0, #0x0]
     bl GamePhaseCurrencyHud_Update

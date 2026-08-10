@@ -5,7 +5,7 @@
 .extern AnimationResource_Init
 .extern ActorCollection_GetSpriteOwner
 .extern Actor_GetCollection
-.extern func_020740c8
+.extern GraphicsSpriteGroup_ReplaceStateResources
 .extern gHeapContext
 
     .global Actor_ReplaceAttachmentSlotResource
@@ -45,7 +45,7 @@ Actor_ReplaceAttachmentSlotResource: ; 0x02039720
     mov r1, r6
     str r2, [sp, #0x0]
     ldmib r5, {r2, r3}
-    bl func_020740c8
+    bl GraphicsSpriteGroup_ReplaceStateResources
 .L_020397a8:
     cmp r4, #0x0
     beq .L_020397c0

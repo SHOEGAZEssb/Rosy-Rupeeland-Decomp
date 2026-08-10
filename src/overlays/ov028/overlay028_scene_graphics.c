@@ -25,7 +25,7 @@ extern void *func_02070874(void *);
 extern void func_02070e0c(void *, s32, s32);
 extern void func_02070f34(void *, s32);
 extern void func_02072048(void *, s32, s32);
-extern void func_020740a4(void *);
+extern void GraphicsSpriteGroup_AdvanceAnimations(void *);
 extern void *GraphicsSpriteRenderer_GetObjectPaletteAddress(void *);
 extern s32 func_0209189c(void *, s32, s32);
 extern void func_020925a4(s32, s32);
@@ -133,7 +133,7 @@ extern "C" void func_ov028_021fe438(void *state)
 {
     func_02095360((u8 *)state + 0x264);
     if (FIELD(void *, state, 0x90) != 0)
-        func_020740a4(FIELD(void *, FIELD(void *, state, 0x90), 0));
+        GraphicsSpriteGroup_AdvanceAnimations(FIELD(void *, FIELD(void *, state, 0x90), 0));
     void *child = FIELD(void *, state, 0x260);
     if (FIELD(s32, child, 0x80) >= FIELD(s32, child, 0x7c)) {
         s32 offset = func_0209189c((u8 *)state + 0x27c, -2, 2);
@@ -148,8 +148,8 @@ extern "C" void func_ov028_021fe438(void *state)
     GamePhaseCurrencyHud_Update(gLupyContext);
     func_020958d8((u8 *)state + 0x98);
     func_020958d8((u8 *)state + 0x144);
-    func_020740a4(FIELD(void *, state, 0x54));
-    func_020740a4(FIELD(void *, state, 0x58));
+    GraphicsSpriteGroup_AdvanceAnimations(FIELD(void *, state, 0x54));
+    GraphicsSpriteGroup_AdvanceAnimations(FIELD(void *, state, 0x58));
     if (FIELD(void *, state, 0x220) != 0)
         func_02094574(FIELD(void *, FIELD(void *, state, 0x220), 0x44));
     if (FIELD(void *, state, 0x224) != 0)

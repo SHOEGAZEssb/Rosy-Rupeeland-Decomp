@@ -1,7 +1,7 @@
 .text
 
 /* Exact fallback; see src/overlays/ov025/overlay025_scene_runtime.c. */
-.extern func_02073ef8
+.extern GraphicsSpriteState_ReleaseFromGroup
 
 
     .global func_ov025_02200438
@@ -10,7 +10,7 @@ func_ov025_02200438:
     mov r5, r0
     ldr r0, [r5, #0xb8]
     mov r4, r1
-    bl func_02073ef8
+    bl GraphicsSpriteState_ReleaseFromGroup
     mov r0, #0x0
     str r0, [r5, #0xb8]
     cmp r4, #0x0

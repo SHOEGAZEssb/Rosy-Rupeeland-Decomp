@@ -46,10 +46,10 @@ extern void func_02056f00(PresentationValue *destination,
                           PresentationValue *source);
 extern void *GamePhaseRuntime_GetActorCollection(void *runtime, s32 index);
 extern void *ActorCollection_GetSpriteOwner(void *resource);
-extern u8 *func_02073fc4(void *resource, s32 field08, s32 field0c,
+extern u8 *GraphicsSpriteGroup_CreateState(void *resource, s32 field08, s32 field0c,
                          s32 field10, s32 mode);
 extern void GraphicsSpriteState_SetAnimationIndex(void *sprite, s32 value);
-extern void func_02074038(void *spriteOwner);
+extern void GraphicsSpriteGroup_ReleaseState(void *spriteOwner);
 extern void *ActorMotionAreaFollower_GetPosition(void *source);
 extern void func_0201df44(void *manager, void *entry);
 #ifdef __cplusplus
@@ -79,7 +79,7 @@ DirectSpriteTrackPresentation *func_0201fc28(
     func_02071ee0(&self->resource08, data_020f4e18, field0c, field10, field08);
     resource = ActorCollection_GetSpriteOwner(
         GamePhaseRuntime_GetActorCollection(data_021052fc, selector == 0 ? 1 : 2));
-    self->sprite14 = func_02073fc4(
+    self->sprite14 = GraphicsSpriteGroup_CreateState(
         resource, *(s32 *)&self->resource08.bytes[0],
         *(s32 *)&self->resource08.bytes[4],
         *(s32 *)&self->resource08.bytes[8], 2);
@@ -103,7 +103,7 @@ DirectSpriteTrackPresentation *func_0201fd64(
     DirectSpriteTrackPresentation *self)
 {
     self->vtable = (void **)data_020d6158;
-    func_02074038(*(void **)self->sprite14);
+    GraphicsSpriteGroup_ReleaseState(*(void **)self->sprite14);
     func_02071f38(&self->resource08);
     func_02005058(&self->track1c);
     func_02071eb8(&self->resource08);

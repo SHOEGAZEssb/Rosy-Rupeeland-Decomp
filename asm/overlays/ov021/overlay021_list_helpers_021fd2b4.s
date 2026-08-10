@@ -1,7 +1,7 @@
     .text
 /* Exact fallback; see src/overlays/ov021/overlay021_list_helpers.c. */
     .extern func_02073e48
-    .extern func_02073ffc
+    .extern GraphicsSpriteGroup_CreateStateFromSource
 
 .global func_ov021_021fd2b4
 func_ov021_021fd2b4:
@@ -24,7 +24,7 @@ func_ov021_021fd2b4:
     ldr r0, [r6, #0x1c]
     add r1, r6, #0x10
     mov r2, #0x1
-    bl func_02073ffc
+    bl GraphicsSpriteGroup_CreateStateFromSource
     ldr r1, [r6, #0x4c]
     mov r2, #0x0
     add r1, r1, r5

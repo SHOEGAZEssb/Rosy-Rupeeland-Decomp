@@ -8,8 +8,8 @@
 extern "C" {
 #endif
 extern void func_02071eb8(void *);
-extern void func_020740a4(void *);
-extern void func_0207419c(void *);
+extern void GraphicsSpriteGroup_AdvanceAnimations(void *);
+extern void GraphicsSpriteGroup_Destroy(void *);
 extern void func_020927b8(void *);
 extern void func_02094574(void *);
 extern void func_020958d8(void *);
@@ -64,7 +64,7 @@ static void destroyVirtual(void *object)
 extern "C" void *func_ov020_021fd404(void *state)
 {
     destroyVirtual(FIELD(void *, state, 0x4c));
-    func_0207419c(FIELD(void *, state, 0xc));
+    GraphicsSpriteGroup_Destroy(FIELD(void *, state, 0xc));
     func_020927b8((u8 *)state + 0x28);
     func_02071eb8((u8 *)state + 0x1c);
     func_02071eb8((u8 *)state + 0x10);
@@ -102,7 +102,7 @@ extern "C" void func_ov020_021fde6c(void *state)
     func_020958d8((u8 *)state + 0x70);
     if (FIELD(void *, state, 0x1dc) != 0)
         func_02094574(FIELD(void *, FIELD(void *, state, 0x1dc), 0x44));
-    func_020740a4(FIELD(void *, state, 0x6c));
+    GraphicsSpriteGroup_AdvanceAnimations(FIELD(void *, state, 0x6c));
 }
 
 /*

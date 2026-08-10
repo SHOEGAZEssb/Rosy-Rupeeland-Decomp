@@ -4,7 +4,7 @@
 .extern ActorCollection_GetSpriteOwner
 .extern Actor_GetCollection
 .extern func_02071ee0
-.extern func_02073fc4
+.extern GraphicsSpriteGroup_CreateState
 .global Type7Actor_SetupResources
 .type Type7Actor_SetupResources, @function
 Type7Actor_SetupResources: ; 0x020459d4
@@ -30,7 +30,7 @@ Type7Actor_SetupResources: ; 0x020459d4
     ldr r1, [r5, #0x1f0]
     ldr r2, [r5, #0x1f4]
     ldr r3, [r5, #0x1f8]
-    bl func_02073fc4
+    bl GraphicsSpriteGroup_CreateState
     str r0, [r5, #0x54]
     mov r0, r5
     ldr r1, [r0, #0x0]

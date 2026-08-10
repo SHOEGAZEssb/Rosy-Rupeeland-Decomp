@@ -9,7 +9,7 @@
 .extern func_02008570
 .extern GamePhaseCurrencyHud_SetVisible
 .extern func_02071d4c
-.extern func_0207419c
+.extern GraphicsSpriteGroup_Destroy
 .extern gLupyContext
 
 .global func_ov052_0220d884
@@ -30,7 +30,7 @@ func_ov052_0220d884:
     ldr r0, [r0, #0x0]
     bl func_02071d4c
     ldr r0, [r4, #0x1c]
-    bl func_0207419c
+    bl GraphicsSpriteGroup_Destroy
     ldr r0, [r4, #0x20]
     cmp r0, #0x0
     beq .L_0220d8dc

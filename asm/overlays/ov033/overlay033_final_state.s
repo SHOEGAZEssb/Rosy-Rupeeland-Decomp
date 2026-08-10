@@ -16,12 +16,12 @@
     .extern func_02091bac
     .extern func_02091cf0
     .extern func_ov033_021fce04
-    .extern func_020740c8
+    .extern GraphicsSpriteGroup_ReplaceStateResources
     .extern GraphicsSpriteState_SetAnimationIndex
     .extern Sound_Play
     .extern Type7Actor_ResetMotionAndCooldown
     .extern func_020597fc
-    .extern func_020740a4
+    .extern GraphicsSpriteGroup_AdvanceAnimations
     .extern data_021f3ecc
     .extern gSoundContext
     .extern data_020c9670
@@ -146,7 +146,7 @@ L_021fdadc:
     str r0, [sp, #0x0]
     ldr r0, [r4, #0x0]
     ldmib r3, {r2, r3}
-    bl func_020740c8
+    bl GraphicsSpriteGroup_ReplaceStateResources
     mov r0, r4
     mov r1, #0x9
     bl GraphicsSpriteState_SetAnimationIndex
@@ -242,7 +242,7 @@ L_021fdcb8:
     ldmia sp!, {r3, r4, r5, pc}
 L_021fdcc0:
     ldr r0, [r5, #0x0]
-    bl func_020740a4
+    bl GraphicsSpriteGroup_AdvanceAnimations
     mov r0, #0x0
     ldmia sp!, {r3, r4, r5, pc}
 L_021fdcd0: .word data_021f3ecc

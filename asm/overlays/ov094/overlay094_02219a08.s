@@ -2,7 +2,7 @@
 ; Matching fallback for the portable implementation in src/overlays/ov094/overlay094_recovery.c.
 .extern GameWork_TestFlag
 .extern func_02073e48
-.extern func_02073ffc
+.extern GraphicsSpriteGroup_CreateStateFromSource
 .extern func_0209189c
 .extern func_020918f4
 .extern gGameWork
@@ -37,7 +37,7 @@ func_ov094_02219a08:
     ldrge r0, [r7, #0xc]
     mov r2, #0x1
     subge r6, r6, #0xc0
-    bl func_02073ffc
+    bl GraphicsSpriteGroup_CreateStateFromSource
     mov r4, r0
     add r0, r7, #0x14
     mov r1, #0x1

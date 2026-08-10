@@ -3,7 +3,7 @@
 /* Exact fallback; see src/overlays/ov022/overlay022_action_setup.c. */
 .extern data_020c9670
 .extern func_02073e48
-.extern func_02073ffc
+.extern GraphicsSpriteGroup_CreateStateFromSource
 .extern func_020918f4
 .extern func_ov043_0220b740
 .extern func_ov046_0220b77c
@@ -18,7 +18,7 @@ func_ov022_021fe9e8:
     ldr r0, [r7, #0xa0]
     add r1, r7, #0x90
     mov r2, #0x1
-    bl func_02073ffc
+    bl GraphicsSpriteGroup_CreateStateFromSource
     mov r4, r0
     bl genrand_int32
     mov r0, r0, lsl #0x10

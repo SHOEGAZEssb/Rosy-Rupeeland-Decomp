@@ -24,8 +24,8 @@ extern s32 GameWork_TestFlag(void *, u32);
 extern void func_02071ea4(void *);
 extern void func_02071ee0(void *, void *, s32, s32, s32);
 extern void func_02073e48(void *, s32, s32, s32, s32, s32, s32);
-extern void *func_02073ffc(void *, void *, s32);
-extern void *func_020742cc(void *);
+extern void *GraphicsSpriteGroup_CreateStateFromSource(void *, void *, s32);
+extern void *GraphicsSpriteGroupOwner_CreateGroup(void *);
 extern void func_02091e28(void *);
 extern void func_02092798(void *);
 extern void func_020957bc(void *);
@@ -66,14 +66,14 @@ extern "C" void *func_ov020_021fd844(void *state)
     FIELD(s32, state, 0x1e4) = 0;
     func_02071ee0((u8 *)state + 0x60, data_020f4e18[0], 0x38, 1, 0x39);
     func_02071ee0((u8 *)state + 0x54, data_020f4e18[0], 0x1f, 1, 0x20);
-    FIELD(void *, state, 0x6c) = func_020742cc(gDebugFont);
+    FIELD(void *, state, 0x6c) = GraphicsSpriteGroupOwner_CreateGroup(gDebugFont);
     func_020957f0((u8 *)state + 0x70,
-                  func_02073ffc(FIELD(void *, state, 0x6c),
+                  GraphicsSpriteGroup_CreateStateFromSource(FIELD(void *, state, 0x6c),
                                  (u8 *)state + 0x60, 2),
                   6, 1, 0);
     func_02095820((u8 *)state + 0x70, 0xe8, 0xaa);
     FIELD(void *, state, 0x11c) =
-        func_02073ffc(FIELD(void *, state, 0x6c), (u8 *)state + 0x54, 1);
+        GraphicsSpriteGroup_CreateStateFromSource(FIELD(void *, state, 0x6c), (u8 *)state + 0x54, 1);
     func_02073e48(FIELD(void *, state, 0x11c), 1, 0x84, 0x1e, 1, 0, 6);
 
     count = 0;

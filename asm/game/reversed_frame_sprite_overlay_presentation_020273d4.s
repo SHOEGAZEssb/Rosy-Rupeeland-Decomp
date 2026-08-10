@@ -3,7 +3,7 @@
 .extern data_020d6bd0
 .extern func_0201e28c
 .extern func_02071eb8
-.extern func_0207419c
+.extern GraphicsSpriteGroup_Destroy
 
     .global func_020273d4
     .type func_020273d4, @function
@@ -20,7 +20,7 @@ func_020273d4: ; 0x020273d4
     blx r1
 .L_020273fc:
     ldr r0, [r4, #0x14]
-    bl func_0207419c
+    bl GraphicsSpriteGroup_Destroy
     add r0, r4, #0x8
     bl func_02071eb8
     mov r0, r4

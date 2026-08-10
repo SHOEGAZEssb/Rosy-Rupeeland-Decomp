@@ -8,8 +8,8 @@
 extern "C" {
 #endif
 extern void func_02073e48(void *, s32, s32, s32, s32, s32, s32);
-extern void *func_02073ffc(void *, void *, s32);
-extern void func_02074058(void *);
+extern void *GraphicsSpriteGroup_CreateStateFromSource(void *, void *, s32);
+extern void GraphicsSpriteGroup_Clear(void *);
 extern void func_020957f0(void *, void *, s32, s32, s32);
 extern void func_02095820(void *, s32, s32);
 extern void func_02095940(void *);
@@ -30,10 +30,10 @@ extern "C" void func_ov016_021ff404(void *state)
     void *child;
 
     FIELD(void *, state, 0xe4) =
-        func_02073ffc(FIELD(void *, state, 0xe0), (u8 *)state + 0xc8, 1);
+        GraphicsSpriteGroup_CreateStateFromSource(FIELD(void *, state, 0xe0), (u8 *)state + 0xc8, 1);
     func_02073e48(FIELD(void *, state, 0xe4), 0, 0x84, 0x20, 2, 0, 2);
 
-    child = func_02073ffc(FIELD(void *, state, 0xe0), (u8 *)state + 0xc8, 1);
+    child = GraphicsSpriteGroup_CreateStateFromSource(FIELD(void *, state, 0xe0), (u8 *)state + 0xc8, 1);
     func_020957f0((u8 *)state + 0xe8, child, 7, 2, 0);
     func_02095820((u8 *)state + 0xe8, 0x80, 0xaa);
     if (FIELD(s32, state, 0x54) != 0 ||
@@ -41,7 +41,7 @@ extern "C" void func_ov016_021ff404(void *state)
         func_02095940((u8 *)state + 0xe8);
     }
 
-    child = func_02073ffc(FIELD(void *, state, 0xe0), (u8 *)state + 0xc8, 1);
+    child = GraphicsSpriteGroup_CreateStateFromSource(FIELD(void *, state, 0xe0), (u8 *)state + 0xc8, 1);
     func_020957f0((u8 *)state + 0x194, child, 9, 2, 0);
     func_02095820((u8 *)state + 0x194, 0xe8, 0xaa);
 }
@@ -53,7 +53,7 @@ extern "C" void func_ov016_021ff404(void *state)
  */
 extern "C" void func_ov016_021ff4ec(void *state)
 {
-    func_02074058(FIELD(void *, state, 0xe0));
+    GraphicsSpriteGroup_Clear(FIELD(void *, state, 0xe0));
     FIELD(void *, state, 0xe4) = 0;
     FIELD(void *, state, 0x184) = 0;
     FIELD(void *, state, 0x230) = 0;

@@ -6,7 +6,7 @@
 .extern func_02005058
 .extern func_020050a4
 .extern GraphicsSpriteState_SetAnimationIndex
-.extern func_02073ffc
+.extern GraphicsSpriteGroup_CreateStateFromSource
 .extern genrand_int32
 
     .global func_02028860
@@ -38,7 +38,7 @@ func_02028860: ; 0x02028860
     ldr r0, [r4, #0x44]
     add r1, r5, #0x4
     mov r2, #0x1
-    bl func_02073ffc
+    bl GraphicsSpriteGroup_CreateStateFromSource
     ldr r1, [sp, #0x24]
     str r0, [r4, #0x40]
     and r1, r1, #0xff

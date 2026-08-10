@@ -36,7 +36,7 @@ extern "C" {
 extern void *data_ov000_021fcd30;
 extern void func_020683f4(void *cell);
 extern void func_02071eb8(void *resource);
-extern void func_0207419c(void *group);
+extern void GraphicsSpriteGroup_Destroy(void *group);
 extern void func_020927b8(void *state);
 extern void func_020c0c24(void *array, s32 elementSize, s32 alignment,
                            void (*destructor)(void *));
@@ -64,8 +64,8 @@ Overlay000GridState *func_ov000_021fc0d8(Overlay000GridState *state)
     if (controller != 0) {
         controller->vtable->destroy_04(controller);
     }
-    func_0207419c(state->spriteGroup_00c);
-    func_0207419c(state->spriteGroup_008);
+    GraphicsSpriteGroup_Destroy(state->spriteGroup_00c);
+    GraphicsSpriteGroup_Destroy(state->spriteGroup_008);
     func_020927b8(state->rendererState_228);
     func_ov000_021fbcc0(state->element_17c);
     func_ov000_021fbcc0(state->element_0d0);

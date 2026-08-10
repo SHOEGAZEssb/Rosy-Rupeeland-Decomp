@@ -31,8 +31,8 @@ extern void GameWork_SetFlag(void *, s32);
 extern s32 GameWork_TestFlag(void *, s32);
 extern void func_02092814(void *, s32);
 extern void func_02071ee0(void *, void *, s32, s32, s32);
-extern void *func_020742cc(void *);
-extern void *func_02073ffc(void *, void *, s32);
+extern void *GraphicsSpriteGroupOwner_CreateGroup(void *);
+extern void *GraphicsSpriteGroup_CreateStateFromSource(void *, void *, s32);
 extern void func_02073e48(void *, s32, s32, s32, s32, s32, s32);
 extern void *func_ov045_0220c48c(s32, s32, s32);
 extern void *func_02092cc0(void *, void *, void *);
@@ -96,15 +96,15 @@ extern "C" void *func_ov030_021fda3c(void *scene)
     func_02071ee0((u8 *)scene + 0x88, data_020f4e18[0], 0xd0e4, 0xd081, 0xd082);
     func_02071ee0((u8 *)scene + 0x94, data_020f4e18[0], 0xd0e5, 0xd081, 0xd082);
 
-    void *renderer = func_020742cc(data_020f4e14[0]);
+    void *renderer = GraphicsSpriteGroupOwner_CreateGroup(data_020f4e14[0]);
     FIELD(void *, scene, 0x78) = renderer;
-    FIELD(void *, scene, 0xa0) = func_02073ffc(renderer, (u8 *)scene + 0x88, 2);
-    FIELD(void *, scene, 0xa4) = func_02073ffc(renderer, (u8 *)scene + 0x94, 2);
+    FIELD(void *, scene, 0xa0) = GraphicsSpriteGroup_CreateStateFromSource(renderer, (u8 *)scene + 0x88, 2);
+    FIELD(void *, scene, 0xa4) = GraphicsSpriteGroup_CreateStateFromSource(renderer, (u8 *)scene + 0x94, 2);
     for (s32 i = 0; i < 2; ++i) {
         FIELD(void *, scene, 0xa8 + i * 4) =
-            func_02073ffc(renderer, (u8 *)scene + 0x7c, 1);
+            GraphicsSpriteGroup_CreateStateFromSource(renderer, (u8 *)scene + 0x7c, 1);
         FIELD(void *, scene, 0xb0 + i * 4) =
-            func_02073ffc(renderer, (u8 *)scene + 0x7c, 1);
+            GraphicsSpriteGroup_CreateStateFromSource(renderer, (u8 *)scene + 0x7c, 1);
     }
 
     FIELD(void *, scene, 0x2c0) = func_ov045_0220c48c(8, 0x21, 0);
@@ -126,11 +126,11 @@ extern "C" void *func_ov030_021fda3c(void *scene)
     func_02092f88(dialog, 2, (u8 *)scene + 0x2ec);
     func_02092f88(dialog, 3, (u8 *)scene + 0x30c);
 
-    void *sprite = func_02073ffc(renderer, (u8 *)scene + 0x7c, 1);
+    void *sprite = GraphicsSpriteGroup_CreateStateFromSource(renderer, (u8 *)scene + 0x7c, 1);
     func_020957f0((u8 *)scene + 0xb8, sprite, 0, 0, 0);
     if (GameWork_TestFlag(gGameWork, 0x3b9) != 0) {
         func_02095820((u8 *)scene + 0xb8, 0x80, 0x40);
-        sprite = func_02073ffc(renderer, (u8 *)scene + 0x7c, 1);
+        sprite = GraphicsSpriteGroup_CreateStateFromSource(renderer, (u8 *)scene + 0x7c, 1);
         func_020957f0((u8 *)scene + 0x164, sprite, 2, 0, 0);
         func_02095820((u8 *)scene + 0x164, 0x80, 0x70);
         func_02073e48(FIELD(void *, scene, 0xa0), 0, 0x20, 0x40, 0, 0, 0);
@@ -153,7 +153,7 @@ extern "C" void *func_ov030_021fda3c(void *scene)
     }
     func_ov030_021fe808(scene);
 
-    sprite = func_02073ffc(renderer, (u8 *)scene + 0x7c, 1);
+    sprite = GraphicsSpriteGroup_CreateStateFromSource(renderer, (u8 *)scene + 0x7c, 1);
     func_020957f0((u8 *)scene + 0x210, sprite, 6, 0, 0);
     func_02095820((u8 *)scene + 0x210, 0xe4, 0xb0);
     FIELD(void *, scene, 0x2c4) = 0;

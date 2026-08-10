@@ -4,7 +4,7 @@
 .extern Actor_GetCollection
 .extern ActorExtendedType2_InitializePresentation
 .extern GraphicsSpriteState_SetAnimationIndex
-.extern func_02073fc4
+.extern GraphicsSpriteGroup_CreateState
 
 .global func_ov076_022138e8
 func_ov076_022138e8:
@@ -27,7 +27,7 @@ func_ov076_022138e8:
     mov r1, #0x2
     str r1, [sp, #0x0]
     ldmib r5, {r1, r2, r3}
-    bl func_02073fc4
+    bl GraphicsSpriteGroup_CreateState
     str r0, [r4, #0x2a0]
     mov r1, #0x0
     bl GraphicsSpriteState_SetAnimationIndex
@@ -38,7 +38,7 @@ func_ov076_022138e8:
     mov r1, #0x2
     str r1, [sp, #0x0]
     ldmib r5, {r1, r2, r3}
-    bl func_02073fc4
+    bl GraphicsSpriteGroup_CreateState
     mov r1, #0x1
     str r0, [r4, #0x2a4]
     bl GraphicsSpriteState_SetAnimationIndex

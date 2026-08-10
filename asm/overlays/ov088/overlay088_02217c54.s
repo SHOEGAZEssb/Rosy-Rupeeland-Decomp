@@ -4,7 +4,7 @@
 .extern data_ov088_0221b928
 .extern func_02031488
 .extern ActorDerivedRuntime_DestroyAlternate
-.extern func_02073ef8
+.extern GraphicsSpriteState_ReleaseFromGroup
 .extern func_ov088_02218290
 
 .global func_ov088_02217c54
@@ -29,22 +29,22 @@ func_ov088_02217c54:
     ldr r0, [r4, #0x224]
     cmp r0, #0x0
     beq .L_02217ca8
-    bl func_02073ef8
+    bl GraphicsSpriteState_ReleaseFromGroup
 .L_02217ca8:
     ldr r0, [r4, #0x228]
     cmp r0, #0x0
     beq .L_02217cb8
-    bl func_02073ef8
+    bl GraphicsSpriteState_ReleaseFromGroup
 .L_02217cb8:
     ldr r0, [r4, #0x22c]
     cmp r0, #0x0
     beq .L_02217cc8
-    bl func_02073ef8
+    bl GraphicsSpriteState_ReleaseFromGroup
 .L_02217cc8:
     ldr r0, [r4, #0x258]
     cmp r0, #0x0
     beq .L_02217cd8
-    bl func_02073ef8
+    bl GraphicsSpriteState_ReleaseFromGroup
 .L_02217cd8:
     ldr r0, [r4, #0x220]
     cmp r0, #0x0
@@ -63,7 +63,7 @@ func_ov088_02217c54:
     ldr r0, [r4, #0x250]
     cmp r0, #0x0
     beq .L_02217d18
-    bl func_02073ef8
+    bl GraphicsSpriteState_ReleaseFromGroup
 .L_02217d18:
     ldr r0, [r4, #0x24c]
     cmp r0, #0x0

@@ -8,7 +8,7 @@
 .extern data_ov025_02202e40
 .extern data_ov025_02202ec8
 .extern data_ov025_02202ed8
-.extern func_02074110
+.extern GraphicsSpriteGroup_ReleaseIndexedEntries
 .extern GraphicsSpriteRenderer_ClearTextBuffer
 .extern func_02091bac
 .extern func_02091c7c
@@ -158,7 +158,7 @@ L_022011a4:
     add r0, r5, r6, lsl #0x2
     ldr r0, [r0, #0xe4]
     ldr r0, [r0, #0xc]
-    bl func_02074110
+    bl GraphicsSpriteGroup_ReleaseIndexedEntries
     add r0, r5, r6, lsl #0x2
     ldr r0, [r0, #0xe4]
     mov r1, r4

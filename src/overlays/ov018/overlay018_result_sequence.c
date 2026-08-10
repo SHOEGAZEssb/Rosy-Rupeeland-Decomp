@@ -19,7 +19,7 @@ extern void *Heap_Alloc(u32, const void *, s32, void *);
 extern u32 genrand_int32(void);
 extern s32 func_02059344(void *, s32);
 extern void func_02073e48(void *, s32, s32, s32, s32, s32, s32);
-extern void *func_02073ffc(void *, void *, s32);
+extern void *GraphicsSpriteGroup_CreateStateFromSource(void *, void *, s32);
 extern void GraphicsSpriteRenderer_ClearTextBuffer(void *);
 extern s32 func_020918f4(void *, s32);
 extern void func_02091b98(void *, s32);
@@ -148,7 +148,7 @@ extern "C" s32 func_ov018_021fea1c(void *state)
                         divideBy4096(radiusX * data_020c9670[angle * 2]);
                 s32 y = func_ov018_021fe1d8(state, descriptor) + centerY +
                         divideBy4096(radiusY * data_020c9670[angle * 2 + 1]);
-                void *sprite = func_02073ffc(
+                void *sprite = GraphicsSpriteGroup_CreateStateFromSource(
                     FIELD(void *, state, 0xcc), (u8 *)state + 0xac, 1);
                 func_02073e48(sprite,
                     func_020918f4((u8 *)state + 0x3dc, 4),

@@ -8,7 +8,7 @@
 #define FIELD(type, base, offset) (*(type *)((u8 *)(base) + (offset)))
 
 extern "C" void func_ov046_0220bd14(void *panel);
-extern "C" void func_020740a4(void *fontState);
+extern "C" void GraphicsSpriteGroup_AdvanceAnimations(void *fontState);
 
 /*
  * Rebuild visible panel content, write translation (128-x, 96-y) into font
@@ -22,5 +22,5 @@ extern "C" void func_ov046_0220c1a4(void *panel)
         0x80 - FIELD(s32, panel, 0x10c);
     FIELD(s32, FIELD(void *, panel, 4), 0x1c) =
         0x60 - FIELD(s32, panel, 0x110);
-    func_020740a4(FIELD(void *, panel, 4));
+    GraphicsSpriteGroup_AdvanceAnimations(FIELD(void *, panel, 4));
 }

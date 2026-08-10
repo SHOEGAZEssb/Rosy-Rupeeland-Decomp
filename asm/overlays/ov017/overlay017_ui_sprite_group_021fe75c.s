@@ -4,8 +4,8 @@
     .extern func_02071ea4
     .extern func_02071ee0
     .extern func_02073e48
-    .extern func_02073ffc
-    .extern func_020742cc
+    .extern GraphicsSpriteGroup_CreateStateFromSource
+    .extern GraphicsSpriteGroupOwner_CreateGroup
     .extern gDebugFont
 .global func_ov017_021fe75c
 func_ov017_021fe75c:
@@ -24,7 +24,7 @@ func_ov017_021fe75c:
     ldr r0, L_021fe884
     str r1, [r9, #0x64]
     ldr r0, [r0, #0x0]
-    bl func_020742cc
+    bl GraphicsSpriteGroupOwner_CreateGroup
     ldr r3, L_021fe888
     str r0, [r9, #0x0]
     ldr r1, L_021fe88c
@@ -45,7 +45,7 @@ func_ov017_021fe75c:
     ldr r0, [r9, #0x0]
     add r1, r9, #0x4
     mov r2, #0x1
-    bl func_02073ffc
+    bl GraphicsSpriteGroup_CreateStateFromSource
     str r0, [r9, #0x1c]
     mov r0, #0x1
     str r0, [sp, #0x0]
@@ -66,7 +66,7 @@ L_021fe830:
     ldr r0, [r9, #0x0]
     mov r2, r7
     add r1, r9, #0x10
-    bl func_02073ffc
+    bl GraphicsSpriteGroup_CreateStateFromSource
     add r1, r9, r8, lsl #0x2
     str r0, [r1, #0x20]
     str r6, [sp, #0x0]

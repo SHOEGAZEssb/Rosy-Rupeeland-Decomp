@@ -11,7 +11,7 @@
 extern "C" {
 #endif
 
-extern AnimationBindingHandle *func_02073fc4(
+extern AnimationBindingHandle *GraphicsSpriteGroup_CreateState(
     void *owner, void *resource0, void *resource1, void *resource2, u32 variant);
 
 #ifdef __cplusplus
@@ -35,10 +35,10 @@ UtilAnimationResource *UtilAnimationResource_Init(
     self->origin = origin;
     TouchPoint_InitZero(&self->position);
 
-    self->handles[0] = func_02073fc4(owner0, resource0, resource1, resource2,
+    self->handles[0] = GraphicsSpriteGroup_CreateState(owner0, resource0, resource1, resource2,
                                      variant & 0xff);
     self->handles[0]->flags24 |= 8;
-    self->handles[1] = func_02073fc4(owner1, resource0, resource1, resource2,
+    self->handles[1] = GraphicsSpriteGroup_CreateState(owner1, resource0, resource1, resource2,
                                      variant & 0xff);
     self->handles[1]->flags24 |= 8;
     self->position.y = 0;

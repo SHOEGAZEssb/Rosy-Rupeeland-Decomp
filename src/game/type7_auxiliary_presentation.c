@@ -36,10 +36,10 @@ extern void Heap_Free(void *allocation);
 extern void *AnimationResource_Init(void *storage, u32 first, u32 second, u32 third);
 extern void Actor_GetCollection(void *owner);
 extern void *ActorCollection_GetSpriteOwner(void);
-extern void *func_02073fc4(void *context, u32 first, u32 second, u32 third,
+extern void *GraphicsSpriteGroup_CreateState(void *context, u32 first, u32 second, u32 third,
                            u32 mode);
 extern void GraphicsSpriteState_SetAnimationIndex(void *presentation, u32 index);
-extern void func_02073ef8(void *presentation);
+extern void GraphicsSpriteState_ReleaseFromGroup(void *presentation);
 extern void Type7AuxiliaryPresentation_Reset(Type7AuxiliaryPresentation *self);
 extern void Type7AuxiliaryPresentation_Activate(Type7AuxiliaryPresentation *self);
 #ifdef __cplusplus
@@ -67,7 +67,7 @@ Type7AuxiliaryPresentation *Type7AuxiliaryPresentation_Init(
         resource = (u32 *)AnimationResource_Init(resource, 0x1157, 0x1158, 0x1159);
     self->resource = resource;
     Actor_GetCollection(owner);
-    self->presentation = func_02073fc4(
+    self->presentation = GraphicsSpriteGroup_CreateState(
         ActorCollection_GetSpriteOwner(), resource[1], resource[2], resource[3], 2);
     GraphicsSpriteState_SetAnimationIndex(self->presentation, 0);
     *(u16 *)((u8 *)self->presentation + 0x2c) = 0;
@@ -86,7 +86,7 @@ Type7AuxiliaryPresentation *Type7AuxiliaryPresentation_Init(
 Type7AuxiliaryPresentation *Type7AuxiliaryPresentation_Destroy(Type7AuxiliaryPresentation *self)
 {
     self->vtable = data_020e1ea4;
-    func_02073ef8(self->presentation);
+    GraphicsSpriteState_ReleaseFromGroup(self->presentation);
     if (self->resource != 0) {
         void (**vtable)(void *) = *(void (***)(void *))self->resource;
         vtable[1](self->resource);
@@ -103,7 +103,7 @@ Type7AuxiliaryPresentation *Type7AuxiliaryPresentation_Destroy(Type7AuxiliaryPre
 Type7AuxiliaryPresentation *Type7AuxiliaryPresentation_DestroyAndFree(Type7AuxiliaryPresentation *self)
 {
     self->vtable = data_020e1ea4;
-    func_02073ef8(self->presentation);
+    GraphicsSpriteState_ReleaseFromGroup(self->presentation);
     if (self->resource != 0) {
         void (**vtable)(void *) = *(void (***)(void *))self->resource;
         vtable[1](self->resource);

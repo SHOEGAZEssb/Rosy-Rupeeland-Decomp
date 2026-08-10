@@ -1,6 +1,6 @@
     .text
 /* Exact fallback; see src/overlays/ov022/overlay022_menu_collection.c. */
-    .extern func_02074110
+    .extern GraphicsSpriteGroup_ReleaseIndexedEntries
 
 .global func_ov022_021fdafc
 func_ov022_021fdafc:
@@ -18,6 +18,6 @@ func_ov022_021fdafc:
 L_021fdb28:
     ldr r0, [r0, #0x30]
     ldr r0, [r0, #0x50]
-    bl func_02074110
+    bl GraphicsSpriteGroup_ReleaseIndexedEntries
     ldmia sp!, {r3, pc}
 .size func_ov022_021fdafc, . - func_ov022_021fdafc

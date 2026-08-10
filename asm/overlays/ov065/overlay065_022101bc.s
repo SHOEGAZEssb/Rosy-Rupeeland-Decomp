@@ -10,7 +10,7 @@
 .extern func_02005030
 .extern AnimationResource_Init
 .extern GraphicsSpriteState_Create
-.extern func_020742cc
+.extern GraphicsSpriteGroupOwner_CreateGroup
 .extern func_020befec
 .extern func_ov065_0220fd20
 .extern gHeapContext
@@ -51,7 +51,7 @@ func_ov065_022101bc:
     ldr r0, .L_022103b0
     str r10, [r1, #0x0]
     ldr r0, [r0, #0x0]
-    bl func_020742cc
+    bl GraphicsSpriteGroupOwner_CreateGroup
     str r0, [r10, #0x24]
     mov r0, #0x10
     ldr r1, .L_022103b4

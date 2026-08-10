@@ -3,7 +3,7 @@
 .extern data_020f4e14
 .extern data_020f4e18
 .extern func_02071b94
-.extern func_020742cc
+.extern GraphicsSpriteGroupOwner_CreateGroup
 .extern func_020be8c0
 .extern func_020beae4
 .extern func_020beb18
@@ -108,7 +108,7 @@ func_ov066_022107ac:
     blt .L_022108f0
     ldr r0, .L_02210950
     ldr r0, [r0, #0x0]
-    bl func_020742cc
+    bl GraphicsSpriteGroupOwner_CreateGroup
     str r0, [r7, #0x1a4]
     add r0, r7, #0x1a8
     str r0, [sp, #0x0]

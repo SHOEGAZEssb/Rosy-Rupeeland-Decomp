@@ -22,7 +22,7 @@ extern char data_ov001_021fcc88[];
 extern void func_02071ea4(void *resource);
 extern void func_02071ee0(void *resource, void *manager, s32 first,
                           s32 second, s32 third);
-extern void *func_020742cc(void *owner);
+extern void *GraphicsSpriteGroupOwner_CreateGroup(void *owner);
 extern void func_02092798(void *state);
 extern void func_02092814(void *state, s32 resourceId);
 extern void *func_02092cc0(void *object, void *owner, void *resource);
@@ -53,7 +53,7 @@ Overlay001PresentationState *func_ov001_021fb6f8(
     func_02071ea4(state->resource_14);
     func_02092798(state->rendererState_20);
     state->owner_00 = owner;
-    state->spriteOwner_04 = func_020742cc(owner);
+    state->spriteOwner_04 = GraphicsSpriteGroupOwner_CreateGroup(owner);
     func_02092814(state->rendererState_20, 0x7000);
     func_02092814(state->rendererState_20, 0x7005);
     func_02092814(state->rendererState_20, 0x7001);

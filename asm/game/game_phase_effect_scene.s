@@ -16,8 +16,8 @@
 .extern GamePhaseRuntime_GetActorCollection
 .extern ActorCollection_GetSpriteOwner
 .extern GraphicsSpriteState_SetAnimationIndex
-.extern func_02074038
-.extern func_020740a4
+.extern GraphicsSpriteGroup_ReleaseState
+.extern GraphicsSpriteGroup_AdvanceAnimations
 .extern gHeapContext
 .extern gSoundContext
     .global GamePhaseEffectScene_Init
@@ -187,7 +187,7 @@ GamePhaseEffectScene_Destroy: ; 0x0200cc44
     str r1, [r4, #0x0]
     ldr r1, [r4, #0x28]
     ldr r0, [r1, #0x0]
-    bl func_02074038
+    bl GraphicsSpriteGroup_ReleaseState
     ldr r0, [r4, #0x24]
     cmp r0, #0x0
     beq L_0200cc78
@@ -210,7 +210,7 @@ GamePhaseEffectScene_DestroyAndFree: ; 0x0200cc8c
     str r1, [r4, #0x0]
     ldr r1, [r4, #0x28]
     ldr r0, [r1, #0x0]
-    bl func_02074038
+    bl GraphicsSpriteGroup_ReleaseState
     ldr r0, [r4, #0x24]
     cmp r0, #0x0
     beq L_0200ccc0
@@ -242,7 +242,7 @@ GamePhaseEffectScene_Update: ; 0x0200ccdc
     ldr r1, [r4, #0x28]
     mov r5, r0
     ldr r0, [r1, #0x0]
-    bl func_020740a4
+    bl GraphicsSpriteGroup_AdvanceAnimations
     ldr r1, L_0200cd50
     ldr r0, L_0200cd54
     cmp r5, #0x0

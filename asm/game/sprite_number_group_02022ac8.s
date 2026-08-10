@@ -13,8 +13,8 @@
 .extern func_02071eb8
 .extern func_02071ee0
 .extern GraphicsSpriteState_SetAnimationIndex
-.extern func_02073ffc
-.extern func_02074038
+.extern GraphicsSpriteGroup_CreateStateFromSource
+.extern GraphicsSpriteGroup_ReleaseState
 .extern func_020befec
 .extern gHeapContext
 

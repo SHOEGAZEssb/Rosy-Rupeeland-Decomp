@@ -21,8 +21,8 @@ extern "C" void func_02071ee0(void *owner, void *font, u32 character,
 extern "C" void *__construct_array(void *array, s32 count, s32 stride,
                                      void (*construct)(void *),
                                      void (*destroy)(void *));
-extern "C" void *func_020742cc(void *font);
-extern "C" void *func_02073ffc(void *fontState, void *owner, s32 index);
+extern "C" void *GraphicsSpriteGroupOwner_CreateGroup(void *font);
+extern "C" void *GraphicsSpriteGroup_CreateStateFromSource(void *fontState, void *owner, s32 index);
 extern "C" void func_02073e48(void *sprite, s32 a, s32 b, s32 c, s32 d,
                                s32 e, s32 f);
 extern "C" bool GameWork_TestFlag(void *gameWork, u16 flag);
@@ -50,7 +50,7 @@ extern "C" void *func_ov046_0220b7bc(void *object, void *font, s32 mode)
     func_02071ea4((u8 *)object + 0x2c);
 
     FIELD(void *, object, 0) = font;
-    FIELD(void *, object, 4) = func_020742cc(font);
+    FIELD(void *, object, 4) = GraphicsSpriteGroupOwner_CreateGroup(font);
     FIELD(s32, object, 0x114) = mode;
     FIELD(s32, object, 0xc0) = 0x18;
     FIELD(s32, object, 0x10c) = 0;
@@ -67,7 +67,7 @@ extern "C" void *func_ov046_0220b7bc(void *object, void *font, s32 mode)
     func_02071ee0((u8 *)object + 0x2c, data_020f4e14,
                   0x400c, 0x400d, 0x400e);
 
-    void *sprite = func_02073ffc(FIELD(void *, object, 4),
+    void *sprite = GraphicsSpriteGroup_CreateStateFromSource(FIELD(void *, object, 4),
                                   (u8 *)object + 8, 1);
     FIELD(void *, object, 0x38) = sprite;
     func_02073e48(sprite, 2, 0, 0, 2, 0, 6);
@@ -76,7 +76,7 @@ extern "C" void *func_ov046_0220b7bc(void *object, void *font, s32 mode)
         FIELD(s32, object, 0xd4 + i * 4) = 0;
     }
     for (s32 i = 0; i < 32; ++i) {
-        sprite = func_02073ffc(FIELD(void *, object, 4),
+        sprite = GraphicsSpriteGroup_CreateStateFromSource(FIELD(void *, object, 4),
                                (u8 *)object + 0x14, 1);
         FIELD(void *, object, 0x3c + i * 4) = sprite;
         func_02073e48(sprite, 0, 0, 0, 2, 0x100, 4);
@@ -95,7 +95,7 @@ extern "C" void *func_ov046_0220b7bc(void *object, void *font, s32 mode)
         FIELD(s32, object, 0xe0 + i * 4) = state;
     }
 
-    sprite = func_02073ffc(FIELD(void *, object, 4),
+    sprite = GraphicsSpriteGroup_CreateStateFromSource(FIELD(void *, object, 4),
                            (u8 *)object + 0x2c, 1);
     FIELD(void *, object, 0xbc) = sprite;
     func_02073e48(sprite, 0, 0, 0, 2, 0, 6);

@@ -28,8 +28,8 @@
     .extern func_02071ee0
     .extern func_020720c0
     .extern func_020720e8
-    .extern func_02073ffc
-    .extern func_020742cc
+    .extern GraphicsSpriteGroup_CreateStateFromSource
+    .extern GraphicsSpriteGroupOwner_CreateGroup
     .extern func_02075358
     .extern Graphics3DResourceOwner_Init
     .extern Graphics3DResourceOwner_CreateManager
@@ -203,11 +203,11 @@ L_021febe8:
     bl func_02092754
     ldr r0, L_021ff0f0
     ldr r0, [r0, #0x0]
-    bl func_020742cc
+    bl GraphicsSpriteGroupOwner_CreateGroup
     add r1, r10, #0x5c
     mov r2, #0x1
     str r0, [r10, #0x58]
-    bl func_02073ffc
+    bl GraphicsSpriteGroup_CreateStateFromSource
     mov r1, r0
     mov r0, #0x0
     str r0, [sp, #0x0]
@@ -224,7 +224,7 @@ L_021febe8:
     ldr r0, [r10, #0x58]
     add r1, r10, #0x5c
     mov r2, #0x1
-    bl func_02073ffc
+    bl GraphicsSpriteGroup_CreateStateFromSource
     mov r1, r0
     mov r0, #0x0
     str r0, [sp, #0x0]
@@ -248,7 +248,7 @@ L_021febe8:
     ldr r0, [r10, #0x58]
     add r1, r10, #0x68
     mov r2, #0x1
-    bl func_02073ffc
+    bl GraphicsSpriteGroup_CreateStateFromSource
     mov r1, r0
     mov r0, r5
     bl func_020953f4

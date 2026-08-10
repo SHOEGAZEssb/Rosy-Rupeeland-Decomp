@@ -12,7 +12,7 @@
 .extern func_02070e0c
 .extern func_02070f34
 .extern func_02072048
-.extern func_020740a4
+.extern GraphicsSpriteGroup_AdvanceAnimations
 .extern GraphicsSpriteRenderer_GetObjectPaletteAddress
 .extern func_0209189c
 .extern func_020925a4
@@ -220,7 +220,7 @@ func_ov028_021fe438:
     cmp r0, #0x0
     beq L_021fe45c
     ldr r0, [r0, #0x0]
-    bl func_020740a4
+    bl GraphicsSpriteGroup_AdvanceAnimations
 L_021fe45c:
     ldr r0, [r4, #0x260]
     ldr r1, [r0, #0x80]
@@ -266,9 +266,9 @@ L_021fe4e8:
     add r0, r4, #0x144
     bl func_020958d8
     ldr r0, [r4, #0x54]
-    bl func_020740a4
+    bl GraphicsSpriteGroup_AdvanceAnimations
     ldr r0, [r4, #0x58]
-    bl func_020740a4
+    bl GraphicsSpriteGroup_AdvanceAnimations
     ldr r0, [r4, #0x220]
     cmp r0, #0x0
     beq L_021fe528

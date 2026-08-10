@@ -12,7 +12,7 @@
 .extern ActorCollection_DispatchEventToActors
 .extern ActorCollection_GetSpriteOwner
 .extern ActorFeedback_UpdatePresentations
-.extern func_020740a4
+.extern GraphicsSpriteGroup_AdvanceAnimations
 .extern gLupyContext
 
 .global func_ov064_02210ae8
@@ -59,7 +59,7 @@ func_ov064_02210ae8:
     ldr r0, [r0, #0x0]
     bl GamePhaseRuntime_GetActorCollection
     bl ActorCollection_GetSpriteOwner
-    bl func_020740a4
+    bl GraphicsSpriteGroup_AdvanceAnimations
     ldr r1, .L_02210c54
     add r0, sp, #0x0
     ldr r1, [r1, #0x0]
@@ -77,7 +77,7 @@ func_ov064_02210ae8:
     ldr r0, [r0, #0x0]
     bl GamePhaseRuntime_GetActorCollection
     bl ActorCollection_GetSpriteOwner
-    bl func_020740a4
+    bl GraphicsSpriteGroup_AdvanceAnimations
     ldr r0, .L_02210c54
     mov r1, #0x1
     ldr r0, [r0, #0x0]
@@ -93,9 +93,9 @@ func_ov064_02210ae8:
     b .L_02210c20
 .L_02210c10:
     ldr r0, [r5, #0x3c]
-    bl func_020740a4
+    bl GraphicsSpriteGroup_AdvanceAnimations
     ldr r0, [r5, #0x40]
-    bl func_020740a4
+    bl GraphicsSpriteGroup_AdvanceAnimations
 .L_02210c20:
     cmp r4, #0x0
     beq .L_02210c48

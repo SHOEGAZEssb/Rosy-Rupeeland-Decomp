@@ -1,7 +1,7 @@
     .text
 /* Exact fallback; see src/overlays/ov020/overlay020_scene_helpers.c. */
     .extern func_02071eb8
-    .extern func_0207419c
+    .extern GraphicsSpriteGroup_Destroy
     .extern func_020927b8
 
 .global func_ov020_021fd404
@@ -16,7 +16,7 @@ func_ov020_021fd404:
     blx r1
 L_021fd424:
     ldr r0, [r4, #0xc]
-    bl func_0207419c
+    bl GraphicsSpriteGroup_Destroy
     add r0, r4, #0x28
     bl func_020927b8
     add r0, r4, #0x1c

@@ -7,7 +7,7 @@
     .extern func_020597fc
     .extern func_02071c38
     .extern func_02071eb8
-    .extern func_0207419c
+    .extern GraphicsSpriteGroup_Destroy
     .extern GraphicsSpriteRenderer_QueuePaletteUploads
     .extern func_020927b8
     .extern func_ov022_021fcf98
@@ -79,9 +79,9 @@ L_021fe0c0:
     bl Heap_Free
 L_021fe0dc:
     ldr r0, [r4, #0x9c]
-    bl func_0207419c
+    bl GraphicsSpriteGroup_Destroy
     ldr r0, [r4, #0xa0]
-    bl func_0207419c
+    bl GraphicsSpriteGroup_Destroy
     ldr r0, L_021fe178
     ldr r1, [r4, #0x374]
     ldr r0, [r0, #0x0]

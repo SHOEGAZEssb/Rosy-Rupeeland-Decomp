@@ -7,7 +7,7 @@
 .extern VecFx32Bezier_Evaluate3D
 .extern func_020593ac
 .extern GraphicsSpriteState_SetAnimationIndex
-.extern func_020740c8
+.extern GraphicsSpriteGroup_ReplaceStateResources
 .extern func_020befec
 .extern gSoundContext
 .extern genrand_int32
@@ -87,7 +87,7 @@ func_ov065_0220ff20:
     str r0, [sp, #0x0]
     ldr r0, [r1, #0x0]
     ldmib r3, {r2, r3}
-    bl func_020740c8
+    bl GraphicsSpriteGroup_ReplaceStateResources
     ldr r0, [r7, #0x0]
     ldrb r4, [r0, #0x38]
     mov r1, r4

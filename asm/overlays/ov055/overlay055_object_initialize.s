@@ -6,7 +6,7 @@
 .extern func_02071eb8
 .extern func_02071ee0
 .extern GraphicsSpriteState_SetAnimationIndex
-.extern func_02073fc4
+.extern GraphicsSpriteGroup_CreateState
 
 .global func_ov055_0220e400
 func_ov055_0220e400:
@@ -50,7 +50,7 @@ func_ov055_0220e400:
     ldr r2, [sp, #0x8]
     ldr r3, [sp, #0xc]
     mov r0, r4
-    bl func_02073fc4
+    bl GraphicsSpriteGroup_CreateState
     str r0, [r5, #0x0]
     ldrh r2, [r0, #0x24]
     mov r1, #0x1

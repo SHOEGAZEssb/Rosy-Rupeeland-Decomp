@@ -14,7 +14,7 @@ extern "C" {
 extern const void *data_ov009_021fee8c[];
 extern const void *data_ov009_021feec0[];
 extern void func_02002728(void *allocation);
-extern void func_0207419c(void *resource);
+extern void GraphicsSpriteGroup_Destroy(void *resource);
 extern void func_02092418(void *member);
 extern void DebugText_BeginFrame(void);
 extern void func_020923a0(void *member);
@@ -43,7 +43,7 @@ void *func_ov009_021fd198(void *state)
     for (index = 0; index < 6; index++) {
         func_02002728(FIELD(void *, state, 0x8c + index * 4));
     }
-    func_0207419c(FIELD(void *, state, 0x84));
+    GraphicsSpriteGroup_Destroy(FIELD(void *, state, 0x84));
     func_02092418((u8 *)state + 0x13c);
     DebugText_BeginFrame();
     func_020923a0((u8 *)state + 0x13c);

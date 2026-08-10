@@ -5,7 +5,7 @@
     .extern data_ov020_021fe528
     .extern func_02071ea4
     .extern func_02071ee0
-    .extern func_020742cc
+    .extern GraphicsSpriteGroupOwner_CreateGroup
     .extern func_02092798
     .extern func_02092814
     .extern func_02092cc0
@@ -27,7 +27,7 @@ func_ov020_021fd320:
     str r0, [r5, #0x0]
     str r4, [r5, #0x8]
     mov r0, r4
-    bl func_020742cc
+    bl GraphicsSpriteGroupOwner_CreateGroup
     str r0, [r5, #0xc]
     add r0, r5, #0x28
     mov r1, #0x7000

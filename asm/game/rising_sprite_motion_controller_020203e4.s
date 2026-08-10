@@ -14,7 +14,7 @@
 .extern SpriteMotionDelta_Configure
 .extern SpriteMotionDelta_Copy
 .extern GraphicsSpriteState_SetAnimationIndex
-.extern func_02073fc4
+.extern GraphicsSpriteGroup_CreateState
 .extern gSystemState
 
 .global RisingSpriteMotionController_Init
@@ -75,7 +75,7 @@ RisingSpriteMotionController_Init: ; 0x020203e4
     str r1, [sp, #0x0]
     ldmia r5, {r1, r2, r3}
     mov r0, r6
-    bl func_02073fc4
+    bl GraphicsSpriteGroup_CreateState
     mov r1, #0x0
     str r0, [r4, #0x0]
     bl GraphicsSpriteState_SetAnimationIndex

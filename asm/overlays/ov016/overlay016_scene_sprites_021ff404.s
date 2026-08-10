@@ -2,7 +2,7 @@
 
 /* Exact fallback; see src/overlays/ov016/overlay016_scene_sprites.c. */
     .extern func_02073e48
-    .extern func_02073ffc
+    .extern GraphicsSpriteGroup_CreateStateFromSource
     .extern func_020957f0
     .extern func_02095820
     .extern func_02095940
@@ -14,7 +14,7 @@ func_ov016_021ff404:
     ldr r0, [r4, #0xe0]
     add r1, r4, #0xc8
     mov r2, #0x1
-    bl func_02073ffc
+    bl GraphicsSpriteGroup_CreateStateFromSource
     str r0, [r4, #0xe4]
     mov r0, #0x2
     str r0, [sp, #0x0]
@@ -28,7 +28,7 @@ func_ov016_021ff404:
     ldr r0, [r4, #0xe0]
     add r1, r4, #0xc8
     mov r2, #0x1
-    bl func_02073ffc
+    bl GraphicsSpriteGroup_CreateStateFromSource
     mov r1, r0
     mov r0, #0x0
     str r0, [sp, #0x0]
@@ -54,7 +54,7 @@ L_021ff4a8:
     ldr r0, [r4, #0xe0]
     add r1, r4, #0xc8
     mov r2, #0x1
-    bl func_02073ffc
+    bl GraphicsSpriteGroup_CreateStateFromSource
     mov r1, r0
     mov ip, #0x0
     add r0, r4, #0x194

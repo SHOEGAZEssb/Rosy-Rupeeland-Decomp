@@ -15,7 +15,7 @@ extern const u8 data_ov025_02202ed8[];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_02074110(void *);
+extern void GraphicsSpriteGroup_ReleaseIndexedEntries(void *);
 extern void GraphicsSpriteRenderer_ClearTextBuffer(void *);
 extern void func_02091bac(void *, s32, s32, s32, s32);
 extern s32 func_02091c7c(void *, s32);
@@ -97,7 +97,7 @@ extern "C" s32 func_ov025_02200fe4(void *scene)
         GraphicsSpriteRenderer_ClearTextBuffer(data_020f4e14);
         for (s32 i = 0; i < 3; ++i) {
             void *row = FIELD(void *, scene, 0xe4 + i * 4);
-            func_02074110(FIELD(void *, row, 0xc));
+            GraphicsSpriteGroup_ReleaseIndexedEntries(FIELD(void *, row, 0xc));
             func_ov025_021fd9e4(row, 0);
         }
         FIELD(s32, scene, 0x54) = -1;

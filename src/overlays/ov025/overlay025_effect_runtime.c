@@ -10,7 +10,7 @@ extern "C" {
 extern s32 GraphicsSpriteState_GetSequenceDuration(void *);
 extern s32 func_0209189c(u32 *, s32, s32);
 extern s32 func_020918f4(u32 *, s32);
-extern void func_020740a4(void *);
+extern void GraphicsSpriteGroup_AdvanceAnimations(void *);
 extern void func_020948e4(void *, s32, s32);
 extern void func_02094dd4(void *);
 extern s32 func_02095224(void *);
@@ -202,7 +202,7 @@ extern "C" s32 func_ov025_021feb4c(void *object)
         }
     }
 
-    func_020740a4(FIELD(void *, object, 0xe0));
-    func_020740a4(FIELD(void *, object, 0xe4));
+    GraphicsSpriteGroup_AdvanceAnimations(FIELD(void *, object, 0xe0));
+    GraphicsSpriteGroup_AdvanceAnimations(FIELD(void *, object, 0xe4));
     return 0;
 }

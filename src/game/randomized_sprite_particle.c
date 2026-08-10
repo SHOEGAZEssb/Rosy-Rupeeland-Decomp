@@ -38,9 +38,9 @@ extern void VecFx32_Subtract(void *, const void *, const void *);
 extern s32 func_020adcac(const s32 *, const s32 *);
 extern s32 func_020adc90(s32, s32);
 extern s32 func_020ae024(s32, s32);
-extern u8 *func_02073ffc(void *, void *, s32);
+extern u8 *GraphicsSpriteGroup_CreateStateFromSource(void *, void *, s32);
 extern void GraphicsSpriteState_SetAnimationIndex(void *, s32);
-extern void func_02074038(void *, void *);
+extern void GraphicsSpriteGroup_ReleaseState(void *, void *);
 #ifdef __cplusplus
 }
 #endif
@@ -64,7 +64,7 @@ RandomizedSpriteParticle *func_02028860(RandomizedSpriteParticle *self,
     self->owner_44 = owner;
     self->lifetime_48 = 0;
     self->position_00.y += ((s32)(genrand_int32() & 0x1f) - 0x10) << 12;
-    self->sprite_40 = func_02073ffc(owner, resources + 4, 1);
+    self->sprite_40 = GraphicsSpriteGroup_CreateStateFromSource(owner, resources + 4, 1);
     GraphicsSpriteState_SetAnimationIndex(self->sprite_40, (u8)frame);
     *(u16 *)(self->sprite_40 + 0x24) |= 6;
     *(u16 *)(self->sprite_40 + 0x28) = 100;
@@ -79,7 +79,7 @@ RandomizedSpriteParticle *func_02028860(RandomizedSpriteParticle *self,
 /* Release the sprite and destroy the four embedded vector temporaries. */
 RandomizedSpriteParticle *func_0202895c(RandomizedSpriteParticle *self)
 {
-    func_02074038(self->owner_44, self->sprite_40);
+    GraphicsSpriteGroup_ReleaseState(self->owner_44, self->sprite_40);
     func_02005058(&self->steering_30);
     func_02005058(&self->velocity_20);
     func_02005058(&self->target_10);

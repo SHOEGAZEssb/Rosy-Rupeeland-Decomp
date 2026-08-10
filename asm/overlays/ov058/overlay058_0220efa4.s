@@ -2,7 +2,7 @@
 ; Matching fallback for the portable implementation in src/overlays/ov058/overlay058_recovery.c.
 .extern GameWork_TestFlag
 .extern data_020f4e14
-.extern func_020740a4
+.extern GraphicsSpriteGroup_AdvanceAnimations
 .extern GraphicsSpriteRenderer_SetTextGridPosition
 .extern func_020befec
 .extern func_ov058_0220e598
@@ -94,9 +94,9 @@ func_ov058_0220efa4:
     rsb r0, r2, #0x120
     str r0, [r1, #0x1c]
     ldr r0, [r4, #0xc]
-    bl func_020740a4
+    bl GraphicsSpriteGroup_AdvanceAnimations
     ldr r0, [r4, #0x10]
-    bl func_020740a4
+    bl GraphicsSpriteGroup_AdvanceAnimations
     ldr r0, .L_0220f114
     ldr r1, [r4, #0x48]
     ldr r0, [r0, #0x0]

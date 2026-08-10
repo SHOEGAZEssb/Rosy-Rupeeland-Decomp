@@ -6,7 +6,7 @@
 .extern data_ov055_0220f080
 .extern func_02004fe0
 .extern func_0201e250
-.extern func_020742cc
+.extern GraphicsSpriteGroupOwner_CreateGroup
 .extern func_ov055_0220e574
 .extern gDebugFont
 .extern gHeapContext
@@ -28,11 +28,11 @@ func_ov055_0220e8b8:
     ldr r0, .L_0220e95c
     str r5, [r4, #0x2c]
     ldr r0, [r0, #0x0]
-    bl func_020742cc
+    bl GraphicsSpriteGroupOwner_CreateGroup
     str r0, [r4, #0x1c]
     ldr r0, .L_0220e960
     ldr r0, [r0, #0x0]
-    bl func_020742cc
+    bl GraphicsSpriteGroupOwner_CreateGroup
     str r0, [r4, #0x20]
     mov r0, #0x48
     ldr r1, .L_0220e964

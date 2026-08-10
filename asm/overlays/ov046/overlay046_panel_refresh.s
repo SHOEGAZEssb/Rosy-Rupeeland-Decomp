@@ -1,6 +1,6 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov046/overlay046_panel_refresh.c.
-.extern func_020740a4
+.extern GraphicsSpriteGroup_AdvanceAnimations
 .extern func_ov046_0220bd14
 
 .global func_ov046_0220c1a4
@@ -16,6 +16,6 @@ func_ov046_0220c1a4:
     rsb r0, r2, #0x60
     str r0, [r1, #0x1c]
     ldr r0, [r4, #0x4]
-    bl func_020740a4
+    bl GraphicsSpriteGroup_AdvanceAnimations
     ldmia sp!, {r4, pc}
 .size func_ov046_0220c1a4, . - func_ov046_0220c1a4

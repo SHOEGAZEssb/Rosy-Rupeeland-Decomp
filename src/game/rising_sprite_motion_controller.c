@@ -53,10 +53,10 @@ extern void VecFx32_Subtract(PresentationValue *destination, void *source,
                           s32 argument);
 extern void func_02056f00(PresentationValue *destination,
                           PresentationValue *source);
-extern u8 *func_02073fc4(void *owner, s32 first, s32 second, s32 third,
+extern u8 *GraphicsSpriteGroup_CreateState(void *owner, s32 first, s32 second, s32 third,
                          s32 mode);
 extern void GraphicsSpriteState_SetAnimationIndex(void *sprite, s32 value);
-extern void func_02074038(void *owner, void *sprite);
+extern void GraphicsSpriteGroup_ReleaseState(void *owner, void *sprite);
 extern void SpriteMotionDelta_Init(SpriteMotionDelta *self);
 extern SpriteMotionDelta *SpriteMotionDelta_Configure(SpriteMotionDelta *self,
                                                        s32 first, s32 second,
@@ -108,7 +108,7 @@ RisingSpriteMotionController *RisingSpriteMotionController_Init(
     func_02005058(&value60);
     SpriteMotionDelta_Configure(&motion, 0x100000, 0x2000, 0x78);
     SpriteMotionDelta_Copy(&self->motion4c, &motion);
-    self->sprite00 = func_02073fc4(spriteOwner, spriteConfig[0],
+    self->sprite00 = GraphicsSpriteGroup_CreateState(spriteOwner, spriteConfig[0],
                                    spriteConfig[1], spriteConfig[2], 2);
     GraphicsSpriteState_SetAnimationIndex(self->sprite00, 0);
     *(u16 *)(self->sprite00 + 0x24) &= (u16)~8;
@@ -127,7 +127,7 @@ RisingSpriteMotionController *RisingSpriteMotionController_Init(
 RisingSpriteMotionController *RisingSpriteMotionController_Destroy(
     RisingSpriteMotionController *self)
 {
-    func_02074038(self->spriteOwner04, self->sprite00);
+    GraphicsSpriteGroup_ReleaseState(self->spriteOwner04, self->sprite00);
     VecFx32Triple_Destroy(self->path1c);
     return self;
 }

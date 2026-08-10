@@ -18,7 +18,7 @@ typedef void (*Overlay005VirtualRelease)(void *object);
 extern "C" {
 #endif
 extern const u8 data_ov005_021fcad4[];
-extern void func_0207419c(void *context);
+extern void GraphicsSpriteGroup_Destroy(void *context);
 extern void func_020280d8(void *object);
 extern void Heap_Free(void *memory);
 extern void *func_ov005_021fbb78(void *scene);
@@ -60,7 +60,7 @@ Overlay005Presentation *func_ov005_021fc110(Overlay005Presentation *state)
     if (object != 0) {
         overlay005_release_controller(object);
     }
-    func_0207419c(FIELD(void *, state, 0x060));
+    GraphicsSpriteGroup_Destroy(FIELD(void *, state, 0x060));
     object = FIELD(void *, state, 0x078);
     if (object != 0) {
         func_020280d8(object);

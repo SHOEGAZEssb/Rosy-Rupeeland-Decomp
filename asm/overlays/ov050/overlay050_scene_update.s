@@ -7,7 +7,7 @@
 .extern func_0200500c
 .extern func_02005058
 .extern func_020050a4
-.extern func_020740a4
+.extern GraphicsSpriteGroup_AdvanceAnimations
 .extern func_ov050_0220d9c4
 .extern func_ov050_0220db40
 .extern func_ov050_0220e168
@@ -246,9 +246,9 @@ func_ov050_0220ddf0:
     cmp r4, #0x4
     blt .L_0220e074
     ldr r0, [r6, #0x14]
-    bl func_020740a4
+    bl GraphicsSpriteGroup_AdvanceAnimations
     ldr r0, [r6, #0x18]
-    bl func_020740a4
+    bl GraphicsSpriteGroup_AdvanceAnimations
     mov r0, #0x0
 .L_0220e150:
     add sp, sp, #0x20

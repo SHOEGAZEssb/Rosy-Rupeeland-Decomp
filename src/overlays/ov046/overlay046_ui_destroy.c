@@ -5,7 +5,7 @@
  * font state and three resource-owner regions initialized by the constructor.
  */
 
-extern "C" void func_0207419c(void *fontState);
+extern "C" void GraphicsSpriteGroup_Destroy(void *fontState);
 extern "C" void func_02071eb8(void *owner);
 extern "C" void __destroy_arr(void *array, s32 count, s32 stride,
                                void (*destroy)(void *));
@@ -17,7 +17,7 @@ extern "C" void __destroy_arr(void *array, s32 count, s32 stride,
  */
 extern "C" void *func_ov046_0220ba80(void *object)
 {
-    func_0207419c(*(void **)((u8 *)object + 4));
+    GraphicsSpriteGroup_Destroy(*(void **)((u8 *)object + 4));
     func_02071eb8((u8 *)object + 0x2c);
     __destroy_arr((u8 *)object + 0x14, 2, 0x0c, func_02071eb8);
     func_02071eb8((u8 *)object + 8);

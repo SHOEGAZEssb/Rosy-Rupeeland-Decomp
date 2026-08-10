@@ -23,7 +23,7 @@ extern const u8 data_020d7a48[];
 extern const void *data_ov038_021fdd08;
 extern void func_020958d8(void *list);
 extern void func_02094574(void *model);
-extern void func_020740a4(void *owner);
+extern void GraphicsSpriteGroup_AdvanceAnimations(void *owner);
 extern void func_ov046_0220c1a4(void *panel);
 extern s32 func_02091c7c(void *timer, s32 event);
 extern void func_02091b98(void *timer, s32 ticks);
@@ -54,7 +54,7 @@ extern "C" void func_ov038_021fd37c(void *presentation)
     if (FIELD(void *, presentation, 0x314) != 0) {
         func_02094574(FIELD(void *, presentation, 0x314));
     }
-    func_020740a4(FIELD(void *, presentation, 0x60));
+    GraphicsSpriteGroup_AdvanceAnimations(FIELD(void *, presentation, 0x60));
     func_ov046_0220c1a4(FIELD(void *, presentation, 0x340));
     if (!func_02091c7c((u8 *)presentation + 0x348, 2)) {
         return;

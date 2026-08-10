@@ -7,7 +7,7 @@
     .extern data_ov041_022058ec
     .extern func_02003e14
     .extern func_02004fe0
-    .extern func_020742cc
+    .extern GraphicsSpriteGroupOwner_CreateGroup
     .extern func_0209a748
     .extern func_020a6940
     .extern func_ov041_021fd000
@@ -82,7 +82,7 @@ func_ov041_021fce04: ; 0x021fce04
     ldr r0, .L_021fcff0
     str r1, [r5, #0x16c]
     ldr r0, [r0, #0x0]
-    bl func_020742cc
+    bl GraphicsSpriteGroupOwner_CreateGroup
     str r0, [r5, #0x0]
     ldr r1, .L_021fcff4
     ldr r3, .L_021fcff8

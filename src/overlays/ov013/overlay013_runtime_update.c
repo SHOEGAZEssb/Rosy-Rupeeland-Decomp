@@ -20,7 +20,7 @@ extern s32 func_02095224(void *);
 extern void func_02094cf0(void *, const void *, s32);
 extern void func_020958f0(void *);
 extern void func_020958d8(void *);
-extern void func_020740a4(void *);
+extern void GraphicsSpriteGroup_AdvanceAnimations(void *);
 extern void GamePhaseCurrencyHud_Update(void *);
 extern s32 func_02095860(void *, void *, s32, s32);
 extern void func_02092260(void *, s32);
@@ -107,8 +107,8 @@ void func_ov013_021fdbb0(void *state)
         }
         overlay013_virtual_update((u8 *)state + 0x89c);
         func_020958f0((u8 *)state + 0x89c);
-        func_020740a4(FIELD(void *, state, 0x84));
-        func_020740a4(FIELD(void *, state, 0x88));
+        GraphicsSpriteGroup_AdvanceAnimations(FIELD(void *, state, 0x84));
+        GraphicsSpriteGroup_AdvanceAnimations(FIELD(void *, state, 0x88));
     }
     if (FIELD(s32, state, 0x97c) != 0)
         GamePhaseCurrencyHud_Update(gLupyContext);

@@ -4,10 +4,10 @@
 .extern func_02071e80
 .extern Actor_GetCollection
 .extern ActorCollection_GetSpriteOwner
-.extern func_02073fc4
+.extern GraphicsSpriteGroup_CreateState
 .extern GraphicsSpriteState_SetAnimationIndex
 .extern Type7MarkerPresentation_Reset
-.extern func_02073ef8
+.extern GraphicsSpriteState_ReleaseFromGroup
 .extern Heap_Free
 .extern Type7MarkerPresentation_ReloadResources
 .extern data_020e1ed8
@@ -43,7 +43,7 @@ Type7MarkerPresentation_Init: ; 0x0204cca8
     mov r2, r6
     mov r3, r5
     str ip, [sp, #0x0]
-    bl func_02073fc4
+    bl GraphicsSpriteGroup_CreateState
     str r0, [r4, #0x4]
     mov r1, #0x0
     bl GraphicsSpriteState_SetAnimationIndex
@@ -77,7 +77,7 @@ Type7MarkerPresentation_Destroy: ; 0x0204cd7c
     mov r4, r0
     str r1, [r4, #0x0]
     ldr r0, [r4, #0x4]
-    bl func_02073ef8
+    bl GraphicsSpriteState_ReleaseFromGroup
     mov r0, r4
     ldmia sp!, {r4, pc}
 .L_0204cd9c: .word data_020e1ed8
@@ -90,7 +90,7 @@ Type7MarkerPresentation_DestroyAndFree: ; 0x0204cda0
     mov r4, r0
     str r1, [r4, #0x0]
     ldr r0, [r4, #0x4]
-    bl func_02073ef8
+    bl GraphicsSpriteState_ReleaseFromGroup
     mov r0, r4
     bl Heap_Free
     mov r0, r4

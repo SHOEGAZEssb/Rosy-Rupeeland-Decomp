@@ -5,7 +5,7 @@
 .extern Actor_GetCollection
 .extern ActorDerivedType1_ApplyResourceIndex
 .extern GraphicsSpriteState_SetAnimationIndex
-.extern func_020740c8
+.extern GraphicsSpriteGroup_ReplaceStateResources
 .extern gGameWork
 
     .global ActorDerivedType1_UpdateAttachmentPresentation
@@ -27,7 +27,7 @@ ActorDerivedType1_UpdateAttachmentPresentation: ; 0x02036030
     str r1, [sp, #0x0]
     ldr r1, [r4, #0x54]
     ldmib r6, {r2, r3}
-    bl func_020740c8
+    bl GraphicsSpriteGroup_ReplaceStateResources
     ldrsh r0, [r4, #0xda]
     cmp r0, #0x7
     bne .L_020360b8
@@ -294,7 +294,7 @@ ActorDerivedType1_UpdateAttachmentPresentation: ; 0x02036030
     str r1, [sp, #0x0]
     ldr r1, [r4, #0x54]
     ldmib r10, {r2, r3}
-    bl func_020740c8
+    bl GraphicsSpriteGroup_ReplaceStateResources
     b .L_0203642c
 .L_02036418:
     cmp r6, #0x0

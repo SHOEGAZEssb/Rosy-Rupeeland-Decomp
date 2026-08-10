@@ -7,9 +7,9 @@
 .extern data_ov032_02202358
 .extern func_02071ee0
 .extern func_02073e48
-.extern func_02073ffc
-.extern func_02074110
-.extern func_020742cc
+.extern GraphicsSpriteGroup_CreateStateFromSource
+.extern GraphicsSpriteGroup_ReleaseIndexedEntries
+.extern GraphicsSpriteGroupOwner_CreateGroup
 .extern func_02093d20
 .extern func_020944f0
 .extern func_02094bbc
@@ -41,7 +41,7 @@ func_ov032_02201f80:
     mov r3, #0x8
     bl func_02071ee0
     ldr r0, [r10, #0x4c]
-    bl func_020742cc
+    bl GraphicsSpriteGroupOwner_CreateGroup
     ldr r2, [sp, #0x30]
     str r0, [r10, #0x50]
     str r2, [r0, #0x18]
@@ -50,7 +50,7 @@ func_ov032_02201f80:
     str r1, [r0, #0x1c]
     ldr r0, [r10, #0x50]
     add r1, r10, #0x54
-    bl func_02073ffc
+    bl GraphicsSpriteGroup_CreateStateFromSource
     mov r1, #0x2
     str r1, [sp, #0x0]
     mov r1, #0x4000
@@ -63,7 +63,7 @@ func_ov032_02201f80:
     ldr r0, [r10, #0x50]
     add r1, r10, #0x54
     mov r2, #0x1
-    bl func_02073ffc
+    bl GraphicsSpriteGroup_CreateStateFromSource
     mov r1, #0x2
     str r1, [sp, #0x0]
     mov r1, #0x4000
@@ -78,7 +78,7 @@ func_ov032_02201f80:
     ldr r0, [r10, #0x50]
     add r1, r10, #0x54
     mov r2, #0x1
-    bl func_02073ffc
+    bl GraphicsSpriteGroup_CreateStateFromSource
     add r1, r7, r7, lsr #0x1f
     mov r3, #0x2
     mov r1, r1, asr #0x1
@@ -106,7 +106,7 @@ L_022020a8:
     ldr r0, [r10, #0x50]
     add r1, r10, #0x54
     mov r2, #0x1
-    bl func_02073ffc
+    bl GraphicsSpriteGroup_CreateStateFromSource
     mov r1, r0
     mov r0, r4
     bl func_020953f4
@@ -140,7 +140,7 @@ L_02202128:
     ldr r0, [r10, #0x50]
     add r1, r10, #0x54
     mov r2, #0x1
-    bl func_02073ffc
+    bl GraphicsSpriteGroup_CreateStateFromSource
     str r0, [r10, #0x60]
     mov r0, #0x2
     mov r2, #0x0
@@ -172,7 +172,7 @@ L_02202128:
     orr r0, r0, #0x4
     strh r0, [r1, #0x24]
     ldr r0, [r10, #0x50]
-    bl func_02074110
+    bl GraphicsSpriteGroup_ReleaseIndexedEntries
 L_022021d0:
     mov r0, r10
     add sp, sp, #0xc

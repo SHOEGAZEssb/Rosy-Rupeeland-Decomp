@@ -13,7 +13,7 @@ extern "C" {
 #endif
 extern void *Actor_GetCollection(void *actor);
 extern void *ActorCollection_GetSpriteOwner(void *value);
-extern void func_020740c8(void *context, void *attachment,
+extern void GraphicsSpriteGroup_ReplaceStateResources(void *context, void *attachment,
                           u32 first, u32 second, u32 third);
 extern void GraphicsSpriteState_SetAnimationIndex(void *attachment, u32 animation);
 #ifdef __cplusplus
@@ -37,7 +37,7 @@ static s32 pairMatches(u32 first, u32 second)
  * pair +0x218/+0x21c to match the recovered globals.
  *
  * Resolve context through Actor_GetCollection then ActorCollection_GetSpriteOwner, configure attachment
- * +0x54 through func_020740c8 using resource words +0x04/+0x08/+0x0c, select
+ * +0x54 through GraphicsSpriteGroup_ReplaceStateResources using resource words +0x04/+0x08/+0x0c, select
  * the animation, store +0x36 and zero +0x30. Special flag mode clears bits
  * zero/one of attachment +0x24; ordinary mode clears bit zero and sets bit one.
  * Returns no value; attachment resource, animation, and flags change.
@@ -120,7 +120,7 @@ void ActorExtendedType2_ApplyAttachmentState(void *self)
     resource = *(u32 **)(actor + 0x208 + resourceIndex * 4);
     context = ActorCollection_GetSpriteOwner(Actor_GetCollection(actor));
     attachment = *(u8 **)(actor + 0x54);
-    func_020740c8(context, attachment, resource[1], resource[2], resource[3]);
+    GraphicsSpriteGroup_ReplaceStateResources(context, attachment, resource[1], resource[2], resource[3]);
     GraphicsSpriteState_SetAnimationIndex(attachment, animation & 0xff);
     *(u16 *)(attachment + 0x36) = value36;
     *(u16 *)(attachment + 0x30) = 0;

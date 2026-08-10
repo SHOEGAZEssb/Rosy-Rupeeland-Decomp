@@ -4,7 +4,7 @@
 .extern func_02071e60
 .extern func_02071e70
 .extern func_02071e80
-.extern func_020740c8
+.extern GraphicsSpriteGroup_ReplaceStateResources
 .extern data_020f4e18
 .text
     .global Type7MarkerPresentation_UpdatePosition
@@ -116,7 +116,7 @@ Type7MarkerPresentation_ReloadResources: ; 0x0204cf28
     ldr r1, [r6, #0x4]
     str r0, [sp, #0x0]
     ldr r0, [r1, #0x0]
-    bl func_020740c8
+    bl GraphicsSpriteGroup_ReplaceStateResources
     mov r0, #0x0
     strh r0, [r6, #0xe]
     add sp, sp, #0x4

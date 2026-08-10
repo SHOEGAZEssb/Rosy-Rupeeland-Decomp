@@ -26,7 +26,7 @@
 .extern GamePhaseAreaScene_GetConfig
 .extern GamePhaseAreaScene_RegisterEnabledRegions
 .extern func_02028404
-.extern func_020740a4
+.extern GraphicsSpriteGroup_AdvanceAnimations
 .extern GraphicsSpriteRenderer_ClearTextBuffer
 .extern func_ov059_02210c24
 .extern func_ov059_02210cb8
@@ -372,7 +372,7 @@ func_ov059_02211330:
     cmp r0, #0x0
     beq .L_02211810
     ldr r0, [r0, #0x0]
-    bl func_020740a4
+    bl GraphicsSpriteGroup_AdvanceAnimations
     mov r0, r5
     bl Scene_GetEmbedded10
     bl TouchRegionManager_Tick

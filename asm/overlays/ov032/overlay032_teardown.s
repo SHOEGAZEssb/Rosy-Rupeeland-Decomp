@@ -9,7 +9,7 @@
 .extern func_020597fc
 .extern func_02071d4c
 .extern func_02071eb8
-.extern func_02074330
+.extern GraphicsSpriteGroupOwner_DestroyGroup
 .extern func_020923a0
 .extern func_ov032_021fce00
 .extern func_ov032_021fd7e0
@@ -43,11 +43,11 @@ L_021fd84c:
     ldr r0, L_021fd90c
     ldr r1, [r4, #0x4]
     ldr r0, [r0, #0x0]
-    bl func_02074330
+    bl GraphicsSpriteGroupOwner_DestroyGroup
     ldr r0, L_021fd910
     ldr r1, [r4, #0x0]
     ldr r0, [r0, #0x0]
-    bl func_02074330
+    bl GraphicsSpriteGroupOwner_DestroyGroup
     ldr r0, L_021fd914
     ldr r1, [r4, #0x8]
     ldr r0, [r0, #0x0]

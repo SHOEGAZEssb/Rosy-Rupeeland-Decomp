@@ -8,7 +8,7 @@
     .extern func_02071ee0
     .extern func_020708c4
     .extern data_020f4e14
-    .extern func_020742cc
+    .extern GraphicsSpriteGroupOwner_CreateGroup
     .extern gDebugFont
     .extern func_ov004_021fbf40
     .extern func_02091bac
@@ -51,11 +51,11 @@ func_ov004_021fb70c: ; 0x021fb70c
     bl func_020708c4
     ldr r0, L_021fb854
     ldr r0, [r0, #0x0]
-    bl func_020742cc
+    bl GraphicsSpriteGroupOwner_CreateGroup
     str r0, [r4, #0x60]
     ldr r0, L_021fb858
     ldr r0, [r0, #0x0]
-    bl func_020742cc
+    bl GraphicsSpriteGroupOwner_CreateGroup
     str r0, [r4, #0x64]
     mov r0, r4
     bl func_ov004_021fbf40

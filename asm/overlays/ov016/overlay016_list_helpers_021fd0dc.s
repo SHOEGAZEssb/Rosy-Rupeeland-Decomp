@@ -1,5 +1,5 @@
     .text
-    .extern func_02074110
+    .extern GraphicsSpriteGroup_ReleaseIndexedEntries
 
 /* Exact fallbacks for list callbacks and visibility helpers; see src/overlays/ov016/overlay016_list_helpers.c. */
     .global func_ov016_021fd0dc
@@ -75,7 +75,7 @@ func_ov016_021fd188:
 L_021fd1bc:
     ldr r0, [r4, #0x58]
     ldr r0, [r0, #0x50]
-    bl func_02074110
+    bl GraphicsSpriteGroup_ReleaseIndexedEntries
 L_021fd1c8:
     ldr r0, [r4, #0x4]
     mov r1, #0x1
@@ -92,11 +92,11 @@ func_ov016_021fd1e0:
     str r0, [r4, #0x5c]
     ldr r0, [r4, #0x58]
     ldr r0, [r0, #0x50]
-    bl func_02074110
+    bl GraphicsSpriteGroup_ReleaseIndexedEntries
     ldr r0, [r4, #0x4]
-    bl func_02074110
+    bl GraphicsSpriteGroup_ReleaseIndexedEntries
     ldr r0, [r4, #0x8]
-    bl func_02074110
+    bl GraphicsSpriteGroup_ReleaseIndexedEntries
     ldmia sp!, {r4, pc}
 
     .size func_ov016_021fd0dc, func_ov016_021fd0e0 - func_ov016_021fd0dc

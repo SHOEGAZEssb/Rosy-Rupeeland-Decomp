@@ -31,10 +31,10 @@ extern void func_0201e28c(void *);
 extern void func_02071ea4(void *);
 extern void func_02071eb8(void *);
 extern void func_02071ee0(void *, void *, s32, s32, s32);
-extern void *func_020742cc(void *);
-extern void func_0207419c(void *);
-extern void func_02074110(void *);
-extern u8 *func_02073ffc(void *, void *, s32);
+extern void *GraphicsSpriteGroupOwner_CreateGroup(void *);
+extern void GraphicsSpriteGroup_Destroy(void *);
+extern void GraphicsSpriteGroup_ReleaseIndexedEntries(void *);
+extern u8 *GraphicsSpriteGroup_CreateStateFromSource(void *, void *, s32);
 extern void GraphicsSpriteState_SetAnimationIndex(void *, s32);
 extern void *func_020953f4(void *, void *sprite);
 extern void func_02094cf0(void *, const void *, s32);
@@ -58,8 +58,8 @@ ReversedFrameSpriteOverlayPresentation *func_02027300(
     self->vtable00 = (void **)data_020d6bd0;
     func_02071ea4(self->resource08);
     func_02071ee0(self->resource08, data_020f4e18, 0x3a, 0x3b, 0x3c);
-    self->spriteOwner14 = (u8 *)func_020742cc(data_020f4e14);
-    sprite = func_02073ffc(self->spriteOwner14, self->resource08, 2);
+    self->spriteOwner14 = (u8 *)GraphicsSpriteGroupOwner_CreateGroup(data_020f4e14);
+    sprite = GraphicsSpriteGroup_CreateStateFromSource(self->spriteOwner14, self->resource08, 2);
     frame = value >= 0 ? 10 - value : 9 - value;
     GraphicsSpriteState_SetAnimationIndex(sprite, (u8)frame);
     self->controller18 = Heap_Alloc(0xa0, data_020d6c40, 4, &gHeapContext);
@@ -77,7 +77,7 @@ ReversedFrameSpriteOverlayPresentation *func_020273d4(
     if (self->controller18)
         ((ControllerDestructor)(*(void ***)self->controller18)[1])(
             self->controller18);
-    func_0207419c(self->spriteOwner14);
+    GraphicsSpriteGroup_Destroy(self->spriteOwner14);
     func_02071eb8(self->resource08);
     func_0201e28c(self);
     return self;
@@ -99,11 +99,11 @@ s32 func_02027474(ReversedFrameSpriteOverlayPresentation *self)
                self->controller18) != 0;
 }
 
-/* Enable owner offset 0x20, or disable the owner through func_02074110. */
+/* Enable owner offset 0x20, or disable the owner through GraphicsSpriteGroup_ReleaseIndexedEntries. */
 void func_02027498(ReversedFrameSpriteOverlayPresentation *self, s32 enabled)
 {
     if (enabled)
         *(u32 *)(self->spriteOwner14 + 0x20) = 1;
     else
-        func_02074110(self->spriteOwner14);
+        GraphicsSpriteGroup_ReleaseIndexedEntries(self->spriteOwner14);
 }

@@ -16,8 +16,8 @@ extern void Heap_Free(void *);
 extern void func_02071ea4(void *);
 extern void func_02071eb8(void *);
 extern void func_02071ee0(void *, void *, s32, s32, s32);
-extern void func_0207419c(void *);
-extern void *func_020742cc(void *);
+extern void GraphicsSpriteGroup_Destroy(void *);
+extern void *GraphicsSpriteGroupOwner_CreateGroup(void *);
 extern void func_02091b6c(void *);
 extern void func_02094c48(void *);
 extern void func_02095308(void *);
@@ -135,7 +135,7 @@ extern "C" void *func_ov022_021fcf08(void *emitter)
     func_ov022_021fcec8((u8 *)emitter + 0x48);
     FIELD(u32, emitter, 0x64) = 0;
     FIELD(u32, emitter, 0x64) = genrand_int32();
-    FIELD(void *, emitter, 0) = func_020742cc(gDebugFont);
+    FIELD(void *, emitter, 0) = GraphicsSpriteGroupOwner_CreateGroup(gDebugFont);
     func_02071ee0((u8 *)emitter + 4, data_020f4e18,
                   0x1714, 0x1715, 0x1716);
     FIELD(s32, emitter, 0x58) = 0;
@@ -151,7 +151,7 @@ extern "C" void *func_ov022_021fcf08(void *emitter)
 extern "C" void *func_ov022_021fcf98(void *emitter)
 {
     func_02095308((u8 *)emitter + 0x48);
-    func_0207419c(FIELD(void *, emitter, 0));
+    GraphicsSpriteGroup_Destroy(FIELD(void *, emitter, 0));
     FIELD(const void *, emitter, 0x48) = data_ov022_02200654;
     func_02095308((u8 *)emitter + 0x48);
     func_02071eb8((u8 *)emitter + 4);

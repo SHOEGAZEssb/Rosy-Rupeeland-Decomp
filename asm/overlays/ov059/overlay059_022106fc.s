@@ -10,8 +10,8 @@
 .extern func_02071ea4
 .extern func_02071eb8
 .extern func_02071ee0
-.extern func_02073fc4
-.extern func_020742cc
+.extern GraphicsSpriteGroup_CreateState
+.extern GraphicsSpriteGroupOwner_CreateGroup
 .extern func_ov059_02210554
 .extern func_ov059_022105a8
 .extern func_ov059_0221067c
@@ -44,7 +44,7 @@ func_ov059_022106fc:
     bl func_02071ee0
     ldr r0, .L_02210944
     ldr r0, [r0, #0x0]
-    bl func_020742cc
+    bl GraphicsSpriteGroupOwner_CreateGroup
     str r0, [r8, #0x0]
     mov r0, r7
     bl Scene_GetEmbedded10
@@ -76,7 +76,7 @@ func_ov059_022106fc:
     mov r0, #0x1
     str r0, [sp, #0x0]
     ldmia r8, {r0, r1, r2, r3}
-    bl func_02073fc4
+    bl GraphicsSpriteGroup_CreateState
     mov r1, r0
     ldrh r3, [r1, #0x24]
     mov r0, r4
@@ -108,7 +108,7 @@ func_ov059_022106fc:
     mov r0, #0x1
     str r0, [sp, #0x0]
     ldmia r8, {r0, r1, r2, r3}
-    bl func_02073fc4
+    bl GraphicsSpriteGroup_CreateState
     mov r1, r0
     ldrh r3, [r1, #0x24]
     mov r0, r4
@@ -151,7 +151,7 @@ func_ov059_022106fc:
     ldr r1, [r8, #0x10]
     ldr r2, [r8, #0x14]
     ldr r3, [r8, #0x18]
-    bl func_02073fc4
+    bl GraphicsSpriteGroup_CreateState
     mov r1, r0
     ldrh r3, [r1, #0x24]
     mov r0, r4

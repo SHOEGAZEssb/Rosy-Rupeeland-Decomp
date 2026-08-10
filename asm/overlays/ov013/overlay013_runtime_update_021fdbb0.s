@@ -4,7 +4,7 @@
     .extern data_ov013_021febb4
     .extern GamePhaseCurrencyHud_Update
     .extern GraphicsSpriteState_SetAnimationIndex
-    .extern func_020740a4
+    .extern GraphicsSpriteGroup_AdvanceAnimations
     .extern func_02092260
     .extern func_02094cf0
     .extern func_02095224
@@ -141,9 +141,9 @@ L_021fdd0c:
     add r0, r0, #0x800
     bl func_020958f0
     ldr r0, [r6, #0x84]
-    bl func_020740a4
+    bl GraphicsSpriteGroup_AdvanceAnimations
     ldr r0, [r6, #0x88]
-    bl func_020740a4
+    bl GraphicsSpriteGroup_AdvanceAnimations
 L_021fdd64:
     ldr r0, [r6, #0x97c]
     cmp r0, #0x0

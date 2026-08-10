@@ -6,8 +6,8 @@
 .extern func_02070958
 .extern func_02071eb8
 .extern GraphicsSpriteState_SetAnimationIndex
-.extern func_020740a4
-.extern func_0207419c
+.extern GraphicsSpriteGroup_AdvanceAnimations
+.extern GraphicsSpriteGroup_Destroy
 .extern func_02074dc8
 .extern GraphicsSpriteRenderer_SetTextGridPosition
 .extern func_02091e1c
@@ -27,9 +27,9 @@ func_ov030_021fd27c:
     bl Heap_Free
 L_021fd294:
     ldr r0, [r4, #0x28]
-    bl func_0207419c
+    bl GraphicsSpriteGroup_Destroy
     ldr r0, [r4, #0x2c]
-    bl func_0207419c
+    bl GraphicsSpriteGroup_Destroy
     mov r1, #0x0
     ldr r0, [r4, #0x0]
     mov r2, r1
@@ -112,9 +112,9 @@ L_021fd394:
     rsb r2, r2, #0x0
     bl GraphicsSpriteRenderer_SetTextGridPosition
     ldr r0, [r4, #0x28]
-    bl func_020740a4
+    bl GraphicsSpriteGroup_AdvanceAnimations
     ldr r0, [r4, #0x2c]
-    bl func_020740a4
+    bl GraphicsSpriteGroup_AdvanceAnimations
     ldmia sp!, {r4, pc}
 L_021fd3e0: .word data_020c9670
 L_021fd3e4: .word data_020f4e14

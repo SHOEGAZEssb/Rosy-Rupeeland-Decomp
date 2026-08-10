@@ -4,7 +4,7 @@
 .extern Actor_GetCollection
 .extern Actor_GetCachedTerrainHeight
 .extern GraphicsSpriteState_SetAnimationIndex
-.extern func_020740c8
+.extern GraphicsSpriteGroup_ReplaceStateResources
 
 .global func_ov081_02214b50
 func_ov081_02214b50:
@@ -18,7 +18,7 @@ func_ov081_02214b50:
     ldr r1, [r4, #0x54]
     ldr r2, [r4, #0x1f0]
     ldr r3, [r4, #0x1f4]
-    bl func_020740c8
+    bl GraphicsSpriteGroup_ReplaceStateResources
     ldrsh r0, [r4, #0xd6]
     mvn r1, #0x0
     cmp r0, #0x8

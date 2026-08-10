@@ -8,8 +8,8 @@
     .extern func_02092798
     .extern func_02091b6c
     .extern func_02071ee0
-    .extern func_020742cc
-    .extern func_02073ffc
+    .extern GraphicsSpriteGroupOwner_CreateGroup
+    .extern GraphicsSpriteGroup_CreateStateFromSource
     .extern func_020957f0
     .extern func_02095820
     .extern GameWork_TestFlag
@@ -68,11 +68,11 @@ func_ov038_021fce2c:
     bl func_02071ee0
     ldr r0, L_021fd0a8
     ldr r0, [r0, #0x0]
-    bl func_020742cc
+    bl GraphicsSpriteGroupOwner_CreateGroup
     add r1, r7, #0x54
     mov r2, #0x2
     str r0, [r7, #0x60]
-    bl func_02073ffc
+    bl GraphicsSpriteGroup_CreateStateFromSource
     mov r1, r0
     mov r0, #0x0
     str r0, [sp, #0x0]
