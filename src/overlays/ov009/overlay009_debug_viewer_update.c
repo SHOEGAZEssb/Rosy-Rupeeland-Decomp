@@ -19,7 +19,7 @@ extern void func_ov009_021fd294(void *state);
 extern void func_ov009_021fd338(void *state);
 extern void func_ov009_021fd360(void *state);
 extern void func_ov009_021fce74(void *, s32, s32, s32);
-extern void func_02072c98(void *object);
+extern void GraphicsSpriteState_ResetFrame(void *object);
 extern void GraphicsSpriteState_SetAnimationIndex(void *object, s32 value);
 extern void GraphicsSpriteState_SetFrameIndex(void *object, s32 value);
 extern void func_02070958(void *member, s32 x, s32 y, s32 z);
@@ -125,7 +125,7 @@ s32 func_ov009_021fd4e8(void *state)
 
         if (FIELD(s32, state, 0x10c) == 0 && (pressed & 1) &&
             FIELD(void *, state, 0x88) != 0) {
-            func_02072c98(FIELD(void *, state, 0x88));
+            GraphicsSpriteState_ResetFrame(FIELD(void *, state, 0x88));
         }
 
         switch (row) {

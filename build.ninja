@@ -4011,7 +4011,7 @@ build build/reports/graphics_sprite_state.json: objdiff build/decomp/delinks/src
 
 build build/reports/graphics_sprite_state.txt: match_report build/reports/graphics_sprite_state.json | tools/report_objdiff.py
   report_json = build/reports/graphics_sprite_state.json
-  report_args = --section .text --function func_02072aec --function func_02072b00
+  report_args = --section .text --function GraphicsSpriteState_Init --function GraphicsSpriteState_Reset
 
 build build/reports/graphics_sprite_animation.json: objdiff build/decomp/delinks/src/graphics/graphics_sprite_animation.o | build/decomp/src/graphics/graphics_sprite_animation.o
   target_object = build/decomp/delinks/src/graphics/graphics_sprite_animation.o
@@ -4019,7 +4019,7 @@ build build/reports/graphics_sprite_animation.json: objdiff build/decomp/delinks
 
 build build/reports/graphics_sprite_animation.txt: match_report build/reports/graphics_sprite_animation.json | tools/report_objdiff.py
   report_json = build/reports/graphics_sprite_animation.json
-  report_args = --section .text --function GraphicsSpriteState_SetAnimationIndex --function GraphicsSpriteState_SetFrameIndex --function func_02072c98 --function func_02072cd0
+  report_args = --section .text --function GraphicsSpriteState_SetAnimationIndex --function GraphicsSpriteState_SetFrameIndex --function GraphicsSpriteState_ResetFrame --function GraphicsSpriteState_GetSequenceDuration
 
 build build/reports/graphics_sprite_frame.json: objdiff build/decomp/delinks/src/graphics/graphics_sprite_frame.o | build/decomp/src/graphics/graphics_sprite_frame.o
   target_object = build/decomp/delinks/src/graphics/graphics_sprite_frame.o
@@ -4027,7 +4027,7 @@ build build/reports/graphics_sprite_frame.json: objdiff build/decomp/delinks/src
 
 build build/reports/graphics_sprite_frame.txt: match_report build/reports/graphics_sprite_frame.json | tools/report_objdiff.py
   report_json = build/reports/graphics_sprite_frame.json
-  report_args = --section .text --function func_02072d04 --function func_02072e50
+  report_args = --section .text --function GraphicsSpriteState_AdvanceAnimation --function GraphicsSpriteState_GetCurrentFrameResourceField02
 
 build build/reports/graphics_sprite_render_helpers.json: objdiff build/decomp/delinks/src/graphics/graphics_sprite_render_helpers.o | build/decomp/src/graphics/graphics_sprite_render_helpers.o
   target_object = build/decomp/delinks/src/graphics/graphics_sprite_render_helpers.o

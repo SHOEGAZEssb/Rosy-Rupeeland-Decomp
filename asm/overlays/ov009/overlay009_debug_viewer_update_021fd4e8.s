@@ -29,7 +29,7 @@
     .extern func_02070a78
     .extern GraphicsSpriteState_SetAnimationIndex
     .extern GraphicsSpriteState_SetFrameIndex
-    .extern func_02072c98
+    .extern GraphicsSpriteState_ResetFrame
     .extern func_02073aa8
     .extern func_020740a4
     .extern func_02074dc8
@@ -160,7 +160,7 @@ L_021fd660:
     ldrne r0, [r9, #0x88]
     cmpne r0, #0x0
     beq L_021fd688
-    bl func_02072c98
+    bl GraphicsSpriteState_ResetFrame
 L_021fd688:
     ldr r0, [r9, #0xe0]
     cmp r0, #0xe

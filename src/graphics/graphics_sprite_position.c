@@ -69,7 +69,7 @@ void GraphicsSpriteState_SetWorldPosition(GraphicsSpriteState *state,
 }
 
 /*
- * When -32 <= x < 272 and -64 <= y < 256, store x/y in fields 0x2c/0x2e
+ * When -32 <= x < 272 and -64 <= y < 256, store screenX/screenY
  * and clear cullFlag from state->flags. Outside that expanded DS viewport,
  * set cullFlag and retain the previous coordinates. No value is returned.
  */
@@ -77,8 +77,8 @@ void GraphicsSpriteState_SetScreenPositionCulled(GraphicsSpriteState *state,
                                                  s32 x, s32 y, u16 cullFlag)
 {
     if (x >= -32 && x < 272 && y >= -64 && y < 256) {
-        state->field_2c = (s16)x;
-        state->field_2e = (s16)y;
+        state->screenX = (s16)x;
+        state->screenY = (s16)y;
         state->flags &= (u16)~cullFlag;
     } else {
         state->flags |= cullFlag;

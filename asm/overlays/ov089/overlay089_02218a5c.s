@@ -8,7 +8,7 @@
 .extern func_02005030
 .extern func_02005058
 .extern ActorDerivedRuntime_ForwardTouchPoint
-.extern func_02072d04
+.extern GraphicsSpriteState_AdvanceAnimation
 .extern func_ov089_02217c14
 
 .global func_ov089_02218a5c
@@ -89,7 +89,7 @@ func_ov089_02218a5c:
     bl func_ov089_02217c14
     ldr r0, [r5, #0x240]
     ldr r0, [r0, #0x4]
-    bl func_02072d04
+    bl GraphicsSpriteState_AdvanceAnimation
     add r0, sp, #0x10
     bl func_02005058
 .L_02218b98:
@@ -126,7 +126,7 @@ func_ov089_02218a5c:
     bl func_ov089_02217c14
     ldr r0, [r5, #0x244]
     ldr r0, [r0, #0x4]
-    bl func_02072d04
+    bl GraphicsSpriteState_AdvanceAnimation
     add r0, sp, #0x0
     bl func_02005058
 .L_02218c28:

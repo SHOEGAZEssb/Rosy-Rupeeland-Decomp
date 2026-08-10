@@ -90,7 +90,7 @@
 .extern func_0206f760
 .extern func_0206fbe8
 .extern func_0206fdd8
-.extern func_02072aec
+.extern GraphicsSpriteState_Init
 .extern GraphicsSpriteState_Destroy
 .extern GraphicsSpriteState_DestroyGlobalPool
 .extern func_020787c0
@@ -379,7 +379,7 @@ __sinit_020c1684: ; 0x020c1684
     ldmia sp!, {r3, pc}
 .L_020c16b8: .word GraphicsSpriteState_Destroy
 .L_020c16bc: .word data_021edea0
-.L_020c16c0: .word func_02072aec
+.L_020c16c0: .word GraphicsSpriteState_Init
 .L_020c16c4: .word GraphicsSpriteState_DestroyGlobalPool
 .L_020c16c8: .word data_021ede74
 

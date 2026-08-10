@@ -7,20 +7,21 @@
  */
 
 /*
- * Select animationIndex through GraphicsSpriteState_SetAnimationIndex, then store the supplied signed
- * offset/control halfwords and field_3a byte. OR flags into the existing flags
- * word, preserving all earlier bits. The state is the only modified object;
+ * Select animationIndex through GraphicsSpriteState_SetAnimationIndex, then
+ * store the supplied screen coordinates, field_3a byte, and field_28 halfword.
+ * OR flags into the existing flags word, preserving all earlier bits. The
+ * state is the only modified object;
  * any frame reset or attached-metadata invalidation is performed by the called
  * animation selector. There are no direct SDK or graphics-hardware accesses.
  */
 #ifndef MATCHING
 void func_02073e48(GraphicsSpriteState *state, u8 animationIndex,
-                   s16 field2c, s16 field2e, u8 field3a,
+                   s16 screenX, s16 screenY, u8 field3a,
                    u16 field28, u16 flags)
 {
     GraphicsSpriteState_SetAnimationIndex(state, animationIndex);
-    state->field_2c = field2c;
-    state->field_2e = field2e;
+    state->screenX = screenX;
+    state->screenY = screenY;
     state->field_3a = field3a;
     state->field_28 = field28;
     state->flags |= flags;
@@ -28,7 +29,7 @@ void func_02073e48(GraphicsSpriteState *state, u8 animationIndex,
 #else
 /* This matching fallback implements the documented portable C directly above. */
 asm void func_02073e48(GraphicsSpriteState *state, u8 animationIndex,
-                       s16 field2c, s16 field2e, u8 field3a,
+                       s16 screenX, s16 screenY, u8 field3a,
                        u16 field28, u16 flags)
 {
     stmdb sp!, {r4, r5, r6, lr}

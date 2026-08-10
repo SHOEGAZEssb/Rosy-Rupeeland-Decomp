@@ -5,7 +5,7 @@
 .extern DebugHudState_Close
 .extern DebugHudState_PollInput
 .extern DebugHudState_GetGlobal
-.extern func_02072c98
+.extern GraphicsSpriteState_ResetFrame
 .extern gGameWork
 
     .global GamePhaseActorScriptVm_WaitForDebugHudInput
@@ -43,7 +43,7 @@ GamePhaseActorScriptVm_WaitForDebugHudInput: ; 0x02015818
     beq L_020158a0
     ldr r0, [r4, #0x84]
     ldr r0, [r0, #0x54]
-    bl func_02072c98
+    bl GraphicsSpriteState_ResetFrame
 L_020158a0:
     ldr r0, L_02015934
     ldr r1, L_02015938

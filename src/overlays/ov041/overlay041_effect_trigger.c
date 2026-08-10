@@ -10,7 +10,7 @@
 
 extern "C" {
 void Sound_Play(void *, s32, s32);
-void func_02072d04(void *);
+void GraphicsSpriteState_AdvanceAnimation(void *);
 void func_ov041_02202a70(void *);
 extern void *gSoundContext;
 }
@@ -69,7 +69,7 @@ extern "C" void func_ov041_022013cc(void *object, s32 mode, s32 x, s32 y)
                 FIELD(u16, render, 0x42) |= 4;
                 void *resource = FIELD(void *, render, 0x0c);
                 FIELD(u16, resource, 0x24) |= 4;
-                func_02072d04(resource);
+                GraphicsSpriteState_AdvanceAnimation(resource);
             }
         }
     }

@@ -55,7 +55,7 @@ GraphicsSpriteState *func_020743ac(
 
     data_021ede68.freeHead = (GraphicsSpriteState *)state->field_08;
     data_021ede68.count++;
-    func_02072b00(state);
+    GraphicsSpriteState_Reset(state);
     state->field_00 = group;
     state->field_14 = field14;
     state->field_18 = field18;

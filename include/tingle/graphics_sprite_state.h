@@ -18,8 +18,8 @@ typedef struct GraphicsSpriteState {
     u16 field_26;
     u16 field_28;
     u16 field_2a;
-    s16 field_2c;
-    s16 field_2e;
+    s16 screenX;
+    s16 screenY;
     s16 field_30;
     s16 scaleX;
     s16 scaleY;
@@ -37,16 +37,19 @@ typedef char GraphicsSpriteStateSizeCheck[
 extern "C" {
 #endif
 
-GraphicsSpriteState *func_02072aec(GraphicsSpriteState *state);
-void func_02072b00(GraphicsSpriteState *state);
-void GraphicsSpriteState_SetAnimationIndex(GraphicsSpriteState *state, u8 animationIndex);
-void GraphicsSpriteState_SetFrameIndex(GraphicsSpriteState *state, u8 frameIndex);
-void func_02072c98(GraphicsSpriteState *state);
-u16 func_02072cd0(GraphicsSpriteState *state);
-void func_02072d04(GraphicsSpriteState *state);
-u16 func_02072e50(GraphicsSpriteState *state);
+GraphicsSpriteState *GraphicsSpriteState_Init(GraphicsSpriteState *state);
+void GraphicsSpriteState_Reset(GraphicsSpriteState *state);
+void GraphicsSpriteState_SetAnimationIndex(GraphicsSpriteState *state,
+                                           u8 animationIndex);
+void GraphicsSpriteState_SetFrameIndex(GraphicsSpriteState *state,
+                                       u8 frameIndex);
+void GraphicsSpriteState_ResetFrame(GraphicsSpriteState *state);
+u16 GraphicsSpriteState_GetSequenceDuration(GraphicsSpriteState *state);
+void GraphicsSpriteState_AdvanceAnimation(GraphicsSpriteState *state);
+u16 GraphicsSpriteState_GetCurrentFrameResourceField02(
+    GraphicsSpriteState *state);
 void func_02073e48(GraphicsSpriteState *state, u8 animationIndex,
-                   s16 field2c, s16 field2e, u8 field3a,
+                   s16 screenX, s16 screenY, u8 field3a,
                    u16 field28, u16 flags);
 
 #ifdef __cplusplus

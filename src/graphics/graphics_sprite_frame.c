@@ -52,7 +52,7 @@ extern void func_02070d74(SpriteFrameResource *resource);
  * Resource preparation is the only possible asset/SDK side effect.
  */
 #ifndef MATCHING
-void func_02072d04(GraphicsSpriteState *state)
+void GraphicsSpriteState_AdvanceAnimation(GraphicsSpriteState *state)
 {
     SpriteFrameResource *resource =
         (SpriteFrameResource *)state->animationResource;
@@ -113,7 +113,7 @@ void func_02072d04(GraphicsSpriteState *state)
 }
 #else
 /* This matching fallback implements the documented portable C directly above. */
-asm void func_02072d04(GraphicsSpriteState *state)
+asm void GraphicsSpriteState_AdvanceAnimation(GraphicsSpriteState *state)
 {
     stmdb sp!, {r4, lr}
     mov r4, r0
@@ -212,7 +212,8 @@ sprite_advance_duration_done:
  * animation resource when necessary; otherwise state and hardware are unchanged.
  */
 #ifndef MATCHING
-u16 func_02072e50(GraphicsSpriteState *state)
+u16 GraphicsSpriteState_GetCurrentFrameResourceField02(
+    GraphicsSpriteState *state)
 {
     SpriteFrameResource *resource =
         (SpriteFrameResource *)state->animationResource;
@@ -228,7 +229,8 @@ u16 func_02072e50(GraphicsSpriteState *state)
 }
 #else
 /* This matching fallback implements the documented portable C directly above. */
-asm u16 func_02072e50(GraphicsSpriteState *state)
+asm u16 GraphicsSpriteState_GetCurrentFrameResourceField02(
+    GraphicsSpriteState *state)
 {
     stmdb sp!, {r4, lr}
     mov r4, r0

@@ -7,7 +7,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern s32 func_02072cd0(void *);
+extern s32 GraphicsSpriteState_GetSequenceDuration(void *);
 extern s32 func_0209189c(u32 *, s32, s32);
 extern s32 func_020918f4(u32 *, s32);
 extern void func_020740a4(void *);
@@ -91,7 +91,7 @@ extern "C" void func_ov025_021fe91c(void *object)
 extern "C" void func_ov025_021feb08(void *object, s32 animation)
 {
     func_ov025_021fe174(object, 1, animation, 2);
-    s32 frames = func_02072cd0(FIELD(void *, object, 0xe8));
+    s32 frames = GraphicsSpriteState_GetSequenceDuration(FIELD(void *, object, 0xe8));
     s32 repetitions = func_0209189c((u32 *)object + 0x3e, 5, 10);
     func_ov025_021fe904(object, frames * repetitions);
 }

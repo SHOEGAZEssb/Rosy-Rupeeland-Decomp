@@ -3,7 +3,7 @@
 /* Exact fallback for func_ov041_022013cc; see the documented portable C in
  * src/overlays/ov041/overlay041_effect_trigger.c. */
 .extern Sound_Play
-.extern func_02072d04
+.extern GraphicsSpriteState_AdvanceAnimation
 .extern func_ov041_02202a70
 .extern gSoundContext
 
@@ -104,7 +104,7 @@ func_ov041_022013cc: ; 0x022013cc
     strh r1, [r2, #0x24]
     ldr r0, [r0, #0x4c]
     ldr r0, [r0, #0xc]
-    bl func_02072d04
+    bl GraphicsSpriteState_AdvanceAnimation
     subs r5, r5, #0x1
     bpl .L_02201504
 .L_02201540:

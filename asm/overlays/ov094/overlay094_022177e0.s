@@ -2,7 +2,7 @@
 ; Matching fallback for the portable implementation in src/overlays/ov094/overlay094_recovery.c.
 .extern data_020c9670
 .extern data_ov094_02219eb8
-.extern func_02072cd0
+.extern GraphicsSpriteState_GetSequenceDuration
 .extern func_020948d4
 .extern func_020948e4
 .extern func_02094bbc
@@ -97,7 +97,7 @@ func_ov094_022177e0:
     strh r0, [r1, #0x24]
 .L_02217930:
     ldr r0, [r8, #0x9c]
-    bl func_02072cd0
+    bl GraphicsSpriteState_GetSequenceDuration
     ldr r1, [r8, #0xb0]
     mov r0, r0, lsl #0x8
     bl func_020befec

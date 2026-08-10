@@ -275,7 +275,7 @@ void func_020740a4(GraphicsSpriteGroup *group)
     GraphicsSpriteState *state = group->head;
 
     while (state != 0) {
-        func_02072d04(state);
+        GraphicsSpriteState_AdvanceAnimation(state);
         state = (GraphicsSpriteState *)state->field_08;
     }
 }

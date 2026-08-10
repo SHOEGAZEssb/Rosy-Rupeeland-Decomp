@@ -10,9 +10,9 @@
  * Initialize state through the shared reset routine and return it. Only the
  * supplied object changes; there are no SDK calls or graphics-hardware writes.
  */
-GraphicsSpriteState *func_02072aec(GraphicsSpriteState *state)
+GraphicsSpriteState *GraphicsSpriteState_Init(GraphicsSpriteState *state)
 {
-    func_02072b00(state);
+    GraphicsSpriteState_Reset(state);
     return state;
 }
 
@@ -22,7 +22,7 @@ GraphicsSpriteState *func_02072aec(GraphicsSpriteState *state)
  * (0x100). The function returns no value and performs no hardware operation.
  */
 #ifndef MATCHING
-void func_02072b00(GraphicsSpriteState *state)
+void GraphicsSpriteState_Reset(GraphicsSpriteState *state)
 {
     s16 one;
 
@@ -40,9 +40,9 @@ void func_02072b00(GraphicsSpriteState *state)
     state->field_26 = 0;
     state->flags = 0;
     state->field_30 = 0;
-    state->field_2e = 0;
+    state->screenY = 0;
     one = 0x100;
-    state->field_2c = 0;
+    state->screenX = 0;
     state->scaleZ = one;
     state->scaleY = one;
     state->scaleX = one;
@@ -53,7 +53,7 @@ void func_02072b00(GraphicsSpriteState *state)
 }
 #else
 /* This matching fallback implements the documented portable C directly above. */
-asm void func_02072b00(GraphicsSpriteState *state)
+asm void GraphicsSpriteState_Reset(GraphicsSpriteState *state)
 {
     mov r2, #0
     str r2, [r0, #0]

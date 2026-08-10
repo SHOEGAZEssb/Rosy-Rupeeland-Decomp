@@ -1,7 +1,7 @@
 .text
 
 /* Exact fallback; see src/overlays/ov025/overlay025_effect_runtime.c. */
-.extern func_02072cd0
+.extern GraphicsSpriteState_GetSequenceDuration
 .extern func_0209189c
 .extern func_ov025_021fe174
 .extern func_ov025_021fe904
@@ -16,7 +16,7 @@ func_ov025_021feb08:
     mov r3, #0x2
     bl func_ov025_021fe174
     ldr r0, [r5, #0xe8]
-    bl func_02072cd0
+    bl GraphicsSpriteState_GetSequenceDuration
     mov r4, r0
     add r0, r5, #0xf8
     mov r1, #0x5

@@ -11,7 +11,7 @@
 /*
  * Convert positionX/Y and depth from 20.12 fixed point. The visible interval
  * is [-field_04, 256-field_00) by [-field_06, 192-field_02). On success write
- * fields 0x2c/0x2e and clear cullFlag; otherwise set cullFlag and retain those
+ * screenX/screenY and clear cullFlag; otherwise set cullFlag and retain those
  * coordinates. Always store 0x7fff minus the pre-depth relative Y in field_28.
  * No graphics register is accessed directly and no value is returned.
  */
@@ -26,8 +26,8 @@ void GraphicsSpriteState_SetDepthOrderedWorldPositionWithMargins(
 
     if (x >= -margins->field_04 && x < 256 - margins->field_00 &&
         y >= -margins->field_06 && y < 192 - margins->field_02) {
-        state->field_2c = (s16)x;
-        state->field_2e = (s16)y;
+        state->screenX = (s16)x;
+        state->screenY = (s16)y;
         state->flags &= (u16)~cullFlag;
     } else {
         state->flags |= cullFlag;
