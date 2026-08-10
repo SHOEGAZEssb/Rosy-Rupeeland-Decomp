@@ -48,9 +48,15 @@ extern const s32 data_020c37f4[];
 extern const s32 data_020c3820[];
 extern u8 data_020d3a59[];
 extern u8 gActorRuntimeCollection[];
+#ifdef TINGLE_NATIVE
+u32 data_02105634;
+u8 data_02105638[12];
+GamePhaseProgressController data_02105644;
+#else
 extern u32 data_02105634;
 extern u8 data_02105638[];
 extern GamePhaseProgressController data_02105644;
+#endif
 extern u8 gActorRuntimeFlags[];
 extern void __register_global_object(void *, void (*)(void *), void *);
 extern s32 ActorRuntimeCollection_GetBusyState(void *);
@@ -96,6 +102,14 @@ void func_02027650(GamePhaseProgressController *self)
 {
     (void)self;
 }
+
+/*
+ * TINGLE_NATIVE_BOOTSTRAP deliberately emits only the constructor, destructor,
+ * persistence reset, and singleton accessor needed by GameWork_Create.  The
+ * remaining canonical routines stay in this source and enter the native build
+ * when their actor/data dependencies are recovered.
+ */
+#ifndef TINGLE_NATIVE_BOOTSTRAP
 
 /*
  * Advance the countdown state machine.  An active stage first arms state one;
@@ -256,6 +270,8 @@ void func_02027a7c(GamePhaseProgressController *self)
         save->stageAdjustments_14[i] = self->stageAdjustments_2c[i];
 }
 
+#endif /* TINGLE_NATIVE_BOOTSTRAP */
+
 /* Clear all known fields in a supplied 0x20-byte persistence record. */
 void func_02027bd4(GamePhaseProgressController *unused,
                    GamePhaseProgressSave *save)
@@ -270,6 +286,8 @@ void func_02027bd4(GamePhaseProgressController *unused,
     for (i = 0; i < 12; i++)
         save->stageAdjustments_14[i] = 0;
 }
+
+#ifndef TINGLE_NATIVE_BOOTSTRAP
 
 /*
  * Advance one stage, deduct its full threshold or one fifth when catching up,
@@ -423,6 +441,8 @@ void func_02027f38(GamePhaseProgressController *self)
         adjustment = 20;
     self->stageAdjustments_2c[self->stage_14] = (u8)adjustment;
 }
+
+#endif /* TINGLE_NATIVE_BOOTSTRAP */
 
 /* Lazily construct/register the global progress controller and return it. */
 GamePhaseProgressController *func_02027f94(void)
