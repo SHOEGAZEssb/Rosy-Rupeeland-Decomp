@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/actor_extended_transform_callbacks.c.
 .text
 .extern func_0200b2c0
-.extern func_02035bc8
+.extern Actor_IsAtCachedTerrainHeight
 .extern func_020435f4
 .extern func_02043674
 .global func_020443f0
@@ -35,7 +35,7 @@ func_02044434: ; 0x02044434
     mov r6, r0
     mov r5, r1
     mov r4, r2
-    bl func_02035bc8
+    bl Actor_IsAtCachedTerrainHeight
     cmp r0, #0x0
     beq .L_02044478
     ldr r1, [r5, #0x0]
@@ -69,7 +69,7 @@ func_02044434: ; 0x02044434
 func_020444b4: ; 0x020444b4
     stmdb sp!, {r4, lr}
     mov r4, r0
-    bl func_02035bc8
+    bl Actor_IsAtCachedTerrainHeight
     cmp r0, #0x0
     beq .L_02044510
     add r0, r4, #0x200

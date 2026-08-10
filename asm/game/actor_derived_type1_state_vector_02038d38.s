@@ -2,7 +2,7 @@
 .text
 .extern Sound_Play
 .extern func_020050a4
-.extern func_02035bc8
+.extern Actor_IsAtCachedTerrainHeight
 .extern gSoundContext
 
     .global func_02038d38
@@ -28,7 +28,7 @@ func_02038d38: ; 0x02038d38
     ldreqh r1, [r1, #0xa2]
     cmpeq r1, #0x0
     ldmneia sp!, {r3, r4, r5, r6, r7, pc}
-    bl func_02035bc8
+    bl Actor_IsAtCachedTerrainHeight
     cmp r0, #0x0
     ldmeqia sp!, {r3, r4, r5, r6, r7, pc}
     add r0, r7, #0x200

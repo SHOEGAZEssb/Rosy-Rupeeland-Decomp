@@ -7,7 +7,7 @@
  * exactly equals cached terrain height +0x1dc. Return zero otherwise; no state,
  * hardware, or SDK object is modified.
  */
-s32 func_02035bc8(void *self)
+s32 Actor_IsAtCachedTerrainHeight(void *self)
 {
     u8 *actor = (u8 *)self;
 

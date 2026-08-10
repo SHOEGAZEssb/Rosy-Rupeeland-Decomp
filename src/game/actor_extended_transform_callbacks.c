@@ -6,7 +6,7 @@
 extern "C" {
 #endif
 extern void func_0200b2c0(void *vector, s32 x, s32 y, s32 z);
-extern s32 func_02035bc8(void *actor, ...);
+extern s32 Actor_IsAtCachedTerrainHeight(void *actor, ...);
 extern s32 func_020435f4(const void *actor);
 extern void func_02043674(void *actor, void *first, void *second);
 #ifdef __cplusplus
@@ -28,7 +28,8 @@ void func_020443f0(void *self, void *first, void *second)
 }
 
 /*
- * Query func_02035bc8(actor,x,y). When nonzero, set +0x29c from *x and *y,
+ * Query Actor_IsAtCachedTerrainHeight(actor,x,y). When nonzero, set +0x29c
+ * from *x and *y,
  * then set +0x44 to func_020435f4(actor)<<4. Otherwise replace *x and *y with
  * truncating halves added to truncating halves of actor +0x2a0/+0x2a4.
  * Returns no value; actor or caller-owned coordinates may change.
@@ -36,7 +37,7 @@ void func_020443f0(void *self, void *first, void *second)
 void func_02044434(void *self, s32 *x, s32 *y)
 {
     u8 *actor = (u8 *)self;
-    if (func_02035bc8(actor, x, y) != 0) {
+    if (Actor_IsAtCachedTerrainHeight(actor, x, y) != 0) {
         func_0200b2c0(actor + 0x29c, *x, *y, 0);
         *(s32 *)(actor + 0x44) = func_020435f4(actor) << 4;
     } else {
@@ -50,14 +51,15 @@ void func_02044434(void *self, s32 *x, s32 *y)
 }
 
 /*
- * When func_02035bc8 succeeds and signed retry counter +0x298 is below signed
+ * When Actor_IsAtCachedTerrainHeight succeeds and signed retry counter +0x298
+ * is below signed
  * limit +0x29a, increment the counter, enter state one at +0xd6, zero +0x29c
  * and +0x44, and return one. Otherwise return zero without those changes.
  */
 s32 func_020444b4(void *self)
 {
     u8 *actor = (u8 *)self;
-    if (func_02035bc8(actor) != 0
+    if (Actor_IsAtCachedTerrainHeight(actor) != 0
         && *(s16 *)(actor + 0x298) < *(s16 *)(actor + 0x29a)) {
         ++*(s16 *)(actor + 0x298);
         *(u16 *)(actor + 0xd6) = 1;

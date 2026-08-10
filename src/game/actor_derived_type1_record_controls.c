@@ -9,7 +9,7 @@ extern void func_02038ecc(void *actor, void *records);
 extern void func_020390c8(void *actor);
 extern void func_020551f0(void *object);
 extern void func_02038f98(void *actor);
-extern s32 func_02035bc8(void *actor);
+extern s32 Actor_IsAtCachedTerrainHeight(void *actor);
 extern void func_02033f7c(void *actor, const void *vector, s32 mode);
 extern void func_02039bb0(void *actor);
 #ifdef __cplusplus
@@ -53,7 +53,8 @@ void func_02039278(void *self, void *object)
 
 /*
  * Return when actor +0x230 bit 0x400 is set. With no auxiliary +0x26c, also
- * reject attachment +0x54 flags 0x14. Require func_02035bc8 and reject an
+ * reject attachment +0x54 flags 0x14. Require
+ * Actor_IsAtCachedTerrainHeight and reject an
  * optional +0x270 object whose byte +0x10 has bit one. For nonzero mode, tear
  * down the active descriptor, then dispatch vector/mode through func_02033f7c
  * and finalize with func_02039bb0. Returns no value; helper calls may update
@@ -68,7 +69,7 @@ void func_020392b4(void *self, const void *vector, s32 mode)
     if (*(void **)(actor + 0x26c) == 0 &&
         ((*(u16 *)(*(u8 **)(actor + 0x54) + 0x24) & 0x14) != 0))
         return;
-    if (func_02035bc8(actor) == 0)
+    if (Actor_IsAtCachedTerrainHeight(actor) == 0)
         return;
     object = *(u8 **)(actor + 0x270);
     if (object != 0 && (object[0x10] & 1) != 0)

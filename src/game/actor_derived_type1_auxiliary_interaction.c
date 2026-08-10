@@ -16,7 +16,7 @@ extern void func_02032a94(void *actor);
 extern void *SceneManager_GetCurrent(void *manager);
 extern s32 func_0200b294(void *state);
 extern s32 func_020372b4(void *actor);
-extern s32 func_02035bc8(void *actor);
+extern s32 Actor_IsAtCachedTerrainHeight(void *actor);
 extern s32 func_020828a0(void *state, s32 mask);
 extern void func_020390c8(void *actor);
 extern void func_0206c978(void *resource);
@@ -68,7 +68,7 @@ s32 func_02037d98(void *self, void *other)
         return 1;
     if ((*(u32 *)(actor + 0xd0) & 0x100) != 0 ||
         (*(u32 *)(target + 0x10) & 0x1000000) != 0 ||
-        func_02035bc8(actor) == 0)
+        Actor_IsAtCachedTerrainHeight(actor) == 0)
         return 1;
 
     if (target[0x4d] == 2) {

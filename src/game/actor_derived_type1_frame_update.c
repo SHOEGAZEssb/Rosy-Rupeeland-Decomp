@@ -34,7 +34,7 @@ extern s32 func_02032228(void *actor, s32 x, s32 y, s32 step);
 extern void *func_0204c798(void *storage, void *actor);
 extern void func_0204cc14(void *object);
 extern void func_0203647c(void *actor);
-extern s32 func_02035bc8(void *actor);
+extern s32 Actor_IsAtCachedTerrainHeight(void *actor);
 extern s32 func_02005070(void *state);
 extern void func_0200b2c0(void *state, s32 first, s32 second, s32 third);
 extern s32 func_020adc90(s32 numerator, s32 denominator);
@@ -190,7 +190,7 @@ void func_02035538(void *self)
             (*(u32 *)(actor + 0xd0) & 0x40) == 0)
             --*(u16 *)(actor + 0x2a2);
         callActorVoid(actor, 0xa4);
-        if (func_02035bc8(actor) != 0)
+        if (Actor_IsAtCachedTerrainHeight(actor) != 0)
             *(u32 *)(actor + 0x230) &= ~0x40000;
     }
 

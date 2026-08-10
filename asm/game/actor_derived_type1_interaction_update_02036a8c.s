@@ -25,7 +25,7 @@
 .extern func_020328d0
 .extern func_020343e4
 .extern func_020349b8
-.extern func_02035bc8
+.extern Actor_IsAtCachedTerrainHeight
 .extern func_020372b4
 .extern func_02039468
 .extern func_02039db8
@@ -99,7 +99,7 @@ func_02036a8c: ; 0x02036a8c
     ldrsh r1, [r1, #0x80]
     cmp r1, #0x0
     bne .L_02037258
-    bl func_02035bc8
+    bl Actor_IsAtCachedTerrainHeight
     cmp r0, #0x0
     beq .L_02037258
     ldr r0, [r10, #0x230]
@@ -359,7 +359,7 @@ func_02036a8c: ; 0x02036a8c
     cmpeq r0, #0x0
     bne .L_02036f78
     mov r0, r10
-    bl func_02035bc8
+    bl Actor_IsAtCachedTerrainHeight
     cmp r0, #0x0
     beq .L_02036f78
     add r0, r10, #0x200

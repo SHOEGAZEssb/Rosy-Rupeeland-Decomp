@@ -38,7 +38,7 @@ extern void GameWork_ClearFlag(void *work, u32 flag);
 extern void func_02058d40(void *context, s32 value);
 extern void func_0205958c(void *context, s32 value);
 extern void func_02059278(void *context, s32 first, s32 second);
-extern s32 func_02035bc8(void *actor);
+extern s32 Actor_IsAtCachedTerrainHeight(void *actor);
 extern void func_02038ecc(void *actor);
 extern s32 func_020adae4(s32 numerator, s32 denominator);
 extern void func_020329bc(void *actor, const void *record);
@@ -190,7 +190,8 @@ void func_020372e4(void *self)
         }
     } else {
         *(u32 *)(actor + 0x230) &= ~0x10;
-        if (func_02035bc8(actor) != 0 && *(s16 *)(actor + 0x268) == 0)
+        if (Actor_IsAtCachedTerrainHeight(actor) != 0 &&
+            *(s16 *)(actor + 0x268) == 0)
             *(u32 *)(actor + 0x10) &= ~0x1f0000;
     }
 
@@ -203,7 +204,8 @@ void func_020372e4(void *self)
         *(s32 *)(actor + 0x8c) = func_020adae4(*(s32 *)(actor + 0x8c) * 98, 100);
         *(s32 *)(actor + 0x90) = func_020adae4(*(s32 *)(actor + 0x90) * 98, 100);
     } else if (*(s16 *)(actor + 0x250) == 0) {
-        if (func_02035bc8(actor) != 0 && (input & 0xf0) != 0) {
+        if (Actor_IsAtCachedTerrainHeight(actor) != 0 &&
+            (input & 0xf0) != 0) {
             s32 direction = inputDirection(input);
             s32 state;
             s32 desiredX = directionWord(data_020df254, direction);

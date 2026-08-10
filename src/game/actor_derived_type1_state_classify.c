@@ -10,7 +10,7 @@ extern u8 data_020df49c[];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern s32 func_02035bc8(void *actor);
+extern s32 Actor_IsAtCachedTerrainHeight(void *actor);
 extern void *func_020390c8(void *actor);
 extern void *func_020022dc(void *value);
 extern void func_0200222c(void *value, s32 mode, u32 mask);
@@ -70,7 +70,7 @@ void func_0203647c(void *self)
 
     flags230 = *(u32 *)(actor + 0x230);
     if ((flags230 & 0x400) != 0) {
-        if (func_02035bc8(actor) == 0) {
+        if (Actor_IsAtCachedTerrainHeight(actor) == 0) {
             *(s16 *)(actor + 0xd6) = 13;
         } else {
             *(s16 *)(actor + 0xd6) = 2;

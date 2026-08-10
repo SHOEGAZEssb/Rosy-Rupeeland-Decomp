@@ -18,7 +18,7 @@ extern u8 gSceneTouchInitialData[];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern s32 func_02035bc8(void *actor);
+extern s32 Actor_IsAtCachedTerrainHeight(void *actor);
 extern s32 func_0203a314(void *actor);
 extern void func_020349b8(void *actor, u32 sound, s32 extra);
 extern void func_02004fe0(void *value);
@@ -128,7 +128,7 @@ s32 func_02036a8c(void *self)
     }
 
     if (*(void **)(actor + 0x274) == 0 || *(s16 *)(actor + 0x280) != 0 ||
-        func_02035bc8(actor) == 0)
+        Actor_IsAtCachedTerrainHeight(actor) == 0)
         return 0;
 
     if ((*(u32 *)(actor + 0x230) & 0x1000) != 0) {
@@ -214,7 +214,7 @@ s32 func_02036a8c(void *self)
         eligible = ((*(u32 *)(actor + 0xd0) & 0x100) == 0 &&
                     func_020372b4(actor) == 0 &&
                     *(void **)(actor + 0x270) == 0 &&
-                    func_02035bc8(actor) != 0 &&
+                    Actor_IsAtCachedTerrainHeight(actor) != 0 &&
                     *(s16 *)(actor + 0x268) == 0 &&
                     (*(u32 *)(actor + 0xd0) & 0x4000) == 0);
 

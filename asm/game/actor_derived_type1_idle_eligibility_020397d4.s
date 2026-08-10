@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/actor_derived_type1_idle_eligibility.c.
 .text
-.extern func_02035bc8
+.extern Actor_IsAtCachedTerrainHeight
 .extern func_020372b4
 
     .global func_020397d4
@@ -22,7 +22,7 @@ func_020397d4: ; 0x020397d4
     cmpeq r0, #0x0
     bne .L_02039844
     mov r0, r8
-    bl func_02035bc8
+    bl Actor_IsAtCachedTerrainHeight
     cmp r0, #0x0
     beq .L_02039844
     ldr r0, [r8, #0xd0]

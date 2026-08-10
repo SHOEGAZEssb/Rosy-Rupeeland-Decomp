@@ -5,7 +5,7 @@
 .extern data_020df254
 .extern data_020df258
 .extern func_02010b64
-.extern func_02035bc8
+.extern Actor_IsAtCachedTerrainHeight
 .extern func_0206c978
 .extern func_0206cd10
 .extern func_0206e3a4
@@ -78,7 +78,7 @@ func_02037bb0: ; 0x02037bb0
     cmp r0, #0x0
     ldmneia sp!, {r4, r5, r6, pc}
     mov r0, r5
-    bl func_02035bc8
+    bl Actor_IsAtCachedTerrainHeight
     cmp r0, #0x0
     ldmeqia sp!, {r4, r5, r6, pc}
     add r0, r5, #0x200
@@ -149,4 +149,3 @@ func_02037bb0: ; 0x02037bb0
 .L_02037d90: .word data_020df254
 .L_02037d94: .word data_020df258
     .size func_02037bb0, . - func_02037bb0
-

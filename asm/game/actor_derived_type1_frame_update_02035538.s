@@ -20,7 +20,7 @@
 .extern func_020328d0
 .extern func_0203292c
 .extern func_020349b8
-.extern func_02035bc8
+.extern Actor_IsAtCachedTerrainHeight
 .extern func_0203647c
 .extern func_02037a94
 .extern func_02037bb0
@@ -364,7 +364,7 @@ func_02035538: ; 0x02035538
     ldr r1, [r1, #0xa4]
     blx r1
     mov r0, r5
-    bl func_02035bc8
+    bl Actor_IsAtCachedTerrainHeight
     cmp r0, #0x0
     ldrne r0, [r5, #0x230]
     bicne r0, r0, #0x40000
@@ -497,5 +497,4 @@ func_02035538: ; 0x02035538
 .L_02035bc4: .word 0x3f1
     .size func_02035538, . - func_02035538
 
-    .global func_02035bc8
-
+    .global Actor_IsAtCachedTerrainHeight

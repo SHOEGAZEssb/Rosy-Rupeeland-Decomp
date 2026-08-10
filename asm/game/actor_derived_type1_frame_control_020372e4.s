@@ -19,7 +19,7 @@
 .extern func_0201f864
 .extern func_02022cb0
 .extern func_020329bc
-.extern func_02035bc8
+.extern Actor_IsAtCachedTerrainHeight
 .extern func_02038ecc
 .extern func_020390c8
 .extern func_02039bb0
@@ -284,7 +284,7 @@ func_020372e4: ; 0x020372e4
     mov r0, r7
     bic r1, r1, #0x10
     str r1, [r7, #0x230]
-    bl func_02035bc8
+    bl Actor_IsAtCachedTerrainHeight
     cmp r0, #0x0
     beq .L_020376a8
     add r0, r7, #0x200
@@ -328,7 +328,7 @@ func_020372e4: ; 0x020372e4
     cmp r0, #0x0
     bne .L_020378f0
     mov r0, r7
-    bl func_02035bc8
+    bl Actor_IsAtCachedTerrainHeight
     cmp r0, #0x0
     beq .L_02037884
     tst r4, #0xf0
@@ -560,4 +560,3 @@ func_020372e4: ; 0x020372e4
 .L_02037a8c: .word gSceneTouchInitialData
 .L_02037a90: .word 0x4cd
     .size func_020372e4, . - func_020372e4
-

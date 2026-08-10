@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/actor_derived_type1_record_controls.c.
 .text
 .extern func_02033f7c
-.extern func_02035bc8
+.extern Actor_IsAtCachedTerrainHeight
 .extern func_020390c8
 .extern func_02039bb0
 
@@ -26,7 +26,7 @@ func_020392b4: ; 0x020392b4
     ldmneia sp!, {r4, r5, r6, pc}
 .L_020392f4:
     mov r0, r6
-    bl func_02035bc8
+    bl Actor_IsAtCachedTerrainHeight
     cmp r0, #0x0
     ldmeqia sp!, {r4, r5, r6, pc}
     ldr r0, [r6, #0x270]

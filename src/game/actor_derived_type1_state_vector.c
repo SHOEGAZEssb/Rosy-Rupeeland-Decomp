@@ -6,7 +6,7 @@ extern void *gSoundContext;
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern s32 func_02035bc8(void *actor);
+extern s32 Actor_IsAtCachedTerrainHeight(void *actor);
 extern void *func_020050a4(void *destination, const void *source);
 extern void Sound_Play(void *context, s32 channel, s32 sound);
 #ifdef __cplusplus
@@ -15,7 +15,8 @@ extern void Sound_Play(void *context, s32 channel, s32 sound);
 
 /*
  * Return without changes while auxiliary +0x26c exists, object +0x54 flags
- * 0x1c are set, halfword +0x204 or +0x2a2 is nonzero, or func_02035bc8 is
+ * 0x1c are set, halfword +0x204 or +0x2a2 is nonzero, or
+ * Actor_IsAtCachedTerrainHeight is
  * false. If timers +0x264/+0x266 are both zero, optionally play packed sound
  * 0x28/0x58/0x61 for kind 2, 0/-2, or 3. If either timer is active, kind three
  * instead returns early. Otherwise copy vector to +0x254, store kind in byte
@@ -32,7 +33,8 @@ void func_02038d38(void *self, const void *vector, s32 value, s32 kind)
         return;
     objectFlags = *(u16 *)(*(u8 **)(actor + 0x54) + 0x24) & 0x1c;
     if (objectFlags != 0 || *(u16 *)(actor + 0x204) != 0 ||
-        *(u16 *)(actor + 0x2a2) != 0 || func_02035bc8(actor) == 0)
+        *(u16 *)(actor + 0x2a2) != 0 ||
+        Actor_IsAtCachedTerrainHeight(actor) == 0)
         return;
 
     if (*(s16 *)(actor + 0x264) == 0 && *(s16 *)(actor + 0x266) == 0) {

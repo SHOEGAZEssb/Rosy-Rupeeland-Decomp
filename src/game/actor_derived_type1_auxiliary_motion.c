@@ -16,7 +16,7 @@ extern s32 func_02010b64(void *context);
 extern void func_0206c978(void *resource);
 extern void GameWork_ClearFlag(void *work, u32 flag);
 extern s32 func_0206e3a4(void *resource);
-extern s32 func_02035bc8(void *actor);
+extern s32 Actor_IsAtCachedTerrainHeight(void *actor);
 extern s32 func_020adae4(s32 numerator, s32 denominator);
 #ifdef __cplusplus
 }
@@ -84,7 +84,7 @@ void func_02037bb0(void *self)
     }
     if (mode != 0 || (*(u32 *)(actor + 0xd0) & 0x100) != 0 ||
         func_0206e3a4(*(void **)(actor + 0x26c)) != 0 ||
-        func_02035bc8(actor) == 0)
+        Actor_IsAtCachedTerrainHeight(actor) == 0)
         return;
 
     if (*(s16 *)(actor + 0x268) > 0) {
