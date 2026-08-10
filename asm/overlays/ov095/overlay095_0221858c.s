@@ -19,7 +19,7 @@
 .extern func_02034a60
 .extern ActorExtendedType2_InitializeTransformAndMotion
 .extern func_0204cfa4
-.extern func_02050078
+.extern TrackedResourceActor_SpawnFromKey
 .extern func_020592d8
 .extern func_020593dc
 .extern func_0205940c
@@ -353,7 +353,7 @@ func_ov095_0221858c:
     add r0, r4, r0, lsl #0x2
     ldr r0, [r0, #0x2bc]
     ldrsh r0, [r0, #0x0]
-    bl func_02050078
+    bl TrackedResourceActor_SpawnFromKey
     ldr r1, [r4, #0x1c]
     mvn r0, #0x2f
     mla r0, r5, r0, r1
@@ -901,7 +901,7 @@ func_ov095_0221858c:
     add r0, r4, r0, lsl #0x2
     ldr r0, [r0, #0x2bc]
     ldrsh r0, [r0, #0x0]
-    bl func_02050078
+    bl TrackedResourceActor_SpawnFromKey
     ldr r1, .L_022194ac
     ldr r3, .L_022194b0
     mov r0, #0x14
@@ -1591,7 +1591,7 @@ func_ov095_0221858c:
     add r0, r4, r0, lsl #0x2
     ldr r0, [r0, #0x2bc]
     ldrsh r0, [r0, #0x0]
-    bl func_02050078
+    bl TrackedResourceActor_SpawnFromKey
     add r0, r4, #0x200
     ldrsh r1, [r0, #0xd4]
     mov r0, r4
@@ -1871,7 +1871,7 @@ func_ov095_0221858c:
     add r0, r4, r0, lsl #0x2
     ldr r0, [r0, #0x2bc]
     ldrsh r0, [r0, #0x0]
-    bl func_02050078
+    bl TrackedResourceActor_SpawnFromKey
     mov r2, #0x0
     mov r1, #0x200
     str r2, [sp, #0x0]

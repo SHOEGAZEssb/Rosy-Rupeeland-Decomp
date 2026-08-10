@@ -7,7 +7,7 @@
 .extern ActorExtendedType2_GetDescriptorValue2C
 .extern ActorExtendedType2_GetDescriptorValue25
 .extern ActorExtendedType3_ResetInteractionState
-.extern func_02050078
+.extern TrackedResourceActor_SpawnFromKey
 .extern func_020bf1f8
 .extern genrand_int32
 .global ActorExtendedType3_UpdateCountdownApproach
@@ -88,7 +88,7 @@ ActorExtendedType3_ApplyDescriptorModeTransform: ; 0x02043bc8
     bl ActorExtendedType2_GetDescriptorValue25
     add r1, sp, #0x0
     mov r2, r1
-    bl func_02050078
+    bl TrackedResourceActor_SpawnFromKey
     add r0, sp, #0x0
     bl VecFx32Object_Destroy
 .L_02043c1c:

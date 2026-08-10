@@ -5,7 +5,7 @@
 .extern VecFx32Object_Destroy
 .extern ActorRuntimeCollection_GetPendingAttachmentFlag
 .extern Actor_GetCachedTerrainHeight
-.extern func_02050078
+.extern TrackedResourceActor_SpawnFromKey
 
 .global func_ov080_02213b24
 func_ov080_02213b24:
@@ -44,7 +44,7 @@ func_ov080_02213b24:
     add r2, sp, #0x0
     ldrsh r0, [r0, #0x0]
     add r1, r4, #0x18
-    bl func_02050078
+    bl TrackedResourceActor_SpawnFromKey
     ldr r0, [r4, #0x29c]
     add r1, r4, #0x200
     ldrsh r3, [r0, #0x22]

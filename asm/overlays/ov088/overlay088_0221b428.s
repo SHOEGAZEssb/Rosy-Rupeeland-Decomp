@@ -5,7 +5,7 @@
 .extern VecFx32Object_Destroy
 .extern ActorMotionAreaFollower_GetPosition
 .extern Actor_SnapshotTransientState
-.extern func_02050078
+.extern TrackedResourceActor_SpawnFromKey
 .extern func_ov088_0221a98c
 .extern gTouchPanelManager
 
@@ -58,7 +58,7 @@ func_ov088_0221b428:
     add r1, sp, #0x0
     ldrsh r0, [r0, #0x2c]
     add r2, sp, #0x10
-    bl func_02050078
+    bl TrackedResourceActor_SpawnFromKey
     add r0, sp, #0x0
     bl VecFx32Object_Destroy
     add r0, sp, #0x10

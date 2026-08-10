@@ -5,7 +5,7 @@
 .extern VecFx32_Subtract
 .extern ActorExtendedType2_GetDescriptorValue2C
 .extern func_0204cfa4
-.extern func_02050078
+.extern TrackedResourceActor_SpawnFromKey
 .extern func_020adc90
 .global ActorExtendedTable_ApplyTargetRelativeTransform
 .type ActorExtendedTable_ApplyTargetRelativeTransform, @function
@@ -71,7 +71,7 @@ ActorExtendedTable_ApplyTargetRelativeTransform: ; 0x02044c74
     add r1, sp, #0x10
     add r2, sp, #0x20
     mov r0, r6
-    bl func_02050078
+    bl TrackedResourceActor_SpawnFromKey
     mov r4, r0
     add r0, sp, #0x10
     bl VecFx32Object_Destroy

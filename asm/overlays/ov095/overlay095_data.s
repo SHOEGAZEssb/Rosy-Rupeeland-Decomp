@@ -169,12 +169,12 @@
 .extern TrackedResourceActor_SetupPresentationResources
 .extern func_ov095_0221c3a0
 .extern Actor_ClearTransientContactState
-.extern func_0204ff0c
+.extern TrackedResourceActor_HandleInteractionCallback
 .extern func_02032abc
 .extern func_ov095_0221c6a4
 .extern Actor_ClearInteractionFlag2000
 .extern Actor_TestQueryPointAndClearFlag2000
-.extern func_0204fe18
+.extern TrackedResourceActor_ApplyTouchData
 .extern func_ov095_0221c6fc
 .extern func_ov095_0221c6f4
 .extern func_ov095_0221c6ec
@@ -191,7 +191,7 @@
 .extern func_ov095_0221c690
 .extern func_ov095_0221c184
 .extern func_ov095_0221c700
-.extern func_02050228
+.extern TrackedResourceActor_UpdateDelayedFlag
 .extern func_ov095_0221c1d0
 .extern func_ov095_0221c338
 .extern func_ov095_0221c3ac
@@ -202,7 +202,7 @@
 .extern func_ov095_0221c77c
 .extern func_ov095_0221ca14
 .extern func_ov095_0221cae0
-.extern func_0204ff98
+.extern TrackedResourceActor_ActivateBoundedAction
 .extern func_ov095_0221cb14
 .extern func_ov095_0221c7d4
 .extern func_ov095_0221c8d0
@@ -628,7 +628,7 @@ data_ov095_0221d1a4:
     .word func_ov095_0221c3a0
     .word Actor_ClearTransientContactState
     .word func_02031564
-    .word func_0204ff0c
+    .word TrackedResourceActor_HandleInteractionCallback
     .word func_02032abc
     .word func_02031f44
     .word func_0203213c
@@ -640,7 +640,7 @@ data_ov095_0221d1a4:
     .word Actor_ClearInteractionFlag2000
     .word Actor_TestQueryPointAndClearFlag2000
     .word Actor_RequestAttachmentActivation
-    .word func_0204fe18
+    .word TrackedResourceActor_ApplyTouchData
     .word func_ov095_0221c6fc
     .word func_ov095_0221c6f4
     .word func_ov095_0221c6ec
@@ -671,7 +671,7 @@ data_ov095_0221d1a4:
     .word func_ov095_0221c690
     .word func_ov095_0221c184
     .word func_ov095_0221c700
-    .word func_02050228
+    .word TrackedResourceActor_UpdateDelayedFlag
     .word func_ov095_0221c1d0
     .word func_ov095_0221c338
     .word func_ov095_0221c3ac
@@ -707,7 +707,7 @@ data_ov095_0221d2e8:
     .word func_ov095_0221c8dc
     .word Actor_ClearTransientContactState
     .word func_02031564
-    .word func_0204ff0c
+    .word TrackedResourceActor_HandleInteractionCallback
     .word func_02032abc
     .word func_02031f44
     .word func_0203213c
@@ -719,7 +719,7 @@ data_ov095_0221d2e8:
     .word Actor_ClearInteractionFlag2000
     .word Actor_TestQueryPointAndClearFlag2000
     .word Actor_RequestAttachmentActivation
-    .word func_0204fe18
+    .word TrackedResourceActor_ApplyTouchData
     .word func_ov095_0221c6fc
     .word func_ov095_0221c6f4
     .word func_ov095_0221c6ec
@@ -748,9 +748,9 @@ data_ov095_0221d2e8:
     .word func_ov095_0221c77c
     .word func_ov095_0221ca14
     .word func_ov095_0221cae0
-    .word func_0204ff98
+    .word TrackedResourceActor_ActivateBoundedAction
     .word func_ov095_0221cb14
-    .word func_02050228
+    .word TrackedResourceActor_UpdateDelayedFlag
     .word func_ov095_0221c7d4
     .word func_ov095_0221c8d0
     .word func_ov095_0221c8e8

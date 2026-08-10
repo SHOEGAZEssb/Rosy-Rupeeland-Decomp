@@ -3,7 +3,7 @@
 .extern data_021052fc
 .extern VecFx32Object_InitComponents
 .extern VecFx32Object_Destroy
-.extern func_02050078
+.extern TrackedResourceActor_SpawnFromKey
 .extern func_020befec
 .extern func_ov090_0221a460
 
@@ -64,7 +64,7 @@ func_ov090_0221ab4c:
     add r2, r2, #0x2000
     ldr r2, [r2, #0xea4]
     add r2, r2, #0x18
-    bl func_02050078
+    bl TrackedResourceActor_SpawnFromKey
     mov r1, #0x8000
     str r1, [r0, #0x20c]
     ldr r1, [r0, #0x10]
@@ -124,7 +124,7 @@ func_ov090_0221ab4c:
     add r1, sp, #0x20
     add r2, sp, #0x10
     mov r0, #0x13
-    bl func_02050078
+    bl TrackedResourceActor_SpawnFromKey
     mov r1, #0x8000
     str r1, [r0, #0x20c]
     ldr r1, [r0, #0x10]

@@ -31,7 +31,7 @@ typedef void (*ActorStateCallback)(void *actor, void *context, s32 condition);
  * func_02032a94 with all three inputs. Returns nothing; callback engine state
  * may change and no hardware is accessed directly.
  */
-void func_0204ff0c(void *actor, void *context, s32 condition)
+void TrackedResourceActor_HandleInteractionCallback(void *actor, void *context, s32 condition)
 {
     if (condition == 0) {
         ActorStateCallback callback =
@@ -47,7 +47,7 @@ void func_0204ff0c(void *actor, void *context, s32 condition)
  * global actor. Then always run Actor_SetInteractionFlag2000 with the original inputs. Returns
  * nothing; actor/global engine state may change without direct hardware effects.
  */
-void func_0204ff40(void *actor, void *context)
+void TrackedResourceActor_PostUpdate(void *actor, void *context)
 {
     if ((FIELD(u16, actor, 0x1f0) & 0x7fff) == 0 &&
         (FIELD(u32, actor, 0x1f4) & 1) == 0) {
@@ -64,7 +64,7 @@ void func_0204ff40(void *actor, void *context)
  * func_02034a60 with that value and the four signed bounds at 0x68..0x6E.
  * Returns nothing; actor/action state may change and hardware is untouched directly.
  */
-void func_0204ff98(void *actor)
+void TrackedResourceActor_ActivateBoundedAction(void *actor)
 {
     void *object = FIELD(void *, actor, 0x1fc);
     u16 value = FIELD(u16, object, 0x1e);

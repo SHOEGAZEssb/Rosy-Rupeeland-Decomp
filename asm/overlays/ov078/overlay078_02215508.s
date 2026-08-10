@@ -9,7 +9,7 @@
 .extern VecFx32Object_InitCopy
 .extern VecFx32Object_Destroy
 .extern func_0201e0ec
-.extern func_02050078
+.extern TrackedResourceActor_SpawnFromKey
 .extern func_020a25c8
 .extern func_020adae4
 .extern func_020ae024
@@ -190,7 +190,7 @@ func_ov078_02215508:
     add r0, r4, r0, lsl #0xc
     str r0, [sp, #0x44]
     ldrsb r0, [r5, #0x25]
-    bl func_02050078
+    bl TrackedResourceActor_SpawnFromKey
     mov r0, r6
     ldr r2, [r0, #0x0]
     add r1, r6, #0x18

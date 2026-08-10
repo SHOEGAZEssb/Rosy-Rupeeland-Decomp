@@ -3,7 +3,7 @@
 .extern ActorMotionJitter_EnsureMinimum
 .extern ActorCollection_QueueActorForRemoval
 .extern Actor_GetCollection
-.extern func_02050260
+.extern TrackedResourceActor_EmitRecordEffects
 .extern func_020505f0
 .text
     .global func_02052254
@@ -14,7 +14,7 @@ func_02052254:
     mov r1, r4
     bl ActorCollection_QueueActorForRemoval
     mov r0, r4
-    bl func_02050260
+    bl TrackedResourceActor_EmitRecordEffects
     ldr r0, [r4, #0x10]
     tst r0, #0x4
     beq .L_02052298

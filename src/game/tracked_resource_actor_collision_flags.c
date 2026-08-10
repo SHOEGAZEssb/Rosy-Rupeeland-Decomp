@@ -9,7 +9,7 @@
  * actor flags at 0x10 and sets bit 0 of the word at 0x1F4 while preserving all
  * other bits. Returns nothing and does not directly access hardware or the SDK.
  */
-void func_020505d0(void *actor)
+void TrackedResourceActor_EnableCollisionParticipation(void *actor)
 {
     FIELD(u32, actor, 0x10) |= 0x1f0000;
     FIELD(u32, actor, 0x1f4) = (FIELD(u32, actor, 0x1f4) & ~1) | 1;

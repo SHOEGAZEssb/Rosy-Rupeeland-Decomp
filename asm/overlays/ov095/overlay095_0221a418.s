@@ -8,7 +8,7 @@
 .extern VecFx32Bezier_Evaluate3D
 .extern Actor_GetCachedTerrainHeight
 .extern func_0204cfa4
-.extern func_02050078
+.extern TrackedResourceActor_SpawnFromKey
 .extern func_020593dc
 .extern func_020ada8c
 .extern func_020befec
@@ -218,7 +218,7 @@ func_ov095_0221a418:
     add r1, sp, #0x58
     add r2, sp, #0x48
     mov r0, #0x40
-    bl func_02050078
+    bl TrackedResourceActor_SpawnFromKey
     add r0, sp, #0x48
     bl VecFx32Object_Destroy
     add r0, sp, #0x58

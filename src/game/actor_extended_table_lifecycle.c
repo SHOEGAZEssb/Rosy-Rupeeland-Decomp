@@ -5,7 +5,7 @@
  * selected from fixed 0x32-byte records by a virtual descriptor byte.
  */
 extern u8 data_020e0d50[];
-extern u8 data_020eb850[];
+extern u8 gTrackedResourceActorRecordTable[];
 
 #ifdef __cplusplus
 extern "C" {
@@ -18,7 +18,7 @@ extern void *ActorExtendedType2_Init(void *actor, const void *configuration);
 /*
  * Initialize the base and install vtable data_020e0d50. Clear halfwords +0x298,
  * +0x29c, and +0x2a0; ask vtable +0xc8 to fill a temporary descriptor; then
- * scan all 67 0x32-byte data_020eb850 records for a signed key matching byte
+ * scan all 67 0x32-byte gTrackedResourceActorRecordTable records for a signed key matching byte
  * +0x25. Store the last matching record at +0x2a4. A match supplies record
  * halfwords +0x22/+0x24/+0x26 to actor +0x29a/+0x29e/+0x2a2; without one those
  * actor halfwords are zeroed. Return self; actor and virtual-query state change.
@@ -36,7 +36,7 @@ void *ActorExtendedTable_Init(void *self, const void *configuration)
     *(u16 *)(actor + 0x2a0) = 0;
     (*(void (**)(void *, void *))(*(u8 **)actor + 0xc8))(actor, descriptor);
     for (i = 0; i < 67; ++i) {
-        u8 *record = data_020eb850 + i * 0x32;
+        u8 *record = gTrackedResourceActorRecordTable + i * 0x32;
         if (*(s16 *)record == *(s8 *)(descriptor + 0x25))
             match = record;
     }
@@ -67,7 +67,7 @@ void *ActorExtendedTable_InitDuplicate(void *self, const void *configuration)
     *(u16 *)(actor + 0x2a0) = 0;
     (*(void (**)(void *, void *))(*(u8 **)actor + 0xc8))(actor, descriptor);
     for (i = 0; i < 67; ++i) {
-        u8 *record = data_020eb850 + i * 0x32;
+        u8 *record = gTrackedResourceActorRecordTable + i * 0x32;
         if (*(s16 *)record == *(s8 *)(descriptor + 0x25))
             match = record;
     }

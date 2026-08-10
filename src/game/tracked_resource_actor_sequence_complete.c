@@ -9,7 +9,7 @@ extern void *data_021052fc;
 extern void ActorMotionJitter_EnsureMinimum(void *manager_field, s32 event, s32 argument);
 extern void ActorCollection_QueueActorForRemoval(void *handle, void *actor);
 extern void *Actor_GetCollection(void *actor);
-extern void func_02050260(void *actor);
+extern void TrackedResourceActor_EmitRecordEffects(void *actor);
 extern void func_020505f0(void *actor, ...);
 #ifdef __cplusplus
 }
@@ -29,7 +29,7 @@ extern void func_020505f0(void *actor, ...);
 void func_02052254(void *actor)
 {
     ActorCollection_QueueActorForRemoval(Actor_GetCollection(actor), actor);
-    func_02050260(actor);
+    TrackedResourceActor_EmitRecordEffects(actor);
     if ((FIELD(u32, actor, 0x10) & 4) != 0)
         ActorMotionJitter_EnsureMinimum((u8 *)data_021052fc + 0x2fbc, 0x14, 3);
     func_020505f0(actor);

@@ -10,7 +10,7 @@
 .extern func_020328d0
 .extern ActorDerivedType1_StartRecord
 .extern func_0204cfa4
-.extern func_02050560
+.extern TrackedResourceActor_DispatchTargetInteraction
 .extern func_020be334
 .text
     .global func_020505f0
@@ -183,7 +183,7 @@ func_020505f0:
     beq .L_0205087c
     mov r1, r6
     mov r0, r9
-    bl func_02050560
+    bl TrackedResourceActor_DispatchTargetInteraction
     b .L_020509cc
 .L_0205087c:
     cmp r0, #0x2
@@ -243,7 +243,7 @@ func_020505f0:
     beq .L_02050954
     mov r1, r6
     mov r0, r9
-    bl func_02050560
+    bl TrackedResourceActor_DispatchTargetInteraction
     b .L_020509cc
 .L_02050954:
     cmp r0, #0x7

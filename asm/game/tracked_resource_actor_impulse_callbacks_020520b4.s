@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/tracked_resource_actor_impulse_callbacks.c.
 .extern ActorCollection_QueueActorForRemoval
 .extern Actor_GetCollection
-.extern func_02050260
+.extern TrackedResourceActor_EmitRecordEffects
 .text
     .global func_020520b4
 func_020520b4:
@@ -11,7 +11,7 @@ func_020520b4:
     mov r1, r4
     bl ActorCollection_QueueActorForRemoval
     mov r0, r4
-    bl func_02050260
+    bl TrackedResourceActor_EmitRecordEffects
     ldmia sp!, {r4, pc}
     .size func_020520b4, . - func_020520b4
 

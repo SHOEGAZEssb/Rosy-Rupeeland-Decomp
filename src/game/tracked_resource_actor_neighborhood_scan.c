@@ -16,7 +16,7 @@ extern void *GamePhaseRuntime_GetActorCollection(void *manager, s32 group);
 extern void func_020328d0(void *vector, s32 angle);
 extern void ActorDerivedType1_StartRecord(void *actor, s32 value);
 extern s32 func_0204cfa4(s32 x, s32 y);
-extern void func_02050560(void *actor, void *target, ...);
+extern void TrackedResourceActor_DispatchTargetInteraction(void *actor, void *target, ...);
 extern s32 func_020be334(s32 value);
 #ifdef __cplusplus
 }
@@ -119,7 +119,7 @@ void func_020505f0(void *actor, u32 unused1, u32 unused2, u32 unused3)
             break;
         case 2:
             if (type == 1) {
-                func_02050560(actor, candidate);
+                TrackedResourceActor_DispatchTargetInteraction(actor, candidate);
             } else if (type == 2) {
                 if ((((FIELD(u32, candidate, 0x260) & 2) != 0 &&
                       virtual_function(candidate, 0xa8)(candidate) == 0)) ||
@@ -137,7 +137,7 @@ void func_020505f0(void *actor, u32 unused1, u32 unused2, u32 unused3)
             break;
         case 4:
             if (type == 1) {
-                func_02050560(actor, candidate);
+                TrackedResourceActor_DispatchTargetInteraction(actor, candidate);
             } else if (type == 7) {
                 FIELD(u32, candidate, 0x268) |= 0x100000;
             } else if (type == 2) {

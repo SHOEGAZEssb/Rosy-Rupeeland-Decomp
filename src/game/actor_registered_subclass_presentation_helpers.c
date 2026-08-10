@@ -20,7 +20,7 @@ extern void func_020593ac(void *context, s32 sound, s32 variant,
                           s32 volume, s32 pan, s32 extra);
 extern void *func_0201f864(void *allocation, ...);
 extern void GraphicsSpriteState_SetAnimationIndex(void *attachment, u32 animation);
-extern void *func_02050078(s32 effect, const void *first, const void *second);
+extern void *TrackedResourceActor_SpawnFromKey(s32 effect, const void *first, const void *second);
 #ifdef __cplusplus
 }
 #endif
@@ -108,6 +108,6 @@ void ActorRegisteredSubclass_EnterState2(void *self)
     *(u32 *)(actor + 0x14) |= 0x6;
     *(s32 *)(actor + 0x114) = 1;
     *(u16 *)(*(u8 **)(actor + 0x54) + 0x24) |= 0x10;
-    effect = (u8 *)func_02050078(0x1c, actor + 0x18, actor + 0x18);
+    effect = (u8 *)TrackedResourceActor_SpawnFromKey(0x1c, actor + 0x18, actor + 0x18);
     *(u32 *)(effect + 0x10) |= 0x100;
 }

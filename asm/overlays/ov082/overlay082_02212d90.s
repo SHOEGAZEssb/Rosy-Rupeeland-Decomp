@@ -7,7 +7,7 @@
 .extern ActorExtendedType2_GetDescriptorValue2A
 .extern ActorExtendedType2_GetDescriptorValue2C
 .extern ActorExtendedType2_GetDescriptorValue25
-.extern func_02050078
+.extern TrackedResourceActor_SpawnFromKey
 .extern func_020be334
 
 .global func_ov082_02212d90
@@ -89,7 +89,7 @@ func_ov082_02212d90:
     bl ActorExtendedType2_GetDescriptorValue25
     add r1, r5, #0x18
     mov r2, r1
-    bl func_02050078
+    bl TrackedResourceActor_SpawnFromKey
     mov r1, #0x1000
     str r1, [r0, #0x44]
     mov r0, #0x1

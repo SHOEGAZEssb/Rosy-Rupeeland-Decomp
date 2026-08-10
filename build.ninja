@@ -19366,7 +19366,7 @@ build build/reports/tracked_resource_actor_touch_0204fe18.json: objdiff build/de
   base_object = build/decomp/asm/game/tracked_resource_actor_touch_0204fe18.o
 build build/reports/tracked_resource_actor_touch_0204fe18.txt: match_report build/reports/tracked_resource_actor_touch_0204fe18.json | tools/report_objdiff.py
   report_json = build/reports/tracked_resource_actor_touch_0204fe18.json
-  report_args = --section .text --function func_0204fe18 --require-exact
+  report_args = --section .text --function TrackedResourceActor_ApplyTouchData --require-exact
 build tracked_resource_actor_touch: phony build/decomp/src/game/tracked_resource_actor_touch.o build/decomp/asm/game/tracked_resource_actor_touch_0204fe18.o build/reports/tracked_resource_actor_touch_0204fe18.txt
 
 tracked_resource_actor_setup_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
@@ -19394,7 +19394,7 @@ build build/reports/tracked_resource_actor_callbacks_0204ff0c.json: objdiff buil
   base_object = build/decomp/asm/game/tracked_resource_actor_callbacks_0204ff0c.o
 build build/reports/tracked_resource_actor_callbacks_0204ff0c.txt: match_report build/reports/tracked_resource_actor_callbacks_0204ff0c.json | tools/report_objdiff.py
   report_json = build/reports/tracked_resource_actor_callbacks_0204ff0c.json
-  report_args = --section .text --function func_0204ff0c --function func_0204ff40 --function func_0204ff98 --require-exact
+  report_args = --section .text --function TrackedResourceActor_HandleInteractionCallback --function TrackedResourceActor_PostUpdate --function TrackedResourceActor_ActivateBoundedAction --require-exact
 build tracked_resource_actor_callbacks: phony build/decomp/src/game/tracked_resource_actor_callbacks.o build/decomp/asm/game/tracked_resource_actor_callbacks_0204ff0c.o build/reports/tracked_resource_actor_callbacks_0204ff0c.txt
 
 tracked_resource_actor_factory_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
@@ -19408,7 +19408,7 @@ build build/reports/tracked_resource_actor_factory_02050078.json: objdiff build/
   base_object = build/decomp/asm/game/tracked_resource_actor_factory_02050078.o
 build build/reports/tracked_resource_actor_factory_02050078.txt: match_report build/reports/tracked_resource_actor_factory_02050078.json | tools/report_objdiff.py
   report_json = build/reports/tracked_resource_actor_factory_02050078.json
-  report_args = --section .text --function func_02050078 --require-exact
+  report_args = --section .text --function TrackedResourceActor_SpawnFromKey --require-exact
 build tracked_resource_actor_factory: phony build/decomp/src/game/tracked_resource_actor_factory.o build/decomp/asm/game/tracked_resource_actor_factory_02050078.o build/reports/tracked_resource_actor_factory_02050078.txt
 
 tracked_resource_actor_flag_update_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
@@ -19422,7 +19422,7 @@ build build/reports/tracked_resource_actor_flag_update_02050228.json: objdiff bu
   base_object = build/decomp/asm/game/tracked_resource_actor_flag_update_02050228.o
 build build/reports/tracked_resource_actor_flag_update_02050228.txt: match_report build/reports/tracked_resource_actor_flag_update_02050228.json | tools/report_objdiff.py
   report_json = build/reports/tracked_resource_actor_flag_update_02050228.json
-  report_args = --section .text --function func_02050228 --require-exact
+  report_args = --section .text --function TrackedResourceActor_UpdateDelayedFlag --require-exact
 build tracked_resource_actor_flag_update: phony build/decomp/src/game/tracked_resource_actor_flag_update.o build/decomp/asm/game/tracked_resource_actor_flag_update_02050228.o build/reports/tracked_resource_actor_flag_update_02050228.txt
 
 tracked_resource_actor_effects_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
@@ -19436,7 +19436,7 @@ build build/reports/tracked_resource_actor_effects_02050260.json: objdiff build/
   base_object = build/decomp/asm/game/tracked_resource_actor_effects_02050260.o
 build build/reports/tracked_resource_actor_effects_02050260.txt: match_report build/reports/tracked_resource_actor_effects_02050260.json | tools/report_objdiff.py
   report_json = build/reports/tracked_resource_actor_effects_02050260.json
-  report_args = --section .text --function func_02050260 --require-exact
+  report_args = --section .text --function TrackedResourceActor_EmitRecordEffects --require-exact
 build tracked_resource_actor_effects: phony build/decomp/src/game/tracked_resource_actor_effects.o build/decomp/asm/game/tracked_resource_actor_effects_02050260.o build/reports/tracked_resource_actor_effects_02050260.txt
 
 tracked_resource_actor_interaction_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
@@ -19450,7 +19450,7 @@ build build/reports/tracked_resource_actor_interaction_02050560.json: objdiff bu
   base_object = build/decomp/asm/game/tracked_resource_actor_interaction_02050560.o
 build build/reports/tracked_resource_actor_interaction_02050560.txt: match_report build/reports/tracked_resource_actor_interaction_02050560.json | tools/report_objdiff.py
   report_json = build/reports/tracked_resource_actor_interaction_02050560.json
-  report_args = --section .text --function func_02050560 --require-exact
+  report_args = --section .text --function TrackedResourceActor_DispatchTargetInteraction --require-exact
 build tracked_resource_actor_interaction: phony build/decomp/src/game/tracked_resource_actor_interaction.o build/decomp/asm/game/tracked_resource_actor_interaction_02050560.o build/reports/tracked_resource_actor_interaction_02050560.txt
 
 tracked_resource_actor_collision_flags_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
@@ -19464,7 +19464,7 @@ build build/reports/tracked_resource_actor_collision_flags_020505d0.json: objdif
   base_object = build/decomp/asm/game/tracked_resource_actor_collision_flags_020505d0.o
 build build/reports/tracked_resource_actor_collision_flags_020505d0.txt: match_report build/reports/tracked_resource_actor_collision_flags_020505d0.json | tools/report_objdiff.py
   report_json = build/reports/tracked_resource_actor_collision_flags_020505d0.json
-  report_args = --section .text --function func_020505d0 --require-exact
+  report_args = --section .text --function TrackedResourceActor_EnableCollisionParticipation --require-exact
 
 build tracked_resource_actor_collision_flags: phony build/decomp/src/game/tracked_resource_actor_collision_flags.o build/decomp/asm/game/tracked_resource_actor_collision_flags_020505d0.o build/reports/tracked_resource_actor_collision_flags_020505d0.txt
 

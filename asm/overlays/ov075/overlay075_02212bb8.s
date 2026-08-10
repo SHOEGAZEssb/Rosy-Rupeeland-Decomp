@@ -1,6 +1,6 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov075/overlay075_recovery.c.
-.extern data_020eb850
+.extern gTrackedResourceActorRecordTable
 .extern data_ov075_02216f90
 .extern ActorExtendedType2_Init
 
@@ -62,5 +62,5 @@ func_ov075_02212bb8:
     add sp, sp, #0x30
     ldmia sp!, {r4, pc}
 .L_02212c88: .word data_ov075_02216f90
-.L_02212c8c: .word data_020eb850
+.L_02212c8c: .word gTrackedResourceActorRecordTable
 .size func_ov075_02212bb8, . - func_ov075_02212bb8

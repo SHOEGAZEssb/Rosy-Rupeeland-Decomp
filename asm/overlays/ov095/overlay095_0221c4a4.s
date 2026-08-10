@@ -9,7 +9,7 @@
 .extern Actor_GetCollection
 .extern func_020349b8
 .extern func_0204cfa4
-.extern func_02050560
+.extern TrackedResourceActor_DispatchTargetInteraction
 .extern func_020a2894
 .extern func_020adc90
 .extern func_ov095_02217d58
@@ -128,7 +128,7 @@ func_ov095_0221c4a4:
 .L_0221c648:
     mov r0, r6
     mov r1, r5
-    bl func_02050560
+    bl TrackedResourceActor_DispatchTargetInteraction
 .L_0221c654:
     mov r0, r6
     ldr r1, [r0, #0x0]

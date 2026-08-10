@@ -7,8 +7,8 @@
 .extern ActorDerivedType1_ScanActiveRecordCollisions
 .text
 
-    .global func_0204ff0c
-func_0204ff0c: ; 0x0204ff0c
+    .global TrackedResourceActor_HandleInteractionCallback
+TrackedResourceActor_HandleInteractionCallback: ; 0x0204ff0c
     stmdb sp!, {r4, r5, r6, lr}
     movs r4, r2
     mov r6, r0
@@ -23,11 +23,11 @@ func_0204ff0c: ; 0x0204ff0c
     mov r2, r4
     bl func_02032a94
     ldmia sp!, {r4, r5, r6, pc}
-.size func_0204ff0c, . - func_0204ff0c
+.size TrackedResourceActor_HandleInteractionCallback, . - TrackedResourceActor_HandleInteractionCallback
 
-    .global func_0204ff40
+    .global TrackedResourceActor_PostUpdate
 
-func_0204ff40: ; 0x0204ff40
+TrackedResourceActor_PostUpdate: ; 0x0204ff40
     stmdb sp!, {r3, r4, r5, lr}
     mov r5, r0
     add r0, r5, #0x100
@@ -51,11 +51,11 @@ func_0204ff40: ; 0x0204ff40
     bl Actor_SetInteractionFlag2000
     ldmia sp!, {r3, r4, r5, pc}
 .L_0204ff94: .word data_021052fc
-.size func_0204ff40, . - func_0204ff40
+.size TrackedResourceActor_PostUpdate, . - TrackedResourceActor_PostUpdate
 
-    .global func_0204ff98
+    .global TrackedResourceActor_ActivateBoundedAction
 
-func_0204ff98: ; 0x0204ff98
+TrackedResourceActor_ActivateBoundedAction: ; 0x0204ff98
     stmdb sp!, {r3, r4, r5, r6, r7, lr}
     sub sp, sp, #0x8
     mov r4, r0
@@ -113,5 +113,5 @@ func_0204ff98: ; 0x0204ff98
     add sp, sp, #0x8
     ldmia sp!, {r3, r4, r5, r6, r7, pc}
 .L_02050074: .word data_021052fc
-.size func_0204ff98, . - func_0204ff98
+.size TrackedResourceActor_ActivateBoundedAction, . - TrackedResourceActor_ActivateBoundedAction
 

@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/tracked_resource_actor_flag_update.c.
 .text
-    .global func_02050228
-func_02050228:
+    .global TrackedResourceActor_UpdateDelayedFlag
+TrackedResourceActor_UpdateDelayedFlag:
     stmdb sp!, {r4, lr}
     ldr r1, [r0, #0x0]
     mov r4, r0
@@ -16,5 +16,5 @@ func_02050228:
     bicgt r0, r0, #0x40000
     strgt r0, [r4, #0x10]
     ldmia sp!, {r4, pc}
-.size func_02050228, . - func_02050228
+.size TrackedResourceActor_UpdateDelayedFlag, . - TrackedResourceActor_UpdateDelayedFlag
 

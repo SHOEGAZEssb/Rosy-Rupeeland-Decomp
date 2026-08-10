@@ -7,8 +7,8 @@
 .extern ActorCollection_QueueActorForRemoval
 .extern func_020328d0
 .extern Actor_GetCollection
-.extern func_02050260
-.extern func_02050560
+.extern TrackedResourceActor_EmitRecordEffects
+.extern TrackedResourceActor_DispatchTargetInteraction
 .text
     .global func_02050d0c
 func_02050d0c:
@@ -77,10 +77,10 @@ func_02050d0c:
     subs r0, r1, r0
     bpl .L_02050e1c
     mov r0, r5
-    bl func_02050260
+    bl TrackedResourceActor_EmitRecordEffects
     mov r0, r5
     mov r1, r4
-    bl func_02050560
+    bl TrackedResourceActor_DispatchTargetInteraction
 .L_02050e1c:
     add sp, sp, #0x10
     ldmia sp!, {r3, r4, r5, pc}

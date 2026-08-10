@@ -3,7 +3,7 @@
 .extern data_021052fc
 .extern VecFx32Object_InitCopy
 .extern VecFx32Object_Destroy
-.extern func_02050078
+.extern TrackedResourceActor_SpawnFromKey
 
 .global func_ov075_02213480
 func_ov075_02213480:
@@ -36,7 +36,7 @@ func_ov075_02213480:
     add r2, r2, #0x18
     ldrsh r0, [r1, #0x0]
     add r1, sp, #0x0
-    bl func_02050078
+    bl TrackedResourceActor_SpawnFromKey
     mov r1, #0x10000
     ldr r2, [r0, #0x5c]
     rsb r1, r1, #0x0

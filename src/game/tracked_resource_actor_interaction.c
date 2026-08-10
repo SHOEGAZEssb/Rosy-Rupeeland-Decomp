@@ -23,7 +23,7 @@ extern void Type7Actor_NoopTrackedResourceInteraction(void *target, s32 value, c
  * target types are ignored. Returns nothing; target engine state may change
  * and hardware is not accessed directly.
  */
-void func_02050560(void *actor, void *target, u32 unused, u32 argument)
+void TrackedResourceActor_DispatchTargetInteraction(void *actor, void *target, u32 unused, u32 argument)
 {
     const void *record;
     (void)unused;

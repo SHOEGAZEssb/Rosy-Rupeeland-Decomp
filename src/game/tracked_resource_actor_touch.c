@@ -27,7 +27,7 @@ typedef struct RecoveredTouchData {
  * record containing gSceneTouchInitialData and source words 1..2. Returns
  * nothing; touch state may change and hardware is not accessed directly.
  */
-void func_0204fe18(const void *source, void *actor)
+void TrackedResourceActor_ApplyTouchData(const void *source, void *actor)
 {
     func_02031758(source, actor);
     if (FIELD(void *, actor, 0x58) != 0) {

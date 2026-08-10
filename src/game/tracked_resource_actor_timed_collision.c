@@ -15,8 +15,8 @@ extern void VecFx32_Subtract(void *destination, const void *target,
                           const void *source);
 extern void func_020328d0(void *vector, s32 angle);
 extern s32 Actor_GetCachedTerrainHeight(void *actor);
-extern void func_02050260(void *actor);
-extern void func_02050560(void *actor, void *target, ...);
+extern void TrackedResourceActor_EmitRecordEffects(void *actor);
+extern void TrackedResourceActor_DispatchTargetInteraction(void *actor, void *target, ...);
 extern void func_02050b34(void *vector, s32 length);
 extern s32 func_020adae4(s32 value, s32 divisor);
 #ifdef __cplusplus
@@ -77,6 +77,6 @@ void func_02051b48(void *actor, void *target, u32 unused1, u32 unused2)
     FIELD(u16, actor, 0x1f0) &= 0x8000;
     FIELD(u16, actor, 0x1f8) = 0;
     FIELD(u32, actor, 0x14) |= 0x800000;
-    func_02050260(actor);
-    func_02050560(actor, target);
+    TrackedResourceActor_EmitRecordEffects(actor);
+    TrackedResourceActor_DispatchTargetInteraction(actor, target);
 }

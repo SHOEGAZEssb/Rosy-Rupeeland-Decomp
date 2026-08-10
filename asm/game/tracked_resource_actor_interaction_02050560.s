@@ -2,8 +2,8 @@
 .extern ActorDerivedType1_DispatchInteractionAmount
 .extern Type7Actor_NoopTrackedResourceInteraction
 .text
-    .global func_02050560
-func_02050560:
+    .global TrackedResourceActor_DispatchTargetInteraction
+TrackedResourceActor_DispatchTargetInteraction:
     stmdb sp!, {r3, lr}
     mov r2, r0
     cmp r1, #0x0
@@ -33,5 +33,5 @@ func_02050560:
     ldrsh r1, [r2, #0xe]
     bl Type7Actor_NoopTrackedResourceInteraction
     ldmia sp!, {r3, pc}
-.size func_02050560, . - func_02050560
+.size TrackedResourceActor_DispatchTargetInteraction, . - TrackedResourceActor_DispatchTargetInteraction
 

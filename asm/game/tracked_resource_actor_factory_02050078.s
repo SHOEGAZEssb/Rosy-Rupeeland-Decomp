@@ -1,5 +1,5 @@
 ; Matching retail form; see src/game/tracked_resource_actor_factory.c.
-.extern data_020eb850
+.extern gTrackedResourceActorRecordTable
 .extern data_021052fc
 .extern GamePhaseRuntime_GetActorCollection
 .extern func_02028388
@@ -7,8 +7,8 @@
 .extern ActorSpawnDescriptor_Init
 .text
 
-    .global func_02050078
-func_02050078: ; 0x02050078
+    .global TrackedResourceActor_SpawnFromKey
+TrackedResourceActor_SpawnFromKey: ; 0x02050078
     stmdb sp!, {r3, r4, r5, r6, r7, lr}
     sub sp, sp, #0xb0
     mov r4, #0x0
@@ -118,7 +118,7 @@ func_02050078: ; 0x02050078
     mov r0, r5
     add sp, sp, #0xb0
     ldmia sp!, {r3, r4, r5, r6, r7, pc}
-.L_02050220: .word data_020eb850
+.L_02050220: .word gTrackedResourceActorRecordTable
 .L_02050224: .word data_021052fc
-.size func_02050078, . - func_02050078
+.size TrackedResourceActor_SpawnFromKey, . - TrackedResourceActor_SpawnFromKey
 

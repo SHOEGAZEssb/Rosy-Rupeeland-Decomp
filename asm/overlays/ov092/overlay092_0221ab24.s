@@ -5,8 +5,8 @@
 .extern VecFx32Object_GetMagnitude
 .extern ActorModeNibble_HandleContactFromField1FC
 .extern func_0204cfa4
-.extern func_02050260
-.extern func_02050560
+.extern TrackedResourceActor_EmitRecordEffects
+.extern TrackedResourceActor_DispatchTargetInteraction
 .extern func_020adc90
 .extern func_ov092_02217930
 .extern func_ov092_0221ad28
@@ -143,10 +143,10 @@ func_ov092_0221ab24:
     mov r1, #0x1
     mov r0, r9
     strh r1, [r9, #0xd6]
-    bl func_02050260
+    bl TrackedResourceActor_EmitRecordEffects
     mov r0, r9
     mov r1, r8
-    bl func_02050560
+    bl TrackedResourceActor_DispatchTargetInteraction
     add sp, sp, #0x10
     ldmia sp!, {r3, r4, r5, r6, r7, r8, r9, pc}
 .size func_ov092_0221ab24, . - func_ov092_0221ab24

@@ -33,7 +33,7 @@ extern void GridEffectActor_SpawnWithRandomVelocity(const VecFx32Object *positio
 extern void GridEffectActor_SpawnWithVelocity(const VecFx32Object *first,
                           const VecFx32Object *second,
                           const void *descriptor, s32 duration);
-extern void func_02050078(s32 effect, const VecFx32Object *first,
+extern void TrackedResourceActor_SpawnFromKey(s32 effect, const VecFx32Object *first,
                           const VecFx32Object *second);
 extern void func_020627a0(void *descriptor, u16 type, s32 enabled);
 #ifdef __cplusplus
@@ -170,7 +170,7 @@ s32 func_0201939c(GamePhaseActorScriptVm *self)
         VecFx32Object_InitCopy(&actorPosition,
                       (const VecFx32Object *)((u8 *)self->actor + 0x18));
         VecFx32Object_InitComponents(&offset, p5 << 12, p4 << 12, p3 << 12);
-        func_02050078(p6, &actorPosition, &offset);
+        TrackedResourceActor_SpawnFromKey(p6, &actorPosition, &offset);
         VecFx32Object_Destroy(&offset);
         VecFx32Object_Destroy(&actorPosition);
         break;
@@ -190,7 +190,7 @@ s32 func_0201939c(GamePhaseActorScriptVm *self)
         VecFx32Object second;
         VecFx32Object_InitComponents(&first, p2 << 12, p1 << 12, p0 << 12);
         VecFx32Object_InitComponents(&second, p5 << 12, p4 << 12, p3 << 12);
-        func_02050078(p6, &first, &second);
+        TrackedResourceActor_SpawnFromKey(p6, &first, &second);
         VecFx32Object_Destroy(&second);
         VecFx32Object_Destroy(&first);
         break;

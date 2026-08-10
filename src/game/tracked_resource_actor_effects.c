@@ -47,7 +47,7 @@ extern void func_020a291c(void *manager, s32 subtype, s32 x, s32 y);
  * func_02034a60 with mode zero. Returns nothing; effect, heap, and actor state
  * may change, with no direct hardware access.
  */
-void func_02050260(void *actor)
+void TrackedResourceActor_EmitRecordEffects(void *actor)
 {
     void *record = FIELD(void *, actor, 0x1fc);
     void *manager = func_0201e0ec((u8 *)data_021052fc + 0x2f7c);

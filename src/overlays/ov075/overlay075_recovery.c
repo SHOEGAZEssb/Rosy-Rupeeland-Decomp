@@ -58,7 +58,7 @@ void func_ov075_022133a4(void);
 /* Processes the supplied ABI arguments using only local offset-based fields; observable mutations and the return value are preserved by the matching implementation, with no direct SDK call. */
 void func_ov075_0221343c(void);
 
-/* Processes the supplied ABI arguments and offset-based actor state, returns its encoded result, and invokes VecFx32Object_InitCopy, VecFx32Object_Destroy, func_02050078; exact higher-level semantics remain unconfirmed. */
+/* Processes the supplied ABI arguments and offset-based actor state, returns its encoded result, and invokes VecFx32Object_InitCopy, VecFx32Object_Destroy, TrackedResourceActor_SpawnFromKey; exact higher-level semantics remain unconfirmed. */
 void func_ov075_02213480(void);
 
 /* Empty or constant ABI helper: accepts its implicit arguments, changes no observable state, returns its encoded ABI result, and performs no SDK or hardware work. */

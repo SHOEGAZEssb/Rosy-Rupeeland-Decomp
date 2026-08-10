@@ -18,7 +18,7 @@
 .extern ActorExtendedType2_GetDescriptorValue2C
 .extern ActorExtendedType2_GetDescriptorValue25
 .extern func_0204cfa4
-.extern func_02050078
+.extern TrackedResourceActor_SpawnFromKey
 .extern func_020593dc
 .extern func_020adc90
 .extern func_020befec
@@ -120,7 +120,7 @@ func_ov097_022181a0:
     strh r0, [r6, #0xda]
     mov r2, r1
     mov r0, #0x21
-    bl func_02050078
+    bl TrackedResourceActor_SpawnFromKey
     ldr r0, [r6, #0xc8]
     add r2, r6, #0x200
     add r0, r0, #0x3e80
@@ -222,7 +222,7 @@ func_ov097_022181a0:
     mov r2, r1
     str r3, [sp, #0x60]
     mov r0, #0x22
-    bl func_02050078
+    bl TrackedResourceActor_SpawnFromKey
     ldr r1, [r6, #0x1c]
     mvn r0, #0x2f
     mla r0, r4, r0, r1
@@ -503,7 +503,7 @@ func_ov097_022181a0:
     add r1, r6, #0x18
     mov r2, r1
     mov r0, #0x21
-    bl func_02050078
+    bl TrackedResourceActor_SpawnFromKey
 .L_022188b8:
     add r0, sp, #0x48
     bl VecFx32Object_Destroy

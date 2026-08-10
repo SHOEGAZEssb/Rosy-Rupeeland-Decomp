@@ -12,7 +12,7 @@
 .extern VecFx32Object_InitCopy
 .extern VecFx32Object_Destroy
 .extern Actor_SetActive
-.extern func_02050078
+.extern TrackedResourceActor_SpawnFromKey
 .extern func_02059278
 .extern func_02059344
 .extern func_0205940c
@@ -361,7 +361,7 @@ func_ov092_022196d0:
     mov r0, #0xd
     add r1, sp, #0x24
     add r2, sp, #0x14
-    bl func_02050078
+    bl TrackedResourceActor_SpawnFromKey
     mov r1, #0x1
     bl Actor_SetActive
     mov r1, #0x0

@@ -7,8 +7,8 @@
 .extern ActorCollection_QueueActorForRemoval
 .extern Actor_GetCollection
 .extern func_02034a60
-.extern func_02050260
-.extern func_02050560
+.extern TrackedResourceActor_EmitRecordEffects
+.extern TrackedResourceActor_DispatchTargetInteraction
 .extern func_ov097_02219228
 .extern func_ov097_0221a004
 
@@ -128,7 +128,7 @@ func_ov097_0221a1c8:
     mov r1, r6
     bl ActorCollection_QueueActorForRemoval
     mov r0, r6
-    bl func_02050260
+    bl TrackedResourceActor_EmitRecordEffects
     b .L_0221a398
 .L_0221a380:
     cmp r5, #0x0
@@ -140,7 +140,7 @@ func_ov097_0221a1c8:
 .L_0221a398:
     mov r0, r6
     mov r1, r5
-    bl func_02050560
+    bl TrackedResourceActor_DispatchTargetInteraction
     add sp, sp, #0x10
     ldmia sp!, {r4, r5, r6, pc}
 .L_0221a3ac: .word gActorRuntimeCollection

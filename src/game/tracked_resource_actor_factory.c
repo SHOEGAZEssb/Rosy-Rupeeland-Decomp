@@ -6,7 +6,7 @@
  * then delegates record-specific initialization through virtual callbacks.
  */
 
-extern const u8 data_020eb850[];
+extern const u8 gTrackedResourceActorRecordTable[];
 extern void *data_021052fc;
 
 #ifdef __cplusplus
@@ -54,7 +54,7 @@ typedef void (*ActorCallback)(void *actor);
  * record byte 9, invoke virtual slot 0xCC, and return the actor. Manager and
  * actor state change; no hardware is accessed directly.
  */
-void *func_02050078(s32 key, const void *position, u32 argument)
+void *TrackedResourceActor_SpawnFromKey(s32 key, const void *position, u32 argument)
 {
     const TrackedActorRecord *record = 0;
     u8 descriptor[100];
@@ -64,7 +64,7 @@ void *func_02050078(s32 key, const void *position, u32 argument)
 
     for (i = 0; i < 67; i++) {
         const TrackedActorRecord *candidate =
-            (const TrackedActorRecord *)(data_020eb850 + i * 0x32);
+            (const TrackedActorRecord *)(gTrackedResourceActorRecordTable + i * 0x32);
         if (candidate->key == key)
             record = candidate;
     }

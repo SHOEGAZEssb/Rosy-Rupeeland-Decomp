@@ -17,7 +17,7 @@ extern s32 ActorExtendedType2_GetDescriptorValue2C(const void *actor);
 extern s32 ActorExtendedType2_GetDescriptorValue25(const void *actor);
 extern void VecFx32Object_InitCopy(void *temporary, const void *source);
 extern void VecFx32Object_Destroy(void *temporary);
-extern void func_02050078(s32 mode, void *destination, const void *source);
+extern void TrackedResourceActor_SpawnFromKey(s32 mode, void *destination, const void *source);
 #ifdef __cplusplus
 }
 #endif
@@ -63,7 +63,7 @@ s32 ActorExtendedType3_UpdateRandomCallbackDelay(void *self)
 /*
  * Return without action when descriptor halfword +0x2c is nonzero or
  * signed descriptor byte +0x25 returns -1. Otherwise copy actor transform
- * +0x18 to a temporary, call func_02050078(mode,temporary,temporary)
+ * +0x18 to a temporary, call TrackedResourceActor_SpawnFromKey(mode,temporary,temporary)
  * using the signed-byte accessor as mode, then finalize the temporary. The
  * routine has no meaningful return value; transform/helper state may change
  * and no direct SDK or hardware access occurs.
@@ -80,6 +80,6 @@ void ActorExtendedType3_ApplyDescriptorModeTransform(void *self)
         return;
     VecFx32Object_InitCopy(temporary, actor + 0x18);
     mode = ActorExtendedType2_GetDescriptorValue25(actor);
-    func_02050078(mode, temporary, temporary);
+    TrackedResourceActor_SpawnFromKey(mode, temporary, temporary);
     VecFx32Object_Destroy(temporary);
 }

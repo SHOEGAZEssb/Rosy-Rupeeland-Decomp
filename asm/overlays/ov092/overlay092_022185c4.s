@@ -8,7 +8,7 @@
 .extern VecFx32Object_Destroy
 .extern GraphicsSpriteState_SetDepthOrderedWorldPosition
 .extern Actor_SetActive
-.extern func_02050078
+.extern TrackedResourceActor_SpawnFromKey
 .extern func_020593ac
 .extern GraphicsSpriteState_SetAnimationIndex
 .extern GraphicsSpriteRenderer_Printf
@@ -170,7 +170,7 @@ func_ov092_022185c4:
 .L_022187ec:
     add r1, sp, #0x8
     add r2, sp, #0x18
-    bl func_02050078
+    bl TrackedResourceActor_SpawnFromKey
     mov r1, #0x1
     bl Actor_SetActive
     ldr r0, [r4, #0x248]

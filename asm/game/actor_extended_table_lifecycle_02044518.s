@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/actor_extended_table_lifecycle.c.
 .text
 .extern data_020e0d50
-.extern data_020eb850
+.extern gTrackedResourceActorRecordTable
 .extern ActorExtendedType2_Init
 .global ActorExtendedTable_Init
 .type ActorExtendedTable_Init, @function
@@ -57,7 +57,7 @@ ActorExtendedTable_Init: ; 0x02044518
     add sp, sp, #0x30
     ldmia sp!, {r3, r4, r5, pc}
 .L_020445d0: .word data_020e0d50
-.L_020445d4: .word data_020eb850
+.L_020445d4: .word gTrackedResourceActorRecordTable
 
 .size ActorExtendedTable_Init, . - ActorExtendedTable_Init
 ActorExtendedTable_InitDuplicate: ; 0x020445d8
@@ -110,5 +110,5 @@ ActorExtendedTable_InitDuplicate: ; 0x020445d8
     add sp, sp, #0x30
     ldmia sp!, {r3, r4, r5, pc}
 .L_02044690: .word data_020e0d50
-.L_02044694: .word data_020eb850
+.L_02044694: .word gTrackedResourceActorRecordTable
 .size ActorExtendedTable_InitDuplicate, . - ActorExtendedTable_InitDuplicate

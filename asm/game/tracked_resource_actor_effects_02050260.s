@@ -14,8 +14,8 @@
 .extern func_020a291c
 .text
 
-    .global func_02050260
-func_02050260: ; 0x02050260
+    .global TrackedResourceActor_EmitRecordEffects
+TrackedResourceActor_EmitRecordEffects: ; 0x02050260
     stmdb sp!, {r4, r5, r6, lr}
     sub sp, sp, #0x18
     ldr r1, .L_02050554
@@ -222,5 +222,5 @@ func_02050260: ; 0x02050260
 .L_02050554: .word data_021052fc
 .L_02050558: .word gTrackedResourceActorSpriteEffectAllocationTag
 .L_0205055c: .word gHeapContext
-.size func_02050260, . - func_02050260
+.size TrackedResourceActor_EmitRecordEffects, . - TrackedResourceActor_EmitRecordEffects
 

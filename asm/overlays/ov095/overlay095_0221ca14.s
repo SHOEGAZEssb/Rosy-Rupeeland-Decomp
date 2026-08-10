@@ -2,7 +2,7 @@
 ; Matching fallback for the portable implementation in src/overlays/ov095/overlay095_recovery.c.
 .extern gActorRuntimeCollection
 .extern ActorRuntimeCollection_GetPendingAttachmentFlag
-.extern func_02050260
+.extern TrackedResourceActor_EmitRecordEffects
 .extern func_020505f0
 
 .global func_ov095_0221ca14
@@ -42,7 +42,7 @@ func_ov095_0221ca14:
     bne .L_0221cabc
 .L_0221ca98:
     mov r0, r4
-    bl func_02050260
+    bl TrackedResourceActor_EmitRecordEffects
     mov r0, r4
     bl func_020505f0
     mov r0, r4

@@ -11,7 +11,7 @@ extern void VecFx32_Subtract(void *output, const void *first, const void *second
 extern s32 ActorExtendedType2_GetDescriptorValue2C(const void *actor);
 extern s32 func_0204cfa4(s32 x, s32 y);
 extern s32 func_020adc90(s32 value, s32 divisor);
-extern s32 func_02050078(s32 mode, void *first, void *second);
+extern s32 TrackedResourceActor_SpawnFromKey(s32 mode, void *first, void *second);
 #ifdef __cplusplus
 }
 #endif
@@ -23,7 +23,7 @@ extern s32 func_02050078(s32 mode, void *first, void *second);
  * 0x1000, normalize those components with func_020adc90, scale them from that
  * value using rounded fixed-point multiplication, and submit
  * the displacement to actor vtable +0xb8 with argument one. Finalize that
- * temporary when constructed. Then call func_02050078(mode,actorTransform,
+ * temporary when constructed. Then call TrackedResourceActor_SpawnFromKey(mode,actorTransform,
  * targetTransform), finalize both copied transforms, and return its result.
  * Actor, virtual, transform, and effect state may change without direct
  * hardware access.
@@ -56,7 +56,7 @@ s32 ActorExtendedTable_ApplyTargetRelativeTransform(void *self, s32 mode)
         }
         VecFx32Object_Destroy(displacement);
     }
-    result = func_02050078(mode, actorTransform, targetTransform);
+    result = TrackedResourceActor_SpawnFromKey(mode, actorTransform, targetTransform);
     VecFx32Object_Destroy(actorTransform);
     VecFx32Object_Destroy(targetTransform);
     return result;

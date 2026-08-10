@@ -8,8 +8,8 @@
 .extern ActorRuntimeCollection_GetPendingAttachmentFlag
 .extern func_020328d0
 .extern Actor_GetCachedTerrainHeight
-.extern func_02050260
-.extern func_02050560
+.extern TrackedResourceActor_EmitRecordEffects
+.extern TrackedResourceActor_DispatchTargetInteraction
 .extern func_02050b34
 .extern func_020adae4
 .text
@@ -91,10 +91,10 @@ func_02051b48:
     ldr r1, [r5, #0x14]
     orr r1, r1, #0x800000
     str r1, [r5, #0x14]
-    bl func_02050260
+    bl TrackedResourceActor_EmitRecordEffects
     mov r0, r5
     mov r1, r4
-    bl func_02050560
+    bl TrackedResourceActor_DispatchTargetInteraction
 .L_02051c84:
     add sp, sp, #0x20
     ldmia sp!, {r3, r4, r5, pc}

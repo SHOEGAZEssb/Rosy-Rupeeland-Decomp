@@ -23,7 +23,7 @@
 .extern PresentationBackedActor_SpawnSplitAmount
 .extern GridEffectActor_SpawnWithRandomVelocity
 .extern GridEffectActor_SpawnWithVelocity
-.extern func_02050078
+.extern TrackedResourceActor_SpawnFromKey
 .global func_0201939c
 func_0201939c:
     stmdb sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, lr}
@@ -287,7 +287,7 @@ L_02019740:
     add r1, sp, #0x88
     add r2, sp, #0x78
     mov r0, r6
-    bl func_02050078
+    bl TrackedResourceActor_SpawnFromKey
     add r0, sp, #0x78
     bl VecFx32Object_Destroy
     add r0, sp, #0x88
@@ -308,7 +308,7 @@ L_02019788:
     add r1, sp, #0x68
     add r2, sp, #0x58
     mov r0, r6
-    bl func_02050078
+    bl TrackedResourceActor_SpawnFromKey
     add r0, sp, #0x58
     bl VecFx32Object_Destroy
     add r0, sp, #0x68

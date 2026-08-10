@@ -11,7 +11,7 @@ typedef s32 (*ActorPredicate)(void *actor);
  * signed counter 0x1F8 exceeds 20, clear actor flag 0x40000. Returns nothing;
  * the actor flag may change and there are no SDK or hardware effects.
  */
-void func_02050228(void *actor)
+void TrackedResourceActor_UpdateDelayedFlag(void *actor)
 {
     ActorPredicate predicate =
         *(ActorPredicate *)((u8 *)FIELD(void *, actor, 0) + 0xd0);

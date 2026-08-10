@@ -5,7 +5,7 @@
 .extern data_021052fc
 .extern ActorMotionAreaFollower_GetPosition
 .extern func_0201f864
-.extern func_02050078
+.extern TrackedResourceActor_SpawnFromKey
 .extern func_020593ac
 .extern GraphicsSpriteState_SetAnimationIndex
 .extern func_020adae4
@@ -144,7 +144,7 @@ ActorRegisteredSubclass_EnterState2: ; 0x0203d86c
     mov r0, #0x1c
     orr r3, r3, #0x10
     strh r3, [ip, #0x24]
-    bl func_02050078
+    bl TrackedResourceActor_SpawnFromKey
     ldr r1, [r0, #0x10]
     orr r1, r1, #0x100
     str r1, [r0, #0x10]
