@@ -19,7 +19,7 @@ extern const s32 data_ov028_021ff238[];
 extern "C" {
 #endif
 extern void GraphicsSpriteState_SetAnimationIndex(void *, s32);
-extern void func_020755bc(void *);
+extern void GraphicsSpriteRenderer_ClearTextBuffer(void *);
 extern s32 func_020ae024(s32, s32);
 extern void func_020948e4(void *, s32, s32);
 extern void func_02094bbc(void *, s32, s32, s32);
@@ -122,7 +122,7 @@ extern "C" void func_ov028_021fe6bc(void *state)
 extern "C" s32 func_ov028_021fe714(void *state)
 {
     if (FIELD(s32, state, 4) == 0) {
-        func_020755bc(data_020f4e14[0]);
+        GraphicsSpriteRenderer_ClearTextBuffer(data_020f4e14[0]);
         func_ov028_021fe6bc(state);
         func_ov028_021fd468(FIELD(void *, state, 0x220));
         func_ov028_021fdad8(state,

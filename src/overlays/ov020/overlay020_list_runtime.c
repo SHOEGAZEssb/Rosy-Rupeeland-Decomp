@@ -30,8 +30,8 @@ extern void func_02073ef8(void *);
 extern void *func_02073ffc(void *, void *, s32);
 extern void func_0207419c(void *);
 extern void *func_020742cc(void *);
-extern void func_02075598(void *, void *);
-extern void func_020755bc(void *);
+extern void GraphicsSpriteRenderer_SetFontResource(void *, void *);
+extern void GraphicsSpriteRenderer_ClearTextBuffer(void *);
 extern void func_02076148(void *, const void *, s32, s32, s32, s32, s32);
 extern const void *func_02079f3c(const void *, u16);
 extern void func_02092798(void *);
@@ -202,7 +202,7 @@ extern "C" void func_ov020_021fd184(void *state, s32 index)
  */
 extern "C" void func_ov020_021fd1cc(void *state)
 {
-    func_020755bc(FIELD(void *, state, 0));
+    GraphicsSpriteRenderer_ClearTextBuffer(FIELD(void *, state, 0));
     if (FIELD(s32, state, 0x40) == 0)
         return;
     s32 first = FIELD(s32, FIELD(void *, state, 0x44), 0xc);
@@ -212,7 +212,7 @@ extern "C" void func_ov020_021fd1cc(void *state)
             return;
         const void *descriptor =
             FIELD(Overlay020Row *, state, 0x38)[index].descriptor;
-        func_02075598(FIELD(void *, state, 0), (u8 *)state + 0x18);
+        GraphicsSpriteRenderer_SetFontResource(FIELD(void *, state, 0), (u8 *)state + 0x18);
         const void *text = func_02079f3c(
             data_021f3ecc, FIELD(u16, descriptor, 0xc));
         func_02076148(FIELD(void *, state, 0), (u8 *)text + 2,

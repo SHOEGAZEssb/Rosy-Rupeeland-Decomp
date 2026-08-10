@@ -35,7 +35,7 @@ extern s32 DisplayBrightness_IsMainTransitionComplete(void);
 extern void func_02071eb8(void *);
 extern void func_02074110(void *);
 extern void func_0207419c(void *);
-extern void func_020755bc(void *);
+extern void GraphicsSpriteRenderer_ClearTextBuffer(void *);
 extern void *func_020791e0(const void *, s32);
 extern s32 func_0207f248(void *);
 extern void func_0207f86c(void *, s32, void *, s32);
@@ -207,8 +207,8 @@ static void setup_editor(void *scene)
     func_ov094_022198e8(FIELD(void *, scene, 0x5c0), 0);
     for (s32 i = 0; i < 3; ++i)
         func_02074110(FIELD(void *, FIELD(void *, scene, 0xe4 + i * 4), 0xc));
-    func_020755bc(data_020f4e14);
-    func_020755bc(gDebugFont);
+    GraphicsSpriteRenderer_ClearTextBuffer(data_020f4e14);
+    GraphicsSpriteRenderer_ClearTextBuffer(gDebugFont);
     void *font = func_020791e0(data_021f3ecc, 0x6b);
     func_02092e9c(FIELD(void *, scene, 0x50c), font, 3);
     func_02093360(FIELD(void *, scene, 0x50c), 0);
@@ -246,8 +246,8 @@ static void teardown_editor(void *scene)
     FIELD(u32, scene, 0x20) |= 0x400;
     func_ov094_022198e8(FIELD(void *, scene, 0x5c0), 1);
     func_ov025_0220058c(scene);
-    func_020755bc(data_020f4e14);
-    func_020755bc(gDebugFont);
+    GraphicsSpriteRenderer_ClearTextBuffer(data_020f4e14);
+    GraphicsSpriteRenderer_ClearTextBuffer(gDebugFont);
     for (s32 i = 0; i < 3; ++i)
         FIELD(s32, FIELD(void *, FIELD(void *, scene, 0xe4 + i * 4), 0xc), 0x20) = 1;
     func_ov025_022001f4(scene);
@@ -294,7 +294,7 @@ extern "C" s32 func_ov025_02201f28(void *scene)
                 func_02092260(scene, 9);
             } else if (func_ov025_021fd488(editor, (u8 *)scene + 0x510)) {
                 func_02092260(scene, 9);
-                func_020755bc(gDebugFont);
+                GraphicsSpriteRenderer_ClearTextBuffer(gDebugFont);
                 void *font = func_020791e0(data_021f3ecc, 0x28);
                 func_02092e9c(FIELD(void *, scene, 0x50c), font, 3);
                 func_02092c8c(1, -8);
@@ -391,7 +391,7 @@ extern "C" s32 func_ov025_02201f28(void *scene)
     case 30:
         if (func_ov025_02200940(scene) && DisplayBrightness_IsMainTransitionComplete()) {
             func_02092c8c(3, 0);
-            func_020755bc(gDebugFont);
+            GraphicsSpriteRenderer_ClearTextBuffer(gDebugFont);
             void *font = func_020791e0(data_021f3ecc, 0x6b);
             func_02092e9c(FIELD(void *, scene, 0x50c), font, 3);
             func_02093360(FIELD(void *, scene, 0x50c), 0);

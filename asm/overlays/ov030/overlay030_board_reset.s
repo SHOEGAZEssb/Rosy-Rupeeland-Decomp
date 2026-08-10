@@ -3,7 +3,7 @@
 /* Exact fallback; see src/overlays/ov030/overlay030_board_interaction.c for documented portable C. */
 .extern data_ov030_021ff708
 .extern data_ov030_021ff8c4
-.extern func_020755bc
+.extern GraphicsSpriteRenderer_ClearTextBuffer
 .extern GraphicsSpriteCanvas_FillRect
 .extern func_02095940
 .extern func_ov030_021fce00
@@ -37,7 +37,7 @@ L_021fd470:
     sub r0, r0, #0x1
     str r0, [r5, #0x1b4]
     ldr r0, [r5, #0x0]
-    bl func_020755bc
+    bl GraphicsSpriteRenderer_ClearTextBuffer
     ldr r7, L_021fd51c
     mov r4, #0x0
     mov r6, #0x1

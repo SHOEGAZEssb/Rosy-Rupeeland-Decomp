@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/dual_screen_ui_standard_presentation.c.
 .text
 .extern func_02025c20
-.extern func_020755bc
+.extern GraphicsSpriteRenderer_ClearTextBuffer
 .extern gDebugFont
 
     .global func_02026044
@@ -69,7 +69,7 @@ func_02026044: ; 0x02026044
 .L_02026124:
     ldr r0, .L_02026138
     ldr r0, [r0, #0x0]
-    bl func_020755bc
+    bl GraphicsSpriteRenderer_ClearTextBuffer
     ldmia sp!, {r4, r5, r6, pc}
 .L_02026134: .word 0x4001000
 .L_02026138: .word gDebugFont

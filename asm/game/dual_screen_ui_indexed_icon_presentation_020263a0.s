@@ -2,7 +2,7 @@
 .text
 .extern DebugSpriteText_DrawCentered
 .extern func_02025d1c
-.extern func_020755bc
+.extern GraphicsSpriteRenderer_ClearTextBuffer
 .extern gDebugFont
 
     .global func_020263a0
@@ -12,7 +12,7 @@ func_020263a0: ; 0x020263a0
     ldr r1, .L_020263d0
     mov r4, r0
     ldr r0, [r1, #0x0]
-    bl func_020755bc
+    bl GraphicsSpriteRenderer_ClearTextBuffer
     mov r0, r4
     bl func_02025d1c
     add r0, r4, #0xc8

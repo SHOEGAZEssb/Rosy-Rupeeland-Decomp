@@ -10,7 +10,7 @@
 .extern GamePhaseRuntime_UpdateActorPresentationState
 .extern DebugHudState_PollInput
 .extern DebugHudState_GetGlobal
-.extern func_020755bc
+.extern GraphicsSpriteRenderer_ClearTextBuffer
 .extern func_ov061_022100e4
 .extern func_ov061_022101dc
 .extern gDebugFont
@@ -93,12 +93,12 @@ func_ov061_0220fedc:
     bne .L_02210000
     ldr r0, .L_02210094
     ldr r0, [r0, #0x0]
-    bl func_020755bc
+    bl GraphicsSpriteRenderer_ClearTextBuffer
     b .L_0221000c
 .L_02210000:
     ldr r0, .L_02210098
     ldr r0, [r0, #0x0]
-    bl func_020755bc
+    bl GraphicsSpriteRenderer_ClearTextBuffer
 .L_0221000c:
     ldr r1, [r4, #0x28]
     ldr r0, .L_02210090

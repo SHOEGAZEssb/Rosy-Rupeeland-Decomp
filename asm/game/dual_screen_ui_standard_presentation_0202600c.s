@@ -3,7 +3,7 @@
 .extern func_02025d1c
 .extern func_02025dd8
 .extern func_02026174
-.extern func_020755bc
+.extern GraphicsSpriteRenderer_ClearTextBuffer
 .extern gDebugFont
 
     .global func_0202600c
@@ -13,7 +13,7 @@ func_0202600c: ; 0x0202600c
     ldr r1, .L_02026040
     mov r4, r0
     ldr r0, [r1, #0x0]
-    bl func_020755bc
+    bl GraphicsSpriteRenderer_ClearTextBuffer
     mov r0, r4
     bl func_02025d1c
     mov r0, r4

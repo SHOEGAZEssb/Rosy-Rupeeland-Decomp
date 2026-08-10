@@ -23,7 +23,7 @@ extern void func_02070f80(void *, s32);
 extern void func_02071eb8(void *);
 extern void func_02072048(void *, s32, s32);
 extern void func_0207419c(void *);
-extern void func_020755bc(void *);
+extern void GraphicsSpriteRenderer_ClearTextBuffer(void *);
 extern void func_020925a4(s32);
 extern void func_020925dc(s32);
 extern void func_020925f8(void);
@@ -166,8 +166,8 @@ extern "C" s32 func_ov020_021fdf7c(void *state)
     if (FIELD(s32, state, 4) == 0) {
         FIELD(u32, state, 0x20) |= 1;
         if (FIELD(s32, state, 0x120) != 0) {
-            func_020755bc(data_020f4e14);
-            func_020755bc(gDebugFont);
+            GraphicsSpriteRenderer_ClearTextBuffer(data_020f4e14);
+            GraphicsSpriteRenderer_ClearTextBuffer(gDebugFont);
             func_ov020_021fd1cc(FIELD(void *, state, 0x1dc));
             func_ov020_021fde9c(state);
             func_ov020_021fdee0(state);

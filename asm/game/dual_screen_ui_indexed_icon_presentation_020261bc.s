@@ -14,7 +14,7 @@
 .extern func_02025e88
 .extern func_02025ed4
 .extern func_02028404
-.extern func_020755bc
+.extern GraphicsSpriteRenderer_ClearTextBuffer
 .extern gDebugFont
 .extern gHeapContext
 
@@ -46,7 +46,7 @@ func_020261bc: ; 0x020261bc
     bl func_02025d1c
     ldr r0, .L_020262f0
     ldr r0, [r0, #0x0]
-    bl func_020755bc
+    bl GraphicsSpriteRenderer_ClearTextBuffer
     mov r0, r4
     bl func_02028404
     mov r0, r0, lsl #0x10

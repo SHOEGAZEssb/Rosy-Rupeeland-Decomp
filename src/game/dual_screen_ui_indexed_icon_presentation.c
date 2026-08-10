@@ -48,7 +48,7 @@ extern void DebugSpriteText_Destroy(void *helper);
 extern void DebugSpriteText_SetTextResource(void *helper, u16 value);
 extern void DebugSpriteText_DrawCentered(void *helper, s32 x, s32 y);
 extern u16 func_02028404(void *source);
-extern void func_020755bc(void *font);
+extern void GraphicsSpriteRenderer_ClearTextBuffer(void *font);
 extern void func_020740a4(void *spriteOwner);
 extern void *AnimationBinding_Init(void *, void *, s32, s32, s32, s32);
 extern void AnimationBinding_Destroy(void *wrapper);
@@ -85,7 +85,7 @@ DualScreenUiIndexedIconPresentation *func_020261bc(
     func_02025e88(self);
     func_02025ed4(self);
     func_02025d1c(self);
-    func_020755bc(gDebugFont);
+    GraphicsSpriteRenderer_ClearTextBuffer(gDebugFont);
     DebugSpriteText_SetTextResource(self->helperc8, func_02028404(source));
 
     offset = (s8)source[0x4c] * 30;
@@ -136,7 +136,7 @@ DualScreenUiIndexedIconPresentation *func_02026350(
  */
 void func_020263a0(DualScreenUiIndexedIconPresentation *self)
 {
-    func_020755bc(gDebugFont);
+    GraphicsSpriteRenderer_ClearTextBuffer(gDebugFont);
     func_02025d1c(self);
     DebugSpriteText_DrawCentered(self->helperc8, 104, 171);
 }

@@ -33,7 +33,7 @@ extern void func_0202836c(void *label);
 extern void GraphicsSpriteCanvas_FillRect(void *renderer, s32 x, s32 y, s32 width,
                           s32 height, s32 value);
 extern void func_0207c460(Overlay038TextDescriptor *descriptor, u16 textId);
-extern void func_02075598(void *renderer, void *font);
+extern void GraphicsSpriteRenderer_SetFontResource(void *renderer, void *font);
 extern void func_02076148(void *renderer, void *text, s32 x, s32 y,
                           s32 color, s32 spacing, s32 unknown);
 #ifdef __cplusplus
@@ -96,7 +96,7 @@ extern "C" void func_ov038_021fd40c(void *presentation)
         u16 textId = *(const u16 *)(data_020d7a48 + record * 0x24 + 0x1a);
         Overlay038TextDescriptor descriptor = {data_ov038_021fdd08, 0, 0, 0};
         func_0207c460(&descriptor, textId);
-        func_02075598(renderer, FIELD(void *, presentation, 0x31c));
+        GraphicsSpriteRenderer_SetFontResource(renderer, FIELD(void *, presentation, 0x31c));
         func_02076148(renderer, (u8 *)descriptor.text + 0x2c, 0x20,
                       (row + 1) * 0x18, 0x0e, 8, 0);
     }

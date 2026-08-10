@@ -15,7 +15,7 @@ extern "C" {
 #endif
 extern void GameWork_ClearFlag(void *, u32);
 extern s32 GameWork_TestFlag(void *, u32);
-extern void func_020755bc(void *);
+extern void GraphicsSpriteRenderer_ClearTextBuffer(void *);
 extern s32 func_02095dd4(void *, void *, s32);
 extern void func_ov000_021fc9d4(void *);
 extern void func_ov016_021fe754(void *, u32, u32);
@@ -42,8 +42,8 @@ extern "C" s32 func_ov016_02200778(void *state)
     switch (FIELD(s32, state, 4)) {
     case 0:
         FIELD(u32, state, 0x4c) = (FIELD(u32, state, 0x4c) | 2u) & ~4u;
-        func_020755bc(data_020f4e14);
-        func_020755bc(gDebugFont);
+        GraphicsSpriteRenderer_ClearTextBuffer(data_020f4e14);
+        GraphicsSpriteRenderer_ClearTextBuffer(gDebugFont);
         func_ov016_021ffc2c(state);
         func_ov000_021fc9d4(FIELD(void *, state, 0x44c));
         if (FIELD(s32, state, 0x46c) != 0) {

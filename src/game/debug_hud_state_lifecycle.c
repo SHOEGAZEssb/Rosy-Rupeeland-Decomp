@@ -11,7 +11,7 @@ extern void *gDebugFont;
 extern u8 gSystemState[];
 extern void *gGameWork;
 extern void DebugHudState_Close(DebugHudState *self);
-extern void func_020755bc(void *object);
+extern void GraphicsSpriteRenderer_ClearTextBuffer(void *object);
 extern s32 func_020befec(s32 value, s32 divisor);
 #ifdef __cplusplus
 }
@@ -52,7 +52,7 @@ DebugHudState *DebugHudState_Destroy(DebugHudState *self)
 /* Reset the normal debug object for selector 0, or the debug font otherwise. */
 void DebugHudState_ResetSelectedFont(DebugHudState *self)
 {
-    func_020755bc(self->fontSelect == 0 ? data_020f4e14 : gDebugFont);
+    GraphicsSpriteRenderer_ClearTextBuffer(self->fontSelect == 0 ? data_020f4e14 : gDebugFont);
 }
 
 /* Return the count of base-10 digits in value; zero is one digit. */

@@ -13,8 +13,8 @@ extern void *gDebugFont;
 extern "C" {
 #endif
 extern void func_02070e0c(s32, s32, s32);
-extern void func_02075598(void *, void *);
-extern void func_020755bc(void *);
+extern void GraphicsSpriteRenderer_SetFontResource(void *, void *);
+extern void GraphicsSpriteRenderer_ClearTextBuffer(void *);
 extern void func_02092790(void *, s32);
 extern void func_02092e9c(void *, const void *, s32);
 extern s32 func_02093360(void *, const void *);
@@ -107,7 +107,7 @@ extern "C" void func_ov023_021fe804(void *scene, const void *text, void *record)
         func_ov045_0220c128(FIELD(void *, scene, 0x4bc),
                             FIELD(void *, dialog, 0xe8));
     else func_ov045_0220c028(FIELD(void *, scene, 0x4bc));
-    func_02075598(gDebugFont, FIELD(void *, scene, 0x54));
+    GraphicsSpriteRenderer_SetFontResource(gDebugFont, FIELD(void *, scene, 0x54));
     void *descriptor = FIELD(void *, record, 4);
     func_ov045_0220d2f8(FIELD(u32, descriptor, 0xc) & 0xff,
                          FIELD(u16, descriptor, 4));
@@ -207,8 +207,8 @@ extern "C" void *func_ov023_021fea88(void *scene)
 extern "C" s32 func_ov023_021feaf0(void *scene)
 {
     if (FIELD(s32, scene, 4) == 0) {
-        func_020755bc(data_020f4e14);
-        func_020755bc(gDebugFont);
+        GraphicsSpriteRenderer_ClearTextBuffer(data_020f4e14);
+        GraphicsSpriteRenderer_ClearTextBuffer(gDebugFont);
         func_02095928((u8 *)scene + 0x17c);
         FIELD(u32, scene, 0x20) = (FIELD(u32, scene, 0x20) & ~1u) | 1u;
         func_ov023_021fd9d0(scene, data_ov023_021ffb28[0],

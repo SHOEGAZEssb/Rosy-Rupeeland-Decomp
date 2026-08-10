@@ -15,7 +15,7 @@ void func_ov041_021fd000(void *);
 void func_ov041_021fce00(void *);
 void *func_0209a208(void *, s32, s32, s32, s32, s32);
 void GraphicsSpriteState_SetAnimationIndex(void *, s32);
-void *func_020755e0(void *);
+void *GraphicsSpriteRenderer_GetObjectPaletteAddress(void *);
 u32 genrand_int32(void);
 extern u8 data_ov041_0220582c;
 extern void *data_020f4e14;
@@ -80,7 +80,7 @@ extern "C" void *func_ov041_02200660(void *object, void *owner,
     FIELD(u8, FIELD(void *, second, 0x0c), 0x3a) = 0;
     FIELD(u16, second, 0x42) &= ~4;
 
-    void *shared = func_020755e0(data_020f4e14);
+    void *shared = GraphicsSpriteRenderer_GetObjectPaletteAddress(data_020f4e14);
     FIELD(u16, shared, 8) = 0x1f;
     for (s32 row = 0; row < 10; ++row) {
         for (s32 column = 0; column < 9; ++column)

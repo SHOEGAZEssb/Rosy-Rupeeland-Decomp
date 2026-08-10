@@ -3,7 +3,7 @@
     .extern data_021f3ecc
     .extern func_020628c8
     .extern func_020651a4
-    .extern func_02075598
+    .extern GraphicsSpriteRenderer_SetFontResource
     .extern func_02076148
     .extern GraphicsSpriteCanvas_FillRect
     .extern func_02079f3c
@@ -46,7 +46,7 @@ L_021fd444:
     ldr r0, [r6, #0x0]
     ldr r5, [r1, r4]
     ldr r1, [r6, #0x28]
-    bl func_02075598
+    bl GraphicsSpriteRenderer_SetFontResource
     cmp r5, #0x0
     beq L_021fd558
     ldr r0, [r6, #0x4c]
@@ -92,7 +92,7 @@ L_021fd444:
     cmp r0, #0x0
     ldr r0, [r6, #0x0]
     subne r9, r9, #0x2
-    bl func_02075598
+    bl GraphicsSpriteRenderer_SetFontResource
     str r9, [sp, #0x0]
     stmib sp, {r5, r11}
     mov r0, #0x1

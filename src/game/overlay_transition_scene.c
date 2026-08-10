@@ -34,7 +34,7 @@ extern void GamePhaseAreaScene_SetEnabled(void *object, s32 value);
 extern void GamePhaseCurrencyHud_SetVisible(void *context, s32 enabled);
 extern void GamePhaseRuntime_SetPlacementMode(void *runtime, s32 first, s32 second);
 extern void func_02008570(void *runtime, s32 first, s32 second);
-extern void func_020755bc(void *renderer);
+extern void GraphicsSpriteRenderer_ClearTextBuffer(void *renderer);
 extern void GamePhaseRuntime_UpdateActorPresentationState(void *runtime, s32 mode);
 extern OverlayTransitionObject *func_ov029_021fd95c(
     OverlayTransitionObject *self, u32 parameter);
@@ -160,7 +160,7 @@ s32 func_0201d358(OverlayTransitionScene *self)
             ((void (*)(void *))self->object24->vtable[2])(self->object24);
         self->object24 = 0;
         OverlaySlot_UnloadOverlay(&self->overlay2c);
-        func_020755bc(gDebugFont);
+        GraphicsSpriteRenderer_ClearTextBuffer(gDebugFont);
         runtimeObject = *(void **)((u8 *)runtime + 0x2fb8);
         if (runtimeObject != 0) {
             func_02008570(runtime, 1, 1);

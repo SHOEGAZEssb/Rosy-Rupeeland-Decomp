@@ -1,7 +1,7 @@
     .text
 /* Exact fallback; see src/overlays/ov022/overlay022_graphics_setup.c. */
     .extern data_020f4e14
-    .extern func_020755e0
+    .extern GraphicsSpriteRenderer_GetObjectPaletteAddress
     .extern func_020925a4
     .extern func_020925dc
     .extern func_02092618
@@ -42,7 +42,7 @@ func_ov022_021fe3c0:
     bl func_02092688
     ldr r0, L_021fe48c
     ldr r0, [r0, #0x0]
-    bl func_020755e0
+    bl GraphicsSpriteRenderer_GetObjectPaletteAddress
     ldrh r1, [r0, #0x16]
     ldr ip, L_021fe490
     mov r3, #0x8

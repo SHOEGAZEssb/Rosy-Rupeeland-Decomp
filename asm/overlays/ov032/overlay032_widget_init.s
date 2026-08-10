@@ -7,8 +7,8 @@
 .extern data_021f5f18
 .extern data_ov032_02202350
 .extern func_02071980
-.extern func_02075598
-.extern func_020755e0
+.extern GraphicsSpriteRenderer_SetFontResource
+.extern GraphicsSpriteRenderer_GetObjectPaletteAddress
 .extern func_02094550
 .extern func_02094574
 .extern func_ov032_02201450
@@ -65,10 +65,10 @@ func_ov032_0220173c:
     ldr r0, L_02201894
     ldr r1, [r4, #0x48]
     ldr r0, [r0, #0x0]
-    bl func_02075598
+    bl GraphicsSpriteRenderer_SetFontResource
     ldr r0, L_02201894
     ldr r0, [r0, #0x0]
-    bl func_020755e0
+    bl GraphicsSpriteRenderer_GetObjectPaletteAddress
     ldr r2, L_02201898
     ldr r1, L_0220189c
     strh r2, [r0, #0x4]

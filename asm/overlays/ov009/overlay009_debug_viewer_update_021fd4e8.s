@@ -33,7 +33,7 @@
     .extern func_02073aa8
     .extern func_020740a4
     .extern func_02074dc8
-    .extern func_020755bc
+    .extern GraphicsSpriteRenderer_ClearTextBuffer
     .extern func_02075858
     .extern GraphicsSpriteCanvas_DrawRect
     .extern func_ov009_021fce74
@@ -708,10 +708,10 @@ L_021fde64:
     streq r0, [r9, #0xdc]
     ldr r0, L_021fe9c8
     ldr r0, [r0, #0x0]
-    bl func_020755bc
+    bl GraphicsSpriteRenderer_ClearTextBuffer
     ldr r0, L_021fe9cc
     ldr r0, [r0, #0x0]
-    bl func_020755bc
+    bl GraphicsSpriteRenderer_ClearTextBuffer
     ldr r0, [r9, #0x50]
     ldrh r0, [r0, #0x0]
     tst r0, #0x100

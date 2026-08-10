@@ -12,8 +12,8 @@ extern void *data_020f4e18;
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_020755bc(void *);
-extern void *func_020755e0(void *);
+extern void GraphicsSpriteRenderer_ClearTextBuffer(void *);
+extern void *GraphicsSpriteRenderer_GetObjectPaletteAddress(void *);
 extern void func_020925a4(s32);
 extern void func_020925f8(void);
 extern void func_02092638(s32, s32, s32, s32);
@@ -57,8 +57,8 @@ void func_ov014_021fd07c(void *state)
     void *mainManager;
     void *debugManager;
 
-    func_020755bc(data_020f4e14);
-    func_020755bc(gDebugFont);
+    GraphicsSpriteRenderer_ClearTextBuffer(data_020f4e14);
+    GraphicsSpriteRenderer_ClearTextBuffer(gDebugFont);
     *power &= (u16)~0x8000;
     FIELD(s32, state, 0x48) = 0x14;
     func_020925a4(0);
@@ -93,8 +93,8 @@ void func_ov014_021fd07c(void *state)
     func_02070eac((void *)second.words[2], 0, 0);
     func_02070eac((void *)third.words[2], 1, 0);
 
-    mainManager = func_020755e0(data_020f4e14);
-    debugManager = func_020755e0(gDebugFont);
+    mainManager = GraphicsSpriteRenderer_GetObjectPaletteAddress(data_020f4e14);
+    debugManager = GraphicsSpriteRenderer_GetObjectPaletteAddress(gDebugFont);
     FIELD(u16, debugManager, 0x0a) = 0x4210;
     FIELD(u16, mainManager, 0x0a) = FIELD(u16, debugManager, 0x0a);
     FIELD(u16, debugManager, 0x0c) = FIELD(u16, mainManager, 0x1e);

@@ -3,7 +3,7 @@
 .extern GameWork_SetFlag
 .extern data_ov046_0220cce8
 .extern func_02028100
-.extern func_020755bc
+.extern GraphicsSpriteRenderer_ClearTextBuffer
 .extern func_ov046_0220bffc
 .extern func_ov046_0220c478
 .extern func_ov046_0220c4a0
@@ -21,7 +21,7 @@ func_ov046_0220cb88:
     bne .L_0220cbfc
     ldr r0, .L_0220cc0c
     ldr r0, [r0, #0x0]
-    bl func_020755bc
+    bl GraphicsSpriteRenderer_ClearTextBuffer
     ldr r0, [r4, #0x74]
     ldr r1, [r4, #0x6c]
     bl func_02028100

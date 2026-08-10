@@ -26,7 +26,7 @@ extern void func_02070e0c(void *, s32, s32);
 extern void func_02070f34(void *, s32);
 extern void func_02072048(void *, s32, s32);
 extern void func_020740a4(void *);
-extern void *func_020755e0(void *);
+extern void *GraphicsSpriteRenderer_GetObjectPaletteAddress(void *);
 extern s32 func_0209189c(void *, s32, s32);
 extern void func_020925a4(s32, s32);
 extern void func_020925f8(void);
@@ -69,7 +69,7 @@ extern "C" void func_ov028_021fe1b0(void *state)
     bg[3] = (bg[3] & 0x43) | 0x1e10;
     func_020925f8();
     func_02092638(1, 1, 2, 3);
-    u16 *fontState = (u16 *)func_020755e0(data_020f4e14[0]);
+    u16 *fontState = (u16 *)GraphicsSpriteRenderer_GetObjectPaletteAddress(data_020f4e14[0]);
     fontState[1] = fontState[13];
     fontState[2] = fontState[15];
 

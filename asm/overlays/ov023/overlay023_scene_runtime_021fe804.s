@@ -1,7 +1,7 @@
 .text
 
 /* Exact fallback; see src/overlays/ov023/overlay023_scene_runtime.c. */
-.extern func_02075598
+.extern GraphicsSpriteRenderer_SetFontResource
 .extern func_02092e9c
 .extern func_02093360
 .extern func_ov045_0220c028
@@ -39,7 +39,7 @@ L_021fe85c:
     ldr r0, L_021fe888
     ldr r1, [r5, #0x54]
     ldr r0, [r0, #0x0]
-    bl func_02075598
+    bl GraphicsSpriteRenderer_SetFontResource
     ldr r1, [r4, #0x4]
     ldr r0, [r1, #0xc]
     ldrh r1, [r1, #0x4]

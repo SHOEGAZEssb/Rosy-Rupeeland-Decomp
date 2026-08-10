@@ -2,7 +2,7 @@
 .extern func_02092c8c
 .extern DisplayBrightness_IsMainTransitionComplete
 .extern func_ov043_0220bcf4
-.extern func_020755bc
+.extern GraphicsSpriteRenderer_ClearTextBuffer
 .extern OverlaySlot_LoadOverlay
 .extern Heap_Alloc
 .extern func_ov016_021fe77c
@@ -59,10 +59,10 @@ func_ov043_0220bed4:
     bl func_ov043_0220bcf4
     ldr r0, .L_0220c18c
     ldr r0, [r0, #0x0]
-    bl func_020755bc
+    bl GraphicsSpriteRenderer_ClearTextBuffer
     ldr r0, .L_0220c190
     ldr r0, [r0, #0x0]
-    bl func_020755bc
+    bl GraphicsSpriteRenderer_ClearTextBuffer
     ldr r1, .L_0220c194
     add r0, r4, #0x2dc
     bl OverlaySlot_LoadOverlay
@@ -185,10 +185,10 @@ func_ov043_0220bed4:
 .L_0220c110:
     ldr r0, .L_0220c18c
     ldr r0, [r0, #0x0]
-    bl func_020755bc
+    bl GraphicsSpriteRenderer_ClearTextBuffer
     ldr r0, .L_0220c190
     ldr r0, [r0, #0x0]
-    bl func_020755bc
+    bl GraphicsSpriteRenderer_ClearTextBuffer
     mov r0, r4
     bl func_ov043_0220ba28
     mov r0, r4
@@ -354,10 +354,10 @@ func_ov043_0220c1b0:
 .L_0220c370:
     ldr r0, .L_0220c40c
     ldr r0, [r0, #0x0]
-    bl func_020755bc
+    bl GraphicsSpriteRenderer_ClearTextBuffer
     ldr r0, .L_0220c410
     ldr r0, [r0, #0x0]
-    bl func_020755bc
+    bl GraphicsSpriteRenderer_ClearTextBuffer
     mov r0, r4
     bl func_ov043_0220ba28
     mov r0, r4

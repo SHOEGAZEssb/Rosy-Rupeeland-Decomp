@@ -33,7 +33,7 @@ extern void func_020923a0(void *);
 extern void func_020923a4(void *);
 extern void __destroy_arr(...);
 extern void func_0201e0f4(void *);
-extern void func_020755bc(void *);
+extern void GraphicsSpriteRenderer_ClearTextBuffer(void *);
 extern void GamePhaseState_SetEnabled(...);
 extern void GamePhaseAreaScene_SetEnabled(...);
 extern void GX_SetBankForBG(...);
@@ -154,8 +154,8 @@ extern "C" void func_ov032_021fd994(void *scene)
 
     func_0201e0f4(context + 0x2f7c);
     func_020923a4((u8 *)scene + 0xbe8);
-    func_020755bc(data_020f4e14[0]);
-    func_020755bc(gDebugFont);
+    GraphicsSpriteRenderer_ClearTextBuffer(data_020f4e14[0]);
+    GraphicsSpriteRenderer_ClearTextBuffer(gDebugFont);
     GamePhaseState_SetEnabled(context + 0x24, 0);
     GamePhaseAreaScene_SetEnabled(FIELD(void *, context, 0x2fb8), 0);
 

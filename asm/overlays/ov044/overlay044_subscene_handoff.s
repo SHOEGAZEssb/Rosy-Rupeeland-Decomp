@@ -5,7 +5,7 @@
 .extern func_02095940
 .extern func_ov044_0220c5c0
 .extern func_ov044_0220c6dc
-.extern func_020755bc
+.extern GraphicsSpriteRenderer_ClearTextBuffer
 .extern Heap_Alloc
 .extern func_ov015_021fce58
 .extern func_ov044_0220c880
@@ -65,7 +65,7 @@ func_ov044_0220cf60:
     bl func_ov044_0220c6dc
     ldr r0, .L_0220d1f4
     ldr r0, [r0, #0x0]
-    bl func_020755bc
+    bl GraphicsSpriteRenderer_ClearTextBuffer
     mov r0, #0x304
     ldr r1, .L_0220d1f8
     mov r2, #0x4
@@ -159,7 +159,7 @@ func_ov044_0220cf60:
 .L_0220d13c:
     ldr r0, .L_0220d1f4
     ldr r0, [r0, #0x0]
-    bl func_020755bc
+    bl GraphicsSpriteRenderer_ClearTextBuffer
     mov r0, #0x1c
     str r0, [r4, #0x48]
     bl func_020925f8

@@ -14,7 +14,7 @@
 .extern func_02058ce0
 .extern func_02059604
 .extern GraphicsSpriteState_SetAnimationIndex
-.extern func_020755bc
+.extern GraphicsSpriteRenderer_ClearTextBuffer
 .extern func_020a7c4c
 .extern func_020befec
 .extern func_ov064_02211098
@@ -33,7 +33,7 @@ func_ov064_0221155c:
     bl DebugText_BeginFrame
     ldr r0, .L_02211aa4
     ldr r0, [r0, #0x0]
-    bl func_020755bc
+    bl GraphicsSpriteRenderer_ClearTextBuffer
     ldr lr, .L_02211aa8
     add ip, sp, #0x110
     mov r4, #0x4

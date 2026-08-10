@@ -3,7 +3,7 @@
 /* Exact fallback; see src/overlays/ov038/overlay038_input_activate.c for documented portable C. */
 
     .extern func_020befec
-    .extern func_020755bc
+    .extern GraphicsSpriteRenderer_ClearTextBuffer
     .extern func_ov038_021fd40c
     .extern func_ov038_021fd508
     .extern func_02028100
@@ -63,10 +63,10 @@ func_ov038_021fd6e0:
     beq L_021fd7c4
     ldr r0, L_021fd7e8
     ldr r0, [r0, #0x0]
-    bl func_020755bc
+    bl GraphicsSpriteRenderer_ClearTextBuffer
     ldr r0, L_021fd7ec
     ldr r0, [r0, #0x0]
-    bl func_020755bc
+    bl GraphicsSpriteRenderer_ClearTextBuffer
     mov r0, r4
     bl func_ov038_021fd40c
     mov r0, r4

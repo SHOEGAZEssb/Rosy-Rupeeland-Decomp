@@ -8,7 +8,7 @@
 .extern func_02070eac
 .extern func_02070f80
 .extern func_02072048
-.extern func_020755e0
+.extern GraphicsSpriteRenderer_GetObjectPaletteAddress
 .extern func_020925a4
 .extern func_020925dc
 .extern func_020925f8
@@ -136,7 +136,7 @@ func_ov025_021ffdfc:
     bl func_020b1ff0
     ldr r0, L_02200008
     ldr r0, [r0, #0x0]
-    bl func_020755e0
+    bl GraphicsSpriteRenderer_GetObjectPaletteAddress
     ldrh r3, [r0, #0x1c]
     ldr r2, L_0220000c
     ldr r1, L_02200010

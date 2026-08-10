@@ -17,7 +17,7 @@ extern "C" {
 extern void func_02003e38(void *);
 extern s32 DisplayBrightness_IsMainTransitionComplete(void);
 extern void GamePhaseCurrencyHud_SetVisible(void *, s32);
-extern void func_020755bc(void *);
+extern void GraphicsSpriteRenderer_ClearTextBuffer(void *);
 extern void func_020b1ccc(void *, s32, s32);
 extern void func_020b1ff0(void *, s32, s32);
 extern void *func_ov003_021fb804(void *);
@@ -46,8 +46,8 @@ extern "C" s32 func_ov018_021fe6f0(void *state)
     switch (FIELD(s32, state, 4)) {
     case 0: {
         GamePhaseCurrencyHud_SetVisible(gLupyContext, 1);
-        func_020755bc(data_020f4e14);
-        func_020755bc(gDebugFont);
+        GraphicsSpriteRenderer_ClearTextBuffer(data_020f4e14);
+        GraphicsSpriteRenderer_ClearTextBuffer(gDebugFont);
         FIELD(u32, (u8 *)data_021052fc + 0x2000, 0xf6c) |= 2;
 
         void *temporary = func_ov003_021fb804(FIELD(void *, state, 0x190));

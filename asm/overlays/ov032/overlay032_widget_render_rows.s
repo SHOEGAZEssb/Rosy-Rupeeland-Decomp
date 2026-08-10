@@ -3,7 +3,7 @@
 /* Exact fallback; see src/overlays/ov032/overlay032_widget_helpers.c for documented portable C. */
 .extern data_020f4e14
 .extern data_021f6288
-.extern func_020755bc
+.extern GraphicsSpriteRenderer_ClearTextBuffer
 .extern func_02076148
 .extern func_02097f30
 
@@ -14,7 +14,7 @@ func_ov032_02201ea4:
     ldr r1, L_02201f50
     mov r10, r0
     ldr r0, [r1, #0x0]
-    bl func_020755bc
+    bl GraphicsSpriteRenderer_ClearTextBuffer
     mov r8, #0x0
     ldr r7, L_02201f54
     mov r6, #0x8

@@ -14,7 +14,7 @@
 .extern func_0204f478
 .extern func_0204f4d4
 .extern func_020628c8
-.extern func_02075598
+.extern GraphicsSpriteRenderer_SetFontResource
 .extern func_02076148
 .extern func_020761f8
 .extern func_020ada8c
@@ -244,7 +244,7 @@ func_0204ee24: ; 0x0204ee24
     ldr r1, [r1, #0x8]
     ldr r0, [r0, #0x0]
     movge r4, #0x1
-    bl func_02075598
+    bl GraphicsSpriteRenderer_SetFontResource
     add r0, r5, #0x1f4
     bl func_020628c8
     ldr r2, .L_0204f470
@@ -333,7 +333,7 @@ func_0204ee24: ; 0x0204ee24
     ldr r1, .L_0204f46c
     ldr r0, [r0, #0x0]
     ldr r1, [r1, #0x8]
-    bl func_02075598
+    bl GraphicsSpriteRenderer_SetFontResource
     add r0, r5, #0x1f4
     bl func_020628c8
     mov r1, #0xd

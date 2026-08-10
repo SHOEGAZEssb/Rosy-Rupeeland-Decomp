@@ -3,8 +3,8 @@
 /* Exact fallback; see src/overlays/ov025/overlay025_name_entry.c. */
 .extern data_020f4e14
 .extern data_ov025_02202f40
-.extern func_02075598
-.extern func_020755bc
+.extern GraphicsSpriteRenderer_SetFontResource
+.extern GraphicsSpriteRenderer_ClearTextBuffer
 .extern func_02075e48
 .extern func_02075ea8
 .extern func_02075ecc
@@ -20,11 +20,11 @@ func_ov025_021fd160:
     mov r10, r0
     ldr r0, [r2, #0x0]
     mov r9, r1
-    bl func_020755bc
+    bl GraphicsSpriteRenderer_ClearTextBuffer
     ldr r0, L_021fd2dc
     mov r1, r9
     ldr r0, [r0, #0x0]
-    bl func_02075598
+    bl GraphicsSpriteRenderer_SetFontResource
     ldr r0, L_021fd2e0
     mov r1, #0x0
     ldrb r0, [r0, #0x5f]

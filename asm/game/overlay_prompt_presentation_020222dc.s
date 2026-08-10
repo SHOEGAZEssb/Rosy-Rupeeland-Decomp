@@ -14,7 +14,7 @@
 .extern GamePhaseCurrencyHud_SetVisible
 .extern func_0201e250
 .extern func_0201e28c
-.extern func_020755bc
+.extern GraphicsSpriteRenderer_ClearTextBuffer
 .extern func_02091fb0
 .extern func_02092c8c
 .extern func_ov001_021fbe6c

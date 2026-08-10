@@ -21,7 +21,7 @@
 .extern func_02070e0c
 .extern func_02070eac
 .extern func_02072000
-.extern func_020755bc
+.extern GraphicsSpriteRenderer_ClearTextBuffer
 .extern func_02075a04
 .extern func_020923a4
 .extern func_020925f8
@@ -50,10 +50,10 @@ func_ov032_021fd994:
     bl func_020923a4
     ldr r0, L_021fdde0
     ldr r0, [r0, #0x0]
-    bl func_020755bc
+    bl GraphicsSpriteRenderer_ClearTextBuffer
     ldr r0, L_021fdde4
     ldr r0, [r0, #0x0]
-    bl func_020755bc
+    bl GraphicsSpriteRenderer_ClearTextBuffer
     ldr r0, L_021fdddc
     mov r1, #0x0
     ldr r0, [r0, #0x0]

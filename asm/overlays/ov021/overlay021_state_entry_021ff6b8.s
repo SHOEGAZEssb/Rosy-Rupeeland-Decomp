@@ -9,8 +9,8 @@
     .extern GameWork_ClearFlag
     .extern GameWork_TestFlag
     .extern GamePhaseCurrencyHud_SetVisible
-    .extern func_02075598
-    .extern func_020755bc
+    .extern GraphicsSpriteRenderer_SetFontResource
+    .extern GraphicsSpriteRenderer_ClearTextBuffer
     .extern func_0207c4cc
     .extern func_02095940
     .extern func_ov021_021fd7c0
@@ -40,10 +40,10 @@ func_ov021_021ff6b8:
 L_021ff6f4:
     ldr r0, L_021ff81c
     ldr r0, [r0, #0x0]
-    bl func_020755bc
+    bl GraphicsSpriteRenderer_ClearTextBuffer
     ldr r0, L_021ff820
     ldr r0, [r0, #0x0]
-    bl func_020755bc
+    bl GraphicsSpriteRenderer_ClearTextBuffer
     add r0, r4, #0xa0
     bl func_02095940
     ldr r0, L_021ff824
@@ -92,7 +92,7 @@ L_021ff790:
     ldr r0, L_021ff820
     ldr r1, [r4, #0x58]
     ldr r0, [r0, #0x0]
-    bl func_02075598
+    bl GraphicsSpriteRenderer_SetFontResource
     ldr r0, [r4, #0x54]
     mov r1, #0x0
     bl func_ov045_0220d2f8

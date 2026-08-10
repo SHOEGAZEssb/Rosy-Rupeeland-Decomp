@@ -2,7 +2,7 @@
 /* Exact fallback; see src/overlays/ov018/overlay018_result_text.c. */
     .extern data_021f3ecc
     .extern data_ov018_021ffce0
-    .extern func_02075598
+    .extern GraphicsSpriteRenderer_SetFontResource
     .extern func_02076148
     .extern func_020761f8
     .extern func_020791e0
@@ -35,7 +35,7 @@ func_ov018_021fe46c:
     ldr r0, L_021fe59c
     ldr r1, [r5, #0x70]
     ldr r0, [r0, #0x0]
-    bl func_02075598
+    bl GraphicsSpriteRenderer_SetFontResource
     ldr r0, L_021fe59c
     ldr r1, [sp, #0x10]
     mov r2, #0x8

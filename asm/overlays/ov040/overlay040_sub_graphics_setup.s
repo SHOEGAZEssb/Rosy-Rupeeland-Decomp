@@ -15,7 +15,7 @@
     .extern func_02070eac
     .extern func_02072000
     .extern GraphicsSpriteState_SetAnimationIndex
-    .extern func_020755e0
+    .extern GraphicsSpriteRenderer_GetObjectPaletteAddress
     .extern func_0209a208
     .extern func_020aea7c
     .extern func_020afd28
@@ -243,7 +243,7 @@ func_ov040_02202640: ; 0x02202640
     blx r4
     ldr r0, .L_02202a08
     ldr r0, [r0, #0x0]
-    bl func_020755e0
+    bl GraphicsSpriteRenderer_GetObjectPaletteAddress
     ldr r2, .L_02202a0c
     mov r1, #0xa0
     strh r2, [r0, #0x8]

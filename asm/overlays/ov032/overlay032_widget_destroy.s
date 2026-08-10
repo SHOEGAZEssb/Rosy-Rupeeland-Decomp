@@ -4,8 +4,8 @@
 .extern data_020f4e14
 .extern data_020f4e18
 .extern func_02071d4c
-.extern func_020755b0
-.extern func_020755bc
+.extern GraphicsSpriteRenderer_ClearFontResource
+.extern GraphicsSpriteRenderer_ClearTextBuffer
 .extern func_02075630
 .extern func_ov032_0220147c
 
@@ -24,10 +24,10 @@ func_ov032_022018ac:
     bl func_02071d4c
     ldr r0, L_0220190c
     ldr r0, [r0, #0x0]
-    bl func_020755b0
+    bl GraphicsSpriteRenderer_ClearFontResource
     ldr r0, L_0220190c
     ldr r0, [r0, #0x0]
-    bl func_020755bc
+    bl GraphicsSpriteRenderer_ClearTextBuffer
     ldr r0, [r4, #0x4c]
     cmp r0, #0x0
     ldmeqia sp!, {r4, pc}

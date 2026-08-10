@@ -3,7 +3,7 @@
 /* Exact fallback; see src/overlays/ov030/overlay030_dialog_runtime.c for documented portable C. */
 .extern data_021f3ecc
 .extern data_021f5ed0
-.extern func_02075598
+.extern GraphicsSpriteRenderer_SetFontResource
 .extern func_020791e0
 .extern func_02092e9c
 .extern func_02093360
@@ -51,7 +51,7 @@ L_021fe9d0:
     ldr r0, L_021fe9fc
     ldr r1, [r4, #0x54]
     ldr r0, [r0, #0x0]
-    bl func_02075598
+    bl GraphicsSpriteRenderer_SetFontResource
     mov r0, #0x8
     mov r1, #0x21
     bl func_ov045_0220d2f8

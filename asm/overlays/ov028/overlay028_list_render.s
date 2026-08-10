@@ -2,8 +2,8 @@
 
 /* Exact fallback; see src/overlays/ov028/overlay028_list_render.c. */
 .extern data_021f3ecc
-.extern func_02075598
-.extern func_020755bc
+.extern GraphicsSpriteRenderer_SetFontResource
+.extern GraphicsSpriteRenderer_ClearTextBuffer
 .extern func_02076148
 .extern func_02079f3c
 .extern func_020befec
@@ -17,13 +17,13 @@ func_ov028_021fd468:
     sub sp, sp, #0xc
     mov r10, r0
     ldr r0, [r10, #0x0]
-    bl func_020755bc
+    bl GraphicsSpriteRenderer_ClearTextBuffer
     ldr r0, [r10, #0x40]
     cmp r0, #0x0
     beq L_021fd54c
     ldr r0, [r10, #0x0]
     ldr r1, [r10, #0x14]
-    bl func_02075598
+    bl GraphicsSpriteRenderer_SetFontResource
     mov r9, #0x0
     mov r4, #0x6
     mov r5, #0x1

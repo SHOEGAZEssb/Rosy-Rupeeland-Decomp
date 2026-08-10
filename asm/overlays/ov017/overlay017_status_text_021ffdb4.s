@@ -3,8 +3,8 @@
     .extern data_021f3ecc
     .extern data_ov017_022016e0
     .extern func_020628c8
-    .extern func_02075598
-    .extern func_020755bc
+    .extern GraphicsSpriteRenderer_SetFontResource
+    .extern GraphicsSpriteRenderer_ClearTextBuffer
     .extern func_02076004
     .extern func_02076148
     .extern func_020761f8
@@ -19,11 +19,11 @@ func_ov017_021ffdb4:
     ldr r0, [r3, #0x0]
     mov r5, r1
     mov r4, r2
-    bl func_020755bc
+    bl GraphicsSpriteRenderer_ClearTextBuffer
     ldr r0, L_02200050
     ldr r1, [r6, #0x1d8]
     ldr r0, [r0, #0x0]
-    bl func_02075598
+    bl GraphicsSpriteRenderer_SetFontResource
     ldr r0, [r6, #0x3bc]
     cmp r0, #0x0
     beq L_021ffe30

@@ -34,7 +34,7 @@ extern void func_02027654(void);
 extern s32 FrameCounter_Tick31(void *object);
 extern void func_020783cc(void *object);
 extern void func_02078384(void *object);
-extern void func_020755bc(void *object);
+extern void GraphicsSpriteRenderer_ClearTextBuffer(void *object);
 extern s32 GamePhaseCurrencyHud_GetCurrency(void *context);
 extern void GamePhaseCurrencyHud_Update(void *context);
 extern s32 GamePhaseState_TryStartBoundaryTransition(void *object);
@@ -132,12 +132,12 @@ s32 GamePhaseRuntime_Update(GamePhaseRuntime *self)
     flags = *(u32 *)(b + 0x30b8);
     if (flags & 0x10) {
         *(u32 *)(b + 0x30b8) = flags & ~0x10;
-        func_020755bc(data_020f4e14);
+        GraphicsSpriteRenderer_ClearTextBuffer(data_020f4e14);
     }
     flags = *(u32 *)(b + 0x30b8);
     if (flags & 0x20) {
         *(u32 *)(b + 0x30b8) = flags & ~0x20;
-        func_020755bc(gDebugFont);
+        GraphicsSpriteRenderer_ClearTextBuffer(gDebugFont);
     }
 
     restricted = 0;

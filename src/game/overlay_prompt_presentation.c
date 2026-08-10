@@ -32,7 +32,7 @@ extern void func_02092c8c(s32, s32);
 extern s32 DisplayBrightness_IsSubTransitionComplete(void);
 extern void *func_ov001_021fbe6c(void *);
 extern void func_02091fb0(void *, s32);
-extern void func_020755bc(void *);
+extern void GraphicsSpriteRenderer_ClearTextBuffer(void *);
 extern void GameWork_ClearFlag(void *, s32);
 extern s32 GameWork_TestFlag(void *, s32);
 #ifdef __cplusplus
@@ -107,7 +107,7 @@ s32 func_020223d4(OverlayPromptPresentation *self)
         func_02091fb0(self->worker0c, 1);
         if (!GameWork_TestFlag(gGameWork, 0x408)) return 0;
         GameWork_ClearFlag(gGameWork, 0x408);
-        func_020755bc(gDebugFont);
+        GraphicsSpriteRenderer_ClearTextBuffer(gDebugFont);
         self->callbacksActive20 = 0;
         if (self->worker0c != 0)
             ((WorkerMethod)(*(void ***)self->worker0c)[2])(self->worker0c);

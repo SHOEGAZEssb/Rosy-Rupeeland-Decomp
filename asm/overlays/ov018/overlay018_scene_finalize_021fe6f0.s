@@ -7,7 +7,7 @@
     .extern DisplayBrightness_IsMainTransitionComplete
     .extern func_02003e38
     .extern GamePhaseCurrencyHud_SetVisible
-    .extern func_020755bc
+    .extern GraphicsSpriteRenderer_ClearTextBuffer
     .extern func_020b1ccc
     .extern func_020b1ff0
     .extern func_ov003_021fb804
@@ -35,10 +35,10 @@ L_021fe710:
     bl GamePhaseCurrencyHud_SetVisible
     ldr r0, L_021fe840
     ldr r0, [r0, #0x0]
-    bl func_020755bc
+    bl GraphicsSpriteRenderer_ClearTextBuffer
     ldr r0, L_021fe844
     ldr r0, [r0, #0x0]
-    bl func_020755bc
+    bl GraphicsSpriteRenderer_ClearTextBuffer
     ldr r0, L_021fe848
     mov r1, #0x1
     ldr r0, [r0, #0x0]

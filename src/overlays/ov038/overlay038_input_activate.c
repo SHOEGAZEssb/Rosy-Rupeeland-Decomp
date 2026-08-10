@@ -16,7 +16,7 @@ extern void *gDebugFont;
 extern const u32 data_ov038_021fdce0[];
 extern const u32 data_ov038_021fdcc8[];
 extern s32 func_020befec(s32 numerator, s32 denominator);
-extern void func_020755bc(void *renderer);
+extern void GraphicsSpriteRenderer_ClearTextBuffer(void *renderer);
 extern void func_ov038_021fd40c(void *presentation);
 extern s32 func_ov038_021fd508(void *presentation);
 extern u32 func_ov038_021fd540(void *presentation);
@@ -71,8 +71,8 @@ extern "C" s32 func_ov038_021fd6e0(void *presentation)
         return 0;
     }
     if (FIELD(s32, presentation, 0x110) != 0) {
-        func_020755bc(data_020f4e14);
-        func_020755bc(gDebugFont);
+        GraphicsSpriteRenderer_ClearTextBuffer(data_020f4e14);
+        GraphicsSpriteRenderer_ClearTextBuffer(gDebugFont);
         func_ov038_021fd40c(presentation);
         s32 primary = func_ov038_021fd508(presentation);
         func_02028100(FIELD(void *, presentation, 0x344), primary);

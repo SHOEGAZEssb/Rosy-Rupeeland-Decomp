@@ -27,7 +27,7 @@ extern void func_02091e28(void *member);
 extern void func_02071ea4(void *member);
 extern void func_02092364(void *member);
 extern void func_020923a4(void *member);
-extern void func_020755bc(void *manager);
+extern void GraphicsSpriteRenderer_ClearTextBuffer(void *manager);
 extern void *func_020742cc(void *manager);
 extern void *func_02002700(s32 size, const char *tag, s32 alignment,
                           void *heapContext);
@@ -95,7 +95,7 @@ void *func_ov009_021fce9c(void *state)
     func_020923a4((u8 *)state + 0x13c);
     FIELD(s32, state, 0x74) = 0;
     manager = data_020f4e14;
-    func_020755bc(manager);
+    GraphicsSpriteRenderer_ClearTextBuffer(manager);
 
     for (index = 0; index < 6; index++) {
         s32 length;

@@ -24,7 +24,7 @@ extern void func_02073e48(void *, s32, s32, s32, ...);
 extern void func_02074110(void *);
 extern void func_0207419c(void *);
 extern void *func_020742cc(void *);
-extern void func_02075598(void *, void *);
+extern void GraphicsSpriteRenderer_SetFontResource(void *, void *);
 extern void func_02076148(void *, const void *, s32, s32, ...);
 extern void GraphicsSpriteCanvas_FillRect(void *, s32, s32, s32, ...);
 extern const void *func_0207b44c(void *);
@@ -171,7 +171,7 @@ extern "C" void func_ov023_021fd7a8(void *collection)
         if (index >= FIELD(s32, collection, 0x44)) break;
         void *record = ((void **)FIELD(void *, collection, 0x3c))[index];
         if (!drew_header) {
-            func_02075598(FIELD(void *, collection, 0),
+            GraphicsSpriteRenderer_SetFontResource(FIELD(void *, collection, 0),
                           FIELD(void *, collection, 0x20));
             u32 bank_index = FIELD(u32, FIELD(void *, record, 4), 0xc) & 0xff;
             const void *label = func_0207b44c(
@@ -180,7 +180,7 @@ extern "C" void func_ov023_021fd7a8(void *collection)
                           gSystemState[0x5f] ? 0x1e : 0x20, 14, 8, 0);
             drew_header = 1;
         }
-        func_02075598(FIELD(void *, collection, 0),
+        GraphicsSpriteRenderer_SetFontResource(FIELD(void *, collection, 0),
                       FIELD(void *, collection, 0x18));
         func_02076148(FIELD(void *, collection, 0),
                       (u8 *)FIELD(void *, record, 4) + 0x2c,

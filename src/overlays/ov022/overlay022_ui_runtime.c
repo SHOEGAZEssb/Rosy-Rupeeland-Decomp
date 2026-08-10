@@ -19,7 +19,7 @@ extern "C" {
 extern void *func_02073ffc(void *, void *, s32);
 extern void func_02073e48(void *, s32, s32, s32, ...);
 extern void func_020740a4(void *);
-extern void func_02075598(void *, void *);
+extern void GraphicsSpriteRenderer_SetFontResource(void *, void *);
 extern void func_02076004(void *, s32, u32, s32);
 extern const void *func_020791e0(const void *, u16);
 extern const void *func_02079f3c(const void *, u16);
@@ -218,7 +218,7 @@ extern "C" void func_ov022_021ff220(void *scene, s32 key)
                             FIELD(void *, dialog, 0xe8));
     else
         func_ov022_021fd4d4(FIELD(void *, scene, 0x350));
-    func_02075598(gDebugFont, FIELD(void *, scene, 0x54));
+    GraphicsSpriteRenderer_SetFontResource(gDebugFont, FIELD(void *, scene, 0x54));
     func_ov022_021fd2f4();
 }
 
@@ -241,6 +241,6 @@ extern "C" void func_ov022_021ff2c4(void *scene, s32 message_id)
                             FIELD(void *, dialog, 0xe8));
     else
         func_ov022_021fd4d4(FIELD(void *, scene, 0x350));
-    func_02075598(gDebugFont, FIELD(void *, scene, 0x54));
+    GraphicsSpriteRenderer_SetFontResource(gDebugFont, FIELD(void *, scene, 0x54));
     func_ov022_021fd2f4();
 }

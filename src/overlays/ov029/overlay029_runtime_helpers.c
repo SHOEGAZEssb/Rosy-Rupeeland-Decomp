@@ -29,7 +29,7 @@ extern void func_02092b70(void *, void *, s32);
 extern void func_02092e9c(void *, void *, s32);
 extern s32 func_02093360(void *, const void *);
 extern void func_020939d8(void *);
-extern void func_02075598(void *, void *);
+extern void GraphicsSpriteRenderer_SetFontResource(void *, void *);
 extern void func_020b1ff0(void *, s32, s32);
 extern void func_020b2058(void *, s32, s32);
 extern void func_020b44e8(void);
@@ -125,6 +125,6 @@ extern "C" void func_ov029_021fd7a8(void *state, s32 index)
                             FIELD(s32, FIELD(void *, state, 0x9c), 0xe8));
     else
         func_ov045_0220c028(FIELD(void *, state, 0xa4));
-    func_02075598(gDebugFont, FIELD(void *, state, 0x78));
+    GraphicsSpriteRenderer_SetFontResource(gDebugFont, FIELD(void *, state, 0x78));
     func_ov045_0220d2f8(FIELD(s32, state, 0x54), FIELD(s32, state, 0x58));
 }

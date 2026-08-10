@@ -26,8 +26,8 @@ extern void GameWork_ClearFlag(void *, u32);
 extern s32 GameWork_TestFlag(void *, u32);
 extern s32 DisplayBrightness_IsMainTransitionComplete(void);
 extern void GamePhaseCurrencyHud_SetVisible(void *, s32);
-extern void func_02075598(void *, void *);
-extern void func_020755bc(void *);
+extern void GraphicsSpriteRenderer_SetFontResource(void *, void *);
+extern void GraphicsSpriteRenderer_ClearTextBuffer(void *);
 extern const void *func_0207c4cc(const void *, s32);
 extern void func_0207ab48(void *, u16);
 extern void func_02092260(void *, s32);
@@ -80,8 +80,8 @@ extern "C" s32 func_ov021_021ff6b8(void *state)
             FIELD(s32, state, 0x2d0) =
                 func_ov045_0220c9e8(FIELD(s32, state, 0x54), 0);
         }
-        func_020755bc(data_020f4e14);
-        func_020755bc(gDebugFont);
+        GraphicsSpriteRenderer_ClearTextBuffer(data_020f4e14);
+        GraphicsSpriteRenderer_ClearTextBuffer(gDebugFont);
         func_02095940((u8 *)state + 0xa0);
         GamePhaseCurrencyHud_SetVisible(gLupyContext, 1);
 
@@ -101,7 +101,7 @@ extern "C" s32 func_ov021_021ff6b8(void *state)
         } else {
             if (GameWork_TestFlag(gGameWork, 0x3b2) != 0) {
                 GameWork_ClearFlag(gGameWork, 0x3b2);
-                func_02075598(gDebugFont, (u8 *)state + 0x58);
+                GraphicsSpriteRenderer_SetFontResource(gDebugFont, (u8 *)state + 0x58);
                 func_ov045_0220d2f8(FIELD(s32, state, 0x54), 0);
             } else {
                 func_ov021_021ff0e0(state, 0);
@@ -164,7 +164,7 @@ extern "C" s32 func_ov021_021ff834(void *state)
     case 3:
         if (DisplayBrightness_IsMainTransitionComplete() != 0) {
             func_020939d8(FIELD(void *, state, 0x388));
-            func_020755bc(data_020f4e14);
+            GraphicsSpriteRenderer_ClearTextBuffer(data_020f4e14);
             func_ov021_021fe63c(state);
             FIELD(s32, state, 4)++;
             FIELD(s32, state, 8) = 0;

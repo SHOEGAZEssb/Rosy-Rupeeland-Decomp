@@ -21,7 +21,7 @@ extern "C" {
 extern void func_02058ce0(void *);
 extern void func_02074330(...);
 extern void func_020b44e8(void);
-extern void func_020755bc(void *);
+extern void GraphicsSpriteRenderer_ClearTextBuffer(void *);
 extern void GraphicsResourceSet_Load(...);
 extern void func_02070638(...);
 extern s32 func_0207042c(void *);
@@ -65,8 +65,8 @@ extern "C" s32 func_ov032_02200da4(void *scene)
         REG32(0x04000000) = (REG32(0x04000000) & ~0x1f00) | 0x1400;
         REG32(0x04001000) &= ~0x1f00;
         func_020b44e8();
-        func_020755bc(data_020f4e14[0]);
-        func_020755bc(gDebugFont);
+        GraphicsSpriteRenderer_ClearTextBuffer(data_020f4e14[0]);
+        GraphicsSpriteRenderer_ClearTextBuffer(gDebugFont);
         ++FIELD(s32, scene, 0xb64);
         break;
     }

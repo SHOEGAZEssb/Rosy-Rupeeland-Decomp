@@ -13,7 +13,7 @@
     .extern GraphicsSpriteState_SetAnimationIndex
     .extern func_02073e48
     .extern func_02073ffc
-    .extern func_02075598
+    .extern GraphicsSpriteRenderer_SetFontResource
     .extern func_02076148
     .extern GraphicsSpriteCanvas_FillRect
     .extern func_02091b98
@@ -216,7 +216,7 @@ L_021fdd5c:
     bl GraphicsSpriteCanvas_FillRect
     ldr r0, [r10, #0x0]
     ldr r1, [r10, #0xdc]
-    bl func_02075598
+    bl GraphicsSpriteRenderer_SetFontResource
     add r0, r4, #0x4
     bl func_020628c8
     mov r1, r0
@@ -237,7 +237,7 @@ L_021fdd5c:
     cmp r0, #0x0
     ldr r0, [r10, #0x0]
     subne r5, r5, #0x2
-    bl func_02075598
+    bl GraphicsSpriteRenderer_SetFontResource
     add r0, r4, #0x4
     bl func_02062a60
     mov r1, #0xe
@@ -287,7 +287,7 @@ L_021fde44:
     moveq r0, #0x5
     streq r0, [sp, #0x10]
     ldr r0, [r10, #0x0]
-    bl func_02075598
+    bl GraphicsSpriteRenderer_SetFontResource
     ldr r0, [sp, #0x28]
     add r0, r9, r0
     bl func_020628c8

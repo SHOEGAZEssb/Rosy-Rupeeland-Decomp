@@ -15,9 +15,9 @@ extern const s32 data_ov030_021ff7b8[];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_020755bc(void *);
+extern void GraphicsSpriteRenderer_ClearTextBuffer(void *);
 extern void GamePhaseCurrencyHud_SetVisible(void *, s32);
-extern void func_02075598(void *, void *);
+extern void GraphicsSpriteRenderer_SetFontResource(void *, void *);
 extern void func_ov045_0220d2f8(s32, s32);
 extern s32 DisplayBrightness_IsMainTransitionComplete(void);
 extern s32 func_ov045_0220c9e8(s32, s32);
@@ -47,10 +47,10 @@ extern "C" s32 func_ov030_021feb64(void *scene)
 {
     switch (FIELD(s32, scene, 4)) {
     case 0:
-        func_020755bc(data_020f4e14[0]);
-        func_020755bc(gDebugFont);
+        GraphicsSpriteRenderer_ClearTextBuffer(data_020f4e14[0]);
+        GraphicsSpriteRenderer_ClearTextBuffer(gDebugFont);
         GamePhaseCurrencyHud_SetVisible(gLupyContext, 1);
-        func_02075598(gDebugFont, FIELD(void *, scene, 0x54));
+        GraphicsSpriteRenderer_SetFontResource(gDebugFont, FIELD(void *, scene, 0x54));
         func_ov045_0220d2f8(8, 0x21);
         FIELD(u32, scene, 0x20) |= 1;
         ++FIELD(s32, scene, 4);

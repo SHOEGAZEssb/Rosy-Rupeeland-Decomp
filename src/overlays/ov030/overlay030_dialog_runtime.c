@@ -18,7 +18,7 @@ extern void func_ov045_0220c128(void *, void *);
 extern void func_ov045_0220c028(void *);
 extern s32 func_ov045_0220c280(void *);
 extern void func_ov045_0220c174(void *);
-extern void func_02075598(void *, void *);
+extern void GraphicsSpriteRenderer_SetFontResource(void *, void *);
 extern void func_ov045_0220d2f8(s32, s32);
 extern void func_ov030_021fe954(void *, u16);
 #ifdef __cplusplus
@@ -47,7 +47,7 @@ extern "C" void func_ov030_021fe954(void *scene, u16 messageId)
                             FIELD(void *, dialog, 0xe8));
     else
         func_ov045_0220c028(FIELD(void *, scene, 0x2c0));
-    func_02075598(gDebugFont, FIELD(void *, scene, 0x54));
+    GraphicsSpriteRenderer_SetFontResource(gDebugFont, FIELD(void *, scene, 0x54));
     func_ov045_0220d2f8(8, 0x21);
 }
 

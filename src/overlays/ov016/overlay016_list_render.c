@@ -13,7 +13,7 @@ extern "C" {
 #endif
 extern s32 func_020628c8(void *);
 extern s32 func_020651a4(void *, u16);
-extern void func_02075598(void *, void *);
+extern void GraphicsSpriteRenderer_SetFontResource(void *, void *);
 extern void func_02076148(void *, s32, s32, s32, s32, s32, s32);
 extern void GraphicsSpriteCanvas_FillRect(void *, s32, s32, s32, s32, s32);
 extern void *func_02079f3c(void *, s32);
@@ -50,7 +50,7 @@ extern "C" void func_ov016_021fd3f8(void *state)
         }
         descriptor = (u8 *)FIELD(void *, state, 0x4c) + index * 0x14;
         item = FIELD(void *, descriptor, 0);
-        func_02075598(font, (u8 *)state + 0x28);
+        GraphicsSpriteRenderer_SetFontResource(font, (u8 *)state + 0x28);
         if (item != 0) {
             void *metadata = FIELD(void *, item, 0);
             s32 textColor = (FIELD(u16, descriptor, 0xc) & 7) != 0 ? 5 : 0xe;
@@ -65,7 +65,7 @@ extern "C" void func_ov016_021fd3f8(void *state)
             if (gSystemState[0x5f] != 0) {
                 baseline -= 2;
             }
-            func_02075598(font, (u8 *)state + 0x2c);
+            GraphicsSpriteRenderer_SetFontResource(font, (u8 *)state + 0x2c);
             func_02092960(font, value, 10, 0xb0, baseline, numberColor, 8, 1);
         } else {
             void *message = func_02079f3c(data_021f3ecc, 0x188);

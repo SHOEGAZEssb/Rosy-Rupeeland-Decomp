@@ -41,7 +41,7 @@ extern void func_02073e48(void *, s32, s32, s32, s32, s32, s32);
 extern void *func_02073ffc(void *, void *, s32);
 extern void func_0207419c(void *);
 extern void *func_020742cc(void *);
-extern void func_020755bc(void *);
+extern void GraphicsSpriteRenderer_ClearTextBuffer(void *);
 extern void func_02075630(void *);
 extern void func_02091b6c(void *);
 extern void func_02091e28(void *);
@@ -132,8 +132,8 @@ extern "C" void *func_ov025_021ff27c(void *scene)
     FIELD(void *, scene, 0x5b8) = 0;
     FIELD(void *, scene, 0x5bc) = 0;
     FIELD(void *, scene, 0x638) = 0;
-    func_020755bc(data_020f4e14);
-    func_020755bc(gDebugFont);
+    GraphicsSpriteRenderer_ClearTextBuffer(data_020f4e14);
+    GraphicsSpriteRenderer_ClearTextBuffer(gDebugFont);
     for (s32 id = 0x8032; id <= 0x8037; ++id)
         func_02092754((u8 *)scene + 0x530, id);
     func_ov025_021ffdfc(scene);

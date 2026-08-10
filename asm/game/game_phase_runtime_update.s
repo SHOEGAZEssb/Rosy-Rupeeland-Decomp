@@ -29,7 +29,7 @@
 .extern Actor_TrySpawnTerrainGateObject
 .extern Type7Actor_ClearTarget
 .extern func_0206ec68
-.extern func_020755bc
+.extern GraphicsSpriteRenderer_ClearTextBuffer
 .extern func_02078384
 .extern func_020783cc
 .extern func_ov059_0220fd20
@@ -192,7 +192,7 @@ L_02007628:
     ldr r1, L_02007854
     str r2, [r0, #0xb8]
     ldr r0, [r1, #0x0]
-    bl func_020755bc
+    bl GraphicsSpriteRenderer_ClearTextBuffer
 L_02007648:
     add r0, r4, #0x3000
     ldr r1, [r0, #0xb8]
@@ -202,7 +202,7 @@ L_02007648:
     ldr r1, L_02007858
     str r2, [r0, #0xb8]
     ldr r0, [r1, #0x0]
-    bl func_020755bc
+    bl GraphicsSpriteRenderer_ClearTextBuffer
 L_0200766c:
     ldr r0, L_02007844
     ldr r1, L_0200785c

@@ -2,7 +2,7 @@
 /* Exact fallback; see src/overlays/ov021/overlay021_dialog_runtime.c. */
     .extern data_021f5128
     .extern data_021f5ed0
-    .extern func_02075598
+    .extern GraphicsSpriteRenderer_SetFontResource
     .extern func_0207b388
     .extern func_02092e9c
     .extern func_02093360
@@ -69,7 +69,7 @@ L_021ff1a0:
     ldr r0, L_021ff1cc
     ldr r1, [r5, #0x58]
     ldr r0, [r0, #0x0]
-    bl func_02075598
+    bl GraphicsSpriteRenderer_SetFontResource
     ldr r0, [r5, #0x54]
     mov r1, #0x0
     bl func_ov045_0220d2f8

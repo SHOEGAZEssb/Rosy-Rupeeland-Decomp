@@ -6,7 +6,7 @@
     .extern data_ov019_021fd5f8
     .extern data_ov019_021fd638
     .extern data_ov019_021fd64c
-    .extern func_020755bc
+    .extern GraphicsSpriteRenderer_ClearTextBuffer
     .extern func_02091e28
     .extern func_ov000_021fb6e0
     .extern func_ov019_021fce00
@@ -28,10 +28,10 @@ func_ov019_021fce28:
     str r6, [r4, #0x54]
     str r5, [r4, #0x58]
     ldr r0, [r0, #0x0]
-    bl func_020755bc
+    bl GraphicsSpriteRenderer_ClearTextBuffer
     ldr r0, L_021fcf18
     ldr r0, [r0, #0x0]
-    bl func_020755bc
+    bl GraphicsSpriteRenderer_ClearTextBuffer
     mov r0, r4
     bl func_ov019_021fcfbc
     mov r0, #0x0

@@ -50,7 +50,7 @@ extern void *func_02027300(void *object, s32 value);
 extern void *OverlayManager_GetGlobal(void);
 extern void OverlayManager_LoadOverlay(void *state, s32 enabled, s32 value);
 extern void func_ov058_0220f484(void);
-extern u16 *func_020755e0(void *font);
+extern u16 *GraphicsSpriteRenderer_GetObjectPaletteAddress(void *font);
 extern void func_02075630(void *font);
 #ifdef __cplusplus
 }
@@ -96,9 +96,9 @@ s32 GamePhaseActorScriptVm_DispatchObjectFactory(GamePhaseActorScriptVm *self)
         func_02075630(gDebugFont);
         break;
     case 18: {
-        u16 *first = func_020755e0(gDebugFont);
+        u16 *first = GraphicsSpriteRenderer_GetObjectPaletteAddress(gDebugFont);
         first[value] = (u16)parameter;
-        func_020755e0(data_020f4e14)[value] = first[value];
+        GraphicsSpriteRenderer_GetObjectPaletteAddress(data_020f4e14)[value] = first[value];
         break;
     }
     case 17:

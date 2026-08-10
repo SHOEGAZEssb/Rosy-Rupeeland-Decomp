@@ -19,7 +19,7 @@ extern void GraphicsResourceSet_Init(Overlay016ResourceSet *);
 extern void GraphicsResourceSet_Load(Overlay016ResourceSet *, void *, s32, s32, s32);
 extern void func_02070eac(void *, s32, s32);
 extern void func_02070f80(void *, s32);
-extern void *func_020755e0(void *);
+extern void *GraphicsSpriteRenderer_GetObjectPaletteAddress(void *);
 extern void func_020925a4(s32);
 extern void func_020925dc(s32);
 extern void func_020925f8(void);
@@ -94,8 +94,8 @@ extern "C" void func_ov016_021fedc4(void *state)
     handle = func_02092790(&manager, 1);
     func_02070eac(handle, 1, 0);
 
-    mainFont = func_020755e0(FIELD(void *, data_020f4e14, 0));
-    debugFont = func_020755e0(FIELD(void *, gDebugFont, 0));
+    mainFont = GraphicsSpriteRenderer_GetObjectPaletteAddress(FIELD(void *, data_020f4e14, 0));
+    debugFont = GraphicsSpriteRenderer_GetObjectPaletteAddress(FIELD(void *, gDebugFont, 0));
     FIELD(u16, debugFont, 6) = FIELD(u16, mainFont, 0xe);
     FIELD(u16, mainFont, 6) = FIELD(u16, mainFont, 0xe);
     FIELD(u16, debugFont, 8) = FIELD(u16, mainFont, 0x1e);

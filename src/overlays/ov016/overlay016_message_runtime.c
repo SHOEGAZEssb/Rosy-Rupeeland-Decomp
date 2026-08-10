@@ -16,7 +16,7 @@ extern "C" {
 #endif
 extern void *Heap_Alloc(u32, const void *, s32, void *);
 extern void func_02070e0c(void *, s32, s32);
-extern void func_02075598(void *, void *);
+extern void GraphicsSpriteRenderer_SetFontResource(void *, void *);
 extern s32 func_02076148(void *, const u16 *, s32, s32, s32, s32, s32);
 extern s32 func_020761f8(void *, const u16 *, s32, s32);
 extern void GraphicsSpriteCanvas_FillRect(void *, s32, s32, s32, s32, s32);
@@ -43,7 +43,7 @@ extern "C" void func_ov016_021ff848(void *state, u16 messageId)
     s32 width;
 
     GraphicsSpriteCanvas_FillRect(gDebugFont, 0, 6, 0xff, 0x16, 0);
-    func_02075598(gDebugFont, FIELD(void *, state, 0x64));
+    GraphicsSpriteRenderer_SetFontResource(gDebugFont, FIELD(void *, state, 0x64));
     text = func_020791e0(data_021f3ecc, messageId);
     width = func_020761f8(gDebugFont, text, 8, 0);
     text = func_020791e0(data_021f3ecc, messageId);
@@ -121,7 +121,7 @@ extern "C" void func_ov016_021ff9f8(void *state, u16 messageId, s32 parameter)
     }
     FIELD(void *, state, 0x464) = object;
     GraphicsSpriteCanvas_FillRect(data_020f4e14, 0x40, 0x14, 0xc0, 0x74, 0);
-    func_02075598(data_020f4e14, FIELD(void *, state, 0x64));
+    GraphicsSpriteRenderer_SetFontResource(data_020f4e14, FIELD(void *, state, 0x64));
     text = func_020791e0(data_021f3ecc, messageId);
     width = func_020761f8(data_020f4e14, text, 4, 0);
     text = func_020791e0(data_021f3ecc, messageId);

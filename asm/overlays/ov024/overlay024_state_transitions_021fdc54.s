@@ -3,7 +3,7 @@
 /* Exact fallback; see src/overlays/ov024/overlay024_state_transitions.c. */
 .extern data_020f4e14
 .extern data_ov024_021fe300
-.extern func_020755bc
+.extern GraphicsSpriteRenderer_ClearTextBuffer
 .extern func_ov024_021fce04
 .extern func_ov024_021fdab0
 
@@ -21,7 +21,7 @@ func_ov024_021fdc54:
 L_021fdc74:
     ldr r0, L_021fdcd4
     ldr r0, [r0, #0x0]
-    bl func_020755bc
+    bl GraphicsSpriteRenderer_ClearTextBuffer
     ldr r1, [r4, #0x4]
     mov r0, #0x0
     add r1, r1, #0x1

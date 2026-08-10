@@ -51,7 +51,7 @@ extern void *DisplayBrightnessPair_GetScreen(void *resource, s32 index);
 extern void DisplayBrightness_StartTransition(void *object, s32 x, s32 y, s32 value);
 extern void *func_0209a208(void *scene, s32 first, s32 second, s32 third,
                            void *argument, s32 value);
-extern void *func_020755e0(void *font);
+extern void *GraphicsSpriteRenderer_GetObjectPaletteAddress(void *font);
 extern void *func_ov040_02200108(void *destination, const void *source);
 extern void func_ov040_02202244(void *scene, s32 mode);
 extern u8 data_ov040_022038a0[];
@@ -376,7 +376,7 @@ extern "C" void func_ov040_02202640(void *scene, void *argument)
     FIELD(void *, scene, 0x6c) =
         create_sub_object(scene, 0x13c6, argument, 0x80000, 0x60000, 6);
 
-    FIELD(s16, func_020755e0(gDebugFont), 8) = 0x3ff;
+    FIELD(s16, GraphicsSpriteRenderer_GetObjectPaletteAddress(gDebugFont), 8) = 0x3ff;
     FIELD(s32, scene, 0x70) = -1;
     FIELD(s32, scene, 0x74) = -1;
     FIELD(s32, scene, 0x78) = -1;

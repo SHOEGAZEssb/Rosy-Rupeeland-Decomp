@@ -12,8 +12,8 @@ extern void *gDebugFont;
 extern "C" {
 #endif
 extern const char *func_020628c8(s32);
-extern void func_02075598(void *, void *);
-extern void func_020755bc(void *);
+extern void GraphicsSpriteRenderer_SetFontResource(void *, void *);
+extern void GraphicsSpriteRenderer_ClearTextBuffer(void *);
 extern void func_02076004(char *, s32, s32, s32);
 extern s32 func_02076148(void *, const char *, s32, s32, s32, s32, s32);
 extern s32 func_020761f8(void *, const char *, s32, s32);
@@ -41,8 +41,8 @@ extern "C" void func_ov017_021ffdb4(void *state, s32 textValue,
     s32 width;
     s32 x = 0x48;
 
-    func_020755bc(gDebugFont);
-    func_02075598(gDebugFont, FIELD(void *, state, 0x1d8));
+    GraphicsSpriteRenderer_ClearTextBuffer(gDebugFont);
+    GraphicsSpriteRenderer_SetFontResource(gDebugFont, FIELD(void *, state, 0x1d8));
     label = func_020791e0(data_021f3ecc,
                           FIELD(s32, state, 0x3bc) ? 0x2d4 : 0x2d5);
     func_02076148(gDebugFont, label, 0x90, 0x41, 0xe, 4, 0);

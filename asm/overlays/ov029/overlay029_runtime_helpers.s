@@ -7,7 +7,7 @@
 .extern GamePhaseCurrencyHud_Update
 .extern func_02070e0c
 .extern func_02072048
-.extern func_02075598
+.extern GraphicsSpriteRenderer_SetFontResource
 .extern func_0207c4cc
 .extern func_020926d8
 .extern func_020926f8
@@ -171,7 +171,7 @@ L_021fd824:
     ldr r0, L_021fd84c
     ldr r1, [r5, #0x78]
     ldr r0, [r0, #0x0]
-    bl func_02075598
+    bl GraphicsSpriteRenderer_SetFontResource
     ldr r0, [r5, #0x54]
     ldr r1, [r5, #0x58]
     bl func_ov045_0220d2f8

@@ -11,7 +11,7 @@
 .extern OverlayManager_GetGlobal
 .extern OverlayManager_LoadOverlay
 .extern OverlayManager_UnloadOverlay
-.extern func_020755bc
+.extern GraphicsSpriteRenderer_ClearTextBuffer
 .extern Heap_Alloc
 .extern func_ov052_0220d618
 .extern func_ov052_0220e14c

@@ -28,7 +28,7 @@ extern const char data_ov011_021fe678[];
 extern const char data_ov011_021fe690[];
 extern const char data_ov011_021fe6a0[];
 extern const char data_ov011_021fe6b0[];
-extern void func_020755bc(void *font);
+extern void GraphicsSpriteRenderer_ClearTextBuffer(void *font);
 extern void func_02072000(GraphicsResourceSet *set);
 extern void func_ov011_021fd188(void *state);
 extern void DebugText_Printf(void *debug, s32 x, s32 y, s32 style, ...);
@@ -57,7 +57,7 @@ static void overlay011_toggle_sub_mode(void *state)
 /* Invalidate graphics/debug owners and reload the currently selected record. */
 static void overlay011_reload_resources(void *state)
 {
-    func_020755bc(gDebugFont);
+    GraphicsSpriteRenderer_ClearTextBuffer(gDebugFont);
     func_02072000((GraphicsResourceSet *)((u8 *)state + 0x78));
     func_ov011_021fd188(state);
 }
@@ -143,7 +143,7 @@ s32 func_ov011_021fd450(void *state)
         }
     }
 
-    func_020755bc(data_020f4e14);
+    GraphicsSpriteRenderer_ClearTextBuffer(data_020f4e14);
     DebugText_Printf(data_020f4e14, 1, 2, 6,
                      data_ov011_021fe404[FIELD(s32, state, 0xd0)]);
     i = FIELD(s32, state, 0xd0);
@@ -197,7 +197,7 @@ s32 func_ov011_021fd450(void *state)
     func_02075858(data_020f4e14, 1, 0x15, data_ov011_021fe6b0);
 
     if ((FIELD(s32, state, 0x44) << 27) < 0) {
-        func_020755bc(gDebugFont);
+        GraphicsSpriteRenderer_ClearTextBuffer(gDebugFont);
         GraphicsSpriteCanvas_DrawLine(gDebugFont, 0, 0, 0xff,
                                       FIELD(s32, state, 0x5c), 2);
         GraphicsSpriteCanvas_DrawLine(gDebugFont, 0, 0,

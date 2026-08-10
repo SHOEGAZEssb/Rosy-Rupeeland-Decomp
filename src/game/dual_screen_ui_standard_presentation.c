@@ -39,7 +39,7 @@ extern void DebugSpriteText_SetTextResource(void *helper, u16 value);
 extern void DebugSpriteText_DrawCentered(void *helper, s32 x, s32 y);
 extern s32 func_0202844c(void *source);
 extern u16 func_02028404(void *source);
-extern void func_020755bc(void *font);
+extern void GraphicsSpriteRenderer_ClearTextBuffer(void *font);
 extern void func_020740a4(void *spriteOwner);
 #ifdef __cplusplus
 }
@@ -97,7 +97,7 @@ DualScreenUiStandardPresentation *func_02025fe4(
  */
 void func_0202600c(DualScreenUiStandardPresentation *self)
 {
-    func_020755bc(gDebugFont);
+    GraphicsSpriteRenderer_ClearTextBuffer(gDebugFont);
     func_02025d1c(self);
     func_02025dd8(self);
     func_02026174(self, self->sourceac);
@@ -123,7 +123,7 @@ void func_02026044(DualScreenUiStandardPresentation *self,
         if (enabled) *displayControl |= 0x400;
         else *displayControl &= ~0x400u;
     }
-    if (!enabled) func_020755bc(gDebugFont);
+    if (!enabled) GraphicsSpriteRenderer_ClearTextBuffer(gDebugFont);
 }
 
 /*

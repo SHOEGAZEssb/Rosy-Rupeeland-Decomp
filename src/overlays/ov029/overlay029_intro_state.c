@@ -19,8 +19,8 @@ extern void *Heap_Alloc(u32, const void *, s32, void *);
 extern s32 DisplayBrightness_IsMainTransitionComplete(void);
 extern s32 GamePhaseCurrencyHud_GetCurrency(void *);
 extern void GamePhaseCurrencyHud_SetVisible(void *, s32);
-extern void func_02075598(void *, void *);
-extern void func_020755bc(void *);
+extern void GraphicsSpriteRenderer_SetFontResource(void *, void *);
+extern void GraphicsSpriteRenderer_ClearTextBuffer(void *);
 extern void func_02092260(void *, s32);
 extern void func_02092c8c(s32, s32);
 extern void *func_ov000_021fb6e0(void *, void *, s32);
@@ -63,12 +63,12 @@ extern "C" s32 func_ov029_021fd9e0(void *state)
 {
     switch (FIELD(s32, state, 4)) {
     case 0:
-        func_020755bc(data_020f4e14[0]);
-        func_020755bc(gDebugFont);
+        GraphicsSpriteRenderer_ClearTextBuffer(data_020f4e14[0]);
+        GraphicsSpriteRenderer_ClearTextBuffer(gDebugFont);
         FIELD(u16, gLupyContext, 0xbc) = 0xfa;
         FIELD(u16, gLupyContext, 0xbe) = 0x1e;
         GamePhaseCurrencyHud_SetVisible(gLupyContext, 1);
-        func_02075598(gDebugFont, FIELD(void *, state, 0x78));
+        GraphicsSpriteRenderer_SetFontResource(gDebugFont, FIELD(void *, state, 0x78));
         func_ov045_0220d2f8(FIELD(s32, state, 0x54), FIELD(s32, state, 0x58));
         FIELD(u32, state, 0x20) = (FIELD(u32, state, 0x20) & ~1u) | 1;
         Overlay029_NextPhase(state);

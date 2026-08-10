@@ -37,7 +37,7 @@
 .extern FourSlot3DPresentation_Init
 .extern func_02027150
 .extern func_02027300
-.extern func_020755e0
+.extern GraphicsSpriteRenderer_GetObjectPaletteAddress
 .extern func_02075630
 .extern func_ov058_0220f484
 .extern gDebugFont
@@ -108,13 +108,13 @@ L_02017de4:
 L_02017e00:
     ldr r0, L_020181cc
     ldr r0, [r0, #0x0]
-    bl func_020755e0
+    bl GraphicsSpriteRenderer_GetObjectPaletteAddress
     mov r4, r0
     mov r1, r6, lsl #0x1
     ldr r0, L_020181c8
     strh r5, [r4, r1]
     ldr r0, [r0, #0x0]
-    bl func_020755e0
+    bl GraphicsSpriteRenderer_GetObjectPaletteAddress
     mov r2, r6, lsl #0x1
     ldrh r1, [r4, r2]
     strh r1, [r0, r2]

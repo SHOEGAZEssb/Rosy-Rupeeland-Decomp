@@ -26,7 +26,7 @@ extern "C" {
 #endif
 extern void GraphicsSpriteCanvas_FillRect(void *surface, s32 left, s32 top, s32 right,
                           s32 bottom, s32 value);
-extern void func_02075598(void *surface, void *resource);
+extern void GraphicsSpriteRenderer_SetFontResource(void *surface, void *resource);
 extern s32 func_ov000_021fc834(void *metadata, s32 mode);
 extern s32 func_02062ba4(void *cell);
 extern void func_ov000_021fb6e0(void *surface, s32 value, s32 x, s32 y,
@@ -53,7 +53,7 @@ void func_ov000_021fc714(Overlay000GridRenderState *state)
 
     GraphicsSpriteCanvas_FillRect(state->surface_004, 0x3b, 0x3d - state->scrollY_264,
                   0xef, 0xa9 - state->scrollY_264, 0);
-    func_02075598(state->surface_004, state->resource_228);
+    GraphicsSpriteRenderer_SetFontResource(state->surface_004, state->resource_228);
 
     for (row = 0; row < 3; row++) {
         s32 baseIndex =

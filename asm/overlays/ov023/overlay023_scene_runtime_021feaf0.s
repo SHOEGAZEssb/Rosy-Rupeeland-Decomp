@@ -3,7 +3,7 @@
 /* Exact fallback; see src/overlays/ov023/overlay023_scene_runtime.c. */
 .extern data_020f4e14
 .extern data_ov023_021ffb28
-.extern func_020755bc
+.extern GraphicsSpriteRenderer_ClearTextBuffer
 .extern func_02095928
 .extern func_ov023_021fd9d0
 .extern func_ov023_021fe77c
@@ -19,10 +19,10 @@ func_ov023_021feaf0:
     bne L_021feb44
     ldr r0, L_021feb54
     ldr r0, [r0, #0x0]
-    bl func_020755bc
+    bl GraphicsSpriteRenderer_ClearTextBuffer
     ldr r0, L_021feb58
     ldr r0, [r0, #0x0]
-    bl func_020755bc
+    bl GraphicsSpriteRenderer_ClearTextBuffer
     add r0, r4, #0x17c
     bl func_02095928
     ldr r0, [r4, #0x20]

@@ -23,7 +23,7 @@ extern void func_02073e48(void *, s32, s32, s32, s32, s32, s32);
 extern void *func_02073ffc(void *, void *, s32);
 extern void func_02074110(void *);
 extern void *func_020742cc(void *);
-extern void func_02075598(void *, void *);
+extern void GraphicsSpriteRenderer_SetFontResource(void *, void *);
 extern s32 func_02075e48(void *, u16, s32, s32, s32);
 extern s32 func_02075ecc(u16);
 extern void GraphicsSpriteCanvas_FillRect(void *, s32, s32, s32, s32, s32);
@@ -216,7 +216,7 @@ extern "C" void func_ov025_021fdc60(void *widget, s32 offset)
     if (!FIELD(s32, widget, 0x74)) return;
     s32 locale = FIELD(u8, gSystemState, 0x5f);
     if (locale >= 6) locale = 5;
-    func_02075598(data_020f4e14, (u8 *)widget + 0x30);
+    GraphicsSpriteRenderer_SetFontResource(data_020f4e14, (u8 *)widget + 0x30);
     s32 row_y = FIELD(s32, widget, 0x78) * 0x3c;
     s32 x = FIELD(s32, FIELD(void *, widget, 0xc), 0x18) - 0x18;
     for (s32 i = 0; i < 8; ++i) {
@@ -228,7 +228,7 @@ extern "C" void func_ov025_021fdc60(void *widget, s32 offset)
         x += advance ? advance + 1 : 5;
     }
 
-    func_02075598(data_020f4e14, (u8 *)widget + 0x34);
+    GraphicsSpriteRenderer_SetFontResource(data_020f4e14, (u8 *)widget + 0x34);
     s32 color = FIELD(s32, widget, 0x88) ? 3 : 5;
     s32 value = FIELD(s32, widget, 0x84);
     if (value < 0) value = 0;

@@ -23,7 +23,7 @@ extern void *gDebugFont;
 extern "C" {
 #endif
 extern s32 DisplayBrightness_IsMainTransitionComplete(void);
-extern void func_020755bc(void *);
+extern void GraphicsSpriteRenderer_ClearTextBuffer(void *);
 extern const void *func_0207c4cc(void *, s32);
 extern void func_02091bac(void *, s32, s32, s32, s32);
 extern s32 func_02091bd0(void *, s32, s32, s32);
@@ -265,7 +265,7 @@ static s32 detail_machine(void *scene, void *entry, void **next)
     }
     case 2:
         if (func_ov023_021fe88c(scene)) {
-            func_020755bc(gDebugFont);
+            GraphicsSpriteRenderer_ClearTextBuffer(gDebugFont);
             func_02092c8c(1, 0);
             func_02091bac(transition, 5, 0, -128, 8);
             ADVANCE(scene);

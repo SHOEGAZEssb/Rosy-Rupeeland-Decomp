@@ -21,7 +21,7 @@ extern "C" void *func_ov044_0220bd98(void *panel);
 extern "C" void func_02095940(void *presentation);
 extern "C" void func_ov044_0220c5c0(void *object);
 extern "C" void func_ov044_0220c6dc(void *object);
-extern "C" void func_020755bc(void *font);
+extern "C" void GraphicsSpriteRenderer_ClearTextBuffer(void *font);
 extern "C" void *Heap_Alloc(u32 size, const void *tag, s32 alignment,
                               void *heap);
 extern "C" void *func_ov015_021fce58(void *storage, s32 mode, void *item);
@@ -73,7 +73,7 @@ extern "C" s32 func_ov044_0220cf60(void *object)
             func_02095940((u8 *)object + 0x17c);
             func_ov044_0220c5c0(object);
             func_ov044_0220c6dc(object);
-            func_020755bc(data_020f4e14);
+            GraphicsSpriteRenderer_ClearTextBuffer(data_020f4e14);
             void *scene = Heap_Alloc(0x304, data_ov044_0220d358, 4,
                                      gHeapContext);
             if (scene)
@@ -113,7 +113,7 @@ extern "C" s32 func_ov044_0220cf60(void *object)
     case 5: {
         s32 frame = ++FIELD(s32, object, 8);
         if (frame == 1) {
-            func_020755bc(data_020f4e14);
+            GraphicsSpriteRenderer_ClearTextBuffer(data_020f4e14);
             FIELD(s32, object, 0x48) = 0x1c;
             func_020925f8();
             func_ov044_0220c3e4(object);

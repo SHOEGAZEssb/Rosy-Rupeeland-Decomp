@@ -11,7 +11,7 @@ extern "C" {
 #endif
 extern const void *func_020628c8(void *);
 extern void *func_02070874(void *);
-extern void func_02075598(void *, void *);
+extern void GraphicsSpriteRenderer_SetFontResource(void *, void *);
 extern void func_02076148(void *, const void *, s32, s32, s32, s32, s32);
 extern void GraphicsSpriteCanvas_FillRect(void *, s32, s32, s32, s32, s32);
 extern s32 func_02092960(void *, s32, u32, s32, s32, s32, s32, s32);
@@ -70,7 +70,7 @@ extern "C" void func_ov021_021ff3d8(void *state)
 extern "C" void func_ov021_021ff404(void *state, const void *descriptor)
 {
     void *font = data_020f4e14;
-    func_02075598(font, (u8 *)state + 0x64);
+    GraphicsSpriteRenderer_SetFontResource(font, (u8 *)state + 0x64);
     if (descriptor != 0) {
         const u8 *record = FIELD(const u8 *, descriptor, 4);
         u32 category = (FIELD(u32, record, 0xc) >> 16) & 0xf;
@@ -113,7 +113,7 @@ extern "C" void func_ov021_021ff504(void *state, const void *item)
         return;
     }
     FIELD(u16, sprite, 0x24) &= (u16)~4;
-    func_02075598(font, (u8 *)state + 0x64);
+    GraphicsSpriteRenderer_SetFontResource(font, (u8 *)state + 0x64);
     func_02076148(font, func_020628c8((void *)item), 0x10, 6,
                   0xe, 4, 0);
 }

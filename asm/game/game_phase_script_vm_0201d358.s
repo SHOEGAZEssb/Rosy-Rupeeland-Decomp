@@ -14,7 +14,7 @@
 .extern GamePhaseCurrencyHud_SetVisible
 .extern GamePhaseRuntime_SetPlacementMode
 .extern func_02008570
-.extern func_020755bc
+.extern GraphicsSpriteRenderer_ClearTextBuffer
 .extern GamePhaseRuntime_UpdateActorPresentationState
 .extern func_02091fb0
 .extern Heap_Alloc
@@ -168,7 +168,7 @@ L_0201d534:
     bl OverlaySlot_UnloadOverlay
     ldr r0, L_0201d620
     ldr r0, [r0, #0x0]
-    bl func_020755bc
+    bl GraphicsSpriteRenderer_ClearTextBuffer
     ldr r0, L_0201d604
     ldr r0, [r0, #0x0]
     add r1, r0, #0x2000

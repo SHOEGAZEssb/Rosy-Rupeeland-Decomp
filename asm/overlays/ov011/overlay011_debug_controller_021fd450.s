@@ -19,7 +19,7 @@
     .extern func_0207043c
     .extern func_02070888
     .extern func_02072000
-    .extern func_020755bc
+    .extern GraphicsSpriteRenderer_ClearTextBuffer
     .extern func_02075858
     .extern GraphicsSpriteCanvas_DrawLine
     .extern func_ov011_021fce50
@@ -143,7 +143,7 @@ L_021fd5c4:
 L_021fd5e0:
     ldr r0, L_021fda9c
     ldr r0, [r0, #0x0]
-    bl func_020755bc
+    bl GraphicsSpriteRenderer_ClearTextBuffer
     add r0, r9, #0x78
     bl func_02072000
     mov r0, r9
@@ -187,7 +187,7 @@ L_021fd64c:
 L_021fd684:
     ldr r0, L_021fda9c
     ldr r0, [r0, #0x0]
-    bl func_020755bc
+    bl GraphicsSpriteRenderer_ClearTextBuffer
     add r0, r9, #0x78
     bl func_02072000
     mov r0, r9
@@ -227,7 +227,7 @@ L_021fd6fc:
     rsb r1, r1, #0x1
     str r1, [r9, #0xcc]
     ldr r0, [r0, #0x0]
-    bl func_020755bc
+    bl GraphicsSpriteRenderer_ClearTextBuffer
     add r0, r9, #0x78
     bl func_02072000
     mov r0, r9
@@ -235,7 +235,7 @@ L_021fd6fc:
 L_021fd734:
     ldr r0, L_021fdaa0
     ldr r0, [r0, #0x0]
-    bl func_020755bc
+    bl GraphicsSpriteRenderer_ClearTextBuffer
     ldr r2, [r9, #0xd0]
     ldr r1, L_021fdaa4
     ldr r0, L_021fdaa0
@@ -420,7 +420,7 @@ L_021fd888:
     beq L_021fda54
     ldr r0, L_021fda9c
     ldr r0, [r0, #0x0]
-    bl func_020755bc
+    bl GraphicsSpriteRenderer_ClearTextBuffer
     ldr r2, [r9, #0x5c]
     mov r1, #0x2
     str r2, [sp, #0x0]

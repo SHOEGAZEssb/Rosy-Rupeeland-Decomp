@@ -29,7 +29,7 @@ extern void GraphicsSpriteState_SetAnimationIndex(void *, s32);
 extern void func_02073e48(void *, s32, s32, s32, s32, s32, s32);
 extern void *func_02073ffc(void *, void *, s32);
 extern void *func_020742cc(void *);
-extern void func_02075598(void *, void *);
+extern void GraphicsSpriteRenderer_SetFontResource(void *, void *);
 extern void func_02076148(void *, const void *, s32, s32, s32, s32, s32);
 extern u32 func_02079160(const void *, s32);
 extern const void *func_020791e0(const void *, s32);
@@ -126,10 +126,10 @@ extern "C" void func_ov021_021fd39c(void *state)
         return;
     s32 finalColor;
     if (FIELD(s32, state, 0x60) == 0) {
-        func_02075598(font, (u8 *)state + 0x28);
+        GraphicsSpriteRenderer_SetFontResource(font, (u8 *)state + 0x28);
         finalColor = -2;
     } else {
-        func_02075598(font, (u8 *)state + 0x2c);
+        GraphicsSpriteRenderer_SetFontResource(font, (u8 *)state + 0x2c);
         finalColor = 0;
     }
     Overlay021Row *rows = FIELD(Overlay021Row *, state, 0x4c);
@@ -179,7 +179,7 @@ extern "C" void func_ov021_021fd490(void *state)
         s32 animation = value < 100 ? 0x1c : (value < 10000 ? 0x1d : 0x1e);
         GraphicsSpriteState_SetAnimationIndex(FIELD(void *, state, 0x24), animation);
         FIELD(u16, FIELD(void *, state, 0x24), 0x24) &= ~4;
-        func_02075598(font, (u8 *)state + 0x2c);
+        GraphicsSpriteRenderer_SetFontResource(font, (u8 *)state + 0x2c);
         s32 width = func_02092960(font, value, 0xff676980, 0x2a,
                                   0x7e, 0xe, 8, 0);
         func_02076148(font, (u8 *)state + 0x64, width + 0x2e, 0x7e,

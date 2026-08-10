@@ -15,7 +15,7 @@
 .extern func_02092754
 .extern func_02092790
 .extern func_02070eac
-.extern func_020755e0
+.extern GraphicsSpriteRenderer_GetObjectPaletteAddress
 .extern func_020926f8
 .extern GraphicsResourceSet_Destroy
 .extern data_020f4e18
@@ -119,11 +119,11 @@ func_ov043_0220ba28:
     bl func_02070eac
     ldr r0, .L_0220bc20
     ldr r0, [r0, #0x0]
-    bl func_020755e0
+    bl GraphicsSpriteRenderer_GetObjectPaletteAddress
     mov r4, r0
     ldr r0, .L_0220bc24
     ldr r0, [r0, #0x0]
-    bl func_020755e0
+    bl GraphicsSpriteRenderer_GetObjectPaletteAddress
     ldrh r2, [r4, #0xe]
     ldr r1, .L_0220bc28
     strh r2, [r0, #0x6]

@@ -25,7 +25,7 @@ extern s32 Type7Actor_GetStateCode(void *actor);
 extern s32 func_0204f478(void *actor);
 extern void func_0204f4d4(void *actor, void *target);
 extern u32 func_020628c8(void *subobject);
-extern void func_02075598(void *context, u32 resource);
+extern void GraphicsSpriteRenderer_SetFontResource(void *context, u32 resource);
 extern void func_02076148(void *context, u32 value, s32 x, s32 y,
                           s32 width, s32 height, s32 mode);
 extern s32 func_020761f8(void *context, u32 value, s32 width, s32 mode);
@@ -148,7 +148,7 @@ void func_0204ee24(void *actor)
         FIELD(u8, FIELD(void *, actor, 0x54), 0x3a) = 0;
         s8 mode = FIELD(s8, actor, 0x21a);
         void *grid_context = data_020f4e14;
-        func_02075598(grid_context, FIELD(u32, data_02105790, 8));
+        GraphicsSpriteRenderer_SetFontResource(grid_context, FIELD(u32, data_02105790, 8));
         u32 value = func_020628c8((u8 *)actor + 0x1f4);
         s32 grid_x = func_020761f8(grid_context, value, 8, 0);
         s32 target_x = mode < 6 ? 0x12000 : 0xe8000 - grid_x * 0x1000;
@@ -164,7 +164,7 @@ void func_0204ee24(void *actor)
             s32 pixel_x = FIELD(s32, actor, 0x1c) >> 12;
             s32 pixel_y = FIELD(s32, actor, 0x20) >> 12;
             if (pixel_x > 8 && pixel_x < 230 && pixel_y > 12 && pixel_y < 180) {
-                func_02075598(grid_context, FIELD(u32, data_02105790, 8));
+                GraphicsSpriteRenderer_SetFontResource(grid_context, FIELD(u32, data_02105790, 8));
                 value = func_020628c8((u8 *)actor + 0x1f4);
                 func_02076148(grid_context, value, pixel_x, pixel_y, 13, 8, 0);
             }

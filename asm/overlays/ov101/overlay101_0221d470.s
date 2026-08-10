@@ -6,7 +6,7 @@
 .extern data_ov101_0221d684
 .extern data_ov101_0221d6a0
 .extern data_ov101_0221d6a8
-.extern func_020755bc
+.extern GraphicsSpriteRenderer_ClearTextBuffer
 .extern func_02075858
 .extern gDebugFont
 .extern gSoundContext
@@ -19,7 +19,7 @@ func_ov101_0221d470:
     ldr r1, .L_0221d5c8
     mov r4, r0
     ldr r0, [r1, #0x0]
-    bl func_020755bc
+    bl GraphicsSpriteRenderer_ClearTextBuffer
     ldr r0, .L_0221d5cc
     ldrh r0, [r0, #0xa]
     tst r0, #0x2

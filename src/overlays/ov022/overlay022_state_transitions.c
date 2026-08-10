@@ -17,7 +17,7 @@ extern "C" {
 #endif
 extern void GamePhaseCurrencyHud_SetVisible(void *, s32);
 extern void func_0205974c(void *, s32);
-extern void func_020755bc(void *);
+extern void GraphicsSpriteRenderer_ClearTextBuffer(void *);
 extern s32 func_02093360(void *, const void *);
 extern void func_02095940(void *);
 extern void Sound_Play(void *, s32, s32);
@@ -88,8 +88,8 @@ extern "C" s32 func_ov022_021ff480(void *scene)
     if (FIELD(s32, scene, 4) == 0) {
         func_0205974c(gSoundContext, 0x122);
         Sound_Play(gSoundContext, 0x122, 0);
-        func_020755bc(data_020f4e14);
-        func_020755bc(gDebugFont);
+        GraphicsSpriteRenderer_ClearTextBuffer(data_020f4e14);
+        GraphicsSpriteRenderer_ClearTextBuffer(gDebugFont);
         func_02095940((u8 *)scene + 0xa8);
         GamePhaseCurrencyHud_SetVisible(gLupyContext, 1);
         func_ov022_021ff220(scene, 0);

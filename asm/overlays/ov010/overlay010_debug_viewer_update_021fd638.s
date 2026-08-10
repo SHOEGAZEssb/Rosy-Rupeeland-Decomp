@@ -25,7 +25,7 @@
     .extern func_0207043c
     .extern func_02070454
     .extern func_02070464
-    .extern func_020755bc
+    .extern GraphicsSpriteRenderer_ClearTextBuffer
     .extern func_02075858
     .extern GraphicsAnimationInstance_SetAnimation
     .extern GraphicsAnimationInstance_SetFrame
@@ -439,10 +439,10 @@ L_021fdba4:
 L_021fdbd0:
     ldr r0, L_021fe820
     ldr r0, [r0, #0x0]
-    bl func_020755bc
+    bl GraphicsSpriteRenderer_ClearTextBuffer
     ldr r0, L_021fe824
     ldr r0, [r0, #0x0]
-    bl func_020755bc
+    bl GraphicsSpriteRenderer_ClearTextBuffer
     ldr r0, [r9, #0x50]
     ldrh r0, [r0, #0x0]
     tst r0, #0x100

@@ -21,7 +21,7 @@ extern void func_02070e0c(void *, s32, s32);
 extern void func_02070eac(void *, s32, s32);
 extern void func_02070f34(void *, s32);
 extern void func_02072048(void *, s32, s32);
-extern void *func_020755e0(void *);
+extern void *GraphicsSpriteRenderer_GetObjectPaletteAddress(void *);
 extern void func_020925a4(s32, s32);
 extern void func_020925dc(s32, s32);
 extern void func_020925f8(void);
@@ -98,7 +98,7 @@ extern "C" void func_ov022_021fe3c0(void *scene)
     sub_bg[1] = (sub_bg[1] & 0x43) | 0x1e00;
     func_02092618();
     func_02092688(0, 1, 2, 3);
-    void *descriptor = func_020755e0(data_020f4e14);
+    void *descriptor = GraphicsSpriteRenderer_GetObjectPaletteAddress(data_020f4e14);
     FIELD(u16, descriptor, 6) = FIELD(u16, descriptor, 0x16);
     FIELD(u16, descriptor, 8) = FIELD(u16, descriptor, 0x1e);
     FIELD(u16, descriptor, 0xa) = 0x4210;

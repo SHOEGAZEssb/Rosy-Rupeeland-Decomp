@@ -14,7 +14,7 @@
 .extern GamePhaseCurrencyHud_SetVisible
 .extern GamePhaseRuntime_SetPlacementMode
 .extern func_02008570
-.extern func_020755bc
+.extern GraphicsSpriteRenderer_ClearTextBuffer
 .extern GamePhaseRuntime_UpdateActorPresentationState
 .extern func_02091fb0
 .extern Heap_Alloc

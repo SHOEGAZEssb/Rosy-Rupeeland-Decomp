@@ -42,8 +42,8 @@ extern void func_02074110(void *);
 extern u8 *func_02073ffc(void *, void *, s32);
 extern void func_02073e48(void *, s32, s32, s32, s32, s32, s32);
 extern void GraphicsSpriteState_SetAnimationIndex(void *, s32);
-extern void func_020755bc(void *);
-extern void func_02075598(void *, const void *);
+extern void GraphicsSpriteRenderer_ClearTextBuffer(void *);
+extern void GraphicsSpriteRenderer_SetFontResource(void *, const void *);
 extern const u16 *func_02079f3c(void *, u16);
 extern void func_02076148(void *, const u16 *, s32, s32, s32, s32, s32);
 extern void func_02075e48(void *, s32, s32, s32, s32);
@@ -103,16 +103,16 @@ void func_02028100(AreaInfoPanelPresentation *self, s32 index)
     s32 i;
 
     *(u32 *)(self->spriteOwner_34 + 0x20) = 1;
-    func_020755bc(self->uiContext_30);
+    GraphicsSpriteRenderer_ClearTextBuffer(self->uiContext_30);
     *(u16 *)(self->primarySprite_38 + 0x24) &= (u16)~4;
     GraphicsSpriteState_SetAnimationIndex(self->primarySprite_38, data_020c3a1c[index]);
 
-    func_02075598(self->uiContext_30, *(void **)(self->base_00 + 0));
+    GraphicsSpriteRenderer_SetFontResource(self->uiContext_30, *(void **)(self->base_00 + 0));
     text = func_02079f3c(data_021f3ecc, data_020c3a28[index]);
     func_02076148(self->uiContext_30, text + 1, 6,
                   gSystemState[0x5f] ? 0x9b : 0x9d, 13, 4, 0);
 
-    func_02075598(self->uiContext_30, *(void **)(self->base_00 + 4));
+    GraphicsSpriteRenderer_SetFontResource(self->uiContext_30, *(void **)(self->base_00 + 4));
     text = func_02079f3c(data_021f3ecc,
                         *(const u16 *)(data_020d780c + stride34));
     func_02076148(self->uiContext_30, text + 1, 5, 0xa7, 13, 6, -1);
@@ -145,6 +145,6 @@ void func_02028100(AreaInfoPanelPresentation *self, s32 index)
 /* Clear the UI context and hide the panel's sprite owner. */
 void func_0202836c(AreaInfoPanelPresentation *self)
 {
-    func_020755bc(self->uiContext_30);
+    GraphicsSpriteRenderer_ClearTextBuffer(self->uiContext_30);
     func_02074110(self->spriteOwner_34);
 }

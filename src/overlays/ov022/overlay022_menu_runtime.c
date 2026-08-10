@@ -11,7 +11,7 @@ extern u8 gSystemState[];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_02075598(void *, void *);
+extern void GraphicsSpriteRenderer_SetFontResource(void *, void *);
 extern void func_02076148(void *, const void *, s32, s32, ...);
 extern void GraphicsSpriteCanvas_FillRect(void *, s32, s32, s32, ...);
 extern const void *func_02079f3c(const void *, u16);
@@ -35,7 +35,7 @@ extern "C" void func_ov022_021fdb38(void *menu)
     if (count == 0)
         return;
     s32 final_style = gSystemState[0x5f] == 4 ? -1 : -2;
-    func_02075598(data_020f4e14, FIELD(void *, menu, 0));
+    GraphicsSpriteRenderer_SetFontResource(data_020f4e14, FIELD(void *, menu, 0));
     for (s32 row = 0; row < 4; ++row) {
         void *ui = FIELD(void *, menu, 0x30);
         s32 index = row + FIELD(s32, ui, 0xc);

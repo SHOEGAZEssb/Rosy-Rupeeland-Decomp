@@ -3,7 +3,7 @@
     .extern data_020f4e14
     .extern data_ov020_021fe458
     .extern data_ov020_021fe478
-    .extern func_020755bc
+    .extern GraphicsSpriteRenderer_ClearTextBuffer
     .extern func_ov020_021fd1cc
     .extern func_ov020_021fd81c
     .extern func_ov020_021fde9c
@@ -22,10 +22,10 @@ func_ov020_021fdf7c:
     beq L_021fdff0
     ldr r0, L_021fe014
     ldr r0, [r0, #0x0]
-    bl func_020755bc
+    bl GraphicsSpriteRenderer_ClearTextBuffer
     ldr r0, L_021fe018
     ldr r0, [r0, #0x0]
-    bl func_020755bc
+    bl GraphicsSpriteRenderer_ClearTextBuffer
     ldr r0, [r4, #0x1dc]
     bl func_ov020_021fd1cc
     mov r0, r4

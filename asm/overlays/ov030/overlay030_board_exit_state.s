@@ -5,7 +5,7 @@
 .extern data_ov030_021ff790
 .extern DisplayBrightness_IsMainTransitionComplete
 .extern func_02064e7c
-.extern func_020755bc
+.extern GraphicsSpriteRenderer_ClearTextBuffer
 .extern func_02092c8c
 .extern func_ov030_021fd27c
 .extern func_ov030_021fda14
@@ -76,10 +76,10 @@ L_021ff664:
     ldr r0, L_021ff6d8
     str r1, [r4, #0x2c4]
     ldr r0, [r0, #0x0]
-    bl func_020755bc
+    bl GraphicsSpriteRenderer_ClearTextBuffer
     ldr r0, L_021ff6dc
     ldr r0, [r0, #0x0]
-    bl func_020755bc
+    bl GraphicsSpriteRenderer_ClearTextBuffer
     ldr r1, [r4, #0x48]
     mov r0, r4
     bic r1, r1, #0x3

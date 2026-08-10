@@ -8,7 +8,7 @@
 .extern func_02008570
 .extern GamePhaseState_SetEnabled
 .extern GamePhaseAreaScene_SetEnabled
-.extern func_020755bc
+.extern GraphicsSpriteRenderer_ClearTextBuffer
 .extern func_02075a04
 .extern func_02092418
 .extern func_ov032_021fde1c
@@ -43,10 +43,10 @@ func_ov032_021fde38:
     bl GXS_SetGraphicsMode
     ldr r0, L_021fdf24
     ldr r0, [r0, #0x0]
-    bl func_020755bc
+    bl GraphicsSpriteRenderer_ClearTextBuffer
     ldr r0, L_021fdf28
     ldr r0, [r0, #0x0]
-    bl func_020755bc
+    bl GraphicsSpriteRenderer_ClearTextBuffer
     ldr r0, L_021fdf24
     mov r1, #0x0
     ldr r0, [r0, #0x0]

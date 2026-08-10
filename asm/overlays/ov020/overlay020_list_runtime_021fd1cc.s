@@ -1,8 +1,8 @@
     .text
 /* Exact fallback; see src/overlays/ov020/overlay020_list_runtime.c. */
     .extern data_021f3ecc
-    .extern func_02075598
-    .extern func_020755bc
+    .extern GraphicsSpriteRenderer_SetFontResource
+    .extern GraphicsSpriteRenderer_ClearTextBuffer
     .extern func_02076148
     .extern func_02079f3c
 
@@ -12,7 +12,7 @@ func_ov020_021fd1cc:
     sub sp, sp, #0xc
     mov r10, r0
     ldr r0, [r10, #0x0]
-    bl func_020755bc
+    bl GraphicsSpriteRenderer_ClearTextBuffer
     ldr r0, [r10, #0x40]
     cmp r0, #0x0
     beq L_021fd274
@@ -35,7 +35,7 @@ L_021fd208:
     ldr r0, [r10, #0x0]
     ldr r9, [r2, r1]
     ldr r1, [r10, #0x18]
-    bl func_02075598
+    bl GraphicsSpriteRenderer_SetFontResource
     ldrh r1, [r9, #0xc]
     ldr r0, L_021fd27c
     bl func_02079f3c

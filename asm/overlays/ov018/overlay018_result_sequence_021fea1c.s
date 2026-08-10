@@ -8,7 +8,7 @@
     .extern func_02059344
     .extern func_02073e48
     .extern func_02073ffc
-    .extern func_020755bc
+    .extern GraphicsSpriteRenderer_ClearTextBuffer
     .extern func_020918f4
     .extern func_02091b98
     .extern func_02091bac
@@ -309,7 +309,7 @@ L_021fedf8:
     orr r1, r1, #0x4
     strh r1, [r2, #0x24]
     ldr r0, [r0, #0x0]
-    bl func_020755bc
+    bl GraphicsSpriteRenderer_ClearTextBuffer
     ldr r0, [r4, #0x54]
     cmp r0, #0x1
     movne r0, #0xa

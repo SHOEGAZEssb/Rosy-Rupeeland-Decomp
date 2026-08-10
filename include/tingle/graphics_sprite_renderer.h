@@ -48,10 +48,10 @@ GraphicsSpriteRenderer *func_02074200(GraphicsSpriteRenderer *renderer,
                                       u32 engine, u32 field28, u32 field2c);
 void GraphicsSpriteRenderer_ConfigureObjectDisplay(
     GraphicsSpriteRenderer *renderer);
-void *func_02075598(GraphicsSpriteRenderer *renderer, void *replacement);
-void func_020755b0(GraphicsSpriteRenderer *renderer);
-void func_020755bc(GraphicsSpriteRenderer *renderer);
-void *func_020755e0(GraphicsSpriteRenderer *renderer);
+void *GraphicsSpriteRenderer_SetFontResource(GraphicsSpriteRenderer *renderer, void *replacement);
+void GraphicsSpriteRenderer_ClearFontResource(GraphicsSpriteRenderer *renderer);
+void GraphicsSpriteRenderer_ClearTextBuffer(GraphicsSpriteRenderer *renderer);
+void *GraphicsSpriteRenderer_GetObjectPaletteAddress(GraphicsSpriteRenderer *renderer);
 void func_02075630(GraphicsSpriteRenderer *renderer);
 void func_020756b4(GraphicsSpriteRenderer *renderer, s32 x, s32 y,
                    const char *text, s32 length, u32 mode);

@@ -17,7 +17,7 @@
 .extern ActorDerivedType1_GetSingletonObject
 .extern GridEffectActorRegistry_BroadcastStateValue0
 .extern func_02059880
-.extern func_020755bc
+.extern GraphicsSpriteRenderer_ClearTextBuffer
 .extern func_020a2324
 .extern func_020a2348
 .extern func_ov074_0220fd20
@@ -126,7 +126,7 @@ func_ov074_0220fda8:
     bl GridEffectActorRegistry_BroadcastStateValue0
     ldr r0, .L_0220fffc
     ldr r0, [r0, #0x0]
-    bl func_020755bc
+    bl GraphicsSpriteRenderer_ClearTextBuffer
     ldr r0, .L_0220fff0
     ldr r1, [r4, #0x24]
     ldr r0, [r0, #0x0]

@@ -10,7 +10,7 @@ extern void *gDebugFont;
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_020755bc(void *font);
+extern void GraphicsSpriteRenderer_ClearTextBuffer(void *font);
 #ifdef __cplusplus
 }
 #endif
@@ -26,12 +26,12 @@ void GamePhaseRuntime_ProcessPendingPresentationRefreshes(GamePhaseRuntime *self
     u32 flags = *(u32 *)(b + 0x30b8);
     if (flags & 0x10) {
         *(u32 *)(b + 0x30b8) = flags & ~0x10;
-        func_020755bc(data_020f4e14);
+        GraphicsSpriteRenderer_ClearTextBuffer(data_020f4e14);
     }
     flags = *(u32 *)(b + 0x30b8);
     if (flags & 0x20) {
         *(u32 *)(b + 0x30b8) = flags & ~0x20;
-        func_020755bc(gDebugFont);
+        GraphicsSpriteRenderer_ClearTextBuffer(gDebugFont);
     }
 }
 

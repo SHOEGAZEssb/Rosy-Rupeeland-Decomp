@@ -1,7 +1,7 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov058/overlay058_recovery.c.
 .extern data_020f4e14
-.extern func_02075598
+.extern GraphicsSpriteRenderer_SetFontResource
 .extern func_020760c0
 .extern func_020761f8
 .extern func_02091aa8
@@ -14,7 +14,7 @@ func_ov058_0220ed64:
     mov r10, r0
     ldr r0, [r1, #0x0]
     ldr r1, [r10, #0x88]
-    bl func_02075598
+    bl GraphicsSpriteRenderer_SetFontResource
     mov r2, #0x0
     ldr r11, .L_0220eeec
     ldr r4, .L_0220eee8

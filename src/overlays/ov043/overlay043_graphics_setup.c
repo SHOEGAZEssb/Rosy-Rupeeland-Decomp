@@ -28,7 +28,7 @@ extern "C" void func_02072048(void *resources, s32 engine, s32 value);
 extern "C" void func_02092754(void *transfer, s32 resourceId);
 extern "C" void func_02092790(void *transfer, s32 engine);
 extern "C" void func_02070eac(void *resource, s32 engine, s32 value);
-extern "C" void *func_020755e0(void *font);
+extern "C" void *GraphicsSpriteRenderer_GetObjectPaletteAddress(void *font);
 extern "C" void func_020926f8(void *transfer);
 extern "C" void GraphicsResourceSet_Destroy(void *resources);
 
@@ -82,8 +82,8 @@ extern "C" void func_ov043_0220ba28(void *object)
     func_02092790(transfer, 0);
     func_02070eac(resource, 2, 0);
 
-    void *font = func_020755e0(data_020f4e14);
-    void *debugFont = func_020755e0(gDebugFont);
+    void *font = GraphicsSpriteRenderer_GetObjectPaletteAddress(data_020f4e14);
+    void *debugFont = GraphicsSpriteRenderer_GetObjectPaletteAddress(gDebugFont);
     FIELD(u16, debugFont, 6) = FIELD(u16, font, 0xe);
     FIELD(u16, font, 6) = FIELD(u16, font, 0xe);
     FIELD(u16, debugFont, 8) = FIELD(u16, font, 0x1e);

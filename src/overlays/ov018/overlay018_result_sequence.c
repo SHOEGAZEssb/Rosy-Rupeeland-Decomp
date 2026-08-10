@@ -20,7 +20,7 @@ extern u32 genrand_int32(void);
 extern s32 func_02059344(void *, s32);
 extern void func_02073e48(void *, s32, s32, s32, s32, s32, s32);
 extern void *func_02073ffc(void *, void *, s32);
-extern void func_020755bc(void *);
+extern void GraphicsSpriteRenderer_ClearTextBuffer(void *);
 extern s32 func_020918f4(void *, s32);
 extern void func_02091b98(void *, s32);
 extern void func_02091bac(void *, s32, s32, s32, s32);
@@ -180,7 +180,7 @@ extern "C" s32 func_ov018_021fea1c(void *state)
             FIELD(s32, state, 0x408) = 0;
             FIELD(s32, state, 0x404) = 0;
             FIELD(u16, FIELD(void *, state, 0xd4), 0x24) |= 4;
-            func_020755bc(gDebugFont);
+            GraphicsSpriteRenderer_ClearTextBuffer(gDebugFont);
             if (FIELD(s32, state, 0x54) != 1) {
                 FIELD(s32, state, 4) = 10;
                 FIELD(s32, state, 8) = 0;

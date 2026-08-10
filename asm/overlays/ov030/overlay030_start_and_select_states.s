@@ -8,8 +8,8 @@
 .extern data_ov030_021ff7b8
 .extern DisplayBrightness_IsMainTransitionComplete
 .extern GamePhaseCurrencyHud_SetVisible
-.extern func_02075598
-.extern func_020755bc
+.extern GraphicsSpriteRenderer_SetFontResource
+.extern GraphicsSpriteRenderer_ClearTextBuffer
 .extern func_02092260
 .extern func_02092c8c
 .extern func_020939d8
@@ -37,10 +37,10 @@ func_ov030_021feb64:
 L_021feb84:
     ldr r0, L_021fec34
     ldr r0, [r0, #0x0]
-    bl func_020755bc
+    bl GraphicsSpriteRenderer_ClearTextBuffer
     ldr r0, L_021fec38
     ldr r0, [r0, #0x0]
-    bl func_020755bc
+    bl GraphicsSpriteRenderer_ClearTextBuffer
     ldr r0, L_021fec3c
     mov r1, #0x1
     ldr r0, [r0, #0x0]
@@ -48,7 +48,7 @@ L_021feb84:
     ldr r0, L_021fec38
     ldr r1, [r4, #0x54]
     ldr r0, [r0, #0x0]
-    bl func_02075598
+    bl GraphicsSpriteRenderer_SetFontResource
     mov r0, #0x8
     mov r1, #0x21
     bl func_ov045_0220d2f8

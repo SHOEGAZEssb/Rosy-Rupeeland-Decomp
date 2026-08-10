@@ -26,7 +26,7 @@ extern void *gDebugFont;
 extern void *gSoundContext;
 extern HeapContext gHeapContext;
 extern void *data_021052fc;
-extern void func_020755bc(void *renderer);
+extern void GraphicsSpriteRenderer_ClearTextBuffer(void *renderer);
 extern Overlay52Child *func_ov052_0220d618(Overlay52Child *self, s32 first,
                                            s32 second);
 extern void func_ov052_0220e14c(Overlay52Child *self, u16 parameter,
@@ -105,7 +105,7 @@ s32 func_0201d0f4(Overlay52Scene *self)
     if (self->child28 == 0) {
         brightness = DisplayBrightnessPair_GetScreen(&data_020f4dc8, 1);
         if (DisplayBrightness_GetCurrent(brightness) == -16) {
-            func_020755bc(gDebugFont);
+            GraphicsSpriteRenderer_ClearTextBuffer(gDebugFont);
             child = (Overlay52Child *)Heap_Alloc(
                 0x34, data_020d5d84, 4, &gHeapContext);
             if (child != 0)

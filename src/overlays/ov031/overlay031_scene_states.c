@@ -26,7 +26,7 @@ extern void func_ov031_021fdf20(void *, s32);
 extern void func_020740a4(void *);
 extern void func_ov031_021fd5c0(void *);
 extern s32 func_ov031_021fddbc(void *);
-extern void func_020755bc(void *);
+extern void GraphicsSpriteRenderer_ClearTextBuffer(void *);
 extern s32 func_ov031_021fd7fc(void *);
 #ifdef __cplusplus
 }
@@ -129,7 +129,7 @@ extern "C" s32 func_ov031_021fe4ac(void *scene)
     switch (FIELD(s32, scene, 4)) {
     case 0:
         if (func_ov031_021fddbc(scene) != 0) {
-            func_020755bc(gDebugFont);
+            GraphicsSpriteRenderer_ClearTextBuffer(gDebugFont);
             if (FIELD(s32, scene, 0x54) == 2) {
                 FIELD(u32, scene, 0x4c) &= ~4;
                 ++FIELD(s32, scene, 4);

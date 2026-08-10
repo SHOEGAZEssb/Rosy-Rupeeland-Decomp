@@ -1,5 +1,5 @@
 .text
-.extern func_020755bc
+.extern GraphicsSpriteRenderer_ClearTextBuffer
 .extern func_ov044_0220c74c
 .extern func_ov044_0220bba4
 .extern func_ov044_0220c700
@@ -25,10 +25,10 @@ func_ov044_0220c97c:
 .L_0220c99c:
     ldr r0, .L_0220ca94
     ldr r0, [r0, #0x0]
-    bl func_020755bc
+    bl GraphicsSpriteRenderer_ClearTextBuffer
     ldr r0, .L_0220ca98
     ldr r0, [r0, #0x0]
-    bl func_020755bc
+    bl GraphicsSpriteRenderer_ClearTextBuffer
     mov r0, r4
     mov r1, #0x2a
     bl func_ov044_0220c74c

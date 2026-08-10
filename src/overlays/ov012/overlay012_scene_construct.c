@@ -25,7 +25,7 @@ extern void Graphics3DSceneState_Init(void *);
 extern void Graphics3DLightSet_Init(void *);
 extern void func_02092364(void *);
 extern void func_020923a4(void *);
-extern void func_020755bc(void *);
+extern void GraphicsSpriteRenderer_ClearTextBuffer(void *);
 extern void *func_02002700(s32, const char *, s32, void *);
 extern s32 func_020bf1f8(s32, s32);
 extern void func_020b4554(void *, s32);
@@ -81,7 +81,7 @@ void *func_ov012_021fd170(void *state)
     func_02092364((u8 *)state + 0x1c4);
     func_020923a4((u8 *)state + 0x1c4);
     FIELD(s32, state, 0x74) = 0;
-    func_020755bc(data_020f4e14);
+    GraphicsSpriteRenderer_ClearTextBuffer(data_020f4e14);
 
     CheckedFS_InitFile(&file);
     if (CheckedFS_OpenFile(&file, data_ov012_021fe6b8)) {

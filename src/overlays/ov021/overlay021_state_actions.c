@@ -22,7 +22,7 @@ extern "C" {
 extern void GameWork_SetFlag(void *, u32);
 extern s32 GameWork_TestFlag(void *, u32);
 extern s32 DisplayBrightness_IsMainTransitionComplete(void);
-extern void func_020755bc(void *);
+extern void GraphicsSpriteRenderer_ClearTextBuffer(void *);
 extern const void *func_0207c4cc(const void *, s32);
 extern void func_0207ab48(void *, u16);
 extern void func_02092260(void *, s32);
@@ -188,7 +188,7 @@ extern "C" s32 func_ov021_02200630(void *state)
         /* Deliberate fall-through. */
     case 1:
         if (DisplayBrightness_IsMainTransitionComplete() != 0) {
-            func_020755bc(data_020f4e14);
+            GraphicsSpriteRenderer_ClearTextBuffer(data_020f4e14);
             func_ov021_021fe63c(state);
             FIELD(s32, state, 4)++;
             FIELD(s32, state, 8) = 0;
@@ -277,7 +277,7 @@ extern "C" s32 func_ov021_02200840(void *state)
             else
                 func_ov021_021fd224(FIELD(void *, state, 0x2c0));
             func_ov021_021fe8a8(state);
-            func_020755bc(data_020f4e14);
+            GraphicsSpriteRenderer_ClearTextBuffer(data_020f4e14);
             func_ov021_021fedac(state);
             FIELD(s32, state, 4)++;
             FIELD(s32, state, 8) = 0;

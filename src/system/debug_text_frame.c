@@ -9,7 +9,7 @@
 extern "C" {
 #endif
 
-extern void func_020755bc(void *renderer);
+extern void GraphicsSpriteRenderer_ClearTextBuffer(void *renderer);
 extern void *gDebugFont;
 extern void *data_020f4e14;
 
@@ -19,14 +19,14 @@ extern void *data_020f4e14;
 
 /*
  * Clear each installed debug-text renderer. There are no inputs or return
- * value; null slots are skipped, and func_020755bc performs the observable
+ * value; null slots are skipped, and GraphicsSpriteRenderer_ClearTextBuffer performs the observable
  * renderer reset for each non-null slot.
  */
 void DebugText_BeginFrame(void)
 {
     if (data_020f4e14 != 0)
-        func_020755bc(data_020f4e14);
+        GraphicsSpriteRenderer_ClearTextBuffer(data_020f4e14);
 
     if (gDebugFont != 0)
-        func_020755bc(gDebugFont);
+        GraphicsSpriteRenderer_ClearTextBuffer(gDebugFont);
 }

@@ -10,7 +10,7 @@
 .extern ActorDerivedType1_ApplyResourceIndex
 .extern GraphicsSpriteState_SetAnimationIndex
 .extern func_020740a4
-.extern func_020755bc
+.extern GraphicsSpriteRenderer_ClearTextBuffer
 .extern func_020befec
 .extern func_ov065_0220ff20
 .extern func_ov065_02210a04
@@ -30,10 +30,10 @@ func_ov065_02210600:
     ldmneia sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, pc}
     ldr r0, .L_022108e4
     ldr r0, [r0, #0x0]
-    bl func_020755bc
+    bl GraphicsSpriteRenderer_ClearTextBuffer
     ldr r0, .L_022108e8
     ldr r0, [r0, #0x0]
-    bl func_020755bc
+    bl GraphicsSpriteRenderer_ClearTextBuffer
     ldr r0, .L_022108ec
     add r1, r4, #0x100
     ldr r0, [r0, #0x0]

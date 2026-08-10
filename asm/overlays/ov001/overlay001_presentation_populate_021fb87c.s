@@ -4,7 +4,7 @@
     .extern func_02092e9c
     .extern func_020939d8
     .extern func_02093360
-    .extern func_02075598
+    .extern GraphicsSpriteRenderer_SetFontResource
     .extern GraphicsSpriteCanvas_FillRect
     .extern func_02062a60
     .extern func_02076148
@@ -48,7 +48,7 @@ func_ov001_021fb87c: ; 0x021fb87c
     cmp r0, #0x0
     ldr r0, [r6, #0x0]
     subne r7, r7, #0x2
-    bl func_02075598
+    bl GraphicsSpriteRenderer_SetFontResource
     str r7, [sp, #0x0]
     mov r0, #0x0
     str r0, [sp, #0x4]
@@ -89,7 +89,7 @@ func_ov001_021fb87c: ; 0x021fb87c
     bl func_02073e48
     ldr r0, [r6, #0x0]
     ldr r1, [r6, #0x28]
-    bl func_02075598
+    bl GraphicsSpriteRenderer_SetFontResource
     mov r0, #0x48
     str r0, [sp, #0x0]
     mov r0, #0x0

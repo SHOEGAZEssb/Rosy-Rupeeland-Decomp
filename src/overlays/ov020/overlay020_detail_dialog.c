@@ -23,8 +23,8 @@ extern void func_02073e48(void *, s32, s32, s32, s32, s32, s32);
 extern void *func_02073ffc(void *, void *, s32);
 extern void func_02074058(void *);
 extern void *func_020742cc(void *);
-extern void func_02075598(void *, void *);
-extern void func_020755bc(void *);
+extern void GraphicsSpriteRenderer_SetFontResource(void *, void *);
+extern void GraphicsSpriteRenderer_ClearTextBuffer(void *);
 extern void func_02075e48(void *, s32, s32, s32, s32);
 extern s32 func_02076148(void *, const void *, s32, s32, s32, s32, s32);
 extern const void *func_020791e0(const void *, u16);
@@ -94,7 +94,7 @@ static void createQuantitySprite(void *state, s32 animation, s32 x, s32 y)
 extern "C" s32 func_ov020_021fd44c(void *state, s32 selection, void *unused)
 {
     (void)unused;
-    func_020755bc(FIELD(void *, state, 8));
+    GraphicsSpriteRenderer_ClearTextBuffer(FIELD(void *, state, 8));
     const u8 *entry;
     if (FIELD(s32, state, 0) != selection) {
         FIELD(s32, state, 0) = -1;
@@ -139,12 +139,12 @@ extern "C" s32 func_ov020_021fd44c(void *state, s32 selection, void *unused)
 
     s32 firstY = gSystemState[0x5f] == 0 ? 0x18 : 0x16;
     s32 firstSpacing = gSystemState[0x5f] == 0 ? 8 : 4;
-    func_02075598(FIELD(void *, state, 8), (u8 *)state + 0x2c);
+    GraphicsSpriteRenderer_SetFontResource(FIELD(void *, state, 8), (u8 *)state + 0x2c);
     const void *text = func_020791e0(data_021f3ecc, FIELD(u16, entry, 0xe));
     func_02076148(FIELD(void *, state, 8), text, 0x60, firstY,
                   14, firstSpacing, 0);
 
-    func_02075598(FIELD(void *, state, 8), (u8 *)state + 0x30);
+    GraphicsSpriteRenderer_SetFontResource(FIELD(void *, state, 8), (u8 *)state + 0x30);
     text = func_02079f3c(data_021f3ecc, FIELD(u16, entry, 0xc));
     func_02076148(FIELD(void *, state, 8), (u8 *)text + 2,
                   0x60, 0x28, 13, 8, -1);
@@ -152,7 +152,7 @@ extern "C" s32 func_ov020_021fd44c(void *state, s32 selection, void *unused)
     s32 systemIndex = gSystemState[0x5f];
     if (systemIndex >= 6)
         systemIndex = 5;
-    func_02075598(FIELD(void *, state, 8), (u8 *)state + 0x28);
+    GraphicsSpriteRenderer_SetFontResource(FIELD(void *, state, 8), (u8 *)state + 0x28);
     s32 width = func_02076148(FIELD(void *, state, 8),
                               data_ov020_021fe48c + systemIndex * 0x10,
                               0xa8, 0x3c, 14, 6, 0);
@@ -164,7 +164,7 @@ extern "C" s32 func_ov020_021fd44c(void *state, s32 selection, void *unused)
     func_02092960(FIELD(void *, state, 8), 30,
                   10, numberX + 0x1e, 0x3c, 14, -8, 1);
 
-    func_02075598(FIELD(void *, state, 8), (u8 *)state + 0x28);
+    GraphicsSpriteRenderer_SetFontResource(FIELD(void *, state, 8), (u8 *)state + 0x28);
     text = func_020791e0(data_021f3ecc, FIELD(u16, entry, 0x10));
     func_02092e9c(FIELD(void *, state, 0x4c), text, 1);
     return func_02093360(FIELD(void *, state, 0x4c), 0);

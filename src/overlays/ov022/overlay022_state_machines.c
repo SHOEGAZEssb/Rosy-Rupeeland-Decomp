@@ -31,7 +31,7 @@ extern s32 DisplayBrightness_IsSubTransitionComplete(void);
 extern void *GamePhaseCurrencyHud_GetCurrency(void *);
 extern void GamePhaseCurrencyHud_AddCurrency(void *, s32, void *);
 extern void func_02074110(void *);
-extern void func_020755bc(void *);
+extern void GraphicsSpriteRenderer_ClearTextBuffer(void *);
 extern void func_02092c8c(s32, s32);
 extern void func_020939d8(void *);
 extern void func_02093b20(void *);
@@ -162,7 +162,7 @@ extern "C" s32 func_ov022_021ff5ec(void *scene)
         if (!DisplayBrightness_IsMainTransitionComplete())
             break;
         if (FIELD(s32, scene, 0x2c0) == 0) {
-            func_020755bc(data_020f4e14);
+            GraphicsSpriteRenderer_ClearTextBuffer(data_020f4e14);
             func_02095940((u8 *)scene + 0xa8);
             func_02095820((u8 *)scene + 0x154, -64, 64);
             func_02095820((u8 *)scene + 0x200, -64, 112);
@@ -420,7 +420,7 @@ extern "C" s32 func_ov022_021ffd8c(void *scene)
     case 3:
         if (DisplayBrightness_IsMainTransitionComplete()) {
             func_020939d8(FIELD(void *, scene, 0x2cc));
-            func_020755bc(data_020f4e14);
+            GraphicsSpriteRenderer_ClearTextBuffer(data_020f4e14);
             FIELD(u32, scene, 0x48) &= ~2u;
             FIELD(u16, FIELD(void *, scene, 0xa4), 0x24) |= 4;
             func_02074110(FIELD(void *, ui, 0x50));

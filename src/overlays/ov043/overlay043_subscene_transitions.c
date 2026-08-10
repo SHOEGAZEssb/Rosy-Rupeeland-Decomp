@@ -22,7 +22,7 @@ extern "C" void func_02092c8c(s32 screen, s32 brightness);
 extern "C" s32 DisplayBrightness_IsMainTransitionComplete(void);
 extern "C" void func_ov043_0220bcf4(void *object);
 extern "C" void func_ov043_0220bd24(void *object);
-extern "C" void func_020755bc(void *font);
+extern "C" void GraphicsSpriteRenderer_ClearTextBuffer(void *font);
 extern "C" void OverlaySlot_LoadOverlay(void *object, s32 value);
 extern "C" void OverlaySlot_UnloadOverlay(void *object);
 extern "C" void *Heap_Alloc(s32 size, const void *tag, void *heap);
@@ -57,8 +57,8 @@ static void destroy_child(void *object)
 /* Restore fonts, hardware graphics, presentation resources, and fade state. */
 static void restore_menu(void *object)
 {
-    func_020755bc(data_020f4e14);
-    func_020755bc(gDebugFont);
+    GraphicsSpriteRenderer_ClearTextBuffer(data_020f4e14);
+    GraphicsSpriteRenderer_ClearTextBuffer(gDebugFont);
     func_ov043_0220ba28(object);
     func_ov043_0220bc2c(object);
     func_02092c8c(3, 0);
@@ -89,8 +89,8 @@ extern "C" s32 func_ov043_0220bed4(void *object)
             break;
         }
         func_ov043_0220bcf4(object);
-        func_020755bc(data_020f4e14);
-        func_020755bc(gDebugFont);
+        GraphicsSpriteRenderer_ClearTextBuffer(data_020f4e14);
+        GraphicsSpriteRenderer_ClearTextBuffer(gDebugFont);
         OverlaySlot_LoadOverlay((u8 *)object + 0x2dc, 0);
         OverlaySlot_LoadOverlay((u8 *)object + 0x2e8, 16);
         {

@@ -6,7 +6,7 @@
 .extern data_020f4e14
 .extern data_ov041_0220582c
 .extern GraphicsSpriteState_SetAnimationIndex
-.extern func_020755e0
+.extern GraphicsSpriteRenderer_GetObjectPaletteAddress
 .extern func_0209a208
 .extern func_020bf1f8
 .extern func_ov041_021fce00
@@ -155,7 +155,7 @@ func_ov041_02200660: ; 0x02200660
     bic r1, r1, #0x4
     strh r1, [r2, #0x42]
     ldr r0, [r0, #0x0]
-    bl func_020755e0
+    bl GraphicsSpriteRenderer_GetObjectPaletteAddress
     mov r1, #0x1f
     mov r7, #0x0
     strh r1, [r0, #0x8]

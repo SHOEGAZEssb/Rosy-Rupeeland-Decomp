@@ -9,8 +9,8 @@
     .extern func_02073e48
     .extern func_02073ffc
     .extern func_02074058
-    .extern func_02075598
-    .extern func_020755bc
+    .extern GraphicsSpriteRenderer_SetFontResource
+    .extern GraphicsSpriteRenderer_ClearTextBuffer
     .extern func_02075e48
     .extern func_02076148
     .extern func_020791e0
@@ -27,7 +27,7 @@ func_ov020_021fd44c:
     mov r6, r0
     ldr r0, [r6, #0x8]
     mov r4, r1
-    bl func_020755bc
+    bl GraphicsSpriteRenderer_ClearTextBuffer
     ldr r2, [r6, #0x0]
     cmp r2, r4
     beq L_021fd648
@@ -170,7 +170,7 @@ L_021fd654:
     ldr r0, [r6, #0x8]
     subne r4, r4, #0x2
     movne r5, #0x4
-    bl func_02075598
+    bl GraphicsSpriteRenderer_SetFontResource
     ldrh r1, [r8, #0xe]
     ldr r0, L_021fd810
     bl func_020791e0
@@ -185,7 +185,7 @@ L_021fd654:
     bl func_02076148
     ldr r0, [r6, #0x8]
     ldr r1, [r6, #0x30]
-    bl func_02075598
+    bl GraphicsSpriteRenderer_SetFontResource
     ldrh r1, [r8, #0xc]
     ldr r0, L_021fd810
     bl func_02079f3c
@@ -206,7 +206,7 @@ L_021fd654:
     movge r4, #0x5
     ldr r0, [r6, #0x8]
     ldr r1, [r6, #0x28]
-    bl func_02075598
+    bl GraphicsSpriteRenderer_SetFontResource
     mov r0, #0xe
     ldr r1, L_021fd814
     mov r5, #0xa8
@@ -256,7 +256,7 @@ L_021fd654:
     bl func_02092960
     ldr r0, [r6, #0x8]
     ldr r1, [r6, #0x28]
-    bl func_02075598
+    bl GraphicsSpriteRenderer_SetFontResource
     ldrh r1, [r8, #0x10]
     ldr r0, L_021fd810
     bl func_020791e0

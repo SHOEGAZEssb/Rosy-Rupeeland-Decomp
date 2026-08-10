@@ -9,7 +9,7 @@
 .extern data_ov025_02202ec8
 .extern data_ov025_02202ed8
 .extern func_02074110
-.extern func_020755bc
+.extern GraphicsSpriteRenderer_ClearTextBuffer
 .extern func_02091bac
 .extern func_02091c7c
 .extern func_02091cf0
@@ -151,7 +151,7 @@ L_02201188:
     bne L_02201314
     ldr r0, L_0220132c
     ldr r0, [r0, #0x0]
-    bl func_020755bc
+    bl GraphicsSpriteRenderer_ClearTextBuffer
     mov r6, #0x0
     mov r4, r6
 L_022011a4:

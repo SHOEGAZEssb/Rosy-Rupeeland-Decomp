@@ -20,7 +20,7 @@
 .extern func_02071eb8
 .extern func_02074110
 .extern func_0207419c
-.extern func_020755bc
+.extern GraphicsSpriteRenderer_ClearTextBuffer
 .extern func_020791e0
 .extern func_0207f248
 .extern func_0207f86c
@@ -154,10 +154,10 @@ L_02202018:
     blt L_02202018
     ldr r0, L_02202ae4
     ldr r0, [r0, #0x0]
-    bl func_020755bc
+    bl GraphicsSpriteRenderer_ClearTextBuffer
     ldr r0, L_02202ae8
     ldr r0, [r0, #0x0]
-    bl func_020755bc
+    bl GraphicsSpriteRenderer_ClearTextBuffer
     ldr r0, L_02202aec
     mov r1, #0x6b
     bl func_020791e0
@@ -232,7 +232,7 @@ L_02202104:
     bl func_02092260
     ldr r0, L_02202ae8
     ldr r0, [r0, #0x0]
-    bl func_020755bc
+    bl GraphicsSpriteRenderer_ClearTextBuffer
     ldr r0, L_02202aec
     mov r1, #0x28
     bl func_020791e0
@@ -812,10 +812,10 @@ L_02202994:
     bl func_ov025_0220058c
     ldr r0, L_02202ae4
     ldr r0, [r0, #0x0]
-    bl func_020755bc
+    bl GraphicsSpriteRenderer_ClearTextBuffer
     ldr r0, L_02202ae8
     ldr r0, [r0, #0x0]
-    bl func_020755bc
+    bl GraphicsSpriteRenderer_ClearTextBuffer
     mov r2, #0x0
     mov r1, #0x1
 L_022029dc:
@@ -868,7 +868,7 @@ L_02202a68:
     bl func_02092c8c
     ldr r0, L_02202ae8
     ldr r0, [r0, #0x0]
-    bl func_020755bc
+    bl GraphicsSpriteRenderer_ClearTextBuffer
     ldr r0, L_02202aec
     mov r1, #0x6b
     bl func_020791e0

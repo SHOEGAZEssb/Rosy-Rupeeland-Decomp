@@ -27,12 +27,12 @@ extern void func_ov032_0220147c(void *);
 extern void func_ov032_022014c0(...);
 extern void func_ov032_021fe0c4(void *);
 extern void *func_02071980(...);
-extern void func_02075598(...);
-extern void *func_020755e0(void *);
+extern void GraphicsSpriteRenderer_SetFontResource(...);
+extern void *GraphicsSpriteRenderer_GetObjectPaletteAddress(void *);
 extern void func_02075630(void *);
 extern void func_02071d4c(...);
-extern void func_020755b0(void *);
-extern void func_020755bc(void *);
+extern void GraphicsSpriteRenderer_ClearFontResource(void *);
+extern void GraphicsSpriteRenderer_ClearTextBuffer(void *);
 extern void *Heap_Alloc(...);
 extern void Heap_Free(void *);
 extern void *func_ov032_02201f80(...);
@@ -125,8 +125,8 @@ extern "C" void func_ov032_0220173c(void *widget, void *scene)
     FIELD(u16, FIELD(void *, widget, 0x18), 0x24) &= ~4;
     FIELD(s32, widget, 4) = 0;
     FIELD(void *, widget, 0x48) = func_02071980(data_020f4e18[0], 0x7006);
-    func_02075598(data_020f4e14[0], FIELD(void *, widget, 0x48));
-    u8 *map = (u8 *)func_020755e0(data_020f4e14[0]);
+    GraphicsSpriteRenderer_SetFontResource(data_020f4e14[0], FIELD(void *, widget, 0x48));
+    u8 *map = (u8 *)GraphicsSpriteRenderer_GetObjectPaletteAddress(data_020f4e14[0]);
     FIELD(u16, map, 4) = 0x4210;
     FIELD(u16, map, 6) = 0x4a52;
     FIELD(u16, map, 8) = 0x294a;
@@ -147,8 +147,8 @@ extern "C" void func_ov032_022018ac(void *widget)
     func_02075630(data_020f4e14[0]);
     func_ov032_0220147c((u8 *)widget + 0x18);
     func_02071d4c(data_020f4e18[0], FIELD(void *, widget, 0x48));
-    func_020755b0(data_020f4e14[0]);
-    func_020755bc(data_020f4e14[0]);
+    GraphicsSpriteRenderer_ClearFontResource(data_020f4e14[0]);
+    GraphicsSpriteRenderer_ClearTextBuffer(data_020f4e14[0]);
     void *list = FIELD(void *, widget, 0x4c);
     if (list != 0) {
         typedef void (*VirtualDestructor)(void *);

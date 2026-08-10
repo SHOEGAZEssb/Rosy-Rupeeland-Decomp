@@ -17,7 +17,7 @@ extern "C" {
 extern s32 GameWork_TestFlag(void *, u32);
 extern void GameWork_ClearFlag(void *, u32);
 extern s32 DisplayBrightness_IsMainTransitionComplete(void);
-extern void func_020755bc(void *);
+extern void GraphicsSpriteRenderer_ClearTextBuffer(void *);
 extern void func_02092260(void *, s32);
 extern void func_02092288(void *, s32);
 extern void func_020922f0(void *, s32);
@@ -47,8 +47,8 @@ extern "C" s32 func_ov017_02200ab0(void *state)
 {
     switch (FIELD(s32, state, 4)) {
     case 0:
-        func_020755bc(data_020f4e14);
-        func_020755bc(gDebugFont);
+        GraphicsSpriteRenderer_ClearTextBuffer(data_020f4e14);
+        GraphicsSpriteRenderer_ClearTextBuffer(gDebugFont);
         if (!GameWork_TestFlag(gGameWork, 0x3aa)) {
             FIELD(s32, state, 4) = 2;
             FIELD(s32, state, 8) = 0;

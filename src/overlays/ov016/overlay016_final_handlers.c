@@ -22,7 +22,7 @@ extern void GameWork_ClearFlag(void *, u32);
 extern s32 DisplayBrightness_IsMainTransitionComplete(void);
 extern s32 func_020651a4(void *, u16);
 extern s32 func_0206fb18(void *);
-extern void func_020755bc(void *);
+extern void GraphicsSpriteRenderer_ClearTextBuffer(void *);
 extern void func_02092c8c(s32, s32);
 extern void func_02092260(void *, s32);
 extern void func_02095308(void *);
@@ -103,7 +103,7 @@ extern "C" s32 func_ov016_022010c0(void *state)
     case 1:
         if (DisplayBrightness_IsMainTransitionComplete() != 0) {
             func_ov016_021ff71c(state);
-            func_020755bc(data_020f4e14);
+            GraphicsSpriteRenderer_ClearTextBuffer(data_020f4e14);
             func_ov016_021ff848(state, 0x18);
             func_ov016_021ff404(state);
             func_ov016_021ff094(state);

@@ -2,7 +2,7 @@
 
 /* Exact fallback; see src/overlays/ov030/overlay030_display_setup.c for documented portable C. */
 .extern data_020f4e14
-.extern func_020755e0
+.extern GraphicsSpriteRenderer_GetObjectPaletteAddress
 .extern func_020925a4
 .extern func_020925dc
 .extern func_020925f8
@@ -74,7 +74,7 @@ func_ov030_021fe2b4:
     bl func_02092688
     ldr r0, L_021fe3d8
     ldr r0, [r0, #0x0]
-    bl func_020755e0
+    bl GraphicsSpriteRenderer_GetObjectPaletteAddress
     ldrh r2, [r0, #0x16]
     ldr r1, L_021fe3dc
     strh r2, [r0, #0x6]

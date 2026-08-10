@@ -2,7 +2,7 @@
 
 /* Exact fallback; see src/overlays/ov016/overlay016_message_runtime.c. */
     .extern data_021f3ecc
-    .extern func_02075598
+    .extern GraphicsSpriteRenderer_SetFontResource
     .extern func_02076148
     .extern func_020761f8
     .extern GraphicsSpriteCanvas_FillRect
@@ -26,7 +26,7 @@ func_ov016_021ff848:
     ldr r0, L_021ff900
     ldr r1, [r5, #0x64]
     ldr r0, [r0, #0x0]
-    bl func_02075598
+    bl GraphicsSpriteRenderer_SetFontResource
     mov r0, r4, lsl #0x10
     mov r4, r0, lsr #0x10
     ldr r0, L_021ff904

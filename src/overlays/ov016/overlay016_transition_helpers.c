@@ -13,7 +13,7 @@ extern void *gDebugFont;
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_020755bc(void *);
+extern void GraphicsSpriteRenderer_ClearTextBuffer(void *);
 extern void func_02092260(void *, s32);
 extern s32 func_02095dd4(void *, void *, s32);
 extern void func_02095940(void *);
@@ -42,8 +42,8 @@ extern "C" s32 func_ov016_021ffe90(void *state)
 {
     switch (FIELD(s32, state, 4)) {
     case 0:
-        func_020755bc(data_020f4e14);
-        func_020755bc(gDebugFont);
+        GraphicsSpriteRenderer_ClearTextBuffer(data_020f4e14);
+        GraphicsSpriteRenderer_ClearTextBuffer(gDebugFont);
         if (FIELD(s32, state, 0x54) == 0) {
             func_ov016_021ff848(state, 0x18);
         }

@@ -13,7 +13,7 @@ extern "C" u32 data_ov043_0220c448[];
 extern "C" u32 data_ov043_0220c458[];
 extern "C" u32 data_ov043_0220c488[];
 extern "C" u32 data_ov043_0220c490[];
-extern "C" void func_020755bc(void *font);
+extern "C" void GraphicsSpriteRenderer_ClearTextBuffer(void *font);
 extern "C" void func_ov043_0220b744(void *object, u32 first, u32 second);
 extern "C" s32 func_02095860(void *canvas, const void *input,
                               s32 first, s32 second);
@@ -28,8 +28,8 @@ extern "C" void func_ov043_0220bd24(void *object);
 extern "C" s32 func_ov043_0220bd58(void *object)
 {
     if (FIELD(s32, object, 4) == 0) {
-        func_020755bc(data_020f4e14);
-        func_020755bc(gDebugFont);
+        GraphicsSpriteRenderer_ClearTextBuffer(data_020f4e14);
+        GraphicsSpriteRenderer_ClearTextBuffer(gDebugFont);
         func_ov043_0220b744(object, data_ov043_0220c448[0],
                              data_ov043_0220c448[1]);
         FIELD(u32, object, 0x20) |= 1;

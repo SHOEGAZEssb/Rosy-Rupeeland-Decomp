@@ -10,8 +10,8 @@
     .extern func_02070eac
     .extern func_02070f80
     .extern func_02072048
-    .extern func_020755bc
-    .extern func_020755e0
+    .extern GraphicsSpriteRenderer_ClearTextBuffer
+    .extern GraphicsSpriteRenderer_GetObjectPaletteAddress
     .extern func_020925a4
     .extern func_020925dc
     .extern func_020925f8
@@ -30,10 +30,10 @@ func_ov014_021fd07c:
     ldr r1, L_021fd2c8
     mov r4, r0
     ldr r0, [r1, #0x0]
-    bl func_020755bc
+    bl GraphicsSpriteRenderer_ClearTextBuffer
     ldr r0, L_021fd2cc
     ldr r0, [r0, #0x0]
-    bl func_020755bc
+    bl GraphicsSpriteRenderer_ClearTextBuffer
     ldr r3, L_021fd2d0
     mov r1, #0x14
     ldrh r2, [r3, #0x0]
@@ -152,11 +152,11 @@ func_ov014_021fd07c:
     bl func_02070eac
     ldr r0, L_021fd2c8
     ldr r0, [r0, #0x0]
-    bl func_020755e0
+    bl GraphicsSpriteRenderer_GetObjectPaletteAddress
     mov r4, r0
     ldr r0, L_021fd2cc
     ldr r0, [r0, #0x0]
-    bl func_020755e0
+    bl GraphicsSpriteRenderer_GetObjectPaletteAddress
     ldr r1, L_021fd2f4
     strh r1, [r0, #0xa]
     ldrh r1, [r0, #0xa]

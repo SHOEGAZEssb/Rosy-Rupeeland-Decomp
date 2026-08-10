@@ -11264,7 +11264,7 @@ build build/reports/graphics_sprite_renderer_accessors.json: objdiff build/decom
 
 build build/reports/graphics_sprite_renderer_accessors.txt: match_report build/reports/graphics_sprite_renderer_accessors.json | tools/report_objdiff.py
   report_json = build/reports/graphics_sprite_renderer_accessors.json
-  report_args = --section .text --function func_02075598 --function func_020755b0 --function func_020755bc --function func_020755e0
+  report_args = --section .text --function GraphicsSpriteRenderer_SetFontResource --function GraphicsSpriteRenderer_ClearFontResource --function GraphicsSpriteRenderer_ClearTextBuffer --function GraphicsSpriteRenderer_GetObjectPaletteAddress
 
 build build/reports/graphics_sprite_palette_upload.json: objdiff build/decomp/delinks/src/graphics/graphics_sprite_palette_upload.o | build/decomp/src/graphics/graphics_sprite_palette_upload.o
   target_object = build/decomp/delinks/src/graphics/graphics_sprite_palette_upload.o

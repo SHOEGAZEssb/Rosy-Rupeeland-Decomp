@@ -11,7 +11,7 @@
     .extern GX_DispOn
     .extern GX_SetGraphicsMode
     .extern func_02002700
-    .extern func_020755bc
+    .extern GraphicsSpriteRenderer_ClearTextBuffer
     .extern Graphics3DResourceOwner_Init
     .extern Graphics3DLightSet_Init
     .extern Graphics3DSceneState_Init
@@ -71,7 +71,7 @@ func_ov012_021fd170:
     str r0, [r4, #0x74]
     ldr r0, L_021fd42c
     ldr r0, [r0]
-    bl func_020755bc
+    bl GraphicsSpriteRenderer_ClearTextBuffer
     add r0, sp, #0x18
     bl CheckedFS_InitFile
     ldr r1, L_021fd430

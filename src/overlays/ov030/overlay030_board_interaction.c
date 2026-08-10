@@ -15,7 +15,7 @@ extern "C" {
 #endif
 extern void *Heap_Alloc(u32, const void *, s32, void *);
 extern void Heap_Free(void *);
-extern void func_020755bc(void *);
+extern void GraphicsSpriteRenderer_ClearTextBuffer(void *);
 extern void GraphicsSpriteCanvas_FillRect(void *, s32, s32, s32, s32, s32);
 extern s32 func_02073aa8(void *, s32, s32);
 extern void func_02095940(void *);
@@ -43,7 +43,7 @@ extern "C" void func_ov030_021fd434(void *board)
         slots = func_ov030_021fce00(slots);
     FIELD(void *, board, 0x1b0) = slots;
     --FIELD(s32, board, 0x1b4);
-    func_020755bc(FIELD(void *, board, 0));
+    GraphicsSpriteRenderer_ClearTextBuffer(FIELD(void *, board, 0));
 
     for (s32 i = 0; i < 7; ++i) {
         void *sprite = FIELD(void *, board, 0x34 + i * 4);

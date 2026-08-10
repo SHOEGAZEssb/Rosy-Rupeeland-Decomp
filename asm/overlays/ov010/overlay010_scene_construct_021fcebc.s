@@ -22,7 +22,7 @@
     .extern func_020720c0
     .extern GraphicsSpriteRenderer_HideAllSprites
     .extern func_02075238
-    .extern func_020755bc
+    .extern GraphicsSpriteRenderer_ClearTextBuffer
     .extern Graphics3DResourceOwner_Init
     .extern Graphics3DResourceOwner_CreateManager
     .extern Graphics3DSceneState_Init
@@ -70,7 +70,7 @@ func_ov010_021fcebc: ; 0x021fcebc
     ldr r0, L_021fd1a4
     str r1, [r10, #0x74]
     ldr r0, [r0, #0x0]
-    bl func_020755bc
+    bl GraphicsSpriteRenderer_ClearTextBuffer
     mov r9, #0x0
     ldr r5, L_021fd1a8
     ldr r7, L_021fd1ac

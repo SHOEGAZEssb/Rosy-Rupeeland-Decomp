@@ -1,7 +1,7 @@
     .text
 /* Exact fallback; see src/overlays/ov021/overlay021_selection_display.c. */
     .extern data_020f4e14
-    .extern func_02075598
+    .extern GraphicsSpriteRenderer_SetFontResource
     .extern func_02076148
     .extern func_02092960
 
@@ -14,7 +14,7 @@ func_ov021_021ff404:
     mov r4, r1
     ldr r0, [r2, #0x0]
     ldr r1, [r5, #0x64]
-    bl func_02075598
+    bl GraphicsSpriteRenderer_SetFontResource
     cmp r4, #0x0
     beq L_021ff4b0
     ldr r0, [r4, #0x4]

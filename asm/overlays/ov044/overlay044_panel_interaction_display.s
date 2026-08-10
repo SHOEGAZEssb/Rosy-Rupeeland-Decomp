@@ -1,6 +1,6 @@
 .text
 .extern GraphicsSpriteCanvas_FillRect
-.extern func_02075598
+.extern GraphicsSpriteRenderer_SetFontResource
 .extern func_ov044_0220bb48
 .extern func_02079f3c
 .extern func_02076148
@@ -41,7 +41,7 @@ func_ov044_0220bba4:
     bge .L_0220bd18
     ldr r0, [r10, #0x0]
     ldr r1, [r10, #0x14]
-    bl func_02075598
+    bl GraphicsSpriteRenderer_SetFontResource
     ldr r0, [r10, #0x38]
     mov r1, #0x1
     add r0, r0, r8, lsl #0x5
@@ -89,7 +89,7 @@ func_ov044_0220bba4:
     cmp r0, #0x0
     ldr r0, [r10, #0x0]
     subne r8, r8, #0x2
-    bl func_02075598
+    bl GraphicsSpriteRenderer_SetFontResource
     ldrh r1, [r9, #0x4]
     mov r0, #0xe
     mov r2, #0xa

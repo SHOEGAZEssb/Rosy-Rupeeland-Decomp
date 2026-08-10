@@ -20,8 +20,8 @@ extern void GraphicsSpriteState_SetAnimationIndex(void *, s32);
 extern void func_02073e48(void *, s32, s32, s32, s32, s32, s32);
 extern void *func_02073ffc(void *, void *, s32);
 extern void *func_020742cc(void *);
-extern void func_02075598(void *, void *);
-extern void func_020755bc(void *);
+extern void GraphicsSpriteRenderer_SetFontResource(void *, void *);
+extern void GraphicsSpriteRenderer_ClearTextBuffer(void *);
 extern void func_02075e48(void *, u16, s32, s32, s32);
 extern s32 func_02075ea8(void *, s32);
 extern s32 func_02075ecc(u16);
@@ -98,7 +98,7 @@ extern "C" void *func_ov025_021fce00(void *widget)
 extern "C" void func_ov025_021fd03c(void *widget, void *font_context,
                                      s32 show_cursor)
 {
-    func_02075598(data_020f4e14, font_context);
+    GraphicsSpriteRenderer_SetFontResource(data_020f4e14, font_context);
     GraphicsSpriteCanvas_FillRect(data_020f4e14, 0, 0, 0xff, 0x18, 0);
     for (s32 i = 0; i < FIELD(s32, widget, 0x17c); ++i) {
         s32 glyph = func_02075ecc(FIELD(u16, widget, 0x180 + i * 2));
@@ -129,8 +129,8 @@ extern "C" void func_ov025_021fd03c(void *widget, void *font_context,
  */
 extern "C" void func_ov025_021fd160(void *widget, void *font_context)
 {
-    func_020755bc(data_020f4e14);
-    func_02075598(data_020f4e14, font_context);
+    GraphicsSpriteRenderer_ClearTextBuffer(data_020f4e14);
+    GraphicsSpriteRenderer_SetFontResource(data_020f4e14, font_context);
     const u8 *special = data_ov025_02202f40 +
                         (alternate_locale() ? 16 : 0);
     for (s32 i = 0; i < 4; ++i)

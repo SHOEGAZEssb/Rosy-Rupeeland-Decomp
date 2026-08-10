@@ -12,7 +12,7 @@ extern "C" void *data_020f4e14;
 extern "C" void *gDebugFont;
 extern "C" u32 data_ov044_0220d2a8[2];
 extern "C" u32 data_ov044_0220d2f0[2];
-extern "C" void func_020755bc(void *font);
+extern "C" void GraphicsSpriteRenderer_ClearTextBuffer(void *font);
 extern "C" void func_ov044_0220c74c(void *object, u32 messageId);
 extern "C" void func_ov044_0220bba4(void *panel);
 extern "C" void func_ov044_0220c700(void *object);
@@ -38,8 +38,8 @@ extern "C" s32 func_ov044_0220c97c(void *object)
 {
     switch (FIELD(s32, object, 4)) {
     case 0: {
-        func_020755bc(data_020f4e14);
-        func_020755bc(gDebugFont);
+        GraphicsSpriteRenderer_ClearTextBuffer(data_020f4e14);
+        GraphicsSpriteRenderer_ClearTextBuffer(gDebugFont);
         func_ov044_0220c74c(object, 0x2a);
         void *panel = FIELD(void *, object, 0x228);
         if (FIELD(s32, panel, 0x40) != 0) {

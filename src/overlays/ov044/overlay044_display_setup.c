@@ -16,7 +16,7 @@ extern "C" void func_02092638(s32 a, s32 b, s32 c, s32 d);
 extern "C" void func_020925dc(s32 value);
 extern "C" void func_02092618(void);
 extern "C" void func_02092688(s32 a, s32 b, s32 c, s32 d);
-extern "C" void *func_020755e0(void *font);
+extern "C" void *GraphicsSpriteRenderer_GetObjectPaletteAddress(void *font);
 
 static void configure_bg_controls(volatile u16 *registers)
 {
@@ -48,8 +48,8 @@ extern "C" void func_ov044_0220c19c(void *object)
     FIELD(s32, object, 0x48) = 0x1c;
     func_020925f8();
 
-    void *mainState = func_020755e0((void *)data_020f4e14);
-    void *debugState = func_020755e0(gDebugFont);
+    void *mainState = GraphicsSpriteRenderer_GetObjectPaletteAddress((void *)data_020f4e14);
+    void *debugState = GraphicsSpriteRenderer_GetObjectPaletteAddress(gDebugFont);
     u16 firstMetric = FIELD(u16, mainState, 0xe);
     FIELD(u16, debugState, 6) = firstMetric;
     FIELD(u16, mainState, 6) = firstMetric;

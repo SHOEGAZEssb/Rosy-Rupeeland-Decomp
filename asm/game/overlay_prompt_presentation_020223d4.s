@@ -14,7 +14,7 @@
 .extern GamePhaseCurrencyHud_SetVisible
 .extern func_0201e250
 .extern func_0201e28c
-.extern func_020755bc
+.extern GraphicsSpriteRenderer_ClearTextBuffer
 .extern func_02091fb0
 .extern func_02092c8c
 .extern func_ov001_021fbe6c
@@ -90,7 +90,7 @@ func_020223d4: ; 0x020223d4
     bl GameWork_ClearFlag
     ldr r0, .L_0202252c
     ldr r0, [r0, #0x0]
-    bl func_020755bc
+    bl GraphicsSpriteRenderer_ClearTextBuffer
     mov r0, #0x0
     str r0, [r4, #0x20]
     ldr r0, [r4, #0xc]

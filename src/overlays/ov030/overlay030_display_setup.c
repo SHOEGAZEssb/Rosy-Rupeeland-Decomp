@@ -15,7 +15,7 @@ extern void func_02092638(s32, s32, s32, s32);
 extern void func_020925dc(s32);
 extern void func_02092618(void);
 extern void func_02092688(s32, s32, s32, s32);
-extern void *func_020755e0(void *);
+extern void *GraphicsSpriteRenderer_GetObjectPaletteAddress(void *);
 extern void func_ov030_021fe3e0(s32, s32, s32, s32, s32);
 extern void func_ov030_021fe414(s32, s32, s32, s32, s32);
 #ifdef __cplusplus
@@ -50,7 +50,7 @@ extern "C" void func_ov030_021fe2b4(void *scene)
     func_02092618();
     func_02092688(0, 1, 2, 3);
 
-    void *configuration = func_020755e0(data_020f4e14[0]);
+    void *configuration = GraphicsSpriteRenderer_GetObjectPaletteAddress(data_020f4e14[0]);
     FIELD(u16, configuration, 6) = FIELD(u16, configuration, 0x16);
     FIELD(u16, configuration, 8) = FIELD(u16, configuration, 0x1e);
     FIELD(u16, configuration, 0xa) = 0x4210;

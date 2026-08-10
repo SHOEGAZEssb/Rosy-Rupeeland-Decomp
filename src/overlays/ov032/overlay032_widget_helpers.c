@@ -17,7 +17,7 @@ extern "C" {
 #endif
 extern s32 func_020befec(...);
 extern void func_ov032_02201ea4(void *);
-extern void func_020755bc(void *);
+extern void GraphicsSpriteRenderer_ClearTextBuffer(void *);
 extern void *func_02097f30(void *);
 extern void func_02076148(...);
 extern void *func_02093cb4(void *);
@@ -78,7 +78,7 @@ extern "C" s32 func_ov032_02201e58(void *widget)
  */
 extern "C" void func_ov032_02201ea4(void *widget)
 {
-    func_020755bc(data_020f4e14[0]);
+    GraphicsSpriteRenderer_ClearTextBuffer(data_020f4e14[0]);
     s32 base = FIELD(s32, FIELD(void *, widget, 0x4c), 0xc);
     for (s32 row = 0; row < 5 && row + base < FIELD(s32, widget, 0xc) + 1; ++row) {
         u8 *record = (u8 *)data_021f6288 + (row + base) * 8;

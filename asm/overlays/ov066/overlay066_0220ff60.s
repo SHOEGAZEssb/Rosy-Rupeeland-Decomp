@@ -9,7 +9,7 @@
 .extern data_ov066_02210f88
 .extern data_ov066_02210f98
 .extern data_ov066_02210fb4
-.extern func_020755bc
+.extern GraphicsSpriteRenderer_ClearTextBuffer
 .extern func_02075858
 .extern GraphicsSpriteCanvas_DrawLine
 .extern func_020766c8
@@ -27,10 +27,10 @@ func_ov066_0220ff60:
     ldr r1, .L_022103e0
     mov r5, r0
     ldr r0, [r1, #0x0]
-    bl func_020755bc
+    bl GraphicsSpriteRenderer_ClearTextBuffer
     ldr r0, .L_022103e4
     ldr r0, [r0, #0x0]
-    bl func_020755bc
+    bl GraphicsSpriteRenderer_ClearTextBuffer
     ldr r0, [r5, #0x3c]
     cmp r0, #0x0
     beq .L_0220ffa4

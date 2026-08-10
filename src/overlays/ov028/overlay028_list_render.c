@@ -16,8 +16,8 @@ extern const u8 data_021f3ecc[];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_02075598(void *, void *);
-extern void func_020755bc(void *);
+extern void GraphicsSpriteRenderer_SetFontResource(void *, void *);
+extern void GraphicsSpriteRenderer_ClearTextBuffer(void *);
 extern void func_02076148(void *, const void *, s32, s32, s32, s32, s32);
 extern const void *func_02079f3c(const void *, u16);
 extern s32 func_020befec(s32, s32);
@@ -38,10 +38,10 @@ extern void func_ov028_021fd468(void *);
 extern "C" void func_ov028_021fd468(void *state)
 {
     void *font = FIELD(void *, state, 0);
-    func_020755bc(font);
+    GraphicsSpriteRenderer_ClearTextBuffer(font);
     if (FIELD(s32, state, 0x40) == 0)
         return;
-    func_02075598(font, FIELD(void *, state, 0x14));
+    GraphicsSpriteRenderer_SetFontResource(font, FIELD(void *, state, 0x14));
     Overlay028Row *rows = FIELD(Overlay028Row *, state, 0x38);
     s32 first = FIELD(s32, FIELD(void *, state, 0x44), 0xc);
     for (s32 visible = 0; visible < 5; ++visible) {

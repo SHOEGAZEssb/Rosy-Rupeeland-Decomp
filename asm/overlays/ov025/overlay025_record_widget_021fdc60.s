@@ -4,7 +4,7 @@
 .extern data_020f4e14
 .extern data_ov025_02202ef8
 .extern data_ov025_02202f60
-.extern func_02075598
+.extern GraphicsSpriteRenderer_SetFontResource
 .extern func_02075e48
 .extern func_02075ecc
 .extern func_020befec
@@ -29,7 +29,7 @@ func_ov025_021fdc60:
     ldr r0, L_021fde44
     ldr r1, [r8, #0x30]
     ldr r0, [r0, #0x0]
-    bl func_02075598
+    bl GraphicsSpriteRenderer_SetFontResource
     ldr r1, [r8, #0x78]
     mov r0, #0x3c
     mul r0, r1, r0
@@ -69,7 +69,7 @@ L_021fdd14:
     mov r5, #0x3
     ldr r0, [r0, #0x0]
     addeq r5, r5, #0x2
-    bl func_02075598
+    bl GraphicsSpriteRenderer_SetFontResource
     ldr r10, [r8, #0x84]
     mov r6, #0x0
     cmp r10, #0x0

@@ -17,7 +17,7 @@ extern s32 DisplayBrightness_IsMainTransitionComplete(void);
 extern void func_02064e7c(void *, s32, u16);
 extern void *func_ov030_021fd27c(void *);
 extern void Heap_Free(void *);
-extern void func_020755bc(void *);
+extern void GraphicsSpriteRenderer_ClearTextBuffer(void *);
 extern void func_ov030_021fe808(void *);
 extern void func_ov030_021feb0c(void *);
 extern void func_ov030_021fda14(void *, s32, s32);
@@ -61,8 +61,8 @@ extern "C" s32 func_ov030_021ff5a4(void *scene)
                 Heap_Free(board);
             }
             FIELD(void *, scene, 0x2c4) = 0;
-            func_020755bc(data_020f4e14[0]);
-            func_020755bc(gDebugFont);
+            GraphicsSpriteRenderer_ClearTextBuffer(data_020f4e14[0]);
+            GraphicsSpriteRenderer_ClearTextBuffer(gDebugFont);
             FIELD(u32, scene, 0x48) &= ~3;
             func_ov030_021fe808(scene);
             FIELD(s32, FIELD(void *, scene, 0x78), 0x20) = 1;

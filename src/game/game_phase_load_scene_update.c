@@ -60,7 +60,7 @@ extern int func_0200199c(...);
 extern int OverlaySlot_UnloadOverlay(...);
 extern int func_02058eb8(...);
 extern int func_02092418(...);
-extern int func_020755bc(...);
+extern int GraphicsSpriteRenderer_ClearTextBuffer(...);
 extern int func_02008570(...);
 extern int GamePhaseState_SetEnabled(...);
 extern int GamePhaseAreaScene_SetEnabled(...);
@@ -362,7 +362,7 @@ code_r0x0200dd3c:
       if (iVar5 < 2) {
         if ((iVar5 == 1) &&
            ((uint)(*(int *)(*(int *)(*UNK_0200e0e4 + 0x30bc) + 0x40) << 0xc) >> 0x1e == 2)) {
-          func_020755bc(*UNK_0200e0f0);
+          GraphicsSpriteRenderer_ClearTextBuffer(*UNK_0200e0f0);
           func_02008570(*UNK_0200e0e4,0,1);
           GamePhaseState_SetEnabled(*UNK_0200e0e4 + 0x24,1);
           func_02092c8c(1,0);
@@ -387,15 +387,15 @@ code_r0x0200dd3c:
         break;
       case 0x17:
 code_r0x0200e038:
-        func_020755bc(*UNK_0200e0f0);
+        GraphicsSpriteRenderer_ClearTextBuffer(*UNK_0200e0f0);
         func_02008570(*UNK_0200e0e4,0,1);
         GamePhaseState_SetEnabled(*UNK_0200e0e4 + 0x24,1);
         func_02092c8c(1,0);
         goto code_r0x0200e2ac;
       }
 code_r0x0200e21c:
-      func_020755bc(*UNK_0200e0f0);
-      func_020755bc(*UNK_0200e0fc);
+      GraphicsSpriteRenderer_ClearTextBuffer(*UNK_0200e0f0);
+      GraphicsSpriteRenderer_ClearTextBuffer(*UNK_0200e0fc);
       func_02008570(*UNK_0200e0e4,2,1);
       GamePhaseAreaScene_SetEnabled(*(undefined4 *)(*UNK_0200e0e4 + 0x2fb8),1);
       GamePhaseState_SetEnabled(*UNK_0200e0e4 + 0x24,1);

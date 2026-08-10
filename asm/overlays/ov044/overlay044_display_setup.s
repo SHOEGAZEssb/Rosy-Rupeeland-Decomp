@@ -5,7 +5,7 @@
 .extern func_020925dc
 .extern func_02092618
 .extern func_02092688
-.extern func_020755e0
+.extern GraphicsSpriteRenderer_GetObjectPaletteAddress
 .extern data_020f4e14
 .extern gDebugFont
 
@@ -68,11 +68,11 @@ func_ov044_0220c19c:
     bl func_020925f8
     ldr r0, .L_0220c2d8
     ldr r0, [r0, #0x0]
-    bl func_020755e0
+    bl GraphicsSpriteRenderer_GetObjectPaletteAddress
     mov r4, r0
     ldr r0, .L_0220c2dc
     ldr r0, [r0, #0x0]
-    bl func_020755e0
+    bl GraphicsSpriteRenderer_GetObjectPaletteAddress
     ldrh r1, [r4, #0xe]
     strh r1, [r0, #0x6]
     strh r1, [r4, #0x6]

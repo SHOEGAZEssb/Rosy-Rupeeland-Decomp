@@ -3,7 +3,7 @@
 /* Exact fallback; see src/overlays/ov023/overlay023_state_machines.c. */
 .extern data_ov023_021ffb70
 .extern DisplayBrightness_IsMainTransitionComplete
-.extern func_020755bc
+.extern GraphicsSpriteRenderer_ClearTextBuffer
 .extern func_0207c4cc
 .extern func_02091bac
 .extern func_02091bd0
@@ -95,7 +95,7 @@ L_021ff1a8:
     beq L_021ff288
     ldr r0, L_021ff298
     ldr r0, [r0, #0x0]
-    bl func_020755bc
+    bl GraphicsSpriteRenderer_ClearTextBuffer
     mov r0, #0x1
     mov r1, #0x0
     bl func_02092c8c

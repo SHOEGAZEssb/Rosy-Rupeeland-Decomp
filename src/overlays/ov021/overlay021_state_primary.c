@@ -28,7 +28,7 @@ extern s32 GamePhaseCurrencyHud_GetCurrency(void *);
 extern void GamePhaseCurrencyHud_AddCurrency(void *, s32, s32);
 extern s32 func_02062b28(void *);
 extern void func_02062ca8(void *);
-extern void func_020755bc(void *);
+extern void GraphicsSpriteRenderer_ClearTextBuffer(void *);
 extern void func_02092260(void *, s32);
 extern void func_02092c8c(s32, s32);
 extern void func_020939d8(void *);
@@ -298,7 +298,7 @@ extern "C" s32 func_ov021_02201a88(void *state)
         if (DisplayBrightness_IsMainTransitionComplete() != 0) {
             func_02095940((u8 *)state + 0xa0);
             func_ov021_021ff050(state, FIELD(s32, state, 0x2c4));
-            func_020755bc(data_020f4e14);
+            GraphicsSpriteRenderer_ClearTextBuffer(data_020f4e14);
             func_ov021_021feb60(state);
             FIELD(s32, state, 4)++;
             FIELD(s32, state, 8) = 0;

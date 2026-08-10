@@ -11,7 +11,7 @@ extern void *gDebugFont;
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_02075598(void *, void *);
+extern void GraphicsSpriteRenderer_SetFontResource(void *, void *);
 extern s32 func_02076148(void *, const void *, s32, s32, s32, s32, s32);
 extern s32 func_020761f8(void *, const void *, s32, s32);
 extern void func_0207c460(void *, u16);
@@ -49,7 +49,7 @@ extern "C" void func_ov018_021fe46c(void *state)
         y = 0x10;
 
     func_0207c460(&temporary, FIELD(u16, descriptor, 0x1a));
-    func_02075598(gDebugFont, (u8 *)state + 0x70);
+    GraphicsSpriteRenderer_SetFontResource(gDebugFont, (u8 *)state + 0x70);
 
     const void *primary = (u8 *)temporary.storage + 0x2c;
     s32 width = func_020761f8(gDebugFont, primary, 8, -2);

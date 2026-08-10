@@ -10,8 +10,8 @@
 .extern data_020d7a48
 .extern data_021f3ecc
 .extern GraphicsSpriteState_SetAnimationIndex
-.extern func_02075598
-.extern func_020755bc
+.extern GraphicsSpriteRenderer_SetFontResource
+.extern GraphicsSpriteRenderer_ClearTextBuffer
 .extern func_02075e48
 .extern func_02076148
 .extern func_02079f3c
@@ -31,7 +31,7 @@ func_02028100: ; 0x02028100
     str r2, [r0, #0x20]
     ldr r0, [r5, #0x30]
     mov r4, r1
-    bl func_020755bc
+    bl GraphicsSpriteRenderer_ClearTextBuffer
     ldr r3, [r5, #0x38]
     ldr r0, .L_02028340
     ldrh r2, [r3, #0x24]
@@ -42,7 +42,7 @@ func_02028100: ; 0x02028100
     bl GraphicsSpriteState_SetAnimationIndex
     ldr r0, [r5, #0x30]
     ldr r1, [r5, #0x0]
-    bl func_02075598
+    bl GraphicsSpriteRenderer_SetFontResource
     ldr r0, .L_02028344
     mov r1, r4, lsl #0x1
     ldrb r0, [r0, #0x5f]
@@ -67,7 +67,7 @@ func_02028100: ; 0x02028100
     bl func_02076148
     ldr r0, [r5, #0x30]
     ldr r1, [r5, #0x4]
-    bl func_02075598
+    bl GraphicsSpriteRenderer_SetFontResource
     mov r0, #0x34
     mul r6, r4, r0
     ldr r1, .L_02028350

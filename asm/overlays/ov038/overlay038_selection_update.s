@@ -13,7 +13,7 @@
     .extern func_0202836c
     .extern GraphicsSpriteCanvas_FillRect
     .extern func_0207c460
-    .extern func_02075598
+    .extern GraphicsSpriteRenderer_SetFontResource
     .extern func_02076148
     .extern data_020f4e14
     .extern data_020d7a48
@@ -106,7 +106,7 @@ L_021fd468:
     bl func_0207c460
     ldr r0, [r4, #0x0]
     ldr r1, [r10, #0x31c]
-    bl func_02075598
+    bl GraphicsSpriteRenderer_SetFontResource
     add ip, r9, #0x1
     mov r3, #0x18
     stmia sp, {r5, r11}

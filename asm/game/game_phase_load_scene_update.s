@@ -52,7 +52,7 @@
 .extern GraphicsSpriteGroup_ReleaseResources
 .extern GraphicsSpriteGroup_PrepareResources
 .extern func_020745c4
-.extern func_020755bc
+.extern GraphicsSpriteRenderer_ClearTextBuffer
 .extern func_02091fb0
 .extern func_020923a4
 .extern func_02092418
@@ -1200,7 +1200,7 @@ L_0200e018: ; jump table
 L_0200e038:
     ldr r0, L_0200e0f0
     ldr r0, [r0, #0x0]
-    bl func_020755bc
+    bl GraphicsSpriteRenderer_ClearTextBuffer
     ldr r0, L_0200e0e4
     mov r1, #0x0
     ldr r0, [r0, #0x0]
@@ -1227,7 +1227,7 @@ L_0200e07c:
     bne L_0200e21c
     ldr r0, L_0200e0f0
     ldr r0, [r0, #0x0]
-    bl func_020755bc
+    bl GraphicsSpriteRenderer_ClearTextBuffer
     ldr r0, L_0200e0e4
     mov r1, #0x0
     ldr r0, [r0, #0x0]
@@ -1323,10 +1323,10 @@ L_0200e218: .word data_020d5534
 L_0200e21c:
     ldr r0, L_0200e0f0
     ldr r0, [r0, #0x0]
-    bl func_020755bc
+    bl GraphicsSpriteRenderer_ClearTextBuffer
     ldr r0, L_0200e0fc
     ldr r0, [r0, #0x0]
-    bl func_020755bc
+    bl GraphicsSpriteRenderer_ClearTextBuffer
     ldr r0, L_0200e0e4
     mov r1, #0x2
     ldr r0, [r0, #0x0]

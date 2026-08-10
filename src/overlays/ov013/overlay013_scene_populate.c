@@ -37,7 +37,7 @@ extern void func_02095988(void *, s32);
 extern void func_0202844c(void *);
 extern void func_ov013_021fda28(void *, s32);
 extern void func_ov013_021fdb50(void *, s32);
-extern void func_020755bc(void *);
+extern void GraphicsSpriteRenderer_ClearTextBuffer(void *);
 extern void func_020925a4(s32);
 extern void func_020925f8(void);
 extern void func_02092638(s32, s32, s32, s32);
@@ -175,9 +175,9 @@ void func_ov013_021fd310(void *state)
                       3, 0, 4);
     }
 
-    func_020755bc(data_020f4e14);
+    GraphicsSpriteRenderer_ClearTextBuffer(data_020f4e14);
     if (FIELD(s32, state, 0x97c) == 0)
-        func_020755bc(gDebugFont);
+        GraphicsSpriteRenderer_ClearTextBuffer(gDebugFont);
     FIELD(s32, state, 0x48) = 0x18;
     func_020925a4(0);
     *bg0cnt = (*bg0cnt & 0x43) | 0x3c00;

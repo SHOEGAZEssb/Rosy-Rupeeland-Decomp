@@ -15,7 +15,7 @@
 .extern GamePhaseCurrencyHud_SetVisible
 .extern func_02071980
 .extern func_020742cc
-.extern func_020755bc
+.extern GraphicsSpriteRenderer_ClearTextBuffer
 .extern func_02092cc0
 .extern func_ov052_0220d600
 .extern gDebugFont
@@ -167,7 +167,7 @@ func_ov052_0220d618:
     bl GamePhaseRuntime_SetPlacementMode
     ldr r0, .L_0220d86c
     ldr r0, [r0, #0x0]
-    bl func_020755bc
+    bl GraphicsSpriteRenderer_ClearTextBuffer
     mov r0, r4
     add sp, sp, #0xc
     ldmia sp!, {r3, r4, pc}

@@ -22,7 +22,7 @@ extern void func_02070eac(void *, s32, s32);
 extern void func_02070f34(void *, s32);
 extern void func_02070f80(void *, s32);
 extern void func_02072048(void *, s32, s32);
-extern void *func_020755e0(void *);
+extern void *GraphicsSpriteRenderer_GetObjectPaletteAddress(void *);
 extern void func_020925a4(s32);
 extern void func_020925dc(s32);
 extern void func_020925f8(void);
@@ -77,7 +77,7 @@ extern "C" void func_ov025_021ffdfc(void *scene)
     func_020706c4(set[0], 2, 0);
     func_02070eac(set[2], 2, 0);
     func_020b1ff0((u8 *)func_02070874(set[1]) + 0xa0, 0, 0x20);
-    u8 *font = (u8 *)func_020755e0(data_020f4e14);
+    u8 *font = (u8 *)GraphicsSpriteRenderer_GetObjectPaletteAddress(data_020f4e14);
     FIELD(u16, font, 6) = FIELD(u16, font, 0x1c);
     FIELD(u16, font, 8) = 0x31f;
     FIELD(u16, font, 0xa) = FIELD(u16, font, 0x1c);

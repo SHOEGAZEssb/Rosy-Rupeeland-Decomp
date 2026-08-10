@@ -13,7 +13,7 @@ extern "C" void *gSystemState;
 extern "C" void func_02073ef8(void *binding);
 extern "C" void GraphicsSpriteCanvas_FillRect(void *font, s32 x, s32 y, s32 color,
                                s32 width, s32 flags);
-extern "C" void *func_02075598(void *font, void *presentation);
+extern "C" void *GraphicsSpriteRenderer_SetFontResource(void *font, void *presentation);
 extern "C" void *func_02079f3c(const void *table, s32 index);
 extern "C" void func_02076148(void *font, const void *text, s32 x, s32 y,
                                s32 color, s32 mode, s32 flags);
@@ -71,7 +71,7 @@ extern "C" void func_ov044_0220bba4(void *object)
         s32 index = FIELD(s32, child, 0xc) + visible;
         if (index >= FIELD(s32, object, 0x40))
             break;
-        func_02075598(font, (u8 *)object + 0x14);
+        GraphicsSpriteRenderer_SetFontResource(font, (u8 *)object + 0x14);
         void *record = (u8 *)FIELD(void *, object, 0x38) + index * 0x20;
         s32 y = (visible + 1) * 24;
         if (func_ov044_0220bb48(record, 1)) {
@@ -84,7 +84,7 @@ extern "C" void func_ov044_0220bba4(void *object)
             if (FIELD(u8, gSystemState, 0x5f))
                 numberY -= 2;
             u16 value = FIELD(u16, item, 4);
-            func_02075598(font, FIELD(void *, object, 0x18));
+            GraphicsSpriteRenderer_SetFontResource(font, FIELD(void *, object, 0x18));
             func_02092960(font, value, 10, 0xb0, numberY,
                            value >= 99 ? 3 : 14, 8, 1);
         }

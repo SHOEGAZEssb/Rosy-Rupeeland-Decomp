@@ -27,7 +27,7 @@
 .extern GamePhaseAreaScene_RegisterEnabledRegions
 .extern func_02028404
 .extern func_020740a4
-.extern func_020755bc
+.extern GraphicsSpriteRenderer_ClearTextBuffer
 .extern func_ov059_02210c24
 .extern func_ov059_02210cb8
 .extern func_ov059_02210cf8
@@ -48,7 +48,7 @@ func_ov059_02211330:
     ldr r1, .L_02211840
     mov r5, r0
     ldr r0, [r1, #0x0]
-    bl func_020755bc
+    bl GraphicsSpriteRenderer_ClearTextBuffer
     bl func_02008f2c
     ldr r1, [r5, #0x24]
     cmp r1, #0x64

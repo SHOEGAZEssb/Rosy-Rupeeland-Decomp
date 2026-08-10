@@ -29,7 +29,7 @@ extern void MIi_CpuClearFast(u32 value, void *destination, u32 size);
  * active object at field_0c. The precise role of both fields is not yet
  * confirmed. No allocation or hardware access occurs.
  */
-void *func_02075598(GraphicsSpriteRenderer *renderer, void *replacement)
+void *GraphicsSpriteRenderer_SetFontResource(GraphicsSpriteRenderer *renderer, void *replacement)
 {
     void *previous = renderer->field_18;
 
@@ -43,7 +43,7 @@ void *func_02075598(GraphicsSpriteRenderer *renderer, void *replacement)
  * Clear renderer->field_18 unconditionally. Returns no value and does not
  * release the referenced object; ownership of that pointer remains unknown.
  */
-void func_020755b0(GraphicsSpriteRenderer *renderer)
+void GraphicsSpriteRenderer_ClearFontResource(GraphicsSpriteRenderer *renderer)
 {
     renderer->field_18 = 0;
 }
@@ -53,7 +53,7 @@ void func_020755b0(GraphicsSpriteRenderer *renderer)
  * 0x6000-byte buffer referenced by field_00 using the SDK fast-clear routine.
  * Returns no value and writes the renderer-owned text/tile buffer.
  */
-void func_020755bc(GraphicsSpriteRenderer *renderer)
+void GraphicsSpriteRenderer_ClearTextBuffer(GraphicsSpriteRenderer *renderer)
 {
     if (renderer->field_30 != 0) {
         MIi_CpuClearFast(0, renderer->field_00,
@@ -69,7 +69,7 @@ void func_020755bc(GraphicsSpriteRenderer *renderer)
  * native port without a graphics-backend mapping.
  */
 #ifndef MATCHING
-void *func_020755e0(GraphicsSpriteRenderer *renderer)
+void *GraphicsSpriteRenderer_GetObjectPaletteAddress(GraphicsSpriteRenderer *renderer)
 {
     u32 offset;
 
@@ -88,7 +88,7 @@ void *func_020755e0(GraphicsSpriteRenderer *renderer)
 }
 #else
 /* This matching fallback implements the documented portable C directly above. */
-asm void *func_020755e0(GraphicsSpriteRenderer *renderer)
+asm void *GraphicsSpriteRenderer_GetObjectPaletteAddress(GraphicsSpriteRenderer *renderer)
 {
     ldr r1, [r0, #0x0c]
     cmp r1, #0

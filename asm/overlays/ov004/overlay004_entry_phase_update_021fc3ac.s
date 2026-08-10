@@ -1,7 +1,7 @@
     .text
     .extern func_020922f0
     .extern func_020592fc
-    .extern func_020755bc
+    .extern GraphicsSpriteRenderer_ClearTextBuffer
     .extern func_ov004_021fb6e4
     .extern func_ov004_021fbf10
     .extern gSoundContext
@@ -109,10 +109,10 @@ L_021fc4e8:
 L_021fc4fc:
     ldr r0, L_021fc570
     ldr r0, [r0, #0x0]
-    bl func_020755bc
+    bl GraphicsSpriteRenderer_ClearTextBuffer
     ldr r0, L_021fc574
     ldr r0, [r0, #0x0]
-    bl func_020755bc
+    bl GraphicsSpriteRenderer_ClearTextBuffer
     ldr r1, [r4, #0x4]
     mov r0, #0x0
     add r1, r1, #0x1

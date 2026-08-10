@@ -9,7 +9,7 @@
     .extern data_020f4e18
     .extern func_02070eac
     .extern func_02070f80
-    .extern func_020755e0
+    .extern GraphicsSpriteRenderer_GetObjectPaletteAddress
     .extern func_020925a4
     .extern func_020925dc
     .extern func_020925f8
@@ -149,11 +149,11 @@ L_021fef4c:
     bl func_02070eac
     ldr r0, L_021ff03c
     ldr r0, [r0, #0x0]
-    bl func_020755e0
+    bl GraphicsSpriteRenderer_GetObjectPaletteAddress
     mov r5, r0
     ldr r0, L_021ff040
     ldr r0, [r0, #0x0]
-    bl func_020755e0
+    bl GraphicsSpriteRenderer_GetObjectPaletteAddress
     ldrh r1, [r5, #0xe]
     ldr r4, L_021ff044
     mov r3, #0x8
