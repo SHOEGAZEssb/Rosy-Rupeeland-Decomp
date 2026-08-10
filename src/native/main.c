@@ -6,6 +6,7 @@
  * of the recovered debug-menu behavior and consumes DS-compatible input.
  */
 #include "tingle/native_debug_menu.h"
+#include "tingle/native_phase_selector.h"
 #include "tingle/native_platform.h"
 #include "tingle/native_data.h"
 
@@ -23,6 +24,9 @@ int TingleNative_Run(int argc, char **argv)
     u32 *pixels;
     TingleNativeCanvas canvas;
     TingleNativeDebugMenu menu;
+    TingleNativePhaseSelector phase_selector;
+    enum { NATIVE_SCENE_DEBUG_MENU, NATIVE_SCENE_PHASE_SELECTOR } scene =
+        NATIVE_SCENE_DEBUG_MENU;
     int data_ready = 0;
     int i;
 
@@ -67,10 +71,30 @@ int TingleNative_Run(int argc, char **argv)
     canvas.height = TINGLE_FRAMEBUFFER_HEIGHT;
     canvas.stride = TINGLE_SCREEN_WIDTH;
     TingleNativeDebugMenu_Init(&menu);
+    TingleNativePhaseSelector_Init(&phase_selector);
 
     while (TingleNativePlatform_Poll(platform, &input)) {
-        (void)TingleNativeDebugMenu_Update(&menu, &input);
-        TingleNativeDebugMenu_Draw(&menu, &canvas, data_ready);
+        if (scene == NATIVE_SCENE_DEBUG_MENU) {
+            s32 activation = TingleNativeDebugMenu_Update(&menu, &input);
+
+            if (activation == 0) {
+                TingleNativePhaseSelector_Init(&phase_selector);
+                scene = NATIVE_SCENE_PHASE_SELECTOR;
+            }
+        } else {
+            TingleNativePhaseSelectorEvent event =
+                TingleNativePhaseSelector_Update(&phase_selector, &input);
+
+            if (event == TINGLE_NATIVE_PHASE_EVENT_BACK) {
+                TingleNativeDebugMenu_Init(&menu);
+                scene = NATIVE_SCENE_DEBUG_MENU;
+            }
+        }
+
+        if (scene == NATIVE_SCENE_DEBUG_MENU)
+            TingleNativeDebugMenu_Draw(&menu, &canvas, data_ready);
+        else
+            TingleNativePhaseSelector_Draw(&phase_selector, &canvas);
         TingleNativePlatform_Present(platform, pixels);
         TingleNativePlatform_WaitFrame(platform);
     }

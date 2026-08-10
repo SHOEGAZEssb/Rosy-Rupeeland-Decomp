@@ -11,6 +11,7 @@ add_executable(tingle_native WIN32
     src/native/native_debug_menu.c
     src/native/native_data.c
     src/native/native_input.c
+    src/native/native_phase_selector.c
     src/native/native_render.c
     src/native/platform_win32.c
 )
@@ -73,4 +74,19 @@ if(BUILD_TESTING)
         target_compile_options(native_input_test PRIVATE -Wall -Wextra -Werror)
     endif()
     add_test(NAME native_input_test COMMAND native_input_test)
+
+    add_executable(native_phase_selector_test
+        tests/native_phase_selector_test.c
+        src/native/native_phase_selector.c
+        src/native/native_render.c
+    )
+    target_include_directories(native_phase_selector_test PRIVATE include)
+    target_compile_features(native_phase_selector_test PRIVATE c_std_11)
+    if(MSVC)
+        target_compile_definitions(native_phase_selector_test PRIVATE _CRT_SECURE_NO_WARNINGS)
+        target_compile_options(native_phase_selector_test PRIVATE /W4 /WX)
+    else()
+        target_compile_options(native_phase_selector_test PRIVATE -Wall -Wextra -Werror)
+    endif()
+    add_test(NAME native_phase_selector_test COMMAND native_phase_selector_test)
 endif()
