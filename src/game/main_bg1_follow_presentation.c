@@ -28,7 +28,7 @@ extern void *data_020de7e4;
 extern const char data_020de804[];
 extern u8 *data_021052fc;
 extern void *data_020f4e18;
-extern void *data_020f4e50;
+extern void *gMainBgPaletteBuffer;
 extern void func_0201e250(void *);
 extern void func_0201e28c(void *);
 extern void func_0201ded4(void *, void *);
@@ -130,7 +130,7 @@ void func_02028684(MainBg1FollowPresentation *self)
     control = (control & ~3) | 3;
     *(volatile u16 *)0x0400000a = control;
     func_02072048(&resources, 1, 0x1e0);
-    PaletteBuffer_Write(data_020f4e50, func_02070874(resources.resource1),
+    PaletteBuffer_Write(gMainBgPaletteBuffer, func_02070874(resources.resource1),
                         0x1e0, 0x20);
     display = *(volatile u32 *)0x04000000;
     display = (display & ~0x1f00u) |

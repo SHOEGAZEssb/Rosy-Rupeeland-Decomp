@@ -5,7 +5,7 @@
 .extern GraphicsResourceSet_Load
 .extern PaletteBuffer_Write
 .extern data_020f4e18
-.extern data_020f4e50
+.extern gMainBgPaletteBuffer
 .extern func_02070638
 .extern func_02070874
 .extern func_02070e0c
@@ -71,6 +71,6 @@ func_ov054_0220ea34:
     ldmia sp!, {r3, pc}
 .L_0220eb0c: .word 0x8025
 .L_0220eb10: .word data_020f4e18
-.L_0220eb14: .word data_020f4e50
+.L_0220eb14: .word gMainBgPaletteBuffer
 .L_0220eb18: .word 0x400000a
 .size func_ov054_0220ea34, . - func_ov054_0220ea34

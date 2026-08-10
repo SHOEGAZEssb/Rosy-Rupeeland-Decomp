@@ -1,8 +1,8 @@
 ; Matching retail form; see src/game/dual_layer_tile_renderer_runtime.c.
 .text
 .extern PaletteBuffer_Write
-.extern data_020f4e50
-.extern data_020f5058
+.extern gMainBgPaletteBuffer
+.extern gSubBgPaletteBuffer
 .extern func_020b1314
 .extern func_020b1360
 .extern func_020b13d4
@@ -77,7 +77,7 @@ func_02029914: ; 0x02029914
     bl func_020b1360
     bl func_020b1314
     ldmia sp!, {r4, pc}
-.L_020299f8: .word data_020f4e50
-.L_020299fc: .word data_020f5058
+.L_020299f8: .word gMainBgPaletteBuffer
+.L_020299fc: .word gSubBgPaletteBuffer
     .size func_02029914, . - func_02029914
 

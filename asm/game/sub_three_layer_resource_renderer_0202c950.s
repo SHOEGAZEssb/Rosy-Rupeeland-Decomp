@@ -12,7 +12,7 @@
 .extern func_020b44e8
 .extern GraphicsResourceSet_Destroy
 .extern data_020f4e18
-.extern data_020f5058
+.extern gSubBgPaletteBuffer
 
     .global func_0202c950
     .type func_0202c950, @function
@@ -177,7 +177,7 @@ func_0202c950: ; 0x0202c950
 .L_0202cbc4: .word 0x400100c
 .L_0202cbc8: .word 0xa105
 .L_0202cbcc: .word data_020f4e18
-.L_0202cbd0: .word data_020f5058
+.L_0202cbd0: .word gSubBgPaletteBuffer
 .L_0202cbd4: .word 0x400100a
 .L_0202cbd8: .word 0x400100e
 .L_0202cbdc: .word 0xa10d

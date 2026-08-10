@@ -15,7 +15,7 @@ extern "C" {
 #endif
 extern void *data_020dee2c;
 extern void *data_020f4e18;
-extern PaletteBuffer data_020f4e50;
+extern PaletteBuffer gMainBgPaletteBuffer;
 extern void func_020291b8(void *);
 extern void func_020292f0(void *);
 extern void func_02029370(void *);
@@ -89,7 +89,7 @@ void func_0202c7c4(MainBg0ResourceRenderer *self)
     func_020b44e8();
     func_02070638(set.resource0, 0, 0);
     func_02070e0c(set.resource2, 0, 0);
-    PaletteBuffer_Write(&data_020f4e50, func_02070874(set.resource1) + 0x180,
+    PaletteBuffer_Write(&gMainBgPaletteBuffer, func_02070874(set.resource1) + 0x180,
                         0x180, 0x80);
     GraphicsResourceSet_ReleaseHandles(&set);
     GraphicsResourceSet_Destroy(&set);

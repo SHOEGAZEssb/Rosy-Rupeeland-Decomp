@@ -5,7 +5,7 @@
 .extern GraphicsResourceSet_Init
 .extern GraphicsResourceSet_Load
 .extern data_020f4e18
-.extern data_020fd268
+.extern gSubBgExtendedPaletteBuffer
 .extern func_020706c4
 .extern func_02070874
 .extern func_02070eac
@@ -58,6 +58,6 @@ func_02025d1c: ; 0x02025d1c
 .L_02025dc4: .word 0x8028
 .L_02025dc8: .word data_020f4e18
 .L_02025dcc: .word 0x400100a
-.L_02025dd0: .word data_020fd268
+.L_02025dd0: .word gSubBgExtendedPaletteBuffer
 .L_02025dd4: .word 0x4001014
     .size func_02025d1c, . - func_02025d1c

@@ -24,7 +24,7 @@ extern "C" {
 #endif
 extern void *data_020def1c;
 extern void *data_020f4e18;
-extern PaletteBuffer data_020f4e50;
+extern PaletteBuffer gMainBgPaletteBuffer;
 extern void func_020291b8(void *);
 extern void func_020292f0(void *);
 extern void func_02029370(void *);
@@ -107,7 +107,7 @@ void func_0202cc88(MainThreeLayerResourceRenderer *self)
     func_02070638(set.resource0, 2, 0);
     func_02070e0c(set.resource2, 2, 0);
     func_02070b50(set.resource1, 0);
-    PaletteBuffer_Write(&data_020f4e50, func_02070874(set.resource1), 0, 0xc0);
+    PaletteBuffer_Write(&gMainBgPaletteBuffer, func_02070874(set.resource1), 0, 0xc0);
     GraphicsResourceSet_ReleaseHandles(&set);
 
     GraphicsResourceSet_Load(&set, data_020f4e18, 0xa107, 0xa10a, 0xa109);
@@ -120,7 +120,7 @@ void func_0202cc88(MainThreeLayerResourceRenderer *self)
     func_020b44e8();
     func_02070e0c(set.resource2, 1, 0);
     func_02070b50(set.resource1, 0xc0);
-    PaletteBuffer_Write(&data_020f4e50, func_02070874(set.resource1),
+    PaletteBuffer_Write(&gMainBgPaletteBuffer, func_02070874(set.resource1),
                         0xc0, 0xc0);
     GraphicsResourceSet_ReleaseHandles(&set);
 
@@ -135,7 +135,7 @@ void func_0202cc88(MainThreeLayerResourceRenderer *self)
     func_020b44e8();
     func_02070e0c(set.resource2, 3, 0);
     func_02070b50(set.resource1, 0x1e0);
-    PaletteBuffer_Write(&data_020f4e50, func_02070874(set.resource1),
+    PaletteBuffer_Write(&gMainBgPaletteBuffer, func_02070874(set.resource1),
                         0x1e0, 0x20);
     GraphicsResourceSet_ReleaseHandles(&set);
     GraphicsResourceSet_Destroy(&set);

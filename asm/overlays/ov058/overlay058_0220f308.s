@@ -6,8 +6,8 @@
 .extern GraphicsResourceSet_Load
 .extern PaletteBuffer_Write
 .extern data_020f4e18
-.extern data_020f4e50
-.extern data_020f5058
+.extern gMainBgPaletteBuffer
+.extern gSubBgPaletteBuffer
 .extern data_ov058_0220fcfc
 .extern Heap_AllocCore
 .extern Heap_FreeCore
@@ -119,6 +119,6 @@ func_ov058_0220f308:
 .L_0220f470: .word data_020f4e18
 .L_0220f474: .word data_ov058_0220fcfc
 .L_0220f478: .word gHeapContext
-.L_0220f47c: .word data_020f4e50
-.L_0220f480: .word data_020f5058
+.L_0220f47c: .word gMainBgPaletteBuffer
+.L_0220f480: .word gSubBgPaletteBuffer
 .size func_ov058_0220f308, . - func_ov058_0220f308

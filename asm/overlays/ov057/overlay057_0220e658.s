@@ -3,8 +3,8 @@
 .extern GraphicsResourceSet_Load
 .extern PaletteBuffer_Write
 .extern data_020f4e18
-.extern data_020f4e50
-.extern data_020f5058
+.extern gMainBgPaletteBuffer
+.extern gSubBgPaletteBuffer
 .extern func_02070638
 .extern func_020706c4
 .extern func_02070874
@@ -84,6 +84,6 @@ func_ov057_0220e658:
 .L_0220e760: .word 0xa05d
 .L_0220e764: .word data_020f4e18
 .L_0220e768: .word 0x400100a
-.L_0220e76c: .word data_020f5058
-.L_0220e770: .word data_020f4e50
+.L_0220e76c: .word gSubBgPaletteBuffer
+.L_0220e770: .word gMainBgPaletteBuffer
 .size func_ov057_0220e658, . - func_ov057_0220e658

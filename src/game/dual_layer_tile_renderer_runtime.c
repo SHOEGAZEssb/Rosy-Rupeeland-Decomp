@@ -58,8 +58,8 @@ extern "C" {
 #endif
 extern const char data_020de970[];
 extern const char data_020de984[];
-extern void *data_020f4e50;
-extern void *data_020f5058;
+extern void *gMainBgPaletteBuffer;
+extern void *gSubBgPaletteBuffer;
 extern void GameFile_Init(void *);
 extern void GameFile_Destroy(void *);
 extern void GameFile_Open(void *, const char *);
@@ -284,7 +284,7 @@ void func_02029914(DualLayerTileRenderer *self)
     func_020b44e8();
     if (self->engineMode_30 == 1) {
         if (self->layerVariant_31 == 0)
-            PaletteBuffer_Write(data_020f4e50, self->paletteData_14, 0, 0x1c0);
+            PaletteBuffer_Write(gMainBgPaletteBuffer, self->paletteData_14, 0, 0x1c0);
         else if (self->layerVariant_31 == 2) {
             func_020b1618();
             func_020b1598(self->paletteData_14, 0x4000, 0x2000);
@@ -294,7 +294,7 @@ void func_02029914(DualLayerTileRenderer *self)
     } else if (self->engineMode_30 == 2) {
         *(u16 *)self->paletteData_14 = 0;
         if (self->layerVariant_31 == 0)
-            PaletteBuffer_Write(data_020f5058, self->paletteData_14, 0, 0x200);
+            PaletteBuffer_Write(gSubBgPaletteBuffer, self->paletteData_14, 0, 0x200);
         else if (self->layerVariant_31 == 2) {
             func_020b13d4();
             func_020b1360(self->paletteData_14, 0x4000, 0x2000);

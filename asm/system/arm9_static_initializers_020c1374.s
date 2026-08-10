@@ -33,14 +33,14 @@
 .extern gPackedTimerArray
 .extern gDisplayBrightnessStorage
 .extern gDisplayBrightnessPair
-.extern data_020f4e20
-.extern data_020f4e2c
-.extern data_020f4e38
-.extern data_020f4e44
-.extern data_020f4e50
-.extern data_020f5058
-.extern data_020f5260
-.extern data_020fd268
+.extern gSubBgPaletteBufferDestructorRecord
+.extern gMainBgPaletteBufferDestructorRecord
+.extern gMainBgExtendedPaletteBufferDestructorRecord
+.extern gSubBgExtendedPaletteBufferDestructorRecord
+.extern gMainBgPaletteBuffer
+.extern gSubBgPaletteBuffer
+.extern gMainBgExtendedPaletteBuffer
+.extern gSubBgExtendedPaletteBuffer
 .extern data_02105304
 .extern data_02105310
 .extern data_021055a0
@@ -207,18 +207,18 @@ __sinit_020c13f8: ; 0x020c13f8
     ldr r2, .L_020c148c
     bl __register_global_object
     ldmia sp!, {r3, pc}
-.L_020c1460: .word data_020f4e50
+.L_020c1460: .word gMainBgPaletteBuffer
 .L_020c1464: .word MainBgPaletteBuffer_Destroy
-.L_020c1468: .word data_020f4e2c
-.L_020c146c: .word data_020f5058
+.L_020c1468: .word gMainBgPaletteBufferDestructorRecord
+.L_020c146c: .word gSubBgPaletteBuffer
 .L_020c1470: .word SubBgPaletteBuffer_Destroy
-.L_020c1474: .word data_020f4e20
-.L_020c1478: .word data_020f5260
+.L_020c1474: .word gSubBgPaletteBufferDestructorRecord
+.L_020c1478: .word gMainBgExtendedPaletteBuffer
 .L_020c147c: .word MainBgExtendedPaletteBuffer_Destroy
-.L_020c1480: .word data_020f4e38
-.L_020c1484: .word data_020fd268
+.L_020c1480: .word gMainBgExtendedPaletteBufferDestructorRecord
+.L_020c1484: .word gSubBgExtendedPaletteBuffer
 .L_020c1488: .word SubBgExtendedPaletteBuffer_Destroy
-.L_020c148c: .word data_020f4e44
+.L_020c148c: .word gSubBgExtendedPaletteBufferDestructorRecord
 
 __sinit_020c1490: ; 0x020c1490
     stmdb sp!, {r3, lr}

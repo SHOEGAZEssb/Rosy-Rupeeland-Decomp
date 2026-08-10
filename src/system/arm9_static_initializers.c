@@ -73,14 +73,14 @@ extern u8 gPackedTimerArray[];
 extern u8 data_020f37a0[];
 extern u8 gDisplayBrightnessPair[];
 extern u8 gDisplayBrightnessStorage[];
-extern u8 data_020f4e50[];
-extern u8 data_020f4e2c[];
-extern u8 data_020f5058[];
-extern u8 data_020f4e20[];
-extern u8 data_020f5260[];
-extern u8 data_020f4e38[];
-extern u8 data_020fd268[];
-extern u8 data_020f4e44[];
+extern u8 gMainBgPaletteBuffer[];
+extern u8 gMainBgPaletteBufferDestructorRecord[];
+extern u8 gSubBgPaletteBuffer[];
+extern u8 gSubBgPaletteBufferDestructorRecord[];
+extern u8 gMainBgExtendedPaletteBuffer[];
+extern u8 gMainBgExtendedPaletteBufferDestructorRecord[];
+extern u8 gSubBgExtendedPaletteBuffer[];
+extern u8 gSubBgExtendedPaletteBufferDestructorRecord[];
 extern u8 data_02105310[];
 extern u8 data_02105304[];
 extern u8 gDefaultGamePhaseRegion[];
@@ -168,20 +168,20 @@ void __sinit_020c13cc(void)
  */
 void __sinit_020c13f8(void)
 {
-    MainBgPaletteBuffer_Init(data_020f4e50);
-    __register_global_object(data_020f4e50, MainBgPaletteBuffer_Destroy,
-                             data_020f4e2c);
-    SubBgPaletteBuffer_Init(data_020f5058);
-    __register_global_object(data_020f5058, SubBgPaletteBuffer_Destroy,
-                             data_020f4e20);
-    MainBgExtendedPaletteBuffer_Init(data_020f5260);
-    __register_global_object(data_020f5260,
+    MainBgPaletteBuffer_Init(gMainBgPaletteBuffer);
+    __register_global_object(gMainBgPaletteBuffer, MainBgPaletteBuffer_Destroy,
+                             gMainBgPaletteBufferDestructorRecord);
+    SubBgPaletteBuffer_Init(gSubBgPaletteBuffer);
+    __register_global_object(gSubBgPaletteBuffer, SubBgPaletteBuffer_Destroy,
+                             gSubBgPaletteBufferDestructorRecord);
+    MainBgExtendedPaletteBuffer_Init(gMainBgExtendedPaletteBuffer);
+    __register_global_object(gMainBgExtendedPaletteBuffer,
                              MainBgExtendedPaletteBuffer_Destroy,
-                             data_020f4e38);
-    SubBgExtendedPaletteBuffer_Init(data_020fd268);
-    __register_global_object(data_020fd268,
+                             gMainBgExtendedPaletteBufferDestructorRecord);
+    SubBgExtendedPaletteBuffer_Init(gSubBgExtendedPaletteBuffer);
+    __register_global_object(gSubBgExtendedPaletteBuffer,
                              SubBgExtendedPaletteBuffer_Destroy,
-                             data_020f4e44);
+                             gSubBgExtendedPaletteBufferDestructorRecord);
 }
 
 /*

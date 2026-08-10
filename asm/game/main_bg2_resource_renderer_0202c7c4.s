@@ -10,7 +10,7 @@
 .extern GraphicsResourceSet_ReleaseHandles
 .extern GraphicsResourceSet_Destroy
 .extern data_020f4e18
-.extern data_020f4e50
+.extern gMainBgPaletteBuffer
 
     .global func_0202c7c4
     .type func_0202c7c4, @function
@@ -71,5 +71,5 @@ func_0202c7c4: ; 0x0202c7c4
 .L_0202c898: .word 0x4000008
 .L_0202c89c: .word 0xa00e
 .L_0202c8a0: .word data_020f4e18
-.L_0202c8a4: .word data_020f4e50
+.L_0202c8a4: .word gMainBgPaletteBuffer
     .size func_0202c7c4, . - func_0202c7c4

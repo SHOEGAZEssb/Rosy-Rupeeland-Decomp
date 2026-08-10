@@ -18,7 +18,7 @@ extern "C" {
 #endif
 extern void *data_020dec4c;
 extern void *data_020f4e18;
-extern PaletteBuffer data_020f4e50;
+extern PaletteBuffer gMainBgPaletteBuffer;
 extern void func_020291b8(void *self);
 extern void func_020292f0(void *self);
 extern void func_02029370(void *self);
@@ -98,7 +98,7 @@ void func_0202bf4c(MainDualLayerResourceRenderer *self)
     func_02070638(resources.resource0, 0, 0);
     func_02070e0c(resources.resource2, 0, 0);
     palette = func_02070874(resources.resource1);
-    PaletteBuffer_Write(&data_020f4e50, palette + 0x180, 0x180, 0x80);
+    PaletteBuffer_Write(&gMainBgPaletteBuffer, palette + 0x180, 0x180, 0x80);
     GraphicsResourceSet_ReleaseHandles(&resources);
 
     *bg1cnt = (*bg1cnt & 0x43) | 0x1a00;

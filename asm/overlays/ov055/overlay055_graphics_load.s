@@ -8,8 +8,8 @@
 .extern data_020d887c
 .extern data_020d8aac
 .extern data_020f4e18
-.extern data_020f4e50
-.extern data_020f5058
+.extern gMainBgPaletteBuffer
+.extern gSubBgPaletteBuffer
 .extern func_02070874
 .extern func_02070f34
 .extern func_02071568
@@ -220,8 +220,8 @@ func_ov055_0220ebec:
 .L_0220eec8: .word data_020c38ac
 .L_0220eecc: .word data_020c3850
 .L_0220eed0: .word data_020c3908
-.L_0220eed4: .word data_020f4e50
+.L_0220eed4: .word gMainBgPaletteBuffer
 .L_0220eed8: .word data_020d887c
 .L_0220eedc: .word data_020d8aac
-.L_0220eee0: .word data_020f5058
+.L_0220eee0: .word gSubBgPaletteBuffer
 .size func_ov055_0220ebec, . - func_ov055_0220ebec

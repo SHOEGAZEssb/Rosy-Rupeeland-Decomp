@@ -31,7 +31,7 @@ extern "C" {
 extern void *data_020d6b3c;
 extern void *gDebugFont;
 extern void *data_020f4e18;
-extern u8 data_020fd268[];
+extern u8 gSubBgExtendedPaletteBuffer[];
 extern void func_020264c4(void *embedded);
 extern void func_02026514(void *embedded);
 extern void func_020269f8(void *embedded);
@@ -205,7 +205,7 @@ void func_02025d1c(DualScreenUiPresentationBase *self)
     *control &= (u16)~3;
     func_020706c4(set.first00, 1, 0);
     func_02070eac(set.third08, 1, 0);
-    ExtendedPaletteBuffer_Write(data_020fd268,
+    ExtendedPaletteBuffer_Write(gSubBgExtendedPaletteBuffer,
                                 func_02070874(set.second04), 0x2000, 0x200);
     *(volatile u32 *)0x04001014 = 0;
     GraphicsResourceSet_Destroy(&set);
@@ -227,7 +227,7 @@ void func_02025dd8(DualScreenUiPresentationBase *self)
     *control = (u16)((*control & 0x43) | 0x1c80);
     *control = (u16)((*control & ~3) | 3);
     func_02070eac(set.third08, 2, 0);
-    ExtendedPaletteBuffer_Write(data_020fd268,
+    ExtendedPaletteBuffer_Write(gSubBgExtendedPaletteBuffer,
                                 func_02070874(set.second04), 0x4000, 0x200);
     *(volatile u32 *)0x04001018 = 0;
     GraphicsResourceSet_Destroy(&set);
