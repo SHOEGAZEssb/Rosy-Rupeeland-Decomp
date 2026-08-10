@@ -15,7 +15,7 @@ static u32 readImmediate(GamePhaseScriptVm *self)
 }
 
 /* AND destination with the encoded source register, update zero state, and return zero. */
-s32 func_0201b74c(GamePhaseScriptVm *self)
+s32 GamePhaseScriptVm_AndRegisters(GamePhaseScriptVm *self)
 {
     u8 operand = readOperand(self);
     s32 destination = operand & 7;
@@ -25,7 +25,7 @@ s32 func_0201b74c(GamePhaseScriptVm *self)
 }
 
 /* AND the byte-selected register with a 32-bit immediate, update zero state, return zero. */
-s32 func_0201b790(GamePhaseScriptVm *self)
+s32 GamePhaseScriptVm_AndImmediate(GamePhaseScriptVm *self)
 {
     u8 destination = readOperand(self);
     self->registers[destination] &= readImmediate(self);
@@ -34,7 +34,7 @@ s32 func_0201b790(GamePhaseScriptVm *self)
 }
 
 /* OR destination with the encoded source register, update zero state, and return zero. */
-s32 func_0201b7dc(GamePhaseScriptVm *self)
+s32 GamePhaseScriptVm_OrRegisters(GamePhaseScriptVm *self)
 {
     u8 operand = readOperand(self);
     s32 destination = operand & 7;
@@ -44,7 +44,7 @@ s32 func_0201b7dc(GamePhaseScriptVm *self)
 }
 
 /* OR the byte-selected register with a 32-bit immediate, update zero state, return zero. */
-s32 func_0201b820(GamePhaseScriptVm *self)
+s32 GamePhaseScriptVm_OrImmediate(GamePhaseScriptVm *self)
 {
     u8 destination = readOperand(self);
     self->registers[destination] |= readImmediate(self);
@@ -53,7 +53,7 @@ s32 func_0201b820(GamePhaseScriptVm *self)
 }
 
 /* XOR destination with the encoded source register, update zero state, and return zero. */
-s32 func_0201b86c(GamePhaseScriptVm *self)
+s32 GamePhaseScriptVm_XorRegisters(GamePhaseScriptVm *self)
 {
     u8 operand = readOperand(self);
     s32 destination = operand & 7;
@@ -63,7 +63,7 @@ s32 func_0201b86c(GamePhaseScriptVm *self)
 }
 
 /* XOR the byte-selected register with a 32-bit immediate, update zero state, return zero. */
-s32 func_0201b8b0(GamePhaseScriptVm *self)
+s32 GamePhaseScriptVm_XorImmediate(GamePhaseScriptVm *self)
 {
     u8 destination = readOperand(self);
     self->registers[destination] ^= readImmediate(self);

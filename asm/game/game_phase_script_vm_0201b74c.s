@@ -1,8 +1,8 @@
 ; Matching retail form; see src/game/game_phase_script_vm_bitwise_opcodes.c.
 .text
 .extern GamePhaseScriptVm_UpdateZeroFlag
-.global func_0201b74c
-func_0201b74c: ; 0x0201b74c
+.global GamePhaseScriptVm_AndRegisters
+GamePhaseScriptVm_AndRegisters: ; 0x0201b74c
     stmdb sp!, {r3, lr}
     ldr r1, [r0, #0x4]
     add ip, r0, #0x2c
@@ -20,4 +20,4 @@ func_0201b74c: ; 0x0201b74c
     bl GamePhaseScriptVm_UpdateZeroFlag
     mov r0, #0x0
     ldmia sp!, {r3, pc}
-.size func_0201b74c, . - func_0201b74c
+.size GamePhaseScriptVm_AndRegisters, . - GamePhaseScriptVm_AndRegisters
