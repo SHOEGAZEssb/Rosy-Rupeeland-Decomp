@@ -2,9 +2,9 @@
 .text
 .extern data_0210568c
 .extern data_02105690
-    .global func_02039c3c
-    .type func_02039c3c, @function
-func_02039c3c: ; 0x02039c3c
+    .global ActorSelection_Contains
+    .type ActorSelection_Contains, @function
+ActorSelection_Contains: ; 0x02039c3c
     ldr r0, .L_02039c74
     mov r3, #0x0
     ldrsh ip, [r0, #0x2]
@@ -23,4 +23,4 @@ func_02039c3c: ; 0x02039c3c
     bx lr
 .L_02039c74: .word data_0210568c
 .L_02039c78: .word data_02105690
-    .size func_02039c3c, . - func_02039c3c
+    .size ActorSelection_Contains, . - ActorSelection_Contains

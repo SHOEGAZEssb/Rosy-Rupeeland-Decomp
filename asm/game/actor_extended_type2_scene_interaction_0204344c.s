@@ -4,7 +4,7 @@
 .extern data_021052fc
 .extern func_0203392c
 .extern ActorDerivedType1_TrySetStateVector
-.extern func_02039c3c
+.extern ActorSelection_Contains
 .extern func_02048378
 .extern gSceneManager
 .global ActorExtendedType2_UpdateSceneInteraction
@@ -50,7 +50,7 @@ ActorExtendedType2_UpdateSceneInteraction: ; 0x0204344c
     ldr r0, [r0, #0x0]
     add r0, r0, #0x2000
     ldr r0, [r0, #0xea4]
-    bl func_02039c3c
+    bl ActorSelection_Contains
     cmp r0, #0x0
     beq .L_0204351c
     ldr r0, .L_02043530

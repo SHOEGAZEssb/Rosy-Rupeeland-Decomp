@@ -18,7 +18,7 @@ extern s32 func_020be334(s32 value);
  * halfword count at data_0210568c +0x02. Return one on identity match, else
  * zero. No state changes and no helpers are called.
  */
-s32 func_02039c3c(void *first, void *target)
+s32 ActorSelection_Contains(void *first, void *target)
 {
     s32 i;
     (void)first;
@@ -37,7 +37,7 @@ s32 func_02039c3c(void *first, void *target)
  * clears it. Returns no value; fixed division and absolute-value helpers have
  * arithmetic-only effects.
  */
-void func_02039c7c(void *self)
+void Actor_UpdateAttachmentHeight(void *self)
 {
     u8 *actor = (u8 *)self;
     u8 *object = *(u8 **)(actor + 0x270);

@@ -45,7 +45,7 @@ extern s32 GamePhaseRuntime_DispatchActorQueryRequest(GamePhaseRuntime *self);
 extern void func_020338e4(void *object);
 extern void func_02048bcc(void *object);
 extern void *SceneManager_GetCurrent(void *manager);
-extern s32 func_02039ea0(void);
+extern s32 Actor_TrySpawnTerrainGateObject(void);
 #ifdef __cplusplus
 }
 #endif
@@ -174,7 +174,7 @@ s32 func_02007430(GamePhaseRuntime *self)
     object = *(void **)(b + 0x30e8);
     (*(void (***)(void *))object)[4](object);
     if (SceneManager_GetCurrent(gSceneManager) == self &&
-        !func_02039ea0()) {
+        !Actor_TrySpawnTerrainGateObject()) {
         object = *(void **)(*(u8 **)(b + 0x2ea4) + 0x26c);
         if (object != 0 &&
             (s32)(*(u32 *)((u8 *)object + 0x20) << 30) < 0) {

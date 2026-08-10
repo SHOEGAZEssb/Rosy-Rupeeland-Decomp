@@ -17,7 +17,7 @@ extern void func_020740c8(void *context, void *attachment, s32 first,
 #endif
 
 /* Return actor +0xd0 bit 0x80 as either zero or the mask value 0x80. */
-u32 func_02039714(void *self)
+u32 Actor_GetStatusFlag80(void *self)
 {
     return *(u32 *)((u8 *)self + 0xd0) & 0x80;
 }

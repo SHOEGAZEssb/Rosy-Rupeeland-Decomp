@@ -27,7 +27,7 @@ extern void *func_ov062_02210b38(void *allocation);
  * class passes, including allocation failure; otherwise return zero. Virtual,
  * heap, and overlay calls have observable engine/SDK effects.
  */
-s32 func_02039ea0(void)
+s32 Actor_TrySpawnTerrainGateObject(void)
 {
     u8 *actor = *(u8 **)(data_021052fc + 0x2ea4);
     u8 *query;

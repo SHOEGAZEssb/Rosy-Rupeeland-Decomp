@@ -9,9 +9,9 @@
 .extern func_ov062_02210b38
 .extern gHeapContext
 
-    .global func_02039ea0
-    .type func_02039ea0, @function
-func_02039ea0: ; 0x02039ea0
+    .global Actor_TrySpawnTerrainGateObject
+    .type Actor_TrySpawnTerrainGateObject, @function
+Actor_TrySpawnTerrainGateObject: ; 0x02039ea0
     stmdb sp!, {r3, lr}
     sub sp, sp, #0x8
     ldr r0, .L_02039f5c
@@ -66,4 +66,4 @@ func_02039ea0: ; 0x02039ea0
 .L_02039f60: .word 0x3e
 .L_02039f64: .word data_020df4d8
 .L_02039f68: .word gHeapContext
-    .size func_02039ea0, . - func_02039ea0
+    .size Actor_TrySpawnTerrainGateObject, . - Actor_TrySpawnTerrainGateObject

@@ -15720,7 +15720,7 @@ build build/reports/actor_attachment_slot_resource_02039714.json: objdiff build/
   base_object = build/decomp/asm/game/actor_attachment_slot_resource_02039714.o
 build build/reports/actor_attachment_slot_resource_02039714.txt: match_report build/reports/actor_attachment_slot_resource_02039714.json | tools/report_objdiff.py
   report_json = build/reports/actor_attachment_slot_resource_02039714.json
-  report_args = --section .text --function func_02039714 --require-exact
+  report_args = --section .text --function Actor_GetStatusFlag80 --require-exact
 build build/decomp/asm/game/actor_attachment_slot_resource_02039720.o: mwasmarm asm/game/actor_attachment_slot_resource_02039720.s
 build build/decomp/delinks/asm/game/actor_attachment_slot_resource_02039720.o: dsd_delink config/arm9/config.yaml config/arm9/delinks.txt config/arm9/symbols.txt config/arm9/relocs.txt
 build build/reports/actor_attachment_slot_resource_02039720.json: objdiff build/decomp/delinks/asm/game/actor_attachment_slot_resource_02039720.o | build/decomp/asm/game/actor_attachment_slot_resource_02039720.o
@@ -15845,7 +15845,7 @@ build build/reports/actor_height_attachment_update_02039c3c.json: objdiff build/
   base_object = build/decomp/asm/game/actor_height_attachment_update_02039c3c.o
 build build/reports/actor_height_attachment_update_02039c3c.txt: match_report build/reports/actor_height_attachment_update_02039c3c.json | tools/report_objdiff.py
   report_json = build/reports/actor_height_attachment_update_02039c3c.json
-  report_args = --section .text --function func_02039c3c --require-exact
+  report_args = --section .text --function ActorSelection_Contains --require-exact
 build build/decomp/asm/game/actor_height_attachment_update_02039c7c.o: mwasmarm asm/game/actor_height_attachment_update_02039c7c.s
 build build/decomp/delinks/asm/game/actor_height_attachment_update_02039c7c.o: dsd_delink config/arm9/config.yaml config/arm9/delinks.txt config/arm9/symbols.txt config/arm9/relocs.txt
 build build/reports/actor_height_attachment_update_02039c7c.json: objdiff build/decomp/delinks/asm/game/actor_height_attachment_update_02039c7c.o | build/decomp/asm/game/actor_height_attachment_update_02039c7c.o
@@ -15853,7 +15853,7 @@ build build/reports/actor_height_attachment_update_02039c7c.json: objdiff build/
   base_object = build/decomp/asm/game/actor_height_attachment_update_02039c7c.o
 build build/reports/actor_height_attachment_update_02039c7c.txt: match_report build/reports/actor_height_attachment_update_02039c7c.json | tools/report_objdiff.py
   report_json = build/reports/actor_height_attachment_update_02039c7c.json
-  report_args = --section .text --function func_02039c7c --require-exact
+  report_args = --section .text --function Actor_UpdateAttachmentHeight --require-exact
 build build/reports/actor_height_attachment_update.txt: phony build/reports/actor_height_attachment_update_02039c3c.txt build/reports/actor_height_attachment_update_02039c7c.txt
 
 build actor_height_attachment_update: phony build/decomp/src/game/actor_height_attachment_update.o build/decomp/asm/game/actor_height_attachment_update_02039c3c.o build/decomp/asm/game/actor_height_attachment_update_02039c7c.o build/reports/actor_height_attachment_update.txt
@@ -15920,7 +15920,7 @@ build build/reports/actor_global_terrain_gate_spawn_02039ea0.json: objdiff build
   base_object = build/decomp/asm/game/actor_global_terrain_gate_spawn_02039ea0.o
 build build/reports/actor_global_terrain_gate_spawn_02039ea0.txt: match_report build/reports/actor_global_terrain_gate_spawn_02039ea0.json | tools/report_objdiff.py
   report_json = build/reports/actor_global_terrain_gate_spawn_02039ea0.json
-  report_args = --section .text --function func_02039ea0 --require-exact
+  report_args = --section .text --function Actor_TrySpawnTerrainGateObject --require-exact
 build build/reports/actor_global_terrain_gate_spawn.txt: phony build/reports/actor_global_terrain_gate_spawn_02039ea0.txt
 
 build actor_global_terrain_gate_spawn: phony build/decomp/src/game/actor_global_terrain_gate_spawn.o build/decomp/asm/game/actor_global_terrain_gate_spawn_02039ea0.o build/reports/actor_global_terrain_gate_spawn.txt

@@ -26,7 +26,7 @@
 .extern func_02027654
 .extern func_02027f94
 .extern func_020338e4
-.extern func_02039ea0
+.extern Actor_TrySpawnTerrainGateObject
 .extern func_02048bcc
 .extern func_0206ec68
 .extern func_020755bc
@@ -300,7 +300,7 @@ L_020077ac:
     bl SceneManager_GetCurrent
     cmp r0, r4
     bne L_02007830
-    bl func_02039ea0
+    bl Actor_TrySpawnTerrainGateObject
     cmp r0, #0x0
     movne r0, #0x0
     ldmneia sp!, {r3, r4, r5, pc}

@@ -2,9 +2,9 @@
 .text
 .extern func_020adae4
 .extern func_020be334
-    .global func_02039c7c
-    .type func_02039c7c, @function
-func_02039c7c: ; 0x02039c7c
+    .global Actor_UpdateAttachmentHeight
+    .type Actor_UpdateAttachmentHeight, @function
+Actor_UpdateAttachmentHeight: ; 0x02039c7c
     stmdb sp!, {r3, r4, r5, lr}
     mov r5, r0
     ldr r0, [r5, #0x270]
@@ -44,4 +44,4 @@ func_02039c7c: ; 0x02039c7c
     bic r0, r0, #0x20
     str r0, [r5, #0xd0]
     ldmia sp!, {r3, r4, r5, pc}
-    .size func_02039c7c, . - func_02039c7c
+    .size Actor_UpdateAttachmentHeight, . - Actor_UpdateAttachmentHeight
