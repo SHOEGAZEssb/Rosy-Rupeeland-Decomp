@@ -2,7 +2,7 @@
 .text
 .extern Heap_Alloc
 .extern Heap_Free
-.extern data_020df4f8
+.extern gInteractionRecordAllocatorPoolAllocationTag
 .extern data_021056e4
 .extern gActorFeedbackPresentations
 .extern data_02105728
@@ -71,7 +71,7 @@ ActorInteractionRuntime_Init: ; 0x0203aac4
     cmp r2, #0x6
     blt .L_0203ab3c
     ldmia sp!, {r3, pc}
-.L_0203ab50: .word data_020df4f8
+.L_0203ab50: .word gInteractionRecordAllocatorPoolAllocationTag
 .L_0203ab54: .word gHeapContext
 .L_0203ab58: .word data_02105778
 .L_0203ab5c: .word gGameWork

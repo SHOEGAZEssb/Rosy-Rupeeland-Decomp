@@ -3,7 +3,7 @@
 
 /* Gate and spawn a global actor terrain interaction object. */
 extern u8 *data_021052fc;
-extern const char data_020df4d8[];
+extern const char gOverlay62TerrainGateObjectAllocationTag[];
 
 #ifdef __cplusplus
 extern "C" {
@@ -45,7 +45,7 @@ s32 Actor_TrySpawnTerrainGateObject(void)
     if (type < 2 || type > 5)
         return 0;
     OverlayManager_LoadOverlay(OverlayManager_GetGlobal(packed), 2, 0x3e);
-    allocation = Heap_Alloc(0x7c, data_020df4d8, 4, &gHeapContext);
+    allocation = Heap_Alloc(0x7c, gOverlay62TerrainGateObjectAllocationTag, 4, &gHeapContext);
     if (allocation != 0)
         func_ov062_02210b38(allocation);
     return 1;

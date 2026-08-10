@@ -6,7 +6,7 @@ extern void *gSceneManager;
 extern void *gSoundContext;
 extern void *gGameWork;
 extern void *data_021052fc;
-extern u8 data_020df494[];
+extern u8 gType7AuxiliaryPresentationAllocationTag[];
 
 #ifdef __cplusplus
 extern "C" {
@@ -165,7 +165,7 @@ void ActorDerivedType1_UpdateFrame(void *self)
     if (*(void **)(actor + 0x26c) == 0 &&
         GameWork_TestFlag(gGameWork, 0x3f2) != 0 &&
         *(void **)(actor + 0x270) == 0) {
-        object = Heap_Alloc(0x2c, (const char *)data_020df494, 4,
+        object = Heap_Alloc(0x2c, (const char *)gType7AuxiliaryPresentationAllocationTag, 4,
                             &gHeapContext);
         if (object != 0) object = Type7AuxiliaryPresentation_Init(object, actor);
         *(void **)(actor + 0x270) = object;

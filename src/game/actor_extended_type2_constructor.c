@@ -4,7 +4,7 @@
 /* Construct and configure the extended type-two actor object at size >=0x295. */
 extern const void *data_020dfee4;
 extern void *data_02105778;
-extern const char data_020e00b8[];
+extern const char gInteractionWaypointCursorAllocationTag[];
 extern const char data_020e00c0[];
 extern s16 data_020e83a0[];
 
@@ -89,7 +89,7 @@ void *ActorExtendedType2_Init(void *self, const void *configuration)
     }
 
     if (*(u32 *)(config + 0x38) != 0) {
-        void *object = Heap_Alloc(8, data_020e00b8, 4, &gHeapContext);
+        void *object = Heap_Alloc(8, gInteractionWaypointCursorAllocationTag, 4, &gHeapContext);
         if (object != 0)
             *(u32 *)object = 0;
         *(void **)(actor + 0x26c) = object;

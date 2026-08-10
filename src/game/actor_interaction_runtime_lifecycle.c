@@ -2,7 +2,7 @@
 #include "tingle/types.h"
 
 /* Initialize, reset, and tear down the shared actor-interaction runtime and feedback slots. */
-extern const char data_020df4f8[];
+extern const char gInteractionRecordAllocatorPoolAllocationTag[];
 extern void *data_02105778;
 extern void *gActorFeedbackPresentations[6];
 extern u16 data_0210572a;
@@ -47,7 +47,7 @@ extern void func_0205929c(void *context, s32 channel, s32 value);
  */
 void ActorInteractionRuntime_Init(void)
 {
-    void *object = Heap_Alloc(0x40, data_020df4f8, 4, &gHeapContext);
+    void *object = Heap_Alloc(0x40, gInteractionRecordAllocatorPoolAllocationTag, 4, &gHeapContext);
     s32 i;
     if (object != 0)
         object = InteractionRecordAllocatorPool_Init(object);

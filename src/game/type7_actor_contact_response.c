@@ -7,7 +7,7 @@
  */
 extern u8 data_02105310[];
 extern u8 gActorRuntimeFlags[];
-extern const char data_020e1cfc[];
+extern const char gType7ActorContactResourceAllocationTag[];
 extern u32 data_020e16d8[];
 extern u32 data_020e16b0[];
 extern u32 data_020e1708[];
@@ -92,7 +92,7 @@ s32 Type7Actor_HandleContact(void *self, void *otherObject, s32 context)
         && (*(s32 (**)(void *))(*(u8 **)other + 0x1ac))(other) != 0
         && (*(u32 *)(other + 0x10) & 0x01000000) == 0) {
         if (*(void **)(actor + 0x234) == 0) {
-            void *resource = Heap_Alloc(0xb4, data_020e1cfc, 4, &gHeapContext);
+            void *resource = Heap_Alloc(0xb4, gType7ActorContactResourceAllocationTag, 4, &gHeapContext);
             if (resource != 0)
                 resource = func_0206c68c(resource, actor);
             *(void **)(actor + 0x234) = resource;

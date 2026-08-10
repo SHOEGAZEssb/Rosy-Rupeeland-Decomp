@@ -2,8 +2,8 @@
 .text
 .extern Heap_Alloc
 .extern Heap_Free
-.extern data_020df4e0
-.extern data_020df4e8
+.extern gActorFeedbackResourcePointerArrayAllocationTag
+.extern gActorFeedbackAnimationResourceAllocationTag
 .extern data_020e9fa0
 .extern data_021052fc
 .extern data_021056e4
@@ -72,9 +72,9 @@ ActorFeedbackResources_Load: ; 0x02039f6c
 .L_0203a038: .word data_021052fc
 .L_0203a03c: .word data_020e9fa0
 .L_0203a040: .word data_021056e4
-.L_0203a044: .word data_020df4e0
+.L_0203a044: .word gActorFeedbackResourcePointerArrayAllocationTag
 .L_0203a048: .word gHeapContext
-.L_0203a04c: .word data_020df4e8
+.L_0203a04c: .word gActorFeedbackAnimationResourceAllocationTag
     .size ActorFeedbackResources_Load, . - ActorFeedbackResources_Load
 
     .global ActorFeedbackResources_Unload

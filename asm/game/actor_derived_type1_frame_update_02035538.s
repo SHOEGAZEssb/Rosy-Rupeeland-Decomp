@@ -5,7 +5,7 @@
 .extern GameWork_TestFlag
 .extern Heap_Alloc
 .extern SceneManager_GetCurrent
-.extern data_020df494
+.extern gType7AuxiliaryPresentationAllocationTag
 .extern data_021052fc
 .extern DisplayBrightness_StartMainTransition
 .extern DisplayBrightness_StartSubTransition
@@ -491,7 +491,7 @@ ActorDerivedType1_UpdateFrame: ; 0x02035538
 .L_02035bac: .word 0x3f6
 .L_02035bb0: .word data_021052fc
 .L_02035bb4: .word 0x3f2
-.L_02035bb8: .word data_020df494
+.L_02035bb8: .word gType7AuxiliaryPresentationAllocationTag
 .L_02035bbc: .word gHeapContext
 .L_02035bc0: .word 0x19a
 .L_02035bc4: .word 0x3f1

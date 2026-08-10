@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/actor_global_terrain_gate_spawn.c.
 .text
 .extern Heap_Alloc
-.extern data_020df4d8
+.extern gOverlay62TerrainGateObjectAllocationTag
 .extern data_021052fc
 .extern OverlayManager_LoadOverlay
 .extern OverlayManager_GetGlobal
@@ -64,6 +64,6 @@ Actor_TrySpawnTerrainGateObject: ; 0x02039ea0
     ldmia sp!, {r3, pc}
 .L_02039f5c: .word data_021052fc
 .L_02039f60: .word 0x3e
-.L_02039f64: .word data_020df4d8
+.L_02039f64: .word gOverlay62TerrainGateObjectAllocationTag
 .L_02039f68: .word gHeapContext
     .size Actor_TrySpawnTerrainGateObject, . - Actor_TrySpawnTerrainGateObject

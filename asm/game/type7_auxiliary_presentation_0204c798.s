@@ -10,7 +10,7 @@
 .extern Heap_Free
 .extern Type7AuxiliaryPresentation_Activate
 .extern data_020e1ea4
-.extern data_020e1eb4
+.extern gType7AuxiliaryAnimationResourceAllocationTag
 .extern gHeapContext
 .text
     .global Type7AuxiliaryPresentation_Init
@@ -60,7 +60,7 @@ Type7AuxiliaryPresentation_Init: ; 0x0204c798
     add sp, sp, #0x4
     ldmia sp!, {r3, r4, r5, r6, pc}
 .L_0204c844: .word data_020e1ea4
-.L_0204c848: .word data_020e1eb4
+.L_0204c848: .word gType7AuxiliaryAnimationResourceAllocationTag
 .L_0204c84c: .word gHeapContext
 .L_0204c850: .word 0x1157
 .size Type7AuxiliaryPresentation_Init, . - Type7AuxiliaryPresentation_Init

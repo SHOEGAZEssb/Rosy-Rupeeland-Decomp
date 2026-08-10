@@ -6,7 +6,7 @@
  */
 
 extern const u8 data_020e1ea4[];
-extern const char data_020e1eb4[];
+extern const char gType7AuxiliaryAnimationResourceAllocationTag[];
 extern void *gHeapContext;
 
 typedef struct Type7AuxiliaryPresentation {
@@ -62,7 +62,7 @@ Type7AuxiliaryPresentation *Type7AuxiliaryPresentation_Init(
     u32 *resource;
     self->vtable = data_020e1ea4;
     self->owner = owner;
-    resource = (u32 *)Heap_Alloc(0x10, data_020e1eb4, 4, gHeapContext);
+    resource = (u32 *)Heap_Alloc(0x10, gType7AuxiliaryAnimationResourceAllocationTag, 4, gHeapContext);
     if (resource != 0)
         resource = (u32 *)AnimationResource_Init(resource, 0x1157, 0x1158, 0x1159);
     self->resource = resource;

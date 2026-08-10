@@ -5,8 +5,8 @@
 extern u8 *data_021052fc;
 extern u8 data_020e9fa0[];
 extern u8 data_021056e4[];
-extern const char data_020df4e0[];
-extern const char data_020df4e8[];
+extern const char gActorFeedbackResourcePointerArrayAllocationTag[];
+extern const char gActorFeedbackAnimationResourceAllocationTag[];
 
 #ifdef __cplusplus
 extern "C" {
@@ -39,14 +39,14 @@ void ActorFeedbackResources_Load(void)
     selector = (*(s32 *)((u8 *)state + 0x40) << 20) >> 20;
     records = data_020e9fa0 + selector * 0x78;
     *(u8 **)(data_021056e4 + 4) = records;
-    resources = (void **)Heap_Alloc(0x3c, data_020df4e0, 4, &gHeapContext);
+    resources = (void **)Heap_Alloc(0x3c, gActorFeedbackResourcePointerArrayAllocationTag, 4, &gHeapContext);
     *(void ***)(data_021056e4 + 8) = resources;
     for (i = 0; i < 15; ++i) {
         s16 first = *(s16 *)(records + i * 8);
         s16 second = *(s16 *)(records + i * 8 + 2);
         s16 third = *(s16 *)(records + i * 8 + 4);
         if (first != 0) {
-            void *resource = Heap_Alloc(0x10, data_020df4e8, 4,
+            void *resource = Heap_Alloc(0x10, gActorFeedbackAnimationResourceAllocationTag, 4,
                                         &gHeapContext);
             if (resource != 0)
                 resource = AnimationResource_Init(resource, first, second, third);

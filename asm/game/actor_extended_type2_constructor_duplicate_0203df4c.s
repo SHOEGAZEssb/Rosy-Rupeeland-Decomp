@@ -2,7 +2,7 @@
 .text
 .extern Heap_Alloc
 .extern data_020dfee4
-.extern data_020e00b8
+.extern gInteractionWaypointCursorAllocationTag
 .extern data_020e00c0
 .extern data_020e83a0
 .extern data_02105778
@@ -205,7 +205,7 @@ ActorExtendedType2_InitDuplicate: ; 0x0203df4c
     ldmia sp!, {r3, r4, r5, pc}
 .L_0203e1fc: .word data_020dfee4
 .L_0203e200: .word data_02105778
-.L_0203e204: .word data_020e00b8
+.L_0203e204: .word gInteractionWaypointCursorAllocationTag
 .L_0203e208: .word gHeapContext
 .L_0203e20c: .word data_020e00c0
 .L_0203e210: .word data_020e83a0
