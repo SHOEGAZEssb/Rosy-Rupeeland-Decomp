@@ -2,7 +2,7 @@
 .text
 .extern data_020d430c
 .extern data_021052fc
-.extern func_02008f70
+.extern GamePhaseRuntime_GetAuxiliaryOverlayObject
 .extern func_02012704
 .extern func_ov056_0220f054
 .global func_0201a03c
@@ -20,7 +20,7 @@ func_0201a03c:
     ldr r0, [r1, #0x0]
     str r2, [sp, #0x0]
     str r4, [sp, #0x8]
-    bl func_02008f70
+    bl GamePhaseRuntime_GetAuxiliaryOverlayObject
     add r1, sp, #0x0
     bl func_ov056_0220f054
     mov r0, #0x0

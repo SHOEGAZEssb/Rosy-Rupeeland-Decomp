@@ -61,14 +61,14 @@ void func_02008f58(void *value)
     *(void **)((u8 *)data_021052fc + 0x30f8) = value;
 }
 
-/* Return the auxiliary object stored at runtime offset 0x30ec; changes no state. */
-void *func_02008f70(GamePhaseRuntime *self)
+/* Return the area-dependent auxiliary overlay object at +0x30ec; changes no state. */
+void *GamePhaseRuntime_GetAuxiliaryOverlayObject(GamePhaseRuntime *self)
 {
     return *(void **)((u8 *)self + 0x30ec);
 }
 
 /* Free allocation and return its original address; Heap_Free is the only effect. */
-void *func_02008f7c(void *allocation)
+void *Heap_FreeAndReturnPointer(void *allocation)
 {
     Heap_Free(allocation);
     return allocation;

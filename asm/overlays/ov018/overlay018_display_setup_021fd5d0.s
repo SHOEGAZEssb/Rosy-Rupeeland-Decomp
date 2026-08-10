@@ -5,7 +5,7 @@
     .extern data_ov018_021ffcd0
     .extern func_02005058
     .extern func_0200875c
-    .extern func_02008f70
+    .extern GamePhaseRuntime_GetAuxiliaryOverlayObject
     .extern func_0202839c
     .extern func_020afaec
     .extern func_020afd0c
@@ -51,7 +51,7 @@ func_ov018_021fd5d0:
     bl func_0202839c
     ldr r0, L_021fd6b4
     ldr r0, [r0, #0x0]
-    bl func_02008f70
+    bl GamePhaseRuntime_GetAuxiliaryOverlayObject
     mov r5, r0
     bl func_020afaec
     mov r1, r0

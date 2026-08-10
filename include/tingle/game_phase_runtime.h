@@ -33,7 +33,7 @@ s32 GamePhaseRuntime_QueueQueryUntilHandled(GamePhaseRuntime *self,
                                             const void *query);
 s32 GamePhaseRuntime_QueueBroadcastQuery(GamePhaseRuntime *self,
                                          const void *query);
-s32 func_020073c4(GamePhaseRuntime *self, s32 event);
+s32 GamePhaseRuntime_HandleEvent100(GamePhaseRuntime *self, s32 event);
 s32 func_02007420(GamePhaseRuntime *self);
 s32 func_02007428(GamePhaseRuntime *self);
 s32 func_02007430(GamePhaseRuntime *self);
@@ -73,8 +73,8 @@ void GamePhaseRuntime_ProcessPendingPresentationRefreshes(GamePhaseRuntime *self
 s32 func_02008f2c(void);
 s32 func_02008f34(void *counter);
 void func_02008f58(void *value);
-void *func_02008f70(GamePhaseRuntime *self);
-void *func_02008f7c(void *allocation);
+void *GamePhaseRuntime_GetAuxiliaryOverlayObject(GamePhaseRuntime *self);
+void *Heap_FreeAndReturnPointer(void *allocation);
 
 #ifdef __cplusplus
 }

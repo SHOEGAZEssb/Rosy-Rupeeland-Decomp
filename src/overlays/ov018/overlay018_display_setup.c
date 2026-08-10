@@ -13,7 +13,7 @@ extern "C" {
 extern void GXS_SetGraphicsMode(s32);
 extern void func_02005058(void *);
 extern void func_0200875c(void *, void *);
-extern void *func_02008f70(void *);
+extern void *GamePhaseRuntime_GetAuxiliaryOverlayObject(void *);
 extern void func_0202839c(void *, void *);
 extern void func_020afd0c(void *, s32, s32, s32, s32);
 extern void func_020afd28(void *, void *, s32, s32, s32, s32);
@@ -50,7 +50,7 @@ extern "C" void func_ov018_021fd5d0(void *state)
         (*(volatile u16 *)0x0400100c & 0x43) | 0x4480;
     func_0202839c(&request,
                   FIELD(void *, FIELD(void *, (u8 *)global + 0x3000, 0xbc), 0));
-    renderer = func_02008f70(global);
+    renderer = GamePhaseRuntime_GetAuxiliaryOverlayObject(global);
     func_ov056_0220f0ac(renderer, func_020afaec(),
                         FIELD(s32, state, 0x5c) + request.x * 0x1e0,
                         FIELD(s32, state, 0x60) + request.y * 0x160);

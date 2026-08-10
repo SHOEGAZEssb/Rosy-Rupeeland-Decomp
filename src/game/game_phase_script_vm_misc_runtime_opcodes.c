@@ -10,7 +10,7 @@ extern void *data_021052fc;
 extern const void *data_020d430c;
 extern void func_02098020(void *state, s32 value);
 extern void func_020983c0(void *state, s32 value);
-extern void *func_02008f70(void *runtime);
+extern void *GamePhaseRuntime_GetAuxiliaryOverlayObject(void *runtime);
 extern void func_ov056_0220f054(void *state, const void *configuration);
 #ifdef __cplusplus
 }
@@ -76,6 +76,6 @@ s32 func_0201a03c(GamePhaseActorScriptVm *self)
     config.second = (s32)func_02012704(&self->base);
     config.first = (s32)func_02012704(&self->base);
     config.tag = data_020d430c;
-    func_ov056_0220f054(func_02008f70(data_021052fc), &config);
+    func_ov056_0220f054(GamePhaseRuntime_GetAuxiliaryOverlayObject(data_021052fc), &config);
     return 0;
 }

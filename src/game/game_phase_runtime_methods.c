@@ -104,7 +104,7 @@ s32 GamePhaseRuntime_QueueBroadcastQuery(GamePhaseRuntime *self,
  * Handle event 100 by playing sound 123 and allocating/initializing a
  * 0x9c-byte tagged effect object. Other events have no effect; returns zero.
  */
-s32 func_020073c4(GamePhaseRuntime *self, s32 event)
+s32 GamePhaseRuntime_HandleEvent100(GamePhaseRuntime *self, s32 event)
 {
     void *effect;
     (void)self;
