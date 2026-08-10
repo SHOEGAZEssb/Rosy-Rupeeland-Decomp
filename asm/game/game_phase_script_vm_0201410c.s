@@ -3,8 +3,8 @@
 .extern GamePhaseScriptVm_Pop
 .extern Actor_TranslateSecondaryBounds
 
-    .global func_0201410c
-func_0201410c: ; 0x0201410c
+    .global GamePhaseActorScriptVm_TranslateSecondaryBounds
+GamePhaseActorScriptVm_TranslateSecondaryBounds: ; 0x0201410c
     stmdb sp!, {r3, r4, r5, lr}
     mov r5, r0
     bl GamePhaseScriptVm_Pop
@@ -17,4 +17,4 @@ func_0201410c: ; 0x0201410c
     bl Actor_TranslateSecondaryBounds
     mov r0, #0x0
     ldmia sp!, {r3, r4, r5, pc}
-    .size func_0201410c, . - func_0201410c
+    .size GamePhaseActorScriptVm_TranslateSecondaryBounds, . - GamePhaseActorScriptVm_TranslateSecondaryBounds

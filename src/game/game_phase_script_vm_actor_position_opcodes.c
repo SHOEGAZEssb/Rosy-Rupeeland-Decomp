@@ -19,7 +19,7 @@ extern void Actor_TranslateCollisionBounds(void *actor, u32 first, u32 second);
  * Actor_AdjustPositionForTerrainHeight on the
  * actor, destroy the temporary vector, and return zero.
  */
-s32 func_0201409c(GamePhaseActorScriptVm *self)
+s32 GamePhaseActorScriptVm_SetPositionFromCoordinates(GamePhaseActorScriptVm *self)
 {
     s32 y = (s32)GamePhaseScriptVm_Pop(&self->base);
     s32 x = (s32)GamePhaseScriptVm_Pop(&self->base);
@@ -35,7 +35,7 @@ s32 func_0201409c(GamePhaseActorScriptVm *self)
 }
 
 /* Translate the bound actor's secondary bounds by two popped values. */
-s32 func_0201410c(GamePhaseActorScriptVm *self)
+s32 GamePhaseActorScriptVm_TranslateSecondaryBounds(GamePhaseActorScriptVm *self)
 {
     u32 second = GamePhaseScriptVm_Pop(&self->base);
     u32 first = GamePhaseScriptVm_Pop(&self->base);
@@ -44,7 +44,7 @@ s32 func_0201410c(GamePhaseActorScriptVm *self)
 }
 
 /* Translate the bound actor's collision bounds by two popped values. */
-s32 func_0201413c(GamePhaseActorScriptVm *self)
+s32 GamePhaseActorScriptVm_TranslateCollisionBounds(GamePhaseActorScriptVm *self)
 {
     u32 second = GamePhaseScriptVm_Pop(&self->base);
     u32 first = GamePhaseScriptVm_Pop(&self->base);

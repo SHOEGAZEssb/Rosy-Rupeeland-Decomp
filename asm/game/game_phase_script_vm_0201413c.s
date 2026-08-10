@@ -3,8 +3,8 @@
 .extern GamePhaseScriptVm_Pop
 .extern Actor_TranslateCollisionBounds
 
-    .global func_0201413c
-func_0201413c: ; 0x0201413c
+    .global GamePhaseActorScriptVm_TranslateCollisionBounds
+GamePhaseActorScriptVm_TranslateCollisionBounds: ; 0x0201413c
     stmdb sp!, {r3, r4, r5, lr}
     mov r5, r0
     bl GamePhaseScriptVm_Pop
@@ -17,4 +17,4 @@ func_0201413c: ; 0x0201413c
     bl Actor_TranslateCollisionBounds
     mov r0, #0x0
     ldmia sp!, {r3, r4, r5, pc}
-    .size func_0201413c, . - func_0201413c
+    .size GamePhaseActorScriptVm_TranslateCollisionBounds, . - GamePhaseActorScriptVm_TranslateCollisionBounds

@@ -5145,21 +5145,21 @@ build build/reports/game_phase_script_vm_0201409c.json: objdiff build/decomp/del
   base_object = build/decomp/asm/game/game_phase_script_vm_0201409c.o
 build build/reports/game_phase_script_vm_0201409c.txt: match_report build/reports/game_phase_script_vm_0201409c.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_script_vm_0201409c.json
-  report_args = --section .text --function func_0201409c --require-exact
+  report_args = --section .text --function GamePhaseActorScriptVm_SetPositionFromCoordinates --require-exact
 
 build build/reports/game_phase_script_vm_0201410c.json: objdiff build/decomp/delinks/asm/game/game_phase_script_vm_0201410c.o | build/decomp/asm/game/game_phase_script_vm_0201410c.o
   target_object = build/decomp/delinks/asm/game/game_phase_script_vm_0201410c.o
   base_object = build/decomp/asm/game/game_phase_script_vm_0201410c.o
 build build/reports/game_phase_script_vm_0201410c.txt: match_report build/reports/game_phase_script_vm_0201410c.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_script_vm_0201410c.json
-  report_args = --section .text --function func_0201410c --require-exact
+  report_args = --section .text --function GamePhaseActorScriptVm_TranslateSecondaryBounds --require-exact
 
 build build/reports/game_phase_script_vm_0201413c.json: objdiff build/decomp/delinks/asm/game/game_phase_script_vm_0201413c.o | build/decomp/asm/game/game_phase_script_vm_0201413c.o
   target_object = build/decomp/delinks/asm/game/game_phase_script_vm_0201413c.o
   base_object = build/decomp/asm/game/game_phase_script_vm_0201413c.o
 build build/reports/game_phase_script_vm_0201413c.txt: match_report build/reports/game_phase_script_vm_0201413c.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_script_vm_0201413c.json
-  report_args = --section .text --function func_0201413c --require-exact
+  report_args = --section .text --function GamePhaseActorScriptVm_TranslateCollisionBounds --require-exact
 
 build build/reports/game_phase_script_vm_actor_position_opcodes.txt: phony build/reports/game_phase_script_vm_0201409c.txt build/reports/game_phase_script_vm_0201410c.txt build/reports/game_phase_script_vm_0201413c.txt
 

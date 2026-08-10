@@ -6,8 +6,8 @@
 .extern GamePhaseScriptVm_Pop
 .extern Actor_AdjustPositionForTerrainHeight
 
-    .global func_0201409c
-func_0201409c: ; 0x0201409c
+    .global GamePhaseActorScriptVm_SetPositionFromCoordinates
+GamePhaseActorScriptVm_SetPositionFromCoordinates: ; 0x0201409c
     stmdb sp!, {r3, r4, r5, lr}
     sub sp, sp, #0x10
     mov r5, r0
@@ -36,4 +36,4 @@ func_0201409c: ; 0x0201409c
     mov r0, #0x0
     add sp, sp, #0x10
     ldmia sp!, {r3, r4, r5, pc}
-    .size func_0201409c, . - func_0201409c
+    .size GamePhaseActorScriptVm_SetPositionFromCoordinates, . - GamePhaseActorScriptVm_SetPositionFromCoordinates

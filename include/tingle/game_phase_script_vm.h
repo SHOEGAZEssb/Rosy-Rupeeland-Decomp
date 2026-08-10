@@ -117,9 +117,9 @@ s32 GamePhaseActorScriptVm_RestorePrimaryAttachmentState(GamePhaseActorScriptVm 
 s32 func_02013ed8(GamePhaseActorScriptVm *self);
 s32 func_02013efc(GamePhaseActorScriptVm *self);
 s32 func_02013f10(GamePhaseActorScriptVm *self);
-s32 func_0201409c(GamePhaseActorScriptVm *self);
-s32 func_0201410c(GamePhaseActorScriptVm *self);
-s32 func_0201413c(GamePhaseActorScriptVm *self);
+s32 GamePhaseActorScriptVm_SetPositionFromCoordinates(GamePhaseActorScriptVm *self);
+s32 GamePhaseActorScriptVm_TranslateSecondaryBounds(GamePhaseActorScriptVm *self);
+s32 GamePhaseActorScriptVm_TranslateCollisionBounds(GamePhaseActorScriptVm *self);
 s32 func_0201416c(GamePhaseActorScriptVm *self);
 s32 func_020141d4(GamePhaseActorScriptVm *self);
 s32 func_02014250(GamePhaseActorScriptVm *self);
