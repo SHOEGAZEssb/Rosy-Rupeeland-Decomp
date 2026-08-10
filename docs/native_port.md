@@ -160,9 +160,12 @@ value `0x52`. The phase-global vector copied into actor offset `0x78` remains
 an explicit external-state dependency. Kind-three subtypes that use the shared
 `0x208` constructor also receive their recovered embedded animation-resource
 state and terminal fields. Other derived constructors remain marked pending.
-The category-one bootstrap,
-category-two bootstrap, and the common type-three actor added once per category
-are built in their recovered order before each overlay list. The phase-start
+The category-two singleton-tracker bootstrap has its complete constructor
+image. The category-one bootstrap includes its full type-one scalar/vector
+extension and the known header of its marker helper; resource lookup and host
+presentation creation for that helper remain pending. Both bootstraps and the
+common type-three actor added once per category are built in their recovered
+order before each overlay list. The phase-start
 companion also follows its recovered shared-state timing: it
 sets GameWork flag `0x3F3`, advances states zero and one together on its first
 update, then clears optional flag `0x386` and its own flag on the next update.

@@ -12,6 +12,9 @@ enum {
     ACTOR_BASE_VTABLE_ADDRESS = 0x020DEF7C,
     ACTOR_COMMON_VTABLE_ADDRESS = 0x020DF040,
     ACTOR_SHARED_DERIVED_VTABLE_ADDRESS = 0x020DF510,
+    ACTOR_TYPE1_VTABLE_ADDRESS = 0x020DF3C8,
+    ACTOR_SINGLETON_TRACKER_VTABLE_ADDRESS = 0x020E1F2C,
+    MARKER_PRESENTATION_VTABLE_ADDRESS = 0x020E1ED8,
     VECTOR_VTABLE_ADDRESS = 0x020D405C,
     ACTOR_SCRIPT_VM_VTABLE_ADDRESS = 0x020D5B20,
     ANIMATION_RESOURCE_VTABLE_ADDRESS = 0x020D4178
@@ -160,6 +163,17 @@ static s32 UsesSharedDerivedConstructor(const TingleNativeActorDescriptor *desc)
             desc->subtype == 23 || desc->subtype == 24);
 }
 
+static s32 UsesType1Constructor(const TingleNativeActorDescriptor *desc)
+{
+    return desc->kind == 1;
+}
+
+static s32 UsesSingletonTrackerConstructor(
+    const TingleNativeActorDescriptor *desc)
+{
+    return desc->kind == 3 && desc->subtype == 3;
+}
+
 /* Reproduce func_0203b554 after its common-base constructor has returned. */
 static void InitializeSharedDerived(TingleNativeActorImage *actor)
 {
@@ -174,6 +188,65 @@ static void InitializeSharedDerived(TingleNativeActorImage *actor)
     WriteU32(bytes, 0x200, 0xFFFFFFFFu);
     WriteU16(bytes, 0x204, 0);
     actor->initialization_stages |= TINGLE_NATIVE_ACTOR_STAGE_SHARED_DERIVED;
+}
+
+/*
+ * Reproduce the host-independent writes in func_02035060. Its +0x2a8 helper
+ * requires resource lookup and presentation creation, so pointer fields stay
+ * null and carry an explicit pending marker instead of a fabricated DS value.
+ */
+static void InitializeType1Derived(TingleNativeActorImage *actor)
+{
+    u8 *bytes = actor->bytes;
+    u32 offset;
+
+    WriteU32(bytes, 0x00, ACTOR_TYPE1_VTABLE_ADDRESS);
+    WriteU32(bytes, 0x230, 0);
+    WriteU16(bytes, 0x234, 0);
+    WriteU16(bytes, 0x236, 0);
+    InitializeVector(bytes, 0x238, 0, 0, 0);
+    WriteU32(bytes, 0x248, 0);
+    for (offset = 0x24C; offset <= 0x252; offset += 2)
+        WriteU16(bytes, offset, 0);
+    InitializeVector(bytes, 0x254, 0, 0, 0);
+    WriteU16(bytes, 0x264, 0);
+    WriteU16(bytes, 0x266, 0);
+    WriteU16(bytes, 0x268, 0);
+    bytes[0x26A] = 0xFF;
+    bytes[0x26B] = 0;
+    for (offset = 0x26C; offset <= 0x27C; offset += 4)
+        WriteU32(bytes, offset, 0);
+    WriteU16(bytes, 0x280, 0);
+    WriteU16(bytes, 0x282, 0);
+    InitializeVector(bytes, 0x284, 0, 0, 0);
+    WriteU16(bytes, 0x294, 0xFFFF);
+    for (offset = 0x296; offset <= 0x2A4; offset += 2)
+        WriteU16(bytes, offset, 0);
+    WriteU32(bytes, 0x2A8, MARKER_PRESENTATION_VTABLE_ADDRESS);
+    WriteU32(bytes, 0x2AC, 0);
+    WriteU32(bytes, 0x2B0, 0);
+    WriteU16(bytes, 0x2B4, 0);
+    WriteU16(bytes, 0x2B6, 0);
+    bytes[0x4D] = 1;
+    WriteU32(bytes, 0xD0, ReadU32(bytes, 0xD0) & ~4u);
+    WriteU32(bytes, 0x14, ReadU32(bytes, 0x14) | 0x100000u);
+    actor->initialization_stages |= TINGLE_NATIVE_ACTOR_STAGE_TYPE1_DERIVED;
+    actor->pending_external_state |=
+        TINGLE_NATIVE_ACTOR_PENDING_MARKER_PRESENTATION;
+}
+
+/* Reproduce the complete field layout written by func_0204d068. */
+static void InitializeSingletonTracker(TingleNativeActorImage *actor)
+{
+    u8 *bytes = actor->bytes;
+
+    WriteU32(bytes, 0x00, ACTOR_SINGLETON_TRACKER_VTABLE_ADDRESS);
+    WriteU32(bytes, 0x208, 0);
+    WriteU32(bytes, 0x20C, 0);
+    WriteU32(bytes, 0x210, 0);
+    WriteU32(bytes, 0x214, 0);
+    actor->initialization_stages |=
+        TINGLE_NATIVE_ACTOR_STAGE_SINGLETON_TRACKER;
 }
 
 static s32 InitializeActor(TingleNativeActorImage *actor,
@@ -219,9 +292,17 @@ static s32 InitializeActor(TingleNativeActorImage *actor,
     WriteU16(actor->bytes, 0x50, (u16)descriptor->selector_50);
     actor->initialization_stages = TINGLE_NATIVE_ACTOR_STAGE_GEOMETRY;
     if (actor->size >= 0x1EC) InitializeCommonRuntime(actor);
-    if (actor->size >= 0x208 && UsesSharedDerivedConstructor(descriptor))
+    if (actor->size >= 0x208 &&
+        (UsesSharedDerivedConstructor(descriptor) ||
+         UsesType1Constructor(descriptor) ||
+         UsesSingletonTrackerConstructor(descriptor)))
         InitializeSharedDerived(actor);
-    else
+    if (actor->size >= 0x2B8 && UsesType1Constructor(descriptor))
+        InitializeType1Derived(actor);
+    else if (actor->size >= 0x218 &&
+             UsesSingletonTrackerConstructor(descriptor))
+        InitializeSingletonTracker(actor);
+    else if (!UsesSharedDerivedConstructor(descriptor))
         actor->pending_external_state |=
             TINGLE_NATIVE_ACTOR_PENDING_DERIVED_CONSTRUCTOR;
     /* The factory copies descriptor +0x52 after the derived initializer. */

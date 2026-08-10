@@ -163,9 +163,18 @@ static int TestActorBootstrapRuntime(void)
              first->descriptor.raw[0x5C] == (u8)-12 &&
              first->initialization_stages ==
                  (TINGLE_NATIVE_ACTOR_STAGE_GEOMETRY |
-                  TINGLE_NATIVE_ACTOR_STAGE_COMMON_RUNTIME) &&
-             (first->pending_external_state &
-              TINGLE_NATIVE_ACTOR_PENDING_DERIVED_CONSTRUCTOR) != 0 &&
+                  TINGLE_NATIVE_ACTOR_STAGE_COMMON_RUNTIME |
+                  TINGLE_NATIVE_ACTOR_STAGE_SHARED_DERIVED |
+                  TINGLE_NATIVE_ACTOR_STAGE_TYPE1_DERIVED) &&
+             first->pending_external_state ==
+                 (TINGLE_NATIVE_ACTOR_PENDING_PHASE_VECTOR |
+                  TINGLE_NATIVE_ACTOR_PENDING_MARKER_PRESENTATION) &&
+             ReadU32At(first->bytes, 0x00) == 0x020DF3C8 &&
+             (ReadU32At(first->bytes, 0x14) & 0x100000) != 0 &&
+             ReadU32At(first->bytes, 0x238) == 0x020D405C &&
+             first->bytes[0x26A] == 0xFF &&
+             ReadU16At(first->bytes, 0x294) == 0xFFFF &&
+             ReadU32At(first->bytes, 0x2A8) == 0x020E1ED8 &&
              second != NULL && second->synthetic && second->category == 1 &&
              second->descriptor.kind == 3 && second->descriptor.subtype == 4 &&
              second->descriptor.value_52 == 2 &&
@@ -179,6 +188,15 @@ static int TestActorBootstrapRuntime(void)
              third->size == 0x218 &&
              ReadU32At(third->descriptor.raw, 0x04) == 0x138A &&
              third->descriptor.raw[0x11] == 0x1D &&
+             third->initialization_stages ==
+                 (TINGLE_NATIVE_ACTOR_STAGE_GEOMETRY |
+                  TINGLE_NATIVE_ACTOR_STAGE_COMMON_RUNTIME |
+                  TINGLE_NATIVE_ACTOR_STAGE_SHARED_DERIVED |
+                  TINGLE_NATIVE_ACTOR_STAGE_SINGLETON_TRACKER) &&
+             third->pending_external_state ==
+                 TINGLE_NATIVE_ACTOR_PENDING_PHASE_VECTOR &&
+             ReadU32At(third->bytes, 0x00) == 0x020E1F2C &&
+             ReadU32At(third->bytes, 0x214) == 0 &&
              fourth != NULL && fourth->synthetic &&
              fourth->category == 2 && fourth->descriptor.subtype == 4;
 
