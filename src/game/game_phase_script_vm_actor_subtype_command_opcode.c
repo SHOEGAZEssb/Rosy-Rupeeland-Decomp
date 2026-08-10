@@ -59,7 +59,7 @@ s32 func_02018208(GamePhaseActorScriptVm *self)
     s32 x = (s32)GamePhaseScriptVm_Pop(&self->base);
     s32 command = (s32)GamePhaseScriptVm_Pop(&self->base);
     s32 targetIndex = (s32)GamePhaseScriptVm_Pop(&self->base);
-    u8 *object = (u8 *)ActorCollection_FindActorByDescriptorValue(Actor_GetCollection(self->actor_84),
+    u8 *object = (u8 *)ActorCollection_FindActorByDescriptorValue(Actor_GetCollection(self->actor),
                                      targetIndex);
     u16 subtype = *(u16 *)(object + 0x4e);
 

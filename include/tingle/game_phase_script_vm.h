@@ -21,8 +21,8 @@ typedef struct GamePhaseScriptVm {
 /* Script VM specialization used by actor-bound phase scripts. */
 typedef struct GamePhaseActorScriptVm {
     GamePhaseScriptVm base;
-    void *actor_84;
-    s32 waitCounter_88;
+    void *actor;
+    s32 waitCounter;
     u32 flags_8c;
     u8 value_90;
     u8 padding_91[3];
@@ -282,17 +282,19 @@ s32 func_0201b040(GamePhaseActorScriptVm *self);
 s32 func_0201b070(GamePhaseActorScriptVm *self);
 s32 func_0201b098(GamePhaseActorScriptVm *self);
 s32 func_0201b0d4(GamePhaseActorScriptVm *self);
-GamePhaseActorScriptVm *func_0201b0f4(GamePhaseActorScriptVm *self);
-GamePhaseActorScriptVm *func_0201b124(GamePhaseActorScriptVm *self,
-                                     void *actor, const s8 *script,
-                                     void *context);
-void func_0201b15c(GamePhaseActorScriptVm *self);
-GamePhaseActorScriptVm *func_0201b180(GamePhaseActorScriptVm *self,
-                                     const GamePhaseActorScriptVm *source);
-void func_0201b1ac(GamePhaseActorScriptVm *self,
-                   const GamePhaseActorScriptVm *source);
-GamePhaseActorScriptVm *func_0201b1e0(GamePhaseActorScriptVm *self);
-GamePhaseActorScriptVm *func_0201b1f4(GamePhaseActorScriptVm *self);
+GamePhaseActorScriptVm *GamePhaseActorScriptVm_Init(GamePhaseActorScriptVm *self);
+GamePhaseActorScriptVm *GamePhaseActorScriptVm_InitWithScript(
+    GamePhaseActorScriptVm *self, void *actor, const s8 *script,
+    void *context);
+void GamePhaseActorScriptVm_ResetState(GamePhaseActorScriptVm *self);
+GamePhaseActorScriptVm *GamePhaseActorScriptVm_Assign(
+    GamePhaseActorScriptVm *self, const GamePhaseActorScriptVm *source);
+void GamePhaseActorScriptVm_CopyState(GamePhaseActorScriptVm *self,
+                                      const GamePhaseActorScriptVm *source);
+GamePhaseActorScriptVm *GamePhaseActorScriptVm_Destroy(
+    GamePhaseActorScriptVm *self);
+GamePhaseActorScriptVm *GamePhaseActorScriptVm_DestroyAndFree(
+    GamePhaseActorScriptVm *self);
 s32 func_0201b210(GamePhaseActorScriptVm *self, s32 index);
 void func_0201b228(GamePhaseActorScriptVm *self);
 s32 func_0201b23c(const GamePhaseActorScriptVm *self);

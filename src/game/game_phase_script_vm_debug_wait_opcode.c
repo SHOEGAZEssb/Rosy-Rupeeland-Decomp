@@ -33,7 +33,7 @@ s32 func_02015818(GamePhaseActorScriptVm *self)
     state = DebugHudState_PollInput(uiState, 0);
 
     if ((self->flags_8c & 2) != 0) {
-        u8 *object = *(u8 **)((u8 *)self->actor_84 + 0x54);
+        u8 *object = *(u8 **)((u8 *)self->actor + 0x54);
         if (object != 0) {
             u16 *flags = (u16 *)(object + 0x24);
             if ((state & ((1u << 8) | (1u << 1))) != 0) {

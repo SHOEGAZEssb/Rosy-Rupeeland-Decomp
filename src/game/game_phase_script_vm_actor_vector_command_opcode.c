@@ -16,7 +16,7 @@ s32 func_02017a54(GamePhaseActorScriptVm *self)
     s32 z = (s32)GamePhaseScriptVm_Pop(&self->base) << 4;
     s32 y = (s32)GamePhaseScriptVm_Pop(&self->base) << 4;
     s32 x = (s32)GamePhaseScriptVm_Pop(&self->base) << 4;
-    void *actor = self->actor_84;
+    void *actor = self->actor;
     Method method;
     func_0200500c(&vector, x, y, z);
     method = *(Method *)((u8 *)*(void **)actor + 0xb8);

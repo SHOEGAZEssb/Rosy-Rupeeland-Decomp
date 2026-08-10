@@ -48,7 +48,7 @@ s32 func_020189e4(GamePhaseActorScriptVm *self)
     s16 first = (s16)GamePhaseScriptVm_Pop(&self->base);
     s32 command = (s32)GamePhaseScriptVm_Pop(&self->base);
     ActorInteractionBounds *bounds =
-        (ActorInteractionBounds *)((u8 *)self->actor_84 + 0x60);
+        (ActorInteractionBounds *)((u8 *)self->actor + 0x60);
 
     switch (command) {
     case 1: {

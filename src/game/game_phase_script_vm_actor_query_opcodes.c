@@ -19,7 +19,7 @@ extern s32 func_020ae024(fx32 first, fx32 second);
 s32 func_020134d0(GamePhaseActorScriptVm *self)
 {
     s16 value = (s16)GamePhaseScriptVm_Pop(&self->base);
-    u32 *field = (u32 *)((u8 *)self->actor_84 + 0x5c);
+    u32 *field = (u32 *)((u8 *)self->actor + 0x5c);
     *field = (*field & 0xffff0000) | (u16)value;
     return 0;
 }
@@ -41,14 +41,14 @@ s32 func_0201350c(GamePhaseActorScriptVm *self)
 /* Pop a word into actor offset 0x3c and return zero. */
 s32 func_02013568(GamePhaseActorScriptVm *self)
 {
-    *(u32 *)((u8 *)self->actor_84 + 0x3c) = GamePhaseScriptVm_Pop(&self->base);
+    *(u32 *)((u8 *)self->actor + 0x3c) = GamePhaseScriptVm_Pop(&self->base);
     return 0;
 }
 
 /* Pop a word into actor offset 0x40 and return zero. */
 s32 func_02013584(GamePhaseActorScriptVm *self)
 {
-    *(u32 *)((u8 *)self->actor_84 + 0x40) = GamePhaseScriptVm_Pop(&self->base);
+    *(u32 *)((u8 *)self->actor + 0x40) = GamePhaseScriptVm_Pop(&self->base);
     return 0;
 }
 
@@ -62,7 +62,7 @@ s32 func_020135a0(GamePhaseActorScriptVm *self)
 {
     s32 targetY = (s32)GamePhaseScriptVm_Pop(&self->base);
     s32 targetX = (s32)GamePhaseScriptVm_Pop(&self->base);
-    VecFx32Object *position = (VecFx32Object *)((u8 *)self->actor_84 + 0x18);
+    VecFx32Object *position = (VecFx32Object *)((u8 *)self->actor + 0x18);
     s32 angle = func_020ae024((targetX << 12) - position->value.x,
                              (targetY << 12) - position->value.y);
     GamePhaseScriptVm_SetResult(&self->base, data_020d5af8[((u32)angle << 4) >> 16]);

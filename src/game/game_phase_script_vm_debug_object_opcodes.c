@@ -34,7 +34,7 @@ s32 func_020156fc(GamePhaseActorScriptVm *self)
     u32 third = GamePhaseScriptVm_Pop(&self->base);
     u32 secondValue = GamePhaseScriptVm_Pop(&self->base);
     u32 firstValue = GamePhaseScriptVm_Pop(&self->base);
-    u8 *collection = (u8 *)Actor_GetCollection(self->actor_84);
+    u8 *collection = (u8 *)Actor_GetCollection(self->actor);
     void *second = func_0201da20(*(u32 *)(collection + 0x2e84), firstValue);
     void *first = func_0201d9e4(secondValue);
     void *allocation;

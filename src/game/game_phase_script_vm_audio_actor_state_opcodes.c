@@ -73,7 +73,7 @@ s32 func_020199cc(GamePhaseActorScriptVm *self)
  */
 s32 func_02019a10(GamePhaseActorScriptVm *self)
 {
-    u8 *actor = (u8 *)self->actor_84;
+    u8 *actor = (u8 *)self->actor;
     if (*(s16 *)(actor + 0xe4) == 0) {
         ActorDerivedType1_ResetToBaseState(actor);
         *(u16 *)(*(u8 **)(actor + 0x54) + 0x36) = 0;
@@ -84,7 +84,7 @@ s32 func_02019a10(GamePhaseActorScriptVm *self)
 /* Set actor flag bit 0 and apply mode 2 to state at offset 0x1ec; return zero. */
 s32 func_02019a44(GamePhaseActorScriptVm *self)
 {
-    u8 *actor = (u8 *)self->actor_84;
+    u8 *actor = (u8 *)self->actor;
     *(u32 *)(actor + 0x14) |= 1;
     func_020313b4(actor, actor + 0x1ec, 2);
     return 0;
@@ -96,7 +96,7 @@ s32 func_02019a44(GamePhaseActorScriptVm *self)
  */
 s32 func_02019a6c(GamePhaseActorScriptVm *self)
 {
-    u8 *actor = (u8 *)self->actor_84;
+    u8 *actor = (u8 *)self->actor;
     func_02074038(*(void **)(actor + 0x58));
     *(void **)(actor + 0x58) = 0;
     *(u32 *)(actor + 0x14) &= ~1;

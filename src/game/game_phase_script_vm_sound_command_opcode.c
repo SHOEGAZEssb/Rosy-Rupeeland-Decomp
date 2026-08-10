@@ -58,7 +58,7 @@ s32 func_0201a614(GamePhaseActorScriptVm *self)
         packed = (u16)value;
         soundId = packed >> 7;
         variant = packed & 0x7f;
-        func_020593dc(gSoundContext, soundId, variant, self->actor_84, 0, 0x100);
+        func_020593dc(gSoundContext, soundId, variant, self->actor, 0, 0x100);
         break;
     case 3:
         packed = (u16)value;

@@ -13,7 +13,7 @@ extern "C" {
 extern void *ActorRuntimeCollection_GetPrimaryContainer(void *registry);
 extern s32 ActorRuntimeCollection_TryCompleteAttachment(void *registry, void *actor);
 extern void GamePhaseScriptVm_Execute(void *state, s32 value);
-extern void func_0201b180(void *state, void *value);
+extern void GamePhaseActorScriptVm_Assign(void *state, void *value);
 extern void func_0201b228(void *state);
 extern s32 func_0201b23c(void *state);
 extern void ActorCollection_QueueActorForRemoval(void *runtime, void *actor);
@@ -60,7 +60,7 @@ void func_0204d308(void *self)
             ActorCollection_EndTrackedPair(runtime, *(void **)(category + 0x2e7c), actor);
         }
         actor[0xe8] = 0;
-        func_0201b180(state, ActorRuntimeCollection_GetPrimaryContainer(data_02105310));
+        GamePhaseActorScriptVm_Assign(state, ActorRuntimeCollection_GetPrimaryContainer(data_02105310));
         func_0201b228(state);
     }
     if ((*(u32 *)(actor + 0x14) & 0x20) != 0)

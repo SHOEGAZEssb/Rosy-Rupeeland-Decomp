@@ -5,7 +5,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *func_0201b180(void *destination, const void *source);
+extern void *GamePhaseActorScriptVm_Assign(void *destination, const void *source);
 #ifdef __cplusplus
 }
 #endif
@@ -51,7 +51,7 @@ void ActorRuntimeCollection_DetachActiveObject(ActorRuntimeCollection *self)
  */
 void *ActorRuntimeCollection_CopyPrimaryContainerState(ActorRuntimeCollection *self, const void *source)
 {
-    return func_0201b180(self->firstContainer, source);
+    return GamePhaseActorScriptVm_Assign(self->firstContainer, source);
 }
 
 /* Return the first embedded container at offset 0x08 without changing state. */

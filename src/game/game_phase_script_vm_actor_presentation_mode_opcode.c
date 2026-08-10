@@ -40,7 +40,7 @@ s32 func_02017ac8(GamePhaseActorScriptVm *self)
     s32 second = (s32)GamePhaseScriptVm_Pop(&self->base);
     s32 first = (s32)GamePhaseScriptVm_Pop(&self->base);
     s32 mode = (s32)GamePhaseScriptVm_Pop(&self->base);
-    u8 *actor = (u8 *)self->actor_84;
+    u8 *actor = (u8 *)self->actor;
     u8 *primary = *(u8 **)(actor + 0x54);
     u8 *secondary = *(u8 **)(actor + 0x58);
     if (!primary)

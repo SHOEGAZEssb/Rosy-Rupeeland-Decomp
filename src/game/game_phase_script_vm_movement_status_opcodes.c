@@ -21,7 +21,7 @@ extern void Actor_SetVelocity(void *actor, const VecFx32Object *value);
  */
 s32 func_020133e8(GamePhaseActorScriptVm *self)
 {
-    u8 *actor = (u8 *)self->actor_84;
+    u8 *actor = (u8 *)self->actor;
     VecFx32Object zero;
     if ((*(u32 *)(actor + 0x10) & 0x40) != 0) {
         self->base.cursor -= 2;
@@ -41,7 +41,7 @@ s32 func_020133e8(GamePhaseActorScriptVm *self)
 /* Push whether actor flag 0x40 is set and return zero. */
 s32 func_020134a0(GamePhaseActorScriptVm *self)
 {
-    u32 flags = *(u32 *)((u8 *)self->actor_84 + 0x10);
+    u32 flags = *(u32 *)((u8 *)self->actor + 0x10);
     GamePhaseScriptVm_SetResult(&self->base, (flags & 0x40) != 0);
     return 0;
 }

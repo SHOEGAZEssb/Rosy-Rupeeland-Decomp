@@ -40,7 +40,7 @@ s32 func_02012a8c(GamePhaseActorScriptVm *self)
     s32 y = (s32)GamePhaseScriptVm_Pop(&self->base);
     s32 x = (s32)GamePhaseScriptVm_Pop(&self->base);
     VecFx32Object value;
-    u8 *actor = (u8 *)self->actor_84;
+    u8 *actor = (u8 *)self->actor;
 
     func_0200500c(&value, x << 12, y << 12, z << 12);
     func_020050a4((VecFx32Object *)(actor + 0x18), &value);
@@ -61,7 +61,7 @@ s32 func_02012afc(GamePhaseActorScriptVm *self)
 {
     u32 value = GamePhaseScriptVm_Pop(&self->base);
     s32 index = (s32)GamePhaseScriptVm_Pop(&self->base);
-    void *collection = Actor_GetCollection(self->actor_84);
+    void *collection = Actor_GetCollection(self->actor);
     void *target = ActorCollection_FindActorByDescriptorValue(collection, index);
 
     if (*((u8 *)target + 0x4d) == 1) {
@@ -72,7 +72,7 @@ s32 func_02012afc(GamePhaseActorScriptVm *self)
         return 0;
     }
 
-    if (target == self->actor_84) {
+    if (target == self->actor) {
         callActorValueMethod(target, 0x70, value);
         return 0;
     }
@@ -93,7 +93,7 @@ s32 func_02012afc(GamePhaseActorScriptVm *self)
 s32 func_02012c14(GamePhaseActorScriptVm *self)
 {
     u32 value = GamePhaseScriptVm_Pop(&self->base);
-    Actor_SetAttachmentAnimation(self->actor_84, value);
+    Actor_SetAttachmentAnimation(self->actor, value);
     return 0;
 }
 
@@ -105,7 +105,7 @@ s32 func_02012c14(GamePhaseActorScriptVm *self)
 s32 func_02012c34(GamePhaseActorScriptVm *self)
 {
     u32 enabled = GamePhaseScriptVm_Pop(&self->base);
-    u16 *flags = (u16 *)((u8 *)*(void **)((u8 *)self->actor_84 + 0x54) + 0x24);
+    u16 *flags = (u16 *)((u8 *)*(void **)((u8 *)self->actor + 0x54) + 0x24);
     if (enabled != 0) {
         *flags |= 2;
         *flags &= (u16)~0x20;
@@ -119,7 +119,7 @@ s32 func_02012c34(GamePhaseActorScriptVm *self)
 /* Pop a signed countdown value into offset 0x88 and return zero. */
 s32 func_02012c98(GamePhaseActorScriptVm *self)
 {
-    self->waitCounter_88 = (s32)GamePhaseScriptVm_Pop(&self->base);
+    self->waitCounter = (s32)GamePhaseScriptVm_Pop(&self->base);
     return 0;
 }
 
@@ -130,7 +130,7 @@ s32 func_02012c98(GamePhaseActorScriptVm *self)
  */
 s32 func_02012cb0(GamePhaseActorScriptVm *self)
 {
-    if (--self->waitCounter_88 < 0)
+    if (--self->waitCounter < 0)
         return 0;
     self->base.cursor -= 2;
     return 1;
@@ -144,15 +144,15 @@ s32 func_02012cb0(GamePhaseActorScriptVm *self)
 s32 func_02012cd4(GamePhaseActorScriptVm *self)
 {
     u32 value = GamePhaseScriptVm_Pop(&self->base);
-    void *object = *(void **)((u8 *)self->actor_84 + 0x54);
+    void *object = *(void **)((u8 *)self->actor + 0x54);
     if (object != 0)
-        Actor_SetAttachmentEnabled(self->actor_84, value);
+        Actor_SetAttachmentEnabled(self->actor, value);
     return 0;
 }
 
 /* Set bit 5 in the bound actor's word at offset 0x14 and return zero. */
 s32 func_02012d00(GamePhaseActorScriptVm *self)
 {
-    *(u32 *)((u8 *)self->actor_84 + 0x14) |= 0x20;
+    *(u32 *)((u8 *)self->actor + 0x14) |= 0x20;
     return 0;
 }

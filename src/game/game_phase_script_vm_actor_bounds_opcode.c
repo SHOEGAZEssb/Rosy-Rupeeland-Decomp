@@ -58,7 +58,7 @@ s32 func_0201863c(GamePhaseActorScriptVm *self)
     s16 second = (s16)GamePhaseScriptVm_Pop(&self->base);
     s16 first = (s16)GamePhaseScriptVm_Pop(&self->base);
     s32 command = (s32)GamePhaseScriptVm_Pop(&self->base);
-    u8 *actor = (u8 *)self->actor_84;
+    u8 *actor = (u8 *)self->actor;
     ActorBounds *bounds = (ActorBounds *)(actor + 0x70);
 
     switch (command) {

@@ -41,7 +41,7 @@ s32 func_02013f10(GamePhaseActorScriptVm *self)
     s32 y = (s32)GamePhaseScriptVm_Pop(&self->base);
     s32 x = (s32)GamePhaseScriptVm_Pop(&self->base);
     s32 selector = (s32)GamePhaseScriptVm_Pop(&self->base);
-    u8 *boundActor = (u8 *)self->actor_84;
+    u8 *boundActor = (u8 *)self->actor;
 
     if (selector == -1) {
         *(s32 *)(boundActor + 0x44) = x << 4;

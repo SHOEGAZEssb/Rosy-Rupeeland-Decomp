@@ -29,7 +29,7 @@ s32 func_020184d4(GamePhaseActorScriptVm *self)
 {
     s32 second = (s32)GamePhaseScriptVm_Pop(&self->base);
     s32 first = (s32)GamePhaseScriptVm_Pop(&self->base);
-    Actor_SetAuxiliaryCollisionPosition(self->actor_84, first, second);
+    Actor_SetAuxiliaryCollisionPosition(self->actor, first, second);
     return 0;
 }
 
@@ -48,7 +48,7 @@ s32 func_0201850c(GamePhaseActorScriptVm *self)
 {
     s16 value = (s16)GamePhaseScriptVm_Pop(&self->base);
     (void)GamePhaseScriptVm_Pop(&self->base);
-    func_0204ea8c(self->actor_84, value);
+    func_0204ea8c(self->actor, value);
     return 0;
 }
 
@@ -59,7 +59,7 @@ s32 func_0201850c(GamePhaseActorScriptVm *self)
 s32 func_0201853c(GamePhaseActorScriptVm *self)
 {
     s32 enabled = (s32)GamePhaseScriptVm_Pop(&self->base);
-    u32 *flags = (u32 *)((u8 *)self->actor_84 + 0x14);
+    u32 *flags = (u32 *)((u8 *)self->actor + 0x14);
     if (enabled)
         *flags |= 0x10;
     else
@@ -95,12 +95,12 @@ s32 func_0201856c(GamePhaseActorScriptVm *self)
 s32 func_020185f4(GamePhaseActorScriptVm *self)
 {
     s32 enabled = (s32)GamePhaseScriptVm_Pop(&self->base);
-    u32 *flags = (u32 *)((u8 *)self->actor_84 + 0x14);
+    u32 *flags = (u32 *)((u8 *)self->actor + 0x14);
     if (enabled) {
-        Actor_EnsureAuxiliaryCollisionResource(self->actor_84);
+        Actor_EnsureAuxiliaryCollisionResource(self->actor);
         *flags |= 0x08000000;
     } else {
-        Actor_DestroyAuxiliaryCollisionResource(self->actor_84);
+        Actor_DestroyAuxiliaryCollisionResource(self->actor);
         *flags &= ~0x08000000;
     }
     return 0;

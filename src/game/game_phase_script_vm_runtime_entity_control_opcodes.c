@@ -37,7 +37,7 @@ extern void Type7Actor_SpawnFromRecord(s32 first, void *owner, s32 second, s32 t
 s32 func_02018c14(GamePhaseActorScriptVm *self)
 {
     s32 value = (s32)GamePhaseScriptVm_Pop(&self->base);
-    func_020573fc(Actor_GetAuxiliaryCollisionResource(self->actor_84), value);
+    func_020573fc(Actor_GetAuxiliaryCollisionResource(self->actor), value);
     return 0;
 }
 

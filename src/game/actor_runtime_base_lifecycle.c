@@ -27,7 +27,7 @@ extern void *ActorCollection_GetSpriteOwner(void *);
 extern void func_02074038(void *, void *);
 extern void func_02057184(void *);
 extern void VecFx32Stepper_Destroy(void *);
-extern void func_0201b1e0(void *);
+extern void GamePhaseActorScriptVm_Destroy(void *);
 extern void func_02005058(void *);
 extern void *func_02030e08(void *);
 #ifdef __cplusplus
@@ -50,7 +50,7 @@ static RuntimeActorLifecycle *destroyRuntimeActor(RuntimeActorLifecycle *self)
         Heap_Free(object);
     }
     VecFx32Stepper_Destroy((u8 *)self + 0x198);
-    func_0201b1e0((u8 *)self + 0xec);
+    GamePhaseActorScriptVm_Destroy((u8 *)self + 0xec);
     func_02005058((u8 *)self + 0xb0);
     func_02005058((u8 *)self + 0x98);
     func_02005058((u8 *)self + 0x88);

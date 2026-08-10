@@ -38,7 +38,7 @@ s32 func_02015610(GamePhaseActorScriptVm *self)
         u32 value = GamePhaseScriptVm_Pop(&self->base);
         u8 *collection;
         func_0201da34(self);
-        collection = (u8 *)Actor_GetCollection(self->actor_84);
+        collection = (u8 *)Actor_GetCollection(self->actor);
         second = func_0201da20(*(u32 *)(collection + 0x2e84), value);
         first = func_0201d9e4(lookup);
     }

@@ -58,7 +58,7 @@ s32 func_02019f8c(GamePhaseActorScriptVm *self)
 s32 func_0201a00c(GamePhaseActorScriptVm *self)
 {
     s32 enabled = (s32)GamePhaseScriptVm_Pop(&self->base);
-    u32 *flags = (u32 *)((u8 *)self->actor_84 + 0x14);
+    u32 *flags = (u32 *)((u8 *)self->actor + 0x14);
     if (enabled)
         *flags |= 0x08000000;
     else

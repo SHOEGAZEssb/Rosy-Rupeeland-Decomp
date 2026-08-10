@@ -127,7 +127,7 @@ s32 func_020143a8(GamePhaseActorScriptVm *self)
     u32 a2 = GamePhaseScriptVm_Pop(&self->base);
     u32 a1 = GamePhaseScriptVm_Pop(&self->base);
     u32 selector = GamePhaseScriptVm_Pop(&self->base);
-    u8 *actor = (u8 *)self->actor_84;
+    u8 *actor = (u8 *)self->actor;
     GamePhaseScriptVm_SetResult(&self->base, 0);
 
     switch (selector) {

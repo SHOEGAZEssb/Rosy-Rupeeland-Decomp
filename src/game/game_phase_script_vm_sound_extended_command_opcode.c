@@ -38,7 +38,7 @@ s32 func_0201aa14(GamePhaseActorScriptVm *self)
     case 26:
         packed = (u16)first;
         func_020593dc(gSoundContext, packed >> 7, packed & 0x7f,
-                      self->actor_84, second, third);
+                      self->actor, second, third);
         break;
     case 27:
         packed = (u16)first;

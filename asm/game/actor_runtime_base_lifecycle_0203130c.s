@@ -4,7 +4,7 @@
 .extern data_020df040
 .extern func_02005058
 .extern VecFx32Stepper_Destroy
-.extern func_0201b1e0
+.extern GamePhaseActorScriptVm_Destroy
 .extern ActorCollection_GetSpriteOwner
 .extern func_02030e08
 .extern func_02031488
@@ -44,7 +44,7 @@ func_0203130c: ; 0x0203130c
     add r0, r5, #0x198
     bl VecFx32Stepper_Destroy
     add r0, r5, #0xec
-    bl func_0201b1e0
+    bl GamePhaseActorScriptVm_Destroy
     add r0, r5, #0xb0
     bl func_02005058
     add r0, r5, #0x98

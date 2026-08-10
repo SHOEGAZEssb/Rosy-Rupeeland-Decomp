@@ -8,7 +8,7 @@
 .extern VecFx32Stepper_Init
 .extern func_020083b0
 .extern ActorMotionAreaFollower_GetPosition
-.extern func_0201b0f4
+.extern GamePhaseActorScriptVm_Init
 .extern ActorBaseGeometry_Init
 .extern func_02032228
 
@@ -80,7 +80,7 @@ func_02030f98: ; 0x02030f98
     strb r1, [r5, #0xe7]
     add r0, r5, #0xec
     strb r1, [r5, #0xe8]
-    bl func_0201b0f4
+    bl GamePhaseActorScriptVm_Init
     add r0, r5, #0x198
     bl VecFx32Stepper_Init
     ldr r0, [r4, #0x48]

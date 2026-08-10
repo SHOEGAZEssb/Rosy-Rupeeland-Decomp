@@ -21,7 +21,7 @@ s32 func_02015e9c(GamePhaseActorScriptVm *self)
 {
     s32 active = (s32)GamePhaseScriptVm_Pop(&self->base);
     s32 index = (s32)GamePhaseScriptVm_Pop(&self->base);
-    u8 *actor = (u8 *)ActorCollection_FindActorByDescriptorValue(Actor_GetCollection(self->actor_84), index);
+    u8 *actor = (u8 *)ActorCollection_FindActorByDescriptorValue(Actor_GetCollection(self->actor), index);
 
     if (actor != 0) {
         Actor_SetActive(actor, active != 0);
@@ -35,7 +35,7 @@ s32 func_02015e9c(GamePhaseActorScriptVm *self)
 s32 func_02015f10(GamePhaseActorScriptVm *self)
 {
     s32 index;
-    void **actors = (void **)Actor_GetCollection(self->actor_84);
+    void **actors = (void **)Actor_GetCollection(self->actor);
     for (index = 0; index < 128; index++) {
         if (actors[index] != 0)
             Actor_SetActive(actors[index], 1);

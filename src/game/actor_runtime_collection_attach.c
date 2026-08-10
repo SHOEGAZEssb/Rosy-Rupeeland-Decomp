@@ -7,7 +7,7 @@
 extern "C" {
 #endif
 extern const u8 data_020d44b8[];
-extern void *func_0201b180(void *destination, const void *source);
+extern void *GamePhaseActorScriptVm_Assign(void *destination, const void *source);
 extern void *ActorRuntimeScene_Init(void *handler, void *object);
 #ifdef __cplusplus
 }
@@ -31,7 +31,7 @@ void ActorRuntimeCollection_AttachObject(ActorRuntimeCollection *self, void *obj
         return;
 
     self->field_04 = (u32)object;
-    func_0201b180(self->firstContainer, (u8 *)object + 0xec);
+    GamePhaseActorScriptVm_Assign(self->firstContainer, (u8 *)object + 0xec);
     self->flags |= 9;
     handler = Heap_Alloc(0x28, (const char *)data_020d44b8, 4,
                          &gHeapContext);

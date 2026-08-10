@@ -2,9 +2,9 @@
 .text
 .extern data_02105310
 .extern ActorRuntimeCollection_AttachObject
-.extern func_0201b124
-.extern func_0201b180
-.extern func_0201b1e0
+.extern GamePhaseActorScriptVm_InitWithScript
+.extern GamePhaseActorScriptVm_Assign
+.extern GamePhaseActorScriptVm_Destroy
 .extern func_0201b228
 .extern Actor_SavePrimaryAttachmentState
 .extern Actor_GetCollection
@@ -45,12 +45,12 @@ Actor_SetResourceVariant: ; 0x02032aec
     add r0, sp, #0x94
     mov r1, r5
     add r3, r3, #0x3cc
-    bl func_0201b124
+    bl GamePhaseActorScriptVm_InitWithScript
     add r1, sp, #0x94
     add r0, r5, #0xec
-    bl func_0201b180
+    bl GamePhaseActorScriptVm_Assign
     add r0, sp, #0x94
-    bl func_0201b1e0
+    bl GamePhaseActorScriptVm_Destroy
     b .L_02032bb8
 .L_02032b80:
     ldr r0, .L_02032bcc
@@ -61,12 +61,12 @@ Actor_SetResourceVariant: ; 0x02032aec
     add r0, sp, #0x0
     mov r1, r5
     add r3, r3, #0x400
-    bl func_0201b124
+    bl GamePhaseActorScriptVm_InitWithScript
     add r1, sp, #0x0
     add r0, r5, #0xec
-    bl func_0201b180
+    bl GamePhaseActorScriptVm_Assign
     add r0, sp, #0x0
-    bl func_0201b1e0
+    bl GamePhaseActorScriptVm_Destroy
 .L_02032bb8:
     add r0, r5, #0xec
     bl func_0201b228

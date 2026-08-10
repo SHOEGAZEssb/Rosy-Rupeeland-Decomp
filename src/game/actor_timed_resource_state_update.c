@@ -14,7 +14,7 @@ extern void *GamePhaseRuntime_GetActorCollection(void *manager, u32 slot);
 extern void *Actor_GetCollection(void *actor);
 extern void ActorCollection_EndTrackedPair(void *collection, void *reference, void *actor);
 extern void *ActorRuntimeCollection_GetPrimaryContainer(void *effectState, s32 index);
-extern void func_0201b180(void *state, void *value);
+extern void GamePhaseActorScriptVm_Assign(void *state, void *value);
 extern void func_0201b228(void *state);
 extern void Actor_UpdateAttachmentDirectionFromVector(void *actor, s32 x, s32 y);
 extern void ActorCollection_QueueActorForRemoval(void *collection, void *actor);
@@ -59,7 +59,7 @@ s32 func_02034164(void *self)
                           *(void **)((u8 *)slotOne + 0x2e7c), actor);
         }
         actor[0xe8] = 0;
-        func_0201b180(actor + 0xec, ActorRuntimeCollection_GetPrimaryContainer(data_02105310, 0));
+        GamePhaseActorScriptVm_Assign(actor + 0xec, ActorRuntimeCollection_GetPrimaryContainer(data_02105310, 0));
         func_0201b228(actor + 0xec);
         if (*(s32 *)(actor + 0x3c) + *(s32 *)(actor + 0x40) != 0) {
             Actor_UpdateAttachmentDirectionFromVector(actor, *(s32 *)(actor + 0x3c),

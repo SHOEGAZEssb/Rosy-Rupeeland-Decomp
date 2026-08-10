@@ -10,9 +10,9 @@ extern "C" {
 extern void Actor_SavePrimaryAttachmentState(void *);
 extern void ActorRuntimeCollection_AttachObject(void *, void *);
 extern void *Actor_GetCollection(void *);
-extern void func_0201b124(void *, void *, void *, void *);
-extern void func_0201b180(void *, const void *);
-extern void func_0201b1e0(void *);
+extern void GamePhaseActorScriptVm_InitWithScript(void *, void *, void *, void *);
+extern void GamePhaseActorScriptVm_Assign(void *, const void *);
+extern void GamePhaseActorScriptVm_Destroy(void *);
 extern void func_0201b228(void *);
 #ifdef __cplusplus
 }
@@ -44,9 +44,9 @@ void Actor_SetResourceVariant(void *self, s32 variant)
     collection = Actor_GetCollection(actor);
     gameData = (u8 *)gGameWork +
                (*(s32 *)((u8 *)collection + 0x2e84) == 1 ? 0x3cc : 0x5cc);
-    func_0201b124(temporary, actor,
+    GamePhaseActorScriptVm_InitWithScript(temporary, actor,
                   *(void **)(actor + 0x180 + variant * 4), gameData);
-    func_0201b180(actor + 0xec, temporary);
-    func_0201b1e0(temporary);
+    GamePhaseActorScriptVm_Assign(actor + 0xec, temporary);
+    GamePhaseActorScriptVm_Destroy(temporary);
     func_0201b228(actor + 0xec);
 }

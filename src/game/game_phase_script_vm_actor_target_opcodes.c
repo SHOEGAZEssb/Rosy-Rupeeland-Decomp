@@ -25,7 +25,7 @@ extern void Actor_UpdateAttachmentDirectionFromVector(void *actor, fx32 x, fx32 
  */
 s32 func_020137ec(GamePhaseActorScriptVm *self)
 {
-    u8 *actor = (u8 *)self->actor_84;
+    u8 *actor = (u8 *)self->actor;
     VecFx32Object zero;
     ActorRuntimeTriple_Assign(actor + 0x38, 0, 0, 0);
     ActorRuntimeTriple_Assign(actor + 0x88, 0, 0, 0);
@@ -48,7 +48,7 @@ s32 func_020137ec(GamePhaseActorScriptVm *self)
 s32 func_0201389c(GamePhaseActorScriptVm *self)
 {
     s32 index = (s32)GamePhaseScriptVm_Pop(&self->base);
-    u8 *actor = (u8 *)self->actor_84;
+    u8 *actor = (u8 *)self->actor;
     u8 *target = (u8 *)ActorCollection_FindActorByDescriptorValue(Actor_GetCollection(actor), index);
     fx32 dx = *(fx32 *)(target + 0x1c) - *(fx32 *)(actor + 0x1c);
     fx32 dy = *(fx32 *)(target + 0x20) - *(fx32 *)(actor + 0x20);
@@ -62,6 +62,6 @@ s32 func_0201389c(GamePhaseActorScriptVm *self)
 /* Pop a value into the bound actor's byte at offset 0xe6 and return zero. */
 s32 func_02013914(GamePhaseActorScriptVm *self)
 {
-    *((u8 *)self->actor_84 + 0xe6) = (u8)GamePhaseScriptVm_Pop(&self->base);
+    *((u8 *)self->actor + 0xe6) = (u8)GamePhaseScriptVm_Pop(&self->base);
     return 0;
 }

@@ -23,7 +23,7 @@ s32 func_0201409c(GamePhaseActorScriptVm *self)
 {
     s32 y = (s32)GamePhaseScriptVm_Pop(&self->base);
     s32 x = (s32)GamePhaseScriptVm_Pop(&self->base);
-    u8 *actor = (u8 *)self->actor_84;
+    u8 *actor = (u8 *)self->actor;
     VecFx32Object value;
     VecFx32Object *copy;
     func_0200500c(&value, x << 12, y << 12, 0);
@@ -39,7 +39,7 @@ s32 func_0201410c(GamePhaseActorScriptVm *self)
 {
     u32 second = GamePhaseScriptVm_Pop(&self->base);
     u32 first = GamePhaseScriptVm_Pop(&self->base);
-    Actor_TranslateSecondaryBounds(self->actor_84, first, second);
+    Actor_TranslateSecondaryBounds(self->actor, first, second);
     return 0;
 }
 
@@ -48,6 +48,6 @@ s32 func_0201413c(GamePhaseActorScriptVm *self)
 {
     u32 second = GamePhaseScriptVm_Pop(&self->base);
     u32 first = GamePhaseScriptVm_Pop(&self->base);
-    Actor_TranslateCollisionBounds(self->actor_84, first, second);
+    Actor_TranslateCollisionBounds(self->actor, first, second);
     return 0;
 }

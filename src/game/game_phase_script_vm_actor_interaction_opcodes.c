@@ -26,7 +26,7 @@ typedef void (*ActorPointerMethod)(void *actor, void *value);
  */
 s32 func_02013930(GamePhaseActorScriptVm *self)
 {
-    u8 *actor = (u8 *)self->actor_84;
+    u8 *actor = (u8 *)self->actor;
     *(u32 *)(actor + 0x10) &= ~0x01000000u;
     if (actor[0x4d] == 2) {
         ActorVoidMethod cleanup =
@@ -56,7 +56,7 @@ s32 func_020139d0(GamePhaseActorScriptVm *self)
 s32 func_020139d8(GamePhaseActorScriptVm *self)
 {
     u32 value = GamePhaseScriptVm_Pop(&self->base);
-    GamePhaseScriptVm_SetResult(&self->base, func_02032e14(self->actor_84, value));
+    GamePhaseScriptVm_SetResult(&self->base, func_02032e14(self->actor, value));
     return 0;
 }
 
@@ -65,7 +65,7 @@ s32 func_02013a04(GamePhaseActorScriptVm *self)
 {
     u32 second = GamePhaseScriptVm_Pop(&self->base);
     u32 first = GamePhaseScriptVm_Pop(&self->base);
-    func_020330fc(self->actor_84, first, second);
+    func_020330fc(self->actor, first, second);
     return 0;
 }
 
@@ -77,7 +77,7 @@ s32 func_02013a34(GamePhaseActorScriptVm *self)
 {
     u32 value = GamePhaseScriptVm_Pop(&self->base);
     s32 index = (s32)GamePhaseScriptVm_Pop(&self->base);
-    void *target = ActorCollection_FindActorByDescriptorValue(Actor_GetCollection(self->actor_84), index);
+    void *target = ActorCollection_FindActorByDescriptorValue(Actor_GetCollection(self->actor), index);
     GamePhaseScriptVm_SetResult(&self->base, func_02032e14(target, value));
     return 0;
 }
@@ -91,7 +91,7 @@ s32 func_02013a7c(GamePhaseActorScriptVm *self)
     u32 second = GamePhaseScriptVm_Pop(&self->base);
     u32 first = GamePhaseScriptVm_Pop(&self->base);
     s32 index = (s32)GamePhaseScriptVm_Pop(&self->base);
-    void *target = ActorCollection_FindActorByDescriptorValue(Actor_GetCollection(self->actor_84), index);
+    void *target = ActorCollection_FindActorByDescriptorValue(Actor_GetCollection(self->actor), index);
     func_020330fc(target, first, second);
     return 0;
 }

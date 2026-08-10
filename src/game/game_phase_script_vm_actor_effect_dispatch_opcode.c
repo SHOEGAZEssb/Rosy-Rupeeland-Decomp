@@ -59,7 +59,7 @@ static void spawnActorSnapshot(GamePhaseActorScriptVm *self, s32 actorIndex,
     u8 descriptor[0x5c];
     VecFx32Object transform;
     VecFx32Object position;
-    u8 *actor = (u8 *)ActorCollection_FindActorByDescriptorValue(Actor_GetCollection(self->actor_84), actorIndex);
+    u8 *actor = (u8 *)ActorCollection_FindActorByDescriptorValue(Actor_GetCollection(self->actor), actorIndex);
     u8 *presentation = *(u8 **)(actor + 0x54);
     s32 resource0 = 0x1000;
     s32 resource1 = 0x1001;
@@ -118,7 +118,7 @@ static void spawnActorSnapshot(GamePhaseActorScriptVm *self, s32 actorIndex,
     *(s16 *)(descriptor + 0x52) = (s16)value;
     *(s32 *)(descriptor + 0x54) = -1;
     *(s32 *)(descriptor + 0x58) = 0;
-    ActorCollection_SpawnActorFromDescriptor(Actor_GetCollection(self->actor_84), descriptor);
+    ActorCollection_SpawnActorFromDescriptor(Actor_GetCollection(self->actor), descriptor);
     GamePhaseScriptVm_SetResult(&self->base, (u32)value);
     func_02005058(&transform);
 }
@@ -168,7 +168,7 @@ s32 func_0201939c(GamePhaseActorScriptVm *self)
         VecFx32Object actorPosition;
         VecFx32Object offset;
         func_02005030(&actorPosition,
-                      (const VecFx32Object *)((u8 *)self->actor_84 + 0x18));
+                      (const VecFx32Object *)((u8 *)self->actor + 0x18));
         func_0200500c(&offset, p5 << 12, p4 << 12, p3 << 12);
         func_02050078(p6, &actorPosition, &offset);
         func_02005058(&offset);
@@ -176,14 +176,14 @@ s32 func_0201939c(GamePhaseActorScriptVm *self)
         break;
     }
     case 4: {
-        s32 selection = (*(u32 *)((u8 *)self->actor_84 + 0x14) & 0x04000000)
+        s32 selection = (*(u32 *)((u8 *)self->actor + 0x14) & 0x04000000)
                             ? data_02105710 : data_0210570c;
         ActorCollection_SpawnDescriptorsBySelector(
-            Actor_GetCollection(self->actor_84), (void *)selection, p6);
+            Actor_GetCollection(self->actor), (void *)selection, p6);
         break;
     }
     case 5:
-        ActorCollection_QueueGroupForRemoval(Actor_GetCollection(self->actor_84), p6);
+        ActorCollection_QueueGroupForRemoval(Actor_GetCollection(self->actor), p6);
         break;
     case 6: {
         VecFx32Object first;

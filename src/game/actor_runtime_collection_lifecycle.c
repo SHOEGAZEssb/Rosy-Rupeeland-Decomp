@@ -7,8 +7,8 @@ extern "C" {
 #endif
 extern const u8 data_020d4458[];
 extern const u8 data_020d4468[];
-extern void func_0201b0f4(void *container);
-extern void func_0201b1e0(void *container);
+extern void GamePhaseActorScriptVm_Init(void *container);
+extern void GamePhaseActorScriptVm_Destroy(void *container);
 extern void Heap_Free(void *allocation);
 #ifdef __cplusplus
 }
@@ -22,8 +22,8 @@ extern void Heap_Free(void *allocation);
 ActorRuntimeCollection *ActorRuntimeCollection_Init(ActorRuntimeCollection *self)
 {
     self->flags = 0;
-    func_0201b0f4(self->firstContainer);
-    func_0201b0f4(self->secondContainer);
+    GamePhaseActorScriptVm_Init(self->firstContainer);
+    GamePhaseActorScriptVm_Init(self->secondContainer);
     self->field_134 = 0;
     ActorRuntimeOwnedList_Init(&self->ownedList);
     return self;
@@ -65,8 +65,8 @@ ActorRuntimeCollection *ActorRuntimeCollection_Destroy(ActorRuntimeCollection *s
     ActorRuntimeOwnedList_Clear(&self->ownedList);
     self->ownedList.vtable = data_020d4468;
     ActorRuntimeOwnedList_Clear(&self->ownedList);
-    func_0201b1e0(self->secondContainer);
-    func_0201b1e0(self->firstContainer);
+    GamePhaseActorScriptVm_Destroy(self->secondContainer);
+    GamePhaseActorScriptVm_Destroy(self->firstContainer);
     return self;
 }
 

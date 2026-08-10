@@ -12,7 +12,7 @@ s32 func_02013cf8(GamePhaseActorScriptVm *self)
 {
     u32 value = GamePhaseScriptVm_Pop(&self->base);
     u32 selector = GamePhaseScriptVm_Pop(&self->base);
-    u8 *actor = (u8 *)self->actor_84;
+    u8 *actor = (u8 *)self->actor;
     if (selector == 0) {
         u8 *first = *(u8 **)(actor + 0x54);
         u8 *second = *(u8 **)(actor + 0x58);
@@ -29,7 +29,7 @@ s32 func_02013cf8(GamePhaseActorScriptVm *self)
 /* Push the bound actor's halfword at offset 0x4e and return zero. */
 s32 func_02013d68(GamePhaseActorScriptVm *self)
 {
-    GamePhaseScriptVm_SetResult(&self->base, *(u16 *)((u8 *)self->actor_84 + 0x4e));
+    GamePhaseScriptVm_SetResult(&self->base, *(u16 *)((u8 *)self->actor + 0x4e));
     return 0;
 }
 
@@ -46,7 +46,7 @@ s32 func_02013d80(GamePhaseActorScriptVm *self)
 s32 func_02013db0(GamePhaseActorScriptVm *self)
 {
     u32 enabled = GamePhaseScriptVm_Pop(&self->base);
-    u32 *flags = (u32 *)((u8 *)self->actor_84 + 0x14);
+    u32 *flags = (u32 *)((u8 *)self->actor + 0x14);
     if (enabled != 0)
         *flags |= 8;
     else
@@ -58,7 +58,7 @@ s32 func_02013db0(GamePhaseActorScriptVm *self)
 s32 func_02013ddc(GamePhaseActorScriptVm *self)
 {
     s32 enabled = (s32)GamePhaseScriptVm_Pop(&self->base);
-    func_02013dfc(self->actor_84, enabled);
+    func_02013dfc(self->actor, enabled);
     return 0;
 }
 

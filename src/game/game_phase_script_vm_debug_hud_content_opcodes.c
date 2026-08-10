@@ -37,7 +37,7 @@ s32 func_02017450(GamePhaseActorScriptVm *self)
 {
     s32 index = (s32)GamePhaseScriptVm_Pop(&self->base);
     s32 row = (s32)GamePhaseScriptVm_Pop(&self->base);
-    u8 *collection = (u8 *)Actor_GetCollection(self->actor_84);
+    u8 *collection = (u8 *)Actor_GetCollection(self->actor);
     const u16 *text = 0;
     switch (*(u32 *)(collection + 0x2e84)) {
     case 1:

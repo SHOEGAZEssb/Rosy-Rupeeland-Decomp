@@ -17,7 +17,7 @@ extern s32 func_020adc40(s32 value);
 s32 func_020136fc(GamePhaseActorScriptVm *self)
 {
     u32 enabled = GamePhaseScriptVm_Pop(&self->base);
-    u8 *actor = (u8 *)self->actor_84;
+    u8 *actor = (u8 *)self->actor;
     u32 *actorFlags = (u32 *)(actor + 0x10);
     u16 *objectFlags = (u16 *)(*(u8 **)(actor + 0x54) + 0x24);
     if (enabled != 0) {
@@ -34,7 +34,7 @@ s32 func_020136fc(GamePhaseActorScriptVm *self)
 s32 func_02013758(GamePhaseActorScriptVm *self)
 {
     u32 enabled = GamePhaseScriptVm_Pop(&self->base);
-    u16 *flags = (u16 *)(*(u8 **)((u8 *)self->actor_84 + 0x54) + 0x24);
+    u16 *flags = (u16 *)(*(u8 **)((u8 *)self->actor + 0x54) + 0x24);
     if (enabled != 0)
         *flags |= 0x80;
     else
@@ -46,7 +46,7 @@ s32 func_02013758(GamePhaseActorScriptVm *self)
 s32 func_02013790(GamePhaseActorScriptVm *self)
 {
     u32 enabled = GamePhaseScriptVm_Pop(&self->base);
-    u16 *flags = (u16 *)(*(u8 **)((u8 *)self->actor_84 + 0x54) + 0x24);
+    u16 *flags = (u16 *)(*(u8 **)((u8 *)self->actor + 0x54) + 0x24);
     if (enabled != 0)
         *flags |= 0x20;
     else

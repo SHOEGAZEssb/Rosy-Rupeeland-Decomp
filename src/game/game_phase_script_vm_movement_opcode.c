@@ -45,7 +45,7 @@ s32 func_020130ec(GamePhaseActorScriptVm *self)
     fx32 z = (s32)GamePhaseScriptVm_Pop(&self->base) << 12;
     fx32 y = (s32)GamePhaseScriptVm_Pop(&self->base) << 12;
     fx32 x = (s32)GamePhaseScriptVm_Pop(&self->base) << 12;
-    u8 *actor = (u8 *)self->actor_84;
+    u8 *actor = (u8 *)self->actor;
     VecFx32Object *position = (VecFx32Object *)(actor + 0x18);
     VecFx32Object target;
     fx32 dx = 0;

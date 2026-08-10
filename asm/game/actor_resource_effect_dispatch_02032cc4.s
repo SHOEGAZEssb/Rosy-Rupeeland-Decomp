@@ -2,8 +2,8 @@
 .text
 .extern data_02105310
 .extern ActorRuntimeCollection_CopyPrimaryContainerState
-.extern func_0201b124
-.extern func_0201b1e0
+.extern GamePhaseActorScriptVm_InitWithScript
+.extern GamePhaseActorScriptVm_Destroy
 .extern Actor_GetCollection
 .extern gGameWork
 
@@ -26,12 +26,12 @@ Actor_AssignPrimaryResourceWithEffect: ; 0x02032cc4
     mov r1, r5
     mov r2, r4
     add r3, r3, #0x3cc
-    bl func_0201b124
+    bl GamePhaseActorScriptVm_InitWithScript
     ldr r0, .L_02032d60
     add r1, sp, #0x94
     bl ActorRuntimeCollection_CopyPrimaryContainerState
     add r0, sp, #0x94
-    bl func_0201b1e0
+    bl GamePhaseActorScriptVm_Destroy
     b .L_02032d54
 .L_02032d20:
     ldr r1, .L_02032d5c
@@ -41,12 +41,12 @@ Actor_AssignPrimaryResourceWithEffect: ; 0x02032cc4
     add r3, r2, #0x1cc
     mov r2, r4
     add r3, r3, #0x400
-    bl func_0201b124
+    bl GamePhaseActorScriptVm_InitWithScript
     ldr r0, .L_02032d60
     add r1, sp, #0x0
     bl ActorRuntimeCollection_CopyPrimaryContainerState
     add r0, sp, #0x0
-    bl func_0201b1e0
+    bl GamePhaseActorScriptVm_Destroy
 .L_02032d54:
     add sp, sp, #0x128
     ldmia sp!, {r3, r4, r5, pc}

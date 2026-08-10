@@ -7,7 +7,7 @@
 .extern Actor_GetCollection
 .extern ActorCollection_EndTrackedPair
 .extern ActorRuntimeCollection_GetPrimaryContainer
-.extern func_0201b180
+.extern GamePhaseActorScriptVm_Assign
 .extern func_0201b228
 .extern ActorCollection_QueueActorForRemoval
 .extern data_02105310
@@ -55,7 +55,7 @@ func_0204d308: ; 0x0204d308
     bl ActorRuntimeCollection_GetPrimaryContainer
     mov r1, r0
     add r0, r4, #0xec
-    bl func_0201b180
+    bl GamePhaseActorScriptVm_Assign
     add r0, r4, #0xec
     bl func_0201b228
 .L_0204d3b4:

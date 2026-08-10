@@ -31,7 +31,7 @@ s32 GamePhaseActorScriptVm_ConfigureMotionProbe(GamePhaseActorScriptVm *self)
         second = 0;
     if (count < 1)
         count = 1;
-    ActorMotionProbe_ConfigureMotion(self->actor_84, first, second, count,
+    ActorMotionProbe_ConfigureMotion(self->actor, first, second, count,
                                      fourth, fifth);
     return 0;
 }
@@ -42,6 +42,6 @@ s32 GamePhaseActorScriptVm_ConfigureMotionProbe(GamePhaseActorScriptVm *self)
  */
 s32 GamePhaseActorScriptVm_ResetMotionProbe(GamePhaseActorScriptVm *self)
 {
-    ActorMotionProbe_ResetMotion(self->actor_84);
+    ActorMotionProbe_ResetMotion(self->actor);
     return 0;
 }

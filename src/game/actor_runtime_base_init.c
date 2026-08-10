@@ -15,7 +15,7 @@ extern void func_020083b0(void *, s32, s32, s32, s32);
 extern void func_02004fe0(void *);
 extern void func_0200500c(void *, s32, s32, s32);
 extern void func_020050a4(void *, const void *);
-extern void func_0201b0f4(void *);
+extern void GamePhaseActorScriptVm_Init(void *);
 extern void VecFx32Stepper_Init(void *);
 extern void func_02032228(void *, s32, s32, s32);
 extern void *ActorMotionAreaFollower_GetPosition(void *);
@@ -68,7 +68,7 @@ void *func_02030f98(void *self, const void *descriptor)
     *(u16 *)(actor + 0xda) = *(u16 *)(actor + 0xdc) = 0;
     *(u16 *)(actor + 0xde) = *(u16 *)(actor + 0xe4) = 0;
     actor[0xe6] = actor[0xe7] = actor[0xe8] = 0;
-    func_0201b0f4(actor + 0xec);
+    GamePhaseActorScriptVm_Init(actor + 0xec);
     VecFx32Stepper_Init(actor + 0x198);
     *(u32 *)(actor + 0x1cc) = *(u32 *)(desc + 0x48);
     *(u32 *)(actor + 0x1d0) = 0x1000;

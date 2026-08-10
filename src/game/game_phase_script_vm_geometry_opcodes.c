@@ -29,7 +29,7 @@ u32 *func_02015548(u32 *result, s32 left, s32 top, s32 right, s32 bottom)
 s32 GamePhaseActorScriptVm_SetMotionProbeScale(GamePhaseActorScriptVm *self)
 {
     s32 value = (s32)GamePhaseScriptVm_Pop(&self->base);
-    ActorMotionProbe_SetScale(self->actor_84, value << 4);
+    ActorMotionProbe_SetScale(self->actor, value << 4);
     return 0;
 }
 
@@ -37,7 +37,7 @@ s32 GamePhaseActorScriptVm_SetMotionProbeScale(GamePhaseActorScriptVm *self)
 s32 func_02015580(GamePhaseActorScriptVm *self)
 {
     u8 value = (u8)GamePhaseScriptVm_Pop(&self->base);
-    void *object = *(void **)((u8 *)self->actor_84 + 0x54);
+    void *object = *(void **)((u8 *)self->actor + 0x54);
     func_02072bdc(object, value);
     return 0;
 }
@@ -53,7 +53,7 @@ s32 func_020155a4(GamePhaseActorScriptVm *self)
     s32 z = (s32)GamePhaseScriptVm_Pop(&self->base);
     s32 y = (s32)GamePhaseScriptVm_Pop(&self->base);
     s32 x = (s32)GamePhaseScriptVm_Pop(&self->base);
-    u8 *actor = (u8 *)self->actor_84;
+    u8 *actor = (u8 *)self->actor;
     s32 dx = x - (*(s32 *)(actor + 0x1c) >> 12);
     s32 dy = y - (*(s32 *)(actor + 0x20) >> 12);
     s32 dz = z - (*(s32 *)(actor + 0x24) >> 12);

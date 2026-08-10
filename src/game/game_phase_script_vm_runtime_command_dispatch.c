@@ -132,17 +132,17 @@ s32 func_02016238(GamePhaseActorScriptVm *self)
             func_0201cfd0(object, parameter);
         return 0;
     case 26:
-        *(u16 *)((u8 *)*(void **)((u8 *)self->actor_84 + 0x54) + 0x24)
+        *(u16 *)((u8 *)*(void **)((u8 *)self->actor + 0x54) + 0x24)
             |= (u16)parameter;
         return 0;
     case 27:
-        *(u16 *)((u8 *)*(void **)((u8 *)self->actor_84 + 0x54) + 0x24)
+        *(u16 *)((u8 *)*(void **)((u8 *)self->actor + 0x54) + 0x24)
             &= (u16)~parameter;
         return 0;
     case 31:
     case 32:
     case 33: {
-        u8 *actor = (u8 *)ActorCollection_FindActorByDescriptorValue(Actor_GetCollection(self->actor_84),
+        u8 *actor = (u8 *)ActorCollection_FindActorByDescriptorValue(Actor_GetCollection(self->actor),
                                         parameter);
         u8 *presentation = actor != 0 ? *(u8 **)(actor + 0x54) : 0;
         if (presentation != 0) {

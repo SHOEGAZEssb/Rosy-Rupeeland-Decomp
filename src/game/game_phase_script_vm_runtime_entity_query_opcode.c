@@ -85,7 +85,7 @@ s32 func_02018f10(GamePhaseActorScriptVm *self)
         result = *(s32 *)(Type7Actor_FindSpawnRecord(index) + 0x64);
         break;
     case 15: {
-        u8 *actor = (u8 *)ActorCollection_FindActorByDescriptorValue(Actor_GetCollection(self->actor_84), index);
+        u8 *actor = (u8 *)ActorCollection_FindActorByDescriptorValue(Actor_GetCollection(self->actor), index);
         result = *(s32 *)(actor + 0x1fc);
         break;
     }

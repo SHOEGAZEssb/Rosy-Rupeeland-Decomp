@@ -33,7 +33,7 @@ s32 func_02013e64(GamePhaseActorScriptVm *self)
 {
     u32 second = GamePhaseScriptVm_Pop(&self->base);
     u32 first = GamePhaseScriptVm_Pop(&self->base);
-    GamePhaseScriptVm_SetResult(&self->base, Actor_QueryTerrainHeight(self->actor_84, first, second));
+    GamePhaseScriptVm_SetResult(&self->base, Actor_QueryTerrainHeight(self->actor, first, second));
     return 0;
 }
 
@@ -47,13 +47,13 @@ s32 func_02013ea0(GamePhaseActorScriptVm *self)
 /* Save the bound actor's primary attachment state and return zero. */
 s32 func_02013eb0(GamePhaseActorScriptVm *self)
 {
-    Actor_SavePrimaryAttachmentState(self->actor_84);
+    Actor_SavePrimaryAttachmentState(self->actor);
     return 0;
 }
 
 /* Restore the bound actor's primary attachment state and return zero. */
 s32 func_02013ec4(GamePhaseActorScriptVm *self)
 {
-    Actor_RestorePrimaryAttachmentState(self->actor_84);
+    Actor_RestorePrimaryAttachmentState(self->actor);
     return 0;
 }

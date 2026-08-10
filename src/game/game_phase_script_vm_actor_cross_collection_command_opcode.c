@@ -45,7 +45,7 @@ s32 func_02015b64(GamePhaseActorScriptVm *self)
     if (**(void ***)(runtime + 0x24) != **(void ***)(owner + 0x2eac))
         return 0;
 
-    mode = *(u32 *)((u8 *)Actor_GetCollection(self->actor_84) + 0x2e84);
+    mode = *(u32 *)((u8 *)Actor_GetCollection(self->actor) + 0x2e84);
     if (mode == 1)
         target = ActorCollection_FindActorByDescriptorValue(GamePhaseRuntime_GetActorCollection(runtime, 2), index);
     else if (mode == 2)
@@ -60,7 +60,7 @@ s32 func_02015b64(GamePhaseActorScriptVm *self)
         target = *(void **)(collection + 0x2e7c);
         callActorValueMethod(target, 0x74, value);
         Actor_SetActive(target, 1);
-    } else if (target == self->actor_84) {
+    } else if (target == self->actor) {
         callActorValueMethod(target, 0x70, value);
     } else {
         if (value != 0) {

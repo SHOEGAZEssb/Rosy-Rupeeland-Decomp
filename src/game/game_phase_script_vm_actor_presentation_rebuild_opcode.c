@@ -27,7 +27,7 @@ s32 func_02015f50(GamePhaseActorScriptVm *self)
     u16 third = (u16)GamePhaseScriptVm_Pop(&self->base);
     u16 second = (u16)GamePhaseScriptVm_Pop(&self->base);
     u16 first = (u16)GamePhaseScriptVm_Pop(&self->base);
-    u8 *actor = (u8 *)self->actor_84;
+    u8 *actor = (u8 *)self->actor;
     u8 *oldObject = *(u8 **)(actor + 0x54);
     u8 byte3a = oldObject[0x3a];
     s16 value36 = *(s16 *)(oldObject + 0x36);

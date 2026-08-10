@@ -6,7 +6,7 @@
 .extern ActorRuntimeCollection_GetPrimaryContainer
 .extern ActorRuntimeCollection_TryCompleteAttachment
 .extern GamePhaseScriptVm_Execute
-.extern func_0201b180
+.extern GamePhaseActorScriptVm_Assign
 .extern func_0201b228
 .extern func_0201b23c
 .extern ActorCollection_QueueActorForRemoval
@@ -59,7 +59,7 @@ func_02034164: ; 0x02034164
     bl ActorRuntimeCollection_GetPrimaryContainer
     mov r1, r0
     add r0, r4, #0xec
-    bl func_0201b180
+    bl GamePhaseActorScriptVm_Assign
     add r0, r4, #0xec
     bl func_0201b228
     ldr r2, [r4, #0x40]

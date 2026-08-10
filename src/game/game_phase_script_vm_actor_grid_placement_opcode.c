@@ -25,7 +25,7 @@ s32 func_02016d60(GamePhaseActorScriptVm *self)
     s32 gridY = (s32)GamePhaseScriptVm_Pop(&self->base);
     s32 gridX = (s32)GamePhaseScriptVm_Pop(&self->base);
     VecFx32Object position;
-    u8 *actor = (u8 *)self->actor_84;
+    u8 *actor = (u8 *)self->actor;
     s32 left = -width / 2;
     s32 top = -height / 2;
 

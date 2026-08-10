@@ -15,7 +15,7 @@ s32 func_020159d4(GamePhaseActorScriptVm *self)
     bounds.right = (s16)GamePhaseScriptVm_Pop(&self->base);
     bounds.top = (s16)GamePhaseScriptVm_Pop(&self->base);
     bounds.left = (s16)GamePhaseScriptVm_Pop(&self->base);
-    func_02008354((u8 *)self->actor_84 + 0x68, &bounds);
+    func_02008354((u8 *)self->actor + 0x68, &bounds);
     return 0;
 }
 
@@ -24,9 +24,9 @@ s32 func_02015a34(GamePhaseActorScriptVm *self)
 {
     s32 amount = (s32)GamePhaseScriptVm_Pop(&self->base);
     RectS16 bounds;
-    RectS16_Copy(&bounds, (const RectS16 *)((u8 *)self->actor_84 + 0x68));
+    RectS16_Copy(&bounds, (const RectS16 *)((u8 *)self->actor + 0x68));
     bounds.left -= amount;
-    func_02008354((u8 *)self->actor_84 + 0x68, &bounds);
+    func_02008354((u8 *)self->actor + 0x68, &bounds);
     return 0;
 }
 
@@ -35,9 +35,9 @@ s32 func_02015a80(GamePhaseActorScriptVm *self)
 {
     s32 amount = (s32)GamePhaseScriptVm_Pop(&self->base);
     RectS16 bounds;
-    RectS16_Copy(&bounds, (const RectS16 *)((u8 *)self->actor_84 + 0x68));
+    RectS16_Copy(&bounds, (const RectS16 *)((u8 *)self->actor + 0x68));
     bounds.top -= amount;
-    func_02008354((u8 *)self->actor_84 + 0x68, &bounds);
+    func_02008354((u8 *)self->actor + 0x68, &bounds);
     return 0;
 }
 
@@ -46,9 +46,9 @@ s32 func_02015acc(GamePhaseActorScriptVm *self)
 {
     s32 amount = (s32)GamePhaseScriptVm_Pop(&self->base);
     RectS16 bounds;
-    RectS16_Copy(&bounds, (const RectS16 *)((u8 *)self->actor_84 + 0x68));
+    RectS16_Copy(&bounds, (const RectS16 *)((u8 *)self->actor + 0x68));
     bounds.right += amount;
-    func_02008354((u8 *)self->actor_84 + 0x68, &bounds);
+    func_02008354((u8 *)self->actor + 0x68, &bounds);
     return 0;
 }
 
@@ -57,8 +57,8 @@ s32 func_02015b18(GamePhaseActorScriptVm *self)
 {
     s32 amount = (s32)GamePhaseScriptVm_Pop(&self->base);
     RectS16 bounds;
-    RectS16_Copy(&bounds, (const RectS16 *)((u8 *)self->actor_84 + 0x68));
+    RectS16_Copy(&bounds, (const RectS16 *)((u8 *)self->actor + 0x68));
     bounds.bottom += amount;
-    func_02008354((u8 *)self->actor_84 + 0x68, &bounds);
+    func_02008354((u8 *)self->actor + 0x68, &bounds);
     return 0;
 }

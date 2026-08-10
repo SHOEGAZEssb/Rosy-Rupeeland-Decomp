@@ -2,7 +2,7 @@
 ; the documented portable implementation and recovered behavior.
 .text
 .extern ActorRuntimeOwnedList_Clear
-.extern func_0201b1e0
+.extern GamePhaseActorScriptVm_Destroy
 .extern data_020d4468
 .global ActorRuntimeCollection_Destroy
 ActorRuntimeCollection_Destroy:
@@ -15,9 +15,9 @@ ActorRuntimeCollection_Destroy:
     str r1, [r4, #0x138]
     bl ActorRuntimeOwnedList_Clear
     add r0, r4, #0xa0
-    bl func_0201b1e0
+    bl GamePhaseActorScriptVm_Destroy
     add r0, r4, #0x8
-    bl func_0201b1e0
+    bl GamePhaseActorScriptVm_Destroy
     mov r0, r4
     ldmia sp!, {r4, pc}
 L_0200ae48: .word data_020d4468

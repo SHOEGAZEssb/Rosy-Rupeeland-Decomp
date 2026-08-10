@@ -32,8 +32,8 @@ s32 func_02013ac8(GamePhaseActorScriptVm *self)
     s32 selector = (s32)GamePhaseScriptVm_Pop(&self->base);
     u8 *actor;
     if (selector != 0) {
-        actor = (u8 *)ActorCollection_FindActorByDescriptorValue(Actor_GetCollection(self->actor_84), selector);
-    } else if (*(u32 *)((u8 *)Actor_GetCollection(self->actor_84) + 0x2e84) == 1) {
+        actor = (u8 *)ActorCollection_FindActorByDescriptorValue(Actor_GetCollection(self->actor), selector);
+    } else if (*(u32 *)((u8 *)Actor_GetCollection(self->actor) + 0x2e84) == 1) {
         u8 *collection = (u8 *)GamePhaseRuntime_GetActorCollection(data_021052fc, 1);
         actor = *(u8 **)(collection + 0x2e7c);
     } else {
@@ -62,7 +62,7 @@ s32 func_02013b74(GamePhaseActorScriptVm *self)
     u8 *target;
     if (first != second)
         return 0;
-    mode = *(u32 *)((u8 *)Actor_GetCollection(self->actor_84) + 0x2e84);
+    mode = *(u32 *)((u8 *)Actor_GetCollection(self->actor) + 0x2e84);
     if (mode == 1)
         target = (u8 *)ActorCollection_FindActorByDescriptorValue(GamePhaseRuntime_GetActorCollection(runtime, 2), index);
     else if (mode == 2)
