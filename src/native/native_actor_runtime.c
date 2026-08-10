@@ -152,9 +152,11 @@ TingleNativeActorRuntime *TingleNativeActorRuntime_Create(
 }
 
 static void InitializeSyntheticDescriptor(TingleNativeActorDescriptor *descriptor,
-                                          u16 kind, u16 subtype, s16 x, s16 y,
+                                          u16 kind, u16 subtype, s32 resource_04,
+                                          s32 resource_08, s32 resource_0c,
+                                          u8 field_10, u8 field_11, s16 x, s16 y,
                                           s16 z, u8 width, u8 height, u32 flags,
-                                          s16 value, u16 size)
+                                          u16 field_3c, s16 value, u16 size)
 {
     memset(descriptor, 0, sizeof(*descriptor));
     descriptor->kind = kind;
@@ -168,6 +170,30 @@ static void InitializeSyntheticDescriptor(TingleNativeActorDescriptor *descripto
     descriptor->value_52 = value;
     descriptor->allocation_size = size;
     descriptor->factory_variant = (s16)subtype;
+    WriteU16(descriptor->raw, 0x00, kind);
+    WriteU16(descriptor->raw, 0x02, subtype);
+    WriteU32(descriptor->raw, 0x04, (u32)resource_04);
+    WriteU32(descriptor->raw, 0x08, (u32)resource_08);
+    WriteU32(descriptor->raw, 0x0C, (u32)resource_0c);
+    descriptor->raw[0x10] = field_10;
+    descriptor->raw[0x11] = field_11;
+    descriptor->raw[0x12] = width;
+    descriptor->raw[0x13] = height;
+    WriteU16(descriptor->raw, 0x1A, (u16)-16);
+    WriteU16(descriptor->raw, 0x1C, (u16)-49);
+    WriteU16(descriptor->raw, 0x1E, 16);
+    WriteU16(descriptor->raw, 0x20, 7);
+    WriteU16(descriptor->raw, 0x22, (u16)x);
+    WriteU16(descriptor->raw, 0x24, (u16)y);
+    WriteU16(descriptor->raw, 0x26, (u16)z);
+    WriteU32(descriptor->raw, 0x28, flags);
+    WriteU16(descriptor->raw, 0x3C, field_3c);
+    WriteU16(descriptor->raw, 0x4C, (u16)-1);
+    WriteU16(descriptor->raw, 0x4E, (u16)-1);
+    WriteU16(descriptor->raw, 0x52, (u16)value);
+    descriptor->raw[0x5C] = (u8)-12;
+    descriptor->raw[0x5D] = (u8)-40;
+    descriptor->raw[0x5E] = 12;
 }
 
 static s32 AddSyntheticActor(TingleNativeActorRuntime *runtime, u32 *next,
@@ -201,17 +227,20 @@ TingleNativeActorRuntime *TingleNativeActorRuntime_CreateForPhase(
     if (runtime == NULL) return NULL;
 
     InitializeSyntheticDescriptor(
-        &category_actor, 1, 0, (s16)phase_value_2c, (s16)phase_value_30, 0,
-        24, 8, 0x02000008, 0, 0x2B8);
+        &category_actor, 1, 0, -1, -1, 2, 0, 0,
+        (s16)phase_value_2c, (s16)phase_value_30, 0,
+        24, 8, 0x02000008, 255, 0, 0x2B8);
     InitializeSyntheticDescriptor(
-        &common_actor, 3, 4, -100, 0, 0, 0, 0, 8, 2, 0x208);
+        &common_actor, 3, 4, -1, -1, -1, 0, (u8)-100, -100, 0, 0,
+        0, 0, 8, 255, 2, 0x208);
     if (!AddSyntheticActor(runtime, &next, &category_actor, 1) ||
         !AddSyntheticActor(runtime, &next, &common_actor, 1) ||
         !AddEligibleActors(runtime, &next, primary, primary_count, 1))
         goto failure;
 
     InitializeSyntheticDescriptor(
-        &category_actor, 3, 3, 0, 0, 0, 0, 0, 0x04088008, 0, 0x218);
+        &category_actor, 3, 3, 0x138A, 0x1078, 0x138B, 2, 0x1D,
+        0, 0, 0, 0, 0, 0x04088008, 1, 0, 0x218);
     if (!AddSyntheticActor(runtime, &next, &category_actor, 2) ||
         !AddSyntheticActor(runtime, &next, &common_actor, 2) ||
         !AddEligibleActors(runtime, &next, secondary, secondary_count, 2))

@@ -145,7 +145,10 @@ translated to validated overlay-relative records. Descriptor kinds are checked
 against the recovered 1-9 factory range, and signed selector offset `0x50`
 determines initial eligibility. Confirmed common descriptor fields--kind,
 subtype, byte bounds, signed position, flags, selector, retained value, and the
-raw reference at `0x58`--are copied into host-owned scalar records. The
+raw reference at `0x58`--are copied into host-owned scalar records. The full
+`0x64` bytes are retained alongside those scalars for constructor fields whose
+meaning is still offset-derived. Synthetic startup descriptors reproduce the
+confirmed initializer bytes rather than inventing a host-only layout. The
 recovered factory's kind/subtype matrix and its two ARM9 selector tables
 then resolve every record to a retail allocation size and a type-local
 constructor route. Constructors themselves remain behind the native runtime

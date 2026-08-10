@@ -119,12 +119,19 @@ static int TestActorBootstrapRuntime(void)
              first->synthetic && first->category == 1 &&
              first->descriptor.kind == 1 && first->descriptor.position_x == -12 &&
              first->descriptor.position_y == 34 && first->size == 0x2B8 &&
+             ReadU32At(first->descriptor.raw, 0x04) == 0xFFFFFFFFu &&
+             ReadU32At(first->descriptor.raw, 0x0C) == 2 &&
+             first->descriptor.raw[0x12] == 24 &&
+             first->descriptor.raw[0x5C] == (u8)-12 &&
              second != NULL && second->synthetic && second->category == 1 &&
              second->descriptor.kind == 3 && second->descriptor.subtype == 4 &&
              second->descriptor.value_52 == 2 && third != NULL &&
              third->synthetic && third->category == 2 &&
              third->descriptor.kind == 3 && third->descriptor.subtype == 3 &&
-             third->size == 0x218 && fourth != NULL && fourth->synthetic &&
+             third->size == 0x218 &&
+             ReadU32At(third->descriptor.raw, 0x04) == 0x138A &&
+             third->descriptor.raw[0x11] == 0x1D &&
+             fourth != NULL && fourth->synthetic &&
              fourth->category == 2 && fourth->descriptor.subtype == 4;
 
     TingleNativeActorRuntime_Destroy(runtime);
@@ -183,7 +190,8 @@ static int TestOverlayRegistration(void)
         descriptor.half_height != 18 || descriptor.position_x != -12 ||
         descriptor.position_y != 34 || descriptor.position_z != -5 ||
         descriptor.flags_28 != 0x12345678 || descriptor.selector_50 != 2 ||
-        descriptor.value_52 != -9 || descriptor.reference_58 != 0x02200170)
+        descriptor.value_52 != -9 || descriptor.reference_58 != 0x02200170 ||
+        descriptor.raw[0x02] != 7 || descriptor.raw[0x28] != 0x78)
         return 0;
     bytes[0] = 0;
     if (TingleNativeGamePhase_ParseOverlayRegistration(

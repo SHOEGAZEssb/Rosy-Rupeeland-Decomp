@@ -46,6 +46,7 @@ typedef struct TingleNativeActorDescriptor {
     u32 reference_58;
     u16 allocation_size;
     s16 factory_variant;
+    u8 raw[0x64];
 } TingleNativeActorDescriptor;
 
 typedef struct TingleNativeGamePhaseMetadata {

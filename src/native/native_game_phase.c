@@ -80,6 +80,7 @@ s32 TingleNativeGamePhase_DecodeActorDescriptor(
     offset = (size_t)(address - overlay->load_address);
     bytes = (const u8 *)overlay->bytes + offset;
     memset(descriptor, 0, sizeof(*descriptor));
+    memcpy(descriptor->raw, bytes, sizeof(descriptor->raw));
     descriptor->address = address;
     descriptor->kind = ReadU16(bytes);
     descriptor->subtype = ReadU16(bytes + 2);
