@@ -25,7 +25,7 @@ extern void func_020593dc(void *soundContext, s32 zero, s32 soundId,
  * return zero. Actor presentation/callback state may change and the global
  * object is observed; no direct SDK or hardware access occurs.
  */
-s32 func_02049e50(void *self)
+s32 Type7Actor_UpdatePresentation17UntilGlobalTargetClears(void *self)
 {
     u8 *actor = (u8 *)self;
     u8 *globalObject = *(u8 **)(data_021052fc + 0x2ea4);
@@ -45,7 +45,7 @@ s32 func_02049e50(void *self)
  * change; func_020593dc is the sound-system boundary and no hardware register
  * is accessed directly.
  */
-s32 func_02049ea0(void *self)
+s32 Type7Actor_UpdatePresentation18WithInitialSound(void *self)
 {
     u8 *actor = (u8 *)self;
     if (*(s16 *)(actor + 0x248) == 1)

@@ -18474,7 +18474,7 @@ build build/reports/type7_actor_presentation_states_02049e50.json: objdiff build
   base_object = build/decomp/asm/game/type7_actor_presentation_states_02049e50.o
 build build/reports/type7_actor_presentation_states_02049e50.txt: match_report build/reports/type7_actor_presentation_states_02049e50.json | tools/report_objdiff.py
   report_json = build/reports/type7_actor_presentation_states_02049e50.json
-  report_args = --section .text --function func_02049e50 --function func_02049ea0 --require-exact
+  report_args = --section .text --function Type7Actor_UpdatePresentation17UntilGlobalTargetClears --function Type7Actor_UpdatePresentation18WithInitialSound --require-exact
 build type7_actor_presentation_states: phony build/decomp/src/game/type7_actor_presentation_states.o build/decomp/asm/game/type7_actor_presentation_states_02049e50.o build/reports/type7_actor_presentation_states_02049e50.txt
 
 type7_actor_motion_capture_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++

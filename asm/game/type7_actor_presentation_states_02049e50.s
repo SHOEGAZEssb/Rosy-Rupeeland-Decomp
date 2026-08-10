@@ -4,9 +4,9 @@
 .extern Type7Actor_DispatchCurrentCallback
 .extern func_020593dc
 .text
-    .global func_02049e50
-.type func_02049e50, @function
-func_02049e50: ; 0x02049e50
+    .global Type7Actor_UpdatePresentation17UntilGlobalTargetClears
+.type Type7Actor_UpdatePresentation17UntilGlobalTargetClears, @function
+Type7Actor_UpdatePresentation17UntilGlobalTargetClears: ; 0x02049e50
     stmdb sp!, {r3, lr}
     ldr r1, [r0, #0x268]
     mov r2, #0x11
@@ -28,11 +28,11 @@ func_02049e50: ; 0x02049e50
     mov r0, #0x0
     ldmia sp!, {r3, pc}
 .L_02049e9c: .word data_021052fc
-.size func_02049e50, . - func_02049e50
+.size Type7Actor_UpdatePresentation17UntilGlobalTargetClears, . - Type7Actor_UpdatePresentation17UntilGlobalTargetClears
 
-    .global func_02049ea0
-.type func_02049ea0, @function
-func_02049ea0: ; 0x02049ea0
+    .global Type7Actor_UpdatePresentation18WithInitialSound
+.type Type7Actor_UpdatePresentation18WithInitialSound, @function
+Type7Actor_UpdatePresentation18WithInitialSound: ; 0x02049ea0
     stmdb sp!, {r4, lr}
     sub sp, sp, #0x8
     mov r4, r0
@@ -62,5 +62,5 @@ func_02049ea0: ; 0x02049ea0
     add sp, sp, #0x8
     ldmia sp!, {r4, pc}
 .L_02049f0c: .word gSoundContext
-.size func_02049ea0, . - func_02049ea0
+.size Type7Actor_UpdatePresentation18WithInitialSound, . - Type7Actor_UpdatePresentation18WithInitialSound
 
