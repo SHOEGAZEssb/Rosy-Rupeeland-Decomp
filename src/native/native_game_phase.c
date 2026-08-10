@@ -380,6 +380,56 @@ static void DrawField(TingleNativeCanvas *canvas, s32 y, const char *label,
     TingleNativeCanvas_DrawText(canvas, 12, y, text, 0x00d8e0d0u, 1);
 }
 
+static void DrawActorMap(const TingleNativeActorRuntime *runtime,
+                         TingleNativeCanvas *canvas)
+{
+    enum { LEFT = 136, TOP = 54, WIDTH = 108, HEIGHT = 112 };
+    s32 minimum_x;
+    s32 maximum_x;
+    s32 minimum_y;
+    s32 maximum_y;
+    u32 index;
+
+    TingleNativeCanvas_DrawText(canvas, LEFT, 42, "SPAWN MAP", 0x00a0b0b8u, 1);
+    TingleNativeCanvas_FillRect(canvas, LEFT, TOP, WIDTH, 1, 0x00485860u);
+    TingleNativeCanvas_FillRect(canvas, LEFT, TOP + HEIGHT - 1, WIDTH, 1,
+                                0x00485860u);
+    TingleNativeCanvas_FillRect(canvas, LEFT, TOP, 1, HEIGHT, 0x00485860u);
+    TingleNativeCanvas_FillRect(canvas, LEFT + WIDTH - 1, TOP, 1, HEIGHT,
+                                0x00485860u);
+    if (runtime == NULL || runtime->actor_count == 0) return;
+
+    minimum_x = maximum_x = runtime->actors[0].descriptor.position_x;
+    minimum_y = maximum_y = runtime->actors[0].descriptor.position_y;
+    for (index = 1; index < runtime->actor_count; ++index) {
+        s32 x = runtime->actors[index].descriptor.position_x;
+        s32 y = runtime->actors[index].descriptor.position_y;
+
+        if (x < minimum_x) minimum_x = x;
+        if (x > maximum_x) maximum_x = x;
+        if (y < minimum_y) minimum_y = y;
+        if (y > maximum_y) maximum_y = y;
+    }
+    for (index = 0; index < runtime->actor_count; ++index) {
+        const TingleNativeActorImage *actor = &runtime->actors[index];
+        s32 x = LEFT + 2;
+        s32 y = TOP + 2;
+        u32 color = actor->category == 1 ? 0x0068d878u : 0x00e0a050u;
+
+        if (maximum_x == minimum_x)
+            x += (WIDTH - 5) / 2;
+        else
+            x += (s32)(((s64)actor->descriptor.position_x - minimum_x) *
+                       (WIDTH - 5) / (maximum_x - minimum_x));
+        if (maximum_y == minimum_y)
+            y += (HEIGHT - 5) / 2;
+        else
+            y += (s32)(((s64)actor->descriptor.position_y - minimum_y) *
+                       (HEIGHT - 5) / (maximum_y - minimum_y));
+        TingleNativeCanvas_FillRect(canvas, x - 1, y - 1, 3, 3, color);
+    }
+}
+
 void TingleNativeGamePhaseBoundary_Draw(
     const TingleNativeGamePhaseBoundary *boundary, TingleNativeCanvas *canvas)
 {
@@ -395,6 +445,7 @@ void TingleNativeGamePhaseBoundary_Draw(
         boundary->metadata_loaded ? 0x0078d878u : 0x00e07070u, 1);
     TingleNativeCanvas_DrawText(canvas, 12, 66, "X: RETURN TO SELECTOR",
                                 0x00a0b0b8u, 1);
+    DrawActorMap(boundary->actor_runtime, canvas);
 
     if (boundary->metadata_loaded) {
         (void)snprintf(text, sizeof(text), "OV 1C %03u: %s",

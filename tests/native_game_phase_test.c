@@ -245,6 +245,7 @@ int main(int argc, char **argv)
     TingleNativeInput input = {0};
     TingleNativeCanvas canvas;
     TingleNativeGameWork game_work;
+    TingleNativeActorDescriptor map_descriptor = {0};
     u32 *pixels;
 
     if (argc == 4 && (strcmp(argv[1], "--rom") == 0 ||
@@ -312,10 +313,17 @@ int main(int argc, char **argv)
     canvas.width = TINGLE_SCREEN_WIDTH;
     canvas.height = TINGLE_FRAMEBUFFER_HEIGHT;
     canvas.stride = TINGLE_SCREEN_WIDTH;
+    map_descriptor.kind = 3;
+    map_descriptor.allocation_size = 0x208;
+    boundary.actor_runtime =
+        TingleNativeActorRuntime_Create(&map_descriptor, 1, NULL, 0);
+    boundary.actor_runtime_built = boundary.actor_runtime != NULL;
     TingleNativeGamePhaseBoundary_Draw(&boundary, &canvas);
     if (pixels[0] != 0x000b1118u ||
         pixels[TINGLE_SCREEN_HEIGHT * TINGLE_SCREEN_WIDTH] != 0x00141b20u ||
-        pixels[14 * TINGLE_SCREEN_WIDTH + 14] != 0x0078d878u) {
+        pixels[14 * TINGLE_SCREEN_WIDTH + 14] != 0x0078d878u ||
+        pixels[54 * TINGLE_SCREEN_WIDTH + 136] != 0x00485860u ||
+        pixels[109 * TINGLE_SCREEN_WIDTH + 189] != 0x0068d878u) {
         free(pixels);
         return EXIT_FAILURE;
     }

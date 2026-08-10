@@ -158,7 +158,11 @@ companion also follows its recovered shared-state timing: it
 sets GameWork flag `0x3F3`, advances states zero and one together on its first
 update, then clears optional flag `0x386` and its own flag on the next update.
 The covered-scene virtual updates and screen fades at those states remain
-platform boundaries. Fourteen 32-byte zero
+platform boundaries. The phase boundary presents these partial actors in a
+normalized spawn-map
+diagnostic, colored by the primary or secondary category. It is an inspection
+view of recovered descriptor positions, not a substitute for the game's camera,
+tilemap, sprite, or 3D render paths. Fourteen 32-byte zero
 secondary images are omitted by the phase table; the decoder still represents
 such an image as an empty registration when read directly. The callbacks
 remain addresses and are never called as host function pointers.
