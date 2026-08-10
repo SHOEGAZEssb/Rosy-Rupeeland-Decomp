@@ -31,7 +31,7 @@ extern void func_020a2614(void *effect, s32 kind, s32 x, s32 y, s32 variant);
  * state change. The exact meanings of the two compared global words remain
  * unconfirmed.
  */
-void func_0203da28(s32 threshold)
+void ActorCollection_DispatchType2ThresholdEffects(s32 threshold)
 {
     s32 index;
 

@@ -7,9 +7,9 @@
 .extern func_02007f0c
 .extern func_0201e0ec
 .extern func_020a2614
-    .global func_0203da28
-    .type func_0203da28, @function
-func_0203da28: ; 0x0203da28
+    .global ActorCollection_DispatchType2ThresholdEffects
+    .type ActorCollection_DispatchType2ThresholdEffects, @function
+ActorCollection_DispatchType2ThresholdEffects: ; 0x0203da28
     stmdb sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, lr}
     mov r9, #0x0
     mov r10, r0
@@ -100,4 +100,4 @@ func_0203da28: ; 0x0203da28
 .L_0203db74: .word data_020e8380
 .L_0203db78: .word data_021052fc
 .L_0203db7c: .word data_020df9e8
-    .size func_0203da28, . - func_0203da28
+    .size ActorCollection_DispatchType2ThresholdEffects, . - ActorCollection_DispatchType2ThresholdEffects
