@@ -19,7 +19,7 @@ extern void func_ov088_0221a8c4(void *object);
  * 0x8, and 0x4 in halfword 0x21a respectively (mode 3 uses inverted enable
  * semantics).  Mode 1 and unsupported modes do nothing.  Return zero.
  */
-s32 func_0201a1f0(GamePhaseActorScriptVm *self)
+s32 GamePhaseActorScriptVm_DispatchOptionalSingletonControl(GamePhaseActorScriptVm *self)
 {
     s32 second;
     s32 first;

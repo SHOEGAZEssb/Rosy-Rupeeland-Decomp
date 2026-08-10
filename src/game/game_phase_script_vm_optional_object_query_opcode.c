@@ -19,7 +19,7 @@ extern s32 func_ov088_0221b380(void *object);
  * halfword 0x21c.  A missing object yields zero only where retail checks it.
  * Push the result and return zero.
  */
-s32 func_0201a304(GamePhaseActorScriptVm *self)
+s32 GamePhaseActorScriptVm_DispatchOptionalSingletonQuery(GamePhaseActorScriptVm *self)
 {
     s32 mode = (s32)GamePhaseScriptVm_Pop(&self->base);
     u8 *object = (u8 *)ActorDerivedType1_GetSingletonObject();

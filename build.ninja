@@ -6289,7 +6289,7 @@ build build/reports/game_phase_script_vm_0201a1f0.json: objdiff build/decomp/del
   base_object = build/decomp/asm/game/game_phase_script_vm_0201a1f0.o
 build build/reports/game_phase_script_vm_0201a1f0.txt: match_report build/reports/game_phase_script_vm_0201a1f0.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_script_vm_0201a1f0.json
-  report_args = --section .text --function func_0201a1f0 --require-exact
+  report_args = --section .text --function GamePhaseActorScriptVm_DispatchOptionalSingletonControl --require-exact
 
 build build/reports/game_phase_script_vm_optional_object_control_opcode.txt: phony build/reports/game_phase_script_vm_0201a1f0.txt
 
@@ -6298,7 +6298,7 @@ build build/reports/game_phase_script_vm_0201a304.json: objdiff build/decomp/del
   base_object = build/decomp/asm/game/game_phase_script_vm_0201a304.o
 build build/reports/game_phase_script_vm_0201a304.txt: match_report build/reports/game_phase_script_vm_0201a304.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_script_vm_0201a304.json
-  report_args = --section .text --function func_0201a304 --require-exact
+  report_args = --section .text --function GamePhaseActorScriptVm_DispatchOptionalSingletonQuery --require-exact
 
 build build/reports/game_phase_script_vm_optional_object_query_opcode.txt: phony build/reports/game_phase_script_vm_0201a304.txt
 

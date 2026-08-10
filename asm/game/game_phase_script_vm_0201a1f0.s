@@ -4,8 +4,8 @@
 .extern ActorDerivedType1_GetSingletonObject
 .extern func_ov088_02218130
 .extern func_ov088_0221a8c4
-.global func_0201a1f0
-func_0201a1f0:
+.global GamePhaseActorScriptVm_DispatchOptionalSingletonControl
+GamePhaseActorScriptVm_DispatchOptionalSingletonControl:
     stmdb sp!, {r3, r4, r5, r6, r7, lr}
     mov r4, r0
     bl GamePhaseScriptVm_Pop
@@ -82,4 +82,4 @@ L_0201a2d4:
 L_0201a2fc:
     mov r0, #0x0
     ldmia sp!, {r3, r4, r5, r6, r7, pc}
-.size func_0201a1f0, . - func_0201a1f0
+.size GamePhaseActorScriptVm_DispatchOptionalSingletonControl, . - GamePhaseActorScriptVm_DispatchOptionalSingletonControl
