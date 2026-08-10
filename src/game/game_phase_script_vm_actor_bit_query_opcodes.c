@@ -27,7 +27,7 @@ static void pushActorBit(GamePhaseActorScriptVm *self, const void *actor)
  * the runtime 0x2fb8 -> 0x2ebc pointers otherwise. Push selected actor byte
  * 0x169 bit 0 and return zero.
  */
-s32 func_02013ac8(GamePhaseActorScriptVm *self)
+s32 GamePhaseActorScriptVm_GetSelectedActorFlag169Bit0(GamePhaseActorScriptVm *self)
 {
     s32 selector = (s32)GamePhaseScriptVm_Pop(&self->base);
     u8 *actor;
@@ -51,7 +51,7 @@ s32 func_02013ac8(GamePhaseActorScriptVm *self)
  * Type-1 targets redirect to collection 1's actor at 0x2e7c. Push byte 0x169
  * bit 0 from the final target and return zero.
  */
-s32 func_02013b74(GamePhaseActorScriptVm *self)
+s32 GamePhaseActorScriptVm_GetIndexedRuntimeActorFlag169Bit0(GamePhaseActorScriptVm *self)
 {
     s32 index = (s32)GamePhaseScriptVm_Pop(&self->base);
     u8 *runtime = (u8 *)data_021052fc;

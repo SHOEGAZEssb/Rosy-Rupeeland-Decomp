@@ -8,8 +8,8 @@
 .extern ActorCollection_FindActorByDescriptorValue
 .extern Actor_GetCollection
 
-    .global func_02013b74
-func_02013b74: ; 0x02013b74
+    .global GamePhaseActorScriptVm_GetIndexedRuntimeActorFlag169Bit0
+GamePhaseActorScriptVm_GetIndexedRuntimeActorFlag169Bit0: ; 0x02013b74
     stmdb sp!, {r4, r5, r6, lr}
     mov r6, r0
     bl GamePhaseScriptVm_Pop
@@ -81,5 +81,5 @@ L_02013c70:
     mov r0, #0x0
     ldmia sp!, {r4, r5, r6, pc}
 L_02013c78: .word data_021052fc
-    .size func_02013b74, . - func_02013b74
+    .size GamePhaseActorScriptVm_GetIndexedRuntimeActorFlag169Bit0, . - GamePhaseActorScriptVm_GetIndexedRuntimeActorFlag169Bit0
 
