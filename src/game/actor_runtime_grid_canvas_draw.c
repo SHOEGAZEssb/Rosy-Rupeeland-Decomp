@@ -7,7 +7,7 @@ extern "C" {
 #endif
 extern const char data_020d52f4[];
 extern void *gDebugFont;
-extern void func_02076428(void *font, s32 x0, s32 y0, s32 x1, s32 y1,
+extern void GraphicsSpriteCanvas_FillRect(void *font, s32 x0, s32 y0, s32 x1, s32 y1,
                           s32 color);
 #ifdef __cplusplus
 }
@@ -40,8 +40,8 @@ void ActorRuntimeGridCanvas_DrawPage(ActorRuntimeGridCanvas *self, s32 row, s32 
         }
     }
 
-    func_02076428(gDebugFont, row * 24 + 7, column * 20 + 4,
+    GraphicsSpriteCanvas_FillRect(gDebugFont, row * 24 + 7, column * 20 + 4,
                   (row + 1) * 24 + 11, (column + 1) * 20 + 8, 9);
-    func_02076428(gDebugFont, row * 24 + 11, column * 20 + 8,
+    GraphicsSpriteCanvas_FillRect(gDebugFont, row * 24 + 11, column * 20 + 8,
                   (row + 1) * 24 + 7, (column + 1) * 20 + 4, 0);
 }

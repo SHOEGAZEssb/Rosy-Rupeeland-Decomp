@@ -21,7 +21,7 @@
     .extern func_02072000
     .extern func_020755bc
     .extern func_02075858
-    .extern func_02076308
+    .extern GraphicsSpriteCanvas_DrawLine
     .extern func_ov011_021fce50
     .extern func_ov011_021fd188
     .extern func_ov011_021fdae0
@@ -429,7 +429,7 @@ L_021fd888:
     ldr r0, [r0, #0x0]
     mov r1, #0x0
     mov r3, #0xff
-    bl func_02076308
+    bl GraphicsSpriteCanvas_DrawLine
     ldr r1, [r9, #0x58]
     mov r0, #0xbf
     str r0, [sp, #0x0]
@@ -439,7 +439,7 @@ L_021fd888:
     ldr r0, [r0, #0x0]
     mov r3, r1
     mov r2, #0x0
-    bl func_02076308
+    bl GraphicsSpriteCanvas_DrawLine
 L_021fda54:
     ldr r0, [r9, #0x50]
     ldrh r0, [r0, #0x2]

@@ -13,7 +13,7 @@ extern const void *func_020628c8(void *);
 extern void *func_02070874(void *);
 extern void func_02075598(void *, void *);
 extern void func_02076148(void *, const void *, s32, s32, s32, s32, s32);
-extern void func_02076428(void *, s32, s32, s32, s32, s32);
+extern void GraphicsSpriteCanvas_FillRect(void *, s32, s32, s32, s32, s32);
 extern s32 func_02092960(void *, s32, u32, s32, s32, s32, s32, s32);
 extern void *func_ov000_021fcad8(void *);
 extern void *func_ov001_021fc7e4(void *);
@@ -106,7 +106,7 @@ extern "C" u32 func_ov021_021ff4f0(const void *descriptor)
 extern "C" void func_ov021_021ff504(void *state, const void *item)
 {
     void *font = data_020f4e14;
-    func_02076428(font, 0x10, 6, 0xb0, 0x16, 0);
+    GraphicsSpriteCanvas_FillRect(font, 0x10, 6, 0xb0, 0x16, 0);
     void *sprite = FIELD(void *, state, 0x9c);
     if (item == 0) {
         FIELD(u16, sprite, 0x24) |= 4;

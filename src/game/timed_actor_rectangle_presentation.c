@@ -26,7 +26,7 @@ extern void func_0201e28c(void *);
 extern void func_0201ded4(void *, void *);
 extern const s32 *ActorMotionAreaFollower_GetPosition(void *);
 extern s32 func_020befec(s32, s32);
-extern void func_02076428(void *, s32, s32, s32, s32, s32);
+extern void GraphicsSpriteCanvas_FillRect(void *, s32, s32, s32, s32, s32);
 #ifdef __cplusplus
 }
 #endif
@@ -72,7 +72,7 @@ TimedActorRectanglePresentation *func_02025190(
  * 0x1c/0x20/0x24 through camera position from runtime offset 0x2fbc, including
  * the recovered vertical adjustment 7*(s16[0x6e]-s16[0x6a])/10.  When the
  * result lies inside x (-64,320), y (-128,320), divide both stored extents by
- * 200, draw outer color 14 and inner color 2 rectangles through func_02076428,
+ * 200, draw outer color 14 and inner color 2 rectangles through GraphicsSpriteCanvas_FillRect,
  * set runtime flags 0x30 at offset 0x30b8, and return zero.
  */
 s32 func_020251ac(TimedActorRectanglePresentation *self)
@@ -97,9 +97,9 @@ s32 func_020251ac(TimedActorRectanglePresentation *self)
         first = func_020befec(self->firstExtent0c, 200);
         second = func_020befec(self->secondExtent0e, 200);
         x -= (second + (second < 0)) / 2;
-        func_02076428(data_020f4e14, x - 1, y - 1, x + second + 1,
+        GraphicsSpriteCanvas_FillRect(data_020f4e14, x - 1, y - 1, x + second + 1,
                       y + 3, 14);
-        func_02076428(data_020f4e14, x, y, x + first, y + 2, 2);
+        GraphicsSpriteCanvas_FillRect(data_020f4e14, x, y, x + first, y + 2, 2);
         *(u32 *)(data_021052fc + 0x30b8) |= 0x30;
     }
     return 0;

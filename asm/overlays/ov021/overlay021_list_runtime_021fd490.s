@@ -3,7 +3,7 @@
     .extern GraphicsSpriteState_SetAnimationIndex
     .extern func_02075598
     .extern func_02076148
-    .extern func_02076428
+    .extern GraphicsSpriteCanvas_FillRect
     .extern func_02092960
     .extern func_ov021_021fd6e8
 
@@ -48,7 +48,7 @@ L_021fd500:
     mov r1, #0x2a
     mov r2, #0x7e
     mov r3, #0x7a
-    bl func_02076428
+    bl GraphicsSpriteCanvas_FillRect
     mov r0, r5
     bl func_ov021_021fd6e8
     cmp r0, #0x0

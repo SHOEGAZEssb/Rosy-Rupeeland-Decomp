@@ -12,12 +12,15 @@ typedef struct GraphicsSpriteCanvas {
 extern "C" {
 #endif
 
-void func_02076308(GraphicsSpriteCanvas *canvas, s32 x0, s32 y0,
-                   s32 x1, s32 y1, u32 color);
-void func_02076428(GraphicsSpriteCanvas *canvas, s32 x0, s32 y0,
-                   s32 x1, s32 y1, u32 color);
-void func_0207663c(GraphicsSpriteCanvas *canvas, s32 x0, s32 y0,
-                   s32 x1, s32 y1, u32 color);
+void GraphicsSpriteCanvas_DrawLine(GraphicsSpriteCanvas *canvas,
+                                   s32 x0, s32 y0, s32 x1, s32 y1,
+                                   u32 color);
+void GraphicsSpriteCanvas_FillRect(GraphicsSpriteCanvas *canvas,
+                                   s32 x0, s32 y0, s32 x1, s32 y1,
+                                   u32 color);
+void GraphicsSpriteCanvas_DrawRect(GraphicsSpriteCanvas *canvas,
+                                   s32 x0, s32 y0, s32 x1, s32 y1,
+                                   u32 color);
 void func_020766c8(void);
 
 #ifdef __cplusplus

@@ -35,7 +35,7 @@
     .extern func_02074dc8
     .extern func_020755bc
     .extern func_02075858
-    .extern func_0207663c
+    .extern GraphicsSpriteCanvas_DrawRect
     .extern func_ov009_021fce74
     .extern func_ov009_021fd294
     .extern func_ov009_021fd338
@@ -1436,7 +1436,7 @@ L_021fe8e4:
     add r1, r1, #0x1
     add r2, r2, #0x1
     sub r3, r3, #0x1
-    bl func_0207663c
+    bl GraphicsSpriteCanvas_DrawRect
     add r7, r7, #0x1
     add r6, r6, #0x8
 L_021fe940:

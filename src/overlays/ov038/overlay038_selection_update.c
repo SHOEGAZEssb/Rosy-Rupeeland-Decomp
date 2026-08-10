@@ -30,7 +30,7 @@ extern void func_02091b98(void *timer, s32 ticks);
 extern const void *func_ov038_021fd508(void *presentation);
 extern void func_02028100(void *label, const void *text);
 extern void func_0202836c(void *label);
-extern void func_02076428(void *renderer, s32 x, s32 y, s32 width,
+extern void GraphicsSpriteCanvas_FillRect(void *renderer, s32 x, s32 y, s32 width,
                           s32 height, s32 value);
 extern void func_0207c460(Overlay038TextDescriptor *descriptor, u16 textId);
 extern void func_02075598(void *renderer, void *font);
@@ -82,7 +82,7 @@ extern "C" void func_ov038_021fd37c(void *presentation)
 extern "C" void func_ov038_021fd40c(void *presentation)
 {
     void *renderer = *(void **)data_020f4e14;
-    func_02076428(renderer, 0, 0, 0xff, 0xb0, 0);
+    GraphicsSpriteCanvas_FillRect(renderer, 0, 0, 0xff, 0xb0, 0);
     if (FIELD(s32, presentation, 0x110) == 0) {
         return;
     }

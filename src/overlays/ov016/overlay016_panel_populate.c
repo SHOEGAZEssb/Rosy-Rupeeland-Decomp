@@ -25,7 +25,7 @@ extern void func_02073e48(void *, s32, s32, s32, s32, s32, s32);
 extern void *func_02073ffc(void *, void *, s32);
 extern void func_02075598(void *, void *);
 extern void func_02076148(void *, s32, s32, s32, s32, s32, s32);
-extern void func_02076428(void *, s32, s32, s32, s32, s32);
+extern void GraphicsSpriteCanvas_FillRect(void *, s32, s32, s32, s32, s32);
 extern void func_02091b98(void *, s32);
 extern void func_ov016_021fd9dc(void *, s32);
 #ifdef __cplusplus
@@ -126,7 +126,7 @@ extern "C" void func_ov016_021fdaa0(void *state, void *selection, s32 image)
             }
         }
 
-        func_02076428(FIELD(void *, state, 0), 0x59, 0x27, 0xd9, 0x47, 0);
+        GraphicsSpriteCanvas_FillRect(FIELD(void *, state, 0), 0x59, 0x27, 0xd9, 0x47, 0);
         func_02075598(FIELD(void *, state, 0), (u8 *)state + 0xdc);
         func_02076148(FIELD(void *, state, 0), func_020628c8(header),
                       0x59, 0x27, 0xe, 6, 0);
@@ -139,7 +139,7 @@ extern "C" void func_ov016_021fdaa0(void *state, void *selection, s32 image)
         for (i = 0; i < 6; i++) {
             s32 width = gSystemState[0x5f] != 0 ? 0x50 : 0x40;
 
-            func_02076428(FIELD(void *, state, 0), x + 0x3a, y + 0x53,
+            GraphicsSpriteCanvas_FillRect(FIELD(void *, state, 0), x + 0x3a, y + 0x53,
                           x + 0x3a + width, y + 0x63, 0);
             if (i < count) {
                 void *row = (u8 *)table + 0x28 + i * 0x24;

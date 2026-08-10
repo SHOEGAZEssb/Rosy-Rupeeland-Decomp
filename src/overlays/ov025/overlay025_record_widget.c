@@ -26,7 +26,7 @@ extern void *func_020742cc(void *);
 extern void func_02075598(void *, void *);
 extern s32 func_02075e48(void *, u16, s32, s32, s32);
 extern s32 func_02075ecc(u16);
-extern void func_02076428(void *, s32, s32, s32, s32, s32);
+extern void GraphicsSpriteCanvas_FillRect(void *, s32, s32, s32, s32, s32);
 extern void func_02092798(void *);
 extern void func_02092814(void *, s32);
 extern void func_ov025_021fdc60(void *, s32);
@@ -200,7 +200,7 @@ extern "C" s32 func_ov025_021fdc4c(void *widget)
 extern "C" void func_ov025_021fde58(void *widget)
 {
     s32 y = FIELD(s32, widget, 0x78) * 0x3c;
-    func_02076428(data_020f4e14, 0x40, y + 0x14, 0xc0, y + 0x30, 0);
+    GraphicsSpriteCanvas_FillRect(data_020f4e14, 0x40, y + 0x14, 0xc0, y + 0x30, 0);
 }
 
 /*

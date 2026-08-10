@@ -19,7 +19,7 @@ extern void func_02070e0c(void *, s32, s32);
 extern void func_02075598(void *, void *);
 extern s32 func_02076148(void *, const u16 *, s32, s32, s32, s32, s32);
 extern s32 func_020761f8(void *, const u16 *, s32, s32);
-extern void func_02076428(void *, s32, s32, s32, s32, s32);
+extern void GraphicsSpriteCanvas_FillRect(void *, s32, s32, s32, s32, s32);
 extern const u16 *func_020791e0(void *, u16);
 extern void *func_02092790(void *, s32);
 extern void *func_020959d4(void *, s32, s32);
@@ -42,7 +42,7 @@ extern "C" void func_ov016_021ff848(void *state, u16 messageId)
     const u16 *text;
     s32 width;
 
-    func_02076428(gDebugFont, 0, 6, 0xff, 0x16, 0);
+    GraphicsSpriteCanvas_FillRect(gDebugFont, 0, 6, 0xff, 0x16, 0);
     func_02075598(gDebugFont, FIELD(void *, state, 0x64));
     text = func_020791e0(data_021f3ecc, messageId);
     width = func_020761f8(gDebugFont, text, 8, 0);
@@ -120,7 +120,7 @@ extern "C" void func_ov016_021ff9f8(void *state, u16 messageId, s32 parameter)
                                1, 0x80, 0x48);
     }
     FIELD(void *, state, 0x464) = object;
-    func_02076428(data_020f4e14, 0x40, 0x14, 0xc0, 0x74, 0);
+    GraphicsSpriteCanvas_FillRect(data_020f4e14, 0x40, 0x14, 0xc0, 0x74, 0);
     func_02075598(data_020f4e14, FIELD(void *, state, 0x64));
     text = func_020791e0(data_021f3ecc, messageId);
     width = func_020761f8(data_020f4e14, text, 4, 0);
@@ -146,6 +146,6 @@ extern "C" void func_ov016_021ffb3c(void *state)
         vtable[1](object);
     }
     FIELD(void *, state, 0x464) = 0;
-    func_02076428(data_020f4e14, 0x40, 0x14, 0xc0, 0x34, 0);
+    GraphicsSpriteCanvas_FillRect(data_020f4e14, 0x40, 0x14, 0xc0, 0x34, 0);
     FIELD(u32, state, 0x48) &= ~2u;
 }

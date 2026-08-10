@@ -4,7 +4,7 @@
 .extern data_021f5128
 .extern func_02075598
 .extern func_02076148
-.extern func_02076428
+.extern GraphicsSpriteCanvas_FillRect
 .extern func_0207b44c
 .extern gSystemState
 
@@ -21,7 +21,7 @@ func_ov023_021fd7a8:
     ldr r0, [r10, #0x0]
     mov r2, r1
     mov r3, #0xff
-    bl func_02076428
+    bl GraphicsSpriteCanvas_FillRect
     ldr r0, [r10, #0x44]
     cmp r0, #0x0
     beq L_021fd8d4

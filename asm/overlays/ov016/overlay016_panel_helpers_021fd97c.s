@@ -4,7 +4,7 @@
     .extern func_02071f38
     .extern func_02074058
     .extern func_0207419c
-    .extern func_02076428
+    .extern GraphicsSpriteCanvas_FillRect
     .extern func_020927b8
 
 /* Exact fallbacks; see src/overlays/ov016/overlay016_panel_helpers.c. */
@@ -52,7 +52,7 @@ func_ov016_021fd9dc:
     mov r1, #0x20
     mov r2, #0x28
     mov r3, #0xf8
-    bl func_02076428
+    bl GraphicsSpriteCanvas_FillRect
 L_021fda14:
     ldr r0, [r6, #0x4]
     bl func_02074058

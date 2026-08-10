@@ -2,7 +2,7 @@
 
 /* Exact fallback; see src/overlays/ov016/overlay016_message_runtime.c. */
     .extern data_020f4e14
-    .extern func_02076428
+    .extern GraphicsSpriteCanvas_FillRect
 .global func_ov016_021ffb3c
 func_ov016_021ffb3c:
     stmdb sp!, {r4, lr}
@@ -25,7 +25,7 @@ L_021ffb60:
     mov r1, #0x40
     mov r2, #0x14
     mov r3, #0xc0
-    bl func_02076428
+    bl GraphicsSpriteCanvas_FillRect
     ldr r0, [r4, #0x48]
     bic r0, r0, #0x2
     str r0, [r4, #0x48]

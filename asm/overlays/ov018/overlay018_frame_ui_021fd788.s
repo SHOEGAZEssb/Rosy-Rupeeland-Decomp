@@ -6,7 +6,7 @@
     .extern func_020740a4
     .extern func_02075598
     .extern func_02076148
-    .extern func_02076428
+    .extern GraphicsSpriteCanvas_FillRect
     .extern func_020791e0
     .extern func_02091b98
     .extern func_02091c7c
@@ -110,7 +110,7 @@ L_021fd8d0:
     ldr r0, [r0, #0x0]
     mov r2, r1
     mov r3, #0xff
-    bl func_02076428
+    bl GraphicsSpriteCanvas_FillRect
 L_021fd8f4:
     add sp, sp, #0xc
     ldmia sp!, {r3, r4, pc}

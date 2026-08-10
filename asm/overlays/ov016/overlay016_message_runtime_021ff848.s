@@ -5,7 +5,7 @@
     .extern func_02075598
     .extern func_02076148
     .extern func_020761f8
-    .extern func_02076428
+    .extern GraphicsSpriteCanvas_FillRect
     .extern func_020791e0
     .extern gDebugFont
 .global func_ov016_021ff848
@@ -22,7 +22,7 @@ func_ov016_021ff848:
     ldr r0, [r2, #0x0]
     mov r2, #0x6
     mov r3, #0xff
-    bl func_02076428
+    bl GraphicsSpriteCanvas_FillRect
     ldr r0, L_021ff900
     ldr r1, [r5, #0x64]
     ldr r0, [r0, #0x0]

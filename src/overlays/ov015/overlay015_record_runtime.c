@@ -17,7 +17,7 @@ extern s32 func_020651a4(void *, u16);
 extern void func_02075598(void *, void *);
 extern void func_02076148(void *, s32, s32, s32, s32, s32, s32);
 extern s32 func_020761f8(void *, s32, s32, s32);
-extern void func_02076428(void *, s32, s32, s32, s32, s32);
+extern void GraphicsSpriteCanvas_FillRect(void *, s32, s32, s32, s32, s32);
 extern void func_02092960(void *, s32, s32, s32, s32, s32, s32, s32);
 extern void func_020958d8(void *);
 extern void func_02095988(void *, s32);
@@ -64,10 +64,10 @@ extern "C" void func_ov015_021fd6c8(void *state)
         s32 bottom = gSystemState[0x5f] != 0 ? 0x7e : 0x7c;
 
         func_02075598(FIELD(void *, gDebugFont, 0), FIELD(void *, state, 0x78));
-        func_02076428(FIELD(void *, gDebugFont, 0), 0x40, 0x74, 0x58, bottom, 0);
+        GraphicsSpriteCanvas_FillRect(FIELD(void *, gDebugFont, 0), 0x40, 0x74, 0x58, bottom, 0);
         func_02092960(FIELD(void *, gDebugFont, 0), value, 10, 0x40, 0x74,
                       value >= 99 ? 3 : 0xe, 8, 1);
-        func_02076428(FIELD(void *, data_020f4e14, 0), 0x40, 6, 0xc0, 0x16, 0);
+        GraphicsSpriteCanvas_FillRect(FIELD(void *, data_020f4e14, 0), 0x40, 6, 0xc0, 0x16, 0);
 
         if (FIELD(void *, status, 0xc) == 0) {
             FIELD(u16, FIELD(void *, state, 0x70), 0x24) |= 4;

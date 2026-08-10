@@ -3,7 +3,7 @@
 .extern data_020f4e14
 .extern data_021052fc
 .extern ActorMotionAreaFollower_GetPosition
-.extern func_02076428
+.extern GraphicsSpriteCanvas_FillRect
 .extern func_020befec
 
     .global func_020251ac
@@ -72,7 +72,7 @@ func_020251ac: ; 0x020251ac
     ldr r0, [r0, #0x0]
     sub r1, r6, #0x1
     sub r2, r5, #0x1
-    bl func_02076428
+    bl GraphicsSpriteCanvas_FillRect
     add r0, r5, #0x2
     str r0, [sp, #0x0]
     mov r0, #0x2
@@ -82,7 +82,7 @@ func_020251ac: ; 0x020251ac
     ldr r0, [r0, #0x0]
     mov r1, r6
     mov r2, r5
-    bl func_02076428
+    bl GraphicsSpriteCanvas_FillRect
     ldr r0, .L_020252f8
     ldr r0, [r0, #0x0]
     add r0, r0, #0x3000

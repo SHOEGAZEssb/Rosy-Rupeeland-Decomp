@@ -11,7 +11,7 @@
 .extern data_ov066_02210fb4
 .extern func_020755bc
 .extern func_02075858
-.extern func_02076308
+.extern GraphicsSpriteCanvas_DrawLine
 .extern func_020766c8
 .extern func_ov066_0220fee0
 .extern func_ov066_02210a9c
@@ -234,7 +234,7 @@ func_ov066_0220ff60:
     ldr r0, [r0, #0x0]
     mov r1, r3, asr #0xc
     mov r3, ip, asr #0xc
-    bl func_02076308
+    bl GraphicsSpriteCanvas_DrawLine
 .L_0221027c:
     tst r4, #0x1
     bne .L_022102b8
@@ -250,7 +250,7 @@ func_ov066_0220ff60:
     ldr r0, [r0, #0x0]
     mov r3, r1
     mov r2, r2, asr #0xc
-    bl func_02076308
+    bl GraphicsSpriteCanvas_DrawLine
 .L_022102b8:
     tst r4, #0x8
     bne .L_022102f0
@@ -265,7 +265,7 @@ func_ov066_0220ff60:
     ldr r0, [r0, #0x0]
     mov r1, r1, asr #0xc
     mov r3, r3, asr #0xc
-    bl func_02076308
+    bl GraphicsSpriteCanvas_DrawLine
 .L_022102f0:
     tst r4, #0x2
     bne .L_0221032c
@@ -281,7 +281,7 @@ func_ov066_0220ff60:
     ldr r0, [r0, #0x0]
     mov r3, r1
     mov r2, r2, asr #0xc
-    bl func_02076308
+    bl GraphicsSpriteCanvas_DrawLine
 .L_0221032c:
     ldr r0, .L_022103f4
     mov r1, #0x1

@@ -26,7 +26,7 @@ extern void func_0207419c(void *);
 extern void *func_020742cc(void *);
 extern void func_02075598(void *, void *);
 extern void func_02076148(void *, const void *, s32, s32, ...);
-extern void func_02076428(void *, s32, s32, s32, ...);
+extern void GraphicsSpriteCanvas_FillRect(void *, s32, s32, s32, ...);
 extern const void *func_0207b44c(void *);
 extern s32 func_0207b464(void *);
 extern s32 func_0207b490(void *);
@@ -164,7 +164,7 @@ extern "C" void func_ov023_021fd780(void *collection)
  */
 extern "C" void func_ov023_021fd7a8(void *collection)
 {
-    func_02076428(FIELD(void *, collection, 0), 0, 0, 0xff, 0xb0, 0);
+    GraphicsSpriteCanvas_FillRect(FIELD(void *, collection, 0), 0, 0, 0xff, 0xb0, 0);
     s32 drew_header = 0;
     for (s32 row = 0; row < 4; ++row) {
         s32 index = row + FIELD(s32, FIELD(void *, collection, 0x48), 0xc);

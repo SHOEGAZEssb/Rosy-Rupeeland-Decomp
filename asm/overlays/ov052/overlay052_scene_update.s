@@ -12,7 +12,7 @@
 .extern GamePhaseAreaScene_SetEnabled
 .extern GraphicsSpriteState_SetAnimationIndex
 .extern func_020740a4
-.extern func_02076428
+.extern GraphicsSpriteCanvas_FillRect
 .extern func_02093360
 .extern func_ov052_0220ddb4
 .extern func_ov052_0220df9c
@@ -156,7 +156,7 @@ func_ov052_0220da54:
     ldr r0, [r0, #0x0]
     mov r2, r1
     mov r3, #0xff
-    bl func_02076428
+    bl GraphicsSpriteCanvas_FillRect
     mov r0, #0x1
     strh r0, [r4, #0x4]
     mov r0, #0x10000

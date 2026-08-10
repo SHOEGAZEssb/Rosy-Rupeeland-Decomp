@@ -19,7 +19,7 @@ extern "C" {
 #endif
 extern void func_02071f38(void *resource);
 extern void func_02074058(void *owner);
-extern void func_02076428(void *owner, s32 first, s32 second, s32 third,
+extern void GraphicsSpriteCanvas_FillRect(void *owner, s32 first, s32 second, s32 third,
                           s32 fourth, s32 fifth);
 extern void func_02093998(void *presentation);
 extern void func_020939d8(void *presentation);
@@ -41,7 +41,7 @@ void func_ov001_021fb81c(Overlay001PresentationCloseState *state,
 {
     if (startAnimation != 0) {
         func_020939d8(state->presentation_44);
-        func_02076428(state->owner_00, 0x5c, 0x38, 0xdc, 0x58, 0);
+        GraphicsSpriteCanvas_FillRect(state->owner_00, 0x5c, 0x38, 0xdc, 0x58, 0);
     }
     func_02093998(state->presentation_44);
     func_02074058(state->spriteOwner_04);

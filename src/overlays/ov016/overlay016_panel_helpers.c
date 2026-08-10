@@ -12,7 +12,7 @@ extern void func_02071eb8(void *);
 extern void func_02071f38(void *);
 extern void func_02074058(void *);
 extern void func_0207419c(void *);
-extern void func_02076428(void *, s32, s32, s32, s32, s32);
+extern void GraphicsSpriteCanvas_FillRect(void *, s32, s32, s32, s32, s32);
 extern void func_020927b8(void *);
 #ifdef __cplusplus
 }
@@ -50,7 +50,7 @@ extern "C" void func_ov016_021fd9dc(void *state, s32 clearText)
     s32 i;
 
     if (clearText != 0) {
-        func_02076428(FIELD(void *, state, 0), 0x20, 0x28, 0xf8, 0xb8, 0);
+        GraphicsSpriteCanvas_FillRect(FIELD(void *, state, 0), 0x20, 0x28, 0xf8, 0xb8, 0);
     }
     func_02074058(FIELD(void *, state, 4));
     func_02071f38((u8 *)state + 0x18);

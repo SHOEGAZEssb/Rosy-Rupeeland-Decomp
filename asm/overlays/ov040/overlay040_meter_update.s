@@ -2,7 +2,7 @@
 /* Exact fallback; see overlay040_object_update.c for portable C. */
     .extern func_0209a2ac
     .extern func_0200500c
-    .extern func_02076428
+    .extern GraphicsSpriteCanvas_FillRect
     .extern func_020befec
     .extern GraphicsSpriteState_SetAnimationIndex
     .extern func_02005058
@@ -62,7 +62,7 @@ func_ov040_02202cb4:
     str r1, [sp, #0x4]
     ldr r0, [r0, #0x0]
     mov r3, r6
-    bl func_02076428
+    bl GraphicsSpriteCanvas_FillRect
     cmp r4, #0x0
     ble .L_02202db8
     mov r0, #0xa7
@@ -74,7 +74,7 @@ func_ov040_02202cb4:
     mov r1, r6
     mov r2, #0x90
     mov r3, #0x6f
-    bl func_02076428
+    bl GraphicsSpriteCanvas_FillRect
 .L_02202db8:
     mov r0, r4
     mov r1, #0x26
@@ -102,7 +102,7 @@ func_ov040_02202cb4:
     ldr r0, [r0, #0x0]
     add r1, r4, #0x90
     mov r3, #0x100
-    bl func_02076428
+    bl GraphicsSpriteCanvas_FillRect
     cmp r4, #0x0
     ble .L_02202e50
     mov r0, #0xa7
@@ -114,7 +114,7 @@ func_ov040_02202cb4:
     ldr r0, [r0, #0x0]
     mov r2, r1
     add r3, r4, #0x90
-    bl func_02076428
+    bl GraphicsSpriteCanvas_FillRect
 .L_02202e50:
     mov r0, r4
     mov r1, #0x26

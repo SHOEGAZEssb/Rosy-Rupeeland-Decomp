@@ -22,7 +22,7 @@ extern void *func_02073ffc(void *, void *, s32);
 extern void func_02074058(void *);
 extern void func_0207419c(void *);
 extern void *func_020742cc(void *);
-extern void func_02076428(void *, s32, s32, s32, s32, s32);
+extern void GraphicsSpriteCanvas_FillRect(void *, s32, s32, s32, s32, s32);
 extern s32 func_0209189c(void *, s32, s32);
 extern s32 func_020918f4(void *, s32);
 extern void func_02091b6c(void *);
@@ -114,7 +114,7 @@ extern "C" void func_ov028_021fd7e0(void *state)
  */
 extern "C" void func_ov028_021fd86c(void *state)
 {
-    func_02076428(FIELD(void *, state, 0), 0, 0, 0xff, 0xb0, 0);
+    GraphicsSpriteCanvas_FillRect(FIELD(void *, state, 0), 0, 0, 0xff, 0xb0, 0);
     func_02093998(FIELD(void *, state, 0x50));
     func_02074058(FIELD(void *, state, 4));
     func_02071f38((u8 *)state + 8);

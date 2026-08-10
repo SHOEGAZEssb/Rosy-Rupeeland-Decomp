@@ -14,7 +14,7 @@ void func_02005030(void *, const void *);
 void func_0200500c(void *, s32, s32, s32);
 void func_02005058(void *);
 s32 func_020befec(s32, s32);
-void func_02076428(void *, s32, s32, s32, s32, s32);
+void GraphicsSpriteCanvas_FillRect(void *, s32, s32, s32, s32, s32);
 void func_020050a4(void *, const void *);
 void func_0209c9d4(void *);
 void func_0209cb74(void *, const void *, const void *, s32,
@@ -76,7 +76,7 @@ extern "C" void func_ov041_02200ce8(void *object, const void *transform)
         s32 marker = (func_020befec(FIELD(s32, object, 0x15c), span) *
                       0x90 >> 12) + 0x10;
         if (marker < 0xa8)
-            func_02076428(data_020f4e14, 0xf2, marker, 0xf5, 0xaa, 4);
+            GraphicsSpriteCanvas_FillRect(data_020f4e14, 0xf2, marker, 0xf5, 0xaa, 4);
     }
 
     void *scene = FIELD(void *, owner, 0x18);

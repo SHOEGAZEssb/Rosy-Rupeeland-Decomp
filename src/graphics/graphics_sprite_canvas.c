@@ -47,8 +47,9 @@ static void GraphicsSpriteCanvas_PutPixel(u32 *pixels, s32 x, s32 y,
  * color replaces the destination pixel. The canvas backing pixels change;
  * there are no hardware or SDK effects.
  */
-void func_02076308(GraphicsSpriteCanvas *canvas, s32 x0, s32 y0,
-                   s32 x1, s32 y1, u32 color)
+void GraphicsSpriteCanvas_DrawLine(GraphicsSpriteCanvas *canvas,
+                                   s32 x0, s32 y0, s32 x1, s32 y1,
+                                   u32 color)
 {
     s32 dx = x1 - x0;
     s32 dy = y1 - y0;
@@ -106,8 +107,9 @@ void func_02076308(GraphicsSpriteCanvas *canvas, s32 x0, s32 y0,
  * batches partial and whole eight-pixel words; this portable form deliberately
  * expresses the same visible result through the shared pixel helper.
  */
-void func_02076428(GraphicsSpriteCanvas *canvas, s32 x0, s32 y0,
-                   s32 x1, s32 y1, u32 color)
+void GraphicsSpriteCanvas_FillRect(GraphicsSpriteCanvas *canvas,
+                                   s32 x0, s32 y0, s32 x1, s32 y1,
+                                   u32 color)
 {
     s32 x;
     s32 y;
@@ -149,17 +151,18 @@ void func_02076428(GraphicsSpriteCanvas *canvas, s32 x0, s32 y0,
 
 /*
  * Draw the four inclusive edges of the supplied rectangle by calling
- * func_02076308. Corner pixels are consequently written twice. Coordinates
- * are clipped by the line routine and the low color nibble is stored. Return
- * no value; only canvas pixels change.
+ * GraphicsSpriteCanvas_DrawLine. Corner pixels are consequently written twice.
+ * Coordinates are clipped by the line routine and the low color nibble is
+ * stored. Return no value; only canvas pixels change.
  */
-void func_0207663c(GraphicsSpriteCanvas *canvas, s32 x0, s32 y0,
-                   s32 x1, s32 y1, u32 color)
+void GraphicsSpriteCanvas_DrawRect(GraphicsSpriteCanvas *canvas,
+                                   s32 x0, s32 y0, s32 x1, s32 y1,
+                                   u32 color)
 {
-    func_02076308(canvas, x0, y0, x1, y0, color);
-    func_02076308(canvas, x1, y0, x1, y1, color);
-    func_02076308(canvas, x0, y0, x0, y1, color);
-    func_02076308(canvas, x0, y1, x1, y1, color);
+    GraphicsSpriteCanvas_DrawLine(canvas, x0, y0, x1, y0, color);
+    GraphicsSpriteCanvas_DrawLine(canvas, x1, y0, x1, y1, color);
+    GraphicsSpriteCanvas_DrawLine(canvas, x0, y0, x0, y1, color);
+    GraphicsSpriteCanvas_DrawLine(canvas, x0, y1, x1, y1, color);
 }
 
 /* No-op drawing hook. It accepts no inputs, changes no state, and returns. */
@@ -176,8 +179,9 @@ void func_020763dc(u32 *pixels, s32 x, s32 y);
 }
 #endif
 
-asm void func_02076308(GraphicsSpriteCanvas *canvas, s32 x0, s32 y0,
-                       s32 x1, s32 y1, u32 color)
+asm void GraphicsSpriteCanvas_DrawLine(GraphicsSpriteCanvas *canvas,
+                                       s32 x0, s32 y0, s32 x1, s32 y1,
+                                       u32 color)
 {
     DCD 0xE92D4FF0
     DCD 0xE5900000
@@ -235,8 +239,9 @@ asm void func_02076308(GraphicsSpriteCanvas *canvas, s32 x0, s32 y0,
 }
 
 /*
- * Retail-only pixel writer entered from func_02076308 with pixels, x, and y
- * in r0-r2 and the color retained in r5 rather than passed through the C ABI.
+ * Retail-only pixel writer entered from GraphicsSpriteCanvas_DrawLine with
+ * pixels, x, and y in r0-r2 and the color retained in r5 rather than passed
+ * through the C ABI.
  * It changes one four-bit pixel and returns no value. Native code uses the
  * typed GraphicsSpriteCanvas_PutPixel helper above; this address-derived entry
  * point must remain private because it has no portable callable signature.
@@ -267,10 +272,12 @@ asm void func_020763dc(u32 *pixels, s32 x, s32 y)
 /*
  * The optimized retail fill is retained word-for-word because structured C
  * radically changes its partial-word masks, tiled pointer stepping, and loop
- * schedule. Its portable equivalent is func_02076428 directly above.
+ * schedule. Its portable equivalent is GraphicsSpriteCanvas_FillRect directly
+ * above.
  */
-asm void func_02076428(GraphicsSpriteCanvas *canvas, s32 x0, s32 y0,
-                       s32 x1, s32 y1, u32 color)
+asm void GraphicsSpriteCanvas_FillRect(GraphicsSpriteCanvas *canvas,
+                                       s32 x0, s32 y0, s32 x1, s32 y1,
+                                       u32 color)
 {
     DCD 0xE92D4FF0
     DCD 0xE5900000
@@ -407,8 +414,9 @@ asm void func_02076428(GraphicsSpriteCanvas *canvas, s32 x0, s32 y0,
     DCD 0xE12FFF1E
 }
 
-asm void func_0207663c(GraphicsSpriteCanvas *canvas, s32 x0, s32 y0,
-                       s32 x1, s32 y1, u32 color)
+asm void GraphicsSpriteCanvas_DrawRect(GraphicsSpriteCanvas *canvas,
+                                       s32 x0, s32 y0, s32 x1, s32 y1,
+                                       u32 color)
 {
     stmdb sp!, {r3, r4, r5, r6, r7, r8, r9, lr}
     sub sp, sp, #8
@@ -421,28 +429,28 @@ asm void func_0207663c(GraphicsSpriteCanvas *canvas, s32 x0, s32 y0,
     str r4, [sp, #4]
     mov r9, r0
     mov r7, r2
-    bl func_02076308
+    bl GraphicsSpriteCanvas_DrawLine
     str r5, [sp]
     mov r0, r9
     mov r1, r6
     mov r2, r7
     str r4, [sp, #4]
     mov r3, r6
-    bl func_02076308
+    bl GraphicsSpriteCanvas_DrawLine
     str r7, [sp]
     mov r2, r7
     str r4, [sp, #4]
     mov r0, r9
     mov r1, r8
     mov r3, r6
-    bl func_02076308
+    bl GraphicsSpriteCanvas_DrawLine
     mov r0, r9
     mov r1, r8
     mov r3, r6
     str r5, [sp]
     str r4, [sp, #4]
     mov r2, r5
-    bl func_02076308
+    bl GraphicsSpriteCanvas_DrawLine
     add sp, sp, #8
     ldmia sp!, {r3, r4, r5, r6, r7, r8, r9, pc}
 }

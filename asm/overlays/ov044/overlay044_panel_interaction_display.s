@@ -1,5 +1,5 @@
 .text
-.extern func_02076428
+.extern GraphicsSpriteCanvas_FillRect
 .extern func_02075598
 .extern func_ov044_0220bb48
 .extern func_02079f3c
@@ -22,7 +22,7 @@ func_ov044_0220bba4:
     ldr r0, [r10, #0x0]
     mov r2, r1
     mov r3, #0xff
-    bl func_02076428
+    bl GraphicsSpriteCanvas_FillRect
     ldr r0, [r10, #0x40]
     cmp r0, #0x0
     beq .L_0220bd18

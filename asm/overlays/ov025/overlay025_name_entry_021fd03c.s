@@ -6,7 +6,7 @@
 .extern func_02075e48
 .extern func_02075ea8
 .extern func_02075ecc
-.extern func_02076428
+.extern GraphicsSpriteCanvas_FillRect
 
 
     .global func_ov025_021fd03c
@@ -26,7 +26,7 @@ func_ov025_021fd03c:
     ldr r0, [r0, #0x0]
     mov r2, r1
     mov r3, #0xff
-    bl func_02076428
+    bl GraphicsSpriteCanvas_FillRect
     mov r7, #0x0
     mov r6, #0xe
     mov r5, #0x6

@@ -10,7 +10,7 @@
 
 extern "C" void *gDebugFont;
 extern "C" u8 data_021f3ecc[];
-extern "C" void func_02076428(void *font, s32 x, s32 y, s32 color,
+extern "C" void GraphicsSpriteCanvas_FillRect(void *font, s32 x, s32 y, s32 color,
                                s32 width, s32 flags);
 extern "C" void *func_02075598(void *font, void *presentation);
 extern "C" const void *func_020791e0(const void *table, u16 index);
@@ -33,7 +33,7 @@ extern "C" void func_ov001_021fb81c(void *preview, s32 mode);
  */
 extern "C" void func_ov044_0220c74c(void *object, u32 messageId)
 {
-    func_02076428(gDebugFont, 0, 6, 0xff, 0x16, 0);
+    GraphicsSpriteCanvas_FillRect(gDebugFont, 0, 6, 0xff, 0x16, 0);
     func_02075598(gDebugFont, (u8 *)object + 0x54);
     const void *text = func_020791e0(data_021f3ecc, (u16)messageId);
     s32 width = func_020761f8(gDebugFont, text, 8, 0);

@@ -10,7 +10,7 @@ extern const s32 data_ov030_021ff820[];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_02076428(void *, s32, s32, s32, s32, s32);
+extern void GraphicsSpriteCanvas_FillRect(void *, s32, s32, s32, s32, s32);
 extern u32 func_ov030_021fd6ac(void *, s32, s32);
 extern void func_ov030_021fd680(void *);
 extern void func_ov030_021fd694(void *, const void *);
@@ -60,11 +60,11 @@ extern "C" void func_ov030_021fd720(void *board, const void *target)
         if (collision != 0)
             func_ov030_021fd680((u8 *)board + 0x1e8);
 
-        func_02076428(FIELD(void *, board, 0), x - 1, y - 2,
+        GraphicsSpriteCanvas_FillRect(FIELD(void *, board, 0), x - 1, y - 2,
                       x + 1, y - 2, 0);
-        func_02076428(FIELD(void *, board, 0), x - 2, y - 1,
+        GraphicsSpriteCanvas_FillRect(FIELD(void *, board, 0), x - 2, y - 1,
                       x + 2, y + 1, 0);
-        func_02076428(FIELD(void *, board, 0), x - 1, y + 2,
+        GraphicsSpriteCanvas_FillRect(FIELD(void *, board, 0), x - 1, y + 2,
                       x + 1, y + 2, 0);
         if (func_ov030_021fd520(board, x, y) != 0) {
             FIELD(s32, board, 0x1bc) = x;

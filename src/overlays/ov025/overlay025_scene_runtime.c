@@ -18,7 +18,7 @@ extern void func_02073e48(void *, s32, s32, s32, s32, s32, s32);
 extern void func_02073ef8(void *);
 extern void *func_02073ffc(void *, void *, s32);
 extern void func_020740a4(void *);
-extern void func_02076428(void *, s32, s32, s32, s32, s32);
+extern void GraphicsSpriteCanvas_FillRect(void *, s32, s32, s32, s32, s32);
 extern void func_02092790(void *, s32);
 extern void func_02095360(void *);
 extern void func_02095820(void *, s32, s32);
@@ -115,7 +115,7 @@ extern "C" void func_ov025_022002f8(void *scene)
                                   (u8 *)scene + 0x68, 2);
     FIELD(void *, scene, 0xb8) = sprite;
     func_02073e48(sprite, 1, 0x38, 0x44, 0, 0, 2);
-    func_02076428(data_020f4e14, 0x30, 0x40, 0xd0, 0x60, 0);
+    GraphicsSpriteCanvas_FillRect(data_020f4e14, 0x30, 0x40, 0xd0, 0x60, 0);
     FIELD(u32, scene, 0x48) |= 2;
 }
 
@@ -132,7 +132,7 @@ extern "C" void func_ov025_02200398(void *scene, s32 mode, s32 animation)
                                   (u8 *)scene + 0x68, 2);
     FIELD(void *, scene, 0xb8) = sprite;
     func_02073e48(sprite, animation, 0x39, 0x3c, 0, 0, 2);
-    func_02076428(data_020f4e14, 0x30, 0x38, 0xd0, 0x80, 0);
+    GraphicsSpriteCanvas_FillRect(data_020f4e14, 0x30, 0x38, 0xd0, 0x80, 0);
     FIELD(u32, scene, 0x48) |= 2;
 }
 

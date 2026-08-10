@@ -5,7 +5,7 @@
     .extern func_020939d8
     .extern func_02093360
     .extern func_02075598
-    .extern func_02076428
+    .extern GraphicsSpriteCanvas_FillRect
     .extern func_02062a60
     .extern func_02076148
     .extern func_02073ffc
@@ -56,7 +56,7 @@ func_ov001_021fb87c: ; 0x021fb87c
     mov r1, #0x70
     mov r2, #0x4c
     mov r3, #0xe0
-    bl func_02076428
+    bl GraphicsSpriteCanvas_FillRect
     mov r0, r5
     bl func_02062a60
     mov r1, r0
@@ -98,7 +98,7 @@ func_ov001_021fb87c: ; 0x021fb87c
     mov r1, #0x5c
     mov r2, #0x38
     mov r3, #0xcc
-    bl func_02076428
+    bl GraphicsSpriteCanvas_FillRect
     mov r0, r5
     bl func_020628c8
     mov r1, r0

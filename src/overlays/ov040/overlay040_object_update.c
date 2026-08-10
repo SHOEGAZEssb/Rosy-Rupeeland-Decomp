@@ -13,7 +13,7 @@ extern "C" {
 extern void func_0209a2ac(void *object, const void *transform, s32 enabled);
 extern void func_0200500c(void *vector, s32 x, s32 y, s32 z);
 extern void func_02005058(void *vector);
-extern void func_02076428(void *canvas, s32 left, s32 top, s32 right,
+extern void GraphicsSpriteCanvas_FillRect(void *canvas, s32 left, s32 top, s32 right,
                           s32 bottom, s32 color);
 extern s32 func_020befec(s32 numerator, s32 denominator);
 extern void GraphicsSpriteState_SetAnimationIndex(void *renderer, u8 orientation);
@@ -406,9 +406,9 @@ extern "C" void func_ov040_02202cb4(void *owner)
     void *scene = FIELD(void *, FIELD(void *, owner, 0x48), 8);
     s32 leftValue = FIELD(s32, scene, 0xb2c);
     if (leftValue < 0) leftValue = 0;
-    func_02076428(gDebugFont, 0, 0x90, 0x6f - leftValue, 0xa7, 0);
+    GraphicsSpriteCanvas_FillRect(gDebugFont, 0, 0x90, 0x6f - leftValue, 0xa7, 0);
     if (leftValue > 0)
-        func_02076428(gDebugFont, 0x6f - leftValue, 0x90, 0x6f, 0xa7, 4);
+        GraphicsSpriteCanvas_FillRect(gDebugFont, 0x6f - leftValue, 0x90, 0x6f, 0xa7, 4);
     s32 orientation = 5 - func_020befec(leftValue, 0x26);
     void *renderer = FIELD(void *, FIELD(void *, owner, 0x5c), 0x0c);
     if ((u8)orientation != FIELD(u8, renderer, 0x38))
@@ -416,9 +416,9 @@ extern "C" void func_ov040_02202cb4(void *owner)
 
     s32 rightValue = FIELD(s32, scene, 0xb28);
     if (rightValue < 0) rightValue = 0;
-    func_02076428(gDebugFont, rightValue + 0x90, 0x90, 0x100, 0xa7, 0);
+    GraphicsSpriteCanvas_FillRect(gDebugFont, rightValue + 0x90, 0x90, 0x100, 0xa7, 0);
     if (rightValue > 0)
-        func_02076428(gDebugFont, 0x90, 0x90, rightValue + 0x90, 0xa7, 4);
+        GraphicsSpriteCanvas_FillRect(gDebugFont, 0x90, 0x90, rightValue + 0x90, 0xa7, 4);
     orientation = 2 - func_020befec(rightValue, 0x26);
     renderer = FIELD(void *, FIELD(void *, owner, 0x58), 0x0c);
     if ((u8)orientation != FIELD(u8, renderer, 0x38))

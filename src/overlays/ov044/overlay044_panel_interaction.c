@@ -11,7 +11,7 @@
 extern "C" u8 data_021f3ecc[];
 extern "C" void *gSystemState;
 extern "C" void func_02073ef8(void *binding);
-extern "C" void func_02076428(void *font, s32 x, s32 y, s32 color,
+extern "C" void GraphicsSpriteCanvas_FillRect(void *font, s32 x, s32 y, s32 color,
                                s32 width, s32 flags);
 extern "C" void *func_02075598(void *font, void *presentation);
 extern "C" void *func_02079f3c(const void *table, s32 index);
@@ -62,7 +62,7 @@ extern "C" void func_ov044_0220bb60(void *object, s32 index)
 extern "C" void func_ov044_0220bba4(void *object)
 {
     void *font = FIELD(void *, object, 0);
-    func_02076428(font, 0, 0, 0xff, 0xb0, 0);
+    GraphicsSpriteCanvas_FillRect(font, 0, 0, 0xff, 0xb0, 0);
     if (FIELD(s32, object, 0x40) == 0)
         return;
 

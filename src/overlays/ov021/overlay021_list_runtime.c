@@ -39,7 +39,7 @@ extern s32 func_02092960(void *, s32, u32, s32, s32, s32, s32, s32);
 extern void *func_02094154(void *, void *, s32, s32, s32, s32, s32);
 extern void func_02094550(void *, s32);
 extern void func_02094574(void *);
-extern void func_02076428(void *, s32, s32, s32, s32, s32);
+extern void GraphicsSpriteCanvas_FillRect(void *, s32, s32, s32, s32, s32);
 extern void *func_020c09cc(void *, s32, s32, s32, void (*)(void *), s32);
 extern void func_ov021_021fce00(void *);
 extern void func_ov021_021fd224(void *);
@@ -121,7 +121,7 @@ extern "C" void *func_ov021_021fce18(void *state, void *font,
 extern "C" void func_ov021_021fd39c(void *state)
 {
     void *font = FIELD(void *, state, 0);
-    func_02076428(font, 0, 0, 0xff, 0xb0, 0);
+    GraphicsSpriteCanvas_FillRect(font, 0, 0, 0xff, 0xb0, 0);
     if (FIELD(s32, state, 0x54) == 0)
         return;
     s32 finalColor;
@@ -165,7 +165,7 @@ extern "C" void func_ov021_021fd490(void *state)
     }
 
     void *font = FIELD(void *, state, 0);
-    func_02076428(font, 0x2a, 0x7e, 0x7a, 0x8e, 0);
+    GraphicsSpriteCanvas_FillRect(font, 0x2a, 0x7e, 0x7a, 0x8e, 0);
     Overlay021Row *selected = func_ov021_021fd6e8(state);
     if (selected == 0) {
         FIELD(u16, FIELD(void *, state, 0x24), 0x24) |= 4;

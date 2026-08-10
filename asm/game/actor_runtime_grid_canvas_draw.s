@@ -3,7 +3,7 @@
 .text
 .extern S32Rectangle_Translate
 .extern SoftwareCanvas_DrawFormattedText
-.extern func_02076428
+.extern GraphicsSpriteCanvas_FillRect
 .extern data_020d52f4
 .extern gDebugFont
 .global ActorRuntimeGridCanvas_DrawPage
@@ -73,7 +73,7 @@ L_0200c03c:
     add r1, r7, #0x7
     add r2, r6, #0x4
     add r3, r5, #0xb
-    bl func_02076428
+    bl GraphicsSpriteCanvas_FillRect
     add r0, r4, #0x4
     str r0, [sp, #0x0]
     mov r1, #0x0
@@ -83,7 +83,7 @@ L_0200c03c:
     add r1, r7, #0xb
     add r2, r6, #0x8
     add r3, r5, #0x7
-    bl func_02076428
+    bl GraphicsSpriteCanvas_FillRect
     add sp, sp, #0x18
     ldmia sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, pc}
 L_0200c13c: .word data_020d52f4

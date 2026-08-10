@@ -25,7 +25,7 @@ extern void func_020755bc(void *);
 extern void func_02075e48(void *, u16, s32, s32, s32);
 extern s32 func_02075ea8(void *, s32);
 extern s32 func_02075ecc(u16);
-extern void func_02076428(void *, s32, s32, s32, s32, s32);
+extern void GraphicsSpriteCanvas_FillRect(void *, s32, s32, s32, s32, s32);
 extern s32 func_02092910(void *, void *);
 extern void func_ov025_021fd03c(void *, void *, s32);
 #ifdef __cplusplus
@@ -99,7 +99,7 @@ extern "C" void func_ov025_021fd03c(void *widget, void *font_context,
                                      s32 show_cursor)
 {
     func_02075598(data_020f4e14, font_context);
-    func_02076428(data_020f4e14, 0, 0, 0xff, 0x18, 0);
+    GraphicsSpriteCanvas_FillRect(data_020f4e14, 0, 0, 0xff, 0x18, 0);
     for (s32 i = 0; i < FIELD(s32, widget, 0x17c); ++i) {
         s32 glyph = func_02075ecc(FIELD(u16, widget, 0x180 + i * 2));
         s32 width = func_02075ea8(data_020f4e14, glyph);

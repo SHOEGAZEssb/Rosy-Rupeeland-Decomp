@@ -1,8 +1,8 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov090/overlay090_recovery.c.
 .extern data_020f4e14
-.extern func_02076308
-.extern func_02076428
+.extern GraphicsSpriteCanvas_DrawLine
+.extern GraphicsSpriteCanvas_FillRect
 .extern func_020befec
 
 .global func_ov090_0221a8bc
@@ -53,7 +53,7 @@ func_ov090_0221a8bc:
     add r3, r4, #0x30
     mov r1, #0x30
     mov r2, #0x9
-    bl func_02076428
+    bl GraphicsSpriteCanvas_FillRect
 .L_0221a974:
     cmp r5, #0x0
     ble .L_0221a9a4
@@ -66,7 +66,7 @@ func_ov090_0221a8bc:
     ldr r0, [r0, #0x0]
     add r3, r1, r5
     mov r2, #0x9
-    bl func_02076428
+    bl GraphicsSpriteCanvas_FillRect
 .L_0221a9a4:
     add r2, r4, r5
     rsb r0, r2, #0xb0
@@ -81,7 +81,7 @@ func_ov090_0221a8bc:
     add r1, r2, #0x30
     mov r2, #0x9
     mov r3, #0xe0
-    bl func_02076428
+    bl GraphicsSpriteCanvas_FillRect
 .L_0221a9dc:
     mov r0, #0x9
     str r0, [sp, #0x0]
@@ -92,7 +92,7 @@ func_ov090_0221a8bc:
     mov r1, #0x30
     mov r2, #0x8
     mov r3, #0xe0
-    bl func_02076428
+    bl GraphicsSpriteCanvas_FillRect
     mov r0, #0x10
     str r0, [sp, #0x0]
     mov r1, #0x6
@@ -102,7 +102,7 @@ func_ov090_0221a8bc:
     mov r1, #0x30
     mov r2, #0xf
     mov r3, #0xe0
-    bl func_02076428
+    bl GraphicsSpriteCanvas_FillRect
     mov r0, #0xf
     str r0, [sp, #0x0]
     mov r1, #0x6
@@ -112,7 +112,7 @@ func_ov090_0221a8bc:
     mov r1, #0xe0
     mov r2, #0x9
     mov r3, #0xe1
-    bl func_02076428
+    bl GraphicsSpriteCanvas_FillRect
     add r0, r6, #0x200
     ldrsh r0, [r0, #0x38]
     cmp r0, #0x0
@@ -126,7 +126,7 @@ func_ov090_0221a8bc:
     ldr r0, [r0, #0x0]
     mov r3, r1
     mov r2, #0xa
-    bl func_02076308
+    bl GraphicsSpriteCanvas_DrawLine
 .L_0221aa8c:
     add sp, sp, #0x8
     ldmia sp!, {r4, r5, r6, pc}

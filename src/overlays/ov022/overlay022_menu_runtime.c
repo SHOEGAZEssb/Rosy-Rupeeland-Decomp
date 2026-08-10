@@ -13,7 +13,7 @@ extern "C" {
 #endif
 extern void func_02075598(void *, void *);
 extern void func_02076148(void *, const void *, s32, s32, ...);
-extern void func_02076428(void *, s32, s32, s32, ...);
+extern void GraphicsSpriteCanvas_FillRect(void *, s32, s32, s32, ...);
 extern const void *func_02079f3c(const void *, u16);
 extern s32 func_020befec(s32, s32);
 #ifdef __cplusplus
@@ -30,7 +30,7 @@ extern s32 func_020befec(s32, s32);
  */
 extern "C" void func_ov022_021fdb38(void *menu)
 {
-    func_02076428(data_020f4e14, 0, 0, 0xff, 0xb0, 0);
+    GraphicsSpriteCanvas_FillRect(data_020f4e14, 0, 0, 0xff, 0xb0, 0);
     s32 count = FIELD(s32, menu, 0x2c);
     if (count == 0)
         return;

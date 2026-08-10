@@ -33,7 +33,8 @@ extern void func_02072000(GraphicsResourceSet *set);
 extern void func_ov011_021fd188(void *state);
 extern void DebugText_Printf(void *debug, s32 x, s32 y, s32 style, ...);
 extern void func_02075858(void *debug, s32 x, s32 y, const char *format, ...);
-extern void func_02076308(void *font, s32 x, s32 y, s32 value, ...);
+extern void GraphicsSpriteCanvas_DrawLine(void *font, s32 x, s32 y,
+                                          s32 value, ...);
 extern s32 func_0207043c(void *resource);
 extern void *func_02070888(void *resource);
 extern s32 func_ov011_021fdae0(void *resource);
@@ -71,7 +72,8 @@ static void overlay011_reload_resources(void *state)
  *
  * Render the active file/record and four menu rows, resource dimensions,
  * addresses/sizes, debug offsets and member coordinates. When the scene flag
- * extracted from +0x44 is set, draw two guide primitives via func_02076308.
+ * extracted from +0x44 is set, draw two guide primitives via
+ * GraphicsSpriteCanvas_DrawLine.
  * Pressed bit 2 resets the member at +0x24 from descriptor coordinates. Return
  * zero; debug rendering, resource reloads, member mutation, and sub DISPCNT
  * writes are the observable effects.
@@ -196,8 +198,10 @@ s32 func_ov011_021fd450(void *state)
 
     if ((FIELD(s32, state, 0x44) << 27) < 0) {
         func_020755bc(gDebugFont);
-        func_02076308(gDebugFont, 0, 0, 0xff, FIELD(s32, state, 0x5c), 2);
-        func_02076308(gDebugFont, 0, 0, FIELD(s32, state, 0x58), 0xbf, 2);
+        GraphicsSpriteCanvas_DrawLine(gDebugFont, 0, 0, 0xff,
+                                      FIELD(s32, state, 0x5c), 2);
+        GraphicsSpriteCanvas_DrawLine(gDebugFont, 0, 0,
+                                      FIELD(s32, state, 0x58), 0xbf, 2);
     }
     if (pressed & 2)
         func_ov011_021fce50((u8 *)state + 0x24,

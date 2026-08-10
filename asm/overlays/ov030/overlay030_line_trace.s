@@ -3,7 +3,7 @@
 /* Exact fallback; see src/overlays/ov030/overlay030_line_trace.c for documented portable C. */
 .extern data_ov030_021ff7cc
 .extern data_ov030_021ff820
-.extern func_02076428
+.extern GraphicsSpriteCanvas_FillRect
 .extern func_ov030_021fd520
 .extern func_ov030_021fd680
 .extern func_ov030_021fd694
@@ -75,7 +75,7 @@ L_021fd7ec:
     ldr r0, [r10, #0x0]
     sub r1, r7, #0x1
     add r3, r7, #0x1
-    bl func_02076428
+    bl GraphicsSpriteCanvas_FillRect
     add r0, r8, #0x1
     str r0, [sp, #0x0]
     mov r0, #0x0
@@ -84,7 +84,7 @@ L_021fd7ec:
     sub r1, r7, #0x2
     sub r2, r8, #0x1
     add r3, r7, #0x2
-    bl func_02076428
+    bl GraphicsSpriteCanvas_FillRect
     add r2, r8, #0x2
     str r2, [sp, #0x0]
     mov r0, #0x0
@@ -92,7 +92,7 @@ L_021fd7ec:
     ldr r0, [r10, #0x0]
     sub r1, r7, #0x1
     add r3, r7, #0x1
-    bl func_02076428
+    bl GraphicsSpriteCanvas_FillRect
     mov r0, r10
     mov r1, r7
     mov r2, r8
@@ -158,7 +158,7 @@ L_021fd91c:
     ldr r0, [r10, #0x0]
     sub r1, r7, #0x1
     add r3, r7, #0x1
-    bl func_02076428
+    bl GraphicsSpriteCanvas_FillRect
     add r0, r8, #0x1
     str r0, [sp, #0x0]
     mov r0, #0x0
@@ -167,7 +167,7 @@ L_021fd91c:
     sub r1, r7, #0x2
     sub r2, r8, #0x1
     add r3, r7, #0x2
-    bl func_02076428
+    bl GraphicsSpriteCanvas_FillRect
     add r2, r8, #0x2
     str r2, [sp, #0x0]
     mov r0, #0x0
@@ -175,7 +175,7 @@ L_021fd91c:
     ldr r0, [r10, #0x0]
     sub r1, r7, #0x1
     add r3, r7, #0x1
-    bl func_02076428
+    bl GraphicsSpriteCanvas_FillRect
     mov r0, r10
     mov r1, r7
     mov r2, r8

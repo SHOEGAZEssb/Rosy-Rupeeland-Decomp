@@ -16,7 +16,7 @@ extern "C" {
 extern void *Heap_Alloc(u32, const void *, s32, void *);
 extern void Heap_Free(void *);
 extern void func_020755bc(void *);
-extern void func_02076428(void *, s32, s32, s32, s32, s32);
+extern void GraphicsSpriteCanvas_FillRect(void *, s32, s32, s32, s32, s32);
 extern s32 func_02073aa8(void *, s32, s32);
 extern void func_02095940(void *);
 extern void *func_ov030_021fce00(void *);
@@ -54,7 +54,7 @@ extern "C" void func_ov030_021fd434(void *board)
             flags |= 4;
         FIELD(u16, sprite, 0x24) = flags;
         const s16 *bounds = &data_ov030_021ff708[i * 4];
-        func_02076428(FIELD(void *, board, 0), bounds[0], bounds[1],
+        GraphicsSpriteCanvas_FillRect(FIELD(void *, board, 0), bounds[0], bounds[1],
                       bounds[2], bounds[3], 1);
     }
     func_ov030_021fd3e8(board);

@@ -39,7 +39,7 @@ extern void func_02073e48(void *resource, s32 value, s32 x, s32 y,
 extern void func_02075598(void *renderer, const void *source);
 extern void func_02076148(void *renderer, const u16 *text, s32 x, s32 y,
                           s32 mode, s32 advance, s32 spacing);
-extern void func_02076428(void *renderer, s32 left, s32 top, s32 right,
+extern void GraphicsSpriteCanvas_FillRect(void *renderer, s32 left, s32 top, s32 right,
                           s32 bottom, s32 value);
 extern void func_02092e9c(void *presentation, void *record, s32 mode);
 extern void func_02093360(void *presentation, s32 value);
@@ -85,7 +85,7 @@ void func_ov001_021fb87c(Overlay001PresentationPopulateState *state,
         bottom -= 2;
     }
     func_02075598(state->renderer_00, state->textSource_24);
-    func_02076428(state->renderer_00, 0x70, 0x4c, 0xe0, bottom, 0);
+    GraphicsSpriteCanvas_FillRect(state->renderer_00, 0x70, 0x4c, 0xe0, bottom, 0);
     func_02076148(state->renderer_00, func_02062a60(record),
                   0x70, 0x4c, 0xe, 6, 0);
 
@@ -93,7 +93,7 @@ void func_ov001_021fb87c(Overlay001PresentationPopulateState *state,
     func_02073e48(resource, func_02062ab0(record), 0x5c, 0x48, 1, 0, 0);
 
     func_02075598(state->renderer_00, state->textSource_28);
-    func_02076428(state->renderer_00, 0x5c, 0x38, 0xcc, 0x48, 0);
+    GraphicsSpriteCanvas_FillRect(state->renderer_00, 0x5c, 0x38, 0xcc, 0x48, 0);
     func_02076148(state->renderer_00, func_020628c8(record),
                   0x5c, 0x38, 0xe, 6, 0);
 

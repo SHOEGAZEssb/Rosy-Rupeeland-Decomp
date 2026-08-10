@@ -3,7 +3,7 @@
 /* Exact fallback; see src/overlays/ov023/overlay023_record_collection.c. */
 .extern func_02075598
 .extern func_02076148
-.extern func_02076428
+.extern GraphicsSpriteCanvas_FillRect
 
 
     .global func_ov023_021fd268
@@ -18,7 +18,7 @@ func_ov023_021fd268:
     ldr r0, [r10, #0x0]
     mov r2, r1
     mov r3, #0xff
-    bl func_02076428
+    bl GraphicsSpriteCanvas_FillRect
     ldr r0, [r10, #0x34]
     cmp r0, #0x0
     beq L_021fd320

@@ -15,7 +15,7 @@ extern void GamePhaseRuntime_UpdateActorPresentationState(void *, s32);
 extern void func_020740a4(void *);
 extern void func_02075598(void *, void *);
 extern s32 func_02076148(void *, void *, s32, s32, s32, s32, s32);
-extern void func_02076428(void *, s32, s32, s32, s32, s32);
+extern void GraphicsSpriteCanvas_FillRect(void *, s32, s32, s32, s32, s32);
 extern void *func_020791e0(void *, u16);
 extern void func_02091b98(void *, s32);
 extern s32 func_02091c7c(void *, s32);
@@ -75,7 +75,7 @@ extern "C" void func_ov018_021fd788(void *state)
                           func_020791e0(data_021f3ecc, 0x319),
                           0, 0, 0xb, 8, -2);
         } else {
-            func_02076428(gDebugFont, 0, 0, 0xff, 0xf, 0);
+            GraphicsSpriteCanvas_FillRect(gDebugFont, 0, 0, 0xff, 0xf, 0);
         }
     }
 }

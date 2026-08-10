@@ -4,7 +4,7 @@
 .extern data_ov030_021ff708
 .extern data_ov030_021ff8c4
 .extern func_020755bc
-.extern func_02076428
+.extern GraphicsSpriteCanvas_FillRect
 .extern func_02095940
 .extern func_ov030_021fce00
 .extern func_ov030_021fd3e8
@@ -62,7 +62,7 @@ L_021fd494:
     ldrsh r1, [r7, r1]
     ldrsh r3, [r3, #0x4]
     ldr r0, [r5, #0x0]
-    bl func_02076428
+    bl GraphicsSpriteCanvas_FillRect
     add r4, r4, #0x1
     cmp r4, #0x7
     blt L_021fd494
