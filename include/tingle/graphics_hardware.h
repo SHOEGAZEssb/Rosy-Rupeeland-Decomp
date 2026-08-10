@@ -1,6 +1,6 @@
 #ifndef TINGLE_GRAPHICS_HARDWARE_H
 #define TINGLE_GRAPHICS_HARDWARE_H
 
-void func_0200284c(void);
+void GraphicsHardware_Init(void);
 
 #endif

@@ -31,7 +31,7 @@ extern void MIi_CpuClearFast(u32 value, void *destination, u32 size);
  * 0x5e and 0x60 of gSystemState. The exact meaning of field 0x5e is not yet
  * confirmed; its initial value is 0x40.
  */
-void func_0200284c(void)
+void GraphicsHardware_Init(void)
 {
     GX_Init();
     G3X_Init();

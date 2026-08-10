@@ -3667,7 +3667,7 @@ build build/reports/graphics_hardware.json: objdiff build/decomp/delinks/src/sys
 
 build build/reports/graphics_hardware.txt: match_report build/reports/graphics_hardware.json | tools/report_objdiff.py
   report_json = build/reports/graphics_hardware.json
-  report_args = --section .text --function func_0200284c --require-exact
+  report_args = --section .text --function GraphicsHardware_Init --require-exact
 
 build build/reports/display_brightness.json: objdiff build/decomp/delinks/src/system/display_brightness.o | build/decomp/src/system/display_brightness.o
   target_object = build/decomp/delinks/src/system/display_brightness.o
