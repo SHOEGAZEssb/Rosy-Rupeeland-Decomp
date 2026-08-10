@@ -18,7 +18,7 @@ extern void OS_Halt(void);
 #endif
 
 /* Clear the overlay identity and loaded flag, set mode to three, and return. */
-OverlaySlot *func_02006268(OverlaySlot *slot)
+OverlaySlot *OverlaySlot_Init(OverlaySlot *slot)
 {
     slot->overlayId = 0;
     slot->loaded = 0;
@@ -27,10 +27,10 @@ OverlaySlot *func_02006268(OverlaySlot *slot)
 }
 
 /* Unload an active slot if necessary, leave an inactive slot alone, and return. */
-OverlaySlot *func_02006280(OverlaySlot *slot)
+OverlaySlot *OverlaySlot_Destroy(OverlaySlot *slot)
 {
     if (slot->loaded != 0)
-        func_020062f8(slot);
+        OverlaySlot_UnloadOverlay(slot);
     return slot;
 }
 
@@ -40,12 +40,12 @@ OverlaySlot *func_02006280(OverlaySlot *slot)
  * halts the system. The transaction token is restored afterward. Returns no
  * value and may change executable overlay memory through CheckedFS/NitroSDK.
  */
-void func_020062a0(OverlaySlot *slot, int overlayId)
+void OverlaySlot_LoadOverlay(OverlaySlot *slot, int overlayId)
 {
     s32 token;
 
     if (slot->loaded != 0)
-        func_020062f8(slot);
+        OverlaySlot_UnloadOverlay(slot);
 
     token = func_020b9194(-1);
     if (CheckedFS_LoadOverlay(0, (u32)overlayId) != 0) {

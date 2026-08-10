@@ -31,12 +31,12 @@
 .extern data_020d553c
 .extern data_020f4e14
 .extern data_021052fc
-.extern func_0200222c
-.extern func_020022dc
+.extern OverlayManager_LoadOverlay
+.extern OverlayManager_GetGlobal
 .extern DisplayBrightness_IsMainTransitionComplete
 .extern DisplayBrightness_IsSubTransitionComplete
-.extern func_020062a0
-.extern func_020062f8
+.extern OverlaySlot_LoadOverlay
+.extern OverlaySlot_UnloadOverlay
 .extern func_02007f0c
 .extern func_02008570
 .extern func_020088b8
@@ -310,13 +310,13 @@ L_0200d354: ; jump table
 L_0200d3bc:
     ldr r1, L_0200e100
     add r0, r5, #0x74
-    bl func_020062a0
+    bl OverlaySlot_LoadOverlay
     ldr r1, L_0200e104
     add r0, r5, #0x80
-    bl func_020062a0
+    bl OverlaySlot_LoadOverlay
     ldr r1, L_0200e108
     add r0, r5, #0x8c
-    bl func_020062a0
+    bl OverlaySlot_LoadOverlay
     ldr r0, L_0200e10c
     ldr r1, L_0200e110
     mov r2, #0x4
@@ -383,13 +383,13 @@ L_0200d4b8:
 L_0200d4c0:
     ldr r1, L_0200e124
     add r0, r5, #0x74
-    bl func_020062a0
+    bl OverlaySlot_LoadOverlay
     ldr r1, L_0200e128
     add r0, r5, #0x80
-    bl func_020062a0
+    bl OverlaySlot_LoadOverlay
     ldr r1, L_0200e12c
     add r0, r5, #0x8c
-    bl func_020062a0
+    bl OverlaySlot_LoadOverlay
     mov r0, #0x240
     ldr r1, L_0200e130
     mov r2, #0x4
@@ -404,7 +404,7 @@ L_0200d504:
 L_0200d50c:
     ldr r1, L_0200e134
     add r0, r5, #0x8c
-    bl func_020062a0
+    bl OverlaySlot_LoadOverlay
     ldr r1, L_0200e138
     ldr r3, L_0200e114
     mov r0, #0x2f8
@@ -419,10 +419,10 @@ L_0200d538:
 L_0200d540:
     ldr r1, L_0200e13c
     add r0, r5, #0x74
-    bl func_020062a0
+    bl OverlaySlot_LoadOverlay
     ldr r1, L_0200e140
     add r0, r5, #0x80
-    bl func_020062a0
+    bl OverlaySlot_LoadOverlay
     ldr r0, L_0200e0e4
     mov r1, #0x0
     ldr r0, [r0, #0x0]
@@ -459,10 +459,10 @@ L_0200d5d0:
 L_0200d5d8:
     ldr r1, L_0200e14c
     add r0, r5, #0x74
-    bl func_020062a0
+    bl OverlaySlot_LoadOverlay
     ldr r1, L_0200e150
     add r0, r5, #0x80
-    bl func_020062a0
+    bl OverlaySlot_LoadOverlay
     ldr r1, L_0200e154
     ldr r3, L_0200e114
     mov r0, #0x64
@@ -485,10 +485,10 @@ L_0200d62c:
     beq L_0200d67c
     ldr r1, L_0200e158
     add r0, r5, #0x74
-    bl func_020062a0
+    bl OverlaySlot_LoadOverlay
     ldr r1, L_0200e15c
     add r0, r5, #0x80
-    bl func_020062a0
+    bl OverlaySlot_LoadOverlay
     ldr r0, L_0200e160
     ldr r1, L_0200e164
     ldr r3, L_0200e114
@@ -504,10 +504,10 @@ L_0200d674:
 L_0200d67c:
     ldr r1, L_0200e100
     add r0, r5, #0x74
-    bl func_020062a0
+    bl OverlaySlot_LoadOverlay
     ldr r1, L_0200e168
     add r0, r5, #0x80
-    bl func_020062a0
+    bl OverlaySlot_LoadOverlay
     ldr r1, L_0200e16c
     ldr r3, L_0200e114
     mov r0, #0x394
@@ -522,7 +522,7 @@ L_0200d6b4:
 L_0200d6bc:
     ldr r1, L_0200e170
     add r0, r5, #0x80
-    bl func_020062a0
+    bl OverlaySlot_LoadOverlay
     ldr r1, L_0200e174
     ldr r3, L_0200e114
     mov r0, #0x1e8
@@ -537,10 +537,10 @@ L_0200d6e8:
 L_0200d6f0:
     ldr r1, L_0200e100
     add r0, r5, #0x74
-    bl func_020062a0
+    bl OverlaySlot_LoadOverlay
     ldr r1, L_0200e178
     add r0, r5, #0x80
-    bl func_020062a0
+    bl OverlaySlot_LoadOverlay
     ldr r1, L_0200e17c
     ldr r3, L_0200e114
     mov r0, #0x368
@@ -555,13 +555,13 @@ L_0200d728:
 L_0200d730:
     ldr r1, L_0200e180
     add r0, r5, #0x74
-    bl func_020062a0
+    bl OverlaySlot_LoadOverlay
     ldr r1, L_0200e100
     add r0, r5, #0x80
-    bl func_020062a0
+    bl OverlaySlot_LoadOverlay
     ldr r1, L_0200e184
     add r0, r5, #0x8c
-    bl func_020062a0
+    bl OverlaySlot_LoadOverlay
     mov r0, #0x2f8
     ldr r1, L_0200e188
     mov r2, #0x4
@@ -576,7 +576,7 @@ L_0200d774:
 L_0200d77c:
     ldr r1, L_0200e18c
     add r0, r5, #0x80
-    bl func_020062a0
+    bl OverlaySlot_LoadOverlay
     ldr r0, L_0200e190
     ldr r1, L_0200e194
     ldr r3, L_0200e114
@@ -596,10 +596,10 @@ L_0200d7bc:
 L_0200d7c4:
     ldr r1, L_0200e158
     add r0, r5, #0x74
-    bl func_020062a0
+    bl OverlaySlot_LoadOverlay
     ldr r1, L_0200e198
     add r0, r5, #0x80
-    bl func_020062a0
+    bl OverlaySlot_LoadOverlay
     ldr r0, L_0200e19c
     ldr r1, L_0200e1a0
     ldr r3, L_0200e114
@@ -614,10 +614,10 @@ L_0200d7fc:
 L_0200d804:
     ldr r1, L_0200e1a4
     add r0, r5, #0x74
-    bl func_020062a0
+    bl OverlaySlot_LoadOverlay
     ldr r1, L_0200e1a8
     add r0, r5, #0x80
-    bl func_020062a0
+    bl OverlaySlot_LoadOverlay
     ldr r0, L_0200e1ac
     ldr r1, L_0200e1b0
     ldr r3, L_0200e114
@@ -632,13 +632,13 @@ L_0200d83c:
 L_0200d844:
     ldr r1, L_0200e1b4
     add r0, r5, #0x74
-    bl func_020062a0
+    bl OverlaySlot_LoadOverlay
     ldr r1, L_0200e1b8
     add r0, r5, #0x80
-    bl func_020062a0
+    bl OverlaySlot_LoadOverlay
     ldr r1, L_0200e1bc
     add r0, r5, #0x8c
-    bl func_020062a0
+    bl OverlaySlot_LoadOverlay
     mov r0, #0x64
     ldr r1, L_0200e1c0
     mov r2, #0x4
@@ -654,7 +654,7 @@ L_0200d88c:
 L_0200d894:
     ldr r1, L_0200e1c4
     add r0, r5, #0x80
-    bl func_020062a0
+    bl OverlaySlot_LoadOverlay
     ldr r1, L_0200e1c8
     ldr r3, L_0200e114
     mov r0, #0x29c
@@ -669,13 +669,13 @@ L_0200d8c0:
 L_0200d8c8:
     ldr r1, L_0200e14c
     add r0, r5, #0x74
-    bl func_020062a0
+    bl OverlaySlot_LoadOverlay
     ldr r1, L_0200e158
     add r0, r5, #0x80
-    bl func_020062a0
+    bl OverlaySlot_LoadOverlay
     ldr r1, L_0200e1cc
     add r0, r5, #0x8c
-    bl func_020062a0
+    bl OverlaySlot_LoadOverlay
     mov r0, #0x104
     ldr r1, L_0200e1d0
     mov r2, #0x4
@@ -691,10 +691,10 @@ L_0200d910:
 L_0200d918:
     ldr r1, L_0200e1b4
     add r0, r5, #0x74
-    bl func_020062a0
+    bl OverlaySlot_LoadOverlay
     ldr r1, L_0200e1d4
     add r0, r5, #0x80
-    bl func_020062a0
+    bl OverlaySlot_LoadOverlay
     ldr r1, L_0200e1d8
     ldr r3, L_0200e114
     mov r0, #0x5e0
@@ -709,13 +709,13 @@ L_0200d950:
 L_0200d958:
     ldr r1, L_0200e14c
     add r0, r5, #0x74
-    bl func_020062a0
+    bl OverlaySlot_LoadOverlay
     ldr r1, L_0200e158
     add r0, r5, #0x80
-    bl func_020062a0
+    bl OverlaySlot_LoadOverlay
     ldr r1, L_0200e1dc
     add r0, r5, #0x8c
-    bl func_020062a0
+    bl OverlaySlot_LoadOverlay
     mov r0, #0x398
     ldr r1, L_0200e1e0
     mov r2, #0x4
@@ -835,10 +835,10 @@ L_0200daf8:
 L_0200db0c:
     ldr r1, L_0200e1b4
     add r0, r5, #0x74
-    bl func_020062a0
+    bl OverlaySlot_LoadOverlay
     ldr r1, L_0200e1ec
     add r0, r5, #0x80
-    bl func_020062a0
+    bl OverlaySlot_LoadOverlay
     ldr r1, L_0200e1f0
     ldr r3, L_0200e114
     mov r0, #0x4c0
@@ -854,10 +854,10 @@ L_0200db48:
 L_0200db50:
     ldr r1, L_0200e1b4
     add r0, r5, #0x74
-    bl func_020062a0
+    bl OverlaySlot_LoadOverlay
     ldr r1, L_0200e1f4
     add r0, r5, #0x80
-    bl func_020062a0
+    bl OverlaySlot_LoadOverlay
     ldr r1, L_0200e1f0
     ldr r3, L_0200e114
     mov r0, #0x4c0
@@ -873,10 +873,10 @@ L_0200db8c:
 L_0200db94:
     ldr r1, L_0200e1b4
     add r0, r5, #0x74
-    bl func_020062a0
+    bl OverlaySlot_LoadOverlay
     ldr r1, L_0200e1f8
     add r0, r5, #0x80
-    bl func_020062a0
+    bl OverlaySlot_LoadOverlay
     ldr r0, L_0200e1fc
     ldr r1, L_0200e200
     ldr r3, L_0200e114
@@ -1040,11 +1040,11 @@ L_0200dde8:
     mov r1, #0x0
     add r0, r5, #0x74
     str r1, [r5, #0x24]
-    bl func_020062f8
+    bl OverlaySlot_UnloadOverlay
     add r0, r5, #0x80
-    bl func_020062f8
+    bl OverlaySlot_UnloadOverlay
     add r0, r5, #0x8c
-    bl func_020062f8
+    bl OverlaySlot_UnloadOverlay
     ldr ip, L_0200e20c
     ldr lr, [r5, #0x98]
     ldrh r3, [ip, #0x0]
@@ -1158,10 +1158,10 @@ L_0200df58:
     add r0, r0, #0x2000
     ldr r0, [r0, #0xfb8]
     bl func_020122a0
-    bl func_020022dc
+    bl OverlayManager_GetGlobal
     mov r1, #0x2
     ldr r2, L_0200e214
-    bl func_0200222c
+    bl OverlayManager_LoadOverlay
     mov r0, #0x90
     ldr r1, L_0200e218
     mov r2, #0x4
@@ -1390,10 +1390,10 @@ L_0200e2f8:
     mov r1, #0x3cc
     ldr r0, [r0, #0x0]
     bl GameWork_ClearFlag
-    bl func_020022dc
+    bl OverlayManager_GetGlobal
     ldr r2, L_0200e3c8
     mov r1, #0x2
-    bl func_0200222c
+    bl OverlayManager_LoadOverlay
     ldr r1, L_0200e3cc
     ldr r3, L_0200e114
     mov r0, #0x80
@@ -1415,10 +1415,10 @@ L_0200e358:
     ldr r1, L_0200e3d0
     ldr r0, [r0, #0x0]
     bl GameWork_ClearFlag
-    bl func_020022dc
+    bl OverlayManager_GetGlobal
     ldr r2, L_0200e3c8
     mov r1, #0x2
-    bl func_0200222c
+    bl OverlayManager_LoadOverlay
     ldr r1, L_0200e3cc
     ldr r3, L_0200e114
     mov r0, #0x80

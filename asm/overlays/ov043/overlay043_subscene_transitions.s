@@ -3,12 +3,12 @@
 .extern DisplayBrightness_IsMainTransitionComplete
 .extern func_ov043_0220bcf4
 .extern func_020755bc
-.extern func_020062a0
+.extern OverlaySlot_LoadOverlay
 .extern Heap_Alloc
 .extern func_ov016_021fe77c
 .extern func_ov043_0220bd24
 .extern func_02091fb0
-.extern func_020062f8
+.extern OverlaySlot_UnloadOverlay
 .extern func_ov043_0220b744
 .extern func_ov043_0220ba28
 .extern func_ov043_0220bc2c
@@ -65,10 +65,10 @@ func_ov043_0220bed4:
     bl func_020755bc
     ldr r1, .L_0220c194
     add r0, r4, #0x2dc
-    bl func_020062a0
+    bl OverlaySlot_LoadOverlay
     ldr r1, .L_0220c198
     add r0, r4, #0x2e8
-    bl func_020062a0
+    bl OverlaySlot_LoadOverlay
     ldr r0, .L_0220c19c
     ldr r1, .L_0220c1a0
     ldr r3, .L_0220c1a4
@@ -171,9 +171,9 @@ func_ov043_0220bed4:
     add r0, r4, #0x2dc
     orr r1, r1, #0x400
     str r1, [r4, #0x20]
-    bl func_020062f8
+    bl OverlaySlot_UnloadOverlay
     add r0, r4, #0x2e8
-    bl func_020062f8
+    bl OverlaySlot_UnloadOverlay
     ldr r0, [r4, #0x294]
     cmp r0, #0x0
     beq .L_0220c110
@@ -259,7 +259,7 @@ func_ov043_0220c1b0:
     beq .L_0220c278
     ldr r1, .L_0220c3f0
     add r0, r4, #0x2e8
-    bl func_020062a0
+    bl OverlaySlot_LoadOverlay
     ldr r0, .L_0220c3f4
     ldr r1, .L_0220c3f8
     ldr r3, .L_0220c3fc
@@ -339,7 +339,7 @@ func_ov043_0220c1b0:
     add r0, r4, #0x2e8
     orr r1, r1, #0x400
     str r1, [r4, #0x20]
-    bl func_020062f8
+    bl OverlaySlot_UnloadOverlay
     ldr r0, .L_0220c400
     ldr r1, .L_0220c404
     ldr r0, [r0, #0x0]

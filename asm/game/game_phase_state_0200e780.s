@@ -3,7 +3,7 @@
 .extern GameWork_ClearFlag
 .extern GameWork_ClearPointerBank
 .extern GameWork_SetFlag
-.extern func_020062a0
+.extern OverlaySlot_LoadOverlay
 .extern func_0200e480
 .extern func_0200f0b4
 .extern func_0202751c
@@ -32,7 +32,7 @@ func_0200e780: ; 0x0200e780
     add r0, r5, #0x2a4
     ldr r1, [r4, #0x1c]
     add r0, r0, #0x2c00
-    bl func_020062a0
+    bl OverlaySlot_LoadOverlay
     ldr r0, L_0200e9ac
     mov r1, #0x0
     ldr r0, [r0, #0x0]

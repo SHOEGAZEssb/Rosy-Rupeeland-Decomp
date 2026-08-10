@@ -3,7 +3,7 @@
     .extern Heap_Alloc
     .extern data_020f4e14
     .extern data_ov021_02202fb0
-    .extern func_020062a0
+    .extern OverlaySlot_LoadOverlay
     .extern func_ov000_021fb6e0
     .extern gHeapContext
 
@@ -17,7 +17,7 @@ func_ov021_021fedac:
     add r0, r4, #0x1c
     ldr r1, L_021fee04
     add r0, r0, #0x400
-    bl func_020062a0
+    bl OverlaySlot_LoadOverlay
     ldr r1, L_021fee08
     ldr r3, L_021fee0c
     mov r0, #0xb4

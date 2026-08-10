@@ -7,8 +7,8 @@
 .extern Sound_Play
 .extern data_021052fc
 .extern data_ov091_02218dc8
-.extern func_0200222c
-.extern func_020022dc
+.extern OverlayManager_LoadOverlay
+.extern OverlayManager_GetGlobal
 .extern func_0200500c
 .extern func_02005058
 .extern func_020050a4
@@ -107,10 +107,10 @@ func_ov091_02217ce0:
     b .L_02218730
     b .L_0221875c
 .L_02217dd0:
-    bl func_020022dc
+    bl OverlayManager_GetGlobal
     ldr r2, .L_02218820
     mov r1, #0x2
-    bl func_0200222c
+    bl OverlayManager_LoadOverlay
     ldr r1, .L_02218824
     ldr r3, .L_02218828
     mov r0, #0x58

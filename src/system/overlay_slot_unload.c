@@ -7,7 +7,7 @@
  * If active, unload the recorded ARM9 overlay and clear its ID and loaded flag.
  * Inactive slots cause no SDK call. The mode field is preserved.
  */
-void func_020062f8(OverlaySlot *slot)
+void OverlaySlot_UnloadOverlay(OverlaySlot *slot)
 {
     if (slot->loaded == 0)
         return;

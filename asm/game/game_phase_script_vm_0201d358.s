@@ -4,10 +4,10 @@
 .extern Scene_SetFlags03
 .extern Scene_Destroy
 .extern Heap_Free
-.extern func_02006268
-.extern func_02006280
-.extern func_020062a0
-.extern func_020062f8
+.extern OverlaySlot_Init
+.extern OverlaySlot_Destroy
+.extern OverlaySlot_LoadOverlay
+.extern OverlaySlot_UnloadOverlay
 .extern func_02092c8c
 .extern DisplayBrightness_IsSubTransitionComplete
 .extern func_020122a0
@@ -87,7 +87,7 @@ L_0201d3f4:
 L_0201d420:
     ldr r1, L_0201d60c
     add r0, r4, #0x2c
-    bl func_020062a0
+    bl OverlaySlot_LoadOverlay
     ldr r1, L_0201d610
     ldr r3, L_0201d614
     mov r0, #0x550
@@ -103,7 +103,7 @@ L_0201d450:
 L_0201d458:
     ldr r1, L_0201d618
     add r0, r4, #0x2c
-    bl func_020062a0
+    bl OverlaySlot_LoadOverlay
     ldr r1, L_0201d61c
     ldr r3, L_0201d614
     mov r0, #0x7c
@@ -165,7 +165,7 @@ L_0201d534:
     mov r1, #0x0
     add r0, r4, #0x2c
     str r1, [r4, #0x24]
-    bl func_020062f8
+    bl OverlaySlot_UnloadOverlay
     ldr r0, L_0201d620
     ldr r0, [r0, #0x0]
     bl func_020755bc

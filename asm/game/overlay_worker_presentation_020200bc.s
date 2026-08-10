@@ -5,8 +5,8 @@
 .extern data_020d6304
 .extern data_020d6324
 .extern data_021055cc
-.extern func_02006268
-.extern func_020062a0
+.extern OverlaySlot_Init
+.extern OverlaySlot_LoadOverlay
 .extern func_0201e250
 .extern func_ov043_0220b740
 .extern func_ov047_0220bda8
@@ -25,7 +25,7 @@ func_020200bc: ; 0x020200bc
     ldr r1, .L_0202016c
     add r0, r7, #0x10
     str r1, [r7, #0x0]
-    bl func_02006268
+    bl OverlaySlot_Init
     ldr r0, .L_02020170
     ldr r1, .L_02020174
     ldr r0, [r0, #0x0]
@@ -36,7 +36,7 @@ func_020200bc: ; 0x020200bc
     bne .L_02020110
     ldr r1, .L_0202017c
     add r0, r7, #0x10
-    bl func_020062a0
+    bl OverlaySlot_LoadOverlay
 .L_02020110:
     ldr r1, .L_02020180
     ldr r3, .L_02020184

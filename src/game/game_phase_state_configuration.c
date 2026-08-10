@@ -8,7 +8,7 @@ extern "C" {
 #endif
 extern void *gLupyContext;
 extern void *gSoundContext;
-extern void func_020062a0(void *object, u32 value);
+extern void OverlaySlot_LoadOverlay(void *object, u32 value);
 extern void *func_0201e0ec(void *object);
 extern void *func_0202751c(void *object, void *phaseObject);
 extern void *func_020275b0(void);
@@ -118,7 +118,7 @@ void func_0200e780(GamePhaseState *self, const void *configuration)
 
     func_020598a0(gSoundContext, (u16)config->phaseId);
     func_0200f0b4(self, configuration);
-    func_020062a0(self->helper_2ea4, config->helperValue1c);
+    OverlaySlot_LoadOverlay(self->helper_2ea4, config->helperValue1c);
     GameWork_ClearPointerBank(gGameWork, 0);
     *(u16 *)(work + 0x228) = 0;
     GameWork_SetFlag(gGameWork, 0x3ec);

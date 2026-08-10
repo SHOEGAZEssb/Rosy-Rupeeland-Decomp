@@ -8,7 +8,7 @@
 .extern data_020d5680
 .extern data_020d5688
 .extern func_02004fe0
-.extern func_02006268
+.extern OverlaySlot_Init
 .extern func_02029218
 .extern func_02029360
 .extern func_02029ca4
@@ -41,7 +41,7 @@ func_02011a5c: ; 0x02011a5c
     str r2, [r1, #0xea8]
     add r0, r0, #0x2000
     str r5, [r1, #0xeac]
-    bl func_02006268
+    bl OverlaySlot_Init
     add r1, r6, #0x2000
     mov r2, #0x0
     add r0, r6, #0x2ec0

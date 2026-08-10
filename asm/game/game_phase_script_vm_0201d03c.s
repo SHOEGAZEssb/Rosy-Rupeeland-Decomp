@@ -8,9 +8,9 @@
 .extern DisplayBrightnessPair_GetScreen
 .extern DisplayBrightness_StartTransition
 .extern DisplayBrightness_GetCurrent
-.extern func_020022dc
-.extern func_0200222c
-.extern func_02002290
+.extern OverlayManager_GetGlobal
+.extern OverlayManager_LoadOverlay
+.extern OverlayManager_UnloadOverlay
 .extern func_020755bc
 .extern Heap_Alloc
 .extern func_ov052_0220d618
@@ -41,12 +41,12 @@ func_0201d03c: ; 0x0201d03c
     ldr r1, [r1, #0x4]
     blx r1
 L_0201d068:
-    bl func_020022dc
+    bl OverlayManager_GetGlobal
     mov r1, #0x0
-    bl func_02002290
-    bl func_020022dc
+    bl OverlayManager_UnloadOverlay
+    bl OverlayManager_GetGlobal
     mov r1, #0x2
-    bl func_02002290
+    bl OverlayManager_UnloadOverlay
     mov r0, r4
     bl Scene_Destroy
     mov r0, r4

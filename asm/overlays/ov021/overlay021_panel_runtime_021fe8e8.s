@@ -4,7 +4,7 @@
     .extern data_020f4e14
     .extern data_021e9ac0
     .extern data_ov021_02202fa0
-    .extern func_020062a0
+    .extern OverlaySlot_LoadOverlay
     .extern func_02064d90
     .extern func_ov000_021fbcc4
     .extern func_ov000_021fc59c
@@ -29,7 +29,7 @@ func_ov021_021fe8e8:
     add r0, r10, #0x1c
     ldr r1, L_021fea40
     add r0, r0, #0x400
-    bl func_020062a0
+    bl OverlaySlot_LoadOverlay
     ldr r1, L_021fea44
     ldr r3, L_021fea48
     mov r0, #0x2b0

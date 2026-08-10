@@ -38,7 +38,7 @@ s32 func_020156fc(GamePhaseActorScriptVm *self)
     void *second = func_0201da20(*(u32 *)(collection + 0x2e84), firstValue);
     void *first = func_0201d9e4(secondValue);
     void *allocation;
-    func_0200222c(func_020022dc(), 2, 0x3d);
+    OverlayManager_LoadOverlay(OverlayManager_GetGlobal(), 2, 0x3d);
     allocation = Heap_Alloc(0x3c, data_020d5b2c, 4, &gHeapContext);
     if (allocation != 0)
         func_ov059_0220fd20(allocation, first, second, third);

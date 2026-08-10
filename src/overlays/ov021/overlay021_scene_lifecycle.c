@@ -23,8 +23,8 @@ extern void *Heap_Alloc(u32, const void *, u32, void *);
 extern void MIi_CpuCopy16(const void *, void *, u32);
 extern void __construct_array(void *, s32, s32, void (*)(void *), void (*)(void *));
 extern void __destroy_arr(void *, s32, s32, void (*)(void *));
-extern void func_02006268(void *);
-extern void func_02006280(void *);
+extern void OverlaySlot_Init(void *);
+extern void OverlaySlot_Destroy(void *);
 extern void func_02064be0(void *, s32);
 extern void func_0206550c(void *, s32);
 extern void *func_020716bc(void *, s32);
@@ -110,7 +110,7 @@ static void destroy_scene_members(void *state)
     *(volatile u16 *)0x04001050 = 0;
     func_02075630(data_020f4e14);
     func_02075630(gDebugFont);
-    func_02006280((u8 *)state + 0x41c);
+    OverlaySlot_Destroy((u8 *)state + 0x41c);
     __destroy_arr((u8 *)state + 0x14c, 2, 0xac, func_ov021_021fd790);
     func_ov021_021fd790((u8 *)state + 0xa0);
     func_02071eb8((u8 *)state + 0x88);
@@ -141,7 +141,7 @@ extern "C" void *func_ov021_021fd7e8(void *state, s32 mode)
     func_ov021_021fd794((u8 *)state + 0x35c);
     func_ov021_021fd794((u8 *)state + 0x368);
     func_020929b0((u8 *)state + 0x404);
-    func_02006268((u8 *)state + 0x41c);
+    OverlaySlot_Init((u8 *)state + 0x41c);
 
     FIELD(s32, state, 0x3d8) = 0;
     FIELD(s32, state, 0x3dc) = 0;

@@ -16,9 +16,9 @@ extern void ActorCollection_SetActorScale(void *renderer, s32 scale);
 extern void *ActorCollection_FindActorByTypeAndId(void *renderer, s32 first, s32 second);
 extern void ActorCollection_UnregisterAndDestroyAllActors(void *renderer);
 extern void ActorCollection_Destructor(void *renderer);
-extern void func_02006268(void *state);
-extern void func_02006280(void *state);
-extern void func_020062a0(void *state, u32 value);
+extern void OverlaySlot_Init(void *state);
+extern void OverlaySlot_Destroy(void *state);
+extern void OverlaySlot_LoadOverlay(void *state, u32 value);
 extern void *func_0202bc18(void *self);
 extern void *func_0202c0b8(void *self);
 extern void *func_0202c4f4(void *self);
@@ -74,7 +74,7 @@ GamePhaseAreaScene *func_02011a5c(GamePhaseAreaScene *self,
     self->rendererFlags_2ea8 =
         (self->rendererFlags_2ea8 & ~0x1f) | 0x3f;
     self->config_2eac = config;
-    func_02006268(self->state_2eb0);
+    OverlaySlot_Init(self->state_2eb0);
     self->field_2ebc = 0;
     func_02004fe0(&self->position_2ec0);
     self->field_2ed0 = 0;
@@ -144,7 +144,7 @@ void func_02011ebc(GamePhaseAreaScene *self)
 {
     ActorCollection_SetSpriteMode(self->renderer_08, 2);
     ActorCollection_SetActorScale(self->renderer_08, 0x1000);
-    func_020062a0(self->state_2eb0, self->config_2eac->field20);
+    OverlaySlot_LoadOverlay(self->state_2eb0, self->config_2eac->field20);
     self->config_2eac->callback28(0);
     self->field_2ebc = ActorCollection_FindActorByTypeAndId(self->renderer_08, 3, 3);
 }
@@ -163,7 +163,7 @@ GamePhaseAreaScene *func_02011f24(GamePhaseAreaScene *self)
         ((void (*)(void *))(*(void ***)self->subRenderer_04)[1])(
             self->subRenderer_04);
     func_02005058(&self->position_2ec0);
-    func_02006280(self->state_2eb0);
+    OverlaySlot_Destroy(self->state_2eb0);
     ActorCollection_Destructor(self->renderer_08);
     return self;
 }

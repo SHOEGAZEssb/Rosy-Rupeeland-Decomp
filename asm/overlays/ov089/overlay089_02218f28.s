@@ -4,8 +4,8 @@
 .extern Heap_Alloc
 .extern data_021052fc
 .extern data_ov089_02219a04
-.extern func_0200222c
-.extern func_020022dc
+.extern OverlayManager_LoadOverlay
+.extern OverlayManager_GetGlobal
 .extern func_02005058
 .extern Type7Actor_GetStateCode
 .extern Type7Actor_SetActorEnabled
@@ -60,10 +60,10 @@ func_ov089_02218f28:
     str r1, [r5, #0x228]
     str r2, [r5, #0x230]
     ble .L_02219104
-    bl func_020022dc
+    bl OverlayManager_GetGlobal
     ldr r2, .L_02219200
     mov r1, #0x2
-    bl func_0200222c
+    bl OverlayManager_LoadOverlay
     add r0, r5, #0x200
     ldrh r0, [r0, #0xc]
     tst r0, #0x800

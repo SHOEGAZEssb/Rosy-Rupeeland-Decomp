@@ -1,6 +1,6 @@
     .text
 /* Exact fallback; see src/overlays/ov021/overlay021_widget_helpers.c. */
-    .extern func_020062f8
+    .extern OverlaySlot_UnloadOverlay
     .extern func_ov000_021fcb4c
     .extern func_ov021_021feac8
 
@@ -28,7 +28,7 @@ L_021feaac:
     mov r1, #0x0
     add r0, r0, #0x400
     str r1, [r4, #0x354]
-    bl func_020062f8
+    bl OverlaySlot_UnloadOverlay
 L_021feac0:
     add sp, sp, #0xc
     ldmia sp!, {r3, r4, pc}

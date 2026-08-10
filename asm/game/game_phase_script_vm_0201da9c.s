@@ -8,8 +8,8 @@
 .extern func_02078e98
 .extern func_0201d9e4
 .extern func_0201da34
-.extern func_020022dc
-.extern func_0200222c
+.extern OverlayManager_GetGlobal
+.extern OverlayManager_LoadOverlay
 .extern Heap_Alloc
 .extern func_ov060_022100e4
 .extern data_021f3ecc
@@ -58,10 +58,10 @@ L_0201db24:
     mov r0, r11
     bl func_0201d9e4
     mov r5, r0
-    bl func_020022dc
+    bl OverlayManager_GetGlobal
     ldr r2, L_0201dbbc
     mov r1, #0x2
-    bl func_0200222c
+    bl OverlayManager_LoadOverlay
     ldr r1, L_0201dbc0
     ldr r3, L_0201dbc4
     mov r0, #0x40

@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/game_phase_state_lifecycle.c.
 .text
-.extern func_02006280
+.extern OverlaySlot_Destroy
 .extern func_0200e5bc
 .extern func_0200fb34
 .extern func_0201155c
@@ -22,7 +22,7 @@ func_0200e574: ; 0x0200e574
     bl func_0200fb34
     add r0, r4, #0x2a4
     add r0, r0, #0x2c00
-    bl func_02006280
+    bl OverlaySlot_Destroy
     add r0, r4, #0x4
     bl ActorCollection_Destructor
     mov r0, r4

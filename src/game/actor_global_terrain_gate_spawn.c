@@ -9,8 +9,8 @@ extern const char data_020df4d8[];
 extern "C" {
 #endif
 extern s32 ActorDerivedType1_IsIdleEligible(void *actor);
-extern void *func_020022dc(s32 packedCell);
-extern void func_0200222c(void *value, s32 kind, s32 id);
+extern void *OverlayManager_GetGlobal(s32 packedCell);
+extern void OverlayManager_LoadOverlay(void *value, s32 kind, s32 id);
 extern void *func_ov062_02210b38(void *allocation);
 #ifdef __cplusplus
 }
@@ -21,7 +21,7 @@ extern void *func_ov062_02210b38(void *allocation);
  * ActorDerivedType1_IsIdleEligible reports it idle. Query object +0x2ed4 virtual +0x2c at the
  * actor's integer X/Y position. Extract packed bits 5..9 and require values
  * two through five. For an accepted cell, transform the packed value through
- * func_020022dc, dispatch kind two/ID 0x3e through func_0200222c, allocate a
+ * OverlayManager_GetGlobal, dispatch kind two/ID 0x3e through OverlayManager_LoadOverlay, allocate a
  * tagged 0x7c-byte object, and construct it with overlay-62 entry
  * func_ov062_02210b38 when allocation succeeds. Return one once the terrain
  * class passes, including allocation failure; otherwise return zero. Virtual,
@@ -44,7 +44,7 @@ s32 Actor_TrySpawnTerrainGateObject(void)
     type = (packed >> 5) & 0x1f;
     if (type < 2 || type > 5)
         return 0;
-    func_0200222c(func_020022dc(packed), 2, 0x3e);
+    OverlayManager_LoadOverlay(OverlayManager_GetGlobal(packed), 2, 0x3e);
     allocation = Heap_Alloc(0x7c, data_020df4d8, 4, &gHeapContext);
     if (allocation != 0)
         func_ov062_02210b38(allocation);

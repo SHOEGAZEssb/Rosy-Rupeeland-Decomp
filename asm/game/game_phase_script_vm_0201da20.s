@@ -8,8 +8,8 @@
 .extern func_02078e98
 .extern func_0201d9e4
 .extern func_0201da34
-.extern func_020022dc
-.extern func_0200222c
+.extern OverlayManager_GetGlobal
+.extern OverlayManager_LoadOverlay
 .extern Heap_Alloc
 .extern func_ov060_022100e4
 .extern data_021f3ecc

@@ -11,8 +11,8 @@
 .extern data_ov093_022187f0
 .extern data_ov093_022189e8
 .extern data_ov093_022189f0
-.extern func_0200222c
-.extern func_020022dc
+.extern OverlayManager_LoadOverlay
+.extern OverlayManager_GetGlobal
 .extern DisplayBrightness_StartTransition
 .extern DisplayBrightnessPair_GetScreen
 .extern func_0200500c
@@ -97,10 +97,10 @@ func_ov093_02217c50:
     b .L_0221826c
     b .L_02218360
 .L_02217d18:
-    bl func_020022dc
+    bl OverlayManager_GetGlobal
     ldr r2, .L_022184d0
     mov r1, #0x2
-    bl func_0200222c
+    bl OverlayManager_LoadOverlay
     ldr r1, .L_022184d4
     ldr r3, .L_022184d8
     mov r0, #0x58

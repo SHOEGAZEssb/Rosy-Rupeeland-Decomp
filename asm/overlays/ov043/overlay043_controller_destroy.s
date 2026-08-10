@@ -1,7 +1,7 @@
 .text
 .extern func_0207419c
 .extern func_02075630
-.extern func_02006280
+.extern OverlaySlot_Destroy
 .extern func_ov043_0220b740
 .extern func_02071eb8
 .extern func_020927b8
@@ -38,9 +38,9 @@ func_ov043_0220b864:
     ldr r0, [r0, #0x0]
     bl func_02075630
     add r0, r4, #0x2e8
-    bl func_02006280
+    bl OverlaySlot_Destroy
     add r0, r4, #0x2dc
-    bl func_02006280
+    bl OverlaySlot_Destroy
     add r0, r4, #0x1e8
     bl func_ov043_0220b740
     add r0, r4, #0x13c
@@ -86,9 +86,9 @@ func_ov043_0220b90c:
     ldr r0, [r0, #0x0]
     bl func_02075630
     add r0, r4, #0x2e8
-    bl func_02006280
+    bl OverlaySlot_Destroy
     add r0, r4, #0x2dc
-    bl func_02006280
+    bl OverlaySlot_Destroy
     add r0, r4, #0x1e8
     bl func_ov043_0220b740
     add r0, r4, #0x13c

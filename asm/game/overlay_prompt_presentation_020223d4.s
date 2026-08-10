@@ -7,10 +7,10 @@
 .extern data_020d653c
 .extern data_020d65ac
 .extern DisplayBrightness_IsSubTransitionComplete
-.extern func_02006268
-.extern func_02006280
-.extern func_020062a0
-.extern func_020062f8
+.extern OverlaySlot_Init
+.extern OverlaySlot_Destroy
+.extern OverlaySlot_LoadOverlay
+.extern OverlaySlot_UnloadOverlay
 .extern func_0201140c
 .extern func_0201e250
 .extern func_0201e28c
@@ -56,7 +56,7 @@ func_020223d4: ; 0x020223d4
     bl func_0201140c
     ldr r1, .L_02022518
     add r0, r4, #0x10
-    bl func_020062a0
+    bl OverlaySlot_LoadOverlay
     ldr r1, .L_0202251c
     ldr r3, .L_02022520
     mov r0, #0x88
@@ -103,7 +103,7 @@ func_020223d4: ; 0x020223d4
     mov r0, #0x0
     str r0, [r4, #0xc]
     add r0, r4, #0x10
-    bl func_020062f8
+    bl OverlaySlot_UnloadOverlay
     ldr r0, [r4, #0x8]
     add r0, r0, #0x1
     str r0, [r4, #0x8]

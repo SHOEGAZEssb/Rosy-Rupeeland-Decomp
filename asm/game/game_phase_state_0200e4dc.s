@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/game_phase_state_lifecycle.c.
 .text
-.extern func_02006268
+.extern OverlaySlot_Init
 .extern func_0200fa40
 .extern func_02011470
 .extern func_0201dbc8
@@ -16,7 +16,7 @@ func_0200e4dc: ; 0x0200e4dc
     bl ActorCollection_Init
     add r0, r4, #0x2a4
     add r0, r0, #0x2c00
-    bl func_02006268
+    bl OverlaySlot_Init
     add r0, r4, #0x2b4
     add r1, r4, #0x2000
     mov r2, #0x0

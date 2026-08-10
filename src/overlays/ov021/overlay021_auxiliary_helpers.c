@@ -14,8 +14,8 @@ extern "C" {
 #endif
 extern void *Heap_Alloc(u32, const void *, s32, void *);
 extern void Heap_Free(void *);
-extern void func_020062a0(void *, s32);
-extern void func_020062f8(void *, s32);
+extern void OverlaySlot_LoadOverlay(void *, s32);
+extern void OverlaySlot_UnloadOverlay(void *, s32);
 extern s32 func_02062b28(void *);
 extern void func_0206563c(void *, s32);
 extern void func_02095820(void *, s32, s32);
@@ -43,7 +43,7 @@ extern "C" void func_ov021_021fecd0(void *state)
         typedef void (*Destructor)(void *);
         FIELD(Destructor *, panel, 0)[1](panel);
         FIELD(void *, state, 0x358) = 0;
-        func_020062f8((u8 *)state + 0x41c, 0);
+        OverlaySlot_UnloadOverlay((u8 *)state + 0x41c, 0);
     }
 }
 
@@ -77,7 +77,7 @@ extern "C" void func_ov021_021fedac(void *state)
 {
     if (FIELD(void *, state, 0x390) != 0)
         return;
-    func_020062a0((u8 *)state + 0x41c, 2);
+    OverlaySlot_LoadOverlay((u8 *)state + 0x41c, 2);
     void *panel = Heap_Alloc(0xb4, data_ov021_02202fb0, 4, gHeapContext);
     if (panel != 0)
         panel = func_ov000_021fb6e0(panel, data_020f4e14, 0);
@@ -97,7 +97,7 @@ extern "C" void func_ov021_021fee14(void *state)
     func_ov002_021fb9c4(panel);
     Heap_Free(panel);
     FIELD(void *, state, 0x390) = 0;
-    func_020062f8((u8 *)state + 0x41c, 0);
+    OverlaySlot_UnloadOverlay((u8 *)state + 0x41c, 0);
 }
 
 /*

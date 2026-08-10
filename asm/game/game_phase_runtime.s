@@ -7,7 +7,7 @@
 .extern DisplayController_SetVerticalOffset
 .extern func_020050a4
 .extern TouchPoint_InitZero
-.extern func_02006268
+.extern OverlaySlot_Init
 .extern func_02006fd4
 .extern func_02006ff0
 .extern func_0200807c
@@ -79,7 +79,7 @@ func_02006ae0:
     str r1, [r0, #0xb8]
     str r1, [r0, #0xbc]
     add r0, r4, #0x30c0
-    bl func_02006268
+    bl OverlaySlot_Init
     mov r2, #0x0
     add r0, r4, #0x3000
     strb r2, [r0, #0xcc]

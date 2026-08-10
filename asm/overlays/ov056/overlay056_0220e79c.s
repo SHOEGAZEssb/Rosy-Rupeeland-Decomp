@@ -3,8 +3,8 @@
 .extern GameFile_Close
 .extern GameFile_Destroy
 .extern data_ov056_0220f6a4
-.extern func_02002290
-.extern func_020022dc
+.extern OverlayManager_UnloadOverlay
+.extern OverlayManager_GetGlobal
 .extern func_02003e38
 .extern func_02005058
 .extern func_ov056_0220e690
@@ -23,9 +23,9 @@ func_ov056_0220e79c:
     add r0, r4, #0x4c
     add r0, r0, #0x800
     bl GameFile_Close
-    bl func_020022dc
+    bl OverlayManager_GetGlobal
     mov r1, #0x1
-    bl func_02002290
+    bl OverlayManager_UnloadOverlay
     add r0, r4, #0x98
     add r0, r0, #0x800
     bl func_02005058

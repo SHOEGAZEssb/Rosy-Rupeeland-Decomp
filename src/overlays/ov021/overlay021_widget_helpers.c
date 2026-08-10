@@ -10,7 +10,7 @@ extern void *data_021e9ac0;
 extern "C" {
 #endif
 extern void Heap_Free(void *);
-extern void func_020062f8(void *, s32);
+extern void OverlaySlot_UnloadOverlay(void *, s32);
 extern s32 func_02062b28(void *);
 extern void func_02064d90(void *, s32);
 extern void func_02074058(void *);
@@ -105,7 +105,7 @@ extern "C" void func_ov021_021fea68(void *state)
         typedef void (*Destructor)(void *);
         FIELD(Destructor *, panel, 0)[1](panel);
         FIELD(void *, state, 0x354) = 0;
-        func_020062f8((u8 *)state + 0x41c, 0);
+        OverlaySlot_UnloadOverlay((u8 *)state + 0x41c, 0);
     }
 }
 

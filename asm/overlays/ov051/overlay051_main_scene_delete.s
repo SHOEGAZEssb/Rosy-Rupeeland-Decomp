@@ -2,8 +2,8 @@
 ; Matching fallback for the portable implementation in src/overlays/ov051/overlay051_main_scene_recovery.c.
 .extern Heap_Free
 .extern data_ov051_0220df48
-.extern func_02002290
-.extern func_020022dc
+.extern OverlayManager_UnloadOverlay
+.extern OverlayManager_GetGlobal
 .extern func_0201e28c
 .extern func_020ae96c
 
@@ -14,9 +14,9 @@ func_ov051_0220dd44:
     mov r4, r0
     str r1, [r4, #0x0]
     bl func_020ae96c
-    bl func_020022dc
+    bl OverlayManager_GetGlobal
     mov r1, #0x0
-    bl func_02002290
+    bl OverlayManager_UnloadOverlay
     mov r0, r4
     bl func_0201e28c
     mov r0, r4

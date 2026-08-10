@@ -3,7 +3,7 @@
 .extern func_02092798
 .extern func_02071ea4
 .extern func_020957bc
-.extern func_02006268
+.extern OverlaySlot_Init
 .extern func_02095820
 .extern func_02092814
 .extern func_ov043_0220ba28
@@ -31,9 +31,9 @@ func_ov043_0220b76c:
     add r0, r4, #0x1e8
     bl func_020957bc
     add r0, r4, #0x2dc
-    bl func_02006268
+    bl OverlaySlot_Init
     add r0, r4, #0x2e8
-    bl func_02006268
+    bl OverlaySlot_Init
     mov r0, #0x0
     str r0, [r4, #0x2f4]
     str r0, [r4, #0x8c]

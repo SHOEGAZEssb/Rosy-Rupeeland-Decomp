@@ -5,8 +5,8 @@
 .extern Sound_Play
 .extern data_021052fc
 .extern data_ov087_02218aa4
-.extern func_0200222c
-.extern func_020022dc
+.extern OverlayManager_LoadOverlay
+.extern OverlayManager_GetGlobal
 .extern func_020050a4
 .extern Actor_SetDirectionFromVector
 .extern ActorDerivedType1_ResetToBaseState
@@ -51,10 +51,10 @@ func_ov087_022186a8:
     add r1, r4, #0x18
     str r2, [r4, #0x24]
     bl func_020050a4
-    bl func_020022dc
+    bl OverlayManager_GetGlobal
     mov r1, #0x2
     ldr r2, .L_022188cc
-    bl func_0200222c
+    bl OverlayManager_LoadOverlay
     mov r0, #0x48
     ldr r1, .L_022188d0
     mov r2, #0x4

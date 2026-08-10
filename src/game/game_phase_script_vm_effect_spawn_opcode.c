@@ -49,7 +49,7 @@ s32 func_02013f10(GamePhaseActorScriptVm *self)
     } else {
         VecFx32Object position;
         func_0200500c(&position, x << 12, y << 12, z << 12);
-        func_0200222c(func_020022dc(), 2, 0x3e);
+        OverlayManager_LoadOverlay(OverlayManager_GetGlobal(), 2, 0x3e);
         if (selector == 0) {
             void *allocation = Heap_Alloc(0x48, data_020d5b2c, 4,
                                           &gHeapContext);

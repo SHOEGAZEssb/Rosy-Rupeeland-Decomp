@@ -3,8 +3,8 @@
 .extern Heap_Alloc
 .extern data_020d5b2c
 .extern data_021052fc
-.extern func_0200222c
-.extern func_020022dc
+.extern OverlayManager_LoadOverlay
+.extern OverlayManager_GetGlobal
 .extern func_0200500c
 .extern func_02005058
 .extern func_02012704
@@ -55,10 +55,10 @@ L_02013f8c:
     bl func_0200500c
     cmp r4, #0x0
     bne L_0201400c
-    bl func_020022dc
+    bl OverlayManager_GetGlobal
     ldr r2, L_0201408c
     mov r1, #0x2
-    bl func_0200222c
+    bl OverlayManager_LoadOverlay
     ldr r1, L_02014090
     ldr r3, L_02014094
     mov r0, #0x48
@@ -86,10 +86,10 @@ L_0201400c:
     mov r1, r4
     bl ActorCollection_FindActorByDescriptorValue
     mov r5, r0
-    bl func_020022dc
+    bl OverlayManager_GetGlobal
     mov r1, #0x2
     ldr r2, L_0201408c
-    bl func_0200222c
+    bl OverlayManager_LoadOverlay
     mov r0, #0x40
     ldr r1, L_02014090
     mov r2, #0x4

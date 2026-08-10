@@ -5,8 +5,8 @@
 .extern Scene_Destroy
 .extern data_021052fc
 .extern data_ov062_02211c14
-.extern func_02002290
-.extern func_020022dc
+.extern OverlayManager_UnloadOverlay
+.extern OverlayManager_GetGlobal
 .extern func_02005058
 .extern func_020050a4
 .extern ActorDerivedType1_ResetToBaseState
@@ -108,9 +108,9 @@ func_ov062_022111e8:
     ldr r0, [r4, #0x78]
     cmp r0, #0x0
     beq .L_0221134c
-    bl func_020022dc
+    bl OverlayManager_GetGlobal
     mov r1, #0x2
-    bl func_02002290
+    bl OverlayManager_UnloadOverlay
 .L_0221134c:
     add r0, r4, #0x44
     bl func_02005058

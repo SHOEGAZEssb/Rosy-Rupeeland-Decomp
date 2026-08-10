@@ -4,8 +4,8 @@
 .extern SceneManager_SetUpdateEnabled
 .extern Scene_Destroy
 .extern data_ov059_02211b7c
-.extern func_02002290
-.extern func_020022dc
+.extern OverlayManager_UnloadOverlay
+.extern OverlayManager_GetGlobal
 .extern DebugSpriteText_Destroy
 .extern func_020068e0
 .extern func_0201140c
@@ -40,9 +40,9 @@ func_ov059_02211134:
     mov r0, r4
     bl Heap_Free
 .L_0221118c:
-    bl func_020022dc
+    bl OverlayManager_GetGlobal
     mov r1, #0x2
-    bl func_02002290
+    bl OverlayManager_UnloadOverlay
     ldr r0, .L_022111d0
     mov r1, #0x0
     ldr r0, [r0, #0x0]

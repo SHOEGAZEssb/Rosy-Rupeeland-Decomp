@@ -3,8 +3,8 @@
 .extern Heap_Free
 .extern data_020d6304
 .extern data_021055cc
-.extern func_02006280
-.extern func_020062f8
+.extern OverlaySlot_Destroy
+.extern OverlaySlot_UnloadOverlay
 .extern func_0201e28c
 .extern func_ov047_0220ba64
 
@@ -32,10 +32,10 @@ func_020201fc: ; 0x020201fc
     cmp r0, #0x0
     bne .L_02020250
     add r0, r4, #0x10
-    bl func_020062f8
+    bl OverlaySlot_UnloadOverlay
 .L_02020250:
     add r0, r4, #0x10
-    bl func_02006280
+    bl OverlaySlot_Destroy
     mov r0, r4
     bl func_0201e28c
     mov r0, r4

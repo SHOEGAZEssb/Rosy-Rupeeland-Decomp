@@ -5,8 +5,8 @@
 .extern Sound_Play
 .extern data_020df49c
 .extern data_021052fc
-.extern func_0200222c
-.extern func_020022dc
+.extern OverlayManager_LoadOverlay
+.extern OverlayManager_GetGlobal
 .extern Actor_IsAtCachedTerrainHeight
 .extern ActorDerivedType1_TeardownActiveRecord
 .extern Type7AuxiliaryPresentation_Activate
@@ -171,10 +171,10 @@ ActorDerivedType1_ClassifyState: ; 0x0203647c
     bne .L_02036724
     mov r0, r4
     bl ActorDerivedType1_TeardownActiveRecord
-    bl func_020022dc
+    bl OverlayManager_GetGlobal
     ldr r2, .L_02036a70
     mov r1, #0x2
-    bl func_0200222c
+    bl OverlayManager_LoadOverlay
     ldr r1, .L_02036a74
     ldr r3, .L_02036a78
     mov r0, #0x88

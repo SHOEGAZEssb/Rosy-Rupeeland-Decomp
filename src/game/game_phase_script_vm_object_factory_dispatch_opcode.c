@@ -47,8 +47,8 @@ extern void *func_02024468(void *object);
 extern void *func_02024594(void *object, s32 value);
 extern void *func_02027150(void *object, s32 value);
 extern void *func_02027300(void *object, s32 value);
-extern void *func_020022dc(void);
-extern void func_0200222c(void *state, s32 enabled, s32 value);
+extern void *OverlayManager_GetGlobal(void);
+extern void OverlayManager_LoadOverlay(void *state, s32 enabled, s32 value);
 extern void func_ov058_0220f484(void);
 extern u16 *func_020755e0(void *font);
 extern void func_02075630(void *font);
@@ -108,8 +108,8 @@ s32 func_02017d1c(GamePhaseActorScriptVm *self)
         func_0201ded4(runtimeObjectList(), object);
         break;
     case 16: {
-        void *state = func_020022dc();
-        func_0200222c(state, 1, 0x3a);
+        void *state = OverlayManager_GetGlobal();
+        OverlayManager_LoadOverlay(state, 1, 0x3a);
         func_ov058_0220f484();
         break;
     }

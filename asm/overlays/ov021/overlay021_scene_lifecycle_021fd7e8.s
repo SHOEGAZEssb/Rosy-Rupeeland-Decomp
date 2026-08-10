@@ -9,7 +9,7 @@
     .extern data_ov021_02202f64
     .extern data_ov021_02202f88
     .extern data_ov021_02202f90
-    .extern func_02006268
+    .extern OverlaySlot_Init
     .extern func_02064be0
     .extern func_0206550c
     .extern func_020716bc
@@ -77,7 +77,7 @@ func_ov021_021fd7e8:
     bl func_020929b0
     add r0, r5, #0x1c
     add r0, r0, #0x400
-    bl func_02006268
+    bl OverlaySlot_Init
     mov r2, #0x0
     str r2, [r5, #0x3d8]
     str r2, [r5, #0x3dc]

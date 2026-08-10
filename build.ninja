@@ -3639,7 +3639,7 @@ build build/reports/overlay_manager.json: objdiff build/decomp/delinks/src/syste
 
 build build/reports/overlay_manager.txt: match_report build/reports/overlay_manager.json | tools/report_objdiff.py
   report_json = build/reports/overlay_manager.json
-  report_args = --section .text --section .bss --function func_020021d0 --function func_020021fc --function func_0200222c --function func_02002290 --function func_020022dc
+  report_args = --section .text --section .bss --function OverlayManager_Init --function OverlayManager_Destroy --function OverlayManager_LoadOverlay --function OverlayManager_UnloadOverlay --function OverlayManager_GetGlobal
 
 build build/reports/runtime_init.json: objdiff build/decomp/delinks/src/system/runtime_init.o | build/decomp/src/system/runtime_init.o
   target_object = build/decomp/delinks/src/system/runtime_init.o
@@ -10000,7 +10000,7 @@ build build/reports/overlay_slot_lifecycle.json: objdiff build/decomp/delinks/sr
 
 build build/reports/overlay_slot_lifecycle.txt: match_report build/reports/overlay_slot_lifecycle.json | tools/report_objdiff.py
   report_json = build/reports/overlay_slot_lifecycle.json
-  report_args = --section .text --function func_02006268 --function func_02006280 --function func_020062a0 --require-exact
+  report_args = --section .text --function OverlaySlot_Init --function OverlaySlot_Destroy --function OverlaySlot_LoadOverlay --require-exact
 
 build build/reports/overlay_slot_unload.json: objdiff build/decomp/delinks/src/system/overlay_slot_unload.o | build/decomp/src/system/overlay_slot_unload.o
   target_object = build/decomp/delinks/src/system/overlay_slot_unload.o
@@ -10008,7 +10008,7 @@ build build/reports/overlay_slot_unload.json: objdiff build/decomp/delinks/src/s
 
 build build/reports/overlay_slot_unload.txt: match_report build/reports/overlay_slot_unload.json | tools/report_objdiff.py
   report_json = build/reports/overlay_slot_unload.json
-  report_args = --section .text --function func_020062f8 --require-exact
+  report_args = --section .text --function OverlaySlot_UnloadOverlay --require-exact
 
 build build/reports/overlay_slot.txt: phony build/reports/overlay_slot_lifecycle.txt build/reports/overlay_slot_unload.txt
 

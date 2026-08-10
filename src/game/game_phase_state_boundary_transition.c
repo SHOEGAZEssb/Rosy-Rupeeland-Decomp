@@ -14,8 +14,8 @@ extern void *ActorDerivedType1_GetSingletonObject(void);
 extern s32 func_0200b04c(void *object);
 extern s32 func_0200b294(void *object);
 extern s32 ActorDerivedType1_GetActiveRecordId(void *actor);
-extern void func_0200222c(s32 value, s32 mode, s32 mask);
-extern s32 func_020022dc(void);
+extern void OverlayManager_LoadOverlay(s32 value, s32 mode, s32 mask);
+extern s32 OverlayManager_GetGlobal(void);
 extern void *func_02056f00(void *vector, const void *source);
 extern void func_02005058(void *vector);
 extern void *func_ov074_0220fda8(void *object, s32 directionIndex);
@@ -26,7 +26,7 @@ extern void *func_ov074_0220fda8(void *object, s32 directionIndex);
 static s32 launchBoundaryOverlay(s32 direction)
 {
     void *object;
-    func_0200222c(func_020022dc(), 2, 0x4a);
+    OverlayManager_LoadOverlay(OverlayManager_GetGlobal(), 2, 0x4a);
     object = Heap_Alloc(0x174, (const char *)data_020d5544, 4,
                         &gHeapContext);
     if (object != 0)

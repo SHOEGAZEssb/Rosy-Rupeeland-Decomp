@@ -202,7 +202,7 @@ void func_ov075_02214770(void);
 /* Processes the supplied ABI arguments and offset-based actor state, returns its encoded result, and invokes func_02004fe0, func_020adfbc; exact higher-level semantics remain unconfirmed. */
 void func_ov075_02214898(void);
 
-/* Processes the supplied ABI arguments and offset-based actor state, returns its encoded result, and invokes func_0200222c, func_020022dc, func_02005030 and other shared helpers; exact higher-level semantics remain unconfirmed. */
+/* Processes the supplied ABI arguments and offset-based actor state, returns its encoded result, and invokes OverlayManager_LoadOverlay, OverlayManager_GetGlobal, func_02005030 and other shared helpers; exact higher-level semantics remain unconfirmed. */
 void func_ov075_022148d0(void);
 
 /* Processes the supplied ABI arguments using only local offset-based fields; observable mutations and the return value are preserved by the matching implementation, with no direct SDK call. */

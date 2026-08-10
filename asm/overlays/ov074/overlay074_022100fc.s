@@ -5,8 +5,8 @@
 .extern Scene_Destroy
 .extern data_02105300
 .extern data_ov074_02211d8c
-.extern func_02002290
-.extern func_020022dc
+.extern OverlayManager_UnloadOverlay
+.extern OverlayManager_GetGlobal
 .extern func_02005058
 .extern func_020068e0
 .extern func_02010520
@@ -40,9 +40,9 @@ func_ov074_022100fc:
     mov r1, #0x1
     bl func_ov088_0221ad9c
 .L_02210158:
-    bl func_020022dc
+    bl OverlayManager_GetGlobal
     mov r1, #0x2
-    bl func_02002290
+    bl OverlayManager_UnloadOverlay
     ldr r0, .L_022101d4
     ldr r1, .L_022101d8
     ldr r0, [r0, #0x0]

@@ -2,7 +2,7 @@
 .text
 .extern ActorCollection_UnregisterAndDestroyAllActors
 .extern func_02074330
-.extern func_020062f8
+.extern OverlaySlot_UnloadOverlay
 .extern data_020f4e14
 .extern gDebugFont
 
@@ -37,9 +37,9 @@ ActorCollection_Deinit: ; 0x0202d094
 .L_0202d0f0:
     add r0, r4, #0x204
     add r0, r0, #0xc00
-    bl func_020062f8
+    bl OverlaySlot_UnloadOverlay
     add r0, r4, #0xe10
-    bl func_020062f8
+    bl OverlaySlot_UnloadOverlay
     ldmia sp!, {r4, pc}
 .L_0202d108: .word data_020f4e14
 .L_0202d10c: .word gDebugFont

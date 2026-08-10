@@ -3,8 +3,8 @@
 .extern Heap_Free
 .extern data_020f4e14
 .extern data_ov050_0220e3c0
-.extern func_02002290
-.extern func_020022dc
+.extern OverlayManager_UnloadOverlay
+.extern OverlayManager_GetGlobal
 .extern func_02005058
 .extern func_0201e28c
 .extern func_02071eb8
@@ -40,9 +40,9 @@ func_ov050_0220dd50:
     ldr r1, [r6, #0x18]
     ldr r0, [r0, #0x0]
     bl func_02074330
-    bl func_020022dc
+    bl OverlayManager_GetGlobal
     mov r1, #0x0
-    bl func_02002290
+    bl OverlayManager_UnloadOverlay
     add r0, r6, #0x30
     bl func_02005058
     add r0, r6, #0x8

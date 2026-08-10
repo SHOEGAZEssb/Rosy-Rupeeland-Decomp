@@ -85,7 +85,7 @@ GamePhaseRuntime *func_02006ae0(GamePhaseRuntime *self)
     *(s32 *)(bytes + 0x30b4) = 0;
     *(s32 *)(bytes + 0x30b8) = 0;
     *(s32 *)(bytes + 0x30bc) = 0;
-    func_02006268((OverlaySlot *)(bytes + 0x30c0));
+    OverlaySlot_Init((OverlaySlot *)(bytes + 0x30c0));
     *(u8 *)(bytes + 0x30cc) = 0;
     *(s32 *)(bytes + 0x30e4) = -1;
     *(s32 *)(bytes + 0x30e8) = 0;

@@ -56,7 +56,7 @@ OverlayTransitionScene *func_0201d240(OverlayTransitionScene *self, s32 kind,
 
     Scene_Init(&self->base);
     self->base.vtable = &data_020d5d58;
-    func_02006268(&self->overlay2c);
+    OverlaySlot_Init(&self->overlay2c);
     self->kind38 = kind;
     self->parameter3c = parameter;
     self->state40 = 0;
@@ -74,9 +74,9 @@ OverlayTransitionScene *func_0201d2b0(OverlayTransitionScene *self)
     self->base.vtable = &data_020d5d58;
     if (self->object24 != 0) {
         ((void (*)(void *))self->object24->vtable[2])(self->object24);
-        func_020062f8(&self->overlay2c);
+        OverlaySlot_UnloadOverlay(&self->overlay2c);
     }
-    func_02006280(&self->overlay2c);
+    OverlaySlot_Destroy(&self->overlay2c);
     Scene_Destroy(&self->base);
     return self;
 }
@@ -87,9 +87,9 @@ OverlayTransitionScene *func_0201d300(OverlayTransitionScene *self)
     self->base.vtable = &data_020d5d58;
     if (self->object24 != 0) {
         ((void (*)(void *))self->object24->vtable[2])(self->object24);
-        func_020062f8(&self->overlay2c);
+        OverlaySlot_UnloadOverlay(&self->overlay2c);
     }
-    func_02006280(&self->overlay2c);
+    OverlaySlot_Destroy(&self->overlay2c);
     Scene_Destroy(&self->base);
     Heap_Free(self);
     return self;
@@ -124,14 +124,14 @@ s32 func_0201d358(OverlayTransitionScene *self)
             func_0201140c(gLupyContext, 0);
         func_020088b8(runtime, 0, 1);
         if (self->kind38 == 0) {
-            func_020062a0(&self->overlay2c, 0x1f);
+            OverlaySlot_LoadOverlay(&self->overlay2c, 0x1f);
             object = (OverlayTransitionObject *)Heap_Alloc(
                 0x550, data_020d5d8c, 4, &gHeapContext);
             if (object != 0)
                 object = func_ov029_021fd95c(object, self->parameter3c);
             self->object24 = object;
         } else if (self->kind38 == 1) {
-            func_020062a0(&self->overlay2c, 0x2e);
+            OverlaySlot_LoadOverlay(&self->overlay2c, 0x2e);
             object = (OverlayTransitionObject *)Heap_Alloc(
                 0x7c, data_020d5d94, 4, &gHeapContext);
             if (object != 0)
@@ -159,7 +159,7 @@ s32 func_0201d358(OverlayTransitionScene *self)
         if (self->object24 != 0)
             ((void (*)(void *))self->object24->vtable[2])(self->object24);
         self->object24 = 0;
-        func_020062f8(&self->overlay2c);
+        OverlaySlot_UnloadOverlay(&self->overlay2c);
         func_020755bc(gDebugFont);
         runtimeObject = *(void **)((u8 *)runtime + 0x2fb8);
         if (runtimeObject != 0) {

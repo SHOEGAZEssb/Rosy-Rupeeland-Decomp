@@ -52,9 +52,9 @@ Overlay33RuntimeScene *func_0201d688(Overlay33RuntimeScene *self, u32 parameter)
 
     Scene_Init(&self->base);
     self->base.vtable = &data_020d5dcc;
-    func_02006268(&self->overlay30);
+    OverlaySlot_Init(&self->overlay30);
     self->parameter24 = parameter;
-    func_020062a0(&self->overlay30, 0x21);
+    OverlaySlot_LoadOverlay(&self->overlay30, 0x21);
     child = (Overlay33Child *)Heap_Alloc(0xd4, data_020d5df8, 4, &gHeapContext);
     if (child != 0)
         child = func_ov033_021fd070(child, parameter);
@@ -85,8 +85,8 @@ Overlay33RuntimeScene *func_0201d754(Overlay33RuntimeScene *self)
         func_ov030_021fd260(self->child3c);
         Heap_Free(self->child3c);
     }
-    func_020062f8(&self->overlay30);
-    func_02006280(&self->overlay30);
+    OverlaySlot_UnloadOverlay(&self->overlay30);
+    OverlaySlot_Destroy(&self->overlay30);
     Scene_Destroy(&self->base);
     return self;
 }
@@ -103,8 +103,8 @@ Overlay33RuntimeScene *func_0201d7e8(Overlay33RuntimeScene *self)
         func_ov030_021fd260(self->child3c);
         Heap_Free(self->child3c);
     }
-    func_020062f8(&self->overlay30);
-    func_02006280(&self->overlay30);
+    OverlaySlot_UnloadOverlay(&self->overlay30);
+    OverlaySlot_Destroy(&self->overlay30);
     Scene_Destroy(&self->base);
     Heap_Free(self);
     return self;

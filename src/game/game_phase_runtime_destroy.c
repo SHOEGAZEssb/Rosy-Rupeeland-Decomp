@@ -90,7 +90,7 @@ GamePhaseRuntime *func_02007064(GamePhaseRuntime *self)
 
     FrameTaskList_DestroyNode(data_021052fc.taskNode);
     func_02058ce0(gSoundContext);
-    func_02006280((OverlaySlot *)(bytes + 0x30c0));
+    OverlaySlot_Destroy((OverlaySlot *)(bytes + 0x30c0));
     func_020099fc(bytes + 0x3044);
     func_02009d58(bytes + 0x2fbc);
     func_0200e574(bytes + 0x24);

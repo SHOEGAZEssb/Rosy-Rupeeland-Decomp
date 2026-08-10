@@ -25,10 +25,10 @@ extern void *gGameWork;
 extern s32 data_021055cc;
 extern void *func_0201e250(void *self);
 extern void *func_0201e28c(void *self);
-extern void func_02006268(void *resource);
-extern void func_020062a0(void *resource, s32 id);
-extern void func_020062f8(void *resource);
-extern void func_02006280(void *resource);
+extern void OverlaySlot_Init(void *resource);
+extern void OverlaySlot_LoadOverlay(void *resource, s32 id);
+extern void OverlaySlot_UnloadOverlay(void *resource);
+extern void OverlaySlot_Destroy(void *resource);
 extern void GameWork_ClearFlag(void *gameWork, s32 flag);
 extern s32 GameWork_TestFlag(void *gameWork, s32 flag);
 extern void *func_ov043_0220b740(void *worker, s32 first, s32 second,
@@ -57,10 +57,10 @@ OverlayWorkerPresentation *func_020200bc(
 
     func_0201e250(self);
     self->vtable = (void **)data_020d6304;
-    func_02006268(self->sharedResource10);
+    OverlaySlot_Init(self->sharedResource10);
     GameWork_ClearFlag(gGameWork, 0x3bb);
     if (data_021055cc == 0) {
-        func_020062a0(self->sharedResource10, 0x2f);
+        OverlaySlot_LoadOverlay(self->sharedResource10, 0x2f);
     }
     worker = (u8 *)Heap_Alloc(0x44, data_020d6324, 4, &gHeapContext);
     if (worker != 0) {
@@ -83,9 +83,9 @@ static OverlayWorkerPresentation *teardown_overlay_worker_presentation(
         Heap_Free(self->worker0c);
     }
     if (data_021055cc == 0) {
-        func_020062f8(self->sharedResource10);
+        OverlaySlot_UnloadOverlay(self->sharedResource10);
     }
-    func_02006280(self->sharedResource10);
+    OverlaySlot_Destroy(self->sharedResource10);
     func_0201e28c(self);
     return self;
 }

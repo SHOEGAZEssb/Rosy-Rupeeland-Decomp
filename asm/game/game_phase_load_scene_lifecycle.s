@@ -6,8 +6,8 @@
 .extern Scene_Init
 .extern Scene_SetFlags03
 .extern data_020d5460
-.extern func_02006268
-.extern func_02006280
+.extern OverlaySlot_Init
+.extern OverlaySlot_Destroy
 .extern func_02092364
 .extern func_020923a0
 .extern gLupyContext
@@ -24,11 +24,11 @@ func_0200cf00: ; 0x0200cf00
     str r1, [r4, #0x0]
     bl func_02092364
     add r0, r4, #0x74
-    bl func_02006268
+    bl OverlaySlot_Init
     add r0, r4, #0x80
-    bl func_02006268
+    bl OverlaySlot_Init
     add r0, r4, #0x8c
-    bl func_02006268
+    bl OverlaySlot_Init
     mov r0, #0x9
     str r0, [r4, #0x4]
     str r6, [r4, #0x2c]
@@ -76,11 +76,11 @@ func_0200cfb0: ; 0x0200cfb0
     blx r1
 L_0200cfe0:
     add r0, r4, #0x8c
-    bl func_02006280
+    bl OverlaySlot_Destroy
     add r0, r4, #0x80
-    bl func_02006280
+    bl OverlaySlot_Destroy
     add r0, r4, #0x74
-    bl func_02006280
+    bl OverlaySlot_Destroy
     add r0, r4, #0x40
     bl func_020923a0
     mov r0, r4
@@ -115,11 +115,11 @@ func_0200d028: ; 0x0200d028
     blx r1
 L_0200d058:
     add r0, r4, #0x8c
-    bl func_02006280
+    bl OverlaySlot_Destroy
     add r0, r4, #0x80
-    bl func_02006280
+    bl OverlaySlot_Destroy
     add r0, r4, #0x74
-    bl func_02006280
+    bl OverlaySlot_Destroy
     add r0, r4, #0x40
     bl func_020923a0
     mov r0, r4

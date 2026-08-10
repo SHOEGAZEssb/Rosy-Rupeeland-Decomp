@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/game_phase_area_scene_lifecycle.c.
 .text
-.extern func_020062a0
+.extern OverlaySlot_LoadOverlay
 .extern ActorCollection_SetSpriteMode
 .extern ActorCollection_FindActorByTypeAndId
 .extern ActorCollection_SetActorScale
@@ -20,7 +20,7 @@ func_02011ebc: ; 0x02011ebc
     add r0, r4, #0xeb0
     ldr r1, [r1, #0x20]
     add r0, r0, #0x2000
-    bl func_020062a0
+    bl OverlaySlot_LoadOverlay
     add r0, r4, #0x2000
     ldr r1, [r0, #0xeac]
     mov r0, #0x0

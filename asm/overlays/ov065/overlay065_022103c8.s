@@ -6,8 +6,8 @@
 .extern data_020f4e14
 .extern data_ov065_02210bb8
 .extern data_ov065_02210c00
-.extern func_02002290
-.extern func_020022dc
+.extern OverlayManager_UnloadOverlay
+.extern OverlayManager_GetGlobal
 .extern func_02005058
 .extern func_0200637c
 .extern func_02074058
@@ -78,9 +78,9 @@ func_ov065_022103c8:
     ldr r0, .L_022104dc
     mov r1, #0x0
     str r1, [r0, #0x0]
-    bl func_020022dc
+    bl OverlayManager_GetGlobal
     mov r1, #0x2
-    bl func_02002290
+    bl OverlayManager_UnloadOverlay
     add r0, r10, #0x134
     bl func_02005058
     add r0, r10, #0x124

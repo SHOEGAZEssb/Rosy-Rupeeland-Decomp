@@ -35,9 +35,9 @@ extern "C" {
 #endif
 extern void *data_020f4e14;
 extern void *gDebugFont;
-extern void func_02006268(void *owner);
-extern void func_02006280(void *owner);
-extern void func_020062f8(void *owner);
+extern void OverlaySlot_Init(void *owner);
+extern void OverlaySlot_Destroy(void *owner);
+extern void OverlaySlot_UnloadOverlay(void *owner);
 extern void *func_020742cc(void *pool);
 extern void func_02074330(void *pool, void *sprite);
 extern void ActorCollection_UnregisterAndDestroyAllActors(ActorCollection *self);
@@ -69,8 +69,8 @@ ActorCollection *ActorCollection_Init(ActorCollection *self)
     s32 j;
 
     self->spriteOwner_0e00 = 0;
-    func_02006268(&self->owner_0e04);
-    func_02006268(&self->owner_0e10);
+    OverlaySlot_Init(&self->owner_0e04);
+    OverlaySlot_Init(&self->owner_0e10);
     ActorPairMatrix_ClearAll(self->relationshipMatrix_0e34);
     self->flags_2e78 |= 2;
     self->spriteMode_2e84 = 0;
@@ -111,8 +111,8 @@ void ActorCollection_SetSpriteMode(ActorCollection *self, s32 mode)
 ActorCollection *ActorCollection_Destructor(ActorCollection *self)
 {
     ActorCollection_Deinit(self);
-    func_02006280(&self->owner_0e10);
-    func_02006280(&self->owner_0e04);
+    OverlaySlot_Destroy(&self->owner_0e10);
+    OverlaySlot_Destroy(&self->owner_0e04);
     return self;
 }
 
@@ -131,6 +131,6 @@ void ActorCollection_Deinit(ActorCollection *self)
         func_02074330(gDebugFont, self->spriteOwner_0e00);
         self->spriteOwner_0e00 = 0;
     }
-    func_020062f8(&self->owner_0e04);
-    func_020062f8(&self->owner_0e10);
+    OverlaySlot_UnloadOverlay(&self->owner_0e04);
+    OverlaySlot_UnloadOverlay(&self->owner_0e10);
 }

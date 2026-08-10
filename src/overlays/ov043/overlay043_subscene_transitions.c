@@ -23,8 +23,8 @@ extern "C" s32 DisplayBrightness_IsMainTransitionComplete(void);
 extern "C" void func_ov043_0220bcf4(void *object);
 extern "C" void func_ov043_0220bd24(void *object);
 extern "C" void func_020755bc(void *font);
-extern "C" void func_020062a0(void *object, s32 value);
-extern "C" void func_020062f8(void *object);
+extern "C" void OverlaySlot_LoadOverlay(void *object, s32 value);
+extern "C" void OverlaySlot_UnloadOverlay(void *object);
 extern "C" void *Heap_Alloc(s32 size, const void *tag, void *heap);
 extern "C" void *func_ov023_021fe77c(void *storage, s32 page, s32 gameValue);
 extern "C" void *func_ov017_021feab4(void *storage, s32 count,
@@ -91,8 +91,8 @@ extern "C" s32 func_ov043_0220bed4(void *object)
         func_ov043_0220bcf4(object);
         func_020755bc(data_020f4e14);
         func_020755bc(gDebugFont);
-        func_020062a0((u8 *)object + 0x2dc, 0);
-        func_020062a0((u8 *)object + 0x2e8, 16);
+        OverlaySlot_LoadOverlay((u8 *)object + 0x2dc, 0);
+        OverlaySlot_LoadOverlay((u8 *)object + 0x2e8, 16);
         {
             void *child = Heap_Alloc(0x488, data_ov043_0220c4d0, gHeapContext);
             if (child)
@@ -139,8 +139,8 @@ extern "C" s32 func_ov043_0220bed4(void *object)
         FIELD(u32, object, 0x20) &= ~0x400;
         destroy_child(object);
         FIELD(u32, object, 0x20) |= 0x400;
-        func_020062f8((u8 *)object + 0x2dc);
-        func_020062f8((u8 *)object + 0x2e8);
+        OverlaySlot_UnloadOverlay((u8 *)object + 0x2dc);
+        OverlaySlot_UnloadOverlay((u8 *)object + 0x2e8);
         if (FIELD(s32, object, 0x294)) {
             func_ov043_0220b744(object, data_ov043_0220c478[0],
                                  data_ov043_0220c478[1]);
@@ -180,7 +180,7 @@ extern "C" s32 func_ov043_0220c1b0(void *object)
             func_ov043_0220bd24(object);
             break;
         }
-        func_020062a0((u8 *)object + 0x2e8, 17);
+        OverlaySlot_LoadOverlay((u8 *)object + 0x2e8, 17);
         {
             void *child = Heap_Alloc(0x444, data_ov043_0220c4d8, gHeapContext);
             if (child)
@@ -212,7 +212,7 @@ extern "C" s32 func_ov043_0220c1b0(void *object)
         FIELD(u32, object, 0x20) &= ~0x400;
         destroy_child(object);
         FIELD(u32, object, 0x20) |= 0x400;
-        func_020062f8((u8 *)object + 0x2e8);
+        OverlaySlot_UnloadOverlay((u8 *)object + 0x2e8);
         if (GameWork_TestFlag(gGameWork, 0x3a6)) {
             func_ov043_0220b744(object, data_ov043_0220c468[0],
                                  data_ov043_0220c468[1]);

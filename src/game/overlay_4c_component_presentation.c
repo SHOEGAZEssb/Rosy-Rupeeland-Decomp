@@ -20,10 +20,10 @@ extern void *data_020d690c;
 extern const char data_020d69dc[];
 extern void func_0201e250(void *);
 extern void func_0201e28c(void *);
-extern void func_02006268(void *);
-extern void func_02006280(void *);
-extern void func_020062a0(void *, s32);
-extern void func_020062f8(void *);
+extern void OverlaySlot_Init(void *);
+extern void OverlaySlot_Destroy(void *);
+extern void OverlaySlot_LoadOverlay(void *, s32);
+extern void OverlaySlot_UnloadOverlay(void *);
 extern void *func_ov094_02218f14(void *);
 extern void func_ov094_0221900c(void *);
 extern s32 func_ov094_02219050(void *);
@@ -36,7 +36,7 @@ extern s32 func_ov094_022191fc(void *);
 Overlay4cComponentPresentation *func_02024200(Overlay4cComponentPresentation *self)
 {
     func_0201e250(self); self->vtable00=(void **)data_020d690c;
-    func_02006268(self->helper0c); func_020062a0(self->helper0c,0x5e);
+    OverlaySlot_Init(self->helper0c); OverlaySlot_LoadOverlay(self->helper0c,0x5e);
     self->component08=Heap_Alloc(0x4c,data_020d69dc,4,&gHeapContext);
     if(self->component08)self->component08=func_ov094_02218f14(self->component08);
     return self;
@@ -47,7 +47,7 @@ Overlay4cComponentPresentation *func_02024264(Overlay4cComponentPresentation *se
 {
     self->vtable00=(void **)data_020d690c;
     if(self->component08){func_ov094_0221900c(self->component08);Heap_Free(self->component08);}
-    func_020062f8(self->helper0c);func_02006280(self->helper0c);func_0201e28c(self);
+    OverlaySlot_UnloadOverlay(self->helper0c);OverlaySlot_Destroy(self->helper0c);func_0201e28c(self);
     return self;
 }
 

@@ -8,8 +8,8 @@ extern "C" {
 #endif
 extern SceneVTable data_020d5460;
 extern void *gLupyContext;
-extern void func_02006268(void *object);
-extern void func_02006280(void *object);
+extern void OverlaySlot_Init(void *object);
+extern void OverlaySlot_Destroy(void *object);
 extern void func_02092364(void *object);
 extern void func_020923a0(void *object);
 #ifdef __cplusplus
@@ -39,9 +39,9 @@ GamePhaseLoadScene *func_0200cf00(GamePhaseLoadScene *self, s32 phase,
     Scene_Init(&self->base);
     self->base.vtable = &data_020d5460;
     func_02092364(self->field_40);
-    func_02006268(self->field_74);
-    func_02006268(self->field_80);
-    func_02006268(self->field_8c);
+    OverlaySlot_Init(self->field_74);
+    OverlaySlot_Init(self->field_80);
+    OverlaySlot_Init(self->field_8c);
     self->base.value04 = 9;
     self->phase = phase;
     self->field_30 = field30;
@@ -66,9 +66,9 @@ GamePhaseLoadScene *func_0200cfb0(GamePhaseLoadScene *self)
     self->field_38 = 0;
     if (self->ownedObject != 0)
         ((OwnedObject *)self->ownedObject)->vtable->release(self->ownedObject);
-    func_02006280(self->field_8c);
-    func_02006280(self->field_80);
-    func_02006280(self->field_74);
+    OverlaySlot_Destroy(self->field_8c);
+    OverlaySlot_Destroy(self->field_80);
+    OverlaySlot_Destroy(self->field_74);
     func_020923a0(self->field_40);
     Scene_Destroy(&self->base);
     return self;
@@ -88,9 +88,9 @@ GamePhaseLoadScene *func_0200d028(GamePhaseLoadScene *self)
     self->field_38 = 0;
     if (self->ownedObject != 0)
         ((OwnedObject *)self->ownedObject)->vtable->release(self->ownedObject);
-    func_02006280(self->field_8c);
-    func_02006280(self->field_80);
-    func_02006280(self->field_74);
+    OverlaySlot_Destroy(self->field_8c);
+    OverlaySlot_Destroy(self->field_80);
+    OverlaySlot_Destroy(self->field_74);
     func_020923a0(self->field_40);
     Scene_Destroy(&self->base);
     Heap_Free(self);

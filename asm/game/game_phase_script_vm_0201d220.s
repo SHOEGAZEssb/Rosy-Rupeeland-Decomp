@@ -8,9 +8,9 @@
 .extern DisplayBrightnessPair_GetScreen
 .extern DisplayBrightness_StartTransition
 .extern DisplayBrightness_GetCurrent
-.extern func_020022dc
-.extern func_0200222c
-.extern func_02002290
+.extern OverlayManager_GetGlobal
+.extern OverlayManager_LoadOverlay
+.extern OverlayManager_UnloadOverlay
 .extern func_020755bc
 .extern Heap_Alloc
 .extern func_ov052_0220d618

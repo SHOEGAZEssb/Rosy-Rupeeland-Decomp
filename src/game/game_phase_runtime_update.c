@@ -24,8 +24,8 @@ extern void *func_0200c9fc(void *object, s32 mode);
 extern void *func_0200c8bc(void *object, u32 a, u32 b, u32 c, u32 d);
 extern void *func_ov059_0220fd20(void *object, s32 mode, s32 value);
 extern void *func_0206ec68(void *object);
-extern s32 func_020022dc(void);
-extern void func_0200222c(s32 value, s32 mode, s32 mask);
+extern s32 OverlayManager_GetGlobal(void);
+extern void OverlayManager_LoadOverlay(s32 value, s32 mode, s32 mask);
 extern s32 GameWork_TestFlag(void *work, s32 flag);
 extern void func_020021c4(void);
 extern void func_020020c4(void);
@@ -94,7 +94,7 @@ s32 func_02007430(GamePhaseRuntime *self)
                 func_0200c9fc(object, *(s32 *)(b + 0x30e4));
             break;
         case 1:
-            func_0200222c(func_020022dc(), 2, 0x40);
+            OverlayManager_LoadOverlay(OverlayManager_GetGlobal(), 2, 0x40);
             object = allocRuntimeObject(0x88);
             if (object != 0)
                 func_ov059_0220fd20(object, 3, 0);
@@ -164,7 +164,7 @@ s32 func_02007430(GamePhaseRuntime *self)
         object = *(void **)(b + 0x2ea8);
         if (object != 0 && (*(u32 *)((u8 *)object + 0x268) & 0x10))
             Type7Actor_ClearTarget(object);
-        func_0200222c(func_020022dc(), 2, 0x40);
+        OverlayManager_LoadOverlay(OverlayManager_GetGlobal(), 2, 0x40);
         object = allocRuntimeObject(0x88);
         if (object != 0)
             func_ov059_0220fd20(object, 3, 0);

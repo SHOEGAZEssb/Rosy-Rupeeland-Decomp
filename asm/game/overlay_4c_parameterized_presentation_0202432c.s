@@ -3,8 +3,8 @@
 .extern Heap_Alloc
 .extern data_020d68bc
 .extern data_020d69e4
-.extern func_02006268
-.extern func_020062a0
+.extern OverlaySlot_Init
+.extern OverlaySlot_LoadOverlay
 .extern func_0201e250
 .extern func_ov094_02219568
 .extern gHeapContext
@@ -20,10 +20,10 @@ func_0202432c: ; 0x0202432c
     ldr r1, .L_02024390
     add r0, r6, #0xc
     str r1, [r6, #0x0]
-    bl func_02006268
+    bl OverlaySlot_Init
     ldr r1, .L_02024394
     add r0, r6, #0xc
-    bl func_020062a0
+    bl OverlaySlot_LoadOverlay
     mov r0, #0x4c
     ldr r1, .L_02024398
     mov r2, #0x4

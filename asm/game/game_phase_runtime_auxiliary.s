@@ -2,8 +2,8 @@
 ; the documented portable implementation and recovered behavior.
 .text
 .extern data_020d4370
-.extern func_0200222c
-.extern func_020022dc
+.extern OverlayManager_LoadOverlay
+.extern OverlayManager_GetGlobal
 .extern func_02008b6c
 .extern func_02012528
 .extern func_0202844c
@@ -61,10 +61,10 @@ L_02008c10:
     bic r0, r3, #0x8
     orr r0, r1, r0, lsl #0x8
     str r0, [r2, #0x0]
-    bl func_020022dc
+    bl OverlayManager_GetGlobal
     ldr r2, L_02008ce8
     mov r1, #0x1
-    bl func_0200222c
+    bl OverlayManager_LoadOverlay
     ldrsb r0, [r5, #0x4c]
     bl func_0202852c
     mov r7, r0

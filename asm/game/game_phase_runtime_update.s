@@ -6,8 +6,8 @@
 .extern data_021f38fc
 .extern func_020020c4
 .extern func_020021c4
-.extern func_0200222c
-.extern func_020022dc
+.extern OverlayManager_LoadOverlay
+.extern OverlayManager_GetGlobal
 .extern func_02007868
 .extern func_02007908
 .extern func_02007a24
@@ -106,10 +106,10 @@ L_020074dc:
     bl func_0200c9fc
     b L_02007540
 L_02007508:
-    bl func_020022dc
+    bl OverlayManager_GetGlobal
     ldr r2, L_02007840
     mov r1, #0x2
-    bl func_0200222c
+    bl OverlayManager_LoadOverlay
     ldr r1, L_02007838
     ldr r3, L_0200783c
     mov r0, #0x88
@@ -272,10 +272,10 @@ L_02007720:
     beq L_0200776c
     bl Type7Actor_ClearTarget
 L_0200776c:
-    bl func_020022dc
+    bl OverlayManager_GetGlobal
     ldr r2, L_02007840
     mov r1, #0x2
-    bl func_0200222c
+    bl OverlayManager_LoadOverlay
     ldr r1, L_02007838
     ldr r3, L_0200783c
     mov r0, #0x88

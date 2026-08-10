@@ -2,8 +2,8 @@
 ; Matching fallback for the portable implementation in src/overlays/ov073/overlay073_recovery.c.
 .extern Heap_Free
 .extern data_ov073_02210be4
-.extern func_02002290
-.extern func_020022dc
+.extern OverlayManager_UnloadOverlay
+.extern OverlayManager_GetGlobal
 .extern func_0201e28c
 .extern func_ov073_022102dc
 
@@ -36,9 +36,9 @@ func_ov073_02210980:
     ldr r1, [r1, #0x4]
     blx r1
 .L_022109e0:
-    bl func_020022dc
+    bl OverlayManager_GetGlobal
     mov r1, #0x2
-    bl func_02002290
+    bl OverlayManager_UnloadOverlay
     mov r0, r5
     bl func_0201e28c
     mov r0, r5

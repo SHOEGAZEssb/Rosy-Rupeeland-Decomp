@@ -5,10 +5,10 @@
 .extern Scene_Destroy
 .extern Heap_Alloc
 .extern Heap_Free
-.extern func_02006268
-.extern func_02006280
-.extern func_020062a0
-.extern func_020062f8
+.extern OverlaySlot_Init
+.extern OverlaySlot_Destroy
+.extern OverlaySlot_LoadOverlay
+.extern OverlaySlot_UnloadOverlay
 .extern func_ov033_021fd070
 .extern func_ov030_021fd260
 .extern func_ov014_021fd2f8

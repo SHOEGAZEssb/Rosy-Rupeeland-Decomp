@@ -5,8 +5,8 @@
 .extern SceneManager_GetCurrent
 .extern data_020d5544
 .extern data_02105310
-.extern func_0200222c
-.extern func_020022dc
+.extern OverlayManager_LoadOverlay
+.extern OverlayManager_GetGlobal
 .extern func_0200b04c
 .extern func_0200b294
 .extern func_0200efe0
@@ -128,10 +128,10 @@ L_0200ee54:
     ldrsh r0, [r0, #0x14]
     cmp r0, #0x0
     blt L_0200efbc
-    bl func_020022dc
+    bl OverlayManager_GetGlobal
     ldr r2, L_0200efd4
     mov r1, #0x2
-    bl func_0200222c
+    bl OverlayManager_LoadOverlay
     ldr r1, L_0200efd8
     ldr r3, L_0200efdc
     mov r0, #0x174
@@ -151,10 +151,10 @@ L_0200eec0:
     ldrsh r0, [r0, #0x16]
     cmp r0, #0x0
     blt L_0200efbc
-    bl func_020022dc
+    bl OverlayManager_GetGlobal
     ldr r2, L_0200efd4
     mov r1, #0x2
-    bl func_0200222c
+    bl OverlayManager_LoadOverlay
     ldr r1, L_0200efd8
     ldr r3, L_0200efdc
     mov r0, #0x174
@@ -174,10 +174,10 @@ L_0200ef14:
     ldrsh r0, [r0, #0x18]
     cmp r0, #0x0
     blt L_0200efbc
-    bl func_020022dc
+    bl OverlayManager_GetGlobal
     ldr r2, L_0200efd4
     mov r1, #0x2
-    bl func_0200222c
+    bl OverlayManager_LoadOverlay
     ldr r1, L_0200efd8
     ldr r3, L_0200efdc
     mov r0, #0x174
@@ -197,10 +197,10 @@ L_0200ef68:
     ldrsh r0, [r0, #0x1a]
     cmp r0, #0x0
     blt L_0200efbc
-    bl func_020022dc
+    bl OverlayManager_GetGlobal
     ldr r2, L_0200efd4
     mov r1, #0x2
-    bl func_0200222c
+    bl OverlayManager_LoadOverlay
     ldr r1, L_0200efd8
     ldr r3, L_0200efdc
     mov r0, #0x174

@@ -5,8 +5,8 @@
 .extern data_021052fc
 .extern data_ov072_022109dc
 .extern data_ov072_02210b0c
-.extern func_02002290
-.extern func_020022dc
+.extern OverlayManager_UnloadOverlay
+.extern OverlayManager_GetGlobal
 .extern func_02007f24
 .extern Actor_SetDirectionFromVector
 .extern Type7Actor_LeaveSpecialPresentationState
@@ -91,9 +91,9 @@ func_ov072_02210070:
     mov r1, #0x0
     mov r2, #0x78
     bl func_ov072_0221004c
-    bl func_020022dc
+    bl OverlayManager_GetGlobal
     mov r1, #0x2
-    bl func_02002290
+    bl OverlayManager_UnloadOverlay
     mov r0, r4
     bl Scene_Destroy
     mov r0, r4

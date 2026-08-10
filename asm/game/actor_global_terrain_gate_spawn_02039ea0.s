@@ -3,8 +3,8 @@
 .extern Heap_Alloc
 .extern data_020df4d8
 .extern data_021052fc
-.extern func_0200222c
-.extern func_020022dc
+.extern OverlayManager_LoadOverlay
+.extern OverlayManager_GetGlobal
 .extern ActorDerivedType1_IsIdleEligible
 .extern func_ov062_02210b38
 .extern gHeapContext
@@ -42,10 +42,10 @@ Actor_TrySpawnTerrainGateObject: ; 0x02039ea0
     blt .L_02039f50
     cmp r1, #0x5
     bgt .L_02039f50
-    bl func_020022dc
+    bl OverlayManager_GetGlobal
     ldr r2, .L_02039f60
     mov r1, #0x2
-    bl func_0200222c
+    bl OverlayManager_LoadOverlay
     ldr r1, .L_02039f64
     ldr r3, .L_02039f68
     mov r0, #0x7c

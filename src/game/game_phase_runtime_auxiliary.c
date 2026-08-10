@@ -15,8 +15,8 @@ extern void GX_VBlankIntr(s32 enabled);
 extern void func_ov056_0220e79c(void *object);
 extern void func_02012528(void *actor, void *object);
 extern s32 func_0202844c(void *area);
-extern s32 func_020022dc(void);
-extern void func_0200222c(s32 overlay, s32 mode, s32 mask);
+extern s32 OverlayManager_GetGlobal(void);
+extern void OverlayManager_LoadOverlay(s32 overlay, s32 mode, s32 mask);
 extern s32 func_0202852c(s32 variant);
 extern void *func_ov054_0220e400(void *object, s32 variant, s32 enabled);
 extern void func_ov056_0220f054(void *object, const void *value);
@@ -53,7 +53,7 @@ void func_02008bb8(GamePhaseRuntime *self, void *area, s32 enabled)
         volatile u32 *subDisplay = (volatile u32 *)0x04001000;
         u32 mode = (*subDisplay & 0x1f00) >> 8;
         *subDisplay = (*subDisplay & ~0x1f00) | ((mode & ~8) << 8);
-        func_0200222c(func_020022dc(), 1, 0x38);
+        OverlayManager_LoadOverlay(OverlayManager_GetGlobal(), 1, 0x38);
         variant = func_0202852c(*(s8 *)((u8 *)area + 0x4c));
         object = Heap_Alloc(0x8ac, (const char *)data_020d4370, 4,
                             &gHeapContext);

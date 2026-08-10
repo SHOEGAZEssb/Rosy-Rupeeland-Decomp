@@ -5,8 +5,8 @@
 .extern data_ov088_0221b6ec
 .extern data_ov088_0221b6f0
 .extern data_ov088_0221b9fc
-.extern func_0200222c
-.extern func_020022dc
+.extern OverlayManager_LoadOverlay
+.extern OverlayManager_GetGlobal
 .extern func_02005058
 .extern AnimationResource_Init
 .extern ActorCollection_GetSpriteOwner
@@ -75,10 +75,10 @@ func_ov088_0221af2c:
     ldr r0, [r0, r1, lsl #0x3]
     add r0, r2, r0
     str r0, [sp, #0x14]
-    bl func_020022dc
+    bl OverlayManager_GetGlobal
     ldr r2, .L_0221b094
     mov r1, #0x2
-    bl func_0200222c
+    bl OverlayManager_LoadOverlay
     ldr r1, .L_0221b080
     ldr r3, .L_0221b084
     mov r0, #0x40

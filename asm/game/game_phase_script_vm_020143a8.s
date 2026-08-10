@@ -7,8 +7,8 @@
 .extern data_020d5b34
 .extern data_021052fc
 .extern data_ov054_0220f160
-.extern func_0200222c
-.extern func_020022dc
+.extern OverlayManager_LoadOverlay
+.extern OverlayManager_GetGlobal
 .extern func_02004fe0
 .extern func_0200500c
 .extern func_02005058
@@ -257,10 +257,10 @@ L_0201464c:
     bl func_0201ded4
     b L_0201553c
 L_02014668:
-    bl func_020022dc
+    bl OverlayManager_GetGlobal
     ldr r2, L_020154d4
     mov r1, #0x1
-    bl func_0200222c
+    bl OverlayManager_LoadOverlay
     bl func_ov055_0220ef6c
     b L_0201553c
 L_02014680:
@@ -362,10 +362,10 @@ L_020147b0:
     mov r2, r7
     add r0, sp, #0x90
     bl func_0200500c
-    bl func_020022dc
+    bl OverlayManager_GetGlobal
     ldr r2, L_020154d8
     mov r1, #0x2
-    bl func_0200222c
+    bl OverlayManager_LoadOverlay
     ldr r1, L_020154dc
     ldr r3, L_020154cc
     mov r0, #0x160
@@ -979,10 +979,10 @@ L_02015088:
     bl func_0201ded4
     b L_0201553c
 L_020150a4:
-    bl func_020022dc
+    bl OverlayManager_GetGlobal
     ldr r2, L_020154e0
     mov r1, #0x0
-    bl func_0200222c
+    bl OverlayManager_LoadOverlay
     add r0, sp, #0x20
     mov r1, r9, lsl #0xc
     mov r2, r8, lsl #0xc
@@ -1000,10 +1000,10 @@ L_020150a4:
     bl func_02005058
     b L_0201553c
 L_020150f4:
-    bl func_020022dc
+    bl OverlayManager_GetGlobal
     ldr r2, L_020154e4
     mov r1, #0x0
-    bl func_0200222c
+    bl OverlayManager_LoadOverlay
     cmp r9, #0x0
     mov r0, r8
     mov r1, r7
@@ -1027,10 +1027,10 @@ L_02015144:
     ldr r1, L_020154ec
     ldr r0, [r0, #0x0]
     bl GameWork_SetFlag
-    bl func_020022dc
+    bl OverlayManager_GetGlobal
     ldr r2, L_020154f0
     mov r1, #0x1
-    bl func_0200222c
+    bl OverlayManager_LoadOverlay
     ldr r0, L_020154d0
     ldr r0, [r0, #0x0]
     add r0, r0, #0x3bc
@@ -1187,10 +1187,10 @@ L_02015398:
     mov r1, r5
     bl ActorCollection_FindActorByDescriptorValue
     mov r5, r0
-    bl func_020022dc
+    bl OverlayManager_GetGlobal
     ldr r2, L_020154f8
     mov r1, #0x2
-    bl func_0200222c
+    bl OverlayManager_LoadOverlay
     ldr r1, L_020154c8
     ldr r3, L_020154cc
     mov r0, #0x1c
@@ -1225,10 +1225,10 @@ L_0201542c:
     bl func_0201ded4
     b L_0201553c
 L_02015444:
-    bl func_020022dc
+    bl OverlayManager_GetGlobal
     ldr r2, L_02015500
     mov r1, #0x1
-    bl func_0200222c
+    bl OverlayManager_LoadOverlay
     bl func_ov057_0220e558
     b L_0201553c
 L_0201545c:
@@ -1251,10 +1251,10 @@ L_02015474:
     bl func_0201d240
     b L_0201553c
 L_020154a0:
-    bl func_020022dc
+    bl OverlayManager_GetGlobal
     ldr r2, L_02015504
     mov r1, #0x0
-    bl func_0200222c
+    bl OverlayManager_LoadOverlay
     mov r0, r9, lsl #0x10
     mov r0, r0, lsr #0x10
     bl func_ov053_0220da0c

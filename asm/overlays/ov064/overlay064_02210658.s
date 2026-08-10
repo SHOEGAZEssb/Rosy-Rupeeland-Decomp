@@ -6,8 +6,8 @@
 .extern data_020f4e14
 .extern data_021052fc
 .extern data_ov064_02211e98
-.extern func_02002290
-.extern func_020022dc
+.extern OverlayManager_UnloadOverlay
+.extern OverlayManager_GetGlobal
 .extern func_0200637c
 .extern func_02007f24
 .extern func_020084b8
@@ -166,9 +166,9 @@ func_ov064_02210658:
     beq .L_02210864
     bl Type7Actor_LeaveSpecialPresentationState
 .L_02210864:
-    bl func_020022dc
+    bl OverlayManager_GetGlobal
     mov r1, #0x2
-    bl func_02002290
+    bl OverlayManager_UnloadOverlay
     mov r0, r4
     bl Scene_Destroy
     mov r0, r4

@@ -3,7 +3,7 @@
 .extern data_020d5680
 .extern data_021052fc
 .extern func_02005058
-.extern func_02006280
+.extern OverlaySlot_Destroy
 .extern func_0201e1b0
 .extern ActorCollection_Destructor
 .extern ActorCollection_UnregisterAndDestroyAllActors
@@ -33,7 +33,7 @@ L_02011f6c:
     bl func_02005058
     add r0, r4, #0xeb0
     add r0, r0, #0x2000
-    bl func_02006280
+    bl OverlaySlot_Destroy
     add r0, r4, #0x8
     bl ActorCollection_Destructor
     mov r0, r4

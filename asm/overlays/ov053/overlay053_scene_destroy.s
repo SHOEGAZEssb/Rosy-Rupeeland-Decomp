@@ -1,8 +1,8 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov053/overlay053_recovery.c.
 .extern data_ov053_0220dd10
-.extern func_02002290
-.extern func_020022dc
+.extern OverlayManager_UnloadOverlay
+.extern OverlayManager_GetGlobal
 .extern AnimationResource_Destroy
 .extern func_0201e28c
 .extern func_02071f38
@@ -21,9 +21,9 @@ func_ov053_0220d7fc:
     bl func_02074330
     add r0, r4, #0x28
     bl func_02071f38
-    bl func_020022dc
+    bl OverlayManager_GetGlobal
     mov r1, #0x0
-    bl func_02002290
+    bl OverlayManager_UnloadOverlay
     add r0, r4, #0x24
     bl AnimationResource_Destroy
     mov r0, r4

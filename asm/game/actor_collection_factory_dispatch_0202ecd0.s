@@ -5,7 +5,7 @@
 .extern data_020def5c
 .extern data_020e8380
 .extern data_020ed470
-.extern func_020062a0
+.extern OverlaySlot_LoadOverlay
 .extern ActorCollection_RegisterActor
 .extern Actor_RefreshTerrainHeight
 .extern ActorDerivedType1_Init
@@ -200,7 +200,7 @@ ActorCollection_SpawnActorFromDescriptor: ; 0x0202ecd0
     bne .L_0202ee74
     add r0, r6, #0x204
     add r0, r0, #0xc00
-    bl func_020062a0
+    bl OverlaySlot_LoadOverlay
 .L_0202ee74:
     ldr r1, .L_0202fca8
     ldr r3, .L_0202fcac
@@ -223,7 +223,7 @@ ActorCollection_SpawnActorFromDescriptor: ; 0x0202ecd0
     bne .L_0202eec8
     add r0, r6, #0x204
     add r0, r0, #0xc00
-    bl func_020062a0
+    bl OverlaySlot_LoadOverlay
 .L_0202eec8:
     ldr r1, .L_0202fca8
     ldr r3, .L_0202fcac
@@ -246,7 +246,7 @@ ActorCollection_SpawnActorFromDescriptor: ; 0x0202ecd0
     bne .L_0202ef1c
     add r0, r6, #0x204
     add r0, r0, #0xc00
-    bl func_020062a0
+    bl OverlaySlot_LoadOverlay
 .L_0202ef1c:
     ldr r1, .L_0202fca8
     ldr r3, .L_0202fcac
@@ -281,7 +281,7 @@ ActorCollection_SpawnActorFromDescriptor: ; 0x0202ecd0
     bne .L_0202ef9c
     add r0, r6, #0x204
     add r0, r0, #0xc00
-    bl func_020062a0
+    bl OverlaySlot_LoadOverlay
 .L_0202ef9c:
     ldr r1, .L_0202fca8
     ldr r3, .L_0202fcac
@@ -305,7 +305,7 @@ ActorCollection_SpawnActorFromDescriptor: ; 0x0202ecd0
     bne .L_0202eff4
     add r0, r6, #0x204
     add r0, r0, #0xc00
-    bl func_020062a0
+    bl OverlaySlot_LoadOverlay
 .L_0202eff4:
     ldr r1, .L_0202fca8
     ldr r3, .L_0202fcac
@@ -328,7 +328,7 @@ ActorCollection_SpawnActorFromDescriptor: ; 0x0202ecd0
     bne .L_0202f048
     add r0, r6, #0x204
     add r0, r0, #0xc00
-    bl func_020062a0
+    bl OverlaySlot_LoadOverlay
 .L_0202f048:
     ldr r1, .L_0202fca8
     ldr r3, .L_0202fcac
@@ -352,7 +352,7 @@ ActorCollection_SpawnActorFromDescriptor: ; 0x0202ecd0
     bne .L_0202f0a0
     add r0, r6, #0x204
     add r0, r0, #0xc00
-    bl func_020062a0
+    bl OverlaySlot_LoadOverlay
 .L_0202f0a0:
     ldr r0, [r6, #0xe10]
     ldr r1, .L_0202fcc0
@@ -362,7 +362,7 @@ ActorCollection_SpawnActorFromDescriptor: ; 0x0202ecd0
     cmp r0, #0x0
     bne .L_0202f0c4
     add r0, r6, #0xe10
-    bl func_020062a0
+    bl OverlaySlot_LoadOverlay
 .L_0202f0c4:
     ldr r1, .L_0202fca8
     ldr r3, .L_0202fcac
@@ -385,7 +385,7 @@ ActorCollection_SpawnActorFromDescriptor: ; 0x0202ecd0
     bne .L_0202f118
     add r0, r6, #0x204
     add r0, r0, #0xc00
-    bl func_020062a0
+    bl OverlaySlot_LoadOverlay
 .L_0202f118:
     ldr r0, [r6, #0xe10]
     ldr r1, .L_0202fcc4
@@ -395,7 +395,7 @@ ActorCollection_SpawnActorFromDescriptor: ; 0x0202ecd0
     cmp r0, #0x0
     bne .L_0202f13c
     add r0, r6, #0xe10
-    bl func_020062a0
+    bl OverlaySlot_LoadOverlay
 .L_0202f13c:
     ldr r1, .L_0202fca8
     ldr r3, .L_0202fcac
@@ -418,7 +418,7 @@ ActorCollection_SpawnActorFromDescriptor: ; 0x0202ecd0
     bne .L_0202f190
     add r0, r6, #0x204
     add r0, r0, #0xc00
-    bl func_020062a0
+    bl OverlaySlot_LoadOverlay
 .L_0202f190:
     ldr r0, [r6, #0xe10]
     ldr r1, .L_0202fcc0
@@ -428,7 +428,7 @@ ActorCollection_SpawnActorFromDescriptor: ; 0x0202ecd0
     cmp r0, #0x0
     bne .L_0202f1b4
     add r0, r6, #0xe10
-    bl func_020062a0
+    bl OverlaySlot_LoadOverlay
 .L_0202f1b4:
     ldr r1, .L_0202fca8
     ldr r3, .L_0202fcac
@@ -473,7 +473,7 @@ ActorCollection_SpawnActorFromDescriptor: ; 0x0202ecd0
     bne .L_0202f258
     add r0, r6, #0x204
     add r0, r0, #0xc00
-    bl func_020062a0
+    bl OverlaySlot_LoadOverlay
 .L_0202f258:
     ldr r1, .L_0202fca8
     ldr r3, .L_0202fcac
@@ -520,7 +520,7 @@ ActorCollection_SpawnActorFromDescriptor: ; 0x0202ecd0
     bne .L_0202f304
     add r0, r6, #0x204
     add r0, r0, #0xc00
-    bl func_020062a0
+    bl OverlaySlot_LoadOverlay
 .L_0202f304:
     ldr r1, .L_0202fca8
     ldr r3, .L_0202fcac
@@ -543,7 +543,7 @@ ActorCollection_SpawnActorFromDescriptor: ; 0x0202ecd0
     bne .L_0202f358
     add r0, r6, #0x204
     add r0, r0, #0xc00
-    bl func_020062a0
+    bl OverlaySlot_LoadOverlay
 .L_0202f358:
     ldr r1, .L_0202fca8
     ldr r3, .L_0202fcac
@@ -566,7 +566,7 @@ ActorCollection_SpawnActorFromDescriptor: ; 0x0202ecd0
     bne .L_0202f3ac
     add r0, r6, #0x204
     add r0, r0, #0xc00
-    bl func_020062a0
+    bl OverlaySlot_LoadOverlay
 .L_0202f3ac:
     ldr r1, .L_0202fca8
     ldr r3, .L_0202fcac
@@ -589,7 +589,7 @@ ActorCollection_SpawnActorFromDescriptor: ; 0x0202ecd0
     bne .L_0202f400
     add r0, r6, #0x204
     add r0, r0, #0xc00
-    bl func_020062a0
+    bl OverlaySlot_LoadOverlay
 .L_0202f400:
     ldr r1, .L_0202fca8
     ldr r3, .L_0202fcac
@@ -612,7 +612,7 @@ ActorCollection_SpawnActorFromDescriptor: ; 0x0202ecd0
     bne .L_0202f454
     add r0, r6, #0x204
     add r0, r0, #0xc00
-    bl func_020062a0
+    bl OverlaySlot_LoadOverlay
 .L_0202f454:
     ldr r0, [r6, #0xe10]
     ldr r1, .L_0202fcd4
@@ -622,7 +622,7 @@ ActorCollection_SpawnActorFromDescriptor: ; 0x0202ecd0
     cmp r0, #0x0
     bne .L_0202f478
     add r0, r6, #0xe10
-    bl func_020062a0
+    bl OverlaySlot_LoadOverlay
 .L_0202f478:
     ldr r1, .L_0202fca8
     ldr r3, .L_0202fcac
@@ -645,7 +645,7 @@ ActorCollection_SpawnActorFromDescriptor: ; 0x0202ecd0
     bne .L_0202f4cc
     add r0, r6, #0x204
     add r0, r0, #0xc00
-    bl func_020062a0
+    bl OverlaySlot_LoadOverlay
 .L_0202f4cc:
     ldr r0, [r6, #0xe10]
     ldr r1, .L_0202fcd4
@@ -655,7 +655,7 @@ ActorCollection_SpawnActorFromDescriptor: ; 0x0202ecd0
     cmp r0, #0x0
     bne .L_0202f4f0
     add r0, r6, #0xe10
-    bl func_020062a0
+    bl OverlaySlot_LoadOverlay
 .L_0202f4f0:
     ldr r1, .L_0202fca8
     ldr r3, .L_0202fcac
@@ -677,7 +677,7 @@ ActorCollection_SpawnActorFromDescriptor: ; 0x0202ecd0
     cmp r0, #0x0
     bne .L_0202f540
     add r0, r6, #0xe10
-    bl func_020062a0
+    bl OverlaySlot_LoadOverlay
 .L_0202f540:
     ldr r1, .L_0202fca8
     ldr r3, .L_0202fcac
@@ -700,7 +700,7 @@ ActorCollection_SpawnActorFromDescriptor: ; 0x0202ecd0
     bne .L_0202f594
     add r0, r6, #0x204
     add r0, r0, #0xc00
-    bl func_020062a0
+    bl OverlaySlot_LoadOverlay
 .L_0202f594:
     ldr r1, .L_0202fca8
     ldr r3, .L_0202fcac
@@ -723,7 +723,7 @@ ActorCollection_SpawnActorFromDescriptor: ; 0x0202ecd0
     bne .L_0202f5e8
     add r0, r6, #0x204
     add r0, r0, #0xc00
-    bl func_020062a0
+    bl OverlaySlot_LoadOverlay
 .L_0202f5e8:
     ldr r1, .L_0202fca8
     ldr r3, .L_0202fcac
@@ -746,7 +746,7 @@ ActorCollection_SpawnActorFromDescriptor: ; 0x0202ecd0
     bne .L_0202f63c
     add r0, r6, #0x204
     add r0, r0, #0xc00
-    bl func_020062a0
+    bl OverlaySlot_LoadOverlay
 .L_0202f63c:
     ldr r1, .L_0202fca8
     ldr r3, .L_0202fcac
@@ -769,7 +769,7 @@ ActorCollection_SpawnActorFromDescriptor: ; 0x0202ecd0
     bne .L_0202f690
     add r0, r6, #0x204
     add r0, r0, #0xc00
-    bl func_020062a0
+    bl OverlaySlot_LoadOverlay
 .L_0202f690:
     ldr r1, .L_0202fca8
     ldr r3, .L_0202fcac
@@ -791,7 +791,7 @@ ActorCollection_SpawnActorFromDescriptor: ; 0x0202ecd0
     cmp r0, #0x0
     bne .L_0202f6e0
     add r0, r6, #0xe10
-    bl func_020062a0
+    bl OverlaySlot_LoadOverlay
 .L_0202f6e0:
     ldr r1, .L_0202fca8
     ldr r3, .L_0202fcac
@@ -813,7 +813,7 @@ ActorCollection_SpawnActorFromDescriptor: ; 0x0202ecd0
     cmp r0, #0x0
     bne .L_0202f730
     add r0, r6, #0xe10
-    bl func_020062a0
+    bl OverlaySlot_LoadOverlay
 .L_0202f730:
     ldr r1, .L_0202fca8
     ldr r3, .L_0202fcac
@@ -836,7 +836,7 @@ ActorCollection_SpawnActorFromDescriptor: ; 0x0202ecd0
     bne .L_0202f784
     add r0, r6, #0x204
     add r0, r0, #0xc00
-    bl func_020062a0
+    bl OverlaySlot_LoadOverlay
 .L_0202f784:
     ldr r1, .L_0202fca8
     ldr r3, .L_0202fcac
@@ -859,7 +859,7 @@ ActorCollection_SpawnActorFromDescriptor: ; 0x0202ecd0
     bne .L_0202f7d8
     add r0, r6, #0x204
     add r0, r0, #0xc00
-    bl func_020062a0
+    bl OverlaySlot_LoadOverlay
 .L_0202f7d8:
     ldr r1, .L_0202fca8
     ldr r3, .L_0202fcac
@@ -882,7 +882,7 @@ ActorCollection_SpawnActorFromDescriptor: ; 0x0202ecd0
     bne .L_0202f82c
     add r0, r6, #0x204
     add r0, r0, #0xc00
-    bl func_020062a0
+    bl OverlaySlot_LoadOverlay
 .L_0202f82c:
     ldr r1, .L_0202fca8
     ldr r3, .L_0202fcac
@@ -905,7 +905,7 @@ ActorCollection_SpawnActorFromDescriptor: ; 0x0202ecd0
     bne .L_0202f880
     add r0, r6, #0x204
     add r0, r0, #0xc00
-    bl func_020062a0
+    bl OverlaySlot_LoadOverlay
 .L_0202f880:
     ldr r1, .L_0202fca8
     ldr r3, .L_0202fcac
@@ -928,7 +928,7 @@ ActorCollection_SpawnActorFromDescriptor: ; 0x0202ecd0
     bne .L_0202f8d4
     add r0, r6, #0x204
     add r0, r0, #0xc00
-    bl func_020062a0
+    bl OverlaySlot_LoadOverlay
 .L_0202f8d4:
     ldr r1, .L_0202fca8
     ldr r3, .L_0202fcac
@@ -980,7 +980,7 @@ ActorCollection_SpawnActorFromDescriptor: ; 0x0202ecd0
     bne .L_0202f98c
     add r0, r6, #0x204
     add r0, r0, #0xc00
-    bl func_020062a0
+    bl OverlaySlot_LoadOverlay
 .L_0202f98c:
     ldr r0, [r6, #0xe10]
     ldr r1, .L_0202fcd4
@@ -990,7 +990,7 @@ ActorCollection_SpawnActorFromDescriptor: ; 0x0202ecd0
     cmp r0, #0x0
     bne .L_0202f9b0
     add r0, r6, #0xe10
-    bl func_020062a0
+    bl OverlaySlot_LoadOverlay
 .L_0202f9b0:
     ldr r1, .L_0202fca8
     ldr r3, .L_0202fcac
@@ -1021,7 +1021,7 @@ ActorCollection_SpawnActorFromDescriptor: ; 0x0202ecd0
     cmp r0, #0x0
     bne .L_0202fa20
     add r0, r6, #0xe10
-    bl func_020062a0
+    bl OverlaySlot_LoadOverlay
 .L_0202fa20:
     ldr r1, .L_0202fca8
     ldr r3, .L_0202fcac
@@ -1052,7 +1052,7 @@ ActorCollection_SpawnActorFromDescriptor: ; 0x0202ecd0
     cmp r0, #0x0
     bne .L_0202fa90
     add r0, r6, #0xe10
-    bl func_020062a0
+    bl OverlaySlot_LoadOverlay
 .L_0202fa90:
     ldr r1, .L_0202fca8
     ldr r3, .L_0202fcac
@@ -1083,7 +1083,7 @@ ActorCollection_SpawnActorFromDescriptor: ; 0x0202ecd0
     cmp r0, #0x0
     bne .L_0202fb00
     add r0, r6, #0xe10
-    bl func_020062a0
+    bl OverlaySlot_LoadOverlay
 .L_0202fb00:
     ldr r1, .L_0202fca8
     ldr r3, .L_0202fcac
@@ -1230,7 +1230,7 @@ ActorCollection_SpawnActorFromDescriptor: ; 0x0202ecd0
     bne .L_0202fd20
     add r0, r6, #0x204
     add r0, r0, #0xc00
-    bl func_020062a0
+    bl OverlaySlot_LoadOverlay
 .L_0202fd20:
     ldr r1, .L_0202fca8
     ldr r3, .L_0202fcac
@@ -1253,7 +1253,7 @@ ActorCollection_SpawnActorFromDescriptor: ; 0x0202ecd0
     bne .L_0202fd74
     add r0, r6, #0x204
     add r0, r0, #0xc00
-    bl func_020062a0
+    bl OverlaySlot_LoadOverlay
 .L_0202fd74:
     ldr r1, .L_0202fca8
     ldr r3, .L_0202fcac
@@ -1276,7 +1276,7 @@ ActorCollection_SpawnActorFromDescriptor: ; 0x0202ecd0
     bne .L_0202fdc8
     add r0, r6, #0x204
     add r0, r0, #0xc00
-    bl func_020062a0
+    bl OverlaySlot_LoadOverlay
 .L_0202fdc8:
     ldr r1, .L_0202fca8
     ldr r3, .L_0202fcac
@@ -1298,7 +1298,7 @@ ActorCollection_SpawnActorFromDescriptor: ; 0x0202ecd0
     cmp r0, #0x0
     bne .L_0202fe18
     add r0, r6, #0xe10
-    bl func_020062a0
+    bl OverlaySlot_LoadOverlay
 .L_0202fe18:
     ldr r1, .L_0202fca8
     ldr r3, .L_0202fcac
@@ -1320,7 +1320,7 @@ ActorCollection_SpawnActorFromDescriptor: ; 0x0202ecd0
     cmp r0, #0x0
     bne .L_0202fe68
     add r0, r6, #0xe10
-    bl func_020062a0
+    bl OverlaySlot_LoadOverlay
 .L_0202fe68:
     ldr r1, .L_0202fca8
     ldr r3, .L_0202fcac
@@ -1343,7 +1343,7 @@ ActorCollection_SpawnActorFromDescriptor: ; 0x0202ecd0
     bne .L_0202febc
     add r0, r6, #0x204
     add r0, r0, #0xc00
-    bl func_020062a0
+    bl OverlaySlot_LoadOverlay
 .L_0202febc:
     ldr r1, .L_0202fca8
     ldr r3, .L_0202fcac
@@ -1366,7 +1366,7 @@ ActorCollection_SpawnActorFromDescriptor: ; 0x0202ecd0
     bne .L_0202ff10
     add r0, r6, #0x204
     add r0, r0, #0xc00
-    bl func_020062a0
+    bl OverlaySlot_LoadOverlay
 .L_0202ff10:
     ldr r1, .L_0202fca8
     ldr r3, .L_0202fcac
@@ -1491,7 +1491,7 @@ ActorCollection_SpawnActorFromDescriptor: ; 0x0202ecd0
     bne .L_020300dc
     add r0, r6, #0x204
     add r0, r0, #0xc00
-    bl func_020062a0
+    bl OverlaySlot_LoadOverlay
 .L_020300dc:
     ldr r1, .L_0202fca8
     ldr r3, .L_0202fcac
@@ -1513,7 +1513,7 @@ ActorCollection_SpawnActorFromDescriptor: ; 0x0202ecd0
     cmp r0, #0x0
     bne .L_0203012c
     add r0, r6, #0xe10
-    bl func_020062a0
+    bl OverlaySlot_LoadOverlay
 .L_0203012c:
     ldr r1, .L_0202fca8
     ldr r3, .L_0202fcac
@@ -1752,7 +1752,7 @@ ActorCollection_SpawnActorFromDescriptor: ; 0x0202ecd0
     cmp r0, #0x0
     bne .L_0203048c
     add r0, r6, #0xe10
-    bl func_020062a0
+    bl OverlaySlot_LoadOverlay
 .L_0203048c:
     ldr r1, .L_0202fca8
     ldr r3, .L_0202fcac
@@ -1810,7 +1810,7 @@ ActorCollection_SpawnActorFromDescriptor: ; 0x0202ecd0
     cmp r0, #0x0
     bne .L_02030560
     add r0, r6, #0xe10
-    bl func_020062a0
+    bl OverlaySlot_LoadOverlay
 .L_02030560:
     ldr r1, .L_0202fca8
     ldr r3, .L_0202fcac
@@ -1832,7 +1832,7 @@ ActorCollection_SpawnActorFromDescriptor: ; 0x0202ecd0
     cmp r0, #0x0
     bne .L_020305b0
     add r0, r6, #0xe10
-    bl func_020062a0
+    bl OverlaySlot_LoadOverlay
 .L_020305b0:
     ldr r1, .L_0202fca8
     ldr r3, .L_0202fcac
@@ -1962,7 +1962,7 @@ ActorCollection_SpawnActorFromDescriptor: ; 0x0202ecd0
     cmp r0, #0x0
     bne .L_0203078c
     add r0, r6, #0xe10
-    bl func_020062a0
+    bl OverlaySlot_LoadOverlay
 .L_0203078c:
     ldr r1, .L_0202fca8
     ldr r3, .L_0202fcac
@@ -1994,7 +1994,7 @@ ActorCollection_SpawnActorFromDescriptor: ; 0x0202ecd0
     bne .L_020307fc
     add r0, r6, #0x204
     add r0, r0, #0xc00
-    bl func_020062a0
+    bl OverlaySlot_LoadOverlay
 .L_020307fc:
     ldr r1, .L_0202fca8
     ldr r3, .L_0202fcac
@@ -2071,7 +2071,7 @@ ActorCollection_SpawnActorFromDescriptor: ; 0x0202ecd0
     cmp r0, #0x0
     bne .L_02030910
     add r0, r6, #0xe10
-    bl func_020062a0
+    bl OverlaySlot_LoadOverlay
 .L_02030910:
     ldr r1, .L_0202fca8
     ldr r3, .L_0202fcac
@@ -2099,7 +2099,7 @@ ActorCollection_SpawnActorFromDescriptor: ; 0x0202ecd0
     cmp r0, #0x0
     bne .L_02030974
     add r0, r6, #0xe10
-    bl func_020062a0
+    bl OverlaySlot_LoadOverlay
 .L_02030974:
     ldr r1, .L_0202fca8
     ldr r3, .L_0202fcac
@@ -2127,7 +2127,7 @@ ActorCollection_SpawnActorFromDescriptor: ; 0x0202ecd0
     cmp r0, #0x0
     bne .L_020309d8
     add r0, r6, #0xe10
-    bl func_020062a0
+    bl OverlaySlot_LoadOverlay
 .L_020309d8:
     ldr r1, .L_0202fca8
     ldr r3, .L_0202fcac

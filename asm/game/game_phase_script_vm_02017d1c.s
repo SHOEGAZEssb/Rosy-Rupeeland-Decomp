@@ -16,8 +16,8 @@
 .extern data_020d5be4
 .extern data_020f4e14
 .extern data_021052fc
-.extern func_0200222c
-.extern func_020022dc
+.extern OverlayManager_LoadOverlay
+.extern OverlayManager_GetGlobal
 .extern func_02012704
 .extern func_0201d240
 .extern func_0201d688
@@ -139,10 +139,10 @@ L_02017e60:
     bl func_0201ded4
     b L_020181b0
 L_02017e78:
-    bl func_020022dc
+    bl OverlayManager_GetGlobal
     ldr r2, L_020181d4
     mov r1, #0x1
-    bl func_0200222c
+    bl OverlayManager_LoadOverlay
     bl func_ov058_0220f484
     b L_020181b0
 L_02017e90:

@@ -2,8 +2,8 @@
 .text
 .extern Heap_Free
 .extern data_020d6984
-.extern func_02006280
-.extern func_020062f8
+.extern OverlaySlot_Destroy
+.extern OverlaySlot_UnloadOverlay
 .extern func_0201e28c
 .extern func_ov094_022199e0
 
@@ -23,9 +23,9 @@ func_0202451c: ; 0x0202451c
     bl Heap_Free
 .L_02024548:
     add r0, r5, #0xc
-    bl func_020062f8
+    bl OverlaySlot_UnloadOverlay
     add r0, r5, #0xc
-    bl func_02006280
+    bl OverlaySlot_Destroy
     mov r0, r5
     bl func_0201e28c
     mov r0, r5

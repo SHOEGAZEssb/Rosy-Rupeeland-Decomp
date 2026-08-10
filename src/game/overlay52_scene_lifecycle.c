@@ -55,7 +55,7 @@ Overlay52Scene *func_0201cfd0(Overlay52Scene *self, u32 parameter)
     self->child28 = 0;
     brightness = DisplayBrightnessPair_GetScreen(&data_020f4dc8, 1);
     DisplayBrightness_StartTransition(brightness, 0, -16, 8);
-    func_0200222c(func_020022dc(), 0, 0x34);
+    OverlayManager_LoadOverlay(OverlayManager_GetGlobal(), 0, 0x34);
     Scene_SetFlags03(&self->base);
     return self;
 }
@@ -70,8 +70,8 @@ Overlay52Scene *func_0201d03c(Overlay52Scene *self)
     Scene_ClearFlags03(&self->base);
     if (self->child28 != 0)
         self->child28->vtable->destroyAndFree((Scene *)self->child28);
-    func_02002290(func_020022dc(), 0);
-    func_02002290(func_020022dc(), 2);
+    OverlayManager_UnloadOverlay(OverlayManager_GetGlobal(), 0);
+    OverlayManager_UnloadOverlay(OverlayManager_GetGlobal(), 2);
     Scene_Destroy(&self->base);
     return self;
 }
@@ -83,8 +83,8 @@ Overlay52Scene *func_0201d094(Overlay52Scene *self)
     Scene_ClearFlags03(&self->base);
     if (self->child28 != 0)
         self->child28->vtable->destroyAndFree((Scene *)self->child28);
-    func_02002290(func_020022dc(), 0);
-    func_02002290(func_020022dc(), 2);
+    OverlayManager_UnloadOverlay(OverlayManager_GetGlobal(), 0);
+    OverlayManager_UnloadOverlay(OverlayManager_GetGlobal(), 2);
     Scene_Destroy(&self->base);
     Heap_Free(self);
     return self;

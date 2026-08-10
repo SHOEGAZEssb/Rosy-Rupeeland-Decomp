@@ -102,7 +102,7 @@ void *func_0201da9c(Overlay60ScriptContext *context, s32 argument1,
         resource = func_02078e98(data_021f4090, resourceIndex);
     }
     requestedDisplay = func_0201d9e4(requestedDisplay);
-    func_0200222c(func_020022dc(), 2, 0x3c);
+    OverlayManager_LoadOverlay(OverlayManager_GetGlobal(), 2, 0x3c);
     allocation = Heap_Alloc(0x40, data_020d5e00, 4, &gHeapContext);
     if (allocation == 0)
         return 0;

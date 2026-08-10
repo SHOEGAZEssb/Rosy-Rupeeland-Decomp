@@ -6,8 +6,8 @@
 .extern Scene_Destroy
 .extern data_021052fc
 .extern data_ov062_02211b34
-.extern func_02002290
-.extern func_020022dc
+.extern OverlayManager_UnloadOverlay
+.extern OverlayManager_GetGlobal
 .extern func_020050a4
 .extern func_0200637c
 .extern Actor_SetDirectionFromVector
@@ -117,9 +117,9 @@ func_ov062_02210180:
     ldr r1, [r0, #0xfec]
     bic r1, r1, #0x8
     str r1, [r0, #0xfec]
-    bl func_020022dc
+    bl OverlayManager_GetGlobal
     mov r1, #0x2
-    bl func_02002290
+    bl OverlayManager_UnloadOverlay
     mov r0, r4
     bl Scene_Destroy
     mov r0, r4

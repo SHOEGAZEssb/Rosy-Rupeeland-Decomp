@@ -5,7 +5,7 @@
 .extern func_0200500c
 .extern func_02005058
 .extern func_020050a4
-.extern func_02006268
+.extern OverlaySlot_Init
 .extern func_0201e250
 
 .global func_ov054_0220e400
@@ -27,7 +27,7 @@ func_ov054_0220e400:
     mov r1, #0x1000
     add r0, r4, #0x1a8
     str r1, [r4, #0x1a4]
-    bl func_02006268
+    bl OverlaySlot_Init
     mov r2, #0x0
     mov r1, r2
 .L_0220e450:

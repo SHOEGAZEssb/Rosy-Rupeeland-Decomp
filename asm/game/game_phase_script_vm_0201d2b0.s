@@ -4,10 +4,10 @@
 .extern Scene_SetFlags03
 .extern Scene_Destroy
 .extern Heap_Free
-.extern func_02006268
-.extern func_02006280
-.extern func_020062a0
-.extern func_020062f8
+.extern OverlaySlot_Init
+.extern OverlaySlot_Destroy
+.extern OverlaySlot_LoadOverlay
+.extern OverlaySlot_UnloadOverlay
 .extern func_02092c8c
 .extern DisplayBrightness_IsSubTransitionComplete
 .extern func_020122a0
@@ -42,10 +42,10 @@ func_0201d2b0: ; 0x0201d2b0
     blx r1
 L_0201d2dc:
     add r0, r4, #0x2c
-    bl func_020062f8
+    bl OverlaySlot_UnloadOverlay
 L_0201d2e4:
     add r0, r4, #0x2c
-    bl func_02006280
+    bl OverlaySlot_Destroy
     mov r0, r4
     bl Scene_Destroy
     mov r0, r4

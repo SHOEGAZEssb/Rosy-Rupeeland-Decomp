@@ -2,8 +2,8 @@
 ; Matching fallback for the portable implementation in src/overlays/ov051/overlay051_sub_scene_recovery.c.
 .extern GX_SetBankForSubBG
 .extern data_ov051_0220df98
-.extern func_02002290
-.extern func_020022dc
+.extern OverlayManager_UnloadOverlay
+.extern OverlayManager_GetGlobal
 .extern func_0201e28c
 .extern func_020aea7c
 
@@ -17,9 +17,9 @@ func_ov051_0220d99c:
     bl GX_SetBankForSubBG
     mov r0, #0x80
     bl func_020aea7c
-    bl func_020022dc
+    bl OverlayManager_GetGlobal
     mov r1, #0x0
-    bl func_02002290
+    bl OverlayManager_UnloadOverlay
     mov r0, r4
     bl func_0201e28c
     mov r0, r4

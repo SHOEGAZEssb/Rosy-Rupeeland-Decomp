@@ -3,8 +3,8 @@
 .extern Heap_Free
 .extern Scene_Destroy
 .extern data_ov060_02210620
-.extern func_02002290
-.extern func_020022dc
+.extern OverlayManager_UnloadOverlay
+.extern OverlayManager_GetGlobal
 .extern func_0200f52c
 .extern func_0200f7bc
 .extern func_0200f824
@@ -28,9 +28,9 @@ func_ov060_0221028c:
     mov r0, r4
     bl Heap_Free
 .L_022102c8:
-    bl func_020022dc
+    bl OverlayManager_GetGlobal
     mov r1, #0x2
-    bl func_02002290
+    bl OverlayManager_UnloadOverlay
     mov r0, r5
     bl Scene_Destroy
     mov r0, r5

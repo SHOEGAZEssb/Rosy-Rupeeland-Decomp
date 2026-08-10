@@ -1,10 +1,10 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov054/overlay054_recovery.c.
 .extern data_ov054_0220f130
-.extern func_02002290
-.extern func_020022dc
+.extern OverlayManager_UnloadOverlay
+.extern OverlayManager_GetGlobal
 .extern func_02005058
-.extern func_02006280
+.extern OverlaySlot_Destroy
 .extern func_0201e28c
 
 .global func_ov054_0220e6b4
@@ -17,11 +17,11 @@ func_ov054_0220e6b4:
     ldr r0, [r1, #0x0]
     bic r0, r0, #0xe000
     str r0, [r1, #0x0]
-    bl func_020022dc
+    bl OverlayManager_GetGlobal
     mov r1, #0x1
-    bl func_02002290
+    bl OverlayManager_UnloadOverlay
     add r0, r4, #0x1a8
-    bl func_02006280
+    bl OverlaySlot_Destroy
     add r0, r4, #0x194
     bl func_02005058
     mov r0, r4

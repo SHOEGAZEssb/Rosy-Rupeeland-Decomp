@@ -2,7 +2,7 @@
 .extern data_020d431c
 .extern data_021052fc
 .extern FrameTaskList_DestroyNode
-.extern func_02006280
+.extern OverlaySlot_Destroy
 .extern func_02007040
 .extern func_020099fc
 .extern func_02009d58
@@ -90,7 +90,7 @@ L_02007100:
     ldr r0, [r0, #0x0]
     bl func_02058ce0
     add r0, r4, #0x30c0
-    bl func_02006280
+    bl OverlaySlot_Destroy
     add r0, r4, #0x44
     add r0, r0, #0x3000
     bl func_020099fc

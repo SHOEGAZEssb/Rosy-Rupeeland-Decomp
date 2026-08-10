@@ -5,8 +5,8 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_02006268(void *object);
-extern void func_02006280(void *object);
+extern void OverlaySlot_Init(void *object);
+extern void OverlaySlot_Destroy(void *object);
 extern void func_0200e5bc(GamePhaseState *self);
 extern void func_0200e61c(GamePhaseState *self);
 extern void func_0200fa40(void *object);
@@ -45,7 +45,7 @@ GamePhaseState *func_0200e4dc(GamePhaseState *self)
 {
     self->configuration = 0;
     ActorCollection_Init(self->storage_0004);
-    func_02006268(self->helper_2ea4);
+    OverlaySlot_Init(self->helper_2ea4);
     self->owned_2eb0 = 0;
     func_0200fa40(self->helper_2eb4);
     func_0201dbc8(self->helper_2f58);
@@ -64,7 +64,7 @@ GamePhaseState *func_0200e574(GamePhaseState *self)
     func_0201155c(self->helper_2f80);
     func_0201dc98(self->helper_2f58);
     func_0200fb34(self->helper_2eb4);
-    func_02006280(self->helper_2ea4);
+    OverlaySlot_Destroy(self->helper_2ea4);
     ActorCollection_Destructor(self->storage_0004);
     return self;
 }

@@ -5,8 +5,8 @@
 .extern Scene_ClearFlags03
 .extern Scene_Destroy
 .extern data_ov063_022105dc
-.extern func_02002290
-.extern func_020022dc
+.extern OverlayManager_UnloadOverlay
+.extern OverlayManager_GetGlobal
 .extern func_02005058
 .extern func_020a6390
 .extern gGameWork
@@ -32,9 +32,9 @@ func_ov063_0220fec8:
     ldr r0, [r0, #0x0]
     ldr r1, .L_0220ff44
     bl GameWork_ClearFlag
-    bl func_020022dc
+    bl OverlayManager_GetGlobal
     mov r1, #0x2
-    bl func_02002290
+    bl OverlayManager_UnloadOverlay
     add r0, r5, #0x38
     bl func_02005058
     add r0, r5, #0x28

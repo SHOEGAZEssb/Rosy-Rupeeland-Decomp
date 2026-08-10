@@ -19,10 +19,10 @@ typedef char OverlayManagerGlobalSizeCheck[
 extern "C" {
 #endif
 
-extern OverlaySlot *func_02006268(OverlaySlot *slot);
-extern OverlaySlot *func_02006280(OverlaySlot *slot);
-extern void func_020062a0(OverlaySlot *slot, int overlayId);
-extern void func_020062f8(OverlaySlot *slot);
+extern OverlaySlot *OverlaySlot_Init(OverlaySlot *slot);
+extern OverlaySlot *OverlaySlot_Destroy(OverlaySlot *slot);
+extern void OverlaySlot_LoadOverlay(OverlaySlot *slot, int overlayId);
+extern void OverlaySlot_UnloadOverlay(OverlaySlot *slot);
 extern void OS_Halt(void);
 extern void __register_global_object(void *object, void *destructor,
                                      void *record);
@@ -34,22 +34,22 @@ extern void __register_global_object(void *object, void *destructor,
 OverlayManagerGlobal data_020f43ac;
 
 /* Initialize all four independent overlay slots and return the manager. */
-OverlayManager *func_020021d0(OverlayManager *manager)
+OverlayManager *OverlayManager_Init(OverlayManager *manager)
 {
-    func_02006268(&manager->slots[0]);
-    func_02006268(&manager->slots[1]);
-    func_02006268(&manager->slots[2]);
-    func_02006268(&manager->slots[3]);
+    OverlaySlot_Init(&manager->slots[0]);
+    OverlaySlot_Init(&manager->slots[1]);
+    OverlaySlot_Init(&manager->slots[2]);
+    OverlaySlot_Init(&manager->slots[3]);
     return manager;
 }
 
 /* Destroy the four slots in reverse order, unloading any active overlays. */
-OverlayManager *func_020021fc(OverlayManager *manager)
+OverlayManager *OverlayManager_Destroy(OverlayManager *manager)
 {
-    func_02006280(&manager->slots[3]);
-    func_02006280(&manager->slots[2]);
-    func_02006280(&manager->slots[1]);
-    func_02006280(&manager->slots[0]);
+    OverlaySlot_Destroy(&manager->slots[3]);
+    OverlaySlot_Destroy(&manager->slots[2]);
+    OverlaySlot_Destroy(&manager->slots[1]);
+    OverlaySlot_Destroy(&manager->slots[0]);
     return manager;
 }
 
@@ -58,20 +58,20 @@ OverlayManager *func_020021fc(OverlayManager *manager)
  * occupant first and performs the CheckedFS/NitroSDK transaction. Retail
  * treats a slot index outside 0..3 as fatal and enters OS_Halt.
  */
-void func_0200222c(OverlayManager *manager, int slotIndex, int overlayId)
+void OverlayManager_LoadOverlay(OverlayManager *manager, int slotIndex, int overlayId)
 {
     switch (slotIndex) {
     case 0:
-        func_020062a0(&manager->slots[0], overlayId);
+        OverlaySlot_LoadOverlay(&manager->slots[0], overlayId);
         return;
     case 1:
-        func_020062a0(&manager->slots[1], overlayId);
+        OverlaySlot_LoadOverlay(&manager->slots[1], overlayId);
         return;
     case 2:
-        func_020062a0(&manager->slots[2], overlayId);
+        OverlaySlot_LoadOverlay(&manager->slots[2], overlayId);
         return;
     case 3:
-        func_020062a0(&manager->slots[3], overlayId);
+        OverlaySlot_LoadOverlay(&manager->slots[3], overlayId);
         return;
     }
 
@@ -79,20 +79,20 @@ void func_0200222c(OverlayManager *manager, int slotIndex, int overlayId)
 }
 
 /* Unload the selected slot; an out-of-range index has no observable effect. */
-void func_02002290(OverlayManager *manager, int slotIndex)
+void OverlayManager_UnloadOverlay(OverlayManager *manager, int slotIndex)
 {
     switch (slotIndex) {
     case 0:
-        func_020062f8(&manager->slots[0]);
+        OverlaySlot_UnloadOverlay(&manager->slots[0]);
         return;
     case 1:
-        func_020062f8(&manager->slots[1]);
+        OverlaySlot_UnloadOverlay(&manager->slots[1]);
         return;
     case 2:
-        func_020062f8(&manager->slots[2]);
+        OverlaySlot_UnloadOverlay(&manager->slots[2]);
         return;
     case 3:
-        func_020062f8(&manager->slots[3]);
+        OverlaySlot_UnloadOverlay(&manager->slots[3]);
         return;
     }
 }
@@ -101,12 +101,12 @@ void func_02002290(OverlayManager *manager, int slotIndex)
  * Lazily construct the process-global manager and register its reverse-order
  * slot destructor with the Metrowerks runtime. The guard is not synchronized.
  */
-OverlayManager *func_020022dc(void)
+OverlayManager *OverlayManager_GetGlobal(void)
 {
     if ((data_020f43ac.guard & 1) == 0) {
-        func_020021d0(&data_020f43ac.manager);
+        OverlayManager_Init(&data_020f43ac.manager);
         __register_global_object(&data_020f43ac.manager,
-                                 (void *)func_020021fc,
+                                 (void *)OverlayManager_Destroy,
                                  data_020f43ac.destructorRecord);
         data_020f43ac.guard |= 1;
     }

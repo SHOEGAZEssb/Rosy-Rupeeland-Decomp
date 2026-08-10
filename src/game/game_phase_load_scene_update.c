@@ -57,7 +57,7 @@ extern int func_020740a4(...);
 extern int func_02091fb0(...);
 extern int func_02001970(...);
 extern int func_0200199c(...);
-extern int func_020062f8(...);
+extern int OverlaySlot_UnloadOverlay(...);
 extern int func_02058eb8(...);
 extern int func_02092418(...);
 extern int func_020755bc(...);
@@ -66,8 +66,8 @@ extern int func_0200ec6c(...);
 extern int func_020122a0(...);
 extern int func_0201140c(...);
 extern int func_02074178(...);
-extern int func_020022dc(...);
-extern int func_0200222c(...);
+extern int OverlayManager_GetGlobal(...);
+extern int OverlayManager_LoadOverlay(...);
 extern int func_02003e14(...);
 extern int func_ov059_0220fd20(...);
 extern int func_020088b8(...);
@@ -79,7 +79,7 @@ extern int func_020923a4(...);
 extern int func_0201e0f4(...);
 extern int func_02074154(...);
 extern int func_020745c4(...);
-extern int func_020062a0(...);
+extern int OverlaySlot_LoadOverlay(...);
 extern int func_ov013_021fce2c(...);
 extern int func_02068444(...);
 extern int func_ov044_0220be60(...);
@@ -347,9 +347,9 @@ code_r0x0200dd3c:
       (**(code **)(*(int *)param_1[9] + 8))();
     }
     param_1[9] = 0;
-    func_020062f8(param_1 + 0x1d);
-    func_020062f8(param_1 + 0x20);
-    func_020062f8(param_1 + 0x23);
+    OverlaySlot_UnloadOverlay(param_1 + 0x1d);
+    OverlaySlot_UnloadOverlay(param_1 + 0x20);
+    OverlaySlot_UnloadOverlay(param_1 + 0x23);
     puVar2 = UNK_0200e0e8;
     *UNK_0200e20c = *UNK_0200e20c & 0x7fff | (ushort)(param_1[0x26] << 0xf);
     func_02058eb8(*puVar2,0,0,0x14,0x1e);
@@ -420,8 +420,8 @@ code_r0x0200e2ac:
         iVar5 = func_02001970(*UNK_0200e11c,UNK_0200e3d0);
         if (iVar5 != 0) {
           func_0200199c(*UNK_0200e11c,UNK_0200e3d0);
-          uVar3 = func_020022dc();
-          func_0200222c(uVar3,2,UNK_0200e3c8);
+          uVar3 = OverlayManager_GetGlobal();
+          OverlayManager_LoadOverlay(uVar3,2,UNK_0200e3c8);
           iVar5 = func_02003e14(0x80,UNK_0200e3cc,4,UNK_0200e114);
           if (iVar5 != 0) {
             func_ov059_0220fd20(iVar5,1);
@@ -430,8 +430,8 @@ code_r0x0200e2ac:
       }
       else {
         func_0200199c(*UNK_0200e11c,0x3cc);
-        uVar3 = func_020022dc();
-        func_0200222c(uVar3,2,UNK_0200e3c8);
+        uVar3 = OverlayManager_GetGlobal();
+        OverlayManager_LoadOverlay(uVar3,2,UNK_0200e3c8);
         iVar5 = func_02003e14(0x80,UNK_0200e3cc,4,UNK_0200e114);
         if (iVar5 != 0) {
           func_ov059_0220fd20(iVar5,0);
@@ -466,8 +466,8 @@ code_r0x0200e2ac:
       func_020088b8(*UNK_0200e0e4,3,1);
       func_0200ec6c(*UNK_0200e0e4 + 0x24,1);
       func_020122a0(*(undefined4 *)(*UNK_0200e0e4 + 0x2fb8),1);
-      uVar3 = func_020022dc();
-      func_0200222c(uVar3,2,UNK_0200e214);
+      uVar3 = OverlayManager_GetGlobal();
+      OverlayManager_LoadOverlay(uVar3,2,UNK_0200e214);
       iVar5 = func_02003e14(0x90,UNK_0200e218,4,UNK_0200e114);
       if (iVar5 != 0) {
         func_ov059_02210fec(iVar5,*(undefined4 *)(*UNK_0200e0e4 + 0x30bc));
@@ -559,9 +559,9 @@ code_r0x0200d2f0:
   case 0:
   default:
 code_r0x0200d3bc:
-    func_020062a0(param_1 + 0x1d,UNK_0200e100);
-    func_020062a0(param_1 + 0x20,UNK_0200e104);
-    func_020062a0(param_1 + 0x23,UNK_0200e108);
+    OverlaySlot_LoadOverlay(param_1 + 0x1d,UNK_0200e100);
+    OverlaySlot_LoadOverlay(param_1 + 0x20,UNK_0200e104);
+    OverlaySlot_LoadOverlay(param_1 + 0x23,UNK_0200e108);
     iVar5 = func_02003e14(UNK_0200e10c,UNK_0200e110,4,UNK_0200e114);
     if (iVar5 != 0) {
       iVar5 = func_ov013_021fce2c();
@@ -596,9 +596,9 @@ code_r0x0200d3bc:
     param_1[9] = iVar5;
     break;
   case 5:
-    func_020062a0(param_1 + 0x1d,UNK_0200e124);
-    func_020062a0(param_1 + 0x20,UNK_0200e128);
-    func_020062a0(param_1 + 0x23,UNK_0200e12c);
+    OverlaySlot_LoadOverlay(param_1 + 0x1d,UNK_0200e124);
+    OverlaySlot_LoadOverlay(param_1 + 0x20,UNK_0200e128);
+    OverlaySlot_LoadOverlay(param_1 + 0x23,UNK_0200e12c);
     iVar5 = func_02003e14(0x240,UNK_0200e130,4,UNK_0200e114);
     if (iVar5 != 0) {
       iVar5 = func_ov044_0220be60();
@@ -606,7 +606,7 @@ code_r0x0200d3bc:
     param_1[9] = iVar5;
     break;
   case 6:
-    func_020062a0(param_1 + 0x23,UNK_0200e134);
+    OverlaySlot_LoadOverlay(param_1 + 0x23,UNK_0200e134);
     iVar5 = func_02003e14(0x2f8,UNK_0200e138,4,UNK_0200e114);
     if (iVar5 != 0) {
       iVar5 = func_ov043_0220b76c();
@@ -616,8 +616,8 @@ code_r0x0200d3bc:
   case 7:
     goto code_r0x0200d3bc;
   case 8:
-    func_020062a0(param_1 + 0x1d,UNK_0200e13c);
-    func_020062a0(param_1 + 0x20,UNK_0200e140);
+    OverlaySlot_LoadOverlay(param_1 + 0x1d,UNK_0200e13c);
+    OverlaySlot_LoadOverlay(param_1 + 0x20,UNK_0200e140);
     func_02008570(*UNK_0200e0e4,0,1);
     func_020088b8(*UNK_0200e0e4,2,0);
     func_020122a0(*(undefined4 *)(*UNK_0200e0e4 + 0x2fb8),1);
@@ -634,8 +634,8 @@ code_r0x0200d3bc:
     goto code_r0x0200d5d8;
   case 0xb:
     if (param_1[0xc] == 7) {
-      func_020062a0(param_1 + 0x1d,UNK_0200e100);
-      func_020062a0(param_1 + 0x20,UNK_0200e168);
+      OverlaySlot_LoadOverlay(param_1 + 0x1d,UNK_0200e100);
+      OverlaySlot_LoadOverlay(param_1 + 0x20,UNK_0200e168);
       iVar5 = func_02003e14(0x394,UNK_0200e16c,4,UNK_0200e114);
       if (iVar5 != 0) {
         iVar5 = func_ov022_021fdd44();
@@ -643,8 +643,8 @@ code_r0x0200d3bc:
       param_1[9] = iVar5;
     }
     else {
-      func_020062a0(param_1 + 0x1d,UNK_0200e158);
-      func_020062a0(param_1 + 0x20,UNK_0200e15c);
+      OverlaySlot_LoadOverlay(param_1 + 0x1d,UNK_0200e158);
+      OverlaySlot_LoadOverlay(param_1 + 0x20,UNK_0200e15c);
       iVar5 = func_02003e14(UNK_0200e160,UNK_0200e164,4,UNK_0200e114);
       if (iVar5 != 0) {
         iVar5 = func_ov021_021fd7e8(iVar5,param_1[0xc]);
@@ -653,7 +653,7 @@ code_r0x0200d3bc:
     }
     break;
   case 0xc:
-    func_020062a0(param_1 + 0x20,UNK_0200e170);
+    OverlaySlot_LoadOverlay(param_1 + 0x20,UNK_0200e170);
     iVar5 = func_02003e14(0x1e8,UNK_0200e174,4,UNK_0200e114);
     if (iVar5 != 0) {
       iVar5 = func_ov020_021fd844();
@@ -661,9 +661,9 @@ code_r0x0200d3bc:
     param_1[9] = iVar5;
     break;
   case 0xd:
-    func_020062a0(param_1 + 0x1d,UNK_0200e180);
-    func_020062a0(param_1 + 0x20,UNK_0200e100);
-    func_020062a0(param_1 + 0x23,UNK_0200e184);
+    OverlaySlot_LoadOverlay(param_1 + 0x1d,UNK_0200e180);
+    OverlaySlot_LoadOverlay(param_1 + 0x20,UNK_0200e100);
+    OverlaySlot_LoadOverlay(param_1 + 0x23,UNK_0200e184);
     iVar5 = func_02003e14(0x2f8,UNK_0200e188,4,UNK_0200e114);
     if (iVar5 != 0) {
       iVar5 = func_ov013_021fce2c();
@@ -671,7 +671,7 @@ code_r0x0200d3bc:
     param_1[9] = iVar5;
     break;
   case 0xe:
-    func_020062a0(param_1 + 0x20,UNK_0200e18c);
+    OverlaySlot_LoadOverlay(param_1 + 0x20,UNK_0200e18c);
     iVar5 = func_02003e14(UNK_0200e190,UNK_0200e194,4,UNK_0200e114);
     if (iVar5 != 0) {
       iVar5 = func_ov016_021fe77c(iVar5,2,(int)*(short *)(*UNK_0200e11c + 0x206));
@@ -679,8 +679,8 @@ code_r0x0200d3bc:
     param_1[9] = iVar5;
     break;
   case 0xf:
-    func_020062a0(param_1 + 0x1d,UNK_0200e158);
-    func_020062a0(param_1 + 0x20,UNK_0200e198);
+    OverlaySlot_LoadOverlay(param_1 + 0x1d,UNK_0200e158);
+    OverlaySlot_LoadOverlay(param_1 + 0x20,UNK_0200e198);
     iVar5 = func_02003e14(UNK_0200e19c,UNK_0200e1a0,4,UNK_0200e114);
     if (iVar5 != 0) {
       iVar5 = func_ov018_021fd9f8();
@@ -688,8 +688,8 @@ code_r0x0200d3bc:
     param_1[9] = iVar5;
     break;
   case 0x10:
-    func_020062a0(param_1 + 0x1d,UNK_0200e1a4);
-    func_020062a0(param_1 + 0x20,UNK_0200e1a8);
+    OverlaySlot_LoadOverlay(param_1 + 0x1d,UNK_0200e1a4);
+    OverlaySlot_LoadOverlay(param_1 + 0x20,UNK_0200e1a8);
     iVar5 = func_02003e14(UNK_0200e1ac,UNK_0200e1b0,4,UNK_0200e114);
     if (iVar5 != 0) {
       iVar5 = func_ov025_021ff27c();
@@ -697,9 +697,9 @@ code_r0x0200d3bc:
     param_1[9] = iVar5;
     break;
   case 0x11:
-    func_020062a0(param_1 + 0x1d,UNK_0200e1b4);
-    func_020062a0(param_1 + 0x20,UNK_0200e1b8);
-    func_020062a0(param_1 + 0x23,UNK_0200e1bc);
+    OverlaySlot_LoadOverlay(param_1 + 0x1d,UNK_0200e1b4);
+    OverlaySlot_LoadOverlay(param_1 + 0x20,UNK_0200e1b8);
+    OverlaySlot_LoadOverlay(param_1 + 0x23,UNK_0200e1bc);
     iVar5 = func_02003e14(100,UNK_0200e1c0,4,UNK_0200e114);
     if (iVar5 != 0) {
       iVar5 = func_ov004_021fc944(iVar5,param_1[0xc]);
@@ -707,7 +707,7 @@ code_r0x0200d3bc:
     param_1[9] = iVar5;
     break;
   case 0x12:
-    func_020062a0(param_1 + 0x20,UNK_0200e1c4);
+    OverlaySlot_LoadOverlay(param_1 + 0x20,UNK_0200e1c4);
     iVar5 = func_02003e14(0x29c,UNK_0200e1c8,4,UNK_0200e114);
     if (iVar5 != 0) {
       iVar5 = func_ov028_021fdb00();
@@ -715,9 +715,9 @@ code_r0x0200d3bc:
     param_1[9] = iVar5;
     break;
   case 0x13:
-    func_020062a0(param_1 + 0x1d,UNK_0200e14c);
-    func_020062a0(param_1 + 0x20,UNK_0200e158);
-    func_020062a0(param_1 + 0x23,UNK_0200e1cc);
+    OverlaySlot_LoadOverlay(param_1 + 0x1d,UNK_0200e14c);
+    OverlaySlot_LoadOverlay(param_1 + 0x20,UNK_0200e158);
+    OverlaySlot_LoadOverlay(param_1 + 0x23,UNK_0200e1cc);
     iVar5 = func_02003e14(0x104,UNK_0200e1d0,4,UNK_0200e114);
     if (iVar5 != 0) {
       iVar5 = func_ov009_021fce74(iVar5,param_1[0xc]);
@@ -725,8 +725,8 @@ code_r0x0200d3bc:
     param_1[9] = iVar5;
     break;
   case 0x14:
-    func_020062a0(param_1 + 0x1d,UNK_0200e1b4);
-    func_020062a0(param_1 + 0x20,UNK_0200e1d4);
+    OverlaySlot_LoadOverlay(param_1 + 0x1d,UNK_0200e1b4);
+    OverlaySlot_LoadOverlay(param_1 + 0x20,UNK_0200e1d4);
     iVar5 = func_02003e14(0x5e0,UNK_0200e1d8,4,UNK_0200e114);
     if (iVar5 != 0) {
       iVar5 = func_ov027_021fda30();
@@ -734,9 +734,9 @@ code_r0x0200d3bc:
     param_1[9] = iVar5;
     break;
   case 0x15:
-    func_020062a0(param_1 + 0x1d,UNK_0200e14c);
-    func_020062a0(param_1 + 0x20,UNK_0200e158);
-    func_020062a0(param_1 + 0x23,UNK_0200e1dc);
+    OverlaySlot_LoadOverlay(param_1 + 0x1d,UNK_0200e14c);
+    OverlaySlot_LoadOverlay(param_1 + 0x20,UNK_0200e158);
+    OverlaySlot_LoadOverlay(param_1 + 0x23,UNK_0200e1dc);
     iVar5 = func_02003e14(0x398,UNK_0200e1e0,4,UNK_0200e114);
     if (iVar5 != 0) {
       iVar5 = func_ov017_021fda3c();
@@ -793,8 +793,8 @@ code_r0x0200d3bc:
         else if (iVar5 < 0xd0) {
           if (iVar5 != 0xcf) {
 code_r0x0200db0c:
-            func_020062a0(param_1 + 0x1d,UNK_0200e1b4);
-            func_020062a0(param_1 + 0x20,UNK_0200e1ec);
+            OverlaySlot_LoadOverlay(param_1 + 0x1d,UNK_0200e1b4);
+            OverlaySlot_LoadOverlay(param_1 + 0x20,UNK_0200e1ec);
             iVar5 = func_02003e14(0x4c0,UNK_0200e1f0,4,UNK_0200e114);
             if (iVar5 != 0) {
               iVar5 = func_ov036_022045d4(iVar5,param_1[0xc]);
@@ -834,8 +834,8 @@ joined_r0x0200dac4:
       }
     }
 code_r0x0200db50:
-    func_020062a0(param_1 + 0x1d,UNK_0200e1b4);
-    func_020062a0(param_1 + 0x20,UNK_0200e1f4);
+    OverlaySlot_LoadOverlay(param_1 + 0x1d,UNK_0200e1b4);
+    OverlaySlot_LoadOverlay(param_1 + 0x20,UNK_0200e1f4);
     iVar5 = func_02003e14(0x4c0,UNK_0200e1f0,4,UNK_0200e114);
     if (iVar5 != 0) {
       iVar5 = func_ov035_02202378(iVar5,param_1[0xc]);
@@ -844,8 +844,8 @@ code_r0x0200db50:
     break;
   case 0x17:
 code_r0x0200d5d8:
-    func_020062a0(param_1 + 0x1d,UNK_0200e14c);
-    func_020062a0(param_1 + 0x20,UNK_0200e150);
+    OverlaySlot_LoadOverlay(param_1 + 0x1d,UNK_0200e14c);
+    OverlaySlot_LoadOverlay(param_1 + 0x20,UNK_0200e150);
     iVar5 = func_02003e14(100,UNK_0200e154,4,UNK_0200e114);
     if (iVar5 != 0) {
       iVar5 = func_ov019_021fce28(iVar5,param_1[0xc]);
@@ -853,8 +853,8 @@ code_r0x0200d5d8:
     param_1[9] = iVar5;
     break;
   case 0x18:
-    func_020062a0(param_1 + 0x1d,UNK_0200e1b4);
-    func_020062a0(param_1 + 0x20,UNK_0200e1f8);
+    OverlaySlot_LoadOverlay(param_1 + 0x1d,UNK_0200e1b4);
+    OverlaySlot_LoadOverlay(param_1 + 0x20,UNK_0200e1f8);
     iVar5 = func_02003e14(UNK_0200e1fc,UNK_0200e200,4,UNK_0200e114);
     if (iVar5 != 0) {
       iVar5 = func_ov037_021fe4fc(iVar5,param_1[0xc]);
@@ -862,8 +862,8 @@ code_r0x0200d5d8:
     param_1[9] = iVar5;
     break;
   case 0x19:
-    func_020062a0(param_1 + 0x1d,UNK_0200e100);
-    func_020062a0(param_1 + 0x20,UNK_0200e178);
+    OverlaySlot_LoadOverlay(param_1 + 0x1d,UNK_0200e100);
+    OverlaySlot_LoadOverlay(param_1 + 0x20,UNK_0200e178);
     iVar5 = func_02003e14(0x368,UNK_0200e17c,4,UNK_0200e114);
     if (iVar5 != 0) {
       iVar5 = func_ov013_021fce2c();

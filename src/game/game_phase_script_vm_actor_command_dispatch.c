@@ -164,7 +164,7 @@ s32 func_020143a8(GamePhaseActorScriptVm *self)
     case 5:
         break;
     case 6:
-        func_0200222c(func_020022dc(), 1, 0x37);
+        OverlayManager_LoadOverlay(OverlayManager_GetGlobal(), 1, 0x37);
         func_ov055_0220ef6c();
         break;
     case 7: {
@@ -191,7 +191,7 @@ s32 func_020143a8(GamePhaseActorScriptVm *self)
         func_0200500c(&vector, convertEffectOperand((s32)a2),
                       convertEffectOperand((s32)a3),
                       convertEffectOperand((s32)a4));
-        func_0200222c(func_020022dc(), 2, 0x41);
+        OverlayManager_LoadOverlay(OverlayManager_GetGlobal(), 2, 0x41);
         object = Heap_Alloc(0x160, data_020d5b2c, 4, &gHeapContext);
         if (object != 0)
             func_ov065_022101bc(
@@ -278,14 +278,14 @@ s32 func_020143a8(GamePhaseActorScriptVm *self)
     }
     case 20: {
         VecFx32Object position;
-        func_0200222c(func_020022dc(), 0, 0x32);
+        OverlayManager_LoadOverlay(OverlayManager_GetGlobal(), 0, 0x32);
         func_0200500c(&position, (s32)a1 << 12, (s32)a2 << 12, 0);
         func_ov050_0220e1a0(getScriptEffectContext(), &position, a3);
         func_02005058(&position);
         break;
     }
     case 21:
-        func_0200222c(func_020022dc(), 0, 0x33);
+        OverlayManager_LoadOverlay(OverlayManager_GetGlobal(), 0, 0x33);
         if (a1 == 0)
             func_ov051_0220daa4(a2, a3, a4);
         else
@@ -297,7 +297,7 @@ s32 func_020143a8(GamePhaseActorScriptVm *self)
             u8 *node;
             void *target;
             GameWork_SetFlag(gGameWork, 0x40a);
-            func_0200222c(func_020022dc(), 1, 0x36);
+            OverlayManager_LoadOverlay(OverlayManager_GetGlobal(), 1, 0x36);
             handle = func_ov054_0220e9bc(
                 (u8 *)*(void **)((u8 *)data_021052fc + 0x2ea4) + 0x18,
                 getScriptEffectContext());
@@ -356,7 +356,7 @@ s32 func_020143a8(GamePhaseActorScriptVm *self)
     case 31: {
         void *target = ActorCollection_FindActorByDescriptorValue(func_02007f0c(data_021052fc, 1), a5);
         void *object;
-        func_0200222c(func_020022dc(), 2, 0x49);
+        OverlayManager_LoadOverlay(OverlayManager_GetGlobal(), 2, 0x49);
         object = Heap_Alloc(0x1c, data_020d5b34, 4, &gHeapContext);
         if (object != 0)
             object = func_ov073_02210710(
@@ -367,7 +367,7 @@ s32 func_020143a8(GamePhaseActorScriptVm *self)
         break;
     }
     case 32:
-        func_0200222c(func_020022dc(), 1, 0x39);
+        OverlayManager_LoadOverlay(OverlayManager_GetGlobal(), 1, 0x39);
         func_ov057_0220e558();
         break;
     case 34:
@@ -380,7 +380,7 @@ s32 func_020143a8(GamePhaseActorScriptVm *self)
         break;
     }
     case 36:
-        func_0200222c(func_020022dc(), 0, 0x35);
+        OverlayManager_LoadOverlay(OverlayManager_GetGlobal(), 0, 0x35);
         func_ov053_0220da0c((u16)a1);
         break;
     case 37:

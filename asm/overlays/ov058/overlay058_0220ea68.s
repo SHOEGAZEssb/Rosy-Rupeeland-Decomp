@@ -5,8 +5,8 @@
 .extern __destroy_arr
 .extern data_020f4e14
 .extern data_ov058_0220fcc4
-.extern func_02002290
-.extern func_020022dc
+.extern OverlayManager_UnloadOverlay
+.extern OverlayManager_GetGlobal
 .extern func_0201e28c
 .extern func_02071eb8
 .extern func_0207419c
@@ -59,9 +59,9 @@ func_ov058_0220ea68:
     bl func_0207419c
     ldr r0, [r4, #0x10]
     bl func_0207419c
-    bl func_020022dc
+    bl OverlayManager_GetGlobal
     mov r1, #0x1
-    bl func_02002290
+    bl OverlayManager_UnloadOverlay
     add r0, r4, #0x84
     bl func_020927b8
     add r0, r4, #0x18

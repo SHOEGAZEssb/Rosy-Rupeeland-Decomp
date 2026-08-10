@@ -5,8 +5,8 @@
 .extern Sound_Play
 .extern data_021052fc
 .extern data_ov087_02218aa4
-.extern func_0200222c
-.extern func_020022dc
+.extern OverlayManager_LoadOverlay
+.extern OverlayManager_GetGlobal
 .extern func_02005058
 .extern AnimationResource_Init
 .extern func_ov062_0220fe78
@@ -45,10 +45,10 @@ func_ov087_022184b0:
     orr r1, r1, #0x2
     strh r1, [r0, #0x1a]
     ble .L_022185ac
-    bl func_020022dc
+    bl OverlayManager_GetGlobal
     ldr r2, .L_02218664
     mov r1, #0x2
-    bl func_0200222c
+    bl OverlayManager_LoadOverlay
     ldr r1, .L_0221865c
     ldr r3, .L_02218660
     mov r0, #0x48

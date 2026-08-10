@@ -23,15 +23,15 @@ typedef char OverlayManagerSizeCheck[
 extern "C" {
 #endif
 
-OverlayManager *func_020021d0(OverlayManager *manager);
-OverlayManager *func_020021fc(OverlayManager *manager);
-void func_0200222c(OverlayManager *manager, int slotIndex, int overlayId);
-void func_02002290(OverlayManager *manager, int slotIndex);
-OverlayManager *func_020022dc(void);
-OverlaySlot *func_02006268(OverlaySlot *slot);
-OverlaySlot *func_02006280(OverlaySlot *slot);
-void func_020062a0(OverlaySlot *slot, int overlayId);
-void func_020062f8(OverlaySlot *slot);
+OverlayManager *OverlayManager_Init(OverlayManager *manager);
+OverlayManager *OverlayManager_Destroy(OverlayManager *manager);
+void OverlayManager_LoadOverlay(OverlayManager *manager, int slotIndex, int overlayId);
+void OverlayManager_UnloadOverlay(OverlayManager *manager, int slotIndex);
+OverlayManager *OverlayManager_GetGlobal(void);
+OverlaySlot *OverlaySlot_Init(OverlaySlot *slot);
+OverlaySlot *OverlaySlot_Destroy(OverlaySlot *slot);
+void OverlaySlot_LoadOverlay(OverlaySlot *slot, int overlayId);
+void OverlaySlot_UnloadOverlay(OverlaySlot *slot);
 
 #ifdef __cplusplus
 }

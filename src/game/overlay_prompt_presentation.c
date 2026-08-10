@@ -23,10 +23,10 @@ extern void *gGameWork;
 extern void *gDebugFont;
 extern void *func_0201e250(void *);
 extern void *func_0201e28c(void *);
-extern void func_02006268(void *);
-extern void func_02006280(void *);
-extern void func_020062a0(void *, s32);
-extern void func_020062f8(void *);
+extern void OverlaySlot_Init(void *);
+extern void OverlaySlot_Destroy(void *);
+extern void OverlaySlot_LoadOverlay(void *, s32);
+extern void OverlaySlot_UnloadOverlay(void *);
 extern void func_0201140c(void *, s32);
 extern void func_02092c8c(s32, s32);
 extern s32 DisplayBrightness_IsSubTransitionComplete(void);
@@ -48,7 +48,7 @@ OverlayPromptPresentation *func_0202225c(OverlayPromptPresentation *self)
 {
     func_0201e250(self);
     self->vtable = (void **)data_020d653c;
-    func_02006268(self->sharedResource10);
+    OverlaySlot_Init(self->sharedResource10);
     self->worker0c = 0; self->callbacksActive20 = 0; self->state08 = 0;
     self->restoreMode1c = ((*(u16 *)(gLupyContext + 0xb0) & 1) == 0);
     self->flags04 = ((self->flags04 | 2) & ~1) | 1;
@@ -62,10 +62,10 @@ static OverlayPromptPresentation *teardown_prompt(OverlayPromptPresentation *sel
     self->callbacksActive20 = 0;
     if (self->worker0c != 0) {
         ((WorkerMethod)(*(void ***)self->worker0c)[2])(self->worker0c);
-        func_020062f8(self->sharedResource10);
+        OverlaySlot_UnloadOverlay(self->sharedResource10);
     }
     if (self->restoreMode1c != 0) func_0201140c(gLupyContext, 1);
-    func_02006280(self->sharedResource10);
+    OverlaySlot_Destroy(self->sharedResource10);
     func_0201e28c(self);
     return self;
 }
@@ -97,7 +97,7 @@ s32 func_020223d4(OverlayPromptPresentation *self)
     case 1:
         if (!DisplayBrightness_IsSubTransitionComplete()) return 0;
         func_0201140c(gLupyContext, 0);
-        func_020062a0(self->sharedResource10, 5);
+        OverlaySlot_LoadOverlay(self->sharedResource10, 5);
         self->worker0c = Heap_Alloc(0x88, data_020d65ac, 4, &gHeapContext);
         if (self->worker0c != 0) func_ov001_021fbe6c(self->worker0c);
         func_02092c8c(2, 0);
@@ -112,7 +112,7 @@ s32 func_020223d4(OverlayPromptPresentation *self)
         if (self->worker0c != 0)
             ((WorkerMethod)(*(void ***)self->worker0c)[2])(self->worker0c);
         self->worker0c = 0;
-        func_020062f8(self->sharedResource10);
+        OverlaySlot_UnloadOverlay(self->sharedResource10);
         self->state08++;
         return 0;
     case 3: return 1;

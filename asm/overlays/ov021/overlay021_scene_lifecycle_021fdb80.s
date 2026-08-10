@@ -4,7 +4,7 @@
     .extern data_020f4e14
     .extern data_020f4e18
     .extern data_ov021_02202f64
-    .extern func_02006280
+    .extern OverlaySlot_Destroy
     .extern func_02071c38
     .extern func_02071eb8
     .extern func_0207419c
@@ -117,7 +117,7 @@ L_021fdc84:
     bl func_02075630
     add r0, r4, #0x1c
     add r0, r0, #0x400
-    bl func_02006280
+    bl OverlaySlot_Destroy
     add r0, r4, #0x14c
     mov r1, #0x2
     mov r2, #0xac
