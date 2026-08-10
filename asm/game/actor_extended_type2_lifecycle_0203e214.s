@@ -7,7 +7,7 @@
 .extern func_02004ac8
 .extern func_02005058
 .extern func_02031488
-.extern func_0203b61c
+.extern ActorDerivedRuntime_DestroyAlternate
 .extern func_0204cd7c
 .extern func_020c0c24
     .global ActorExtendedType2_ResetRuntimeState
@@ -108,7 +108,7 @@ ActorExtendedType2_DestroyComplete: ; 0x0203e298
     add r0, r4, #0x22c
     bl func_02005058
     mov r0, r4
-    bl func_0203b61c
+    bl ActorDerivedRuntime_DestroyAlternate
     mov r0, r4
     ldmia sp!, {r3, r4, r5, pc}
 .L_0203e36c: .word data_020dfee4

@@ -10,7 +10,7 @@ extern u32 data_020e1740[];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_0203b514(void *actor, const void *configuration);
+extern void ActorDerivedRuntime_Init(void *actor, const void *configuration);
 extern void func_02004fe0(void *value);
 extern void func_0200500c(void *value, s32 x, s32 y, s32 z);
 extern void *func_020050a4(void *destination, const void *source);
@@ -40,7 +40,7 @@ void *func_020455bc(void *self, const void *configuration)
 {
     u8 *actor = (u8 *)self;
     void *copied;
-    func_0203b514(actor, configuration);
+    ActorDerivedRuntime_Init(actor, configuration);
     *(void **)actor = data_020e1c38;
     func_02004fe0(actor + 0x214);
     func_0200500c(actor + 0x224, -1, -1, -1);

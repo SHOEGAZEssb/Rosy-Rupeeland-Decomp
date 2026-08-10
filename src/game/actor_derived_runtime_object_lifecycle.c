@@ -28,19 +28,25 @@ static void *initializeDerivedRuntimeObject(void *self)
     return object;
 }
 
-/* Initialize the base, install the recovered vtable, initialize +0x1ec and fields +0x1fc..+0x204, then return self. */
-void *func_0203b514(void *self)
+/*
+ * Initialize the base, install the recovered vtable, initialize +0x1ec and
+ * fields +0x1fc..+0x204, then return self.
+ */
+void *ActorDerivedRuntime_Init(void *self)
 {
     return initializeDerivedRuntimeObject(self);
 }
 
-/* Alternate constructor entry with behavior identical to func_0203b514; return self. */
-void *func_0203b554(void *self)
+/* Alternate constructor entry with behavior identical to ActorDerivedRuntime_Init; return self. */
+void *ActorDerivedRuntime_InitAlternate(void *self)
 {
     return initializeDerivedRuntimeObject(self);
 }
 
-/* Shared teardown: install this vtable, invoke virtual +0xbc, release recovered base state and +0x1ec, then return self. */
+/*
+ * Install this vtable, invoke virtual +0xbc, release recovered base state and
+ * +0x1ec, then return self.
+ */
 static void *destroyDerivedRuntimeObject(void *self)
 {
     u8 *object = (u8 *)self;
@@ -53,21 +59,21 @@ static void *destroyDerivedRuntimeObject(void *self)
 }
 
 /* Perform the shared non-freeing teardown and return self. */
-void *func_0203b594(void *self)
+void *ActorDerivedRuntime_Destroy(void *self)
 {
     return destroyDerivedRuntimeObject(self);
 }
 
 /* Perform the shared teardown, free self, and return its former address. */
-void *func_0203b5d4(void *self)
+void *ActorDerivedRuntime_DestroyAndFree(void *self)
 {
     void *result = destroyDerivedRuntimeObject(self);
     Heap_Free(self);
     return result;
 }
 
-/* Alternate non-freeing destructor entry identical to func_0203b594; return self. */
-void *func_0203b61c(void *self)
+/* Alternate non-freeing destructor entry identical to ActorDerivedRuntime_Destroy; return self. */
+void *ActorDerivedRuntime_DestroyAlternate(void *self)
 {
     return destroyDerivedRuntimeObject(self);
 }

@@ -247,7 +247,7 @@ static s32 UsesKnownSharedBaseConstructor(
            UsesOv088SimpleConstructor(desc);
 }
 
-/* Reproduce func_0203b554 after its common-base constructor has returned. */
+/* Reproduce ActorDerivedRuntime_InitAlternate after its common-base constructor has returned. */
 static void InitializeSharedDerived(TingleNativeActorImage *actor)
 {
     u8 *bytes = actor->bytes;

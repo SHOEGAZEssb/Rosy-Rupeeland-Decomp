@@ -5,7 +5,7 @@
 .extern func_02004fe0
 .extern func_0200500c
 .extern func_020050a4
-.extern func_0203b514
+.extern ActorDerivedRuntime_Init
 .extern func_020464f4
 .extern func_020481dc
 .extern func_0204cca8
@@ -14,7 +14,7 @@
 func_020455bc: ; 0x020455bc
     stmdb sp!, {r4, lr}
     mov r4, r0
-    bl func_0203b514
+    bl ActorDerivedRuntime_Init
     ldr r1, .L_02045718
     add r0, r4, #0x214
     str r1, [r4, #0x0]

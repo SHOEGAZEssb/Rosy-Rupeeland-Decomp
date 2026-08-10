@@ -11,7 +11,7 @@ extern "C" {
 #endif
 extern void func_02072b68(void *attachment, u32 animation);
 extern void *func_0203c94c(void *actor, const void *descriptor);
-extern void *func_0203b61c(void *actor);
+extern void *ActorDerivedRuntime_DestroyAlternate(void *actor);
 #ifdef __cplusplus
 }
 #endif
@@ -67,12 +67,12 @@ static void removeRegisteredActor(void *self)
 
 /*
  * Remove self from matching entries before the first null in data_02105718,
- * invoke base teardown func_0203b61c, and return self without freeing it.
+ * invoke base teardown ActorDerivedRuntime_DestroyAlternate, and return self without freeing it.
  */
 void *func_0203d314(void *self)
 {
     removeRegisteredActor(self);
-    func_0203b61c(self);
+    ActorDerivedRuntime_DestroyAlternate(self);
     return self;
 }
 
@@ -80,7 +80,7 @@ void *func_0203d314(void *self)
 void *func_0203d360(void *self)
 {
     removeRegisteredActor(self);
-    func_0203b61c(self);
+    ActorDerivedRuntime_DestroyAlternate(self);
     Heap_Free(self);
     return self;
 }

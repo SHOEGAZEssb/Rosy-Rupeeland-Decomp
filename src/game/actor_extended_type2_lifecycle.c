@@ -12,7 +12,7 @@ extern "C" {
 extern void func_02031488(void *actor);
 extern void func_0204cd7c(void *object);
 extern void func_02005058(void *vector);
-extern void func_0203b61c(void *actor);
+extern void ActorDerivedRuntime_DestroyAlternate(void *actor);
 extern void func_020c0c24(void *array, s32 countOrSize, s32 elementSize,
                           void (*destructor)(void *));
 extern void func_02004ac8(void *element);
@@ -54,7 +54,7 @@ void ActorExtendedType2_ResetRuntimeState(void *self)
  * destructor +0x04 on optional object +0x278, then invoke actor virtual +0xbc
  * and func_02031488. Destroy optional objects +0x208/+0x20c/+0x210/+0x214
  * through their virtual +0x04 slots, destroy helper +0x284 and vectors
- * +0x23c/+0x22c, and finish through func_0203b61c. Return self; owned heap,
+ * +0x23c/+0x22c, and finish through ActorDerivedRuntime_DestroyAlternate. Return self; owned heap,
  * vector, helper, and base actor state is released.
  */
 void *ActorExtendedType2_DestroyComplete(void *self)
@@ -87,7 +87,7 @@ void *ActorExtendedType2_DestroyComplete(void *self)
     func_0204cd7c(actor + 0x284);
     func_02005058(actor + 0x23c);
     func_02005058(actor + 0x22c);
-    func_0203b61c(actor);
+    ActorDerivedRuntime_DestroyAlternate(actor);
     return actor;
 }
 

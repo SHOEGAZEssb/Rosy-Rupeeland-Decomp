@@ -11,7 +11,7 @@ extern s16 data_020e83a0[];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_0203b514(void *actor, const void *config);
+extern void ActorDerivedRuntime_Init(void *actor, const void *config);
 extern void func_02004fe0(void *vector);
 extern void func_0204cca8(void *object, void *actor);
 extern void func_020050a4(void *destination, const void *source);
@@ -54,7 +54,7 @@ void *ActorExtendedType2_Init(void *self, const void *configuration)
     const u8 *config = (const u8 *)configuration;
     u8 temporary[0x30];
 
-    func_0203b514(actor, config);
+    ActorDerivedRuntime_Init(actor, config);
     *(const void **)actor = data_020dfee4;
     func_02004fe0(actor + 0x22c);
     func_02004fe0(actor + 0x23c);

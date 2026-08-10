@@ -6,7 +6,7 @@
 .extern ActorCollection_QueueActorForRemoval
 .extern Actor_GetCollisionBounds
 .extern Actor_GetCollection
-.extern func_0203b514
+.extern ActorDerivedRuntime_Init
 .extern func_020befec
 .extern func_ov088_022179e0
 .extern func_ov088_022179f4
@@ -19,7 +19,7 @@ func_ov088_022177e0:
     sub sp, sp, #0xc
     mov r5, r0
     mov r4, r1
-    bl func_0203b514
+    bl ActorDerivedRuntime_Init
     ldr r2, .L_022179d4
     mov r1, #0x0
     str r2, [r5, #0x0]

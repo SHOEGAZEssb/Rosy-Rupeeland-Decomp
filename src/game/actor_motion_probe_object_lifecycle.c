@@ -8,8 +8,8 @@ extern void *data_020df61c;
 extern "C" {
 #endif
 extern void func_02033b38(void *actor, s32 column);
-extern void *func_0203b514(void *actor);
-extern void *func_0203b61c(void *actor);
+extern void *ActorDerivedRuntime_Init(void *actor);
+extern void *ActorDerivedRuntime_DestroyAlternate(void *actor);
 extern void func_02004fe0(void *vector);
 extern void func_02005058(void *vector);
 extern void Actor_InitializeFromDescriptor(void *actor,
@@ -26,7 +26,7 @@ void func_0203c134(void *actor, s32 column)
 }
 
 /*
- * Initialize the recovered base through func_0203b514, install this subclass
+ * Initialize the recovered base through ActorDerivedRuntime_Init, install this subclass
  * vtable, set halfwords +0x208/+0x20a to 0x4000/zero and word +0x20c to
  * 0x1000, initialize vectors +0x210/+0x220/+0x230, clear +0x240, and set
  * +0x244/+0x248/+0x24c/+0x250/+0x254 to 16/16/30/5/1600. Return self; base
@@ -34,7 +34,7 @@ void func_0203c134(void *actor, s32 column)
  */
 void *func_0203c140(void *self)
 {
-    u8 *actor = (u8 *)func_0203b514(self);
+    u8 *actor = (u8 *)ActorDerivedRuntime_Init(self);
     *(void **)actor = data_020df61c;
     *(u16 *)(actor + 0x208) = 0x4000;
     *(u16 *)(actor + 0x20a) = 0;
@@ -58,7 +58,7 @@ void *func_0203c1c0(void *self)
     func_02005058(actor + 0x230);
     func_02005058(actor + 0x220);
     func_02005058(actor + 0x210);
-    func_0203b61c(actor);
+    ActorDerivedRuntime_DestroyAlternate(actor);
     return actor;
 }
 

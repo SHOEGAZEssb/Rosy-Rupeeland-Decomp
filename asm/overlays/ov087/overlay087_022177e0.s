@@ -1,14 +1,14 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov087/overlay087_recovery.c.
 .extern data_ov087_022189e0
-.extern func_0203b514
+.extern ActorDerivedRuntime_Init
 
 .global func_ov087_022177e0
 func_ov087_022177e0:
     stmdb sp!, {r3, r4, r5, lr}
     mov r5, r0
     mov r4, r1
-    bl func_0203b514
+    bl ActorDerivedRuntime_Init
     ldr r0, .L_02217880
     mov r2, #0x0
     str r0, [r5, #0x0]

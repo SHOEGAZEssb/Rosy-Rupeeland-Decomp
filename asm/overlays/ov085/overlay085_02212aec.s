@@ -4,7 +4,7 @@
 .extern data_ov085_022144f4
 .extern func_02004fe0
 .extern func_020050a4
-.extern func_0203b514
+.extern ActorDerivedRuntime_Init
 .extern func_0204cca8
 .extern func_ov085_02213bd0
 .extern genrand_int32
@@ -14,7 +14,7 @@ func_ov085_02212aec:
     stmdb sp!, {r3, r4, r5, lr}
     mov r5, r0
     mov r4, r1
-    bl func_0203b514
+    bl ActorDerivedRuntime_Init
     ldr r1, .L_02212bf4
     add r0, r5, #0x214
     str r1, [r5, #0x0]

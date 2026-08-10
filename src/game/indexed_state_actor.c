@@ -11,8 +11,8 @@ extern const u8 data_020e212c[];
 extern "C" {
 #endif
 extern void Heap_Free(void *allocation);
-extern void *func_0203b514(void *actor, const void *descriptor);
-extern void func_0203b61c(void *actor);
+extern void *ActorDerivedRuntime_Init(void *actor, const void *descriptor);
+extern void ActorDerivedRuntime_DestroyAlternate(void *actor);
 extern void Actor_InitializeFromDescriptor(void *actor);
 extern void ActorDerivedRuntime_UpdateFrame(void *actor);
 #ifdef __cplusplus
@@ -21,14 +21,14 @@ extern void ActorDerivedRuntime_UpdateFrame(void *actor);
 
 /*
  * Inputs are destination actor storage and a descriptor. Construct the base
- * with func_0203b514, install vtable data_020e212c, clear signed halfword
+ * with ActorDerivedRuntime_Init, install vtable data_020e212c, clear signed halfword
  * +0x208, and copy descriptor signed halfword +0x4e to +0x20a. Return self.
  * Base and actor state may change; there are no direct hardware effects.
  */
 void *func_0204d488(void *self, const void *descriptor)
 {
     u8 *actor = (u8 *)self;
-    func_0203b514(actor, descriptor);
+    ActorDerivedRuntime_Init(actor, descriptor);
     *(const void **)actor = data_020e212c;
     *(s16 *)(actor + 0x208) = 0;
     *(s16 *)(actor + 0x20a) = *(s16 *)((const u8 *)descriptor + 0x4e);
@@ -37,23 +37,23 @@ void *func_0204d488(void *self, const void *descriptor)
 
 /*
  * Input is an indexed-state actor. Invoke non-deleting base destructor
- * func_0203b61c and return self. Base state may change; no direct heap or
+ * ActorDerivedRuntime_DestroyAlternate and return self. Base state may change; no direct heap or
  * hardware effect occurs.
  */
 void *func_0204d4c0(void *self)
 {
-    func_0203b61c(self);
+    ActorDerivedRuntime_DestroyAlternate(self);
     return self;
 }
 
 /*
- * Input is an indexed-state actor. Invoke func_0203b61c, free self, and return
+ * Input is an indexed-state actor. Invoke ActorDerivedRuntime_DestroyAlternate, free self, and return
  * the original address as in retail code. Base and heap state change; there
  * are no direct hardware effects.
  */
 void *func_0204d4d4(void *self)
 {
-    func_0203b61c(self);
+    ActorDerivedRuntime_DestroyAlternate(self);
     Heap_Free(self);
     return self;
 }

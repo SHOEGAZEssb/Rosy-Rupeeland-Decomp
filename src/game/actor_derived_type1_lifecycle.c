@@ -13,7 +13,7 @@ extern void GameWork_ClearFlag(void *work, u32 flag);
 extern void func_02031488(void *actor);
 extern void func_0204cd7c(void *state);
 extern void func_02005058(void *value);
-extern void func_0203b61c(void *actor);
+extern void ActorDerivedRuntime_DestroyAlternate(void *actor);
 #ifdef __cplusplus
 }
 #endif
@@ -53,7 +53,7 @@ static void cleanupDerivedType1(u8 *actor)
     func_02005058(actor + 0x284);
     func_02005058(actor + 0x254);
     func_02005058(actor + 0x238);
-    func_0203b61c(actor);
+    ActorDerivedRuntime_DestroyAlternate(actor);
 }
 
 /*

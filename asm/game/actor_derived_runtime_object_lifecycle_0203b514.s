@@ -7,9 +7,9 @@
 .extern func_02030f98
 .extern func_0203130c
 .extern func_02031488
-    .global func_0203b514
-    .type func_0203b514, @function
-func_0203b514: ; 0x0203b514
+    .global ActorDerivedRuntime_Init
+    .type ActorDerivedRuntime_Init, @function
+ActorDerivedRuntime_Init: ; 0x0203b514
     stmdb sp!, {r4, lr}
     mov r4, r0
     bl func_02030f98
@@ -26,11 +26,11 @@ func_0203b514: ; 0x0203b514
     strh r2, [r1, #0x4]
     ldmia sp!, {r4, pc}
 .L_0203b550: .word data_020df510
-    .size func_0203b514, . - func_0203b514
+    .size ActorDerivedRuntime_Init, . - ActorDerivedRuntime_Init
 
-    .global func_0203b554
-    .type func_0203b554, @function
-func_0203b554: ; 0x0203b554
+    .global ActorDerivedRuntime_InitAlternate
+    .type ActorDerivedRuntime_InitAlternate, @function
+ActorDerivedRuntime_InitAlternate: ; 0x0203b554
     stmdb sp!, {r4, lr}
     mov r4, r0
     bl func_02030f98
@@ -47,11 +47,11 @@ func_0203b554: ; 0x0203b554
     strh r2, [r1, #0x4]
     ldmia sp!, {r4, pc}
 .L_0203b590: .word data_020df510
-    .size func_0203b554, . - func_0203b554
+    .size ActorDerivedRuntime_InitAlternate, . - ActorDerivedRuntime_InitAlternate
 
-    .global func_0203b594
-    .type func_0203b594, @function
-func_0203b594: ; 0x0203b594
+    .global ActorDerivedRuntime_Destroy
+    .type ActorDerivedRuntime_Destroy, @function
+ActorDerivedRuntime_Destroy: ; 0x0203b594
     stmdb sp!, {r4, lr}
     ldr r1, .L_0203b5d0
     mov r4, r0
@@ -68,11 +68,11 @@ func_0203b594: ; 0x0203b594
     mov r0, r4
     ldmia sp!, {r4, pc}
 .L_0203b5d0: .word data_020df510
-    .size func_0203b594, . - func_0203b594
+    .size ActorDerivedRuntime_Destroy, . - ActorDerivedRuntime_Destroy
 
-    .global func_0203b5d4
-    .type func_0203b5d4, @function
-func_0203b5d4: ; 0x0203b5d4
+    .global ActorDerivedRuntime_DestroyAndFree
+    .type ActorDerivedRuntime_DestroyAndFree, @function
+ActorDerivedRuntime_DestroyAndFree: ; 0x0203b5d4
     stmdb sp!, {r4, lr}
     ldr r1, .L_0203b618
     mov r4, r0
@@ -91,11 +91,11 @@ func_0203b5d4: ; 0x0203b5d4
     mov r0, r4
     ldmia sp!, {r4, pc}
 .L_0203b618: .word data_020df510
-    .size func_0203b5d4, . - func_0203b5d4
+    .size ActorDerivedRuntime_DestroyAndFree, . - ActorDerivedRuntime_DestroyAndFree
 
-    .global func_0203b61c
-    .type func_0203b61c, @function
-func_0203b61c: ; 0x0203b61c
+    .global ActorDerivedRuntime_DestroyAlternate
+    .type ActorDerivedRuntime_DestroyAlternate, @function
+ActorDerivedRuntime_DestroyAlternate: ; 0x0203b61c
     stmdb sp!, {r4, lr}
     ldr r1, .L_0203b658
     mov r4, r0
@@ -112,6 +112,6 @@ func_0203b61c: ; 0x0203b61c
     mov r0, r4
     ldmia sp!, {r4, pc}
 .L_0203b658: .word data_020df510
-    .size func_0203b61c, . - func_0203b61c
+    .size ActorDerivedRuntime_DestroyAlternate, . - ActorDerivedRuntime_DestroyAlternate
 
 

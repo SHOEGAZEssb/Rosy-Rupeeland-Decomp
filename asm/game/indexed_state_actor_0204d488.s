@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/indexed_state_actor.c.
-.extern func_0203b514
-.extern func_0203b61c
+.extern ActorDerivedRuntime_Init
+.extern ActorDerivedRuntime_DestroyAlternate
 .extern Heap_Free
 .extern ActorDerivedRuntime_UpdateFrame
 .extern data_020e212c
@@ -11,7 +11,7 @@ func_0204d488: ; 0x0204d488
     stmdb sp!, {r3, r4, r5, lr}
     mov r5, r0
     mov r4, r1
-    bl func_0203b514
+    bl ActorDerivedRuntime_Init
     ldr r0, .L_0204d4bc
     add r1, r5, #0x200
     str r0, [r5, #0x0]
@@ -28,7 +28,7 @@ func_0204d488: ; 0x0204d488
 func_0204d4c0: ; 0x0204d4c0
     stmdb sp!, {r4, lr}
     mov r4, r0
-    bl func_0203b61c
+    bl ActorDerivedRuntime_DestroyAlternate
     mov r0, r4
     ldmia sp!, {r4, pc}
 .size func_0204d4c0, . - func_0204d4c0
@@ -37,7 +37,7 @@ func_0204d4c0: ; 0x0204d4c0
 func_0204d4d4: ; 0x0204d4d4
     stmdb sp!, {r4, lr}
     mov r4, r0
-    bl func_0203b61c
+    bl ActorDerivedRuntime_DestroyAlternate
     mov r0, r4
     bl Heap_Free
     mov r0, r4

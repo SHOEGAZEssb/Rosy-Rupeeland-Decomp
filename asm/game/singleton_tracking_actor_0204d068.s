@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/singleton_tracking_actor.c.
-.extern func_0203b514
-.extern func_0203b61c
+.extern ActorDerivedRuntime_Init
+.extern ActorDerivedRuntime_DestroyAlternate
 .extern Heap_Free
 .extern ActorDerivedRuntime_UpdateFrame
 .extern func_02007f0c
@@ -13,7 +13,7 @@
 func_0204d068: ; 0x0204d068
     stmdb sp!, {r4, lr}
     mov r4, r0
-    bl func_0203b514
+    bl ActorDerivedRuntime_Init
     ldr r0, .L_0204d098
     mov r1, #0x0
     str r0, [r4, #0x0]
@@ -36,7 +36,7 @@ func_0204d09c: ; 0x0204d09c
     ldr r1, [r1, #0x0]
     mov r2, #0x0
     strh r2, [r1, #0x9e]
-    bl func_0203b61c
+    bl ActorDerivedRuntime_DestroyAlternate
     mov r0, r4
     ldmia sp!, {r4, pc}
 .L_0204d0c8: .word data_020e1f2c
@@ -53,7 +53,7 @@ func_0204d0d0: ; 0x0204d0d0
     ldr r1, [r1, #0x0]
     mov r2, #0x0
     strh r2, [r1, #0x9e]
-    bl func_0203b61c
+    bl ActorDerivedRuntime_DestroyAlternate
     mov r0, r4
     bl Heap_Free
     mov r0, r4

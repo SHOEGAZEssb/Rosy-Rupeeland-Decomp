@@ -4,7 +4,7 @@
 .extern data_021056f0
 .extern data_ov088_0221b928
 .extern func_02031488
-.extern func_0203b61c
+.extern ActorDerivedRuntime_DestroyAlternate
 .extern func_02073ef8
 .extern func_ov088_02218290
 
@@ -74,7 +74,7 @@ func_ov088_02217d48:
     blx r1
 .L_02217e24:
     mov r0, r4
-    bl func_0203b61c
+    bl ActorDerivedRuntime_DestroyAlternate
     mov r0, r4
     bl Heap_Free
     mov r0, r4

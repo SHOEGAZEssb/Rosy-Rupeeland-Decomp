@@ -2,7 +2,7 @@
 ; Matching fallback for the portable implementation in src/overlays/ov087/overlay087_recovery.c.
 .extern data_ov087_022189e0
 .extern func_02031488
-.extern func_0203b61c
+.extern ActorDerivedRuntime_DestroyAlternate
 
 .global func_ov087_0221788c
 func_ov087_0221788c:
@@ -23,7 +23,7 @@ func_ov087_0221788c:
     blx r1
 .L_022178c8:
     mov r0, r4
-    bl func_0203b61c
+    bl ActorDerivedRuntime_DestroyAlternate
     mov r0, r4
     ldmia sp!, {r4, pc}
 .L_022178d8: .word data_ov087_022189e0

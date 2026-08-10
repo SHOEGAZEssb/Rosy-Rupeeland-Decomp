@@ -184,13 +184,13 @@ void func_ov075_02214614(void);
 /* Empty or constant ABI helper: accepts its implicit arguments, changes no observable state, returns its encoded ABI result, and performs no SDK or hardware work. */
 void func_ov075_02214618(void);
 
-/* Processes the supplied ABI arguments and offset-based actor state, returns its encoded result, and invokes func_02004fe0, func_020050a4, func_0203b514; exact higher-level semantics remain unconfirmed. */
+/* Processes the supplied ABI arguments and offset-based actor state, returns its encoded result, and invokes func_02004fe0, func_020050a4, ActorDerivedRuntime_Init; exact higher-level semantics remain unconfirmed. */
 void func_ov075_0221461c(void);
 
-/* Processes the supplied ABI arguments and offset-based actor state, returns its encoded result, and invokes func_02005058, func_0203b61c; exact higher-level semantics remain unconfirmed. */
+/* Processes the supplied ABI arguments and offset-based actor state, returns its encoded result, and invokes func_02005058, ActorDerivedRuntime_DestroyAlternate; exact higher-level semantics remain unconfirmed. */
 void func_ov075_022146a4(void);
 
-/* Processes the supplied ABI arguments and offset-based actor state, returns its encoded result, and invokes func_02005058, func_0203b61c; exact higher-level semantics remain unconfirmed. */
+/* Processes the supplied ABI arguments and offset-based actor state, returns its encoded result, and invokes func_02005058, ActorDerivedRuntime_DestroyAlternate; exact higher-level semantics remain unconfirmed. */
 void func_ov075_022146c4(void);
 
 /* Processes the supplied ABI arguments and offset-based actor state, returns its encoded result, and invokes ActorCollection_GetSpriteOwner, Actor_GetCollection, func_02071ee0 and other shared helpers; exact higher-level semantics remain unconfirmed. */

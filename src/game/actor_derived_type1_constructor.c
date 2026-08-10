@@ -6,7 +6,7 @@ extern u8 data_020df3c8[];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *func_0203b514(void *self);
+extern void *ActorDerivedRuntime_Init(void *self);
 extern void func_0200500c(void *vector, s32 x, s32 y, s32 z);
 extern void func_02004fe0(void *vector);
 extern void func_0204cca8(void *state, void *owner);
@@ -16,7 +16,7 @@ extern void func_0200b2c0(void *state, s32 first, s32 second, s32 third);
 #endif
 
 /*
- * Run base constructor func_0203b514, install vtable data_020df3c8, and clear
+ * Run base constructor ActorDerivedRuntime_Init, install vtable data_020df3c8, and clear
  * the recovered extension state. Initialize vectors +0x238 to zero, +0x254 and
  * +0x284 through their value helpers; clear word +0x248, halfwords +0x24c..
  * +0x252, +0x266/+0x268, +0x280/+0x282, bytes +0x26b, +0x2a0/+0x2a1, words
@@ -31,7 +31,7 @@ void *ActorDerivedType1_Init(void *self)
     u8 *actor = (u8 *)self;
     u32 offset;
 
-    func_0203b514(actor);
+    ActorDerivedRuntime_Init(actor);
     *(void **)actor = data_020df3c8;
     func_0200500c(actor + 0x238, 0, 0, 0);
     *(s32 *)(actor + 0x248) = 0;

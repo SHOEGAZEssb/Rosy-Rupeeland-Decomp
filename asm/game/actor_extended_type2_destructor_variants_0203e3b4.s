@@ -4,7 +4,7 @@
 .extern data_020dfee4
 .extern func_02005058
 .extern func_02031488
-.extern func_0203b61c
+.extern ActorDerivedRuntime_DestroyAlternate
 .extern func_0204cd7c
     .global ActorExtendedType2_DestroyAndFree
     .type ActorExtendedType2_DestroyAndFree, @function
@@ -65,7 +65,7 @@ ActorExtendedType2_DestroyAndFree: ; 0x0203e3b4
     add r0, r4, #0x22c
     bl func_02005058
     mov r0, r4
-    bl func_0203b61c
+    bl ActorDerivedRuntime_DestroyAlternate
     mov r0, r4
     bl Heap_Free
     mov r0, r4
@@ -133,7 +133,7 @@ ActorExtendedType2_Destroy: ; 0x0203e494
     add r0, r4, #0x22c
     bl func_02005058
     mov r0, r4
-    bl func_0203b61c
+    bl ActorDerivedRuntime_DestroyAlternate
     mov r0, r4
     ldmia sp!, {r3, r4, r5, pc}
 .L_0203e568: .word data_020dfee4

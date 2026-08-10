@@ -3,14 +3,14 @@
 .extern data_ov075_022171bc
 .extern func_02004fe0
 .extern func_020050a4
-.extern func_0203b514
+.extern ActorDerivedRuntime_Init
 
 .global func_ov075_0221461c
 func_ov075_0221461c:
     stmdb sp!, {r3, r4, r5, lr}
     mov r5, r0
     mov r4, r1
-    bl func_0203b514
+    bl ActorDerivedRuntime_Init
     ldr r1, .L_022146a0
     add r0, r5, #0x20c
     str r1, [r5, #0x0]

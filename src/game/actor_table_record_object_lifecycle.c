@@ -8,8 +8,8 @@ extern u8 data_020ed638[];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *func_0203b514(void *actor);
-extern void *func_0203b61c(void *actor);
+extern void *ActorDerivedRuntime_Init(void *actor);
+extern void *ActorDerivedRuntime_DestroyAlternate(void *actor);
 #ifdef __cplusplus
 }
 #endif
@@ -17,7 +17,7 @@ extern void *func_0203b61c(void *actor);
 /* Shared portable constructor equivalent for the two retail entry points. */
 static void *initializeTableRecordActor(void *self, const void *descriptor)
 {
-    u8 *actor = (u8 *)func_0203b514(self);
+    u8 *actor = (u8 *)ActorDerivedRuntime_Init(self);
     const u8 *record = 0;
     s16 key = *(const s16 *)((const u8 *)descriptor + 0x4e);
     s32 i;
@@ -66,17 +66,17 @@ void *func_0203ca28(void *self, const void *descriptor)
     return initializeTableRecordActor(self, descriptor);
 }
 
-/* Run recovered base teardown func_0203b61c and return self without freeing it. */
+/* Run recovered base teardown ActorDerivedRuntime_DestroyAlternate and return self without freeing it. */
 void *func_0203cb04(void *self)
 {
-    func_0203b61c(self);
+    ActorDerivedRuntime_DestroyAlternate(self);
     return self;
 }
 
 /* Run recovered base teardown, free self, and return its former address. */
 void *func_0203cb18(void *self)
 {
-    func_0203b61c(self);
+    ActorDerivedRuntime_DestroyAlternate(self);
     Heap_Free(self);
     return self;
 }

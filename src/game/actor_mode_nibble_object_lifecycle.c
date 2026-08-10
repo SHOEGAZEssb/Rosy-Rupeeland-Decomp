@@ -7,8 +7,8 @@ extern void *data_020df774;
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *func_0203b514(void *actor);
-extern void *func_0203b61c(void *actor);
+extern void *ActorDerivedRuntime_Init(void *actor);
+extern void *ActorDerivedRuntime_DestroyAlternate(void *actor);
 #ifdef __cplusplus
 }
 #endif
@@ -22,7 +22,7 @@ extern void *func_0203b61c(void *actor);
  */
 void *func_0203c4e0(void *self, void *unused, u32 mode)
 {
-    u8 *actor = (u8 *)func_0203b514(self);
+    u8 *actor = (u8 *)ActorDerivedRuntime_Init(self);
     u16 flags;
     (void)unused;
     *(void **)actor = data_020df774;
@@ -36,17 +36,17 @@ void *func_0203c4e0(void *self, void *unused, u32 mode)
     return actor;
 }
 
-/* Run the recovered base teardown func_0203b61c and return self without freeing it. */
+/* Run the recovered base teardown ActorDerivedRuntime_DestroyAlternate and return self without freeing it. */
 void *func_0203c548(void *self)
 {
-    func_0203b61c(self);
+    ActorDerivedRuntime_DestroyAlternate(self);
     return self;
 }
 
 /* Run the recovered base teardown, free self, and return its former address. */
 void *func_0203c55c(void *self)
 {
-    func_0203b61c(self);
+    ActorDerivedRuntime_DestroyAlternate(self);
     Heap_Free(self);
     return self;
 }

@@ -3,15 +3,15 @@
 .extern Heap_Free
 .extern data_020df910
 .extern data_020ed638
-.extern func_0203b514
-.extern func_0203b61c
+.extern ActorDerivedRuntime_Init
+.extern ActorDerivedRuntime_DestroyAlternate
     .global func_0203c94c
     .type func_0203c94c, @function
 func_0203c94c: ; 0x0203c94c
     stmdb sp!, {r3, r4, r5, lr}
     mov r5, r0
     mov r4, r1
-    bl func_0203b514
+    bl ActorDerivedRuntime_Init
     ldr r0, .L_0203ca20
     mov ip, #0x0
     str r0, [r5, #0x0]
@@ -72,7 +72,7 @@ func_0203ca28: ; 0x0203ca28
     stmdb sp!, {r3, r4, r5, lr}
     mov r5, r0
     mov r4, r1
-    bl func_0203b514
+    bl ActorDerivedRuntime_Init
     ldr r0, .L_0203cafc
     mov ip, #0x0
     str r0, [r5, #0x0]
@@ -132,7 +132,7 @@ func_0203ca28: ; 0x0203ca28
 func_0203cb04: ; 0x0203cb04
     stmdb sp!, {r4, lr}
     mov r4, r0
-    bl func_0203b61c
+    bl ActorDerivedRuntime_DestroyAlternate
     mov r0, r4
     ldmia sp!, {r4, pc}
     .size func_0203cb04, . - func_0203cb04
@@ -142,7 +142,7 @@ func_0203cb04: ; 0x0203cb04
 func_0203cb18: ; 0x0203cb18
     stmdb sp!, {r4, lr}
     mov r4, r0
-    bl func_0203b61c
+    bl ActorDerivedRuntime_DestroyAlternate
     mov r0, r4
     bl Heap_Free
     mov r0, r4

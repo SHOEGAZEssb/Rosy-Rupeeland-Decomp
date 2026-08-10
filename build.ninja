@@ -16124,7 +16124,7 @@ build build/reports/actor_derived_runtime_object_lifecycle_0203b514.json: objdif
   base_object = build/decomp/asm/game/actor_derived_runtime_object_lifecycle_0203b514.o
 build build/reports/actor_derived_runtime_object_lifecycle_0203b514.txt: match_report build/reports/actor_derived_runtime_object_lifecycle_0203b514.json | tools/report_objdiff.py
   report_json = build/reports/actor_derived_runtime_object_lifecycle_0203b514.json
-  report_args = --section .text --function func_0203b514 --function func_0203b554 --function func_0203b594 --function func_0203b5d4 --function func_0203b61c --require-exact
+  report_args = --section .text --function ActorDerivedRuntime_Init --function ActorDerivedRuntime_InitAlternate --function ActorDerivedRuntime_Destroy --function ActorDerivedRuntime_DestroyAndFree --function ActorDerivedRuntime_DestroyAlternate --require-exact
 build build/reports/actor_derived_runtime_object_lifecycle.txt: phony build/reports/actor_derived_runtime_object_lifecycle_0203b514.txt
 
 build actor_derived_runtime_object_lifecycle: phony build/decomp/src/game/actor_derived_runtime_object_lifecycle.o build/decomp/asm/game/actor_derived_runtime_object_lifecycle_0203b514.o build/reports/actor_derived_runtime_object_lifecycle.txt

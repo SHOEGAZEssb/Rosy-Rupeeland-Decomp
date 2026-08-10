@@ -15,8 +15,8 @@ extern "C" {
 extern void Heap_Free(void *allocation);
 extern void *func_02007f0c(void *runtime, s32 category);
 extern s32 GameWork_TestFlag(void *work, u32 flag);
-extern void *func_0203b514(void *actor);
-extern void func_0203b61c(void *actor);
+extern void *ActorDerivedRuntime_Init(void *actor);
+extern void ActorDerivedRuntime_DestroyAlternate(void *actor);
 extern void ActorDerivedRuntime_UpdateFrame(void *actor);
 #ifdef __cplusplus
 }
@@ -24,14 +24,14 @@ extern void ActorDerivedRuntime_UpdateFrame(void *actor);
 
 /*
  * Input is destination actor storage. Construct the recovered base through
- * func_0203b514, install vtable data_020e1f2c, and clear words
+ * ActorDerivedRuntime_Init, install vtable data_020e1f2c, and clear words
  * +0x208/+0x20c/+0x210/+0x214. Return self. Base construction may mutate
  * actor-owned engine state; there are no direct hardware effects.
  */
 void *func_0204d068(void *self)
 {
     u8 *actor = (u8 *)self;
-    func_0203b514(actor);
+    ActorDerivedRuntime_Init(actor);
     *(const void **)actor = data_020e1f2c;
     *(u32 *)(actor + 0x208) = 0;
     *(u32 *)(actor + 0x20c) = 0;
@@ -42,7 +42,7 @@ void *func_0204d068(void *self)
 
 /*
  * Input is a tracking actor. Restore vtable data_020e1f2c, clear game-work
- * halfword +0x9e, and invoke the non-deleting base destructor func_0203b61c.
+ * halfword +0x9e, and invoke the non-deleting base destructor ActorDerivedRuntime_DestroyAlternate.
  * Return self. Actor and game-work state change; no hardware effects occur.
  */
 void *func_0204d09c(void *self)
@@ -50,7 +50,7 @@ void *func_0204d09c(void *self)
     u8 *actor = (u8 *)self;
     *(const void **)actor = data_020e1f2c;
     *(u16 *)(gGameWork + 0x9e) = 0;
-    func_0203b61c(actor);
+    ActorDerivedRuntime_DestroyAlternate(actor);
     return actor;
 }
 
@@ -65,7 +65,7 @@ void *func_0204d0d0(void *self)
     u8 *actor = (u8 *)self;
     *(const void **)actor = data_020e1f2c;
     *(u16 *)(gGameWork + 0x9e) = 0;
-    func_0203b61c(actor);
+    ActorDerivedRuntime_DestroyAlternate(actor);
     Heap_Free(actor);
     return actor;
 }

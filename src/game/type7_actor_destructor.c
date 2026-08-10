@@ -19,7 +19,7 @@ extern void func_0206c978(void *resource);
 extern void GameWork_ClearFlag(void *work, u32 flag);
 extern void func_0204cd7c(void *helper);
 extern void func_02005058(void *value);
-extern void func_0203b61c(void *actor);
+extern void ActorDerivedRuntime_DestroyAlternate(void *actor);
 #ifdef __cplusplus
 }
 #endif
@@ -34,7 +34,7 @@ extern void func_0203b61c(void *actor);
  * +0x2bc and store the boolean +0x268 bit 0x10 at +0x2d0. In both cases copy
  * signed +0x27e to +0x2c0 and fixed-point +0x1c/+0x20 integer parts to
  * +0x2c4/+0x2c8. Destroy helper +0x2a8, finalize values +0x284, +0x26c,
- * +0x224, and +0x214, invoke base destructor func_0203b61c, and return self.
+ * +0x224, and +0x214, invoke base destructor ActorDerivedRuntime_DestroyAlternate, and return self.
  * Registry, heap, GameWork, shared-scene, helper, and actor state may change.
  */
 void *func_02045724(void *self)
@@ -78,6 +78,6 @@ void *func_02045724(void *self)
     func_02005058(actor + 0x26c);
     func_02005058(actor + 0x224);
     func_02005058(actor + 0x214);
-    func_0203b61c(actor);
+    ActorDerivedRuntime_DestroyAlternate(actor);
     return actor;
 }

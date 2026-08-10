@@ -4,7 +4,7 @@
 .extern func_02004fe0
 .extern func_0200500c
 .extern func_0200b2c0
-.extern func_0203b514
+.extern ActorDerivedRuntime_Init
 .extern func_0204cca8
 
     .global ActorDerivedType1_Init
@@ -12,7 +12,7 @@
 ActorDerivedType1_Init: ; 0x02035060
     stmdb sp!, {r4, lr}
     mov r4, r0
-    bl func_0203b514
+    bl ActorDerivedRuntime_Init
     mov r1, #0x0
     ldr ip, .L_02035184
     mov r2, r1
