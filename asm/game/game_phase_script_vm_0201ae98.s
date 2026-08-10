@@ -2,8 +2,8 @@
 .text
 .extern GamePhaseScriptVm_SetResult
 .extern data_021052fc
-.global func_0201ae98
-func_0201ae98: ; 0x0201ae98
+.global GamePhaseActorScriptVm_GetActiveEntityPositionY
+GamePhaseActorScriptVm_GetActiveEntityPositionY: ; 0x0201ae98
     stmdb sp!, {r3, lr}
     ldr r2, L_0201aec8
     mov r1, #0x0
@@ -17,4 +17,4 @@ func_0201ae98: ; 0x0201ae98
     mov r0, #0x0
     ldmia sp!, {r3, pc}
 L_0201aec8: .word data_021052fc
-.size func_0201ae98, . - func_0201ae98
+.size GamePhaseActorScriptVm_GetActiveEntityPositionY, . - GamePhaseActorScriptVm_GetActiveEntityPositionY

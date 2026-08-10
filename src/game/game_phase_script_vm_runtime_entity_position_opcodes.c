@@ -11,7 +11,7 @@ extern void *data_021052fc;
 #endif
 
 /* Push active-entity X in integer units, or zero when no entity exists; return zero. */
-s32 func_0201ae64(GamePhaseActorScriptVm *self)
+s32 GamePhaseActorScriptVm_GetActiveEntityPositionX(GamePhaseActorScriptVm *self)
 {
     u8 *runtime = (u8 *)data_021052fc;
     u8 *entity = *(u8 **)(runtime + 0x2ea8);
@@ -20,7 +20,7 @@ s32 func_0201ae64(GamePhaseActorScriptVm *self)
 }
 
 /* Push active-entity Y in integer units, or zero when no entity exists; return zero. */
-s32 func_0201ae98(GamePhaseActorScriptVm *self)
+s32 GamePhaseActorScriptVm_GetActiveEntityPositionY(GamePhaseActorScriptVm *self)
 {
     u8 *runtime = (u8 *)data_021052fc;
     u8 *entity = *(u8 **)(runtime + 0x2ea8);
@@ -29,7 +29,7 @@ s32 func_0201ae98(GamePhaseActorScriptVm *self)
 }
 
 /* Push active-entity Z in integer units, or zero when no entity exists; return zero. */
-s32 func_0201aecc(GamePhaseActorScriptVm *self)
+s32 GamePhaseActorScriptVm_GetActiveEntityPositionZ(GamePhaseActorScriptVm *self)
 {
     u8 *runtime = (u8 *)data_021052fc;
     u8 *entity = *(u8 **)(runtime + 0x2ea8);
