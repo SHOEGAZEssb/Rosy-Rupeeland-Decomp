@@ -8627,31 +8627,31 @@ build build/reports/four_slot_3d_presentation_02024594.json: objdiff build/decom
   base_object = build/decomp/asm/game/four_slot_3d_presentation_02024594.o
 build build/reports/four_slot_3d_presentation_02024594.txt: match_report build/reports/four_slot_3d_presentation_02024594.json | tools/report_objdiff.py
   report_json = build/reports/four_slot_3d_presentation_02024594.json
-  report_args = --section .text --function func_02024594 --require-exact
+  report_args = --section .text --function FourSlot3DPresentation_Init --require-exact
 build build/reports/four_slot_3d_presentation_02024670.json: objdiff build/decomp/delinks/asm/game/four_slot_3d_presentation_02024670.o | build/decomp/asm/game/four_slot_3d_presentation_02024670.o
   target_object = build/decomp/delinks/asm/game/four_slot_3d_presentation_02024670.o
   base_object = build/decomp/asm/game/four_slot_3d_presentation_02024670.o
 build build/reports/four_slot_3d_presentation_02024670.txt: match_report build/reports/four_slot_3d_presentation_02024670.json | tools/report_objdiff.py
   report_json = build/reports/four_slot_3d_presentation_02024670.json
-  report_args = --section .text --function func_02024670 --require-exact
+  report_args = --section .text --function FourSlot3DPresentation_Destroy --require-exact
 build build/reports/four_slot_3d_presentation_020246a0.json: objdiff build/decomp/delinks/asm/game/four_slot_3d_presentation_020246a0.o | build/decomp/asm/game/four_slot_3d_presentation_020246a0.o
   target_object = build/decomp/delinks/asm/game/four_slot_3d_presentation_020246a0.o
   base_object = build/decomp/asm/game/four_slot_3d_presentation_020246a0.o
 build build/reports/four_slot_3d_presentation_020246a0.txt: match_report build/reports/four_slot_3d_presentation_020246a0.json | tools/report_objdiff.py
   report_json = build/reports/four_slot_3d_presentation_020246a0.json
-  report_args = --section .text --function func_020246a0 --require-exact
+  report_args = --section .text --function FourSlot3DPresentation_DestroyAndFree --require-exact
 build build/reports/four_slot_3d_presentation_020246d8.json: objdiff build/decomp/delinks/asm/game/four_slot_3d_presentation_020246d8.o | build/decomp/asm/game/four_slot_3d_presentation_020246d8.o
   target_object = build/decomp/delinks/asm/game/four_slot_3d_presentation_020246d8.o
   base_object = build/decomp/asm/game/four_slot_3d_presentation_020246d8.o
 build build/reports/four_slot_3d_presentation_020246d8.txt: match_report build/reports/four_slot_3d_presentation_020246d8.json | tools/report_objdiff.py
   report_json = build/reports/four_slot_3d_presentation_020246d8.json
-  report_args = --section .text --function func_020246d8 --require-exact
+  report_args = --section .text --function FourSlot3DPresentation_Update --require-exact
 build build/reports/four_slot_3d_presentation_0202497c.json: objdiff build/decomp/delinks/asm/game/four_slot_3d_presentation_0202497c.o | build/decomp/asm/game/four_slot_3d_presentation_0202497c.o
   target_object = build/decomp/delinks/asm/game/four_slot_3d_presentation_0202497c.o
   base_object = build/decomp/asm/game/four_slot_3d_presentation_0202497c.o
 build build/reports/four_slot_3d_presentation_0202497c.txt: match_report build/reports/four_slot_3d_presentation_0202497c.json | tools/report_objdiff.py
   report_json = build/reports/four_slot_3d_presentation_0202497c.json
-  report_args = --section .text --function func_0202497c --require-exact
+  report_args = --section .text --function FourSlot3DPresentation_DrawSegmentQuad --require-exact
 build build/reports/four_slot_3d_presentation.txt: phony build/reports/four_slot_3d_presentation_02024594.txt build/reports/four_slot_3d_presentation_02024670.txt build/reports/four_slot_3d_presentation_020246a0.txt build/reports/four_slot_3d_presentation_020246d8.txt build/reports/four_slot_3d_presentation_0202497c.txt
 build build/reports/launched_sprite_pair_presentation_02024b04.json: objdiff build/decomp/delinks/asm/game/launched_sprite_pair_presentation_02024b04.o | build/decomp/asm/game/launched_sprite_pair_presentation_02024b04.o
   target_object = build/decomp/delinks/asm/game/launched_sprite_pair_presentation_02024b04.o

@@ -5,9 +5,9 @@
 .extern func_0201e28c
 .extern DisplayControlElement_NoOp
 
-    .global func_020246a0
-    .type func_020246a0, @function
-func_020246a0: ; 0x020246a0
+    .global FourSlot3DPresentation_DestroyAndFree
+    .type FourSlot3DPresentation_DestroyAndFree, @function
+FourSlot3DPresentation_DestroyAndFree: ; 0x020246a0
     stmdb sp!, {r4, lr}
     mov r4, r0
     ldr r3, .L_020246d4
@@ -22,4 +22,4 @@ func_020246a0: ; 0x020246a0
     mov r0, r4
     ldmia sp!, {r4, pc}
 .L_020246d4: .word DisplayControlElement_NoOp
-    .size func_020246a0, . - func_020246a0
+    .size FourSlot3DPresentation_DestroyAndFree, . - FourSlot3DPresentation_DestroyAndFree

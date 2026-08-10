@@ -11,9 +11,9 @@
 .extern gGameWork
 .extern genrand_int32
 
-    .global func_02024594
-    .type func_02024594, @function
-func_02024594: ; 0x02024594
+    .global FourSlot3DPresentation_Init
+    .type FourSlot3DPresentation_Init, @function
+FourSlot3DPresentation_Init: ; 0x02024594
     stmdb sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, lr}
     mov r10, r0
     mov r5, r1
@@ -70,4 +70,4 @@ func_02024594: ; 0x02024594
 .L_02024664: .word func_02091b6c
 .L_02024668: .word data_020d6780
 .L_0202466c: .word gGameWork
-    .size func_02024594, . - func_02024594
+    .size FourSlot3DPresentation_Init, . - FourSlot3DPresentation_Init

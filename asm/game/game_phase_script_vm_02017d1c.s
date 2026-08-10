@@ -34,7 +34,7 @@
 .extern func_02024200
 .extern func_0202432c
 .extern func_02024468
-.extern func_02024594
+.extern FourSlot3DPresentation_Init
 .extern func_02027150
 .extern func_02027300
 .extern func_020755e0
@@ -263,7 +263,7 @@ L_02018014:
     movs r1, r0
     beq L_0201803c
     mov r1, r6
-    bl func_02024594
+    bl FourSlot3DPresentation_Init
     mov r1, r0
 L_0201803c:
     ldr r0, L_020181c4

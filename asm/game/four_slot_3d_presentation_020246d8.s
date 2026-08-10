@@ -6,15 +6,15 @@
 .extern data_020d67fc
 .extern data_021052fc
 .extern ActorMotionAreaFollower_GetPosition
-.extern func_0202497c
+.extern FourSlot3DPresentation_DrawSegmentQuad
 .extern func_02091bac
 .extern func_02091c7c
 .extern func_020b0a54
 .extern gGameWork
 
-    .global func_020246d8
-    .type func_020246d8, @function
-func_020246d8: ; 0x020246d8
+    .global FourSlot3DPresentation_Update
+    .type FourSlot3DPresentation_Update, @function
+FourSlot3DPresentation_Update: ; 0x020246d8
     stmdb sp!, {r4, r5, r6, r7, r8, r9, r10, r11, lr}
     sub sp, sp, #0x14
     ldr r1, .L_02024950
@@ -149,7 +149,7 @@ func_020246d8: ; 0x020246d8
     mov r0, r9
     mov r3, r11
     add r1, r7, r4, lsl #0x3
-    bl func_0202497c
+    bl FourSlot3DPresentation_DrawSegmentQuad
 .L_020248d8:
     add r4, r4, #0x1
     cmp r4, #0x4
@@ -174,7 +174,7 @@ func_020246d8: ; 0x020246d8
     ldr r3, .L_02024970
     mov r0, r9
     add r1, r1, r4, lsl #0x3
-    bl func_0202497c
+    bl FourSlot3DPresentation_DrawSegmentQuad
 .L_02024934:
     ldr r2, .L_02024978
     mov r0, #0x0
@@ -195,4 +195,4 @@ func_020246d8: ; 0x020246d8
 .L_02024970: .word 0x7f18
 .L_02024974: .word data_020d67fc
 .L_02024978: .word 0x4000504
-    .size func_020246d8, . - func_020246d8
+    .size FourSlot3DPresentation_Update, . - FourSlot3DPresentation_Update

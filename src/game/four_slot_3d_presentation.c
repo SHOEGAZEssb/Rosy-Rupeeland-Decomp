@@ -21,14 +21,14 @@ typedef struct ScreenSegment {
     s16 y1;
 } ScreenSegment;
 
-typedef struct FourSlot3dPresentation {
+typedef struct FourSlot3DPresentation {
     void **vtable00;
     u32 field04;
     s32 selection08;
     s32 intensity0c[4];
     DisplayControlElement elements1c[4];
     u32 randomSeed8c;
-} FourSlot3dPresentation;
+} FourSlot3DPresentation;
 
 #ifdef __cplusplus
 extern "C" {
@@ -55,7 +55,7 @@ extern void func_020b0a54(s32, s32, s32, s32, s32, s32, s32, s32, s32);
 }
 #endif
 
-void func_0202497c(FourSlot3dPresentation *self,
+void FourSlot3DPresentation_DrawSegmentQuad(FourSlot3DPresentation *self,
                    const ScreenSegment *segment, s32 width, s32 color,
                    u16 secondColor);
 
@@ -65,8 +65,8 @@ void func_0202497c(FourSlot3dPresentation *self,
  * flag is set or 0x800 otherwise.  Configure every element with arguments
  * (3,3,intensity/256,6) and return self.
  */
-FourSlot3dPresentation *func_02024594(FourSlot3dPresentation *self,
-                                      s32 selection)
+FourSlot3DPresentation *FourSlot3DPresentation_Init(
+    FourSlot3DPresentation *self, s32 selection)
 {
     s32 index;
     func_0201e250(self);
@@ -86,7 +86,8 @@ FourSlot3dPresentation *func_02024594(FourSlot3dPresentation *self,
 }
 
 /* Destroy all four display-control elements, tear down base, and return self. */
-FourSlot3dPresentation *func_02024670(FourSlot3dPresentation *self)
+FourSlot3DPresentation *FourSlot3DPresentation_Destroy(
+    FourSlot3DPresentation *self)
 {
     s32 index;
     for (index = 3; index >= 0; index--) {
@@ -96,10 +97,11 @@ FourSlot3dPresentation *func_02024670(FourSlot3dPresentation *self)
     return self;
 }
 
-/* Perform func_02024670 teardown, free self, and return its old address. */
-FourSlot3dPresentation *func_020246a0(FourSlot3dPresentation *self)
+/* Run the normal teardown, free self, and return its old address. */
+FourSlot3DPresentation *FourSlot3DPresentation_DestroyAndFree(
+    FourSlot3DPresentation *self)
 {
-    func_02024670(self);
+    FourSlot3DPresentation_Destroy(self);
     Heap_Free(self);
     return self;
 }
@@ -112,7 +114,7 @@ FourSlot3dPresentation *func_020246a0(FourSlot3dPresentation *self)
  * slot from data_020d67fc or all missing slots from data_020d67dc when selection
  * is 4.  Finish the geometry command sequence and return zero.
  */
-s32 func_020246d8(FourSlot3dPresentation *self)
+s32 FourSlot3DPresentation_Update(FourSlot3DPresentation *self)
 {
     const s32 *camera;
     volatile u32 *matrix = (volatile u32 *)0x04000444;
@@ -158,16 +160,18 @@ s32 func_020246d8(FourSlot3dPresentation *self)
     if (self->selection08 == 4) {
         for (index = 0; index < 4; index++) {
             if (!GameWork_TestFlag(gGameWork, data_020d6780[index])) {
-                func_0202497c(self, &data_020d67dc[index],
-                              self->elements1c[index].width10, 0x7f18, 0x3ff);
+                FourSlot3DPresentation_DrawSegmentQuad(
+                    self, &data_020d67dc[index],
+                    self->elements1c[index].width10, 0x7f18, 0x3ff);
             }
         }
     } else if ((u32)self->selection08 < 4 &&
                !GameWork_TestFlag(gGameWork,
                                   data_020d6780[self->selection08])) {
         index = self->selection08;
-        func_0202497c(self, &data_020d67fc[index],
-                      self->elements1c[index].width10, 0x7f18, 0x3ff);
+        FourSlot3DPresentation_DrawSegmentQuad(
+            self, &data_020d67fc[index],
+            self->elements1c[index].width10, 0x7f18, 0x3ff);
     }
     finish[0] = 0;
     *(volatile u32 *)0x04000448 = 1;
@@ -180,7 +184,7 @@ s32 func_020246d8(FourSlot3dPresentation *self)
  * around the segment through the geometry color/VTX_16/VTX_XY registers.
  * self is unused; color and secondColor select the two confirmed color writes.
  */
-void func_0202497c(FourSlot3dPresentation *self,
+void FourSlot3DPresentation_DrawSegmentQuad(FourSlot3DPresentation *self,
                    const ScreenSegment *segment, s32 width, s32 color,
                    u16 secondColor)
 {

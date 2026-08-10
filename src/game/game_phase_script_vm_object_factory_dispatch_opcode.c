@@ -44,7 +44,7 @@ extern void *func_020240cc(void *object, s32 value);
 extern void *func_02024200(void *object);
 extern void *func_0202432c(void *object, s32 value, s32 parameter);
 extern void *func_02024468(void *object);
-extern void *func_02024594(void *object, s32 value);
+extern void *FourSlot3DPresentation_Init(void *object, s32 value);
 extern void *func_02027150(void *object, s32 value);
 extern void *func_02027300(void *object, s32 value);
 extern void *OverlayManager_GetGlobal(void);
@@ -153,7 +153,7 @@ s32 GamePhaseActorScriptVm_DispatchObjectFactory(GamePhaseActorScriptVm *self)
     case 9:
         object = allocateObject(0x90, data_020d5bcc);
         if (object)
-            object = func_02024594(object, value);
+            object = FourSlot3DPresentation_Init(object, value);
         func_0201ded4(runtimeObjectList(), object);
         break;
     case 8:

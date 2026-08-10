@@ -3,9 +3,9 @@
 .extern data_020c9670
 .extern func_020ae024
 
-    .global func_0202497c
-    .type func_0202497c, @function
-func_0202497c: ; 0x0202497c
+    .global FourSlot3DPresentation_DrawSegmentQuad
+    .type FourSlot3DPresentation_DrawSegmentQuad, @function
+FourSlot3DPresentation_DrawSegmentQuad: ; 0x0202497c
     stmdb sp!, {r4, r5, r6, lr}
     mov r6, r1
     ldrsh r5, [r6, #0x4]
@@ -104,4 +104,4 @@ func_0202497c: ; 0x0202497c
 .L_02024af8: .word data_020c9670
 .L_02024afc: .word 0x4000480
 .L_02024b00: .word 0xfff0
-    .size func_0202497c, . - func_0202497c
+    .size FourSlot3DPresentation_DrawSegmentQuad, . - FourSlot3DPresentation_DrawSegmentQuad
