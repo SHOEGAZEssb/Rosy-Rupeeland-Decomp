@@ -10808,42 +10808,42 @@ build build/reports/actor_runtime_grid_canvas_lifecycle.json: objdiff build/deco
   base_object = build/decomp/src/game/actor_runtime_grid_canvas_lifecycle.o
 build build/reports/actor_runtime_grid_canvas_lifecycle.txt: match_report build/reports/actor_runtime_grid_canvas_lifecycle.json | tools/report_objdiff.py
   report_json = build/reports/actor_runtime_grid_canvas_lifecycle.json
-  report_args = --section .text --function func_0200bf04 --require-exact
+  report_args = --section .text --function ActorRuntimeGridCanvas_Init --require-exact
 
 build build/reports/actor_runtime_grid_canvas_init.json: objdiff build/decomp/delinks/asm/game/actor_runtime_grid_canvas_init.o | build/decomp/asm/game/actor_runtime_grid_canvas_init.o
   target_object = build/decomp/delinks/asm/game/actor_runtime_grid_canvas_init.o
   base_object = build/decomp/asm/game/actor_runtime_grid_canvas_init.o
 build build/reports/actor_runtime_grid_canvas_init.txt: match_report build/reports/actor_runtime_grid_canvas_init.json | tools/report_objdiff.py
   report_json = build/reports/actor_runtime_grid_canvas_init.json
-  report_args = --section .text --function func_0200bf20 --require-exact
+  report_args = --section .text --function ActorRuntimeGridCanvas_SetupSubBg2 --require-exact
 
 build build/reports/actor_runtime_grid_canvas_draw.json: objdiff build/decomp/delinks/asm/game/actor_runtime_grid_canvas_draw.o | build/decomp/asm/game/actor_runtime_grid_canvas_draw.o
   target_object = build/decomp/delinks/asm/game/actor_runtime_grid_canvas_draw.o
   base_object = build/decomp/asm/game/actor_runtime_grid_canvas_draw.o
 build build/reports/actor_runtime_grid_canvas_draw.txt: match_report build/reports/actor_runtime_grid_canvas_draw.json | tools/report_objdiff.py
   report_json = build/reports/actor_runtime_grid_canvas_draw.json
-  report_args = --section .text --function func_0200c00c --require-exact
+  report_args = --section .text --function ActorRuntimeGridCanvas_DrawPage --require-exact
 
 build build/reports/actor_runtime_grid_canvas_helpers.json: objdiff build/decomp/delinks/src/game/actor_runtime_grid_canvas_helpers.o | build/decomp/src/game/actor_runtime_grid_canvas_helpers.o
   target_object = build/decomp/delinks/src/game/actor_runtime_grid_canvas_helpers.o
   base_object = build/decomp/src/game/actor_runtime_grid_canvas_helpers.o
 build build/reports/actor_runtime_grid_canvas_helpers.txt: match_report build/reports/actor_runtime_grid_canvas_helpers.json | tools/report_objdiff.py
   report_json = build/reports/actor_runtime_grid_canvas_helpers.json
-  report_args = --section .text --function func_0200c144 --require-exact
+  report_args = --section .text --function S32Rectangle_Translate --require-exact
 
 build build/reports/actor_runtime_grid_canvas_lines.json: objdiff build/decomp/delinks/asm/game/actor_runtime_grid_canvas_lines.o | build/decomp/asm/game/actor_runtime_grid_canvas_lines.o
   target_object = build/decomp/delinks/asm/game/actor_runtime_grid_canvas_lines.o
   base_object = build/decomp/asm/game/actor_runtime_grid_canvas_lines.o
 build build/reports/actor_runtime_grid_canvas_lines.txt: match_report build/reports/actor_runtime_grid_canvas_lines.json | tools/report_objdiff.py
   report_json = build/reports/actor_runtime_grid_canvas_lines.json
-  report_args = --section .text --function func_0200c178 --require-exact
+  report_args = --section .text --function ActorRuntimeGridCanvas_DrawGrid --require-exact
 
 build build/reports/actor_runtime_grid_display_select.json: objdiff build/decomp/delinks/src/game/actor_runtime_grid_display_select.o | build/decomp/src/game/actor_runtime_grid_display_select.o
   target_object = build/decomp/delinks/src/game/actor_runtime_grid_display_select.o
   base_object = build/decomp/src/game/actor_runtime_grid_display_select.o
 build build/reports/actor_runtime_grid_display_select.txt: match_report build/reports/actor_runtime_grid_display_select.json | tools/report_objdiff.py
   report_json = build/reports/actor_runtime_grid_display_select.json
-  report_args = --section .text --function func_0200c228 --require-exact
+  report_args = --section .text --function NdsDisplay_SetScreenSwap --require-exact
 
 build build/reports/debug_phase_selector_ctor.json: objdiff build/decomp/delinks/asm/game/debug_phase_selector_ctor.o | build/decomp/asm/game/debug_phase_selector_ctor.o
   target_object = build/decomp/delinks/asm/game/debug_phase_selector_ctor.o

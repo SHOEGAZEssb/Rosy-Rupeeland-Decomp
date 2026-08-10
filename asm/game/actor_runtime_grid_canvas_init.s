@@ -8,9 +8,9 @@
 .extern SoftwareCanvas_InitWithBuffer
 .extern SoftwareCanvas_Destroy
 .extern SoftwareCanvas_DrawRect
-.extern func_0200c178
-.global func_0200bf20
-func_0200bf20:
+.extern ActorRuntimeGridCanvas_DrawGrid
+.global ActorRuntimeGridCanvas_SetupSubBg2
+ActorRuntimeGridCanvas_SetupSubBg2:
     stmdb sp!, {r3, r4, lr}
     sub sp, sp, #0x2c
     mov r4, r0
@@ -66,9 +66,9 @@ func_0200bf20:
     str r1, [sp, #0x4]
     bl SoftwareCanvas_DrawRect
     mov r0, r4
-    bl func_0200c178
+    bl ActorRuntimeGridCanvas_DrawGrid
     add sp, sp, #0x2c
     ldmia sp!, {r3, r4, pc}
 L_0200c008: .word 0x400100c
-.size func_0200bf20, . - func_0200bf20
+.size ActorRuntimeGridCanvas_SetupSubBg2, . - ActorRuntimeGridCanvas_SetupSubBg2
 

@@ -5,7 +5,7 @@
 
 typedef struct ActorRuntimeGridCanvas {
     SoftwareCanvas base;
-    s32 selectedCell;
+    s32 pageIndex;
 } ActorRuntimeGridCanvas;
 
 typedef char ActorRuntimeGridCanvasSizeCheck[
@@ -15,12 +15,12 @@ typedef char ActorRuntimeGridCanvasSizeCheck[
 extern "C" {
 #endif
 
-ActorRuntimeGridCanvas *func_0200bf04(ActorRuntimeGridCanvas *self);
-void func_0200bf20(ActorRuntimeGridCanvas *self);
-void func_0200c178(ActorRuntimeGridCanvas *self);
-void func_0200c00c(ActorRuntimeGridCanvas *self, s32 row, s32 column);
-void func_0200c144(s32 *rectangle, s32 deltaX, s32 deltaY);
-void func_0200c228(s32 displaySelect);
+ActorRuntimeGridCanvas *ActorRuntimeGridCanvas_Init(ActorRuntimeGridCanvas *self);
+void ActorRuntimeGridCanvas_SetupSubBg2(ActorRuntimeGridCanvas *self);
+void ActorRuntimeGridCanvas_DrawGrid(ActorRuntimeGridCanvas *self);
+void ActorRuntimeGridCanvas_DrawPage(ActorRuntimeGridCanvas *self, s32 row, s32 column);
+void S32Rectangle_Translate(s32 *rectangle, s32 deltaX, s32 deltaY);
+void NdsDisplay_SetScreenSwap(s32 displaySelect);
 
 #ifdef __cplusplus
 }

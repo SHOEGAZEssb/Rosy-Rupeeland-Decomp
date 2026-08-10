@@ -15,13 +15,13 @@ extern void func_02076428(void *font, s32 x0, s32 y0, s32 x1, s32 y1,
 
 /*
  * Draw 90 numbered cells in nine rows and ten columns. Each label is
- * selectedCell*90 + row*10 + column + 1 and uses the recovered format string
+ * pageIndex*90 + row*10 + column + 1 and uses the recovered format string
  * data_020d52f4. Then draw two nested selection outlines around the requested
  * row/column through the debug-font rectangle helper. Returns no value; the
  * software canvas and debug-font buffer are modified, with no direct hardware
  * writes.
  */
-void func_0200c00c(ActorRuntimeGridCanvas *self, s32 row, s32 column)
+void ActorRuntimeGridCanvas_DrawPage(ActorRuntimeGridCanvas *self, s32 row, s32 column)
 {
     s32 gridRow;
 
@@ -32,9 +32,9 @@ void func_0200c00c(ActorRuntimeGridCanvas *self, s32 row, s32 column)
             s32 rectangle[4] = {0, 0, 24, 20};
             s32 value;
 
-            func_0200c144(rectangle, gridColumn * 24, gridRow * 20);
-            func_0200c144(rectangle, 9, 6);
-            value = self->selectedCell * 90 + gridRow * 10 + gridColumn + 1;
+            S32Rectangle_Translate(rectangle, gridColumn * 24, gridRow * 20);
+            S32Rectangle_Translate(rectangle, 9, 6);
+            value = self->pageIndex * 90 + gridRow * 10 + gridColumn + 1;
             SoftwareCanvas_DrawFormattedText(&self->base, rectangle[0] + 1,
                           rectangle[1] + 4, data_020d52f4, value);
         }

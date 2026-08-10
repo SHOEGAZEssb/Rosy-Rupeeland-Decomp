@@ -2,13 +2,13 @@
 ; the documented portable implementation and recovered behavior.
 .text
 .extern DebugText_BeginFrame
-.extern func_0200c00c
+.extern ActorRuntimeGridCanvas_DrawPage
 .extern DebugMenu_Create
 .extern DisplayBrightness_StartMainTransition
 .extern DisplayBrightness_StartSubTransition
 .extern Heap_Alloc
 .extern func_02082db4
-.extern func_0200c178
+.extern ActorRuntimeGridCanvas_DrawGrid
 .extern DisplayBrightness_IsMainTransitionComplete
 .extern GamePhase_Start
 .extern data_020d52f8
@@ -22,7 +22,7 @@ func_0200c360:
     ldr r1, [r4, #0x2c]
     ldr r2, [r4, #0x30]
     add r0, r4, #0x34
-    bl func_0200c00c
+    bl ActorRuntimeGridCanvas_DrawPage
     ldr r0, [r4, #0x24]
     cmp r0, #0x0
     beq L_0200c394
@@ -112,7 +112,7 @@ L_0200c4a4:
     movgt r0, #0x0
     strgt r0, [r4, #0x48]
     add r0, r4, #0x34
-    bl func_0200c178
+    bl ActorRuntimeGridCanvas_DrawGrid
     b L_0200c59c
 L_0200c4d0:
     ldrh r0, [r1, #0xa]

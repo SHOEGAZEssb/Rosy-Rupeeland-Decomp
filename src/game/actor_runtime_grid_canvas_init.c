@@ -18,11 +18,11 @@ extern void func_020afd28(volatile void *registers, const s32 *matrix,
  * Select sub graphics mode 5 and sub-BG bank 4, configure sub BG2 control and
  * display-control fields, install an identity affine transform, obtain the
  * sub-BG pixel buffer, copy a temporary 256-stride SoftwareCanvas binding into
- * self, clear a 256x256 region, and draw the initial grid via func_0200c178.
+ * self, clear a 256x256 region, and draw the initial grid via ActorRuntimeGridCanvas_DrawGrid.
  * Returns no value and directly writes Nintendo DS sub-engine registers at
  * 0x04001000/0x0400100c in addition to SDK graphics calls.
  */
-void func_0200bf20(ActorRuntimeGridCanvas *self)
+void ActorRuntimeGridCanvas_SetupSubBg2(ActorRuntimeGridCanvas *self)
 {
     volatile u16 *bg2Control = (volatile u16 *)0x0400100c;
     volatile u32 *displayControl = (volatile u32 *)0x04001000;
@@ -44,5 +44,5 @@ void func_0200bf20(ActorRuntimeGridCanvas *self)
     self->base.field_10 = temporary.field_10;
     SoftwareCanvas_Destroy(&temporary);
     SoftwareCanvas_DrawRect(&self->base, 0, 0, 0x100, 0x100, 0);
-    func_0200c178(self);
+    ActorRuntimeGridCanvas_DrawGrid(self);
 }

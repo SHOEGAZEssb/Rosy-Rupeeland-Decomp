@@ -2,14 +2,14 @@
 ; the documented portable implementation and recovered behavior.
 .text
 .extern Scene_Init
-.extern func_0200bf04
+.extern ActorRuntimeGridCanvas_Init
 .extern GXx_SetMasterBrightness_
 .extern GX_SetGraphicsMode
-.extern func_0200bf20
+.extern ActorRuntimeGridCanvas_SetupSubBg2
 .extern DisplayBrightness_StartMainTransition
 .extern DisplayBrightness_StartSubTransition
 .extern GameWork_Reset
-.extern func_0200c228
+.extern NdsDisplay_SetScreenSwap
 .extern data_020d52c8
 .global func_0200c244
 func_0200c244:
@@ -23,7 +23,7 @@ func_0200c244:
     sub r1, r0, #0x1
     add r0, r4, #0x34
     str r1, [r4, #0x28]
-    bl func_0200bf04
+    bl ActorRuntimeGridCanvas_Init
     ldr r0, L_0200c2f0
     mvn r1, #0xf
     bl GXx_SetMasterBrightness_
@@ -43,7 +43,7 @@ func_0200c244:
     str r0, [r4, #0x2c]
     str r0, [r4, #0x30]
     add r0, r4, #0x34
-    bl func_0200bf20
+    bl ActorRuntimeGridCanvas_SetupSubBg2
     mov r0, #0x1
     mov r1, #0x10
     bl DisplayBrightness_StartMainTransition
@@ -52,7 +52,7 @@ func_0200c244:
     bl DisplayBrightness_StartSubTransition
     bl GameWork_Reset
     mov r0, #0x1
-    bl func_0200c228
+    bl NdsDisplay_SetScreenSwap
     mov r0, r4
     ldmia sp!, {r4, pc}
 L_0200c2ec: .word data_020d52c8

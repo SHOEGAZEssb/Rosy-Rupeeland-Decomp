@@ -34,7 +34,7 @@ s32 func_0200c360(DebugPhaseSelector *self)
     u16 pressed;
 
     DebugText_BeginFrame();
-    func_0200c00c(&self->grid, self->column, self->row);
+    ActorRuntimeGridCanvas_DrawPage(&self->grid, self->column, self->row);
     if (self->state == 0) {
         pressed = gSystemState.pads[0].pressed;
         if (pressed & 2) {
@@ -60,16 +60,16 @@ s32 func_0200c360(DebugPhaseSelector *self)
             if (debugObject != 0)
                 func_02082db4(debugObject);
         } else if (pressed & 1) {
-            self->selectedPhase = self->grid.selectedCell * 90 +
+            self->selectedPhase = self->grid.pageIndex * 90 +
                                   self->row * 10 + self->column;
             DisplayBrightness_StartMainTransition(2, 0x10);
             DisplayBrightness_StartSubTransition(2, 0x10);
             self->state++;
         } else if (pressed & 0x100) {
-            self->grid.selectedCell++;
-            if (self->grid.selectedCell > 2)
-                self->grid.selectedCell = 0;
-            func_0200c178(&self->grid);
+            self->grid.pageIndex++;
+            if (self->grid.pageIndex > 2)
+                self->grid.pageIndex = 0;
+            ActorRuntimeGridCanvas_DrawGrid(&self->grid);
         } else {
             u16 repeated = gSystemState.pads[0].repeated;
 

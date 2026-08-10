@@ -7,7 +7,7 @@
  * grid lines in RGB555 white, and return no value. Only the software pixel
  * buffer is changed; no hardware registers are accessed directly.
  */
-void func_0200c178(ActorRuntimeGridCanvas *self)
+void ActorRuntimeGridCanvas_DrawGrid(ActorRuntimeGridCanvas *self)
 {
     s32 index;
 

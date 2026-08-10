@@ -3,8 +3,8 @@
 .text
 .extern SoftwareCanvas_FillRect
 .extern SoftwareCanvas_DrawLine
-.global func_0200c178
-func_0200c178:
+.global ActorRuntimeGridCanvas_DrawGrid
+ActorRuntimeGridCanvas_DrawGrid:
     stmdb sp!, {r3, r4, r5, r6, r7, r8, r9, lr}
     sub sp, sp, #0x8
     mov r2, #0xc0
@@ -51,5 +51,5 @@ L_0200c1f4:
     add sp, sp, #0x8
     ldmia sp!, {r3, r4, r5, r6, r7, r8, r9, pc}
 L_0200c224: .word 0x7fff
-.size func_0200c178, . - func_0200c178
+.size ActorRuntimeGridCanvas_DrawGrid, . - ActorRuntimeGridCanvas_DrawGrid
 

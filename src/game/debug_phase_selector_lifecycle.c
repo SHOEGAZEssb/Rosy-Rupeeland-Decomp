@@ -33,18 +33,18 @@ DebugPhaseSelector *func_0200c244(DebugPhaseSelector *self)
     self->base.vtable = &data_020d52c8;
     self->state = 0;
     self->selectedPhase = -1;
-    func_0200bf04(&self->grid);
+    ActorRuntimeGridCanvas_Init(&self->grid);
     GXx_SetMasterBrightness_((volatile void *)0x0400006c, -16);
     GXx_SetMasterBrightness_((volatile void *)0x0400106c, -16);
     GX_SetGraphicsMode(1, 0, 0);
     *displayControl = (*displayControl & ~0x1f00) | 0x1000;
     self->column = 0;
     self->row = 0;
-    func_0200bf20(&self->grid);
+    ActorRuntimeGridCanvas_SetupSubBg2(&self->grid);
     DisplayBrightness_StartMainTransition(1, 0x10);
     DisplayBrightness_StartSubTransition(1, 0x10);
     GameWork_Reset();
-    func_0200c228(1);
+    NdsDisplay_SetScreenSwap(1);
     return self;
 }
 
