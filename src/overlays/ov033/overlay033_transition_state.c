@@ -18,7 +18,7 @@ extern "C" {
 extern void func_02094bbc(void *group, s32 x, s32 y, s32 mode);
 extern void func_02094cf0(void *group, const void *sequence, s32 mode);
 extern void GameWork_SetFlag(void *gameWork, s32 flag);
-extern void func_02007f24(void *context, s32 first, s32 second, s32 third,
+extern void GamePhaseRuntime_StageAreaRequest(void *context, s32 first, s32 second, s32 third,
                          s32 fourth, s32 fifth);
 extern void *Heap_Alloc(u32 size, const void *tag, s32 alignment,
                        void *heapContext);
@@ -95,7 +95,7 @@ extern "C" s32 func_ov033_021fd738(void *scene)
         if (update_group(group)) {
             GameWork_SetFlag(gGameWork, 0x3f8);
             GameWork_SetFlag(gGameWork, 0x386);
-            func_02007f24(data_021052fc, 0x69, 0x80, 0x280, 0, 0);
+            GamePhaseRuntime_StageAreaRequest(data_021052fc, 0x69, 0x80, 0x280, 0, 0);
             void *effect = Heap_Alloc(0x24, data_ov033_021fdec8, -4,
                                       gHeapContext);
             if (effect != 0)

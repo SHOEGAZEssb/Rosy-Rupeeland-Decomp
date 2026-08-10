@@ -26,7 +26,7 @@ extern void DisplayBrightness_StartSubTransition(s32 first, s32 second);
 extern s32 DisplayBrightness_IsMainTransitionComplete(void);
 extern s32 DisplayBrightness_IsSubTransitionComplete(void);
 extern void Type7Actor_ClearTarget(void *object);
-extern void func_02007f24(void *manager, s32 first, s32 second, s32 third,
+extern void GamePhaseRuntime_StageAreaRequest(void *manager, s32 first, s32 second, s32 third,
                           s32 fourth, s32 fifth);
 extern void ActorDerivedRuntime_UpdateFrame(void *actor);
 extern s32 func_02032370(void *actor, void *state, s32 step);
@@ -134,7 +134,7 @@ void ActorDerivedType1_UpdateFrame(void *self)
                 GameWork_SetFlag(work, 0x10);
                 if (managed != 0 && (*(u32 *)(managed + 0x268) & 0x10) != 0)
                     Type7Actor_ClearTarget(managed);
-                func_02007f24(data_021052fc, *(s16 *)(work + 0x200),
+                GamePhaseRuntime_StageAreaRequest(data_021052fc, *(s16 *)(work + 0x200),
                               *(s16 *)(work + 0x1f6),
                               *(s16 *)(work + 0x1f4), 0, 0);
             }

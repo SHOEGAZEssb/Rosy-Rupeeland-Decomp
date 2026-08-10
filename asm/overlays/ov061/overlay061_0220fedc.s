@@ -6,7 +6,7 @@
 .extern DisplayBrightness_StartTransition
 .extern DisplayBrightness_GetCurrent
 .extern DisplayBrightnessPair_GetScreen
-.extern func_02007a24
+.extern GamePhaseRuntime_FinalizeActorCollections
 .extern func_02008e10
 .extern func_0200f5b8
 .extern func_0200f824
@@ -24,7 +24,7 @@ func_ov061_0220fedc:
     ldr r0, [r1, #0x0]
     ldr r1, [r4, #0x4]
     mov r2, #0x3
-    bl func_02007a24
+    bl GamePhaseRuntime_FinalizeActorCollections
     ldr r0, [r4, #0x8]
     cmp r0, #0xe
     addls pc, pc, r0, lsl #0x2

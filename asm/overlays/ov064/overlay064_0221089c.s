@@ -9,7 +9,7 @@
 .extern OverlayManager_UnloadOverlay
 .extern OverlayManager_GetGlobal
 .extern VecFx32Triple_Destroy
-.extern func_02007f24
+.extern GamePhaseRuntime_StageAreaRequest
 .extern func_020084b8
 .extern ActorDerivedType1_ResetRuntimeState
 .extern Type7Actor_LeaveSpecialPresentationState
@@ -115,7 +115,7 @@ func_ov064_0221089c:
     ldrsh r2, [r0, #0x8a]
     ldrsh r3, [r0, #0x8c]
     ldr r0, [ip, #0x0]
-    bl func_02007f24
+    bl GamePhaseRuntime_StageAreaRequest
     ldr r0, .L_02210ae4
     mov r1, #0x3f8
     ldr r0, [r0, #0x0]
@@ -137,7 +137,7 @@ func_ov064_0221089c:
     ldrsh r2, [r0, #0x8a]
     ldrsh r3, [r0, #0x8c]
     ldr r0, [ip, #0x0]
-    bl func_02007f24
+    bl GamePhaseRuntime_StageAreaRequest
     ldr r0, .L_02210ae4
     mov r1, #0x3f8
     ldr r0, [r0, #0x0]
@@ -152,7 +152,7 @@ func_ov064_0221089c:
     mov r1, #0xc6
     mov r2, #0x100
     mov r3, #0xc0
-    bl func_02007f24
+    bl GamePhaseRuntime_StageAreaRequest
     ldr r0, .L_02210ae4
     mov r1, #0x3f8
     ldr r0, [r0, #0x0]

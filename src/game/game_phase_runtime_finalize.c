@@ -23,7 +23,7 @@ extern void ActorFeedback_UpdatePresentations(void);
  * hooks. The value argument is unused. Temporary states are explicitly
  * destroyed, and the global completion hook always runs. Returns no value.
  */
-void func_02007a24(GamePhaseRuntime *self, s32 value, s32 mode)
+void GamePhaseRuntime_FinalizeActorCollections(GamePhaseRuntime *self, s32 value, s32 mode)
 {
     u8 primaryState[16];
     u8 secondaryState[16];

@@ -5,7 +5,7 @@
     .extern func_02094bbc
     .extern func_02094cf0
     .extern GameWork_SetFlag
-    .extern func_02007f24
+    .extern GamePhaseRuntime_StageAreaRequest
     .extern Heap_Alloc
     .extern func_0200c680
     .extern func_02092c8c
@@ -78,7 +78,7 @@ L_021fd7b0:
     mov r1, #0x69
     mov r2, #0x80
     mov r3, #0x280
-    bl func_02007f24
+    bl GamePhaseRuntime_StageAreaRequest
     mov r0, #0x24
     ldr r1, L_021fd990
     sub r2, r0, #0x28

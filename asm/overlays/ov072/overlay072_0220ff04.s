@@ -6,7 +6,7 @@
 .extern data_ov072_02210b0c
 .extern OverlayManager_UnloadOverlay
 .extern OverlayManager_GetGlobal
-.extern func_02007f24
+.extern GamePhaseRuntime_StageAreaRequest
 .extern Actor_SetDirectionFromVector
 .extern Type7Actor_LeaveSpecialPresentationState
 .extern func_02073ef8
@@ -82,7 +82,7 @@ func_ov072_0220ff04:
     ldr r1, [r1, #0x14]
     ldr r0, [r0, #0x0]
     mov r3, r2
-    bl func_02007f24
+    bl GamePhaseRuntime_StageAreaRequest
 .L_02210004:
     ldr r0, .L_02210048
     ldr r3, [r4, #0x7c]

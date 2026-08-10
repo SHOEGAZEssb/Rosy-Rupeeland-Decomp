@@ -5,7 +5,7 @@
 .extern Scene_ClearFlags03
 .extern data_021052fc
 .extern func_02007f0c
-.extern func_02007f24
+.extern GamePhaseRuntime_StageAreaRequest
 .extern ActorCollection_UnregisterAndDestroyActor
 .extern func_02058d28
 .extern func_02058d40
@@ -48,7 +48,7 @@ func_ov063_02210414:
     ldr r0, [r0, #0x0]
     mov r1, r5
     mov r2, r4
-    bl func_02007f24
+    bl GamePhaseRuntime_StageAreaRequest
     ldr r0, .L_02210560
     mov r1, #0x1
     ldr r0, [r0, #0x0]
@@ -65,7 +65,7 @@ func_ov063_02210414:
     ldr r0, [r0, #0x0]
     mov r1, r5
     mov r2, r4
-    bl func_02007f24
+    bl GamePhaseRuntime_StageAreaRequest
     ldr r0, .L_02210560
     mvn r1, #0x0
     ldr r0, [r0, #0x0]

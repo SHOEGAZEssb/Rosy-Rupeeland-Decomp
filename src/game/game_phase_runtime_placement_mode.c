@@ -85,7 +85,7 @@ s32 func_020088b8(GamePhaseRuntime *self, s32 mode, s32 synchronize)
 
     if (synchronize != 0 && mode != 0) {
         void *object;
-        func_02007908(self, self->field_04, 3);
+        GamePhaseRuntime_PrepareActorCollections(self, self->field_04, 3);
         func_02008148(self, 1);
         object = *(void **)(b + 0x30e8);
         (*(void (***)(void *))object)[4](object);

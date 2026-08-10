@@ -39,7 +39,7 @@ void *func_02007f0c(GamePhaseRuntime *self, s32 index)
  * 20.12 fixed point to integers, and fixed control halfwords are installed.
  * The sound context is reset first. Returns no value.
  */
-void func_02007f24(GamePhaseRuntime *self, s32 areaNumber,
+void GamePhaseRuntime_StageAreaRequest(GamePhaseRuntime *self, s32 areaNumber,
                    s32 value0, s32 value1, s32 value2, s32 mode)
 {
     u8 *b = (u8 *)self;

@@ -33,7 +33,7 @@ void func_02008e10(GamePhaseRuntime *self, s32 mode)
         func_02008148(self, 0);
     if ((u32)(mode - 1) <= 1)
         func_02008148(self, 1);
-    func_02007a24(self, self->field_04, 3);
+    GamePhaseRuntime_FinalizeActorCollections(self, self->field_04, 3);
     func_02030b58(func_02007f0c(self, 1), previous);
     func_0201dcec(b + 0x2f7c, 1);
     func_02010e68(gLupyContext);

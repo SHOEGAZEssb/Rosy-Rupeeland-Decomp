@@ -3,7 +3,7 @@
 .text
 .extern func_0200500c
 .extern func_02005058
-.extern func_02007908
+.extern GamePhaseRuntime_PrepareActorCollections
 .extern func_02008148
 .extern func_02008af8
 .extern func_02009780
@@ -153,7 +153,7 @@ L_02008aa8:
     ldr r1, [r7, #0x4]
     mov r0, r7
     mov r2, #0x3
-    bl func_02007908
+    bl GamePhaseRuntime_PrepareActorCollections
     mov r0, r7
     mov r1, #0x1
     bl func_02008148

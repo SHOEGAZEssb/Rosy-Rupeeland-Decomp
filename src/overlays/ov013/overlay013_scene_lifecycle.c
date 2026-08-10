@@ -37,7 +37,7 @@ extern void func_02094cf0(void *, const void *, s32);
 extern void func_02095508(void *);
 extern void func_0207419c(void *);
 extern void func_02075630(void *);
-extern void func_02007a24(void *, s32, s32);
+extern void GamePhaseRuntime_FinalizeActorCollections(void *, s32, s32);
 extern void func_ov013_021fce00(void *);
 extern void func_ov013_021fce04(void *, s32, s32, s32);
 #ifdef __cplusplus
@@ -196,7 +196,7 @@ s32 func_ov013_021fd2ac(void *state)
     Overlay013Callback function;
 
     if (FIELD(void *, state, 0x9a8) == 0)
-        func_02007a24(data_021052fc, 9, 2);
+        GamePhaseRuntime_FinalizeActorCollections(data_021052fc, 9, 2);
     if (callback == 0)
         return 0;
     if (encoding & 1) {

@@ -17,7 +17,7 @@
 .extern DebugSpriteText_DrawCentered
 .extern SplineMover_Update
 .extern SplineMover_Evaluate2D
-.extern func_02007908
+.extern GamePhaseRuntime_PrepareActorCollections
 .extern func_0200807c
 .extern func_020080d0
 .extern func_02008570
@@ -381,7 +381,7 @@ func_ov059_02211330:
     ldr r1, [r5, #0x4]
     ldr r0, [r0, #0x0]
     mov r2, #0x2
-    bl func_02007908
+    bl GamePhaseRuntime_PrepareActorCollections
     ldr r0, .L_0221184c
     mov r1, #0x2
     ldr r0, [r0, #0x0]

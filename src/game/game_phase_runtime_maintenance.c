@@ -19,7 +19,7 @@ extern void func_0200bd10(void *loader);
  * update runtime-owned phase state, and advance the loader at offset 0x30b4.
  * The loader is assumed non-null. Returns no value.
  */
-void func_02007ae8(GamePhaseRuntime *self)
+void GamePhaseRuntime_RunFrameMaintenance(GamePhaseRuntime *self)
 {
     u8 *b = (u8 *)self;
     func_0200f824();

@@ -15,8 +15,8 @@
 .extern func_ov033_021fd37c
 .extern func_ov033_021fd324
 .extern func_02008b50
-.extern func_02007908
-.extern func_02007a24
+.extern GamePhaseRuntime_PrepareActorCollections
+.extern GamePhaseRuntime_FinalizeActorCollections
 .extern func_02008148
 .extern func_0201dcec
 .extern func_02009d78

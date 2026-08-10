@@ -29,8 +29,8 @@ extern s32 func_ov014_021fd2f8(Overlay33Child *self);
 extern s32 func_ov033_021fd37c(Overlay33Child *self);
 extern void func_ov033_021fd324(Overlay33Child *self, void *value);
 extern void func_02008b50(void *runtime);
-extern void func_02007908(void *runtime, u32 value, s32 mode);
-extern void func_02007a24(void *runtime, u32 value, s32 mode);
+extern void GamePhaseRuntime_PrepareActorCollections(void *runtime, u32 value, s32 mode);
+extern void GamePhaseRuntime_FinalizeActorCollections(void *runtime, u32 value, s32 mode);
 extern void func_02008148(void *runtime, s32 index);
 extern void func_0201dcec(void *manager, s32 value);
 extern void *func_02009d78(void *object);
@@ -129,7 +129,7 @@ s32 func_0201d884(Overlay33RuntimeScene *self)
             self->display2c, data_020d36e1);
         func_02008b50(runtime);
     }
-    func_02007908(runtime, self->base.value04, 3);
+    GamePhaseRuntime_PrepareActorCollections(runtime, self->base.value04, 3);
     if (func_ov014_021fd2f8(self->child3c) != 0) {
         if (self != 0)
             self->base.vtable->destroyAndFree(&self->base);
@@ -140,7 +140,7 @@ s32 func_0201d884(Overlay33RuntimeScene *self)
     func_02008148(runtime, 0);
     func_02008148(runtime, 1);
     func_0201dcec(runtime + 0x2f7c, 1);
-    func_02007a24(runtime, self->base.value04, 3);
+    GamePhaseRuntime_FinalizeActorCollections(runtime, self->base.value04, 3);
     value = func_02009d78(runtime + 0x2fbc);
     func_ov033_021fd324(self->child3c, value);
     func_02010e68(gLupyContext);

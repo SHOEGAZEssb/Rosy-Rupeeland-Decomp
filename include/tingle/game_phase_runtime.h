@@ -36,15 +36,15 @@ s32 GamePhaseRuntime_QueueBroadcastQuery(GamePhaseRuntime *self,
 s32 GamePhaseRuntime_HandleEvent100(GamePhaseRuntime *self, s32 event);
 s32 func_02007420(GamePhaseRuntime *self);
 s32 func_02007428(GamePhaseRuntime *self);
-s32 func_02007430(GamePhaseRuntime *self);
+s32 GamePhaseRuntime_Update(GamePhaseRuntime *self);
 s32 func_02007868(void *context);
-void func_02007908(GamePhaseRuntime *self, s32 value, s32 mode);
-void func_02007a24(GamePhaseRuntime *self, s32 value, s32 mode);
-void func_02007ae8(GamePhaseRuntime *self);
+void GamePhaseRuntime_PrepareActorCollections(GamePhaseRuntime *self, s32 value, s32 mode);
+void GamePhaseRuntime_FinalizeActorCollections(GamePhaseRuntime *self, s32 value, s32 mode);
+void GamePhaseRuntime_RunFrameMaintenance(GamePhaseRuntime *self);
 s32 func_02007b18(GamePhaseRuntime *self, s32 direction);
 void func_02007f08(void);
 void *func_02007f0c(GamePhaseRuntime *self, s32 index);
-void func_02007f24(GamePhaseRuntime *self, s32 areaNumber,
+void GamePhaseRuntime_StageAreaRequest(GamePhaseRuntime *self, s32 areaNumber,
                    s32 value0, s32 value1, s32 value2, s32 mode);
 void func_02007ff4(GamePhaseRuntime *self);
 void func_0200807c(GamePhaseRuntime *self, void *area, s32 enabled);

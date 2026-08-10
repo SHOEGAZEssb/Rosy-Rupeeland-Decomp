@@ -4,7 +4,7 @@
 .extern func_0200500c
 .extern func_02005058
 .extern func_020050a4
-.extern func_02007a24
+.extern GamePhaseRuntime_FinalizeActorCollections
 .extern func_02008148
 .extern func_02009780
 .extern func_ov091_0221888c
@@ -75,7 +75,7 @@ func_ov091_02218930:
     mov r1, #0x2
     ldr r0, [r0, #0x0]
     mov r2, #0x3
-    bl func_02007a24
+    bl GamePhaseRuntime_FinalizeActorCollections
     add r0, sp, #0x30
     bl func_02005058
     add sp, sp, #0x40

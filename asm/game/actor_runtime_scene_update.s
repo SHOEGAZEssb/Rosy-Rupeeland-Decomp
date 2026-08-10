@@ -3,10 +3,10 @@
 .text
 .extern GamePhaseRuntime_ProcessPendingPresentationRefreshes
 .extern GamePhaseRuntime_DispatchActorQueryRequest
-.extern func_02007908
+.extern GamePhaseRuntime_PrepareActorCollections
 .extern func_0200866c
 .extern func_02008148
-.extern func_02007a24
+.extern GamePhaseRuntime_FinalizeActorCollections
 .extern func_0201dcec
 .extern func_02008b50
 .extern func_02010e68
@@ -33,7 +33,7 @@ L_0200b6f0:
     ldr r1, [r4, #0x4]
     ldr r0, [r0, #0x0]
     mov r2, #0x3
-    bl func_02007908
+    bl GamePhaseRuntime_PrepareActorCollections
     ldr r0, L_0200b7ac
     ldr r0, [r0, #0x0]
     bl func_0200866c
@@ -49,7 +49,7 @@ L_0200b6f0:
     ldr r0, L_0200b7ac
     mov r2, #0x3
     ldr r0, [r0, #0x0]
-    bl func_02007a24
+    bl GamePhaseRuntime_FinalizeActorCollections
     b L_0200b774
 L_0200b754:
     cmp r4, #0x0

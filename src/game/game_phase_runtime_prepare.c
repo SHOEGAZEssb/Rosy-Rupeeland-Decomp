@@ -29,7 +29,7 @@ extern void func_0200af8c(void *state);
  * idle, value is not 2, and the gameplay context passes func_02007868, this
  * also starts the global transition. Returns no value.
  */
-void func_02007908(GamePhaseRuntime *self, s32 value, s32 mode)
+void GamePhaseRuntime_PrepareActorCollections(GamePhaseRuntime *self, s32 value, s32 mode)
 {
     u8 *b = (u8 *)self;
     void *actor;

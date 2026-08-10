@@ -1,6 +1,6 @@
     .text
     .extern data_021052fc
-    .extern func_02007a24
+    .extern GamePhaseRuntime_FinalizeActorCollections
 
 /* Exact fallback; see the documented portable reconstruction in
  * src/overlays/ov013/overlay013_scene_lifecycle.c. */
@@ -16,7 +16,7 @@ func_ov013_021fd2ac:
     mov r1, #0x9
     ldr r0, [r0, #0x0]
     mov r2, #0x2
-    bl func_02007a24
+    bl GamePhaseRuntime_FinalizeActorCollections
 L_021fd2d4:
     ldr r0, [r4, #0x24]
     cmp r0, #0x0

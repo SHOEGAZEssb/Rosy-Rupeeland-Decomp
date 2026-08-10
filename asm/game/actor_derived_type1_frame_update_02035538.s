@@ -12,7 +12,7 @@
 .extern DisplayBrightness_IsMainTransitionComplete
 .extern DisplayBrightness_IsSubTransitionComplete
 .extern func_02005070
-.extern func_02007f24
+.extern GamePhaseRuntime_StageAreaRequest
 .extern func_0200b2c0
 .extern Actor_ClearTransientContactState
 .extern func_02032228
@@ -214,7 +214,7 @@ ActorDerivedType1_UpdateFrame: ; 0x02035538
     ldrsh r2, [r3, #0xf6]
     ldrsh r3, [r3, #0xf4]
     ldr r0, [r4, #0x0]
-    bl func_02007f24
+    bl GamePhaseRuntime_StageAreaRequest
 .L_020357cc:
     ldr r0, [r5, #0x10]
     tst r0, #0x8

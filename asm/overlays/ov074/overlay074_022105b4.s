@@ -9,8 +9,8 @@
 .extern SplineMover_Destroy
 .extern SplineMover_Assign
 .extern SplineMover_Evaluate2D
-.extern func_02007a24
-.extern func_02007ae8
+.extern GamePhaseRuntime_FinalizeActorCollections
+.extern GamePhaseRuntime_RunFrameMaintenance
 .extern func_02007b18
 .extern func_02007f0c
 .extern func_02008148
@@ -34,7 +34,7 @@ func_ov074_022105b4:
     bl Scene_ClearFlags03
     ldr r0, .L_02210720
     ldr r0, [r0, #0x0]
-    bl func_02007ae8
+    bl GamePhaseRuntime_RunFrameMaintenance
     ldr r0, .L_02210720
     mov r1, r6
     ldr r0, [r0, #0x0]
@@ -68,7 +68,7 @@ func_ov074_022105b4:
     ldr r1, [r4, #0x4]
     ldr r0, [r0, #0x0]
     mov r2, #0x2
-    bl func_02007a24
+    bl GamePhaseRuntime_FinalizeActorCollections
     ldr r2, [r4, #0x24]
     add r0, sp, #0x0
     mov r1, r4

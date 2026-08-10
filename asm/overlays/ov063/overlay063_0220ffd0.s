@@ -1,8 +1,8 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov063/overlay063_recovery.c.
 .extern data_021052fc
-.extern func_02007908
-.extern func_02007a24
+.extern GamePhaseRuntime_PrepareActorCollections
+.extern GamePhaseRuntime_FinalizeActorCollections
 .extern func_02008148
 .extern func_02010e68
 .extern func_0201dcec
@@ -69,7 +69,7 @@ func_ov063_0220ffd0:
     mov r1, #0x2
     ldr r0, [r0, #0x0]
     mov r2, #0x3
-    bl func_02007908
+    bl GamePhaseRuntime_PrepareActorCollections
     ldr r0, [r4, #0x4c]
     ldr r1, [r0, #0x0]
     ldr r1, [r1, #0xdc]
@@ -92,7 +92,7 @@ func_ov063_0220ffd0:
     mov r1, #0x2
     ldr r0, [r0, #0x0]
     mov r2, #0x3
-    bl func_02007a24
+    bl GamePhaseRuntime_FinalizeActorCollections
     b .L_02210114
 .L_02210104:
     ldr r0, [r4, #0x4c]

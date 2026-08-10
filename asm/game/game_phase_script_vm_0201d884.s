@@ -15,8 +15,8 @@
 .extern func_ov033_021fd37c
 .extern func_ov033_021fd324
 .extern func_02008b50
-.extern func_02007908
-.extern func_02007a24
+.extern GamePhaseRuntime_PrepareActorCollections
+.extern GamePhaseRuntime_FinalizeActorCollections
 .extern func_02008148
 .extern func_0201dcec
 .extern func_02009d78
@@ -56,7 +56,7 @@ L_0201d8dc:
     ldr r1, [r4, #0x4]
     ldr r0, [r0, #0x0]
     mov r2, #0x3
-    bl func_02007908
+    bl GamePhaseRuntime_PrepareActorCollections
     ldr r0, [r4, #0x3c]
     bl func_ov014_021fd2f8 ; func_ov024_021fd2f8, func_ov033_021fd2f8
     cmp r0, #0x0
@@ -94,7 +94,7 @@ L_0201d920:
     ldr r1, [r4, #0x4]
     ldr r0, [r0, #0x0]
     mov r2, #0x3
-    bl func_02007a24
+    bl GamePhaseRuntime_FinalizeActorCollections
     ldr r0, L_0201d9b4
     ldr r0, [r0, #0x0]
     add r0, r0, #0x3bc

@@ -62,7 +62,7 @@ static void *allocRuntimeObject(u32 size)
  * tagged transition objects. Returns one only for request bit 3, otherwise
  * zero. Allocation failures simply skip the corresponding constructor.
  */
-s32 func_02007430(GamePhaseRuntime *self)
+s32 GamePhaseRuntime_Update(GamePhaseRuntime *self)
 {
     u8 *b = (u8 *)self;
     u32 flags = *(u32 *)(b + 0x30b8);
@@ -146,14 +146,14 @@ s32 func_02007430(GamePhaseRuntime *self)
         restricted = 1;
 
     if (!restricted) {
-        func_02007908(self, self->field_04, 3);
+        GamePhaseRuntime_PrepareActorCollections(self, self->field_04, 3);
         if (func_0200ecf0(b + 0x24))
             return 0;
         func_0200866c(self);
         func_02008148(self, 0);
         func_02008148(self, 1);
         func_0201dcec(b + 0x2ffc, 1);
-        func_02007a24(self, self->field_04, 3);
+        GamePhaseRuntime_FinalizeActorCollections(self, self->field_04, 3);
         if (GamePhaseRuntime_DispatchActorQueryRequest(self))
             return 0;
     }

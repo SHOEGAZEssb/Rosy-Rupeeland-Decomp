@@ -7,8 +7,8 @@ extern "C" {
 #endif
 extern void *data_021052fc;
 extern void *gLupyContext;
-extern void func_02007908(void *context, u32 value, s32 mode);
-extern void func_02007a24(void *context, u32 value, s32 mode);
+extern void GamePhaseRuntime_PrepareActorCollections(void *context, u32 value, s32 mode);
+extern void GamePhaseRuntime_FinalizeActorCollections(void *context, u32 value, s32 mode);
 extern s32 func_02008148(void *context, s32 index);
 extern s32 GamePhaseRuntime_DispatchActorQueryRequest(void *runtime);
 extern void func_0200866c(void *context);
@@ -35,11 +35,11 @@ s32 func_0200b6c4(ActorRuntimeScene *self)
     GamePhaseRuntime_ProcessPendingPresentationRefreshes(root);
     if (self->base.value08 == 0) {
         GamePhaseRuntime_DispatchActorQueryRequest(root);
-        func_02007908(root, self->base.value04, 3);
+        GamePhaseRuntime_PrepareActorCollections(root, self->base.value04, 3);
         func_0200866c(root);
         func_02008148(root, 0);
         func_02008148(root, 1);
-        func_02007a24(root, self->base.value04, 3);
+        GamePhaseRuntime_FinalizeActorCollections(root, self->base.value04, 3);
     } else if (self->base.value08 == 1) {
         if (self != 0)
             self->base.vtable->destroyAndFree(&self->base);

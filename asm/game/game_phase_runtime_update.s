@@ -9,8 +9,8 @@
 .extern OverlayManager_LoadOverlay
 .extern OverlayManager_GetGlobal
 .extern func_02007868
-.extern func_02007908
-.extern func_02007a24
+.extern GamePhaseRuntime_PrepareActorCollections
+.extern GamePhaseRuntime_FinalizeActorCollections
 .extern func_02008148
 .extern GamePhaseRuntime_DispatchActorQueryRequest
 .extern func_0200866c
@@ -42,9 +42,9 @@
 .extern Heap_Alloc
 .extern SceneManager_GetCurrent
 
-    .global func_02007430
-.type func_02007430, @function
-func_02007430:
+    .global GamePhaseRuntime_Update
+.type GamePhaseRuntime_Update, @function
+GamePhaseRuntime_Update:
     stmdb sp!, {r3, r4, r5, lr}
     mov r4, r0
     add r1, r4, #0x3000
@@ -224,7 +224,7 @@ L_020076a0:
     ldr r1, [r4, #0x4]
     mov r0, r4
     mov r2, #0x3
-    bl func_02007908
+    bl GamePhaseRuntime_PrepareActorCollections
     add r0, r4, #0x24
     bl func_0200ecf0
     cmp r0, #0x0
@@ -245,7 +245,7 @@ L_020076a0:
     ldr r1, [r4, #0x4]
     mov r0, r4
     mov r2, #0x3
-    bl func_02007a24
+    bl GamePhaseRuntime_FinalizeActorCollections
     mov r0, r4
     bl GamePhaseRuntime_DispatchActorQueryRequest
     cmp r0, #0x0
@@ -339,4 +339,4 @@ L_02007858: .word gDebugFont
 L_0200785c: .word 0x3f5
 L_02007860: .word gLupyContext
 L_02007864: .word gSceneManager
-    .size func_02007430, .-func_02007430
+    .size GamePhaseRuntime_Update, .-GamePhaseRuntime_Update

@@ -10090,7 +10090,7 @@ build build/reports/game_phase_runtime_update.json: objdiff build/decomp/delinks
 
 build build/reports/game_phase_runtime_update.txt: match_report build/reports/game_phase_runtime_update.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_runtime_update.json
-  report_args = --section .text --function func_02007430 --require-exact
+  report_args = --section .text --function GamePhaseRuntime_Update --require-exact
 
 build build/reports/game_phase_runtime_readiness.json: objdiff build/decomp/delinks/src/game/game_phase_runtime_readiness.o | build/decomp/src/game/game_phase_runtime_readiness.o
   target_object = build/decomp/delinks/src/game/game_phase_runtime_readiness.o
@@ -10106,7 +10106,7 @@ build build/reports/game_phase_runtime_prepare.json: objdiff build/decomp/delink
 
 build build/reports/game_phase_runtime_prepare.txt: match_report build/reports/game_phase_runtime_prepare.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_runtime_prepare.json
-  report_args = --section .text --function func_02007908 --require-exact
+  report_args = --section .text --function GamePhaseRuntime_PrepareActorCollections --require-exact
 
 build build/reports/game_phase_runtime_finalize.json: objdiff build/decomp/delinks/src/game/game_phase_runtime_finalize.o | build/decomp/src/game/game_phase_runtime_finalize.o
   target_object = build/decomp/delinks/src/game/game_phase_runtime_finalize.o
@@ -10114,7 +10114,7 @@ build build/reports/game_phase_runtime_finalize.json: objdiff build/decomp/delin
 
 build build/reports/game_phase_runtime_finalize.txt: match_report build/reports/game_phase_runtime_finalize.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_runtime_finalize.json
-  report_args = --section .text --function func_02007a24 --require-exact
+  report_args = --section .text --function GamePhaseRuntime_FinalizeActorCollections --require-exact
 
 build build/reports/game_phase_runtime_maintenance.json: objdiff build/decomp/delinks/src/game/game_phase_runtime_maintenance.o | build/decomp/src/game/game_phase_runtime_maintenance.o
   target_object = build/decomp/delinks/src/game/game_phase_runtime_maintenance.o
@@ -10122,7 +10122,7 @@ build build/reports/game_phase_runtime_maintenance.json: objdiff build/decomp/de
 
 build build/reports/game_phase_runtime_maintenance.txt: match_report build/reports/game_phase_runtime_maintenance.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_runtime_maintenance.json
-  report_args = --section .text --function func_02007ae8 --require-exact
+  report_args = --section .text --function GamePhaseRuntime_RunFrameMaintenance --require-exact
 
 build build/reports/game_phase_runtime_change_area.json: objdiff build/decomp/delinks/asm/game/game_phase_runtime_change_area.o | build/decomp/asm/game/game_phase_runtime_change_area.o
   target_object = build/decomp/delinks/asm/game/game_phase_runtime_change_area.o
@@ -10138,7 +10138,7 @@ build build/reports/game_phase_runtime_area_request.json: objdiff build/decomp/d
 
 build build/reports/game_phase_runtime_area_request.txt: match_report build/reports/game_phase_runtime_area_request.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_runtime_area_request.json
-  report_args = --section .text --function func_02007f08 --function func_02007f0c --function func_02007f24 --require-exact
+  report_args = --section .text --function func_02007f08 --function func_02007f0c --function GamePhaseRuntime_StageAreaRequest --require-exact
 
 build build/reports/game_phase_runtime_apply_request.json: objdiff build/decomp/delinks/src/game/game_phase_runtime_apply_request.o | build/decomp/src/game/game_phase_runtime_apply_request.o
   target_object = build/decomp/delinks/src/game/game_phase_runtime_apply_request.o
