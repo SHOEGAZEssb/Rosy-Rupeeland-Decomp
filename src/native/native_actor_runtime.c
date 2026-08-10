@@ -10,8 +10,29 @@
 
 enum {
     ACTOR_BASE_VTABLE_ADDRESS = 0x020DEF7C,
-    VECTOR_VTABLE_ADDRESS = 0x020D405C
+    ACTOR_COMMON_VTABLE_ADDRESS = 0x020DF040,
+    ACTOR_SHARED_DERIVED_VTABLE_ADDRESS = 0x020DF510,
+    VECTOR_VTABLE_ADDRESS = 0x020D405C,
+    ACTOR_SCRIPT_VM_VTABLE_ADDRESS = 0x020D5B20,
+    ANIMATION_RESOURCE_VTABLE_ADDRESS = 0x020D4178
 };
+
+static u16 ReadU16(const u8 *bytes, u32 offset)
+{
+    return (u16)bytes[offset] | (u16)((u16)bytes[offset + 1] << 8);
+}
+
+static s16 ReadS16(const u8 *bytes, u32 offset)
+{
+    return (s16)ReadU16(bytes, offset);
+}
+
+static u32 ReadU32(const u8 *bytes, u32 offset)
+{
+    return (u32)bytes[offset] | ((u32)bytes[offset + 1] << 8) |
+           ((u32)bytes[offset + 2] << 16) |
+           ((u32)bytes[offset + 3] << 24);
+}
 
 static void WriteU16(u8 *bytes, u32 offset, u16 value)
 {
@@ -33,6 +54,126 @@ static void InitializeVector(u8 *bytes, u32 offset, s32 x, s32 y, s32 z)
     WriteU32(bytes, offset + 4, (u32)x);
     WriteU32(bytes, offset + 8, (u32)y);
     WriteU32(bytes, offset + 12, (u32)z);
+}
+
+/* Reproduce the no-script actor VM constructor embedded at actor +0xec. */
+static void InitializeActorScriptVm(u8 *bytes)
+{
+    WriteU32(bytes, 0xEC, ACTOR_SCRIPT_VM_VTABLE_ADDRESS);
+    memset(bytes + 0xF0, 0, 0x7A);
+    /* Retail intentionally does not write base byte +0x7e (actor +0x16a). */
+    bytes[0x16B] = 0;
+    WriteU32(bytes, 0x16C, 0);
+    WriteU32(bytes, 0x170, 0);
+    WriteU32(bytes, 0x174, 0);
+    WriteU32(bytes, 0x178, ReadU32(bytes, 0x178) & ~3u);
+    bytes[0x17C] = 0x80;
+}
+
+/* Reproduce the three-vector countdown object embedded at actor +0x198. */
+static void InitializeVectorStepper(u8 *bytes)
+{
+    InitializeVector(bytes, 0x198, 0, 0, 0);
+    InitializeVector(bytes, 0x1A8, 0, 0, 0);
+    InitializeVector(bytes, 0x1B8, 0, 0, 0);
+    WriteU32(bytes, 0x1C8, 0);
+}
+
+/*
+ * Apply the byte-exact, host-independent portion of func_02030f98. The final
+ * +0x78 vector payload comes from phase-global state and remains explicitly
+ * pending; its object identity and zero-constructor state are still retained.
+ */
+static void InitializeCommonRuntime(TingleNativeActorImage *actor)
+{
+    const u8 *desc = actor->descriptor.raw;
+    u8 *bytes = actor->bytes;
+    s32 expand = ReadS16(desc, 0x3E);
+    u32 offset;
+
+    WriteU32(bytes, 0x00, ACTOR_COMMON_VTABLE_ADDRESS);
+    WriteU32(bytes, 0x54, 0);
+    WriteU32(bytes, 0x58, 0);
+    WriteU32(bytes, 0x5C,
+             (ReadU32(bytes, 0x5C) & 0xFF000000u) | ReadU16(desc, 0x60));
+    for (offset = 0; offset < 4; ++offset)
+        WriteU16(bytes, 0x60 + offset * 2,
+                 (u16)(s16)(s8)desc[0x5C + offset]);
+    for (offset = 0; offset < 4; ++offset)
+        WriteU16(bytes, 0x68 + offset * 2, ReadU16(desc, 0x1A + offset * 2));
+    InitializeVector(bytes, 0x78, 0, 0, 0);
+    InitializeVector(bytes, 0x88, 0, 0, 0);
+    InitializeVector(bytes, 0x98, 0, 0, 0);
+    WriteU32(bytes, 0xA8, 0);
+    WriteU16(bytes, 0xAC, 0xFF);
+    WriteU16(bytes, 0xAE, 0);
+    InitializeVector(bytes, 0xB0, 0, 0, 0);
+    WriteU32(bytes, 0xC0, 0);
+    WriteU32(bytes, 0xC4, 0);
+    WriteU32(bytes, 0xC8, 0);
+    WriteU32(bytes, 0xCC, 0);
+    WriteU32(bytes, 0xD0, 0);
+    bytes[0xD4] = bytes[0xD5] = 0;
+    WriteU16(bytes, 0xD6, 0);
+    WriteU16(bytes, 0xD8, 0);
+    WriteU16(bytes, 0xDA, 0);
+    WriteU16(bytes, 0xDC, 0);
+    WriteU16(bytes, 0xDE, 0);
+    WriteU16(bytes, 0xE4, 0);
+    bytes[0xE6] = bytes[0xE7] = bytes[0xE8] = 0;
+    InitializeActorScriptVm(bytes);
+    for (offset = 0; offset < 5; ++offset)
+        WriteU32(bytes, 0x180 + offset * 4, 0);
+    memset(bytes + 0x194, 0, 4);
+    InitializeVectorStepper(bytes);
+    WriteU32(bytes, 0x1CC, ReadU32(desc, 0x48));
+    WriteU32(bytes, 0x1D0, 0x1000);
+    WriteU32(bytes, 0x1D4, 0x1000);
+    WriteU32(bytes, 0x1D8, 0x1000);
+    WriteU32(bytes, 0x1DC, 0);
+    WriteU32(bytes, 0x1E0, 0);
+    bytes[0x1E4] = bytes[0x1E5] = bytes[0x1E6] = 0;
+    bytes[0x1E7] = 0x0C;
+    WriteU16(bytes, 0x1E8, 0x100);
+    WriteU16(bytes, 0x1EA, 0);
+
+    /* func_02032228(actor, 0, 0x1000, 0x800) resolves to angle zero. */
+    WriteU32(bytes, 0xC8, 0);
+    WriteU32(bytes, 0xCC, 0);
+    WriteU32(bytes, 0xD0, ReadU32(bytes, 0xD0) | 1u);
+    bytes[0xD4] = bytes[0xD5] = 0;
+    if (ReadS16(desc, 0x3C) >= 0 && ReadS16(desc, 0x3C) <= 3)
+        WriteU32(bytes, 0x14, ReadU32(bytes, 0x14) | 0x80u);
+    WriteU16(bytes, 0x70, (u16)((s8)bytes[0x08] - expand));
+    WriteU16(bytes, 0x72, (u16)((s8)bytes[0x09] - expand));
+    WriteU16(bytes, 0x74, (u16)((s8)bytes[0x0A] + expand));
+    WriteU16(bytes, 0x76, (u16)((s8)bytes[0x0B] + expand));
+
+    actor->initialization_stages |= TINGLE_NATIVE_ACTOR_STAGE_COMMON_RUNTIME;
+    actor->pending_external_state |= TINGLE_NATIVE_ACTOR_PENDING_PHASE_VECTOR;
+}
+
+static s32 UsesSharedDerivedConstructor(const TingleNativeActorDescriptor *desc)
+{
+    return desc->kind == 3 &&
+           (desc->subtype == 0 || desc->subtype == 2 || desc->subtype == 4 ||
+            desc->subtype == 23 || desc->subtype == 24);
+}
+
+/* Reproduce func_0203b554 after its common-base constructor has returned. */
+static void InitializeSharedDerived(TingleNativeActorImage *actor)
+{
+    u8 *bytes = actor->bytes;
+
+    WriteU32(bytes, 0x00, ACTOR_SHARED_DERIVED_VTABLE_ADDRESS);
+    WriteU32(bytes, 0x1EC, ANIMATION_RESOURCE_VTABLE_ADDRESS);
+    WriteU32(bytes, 0x1F0, 0);
+    WriteU32(bytes, 0x1F4, 0);
+    WriteU32(bytes, 0x1F8, 0);
+    WriteU32(bytes, 0x1FC, 0xFFFFFFFFu);
+    WriteU32(bytes, 0x200, 0xFFFFFFFFu);
+    WriteU16(bytes, 0x204, 0);
+    actor->initialization_stages |= TINGLE_NATIVE_ACTOR_STAGE_SHARED_DERIVED;
 }
 
 static s32 InitializeActor(TingleNativeActorImage *actor,
@@ -76,6 +217,13 @@ static s32 InitializeActor(TingleNativeActorImage *actor,
     actor->bytes[0x4D] = (u8)descriptor->kind;
     WriteU16(actor->bytes, 0x4E, descriptor->subtype);
     WriteU16(actor->bytes, 0x50, (u16)descriptor->selector_50);
+    actor->initialization_stages = TINGLE_NATIVE_ACTOR_STAGE_GEOMETRY;
+    if (actor->size >= 0x1EC) InitializeCommonRuntime(actor);
+    if (actor->size >= 0x208 && UsesSharedDerivedConstructor(descriptor))
+        InitializeSharedDerived(actor);
+    else
+        actor->pending_external_state |=
+            TINGLE_NATIVE_ACTOR_PENDING_DERIVED_CONSTRUCTOR;
     /* The factory copies descriptor +0x52 after the derived initializer. */
     WriteU16(actor->bytes, 0xE4, (u16)descriptor->value_52);
     return 1;

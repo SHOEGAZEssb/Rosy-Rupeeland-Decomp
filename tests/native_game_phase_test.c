@@ -61,6 +61,11 @@ static u32 ReadU32At(const u8 *bytes, u32 offset)
            ((u32)bytes[offset + 3] << 24);
 }
 
+static u16 ReadU16At(const u8 *bytes, u32 offset)
+{
+    return (u16)bytes[offset] | (u16)((u16)bytes[offset + 1] << 8);
+}
+
 static int TestActorRuntime(void)
 {
     TingleNativeActorDescriptor descriptors[2] = {{0}};
@@ -81,17 +86,50 @@ static int TestActorRuntime(void)
     descriptors[0].value_52 = -9;
     descriptors[0].reference_58 = 0x02200170;
     descriptors[0].allocation_size = 0x208;
+    WriteU16(descriptors[0].raw + 0x1A, (u16)-16);
+    WriteU16(descriptors[0].raw + 0x1C, (u16)-18);
+    WriteU16(descriptors[0].raw + 0x1E, 16);
+    WriteU16(descriptors[0].raw + 0x20, 18);
+    WriteU16(descriptors[0].raw + 0x3C, 2);
+    WriteU16(descriptors[0].raw + 0x3E, 3);
+    WriteU32(descriptors[0].raw + 0x48, 0x89ABCDEF);
+    descriptors[0].raw[0x5C] = (u8)-2;
+    descriptors[0].raw[0x5D] = (u8)-3;
+    descriptors[0].raw[0x5E] = 4;
+    descriptors[0].raw[0x5F] = 5;
+    WriteU16(descriptors[0].raw + 0x60, 0x3456);
     descriptors[1] = descriptors[0];
     descriptors[1].selector_50 = -1;
     runtime = TingleNativeActorRuntime_Create(descriptors, 2, NULL, 0);
     actor = TingleNativeActorRuntime_GetActor(runtime, 0);
     if (runtime == NULL || runtime->actor_count != 1 ||
         runtime->allocated_bytes != 0x208 || actor == NULL || actor->category != 1 ||
-        ReadU32At(actor->bytes, 0) != 0x020DEF7C ||
+        ReadU32At(actor->bytes, 0) != 0x020DF510 ||
+        actor->initialization_stages !=
+            (TINGLE_NATIVE_ACTOR_STAGE_GEOMETRY |
+             TINGLE_NATIVE_ACTOR_STAGE_COMMON_RUNTIME |
+             TINGLE_NATIVE_ACTOR_STAGE_SHARED_DERIVED) ||
+        actor->pending_external_state !=
+            TINGLE_NATIVE_ACTOR_PENDING_PHASE_VECTOR ||
         actor->bytes[4] != (u8)-12 || actor->bytes[8] != (u8)-10 ||
         ReadU32At(actor->bytes, 0x0C) != 0x12345678 ||
+        (ReadU32At(actor->bytes, 0x14) & 0x80) == 0 ||
         ReadU32At(actor->bytes, 0x1C) != (u32)(-12 * 0x1000) ||
         ReadU32At(actor->bytes, 0x20) != 34 * 0x1000 ||
+        ReadU32At(actor->bytes, 0x5C) != 0x3456 ||
+        ReadU16At(actor->bytes, 0x60) != (u16)-2 ||
+        ReadU16At(actor->bytes, 0x68) != (u16)-16 ||
+        ReadU16At(actor->bytes, 0x70) != (u16)-13 ||
+        ReadU16At(actor->bytes, 0x74) != 17 ||
+        ReadU32At(actor->bytes, 0x78) != 0x020D405C ||
+        ReadU32At(actor->bytes, 0xD0) != 1 ||
+        ReadU32At(actor->bytes, 0xEC) != 0x020D5B20 ||
+        actor->bytes[0x17C] != 0x80 ||
+        ReadU32At(actor->bytes, 0x198) != 0x020D405C ||
+        ReadU32At(actor->bytes, 0x1CC) != 0x89ABCDEF ||
+        ReadU32At(actor->bytes, 0x1D0) != 0x1000 ||
+        ReadU32At(actor->bytes, 0x1EC) != 0x020D4178 ||
+        ReadU32At(actor->bytes, 0x1FC) != 0xFFFFFFFFu ||
         actor->bytes[0x4D] != 3 || actor->bytes[0x4E] != 4 ||
         actor->bytes[0xE4] != (u8)-9 || actor->bytes[0xE5] != 0xFF ||
         TingleNativeActorRuntime_GetActor(runtime, 1) != NULL) {
@@ -123,9 +161,19 @@ static int TestActorBootstrapRuntime(void)
              ReadU32At(first->descriptor.raw, 0x0C) == 2 &&
              first->descriptor.raw[0x12] == 24 &&
              first->descriptor.raw[0x5C] == (u8)-12 &&
+             first->initialization_stages ==
+                 (TINGLE_NATIVE_ACTOR_STAGE_GEOMETRY |
+                  TINGLE_NATIVE_ACTOR_STAGE_COMMON_RUNTIME) &&
+             (first->pending_external_state &
+              TINGLE_NATIVE_ACTOR_PENDING_DERIVED_CONSTRUCTOR) != 0 &&
              second != NULL && second->synthetic && second->category == 1 &&
              second->descriptor.kind == 3 && second->descriptor.subtype == 4 &&
-             second->descriptor.value_52 == 2 && third != NULL &&
+             second->descriptor.value_52 == 2 &&
+             second->initialization_stages ==
+                 (TINGLE_NATIVE_ACTOR_STAGE_GEOMETRY |
+                  TINGLE_NATIVE_ACTOR_STAGE_COMMON_RUNTIME |
+                  TINGLE_NATIVE_ACTOR_STAGE_SHARED_DERIVED) &&
+             third != NULL &&
              third->synthetic && third->category == 2 &&
              third->descriptor.kind == 3 && third->descriptor.subtype == 3 &&
              third->size == 0x218 &&

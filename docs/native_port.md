@@ -151,14 +151,18 @@ meaning is still offset-derived. Synthetic startup descriptors reproduce the
 confirmed initializer bytes rather than inventing a host-only layout. The
 recovered factory's kind/subtype matrix and its two ARM9 selector tables
 then resolve every record to a retail allocation size and a type-local
-constructor route. Constructors themselves remain behind the native runtime
-boundary. The native phase scaffold allocates a host-owned byte image of that
-size for each initially eligible descriptor and applies the recovered common
-geometry initializer, including fixed-point positions, byte bounds, raw NDS
-vtable identities, and descriptor value `0x52`. The category-one bootstrap,
+constructor route. The native phase scaffold allocates a host-owned byte image
+of that size for each initially eligible descriptor and applies the recovered
+geometry and common runtime constructors, including fixed-point positions,
+collision bounds, packed descriptor state, embedded vectors, the empty actor
+script VM, its three-vector stepper, raw NDS vtable identities, and descriptor
+value `0x52`. The phase-global vector copied into actor offset `0x78` remains
+an explicit external-state dependency. Kind-three subtypes that use the shared
+`0x208` constructor also receive their recovered embedded animation-resource
+state and terminal fields. Other derived constructors remain marked pending.
+The category-one bootstrap,
 category-two bootstrap, and the common type-three actor added once per category
-are built in their recovered order before each overlay list. Derived
-constructors are not yet represented. The phase-start
+are built in their recovered order before each overlay list. The phase-start
 companion also follows its recovered shared-state timing: it
 sets GameWork flag `0x3F3`, advances states zero and one together on its first
 update, then clears optional flag `0x386` and its own flag on the next update.

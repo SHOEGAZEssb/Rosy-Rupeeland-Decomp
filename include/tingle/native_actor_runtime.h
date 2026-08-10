@@ -8,8 +8,21 @@ typedef struct TingleNativeActorImage {
     u8 *bytes;
     u32 size;
     u32 category;
+    u32 initialization_stages;
+    u32 pending_external_state;
     s32 synthetic;
 } TingleNativeActorImage;
+
+enum {
+    TINGLE_NATIVE_ACTOR_STAGE_GEOMETRY = 1u << 0,
+    TINGLE_NATIVE_ACTOR_STAGE_COMMON_RUNTIME = 1u << 1,
+    TINGLE_NATIVE_ACTOR_STAGE_SHARED_DERIVED = 1u << 2
+};
+
+enum {
+    TINGLE_NATIVE_ACTOR_PENDING_PHASE_VECTOR = 1u << 0,
+    TINGLE_NATIVE_ACTOR_PENDING_DERIVED_CONSTRUCTOR = 1u << 1
+};
 
 typedef struct TingleNativeActorRuntime {
     TingleNativeActorImage *actors;
