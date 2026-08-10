@@ -4,8 +4,8 @@
 .extern DisplayBrightness_StartTransition
 .extern DisplayBrightness_GetCurrent
 .extern DisplayBrightnessPair_GetScreen
-.global func_020173a4
-func_020173a4:
+.global GamePhaseActorScriptVm_StartSubBrightnessToZero
+GamePhaseActorScriptVm_StartSubBrightnessToZero:
     stmdb sp!, {r4, lr}
     ldr r0, L_020173d8
     mov r1, #1
@@ -20,4 +20,4 @@ func_020173a4:
     mov r0, #0
     ldmia sp!, {r4, pc}
 L_020173d8: .word data_020f4dc8
-    .size func_020173a4, . - func_020173a4
+    .size GamePhaseActorScriptVm_StartSubBrightnessToZero, . - GamePhaseActorScriptVm_StartSubBrightnessToZero

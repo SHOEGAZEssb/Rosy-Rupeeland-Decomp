@@ -6,7 +6,7 @@
 extern DisplayBrightnessPair data_020f4dc8;
 
 /* Start a 16-step main-screen transition from its current brightness to zero. */
-s32 func_02017334(GamePhaseActorScriptVm *self)
+s32 GamePhaseActorScriptVm_StartMainBrightnessToZero(GamePhaseActorScriptVm *self)
 {
     DisplayBrightness *state;
     (void)self;
@@ -16,7 +16,7 @@ s32 func_02017334(GamePhaseActorScriptVm *self)
 }
 
 /* Start a 16-step main-screen transition from its current brightness to -8. */
-s32 func_0201736c(GamePhaseActorScriptVm *self)
+s32 GamePhaseActorScriptVm_StartMainBrightnessToMinus8(GamePhaseActorScriptVm *self)
 {
     DisplayBrightness *state;
     (void)self;
@@ -26,7 +26,7 @@ s32 func_0201736c(GamePhaseActorScriptVm *self)
 }
 
 /* Start a 16-step sub-screen transition from its current brightness to zero. */
-s32 func_020173a4(GamePhaseActorScriptVm *self)
+s32 GamePhaseActorScriptVm_StartSubBrightnessToZero(GamePhaseActorScriptVm *self)
 {
     DisplayBrightness *state;
     (void)self;
@@ -36,7 +36,7 @@ s32 func_020173a4(GamePhaseActorScriptVm *self)
 }
 
 /* Start a 16-step sub-screen transition from its current brightness to -8. */
-s32 func_020173dc(GamePhaseActorScriptVm *self)
+s32 GamePhaseActorScriptVm_StartSubBrightnessToMinus8(GamePhaseActorScriptVm *self)
 {
     DisplayBrightness *state;
     (void)self;
