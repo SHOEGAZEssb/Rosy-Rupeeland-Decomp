@@ -9,7 +9,7 @@
 .extern data_ov074_02211d8c
 .extern func_02004fe0
 .extern SplineMover_Init
-.extern func_02010520
+.extern GamePhaseTouchPrompt_SetEnabled
 .extern func_0201df64
 .extern func_0201e0ec
 .extern func_02028388
@@ -107,7 +107,7 @@ func_ov074_0220fda8:
     ldr r0, .L_0220fff8
     ldr r0, [r0, #0x0]
     ldr r0, [r0, #0x8]
-    bl func_02010520
+    bl GamePhaseTouchPrompt_SetEnabled
     bl ActorDerivedType1_GetSingletonObject
     cmp r0, #0x0
     beq .L_0220ff10

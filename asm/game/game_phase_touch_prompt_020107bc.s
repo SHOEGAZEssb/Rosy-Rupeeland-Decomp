@@ -5,8 +5,8 @@
 .extern func_02095224
 .extern func_020954f4
 
-    .global func_020107bc
-func_020107bc: ; 0x020107bc
+    .global GamePhaseTouchPrompt_UpdateAlternateHideSequence
+GamePhaseTouchPrompt_UpdateAlternateHideSequence: ; 0x020107bc
     stmdb sp!, {r4, lr}
     mov r4, r0
     ldr r0, [r4, #0x28]
@@ -50,5 +50,5 @@ L_02010844:
     bl func_020954f4
     ldmia sp!, {r4, pc}
 L_02010850: .word data_020c3618
-    .size func_020107bc, . - func_020107bc
+    .size GamePhaseTouchPrompt_UpdateAlternateHideSequence, . - GamePhaseTouchPrompt_UpdateAlternateHideSequence
 

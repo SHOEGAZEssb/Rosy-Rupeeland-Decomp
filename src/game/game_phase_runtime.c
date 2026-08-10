@@ -32,7 +32,7 @@ extern void GamePhaseState_Init(void *object);
 extern void ActorMotionAreaFollower_Init(void *object, void *source);
 extern void ActorMotionGameWork_Init(void *object);
 extern void func_020ae90c(void *object);
-extern void *func_0201022c(void *task, GamePhaseRuntime *runtime);
+extern void *GamePhaseTouchPrompt_Init(void *task, GamePhaseRuntime *runtime);
 extern void GamePhaseRuntime_CreateFieldLoader(GamePhaseRuntime *runtime);
 extern void GXS_SetGraphicsMode(u32 bgMode);
 extern void DisplayController_SetVerticalOffset(s32 value);
@@ -55,7 +55,7 @@ extern void GamePhaseRuntime_SetDisplayRouting(s32 value);
 extern void func_02020060(void *object, const void *config);
 extern void func_0201140c(void *object, s32 enabled);
 extern void func_02012444(void *object, void *source);
-extern void func_02010520(FrameTask *task, s32 enabled);
+extern void GamePhaseTouchPrompt_SetEnabled(FrameTask *task, s32 enabled);
 
 #ifdef __cplusplus
 }
@@ -98,7 +98,7 @@ GamePhaseRuntime *GamePhaseRuntime_Init(GamePhaseRuntime *self)
     self->field_04 = 1;
     task = Heap_Alloc(0x30, (const char *)data_020d4348, 4, &gHeapContext);
     if (task != 0)
-        task = func_0201022c(task, self);
+        task = GamePhaseTouchPrompt_Init(task, self);
     data_021052fc.taskNode = FrameTaskList_Add((FrameTask *)task, 0);
 
     GamePhaseRuntime_CreateFieldLoader(self);
@@ -215,7 +215,7 @@ void GamePhaseRuntime_Configure(GamePhaseRuntime *self, const void *configPointe
     }
 
     *(void **)(bytes + 0x30f0) = entity;
-    func_02010520(data_021052fc.taskNode->task, 1);
+    GamePhaseTouchPrompt_SetEnabled(data_021052fc.taskNode->task, 1);
     *(u32 *)(bytes + 0x30b8) |= 0x30;
     Scene_SetFlags03((Scene *)self);
 }

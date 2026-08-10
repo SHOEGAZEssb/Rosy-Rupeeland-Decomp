@@ -15,7 +15,7 @@ extern void *gRuntimeContext;
 extern void *gGameWork;
 extern void func_0206f914(void *state, u16 value);
 extern void func_02065270(void *state);
-extern void func_02010520(void *state, s32 value);
+extern void GamePhaseTouchPrompt_SetEnabled(void *state, s32 value);
 extern s32 func_0207f80c(void *context, s32 zero0, s32 zero1, s32 enabled);
 extern s32 func_020befec(s32 numerator, s32 denominator);
 #ifdef __cplusplus
@@ -47,7 +47,7 @@ s32 func_02019128(GamePhaseActorScriptVm *self)
 s32 func_02019164(GamePhaseActorScriptVm *self)
 {
     s32 value = (s32)func_02012704(&self->base);
-    func_02010520(*(void **)((u8 *)data_02105300 + 8), value);
+    GamePhaseTouchPrompt_SetEnabled(*(void **)((u8 *)data_02105300 + 8), value);
     return 0;
 }
 

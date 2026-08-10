@@ -7,9 +7,9 @@
 extern "C" {
 #endif
 extern void *data_021052fc;
-extern void func_0201054c(GamePhaseTouchPrompt *self);
-extern void func_02010724(GamePhaseTouchPrompt *self);
-extern void func_020107bc(GamePhaseTouchPrompt *self);
+extern void GamePhaseTouchPrompt_UpdateInteraction(GamePhaseTouchPrompt *self);
+extern void GamePhaseTouchPrompt_UpdateHideSequence(GamePhaseTouchPrompt *self);
+extern void GamePhaseTouchPrompt_UpdateAlternateHideSequence(GamePhaseTouchPrompt *self);
 extern s32 ActorDerivedType1_IsActiveRecordType69(void *actor);
 extern s32 ActorDerivedType1_IsActiveRecordType6A(void *actor);
 extern void func_020740a4(GraphicsSpriteGroup *group);
@@ -31,13 +31,13 @@ typedef void (*PromptVirtualUpdate)(void *self);
  * actor queries. Returns zero. Offsets 0x2ea4 and 0x230 remain address-derived
  * because the encompassing phase-runtime and actor layouts are incomplete.
  */
-s32 func_020103d8(GamePhaseTouchPrompt *self)
+s32 GamePhaseTouchPrompt_Update(GamePhaseTouchPrompt *self)
 {
     u8 *phaseActor;
     Scene *scene;
     s32 animation;
 
-    if (!self->enabled_20)
+    if (!self->enabled)
         return 0;
     phaseActor = *(u8 **)((u8 *)data_021052fc + 0x2ea4);
     scene = SceneManager_GetCurrent(gSceneManager);
@@ -45,15 +45,15 @@ s32 func_020103d8(GamePhaseTouchPrompt *self)
         PromptVirtualQuery query =
             *(PromptVirtualQuery *)(*(u8 **)phaseActor + 0xa8);
         if (query(phaseActor))
-            func_020107bc(self);
+            GamePhaseTouchPrompt_UpdateAlternateHideSequence(self);
         else
-            func_0201054c(self);
+            GamePhaseTouchPrompt_UpdateInteraction(self);
     } else {
-        func_02010724(self);
+        GamePhaseTouchPrompt_UpdateHideSequence(self);
     }
 
-    (*(PromptVirtualUpdate *)(*(u8 **)self->actor_1c + 8))(self->actor_1c);
-    func_020740a4(self->spriteGroup_18);
+    (*(PromptVirtualUpdate *)(*(u8 **)self->actor + 8))(self->actor);
+    func_020740a4(self->spriteGroup);
     if (*(u32 *)(phaseActor + 0x230) & 0x800) {
         if (ActorDerivedType1_IsActiveRecordType69(phaseActor))
             animation = 3;
@@ -64,22 +64,22 @@ s32 func_020103d8(GamePhaseTouchPrompt *self)
     } else {
         animation = 0;
     }
-    if (func_020954d4(self->actor_1c) != animation)
-        func_020954c0(self->actor_1c, animation);
+    if (func_020954d4(self->actor) != animation)
+        func_020954c0(self->actor, animation);
     return 0;
 }
 
 /*
- * Replace enabled_20, enable or disable the underlying prompt actor through
+ * Replace enabled, enable or disable the underlying prompt actor through
  * the corresponding graphics helper, and return the previous enabled value.
  */
-s32 func_02010520(GamePhaseTouchPrompt *self, s32 enabled)
+s32 GamePhaseTouchPrompt_SetEnabled(GamePhaseTouchPrompt *self, s32 enabled)
 {
-    s32 previous = self->enabled_20;
-    self->enabled_20 = enabled;
+    s32 previous = self->enabled;
+    self->enabled = enabled;
     if (enabled)
-        func_020954e0(self->actor_1c);
+        func_020954e0(self->actor);
     else
-        func_020954f4(self->actor_1c);
+        func_020954f4(self->actor);
     return previous;
 }

@@ -2,17 +2,17 @@
 .text
 .extern SceneManager_GetCurrent
 .extern data_021052fc
-.extern func_0201054c
-.extern func_02010724
-.extern func_020107bc
+.extern GamePhaseTouchPrompt_UpdateInteraction
+.extern GamePhaseTouchPrompt_UpdateHideSequence
+.extern GamePhaseTouchPrompt_UpdateAlternateHideSequence
 .extern ActorDerivedType1_IsActiveRecordType69
 .extern ActorDerivedType1_IsActiveRecordType6A
 .extern func_020740a4
 .extern func_020954c0
 .extern func_020954d4
 .extern gSceneManager
-.global func_020103d8
-func_020103d8:
+.global GamePhaseTouchPrompt_Update
+GamePhaseTouchPrompt_Update:
     stmdb sp!, {r3, r4, r5, lr}
     mov r4, r0
     ldr r0, [r4, #0x20]
@@ -47,14 +47,14 @@ L_0201043c:
     cmp r0, #0x0
     mov r0, r4
     beq L_02010460
-    bl func_020107bc
+    bl GamePhaseTouchPrompt_UpdateAlternateHideSequence
     b L_02010470
 L_02010460:
-    bl func_0201054c
+    bl GamePhaseTouchPrompt_UpdateInteraction
     b L_02010470
 L_02010468:
     mov r0, r4
-    bl func_02010724
+    bl GamePhaseTouchPrompt_UpdateHideSequence
 L_02010470:
     ldr r0, [r4, #0x1c]
     ldr r1, [r0, #0x0]
@@ -103,5 +103,5 @@ L_02010510:
     ldmia sp!, {r3, r4, r5, pc}
 L_02010518: .word data_021052fc
 L_0201051c: .word gSceneManager
-    .size func_020103d8, . - func_020103d8
+    .size GamePhaseTouchPrompt_Update, . - GamePhaseTouchPrompt_Update
 

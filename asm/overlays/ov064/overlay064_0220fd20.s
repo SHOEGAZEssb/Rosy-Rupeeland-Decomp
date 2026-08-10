@@ -18,7 +18,7 @@
 .extern AnimationResource_Init
 .extern GraphicsSpriteState_Create
 .extern GamePhaseRuntime_GetActorCollection
-.extern func_02010520
+.extern GamePhaseTouchPrompt_SetEnabled
 .extern func_0201140c
 .extern func_0201ded4
 .extern func_0201e14c
@@ -390,7 +390,7 @@ func_ov064_0220fd20:
     mov r1, #0x0
     ldr r0, [r0, #0x0]
     ldr r0, [r0, #0x8]
-    bl func_02010520
+    bl GamePhaseTouchPrompt_SetEnabled
     ldr r0, .L_02210634
     ldr r0, [r0, #0x0]
     bl func_020742cc

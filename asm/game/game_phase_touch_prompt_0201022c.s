@@ -15,8 +15,8 @@
 .extern func_020954c0
 .extern func_02095508
 .extern gHeapContext
-.global func_0201022c
-func_0201022c:
+.global GamePhaseTouchPrompt_Init
+GamePhaseTouchPrompt_Init:
     stmdb sp!, {r3, r4, r5, lr}
     mov r4, r0
     mov r5, r1
@@ -85,5 +85,5 @@ L_02010328: .word 0x329a
 L_0201032c: .word data_020f4e18
 L_02010330: .word data_020d5628
 L_02010334: .word gHeapContext
-    .size func_0201022c, . - func_0201022c
+    .size GamePhaseTouchPrompt_Init, . - GamePhaseTouchPrompt_Init
 

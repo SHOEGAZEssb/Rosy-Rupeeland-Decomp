@@ -32,23 +32,23 @@ extern s32 ActorDerivedType1_IsIdleEligible(void *actor);
  * disable scene updates, and play data_020c3630 before resetting. Without the
  * flag, disable the actor. Normal non-trigger frames re-enable scene updates.
  */
-void func_0201054c(GamePhaseTouchPrompt *self)
+void GamePhaseTouchPrompt_UpdateInteraction(GamePhaseTouchPrompt *self)
 {
     if (GameWork_TestFlag(gGameWork, 0x3ec)) {
-        func_020954e0(self->actor_1c);
-        switch (self->state_28) {
+        func_020954e0(self->actor);
+        switch (self->state) {
         case 0:
-            if (!func_02095248(self->actor_1c))
+            if (!func_02095248(self->actor))
                 break;
-            *(u32 *)((u8 *)self->actor_1c + 0x90) = 0;
-            self->state_28 = 1;
+            *(u32 *)((u8 *)self->actor + 0x90) = 0;
+            self->state = 1;
             break;
         case 1:
             if (gTouchPanelManager->state == TOUCH_STATE_PRESSED) {
                 TouchPoint point;
                 u8 *phaseActor = *(u8 **)((u8 *)data_021052fc + 0x2ea4);
                 TouchPanelManager_GetPoint(&point, gTouchPanelManager);
-                if (func_02092910(*(void **)((u8 *)self->actor_1c + 0x9c),
+                if (func_02092910(*(void **)((u8 *)self->actor + 0x9c),
                                   &point)) {
                     u32 flags = *(u32 *)(phaseActor + 0x230);
                     if (flags & 0x800) {
@@ -67,19 +67,19 @@ void func_0201054c(GamePhaseTouchPrompt *self)
             }
             break;
         case 2:
-            self->state_28 = self->savedState_2c;
+            self->state = self->savedState;
             break;
         case 3:
-            if (func_02095224(self->actor_1c))
-                self->state_28 = 4;
+            if (func_02095224(self->actor))
+                self->state = 4;
             break;
         case 4:
-            func_02094cf0(self->actor_1c, data_020c3630, 0);
-            self->state_28 = 0;
+            func_02094cf0(self->actor, data_020c3630, 0);
+            self->state = 0;
             break;
         }
     } else {
-        func_020954f4(self->actor_1c);
+        func_020954f4(self->actor);
     }
     SceneManager_SetUpdateEnabled(gSceneManager, 1);
 }
@@ -88,36 +88,37 @@ void func_0201054c(GamePhaseTouchPrompt *self)
  * Save states 0/1, enter state 2, wait three updates, play data_020c3618,
  * wait for actor completion in state 3, then disable it in state 4.
  */
-void func_02010724(GamePhaseTouchPrompt *self)
+void GamePhaseTouchPrompt_UpdateHideSequence(GamePhaseTouchPrompt *self)
 {
-    switch (self->state_28) {
+    switch (self->state) {
     case 0:
     case 1:
-        self->savedState_2c = self->state_28;
-        self->state_28 = 2;
-        self->timer_24 = 0;
+        self->savedState = self->state;
+        self->state = 2;
+        self->timer = 0;
         /* Retail intentionally falls through and counts this update. */
     case 2:
-        if (++self->timer_24 <= 2)
+        if (++self->timer <= 2)
             return;
-        func_02094cf0(self->actor_1c, data_020c3618, 0);
-        self->state_28 = 3;
+        func_02094cf0(self->actor, data_020c3618, 0);
+        self->state = 3;
         return;
     case 3:
-        if (func_02095224(self->actor_1c))
-            self->state_28 = 4;
+        if (func_02095224(self->actor))
+            self->state = 4;
         return;
     case 4:
-        func_020954f4(self->actor_1c);
+        func_020954f4(self->actor);
         return;
     }
 }
 
 /*
- * Address-distinct twin of func_02010724 used by the alternate actor-query
- * branch. Its recovered state changes and graphics effects are identical.
+ * Address-distinct twin of GamePhaseTouchPrompt_UpdateHideSequence used by the
+ * alternate actor-query branch. Its recovered state changes and graphics
+ * effects are identical.
  */
-void func_020107bc(GamePhaseTouchPrompt *self)
+void GamePhaseTouchPrompt_UpdateAlternateHideSequence(GamePhaseTouchPrompt *self)
 {
-    func_02010724(self);
+    GamePhaseTouchPrompt_UpdateHideSequence(self);
 }

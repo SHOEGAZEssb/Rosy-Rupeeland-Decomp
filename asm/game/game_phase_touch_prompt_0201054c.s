@@ -20,8 +20,8 @@
 .extern gSceneManager
 .extern gTouchPanelManager
 
-    .global func_0201054c
-func_0201054c: ; 0x0201054c
+    .global GamePhaseTouchPrompt_UpdateInteraction
+GamePhaseTouchPrompt_UpdateInteraction: ; 0x0201054c
     stmdb sp!, {r4, r5, lr}
     sub sp, sp, #0xc
     ldr r1, L_02010710
@@ -153,5 +153,5 @@ L_02010714: .word gTouchPanelManager
 L_02010718: .word data_021052fc
 L_0201071c: .word gSceneManager
 L_02010720: .word data_020c3630
-    .size func_0201054c, . - func_0201054c
+    .size GamePhaseTouchPrompt_UpdateInteraction, . - GamePhaseTouchPrompt_UpdateInteraction
 

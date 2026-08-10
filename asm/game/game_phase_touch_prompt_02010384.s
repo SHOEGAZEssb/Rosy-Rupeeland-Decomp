@@ -5,8 +5,8 @@
 .extern func_02006138
 .extern func_02071eb8
 .extern func_0207419c
-.global func_02010384
-func_02010384:
+.global GamePhaseTouchPrompt_DestroyAndFree
+GamePhaseTouchPrompt_DestroyAndFree:
     stmdb sp!, {r4, lr}
     ldr r1, L_020103d4
     mov r4, r0
@@ -29,5 +29,5 @@ L_020103ac:
     mov r0, r4
     ldmia sp!, {r4, pc}
 L_020103d4: .word data_020d5604
-    .size func_02010384, . - func_02010384
+    .size GamePhaseTouchPrompt_DestroyAndFree, . - GamePhaseTouchPrompt_DestroyAndFree
 

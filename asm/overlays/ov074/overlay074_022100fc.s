@@ -9,7 +9,7 @@
 .extern OverlayManager_GetGlobal
 .extern func_02005058
 .extern SplineMover_Destroy
-.extern func_02010520
+.extern GamePhaseTouchPrompt_SetEnabled
 .extern ActorDerivedType1_GetSingletonObject
 .extern func_ov088_0221ad9c
 .extern gGameWork
@@ -24,7 +24,7 @@ func_ov074_022100fc:
     ldr r0, [r0, #0x0]
     mov r1, #0x1
     ldr r0, [r0, #0x8]
-    bl func_02010520
+    bl GamePhaseTouchPrompt_SetEnabled
     bl ActorDerivedType1_GetSingletonObject
     cmp r0, #0x0
     beq .L_02210158

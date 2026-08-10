@@ -28,8 +28,8 @@
 .extern GamePhaseState_Init
 .extern GamePhaseState_ConfigureForPhase
 .extern GamePhaseState_SetEnabled
-.extern func_0201022c
-.extern func_02010520
+.extern GamePhaseTouchPrompt_Init
+.extern GamePhaseTouchPrompt_SetEnabled
 .extern func_0201140c
 .extern func_02012444
 .extern func_02020060
@@ -102,7 +102,7 @@ GamePhaseRuntime_Init:
     cmp r0, #0x0
     beq L_02006bac
     mov r1, r4
-    bl func_0201022c
+    bl GamePhaseTouchPrompt_Init
 L_02006bac:
     mov r1, #0x0
     bl FrameTaskList_Add
@@ -371,7 +371,7 @@ L_02006f80:
     ldr r0, [r1, #0x4]
     mov r1, #0x1
     ldr r0, [r0, #0x8]
-    bl func_02010520
+    bl GamePhaseTouchPrompt_SetEnabled
     add r1, r4, #0x3000
     ldr r2, [r1, #0xb8]
     mov r0, r4
