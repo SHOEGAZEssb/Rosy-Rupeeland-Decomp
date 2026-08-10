@@ -20,7 +20,7 @@ typedef struct OverlayWorkerPresentation {
 extern "C" {
 #endif
 extern void *data_020d6304;
-extern const char data_020d6324[];
+extern const char gOverlayWorkerAllocationTag[];
 extern void *gGameWork;
 extern s32 data_021055cc;
 extern void *func_0201e250(void *self);
@@ -62,7 +62,7 @@ OverlayWorkerPresentation *func_020200bc(
     if (data_021055cc == 0) {
         OverlaySlot_LoadOverlay(self->sharedResource10, 0x2f);
     }
-    worker = (u8 *)Heap_Alloc(0x44, data_020d6324, 4, &gHeapContext);
+    worker = (u8 *)Heap_Alloc(0x44, gOverlayWorkerAllocationTag, 4, &gHeapContext);
     if (worker != 0) {
         func_ov043_0220b740(worker, first, second, third, fourth);
     }

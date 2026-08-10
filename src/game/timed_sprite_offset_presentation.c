@@ -39,7 +39,7 @@ typedef s32 (*PresentationUpdate)(void *presentation, const void *position);
 extern "C" {
 #endif
 extern void *data_020d61f8;
-extern const char data_020d6268[];
+extern const char gTimedSpritePresentationAllocationTag[];
 extern u8 *data_021052fc;
 extern void *func_0201e250(void *self);
 extern OffsetSpriteConfig *func_0201f0fc(OffsetSpriteConfig *config);
@@ -124,7 +124,7 @@ void func_0201f458(TimedSpriteOffsetPresentation *self,
     config.lifetime30 = 900;
     *(s32 *)&config.second20.bytes[4] = 0;
     *(s32 *)&config.second20.bytes[8] = 0;
-    presentation = Heap_Alloc(0x30, data_020d6268, 4, &gHeapContext);
+    presentation = Heap_Alloc(0x30, gTimedSpritePresentationAllocationTag, 4, &gHeapContext);
     if (presentation != 0) {
         func_0201e584(presentation, &config, spriteValue, offset);
     }

@@ -18,7 +18,7 @@ typedef struct SpriteNumberGroup {
 extern "C" {
 #endif
 extern void *data_020d660c;
-extern const char data_020d65b4[];
+extern const char gSpriteNumberGroupNodeAllocationTag[];
 extern void *data_020f4e18;
 extern void func_02071ea4(void *);
 extern void func_02071eb8(void *);
@@ -79,7 +79,7 @@ void func_02022ac8(SpriteNodeList *self)
 /* Allocate a node for sprite, append it at the list's tail-side end, increment count, and return the new tail. */
 SpriteNode *func_02022b08(SpriteNodeList *self,u8 *sprite)
 {
-    SpriteNode *n=(SpriteNode *)Heap_Alloc(0x0c,data_020d65b4,4,&gHeapContext);
+    SpriteNode *n=(SpriteNode *)Heap_Alloc(0x0c,gSpriteNumberGroupNodeAllocationTag,4,&gHeapContext);
     if(n){n->next00=0;n->previous04=0;n->sprite08=sprite;}
     if(self->tail04){self->tail04->previous04=n;n->next00=self->tail04;}else self->head08=n;
     self->tail04=n;self->count0c++;return self->tail04;

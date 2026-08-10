@@ -5,10 +5,10 @@
 .extern GameWork_TestFlag
 .extern Heap_Alloc
 .extern Heap_Free
-.extern data_020d632c
+.extern gRisingSpriteSwarmControllerListNodeAllocationTag
 .extern data_020d6358
 .extern data_020d6398
-.extern data_020d63b8
+.extern gRisingSpriteSwarmControllerAllocationTag
 .extern data_020f4e14
 .extern data_020f4e18
 .extern VecFx32Object_InitComponents

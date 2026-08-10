@@ -2,7 +2,7 @@
 .text
 .extern Heap_Alloc
 .extern Heap_Free
-.extern data_020d65b4
+.extern gSpriteNumberGroupNodeAllocationTag
 .extern data_020d660c
 .extern data_020f4e18
 .extern func_02022a88
@@ -45,7 +45,7 @@ func_02022b08: ; 0x02022b08
     str r0, [r5, #0xc]
     ldr r0, [r5, #0x4]
     ldmia sp!, {r3, r4, r5, pc}
-.L_02022b68: .word data_020d65b4
+.L_02022b68: .word gSpriteNumberGroupNodeAllocationTag
 .L_02022b6c: .word gHeapContext
     .size func_02022b08, .-func_02022b08
 

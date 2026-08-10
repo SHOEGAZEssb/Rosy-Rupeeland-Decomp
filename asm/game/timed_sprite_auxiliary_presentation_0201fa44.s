@@ -3,7 +3,7 @@
 .extern Heap_Alloc
 .extern Heap_Free
 .extern data_020d61a8
-.extern data_020d6270
+.extern gTimedSpriteAuxiliaryAllocationTag
 .extern data_021052fc
 .extern VecFx32Object_Destroy
 .extern VecFx32Object_Assign

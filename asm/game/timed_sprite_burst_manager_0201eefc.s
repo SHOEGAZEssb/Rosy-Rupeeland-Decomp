@@ -6,7 +6,7 @@
 .extern data_020c9670
 .extern data_020d5e48
 .extern data_020d6220
-.extern data_020d6268
+.extern gTimedSpritePresentationAllocationTag
 .extern data_020f4e18
 .extern data_021052fc
 .extern func_02003e20
@@ -150,7 +150,7 @@ func_0201eefc: ; 0x0201eefc
 .L_0201f09c: .word data_020d6220
 .L_0201f0a0: .word gDebugFont
 .L_0201f0a4: .word data_020c9670
-.L_0201f0a8: .word data_020d6268
+.L_0201f0a8: .word gTimedSpritePresentationAllocationTag
 .L_0201f0ac: .word gHeapContext
     .size func_0201eefc, .-func_0201eefc
 

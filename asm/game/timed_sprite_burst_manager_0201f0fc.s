@@ -6,7 +6,7 @@
 .extern data_020c9670
 .extern data_020d5e48
 .extern data_020d6220
-.extern data_020d6268
+.extern gTimedSpritePresentationAllocationTag
 .extern data_020f4e18
 .extern data_021052fc
 .extern func_02003e20

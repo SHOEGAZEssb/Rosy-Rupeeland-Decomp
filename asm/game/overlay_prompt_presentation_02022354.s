@@ -5,7 +5,7 @@
 .extern Heap_Alloc
 .extern Heap_Free
 .extern data_020d653c
-.extern data_020d65ac
+.extern gOverlayPromptWorkerAllocationTag
 .extern DisplayBrightness_IsSubTransitionComplete
 .extern OverlaySlot_Init
 .extern OverlaySlot_Destroy

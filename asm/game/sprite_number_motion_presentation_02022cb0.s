@@ -3,7 +3,7 @@
 .extern Heap_Alloc
 .extern Heap_Free
 .extern data_020d6658
-.extern data_020d6678
+.extern gSpriteNumberGroupAllocationTag
 .extern VecFx32Object_Init
 .extern VecFx32Object_InitComponents
 .extern VecFx32Object_InitCopy
@@ -140,6 +140,6 @@ func_02022cb0: ; 0x02022cb0
     ldmia sp!, {r3, r4, r5, r6, r7, pc}
 .L_02022e64: .word data_020d6658
 .L_02022e68: .word gHeapContext
-.L_02022e6c: .word data_020d6678
+.L_02022e6c: .word gSpriteNumberGroupAllocationTag
     .size func_02022cb0, .-func_02022cb0
 

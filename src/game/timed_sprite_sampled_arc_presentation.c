@@ -35,7 +35,7 @@ typedef s32 (*PresentationUpdate)(void *presentation, const void *position);
 extern "C" {
 #endif
 extern void *data_020d61d0;
-extern const char data_020d6268[];
+extern const char gTimedSpritePresentationAllocationTag[];
 extern u8 *data_021052fc;
 extern void *func_0201e250(void *self);
 extern SampledArcSpriteConfig *func_0201f0fc(
@@ -78,7 +78,7 @@ SampledArcPresentation *func_0201f598(
     config.lifetime30 = 1200;
     *(s32 *)&config.second20.bytes[4] = 0;
     *(s32 *)&config.second20.bytes[8] = 0;
-    presentation = Heap_Alloc(0x2c, data_020d6268, 4, &gHeapContext);
+    presentation = Heap_Alloc(0x2c, gTimedSpritePresentationAllocationTag, 4, &gHeapContext);
     if (presentation != 0) {
         func_0201edd0(presentation, &config);
     }

@@ -18,7 +18,7 @@ typedef struct SpriteNumberMotionPresentation {
 extern "C" {
 #endif
 extern void *data_020d6658;
-extern const char data_020d6678[];
+extern const char gSpriteNumberGroupAllocationTag[];
 extern void *func_0201e250(void *);
 extern void *func_0201e28c(void *);
 extern void VecFx32Object_InitCopy(void *,const void *);
@@ -57,7 +57,7 @@ SpriteNumberMotionPresentation *func_02022cb0(
     self->sampleArgument08=sampleArgument;VecFx32Object_InitCopy(&self->track0c,config+0x18);
     VecFx32Object_Init(&self->firstOffset1c);VecFx32Object_Init(&self->secondOffset2c);
     *(s32 *)&self->track0c.bytes[0x0c]+=0x10000;
-    group=Heap_Alloc(0x24,data_020d6678,4,&gHeapContext);
+    group=Heap_Alloc(0x24,gSpriteNumberGroupAllocationTag,4,&gHeapContext);
     if(group){owner=ActorCollection_GetSpriteOwner(Actor_GetCollection((void *)config));func_0202293c(group,owner,value);}
     self->numberGroup3c=group;if(value==0)func_02022c80(group,0);
     VecFx32_Subtract(&sampled,&self->track0c,self->sampleArgument08);

@@ -5,7 +5,7 @@
 .extern Heap_Alloc
 .extern Heap_Free
 .extern data_020d653c
-.extern data_020d65ac
+.extern gOverlayPromptWorkerAllocationTag
 .extern DisplayBrightness_IsSubTransitionComplete
 .extern OverlaySlot_Init
 .extern OverlaySlot_Destroy
@@ -116,7 +116,7 @@ func_020223d4: ; 0x020223d4
     ldmia sp!, {r4, pc}
 .L_02022514: .word gLupyContext
 .L_02022518: .word 0x5
-.L_0202251c: .word data_020d65ac
+.L_0202251c: .word gOverlayPromptWorkerAllocationTag
 .L_02022520: .word gHeapContext
 .L_02022524: .word gGameWork
 .L_02022528: .word 0x408

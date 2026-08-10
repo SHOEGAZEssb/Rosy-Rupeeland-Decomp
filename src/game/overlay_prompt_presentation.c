@@ -17,7 +17,7 @@ typedef void (*WorkerMethod)(void *);
 extern "C" {
 #endif
 extern void *data_020d653c;
-extern const char data_020d65ac[];
+extern const char gOverlayPromptWorkerAllocationTag[];
 extern u8 *gLupyContext;
 extern void *gGameWork;
 extern void *gDebugFont;
@@ -98,7 +98,7 @@ s32 func_020223d4(OverlayPromptPresentation *self)
         if (!DisplayBrightness_IsSubTransitionComplete()) return 0;
         GamePhaseCurrencyHud_SetVisible(gLupyContext, 0);
         OverlaySlot_LoadOverlay(self->sharedResource10, 5);
-        self->worker0c = Heap_Alloc(0x88, data_020d65ac, 4, &gHeapContext);
+        self->worker0c = Heap_Alloc(0x88, gOverlayPromptWorkerAllocationTag, 4, &gHeapContext);
         if (self->worker0c != 0) func_ov001_021fbe6c(self->worker0c);
         func_02092c8c(2, 0);
         self->state08++;

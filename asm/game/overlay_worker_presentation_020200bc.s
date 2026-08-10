@@ -3,7 +3,7 @@
 .extern GameWork_ClearFlag
 .extern Heap_Alloc
 .extern data_020d6304
-.extern data_020d6324
+.extern gOverlayWorkerAllocationTag
 .extern data_021055cc
 .extern OverlaySlot_Init
 .extern OverlaySlot_LoadOverlay
@@ -67,6 +67,6 @@ func_020200bc: ; 0x020200bc
 .L_02020174: .word 0x3bb
 .L_02020178: .word data_021055cc
 .L_0202017c: .word 0x2f
-.L_02020180: .word data_020d6324
+.L_02020180: .word gOverlayWorkerAllocationTag
 .L_02020184: .word gHeapContext
     .size func_020200bc, .-func_020200bc

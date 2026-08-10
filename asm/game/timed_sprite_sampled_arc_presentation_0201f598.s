@@ -3,7 +3,7 @@
 .extern Heap_Alloc
 .extern Heap_Free
 .extern data_020d61d0
-.extern data_020d6268
+.extern gTimedSpritePresentationAllocationTag
 .extern data_021052fc
 .extern VecFx32Object_Destroy
 .extern VecFx32Object_Assign
@@ -69,7 +69,7 @@ func_0201f598: ; 0x0201f598
     add sp, sp, #0x38
     ldmia sp!, {r3, r4, r5, r6, r7, pc}
 .L_0201f664: .word data_020d61d0
-.L_0201f668: .word data_020d6268
+.L_0201f668: .word gTimedSpritePresentationAllocationTag
 .L_0201f66c: .word gHeapContext
     .size func_0201f598, .-func_0201f598
 

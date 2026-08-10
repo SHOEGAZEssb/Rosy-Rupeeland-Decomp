@@ -3,7 +3,7 @@
 .extern Heap_Alloc
 .extern Heap_Free
 .extern data_020d6658
-.extern data_020d6678
+.extern gSpriteNumberGroupAllocationTag
 .extern VecFx32Object_Init
 .extern VecFx32Object_InitComponents
 .extern VecFx32Object_InitCopy

@@ -5,10 +5,10 @@
 .extern GameWork_TestFlag
 .extern Heap_Alloc
 .extern Heap_Free
-.extern data_020d632c
+.extern gRisingSpriteSwarmControllerListNodeAllocationTag
 .extern data_020d6358
 .extern data_020d6398
-.extern data_020d63b8
+.extern gRisingSpriteSwarmControllerAllocationTag
 .extern data_020f4e14
 .extern data_020f4e18
 .extern VecFx32Object_InitComponents
@@ -108,8 +108,8 @@ RisingSpriteSwarmPresentation_SpawnController: ; 0x02020c38
     str r0, [r4, #0x48]
     add sp, sp, #0x28
     ldmia sp!, {r3, r4, r5, r6, r7, pc}
-.L_02020d3c: .word data_020d63b8
+.L_02020d3c: .word gRisingSpriteSwarmControllerAllocationTag
 .L_02020d40: .word gHeapContext
-.L_02020d44: .word data_020d632c
+.L_02020d44: .word gRisingSpriteSwarmControllerListNodeAllocationTag
     .size RisingSpriteSwarmPresentation_SpawnController, .-RisingSpriteSwarmPresentation_SpawnController
 

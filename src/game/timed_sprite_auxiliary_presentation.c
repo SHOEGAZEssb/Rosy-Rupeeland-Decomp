@@ -38,7 +38,7 @@ typedef s32 (*ChildUpdate)(void *child, const void *position);
 extern "C" {
 #endif
 extern void *data_020d61a8;
-extern const char data_020d6270[];
+extern const char gTimedSpriteAuxiliaryAllocationTag[];
 extern u8 *data_021052fc;
 extern void *func_0201e250(void *self);
 extern AuxiliarySpriteConfig *func_0201f0fc(AuxiliarySpriteConfig *config);
@@ -65,7 +65,7 @@ static AuxiliaryTimedSpritePresentation *initialize_auxiliary_presentation(
     func_0201e250(self);
     self->vtable = (void **)data_020d61a8;
     self->auxiliary0c =
-        (u8 *)Heap_Alloc(0x10, data_020d6270, 4, &gHeapContext);
+        (u8 *)Heap_Alloc(0x10, gTimedSpriteAuxiliaryAllocationTag, 4, &gHeapContext);
     if (self->auxiliary0c != 0) {
         AnimationResource_Init(self->auxiliary0c, auxiliaryFirst, auxiliarySecond,
                       auxiliaryThird);
@@ -80,7 +80,7 @@ static AuxiliaryTimedSpritePresentation *initialize_auxiliary_presentation(
     config.lifetime30 = 120;
     *(s32 *)&config.second20.bytes[4] = 0;
     *(s32 *)&config.second20.bytes[8] = 0;
-    child = Heap_Alloc(0x30, data_020d6270, 4, &gHeapContext);
+    child = Heap_Alloc(0x30, gTimedSpriteAuxiliaryAllocationTag, 4, &gHeapContext);
     if (child != 0) {
         func_0201e584(child, &config, spriteValue & 0xff, offset);
     }

@@ -62,7 +62,7 @@ extern "C" {
 extern void *data_020d6220;
 extern const s16 data_020c9670[];
 extern const char data_020d5e48[];
-extern const char data_020d6268[];
+extern const char gTimedSpritePresentationAllocationTag[];
 extern void *data_020f4e18;
 extern u8 *data_021052fc;
 extern void *gDebugFont;
@@ -145,7 +145,7 @@ TimedSpriteBurstManager *func_0201eefc(TimedSpriteBurstManager *self,
         *(s32 *)&config.second20.bytes[8] = velocityY;
         *(s32 *)&config.first10.bytes[4] = center.x + velocityX;
         *(s32 *)&config.first10.bytes[8] = center.y + velocityY;
-        sprite = Heap_Alloc(0x2c, data_020d6268, 4, &gHeapContext);
+        sprite = Heap_Alloc(0x2c, gTimedSpritePresentationAllocationTag, 4, &gHeapContext);
         if (sprite != 0) {
             func_0201e454(sprite, &config);
         }

@@ -44,8 +44,8 @@ extern "C" {
 #endif
 extern void *data_020d6358;
 extern void *data_020d6398;
-extern const char data_020d63b8[];
-extern const char data_020d632c[];
+extern const char gRisingSpriteSwarmControllerAllocationTag[];
+extern const char gRisingSpriteSwarmControllerListNodeAllocationTag[];
 extern void *data_020f4e14;
 extern void *data_020f4e18;
 extern void *gDebugFont;
@@ -306,7 +306,7 @@ void RisingSpriteSwarmPresentation_SpawnController(RisingSpriteSwarmPresentation
 {
     PresentationValue base;
     PresentationValue path;
-    void *controller = Heap_Alloc(0x64, data_020d63b8, 4, &gHeapContext);
+    void *controller = Heap_Alloc(0x64, gRisingSpriteSwarmControllerAllocationTag, 4, &gHeapContext);
 
     if (controller != 0) {
         VecFx32Object_InitComponents(&base, 0, 0, 0x20000);
@@ -319,7 +319,7 @@ void RisingSpriteSwarmPresentation_SpawnController(RisingSpriteSwarmPresentation
     }
     {
         ControllerListNode *node = (ControllerListNode *)Heap_Alloc(
-            0x0c, data_020d632c, 4, &gHeapContext);
+            0x0c, gRisingSpriteSwarmControllerListNodeAllocationTag, 4, &gHeapContext);
         if (node != 0) {
             node->next00 = 0;
             node->previous04 = 0;
