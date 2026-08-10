@@ -6,7 +6,7 @@ extern void *data_021052fc;
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *func_02007f0c(void *manager, u32 slot);
+extern void *GamePhaseRuntime_GetActorCollection(void *manager, u32 slot);
 extern s32 func_0200eb14(void *terrain, s32 x, s32 y);
 extern u32 Actor_QueryTerrainCell(void *actor, s32 x, s32 y);
 #ifdef __cplusplus
@@ -23,7 +23,7 @@ void *Actor_GetCollection(void *self)
     u8 *actor = (u8 *)self;
     u32 slot = (*(u32 *)(actor + 0x14) & 0x04000000) != 0 ? 2 : 1;
 
-    return func_02007f0c(data_021052fc, slot);
+    return GamePhaseRuntime_GetActorCollection(data_021052fc, slot);
 }
 
 /*
@@ -34,7 +34,7 @@ void *Actor_GetCollection(void *self)
 void *Actor_GetCollectionBySlot(void *unused, u32 slot)
 {
     (void)unused;
-    return func_02007f0c(data_021052fc, slot);
+    return GamePhaseRuntime_GetActorCollection(data_021052fc, slot);
 }
 
 /*

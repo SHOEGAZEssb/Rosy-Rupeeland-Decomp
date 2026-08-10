@@ -2,7 +2,7 @@
 .text
 .extern data_021052fc
 .extern data_0210577c
-.extern func_02007f0c
+.extern GamePhaseRuntime_GetActorCollection
 .global Type7ActorRegistry_Populate
 .type Type7ActorRegistry_Populate, @function
 .global Type7ActorRegistry_Clear
@@ -19,7 +19,7 @@ Type7ActorRegistry_Populate: ; 0x020454f8
 .L_02045518:
     ldr r0, [r4, #0x0]
     mov r1, r7
-    bl func_02007f0c
+    bl GamePhaseRuntime_GetActorCollection
     ldr r2, [r0, r9, lsl #0x2]
     cmp r2, #0x0
     beq .L_0204554c
@@ -35,7 +35,7 @@ Type7ActorRegistry_Populate: ; 0x020454f8
 .L_02045550:
     ldr r0, [r4, #0x0]
     mov r1, r5
-    bl func_02007f0c
+    bl GamePhaseRuntime_GetActorCollection
     add r0, r0, #0x2000
     ldr r0, [r0, #0xe74]
     cmp r9, r0

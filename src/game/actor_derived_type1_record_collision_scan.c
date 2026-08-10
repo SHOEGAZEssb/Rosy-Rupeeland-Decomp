@@ -13,7 +13,7 @@ extern s32 func_020adc90(s32 numerator, s32 denominator);
 extern void func_02005030(void *destination, const void *source);
 extern void func_02005058(void *value);
 extern void func_02004fe0(void *value);
-extern void *func_02007f0c(void *runtime, s32 category);
+extern void *GamePhaseRuntime_GetActorCollection(void *runtime, s32 category);
 extern s32 func_0204cfa4(s32 x, s32 y);
 extern void func_02034a60(void *actor, u32 sound, s32 extra);
 extern void func_ov092_0221ad80(void *target, void *actor, s32 amount,
@@ -67,7 +67,7 @@ void ActorDerivedType1_ScanActiveRecordCollisions(void *self)
     center[2] += projection * data_020c9670[index + 1];
 
     for (i = 0;; ++i) {
-        u8 *collection = (u8 *)func_02007f0c(data_021052fc, 1);
+        u8 *collection = (u8 *)GamePhaseRuntime_GetActorCollection(data_021052fc, 1);
         u8 *target;
         s32 dx;
         s32 dy;

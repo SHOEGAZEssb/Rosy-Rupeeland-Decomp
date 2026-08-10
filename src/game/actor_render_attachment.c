@@ -15,7 +15,7 @@ extern void *data_021052fc;
 extern "C" {
 #endif
 extern void *Actor_GetCollection(ActorRenderAttachmentOwner *);
-extern void *func_02007f0c(void *, s32);
+extern void *GamePhaseRuntime_GetActorCollection(void *, s32);
 extern void *ActorCollection_GetSpriteOwner(void *);
 extern void *func_02073fc4(void *, u32, u32, u32, s32);
 extern void func_02072b68(void *, s32);
@@ -47,7 +47,7 @@ void func_020313b4(ActorRenderAttachmentOwner *self, void *unused,
         return;
     config = (u8 *)self->attachmentConfig_54;
     self->attachment_58 = func_02073fc4(
-        ActorCollection_GetSpriteOwner(func_02007f0c(data_021052fc, 2)),
+        ActorCollection_GetSpriteOwner(GamePhaseRuntime_GetActorCollection(data_021052fc, 2)),
         *(u32 *)(config + 0x14), *(u32 *)(config + 0x18),
         *(u32 *)(config + 0x1c), finalArg);
     attachment = (u8 *)self->attachment_58;

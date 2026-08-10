@@ -138,7 +138,7 @@ void GamePhaseRuntime_Configure(GamePhaseRuntime *self, const void *configPointe
     func_0200a35c(bytes + 0x2fbc);
     func_020090c0(bytes + 0x3044);
     func_0200ae8c(data_02105310);
-    func_0200807c(self, (void *)configPointer, 1);
+    GamePhaseRuntime_CreateSecondaryActorSubsystem(self, (void *)configPointer, 1);
     func_0200e650(bytes + 0x24, configPointer);
     func_02008bb8(self, (void *)configPointer, 1);
     ((void (*)(s32))*(const void *const *)(config + 0x24))(0);

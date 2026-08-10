@@ -2,7 +2,7 @@
 ; Matching fallback for the portable implementation in src/overlays/ov079/overlay079_recovery.c.
 .extern data_021052fc
 .extern data_ov079_02213b08
-.extern func_02007f0c
+.extern GamePhaseRuntime_GetActorCollection
 .extern func_020bf1f8
 .extern func_ov079_02213458
 .extern genrand_int32
@@ -19,7 +19,7 @@ func_ov079_0221323c:
     str r1, [r4, #0x29c]
     ldr r0, [r0, #0x0]
     mov r1, #0x1
-    bl func_02007f0c
+    bl GamePhaseRuntime_GetActorCollection
     add r0, r0, #0x2000
     ldr r1, [r0, #0xe7c]
     mov r0, r4

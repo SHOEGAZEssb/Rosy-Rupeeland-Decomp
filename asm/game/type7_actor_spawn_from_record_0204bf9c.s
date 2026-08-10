@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/type7_actor_spawn_from_record.c.
 .extern Type7Actor_FindSpawnRecord
 .extern func_02028508
-.extern func_02007f0c
+.extern GamePhaseRuntime_GetActorCollection
 .extern ActorCollection_QueueActorForRemoval
 .extern ActorSpawnDescriptor_Init
 .extern ActorCollection_SpawnActorFromDescriptor
@@ -59,7 +59,7 @@ Type7Actor_SpawnFromRecord: ; 0x0204bf9c
     beq .L_0204c034
     mov r1, #0x1
     mov r6, r7
-    bl func_02007f0c
+    bl GamePhaseRuntime_GetActorCollection
     mov r1, r7
     bl ActorCollection_QueueActorForRemoval
 .L_0204c034:
@@ -111,7 +111,7 @@ Type7Actor_SpawnFromRecord: ; 0x0204bf9c
     strh r2, [sp, #0x6a]
     ldrsb r2, [r4, #0x53]
     strh r2, [sp, #0x6c]
-    bl func_02007f0c
+    bl GamePhaseRuntime_GetActorCollection
     add r1, sp, #0x4c
     bl ActorCollection_SpawnActorFromDescriptor
     mov r5, r0
@@ -277,7 +277,7 @@ Type7Actor_SpawnFromRecord: ; 0x0204bf9c
 .L_0204c358:
     ldr r0, [r4, #0x0]
     mov r1, r8
-    bl func_02007f0c
+    bl GamePhaseRuntime_GetActorCollection
     ldr r0, [r0, r9, lsl #0x2]
     cmp r0, #0x0
     beq .L_0204c3bc
@@ -305,7 +305,7 @@ Type7Actor_SpawnFromRecord: ; 0x0204bf9c
 .L_0204c3c0:
     ldr r0, [r4, #0x0]
     mov r1, #0x1
-    bl func_02007f0c
+    bl GamePhaseRuntime_GetActorCollection
     add r0, r0, #0x2000
     ldr r0, [r0, #0xe74]
     cmp r9, r0

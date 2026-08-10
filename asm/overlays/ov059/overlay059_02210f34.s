@@ -1,7 +1,7 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov059/overlay059_recovery.c.
 .extern data_021052fc
-.extern func_02007f0c
+.extern GamePhaseRuntime_GetActorCollection
 .extern func_0202d68c
 
 .global func_ov059_02210f34
@@ -11,7 +11,7 @@ func_ov059_02210f34:
     mov r6, r1
     ldr r0, [r0, #0x0]
     mov r1, #0x2
-    bl func_02007f0c
+    bl GamePhaseRuntime_GetActorCollection
     mov r1, r6
     mov r4, r0
     bl func_0202d68c

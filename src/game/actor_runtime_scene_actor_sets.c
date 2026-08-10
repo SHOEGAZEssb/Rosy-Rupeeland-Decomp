@@ -6,7 +6,7 @@
 extern "C" {
 #endif
 extern void *data_021052fc;
-extern void *func_02007f0c(void *context, s32 index);
+extern void *GamePhaseRuntime_GetActorCollection(void *context, s32 index);
 extern void Actor_RestorePrimaryAttachmentState(void *actor);
 extern void Actor_SetActive(void *actor, s32 active);
 #ifdef __cplusplus
@@ -26,7 +26,7 @@ void func_0200b8cc(ActorRuntimeScene *self)
 
     (void)self;
     for (bank = 1; bank <= 2; bank++) {
-        u8 *context = (u8 *)func_02007f0c(data_021052fc, bank);
+        u8 *context = (u8 *)GamePhaseRuntime_GetActorCollection(data_021052fc, bank);
         s32 count = *(s32 *)(context + 0x2e74);
         s32 index;
 
@@ -56,7 +56,7 @@ void func_0200ba00(ActorRuntimeScene *self)
 
     (void)self;
     for (bank = 1; bank <= 2; bank++) {
-        u8 *context = (u8 *)func_02007f0c(data_021052fc, bank);
+        u8 *context = (u8 *)GamePhaseRuntime_GetActorCollection(data_021052fc, bank);
         s32 count = *(s32 *)(context + 0x2e74);
         s32 index;
 

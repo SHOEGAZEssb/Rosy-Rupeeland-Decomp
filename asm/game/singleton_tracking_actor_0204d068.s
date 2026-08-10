@@ -3,7 +3,7 @@
 .extern ActorDerivedRuntime_DestroyAlternate
 .extern Heap_Free
 .extern ActorDerivedRuntime_UpdateFrame
-.extern func_02007f0c
+.extern GamePhaseRuntime_GetActorCollection
 .extern GameWork_TestFlag
 .extern data_020e1f2c
 .extern gGameWork
@@ -75,7 +75,7 @@ func_0204d10c: ; 0x0204d10c
     ldr r0, .L_0204d214
     mov r1, #0x1
     ldr r0, [r0, #0x0]
-    bl func_02007f0c
+    bl GamePhaseRuntime_GetActorCollection
     add r0, r0, #0x2000
     ldr r1, [r0, #0xe7c]
     ldr r0, .L_0204d218

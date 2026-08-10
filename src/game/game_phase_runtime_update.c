@@ -39,7 +39,7 @@ extern s32 func_02010b64(void *context);
 extern void func_02010e68(void *context);
 extern s32 func_0200ecf0(void *object);
 extern void func_0200866c(GamePhaseRuntime *self);
-extern s32 func_02008148(GamePhaseRuntime *self, s32 index);
+extern s32 GamePhaseRuntime_SynchronizeActorPlacement(GamePhaseRuntime *self, s32 index);
 extern void func_0201dcec(void *object, s32 enabled);
 extern s32 GamePhaseRuntime_DispatchActorQueryRequest(GamePhaseRuntime *self);
 extern void func_020338e4(void *object);
@@ -150,8 +150,8 @@ s32 GamePhaseRuntime_Update(GamePhaseRuntime *self)
         if (func_0200ecf0(b + 0x24))
             return 0;
         func_0200866c(self);
-        func_02008148(self, 0);
-        func_02008148(self, 1);
+        GamePhaseRuntime_SynchronizeActorPlacement(self, 0);
+        GamePhaseRuntime_SynchronizeActorPlacement(self, 1);
         func_0201dcec(b + 0x2ffc, 1);
         GamePhaseRuntime_FinalizeActorCollections(self, self->field_04, 3);
         if (GamePhaseRuntime_DispatchActorQueryRequest(self))

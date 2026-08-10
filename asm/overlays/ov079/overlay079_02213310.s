@@ -3,7 +3,7 @@
 .extern data_021052fc
 .extern data_ov079_02213b08
 .extern data_ov079_02213b30
-.extern func_02007f0c
+.extern GamePhaseRuntime_GetActorCollection
 .extern func_0204cfa4
 
 .global func_ov079_02213310
@@ -24,7 +24,7 @@ func_ov079_02213310:
 .L_02213344:
     ldr r0, [r5, #0x0]
     mov r1, r7
-    bl func_02007f0c
+    bl GamePhaseRuntime_GetActorCollection
     ldr r8, [r0, r9, lsl #0x2]
     cmp r8, #0x0
     cmpne r8, r10
@@ -65,7 +65,7 @@ func_ov079_02213310:
 .L_022133dc:
     ldr r0, [r5, #0x0]
     mov r1, #0x1
-    bl func_02007f0c
+    bl GamePhaseRuntime_GetActorCollection
     add r0, r0, #0x2000
     ldr r0, [r0, #0xe74]
     cmp r9, r0

@@ -7,7 +7,7 @@
 .extern func_02005058
 .extern func_02005070
 .extern VecFx32_Subtract
-.extern func_02007f0c
+.extern GamePhaseRuntime_GetActorCollection
 
     .global func_02034ecc
     .type func_02034ecc, @function
@@ -27,7 +27,7 @@ func_02034ecc: ; 0x02034ecc
 .L_02034efc:
     ldr r0, [r11, #0x0]
     mov r1, #0x1
-    bl func_02007f0c
+    bl GamePhaseRuntime_GetActorCollection
     ldr r9, [r0, r10, lsl #0x2]
     cmp r9, #0x0
     beq .L_02034ff8
@@ -96,7 +96,7 @@ func_02034ecc: ; 0x02034ecc
 .L_02034ffc:
     ldr r0, [r11, #0x0]
     mov r1, #0x1
-    bl func_02007f0c
+    bl GamePhaseRuntime_GetActorCollection
     add r0, r0, #0x2000
     ldr r0, [r0, #0xe74]
     cmp r10, r0

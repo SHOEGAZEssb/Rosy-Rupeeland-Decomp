@@ -58,11 +58,11 @@ s32 func_0200c924(GamePhaseApplyScene *self)
         self->base.value08++;
         /* fall through */
     case 1:
-        func_020080d0(runtime);
+        GamePhaseRuntime_DestroySecondaryActorSubsystem(runtime);
         self->base.value08++;
         break;
     case 2:
-        func_0200807c(runtime, self->area, 1);
+        GamePhaseRuntime_CreateSecondaryActorSubsystem(runtime, self->area, 1);
         func_02008bb8(runtime, self->area, 1);
         func_020122a0(*(void **)((u8 *)runtime + 0x2fb8), 1);
         if (self != 0)

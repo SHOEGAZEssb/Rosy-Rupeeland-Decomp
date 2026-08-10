@@ -7,7 +7,7 @@ extern void *data_020df500[2];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *func_02007f0c(void *runtime, s32 category);
+extern void *GamePhaseRuntime_GetActorCollection(void *runtime, s32 category);
 extern void *ActorCollection_FindActorByTypeAndId(void *collection, s32 type, s32 subtype);
 extern void Actor_SetActive(void *actor, s32 enabled);
 #ifdef __cplusplus
@@ -26,7 +26,7 @@ extern void Actor_SetActive(void *actor, s32 enabled);
 void ActorDescriptorBatch_ApplyCategoryCallback(s32 mode)
 {
     s32 category = mode == 0 ? 1 : 2;
-    u8 *collection = (u8 *)func_02007f0c(data_021052fc, category);
+    u8 *collection = (u8 *)GamePhaseRuntime_GetActorCollection(data_021052fc, category);
     void *control = ActorCollection_FindActorByTypeAndId(collection, 3, 4);
     void **vtable = *(void ***)control;
 

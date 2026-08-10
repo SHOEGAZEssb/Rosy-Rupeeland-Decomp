@@ -22,7 +22,7 @@ extern void func_0200bd10(void *loader);
  * and enabled, store it at runtime offset 0x2fb8, and run its post-create hook.
  * Null is stored and forwarded if allocation fails. Returns no value.
  */
-void func_0200807c(GamePhaseRuntime *self, void *area, s32 enabled)
+void GamePhaseRuntime_CreateSecondaryActorSubsystem(GamePhaseRuntime *self, void *area, s32 enabled)
 {
     u8 *b = (u8 *)self;
     void *object = Heap_Alloc(0x2ed8, (const char *)data_020d4368, 4,
@@ -37,7 +37,7 @@ void func_0200807c(GamePhaseRuntime *self, void *area, s32 enabled)
  * Invoke virtual slot one on the optional subsystem at 0x2fb8 when present,
  * clear its pointer, and notify the field loader at 0x30b4. Returns no value.
  */
-void func_020080d0(GamePhaseRuntime *self)
+void GamePhaseRuntime_DestroySecondaryActorSubsystem(GamePhaseRuntime *self)
 {
     u8 *b = (u8 *)self;
     void *object = *(void **)(b + 0x2fb8);
@@ -52,7 +52,7 @@ void func_020080d0(GamePhaseRuntime *self)
  * argument zero, tear down embedded state 0x24, and advance the field loader.
  * The recovered pointers are assumed non-null. Returns no value.
  */
-void func_02008110(GamePhaseRuntime *self)
+void GamePhaseRuntime_TeardownActiveAreaState(GamePhaseRuntime *self)
 {
     u8 *b = (u8 *)self;
     void *object = *(void **)(b + 0x2ed4);

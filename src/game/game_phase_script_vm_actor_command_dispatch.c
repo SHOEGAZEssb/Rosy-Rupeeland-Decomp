@@ -15,7 +15,7 @@ extern const char data_020d5b2c[];
 extern void *data_ov054_0220f160;
 extern void OS_Halt(void);
 extern void *func_02009d78(...);
-extern void *func_02007f0c(...);
+extern void *GamePhaseRuntime_GetActorCollection(...);
 extern void *ActorCollection_FindActorByDescriptorValue(...);
 extern void *Actor_GetCollection(...);
 extern void *ActorCollection_GetSpriteOwner(...);
@@ -302,13 +302,13 @@ s32 func_020143a8(GamePhaseActorScriptVm *self)
                 (u8 *)*(void **)((u8 *)data_021052fc + 0x2ea4) + 0x18,
                 getScriptEffectContext());
             node = (u8 *)func_0201df5c(getScriptObjectManager(), handle);
-            target = ActorCollection_FindActorByDescriptorValue(func_02007f0c(data_021052fc, 1), a2);
+            target = ActorCollection_FindActorByDescriptorValue(GamePhaseRuntime_GetActorCollection(data_021052fc, 1), a2);
             *(void **)(node + 8) = (u8 *)target + 0x18;
             func_020127f8(&self->base, (u32)handle);
         } else if (a1 == 2) {
             u8 *node = (u8 *)func_0201df5c(getScriptObjectManager(), a2);
             void *target = ActorCollection_FindActorByDescriptorValue(
-                func_02007f0c(data_021052fc, 1), a3);
+                GamePhaseRuntime_GetActorCollection(data_021052fc, 1), a3);
             *(void **)(node + 8) = (u8 *)target + 0x18;
         }
         break;
@@ -354,7 +354,7 @@ s32 func_020143a8(GamePhaseActorScriptVm *self)
                           *(u32 *)(actor + 0x114)));
         break;
     case 31: {
-        void *target = ActorCollection_FindActorByDescriptorValue(func_02007f0c(data_021052fc, 1), a5);
+        void *target = ActorCollection_FindActorByDescriptorValue(GamePhaseRuntime_GetActorCollection(data_021052fc, 1), a5);
         void *object;
         OverlayManager_LoadOverlay(OverlayManager_GetGlobal(), 2, 0x49);
         object = Heap_Alloc(0x1c, data_020d5b34, 4, &gHeapContext);

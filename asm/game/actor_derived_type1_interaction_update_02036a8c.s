@@ -17,7 +17,7 @@
 .extern func_02005084
 .extern func_020050a4
 .extern VecFx32_Subtract
-.extern func_02007f0c
+.extern GamePhaseRuntime_GetActorCollection
 .extern func_0200b164
 .extern func_0200b23c
 .extern func_0200b294
@@ -236,7 +236,7 @@ ActorDerivedType1_ProcessInteraction: ; 0x02036a8c
 .L_02036d6c:
     ldr r0, [r4, #0x0]
     mov r1, r7
-    bl func_02007f0c
+    bl GamePhaseRuntime_GetActorCollection
     ldr r8, [r0, r9, lsl #0x2]
     cmp r8, #0x0
     beq .L_02036e2c
@@ -287,7 +287,7 @@ ActorDerivedType1_ProcessInteraction: ; 0x02036a8c
 .L_02036e30:
     ldr r0, [r4, #0x0]
     mov r1, #0x1
-    bl func_02007f0c
+    bl GamePhaseRuntime_GetActorCollection
     add r0, r0, #0x2000
     ldr r0, [r0, #0xe74]
     cmp r9, r0

@@ -4,7 +4,7 @@
 .extern data_020d5b34
 .extern data_021052fc
 .extern GameWork_SetFlag
-.extern func_02007f0c
+.extern GamePhaseRuntime_GetActorCollection
 .extern func_02009d78
 .extern func_02012704
 .extern func_0201ded4
@@ -28,7 +28,7 @@ func_0201797c:
     ldr r0, L_02017a40
     mov r1, #1
     ldr r0, [r0]
-    bl func_02007f0c
+    bl GamePhaseRuntime_GetActorCollection
     mov r1, r4
     bl ActorCollection_FindActorByDescriptorValue
     mov r4, r0

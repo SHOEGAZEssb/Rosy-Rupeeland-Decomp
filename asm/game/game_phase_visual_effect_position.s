@@ -12,7 +12,7 @@
 .extern VecFx32Stepper_Destroy
 .extern VecFx32Stepper_Update
 .extern VecFx32Stepper_GetCurrent
-.extern func_02007f0c
+.extern GamePhaseRuntime_GetActorCollection
 
     .global func_0200fe0c
 func_0200fe0c: ; 0x0200fe0c
@@ -59,7 +59,7 @@ L_0200fe9c:
     ldr r0, L_0201008c
     mov r1, #0x1
     ldr r0, [r0, #0x0]
-    bl func_02007f0c
+    bl GamePhaseRuntime_GetActorCollection
     add r0, r0, #0x2000
     ldr r0, [r0, #0xe7c]
     mov r3, #0x0

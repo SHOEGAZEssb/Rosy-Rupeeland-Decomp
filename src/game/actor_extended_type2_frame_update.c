@@ -16,7 +16,7 @@ extern s16 data_020c9670[];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void **func_02007f0c(void *runtime, s32 collection);
+extern void **GamePhaseRuntime_GetActorCollection(void *runtime, s32 collection);
 extern void InteractionRecordAllocator_ReleaseOwner(void *handle, void *actor);
 extern void func_020349b8(void *actor, u32 sound, s32 extra);
 extern void Actor_SaveAndForceFlags(void *actor);
@@ -90,7 +90,7 @@ void ActorExtendedType2_UpdateFrame(void *self)
         !pairMatches(first, second, data_020df9e8 + 0x120,
                      data_020dfb08) &&
         *(s32 *)(actor + 0x1dc) == *(s32 *)(actor + 0x24)) {
-        void **collection = func_02007f0c(data_021052fc, 1);
+        void **collection = GamePhaseRuntime_GetActorCollection(data_021052fc, 1);
         void *object = *(void **)((u8 *)collection + 0x2e7c);
         if ((*(s32 (**)(void *))(*(u8 **)object + 0xa8))(object) == 0) {
             u16 sound;

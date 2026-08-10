@@ -9,7 +9,7 @@
 .extern func_0200b2c0
 .extern Type7Actor_EnterSpecialPresentationState
 .extern func_0200ba00
-.extern func_02007f0c
+.extern GamePhaseRuntime_GetActorCollection
 .extern func_02030b58
 .extern data_020d448c
 .extern data_021052fc
@@ -87,7 +87,7 @@ L_0200b3d0:
     ldr r0, L_0200b40c
     mov r1, #0x1
     ldr r0, [r0, #0x0]
-    bl func_02007f0c
+    bl GamePhaseRuntime_GetActorCollection
     mov r1, #0x0
     bl func_02030b58
     ldr r0, L_0200b410

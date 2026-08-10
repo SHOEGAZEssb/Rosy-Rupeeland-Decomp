@@ -31,7 +31,7 @@ extern void func_ov033_021fd324(Overlay33Child *self, void *value);
 extern void func_02008b50(void *runtime);
 extern void GamePhaseRuntime_PrepareActorCollections(void *runtime, u32 value, s32 mode);
 extern void GamePhaseRuntime_FinalizeActorCollections(void *runtime, u32 value, s32 mode);
-extern void func_02008148(void *runtime, s32 index);
+extern void GamePhaseRuntime_SynchronizeActorPlacement(void *runtime, s32 index);
 extern void func_0201dcec(void *manager, s32 value);
 extern void *func_02009d78(void *object);
 extern void func_02010e68(void *context);
@@ -137,8 +137,8 @@ s32 func_0201d884(Overlay33RuntimeScene *self)
     }
     if (func_ov033_021fd37c(self->child3c) != 0)
         return 0;
-    func_02008148(runtime, 0);
-    func_02008148(runtime, 1);
+    GamePhaseRuntime_SynchronizeActorPlacement(runtime, 0);
+    GamePhaseRuntime_SynchronizeActorPlacement(runtime, 1);
     func_0201dcec(runtime + 0x2f7c, 1);
     GamePhaseRuntime_FinalizeActorCollections(runtime, self->base.value04, 3);
     value = func_02009d78(runtime + 0x2fbc);

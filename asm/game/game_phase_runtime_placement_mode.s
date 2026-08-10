@@ -4,7 +4,7 @@
 .extern func_0200500c
 .extern func_02005058
 .extern GamePhaseRuntime_PrepareActorCollections
-.extern func_02008148
+.extern GamePhaseRuntime_SynchronizeActorPlacement
 .extern func_02008af8
 .extern func_02009780
 .extern func_02009c20
@@ -156,7 +156,7 @@ L_02008aa8:
     bl GamePhaseRuntime_PrepareActorCollections
     mov r0, r7
     mov r1, #0x1
-    bl func_02008148
+    bl GamePhaseRuntime_SynchronizeActorPlacement
     add r0, r7, #0x3000
     ldr r0, [r0, #0xe8]
     ldr r1, [r0, #0x0]

@@ -15,7 +15,7 @@ extern void *data_021052fc;
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *func_02007f0c(void *, s32);
+extern void *GamePhaseRuntime_GetActorCollection(void *, s32);
 extern s32 func_020be334(s32);
 #ifdef __cplusplus
 }
@@ -57,7 +57,7 @@ void func_02031564(void *self)
     if (actor[0x4d] == 1)
         return;
 
-    peer = *(u8 **)((u8 *)func_02007f0c(data_021052fc, 1) + 0x2e7c);
+    peer = *(u8 **)((u8 *)GamePhaseRuntime_GetActorCollection(data_021052fc, 1) + 0x2e7c);
     if (func_020be334(0) >= 0x2000)
         return;
     peerConfig = *(u8 **)(peer + 0x54);

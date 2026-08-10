@@ -10130,7 +10130,7 @@ build build/reports/game_phase_runtime_change_area.json: objdiff build/decomp/de
 
 build build/reports/game_phase_runtime_change_area.txt: match_report build/reports/game_phase_runtime_change_area.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_runtime_change_area.json
-  report_args = --section .text --function func_02007b18 --require-exact
+  report_args = --section .text --function GamePhaseRuntime_ChangeToNeighborArea --require-exact
 
 build build/reports/game_phase_runtime_area_request.json: objdiff build/decomp/delinks/src/game/game_phase_runtime_area_request.o | build/decomp/src/game/game_phase_runtime_area_request.o
   target_object = build/decomp/delinks/src/game/game_phase_runtime_area_request.o
@@ -10138,7 +10138,7 @@ build build/reports/game_phase_runtime_area_request.json: objdiff build/decomp/d
 
 build build/reports/game_phase_runtime_area_request.txt: match_report build/reports/game_phase_runtime_area_request.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_runtime_area_request.json
-  report_args = --section .text --function func_02007f08 --function func_02007f0c --function GamePhaseRuntime_StageAreaRequest --require-exact
+  report_args = --section .text --function func_02007f08 --function GamePhaseRuntime_GetActorCollection --function GamePhaseRuntime_StageAreaRequest --require-exact
 
 build build/reports/game_phase_runtime_apply_request.json: objdiff build/decomp/delinks/src/game/game_phase_runtime_apply_request.o | build/decomp/src/game/game_phase_runtime_apply_request.o
   target_object = build/decomp/delinks/src/game/game_phase_runtime_apply_request.o
@@ -10146,7 +10146,7 @@ build build/reports/game_phase_runtime_apply_request.json: objdiff build/decomp/
 
 build build/reports/game_phase_runtime_apply_request.txt: match_report build/reports/game_phase_runtime_apply_request.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_runtime_apply_request.json
-  report_args = --section .text --function func_02007ff4 --require-exact
+  report_args = --section .text --function GamePhaseRuntime_ApplyStagedAreaRequest --require-exact
 
 build build/reports/game_phase_runtime_secondary.json: objdiff build/decomp/delinks/src/game/game_phase_runtime_secondary.o | build/decomp/src/game/game_phase_runtime_secondary.o
   target_object = build/decomp/delinks/src/game/game_phase_runtime_secondary.o
@@ -10154,7 +10154,7 @@ build build/reports/game_phase_runtime_secondary.json: objdiff build/decomp/deli
 
 build build/reports/game_phase_runtime_secondary.txt: match_report build/reports/game_phase_runtime_secondary.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_runtime_secondary.json
-  report_args = --section .text --function func_0200807c --function func_020080d0 --function func_02008110 --require-exact
+  report_args = --section .text --function GamePhaseRuntime_CreateSecondaryActorSubsystem --function GamePhaseRuntime_DestroySecondaryActorSubsystem --function GamePhaseRuntime_TeardownActiveAreaState --require-exact
 
 build build/reports/game_phase_runtime_actor_sync.json: objdiff build/decomp/delinks/asm/game/game_phase_runtime_actor_sync.o | build/decomp/asm/game/game_phase_runtime_actor_sync.o
   target_object = build/decomp/delinks/asm/game/game_phase_runtime_actor_sync.o
@@ -10162,7 +10162,7 @@ build build/reports/game_phase_runtime_actor_sync.json: objdiff build/decomp/del
 
 build build/reports/game_phase_runtime_actor_sync.txt: match_report build/reports/game_phase_runtime_actor_sync.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_runtime_actor_sync.json
-  report_args = --section .text --function func_02008148 --require-exact
+  report_args = --section .text --function GamePhaseRuntime_SynchronizeActorPlacement --require-exact
 
 build build/reports/game_phase_runtime_value_helpers.json: objdiff build/decomp/delinks/src/game/game_phase_runtime_value_helpers.o | build/decomp/src/game/game_phase_runtime_value_helpers.o
   target_object = build/decomp/delinks/src/game/game_phase_runtime_value_helpers.o

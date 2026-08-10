@@ -7,7 +7,7 @@
 .extern OverlayManager_LoadOverlay
 .extern OverlayManager_GetGlobal
 .extern func_02005058
-.extern func_02007f0c
+.extern GamePhaseRuntime_GetActorCollection
 .extern func_02034a60
 .extern func_ov062_0220fe78
 .extern func_ov088_02218280
@@ -151,7 +151,7 @@ func_ov088_02219ff4:
 .L_0221a1f0:
     ldr r0, [r4, #0x0]
     mov r1, r8
-    bl func_02007f0c
+    bl GamePhaseRuntime_GetActorCollection
     ldr r0, [r0, r9, lsl #0x2]
     cmp r0, #0x0
     beq .L_0221a240
@@ -174,7 +174,7 @@ func_ov088_02219ff4:
 .L_0221a244:
     ldr r0, [r4, #0x0]
     mov r1, r11
-    bl func_02007f0c
+    bl GamePhaseRuntime_GetActorCollection
     add r0, r0, #0x2000
     ldr r0, [r0, #0xe74]
     cmp r9, r0

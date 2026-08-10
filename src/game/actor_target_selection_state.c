@@ -9,7 +9,7 @@ extern u8 data_0210568c[4];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *func_02007f0c(void *manager, u32 slot);
+extern void *GamePhaseRuntime_GetActorCollection(void *manager, u32 slot);
 extern void VecFx32_Subtract(void *output, const void *first, const void *second);
 extern s32 func_02005070(void *value);
 extern void func_02005058(void *value);
@@ -63,9 +63,9 @@ void func_02034ecc(void)
     s32 smallest = 0x10000000;
 
     *(s16 *)(data_0210568c + 2) = 0;
-    while (index < *(u32 *)((u8 *)func_02007f0c(manager, 1) + 0x2e74) &&
+    while (index < *(u32 *)((u8 *)GamePhaseRuntime_GetActorCollection(manager, 1) + 0x2e74) &&
            found < 10) {
-        u8 *collection = (u8 *)func_02007f0c(manager, 1);
+        u8 *collection = (u8 *)GamePhaseRuntime_GetActorCollection(manager, 1);
         u8 *actor = *(u8 **)(collection + index * 4);
 
         if (actor != 0 && actor[0x4d] == 2 &&

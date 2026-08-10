@@ -24,7 +24,7 @@ void func_02007f08(void)
  * return the embedded actor at offset 8 of the optional object at 0x2fb8.
  * This accessor changes no state and assumes the optional object is present.
  */
-void *func_02007f0c(GamePhaseRuntime *self, s32 index)
+void *GamePhaseRuntime_GetActorCollection(GamePhaseRuntime *self, s32 index)
 {
     u8 *b = (u8 *)self;
     if (index == 1)

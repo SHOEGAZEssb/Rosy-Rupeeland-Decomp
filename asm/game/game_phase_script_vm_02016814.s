@@ -3,7 +3,7 @@
 .extern GameWork_ClearFlag
 .extern GameWork_SetFlag
 .extern data_021052fc
-.extern func_02007f0c
+.extern GamePhaseRuntime_GetActorCollection
 .extern func_02012704
 .extern gGameWork
 .global func_02016814
@@ -19,7 +19,7 @@ func_02016814:
     ldr r0, L_02016894
     mov r1, #1
     ldr r0, [r0]
-    bl func_02007f0c
+    bl GamePhaseRuntime_GetActorCollection
     add r0, r0, #0x2000
     ldr r1, [r0, #0xe7c]
     ldr r0, [r1, #0x230]
@@ -32,7 +32,7 @@ L_02016858:
     ldr r0, L_02016894
     mov r1, #1
     ldr r0, [r0]
-    bl func_02007f0c
+    bl GamePhaseRuntime_GetActorCollection
     add r0, r0, #0x2000
     ldr r1, [r0, #0xe7c]
     ldr r0, [r1, #0x230]

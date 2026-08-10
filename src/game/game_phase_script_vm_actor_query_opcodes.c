@@ -8,7 +8,7 @@ extern "C" {
 #endif
 extern void *data_021052fc;
 extern const s8 data_020d5af8[];
-extern void *func_02007f0c(void *runtime, s32 index);
+extern void *GamePhaseRuntime_GetActorCollection(void *runtime, s32 index);
 extern u32 func_02029a00(void *object, u32 first, u32 second, u32 third);
 extern s32 func_020ae024(fx32 first, fx32 second);
 #ifdef __cplusplus
@@ -72,7 +72,7 @@ s32 func_020135a0(GamePhaseActorScriptVm *self)
 /* Resolve runtime collection 1's actor at offset 0x2e7c and push integer x. */
 s32 func_020135f4(GamePhaseActorScriptVm *self)
 {
-    u8 *collection = (u8 *)func_02007f0c(data_021052fc, 1);
+    u8 *collection = (u8 *)GamePhaseRuntime_GetActorCollection(data_021052fc, 1);
     VecFx32Object value;
     void *actor = *(void **)(collection + 0x2e7c);
     func_02005030(&value, (VecFx32Object *)((u8 *)actor + 0x18));
@@ -84,7 +84,7 @@ s32 func_020135f4(GamePhaseActorScriptVm *self)
 /* Resolve runtime collection 1's actor at offset 0x2e7c and push integer y. */
 s32 func_0201364c(GamePhaseActorScriptVm *self)
 {
-    u8 *collection = (u8 *)func_02007f0c(data_021052fc, 1);
+    u8 *collection = (u8 *)GamePhaseRuntime_GetActorCollection(data_021052fc, 1);
     VecFx32Object value;
     void *actor = *(void **)(collection + 0x2e7c);
     func_02005030(&value, (VecFx32Object *)((u8 *)actor + 0x18));
@@ -96,7 +96,7 @@ s32 func_0201364c(GamePhaseActorScriptVm *self)
 /* Resolve runtime collection 1's actor at offset 0x2e7c and push integer z. */
 s32 func_020136a4(GamePhaseActorScriptVm *self)
 {
-    u8 *collection = (u8 *)func_02007f0c(data_021052fc, 1);
+    u8 *collection = (u8 *)GamePhaseRuntime_GetActorCollection(data_021052fc, 1);
     VecFx32Object value;
     void *actor = *(void **)(collection + 0x2e7c);
     func_02005030(&value, (VecFx32Object *)((u8 *)actor + 0x18));

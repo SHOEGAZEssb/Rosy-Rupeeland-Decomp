@@ -37,7 +37,7 @@
 .extern DisplayBrightness_IsSubTransitionComplete
 .extern OverlaySlot_LoadOverlay
 .extern OverlaySlot_UnloadOverlay
-.extern func_02007f0c
+.extern GamePhaseRuntime_GetActorCollection
 .extern func_02008570
 .extern func_020088b8
 .extern func_0200ec6c
@@ -223,7 +223,7 @@ L_0200d23c:
     ldr r0, L_0200e0e4
     mov r1, #0x1
     ldr r0, [r0, #0x0]
-    bl func_02007f0c
+    bl GamePhaseRuntime_GetActorCollection
     bl ActorCollection_GetSpriteOwner
     bl func_02074154
     ldr r0, L_0200e0f0
@@ -901,7 +901,7 @@ L_0200dbf4:
     ldr r0, L_0200e0e4
     mov r1, #0x1
     ldr r0, [r0, #0x0]
-    bl func_02007f0c
+    bl GamePhaseRuntime_GetActorCollection
     bl ActorCollection_GetSpriteOwner
     bl func_020740a4
     b L_0200e3bc
@@ -1370,7 +1370,7 @@ L_0200e2c8:
     ldr r0, L_0200e0e4
     mov r1, #0x1
     ldr r0, [r0, #0x0]
-    bl func_02007f0c
+    bl GamePhaseRuntime_GetActorCollection
     bl ActorCollection_GetSpriteOwner
     bl func_02074178
     cmp r5, #0x0

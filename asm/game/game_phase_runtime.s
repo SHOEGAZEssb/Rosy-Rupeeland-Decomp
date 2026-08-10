@@ -10,7 +10,7 @@
 .extern OverlaySlot_Init
 .extern GamePhaseRuntime_SetDisplayRouting
 .extern GamePhaseRuntime_CreateFieldLoader
-.extern func_0200807c
+.extern GamePhaseRuntime_CreateSecondaryActorSubsystem
 .extern func_020088b8
 .extern func_02008af8
 .extern func_02008bb8
@@ -157,7 +157,7 @@ GamePhaseRuntime_Configure:
     add r1, r4, #0x3000
     ldr r1, [r1, #0xbc]
     mov r2, #0x1
-    bl func_0200807c
+    bl GamePhaseRuntime_CreateSecondaryActorSubsystem
     add r0, r4, #0x24
     add r1, r4, #0x3000
     ldr r1, [r1, #0xbc]

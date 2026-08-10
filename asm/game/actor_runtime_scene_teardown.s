@@ -2,7 +2,7 @@
 ; the documented portable implementation and recovered behavior.
 .text
 .extern func_0200b8cc
-.extern func_02007f0c
+.extern GamePhaseRuntime_GetActorCollection
 .extern Actor_SetActive
 .extern GameWork_TestFlag
 .extern Type7Actor_LeaveSpecialPresentationState
@@ -25,7 +25,7 @@ func_0200b41c:
     ldr r0, L_0200b55c
     mov r1, #0x1
     ldr r0, [r0, #0x0]
-    bl func_02007f0c
+    bl GamePhaseRuntime_GetActorCollection
     add r0, r0, #0x2000
     ldr r4, [r0, #0xe7c]
     mov r1, #0x0
@@ -92,7 +92,7 @@ L_0200b530:
     ldr r0, L_0200b55c
     mov r1, #0x1
     ldr r0, [r0, #0x0]
-    bl func_02007f0c
+    bl GamePhaseRuntime_GetActorCollection
     mov r1, #0x1
     bl func_02030b58
     mov r0, r5

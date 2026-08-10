@@ -14,7 +14,7 @@ extern const u32 data_020cdc1c[];
 extern const u8 data_020d542c[];
 extern void *data_021052fc;
 extern void *gSoundContext;
-extern void *func_02007f0c(void *runtime, s32 index);
+extern void *GamePhaseRuntime_GetActorCollection(void *runtime, s32 index);
 extern GraphicsSpriteGroup *ActorCollection_GetSpriteOwner(void);
 extern void Sound_Play(void *context, s32 bank, s32 soundId, s32 parameter);
 #ifdef __cplusplus
@@ -53,7 +53,7 @@ GamePhaseEffectScene *func_0200c9fc(GamePhaseEffectScene *self, s32 mode)
     switch (mode) {
     case 1:
         self->resources = createResources((void *)0x100b, (void *)0x100c);
-        func_02007f0c(runtime, 1);
+        GamePhaseRuntime_GetActorCollection(runtime, 1);
         group = ActorCollection_GetSpriteOwner();
         self->sprite = GraphicsSpriteState_Create(group,
             (const GraphicsSpriteResourceDescriptor *)self->resources,
@@ -63,7 +63,7 @@ GamePhaseEffectScene *func_0200c9fc(GamePhaseEffectScene *self, s32 mode)
         break;
     case 2:
         self->resources = createResources((void *)0x101b, (void *)0x101c);
-        func_02007f0c(runtime, 1);
+        GamePhaseRuntime_GetActorCollection(runtime, 1);
         group = ActorCollection_GetSpriteOwner();
         self->sprite = GraphicsSpriteState_Create(group,
             (const GraphicsSpriteResourceDescriptor *)self->resources,
@@ -73,7 +73,7 @@ GamePhaseEffectScene *func_0200c9fc(GamePhaseEffectScene *self, s32 mode)
         break;
     case 4:
         self->resources = createResources((void *)0x1003, (void *)0x1004);
-        func_02007f0c(runtime, 1);
+        GamePhaseRuntime_GetActorCollection(runtime, 1);
         group = ActorCollection_GetSpriteOwner();
         self->sprite = GraphicsSpriteState_Create(group,
             (const GraphicsSpriteResourceDescriptor *)self->resources,

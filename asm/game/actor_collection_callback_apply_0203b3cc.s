@@ -2,7 +2,7 @@
 .text
 .extern data_020df500
 .extern data_021052fc
-.extern func_02007f0c
+.extern GamePhaseRuntime_GetActorCollection
 .extern ActorCollection_FindActorByTypeAndId
 .extern Actor_SetActive
     .global ActorDescriptorBatch_ApplyCategoryCallback
@@ -14,7 +14,7 @@ ActorDescriptorBatch_ApplyCategoryCallback: ; 0x0203b3cc
     ldr r0, .L_0203b50c
     mov r1, #0x1
     ldr r0, [r0, #0x0]
-    bl func_02007f0c
+    bl GamePhaseRuntime_GetActorCollection
     mov r1, #0x3
     mov r2, #0x4
     bl ActorCollection_FindActorByTypeAndId
@@ -40,7 +40,7 @@ ActorDescriptorBatch_ApplyCategoryCallback: ; 0x0203b3cc
     ldr r0, .L_0203b50c
     mov r1, #0x2
     ldr r0, [r0, #0x0]
-    bl func_02007f0c
+    bl GamePhaseRuntime_GetActorCollection
     mov r1, #0x3
     mov r2, #0x4
     bl ActorCollection_FindActorByTypeAndId
@@ -71,13 +71,13 @@ ActorDescriptorBatch_ApplyCategoryCallback: ; 0x0203b3cc
 .L_0203b4b8:
     ldr r0, [r9, #0x0]
     mov r1, r7
-    bl func_02007f0c
+    bl GamePhaseRuntime_GetActorCollection
     ldr r0, [r0, r8, lsl #0x2]
     cmp r0, #0x0
     beq .L_0203b4e8
     ldr r0, [r9, #0x0]
     mov r1, r6
-    bl func_02007f0c
+    bl GamePhaseRuntime_GetActorCollection
     ldr r0, [r0, r8, lsl #0x2]
     mov r1, r5
     bl Actor_SetActive
@@ -86,7 +86,7 @@ ActorDescriptorBatch_ApplyCategoryCallback: ; 0x0203b3cc
 .L_0203b4ec:
     ldr r0, [r9, #0x0]
     mov r1, r4
-    bl func_02007f0c
+    bl GamePhaseRuntime_GetActorCollection
     add r0, r0, #0x2000
     ldr r0, [r0, #0xe74]
     cmp r8, r0

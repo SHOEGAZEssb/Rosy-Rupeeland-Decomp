@@ -5,7 +5,7 @@
 .extern func_0200500c
 .extern func_02005058
 .extern func_02005084
-.extern func_02007f0c
+.extern GamePhaseRuntime_GetActorCollection
 .extern func_0200b04c
 .extern func_020328d0
 .extern ActorDerivedType1_StartRecord
@@ -43,7 +43,7 @@ func_020505f0:
     ldr r0, .L_02050a04
     mov r1, #0x1
     ldr r0, [r0, #0x0]
-    bl func_02007f0c
+    bl GamePhaseRuntime_GetActorCollection
     ldr r6, [r0, r7, lsl #0x2]
     cmp r6, #0x0
     beq .L_020509cc
@@ -283,7 +283,7 @@ func_020505f0:
     ldr r0, .L_02050a04
     mov r1, #0x1
     ldr r0, [r0, #0x0]
-    bl func_02007f0c
+    bl GamePhaseRuntime_GetActorCollection
     add r0, r0, #0x2000
     ldr r0, [r0, #0xe74]
     cmp r7, r0

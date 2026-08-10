@@ -7,7 +7,7 @@
 .extern func_0200500c
 .extern func_02005058
 .extern AnimationResource_Init
-.extern func_02007f0c
+.extern GamePhaseRuntime_GetActorCollection
 .extern func_0201e0ec
 .extern ActorCollection_QueueActorForRemoval
 .extern func_020349b8
@@ -36,7 +36,7 @@ func_ov090_0221b428:
 .L_0221b450:
     ldr r0, [r5, #0x0]
     mov r1, r8
-    bl func_02007f0c
+    bl GamePhaseRuntime_GetActorCollection
     ldr r9, [r0, r10, lsl #0x2]
     cmp r9, #0x0
     beq .L_0221b494
@@ -48,7 +48,7 @@ func_ov090_0221b428:
     beq .L_0221b494
     ldr r0, [r5, #0x0]
     mov r1, r11
-    bl func_02007f0c
+    bl GamePhaseRuntime_GetActorCollection
     mov r1, r9
     bl ActorCollection_QueueActorForRemoval
 .L_0221b494:
@@ -56,7 +56,7 @@ func_ov090_0221b428:
 .L_0221b498:
     ldr r0, [r5, #0x0]
     mov r1, #0x1
-    bl func_02007f0c
+    bl GamePhaseRuntime_GetActorCollection
     add r0, r0, #0x2000
     ldr r0, [r0, #0xe74]
     cmp r10, r0

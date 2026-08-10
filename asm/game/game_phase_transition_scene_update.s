@@ -11,7 +11,7 @@
 .extern DisplayBrightness_IsSubTransitionComplete
 .extern func_0201140c
 .extern GameWork_Reset
-.extern func_02007ff4
+.extern GamePhaseRuntime_ApplyStagedAreaRequest
 .extern Heap_Alloc
 .extern func_0200f878
 .extern data_020d53b0
@@ -104,7 +104,7 @@ L_0200c7d0:
 L_0200c7fc:
     ldr r0, L_0200c8ac
     ldr r0, [r0, #0x0]
-    bl func_02007ff4
+    bl GamePhaseRuntime_ApplyStagedAreaRequest
     mov r0, #0x28
     ldr r1, L_0200c8b0
     ldr r3, L_0200c8b4

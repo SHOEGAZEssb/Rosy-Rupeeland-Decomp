@@ -28,7 +28,7 @@
 .extern func_020050c8
 .extern VecFx32Triple_Destroy
 .extern VecFx32Bezier_Evaluate3D
-.extern func_02007f0c
+.extern GamePhaseRuntime_GetActorCollection
 .extern func_020091c0
 .extern func_02009780
 .extern func_020099c0
@@ -2450,7 +2450,7 @@ func_ov090_02217d70:
 .L_0221a104:
     ldr r0, [r5, #0x0]
     mov r1, r7
-    bl func_02007f0c
+    bl GamePhaseRuntime_GetActorCollection
     ldr r1, [r0, r10, lsl #0x2]
     cmp r1, #0x0
     beq .L_0221a140
@@ -2468,7 +2468,7 @@ func_ov090_02217d70:
 .L_0221a144:
     ldr r0, [r5, #0x0]
     mov r1, #0x1
-    bl func_02007f0c
+    bl GamePhaseRuntime_GetActorCollection
     add r0, r0, #0x2000
     ldr r0, [r0, #0xe74]
     cmp r10, r0

@@ -8,7 +8,7 @@
 .extern func_0200500c
 .extern func_02005058
 .extern AnimationResource_Init
-.extern func_02007f0c
+.extern GamePhaseRuntime_GetActorCollection
 .extern func_0201e250
 .extern func_0201f864
 .extern ActorCollection_GetSpriteOwner
@@ -50,7 +50,7 @@ func_ov073_02210710:
     ldr r0, .L_022108f4
     mov r1, #0x1
     ldr r0, [r0, #0x0]
-    bl func_02007f0c
+    bl GamePhaseRuntime_GetActorCollection
     bl ActorCollection_GetSpriteOwner
     ldr r3, .L_022108f8
     mov r2, r0

@@ -8,7 +8,7 @@ extern "C" {
 #endif
 extern const u8 data_020d43fc[];
 extern void *data_021052fc;
-extern void *func_02007f0c(void *context, s32 index);
+extern void *GamePhaseRuntime_GetActorCollection(void *context, s32 index);
 #ifdef __cplusplus
 }
 #endif
@@ -88,7 +88,7 @@ s32 func_0200b180(ActorRuntimeCollection *self)
     if (self->ownedList.count == 0)
         return 0;
 
-    runtimeObject = *(void **)((u8 *)func_02007f0c(data_021052fc, 1) + 8);
+    runtimeObject = *(void **)((u8 *)GamePhaseRuntime_GetActorCollection(data_021052fc, 1) + 8);
     node = self->ownedList.tail;
     value = node->value;
     self->ownedList.tail = node->previous;

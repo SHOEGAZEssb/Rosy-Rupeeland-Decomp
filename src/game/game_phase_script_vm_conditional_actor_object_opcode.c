@@ -33,7 +33,7 @@ s32 func_0201797c(GamePhaseActorScriptVm *self)
     u8 *runtime = (u8 *)data_021052fc;
     if (enabled) {
         void *actor = ActorCollection_FindActorByDescriptorValue(
-            func_02007f0c((GamePhaseRuntime *)runtime, 1), actorIndex);
+            GamePhaseRuntime_GetActorCollection((GamePhaseRuntime *)runtime, 1), actorIndex);
         void *object = Heap_Alloc(0x4c, data_020d5b34, 4, &gHeapContext);
         if (object)
             object = func_02020794(object, func_02009d78(runtime + 0x2fbc),

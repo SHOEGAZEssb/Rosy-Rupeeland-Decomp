@@ -17,7 +17,7 @@ extern void func_020122a0(void *object, s32 enabled);
 s32 func_02017638(GamePhaseActorScriptVm *self)
 {
     s32 value = (s32)func_02012704(&self->base);
-    func_0202d68c(func_02007f0c((GamePhaseRuntime *)data_021052fc, 2), value);
+    func_0202d68c(GamePhaseRuntime_GetActorCollection((GamePhaseRuntime *)data_021052fc, 2), value);
     return 0;
 }
 

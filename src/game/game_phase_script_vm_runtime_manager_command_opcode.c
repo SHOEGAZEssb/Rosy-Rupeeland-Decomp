@@ -9,7 +9,7 @@
 extern "C" {
 #endif
 extern void *data_021052fc;
-extern void *func_02007f0c(void *runtime, s32 index);
+extern void *GamePhaseRuntime_GetActorCollection(void *runtime, s32 index);
 extern void func_02013dfc(void *actor, s32 enabled);
 extern void func_0201df64(void *list);
 extern void func_0201e0ec(void *list);
@@ -64,12 +64,12 @@ s32 func_02019aa4(GamePhaseActorScriptVm *self)
         invokeModeZero(manager);
         if (entity)
             invokeModeZero(entity);
-        func_02074154(ActorCollection_GetSpriteOwner(func_02007f0c(runtime, 1)));
+        func_02074154(ActorCollection_GetSpriteOwner(GamePhaseRuntime_GetActorCollection(runtime, 1)));
         func_02026514(func_02025d14(*(void **)(runtime + 0x30e8)));
         break;
     }
     case 4: {
-        u8 *collection = (u8 *)func_02007f0c(runtime, 1);
+        u8 *collection = (u8 *)GamePhaseRuntime_GetActorCollection(runtime, 1);
         s32 index;
         s32 count = *(s32 *)(collection + 0x2e74);
         for (index = 0; index < count; index++) {

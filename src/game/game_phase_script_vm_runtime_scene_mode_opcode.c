@@ -9,7 +9,7 @@ extern "C" {
 #endif
 extern void *data_021052fc;
 extern void func_020088b8(void *runtime, s32 mode, s32 synchronize);
-extern void *func_02007f0c(void *runtime, s32 index);
+extern void *GamePhaseRuntime_GetActorCollection(void *runtime, s32 index);
 extern void func_0202d68c(void *object, s32 enabled);
 #ifdef __cplusplus
 }
@@ -34,7 +34,7 @@ s32 func_0201af00(GamePhaseActorScriptVm *self)
         void **vtable;
 
         func_020088b8(runtime, 0, 1);
-        func_0202d68c(func_02007f0c(runtime, 2), 1);
+        func_0202d68c(GamePhaseRuntime_GetActorCollection(runtime, 2), 1);
         owner = *(u8 **)(runtime + 0x2fb8);
         object = *(void **)(owner + 0x2ebc);
         vtable = *(void ***)object;

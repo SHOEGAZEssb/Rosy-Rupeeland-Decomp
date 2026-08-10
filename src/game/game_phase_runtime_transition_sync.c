@@ -26,15 +26,15 @@ extern void func_02010e68(void *context);
 void func_02008e10(GamePhaseRuntime *self, s32 mode)
 {
     u8 *b = (u8 *)self;
-    s32 previous = func_02030b58(func_02007f0c(data_021052fc, 1), 0);
+    s32 previous = func_02030b58(GamePhaseRuntime_GetActorCollection(data_021052fc, 1), 0);
 
     ActorCollection_UpdateFlag800Actors(b + 0x28);
     if (mode == 0 || mode == 2)
-        func_02008148(self, 0);
+        GamePhaseRuntime_SynchronizeActorPlacement(self, 0);
     if ((u32)(mode - 1) <= 1)
-        func_02008148(self, 1);
+        GamePhaseRuntime_SynchronizeActorPlacement(self, 1);
     GamePhaseRuntime_FinalizeActorCollections(self, self->field_04, 3);
-    func_02030b58(func_02007f0c(self, 1), previous);
+    func_02030b58(GamePhaseRuntime_GetActorCollection(self, 1), previous);
     func_0201dcec(b + 0x2f7c, 1);
     func_02010e68(gLupyContext);
     {

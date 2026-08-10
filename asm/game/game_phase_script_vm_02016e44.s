@@ -3,7 +3,7 @@
 .extern data_021052fc
 .extern func_02005030
 .extern func_02005058
-.extern func_02007f0c
+.extern GamePhaseRuntime_GetActorCollection
 .extern func_02012704
 .extern func_020127f8
 .extern func_02016f14
@@ -31,7 +31,7 @@ func_02016e44:
     ldr r0, L_02016f10
     mov r1, #1
     ldr r0, [r0]
-    bl func_02007f0c
+    bl GamePhaseRuntime_GetActorCollection
     mov r1, r5
     bl ActorCollection_FindActorByDescriptorValue
     add r1, r0, #0x18

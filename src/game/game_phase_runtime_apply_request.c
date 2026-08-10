@@ -8,8 +8,8 @@ extern "C" {
 extern void func_0200f824(void);
 extern void func_0200f52c(void);
 extern void func_0200e61c(void *state);
-extern void func_020080d0(GamePhaseRuntime *self);
-extern void func_02008110(GamePhaseRuntime *self);
+extern void GamePhaseRuntime_DestroySecondaryActorSubsystem(GamePhaseRuntime *self);
+extern void GamePhaseRuntime_TeardownActiveAreaState(GamePhaseRuntime *self);
 #ifdef __cplusplus
 }
 #endif
@@ -20,7 +20,7 @@ extern void func_02008110(GamePhaseRuntime *self);
  * rebuild it using staged values 0x30d4..0x30dc. Returns no value. Hardware
  * writes and teardown order are observable and must remain ordered.
  */
-void func_02007ff4(GamePhaseRuntime *self)
+void GamePhaseRuntime_ApplyStagedAreaRequest(GamePhaseRuntime *self)
 {
     u8 *b = (u8 *)self;
     volatile u32 *mainDisplay = (volatile u32 *)0x04000000;
@@ -32,8 +32,8 @@ void func_02007ff4(GamePhaseRuntime *self)
     func_0200f824();
     func_0200f52c();
     func_0200e61c(b + 0x24);
-    func_020080d0(self);
-    func_02008110(self);
+    GamePhaseRuntime_DestroySecondaryActorSubsystem(self);
+    GamePhaseRuntime_TeardownActiveAreaState(self);
     GamePhaseRuntime_Configure(self, *(void **)(b + 0x30d0),
                    *(s32 *)(b + 0x30d4), *(s32 *)(b + 0x30d8),
                    *(s32 *)(b + 0x30dc));

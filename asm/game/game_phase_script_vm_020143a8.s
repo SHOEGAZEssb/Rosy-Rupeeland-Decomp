@@ -13,7 +13,7 @@
 .extern func_0200500c
 .extern func_02005058
 .extern func_020050a4
-.extern func_02007f0c
+.extern GamePhaseRuntime_GetActorCollection
 .extern func_02009d78
 .extern func_0200b2c0
 .extern func_02012704
@@ -1054,7 +1054,7 @@ L_02015144:
     ldr r0, L_020154d0
     mov r1, #0x1
     ldr r0, [r0, #0x0]
-    bl func_02007f0c
+    bl GamePhaseRuntime_GetActorCollection
     mov r1, r8
     bl ActorCollection_FindActorByDescriptorValue
     mov r1, r4
@@ -1074,7 +1074,7 @@ L_020151e4:
     mov r4, r0
     ldr r0, [r1, #0x0]
     mov r1, #0x1
-    bl func_02007f0c
+    bl GamePhaseRuntime_GetActorCollection
     mov r1, r7
     bl ActorCollection_FindActorByDescriptorValue
     add r0, r0, #0x18
@@ -1183,7 +1183,7 @@ L_02015398:
     ldr r0, L_020154d0
     mov r1, #0x1
     ldr r0, [r0, #0x0]
-    bl func_02007f0c
+    bl GamePhaseRuntime_GetActorCollection
     mov r1, r5
     bl ActorCollection_FindActorByDescriptorValue
     mov r5, r0

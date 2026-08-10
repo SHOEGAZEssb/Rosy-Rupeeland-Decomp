@@ -15,7 +15,7 @@ extern "C" {
 extern void func_020050a4(void *transform);
 extern void VecFx32_Subtract(void *result, const void *from, const void *to);
 extern s32 func_0204cfa4(s32 y, s32 x);
-extern void *func_02007f0c(void *context, s32 index);
+extern void *GamePhaseRuntime_GetActorCollection(void *context, s32 index);
 extern s32 func_020ae024(s32 y, s32 x);
 extern s32 func_020adae4(s32 value, s32 shift);
 extern void func_02005058(void *transform);
@@ -55,7 +55,7 @@ void ActorExtendedType2_UpdateTargetMotion(void *self)
         if ((*(u32 *)(actor + 0xd0) & 2) != 0) {
             u16 index = *(u16 *)(actor + 0x256) >> 2;
             u8 *context = *(u8 **)data_021052fc;
-            u8 *primary = *(u8 **)((u8 *)func_02007f0c(context, 1) + 0x2e7c);
+            u8 *primary = *(u8 **)((u8 *)GamePhaseRuntime_GetActorCollection(context, 1) + 0x2e7c);
             s16 row = ((*(s32 (**)(void *))(*(u8 **)primary + 0xa8))(primary) != 0)
                           ? *(s16 *)(limits + 4) : *(s16 *)(limits + 2);
             u16 column = *(u16 *)(limits + 6);

@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/actor_attachment_layer_sync.c.
 .text
 .extern data_021052fc
-.extern func_02007f0c
+.extern GamePhaseRuntime_GetActorCollection
 .extern func_020be334
 
     .global func_02031564
@@ -53,7 +53,7 @@ func_02031564: ; 0x02031564
     ldr r0, .L_020316e4
     mov r1, #0x1
     ldr r0, [r0, #0x0]
-    bl func_02007f0c
+    bl GamePhaseRuntime_GetActorCollection
     add r1, r0, #0x2000
     mov r0, #0x0
     ldr r7, [r1, #0xe7c]

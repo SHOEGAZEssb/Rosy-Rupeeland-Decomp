@@ -2,7 +2,7 @@
 .text
 .extern OS_Halt
 .extern data_021052fc
-.extern func_02007f0c
+.extern GamePhaseRuntime_GetActorCollection
 .extern func_02012704
 .extern func_020127f8
 .extern ActorCollection_FindActorByDescriptorValue
@@ -35,7 +35,7 @@ func_02013b74: ; 0x02013b74
     ldr r0, L_02013c78
     mov r1, #0x2
     ldr r0, [r0, #0x0]
-    bl func_02007f0c
+    bl GamePhaseRuntime_GetActorCollection
     mov r1, r4
     bl ActorCollection_FindActorByDescriptorValue
     mov r5, r0
@@ -50,7 +50,7 @@ L_02013bec:
     ldr r0, L_02013c78
     mov r1, #0x1
     ldr r0, [r0, #0x0]
-    bl func_02007f0c
+    bl GamePhaseRuntime_GetActorCollection
     mov r1, r4
     bl ActorCollection_FindActorByDescriptorValue
     mov r5, r0
@@ -64,7 +64,7 @@ L_02013c28:
     ldr r0, L_02013c78
     mov r1, #0x1
     ldr r0, [r0, #0x0]
-    bl func_02007f0c
+    bl GamePhaseRuntime_GetActorCollection
     add r0, r0, #0x2000
     ldr r1, [r0, #0xe7c]
     mov r0, r6

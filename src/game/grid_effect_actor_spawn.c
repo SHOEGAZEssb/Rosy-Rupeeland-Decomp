@@ -11,7 +11,7 @@ extern void *data_021052fc;
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *func_02007f0c(void *context, s32 index);
+extern void *GamePhaseRuntime_GetActorCollection(void *context, s32 index);
 extern void *func_02028388(s32 index);
 extern void *ActorCollection_SpawnActorFromDescriptor(void *manager, const void *descriptor);
 extern void ActorSpawnDescriptor_Init(void *destination, ...);
@@ -73,7 +73,7 @@ void *func_0204f62c(const void *position, void *source, s16 timer)
     if ((FIELD(u32, record, 0x40) >> 18 & 3) == 3)
         FIELD(u32, descriptor, 0x28) |= 1;
 
-    void *manager = func_02007f0c(data_021052fc, 1);
+    void *manager = GamePhaseRuntime_GetActorCollection(data_021052fc, 1);
     void *actor = ActorCollection_SpawnActorFromDescriptor(manager, descriptor);
     *slot = actor;
     FIELD(s16, actor, 0x218) = timer;

@@ -13,7 +13,7 @@ extern u8 *gGameWork;
 extern "C" {
 #endif
 extern void Heap_Free(void *allocation);
-extern void *func_02007f0c(void *runtime, s32 category);
+extern void *GamePhaseRuntime_GetActorCollection(void *runtime, s32 category);
 extern s32 GameWork_TestFlag(void *work, u32 flag);
 extern void *ActorDerivedRuntime_Init(void *actor);
 extern void ActorDerivedRuntime_DestroyAlternate(void *actor);
@@ -92,7 +92,7 @@ void func_0204d10c(void *self)
         ActorDerivedRuntime_UpdateFrame(actor);
         return;
     }
-    collection = (u8 *)func_02007f0c(data_021052fc, 1);
+    collection = (u8 *)GamePhaseRuntime_GetActorCollection(data_021052fc, 1);
     target = *(u8 **)(collection + 0x2e7c);
     *(u8 **)(actor + 0x208) = target;
     if (GameWork_TestFlag(gGameWork, 0x405) != 0) {

@@ -4,7 +4,7 @@
     .extern data_020f4e14
     .extern data_021052fc
     .extern data_ov018_021ffd60
-    .extern func_02007f0c
+    .extern GamePhaseRuntime_GetActorCollection
     .extern ActorCollection_FindActorByDescriptorValue
     .extern func_02092cc0
     .extern func_ov018_021fd9f8
@@ -61,7 +61,7 @@ L_021fd994:
     str r2, [r1, #0xbc]
     ldr r0, [r0, #0x0]
     mov r1, #0x1
-    bl func_02007f0c
+    bl GamePhaseRuntime_GetActorCollection
     ldr r1, L_021fd9f4
     ldr r1, [r1, #0x0]
     ldr r1, [r1, #0x3f4]

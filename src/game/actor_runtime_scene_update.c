@@ -9,7 +9,7 @@ extern void *data_021052fc;
 extern void *gLupyContext;
 extern void GamePhaseRuntime_PrepareActorCollections(void *context, u32 value, s32 mode);
 extern void GamePhaseRuntime_FinalizeActorCollections(void *context, u32 value, s32 mode);
-extern s32 func_02008148(void *context, s32 index);
+extern s32 GamePhaseRuntime_SynchronizeActorPlacement(void *context, s32 index);
 extern s32 GamePhaseRuntime_DispatchActorQueryRequest(void *runtime);
 extern void func_0200866c(void *context);
 extern void func_02008b50(void *context);
@@ -37,8 +37,8 @@ s32 func_0200b6c4(ActorRuntimeScene *self)
         GamePhaseRuntime_DispatchActorQueryRequest(root);
         GamePhaseRuntime_PrepareActorCollections(root, self->base.value04, 3);
         func_0200866c(root);
-        func_02008148(root, 0);
-        func_02008148(root, 1);
+        GamePhaseRuntime_SynchronizeActorPlacement(root, 0);
+        GamePhaseRuntime_SynchronizeActorPlacement(root, 1);
         GamePhaseRuntime_FinalizeActorCollections(root, self->base.value04, 3);
     } else if (self->base.value08 == 1) {
         if (self != 0)

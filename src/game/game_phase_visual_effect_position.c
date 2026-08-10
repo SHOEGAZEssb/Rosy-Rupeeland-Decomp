@@ -42,7 +42,7 @@ void func_0200fe0c(GamePhaseVisualEffect *self,
         void *area;
         u8 *actor;
         func_020050c8(&self->vectors[1], &self->vectors[3]);
-        area = func_02007f0c(runtime, 1);
+        area = GamePhaseRuntime_GetActorCollection(runtime, 1);
         actor = *(u8 **)((u8 *)area + 0x2e7c);
         if (!(*(u32 *)(actor + 0xd0) & 0x10))
             func_0200500c(&temporary, data_02105684[0] * 8,

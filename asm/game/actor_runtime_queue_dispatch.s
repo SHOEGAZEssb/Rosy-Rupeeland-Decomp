@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/actor_runtime_collection_queue.c for
 ; the documented portable implementation and recovered behavior.
 .text
-.extern func_02007f0c
+.extern GamePhaseRuntime_GetActorCollection
 .extern Heap_Free
 .extern func_0200ae4c
 .extern data_021052fc
@@ -19,7 +19,7 @@ func_0200b180:
     ldr r0, L_0200b238
     mov r1, #0x1
     ldr r0, [r0, #0x0]
-    bl func_02007f0c
+    bl GamePhaseRuntime_GetActorCollection
     ldr r4, [r0, #0x8]
     ldr r0, [r5, #0x140]
     ldr r1, [r0, #0x4]

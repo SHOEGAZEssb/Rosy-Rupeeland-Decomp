@@ -13,7 +13,7 @@ void func_ov075_02212ae0(void);
 /* Processes the supplied ABI arguments and offset-based actor state, returns its encoded result, and invokes ActorExtendedType2_Init; exact higher-level semantics remain unconfirmed. */
 void func_ov075_02212bb8(void);
 
-/* Processes the supplied ABI arguments and offset-based actor state, returns its encoded result, and invokes func_02007f0c, ActorExtendedType2_GetDescriptorValue2A, func_ov075_02212d80 and other shared helpers; exact higher-level semantics remain unconfirmed. */
+/* Processes the supplied ABI arguments and offset-based actor state, returns its encoded result, and invokes GamePhaseRuntime_GetActorCollection, ActorExtendedType2_GetDescriptorValue2A, func_ov075_02212d80 and other shared helpers; exact higher-level semantics remain unconfirmed. */
 void func_ov075_02212c90(void);
 
 /* Processes the supplied ABI arguments using only local offset-based fields; observable mutations and the return value are preserved by the matching implementation, with no direct SDK call. */

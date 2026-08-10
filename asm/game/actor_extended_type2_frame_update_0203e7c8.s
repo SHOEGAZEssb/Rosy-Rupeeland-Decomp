@@ -13,7 +13,7 @@
 .extern data_021052fc
 .extern func_02005058
 .extern VecFx32_Subtract
-.extern func_02007f0c
+.extern GamePhaseRuntime_GetActorCollection
 .extern func_02032228
 .extern func_02032370
 .extern Actor_UpdateAnimationState
@@ -89,7 +89,7 @@ ActorExtendedType2_UpdateFrame: ; 0x0203e7c8
     ldr r0, .L_0203ef34
     mov r1, #0x1
     ldr r0, [r0, #0x0]
-    bl func_02007f0c
+    bl GamePhaseRuntime_GetActorCollection
     add r0, r0, #0x2000
     ldr r0, [r0, #0xe7c]
     ldr r1, [r0, #0x0]

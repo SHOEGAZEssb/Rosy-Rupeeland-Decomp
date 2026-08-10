@@ -3,7 +3,7 @@
 .extern data_021052fc
 .extern func_02005030
 .extern func_02005058
-.extern func_02007f0c
+.extern GamePhaseRuntime_GetActorCollection
 .extern func_020127f8
 
     .global func_0201364c
@@ -14,7 +14,7 @@ func_0201364c: ; 0x0201364c
     mov r4, r0
     ldr r0, [r1, #0x0]
     mov r1, #0x1
-    bl func_02007f0c
+    bl GamePhaseRuntime_GetActorCollection
     add r0, r0, #0x2000
     ldr r1, [r0, #0xe7c]
     add r0, sp, #0x0

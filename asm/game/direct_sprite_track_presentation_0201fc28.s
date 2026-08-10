@@ -4,7 +4,7 @@
 .extern data_020f4e18
 .extern data_021052fc
 .extern func_0200500c
-.extern func_02007f0c
+.extern GamePhaseRuntime_GetActorCollection
 .extern func_0201e250
 .extern ActorCollection_GetSpriteOwner
 .extern func_02071ea4
@@ -47,7 +47,7 @@ func_0201fc28: ; 0x0201fc28
     ldr r0, .L_0201fd60
     mov r1, #0x1
     ldr r0, [r0, #0x0]
-    bl func_02007f0c
+    bl GamePhaseRuntime_GetActorCollection
     bl ActorCollection_GetSpriteOwner
     mov r1, #0x2
     str r1, [sp, #0x0]
@@ -60,7 +60,7 @@ func_0201fc28: ; 0x0201fc28
     ldr r0, .L_0201fd60
     mov r1, #0x2
     ldr r0, [r0, #0x0]
-    bl func_02007f0c
+    bl GamePhaseRuntime_GetActorCollection
     bl ActorCollection_GetSpriteOwner
     mov r1, #0x2
     str r1, [sp, #0x0]

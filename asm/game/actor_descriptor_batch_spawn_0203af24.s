@@ -5,7 +5,7 @@
 .extern data_020e1964
 .extern data_021052fc
 .extern data_0210570c
-.extern func_02007f0c
+.extern GamePhaseRuntime_GetActorCollection
 .extern func_02028508
 .extern ActorCollection_SpawnActorFromDescriptor
 .extern ActorSpawnDescriptor_Init
@@ -23,7 +23,7 @@ ActorDescriptorBatch_RegisterAndSpawn: ; 0x0203af24
     ldr r0, .L_0203b370
     mov r1, r9
     ldr r0, [r0, #0x0]
-    bl func_02007f0c
+    bl GamePhaseRuntime_GetActorCollection
     add r0, r0, #0x2000
     ldr r0, [r0, #0xe7c]
     cmp r0, #0x0
@@ -68,7 +68,7 @@ ActorDescriptorBatch_RegisterAndSpawn: ; 0x0203af24
     ldr r0, [r0, #0x0]
     mov r1, r9
     strh r2, [sp, #0x9e]
-    bl func_02007f0c
+    bl GamePhaseRuntime_GetActorCollection
     add r1, sp, #0x4c
     bl ActorCollection_SpawnActorFromDescriptor
     ldr r2, [r0, #0x230]
@@ -102,7 +102,7 @@ ActorDescriptorBatch_RegisterAndSpawn: ; 0x0203af24
     streq r0, [r5, #0x0]
     beq .L_0203b1e4
     mov r1, r9
-    bl func_02007f0c
+    bl GamePhaseRuntime_GetActorCollection
     add r0, r0, #0x2000
     ldr r0, [r0, #0xe80]
     cmp r0, #0x0
@@ -125,7 +125,7 @@ ActorDescriptorBatch_RegisterAndSpawn: ; 0x0203af24
     mov r1, r9
     ldr r0, [r0, #0x0]
     mov r6, #0x1
-    bl func_02007f0c
+    bl GamePhaseRuntime_GetActorCollection
     add r0, r0, #0x2000
     ldr r0, [r0, #0xe7c]
     ldr r1, [r0, #0x1c]
@@ -156,7 +156,7 @@ ActorDescriptorBatch_RegisterAndSpawn: ; 0x0203af24
     mov r1, r9
     ldr r0, [r0, #0x0]
     mov r6, #0x1
-    bl func_02007f0c
+    bl GamePhaseRuntime_GetActorCollection
     ldr r1, .L_0203b370
     add r0, r0, #0x2000
     ldr r3, [r0, #0xe7c]
@@ -237,7 +237,7 @@ ActorDescriptorBatch_RegisterAndSpawn: ; 0x0203af24
     ldr r0, [r0, #0x0]
     mov r1, r9
     strh r2, [sp, #0x9e]
-    bl func_02007f0c
+    bl GamePhaseRuntime_GetActorCollection
     add r1, sp, #0x4c
     bl ActorCollection_SpawnActorFromDescriptor
     ldr r0, .L_0203b37c
@@ -275,7 +275,7 @@ ActorDescriptorBatch_RegisterAndSpawn: ; 0x0203af24
     ldr r0, [r0, #0x0]
     mov r1, r9
     strh r2, [sp, #0x9e]
-    bl func_02007f0c
+    bl GamePhaseRuntime_GetActorCollection
     add r1, sp, #0x4c
     bl ActorCollection_SpawnActorFromDescriptor
     ldr r4, .L_0203b370
@@ -289,7 +289,7 @@ ActorDescriptorBatch_RegisterAndSpawn: ; 0x0203af24
     blt .L_0203b358
     ldr r0, [r4, #0x0]
     mov r1, r9
-    bl func_02007f0c
+    bl GamePhaseRuntime_GetActorCollection
     mov r1, r10
     bl ActorCollection_SpawnActorFromDescriptor
 .L_0203b358:

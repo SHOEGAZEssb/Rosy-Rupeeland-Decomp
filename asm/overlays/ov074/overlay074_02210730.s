@@ -4,7 +4,7 @@
 .extern func_02005058
 .extern SplineMover_Update
 .extern SplineMover_Evaluate2D
-.extern func_02007f0c
+.extern GamePhaseRuntime_GetActorCollection
 .extern func_0200ecbc
 .extern func_020122a0
 .extern ActorCollection_DispatchEventToActors
@@ -27,7 +27,7 @@ func_ov074_02210730:
     ldr r0, .L_022107f4
     mov r1, #0x1
     ldr r0, [r0, #0x0]
-    bl func_02007f0c
+    bl GamePhaseRuntime_GetActorCollection
     add r1, sp, #0x0
     bl ActorCollection_DispatchEventToActors
     bl ActorDerivedType1_GetSingletonObject

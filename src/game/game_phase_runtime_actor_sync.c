@@ -34,7 +34,7 @@ extern void func_02009a2c(void *object, const void *value);
  * secondary actor. Returns zero for all paths; bit 2 at offset 0x30cc blocks
  * primary synchronization without side effects.
  */
-s32 func_02008148(GamePhaseRuntime *self, s32 actorIndex)
+s32 GamePhaseRuntime_SynchronizeActorPlacement(GamePhaseRuntime *self, s32 actorIndex)
 {
     u8 *b = (u8 *)self;
     u8 compact[8];

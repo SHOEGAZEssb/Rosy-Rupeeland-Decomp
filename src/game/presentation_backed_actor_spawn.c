@@ -11,7 +11,7 @@ extern void *data_021052fc;
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *func_02007f0c(void *context, s32 index);
+extern void *GamePhaseRuntime_GetActorCollection(void *context, s32 index);
 extern void func_020050a4(void *destination, const void *source);
 extern void *ActorCollection_SpawnActorFromDescriptor(void *manager, const void *descriptor);
 extern void ActorSpawnDescriptor_Init(void *destination, ...);
@@ -50,7 +50,7 @@ void *func_0204e2ac(s32 type, u32 value_1f4, u32 value_1f2,
                   FIELD(s32, position, 12) >> 12,
                   20, 4, flags, 0, 0, 0, 0, 0xff, 0, 0, 0, 0);
 
-    void *manager = func_02007f0c(data_021052fc, 1);
+    void *manager = GamePhaseRuntime_GetActorCollection(data_021052fc, 1);
     void *actor = ActorCollection_SpawnActorFromDescriptor(manager, descriptor);
     func_0204d82c(actor, value_1f2, value_1f4,
                   (u8)selection, (u8)value_1ef);

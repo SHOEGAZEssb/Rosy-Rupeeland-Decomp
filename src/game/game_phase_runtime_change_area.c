@@ -23,7 +23,7 @@ extern void func_02005030(void *destination, const void *source);
 extern void func_020050c8(void *destination, const void *offset);
 extern void func_020091d8(void *object, const void *transform);
 extern void func_0200ae8c(void *state);
-extern void func_0200807c(GamePhaseRuntime *self, void *area, s32 enabled);
+extern void GamePhaseRuntime_CreateSecondaryActorSubsystem(GamePhaseRuntime *self, void *area, s32 enabled);
 extern void func_0200e714(void *state, void *area, const void *transform);
 extern void ActorCollection_DispatchEventToActors(void *actor, const void *transform);
 extern void func_02020060(void *object, void *area);
@@ -33,7 +33,7 @@ extern void func_02012528(void *actor, void *object);
 extern void func_020122a0(void *actor, s32 value);
 extern void func_ov056_0220f054(void *object, const void *value);
 extern void func_02026174(void *object, void *area);
-extern void *func_02007f0c(GamePhaseRuntime *self, s32 index);
+extern void *GamePhaseRuntime_GetActorCollection(GamePhaseRuntime *self, s32 index);
 extern void func_020050a4(void *destination, const void *source);
 extern void func_02005058(void *value);
 #ifdef __cplusplus
@@ -46,7 +46,7 @@ extern void func_02005058(void *value);
  * area at 0x30bc, transferring actor/scene state, queuing debug refresh bits,
  * updating the optional follower, and halving its two velocity components.
  */
-s32 func_02007b18(GamePhaseRuntime *self, s32 direction)
+s32 GamePhaseRuntime_ChangeToNeighborArea(GamePhaseRuntime *self, s32 direction)
 {
     u8 *b = (u8 *)self;
     u8 optionalValue[12];
@@ -96,7 +96,7 @@ s32 func_02007b18(GamePhaseRuntime *self, s32 direction)
         *(u16 *)((u8 *)object + 0x27e) = (u16)(areaId + 1);
 
     func_0200ae8c(data_02105310);
-    func_0200807c(self, area, 1);
+    GamePhaseRuntime_CreateSecondaryActorSubsystem(self, area, 1);
     *(u32 *)(b + 0x30b8) |= 0x30;
     func_0200e714(b + 0x24, area, transform);
     ActorCollection_DispatchEventToActors(b + 0x28, transform);
@@ -124,7 +124,7 @@ s32 func_02007b18(GamePhaseRuntime *self, s32 direction)
     func_02026174(*(void **)(b + 0x30e8), area);
     *(void **)(b + 0x30f0) = *(void **)(b + 0x2ea4);
 
-    object = func_02007f0c(self, 1);
+    object = GamePhaseRuntime_GetActorCollection(self, 1);
     func_020050a4((u8 *)object + 0x2e94,
                   (u8 *)*(void **)((u8 *)*(void **)(b + 0x2fb8) + 0x2ebc) + 0x18);
 

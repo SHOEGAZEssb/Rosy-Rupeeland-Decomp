@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/trigger_presentation_actor_spawn.c.
 .extern data_021052fc
-.extern func_02007f0c
+.extern GamePhaseRuntime_GetActorCollection
 .extern ActorCollection_SpawnActorFromDescriptor
 .extern ActorSpawnDescriptor_Init
 .extern func_0204ea8c
@@ -51,7 +51,7 @@ func_0204eb18: ; 0x0204eb18
     ldr r0, .L_0204ebf0
     mov r1, #0x1
     ldr r0, [r0, #0x0]
-    bl func_02007f0c
+    bl GamePhaseRuntime_GetActorCollection
     add r1, sp, #0x4c
     bl ActorCollection_SpawnActorFromDescriptor
     mov r5, r0

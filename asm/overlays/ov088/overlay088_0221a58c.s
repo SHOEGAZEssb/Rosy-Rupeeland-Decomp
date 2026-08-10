@@ -3,7 +3,7 @@
 .extern GameWork_ClearFlag
 .extern data_021052fc
 .extern func_020050a4
-.extern func_02007f0c
+.extern GamePhaseRuntime_GetActorCollection
 .extern func_02034a60
 .extern Actor_ReplaceAttachmentSlotResource
 .extern func_0205940c
@@ -107,7 +107,7 @@ func_ov088_0221a58c:
 .L_0221a6ec:
     ldr r0, [r4, #0x0]
     mov r1, r8
-    bl func_02007f0c
+    bl GamePhaseRuntime_GetActorCollection
     ldr r0, [r0, r9, lsl #0x2]
     cmp r0, #0x0
     beq .L_0221a73c
@@ -130,7 +130,7 @@ func_ov088_0221a58c:
 .L_0221a740:
     ldr r0, [r4, #0x0]
     mov r1, #0x1
-    bl func_02007f0c
+    bl GamePhaseRuntime_GetActorCollection
     add r0, r0, #0x2000
     ldr r0, [r0, #0xe74]
     cmp r9, r0

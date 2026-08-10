@@ -4,7 +4,7 @@
 .extern data_021052fc
 .extern func_02005030
 .extern func_02005058
-.extern func_02007f0c
+.extern GamePhaseRuntime_GetActorCollection
 .global ActorExtendedType2_UpdateTargetApproach
 .type ActorExtendedType2_UpdateTargetApproach, @function
 ActorExtendedType2_UpdateTargetApproach: ; 0x020412a8
@@ -34,7 +34,7 @@ ActorExtendedType2_UpdateTargetApproach: ; 0x020412a8
     ldr r0, .L_02041420
     mov r1, #0x1
     ldr r0, [r0, #0x0]
-    bl func_02007f0c
+    bl GamePhaseRuntime_GetActorCollection
     add r0, r0, #0x2000
     ldr r0, [r0, #0xe7c]
     ldr r0, [r0, #0xd0]

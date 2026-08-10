@@ -3,7 +3,7 @@
 .extern data_021052fc
 .extern data_ov095_0221cba8
 .extern data_ov095_0221cbf8
-.extern func_02007f0c
+.extern GamePhaseRuntime_GetActorCollection
 .extern ActorCollection_QueueActorForRemoval
 .extern Actor_GetCollection
 .extern func_0204cfa4
@@ -62,7 +62,7 @@ func_ov095_0221af0c:
 .L_0221afc4:
     ldr r0, [r4, #0x0]
     mov r1, r11
-    bl func_02007f0c
+    bl GamePhaseRuntime_GetActorCollection
     ldr r5, [r0, r6, lsl #0x2]
     cmp r5, #0x0
     beq .L_0221b030
@@ -92,7 +92,7 @@ func_ov095_0221af0c:
 .L_0221b034:
     ldr r0, [r4, #0x0]
     mov r1, #0x1
-    bl func_02007f0c
+    bl GamePhaseRuntime_GetActorCollection
     add r0, r0, #0x2000
     ldr r0, [r0, #0xe74]
     cmp r6, r0

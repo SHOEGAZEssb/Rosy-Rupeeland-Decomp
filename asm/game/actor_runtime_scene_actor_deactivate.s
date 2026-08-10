@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/actor_runtime_scene_actor_sets.c for
 ; the documented portable implementation and recovered behavior.
 .text
-.extern func_02007f0c
+.extern GamePhaseRuntime_GetActorCollection
 .extern Actor_RestorePrimaryAttachmentState
 .extern Actor_SetActive
 .extern data_021052fc
@@ -11,7 +11,7 @@ func_0200b8cc:
     ldr r0, L_0200b9fc
     mov r1, #0x1
     ldr r0, [r0, #0x0]
-    bl func_02007f0c
+    bl GamePhaseRuntime_GetActorCollection
     mov r6, #0x0
     mov r4, r0
     add r7, r4, #0x2000
@@ -53,7 +53,7 @@ L_0200b958:
     ldr r0, L_0200b9fc
     mov r1, #0x2
     ldr r0, [r0, #0x0]
-    bl func_02007f0c
+    bl GamePhaseRuntime_GetActorCollection
     mov r5, #0x0
     mov r6, r0
     add r7, r6, #0x2000

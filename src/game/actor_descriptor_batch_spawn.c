@@ -16,7 +16,7 @@ extern "C" {
 extern void ActorSpawnDescriptor_Init(
     void *, u16, u16, s32, s32, s32, u8, u8, u16, u16, u16, u8, u8,
     s32, s32, s32, s32, s32, u16, u8, u8, u8, u8);
-extern void *func_02007f0c(void *runtime, s32 category);
+extern void *GamePhaseRuntime_GetActorCollection(void *runtime, s32 category);
 extern void *ActorCollection_SpawnActorFromDescriptor(void *collection, const void *descriptor);
 extern void *func_02028508(s32 value);
 extern s32 GameWork_TestFlag(void *work, u32 flag);
@@ -29,7 +29,7 @@ extern void Type7Actor_SpawnFromRecord(s32 field00, s32 phase, s32 x, s32 y, s32
 /* Return category's runtime collection. */
 static u8 *actorCollection(s32 category)
 {
-    return (u8 *)func_02007f0c(data_021052fc, category);
+    return (u8 *)GamePhaseRuntime_GetActorCollection(data_021052fc, category);
 }
 
 /* Add one descriptor and overwrite its recovered post-init halfword +0x52. */

@@ -2,7 +2,7 @@
 .text
 .extern func_02012704
 .extern func_020088b8
-.extern func_02007f0c
+.extern GamePhaseRuntime_GetActorCollection
 .extern func_0202d68c
 .extern data_021052fc
 .global func_0201af00
@@ -26,7 +26,7 @@ L_0201af28:
     ldr r0, L_0201af84
     mov r1, #0x2
     ldr r0, [r0, #0x0]
-    bl func_02007f0c
+    bl GamePhaseRuntime_GetActorCollection
     mov r1, #0x1
     bl func_0202d68c
     ldr r0, L_0201af84

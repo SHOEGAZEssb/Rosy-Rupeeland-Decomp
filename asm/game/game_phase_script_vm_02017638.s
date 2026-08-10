@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/game_phase_script_vm_runtime_control_opcodes.c.
 .text
 .extern data_021052fc
-.extern func_02007f0c
+.extern GamePhaseRuntime_GetActorCollection
 .extern func_02012704
 .extern func_0202d68c
 .global func_02017638
@@ -12,7 +12,7 @@ func_02017638:
     mov r4, r0
     ldr r0, [r1]
     mov r1, #2
-    bl func_02007f0c
+    bl GamePhaseRuntime_GetActorCollection
     mov r1, r4
     bl func_0202d68c
     mov r0, #0

@@ -5,7 +5,7 @@
 .extern func_02005058
 .extern func_020050a4
 .extern GamePhaseRuntime_FinalizeActorCollections
-.extern func_02008148
+.extern GamePhaseRuntime_SynchronizeActorPlacement
 .extern func_02009780
 .extern func_ov091_0221888c
 .extern func_ov091_022188f8
@@ -66,11 +66,11 @@ func_ov091_02218930:
     ldr r0, .L_02218a44
     mov r1, #0x0
     ldr r0, [r0, #0x0]
-    bl func_02008148
+    bl GamePhaseRuntime_SynchronizeActorPlacement
     ldr r0, .L_02218a44
     mov r1, #0x1
     ldr r0, [r0, #0x0]
-    bl func_02008148
+    bl GamePhaseRuntime_SynchronizeActorPlacement
     ldr r0, .L_02218a44
     mov r1, #0x2
     ldr r0, [r0, #0x0]

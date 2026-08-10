@@ -7,8 +7,8 @@
 .extern func_02005058
 .extern func_020050a4
 .extern func_020050c8
-.extern func_02007f0c
-.extern func_0200807c
+.extern GamePhaseRuntime_GetActorCollection
+.extern GamePhaseRuntime_CreateSecondaryActorSubsystem
 .extern func_02008b6c
 .extern func_02008bb8
 .extern func_020091d8
@@ -29,9 +29,9 @@
 .extern func_ov056_0220f054
 .extern gLupyContext
 
-    .global func_02007b18
-.type func_02007b18, @function
-func_02007b18:
+    .global GamePhaseRuntime_ChangeToNeighborArea
+.type GamePhaseRuntime_ChangeToNeighborArea, @function
+GamePhaseRuntime_ChangeToNeighborArea:
     stmdb sp!, {r4, r5, r6, r7, lr}
     sub sp, sp, #0x2c
     mov r7, r0
@@ -182,7 +182,7 @@ L_02007d24:
     ldr r1, [r0, #0xbc]
     mov r0, r7
     mov r2, #0x1
-    bl func_0200807c
+    bl GamePhaseRuntime_CreateSecondaryActorSubsystem
     add r0, r7, #0x3000
     ldr r1, [r0, #0xb8]
     add r2, sp, #0xc
@@ -263,7 +263,7 @@ L_02007e44:
     mov r0, r7
     mov r1, #0x1
     str r3, [r2, #0xf0]
-    bl func_02007f0c
+    bl GamePhaseRuntime_GetActorCollection
     add r1, r7, #0x2000
     ldr r1, [r1, #0xfb8]
     add r0, r0, #0x2000
@@ -303,5 +303,5 @@ L_02007ef8:
     ldmia sp!, {r4, r5, r6, r7, pc}
 L_02007f00: .word data_02105310
 L_02007f04: .word gLupyContext
-    .size func_02007b18, .-func_02007b18
+    .size GamePhaseRuntime_ChangeToNeighborArea, .-GamePhaseRuntime_ChangeToNeighborArea
 

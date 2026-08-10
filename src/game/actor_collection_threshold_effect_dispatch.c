@@ -12,7 +12,7 @@ extern u8 data_020dfa20[];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void **func_02007f0c(void *runtime, s32 collection);
+extern void **GamePhaseRuntime_GetActorCollection(void *runtime, s32 collection);
 extern void *func_0201e0ec(void *manager);
 extern void func_020a2614(void *effect, s32 kind, s32 x, s32 y, s32 variant);
 #ifdef __cplusplus
@@ -20,7 +20,7 @@ extern void func_020a2614(void *effect, s32 kind, s32 x, s32 y, s32 variant);
 #endif
 
 /*
- * Iterate collection one from func_02007f0c. Candidates must have type byte
+ * Iterate collection one from GamePhaseRuntime_GetActorCollection. Candidates must have type byte
  * +0x4d equal two, actor +0x10 bit four set, bit 0x01000000 clear, and input
  * threshold at least descriptor[index +0x4e].halfword(+0x2e) shifted down 12.
  * Skip the recovered special pair when +0x218 equals data_020df9e8+0x38 and
@@ -36,7 +36,7 @@ void ActorCollection_DispatchType2ThresholdEffects(s32 threshold)
     s32 index;
 
     for (index = 0;; ++index) {
-        void **actors = func_02007f0c(data_021052fc, 1);
+        void **actors = GamePhaseRuntime_GetActorCollection(data_021052fc, 1);
         u8 *actor;
         u16 descriptorIndex;
         s32 descriptorThreshold;

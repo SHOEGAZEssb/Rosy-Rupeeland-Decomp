@@ -2,7 +2,7 @@
 .text
 .extern OS_Halt
 .extern data_021052fc
-.extern func_02007f0c
+.extern GamePhaseRuntime_GetActorCollection
 .extern func_020091e8
 .extern func_020091f4
 .extern func_0200920c
@@ -103,7 +103,7 @@ L_02012950:
     ldr r0, L_02012a5c
     mov r1, #0x1
     ldr r0, [r0, #0x0]
-    bl func_02007f0c
+    bl GamePhaseRuntime_GetActorCollection
     mov r1, r4
     bl ActorCollection_FindActorByDescriptorValue
     ldr r2, L_02012a5c

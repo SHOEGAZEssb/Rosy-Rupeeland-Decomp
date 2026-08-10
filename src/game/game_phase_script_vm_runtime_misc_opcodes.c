@@ -7,7 +7,7 @@
 extern "C" {
 #endif
 extern void *data_021052fc;
-extern void *func_02007f0c(void *runtime, s32 index);
+extern void *GamePhaseRuntime_GetActorCollection(void *runtime, s32 index);
 extern void Type7AuxiliaryPresentation_BeginShutdown(void *object);
 extern s32 Actor_GetCachedTerrainHeight(void *actor);
 #ifdef __cplusplus
@@ -27,7 +27,7 @@ s32 func_02016814(GamePhaseActorScriptVm *self)
         GameWork_SetFlag(gGameWork, 1004);
     else
         GameWork_ClearFlag(gGameWork, 1004);
-    collection = (u8 *)func_02007f0c(data_021052fc, 1);
+    collection = (u8 *)GamePhaseRuntime_GetActorCollection(data_021052fc, 1);
     actor = *(u8 **)(collection + 0x2e7c);
     if (enabled != 0)
         *(u32 *)(actor + 0x230) |= 4;

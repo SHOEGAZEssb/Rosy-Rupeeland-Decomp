@@ -10,7 +10,7 @@ extern "C" {
 extern s32 func_0201b23c(void *state);
 extern void func_0201273c(void *state, s32 value);
 extern s32 func_0200b058(void *effectState, void *actor);
-extern void *func_02007f0c(void *manager, u32 slot);
+extern void *GamePhaseRuntime_GetActorCollection(void *manager, u32 slot);
 extern void *Actor_GetCollection(void *actor);
 extern void ActorCollection_EndTrackedPair(void *collection, void *reference, void *actor);
 extern void *func_0200af04(void *effectState, s32 index);
@@ -53,7 +53,7 @@ s32 func_02034164(void *self)
             return 0;
         }
         if (actor[0xe8] != 2) {
-            slotOne = func_02007f0c(data_021052fc, 1);
+            slotOne = GamePhaseRuntime_GetActorCollection(data_021052fc, 1);
             collection = Actor_GetCollection(actor);
             ActorCollection_EndTrackedPair(collection,
                           *(void **)((u8 *)slotOne + 0x2e7c), actor);

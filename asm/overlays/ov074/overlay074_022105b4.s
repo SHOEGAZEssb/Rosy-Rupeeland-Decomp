@@ -11,9 +11,9 @@
 .extern SplineMover_Evaluate2D
 .extern GamePhaseRuntime_FinalizeActorCollections
 .extern GamePhaseRuntime_RunFrameMaintenance
-.extern func_02007b18
-.extern func_02007f0c
-.extern func_02008148
+.extern GamePhaseRuntime_ChangeToNeighborArea
+.extern GamePhaseRuntime_GetActorCollection
+.extern GamePhaseRuntime_SynchronizeActorPlacement
 .extern func_0200ec6c
 .extern func_0200ecbc
 .extern func_0200f878
@@ -38,7 +38,7 @@ func_ov074_022105b4:
     ldr r0, .L_02210720
     mov r1, r6
     ldr r0, [r0, #0x0]
-    bl func_02007b18
+    bl GamePhaseRuntime_ChangeToNeighborArea
     add r0, sp, #0x3c
     mov r1, r5
     bl SplineMover_Evaluate2D
@@ -63,7 +63,7 @@ func_ov074_022105b4:
     ldr r0, .L_02210720
     mov r1, #0x1
     ldr r0, [r0, #0x0]
-    bl func_02008148
+    bl GamePhaseRuntime_SynchronizeActorPlacement
     ldr r0, .L_02210720
     ldr r1, [r4, #0x4]
     ldr r0, [r0, #0x0]
@@ -92,7 +92,7 @@ func_ov074_022105b4:
     ldr r0, .L_02210720
     mov r1, #0x2
     ldr r0, [r0, #0x0]
-    bl func_02007f0c
+    bl GamePhaseRuntime_GetActorCollection
     mov r1, #0x0
     bl func_0202d68c
 .L_022106c4:

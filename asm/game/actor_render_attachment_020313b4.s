@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/actor_render_attachment.c.
 .text
 .extern data_021052fc
-.extern func_02007f0c
+.extern GamePhaseRuntime_GetActorCollection
 .extern ActorCollection_GetSpriteOwner
 .extern Actor_GetCollection
 .extern func_02072b68
@@ -26,7 +26,7 @@ func_020313b4: ; 0x020313b4
     ldr r5, [r4, #0x54]
     ldr r0, [r0, #0x0]
     mov r1, #0x2
-    bl func_02007f0c
+    bl GamePhaseRuntime_GetActorCollection
     bl ActorCollection_GetSpriteOwner
     str r6, [sp, #0x0]
     ldr r1, [r5, #0x14]

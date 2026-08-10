@@ -10,7 +10,7 @@
 .extern func_020050a4
 .extern VecFx32Triple_Destroy
 .extern VecFx32Bezier_Evaluate3D
-.extern func_02007f0c
+.extern GamePhaseRuntime_GetActorCollection
 .extern func_0201fafc
 .extern ActorCollection_GetSpriteOwner
 .extern Actor_RebuildPrimaryAttachment
@@ -369,7 +369,7 @@ func_ov092_0221893c:
     ldr r0, .L_022191e8
     mov r1, #0x2
     ldr r0, [r0, #0x0]
-    bl func_02007f0c
+    bl GamePhaseRuntime_GetActorCollection
     bl ActorCollection_GetSpriteOwner
     ldr r2, .L_022191d8
     add r1, r10, #0x18

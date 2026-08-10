@@ -12,7 +12,7 @@ extern void *data_021052fc;
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *func_02007f0c(void *context, s32 index);
+extern void *GamePhaseRuntime_GetActorCollection(void *context, s32 index);
 extern void *func_02028388(s32 index);
 extern void *ActorCollection_SpawnActorFromDescriptor(void *manager, const void *descriptor);
 extern void ActorSpawnDescriptor_Init(void *destination, ...);
@@ -92,7 +92,7 @@ void *func_02050078(s32 key, const void *position, u32 argument)
         FIELD(u32, descriptor, 0x28) |= 1;
 
     void *actor = ActorCollection_SpawnActorFromDescriptor(
-        func_02007f0c(data_021052fc, 1), descriptor);
+        GamePhaseRuntime_GetActorCollection(data_021052fc, 1), descriptor);
     ActorRecordCallback initialize =
         *(ActorRecordCallback *)((u8 *)FIELD(void *, actor, 0) + 0xc0);
     initialize(actor, record, argument);

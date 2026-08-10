@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/tracked_resource_actor_factory.c.
 .extern data_020eb850
 .extern data_021052fc
-.extern func_02007f0c
+.extern GamePhaseRuntime_GetActorCollection
 .extern func_02028388
 .extern ActorCollection_SpawnActorFromDescriptor
 .extern ActorSpawnDescriptor_Init
@@ -88,7 +88,7 @@ func_02050078: ; 0x02050078
     streq r0, [sp, #0x74]
     ldr r0, .L_02050224
     ldr r0, [r0, #0x0]
-    bl func_02007f0c
+    bl GamePhaseRuntime_GetActorCollection
     add r1, sp, #0x4c
     bl ActorCollection_SpawnActorFromDescriptor
     ldr r3, [r0, #0x0]

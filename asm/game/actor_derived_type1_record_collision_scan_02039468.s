@@ -5,7 +5,7 @@
 .extern func_02004fe0
 .extern func_02005030
 .extern func_02005058
-.extern func_02007f0c
+.extern GamePhaseRuntime_GetActorCollection
 .extern func_02034a60
 .extern ActorDerivedType1_TrySetStateVector
 .extern ActorDerivedType1_IsActiveRecordType6F
@@ -68,7 +68,7 @@ ActorDerivedType1_ScanActiveRecordCollisions: ; 0x02039468
     ldr r0, .L_0203970c
     mov r1, #0x1
     ldr r0, [r0, #0x0]
-    bl func_02007f0c
+    bl GamePhaseRuntime_GetActorCollection
     ldr r8, [r0, r9, lsl #0x2]
     cmp r8, #0x0
     beq .L_020396b8
@@ -175,7 +175,7 @@ ActorDerivedType1_ScanActiveRecordCollisions: ; 0x02039468
     ldr r0, .L_0203970c
     mov r1, #0x1
     ldr r0, [r0, #0x0]
-    bl func_02007f0c
+    bl GamePhaseRuntime_GetActorCollection
     add r0, r0, #0x2000
     ldr r0, [r0, #0xe74]
     cmp r9, r0

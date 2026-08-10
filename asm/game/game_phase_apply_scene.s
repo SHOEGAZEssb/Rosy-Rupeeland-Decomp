@@ -6,8 +6,8 @@
 .extern Scene_Init
 .extern data_020d5384
 .extern data_021052fc
-.extern func_0200807c
-.extern func_020080d0
+.extern GamePhaseRuntime_CreateSecondaryActorSubsystem
+.extern GamePhaseRuntime_DestroySecondaryActorSubsystem
 .extern func_02008bb8
 .extern func_020122a0
 .extern ActorDescriptorBatch_ApplyCategoryCallback
@@ -68,7 +68,7 @@ L_0200c94c:
 L_0200c954:
     ldr r0, L_0200c9f8
     ldr r0, [r0, #0x0]
-    bl func_020080d0
+    bl GamePhaseRuntime_DestroySecondaryActorSubsystem
     ldr r0, [r4, #0x8]
     add r0, r0, #0x1
     str r0, [r4, #0x8]
@@ -78,7 +78,7 @@ L_0200c970:
     ldr r1, [r4, #0x24]
     ldr r0, [r0, #0x0]
     mov r2, #0x1
-    bl func_0200807c
+    bl GamePhaseRuntime_CreateSecondaryActorSubsystem
     ldr r0, L_0200c9f8
     ldr r1, [r4, #0x24]
     ldr r0, [r0, #0x0]

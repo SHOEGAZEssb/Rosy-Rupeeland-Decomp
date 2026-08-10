@@ -18,8 +18,8 @@
 .extern SplineMover_Update
 .extern SplineMover_Evaluate2D
 .extern GamePhaseRuntime_PrepareActorCollections
-.extern func_0200807c
-.extern func_020080d0
+.extern GamePhaseRuntime_CreateSecondaryActorSubsystem
+.extern GamePhaseRuntime_DestroySecondaryActorSubsystem
 .extern func_02008570
 .extern func_02008e10
 .extern func_02008f2c
@@ -333,13 +333,13 @@ func_ov059_02211330:
     orr r1, r1, #0x1000
     str r1, [r2, #0x0]
     ldr r0, [r0, #0x0]
-    bl func_020080d0
+    bl GamePhaseRuntime_DestroySecondaryActorSubsystem
     ldr r0, .L_0221184c
     mov r2, #0x1
     ldr r0, [r0, #0x0]
     add r1, r0, #0x3000
     ldr r1, [r1, #0xbc]
-    bl func_0200807c
+    bl GamePhaseRuntime_CreateSecondaryActorSubsystem
     ldr r0, .L_0221184c
     ldr r1, [r0, #0x0]
     add r0, r1, #0x2000

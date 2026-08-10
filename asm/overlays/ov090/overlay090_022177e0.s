@@ -6,7 +6,7 @@
 .extern data_021052fc
 .extern data_ov090_0221cb10
 .extern func_02004fe0
-.extern func_02007f0c
+.extern GamePhaseRuntime_GetActorCollection
 .extern func_0204d520
 .extern gGameWork
 
@@ -64,7 +64,7 @@ func_ov090_022177e0:
 .L_022178a4:
     ldr r0, [r4, #0x0]
     mov r1, r7
-    bl func_02007f0c
+    bl GamePhaseRuntime_GetActorCollection
     ldr r0, [r0, r9, lsl #0x2]
     cmp r0, #0x0
     beq .L_02217918
@@ -96,7 +96,7 @@ func_ov090_022177e0:
 .L_0221791c:
     ldr r0, [r4, #0x0]
     mov r1, #0x1
-    bl func_02007f0c
+    bl GamePhaseRuntime_GetActorCollection
     add r0, r0, #0x2000
     ldr r0, [r0, #0xe74]
     cmp r9, r0

@@ -8,7 +8,7 @@ extern "C" {
 extern void *data_021052fc;
 extern u8 data_02105310[];
 extern void *Actor_GetCollection(void *actor);
-extern void *func_02007f0c(void *runtime, s32 index);
+extern void *GamePhaseRuntime_GetActorCollection(void *runtime, s32 index);
 extern void func_0200af0c(void *state, void *actor, u32 value);
 extern void OS_Halt(void);
 #ifdef __cplusplus

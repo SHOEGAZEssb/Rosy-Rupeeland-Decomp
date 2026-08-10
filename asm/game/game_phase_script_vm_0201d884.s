@@ -17,7 +17,7 @@
 .extern func_02008b50
 .extern GamePhaseRuntime_PrepareActorCollections
 .extern GamePhaseRuntime_FinalizeActorCollections
-.extern func_02008148
+.extern GamePhaseRuntime_SynchronizeActorPlacement
 .extern func_0201dcec
 .extern func_02009d78
 .extern func_02010e68
@@ -79,11 +79,11 @@ L_0201d920:
     ldr r0, L_0201d9b4
     mov r1, #0x0
     ldr r0, [r0, #0x0]
-    bl func_02008148
+    bl GamePhaseRuntime_SynchronizeActorPlacement
     ldr r0, L_0201d9b4
     mov r1, #0x1
     ldr r0, [r0, #0x0]
-    bl func_02008148
+    bl GamePhaseRuntime_SynchronizeActorPlacement
     ldr r0, L_0201d9b4
     mov r1, #0x1
     ldr r0, [r0, #0x0]

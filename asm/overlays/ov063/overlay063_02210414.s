@@ -4,7 +4,7 @@
 .extern GX_VBlankIntr
 .extern Scene_ClearFlags03
 .extern data_021052fc
-.extern func_02007f0c
+.extern GamePhaseRuntime_GetActorCollection
 .extern GamePhaseRuntime_StageAreaRequest
 .extern ActorCollection_UnregisterAndDestroyActor
 .extern func_02058d28
@@ -78,7 +78,7 @@ func_ov063_02210414:
     ldr r0, .L_0221055c
     mov r1, #0x1
     ldr r0, [r0, #0x0]
-    bl func_02007f0c
+    bl GamePhaseRuntime_GetActorCollection
     ldr r1, [r6, #0x4c]
     bl ActorCollection_UnregisterAndDestroyActor
 .L_02210518:

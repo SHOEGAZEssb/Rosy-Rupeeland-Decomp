@@ -3,7 +3,7 @@
     .extern data_020c37e4
     .extern data_020d7a48
     .extern data_021052fc
-    .extern func_02007f0c
+    .extern GamePhaseRuntime_GetActorCollection
     .extern ActorCollection_GetSpriteOwner
     .extern func_02091b98
     .extern gGameWork
@@ -18,7 +18,7 @@ func_ov018_021fe5ac:
     ldr r0, L_021fe5f4
     mov r1, #0x2
     ldr r0, [r0, #0x0]
-    bl func_02007f0c
+    bl GamePhaseRuntime_GetActorCollection
     bl ActorCollection_GetSpriteOwner
     ldr r1, [r0, #0xc]
     b L_021fe5e8
@@ -43,7 +43,7 @@ func_ov018_021fe5f8:
     ldr r0, L_021fe640
     mov r1, #0x2
     ldr r0, [r0, #0x0]
-    bl func_02007f0c
+    bl GamePhaseRuntime_GetActorCollection
     bl ActorCollection_GetSpriteOwner
     ldr r1, [r0, #0xc]
     b L_021fe634

@@ -16,7 +16,7 @@ typedef struct Type7SpawnDescriptor {
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *func_02007f0c(void *runtime, s32 category);
+extern void *GamePhaseRuntime_GetActorCollection(void *runtime, s32 category);
 extern void *func_02025d14(void *state);
 extern u32 func_02028508(s32 phase);
 extern void ActorCollection_QueueActorForRemoval(void *collection, void *actor);
@@ -95,7 +95,7 @@ s32 Type7Actor_SpawnFromRecord(s32 recordIndex, s32 phase, s32 x, s32 y, s32 fie
         return 0;
 
     recordFlags = *(u16 *)(record + 0x38);
-    collection = func_02007f0c(data_021052fc, 1);
+    collection = GamePhaseRuntime_GetActorCollection(data_021052fc, 1);
     if ((recordFlags & 0x40) == 0) {
         replacedActor = *(void **)(data_021052fc + 0x2ea8);
         if (replacedActor != 0)
@@ -183,7 +183,7 @@ s32 Type7Actor_SpawnFromRecord(s32 recordIndex, s32 phase, s32 x, s32 y, s32 fie
     if (replacedActor != 0) {
         s32 index;
         for (index = 0;; ++index) {
-            u8 *category = (u8 *)func_02007f0c(data_021052fc, 1);
+            u8 *category = (u8 *)GamePhaseRuntime_GetActorCollection(data_021052fc, 1);
             u8 *other;
             if (index >= *(s32 *)(category + 0x2e74))
                 break;

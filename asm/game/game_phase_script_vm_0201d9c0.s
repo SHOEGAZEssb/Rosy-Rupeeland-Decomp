@@ -17,7 +17,7 @@
 .extern func_02008b50
 .extern GamePhaseRuntime_PrepareActorCollections
 .extern GamePhaseRuntime_FinalizeActorCollections
-.extern func_02008148
+.extern GamePhaseRuntime_SynchronizeActorPlacement
 .extern func_0201dcec
 .extern func_02009d78
 .extern func_02010e68

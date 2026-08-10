@@ -8,7 +8,7 @@ extern "C" {
 extern void func_0200f824(void);
 extern void func_0200f52c(void);
 extern void func_0200ea48(void *state);
-extern void func_020080d0(GamePhaseRuntime *self);
+extern void GamePhaseRuntime_DestroySecondaryActorSubsystem(GamePhaseRuntime *self);
 extern void func_0200bd10(void *loader);
 #ifdef __cplusplus
 }
@@ -25,6 +25,6 @@ void GamePhaseRuntime_RunFrameMaintenance(GamePhaseRuntime *self)
     func_0200f824();
     func_0200f52c();
     func_0200ea48(b + 0x24);
-    func_020080d0(self);
+    GamePhaseRuntime_DestroySecondaryActorSubsystem(self);
     func_0200bd10(*(void **)(b + 0x30b4));
 }

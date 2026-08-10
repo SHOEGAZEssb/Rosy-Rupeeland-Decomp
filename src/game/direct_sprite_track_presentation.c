@@ -44,7 +44,7 @@ extern void VecFx32_Subtract(PresentationValue *destination,
                           PresentationValue *track, s32 argument);
 extern void func_02056f00(PresentationValue *destination,
                           PresentationValue *source);
-extern void *func_02007f0c(void *runtime, s32 index);
+extern void *GamePhaseRuntime_GetActorCollection(void *runtime, s32 index);
 extern void *ActorCollection_GetSpriteOwner(void *resource);
 extern u8 *func_02073fc4(void *resource, s32 field08, s32 field0c,
                          s32 field10, s32 mode);
@@ -78,7 +78,7 @@ DirectSpriteTrackPresentation *func_0201fc28(
     func_0200500c(&self->track1c, x << 12, y << 12, 0);
     func_02071ee0(&self->resource08, data_020f4e18, field0c, field10, field08);
     resource = ActorCollection_GetSpriteOwner(
-        func_02007f0c(data_021052fc, selector == 0 ? 1 : 2));
+        GamePhaseRuntime_GetActorCollection(data_021052fc, selector == 0 ? 1 : 2));
     self->sprite14 = func_02073fc4(
         resource, *(s32 *)&self->resource08.bytes[0],
         *(s32 *)&self->resource08.bytes[4],

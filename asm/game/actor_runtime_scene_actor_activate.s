@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/actor_runtime_scene_actor_sets.c for
 ; the documented portable implementation and recovered behavior.
 .text
-.extern func_02007f0c
+.extern GamePhaseRuntime_GetActorCollection
 .extern Actor_SetActive
 .extern data_021052fc
 .global func_0200ba00
@@ -10,7 +10,7 @@ func_0200ba00:
     ldr r0, L_0200bac0
     mov r1, #0x1
     ldr r0, [r0, #0x0]
-    bl func_02007f0c
+    bl GamePhaseRuntime_GetActorCollection
     mov r6, r0
     mov r7, #0x0
     add r4, r6, #0x2000
@@ -36,7 +36,7 @@ L_0200ba54:
     ldr r0, L_0200bac0
     mov r1, #0x2
     ldr r0, [r0, #0x0]
-    bl func_02007f0c
+    bl GamePhaseRuntime_GetActorCollection
     mov r7, r0
     mov r6, #0x0
     add r4, r7, #0x2000

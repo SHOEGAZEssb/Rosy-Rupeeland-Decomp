@@ -3,7 +3,7 @@
 .extern GameWork_ClearFlag
 .extern GameWork_TestFlag
 .extern data_021052fc
-.extern func_02007f0c
+.extern GamePhaseRuntime_GetActorCollection
 .extern func_02008570
 .extern func_0202d68c
 .extern func_ov051_0220d688
@@ -16,7 +16,7 @@ func_ov051_0220da24:
     mov r4, r0
     ldr r0, [r1, #0x0]
     mov r1, #0x2
-    bl func_02007f0c
+    bl GamePhaseRuntime_GetActorCollection
     mov r1, #0x1
     bl func_0202d68c
     ldr r0, .L_0220da9c

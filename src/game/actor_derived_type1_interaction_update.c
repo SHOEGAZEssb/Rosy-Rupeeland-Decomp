@@ -29,7 +29,7 @@ extern s32 func_020adcac(const void *first, const void *second);
 extern void VecFx32_Subtract(void *output, const void *first, const void *second);
 extern void func_02005084(void *value);
 extern void func_020328d0(void *value, s32 scale);
-extern void *func_02007f0c(void *manager, u32 slot);
+extern void *GamePhaseRuntime_GetActorCollection(void *manager, u32 slot);
 extern s32 Actor_QueryTerrainHeight(void *actor, s32 x, s32 y);
 extern s32 ActorDerivedType1_HasBlockingStateFlags(void *actor);
 extern s32 func_0200b294(void *state);
@@ -173,7 +173,7 @@ s32 ActorDerivedType1_ProcessInteraction(void *self)
         }
 
         for (i = 0;; ++i) {
-            u8 *collection = (u8 *)func_02007f0c(data_021052fc, 1);
+            u8 *collection = (u8 *)GamePhaseRuntime_GetActorCollection(data_021052fc, 1);
             u8 *target;
             if (i >= *(u32 *)(collection + 0x2e74)) break;
             target = *(u8 **)(collection + i * 4);

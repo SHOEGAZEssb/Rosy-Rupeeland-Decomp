@@ -10,7 +10,7 @@
 .extern SplineMover_InitTransition
 .extern SplineMover_Assign
 .extern SplineMover_Evaluate2D
-.extern func_02007f0c
+.extern GamePhaseRuntime_GetActorCollection
 .extern func_0200875c
 .extern func_020091d0
 .extern func_020091d8
@@ -615,13 +615,13 @@ func_ov074_02210b90:
     ldr r0, .L_02211640
     mov r1, #0x1
     ldr r0, [r0, #0x0]
-    bl func_02007f0c
+    bl GamePhaseRuntime_GetActorCollection
     add r2, r0, #0x2000
     ldr r0, .L_02211640
     mov r1, #0x1
     ldr r0, [r0, #0x0]
     ldr r4, [r2, #0xe7c]
-    bl func_02007f0c
+    bl GamePhaseRuntime_GetActorCollection
     add r0, r0, #0x2000
     ldr r5, [r0, #0xe7c]
     add r0, r4, #0x28
@@ -638,7 +638,7 @@ func_ov074_02210b90:
     ldr r0, .L_02211640
     mov r1, #0x1
     ldr r0, [r0, #0x0]
-    bl func_02007f0c
+    bl GamePhaseRuntime_GetActorCollection
     add r0, r0, #0x2000
     ldr r0, [r0, #0xe7c]
     add r1, sp, #0x114

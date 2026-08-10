@@ -8,7 +8,7 @@ extern "C" {
 #endif
 extern SceneVTable data_020d448c;
 extern void *data_021052fc;
-extern void *func_02007f0c(void *context, s32 index);
+extern void *GamePhaseRuntime_GetActorCollection(void *context, s32 index);
 extern void func_02030b58(void *context, s32 value);
 extern void ActorDerivedType1_ClearStateVectorTimers(void *object);
 extern void Type7Actor_EnterSpecialPresentationState(void *object);
@@ -62,7 +62,7 @@ ActorRuntimeScene *func_0200b2d0(ActorRuntimeScene *self, void *object)
     if (context != 0)
         Type7Actor_EnterSpecialPresentationState(context);
     func_0200ba00(self);
-    context = func_02007f0c(data_021052fc, 1);
+    context = GamePhaseRuntime_GetActorCollection(data_021052fc, 1);
     func_02030b58(context, 0);
     GameWork_TestFlag(gGameWork, 0x410);
     return self;

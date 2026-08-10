@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/game_phase_script_vm_runtime_manager_command_opcode.c.
 .text
 .extern data_021052fc
-.extern func_02007f0c
+.extern GamePhaseRuntime_GetActorCollection
 .extern func_02013dfc
 .extern func_02012704
 .extern func_0201df64
@@ -81,7 +81,7 @@ L_02019b84:
     ldr r0, L_02019c5c
     mov r1, #0x1
     ldr r0, [r0, #0x0]
-    bl func_02007f0c
+    bl GamePhaseRuntime_GetActorCollection
     bl ActorCollection_GetSpriteOwner
     bl func_02074154
     ldr r0, L_02019c5c
@@ -99,7 +99,7 @@ L_02019bb8:
 L_02019bc8:
     ldr r0, [r4, #0x0]
     mov r1, r6
-    bl func_02007f0c
+    bl GamePhaseRuntime_GetActorCollection
     ldr r0, [r0, r9, lsl #0x2]
     cmp r0, #0x0
     beq L_02019bf4
@@ -113,7 +113,7 @@ L_02019bf4:
 L_02019bf8:
     ldr r0, [r4, #0x0]
     mov r1, r5
-    bl func_02007f0c
+    bl GamePhaseRuntime_GetActorCollection
     add r0, r0, #0x2000
     ldr r0, [r0, #0xe74]
     cmp r9, r0

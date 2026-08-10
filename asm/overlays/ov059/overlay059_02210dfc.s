@@ -1,9 +1,9 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov059/overlay059_recovery.c.
 .extern data_021052fc
-.extern func_02007f0c
-.extern func_0200807c
-.extern func_020080d0
+.extern GamePhaseRuntime_GetActorCollection
+.extern GamePhaseRuntime_CreateSecondaryActorSubsystem
+.extern GamePhaseRuntime_DestroySecondaryActorSubsystem
 .extern func_02028388
 .extern ActorCollection_GetSpriteOwner
 .extern ActorCollection_SetActorScale
@@ -20,7 +20,7 @@ func_ov059_02210dfc:
     mov r5, r0
     ldr r0, [r2, #0x0]
     mov r4, r1
-    bl func_020080d0
+    bl GamePhaseRuntime_DestroySecondaryActorSubsystem
     ldr r0, [r5, #0x8]
     add r0, r0, r4, lsl #0x1
     ldrsh r0, [r0, #0x8]
@@ -30,11 +30,11 @@ func_ov059_02210dfc:
     mov r1, r0
     ldr r0, [r2, #0x0]
     mov r2, #0x0
-    bl func_0200807c
+    bl GamePhaseRuntime_CreateSecondaryActorSubsystem
     ldr r0, .L_02210f20
     mov r1, #0x2
     ldr r0, [r0, #0x0]
-    bl func_02007f0c
+    bl GamePhaseRuntime_GetActorCollection
     mov r6, r0
     ldr r1, .L_02210f24
     mov r0, #0x1000

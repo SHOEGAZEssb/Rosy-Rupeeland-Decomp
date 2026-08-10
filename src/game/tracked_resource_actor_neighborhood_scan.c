@@ -12,7 +12,7 @@ extern void func_02004fe0(void *vector);
 extern void func_0200500c(void *vector, s32 x, s32 y, s32 z);
 extern void func_02005058(void *vector);
 extern void func_02005084(void *vector);
-extern void *func_02007f0c(void *manager, s32 group);
+extern void *GamePhaseRuntime_GetActorCollection(void *manager, s32 group);
 extern void func_020328d0(void *vector, s32 angle);
 extern void ActorDerivedType1_StartRecord(void *actor, s32 value);
 extern s32 func_0204cfa4(s32 x, s32 y);
@@ -75,7 +75,7 @@ void func_020505f0(void *actor, u32 unused1, u32 unused2, u32 unused3)
     func_02004fe0(scan_state);
 
     for (index = 0;; ++index) {
-        manager = func_02007f0c(data_021052fc, 1);
+        manager = GamePhaseRuntime_GetActorCollection(data_021052fc, 1);
         if (index >= FIELD(s32, manager, 0x2e74))
             break;
         candidate = FIELD(void *, manager, index * 4);

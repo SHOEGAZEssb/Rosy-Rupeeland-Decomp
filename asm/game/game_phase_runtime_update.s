@@ -11,7 +11,7 @@
 .extern func_02007868
 .extern GamePhaseRuntime_PrepareActorCollections
 .extern GamePhaseRuntime_FinalizeActorCollections
-.extern func_02008148
+.extern GamePhaseRuntime_SynchronizeActorPlacement
 .extern GamePhaseRuntime_DispatchActorQueryRequest
 .extern func_0200866c
 .extern func_02008f34
@@ -234,10 +234,10 @@ L_020076a0:
     bl func_0200866c
     mov r0, r4
     mov r1, #0x0
-    bl func_02008148
+    bl GamePhaseRuntime_SynchronizeActorPlacement
     mov r0, r4
     mov r1, #0x1
-    bl func_02008148
+    bl GamePhaseRuntime_SynchronizeActorPlacement
     add r0, r4, #0x37c
     add r0, r0, #0x2c00
     mov r1, #0x1

@@ -16,9 +16,9 @@
 .extern func_020124f0
 .extern func_0201250c
 
-    .global func_02008148
-.type func_02008148, @function
-func_02008148:
+    .global GamePhaseRuntime_SynchronizeActorPlacement
+.type GamePhaseRuntime_SynchronizeActorPlacement, @function
+GamePhaseRuntime_SynchronizeActorPlacement:
     stmdb sp!, {r4, r5, lr}
     sub sp, sp, #0x74
     mov r4, r0
@@ -157,5 +157,5 @@ L_02008348:
 L_0200834c:
     add sp, sp, #0x74
     ldmia sp!, {r4, r5, pc}
-    .size func_02008148, .-func_02008148
+    .size GamePhaseRuntime_SynchronizeActorPlacement, .-GamePhaseRuntime_SynchronizeActorPlacement
 

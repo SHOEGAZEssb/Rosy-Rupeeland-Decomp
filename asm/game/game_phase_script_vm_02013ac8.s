@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/game_phase_script_vm_actor_bit_query_opcodes.c.
 .text
 .extern data_021052fc
-.extern func_02007f0c
+.extern GamePhaseRuntime_GetActorCollection
 .extern func_02012704
 .extern func_020127f8
 .extern ActorCollection_FindActorByDescriptorValue
@@ -23,7 +23,7 @@ func_02013ac8: ; 0x02013ac8
     ldr r0, L_02013b70
     mov r1, #0x1
     ldr r0, [r0, #0x0]
-    bl func_02007f0c
+    bl GamePhaseRuntime_GetActorCollection
     add r0, r0, #0x2000
     ldr r1, [r0, #0xe7c]
     mov r0, r4

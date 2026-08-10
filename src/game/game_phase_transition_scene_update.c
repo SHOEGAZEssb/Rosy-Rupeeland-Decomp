@@ -16,7 +16,7 @@ extern s32 DisplayBrightness_IsMainTransitionComplete(void);
 extern s32 DisplayBrightness_IsSubTransitionComplete(void);
 extern s32 DisplayBrightness_IsMainTransitionDecreasing(void);
 extern s32 DisplayBrightness_IsSubTransitionDecreasing(void);
-extern void func_02007ff4(void *context);
+extern void GamePhaseRuntime_ApplyStagedAreaRequest(void *context);
 extern void func_0201140c(void *context, s32 value);
 extern void *func_0200f878(void *allocation, s32 mode);
 #ifdef __cplusplus
@@ -68,7 +68,7 @@ s32 func_0200c6d8(GamePhaseTransitionScene *self)
             GameWork_ClearFlag(gGameWork, 0x3e8);
             GameWork_Reset();
         }
-        func_02007ff4(data_021052fc);
+        GamePhaseRuntime_ApplyStagedAreaRequest(data_021052fc);
         allocation = Heap_Alloc(0x28, (const char *)data_020d53b0, -4,
                                 &gHeapContext);
         if (allocation != 0)

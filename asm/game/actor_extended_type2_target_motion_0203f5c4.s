@@ -6,7 +6,7 @@
 .extern func_02005058
 .extern func_020050a4
 .extern VecFx32_Subtract
-.extern func_02007f0c
+.extern GamePhaseRuntime_GetActorCollection
 .extern func_0204cfa4
 .extern func_020adae4
 .extern func_020ae024
@@ -42,7 +42,7 @@ ActorExtendedType2_UpdateTargetMotion: ; 0x0203f5c4
     ldr r0, [r1, #0x0]
     mov r1, #0x1
     mov r4, r2, asr #0x2
-    bl func_02007f0c
+    bl GamePhaseRuntime_GetActorCollection
     add r0, r0, #0x2000
     ldr r0, [r0, #0xe7c]
     ldr r1, [r0, #0x0]

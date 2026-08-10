@@ -4,7 +4,7 @@
 .extern data_020dfa20
 .extern data_020e8380
 .extern data_021052fc
-.extern func_02007f0c
+.extern GamePhaseRuntime_GetActorCollection
 .extern func_0201e0ec
 .extern func_020a2614
     .global ActorCollection_DispatchType2ThresholdEffects
@@ -22,7 +22,7 @@ ActorCollection_DispatchType2ThresholdEffects: ; 0x0203da28
 .L_0203da4c:
     ldr r0, [r4, #0x0]
     mov r1, #0x1
-    bl func_02007f0c
+    bl GamePhaseRuntime_GetActorCollection
     ldr r8, [r0, r9, lsl #0x2]
     cmp r8, #0x0
     beq .L_0203db4c
@@ -90,7 +90,7 @@ ActorCollection_DispatchType2ThresholdEffects: ; 0x0203da28
 .L_0203db50:
     ldr r0, [r4, #0x0]
     mov r1, #0x1
-    bl func_02007f0c
+    bl GamePhaseRuntime_GetActorCollection
     add r0, r0, #0x2000
     ldr r0, [r0, #0xe74]
     cmp r9, r0

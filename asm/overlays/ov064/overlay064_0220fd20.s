@@ -17,7 +17,7 @@
 .extern data_ov064_02211ecc
 .extern AnimationResource_Init
 .extern GraphicsSpriteState_Create
-.extern func_02007f0c
+.extern GamePhaseRuntime_GetActorCollection
 .extern func_02010520
 .extern func_0201140c
 .extern func_0201ded4
@@ -108,7 +108,7 @@ func_ov064_0220fd20:
     str r0, [r4, #0x24]
     ldr r0, [r1, #0x0]
     mov r1, #0x1
-    bl func_02007f0c
+    bl GamePhaseRuntime_GetActorCollection
     bl ActorCollection_GetSpriteOwner
     ldrh r3, [r6, #0x28]
     mov r2, #0x4
@@ -191,7 +191,7 @@ func_ov064_0220fd20:
     str r0, [r4, #0x24]
     ldr r0, [r1, #0x0]
     mov r1, #0x1
-    bl func_02007f0c
+    bl GamePhaseRuntime_GetActorCollection
     bl ActorCollection_GetSpriteOwner
     ldrh r3, [r6, #0x28]
     mov r2, #0x0
@@ -244,7 +244,7 @@ func_ov064_0220fd20:
     ldr r0, .L_022105f8
     mov r1, #0x1
     ldr r0, [r0, #0x0]
-    bl func_02007f0c
+    bl GamePhaseRuntime_GetActorCollection
     bl ActorCollection_GetSpriteOwner
     mov r1, #0x1
     mov r2, r0
@@ -281,7 +281,7 @@ func_ov064_0220fd20:
     str r0, [r4, #0x24]
     ldr r0, [r1, #0x0]
     mov r1, #0x1
-    bl func_02007f0c
+    bl GamePhaseRuntime_GetActorCollection
     bl ActorCollection_GetSpriteOwner
     ldrh r3, [r6, #0x28]
     mov r1, #0x4
@@ -345,7 +345,7 @@ func_ov064_0220fd20:
     ldr r0, .L_022105f8
     mov r1, #0x2
     ldr r0, [r0, #0x0]
-    bl func_02007f0c
+    bl GamePhaseRuntime_GetActorCollection
     bl ActorCollection_UnregisterAndDestroyAllActors
     ldr r0, .L_0221062c
     mov r1, #0x0
@@ -369,12 +369,12 @@ func_ov064_0220fd20:
     ldr r0, .L_022105f8
     mov r1, #0x1
     ldr r0, [r0, #0x0]
-    bl func_02007f0c
+    bl GamePhaseRuntime_GetActorCollection
     bl func_0202d3cc
     ldr r0, .L_022105f8
     mov r1, #0x1
     ldr r0, [r0, #0x0]
-    bl func_02007f0c
+    bl GamePhaseRuntime_GetActorCollection
     mov r1, #0x0
     bl func_0202d68c
     ldr r0, .L_022105f8

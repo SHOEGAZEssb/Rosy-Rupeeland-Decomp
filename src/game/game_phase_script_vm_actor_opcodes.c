@@ -10,7 +10,7 @@ extern void *data_021052fc;
 extern u8 data_02105310[];
 extern void *Actor_GetCollection(void *actor);
 extern void *ActorCollection_FindActorByDescriptorValue(void *collection, s32 index);
-extern void *func_02007f0c(void *runtime, s32 index);
+extern void *GamePhaseRuntime_GetActorCollection(void *runtime, s32 index);
 extern void Actor_SetActive(void *actor, s32 active);
 extern s32 func_0200b04c(void *state);
 extern void Actor_SetAttachmentAnimation(void *actor, u32 value);
@@ -65,7 +65,7 @@ s32 func_02012afc(GamePhaseActorScriptVm *self)
     void *target = ActorCollection_FindActorByDescriptorValue(collection, index);
 
     if (*((u8 *)target + 0x4d) == 1) {
-        u8 *runtimeCollection = (u8 *)func_02007f0c(data_021052fc, 1);
+        u8 *runtimeCollection = (u8 *)GamePhaseRuntime_GetActorCollection(data_021052fc, 1);
         target = *(void **)(runtimeCollection + 0x2e7c);
         callActorValueMethod(target, 0x74, value);
         Actor_SetActive(target, 1);
