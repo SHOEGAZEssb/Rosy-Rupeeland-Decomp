@@ -6,6 +6,7 @@
  * of the recovered debug-menu behavior and consumes DS-compatible input.
  */
 #include "tingle/native_debug_menu.h"
+#include "tingle/native_game_phase.h"
 #include "tingle/native_phase_selector.h"
 #include "tingle/native_platform.h"
 #include "tingle/native_data.h"
@@ -25,7 +26,9 @@ int TingleNative_Run(int argc, char **argv)
     TingleNativeCanvas canvas;
     TingleNativeDebugMenu menu;
     TingleNativePhaseSelector phase_selector;
-    enum { NATIVE_SCENE_DEBUG_MENU, NATIVE_SCENE_PHASE_SELECTOR } scene =
+    TingleNativeGamePhaseBoundary game_phase;
+    enum { NATIVE_SCENE_DEBUG_MENU, NATIVE_SCENE_PHASE_SELECTOR,
+           NATIVE_SCENE_GAME_PHASE } scene =
         NATIVE_SCENE_DEBUG_MENU;
     int data_ready = 0;
     int i;
@@ -81,20 +84,29 @@ int TingleNative_Run(int argc, char **argv)
                 TingleNativePhaseSelector_Init(&phase_selector);
                 scene = NATIVE_SCENE_PHASE_SELECTOR;
             }
-        } else {
+        } else if (scene == NATIVE_SCENE_PHASE_SELECTOR) {
             TingleNativePhaseSelectorEvent event =
                 TingleNativePhaseSelector_Update(&phase_selector, &input);
 
             if (event == TINGLE_NATIVE_PHASE_EVENT_BACK) {
                 TingleNativeDebugMenu_Init(&menu);
                 scene = NATIVE_SCENE_DEBUG_MENU;
+            } else if (event == TINGLE_NATIVE_PHASE_EVENT_START_PHASE) {
+                (void)TingleNativeGamePhaseBoundary_Init(
+                    &game_phase, data, phase_selector.selected_phase + 1);
+                scene = NATIVE_SCENE_GAME_PHASE;
             }
+        } else if (TingleNativeGamePhaseBoundary_Update(&game_phase, &input)) {
+            TingleNativePhaseSelector_Init(&phase_selector);
+            scene = NATIVE_SCENE_PHASE_SELECTOR;
         }
 
         if (scene == NATIVE_SCENE_DEBUG_MENU)
             TingleNativeDebugMenu_Draw(&menu, &canvas, data_ready);
-        else
+        else if (scene == NATIVE_SCENE_PHASE_SELECTOR)
             TingleNativePhaseSelector_Draw(&phase_selector, &canvas);
+        else
+            TingleNativeGamePhaseBoundary_Draw(&game_phase, &canvas);
         TingleNativePlatform_Present(platform, pixels);
         TingleNativePlatform_WaitFrame(platform);
     }
