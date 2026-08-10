@@ -9,8 +9,8 @@ typedef struct TransitionPair {
     u32 second;
 } TransitionPair;
 
-extern const u8 data_ov025_02202e18[];
-extern const u8 data_ov025_02202e28[];
+extern const TransitionPair data_ov025_02202e18;
+extern const TransitionPair data_ov025_02202e28;
 extern void *gGameWork;
 
 #ifdef __cplusplus
@@ -32,10 +32,11 @@ extern void func_ov025_02200824(void *, s32);
 /*
  * Runs one frame of the three-state idle prompt. State 0 reveals sprite +0xBC
  * and starts event object +0x5FC; state 1 mirrors its progress into sprite
- * halfword +0x34; state 2 either handles activity (scene flag bit 5) or sets
- * game flag 0x3D6 after 2,400 idle frames. Always maintains the scene and
- * returns zero. This changes sprites, event state, audio/UI state, and possibly
- * persistent game flags.
+ * halfword +0x34; state 2 either handles activity (scene flag bit 5) and enters
+ * func_ov025_02200FE4 through pair +0x2E18, or sets game flag 0x3D6 after
+ * 2,400 idle frames and enters func_ov025_02202B44 through pair +0x2E28.
+ * Always maintains the scene and returns zero. This changes sprites, event
+ * state, audio/UI state, and possibly persistent game flags.
  */
 extern "C" s32 func_ov025_02200e54(void *scene)
 {
@@ -70,12 +71,10 @@ extern "C" s32 func_ov025_02200e54(void *scene)
             }
             func_ov025_022001f4(scene);
             FIELD(s32, scene, 0x5bc) = 0;
-            func_ov025_021ff254(scene,
-                *(const TransitionPair *)data_ov025_02202e18);
+            func_ov025_021ff254(scene, data_ov025_02202e18);
         } else if (++FIELD(s32, scene, 0x5bc) > 0x960) {
             GameWork_SetFlag(gGameWork, 0x3d6);
-            func_ov025_021ff254(scene,
-                *(const TransitionPair *)data_ov025_02202e28);
+            func_ov025_021ff254(scene, data_ov025_02202e28);
         }
         break;
     }

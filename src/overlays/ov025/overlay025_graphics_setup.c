@@ -41,7 +41,7 @@ extern void func_020b44e8(void);
  */
 extern "C" void func_ov025_021ffdfc(void *scene)
 {
-    *(volatile u16 *)0x04000304 &= (u16)~0x8000;
+    *(volatile u16 *)0x04000304 &= ~0x8000;
     func_020925a4(0);
     volatile u16 *main_bg = (volatile u16 *)0x0400000a;
     main_bg[0] = (main_bg[0] & 0x43) | 0x3a00;

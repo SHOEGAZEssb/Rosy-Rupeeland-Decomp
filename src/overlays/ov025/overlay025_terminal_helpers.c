@@ -32,7 +32,7 @@ extern "C" s32 func_ov025_02201ed0(void *scene)
 {
     switch (FIELD(s32, scene, 4)) {
     case 0:
-        FIELD(s32, scene, 4) = 1;
+        ++FIELD(s32, scene, 4);
         FIELD(s32, scene, 8) = 0;
         break;
     case 1:
@@ -50,10 +50,14 @@ extern "C" s32 func_ov025_02201ed0(void *scene)
  */
 extern "C" s32 func_ov025_02202b44(void *scene)
 {
-    if (FIELD(s32, scene, 4) == 0) {
+    switch (FIELD(s32, scene, 4)) {
+    case 0:
         func_02092314(scene, 0xe2, 0x10);
         FIELD(s32, scene, 4)++;
         FIELD(s32, scene, 8) = 0;
+        break;
+    case 1:
+        break;
     }
     return 1;
 }
@@ -66,7 +70,7 @@ extern "C" s32 func_ov025_02202b44(void *scene)
  */
 extern "C" s32 func_ov025_02202b88(void *scene)
 {
-    if (FIELD(u32, scene, 0x20) & 0x400) {
+    if ((s32)(FIELD(u32, scene, 0x20) << 21) >> 31) {
         volatile u32 *const dispcnt_a = (volatile u32 *)0x04000000;
         volatile u32 *const dispcnt_b = (volatile u32 *)0x04001000;
         *dispcnt_a = (*dispcnt_a & ~0x1f00) |
@@ -87,7 +91,8 @@ extern "C" s32 func_ov025_02202b88(void *scene)
  */
 extern "C" s32 func_ov025_02202bf0(void *scene)
 {
-    if ((FIELD(u32, scene, 0x20) & 0x400) && FIELD(void *, scene, 0x598))
+    if (((s32)(FIELD(u32, scene, 0x20) << 21) >> 31) &&
+        FIELD(void *, scene, 0x598))
         func_02092a34((u8 *)scene + 0x5a0, 0);
     return 0;
 }

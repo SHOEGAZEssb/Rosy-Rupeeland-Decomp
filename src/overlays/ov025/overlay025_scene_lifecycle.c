@@ -109,8 +109,10 @@ static void setup_controller(void *scene, s32 offset, s32 animation,
  * creates shared/debug sprite owners and button sprites, allocates three
  * effects (+0x508/+0xDC/+0xE0), an overlay-94 object +0x5C0, and dialog +0x50C,
  * clears game flags 0x3D3/0x3D6, stops sound 0x16F, enables flag 0x400, and
- * installs initial callback pair +0x2EA8. Heap, RNG, input, graphics, game-work,
- * sound, and callback state change; the initialized scene pointer is returned.
+ * installs callback pair data_ov025_02202EA8, whose retail first word is
+ * func_ov025_022009D8 (the introductory record scan). Heap, RNG, input,
+ * graphics, game-work, sound, and callback state change; the initialized scene
+ * pointer is returned.
  */
 extern "C" void *func_ov025_021ff27c(void *scene)
 {

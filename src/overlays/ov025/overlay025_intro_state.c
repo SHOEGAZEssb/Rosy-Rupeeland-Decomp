@@ -50,9 +50,11 @@ extern void func_ov025_02200824(void *, s32);
 /*
  * Runs one frame of the ten-state introductory record scan. It resets and
  * starts runtime work, creates three record rows, presents per-row modals,
- * refreshes rows after transient work, and selects transition callback pairs.
- * State is held at +4, its frame counter at +8, and scan index at +0x638.
- * The routine always performs scene maintenance and returns zero.
+ * refreshes rows after transient work, and selects retail callback pairs.
+ * Normal completion through +0x2E00/+0x2E38 enters func_ov025_02200E54; the
+ * failure pair +0x2E50 enters func_ov025_02201ED0. State is held at +4, its
+ * frame counter at +8, and scan index at +0x638. The routine always performs
+ * scene maintenance and returns zero.
  */
 extern "C" s32 func_ov025_022009d8(void *scene)
 {

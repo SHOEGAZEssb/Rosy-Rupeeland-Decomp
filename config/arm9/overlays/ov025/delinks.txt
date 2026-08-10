@@ -24,7 +24,7 @@ asm/overlays/ov025/overlay025_name_entry_021fd340.s:
 asm/overlays/ov025/overlay025_name_entry_021fd388.s:
     categories: Game code
     .text start:0x021fd388 end:0x021fd3dc
-asm/overlays/ov025/overlay025_name_entry_021fd3dc.s:
+src/overlays/ov025/overlay025_name_entry_active_clear.c:
     categories: Game code
     .text start:0x021fd3dc end:0x021fd3f4
 asm/overlays/ov025/overlay025_name_entry_021fd3f4.s:
@@ -45,19 +45,19 @@ asm/overlays/ov025/overlay025_record_widget_021fd9e4.s:
 asm/overlays/ov025/overlay025_record_widget_021fdb18.s:
     categories: Game code
     .text start:0x021fdb18 end:0x021fdc4c
-asm/overlays/ov025/overlay025_record_widget_021fdc4c.s:
+src/overlays/ov025/overlay025_record_row_inactive_query.c:
     categories: Game code
     .text start:0x021fdc4c end:0x021fdc60
 asm/overlays/ov025/overlay025_record_widget_021fdc60.s:
     categories: Game code
     .text start:0x021fdc60 end:0x021fde58
-asm/overlays/ov025/overlay025_record_widget_021fde58.s:
+src/overlays/ov025/overlay025_record_row_canvas_clear.c:
     categories: Game code
     .text start:0x021fde58 end:0x021fdea0
 asm/overlays/ov025/overlay025_record_widget_021fdea0.s:
     categories: Game code
     .text start:0x021fdea0 end:0x021fdec8
-asm/overlays/ov025/overlay025_effect_controller_021fdec8.s:
+src/overlays/ov025/overlay025_effect_base_noop.c:
     categories: Game code
     .text start:0x021fdec8 end:0x021fdecc
 asm/overlays/ov025/overlay025_effect_controller_021fdecc.s:
@@ -84,7 +84,7 @@ asm/overlays/ov025/overlay025_effect_controller_021fe340.s:
 asm/overlays/ov025/overlay025_effect_controller_021fe39c.s:
     categories: Game code
     .text start:0x021fe39c end:0x021fe3f8
-asm/overlays/ov025/overlay025_effect_controller_021fe3f8.s:
+src/overlays/ov025/overlay025_effect_random_mode.c:
     categories: Game code
     .text start:0x021fe3f8 end:0x021fe444
 asm/overlays/ov025/overlay025_effect_controller_021fe444.s:
@@ -93,19 +93,19 @@ asm/overlays/ov025/overlay025_effect_controller_021fe444.s:
 asm/overlays/ov025/overlay025_effect_controller_021fe4cc.s:
     categories: Game code
     .text start:0x021fe4cc end:0x021fe904
-asm/overlays/ov025/overlay025_effect_runtime_021fe904.s:
+src/overlays/ov025/overlay025_effect_duration.c:
     categories: Game code
     .text start:0x021fe904 end:0x021fe91c
 asm/overlays/ov025/overlay025_effect_runtime_021fe91c.s:
     categories: Game code
     .text start:0x021fe91c end:0x021feb08
-asm/overlays/ov025/overlay025_effect_runtime_021feb08.s:
+src/overlays/ov025/overlay025_effect_animation_cycle.c:
     categories: Game code
     .text start:0x021feb08 end:0x021feb4c
 asm/overlays/ov025/overlay025_effect_runtime_021feb4c.s:
     categories: Game code
     .text start:0x021feb4c end:0x021ff0b0
-asm/overlays/ov025/overlay025_effect_runtime_021ff0b0.s:
+src/overlays/ov025/overlay025_effect_duration_query.c:
     categories: Game code
     .text start:0x021ff0b0 end:0x021ff0c8
 asm/overlays/ov025/overlay025_callback_helpers_021ff0c8.s:
@@ -153,12 +153,9 @@ src/overlays/ov025/overlay025_transient_sprite_controls.c:
 asm/overlays/ov025/overlay025_scene_runtime_02200498.s:
     categories: Game code
     .text start:0x02200498 end:0x02200534
-asm/overlays/ov025/overlay025_selection_helpers_02200534.s:
+src/overlays/ov025/overlay025_selection_controller_visibility.c:
     categories: Game code
-    .text start:0x02200534 end:0x02200564
-asm/overlays/ov025/overlay025_selection_helpers_02200564.s:
-    categories: Game code
-    .text start:0x02200564 end:0x0220058c
+    .text start:0x02200534 end:0x0220058c
 asm/overlays/ov025/overlay025_selection_helpers_0220058c.s:
     categories: Game code
     .text start:0x0220058c end:0x022005e4
@@ -174,7 +171,7 @@ asm/overlays/ov025/overlay025_selection_helpers_022006c4.s:
 asm/overlays/ov025/overlay025_selection_helpers_02200794.s:
     categories: Game code
     .text start:0x02200794 end:0x02200824
-asm/overlays/ov025/overlay025_selection_helpers_02200824.s:
+src/overlays/ov025/overlay025_selection_event_commit.c:
     categories: Game code
     .text start:0x02200824 end:0x0220088c
 asm/overlays/ov025/overlay025_selection_helpers_0220088c.s:
@@ -204,27 +201,15 @@ asm/overlays/ov025/overlay025_record_delete_states_02201abc.s:
 asm/overlays/ov025/overlay025_record_delete_states_02201cfc.s:
     categories: Game code
     .text start:0x02201cfc end:0x02201ed0
-asm/overlays/ov025/overlay025_terminal_helpers_02201ed0.s:
+src/overlays/ov025/overlay025_halt_state.c:
     categories: Game code
     .text start:0x02201ed0 end:0x02201f28
 asm/overlays/ov025/overlay025_name_entry_state_02201f28.s:
     categories: Game code
     .text start:0x02201f28 end:0x02202b44
-asm/overlays/ov025/overlay025_terminal_helpers_02202b44.s:
+src/overlays/ov025/overlay025_terminal_callbacks.c:
     categories: Game code
-    .text start:0x02202b44 end:0x02202b88
-asm/overlays/ov025/overlay025_terminal_helpers_02202b88.s:
+    .text start:0x02202b44 end:0x02202c20
+src/overlays/ov025/overlay025_terminal_destructors.c:
     categories: Game code
-    .text start:0x02202b88 end:0x02202bf0
-asm/overlays/ov025/overlay025_terminal_helpers_02202bf0.s:
-    categories: Game code
-    .text start:0x02202bf0 end:0x02202c20
-asm/overlays/ov025/overlay025_terminal_helpers_02202c20.s:
-    categories: Game code
-    .text start:0x02202c20 end:0x02202c3c
-asm/overlays/ov025/overlay025_terminal_helpers_02202c3c.s:
-    categories: Game code
-    .text start:0x02202c3c end:0x02202c50
-asm/overlays/ov025/overlay025_terminal_helpers_02202c50.s:
-    categories: Game code
-    .text start:0x02202c50 end:0x02202c78
+    .text start:0x02202c20 end:0x02202c78
