@@ -24,8 +24,8 @@ typedef struct ActorCollectionBasicCategories {
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_0202dd80(ActorCollectionBasicCategories *, s32,
-                          BasicCategoryActor *);
+extern void ActorCollection_AppendToCategory(ActorCollectionBasicCategories *,
+                                             s32, BasicCategoryActor *);
 #ifdef __cplusplus
 }
 #endif
@@ -36,7 +36,7 @@ extern void func_0202dd80(ActorCollectionBasicCategories *, s32,
  * every non-type-six actor to category three. Categories one, two, and four
  * remain empty.
  */
-void func_0202dddc(ActorCollectionBasicCategories *self)
+void ActorCollection_RebuildBaseCategories(ActorCollectionBasicCategories *self)
 {
     s32 i;
 
@@ -49,8 +49,8 @@ void func_0202dddc(ActorCollectionBasicCategories *self)
         actor->flags_10 &= ~0x80u;
         if ((actor->flags_14 & 8) || (actor->flags_10 & 4) ||
             actor->type_4d == 6 || (actor->flags_10 & 0x100))
-            func_0202dd80(self, 0, actor);
+            ActorCollection_AppendToCategory(self, 0, actor);
         if (actor->type_4d != 6)
-            func_0202dd80(self, 3, actor);
+            ActorCollection_AppendToCategory(self, 3, actor);
     }
 }

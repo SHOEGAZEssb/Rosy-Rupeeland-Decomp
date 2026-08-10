@@ -32,8 +32,8 @@ typedef struct ActorCollectionCategories {
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_0202dd80(ActorCollectionCategories *, s32,
-                          CategorizedActor *);
+extern void ActorCollection_AppendToCategory(ActorCollectionCategories *, s32,
+                                             CategorizedActor *);
 extern s32 func_0202ddac(const CategorizedActor *);
 extern s32 func_0202ddc4(const CategorizedActor *);
 #ifdef __cplusplus
@@ -49,7 +49,7 @@ extern s32 func_0202ddc4(const CategorizedActor *);
  * are excluded from movement-derived categories. The exact meaning of these
  * lists is not yet confirmed.
  */
-void func_0202dbe0(ActorCollectionCategories *self)
+void ActorCollection_RebuildCategories(ActorCollectionCategories *self)
 {
     s32 i;
     CategorizedActor *actor;
@@ -65,7 +65,7 @@ void func_0202dbe0(ActorCollectionCategories *self)
         selected = (s32)actor->field_54;
         if ((actor->flags_14 & 8) || (actor->flags_10 & 4) ||
             actor->type_4d == 6 || (actor->flags_10 & 0x100)) {
-            func_0202dd80(self, 0, actor);
+            ActorCollection_AppendToCategory(self, 0, actor);
             if (!(actor->flags_14 & 0x200000)) {
                 if (func_0202ddac(actor) || func_0202ddc4(actor)) {
                     if (!actor->field_54 || !(actor->flags_14 & 0x10000000) ||
@@ -78,22 +78,22 @@ void func_0202dbe0(ActorCollectionCategories *self)
                 }
                 if (!(actor->flags_14 & 0x01000002)) {
                     if (selected)
-                        func_0202dd80(self, 1, actor);
+                        ActorCollection_AppendToCategory(self, 1, actor);
                     else if (actor->type_4d == 1)
-                        func_0202dd80(self, 1, actor);
+                        ActorCollection_AppendToCategory(self, 1, actor);
                 }
                 if (selected && !(actor->flags_14 & 4))
-                    func_0202dd80(self, 2, actor);
+                    ActorCollection_AppendToCategory(self, 2, actor);
             }
         }
         if (actor->type_4d != 6)
-            func_0202dd80(self, 3, actor);
+            ActorCollection_AppendToCategory(self, 3, actor);
     }
 }
 
 /* Append actor to category at its current count and increment that count. */
-void func_0202dd80(ActorCollectionCategories *self, s32 category,
-                   CategorizedActor *actor)
+void ActorCollection_AppendToCategory(ActorCollectionCategories *self,
+                                      s32 category, CategorizedActor *actor)
 {
     s32 index = self->categoryCounts_0e20[category]++;
     self->categories_0200[category][index] = actor;

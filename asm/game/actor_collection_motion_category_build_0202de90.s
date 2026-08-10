@@ -1,12 +1,12 @@
 ; Matching retail form; see src/game/actor_collection_motion_category_build.c.
 .text
-.extern func_0202dd80
+.extern ActorCollection_AppendToCategory
 .extern func_0202ddac
 .extern func_0202ddc4
 
-    .global func_0202de90
-    .type func_0202de90, @function
-func_0202de90: ; 0x0202de90
+    .global ActorCollection_RebuildMotionCategories
+    .type ActorCollection_RebuildMotionCategories, @function
+ActorCollection_RebuildMotionCategories: ; 0x0202de90
     stmdb sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, lr}
     mov r4, #0x0
     mov r5, r0
@@ -77,7 +77,7 @@ func_0202de90: ; 0x0202de90
     mov r0, r5
     mov r1, #0x1
     mov r2, r9
-    bl func_0202dd80
+    bl ActorCollection_AppendToCategory
     b .L_0202dfb0
 .L_0202df94:
     ldrb r0, [r9, #0x4d]
@@ -86,7 +86,7 @@ func_0202de90: ; 0x0202de90
     mov r0, r5
     mov r1, #0x1
     mov r2, r9
-    bl func_0202dd80
+    bl ActorCollection_AppendToCategory
 .L_0202dfb0:
     cmp r10, #0x0
     beq .L_0202dfd4
@@ -96,7 +96,7 @@ func_0202de90: ; 0x0202de90
     mov r2, r9
     mov r0, r5
     mov r1, #0x2
-    bl func_0202dd80
+    bl ActorCollection_AppendToCategory
 .L_0202dfd4:
     add r4, r4, #0x1
 .L_0202dfd8:
@@ -105,4 +105,4 @@ func_0202de90: ; 0x0202de90
     blt .L_0202deb8
     ldmia sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, pc}
 .L_0202dfe8: .word 0x1000002
-    .size func_0202de90, . - func_0202de90
+    .size ActorCollection_RebuildMotionCategories, . - ActorCollection_RebuildMotionCategories

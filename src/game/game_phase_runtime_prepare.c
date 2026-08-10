@@ -8,12 +8,12 @@ extern u8 data_02105310[];
 extern "C" {
 #endif
 extern void func_0203ac9c(GamePhaseRuntime *self);
-extern void func_0202dbe0(void *actor);
+extern void ActorCollection_RebuildCategories(void *actor);
 extern void func_0202e06c(void *actor);
 extern void func_0202e15c(void *actor);
 extern void func_0202e858(void *actor);
 extern void func_0202dfec(void *actor);
-extern void func_0202dddc(void *actor);
+extern void ActorCollection_RebuildBaseCategories(void *actor);
 extern s32 func_0200b04c(void *state);
 extern s32 func_0200b180(void *state);
 extern s32 func_0200b294(void *state);
@@ -38,12 +38,12 @@ void func_02007908(GamePhaseRuntime *self, s32 value, s32 mode)
     if (mode == 1 || mode == 3) {
         actor = b + 0x28;
         if (value == 2) {
-            func_0202dbe0(actor);
+            ActorCollection_RebuildCategories(actor);
             func_0202e06c(actor);
             func_0202e15c(actor);
             func_0202e858(actor);
         } else {
-            func_0202dbe0(actor);
+            ActorCollection_RebuildCategories(actor);
             func_0202dfec(actor);
             func_0202e15c(actor);
             func_0202e858(actor);
@@ -55,10 +55,10 @@ void func_02007908(GamePhaseRuntime *self, s32 value, s32 mode)
         if (actor != 0) {
             actor = (u8 *)actor + 8;
             if (value == 2 || value == 6) {
-                func_0202dddc(actor);
+                ActorCollection_RebuildBaseCategories(actor);
                 func_0202e06c((u8 *)*(void **)(b + 0x2fb8) + 8);
             } else {
-                func_0202dddc(actor);
+                ActorCollection_RebuildBaseCategories(actor);
                 func_0202dfec((u8 *)*(void **)(b + 0x2fb8) + 8);
             }
         }

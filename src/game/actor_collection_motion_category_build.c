@@ -26,8 +26,8 @@ typedef struct ActorCollectionMotionCategories {
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_0202dd80(ActorCollectionMotionCategories *, s32,
-                          MotionCategoryActor *);
+extern void ActorCollection_AppendToCategory(ActorCollectionMotionCategories *,
+                                             s32, MotionCategoryActor *);
 extern s32 func_0202ddac(const MotionCategoryActor *);
 extern s32 func_0202ddc4(const MotionCategoryActor *);
 #ifdef __cplusplus
@@ -43,7 +43,7 @@ extern s32 func_0202ddc4(const MotionCategoryActor *);
  * set. Unless flags 0x01000002 block it, selected actors and type-one actors
  * enter category one. Selected actors lacking flag four enter category two.
  */
-void func_0202de90(ActorCollectionMotionCategories *self)
+void ActorCollection_RebuildMotionCategories(ActorCollectionMotionCategories *self)
 {
     s32 i;
 
@@ -72,11 +72,11 @@ void func_0202de90(ActorCollectionMotionCategories *self)
         }
         if (!(actor->flags_14 & 0x01000002)) {
             if (selected)
-                func_0202dd80(self, 1, actor);
+                ActorCollection_AppendToCategory(self, 1, actor);
             else if (actor->type_4d == 1)
-                func_0202dd80(self, 1, actor);
+                ActorCollection_AppendToCategory(self, 1, actor);
         }
         if (selected && !(actor->flags_14 & 4))
-            func_0202dd80(self, 2, actor);
+            ActorCollection_AppendToCategory(self, 2, actor);
     }
 }

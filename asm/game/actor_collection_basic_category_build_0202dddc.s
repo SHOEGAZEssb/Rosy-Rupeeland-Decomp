@@ -1,10 +1,10 @@
 ; Matching retail form; see src/game/actor_collection_basic_category_build.c.
 .text
-.extern func_0202dd80
+.extern ActorCollection_AppendToCategory
 
-    .global func_0202dddc
-    .type func_0202dddc, @function
-func_0202dddc: ; 0x0202dddc
+    .global ActorCollection_RebuildBaseCategories
+    .type ActorCollection_RebuildBaseCategories, @function
+ActorCollection_RebuildBaseCategories: ; 0x0202dddc
     stmdb sp!, {r3, r4, r5, r6, r7, r8, r9, lr}
     mov r6, #0x0
     mov r7, r0
@@ -39,7 +39,7 @@ func_0202dddc: ; 0x0202dddc
     mov r0, r7
     mov r1, r4
     mov r2, r5
-    bl func_0202dd80
+    bl ActorCollection_AppendToCategory
 .L_0202de60:
     ldrb r0, [r5, #0x4d]
     cmp r0, #0x6
@@ -47,7 +47,7 @@ func_0202dddc: ; 0x0202dddc
     mov r0, r7
     mov r1, r9
     mov r2, r5
-    bl func_0202dd80
+    bl ActorCollection_AppendToCategory
 .L_0202de7c:
     add r6, r6, #0x1
 .L_0202de80:
@@ -55,4 +55,4 @@ func_0202dddc: ; 0x0202dddc
     cmp r6, r0
     blt .L_0202de0c
     ldmia sp!, {r3, r4, r5, r6, r7, r8, r9, pc}
-    .size func_0202dddc, . - func_0202dddc
+    .size ActorCollection_RebuildBaseCategories, . - ActorCollection_RebuildBaseCategories

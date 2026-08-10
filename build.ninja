@@ -13266,13 +13266,13 @@ build build/reports/actor_collection_category_build_0202dbe0.json: objdiff build
   base_object = build/decomp/asm/game/actor_collection_category_build_0202dbe0.o
 build build/reports/actor_collection_category_build_0202dbe0.txt: match_report build/reports/actor_collection_category_build_0202dbe0.json | tools/report_objdiff.py
   report_json = build/reports/actor_collection_category_build_0202dbe0.json
-  report_args = --section .text --function func_0202dbe0 --require-exact
+  report_args = --section .text --function ActorCollection_RebuildCategories --require-exact
 build build/reports/actor_collection_category_build_0202dd80.json: objdiff build/decomp/delinks/asm/game/actor_collection_category_build_0202dd80.o | build/decomp/asm/game/actor_collection_category_build_0202dd80.o
   target_object = build/decomp/delinks/asm/game/actor_collection_category_build_0202dd80.o
   base_object = build/decomp/asm/game/actor_collection_category_build_0202dd80.o
 build build/reports/actor_collection_category_build_0202dd80.txt: match_report build/reports/actor_collection_category_build_0202dd80.json | tools/report_objdiff.py
   report_json = build/reports/actor_collection_category_build_0202dd80.json
-  report_args = --section .text --function func_0202dd80 --require-exact
+  report_args = --section .text --function ActorCollection_AppendToCategory --require-exact
 build build/reports/actor_collection_category_build_0202ddac.json: objdiff build/decomp/delinks/asm/game/actor_collection_category_build_0202ddac.o | build/decomp/asm/game/actor_collection_category_build_0202ddac.o
   target_object = build/decomp/delinks/asm/game/actor_collection_category_build_0202ddac.o
   base_object = build/decomp/asm/game/actor_collection_category_build_0202ddac.o
@@ -13301,7 +13301,7 @@ build build/reports/actor_collection_basic_category_build_0202dddc.json: objdiff
   base_object = build/decomp/asm/game/actor_collection_basic_category_build_0202dddc.o
 build build/reports/actor_collection_basic_category_build_0202dddc.txt: match_report build/reports/actor_collection_basic_category_build_0202dddc.json | tools/report_objdiff.py
   report_json = build/reports/actor_collection_basic_category_build_0202dddc.json
-  report_args = --section .text --function func_0202dddc --require-exact
+  report_args = --section .text --function ActorCollection_RebuildBaseCategories --require-exact
 build build/reports/actor_collection_basic_category_build.txt: phony build/reports/actor_collection_basic_category_build_0202dddc.txt
 
 build actor_collection_basic_category_build: phony build/decomp/src/game/actor_collection_basic_category_build.o build/decomp/asm/game/actor_collection_basic_category_build_0202dddc.o build/reports/actor_collection_basic_category_build.txt
@@ -13318,7 +13318,7 @@ build build/reports/actor_collection_motion_category_build_0202de90.json: objdif
   base_object = build/decomp/asm/game/actor_collection_motion_category_build_0202de90.o
 build build/reports/actor_collection_motion_category_build_0202de90.txt: match_report build/reports/actor_collection_motion_category_build_0202de90.json | tools/report_objdiff.py
   report_json = build/reports/actor_collection_motion_category_build_0202de90.json
-  report_args = --section .text --function func_0202de90 --require-exact
+  report_args = --section .text --function ActorCollection_RebuildMotionCategories --require-exact
 build build/reports/actor_collection_motion_category_build.txt: phony build/reports/actor_collection_motion_category_build_0202de90.txt
 
 build actor_collection_motion_category_build: phony build/decomp/src/game/actor_collection_motion_category_build.o build/decomp/asm/game/actor_collection_motion_category_build_0202de90.o build/reports/actor_collection_motion_category_build.txt
