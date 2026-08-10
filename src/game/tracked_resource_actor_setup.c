@@ -13,7 +13,7 @@ extern void *gHeapContext;
 extern "C" {
 #endif
 extern void *Heap_Alloc(u32 size, const void *tag, u32 align, void *heap);
-extern void *func_02005580(void *storage, u32 resource0, u32 resource1,
+extern void *AnimationResource_Init(void *storage, u32 resource0, u32 resource1,
                            u32 resource2);
 extern void *ActorCollection_GetSpriteOwner(void);
 extern void func_020313b4(void *actor, void *bundle, u32 mode);
@@ -42,7 +42,7 @@ void func_0204fe68(void *actor, const void *descriptor)
 {
     void *bundle = Heap_Alloc(0x10, data_020e35c4, 4, gHeapContext);
     if (bundle != 0) {
-        bundle = func_02005580(bundle,
+        bundle = AnimationResource_Init(bundle,
                               FIELD(u32, descriptor, 4),
                               FIELD(u32, descriptor, 8),
                               FIELD(u32, descriptor, 12));

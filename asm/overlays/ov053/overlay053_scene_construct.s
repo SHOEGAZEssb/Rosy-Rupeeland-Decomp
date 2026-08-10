@@ -6,9 +6,9 @@
 .extern data_ov053_0220dd7c
 .extern data_ov053_0220dd80
 .extern data_ov053_0220dd82
-.extern func_02005580
-.extern func_020055d0
-.extern func_0200567c
+.extern AnimationResource_Init
+.extern AnimationResource_Destroy
+.extern AnimationResource_Assign
 .extern func_0201e250
 .extern func_02072b68
 .extern func_02073ffc
@@ -43,12 +43,12 @@ func_ov053_0220d624:
     add r0, sp, #0x0
     add r2, r1, #0x1
     add r3, r1, #0x2
-    bl func_02005580
+    bl AnimationResource_Init
     add r0, r10, #0x24
     add r1, sp, #0x0
-    bl func_0200567c
+    bl AnimationResource_Assign
     add r0, sp, #0x0
-    bl func_020055d0
+    bl AnimationResource_Destroy
     mov r9, #0x0
     ldr r6, .L_0220d7e8
     ldr r7, .L_0220d7ec

@@ -8,7 +8,7 @@ extern "C" {
 #endif
 extern const u8 data_020d44c0[];
 extern const u8 data_020d4520[];
-extern void *func_02005580(void *allocation, u32 first, u32 second, u32 third);
+extern void *AnimationResource_Init(void *allocation, u32 first, u32 second, u32 third);
 #ifdef __cplusplus
 }
 #endif
@@ -54,7 +54,7 @@ void func_0200be14(ActorRuntimeObjectLists *self, u32 first, u32 second,
 
     payload = Heap_Alloc(0x10, (const char *)data_020d4520, 4, &gHeapContext);
     if (payload != 0)
-        payload = func_02005580(payload, first, second, third);
+        payload = AnimationResource_Init(payload, first, second, third);
     object = *(u8 **)((u8 *)payload + 4);
     *(u32 *)(object + 0x28) |= 0x01000000;
 

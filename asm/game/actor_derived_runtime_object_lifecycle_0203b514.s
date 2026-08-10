@@ -2,7 +2,7 @@
 .text
 .extern Heap_Free
 .extern data_020df510
-.extern func_020055d0
+.extern AnimationResource_Destroy
 .extern func_02010854
 .extern func_02030f98
 .extern func_0203130c
@@ -62,7 +62,7 @@ ActorDerivedRuntime_Destroy: ; 0x0203b594
     mov r0, r4
     bl func_02031488
     add r0, r4, #0x1ec
-    bl func_020055d0
+    bl AnimationResource_Destroy
     mov r0, r4
     bl func_0203130c
     mov r0, r4
@@ -83,7 +83,7 @@ ActorDerivedRuntime_DestroyAndFree: ; 0x0203b5d4
     mov r0, r4
     bl func_02031488
     add r0, r4, #0x1ec
-    bl func_020055d0
+    bl AnimationResource_Destroy
     mov r0, r4
     bl func_0203130c
     mov r0, r4
@@ -106,7 +106,7 @@ ActorDerivedRuntime_DestroyAlternate: ; 0x0203b61c
     mov r0, r4
     bl func_02031488
     add r0, r4, #0x1ec
-    bl func_020055d0
+    bl AnimationResource_Destroy
     mov r0, r4
     bl func_0203130c
     mov r0, r4

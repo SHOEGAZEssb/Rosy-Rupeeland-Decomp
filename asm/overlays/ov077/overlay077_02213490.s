@@ -7,8 +7,8 @@
 .extern data_ov077_022174c8
 .extern data_ov077_022174d0
 .extern DisplayController_GetVerticalOffset
-.extern func_02005580
-.extern func_0200572c
+.extern AnimationResource_Init
+.extern UtilAnimationResource_Init
 .extern func_02007f0c
 .extern func_02028388
 .extern ActorCollection_GetSpriteOwner
@@ -70,7 +70,7 @@ func_ov077_02213490:
     mov r3, r11
     mov r0, r5
     mov r1, #0x0
-    bl func_0200572c
+    bl UtilAnimationResource_Init
     mov r5, r0
 .L_0221355c:
     str r5, [r10, #0x2c4]
@@ -95,7 +95,7 @@ func_ov077_02213490:
     ldr r1, .L_0221375c
     sub r2, r1, #0x4
     add r3, r1, #0x1
-    bl func_02005580
+    bl AnimationResource_Init
 .L_022135b8:
     mov r7, #0x0
     ldr r4, .L_0221374c

@@ -13,7 +13,7 @@ extern const char data_020e00c0[];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *func_02005580(void *allocation, u16 first, u16 second, u16 third);
+extern void *AnimationResource_Init(void *allocation, u16 first, u16 second, u16 third);
 extern void *Actor_GetCollection(void *actor);
 extern void *ActorCollection_GetSpriteOwner(void *value);
 extern void *func_02073fc4(void *context, u32 first, u32 second, u32 third,
@@ -29,7 +29,7 @@ static void *createResource(const u16 *record)
 {
     void *allocation = Heap_Alloc(0x10, data_020e00c0, 4, &gHeapContext);
     if (allocation != 0)
-        allocation = func_02005580(allocation, record[0], record[1], record[2]);
+        allocation = AnimationResource_Init(allocation, record[0], record[1], record[2]);
     return allocation;
 }
 

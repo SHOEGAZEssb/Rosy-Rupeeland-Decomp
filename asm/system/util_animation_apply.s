@@ -1,8 +1,8 @@
 .text
-.global func_020058b8
-.type func_020058b8, @function
+.global UtilAnimationResource_ApplyHandlePosition
+.type UtilAnimationResource_ApplyHandlePosition, @function
 
-func_020058b8:
+UtilAnimationResource_ApplyHandlePosition:
     ldr r3, [r2, #4]
     mvn r0, #0x3f
     cmp r3, r0
@@ -27,4 +27,4 @@ hidden:
     orr r0, r0, #8
     strh r0, [r1, #0x24]
     bx lr
-    .size func_020058b8, .-func_020058b8
+    .size UtilAnimationResource_ApplyHandlePosition, .-UtilAnimationResource_ApplyHandlePosition

@@ -8,7 +8,7 @@
 .extern data_020d6760
 .extern data_02105610
 .extern func_02005058
-.extern func_02005580
+.extern AnimationResource_Init
 .extern func_02005afc
 .extern func_02005c3c
 .extern func_0200637c

@@ -80,7 +80,7 @@ GamePhaseRuntime *func_02006ae0(GamePhaseRuntime *self)
     *(s32 *)(bytes + 0x2fb8) = 0;
     func_02009d14(bytes + 0x2fbc, bytes + 0x2fa4);
     func_020099dc(bytes + 0x3044);
-    func_020057dc((TouchPoint *)(bytes + 0x30a8));
+    TouchPoint_InitZero((TouchPoint *)(bytes + 0x30a8));
 
     *(s32 *)(bytes + 0x30b4) = 0;
     *(s32 *)(bytes + 0x30b8) = 0;

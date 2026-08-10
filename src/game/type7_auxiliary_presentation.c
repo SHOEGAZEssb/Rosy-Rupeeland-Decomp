@@ -33,7 +33,7 @@ extern "C" {
 extern void *Heap_Alloc(u32 size, const char *source, u32 line,
                         void *heapContext);
 extern void Heap_Free(void *allocation);
-extern void *func_02005580(void *storage, u32 first, u32 second, u32 third);
+extern void *AnimationResource_Init(void *storage, u32 first, u32 second, u32 third);
 extern void Actor_GetCollection(void *owner);
 extern void *ActorCollection_GetSpriteOwner(void);
 extern void *func_02073fc4(void *context, u32 first, u32 second, u32 third,
@@ -64,7 +64,7 @@ Type7AuxiliaryPresentation *Type7AuxiliaryPresentation_Init(
     self->owner = owner;
     resource = (u32 *)Heap_Alloc(0x10, data_020e1eb4, 4, gHeapContext);
     if (resource != 0)
-        resource = (u32 *)func_02005580(resource, 0x1157, 0x1158, 0x1159);
+        resource = (u32 *)AnimationResource_Init(resource, 0x1157, 0x1158, 0x1159);
     self->resource = resource;
     Actor_GetCollection(owner);
     self->presentation = func_02073fc4(

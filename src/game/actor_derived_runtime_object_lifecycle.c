@@ -11,7 +11,7 @@ extern void *func_02030f98(void *self);
 extern void *func_0203130c(void *self);
 extern void func_02031488(void *self);
 extern void *func_02010854(void *embedded);
-extern void *func_020055d0(void *embedded);
+extern void *AnimationResource_Destroy(void *embedded);
 #ifdef __cplusplus
 }
 #endif
@@ -53,7 +53,7 @@ static void *destroyDerivedRuntimeObject(void *self)
     *(void **)object = data_020df510;
     (*(void (**)(void *))(*(u8 **)object + 0xbc))(object);
     func_02031488(object);
-    func_020055d0(object + 0x1ec);
+    AnimationResource_Destroy(object + 0x1ec);
     func_0203130c(object);
     return object;
 }

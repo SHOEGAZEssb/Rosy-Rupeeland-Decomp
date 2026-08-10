@@ -7,7 +7,7 @@
 .extern data_020e7c78
 .extern data_020e7ffc
 .extern data_020e8394
-.extern func_02005580
+.extern AnimationResource_Init
 .extern ActorCollection_GetSpriteOwner
 .extern func_020313b4
 .extern Actor_GetCollection
@@ -36,7 +36,7 @@ ActorExtendedType2_InitializePresentation: ; 0x0203e56c
     ldrh r1, [r5, #0x0]
     ldrh r2, [r5, #0x2]
     ldrh r3, [r5, #0x4]
-    bl func_02005580
+    bl AnimationResource_Init
 .L_0203e5b8:
     ldr r5, .L_0203e7b8
     str r0, [r7, #0x208]
@@ -51,7 +51,7 @@ ActorExtendedType2_InitializePresentation: ; 0x0203e56c
     ldrh r1, [r5, #0x0]
     ldrh r2, [r5, #0x2]
     ldrh r3, [r5, #0x4]
-    bl func_02005580
+    bl AnimationResource_Init
 .L_0203e5f0:
     mov r1, #0x6
     mul r5, r4, r1
@@ -71,7 +71,7 @@ ActorExtendedType2_InitializePresentation: ; 0x0203e56c
     ldrh r1, [r4, #0x0]
     ldrh r2, [r4, #0x2]
     ldrh r3, [r4, #0x4]
-    bl func_02005580
+    bl AnimationResource_Init
 .L_0203e63c:
     str r0, [r7, #0x210]
     b .L_0203e64c
@@ -94,7 +94,7 @@ ActorExtendedType2_InitializePresentation: ; 0x0203e56c
     ldrh r1, [r4, #0x0]
     ldrh r2, [r4, #0x2]
     ldrh r3, [r4, #0x4]
-    bl func_02005580
+    bl AnimationResource_Init
 .L_0203e68c:
     str r0, [r7, #0x214]
     b .L_0203e69c

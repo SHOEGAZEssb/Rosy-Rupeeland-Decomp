@@ -8,7 +8,7 @@
 .extern func_0200222c
 .extern func_020022dc
 .extern func_02005058
-.extern func_02005580
+.extern AnimationResource_Init
 .extern func_ov062_0220fe78
 .extern func_ov087_02218678
 .extern func_ov087_02218698
@@ -36,7 +36,7 @@ func_ov087_022184b0:
     mov r1, #0x1000
     add r2, r1, #0x1
     add r3, r1, #0x2
-    bl func_02005580
+    bl AnimationResource_Init
 .L_022184fc:
     str r0, [r5, #0x220]
     add r0, r5, #0x200

@@ -4,7 +4,7 @@
 .extern data_021052fc
 .extern data_ov093_022187f0
 .extern data_ov093_022189e0
-.extern func_02005580
+.extern AnimationResource_Init
 .extern func_02005bfc
 .extern func_02005c3c
 .extern ActorCollection_GetSpriteOwner
@@ -30,7 +30,7 @@ func_ov093_02217908:
     ldr r1, .L_02217ac8
     add r2, r1, #0x1
     add r3, r1, #0x2
-    bl func_02005580
+    bl AnimationResource_Init
 .L_02217944:
     mov r5, r0
     str r0, [r4, #0x200]
@@ -59,7 +59,7 @@ func_ov093_02217908:
     ldr r1, .L_02217acc
     add r2, r1, #0x1
     add r3, r1, #0x2
-    bl func_02005580
+    bl AnimationResource_Init
 .L_022179b4:
     str r0, [r4, #0x20c]
     mov r0, r4

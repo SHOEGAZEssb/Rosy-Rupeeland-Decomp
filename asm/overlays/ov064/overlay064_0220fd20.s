@@ -15,7 +15,7 @@
 .extern data_ov064_02211e98
 .extern data_ov064_02211ec4
 .extern data_ov064_02211ecc
-.extern func_02005580
+.extern AnimationResource_Init
 .extern func_02005c3c
 .extern func_02007f0c
 .extern func_02010520
@@ -102,7 +102,7 @@ func_ov064_0220fd20:
     ldr r1, .L_0221060c
     sub r2, r1, #0x91
     add r3, r1, #0x1
-    bl func_02005580
+    bl AnimationResource_Init
 .L_0220fe00:
     ldr r1, .L_022105f8
     str r0, [r4, #0x24]
@@ -185,7 +185,7 @@ func_ov064_0220fd20:
     mov r2, #0x1200
     ldr r1, .L_02210618
     add r3, r2, #0x1
-    bl func_02005580
+    bl AnimationResource_Init
 .L_0220ff40:
     ldr r1, .L_022105f8
     str r0, [r4, #0x24]
@@ -275,7 +275,7 @@ func_ov064_0220fd20:
     ldr r1, .L_02210628
     add r2, r1, #0x1
     add r3, r1, #0x2
-    bl func_02005580
+    bl AnimationResource_Init
 .L_02210098:
     ldr r1, .L_022105f8
     str r0, [r4, #0x24]
@@ -409,7 +409,7 @@ func_ov064_0220fd20:
     ldr r1, .L_0221063c
     add r2, r1, #0x1
     add r3, r1, #0x2
-    bl func_02005580
+    bl AnimationResource_Init
 .L_022102a4:
     mov r2, #0x0
     str r0, [r4, #0x24]
@@ -483,7 +483,7 @@ func_ov064_0220fd20:
     ldr r1, .L_02210644
     add r2, r1, #0x1
     add r3, r1, #0x2
-    bl func_02005580
+    bl AnimationResource_Init
 .L_022103c0:
     mov r2, #0x0
     str r0, [r4, #0x28]
@@ -510,7 +510,7 @@ func_ov064_0220fd20:
     ldr r1, .L_02210648
     add r2, r1, #0x1
     add r3, r1, #0x2
-    bl func_02005580
+    bl AnimationResource_Init
 .L_02210428:
     str r0, [r4, #0x2c]
     mov r2, #0x0

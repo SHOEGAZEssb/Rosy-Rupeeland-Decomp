@@ -1,11 +1,11 @@
 .text
-.global func_0200572c
-.type func_0200572c, @function
+.global UtilAnimationResource_Init
+.type UtilAnimationResource_Init, @function
     .extern data_020d4168
-    .extern func_020057dc
+    .extern TouchPoint_InitZero
     .extern func_02073fc4
 
-func_0200572c:
+UtilAnimationResource_Init:
     stmdb sp!, {r3, r4, r5, r6, lr}
     sub sp, sp, #4
     ldr r12, [pc, #0x9c]
@@ -17,7 +17,7 @@ func_0200572c:
     mov r6, r2
     mov r5, r3
     str r12, [r4, #0x10]
-    bl func_020057dc
+    bl TouchPoint_InitZero
     ldr r0, [sp, #0x18]
     ldr r1, [sp, #0x1c]
     and r0, r0, #0xff
@@ -50,4 +50,4 @@ func_0200572c:
     add sp, sp, #4
     ldmia sp!, {r3, r4, r5, r6, pc}
     .word data_020d4168
-    .size func_0200572c, .-func_0200572c
+    .size UtilAnimationResource_Init, .-UtilAnimationResource_Init

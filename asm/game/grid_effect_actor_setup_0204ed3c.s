@@ -2,7 +2,7 @@
 .extern Heap_Alloc
 .extern data_020e2724
 .extern gHeapContext
-.extern func_02005580
+.extern AnimationResource_Init
 .extern ActorCollection_GetSpriteOwner
 .extern func_020313b4
 .extern Actor_GetCollection
@@ -24,7 +24,7 @@ func_0204ed3c: ; 0x0204ed3c
     cmp r0, #0x0
     beq .L_0204ed70
     ldmib r5, {r1, r2, r3}
-    bl func_02005580
+    bl AnimationResource_Init
 .L_0204ed70:
     mov r4, r0
     str r0, [r6, #0x1ec]

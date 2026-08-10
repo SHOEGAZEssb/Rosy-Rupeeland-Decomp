@@ -3791,7 +3791,7 @@ build build/reports/animation_resource.json: objdiff build/decomp/delinks/src/sy
 
 build build/reports/animation_resource.txt: match_report build/reports/animation_resource.json | tools/report_objdiff.py
   report_json = build/reports/animation_resource.json
-  report_args = --section .text --function func_02005580 --function func_020055d0 --function func_020055fc --function func_02005630 --function func_0200567c --require-exact
+  report_args = --section .text --function AnimationResource_Init --function AnimationResource_Destroy --function AnimationResource_DestroyAndFree --function AnimationResource_RebindFrom --function AnimationResource_Assign --require-exact
 
 build build/reports/animation_resource_data.json: objdiff build/decomp/delinks/src/system/animation_resource_data.o | build/decomp/src/system/animation_resource_data.o
   target_object = build/decomp/delinks/src/system/animation_resource_data.o
@@ -3803,7 +3803,7 @@ build build/reports/animation_binding.json: objdiff build/decomp/delinks/src/sys
 
 build build/reports/animation_binding.txt: match_report build/reports/animation_binding.json | tools/report_objdiff.py
   report_json = build/reports/animation_binding.json
-  report_args = --section .text --function func_02005698 --function func_02005708 --require-exact
+  report_args = --section .text --function AnimationBinding_Init --function AnimationBinding_Destroy --require-exact
 
 build build/reports/util_animation_resource_ctor.json: objdiff build/decomp/delinks/asm/system/util_animation_resource_ctor.o | build/decomp/asm/system/util_animation_resource_ctor.o
   target_object = build/decomp/delinks/asm/system/util_animation_resource_ctor.o
@@ -3811,7 +3811,7 @@ build build/reports/util_animation_resource_ctor.json: objdiff build/decomp/deli
 
 build build/reports/util_animation_resource_ctor.txt: match_report build/reports/util_animation_resource_ctor.json | tools/report_objdiff.py
   report_json = build/reports/util_animation_resource_ctor.json
-  report_args = --section .text --function func_0200572c --require-exact
+  report_args = --section .text --function UtilAnimationResource_Init --require-exact
 
 build build/reports/util_animation_resource.json: objdiff build/decomp/delinks/src/system/util_animation_resource.o | build/decomp/src/system/util_animation_resource.o
   target_object = build/decomp/delinks/src/system/util_animation_resource.o
@@ -3819,7 +3819,7 @@ build build/reports/util_animation_resource.json: objdiff build/decomp/delinks/s
 
 build build/reports/util_animation_resource.txt: match_report build/reports/util_animation_resource.json | tools/report_objdiff.py
   report_json = build/reports/util_animation_resource.json
-  report_args = --section .text --function func_020057dc --function func_020057f8 --function func_020057fc --require-exact
+  report_args = --section .text --function TouchPoint_InitZero --function UtilAnimationResource_Destroy --function UtilAnimationResource_DestroyAndFree --require-exact
 
 build build/reports/util_animation_resource_data.json: objdiff build/decomp/delinks/src/system/util_animation_resource_data.o | build/decomp/src/system/util_animation_resource_data.o
   target_object = build/decomp/delinks/src/system/util_animation_resource_data.o
@@ -3831,7 +3831,7 @@ build build/reports/util_animation_position.json: objdiff build/decomp/delinks/s
 
 build build/reports/util_animation_position.txt: match_report build/reports/util_animation_position.json | tools/report_objdiff.py
   report_json = build/reports/util_animation_position.json
-  report_args = --section .text --function func_02005810 --require-exact
+  report_args = --section .text --function UtilAnimationResource_UpdatePosition --require-exact
 
 build build/reports/util_animation_difference.json: objdiff build/decomp/delinks/src/system/util_animation_difference.o | build/decomp/src/system/util_animation_difference.o
   target_object = build/decomp/delinks/src/system/util_animation_difference.o
@@ -3839,7 +3839,7 @@ build build/reports/util_animation_difference.json: objdiff build/decomp/delinks
 
 build build/reports/util_animation_difference.txt: match_report build/reports/util_animation_difference.json | tools/report_objdiff.py
   report_json = build/reports/util_animation_difference.json
-  report_args = --section .text --function func_02005880 --require-exact
+  report_args = --section .text --function TouchPoint_Subtract --require-exact
 
 build build/reports/util_animation_apply.json: objdiff build/decomp/delinks/asm/system/util_animation_apply.o | build/decomp/asm/system/util_animation_apply.o
   target_object = build/decomp/delinks/asm/system/util_animation_apply.o
@@ -3847,7 +3847,7 @@ build build/reports/util_animation_apply.json: objdiff build/decomp/delinks/asm/
 
 build build/reports/util_animation_apply.txt: match_report build/reports/util_animation_apply.json | tools/report_objdiff.py
   report_json = build/reports/util_animation_apply.json
-  report_args = --section .text --function func_020058b8 --require-exact
+  report_args = --section .text --function UtilAnimationResource_ApplyHandlePosition --require-exact
 
 build build/reports/scene.json: objdiff build/decomp/delinks/src/system/scene.o | build/decomp/src/system/scene.o
   target_object = build/decomp/delinks/src/system/scene.o

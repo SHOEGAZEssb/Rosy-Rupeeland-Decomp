@@ -4,7 +4,7 @@
 .extern data_ov090_0221ccc8
 .extern data_ov090_0221ccd0
 .extern DisplayController_GetVerticalOffset
-.extern func_0200572c
+.extern UtilAnimationResource_Init
 .extern func_02072b68
 .extern func_ov090_0221b97c
 .extern gHeapContext
@@ -52,7 +52,7 @@ func_ov090_0221c468:
     mov r0, r11
     mov r2, r9
     mov r1, #0x0
-    bl func_0200572c
+    bl UtilAnimationResource_Init
     mov r11, r0
 .L_0221c514:
     mov r0, r11
@@ -81,7 +81,7 @@ func_ov090_0221c468:
     mov r0, r4
     mov r2, r9
     mov r1, #0x0
-    bl func_0200572c
+    bl UtilAnimationResource_Init
     mov r4, r0
 .L_0221c584:
     str r4, [r10, #0x8]

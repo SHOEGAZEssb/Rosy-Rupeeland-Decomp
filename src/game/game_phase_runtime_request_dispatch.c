@@ -5,7 +5,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_020057dc(void *point);
+extern void TouchPoint_InitZero(void *point);
 extern void *func_02009d78(void *object);
 extern s32 ActorCollection_ProcessSelectionQuery(void *collection,
                                                   const void *query);
@@ -36,7 +36,7 @@ s32 GamePhaseRuntime_DispatchActorQueryRequest(GamePhaseRuntime *self)
     if (!(flags & 7))
         goto returnZero;
 
-    func_020057dc(point);
+    TouchPoint_InitZero(point);
     *(s32 *)(point + 4) = *(s32 *)(b + 0x30ac) +
         (*(s32 *)((u8 *)func_02009d78(b + 0x2fbc) + 4) >> 12);
     *(s32 *)(point + 8) = *(s32 *)(b + 0x30b0) +

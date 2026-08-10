@@ -5,7 +5,7 @@
 .extern data_ov090_0221cc90
 .extern DisplayController_GetVerticalOffset
 .extern func_02005030
-.extern func_0200572c
+.extern UtilAnimationResource_Init
 .extern func_02072b68
 .extern func_ov090_0221b97c
 .extern gHeapContext
@@ -43,7 +43,7 @@ func_ov090_0221b9a0:
     mov r2, r5
     mov r3, r4
     mov r1, #0x0
-    bl func_0200572c
+    bl UtilAnimationResource_Init
     mov r7, r0
 .L_0221ba24:
     ldr r1, [sp, #0x38]

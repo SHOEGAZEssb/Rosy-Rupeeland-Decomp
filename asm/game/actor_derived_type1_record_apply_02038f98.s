@@ -2,7 +2,7 @@
 .text
 .extern Heap_Alloc
 .extern data_020df48c
-.extern func_02005580
+.extern AnimationResource_Init
 .extern ActorDerivedType1_TeardownActiveRecord
 .extern gHeapContext
 
@@ -22,7 +22,7 @@ ActorDerivedType1_ApplyActiveRecord: ; 0x02038f98
     ldrh r1, [r3, #0x20]
     ldrh r2, [r3, #0x22]
     ldrh r3, [r3, #0x24]
-    bl func_02005580
+    bl AnimationResource_Init
 .L_02038fd0:
     str r0, [r4, #0x274]
     mov r0, r4

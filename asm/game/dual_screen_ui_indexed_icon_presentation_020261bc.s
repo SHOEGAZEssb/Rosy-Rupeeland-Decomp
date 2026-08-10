@@ -6,7 +6,7 @@
 .extern data_020d4746
 .extern data_020d6b20
 .extern data_020d6b50
-.extern func_02005698
+.extern AnimationBinding_Init
 .extern func_02005c90
 .extern func_02005cec
 .extern func_02025a44
@@ -73,7 +73,7 @@ func_020261bc: ; 0x020261bc
     ldrh r2, [r2, r4]
     ldrh r3, [r1, r4]
     ldr r1, [r5, #0xa8]
-    bl func_02005698
+    bl AnimationBinding_Init
 .L_02026290:
     str r0, [r5, #0xd0]
     ldr r1, [r0, #0x0]

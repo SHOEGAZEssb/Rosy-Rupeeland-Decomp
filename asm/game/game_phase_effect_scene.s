@@ -11,7 +11,7 @@
 .extern data_020d542c
 .extern data_020cdc1c
 .extern data_021052fc
-.extern func_02005580
+.extern AnimationResource_Init
 .extern func_02005c3c
 .extern func_02007f0c
 .extern ActorCollection_GetSpriteOwner
@@ -56,7 +56,7 @@ L_0200ca54:
     ldr r1, L_0200cc30
     sub r2, r1, #0xa
     add r3, r1, #0x1
-    bl func_02005580
+    bl AnimationResource_Init
 L_0200ca80:
     ldr r1, L_0200cc24
     str r0, [r6, #0x24]
@@ -92,7 +92,7 @@ L_0200cadc:
     ldr r1, L_0200cc38
     sub r2, r1, #0x1a
     add r3, r1, #0x1
-    bl func_02005580
+    bl AnimationResource_Init
 L_0200cb08:
     ldr r1, L_0200cc24
     str r0, [r6, #0x24]
@@ -128,7 +128,7 @@ L_0200cb64:
     ldr r1, L_0200cc3c
     sub r2, r1, #0x2
     add r3, r1, #0x1
-    bl func_02005580
+    bl AnimationResource_Init
 L_0200cb90:
     ldr r1, L_0200cc24
     str r0, [r6, #0x24]

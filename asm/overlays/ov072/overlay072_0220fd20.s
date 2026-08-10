@@ -6,7 +6,7 @@
 .extern data_021052fc
 .extern data_ov072_02210b0c
 .extern data_ov072_02210b38
-.extern func_02005580
+.extern AnimationResource_Init
 .extern func_02005c3c
 .extern Type7Actor_EnterSpecialPresentationState
 .extern gHeapContext
@@ -45,7 +45,7 @@ func_ov072_0220fd20:
     ldr r1, .L_0220fef4
     sub r2, r1, #0xc7
     add r3, r1, #0x1
-    bl func_02005580
+    bl AnimationResource_Init
 .L_0220fda4:
     str r0, [r6, #0x24]
     b .L_0220fdd4
@@ -58,7 +58,7 @@ func_ov072_0220fd20:
     ldr r1, .L_0220fef8
     sub r2, r1, #0xc9
     add r3, r1, #0x1
-    bl func_02005580
+    bl AnimationResource_Init
 .L_0220fdd0:
     str r0, [r6, #0x24]
 .L_0220fdd4:
@@ -86,7 +86,7 @@ func_ov072_0220fd20:
     ldr r1, .L_0220fefc
     sub r2, r1, #0x54
     add r3, r1, #0x1
-    bl func_02005580
+    bl AnimationResource_Init
 .L_0220fe38:
     str r0, [r6, #0x28]
     b .L_0220fe68
@@ -99,7 +99,7 @@ func_ov072_0220fd20:
     ldr r1, .L_0220ff00
     sub r2, r1, #0x56
     add r3, r1, #0x1
-    bl func_02005580
+    bl AnimationResource_Init
 .L_0220fe64:
     str r0, [r6, #0x28]
 .L_0220fe68:

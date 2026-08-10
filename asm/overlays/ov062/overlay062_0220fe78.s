@@ -11,7 +11,7 @@
 .extern data_ov062_02211b68
 .extern data_ov062_02211b70
 .extern func_02005058
-.extern func_02005580
+.extern AnimationResource_Init
 .extern func_02005c3c
 .extern func_0201f864
 .extern func_02072b68
@@ -146,7 +146,7 @@ func_ov062_0220fe78:
     ldr r1, .L_02210170
     sub r2, r1, #0x12
     add r3, r1, #0x1
-    bl func_02005580
+    bl AnimationResource_Init
 .L_02210050:
     mov r2, #0x0
     str r0, [r6, #0x2c]

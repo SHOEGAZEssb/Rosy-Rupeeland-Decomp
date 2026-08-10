@@ -10,10 +10,10 @@
  * left.y-right.y. Only difference changes, no SDK or hardware call occurs,
  * and no value is returned.
  */
-void func_02005880(TouchPoint *difference, const TouchPoint *left,
+void TouchPoint_Subtract(TouchPoint *difference, const TouchPoint *left,
                    const TouchPoint *right)
 {
-    func_020057dc(difference);
+    TouchPoint_InitZero(difference);
     difference->x = left->x - right->x;
     difference->y = left->y - right->y;
 }

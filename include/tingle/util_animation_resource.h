@@ -30,16 +30,16 @@ extern "C" {
 
 extern UtilAnimationResourceVTable data_020d4168;
 
-UtilAnimationResource *func_0200572c(
+UtilAnimationResource *UtilAnimationResource_Init(
     UtilAnimationResource *self, u32 selector, void *owner0, void *owner1,
     u32 variant, void *resource0, void *resource1, void *resource2, s32 origin);
-TouchPoint *func_020057dc(TouchPoint *point);
-UtilAnimationResource *func_020057f8(UtilAnimationResource *self);
-UtilAnimationResource *func_020057fc(UtilAnimationResource *self);
-void func_02005810(UtilAnimationResource *self, const TouchPoint *position);
-void func_02005880(TouchPoint *difference, const TouchPoint *left,
+TouchPoint *TouchPoint_InitZero(TouchPoint *point);
+UtilAnimationResource *UtilAnimationResource_Destroy(UtilAnimationResource *self);
+UtilAnimationResource *UtilAnimationResource_DestroyAndFree(UtilAnimationResource *self);
+void UtilAnimationResource_UpdatePosition(UtilAnimationResource *self, const TouchPoint *position);
+void TouchPoint_Subtract(TouchPoint *difference, const TouchPoint *left,
                    const TouchPoint *right);
-void func_020058b8(UtilAnimationResource *self,
+void UtilAnimationResource_ApplyHandlePosition(UtilAnimationResource *self,
                    AnimationBindingHandle *handle,
                    const TouchPoint *position);
 

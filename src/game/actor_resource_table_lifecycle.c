@@ -12,7 +12,7 @@ extern const char data_020df4e8[];
 extern "C" {
 #endif
 extern void *func_02028388(s32 index);
-extern void *func_02005580(void *allocation, u16 first, u16 second, u16 third);
+extern void *AnimationResource_Init(void *allocation, u16 first, u16 second, u16 third);
 #ifdef __cplusplus
 }
 #endif
@@ -49,7 +49,7 @@ void ActorFeedbackResources_Load(void)
             void *resource = Heap_Alloc(0x10, data_020df4e8, 4,
                                         &gHeapContext);
             if (resource != 0)
-                resource = func_02005580(resource, first, second, third);
+                resource = AnimationResource_Init(resource, first, second, third);
             resources[i] = resource;
         } else {
             resources[i] = 0;

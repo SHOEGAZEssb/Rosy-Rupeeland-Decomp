@@ -4,7 +4,7 @@
 .extern data_020c3704
 .extern data_020d6b58
 .extern data_021052fc
-.extern func_02005580
+.extern AnimationResource_Init
 .extern func_02005c3c
 .extern func_02026990
 .extern func_020269a4
@@ -56,7 +56,7 @@ func_02026588: ; 0x02026588
     ldr r1, .L_02026980
     add r2, r1, #0x1
     add r3, r1, #0x2
-    bl func_02005580
+    bl AnimationResource_Init
 .L_0202661c:
     ldr r1, .L_02026978
     str r0, [r9, #0x4]
@@ -69,7 +69,7 @@ func_02026588: ; 0x02026588
     ldr r1, .L_02026984
     sub r2, r1, #0x2
     add r3, r1, #0x1
-    bl func_02005580
+    bl AnimationResource_Init
 .L_0202664c:
     mov r6, #0x0
     str r0, [r9, #0x8]
@@ -137,7 +137,7 @@ func_02026588: ; 0x02026588
     ldr r1, .L_02026988
     add r2, r1, #0x1
     add r3, r1, #0x2
-    bl func_02005580
+    bl AnimationResource_Init
 .L_02026754:
     str r0, [r9, #0x10]
     mov r3, #0x0
@@ -168,7 +168,7 @@ func_02026588: ; 0x02026588
     ldrh r1, [r3, #0x1a]
     ldrh r2, [r3, #0x1c]
     ldrh r3, [r3, #0x1e]
-    bl func_02005580
+    bl AnimationResource_Init
 .L_020267c8:
     str r0, [r9, #0xc]
     mov r2, #0x0

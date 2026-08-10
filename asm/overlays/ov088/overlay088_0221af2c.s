@@ -8,7 +8,7 @@
 .extern func_0200222c
 .extern func_020022dc
 .extern func_02005058
-.extern func_02005580
+.extern AnimationResource_Init
 .extern ActorCollection_GetSpriteOwner
 .extern Actor_GetCollection
 .extern func_02034a60
@@ -39,7 +39,7 @@ func_ov088_0221af2c:
     ldrh r1, [r3, #0x14]
     ldrh r2, [r3, #0x16]
     ldrh r3, [r3, #0x18]
-    bl func_02005580
+    bl AnimationResource_Init
 .L_0221af7c:
     mov r7, r0
     str r0, [r6, #0x24c]

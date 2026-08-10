@@ -42,7 +42,7 @@ extern const char data_020d6270[];
 extern u8 *data_021052fc;
 extern void *func_0201e250(void *self);
 extern AuxiliarySpriteConfig *func_0201f0fc(AuxiliarySpriteConfig *config);
-extern void *func_02005580(void *self, s32 first, s32 second, s32 third);
+extern void *AnimationResource_Init(void *self, s32 first, s32 second, s32 third);
 extern void *func_0201e584(void *self, AuxiliarySpriteConfig *config,
                            s32 spriteValue, s32 offset);
 extern void func_02005058(void *track);
@@ -67,7 +67,7 @@ static AuxiliaryTimedSpritePresentation *initialize_auxiliary_presentation(
     self->auxiliary0c =
         (u8 *)Heap_Alloc(0x10, data_020d6270, 4, &gHeapContext);
     if (self->auxiliary0c != 0) {
-        func_02005580(self->auxiliary0c, auxiliaryFirst, auxiliarySecond,
+        AnimationResource_Init(self->auxiliary0c, auxiliaryFirst, auxiliarySecond,
                       auxiliaryThird);
     }
     func_0201f0fc(&config);

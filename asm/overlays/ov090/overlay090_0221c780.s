@@ -2,7 +2,7 @@
 ; Matching fallback for the portable implementation in src/overlays/ov090/overlay090_recovery.c.
 .extern data_ov090_0221cc88
 .extern DisplayController_GetVerticalOffset
-.extern func_02005810
+.extern UtilAnimationResource_UpdatePosition
 .extern func_02072b68
 .extern func_020bf1f8
 .extern func_ov090_0221b97c
@@ -170,7 +170,7 @@ func_ov090_0221c780:
     bl func_ov090_0221ca14
     ldr r0, [r4, #0x4]
     add r1, sp, #0xc
-    bl func_02005810
+    bl UtilAnimationResource_UpdatePosition
     ldr r0, [r4, #0x8]
     cmp r0, #0x0
     beq .L_0221c9ec
@@ -179,7 +179,7 @@ func_ov090_0221c780:
     bl func_ov090_0221ca14
     ldr r0, [r4, #0x8]
     add r1, sp, #0x0
-    bl func_02005810
+    bl UtilAnimationResource_UpdatePosition
 .L_0221c9ec:
     add sp, sp, #0x24
     ldmia sp!, {r3, r4, r5, r6, r7, r8, r9, r10, pc}

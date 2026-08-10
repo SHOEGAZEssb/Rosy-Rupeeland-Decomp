@@ -21,10 +21,10 @@ typedef char AnimationBindingSizeCheck[
 extern "C" {
 #endif
 
-AnimationBinding *func_02005698(AnimationBinding *self, void *owner,
+AnimationBinding *AnimationBinding_Init(AnimationBinding *self, void *owner,
                                 void *resource0, void *resource1,
                                 void *resource2, u8 variant);
-AnimationBinding *func_02005708(AnimationBinding *self);
+AnimationBinding *AnimationBinding_Destroy(AnimationBinding *self);
 
 #ifdef __cplusplus
 }

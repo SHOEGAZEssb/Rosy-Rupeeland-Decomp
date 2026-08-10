@@ -29,7 +29,7 @@ static AnimationResource *createResources(void *resource1, void *resource2)
     AnimationResource *result = (AnimationResource *)Heap_Alloc(
         0x10, (const char *)data_020d542c, 4, &gHeapContext);
     if (result != 0)
-        func_02005580(result, (void *)0x1001, resource1, resource2);
+        AnimationResource_Init(result, (void *)0x1001, resource1, resource2);
     return result;
 }
 

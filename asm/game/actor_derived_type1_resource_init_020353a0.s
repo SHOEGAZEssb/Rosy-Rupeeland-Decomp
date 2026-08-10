@@ -4,7 +4,7 @@
 .extern Heap_Alloc
 .extern data_020c3d90
 .extern data_020df48c
-.extern func_02005580
+.extern AnimationResource_Init
 .extern ActorCollection_GetSpriteOwner
 .extern func_020313b4
 .extern Actor_GetCollection
@@ -48,7 +48,7 @@ ActorDerivedType1_InitializeResources: ; 0x020353a0
     ldr r1, [r4, r8, lsl #0x2]
     add r3, r4, r8, lsl #0x2
     ldmib r3, {r2, r3}
-    bl func_02005580
+    bl AnimationResource_Init
 .L_02035418:
     add r1, r10, r7, lsl #0x2
     add r7, r7, #0x1
@@ -71,7 +71,7 @@ ActorDerivedType1_InitializeResources: ; 0x020353a0
     ldr r1, .L_020354e4
     add r2, r1, #0x1
     add r3, r1, #0x2
-    bl func_02005580
+    bl AnimationResource_Init
 .L_02035470:
     str r0, [r10, #0x22c]
     b .L_02035480

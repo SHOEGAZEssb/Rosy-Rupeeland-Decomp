@@ -2,7 +2,7 @@
 .text
 .extern Heap_Free
 .extern data_020d6b20
-.extern func_02005708
+.extern AnimationBinding_Destroy
 .extern func_02005cc8
 .extern func_02025bdc
 
@@ -17,7 +17,7 @@ func_02026308: ; 0x02026308
     cmp r4, #0x0
     beq .L_02026334
     mov r0, r4
-    bl func_02005708
+    bl AnimationBinding_Destroy
     mov r0, r4
     bl Heap_Free
 .L_02026334:

@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/type7_auxiliary_presentation.c.
 .extern Heap_Alloc
-.extern func_02005580
+.extern AnimationResource_Init
 .extern Actor_GetCollection
 .extern ActorCollection_GetSpriteOwner
 .extern func_02073fc4
@@ -32,7 +32,7 @@ Type7AuxiliaryPresentation_Init: ; 0x0204c798
     ldr r1, .L_0204c850
     add r2, r1, #0x1
     add r3, r1, #0x2
-    bl func_02005580
+    bl AnimationResource_Init
 .L_0204c7e0:
     mov r5, r0
     str r0, [r4, #0xc]

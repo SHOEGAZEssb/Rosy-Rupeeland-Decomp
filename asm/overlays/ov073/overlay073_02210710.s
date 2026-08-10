@@ -7,7 +7,7 @@
 .extern data_ov073_02210c14
 .extern func_0200500c
 .extern func_02005058
-.extern func_02005580
+.extern AnimationResource_Init
 .extern func_02007f0c
 .extern func_0201e250
 .extern func_0201f864
@@ -82,7 +82,7 @@ func_ov073_02210710:
     ldr r1, [sp, #0x4c]
     ldr r2, [sp, #0x50]
     ldr r3, [sp, #0x54]
-    bl func_02005580
+    bl AnimationResource_Init
 .L_02210810:
     ldr r1, .L_022108fc
     str r0, [r9, #0x14]

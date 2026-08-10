@@ -2,7 +2,7 @@
 .text
 .extern Heap_Alloc
 .extern data_020df48c
-.extern func_02005580
+.extern AnimationResource_Init
 .extern ActorCollection_GetSpriteOwner
 .extern Actor_GetCollection
 .extern func_020740c8
@@ -28,7 +28,7 @@ Actor_ReplaceAttachmentSlotResource: ; 0x02039720
     ldr r3, [sp, #0x20]
     mov r1, r9
     mov r2, r6
-    bl func_02005580
+    bl AnimationResource_Init
     mov r5, r0
 .L_0203976c:
     cmp r4, #0x0

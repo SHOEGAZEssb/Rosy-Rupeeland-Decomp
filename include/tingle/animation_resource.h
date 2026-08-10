@@ -29,13 +29,13 @@ extern "C" {
 
 extern AnimationResourceVTable data_020d4178;
 
-AnimationResource *func_02005580(AnimationResource *self, void *resource0,
+AnimationResource *AnimationResource_Init(AnimationResource *self, void *resource0,
                                  void *resource1, void *resource2);
-AnimationResource *func_020055d0(AnimationResource *self);
-AnimationResource *func_020055fc(AnimationResource *self);
-void func_02005630(AnimationResource *self,
+AnimationResource *AnimationResource_Destroy(AnimationResource *self);
+AnimationResource *AnimationResource_DestroyAndFree(AnimationResource *self);
+void AnimationResource_RebindFrom(AnimationResource *self,
                    const AnimationResource *source);
-AnimationResource *func_0200567c(AnimationResource *self,
+AnimationResource *AnimationResource_Assign(AnimationResource *self,
                                  const AnimationResource *source);
 
 #ifdef __cplusplus

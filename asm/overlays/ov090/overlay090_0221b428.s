@@ -6,7 +6,7 @@
 .extern data_ov090_0221cc00
 .extern func_0200500c
 .extern func_02005058
-.extern func_02005580
+.extern AnimationResource_Init
 .extern func_02007f0c
 .extern func_0201e0ec
 .extern ActorCollection_QueueActorForRemoval
@@ -105,7 +105,7 @@ func_ov090_0221b428:
     ldr r1, .L_0221b7d0
     add r2, r1, #0x1
     add r3, r1, #0x2
-    bl func_02005580
+    bl AnimationResource_Init
 .L_0221b55c:
     str r0, [r4, #0x208]
     add r0, sp, #0x50

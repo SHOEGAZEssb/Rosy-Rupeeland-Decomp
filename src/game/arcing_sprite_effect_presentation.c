@@ -18,7 +18,7 @@ extern "C" {
 extern void *data_020d6740;extern const char data_020d6760[];
 extern const s16 data_020c9670[];extern u8 data_02105610;extern void *gSoundContext;
 extern void *func_0201e250(void *);extern void *func_0201e28c(void *);
-extern void *func_02005580(void *,s32,s32,s32);extern u8 *func_02005c3c(void *,void *,s32,s32,s32,s32,s32);
+extern void *AnimationResource_Init(void *,s32,s32,s32);extern u8 *func_02005c3c(void *,void *,s32,s32,s32,s32,s32);
 extern void func_02005afc(void *,s32,s32,s32,s32);extern void func_02004fe0(void *);
 extern void func_02005058(void *);extern void func_0200637c(void *);extern void func_020064b8(void *,void *,s32);
 extern void func_02006918(void *,const void *,const void *,const void *);extern void func_02008378(void *,const void *,const void *);
@@ -45,9 +45,9 @@ ArcingSpriteEffectPresentation *func_02023434(
     self->frame14=0;self->duration16=(s16)duration;self->state18=0;
     self->amplitude1a=0x30;self->switchResource20=(u8)switchResource;
     self->firstDescriptor08=(u8 *)Heap_Alloc(0x10,data_020d6760,4,&gHeapContext);
-    if(self->firstDescriptor08)func_02005580(self->firstDescriptor08,0x1714,0x1715,0x1716);
+    if(self->firstDescriptor08)AnimationResource_Init(self->firstDescriptor08,0x1714,0x1715,0x1716);
     self->secondDescriptor0c=(u8 *)Heap_Alloc(0x10,data_020d6760,4,&gHeapContext);
-    if(self->secondDescriptor0c)func_02005580(self->secondDescriptor0c,0x1625,0x1626,0x1627);
+    if(self->secondDescriptor0c)AnimationResource_Init(self->secondDescriptor0c,0x1625,0x1626,0x1627);
     self->sprite10=func_02005c3c(spriteOwner,self->firstDescriptor08,0,0,0,10,0);
     func_020233c8(&a,first,0x4cd);func_020233c8(&b,second,0xb33);
     func_02008378(&combined,&a,&b);func_02005058(&b);func_02005058(&a);

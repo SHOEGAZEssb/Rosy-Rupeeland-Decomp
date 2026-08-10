@@ -9,7 +9,7 @@ extern void *gGameWork;
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *func_02005580(void *storage, u32 first, u32 second, u32 third);
+extern void *AnimationResource_Init(void *storage, u32 first, u32 second, u32 third);
 extern s32 GameWork_TestFlag(void *work, u32 flag);
 extern void *Actor_GetCollection(void *actor);
 extern void *ActorCollection_GetSpriteOwner(void *collection);
@@ -29,7 +29,7 @@ static void *allocateResource(u32 first, u32 second, u32 third)
     void *resource = Heap_Alloc(0x10, (const char *)data_020df48c, 4,
                                 &gHeapContext);
 
-    if (resource != 0) resource = func_02005580(resource, first, second, third);
+    if (resource != 0) resource = AnimationResource_Init(resource, first, second, third);
     return resource;
 }
 

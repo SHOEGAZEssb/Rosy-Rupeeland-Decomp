@@ -7,7 +7,7 @@
 .extern data_020e9fa0
 .extern data_021052fc
 .extern data_021056e4
-.extern func_02005580
+.extern AnimationResource_Init
 .extern func_02028388
 .extern gHeapContext
 
@@ -58,7 +58,7 @@ ActorFeedbackResources_Load: ; 0x02039f6c
     mov r1, r8
     mov r2, r9
     mov r3, r10
-    bl func_02005580
+    bl AnimationResource_Init
 .L_0203a01c:
     str r0, [r6, r7, lsl #0x2]
     b .L_0203a028

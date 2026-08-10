@@ -8,7 +8,7 @@
 .extern data_ov077_02216fd0
 .extern data_ov077_022170d8
 .extern DisplayController_GetVerticalOffset
-.extern func_02005810
+.extern UtilAnimationResource_UpdatePosition
 .extern func_02072b68
 .extern func_ov077_02212e60
 .extern func_ov077_02212f18
@@ -136,7 +136,7 @@ func_ov077_02213c30:
     bl func_ov077_02212f18
     ldr r0, [r10, #0x2c4]
     add r1, sp, #0x4
-    bl func_02005810
+    bl UtilAnimationResource_UpdatePosition
     add r0, r10, #0x200
     ldrh r2, [r0, #0xfc]
     ldr r1, [r10, #0x54]

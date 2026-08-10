@@ -4,7 +4,7 @@
 .extern data_020d66b8
 .extern data_020d6718
 .extern func_02005058
-.extern func_020055d0
+.extern AnimationResource_Destroy
 .extern func_0201e28c
 .extern func_02023c0c
 .extern func_02074330
@@ -39,5 +39,5 @@ func_02023cb0: ; 0x02023cb0
 .L_02023d0c: .word data_020d6718
 .L_02023d10: .word gDebugFont
 .L_02023d14: .word data_020d66b8
-.L_02023d18: .word func_020055d0
+.L_02023d18: .word AnimationResource_Destroy
     .size func_02023cb0, . - func_02023cb0

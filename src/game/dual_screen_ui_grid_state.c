@@ -63,7 +63,7 @@ extern void func_02074058(void *);
 extern void func_02074038(void *, void *);
 extern void func_020740a4(void *);
 extern void func_02074110(void *);
-extern void *func_02005580(void *, s32, s32, s32);
+extern void *AnimationResource_Init(void *, s32, s32, s32);
 extern u8 *func_02005c3c(void *, void *, s32, s32, s32, s32, s32);
 extern void func_02072b68(void *, s32);
 extern s32 func_020befec(s32, s32);
@@ -162,11 +162,11 @@ void func_02026588(DualScreenUiGridState *self, s32 alternateMode)
         self->descriptor04 = (GridResourceDescriptor *)Heap_Alloc(
             0x10, data_020d6b58, 4, &gHeapContext);
         if (self->descriptor04)
-            func_02005580(self->descriptor04, 0x32b2, 0x32b3, 0x32b4);
+            AnimationResource_Init(self->descriptor04, 0x32b2, 0x32b3, 0x32b4);
         self->descriptor08 = (GridResourceDescriptor *)Heap_Alloc(
             0x10, data_020d6b58, 4, &gHeapContext);
         if (self->descriptor08)
-            func_02005580(self->descriptor08, 0x32b5, 0x32b3, 0x32b6);
+            AnimationResource_Init(self->descriptor08, 0x32b5, 0x32b3, 0x32b6);
         for (index = 0; index < 20; index++) {
             self->gridSprites14[index] = func_02005c3c(
                 self->spriteOwner00, self->descriptor08, 2, 0, 0, 0, 2);
@@ -186,7 +186,7 @@ void func_02026588(DualScreenUiGridState *self, s32 alternateMode)
         self->descriptor10 = (GridResourceDescriptor *)Heap_Alloc(
             0x10, data_020d6b58, 4, &gHeapContext);
         if (self->descriptor10)
-            func_02005580(self->descriptor10, 0x1664, 0x1665, 0x1666);
+            AnimationResource_Init(self->descriptor10, 0x1664, 0x1665, 0x1666);
         self->progressSprite70 = func_02005c3c(
             self->spriteOwner00, self->descriptor10, 1, 0, 0, 0, 2);
         *(u16 *)(self->progressSprite70 + 0x2c) = 216;
@@ -198,7 +198,7 @@ void func_02026588(DualScreenUiGridState *self, s32 alternateMode)
         0x10, data_020d6b58, 4, &gHeapContext);
     if (self->runtimeDescriptor0c) {
         u8 *record = *(u8 **)(runtime + 0x29c);
-        func_02005580(self->runtimeDescriptor0c,
+        AnimationResource_Init(self->runtimeDescriptor0c,
                       *(u16 *)(record + 0x1a), *(u16 *)(record + 0x1c),
                       *(u16 *)(record + 0x1e));
     }

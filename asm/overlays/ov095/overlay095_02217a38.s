@@ -2,7 +2,7 @@
 ; Matching fallback for the portable implementation in src/overlays/ov095/overlay095_recovery.c.
 .extern Heap_Alloc
 .extern data_ov095_0221ceb0
-.extern func_02005580
+.extern AnimationResource_Init
 .extern ActorCollection_GetSpriteOwner
 .extern Actor_GetCollection
 .extern ActorExtendedType2_InitializePresentation
@@ -24,7 +24,7 @@ func_ov095_02217a38:
     ldr r2, .L_02217aa4
     ldr r1, .L_02217aa8
     add r3, r2, #0x388
-    bl func_02005580
+    bl AnimationResource_Init
 .L_02217a70:
     mov r4, r0
     str r0, [r5, #0x320]

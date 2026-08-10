@@ -26,14 +26,14 @@ extern AnimationBindingHandle *func_02073fc4(
  * and self is returned. Handle creation is manager-visible SDK state change.
  */
 #ifndef MATCHING
-UtilAnimationResource *func_0200572c(
+UtilAnimationResource *UtilAnimationResource_Init(
     UtilAnimationResource *self, u32 selector, void *owner0, void *owner1,
     u32 variant, void *resource0, void *resource1, void *resource2, s32 origin)
 {
     self->vtable = &data_020d4168;
     self->selector = selector;
     self->origin = origin;
-    func_020057dc(&self->position);
+    TouchPoint_InitZero(&self->position);
 
     self->handles[0] = func_02073fc4(owner0, resource0, resource1, resource2,
                                      variant & 0xff);
@@ -51,7 +51,7 @@ UtilAnimationResource *func_0200572c(
  * Initialize the embedded coordinate object with the shared TouchPoint vtable
  * and zero coordinates, then return it. No touch input or hardware is read.
  */
-TouchPoint *func_020057dc(TouchPoint *point)
+TouchPoint *TouchPoint_InitZero(TouchPoint *point)
 {
     point->vtable = &gSceneTouchInitialData.pointVTable;
     point->x = 0;
@@ -60,13 +60,13 @@ TouchPoint *func_020057dc(TouchPoint *point)
 }
 
 /* Trivial CUtilAnmRes destructor: change no state and return self. */
-UtilAnimationResource *func_020057f8(UtilAnimationResource *self)
+UtilAnimationResource *UtilAnimationResource_Destroy(UtilAnimationResource *self)
 {
     return self;
 }
 
 /* Free the CUtilAnmRes object through the game heap and return its former address. */
-UtilAnimationResource *func_020057fc(UtilAnimationResource *self)
+UtilAnimationResource *UtilAnimationResource_DestroyAndFree(UtilAnimationResource *self)
 {
     Heap_Free(self);
     return self;

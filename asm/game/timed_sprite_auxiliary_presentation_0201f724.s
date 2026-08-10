@@ -7,7 +7,7 @@
 .extern data_021052fc
 .extern func_02005058
 .extern func_020050a4
-.extern func_02005580
+.extern AnimationResource_Init
 .extern func_02009d78
 .extern func_0201ded4
 .extern func_0201e250
@@ -37,7 +37,7 @@ func_0201f724: ; 0x0201f724
     ldr r2, [sp, #0x50]
     ldr r3, [sp, #0x54]
     mov r1, r5
-    bl func_02005580
+    bl AnimationResource_Init
 .L_0201f774:
     str r0, [r4, #0xc]
     add r0, sp, #0x0

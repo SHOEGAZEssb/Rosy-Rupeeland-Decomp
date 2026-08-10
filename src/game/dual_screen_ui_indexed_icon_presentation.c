@@ -50,8 +50,8 @@ extern void func_02005d0c(void *helper, s32 x, s32 y);
 extern u16 func_02028404(void *source);
 extern void func_020755bc(void *font);
 extern void func_020740a4(void *spriteOwner);
-extern void *func_02005698(void *, void *, s32, s32, s32, s32);
-extern void func_02005708(void *wrapper);
+extern void *AnimationBinding_Init(void *, void *, s32, s32, s32, s32);
+extern void AnimationBinding_Destroy(void *wrapper);
 #ifdef __cplusplus
 }
 #endif
@@ -95,7 +95,7 @@ DualScreenUiIndexedIconPresentation *func_020261bc(
     self->iconWrapperd0 = (IndexedIconWrapper *)Heap_Alloc(
         0x14, data_020d6b50, 4, &gHeapContext);
     if (self->iconWrapperd0) {
-        self->iconWrapperd0 = (IndexedIconWrapper *)func_02005698(
+        self->iconWrapperd0 = (IndexedIconWrapper *)AnimationBinding_Init(
             self->iconWrapperd0, self->spriteOwnera8,
             first, second, third, 2);
     }
@@ -113,7 +113,7 @@ DualScreenUiIndexedIconPresentation *func_02026308(
 {
     self->vtable00 = (void **)data_020d6b20;
     if (self->iconWrapperd0) {
-        func_02005708(self->iconWrapperd0);
+        AnimationBinding_Destroy(self->iconWrapperd0);
         Heap_Free(self->iconWrapperd0);
     }
     func_02005cc8(self->helperc8);

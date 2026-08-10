@@ -66,7 +66,7 @@ extern void func_02005058(ControllerVector *);
 extern void func_020050a4(ControllerVector *, const ControllerVector *);
 extern void func_02008378(ControllerVector *, const ControllerVector *,
                           const ControllerVector *);
-extern void *func_02005580(ResourceDescriptor *, s32, s32, s32);
+extern void *AnimationResource_Init(ResourceDescriptor *, s32, s32, s32);
 extern void *func_0206b628(void *, void *, ResourceDescriptor *,
                            ResourceDescriptor *, ResourceDescriptor *, s32,
                            s32, s32, s32, s32, s32, s32, s32);
@@ -116,15 +116,15 @@ RotatingCoreEffectController *func_02025300(
     self->firstDescriptor0c = (ResourceDescriptor *)Heap_Alloc(
         0x10, data_020d6a90, 4, &gHeapContext);
     if (self->firstDescriptor0c)
-        func_02005580(self->firstDescriptor0c, 0x1367, 0x1140, 0x1368);
+        AnimationResource_Init(self->firstDescriptor0c, 0x1367, 0x1140, 0x1368);
     self->secondDescriptor10 = (ResourceDescriptor *)Heap_Alloc(
         0x10, data_020d6a98, 4, &gHeapContext);
     if (self->secondDescriptor10)
-        func_02005580(self->secondDescriptor10, 0x1357, 0x1001, 0x1358);
+        AnimationResource_Init(self->secondDescriptor10, 0x1357, 0x1001, 0x1358);
     self->thirdDescriptor14 = (ResourceDescriptor *)Heap_Alloc(
         0x10, data_020d6a98, 4, &gHeapContext);
     if (self->thirdDescriptor14)
-        func_02005580(self->thirdDescriptor14, 0x1359, 0x1001, 0x135a);
+        AnimationResource_Init(self->thirdDescriptor14, 0x1359, 0x1001, 0x135a);
 
     self->core08 = (u8 *)Heap_Alloc(0x308, data_020d6a90, 4, &gHeapContext);
     if (self->core08) {
@@ -194,7 +194,7 @@ void func_0202564c(RotatingCoreEffectController *self,
     self->optionalDescriptor2c = (ResourceDescriptor *)Heap_Alloc(
         0x10, data_020d6a98, 4, &gHeapContext);
     if (self->optionalDescriptor2c)
-        func_02005580(self->optionalDescriptor2c,
+        AnimationResource_Init(self->optionalDescriptor2c,
                       resource, palette, animation);
 }
 

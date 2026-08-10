@@ -2,7 +2,7 @@
 ; the documented portable implementation and recovered behavior.
 .text
 .extern Heap_Alloc
-.extern func_02005580
+.extern AnimationResource_Init
 .extern data_020d44c0
 .extern data_020d4520
 .extern gHeapContext
@@ -30,7 +30,7 @@ L_0200be40:
     mov r1, r8
     mov r2, r7
     mov r3, r6
-    bl func_02005580
+    bl AnimationResource_Init
     mov r5, r0
 L_0200be70:
     ldr lr, [r5, #0x4]

@@ -7,7 +7,7 @@
 .extern data_ov062_02211c14
 .extern data_ov062_02211c40
 .extern func_02004fe0
-.extern func_02005580
+.extern AnimationResource_Init
 .extern func_02005afc
 .extern func_02005c3c
 .extern Actor_SetDirectionFromVector
@@ -230,7 +230,7 @@ func_ov062_02210b38:
     ldr r1, .L_02211040
     sub r2, r1, #0x10
     add r3, r1, #0x1
-    bl func_02005580
+    bl AnimationResource_Init
 .L_02210e60:
     ldr r1, .L_02211038
     str r0, [r4, #0x5c]
@@ -243,7 +243,7 @@ func_ov062_02210b38:
     ldr r1, .L_02211044
     sub r2, r1, #0x12
     add r3, r1, #0x1
-    bl func_02005580
+    bl AnimationResource_Init
 .L_02210e90:
     mov r2, #0x0
     str r0, [r4, #0x60]
@@ -315,7 +315,7 @@ func_ov062_02210b38:
     ldr r1, .L_02211048
     add r2, r1, #0x1
     add r3, r1, #0x2
-    bl func_02005580
+    bl AnimationResource_Init
 .L_02210f94:
     mov r2, #0x0
     str r0, [r4, #0x68]

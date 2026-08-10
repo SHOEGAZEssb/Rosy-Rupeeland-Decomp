@@ -2,7 +2,7 @@
 ; Matching fallback for the portable implementation in src/overlays/ov089/overlay089_recovery.c.
 .extern Heap_Alloc
 .extern data_ov089_022199f4
-.extern func_02005580
+.extern AnimationResource_Init
 .extern func_02073fc4
 .extern gHeapContext
 
@@ -23,7 +23,7 @@ func_ov089_02217b04:
     mov r1, r7
     mov r2, r6
     mov r3, r5
-    bl func_02005580
+    bl AnimationResource_Init
 .L_02217b44:
     ldrb r1, [sp, #0x1c]
     str r0, [r4, #0x0]

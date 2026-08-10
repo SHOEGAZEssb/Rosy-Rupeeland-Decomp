@@ -3,7 +3,7 @@
 .extern Heap_Alloc
 .extern data_020f4e18
 .extern data_ov088_0221b9fc
-.extern func_02005580
+.extern AnimationResource_Init
 .extern ActorCollection_GetSpriteOwner
 .extern Actor_GetCollection
 .extern func_02071ee0
@@ -48,7 +48,7 @@ func_ov088_02217f38:
     ldrh r1, [r3, #0x4]
     ldrh r2, [r3, #0x6]
     ldrh r3, [r3, #0x8]
-    bl func_02005580
+    bl AnimationResource_Init
 .L_02217fc4:
     mov r6, r0
     str r0, [r5, #0x220]
@@ -100,7 +100,7 @@ func_ov088_02217f38:
     ldr r1, .L_0221812c
     add r2, r1, #0x1
     add r3, r1, #0x2
-    bl func_02005580
+    bl AnimationResource_Init
 .L_02218090:
     mov r6, r0
     str r0, [r5, #0x254]

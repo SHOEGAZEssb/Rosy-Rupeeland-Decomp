@@ -8,7 +8,7 @@
 .extern data_ov065_02210be4
 .extern data_ov065_02210c00
 .extern func_02005030
-.extern func_02005580
+.extern AnimationResource_Init
 .extern func_02005c3c
 .extern func_020742cc
 .extern func_020befec
@@ -63,7 +63,7 @@ func_ov065_022101bc:
     ldr r1, .L_022103bc
     add r2, r1, #0x1
     add r3, r1, #0x2
-    bl func_02005580
+    bl AnimationResource_Init
 .L_02210278:
     ldr r1, .L_022103b4
     str r0, [r10, #0x14c]
@@ -76,7 +76,7 @@ func_ov065_022101bc:
     ldr r1, .L_022103c0
     add r2, r1, #0x1
     add r3, r1, #0x2
-    bl func_02005580
+    bl AnimationResource_Init
 .L_022102a8:
     ldr r1, .L_022103b4
     str r0, [r10, #0x150]
@@ -89,7 +89,7 @@ func_ov065_022101bc:
     ldr r1, .L_022103c4
     sub r2, r1, #0xe
     add r3, r1, #0x1
-    bl func_02005580
+    bl AnimationResource_Init
 .L_022102d8:
     str r0, [r10, #0x154]
     mov r3, #0x0

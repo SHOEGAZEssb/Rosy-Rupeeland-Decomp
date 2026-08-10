@@ -4,9 +4,9 @@
 .extern data_020de8cc
 .extern data_020f4e14
 .extern func_02005030
-.extern func_02005580
-.extern func_020055d0
-.extern func_0200567c
+.extern AnimationResource_Init
+.extern AnimationResource_Destroy
+.extern AnimationResource_Assign
 .extern func_02010854
 .extern func_0201e250
 .extern func_02028c94
@@ -48,22 +48,22 @@ func_02028b98: ; 0x02028b98
     ldr r2, .L_02028c88
     add r0, sp, #0x14
     add r3, r1, #0x1
-    bl func_02005580
+    bl AnimationResource_Init
     add r0, r4, #0x2c
     add r1, sp, #0x14
-    bl func_0200567c
+    bl AnimationResource_Assign
     add r0, sp, #0x14
-    bl func_020055d0
+    bl AnimationResource_Destroy
     ldr r1, .L_02028c8c
     add r0, sp, #0x4
     add r2, r1, #0x1
     add r3, r1, #0x2
-    bl func_02005580
+    bl AnimationResource_Init
     add r0, r4, #0x3c
     add r1, sp, #0x4
-    bl func_0200567c
+    bl AnimationResource_Assign
     add r0, sp, #0x4
-    bl func_020055d0
+    bl AnimationResource_Destroy
     ldr r0, .L_02028c90
     ldr r0, [r0, #0x0]
     bl func_020742cc
@@ -72,7 +72,7 @@ func_02028b98: ; 0x02028b98
     add sp, sp, #0x24
     ldmia sp!, {r4, r5, r6, r7, pc}
 .L_02028c78: .word data_020de8cc
-.L_02028c7c: .word func_020055d0
+.L_02028c7c: .word AnimationResource_Destroy
 .L_02028c80: .word func_02010854
 .L_02028c84: .word 0x138e
 .L_02028c88: .word 0x1078

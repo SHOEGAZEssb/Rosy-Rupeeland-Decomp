@@ -9,7 +9,7 @@
 .extern data_ov052_0220e224
 .extern DisplayBrightness_StartTransition
 .extern DisplayBrightnessPair_GetScreen
-.extern func_02005580
+.extern AnimationResource_Init
 .extern func_02005c3c
 .extern func_020088b8
 .extern func_0201140c
@@ -97,7 +97,7 @@ func_ov052_0220d618:
     ldr r1, .L_0220d874
     add r2, r1, #0x1
     add r3, r1, #0x2
-    bl func_02005580
+    bl AnimationResource_Init
 .L_0220d73c:
     mov r2, #0x0
     str r0, [r4, #0x20]

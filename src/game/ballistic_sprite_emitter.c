@@ -62,10 +62,10 @@ extern void func_0200500c(EmitterVector *value, s32 x, s32 y, s32 z);
 extern void func_02005030(EmitterVector *destination,
                           const EmitterVector *source);
 extern void func_02005058(void *value);
-extern void func_02005580(SpriteResourceDescriptor *descriptor, s32 resource,
+extern void AnimationResource_Init(SpriteResourceDescriptor *descriptor, s32 resource,
                           s32 palette, s32 animation);
-extern void func_020055d0(SpriteResourceDescriptor *descriptor);
-extern void func_0200567c(SpriteResourceDescriptor *destination,
+extern void AnimationResource_Destroy(SpriteResourceDescriptor *descriptor);
+extern void AnimationResource_Assign(SpriteResourceDescriptor *destination,
                           const SpriteResourceDescriptor *source);
 extern void *func_02023890(void *particle, void *spriteOwner,
                            const SpriteResourceDescriptor *resources,
@@ -106,16 +106,16 @@ BallisticSpriteEmitter *func_02023a8c(BallisticSpriteEmitter *self,
     func_0201e250(self);
     self->vtable00 = (void **)data_020d6718;
     func_02005030(&self->position08, position);
-    func_02005580(&self->resources18[0], 0, 0, 0);
-    func_02005580(&self->resources18[1], 0, 0, 0);
+    AnimationResource_Init(&self->resources18[0], 0, 0, 0);
+    AnimationResource_Init(&self->resources18[1], 0, 0, 0);
     func_02023bcc(&self->particles3c);
 
-    func_02005580(&temporary, 0x1714, 0x1715, 0x1716);
-    func_0200567c(&self->resources18[0], &temporary);
-    func_020055d0(&temporary);
-    func_02005580(&temporary, 0x1688, 0x1689, 0x168a);
-    func_0200567c(&self->resources18[1], &temporary);
-    func_020055d0(&temporary);
+    AnimationResource_Init(&temporary, 0x1714, 0x1715, 0x1716);
+    AnimationResource_Assign(&self->resources18[0], &temporary);
+    AnimationResource_Destroy(&temporary);
+    AnimationResource_Init(&temporary, 0x1688, 0x1689, 0x168a);
+    AnimationResource_Assign(&self->resources18[1], &temporary);
+    AnimationResource_Destroy(&temporary);
     self->spriteOwner38 = func_020742cc(gDebugFont);
 
     for (index = 0; index < 6; index++) {
@@ -197,8 +197,8 @@ BallisticSpriteEmitter *func_02023cb0(BallisticSpriteEmitter *self)
     func_02074330(gDebugFont, self->spriteOwner38);
     self->particles3c.vtable00 = (void **)data_020d66b8;
     func_02023c0c(&self->particles3c);
-    func_020055d0(&self->resources18[1]);
-    func_020055d0(&self->resources18[0]);
+    AnimationResource_Destroy(&self->resources18[1]);
+    AnimationResource_Destroy(&self->resources18[0]);
     func_02005058(&self->position08);
     func_0201e28c(self);
     return self;

@@ -2,7 +2,7 @@
 .text
 .extern Heap_Alloc
 .extern data_020d6a98
-.extern func_02005580
+.extern AnimationResource_Init
 .extern gHeapContext
 
     .global func_0202564c
@@ -29,7 +29,7 @@ func_0202564c: ; 0x0202564c
     mov r1, r6
     mov r2, r5
     mov r3, r4
-    bl func_02005580
+    bl AnimationResource_Init
 .L_020256a4:
     str r0, [r7, #0x2c]
     ldmia sp!, {r3, r4, r5, r6, r7, pc}

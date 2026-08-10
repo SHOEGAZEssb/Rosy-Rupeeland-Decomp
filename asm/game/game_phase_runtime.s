@@ -6,7 +6,7 @@
 .extern FrameTaskList_Add
 .extern DisplayController_SetVerticalOffset
 .extern func_020050a4
-.extern func_020057dc
+.extern TouchPoint_InitZero
 .extern func_02006268
 .extern func_02006fd4
 .extern func_02006ff0
@@ -72,7 +72,7 @@ func_02006ae0:
     bl func_020099dc
     add r0, r4, #0xa8
     add r0, r0, #0x3000
-    bl func_020057dc
+    bl TouchPoint_InitZero
     mov r1, #0x0
     add r0, r4, #0x3000
     str r1, [r0, #0xb4]

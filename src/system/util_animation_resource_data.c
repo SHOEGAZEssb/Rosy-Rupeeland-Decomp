@@ -5,8 +5,8 @@
 extern const void *data_020d412c;
 
 UtilAnimationResourceVTable data_020d4168 = {
-    func_020057f8,
-    func_020057fc,
+    UtilAnimationResource_Destroy,
+    UtilAnimationResource_DestroyAndFree,
     0,
     &data_020d412c,
 };

@@ -4,7 +4,7 @@
 .extern data_021052fc
 .extern data_ov088_0221b9fc
 .extern func_020050a4
-.extern func_02005580
+.extern AnimationResource_Init
 .extern Actor_AdjustPositionForTerrainHeight
 .extern Actor_GetCachedTerrainHeight
 .extern func_02034568
@@ -158,7 +158,7 @@ func_ov088_0221aaac:
     ldrh r1, [r3, #0x14]
     ldrh r2, [r3, #0x16]
     ldrh r3, [r3, #0x18]
-    bl func_02005580
+    bl AnimationResource_Init
     mov r5, r0
 .L_0221ace8:
     ldr r1, [r4, #0x250]

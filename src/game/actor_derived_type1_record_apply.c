@@ -7,7 +7,7 @@ extern const char data_020df48c[];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *func_02005580(void *allocation, u16 first, u16 second, u16 third);
+extern void *AnimationResource_Init(void *allocation, u16 first, u16 second, u16 third);
 extern void ActorDerivedType1_TeardownActiveRecord(void *actor);
 #ifdef __cplusplus
 }
@@ -32,7 +32,7 @@ void ActorDerivedType1_ApplyActiveRecord(void *self)
     s32 retain = (*(u32 *)(actor + 0xd0) & 0x4000) == 0;
 
     if (object != 0)
-        object = func_02005580(object, *(u16 *)(descriptor + 0x20),
+        object = AnimationResource_Init(object, *(u16 *)(descriptor + 0x20),
                                *(u16 *)(descriptor + 0x22),
                                *(u16 *)(descriptor + 0x24));
     *(void **)(actor + 0x274) = object;

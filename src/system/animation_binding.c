@@ -29,7 +29,7 @@ extern void func_02074038(void *owner, AnimationBindingHandle *handle);
  * Bit 2 is set in the returned handle's flags, and self is returned. The SDK
  * helpers perform all manager-visible allocation and registration effects.
  */
-AnimationBinding *func_02005698(AnimationBinding *self, void *owner,
+AnimationBinding *AnimationBinding_Init(AnimationBinding *self, void *owner,
                                 void *resource0, void *resource1,
                                 void *resource2, u8 variant)
 {
@@ -46,7 +46,7 @@ AnimationBinding *func_02005698(AnimationBinding *self, void *owner,
  * Release the manager handle using the retained owner, destroy the embedded
  * SDK binding state, and return self. Object storage itself is not freed.
  */
-AnimationBinding *func_02005708(AnimationBinding *self)
+AnimationBinding *AnimationBinding_Destroy(AnimationBinding *self)
 {
     func_02074038(self->owner, self->handle);
     func_02071eb8(&self->resources[0]);

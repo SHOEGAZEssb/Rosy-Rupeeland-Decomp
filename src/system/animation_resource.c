@@ -28,7 +28,7 @@ extern void func_02071ecc(void *state);
  * three caller resources through the global manager at data_020f4e18, and
  * return self. The two SDK helpers perform all resource-manager side effects.
  */
-AnimationResource *func_02005580(AnimationResource *self, void *resource0,
+AnimationResource *AnimationResource_Init(AnimationResource *self, void *resource0,
                                  void *resource1, void *resource2)
 {
     func_02071e90(&self->entries[0]);
@@ -42,7 +42,7 @@ AnimationResource *func_02005580(AnimationResource *self, void *resource0,
  * Restore the class vtable, release the embedded SDK bindings in the retail
  * two-step order, and return self. No object storage is freed here.
  */
-AnimationResource *func_020055d0(AnimationResource *self)
+AnimationResource *AnimationResource_Destroy(AnimationResource *self)
 {
     self->vtable = &data_020d4178;
     func_02071f38(&self->entries[0]);
@@ -54,7 +54,7 @@ AnimationResource *func_020055d0(AnimationResource *self)
  * Release the embedded SDK bindings, free the wrapper through the game heap,
  * and return its former address for the deleting-destructor ABI.
  */
-AnimationResource *func_020055fc(AnimationResource *self)
+AnimationResource *AnimationResource_DestroyAndFree(AnimationResource *self)
 {
     self->vtable = &data_020d4178;
     func_02071f38(&self->entries[0]);
@@ -68,7 +68,7 @@ AnimationResource *func_020055fc(AnimationResource *self)
  * payload at offset 0x10; existing bindings are released first, then the three
  * payloads are registered through the global manager. No value is returned.
  */
-void func_02005630(AnimationResource *self,
+void AnimationResource_RebindFrom(AnimationResource *self,
                    const AnimationResource *source)
 {
     void *resource0 = source->entries[0]->payload10;
@@ -81,11 +81,11 @@ void func_02005630(AnimationResource *self,
 }
 
 /* Rebind from source unless assigning self, then return the destination. */
-AnimationResource *func_0200567c(AnimationResource *self,
+AnimationResource *AnimationResource_Assign(AnimationResource *self,
                                  const AnimationResource *source)
 {
     if (self != source) {
-        func_02005630(self, source);
+        AnimationResource_RebindFrom(self, source);
     }
     return self;
 }

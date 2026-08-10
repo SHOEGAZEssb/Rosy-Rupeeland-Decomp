@@ -13,18 +13,18 @@
  * the result to the other handle. Each application may update coordinates and
  * flag bit 3; no value is returned and no hardware register is written here.
  */
-void func_02005810(UtilAnimationResource *self, const TouchPoint *position)
+void UtilAnimationResource_UpdatePosition(UtilAnimationResource *self, const TouchPoint *position)
 {
     TouchPoint difference;
     AnimationBindingHandle *handle;
 
-    func_02005880(&difference, &self->position, position);
+    TouchPoint_Subtract(&difference, &self->position, position);
     handle = self->selector == 0 ? self->handles[1] : self->handles[0];
-    func_020058b8(self, handle, &difference);
+    UtilAnimationResource_ApplyHandlePosition(self, handle, &difference);
 
     difference.y -= self->origin + 0xc0;
     handle = self->selector == 0 ? self->handles[0] : self->handles[1];
-    func_020058b8(self, handle, &difference);
+    UtilAnimationResource_ApplyHandlePosition(self, handle, &difference);
 }
 
 /*
@@ -34,7 +34,7 @@ void func_02005810(UtilAnimationResource *self, const TouchPoint *position)
  * an ABI parameter only; the manager handle is the sole modified state.
  */
 #ifndef MATCHING
-void func_020058b8(UtilAnimationResource *self,
+void UtilAnimationResource_ApplyHandlePosition(UtilAnimationResource *self,
                    AnimationBindingHandle *handle,
                    const TouchPoint *position)
 {

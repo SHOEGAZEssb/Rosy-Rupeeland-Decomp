@@ -6,7 +6,7 @@
 .extern data_020de8cc
 .extern data_020f4e14
 .extern func_02005058
-.extern func_020055d0
+.extern AnimationResource_Destroy
 .extern func_0201e28c
 .extern func_0202895c
 .extern func_02028cd4
@@ -69,6 +69,6 @@ func_02028dd4: ; 0x02028dd4
 .L_02028e8c: .word data_020de8cc
 .L_02028e90: .word data_020f4e14
 .L_02028e94: .word data_020de89c
-.L_02028e98: .word func_020055d0
+.L_02028e98: .word AnimationResource_Destroy
     .size func_02028dd4, . - func_02028dd4
 

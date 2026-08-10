@@ -7,7 +7,7 @@
 .extern data_021052fc
 .extern func_02005058
 .extern func_020050a4
-.extern func_02005580
+.extern AnimationResource_Init
 .extern func_02009d78
 .extern func_0201ded4
 .extern func_0201e250

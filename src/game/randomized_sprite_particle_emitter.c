@@ -57,9 +57,9 @@ extern void __construct_array(void *, u32, u32, void (*)(void *),
                               void (*)(void *));
 extern void __destroy_arr(void *, u32, u32, void (*)(void *));
 extern void func_02010854(void *);
-extern void func_02005580(void *, s32, s32, s32);
-extern void func_020055d0(void *);
-extern void func_0200567c(void *, const void *);
+extern void AnimationResource_Init(void *, s32, s32, s32);
+extern void AnimationResource_Destroy(void *);
+extern void AnimationResource_Assign(void *, const void *);
 extern void func_0200500c(void *, s32, s32, s32);
 extern void func_02005030(void *, const void *);
 extern void func_02005058(void *);
@@ -105,16 +105,16 @@ RandomizedSpriteParticleEmitter *func_02028b98(
     func_02005030(&self->position_0c, position);
     func_02005030(&self->target_1c, target);
     __construct_array(self->resources_2c, 2, 0x10,
-                      (void (*)(void *))func_02010854, func_020055d0);
+                      (void (*)(void *))func_02010854, AnimationResource_Destroy);
     self->spawnTimer_54 = 0;
     self->frame_58 = frame;
     func_02028c94(&self->particles_5c);
-    func_02005580(temporary, 0x138e, 0x1078, 0x138f);
-    func_0200567c(self->resources_2c, temporary);
-    func_020055d0(temporary);
-    func_02005580(temporary, 0x168b, 0x168c, 0x168d);
-    func_0200567c(self->resources_2c + 0x10, temporary);
-    func_020055d0(temporary);
+    AnimationResource_Init(temporary, 0x138e, 0x1078, 0x138f);
+    AnimationResource_Assign(self->resources_2c, temporary);
+    AnimationResource_Destroy(temporary);
+    AnimationResource_Init(temporary, 0x168b, 0x168c, 0x168d);
+    AnimationResource_Assign(self->resources_2c + 0x10, temporary);
+    AnimationResource_Destroy(temporary);
     self->spriteOwner_4c = func_020742cc(data_020f4e14);
     return self;
 }
@@ -171,7 +171,7 @@ RandomizedSpriteParticleEmitter *func_02028d14(
     func_02071f38(self->resources_2c + 0x14);
     self->particles_5c.vtable_00 = (void **)data_020de89c;
     func_02028cd4(&self->particles_5c);
-    __destroy_arr(self->resources_2c, 2, 0x10, func_020055d0);
+    __destroy_arr(self->resources_2c, 2, 0x10, AnimationResource_Destroy);
     func_02005058(&self->target_1c);
     func_02005058(&self->position_0c);
     func_0201e28c(self);

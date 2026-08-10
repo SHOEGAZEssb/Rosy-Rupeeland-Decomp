@@ -7,7 +7,7 @@ extern const char data_020df48c[];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *func_02005580(void *allocation, u16 first, u16 second, u16 third);
+extern void *AnimationResource_Init(void *allocation, u16 first, u16 second, u16 third);
 extern void *Actor_GetCollection(void *actor);
 extern void *ActorCollection_GetSpriteOwner(void *collection);
 extern void func_020740c8(void *context, void *attachment, s32 first,
@@ -41,7 +41,7 @@ void Actor_ReplaceAttachmentSlotResource(void *self, s32 index, u16 first,
     u8 *old = (u8 *)*slot;
     u8 *resource = (u8 *)Heap_Alloc(0x10, data_020df48c, 4, &gHeapContext);
     if (resource != 0)
-        resource = (u8 *)func_02005580(resource, first, second, third);
+        resource = (u8 *)AnimationResource_Init(resource, first, second, third);
     if (old != 0) {
         u8 *attachment = *(u8 **)(actor + 0x54);
         if (*(u32 *)(old + 4) == *(u32 *)(attachment + 0x14)) {
