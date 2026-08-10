@@ -66,9 +66,9 @@ extern void GameFile_Open(void *, const char *);
 extern void GameFile_Close(void *);
 extern void NclFile_LoadCompressedFromFile(void *, void *, u32, u32);
 extern void func_0202b520(void *, void *, u32, u32);
-extern void func_0202b408(void *, void *, u32, u32);
+extern void CompressedByteBuffer_LoadLz8Payload(void *, void *, u32, u32);
 extern void *func_0202b5f4(void *);
-extern void *func_0202b3e8(void *);
+extern void *CompressedByteBuffer_GetData(void *);
 extern void *func_0202abb0(void *, s32, s32, s32);
 extern void *func_0202b134(void *, s32, s32, s32);
 extern void *func_0202a8b4(void *, s32, s32, s32);
@@ -134,7 +134,7 @@ void func_02029370(DualLayerTileRenderer *self,
     func_0202b520(self->resource_04, file, config->mapOffset_10,
                   config->mapSize_14);
     if (config->optionalSize_2c)
-        func_0202b408(self->optionalResource_0c, file,
+        CompressedByteBuffer_LoadLz8Payload(self->optionalResource_0c, file,
                       config->optionalOffset_28, config->optionalSize_2c);
     self->packedDimensions_20 =
         (u16)config->dimension0_38 | ((u32)(u16)config->dimension1_3a << 16);
@@ -151,7 +151,7 @@ void func_02029370(DualLayerTileRenderer *self,
                     self->layers_28[0], mode, self->field_44, self->width_48);
         }
         map = func_0202b5f4(self->resource_04);
-        optional = func_0202b3e8(self->optionalResource_0c);
+        optional = CompressedByteBuffer_GetData(self->optionalResource_0c);
         func_0202a7fc(self->layers_28[0], file, config->layer0Offset_18,
                       config->layer0Size_1c, map,
                       (s16)(self->packedDimensions_20 & 0xffff),

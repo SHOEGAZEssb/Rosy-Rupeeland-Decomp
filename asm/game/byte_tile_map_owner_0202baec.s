@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/byte_tile_map_owner.c.
 .text
-.extern func_0202b4c0
-.extern func_0202b3f0
+.extern CompressedByteBuffer_IsEmpty
+.extern CompressedByteBuffer_GetByte
 
     .global ByteTileMapOwner_GetCell
     .type ByteTileMapOwner_GetCell, @function
@@ -24,7 +24,7 @@ ByteTileMapOwner_GetCell: ; 0x0202baec
     ldmia sp!, {r4, r5, r6, pc}
 .L_0202bb28:
     add r0, r6, #0xc
-    bl func_0202b4c0
+    bl CompressedByteBuffer_IsEmpty
     cmp r0, #0x0
     movne r0, #0x0
     ldmneia sp!, {r4, r5, r6, pc}
@@ -33,7 +33,7 @@ ByteTileMapOwner_GetCell: ; 0x0202baec
     mov r1, r1, lsl #0x10
     mov r1, r1, lsr #0x10
     mla r1, r4, r1, r5
-    bl func_0202b3f0
+    bl CompressedByteBuffer_GetByte
     cmp r0, #0x80
     subhs r0, r0, #0x100
     ldmia sp!, {r4, r5, r6, pc}

@@ -25,13 +25,13 @@ extern void func_020b44e8(void);
 #endif
 
 /* Initialize an empty buffer; no allocation or SDK state is changed. */
-void func_0202b3bc(CompressedByteBuffer *self)
+void CompressedByteBuffer_Init(CompressedByteBuffer *self)
 {
     self->bytes_00 = 0;
 }
 
 /* Free the payload when present and return self; the retained pointer is not cleared. */
-CompressedByteBuffer *func_0202b3c8(CompressedByteBuffer *self)
+CompressedByteBuffer *CompressedByteBuffer_Destroy(CompressedByteBuffer *self)
 {
     if (self->bytes_00)
         func_02003e38(self->bytes_00);
@@ -39,19 +39,19 @@ CompressedByteBuffer *func_0202b3c8(CompressedByteBuffer *self)
 }
 
 /* Return the owned payload pointer without changing ownership. */
-u8 *func_0202b3e8(CompressedByteBuffer *self)
+u8 *CompressedByteBuffer_GetData(CompressedByteBuffer *self)
 {
     return self->bytes_00;
 }
 
 /* Read and return the byte at the caller-supplied payload index. */
-u8 func_0202b3f0(CompressedByteBuffer *self, s32 index)
+u8 CompressedByteBuffer_GetByte(CompressedByteBuffer *self, s32 index)
 {
     return self->bytes_00[index];
 }
 
 /* Store the low eight bits of value at the caller-supplied payload index. */
-void func_0202b3fc(CompressedByteBuffer *self, s32 index, u8 value)
+void CompressedByteBuffer_SetByte(CompressedByteBuffer *self, s32 index, u8 value)
 {
     self->bytes_00[index] = value;
 }
@@ -64,7 +64,7 @@ void func_0202b3fc(CompressedByteBuffer *self, s32 index, u8 value)
  * return one. The LZ8 header's upper 24 bits are the expanded byte count.
  * This routine assumes self is empty and does not report I/O/allocation errors.
  */
-s32 func_0202b408(CompressedByteBuffer *self, GameFile *file,
+s32 CompressedByteBuffer_LoadLz8Payload(CompressedByteBuffer *self, GameFile *file,
                   s32 fileOffset, u32 compressedSize)
 {
     u8 *compressed;
@@ -88,7 +88,7 @@ s32 func_0202b408(CompressedByteBuffer *self, GameFile *file,
 }
 
 /* Return one when no payload is installed and zero otherwise. */
-s32 func_0202b4c0(const CompressedByteBuffer *self)
+s32 CompressedByteBuffer_IsEmpty(const CompressedByteBuffer *self)
 {
     return self->bytes_00 == 0;
 }

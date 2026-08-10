@@ -22,11 +22,11 @@ extern "C" {
 extern void *data_020deb5c;
 extern void func_0202b4d4(void *self);
 extern void *func_0202b4e4(void *self);
-extern void func_0202b3bc(void *self);
-extern void *func_0202b3c8(void *self);
-extern s32 func_0202b4c0(const void *self);
-extern u8 func_0202b3f0(void *self, s32 index);
-extern void func_0202b3fc(void *self, s32 index, u8 value);
+extern void CompressedByteBuffer_Init(void *self);
+extern void *CompressedByteBuffer_Destroy(void *self);
+extern s32 CompressedByteBuffer_IsEmpty(const void *self);
+extern u8 CompressedByteBuffer_GetByte(void *self, s32 index);
+extern void CompressedByteBuffer_SetByte(void *self, s32 index, u8 value);
 extern void NclFile_Init(void *self);
 extern void NclFile_Destroy(void *self);
 #ifdef __cplusplus
@@ -42,7 +42,7 @@ ByteTileMapOwner *func_0202b9dc(ByteTileMapOwner *self)
 {
     self->vtable_00 = (void **)data_020deb5c;
     func_0202b4d4(self->sizedBuffer_04);
-    func_0202b3bc(self->tileBytes_0c);
+    CompressedByteBuffer_Init(self->tileBytes_0c);
     NclFile_Init(self->metadata_10);
     self->flags_24 &= ~1u;
     self->flags_24 |= 2;
@@ -55,7 +55,7 @@ ByteTileMapOwner *func_0202b9dc(ByteTileMapOwner *self)
 ByteTileMapOwner *func_0202ba4c(ByteTileMapOwner *self)
 {
     NclFile_Destroy(self->metadata_10);
-    func_0202b3c8(self->tileBytes_0c);
+    CompressedByteBuffer_Destroy(self->tileBytes_0c);
     func_0202b4e4(self->sizedBuffer_04);
     return self;
 }
@@ -64,7 +64,7 @@ ByteTileMapOwner *func_0202ba4c(ByteTileMapOwner *self)
 ByteTileMapOwner *func_0202ba74(ByteTileMapOwner *self)
 {
     NclFile_Destroy(self->metadata_10);
-    func_0202b3c8(self->tileBytes_0c);
+    CompressedByteBuffer_Destroy(self->tileBytes_0c);
     func_0202b4e4(self->sizedBuffer_04);
     Heap_Free(self);
     return self;
@@ -74,7 +74,7 @@ ByteTileMapOwner *func_0202ba74(ByteTileMapOwner *self)
 ByteTileMapOwner *func_0202baa4(ByteTileMapOwner *self)
 {
     NclFile_Destroy(self->metadata_10);
-    func_0202b3c8(self->tileBytes_0c);
+    CompressedByteBuffer_Destroy(self->tileBytes_0c);
     func_0202b4e4(self->sizedBuffer_04);
     return self;
 }
@@ -115,9 +115,9 @@ s32 ByteTileMapOwner_GetCell(ByteTileMapOwner *self, s32 x, s32 y)
 
     if (x < 0 || (u32)x >= side || y < 0 || (u32)y >= side)
         return 0;
-    if (func_0202b4c0(self->tileBytes_0c))
+    if (CompressedByteBuffer_IsEmpty(self->tileBytes_0c))
         return 0;
-    value = func_0202b3f0(self->tileBytes_0c, y * side + x);
+    value = CompressedByteBuffer_GetByte(self->tileBytes_0c, y * side + x);
     return value >= 0x80 ? (s32)value - 0x100 : value;
 }
 
@@ -131,9 +131,9 @@ void ByteTileMapOwner_SetCell(ByteTileMapOwner *self, s32 x, s32 y, s8 value)
 
     if (x < 0 || (u32)x >= side || y < 0 || (u32)y >= side)
         return;
-    if (func_0202b4c0(self->tileBytes_0c))
+    if (CompressedByteBuffer_IsEmpty(self->tileBytes_0c))
         return;
-    func_0202b3fc(self->tileBytes_0c, y * side + x, (u8)value);
+    CompressedByteBuffer_SetByte(self->tileBytes_0c, y * side + x, (u8)value);
 }
 
 /* Return one unconditionally; no object state is read or changed. */

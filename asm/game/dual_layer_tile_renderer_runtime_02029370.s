@@ -16,8 +16,8 @@
 .extern func_0202abb0
 .extern func_0202aeac
 .extern func_0202b134
-.extern func_0202b3e8
-.extern func_0202b408
+.extern CompressedByteBuffer_GetData
+.extern CompressedByteBuffer_LoadLz8Payload
 .extern func_0202b520
 .extern func_0202b5f4
 .extern gHeapContext
@@ -54,7 +54,7 @@ func_02029370: ; 0x02029370
     ldr r2, [r5, #0x28]
     add r1, sp, #0x10
     add r0, r6, #0xc
-    bl func_0202b408
+    bl CompressedByteBuffer_LoadLz8Payload
 .L_020293e8:
     ldrsh r1, [r5, #0x38]
     mov r0, #0x10000
@@ -112,7 +112,7 @@ func_02029370: ; 0x02029370
     bl func_0202b5f4
     mov r7, r0
     add r0, r6, #0xc
-    bl func_0202b3e8
+    bl CompressedByteBuffer_GetData
     str r7, [sp, #0x0]
     ldr r2, [r6, #0x20]
     add r1, sp, #0x10

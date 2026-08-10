@@ -12,9 +12,9 @@
 .extern func_020b44e8
 .extern func_02003e38
 
-    .global func_0202b408
-    .type func_0202b408, @function
-func_0202b408: ; 0x0202b408
+    .global CompressedByteBuffer_LoadLz8Payload
+    .type CompressedByteBuffer_LoadLz8Payload, @function
+CompressedByteBuffer_LoadLz8Payload: ; 0x0202b408
     stmdb sp!, {r4, r5, r6, r7, r8, lr}
     mov r8, r1
     mov r6, r3
@@ -61,4 +61,4 @@ func_0202b408: ; 0x0202b408
 .L_0202b4b4: .word data_020deb3c
 .L_0202b4b8: .word gHeapContext
 .L_0202b4bc: .word data_020deb34
-    .size func_0202b408, . - func_0202b408
+    .size CompressedByteBuffer_LoadLz8Payload, . - CompressedByteBuffer_LoadLz8Payload

@@ -12188,43 +12188,43 @@ build build/reports/compressed_byte_buffer_0202b3bc.json: objdiff build/decomp/d
   base_object = build/decomp/asm/game/compressed_byte_buffer_0202b3bc.o
 build build/reports/compressed_byte_buffer_0202b3bc.txt: match_report build/reports/compressed_byte_buffer_0202b3bc.json | tools/report_objdiff.py
   report_json = build/reports/compressed_byte_buffer_0202b3bc.json
-  report_args = --section .text --function func_0202b3bc --require-exact
+  report_args = --section .text --function CompressedByteBuffer_Init --require-exact
 build build/reports/compressed_byte_buffer_0202b3c8.json: objdiff build/decomp/delinks/asm/game/compressed_byte_buffer_0202b3c8.o | build/decomp/asm/game/compressed_byte_buffer_0202b3c8.o
   target_object = build/decomp/delinks/asm/game/compressed_byte_buffer_0202b3c8.o
   base_object = build/decomp/asm/game/compressed_byte_buffer_0202b3c8.o
 build build/reports/compressed_byte_buffer_0202b3c8.txt: match_report build/reports/compressed_byte_buffer_0202b3c8.json | tools/report_objdiff.py
   report_json = build/reports/compressed_byte_buffer_0202b3c8.json
-  report_args = --section .text --function func_0202b3c8 --require-exact
+  report_args = --section .text --function CompressedByteBuffer_Destroy --require-exact
 build build/reports/compressed_byte_buffer_0202b3e8.json: objdiff build/decomp/delinks/asm/game/compressed_byte_buffer_0202b3e8.o | build/decomp/asm/game/compressed_byte_buffer_0202b3e8.o
   target_object = build/decomp/delinks/asm/game/compressed_byte_buffer_0202b3e8.o
   base_object = build/decomp/asm/game/compressed_byte_buffer_0202b3e8.o
 build build/reports/compressed_byte_buffer_0202b3e8.txt: match_report build/reports/compressed_byte_buffer_0202b3e8.json | tools/report_objdiff.py
   report_json = build/reports/compressed_byte_buffer_0202b3e8.json
-  report_args = --section .text --function func_0202b3e8 --require-exact
+  report_args = --section .text --function CompressedByteBuffer_GetData --require-exact
 build build/reports/compressed_byte_buffer_0202b3f0.json: objdiff build/decomp/delinks/asm/game/compressed_byte_buffer_0202b3f0.o | build/decomp/asm/game/compressed_byte_buffer_0202b3f0.o
   target_object = build/decomp/delinks/asm/game/compressed_byte_buffer_0202b3f0.o
   base_object = build/decomp/asm/game/compressed_byte_buffer_0202b3f0.o
 build build/reports/compressed_byte_buffer_0202b3f0.txt: match_report build/reports/compressed_byte_buffer_0202b3f0.json | tools/report_objdiff.py
   report_json = build/reports/compressed_byte_buffer_0202b3f0.json
-  report_args = --section .text --function func_0202b3f0 --require-exact
+  report_args = --section .text --function CompressedByteBuffer_GetByte --require-exact
 build build/reports/compressed_byte_buffer_0202b3fc.json: objdiff build/decomp/delinks/asm/game/compressed_byte_buffer_0202b3fc.o | build/decomp/asm/game/compressed_byte_buffer_0202b3fc.o
   target_object = build/decomp/delinks/asm/game/compressed_byte_buffer_0202b3fc.o
   base_object = build/decomp/asm/game/compressed_byte_buffer_0202b3fc.o
 build build/reports/compressed_byte_buffer_0202b3fc.txt: match_report build/reports/compressed_byte_buffer_0202b3fc.json | tools/report_objdiff.py
   report_json = build/reports/compressed_byte_buffer_0202b3fc.json
-  report_args = --section .text --function func_0202b3fc --require-exact
+  report_args = --section .text --function CompressedByteBuffer_SetByte --require-exact
 build build/reports/compressed_byte_buffer_0202b408.json: objdiff build/decomp/delinks/asm/game/compressed_byte_buffer_0202b408.o | build/decomp/asm/game/compressed_byte_buffer_0202b408.o
   target_object = build/decomp/delinks/asm/game/compressed_byte_buffer_0202b408.o
   base_object = build/decomp/asm/game/compressed_byte_buffer_0202b408.o
 build build/reports/compressed_byte_buffer_0202b408.txt: match_report build/reports/compressed_byte_buffer_0202b408.json | tools/report_objdiff.py
   report_json = build/reports/compressed_byte_buffer_0202b408.json
-  report_args = --section .text --function func_0202b408 --require-exact
+  report_args = --section .text --function CompressedByteBuffer_LoadLz8Payload --require-exact
 build build/reports/compressed_byte_buffer_0202b4c0.json: objdiff build/decomp/delinks/asm/game/compressed_byte_buffer_0202b4c0.o | build/decomp/asm/game/compressed_byte_buffer_0202b4c0.o
   target_object = build/decomp/delinks/asm/game/compressed_byte_buffer_0202b4c0.o
   base_object = build/decomp/asm/game/compressed_byte_buffer_0202b4c0.o
 build build/reports/compressed_byte_buffer_0202b4c0.txt: match_report build/reports/compressed_byte_buffer_0202b4c0.json | tools/report_objdiff.py
   report_json = build/reports/compressed_byte_buffer_0202b4c0.json
-  report_args = --section .text --function func_0202b4c0 --require-exact
+  report_args = --section .text --function CompressedByteBuffer_IsEmpty --require-exact
 build build/reports/compressed_byte_buffer.txt: phony build/reports/compressed_byte_buffer_0202b3bc.txt build/reports/compressed_byte_buffer_0202b3c8.txt build/reports/compressed_byte_buffer_0202b3e8.txt build/reports/compressed_byte_buffer_0202b3f0.txt build/reports/compressed_byte_buffer_0202b3fc.txt build/reports/compressed_byte_buffer_0202b408.txt build/reports/compressed_byte_buffer_0202b4c0.txt
 
 build compressed_byte_buffer: phony build/decomp/src/game/compressed_byte_buffer.o build/decomp/asm/game/compressed_byte_buffer_0202b3bc.o build/decomp/asm/game/compressed_byte_buffer_0202b3c8.o build/decomp/asm/game/compressed_byte_buffer_0202b3e8.o build/decomp/asm/game/compressed_byte_buffer_0202b3f0.o build/decomp/asm/game/compressed_byte_buffer_0202b3fc.o build/decomp/asm/game/compressed_byte_buffer_0202b408.o build/decomp/asm/game/compressed_byte_buffer_0202b4c0.o build/reports/compressed_byte_buffer.txt

@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/byte_tile_map_owner.c.
 .text
 .extern NclFile_Destroy
-.extern func_0202b3c8
+.extern CompressedByteBuffer_Destroy
 .extern func_0202b4e4
 
     .global func_0202ba4c
@@ -12,7 +12,7 @@ func_0202ba4c: ; 0x0202ba4c
     add r0, r4, #0x10
     bl NclFile_Destroy
     add r0, r4, #0xc
-    bl func_0202b3c8
+    bl CompressedByteBuffer_Destroy
     add r0, r4, #0x4
     bl func_0202b4e4
     mov r0, r4

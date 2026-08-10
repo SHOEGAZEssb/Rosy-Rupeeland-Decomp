@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/byte_tile_map_owner.c.
 .text
 .extern func_0202b4d4
-.extern func_0202b3bc
+.extern CompressedByteBuffer_Init
 .extern NclFile_Init
 .extern data_020deb5c
 
@@ -15,7 +15,7 @@ func_0202b9dc: ; 0x0202b9dc
     str r1, [r4, #0x0]
     bl func_0202b4d4
     add r0, r4, #0xc
-    bl func_0202b3bc
+    bl CompressedByteBuffer_Init
     add r0, r4, #0x10
     bl NclFile_Init
     ldr r1, [r4, #0x24]
