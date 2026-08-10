@@ -12,7 +12,7 @@ extern u8 gGridEffectActorRuntimeState[];
  * from eight bits. Return -1 if all 12 bits are occupied. Only allocator state
  * changes; there are no SDK or hardware effects.
  */
-s32 func_0204faac(void)
+s32 GridEffectActorModeAllocator_Reserve(void)
 {
     u32 occupied = FIELD(u32, gGridEffectActorRuntimeState, 4);
     s32 index;

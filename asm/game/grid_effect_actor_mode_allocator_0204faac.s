@@ -1,8 +1,8 @@
 ; Matching retail form; see src/game/grid_effect_actor_mode_allocator.c.
 .extern gGridEffectActorRuntimeState
 .text
-    .global func_0204faac
-func_0204faac:
+    .global GridEffectActorModeAllocator_Reserve
+GridEffectActorModeAllocator_Reserve:
     ldr r0, .L_0204faf8
     mov ip, #0x0
     ldr r0, [r0, #0x4]
@@ -26,5 +26,5 @@ func_0204faac:
     mvn r0, #0x0
     bx lr
 .L_0204faf8: .word gGridEffectActorRuntimeState
-.size func_0204faac, . - func_0204faac
+.size GridEffectActorModeAllocator_Reserve, . - GridEffectActorModeAllocator_Reserve
 

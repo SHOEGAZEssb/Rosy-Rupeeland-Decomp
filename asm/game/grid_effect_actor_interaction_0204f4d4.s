@@ -7,7 +7,7 @@
 .extern ActorMotionAreaFollower_GetPosition
 .extern ActorDerivedType1_TrySetStateVector
 .extern Type7Actor_ClearGlobalRelationshipToActor
-.extern func_0204faac
+.extern GridEffectActorModeAllocator_Reserve
 .extern func_02064a18
 .text
 
@@ -77,7 +77,7 @@ func_0204f4d4: ; 0x0204f4d4
     and r0, r1, r0
     orr r0, r0, #0xff00
     str r0, [r4, #0x5c]
-    bl func_0204faac
+    bl GridEffectActorModeAllocator_Reserve
     ldr r1, .L_0204f604
     strb r0, [r4, #0x21a]
     ldr r0, [r1, #0x0]

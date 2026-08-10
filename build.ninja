@@ -19296,7 +19296,7 @@ build build/reports/grid_effect_actor_registry_0204f990.json: objdiff build/deco
   base_object = build/decomp/asm/game/grid_effect_actor_registry_0204f990.o
 build build/reports/grid_effect_actor_registry_0204f990.txt: match_report build/reports/grid_effect_actor_registry_0204f990.json | tools/report_objdiff.py
   report_json = build/reports/grid_effect_actor_registry_0204f990.json
-  report_args = --section .text --function func_0204f990 --function func_0204f9c0 --function func_0204fa48 --require-exact
+  report_args = --section .text --function GridEffectActorRegistry_Reset --function GridEffectActorRegistry_AcquireSlot --function GridEffectActorRegistry_Unregister --require-exact
 build grid_effect_actor_registry: phony build/decomp/src/game/grid_effect_actor_registry.o build/decomp/asm/game/grid_effect_actor_registry_0204f990.o build/reports/grid_effect_actor_registry_0204f990.txt
 
 grid_effect_actor_mode_allocator_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
@@ -19310,7 +19310,7 @@ build build/reports/grid_effect_actor_mode_allocator_0204faac.json: objdiff buil
   base_object = build/decomp/asm/game/grid_effect_actor_mode_allocator_0204faac.o
 build build/reports/grid_effect_actor_mode_allocator_0204faac.txt: match_report build/reports/grid_effect_actor_mode_allocator_0204faac.json | tools/report_objdiff.py
   report_json = build/reports/grid_effect_actor_mode_allocator_0204faac.json
-  report_args = --section .text --function func_0204faac --require-exact
+  report_args = --section .text --function GridEffectActorModeAllocator_Reserve --require-exact
 build grid_effect_actor_mode_allocator: phony build/decomp/src/game/grid_effect_actor_mode_allocator.o build/decomp/asm/game/grid_effect_actor_mode_allocator_0204faac.o build/reports/grid_effect_actor_mode_allocator_0204faac.txt
 
 grid_effect_actor_registry_control_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++

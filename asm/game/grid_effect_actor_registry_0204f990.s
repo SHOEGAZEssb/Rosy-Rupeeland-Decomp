@@ -6,8 +6,8 @@
 .extern Actor_GetCollection
 .text
 
-    .global func_0204f990
-func_0204f990: ; 0x0204f990
+    .global GridEffectActorRegistry_Reset
+GridEffectActorRegistry_Reset: ; 0x0204f990
     mov r2, #0x0
     ldr r0, .L_0204f9b8
     mov r1, r2
@@ -21,11 +21,11 @@ func_0204f990: ; 0x0204f990
     bx lr
 .L_0204f9b8: .word gGridEffectActorRegistry
 .L_0204f9bc: .word gGridEffectActorRuntimeState
-.size func_0204f990, . - func_0204f990
+.size GridEffectActorRegistry_Reset, . - GridEffectActorRegistry_Reset
 
-    .global func_0204f9c0
+    .global GridEffectActorRegistry_AcquireSlot
 
-func_0204f9c0: ; 0x0204f9c0
+GridEffectActorRegistry_AcquireSlot: ; 0x0204f9c0
     stmdb sp!, {r3, r4, r5, lr}
     mvn r2, #0x0
     mov r3, #0x0
@@ -62,11 +62,11 @@ func_0204f9c0: ; 0x0204f9c0
     ldmia sp!, {r3, r4, r5, pc}
 .L_0204fa40: .word gGridEffectActorRegistry
 .L_0204fa44: .word data_021052fc
-.size func_0204f9c0, . - func_0204f9c0
+.size GridEffectActorRegistry_AcquireSlot, . - GridEffectActorRegistry_AcquireSlot
 
-    .global func_0204fa48
+    .global GridEffectActorRegistry_Unregister
 
-func_0204fa48: ; 0x0204fa48
+GridEffectActorRegistry_Unregister: ; 0x0204fa48
     add r1, r0, #0x200
     ldrsb r3, [r1, #0x1a]
     mvn r1, #0x0
@@ -95,5 +95,5 @@ func_0204fa48: ; 0x0204fa48
     bx lr
 .L_0204faa4: .word gGridEffectActorRuntimeState
 .L_0204faa8: .word gGridEffectActorRegistry
-.size func_0204fa48, . - func_0204fa48
+.size GridEffectActorRegistry_Unregister, . - GridEffectActorRegistry_Unregister
 

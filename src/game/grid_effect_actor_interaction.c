@@ -19,7 +19,7 @@ extern void VecFx32Object_Subtract(void *destination, const void *source);
 extern void ActorDerivedType1_TrySetStateVector(void *actor, const void *position, s32 value,
                           s32 mode);
 extern void Type7Actor_ClearGlobalRelationshipToActor(void *actor);
-extern s32 func_0204faac(void);
+extern s32 GridEffectActorModeAllocator_Reserve(void);
 extern void func_02064a18(void *context, void *subobject);
 #ifdef __cplusplus
 }
@@ -37,7 +37,7 @@ typedef s32 (*ActorPredicate)(void *actor);
  * timer 0x1F2, enable presentation byte 0x3A, clear presentation flag 4, set
  * actor flag 0x1000000, copy the global point into position, fold height into
  * Y and clear height, set the low half of 0x5C to 0xFF00, choose byte 0x21A
- * through func_0204faac, play sound 0x11, and initialize the 0x1F4 subobject.
+ * through GridEffectActorModeAllocator_Reserve, play sound 0x11, and initialize the 0x1F4 subobject.
  * Returns nothing; actor, sound, and grid-related engine state change without
  * direct hardware access.
  */
@@ -64,7 +64,7 @@ void func_0204f4d4(void *actor, const void *trigger)
     FIELD(s32, actor, 0x24) = 0;
     FIELD(u32, actor, 0x5c) =
         (FIELD(u32, actor, 0x5c) & 0xffff0000) | 0xff00;
-    FIELD(u8, actor, 0x21a) = (u8)func_0204faac();
+    FIELD(u8, actor, 0x21a) = (u8)GridEffectActorModeAllocator_Reserve();
     Sound_Play(gSoundContext, 0, 0x11);
     func_02064a18(data_021e9ac0, (u8 *)actor + 0x1f4);
 }

@@ -17,7 +17,7 @@ extern void *func_02030f98(void *actor);
 extern void func_0203130c(void *actor);
 extern void func_02031488(void *actor);
 extern void Type7Actor_ClearGlobalRelationshipToActor(void *actor);
-extern void func_0204fa48(void *actor);
+extern void GridEffectActorRegistry_Unregister(void *actor);
 #ifdef __cplusplus
 }
 #endif
@@ -47,7 +47,7 @@ void *func_0204ec0c(void *self)
 /*
  * Input is an actor. Restore data_020e2664, release owned presentation state,
  * call virtual slot 0xBC, release inherited presentation state, invoke virtual
- * slot 4 on the optional object at 0x1EC, then run func_0204fa48 and final base
+ * slot 4 on the optional object at 0x1EC, then run GridEffectActorRegistry_Unregister and final base
  * teardown. Return self; engine-owned state changes, heap storage is retained,
  * and hardware is not touched directly.
  */
@@ -64,7 +64,7 @@ void *func_0204ec74(void *self)
             *(void (***)(void *))owned;
         owned_vtable[1](owned);
     }
-    func_0204fa48(self);
+    GridEffectActorRegistry_Unregister(self);
     func_0203130c(self);
     return self;
 }

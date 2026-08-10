@@ -4,7 +4,7 @@
 .extern func_02028388
 .extern ActorCollection_SpawnActorFromDescriptor
 .extern ActorSpawnDescriptor_Init
-.extern func_0204f9c0
+.extern GridEffectActorRegistry_AcquireSlot
 .extern func_02062728
 .extern func_02062918
 .extern func_02063064
@@ -20,7 +20,7 @@ func_0204f62c: ; 0x0204f62c
     mov r7, r0
     mov r6, r1
     mov r5, r2
-    bl func_0204f9c0
+    bl GridEffectActorRegistry_AcquireSlot
     movs r4, r0
     moveq r0, #0x0
     beq .L_0204f7d4

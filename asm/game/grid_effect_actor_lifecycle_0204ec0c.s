@@ -6,7 +6,7 @@
 .extern func_0203130c
 .extern func_02031488
 .extern Type7Actor_ClearGlobalRelationshipToActor
-.extern func_0204fa48
+.extern GridEffectActorRegistry_Unregister
 .text
 
     .global func_0204ec0c
@@ -61,7 +61,7 @@ func_0204ec74: ; 0x0204ec74
     blx r1
 .L_0204ecb8:
     mov r0, r4
-    bl func_0204fa48
+    bl GridEffectActorRegistry_Unregister
     mov r0, r4
     bl func_0203130c
     mov r0, r4
@@ -91,7 +91,7 @@ func_0204ecd4: ; 0x0204ecd4
     blx r1
 .L_0204ed18:
     mov r0, r4
-    bl func_0204fa48
+    bl GridEffectActorRegistry_Unregister
     mov r0, r4
     bl func_0203130c
     mov r0, r4

@@ -5,7 +5,7 @@
 .extern gGridEffectActorRegistry
 .extern ActorCollection_QueueActorForRemoval
 .extern Actor_GetCollection
-.extern func_0204f990
+.extern GridEffectActorRegistry_Reset
 .extern func_02071980
 .extern func_02071d4c
 .text
@@ -19,7 +19,7 @@ GridEffectActorRegistry_LoadSharedResource: ; 0x0204fafc
     bl func_02071980
     ldr r1, .L_0204fb28
     str r0, [r1, #0x8]
-    bl func_0204f990
+    bl GridEffectActorRegistry_Reset
     ldmia sp!, {r3, pc}
 .L_0204fb20: .word data_020f4e18
 .L_0204fb24: .word 0x7005

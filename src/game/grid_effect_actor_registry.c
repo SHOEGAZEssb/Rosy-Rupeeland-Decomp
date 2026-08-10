@@ -26,7 +26,7 @@ extern void *Actor_GetCollection(void *actor);
  * clear the mode-allocation word at gGridEffectActorRuntimeState+4. Returns nothing; registry
  * state changes and no SDK or hardware state is affected directly.
  */
-void func_0204f990(void)
+void GridEffectActorRegistry_Reset(void)
 {
     s32 i;
     for (i = 0; i < 12; i++)
@@ -41,7 +41,7 @@ void func_0204f990(void)
  * global flag 0x10 at data_021052fc+0x30B8, and return its slot for reuse. The
  * evicted actor and global state change; no direct hardware effects occur.
  */
-void **func_0204f9c0(void)
+void **GridEffectActorRegistry_AcquireSlot(void)
 {
     s32 i;
     s32 greatest_age = -1;
@@ -70,7 +70,7 @@ void **func_0204f9c0(void)
  * clear the first one equal to the actor. Returns nothing; registry state may
  * change, and no SDK or hardware state is affected directly.
  */
-void func_0204fa48(void *actor)
+void GridEffectActorRegistry_Unregister(void *actor)
 {
     s8 mode = FIELD(s8, actor, 0x21a);
     s32 i;

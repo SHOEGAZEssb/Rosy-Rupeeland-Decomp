@@ -16,7 +16,7 @@ extern "C" {
 #endif
 extern void *ActorCollection_QueueActorForRemoval(void *value, void *actor);
 extern void *Actor_GetCollection(void *actor);
-extern void func_0204f990(void);
+extern void GridEffectActorRegistry_Reset(void);
 extern void func_02071d4c(void *archive, void *resource);
 extern void *func_02071980(void *archive, u32 resource_id);
 #ifdef __cplusplus
@@ -31,13 +31,13 @@ typedef void (*ActorStateCallback)(void *actor, s32 value);
 /*
  * Ignore all register inputs. Acquire shared resource 0x7005 from
  * data_020f4e18, store it at gGridEffectActorRuntimeState+8, then initialize the registry
- * through func_0204f990. Returns nothing; resource and registry state change
+ * through GridEffectActorRegistry_Reset. Returns nothing; resource and registry state change
  * without direct hardware access.
  */
 void GridEffectActorRegistry_LoadSharedResource(void)
 {
     FIELD(void *, gGridEffectActorRuntimeState, 8) = func_02071980(data_020f4e18, 0x7005);
-    func_0204f990();
+    GridEffectActorRegistry_Reset();
 }
 
 /*
