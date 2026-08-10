@@ -36,14 +36,15 @@ static s32 callback_pair_matches(const u8 *actor, void *first, void *second)
  * for callback pair data_020e16b0+0x108/data_020e17b8 and by one otherwise,
  * then add 0x20000 for collision bit +0xd0/0x40000 or 0x10000 otherwise.
  *
- * When flag four is clear or Type7Actor_HasSpecialCallbackPair recognizes the callback, compare
- * the recovered distance between actor fields +0x1c and +0x218 to that limit
- * and return zero when within it. Otherwise, or when beyond it, restore +0x214
- * from saved transform +0x224 if flag four is set, null +0x210, install
- * data_020e1928 for 120 ticks, and return one. Actor transform and callback
- * state may change; there are no SDK or hardware effects.
+ * When flag four is clear or Type7Actor_HasSpecialCallbackPair recognizes the
+ * callback, compare the recovered distance between actor fields +0x1c and
+ * +0x218 to that limit and return zero when within it. Otherwise, or when
+ * beyond it, restore +0x214 from saved transform +0x224 if flag four is set,
+ * null +0x210, install data_020e1928 for 120 ticks, and return one. Actor
+ * transform and callback state may change; there are no SDK or hardware
+ * effects.
  */
-s32 func_0204820c(void *self)
+s32 Type7Actor_TryCancelDistantTarget(void *self)
 {
     u8 *actor = (u8 *)self;
     u8 *globalObject = *(u8 **)(data_021052fc + 0x2ea4);
@@ -76,7 +77,7 @@ s32 func_0204820c(void *self)
  * Otherwise null actor +0x210, install data_020e1920 with duration -1, and
  * return one. Actor callback state may change; no SDK or hardware effect occurs.
  */
-s32 func_0204832c(void *self)
+s32 Type7Actor_TryInstallGlobalTargetCallback(void *self)
 {
     u8 *actor = (u8 *)self;
     u8 *globalObject = *(u8 **)(data_021052fc + 0x2ea4);

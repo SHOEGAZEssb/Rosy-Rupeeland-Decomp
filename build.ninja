@@ -18270,7 +18270,7 @@ build build/reports/type7_actor_target_state_0204820c.json: objdiff build/decomp
   base_object = build/decomp/asm/game/type7_actor_target_state_0204820c.o
 build build/reports/type7_actor_target_state_0204820c.txt: match_report build/reports/type7_actor_target_state_0204820c.json | tools/report_objdiff.py
   report_json = build/reports/type7_actor_target_state_0204820c.json
-  report_args = --section .text --function func_0204820c --function func_0204832c --require-exact
+  report_args = --section .text --function Type7Actor_TryCancelDistantTarget --function Type7Actor_TryInstallGlobalTargetCallback --require-exact
 build type7_actor_target_state: phony build/decomp/src/game/type7_actor_target_state.o build/decomp/asm/game/type7_actor_target_state_0204820c.o build/reports/type7_actor_target_state_0204820c.txt
 
 type7_actor_object_interaction_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++

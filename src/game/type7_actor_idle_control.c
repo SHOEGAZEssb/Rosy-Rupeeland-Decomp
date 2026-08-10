@@ -21,8 +21,8 @@ extern void GameWork_ClearFlag(void *gameWork, u32 flag);
 extern void Type7Actor_SetCallbackPair(void *actor, u32 first, u32 second, s32 duration);
 extern s32 func_0206cc68(void *object, void *actor, s32 mode);
 extern void func_020099c0(void *context, s32 id, s32 mode);
-extern s32 func_0204832c(void *actor);
-extern s32 func_0204820c(void *actor);
+extern s32 Type7Actor_TryInstallGlobalTargetCallback(void *actor);
+extern s32 Type7Actor_TryCancelDistantTarget(void *actor);
 extern s32 func_0204876c(void *actor, s32 finiteMode);
 extern s32 func_02048a4c(void *actor);
 #ifdef __cplusplus
@@ -87,17 +87,18 @@ void func_02048c2c(void *self, void *object)
 
 /*
  * Input is a type-seven actor. Set flag 0x8000 and try, in order,
- * func_0204832c, func_0204820c, and finite-mode func_0204876c. If none changes
- * state, select animation eleven when +0x1dc is below +0x24, or animation one
- * otherwise. Return zero on every path, matching the callback contract. Actor
- * relation, callback, flags, and animation may change; no direct hardware
- * effect occurs.
+ * Type7Actor_TryInstallGlobalTargetCallback,
+ * Type7Actor_TryCancelDistantTarget, and finite-mode func_0204876c. If none
+ * changes state, select animation eleven when +0x1dc is below +0x24, or
+ * animation one otherwise. Return zero on every path, matching the callback
+ * contract. Actor relation, callback, flags, and animation may change; no
+ * direct hardware effect occurs.
  */
 s32 func_02048d60(void *self)
 {
     u8 *actor = (u8 *)self;
     *(u32 *)(actor + 0x268) |= 0x8000;
-    if (func_0204832c(actor) != 0 || func_0204820c(actor) != 0
+    if (Type7Actor_TryInstallGlobalTargetCallback(actor) != 0 || Type7Actor_TryCancelDistantTarget(actor) != 0
         || func_0204876c(actor, 1) != 0)
         return 0;
     *(u16 *)(actor + 0xd6) =
@@ -117,7 +118,7 @@ s32 func_02048dd0(void *self)
 {
     u8 *actor = (u8 *)self;
     *(u32 *)(actor + 0x268) |= 0x8000;
-    if (func_0204832c(actor) != 0 || func_0204820c(actor) != 0
+    if (Type7Actor_TryInstallGlobalTargetCallback(actor) != 0 || Type7Actor_TryCancelDistantTarget(actor) != 0
         || func_0204876c(actor, 1) != 0)
         return 0;
     if ((*(u32 *)(actor + 0xd0) & 0x40000) != 0

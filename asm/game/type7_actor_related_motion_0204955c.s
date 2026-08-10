@@ -6,7 +6,7 @@
 .extern Type7Actor_UpdateFlag14Bit2FromCondition
 .extern Type7Actor_UpdateFlag14Bit4FromCondition
 .extern Type7Actor_DispatchCurrentCallback
-.extern func_0204820c
+.extern Type7Actor_TryCancelDistantTarget
 .extern func_0204876c
 .extern func_0204a5dc
 .text
@@ -152,7 +152,7 @@ func_020496cc: ; 0x020496cc
     mov r0, #0x0
     ldmia sp!, {r4, pc}
 .L_02049730:
-    bl func_0204820c
+    bl Type7Actor_TryCancelDistantTarget
     cmp r0, #0x0
     movne r0, #0x0
     ldmneia sp!, {r4, pc}

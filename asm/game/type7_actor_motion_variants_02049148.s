@@ -4,8 +4,8 @@
 .extern Actor_GetCachedTerrainHeight
 .extern Type7Actor_UpdateMotionTowardTransform
 .extern Type7Actor_ResetInteractionState
-.extern func_0204820c
-.extern func_0204832c
+.extern Type7Actor_TryCancelDistantTarget
+.extern Type7Actor_TryInstallGlobalTargetCallback
 .extern func_0204876c
 .extern func_0204a2e8
 .extern func_0204a360
@@ -62,12 +62,12 @@ func_02049148: ; 0x02049148
     str r1, [r4, #0x210]
 .L_020491f0:
     mov r0, r4
-    bl func_0204832c
+    bl Type7Actor_TryInstallGlobalTargetCallback
     cmp r0, #0x0
     movne r0, #0x0
     ldmneia sp!, {r4, pc}
     mov r0, r4
-    bl func_0204820c
+    bl Type7Actor_TryCancelDistantTarget
     cmp r0, #0x0
     movne r0, #0x0
     ldmneia sp!, {r4, pc}
@@ -156,12 +156,12 @@ func_0204929c: ; 0x0204929c
     str r1, [r4, #0x210]
 .L_02049344:
     mov r0, r4
-    bl func_0204832c
+    bl Type7Actor_TryInstallGlobalTargetCallback
     cmp r0, #0x0
     movne r0, #0x0
     ldmneia sp!, {r4, pc}
     mov r0, r4
-    bl func_0204820c
+    bl Type7Actor_TryCancelDistantTarget
     cmp r0, #0x0
     movne r0, #0x0
     ldmneia sp!, {r4, pc}
@@ -253,7 +253,7 @@ func_020493f8: ; 0x020493f8
     ldmia sp!, {r4, r5, r6, pc}
 .L_020494a0:
     mov r0, r5
-    bl func_0204832c
+    bl Type7Actor_TryInstallGlobalTargetCallback
     cmp r0, #0x0
     movne r0, #0x0
     ldmneia sp!, {r4, r5, r6, pc}

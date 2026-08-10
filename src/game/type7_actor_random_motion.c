@@ -14,8 +14,8 @@ extern void *func_020050a4(void *destination, const void *source);
 extern u32 genrand_int32(void);
 extern s32 func_020ada8c(s32 value, s32 divisor);
 extern s32 Actor_GetCachedTerrainHeight(void *actor);
-extern s32 func_0204832c(void *actor);
-extern s32 func_0204820c(void *actor);
+extern s32 Type7Actor_TryInstallGlobalTargetCallback(void *actor);
+extern s32 Type7Actor_TryCancelDistantTarget(void *actor);
 extern s32 func_0204876c(void *actor, s32 finiteMode);
 extern void Type7Actor_UpdateMotionTowardTransform(void *actor, const void *transform);
 extern void Type7Actor_ResetInteractionState(void *actor);
@@ -31,7 +31,8 @@ extern void Type7Actor_ResetInteractionState(void *actor);
  * data_020c9670 direction components directly to +0x7c/+0x80. Save
  * Actor_GetCachedTerrainHeight(actor) at +0x84 and null related object +0x210.
  *
- * Try func_0204832c, func_0204820c, and finite-mode func_0204876c in order,
+ * Try Type7Actor_TryInstallGlobalTargetCallback,
+ * Type7Actor_TryCancelDistantTarget, and finite-mode func_0204876c in order,
  * returning zero when any succeeds. Otherwise choose the motion destination:
  * copy current transform +0x18 to +0x78 while signed +0x264 is positive, or
  * saved transform +0x224 when flag four is set. Run
@@ -64,7 +65,7 @@ s32 func_02048fe4(void *self)
         *(s32 *)(actor + 0x84) = Actor_GetCachedTerrainHeight(actor);
         *(void **)(actor + 0x210) = 0;
     }
-    if (func_0204832c(actor) != 0 || func_0204820c(actor) != 0
+    if (Type7Actor_TryInstallGlobalTargetCallback(actor) != 0 || Type7Actor_TryCancelDistantTarget(actor) != 0
         || func_0204876c(actor, 1) != 0)
         return 0;
     if (*(s16 *)(actor + 0x264) > 0)

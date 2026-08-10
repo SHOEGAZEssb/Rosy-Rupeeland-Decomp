@@ -6,8 +6,8 @@
 .extern data_020e18d0
 .extern data_021052fc
 .extern func_020099c0
-.extern func_0204820c
-.extern func_0204832c
+.extern Type7Actor_TryCancelDistantTarget
+.extern Type7Actor_TryInstallGlobalTargetCallback
 .extern Type7Actor_SetCallbackPair
 .extern func_0204876c
 .extern func_02048a4c
@@ -121,12 +121,12 @@ func_02048d60: ; 0x02048d60
     ldr r1, [r4, #0x268]
     orr r1, r1, #0x8000
     str r1, [r4, #0x268]
-    bl func_0204832c
+    bl Type7Actor_TryInstallGlobalTargetCallback
     cmp r0, #0x0
     movne r0, #0x0
     ldmneia sp!, {r4, pc}
     mov r0, r4
-    bl func_0204820c
+    bl Type7Actor_TryCancelDistantTarget
     cmp r0, #0x0
     movne r0, #0x0
     ldmneia sp!, {r4, pc}
@@ -151,12 +151,12 @@ func_02048dd0: ; 0x02048dd0
     ldr r1, [r4, #0x268]
     orr r1, r1, #0x8000
     str r1, [r4, #0x268]
-    bl func_0204832c
+    bl Type7Actor_TryInstallGlobalTargetCallback
     cmp r0, #0x0
     movne r0, #0x0
     ldmneia sp!, {r4, pc}
     mov r0, r4
-    bl func_0204820c
+    bl Type7Actor_TryCancelDistantTarget
     cmp r0, #0x0
     movne r0, #0x0
     ldmneia sp!, {r4, pc}

@@ -9,12 +9,12 @@
 .extern Type7Actor_HasSpecialCallbackPair
 .extern Type7Actor_SetCallbackPair
 .extern func_020adcac
-.global func_0204820c
-.global func_0204832c
-.type func_0204820c, @function
-.type func_0204832c, @function
+.global Type7Actor_TryCancelDistantTarget
+.global Type7Actor_TryInstallGlobalTargetCallback
+.type Type7Actor_TryCancelDistantTarget, @function
+.type Type7Actor_TryInstallGlobalTargetCallback, @function
 
-func_0204820c: ; 0x0204820c
+Type7Actor_TryCancelDistantTarget: ; 0x0204820c
     stmdb sp!, {r3, r4, r5, lr}
     ldr r1, .L_0204831c
     mov r4, r0
@@ -93,7 +93,7 @@ func_0204820c: ; 0x0204820c
 .L_02048324: .word data_020e17b8
 .L_02048328: .word data_020e1928
 
-func_0204832c: ; 0x0204832c
+Type7Actor_TryInstallGlobalTargetCallback: ; 0x0204832c
     stmdb sp!, {r3, lr}
     ldr r1, .L_02048370
     ldr r1, [r1, #0x0]
@@ -114,6 +114,6 @@ func_0204832c: ; 0x0204832c
 .L_02048370: .word data_021052fc
 .L_02048374: .word data_020e1920
 
-.size func_0204820c, func_0204832c - func_0204820c
-.size func_0204832c, . - func_0204832c
+.size Type7Actor_TryCancelDistantTarget, Type7Actor_TryInstallGlobalTargetCallback - Type7Actor_TryCancelDistantTarget
+.size Type7Actor_TryInstallGlobalTargetCallback, . - Type7Actor_TryInstallGlobalTargetCallback
 
