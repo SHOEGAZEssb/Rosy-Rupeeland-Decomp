@@ -11,29 +11,29 @@ typedef struct PresentationTrack {
     u8 bytes[0x10];
 } PresentationTrack;
 
-typedef struct RisingAuxiliaryPresentation {
+typedef struct RisingAuxiliaryTimedSpritePresentation {
     void **vtable;
     u32 field04;
     void *presentation08;
     void *auxiliary0c;
     s16 timer10;
     s16 spriteByte12;
-} RisingAuxiliaryPresentation;
+} RisingAuxiliaryTimedSpritePresentation;
 
 typedef s32 (*ChildUpdate)(void *child, const void *position);
 
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *data_020d6180;
+extern void *gRisingAuxiliaryTimedSpritePresentationVtable;
 extern u8 *data_021052fc;
-extern RisingAuxiliaryPresentation *AuxiliaryTimedSpritePresentation_InitBase(
-    RisingAuxiliaryPresentation *self,
+extern RisingAuxiliaryTimedSpritePresentation *AuxiliaryTimedSpritePresentation_InitBase(
+    RisingAuxiliaryTimedSpritePresentation *self,
     const PresentationTrack *trackSource, void *spriteGroup, s32 auxiliaryFirst,
     s32 auxiliarySecond, s32 auxiliaryThird, s32 spriteValue, s32 offset,
     s32 spriteByte, s32 registerWithManager);
-extern RisingAuxiliaryPresentation *AuxiliaryTimedSpritePresentation_DestroyBase(
-    RisingAuxiliaryPresentation *self);
+extern RisingAuxiliaryTimedSpritePresentation *AuxiliaryTimedSpritePresentation_DestroyBase(
+    RisingAuxiliaryTimedSpritePresentation *self);
 extern void VecFx32Object_InitCopy(PresentationTrack *track, const void *source);
 extern void VecFx32Object_Destroy(void *track);
 extern void *ActorMotionAreaFollower_GetPosition(void *source);
@@ -46,8 +46,8 @@ extern s32 DisplayController_GetSubScreenVerticalOffset(void);
  * Initialize the auxiliary-owning base with the nine incoming values, force
  * its registration flag to one, install this subclass vtable, and return self.
  */
-RisingAuxiliaryPresentation *func_0201fafc(
-    RisingAuxiliaryPresentation *self,
+RisingAuxiliaryTimedSpritePresentation *RisingAuxiliaryTimedSpritePresentation_Init(
+    RisingAuxiliaryTimedSpritePresentation *self,
     const PresentationTrack *trackSource, void *spriteGroup, s32 auxiliaryFirst,
     s32 auxiliarySecond, s32 auxiliaryThird, s32 spriteValue, s32 offset,
     s32 spriteByte)
@@ -55,21 +55,21 @@ RisingAuxiliaryPresentation *func_0201fafc(
     AuxiliaryTimedSpritePresentation_InitBase(self, trackSource, spriteGroup, auxiliaryFirst,
                   auxiliarySecond, auxiliaryThird, spriteValue, offset,
                   spriteByte, 1);
-    self->vtable = (void **)data_020d6180;
+    self->vtable = (void **)gRisingAuxiliaryTimedSpritePresentationVtable;
     return self;
 }
 
 /* Run the shared non-freeing auxiliary teardown and return self. */
-RisingAuxiliaryPresentation *func_0201fb54(
-    RisingAuxiliaryPresentation *self)
+RisingAuxiliaryTimedSpritePresentation *RisingAuxiliaryTimedSpritePresentation_Destroy(
+    RisingAuxiliaryTimedSpritePresentation *self)
 {
     AuxiliaryTimedSpritePresentation_DestroyBase(self);
     return self;
 }
 
 /* Run the shared teardown, free self, and return its old address. */
-RisingAuxiliaryPresentation *func_0201fb68(
-    RisingAuxiliaryPresentation *self)
+RisingAuxiliaryTimedSpritePresentation *RisingAuxiliaryTimedSpritePresentation_DestroyAndFree(
+    RisingAuxiliaryTimedSpritePresentation *self)
 {
     AuxiliaryTimedSpritePresentation_DestroyBase(self);
     Heap_Free(self);
@@ -83,7 +83,8 @@ RisingAuxiliaryPresentation *func_0201fb68(
  * spriteByte12 to nested sprite byte 0x3a, decrement timer10, destroy the
  * temporary position, and return whether the timer became negative.
  */
-s32 func_0201fb84(RisingAuxiliaryPresentation *self)
+s32 RisingAuxiliaryTimedSpritePresentation_Update(
+    RisingAuxiliaryTimedSpritePresentation *self)
 {
     PresentationTrack position;
     s32 finished;

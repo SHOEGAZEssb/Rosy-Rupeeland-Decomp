@@ -11,7 +11,7 @@
 .extern VecFx32Triple_Destroy
 .extern VecFx32Bezier_Evaluate3D
 .extern GamePhaseRuntime_GetActorCollection
-.extern func_0201fafc
+.extern RisingAuxiliaryTimedSpritePresentation_Init
 .extern ActorCollection_GetSpriteOwner
 .extern Actor_RebuildPrimaryAttachment
 .extern func_02059278
@@ -382,7 +382,7 @@ func_ov092_0221893c:
     mov r0, r11
     mov r3, r6
     str r7, [sp, #0x10]
-    bl func_0201fafc
+    bl RisingAuxiliaryTimedSpritePresentation_Init
 .L_02218e60:
     add r9, r9, #0x1
     cmp r9, #0x5

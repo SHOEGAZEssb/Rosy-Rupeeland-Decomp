@@ -7751,25 +7751,25 @@ build build/reports/timed_sprite_rising_auxiliary_presentation_0201fafc.json: ob
   base_object = build/decomp/asm/game/timed_sprite_rising_auxiliary_presentation_0201fafc.o
 build build/reports/timed_sprite_rising_auxiliary_presentation_0201fafc.txt: match_report build/reports/timed_sprite_rising_auxiliary_presentation_0201fafc.json | tools/report_objdiff.py
   report_json = build/reports/timed_sprite_rising_auxiliary_presentation_0201fafc.json
-  report_args = --section .text --function func_0201fafc --require-exact
+  report_args = --section .text --function RisingAuxiliaryTimedSpritePresentation_Init --require-exact
 build build/reports/timed_sprite_rising_auxiliary_presentation_0201fb54.json: objdiff build/decomp/delinks/asm/game/timed_sprite_rising_auxiliary_presentation_0201fb54.o | build/decomp/asm/game/timed_sprite_rising_auxiliary_presentation_0201fb54.o
   target_object = build/decomp/delinks/asm/game/timed_sprite_rising_auxiliary_presentation_0201fb54.o
   base_object = build/decomp/asm/game/timed_sprite_rising_auxiliary_presentation_0201fb54.o
 build build/reports/timed_sprite_rising_auxiliary_presentation_0201fb54.txt: match_report build/reports/timed_sprite_rising_auxiliary_presentation_0201fb54.json | tools/report_objdiff.py
   report_json = build/reports/timed_sprite_rising_auxiliary_presentation_0201fb54.json
-  report_args = --section .text --function func_0201fb54 --require-exact
+  report_args = --section .text --function RisingAuxiliaryTimedSpritePresentation_Destroy --require-exact
 build build/reports/timed_sprite_rising_auxiliary_presentation_0201fb68.json: objdiff build/decomp/delinks/asm/game/timed_sprite_rising_auxiliary_presentation_0201fb68.o | build/decomp/asm/game/timed_sprite_rising_auxiliary_presentation_0201fb68.o
   target_object = build/decomp/delinks/asm/game/timed_sprite_rising_auxiliary_presentation_0201fb68.o
   base_object = build/decomp/asm/game/timed_sprite_rising_auxiliary_presentation_0201fb68.o
 build build/reports/timed_sprite_rising_auxiliary_presentation_0201fb68.txt: match_report build/reports/timed_sprite_rising_auxiliary_presentation_0201fb68.json | tools/report_objdiff.py
   report_json = build/reports/timed_sprite_rising_auxiliary_presentation_0201fb68.json
-  report_args = --section .text --function func_0201fb68 --require-exact
+  report_args = --section .text --function RisingAuxiliaryTimedSpritePresentation_DestroyAndFree --require-exact
 build build/reports/timed_sprite_rising_auxiliary_presentation_0201fb84.json: objdiff build/decomp/delinks/asm/game/timed_sprite_rising_auxiliary_presentation_0201fb84.o | build/decomp/asm/game/timed_sprite_rising_auxiliary_presentation_0201fb84.o
   target_object = build/decomp/delinks/asm/game/timed_sprite_rising_auxiliary_presentation_0201fb84.o
   base_object = build/decomp/asm/game/timed_sprite_rising_auxiliary_presentation_0201fb84.o
 build build/reports/timed_sprite_rising_auxiliary_presentation_0201fb84.txt: match_report build/reports/timed_sprite_rising_auxiliary_presentation_0201fb84.json | tools/report_objdiff.py
   report_json = build/reports/timed_sprite_rising_auxiliary_presentation_0201fb84.json
-  report_args = --section .text --function func_0201fb84 --require-exact
+  report_args = --section .text --function RisingAuxiliaryTimedSpritePresentation_Update --require-exact
 build build/reports/timed_sprite_rising_auxiliary_presentation.txt: phony build/reports/timed_sprite_rising_auxiliary_presentation_0201fafc.txt build/reports/timed_sprite_rising_auxiliary_presentation_0201fb54.txt build/reports/timed_sprite_rising_auxiliary_presentation_0201fb68.txt build/reports/timed_sprite_rising_auxiliary_presentation_0201fb84.txt
 build build/reports/direct_sprite_track_presentation_0201fc28.json: objdiff build/decomp/delinks/asm/game/direct_sprite_track_presentation_0201fc28.o | build/decomp/asm/game/direct_sprite_track_presentation_0201fc28.o
   target_object = build/decomp/delinks/asm/game/direct_sprite_track_presentation_0201fc28.o

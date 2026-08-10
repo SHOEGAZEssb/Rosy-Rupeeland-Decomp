@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/timed_sprite_rising_auxiliary_presentation.c.
 .text
 .extern Heap_Free
-.extern data_020d6180
+.extern gRisingAuxiliaryTimedSpritePresentationVtable
 .extern data_021052fc
 .extern DisplayController_GetSubScreenVerticalOffset
 .extern VecFx32Object_InitCopy
@@ -10,9 +10,9 @@
 .extern AuxiliaryTimedSpritePresentation_InitBase
 .extern AuxiliaryTimedSpritePresentation_DestroyBase
 
-.global func_0201fb84
-    .type func_0201fb84, @function
-func_0201fb84: ; 0x0201fb84
+.global RisingAuxiliaryTimedSpritePresentation_Update
+    .type RisingAuxiliaryTimedSpritePresentation_Update, @function
+RisingAuxiliaryTimedSpritePresentation_Update: ; 0x0201fb84
     stmdb sp!, {r4, lr}
     sub sp, sp, #0x10
     ldr r1, .L_0201fc24
@@ -56,5 +56,5 @@ func_0201fb84: ; 0x0201fb84
     add sp, sp, #0x10
     ldmia sp!, {r4, pc}
 .L_0201fc24: .word data_021052fc
-    .size func_0201fb84, .-func_0201fb84
+    .size RisingAuxiliaryTimedSpritePresentation_Update, .-RisingAuxiliaryTimedSpritePresentation_Update
 
