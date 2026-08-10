@@ -1,6 +1,6 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov097/overlay097_recovery.c.
-.extern func_02030ad4
+.extern ActorCollection_FindActorByDescriptorValue
 .extern func_020337d4
 .extern func_0203e7c8
 .extern func_0204362c
@@ -29,7 +29,7 @@ func_ov097_02218034:
     mov r0, r4
     bl func_020337d4
     mov r1, r5
-    bl func_02030ad4
+    bl ActorCollection_FindActorByDescriptorValue
     str r0, [r4, #0x2c4]
     mov r0, #0x0
     strb r0, [r4, #0x2bd]

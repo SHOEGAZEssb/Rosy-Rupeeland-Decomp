@@ -9,7 +9,7 @@
 .extern func_0201895c
 .extern func_02018998
 .extern func_020189b0
-.extern func_02030ad4
+.extern ActorCollection_FindActorByDescriptorValue
 .extern func_020337d4
 .extern Actor_BuildWorldInteractionBounds
 .extern Actor_SetInteractionBounds
@@ -170,12 +170,12 @@ L_02018868:
     mov r0, r5
     bl func_020337d4
     mov r1, r7
-    bl func_02030ad4
+    bl ActorCollection_FindActorByDescriptorValue
     mov r4, r0
     mov r0, r5
     bl func_020337d4
     mov r1, r6
-    bl func_02030ad4
+    bl ActorCollection_FindActorByDescriptorValue
     mov r1, r0
     add r0, sp, #0x58
     add r2, r1, #0x18

@@ -8,7 +8,7 @@
 .extern func_020127f8
 .extern func_02016f14
 .extern func_02016f28
-.extern func_02030ad4
+.extern ActorCollection_FindActorByDescriptorValue
 .global func_02016e44
 func_02016e44:
     stmdb sp!, {r4, r5, r6, r7, r8, r9, lr}
@@ -33,7 +33,7 @@ func_02016e44:
     ldr r0, [r0]
     bl func_02007f0c
     mov r1, r5
-    bl func_02030ad4
+    bl ActorCollection_FindActorByDescriptorValue
     add r1, r0, #0x18
     add r0, sp, #0x14
     bl func_02005030

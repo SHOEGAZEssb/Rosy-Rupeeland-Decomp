@@ -9,7 +9,7 @@ extern void *data_021052fc;
 extern u8 data_02105310[];
 extern void *func_02007f0c(void *runtime, s32 index);
 extern s32 func_0200b04c(void *state);
-extern void *func_02030ad4(void *collection, s32 index);
+extern void *ActorCollection_FindActorByDescriptorValue(void *collection, s32 index);
 extern void Actor_SetActive(void *actor, s32 active);
 extern void *func_020337d4(void *actor);
 extern void OS_Halt(void);
@@ -47,9 +47,9 @@ s32 func_02015b64(GamePhaseActorScriptVm *self)
 
     mode = *(u32 *)((u8 *)func_020337d4(self->actor_84) + 0x2e84);
     if (mode == 1)
-        target = func_02030ad4(func_02007f0c(runtime, 2), index);
+        target = ActorCollection_FindActorByDescriptorValue(func_02007f0c(runtime, 2), index);
     else if (mode == 2)
-        target = func_02030ad4(func_02007f0c(runtime, 1), index);
+        target = ActorCollection_FindActorByDescriptorValue(func_02007f0c(runtime, 1), index);
     else {
         OS_Halt();
         target = 0; /* OS_Halt does not return; this only makes the C flow explicit. */

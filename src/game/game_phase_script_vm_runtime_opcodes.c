@@ -8,7 +8,7 @@ extern "C" {
 extern void *data_021052fc;
 extern void OS_Halt(void);
 extern void *func_02007f0c(void *runtime, s32 index);
-extern void *func_02030ad4(void *collection, s32 index);
+extern void *ActorCollection_FindActorByDescriptorValue(void *collection, s32 index);
 extern u32 func_0200920c(void *collection, u32 a, u32 b, u32 c, u32 d);
 extern u32 func_020093cc(void *collection, u32 a, u32 b);
 extern void func_020091e8(void *collection);
@@ -53,7 +53,7 @@ s32 func_02012814(GamePhaseScriptVm *self)
         break;
     case 5: {
         void *collection = func_02007f0c(runtime, 1);
-        void *object = func_02030ad4(collection, a);
+        void *object = ActorCollection_FindActorByDescriptorValue(collection, a);
         func_0200a114(runtime + 0x2fbc, object);
         break;
     }

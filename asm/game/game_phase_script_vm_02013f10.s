@@ -8,7 +8,7 @@
 .extern func_0200500c
 .extern func_02005058
 .extern func_02012704
-.extern func_02030ad4
+.extern ActorCollection_FindActorByDescriptorValue
 .extern func_020337d4
 .extern func_ov062_0220fe78
 .extern func_ov062_02210674
@@ -84,7 +84,7 @@ L_0201400c:
     ldr r0, [r10, #0x84]
     bl func_020337d4
     mov r1, r4
-    bl func_02030ad4
+    bl ActorCollection_FindActorByDescriptorValue
     mov r5, r0
     bl func_020022dc
     mov r1, #0x2

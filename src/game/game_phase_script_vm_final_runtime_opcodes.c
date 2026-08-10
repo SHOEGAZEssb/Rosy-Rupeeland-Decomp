@@ -7,7 +7,7 @@ extern "C" {
 #endif
 extern void *data_021052fc;
 extern void *func_02007f0c(void *runtime, s32 index);
-extern void *func_02030ad4(void *collection, s32 index);
+extern void *ActorCollection_FindActorByDescriptorValue(void *collection, s32 index);
 extern void func_020330fc(void *actor, s32 command, s32 value);
 extern s32 func_0204fc6c(void);
 #ifdef __cplusplus
@@ -22,7 +22,7 @@ s32 func_0201b098(GamePhaseActorScriptVm *self)
 {
     s32 value = (s32)func_02012704(&self->base);
     void *collection = func_02007f0c(data_021052fc, 2);
-    void *actor = func_02030ad4(collection, 0);
+    void *actor = ActorCollection_FindActorByDescriptorValue(collection, 0);
     func_020330fc(actor, 0x2a, value);
     return 0;
 }

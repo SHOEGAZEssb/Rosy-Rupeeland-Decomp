@@ -8,7 +8,7 @@ extern "C" {
 extern void *data_021052fc;
 extern void *func_020337d4(void *actor);
 extern void *func_02007f0c(void *runtime, s32 index);
-extern void *func_02030ad4(void *collection, s32 index);
+extern void *ActorCollection_FindActorByDescriptorValue(void *collection, s32 index);
 extern void OS_Halt(void);
 #ifdef __cplusplus
 }
@@ -32,7 +32,7 @@ s32 func_02013ac8(GamePhaseActorScriptVm *self)
     s32 selector = (s32)func_02012704(&self->base);
     u8 *actor;
     if (selector != 0) {
-        actor = (u8 *)func_02030ad4(func_020337d4(self->actor_84), selector);
+        actor = (u8 *)ActorCollection_FindActorByDescriptorValue(func_020337d4(self->actor_84), selector);
     } else if (*(u32 *)((u8 *)func_020337d4(self->actor_84) + 0x2e84) == 1) {
         u8 *collection = (u8 *)func_02007f0c(data_021052fc, 1);
         actor = *(u8 **)(collection + 0x2e7c);
@@ -64,9 +64,9 @@ s32 func_02013b74(GamePhaseActorScriptVm *self)
         return 0;
     mode = *(u32 *)((u8 *)func_020337d4(self->actor_84) + 0x2e84);
     if (mode == 1)
-        target = (u8 *)func_02030ad4(func_02007f0c(runtime, 2), index);
+        target = (u8 *)ActorCollection_FindActorByDescriptorValue(func_02007f0c(runtime, 2), index);
     else if (mode == 2)
-        target = (u8 *)func_02030ad4(func_02007f0c(runtime, 1), index);
+        target = (u8 *)ActorCollection_FindActorByDescriptorValue(func_02007f0c(runtime, 1), index);
     else {
         OS_Halt();
         target = 0;

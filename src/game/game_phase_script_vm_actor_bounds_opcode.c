@@ -25,7 +25,7 @@ typedef struct BoundsCenter {
 extern "C" {
 #endif
 extern const void *data_020d5b10;
-extern void *func_02030ad4(void *collection, s32 index);
+extern void *ActorCollection_FindActorByDescriptorValue(void *collection, s32 index);
 extern void *func_020337d4(void *actor);
 extern void Actor_BuildWorldInteractionBounds(void *destination, void *actor,
                                               void *actorField18);
@@ -113,8 +113,8 @@ s32 func_0201863c(GamePhaseActorScriptVm *self)
         u32 secondState[4];
         u32 result[4];
         u32 scratch[7];
-        u8 *firstActor = (u8 *)func_02030ad4(func_020337d4(actor), first);
-        u8 *secondActor = (u8 *)func_02030ad4(func_020337d4(actor), second);
+        u8 *firstActor = (u8 *)ActorCollection_FindActorByDescriptorValue(func_020337d4(actor), first);
+        u8 *secondActor = (u8 *)ActorCollection_FindActorByDescriptorValue(func_020337d4(actor), second);
         Actor_BuildWorldInteractionBounds(secondState, secondActor,
                                           secondActor + 0x18);
         Actor_BuildWorldInteractionBounds(firstState, firstActor,

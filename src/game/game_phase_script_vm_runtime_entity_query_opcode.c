@@ -10,7 +10,7 @@ extern "C" {
 #endif
 extern void *data_021052fc;
 extern s32 data_020e1964;
-extern void *func_02030ad4(void *collection, s32 index);
+extern void *ActorCollection_FindActorByDescriptorValue(void *collection, s32 index);
 extern void *func_020337d4(void *actor);
 extern s32 func_0204aff4(void *entity);
 extern u8 *func_0204c51c(s32 index);
@@ -85,7 +85,7 @@ s32 func_02018f10(GamePhaseActorScriptVm *self)
         result = *(s32 *)(func_0204c51c(index) + 0x64);
         break;
     case 15: {
-        u8 *actor = (u8 *)func_02030ad4(func_020337d4(self->actor_84), index);
+        u8 *actor = (u8 *)ActorCollection_FindActorByDescriptorValue(func_020337d4(self->actor_84), index);
         result = *(s32 *)(actor + 0x1fc);
         break;
     }

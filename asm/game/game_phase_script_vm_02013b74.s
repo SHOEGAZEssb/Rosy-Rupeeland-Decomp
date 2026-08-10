@@ -5,7 +5,7 @@
 .extern func_02007f0c
 .extern func_02012704
 .extern func_020127f8
-.extern func_02030ad4
+.extern ActorCollection_FindActorByDescriptorValue
 .extern func_020337d4
 
     .global func_02013b74
@@ -37,7 +37,7 @@ func_02013b74: ; 0x02013b74
     ldr r0, [r0, #0x0]
     bl func_02007f0c
     mov r1, r4
-    bl func_02030ad4
+    bl ActorCollection_FindActorByDescriptorValue
     mov r5, r0
     b L_02013c28
 L_02013bec:
@@ -52,7 +52,7 @@ L_02013bec:
     ldr r0, [r0, #0x0]
     bl func_02007f0c
     mov r1, r4
-    bl func_02030ad4
+    bl ActorCollection_FindActorByDescriptorValue
     mov r5, r0
     b L_02013c28
 L_02013c24:

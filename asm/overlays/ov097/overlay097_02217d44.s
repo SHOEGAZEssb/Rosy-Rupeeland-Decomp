@@ -4,7 +4,7 @@
 .extern data_021052fc
 .extern data_ov097_0221a4c8
 .extern func_0201e0ec
-.extern func_02030ad4
+.extern ActorCollection_FindActorByDescriptorValue
 .extern func_020337d4
 .extern func_02034a60
 .extern func_020425d4
@@ -148,7 +148,7 @@ func_ov097_02217d44:
     bl func_ov097_02217fd8
     mov r1, r0
     mov r0, r10
-    bl func_02030ad4
+    bl ActorCollection_FindActorByDescriptorValue
     mov r10, r0
     bl func_ov097_02217fec
     cmp r0, #0x0

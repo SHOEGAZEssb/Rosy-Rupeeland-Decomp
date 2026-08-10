@@ -2,7 +2,7 @@
 .text
 .extern func_02012704
 .extern func_020127f8
-.extern func_02030ad4
+.extern ActorCollection_FindActorByDescriptorValue
 .extern Actor_UpdateAttachmentDirectionFromVector
 .extern func_020337d4
 
@@ -15,7 +15,7 @@ func_0201389c: ; 0x0201389c
     ldr r0, [r4, #0x84]
     bl func_020337d4
     mov r1, r5
-    bl func_02030ad4
+    bl ActorCollection_FindActorByDescriptorValue
     mov r2, r0
     ldr r0, [r4, #0x84]
     ldr ip, [r2, #0x1c]

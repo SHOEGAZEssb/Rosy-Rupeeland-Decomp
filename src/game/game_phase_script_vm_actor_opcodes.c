@@ -9,7 +9,7 @@ extern "C" {
 extern void *data_021052fc;
 extern u8 data_02105310[];
 extern void *func_020337d4(void *actor);
-extern void *func_02030ad4(void *collection, s32 index);
+extern void *ActorCollection_FindActorByDescriptorValue(void *collection, s32 index);
 extern void *func_02007f0c(void *runtime, s32 index);
 extern void Actor_SetActive(void *actor, s32 active);
 extern s32 func_0200b04c(void *state);
@@ -62,7 +62,7 @@ s32 func_02012afc(GamePhaseActorScriptVm *self)
     u32 value = func_02012704(&self->base);
     s32 index = (s32)func_02012704(&self->base);
     void *collection = func_020337d4(self->actor_84);
-    void *target = func_02030ad4(collection, index);
+    void *target = ActorCollection_FindActorByDescriptorValue(collection, index);
 
     if (*((u8 *)target + 0x4d) == 1) {
         u8 *runtimeCollection = (u8 *)func_02007f0c(data_021052fc, 1);

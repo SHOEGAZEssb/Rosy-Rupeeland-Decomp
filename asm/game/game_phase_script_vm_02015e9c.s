@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/game_phase_script_vm_actor_activation_opcodes.c.
 .text
 .extern func_02012704
-.extern func_02030ad4
+.extern ActorCollection_FindActorByDescriptorValue
 .extern Actor_SetActive
 .extern func_020337d4
 .global func_02015e9c
@@ -16,7 +16,7 @@ func_02015e9c:
     ldr r0, [r6, #0x84]
     bl func_020337d4
     mov r1, r4
-    bl func_02030ad4
+    bl ActorCollection_FindActorByDescriptorValue
     movs r4, r0
     beq L_02015f08
     cmp r5, #0

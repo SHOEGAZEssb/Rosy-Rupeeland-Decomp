@@ -9,7 +9,7 @@
 .extern func_02012704
 .extern func_0201ded4
 .extern func_02020794
-.extern func_02030ad4
+.extern ActorCollection_FindActorByDescriptorValue
 .extern gGameWork
 .extern gHeapContext
 .global func_0201797c
@@ -30,7 +30,7 @@ func_0201797c:
     ldr r0, [r0]
     bl func_02007f0c
     mov r1, r4
-    bl func_02030ad4
+    bl ActorCollection_FindActorByDescriptorValue
     mov r4, r0
     ldr r1, L_02017a44
     ldr r3, L_02017a48

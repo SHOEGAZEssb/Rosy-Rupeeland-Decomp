@@ -66,7 +66,7 @@ void *func_02030acc(DescriptorActorCollection *self)
  * signed halfword at 0xe4 equals value. Null slots are ignored; return null if
  * no actor matches. No callbacks or hardware effects occur.
  */
-DescriptorActor *func_02030ad4(DescriptorActorCollection *self, s32 value)
+DescriptorActor *ActorCollection_FindActorByDescriptorValue(DescriptorActorCollection *self, s32 value)
 {
     s32 count = self->slotLimit_2e74;
     s32 i;

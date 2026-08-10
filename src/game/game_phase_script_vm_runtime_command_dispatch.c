@@ -15,7 +15,7 @@ extern const char data_020d5b6c[], data_020d5b74[], data_020d5b7c[];
 extern const char data_020d5b84[], data_020d5b8c[];
 extern void OS_Halt(void);
 extern void *func_02009d78(...);
-extern void *func_02030ad4(...);
+extern void *ActorCollection_FindActorByDescriptorValue(...);
 extern void *func_020337d4(...);
 extern void *func_02098490(...);
 extern void *func_0209d774(...);
@@ -142,7 +142,7 @@ s32 func_02016238(GamePhaseActorScriptVm *self)
     case 31:
     case 32:
     case 33: {
-        u8 *actor = (u8 *)func_02030ad4(func_020337d4(self->actor_84),
+        u8 *actor = (u8 *)ActorCollection_FindActorByDescriptorValue(func_020337d4(self->actor_84),
                                         parameter);
         u8 *presentation = actor != 0 ? *(u8 **)(actor + 0x54) : 0;
         if (presentation != 0) {

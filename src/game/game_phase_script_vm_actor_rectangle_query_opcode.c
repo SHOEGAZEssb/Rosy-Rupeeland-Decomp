@@ -8,7 +8,7 @@ extern "C" {
 #endif
 extern void *data_021052fc;
 extern void *func_02007f0c(void *runtime, s32 index);
-extern void *func_02030ad4(void *collection, s32 index);
+extern void *ActorCollection_FindActorByDescriptorValue(void *collection, s32 index);
 #ifdef __cplusplus
 }
 #endif
@@ -51,7 +51,7 @@ s32 func_02016e44(GamePhaseActorScriptVm *self)
     s32 top = (s32)func_02012704(&self->base);
     s32 left = (s32)func_02012704(&self->base);
     s32 index = (s32)func_02012704(&self->base);
-    u8 *actor = (u8 *)func_02030ad4(func_02007f0c(data_021052fc, 1), index);
+    u8 *actor = (u8 *)ActorCollection_FindActorByDescriptorValue(func_02007f0c(data_021052fc, 1), index);
     VecFx32Object position;
     RectS32 rect;
 

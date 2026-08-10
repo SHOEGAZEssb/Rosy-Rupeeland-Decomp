@@ -5,7 +5,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *func_02030ad4(void *collection, s32 index);
+extern void *ActorCollection_FindActorByDescriptorValue(void *collection, s32 index);
 extern void Actor_SetActive(void *actor, s32 active);
 extern void *func_020337d4(void *actor);
 #ifdef __cplusplus
@@ -21,7 +21,7 @@ s32 func_02015e9c(GamePhaseActorScriptVm *self)
 {
     s32 active = (s32)func_02012704(&self->base);
     s32 index = (s32)func_02012704(&self->base);
-    u8 *actor = (u8 *)func_02030ad4(func_020337d4(self->actor_84), index);
+    u8 *actor = (u8 *)ActorCollection_FindActorByDescriptorValue(func_020337d4(self->actor_84), index);
 
     if (actor != 0) {
         Actor_SetActive(actor, active != 0);

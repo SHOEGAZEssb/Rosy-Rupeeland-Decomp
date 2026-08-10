@@ -24,7 +24,7 @@
 .extern func_0201cfd0
 .extern func_0201ded4
 .extern func_020200bc
-.extern func_02030ad4
+.extern ActorCollection_FindActorByDescriptorValue
 .extern func_020337d4
 .extern func_0206ec68
 .extern func_02079a7c
@@ -357,7 +357,7 @@ L_02016690:
     ldr r0, [r5, #0x84]
     bl func_020337d4
     mov r1, r4
-    bl func_02030ad4
+    bl ActorCollection_FindActorByDescriptorValue
     cmp r0, #0
     ldrne r0, [r0, #0x54]
     cmpne r0, #0

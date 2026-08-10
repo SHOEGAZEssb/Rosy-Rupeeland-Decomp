@@ -3,7 +3,7 @@
 .extern func_0200500c
 .extern func_02005058
 .extern func_02012704
-.extern func_02030ad4
+.extern ActorCollection_FindActorByDescriptorValue
 .extern func_020337d4
 .extern func_ov087_022184b0
 .extern func_ov087_022186a8
@@ -34,7 +34,7 @@ func_02018208:
     ldr r0, [r9, #0x84]
     bl func_020337d4
     mov r1, r10
-    bl func_02030ad4
+    bl ActorCollection_FindActorByDescriptorValue
     mov r9, r0
     ldrh r1, [r9, #0x4e]
     cmp r1, #0x9
