@@ -16209,7 +16209,7 @@ build build/reports/actor_primary_attachment_rebuild_0203bae4.json: objdiff buil
   base_object = build/decomp/asm/game/actor_primary_attachment_rebuild_0203bae4.o
 build build/reports/actor_primary_attachment_rebuild_0203bae4.txt: match_report build/reports/actor_primary_attachment_rebuild_0203bae4.json | tools/report_objdiff.py
   report_json = build/reports/actor_primary_attachment_rebuild_0203bae4.json
-  report_args = --section .text --function func_0203bae4 --require-exact
+  report_args = --section .text --function Actor_RebuildPrimaryAttachment --require-exact
 build build/reports/actor_primary_attachment_rebuild.txt: phony build/reports/actor_primary_attachment_rebuild_0203bae4.txt
 
 build actor_primary_attachment_rebuild: phony build/decomp/src/game/actor_primary_attachment_rebuild.o build/decomp/asm/game/actor_primary_attachment_rebuild_0203bae4.o build/reports/actor_primary_attachment_rebuild.txt

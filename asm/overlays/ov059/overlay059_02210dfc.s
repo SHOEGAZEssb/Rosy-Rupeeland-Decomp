@@ -7,7 +7,7 @@
 .extern func_02028388
 .extern ActorCollection_GetSpriteOwner
 .extern ActorCollection_SetActorScale
-.extern func_0203bae4
+.extern Actor_RebuildPrimaryAttachment
 .extern func_02072b68
 .extern func_020adc90
 .extern func_ov059_02210f34
@@ -69,7 +69,7 @@ func_ov059_02210dfc:
     str r4, [sp, #0x0]
     add r2, r1, #0x1
     add r3, r1, #0x2
-    bl func_0203bae4
+    bl Actor_RebuildPrimaryAttachment
     mov r1, #0x0
     mov r4, r0
     bl func_02072b68
@@ -79,7 +79,7 @@ func_ov059_02210dfc:
     ldr r2, .L_02210f30
     add r3, r1, #0x1
     str r4, [sp, #0x0]
-    bl func_0203bae4
+    bl Actor_RebuildPrimaryAttachment
     mov r1, #0x1d
     mov r4, r0
     bl func_02072b68

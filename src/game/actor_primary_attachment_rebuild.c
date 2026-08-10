@@ -30,7 +30,8 @@ extern void func_020313b4(void *actor, void *resource, u32 layer);
  * owned SDK and presentation state; the retail path assumes created resources
  * satisfy the downstream helpers' preconditions.
  */
-void *func_0203bae4(void *self, u16 first, u16 second, u16 third, u16 layer)
+void *Actor_RebuildPrimaryAttachment(void *self, u16 first, u16 second,
+                                     u16 third, u16 layer)
 {
     u8 *actor = (u8 *)self;
     void *attachment = *(void **)(actor + 0x54);

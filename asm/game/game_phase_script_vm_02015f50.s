@@ -3,7 +3,7 @@
 .extern func_02012704
 .extern Actor_SetAttachmentEnabled
 .extern Actor_SetAttachmentAnimation
-.extern func_0203bae4
+.extern Actor_RebuildPrimaryAttachment
 .global func_02015f50
 func_02015f50:
     stmdb sp!, {r3, r4, r5, r6, r7, r8, r9, r10, lr}
@@ -39,7 +39,7 @@ func_02015f50:
     mov r1, r0, lsr #16
     mov r0, r5
     str r12, [sp]
-    bl func_0203bae4
+    bl Actor_RebuildPrimaryAttachment
     mov r1, r4
     mov r4, r0
     mov r0, r5

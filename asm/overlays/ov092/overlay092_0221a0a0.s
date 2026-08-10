@@ -1,6 +1,6 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov092/overlay092_recovery.c.
-.extern func_0203bae4
+.extern Actor_RebuildPrimaryAttachment
 .extern func_ov092_022177e0
 
 .global func_ov092_0221a0a0
@@ -26,7 +26,7 @@ func_ov092_0221a0a0:
     ldrh r2, [r6, #0x2]
     ldr r0, [r0, #0x22c]
     ldrh r3, [r6, #0x4]
-    bl func_0203bae4
+    bl Actor_RebuildPrimaryAttachment
     add r0, r5, r4, lsl #0x2
     ldr r0, [r0, #0x22c]
     ldr r1, [r0, #0x54]

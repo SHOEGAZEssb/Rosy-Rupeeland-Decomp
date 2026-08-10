@@ -13,7 +13,7 @@
 .extern func_02007f0c
 .extern func_0201fafc
 .extern ActorCollection_GetSpriteOwner
-.extern func_0203bae4
+.extern Actor_RebuildPrimaryAttachment
 .extern func_02059278
 .extern func_0205929c
 .extern func_02072b68
@@ -527,7 +527,7 @@ func_ov092_0221893c:
     ldrh r2, [r3, #0x2]
     ldrh r3, [r3, #0x4]
     mov r0, r10
-    bl func_0203bae4
+    bl Actor_RebuildPrimaryAttachment
     ldr r0, [r10, #0x54]
     mov r1, #0x0
     bl func_02072b68

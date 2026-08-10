@@ -8,9 +8,9 @@
 .extern func_02071f38
 .extern func_02073fc4
 .extern func_02074038
-    .global func_0203bae4
-    .type func_0203bae4, @function
-func_0203bae4: ; 0x0203bae4
+    .global Actor_RebuildPrimaryAttachment
+    .type Actor_RebuildPrimaryAttachment, @function
+Actor_RebuildPrimaryAttachment: ; 0x0203bae4
     stmdb sp!, {r3, r4, r5, r6, r7, lr}
     mov r4, r0
     mov r7, r1
@@ -63,5 +63,5 @@ func_0203bae4: ; 0x0203bae4
     ldmia sp!, {r3, r4, r5, r6, r7, pc}
 .L_0203bba0: .word data_020f4e18
 
-    .size func_0203bae4, . - func_0203bae4
+    .size Actor_RebuildPrimaryAttachment, . - Actor_RebuildPrimaryAttachment
 
