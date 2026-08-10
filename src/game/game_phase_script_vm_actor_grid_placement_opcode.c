@@ -6,7 +6,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_02032e04(void *actor);
+extern void Actor_AdjustPositionForTerrainHeight(void *actor);
 #ifdef __cplusplus
 }
 #endif
@@ -15,7 +15,7 @@ extern void func_02032e04(void *actor);
  * Pop height, width, grid Y, and grid X. Scale dimensions by 16, place the
  * actor at the fixed-point center formed by grid*16 plus half-dimension, copy
  * the position into actor vector objects at 0x28 and 0x18, and notify the actor
- * through func_02032e04. Finally derive signed byte extents at actor+8..+0xb
+ * through Actor_AdjustPositionForTerrainHeight. Finally derive signed byte extents at actor+8..+0xb
  * from the scaled dimensions. Returns zero.
  */
 s32 func_02016d60(GamePhaseActorScriptVm *self)
@@ -35,7 +35,7 @@ s32 func_02016d60(GamePhaseActorScriptVm *self)
     func_020050a4((VecFx32Object *)(actor + 0x18),
                   (VecFx32Object *)(actor + 0x28));
     func_02005058(&position);
-    func_02032e04(actor);
+    Actor_AdjustPositionForTerrainHeight(actor);
 
     actor[8] = (u8)left;
     actor[9] = (u8)top;

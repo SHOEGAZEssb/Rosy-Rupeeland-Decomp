@@ -39,22 +39,14 @@ extern void func_02002e5c(s32 value);
 extern void func_0200a35c(void *object);
 extern void func_020090c0(void *object);
 extern void func_0200ae8c(void *object);
-extern void func_0200807c(GamePhaseRuntime *runtime, const void *config,
-                          s32 enabled);
 extern void func_0200e650(void *object, const void *config);
-extern void func_02008bb8(GamePhaseRuntime *runtime, const void *config,
-                          s32 enabled);
 extern void func_0203ab6c(void);
 extern void func_02038b64(void *entity);
-extern void func_02032e04(void *entity);
+extern void Actor_AdjustPositionForTerrainHeight(void *entity);
 extern void func_02038e50(void *entity, s32 enabled);
 extern void func_0200a114(void *object, void *entity);
 extern void func_020091c0(void *object, void *entity);
 extern void func_0200a310(void *object);
-extern void *func_02008af8(GamePhaseRuntime *runtime);
-extern void func_02008cf8(GamePhaseRuntime *runtime, void *value,
-                          const void *config);
-extern void func_020088b8(GamePhaseRuntime *runtime, s32 enabled, s32 value);
 extern void func_0200ec6c(void *object, s32 enabled);
 extern void *func_02009d0c(void *object);
 extern void *func_02009d78(void *object);
@@ -146,9 +138,9 @@ void func_02006bdc(GamePhaseRuntime *self, const void *configPointer,
     func_0200a35c(bytes + 0x2fbc);
     func_020090c0(bytes + 0x3044);
     func_0200ae8c(data_02105310);
-    func_0200807c(self, configPointer, 1);
+    func_0200807c(self, (void *)configPointer, 1);
     func_0200e650(bytes + 0x24, configPointer);
-    func_02008bb8(self, configPointer, 1);
+    func_02008bb8(self, (void *)configPointer, 1);
     ((void (*)(s32))*(const void *const *)(config + 0x24))(0);
     func_0203ab6c();
 
@@ -162,7 +154,7 @@ void func_02006bdc(GamePhaseRuntime *self, const void *configPointer,
         *(s32 *)((u8 *)entity + 0x24) = 0x60000;
         func_02038b64(entity);
     } else if (*(s32 *)((u8 *)entity + 0x24) == 0) {
-        func_02032e04(entity);
+        Actor_AdjustPositionForTerrainHeight(entity);
     }
 
     secondary = *(void **)(bytes + 0x2ea8);
@@ -177,7 +169,7 @@ void func_02006bdc(GamePhaseRuntime *self, const void *configPointer,
         if (GameWork_TestFlag(gGameWork, 0x3f2) != 0) {
             *(s32 *)((u8 *)secondary + 0x24) = 0x60000;
         } else if (*(s32 *)((u8 *)secondary + 0x24) == 0) {
-            func_02032e04(secondary);
+            Actor_AdjustPositionForTerrainHeight(secondary);
         }
     }
 
@@ -186,7 +178,7 @@ void func_02006bdc(GamePhaseRuntime *self, const void *configPointer,
     func_0200a114(bytes + 0x2fbc, entity);
     func_020091c0(bytes + 0x3044, entity);
     func_0200a310(bytes + 0x2fbc);
-    func_02008cf8(self, func_02008af8(self), configPointer);
+    func_02008cf8(self, func_02008af8(self), (void *)configPointer);
     *(s32 *)(bytes + 0x30fc) = 1;
     func_020088b8(self, 1, 0);
     func_0200ec6c(bytes + 0x24, 1);

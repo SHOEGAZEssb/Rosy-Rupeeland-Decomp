@@ -4,9 +4,9 @@
 .extern func_0200eb14
 .extern func_020adae4
 
-    .global func_020344b8
-    .type func_020344b8, @function
-func_020344b8: ; 0x020344b8
+    .global Position_AdjustForTerrainHeight
+    .type Position_AdjustForTerrainHeight, @function
+Position_AdjustForTerrainHeight: ; 0x020344b8
     stmdb sp!, {r4, r5, r6, r7, r8, lr}
     mov r6, r0
     ldr r0, [r6, #0x4]
@@ -54,7 +54,6 @@ func_020344b8: ; 0x020344b8
     bge .L_02034518
     ldmia sp!, {r4, r5, r6, r7, r8, pc}
 .L_02034564: .word data_021052fc
-    .size func_020344b8, . - func_020344b8
+    .size Position_AdjustForTerrainHeight, . - Position_AdjustForTerrainHeight
 
     .global func_02034568
-

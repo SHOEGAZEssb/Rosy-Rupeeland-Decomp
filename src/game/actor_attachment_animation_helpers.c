@@ -8,7 +8,7 @@ extern s32 func_02057084(s32 x, s32 y);
 extern void func_02072b68(void *attachment, u32 animation);
 extern void func_020050a4(void *destination, const void *source);
 extern void ActorBounds_Translate(void *bounds, s32 x, s32 y);
-extern void func_020344b8(void *position);
+extern void Position_AdjustForTerrainHeight(void *position);
 #ifdef __cplusplus
 }
 #endif
@@ -56,8 +56,8 @@ void Actor_TranslateCollisionBounds(void *self, s32 x, s32 y)
     ActorBounds_Translate((u8 *)self + 4, x, y);
 }
 
-/* Transform or normalize the position object at actor+0x18; returns no value. */
-void func_02032e04(void *self)
+/* Snap the actor's position at +0x18 to a matching terrain height; returns no value. */
+void Actor_AdjustPositionForTerrainHeight(void *self)
 {
-    func_020344b8((u8 *)self + 0x18);
+    Position_AdjustForTerrainHeight((u8 *)self + 0x18);
 }

@@ -29,5 +29,4 @@ func_02034464: ; 0x02034464
 .L_020344b4: .word data_021052fc
     .size func_02034464, . - func_02034464
 
-    .global func_020344b8
-
+    .global Position_AdjustForTerrainHeight

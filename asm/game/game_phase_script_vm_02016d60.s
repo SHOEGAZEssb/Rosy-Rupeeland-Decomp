@@ -4,7 +4,7 @@
 .extern func_02005058
 .extern func_020050a4
 .extern func_02012704
-.extern func_02032e04
+.extern Actor_AdjustPositionForTerrainHeight
 .global func_02016d60
 func_02016d60:
     stmdb sp!, {r4, r5, r6, r7, lr}
@@ -43,7 +43,7 @@ func_02016d60:
     add r0, sp, #4
     bl func_02005058
     ldr r0, [r7, #0x84]
-    bl func_02032e04
+    bl Actor_AdjustPositionForTerrainHeight
     rsb r2, r6, #0
     add r3, r2, r2, lsr #31
     rsb r4, r5, #0

@@ -5,7 +5,7 @@
 .extern data_ov088_0221b9fc
 .extern func_020050a4
 .extern func_02005580
-.extern func_02032e04
+.extern Actor_AdjustPositionForTerrainHeight
 .extern func_02033f44
 .extern func_02034568
 .extern func_02072b68
@@ -23,7 +23,7 @@ func_ov088_0221aaac:
     ldr r1, [r4, #0x10]
     bic r1, r1, #0x1000000
     str r1, [r4, #0x10]
-    bl func_02032e04
+    bl Actor_AdjustPositionForTerrainHeight
     mov r1, #0x0
     mov r2, r1
     mov r3, r1

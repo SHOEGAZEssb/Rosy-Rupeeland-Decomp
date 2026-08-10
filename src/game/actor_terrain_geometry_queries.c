@@ -77,7 +77,7 @@ u32 func_02034464(void *self, s32 x, s32 y)
  * to vector Y and store the same 16.16 value at vector Z +0x0c. If no level
  * matches, leave the vector unchanged. Returns no value; global terrain is read.
  */
-void func_020344b8(void *value)
+void Position_AdjustForTerrainHeight(void *value)
 {
     u8 *vector = (u8 *)value;
     s32 gridX = func_020adae4(*(s32 *)(vector + 4) >> 12, 16);

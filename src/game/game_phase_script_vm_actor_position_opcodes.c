@@ -6,7 +6,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_02032e04(void *actor);
+extern void Actor_AdjustPositionForTerrainHeight(void *actor);
 extern void Actor_TranslateSecondaryBounds(void *actor, u32 first, u32 second);
 extern void Actor_TranslateCollisionBounds(void *actor, u32 first, u32 second);
 #ifdef __cplusplus
@@ -15,7 +15,8 @@ extern void Actor_TranslateCollisionBounds(void *actor, u32 first, u32 second);
 
 /*
  * Pop y then x integer coordinates, form an fx32 vector with z=0, copy it to
- * actor vector objects at offsets 0x28 and 0x18, invoke func_02032e04 on the
+ * actor vector objects at offsets 0x28 and 0x18, invoke
+ * Actor_AdjustPositionForTerrainHeight on the
  * actor, destroy the temporary vector, and return zero.
  */
 s32 func_0201409c(GamePhaseActorScriptVm *self)
@@ -29,7 +30,7 @@ s32 func_0201409c(GamePhaseActorScriptVm *self)
     copy = func_020050a4((VecFx32Object *)(actor + 0x28), &value);
     func_020050a4((VecFx32Object *)(actor + 0x18), copy);
     func_02005058(&value);
-    func_02032e04(actor);
+    Actor_AdjustPositionForTerrainHeight(actor);
     return 0;
 }
 

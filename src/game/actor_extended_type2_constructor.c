@@ -17,7 +17,7 @@ extern void func_0204cca8(void *object, void *actor);
 extern void func_020050a4(void *destination, const void *source);
 extern void *func_02045210(void *manager, u32 value);
 extern s16 *func_020450dc(void *handle, void *actor);
-extern void func_02032e04(void *actor);
+extern void Actor_AdjustPositionForTerrainHeight(void *actor);
 extern void func_02045288(void *object, u32 value, s32 x, s32 y);
 extern s32 *func_0204539c(void *object);
 extern s32 *func_020453b0(void *object);
@@ -79,7 +79,7 @@ void *func_0203db80(void *self, const void *configuration)
             (s32)position[0] << 12;
         *(s32 *)(actor + 0x20) = *(s32 *)(actor + 0x234) =
             (s32)position[1] << 12;
-        func_02032e04(actor);
+        Actor_AdjustPositionForTerrainHeight(actor);
     } else {
         *(void **)(actor + 0x274) = 0;
     }

@@ -4,7 +4,7 @@
 .extern func_02005058
 .extern func_020050a4
 .extern func_02012704
-.extern func_02032e04
+.extern Actor_AdjustPositionForTerrainHeight
 
     .global func_0201409c
 func_0201409c: ; 0x0201409c
@@ -32,9 +32,8 @@ func_0201409c: ; 0x0201409c
     add r0, sp, #0x0
     bl func_02005058
     ldr r0, [r5, #0x84]
-    bl func_02032e04
+    bl Actor_AdjustPositionForTerrainHeight
     mov r0, #0x0
     add sp, sp, #0x10
     ldmia sp!, {r3, r4, r5, pc}
     .size func_0201409c, . - func_0201409c
-

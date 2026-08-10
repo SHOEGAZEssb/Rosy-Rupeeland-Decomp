@@ -4,7 +4,7 @@
 .extern func_02004fe0
 .extern func_02005058
 .extern func_02012704
-.extern func_020344b8
+.extern Position_AdjustForTerrainHeight
 .extern func_0204eb18
 .global func_02017540
 func_02017540:
@@ -28,7 +28,7 @@ func_02017540:
     bl func_02012704
     mov r4, r0
     add r0, sp, #0x10
-    bl func_020344b8
+    bl Position_AdjustForTerrainHeight
     cmp r4, #0
     beq L_020175a8
     cmp r4, #1

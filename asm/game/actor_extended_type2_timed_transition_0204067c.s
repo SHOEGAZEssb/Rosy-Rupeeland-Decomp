@@ -5,7 +5,7 @@
 .extern data_020e6b74
 .extern data_020e71ec
 .extern data_021052fc
-.extern func_02032e04
+.extern Actor_AdjustPositionForTerrainHeight
 .extern func_020349b8
 .extern func_020450dc
 .extern func_020452f8
@@ -147,7 +147,7 @@ func_0204067c: ; 0x0204067c
     mov r0, r5
     mov r1, r1, lsl #0xc
     str r1, [r5, #0x234]
-    bl func_02032e04
+    bl Actor_AdjustPositionForTerrainHeight
     ldr r0, [r5, #0x26c]
     cmp r0, #0x0
     beq .L_020408d4
@@ -277,4 +277,3 @@ func_0204067c: ; 0x0204067c
 .L_02040a50: .word data_020df9e8
 .L_02040a54: .word data_020e71ec
 .size func_0204067c, . - func_0204067c
-

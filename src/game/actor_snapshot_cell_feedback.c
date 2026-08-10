@@ -14,7 +14,7 @@ extern "C" {
 #endif
 extern void func_0200500c(void *vector, s32 x, s32 y, s32 z);
 extern void func_02005058(void *vector);
-extern void func_020344b8(void *vector);
+extern void Position_AdjustForTerrainHeight(void *vector);
 extern u32 genrand_int32(void);
 extern void *func_0203a0b4(u32 index);
 extern void *func_0201f378(void *allocation, ...);
@@ -27,7 +27,7 @@ extern void func_020593ac(void *context, s32 sound, s32 variant,
 
 /*
  * Read signed cell coordinates from snapshot words +0x04/+0x08, convert them
- * to fixed point, and pass the temporary vector through func_020344b8. Query
+ * to fixed point, and pass the temporary vector through Position_AdjustForTerrainHeight. Query
  * the runtime map object's virtual slot +0x2c; return zero after destroying the
  * vector unless decoded bits 10..13 equal one. For that cell class, choose
  * sprite variant 0/1/2 from one RNG sample, optionally play resource-record
@@ -52,7 +52,7 @@ s32 func_0203a8b8(const void *snapshot)
     void *presentation = 0;
 
     func_0200500c(position, saved[1] << 12, saved[2] << 12, 0);
-    func_020344b8(position);
+    Position_AdjustForTerrainHeight(position);
     map = *(u8 **)(data_021052fc + 0x2ed4);
     cell = (*(u32 (**)(void *, s32, s32))(*(u8 **)map + 0x2c))(
         map, position[1] >> 16, position[2] >> 16);

@@ -9,7 +9,7 @@
 .extern func_02005058
 .extern func_0201ded4
 .extern func_0201f378
-.extern func_020344b8
+.extern Position_AdjustForTerrainHeight
 .extern func_0203a0b4
 .extern func_020593ac
 .extern gHeapContext
@@ -27,7 +27,7 @@ func_0203a8b8: ; 0x0203a8b8
     mov r3, #0x0
     bl func_0200500c
     add r0, sp, #0x1c
-    bl func_020344b8
+    bl Position_AdjustForTerrainHeight
     ldr r0, .L_0203aaac
     ldr r1, [sp, #0x20]
     ldr r0, [r0, #0x0]
@@ -159,4 +159,3 @@ func_0203a8b8: ; 0x0203a8b8
     .global func_0203aac4
 
     .size func_0203a8b8, . - func_0203a8b8
-

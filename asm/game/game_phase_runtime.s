@@ -34,7 +34,7 @@
 .extern func_02012444
 .extern func_02020060
 .extern func_0202eb18
-.extern func_02032e04
+.extern Actor_AdjustPositionForTerrainHeight
 .extern func_02038b64
 .extern func_02038e50
 .extern func_0203ab6c
@@ -201,7 +201,7 @@ L_02006d08:
     cmp r0, #0x0
     bne L_02006d1c
     mov r0, r5
-    bl func_02032e04
+    bl Actor_AdjustPositionForTerrainHeight
 L_02006d1c:
     add r0, r4, #0x2000
     ldr r5, [r0, #0xea8]
@@ -235,7 +235,7 @@ L_02006d1c:
     cmp r0, #0x0
     bne L_02006da0
     mov r0, r5
-    bl func_02032e04
+    bl Actor_AdjustPositionForTerrainHeight
 L_02006da0:
     add r0, r4, #0x3000
     ldr r0, [r0, #0xbc]
@@ -385,4 +385,3 @@ L_02006fc8: .word 0x3f2
 L_02006fcc: .word gLupyContext
 L_02006fd0: .word data_021052fc
     .size func_02006bdc, .-func_02006bdc
-
