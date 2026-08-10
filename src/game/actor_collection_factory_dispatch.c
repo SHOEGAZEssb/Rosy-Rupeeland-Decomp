@@ -67,7 +67,7 @@ DECLARE_ACTOR_CTOR(func_0204e944);
 DECLARE_ACTOR_CTOR(GridEffectActor_Init);
 DECLARE_ACTOR_CTOR(TrackedResourceActorType21_Init);
 DECLARE_ACTOR_CTOR(TrackedResourceActorType22And25_Init);
-DECLARE_ACTOR_CTOR(func_0205135c);
+DECLARE_ACTOR_CTOR(TrackedResourceActorType24_Init);
 DECLARE_ACTOR_CTOR(func_02051738);
 DECLARE_ACTOR_CTOR(func_02052120);
 DECLARE_ACTOR_CTOR(func_020522c8);
@@ -180,7 +180,7 @@ static ActorFactorySpec kind4Spec(u16 subtype)
     case 20: return (ActorFactorySpec)SPEC(0x21c, GridEffectActor_Init);
     case 21: return (ActorFactorySpec)SPEC(0x200, TrackedResourceActorType21_Init);
     case 22: case 25: return (ActorFactorySpec)SPEC(0x200, TrackedResourceActorType22And25_Init);
-    case 24: return (ActorFactorySpec)SPEC(0x200, func_0205135c);
+    case 24: return (ActorFactorySpec)SPEC(0x200, TrackedResourceActorType24_Init);
     case 26: return (ActorFactorySpec)SPEC(0x204, func_02051738);
     case 27: return (ActorFactorySpec)SPEC(0x200, func_02052120);
     case 28: return (ActorFactorySpec)SPEC(0x200, func_020522c8);

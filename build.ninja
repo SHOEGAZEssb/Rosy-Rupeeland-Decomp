@@ -19674,7 +19674,7 @@ build build/reports/tracked_resource_actor_projectile_lifecycle_0205135c.json: o
   base_object = build/decomp/asm/game/tracked_resource_actor_projectile_lifecycle_0205135c.o
 build build/reports/tracked_resource_actor_projectile_lifecycle_0205135c.txt: match_report build/reports/tracked_resource_actor_projectile_lifecycle_0205135c.json | tools/report_objdiff.py
   report_json = build/reports/tracked_resource_actor_projectile_lifecycle_0205135c.json
-  report_args = --section .text --function func_0205135c --function func_0205137c --function func_02051390 --require-exact
+  report_args = --section .text --function TrackedResourceActorType24_Init --function TrackedResourceActorType24_DestroyComplete --function TrackedResourceActorType24_DestroyAndFree --require-exact
 
 build tracked_resource_actor_projectile_lifecycle: phony build/decomp/src/game/tracked_resource_actor_projectile_lifecycle.o build/decomp/asm/game/tracked_resource_actor_projectile_lifecycle_0205135c.o build/reports/tracked_resource_actor_projectile_lifecycle_0205135c.txt
 

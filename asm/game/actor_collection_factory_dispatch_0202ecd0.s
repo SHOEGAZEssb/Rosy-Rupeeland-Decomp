@@ -29,7 +29,7 @@
 .extern GridEffectActor_Init
 .extern TrackedResourceActorType21_Init
 .extern TrackedResourceActorType22And25_Init
-.extern func_0205135c
+.extern TrackedResourceActorType24_Init
 .extern func_02051738
 .extern func_02052120
 .extern func_020522c8
@@ -1704,7 +1704,7 @@ ActorCollection_SpawnActorFromDescriptor: ; 0x0202ecd0
     movs r4, r0
     beq .L_020307bc
     mov r1, r5
-    bl func_0205135c
+    bl TrackedResourceActorType24_Init
     mov r4, r0
     b .L_020307bc
 .L_020303e4:

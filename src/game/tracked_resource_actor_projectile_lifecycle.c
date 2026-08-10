@@ -8,20 +8,20 @@ extern "C" {
 extern void *TrackedResourceActor_Init(void *actor);
 extern void *TrackedResourceActor_Destroy(void *actor);
 extern void Heap_Free(void *allocation);
-extern u32 data_020e2f7c[];
+extern u32 gTrackedResourceActorType24Vtable[];
 #ifdef __cplusplus
 }
 #endif
 
 /*
  * Input is variant storage. Constructs the tracked-resource base, installs
- * vtable data_020e2f7c, and returns the same storage. Engine-owned fields may
+ * vtable gTrackedResourceActorType24Vtable, and returns the same storage. Engine-owned fields may
  * be initialized; hardware is not accessed directly.
  */
-void *func_0205135c(void *actor)
+void *TrackedResourceActorType24_Init(void *actor)
 {
     TrackedResourceActor_Init(actor);
-    *(u32 **)actor = data_020e2f7c;
+    *(u32 **)actor = gTrackedResourceActorType24Vtable;
     return actor;
 }
 
@@ -29,7 +29,7 @@ void *func_0205135c(void *actor)
  * Input is a variant instance. Runs tracked-resource base teardown and returns
  * the same instance without freeing it. Engine resources may be released.
  */
-void *func_0205137c(void *actor)
+void *TrackedResourceActorType24_DestroyComplete(void *actor)
 {
     TrackedResourceActor_Destroy(actor);
     return actor;
@@ -40,7 +40,7 @@ void *func_0205137c(void *actor)
  * allocation, and returns its former address. The result must not be
  * dereferenced; no direct hardware access occurs.
  */
-void *func_02051390(void *actor)
+void *TrackedResourceActorType24_DestroyAndFree(void *actor)
 {
     TrackedResourceActor_Destroy(actor);
     Heap_Free(actor);
