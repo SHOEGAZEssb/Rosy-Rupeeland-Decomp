@@ -234,6 +234,55 @@ static int TestRuntimeVariantActor(void)
     return ok;
 }
 
+static int TestKind3DerivedActors(void)
+{
+    TingleNativeActorDescriptor descriptors[3] = {{0}};
+    TingleNativeActorRuntime *runtime;
+    const TingleNativeActorImage *mode_actor;
+    const TingleNativeActorImage *probe_actor;
+    const TingleNativeActorImage *indexed_actor;
+    u32 expected_stages = TINGLE_NATIVE_ACTOR_STAGE_GEOMETRY |
+                          TINGLE_NATIVE_ACTOR_STAGE_COMMON_RUNTIME |
+                          TINGLE_NATIVE_ACTOR_STAGE_SHARED_DERIVED |
+                          TINGLE_NATIVE_ACTOR_STAGE_KIND3_DERIVED;
+    int ok;
+
+    descriptors[0].kind = 3;
+    descriptors[0].subtype = 16;
+    descriptors[0].selector_50 = 0;
+    descriptors[0].allocation_size = 0x20C;
+    descriptors[1] = descriptors[0];
+    descriptors[1].subtype = 1;
+    descriptors[1].allocation_size = 0x258;
+    descriptors[2] = descriptors[0];
+    descriptors[2].subtype = 5;
+    WriteU16(descriptors[2].raw + 0x4E, (u16)-23);
+    runtime = TingleNativeActorRuntime_Create(descriptors, 3, NULL, 0);
+    mode_actor = TingleNativeActorRuntime_GetActor(runtime, 0);
+    probe_actor = TingleNativeActorRuntime_GetActor(runtime, 1);
+    indexed_actor = TingleNativeActorRuntime_GetActor(runtime, 2);
+    ok = runtime != NULL && runtime->actor_count == 3 &&
+         mode_actor != NULL && mode_actor->initialization_stages == expected_stages &&
+         mode_actor->pending_external_state == 0 &&
+         ReadU32At(mode_actor->bytes, 0x00) == 0x020DF774 &&
+         ReadU16At(mode_actor->bytes, 0x208) == 0x4000 &&
+         ReadU32At(mode_actor->bytes, 0x108) == 0xFFFFFFF0u &&
+         probe_actor != NULL && probe_actor->initialization_stages == expected_stages &&
+         probe_actor->pending_external_state == 0 &&
+         ReadU32At(probe_actor->bytes, 0x00) == 0x020DF61C &&
+         ReadU16At(probe_actor->bytes, 0x208) == 0x4000 &&
+         ReadU32At(probe_actor->bytes, 0x210) == 0x020D405C &&
+         ReadU32At(probe_actor->bytes, 0x254) == 0x640 &&
+         indexed_actor != NULL &&
+         indexed_actor->initialization_stages == expected_stages &&
+         indexed_actor->pending_external_state == 0 &&
+         ReadU32At(indexed_actor->bytes, 0x00) == 0x020E212C &&
+         ReadU16At(indexed_actor->bytes, 0x208) == 0 &&
+         ReadU16At(indexed_actor->bytes, 0x20A) == (u16)-23;
+    TingleNativeActorRuntime_Destroy(runtime);
+    return ok;
+}
+
 static int TestOverlayRegistration(void)
 {
     static const u32 words[] = {
@@ -461,7 +510,8 @@ int main(int argc, char **argv)
         return ProbeMetadata(argv[1], argv[2], argv[3]);
     if (!TestOverlayRegistration() || !TestFactoryResolution() ||
         !TestActorRuntime() || !TestActorBootstrapRuntime() ||
-        !TestRuntimeVariantActor()) return EXIT_FAILURE;
+        !TestRuntimeVariantActor() || !TestKind3DerivedActors())
+        return EXIT_FAILURE;
 
     WriteU32(record + 0x00, 7);
     WriteU16(record + 0x12, (u16)-2);

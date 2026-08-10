@@ -15,6 +15,9 @@ enum {
     ACTOR_TYPE1_VTABLE_ADDRESS = 0x020DF3C8,
     ACTOR_SINGLETON_TRACKER_VTABLE_ADDRESS = 0x020E1F2C,
     ACTOR_RUNTIME_VARIANT_VTABLE_ADDRESS = 0x020E2028,
+    ACTOR_MOTION_PROBE_VTABLE_ADDRESS = 0x020DF61C,
+    ACTOR_MODE_NIBBLE_VTABLE_ADDRESS = 0x020DF774,
+    ACTOR_INDEXED_STATE_VTABLE_ADDRESS = 0x020E212C,
     MARKER_PRESENTATION_VTABLE_ADDRESS = 0x020E1ED8,
     VECTOR_VTABLE_ADDRESS = 0x020D405C,
     ACTOR_SCRIPT_VM_VTABLE_ADDRESS = 0x020D5B20,
@@ -182,6 +185,36 @@ static s32 UsesRuntimeVariantConstructor(
            desc->subtype != 3 && desc->subtype != 4;
 }
 
+static s32 UsesModeNibbleConstructor(
+    const TingleNativeActorDescriptor *desc)
+{
+    return desc->kind == 3 &&
+           ((desc->subtype >= 12 && desc->subtype <= 16) ||
+            desc->subtype == 19);
+}
+
+static s32 UsesMotionProbeConstructor(
+    const TingleNativeActorDescriptor *desc)
+{
+    return desc->kind == 3 && desc->subtype == 1;
+}
+
+static s32 UsesIndexedStateConstructor(
+    const TingleNativeActorDescriptor *desc)
+{
+    return desc->kind == 3 && desc->subtype == 5;
+}
+
+static s32 UsesKnownSharedBaseConstructor(
+    const TingleNativeActorDescriptor *desc)
+{
+    return UsesSharedDerivedConstructor(desc) || UsesType1Constructor(desc) ||
+           UsesSingletonTrackerConstructor(desc) ||
+           UsesModeNibbleConstructor(desc) ||
+           UsesMotionProbeConstructor(desc) ||
+           UsesIndexedStateConstructor(desc);
+}
+
 /* Reproduce func_0203b554 after its common-base constructor has returned. */
 static void InitializeSharedDerived(TingleNativeActorImage *actor)
 {
@@ -271,6 +304,49 @@ static void InitializeRuntimeVariant(TingleNativeActorImage *actor)
             TINGLE_NATIVE_ACTOR_PENDING_DESCRIPTOR_HOOK;
 }
 
+/* Reproduce func_0203c4e0 for kind-three subtype routes 12..16 and 19. */
+static void InitializeModeNibbleActor(TingleNativeActorImage *actor)
+{
+    u16 subtype = actor->descriptor.subtype;
+    u16 mode = subtype == 19 ? 5 : (u16)(subtype - 12);
+
+    WriteU32(actor->bytes, 0x00, ACTOR_MODE_NIBBLE_VTABLE_ADDRESS);
+    WriteU16(actor->bytes, 0x208, (u16)(mode << 12));
+    WriteU16(actor->bytes, 0xD6, 0);
+    WriteU32(actor->bytes, 0x108, 0xFFFFFFF0u);
+    actor->initialization_stages |= TINGLE_NATIVE_ACTOR_STAGE_KIND3_DERIVED;
+}
+
+/* Reproduce the complete vector and scalar extension in func_0203c140. */
+static void InitializeMotionProbeActor(TingleNativeActorImage *actor)
+{
+    u8 *bytes = actor->bytes;
+
+    WriteU32(bytes, 0x00, ACTOR_MOTION_PROBE_VTABLE_ADDRESS);
+    WriteU16(bytes, 0x208, 0x4000);
+    WriteU16(bytes, 0x20A, 0);
+    WriteU32(bytes, 0x20C, 0x1000);
+    InitializeVector(bytes, 0x210, 0, 0, 0);
+    InitializeVector(bytes, 0x220, 0, 0, 0);
+    InitializeVector(bytes, 0x230, 0, 0, 0);
+    WriteU32(bytes, 0x240, 0);
+    WriteU32(bytes, 0x244, 0x10);
+    WriteU32(bytes, 0x248, 0x10);
+    WriteU32(bytes, 0x24C, 0x1E);
+    WriteU32(bytes, 0x250, 5);
+    WriteU32(bytes, 0x254, 0x640);
+    actor->initialization_stages |= TINGLE_NATIVE_ACTOR_STAGE_KIND3_DERIVED;
+}
+
+/* Reproduce the descriptor-indexed two-halfword extension in func_0204d488. */
+static void InitializeIndexedStateActor(TingleNativeActorImage *actor)
+{
+    WriteU32(actor->bytes, 0x00, ACTOR_INDEXED_STATE_VTABLE_ADDRESS);
+    WriteU16(actor->bytes, 0x208, 0);
+    WriteU16(actor->bytes, 0x20A, ReadU16(actor->descriptor.raw, 0x4E));
+    actor->initialization_stages |= TINGLE_NATIVE_ACTOR_STAGE_KIND3_DERIVED;
+}
+
 static s32 InitializeActor(TingleNativeActorImage *actor,
                            const TingleNativeActorDescriptor *descriptor,
                            u32 category, s32 synthetic)
@@ -317,15 +393,19 @@ static s32 InitializeActor(TingleNativeActorImage *actor,
     if (actor->size >= 0x1EC && UsesRuntimeVariantConstructor(descriptor)) {
         InitializeRuntimeVariant(actor);
     } else if (actor->size >= 0x208 &&
-        (UsesSharedDerivedConstructor(descriptor) ||
-         UsesType1Constructor(descriptor) ||
-         UsesSingletonTrackerConstructor(descriptor)))
+               UsesKnownSharedBaseConstructor(descriptor))
         InitializeSharedDerived(actor);
     if (actor->size >= 0x2B8 && UsesType1Constructor(descriptor))
         InitializeType1Derived(actor);
     else if (actor->size >= 0x218 &&
              UsesSingletonTrackerConstructor(descriptor))
         InitializeSingletonTracker(actor);
+    else if (actor->size >= 0x20C && UsesModeNibbleConstructor(descriptor))
+        InitializeModeNibbleActor(actor);
+    else if (actor->size >= 0x258 && UsesMotionProbeConstructor(descriptor))
+        InitializeMotionProbeActor(actor);
+    else if (actor->size >= 0x20C && UsesIndexedStateConstructor(descriptor))
+        InitializeIndexedStateActor(actor);
     else if (!UsesSharedDerivedConstructor(descriptor) &&
              !UsesRuntimeVariantConstructor(descriptor))
         actor->pending_external_state |=
