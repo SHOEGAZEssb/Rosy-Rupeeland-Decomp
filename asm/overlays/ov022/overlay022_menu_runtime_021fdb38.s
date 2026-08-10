@@ -3,7 +3,7 @@
     .extern data_020f4e14
     .extern data_021f3ecc
     .extern GraphicsSpriteRenderer_SetFontResource
-    .extern func_02076148
+    .extern GraphicsSpriteRenderer_DrawText
     .extern GraphicsSpriteCanvas_FillRect
     .extern func_02079f3c
     .extern gSystemState
@@ -64,7 +64,7 @@ L_021fdbb0:
     ldr r0, [r5, #0x0]
     mov r2, #0x40
     add r3, r3, #0x13
-    bl func_02076148
+    bl GraphicsSpriteRenderer_DrawText
     add r8, r8, #0x1
 L_021fdc14:
     cmp r8, #0x4

@@ -11296,7 +11296,7 @@ build build/reports/graphics_sprite_font_lookup.json: objdiff build/decomp/delin
 
 build build/reports/graphics_sprite_font_lookup.txt: match_report build/reports/graphics_sprite_font_lookup.json | tools/report_objdiff.py
   report_json = build/reports/graphics_sprite_font_lookup.json
-  report_args = --section .text --function func_02075e48 --function func_02075ea8
+  report_args = --section .text --function GraphicsSpriteRenderer_DrawGlyph --function GraphicsSpriteRenderer_GetGlyphMetric
 
 build build/reports/graphics_sprite_character_map.json: objdiff build/decomp/delinks/src/graphics/graphics_sprite_character_map.o | build/decomp/src/graphics/graphics_sprite_character_map.o
   target_object = build/decomp/delinks/src/graphics/graphics_sprite_character_map.o
@@ -11304,7 +11304,7 @@ build build/reports/graphics_sprite_character_map.json: objdiff build/decomp/del
 
 build build/reports/graphics_sprite_character_map.txt: match_report build/reports/graphics_sprite_character_map.json | tools/report_objdiff.py
   report_json = build/reports/graphics_sprite_character_map.json
-  report_args = --section .text --function func_02075ecc
+  report_args = --section .text --function GraphicsSpriteFont_MapCharacterToGlyph
 
 build build/reports/graphics_sprite_number_format.json: objdiff build/decomp/delinks/src/graphics/graphics_sprite_number_format.o | build/decomp/src/graphics/graphics_sprite_number_format.o
   target_object = build/decomp/delinks/src/graphics/graphics_sprite_number_format.o
@@ -11312,7 +11312,7 @@ build build/reports/graphics_sprite_number_format.json: objdiff build/decomp/del
 
 build build/reports/graphics_sprite_number_format.txt: match_report build/reports/graphics_sprite_number_format.json | tools/report_objdiff.py
   report_json = build/reports/graphics_sprite_number_format.json
-  report_args = --section .text --function func_02076004
+  report_args = --section .text --function GraphicsSpriteText_FormatDecimal
 
 build build/reports/graphics_sprite_font_dispatch.json: objdiff build/decomp/delinks/src/graphics/graphics_sprite_font_dispatch.o | build/decomp/src/graphics/graphics_sprite_font_dispatch.o
   target_object = build/decomp/delinks/src/graphics/graphics_sprite_font_dispatch.o
@@ -11320,7 +11320,7 @@ build build/reports/graphics_sprite_font_dispatch.json: objdiff build/decomp/del
 
 build build/reports/graphics_sprite_font_dispatch.txt: match_report build/reports/graphics_sprite_font_dispatch.json | tools/report_objdiff.py
   report_json = build/reports/graphics_sprite_font_dispatch.json
-  report_args = --section .text --function func_020760c0 --function func_02076114
+  report_args = --section .text --function GraphicsSpriteRenderer_DrawCharacter --function GraphicsSpriteRenderer_GetCharacterMetric
 
 build build/reports/graphics_sprite_text_layout.json: objdiff build/decomp/delinks/src/graphics/graphics_sprite_text_layout.o | build/decomp/src/graphics/graphics_sprite_text_layout.o
   target_object = build/decomp/delinks/src/graphics/graphics_sprite_text_layout.o
@@ -11328,7 +11328,7 @@ build build/reports/graphics_sprite_text_layout.json: objdiff build/decomp/delin
 
 build build/reports/graphics_sprite_text_layout.txt: match_report build/reports/graphics_sprite_text_layout.json | tools/report_objdiff.py
   report_json = build/reports/graphics_sprite_text_layout.json
-  report_args = --section .text --function func_02076148 --function func_020761f8
+  report_args = --section .text --function GraphicsSpriteRenderer_DrawText --function GraphicsSpriteRenderer_MeasureText
 
 build build/reports/graphics_sprite_canvas.json: objdiff build/decomp/delinks/src/graphics/graphics_sprite_canvas.o | build/decomp/src/graphics/graphics_sprite_canvas.o
   target_object = build/decomp/delinks/src/graphics/graphics_sprite_canvas.o

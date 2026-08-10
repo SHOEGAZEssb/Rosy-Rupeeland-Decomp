@@ -32,7 +32,7 @@ extern void func_0207419c(void *);
 extern void *func_020742cc(void *);
 extern void GraphicsSpriteRenderer_SetFontResource(void *, void *);
 extern void GraphicsSpriteRenderer_ClearTextBuffer(void *);
-extern void func_02076148(void *, const void *, s32, s32, s32, s32, s32);
+extern void GraphicsSpriteRenderer_DrawText(void *, const void *, s32, s32, s32, s32, s32);
 extern const void *func_02079f3c(const void *, u16);
 extern void func_02092798(void *);
 extern void func_020927b8(void *);
@@ -215,7 +215,7 @@ extern "C" void func_ov020_021fd1cc(void *state)
         GraphicsSpriteRenderer_SetFontResource(FIELD(void *, state, 0), (u8 *)state + 0x18);
         const void *text = func_02079f3c(
             data_021f3ecc, FIELD(u16, descriptor, 0xc));
-        func_02076148(FIELD(void *, state, 0), (u8 *)text + 2,
+        GraphicsSpriteRenderer_DrawText(FIELD(void *, state, 0), (u8 *)text + 2,
                       0x42, 0x15 + rowIndex * 0x18, 14, 8, 0);
     }
 }

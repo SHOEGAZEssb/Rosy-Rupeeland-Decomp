@@ -3,7 +3,7 @@
 .extern data_0210548c
 .extern DebugHud_CountDecimalDigits
 .extern DebugHudState_UploadRows
-.extern func_02076004
+.extern GraphicsSpriteText_FormatDecimal
 
     .global DebugHudState_SetNumberRow
 DebugHudState_SetNumberRow: ; 0x0200f67c
@@ -31,7 +31,7 @@ L_0200f6b4:
     rsb r2, r3, #0x0
     mov r1, r4
     mov r3, #0x0
-    bl func_02076004
+    bl GraphicsSpriteText_FormatDecimal
     ldr r0, [r6, #0x8]
     cmp r0, #0x0
     ldmeqia sp!, {r4, r5, r6, pc}

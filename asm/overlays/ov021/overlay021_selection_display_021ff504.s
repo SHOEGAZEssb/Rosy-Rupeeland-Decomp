@@ -3,7 +3,7 @@
     .extern data_020f4e14
     .extern func_020628c8
     .extern GraphicsSpriteRenderer_SetFontResource
-    .extern func_02076148
+    .extern GraphicsSpriteRenderer_DrawText
     .extern GraphicsSpriteCanvas_FillRect
 
 .global func_ov021_021ff504
@@ -49,7 +49,7 @@ func_ov021_021ff504:
     ldr r0, [r2, #0x0]
     mov r2, #0x10
     mov r3, #0x6
-    bl func_02076148
+    bl GraphicsSpriteRenderer_DrawText
 L_021ff5ac:
     add sp, sp, #0xc
     ldmia sp!, {r4, r5, pc}

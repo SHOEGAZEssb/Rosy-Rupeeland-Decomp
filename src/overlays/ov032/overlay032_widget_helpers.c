@@ -19,7 +19,7 @@ extern s32 func_020befec(...);
 extern void func_ov032_02201ea4(void *);
 extern void GraphicsSpriteRenderer_ClearTextBuffer(void *);
 extern void *func_02097f30(void *);
-extern void func_02076148(...);
+extern void GraphicsSpriteRenderer_DrawText(...);
 extern void *func_02093cb4(void *);
 extern void func_02071ea4(void *);
 extern void func_02071ee0(...);
@@ -83,7 +83,7 @@ extern "C" void func_ov032_02201ea4(void *widget)
     for (s32 row = 0; row < 5 && row + base < FIELD(s32, widget, 0xc) + 1; ++row) {
         u8 *record = (u8 *)data_021f6288 + (row + base) * 8;
         s32 style = FIELD(u16, record, 2) == 1 ? 3 : 1;
-        func_02076148(data_020f4e14[0], func_02097f30(record), 0x28,
+        GraphicsSpriteRenderer_DrawText(data_020f4e14[0], func_02097f30(record), 0x28,
                       row * 0x18 + 0x1c, style, 8, 0);
     }
 }

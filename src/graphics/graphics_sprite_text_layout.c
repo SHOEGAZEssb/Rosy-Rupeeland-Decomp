@@ -16,13 +16,14 @@ enum {
  * return its accumulated horizontal advance. A negative glyphAdvance selects
  * fixed-width output using its absolute value. Otherwise a rendered glyph's
  * positive metric is used; a zero result falls back to glyphAdvance. The
- * renderer's tile buffer changes through func_020760c0. Return zero without
- * touching it when the renderer has no active font data.
+ * renderer's tile buffer changes through GraphicsSpriteRenderer_DrawCharacter.
+ * Return zero without touching it when the renderer has no active font data.
  */
 #ifndef MATCHING
-s32 func_02076148(GraphicsSpriteRenderer *renderer, const u16 *text,
-                  s32 destinationX, s32 destinationY, u32 mode,
-                  s32 glyphAdvance, s32 spacing)
+s32 GraphicsSpriteRenderer_DrawText(GraphicsSpriteRenderer *renderer,
+                                    const u16 *text, s32 destinationX,
+                                    s32 destinationY, u32 mode,
+                                    s32 glyphAdvance, s32 spacing)
 {
     s32 advance = 0;
     s32 proportional = 1;
@@ -39,7 +40,7 @@ s32 func_02076148(GraphicsSpriteRenderer *renderer, const u16 *text,
     fallbackAdvance = glyphAdvance + spacing;
 
     while (*text != 0) {
-        s32 glyphWidth = func_020760c0(renderer, *text,
+        s32 glyphWidth = GraphicsSpriteRenderer_DrawCharacter(renderer, *text,
                                       destinationX + advance,
                                       destinationY, mode);
         text++;
@@ -57,9 +58,10 @@ s32 func_02076148(GraphicsSpriteRenderer *renderer, const u16 *text,
 }
 #else
 /* This matching fallback implements the documented portable C directly above. */
-asm s32 func_02076148(GraphicsSpriteRenderer *renderer, const u16 *text,
-                     s32 destinationX, s32 destinationY, u32 mode,
-                     s32 glyphAdvance, s32 spacing)
+asm s32 GraphicsSpriteRenderer_DrawText(GraphicsSpriteRenderer *renderer,
+                                        const u16 *text, s32 destinationX,
+                                        s32 destinationY, u32 mode,
+                                        s32 glyphAdvance, s32 spacing)
 {
     stmdb sp!, {r4, r5, r6, r7, r8, r9, r10, r11, lr}
     sub sp, sp, #0x0c
@@ -89,7 +91,7 @@ sprite_text_draw_loop:
     mov r0, r10
     add r2, r2, r4
     str r8, [sp]
-    bl func_020760c0
+    bl GraphicsSpriteRenderer_DrawCharacter
     cmp r11, #0
     add r9, r9, #2
     beq sprite_text_draw_fixed
@@ -118,12 +120,14 @@ sprite_text_draw_return:
  * controls and contribute no width. Of the confirmed 0xee00..0xee12 commands,
  * five terminate measurement and eleven consume a following u16 parameter;
  * unrecognized controls are skipped without a parameter. Ordinary characters
- * use the same fixed/proportional advance policy as func_02076148. Return zero
- * when the renderer has no active font data.
+ * use the same fixed/proportional advance policy as
+ * GraphicsSpriteRenderer_DrawText. Return zero when the renderer has no active
+ * font data.
  */
 #ifndef MATCHING
-s32 func_020761f8(GraphicsSpriteRenderer *renderer, const u16 *text,
-                  s32 glyphAdvance, s32 spacing)
+s32 GraphicsSpriteRenderer_MeasureText(GraphicsSpriteRenderer *renderer,
+                                       const u16 *text, s32 glyphAdvance,
+                                       s32 spacing)
 {
     s32 advance = 0;
     s32 proportional = 1;
@@ -171,7 +175,8 @@ s32 func_020761f8(GraphicsSpriteRenderer *renderer, const u16 *text,
         }
 
         {
-            s32 glyphWidth = func_02076114(renderer, characterCode);
+            s32 glyphWidth = GraphicsSpriteRenderer_GetCharacterMetric(
+                renderer, characterCode);
 
             if (!proportional) {
                 advance += glyphAdvance;
@@ -187,8 +192,9 @@ s32 func_020761f8(GraphicsSpriteRenderer *renderer, const u16 *text,
 }
 #else
 /* This matching fallback implements the documented portable C directly above. */
-asm s32 func_020761f8(GraphicsSpriteRenderer *renderer, const u16 *text,
-                     s32 glyphAdvance, s32 spacing)
+asm s32 GraphicsSpriteRenderer_MeasureText(GraphicsSpriteRenderer *renderer,
+                                           const u16 *text, s32 glyphAdvance,
+                                           s32 spacing)
 {
     stmdb sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, lr}
     mov r9, r0
@@ -246,7 +252,7 @@ sprite_text_measure_parameter:
     b sprite_text_measure_test
 sprite_text_measure_character:
     mov r0, r9
-    bl func_02076114
+    bl GraphicsSpriteRenderer_GetCharacterMetric
     cmp r10, #0
     beq sprite_text_measure_fixed
     cmp r0, #0

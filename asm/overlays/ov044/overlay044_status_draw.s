@@ -2,8 +2,8 @@
 .extern GraphicsSpriteCanvas_FillRect
 .extern GraphicsSpriteRenderer_SetFontResource
 .extern func_020791e0
-.extern func_020761f8
-.extern func_02076148
+.extern GraphicsSpriteRenderer_MeasureText
+.extern GraphicsSpriteRenderer_DrawText
 .extern gDebugFont
 .extern data_021f3ecc
 
@@ -36,7 +36,7 @@ func_ov044_0220c74c:
     mov r2, #0x8
     ldr r0, [r0, #0x0]
     mov r3, #0x0
-    bl func_020761f8
+    bl GraphicsSpriteRenderer_MeasureText
     mov r1, r4
     mov r4, r0
     ldr r0, .L_0220c808
@@ -52,7 +52,7 @@ func_ov044_0220c74c:
     ldr r0, .L_0220c804
     mov r3, #0x6
     ldr r0, [r0, #0x0]
-    bl func_02076148
+    bl GraphicsSpriteRenderer_DrawText
     add sp, sp, #0xc
     ldmia sp!, {r4, r5, pc}
 .L_0220c804: .word gDebugFont

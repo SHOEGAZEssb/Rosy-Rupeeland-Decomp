@@ -5,7 +5,7 @@
 .extern data_020f4e18
 .extern func_02072048
 .extern GraphicsSpriteRenderer_SetTextGridObjectMode
-.extern func_02076004
+.extern GraphicsSpriteText_FormatDecimal
 .extern func_020b44e8
 .extern func_ov030_021fe3e0
 .extern func_ov030_021fe414
@@ -75,17 +75,17 @@ L_021fe5e8:
     ldr r2, L_021fe758
     add r0, r4, #0x2cc
     mov r3, #0x0
-    bl func_02076004
+    bl GraphicsSpriteText_FormatDecimal
     ldr r2, L_021fe758
     add r0, r4, #0x2ec
     mov r1, #0x1f4
     mov r3, #0x0
-    bl func_02076004
+    bl GraphicsSpriteText_FormatDecimal
     ldr r2, L_021fe758
     add r0, r4, #0x30c
     mov r1, #0xa
     mov r3, #0x0
-    bl func_02076004
+    bl GraphicsSpriteText_FormatDecimal
     b L_021fe6c4
 L_021fe668:
     ldr r3, L_021fe75c
@@ -100,17 +100,17 @@ L_021fe668:
     ldr r2, L_021fe758
     add r0, r4, #0x2cc
     mov r3, #0x0
-    bl func_02076004
+    bl GraphicsSpriteText_FormatDecimal
     ldr r2, L_021fe758
     add r0, r4, #0x2ec
     mov r1, #0x3e8
     mov r3, #0x0
-    bl func_02076004
+    bl GraphicsSpriteText_FormatDecimal
     ldr r2, L_021fe758
     add r0, r4, #0x30c
     mov r1, #0x64
     mov r3, #0x0
-    bl func_02076004
+    bl GraphicsSpriteText_FormatDecimal
 L_021fe6c4:
     bl func_020b44e8
     add r0, sp, #0x4

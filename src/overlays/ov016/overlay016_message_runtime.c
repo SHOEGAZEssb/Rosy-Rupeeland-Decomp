@@ -17,8 +17,8 @@ extern "C" {
 extern void *Heap_Alloc(u32, const void *, s32, void *);
 extern void func_02070e0c(void *, s32, s32);
 extern void GraphicsSpriteRenderer_SetFontResource(void *, void *);
-extern s32 func_02076148(void *, const u16 *, s32, s32, s32, s32, s32);
-extern s32 func_020761f8(void *, const u16 *, s32, s32);
+extern s32 GraphicsSpriteRenderer_DrawText(void *, const u16 *, s32, s32, s32, s32, s32);
+extern s32 GraphicsSpriteRenderer_MeasureText(void *, const u16 *, s32, s32);
 extern void GraphicsSpriteCanvas_FillRect(void *, s32, s32, s32, s32, s32);
 extern const u16 *func_020791e0(void *, u16);
 extern void *func_02092790(void *, s32);
@@ -45,9 +45,9 @@ extern "C" void func_ov016_021ff848(void *state, u16 messageId)
     GraphicsSpriteCanvas_FillRect(gDebugFont, 0, 6, 0xff, 0x16, 0);
     GraphicsSpriteRenderer_SetFontResource(gDebugFont, FIELD(void *, state, 0x64));
     text = func_020791e0(data_021f3ecc, messageId);
-    width = func_020761f8(gDebugFont, text, 8, 0);
+    width = GraphicsSpriteRenderer_MeasureText(gDebugFont, text, 8, 0);
     text = func_020791e0(data_021f3ecc, messageId);
-    func_02076148(gDebugFont, text, 0xf8 - width, 6, 0xe, 4, 0);
+    GraphicsSpriteRenderer_DrawText(gDebugFont, text, 0xf8 - width, 6, 0xe, 4, 0);
 }
 
 /*
@@ -123,9 +123,9 @@ extern "C" void func_ov016_021ff9f8(void *state, u16 messageId, s32 parameter)
     GraphicsSpriteCanvas_FillRect(data_020f4e14, 0x40, 0x14, 0xc0, 0x74, 0);
     GraphicsSpriteRenderer_SetFontResource(data_020f4e14, FIELD(void *, state, 0x64));
     text = func_020791e0(data_021f3ecc, messageId);
-    width = func_020761f8(data_020f4e14, text, 4, 0);
+    width = GraphicsSpriteRenderer_MeasureText(data_020f4e14, text, 4, 0);
     text = func_020791e0(data_021f3ecc, messageId);
-    func_02076148(data_020f4e14, text, 0x80 - width / 2, 0x20, 0xe, 4, 0);
+    GraphicsSpriteRenderer_DrawText(data_020f4e14, text, 0x80 - width / 2, 0x20, 0xe, 4, 0);
     func_02070e0c(func_02092790((u8 *)state + 0x84, 4), 1, 0);
     FIELD(u32, state, 0x48) |= 2;
 }

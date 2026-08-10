@@ -30,7 +30,7 @@ extern void func_02073e48(void *, s32, s32, s32, s32, s32, s32);
 extern void *func_02073ffc(void *, void *, s32);
 extern void *func_020742cc(void *);
 extern void GraphicsSpriteRenderer_SetFontResource(void *, void *);
-extern void func_02076148(void *, const void *, s32, s32, s32, s32, s32);
+extern void GraphicsSpriteRenderer_DrawText(void *, const void *, s32, s32, s32, s32, s32);
 extern u32 func_02079160(const void *, s32);
 extern const void *func_020791e0(const void *, s32);
 extern void func_02092798(void *);
@@ -139,7 +139,7 @@ extern "C" void func_ov021_021fd39c(void *state)
         const u8 *descriptor = (const u8 *)rows[first + i].descriptor;
         s32 style = FIELD(void *, descriptor, 8) == 0 ? 3 : 0xe;
         const u8 *record = FIELD(const u8 *, descriptor, 4);
-        func_02076148(font, record + 0x2c, 0x40, i * 0x18 + 0x13,
+        GraphicsSpriteRenderer_DrawText(font, record + 0x2c, 0x40, i * 0x18 + 0x13,
                       style, 8, finalColor);
     }
 }
@@ -182,7 +182,7 @@ extern "C" void func_ov021_021fd490(void *state)
         GraphicsSpriteRenderer_SetFontResource(font, (u8 *)state + 0x2c);
         s32 width = func_02092960(font, value, 0xff676980, 0x2a,
                                   0x7e, 0xe, 8, 0);
-        func_02076148(font, (u8 *)state + 0x64, width + 0x2e, 0x7e,
+        GraphicsSpriteRenderer_DrawText(font, (u8 *)state + 0x64, width + 0x2e, 0x7e,
                       0xe, 4, 0);
     } else {
         FIELD(u16, FIELD(void *, state, 0x24), 0x24) |= 4;

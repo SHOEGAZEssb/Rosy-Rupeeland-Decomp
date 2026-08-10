@@ -12,8 +12,8 @@
 .extern GraphicsSpriteState_SetAnimationIndex
 .extern GraphicsSpriteRenderer_SetFontResource
 .extern GraphicsSpriteRenderer_ClearTextBuffer
-.extern func_02075e48
-.extern func_02076148
+.extern GraphicsSpriteRenderer_DrawGlyph
+.extern GraphicsSpriteRenderer_DrawText
 .extern func_02079f3c
 .extern func_02092960
 .extern func_020befec
@@ -64,7 +64,7 @@ func_02028100: ; 0x02028100
     ldr r0, [r5, #0x30]
     mov r3, r6
     mov r2, #0x6
-    bl func_02076148
+    bl GraphicsSpriteRenderer_DrawText
     ldr r0, [r5, #0x30]
     ldr r1, [r5, #0x4]
     bl GraphicsSpriteRenderer_SetFontResource
@@ -84,7 +84,7 @@ func_02028100: ; 0x02028100
     ldr r0, [r5, #0x30]
     mov r2, #0x5
     mov r3, #0xa7
-    bl func_02076148
+    bl GraphicsSpriteRenderer_DrawText
     ldr r0, .L_02028354
     ldr r1, .L_02028358
     ldr r0, [r0, #0x0]
@@ -111,7 +111,7 @@ func_02028100: ; 0x02028100
     mov r1, #0xd3
     mov r2, #0xee
     mov r3, #0xac
-    bl func_02075e48
+    bl GraphicsSpriteRenderer_DrawGlyph
     b .L_02028338
 .L_02028268:
     ldr r3, .L_02028354
@@ -169,7 +169,7 @@ func_02028100: ; 0x02028100
     add r2, r2, #0xca
     mov r1, #0x5
     mov r3, #0xac
-    bl func_02075e48
+    bl GraphicsSpriteRenderer_DrawGlyph
 .L_02028338:
     add sp, sp, #0x10
     ldmia sp!, {r3, r4, r5, r6, r7, pc}

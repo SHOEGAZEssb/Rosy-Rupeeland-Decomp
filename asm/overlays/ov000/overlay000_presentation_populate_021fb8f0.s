@@ -17,7 +17,7 @@
 .extern func_02073e48
 .extern func_02073ffc
 .extern GraphicsSpriteRenderer_SetFontResource
-.extern func_02076148
+.extern GraphicsSpriteRenderer_DrawText
 .extern GraphicsSpriteCanvas_FillRect
 .extern func_02079f3c
 .extern func_02092e9c
@@ -80,7 +80,7 @@ func_ov000_021fb8f0: ; 0x021fb8f0
     ldr r0, [r6, #0x0]
     mov r2, #0x70
     mov r3, #0x48
-    bl func_02076148
+    bl GraphicsSpriteRenderer_DrawText
     ldr r0, [r6, #0x0]
     ldr r1, [r6, #0x20]
     bl GraphicsSpriteRenderer_SetFontResource
@@ -103,7 +103,7 @@ func_ov000_021fb8f0: ; 0x021fb8f0
     add r1, r6, #0x48
     mov r2, #0x38
     mov r3, #0x8a
-    bl func_02076148
+    bl GraphicsSpriteRenderer_DrawText
     ldr r0, [r6, #0x4]
     add r1, r6, #0x8
     mov r2, #0x1
@@ -140,7 +140,7 @@ L_021fba5c:
     ldr r0, [r6, #0x0]
     mov r2, #0x70
     mov r3, #0x48
-    bl func_02076148
+    bl GraphicsSpriteRenderer_DrawText
     ldr r0, [r6, #0x0]
     ldr r1, [r6, #0x20]
     bl GraphicsSpriteRenderer_SetFontResource
@@ -163,7 +163,7 @@ L_021fba5c:
     add r1, r6, #0x48
     mov r2, #0x38
     mov r3, #0x8a
-    bl func_02076148
+    bl GraphicsSpriteRenderer_DrawText
     add r4, r4, r0
     mov r0, r5
     bl func_02062ae4
@@ -183,7 +183,7 @@ L_021fba5c:
     ldr r0, [r6, #0x0]
     add r2, r4, #0x38
     mov r3, #0x8a
-    bl func_02076148
+    bl GraphicsSpriteRenderer_DrawText
     ldr r0, [r6, #0x4]
     add r1, r6, #0x8
     mov r2, #0x1
@@ -221,7 +221,7 @@ L_021fbb94:
     ldr r0, [r6, #0x0]
     mov r2, #0x5c
     mov r3, #0x34
-    bl func_02076148
+    bl GraphicsSpriteRenderer_DrawText
     mov r0, r5
     mov r1, #0x0
     bl func_02062918

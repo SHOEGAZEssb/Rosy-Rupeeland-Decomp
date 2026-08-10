@@ -22,9 +22,9 @@ extern void *func_02073ffc(void *, void *, s32);
 extern void *func_020742cc(void *);
 extern void GraphicsSpriteRenderer_SetFontResource(void *, void *);
 extern void GraphicsSpriteRenderer_ClearTextBuffer(void *);
-extern void func_02075e48(void *, u16, s32, s32, s32);
-extern s32 func_02075ea8(void *, s32);
-extern s32 func_02075ecc(u16);
+extern void GraphicsSpriteRenderer_DrawGlyph(void *, u16, s32, s32, s32);
+extern s32 GraphicsSpriteRenderer_GetGlyphMetric(void *, s32);
+extern s32 GraphicsSpriteFont_MapCharacterToGlyph(u16);
 extern void GraphicsSpriteCanvas_FillRect(void *, s32, s32, s32, s32, s32);
 extern s32 func_02092910(void *, void *);
 extern void func_ov025_021fd03c(void *, void *, s32);
@@ -101,10 +101,10 @@ extern "C" void func_ov025_021fd03c(void *widget, void *font_context,
     GraphicsSpriteRenderer_SetFontResource(data_020f4e14, font_context);
     GraphicsSpriteCanvas_FillRect(data_020f4e14, 0, 0, 0xff, 0x18, 0);
     for (s32 i = 0; i < FIELD(s32, widget, 0x17c); ++i) {
-        s32 glyph = func_02075ecc(FIELD(u16, widget, 0x180 + i * 2));
-        s32 width = func_02075ea8(data_020f4e14, glyph);
+        s32 glyph = GraphicsSpriteFont_MapCharacterToGlyph(FIELD(u16, widget, 0x180 + i * 2));
+        s32 width = GraphicsSpriteRenderer_GetGlyphMetric(data_020f4e14, glyph);
         void *sprite = FIELD(void *, widget, 0x10 + i * 4);
-        func_02075e48(data_020f4e14, (u16)glyph,
+        GraphicsSpriteRenderer_DrawGlyph(data_020f4e14, (u16)glyph,
                       FIELD(s16, sprite, 0x2c) - ((width + (u32)width /
                       0x80000000u) >> 1), 6, 14);
     }
@@ -134,7 +134,7 @@ extern "C" void func_ov025_021fd160(void *widget, void *font_context)
     const u8 *special = data_ov025_02202f40 +
                         (alternate_locale() ? 16 : 0);
     for (s32 i = 0; i < 4; ++i)
-        func_02075e48(data_020f4e14, FIELD(u16, special, i * 4),
+        GraphicsSpriteRenderer_DrawGlyph(data_020f4e14, FIELD(u16, special, i * 4),
                       FIELD(s16, special, i * 4 + 2) - 5, 0xac, 14);
 
     for (s32 row = 0; row < 7; ++row) {
@@ -145,11 +145,11 @@ extern "C" void func_ov025_021fd160(void *widget, void *font_context)
             void *sprite = FIELD(void *, widget, 0x40 + index * 4);
             if (character != 0) {
                 FIELD(u16, sprite, 0x24) &= (u16)~4;
-                s32 glyph = func_02075ecc(character);
-                s32 width = func_02075ea8(data_020f4e14, glyph);
+                s32 glyph = GraphicsSpriteFont_MapCharacterToGlyph(character);
+                s32 width = GraphicsSpriteRenderer_GetGlyphMetric(data_020f4e14, glyph);
                 s32 x = 0x13 + 22 * column + ((row & 1) ? 2 : -2) -
                         ((width + (s32)((u32)width >> 31)) >> 1);
-                func_02075e48(data_020f4e14, (u16)glyph,
+                GraphicsSpriteRenderer_DrawGlyph(data_020f4e14, (u16)glyph,
                               x, 0x1d + 20 * row, 14);
             } else {
                 FIELD(u16, sprite, 0x24) |= 4;

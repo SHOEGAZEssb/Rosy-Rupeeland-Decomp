@@ -3,9 +3,9 @@
 /* Exact fallback; see src/overlays/ov025/overlay025_name_entry.c. */
 .extern data_020f4e14
 .extern GraphicsSpriteRenderer_SetFontResource
-.extern func_02075e48
-.extern func_02075ea8
-.extern func_02075ecc
+.extern GraphicsSpriteRenderer_DrawGlyph
+.extern GraphicsSpriteRenderer_GetGlyphMetric
+.extern GraphicsSpriteFont_MapCharacterToGlyph
 .extern GraphicsSpriteCanvas_FillRect
 
 
@@ -36,11 +36,11 @@ L_021fd090:
     add r0, r9, r7, lsl #0x1
     add r0, r0, #0x100
     ldrh r0, [r0, #0x80]
-    bl func_02075ecc
+    bl GraphicsSpriteFont_MapCharacterToGlyph
     mov r10, r0
     ldr r0, [r4, #0x0]
     mov r1, r10
-    bl func_02075ea8
+    bl GraphicsSpriteRenderer_GetGlyphMetric
     str r6, [sp, #0x0]
     add r3, r9, r7, lsl #0x2
     ldr ip, [r3, #0x10]
@@ -50,7 +50,7 @@ L_021fd090:
     mov r1, r10
     mov r3, r5
     sub r2, ip, r2, asr #0x1
-    bl func_02075e48
+    bl GraphicsSpriteRenderer_DrawGlyph
     add r7, r7, #0x1
 L_021fd0dc:
     ldr r0, [r9, #0x17c]

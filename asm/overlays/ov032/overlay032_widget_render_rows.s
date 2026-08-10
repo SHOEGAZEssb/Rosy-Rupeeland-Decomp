@@ -4,7 +4,7 @@
 .extern data_020f4e14
 .extern data_021f6288
 .extern GraphicsSpriteRenderer_ClearTextBuffer
-.extern func_02076148
+.extern GraphicsSpriteRenderer_DrawText
 .extern func_02097f30
 
     .global func_ov032_02201ea4
@@ -47,7 +47,7 @@ L_02201ed8:
     ldr r0, [r4, #0x0]
     mov r2, #0x28
     add r3, r3, #0x1c
-    bl func_02076148
+    bl GraphicsSpriteRenderer_DrawText
     add r8, r8, #0x1
 L_02201f40:
     cmp r8, #0x5

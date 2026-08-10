@@ -17,7 +17,7 @@ extern void GraphicsResourceSet_Load(void *, void *, s32, s32, s32);
 extern void GraphicsResourceSet_Destroy(void *);
 extern void func_020b44e8(void);
 extern void func_02072048(void *, s32, u32);
-extern void func_02076004(void *, s32, u32, s32);
+extern void GraphicsSpriteText_FormatDecimal(void *, s32, u32, s32);
 extern void GraphicsSpriteRenderer_SetTextGridObjectMode(void *, s32);
 #ifdef __cplusplus
 }
@@ -53,15 +53,15 @@ extern "C" void func_ov030_021fe554(void *scene)
     if (FIELD(s32, scene, 0x390) == 1) {
         GraphicsResourceSet_Load(resources, data_020f4e18[0],
                                  0xb102, 0xb103, 0xb104);
-        func_02076004((u8 *)scene + 0x2cc, 5000, 0xff676980, 0);
-        func_02076004((u8 *)scene + 0x2ec, 500, 0xff676980, 0);
-        func_02076004((u8 *)scene + 0x30c, 10, 0xff676980, 0);
+        GraphicsSpriteText_FormatDecimal((u8 *)scene + 0x2cc, 5000, 0xff676980, 0);
+        GraphicsSpriteText_FormatDecimal((u8 *)scene + 0x2ec, 500, 0xff676980, 0);
+        GraphicsSpriteText_FormatDecimal((u8 *)scene + 0x30c, 10, 0xff676980, 0);
     } else {
         GraphicsResourceSet_Load(resources, data_020f4e18[0],
                                  0xb106, 0xb107, 0xb108);
-        func_02076004((u8 *)scene + 0x2cc, 10000, 0xff676980, 0);
-        func_02076004((u8 *)scene + 0x2ec, 1000, 0xff676980, 0);
-        func_02076004((u8 *)scene + 0x30c, 100, 0xff676980, 0);
+        GraphicsSpriteText_FormatDecimal((u8 *)scene + 0x2cc, 10000, 0xff676980, 0);
+        GraphicsSpriteText_FormatDecimal((u8 *)scene + 0x2ec, 1000, 0xff676980, 0);
+        GraphicsSpriteText_FormatDecimal((u8 *)scene + 0x30c, 100, 0xff676980, 0);
     }
     func_020b44e8();
     func_02072048(resources, 1, 0x4000);

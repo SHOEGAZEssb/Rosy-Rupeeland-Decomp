@@ -1,8 +1,8 @@
     .text
 /* Exact fallback; see src/overlays/ov022/overlay022_status_widget.c. */
     .extern data_021f5128
-    .extern func_02076148
-    .extern func_020761f8
+    .extern GraphicsSpriteRenderer_DrawText
+    .extern GraphicsSpriteRenderer_MeasureText
     .extern func_0207b44c
     .extern gDebugFont
 
@@ -20,7 +20,7 @@ func_ov022_021fd2f4:
     ldr r0, [r0, #0x0]
     mov r1, r4
     sub r3, r2, #0xa
-    bl func_020761f8
+    bl GraphicsSpriteRenderer_MeasureText
     mov r2, #0xd
     mov r1, #0x8
     str r2, [sp, #0x0]
@@ -34,7 +34,7 @@ func_ov022_021fd2f4:
     ldr r0, [r0, #0x0]
     rsb r2, r2, #0x40
     mov r3, #0xac
-    bl func_02076148
+    bl GraphicsSpriteRenderer_DrawText
     add sp, sp, #0xc
     ldmia sp!, {r3, r4, pc}
 L_021fd368: .word data_021f5128

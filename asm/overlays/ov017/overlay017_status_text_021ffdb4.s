@@ -5,9 +5,9 @@
     .extern func_020628c8
     .extern GraphicsSpriteRenderer_SetFontResource
     .extern GraphicsSpriteRenderer_ClearTextBuffer
-    .extern func_02076004
-    .extern func_02076148
-    .extern func_020761f8
+    .extern GraphicsSpriteText_FormatDecimal
+    .extern GraphicsSpriteRenderer_DrawText
+    .extern GraphicsSpriteRenderer_MeasureText
     .extern func_020791e0
     .extern gDebugFont
 .global func_ov017_021ffdb4
@@ -41,7 +41,7 @@ func_ov017_021ffdb4:
     ldr r0, [r2, #0x0]
     mov r2, #0x90
     mov r3, #0x41
-    bl func_02076148
+    bl GraphicsSpriteRenderer_DrawText
     b L_021ffe6c
 L_021ffe30:
     ldr r0, L_02200054
@@ -58,7 +58,7 @@ L_021ffe30:
     ldr r0, [r2, #0x0]
     mov r2, #0x90
     mov r3, #0x41
-    bl func_02076148
+    bl GraphicsSpriteRenderer_DrawText
 L_021ffe6c:
     ldr r0, L_0220005c
     ldr r0, [r0, #0x80]
@@ -78,7 +78,7 @@ L_021ffe6c:
     ldr r0, [r2, #0x0]
     mov r2, #0x90
     mov r3, #0x51
-    bl func_02076148
+    bl GraphicsSpriteRenderer_DrawText
     b L_021ffef8
 L_021ffebc:
     ldr r0, L_02200054
@@ -95,14 +95,14 @@ L_021ffebc:
     ldr r0, [r2, #0x0]
     mov r2, #0x90
     mov r3, #0x51
-    bl func_02076148
+    bl GraphicsSpriteRenderer_DrawText
 L_021ffef8:
     mov r2, #0x3e8
     add r0, sp, #0xc
     mov r1, r4
     rsb r2, r2, #0x0
     mov r3, #0x0
-    bl func_02076004
+    bl GraphicsSpriteText_FormatDecimal
     mov r0, r5
     bl func_020628c8
     ldr r3, L_02200050
@@ -110,7 +110,7 @@ L_021ffef8:
     mov r2, #0x6
     ldr r0, [r3, #0x0]
     sub r3, r2, #0x7
-    bl func_020761f8
+    bl GraphicsSpriteRenderer_MeasureText
     add r4, r0, #0x2
     ldr r0, L_02200054
     ldr r1, L_02200060
@@ -120,7 +120,7 @@ L_021ffef8:
     mov r2, #0x6
     ldr r0, [r0, #0x0]
     mov r3, #0x0
-    bl func_020761f8
+    bl GraphicsSpriteRenderer_MeasureText
     add r0, r0, #0x2
     add r4, r4, r0
     ldr r0, L_02200050
@@ -128,7 +128,7 @@ L_021ffef8:
     ldr r0, [r0, #0x0]
     mov r2, #0x6
     mov r3, #0x0
-    bl func_020761f8
+    bl GraphicsSpriteRenderer_MeasureText
     add r0, r4, r0
     cmp r0, #0x70
     addgt r0, r0, r0, lsr #0x1f
@@ -149,7 +149,7 @@ L_021ffef8:
     ldr r0, [r2, #0x0]
     mov r2, r4
     mov r3, #0x68
-    bl func_02076148
+    bl GraphicsSpriteRenderer_DrawText
     add r2, r4, r0
     ldr r0, L_02200054
     ldr r1, L_02200060
@@ -166,7 +166,7 @@ L_021ffef8:
     add r2, r4, #0x2
     ldr r0, [r0, #0x0]
     mov r3, #0x68
-    bl func_02076148
+    bl GraphicsSpriteRenderer_DrawText
     add r0, r0, #0x2
     add r0, r4, r0
     add r2, r0, #0x2
@@ -180,7 +180,7 @@ L_021ffef8:
     add r1, sp, #0xc
     ldr r0, [r0, #0x0]
     mov r3, #0x68
-    bl func_02076148
+    bl GraphicsSpriteRenderer_DrawText
     add sp, sp, #0x2c
     ldmia sp!, {r3, r4, r5, r6, pc}
 L_02200050: .word gDebugFont

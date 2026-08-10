@@ -3,7 +3,7 @@
 /* Exact fallback; see src/overlays/ov023/overlay023_pointer_collection.c. */
 .extern data_021f5128
 .extern GraphicsSpriteRenderer_SetFontResource
-.extern func_02076148
+.extern GraphicsSpriteRenderer_DrawText
 .extern GraphicsSpriteCanvas_FillRect
 .extern func_0207b44c
 .extern gSystemState
@@ -68,7 +68,7 @@ L_021fd7fc:
     ldr r0, [r10, #0x0]
     mov r3, r8
     mov r2, #0x40
-    bl func_02076148
+    bl GraphicsSpriteRenderer_DrawText
 L_021fd88c:
     ldr r0, [r10, #0x0]
     ldr r1, [r10, #0x18]
@@ -84,7 +84,7 @@ L_021fd88c:
     add r1, r1, #0x2c
     mov r2, #0x44
     add r3, r3, #0x35
-    bl func_02076148
+    bl GraphicsSpriteRenderer_DrawText
     add r7, r7, #0x1
 L_021fd8cc:
     cmp r7, #0x4

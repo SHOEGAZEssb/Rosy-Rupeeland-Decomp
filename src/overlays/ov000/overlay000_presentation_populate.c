@@ -40,7 +40,7 @@ extern void *func_02073ffc(void *owner, void *resource, s32 mode);
 extern void func_02073e48(void *sprite, s32 animation, s32 x, s32 y,
                           s32 enabled, s32 field28, s32 flags);
 extern void GraphicsSpriteRenderer_SetFontResource(void *renderer, const void *source);
-extern s32 func_02076148(void *renderer, const u16 *text, s32 x, s32 y,
+extern s32 GraphicsSpriteRenderer_DrawText(void *renderer, const u16 *text, s32 x, s32 y,
                          s32 mode, s32 advance, s32 spacing);
 extern void GraphicsSpriteCanvas_FillRect(void *renderer, s32 x, s32 y, s32 width,
                           s32 height, s32 mode);
@@ -102,28 +102,28 @@ void func_ov000_021fb8f0(Overlay000PresentationState *state, void *record)
         GraphicsSpriteCanvas_FillRect(state->renderer_00, 0x70, 0x48, 0xc0,
                       firstHeight, 0);
         text = (const u16 *)(func_02079f3c(data_021f3ecc, 0x1b8) + 2);
-        func_02076148(state->renderer_00, text, 0x70, 0x48, 0xe, 4, 0);
+        GraphicsSpriteRenderer_DrawText(state->renderer_00, text, 0x70, 0x48, 0xe, 4, 0);
 
         GraphicsSpriteRenderer_SetFontResource(state->renderer_00, state->textSource_20);
         GraphicsSpriteCanvas_FillRect(state->renderer_00, 0x38, 0x8a, 0xd8, 0x9a, 0);
-        func_02076148(state->renderer_00, state->label_48,
+        GraphicsSpriteRenderer_DrawText(state->renderer_00, state->label_48,
                       0x38, 0x8a, 5, 4, 0);
     } else {
         GraphicsSpriteRenderer_SetFontResource(state->renderer_00, state->textSource_24);
         GraphicsSpriteCanvas_FillRect(state->renderer_00, 0x70, 0x48, 0xc0,
                       firstHeight, 0);
         text = (const u16 *)(func_02079f3c(data_021f3ecc, 0x1b7) + 2);
-        func_02076148(state->renderer_00, text, 0x70, 0x48, 0xe, 4, 0);
+        GraphicsSpriteRenderer_DrawText(state->renderer_00, text, 0x70, 0x48, 0xe, 4, 0);
 
         GraphicsSpriteRenderer_SetFontResource(state->renderer_00, state->textSource_20);
         GraphicsSpriteCanvas_FillRect(state->renderer_00, 0x38, 0x8a, 0xd8, 0x9a, 0);
-        textOffset += func_02076148(state->renderer_00, state->label_48,
+        textOffset += GraphicsSpriteRenderer_DrawText(state->renderer_00, state->label_48,
                                    0x38, 0x8a, 0xe, 4, 0);
         text = (const u16 *)(func_02079f3c(
             data_021f3ecc,
             *(const u16 *)(data_020d780c + func_02062ae4(record) * 0x34)) +
             2);
-        func_02076148(state->renderer_00, text, textOffset + 0x38,
+        GraphicsSpriteRenderer_DrawText(state->renderer_00, text, textOffset + 0x38,
                       0x8a, 0xe, 4, 0);
     }
 
@@ -132,7 +132,7 @@ void func_ov000_021fb8f0(Overlay000PresentationState *state, void *record)
 
     GraphicsSpriteRenderer_SetFontResource(state->renderer_00, state->textSource_28);
     GraphicsSpriteCanvas_FillRect(state->renderer_00, 0x5c, 0x34, 0xe8, 0x44, 0);
-    func_02076148(state->renderer_00, func_020628c8(record),
+    GraphicsSpriteRenderer_DrawText(state->renderer_00, func_020628c8(record),
                   0x5c, 0x34, 0xe, 6, 0);
 
     func_02062918(record, 0);

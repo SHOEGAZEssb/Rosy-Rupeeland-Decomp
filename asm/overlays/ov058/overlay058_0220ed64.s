@@ -2,8 +2,8 @@
 ; Matching fallback for the portable implementation in src/overlays/ov058/overlay058_recovery.c.
 .extern data_020f4e14
 .extern GraphicsSpriteRenderer_SetFontResource
-.extern func_020760c0
-.extern func_020761f8
+.extern GraphicsSpriteRenderer_DrawCharacter
+.extern GraphicsSpriteRenderer_MeasureText
 .extern func_02091aa8
 
 .global func_ov058_0220ed64
@@ -37,7 +37,7 @@ func_ov058_0220ed64:
     mov r2, #0x4
     mov r3, #0x1
     strh r6, [r7, ip]
-    bl func_020761f8
+    bl GraphicsSpriteRenderer_MeasureText
     str r0, [r5, r8, lsl #0x2]
     mov r2, #0x0
     add r8, r8, #0x1
@@ -52,7 +52,7 @@ func_ov058_0220ed64:
     mov r2, #0x4
     mov r3, #0x1
     strh r4, [r7, ip]
-    bl func_020761f8
+    bl GraphicsSpriteRenderer_MeasureText
     add r4, sp, #0x4
     str r0, [r4, r8, lsl #0x2]
     b .L_0220ee24
@@ -101,7 +101,7 @@ func_ov058_0220ed64:
     ldr r0, [r0, #0x0]
     mov r1, r7
     mov r2, r6
-    bl func_020760c0
+    bl GraphicsSpriteRenderer_DrawCharacter
     cmp r0, #0x0
     blt .L_0220ee54
     addgt r0, r0, #0x1

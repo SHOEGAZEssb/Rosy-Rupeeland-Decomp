@@ -63,20 +63,26 @@ void GraphicsSpriteRenderer_SetTextGridPosition(GraphicsSpriteRenderer *renderer
 void GraphicsSpriteRenderer_ConfigureTextGridPriority(GraphicsSpriteRenderer *renderer, s32 priority,
                    u32 field20);
 void GraphicsSpriteRenderer_SetTextGridObjectMode(GraphicsSpriteRenderer *renderer, s32 objectMode);
-u32 func_02075e48(GraphicsSpriteRenderer *renderer, s32 glyphIndex,
-                  u32 destinationX, u32 destinationY, u32 mode);
-u8 func_02075ea8(GraphicsSpriteRenderer *renderer, s32 glyphIndex);
-u16 func_02075ecc(u32 characterCode);
-void func_02076004(u16 *destination, s32 value, s32 placeValue,
-                   s32 zeroPad);
-u32 func_020760c0(GraphicsSpriteRenderer *renderer, u32 characterCode,
-                  u32 destinationX, u32 destinationY, u32 mode);
-u8 func_02076114(GraphicsSpriteRenderer *renderer, u32 characterCode);
-s32 func_02076148(GraphicsSpriteRenderer *renderer, const u16 *text,
-                  s32 destinationX, s32 destinationY, u32 mode,
-                  s32 glyphAdvance, s32 spacing);
-s32 func_020761f8(GraphicsSpriteRenderer *renderer, const u16 *text,
-                  s32 glyphAdvance, s32 spacing);
+u32 GraphicsSpriteRenderer_DrawGlyph(GraphicsSpriteRenderer *renderer,
+                                     s32 glyphIndex, u32 destinationX,
+                                     u32 destinationY, u32 mode);
+u8 GraphicsSpriteRenderer_GetGlyphMetric(GraphicsSpriteRenderer *renderer,
+                                         s32 glyphIndex);
+u16 GraphicsSpriteFont_MapCharacterToGlyph(u32 characterCode);
+void GraphicsSpriteText_FormatDecimal(u16 *destination, s32 value,
+                                      s32 placeValue, s32 zeroPad);
+u32 GraphicsSpriteRenderer_DrawCharacter(GraphicsSpriteRenderer *renderer,
+                                         u32 characterCode, u32 destinationX,
+                                         u32 destinationY, u32 mode);
+u8 GraphicsSpriteRenderer_GetCharacterMetric(
+    GraphicsSpriteRenderer *renderer, u32 characterCode);
+s32 GraphicsSpriteRenderer_DrawText(GraphicsSpriteRenderer *renderer,
+                                    const u16 *text, s32 destinationX,
+                                    s32 destinationY, u32 mode,
+                                    s32 glyphAdvance, s32 spacing);
+s32 GraphicsSpriteRenderer_MeasureText(GraphicsSpriteRenderer *renderer,
+                                       const u16 *text, s32 glyphAdvance,
+                                       s32 spacing);
 
 #ifdef __cplusplus
 }

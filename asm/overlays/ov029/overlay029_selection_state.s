@@ -6,7 +6,7 @@
 .extern data_ov029_021fecb0
 .extern data_ov029_021fecb8
 .extern GamePhaseCurrencyHud_GetCurrency
-.extern func_02076004
+.extern GraphicsSpriteText_FormatDecimal
 .extern func_02092260
 .extern func_02092c8c
 .extern func_020939d8
@@ -187,7 +187,7 @@ L_021fde8c:
     ldr r2, L_021fe0bc
     add r0, r4, #0xb0
     mov r3, #0x0
-    bl func_02076004
+    bl GraphicsSpriteText_FormatDecimal
     ldr r1, L_021fe0c0
     mov r0, r4
     ldmia r1, {r1, r2}

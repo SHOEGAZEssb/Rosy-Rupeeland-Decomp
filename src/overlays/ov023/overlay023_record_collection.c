@@ -24,7 +24,7 @@ extern void func_02074110(void *);
 extern void func_0207419c(void *);
 extern void *func_020742cc(void *);
 extern void GraphicsSpriteRenderer_SetFontResource(void *, void *);
-extern void func_02076148(void *, const void *, s32, s32, ...);
+extern void GraphicsSpriteRenderer_DrawText(void *, const void *, s32, s32, ...);
 extern void GraphicsSpriteCanvas_FillRect(void *, s32, s32, s32, ...);
 extern s32 func_0207b4e8(void *);
 extern void func_02092798(void *);
@@ -220,7 +220,7 @@ extern "C" void func_ov023_021fd268(void *collection)
         if (index >= FIELD(s32, collection, 0x34)) break;
         void *record = FIELD(void *, FIELD(u8 *, collection, 0x2c) + index * 0x18, 0);
         GraphicsSpriteRenderer_SetFontResource(FIELD(void *, collection, 0), FIELD(void *, record, 8));
-        func_02076148(FIELD(void *, collection, 0),
+        GraphicsSpriteRenderer_DrawText(FIELD(void *, collection, 0),
                       (u8 *)FIELD(void *, record, 4) + 0x2c,
                       0x40, row * 0x1a + 0x24, 14, 8, -2);
     }

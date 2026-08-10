@@ -14,9 +14,9 @@ extern "C" void GraphicsSpriteCanvas_FillRect(void *font, s32 x, s32 y, s32 colo
                                s32 width, s32 flags);
 extern "C" void *GraphicsSpriteRenderer_SetFontResource(void *font, void *presentation);
 extern "C" const void *func_020791e0(const void *table, u16 index);
-extern "C" s32 func_020761f8(void *font, const void *text, s32 mode,
+extern "C" s32 GraphicsSpriteRenderer_MeasureText(void *font, const void *text, s32 mode,
                               s32 flags);
-extern "C" void func_02076148(void *font, const void *text, s32 x, s32 y,
+extern "C" void GraphicsSpriteRenderer_DrawText(void *font, const void *text, s32 x, s32 y,
                                s32 color, s32 mode, s32 flags);
 extern "C" void GraphicsSpriteRenderer_ClearTextBuffer(void *font);
 extern "C" void *func_ov044_0220bd98(void *panel);
@@ -36,9 +36,9 @@ extern "C" void func_ov044_0220c74c(void *object, u32 messageId)
     GraphicsSpriteCanvas_FillRect(gDebugFont, 0, 6, 0xff, 0x16, 0);
     GraphicsSpriteRenderer_SetFontResource(gDebugFont, (u8 *)object + 0x54);
     const void *text = func_020791e0(data_021f3ecc, (u16)messageId);
-    s32 width = func_020761f8(gDebugFont, text, 8, 0);
+    s32 width = GraphicsSpriteRenderer_MeasureText(gDebugFont, text, 8, 0);
     text = func_020791e0(data_021f3ecc, (u16)messageId);
-    func_02076148(gDebugFont, text, 0xf8 - width, 6, 14, 4, 0);
+    GraphicsSpriteRenderer_DrawText(gDebugFont, text, 0xf8 - width, 6, 14, 4, 0);
 }
 
 /*

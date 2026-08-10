@@ -8,7 +8,7 @@
 .extern data_020d782e
 .extern data_020d7a48
 .extern data_021f3ecc
-.extern func_02076004
+.extern GraphicsSpriteText_FormatDecimal
 .extern func_02079f3c
 .extern func_020922f0
 .extern func_020939d8
@@ -107,7 +107,7 @@ L_021fec34:
     ldr r2, L_021fed68
     ldrh r1, [r1, r3]
     mov r3, #0x0
-    bl func_02076004
+    bl GraphicsSpriteText_FormatDecimal
     ldr r0, L_021fed48
     ldr r1, L_021fed6c
     ldr r0, [r0, #0x0]
@@ -140,7 +140,7 @@ L_021fed0c:
     ldr r2, L_021fed68
     add r0, r6, #0x310
     mov r3, #0x0
-    bl func_02076004
+    bl GraphicsSpriteText_FormatDecimal
     mov r0, r6
     mov r1, #0x204
     bl func_ov022_021ff2c4

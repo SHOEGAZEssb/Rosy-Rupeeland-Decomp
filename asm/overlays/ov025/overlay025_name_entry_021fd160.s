@@ -5,9 +5,9 @@
 .extern data_ov025_02202f40
 .extern GraphicsSpriteRenderer_SetFontResource
 .extern GraphicsSpriteRenderer_ClearTextBuffer
-.extern func_02075e48
-.extern func_02075ea8
-.extern func_02075ecc
+.extern GraphicsSpriteRenderer_DrawGlyph
+.extern GraphicsSpriteRenderer_GetGlyphMetric
+.extern GraphicsSpriteFont_MapCharacterToGlyph
 .extern func_ov025_021fd03c
 .extern gSystemState
 
@@ -45,7 +45,7 @@ L_021fd1b8:
     ldr r0, [r7, #0x0]
     mov r3, r8
     sub r2, r2, #0x5
-    bl func_02075e48
+    bl GraphicsSpriteRenderer_DrawGlyph
     add r6, r6, #0x1
     cmp r6, #0x4
     blt L_021fd1b8
@@ -72,12 +72,12 @@ L_021fd208:
     strh r1, [r2, #0x24]
     ldr r1, [r10, #0x178]
     ldrh r0, [r1, r0]
-    bl func_02075ecc
+    bl GraphicsSpriteFont_MapCharacterToGlyph
     str r0, [sp, #0x4]
     ldr r0, L_021fd2dc
     ldr r1, [sp, #0x4]
     ldr r0, [r0, #0x0]
-    bl func_02075ea8
+    bl GraphicsSpriteRenderer_GetGlyphMetric
     add r0, r0, r0, lsr #0x1f
     mov r0, r0, asr #0x1
     rsb r3, r0, #0x13
@@ -93,7 +93,7 @@ L_021fd208:
     ldr r0, L_021fd2dc
     add r3, r4, #0x1d
     ldr r0, [r0, #0x0]
-    bl func_02075e48
+    bl GraphicsSpriteRenderer_DrawGlyph
     b L_021fd2ac
 L_021fd298:
     add r0, r10, r2, lsl #0x2

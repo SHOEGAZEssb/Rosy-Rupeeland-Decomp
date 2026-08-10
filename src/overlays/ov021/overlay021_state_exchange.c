@@ -34,7 +34,7 @@ extern s32 GamePhaseCurrencyHud_GetCurrency(void *);
 extern void GamePhaseCurrencyHud_AddCurrency(void *, s32, s32);
 extern void func_02062ca8(void *);
 extern void GraphicsSpriteRenderer_ClearTextBuffer(void *);
-extern void func_02076004(void *, s32, u32, s32);
+extern void GraphicsSpriteText_FormatDecimal(void *, s32, u32, s32);
 extern void func_0207ab48(void *, u16);
 extern const void *func_0207c4cc(const void *, s32);
 extern void func_0207c5c8(void *, s32);
@@ -139,7 +139,7 @@ extern "C" s32 func_ov021_022009e0(void *state)
                 FIELD(s32, state, 8) = 0;
             } else {
                 func_020939d8(FIELD(void *, state, 0x388));
-                func_02076004((u8 *)state + 0x398,
+                GraphicsSpriteText_FormatDecimal((u8 *)state + 0x398,
                               FIELD(s32, state, 0x394), 0xff676980, 0);
                 change_state(state, data_ov021_02202e90);
             }

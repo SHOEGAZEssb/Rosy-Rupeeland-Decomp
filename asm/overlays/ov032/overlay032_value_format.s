@@ -1,7 +1,7 @@
 .text
 
 /* Exact fallback; see src/overlays/ov032/overlay032_text_helpers.c for documented portable C. */
-.extern func_02076004
+.extern GraphicsSpriteText_FormatDecimal
 .extern func_02092e9c
 .extern func_02093360
 .extern func_020939c8
@@ -35,7 +35,7 @@ L_021fe338:
     add r0, sp, #0x0
     mov r2, r5
     mov r3, #0x0
-    bl func_02076004
+    bl GraphicsSpriteText_FormatDecimal
     ldr r1, L_021fe43c
     mov r0, #0x2c
     ldrb r1, [r1, #0x5f]

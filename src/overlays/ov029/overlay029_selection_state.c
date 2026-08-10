@@ -17,7 +17,7 @@ extern "C" {
 extern void GameWork_SetFlag(void *, s32);
 extern u32 genrand_int32(void);
 extern s32 GamePhaseCurrencyHud_GetCurrency(void *);
-extern void func_02076004(void *, s32, u32, s32);
+extern void GraphicsSpriteText_FormatDecimal(void *, s32, u32, s32);
 extern void func_02092260(void *, s32);
 extern void func_02092c8c(s32, s32);
 extern void func_020939d8(void *);
@@ -111,7 +111,7 @@ extern "C" s32 func_ov029_021fdc5c(void *state)
                 Overlay029_ResetPhase(state, 20);
             } else {
                 func_020939d8(FIELD(void *, state, 0x9c));
-                func_02076004((u8 *)state + 0xb0,
+                GraphicsSpriteText_FormatDecimal((u8 *)state + 0xb0,
                               FIELD(s32, state, 0xac), 0xff676980, 0);
                 Overlay029_SetPair(state, data_ov029_021fec08);
             }

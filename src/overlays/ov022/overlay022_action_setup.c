@@ -21,7 +21,7 @@ extern "C" {
 extern u32 genrand_int32(void);
 extern void *func_02073ffc(void *, void *, s32);
 extern void func_02073e48(void *, s32, s32, s32, ...);
-extern void func_02076004(void *, s32, u32, s32);
+extern void GraphicsSpriteText_FormatDecimal(void *, s32, u32, s32);
 extern void *func_02079f3c(const void *, u16);
 extern void func_0207c460(void *, u16);
 extern s32 func_020918f4(void *, s32);
@@ -88,7 +88,7 @@ extern "C" void func_ov022_021feac8(void *scene)
         if (text[i] == 0)
             break;
     }
-    func_02076004((u8 *)scene + 0x310,
+    GraphicsSpriteText_FormatDecimal((u8 *)scene + 0x310,
                   FIELD(u16, descriptor, 0x18), 0xff676980, 0);
     func_020939d8(FIELD(void *, scene, 0x2cc));
     func_ov022_021ff2c4(scene, 0x203);
@@ -141,7 +141,7 @@ extern "C" void func_ov022_021feb78(void *scene)
         GameWork_SetFlag(gGameWork, FIELD(u16, data_020d7828, table_offset));
         GameWork_SetFlag(gGameWork, FIELD(u16, data_020d782c, table_offset));
         func_020922f0(scene, 0x9c);
-        func_02076004((u8 *)scene + 0x310,
+        GraphicsSpriteText_FormatDecimal((u8 *)scene + 0x310,
                       FIELD(u16, data_020d782e, table_offset),
                       0xff676980, 0);
         if (GameWork_TestFlag(gGameWork, 0x3cb)) {
@@ -154,7 +154,7 @@ extern "C" void func_ov022_021feb78(void *scene)
     } else {
         FIELD(s32, scene, 0x2ac) = 0;
         s32 percentage = func_020befec(completed * 100, matching);
-        func_02076004((u8 *)scene + 0x310, percentage, 0xff676980, 0);
+        GraphicsSpriteText_FormatDecimal((u8 *)scene + 0x310, percentage, 0xff676980, 0);
         func_ov022_021ff2c4(scene, 0x204);
     }
 }

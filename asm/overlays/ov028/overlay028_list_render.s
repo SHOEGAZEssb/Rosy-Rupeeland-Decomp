@@ -4,7 +4,7 @@
 .extern data_021f3ecc
 .extern GraphicsSpriteRenderer_SetFontResource
 .extern GraphicsSpriteRenderer_ClearTextBuffer
-.extern func_02076148
+.extern GraphicsSpriteRenderer_DrawText
 .extern func_02079f3c
 .extern func_020befec
 .extern func_ov028_021fd390
@@ -54,7 +54,7 @@ L_021fd4b4:
     ldr r0, [r10, #0x0]
     mov r2, #0x42
     add r3, r3, #0x15
-    bl func_02076148
+    bl GraphicsSpriteRenderer_DrawText
     b L_021fd540
 L_021fd510:
     ldr r0, L_021fd554
@@ -68,7 +68,7 @@ L_021fd510:
     ldr r0, [r10, #0x0]
     mov r2, #0x42
     add r3, r3, #0x15
-    bl func_02076148
+    bl GraphicsSpriteRenderer_DrawText
 L_021fd540:
     add r9, r9, #0x1
 L_021fd544:

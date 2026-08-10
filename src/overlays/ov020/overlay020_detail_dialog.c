@@ -25,8 +25,8 @@ extern void func_02074058(void *);
 extern void *func_020742cc(void *);
 extern void GraphicsSpriteRenderer_SetFontResource(void *, void *);
 extern void GraphicsSpriteRenderer_ClearTextBuffer(void *);
-extern void func_02075e48(void *, s32, s32, s32, s32);
-extern s32 func_02076148(void *, const void *, s32, s32, s32, s32, s32);
+extern void GraphicsSpriteRenderer_DrawGlyph(void *, s32, s32, s32, s32);
+extern s32 GraphicsSpriteRenderer_DrawText(void *, const void *, s32, s32, s32, s32, s32);
 extern const void *func_020791e0(const void *, u16);
 extern const void *func_02079f3c(const void *, u16);
 extern void func_02092798(void *);
@@ -141,25 +141,25 @@ extern "C" s32 func_ov020_021fd44c(void *state, s32 selection, void *unused)
     s32 firstSpacing = gSystemState[0x5f] == 0 ? 8 : 4;
     GraphicsSpriteRenderer_SetFontResource(FIELD(void *, state, 8), (u8 *)state + 0x2c);
     const void *text = func_020791e0(data_021f3ecc, FIELD(u16, entry, 0xe));
-    func_02076148(FIELD(void *, state, 8), text, 0x60, firstY,
+    GraphicsSpriteRenderer_DrawText(FIELD(void *, state, 8), text, 0x60, firstY,
                   14, firstSpacing, 0);
 
     GraphicsSpriteRenderer_SetFontResource(FIELD(void *, state, 8), (u8 *)state + 0x30);
     text = func_02079f3c(data_021f3ecc, FIELD(u16, entry, 0xc));
-    func_02076148(FIELD(void *, state, 8), (u8 *)text + 2,
+    GraphicsSpriteRenderer_DrawText(FIELD(void *, state, 8), (u8 *)text + 2,
                   0x60, 0x28, 13, 8, -1);
 
     s32 systemIndex = gSystemState[0x5f];
     if (systemIndex >= 6)
         systemIndex = 5;
     GraphicsSpriteRenderer_SetFontResource(FIELD(void *, state, 8), (u8 *)state + 0x28);
-    s32 width = func_02076148(FIELD(void *, state, 8),
+    s32 width = GraphicsSpriteRenderer_DrawText(FIELD(void *, state, 8),
                               data_ov020_021fe48c + systemIndex * 0x10,
                               0xa8, 0x3c, 14, 6, 0);
     s32 numberX = 0xa8 + width;
     func_02092960(FIELD(void *, state, 8), FIELD(s8, entry, 8),
                   10, numberX + 6, 0x3c, 14, -8, 1);
-    func_02075e48(FIELD(void *, state, 8), 15,
+    GraphicsSpriteRenderer_DrawGlyph(FIELD(void *, state, 8), 15,
                   numberX + 0x16, 0x3c, 14);
     func_02092960(FIELD(void *, state, 8), 30,
                   10, numberX + 0x1e, 0x3c, 14, -8, 1);

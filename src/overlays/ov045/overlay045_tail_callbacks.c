@@ -19,8 +19,8 @@ extern "C" void func_020597fc(void *context, s32 handle);
 extern "C" s32 GameWork_TestFlag(void *work, s32 flag);
 extern "C" s32 func_02079f3c(void *table, s32 id);
 extern "C" void *func_0207b44c(void *entry);
-extern "C" s32 func_020761f8(void *font, void *entry, s32 mode, s32 spacing);
-extern "C" void func_02076148(void *font, void *entry, s32 x, s32 y,
+extern "C" s32 GraphicsSpriteRenderer_MeasureText(void *font, void *entry, s32 mode, s32 spacing);
+extern "C" void GraphicsSpriteRenderer_DrawText(void *font, void *entry, s32 x, s32 y,
                                s32 color, s32 mode, s32 spacing);
 extern "C" void func_02095308(void *object);
 extern "C" void Heap_Free(void *allocation);
@@ -53,9 +53,9 @@ extern "C" void func_ov045_0220d2f8(u32 selector, u32 subtype)
     } else {
         entry = func_0207b44c(data_021f5128[selector]);
     }
-    s32 width = func_020761f8(gDebugFont, entry, 8, -2);
+    s32 width = GraphicsSpriteRenderer_MeasureText(gDebugFont, entry, 8, -2);
     width = (width + (s32)((u32)width >> 31)) >> 1;
-    func_02076148(gDebugFont, entry, 0x54 - width, 0xac, 13, 8, -2);
+    GraphicsSpriteRenderer_DrawText(gDebugFont, entry, 0x54 - width, 0xac, 13, 8, -2);
 }
 
 /*

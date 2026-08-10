@@ -15,8 +15,8 @@ extern "C" {
 extern s32 func_020628c8(void *);
 extern s32 func_020651a4(void *, u16);
 extern void GraphicsSpriteRenderer_SetFontResource(void *, void *);
-extern void func_02076148(void *, s32, s32, s32, s32, s32, s32);
-extern s32 func_020761f8(void *, s32, s32, s32);
+extern void GraphicsSpriteRenderer_DrawText(void *, s32, s32, s32, s32, s32, s32);
+extern s32 GraphicsSpriteRenderer_MeasureText(void *, s32, s32, s32);
 extern void GraphicsSpriteCanvas_FillRect(void *, s32, s32, s32, s32, s32);
 extern void func_02092960(void *, s32, s32, s32, s32, s32, s32, s32);
 extern void func_020958d8(void *);
@@ -77,9 +77,9 @@ extern "C" void func_ov015_021fd6c8(void *state)
 
             FIELD(u16, FIELD(void *, state, 0x70), 0x24) &= (u16)~4;
             GraphicsSpriteRenderer_SetFontResource(FIELD(void *, data_020f4e14, 0), FIELD(void *, state, 0x7c));
-            width = func_020761f8(FIELD(void *, data_020f4e14, 0), text, 8, 0);
+            width = GraphicsSpriteRenderer_MeasureText(FIELD(void *, data_020f4e14, 0), text, 8, 0);
             text = func_020628c8(FIELD(void *, status, 0xc));
-            func_02076148(FIELD(void *, data_020f4e14, 0), text,
+            GraphicsSpriteRenderer_DrawText(FIELD(void *, data_020f4e14, 0), text,
                           0x80 - width / 2, 6, 0xe, 8, 0);
         }
     } else if (FIELD(void *, status, 0xc) != 0) {

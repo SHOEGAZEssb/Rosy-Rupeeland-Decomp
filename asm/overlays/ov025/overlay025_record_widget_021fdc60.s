@@ -5,8 +5,8 @@
 .extern data_ov025_02202ef8
 .extern data_ov025_02202f60
 .extern GraphicsSpriteRenderer_SetFontResource
-.extern func_02075e48
-.extern func_02075ecc
+.extern GraphicsSpriteRenderer_DrawGlyph
+.extern GraphicsSpriteFont_MapCharacterToGlyph
 .extern func_020befec
 .extern func_ov025_021fde58
 .extern gSystemState
@@ -42,13 +42,13 @@ func_ov025_021fdc60:
     ldr r11, L_021fde44
     b L_021fdcfc
 L_021fdccc:
-    bl func_02075ecc
+    bl GraphicsSpriteFont_MapCharacterToGlyph
     str r5, [sp, #0x0]
     mov r1, r0
     ldr r0, [r11, #0x0]
     mov r2, r9
     add r3, r7, r6
-    bl func_02075e48
+    bl GraphicsSpriteRenderer_DrawGlyph
     cmp r0, #0x0
     addeq r9, r9, #0x5
     addne r0, r0, #0x1
@@ -104,7 +104,7 @@ L_021fdd80:
     ldr r0, [r0, #0x0]
     ldrh r1, [r1, r4]
     mov r3, r8
-    bl func_02075e48
+    bl GraphicsSpriteRenderer_DrawGlyph
     b L_021fde30
 L_021fddc0:
     mov r0, r10
@@ -127,7 +127,7 @@ L_021fdde0:
     ldr r0, [r0, #0x0]
     mov r3, r8
     mov r6, #0x1
-    bl func_02075e48
+    bl GraphicsSpriteRenderer_DrawGlyph
     mov r0, r10
     mov r1, r7
     bl func_020befec

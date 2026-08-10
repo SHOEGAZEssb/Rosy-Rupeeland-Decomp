@@ -24,8 +24,8 @@ extern void *func_02073ffc(void *, void *, s32);
 extern void func_02074110(void *);
 extern void *func_020742cc(void *);
 extern void GraphicsSpriteRenderer_SetFontResource(void *, void *);
-extern s32 func_02075e48(void *, u16, s32, s32, s32);
-extern s32 func_02075ecc(u16);
+extern s32 GraphicsSpriteRenderer_DrawGlyph(void *, u16, s32, s32, s32);
+extern s32 GraphicsSpriteFont_MapCharacterToGlyph(u16);
 extern void GraphicsSpriteCanvas_FillRect(void *, s32, s32, s32, s32, s32);
 extern void func_02092798(void *);
 extern void func_02092814(void *, s32);
@@ -222,8 +222,8 @@ extern "C" void func_ov025_021fdc60(void *widget, s32 offset)
     for (s32 i = 0; i < 8; ++i) {
         u16 character = FIELD(u16, widget, 0x54 + i * 2);
         if (!character) break;
-        s32 advance = func_02075e48(data_020f4e14,
-                                    (u16)func_02075ecc(character),
+        s32 advance = GraphicsSpriteRenderer_DrawGlyph(data_020f4e14,
+                                    (u16)GraphicsSpriteFont_MapCharacterToGlyph(character),
                                     x, offset + row_y + 0x14, 14);
         x += advance ? advance + 1 : 5;
     }
@@ -240,14 +240,14 @@ extern "C" void func_ov025_021fdc60(void *widget, s32 offset)
     for (s32 slot = 0; slot < 9; ++slot) {
         if (slot == 1 || slot == 5) {
             if (started)
-                func_02075e48(data_020f4e14, data_ov025_02202ef8[locale],
+                GraphicsSpriteRenderer_DrawGlyph(data_020f4e14, data_ov025_02202ef8[locale],
                               base_x + data_ov025_02202f60[slot], y, color);
             continue;
         }
         s32 digit = value / divisor;
         if (digit || started || divisor == 1) {
             started = true;
-            func_02075e48(data_020f4e14, (u16)(digit + 0x10),
+            GraphicsSpriteRenderer_DrawGlyph(data_020f4e14, (u16)(digit + 0x10),
                           base_x + data_ov025_02202f60[slot], y, color);
             value %= divisor;
         }

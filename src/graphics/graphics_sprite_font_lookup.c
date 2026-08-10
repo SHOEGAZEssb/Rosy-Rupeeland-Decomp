@@ -43,8 +43,9 @@ extern u32 func_02075ad4(const GraphicsSpriteFontGlyph *glyph,
  * or zero while inactive. Glyph bounds are trusted and destination contents
  * may change; the precise meanings of the three controls remain unconfirmed.
  */
-u32 func_02075e48(GraphicsSpriteRenderer *renderer, s32 glyphIndex,
-                  u32 destinationX, u32 destinationY, u32 mode)
+u32 GraphicsSpriteRenderer_DrawGlyph(GraphicsSpriteRenderer *renderer,
+                                     s32 glyphIndex, u32 destinationX,
+                                     u32 destinationY, u32 mode)
 {
     GraphicsSpriteFontResource *font;
 
@@ -65,7 +66,8 @@ u32 func_02075e48(GraphicsSpriteRenderer *renderer, s32 glyphIndex,
  * metric, but its exact role is not yet confirmed. No state or hardware is
  * changed, and the retail caller must provide an in-range glyph index.
  */
-u8 func_02075ea8(GraphicsSpriteRenderer *renderer, s32 glyphIndex)
+u8 GraphicsSpriteRenderer_GetGlyphMetric(GraphicsSpriteRenderer *renderer,
+                                         s32 glyphIndex)
 {
     GraphicsSpriteFontResource *font;
 

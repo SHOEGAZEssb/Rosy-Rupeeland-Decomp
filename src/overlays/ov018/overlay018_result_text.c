@@ -12,8 +12,8 @@ extern void *gDebugFont;
 extern "C" {
 #endif
 extern void GraphicsSpriteRenderer_SetFontResource(void *, void *);
-extern s32 func_02076148(void *, const void *, s32, s32, s32, s32, s32);
-extern s32 func_020761f8(void *, const void *, s32, s32);
+extern s32 GraphicsSpriteRenderer_DrawText(void *, const void *, s32, s32, s32, s32, s32);
+extern s32 GraphicsSpriteRenderer_MeasureText(void *, const void *, s32, s32);
 extern void func_0207c460(void *, u16);
 extern const void *func_020791e0(const void *, s32);
 extern s32 func_ov018_021fe1d8(void *, const void *);
@@ -52,11 +52,11 @@ extern "C" void func_ov018_021fe46c(void *state)
     GraphicsSpriteRenderer_SetFontResource(gDebugFont, (u8 *)state + 0x70);
 
     const void *primary = (u8 *)temporary.storage + 0x2c;
-    s32 width = func_020761f8(gDebugFont, primary, 8, -2);
-    func_02076148(gDebugFont, primary, 0x80 - width / 2, y, 13, 8, -2);
+    s32 width = GraphicsSpriteRenderer_MeasureText(gDebugFont, primary, 8, -2);
+    GraphicsSpriteRenderer_DrawText(gDebugFont, primary, 0x80 - width / 2, y, 13, 8, -2);
 
     const void *secondary = func_020791e0(data_021f3ecc, 0x2f6);
-    width = func_020761f8(gDebugFont, secondary, 8, -2);
-    func_02076148(gDebugFont, secondary, 0x80 - width / 2,
+    width = GraphicsSpriteRenderer_MeasureText(gDebugFont, secondary, 8, -2);
+    GraphicsSpriteRenderer_DrawText(gDebugFont, secondary, 0x80 - width / 2,
                   y + 0x14, 11, 8, -2);
 }

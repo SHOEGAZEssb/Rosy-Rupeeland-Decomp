@@ -9,7 +9,7 @@
 /*
  * Render glyphIndex at the supplied destination, adding eight pixels for a
  * one-digit value or four for a two-digit value. The renderer and destination
- * buffer may change through func_02075e48; its result is returned unchanged.
+ * buffer may change through GraphicsSpriteRenderer_DrawGlyph; its result is returned unchanged.
  * The input is narrowed to 16 bits as in retail. No hardware is touched
  * directly, although the renderer may update sprite-backed graphics state.
  */
@@ -25,6 +25,6 @@ u32 func_ov000_021fb6e0(GraphicsSpriteRenderer *renderer, s32 glyphIndex,
         destinationX += 4;
     }
 
-    return func_02075e48(renderer, (u16)glyphIndex, destinationX,
+    return GraphicsSpriteRenderer_DrawGlyph(renderer, (u16)glyphIndex, destinationX,
                          destinationY, mode);
 }

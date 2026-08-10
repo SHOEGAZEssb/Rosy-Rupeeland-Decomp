@@ -11,7 +11,7 @@
     .extern GamePhaseCurrencyHud_GetCurrency
     .extern GamePhaseCurrencyHud_AddCurrency
     .extern func_02062ca8
-    .extern func_02076004
+    .extern GraphicsSpriteText_FormatDecimal
     .extern func_0207ab48
     .extern func_0207c4cc
     .extern func_0207c5c8
@@ -203,7 +203,7 @@ L_022025d0:
     ldr r2, L_02202bc4
     ldr r1, [r1, #0x14]
     mov r3, #0x0
-    bl func_02076004
+    bl GraphicsSpriteText_FormatDecimal
     mov r0, r4
     mov r1, #0x9
     bl func_ov021_021ff0e0

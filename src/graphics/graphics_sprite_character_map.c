@@ -32,7 +32,7 @@ extern const u16 data_020e6992[];
  * maps contiguously from glyph 0xf1. Return 0xffff for every unsupported code.
  * No state or hardware changes occur.
  */
-u16 func_02075ecc(u32 characterCode)
+u16 GraphicsSpriteFont_MapCharacterToGlyph(u32 characterCode)
 {
     u16 result = GRAPHICS_SPRITE_MISSING_GLYPH;
 

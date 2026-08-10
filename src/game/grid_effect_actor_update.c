@@ -26,9 +26,9 @@ extern s32 func_0204f478(void *actor);
 extern void func_0204f4d4(void *actor, void *target);
 extern u32 func_020628c8(void *subobject);
 extern void GraphicsSpriteRenderer_SetFontResource(void *context, u32 resource);
-extern void func_02076148(void *context, u32 value, s32 x, s32 y,
+extern void GraphicsSpriteRenderer_DrawText(void *context, u32 value, s32 x, s32 y,
                           s32 width, s32 height, s32 mode);
-extern s32 func_020761f8(void *context, u32 value, s32 width, s32 mode);
+extern s32 GraphicsSpriteRenderer_MeasureText(void *context, u32 value, s32 width, s32 mode);
 extern s32 func_020ada8c(s32 numerator, s32 denominator);
 extern s32 func_020adcac(const void *point0, const void *point1);
 #ifdef __cplusplus
@@ -150,7 +150,7 @@ void func_0204ee24(void *actor)
         void *grid_context = data_020f4e14;
         GraphicsSpriteRenderer_SetFontResource(grid_context, FIELD(u32, data_02105790, 8));
         u32 value = func_020628c8((u8 *)actor + 0x1f4);
-        s32 grid_x = func_020761f8(grid_context, value, 8, 0);
+        s32 grid_x = GraphicsSpriteRenderer_MeasureText(grid_context, value, 8, 0);
         s32 target_x = mode < 6 ? 0x12000 : 0xe8000 - grid_x * 0x1000;
         s32 target_y = mode == -1 ? 0 : func_020ada8c(mode, 6) * 0x18000;
 
@@ -166,7 +166,7 @@ void func_0204ee24(void *actor)
             if (pixel_x > 8 && pixel_x < 230 && pixel_y > 12 && pixel_y < 180) {
                 GraphicsSpriteRenderer_SetFontResource(grid_context, FIELD(u32, data_02105790, 8));
                 value = func_020628c8((u8 *)actor + 0x1f4);
-                func_02076148(grid_context, value, pixel_x, pixel_y, 13, 8, 0);
+                GraphicsSpriteRenderer_DrawText(grid_context, value, pixel_x, pixel_y, 13, 8, 0);
             }
             FIELD(u32, data_021052fc, 0x30b8) |= 0x10;
         } else {

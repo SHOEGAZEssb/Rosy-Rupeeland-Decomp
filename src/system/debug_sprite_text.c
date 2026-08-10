@@ -66,8 +66,8 @@ void DebugSpriteText_DrawCentered(DebugSpriteText *self, s32 centerX, s32 y)
     s32 width;
 
     GraphicsSpriteRenderer_SetFontResource(gDebugFont, self->renderEntry);
-    width = func_020761f8(gDebugFont, self->text, 8, 0);
-    func_02076148(gDebugFont, self->text, centerX - width / 2, y, 1, 8, 0);
+    width = GraphicsSpriteRenderer_MeasureText(gDebugFont, self->text, 8, 0);
+    GraphicsSpriteRenderer_DrawText(gDebugFont, self->text, centerX - width / 2, y, 1, 8, 0);
 }
 #else
 /* Matching forms implement the documented portable C above. */
@@ -126,7 +126,7 @@ asm void DebugSpriteText_DrawCentered(DebugSpriteText *, s32, s32)
     ldr r0, [r0]
     mov r2, #8
     mov r3, #0
-    bl func_020761f8
+    bl GraphicsSpriteRenderer_MeasureText
     add r0, r0, r0, lsr #31
     sub r2, r6, r0, asr #1
     mov r0, #1
@@ -139,7 +139,7 @@ asm void DebugSpriteText_DrawCentered(DebugSpriteText *, s32, s32)
     ldr r1, [r4]
     ldr r0, [r0]
     mov r3, r5
-    bl func_02076148
+    bl GraphicsSpriteRenderer_DrawText
     add sp, sp, #0xc
     ldmia sp!, {r3, r4, r5, r6, pc}
 }

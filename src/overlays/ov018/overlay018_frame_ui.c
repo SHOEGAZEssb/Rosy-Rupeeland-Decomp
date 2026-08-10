@@ -14,7 +14,7 @@ extern "C" {
 extern void GamePhaseRuntime_UpdateActorPresentationState(void *, s32);
 extern void func_020740a4(void *);
 extern void GraphicsSpriteRenderer_SetFontResource(void *, void *);
-extern s32 func_02076148(void *, void *, s32, s32, s32, s32, s32);
+extern s32 GraphicsSpriteRenderer_DrawText(void *, void *, s32, s32, s32, s32, s32);
 extern void GraphicsSpriteCanvas_FillRect(void *, s32, s32, s32, s32, s32);
 extern void *func_020791e0(void *, u16);
 extern void func_02091b98(void *, s32);
@@ -71,7 +71,7 @@ extern "C" void func_ov018_021fd788(void *state)
         }
         if (FIELD(s32, state, 0x3fc) != 0) {
             GraphicsSpriteRenderer_SetFontResource(gDebugFont, (u8 *)state + 0x70);
-            func_02076148(gDebugFont,
+            GraphicsSpriteRenderer_DrawText(gDebugFont,
                           func_020791e0(data_021f3ecc, 0x319),
                           0, 0, 0xb, 8, -2);
         } else {

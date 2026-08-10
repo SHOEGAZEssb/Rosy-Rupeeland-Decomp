@@ -3,8 +3,8 @@
 /* Exact fallback; see src/overlays/ov016/overlay016_message_runtime.c. */
     .extern data_021f3ecc
     .extern GraphicsSpriteRenderer_SetFontResource
-    .extern func_02076148
-    .extern func_020761f8
+    .extern GraphicsSpriteRenderer_DrawText
+    .extern GraphicsSpriteRenderer_MeasureText
     .extern GraphicsSpriteCanvas_FillRect
     .extern func_020791e0
     .extern gDebugFont
@@ -37,7 +37,7 @@ func_ov016_021ff848:
     mov r2, #0x8
     ldr r0, [r0, #0x0]
     mov r3, #0x0
-    bl func_020761f8
+    bl GraphicsSpriteRenderer_MeasureText
     mov r1, r4
     mov r4, r0
     ldr r0, L_021ff904
@@ -53,7 +53,7 @@ func_ov016_021ff848:
     ldr r0, L_021ff900
     mov r3, #0x6
     ldr r0, [r0, #0x0]
-    bl func_02076148
+    bl GraphicsSpriteRenderer_DrawText
     add sp, sp, #0xc
     ldmia sp!, {r4, r5, pc}
 L_021ff900: .word gDebugFont

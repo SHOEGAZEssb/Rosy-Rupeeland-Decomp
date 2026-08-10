@@ -24,7 +24,7 @@ extern void *func_02092cc0(void *object, void *font, void *resource);
 extern void func_02092e9c(void *object, u32 parameter, s32 mode);
 extern void func_02092f88(void *object, s32 row, const u16 *text);
 extern u32 func_02093360(void *object, const u16 *mapping, s32 value);
-extern void func_02076004(u16 *destination, s32 value, s32 firstPower,
+extern void GraphicsSpriteText_FormatDecimal(u16 *destination, s32 value, s32 firstPower,
                           s32 mode);
 extern void OS_Halt(void);
 extern void __register_global_object(void *object, void *destructor,
@@ -112,7 +112,7 @@ void DebugHudState_SetNumberRow(DebugHudState *self, s32 row, s32 value)
     s32 i;
     for (i = 0; i < digits - 1; i++)
         power *= 10;
-    func_02076004(data_0210548c[row], value, -power, 0);
+    GraphicsSpriteText_FormatDecimal(data_0210548c[row], value, -power, 0);
     if (self->rendererHandle)
         DebugHudState_UploadRows(self);
 }

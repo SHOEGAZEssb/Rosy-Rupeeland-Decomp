@@ -3,8 +3,8 @@
     .extern data_021f3ecc
     .extern data_ov018_021ffce0
     .extern GraphicsSpriteRenderer_SetFontResource
-    .extern func_02076148
-    .extern func_020761f8
+    .extern GraphicsSpriteRenderer_DrawText
+    .extern GraphicsSpriteRenderer_MeasureText
     .extern func_020791e0
     .extern func_0207c460
     .extern func_ov018_021fe1d8
@@ -42,7 +42,7 @@ func_ov018_021fe46c:
     ldr r0, [r0, #0x0]
     add r1, r1, #0x2c
     sub r3, r2, #0xa
-    bl func_020761f8
+    bl GraphicsSpriteRenderer_MeasureText
     mov r1, #0xd
     add r0, r0, r0, lsr #0x1f
     str r1, [sp, #0x0]
@@ -57,7 +57,7 @@ func_ov018_021fe46c:
     ldr r0, [r0, #0x0]
     add r1, r1, #0x2c
     mov r3, r4
-    bl func_02076148
+    bl GraphicsSpriteRenderer_DrawText
     ldr r0, L_021fe5a0
     ldr r1, L_021fe5a4
     bl func_020791e0
@@ -66,7 +66,7 @@ func_ov018_021fe46c:
     mov r2, #0x8
     ldr r0, [r0, #0x0]
     sub r3, r2, #0xa
-    bl func_020761f8
+    bl GraphicsSpriteRenderer_MeasureText
     mov r5, r0
     ldr r0, L_021fe5a0
     ldr r1, L_021fe5a4
@@ -84,7 +84,7 @@ func_ov018_021fe46c:
     ldr r0, L_021fe59c
     add r3, r4, #0x14
     ldr r0, [r0, #0x0]
-    bl func_02076148
+    bl GraphicsSpriteRenderer_DrawText
     add sp, sp, #0x1c
     ldmia sp!, {r4, r5, pc}
 L_021fe598: .word data_ov018_021ffce0

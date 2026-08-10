@@ -27,8 +27,8 @@ extern s32 func_020befec(s32 dividend, s32 divisor);
  * outside the valid contract.
  */
 #ifndef MATCHING
-void func_02076004(u16 *destination, s32 value, s32 placeValue,
-                   s32 zeroPad)
+void GraphicsSpriteText_FormatDecimal(u16 *destination, s32 value,
+                                      s32 placeValue, s32 zeroPad)
 {
     s32 divisor = placeValue;
     s32 emit;
@@ -61,8 +61,8 @@ void func_02076004(u16 *destination, s32 value, s32 placeValue,
 }
 #else
 /* This matching fallback implements the documented portable C directly above. */
-asm void func_02076004(u16 *destination, s32 value, s32 placeValue,
-                       s32 zeroPad)
+asm void GraphicsSpriteText_FormatDecimal(u16 *destination, s32 value,
+                                          s32 placeValue, s32 zeroPad)
 {
     stmdb sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, lr}
     movs r8, r2

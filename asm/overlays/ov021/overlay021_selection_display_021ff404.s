@@ -2,7 +2,7 @@
 /* Exact fallback; see src/overlays/ov021/overlay021_selection_display.c. */
     .extern data_020f4e14
     .extern GraphicsSpriteRenderer_SetFontResource
-    .extern func_02076148
+    .extern GraphicsSpriteRenderer_DrawText
     .extern func_02092960
 
 .global func_ov021_021ff404
@@ -49,7 +49,7 @@ L_021ff47c:
     add r1, r5, #0x2d4
     mov r2, #0x72
     mov r3, #0x6
-    bl func_02076148
+    bl GraphicsSpriteRenderer_DrawText
     b L_021ff4e0
 L_021ff4b0:
     mov r0, #0xe
@@ -63,7 +63,7 @@ L_021ff4b0:
     add r1, r5, #0x314
     mov r2, #0x72
     mov r3, #0x6
-    bl func_02076148
+    bl GraphicsSpriteRenderer_DrawText
 L_021ff4e0:
     add sp, sp, #0x10
     ldmia sp!, {r3, r4, r5, pc}

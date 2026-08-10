@@ -20,8 +20,8 @@ extern void func_02071ee0(void *, void *, s32, s32, s32);
 extern void GraphicsSpriteState_SetAnimationIndex(void *, s32);
 extern void func_0207419c(void *);
 extern void *func_020742cc(void *);
-extern void func_02076148(void *, s32, s32, s32, ...);
-extern s32 func_020761f8(void *, s32, s32, s32);
+extern void GraphicsSpriteRenderer_DrawText(void *, s32, s32, s32, ...);
+extern s32 GraphicsSpriteRenderer_MeasureText(void *, s32, s32, s32);
 extern s32 func_0207b44c(void *);
 extern s32 func_0209189c(void *, s32, s32);
 extern s32 func_020918f4(void *, s32);
@@ -46,9 +46,9 @@ extern "C" void func_ov022_021fd594(void *widget);
 extern "C" void func_ov022_021fd2f4(void)
 {
     s32 value = func_0207b44c(FIELD(void *, data_021f5128[0], 0x1c));
-    s32 width = func_020761f8(gDebugFont, value, 8, -2);
+    s32 width = GraphicsSpriteRenderer_MeasureText(gDebugFont, value, 8, -2);
     s32 half = (width + (width >> 31)) >> 1;
-    func_02076148(gDebugFont, value, 64 - half, 172, 13, 8, -2);
+    GraphicsSpriteRenderer_DrawText(gDebugFont, value, 64 - half, 172, 13, 8, -2);
 }
 
 /*

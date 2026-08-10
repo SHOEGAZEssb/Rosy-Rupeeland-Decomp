@@ -45,8 +45,8 @@ extern void GraphicsSpriteState_SetAnimationIndex(void *, s32);
 extern void GraphicsSpriteRenderer_ClearTextBuffer(void *);
 extern void GraphicsSpriteRenderer_SetFontResource(void *, const void *);
 extern const u16 *func_02079f3c(void *, u16);
-extern void func_02076148(void *, const u16 *, s32, s32, s32, s32, s32);
-extern void func_02075e48(void *, s32, s32, s32, s32);
+extern void GraphicsSpriteRenderer_DrawText(void *, const u16 *, s32, s32, s32, s32, s32);
+extern void GraphicsSpriteRenderer_DrawGlyph(void *, s32, s32, s32, s32);
 extern s32 func_02092960(void *, s32, s32, s32, s32, s32, s32, s32, s32);
 extern s32 func_020befec(s32, s32);
 #ifdef __cplusplus
@@ -109,19 +109,19 @@ void func_02028100(AreaInfoPanelPresentation *self, s32 index)
 
     GraphicsSpriteRenderer_SetFontResource(self->uiContext_30, *(void **)(self->base_00 + 0));
     text = func_02079f3c(data_021f3ecc, data_020c3a28[index]);
-    func_02076148(self->uiContext_30, text + 1, 6,
+    GraphicsSpriteRenderer_DrawText(self->uiContext_30, text + 1, 6,
                   gSystemState[0x5f] ? 0x9b : 0x9d, 13, 4, 0);
 
     GraphicsSpriteRenderer_SetFontResource(self->uiContext_30, *(void **)(self->base_00 + 4));
     text = func_02079f3c(data_021f3ecc,
                         *(const u16 *)(data_020d780c + stride34));
-    func_02076148(self->uiContext_30, text + 1, 5, 0xa7, 13, 6, -1);
+    GraphicsSpriteRenderer_DrawText(self->uiContext_30, text + 1, 5, 0xa7, 13, 6, -1);
 
     if (!GameWork_TestFlag(gGameWork, 0x765) ||
         GameWork_TestFlag(gGameWork, data_020d782c[stride34 / 2]))
         return;
     if (GameWork_TestFlag(gGameWork, data_020d7828[stride34 / 2])) {
-        func_02075e48(self->uiContext_30, 0xd3, 0xee, 0xac, 13);
+        GraphicsSpriteRenderer_DrawGlyph(self->uiContext_30, 0xd3, 0xee, 0xac, 13);
         return;
     }
 
@@ -137,7 +137,7 @@ void func_02028100(AreaInfoPanelPresentation *self, s32 index)
         if (percent > 0) {
             s32 width = func_02092960(self->uiContext_30, percent, 100,
                                      0xca, 0xac, 13, 12, 0, 0);
-            func_02075e48(self->uiContext_30, 5, width + 0xca, 0xac, 13);
+            GraphicsSpriteRenderer_DrawGlyph(self->uiContext_30, 5, width + 0xca, 0xac, 13);
         }
     }
 }

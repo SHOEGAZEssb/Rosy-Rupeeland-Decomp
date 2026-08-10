@@ -12,7 +12,7 @@ extern const u8 data_021f3ecc[];
 extern "C" {
 #endif
 extern s32 func_020befec(...);
-extern void func_02076004(...);
+extern void GraphicsSpriteText_FormatDecimal(...);
 extern void func_02092e9c(...);
 extern void func_020939c8(void *);
 extern void func_020939d8(void *);
@@ -38,7 +38,7 @@ extern "C" void func_ov032_021fe2f0(void *scene)
         divisor *= 10;
         ++digits;
     }
-    func_02076004(text, value, divisor, 0);
+    GraphicsSpriteText_FormatDecimal(text, value, divisor, 0);
 
     u16 primary = 0x2c;
     u16 secondary = 0x2c;

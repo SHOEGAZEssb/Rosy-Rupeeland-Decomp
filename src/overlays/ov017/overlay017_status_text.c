@@ -14,9 +14,9 @@ extern "C" {
 extern const char *func_020628c8(s32);
 extern void GraphicsSpriteRenderer_SetFontResource(void *, void *);
 extern void GraphicsSpriteRenderer_ClearTextBuffer(void *);
-extern void func_02076004(char *, s32, s32, s32);
-extern s32 func_02076148(void *, const char *, s32, s32, s32, s32, s32);
-extern s32 func_020761f8(void *, const char *, s32, s32);
+extern void GraphicsSpriteText_FormatDecimal(char *, s32, s32, s32);
+extern s32 GraphicsSpriteRenderer_DrawText(void *, const char *, s32, s32, s32, s32, s32);
+extern s32 GraphicsSpriteRenderer_MeasureText(void *, const char *, s32, s32);
 extern const char *func_020791e0(void *, s32);
 #ifdef __cplusplus
 }
@@ -45,27 +45,27 @@ extern "C" void func_ov017_021ffdb4(void *state, s32 textValue,
     GraphicsSpriteRenderer_SetFontResource(gDebugFont, FIELD(void *, state, 0x1d8));
     label = func_020791e0(data_021f3ecc,
                           FIELD(s32, state, 0x3bc) ? 0x2d4 : 0x2d5);
-    func_02076148(gDebugFont, label, 0x90, 0x41, 0xe, 4, 0);
+    GraphicsSpriteRenderer_DrawText(gDebugFont, label, 0x90, 0x41, 0xe, 4, 0);
     label = func_020791e0(data_021f3ecc,
                           FIELD(s32, data_ov017_022016e0, 0x80) ? 0x2d5
                                                                : 0x2d4);
-    func_02076148(gDebugFont, label, 0x90, 0x51, 0xe, 4, 0);
+    GraphicsSpriteRenderer_DrawText(gDebugFont, label, 0x90, 0x51, 0xe, 4, 0);
 
-    func_02076004(numberText, numericValue, -1000, 0);
+    GraphicsSpriteText_FormatDecimal(numberText, numericValue, -1000, 0);
     valueText = func_020628c8(textValue);
-    width = func_020761f8(gDebugFont, valueText, 6, -1) + 2;
+    width = GraphicsSpriteRenderer_MeasureText(gDebugFont, valueText, 6, -1) + 2;
     separator = func_020791e0(data_021f3ecc, 0x2d6);
-    width += func_020761f8(gDebugFont, separator, 6, 0) + 2;
-    width += func_020761f8(gDebugFont, numberText, 6, 0);
+    width += GraphicsSpriteRenderer_MeasureText(gDebugFont, separator, 6, 0) + 2;
+    width += GraphicsSpriteRenderer_MeasureText(gDebugFont, numberText, 6, 0);
     if (width > 0x70) {
         x += 0x38 - width / 2;
     }
-    width = func_02076148(gDebugFont, func_020628c8(textValue), x, 0x68,
+    width = GraphicsSpriteRenderer_DrawText(gDebugFont, func_020628c8(textValue), x, 0x68,
                           0xe, 6, -1);
     x += width + 2;
-    width = func_02076148(gDebugFont,
+    width = GraphicsSpriteRenderer_DrawText(gDebugFont,
                           func_020791e0(data_021f3ecc, 0x2d6), x + 2, 0x68,
                           0xe, 6, 0);
     x += width + 4;
-    func_02076148(gDebugFont, numberText, x + 2, 0x68, 0xe, 6, 0);
+    GraphicsSpriteRenderer_DrawText(gDebugFont, numberText, x + 2, 0x68, 0xe, 6, 0);
 }

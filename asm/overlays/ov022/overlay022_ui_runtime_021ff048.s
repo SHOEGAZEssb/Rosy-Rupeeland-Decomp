@@ -2,7 +2,7 @@
 
 /* Exact fallback; see src/overlays/ov022/overlay022_ui_runtime.c. */
 .extern data_021f3ecc
-.extern func_02076004
+.extern GraphicsSpriteText_FormatDecimal
 .extern func_02079f3c
 .extern func_020939d8
 .extern func_ov022_021ff2c4
@@ -37,7 +37,7 @@ L_021ff094:
     ldr r1, [r0, #0x24]
     add r0, r4, #0x310
     mov r3, #0x0
-    bl func_02076004
+    bl GraphicsSpriteText_FormatDecimal
     ldr r0, [r4, #0x2cc]
     bl func_020939d8
     ldr r1, L_021ff0cc

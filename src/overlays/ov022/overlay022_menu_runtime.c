@@ -12,7 +12,7 @@ extern u8 gSystemState[];
 extern "C" {
 #endif
 extern void GraphicsSpriteRenderer_SetFontResource(void *, void *);
-extern void func_02076148(void *, const void *, s32, s32, ...);
+extern void GraphicsSpriteRenderer_DrawText(void *, const void *, s32, s32, ...);
 extern void GraphicsSpriteCanvas_FillRect(void *, s32, s32, s32, ...);
 extern const void *func_02079f3c(const void *, u16);
 extern s32 func_020befec(s32, s32);
@@ -46,7 +46,7 @@ extern "C" void func_ov022_021fdb38(void *menu)
         s32 style = FIELD(s32, entry, 4) != 0 ? 5 : 14;
         const u8 *text = (const u8 *)func_02079f3c(
             data_021f3ecc, FIELD(u16, descriptor, 0));
-        func_02076148(data_020f4e14, text + 2,
+        GraphicsSpriteRenderer_DrawText(data_020f4e14, text + 2,
                       0x40, row * 0x18 + 0x13,
                       style, 8, final_style);
     }

@@ -5,7 +5,7 @@
     .extern GamePhaseRuntime_UpdateActorPresentationState
     .extern func_020740a4
     .extern GraphicsSpriteRenderer_SetFontResource
-    .extern func_02076148
+    .extern GraphicsSpriteRenderer_DrawText
     .extern GraphicsSpriteCanvas_FillRect
     .extern func_020791e0
     .extern func_02091b98
@@ -99,7 +99,7 @@ L_021fd874:
     mov r1, r0
     ldr r0, [r3, #0x0]
     mov r3, r2
-    bl func_02076148
+    bl GraphicsSpriteRenderer_DrawText
     b L_021fd8f4
 L_021fd8d0:
     mov r0, #0xf

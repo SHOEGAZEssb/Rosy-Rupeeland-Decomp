@@ -2,7 +2,7 @@
 /* Exact fallback; see src/overlays/ov021/overlay021_list_runtime.c. */
     .extern GraphicsSpriteState_SetAnimationIndex
     .extern GraphicsSpriteRenderer_SetFontResource
-    .extern func_02076148
+    .extern GraphicsSpriteRenderer_DrawText
     .extern GraphicsSpriteCanvas_FillRect
     .extern func_02092960
     .extern func_ov021_021fd6e8
@@ -122,7 +122,7 @@ L_021fd5c0:
     add r1, r5, #0x64
     add r2, r2, #0x2e
     mov r3, #0x7e
-    bl func_02076148
+    bl GraphicsSpriteRenderer_DrawText
     b L_021fd668
 L_021fd644:
     ldr r1, [r5, #0x24]
