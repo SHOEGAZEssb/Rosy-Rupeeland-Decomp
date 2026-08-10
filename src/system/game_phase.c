@@ -26,8 +26,8 @@ extern void Heap_Free(void *allocation);
 extern void Scene_Init(void *scene);
 extern void Scene_Destroy(void *scene);
 
-extern void *func_02006ae0(void *phase);
-extern void func_02006bdc(void *phase, const GamePhaseConfig *config,
+extern void *GamePhaseRuntime_Init(void *phase);
+extern void GamePhaseRuntime_Configure(void *phase, const GamePhaseConfig *config,
                           s32 value2C, s32 value30, int unknown);
 extern void *func_0200f878(void *object, int unknown);
 extern void *func_02010878(void *context);
@@ -98,12 +98,12 @@ void GamePhase_Start(int phaseId, int resetGameWork)
     phase = Heap_Alloc(0x3100, gGamePhaseInitialData.phaseTag, 4,
                        &gHeapContext);
     if (phase != 0) {
-        phase = func_02006ae0(phase);
+        phase = GamePhaseRuntime_Init(phase);
     }
 
     /* Phase IDs are one-based while the configuration table is zero-based. */
     config = func_02028388(phaseId - 1);
-    func_02006bdc(phase, config, config->value2C, config->value30, 0);
+    GamePhaseRuntime_Configure(phase, config, config->value2C, config->value30, 0);
 
     companion = Heap_Alloc(0x28, gGamePhaseInitialData.phaseTag, -4,
                            &gHeapContext);

@@ -47,7 +47,7 @@ typedef void (*DeletingDestructor)(void *object);
  * the Scene base. Returns self; sound, overlay, heap, hardware, and task state
  * may all change.
  */
-GamePhaseRuntime *func_02007064(GamePhaseRuntime *self)
+GamePhaseRuntime *GamePhaseRuntime_Destroy(GamePhaseRuntime *self)
 {
     u8 *bytes = (u8 *)self;
     void *object;
@@ -79,7 +79,7 @@ GamePhaseRuntime *func_02007064(GamePhaseRuntime *self)
     }
 
     func_0200e5bc(bytes + 0x24);
-    func_02007040(self);
+    GamePhaseRuntime_DestroyFieldLoader(self);
     func_0200f824();
     func_0200f314();
 

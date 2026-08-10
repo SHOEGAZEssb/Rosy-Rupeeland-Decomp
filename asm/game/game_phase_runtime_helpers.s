@@ -6,9 +6,9 @@
 .extern gHeapContext
 .extern Heap_Alloc
 
-    .global func_02006fd4
-.type func_02006fd4, @function
-func_02006fd4:
+    .global GamePhaseRuntime_SetDisplayRouting
+.type GamePhaseRuntime_SetDisplayRouting, @function
+GamePhaseRuntime_SetDisplayRouting:
     ldr r2, L_02006fec
     ldrh r1, [r2, #0x0]
     bic r1, r1, #0x8000
@@ -16,11 +16,11 @@ func_02006fd4:
     strh r0, [r2, #0x0]
     bx lr
 L_02006fec: .word 0x4000304
-    .size func_02006fd4, .-func_02006fd4
+    .size GamePhaseRuntime_SetDisplayRouting, .-GamePhaseRuntime_SetDisplayRouting
 
-    .global func_02006ff0
-.type func_02006ff0, @function
-func_02006ff0:
+    .global GamePhaseRuntime_CreateFieldLoader
+.type GamePhaseRuntime_CreateFieldLoader, @function
+GamePhaseRuntime_CreateFieldLoader:
     stmdb sp!, {r4, lr}
     ldr r1, L_02007034
     mov r4, r0
@@ -42,11 +42,11 @@ L_02007018:
 L_02007034: .word data_020d4350
 L_02007038: .word gHeapContext
 L_0200703c: .word data_020d4264
-    .size func_02006ff0, .-func_02006ff0
+    .size GamePhaseRuntime_CreateFieldLoader, .-GamePhaseRuntime_CreateFieldLoader
 
-    .global func_02007040
-.type func_02007040, @function
-func_02007040:
+    .global GamePhaseRuntime_DestroyFieldLoader
+.type GamePhaseRuntime_DestroyFieldLoader, @function
+GamePhaseRuntime_DestroyFieldLoader:
     stmdb sp!, {r3, lr}
     add r0, r0, #0x3000
     ldr r0, [r0, #0xb4]
@@ -56,5 +56,5 @@ func_02007040:
     ldr r1, [r1, #0x4]
     blx r1
     ldmia sp!, {r3, pc}
-    .size func_02007040, .-func_02007040
+    .size GamePhaseRuntime_DestroyFieldLoader, .-GamePhaseRuntime_DestroyFieldLoader
 

@@ -3,7 +3,7 @@
 .extern data_021052fc
 .extern FrameTaskList_DestroyNode
 .extern OverlaySlot_Destroy
-.extern func_02007040
+.extern GamePhaseRuntime_DestroyFieldLoader
 .extern func_020099fc
 .extern func_02009d58
 .extern func_0200e574
@@ -20,9 +20,9 @@
 .extern Scene_ClearFlags03
 .extern Scene_Destroy
 
-    .global func_0200719c
-.type func_0200719c, @function
-func_0200719c:
+    .global GamePhaseRuntime_DestroyAndFree
+.type GamePhaseRuntime_DestroyAndFree, @function
+GamePhaseRuntime_DestroyAndFree:
     stmdb sp!, {r3, r4, r5, lr}
     ldr r1, L_020072d0
     mov r4, r0
@@ -70,7 +70,7 @@ L_02007238:
     add r0, r4, #0x24
     bl func_0200e5bc
     mov r0, r4
-    bl func_02007040
+    bl GamePhaseRuntime_DestroyFieldLoader
     bl func_0200f824
     bl func_0200f314
     mov r1, #0x4000000
@@ -108,5 +108,5 @@ L_02007238:
 L_020072d0: .word data_020d431c
 L_020072d4: .word data_021052fc
 L_020072d8: .word gSoundContext
-    .size func_0200719c, .-func_0200719c
+    .size GamePhaseRuntime_DestroyAndFree, .-GamePhaseRuntime_DestroyAndFree
 

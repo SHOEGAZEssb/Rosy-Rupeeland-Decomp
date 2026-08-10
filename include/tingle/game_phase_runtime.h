@@ -16,14 +16,14 @@ typedef char GamePhaseRuntimeSizeCheck[
 extern "C" {
 #endif
 
-GamePhaseRuntime *func_02006ae0(GamePhaseRuntime *self);
-void func_02006bdc(GamePhaseRuntime *self, const void *config,
+GamePhaseRuntime *GamePhaseRuntime_Init(GamePhaseRuntime *self);
+void GamePhaseRuntime_Configure(GamePhaseRuntime *self, const void *config,
                    s32 x, s32 y, s32 z);
-void func_02006fd4(s32 value);
-void func_02006ff0(GamePhaseRuntime *self);
-void func_02007040(GamePhaseRuntime *self);
-GamePhaseRuntime *func_02007064(GamePhaseRuntime *self);
-GamePhaseRuntime *func_0200719c(GamePhaseRuntime *self);
+void GamePhaseRuntime_SetDisplayRouting(s32 value);
+void GamePhaseRuntime_CreateFieldLoader(GamePhaseRuntime *self);
+void GamePhaseRuntime_DestroyFieldLoader(GamePhaseRuntime *self);
+GamePhaseRuntime *GamePhaseRuntime_Destroy(GamePhaseRuntime *self);
+GamePhaseRuntime *GamePhaseRuntime_DestroyAndFree(GamePhaseRuntime *self);
 s32 GamePhaseRuntime_UpdateRenderHelpers(GamePhaseRuntime *self);
 s32 GamePhaseRuntime_ForwardCurrentVCount(GamePhaseRuntime *self);
 s32 GamePhaseRuntime_QueueSelectionQuery(GamePhaseRuntime *self,

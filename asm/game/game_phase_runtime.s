@@ -8,8 +8,8 @@
 .extern func_020050a4
 .extern TouchPoint_InitZero
 .extern OverlaySlot_Init
-.extern func_02006fd4
-.extern func_02006ff0
+.extern GamePhaseRuntime_SetDisplayRouting
+.extern GamePhaseRuntime_CreateFieldLoader
 .extern func_0200807c
 .extern func_020088b8
 .extern func_02008af8
@@ -49,9 +49,9 @@
 .extern Scene_Init
 .extern Scene_SetFlags03
 
-    .global func_02006ae0
-.type func_02006ae0, @function
-func_02006ae0:
+    .global GamePhaseRuntime_Init
+.type GamePhaseRuntime_Init, @function
+GamePhaseRuntime_Init:
     stmdb sp!, {r4, lr}
     mov r4, r0
     bl Scene_Init
@@ -109,18 +109,18 @@ L_02006bac:
     ldr r1, L_02006bd0
     str r0, [r1, #0x4]
     mov r0, r4
-    bl func_02006ff0
+    bl GamePhaseRuntime_CreateFieldLoader
     mov r0, r4
     ldmia sp!, {r4, pc}
 L_02006bcc: .word data_020d431c
 L_02006bd0: .word data_021052fc
 L_02006bd4: .word data_020d4348
 L_02006bd8: .word gHeapContext
-    .size func_02006ae0, .-func_02006ae0
+    .size GamePhaseRuntime_Init, .-GamePhaseRuntime_Init
 
-    .global func_02006bdc
-.type func_02006bdc, @function
-func_02006bdc:
+    .global GamePhaseRuntime_Configure
+.type GamePhaseRuntime_Configure, @function
+GamePhaseRuntime_Configure:
     stmdb sp!, {r4, r5, r6, r7, r8, lr}
     mov r4, r0
     mov r6, r1
@@ -297,11 +297,11 @@ L_02006da0:
     movs r0, r0, asr #0x1f
     beq L_02006e98
     mov r0, #0x0
-    bl func_02006fd4
+    bl GamePhaseRuntime_SetDisplayRouting
     b L_02006ea0
 L_02006e98:
     mov r0, #0x1
-    bl func_02006fd4
+    bl GamePhaseRuntime_SetDisplayRouting
 L_02006ea0:
     add r0, r4, #0x3000
     ldr r5, [r0, #0xbc]
@@ -384,4 +384,4 @@ L_02006fc4: .word gGameWork
 L_02006fc8: .word 0x3f2
 L_02006fcc: .word gLupyContext
 L_02006fd0: .word data_021052fc
-    .size func_02006bdc, .-func_02006bdc
+    .size GamePhaseRuntime_Configure, .-GamePhaseRuntime_Configure

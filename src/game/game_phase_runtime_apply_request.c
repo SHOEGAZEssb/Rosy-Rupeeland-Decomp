@@ -34,7 +34,7 @@ void func_02007ff4(GamePhaseRuntime *self)
     func_0200e61c(b + 0x24);
     func_020080d0(self);
     func_02008110(self);
-    func_02006bdc(self, *(void **)(b + 0x30d0),
+    GamePhaseRuntime_Configure(self, *(void **)(b + 0x30d0),
                    *(s32 *)(b + 0x30d4), *(s32 *)(b + 0x30d8),
                    *(s32 *)(b + 0x30dc));
 }

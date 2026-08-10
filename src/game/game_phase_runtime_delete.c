@@ -4,14 +4,14 @@
 /* Heap-deleting destruction entry point for GamePhaseRuntime. */
 
 /*
- * Perform the complete documented teardown from func_02007064, free the
+ * Perform the complete documented teardown from GamePhaseRuntime_Destroy, free the
  * runtime allocation, and return its original address. Retail duplicates the
  * destructor body; the portable implementation shares it. All scene, overlay,
- * task, sound, hardware, and heap effects of func_02007064 occur first.
+ * task, sound, hardware, and heap effects of GamePhaseRuntime_Destroy occur first.
  */
-GamePhaseRuntime *func_0200719c(GamePhaseRuntime *self)
+GamePhaseRuntime *GamePhaseRuntime_DestroyAndFree(GamePhaseRuntime *self)
 {
-    func_02007064(self);
+    GamePhaseRuntime_Destroy(self);
     Heap_Free(self);
     return self;
 }

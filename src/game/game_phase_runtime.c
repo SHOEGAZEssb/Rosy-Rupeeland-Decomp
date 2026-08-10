@@ -33,7 +33,7 @@ extern void func_02009d14(void *object, void *source);
 extern void func_020099dc(void *object);
 extern void func_020ae90c(void *object);
 extern void *func_0201022c(void *task, GamePhaseRuntime *runtime);
-extern void func_02006ff0(GamePhaseRuntime *runtime);
+extern void GamePhaseRuntime_CreateFieldLoader(GamePhaseRuntime *runtime);
 extern void GXS_SetGraphicsMode(u32 bgMode);
 extern void DisplayController_SetVerticalOffset(s32 value);
 extern void func_0200a35c(void *object);
@@ -51,7 +51,7 @@ extern void func_0200ec6c(void *object, s32 enabled);
 extern void *func_02009d0c(void *object);
 extern void *func_02009d78(void *object);
 extern void ActorCollection_DispatchEventToActors(void *object, void *value);
-extern void func_02006fd4(s32 value);
+extern void GamePhaseRuntime_SetDisplayRouting(s32 value);
 extern void func_02020060(void *object, const void *config);
 extern void func_0201140c(void *object, s32 enabled);
 extern void func_02012444(void *object, void *source);
@@ -67,7 +67,7 @@ extern void func_02010520(FrameTask *task, s32 enabled);
  * self. This mutates global task state, may allocate from the game heap, and
  * initializes an embedded ARM9 overlay slot at offset 0x30c0.
  */
-GamePhaseRuntime *func_02006ae0(GamePhaseRuntime *self)
+GamePhaseRuntime *GamePhaseRuntime_Init(GamePhaseRuntime *self)
 {
     u8 *bytes = (u8 *)self;
     void *task;
@@ -101,7 +101,7 @@ GamePhaseRuntime *func_02006ae0(GamePhaseRuntime *self)
         task = func_0201022c(task, self);
     data_021052fc.taskNode = FrameTaskList_Add((FrameTask *)task, 0);
 
-    func_02006ff0(self);
+    GamePhaseRuntime_CreateFieldLoader(self);
     return self;
 }
 
@@ -113,7 +113,7 @@ GamePhaseRuntime *func_02006ae0(GamePhaseRuntime *self)
  * bit behavior is directly confirmed. Hardware display registers, GameWork,
  * global task state, and numerous embedded runtime objects may change.
  */
-void func_02006bdc(GamePhaseRuntime *self, const void *configPointer,
+void GamePhaseRuntime_Configure(GamePhaseRuntime *self, const void *configPointer,
                    s32 x, s32 y, s32 z)
 {
     const u8 *config = (const u8 *)configPointer;
@@ -189,9 +189,9 @@ void func_02006bdc(GamePhaseRuntime *self, const void *configPointer,
 
     modeBits = *(const u32 *)(config + 0x40);
     if ((s32)(modeBits << 9) < 0)
-        func_02006fd4(0);
+        GamePhaseRuntime_SetDisplayRouting(0);
     else
-        func_02006fd4(1);
+        GamePhaseRuntime_SetDisplayRouting(1);
 
     switch ((modeBits >> 18) & 3) {
     case 1:
