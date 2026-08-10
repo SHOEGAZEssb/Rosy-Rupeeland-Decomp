@@ -16,9 +16,8 @@ extern void Type7Actor_ProcessGlobalInteractionTrigger(void *actor, void *contex
  * with the same arguments. Returns nothing; only the callees' engine effects
  * are observable and no hardware is accessed directly.
  */
-void func_0204f60c(void *actor, void *context)
+void GridEffectActor_PostUpdate(void *actor, void *context)
 {
     Type7Actor_ProcessGlobalInteractionTrigger(actor, context);
     Actor_SetInteractionFlag2000(actor, context);
 }
-

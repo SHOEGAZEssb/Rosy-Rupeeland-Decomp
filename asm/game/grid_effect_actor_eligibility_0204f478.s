@@ -3,8 +3,8 @@
 .extern gActorRuntimeCollection
 .extern ActorRuntimeCollection_GetPendingAttachmentFlag
 .text
-    .global func_0204f478
-func_0204f478:
+    .global GridEffectActor_CanBeginDeparture
+GridEffectActor_CanBeginDeparture:
     stmdb sp!, {r3, lr}
     add r0, r0, #0x100
     ldrh r0, [r0, #0xf0]
@@ -29,5 +29,5 @@ func_0204f478:
     ldmia sp!, {r3, pc}
 .L_0204f4cc: .word gActorRuntimeCollection
 .L_0204f4d0: .word data_021052fc
-.size func_0204f478, . - func_0204f478
+.size GridEffectActor_CanBeginDeparture, . - GridEffectActor_CanBeginDeparture
 

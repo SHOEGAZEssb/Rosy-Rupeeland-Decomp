@@ -11,8 +11,8 @@
 .extern Actor_GetCollection
 .extern Actor_QueryTerrainHeight
 .extern Type7Actor_GetStateCode
-.extern func_0204f478
-.extern func_0204f4d4
+.extern GridEffectActor_CanBeginDeparture
+.extern GridEffectActor_BeginDeparture
 .extern func_020628c8
 .extern GraphicsSpriteRenderer_SetFontResource
 .extern GraphicsSpriteRenderer_DrawText
@@ -21,8 +21,8 @@
 .extern func_020adcac
 .text
 
-    .global func_0204ee24
-func_0204ee24: ; 0x0204ee24
+    .global GridEffectActor_Update
+GridEffectActor_Update: ; 0x0204ee24
     stmdb sp!, {r3, r4, r5, r6, r7, r8, r9, r10, lr}
     sub sp, sp, #0x14
     mov r5, r0
@@ -393,7 +393,7 @@ func_0204ee24: ; 0x0204ee24
     blx r2
 .L_0204f3a8:
     mov r0, r5
-    bl func_0204f478
+    bl GridEffectActor_CanBeginDeparture
     cmp r0, #0x0
     beq .L_0204f458
     ldr r0, .L_0204f464
@@ -413,7 +413,7 @@ func_0204ee24: ; 0x0204ee24
     ldr r1, [r1, #0x0]
     add r1, r1, #0x2000
     ldr r1, [r1, #0xea4]
-    bl func_0204f4d4
+    bl GridEffectActor_BeginDeparture
     b .L_0204f458
 .L_0204f404:
     ldr r0, .L_0204f464
@@ -436,7 +436,7 @@ func_0204ee24: ; 0x0204ee24
     bge .L_0204f458
     mov r0, r5
     mov r1, r4
-    bl func_0204f4d4
+    bl GridEffectActor_BeginDeparture
 .L_0204f458:
     add sp, sp, #0x14
     ldmia sp!, {r3, r4, r5, r6, r7, r8, r9, r10, pc}
@@ -446,4 +446,4 @@ func_0204ee24: ; 0x0204ee24
 .L_0204f46c: .word gGridEffectActorRuntimeState
 .L_0204f470: .word data_020f4e14
 .L_0204f474: .word 0xd9a
-.size func_0204ee24, . - func_0204ee24
+.size GridEffectActor_Update, . - GridEffectActor_Update

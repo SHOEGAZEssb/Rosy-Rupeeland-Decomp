@@ -22,8 +22,8 @@ extern void *ActorCollection_QueueActorForRemoval(void *value, void *actor);
 extern void *Actor_GetCollection(void *actor);
 extern s32 Actor_QueryTerrainHeight(void *actor, s32 x, s32 y);
 extern s32 Type7Actor_GetStateCode(void *actor);
-extern s32 func_0204f478(void *actor);
-extern void func_0204f4d4(void *actor, void *target);
+extern s32 GridEffectActor_CanBeginDeparture(void *actor);
+extern void GridEffectActor_BeginDeparture(void *actor, void *target);
 extern u32 func_020628c8(void *subobject);
 extern void GraphicsSpriteRenderer_SetFontResource(void *context, u32 resource);
 extern void GraphicsSpriteRenderer_DrawText(void *context, u32 value, s32 x, s32 y,
@@ -46,17 +46,17 @@ static s32 fx_mul(s32 a, s32 b)
     return (s32)(((s64)a * b + 0x800) >> 12);
 }
 
-static void set_state(void *actor, u16 state)
+static void GridEffectActor_SetState(void *actor, u16 state)
 {
     FIELD(u16, actor, 0x1f0) =
         (FIELD(u16, actor, 0x1f0) & (u16)~3) | state;
 }
 
-static void finish_actor(void *actor)
+static void GridEffectActor_Finish(void *actor)
 {
     ActorCollection_QueueActorForRemoval(Actor_GetCollection(actor), actor);
     FIELD(u32, data_021052fc, 0x30b8) |= 0x10;
-    set_state(actor, 3);
+    GridEffectActor_SetState(actor, 3);
 }
 
 /*
@@ -66,11 +66,12 @@ static void finish_actor(void *actor)
  * timer at 0x218; state 2 spends 120 frames interpolating toward coordinates
  * derived from byte 0x21A and the grid query object at 0x1F4 while drawing only
  * inside the recovered screen bounds; state 3 invokes virtual slot 0x54.
- * Finally, when func_0204f478 permits it, interact through func_0204f4d4 with
+ * Finally, when GridEffectActor_CanBeginDeparture permits it, transition via
+ * GridEffectActor_BeginDeparture with
  * the first eligible global actor inside 0x18000 units. Actor, presentation,
  * scene, and grid state may change; no hardware registers are touched directly.
  */
-void func_0204ee24(void *actor)
+void GridEffectActor_Update(void *actor)
 {
     u16 flags = FIELD(u16, actor, 0x1f0);
     u32 age = flags >> 2;
@@ -90,7 +91,7 @@ void func_0204ee24(void *actor)
         VecFx32Object_Add((u8 *)actor + 0x18, (u8 *)actor + 0x38);
         if (FIELD(s32, actor, 0x24) < FIELD(s32, actor, 0x1dc)) {
             FIELD(s32, actor, 0x24) = FIELD(s32, actor, 0x1dc);
-            set_state(actor, 1);
+            GridEffectActor_SetState(actor, 1);
             FIELD(u16, actor, 0x1f2) = 0;
             FIELD(s32, actor, 0x3c) = 0;
             FIELD(s32, actor, 0x40) = 0;
@@ -116,7 +117,7 @@ void func_0204ee24(void *actor)
         if ((kind == 1 || detail == 14) &&
             (FIELD(s32, actor, 0x24) >> 12) <=
                 Actor_QueryTerrainHeight(actor, x, y) * 16) {
-            finish_actor(actor);
+            GridEffectActor_Finish(actor);
         }
 
         s16 limit = FIELD(s16, actor, 0x218);
@@ -134,7 +135,7 @@ void func_0204ee24(void *actor)
                             FIELD(u16, presentation, 0x24) &= (u16)~4;
                     }
                 } else {
-                    finish_actor(actor);
+                    GridEffectActor_Finish(actor);
                 }
             } else {
                 FIELD(u16, FIELD(void *, actor, 0x54), 0x24) &= (u16)~4;
@@ -171,7 +172,7 @@ void func_0204ee24(void *actor)
             FIELD(u32, data_021052fc, 0x30b8) |= 0x10;
         } else {
             FIELD(u16, FIELD(void *, actor, 0x54), 0x24) |= 4;
-            finish_actor(actor);
+            GridEffectActor_Finish(actor);
         }
         GraphicsSpriteState_SetScreenPositionCulled(FIELD(void *, actor, 0x54),
                       FIELD(s32, actor, 0x1c) >> 12,
@@ -187,17 +188,17 @@ void func_0204ee24(void *actor)
     }
     }
 
-    if (func_0204f478(actor)) {
+    if (GridEffectActor_CanBeginDeparture(actor)) {
         void *primary = FIELD(void *, data_021052fc, 0x2ea4);
         if (func_020adcac((u8 *)primary + 0x1c,
                           (u8 *)actor + 0x1c) < 0x18000) {
-            func_0204f4d4(actor, primary);
+            GridEffectActor_BeginDeparture(actor, primary);
         } else {
             void *secondary = FIELD(void *, data_021052fc, 0x2ea8);
             if (secondary != 0 && Type7Actor_GetStateCode(secondary) == 0 &&
                 func_020adcac((u8 *)secondary + 0x1c,
                               (u8 *)actor + 0x1c) < 0x18000) {
-                func_0204f4d4(actor, secondary);
+                GridEffectActor_BeginDeparture(actor, secondary);
             }
         }
     }

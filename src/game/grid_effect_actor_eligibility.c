@@ -21,7 +21,7 @@ extern s32 ActorRuntimeCollection_GetPendingAttachmentFlag(const void *state);
  * absent from the primary global actor's word 0xD0; otherwise return zero.
  * No actor, SDK, or hardware state is changed.
  */
-s32 func_0204f478(void *actor)
+s32 GridEffectActor_CanBeginDeparture(void *actor)
 {
     if ((FIELD(u16, actor, 0x1f0) & 3) == 1 &&
         ActorRuntimeCollection_GetPendingAttachmentFlag(gActorRuntimeCollection) == 0) {
@@ -31,4 +31,3 @@ s32 func_0204f478(void *actor)
     }
     return 0;
 }
-

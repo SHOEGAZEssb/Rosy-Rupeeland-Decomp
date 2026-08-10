@@ -32,7 +32,7 @@ typedef struct RecoveredTouchData {
  * then pass it to func_02031cac. Returns nothing; actor touch state may change
  * and no hardware is accessed directly.
  */
-void func_0204edd4(const void *source, void *actor)
+void GridEffectActor_ApplyTouchData(const void *source, void *actor)
 {
     func_02031758(source, actor);
     if (FIELD(void *, actor, 0x58) != 0) {
@@ -43,4 +43,3 @@ void func_0204edd4(const void *source, void *actor)
         func_02031cac(actor, &data);
     }
 }
-

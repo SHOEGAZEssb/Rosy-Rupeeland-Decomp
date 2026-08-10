@@ -3,8 +3,8 @@
 .extern func_02031758
 .extern func_02031cac
 .text
-    .global func_0204edd4
-func_0204edd4:
+    .global GridEffectActor_ApplyTouchData
+GridEffectActor_ApplyTouchData:
     stmdb sp!, {r4, r5, lr}
     sub sp, sp, #0xc
     mov r4, r1
@@ -26,5 +26,5 @@ func_0204edd4:
     add sp, sp, #0xc
     ldmia sp!, {r4, r5, pc}
 .L_0204ee20: .word gSceneTouchInitialData
-.size func_0204edd4, . - func_0204edd4
+.size GridEffectActor_ApplyTouchData, . - GridEffectActor_ApplyTouchData
 

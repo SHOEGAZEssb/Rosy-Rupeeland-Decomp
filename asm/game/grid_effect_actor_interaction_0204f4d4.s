@@ -11,8 +11,8 @@
 .extern func_02064a18
 .text
 
-    .global func_0204f4d4
-func_0204f4d4: ; 0x0204f4d4
+    .global GridEffectActor_BeginDeparture
+GridEffectActor_BeginDeparture: ; 0x0204f4d4
     stmdb sp!, {r4, lr}
     ldrb r1, [r1, #0x4d]
     mov r4, r0
@@ -92,5 +92,5 @@ func_0204f4d4: ; 0x0204f4d4
 .L_0204f600: .word data_021052fc
 .L_0204f604: .word gSoundContext
 .L_0204f608: .word data_021e9ac0
-.size func_0204f4d4, . - func_0204f4d4
+.size GridEffectActor_BeginDeparture, . - GridEffectActor_BeginDeparture
 

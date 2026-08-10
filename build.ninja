@@ -19198,7 +19198,7 @@ build build/reports/grid_effect_actor_touch_0204edd4.json: objdiff build/decomp/
   base_object = build/decomp/asm/game/grid_effect_actor_touch_0204edd4.o
 build build/reports/grid_effect_actor_touch_0204edd4.txt: match_report build/reports/grid_effect_actor_touch_0204edd4.json | tools/report_objdiff.py
   report_json = build/reports/grid_effect_actor_touch_0204edd4.json
-  report_args = --section .text --function func_0204edd4 --require-exact
+  report_args = --section .text --function GridEffectActor_ApplyTouchData --require-exact
 build grid_effect_actor_touch: phony build/decomp/src/game/grid_effect_actor_touch.o build/decomp/asm/game/grid_effect_actor_touch_0204edd4.o build/reports/grid_effect_actor_touch_0204edd4.txt
 
 grid_effect_actor_update_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
@@ -19212,7 +19212,7 @@ build build/reports/grid_effect_actor_update_0204ee24.json: objdiff build/decomp
   base_object = build/decomp/asm/game/grid_effect_actor_update_0204ee24.o
 build build/reports/grid_effect_actor_update_0204ee24.txt: match_report build/reports/grid_effect_actor_update_0204ee24.json | tools/report_objdiff.py
   report_json = build/reports/grid_effect_actor_update_0204ee24.json
-  report_args = --section .text --function func_0204ee24 --require-exact
+  report_args = --section .text --function GridEffectActor_Update --require-exact
 build grid_effect_actor_update: phony build/decomp/src/game/grid_effect_actor_update.o build/decomp/asm/game/grid_effect_actor_update_0204ee24.o build/reports/grid_effect_actor_update_0204ee24.txt
 
 grid_effect_actor_eligibility_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
@@ -19226,7 +19226,7 @@ build build/reports/grid_effect_actor_eligibility_0204f478.json: objdiff build/d
   base_object = build/decomp/asm/game/grid_effect_actor_eligibility_0204f478.o
 build build/reports/grid_effect_actor_eligibility_0204f478.txt: match_report build/reports/grid_effect_actor_eligibility_0204f478.json | tools/report_objdiff.py
   report_json = build/reports/grid_effect_actor_eligibility_0204f478.json
-  report_args = --section .text --function func_0204f478 --require-exact
+  report_args = --section .text --function GridEffectActor_CanBeginDeparture --require-exact
 build grid_effect_actor_eligibility: phony build/decomp/src/game/grid_effect_actor_eligibility.o build/decomp/asm/game/grid_effect_actor_eligibility_0204f478.o build/reports/grid_effect_actor_eligibility_0204f478.txt
 
 grid_effect_actor_interaction_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
@@ -19240,7 +19240,7 @@ build build/reports/grid_effect_actor_interaction_0204f4d4.json: objdiff build/d
   base_object = build/decomp/asm/game/grid_effect_actor_interaction_0204f4d4.o
 build build/reports/grid_effect_actor_interaction_0204f4d4.txt: match_report build/reports/grid_effect_actor_interaction_0204f4d4.json | tools/report_objdiff.py
   report_json = build/reports/grid_effect_actor_interaction_0204f4d4.json
-  report_args = --section .text --function func_0204f4d4 --require-exact
+  report_args = --section .text --function GridEffectActor_BeginDeparture --require-exact
 build grid_effect_actor_interaction: phony build/decomp/src/game/grid_effect_actor_interaction.o build/decomp/asm/game/grid_effect_actor_interaction_0204f4d4.o build/reports/grid_effect_actor_interaction_0204f4d4.txt
 
 grid_effect_actor_post_update_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
@@ -19254,7 +19254,7 @@ build build/reports/grid_effect_actor_post_update_0204f60c.json: objdiff build/d
   base_object = build/decomp/asm/game/grid_effect_actor_post_update_0204f60c.o
 build build/reports/grid_effect_actor_post_update_0204f60c.txt: match_report build/reports/grid_effect_actor_post_update_0204f60c.json | tools/report_objdiff.py
   report_json = build/reports/grid_effect_actor_post_update_0204f60c.json
-  report_args = --section .text --function func_0204f60c --require-exact
+  report_args = --section .text --function GridEffectActor_PostUpdate --require-exact
 build grid_effect_actor_post_update: phony build/decomp/src/game/grid_effect_actor_post_update.o build/decomp/asm/game/grid_effect_actor_post_update_0204f60c.o build/reports/grid_effect_actor_post_update_0204f60c.txt
 
 grid_effect_actor_spawn_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
@@ -19338,7 +19338,7 @@ build build/reports/grid_effect_actor_callbacks_0204fcb0.json: objdiff build/dec
   base_object = build/decomp/asm/game/grid_effect_actor_callbacks_0204fcb0.o
 build build/reports/grid_effect_actor_callbacks_0204fcb0.txt: match_report build/reports/grid_effect_actor_callbacks_0204fcb0.json | tools/report_objdiff.py
   report_json = build/reports/grid_effect_actor_callbacks_0204fcb0.json
-  report_args = --section .text --function func_0204fcb0 --require-exact
+  report_args = --section .text --function GridEffectActor_ReturnFx100000 --require-exact
 build grid_effect_actor_callbacks: phony build/decomp/src/game/grid_effect_actor_callbacks.o build/decomp/asm/game/grid_effect_actor_callbacks_0204fcb0.o build/reports/grid_effect_actor_callbacks_0204fcb0.txt
 
 tracked_resource_actor_lifecycle_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++

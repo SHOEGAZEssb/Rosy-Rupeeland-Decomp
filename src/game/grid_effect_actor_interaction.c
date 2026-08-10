@@ -41,7 +41,7 @@ typedef s32 (*ActorPredicate)(void *actor);
  * Returns nothing; actor, sound, and grid-related engine state change without
  * direct hardware access.
  */
-void func_0204f4d4(void *actor, const void *trigger)
+void GridEffectActor_BeginDeparture(void *actor, const void *trigger)
 {
     void *primary = FIELD(void *, data_021052fc, 0x2ea4);
     if (FIELD(u8, trigger, 0x4d) == 1) {
@@ -68,4 +68,3 @@ void func_0204f4d4(void *actor, const void *trigger)
     Sound_Play(gSoundContext, 0, 0x11);
     func_02064a18(data_021e9ac0, (u8 *)actor + 0x1f4);
 }
-
