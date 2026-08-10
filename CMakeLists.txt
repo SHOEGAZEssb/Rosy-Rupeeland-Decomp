@@ -7,6 +7,7 @@ if(NOT WIN32)
 endif()
 
 add_executable(tingle_native WIN32
+    src/native/native_boot.c
     src/native/native_actor_factory.c
     src/native/native_actor_runtime.c
     src/native/main.c

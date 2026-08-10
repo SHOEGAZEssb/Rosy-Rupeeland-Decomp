@@ -67,8 +67,8 @@ static int TestTextBackground(void)
     WriteU16(palette + 8 + 2, 0x001f);
     WriteU16(palette + 8 + 16, 0x7c00);
     WriteU32(layout, 0x56534320);
-    WriteU32(layout + 12, 8);
-    WriteU32(layout + 16, 8);
+    WriteU32(layout + 12, 1);
+    WriteU32(layout + 16, 1);
     WriteU16(layout + 20, 0x0400);
     return TingleNativeGraphics_DrawTextBackground(&resources, &canvas, 0) &&
            pixels[0] == 0x000000ff && pixels[7] == 0x00ff0000;

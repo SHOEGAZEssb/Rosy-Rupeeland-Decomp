@@ -33,6 +33,9 @@ typedef struct TingleNativeActorDescriptor {
     u32 address;
     u16 kind;
     u16 subtype;
+    u32 character_resource_id;
+    u32 palette_resource_id;
+    u32 layout_resource_id;
     u8 half_width;
     u8 half_height;
     u8 bounds_offset_x;

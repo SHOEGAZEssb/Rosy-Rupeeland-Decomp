@@ -267,6 +267,8 @@ s32 TingleNativeGraphics_DrawTextBackground(
     size_t color_count;
     size_t map_entries;
     u32 format;
+    u32 tile_columns;
+    u32 tile_rows;
     u32 width;
     u32 height;
     s32 x;
@@ -277,18 +279,21 @@ s32 TingleNativeGraphics_DrawTextBackground(
         ReadU32(resources->layout) != NATIVE_VCS_SIGNATURE ||
         !ParseTilesAndPalette(resources, &tiles, &tile_size, &format,
                               &palette, &color_count)) return 0;
-    width = ReadU32(resources->layout + 12);
-    height = ReadU32(resources->layout + 16);
-    if (width == 0 || height == 0 || (width & 7) != 0 || (height & 7) != 0)
-        return 0;
-    map_entries = (size_t)(width / 8) * (height / 8);
-    if (width / 8 != 0 && map_entries / (width / 8) != height / 8) return 0;
+    /* VCS records express dimensions in 8x8 screen-map entries. */
+    tile_columns = ReadU32(resources->layout + 12);
+    tile_rows = ReadU32(resources->layout + 16);
+    if (tile_columns == 0 || tile_rows == 0 || tile_columns > 0x1fffffff ||
+        tile_rows > 0x1fffffff) return 0;
+    width = tile_columns * 8;
+    height = tile_rows * 8;
+    map_entries = (size_t)tile_columns * tile_rows;
+    if (map_entries / tile_columns != tile_rows) return 0;
     if (!RangeValid(20, map_entries * 2, resources->layout_size)) return 0;
     map = resources->layout + 20;
 
     for (y = 0; y < (s32)height; ++y) {
         for (x = 0; x < (s32)width; ++x) {
-            size_t map_index = (size_t)(y / 8) * (width / 8) + (size_t)(x / 8);
+            size_t map_index = (size_t)(y / 8) * tile_columns + (size_t)(x / 8);
             u16 entry = ReadU16(map + map_index * 2);
             s32 tile_x = x & 7;
             s32 tile_y = y & 7;
@@ -365,6 +370,8 @@ s32 TingleNativeGraphics_DrawSpriteCell(
         s32 height;
         s32 relative_x = attribute_one & 0x01ff;
         s32 relative_y = attribute_zero & 0x00ff;
+        s32 object_x;
+        s32 object_y;
         s32 x;
         s32 y;
         size_t base_byte = (size_t)(attribute_two & 0x03ff) * 128;
@@ -374,13 +381,17 @@ s32 TingleNativeGraphics_DrawSpriteCell(
                                     &width, &height)) return 0;
         if (relative_x >= 256) relative_x -= 512;
         if (relative_y >= 192) relative_y -= 256;
+        object_x = (anchor_x + relative_x) & 0x01ff;
+        object_y = (anchor_y + relative_y) & 0x00ff;
+        if (object_x >= 256) object_x -= 512;
+        if (object_y >= 192) object_y -= 256;
         for (y = 0; y < height; ++y) {
             for (x = 0; x < width; ++x) {
                 size_t tile = base_byte / bytes_per_tile +
                               (size_t)(y / 8) * (width / 8) + (size_t)(x / 8);
                 u32 color_index;
-                s32 draw_x = anchor_x + relative_x + x;
-                s32 draw_y = destination_y + anchor_y + relative_y + y;
+                s32 draw_x = object_x + x;
+                s32 draw_y = destination_y + object_y + y;
 
                 if (!ReadTilePixel(tiles, tile_size, format, tile,
                                    x & 7, y & 7, attribute_two >> 12,

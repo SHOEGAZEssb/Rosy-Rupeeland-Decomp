@@ -2,10 +2,12 @@
  * Native harness entry point.
  *
  * This owns the platform-neutral frame loop used while reconstructed scenes
- * are moved off the Nintendo DS runtime. It presents the first host rendering
- * of the recovered debug-menu behavior and consumes DS-compatible input.
+ * are moved off the Nintendo DS runtime. Its normal path now follows recovered
+ * boot phases into the retail-asset title screen; the earlier debug menu stays
+ * available as an explicit diagnostics path.
  */
 #include "tingle/native_debug_menu.h"
+#include "tingle/native_boot.h"
 #include "tingle/native_game_phase.h"
 #include "tingle/native_game_work.h"
 #include "tingle/native_phase_selector.h"
@@ -26,13 +28,15 @@ int TingleNative_Run(int argc, char **argv)
     u32 *pixels;
     TingleNativeCanvas canvas;
     TingleNativeDebugMenu menu;
+    TingleNativeBootScene boot = {0};
     TingleNativePhaseSelector phase_selector;
     TingleNativeGamePhaseBoundary game_phase = {0};
     TingleNativeGameWork game_work;
-    enum { NATIVE_SCENE_DEBUG_MENU, NATIVE_SCENE_PHASE_SELECTOR,
+    enum { NATIVE_SCENE_BOOT, NATIVE_SCENE_DEBUG_MENU, NATIVE_SCENE_PHASE_SELECTOR,
            NATIVE_SCENE_GAME_PHASE } scene =
         NATIVE_SCENE_DEBUG_MENU;
     int data_ready = 0;
+    int debug_menu_requested = 0;
     int i;
 
     if (platform == NULL) {
@@ -40,16 +44,14 @@ int TingleNative_Run(int argc, char **argv)
     }
 
     for (i = 1; i < argc; ++i) {
-        if (data != NULL) {
-            TingleNativeData_Close(data);
-            TingleNativePlatform_Destroy(platform);
-            return EXIT_FAILURE;
-        }
-        if (i + 1 < argc && strcmp(argv[i], "--data") == 0) {
+        if (strcmp(argv[i], "--debug-menu") == 0) {
+            debug_menu_requested = 1;
+        } else if (data == NULL && i + 1 < argc && strcmp(argv[i], "--data") == 0) {
             data = TingleNativeData_OpenDirectory(argv[++i]);
-        } else if (i + 1 < argc && strcmp(argv[i], "--rom") == 0) {
+        } else if (data == NULL && i + 1 < argc && strcmp(argv[i], "--rom") == 0) {
             data = TingleNativeData_OpenRom(argv[++i]);
         } else {
+            TingleNativeData_Close(data);
             TingleNativePlatform_Destroy(platform);
             return EXIT_FAILURE;
         }
@@ -58,6 +60,8 @@ int TingleNative_Run(int argc, char **argv)
             return EXIT_FAILURE;
         }
     }
+    /* The repository extraction is the convenient default for local builds. */
+    if (data == NULL) data = TingleNativeData_OpenDirectory("build/source-rom");
     if (data != NULL) {
         data_ready = TingleNativeData_ReadFile(data, "db/lang.bin", &probe, &probe_size) &&
                      probe_size != 0;
@@ -78,9 +82,14 @@ int TingleNative_Run(int argc, char **argv)
     TingleNativeDebugMenu_Init(&menu);
     TingleNativePhaseSelector_Init(&phase_selector);
     TingleNativeGameWork_Init(&game_work);
+    if (!debug_menu_requested && data_ready &&
+        TingleNativeBootScene_Init(&boot, data, &game_work))
+        scene = NATIVE_SCENE_BOOT;
 
     while (TingleNativePlatform_Poll(platform, &input)) {
-        if (scene == NATIVE_SCENE_DEBUG_MENU) {
+        if (scene == NATIVE_SCENE_BOOT) {
+            TingleNativeBootScene_Update(&boot, data, &input);
+        } else if (scene == NATIVE_SCENE_DEBUG_MENU) {
             s32 activation = TingleNativeDebugMenu_Update(&menu, &input);
 
             if (activation == 0) {
@@ -108,7 +117,9 @@ int TingleNative_Run(int argc, char **argv)
             scene = NATIVE_SCENE_PHASE_SELECTOR;
         }
 
-        if (scene == NATIVE_SCENE_DEBUG_MENU)
+        if (scene == NATIVE_SCENE_BOOT)
+            TingleNativeBootScene_Draw(&boot, &canvas);
+        else if (scene == NATIVE_SCENE_DEBUG_MENU)
             TingleNativeDebugMenu_Draw(&menu, &canvas, data_ready);
         else if (scene == NATIVE_SCENE_PHASE_SELECTOR)
             TingleNativePhaseSelector_Draw(&phase_selector, &canvas);
@@ -119,6 +130,7 @@ int TingleNative_Run(int argc, char **argv)
     }
 
     free(pixels);
+    TingleNativeBootScene_Destroy(&boot);
     TingleNativeGamePhaseBoundary_Destroy(&game_phase);
     TingleNativeData_Close(data);
     TingleNativePlatform_Destroy(platform);

@@ -433,6 +433,9 @@ static int TestOverlayRegistration(void)
     WriteU32(bytes + 0x4c, 0x02200090);
     WriteU16(bytes + 0x100, 1);
     WriteU16(bytes + 0x102, 7);
+    WriteU32(bytes + 0x104, 0x2000);
+    WriteU32(bytes + 0x108, 0x2001);
+    WriteU32(bytes + 0x10c, 0x2002);
     bytes[0x112] = 24;
     bytes[0x113] = 18;
     WriteU16(bytes + 0x122, (u16)-12);
@@ -454,6 +457,9 @@ static int TestOverlayRegistration(void)
             &overlay, &registration, 0, &descriptor) ||
         descriptor.address != 0x02200100 || descriptor.kind != 1 ||
         descriptor.subtype != 7 || descriptor.half_width != 24 ||
+        descriptor.character_resource_id != 0x2000 ||
+        descriptor.palette_resource_id != 0x2001 ||
+        descriptor.layout_resource_id != 0x2002 ||
         descriptor.half_height != 18 || descriptor.position_x != -12 ||
         descriptor.position_y != 34 || descriptor.position_z != -5 ||
         descriptor.flags_28 != 0x12345678 || descriptor.selector_50 != 2 ||

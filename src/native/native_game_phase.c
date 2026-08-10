@@ -84,6 +84,9 @@ s32 TingleNativeGamePhase_DecodeActorDescriptor(
     descriptor->address = address;
     descriptor->kind = ReadU16(bytes);
     descriptor->subtype = ReadU16(bytes + 2);
+    descriptor->character_resource_id = ReadU32(bytes + 4);
+    descriptor->palette_resource_id = ReadU32(bytes + 8);
+    descriptor->layout_resource_id = ReadU32(bytes + 0x0c);
     descriptor->half_width = bytes[0x12];
     descriptor->half_height = bytes[0x13];
     descriptor->bounds_offset_x = bytes[0x14];
