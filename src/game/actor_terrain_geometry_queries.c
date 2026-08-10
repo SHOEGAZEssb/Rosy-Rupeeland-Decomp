@@ -8,7 +8,7 @@ extern "C" {
 #endif
 extern s32 func_0200eb14(void *terrain, s32 x, s32 y);
 extern s32 func_020adae4(s32 dividend, s32 divisor);
-extern u32 func_02034464(void *actor, s32 x, s32 y);
+extern u32 Actor_QueryTerrainCell(void *actor, s32 x, s32 y);
 #ifdef __cplusplus
 }
 #endif
@@ -45,7 +45,7 @@ s32 func_020343e4(void *self, s32 x, s32 y)
 
     if ((*(u32 *)(actor + 0x14) & 0x04000000) != 0) return 0;
     height = func_0200eb14((u8 *)data_021052fc + 0x24, x, y);
-    if (((func_02034464(actor, x, y) >> 5) & 0x1f) == 15 &&
+    if (((Actor_QueryTerrainCell(actor, x, y) >> 5) & 0x1f) == 15 &&
         height + 4 <= (*(s32 *)(actor + 0x24) >> 16)) {
         height += 4;
     }
@@ -58,7 +58,7 @@ s32 func_020343e4(void *self, s32 x, s32 y)
  * a zero fourth argument, returning its packed terrain result. The callback may
  * read SDK-managed map state but actor fields are unchanged.
  */
-u32 func_02034464(void *self, s32 x, s32 y)
+u32 Actor_QueryTerrainCell(void *self, s32 x, s32 y)
 {
     u8 *actor = (u8 *)self;
     void *terrain;

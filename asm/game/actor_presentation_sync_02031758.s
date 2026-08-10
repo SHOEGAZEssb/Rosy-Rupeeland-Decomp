@@ -8,7 +8,7 @@
 .extern Actor_BuildCollisionRect
 .extern func_020337d4
 .extern Actor_BuildWorldInteractionBounds
-.extern func_02034464
+.extern Actor_QueryTerrainCell
 .extern func_02056f34
 .extern func_020571b4
 .extern func_02057394
@@ -290,7 +290,7 @@ func_02031758: ; 0x02031758
     mov r0, r5
     mov r1, r1, asr #0x10
     mov r2, r2, asr #0x10
-    bl func_02034464
+    bl Actor_QueryTerrainCell
     ldr r1, [r5, #0x14]
     str r0, [sp, #0x4]
     str r0, [sp, #0x8]

@@ -5,7 +5,7 @@
 .extern data_020df4ac
 .extern data_020df4b8
 .extern func_02033b38
-.extern func_02034464
+.extern Actor_QueryTerrainCell
 .extern gDebugFont
 
     .global func_020389ec
@@ -33,7 +33,7 @@ func_020389ec: ; 0x020389ec
     mov r0, r5
     mov r1, r1, asr #0x10
     mov r2, r2, asr #0x10
-    bl func_02034464
+    bl Actor_QueryTerrainCell
     ldr r1, .L_02038aa8
     mov r3, r4
     str r1, [sp, #0x0]

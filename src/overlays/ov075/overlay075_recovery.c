@@ -196,7 +196,7 @@ void func_ov075_022146c4(void);
 /* Processes the supplied ABI arguments and offset-based actor state, returns its encoded result, and invokes func_02030acc, func_020337d4, func_02071ee0 and other shared helpers; exact higher-level semantics remain unconfirmed. */
 void func_ov075_022146ec(void);
 
-/* Processes the supplied ABI arguments and offset-based actor state, returns its encoded result, and invokes func_02005058, func_020050a4, func_02034464 and other shared helpers; exact higher-level semantics remain unconfirmed. */
+/* Processes the supplied ABI arguments and offset-based actor state, returns its encoded result, and invokes func_02005058, func_020050a4, Actor_QueryTerrainCell and other shared helpers; exact higher-level semantics remain unconfirmed. */
 void func_ov075_02214770(void);
 
 /* Processes the supplied ABI arguments and offset-based actor state, returns its encoded result, and invokes func_02004fe0, func_020adfbc; exact higher-level semantics remain unconfirmed. */

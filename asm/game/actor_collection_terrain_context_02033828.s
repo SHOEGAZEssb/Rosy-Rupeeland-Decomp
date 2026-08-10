@@ -2,7 +2,7 @@
 .text
 .extern data_021052fc
 .extern func_0200eb14
-.extern func_02034464
+.extern Actor_QueryTerrainCell
 
     .global Actor_RefreshTerrainHeight
     .type Actor_RefreshTerrainHeight, @function
@@ -29,7 +29,7 @@ Actor_RefreshTerrainHeight: ; 0x02033828
     mov r0, r5
     mov r1, r6
     mov r2, r7
-    bl func_02034464
+    bl Actor_QueryTerrainCell
     mov r1, r0, lsl #0x16
     mov r1, r1, lsr #0x1b
     str r0, [sp, #0x0]

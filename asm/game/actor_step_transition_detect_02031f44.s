@@ -2,7 +2,7 @@
 .text
 .extern func_02033ed0
 .extern func_020343e4
-.extern func_02034464
+.extern Actor_QueryTerrainCell
 .extern func_020adae4
 
     .global func_02031f44
@@ -31,7 +31,7 @@ func_02031f44: ; 0x02031f44
     mov r9, r7, asr #0x10
     mov r1, r8
     mov r2, r9
-    bl func_02034464
+    bl Actor_QueryTerrainCell
     mov r1, r0, lsl #0x16
     mov r1, r1, lsr #0x1b
     cmp r1, #0x7
@@ -123,4 +123,3 @@ func_02031f44: ; 0x02031f44
     add sp, sp, #0x8
     ldmia sp!, {r4, r5, r6, r7, r8, r9, r10, pc}
     .size func_02031f44, . - func_02031f44
-

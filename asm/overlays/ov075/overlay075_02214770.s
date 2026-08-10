@@ -3,7 +3,7 @@
 .extern data_020c9670
 .extern func_02005058
 .extern func_020050a4
-.extern func_02034464
+.extern Actor_QueryTerrainCell
 .extern func_0204cfa4
 .extern func_0204cff4
 .extern func_020ae024
@@ -62,7 +62,7 @@ func_ov075_02214770:
     mov r0, r5
     mov r1, r3, asr #0x10
     mov r2, r2, asr #0x10
-    bl func_02034464
+    bl Actor_QueryTerrainCell
     mov r1, r0, lsl #0x12
     mov r1, r1, lsr #0x1c
     str r0, [sp, #0x0]

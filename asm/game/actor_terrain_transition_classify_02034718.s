@@ -2,7 +2,7 @@
 .text
 .extern data_021052fc
 .extern func_020343e4
-.extern func_02034464
+.extern Actor_QueryTerrainCell
 
     .global func_02034718
     .type func_02034718, @function
@@ -36,7 +36,7 @@ func_02034718: ; 0x02034718
     mov r0, #0x2
     b .L_020347f4
 .L_02034784:
-    bl func_02034464
+    bl Actor_QueryTerrainCell
     mov r1, r0, lsl #0x16
     mov r4, r1, lsr #0x1b
     str r0, [sp, #0x0]
@@ -71,4 +71,3 @@ func_02034718: ; 0x02034718
     .size func_02034718, . - func_02034718
 
     .global func_02034800
-

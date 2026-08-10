@@ -11,7 +11,7 @@ extern "C" {
 extern s32 func_020828a0(void *state, s32 index);
 extern s32 func_020343e4(void *actor, s32 x, s32 y);
 extern s32 func_02033f44(void *actor);
-extern u32 func_02034464(void *actor, s32 x, s32 y);
+extern u32 Actor_QueryTerrainCell(void *actor, s32 x, s32 y);
 extern s32 func_0203463c(void *actor, s32 x, s32 y, s32 height);
 extern s32 GameWork_TestFlag(void *work, u32 flag);
 extern void Sound_Play(void *context, s32 channel, s32 sound);
@@ -48,7 +48,7 @@ static s32 isTypeOne(const u8 *actor)
  * position +0x1c/+0x20 and motion +0x3c/+0x40, +0x8c/+0x90, +0x9c/+0xa0.
  * If terrain height equals func_02033f44, clear countdown +0x204 and flag
  * 0x40. For differing terrain, decode kind bits 5..9 and subtype bits 10..13
- * from func_02034464. Kinds 6,16,20,17 are a confirmed special set for type-one
+ * from Actor_QueryTerrainCell. Kinds 6,16,20,17 are a confirmed special set for type-one
  * actors; kinds 8..13 and kind 7 participate in the recovered floor gates.
  * Countdown duration is 12 with GameWork flag 0x12, otherwise 48.
  *
@@ -121,7 +121,7 @@ void func_0203bba4(void *self)
         return;
     }
 
-    cell = func_02034464(actor, predictedX >> 16, predictedY >> 16);
+    cell = Actor_QueryTerrainCell(actor, predictedX >> 16, predictedY >> 16);
     kind = (cell >> 5) & 0x1f;
     subtype = (cell >> 10) & 0x0f;
     kind8to13 = kind >= 8 && kind <= 13;

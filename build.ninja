@@ -14696,7 +14696,7 @@ build build/reports/actor_terrain_geometry_queries_02034464.json: objdiff build/
   base_object = build/decomp/asm/game/actor_terrain_geometry_queries_02034464.o
 build build/reports/actor_terrain_geometry_queries_02034464.txt: match_report build/reports/actor_terrain_geometry_queries_02034464.json | tools/report_objdiff.py
   report_json = build/reports/actor_terrain_geometry_queries_02034464.json
-  report_args = --section .text --function func_02034464 --require-exact
+  report_args = --section .text --function Actor_QueryTerrainCell --require-exact
 build build/decomp/asm/game/actor_terrain_geometry_queries_020344b8.o: mwasmarm asm/game/actor_terrain_geometry_queries_020344b8.s
 build build/decomp/delinks/asm/game/actor_terrain_geometry_queries_020344b8.o: dsd_delink config/arm9/config.yaml config/arm9/delinks.txt config/arm9/symbols.txt config/arm9/relocs.txt
 build build/reports/actor_terrain_geometry_queries_020344b8.json: objdiff build/decomp/delinks/asm/game/actor_terrain_geometry_queries_020344b8.o | build/decomp/asm/game/actor_terrain_geometry_queries_020344b8.o

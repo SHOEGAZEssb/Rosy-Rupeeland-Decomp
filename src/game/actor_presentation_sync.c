@@ -22,7 +22,7 @@ extern void func_02057394(void *, s32);
 extern void Actor_GetCollisionCenter(void *, void *);
 extern void func_020571b4(void *, const void *, const void *);
 extern void func_02005058(void *);
-extern u32 func_02034464(void *, s32, s32);
+extern u32 Actor_QueryTerrainCell(void *, s32, s32);
 extern void func_02072b68(void *, s32);
 #ifdef __cplusplus
 }
@@ -132,7 +132,7 @@ void func_02031758(PresentationPoint *output, void *actorPointer,
 
     attachment = *(u8 **)(actor + 0xa8);
     if (attachment) {
-        u32 terrain = func_02034464(actor, *(s32 *)(actor + 0x1c) >> 16,
+        u32 terrain = Actor_QueryTerrainCell(actor, *(s32 *)(actor + 0x1c) >> 16,
                                     *(s32 *)(actor + 0x20) >> 16);
         s32 terrainHeight = (s32)(terrain << 27) >> 27;
         s32 baseline = *(s32 *)(actor + 0x1dc);

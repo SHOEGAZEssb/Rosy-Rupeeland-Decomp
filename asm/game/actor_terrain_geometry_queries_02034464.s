@@ -2,9 +2,9 @@
 .text
 .extern data_021052fc
 
-    .global func_02034464
-    .type func_02034464, @function
-func_02034464: ; 0x02034464
+    .global Actor_QueryTerrainCell
+    .type Actor_QueryTerrainCell, @function
+Actor_QueryTerrainCell: ; 0x02034464
     stmdb sp!, {lr}
     sub sp, sp, #0xc
     ldr r0, [r0, #0x14]
@@ -27,6 +27,6 @@ func_02034464: ; 0x02034464
     add sp, sp, #0xc
     ldmia sp!, {pc}
 .L_020344b4: .word data_021052fc
-    .size func_02034464, . - func_02034464
+    .size Actor_QueryTerrainCell, . - Actor_QueryTerrainCell
 
     .global Position_AdjustForTerrainHeight

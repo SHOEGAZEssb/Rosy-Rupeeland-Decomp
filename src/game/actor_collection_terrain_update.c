@@ -49,7 +49,7 @@ extern "C" {
 #endif
 extern s32 func_020828a0(void *, s32);
 extern s32 func_02033f44(TerrainUpdateActor *);
-extern u32 func_02034464(TerrainUpdateActor *, s32, s32);
+extern u32 Actor_QueryTerrainCell(TerrainUpdateActor *, s32, s32);
 extern void func_0200b2c0(void *, s32, s32, s32);
 #ifdef __cplusplus
 }
@@ -80,7 +80,7 @@ static s32 terrainCodeIsRestricted(u32 terrain)
  * transition checks, in which case the callback still runs before validation.
  * Flag 0x200 actors are restored whenever func_02033f44 changes. Types one and
  * seven at matching offset-0x24 height additionally use the encoded result of
- * func_02034464 and a 0x20000 tolerance to decide restoration. Restoration
+ * Actor_QueryTerrainCell and a 0x20000 tolerance to decide restoration. Restoration
  * resets fields 0x3c/0x40, objects at 0x88/0x98, and sets flag 0x40 at 0xd0.
  * Returns no value; called actor and terrain helpers may change gameplay state.
  */
@@ -115,7 +115,7 @@ void func_0202e858(ActorCollectionTerrainUpdate *self)
 
             oldValue = func_02033f44(actor);
             actor->vtable_00->callback_88(actor);
-            terrain = func_02034464(actor, actor->positionX_1c >> 16,
+            terrain = Actor_QueryTerrainCell(actor, actor->positionX_1c >> 16,
                                     actor->positionY_20 >> 16);
             restricted = terrainCodeIsRestricted(terrain) &&
                          actor->type_4d == 1 &&

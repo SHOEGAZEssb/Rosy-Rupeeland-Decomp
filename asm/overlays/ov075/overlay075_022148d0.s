@@ -14,7 +14,7 @@
 .extern func_0201f864
 .extern func_02031748
 .extern Actor_UpdateAnimationState
-.extern func_02034464
+.extern Actor_QueryTerrainCell
 .extern func_0203b798
 .extern func_020593dc
 .extern func_0205940c
@@ -86,7 +86,7 @@ func_ov075_022148d0:
     mov r0, r4
     mov r1, r1, asr #0x10
     mov r2, r2, asr #0x10
-    bl func_02034464
+    bl Actor_QueryTerrainCell
     mov r1, r0, lsl #0x12
     mov r1, r1, lsr #0x1c
     str r0, [sp, #0x1c]
@@ -196,7 +196,7 @@ func_ov075_022148d0:
     mov r0, r4
     mov r1, r1, asr #0x10
     mov r2, r2, asr #0x10
-    bl func_02034464
+    bl Actor_QueryTerrainCell
     ldr r1, .L_02214d74
     str r0, [sp, #0x18]
     str r0, [sp, #0x20]
