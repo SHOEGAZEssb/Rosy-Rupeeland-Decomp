@@ -26,7 +26,7 @@
     .extern func_02070454
     .extern func_02070464
     .extern GraphicsSpriteRenderer_ClearTextBuffer
-    .extern func_02075858
+    .extern GraphicsSpriteRenderer_Printf
     .extern GraphicsAnimationInstance_SetAnimation
     .extern GraphicsAnimationInstance_SetFrame
     .extern GraphicsAnimationInstanceManager_Update
@@ -548,7 +548,7 @@ L_021fdd58:
     ldr r0, [r4, #0x0]
     add r2, r5, #0x5
     mov r3, r7
-    bl func_02075858
+    bl GraphicsSpriteRenderer_Printf
     b L_021fe08c
 L_021fdd80:
     ldr r0, [r9, #0x14c]
@@ -561,7 +561,7 @@ L_021fdd80:
     str r0, [sp, #0x4]
     ldr r0, [r4, #0x0]
     ldr r3, [sp, #0x48]
-    bl func_02075858
+    bl GraphicsSpriteRenderer_Printf
     b L_021fe08c
 L_021fddb0:
     ldr r0, [r9, #0x144]
@@ -574,7 +574,7 @@ L_021fddb0:
     ldr r0, [r0, #0x4]
     str r0, [sp, #0x4]
     ldr r0, [r4, #0x0]
-    bl func_02075858
+    bl GraphicsSpriteRenderer_Printf
     b L_021fe08c
 L_021fdde0:
     ldr r0, [r9, #0x148]
@@ -589,7 +589,7 @@ L_021fdde0:
     ldr r3, [sp, #0x38]
     str r0, [sp, #0x4]
     ldr r0, [r4, #0x0]
-    bl func_02075858
+    bl GraphicsSpriteRenderer_Printf
     b L_021fe08c
 L_021fde18:
     ldr r0, [r9, #0x174]
@@ -601,7 +601,7 @@ L_021fde18:
     add r2, r5, #0x5
     str r0, [sp, #0x0]
     ldr r0, [r4, #0x0]
-    bl func_02075858
+    bl GraphicsSpriteRenderer_Printf
     b L_021fe08c
 L_021fde44:
     ldr r0, [r9, #0x178]
@@ -613,7 +613,7 @@ L_021fde44:
     add r2, r5, #0x5
     str r0, [sp, #0x0]
     ldr r0, [r4, #0x0]
-    bl func_02075858
+    bl GraphicsSpriteRenderer_Printf
     b L_021fe08c
 L_021fde70:
     ldrsh r1, [r10, #0x70]
@@ -628,7 +628,7 @@ L_021fde70:
     ldr r3, [sp, #0x2c]
     mov r1, #0x1
     add r2, r5, #0x5
-    bl func_02075858
+    bl GraphicsSpriteRenderer_Printf
     b L_021fe08c
 L_021fdea8:
     mov r0, r1, asr #0x7
@@ -639,7 +639,7 @@ L_021fdea8:
     ldr r3, [sp, #0x28]
     mov r1, #0x1
     add r2, r5, #0x5
-    bl func_02075858
+    bl GraphicsSpriteRenderer_Printf
     b L_021fe08c
 L_021fded0:
     ldr r0, [r9, #0x164]
@@ -651,14 +651,14 @@ L_021fded0:
     ldr r0, [r4, #0x0]
     ldr r3, [sp, #0x24]
     add r2, r5, #0x5
-    bl func_02075858
+    bl GraphicsSpriteRenderer_Printf
     b L_021fe08c
 L_021fdefc:
     str r0, [sp, #0x0]
     ldr r0, [r4, #0x0]
     ldr r3, [sp, #0x20]
     add r2, r5, #0x5
-    bl func_02075858
+    bl GraphicsSpriteRenderer_Printf
     b L_021fe08c
 L_021fdf14:
     ldr r0, [r9, #0x168]
@@ -670,14 +670,14 @@ L_021fdf14:
     ldr r0, [r4, #0x0]
     ldr r3, [sp, #0x1c]
     add r2, r5, #0x5
-    bl func_02075858
+    bl GraphicsSpriteRenderer_Printf
     b L_021fe08c
 L_021fdf40:
     str r0, [sp, #0x0]
     ldr r0, [r4, #0x0]
     ldr r3, [sp, #0x18]
     add r2, r5, #0x5
-    bl func_02075858
+    bl GraphicsSpriteRenderer_Printf
     b L_021fe08c
 L_021fdf58:
     ldr r0, [r9, #0x16c]
@@ -689,14 +689,14 @@ L_021fdf58:
     ldr r0, [r4, #0x0]
     ldr r3, [sp, #0x14]
     add r2, r5, #0x5
-    bl func_02075858
+    bl GraphicsSpriteRenderer_Printf
     b L_021fe08c
 L_021fdf84:
     str r0, [sp, #0x0]
     ldr r0, [r4, #0x0]
     ldr r3, [sp, #0x10]
     add r2, r5, #0x5
-    bl func_02075858
+    bl GraphicsSpriteRenderer_Printf
     b L_021fe08c
 L_021fdf9c:
     ldr r0, [r9, #0x154]
@@ -705,7 +705,7 @@ L_021fdf9c:
     ldr r0, [r4, #0x0]
     add r2, r5, #0x5
     mov r3, r8
-    bl func_02075858
+    bl GraphicsSpriteRenderer_Printf
     b L_021fe08c
 L_021fdfbc:
     ldr r0, [r9, #0x12c]
@@ -735,7 +735,7 @@ L_021fe000:
     ldr r0, [r4, #0x0]
     add r2, r5, #0x5
     mov r3, r7
-    bl func_02075858
+    bl GraphicsSpriteRenderer_Printf
     b L_021fe08c
 L_021fe028:
     ldr r0, [r9, #0x14c]
@@ -748,14 +748,14 @@ L_021fe028:
     str r0, [sp, #0x4]
     ldr r0, [r4, #0x0]
     ldr r3, [sp, #0x48]
-    bl func_02075858
+    bl GraphicsSpriteRenderer_Printf
     b L_021fe08c
 L_021fe058:
     ldr r0, [r4, #0x0]
     mov r1, #0x1
     add r2, r5, #0x5
     mov r3, r11
-    bl func_02075858
+    bl GraphicsSpriteRenderer_Printf
     b L_021fe08c
 L_021fe070:
     ldr r0, [r9, #0x154]
@@ -764,7 +764,7 @@ L_021fe070:
     ldr r0, [r4, #0x0]
     add r2, r5, #0x5
     mov r3, r8
-    bl func_02075858
+    bl GraphicsSpriteRenderer_Printf
 L_021fe08c:
     add r5, r5, #0x1
     cmp r5, #0xb
@@ -789,7 +789,7 @@ L_021fe08c:
     ldr r0, [r0, #0x0]
     mov r1, #0x12
     mov r2, #0x8
-    bl func_02075858
+    bl GraphicsSpriteRenderer_Printf
     ldr r1, [r9, #0x8c]
     ldr r0, L_021fe824
     ldr r1, [r1, #0x18]
@@ -799,7 +799,7 @@ L_021fe08c:
     str r2, [sp, #0x0]
     ldr r0, [r0, #0x0]
     mov r2, #0x9
-    bl func_02075858
+    bl GraphicsSpriteRenderer_Printf
     ldr r1, [r9, #0x8c]
     ldr r0, L_021fe824
     ldr r1, [r1, #0x1c]
@@ -809,7 +809,7 @@ L_021fe08c:
     str r2, [sp, #0x0]
     ldr r0, [r0, #0x0]
     mov r2, #0xa
-    bl func_02075858
+    bl GraphicsSpriteRenderer_Printf
     ldr r1, [r9, #0x8c]
     ldr r0, L_021fe824
     ldr r2, [r1, #0x14]
@@ -819,7 +819,7 @@ L_021fe08c:
     str r3, [sp, #0x0]
     ldr r0, [r0, #0x0]
     ldr r3, L_021fe84c
-    bl func_02075858
+    bl GraphicsSpriteRenderer_Printf
     ldr r1, [r9, #0x8c]
     ldr r0, L_021fe824
     ldr r2, [r1, #0x18]
@@ -829,7 +829,7 @@ L_021fe08c:
     str r3, [sp, #0x0]
     ldr r0, [r0, #0x0]
     ldr r3, L_021fe850
-    bl func_02075858
+    bl GraphicsSpriteRenderer_Printf
     ldr r1, [r9, #0x8c]
     ldr r0, L_021fe824
     ldr r2, [r1, #0x1c]
@@ -839,7 +839,7 @@ L_021fe08c:
     str r3, [sp, #0x0]
     ldr r0, [r0, #0x0]
     ldr r3, L_021fe854
-    bl func_02075858
+    bl GraphicsSpriteRenderer_Printf
     ldr r0, [r9, #0x8c]
     ldr r0, [r0, #0x14]
     bl func_0207043c
@@ -856,7 +856,7 @@ L_021fe08c:
     ldr r0, [r0, #0x0]
     mov r1, #0x12
     mov r2, #0x10
-    bl func_02075858
+    bl GraphicsSpriteRenderer_Printf
     ldr r0, [r9, #0x8c]
     mov r2, #0x11
     ldr r0, [r0, #0x18]
@@ -870,7 +870,7 @@ L_021fe08c:
     str r1, [sp, #0x0]
     ldr r0, [r0, #0x0]
     mov r1, #0x12
-    bl func_02075858
+    bl GraphicsSpriteRenderer_Printf
     b L_021fe254
 L_021fe234:
     str r0, [sp, #0x0]
@@ -880,7 +880,7 @@ L_021fe234:
     str r1, [sp, #0x4]
     ldr r0, [r0, #0x0]
     mov r1, #0x12
-    bl func_02075858
+    bl GraphicsSpriteRenderer_Printf
 L_021fe254:
     ldr r8, [r9, #0x8c]
     ldr r5, L_021fe820
@@ -908,7 +908,7 @@ L_021fe254:
     ldrh r0, [r0, #0x2]
     str r0, [sp, #0x8]
     ldr r0, [r5, #0x0]
-    bl func_02075858
+    bl GraphicsSpriteRenderer_Printf
     ldr r0, [r9, #0x174]
     cmp r0, #0x0
     bne L_021fe424
@@ -933,7 +933,7 @@ L_021fe2f0:
     ldr r0, [r0, #0x0]
     mov r1, #0x12
     mov r2, #0x8
-    bl func_02075858
+    bl GraphicsSpriteRenderer_Printf
     ldr r1, [r9, #0x12c]
     ldr r0, L_021fe824
     ldr r1, [r1, #0x8]
@@ -943,7 +943,7 @@ L_021fe2f0:
     str r2, [sp, #0x0]
     ldr r0, [r0, #0x0]
     mov r2, #0x9
-    bl func_02075858
+    bl GraphicsSpriteRenderer_Printf
     ldr r1, [r9, #0x12c]
     ldr r0, L_021fe824
     ldr r1, [r1, #0x4]
@@ -953,7 +953,7 @@ L_021fe2f0:
     str r2, [sp, #0x0]
     ldr r0, [r0, #0x0]
     mov r2, #0xb
-    bl func_02075858
+    bl GraphicsSpriteRenderer_Printf
     ldr r1, [r9, #0x12c]
     ldr r0, L_021fe824
     ldr r2, [r1, #0x8]
@@ -963,7 +963,7 @@ L_021fe2f0:
     str r3, [sp, #0x0]
     ldr r0, [r0, #0x0]
     ldr r3, L_021fe850
-    bl func_02075858
+    bl GraphicsSpriteRenderer_Printf
     ldr r0, [r9, #0x12c]
     ldr r5, [r0, #0x4]
     mov r0, r5
@@ -977,7 +977,7 @@ L_021fe2f0:
     ldr r0, [r0, #0x0]
     mov r1, #0x12
     mov r2, #0xe
-    bl func_02075858
+    bl GraphicsSpriteRenderer_Printf
     ldr r0, [r9, #0x12c]
     mov r2, #0xf
     ldr r0, [r0, #0x8]
@@ -991,7 +991,7 @@ L_021fe2f0:
     str r1, [sp, #0x0]
     ldr r0, [r0, #0x0]
     mov r1, #0x12
-    bl func_02075858
+    bl GraphicsSpriteRenderer_Printf
     b L_021fe424
 L_021fe40c:
     ldr r0, L_021fe824
@@ -999,14 +999,14 @@ L_021fe40c:
     ldr r0, [r0, #0x0]
     ldr r3, L_021fe870
     mov r1, #0x12
-    bl func_02075858
+    bl GraphicsSpriteRenderer_Printf
 L_021fe424:
     ldr r0, L_021fe824
     ldr r3, L_021fe874
     ldr r0, [r0, #0x0]
     mov r1, #0x1
     mov r2, #0x17
-    bl func_02075858
+    bl GraphicsSpriteRenderer_Printf
     bl func_020b0558
     add r0, r9, #0x98
     bl Graphics3DSceneState_Apply

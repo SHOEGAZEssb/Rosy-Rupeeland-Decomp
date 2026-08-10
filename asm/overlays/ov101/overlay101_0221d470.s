@@ -7,7 +7,7 @@
 .extern data_ov101_0221d6a0
 .extern data_ov101_0221d6a8
 .extern GraphicsSpriteRenderer_ClearTextBuffer
-.extern func_02075858
+.extern GraphicsSpriteRenderer_Printf
 .extern gDebugFont
 .extern gSoundContext
 .extern gSystemState
@@ -78,7 +78,7 @@ func_ov101_0221d470:
     ldr r0, [r0, #0x0]
     mov r1, #0x2
     mov r2, #0x11
-    bl func_02075858
+    bl GraphicsSpriteRenderer_Printf
     ldrsh r2, [r4, #0x24]
     mov r0, #0x34
     ldr r1, .L_0221d5d4
@@ -90,7 +90,7 @@ func_ov101_0221d470:
     ldr r0, [r0, #0x0]
     mov r1, #0x2
     mov r2, #0xe
-    bl func_02075858
+    bl GraphicsSpriteRenderer_Printf
     ldr r0, .L_0221d5d8
     ldrsh r1, [r0, #0x0]
     cmp r1, #0x0
@@ -101,7 +101,7 @@ func_ov101_0221d470:
     ldr r3, .L_0221d5e4
     mov r1, #0x2
     mov r2, #0xa
-    bl func_02075858
+    bl GraphicsSpriteRenderer_Printf
 .L_0221d5bc:
     mov r0, #0x0
 .L_0221d5c0:

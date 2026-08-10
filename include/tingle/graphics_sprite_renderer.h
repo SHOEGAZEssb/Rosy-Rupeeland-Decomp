@@ -55,7 +55,7 @@ void *GraphicsSpriteRenderer_GetObjectPaletteAddress(GraphicsSpriteRenderer *ren
 void GraphicsSpriteRenderer_QueuePaletteUploads(GraphicsSpriteRenderer *renderer);
 void func_020756b4(GraphicsSpriteRenderer *renderer, s32 x, s32 y,
                    const char *text, s32 length, u32 mode);
-void func_02075858(GraphicsSpriteRenderer *renderer, s32 x, s32 y,
+void GraphicsSpriteRenderer_Printf(GraphicsSpriteRenderer *renderer, s32 x, s32 y,
                    const char *format, ...);
 void DebugText_Printf(GraphicsSpriteRenderer *renderer, s32 x, s32 y,
                       u32 mode, const char *format, ...);

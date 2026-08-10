@@ -10,7 +10,7 @@
 .extern data_ov066_02210f98
 .extern data_ov066_02210fb4
 .extern GraphicsSpriteRenderer_ClearTextBuffer
-.extern func_02075858
+.extern GraphicsSpriteRenderer_Printf
 .extern GraphicsSpriteCanvas_DrawLine
 .extern func_020766c8
 .extern func_ov066_0220fee0
@@ -291,7 +291,7 @@ func_ov066_0220ff60:
     ldr r0, [r0, #0x0]
     ldr r3, .L_022103f8
     mov r2, r1
-    bl func_02075858
+    bl GraphicsSpriteRenderer_Printf
     ldr r1, [r5, #0x24]
     ldr r0, .L_022103e0
     ldr r1, [r1, #0x190]
@@ -300,31 +300,31 @@ func_ov066_0220ff60:
     ldr r0, [r0, #0x0]
     mov r1, #0x1
     mov r2, #0x2
-    bl func_02075858
+    bl GraphicsSpriteRenderer_Printf
     ldr r0, .L_022103e4
     mov r1, #0x1
     ldr r0, [r0, #0x0]
     ldr r3, .L_02210400
     mov r2, r1
-    bl func_02075858
+    bl GraphicsSpriteRenderer_Printf
     ldr r0, .L_022103e4
     ldr r3, .L_02210404
     ldr r0, [r0, #0x0]
     mov r1, #0x1
     mov r2, #0x2
-    bl func_02075858
+    bl GraphicsSpriteRenderer_Printf
     ldr r0, .L_022103e4
     mov r1, #0x1
     ldr r0, [r0, #0x0]
     mov r2, #0x3
     ldr r3, .L_02210408
-    bl func_02075858
+    bl GraphicsSpriteRenderer_Printf
     ldr r0, .L_022103e4
     mov r1, #0x1
     ldr r0, [r0, #0x0]
     mov r2, #0x4
     ldr r3, .L_0221040c
-    bl func_02075858
+    bl GraphicsSpriteRenderer_Printf
     mov r0, #0x0
 .L_022103d8:
     add sp, sp, #0x24

@@ -32,7 +32,7 @@ extern void GraphicsSpriteRenderer_ClearTextBuffer(void *font);
 extern void func_02072000(GraphicsResourceSet *set);
 extern void func_ov011_021fd188(void *state);
 extern void DebugText_Printf(void *debug, s32 x, s32 y, s32 style, ...);
-extern void func_02075858(void *debug, s32 x, s32 y, const char *format, ...);
+extern void GraphicsSpriteRenderer_Printf(void *debug, s32 x, s32 y, const char *format, ...);
 extern void GraphicsSpriteCanvas_DrawLine(void *font, s32 x, s32 y,
                                           s32 value, ...);
 extern s32 func_0207043c(void *resource);
@@ -154,19 +154,19 @@ s32 func_ov011_021fd450(void *state)
     for (i = 0; i < 4; i++) {
         s32 y = i + 5;
         if (i == 0) {
-            func_02075858(data_020f4e14, 1, y, data_ov011_021fe370[0],
+            GraphicsSpriteRenderer_Printf(data_020f4e14, 1, y, data_ov011_021fe370[0],
                           FIELD(s32, state, 0xd0), 5);
         } else if (i == 1) {
             s32 fileIndex = FIELD(s32, state, 0xd0);
-            func_02075858(data_020f4e14, 1, y, data_ov011_021fe370[1],
+            GraphicsSpriteRenderer_Printf(data_020f4e14, 1, y, data_ov011_021fe370[1],
                           FIELD(s32, state, 0xe8 + fileIndex * 4),
                           FIELD(s32, state, 0xd4 + fileIndex * 4));
         } else if (i == 2) {
-            func_02075858(data_020f4e14, 1, y, data_ov011_021fe370[2],
+            GraphicsSpriteRenderer_Printf(data_020f4e14, 1, y, data_ov011_021fe370[2],
                           FIELD(s32, state, 0x104) ? data_ov011_021fe620
                                                   : data_ov011_021fe624);
         } else {
-            func_02075858(data_020f4e14, 1, y, data_ov011_021fe370[3],
+            GraphicsSpriteRenderer_Printf(data_020f4e14, 1, y, data_ov011_021fe370[3],
                           FIELD(s32, state, 0xcc) ? data_ov011_021fe628
                                                  : data_ov011_021fe62c);
         }
@@ -177,24 +177,24 @@ s32 func_ov011_021fd450(void *state)
     {
         u8 *meta2 = FIELD(u8 *, set->resource2, 0x20);
         u8 *meta1 = FIELD(u8 *, set->resource1, 0x20);
-        func_02075858(data_020f4e14, 1, 10, data_ov011_021fe634,
+        GraphicsSpriteRenderer_Printf(data_020f4e14, 1, 10, data_ov011_021fe634,
                       FIELD(s32, meta2, 0x0c), FIELD(s32, meta2, 0x10),
                       FIELD(u16, meta1, 4), FIELD(u16, meta1, 6));
-        func_02075858(data_020f4e14, 1, 12, data_ov011_021fe648,
+        GraphicsSpriteRenderer_Printf(data_020f4e14, 1, 12, data_ov011_021fe648,
                       FIELD(void *, set->resource0, 0x10),
                       func_0207043c(set->resource0));
-        func_02075858(data_020f4e14, 1, 13, data_ov011_021fe660,
+        GraphicsSpriteRenderer_Printf(data_020f4e14, 1, 13, data_ov011_021fe660,
                       FIELD(void *, set->resource1, 0x10),
                       func_02070888(set->resource1));
-        func_02075858(data_020f4e14, 1, 14, data_ov011_021fe678,
+        GraphicsSpriteRenderer_Printf(data_020f4e14, 1, 14, data_ov011_021fe678,
                       FIELD(void *, set->resource2, 0x10),
                       func_ov011_021fdae0(set->resource2));
     }
-    func_02075858(data_020f4e14, 1, 0x12, data_ov011_021fe690,
+    GraphicsSpriteRenderer_Printf(data_020f4e14, 1, 0x12, data_ov011_021fe690,
                   FIELD(s32, state, 0xfc), FIELD(s32, state, 0x100));
-    func_02075858(data_020f4e14, 1, 0x13, data_ov011_021fe6a0,
+    GraphicsSpriteRenderer_Printf(data_020f4e14, 1, 0x13, data_ov011_021fe6a0,
                   FIELD(s32, state, 0x58), FIELD(s32, state, 0x5c));
-    func_02075858(data_020f4e14, 1, 0x15, data_ov011_021fe6b0);
+    GraphicsSpriteRenderer_Printf(data_020f4e14, 1, 0x15, data_ov011_021fe6b0);
 
     if ((FIELD(s32, state, 0x44) << 27) < 0) {
         GraphicsSpriteRenderer_ClearTextBuffer(gDebugFont);

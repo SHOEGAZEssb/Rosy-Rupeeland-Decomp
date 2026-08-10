@@ -20,7 +20,7 @@
     .extern func_02070888
     .extern func_02072000
     .extern GraphicsSpriteRenderer_ClearTextBuffer
-    .extern func_02075858
+    .extern GraphicsSpriteRenderer_Printf
     .extern GraphicsSpriteCanvas_DrawLine
     .extern func_ov011_021fce50
     .extern func_ov011_021fd188
@@ -286,7 +286,7 @@ L_021fd7e4:
     ldr r0, [r4, #0x0]
     ldr r3, [sp, #0x18]
     add r2, r5, #0x5
-    bl func_02075858
+    bl GraphicsSpriteRenderer_Printf
     b L_021fd888
 L_021fd804:
     ldr r0, [r9, #0xd0]
@@ -299,7 +299,7 @@ L_021fd804:
     mov r3, r6
     str r0, [sp, #0x4]
     ldr r0, [r4, #0x0]
-    bl func_02075858
+    bl GraphicsSpriteRenderer_Printf
     b L_021fd888
 L_021fd834:
     ldr r0, [r9, #0x104]
@@ -311,7 +311,7 @@ L_021fd834:
     mov r3, r7
     str r0, [sp, #0x0]
     ldr r0, [r4, #0x0]
-    bl func_02075858
+    bl GraphicsSpriteRenderer_Printf
     b L_021fd888
 L_021fd860:
     ldr r0, [r9, #0xcc]
@@ -323,7 +323,7 @@ L_021fd860:
     mov r3, r8
     str r0, [sp, #0x0]
     ldr r0, [r4, #0x0]
-    bl func_02075858
+    bl GraphicsSpriteRenderer_Printf
 L_021fd888:
     add r5, r5, #0x1
     cmp r5, #0x4
@@ -354,7 +354,7 @@ L_021fd888:
     ldrh r4, [r5, #0x6]
     str r4, [sp, #0xc]
     ldr r0, [r0, #0x0]
-    bl func_02075858
+    bl GraphicsSpriteRenderer_Printf
     ldr r0, [r9, #0x78]
     ldr r4, [r0, #0x10]
     bl func_0207043c
@@ -365,7 +365,7 @@ L_021fd888:
     mov r1, #0x1
     mov r2, #0xc
     ldr r3, L_021fdac4
-    bl func_02075858
+    bl GraphicsSpriteRenderer_Printf
     ldr r0, [r9, #0x7c]
     ldr r4, [r0, #0x10]
     bl func_02070888
@@ -376,7 +376,7 @@ L_021fd888:
     ldr r0, [r0, #0x0]
     mov r2, #0xd
     ldr r3, L_021fdac8
-    bl func_02075858
+    bl GraphicsSpriteRenderer_Printf
     ldr r0, [r9, #0x80]
     ldr r4, [r0, #0x10]
     bl func_ov011_021fdae0
@@ -387,7 +387,7 @@ L_021fd888:
     ldr r0, [r0, #0x0]
     mov r2, #0xe
     ldr r3, L_021fdacc
-    bl func_02075858
+    bl GraphicsSpriteRenderer_Printf
     ldr r1, [r9, #0xfc]
     ldr r0, L_021fdaa0
     str r1, [sp, #0x0]
@@ -397,7 +397,7 @@ L_021fd888:
     ldr r0, [r0, #0x0]
     mov r2, #0x12
     ldr r3, L_021fdad0
-    bl func_02075858
+    bl GraphicsSpriteRenderer_Printf
     ldr r1, [r9, #0x58]
     ldr r0, L_021fdaa0
     str r1, [sp, #0x0]
@@ -407,13 +407,13 @@ L_021fd888:
     ldr r0, [r0, #0x0]
     mov r1, #0x1
     mov r2, #0x13
-    bl func_02075858
+    bl GraphicsSpriteRenderer_Printf
     ldr r0, L_021fdaa0
     ldr r3, L_021fdad8
     ldr r0, [r0, #0x0]
     mov r1, #0x1
     mov r2, #0x15
-    bl func_02075858
+    bl GraphicsSpriteRenderer_Printf
     ldr r0, [r9, #0x44]
     mov r0, r0, lsl #0x1b
     movs r0, r0, asr #0x1f

@@ -26,7 +26,7 @@ extern s32 func_020b3598(char *destination, const char *format, void *args);
  * within the buffer; the renderer's tile buffer and VRAM transfer state may
  * change through func_020756b4.
  */
-void func_02075858(GraphicsSpriteRenderer *renderer, s32 x, s32 y,
+void GraphicsSpriteRenderer_Printf(GraphicsSpriteRenderer *renderer, s32 x, s32 y,
                    const char *format, ...)
 {
     char buffer[GRAPHICS_SPRITE_FORMAT_BUFFER_SIZE];
@@ -41,7 +41,7 @@ void func_02075858(GraphicsSpriteRenderer *renderer, s32 x, s32 y,
 
 /*
  * Mode-selecting formatted-text entry point used by the debug UI. It has the
- * same active-renderer and unchecked fixed-buffer contract as func_02075858,
+ * same active-renderer and unchecked fixed-buffer contract as GraphicsSpriteRenderer_Printf,
  * but forwards mode to the glyph blitter. Returns no value and may update the
  * renderer's text buffer and graphics transfers.
  */

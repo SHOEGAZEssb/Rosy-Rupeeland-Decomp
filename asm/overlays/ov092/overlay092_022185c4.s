@@ -11,7 +11,7 @@
 .extern func_02050078
 .extern func_020593ac
 .extern GraphicsSpriteState_SetAnimationIndex
-.extern func_02075858
+.extern GraphicsSpriteRenderer_Printf
 .extern func_020befec
 .extern func_020bf1f8
 .extern gSoundContext
@@ -53,7 +53,7 @@ func_ov092_022185c4:
     str r2, [sp, #0x0]
     ldr r0, [r0, #0x0]
     mov r2, r1
-    bl func_02075858
+    bl GraphicsSpriteRenderer_Printf
 .L_02218648:
     ldr r0, .L_02218934
     add r3, sp, #0x28

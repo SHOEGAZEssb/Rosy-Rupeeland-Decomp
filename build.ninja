@@ -11280,7 +11280,7 @@ build build/reports/graphics_sprite_text_printf.json: objdiff build/decomp/delin
 
 build build/reports/graphics_sprite_text_printf.txt: match_report build/reports/graphics_sprite_text_printf.json | tools/report_objdiff.py
   report_json = build/reports/graphics_sprite_text_printf.json
-  report_args = --section .text --function func_02075858 --function DebugText_Printf
+  report_args = --section .text --function GraphicsSpriteRenderer_Printf --function DebugText_Printf
 
 build build/reports/graphics_sprite_text_oam.json: objdiff build/decomp/delinks/src/graphics/graphics_sprite_text_oam.o | build/decomp/src/graphics/graphics_sprite_text_oam.o
   target_object = build/decomp/delinks/src/graphics/graphics_sprite_text_oam.o

@@ -143,7 +143,7 @@ replaced deliberately on another compiler.
 
 | Function | Compiler-sensitive form | Native-port care |
 | --- | --- | --- |
-| `func_02075858`, `DebugText_Printf` | The source derives the first unnamed argument by rounding the address of the last named argument down to a four-byte boundary and advancing one word. This reproduces the retail register-homing and stack traversal without an available Metrowerks `stdarg.h`. | Use the host's real `va_list`/`va_start` in a native build. Preserve the active-renderer guard, mode forwarding, and formatted length passed to the glyph blitter. Retail formatting is unbounded and then writes a terminator at the returned length in a 0x104-byte buffer; replace this with bounded formatting and define truncation behavior rather than retaining the overflow hazard. |
+| `GraphicsSpriteRenderer_Printf`, `DebugText_Printf` | The source derives the first unnamed argument by rounding the address of the last named argument down to a four-byte boundary and advancing one word. This reproduces the retail register-homing and stack traversal without an available Metrowerks `stdarg.h`. | Use the host's real `va_list`/`va_start` in a native build. Preserve the active-renderer guard, mode forwarding, and formatted length passed to the glyph blitter. Retail formatting is unbounded and then writes a terminator at the returned length in a 0x104-byte buffer; replace this with bounded formatting and define truncation behavior rather than retaining the overflow hazard. |
 
 ### Sprite world-position conversion
 
