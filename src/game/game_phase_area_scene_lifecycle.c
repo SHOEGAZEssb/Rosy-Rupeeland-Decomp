@@ -13,7 +13,7 @@ extern void *data_021052fc;
 extern void func_0202cf2c(void *renderer);
 extern void func_0202d014(void *renderer, s32 value);
 extern void func_02030b18(void *renderer, s32 value);
-extern void *func_0202d640(void *renderer, s32 first, s32 second);
+extern void *ActorCollection_FindActorByTypeAndId(void *renderer, s32 first, s32 second);
 extern void func_0202d380(void *renderer);
 extern void func_0202d06c(void *renderer);
 extern void func_02006268(void *state);
@@ -146,7 +146,7 @@ void func_02011ebc(GamePhaseAreaScene *self)
     func_02030b18(self->renderer_08, 0x1000);
     func_020062a0(self->state_2eb0, self->config_2eac->field20);
     self->config_2eac->callback28(0);
-    self->field_2ebc = func_0202d640(self->renderer_08, 3, 3);
+    self->field_2ebc = ActorCollection_FindActorByTypeAndId(self->renderer_08, 3, 3);
 }
 
 /*

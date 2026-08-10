@@ -1,9 +1,9 @@
 ; Matching retail form; see src/game/actor_collection_lookup_visibility.c.
 .text
 
-    .global func_0202d640
-    .type func_0202d640, @function
-func_0202d640: ; 0x0202d640
+    .global ActorCollection_FindActorByTypeAndId
+    .type ActorCollection_FindActorByTypeAndId, @function
+ActorCollection_FindActorByTypeAndId: ; 0x0202d640
     stmdb sp!, {r4, lr}
     add r3, r0, #0x2000
     ldr lr, [r3, #0xe74]
@@ -26,4 +26,4 @@ func_0202d640: ; 0x0202d640
     blt .L_0202d654
     mov r0, #0x0
     ldmia sp!, {r4, pc}
-    .size func_0202d640, . - func_0202d640
+    .size ActorCollection_FindActorByTypeAndId, . - ActorCollection_FindActorByTypeAndId

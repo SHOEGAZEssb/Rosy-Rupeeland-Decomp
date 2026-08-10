@@ -8,7 +8,7 @@ extern void *data_020df500[2];
 extern "C" {
 #endif
 extern void *func_02007f0c(void *runtime, s32 category);
-extern void *func_0202d640(void *collection, s32 type, s32 subtype);
+extern void *ActorCollection_FindActorByTypeAndId(void *collection, s32 type, s32 subtype);
 extern void Actor_SetActive(void *actor, s32 enabled);
 #ifdef __cplusplus
 }
@@ -27,7 +27,7 @@ void func_0203b3cc(s32 mode)
 {
     s32 category = mode == 0 ? 1 : 2;
     u8 *collection = (u8 *)func_02007f0c(data_021052fc, category);
-    void *control = func_0202d640(collection, 3, 4);
+    void *control = ActorCollection_FindActorByTypeAndId(collection, 3, 4);
     void **vtable = *(void ***)control;
 
     (*(void (**)(void *, s32))((u8 *)vtable + 0x74))(control, 0);

@@ -39,7 +39,7 @@ extern void func_02074110(void *object);
 #endif
 
 /* Return the first actor whose type_4d and id_4e match, or null when absent. */
-LookupActor *func_0202d640(ActorCollectionLookupVisibility *self,
+LookupActor *ActorCollection_FindActorByTypeAndId(ActorCollectionLookupVisibility *self,
                           u8 type, u16 id)
 {
     s32 i;

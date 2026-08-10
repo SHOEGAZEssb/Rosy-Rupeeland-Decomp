@@ -2,7 +2,7 @@
 .text
 .extern func_020062a0
 .extern func_0202d014
-.extern func_0202d640
+.extern ActorCollection_FindActorByTypeAndId
 .extern func_02030b18
 
     .global func_02011ebc
@@ -29,7 +29,7 @@ func_02011ebc: ; 0x02011ebc
     add r0, r4, #0x8
     mov r1, #0x3
     mov r2, r1
-    bl func_0202d640
+    bl ActorCollection_FindActorByTypeAndId
     add r1, r4, #0x2000
     str r0, [r1, #0xebc]
     ldmia sp!, {r4, pc}

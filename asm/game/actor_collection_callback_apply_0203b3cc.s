@@ -3,7 +3,7 @@
 .extern data_020df500
 .extern data_021052fc
 .extern func_02007f0c
-.extern func_0202d640
+.extern ActorCollection_FindActorByTypeAndId
 .extern Actor_SetActive
     .global func_0203b3cc
     .type func_0203b3cc, @function
@@ -17,7 +17,7 @@ func_0203b3cc: ; 0x0203b3cc
     bl func_02007f0c
     mov r1, #0x3
     mov r2, #0x4
-    bl func_0202d640
+    bl ActorCollection_FindActorByTypeAndId
     ldr r2, [r0, #0x0]
     mov r4, r0
     ldr r2, [r2, #0x74]
@@ -43,7 +43,7 @@ func_0203b3cc: ; 0x0203b3cc
     bl func_02007f0c
     mov r1, #0x3
     mov r2, #0x4
-    bl func_0202d640
+    bl ActorCollection_FindActorByTypeAndId
     ldr r2, [r0, #0x0]
     mov r4, r0
     ldr r2, [r2, #0x74]
