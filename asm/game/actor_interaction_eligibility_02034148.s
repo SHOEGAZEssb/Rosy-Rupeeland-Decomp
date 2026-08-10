@@ -2,9 +2,9 @@
 .text
 .extern func_020573e4
 
-    .global func_02034148
-    .type func_02034148, @function
-func_02034148: ; 0x02034148
+    .global Actor_PollInteractionResource
+    .type Actor_PollInteractionResource, @function
+Actor_PollInteractionResource: ; 0x02034148
     stmdb sp!, {r3, lr}
     ldr r0, [r0, #0x1e0]
     cmp r0, #0x0
@@ -13,7 +13,7 @@ func_02034148: ; 0x02034148
 .L_0203415c:
     mov r0, #0x0
     ldmia sp!, {r3, pc}
-    .size func_02034148, . - func_02034148
+    .size Actor_PollInteractionResource, . - Actor_PollInteractionResource
 
     .global func_02034164
 

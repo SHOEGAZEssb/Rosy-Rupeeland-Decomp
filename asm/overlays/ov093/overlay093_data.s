@@ -19,9 +19,9 @@
 .extern Actor_AssignPrimaryResource
 .extern Actor_SetResourceSlot
 .extern Actor_AssignPrimaryResourceWithEffect
-.extern func_0203392c
-.extern func_02033940
-.extern func_02033954
+.extern Actor_SetInteractionFlag2000
+.extern Actor_ClearInteractionFlag2000
+.extern Actor_TestQueryPointAndClearFlag2000
 .extern func_02033b38
 .extern Actor_RefreshTerrainHeightIfEnabled
 .extern func_02033f4c
@@ -142,9 +142,9 @@ data_ov093_022188f0:
     .word func_020320fc
     .word func_02032208
     .word func_ov093_022187ac
-    .word func_0203392c
-    .word func_02033940
-    .word func_02033954
+    .word Actor_SetInteractionFlag2000
+    .word Actor_ClearInteractionFlag2000
+    .word Actor_TestQueryPointAndClearFlag2000
     .word func_0204d3e0
     .word func_ov093_02218514
     .word func_ov093_022187a8

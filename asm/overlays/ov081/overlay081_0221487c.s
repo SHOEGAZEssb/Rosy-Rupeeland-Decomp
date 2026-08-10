@@ -11,7 +11,7 @@
 .extern data_ov081_0221551c
 .extern func_0200b04c
 .extern ActorDerivedType1_TrySetStateVector
-.extern func_0203bab0
+.extern ActorDerivedRuntime_AcceptInteractionQuery
 .extern func_020573e4
 .extern func_020593dc
 .extern func_ov081_02213710
@@ -197,7 +197,7 @@ func_ov081_0221487c:
 .L_02214b10:
     mov r0, r5
     mov r1, r4
-    bl func_0203bab0
+    bl ActorDerivedRuntime_AcceptInteractionQuery
     add sp, sp, #0x14
     ldmia sp!, {r4, r5, pc}
 .L_02214b24: .word data_02105310

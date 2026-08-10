@@ -73,4 +73,4 @@ Actor_IsInteractionEligible: ; 0x02034060
     ldmia sp!, {r3, r4, r5, pc}
     .size Actor_IsInteractionEligible, . - Actor_IsInteractionEligible
 
-    .global func_02034148
+    .global Actor_PollInteractionResource

@@ -5,20 +5,20 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_0203392c(void *actor, void *context);
+extern void Actor_SetInteractionFlag2000(void *actor, void *context);
 extern void func_0204a4f0(void *actor, void *context);
 #ifdef __cplusplus
 }
 #endif
 
 /*
- * Inputs are an actor and context. Run func_0204a4f0 followed by func_0203392c
+ * Inputs are an actor and context. Run func_0204a4f0 followed by Actor_SetInteractionFlag2000
  * with the same arguments. Returns nothing; only the callees' engine effects
  * are observable and no hardware is accessed directly.
  */
 void func_0204f60c(void *actor, void *context)
 {
     func_0204a4f0(actor, context);
-    func_0203392c(actor, context);
+    Actor_SetInteractionFlag2000(actor, context);
 }
 

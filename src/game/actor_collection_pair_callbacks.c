@@ -27,8 +27,8 @@ extern "C" {
 #endif
 extern s32 ActorPairMatrix_Get(u8 *, s32, s32);
 extern void ActorPairMatrix_Clear(u8 *, s32, s32);
-extern s32 func_0203b9dc(PairCallbackActor *, PairCallbackActor *, s32);
-extern void func_0203baa0(PairCallbackActor *, PairCallbackActor *);
+extern s32 ActorDerivedRuntime_HandlePairActive(PairCallbackActor *, PairCallbackActor *, s32);
+extern void ActorDerivedRuntime_HandlePairEnded(PairCallbackActor *, PairCallbackActor *);
 void ActorCollection_NotifyPairEnded(PairCallbackCollection *, PairCallbackActor *,
                    PairCallbackActor *);
 #ifdef __cplusplus
@@ -37,9 +37,10 @@ void ActorCollection_NotifyPairEnded(PairCallbackCollection *, PairCallbackActor
 
 /*
  * Deliver an active/contact notification from actor to other. When actor flag
- * 0x01000000 is set, types one, two, and seven use func_0203b9dc; all other
- * cases use vtable offset 0x28. priorActive is forwarded unchanged. Return the
- * selected handler's integer result; no hardware or SDK state is touched here.
+ * 0x01000000 is set, types one, two, and seven use
+ * ActorDerivedRuntime_HandlePairActive; all other cases use vtable offset
+ * 0x28. priorActive is forwarded unchanged. Return the selected handler's
+ * integer result; no hardware or SDK state is touched here.
  */
 s32 ActorCollection_NotifyPairActive(PairCallbackCollection *self, PairCallbackActor *actor,
                   PairCallbackActor *other, s32 priorActive)
@@ -47,14 +48,15 @@ s32 ActorCollection_NotifyPairActive(PairCallbackCollection *self, PairCallbackA
     (void)self;
     if ((actor->flags_10 & 0x01000000) &&
         (actor->type_4d == 2 || actor->type_4d == 7 || actor->type_4d == 1))
-        return func_0203b9dc(actor, other, priorActive);
+        return ActorDerivedRuntime_HandlePairActive(actor, other, priorActive);
     return actor->vtable_00->active_28(actor, other, priorActive);
 }
 
 /*
  * Deliver a pair-ended notification from actor to other. With actor flag
- * 0x01000000 set, types one and two use func_0203baa0; other cases call vtable
- * offset 0x2c. Returns no value; the selected handler owns state changes.
+ * 0x01000000 set, types one and two use
+ * ActorDerivedRuntime_HandlePairEnded; other cases call vtable offset 0x2c.
+ * Returns no value; the selected handler owns state changes.
  */
 void ActorCollection_NotifyPairEnded(PairCallbackCollection *self, PairCallbackActor *actor,
                    PairCallbackActor *other)
@@ -62,7 +64,7 @@ void ActorCollection_NotifyPairEnded(PairCallbackCollection *self, PairCallbackA
     (void)self;
     if ((actor->flags_10 & 0x01000000) &&
         (actor->type_4d == 2 || actor->type_4d == 1))
-        func_0203baa0(actor, other);
+        ActorDerivedRuntime_HandlePairEnded(actor, other);
     else
         actor->vtable_00->ended_2c(actor, other);
 }

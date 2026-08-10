@@ -10,7 +10,7 @@
 .extern data_ov081_02215330
 .extern data_ov081_02215338
 .extern func_0200b04c
-.extern func_0203b9dc
+.extern ActorDerivedRuntime_HandlePairActive
 .extern func_0204cfa4
 .extern func_020593dc
 .extern func_020adc90
@@ -185,7 +185,7 @@ func_ov081_022145c8:
     mov r0, r6
     mov r1, r5
     mov r2, r4
-    bl func_0203b9dc
+    bl ActorDerivedRuntime_HandlePairActive
     add sp, sp, #0x8
     ldmia sp!, {r3, r4, r5, r6, r7, r8, r9, pc}
 .L_0221484c: .word data_02105310

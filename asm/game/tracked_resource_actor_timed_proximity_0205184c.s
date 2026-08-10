@@ -3,7 +3,7 @@
 .extern func_02005058
 .extern func_02005070
 .extern func_020066a4
-.extern func_0203392c
+.extern Actor_SetInteractionFlag2000
 .extern ActorDerivedType1_TrySetStateVector
 .extern func_020adae4
 .text
@@ -74,7 +74,7 @@ func_0205184c:
 .L_02051944:
     mov r0, r5
     mov r1, r4
-    bl func_0203392c
+    bl Actor_SetInteractionFlag2000
     mov r4, r0
     add r0, sp, #0x0
     bl func_02005058

@@ -24,7 +24,7 @@ extern s32 Actor_TryDispatchActivationMode2(void *actor);
  * point to actor through func_02031cac. Returns no value; both helpers can
  * mutate source/actor interaction state.
  */
-void func_0203b998(void *source, void *actor)
+void ActorDerivedRuntime_ForwardTouchPoint(void *source, void *actor)
 {
     u8 *input = (u8 *)source;
     TouchPoint point;
@@ -44,7 +44,7 @@ void func_0203b998(void *source, void *actor)
  * Return one. Base contact, vector, track, virtual, and follow-up helpers have
  * observable actor state effects.
  */
-s32 func_0203b9dc(void *self, void *other, s32 mode)
+s32 ActorDerivedRuntime_HandlePairActive(void *self, void *other, s32 mode)
 {
     u8 *actor = (u8 *)self;
     u8 *target = (u8 *)other;

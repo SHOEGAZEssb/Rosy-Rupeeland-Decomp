@@ -14,7 +14,7 @@ extern void *SceneManager_GetCurrent(void *manager);
 extern s32 ActorSelection_Contains(void *primary, void *actor);
 extern void ActorDerivedType1_TrySetStateVector(void *primary, const void *position, s32 value, s32 extra);
 extern void func_02048378(void *secondary, void *actor);
-extern s32 func_0203392c(void *actor, s32 context);
+extern s32 Actor_SetInteractionFlag2000(void *actor, s32 context);
 #ifdef __cplusplus
 }
 #endif
@@ -25,7 +25,7 @@ extern s32 func_0203392c(void *actor, s32 context);
  * actor virtual +0xa8 reports inactive, the secondary actor exists and has
  * +0x268 bit 0x10, and ActorSelection_Contains(primary,actor) accepts. Then send actor
  * transform +0x18 with value 20 and extra zero through ActorDerivedType1_TrySetStateVector and notify
- * the secondary through func_02048378. Always finish with func_0203392c(actor,
+ * the secondary through func_02048378. Always finish with Actor_SetInteractionFlag2000(actor,
  * context) and return its result. Scene, global actor, and base-update state may
  * change; no direct hardware access occurs.
  */
@@ -45,5 +45,5 @@ s32 ActorExtendedType2_UpdateSceneInteraction(void *self, s32 context)
             }
         }
     }
-    return func_0203392c(actor, context);
+    return Actor_SetInteractionFlag2000(actor, context);
 }

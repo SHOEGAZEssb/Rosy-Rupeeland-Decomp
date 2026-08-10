@@ -9,9 +9,9 @@
 .extern func_02032a94
 .extern Actor_TryDispatchActivationMode2
 .extern gSceneTouchInitialData
-    .global func_0203b998
-    .type func_0203b998, @function
-func_0203b998: ; 0x0203b998
+    .global ActorDerivedRuntime_ForwardTouchPoint
+    .type ActorDerivedRuntime_ForwardTouchPoint, @function
+ActorDerivedRuntime_ForwardTouchPoint: ; 0x0203b998
     stmdb sp!, {r4, r5, lr}
     sub sp, sp, #0xc
     mov r5, r0
@@ -29,11 +29,11 @@ func_0203b998: ; 0x0203b998
     add sp, sp, #0xc
     ldmia sp!, {r4, r5, pc}
 .L_0203b9d8: .word gSceneTouchInitialData
-    .size func_0203b998, . - func_0203b998
+    .size ActorDerivedRuntime_ForwardTouchPoint, . - ActorDerivedRuntime_ForwardTouchPoint
 
-    .global func_0203b9dc
-    .type func_0203b9dc, @function
-func_0203b9dc: ; 0x0203b9dc
+    .global ActorDerivedRuntime_HandlePairActive
+    .type ActorDerivedRuntime_HandlePairActive, @function
+ActorDerivedRuntime_HandlePairActive: ; 0x0203b9dc
     stmdb sp!, {r4, r5, r6, lr}
     sub sp, sp, #0x10
     mov r4, r2
@@ -86,5 +86,5 @@ func_0203b9dc: ; 0x0203b9dc
     add sp, sp, #0x10
     ldmia sp!, {r4, r5, r6, pc}
 
-    .size func_0203b9dc, . - func_0203b9dc
+    .size ActorDerivedRuntime_HandlePairActive, . - ActorDerivedRuntime_HandlePairActive
 

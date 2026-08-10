@@ -5,42 +5,54 @@
 extern "C" {
 #endif
 extern void func_02032abc(void *actor);
-extern s32 func_0203392c(void *actor);
-extern s32 func_02033940(void *actor);
-extern s32 func_02034148(void *actor);
-extern u32 func_02033954(void *actor, const void *query);
+extern s32 Actor_SetInteractionFlag2000(void *actor);
+extern s32 Actor_ClearInteractionFlag2000(void *actor);
+extern s32 Actor_PollInteractionResource(void *actor);
+extern u32 Actor_TestQueryPointAndClearFlag2000(void *actor, const void *query);
 #ifdef __cplusplus
 }
 #endif
 
-/* Forward actor to func_02032abc, ignoring the pair-callback second input; return no value. */
-void func_0203baa0(void *actor, void *other)
+/*
+ * Forward actor to func_02032abc when a tracked pair ends, ignoring the other
+ * actor. Returns no value; the base helper owns all observable state changes.
+ */
+void ActorDerivedRuntime_HandlePairEnded(void *actor, void *other)
 {
     (void)other;
     func_02032abc(actor);
 }
 
-/* Accept recovered virtual inputs, change no known state, and return no value. */
-void func_0203baac(void)
+/* Accept recovered virtual inputs, change no state, and return no value. */
+void ActorDerivedRuntime_NoOp(void)
 {
 }
 
-/* Invoke func_0203392c(actor), discard its result, and return one. */
-s32 func_0203bab0(void *actor)
+/*
+ * Set actor interaction flag 0x2000, discard the helper's result, and return
+ * one to accept the query. No query coordinates are inspected here.
+ */
+s32 ActorDerivedRuntime_AcceptInteractionQuery(void *actor)
 {
-    (void)func_0203392c(actor);
+    (void)Actor_SetInteractionFlag2000(actor);
     return 1;
 }
 
-/* Invoke func_02033940 followed by func_02034148 on actor and return the latter result. */
-s32 func_0203bac0(void *actor)
+/*
+ * Clear actor interaction flag 0x2000, poll the optional interaction resource,
+ * and return the poll wrapper's confirmed zero result.
+ */
+s32 ActorDerivedRuntime_ClearInteractionQueryState(void *actor)
 {
-    (void)func_02033940(actor);
-    return func_02034148(actor);
+    (void)Actor_ClearInteractionFlag2000(actor);
+    return Actor_PollInteractionResource(actor);
 }
 
-/* Forward actor and query to func_02033954 and return its result unchanged. */
-u32 func_0203bad8(void *actor, const void *query)
+/*
+ * Test the query against actor geometry, clearing flag 0x2000 on a miss, and
+ * return the base helper's result unchanged.
+ */
+u32 ActorDerivedRuntime_TestInteractionQuery(void *actor, const void *query)
 {
-    return func_02033954(actor, query);
+    return Actor_TestQueryPointAndClearFlag2000(actor, query);
 }

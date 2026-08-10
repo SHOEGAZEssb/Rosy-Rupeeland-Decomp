@@ -9,7 +9,7 @@ extern const char data_020df9d8[];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern s32 func_0203392c(void *actor);
+extern s32 Actor_SetInteractionFlag2000(void *actor);
 extern void func_020349b8(void *actor, u32 sound, s32 extra);
 extern void ActorDerivedType1_StartRecord(void *actor, s32 value);
 extern void Actor_SetDirectionFromVector(void *actor, s32 x, s32 y);
@@ -21,7 +21,7 @@ void func_0203d48c(void *self, u16 limit);
 
 /*
  * When signed actor state +0xd6 is at most one, store actor in the first null
- * slot of data_02105718's four entries. Invoke func_0203392c regardless of
+ * slot of data_02105718's four entries. Invoke Actor_SetInteractionFlag2000 regardless of
  * registration, discard its result, and return one. Registry and base helper
  * calls have observable global/actor effects.
  */
@@ -37,7 +37,7 @@ s32 func_0203d3b4(void *self)
             }
         }
     }
-    (void)func_0203392c(actor);
+    (void)Actor_SetInteractionFlag2000(actor);
     return 1;
 }
 

@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/actor_collection_pair_callbacks.c.
 .text
-.extern func_0203baa0
+.extern ActorDerivedRuntime_HandlePairEnded
 
     .global ActorCollection_NotifyPairEnded
     .type ActorCollection_NotifyPairEnded, @function
@@ -15,7 +15,7 @@ ActorCollection_NotifyPairEnded: ; 0x0202ec74
     mov r0, r1
     bne .L_0202eca4
     mov r1, r2
-    bl func_0203baa0
+    bl ActorDerivedRuntime_HandlePairEnded
     ldmia sp!, {r3, pc}
 .L_0202eca4:
     ldr r3, [r0, #0x0]

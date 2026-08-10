@@ -2,7 +2,7 @@
 .extern data_021052fc
 .extern func_02009d78
 .extern func_02032a94
-.extern func_0203392c
+.extern Actor_SetInteractionFlag2000
 .extern func_02034a60
 .extern ActorDerivedType1_ScanActiveRecordCollisions
 .text
@@ -48,7 +48,7 @@ func_0204ff40: ; 0x0204ff40
 .L_0204ff84:
     mov r0, r5
     mov r1, r4
-    bl func_0203392c
+    bl Actor_SetInteractionFlag2000
     ldmia sp!, {r3, r4, r5, pc}
 .L_0204ff94: .word data_021052fc
 .size func_0204ff40, . - func_0204ff40

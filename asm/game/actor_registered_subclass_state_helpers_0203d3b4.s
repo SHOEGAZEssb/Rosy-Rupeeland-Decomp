@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/actor_registered_subclass_state_helpers.c.
 .text
 .extern data_02105718
-.extern func_0203392c
+.extern Actor_SetInteractionFlag2000
     .global func_0203d3b4
     .type func_0203d3b4, @function
 func_0203d3b4: ; 0x0203d3b4
@@ -22,7 +22,7 @@ func_0203d3b4: ; 0x0203d3b4
     cmp ip, #0x4
     blt .L_0203d3d0
 .L_0203d3ec:
-    bl func_0203392c
+    bl Actor_SetInteractionFlag2000
     mov r0, #0x1
     ldmia sp!, {r3, pc}
 .L_0203d3f8: .word data_02105718

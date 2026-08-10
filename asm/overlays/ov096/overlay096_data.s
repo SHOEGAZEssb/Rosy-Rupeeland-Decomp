@@ -13,7 +13,7 @@
 .extern ActorExtendedType2_ClearTransientInteractionState
 .extern func_02031564
 .extern ActorExtendedType2_ApplyContactResponse
-.extern func_0203baa0
+.extern ActorDerivedRuntime_HandlePairEnded
 .extern func_02031f44
 .extern func_0203213c
 .extern func_02032144
@@ -21,8 +21,8 @@
 .extern func_02032208
 .extern func_ov096_022181b0
 .extern ActorExtendedType2_UpdateSceneInteraction
-.extern func_0203bac0
-.extern func_0203bad8
+.extern ActorDerivedRuntime_ClearInteractionQueryState
+.extern ActorDerivedRuntime_TestInteractionQuery
 .extern Actor_RequestAttachmentActivation
 .extern ActorExtendedType2_RunRenderCallback
 .extern func_ov096_02217eb0
@@ -50,7 +50,7 @@
 .extern func_ov096_02218180
 .extern ActorExtendedType2_ApplyMotionImpulseIfEnabled
 .extern func_02031464
-.extern func_0203baac
+.extern ActorDerivedRuntime_NoOp
 .extern ActorExtendedType2_ResetRuntimeState
 .extern func_ov096_02217ec8
 .extern ActorExtendedType2_RestoreRandomizedPosition
@@ -204,7 +204,7 @@ data_ov096_02218b98:
     .word ActorExtendedType2_ClearTransientInteractionState
     .word func_02031564
     .word ActorExtendedType2_ApplyContactResponse
-    .word func_0203baa0
+    .word ActorDerivedRuntime_HandlePairEnded
     .word func_02031f44
     .word func_0203213c
     .word func_02032144
@@ -212,8 +212,8 @@ data_ov096_02218b98:
     .word func_02032208
     .word func_ov096_022181b0
     .word ActorExtendedType2_UpdateSceneInteraction
-    .word func_0203bac0
-    .word func_0203bad8
+    .word ActorDerivedRuntime_ClearInteractionQueryState
+    .word ActorDerivedRuntime_TestInteractionQuery
     .word Actor_RequestAttachmentActivation
     .word ActorExtendedType2_RunRenderCallback
     .word func_ov096_02217eb0
@@ -241,7 +241,7 @@ data_ov096_02218b98:
     .word func_ov096_02218180
     .word ActorExtendedType2_ApplyMotionImpulseIfEnabled
     .word func_02031464
-    .word func_0203baac
+    .word ActorDerivedRuntime_NoOp
     .word ActorExtendedType2_ResetRuntimeState
     .word func_ov096_02217ec8
     .word ActorExtendedType2_RestoreRandomizedPosition
@@ -351,7 +351,7 @@ data_ov096_02218de8:
     .word ActorExtendedType2_ClearTransientInteractionState
     .word func_02031564
     .word ActorExtendedType2_ApplyContactResponse
-    .word func_0203baa0
+    .word ActorDerivedRuntime_HandlePairEnded
     .word func_02031f44
     .word func_0203213c
     .word func_02032144
@@ -359,8 +359,8 @@ data_ov096_02218de8:
     .word func_02032208
     .word func_ov096_022181b0
     .word ActorExtendedType2_UpdateSceneInteraction
-    .word func_0203bac0
-    .word func_0203bad8
+    .word ActorDerivedRuntime_ClearInteractionQueryState
+    .word ActorDerivedRuntime_TestInteractionQuery
     .word Actor_RequestAttachmentActivation
     .word ActorExtendedType2_RunRenderCallback
     .word func_ov096_0221838c
@@ -388,7 +388,7 @@ data_ov096_02218de8:
     .word func_ov096_02218180
     .word ActorExtendedTransform_ResetMotionImpulseState
     .word func_02031464
-    .word func_0203baac
+    .word ActorDerivedRuntime_NoOp
     .word ActorExtendedType2_ResetRuntimeState
     .word ActorExtendedType2_CopyAdjustedDescriptor
     .word ActorExtendedType2_RestoreRandomizedPosition

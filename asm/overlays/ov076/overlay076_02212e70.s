@@ -1,7 +1,7 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov076/overlay076_recovery.c.
 .extern data_021052fc
-.extern func_0203392c
+.extern Actor_SetInteractionFlag2000
 .extern ActorDerivedType1_TrySetStateVector
 .extern func_02048378
 
@@ -33,7 +33,7 @@ func_ov076_02212e70:
 .L_02212ecc:
     mov r0, r5
     mov r1, r4
-    bl func_0203392c
+    bl Actor_SetInteractionFlag2000
     ldmia sp!, {r3, r4, r5, pc}
 .L_02212edc: .word data_021052fc
 .size func_ov076_02212e70, . - func_ov076_02212e70

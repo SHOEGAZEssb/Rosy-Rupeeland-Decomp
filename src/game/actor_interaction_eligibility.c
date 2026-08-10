@@ -67,7 +67,7 @@ s32 Actor_IsInteractionEligible(void *self)
  * result. Return zero unconditionally. The retained call may have observable
  * resource/SDK effects despite the confirmed constant return.
  */
-s32 func_02034148(void *self)
+s32 Actor_PollInteractionResource(void *self)
 {
     void *resource = *(void **)((u8 *)self + 0x1e0);
 

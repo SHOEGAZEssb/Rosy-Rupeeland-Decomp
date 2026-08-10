@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/actor_collection_pair_callbacks.c.
 .text
-.extern func_0203b9dc
+.extern ActorDerivedRuntime_HandlePairActive
 
     .global ActorCollection_NotifyPairActive
     .type ActorCollection_NotifyPairActive, @function
@@ -17,7 +17,7 @@ ActorCollection_NotifyPairActive: ; 0x0202ec08
     bne .L_0202ec40
     mov r1, r2
     mov r2, r3
-    bl func_0203b9dc
+    bl ActorDerivedRuntime_HandlePairActive
     ldmia sp!, {r3, pc}
 .L_0202ec40:
     ldr ip, [r0, #0x0]

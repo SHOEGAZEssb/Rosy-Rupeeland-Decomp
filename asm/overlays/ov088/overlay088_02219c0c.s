@@ -4,7 +4,7 @@
 .extern data_021052fc
 .extern func_02005058
 .extern func_02005070
-.extern func_0203392c
+.extern Actor_SetInteractionFlag2000
 .extern Actor_GetCachedTerrainHeight
 .extern ActorDerivedType1_IsIdleEligible
 .extern func_ov088_02219d64
@@ -97,7 +97,7 @@ func_ov088_02219c0c:
 .L_02219d48:
     mov r0, r5
     mov r1, r4
-    bl func_0203392c
+    bl Actor_SetInteractionFlag2000
     add sp, sp, #0x20
     ldmia sp!, {r3, r4, r5, r6, r7, pc}
 .L_02219d5c: .word gSceneManager

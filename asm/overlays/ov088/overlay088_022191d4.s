@@ -10,7 +10,7 @@
 .extern func_02005058
 .extern func_02005a00
 .extern func_02005b50
-.extern func_0203b998
+.extern ActorDerivedRuntime_ForwardTouchPoint
 .extern func_02072b68
 .extern func_020adae4
 .extern gSceneManager
@@ -21,7 +21,7 @@ func_ov088_022191d4:
     sub sp, sp, #0x20
     mov r10, r1
     str r2, [sp, #0xc]
-    bl func_0203b998
+    bl ActorDerivedRuntime_ForwardTouchPoint
     add r0, sp, #0x10
     add r1, r10, #0x18
     bl func_02005030

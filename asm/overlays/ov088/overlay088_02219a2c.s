@@ -5,7 +5,7 @@
 .extern func_02005058
 .extern func_0200b04c
 .extern func_02032a94
-.extern func_0203b9dc
+.extern ActorDerivedRuntime_HandlePairActive
 .extern func_0204cfa4
 .extern func_020593ac
 .extern func_020adc90
@@ -29,7 +29,7 @@ func_ov088_02219a2c:
     mov r0, r6
     mov r1, r5
     mov r2, r4
-    bl func_0203b9dc
+    bl ActorDerivedRuntime_HandlePairActive
     b .L_02219bf0
 .L_02219a70:
     add r0, r6, #0x200

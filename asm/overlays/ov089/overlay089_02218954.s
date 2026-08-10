@@ -1,7 +1,7 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov089/overlay089_recovery.c.
 .extern func_02032a94
-.extern func_0203b9dc
+.extern ActorDerivedRuntime_HandlePairActive
 .extern func_020adc40
 .extern func_020adc90
 
@@ -14,7 +14,7 @@ func_ov089_02218954:
     mov r6, r2
     tst r3, #0x1000000
     beq .L_02218978
-    bl func_0203b9dc
+    bl ActorDerivedRuntime_HandlePairActive
     ldmia sp!, {r3, r4, r5, r6, r7, r8, r9, pc}
 .L_02218978:
     ldrb r0, [r7, #0x4d]

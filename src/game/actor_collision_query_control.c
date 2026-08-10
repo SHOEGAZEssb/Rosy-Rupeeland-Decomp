@@ -42,26 +42,33 @@ void func_02033928(void *self)
     (void)self;
 }
 
-/* Set actor flag 0x2000 at +0x10 and return zero. */
-s32 func_0203392c(void *self)
+/*
+ * Mark the actor's interaction-query flag 0x2000 at +0x10 and return zero.
+ * The flag's broader gameplay meaning is not yet confirmed.
+ */
+s32 Actor_SetInteractionFlag2000(void *self)
 {
     *(u32 *)((u8 *)self + 0x10) |= 0x2000;
     return 0;
 }
 
-/* Clear actor flag 0x2000 at +0x10 and return zero. */
-s32 func_02033940(void *self)
+/*
+ * Clear the actor's interaction-query flag 0x2000 at +0x10 and return zero.
+ * No callbacks or hardware operations occur.
+ */
+s32 Actor_ClearInteractionFlag2000(void *self)
 {
     *(u32 *)((u8 *)self + 0x10) &= ~0x2000;
     return 0;
 }
 
 /*
- * Run Actor_TestQueryPoint with the supplied query. If it returns zero, clear actor
- * flag 0x2000 and return the resulting entire flags word; otherwise return the
- * nonzero query result unchanged. This unusual zero-path return is confirmed.
+ * Run Actor_TestQueryPoint with the supplied query. If it returns zero, clear
+ * actor flag 0x2000 and return the resulting entire flags word; otherwise
+ * return the nonzero query result unchanged. This unusual zero-path return is
+ * confirmed.
  */
-u32 func_02033954(void *self, const void *query)
+u32 Actor_TestQueryPointAndClearFlag2000(void *self, const void *query)
 {
     u8 *actor = (u8 *)self;
     u32 result = Actor_TestQueryPoint(actor, query);

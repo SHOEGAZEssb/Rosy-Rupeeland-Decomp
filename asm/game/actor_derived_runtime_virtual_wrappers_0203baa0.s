@@ -1,50 +1,50 @@
 ; Matching retail form; see src/game/actor_derived_runtime_virtual_wrappers.c.
 .text
 .extern func_02032abc
-.extern func_0203392c
-.extern func_02033940
-.extern func_02033954
-.extern func_02034148
-    .global func_0203baa0
-    .type func_0203baa0, @function
-func_0203baa0: ; 0x0203baa0
+.extern Actor_SetInteractionFlag2000
+.extern Actor_ClearInteractionFlag2000
+.extern Actor_TestQueryPointAndClearFlag2000
+.extern Actor_PollInteractionResource
+    .global ActorDerivedRuntime_HandlePairEnded
+    .type ActorDerivedRuntime_HandlePairEnded, @function
+ActorDerivedRuntime_HandlePairEnded: ; 0x0203baa0
     ldr ip, .L_0203baa8
     bx ip
 .L_0203baa8: .word func_02032abc
-    .size func_0203baa0, . - func_0203baa0
+    .size ActorDerivedRuntime_HandlePairEnded, . - ActorDerivedRuntime_HandlePairEnded
 
-    .global func_0203baac
-    .type func_0203baac, @function
-func_0203baac: ; 0x0203baac
+    .global ActorDerivedRuntime_NoOp
+    .type ActorDerivedRuntime_NoOp, @function
+ActorDerivedRuntime_NoOp: ; 0x0203baac
     bx lr
-    .size func_0203baac, . - func_0203baac
+    .size ActorDerivedRuntime_NoOp, . - ActorDerivedRuntime_NoOp
 
-    .global func_0203bab0
-    .type func_0203bab0, @function
-func_0203bab0: ; 0x0203bab0
+    .global ActorDerivedRuntime_AcceptInteractionQuery
+    .type ActorDerivedRuntime_AcceptInteractionQuery, @function
+ActorDerivedRuntime_AcceptInteractionQuery: ; 0x0203bab0
     stmdb sp!, {r3, lr}
-    bl func_0203392c
+    bl Actor_SetInteractionFlag2000
     mov r0, #0x1
     ldmia sp!, {r3, pc}
-    .size func_0203bab0, . - func_0203bab0
+    .size ActorDerivedRuntime_AcceptInteractionQuery, . - ActorDerivedRuntime_AcceptInteractionQuery
 
-    .global func_0203bac0
-    .type func_0203bac0, @function
-func_0203bac0: ; 0x0203bac0
+    .global ActorDerivedRuntime_ClearInteractionQueryState
+    .type ActorDerivedRuntime_ClearInteractionQueryState, @function
+ActorDerivedRuntime_ClearInteractionQueryState: ; 0x0203bac0
     stmdb sp!, {r4, lr}
     mov r4, r0
-    bl func_02033940
+    bl Actor_ClearInteractionFlag2000
     mov r0, r4
-    bl func_02034148
+    bl Actor_PollInteractionResource
     ldmia sp!, {r4, pc}
-    .size func_0203bac0, . - func_0203bac0
+    .size ActorDerivedRuntime_ClearInteractionQueryState, . - ActorDerivedRuntime_ClearInteractionQueryState
 
-    .global func_0203bad8
-    .type func_0203bad8, @function
-func_0203bad8: ; 0x0203bad8
+    .global ActorDerivedRuntime_TestInteractionQuery
+    .type ActorDerivedRuntime_TestInteractionQuery, @function
+ActorDerivedRuntime_TestInteractionQuery: ; 0x0203bad8
     ldr ip, .L_0203bae0
     bx ip
-.L_0203bae0: .word func_02033954
-    .size func_0203bad8, . - func_0203bad8
+.L_0203bae0: .word Actor_TestQueryPointAndClearFlag2000
+    .size ActorDerivedRuntime_TestInteractionQuery, . - ActorDerivedRuntime_TestInteractionQuery
 
 

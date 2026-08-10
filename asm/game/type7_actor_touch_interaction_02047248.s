@@ -10,10 +10,10 @@
 .extern func_02005030
 .extern func_02005058
 .extern func_020050a4
-.extern func_0203392c
+.extern Actor_SetInteractionFlag2000
 .extern Actor_TestQueryPoint
 .extern ActorDerivedType1_TrySetStateVector
-.extern func_0203bab0
+.extern ActorDerivedRuntime_AcceptInteractionQuery
 .extern func_02046d8c
 .extern func_020481dc
 .extern func_020486a8
@@ -31,7 +31,7 @@ func_02047248: ; 0x02047248
     mov r4, r1
     tst r2, #0x1000000
     beq .L_02047270
-    bl func_0203bab0
+    bl ActorDerivedRuntime_AcceptInteractionQuery
     mov r0, #0x1
     b .L_0204765c
 .L_02047270:
@@ -40,7 +40,7 @@ func_02047248: ; 0x02047248
     cmp r2, #0x0
     movne r0, #0x1
     bne .L_0204765c
-    bl func_0203392c
+    bl Actor_SetInteractionFlag2000
     bl func_0204c74c
     cmp r0, #0x0
     moveq r0, #0x1

@@ -6,9 +6,9 @@
 .extern data_020e1910
 .extern func_02005030
 .extern func_02005058
-.extern func_02033954
+.extern Actor_TestQueryPointAndClearFlag2000
 .extern ActorDerivedType1_TrySetStateVector
-.extern func_0203bad8
+.extern ActorDerivedRuntime_TestInteractionQuery
 .extern func_02046d8c
 .extern func_020478b0
 .extern func_0204c74c
@@ -22,7 +22,7 @@ func_0204767c: ; 0x0204767c
     mov r4, r1
     tst r2, #0x1000000
     beq .L_020476a0
-    bl func_0203bad8
+    bl ActorDerivedRuntime_TestInteractionQuery
     b .L_0204789c
 .L_020476a0:
     bl func_0204c74c
@@ -34,7 +34,7 @@ func_0204767c: ; 0x0204767c
     bne .L_0204789c
     mov r0, r5
     mov r1, r4
-    bl func_02033954
+    bl Actor_TestQueryPointAndClearFlag2000
     ldr r0, [r5, #0x29c]
     ldrh r0, [r0, #0x38]
     mov r0, r0, lsl #0x1e

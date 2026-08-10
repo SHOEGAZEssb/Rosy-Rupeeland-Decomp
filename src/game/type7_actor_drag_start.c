@@ -11,9 +11,9 @@ extern u8 data_020e17c8[];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_0203bad8(void *actor, const void *input);
+extern void ActorDerivedRuntime_TestInteractionQuery(void *actor, const void *input);
 extern s32 func_0204c74c(void *actor, const void *input);
-extern void func_02033954(void *actor, const void *input);
+extern void Actor_TestQueryPointAndClearFlag2000(void *actor, const void *input);
 extern s32 func_02046d8c(const void *actor);
 extern void TouchPoint_Init(void *point, s32 x, s32 y);
 extern void func_02005030(void *destination, const void *source);
@@ -35,8 +35,9 @@ static s32 callback_pair_matches(const u8 *actor, void *first, void *second)
 
 /*
  * Inputs are a type-seven actor and an input record with coordinates in words
- * +4/+8. A +0x01000000 actor is delegated to func_0203bad8. Otherwise run the
- * recovered input hooks and require: clear +0x2a6, record +0x38 bit one, actor
+ * +4/+8. A +0x01000000 actor is delegated to
+ * ActorDerivedRuntime_TestInteractionQuery. Otherwise run the recovered input
+ * hooks and require: clear +0x2a6, record +0x38 bit one, actor
  * flag 0x8000, no +0x234 resource, a non-null +0x280 target, actor flag four,
  * nonnegative timer +0x250, clear flags 0x40 and eight, and a callback form not
  * recognized by func_02046d8c. The data_020e16b0+0x260/data_020e1910 pair is
@@ -64,12 +65,12 @@ void func_0204767c(void *self, const void *inputRecord)
     u32 flags;
 
     if ((*(u32 *)(actor + 0x10) & 0x01000000) != 0) {
-        func_0203bad8(actor, input);
+        ActorDerivedRuntime_TestInteractionQuery(actor, input);
         return;
     }
     if (func_0204c74c(actor, input) == 0 || *(u16 *)(actor + 0x2a6) != 0)
         return;
-    func_02033954(actor, input);
+    Actor_TestQueryPointAndClearFlag2000(actor, input);
     record = *(u8 **)(actor + 0x29c);
     if ((*(u16 *)(record + 0x38) & 2) == 0)
         return;

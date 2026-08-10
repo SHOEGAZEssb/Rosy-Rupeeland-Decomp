@@ -15,8 +15,8 @@ extern u32 data_020e18f8[];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_0203bab0(void *actor, const void *input);
-extern void func_0203392c(void *actor, const void *input);
+extern void ActorDerivedRuntime_AcceptInteractionQuery(void *actor, const void *input);
+extern void Actor_SetInteractionFlag2000(void *actor, const void *input);
 extern s32 func_0204c74c(void *actor, const void *input);
 extern s32 func_02046d8c(const void *actor);
 extern void func_0204b7bc(void *actor, s32 mode);
@@ -57,7 +57,8 @@ static void initialize_relative_touch(u32 point[3], const u8 *actor,
 /*
  * Inputs are a type-seven actor and a touch/input record whose words +4/+8
  * supply coordinates. Return one on every path, matching the dispatcher
- * contract. A +0x01000000 actor is delegated immediately to func_0203bab0.
+ * contract. A +0x01000000 actor is delegated immediately to
+ * ActorDerivedRuntime_AcceptInteractionQuery.
  * Otherwise require the recovered readiness bits, timers, target pointer, and
  * func_0204c74c gate. Set actor flag 0x100 once those preliminary gates pass.
  * Three callback-pair representations are exclusion states; their symbol
@@ -89,12 +90,12 @@ s32 func_02047248(void *self, const void *inputRecord)
     u32 flags;
 
     if ((*(u32 *)(actor + 0x10) & 0x01000000) != 0) {
-        func_0203bab0(actor, input);
+        ActorDerivedRuntime_AcceptInteractionQuery(actor, input);
         return 1;
     }
     if (*(u16 *)(actor + 0x2a6) != 0)
         return 1;
-    func_0203392c(actor, input);
+    Actor_SetInteractionFlag2000(actor, input);
     if (func_0204c74c(actor, input) == 0)
         return 1;
 

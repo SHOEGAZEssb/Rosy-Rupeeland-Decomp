@@ -7,5 +7,5 @@ func_02033928: ; 0x02033928
     bx lr
     .size func_02033928, . - func_02033928
 
-    .global func_0203392c
+    .global Actor_SetInteractionFlag2000
 

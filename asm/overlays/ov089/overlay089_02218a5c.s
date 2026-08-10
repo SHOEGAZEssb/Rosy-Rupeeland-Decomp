@@ -7,7 +7,7 @@
 .extern data_ov089_02219b4c
 .extern func_02005030
 .extern func_02005058
-.extern func_0203b998
+.extern ActorDerivedRuntime_ForwardTouchPoint
 .extern func_02072d04
 .extern func_ov089_02217c14
 
@@ -16,7 +16,7 @@ func_ov089_02218a5c:
     stmdb sp!, {r3, r4, r5, lr}
     sub sp, sp, #0x20
     mov r5, r1
-    bl func_0203b998
+    bl ActorDerivedRuntime_ForwardTouchPoint
     add r0, r5, #0x200
     ldrh r1, [r0, #0x36]
     ldr r3, .L_02218c30

@@ -2,7 +2,7 @@
 .text
 .extern SceneManager_GetCurrent
 .extern data_021052fc
-.extern func_0203392c
+.extern Actor_SetInteractionFlag2000
 .extern ActorDerivedType1_TrySetStateVector
 .extern ActorSelection_Contains
 .extern func_02048378
@@ -67,7 +67,7 @@ ActorExtendedType2_UpdateSceneInteraction: ; 0x0204344c
 .L_0204351c:
     mov r0, r6
     mov r1, r5
-    bl func_0203392c
+    bl Actor_SetInteractionFlag2000
     ldmia sp!, {r4, r5, r6, pc}
 .L_0204352c: .word gSceneManager
 .L_02043530: .word data_021052fc

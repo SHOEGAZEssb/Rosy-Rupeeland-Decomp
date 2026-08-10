@@ -10,7 +10,7 @@
 .extern data_ov085_022143c0
 .extern data_ov085_022143c8
 .extern func_0200b04c
-.extern func_0203bab0
+.extern ActorDerivedRuntime_AcceptInteractionQuery
 .extern func_020593dc
 .extern func_ov085_02213bd0
 .extern gSoundContext
@@ -159,7 +159,7 @@ func_ov085_02213484:
 .L_0221368c:
     mov r0, r5
     mov r1, r4
-    bl func_0203bab0
+    bl ActorDerivedRuntime_AcceptInteractionQuery
     add sp, sp, #0x8
     ldmia sp!, {r3, r4, r5, pc}
 .L_022136a0: .word data_02105310
