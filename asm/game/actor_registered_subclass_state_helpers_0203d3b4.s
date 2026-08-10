@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/actor_registered_subclass_state_helpers.c.
 .text
-.extern data_02105718
+.extern gActorRegisteredSubclassRegistry
 .extern Actor_SetInteractionFlag2000
     .global ActorRegisteredSubclass_RegisterInteractionCandidate
     .type ActorRegisteredSubclass_RegisterInteractionCandidate, @function
@@ -25,6 +25,6 @@ ActorRegisteredSubclass_RegisterInteractionCandidate: ; 0x0203d3b4
     bl Actor_SetInteractionFlag2000
     mov r0, #0x1
     ldmia sp!, {r3, pc}
-.L_0203d3f8: .word data_02105718
+.L_0203d3f8: .word gActorRegisteredSubclassRegistry
     .size ActorRegisteredSubclass_RegisterInteractionCandidate, . - ActorRegisteredSubclass_RegisterInteractionCandidate
 

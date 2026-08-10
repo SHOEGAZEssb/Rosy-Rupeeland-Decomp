@@ -6,8 +6,8 @@
  * the cross-type pairing list maintained by ActorExtendedPairing_UpdateLinks.
  */
 extern u8 data_020e04d8[];
-extern s16 data_0210572a;
-extern void *data_0210572c[];
+extern s16 gActorExtendedLinkDestinationCount;
+extern void *gActorExtendedLinkDestinations[];
 
 #ifdef __cplusplus
 extern "C" {
@@ -22,7 +22,7 @@ extern s32 ActorExtendedType2_ApplyContactResponse(void *actor, void *other, s32
 
 /*
  * Initialize the base actor from configuration, install vtable data_020e04d8,
- * clear partner pointer +0x298, and append self to data_0210572c when its signed
+ * clear partner pointer +0x298, and append self to gActorExtendedLinkDestinations when its signed
  * count is below eight. Return self. Base state and the global pairing list may
  * change; no direct SDK or hardware access occurs.
  */
@@ -32,9 +32,9 @@ void *ActorExtendedLinked_Init(void *self, const void *configuration)
     ActorExtendedType2_Init(actor, configuration);
     *(void **)actor = data_020e04d8;
     *(void **)(actor + 0x298) = 0;
-    if (data_0210572a < 8) {
-        data_0210572c[data_0210572a] = actor;
-        ++data_0210572a;
+    if (gActorExtendedLinkDestinationCount < 8) {
+        gActorExtendedLinkDestinations[gActorExtendedLinkDestinationCount] = actor;
+        ++gActorExtendedLinkDestinationCount;
     }
     return actor;
 }

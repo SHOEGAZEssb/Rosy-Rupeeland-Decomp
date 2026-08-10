@@ -5,7 +5,7 @@
 .extern gInteractionWaypointCursorAllocationTag
 .extern data_020e00c0
 .extern data_020e83a0
-.extern data_02105778
+.extern gInteractionRecordAllocatorPool
 .extern VecFx32Object_Init
 .extern VecFx32Object_Assign
 .extern Actor_AdjustPositionForTerrainHeight
@@ -204,7 +204,7 @@ ActorExtendedType2_InitDuplicate: ; 0x0203df4c
     add sp, sp, #0x30
     ldmia sp!, {r3, r4, r5, pc}
 .L_0203e1fc: .word data_020dfee4
-.L_0203e200: .word data_02105778
+.L_0203e200: .word gInteractionRecordAllocatorPool
 .L_0203e204: .word gInteractionWaypointCursorAllocationTag
 .L_0203e208: .word gHeapContext
 .L_0203e20c: .word data_020e00c0

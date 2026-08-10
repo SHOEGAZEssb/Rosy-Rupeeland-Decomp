@@ -6,7 +6,7 @@
 .extern gActorFeedbackAnimationResourceAllocationTag
 .extern data_020e9fa0
 .extern data_021052fc
-.extern data_021056e4
+.extern gActorInteractionResourceState
 .extern AnimationResource_Init
 .extern func_02028388
 .extern gHeapContext
@@ -71,7 +71,7 @@ ActorFeedbackResources_Load: ; 0x02039f6c
     ldmia sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, pc}
 .L_0203a038: .word data_021052fc
 .L_0203a03c: .word data_020e9fa0
-.L_0203a040: .word data_021056e4
+.L_0203a040: .word gActorInteractionResourceState
 .L_0203a044: .word gActorFeedbackResourcePointerArrayAllocationTag
 .L_0203a048: .word gHeapContext
 .L_0203a04c: .word gActorFeedbackAnimationResourceAllocationTag
@@ -106,7 +106,7 @@ ActorFeedbackResources_Unload: ; 0x0203a050
     mov r1, #0x0
     str r1, [r0, #0x8]
     ldmia sp!, {r3, r4, r5, pc}
-.L_0203a0b0: .word data_021056e4
+.L_0203a0b0: .word gActorInteractionResourceState
     .size ActorFeedbackResources_Unload, . - ActorFeedbackResources_Unload
 
     .global ActorFeedbackResources_GetResource
@@ -119,7 +119,7 @@ ActorFeedbackResources_GetResource: ; 0x0203a0b4
     ldrne r0, [r1, r0, lsl #0x2]
     moveq r0, #0x0
     bx lr
-.L_0203a0d0: .word data_021056e4
+.L_0203a0d0: .word gActorInteractionResourceState
     .size ActorFeedbackResources_GetResource, . - ActorFeedbackResources_GetResource
 
     .global ActorFeedbackResources_GetPackedSound
@@ -131,5 +131,5 @@ ActorFeedbackResources_GetPackedSound: ; 0x0203a0d4
     add r0, r1, r0, lsl #0x3
     ldrh r0, [r0, #0x6]
     bx lr
-.L_0203a0ec: .word data_021056e4
+.L_0203a0ec: .word gActorInteractionResourceState
     .size ActorFeedbackResources_GetPackedSound, . - ActorFeedbackResources_GetPackedSound

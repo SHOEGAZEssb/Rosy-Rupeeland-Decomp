@@ -5,7 +5,7 @@
 .extern data_020c9670
 .extern data_020df4f0
 .extern data_021052fc
-.extern data_021056e4
+.extern gActorInteractionResourceState
 .extern gActorFeedbackPresentations
 .extern VecFx32Object_InitCopy
 .extern VecFx32Object_Destroy
@@ -409,7 +409,7 @@ ActorFeedback_DispatchEnvironment: ; 0x0203a314
 .L_0203a8a4: .word gHeapContext
 .L_0203a8a8: .word 0xfde8
 .L_0203a8ac: .word 0xfdec
-.L_0203a8b0: .word data_021056e4
+.L_0203a8b0: .word gActorInteractionResourceState
 .L_0203a8b4: .word gSoundContext
 
 

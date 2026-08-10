@@ -1,9 +1,9 @@
 ; Matching retail form; see src/game/actor_extended_pairing_update.c.
 .text
 
-.extern data_02105728
-.extern data_0210572c
-.extern data_0210574c
+.extern gActorExtendedLinkSourceCount
+.extern gActorExtendedLinkDestinations
+.extern gActorExtendedLinkSources
 .extern data_020e70c0
 
 .global ActorExtendedPairing_UpdateLinks
@@ -54,10 +54,10 @@ ActorExtendedPairing_UpdateLinks: ; 0x02043c24
     cmp r9, r0
     blt .L_02043c48
     ldmia sp!, {r4, r5, r6, r7, r8, r9, r10, pc}
-.L_02043cc0: .word data_02105728
-.L_02043cc4: .word data_0210574c
+.L_02043cc0: .word gActorExtendedLinkSourceCount
+.L_02043cc4: .word gActorExtendedLinkSources
 .L_02043cc8: .word data_020e70c0
-.L_02043ccc: .word data_0210572c
+.L_02043ccc: .word gActorExtendedLinkDestinations
 
     .global ActorExtendedLinked_Init
 .size ActorExtendedPairing_UpdateLinks, . - ActorExtendedPairing_UpdateLinks

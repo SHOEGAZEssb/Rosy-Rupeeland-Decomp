@@ -3,7 +3,7 @@
 
 /* Construct and configure the extended type-two actor object at size >=0x295. */
 extern const void *data_020dfee4;
-extern void *data_02105778;
+extern void *gInteractionRecordAllocatorPool;
 extern const char gInteractionWaypointCursorAllocationTag[];
 extern const char data_020e00c0[];
 extern s16 data_020e83a0[];
@@ -76,7 +76,7 @@ void *ActorExtendedType2_Init(void *self, const void *configuration)
     if (*(u32 *)(config + 0x34) != 0) {
         s16 *position;
         void *handle = InteractionRecordAllocatorPool_GetOrCreate(
-            data_02105778, *(u32 *)(config + 0x34));
+            gInteractionRecordAllocatorPool, *(u32 *)(config + 0x34));
         *(void **)(actor + 0x274) = handle;
         position = InteractionRecordAllocator_ReserveRandomRecord(handle, actor);
         *(s32 *)(actor + 0x1c) = *(s32 *)(actor + 0x230) =

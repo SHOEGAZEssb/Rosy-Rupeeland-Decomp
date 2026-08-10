@@ -5,7 +5,7 @@ extern u16 data_02105680;
 extern u16 data_02105682;
 extern s32 data_02105684[2];
 extern s16 data_020c9670[];
-extern u8 data_021056e4[];
+extern u8 gActorInteractionResourceState[];
 
 #ifdef __cplusplus
 extern "C" {
@@ -48,6 +48,6 @@ void ActorInteractionRuntime_Update(void)
     func_02034ecc();
     func_02053560();
     ActorRegisteredSubclass_ProcessRegistry();
-    *(u16 *)data_021056e4 = 0;
+    *(u16 *)gActorInteractionResourceState = 0;
     InteractionTimingState_Tick();
 }

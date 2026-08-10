@@ -3,7 +3,7 @@
 .extern Heap_Free
 .extern data_020df840
 .extern data_02105714
-.extern data_02105718
+.extern gActorRegisteredSubclassRegistry
 .extern ActorDerivedRuntime_DestroyAlternate
 .extern ActorTableRecord_Init
 .extern GraphicsSpriteState_SetAnimationIndex
@@ -86,7 +86,7 @@ ActorRegisteredSubclass_Destroy: ; 0x0203d314
     bl ActorDerivedRuntime_DestroyAlternate
     mov r0, r4
     ldmia sp!, {r4, pc}
-.L_0203d35c: .word data_02105718
+.L_0203d35c: .word gActorRegisteredSubclassRegistry
     .size ActorRegisteredSubclass_Destroy, . - ActorRegisteredSubclass_Destroy
 
     .global ActorRegisteredSubclass_DestroyAndFree
@@ -115,7 +115,7 @@ ActorRegisteredSubclass_DestroyAndFree: ; 0x0203d360
     bl Heap_Free
     mov r0, r4
     ldmia sp!, {r4, pc}
-.L_0203d3b0: .word data_02105718
+.L_0203d3b0: .word gActorRegisteredSubclassRegistry
     .size ActorRegisteredSubclass_DestroyAndFree, . - ActorRegisteredSubclass_DestroyAndFree
 
 

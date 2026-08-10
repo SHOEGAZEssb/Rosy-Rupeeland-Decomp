@@ -4,7 +4,7 @@
 /* Apply table-record presentation state and manage a registered derived subclass lifecycle. */
 extern void *data_020df840;
 extern u8 data_02105714[];
-extern void *data_02105718[4];
+extern void *gActorRegisteredSubclassRegistry[4];
 
 #ifdef __cplusplus
 extern "C" {
@@ -60,14 +60,14 @@ void *ActorRegisteredSubclass_Init(void *self, const void *descriptor)
 static void removeRegisteredActor(void *self)
 {
     s32 i;
-    for (i = 0; i < 4 && data_02105718[i] != 0; ++i) {
-        if (data_02105718[i] == self)
-            data_02105718[i] = 0;
+    for (i = 0; i < 4 && gActorRegisteredSubclassRegistry[i] != 0; ++i) {
+        if (gActorRegisteredSubclassRegistry[i] == self)
+            gActorRegisteredSubclassRegistry[i] = 0;
     }
 }
 
 /*
- * Remove self from matching entries before the first null in data_02105718,
+ * Remove self from matching entries before the first null in gActorRegisteredSubclassRegistry,
  * invoke ActorDerivedRuntime_DestroyAlternate, and return self without
  * freeing it.
  */

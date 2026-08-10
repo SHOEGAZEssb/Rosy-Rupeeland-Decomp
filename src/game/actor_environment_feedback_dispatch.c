@@ -5,7 +5,7 @@
 extern s16 data_020c9670[];
 extern const char data_020df4f0[];
 extern u8 *data_021052fc;
-extern u8 data_021056e4[];
+extern u8 gActorInteractionResourceState[];
 extern void *gActorFeedbackPresentations[6];
 extern void *gSoundContext;
 extern u8 gSceneTouchInitialData[];
@@ -176,7 +176,7 @@ scanComplete:
             if (resource != 0)
                 spawnOffsetFeedback(position, resource);
             result = 0;
-            sound = *(u16 *)(*(u8 **)(data_021056e4 + 4) + 0x0e);
+            sound = *(u16 *)(*(u8 **)(gActorInteractionResourceState + 4) + 0x0e);
         }
     } else if (foundSubtype5 || foundSubtype4) {
         u32 resourceIndex = foundSubtype5 ? 5 : 4;
@@ -184,14 +184,14 @@ scanComplete:
         if (resource != 0)
             spawnOffsetFeedback(position, resource);
         result = 1;
-        sound = *(u16 *)(*(u8 **)(data_021056e4 + 4) +
+        sound = *(u16 *)(*(u8 **)(gActorInteractionResourceState + 4) +
                          (resourceIndex - 1) * 8 + 6);
     } else if (foundAny) {
         u8 *resource = (u8 *)ActorFeedbackResources_GetResource(15);
         if (resource != 0)
             spawnOffsetFeedback(position, resource);
         result = 2;
-        sound = *(u16 *)(*(u8 **)(data_021056e4 + 4) + 0x76);
+        sound = *(u16 *)(*(u8 **)(gActorInteractionResourceState + 4) + 0x76);
     }
 
     playPackedSound(sound);

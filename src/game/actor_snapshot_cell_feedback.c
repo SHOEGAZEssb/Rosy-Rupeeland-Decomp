@@ -5,7 +5,7 @@
 /* Convert a saved cell snapshot into randomized visual and spatial-audio feedback. */
 extern const char data_020df4f0[];
 extern u8 *data_021052fc;
-extern u8 data_021056e4[];
+extern u8 gActorInteractionResourceState[];
 extern void *gSoundContext;
 extern TouchPanelManager *gTouchPanelManager;
 
@@ -66,7 +66,7 @@ s32 ActorFeedback_ProcessSnapshotCell(const void *snapshot)
     if ((random & 3) == 0)
         variant += 2;
 
-    records = *(u8 **)(data_021056e4 + 4);
+    records = *(u8 **)(gActorInteractionResourceState + 4);
     packed = *(u16 *)(records + 6);
     if (packed != 0) {
         TouchPoint point;

@@ -3,7 +3,7 @@
 .extern data_020c9670
 .extern data_020df9e8
 .extern data_021052fc
-.extern data_02105774
+.extern gActorExtendedType2ReentryAngleAccumulator
 .extern ActorMotionAreaFollower_GetPosition
 .extern ActorRuntimeTriple_Assign
 .extern Actor_SetPosition
@@ -158,7 +158,7 @@ ActorExtendedType2_InitializeReentryState: ; 0x020425d4
     ldmia sp!, {r3, r4, r5, r6, pc}
 .L_020427fc: .word data_020df9e8
 .L_02042800: .word 0xfff
-.L_02042804: .word data_02105774
+.L_02042804: .word gActorExtendedType2ReentryAngleAccumulator
 .L_02042808: .word data_020c9670
 .L_0204280c: .word data_021052fc
 .size ActorExtendedType2_InitializeReentryState, . - ActorExtendedType2_InitializeReentryState

@@ -5,7 +5,7 @@
  * used to select a nearby actor at the end of an update interval.
  */
 extern s16 data_02105714[2];
-extern void *data_02105718[4];
+extern void *gActorRegisteredSubclassRegistry[4];
 extern u8 *data_021052fc;
 
 #ifdef __cplusplus
@@ -52,7 +52,7 @@ void ActorRegisteredSubclass_ResetRegistry(void)
     s32 i;
 
     for (i = 0; i < 4; ++i)
-        data_02105718[i] = 0;
+        gActorRegisteredSubclassRegistry[i] = 0;
     data_02105714[1] = 0;
     data_02105714[0] = 0;
 }
@@ -79,14 +79,14 @@ void ActorRegisteredSubclass_ProcessRegistry(void)
     primary = *(u8 **)(data_021052fc + 0x2ea4);
     if (func_02007868(primary) != 0) {
         for (i = 0; i < 4; ++i) {
-            u8 *candidate = (u8 *)data_02105718[i];
+            u8 *candidate = (u8 *)gActorRegisteredSubclassRegistry[i];
             if (candidate != 0) {
                 s32 rank = *(u16 *)(*(u8 **)(candidate + 0x54) + 0x28);
                 if (rank < minimum) {
                     minimum = rank;
                     selected = candidate;
                 }
-                data_02105718[i] = 0;
+                gActorRegisteredSubclassRegistry[i] = 0;
             }
         }
         if (selected != 0) {

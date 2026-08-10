@@ -4,7 +4,7 @@
 /* Select, materialize, destroy, and query the recovered 15-entry actor resource table. */
 extern u8 *data_021052fc;
 extern u8 data_020e9fa0[];
-extern u8 data_021056e4[];
+extern u8 gActorInteractionResourceState[];
 extern const char gActorFeedbackResourcePointerArrayAllocationTag[];
 extern const char gActorFeedbackAnimationResourceAllocationTag[];
 
@@ -21,7 +21,7 @@ extern void *AnimationResource_Init(void *allocation, u16 first, u16 second, u16
  * Resolve the active table index from data_021052fc -> +0x24 -> +0x00 minus
  * one through func_02028388, sign-extend the low 12 bits of returned word
  * +0x40, and select its 0x78-byte record block in data_020e9fa0. Store that
- * block at singleton data_021056e4 +0x04 and allocate a 0x3c-byte array at
+ * block at singleton gActorInteractionResourceState +0x04 and allocate a 0x3c-byte array at
  * +0x08. For each of 15 eight-byte records, read signed halfwords +0/+2/+4;
  * a nonzero first value allocates and initializes a tagged 0x10-byte resource,
  * while zero stores null. Returns no value. The retail path assumes the array
@@ -38,9 +38,9 @@ void ActorFeedbackResources_Load(void)
     state = func_02028388(*(s32 *)state - 1);
     selector = (*(s32 *)((u8 *)state + 0x40) << 20) >> 20;
     records = data_020e9fa0 + selector * 0x78;
-    *(u8 **)(data_021056e4 + 4) = records;
+    *(u8 **)(gActorInteractionResourceState + 4) = records;
     resources = (void **)Heap_Alloc(0x3c, gActorFeedbackResourcePointerArrayAllocationTag, 4, &gHeapContext);
-    *(void ***)(data_021056e4 + 8) = resources;
+    *(void ***)(gActorInteractionResourceState + 8) = resources;
     for (i = 0; i < 15; ++i) {
         s16 first = *(s16 *)(records + i * 8);
         s16 second = *(s16 *)(records + i * 8 + 2);
@@ -67,8 +67,8 @@ void ActorFeedbackResources_Unload(void)
 {
     void **resources;
     s32 i;
-    *(void **)(data_021056e4 + 4) = 0;
-    resources = *(void ***)(data_021056e4 + 8);
+    *(void **)(gActorInteractionResourceState + 4) = 0;
+    resources = *(void ***)(gActorInteractionResourceState + 8);
     if (resources == 0)
         return;
     for (i = 0; i < 15; ++i) {
@@ -77,7 +77,7 @@ void ActorFeedbackResources_Unload(void)
             (*(void (**)(void *))(*(u8 **)resource + 4))(resource);
     }
     Heap_Free(resources);
-    *(void **)(data_021056e4 + 8) = 0;
+    *(void **)(gActorInteractionResourceState + 8) = 0;
 }
 
 /*
@@ -88,7 +88,7 @@ void *ActorFeedbackResources_GetResource(u32 index)
 {
     if (index == 0)
         return 0;
-    return (*(void ***)(data_021056e4 + 8))[index - 1];
+    return (*(void ***)(gActorInteractionResourceState + 8))[index - 1];
 }
 
 /*
@@ -97,6 +97,6 @@ void *ActorFeedbackResources_GetResource(u32 index)
  */
 u16 ActorFeedbackResources_GetPackedSound(u32 index)
 {
-    u8 *records = *(u8 **)(data_021056e4 + 4);
+    u8 *records = *(u8 **)(gActorInteractionResourceState + 4);
     return *(u16 *)(records + (index - 1) * 8 + 6);
 }

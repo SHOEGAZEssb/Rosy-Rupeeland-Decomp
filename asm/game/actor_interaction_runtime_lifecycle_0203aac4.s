@@ -3,12 +3,12 @@
 .extern Heap_Alloc
 .extern Heap_Free
 .extern gInteractionRecordAllocatorPoolAllocationTag
-.extern data_021056e4
+.extern gActorInteractionResourceState
 .extern gActorFeedbackPresentations
-.extern data_02105728
-.extern data_0210572a
-.extern data_02105774
-.extern data_02105778
+.extern gActorExtendedLinkSourceCount
+.extern gActorExtendedLinkDestinationCount
+.extern gActorExtendedType2ReentryAngleAccumulator
+.extern gInteractionRecordAllocatorPool
 .extern func_02034e58
 .extern func_02034ea8
 .extern ActorDerivedType1_SetSingletonFieldE4To20E
@@ -73,10 +73,10 @@ ActorInteractionRuntime_Init: ; 0x0203aac4
     ldmia sp!, {r3, pc}
 .L_0203ab50: .word gInteractionRecordAllocatorPoolAllocationTag
 .L_0203ab54: .word gHeapContext
-.L_0203ab58: .word data_02105778
+.L_0203ab58: .word gInteractionRecordAllocatorPool
 .L_0203ab5c: .word gGameWork
-.L_0203ab60: .word data_0210572a
-.L_0203ab64: .word data_02105728
+.L_0203ab60: .word gActorExtendedLinkDestinationCount
+.L_0203ab64: .word gActorExtendedLinkSourceCount
 .L_0203ab68: .word gActorFeedbackPresentations
     .size ActorInteractionRuntime_Init, . - ActorInteractionRuntime_Init
 
@@ -97,8 +97,8 @@ ActorInteractionRuntime_Start: ; 0x0203ab6c
     bl func_020534cc
     bl ActorDerivedType1_SetSingletonFieldE4To20E
     ldmia sp!, {r3, pc}
-.L_0203aba4: .word data_02105774
-.L_0203aba8: .word data_021056e4
+.L_0203aba4: .word gActorExtendedType2ReentryAngleAccumulator
+.L_0203aba8: .word gActorInteractionResourceState
     .size ActorInteractionRuntime_Start, . - ActorInteractionRuntime_Start
 
     .global ActorInteractionRuntime_NoOp
@@ -179,6 +179,6 @@ ActorInteractionRuntime_Shutdown: ; 0x0203abf4
     bl ActorFeedbackResources_Unload
     ldmia sp!, {r4, pc}
 .L_0203ac94: .word gSoundContext
-.L_0203ac98: .word data_02105778
+.L_0203ac98: .word gInteractionRecordAllocatorPool
     .size ActorInteractionRuntime_Shutdown, . - ActorInteractionRuntime_Shutdown
 

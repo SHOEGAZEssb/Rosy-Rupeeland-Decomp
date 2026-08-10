@@ -3,12 +3,12 @@
 
 /* Initialize, reset, and tear down the shared actor-interaction runtime and feedback slots. */
 extern const char gInteractionRecordAllocatorPoolAllocationTag[];
-extern void *data_02105778;
+extern void *gInteractionRecordAllocatorPool;
 extern void *gActorFeedbackPresentations[6];
-extern u16 data_0210572a;
-extern u16 data_02105728;
-extern u16 data_02105774;
-extern u8 data_021056e4[];
+extern u16 gActorExtendedLinkDestinationCount;
+extern u16 gActorExtendedLinkSourceCount;
+extern u16 gActorExtendedType2ReentryAngleAccumulator;
+extern u8 gActorInteractionResourceState[];
 extern void *gGameWork;
 extern void *gSoundContext;
 
@@ -51,12 +51,12 @@ void ActorInteractionRuntime_Init(void)
     s32 i;
     if (object != 0)
         object = InteractionRecordAllocatorPool_Init(object);
-    data_02105778 = object;
+    gInteractionRecordAllocatorPool = object;
     ActorFeedbackResources_Load();
     for (i = 0x90; i <= 0x9b; ++i)
         *(s16 *)((u8 *)gGameWork + i * 2 + 0x4c) = -1;
-    data_0210572a = 0;
-    data_02105728 = 0;
+    gActorExtendedLinkDestinationCount = 0;
+    gActorExtendedLinkSourceCount = 0;
     ActorRegisteredSubclass_ResetRegistry();
     for (i = 0; i < 6; ++i)
         gActorFeedbackPresentations[i] = 0;
@@ -64,15 +64,15 @@ void ActorInteractionRuntime_Init(void)
 
 /*
  * Start the recovered actor, scene, presentation, and related runtime helpers
- * in retail order, clearing data_02105774 and the leading resource-table
+ * in retail order, clearing gActorExtendedType2ReentryAngleAccumulator and the leading resource-table
  * halfword first. Returns no value; every called initializer changes global
  * subsystem state.
  */
 void ActorInteractionRuntime_Start(void)
 {
     func_02034e58();
-    data_02105774 = 0;
-    *(u16 *)data_021056e4 = 0;
+    gActorExtendedType2ReentryAngleAccumulator = 0;
+    *(u16 *)gActorInteractionResourceState = 0;
     ActorExtendedPairing_UpdateLinks();
     InteractionTimingState_Reset();
     Type7ActorRegistry_Populate();
@@ -119,11 +119,11 @@ void ActorInteractionRuntime_Shutdown(void)
     func_0205355c();
     GridEffectActorRegistry_UnloadSharedResource();
     Type7ActorRegistry_Clear();
-    if (data_02105778 != 0) {
-        InteractionRecordAllocatorPool_DestroyContents(data_02105778);
-        Heap_Free(data_02105778);
+    if (gInteractionRecordAllocatorPool != 0) {
+        InteractionRecordAllocatorPool_DestroyContents(gInteractionRecordAllocatorPool);
+        Heap_Free(gInteractionRecordAllocatorPool);
     }
-    data_02105778 = 0;
+    gInteractionRecordAllocatorPool = 0;
     func_02034ea8();
     ActorFeedbackResources_Unload();
 }

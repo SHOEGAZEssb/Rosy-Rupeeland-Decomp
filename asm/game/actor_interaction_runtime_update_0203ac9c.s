@@ -4,7 +4,7 @@
 .extern data_02105680
 .extern data_02105682
 .extern data_02105684
-.extern data_021056e4
+.extern gActorInteractionResourceState
 .extern func_02034ecc
 .extern ActorRegisteredSubclass_ProcessRegistry
 .extern InteractionTimingState_Tick
@@ -63,7 +63,7 @@ ActorInteractionRuntime_Update: ; 0x0203ac9c
 .L_0203ad54: .word data_02105682
 .L_0203ad58: .word data_02105684
 .L_0203ad5c: .word data_020c9670
-.L_0203ad60: .word data_021056e4
+.L_0203ad60: .word gActorInteractionResourceState
 
     .size ActorInteractionRuntime_Update, . - ActorInteractionRuntime_Update
 

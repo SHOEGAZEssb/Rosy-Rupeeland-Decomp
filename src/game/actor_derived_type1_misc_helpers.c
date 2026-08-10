@@ -1,7 +1,7 @@
 #include "tingle/types.h"
 
 /* Provide compact type-1 actor state predicates, visibility control, and singleton access. */
-extern u8 data_021056e4[];
+extern u8 gActorInteractionResourceState[];
 
 #ifdef __cplusplus
 extern "C" {
@@ -64,19 +64,19 @@ s32 ActorDerivedType1_GetConstant10000(void)
     return 0x10000;
 }
 
-/* Return the pointer stored at recovered singleton data_021056e4 +0x0c. */
+/* Return the pointer stored at recovered singleton gActorInteractionResourceState +0x0c. */
 void *ActorDerivedType1_GetSingletonObject(void)
 {
-    return *(void **)(data_021056e4 + 0x0c);
+    return *(void **)(gActorInteractionResourceState + 0x0c);
 }
 
 /*
- * If singleton pointer data_021056e4 +0x0c is nonnull, write halfword 0x20e
+ * If singleton pointer gActorInteractionResourceState +0x0c is nonnull, write halfword 0x20e
  * at its +0xe4 field. Returns no value and invokes no helpers.
  */
 void ActorDerivedType1_SetSingletonFieldE4To20E(void)
 {
-    u8 *object = *(u8 **)(data_021056e4 + 0x0c);
+    u8 *object = *(u8 **)(gActorInteractionResourceState + 0x0c);
     if (object != 0)
         *(u16 *)(object + 0xe4) = 0x20e;
 }

@@ -2,7 +2,7 @@
 #include "tingle/types.h"
 
 /* Register the derived actor, initiate its timed state, and notify the primary runtime actor. */
-extern void *data_02105718[4];
+extern void *gActorRegisteredSubclassRegistry[4];
 extern u8 *data_021052fc;
 extern const char gActorRegisteredSubclassPresentationAllocationTag[];
 
@@ -21,7 +21,7 @@ void ActorRegisteredSubclass_StartTimedState(void *self, u16 limit);
 
 /*
  * When signed actor state +0xd6 is at most one, store actor in the first null
- * slot of data_02105718's four entries. Invoke Actor_SetInteractionFlag2000
+ * slot of gActorRegisteredSubclassRegistry's four entries. Invoke Actor_SetInteractionFlag2000
  * regardless of registration, discard its result, and return one. Registry
  * and base helper calls have observable global/actor effects.
  */
@@ -31,8 +31,8 @@ s32 ActorRegisteredSubclass_RegisterInteractionCandidate(void *self)
     if (*(s16 *)(actor + 0xd6) <= 1) {
         s32 i;
         for (i = 0; i < 4; ++i) {
-            if (data_02105718[i] == 0) {
-                data_02105718[i] = actor;
+            if (gActorRegisteredSubclassRegistry[i] == 0) {
+                gActorRegisteredSubclassRegistry[i] = actor;
                 break;
             }
         }

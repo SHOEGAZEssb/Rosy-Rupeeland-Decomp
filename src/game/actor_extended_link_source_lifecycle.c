@@ -6,8 +6,8 @@
  * consumed by the cross-type pairing pass.
  */
 extern u8 data_020e06b4[];
-extern s16 data_02105728;
-extern void *data_0210574c[];
+extern s16 gActorExtendedLinkSourceCount;
+extern void *gActorExtendedLinkSources[];
 
 #ifdef __cplusplus
 extern "C" {
@@ -21,7 +21,7 @@ extern void ActorExtendedType2_UpdateFrame(void *actor);
 
 /*
  * Initialize the base actor, install vtable data_020e06b4, clear partner
- * +0x298, append self to data_0210574c when its signed count is below eight,
+ * +0x298, append self to gActorExtendedLinkSources when its signed count is below eight,
  * and clear flags +0x29c. Return self. Actor and global list state may change.
  */
 void *ActorExtendedLinkSource_Init(void *self, const void *configuration)
@@ -30,9 +30,9 @@ void *ActorExtendedLinkSource_Init(void *self, const void *configuration)
     ActorExtendedType2_Init(actor, configuration);
     *(void **)actor = data_020e06b4;
     *(void **)(actor + 0x298) = 0;
-    if (data_02105728 < 8) {
-        data_0210574c[data_02105728] = actor;
-        ++data_02105728;
+    if (gActorExtendedLinkSourceCount < 8) {
+        gActorExtendedLinkSources[gActorExtendedLinkSourceCount] = actor;
+        ++gActorExtendedLinkSourceCount;
     }
     *(u32 *)(actor + 0x29c) = 0;
     return actor;

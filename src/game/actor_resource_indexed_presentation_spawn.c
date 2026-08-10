@@ -3,7 +3,7 @@
 
 /* Spawn an actor presentation from a one-based entry in the recovered resource table. */
 extern const char data_020df4f0[];
-extern u8 data_021056e4[];
+extern u8 gActorInteractionResourceState[];
 extern void *gSoundContext;
 extern u8 *data_021052fc;
 
@@ -69,7 +69,7 @@ void ActorFeedback_SpawnIndexedPresentation(void *self, u32 index, u16 value)
 
     if (index == 1 ||
         ((index == 7 || index == 8) && actor[0x4d] == 1)) {
-        u8 *records = *(u8 **)(data_021056e4 + 4);
+        u8 *records = *(u8 **)(gActorInteractionResourceState + 4);
         sound = *(u16 *)(records + (index - 1) * 8 + 6);
         if (sound != 0)
             Sound_Play(gSoundContext, sound >> 7, sound & 0x7f);

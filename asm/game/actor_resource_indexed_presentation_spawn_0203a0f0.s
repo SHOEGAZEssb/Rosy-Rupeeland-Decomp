@@ -4,7 +4,7 @@
 .extern Sound_Play
 .extern data_020df4f0
 .extern data_021052fc
-.extern data_021056e4
+.extern gActorInteractionResourceState
 .extern func_0201ded4
 .extern func_0201f378
 .extern ActorFeedbackResources_GetResource
@@ -156,7 +156,7 @@ ActorFeedback_SpawnIndexedPresentation: ; 0x0203a0f0
     ldmia sp!, {r3, r4, r5, r6, r7, r8, pc}
 .L_0203a300: .word data_020df4f0
 .L_0203a304: .word gHeapContext
-.L_0203a308: .word data_021056e4
+.L_0203a308: .word gActorInteractionResourceState
 .L_0203a30c: .word gSoundContext
 .L_0203a310: .word data_021052fc
     .size ActorFeedback_SpawnIndexedPresentation, . - ActorFeedback_SpawnIndexedPresentation

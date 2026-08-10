@@ -2,7 +2,7 @@
 .text
 .extern data_021052fc
 .extern data_02105714
-.extern data_02105718
+.extern gActorRegisteredSubclassRegistry
 .extern func_02007868
 .extern ActorTableRecord_ApplyCollisionResponse
 .extern ActorRegisteredSubclass_TriggerPrimaryInteraction
@@ -48,7 +48,7 @@ ActorRegisteredSubclass_ResetRegistry: ; 0x0203d910
     strh r1, [r0, #0x2]
     strh r1, [r0, #0x0]
     bx lr
-.L_0203d93c: .word data_02105718
+.L_0203d93c: .word gActorRegisteredSubclassRegistry
 .L_0203d940: .word data_02105714
     .size ActorRegisteredSubclass_ResetRegistry, . - ActorRegisteredSubclass_ResetRegistry
 
@@ -113,7 +113,7 @@ ActorRegisteredSubclass_ProcessRegistry: ; 0x0203d944
     ldmia sp!, {r4, r5, r6, pc}
 .L_0203da14: .word data_02105714
 .L_0203da18: .word data_021052fc
-.L_0203da1c: .word data_02105718
+.L_0203da1c: .word gActorRegisteredSubclassRegistry
     .size ActorRegisteredSubclass_ProcessRegistry, . - ActorRegisteredSubclass_ProcessRegistry
 
     .global ActorRegisteredSubclass_AlwaysTrue

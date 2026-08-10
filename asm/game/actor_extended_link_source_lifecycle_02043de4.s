@@ -2,8 +2,8 @@
 .text
 .extern Heap_Free
 .extern data_020e06b4
-.extern data_02105728
-.extern data_0210574c
+.extern gActorExtendedLinkSourceCount
+.extern gActorExtendedLinkSources
 .extern ActorExtendedType2_Init
 .extern ActorExtendedType2_Destroy
 .extern ActorExtendedType2_UpdateFrame
@@ -37,8 +37,8 @@ ActorExtendedLinkSource_Init: ; 0x02043de4
     str r1, [r4, #0x29c]
     ldmia sp!, {r4, pc}
 .L_02043e2c: .word data_020e06b4
-.L_02043e30: .word data_02105728
-.L_02043e34: .word data_0210574c
+.L_02043e30: .word gActorExtendedLinkSourceCount
+.L_02043e34: .word gActorExtendedLinkSources
 
 .size ActorExtendedLinkSource_Init, . - ActorExtendedLinkSource_Init
 ActorExtendedLinkSource_DestroyComplete: ; 0x02043e38

@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/actor_derived_type1_misc_helpers.c.
 .text
-.extern data_021056e4
+.extern gActorInteractionResourceState
 .extern AttachmentController_SetEnabled
 
     .global ActorDerivedType1_IsInteractionActive
@@ -80,7 +80,7 @@ ActorDerivedType1_GetSingletonObject: ; 0x02039e70
     ldr r0, .L_02039e7c
     ldr r0, [r0, #0xc]
     bx lr
-.L_02039e7c: .word data_021056e4
+.L_02039e7c: .word gActorInteractionResourceState
     .size ActorDerivedType1_GetSingletonObject, . - ActorDerivedType1_GetSingletonObject
 
     .global ActorDerivedType1_SetSingletonFieldE4To20E
@@ -92,6 +92,6 @@ ActorDerivedType1_SetSingletonFieldE4To20E: ; 0x02039e80
     ldrne r0, .L_02039e9c
     strneh r0, [r1, #0xe4]
     bx lr
-.L_02039e98: .word data_021056e4
+.L_02039e98: .word gActorInteractionResourceState
 .L_02039e9c: .word 0x20e
     .size ActorDerivedType1_SetSingletonFieldE4To20E, . - ActorDerivedType1_SetSingletonFieldE4To20E
