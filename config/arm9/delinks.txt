@@ -4369,11 +4369,43 @@ src/graphics/graphics_bg_resource.c:
 
 src/graphics/graphics_resource_cache.c:
     categories: Game code
-    .text       start:0x02070244 end:0x020702f4
+    .text       start:0x02070244 end:0x020702b8
+
+asm/graphics/graphics_resource_cache_lookup.s:
+    categories: Game code
+    .text       start:0x020702b8 end:0x020702f4
+
+src/graphics/graphics_archive_character_resource.c:
+    categories: Game code
+    .text       start:0x020702f4 end:0x02070388
 
 src/graphics/graphics_bg_resource_data.c:
     categories: Game code
     .text       start:0x02070874 end:0x02070888
+
+src/graphics/graphics_archive_palette_resource.c:
+    categories: Game code
+    .text       start:0x02070750 end:0x020707a0
+
+src/graphics/graphics_archive_screen_resource.c:
+    categories: Game code
+    .text       start:0x02070d88 end:0x02070dd0
+
+src/graphics/graphics_archive_loader.c:
+    categories: Game code
+    .text       start:0x020713e4 end:0x0207142c
+
+asm/graphics/graphics_archive_loader_0207142c.s:
+    categories: Game code
+    .text       start:0x0207142c end:0x02071568
+
+src/graphics/graphics_archive_character_palette_release.c:
+    categories: Game code
+    .text       start:0x02071bdc end:0x02071c94
+
+src/graphics/graphics_archive_screen_release.c:
+    categories: Game code
+    .text       start:0x02071cf0 end:0x02071d4c
 
 src/graphics/graphics_bg_map_upload.c:
     categories: Game code

@@ -27,6 +27,10 @@ extern void Type7Actor_SpawnFromRecord(s32 field00, s32 phase, s32 x, s32 y, s32
 }
 #endif
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 /* Return category's runtime collection. */
 static u8 *actorCollection(s32 category)
 {
@@ -144,3 +148,7 @@ void ActorDescriptorBatch_RegisterAndSpawn(void *unused0, void *unused1,
         ++inputDescriptors;
     }
 }
+
+#ifdef __cplusplus
+}
+#endif

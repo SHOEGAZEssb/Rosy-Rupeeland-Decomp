@@ -23,6 +23,11 @@ extern void *gGameWork;
 extern void *gHeapContext;
 extern void *gSoundContext;
 
+typedef struct TransitionPair {
+    void *callback;
+    void *argument;
+} TransitionPair;
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -66,7 +71,7 @@ extern void *func_ov025_021fdecc(void *);
 extern void func_ov025_021fdec8(void *);
 extern void *func_ov025_021ff21c(void *, void *);
 extern void func_ov025_021ff23c(void *, s32, s32, s32, s32);
-extern void func_ov025_021ff254(void *, void *, void *);
+extern void func_ov025_021ff254(void *, TransitionPair);
 extern void func_ov025_021ff1c8(void *);
 extern void func_ov025_021ff1dc(void *);
 extern void func_ov025_021ffdfc(void *);
@@ -222,8 +227,8 @@ extern "C" void *func_ov025_021ff27c(void *scene)
     GameWork_ClearFlag(gGameWork, 0x3d6);
     func_0205974c(gSoundContext, 0x16f);
     FIELD(u32, scene, 0x20) |= 0x400;
-    func_ov025_021ff254(scene, (void *)data_ov025_02202ea8[0],
-                       (void *)data_ov025_02202ea8[1]);
+    func_ov025_021ff254(scene,
+        *(const TransitionPair *)data_ov025_02202ea8);
     return scene;
 }
 

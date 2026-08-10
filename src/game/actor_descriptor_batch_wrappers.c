@@ -12,6 +12,10 @@ extern void ActorDescriptorBatch_RegisterAndSpawn(void *first, void *second, voi
 }
 #endif
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 /*
  * Forward all three inputs to ActorDescriptorBatch_RegisterAndSpawn with actor
  * category one. Returns no value.
@@ -41,3 +45,7 @@ void ActorDescriptorBatch_SetCategory2Callback(void *callback)
 {
     data_020df500[1] = callback;
 }
+
+#ifdef __cplusplus
+}
+#endif

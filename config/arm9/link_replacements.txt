@@ -62,6 +62,15 @@ build/decomp/delinks/src/system/game_string.o = build/decomp/src/system/game_str
 build/decomp/delinks/src/system/game_file.o = build/decomp/src/system/game_file.o
 build/decomp/delinks/src/system/touch_region.o = build/decomp/src/system/touch_region.o
 build/decomp/delinks/src/graphics/graphics_bg_resource.o = build/decomp/src/graphics/graphics_bg_resource.o
+build/decomp/delinks/src/graphics/graphics_resource_cache.o = build/decomp/src/graphics/graphics_resource_cache.o
+build/decomp/delinks/asm/graphics/graphics_resource_cache_lookup.o = build/decomp/asm/graphics/graphics_resource_cache_lookup.o
+build/decomp/delinks/src/graphics/graphics_archive_character_resource.o = build/decomp/src/graphics/graphics_archive_character_resource.o
+build/decomp/delinks/src/graphics/graphics_archive_palette_resource.o = build/decomp/src/graphics/graphics_archive_palette_resource.o
+build/decomp/delinks/src/graphics/graphics_archive_screen_resource.o = build/decomp/src/graphics/graphics_archive_screen_resource.o
+build/decomp/delinks/src/graphics/graphics_archive_loader.o = build/decomp/src/graphics/graphics_archive_loader.o
+build/decomp/delinks/asm/graphics/graphics_archive_loader_0207142c.o = build/decomp/asm/graphics/graphics_archive_loader_0207142c.o
+build/decomp/delinks/src/graphics/graphics_archive_character_palette_release.o = build/decomp/src/graphics/graphics_archive_character_palette_release.o
+build/decomp/delinks/src/graphics/graphics_archive_screen_release.o = build/decomp/src/graphics/graphics_archive_screen_release.o
 build/decomp/delinks/src/graphics/graphics_bg_resource_data.o = build/decomp/src/graphics/graphics_bg_resource_data.o
 build/decomp/delinks/src/graphics/graphics_bg_map_upload.o = build/decomp/src/graphics/graphics_bg_map_upload.o
 build/decomp/delinks/src/graphics/graphics_bg_map_palette.o = build/decomp/asm/graphics/graphics_bg_map_palette.o
@@ -1616,7 +1625,7 @@ build/decomp/delinks/asm/game/actor_environment_feedback_dispatch_0203a314.o = b
 
 build/decomp/delinks/asm/game/actor_snapshot_cell_feedback_0203a8b8.o = build/decomp/asm/game/actor_snapshot_cell_feedback_0203a8b8.o
 
-build/decomp/delinks/asm/game/actor_interaction_runtime_lifecycle_0203aac4.o = build/decomp/asm/game/actor_interaction_runtime_lifecycle_0203aac4.o
+build/decomp/delinks/asm/game/actor_interaction_runtime_lifecycle_0203aac4.o = build/decomp/src/game/actor_interaction_runtime_lifecycle_0203aac4.o
 
 build/decomp/delinks/asm/game/actor_interaction_runtime_update_0203ac9c.o = build/decomp/asm/game/actor_interaction_runtime_update_0203ac9c.o
 
@@ -1626,7 +1635,7 @@ build/decomp/delinks/asm/game/actor_spawn_descriptor_init_0203ae14.o = build/dec
 
 build/decomp/delinks/asm/game/actor_descriptor_batch_spawn_0203af24.o = build/decomp/asm/game/actor_descriptor_batch_spawn_0203af24.o
 
-build/decomp/delinks/asm/game/actor_descriptor_batch_wrappers_0203b38c.o = build/decomp/asm/game/actor_descriptor_batch_wrappers_0203b38c.o
+build/decomp/delinks/asm/game/actor_descriptor_batch_wrappers_0203b38c.o = build/decomp/src/game/actor_descriptor_batch_wrappers_0203b38c.o
 
 build/decomp/delinks/asm/game/actor_collection_callback_apply_0203b3cc.o = build/decomp/asm/game/actor_collection_callback_apply_0203b3cc.o
 
@@ -3527,28 +3536,19 @@ build/decomp/delinks/asm/overlays/ov025/overlay025_effect_runtime_021feb08.o = b
 build/decomp/delinks/asm/overlays/ov025/overlay025_effect_runtime_021feb4c.o = build/decomp/asm/overlays/ov025/overlay025_effect_runtime_021feb4c.o
 build/decomp/delinks/asm/overlays/ov025/overlay025_effect_runtime_021ff0b0.o = build/decomp/asm/overlays/ov025/overlay025_effect_runtime_021ff0b0.o
 build/decomp/delinks/asm/overlays/ov025/overlay025_callback_helpers_021ff0c8.o = build/decomp/asm/overlays/ov025/overlay025_callback_helpers_021ff0c8.o
-build/decomp/delinks/asm/overlays/ov025/overlay025_callback_helpers_021ff140.o = build/decomp/asm/overlays/ov025/overlay025_callback_helpers_021ff140.o
+build/decomp/delinks/src/overlays/ov025/overlay025_sprite_owner_ready.o = build/decomp/src/overlays/ov025/overlay025_sprite_owner_ready.o
 build/decomp/delinks/asm/overlays/ov025/overlay025_callback_helpers_021ff158.o = build/decomp/asm/overlays/ov025/overlay025_callback_helpers_021ff158.o
-build/decomp/delinks/asm/overlays/ov025/overlay025_callback_helpers_021ff1c8.o = build/decomp/asm/overlays/ov025/overlay025_callback_helpers_021ff1c8.o
-build/decomp/delinks/asm/overlays/ov025/overlay025_callback_helpers_021ff1dc.o = build/decomp/asm/overlays/ov025/overlay025_callback_helpers_021ff1dc.o
-build/decomp/delinks/asm/overlays/ov025/overlay025_callback_helpers_021ff1fc.o = build/decomp/asm/overlays/ov025/overlay025_callback_helpers_021ff1fc.o
-build/decomp/delinks/asm/overlays/ov025/overlay025_callback_helpers_021ff21c.o = build/decomp/asm/overlays/ov025/overlay025_callback_helpers_021ff21c.o
-build/decomp/delinks/asm/overlays/ov025/overlay025_callback_helpers_021ff23c.o = build/decomp/asm/overlays/ov025/overlay025_callback_helpers_021ff23c.o
-build/decomp/delinks/asm/overlays/ov025/overlay025_callback_helpers_021ff254.o = build/decomp/asm/overlays/ov025/overlay025_callback_helpers_021ff254.o
+build/decomp/delinks/src/overlays/ov025/overlay025_callback_lifecycle_transition.o = build/decomp/src/overlays/ov025/overlay025_callback_lifecycle_transition.o
 build/decomp/delinks/asm/overlays/ov025/overlay025_scene_lifecycle_021ff27c.o = build/decomp/asm/overlays/ov025/overlay025_scene_lifecycle_021ff27c.o
 build/decomp/delinks/asm/overlays/ov025/overlay025_scene_lifecycle_021ffa6c.o = build/decomp/asm/overlays/ov025/overlay025_scene_lifecycle_021ffa6c.o
 build/decomp/delinks/asm/overlays/ov025/overlay025_scene_lifecycle_021ffc30.o = build/decomp/asm/overlays/ov025/overlay025_scene_lifecycle_021ffc30.o
 build/decomp/delinks/asm/overlays/ov025/overlay025_graphics_setup_021ffdfc.o = build/decomp/asm/overlays/ov025/overlay025_graphics_setup_021ffdfc.o
 build/decomp/delinks/src/overlays/ov025/overlay025_title_graphics_setup.o = build/decomp/src/overlays/ov025/overlay025_title_graphics_setup.o
-build/decomp/delinks/asm/overlays/ov025/overlay025_scene_runtime_02200178.o = build/decomp/asm/overlays/ov025/overlay025_scene_runtime_02200178.o
-build/decomp/delinks/asm/overlays/ov025/overlay025_scene_runtime_022001f4.o = build/decomp/asm/overlays/ov025/overlay025_scene_runtime_022001f4.o
+build/decomp/delinks/src/overlays/ov025/overlay025_scene_maintenance.o = build/decomp/src/overlays/ov025/overlay025_scene_maintenance.o
 build/decomp/delinks/asm/overlays/ov025/overlay025_scene_runtime_02200224.o = build/decomp/asm/overlays/ov025/overlay025_scene_runtime_02200224.o
 build/decomp/delinks/asm/overlays/ov025/overlay025_scene_runtime_022002b0.o = build/decomp/asm/overlays/ov025/overlay025_scene_runtime_022002b0.o
-build/decomp/delinks/asm/overlays/ov025/overlay025_scene_runtime_022002f8.o = build/decomp/asm/overlays/ov025/overlay025_scene_runtime_022002f8.o
-build/decomp/delinks/asm/overlays/ov025/overlay025_scene_runtime_02200398.o = build/decomp/asm/overlays/ov025/overlay025_scene_runtime_02200398.o
-build/decomp/delinks/asm/overlays/ov025/overlay025_scene_runtime_02200438.o = build/decomp/asm/overlays/ov025/overlay025_scene_runtime_02200438.o
-build/decomp/delinks/asm/overlays/ov025/overlay025_scene_runtime_02200468.o = build/decomp/asm/overlays/ov025/overlay025_scene_runtime_02200468.o
-build/decomp/delinks/asm/overlays/ov025/overlay025_scene_runtime_02200480.o = build/decomp/asm/overlays/ov025/overlay025_scene_runtime_02200480.o
+build/decomp/delinks/src/overlays/ov025/overlay025_transient_sprite_setup.o = build/decomp/src/overlays/ov025/overlay025_transient_sprite_setup.o
+build/decomp/delinks/src/overlays/ov025/overlay025_transient_sprite_controls.o = build/decomp/src/overlays/ov025/overlay025_transient_sprite_controls.o
 build/decomp/delinks/asm/overlays/ov025/overlay025_scene_runtime_02200498.o = build/decomp/asm/overlays/ov025/overlay025_scene_runtime_02200498.o
 build/decomp/delinks/asm/overlays/ov025/overlay025_selection_helpers_02200534.o = build/decomp/asm/overlays/ov025/overlay025_selection_helpers_02200534.o
 build/decomp/delinks/asm/overlays/ov025/overlay025_selection_helpers_02200564.o = build/decomp/asm/overlays/ov025/overlay025_selection_helpers_02200564.o
@@ -3560,7 +3560,7 @@ build/decomp/delinks/asm/overlays/ov025/overlay025_selection_helpers_02200794.o 
 build/decomp/delinks/asm/overlays/ov025/overlay025_selection_helpers_02200824.o = build/decomp/asm/overlays/ov025/overlay025_selection_helpers_02200824.o
 build/decomp/delinks/asm/overlays/ov025/overlay025_selection_helpers_0220088c.o = build/decomp/asm/overlays/ov025/overlay025_selection_helpers_0220088c.o
 build/decomp/delinks/asm/overlays/ov025/overlay025_selection_helpers_02200940.o = build/decomp/asm/overlays/ov025/overlay025_selection_helpers_02200940.o
-build/decomp/delinks/asm/overlays/ov025/overlay025_intro_state_022009d8.o = build/decomp/asm/overlays/ov025/overlay025_intro_state_022009d8.o
+build/decomp/delinks/asm/overlays/ov025/overlay025_intro_state_022009d8.o = build/decomp/src/overlays/ov025/overlay025_intro_state_022009d8.o
 build/decomp/delinks/asm/overlays/ov025/overlay025_idle_state_02200e54.o = build/decomp/asm/overlays/ov025/overlay025_idle_state_02200e54.o
 build/decomp/delinks/asm/overlays/ov025/overlay025_record_select_state_02200fe4.o = build/decomp/asm/overlays/ov025/overlay025_record_select_state_02200fe4.o
 build/decomp/delinks/asm/overlays/ov025/overlay025_confirmation_state_02201348.o = build/decomp/asm/overlays/ov025/overlay025_confirmation_state_02201348.o

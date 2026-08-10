@@ -37,6 +37,10 @@ extern void func_0205929c(void *context, s32 channel, s32 value);
 }
 #endif
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 /*
  * Allocate and initialize the 0x40-byte shared object, materialize the actor
  * resource table, set GameWork halfwords selected by indices 0x90..0x9b at
@@ -97,7 +101,8 @@ void ActorFeedback_DestroyPresentations(void)
     for (i = 0; i < 6; ++i) {
         void *object = gActorFeedbackPresentations[i];
         if (object != 0) {
-            (*(void (**)(void *))(*(u8 **)object + 4))(object);
+            if (object != 0)
+                (*(void (**)(void *))(*(u8 **)object + 4))(object);
             gActorFeedbackPresentations[i] = 0;
         }
     }
@@ -112,6 +117,8 @@ void ActorFeedback_DestroyPresentations(void)
  */
 void ActorInteractionRuntime_Shutdown(void)
 {
+    void *object;
+
     if (func_02059344(gSoundContext, 0x1f) != 0)
         func_0205929c(gSoundContext, 0x1f, 0);
     if (func_02059344(gSoundContext, 0x20) != 0)
@@ -119,11 +126,16 @@ void ActorInteractionRuntime_Shutdown(void)
     func_0205355c();
     GridEffectActorRegistry_UnloadSharedResource();
     Type7ActorRegistry_Clear();
-    if (gInteractionRecordAllocatorPool != 0) {
-        InteractionRecordAllocatorPool_DestroyContents(gInteractionRecordAllocatorPool);
-        Heap_Free(gInteractionRecordAllocatorPool);
+    object = gInteractionRecordAllocatorPool;
+    if (object != 0) {
+        InteractionRecordAllocatorPool_DestroyContents(object);
+        Heap_Free(object);
     }
     gInteractionRecordAllocatorPool = 0;
     ActorTargetSelection_ClearCandidates();
     ActorFeedbackResources_Unload();
 }
+
+#ifdef __cplusplus
+}
+#endif

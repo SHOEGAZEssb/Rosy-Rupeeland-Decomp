@@ -111,30 +111,15 @@ asm/overlays/ov025/overlay025_effect_runtime_021ff0b0.s:
 asm/overlays/ov025/overlay025_callback_helpers_021ff0c8.s:
     categories: Game code
     .text start:0x021ff0c8 end:0x021ff140
-asm/overlays/ov025/overlay025_callback_helpers_021ff140.s:
+src/overlays/ov025/overlay025_sprite_owner_ready.c:
     categories: Game code
     .text start:0x021ff140 end:0x021ff158
 asm/overlays/ov025/overlay025_callback_helpers_021ff158.s:
     categories: Game code
     .text start:0x021ff158 end:0x021ff1c8
-asm/overlays/ov025/overlay025_callback_helpers_021ff1c8.s:
+src/overlays/ov025/overlay025_callback_lifecycle_transition.c:
     categories: Game code
-    .text start:0x021ff1c8 end:0x021ff1dc
-asm/overlays/ov025/overlay025_callback_helpers_021ff1dc.s:
-    categories: Game code
-    .text start:0x021ff1dc end:0x021ff1fc
-asm/overlays/ov025/overlay025_callback_helpers_021ff1fc.s:
-    categories: Game code
-    .text start:0x021ff1fc end:0x021ff21c
-asm/overlays/ov025/overlay025_callback_helpers_021ff21c.s:
-    categories: Game code
-    .text start:0x021ff21c end:0x021ff23c
-asm/overlays/ov025/overlay025_callback_helpers_021ff23c.s:
-    categories: Game code
-    .text start:0x021ff23c end:0x021ff254
-asm/overlays/ov025/overlay025_callback_helpers_021ff254.s:
-    categories: Game code
-    .text start:0x021ff254 end:0x021ff27c
+    .text start:0x021ff1c8 end:0x021ff27c
 asm/overlays/ov025/overlay025_scene_lifecycle_021ff27c.s:
     categories: Game code
     .text start:0x021ff27c end:0x021ffa6c
@@ -150,33 +135,21 @@ asm/overlays/ov025/overlay025_graphics_setup_021ffdfc.s:
 src/overlays/ov025/overlay025_title_graphics_setup.c:
     categories: Graphics
     .text start:0x02200014 end:0x02200178
-asm/overlays/ov025/overlay025_scene_runtime_02200178.s:
+src/overlays/ov025/overlay025_scene_maintenance.c:
     categories: Game code
-    .text start:0x02200178 end:0x022001f4
-asm/overlays/ov025/overlay025_scene_runtime_022001f4.s:
-    categories: Game code
-    .text start:0x022001f4 end:0x02200224
+    .text start:0x02200178 end:0x02200224
 asm/overlays/ov025/overlay025_scene_runtime_02200224.s:
     categories: Game code
     .text start:0x02200224 end:0x022002b0
 asm/overlays/ov025/overlay025_scene_runtime_022002b0.s:
     categories: Game code
     .text start:0x022002b0 end:0x022002f8
-asm/overlays/ov025/overlay025_scene_runtime_022002f8.s:
+src/overlays/ov025/overlay025_transient_sprite_setup.c:
     categories: Game code
-    .text start:0x022002f8 end:0x02200398
-asm/overlays/ov025/overlay025_scene_runtime_02200398.s:
+    .text start:0x022002f8 end:0x02200438
+src/overlays/ov025/overlay025_transient_sprite_controls.c:
     categories: Game code
-    .text start:0x02200398 end:0x02200438
-asm/overlays/ov025/overlay025_scene_runtime_02200438.s:
-    categories: Game code
-    .text start:0x02200438 end:0x02200468
-asm/overlays/ov025/overlay025_scene_runtime_02200468.s:
-    categories: Game code
-    .text start:0x02200468 end:0x02200480
-asm/overlays/ov025/overlay025_scene_runtime_02200480.s:
-    categories: Game code
-    .text start:0x02200480 end:0x02200498
+    .text start:0x02200438 end:0x02200498
 asm/overlays/ov025/overlay025_scene_runtime_02200498.s:
     categories: Game code
     .text start:0x02200498 end:0x02200534
