@@ -1,10 +1,10 @@
 ; Matching retail form; see src/game/actor_collision_range_scan.c for
 ; the documented portable implementation and recovered behavior.
 .text
-.extern func_0200a63c
+.extern ActorCollision_TestPoint
 .extern func_0202baec
-.global func_0200a6ac
-func_0200a6ac: ; 0x0200a6ac
+.global ActorCollision_ScanDirectionalRange
+ActorCollision_ScanDirectionalRange: ; 0x0200a6ac
     stmdb sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, lr}
     sub sp, sp, #0x8
     ldr r6, [r2, #0x0]
@@ -45,7 +45,7 @@ L_0200a72c:
     mov r3, r11
     mov r1, r6, asr #0x4
     str r8, [sp, #0x0]
-    bl func_0200a63c
+    bl ActorCollision_TestPoint
     cmp r0, #0x0
     beq L_0200a774
     ldr r0, [r9, #0x0]
@@ -88,7 +88,7 @@ L_0200a7b0:
     mov r2, r7
     mov r3, r11
     str r8, [sp, #0x0]
-    bl func_0200a63c
+    bl ActorCollision_TestPoint
     cmp r0, #0x0
     beq L_0200a810
     ldr r0, [r9, #0x0]
@@ -125,7 +125,7 @@ L_0200a84c:
     mov r3, r11
     mov r2, r7, asr #0x4
     str r8, [sp, #0x0]
-    bl func_0200a63c
+    bl ActorCollision_TestPoint
     cmp r0, #0x0
     beq L_0200a890
     ldr r0, [r9, #0x4]
@@ -162,7 +162,7 @@ L_0200a8d0:
     mov r3, r11
     mov r2, r7, asr #0x4
     str r8, [sp, #0x0]
-    bl func_0200a63c
+    bl ActorCollision_TestPoint
     cmp r0, #0x0
     beq L_0200a918
     ldr r0, [r9, #0x4]
@@ -200,5 +200,5 @@ L_0200a938:
     str r0, [r9, #0xc]
     add sp, sp, #0x8
     ldmia sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, pc}
-    .size func_0200a6ac, .-func_0200a6ac
+    .size ActorCollision_ScanDirectionalRange, .-ActorCollision_ScanDirectionalRange
 

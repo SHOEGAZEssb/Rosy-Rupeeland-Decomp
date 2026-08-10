@@ -116,8 +116,8 @@ void ActorMotionAreaFollower_ClampToAreaBounds(ActorMotionAreaFollower *self, s3
 void S16Rectangle_Translate(s16 *rectangle, s32 x, s32 y);
 void ActorMotionAreaFollower_RefreshCurrentArea(ActorMotionAreaFollower *self);
 void ActorMotionAreaFollower_Reset(ActorMotionAreaFollower *self);
-void func_0200a3b8(void *actor, void *collisionContext);
-s32 func_0200a63c(void *collisionContext, s32 x, s32 y, s32 z,
+void ActorCollision_ResolveCornerContacts(void *actor, void *collisionContext);
+s32 ActorCollision_TestPoint(void *collisionContext, s32 x, s32 y, s32 z,
                   s32 actorHeight);
 
 typedef struct ActorCollisionRange {
@@ -127,16 +127,16 @@ typedef struct ActorCollisionRange {
     s32 maxY;
 } ActorCollisionRange;
 
-void func_0200a6ac(ActorCollisionRange *result, void *collisionContext,
+void ActorCollision_ScanDirectionalRange(ActorCollisionRange *result, void *collisionContext,
                    const ActorCollisionRange *input, s32 direction,
                    s32 z, s32 actorHeight);
-s32 func_0200a970(void *actor, s32 deltaX, s32 deltaY,
+s32 ActorCollision_ResolveRangeOverlap(void *actor, s32 deltaX, s32 deltaY,
                   const ActorCollisionRange *other);
 s32 ActorBounds_GetWidth(const s8 *bounds);
 s32 ActorBounds_GetHeight(const s8 *bounds);
-void func_0200ab48(void *actor, s32 deltaX, s32 deltaY, u8 edgeFlags,
+void ActorCollision_ApplyOverlapResponse(void *actor, s32 deltaX, s32 deltaY, u8 edgeFlags,
                    const ActorCollisionRange *intersection);
-void func_0200ac14(void *actor, void *collisionContext);
+void ActorCollision_ResolveSweptMovement(void *actor, void *collisionContext);
 
 #ifdef __cplusplus
 }

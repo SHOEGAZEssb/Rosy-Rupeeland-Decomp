@@ -10442,7 +10442,7 @@ build build/reports/actor_collision_corner_response.json: objdiff build/decomp/d
 
 build build/reports/actor_collision_corner_response.txt: match_report build/reports/actor_collision_corner_response.json | tools/report_objdiff.py
   report_json = build/reports/actor_collision_corner_response.json
-  report_args = --section .text --function func_0200a3b8 --require-exact
+  report_args = --section .text --function ActorCollision_ResolveCornerContacts --require-exact
 
 build build/reports/actor_collision_query.json: objdiff build/decomp/delinks/asm/game/actor_collision_query.o | build/decomp/asm/game/actor_collision_query.o
   target_object = build/decomp/delinks/asm/game/actor_collision_query.o
@@ -10450,7 +10450,7 @@ build build/reports/actor_collision_query.json: objdiff build/decomp/delinks/asm
 
 build build/reports/actor_collision_query.txt: match_report build/reports/actor_collision_query.json | tools/report_objdiff.py
   report_json = build/reports/actor_collision_query.json
-  report_args = --section .text --function func_0200a63c --require-exact
+  report_args = --section .text --function ActorCollision_TestPoint --require-exact
 
 build build/reports/actor_collision_range_scan.json: objdiff build/decomp/delinks/asm/game/actor_collision_range_scan.o | build/decomp/asm/game/actor_collision_range_scan.o
   target_object = build/decomp/delinks/asm/game/actor_collision_range_scan.o
@@ -10458,7 +10458,7 @@ build build/reports/actor_collision_range_scan.json: objdiff build/decomp/delink
 
 build build/reports/actor_collision_range_scan.txt: match_report build/reports/actor_collision_range_scan.json | tools/report_objdiff.py
   report_json = build/reports/actor_collision_range_scan.json
-  report_args = --section .text --function func_0200a6ac --require-exact
+  report_args = --section .text --function ActorCollision_ScanDirectionalRange --require-exact
 
 build build/reports/actor_collision_overlap.json: objdiff build/decomp/delinks/asm/game/actor_collision_overlap.o | build/decomp/asm/game/actor_collision_overlap.o
   target_object = build/decomp/delinks/asm/game/actor_collision_overlap.o
@@ -10466,7 +10466,7 @@ build build/reports/actor_collision_overlap.json: objdiff build/decomp/delinks/a
 
 build build/reports/actor_collision_overlap.txt: match_report build/reports/actor_collision_overlap.json | tools/report_objdiff.py
   report_json = build/reports/actor_collision_overlap.json
-  report_args = --section .text --function func_0200a970 --require-exact
+  report_args = --section .text --function ActorCollision_ResolveRangeOverlap --require-exact
 
 build build/reports/actor_collision_extent.json: objdiff build/decomp/delinks/src/game/actor_collision_extent.o | build/decomp/src/game/actor_collision_extent.o
   target_object = build/decomp/delinks/src/game/actor_collision_extent.o
@@ -10482,7 +10482,7 @@ build build/reports/actor_collision_overlap_response.json: objdiff build/decomp/
 
 build build/reports/actor_collision_overlap_response.txt: match_report build/reports/actor_collision_overlap_response.json | tools/report_objdiff.py
   report_json = build/reports/actor_collision_overlap_response.json
-  report_args = --section .text --function func_0200ab48 --require-exact
+  report_args = --section .text --function ActorCollision_ApplyOverlapResponse --require-exact
 
 build build/reports/actor_collision_swept_response.json: objdiff build/decomp/delinks/asm/game/actor_collision_swept_response.o | build/decomp/asm/game/actor_collision_swept_response.o
   target_object = build/decomp/delinks/asm/game/actor_collision_swept_response.o
@@ -10490,7 +10490,7 @@ build build/reports/actor_collision_swept_response.json: objdiff build/decomp/de
 
 build build/reports/actor_collision_swept_response.txt: match_report build/reports/actor_collision_swept_response.json | tools/report_objdiff.py
   report_json = build/reports/actor_collision_swept_response.json
-  report_args = --section .text --function func_0200ac14 --require-exact
+  report_args = --section .text --function ActorCollision_ResolveSweptMovement --require-exact
 
 build build/reports/actor_runtime_collection_ctor.json: objdiff build/decomp/delinks/asm/game/actor_runtime_collection_ctor.o | build/decomp/asm/game/actor_runtime_collection_ctor.o
   target_object = build/decomp/delinks/asm/game/actor_runtime_collection_ctor.o

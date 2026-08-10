@@ -5,8 +5,8 @@
 .extern data_021f5ebc
 .extern func_02005030
 .extern func_02005058
-.extern func_0200a3b8
-.extern func_0200ac14
+.extern ActorCollision_ResolveCornerContacts
+.extern ActorCollision_ResolveSweptMovement
 .extern func_0200b04c
 .extern ActorPairMatrix_Get
 .extern ActorPairMatrix_Clear
@@ -465,11 +465,11 @@ ActorCollection_ProcessCategory1And2Pairs: ; 0x0202e15c
     bne .L_0202e7dc
     ldr r1, [sp, #0x24]
     mov r0, r4
-    bl func_0200a3b8
+    bl ActorCollision_ResolveCornerContacts
 .L_0202e7dc:
     ldr r1, [sp, #0x24]
     mov r0, r4
-    bl func_0200ac14
+    bl ActorCollision_ResolveSweptMovement
     b .L_0202e814
 .L_0202e7ec:
     ldr r0, [r4, #0x14]
@@ -477,12 +477,12 @@ ActorCollection_ProcessCategory1And2Pairs: ; 0x0202e15c
     bne .L_0202e814
     ldr r1, [sp, #0x24]
     mov r0, r4
-    bl func_0200ac14
+    bl ActorCollision_ResolveSweptMovement
     b .L_0202e814
 .L_0202e808:
     ldr r1, [sp, #0x24]
     mov r0, r4
-    bl func_0200ac14
+    bl ActorCollision_ResolveSweptMovement
 .L_0202e814:
     ldr r0, [sp, #0x10]
     add r0, r0, #0x1

@@ -19,11 +19,11 @@ static s32 overlap_half_toward_zero(s32 value)
  * Build an actor-centered fixed-point rectangle from collision-box width and
  * height, actor center fields 0x2c/0x30, and supplied X/Y deltas. Intersect it
  * with `other`; when the intersection has positive width and height, encode
- * coincident actor edges as bits 1/2/4/8 and dispatch func_0200ab48. Return one
+ * coincident actor edges as bits 1/2/4/8 and dispatch ActorCollision_ApplyOverlapResponse. Return one
  * when dispatched, otherwise zero. Actor state changes only through that
  * response helper; collision-box lookup may have external effects.
  */
-s32 func_0200a970(void *actorPointer, s32 deltaX, s32 deltaY,
+s32 ActorCollision_ResolveRangeOverlap(void *actorPointer, s32 deltaX, s32 deltaY,
                   const ActorCollisionRange *other)
 {
     u8 *actor = (u8 *)actorPointer;
@@ -64,6 +64,6 @@ s32 func_0200a970(void *actorPointer, s32 deltaX, s32 deltaY,
         edges |= 4;
     if (actorRange.maxY == intersection.maxY)
         edges |= 8;
-    func_0200ab48(actorPointer, deltaX, deltaY, edges, &intersection);
+    ActorCollision_ApplyOverlapResponse(actorPointer, deltaX, deltaY, edges, &intersection);
     return 1;
 }

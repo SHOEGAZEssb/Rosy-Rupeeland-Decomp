@@ -3,10 +3,10 @@
 .text
 .extern ActorBounds_GetWidth
 .extern ActorBounds_GetHeight
-.extern func_0200ab48
+.extern ActorCollision_ApplyOverlapResponse
 .extern Actor_GetCollisionBounds
-.global func_0200a970
-func_0200a970: ; 0x0200a970
+.global ActorCollision_ResolveRangeOverlap
+ActorCollision_ResolveRangeOverlap: ; 0x0200a970
     stmdb sp!, {r3, r4, r5, r6, r7, r8, lr}
     sub sp, sp, #0x34
     mov r7, r0
@@ -110,7 +110,7 @@ L_0200aa94:
     andeq r3, r0, #0xff
     mov r0, r7
     mov r1, r6
-    bl func_0200ab48
+    bl ActorCollision_ApplyOverlapResponse
     mov r0, #0x1
     b L_0200ab10
 L_0200ab0c:
@@ -118,4 +118,4 @@ L_0200ab0c:
 L_0200ab10:
     add sp, sp, #0x34
     ldmia sp!, {r3, r4, r5, r6, r7, r8, pc}
-    .size func_0200a970, .-func_0200a970
+    .size ActorCollision_ResolveRangeOverlap, .-ActorCollision_ResolveRangeOverlap

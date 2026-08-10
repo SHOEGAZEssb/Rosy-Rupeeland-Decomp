@@ -2,8 +2,8 @@
 ; the documented portable implementation and recovered behavior.
 .text
 .extern func_0202baec
-.global func_0200a63c
-func_0200a63c: ; 0x0200a63c
+.global ActorCollision_TestPoint
+ActorCollision_TestPoint: ; 0x0200a63c
     stmdb sp!, {r4, r5, r6, r7, r8, lr}
     sub sp, sp, #0x8
     mov r8, r0
@@ -33,5 +33,5 @@ func_0200a63c: ; 0x0200a63c
 L_0200a6a4:
     add sp, sp, #0x8
     ldmia sp!, {r4, r5, r6, r7, r8, pc}
-    .size func_0200a63c, .-func_0200a63c
+    .size ActorCollision_TestPoint, .-ActorCollision_TestPoint
 

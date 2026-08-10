@@ -1,11 +1,11 @@
 ; Matching retail form; see src/game/actor_collision_corner_response.c for
 ; the documented portable implementation and recovered behavior.
 .text
-.extern func_0200a63c
+.extern ActorCollision_TestPoint
 .extern Actor_GetCollisionBounds
 .extern Actor_GetCachedTerrainHeight
-.global func_0200a3b8
-func_0200a3b8: ; 0x0200a3b8
+.global ActorCollision_ResolveCornerContacts
+ActorCollision_ResolveCornerContacts: ; 0x0200a3b8
     stmdb sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, lr}
     sub sp, sp, #0x20
     mov r10, r0
@@ -75,7 +75,7 @@ func_0200a3b8: ; 0x0200a3b8
     mov r2, r6
     mov r3, r5
     str r4, [sp, #0x0]
-    bl func_0200a63c
+    bl ActorCollision_TestPoint
     cmp r0, #0x0
     subeq r7, r7, #0x33
     subeq r8, r8, #0x33
@@ -86,7 +86,7 @@ func_0200a3b8: ; 0x0200a3b8
     mov r3, r5
     subeq r8, r8, #0x1300
     str r4, [sp, #0x0]
-    bl func_0200a63c
+    bl ActorCollision_TestPoint
     cmp r0, #0x0
     addeq r0, r7, #0x33
     subeq r8, r8, #0x33
@@ -97,7 +97,7 @@ func_0200a3b8: ; 0x0200a3b8
     mov r3, r5
     subeq r8, r8, #0x1300
     str r4, [sp, #0x0]
-    bl func_0200a63c
+    bl ActorCollision_TestPoint
     cmp r0, #0x0
     subeq r7, r7, #0x33
     addeq r0, r8, #0x33
@@ -108,7 +108,7 @@ func_0200a3b8: ; 0x0200a3b8
     mov r0, r9
     mov r3, r5
     str r4, [sp, #0x0]
-    bl func_0200a63c
+    bl ActorCollision_TestPoint
     cmp r0, #0x0
     addeq r0, r7, #0x33
     addeq r1, r8, #0x33
@@ -175,4 +175,4 @@ L_0200a62c:
     ldmia sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, pc}
 L_0200a634: .word 0xfffff001
 L_0200a638: .word 0xffffe001
-    .size func_0200a3b8, .-func_0200a3b8
+    .size ActorCollision_ResolveCornerContacts, .-ActorCollision_ResolveCornerContacts

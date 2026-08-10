@@ -17,7 +17,7 @@ extern s32 func_020be334(s32 value);
  * byte 0x4b, even when no positional correction was eligible. Returns no
  * value; func_020be334 supplies absolute value and no hardware is touched.
  */
-void func_0200ab48(void *actorPointer, s32 deltaX, s32 deltaY, u8 edgeFlags,
+void ActorCollision_ApplyOverlapResponse(void *actorPointer, s32 deltaX, s32 deltaY, u8 edgeFlags,
                    const ActorCollisionRange *intersection)
 {
     u8 *actor = (u8 *)actorPointer;

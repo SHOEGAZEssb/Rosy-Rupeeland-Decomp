@@ -1,14 +1,14 @@
 ; Matching retail form; see src/game/actor_collision_swept_response.c for
 ; the documented portable implementation and recovered behavior.
 .text
-.extern func_0200a6ac
-.extern func_0200a970
+.extern ActorCollision_ScanDirectionalRange
+.extern ActorCollision_ResolveRangeOverlap
 .extern ActorBounds_GetWidth
 .extern ActorBounds_GetHeight
 .extern Actor_GetCollisionBounds
 .extern Actor_GetCachedTerrainHeight
-.global func_0200ac14
-func_0200ac14:
+.global ActorCollision_ResolveSweptMovement
+ActorCollision_ResolveSweptMovement:
     stmdb sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, lr}
     sub sp, sp, #0x48
     mov r10, r0
@@ -53,7 +53,7 @@ func_0200ac14:
     mov r1, r11
     mov r3, #0x4
     stmia sp, {r4, r9}
-    bl func_0200a6ac
+    bl ActorCollision_ScanDirectionalRange
     b L_0200ace8
 L_0200accc:
     ble L_0200ace8
@@ -62,13 +62,13 @@ L_0200accc:
     mov r1, r11
     mov r3, #0x8
     stmia sp, {r4, r9}
-    bl func_0200a6ac
+    bl ActorCollision_ScanDirectionalRange
 L_0200ace8:
     add r3, sp, #0x38
     mov r0, r10
     mov r2, r6
     mov r1, #0x0
-    bl func_0200a970
+    bl ActorCollision_ResolveRangeOverlap
 L_0200acfc:
     cmp r5, #0x0
     beq L_0200ad88
@@ -91,7 +91,7 @@ L_0200acfc:
     mov r1, r11
     mov r3, #0x2
     stmia sp, {r4, r9}
-    bl func_0200a6ac
+    bl ActorCollision_ScanDirectionalRange
     b L_0200ad74
 L_0200ad58:
     bge L_0200ad74
@@ -100,14 +100,14 @@ L_0200ad58:
     mov r1, r11
     mov r3, #0x1
     stmia sp, {r4, r9}
-    bl func_0200a6ac
+    bl ActorCollision_ScanDirectionalRange
 L_0200ad74:
     add r3, sp, #0x18
     mov r0, r10
     mov r1, r5
     mov r2, #0x0
-    bl func_0200a970
+    bl ActorCollision_ResolveRangeOverlap
 L_0200ad88:
     add sp, sp, #0x48
     ldmia sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, pc}
-.size func_0200ac14, . - func_0200ac14
+.size ActorCollision_ResolveSweptMovement, . - ActorCollision_ResolveSweptMovement

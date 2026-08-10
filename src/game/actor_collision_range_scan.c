@@ -27,13 +27,13 @@ static s32 collision_align_up_8(s32 value)
  * Convert input fixed-point bounds to integer coordinates and scan according
  * to direction bit 1, 2, 4, or 8. Horizontal scans test every X at the lower
  * (4) or upper (8) Y edge; vertical scans test every Y at the lower (1) or
- * upper (2) X edge. Successful func_0200a63c queries expand the corresponding
+ * upper (2) X edge. Successful ActorCollision_TestPoint queries expand the corresponding
  * aligned span. Direction 8 also performs the observed, otherwise-unused
  * height query. All four result words are finally shifted to 20.12 format.
  * Other direction values only scale the caller's existing result words.
  * Collision queries may have context effects; no hardware is touched.
  */
-void func_0200a6ac(ActorCollisionRange *result, void *collisionContext,
+void ActorCollision_ScanDirectionalRange(ActorCollisionRange *result, void *collisionContext,
                    const ActorCollisionRange *input, s32 direction,
                    s32 z, s32 actorHeight)
 {
@@ -53,7 +53,7 @@ void func_0200a6ac(ActorCollisionRange *result, void *collisionContext,
             if (direction == 8)
                 (void)func_0202baec(collisionContext,
                                     coordinate >> 4, queryY, z);
-            if (func_0200a63c(collisionContext, coordinate >> 4, queryY,
+            if (ActorCollision_TestPoint(collisionContext, coordinate >> 4, queryY,
                               z, actorHeight)) {
                 if (coordinate < result->minX)
                     result->minX = collision_align_down_8(coordinate);
@@ -76,7 +76,7 @@ void func_0200a6ac(ActorCollisionRange *result, void *collisionContext,
         result->minY = 0x7fffffff;
         result->maxY = 0;
         for (coordinate = minY; coordinate <= maxY; ++coordinate) {
-            if (func_0200a63c(collisionContext, queryX, coordinate >> 4,
+            if (ActorCollision_TestPoint(collisionContext, queryX, coordinate >> 4,
                               z, actorHeight)) {
                 if (coordinate < result->minY)
                     result->minY = collision_align_down_8(coordinate);

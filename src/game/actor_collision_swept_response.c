@@ -16,13 +16,13 @@ extern s32 Actor_GetCachedTerrainHeight(void *actor);
  * its previous position at 0x2c/0x30. For each moved axis, construct the
  * actor-sized rectangle at that axis's destination, scan the collision context
  * in movement direction, and apply the returned overlap response. The actor's
- * position and contact state may change through func_0200a970; no value is
+ * position and contact state may change through ActorCollision_ResolveRangeOverlap; no value is
  * returned and no hardware is accessed directly. The bounds pointer returned
  * by Actor_GetCollisionBounds and the height from Actor_GetCachedTerrainHeight retain
  * address-derived
  * names because their wider actor contracts are not yet recovered.
  */
-void func_0200ac14(void *actorPointer, void *collisionContext)
+void ActorCollision_ResolveSweptMovement(void *actorPointer, void *collisionContext)
 {
     u8 *actor = (u8 *)actorPointer;
     s32 z = *(s32 *)(actor + 0x24) >> 16;
@@ -41,12 +41,12 @@ void func_0200ac14(void *actorPointer, void *collisionContext)
         sweep.maxY = sweep.minY + height;
 
         if (deltaY < 0)
-            func_0200a6ac(&collision, collisionContext, &sweep, 4, z,
+            ActorCollision_ScanDirectionalRange(&collision, collisionContext, &sweep, 4, z,
                           actorHeight);
         else
-            func_0200a6ac(&collision, collisionContext, &sweep, 8, z,
+            ActorCollision_ScanDirectionalRange(&collision, collisionContext, &sweep, 8, z,
                           actorHeight);
-        func_0200a970(actorPointer, 0, deltaY, &collision);
+        ActorCollision_ResolveRangeOverlap(actorPointer, 0, deltaY, &collision);
     }
 
     if (deltaX != 0) {
@@ -56,11 +56,11 @@ void func_0200ac14(void *actorPointer, void *collisionContext)
         sweep.maxY = sweep.minY + height;
 
         if (deltaX > 0)
-            func_0200a6ac(&collision, collisionContext, &sweep, 2, z,
+            ActorCollision_ScanDirectionalRange(&collision, collisionContext, &sweep, 2, z,
                           actorHeight);
         else
-            func_0200a6ac(&collision, collisionContext, &sweep, 1, z,
+            ActorCollision_ScanDirectionalRange(&collision, collisionContext, &sweep, 1, z,
                           actorHeight);
-        func_0200a970(actorPointer, deltaX, 0, &collision);
+        ActorCollision_ResolveRangeOverlap(actorPointer, deltaX, 0, &collision);
     }
 }

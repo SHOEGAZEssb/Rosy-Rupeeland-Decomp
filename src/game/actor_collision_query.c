@@ -19,7 +19,7 @@ extern s32 func_0202baec(void *context, s32 x, s32 y, s32 z);
  * Both external queries may have observable context effects; no hardware is
  * touched. The virtual result's broader encoding remains unrecovered.
  */
-s32 func_0200a63c(void *context, s32 x, s32 y, s32 z,
+s32 ActorCollision_TestPoint(void *context, s32 x, s32 y, s32 z,
                   s32 actorHeight)
 {
     ActorCollisionVirtualQuery query =

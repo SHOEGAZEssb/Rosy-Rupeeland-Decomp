@@ -67,8 +67,8 @@ extern s32 ActorCollection_NotifyPairActive(ActorPairCollection *, PairActor *, 
 extern void ActorCollection_NotifyPairEnded(ActorPairCollection *, PairActor *, PairActor *);
 extern s32 func_020828a0(void *, s32);
 extern s32 func_0200b04c(void *);
-extern void func_0200a3b8(PairActor *, void *);
-extern void func_0200ac14(PairActor *, void *);
+extern void ActorCollision_ResolveCornerContacts(PairActor *, void *);
+extern void ActorCollision_ResolveSweptMovement(PairActor *, void *);
 #ifdef __cplusplus
 }
 #endif
@@ -171,7 +171,7 @@ static s32 testPair(PairActor *actorA, PairActor *actorB, u32 *contact)
  * update edge byte 0x49 and may correct X/Y positions; pair-state at offset
  * 0x0e34 is queried or changed through ActorPairMatrix_Get/ActorPairMatrix_Clear. Pair
  * callbacks run in both directions. Finally, each processed category-one
- * actor may receive func_0200a3b8 and/or func_0200ac14 using global context
+ * actor may receive ActorCollision_ResolveCornerContacts and/or ActorCollision_ResolveSweptMovement using global context
  * offset 0x2ed4. Returns no value; helper calls may update gameplay state.
  */
 void ActorCollection_ProcessCategory1And2Pairs(ActorPairCollection *self)
@@ -242,11 +242,11 @@ void ActorCollection_ProcessCategory1And2Pairs(ActorPairCollection *self)
             if (!(actorA->flags_14 & 0x40) &&
                 !func_020828a0(data_021f5ebc, 1)) {
                 if (!func_0200b04c(data_02105310))
-                    func_0200a3b8(actorA, contextValue);
-                func_0200ac14(actorA, contextValue);
+                    ActorCollision_ResolveCornerContacts(actorA, contextValue);
+                ActorCollision_ResolveSweptMovement(actorA, contextValue);
             }
         } else if (!actorA->field_54 || !(actorA->flags_14 & 0x100)) {
-            func_0200ac14(actorA, contextValue);
+            ActorCollision_ResolveSweptMovement(actorA, contextValue);
         }
     }
 }

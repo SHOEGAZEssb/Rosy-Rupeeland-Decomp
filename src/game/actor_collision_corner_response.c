@@ -35,7 +35,7 @@ static s32 collision_to_integer_toward_zero(s32 value)
  * 1/2 for X and 4/8 for Y. Returns no value. The collision interface may have
  * observable query effects; no hardware is accessed directly.
  */
-void func_0200a3b8(void *actorPointer, void *collisionContext)
+void ActorCollision_ResolveCornerContacts(void *actorPointer, void *collisionContext)
 {
     u8 *actor = (u8 *)actorPointer;
     const s8 *box;
@@ -77,22 +77,22 @@ void func_0200a3b8(void *actorPointer, void *collisionContext)
     queryTop = (actorY - halfHeight - 0x1fff) >> 16;
     queryZ = collision_to_integer_toward_zero(z);
 
-    if (!func_0200a63c(collisionContext, queryLeft, queryTop,
+    if (!ActorCollision_TestPoint(collisionContext, queryLeft, queryTop,
                        queryZ, actorHeight)) {
         pushX -= 0x1333;
         pushY -= 0x1333;
     }
-    if (!func_0200a63c(collisionContext, queryRight, queryTop,
+    if (!ActorCollision_TestPoint(collisionContext, queryRight, queryTop,
                        queryZ, actorHeight)) {
         pushX += 0x1333;
         pushY -= 0x1333;
     }
-    if (!func_0200a63c(collisionContext, queryLeft, queryBottom,
+    if (!ActorCollision_TestPoint(collisionContext, queryLeft, queryBottom,
                        queryZ, actorHeight)) {
         pushX -= 0x1333;
         pushY += 0x1333;
     }
-    if (!func_0200a63c(collisionContext, queryRight, queryBottom,
+    if (!ActorCollision_TestPoint(collisionContext, queryRight, queryBottom,
                        queryZ, actorHeight)) {
         pushX += 0x1333;
         pushY += 0x1333;
