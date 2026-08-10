@@ -10,8 +10,8 @@
 .extern func_0200b04c
 .extern ActorPairMatrix_Get
 .extern ActorPairMatrix_Clear
-.extern func_0202ec08
-.extern func_0202ec74
+.extern ActorCollection_NotifyPairActive
+.extern ActorCollection_NotifyPairEnded
 .extern Actor_BuildCollisionRect
 .extern func_02056f34
 .extern func_020828a0
@@ -373,13 +373,13 @@ ActorCollection_ProcessCategory1And2Pairs: ; 0x0202e15c
     mov r1, r4
     mov r2, r5
     mov r3, r7
-    bl func_0202ec08
+    bl ActorCollection_NotifyPairActive
     add r6, r6, r0
     mov r1, r5
     mov r3, r7
     mov r0, r10
     mov r2, r4
-    bl func_0202ec08
+    bl ActorCollection_NotifyPairActive
     add r0, r6, r0
     cmp r0, #0x2
     bne .L_0202e74c
@@ -412,11 +412,11 @@ ActorCollection_ProcessCategory1And2Pairs: ; 0x0202e15c
     mov r0, r10
     mov r1, r4
     mov r2, r5
-    bl func_0202ec74
+    bl ActorCollection_NotifyPairEnded
     mov r1, r5
     mov r0, r10
     mov r2, r4
-    bl func_0202ec74
+    bl ActorCollection_NotifyPairEnded
     ldr r0, [sp, #0x30]
     ldr r1, [sp, #0x0]
     ldr r2, [sp, #0x4]

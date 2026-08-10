@@ -2,11 +2,11 @@
 .text
 .extern ActorPairMatrix_Get
 .extern ActorPairMatrix_Clear
-.extern func_0202ec74
+.extern ActorCollection_NotifyPairEnded
 
-    .global func_0202eba4
-    .type func_0202eba4, @function
-func_0202eba4: ; 0x0202eba4
+    .global ActorCollection_EndTrackedPair
+    .type ActorCollection_EndTrackedPair, @function
+ActorCollection_EndTrackedPair: ; 0x0202eba4
     stmdb sp!, {r4, r5, r6, lr}
     mov r5, r1
     mov r4, r2
@@ -21,11 +21,11 @@ func_0202eba4: ; 0x0202eba4
     mov r0, r6
     mov r1, r5
     mov r2, r4
-    bl func_0202ec74
+    bl ActorCollection_NotifyPairEnded
     mov r0, r6
     mov r1, r4
     mov r2, r5
-    bl func_0202ec74
+    bl ActorCollection_NotifyPairEnded
 .L_0202ebf0:
     ldrsb r1, [r5, #0x48]
     add r0, r6, #0x234
@@ -33,4 +33,4 @@ func_0202eba4: ; 0x0202eba4
     add r0, r0, #0xc00
     bl ActorPairMatrix_Clear
     ldmia sp!, {r4, r5, r6, pc}
-    .size func_0202eba4, . - func_0202eba4
+    .size ActorCollection_EndTrackedPair, . - ActorCollection_EndTrackedPair

@@ -10,7 +10,7 @@
 .extern func_0201b228
 .extern func_0201b23c
 .extern ActorCollection_QueueActorForRemoval
-.extern func_0202eba4
+.extern ActorCollection_EndTrackedPair
 .extern Actor_UpdateAttachmentDirectionFromVector
 .extern Actor_GetCollection
 
@@ -51,7 +51,7 @@ func_02034164: ; 0x02034164
     add r1, r5, #0x2000
     ldr r1, [r1, #0xe7c]
     mov r2, r4
-    bl func_0202eba4
+    bl ActorCollection_EndTrackedPair
 .L_020341f0:
     ldr r0, .L_02034258
     mov r1, #0x0

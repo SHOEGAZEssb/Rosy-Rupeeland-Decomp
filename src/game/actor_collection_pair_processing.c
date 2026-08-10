@@ -63,8 +63,8 @@ extern s32 func_020adc90(s32, s32);
 extern s32 func_020be334(s32);
 extern s32 ActorPairMatrix_Get(u8 *, s32, s32);
 extern void ActorPairMatrix_Clear(u8 *, s32, s32);
-extern s32 func_0202ec08(ActorPairCollection *, PairActor *, PairActor *, s32);
-extern void func_0202ec74(ActorPairCollection *, PairActor *, PairActor *);
+extern s32 ActorCollection_NotifyPairActive(ActorPairCollection *, PairActor *, PairActor *, s32);
+extern void ActorCollection_NotifyPairEnded(ActorPairCollection *, PairActor *, PairActor *);
 extern s32 func_020828a0(void *, s32);
 extern s32 func_0200b04c(void *);
 extern void func_0200a3b8(PairActor *, void *);
@@ -214,8 +214,8 @@ void ActorCollection_ProcessCategory1And2Pairs(ActorPairCollection *self)
                 s32 accepted;
                 s32 active = wasActive ? 1 : 0;
 
-                accepted = func_0202ec08(self, actorA, actorB, active);
-                accepted += func_0202ec08(self, actorB, actorA, active);
+                accepted = ActorCollection_NotifyPairActive(self, actorA, actorB, active);
+                accepted += ActorCollection_NotifyPairActive(self, actorB, actorA, active);
                 if (accepted == 2) {
                     s32 low = actorA->order_48;
                     s32 high = actorB->order_48;
@@ -230,8 +230,8 @@ void ActorCollection_ProcessCategory1And2Pairs(ActorPairCollection *self)
                     self->pairState_0e34[index] = 1;
                 }
             } else if (wasActive) {
-                func_0202ec74(self, actorA, actorB);
-                func_0202ec74(self, actorB, actorA);
+                ActorCollection_NotifyPairEnded(self, actorA, actorB);
+                ActorCollection_NotifyPairEnded(self, actorB, actorA);
                 ActorPairMatrix_Clear(self->pairState_0e34, actorB->order_48,
                               actorA->order_48);
             }

@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/actor_collection_registration.c.
 .text
 .extern ActorPairMatrix_Get
-.extern func_0202ec74
+.extern ActorCollection_NotifyPairEnded
 .extern ActorPairMatrix_Clear
 
     .global ActorCollection_UnregisterActor
@@ -69,7 +69,7 @@ ActorCollection_UnregisterActor: ; 0x0202d1e4
     ldr r1, [r7, r5, lsl #0x2]
     mov r0, r7
     mov r2, r6
-    bl func_0202ec74
+    bl ActorCollection_NotifyPairEnded
 .L_0202d2cc:
     mov r1, r4
     mov r2, r5

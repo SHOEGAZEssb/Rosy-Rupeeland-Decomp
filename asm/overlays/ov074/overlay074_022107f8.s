@@ -4,7 +4,7 @@
 .extern func_02005058
 .extern func_02006acc
 .extern func_02012150
-.extern func_0202eb18
+.extern ActorCollection_DispatchEventToActors
 
 .global func_ov074_022107f8
 func_ov074_022107f8:
@@ -34,7 +34,7 @@ func_ov074_022107f8:
     bl func_02006acc
     add r1, sp, #0x0
     add r0, r4, #0x8
-    bl func_0202eb18
+    bl ActorCollection_DispatchEventToActors
     add r0, sp, #0x0
     bl func_02005058
     add sp, sp, #0x20

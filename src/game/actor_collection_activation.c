@@ -41,7 +41,7 @@ extern void ActorCollection_RegisterActor(ActorCollectionActivation *, Collectio
 extern void ActorCollection_UnregisterActor(ActorCollectionActivation *, CollectionActor *);
 extern u8 ActorPairMatrix_Get(const u8 *, s32, s32);
 extern void ActorPairMatrix_Clear(u8 *, s32, s32);
-extern void func_0202ec74(ActorCollectionActivation *, CollectionActor *,
+extern void ActorCollection_NotifyPairEnded(ActorCollectionActivation *, CollectionActor *,
                           CollectionActor *);
 #ifdef __cplusplus
 }
@@ -89,7 +89,7 @@ void ActorCollection_QueueActorForRemoval(ActorCollectionActivation *self, Colle
         for (i = 0; i < 128; i++) {
             if (self->actors_0000[i] &&
                 ActorPairMatrix_Get((u8 *)self + 0x0e34, 1, i))
-                func_0202ec74(self, self->actors_0000[i], actor);
+                ActorCollection_NotifyPairEnded(self, self->actors_0000[i], actor);
             ActorPairMatrix_Clear((u8 *)self + 0x0e34, 1, i);
         }
         ActorCollection_RegisterActor(self, actor);

@@ -7,7 +7,7 @@ extern "C" {
 #endif
 extern void func_020086f8(void *state, GamePhaseRuntime *self);
 extern void func_0200875c(void *state, GamePhaseRuntime *self);
-extern void func_0202eb18(void *actor, const void *state);
+extern void ActorCollection_DispatchEventToActors(void *actor, const void *state);
 extern void func_02005058(void *state);
 extern void func_02030acc(void *actor);
 extern void func_020740a4(void);
@@ -34,7 +34,7 @@ void func_02007a24(GamePhaseRuntime *self, s32 value, s32 mode)
     if (mode == 1 || mode == 3) {
         func_020086f8(primaryState, self);
         actor = b + 0x28;
-        func_0202eb18(actor, primaryState);
+        ActorCollection_DispatchEventToActors(actor, primaryState);
         func_02005058(primaryState);
         func_02030acc(actor);
         func_020740a4();
@@ -46,7 +46,7 @@ void func_02007a24(GamePhaseRuntime *self, s32 value, s32 mode)
         if (actor != 0) {
             func_0200875c(secondaryState, self);
             actor = (u8 *)*(void **)(b + 0x2fb8) + 8;
-            func_0202eb18(actor, secondaryState);
+            ActorCollection_DispatchEventToActors(actor, secondaryState);
             func_02005058(secondaryState);
             actor = (u8 *)*(void **)(b + 0x2fb8) + 8;
             func_02030acc(actor);

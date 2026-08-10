@@ -29,7 +29,7 @@ extern s32 ActorPairMatrix_Get(u8 *, s32, s32);
 extern void ActorPairMatrix_Clear(u8 *, s32, s32);
 extern s32 func_0203b9dc(PairCallbackActor *, PairCallbackActor *, s32);
 extern void func_0203baa0(PairCallbackActor *, PairCallbackActor *);
-void func_0202ec74(PairCallbackCollection *, PairCallbackActor *,
+void ActorCollection_NotifyPairEnded(PairCallbackCollection *, PairCallbackActor *,
                    PairCallbackActor *);
 #ifdef __cplusplus
 }
@@ -41,7 +41,7 @@ void func_0202ec74(PairCallbackCollection *, PairCallbackActor *,
  * cases use vtable offset 0x28. priorActive is forwarded unchanged. Return the
  * selected handler's integer result; no hardware or SDK state is touched here.
  */
-s32 func_0202ec08(PairCallbackCollection *self, PairCallbackActor *actor,
+s32 ActorCollection_NotifyPairActive(PairCallbackCollection *self, PairCallbackActor *actor,
                   PairCallbackActor *other, s32 priorActive)
 {
     (void)self;
@@ -56,7 +56,7 @@ s32 func_0202ec08(PairCallbackCollection *self, PairCallbackActor *actor,
  * 0x01000000 set, types one and two use func_0203baa0; other cases call vtable
  * offset 0x2c. Returns no value; the selected handler owns state changes.
  */
-void func_0202ec74(PairCallbackCollection *self, PairCallbackActor *actor,
+void ActorCollection_NotifyPairEnded(PairCallbackCollection *self, PairCallbackActor *actor,
                    PairCallbackActor *other)
 {
     (void)self;
@@ -72,15 +72,15 @@ void func_0202ec74(PairCallbackCollection *self, PairCallbackActor *actor,
  * 0x48. If active, send ended notifications in both directions, then always
  * clear the matrix entry through ActorPairMatrix_Clear. Returns no value.
  */
-void func_0202eba4(PairCallbackCollection *self, PairCallbackActor *actor,
+void ActorCollection_EndTrackedPair(PairCallbackCollection *self, PairCallbackActor *actor,
                    PairCallbackActor *other)
 {
     s8 actorKey = *(s8 *)((u8 *)actor + 0x48);
     s8 otherKey = *(s8 *)((u8 *)other + 0x48);
 
     if (ActorPairMatrix_Get(self->pairState_0e34, actorKey, otherKey)) {
-        func_0202ec74(self, actor, other);
-        func_0202ec74(self, other, actor);
+        ActorCollection_NotifyPairEnded(self, actor, other);
+        ActorCollection_NotifyPairEnded(self, other, actor);
     }
     ActorPairMatrix_Clear(self->pairState_0e34, actorKey, otherKey);
 }

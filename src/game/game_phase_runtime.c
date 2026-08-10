@@ -50,7 +50,7 @@ extern void func_0200a310(void *object);
 extern void func_0200ec6c(void *object, s32 enabled);
 extern void *func_02009d0c(void *object);
 extern void *func_02009d78(void *object);
-extern void func_0202eb18(void *object, void *value);
+extern void ActorCollection_DispatchEventToActors(void *object, void *value);
 extern void func_02006fd4(s32 value);
 extern void func_02020060(void *object, const void *config);
 extern void func_0201140c(void *object, s32 enabled);
@@ -183,9 +183,9 @@ void func_02006bdc(GamePhaseRuntime *self, const void *configPointer,
     func_020088b8(self, 1, 0);
     func_0200ec6c(bytes + 0x24, 1);
 
-    func_0202eb18((u8 *)*(void **)(bytes + 0x2fb8) + 8,
+    ActorCollection_DispatchEventToActors((u8 *)*(void **)(bytes + 0x2fb8) + 8,
                   func_02009d0c(bytes + 0x3044));
-    func_0202eb18(bytes + 0x28, func_02009d78(bytes + 0x2fbc));
+    ActorCollection_DispatchEventToActors(bytes + 0x28, func_02009d78(bytes + 0x2fbc));
 
     modeBits = *(const u32 *)(config + 0x40);
     if ((s32)(modeBits << 9) < 0)

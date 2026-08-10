@@ -11,7 +11,7 @@ extern void func_0203ac9c(GamePhaseRuntime *self);
 extern void ActorCollection_RebuildCategories(void *actor);
 extern void ActorCollection_UpdateFlag100Category0Actors(void *actor);
 extern void ActorCollection_ProcessCategory1And2Pairs(void *actor);
-extern void func_0202e858(void *actor);
+extern void ActorCollection_UpdateCategory3TerrainActors(void *actor);
 extern void ActorCollection_UpdateCategory0Actors(void *actor);
 extern void ActorCollection_RebuildBaseCategories(void *actor);
 extern s32 func_0200b04c(void *state);
@@ -41,12 +41,12 @@ void func_02007908(GamePhaseRuntime *self, s32 value, s32 mode)
             ActorCollection_RebuildCategories(actor);
             ActorCollection_UpdateFlag100Category0Actors(actor);
             ActorCollection_ProcessCategory1And2Pairs(actor);
-            func_0202e858(actor);
+            ActorCollection_UpdateCategory3TerrainActors(actor);
         } else {
             ActorCollection_RebuildCategories(actor);
             ActorCollection_UpdateCategory0Actors(actor);
             ActorCollection_ProcessCategory1And2Pairs(actor);
-            func_0202e858(actor);
+            ActorCollection_UpdateCategory3TerrainActors(actor);
         }
     }
 

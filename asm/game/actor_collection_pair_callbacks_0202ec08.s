@@ -2,9 +2,9 @@
 .text
 .extern func_0203b9dc
 
-    .global func_0202ec08
-    .type func_0202ec08, @function
-func_0202ec08: ; 0x0202ec08
+    .global ActorCollection_NotifyPairActive
+    .type ActorCollection_NotifyPairActive, @function
+ActorCollection_NotifyPairActive: ; 0x0202ec08
     stmdb sp!, {r3, lr}
     ldr r0, [r1, #0x10]
     tst r0, #0x1000000
@@ -34,4 +34,4 @@ func_0202ec08: ; 0x0202ec08
     mov r2, r3
     blx ip
     ldmia sp!, {r3, pc}
-    .size func_0202ec08, . - func_0202ec08
+    .size ActorCollection_NotifyPairActive, . - ActorCollection_NotifyPairActive

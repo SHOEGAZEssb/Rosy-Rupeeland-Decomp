@@ -13402,7 +13402,7 @@ build build/reports/actor_collection_terrain_update_0202e858.json: objdiff build
   base_object = build/decomp/asm/game/actor_collection_terrain_update_0202e858.o
 build build/reports/actor_collection_terrain_update_0202e858.txt: match_report build/reports/actor_collection_terrain_update_0202e858.json | tools/report_objdiff.py
   report_json = build/reports/actor_collection_terrain_update_0202e858.json
-  report_args = --section .text --function func_0202e858 --require-exact
+  report_args = --section .text --function ActorCollection_UpdateCategory3TerrainActors --require-exact
 build build/reports/actor_collection_terrain_update.txt: phony build/reports/actor_collection_terrain_update_0202e858.txt
 
 build actor_collection_terrain_update: phony build/decomp/src/game/actor_collection_terrain_update.o build/decomp/asm/game/actor_collection_terrain_update_0202e858.o build/reports/actor_collection_terrain_update.txt
@@ -13419,7 +13419,7 @@ build build/reports/actor_collection_event_dispatch_0202eb18.json: objdiff build
   base_object = build/decomp/asm/game/actor_collection_event_dispatch_0202eb18.o
 build build/reports/actor_collection_event_dispatch_0202eb18.txt: match_report build/reports/actor_collection_event_dispatch_0202eb18.json | tools/report_objdiff.py
   report_json = build/reports/actor_collection_event_dispatch_0202eb18.json
-  report_args = --section .text --function func_0202eb18 --require-exact
+  report_args = --section .text --function ActorCollection_DispatchEventToActors --require-exact
 build build/reports/actor_collection_event_dispatch.txt: phony build/reports/actor_collection_event_dispatch_0202eb18.txt
 
 build actor_collection_event_dispatch: phony build/decomp/src/game/actor_collection_event_dispatch.o build/decomp/asm/game/actor_collection_event_dispatch_0202eb18.o build/reports/actor_collection_event_dispatch.txt
@@ -13440,19 +13440,19 @@ build build/reports/actor_collection_pair_callbacks_0202eba4.json: objdiff build
   base_object = build/decomp/asm/game/actor_collection_pair_callbacks_0202eba4.o
 build build/reports/actor_collection_pair_callbacks_0202eba4.txt: match_report build/reports/actor_collection_pair_callbacks_0202eba4.json | tools/report_objdiff.py
   report_json = build/reports/actor_collection_pair_callbacks_0202eba4.json
-  report_args = --section .text --function func_0202eba4 --require-exact
+  report_args = --section .text --function ActorCollection_EndTrackedPair --require-exact
 build build/reports/actor_collection_pair_callbacks_0202ec08.json: objdiff build/decomp/delinks/asm/game/actor_collection_pair_callbacks_0202ec08.o | build/decomp/asm/game/actor_collection_pair_callbacks_0202ec08.o
   target_object = build/decomp/delinks/asm/game/actor_collection_pair_callbacks_0202ec08.o
   base_object = build/decomp/asm/game/actor_collection_pair_callbacks_0202ec08.o
 build build/reports/actor_collection_pair_callbacks_0202ec08.txt: match_report build/reports/actor_collection_pair_callbacks_0202ec08.json | tools/report_objdiff.py
   report_json = build/reports/actor_collection_pair_callbacks_0202ec08.json
-  report_args = --section .text --function func_0202ec08 --require-exact
+  report_args = --section .text --function ActorCollection_NotifyPairActive --require-exact
 build build/reports/actor_collection_pair_callbacks_0202ec74.json: objdiff build/decomp/delinks/asm/game/actor_collection_pair_callbacks_0202ec74.o | build/decomp/asm/game/actor_collection_pair_callbacks_0202ec74.o
   target_object = build/decomp/delinks/asm/game/actor_collection_pair_callbacks_0202ec74.o
   base_object = build/decomp/asm/game/actor_collection_pair_callbacks_0202ec74.o
 build build/reports/actor_collection_pair_callbacks_0202ec74.txt: match_report build/reports/actor_collection_pair_callbacks_0202ec74.json | tools/report_objdiff.py
   report_json = build/reports/actor_collection_pair_callbacks_0202ec74.json
-  report_args = --section .text --function func_0202ec74 --require-exact
+  report_args = --section .text --function ActorCollection_NotifyPairEnded --require-exact
 build build/reports/actor_collection_pair_callbacks.txt: phony build/reports/actor_collection_pair_callbacks_0202eba4.txt build/reports/actor_collection_pair_callbacks_0202ec08.txt build/reports/actor_collection_pair_callbacks_0202ec74.txt
 
 build actor_collection_pair_callbacks: phony build/decomp/src/game/actor_collection_pair_callbacks.o build/decomp/asm/game/actor_collection_pair_callbacks_0202eba4.o build/decomp/asm/game/actor_collection_pair_callbacks_0202ec08.o build/decomp/asm/game/actor_collection_pair_callbacks_0202ec74.o build/reports/actor_collection_pair_callbacks.txt

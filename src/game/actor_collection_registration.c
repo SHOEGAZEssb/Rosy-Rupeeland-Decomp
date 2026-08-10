@@ -38,7 +38,7 @@ typedef struct ActorCollectionRegistration {
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_0202ec74(ActorCollectionRegistration *self,
+extern void ActorCollection_NotifyPairEnded(ActorCollectionRegistration *self,
                           RegisteredActor *other,
                           RegisteredActor *removed);
 extern void ActorCollection_UnregisterActor(ActorCollectionRegistration *, RegisteredActor *);
@@ -94,7 +94,7 @@ void ActorCollection_RegisterActor(ActorCollectionRegistration *self, Registered
 /*
  * Remove actor from its reserved or searched slot. Clear its field_0c00 entry,
  * decrement the ordinary actor count, notify every remaining related actor
- * through func_0202ec74, clear every matrix edge involving the removed slot,
+ * through ActorCollection_NotifyPairEnded, clear every matrix edge involving the removed slot,
  * and finally clear the actor slot. A missing actor causes no state change.
  */
 void ActorCollection_UnregisterActor(ActorCollectionRegistration *self, RegisteredActor *actor)
@@ -120,7 +120,7 @@ void ActorCollection_UnregisterActor(ActorCollectionRegistration *self, Register
     for (i = 0; i < 128; i++) {
         if (self->actors_0000[i] &&
             ActorPairMatrix_Get(self->relationshipMatrix_0e34, index, i))
-            func_0202ec74(self, self->actors_0000[i], actor);
+            ActorCollection_NotifyPairEnded(self, self->actors_0000[i], actor);
         ActorPairMatrix_Clear(self->relationshipMatrix_0e34, index, i);
     }
     self->actors_0000[index] = 0;

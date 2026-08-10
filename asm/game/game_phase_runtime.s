@@ -33,7 +33,7 @@
 .extern func_0201140c
 .extern func_02012444
 .extern func_02020060
-.extern func_0202eb18
+.extern ActorCollection_DispatchEventToActors
 .extern Actor_AdjustPositionForTerrainHeight
 .extern func_02038b64
 .extern func_02038e50
@@ -283,13 +283,13 @@ L_02006da0:
     bl func_02009d0c
     mov r1, r0
     add r0, r5, #0x8
-    bl func_0202eb18
+    bl ActorCollection_DispatchEventToActors
     add r0, r4, #0x3bc
     add r0, r0, #0x2c00
     bl func_02009d78
     mov r1, r0
     add r0, r4, #0x28
-    bl func_0202eb18
+    bl ActorCollection_DispatchEventToActors
     add r0, r4, #0x3000
     ldr r0, [r0, #0xbc]
     ldr r0, [r0, #0x40]

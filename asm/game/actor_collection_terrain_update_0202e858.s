@@ -6,9 +6,9 @@
 .extern Actor_QueryTerrainCell
 .extern func_020828a0
 
-    .global func_0202e858
-    .type func_0202e858, @function
-func_0202e858: ; 0x0202e858
+    .global ActorCollection_UpdateCategory3TerrainActors
+    .type ActorCollection_UpdateCategory3TerrainActors, @function
+ActorCollection_UpdateCategory3TerrainActors: ; 0x0202e858
     stmdb sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, lr}
     sub sp, sp, #0x8
     add r8, r0, #0x800
@@ -197,4 +197,4 @@ func_0202e858: ; 0x0202e858
     add sp, sp, #0x8
     ldmia sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, pc}
 .L_0202eb14: .word data_021f5ebc
-    .size func_0202e858, . - func_0202e858
+    .size ActorCollection_UpdateCategory3TerrainActors, . - ActorCollection_UpdateCategory3TerrainActors

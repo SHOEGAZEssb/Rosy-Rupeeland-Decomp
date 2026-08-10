@@ -2,9 +2,9 @@
 .text
 .extern func_0203baa0
 
-    .global func_0202ec74
-    .type func_0202ec74, @function
-func_0202ec74: ; 0x0202ec74
+    .global ActorCollection_NotifyPairEnded
+    .type ActorCollection_NotifyPairEnded, @function
+ActorCollection_NotifyPairEnded: ; 0x0202ec74
     stmdb sp!, {r3, lr}
     ldr r0, [r1, #0x10]
     tst r0, #0x1000000
@@ -30,4 +30,4 @@ func_0202ec74: ; 0x0202ec74
     ldr r3, [r3, #0x2c]
     blx r3
     ldmia sp!, {r3, pc}
-    .size func_0202ec74, . - func_0202ec74
+    .size ActorCollection_NotifyPairEnded, . - ActorCollection_NotifyPairEnded

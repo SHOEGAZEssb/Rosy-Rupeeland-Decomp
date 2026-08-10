@@ -25,13 +25,12 @@ extern void func_020091d8(void *object, const void *transform);
 extern void func_0200ae8c(void *state);
 extern void func_0200807c(GamePhaseRuntime *self, void *area, s32 enabled);
 extern void func_0200e714(void *state, void *area, const void *transform);
-extern void func_0202eb18(void *actor, const void *transform);
+extern void ActorCollection_DispatchEventToActors(void *actor, const void *transform);
 extern void func_02020060(void *object, void *area);
 extern void func_0201140c(void *context, s32 enabled);
 extern void func_02008bb8(GamePhaseRuntime *self, void *area, s32 enabled);
 extern void func_02012528(void *actor, void *object);
 extern void func_020122a0(void *actor, s32 value);
-extern void func_02008b6c(void *output, GamePhaseRuntime *self, void *area);
 extern void func_ov056_0220f054(void *object, const void *value);
 extern void func_02026174(void *object, void *area);
 extern void *func_02007f0c(GamePhaseRuntime *self, s32 index);
@@ -100,7 +99,7 @@ s32 func_02007b18(GamePhaseRuntime *self, s32 direction)
     func_0200807c(self, area, 1);
     *(u32 *)(b + 0x30b8) |= 0x30;
     func_0200e714(b + 0x24, area, transform);
-    func_0202eb18(b + 0x28, transform);
+    ActorCollection_DispatchEventToActors(b + 0x28, transform);
 
     if (*(s16 *)(area + 0x12) >= 0)
         func_02020060(func_02009d78(b + 0x2fbc), area);

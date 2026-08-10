@@ -21,7 +21,7 @@
 .extern func_02020060
 .extern func_02026174
 .extern func_02028388
-.extern func_0202eb18
+.extern ActorCollection_DispatchEventToActors
 .extern func_020be8c0
 .extern func_020beae4
 .extern func_020beb18
@@ -193,7 +193,7 @@ L_02007d24:
     bl func_0200e714
     add r1, sp, #0xc
     add r0, r7, #0x28
-    bl func_0202eb18
+    bl ActorCollection_DispatchEventToActors
     add r0, r7, #0x3000
     ldr r5, [r0, #0xbc]
     ldrsh r0, [r5, #0x12]

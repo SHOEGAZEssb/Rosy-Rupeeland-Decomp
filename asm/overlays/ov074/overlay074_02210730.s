@@ -7,7 +7,7 @@
 .extern func_02007f0c
 .extern func_0200ecbc
 .extern func_020122a0
-.extern func_0202eb18
+.extern ActorCollection_DispatchEventToActors
 .extern func_02039e70
 .extern func_ov074_022107f8
 .extern func_ov088_0221aaac
@@ -29,7 +29,7 @@ func_ov074_02210730:
     ldr r0, [r0, #0x0]
     bl func_02007f0c
     add r1, sp, #0x0
-    bl func_0202eb18
+    bl ActorCollection_DispatchEventToActors
     bl func_02039e70
     cmp r0, #0x0
     beq .L_022107a4

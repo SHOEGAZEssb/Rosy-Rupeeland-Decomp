@@ -29,7 +29,7 @@ typedef struct ActorCollectionEventDispatch {
  * offset-0x24 callback when flag 0x04 is set, flag 0x01000000 is clear, or
  * flag one is set. Returns no value; both virtual methods may mutate state.
  */
-void func_0202eb18(ActorCollectionEventDispatch *self, void *event)
+void ActorCollection_DispatchEventToActors(ActorCollectionEventDispatch *self, void *event)
 {
     s32 temporary[3];
     s32 i;

@@ -84,7 +84,7 @@ static s32 terrainCodeIsRestricted(u32 terrain)
  * resets fields 0x3c/0x40, objects at 0x88/0x98, and sets flag 0x40 at 0xd0.
  * Returns no value; called actor and terrain helpers may change gameplay state.
  */
-void func_0202e858(ActorCollectionTerrainUpdate *self)
+void ActorCollection_UpdateCategory3TerrainActors(ActorCollectionTerrainUpdate *self)
 {
     s32 count = self->categoryCounts_0e20[3];
     s32 checksEnabled = !func_020828a0(data_021f5ebc, 1);

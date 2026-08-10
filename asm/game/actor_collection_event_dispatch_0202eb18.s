@@ -1,9 +1,9 @@
 ; Matching retail form; see src/game/actor_collection_event_dispatch.c.
 .text
 
-    .global func_0202eb18
-    .type func_0202eb18, @function
-func_0202eb18: ; 0x0202eb18
+    .global ActorCollection_DispatchEventToActors
+    .type ActorCollection_DispatchEventToActors, @function
+ActorCollection_DispatchEventToActors: ; 0x0202eb18
     stmdb sp!, {r4, r5, r6, r7, r8, r9, lr}
     sub sp, sp, #0xc
     mov r8, r0
@@ -43,4 +43,4 @@ func_0202eb18: ; 0x0202eb18
     blt .L_0202eb38
     add sp, sp, #0xc
     ldmia sp!, {r4, r5, r6, r7, r8, r9, pc}
-    .size func_0202eb18, . - func_0202eb18
+    .size ActorCollection_DispatchEventToActors, . - ActorCollection_DispatchEventToActors

@@ -5,7 +5,7 @@
 .extern func_0200b058
 .extern Actor_GetCollectionBySlot
 .extern Actor_GetCollection
-.extern func_0202eba4
+.extern ActorCollection_EndTrackedPair
 .extern func_0200af04
 .extern func_0201b180
 .extern func_0201b228
@@ -47,7 +47,7 @@ func_0204d308: ; 0x0204d308
     add r1, r5, #0x2000
     ldr r1, [r1, #0xe7c]
     mov r2, r4
-    bl func_0202eba4
+    bl ActorCollection_EndTrackedPair
 .L_0204d390:
     ldr r0, .L_0204d3d4
     mov r1, #0x0

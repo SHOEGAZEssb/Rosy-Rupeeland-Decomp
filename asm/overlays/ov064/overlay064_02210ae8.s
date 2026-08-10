@@ -9,7 +9,7 @@
 .extern func_02009d78
 .extern func_02010e68
 .extern func_0201dcec
-.extern func_0202eb18
+.extern ActorCollection_DispatchEventToActors
 .extern func_02030acc
 .extern func_0203ad64
 .extern func_020740a4
@@ -53,7 +53,7 @@ func_ov064_02210ae8:
     bl func_02009d78
     mov r1, r0
     mov r0, r6
-    bl func_0202eb18
+    bl ActorCollection_DispatchEventToActors
     ldr r0, .L_02210c54
     mov r1, #0x1
     ldr r0, [r0, #0x0]
@@ -69,7 +69,7 @@ func_ov064_02210ae8:
     ldr r0, [r0, #0x0]
     bl func_02007f0c
     add r1, sp, #0x0
-    bl func_0202eb18
+    bl ActorCollection_DispatchEventToActors
     add r0, sp, #0x0
     bl func_02005058
     ldr r0, .L_02210c54

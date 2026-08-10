@@ -12,7 +12,7 @@ extern void func_0201273c(void *state, s32 value);
 extern s32 func_0200b058(void *effectState, void *actor);
 extern void *func_02007f0c(void *manager, u32 slot);
 extern void *Actor_GetCollection(void *actor);
-extern void func_0202eba4(void *collection, void *reference, void *actor);
+extern void ActorCollection_EndTrackedPair(void *collection, void *reference, void *actor);
 extern void *func_0200af04(void *effectState, s32 index);
 extern void func_0201b180(void *state, void *value);
 extern void func_0201b228(void *state);
@@ -55,7 +55,7 @@ s32 func_02034164(void *self)
         if (actor[0xe8] != 2) {
             slotOne = func_02007f0c(data_021052fc, 1);
             collection = Actor_GetCollection(actor);
-            func_0202eba4(collection,
+            ActorCollection_EndTrackedPair(collection,
                           *(void **)((u8 *)slotOne + 0x2e7c), actor);
         }
         actor[0xe8] = 0;
