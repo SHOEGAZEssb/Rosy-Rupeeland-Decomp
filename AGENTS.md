@@ -13,6 +13,9 @@
 - Keep confirmed behavior separate from inference. Preserve address-derived
   names and offset-based field names until evidence supports a semantic name;
   do not turn guesses into comments that read as established facts.
+- Name functions, types, fields, and data opportunistically as decompilation or
+  native-port work establishes clear semantic evidence. Prefer these focused
+  naming improvements along the way over speculative, standalone renaming.
 - Keep comments useful in both the portable and matching implementations. A
   matching assembly fallback should point readers to its documented portable C
   equivalent when one exists.
