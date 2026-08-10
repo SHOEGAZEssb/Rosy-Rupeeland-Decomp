@@ -153,7 +153,12 @@ boundary. The native phase scaffold allocates a host-owned byte image of that
 size for each initially eligible descriptor and applies the recovered common
 geometry initializer, including fixed-point positions, byte bounds, raw NDS
 vtable identities, and descriptor value `0x52`. Derived constructors and the
-two category bootstrap actors are not yet represented. Fourteen 32-byte zero
+two category bootstrap actors are not yet represented. The phase-start
+companion also follows its recovered shared-state timing: it
+sets GameWork flag `0x3F3`, advances states zero and one together on its first
+update, then clears optional flag `0x386` and its own flag on the next update.
+The covered-scene virtual updates and screen fades at those states remain
+platform boundaries. Fourteen 32-byte zero
 secondary images are omitted by the phase table; the decoder still represents
 such an image as an empty registration when read directly. The callbacks
 remain addresses and are never called as host function pointers.

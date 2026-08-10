@@ -100,6 +100,7 @@ if(BUILD_TESTING)
         src/native/native_actor_runtime.c
         src/native/native_data.c
         src/native/native_game_phase.c
+        src/native/native_game_work.c
         src/native/native_render.c
     )
     target_include_directories(native_game_phase_test PRIVATE include)

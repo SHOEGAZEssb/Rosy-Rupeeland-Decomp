@@ -2,6 +2,7 @@
 #define TINGLE_NATIVE_GAME_PHASE_H
 
 #include "tingle/native_data.h"
+#include "tingle/native_game_work.h"
 #include "tingle/native_platform.h"
 #include "tingle/native_render.h"
 
@@ -77,6 +78,7 @@ typedef struct TingleNativeGamePhaseBoundary {
     TingleNativeActorDescriptor *primary_descriptors;
     TingleNativeActorDescriptor *secondary_descriptors;
     struct TingleNativeActorRuntime *actor_runtime;
+    TingleNativeGameWork *game_work;
     s32 metadata_loaded;
     s32 primary_overlay_loaded;
     s32 secondary_overlay_loaded;
@@ -87,6 +89,8 @@ typedef struct TingleNativeGamePhaseBoundary {
     s32 primary_factories_resolved;
     s32 secondary_factories_resolved;
     s32 actor_runtime_built;
+    s32 resume_state;
+    s32 resume_active;
 } TingleNativeGamePhaseBoundary;
 
 /* Decodes one verified generated phase-overlay entry callback as data. */
@@ -108,6 +112,12 @@ s32 TingleNativeGamePhase_DecodeMetadata(s32 phase_id, const void *record,
 /* Loads the selected one-based phase record into a host-safe boundary scene. */
 s32 TingleNativeGamePhaseBoundary_Init(TingleNativeGamePhaseBoundary *boundary,
                                        TingleNativeData *data, s32 phase_id);
+
+/* Starts the boundary and its recovered GameWork resume-flag lifecycle. */
+s32 TingleNativeGamePhaseBoundary_Start(TingleNativeGamePhaseBoundary *boundary,
+                                        TingleNativeData *data,
+                                        TingleNativeGameWork *game_work,
+                                        s32 phase_id);
 
 /* Releases both phase-owned overlay images and clears the boundary state. */
 void TingleNativeGamePhaseBoundary_Destroy(TingleNativeGamePhaseBoundary *boundary);

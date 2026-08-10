@@ -174,9 +174,11 @@ static int ProbeMetadata(const char *kind, const char *source, const char *phase
         ? TingleNativeData_OpenRom(source)
         : TingleNativeData_OpenDirectory(source);
     TingleNativeGamePhaseBoundary boundary = {{0}, 0};
+    TingleNativeGameWork game_work;
     s32 phase_id = (s32)strtol(phase_text, NULL, 0);
     int ok;
 
+    TingleNativeGameWork_Init(&game_work);
     if (data != NULL && strcmp(phase_text, "all") == 0) {
         u32 primary_descriptors = 0;
         u32 secondary_descriptors = 0;
@@ -184,14 +186,16 @@ static int ProbeMetadata(const char *kind, const char *source, const char *phase
         u32 secondary_eligible = 0;
 
         for (phase_id = 1; phase_id <= TINGLE_NATIVE_PHASE_COUNT; ++phase_id) {
-            ok = TingleNativeGamePhaseBoundary_Init(&boundary, data, phase_id) &&
+            ok = TingleNativeGamePhaseBoundary_Start(
+                     &boundary, data, &game_work, phase_id) &&
                  boundary.primary_overlay_loaded && boundary.secondary_overlay_loaded &&
                  boundary.primary_callback_valid && boundary.secondary_callback_valid &&
                  boundary.primary_descriptors_decoded &&
                  boundary.secondary_descriptors_decoded &&
                  boundary.primary_factories_resolved &&
                  boundary.secondary_factories_resolved &&
-                 boundary.actor_runtime_built;
+                 boundary.actor_runtime_built &&
+                 TingleNativeGameWork_TestFlag(&game_work, 0x3F3) == 1;
             if (!ok) {
                 TingleNativeGamePhaseBoundary_Destroy(&boundary);
                 TingleNativeData_Close(data);
@@ -202,6 +206,10 @@ static int ProbeMetadata(const char *kind, const char *source, const char *phase
             primary_eligible += boundary.primary_registration.eligible_descriptor_count;
             secondary_eligible += boundary.secondary_registration.eligible_descriptor_count;
             TingleNativeGamePhaseBoundary_Destroy(&boundary);
+            if (TingleNativeGameWork_TestFlag(&game_work, 0x3F3) != 0) {
+                TingleNativeData_Close(data);
+                return EXIT_FAILURE;
+            }
         }
         (void)printf("validated %d phase overlay pairs: %u+%u descriptors, %u+%u eligible\n",
                      TINGLE_NATIVE_PHASE_COUNT, primary_descriptors,
@@ -209,11 +217,13 @@ static int ProbeMetadata(const char *kind, const char *source, const char *phase
         TingleNativeData_Close(data);
         return EXIT_SUCCESS;
     }
-    ok = data != NULL && TingleNativeGamePhaseBoundary_Init(&boundary, data, phase_id) &&
+    ok = data != NULL && TingleNativeGamePhaseBoundary_Start(
+             &boundary, data, &game_work, phase_id) &&
              boundary.primary_overlay_loaded && boundary.secondary_overlay_loaded &&
              boundary.primary_callback_valid && boundary.secondary_callback_valid &&
              boundary.primary_factories_resolved &&
-             boundary.secondary_factories_resolved && boundary.actor_runtime_built;
+             boundary.secondary_factories_resolved && boundary.actor_runtime_built &&
+             TingleNativeGameWork_TestFlag(&game_work, 0x3F3) == 1;
 
     if (ok) {
         (void)printf("phase %d: ov1=%u cb1=%08X ov2=%u cb2=%08X flags40=%08X\n",
@@ -234,6 +244,7 @@ int main(int argc, char **argv)
     TingleNativeGamePhaseMetadata metadata;
     TingleNativeInput input = {0};
     TingleNativeCanvas canvas;
+    TingleNativeGameWork game_work;
     u32 *pixels;
 
     if (argc == 4 && (strcmp(argv[1], "--rom") == 0 ||
@@ -278,8 +289,22 @@ int main(int argc, char **argv)
     boundary.metadata = metadata;
     boundary.metadata.phase_id = 9;
     boundary.metadata_loaded = 1;
+    TingleNativeGameWork_Init(&game_work);
+    (void)TingleNativeGameWork_SetFlag(&game_work, 0x3F3);
+    (void)TingleNativeGameWork_SetFlag(&game_work, 0x386);
+    boundary.game_work = &game_work;
+    boundary.resume_active = 1;
     input.pressed = TINGLE_KEY_B;
     if (!TingleNativeGamePhaseBoundary_Update(&boundary, &input)) return EXIT_FAILURE;
+    if (boundary.resume_state != 2 ||
+        TingleNativeGameWork_TestFlag(&game_work, 0x3F3) != 1)
+        return EXIT_FAILURE;
+    input.pressed = 0;
+    (void)TingleNativeGamePhaseBoundary_Update(&boundary, &input);
+    if (boundary.resume_active ||
+        TingleNativeGameWork_TestFlag(&game_work, 0x3F3) != 0 ||
+        TingleNativeGameWork_TestFlag(&game_work, 0x386) != 0)
+        return EXIT_FAILURE;
     pixels = (u32 *)malloc(sizeof(*pixels) * TINGLE_SCREEN_WIDTH *
                            TINGLE_FRAMEBUFFER_HEIGHT);
     if (pixels == NULL) return EXIT_FAILURE;

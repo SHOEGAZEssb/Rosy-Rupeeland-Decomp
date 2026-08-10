@@ -97,8 +97,9 @@ int TingleNative_Run(int argc, char **argv)
                 TingleNativeDebugMenu_Init(&menu);
                 scene = NATIVE_SCENE_DEBUG_MENU;
             } else if (event == TINGLE_NATIVE_PHASE_EVENT_START_PHASE) {
-                (void)TingleNativeGamePhaseBoundary_Init(
-                    &game_phase, data, phase_selector.selected_phase + 1);
+                (void)TingleNativeGamePhaseBoundary_Start(
+                    &game_phase, data, &game_work,
+                    phase_selector.selected_phase + 1);
                 scene = NATIVE_SCENE_GAME_PHASE;
             }
         } else if (TingleNativeGamePhaseBoundary_Update(&game_phase, &input)) {

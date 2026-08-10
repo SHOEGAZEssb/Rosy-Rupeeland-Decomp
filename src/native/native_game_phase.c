@@ -325,9 +325,26 @@ s32 TingleNativeGamePhaseBoundary_Init(TingleNativeGamePhaseBoundary *boundary,
     return boundary->metadata_loaded;
 }
 
+/* Attach the companion scene behavior which sets flag 0x3F3 at construction. */
+s32 TingleNativeGamePhaseBoundary_Start(TingleNativeGamePhaseBoundary *boundary,
+                                        TingleNativeData *data,
+                                        TingleNativeGameWork *game_work,
+                                        s32 phase_id)
+{
+    if (!TingleNativeGamePhaseBoundary_Init(boundary, data, phase_id)) return 0;
+    boundary->game_work = game_work;
+    if (game_work != NULL) {
+        (void)TingleNativeGameWork_SetFlag(game_work, 0x3F3);
+        boundary->resume_active = 1;
+    }
+    return 1;
+}
+
 void TingleNativeGamePhaseBoundary_Destroy(TingleNativeGamePhaseBoundary *boundary)
 {
     if (boundary == NULL) return;
+    if (boundary->game_work != NULL)
+        (void)TingleNativeGameWork_ClearFlag(boundary->game_work, 0x3F3);
     TingleNativeActorRuntime_Destroy(boundary->actor_runtime);
     free(boundary->secondary_descriptors);
     free(boundary->primary_descriptors);
@@ -339,7 +356,18 @@ void TingleNativeGamePhaseBoundary_Destroy(TingleNativeGamePhaseBoundary *bounda
 s32 TingleNativeGamePhaseBoundary_Update(TingleNativeGamePhaseBoundary *boundary,
                                          const TingleNativeInput *input)
 {
-    (void)boundary;
+    if (boundary->resume_active) {
+        if (boundary->resume_state == 0) {
+            /* Retail states zero and one fall through during the first update. */
+            boundary->resume_state = 2;
+        } else if (boundary->resume_state == 2) {
+            if (TingleNativeGameWork_TestFlag(boundary->game_work, 0x386) == 1)
+                (void)TingleNativeGameWork_ClearFlag(boundary->game_work, 0x386);
+            (void)TingleNativeGameWork_ClearFlag(boundary->game_work, 0x3F3);
+            boundary->resume_active = 0;
+            boundary->resume_state = 3;
+        }
+    }
     return (input->pressed & TINGLE_KEY_B) != 0;
 }
 
