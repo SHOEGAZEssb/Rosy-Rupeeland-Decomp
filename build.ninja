@@ -3971,7 +3971,7 @@ build build/reports/graphics_vram_allocator.json: objdiff build/decomp/delinks/s
 
 build build/reports/graphics_vram_allocator.txt: match_report build/reports/graphics_vram_allocator.json | tools/report_objdiff.py
   report_json = build/reports/graphics_vram_allocator.json
-  report_args = --section .text --function func_02072188 --function func_020721b0 --function func_020721b4 --function func_02072234 --function func_0207230c
+  report_args = --section .text --function GraphicsVramRangeNode_Init --function GraphicsVramRangeNode_Destroy --function GraphicsVramAllocator_Init --function GraphicsVramAllocator_Allocate --function GraphicsVramAllocator_Release
 
 build build/reports/graphics_render_entry_pool.json: objdiff build/decomp/delinks/src/graphics/graphics_render_entry_pool.o | build/decomp/src/graphics/graphics_render_entry_pool.o
   target_object = build/decomp/delinks/src/graphics/graphics_render_entry_pool.o
@@ -3987,7 +3987,7 @@ build build/reports/graphics_transfer_queue.json: objdiff build/decomp/delinks/s
 
 build build/reports/graphics_transfer_queue.txt: match_report build/reports/graphics_transfer_queue.json | tools/report_objdiff.py
   report_json = build/reports/graphics_transfer_queue.json
-  report_args = --section .text --function func_0207260c --function func_02072620 --function func_02072624 --function func_02072644 --function func_02072684 --function func_020726e4 --function func_02072748 --function func_0207279c
+  report_args = --section .text --function GraphicsTransferEntry_Init --function GraphicsTransferEntry_Destroy --function GraphicsTransferEntry_Clear --function GraphicsTransferQueue_Init --function GraphicsTransferQueue_Reset --function GraphicsTransferQueue_Enqueue --function GraphicsTransferQueue_Remove --function GraphicsTransferQueue_FindBySource
 
 build build/reports/graphics_indexed_chain_pool.json: objdiff build/decomp/delinks/src/graphics/graphics_indexed_chain_pool.o | build/decomp/src/graphics/graphics_indexed_chain_pool.o
   target_object = build/decomp/delinks/src/graphics/graphics_indexed_chain_pool.o

@@ -1,10 +1,10 @@
 #include "tingle/graphics_transfer_queue.h"
 
 /*
- * Fixed-capacity queue used to stage graphics transfers. The recovered callers
- * enqueue records with a transfer-family value and three payload words, then
- * later locate or remove records. Payload semantics remain deliberately
- * address-based until the transfer consumer is reconstructed.
+ * Fixed-capacity queue used to stage graphics transfers. Recovered upload
+ * producers identify the four record values as transfer family, source,
+ * destination offset, and byte size. The eventual hardware consumer remains
+ * outside this reconstructed object.
  */
 
 #ifdef __cplusplus
@@ -23,9 +23,10 @@ extern void __construct_array(void *array, u32 count, u32 elementSize,
  * Initialize entry through the shared clearing routine and return it. Only the
  * supplied descriptor changes; there are no SDK or graphics-hardware effects.
  */
-GraphicsTransferEntry *func_0207260c(GraphicsTransferEntry *entry)
+GraphicsTransferEntry *GraphicsTransferEntry_Init(
+    GraphicsTransferEntry *entry)
 {
-    func_02072624(entry);
+    GraphicsTransferEntry_Clear(entry);
     return entry;
 }
 
@@ -33,7 +34,7 @@ GraphicsTransferEntry *func_0207260c(GraphicsTransferEntry *entry)
  * No-op entry destructor used by the Metrowerks array runtime. It changes no
  * state, returns no value, and has no SDK or graphics-hardware effects.
  */
-void func_02072620(GraphicsTransferEntry *entry)
+void GraphicsTransferEntry_Destroy(GraphicsTransferEntry *entry)
 {
     (void)entry;
 }
@@ -42,14 +43,14 @@ void func_02072620(GraphicsTransferEntry *entry)
  * Clear both list links and all four payload words in entry. The descriptor is
  * mutated in place; the function returns no value and performs no hardware I/O.
  */
-void func_02072624(GraphicsTransferEntry *entry)
+void GraphicsTransferEntry_Clear(GraphicsTransferEntry *entry)
 {
     entry->next = 0;
     entry->prev = 0;
-    entry->field_08 = 0;
-    entry->field_0c = 0;
-    entry->field_10 = 0;
-    entry->field_14 = 0;
+    entry->source = 0;
+    entry->transferType = 0;
+    entry->destination = 0;
+    entry->size = 0;
 }
 
 /*
@@ -57,14 +58,15 @@ void func_02072624(GraphicsTransferEntry *entry)
  * a full free list. The initialized queue is returned; only the compiler array
  * runtime is called and no transfer is submitted.
  */
-GraphicsTransferQueue *func_02072644(GraphicsTransferQueue *queue)
+GraphicsTransferQueue *GraphicsTransferQueue_Init(
+    GraphicsTransferQueue *queue)
 {
     __construct_array(
         queue->entries, GRAPHICS_TRANSFER_QUEUE_CAPACITY,
         sizeof(GraphicsTransferEntry),
-        (void (*)(void *))func_0207260c,
-        (void (*)(void *))func_02072620);
-    func_02072684(queue);
+        (void (*)(void *))GraphicsTransferEntry_Init,
+        (void (*)(void *))GraphicsTransferEntry_Destroy);
+    GraphicsTransferQueue_Reset(queue);
     return queue;
 }
 
@@ -74,7 +76,7 @@ GraphicsTransferQueue *func_02072644(GraphicsTransferQueue *queue)
  * them and returns no value; callers must own any payload lifetime separately.
  */
 #ifndef MATCHING
-void func_02072684(GraphicsTransferQueue *queue)
+void GraphicsTransferQueue_Reset(GraphicsTransferQueue *queue)
 {
     s32 i = 0;
     GraphicsTransferQueue *base = queue;
@@ -85,7 +87,7 @@ void func_02072684(GraphicsTransferQueue *queue)
     base->count = 0;
 
     for (; i < GRAPHICS_TRANSFER_QUEUE_CAPACITY; i++) {
-        func_02072624(&base->entries[i]);
+        GraphicsTransferEntry_Clear(&base->entries[i]);
     }
     for (i = 0; i < GRAPHICS_TRANSFER_QUEUE_CAPACITY - 1; i++) {
         base->entries[i].next = &base->entries[i + 1];
@@ -93,7 +95,7 @@ void func_02072684(GraphicsTransferQueue *queue)
 }
 #else
 /* This matching fallback implements the documented portable C directly above. */
-asm void func_02072684(GraphicsTransferQueue *queue)
+asm void GraphicsTransferQueue_Reset(GraphicsTransferQueue *queue)
 {
     stmdb sp!, {r4, r5, r6, lr}
     mov r6, #0
@@ -104,7 +106,7 @@ asm void func_02072684(GraphicsTransferQueue *queue)
     str r6, [r4, #0xc0c]
     mov r5, #0x18
     mla r0, r6, r5, r4
-    bl func_02072624
+    bl GraphicsTransferEntry_Clear
     add r6, r6, #1
     cmp r6, #0x80
     DCD 0xBAFFFFFA
@@ -123,12 +125,13 @@ asm void func_02072684(GraphicsTransferQueue *queue)
 #endif
 
 /*
- * Take one free descriptor, append it to the FIFO, copy the four supplied
- * payload values, and increment count. A full queue silently drops the request.
- * The routine only stages metadata and does not itself access graphics hardware.
+ * Take one free descriptor, append it to the FIFO, copy the transfer family,
+ * source, destination, and byte size, and increment count. A full queue
+ * silently drops the request. This stages metadata without accessing hardware.
  */
-void func_020726e4(GraphicsTransferQueue *queue, u32 field_0c,
-                   void *field_08, u32 field_10, u32 field_14)
+void GraphicsTransferQueue_Enqueue(GraphicsTransferQueue *queue,
+                                   u32 transferType, void *source,
+                                   u32 destination, u32 size)
 {
     GraphicsTransferEntry *entry = queue->freeEntries;
 
@@ -146,10 +149,10 @@ void func_020726e4(GraphicsTransferQueue *queue, u32 field_0c,
     entry->next = 0;
     queue->tail = entry;
     queue->count++;
-    entry->field_0c = field_0c;
-    entry->field_08 = field_08;
-    entry->field_10 = field_10;
-    entry->field_14 = field_14;
+    entry->transferType = transferType;
+    entry->source = source;
+    entry->destination = destination;
+    entry->size = size;
 }
 
 /*
@@ -157,7 +160,8 @@ void func_020726e4(GraphicsTransferQueue *queue, u32 field_0c,
  * and decrement count. Payload words are left intact until reuse or reset. The
  * function returns no value and performs no transfer or hardware operation.
  */
-void func_02072748(GraphicsTransferQueue *queue, GraphicsTransferEntry *entry)
+void GraphicsTransferQueue_Remove(GraphicsTransferQueue *queue,
+                                  GraphicsTransferEntry *entry)
 {
     GraphicsTransferEntry *prev;
     GraphicsTransferEntry *next;
@@ -189,17 +193,17 @@ void func_02072748(GraphicsTransferQueue *queue, GraphicsTransferEntry *entry)
 }
 
 /*
- * Search the FIFO from head for the first entry whose offset-0x08 payload is
- * pointer-equal to field_08. Returns that descriptor or null; no state changes
+ * Search the FIFO from head for the first entry whose source pointer is
+ * pointer-equal to source. Returns that descriptor or null; no state changes
  * and no SDK or graphics-hardware effects occur.
  */
-GraphicsTransferEntry *func_0207279c(GraphicsTransferQueue *queue,
-                                     const void *field_08)
+GraphicsTransferEntry *GraphicsTransferQueue_FindBySource(
+    GraphicsTransferQueue *queue, const void *source)
 {
     GraphicsTransferEntry *entry = queue->head;
 
     while (entry != 0) {
-        if (entry->field_08 == field_08) {
+        if (entry->source == source) {
             return entry;
         }
         entry = entry->next;

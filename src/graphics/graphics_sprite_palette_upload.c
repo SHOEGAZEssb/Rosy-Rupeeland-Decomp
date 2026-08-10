@@ -55,8 +55,9 @@ void func_02075630(GraphicsSpriteRenderer *renderer)
     for (index = 0; index < resource->header->recordCount; index++) {
         u8 *source = (u8 *)func_02070874(resource) + index * 0x20;
 
-        func_020726e4(&renderer->transferQueue, 2, source,
-                      (u32)entry->index << 5, 0x20);
+        GraphicsTransferQueue_Enqueue(
+            &renderer->transferQueue, 2, source,
+            (u32)entry->index << 5, 0x20);
         entry = entry->chainNext;
     }
     GX_VBlankIntr(data_021ede68.interruptState);
@@ -86,7 +87,7 @@ sprite_palette_upload_loop:
     add r0, r9, #0x1c00
     add r2, r2, r7, lsl #5
     mov r3, r3, lsl #5
-    bl func_020726e4
+    bl GraphicsTransferQueue_Enqueue
     ldr r6, [r6, #8]
     add r7, r7, #1
 sprite_palette_upload_test:

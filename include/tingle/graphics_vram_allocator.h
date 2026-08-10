@@ -39,13 +39,14 @@ typedef char GraphicsVramAllocatorSizeCheck[
 extern "C" {
 #endif
 
-void func_02072188(GraphicsVramRangeNode *node);
-void func_020721b0(GraphicsVramRangeNode *node);
-GraphicsVramAllocator *func_020721b4(GraphicsVramAllocator *allocator);
-GraphicsVramRangeNode *func_02072234(GraphicsVramAllocator *allocator,
-                                    s32 blockCount, void *owner, u8 type);
-void func_0207230c(GraphicsVramAllocator *allocator,
-                   GraphicsVramRangeNode *node);
+void GraphicsVramRangeNode_Init(GraphicsVramRangeNode *node);
+void GraphicsVramRangeNode_Destroy(GraphicsVramRangeNode *node);
+GraphicsVramAllocator *GraphicsVramAllocator_Init(
+    GraphicsVramAllocator *allocator);
+GraphicsVramRangeNode *GraphicsVramAllocator_Allocate(
+    GraphicsVramAllocator *allocator, s32 blockCount, void *owner, u8 type);
+void GraphicsVramAllocator_Release(GraphicsVramAllocator *allocator,
+                                   GraphicsVramRangeNode *node);
 
 #ifdef __cplusplus
 }

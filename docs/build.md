@@ -70,7 +70,7 @@ C for portable builds. Its backward branches are emitted as exact ARM words
 because MWCC otherwise adds fallthrough branches to labels inside the inline
 assembly function.
 
-`func_02072234` uses the same hand-encoded-branch technique. Objdiff displays
+`GraphicsVramAllocator_Allocate` uses the same hand-encoded-branch technique. Objdiff displays
 its exact `0x1AFFFFF1` `bne` word as data rather than an instruction, leaving
 that function's standalone score at `98.888885%`; the final ARM9 and ROM remain
 the exact gate for the unit.

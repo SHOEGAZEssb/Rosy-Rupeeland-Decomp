@@ -80,7 +80,7 @@ void func_0207442c(void *ownerPointer, GraphicsSpriteState *state)
     if (state == 0) {
         return;
     }
-    func_0207230c(&owner->vramAllocator,
+    GraphicsVramAllocator_Release(&owner->vramAllocator,
                   (GraphicsVramRangeNode *)state->field_0c);
     func_02074d40(owner, state->field_10);
     state->field_08 = data_021ede68.freeHead;
@@ -107,7 +107,7 @@ void func_0207447c(void *ownerPointer, GraphicsSpriteState *state,
         return;
     }
     if (state->field_14 != field14) {
-        func_0207230c(&owner->vramAllocator,
+        GraphicsVramAllocator_Release(&owner->vramAllocator,
                       (GraphicsVramRangeNode *)state->field_0c);
         state->field_0c = 0;
         state->field_14 = field14;
@@ -125,7 +125,7 @@ void func_0207447c(void *ownerPointer, GraphicsSpriteState *state,
             ((GraphicsSpriteResource1c *)state->animationResource)
                     ->field_20->field_24 !=
                 ((GraphicsSpriteResource1c *)field1c)->field_20->field_24) {
-            func_0207230c(&owner->vramAllocator,
+            GraphicsVramAllocator_Release(&owner->vramAllocator,
                           (GraphicsVramRangeNode *)state->field_0c);
             state->field_0c = 0;
         }
@@ -154,7 +154,7 @@ asm void func_0207447c(void *owner, GraphicsSpriteState *state,
     add r0, r8, #0x48
     ldr r1, [r7, #0xc]
     add r0, r0, #0x400
-    bl func_0207230c
+    bl GraphicsVramAllocator_Release
     mov r0, #0
     str r0, [r7, #0xc]
     str r6, [r7, #0x14]
@@ -193,7 +193,7 @@ sprite_replace_field1c:
     add r0, r8, #0x48
     ldr r1, [r7, #0xc]
     add r0, r0, #0x400
-    bl func_0207230c
+    bl GraphicsVramAllocator_Release
     mov r0, #0
     str r0, [r7, #0xc]
 sprite_replace_store_field1c:

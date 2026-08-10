@@ -23,7 +23,7 @@ extern void __construct_array(void *array, u32 count, u32 elementSize,
  * Clear every link and allocation field in node. The constructor mutates the
  * supplied descriptor, returns no value, and has no SDK or hardware effects.
  */
-void func_02072188(GraphicsVramRangeNode *node)
+void GraphicsVramRangeNode_Init(GraphicsVramRangeNode *node)
 {
     node->next = 0;
     node->prev = 0;
@@ -39,7 +39,7 @@ void func_02072188(GraphicsVramRangeNode *node)
  * No-op descriptor destructor used by the Metrowerks array-construction
  * runtime. It accepts one node, changes no state, and returns no value.
  */
-void func_020721b0(GraphicsVramRangeNode *node)
+void GraphicsVramRangeNode_Destroy(GraphicsVramRangeNode *node)
 {
     (void)node;
 }
@@ -49,15 +49,16 @@ void func_020721b0(GraphicsVramRangeNode *node)
  * and expose node 0 as one free range spanning all 0x400 blocks. The allocator
  * is mutated in place and returned; only the compiler array runtime is used.
  */
-GraphicsVramAllocator *func_020721b4(GraphicsVramAllocator *allocator)
+GraphicsVramAllocator *GraphicsVramAllocator_Init(
+    GraphicsVramAllocator *allocator)
 {
     s32 i;
 
     __construct_array(
         allocator->nodes, GRAPHICS_VRAM_RANGE_CAPACITY,
         sizeof(GraphicsVramRangeNode),
-        (void (*)(void *))func_02072188,
-        (void (*)(void *))func_020721b0);
+        (void (*)(void *))GraphicsVramRangeNode_Init,
+        (void (*)(void *))GraphicsVramRangeNode_Destroy);
 
     allocator->freeNodes = &allocator->nodes[1];
     for (i = 1; i < GRAPHICS_VRAM_RANGE_CAPACITY - 1; i++) {
@@ -78,8 +79,8 @@ GraphicsVramAllocator *func_020721b4(GraphicsVramAllocator *allocator)
  * This updates allocator metadata but does not directly touch VRAM hardware.
  */
 #ifndef MATCHING
-GraphicsVramRangeNode *func_02072234(GraphicsVramAllocator *allocator,
-                                    s32 blockCount, void *owner, u8 type)
+GraphicsVramRangeNode *GraphicsVramAllocator_Allocate(
+    GraphicsVramAllocator *allocator, s32 blockCount, void *owner, u8 type)
 {
     GraphicsVramRangeNode *node = (GraphicsVramRangeNode *)allocator;
     GraphicsVramRangeNode *best = 0;
@@ -141,8 +142,8 @@ GraphicsVramRangeNode *func_02072234(GraphicsVramAllocator *allocator,
  * MWCC inserts a fallthrough branch for a named backward target, so the DCD
  * below hand-encodes `bne` 15 instructions back as ARM word 0x1AFFFFF1.
  */
-asm GraphicsVramRangeNode *func_02072234(GraphicsVramAllocator *allocator,
-                                        s32 blockCount, void *owner, u8 type)
+asm GraphicsVramRangeNode *GraphicsVramAllocator_Allocate(
+    GraphicsVramAllocator *allocator, s32 blockCount, void *owner, u8 type)
 {
     stmdb sp!, {r4, r5, r6, r7}
     mov r4, r0
@@ -211,8 +212,8 @@ vram_alloc_done:
  * null node is ignored; the function returns no value or direct SDK result.
  */
 #ifndef MATCHING
-void func_0207230c(GraphicsVramAllocator *allocator,
-                   GraphicsVramRangeNode *node)
+void GraphicsVramAllocator_Release(GraphicsVramAllocator *allocator,
+                                   GraphicsVramRangeNode *node)
 {
     u16 refCount;
 
@@ -258,8 +259,8 @@ void func_0207230c(GraphicsVramAllocator *allocator,
 }
 #else
 /* This matching fallback implements the documented portable C directly above. */
-asm void func_0207230c(GraphicsVramAllocator *allocator,
-                       GraphicsVramRangeNode *node)
+asm void GraphicsVramAllocator_Release(GraphicsVramAllocator *allocator,
+                                       GraphicsVramRangeNode *node)
 {
     cmp r1, #0
     bxeq lr

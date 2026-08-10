@@ -33,8 +33,8 @@ extern "C" {
 extern GraphicsSpriteStatePoolPrefix data_021ede68;
 extern void func_02070418(void *resource);
 extern s32 func_0207043c(void *resource);
-extern void func_020726e4(void *queue, u32 type, void *source,
-                          u32 destination, u32 size);
+extern void GraphicsTransferQueue_Enqueue(void *queue, u32 type, void *source,
+                                          u32 destination, u32 size);
 extern u32 GX_VBlankIntr(u32 state);
 
 #ifdef __cplusplus
@@ -69,13 +69,15 @@ GraphicsVramRangeNode *func_02074a88(void *rendererPointer, void *resourcePointe
         }
         size = func_0207043c(resource);
         blocks = (size + 127) / 128;
-        node = func_02072234(&renderer->vramAllocator, blocks, resource, 1);
+        node = GraphicsVramAllocator_Allocate(
+            &renderer->vramAllocator, blocks, resource, 1);
         interruptState = GX_VBlankIntr(0);
         data_021ede68.interruptState = interruptState;
         node->field_0c = 1;
         size = func_0207043c(resource);
-        func_020726e4(renderer->transferQueue, 1, resource->field_24,
-                      (u32)node->blockStart << 7, (u32)size);
+        GraphicsTransferQueue_Enqueue(
+            renderer->transferQueue, 1, resource->field_24,
+            (u32)node->blockStart << 7, (u32)size);
         GX_VBlankIntr(data_021ede68.interruptState);
     } else {
         node->refCount++;
@@ -114,7 +116,7 @@ sprite_vram_binding_prepared:
     mov r1, r0, lsr #16
     add r0, r3, #0x400
     mov r3, #1
-    bl func_02072234
+    bl GraphicsVramAllocator_Allocate
     mov r4, r0
     mov r0, #0
     bl GX_VBlankIntr
@@ -132,7 +134,7 @@ sprite_vram_binding_prepared:
     str r0, [sp]
     add r0, r1, #0x1c00
     mov r1, #1
-    bl func_020726e4
+    bl GraphicsTransferQueue_Enqueue
     ldr r0, =data_021ede68
     ldr r0, [r0, #4]
     bl GX_VBlankIntr

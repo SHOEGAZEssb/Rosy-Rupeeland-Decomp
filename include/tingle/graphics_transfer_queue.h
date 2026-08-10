@@ -7,14 +7,14 @@ enum { GRAPHICS_TRANSFER_QUEUE_CAPACITY = 128 };
 
 typedef struct GraphicsTransferEntry GraphicsTransferEntry;
 
-/* One queued graphics transfer; payload meanings are not yet fully identified. */
+/* One queued graphics transfer request recovered from both upload producers. */
 struct GraphicsTransferEntry {
     GraphicsTransferEntry *prev;
     GraphicsTransferEntry *next;
-    void *field_08;
-    u32 field_0c;
-    u32 field_10;
-    u32 field_14;
+    void *source;
+    u32 transferType;
+    u32 destination;
+    u32 size;
 };
 
 /* Fixed-capacity FIFO with a separate descriptor free list. */
@@ -35,17 +35,20 @@ typedef char GraphicsTransferQueueSizeCheck[
 extern "C" {
 #endif
 
-GraphicsTransferEntry *func_0207260c(GraphicsTransferEntry *entry);
-void func_02072620(GraphicsTransferEntry *entry);
-void func_02072624(GraphicsTransferEntry *entry);
-GraphicsTransferQueue *func_02072644(GraphicsTransferQueue *queue);
-void func_02072684(GraphicsTransferQueue *queue);
-void func_020726e4(GraphicsTransferQueue *queue, u32 field_0c,
-                   void *field_08, u32 field_10, u32 field_14);
-void func_02072748(GraphicsTransferQueue *queue,
-                   GraphicsTransferEntry *entry);
-GraphicsTransferEntry *func_0207279c(GraphicsTransferQueue *queue,
-                                     const void *field_08);
+GraphicsTransferEntry *GraphicsTransferEntry_Init(
+    GraphicsTransferEntry *entry);
+void GraphicsTransferEntry_Destroy(GraphicsTransferEntry *entry);
+void GraphicsTransferEntry_Clear(GraphicsTransferEntry *entry);
+GraphicsTransferQueue *GraphicsTransferQueue_Init(
+    GraphicsTransferQueue *queue);
+void GraphicsTransferQueue_Reset(GraphicsTransferQueue *queue);
+void GraphicsTransferQueue_Enqueue(GraphicsTransferQueue *queue,
+                                   u32 transferType, void *source,
+                                   u32 destination, u32 size);
+void GraphicsTransferQueue_Remove(GraphicsTransferQueue *queue,
+                                  GraphicsTransferEntry *entry);
+GraphicsTransferEntry *GraphicsTransferQueue_FindBySource(
+    GraphicsTransferQueue *queue, const void *source);
 
 #ifdef __cplusplus
 }
