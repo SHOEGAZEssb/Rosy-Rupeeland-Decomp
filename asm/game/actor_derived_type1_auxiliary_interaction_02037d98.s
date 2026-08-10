@@ -8,7 +8,7 @@
 .extern data_021052fc
 .extern data_02105310
 .extern data_021f5ebc
-.extern func_020099c0
+.extern ActorMotionJitter_EnsureMinimum
 .extern func_0200b294
 .extern func_02032a94
 .extern Actor_IsAtCachedTerrainHeight
@@ -141,7 +141,7 @@ ActorDerivedType1_HandleAuxiliaryInteraction: ; 0x02037d98
     add r0, r0, #0x3bc
     add r0, r0, #0x2c00
     mov r2, #0x2
-    bl func_020099c0
+    bl ActorMotionJitter_EnsureMinimum
     b .L_02038080
 .L_02037f4c:
     ldr r0, [r4, #0x260]

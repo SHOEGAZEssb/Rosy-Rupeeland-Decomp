@@ -12,7 +12,7 @@
 .extern func_020050a4
 .extern VecFx32Triple_Destroy
 .extern VecFx32Bezier_Evaluate3D
-.extern func_020099c0
+.extern ActorMotionJitter_EnsureMinimum
 .extern func_0201e0ec
 .extern func_0201f864
 .extern Actor_GetCachedTerrainHeight
@@ -417,7 +417,7 @@ func_ov095_0221858c:
     mov r2, #0x3
     add r0, r0, #0x3bc
     add r0, r0, #0x2c00
-    bl func_020099c0
+    bl ActorMotionJitter_EnsureMinimum
 .L_02218b04:
     add r0, sp, #0x2a8
     bl func_02005058
@@ -943,7 +943,7 @@ func_ov095_0221858c:
     mov r2, #0xa
     add r0, r0, #0x3bc
     add r0, r0, #0x2c00
-    bl func_020099c0
+    bl ActorMotionJitter_EnsureMinimum
     mov r0, #0xe
     str r0, [sp, #0x0]
     ldr r1, [r4, #0x24]

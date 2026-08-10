@@ -5,8 +5,8 @@
 .extern func_02005058
 .extern ActorMotionTriple_Assign
 .extern func_020befec
-.global func_020095cc
-func_020095cc: ; 0x020095cc
+.global ActorMotion_SetOscillation
+ActorMotion_SetOscillation: ; 0x020095cc
     stmdb sp!, {r3, r4, r5, lr}
     sub sp, sp, #0x28
     mov r5, r0
@@ -23,7 +23,7 @@ func_020095cc: ; 0x020095cc
     add r0, sp, #0x0
     mov r3, r4
     rsb r1, r2, #0x0
-    bl func_0200964c
+    bl ActorMotionOscillation_InitInterval
     add r0, r5, #0x44
     add r1, sp, #0x0
     bl ActorMotionTriple_Assign
@@ -31,7 +31,7 @@ func_020095cc: ; 0x020095cc
     mov r3, r4
     add r0, sp, #0xc
     rsb r1, r2, #0x0
-    bl func_0200964c
+    bl ActorMotionOscillation_InitInterval
     add r0, r5, #0x50
     add r1, sp, #0xc
     bl ActorMotionTriple_Assign
@@ -40,10 +40,10 @@ func_020095cc: ; 0x020095cc
     add sp, sp, #0x28
     ldmia sp!, {r3, r4, r5, pc}
 
-    .size func_020095cc, .-func_020095cc
+    .size ActorMotion_SetOscillation, .-ActorMotion_SetOscillation
 
-    .global func_0200964c
-func_0200964c: ; 0x0200964c
+    .global ActorMotionOscillation_InitInterval
+ActorMotionOscillation_InitInterval: ; 0x0200964c
     stmdb sp!, {r4, lr}
     mov r4, r0
     sub r0, r1, r2
@@ -62,4 +62,4 @@ func_0200964c: ; 0x0200964c
     str r0, [r4, #0x8]
     mov r0, r4
     ldmia sp!, {r4, pc}
-    .size func_0200964c, .-func_0200964c
+    .size ActorMotionOscillation_InitInterval, .-ActorMotionOscillation_InitInterval

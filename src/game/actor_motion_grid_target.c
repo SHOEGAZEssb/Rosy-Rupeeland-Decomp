@@ -10,7 +10,7 @@
 extern s32 func_020befec(s32 numerator, s32 denominator);
 extern s32 func_020adc40(s32 value);
 extern s32 func_020adc90(s32 numerator, s32 denominator);
-extern u32 func_020093ac(const VecFx32Object *from,
+extern u32 VecFx32_GetDirectionAngle(const VecFx32Object *from,
                          const VecFx32Object *to);
 extern const s16 data_020c9670[];
 
@@ -34,7 +34,7 @@ static s32 actor_motion_multiply_fx32(s16 value, s32 scale)
  * the count is also returned. Fixed-point math helpers may use SDK division,
  * square-root, and angle routines but no hardware state is changed.
  */
-s32 func_0200920c(ActorMotion *self, s32 xIndex, s32 yIndex,
+s32 ActorMotion_ConfigureGridTarget(ActorMotion *self, s32 xIndex, s32 yIndex,
                   s32 divisor, s32 useDirectionTable)
 {
     VecFx32Object destination;
@@ -68,7 +68,7 @@ s32 func_0200920c(ActorMotion *self, s32 xIndex, s32 yIndex,
             func_020adc90(func_020adc40(actor_motion_square_fx32(dx) +
                                         actor_motion_square_fx32(dy)),
                           divisor) >> 12;
-        direction = func_020093ac(&self->position, &destination) >> 4;
+        direction = VecFx32_GetDirectionAngle(&self->position, &destination) >> 4;
         self->field_1c =
             actor_motion_multiply_fx32(data_020c9670[direction * 2 + 1],
                                        divisor);

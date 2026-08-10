@@ -7,7 +7,7 @@
 .extern func_02005058
 .extern func_020050a4
 .extern func_02008740
-.extern func_020097ec
+.extern ActorMotionJitter_Update
 .extern func_0200a124
 .extern func_0200a1a0
 .extern func_020116e8
@@ -52,7 +52,7 @@ func_02009d80: ; 0x02009d80
     bl func_02011788
     mov r1, r0
     mov r0, r4
-    bl func_020097ec
+    bl ActorMotionJitter_Update
     mov r0, r4
     mov r1, r5
     mov r2, r9
@@ -114,7 +114,7 @@ L_02009ee4:
 L_02009eec:
     mov r0, r4
     mov r1, r9
-    bl func_020097ec
+    bl ActorMotionJitter_Update
 L_02009ef8:
     add r0, sp, #0x20
     add r1, r4, #0x8

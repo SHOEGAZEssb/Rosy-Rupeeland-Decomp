@@ -14,7 +14,7 @@
 ActorMotionAreaFollower *func_02009d14(ActorMotionAreaFollower *self,
                                        void *areaContext)
 {
-    func_02009790(&self->jitter);
+    ActorMotionJitter_Init(&self->jitter);
     self->areaContext = areaContext;
     func_0200500c(&self->offset, 0, 0, 0);
     self->transitionActive = 0;

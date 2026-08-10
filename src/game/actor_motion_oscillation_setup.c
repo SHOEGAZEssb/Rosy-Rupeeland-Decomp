@@ -18,7 +18,7 @@ extern s32 func_020befec(s32 numerator, s32 denominator);
  * negative to positive tile amplitudes over duration. Embedded movement state
  * changes; temporary vector construction has no SDK or hardware side effects.
  */
-void func_020095cc(ActorMotion *self, s32 xAmplitude, s32 yAmplitude,
+void ActorMotion_SetOscillation(ActorMotion *self, s32 xAmplitude, s32 yAmplitude,
                    s32 duration)
 {
     VecFx32Object amplitudes;
@@ -27,10 +27,10 @@ void func_020095cc(ActorMotion *self, s32 xAmplitude, s32 yAmplitude,
 
     self->field_30 |= 2;
     func_0200500c(&amplitudes, xAmplitude << 12, yAmplitude << 12, 0);
-    func_0200964c(&first, -amplitudes.value.x,
+    ActorMotionOscillation_InitInterval(&first, -amplitudes.value.x,
                   amplitudes.value.x, duration);
     ActorMotionTriple_Assign(&self->state.first, &first);
-    func_0200964c(&second, -amplitudes.value.y,
+    ActorMotionOscillation_InitInterval(&second, -amplitudes.value.y,
                   amplitudes.value.y, duration);
     ActorMotionTriple_Assign(&self->state.second, &second);
     func_02005058(&amplitudes);
@@ -42,7 +42,7 @@ void func_020095cc(ActorMotion *self, s32 xAmplitude, s32 yAmplitude,
  * interval midpoint, and the third is 0x10000 divided by duration through the
  * fixed-point SDK divider. Returns result and changes no external state.
  */
-ActorMotionTriple *func_0200964c(ActorMotionTriple *result, s32 first,
+ActorMotionTriple *ActorMotionOscillation_InitInterval(ActorMotionTriple *result, s32 first,
                                  s32 second, s32 duration)
 {
     s32 difference = first - second;

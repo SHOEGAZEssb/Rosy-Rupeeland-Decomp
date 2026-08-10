@@ -10,7 +10,7 @@
 .extern func_020050f0
 .extern VecFx32_Subtract
 .extern func_02008378
-.extern func_020099c0
+.extern ActorMotionJitter_EnsureMinimum
 .extern func_02009d78
 .extern func_02010c00
 .extern func_0201ded4
@@ -341,7 +341,7 @@ ActorDerivedType1_ApplyWeightedCollisionDisplacement: ; 0x0203825c
     mov r2, #0x7
     add r0, r0, #0x3bc
     add r0, r0, #0x2c00
-    bl func_020099c0
+    bl ActorMotionJitter_EnsureMinimum
     mov r0, r7
     mov r1, #0x26
     mov r2, #0x0

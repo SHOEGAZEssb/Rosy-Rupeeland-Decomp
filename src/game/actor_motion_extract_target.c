@@ -20,7 +20,7 @@ extern s32 Actor_GetCachedTerrainHeight(void *actor);
  * selects the alternate Y calculation and invokes Actor_GetCachedTerrainHeight, whose exact
  * actor-side effect is not yet known. Returns no value; no hardware is touched.
  */
-void func_02009514(VecFx32Object *result, const ActorMotion *self)
+void ActorMotion_GetBoundActorTargetPosition(VecFx32Object *result, const ActorMotion *self)
 {
     u8 *actor = (u8 *)self->actor;
 

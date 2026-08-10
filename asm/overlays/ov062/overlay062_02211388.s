@@ -11,7 +11,7 @@
 .extern GraphicsSpriteState_SetWorldPosition
 .extern GraphicsSpriteState_SetDepthOrderedWorldPosition
 .extern GamePhaseRuntime_UpdateActorPresentationState
-.extern func_020099c0
+.extern ActorMotionJitter_EnsureMinimum
 .extern func_0202baec
 .extern Type7Actor_GetStateCode
 .extern Type7Actor_ConfigureAttachmentController
@@ -240,7 +240,7 @@ func_ov062_02211388:
     add r0, r0, #0x3bc
     add r0, r0, #0x2c00
     mov r2, #0x2
-    bl func_020099c0
+    bl ActorMotionJitter_EnsureMinimum
     mov r1, #0x2000
     ldr r0, .L_02211ab0
     str r1, [r4, #0x70]

@@ -7,7 +7,7 @@
  * that are already greater or equal are preserved. Returns no value, truncates
  * stored inputs to s16 like retail, and changes no external or hardware state.
  */
-void func_020099c0(ActorMotionJitter *self, s32 minimumFrames,
+void ActorMotionJitter_EnsureMinimum(ActorMotionJitter *self, s32 minimumFrames,
                    s32 minimumRadius)
 {
     if (self->remainingFrames < minimumFrames)

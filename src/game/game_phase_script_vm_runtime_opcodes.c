@@ -9,8 +9,8 @@ extern void *data_021052fc;
 extern void OS_Halt(void);
 extern void *GamePhaseRuntime_GetActorCollection(void *runtime, s32 index);
 extern void *ActorCollection_FindActorByDescriptorValue(void *collection, s32 index);
-extern u32 func_0200920c(void *collection, u32 a, u32 b, u32 c, u32 d);
-extern u32 func_020093cc(void *collection, u32 a, u32 b);
+extern u32 ActorMotion_ConfigureGridTarget(void *collection, u32 a, u32 b, u32 c, u32 d);
+extern u32 ActorMotion_ConfigureBoundActorTarget(void *collection, u32 a, u32 b);
 extern void ActorMotion_SetMode2(void *collection);
 extern void ActorMotion_SetMode1AndClearOutputs(void *collection);
 extern void func_0200a114(void *collection, void *object);
@@ -37,10 +37,10 @@ s32 func_02012814(GamePhaseScriptVm *self)
     u8 *runtime = (u8 *)data_021052fc;
     switch (selector) {
     case 1:
-        func_020127f8(self, func_0200920c(runtime + 0x2fbc, a, b, c, d));
+        func_020127f8(self, ActorMotion_ConfigureGridTarget(runtime + 0x2fbc, a, b, c, d));
         break;
     case 2:
-        func_020127f8(self, func_020093cc(runtime + 0x2fbc, a, b));
+        func_020127f8(self, ActorMotion_ConfigureBoundActorTarget(runtime + 0x2fbc, a, b));
         break;
     case 3:
         if (a)
@@ -61,10 +61,10 @@ s32 func_02012814(GamePhaseScriptVm *self)
         func_020127f8(self, *(u32 *)(runtime + 0x2fec) & 1);
         break;
     case 7:
-        func_020127f8(self, func_0200920c(runtime + 0x3044, a, b, c, d));
+        func_020127f8(self, ActorMotion_ConfigureGridTarget(runtime + 0x3044, a, b, c, d));
         break;
     case 8:
-        func_020127f8(self, func_020093cc(runtime + 0x3044, a, b));
+        func_020127f8(self, ActorMotion_ConfigureBoundActorTarget(runtime + 0x3044, a, b));
         break;
     case 9:
         if (a)

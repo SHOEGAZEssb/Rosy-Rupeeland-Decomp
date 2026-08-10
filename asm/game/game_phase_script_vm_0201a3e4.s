@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/game_phase_script_vm_value_generation_opcode.c.
 .text
-.extern func_0200964c
-.extern func_020096f0
+.extern ActorMotionOscillation_InitInterval
+.extern ActorMotionOscillation_Sample
 .extern func_02012704
 .extern func_020127f8
 .extern func_020befec
@@ -39,12 +39,12 @@ L_0201a444:
     mov r1, r5
     mov r2, r6
     mov r3, r7
-    bl func_0200964c
+    bl ActorMotionOscillation_InitInterval
     ldr r1, L_0201a508
     add r0, sp, #0x20
     ldr r1, [r1, #0x64]
     mov r2, #0x0
-    bl func_020096f0
+    bl ActorMotionOscillation_Sample
     mov r9, r0
     b L_0201a4f0
 L_0201a474:
@@ -52,11 +52,11 @@ L_0201a474:
     mov r1, r5
     mov r2, r6
     mov r3, r7
-    bl func_0200964c
+    bl ActorMotionOscillation_InitInterval
     add r0, sp, #0x14
     mov r1, r8
     mov r2, #0x0
-    bl func_020096f0
+    bl ActorMotionOscillation_Sample
     mov r9, r0
     b L_0201a4f0
 L_0201a4a0:
@@ -64,11 +64,11 @@ L_0201a4a0:
     mov r1, r5
     mov r2, r6
     mov r3, r7
-    bl func_0200964c
+    bl ActorMotionOscillation_InitInterval
     add r0, sp, #0x8
     mov r1, r8
     mov r2, #0x1
-    bl func_020096f0
+    bl ActorMotionOscillation_Sample
     mov r9, r0
     b L_0201a4f0
 L_0201a4cc:

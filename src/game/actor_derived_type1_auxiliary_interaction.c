@@ -23,7 +23,7 @@ extern void func_0206c978(void *resource);
 extern void *func_0206c68c(void *allocation, void *actor);
 extern void GameWork_SetFlag(void *work, u32 flag);
 extern s32 func_0206cb04(void *resource, void *target, s32 mode);
-extern void func_020099c0(void *manager, s32 first, s32 second);
+extern void ActorMotionJitter_EnsureMinimum(void *manager, s32 first, s32 second);
 extern s32 ActorDerivedType1_IsTargetStateEligible(void *target);
 extern void ActorDerivedType1_ReleaseAuxiliaryAndSpawnResetEffect(void *actor);
 extern void ActorDerivedType1_ApplyWeightedCollisionDisplacement(
@@ -90,7 +90,7 @@ s32 ActorDerivedType1_HandleAuxiliaryInteraction(void *self, void *other)
             }
             if (func_0206cb04(*(void **)(actor + 0x26c), target, 1) != 0) {
                 *(u32 *)(actor + 0x10) &= ~0x1f0000;
-                func_020099c0(data_021052fc + 0x2fbc, 0x14, 2);
+                ActorMotionJitter_EnsureMinimum(data_021052fc + 0x2fbc, 0x14, 2);
             }
         } else if ((*(u32 *)(target + 0x260) & 1) != 0) {
             s32 offset = *(s8 *)(target + 0x27f);

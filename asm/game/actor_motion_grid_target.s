@@ -5,12 +5,12 @@
 .extern func_0200500c
 .extern func_02005058
 .extern VecFx32_Subtract
-.extern func_020093ac
+.extern VecFx32_GetDirectionAngle
 .extern func_020adc40
 .extern func_020adc90
 .extern func_020befec
-    .global func_0200920c
-func_0200920c: ; 0x0200920c
+    .global ActorMotion_ConfigureGridTarget
+ActorMotion_ConfigureGridTarget: ; 0x0200920c
     stmdb sp!, {r3, r4, r5, lr}
     sub sp, sp, #0x30
     ldr ip, [sp, #0x40]
@@ -86,7 +86,7 @@ L_020092b8:
     add r1, sp, #0x0
     add r0, r5, #0x8
     str r2, [r5, #0x2c]
-    bl func_020093ac
+    bl VecFx32_GetDirectionAngle
     mov r0, r0, asr #0x4
     mov r1, r0, lsl #0x1
     add r0, r1, #0x1
@@ -118,4 +118,4 @@ L_0200939c:
     add sp, sp, #0x30
     ldmia sp!, {r3, r4, r5, pc}
 L_020093a8: .word data_020c9670
-    .size func_0200920c, .-func_0200920c
+    .size ActorMotion_ConfigureGridTarget, .-ActorMotion_ConfigureGridTarget

@@ -30,8 +30,8 @@
 .extern VecFx32Bezier_Evaluate3D
 .extern GamePhaseRuntime_GetActorCollection
 .extern ActorMotion_BindActor
-.extern func_02009780
-.extern func_020099c0
+.extern ActorMotion_SetTarget
+.extern ActorMotionJitter_EnsureMinimum
 .extern func_0200a114
 .extern func_0201e0ec
 .extern func_0201f864
@@ -392,7 +392,7 @@ func_ov090_02217d70:
     mov r2, #0x2
     add r0, r0, #0x3bc
     add r0, r0, #0x2c00
-    bl func_020099c0
+    bl ActorMotionJitter_EnsureMinimum
     mov r1, #0x0
     str r1, [sp, #0x0]
     ldr r0, .L_02218d14
@@ -547,7 +547,7 @@ func_ov090_02217d70:
     mov r2, #0x2
     add r0, r0, #0x3bc
     add r0, r0, #0x2c00
-    bl func_020099c0
+    bl ActorMotionJitter_EnsureMinimum
     ldr r0, .L_02218d14
     ldr r1, .L_02218d18
     ldr r0, [r0, #0x0]
@@ -1712,7 +1712,7 @@ func_ov090_02217d70:
     mov r2, #0x1
     add r0, r0, #0x3bc
     add r0, r0, #0x2c00
-    bl func_020099c0
+    bl ActorMotionJitter_EnsureMinimum
 .L_022195e4:
     add r0, r4, #0x20c
     add r1, r9, #0x18
@@ -1839,7 +1839,7 @@ func_ov090_02217d70:
     mov r2, #0x2
     add r0, r0, #0x3bc
     add r0, r0, #0x2c00
-    bl func_020099c0
+    bl ActorMotionJitter_EnsureMinimum
     add r0, r4, #0x200
     ldrsh r0, [r0, #0x20]
     cmp r0, #0x0
@@ -2253,7 +2253,7 @@ func_ov090_02217d70:
     mov r2, #0x1
     add r0, r0, #0x3bc
     add r0, r0, #0x2c00
-    bl func_020099c0
+    bl ActorMotionJitter_EnsureMinimum
 .L_02219e14:
     add r0, r4, #0x20c
     add r1, r9, #0x18
@@ -2591,13 +2591,13 @@ func_ov090_02217d70:
     ldr r0, [r0, #0x0]
     add r0, r0, #0x3bc
     add r0, r0, #0x2c00
-    bl func_02009780
+    bl ActorMotion_SetTarget
     ldr r0, .L_0221a3b0
     add r1, sp, #0xd8
     ldr r0, [r0, #0x0]
     add r0, r0, #0x44
     add r0, r0, #0x3000
-    bl func_02009780
+    bl ActorMotion_SetTarget
     ldr r0, .L_0221a3b0
     ldr r0, [r0, #0x0]
     add r0, r0, #0x3000

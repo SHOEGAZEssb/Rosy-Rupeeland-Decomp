@@ -3,8 +3,8 @@
 .extern func_02005058
 .extern VecFx32Bezier_Evaluate3D
 .extern VecFx32_Subtract
-.extern func_0200964c
-.extern func_020096f0
+.extern ActorMotionOscillation_InitInterval
+.extern ActorMotionOscillation_Sample
 .extern func_020206e8
 .extern func_02056f00
 .extern gSystemState
@@ -48,7 +48,7 @@ func_0202057c: ; 0x0202057c
     ldr r1, [r0, #0x64]
     add r0, r5, #0xc
     mov r2, #0x0
-    bl func_020096f0
+    bl ActorMotionOscillation_Sample
     add r0, r6, r0
     mov r6, r0, asr #0xc
     cmp r6, #0x2
@@ -58,7 +58,7 @@ func_0202057c: ; 0x0202057c
     mov r1, r1, lsl #0x6
     mov r2, r6, lsl #0x6
     mov r3, #0xc8
-    bl func_0200964c
+    bl ActorMotionOscillation_InitInterval
     ldr r2, [r5, #0x5c]
     add r0, sp, #0x10
     add r1, r5, #0x1c
@@ -80,7 +80,7 @@ func_0202057c: ; 0x0202057c
     add r0, sp, #0x30
     mov r2, #0x0
     add r1, r1, r3
-    bl func_020096f0
+    bl ActorMotionOscillation_Sample
     ldr r3, [sp, #0x24]
     ldr r2, [sp, #0x28]
     add r0, r3, r0

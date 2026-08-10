@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/game_phase_script_vm_runtime_motion_opcodes.c.
 .text
 .extern data_021052fc
-.extern func_020095cc
+.extern ActorMotion_SetOscillation
 .extern func_02012704
 .global func_0201707c
 func_0201707c:
@@ -21,7 +21,7 @@ func_0201707c:
     ldr r0, [r0]
     add r0, r0, #0x3bc
     add r0, r0, #0x2c00
-    bl func_020095cc
+    bl ActorMotion_SetOscillation
     mov r0, #0
     ldmia sp!, {r4, r5, r6, pc}
 L_020170c8: .word data_021052fc

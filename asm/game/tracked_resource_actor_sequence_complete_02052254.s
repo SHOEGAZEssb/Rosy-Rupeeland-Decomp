@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/tracked_resource_actor_sequence_complete.c.
 .extern data_021052fc
-.extern func_020099c0
+.extern ActorMotionJitter_EnsureMinimum
 .extern ActorCollection_QueueActorForRemoval
 .extern Actor_GetCollection
 .extern func_02050260
@@ -24,7 +24,7 @@ func_02052254:
     mov r2, #0x3
     add r0, r0, #0x3bc
     add r0, r0, #0x2c00
-    bl func_020099c0
+    bl ActorMotionJitter_EnsureMinimum
 .L_02052298:
     mov r0, r4
     bl func_020505f0

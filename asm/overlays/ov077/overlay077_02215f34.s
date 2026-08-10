@@ -7,7 +7,7 @@
 .extern data_ov077_022174d8
 .extern func_02005030
 .extern func_02005058
-.extern func_020099c0
+.extern ActorMotionJitter_EnsureMinimum
 .extern func_0201f864
 .extern func_02032228
 .extern func_02032370
@@ -255,7 +255,7 @@ func_ov077_02215f34:
     add r0, r0, #0x3bc
     add r0, r0, #0x2c00
     mov r2, #0x2
-    bl func_020099c0
+    bl ActorMotionJitter_EnsureMinimum
     ldr r1, .L_0221693c
     mov r0, r8
     mov r2, #0x0
@@ -403,7 +403,7 @@ func_ov077_02215f34:
     mov r2, #0x2
     add r0, r0, #0x3bc
     add r0, r0, #0x2c00
-    bl func_020099c0
+    bl ActorMotionJitter_EnsureMinimum
     ldrsh r0, [r8, #0xda]
     cmp r0, #0x3
     blt .L_02216558

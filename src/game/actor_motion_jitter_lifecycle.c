@@ -9,7 +9,7 @@
 extern const void *data_020d43d4[];
 
 /* Construct the base motion object, install this vtable, clear jitter fields, and return self. */
-ActorMotionJitter *func_02009790(ActorMotionJitter *self)
+ActorMotionJitter *ActorMotionJitter_Init(ActorMotionJitter *self)
 {
     ActorMotion_Init(&self->base);
     self->base.vtable = data_020d43d4;
@@ -19,14 +19,14 @@ ActorMotionJitter *func_02009790(ActorMotionJitter *self)
 }
 
 /* Run the base non-deleting destructor and return this derived object. */
-ActorMotionJitter *func_020097bc(ActorMotionJitter *self)
+ActorMotionJitter *ActorMotionJitter_Destroy(ActorMotionJitter *self)
 {
     ActorMotion_DestroyBase(&self->base);
     return self;
 }
 
 /* Run the base destructor, free the allocation, and return its old address. */
-ActorMotionJitter *func_020097d0(ActorMotionJitter *self)
+ActorMotionJitter *ActorMotionJitter_DestroyAndFree(ActorMotionJitter *self)
 {
     ActorMotion_DestroyBase(&self->base);
     Heap_Free(self);

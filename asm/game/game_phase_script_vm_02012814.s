@@ -5,8 +5,8 @@
 .extern GamePhaseRuntime_GetActorCollection
 .extern ActorMotion_SetMode2
 .extern ActorMotion_SetMode1AndClearOutputs
-.extern func_0200920c
-.extern func_020093cc
+.extern ActorMotion_ConfigureGridTarget
+.extern ActorMotion_ConfigureBoundActorTarget
 .extern func_0200a114
 .extern func_02012704
 .extern func_020127f8
@@ -55,7 +55,7 @@ L_02012890:
     mov r2, r5
     mov r3, r6
     add r0, r0, #0x2c00
-    bl func_0200920c
+    bl ActorMotion_ConfigureGridTarget
     mov r1, r0
     mov r0, r8
     bl func_020127f8
@@ -67,7 +67,7 @@ L_020128c4:
     mov r2, r5
     add r0, r0, #0x3bc
     add r0, r0, #0x2c00
-    bl func_020093cc
+    bl ActorMotion_ConfigureBoundActorTarget
     mov r1, r0
     mov r0, r8
     bl func_020127f8
@@ -133,7 +133,7 @@ L_020129ac:
     mov r2, r5
     mov r3, r6
     add r0, r0, #0x3000
-    bl func_0200920c
+    bl ActorMotion_ConfigureGridTarget
     mov r1, r0
     mov r0, r8
     bl func_020127f8
@@ -145,7 +145,7 @@ L_020129e0:
     mov r2, r5
     add r0, r0, #0x44
     add r0, r0, #0x3000
-    bl func_020093cc
+    bl ActorMotion_ConfigureBoundActorTarget
     mov r1, r0
     mov r0, r8
     bl func_020127f8

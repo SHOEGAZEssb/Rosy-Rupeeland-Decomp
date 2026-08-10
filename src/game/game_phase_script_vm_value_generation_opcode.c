@@ -6,8 +6,8 @@
 extern "C" {
 #endif
 extern u8 gSystemState[];
-extern void func_0200964c(void *value, s32 first, s32 second, s32 third);
-extern s32 func_020096f0(void *value, s32 source, s32 alternate);
+extern void ActorMotionOscillation_InitInterval(void *value, s32 first, s32 second, s32 third);
+extern s32 ActorMotionOscillation_Sample(void *value, s32 source, s32 alternate);
 extern s32 func_020befec(s32 numerator, s32 denominator);
 extern void OS_Halt(void);
 #ifdef __cplusplus
@@ -32,9 +32,9 @@ s32 func_0201a3e4(GamePhaseActorScriptVm *self)
     if (mode >= 1 && mode <= 3) {
         u32 value[3];
         s32 source;
-        func_0200964c(value, first, second, third);
+        ActorMotionOscillation_InitInterval(value, first, second, third);
         source = mode == 1 ? *(s32 *)(gSystemState + 0x64) : parameter;
-        result = func_020096f0(value, source, mode == 3);
+        result = ActorMotionOscillation_Sample(value, source, mode == 3);
     } else if (mode == 4) {
         s32 fraction = func_020befec((second - first) << 12, third);
         result = (fraction * parameter + (first << 12)) >> 12;

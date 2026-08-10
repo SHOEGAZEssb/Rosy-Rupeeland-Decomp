@@ -4,13 +4,13 @@
 .extern data_020c9670
 .extern func_02005058
 .extern VecFx32_Subtract
-.extern func_020093ac
-.extern func_02009514
+.extern VecFx32_GetDirectionAngle
+.extern ActorMotion_GetBoundActorTargetPosition
 .extern func_020adc90
 .extern func_020adcac
 .extern func_020befec
-.global func_020093cc
-func_020093cc: ; 0x020093cc
+.global ActorMotion_ConfigureBoundActorTarget
+ActorMotion_ConfigureBoundActorTarget: ; 0x020093cc
     stmdb sp!, {r3, r4, r5, lr}
     sub sp, sp, #0x30
     mov r5, r0
@@ -21,7 +21,7 @@ func_020093cc: ; 0x020093cc
     bne L_02009460
     add r0, sp, #0x20
     mov r1, r5
-    bl func_02009514
+    bl ActorMotion_GetBoundActorTargetPosition
     add r0, sp, #0x10
     add r1, sp, #0x20
     add r2, r5, #0x8
@@ -52,7 +52,7 @@ L_02009438:
 L_02009460:
     add r0, sp, #0x0
     mov r1, r5
-    bl func_02009514
+    bl ActorMotion_GetBoundActorTargetPosition
     adds r1, r5, #0x8
     add r0, sp, #0x0
     addne r1, r1, #0x4
@@ -64,7 +64,7 @@ L_02009460:
     add r1, sp, #0x0
     add r0, r5, #0x8
     str r2, [r5, #0x2c]
-    bl func_020093ac
+    bl VecFx32_GetDirectionAngle
     mov r0, r0, asr #0x4
     mov r3, r0, lsl #0x1
     add r0, r3, #0x1
@@ -96,5 +96,5 @@ L_02009504:
     add sp, sp, #0x30
     ldmia sp!, {r3, r4, r5, pc}
 L_02009510: .word data_020c9670
-    .size func_020093cc, .-func_020093cc
+    .size ActorMotion_ConfigureBoundActorTarget, .-ActorMotion_ConfigureBoundActorTarget
 

@@ -4,8 +4,8 @@
 .extern func_02004fe0
 .extern func_020050c8
 .extern Actor_GetCachedTerrainHeight
-.global func_02009514
-func_02009514: ; 0x02009514
+.global ActorMotion_GetBoundActorTargetPosition
+ActorMotion_GetBoundActorTargetPosition: ; 0x02009514
     stmdb sp!, {r4, r5, r6, lr}
     mov r4, r1
     mov r5, r0
@@ -55,5 +55,5 @@ L_020095a8:
     str r2, [r5, #0x8]
     bl func_020050c8
     ldmia sp!, {r4, r5, r6, pc}
-    .size func_02009514, .-func_02009514
+    .size ActorMotion_GetBoundActorTargetPosition, .-ActorMotion_GetBoundActorTargetPosition
 

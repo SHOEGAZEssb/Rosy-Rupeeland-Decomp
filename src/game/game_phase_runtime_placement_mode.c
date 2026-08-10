@@ -10,7 +10,7 @@ extern "C" {
 #endif
 extern s32 GamePhaseRuntime_GetActiveAreaPlacementVariant(GamePhaseRuntime *self);
 extern void func_0200500c(void *value, s32 x, s32 y, s32 z);
-extern void func_02009780(void *object, const void *value);
+extern void ActorMotion_SetTarget(void *object, const void *value);
 extern void func_02005058(void *value);
 extern void func_020122a0(void *actor, s32 enabled);
 extern void func_02009c20(void *object);
@@ -53,13 +53,13 @@ s32 GamePhaseRuntime_SetPlacementMode(GamePhaseRuntime *self, s32 mode, s32 sync
         if (variant == 0) {
             callSceneMode(self, 1);
             func_0200500c(mode1Value, -0x58000, -0x44000, 0);
-            func_02009780(b + 0x3044, mode1Value);
+            ActorMotion_SetTarget(b + 0x3044, mode1Value);
             func_02005058(mode1Value);
             func_020122a0(*(void **)(b + 0x2fb8), 1);
         } else if (variant == 1 || variant == 2) {
             callSceneMode(self, 0);
             func_0200500c(mode1Alternate, -0x80000, -0x74000, 0);
-            func_02009780(b + 0x3044, mode1Alternate);
+            ActorMotion_SetTarget(b + 0x3044, mode1Alternate);
             func_02005058(mode1Alternate);
             func_020122a0(*(void **)(b + 0x2fb8), 1);
         }
@@ -67,14 +67,14 @@ s32 GamePhaseRuntime_SetPlacementMode(GamePhaseRuntime *self, s32 mode, s32 sync
     case 2:
         callSceneMode(self, 0);
         func_0200500c(mode2Value, -0x80000, -0x60000, 0);
-        func_02009780(b + 0x3044, mode2Value);
+        ActorMotion_SetTarget(b + 0x3044, mode2Value);
         func_02005058(mode2Value);
         func_02009c20(b + 0x3044);
         func_020122a0(*(void **)(b + 0x2fb8), 1);
         break;
     case 3:
         func_0200500c(mode3Value, -0x58000, -0x44000, 0);
-        func_02009780(b + 0x3044, mode3Value);
+        ActorMotion_SetTarget(b + 0x3044, mode3Value);
         func_02005058(mode3Value);
         func_020122a0(*(void **)(b + 0x2fb8), 1);
         break;

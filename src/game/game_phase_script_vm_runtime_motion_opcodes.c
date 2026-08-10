@@ -10,14 +10,14 @@ extern void *data_021052fc;
 
 /*
  * Pop duration, Y amplitude, and X amplitude, configure the ActorMotion at
- * runtime offset 0x3044 through func_020095cc, and return zero.
+ * runtime offset 0x3044 through ActorMotion_SetOscillation, and return zero.
  */
 s32 func_02017008(GamePhaseActorScriptVm *self)
 {
     s32 duration = (s32)func_02012704(&self->base);
     s32 yAmplitude = (s32)func_02012704(&self->base);
     s32 xAmplitude = (s32)func_02012704(&self->base);
-    func_020095cc((ActorMotion *)((u8 *)data_021052fc + 0x3044),
+    ActorMotion_SetOscillation((ActorMotion *)((u8 *)data_021052fc + 0x3044),
                   xAmplitude, yAmplitude, duration);
     return 0;
 }
@@ -26,20 +26,20 @@ s32 func_02017008(GamePhaseActorScriptVm *self)
 s32 func_02017058(GamePhaseActorScriptVm *self)
 {
     (void)self;
-    func_02009694((ActorMotion *)((u8 *)data_021052fc + 0x3044));
+    ActorMotion_ClearOscillation((ActorMotion *)((u8 *)data_021052fc + 0x3044));
     return 0;
 }
 
 /*
  * Pop duration, Y amplitude, and X amplitude, configure the ActorMotion at
- * runtime offset 0x2fbc through func_020095cc, and return zero.
+ * runtime offset 0x2fbc through ActorMotion_SetOscillation, and return zero.
  */
 s32 func_0201707c(GamePhaseActorScriptVm *self)
 {
     s32 duration = (s32)func_02012704(&self->base);
     s32 yAmplitude = (s32)func_02012704(&self->base);
     s32 xAmplitude = (s32)func_02012704(&self->base);
-    func_020095cc((ActorMotion *)((u8 *)data_021052fc + 0x2fbc),
+    ActorMotion_SetOscillation((ActorMotion *)((u8 *)data_021052fc + 0x2fbc),
                   xAmplitude, yAmplitude, duration);
     return 0;
 }
@@ -48,6 +48,6 @@ s32 func_0201707c(GamePhaseActorScriptVm *self)
 s32 func_020170cc(GamePhaseActorScriptVm *self)
 {
     (void)self;
-    func_02009694((ActorMotion *)((u8 *)data_021052fc + 0x2fbc));
+    ActorMotion_ClearOscillation((ActorMotion *)((u8 *)data_021052fc + 0x2fbc));
     return 0;
 }

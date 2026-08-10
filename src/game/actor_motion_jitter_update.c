@@ -24,7 +24,7 @@ extern s32 func_020bf1f8(u32 value, s32 modulus);
  * flag 0x2 then refreshes the trailing sampled offsets. Returns no value;
  * global MT state advances only when jitter is active, and no hardware changes.
  */
-void func_020097ec(ActorMotionJitter *self, const s16 *bounds)
+void ActorMotionJitter_Update(ActorMotionJitter *self, const s16 *bounds)
 {
     ActorMotion *motion = &self->base;
 
@@ -61,7 +61,7 @@ void func_020097ec(ActorMotionJitter *self, const s16 *bounds)
 
             if (motion->mode == 0)
                 motion->mode = 1;
-            func_02009514(&actorPosition, motion);
+            ActorMotion_GetBoundActorTargetPosition(&actorPosition, motion);
             func_020050a4(&position, &actorPosition);
             func_02005058(&actorPosition);
 
@@ -82,5 +82,5 @@ void func_020097ec(ActorMotionJitter *self, const s16 *bounds)
     }
 
     if (motion->field_30 & 2)
-        func_020096b0(motion);
+        ActorMotion_UpdateOscillation(motion);
 }

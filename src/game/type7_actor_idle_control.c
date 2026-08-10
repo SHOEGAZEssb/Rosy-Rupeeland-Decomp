@@ -20,7 +20,7 @@ extern void func_0206c978(void *resource);
 extern void GameWork_ClearFlag(void *gameWork, u32 flag);
 extern void Type7Actor_SetCallbackPair(void *actor, u32 first, u32 second, s32 duration);
 extern s32 func_0206cc68(void *object, void *actor, s32 mode);
-extern void func_020099c0(void *context, s32 id, s32 mode);
+extern void ActorMotionJitter_EnsureMinimum(void *context, s32 id, s32 mode);
 extern s32 Type7Actor_TryInstallGlobalTargetCallback(void *actor);
 extern s32 Type7Actor_TryCancelDistantTarget(void *actor);
 extern s32 Type7Actor_TryAcquireTarget(void *actor, s32 finiteMode);
@@ -56,7 +56,7 @@ void Type7Actor_DisableTargeting(void *self)
  * data_020e1788 indefinitely. Without a resource, require
  * func_0206cc68(object, actor, 1) and install data_020e18d0 indefinitely.
  * On either accepted path set actor +0x14 bits two/four, invoke virtual mode
- * zero, and call func_020099c0 on global context +0x2fbc with ID 0x28/mode four.
+ * zero, and call ActorMotionJitter_EnsureMinimum on global context +0x2fbc with ID 0x28/mode four.
  * Actor callback, resource, heap, global flag, and presentation/audio-like
  * state may change. Heap_Free is the allocator effect; no value is returned.
  */
@@ -82,7 +82,7 @@ void Type7Actor_HandleResourceInteraction(void *self, void *object)
     }
     *(u32 *)(actor + 0x14) |= 6;
     set_virtual_mode(actor, 0);
-    func_020099c0(data_021052fc + 0x2fbc, 0x28, 4);
+    ActorMotionJitter_EnsureMinimum(data_021052fc + 0x2fbc, 0x28, 4);
 }
 
 /*

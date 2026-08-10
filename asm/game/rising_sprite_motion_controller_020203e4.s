@@ -9,7 +9,7 @@
 .extern func_02008378
 .extern ActorMotionTriple_Clear
 .extern ActorMotionTriple_Assign
-.extern func_0200964c
+.extern ActorMotionOscillation_InitInterval
 .extern func_02020364
 .extern func_02020374
 .extern func_020203b0
@@ -105,7 +105,7 @@ func_020203e4: ; 0x020203e4
     strh ip, [r5, #0x34]
     ldr ip, [r4, #0x0]
     strb lr, [ip, #0x3a]
-    bl func_0200964c
+    bl ActorMotionOscillation_InitInterval
     add r1, sp, #0x4
     add r0, r4, #0xc
     bl ActorMotionTriple_Assign

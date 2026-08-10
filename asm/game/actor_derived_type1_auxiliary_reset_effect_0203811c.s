@@ -8,7 +8,7 @@
 .extern func_0200500c
 .extern func_02005058
 .extern func_02008378
-.extern func_020099c0
+.extern ActorMotionJitter_EnsureMinimum
 .extern func_0201f864
 .extern func_0206c978
 .extern func_0206e590
@@ -55,7 +55,7 @@ ActorDerivedType1_ReleaseAuxiliaryAndSpawnResetEffect: ; 0x0203811c
     mov r2, #0x4
     add r0, r0, #0x3bc
     add r0, r0, #0x2c00
-    bl func_020099c0
+    bl ActorMotionJitter_EnsureMinimum
     mov r1, #0x0
     add r0, sp, #0x18
     mov r2, r1

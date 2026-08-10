@@ -5,7 +5,7 @@
 .extern data_020e1788
 .extern data_020e18d0
 .extern data_021052fc
-.extern func_020099c0
+.extern ActorMotionJitter_EnsureMinimum
 .extern Type7Actor_TryCancelDistantTarget
 .extern Type7Actor_TryInstallGlobalTargetCallback
 .extern Type7Actor_SetCallbackPair
@@ -80,7 +80,7 @@ Type7Actor_HandleResourceInteraction: ; 0x02048c2c
     mov r2, #0x4
     add r0, r0, #0x3bc
     add r0, r0, #0x2c00
-    bl func_020099c0
+    bl ActorMotionJitter_EnsureMinimum
     ldmia sp!, {r3, r4, r5, pc}
 .L_02048ce4:
     mov r1, r4
@@ -107,7 +107,7 @@ Type7Actor_HandleResourceInteraction: ; 0x02048c2c
     mov r2, #0x4
     add r0, r0, #0x3bc
     add r0, r0, #0x2c00
-    bl func_020099c0
+    bl ActorMotionJitter_EnsureMinimum
     ldmia sp!, {r3, r4, r5, pc}
 .L_02048d4c: .word gGameWork
 .L_02048d50: .word 0x3fd

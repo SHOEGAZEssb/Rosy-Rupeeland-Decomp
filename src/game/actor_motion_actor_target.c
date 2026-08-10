@@ -32,12 +32,12 @@ static s32 actor_motion_actor_target_multiply(s16 value, s32 scale)
  * and the count are retained, and the count is returned. Fixed-point SDK math
  * helpers are called; no graphics or other hardware state changes.
  */
-s32 func_020093cc(ActorMotion *self, s32 divisor, s32 useDirectionTable)
+s32 ActorMotion_ConfigureBoundActorTarget(ActorMotion *self, s32 divisor, s32 useDirectionTable)
 {
     VecFx32Object destination;
 
     self->mode = 2;
-    func_02009514(&destination, self);
+    ActorMotion_GetBoundActorTargetPosition(&destination, self);
 
     if (!useDirectionTable) {
         VecFx32Object displacement;
@@ -61,7 +61,7 @@ s32 func_020093cc(ActorMotion *self, s32 divisor, s32 useDirectionTable)
             func_020adc90(func_020adcac(&destination.value,
                                         &self->position.value),
                           divisor) >> 12;
-        direction = func_020093ac(&self->position, &destination) >> 4;
+        direction = VecFx32_GetDirectionAngle(&self->position, &destination) >> 4;
         self->field_1c = actor_motion_actor_target_multiply(
             data_020c9670[direction * 2 + 1], divisor);
         self->field_20 = actor_motion_actor_target_multiply(

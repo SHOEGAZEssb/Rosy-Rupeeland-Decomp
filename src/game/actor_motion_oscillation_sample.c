@@ -16,7 +16,7 @@ static s32 actor_motion_sample_multiply(s16 value, s32 scale)
  * plus the scaled half-range. Other modes reproduce the retail fall-through
  * value (the state address cast to s32). No state or hardware changes.
  */
-s32 func_020096f0(const ActorMotionTriple *state, s32 time, s32 tableMode)
+s32 ActorMotionOscillation_Sample(const ActorMotionTriple *state, s32 time, s32 tableMode)
 {
     u32 phase = (u16)(state->z * time);
     u32 index = phase >> 4;
@@ -33,7 +33,7 @@ s32 func_020096f0(const ActorMotionTriple *state, s32 time, s32 tableMode)
 }
 
 /* Copy a supplied vector payload into the motion target and return that target. */
-VecFx32Object *func_02009780(ActorMotion *self,
+VecFx32Object *ActorMotion_SetTarget(ActorMotion *self,
                              const VecFx32Object *target)
 {
     return func_020050a4(&self->target, target);

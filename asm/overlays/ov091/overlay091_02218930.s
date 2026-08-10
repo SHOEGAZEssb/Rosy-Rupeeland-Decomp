@@ -6,7 +6,7 @@
 .extern func_020050a4
 .extern GamePhaseRuntime_FinalizeActorCollections
 .extern GamePhaseRuntime_SynchronizeActorPlacement
-.extern func_02009780
+.extern ActorMotion_SetTarget
 .extern func_ov091_0221888c
 .extern func_ov091_022188f8
 
@@ -62,7 +62,7 @@ func_ov091_02218930:
     ldr r0, [r0, #0x0]
     add r0, r0, #0x3bc
     add r0, r0, #0x2c00
-    bl func_02009780
+    bl ActorMotion_SetTarget
     ldr r0, .L_02218a44
     mov r1, #0x0
     ldr r0, [r0, #0x0]

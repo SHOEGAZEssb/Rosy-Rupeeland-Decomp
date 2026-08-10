@@ -6,7 +6,7 @@
 .extern GamePhaseRuntime_PrepareActorCollections
 .extern GamePhaseRuntime_SynchronizeActorPlacement
 .extern GamePhaseRuntime_GetActiveAreaPlacementVariant
-.extern func_02009780
+.extern ActorMotion_SetTarget
 .extern func_02009c20
 .extern func_020122a0
 .extern OS_Halt
@@ -66,7 +66,7 @@ L_02008938:
     add r0, r7, #0x44
     add r1, sp, #0x30
     add r0, r0, #0x3000
-    bl func_02009780
+    bl ActorMotion_SetTarget
     add r0, sp, #0x30
     bl func_02005058
     add r0, r7, #0x2000
@@ -91,7 +91,7 @@ L_02008998:
     add r0, r7, #0x44
     add r1, sp, #0x20
     add r0, r0, #0x3000
-    bl func_02009780
+    bl ActorMotion_SetTarget
     add r0, sp, #0x20
     bl func_02005058
     add r0, r7, #0x2000
@@ -115,7 +115,7 @@ L_020089f8:
     add r0, r7, #0x44
     add r1, sp, #0x10
     add r0, r0, #0x3000
-    bl func_02009780
+    bl ActorMotion_SetTarget
     add r0, sp, #0x10
     bl func_02005058
     add r0, r7, #0x44
@@ -136,7 +136,7 @@ L_02008a60:
     add r0, r7, #0x44
     add r1, sp, #0x0
     add r0, r0, #0x3000
-    bl func_02009780
+    bl ActorMotion_SetTarget
     add r0, sp, #0x0
     bl func_02005058
     add r0, r7, #0x2000

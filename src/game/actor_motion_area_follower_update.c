@@ -67,7 +67,7 @@ s32 func_02009d80(ActorMotionAreaFollower *self, const s16 *bounds)
         s32 direction = func_0200a124(self, actor, area);
         const s16 *areaBounds = func_02011788(self->areaContext, area);
 
-        func_020097ec(&self->jitter, areaBounds);
+        ActorMotionJitter_Update(&self->jitter, areaBounds);
         func_0200a1a0(self, area, bounds);
         if (self->previousArea != -1 && self->previousArea != area) {
             u8 *runtime;
@@ -98,7 +98,7 @@ s32 func_02009d80(ActorMotionAreaFollower *self, const s16 *bounds)
         }
         self->previousArea = area;
     } else {
-        func_020097ec(&self->jitter, bounds);
+        ActorMotionJitter_Update(&self->jitter, bounds);
     }
 
     func_02005030(&candidate, &motion->position);

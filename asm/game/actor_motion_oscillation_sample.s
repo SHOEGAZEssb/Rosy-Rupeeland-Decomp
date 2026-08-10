@@ -3,8 +3,8 @@
 .text
 .extern data_020c9670
 .extern func_020050a4
-.global func_020096f0
-func_020096f0: ; 0x020096f0
+.global ActorMotionOscillation_Sample
+ActorMotionOscillation_Sample: ; 0x020096f0
     ldr r3, [r0, #0x8]
     cmp r2, #0x0
     mul r1, r3, r1
@@ -44,13 +44,13 @@ L_0200974c:
     bx lr
 L_0200977c: .word data_020c9670
 
-    .size func_020096f0, .-func_020096f0
+    .size ActorMotionOscillation_Sample, .-ActorMotionOscillation_Sample
 
-    .global func_02009780
-func_02009780: ; 0x02009780
+    .global ActorMotion_SetTarget
+ActorMotion_SetTarget: ; 0x02009780
     ldr ip, L_0200978c
     add r0, r0, #0x34
     bx ip
 L_0200978c: .word func_020050a4
-    .size func_02009780, .-func_02009780
+    .size ActorMotion_SetTarget, .-ActorMotion_SetTarget
 

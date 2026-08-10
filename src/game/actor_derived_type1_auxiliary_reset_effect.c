@@ -12,7 +12,7 @@ extern "C" {
 extern void func_0206e590(void *resource, s32 value);
 extern void func_0206c978(void *resource);
 extern void GameWork_ClearFlag(void *work, u32 flag);
-extern void func_020099c0(void *manager, s32 first, s32 second);
+extern void ActorMotionJitter_EnsureMinimum(void *manager, s32 first, s32 second);
 extern void func_0200500c(void *vector, s32 x, s32 y, s32 z);
 extern void func_02008378(void *output, const void *left, const void *right);
 extern void func_02005058(void *vector);
@@ -52,7 +52,7 @@ void ActorDerivedType1_ReleaseAuxiliaryAndSpawnResetEffect(void *self)
         s32 position[4];
         void *allocation;
         actor[0x2a0] = 8;
-        func_020099c0(data_021052fc + 0x2fbc, 0x1e, 4);
+        ActorMotionJitter_EnsureMinimum(data_021052fc + 0x2fbc, 0x1e, 4);
         func_0200500c(offset, 0, 0, 0x24000);
         func_02008378(position, actor + 0x18, offset);
         func_02005058(offset);

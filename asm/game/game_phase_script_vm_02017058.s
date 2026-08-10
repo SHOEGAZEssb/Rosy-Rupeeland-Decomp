@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/game_phase_script_vm_runtime_motion_opcodes.c.
 .text
 .extern data_021052fc
-.extern func_02009694
+.extern ActorMotion_ClearOscillation
 .global func_02017058
 func_02017058:
     stmdb sp!, {r3, lr}
@@ -9,7 +9,7 @@ func_02017058:
     ldr r0, [r0]
     add r0, r0, #0x44
     add r0, r0, #0x3000
-    bl func_02009694
+    bl ActorMotion_ClearOscillation
     mov r0, #0
     ldmia sp!, {r3, pc}
 L_02017078: .word data_021052fc

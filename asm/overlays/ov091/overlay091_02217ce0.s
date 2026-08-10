@@ -15,8 +15,8 @@
 .extern VecFx32Triple_Destroy
 .extern VecFx32Bezier_Evaluate3D
 .extern ActorMotion_BindActor
-.extern func_02009780
-.extern func_020099c0
+.extern ActorMotion_SetTarget
+.extern ActorMotionJitter_EnsureMinimum
 .extern func_0200a114
 .extern func_02010b64
 .extern func_0201e0ec
@@ -632,7 +632,7 @@ func_ov091_02217ce0:
     mov r2, #0x1
     add r0, r0, #0x3bc
     add r0, r0, #0x2c00
-    bl func_020099c0
+    bl ActorMotionJitter_EnsureMinimum
     mov r0, #0x0
     str r0, [r4, #0x220]
 .L_022185c8:
@@ -785,7 +785,7 @@ func_ov091_02217ce0:
     ldr r0, [r0, #0x0]
     add r0, r0, #0x3bc
     add r0, r0, #0x2c00
-    bl func_02009780
+    bl ActorMotion_SetTarget
     add r0, sp, #0x54
     bl func_02005058
 .L_0221880c:

@@ -45,9 +45,9 @@ extern void func_02008378(PresentationValue *destination, s32 argument,
 extern void VecFx32Triple_InitWithValues(void *destination, s32 first,
                           PresentationValue *source, s32 second);
 extern void VecFx32Triple_Assign(void *path, void *source);
-extern void func_0200964c(void *value, s32 first, s32 second, s32 third);
+extern void ActorMotionOscillation_InitInterval(void *value, s32 first, s32 second, s32 third);
 extern void ActorMotionTriple_Assign(void *state, void *source);
-extern s32 func_020096f0(void *state, s32 time, s32 mode);
+extern s32 ActorMotionOscillation_Sample(void *state, s32 time, s32 mode);
 extern void VecFx32Bezier_Evaluate3D(void *destination, void *path, s32 offset);
 extern void VecFx32_Subtract(PresentationValue *destination, void *source,
                           s32 argument);
@@ -117,7 +117,7 @@ RisingSpriteMotionController *func_020203e4(
     *(s16 *)(self->sprite00 + 0x32) = 2;
     *(s16 *)(self->sprite00 + 0x34) = 2;
     self->sprite00[0x3a] = 1;
-    func_0200964c(oscillationValue, 0x10000, -0x10000, 60);
+    ActorMotionOscillation_InitInterval(oscillationValue, 0x10000, -0x10000, 60);
     ActorMotionTriple_Assign(self->oscillation0c, oscillationValue);
     return self;
 }
@@ -161,19 +161,19 @@ s32 func_0202057c(RisingSpriteMotionController *self, s32 argument)
         func_020206e8(&self->motion4c);
     }
     scale = (self->motion4c.second04 +
-             func_020096f0(self->oscillation0c,
+             ActorMotionOscillation_Sample(self->oscillation0c,
                            *(s32 *)(gSystemState + 0x64), 0)) >> 12;
     if (scale <= 2) {
         scale = 2;
     }
-    func_0200964c(oscillationSample, -scale << 6, scale << 6, 0xc8);
+    ActorMotionOscillation_InitInterval(oscillationSample, -scale << 6, scale << 6, 0xc8);
     VecFx32Bezier_Evaluate3D(pathSample, self->path1c, self->offset5c);
     VecFx32_Subtract(&sampled, pathSample, argument);
     func_02056f00(&transformed, &sampled);
     func_02005058(&sampled);
     func_02005058((PresentationValue *)pathSample);
     *(s32 *)&transformed.bytes[4] +=
-        func_020096f0(oscillationSample,
+        ActorMotionOscillation_Sample(oscillationSample,
                       *(s32 *)(gSystemState + 0x64) + self->systemTime60, 0);
     x = *(s32 *)&transformed.bytes[4] >> 12;
     y = *(s32 *)&transformed.bytes[8] >> 12;

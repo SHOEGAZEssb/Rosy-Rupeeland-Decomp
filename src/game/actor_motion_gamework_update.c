@@ -63,7 +63,7 @@ s32 func_02009a2c(ActorMotion *self, const s16 *bounds)
     }
 
     if (self->field_30 & 2)
-        func_020096b0(self);
+        ActorMotion_UpdateOscillation(self);
 
     func_02008740(&offset, &self->state);
     *(s16 *)((u8 *)gGameWork + 0x232) =

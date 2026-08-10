@@ -10282,7 +10282,7 @@ build build/reports/actor_motion_grid_target.json: objdiff build/decomp/delinks/
 
 build build/reports/actor_motion_grid_target.txt: match_report build/reports/actor_motion_grid_target.json | tools/report_objdiff.py
   report_json = build/reports/actor_motion_grid_target.json
-  report_args = --section .text --function func_0200920c --require-exact
+  report_args = --section .text --function ActorMotion_ConfigureGridTarget --require-exact
 
 build build/reports/actor_motion_angle.json: objdiff build/decomp/delinks/src/game/actor_motion_angle.o | build/decomp/src/game/actor_motion_angle.o
   target_object = build/decomp/delinks/src/game/actor_motion_angle.o
@@ -10290,7 +10290,7 @@ build build/reports/actor_motion_angle.json: objdiff build/decomp/delinks/src/ga
 
 build build/reports/actor_motion_angle.txt: match_report build/reports/actor_motion_angle.json | tools/report_objdiff.py
   report_json = build/reports/actor_motion_angle.json
-  report_args = --section .text --function func_020093ac --require-exact
+  report_args = --section .text --function VecFx32_GetDirectionAngle --require-exact
 
 build build/reports/actor_motion_actor_target.json: objdiff build/decomp/delinks/asm/game/actor_motion_actor_target.o | build/decomp/asm/game/actor_motion_actor_target.o
   target_object = build/decomp/delinks/asm/game/actor_motion_actor_target.o
@@ -10298,7 +10298,7 @@ build build/reports/actor_motion_actor_target.json: objdiff build/decomp/delinks
 
 build build/reports/actor_motion_actor_target.txt: match_report build/reports/actor_motion_actor_target.json | tools/report_objdiff.py
   report_json = build/reports/actor_motion_actor_target.json
-  report_args = --section .text --function func_020093cc --require-exact
+  report_args = --section .text --function ActorMotion_ConfigureBoundActorTarget --require-exact
 
 build build/reports/actor_motion_extract_target.json: objdiff build/decomp/delinks/asm/game/actor_motion_extract_target.o | build/decomp/asm/game/actor_motion_extract_target.o
   target_object = build/decomp/delinks/asm/game/actor_motion_extract_target.o
@@ -10306,7 +10306,7 @@ build build/reports/actor_motion_extract_target.json: objdiff build/decomp/delin
 
 build build/reports/actor_motion_extract_target.txt: match_report build/reports/actor_motion_extract_target.json | tools/report_objdiff.py
   report_json = build/reports/actor_motion_extract_target.json
-  report_args = --section .text --function func_02009514 --require-exact
+  report_args = --section .text --function ActorMotion_GetBoundActorTargetPosition --require-exact
 
 build build/reports/actor_motion_oscillation_setup.json: objdiff build/decomp/delinks/asm/game/actor_motion_oscillation_setup.o | build/decomp/asm/game/actor_motion_oscillation_setup.o
   target_object = build/decomp/delinks/asm/game/actor_motion_oscillation_setup.o
@@ -10314,7 +10314,7 @@ build build/reports/actor_motion_oscillation_setup.json: objdiff build/decomp/de
 
 build build/reports/actor_motion_oscillation_setup.txt: match_report build/reports/actor_motion_oscillation_setup.json | tools/report_objdiff.py
   report_json = build/reports/actor_motion_oscillation_setup.json
-  report_args = --section .text --function func_020095cc --function func_0200964c
+  report_args = --section .text --function ActorMotion_SetOscillation --function ActorMotionOscillation_InitInterval
 
 build build/reports/actor_motion_oscillation_control.json: objdiff build/decomp/delinks/src/game/actor_motion_oscillation_control.o | build/decomp/src/game/actor_motion_oscillation_control.o
   target_object = build/decomp/delinks/src/game/actor_motion_oscillation_control.o
@@ -10322,7 +10322,7 @@ build build/reports/actor_motion_oscillation_control.json: objdiff build/decomp/
 
 build build/reports/actor_motion_oscillation_control.txt: match_report build/reports/actor_motion_oscillation_control.json | tools/report_objdiff.py
   report_json = build/reports/actor_motion_oscillation_control.json
-  report_args = --section .text --function func_02009694 --function func_020096b0 --require-exact
+  report_args = --section .text --function ActorMotion_ClearOscillation --function ActorMotion_UpdateOscillation --require-exact
 
 build build/reports/actor_motion_oscillation_sample.json: objdiff build/decomp/delinks/asm/game/actor_motion_oscillation_sample.o | build/decomp/asm/game/actor_motion_oscillation_sample.o
   target_object = build/decomp/delinks/asm/game/actor_motion_oscillation_sample.o
@@ -10330,7 +10330,7 @@ build build/reports/actor_motion_oscillation_sample.json: objdiff build/decomp/d
 
 build build/reports/actor_motion_oscillation_sample.txt: match_report build/reports/actor_motion_oscillation_sample.json | tools/report_objdiff.py
   report_json = build/reports/actor_motion_oscillation_sample.json
-  report_args = --section .text --function func_020096f0 --function func_02009780 --require-exact
+  report_args = --section .text --function ActorMotionOscillation_Sample --function ActorMotion_SetTarget --require-exact
 
 build build/reports/actor_motion_jitter_lifecycle.json: objdiff build/decomp/delinks/src/game/actor_motion_jitter_lifecycle.o | build/decomp/src/game/actor_motion_jitter_lifecycle.o
   target_object = build/decomp/delinks/src/game/actor_motion_jitter_lifecycle.o
@@ -10338,7 +10338,7 @@ build build/reports/actor_motion_jitter_lifecycle.json: objdiff build/decomp/del
 
 build build/reports/actor_motion_jitter_lifecycle.txt: match_report build/reports/actor_motion_jitter_lifecycle.json | tools/report_objdiff.py
   report_json = build/reports/actor_motion_jitter_lifecycle.json
-  report_args = --section .text --function func_02009790 --function func_020097bc --function func_020097d0 --require-exact
+  report_args = --section .text --function ActorMotionJitter_Init --function ActorMotionJitter_Destroy --function ActorMotionJitter_DestroyAndFree --require-exact
 
 build build/reports/actor_motion_jitter_update.json: objdiff build/decomp/delinks/asm/game/actor_motion_jitter_update.o | build/decomp/asm/game/actor_motion_jitter_update.o
   target_object = build/decomp/delinks/asm/game/actor_motion_jitter_update.o
@@ -10346,7 +10346,7 @@ build build/reports/actor_motion_jitter_update.json: objdiff build/decomp/delink
 
 build build/reports/actor_motion_jitter_update.txt: match_report build/reports/actor_motion_jitter_update.json | tools/report_objdiff.py
   report_json = build/reports/actor_motion_jitter_update.json
-  report_args = --section .text --function func_020097ec --require-exact
+  report_args = --section .text --function ActorMotionJitter_Update --require-exact
 
 build build/reports/actor_motion_jitter_limits.json: objdiff build/decomp/delinks/src/game/actor_motion_jitter_limits.o | build/decomp/src/game/actor_motion_jitter_limits.o
   target_object = build/decomp/delinks/src/game/actor_motion_jitter_limits.o
@@ -10354,7 +10354,7 @@ build build/reports/actor_motion_jitter_limits.json: objdiff build/decomp/delink
 
 build build/reports/actor_motion_jitter_limits.txt: match_report build/reports/actor_motion_jitter_limits.json | tools/report_objdiff.py
   report_json = build/reports/actor_motion_jitter_limits.json
-  report_args = --section .text --function func_020099c0 --require-exact
+  report_args = --section .text --function ActorMotionJitter_EnsureMinimum --require-exact
 
 build build/reports/actor_motion_gamework_lifecycle.json: objdiff build/decomp/delinks/src/game/actor_motion_gamework_lifecycle.o | build/decomp/src/game/actor_motion_gamework_lifecycle.o
   target_object = build/decomp/delinks/src/game/actor_motion_gamework_lifecycle.o

@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/tracked_resource_actor_variant_subtype_notify.c.
 .extern data_021052fc
-.extern func_020099c0
+.extern ActorMotionJitter_EnsureMinimum
 .extern func_020505f0
 .text
     .global func_02051314
@@ -20,7 +20,7 @@ func_02051314:
     mov r2, #0x3
     add r0, r0, #0x3bc
     add r0, r0, #0x2c00
-    bl func_020099c0
+    bl ActorMotionJitter_EnsureMinimum
     ldmia sp!, {r4, pc}
 .L_02051358: .word data_021052fc
     .size func_02051314, . - func_02051314

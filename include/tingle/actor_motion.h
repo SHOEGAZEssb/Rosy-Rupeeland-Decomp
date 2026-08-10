@@ -77,26 +77,26 @@ VecFx32Object *ActorMotion_SetPosition(ActorMotion *self,
                              const VecFx32Object *position);
 void ActorMotion_SetMode2(ActorMotion *self);
 void ActorMotion_SetMode1AndClearOutputs(ActorMotion *self);
-s32 func_0200920c(ActorMotion *self, s32 xIndex, s32 yIndex,
+s32 ActorMotion_ConfigureGridTarget(ActorMotion *self, s32 xIndex, s32 yIndex,
                   s32 divisor, s32 useDirectionTable);
-u32 func_020093ac(const VecFx32Object *from, const VecFx32Object *to);
-s32 func_020093cc(ActorMotion *self, s32 divisor,
+u32 VecFx32_GetDirectionAngle(const VecFx32Object *from, const VecFx32Object *to);
+s32 ActorMotion_ConfigureBoundActorTarget(ActorMotion *self, s32 divisor,
                   s32 useDirectionTable);
-void func_02009514(VecFx32Object *result, const ActorMotion *self);
-void func_020095cc(ActorMotion *self, s32 xAmplitude, s32 yAmplitude,
+void ActorMotion_GetBoundActorTargetPosition(VecFx32Object *result, const ActorMotion *self);
+void ActorMotion_SetOscillation(ActorMotion *self, s32 xAmplitude, s32 yAmplitude,
                    s32 duration);
-ActorMotionTriple *func_0200964c(ActorMotionTriple *result, s32 first,
+ActorMotionTriple *ActorMotionOscillation_InitInterval(ActorMotionTriple *result, s32 first,
                                  s32 second, s32 duration);
-void func_02009694(ActorMotion *self);
-void func_020096b0(ActorMotion *self);
-s32 func_020096f0(const ActorMotionTriple *state, s32 time, s32 tableMode);
-VecFx32Object *func_02009780(ActorMotion *self,
+void ActorMotion_ClearOscillation(ActorMotion *self);
+void ActorMotion_UpdateOscillation(ActorMotion *self);
+s32 ActorMotionOscillation_Sample(const ActorMotionTriple *state, s32 time, s32 tableMode);
+VecFx32Object *ActorMotion_SetTarget(ActorMotion *self,
                              const VecFx32Object *target);
-ActorMotionJitter *func_02009790(ActorMotionJitter *self);
-ActorMotionJitter *func_020097bc(ActorMotionJitter *self);
-ActorMotionJitter *func_020097d0(ActorMotionJitter *self);
-void func_020097ec(ActorMotionJitter *self, const s16 *bounds);
-void func_020099c0(ActorMotionJitter *self, s32 minimumFrames,
+ActorMotionJitter *ActorMotionJitter_Init(ActorMotionJitter *self);
+ActorMotionJitter *ActorMotionJitter_Destroy(ActorMotionJitter *self);
+ActorMotionJitter *ActorMotionJitter_DestroyAndFree(ActorMotionJitter *self);
+void ActorMotionJitter_Update(ActorMotionJitter *self, const s16 *bounds);
+void ActorMotionJitter_EnsureMinimum(ActorMotionJitter *self, s32 minimumFrames,
                    s32 minimumRadius);
 ActorMotion *func_020099dc(ActorMotion *self);
 ActorMotion *func_020099fc(ActorMotion *self);

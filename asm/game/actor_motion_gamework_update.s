@@ -4,7 +4,7 @@
 .extern func_02004fe0
 .extern func_02005058
 .extern func_02008740
-.extern func_020096b0
+.extern ActorMotion_UpdateOscillation
 .extern func_02009c20
 .extern gGameWork
 .global func_02009a2c
@@ -103,7 +103,7 @@ L_02009b84:
     tst r0, #0x2
     beq L_02009b98
     mov r0, r6
-    bl func_020096b0
+    bl ActorMotion_UpdateOscillation
 L_02009b98:
     add r0, sp, #0x10
     add r1, r6, #0x44

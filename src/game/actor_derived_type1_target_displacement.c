@@ -31,7 +31,7 @@ extern void *func_02009d78(void *manager);
 extern void *func_02022cb0(void *allocation, void *resource, void *owner,
                            s32 value, s32 first, s32 second);
 extern void func_0201ded4(void *manager, void *object);
-extern void func_020099c0(void *manager, s32 first, s32 second);
+extern void ActorMotionJitter_EnsureMinimum(void *manager, s32 first, s32 second);
 extern void func_020349b8(void *actor, u32 sound, s32 extra);
 extern void Type1Actor_TryEnterFailureState(void *actor);
 #ifdef __cplusplus
@@ -186,7 +186,7 @@ void ActorDerivedType1_ApplyWeightedCollisionDisplacement(
                                       negative, 0x2000, -0xc0);
             }
             func_0201ded4(data_021052fc + 0x2f7c, object);
-            func_020099c0(data_021052fc + 0x2fbc, 0x14, 7);
+            ActorMotionJitter_EnsureMinimum(data_021052fc + 0x2fbc, 0x14, 7);
             func_020349b8(actor, 0x26, 0);
             func_020349b8(actor, 0x0e, 0);
             Type1Actor_TryEnterFailureState(actor);
