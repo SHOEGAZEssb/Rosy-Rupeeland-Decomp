@@ -3,22 +3,13 @@
 This repository is an early matching-decompilation project for the European
 Nintendo DS release of *Freshly-Picked Tingle's Rosy Rupeeland*.
 
-## End goal
+## Project scope
 
-The long-term goal is a native, cross-platform source recompilation of the game,
-not merely a rebuilt Nintendo DS ROM or a separately implemented clone. Windows
-is the first target, but platform-independent recovered game code and portable
-interfaces should keep Linux, macOS, and other suitable platforms viable. The
-matching NDS build remains the behavioral reference while platform adapters
-replace Nintendo DS hardware and NitroSDK dependencies.
+This repository contains the matching Nintendo DS decompilation: recovered
+game code, symbols, relocations, overlay configuration, technical behavior
+documentation, and the exact-ROM validation workflow.
 
-Every newly understood subsystem should document the SDK boundary it crosses:
-which NitroSDK or hardware service it calls, what behavior the game relies on,
-and what portable implementation the Windows build will require. See
-[docs/native_port.md](docs/native_port.md) for the recompilation strategy and SDK
-barrier register.
-
-The repository does not contain the game ROM, extracted game assets, Nintendo
+This repository does not contain the game ROM, extracted game assets, Nintendo
 SDK files, BIOS images, or proprietary compiler binaries. Supply your own ROM
 and keep those materials outside version control.
 

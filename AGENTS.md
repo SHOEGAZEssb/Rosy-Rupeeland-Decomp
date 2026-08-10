@@ -13,8 +13,8 @@
 - Keep confirmed behavior separate from inference. Preserve address-derived
   names and offset-based field names until evidence supports a semantic name;
   do not turn guesses into comments that read as established facts.
-- Name functions, types, fields, and data opportunistically as decompilation or
-  native-port work establishes clear semantic evidence. Prefer these focused
+- Name functions, types, fields, and data opportunistically as decompilation
+  establishes clear semantic evidence. Prefer these focused
   naming improvements along the way over speculative, standalone renaming.
 - Keep comments useful in both the portable and matching implementations. A
   matching assembly fallback should point readers to its documented portable C
@@ -56,18 +56,3 @@
 - Avoid tables or prose that simply enumerate every reconstructed file,
   function, address, size, or match percentage when those facts are already
   available from source, configuration, or generated reports.
-
-## Native recompilation
-
-- Treat the native target as a source recompilation, not a clone or parallel
-  port. Recovered game-owned code under `src/` remains the canonical
-  implementation for both matching and native builds.
-- Restrict `src/native/` to operating-system, SDK, hardware, ABI, and
-  user-supplied-data boundaries. Do not reproduce scenes, scripts, state
-  machines, actor constructors, or other game behavior there.
-- Compile recovered overlays for the host and register them through native
-  linkage. Do not load or interpret retail ARM9 or overlay executable code as
-  a substitute for recovered source.
-- When canonical game code cannot yet compile natively, leave the dependency
-  explicit and implement the narrow missing boundary instead of adding a
-  host-only behavioral approximation.

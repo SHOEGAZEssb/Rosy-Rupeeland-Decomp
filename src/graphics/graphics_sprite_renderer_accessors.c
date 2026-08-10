@@ -65,8 +65,8 @@ void GraphicsSpriteRenderer_ClearTextBuffer(GraphicsSpriteRenderer *renderer)
  * Resolve the hardware object-palette address selected by renderer->engine.
  * The byte at offset 0x12 of field_08 supplies a 32-byte palette slot. Return
  * null when field_0c is inactive or the engine is neither main nor sub. The
- * returned pointer names memory-mapped VRAM and must not be dereferenced by a
- * native port without a graphics-backend mapping.
+ * returned pointer names memory-mapped VRAM and is valid only in the Nintendo
+ * DS address space.
  */
 #ifndef MATCHING
 void *GraphicsSpriteRenderer_GetObjectPaletteAddress(GraphicsSpriteRenderer *renderer)

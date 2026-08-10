@@ -1,21 +1,11 @@
 # Project technical baseline
 
-## Long-term objective
+## Scope
 
-The project ultimately targets a native, cross-platform source recompilation,
-with Windows as the first supported desktop target. Byte-matching the European
-NDS ROM is the reference workflow used to validate reconstructed game logic; it
-is not the final product. Native targets compile that canonical recovered game
-code and replace only NitroSDK, ARM, and Nintendo DS hardware interfaces with
-documented platform implementations. Parallel host rewrites of game behavior
-are explicitly out of scope.
-
-SDK boundaries are therefore part of the decompilation output, not incidental
-details. When a function or subsystem is reconstructed, its documentation
-should identify every relevant SDK call or hardware dependency, the observable
-semantics required by the game, and the planned native replacement. The
-current barrier register and documentation format are in
-[native_port.md](native_port.md).
+This repository tracks the matching European NDS decompilation. Its source and
+documentation recover game behavior, data layouts, SDK calls, hardware effects,
+symbols, relocations, and overlay boundaries, with the rebuilt retail ROM as
+the validation target.
 
 ## Baseline
 

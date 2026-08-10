@@ -75,8 +75,8 @@ its exact `0x1AFFFFF1` `bne` word as data rather than an instruction, leaving
 that function's standalone score at `98.888885%`; the final ARM9 and ROM remain
 the exact gate for the unit.
 
-The complete cross-module inventory of matching fallbacks and C++ lifetime
-forms, including the behavior a host implementation must preserve, is in
+The complete cross-module inventory of matching fallbacks, C++ lifetime forms,
+and their recovered portable behavior is in
 [compiler_sensitive.md](compiler_sensitive.md).
 
 The remaining NitroSDK make flags for instruction set, debug information,

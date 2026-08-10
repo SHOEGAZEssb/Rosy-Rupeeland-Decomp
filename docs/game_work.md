@@ -71,29 +71,5 @@ classifies those words as data and also associates an aggregate-data relocation
 differently. The final ARM9 link performed by `ninja rom`, rather than the
 standalone object score, is authoritative for this function.
 
-## Native recompilation barriers
-
-`GameWork_Create` calls the game heap wrapper with a size, tag, four-byte
-alignment, and heap context. A native build needs an allocator with compatible
-alignment and lifetime behavior; it does not need fixed NDS addresses.
-
-`GameWork_Init` calls NitroSDK `MI_CpuCopy8` for a 32-byte name copy. For this
-caller, the required semantics are exactly overlap-independent byte copying;
-the native implementation can use the platform memory-copy primitive. The two
-calls at `0x02027F94` and `0x02027BD4` initialize the embedded state at `0x5DF0`,
-but their subsystem is not yet identified and remains a pending boundary.
-
-Native save compatibility also requires the NitroSDK LZ stream format described
-above, including its four-byte size/type header and raw fallback convention. A
-host implementation may use a different internal representation only if the
-persistent on-disk format is converted at the boundary.
-
-`GameWork` mixes serialized state with live pointer-bearing tables. Its retail
-size assertions are therefore valid only under the NDS 32-bit ABI. A native
-recompilation must classify the serialized fields and runtime pointers before
-changing the structure or selecting a host pointer width; a parallel byte-image
-implementation would bypass the canonical recovered initializer and is not an
-acceptable substitute.
-
 Validation is the linked ARM9 check performed by `ninja rom`, followed by the
 retail ROM SHA-256 gate.

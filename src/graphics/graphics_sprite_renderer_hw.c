@@ -3,7 +3,7 @@
 /*
  * Nintendo DS display-engine configuration selected by sprite-renderer mode
  * fields. Main and sub engines use distinct SDK entry points and DISPCNT
- * registers, so this is an explicit platform boundary for a native port.
+ * registers, and the recovered calls preserve that hardware distinction.
  */
 
 enum {
