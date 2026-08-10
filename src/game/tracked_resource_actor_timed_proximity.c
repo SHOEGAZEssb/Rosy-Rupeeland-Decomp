@@ -38,7 +38,7 @@ static VirtualFunction virtual_function(void *actor, u32 offset)
  * engine state; no hardware is accessed directly. Fixed-point semantics are
  * inferred from the recovered multiply-and-round sequence.
  */
-s32 func_0205184c(void *actor, u32 argument)
+s32 TrackedResourceActorType26_HandleProximityInteraction(void *actor, u32 argument)
 {
     u8 vector[16];
     void *target;

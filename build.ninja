@@ -19764,7 +19764,7 @@ build build/reports/tracked_resource_actor_timed_setup_02051794.json: objdiff bu
   base_object = build/decomp/asm/game/tracked_resource_actor_timed_setup_02051794.o
 build build/reports/tracked_resource_actor_timed_setup_02051794.txt: match_report build/reports/tracked_resource_actor_timed_setup_02051794.json | tools/report_objdiff.py
   report_json = build/reports/tracked_resource_actor_timed_setup_02051794.json
-  report_args = --section .text --function func_02051794 --require-exact
+  report_args = --section .text --function TrackedResourceActorType26_SetupFromRecord --require-exact
 
 build tracked_resource_actor_timed_setup: phony build/decomp/src/game/tracked_resource_actor_timed_setup.o build/decomp/asm/game/tracked_resource_actor_timed_setup_02051794.o build/reports/tracked_resource_actor_timed_setup_02051794.txt
 
@@ -19779,7 +19779,7 @@ build build/reports/tracked_resource_actor_timed_proximity_0205184c.json: objdif
   base_object = build/decomp/asm/game/tracked_resource_actor_timed_proximity_0205184c.o
 build build/reports/tracked_resource_actor_timed_proximity_0205184c.txt: match_report build/reports/tracked_resource_actor_timed_proximity_0205184c.json | tools/report_objdiff.py
   report_json = build/reports/tracked_resource_actor_timed_proximity_0205184c.json
-  report_args = --section .text --function func_0205184c --require-exact
+  report_args = --section .text --function TrackedResourceActorType26_HandleProximityInteraction --require-exact
 
 build tracked_resource_actor_timed_proximity: phony build/decomp/src/game/tracked_resource_actor_timed_proximity.o build/decomp/asm/game/tracked_resource_actor_timed_proximity_0205184c.o build/reports/tracked_resource_actor_timed_proximity_0205184c.txt
 
@@ -19794,7 +19794,7 @@ build build/reports/tracked_resource_actor_timed_forward_0205196c.json: objdiff 
   base_object = build/decomp/asm/game/tracked_resource_actor_timed_forward_0205196c.o
 build build/reports/tracked_resource_actor_timed_forward_0205196c.txt: match_report build/reports/tracked_resource_actor_timed_forward_0205196c.json | tools/report_objdiff.py
   report_json = build/reports/tracked_resource_actor_timed_forward_0205196c.json
-  report_args = --section .text --function func_0205196c --require-exact
+  report_args = --section .text --function TrackedResourceActorType26_ForwardInteractionCallback --require-exact
 
 build tracked_resource_actor_timed_forward: phony build/decomp/src/game/tracked_resource_actor_timed_forward.o build/decomp/asm/game/tracked_resource_actor_timed_forward_0205196c.o build/reports/tracked_resource_actor_timed_forward_0205196c.txt
 
@@ -19809,7 +19809,7 @@ build build/reports/tracked_resource_actor_timed_update_0205199c.json: objdiff b
   base_object = build/decomp/asm/game/tracked_resource_actor_timed_update_0205199c.o
 build build/reports/tracked_resource_actor_timed_update_0205199c.txt: match_report build/reports/tracked_resource_actor_timed_update_0205199c.json | tools/report_objdiff.py
   report_json = build/reports/tracked_resource_actor_timed_update_0205199c.json
-  report_args = --section .text --function func_0205199c --require-exact
+  report_args = --section .text --function TrackedResourceActorType26_Update --require-exact
 
 build tracked_resource_actor_timed_update: phony build/decomp/src/game/tracked_resource_actor_timed_update.o build/decomp/asm/game/tracked_resource_actor_timed_update_0205199c.o build/reports/tracked_resource_actor_timed_update_0205199c.txt
 
@@ -19824,7 +19824,7 @@ build build/reports/tracked_resource_actor_timed_collision_02051b48.json: objdif
   base_object = build/decomp/asm/game/tracked_resource_actor_timed_collision_02051b48.o
 build build/reports/tracked_resource_actor_timed_collision_02051b48.txt: match_report build/reports/tracked_resource_actor_timed_collision_02051b48.json | tools/report_objdiff.py
   report_json = build/reports/tracked_resource_actor_timed_collision_02051b48.json
-  report_args = --section .text --function func_02051b48 --require-exact
+  report_args = --section .text --function TrackedResourceActorType26_HandleCollision --require-exact
 
 build tracked_resource_actor_timed_collision: phony build/decomp/src/game/tracked_resource_actor_timed_collision.o build/decomp/asm/game/tracked_resource_actor_timed_collision_02051b48.o build/reports/tracked_resource_actor_timed_collision_02051b48.txt
 
@@ -19839,7 +19839,7 @@ build build/reports/tracked_resource_actor_timed_reset_02051c90.json: objdiff bu
   base_object = build/decomp/asm/game/tracked_resource_actor_timed_reset_02051c90.o
 build build/reports/tracked_resource_actor_timed_reset_02051c90.txt: match_report build/reports/tracked_resource_actor_timed_reset_02051c90.json | tools/report_objdiff.py
   report_json = build/reports/tracked_resource_actor_timed_reset_02051c90.json
-  report_args = --section .text --function func_02051c90 --require-exact
+  report_args = --section .text --function TrackedResourceActorType26_ResetMotionState --require-exact
 
 build tracked_resource_actor_timed_reset: phony build/decomp/src/game/tracked_resource_actor_timed_reset.o build/decomp/asm/game/tracked_resource_actor_timed_reset_02051c90.o build/reports/tracked_resource_actor_timed_reset_02051c90.txt
 

@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/tracked_resource_actor_timed_reset.c.
 .text
-    .global func_02051c90
-func_02051c90:
+    .global TrackedResourceActorType26_ResetMotionState
+TrackedResourceActorType26_ResetMotionState:
     stmdb sp!, {r3, lr}
     ldrh r1, [r0, #0x4e]
     cmp r1, #0x19
@@ -22,4 +22,4 @@ func_02051c90:
     str r1, [r0, #0x14]
     ldmia sp!, {r3, pc}
 .L_02051cd8: .word 0xff7fffbf
-    .size func_02051c90, . - func_02051c90
+    .size TrackedResourceActorType26_ResetMotionState, . - TrackedResourceActorType26_ResetMotionState

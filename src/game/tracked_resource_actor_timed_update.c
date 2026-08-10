@@ -23,7 +23,7 @@ static VirtualFunction virtual_function(void *actor, u32 offset)
 /*
  * Input is a timed actor. Calls virtual pre-update slot 0x18 and decrements the
  * positive cooldown at 0x200. In low state 0, increments timer 0x1F8, clears
- * presentation bit 4, and—when the low nibble at 0x4B is clear—compares field
+ * presentation bit 4 and, when the low nibble at 0x4B is clear, compares field
  * 0x24 with 0x1DC and Actor_GetCachedTerrainHeight to control flag 0x800000. Subtype 0x19 can
  * invoke slot 0xC4; otherwise reaching 0x1DC enters state 1 and divides fields
  * 0x8C/0x90 by the recovered factor 4. A nonzero nibble invokes slot 0xC8.
@@ -32,7 +32,7 @@ static VirtualFunction virtual_function(void *actor, u32 offset)
  * 0x20. Returns nothing; callbacks mutate engine state without direct hardware
  * access. State and motion field meanings remain partly inferred.
  */
-void func_0205199c(void *actor)
+void TrackedResourceActorType26_Update(void *actor)
 {
     u16 state;
     s16 subtype;

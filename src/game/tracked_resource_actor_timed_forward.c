@@ -19,7 +19,7 @@ typedef void (*ForwardFunction)(void *, u32, u32);
  * Returns nothing. Both callbacks can mutate engine state or cross SDK
  * boundaries; this wrapper has no direct hardware effects.
  */
-void func_0205196c(void *actor, u32 argument1, u32 argument2)
+void TrackedResourceActorType26_ForwardInteractionCallback(void *actor, u32 argument1, u32 argument2)
 {
     (*(ForwardFunction *)((u8 *)FIELD(void *, actor, 0) + 0xc4))
         (actor, argument1, argument2);

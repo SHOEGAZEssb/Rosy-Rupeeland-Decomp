@@ -26,7 +26,7 @@ extern void TrackedResourceActor_ScaleVectorComponents(void *vector, s32 length)
  * sets flag 0x2000 at 0xD0, and replaces the low half of 0x5C with 8. Returns
  * nothing; helper calls mutate engine transform state without hardware access.
  */
-void func_02051794(void *actor, const void *record, u32 argument, u32 unused)
+void TrackedResourceActorType26_SetupFromRecord(void *actor, const void *record, u32 argument, u32 unused)
 {
     u8 vector[16];
     s32 length;

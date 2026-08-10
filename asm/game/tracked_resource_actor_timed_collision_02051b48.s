@@ -13,8 +13,8 @@
 .extern TrackedResourceActor_ScaleVectorComponents
 .extern func_020adae4
 .text
-    .global func_02051b48
-func_02051b48:
+    .global TrackedResourceActorType26_HandleCollision
+TrackedResourceActorType26_HandleCollision:
     stmdb sp!, {r3, r4, r5, lr}
     sub sp, sp, #0x20
     mov r5, r0
@@ -99,5 +99,5 @@ func_02051b48:
     add sp, sp, #0x20
     ldmia sp!, {r3, r4, r5, pc}
 .L_02051c8c: .word gActorRuntimeCollection
-    .size func_02051b48, . - func_02051b48
+    .size TrackedResourceActorType26_HandleCollision, . - TrackedResourceActorType26_HandleCollision
 

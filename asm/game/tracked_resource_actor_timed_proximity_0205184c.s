@@ -7,8 +7,8 @@
 .extern ActorDerivedType1_TrySetStateVector
 .extern func_020adae4
 .text
-    .global func_0205184c
-func_0205184c:
+    .global TrackedResourceActorType26_HandleProximityInteraction
+TrackedResourceActorType26_HandleProximityInteraction:
     stmdb sp!, {r4, r5, r6, lr}
     sub sp, sp, #0x10
     ldr r2, .L_02051968
@@ -82,5 +82,5 @@ func_0205184c:
     add sp, sp, #0x10
     ldmia sp!, {r4, r5, r6, pc}
 .L_02051968: .word data_021052fc
-    .size func_0205184c, . - func_0205184c
+    .size TrackedResourceActorType26_HandleProximityInteraction, . - TrackedResourceActorType26_HandleProximityInteraction
 

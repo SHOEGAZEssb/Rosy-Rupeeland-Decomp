@@ -1,8 +1,8 @@
 ; Matching retail form; see src/game/tracked_resource_actor_timed_forward.c.
 .extern func_02032a94
 .text
-    .global func_0205196c
-func_0205196c:
+    .global TrackedResourceActorType26_ForwardInteractionCallback
+TrackedResourceActorType26_ForwardInteractionCallback:
     stmdb sp!, {r4, r5, r6, lr}
     ldr r3, [r0, #0x0]
     mov r6, r0
@@ -15,4 +15,4 @@ func_0205196c:
     mov r2, r4
     bl func_02032a94
     ldmia sp!, {r4, r5, r6, pc}
-    .size func_0205196c, . - func_0205196c
+    .size TrackedResourceActorType26_ForwardInteractionCallback, . - TrackedResourceActorType26_ForwardInteractionCallback

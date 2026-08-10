@@ -11,7 +11,7 @@ typedef void (*ResetFunction)(void *, s32);
  * actor flag bits 0x00800040. Returns nothing. Virtual dispatch may mutate
  * engine state; this function has no direct SDK or hardware effects.
  */
-void func_02051c90(void *actor)
+void TrackedResourceActorType26_ResetMotionState(void *actor)
 {
     if (FIELD(s16, actor, 0x4e) == 0x19) {
         (*(ResetFunction *)((u8 *)FIELD(void *, actor, 0) + 0xc4))(actor, 0);
