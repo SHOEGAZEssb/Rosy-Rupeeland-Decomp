@@ -10,9 +10,9 @@
 .extern func_020337d4
 .extern gGameWork
 
-    .global func_02032aec
-    .type func_02032aec, @function
-func_02032aec: ; 0x02032aec
+    .global Actor_SetResourceVariant
+    .type Actor_SetResourceVariant, @function
+Actor_SetResourceVariant: ; 0x02032aec
     stmdb sp!, {r3, r4, r5, lr}
     sub sp, sp, #0x128
     mov r5, r0
@@ -74,4 +74,4 @@ func_02032aec: ; 0x02032aec
     ldmia sp!, {r3, r4, r5, pc}
 .L_02032bc8: .word data_02105310
 .L_02032bcc: .word gGameWork
-    .size func_02032aec, . - func_02032aec
+    .size Actor_SetResourceVariant, . - Actor_SetResourceVariant

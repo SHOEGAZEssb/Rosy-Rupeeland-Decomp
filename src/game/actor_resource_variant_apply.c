@@ -20,14 +20,14 @@ extern void func_0201b228(void *);
 
 /*
  * Store variant in byte 0xe8. If actor flag 0x40 is set, first snapshot the
- * attachment through Actor_SavePrimaryAttachmentState. A nonzero variant sets actor flag 0x100
- * and notifies data_02105310. Construct a temporary resource from actor pointer
+ * attachment through Actor_SavePrimaryAttachmentState. A nonzero variant sets
+ * actor flag 0x100 and notifies data_02105310. Construct a temporary resource from actor pointer
  * 0x180+variant*4 and GameWork offset 0x3cc when collection mode 0x2e84 is one,
  * otherwise offset 0x5cc. Assign it to actor resource 0xec, destroy the
  * temporary, then finalize 0xec through func_0201b228. Returns no value; called
  * resource helpers may allocate or update SDK-managed presentation state.
  */
-void func_02032aec(void *self, s32 variant)
+void Actor_SetResourceVariant(void *self, s32 variant)
 {
     u8 *actor = (u8 *)self;
     u8 temporary[0x94];

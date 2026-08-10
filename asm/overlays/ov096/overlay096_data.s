@@ -32,7 +32,7 @@
 .extern func_ov096_022181f4
 .extern Actor_AssignPrimaryResourceWithEffect
 .extern Actor_AssignPrimaryResource
-.extern func_02032aec
+.extern Actor_SetResourceVariant
 .extern func_020423c8
 .extern func_020425d4
 .extern func_02042864
@@ -223,7 +223,7 @@ data_ov096_02218b98:
     .word func_ov096_022181f4
     .word Actor_AssignPrimaryResourceWithEffect
     .word Actor_AssignPrimaryResource
-    .word func_02032aec
+    .word Actor_SetResourceVariant
     .word func_020423c8
     .word func_020425d4
     .word func_02042864
@@ -370,7 +370,7 @@ data_ov096_02218de8:
     .word func_ov096_022181f4
     .word Actor_AssignPrimaryResourceWithEffect
     .word Actor_AssignPrimaryResource
-    .word func_02032aec
+    .word Actor_SetResourceVariant
     .word func_020423c8
     .word func_020425d4
     .word func_02042864

@@ -15,7 +15,7 @@
 .extern func_02032520
 .extern Actor_SetPosition
 .extern func_02032abc
-.extern func_02032aec
+.extern Actor_SetResourceVariant
 .extern Actor_AssignPrimaryResource
 .extern Actor_SetResourceSlot
 .extern Actor_AssignPrimaryResourceWithEffect
@@ -154,7 +154,7 @@ data_ov093_022188f0:
     .word func_ov093_02218788
     .word Actor_AssignPrimaryResourceWithEffect
     .word Actor_AssignPrimaryResource
-    .word func_02032aec
+    .word Actor_SetResourceVariant
     .word func_ov093_02218778
     .word Actor_SetPosition
     .word func_02033b38

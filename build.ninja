@@ -14143,7 +14143,7 @@ build build/reports/actor_resource_variant_apply_02032aec.json: objdiff build/de
   base_object = build/decomp/asm/game/actor_resource_variant_apply_02032aec.o
 build build/reports/actor_resource_variant_apply_02032aec.txt: match_report build/reports/actor_resource_variant_apply_02032aec.json | tools/report_objdiff.py
   report_json = build/reports/actor_resource_variant_apply_02032aec.json
-  report_args = --section .text --function func_02032aec --require-exact
+  report_args = --section .text --function Actor_SetResourceVariant --require-exact
 build build/reports/actor_resource_variant_apply.txt: phony build/reports/actor_resource_variant_apply_02032aec.txt
 
 build actor_resource_variant_apply: phony build/decomp/src/game/actor_resource_variant_apply.o build/decomp/asm/game/actor_resource_variant_apply_02032aec.o build/reports/actor_resource_variant_apply.txt

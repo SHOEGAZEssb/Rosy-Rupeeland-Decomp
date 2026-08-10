@@ -32,7 +32,7 @@
 .extern func_ov095_0221b0ec
 .extern Actor_AssignPrimaryResourceWithEffect
 .extern Actor_AssignPrimaryResource
-.extern func_02032aec
+.extern Actor_SetResourceVariant
 .extern func_ov095_0221ac20
 .extern func_ov095_0221ac6c
 .extern func_02042864
@@ -339,7 +339,7 @@ data_ov095_0221cca0:
     .word func_ov095_0221b0ec
     .word Actor_AssignPrimaryResourceWithEffect
     .word Actor_AssignPrimaryResource
-    .word func_02032aec
+    .word Actor_SetResourceVariant
     .word func_ov095_0221ac20
     .word func_ov095_0221ac6c
     .word func_02042864
@@ -503,7 +503,7 @@ data_ov095_0221cf4c:
     .word func_ov095_0221b0ec
     .word Actor_AssignPrimaryResourceWithEffect
     .word Actor_AssignPrimaryResource
-    .word func_02032aec
+    .word Actor_SetResourceVariant
     .word func_020423c8
     .word func_ov095_0221b798
     .word func_02042864
@@ -648,7 +648,7 @@ data_ov095_0221d1a4:
     .word func_ov095_0221c6dc
     .word Actor_AssignPrimaryResourceWithEffect
     .word Actor_AssignPrimaryResource
-    .word func_02032aec
+    .word Actor_SetResourceVariant
     .word func_ov095_0221c6cc
     .word Actor_SetPosition
     .word func_02033b38
@@ -727,7 +727,7 @@ data_ov095_0221d2e8:
     .word func_ov095_0221c6dc
     .word Actor_AssignPrimaryResourceWithEffect
     .word Actor_AssignPrimaryResource
-    .word func_02032aec
+    .word Actor_SetResourceVariant
     .word func_ov095_0221c6cc
     .word Actor_SetPosition
     .word func_02033b38
