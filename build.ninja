@@ -6461,7 +6461,7 @@ build build/reports/game_phase_script_vm_0201b070.json: objdiff build/decomp/del
   base_object = build/decomp/asm/game/game_phase_script_vm_0201b070.o
 build build/reports/game_phase_script_vm_0201b070.txt: match_report build/reports/game_phase_script_vm_0201b070.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_script_vm_0201b070.json
-  report_args = --section .text --function func_0201b070 --require-exact
+  report_args = --section .text --function GamePhaseActorScriptVm_GetOneBasedPhaseRecordByte4c --require-exact
 
 build build/reports/game_phase_script_vm_global_state_query_opcodes.txt: phony build/reports/game_phase_script_vm_0201b040.txt build/reports/game_phase_script_vm_0201b070.txt
 build build/reports/game_phase_script_vm_0201b098.json: objdiff build/decomp/delinks/asm/game/game_phase_script_vm_0201b098.o | build/decomp/asm/game/game_phase_script_vm_0201b098.o

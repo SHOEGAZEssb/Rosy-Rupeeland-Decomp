@@ -21,7 +21,7 @@ s32 func_0201b040(GamePhaseActorScriptVm *self)
 }
 
 /* Pop a one-based record index, push its signed byte at offset 0x4c, and return zero. */
-s32 func_0201b070(GamePhaseActorScriptVm *self)
+s32 GamePhaseActorScriptVm_GetOneBasedPhaseRecordByte4c(GamePhaseActorScriptVm *self)
 {
     s32 index = (s32)GamePhaseScriptVm_Pop(&self->base) - 1;
     s8 value = *(s8 *)((u8 *)func_02028388(index) + 0x4c);

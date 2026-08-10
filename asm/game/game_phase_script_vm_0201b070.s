@@ -3,8 +3,8 @@
 .extern GamePhaseScriptVm_Pop
 .extern GamePhaseScriptVm_SetResult
 .extern func_02028388
-.global func_0201b070
-func_0201b070: ; 0x0201b070
+.global GamePhaseActorScriptVm_GetOneBasedPhaseRecordByte4c
+GamePhaseActorScriptVm_GetOneBasedPhaseRecordByte4c: ; 0x0201b070
     stmdb sp!, {r4, lr}
     mov r4, r0
     bl GamePhaseScriptVm_Pop
@@ -15,4 +15,4 @@ func_0201b070: ; 0x0201b070
     bl GamePhaseScriptVm_SetResult
     mov r0, #0x0
     ldmia sp!, {r4, pc}
-.size func_0201b070, . - func_0201b070
+.size GamePhaseActorScriptVm_GetOneBasedPhaseRecordByte4c, . - GamePhaseActorScriptVm_GetOneBasedPhaseRecordByte4c
