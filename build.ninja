@@ -19599,7 +19599,7 @@ build build/reports/tracked_resource_actor_variant_setup_02050eec.json: objdiff 
   base_object = build/decomp/asm/game/tracked_resource_actor_variant_setup_02050eec.o
 build build/reports/tracked_resource_actor_variant_setup_02050eec.txt: match_report build/reports/tracked_resource_actor_variant_setup_02050eec.json | tools/report_objdiff.py
   report_json = build/reports/tracked_resource_actor_variant_setup_02050eec.json
-  report_args = --section .text --function func_02050eec --require-exact
+  report_args = --section .text --function TrackedResourceActorType22And25_SetupFromRecord --require-exact
 
 build tracked_resource_actor_variant_setup: phony build/decomp/src/game/tracked_resource_actor_variant_setup.o build/decomp/asm/game/tracked_resource_actor_variant_setup_02050eec.o build/reports/tracked_resource_actor_variant_setup_02050eec.txt
 
@@ -19614,7 +19614,7 @@ build build/reports/tracked_resource_actor_variant_update_02050fa0.json: objdiff
   base_object = build/decomp/asm/game/tracked_resource_actor_variant_update_02050fa0.o
 build build/reports/tracked_resource_actor_variant_update_02050fa0.txt: match_report build/reports/tracked_resource_actor_variant_update_02050fa0.json | tools/report_objdiff.py
   report_json = build/reports/tracked_resource_actor_variant_update_02050fa0.json
-  report_args = --section .text --function func_02050fa0 --require-exact
+  report_args = --section .text --function TrackedResourceActorType22And25_Update --require-exact
 
 build tracked_resource_actor_variant_update: phony build/decomp/src/game/tracked_resource_actor_variant_update.o build/decomp/asm/game/tracked_resource_actor_variant_update_02050fa0.o build/reports/tracked_resource_actor_variant_update_02050fa0.txt
 
@@ -19629,7 +19629,7 @@ build build/reports/tracked_resource_actor_variant_collision_020511a4.json: objd
   base_object = build/decomp/asm/game/tracked_resource_actor_variant_collision_020511a4.o
 build build/reports/tracked_resource_actor_variant_collision_020511a4.txt: match_report build/reports/tracked_resource_actor_variant_collision_020511a4.json | tools/report_objdiff.py
   report_json = build/reports/tracked_resource_actor_variant_collision_020511a4.json
-  report_args = --section .text --function func_020511a4 --require-exact
+  report_args = --section .text --function TrackedResourceActorType22And25_HandleCollision --require-exact
 
 build tracked_resource_actor_variant_collision: phony build/decomp/src/game/tracked_resource_actor_variant_collision.o build/decomp/asm/game/tracked_resource_actor_variant_collision_020511a4.o build/reports/tracked_resource_actor_variant_collision_020511a4.txt
 
@@ -19644,7 +19644,7 @@ build build/reports/tracked_resource_actor_variant_reset_020512a4.json: objdiff 
   base_object = build/decomp/asm/game/tracked_resource_actor_variant_reset_020512a4.o
 build build/reports/tracked_resource_actor_variant_reset_020512a4.txt: match_report build/reports/tracked_resource_actor_variant_reset_020512a4.json | tools/report_objdiff.py
   report_json = build/reports/tracked_resource_actor_variant_reset_020512a4.json
-  report_args = --section .text --function func_020512a4 --require-exact
+  report_args = --section .text --function TrackedResourceActorType22And25_ResetMotionState --require-exact
 
 build tracked_resource_actor_variant_reset: phony build/decomp/src/game/tracked_resource_actor_variant_reset.o build/decomp/asm/game/tracked_resource_actor_variant_reset_020512a4.o build/reports/tracked_resource_actor_variant_reset_020512a4.txt
 
@@ -19659,7 +19659,7 @@ build build/reports/tracked_resource_actor_variant_subtype_notify_02051314.json:
   base_object = build/decomp/asm/game/tracked_resource_actor_variant_subtype_notify_02051314.o
 build build/reports/tracked_resource_actor_variant_subtype_notify_02051314.txt: match_report build/reports/tracked_resource_actor_variant_subtype_notify_02051314.json | tools/report_objdiff.py
   report_json = build/reports/tracked_resource_actor_variant_subtype_notify_02051314.json
-  report_args = --section .text --function func_02051314 --require-exact
+  report_args = --section .text --function TrackedResourceActorType22And25_CleanupSubtype19 --require-exact
 
 build tracked_resource_actor_variant_subtype_notify: phony build/decomp/src/game/tracked_resource_actor_variant_subtype_notify.o build/decomp/asm/game/tracked_resource_actor_variant_subtype_notify_02051314.o build/reports/tracked_resource_actor_variant_subtype_notify_02051314.txt
 

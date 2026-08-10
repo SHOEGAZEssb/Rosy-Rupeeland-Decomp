@@ -37,7 +37,7 @@ static VirtualFunction virtual_function(void *actor, u32 offset)
  * invokes notification, effect, and interaction helpers. Returns nothing;
  * engine state can change, but this function does not access hardware directly.
  */
-void func_020511a4(void *actor, void *target, u32 unused1, u32 unused2)
+void TrackedResourceActorType22And25_HandleCollision(void *actor, void *target, u32 unused1, u32 unused2)
 {
     u8 vector[16];
     (void)unused1;

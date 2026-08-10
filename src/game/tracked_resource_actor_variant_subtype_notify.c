@@ -22,7 +22,7 @@ extern void func_020505f0(void *actor, ...);
  * boundaries; this wrapper does not access hardware directly. The meaning of
  * the manager field and numeric callback values remains unconfirmed.
  */
-void func_02051314(void *actor)
+void TrackedResourceActorType22And25_CleanupSubtype19(void *actor)
 {
     if (FIELD(s16, actor, 0x4e) != 0x19)
         return;

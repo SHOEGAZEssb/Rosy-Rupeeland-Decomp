@@ -33,7 +33,7 @@ static VirtualFunction virtual_function(void *actor, u32 offset)
  * with zero. Finally runs slots 0xD4/0xA4, Actor_UpdateAnimationState, and slot 0x20. Returns
  * nothing; engine callbacks may have SDK effects, with no direct hardware use.
  */
-void func_02050fa0(void *actor)
+void TrackedResourceActorType22And25_Update(void *actor)
 {
     u16 state;
     s16 timer;

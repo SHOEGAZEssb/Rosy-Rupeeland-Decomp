@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/tracked_resource_actor_variant_reset.c.
 .text
-    .global func_020512a4
-func_020512a4:
+    .global TrackedResourceActorType22And25_ResetMotionState
+TrackedResourceActorType22And25_ResetMotionState:
     stmdb sp!, {r4, lr}
     mov r4, r0
     ldrh r1, [r4, #0x4e]
@@ -32,5 +32,5 @@ func_020512a4:
     str r0, [r4, #0x1f4]
     ldmia sp!, {r4, pc}
 .L_02051310: .word 0xff7fffbf
-    .size func_020512a4, . - func_020512a4
+    .size TrackedResourceActorType22And25_ResetMotionState, . - TrackedResourceActorType22And25_ResetMotionState
 

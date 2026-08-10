@@ -3,7 +3,7 @@
 .extern gTrackedResourceActorType22And25Vtable
 .extern TrackedResourceActor_Init
 .extern TrackedResourceActor_Destroy
-.extern func_02051314
+.extern TrackedResourceActorType22And25_CleanupSubtype19
 .text
     .global TrackedResourceActorType22And25_Init
 TrackedResourceActorType22And25_Init:
@@ -23,7 +23,7 @@ TrackedResourceActorType22And25_DestroyComplete:
     ldr r1, .L_02050eb8
     mov r4, r0
     str r1, [r4, #0x0]
-    bl func_02051314
+    bl TrackedResourceActorType22And25_CleanupSubtype19
     mov r0, r4
     bl TrackedResourceActor_Destroy
     mov r0, r4
@@ -37,7 +37,7 @@ TrackedResourceActorType22And25_DestroyAndFree:
     ldr r1, .L_02050ee8
     mov r4, r0
     str r1, [r4, #0x0]
-    bl func_02051314
+    bl TrackedResourceActorType22And25_CleanupSubtype19
     mov r0, r4
     bl TrackedResourceActor_Destroy
     mov r0, r4

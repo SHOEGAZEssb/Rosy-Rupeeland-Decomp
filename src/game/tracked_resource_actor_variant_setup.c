@@ -26,7 +26,7 @@ extern void TrackedResourceActor_ScaleVectorComponents(void *vector, s32 length)
  * 0xD0, and replaces the low half of 0x5C with 8. Returns nothing; engine state
  * changes without direct hardware access. Record-field meanings are inferred.
  */
-void func_02050eec(void *actor, const void *record, u32 argument, u32 unused)
+void TrackedResourceActorType22And25_SetupFromRecord(void *actor, const void *record, u32 argument, u32 unused)
 {
     u8 vector[16];
     s32 length;

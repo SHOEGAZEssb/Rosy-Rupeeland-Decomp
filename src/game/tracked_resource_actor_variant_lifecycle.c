@@ -7,7 +7,7 @@ extern "C" {
 #endif
 extern void *TrackedResourceActor_Init(void *actor);
 extern void *TrackedResourceActor_Destroy(void *actor);
-extern void func_02051314(void *actor);
+extern void TrackedResourceActorType22And25_CleanupSubtype19(void *actor);
 extern void Heap_Free(void *allocation);
 extern u32 gTrackedResourceActorType22And25Vtable[];
 #ifdef __cplusplus
@@ -28,13 +28,13 @@ void *TrackedResourceActorType22And25_Init(void *actor)
 
 /*
  * Input is a variant instance. Reinstalls its vtable, runs variant cleanup
- * func_02051314 and tracked-resource base teardown, then returns the instance
+ * TrackedResourceActorType22And25_CleanupSubtype19 and tracked-resource base teardown, then returns the instance
  * without freeing it. Cleanup can release engine resources.
  */
 void *TrackedResourceActorType22And25_DestroyComplete(void *actor)
 {
     *(u32 **)actor = gTrackedResourceActorType22And25Vtable;
-    func_02051314(actor);
+    TrackedResourceActorType22And25_CleanupSubtype19(actor);
     TrackedResourceActor_Destroy(actor);
     return actor;
 }
@@ -47,7 +47,7 @@ void *TrackedResourceActorType22And25_DestroyComplete(void *actor)
 void *TrackedResourceActorType22And25_DestroyAndFree(void *actor)
 {
     *(u32 **)actor = gTrackedResourceActorType22And25Vtable;
-    func_02051314(actor);
+    TrackedResourceActorType22And25_CleanupSubtype19(actor);
     TrackedResourceActor_Destroy(actor);
     Heap_Free(actor);
     return actor;

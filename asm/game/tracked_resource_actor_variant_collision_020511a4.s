@@ -10,8 +10,8 @@
 .extern TrackedResourceActor_EmitRecordEffects
 .extern TrackedResourceActor_DispatchTargetInteraction
 .text
-    .global func_020511a4
-func_020511a4:
+    .global TrackedResourceActorType22And25_HandleCollision
+TrackedResourceActorType22And25_HandleCollision:
     stmdb sp!, {r3, r4, r5, lr}
     sub sp, sp, #0x10
     mov r5, r0
@@ -77,5 +77,5 @@ func_020511a4:
     add sp, sp, #0x10
     ldmia sp!, {r3, r4, r5, pc}
 .L_020512a0: .word gActorRuntimeCollection
-    .size func_020511a4, . - func_020511a4
+    .size TrackedResourceActorType22And25_HandleCollision, . - TrackedResourceActorType22And25_HandleCollision
 

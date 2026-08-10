@@ -3,8 +3,8 @@
 .extern ActorMotionJitter_EnsureMinimum
 .extern func_020505f0
 .text
-    .global func_02051314
-func_02051314:
+    .global TrackedResourceActorType22And25_CleanupSubtype19
+TrackedResourceActorType22And25_CleanupSubtype19:
     stmdb sp!, {r4, lr}
     mov r4, r0
     ldrh r1, [r4, #0x4e]
@@ -23,4 +23,4 @@ func_02051314:
     bl ActorMotionJitter_EnsureMinimum
     ldmia sp!, {r4, pc}
 .L_02051358: .word data_021052fc
-    .size func_02051314, . - func_02051314
+    .size TrackedResourceActorType22And25_CleanupSubtype19, . - TrackedResourceActorType22And25_CleanupSubtype19

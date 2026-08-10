@@ -17,7 +17,7 @@ static VirtualFunction virtual_function(void *actor, u32 offset)
  * 0x1F4 while preserving other bits. Returns nothing; virtual dispatch may
  * mutate engine state, and hardware is not accessed directly.
  */
-void func_020512a4(void *actor)
+void TrackedResourceActorType22And25_ResetMotionState(void *actor)
 {
     if (FIELD(s16, actor, 0x4e) == 0x19) {
         virtual_function(actor, 0xc4)(actor, 0);
