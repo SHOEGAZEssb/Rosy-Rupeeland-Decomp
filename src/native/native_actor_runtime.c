@@ -379,7 +379,7 @@ static void InitializeIndexedStateActor(TingleNativeActorImage *actor)
     actor->initialization_stages |= TINGLE_NATIVE_ACTOR_STAGE_KIND3_DERIVED;
 }
 
-/* Reproduce func_0203ca28 using the ARM9 table record resolved by the catalog. */
+/* Reproduce ActorTableRecord_InitAlternate using the ARM9 table record resolved by the catalog. */
 static void InitializeTableRecordActor(TingleNativeActorImage *actor)
 {
     const u8 *record = actor->descriptor.constructor_record;

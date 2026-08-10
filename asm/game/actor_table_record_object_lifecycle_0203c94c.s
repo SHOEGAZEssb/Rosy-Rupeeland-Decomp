@@ -5,9 +5,9 @@
 .extern data_020ed638
 .extern ActorDerivedRuntime_Init
 .extern ActorDerivedRuntime_DestroyAlternate
-    .global func_0203c94c
-    .type func_0203c94c, @function
-func_0203c94c: ; 0x0203c94c
+    .global ActorTableRecord_Init
+    .type ActorTableRecord_Init, @function
+ActorTableRecord_Init: ; 0x0203c94c
     stmdb sp!, {r3, r4, r5, lr}
     mov r5, r0
     mov r4, r1
@@ -64,11 +64,11 @@ func_0203c94c: ; 0x0203c94c
     ldmia sp!, {r3, r4, r5, pc}
 .L_0203ca20: .word data_020df910
 .L_0203ca24: .word data_020ed638
-    .size func_0203c94c, . - func_0203c94c
+    .size ActorTableRecord_Init, . - ActorTableRecord_Init
 
-    .global func_0203ca28
-    .type func_0203ca28, @function
-func_0203ca28: ; 0x0203ca28
+    .global ActorTableRecord_InitAlternate
+    .type ActorTableRecord_InitAlternate, @function
+ActorTableRecord_InitAlternate: ; 0x0203ca28
     stmdb sp!, {r3, r4, r5, lr}
     mov r5, r0
     mov r4, r1
@@ -125,21 +125,21 @@ func_0203ca28: ; 0x0203ca28
     ldmia sp!, {r3, r4, r5, pc}
 .L_0203cafc: .word data_020df910
 .L_0203cb00: .word data_020ed638
-    .size func_0203ca28, . - func_0203ca28
+    .size ActorTableRecord_InitAlternate, . - ActorTableRecord_InitAlternate
 
-    .global func_0203cb04
-    .type func_0203cb04, @function
-func_0203cb04: ; 0x0203cb04
+    .global ActorTableRecord_Destroy
+    .type ActorTableRecord_Destroy, @function
+ActorTableRecord_Destroy: ; 0x0203cb04
     stmdb sp!, {r4, lr}
     mov r4, r0
     bl ActorDerivedRuntime_DestroyAlternate
     mov r0, r4
     ldmia sp!, {r4, pc}
-    .size func_0203cb04, . - func_0203cb04
+    .size ActorTableRecord_Destroy, . - ActorTableRecord_Destroy
 
-    .global func_0203cb18
-    .type func_0203cb18, @function
-func_0203cb18: ; 0x0203cb18
+    .global ActorTableRecord_DestroyAndFree
+    .type ActorTableRecord_DestroyAndFree, @function
+ActorTableRecord_DestroyAndFree: ; 0x0203cb18
     stmdb sp!, {r4, lr}
     mov r4, r0
     bl ActorDerivedRuntime_DestroyAlternate
@@ -148,5 +148,5 @@ func_0203cb18: ; 0x0203cb18
     mov r0, r4
     ldmia sp!, {r4, pc}
 
-    .size func_0203cb18, . - func_0203cb18
+    .size ActorTableRecord_DestroyAndFree, . - ActorTableRecord_DestroyAndFree
 

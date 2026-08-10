@@ -12,8 +12,8 @@
 .extern ActorDerivedRuntime_InitAlternate
 .extern ActorMotionProbe_Init
 .extern ActorModeNibble_Init
-.extern func_0203ca28
-.extern func_0203d2a8
+.extern ActorTableRecord_InitAlternate
+.extern ActorRegisteredSubclass_Init
 .extern ActorExtendedType2_InitDuplicate
 .extern ActorExtendedType3_Init
 .extern ActorExtendedTransform_InitDuplicate
@@ -1466,7 +1466,7 @@ ActorCollection_SpawnActorFromDescriptor: ; 0x0202ecd0
     movs r4, r0
     beq .L_0203015c
     mov r1, r5
-    bl func_0203ca28
+    bl ActorTableRecord_InitAlternate
     mov r4, r0
     b .L_0203015c
 .L_02030088:
@@ -1478,7 +1478,7 @@ ActorCollection_SpawnActorFromDescriptor: ; 0x0202ecd0
     movs r4, r0
     beq .L_0203015c
     mov r1, r5
-    bl func_0203d2a8
+    bl ActorRegisteredSubclass_Init
     mov r4, r0
     b .L_0203015c
 .L_020300b4:

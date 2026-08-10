@@ -5,11 +5,11 @@
 .extern data_02105714
 .extern data_02105718
 .extern ActorDerivedRuntime_DestroyAlternate
-.extern func_0203c94c
+.extern ActorTableRecord_Init
 .extern func_02072b68
-    .global func_0203d260
-    .type func_0203d260, @function
-func_0203d260: ; 0x0203d260
+    .global ActorTableRecord_UpdatePresentationState
+    .type ActorTableRecord_UpdatePresentationState, @function
+ActorTableRecord_UpdatePresentationState: ; 0x0203d260
     stmdb sp!, {r4, lr}
     mov r4, r0
     ldr r0, [r4, #0x20c]
@@ -28,14 +28,14 @@ func_0203d260: ; 0x0203d260
     orr r0, r0, #0x2
     strh r0, [r1, #0x24]
     ldmia sp!, {r4, pc}
-    .size func_0203d260, . - func_0203d260
+    .size ActorTableRecord_UpdatePresentationState, . - ActorTableRecord_UpdatePresentationState
 
-    .global func_0203d2a8
-    .type func_0203d2a8, @function
-func_0203d2a8: ; 0x0203d2a8
+    .global ActorRegisteredSubclass_Init
+    .type ActorRegisteredSubclass_Init, @function
+ActorRegisteredSubclass_Init: ; 0x0203d2a8
     stmdb sp!, {r4, lr}
     mov r4, r0
-    bl func_0203c94c
+    bl ActorTableRecord_Init
     ldr r1, .L_0203d30c
     add r0, r4, #0x200
     str r1, [r4, #0x0]
@@ -60,11 +60,11 @@ func_0203d2a8: ; 0x0203d2a8
     ldmia sp!, {r4, pc}
 .L_0203d30c: .word data_020df840
 .L_0203d310: .word data_02105714
-    .size func_0203d2a8, . - func_0203d2a8
+    .size ActorRegisteredSubclass_Init, . - ActorRegisteredSubclass_Init
 
-    .global func_0203d314
-    .type func_0203d314, @function
-func_0203d314: ; 0x0203d314
+    .global ActorRegisteredSubclass_Destroy
+    .type ActorRegisteredSubclass_Destroy, @function
+ActorRegisteredSubclass_Destroy: ; 0x0203d314
     stmdb sp!, {r4, lr}
     mov r2, #0x0
     mov r4, r0
@@ -87,11 +87,11 @@ func_0203d314: ; 0x0203d314
     mov r0, r4
     ldmia sp!, {r4, pc}
 .L_0203d35c: .word data_02105718
-    .size func_0203d314, . - func_0203d314
+    .size ActorRegisteredSubclass_Destroy, . - ActorRegisteredSubclass_Destroy
 
-    .global func_0203d360
-    .type func_0203d360, @function
-func_0203d360: ; 0x0203d360
+    .global ActorRegisteredSubclass_DestroyAndFree
+    .type ActorRegisteredSubclass_DestroyAndFree, @function
+ActorRegisteredSubclass_DestroyAndFree: ; 0x0203d360
     stmdb sp!, {r4, lr}
     mov r2, #0x0
     mov r4, r0
@@ -116,6 +116,6 @@ func_0203d360: ; 0x0203d360
     mov r0, r4
     ldmia sp!, {r4, pc}
 .L_0203d3b0: .word data_02105718
-    .size func_0203d360, . - func_0203d360
+    .size ActorRegisteredSubclass_DestroyAndFree, . - ActorRegisteredSubclass_DestroyAndFree
 
 

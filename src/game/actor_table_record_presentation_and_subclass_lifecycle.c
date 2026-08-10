@@ -10,7 +10,7 @@ extern void *data_02105718[4];
 extern "C" {
 #endif
 extern void func_02072b68(void *attachment, u32 animation);
-extern void *func_0203c94c(void *actor, const void *descriptor);
+extern void *ActorTableRecord_Init(void *actor, const void *descriptor);
 extern void *ActorDerivedRuntime_DestroyAlternate(void *actor);
 #ifdef __cplusplus
 }
@@ -22,7 +22,7 @@ extern void *ActorDerivedRuntime_DestroyAlternate(void *actor);
  * and set bit two. Returns no value; animation and flag writes mutate the
  * actor's presentation.
  */
-void func_0203d260(void *self)
+void ActorTableRecord_UpdatePresentationState(void *self)
 {
     u8 *actor = (u8 *)self;
     u8 *attachment;
@@ -35,15 +35,16 @@ void func_0203d260(void *self)
 }
 
 /*
- * Initialize the table-record base through func_0203c94c and install this
- * subclass vtable. Clear halfword +0x218, set +0x21a to 120 and +0xd6 to two,
- * OR actor flags +0x14 with six, set word +0x114 to one, increment shared
- * signed halfword data_02105714+2, set word +0x108 to 24, and return self.
- * Base construction and shared-counter mutation have observable engine state.
+ * Initialize the table-record base through ActorTableRecord_Init and install
+ * this subclass vtable. Clear halfword +0x218, set +0x21a to 120 and +0xd6
+ * to two, OR actor flags +0x14 with six, set word +0x114 to one, increment
+ * shared signed halfword data_02105714+2, set word +0x108 to 24, and return
+ * self. Base construction and shared-counter mutation have observable engine
+ * state.
  */
-void *func_0203d2a8(void *self, const void *descriptor)
+void *ActorRegisteredSubclass_Init(void *self, const void *descriptor)
 {
-    u8 *actor = (u8 *)func_0203c94c(self, descriptor);
+    u8 *actor = (u8 *)ActorTableRecord_Init(self, descriptor);
     *(void **)actor = data_020df840;
     *(u16 *)(actor + 0x218) = 0;
     *(u16 *)(actor + 0x21a) = 0x78;
@@ -67,17 +68,21 @@ static void removeRegisteredActor(void *self)
 
 /*
  * Remove self from matching entries before the first null in data_02105718,
- * invoke base teardown ActorDerivedRuntime_DestroyAlternate, and return self without freeing it.
+ * invoke ActorDerivedRuntime_DestroyAlternate, and return self without
+ * freeing it.
  */
-void *func_0203d314(void *self)
+void *ActorRegisteredSubclass_Destroy(void *self)
 {
     removeRegisteredActor(self);
     ActorDerivedRuntime_DestroyAlternate(self);
     return self;
 }
 
-/* Perform func_0203d314's registry/base teardown, free self, and return its former address. */
-void *func_0203d360(void *self)
+/*
+ * Perform ActorRegisteredSubclass_Destroy's registry/base teardown, free
+ * self, and return its former address.
+ */
+void *ActorRegisteredSubclass_DestroyAndFree(void *self)
 {
     removeRegisteredActor(self);
     ActorDerivedRuntime_DestroyAlternate(self);

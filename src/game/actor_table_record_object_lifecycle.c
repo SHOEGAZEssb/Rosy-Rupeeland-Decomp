@@ -1,7 +1,10 @@
 #include "tingle/heap.h"
 #include "tingle/types.h"
 
-/* Construct and destroy an actor subclass configured from a recovered 12-entry record table. */
+/*
+ * Construct and destroy an actor subclass configured from a recovered
+ * 12-entry record table.
+ */
 extern void *data_020df910;
 extern u8 data_020ed638[];
 
@@ -55,26 +58,29 @@ static void *initializeTableRecordActor(void *self, const void *descriptor)
  * a matching record exists before dereferencing it; base initialization
  * establishes actor-owned runtime state.
  */
-void *func_0203c94c(void *self, const void *descriptor)
+void *ActorTableRecord_Init(void *self, const void *descriptor)
 {
     return initializeTableRecordActor(self, descriptor);
 }
 
-/* Alternate constructor entry identical to func_0203c94c; return self. */
-void *func_0203ca28(void *self, const void *descriptor)
+/* Alternate constructor entry identical to ActorTableRecord_Init; return self. */
+void *ActorTableRecord_InitAlternate(void *self, const void *descriptor)
 {
     return initializeTableRecordActor(self, descriptor);
 }
 
-/* Run recovered base teardown ActorDerivedRuntime_DestroyAlternate and return self without freeing it. */
-void *func_0203cb04(void *self)
+/*
+ * Run ActorDerivedRuntime_DestroyAlternate and return self without freeing
+ * it.
+ */
+void *ActorTableRecord_Destroy(void *self)
 {
     ActorDerivedRuntime_DestroyAlternate(self);
     return self;
 }
 
 /* Run recovered base teardown, free self, and return its former address. */
-void *func_0203cb18(void *self)
+void *ActorTableRecord_DestroyAndFree(void *self)
 {
     ActorDerivedRuntime_DestroyAlternate(self);
     Heap_Free(self);

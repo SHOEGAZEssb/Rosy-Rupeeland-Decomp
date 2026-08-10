@@ -16379,7 +16379,7 @@ build build/reports/actor_table_record_object_lifecycle_0203c94c.json: objdiff b
   base_object = build/decomp/asm/game/actor_table_record_object_lifecycle_0203c94c.o
 build build/reports/actor_table_record_object_lifecycle_0203c94c.txt: match_report build/reports/actor_table_record_object_lifecycle_0203c94c.json | tools/report_objdiff.py
   report_json = build/reports/actor_table_record_object_lifecycle_0203c94c.json
-  report_args = --section .text --function func_0203c94c --function func_0203ca28 --function func_0203cb04 --function func_0203cb18 --require-exact
+  report_args = --section .text --function ActorTableRecord_Init --function ActorTableRecord_InitAlternate --function ActorTableRecord_Destroy --function ActorTableRecord_DestroyAndFree --require-exact
 build build/reports/actor_table_record_object_lifecycle.txt: phony build/reports/actor_table_record_object_lifecycle_0203c94c.txt
 
 build actor_table_record_object_lifecycle: phony build/decomp/src/game/actor_table_record_object_lifecycle.o build/decomp/asm/game/actor_table_record_object_lifecycle_0203c94c.o build/reports/actor_table_record_object_lifecycle.txt
@@ -16447,7 +16447,7 @@ build build/reports/actor_table_record_presentation_and_subclass_lifecycle_0203d
   base_object = build/decomp/asm/game/actor_table_record_presentation_and_subclass_lifecycle_0203d260.o
 build build/reports/actor_table_record_presentation_and_subclass_lifecycle_0203d260.txt: match_report build/reports/actor_table_record_presentation_and_subclass_lifecycle_0203d260.json | tools/report_objdiff.py
   report_json = build/reports/actor_table_record_presentation_and_subclass_lifecycle_0203d260.json
-  report_args = --section .text --function func_0203d260 --function func_0203d2a8 --function func_0203d314 --function func_0203d360 --require-exact
+  report_args = --section .text --function ActorTableRecord_UpdatePresentationState --function ActorRegisteredSubclass_Init --function ActorRegisteredSubclass_Destroy --function ActorRegisteredSubclass_DestroyAndFree --require-exact
 build build/reports/actor_table_record_presentation_and_subclass_lifecycle.txt: phony build/reports/actor_table_record_presentation_and_subclass_lifecycle_0203d260.txt
 
 build actor_table_record_presentation_and_subclass_lifecycle: phony build/decomp/src/game/actor_table_record_presentation_and_subclass_lifecycle.o build/decomp/asm/game/actor_table_record_presentation_and_subclass_lifecycle_0203d260.o build/reports/actor_table_record_presentation_and_subclass_lifecycle.txt
