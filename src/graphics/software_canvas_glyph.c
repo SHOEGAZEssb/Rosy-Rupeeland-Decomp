@@ -7,7 +7,7 @@
 
 extern const u16 data_020c17f0[];
 extern const u32 data_020c19f0[];
-extern s32 data_021052f4[2];
+extern s32 gSoftwareCanvasTextCursor[2];
 
 /*
  * Draw glyphIndex at the shared x/y cursor. Each nonzero low-first nibble is
@@ -23,8 +23,8 @@ void SoftwareCanvas_DrawGlyph(SoftwareCanvas *self, s32 glyphIndex)
     s32 y;
 
     for (y = 0; y < 8; y++) {
-        u16 *dst = self->pixels + (data_021052f4[0] + y) * 256
-                   + data_021052f4[1];
+        u16 *dst = self->pixels + (gSoftwareCanvasTextCursor[0] + y) * 256
+                   + gSoftwareCanvasTextCursor[1];
         u32 row = glyph[y];
         s32 x;
 

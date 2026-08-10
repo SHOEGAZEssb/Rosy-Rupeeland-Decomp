@@ -9232,7 +9232,7 @@ gErrorDisplayContext kind:bss addr:0x021052bc
 gGraphicsResourceSetsDestructorRecord kind:bss addr:0x021052c4
 gErrorDisplayContextDestructorRecord kind:bss addr:0x021052d0
 gGraphicsResourceSets kind:bss addr:0x021052dc
-data_021052f4 kind:bss addr:0x021052f4
+gSoftwareCanvasTextCursor kind:bss addr:0x021052f4
 data_021052fc kind:bss addr:0x021052fc
 data_02105300 kind:bss addr:0x02105300
 data_02105304 kind:bss addr:0x02105304

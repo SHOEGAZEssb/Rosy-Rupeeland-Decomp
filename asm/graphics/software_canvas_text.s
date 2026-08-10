@@ -1,7 +1,7 @@
 .text
 .global SoftwareCanvas_DrawFormattedText
 .type SoftwareCanvas_DrawFormattedText, @function
-.extern data_021052f4
+.extern gSoftwareCanvasTextCursor
 .extern func_020b3598
 .extern OS_Halt
 .extern SoftwareCanvas_DrawGlyph
@@ -47,5 +47,5 @@ test:
     add sp, sp, #0x10
     bx lr
 cursor_data:
-    .word data_021052f4
+    .word gSoftwareCanvasTextCursor
     .size SoftwareCanvas_DrawFormattedText, .-SoftwareCanvas_DrawFormattedText

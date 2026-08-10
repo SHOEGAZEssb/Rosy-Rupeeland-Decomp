@@ -3,7 +3,7 @@
 .type SoftwareCanvas_DrawGlyph, @function
 .extern data_020c19f0
 .extern data_020c17f0
-.extern data_021052f4
+.extern gSoftwareCanvasTextCursor
 
 /* Matching implementation; see the documented portable C equivalent. */
 SoftwareCanvas_DrawGlyph:
@@ -46,5 +46,5 @@ glyph_data:
 palette_data:
     .word data_020c17f0
 cursor_data:
-    .word data_021052f4
+    .word gSoftwareCanvasTextCursor
     .size SoftwareCanvas_DrawGlyph, .-SoftwareCanvas_DrawGlyph

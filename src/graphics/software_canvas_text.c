@@ -8,7 +8,7 @@
 enum { SOFTWARE_CANVAS_TEXT_LIMIT = 0x100,
        SOFTWARE_CANVAS_TEXT_BUFFER_SIZE = 0x104 };
 
-extern s32 data_021052f4[2];
+extern s32 gSoftwareCanvasTextCursor[2];
 
 #ifdef __cplusplus
 extern "C" {
@@ -36,8 +36,8 @@ void SoftwareCanvas_DrawFormattedText(SoftwareCanvas *self, s32 x, s32 y,
     s32 length;
     s32 i;
 
-    data_021052f4[1] = x;
-    data_021052f4[0] = y;
+    gSoftwareCanvasTextCursor[1] = x;
+    gSoftwareCanvasTextCursor[0] = y;
     args = (void *)(((u32)&format & ~3) + sizeof(format));
     length = func_020b3598(buffer, format, args);
     if (length >= SOFTWARE_CANVAS_TEXT_LIMIT)
@@ -46,6 +46,6 @@ void SoftwareCanvas_DrawFormattedText(SoftwareCanvas *self, s32 x, s32 y,
     buffer[length] = '\0';
     for (i = 0; i < length; i++) {
         SoftwareCanvas_DrawGlyph(self, (s8)buffer[i]);
-        data_021052f4[1] += 8;
+        gSoftwareCanvasTextCursor[1] += 8;
     }
 }
