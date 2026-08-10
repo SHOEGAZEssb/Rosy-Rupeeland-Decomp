@@ -13,7 +13,7 @@ extern u8 gSystemState[];
 #endif
 
 /* Pop a value, store its low halfword at gSystemState+0x5c, and return zero. */
-s32 func_02016014(GamePhaseActorScriptVm *self)
+s32 GamePhaseActorScriptVm_SetSystemStateHalfword5c(GamePhaseActorScriptVm *self)
 {
     *(u16 *)(gSystemState + 0x5c) = (u16)GamePhaseScriptVm_Pop(&self->base);
     return 0;
@@ -24,7 +24,7 @@ s32 func_02016014(GamePhaseActorScriptVm *self)
  * that result to func_02072b68 on actor->0x54, then send step<<13 to actor
  * selector 17 through func_020330fc. Returns zero.
  */
-s32 func_02016030(GamePhaseActorScriptVm *self)
+s32 GamePhaseActorScriptVm_StepActorOrientation(GamePhaseActorScriptVm *self)
 {
     s32 step = (s32)GamePhaseScriptVm_Pop(&self->base);
     u8 *actor = (u8 *)self->actor;

@@ -3,8 +3,8 @@
 .extern GamePhaseScriptVm_Pop
 .extern func_020330fc
 .extern func_02072b68
-.global func_02016030
-func_02016030:
+.global GamePhaseActorScriptVm_StepActorOrientation
+GamePhaseActorScriptVm_StepActorOrientation:
     stmdb sp!, {r3, r4, r5, lr}
     mov r5, r0
     bl GamePhaseScriptVm_Pop
@@ -21,4 +21,4 @@ func_02016030:
     bl func_020330fc
     mov r0, #0
     ldmia sp!, {r3, r4, r5, pc}
-    .size func_02016030, . - func_02016030
+    .size GamePhaseActorScriptVm_StepActorOrientation, . - GamePhaseActorScriptVm_StepActorOrientation

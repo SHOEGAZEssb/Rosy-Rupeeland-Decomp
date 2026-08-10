@@ -2,8 +2,8 @@
 .text
 .extern GamePhaseScriptVm_Pop
 .extern gSystemState
-.global func_02016014
-func_02016014:
+.global GamePhaseActorScriptVm_SetSystemStateHalfword5c
+GamePhaseActorScriptVm_SetSystemStateHalfword5c:
     stmdb sp!, {r3, lr}
     bl GamePhaseScriptVm_Pop
     ldr r1, L_0201602c
@@ -11,4 +11,4 @@ func_02016014:
     mov r0, #0
     ldmia sp!, {r3, pc}
 L_0201602c: .word gSystemState
-    .size func_02016014, . - func_02016014
+    .size GamePhaseActorScriptVm_SetSystemStateHalfword5c, . - GamePhaseActorScriptVm_SetSystemStateHalfword5c
