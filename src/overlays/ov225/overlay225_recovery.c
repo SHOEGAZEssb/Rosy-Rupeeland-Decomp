@@ -1,20 +1,55 @@
+#include "tingle/types.h"
+
 /*
  * Recovered overlay 225 compact interpreter-data subsystem.
  *
- * The overlay initializes the engine and registers three records plus two
- * auxiliary data regions. The record semantics remain unconfirmed, so the
- * address-derived names are retained.
+ * The overlay initializes the actor-interaction runtime, registers three
+ * category-one descriptors, and publishes its script and callback records.
+ * The record semantics remain partly unconfirmed, so address-derived data
+ * names are retained.
  */
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+extern void ActorInteractionRuntime_Init(void);
+extern void ActorInteractionRuntime_NoOp(void);
+extern void ActorDescriptorBatch_RegisterAndSpawnCategory1(
+    void *work, s32 count, const void *descriptors);
+extern void ActorDescriptorBatch_SetCategory1Callback(const void *callback);
+extern void func_02008f58(void *value);
+
+extern u8 data_ov225_0221d720[];
+extern u8 data_ov225_0221d734[];
+extern u8 data_ov225_02220a93[];
+extern u8 data_ov225_02221d00[];
+extern u8 data_ov225_02221d04[];
+
+#ifdef __cplusplus
+}
+#endif
 
 /*
- * Initializes and registers the overlay when r0 is zero; updates engine
- * registration state, returns no value, and has no direct hardware effects.
+ * When mode is zero, initialize actor interaction state, register and spawn
+ * the overlay's three category-one descriptors, publish the overlay work and
+ * script regions, and install its category callback. Nonzero modes return
+ * without changing state. The routine returns no value and has no direct
+ * hardware effects.
  */
-void func_ov225_0221d6c0(void);
+#ifndef MATCHING
+void func_ov225_0221d6c0(s32 mode)
+{
+    if (mode != 0)
+        return;
+
+    ActorInteractionRuntime_Init();
+    ActorDescriptorBatch_RegisterAndSpawnCategory1(
+        data_ov225_02221d04, 3, data_ov225_0221d734);
+    ActorInteractionRuntime_NoOp();
+    func_02008f58(data_ov225_0221d720);
+    ActorDescriptorBatch_SetCategory1Callback(data_ov225_02220a93);
+}
+#endif
 
 /* Exact initialized records and zero-initialized work storage used by the overlay. */
-extern unsigned char data_ov225_0221d720[];
-extern unsigned char data_ov225_0221d734[];
-extern unsigned char data_ov225_02220a93[];
-extern unsigned char data_ov225_02221d00[];
-extern unsigned char data_ov225_02221d04[];
