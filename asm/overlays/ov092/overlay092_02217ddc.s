@@ -10,7 +10,7 @@
 .extern func_0200222c
 .extern func_020022dc
 .extern func_0201e0ec
-.extern func_020393f4
+.extern ActorDerivedType1_GetActiveRecordId
 .extern func_0204d308
 .extern func_0205940c
 .extern func_0205943c
@@ -75,7 +75,7 @@ func_ov092_02217ddc:
     mov r2, r1
     bl func_ov092_02218394
     mov r0, r4
-    bl func_020393f4
+    bl ActorDerivedType1_GetActiveRecordId
     cmp r0, #0x68
     bne .L_02217e94
     mov r0, #0x0

@@ -3,9 +3,9 @@
 .extern Actor_ApplyMotionImpulse
 .extern ActorDerivedType1_TeardownActiveRecord
 
-    .global func_02039348
-    .type func_02039348, @function
-func_02039348: ; 0x02039348
+    .global ActorDerivedType1_TeardownRecordAndApplyMotionImpulse
+    .type ActorDerivedType1_TeardownRecordAndApplyMotionImpulse, @function
+ActorDerivedType1_TeardownRecordAndApplyMotionImpulse: ; 0x02039348
     stmdb sp!, {r3, r4, r5, lr}
     mov r5, r0
     mov r4, r1
@@ -15,4 +15,4 @@ func_02039348: ; 0x02039348
     mov r2, #0x1
     bl Actor_ApplyMotionImpulse
     ldmia sp!, {r3, r4, r5, pc}
-    .size func_02039348, . - func_02039348
+    .size ActorDerivedType1_TeardownRecordAndApplyMotionImpulse, . - ActorDerivedType1_TeardownRecordAndApplyMotionImpulse

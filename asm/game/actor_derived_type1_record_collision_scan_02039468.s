@@ -8,7 +8,7 @@
 .extern func_02007f0c
 .extern func_02034a60
 .extern func_02038d38
-.extern func_02039448
+.extern ActorDerivedType1_IsActiveRecordType6F
 .extern func_0204cfa4
 .extern func_020adae4
 .extern func_020adc90
@@ -20,7 +20,7 @@ func_02039468: ; 0x02039468
     stmdb sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, lr}
     sub sp, sp, #0x20
     mov r10, r0
-    bl func_02039448
+    bl ActorDerivedType1_IsActiveRecordType6F
     cmp r0, #0x0
     beq .L_02039700
     add r0, r10, #0x200

@@ -4,9 +4,9 @@
 .extern ActorDerivedType1_TeardownActiveRecord
 .extern func_020551f0
 
-    .global func_02039278
-    .type func_02039278, @function
-func_02039278: ; 0x02039278
+    .global ActorDerivedType1_BindExternalRecordObject
+    .type ActorDerivedType1_BindExternalRecordObject, @function
+ActorDerivedType1_BindExternalRecordObject: ; 0x02039278
     stmdb sp!, {r3, r4, r5, lr}
     mov r5, r0
     ldr r2, [r5, #0x26c]
@@ -22,4 +22,4 @@ func_02039278: ; 0x02039278
     mov r0, r5
     bl ActorDerivedType1_ApplyActiveRecord
     ldmia sp!, {r3, r4, r5, pc}
-    .size func_02039278, . - func_02039278
+    .size ActorDerivedType1_BindExternalRecordObject, . - ActorDerivedType1_BindExternalRecordObject

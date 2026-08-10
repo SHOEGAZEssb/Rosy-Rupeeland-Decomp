@@ -17,8 +17,8 @@ extern s32 func_02095248(void *actor);
 extern void func_02094cf0(void *actor, const void *sequence, s32 value);
 extern void func_020954e0(void *actor);
 extern void func_020954f4(void *actor);
-extern s32 func_02039408(void *actor);
-extern s32 func_02039428(void *actor);
+extern s32 ActorDerivedType1_IsActiveRecordType69(void *actor);
+extern s32 ActorDerivedType1_IsActiveRecordType6A(void *actor);
 extern void ActorDerivedType1_TeardownActiveRecord(void *actor);
 extern s32 func_020397d4(void *actor);
 #ifdef __cplusplus
@@ -52,8 +52,8 @@ void func_0201054c(GamePhaseTouchPrompt *self)
                                   &point)) {
                     u32 flags = *(u32 *)(phaseActor + 0x230);
                     if (flags & 0x800) {
-                        if (func_02039408(phaseActor) ||
-                            func_02039428(phaseActor))
+                        if (ActorDerivedType1_IsActiveRecordType69(phaseActor) ||
+                            ActorDerivedType1_IsActiveRecordType6A(phaseActor))
                             ActorDerivedType1_TeardownActiveRecord(phaseActor);
                     } else if ((flags & 0x20000) ||
                                func_020397d4(phaseActor)) {

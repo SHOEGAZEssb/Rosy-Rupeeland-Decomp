@@ -4,7 +4,7 @@
 .extern data_021052fc
 .extern func_02007868
 .extern func_020349b8
-.extern func_02039240
+.extern ActorDerivedType1_StartRecordOrHandleType6D66
 .extern func_0203cea0
 .extern func_0204cfa4
 .extern func_020adae4
@@ -190,7 +190,7 @@ func_0203cb48: ; 0x0203cb48
     ldrsh r1, [r1, #0x2]
     add r0, r0, #0x2000
     ldr r0, [r0, #0xea4]
-    bl func_02039240
+    bl ActorDerivedType1_StartRecordOrHandleType6D66
 .L_0203cdcc:
     ldrb r0, [r6, #0x211]
     cmp r0, #0x0

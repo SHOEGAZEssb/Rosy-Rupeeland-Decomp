@@ -7,8 +7,8 @@
 .extern data_020c3630
 .extern data_021052fc
 .extern ActorDerivedType1_TeardownActiveRecord
-.extern func_02039408
-.extern func_02039428
+.extern ActorDerivedType1_IsActiveRecordType69
+.extern ActorDerivedType1_IsActiveRecordType6A
 .extern func_020397d4
 .extern func_02092910
 .extern func_02094cf0
@@ -76,11 +76,11 @@ L_020105c4:
     tst r0, #0x800
     beq L_02010640
     mov r0, r5
-    bl func_02039408
+    bl ActorDerivedType1_IsActiveRecordType69
     cmp r0, #0x0
     bne L_02010634
     mov r0, r5
-    bl func_02039428
+    bl ActorDerivedType1_IsActiveRecordType6A
     cmp r0, #0x0
     beq L_020106a0
 L_02010634:

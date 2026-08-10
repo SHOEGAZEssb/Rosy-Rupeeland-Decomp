@@ -10,7 +10,7 @@
 .extern func_0200b04c
 .extern func_0200b294
 .extern func_0200efe0
-.extern func_020393f4
+.extern ActorDerivedType1_GetActiveRecordId
 .extern func_02039e70
 .extern func_ov074_0220fda8
 .extern gGameWork
@@ -106,7 +106,7 @@ L_0200ee20:
     moveq r0, #0x0
     ldmeqia sp!, {r3, r4, r5, pc}
     mov r0, r4
-    bl func_020393f4
+    bl ActorDerivedType1_GetActiveRecordId
     mvn r1, #0x0
     cmp r0, r1
     cmpne r0, #0x64

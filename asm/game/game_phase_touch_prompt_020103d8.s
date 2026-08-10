@@ -5,8 +5,8 @@
 .extern func_0201054c
 .extern func_02010724
 .extern func_020107bc
-.extern func_02039408
-.extern func_02039428
+.extern ActorDerivedType1_IsActiveRecordType69
+.extern ActorDerivedType1_IsActiveRecordType6A
 .extern func_020740a4
 .extern func_020954c0
 .extern func_020954d4
@@ -66,7 +66,7 @@ L_02010470:
     tst r0, #0x800
     beq L_020104f4
     mov r0, r5
-    bl func_02039408
+    bl ActorDerivedType1_IsActiveRecordType69
     cmp r0, #0x0
     beq L_020104c4
     ldr r0, [r4, #0x1c]
@@ -79,7 +79,7 @@ L_02010470:
     b L_02010510
 L_020104c4:
     mov r0, r5
-    bl func_02039428
+    bl ActorDerivedType1_IsActiveRecordType6A
     cmp r0, #0x0
     beq L_02010510
     ldr r0, [r4, #0x1c]

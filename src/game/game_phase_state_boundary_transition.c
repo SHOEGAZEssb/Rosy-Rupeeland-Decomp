@@ -13,7 +13,7 @@ extern u8 data_02105310[];
 extern void *func_02039e70(void);
 extern s32 func_0200b04c(void *object);
 extern s32 func_0200b294(void *object);
-extern s32 func_020393f4(void *actor);
+extern s32 ActorDerivedType1_GetActiveRecordId(void *actor);
 extern void func_0200222c(s32 value, s32 mode, s32 mask);
 extern s32 func_020022dc(void);
 extern void *func_02056f00(void *vector, const void *source);
@@ -68,7 +68,7 @@ s32 func_0200ecf0(GamePhaseState *self)
             *(u32 *)(actor + 0x24) != *(u32 *)(actor + 0x1dc) ||
             *(s16 *)(actor + 0x268) != 0 || (flags & 0x4000))
             return 0;
-        actorMode = func_020393f4(actor);
+        actorMode = ActorDerivedType1_GetActiveRecordId(actor);
         if (actorMode != -1 && actorMode != 0x64 && actorMode != 0x65 &&
             actorMode != 0x66 && actorMode != 0x7f)
             return 0;

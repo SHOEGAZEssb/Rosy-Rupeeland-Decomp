@@ -10,8 +10,8 @@ extern void *data_021052fc;
 extern void func_0201054c(GamePhaseTouchPrompt *self);
 extern void func_02010724(GamePhaseTouchPrompt *self);
 extern void func_020107bc(GamePhaseTouchPrompt *self);
-extern s32 func_02039408(void *actor);
-extern s32 func_02039428(void *actor);
+extern s32 ActorDerivedType1_IsActiveRecordType69(void *actor);
+extern s32 ActorDerivedType1_IsActiveRecordType6A(void *actor);
 extern void func_020740a4(GraphicsSpriteGroup *group);
 extern s32 func_020954d4(void *actor);
 extern void func_020954c0(void *actor, s32 animation);
@@ -55,9 +55,9 @@ s32 func_020103d8(GamePhaseTouchPrompt *self)
     (*(PromptVirtualUpdate *)(*(u8 **)self->actor_1c + 8))(self->actor_1c);
     func_020740a4(self->spriteGroup_18);
     if (*(u32 *)(phaseActor + 0x230) & 0x800) {
-        if (func_02039408(phaseActor))
+        if (ActorDerivedType1_IsActiveRecordType69(phaseActor))
             animation = 3;
-        else if (func_02039428(phaseActor))
+        else if (ActorDerivedType1_IsActiveRecordType6A(phaseActor))
             animation = 1;
         else
             return 0;

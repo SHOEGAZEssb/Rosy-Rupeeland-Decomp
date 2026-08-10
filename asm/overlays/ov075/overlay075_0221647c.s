@@ -14,7 +14,7 @@
 .extern func_0201f864
 .extern func_02022cb0
 .extern func_02032228
-.extern func_02039348
+.extern ActorDerivedType1_TeardownRecordAndApplyMotionImpulse
 .extern func_02039e70
 .extern Actor_RandomizeValueByTenPercent
 .extern ActorExtendedType2_GetDescriptorValue28
@@ -207,7 +207,7 @@ func_ov075_0221647c:
     orr r2, r0, #0x40000
     mov r0, r5
     str r2, [r5, #0x230]
-    bl func_02039348
+    bl ActorDerivedType1_TeardownRecordAndApplyMotionImpulse
     mov r0, #0x3000
     str r0, [r5, #0x44]
     ldr r0, [r5, #0xd0]

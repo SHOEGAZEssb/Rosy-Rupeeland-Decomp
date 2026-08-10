@@ -7,7 +7,7 @@ extern u8 *data_021052fc;
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern s32 func_02039448(void *actor);
+extern s32 ActorDerivedType1_IsActiveRecordType6F(void *actor);
 extern s32 func_020adae4(s32 numerator, s32 denominator);
 extern s32 func_020adc90(s32 numerator, s32 denominator);
 extern void func_02005030(void *destination, const void *source);
@@ -51,7 +51,7 @@ void func_02039468(void *self)
     s32 index;
     s32 i;
 
-    if (func_02039448(actor) == 0 || *(s16 *)(actor + 0x280) != 0)
+    if (ActorDerivedType1_IsActiveRecordType6F(actor) == 0 || *(s16 *)(actor + 0x280) != 0)
         return;
     *(s32 *)(actor + 0x90) = 0;
     *(s32 *)(actor + 0x8c) = 0;

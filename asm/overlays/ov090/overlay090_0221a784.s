@@ -6,7 +6,7 @@
 .extern ActorCollection_QueueActorForRemoval
 .extern Actor_GetCollection
 .extern ActorDerivedType1_TeardownActiveRecord
-.extern func_020393f4
+.extern ActorDerivedType1_GetActiveRecordId
 .extern func_02072b68
 .extern func_ov090_0221ad64
 .extern gGameWork
@@ -25,7 +25,7 @@ func_ov090_0221a784:
     cmp r0, #0x0
     mov r0, r4
     beq .L_0221a7dc
-    bl func_020393f4
+    bl ActorDerivedType1_GetActiveRecordId
     sub r0, r0, #0x78
     cmp r0, #0x2
     ldrls r1, [r4, #0x278]

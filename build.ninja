@@ -15604,7 +15604,7 @@ build build/reports/actor_derived_type1_record_controls_02039240.json: objdiff b
   base_object = build/decomp/asm/game/actor_derived_type1_record_controls_02039240.o
 build build/reports/actor_derived_type1_record_controls_02039240.txt: match_report build/reports/actor_derived_type1_record_controls_02039240.json | tools/report_objdiff.py
   report_json = build/reports/actor_derived_type1_record_controls_02039240.json
-  report_args = --section .text --function func_02039240 --require-exact
+  report_args = --section .text --function ActorDerivedType1_StartRecordOrHandleType6D66 --require-exact
 build build/decomp/asm/game/actor_derived_type1_record_controls_02039278.o: mwasmarm asm/game/actor_derived_type1_record_controls_02039278.s
 build build/decomp/delinks/asm/game/actor_derived_type1_record_controls_02039278.o: dsd_delink config/arm9/config.yaml config/arm9/delinks.txt config/arm9/symbols.txt config/arm9/relocs.txt
 build build/reports/actor_derived_type1_record_controls_02039278.json: objdiff build/decomp/delinks/asm/game/actor_derived_type1_record_controls_02039278.o | build/decomp/asm/game/actor_derived_type1_record_controls_02039278.o
@@ -15612,7 +15612,7 @@ build build/reports/actor_derived_type1_record_controls_02039278.json: objdiff b
   base_object = build/decomp/asm/game/actor_derived_type1_record_controls_02039278.o
 build build/reports/actor_derived_type1_record_controls_02039278.txt: match_report build/reports/actor_derived_type1_record_controls_02039278.json | tools/report_objdiff.py
   report_json = build/reports/actor_derived_type1_record_controls_02039278.json
-  report_args = --section .text --function func_02039278 --require-exact
+  report_args = --section .text --function ActorDerivedType1_BindExternalRecordObject --require-exact
 build build/decomp/asm/game/actor_derived_type1_record_controls_020392b4.o: mwasmarm asm/game/actor_derived_type1_record_controls_020392b4.s
 build build/decomp/delinks/asm/game/actor_derived_type1_record_controls_020392b4.o: dsd_delink config/arm9/config.yaml config/arm9/delinks.txt config/arm9/symbols.txt config/arm9/relocs.txt
 build build/reports/actor_derived_type1_record_controls_020392b4.json: objdiff build/decomp/delinks/asm/game/actor_derived_type1_record_controls_020392b4.o | build/decomp/asm/game/actor_derived_type1_record_controls_020392b4.o
@@ -15620,7 +15620,7 @@ build build/reports/actor_derived_type1_record_controls_020392b4.json: objdiff b
   base_object = build/decomp/asm/game/actor_derived_type1_record_controls_020392b4.o
 build build/reports/actor_derived_type1_record_controls_020392b4.txt: match_report build/reports/actor_derived_type1_record_controls_020392b4.json | tools/report_objdiff.py
   report_json = build/reports/actor_derived_type1_record_controls_020392b4.json
-  report_args = --section .text --function func_020392b4 --require-exact
+  report_args = --section .text --function ActorDerivedType1_TryApplyMotionImpulse --require-exact
 build build/decomp/asm/game/actor_derived_type1_record_controls_02039348.o: mwasmarm asm/game/actor_derived_type1_record_controls_02039348.s
 build build/decomp/delinks/asm/game/actor_derived_type1_record_controls_02039348.o: dsd_delink config/arm9/config.yaml config/arm9/delinks.txt config/arm9/symbols.txt config/arm9/relocs.txt
 build build/reports/actor_derived_type1_record_controls_02039348.json: objdiff build/decomp/delinks/asm/game/actor_derived_type1_record_controls_02039348.o | build/decomp/asm/game/actor_derived_type1_record_controls_02039348.o
@@ -15628,7 +15628,7 @@ build build/reports/actor_derived_type1_record_controls_02039348.json: objdiff b
   base_object = build/decomp/asm/game/actor_derived_type1_record_controls_02039348.o
 build build/reports/actor_derived_type1_record_controls_02039348.txt: match_report build/reports/actor_derived_type1_record_controls_02039348.json | tools/report_objdiff.py
   report_json = build/reports/actor_derived_type1_record_controls_02039348.json
-  report_args = --section .text --function func_02039348 --require-exact
+  report_args = --section .text --function ActorDerivedType1_TeardownRecordAndApplyMotionImpulse --require-exact
 build build/reports/actor_derived_type1_record_controls.txt: phony build/reports/actor_derived_type1_record_controls_02039240.txt build/reports/actor_derived_type1_record_controls_02039278.txt build/reports/actor_derived_type1_record_controls_020392b4.txt build/reports/actor_derived_type1_record_controls_02039348.txt
 
 build actor_derived_type1_record_controls: phony build/decomp/src/game/actor_derived_type1_record_controls.o build/decomp/asm/game/actor_derived_type1_record_controls_02039240.o build/decomp/asm/game/actor_derived_type1_record_controls_02039278.o build/decomp/asm/game/actor_derived_type1_record_controls_020392b4.o build/decomp/asm/game/actor_derived_type1_record_controls_02039348.o build/reports/actor_derived_type1_record_controls.txt
@@ -15662,7 +15662,7 @@ build build/reports/actor_derived_type1_record_queries_020393f4.json: objdiff bu
   base_object = build/decomp/asm/game/actor_derived_type1_record_queries_020393f4.o
 build build/reports/actor_derived_type1_record_queries_020393f4.txt: match_report build/reports/actor_derived_type1_record_queries_020393f4.json | tools/report_objdiff.py
   report_json = build/reports/actor_derived_type1_record_queries_020393f4.json
-  report_args = --section .text --function func_020393f4 --require-exact
+  report_args = --section .text --function ActorDerivedType1_GetActiveRecordId --require-exact
 build build/decomp/asm/game/actor_derived_type1_record_queries_02039408.o: mwasmarm asm/game/actor_derived_type1_record_queries_02039408.s
 build build/decomp/delinks/asm/game/actor_derived_type1_record_queries_02039408.o: dsd_delink config/arm9/config.yaml config/arm9/delinks.txt config/arm9/symbols.txt config/arm9/relocs.txt
 build build/reports/actor_derived_type1_record_queries_02039408.json: objdiff build/decomp/delinks/asm/game/actor_derived_type1_record_queries_02039408.o | build/decomp/asm/game/actor_derived_type1_record_queries_02039408.o
@@ -15670,7 +15670,7 @@ build build/reports/actor_derived_type1_record_queries_02039408.json: objdiff bu
   base_object = build/decomp/asm/game/actor_derived_type1_record_queries_02039408.o
 build build/reports/actor_derived_type1_record_queries_02039408.txt: match_report build/reports/actor_derived_type1_record_queries_02039408.json | tools/report_objdiff.py
   report_json = build/reports/actor_derived_type1_record_queries_02039408.json
-  report_args = --section .text --function func_02039408 --require-exact
+  report_args = --section .text --function ActorDerivedType1_IsActiveRecordType69 --require-exact
 build build/decomp/asm/game/actor_derived_type1_record_queries_02039428.o: mwasmarm asm/game/actor_derived_type1_record_queries_02039428.s
 build build/decomp/delinks/asm/game/actor_derived_type1_record_queries_02039428.o: dsd_delink config/arm9/config.yaml config/arm9/delinks.txt config/arm9/symbols.txt config/arm9/relocs.txt
 build build/reports/actor_derived_type1_record_queries_02039428.json: objdiff build/decomp/delinks/asm/game/actor_derived_type1_record_queries_02039428.o | build/decomp/asm/game/actor_derived_type1_record_queries_02039428.o
@@ -15678,7 +15678,7 @@ build build/reports/actor_derived_type1_record_queries_02039428.json: objdiff bu
   base_object = build/decomp/asm/game/actor_derived_type1_record_queries_02039428.o
 build build/reports/actor_derived_type1_record_queries_02039428.txt: match_report build/reports/actor_derived_type1_record_queries_02039428.json | tools/report_objdiff.py
   report_json = build/reports/actor_derived_type1_record_queries_02039428.json
-  report_args = --section .text --function func_02039428 --require-exact
+  report_args = --section .text --function ActorDerivedType1_IsActiveRecordType6A --require-exact
 build build/decomp/asm/game/actor_derived_type1_record_queries_02039448.o: mwasmarm asm/game/actor_derived_type1_record_queries_02039448.s
 build build/decomp/delinks/asm/game/actor_derived_type1_record_queries_02039448.o: dsd_delink config/arm9/config.yaml config/arm9/delinks.txt config/arm9/symbols.txt config/arm9/relocs.txt
 build build/reports/actor_derived_type1_record_queries_02039448.json: objdiff build/decomp/delinks/asm/game/actor_derived_type1_record_queries_02039448.o | build/decomp/asm/game/actor_derived_type1_record_queries_02039448.o
@@ -15686,7 +15686,7 @@ build build/reports/actor_derived_type1_record_queries_02039448.json: objdiff bu
   base_object = build/decomp/asm/game/actor_derived_type1_record_queries_02039448.o
 build build/reports/actor_derived_type1_record_queries_02039448.txt: match_report build/reports/actor_derived_type1_record_queries_02039448.json | tools/report_objdiff.py
   report_json = build/reports/actor_derived_type1_record_queries_02039448.json
-  report_args = --section .text --function func_02039448 --require-exact
+  report_args = --section .text --function ActorDerivedType1_IsActiveRecordType6F --require-exact
 build build/reports/actor_derived_type1_record_queries.txt: phony build/reports/actor_derived_type1_record_queries_020393f4.txt build/reports/actor_derived_type1_record_queries_02039408.txt build/reports/actor_derived_type1_record_queries_02039428.txt build/reports/actor_derived_type1_record_queries_02039448.txt
 
 build actor_derived_type1_record_queries: phony build/decomp/src/game/actor_derived_type1_record_queries.o build/decomp/asm/game/actor_derived_type1_record_queries_020393f4.o build/decomp/asm/game/actor_derived_type1_record_queries_02039408.o build/decomp/asm/game/actor_derived_type1_record_queries_02039428.o build/decomp/asm/game/actor_derived_type1_record_queries_02039448.o build/reports/actor_derived_type1_record_queries.txt

@@ -2,9 +2,9 @@
 .text
 .extern ActorDerivedType1_StartRecord
 
-    .global func_02039240
-    .type func_02039240, @function
-func_02039240: ; 0x02039240
+    .global ActorDerivedType1_StartRecordOrHandleType6D66
+    .type ActorDerivedType1_StartRecordOrHandleType6D66, @function
+ActorDerivedType1_StartRecordOrHandleType6D66: ; 0x02039240
     stmdb sp!, {r3, lr}
     ldr r2, [r0, #0x27c]
     cmp r2, #0x0
@@ -20,4 +20,4 @@ func_02039240: ; 0x02039240
 .L_02039270:
     bl ActorDerivedType1_StartRecord
     ldmia sp!, {r3, pc}
-    .size func_02039240, . - func_02039240
+    .size ActorDerivedType1_StartRecordOrHandleType6D66, . - ActorDerivedType1_StartRecordOrHandleType6D66

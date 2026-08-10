@@ -12,7 +12,7 @@ extern s32 func_020ae024(s32 y, s32 x);
 extern s32 func_020adc90(s32 numerator, s32 denominator);
 extern s32 func_020adae4(s32 numerator, s32 denominator);
 extern s32 func_02007868(void *actor);
-extern void func_02039240(void *manager, s32 value);
+extern void ActorDerivedType1_StartRecordOrHandleType6D66(void *manager, s32 value);
 extern void func_020349b8(void *actor, u32 sound, s32 extra);
 extern void func_0203cea0(void *actor, void *target);
 void func_0203cb48(void *self, void *other, s32 directionalMode, s32 scale);
@@ -57,7 +57,7 @@ void func_0203cb34(void *self, void *other, s32 scale)
  * subtract response divided by self low-13-bit +0x20c from self +0x8c/+0x90,
  * and store max(30-magnitude,0) at self byte +0x210. For type-one other and a
  * nonnegative signed self record +0x214 halfword +0x02, dispatch that value
- * through func_02039240 when func_02007868(other) is true.
+ * through ActorDerivedType1_StartRecordOrHandleType6D66 when func_02007868(other) is true.
  *
  * If byte +0x211 is zero, play nonzero record sound +0x0a through
  * func_020349b8, then copy record byte +0x0c to +0x211. Self word +0x20c bit
@@ -116,7 +116,7 @@ void func_0203cb48(void *self, void *other, s32 directionalMode, s32 scale)
 
     if (target[0x4d] == 1 && *(s16 *)(record + 2) != -1 &&
         func_02007868(target) != 0)
-        func_02039240(*(void **)(data_021052fc + 0x2ea4),
+        ActorDerivedType1_StartRecordOrHandleType6D66(*(void **)(data_021052fc + 0x2ea4),
                       *(s16 *)(record + 2));
     if (actor[0x211] == 0 && *(u16 *)(record + 0x0a) != 0)
         func_020349b8(actor, *(u16 *)(record + 0x0a), 0);

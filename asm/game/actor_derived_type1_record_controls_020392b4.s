@@ -5,9 +5,9 @@
 .extern ActorDerivedType1_TeardownActiveRecord
 .extern Type1Actor_TryEnterFailureState
 
-    .global func_020392b4
-    .type func_020392b4, @function
-func_020392b4: ; 0x020392b4
+    .global ActorDerivedType1_TryApplyMotionImpulse
+    .type ActorDerivedType1_TryApplyMotionImpulse, @function
+ActorDerivedType1_TryApplyMotionImpulse: ; 0x020392b4
     stmdb sp!, {r4, r5, r6, lr}
     mov r6, r0
     ldr r0, [r6, #0x230]
@@ -48,4 +48,4 @@ func_020392b4: ; 0x020392b4
     mov r0, r6
     bl Type1Actor_TryEnterFailureState
     ldmia sp!, {r4, r5, r6, pc}
-    .size func_020392b4, . - func_020392b4
+    .size ActorDerivedType1_TryApplyMotionImpulse, . - ActorDerivedType1_TryApplyMotionImpulse
