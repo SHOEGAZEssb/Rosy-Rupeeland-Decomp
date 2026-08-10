@@ -9,7 +9,7 @@ extern "C" {
 #endif
 extern const char gGamePhaseAreaRegionEffectAllocationTag[];
 extern void *data_021052fc;
-extern void *func_02026f38(void *self, void *renderer, s32 left, s32 top,
+extern void *FourStageCommandPresentation_Init(void *self, void *renderer, s32 left, s32 top,
                            s32 right, s32 bottom);
 extern void *func_0201ded4(void *list, void *effect);
 extern void func_ov056_0220ef34(void *object);
@@ -56,7 +56,7 @@ s32 GamePhaseAreaScene_UpdateRegionAtPosition(
             void *effect = Heap_Alloc(0x24, gGamePhaseAreaRegionEffectAllocationTag, 4,
                                       &gHeapContext);
             if (effect)
-                effect = func_02026f38(
+                effect = FourStageCommandPresentation_Init(
                     effect, self->subRenderer,
                     halfTowardZero(region->left),
                     halfTowardZero(region->top),

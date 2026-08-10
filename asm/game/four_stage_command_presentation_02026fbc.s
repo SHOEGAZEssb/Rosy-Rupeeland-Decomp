@@ -2,9 +2,9 @@
 .text
 .extern DualLayerTileRenderer_FillTileRectangle
 
-    .global func_02026fbc
-    .type func_02026fbc, @function
-func_02026fbc: ; 0x02026fbc
+    .global FourStageCommandPresentation_Update
+    .type FourStageCommandPresentation_Update, @function
+FourStageCommandPresentation_Update: ; 0x02026fbc
     stmdb sp!, {r3, r4, lr}
     sub sp, sp, #0xc
     mov r4, r0
@@ -113,4 +113,4 @@ func_02026fbc: ; 0x02026fbc
 .L_02027144: .word 0x1fd
 .L_02027148: .word 0x1fe
 .L_0202714c: .word 0x1ff
-    .size func_02026fbc, . - func_02026fbc
+    .size FourStageCommandPresentation_Update, . - FourStageCommandPresentation_Update

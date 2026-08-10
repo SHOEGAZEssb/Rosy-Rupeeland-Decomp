@@ -8983,25 +8983,25 @@ build build/reports/four_stage_command_presentation_02026f38.json: objdiff build
   base_object = build/decomp/asm/game/four_stage_command_presentation_02026f38.o
 build build/reports/four_stage_command_presentation_02026f38.txt: match_report build/reports/four_stage_command_presentation_02026f38.json | tools/report_objdiff.py
   report_json = build/reports/four_stage_command_presentation_02026f38.json
-  report_args = --section .text --function func_02026f38 --require-exact
+  report_args = --section .text --function FourStageCommandPresentation_Init --require-exact
 build build/reports/four_stage_command_presentation_02026f8c.json: objdiff build/decomp/delinks/asm/game/four_stage_command_presentation_02026f8c.o | build/decomp/asm/game/four_stage_command_presentation_02026f8c.o
   target_object = build/decomp/delinks/asm/game/four_stage_command_presentation_02026f8c.o
   base_object = build/decomp/asm/game/four_stage_command_presentation_02026f8c.o
 build build/reports/four_stage_command_presentation_02026f8c.txt: match_report build/reports/four_stage_command_presentation_02026f8c.json | tools/report_objdiff.py
   report_json = build/reports/four_stage_command_presentation_02026f8c.json
-  report_args = --section .text --function func_02026f8c --require-exact
+  report_args = --section .text --function FourStageCommandPresentation_Destroy --require-exact
 build build/reports/four_stage_command_presentation_02026fa0.json: objdiff build/decomp/delinks/asm/game/four_stage_command_presentation_02026fa0.o | build/decomp/asm/game/four_stage_command_presentation_02026fa0.o
   target_object = build/decomp/delinks/asm/game/four_stage_command_presentation_02026fa0.o
   base_object = build/decomp/asm/game/four_stage_command_presentation_02026fa0.o
 build build/reports/four_stage_command_presentation_02026fa0.txt: match_report build/reports/four_stage_command_presentation_02026fa0.json | tools/report_objdiff.py
   report_json = build/reports/four_stage_command_presentation_02026fa0.json
-  report_args = --section .text --function func_02026fa0 --require-exact
+  report_args = --section .text --function FourStageCommandPresentation_DestroyAndFree --require-exact
 build build/reports/four_stage_command_presentation_02026fbc.json: objdiff build/decomp/delinks/asm/game/four_stage_command_presentation_02026fbc.o | build/decomp/asm/game/four_stage_command_presentation_02026fbc.o
   target_object = build/decomp/delinks/asm/game/four_stage_command_presentation_02026fbc.o
   base_object = build/decomp/asm/game/four_stage_command_presentation_02026fbc.o
 build build/reports/four_stage_command_presentation_02026fbc.txt: match_report build/reports/four_stage_command_presentation_02026fbc.json | tools/report_objdiff.py
   report_json = build/reports/four_stage_command_presentation_02026fbc.json
-  report_args = --section .text --function func_02026fbc --require-exact
+  report_args = --section .text --function FourStageCommandPresentation_Update --require-exact
 build build/reports/four_stage_command_presentation.txt: phony build/reports/four_stage_command_presentation_02026f38.txt build/reports/four_stage_command_presentation_02026f8c.txt build/reports/four_stage_command_presentation_02026fa0.txt build/reports/four_stage_command_presentation_02026fbc.txt
 build build/reports/indexed_sprite_overlay_presentation_02027150.json: objdiff build/decomp/delinks/asm/game/indexed_sprite_overlay_presentation_02027150.o | build/decomp/asm/game/indexed_sprite_overlay_presentation_02027150.o
   target_object = build/decomp/delinks/asm/game/indexed_sprite_overlay_presentation_02027150.o

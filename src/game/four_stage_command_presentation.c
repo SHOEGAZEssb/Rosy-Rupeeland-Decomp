@@ -21,7 +21,7 @@ typedef struct FourStageCommandPresentation {
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *data_020d6bf8;
+extern void *gFourStageCommandPresentationVtable;
 extern void func_0201e250(void *);
 extern void func_0201e28c(void *);
 extern void DualLayerTileRenderer_FillTileRectangle(void *context, s32 mode, s32 argument08,
@@ -36,12 +36,12 @@ extern void DualLayerTileRenderer_FillTileRectangle(void *context, s32 mode, s32
  * 8/12 from r2/r3 and offsets 16/20 from the two stack arguments, zero stage
  * and timer, install the recovered vtable, and return self.
  */
-FourStageCommandPresentation *func_02026f38(
+FourStageCommandPresentation *FourStageCommandPresentation_Init(
     FourStageCommandPresentation *self, void *context,
     s32 argument08, s32 argument0c, s32 argument10, s32 argument14)
 {
     func_0201e250(self);
-    self->vtable00 = (void **)data_020d6bf8;
+    self->vtable00 = (void **)gFourStageCommandPresentationVtable;
     self->argument08 = argument08;
     self->argument0c = argument0c;
     self->argument10 = argument10;
@@ -53,7 +53,7 @@ FourStageCommandPresentation *func_02026f38(
 }
 
 /* Tear down the common base and return self; retained arguments are not owned. */
-FourStageCommandPresentation *func_02026f8c(
+FourStageCommandPresentation *FourStageCommandPresentation_Destroy(
     FourStageCommandPresentation *self)
 {
     func_0201e28c(self);
@@ -61,7 +61,7 @@ FourStageCommandPresentation *func_02026f8c(
 }
 
 /* Perform base teardown, free self, and return its old address. */
-FourStageCommandPresentation *func_02026fa0(
+FourStageCommandPresentation *FourStageCommandPresentation_DestroyAndFree(
     FourStageCommandPresentation *self)
 {
     func_0201e28c(self);
@@ -75,7 +75,7 @@ FourStageCommandPresentation *func_02026fa0(
  * trailing ID (0x1fd,0x1fe,0x1ff,0).  For the first three, advance stage, reset
  * timer, and return zero; after the final dispatch return one.
  */
-s32 func_02026fbc(FourStageCommandPresentation *self)
+s32 FourStageCommandPresentation_Update(FourStageCommandPresentation *self)
 {
     static const s32 commandIds[4] = {0x1fd, 0x1fe, 0x1ff, 0};
     if ((u32)self->stage18 > 3) return 0;

@@ -8,7 +8,7 @@
 .extern GamePhaseRegionTable_IsRegionEnabled
 .extern GamePhaseRegionTable_SetRegionEnabled
 .extern func_0201ded4
-.extern func_02026f38
+.extern FourStageCommandPresentation_Init
 .extern gHeapContext
 
     .global GamePhaseAreaScene_UpdateRegionAtPosition
@@ -63,7 +63,7 @@ GamePhaseAreaScene_UpdateRegionAtPosition: ; 0x02012014
     ldr r1, [r10, #0x4]
     mov r2, r4
     mov r3, r5
-    bl func_02026f38
+    bl FourStageCommandPresentation_Init
     mov r1, r0
 L_020120e4:
     ldr r2, [r1, #0x4]

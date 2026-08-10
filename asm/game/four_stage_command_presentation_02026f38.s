@@ -1,11 +1,11 @@
 ; Matching retail form; see src/game/four_stage_command_presentation.c.
 .text
-.extern data_020d6bf8
+.extern gFourStageCommandPresentationVtable
 .extern func_0201e250
 
-    .global func_02026f38
-    .type func_02026f38, @function
-func_02026f38: ; 0x02026f38
+    .global FourStageCommandPresentation_Init
+    .type FourStageCommandPresentation_Init, @function
+FourStageCommandPresentation_Init: ; 0x02026f38
     stmdb sp!, {r3, r4, r5, r6, r7, lr}
     mov r5, r0
     mov r4, r1
@@ -26,5 +26,5 @@ func_02026f38: ; 0x02026f38
     mov r0, r5
     str r4, [r5, #0x20]
     ldmia sp!, {r3, r4, r5, r6, r7, pc}
-.L_02026f88: .word data_020d6bf8
-    .size func_02026f38, . - func_02026f38
+.L_02026f88: .word gFourStageCommandPresentationVtable
+    .size FourStageCommandPresentation_Init, . - FourStageCommandPresentation_Init
