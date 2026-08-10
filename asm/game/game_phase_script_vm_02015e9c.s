@@ -4,8 +4,8 @@
 .extern ActorCollection_FindActorByDescriptorValue
 .extern Actor_SetActive
 .extern Actor_GetCollection
-.global func_02015e9c
-func_02015e9c:
+.global GamePhaseActorScriptVm_SetIndexedActorActive
+GamePhaseActorScriptVm_SetIndexedActorActive:
     stmdb sp!, {r4, r5, r6, lr}
     mov r6, r0
     bl GamePhaseScriptVm_Pop
@@ -37,4 +37,4 @@ L_02015ee4:
 L_02015f08:
     mov r0, #0
     ldmia sp!, {r4, r5, r6, pc}
-    .size func_02015e9c, . - func_02015e9c
+    .size GamePhaseActorScriptVm_SetIndexedActorActive, . - GamePhaseActorScriptVm_SetIndexedActorActive

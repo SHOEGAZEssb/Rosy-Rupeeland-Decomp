@@ -2,8 +2,8 @@
 .text
 .extern Actor_SetActive
 .extern Actor_GetCollection
-.global func_02015f10
-func_02015f10:
+.global GamePhaseActorScriptVm_ActivateAllActors
+GamePhaseActorScriptVm_ActivateAllActors:
     stmdb sp!, {r4, r5, r6, lr}
     mov r6, r0
     mov r5, #0
@@ -22,4 +22,4 @@ L_02015f3c:
     blt L_02015f20
     mov r0, #0
     ldmia sp!, {r4, r5, r6, pc}
-    .size func_02015f10, . - func_02015f10
+    .size GamePhaseActorScriptVm_ActivateAllActors, . - GamePhaseActorScriptVm_ActivateAllActors

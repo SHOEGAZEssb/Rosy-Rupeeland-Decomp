@@ -17,7 +17,7 @@ extern void *Actor_GetCollection(void *actor);
  * its active state when present. Deactivating an actor whose type byte at 0x4d
  * is one also clears its halfword at 0xd6. Returns zero.
  */
-s32 func_02015e9c(GamePhaseActorScriptVm *self)
+s32 GamePhaseActorScriptVm_SetIndexedActorActive(GamePhaseActorScriptVm *self)
 {
     s32 active = (s32)GamePhaseScriptVm_Pop(&self->base);
     s32 index = (s32)GamePhaseScriptVm_Pop(&self->base);
@@ -32,7 +32,7 @@ s32 func_02015e9c(GamePhaseActorScriptVm *self)
 }
 
 /* Activate every non-null actor in the bound actor's 128-entry collection and return zero. */
-s32 func_02015f10(GamePhaseActorScriptVm *self)
+s32 GamePhaseActorScriptVm_ActivateAllActors(GamePhaseActorScriptVm *self)
 {
     s32 index;
     void **actors = (void **)Actor_GetCollection(self->actor);
