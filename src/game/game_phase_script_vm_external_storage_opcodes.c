@@ -1,6 +1,6 @@
 #include "tingle/game_phase_script_vm.h"
 
-/* Transfer VM register values to and from game-work, context, and callback storage. */
+/* Transfer VM register values to and from game-work, context, and offset-0x0c storage. */
 
 #ifdef __cplusplus
 extern "C" {
@@ -11,7 +11,7 @@ extern void *gGameWork;
 #endif
 
 /* Store the selected register's low halfword in game-work's indexed array and return zero. */
-s32 func_0201be88(GamePhaseScriptVm *self)
+s32 GamePhaseScriptVm_StoreRegisterToGameWorkHalfword(GamePhaseScriptVm *self)
 {
     s32 source = (u8)*self->cursor++ & 7;
     u8 index = (u8)*self->cursor++;
@@ -20,7 +20,7 @@ s32 func_0201be88(GamePhaseScriptVm *self)
 }
 
 /* Store the selected register in an unsigned-byte-indexed context slot and return zero. */
-s32 func_0201becc(GamePhaseScriptVm *self)
+s32 GamePhaseScriptVm_StoreRegisterToContextSlot(GamePhaseScriptVm *self)
 {
     s32 source = (u8)*self->cursor++ & 7;
     u8 index = (u8)*self->cursor++;
@@ -28,7 +28,7 @@ s32 func_0201becc(GamePhaseScriptVm *self)
     return 0;
 }
 
-/* Store the selected register in an indexed callback slot and return zero. */
+/* Store the selected register in the VM's indexed pointer-sized slots at offset 0x0c. */
 s32 func_0201bf04(GamePhaseScriptVm *self)
 {
     s32 source = (u8)*self->cursor++ & 7;
@@ -38,7 +38,7 @@ s32 func_0201bf04(GamePhaseScriptVm *self)
 }
 
 /* Load a signed game-work halfword into the selected register and return zero. */
-s32 func_0201bf3c(GamePhaseScriptVm *self)
+s32 GamePhaseScriptVm_LoadRegisterFromGameWorkHalfword(GamePhaseScriptVm *self)
 {
     s32 destination = (u8)*self->cursor++ & 7;
     u8 index = (u8)*self->cursor++;
@@ -48,7 +48,7 @@ s32 func_0201bf3c(GamePhaseScriptVm *self)
 }
 
 /* Load an unsigned-byte-indexed context slot into the selected register and return zero. */
-s32 func_0201bf80(GamePhaseScriptVm *self)
+s32 GamePhaseScriptVm_LoadRegisterFromContextSlot(GamePhaseScriptVm *self)
 {
     s32 destination = (u8)*self->cursor++ & 7;
     u8 index = (u8)*self->cursor++;
@@ -56,7 +56,7 @@ s32 func_0201bf80(GamePhaseScriptVm *self)
     return 0;
 }
 
-/* Load an indexed callback slot into the selected register and return zero. */
+/* Load an indexed pointer-sized slot at VM offset 0x0c into the selected register. */
 s32 func_0201bfb8(GamePhaseScriptVm *self)
 {
     s32 destination = (u8)*self->cursor++ & 7;

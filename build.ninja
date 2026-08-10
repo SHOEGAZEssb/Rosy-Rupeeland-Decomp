@@ -6902,14 +6902,14 @@ build build/reports/game_phase_script_vm_0201be88.json: objdiff build/decomp/del
   base_object = build/decomp/asm/game/game_phase_script_vm_0201be88.o
 build build/reports/game_phase_script_vm_0201be88.txt: match_report build/reports/game_phase_script_vm_0201be88.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_script_vm_0201be88.json
-  report_args = --section .text --function func_0201be88 --require-exact
+  report_args = --section .text --function GamePhaseScriptVm_StoreRegisterToGameWorkHalfword --require-exact
 
 build build/reports/game_phase_script_vm_0201becc.json: objdiff build/decomp/delinks/asm/game/game_phase_script_vm_0201becc.o | build/decomp/asm/game/game_phase_script_vm_0201becc.o
   target_object = build/decomp/delinks/asm/game/game_phase_script_vm_0201becc.o
   base_object = build/decomp/asm/game/game_phase_script_vm_0201becc.o
 build build/reports/game_phase_script_vm_0201becc.txt: match_report build/reports/game_phase_script_vm_0201becc.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_script_vm_0201becc.json
-  report_args = --section .text --function func_0201becc --require-exact
+  report_args = --section .text --function GamePhaseScriptVm_StoreRegisterToContextSlot --require-exact
 
 build build/reports/game_phase_script_vm_0201bf04.json: objdiff build/decomp/delinks/asm/game/game_phase_script_vm_0201bf04.o | build/decomp/asm/game/game_phase_script_vm_0201bf04.o
   target_object = build/decomp/delinks/asm/game/game_phase_script_vm_0201bf04.o
@@ -6923,14 +6923,14 @@ build build/reports/game_phase_script_vm_0201bf3c.json: objdiff build/decomp/del
   base_object = build/decomp/asm/game/game_phase_script_vm_0201bf3c.o
 build build/reports/game_phase_script_vm_0201bf3c.txt: match_report build/reports/game_phase_script_vm_0201bf3c.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_script_vm_0201bf3c.json
-  report_args = --section .text --function func_0201bf3c --require-exact
+  report_args = --section .text --function GamePhaseScriptVm_LoadRegisterFromGameWorkHalfword --require-exact
 
 build build/reports/game_phase_script_vm_0201bf80.json: objdiff build/decomp/delinks/asm/game/game_phase_script_vm_0201bf80.o | build/decomp/asm/game/game_phase_script_vm_0201bf80.o
   target_object = build/decomp/delinks/asm/game/game_phase_script_vm_0201bf80.o
   base_object = build/decomp/asm/game/game_phase_script_vm_0201bf80.o
 build build/reports/game_phase_script_vm_0201bf80.txt: match_report build/reports/game_phase_script_vm_0201bf80.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_script_vm_0201bf80.json
-  report_args = --section .text --function func_0201bf80 --require-exact
+  report_args = --section .text --function GamePhaseScriptVm_LoadRegisterFromContextSlot --require-exact
 
 build build/reports/game_phase_script_vm_0201bfb8.json: objdiff build/decomp/delinks/asm/game/game_phase_script_vm_0201bfb8.o | build/decomp/asm/game/game_phase_script_vm_0201bfb8.o
   target_object = build/decomp/delinks/asm/game/game_phase_script_vm_0201bfb8.o

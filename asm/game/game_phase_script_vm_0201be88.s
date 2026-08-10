@@ -1,8 +1,8 @@
 ; Matching retail form; see src/game/game_phase_script_vm_external_storage_opcodes.c.
 .text
 .extern gGameWork
-.global func_0201be88
-func_0201be88: ; 0x0201be88
+.global GamePhaseScriptVm_StoreRegisterToGameWorkHalfword
+GamePhaseScriptVm_StoreRegisterToGameWorkHalfword: ; 0x0201be88
     ldr r2, [r0, #0x4]
     ldr r1, L_0201bec8
     add ip, r2, #0x1
@@ -20,4 +20,4 @@ func_0201be88: ; 0x0201be88
     mov r0, #0x0
     bx lr
 L_0201bec8: .word gGameWork
-.size func_0201be88, . - func_0201be88
+.size GamePhaseScriptVm_StoreRegisterToGameWorkHalfword, . - GamePhaseScriptVm_StoreRegisterToGameWorkHalfword
