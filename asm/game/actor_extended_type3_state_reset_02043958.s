@@ -4,7 +4,7 @@
 .extern data_020e6f94
 .extern Actor_SaveAndForceFlags
 .extern func_020349b8
-.extern func_02045184
+.extern InteractionRecordAllocator_ReleaseOwner
 .global ActorExtendedType3_ResetInteractionState
 .type ActorExtendedType3_ResetInteractionState, @function
 ActorExtendedType3_ResetInteractionState: ; 0x02043958
@@ -21,7 +21,7 @@ ActorExtendedType3_ResetInteractionState: ; 0x02043958
     cmp r0, #0x0
     beq .L_02043990
     mov r1, r4
-    bl func_02045184
+    bl InteractionRecordAllocator_ReleaseOwner
 .L_02043990:
     ldr r0, .L_020439e4
     ldr r1, .L_020439e8

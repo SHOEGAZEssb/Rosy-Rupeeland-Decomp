@@ -5,10 +5,10 @@
 .extern func_020050a4
 .extern func_02032228
 .extern Actor_QueryTerrainHeight
-.extern func_02045364
-.extern func_0204539c
-.extern func_020453b0
-.extern func_020453c8
+.extern InteractionWaypointCursor_Advance
+.extern InteractionWaypointCursor_GetCurrentRecord
+.extern InteractionWaypointCursor_GetCurrentYPointer
+.extern InteractionWaypointCursor_GetCurrentDurationFrames
 .extern func_ov075_02212f20
 .extern func_ov075_022132e8
 
@@ -21,12 +21,12 @@ func_ov075_02213cfc:
     mov r1, #0x1
     strh r1, [r0, #0x6a]
     ldr r0, [r5, #0x26c]
-    bl func_0204539c
+    bl InteractionWaypointCursor_GetCurrentRecord
     ldr r0, [r0, #0x0]
     mov r0, r0, lsl #0xc
     str r0, [r5, #0x230]
     ldr r0, [r5, #0x26c]
-    bl func_020453b0
+    bl InteractionWaypointCursor_GetCurrentYPointer
     ldr r1, [r0, #0x0]
     mov r0, r5
     mov r2, r1, lsl #0xc
@@ -44,14 +44,14 @@ func_ov075_02213cfc:
     add r0, r5, #0x18
     bl func_020050a4
     ldr r0, [r5, #0x26c]
-    bl func_02045364
+    bl InteractionWaypointCursor_Advance
     ldr r0, [r5, #0x26c]
-    bl func_0204539c
+    bl InteractionWaypointCursor_GetCurrentRecord
     ldr r0, [r0, #0x0]
     mov r0, r0, lsl #0xc
     str r0, [r5, #0x2b4]
     ldr r0, [r5, #0x26c]
-    bl func_020453b0
+    bl InteractionWaypointCursor_GetCurrentYPointer
     ldr r1, [r0, #0x0]
     mov r0, r5
     mov r1, r1, lsl #0xc
@@ -83,9 +83,9 @@ func_ov075_02213cfc:
 .L_02213e00:
     strgt r0, [r5, #0x2ac]
     ldr r0, [r5, #0x26c]
-    bl func_02045364
+    bl InteractionWaypointCursor_Advance
     ldr r0, [r5, #0x26c]
-    bl func_020453c8
+    bl InteractionWaypointCursor_GetCurrentDurationFrames
     add r1, r5, #0x200
     strh r0, [r1, #0x5a]
     ldr r4, [r5, #0x2b4]

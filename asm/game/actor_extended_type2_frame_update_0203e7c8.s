@@ -21,7 +21,7 @@
 .extern func_020349b8
 .extern AttachmentController_SetEnabled
 .extern Actor_UpdateGroundContactProbe
-.extern func_02045184
+.extern InteractionRecordAllocator_ReleaseOwner
 .extern func_0204ced8
 .extern func_0204cf28
 .extern func_0204cfa4
@@ -104,7 +104,7 @@ ActorExtendedType2_UpdateFrame: ; 0x0203e7c8
     cmp r0, #0x0
     beq .L_0203e8e0
     mov r1, r6
-    bl func_02045184
+    bl InteractionRecordAllocator_ReleaseOwner
 .L_0203e8e0:
     ldr r0, .L_0203ef2c
     ldr r1, .L_0203ef38

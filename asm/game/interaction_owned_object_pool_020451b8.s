@@ -2,11 +2,11 @@
 .text
 .extern Heap_Free
 .extern func_02003e38
-.global func_020451b8
-.type func_020451b8, @function
-.global func_020451d4
-.type func_020451d4, @function
-func_020451b8: ; 0x020451b8
+.global InteractionRecordAllocatorPool_Init
+.type InteractionRecordAllocatorPool_Init, @function
+.global InteractionRecordAllocatorPool_DestroyContents
+.type InteractionRecordAllocatorPool_DestroyContents, @function
+InteractionRecordAllocatorPool_Init: ; 0x020451b8
     mov r2, #0x0
     mov r1, r2
 .L_020451c0:
@@ -16,8 +16,8 @@ func_020451b8: ; 0x020451b8
     blt .L_020451c0
     bx lr
 
-.size func_020451b8, . - func_020451b8
-func_020451d4: ; 0x020451d4
+.size InteractionRecordAllocatorPool_Init, . - InteractionRecordAllocatorPool_Init
+InteractionRecordAllocatorPool_DestroyContents: ; 0x020451d4
     stmdb sp!, {r4, r5, r6, lr}
     mov r6, r0
     mov r4, #0x0
@@ -35,4 +35,4 @@ func_020451d4: ; 0x020451d4
     blt .L_020451e0
     mov r0, r6
     ldmia sp!, {r4, r5, r6, pc}
-.size func_020451d4, . - func_020451d4
+.size InteractionRecordAllocatorPool_DestroyContents, . - InteractionRecordAllocatorPool_DestroyContents

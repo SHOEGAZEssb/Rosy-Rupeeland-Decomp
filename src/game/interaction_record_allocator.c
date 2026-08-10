@@ -25,7 +25,7 @@ extern u32 genrand_int32(void);
  * heap ownership, and allocation state change; the allocator crosses the heap
  * boundary but performs no direct hardware access.
  */
-void *func_02045058(void *self, const void *recordTable)
+void *InteractionRecordAllocator_Init(void *self, const void *recordTable)
 {
     u8 *object = (u8 *)self;
     const u8 *record = (const u8 *)recordTable;
@@ -52,7 +52,7 @@ void *func_02045058(void *self, const void *recordTable)
  * candidate, free the temporary and return null. Heap/random state and record
  * ownership may change; allocation/freeing crosses the engine heap boundary.
  */
-void *func_020450dc(void *self, void *owner)
+void *InteractionRecordAllocator_ReserveRandomRecord(void *self, void *owner)
 {
     u8 *object = (u8 *)self;
     s32 count = *(s32 *)(object + 8);
@@ -79,7 +79,7 @@ void *func_020450dc(void *self, void *owner)
  * Clear every owner-array slot equal to owner. Returns no value; record
  * ownership changes while table and heap allocation remain intact.
  */
-void func_02045184(void *self, void *owner)
+void InteractionRecordAllocator_ReleaseOwner(void *self, void *owner)
 {
     u8 *object = (u8 *)self;
     void **owners = *(void ***)(object + 4);

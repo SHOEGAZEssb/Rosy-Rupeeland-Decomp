@@ -8,7 +8,7 @@
 .extern func_020349b8
 .extern ActorExtendedType2_UpdateFrame
 .extern ActorExtendedType2_GetDescriptorValue2A
-.extern func_02045184
+.extern InteractionRecordAllocator_ReleaseOwner
 
 .global func_ov084_02213f38
 func_ov084_02213f38:
@@ -96,7 +96,7 @@ func_ov084_02213f38:
     cmp r0, #0x0
     beq .L_02214078
     mov r1, r5
-    bl func_02045184
+    bl InteractionRecordAllocator_ReleaseOwner
 .L_02214078:
     ldr r0, .L_022140d8
     ldr r1, .L_022140e4

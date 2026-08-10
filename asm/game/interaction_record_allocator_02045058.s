@@ -6,13 +6,13 @@
 .extern func_020bf1f8
 .extern gHeapContext
 .extern genrand_int32
-.global func_02045058
-.type func_02045058, @function
-.global func_020450dc
-.type func_020450dc, @function
-.global func_02045184
-.type func_02045184, @function
-func_02045058: ; 0x02045058
+.global InteractionRecordAllocator_Init
+.type InteractionRecordAllocator_Init, @function
+.global InteractionRecordAllocator_ReserveRandomRecord
+.type InteractionRecordAllocator_ReserveRandomRecord, @function
+.global InteractionRecordAllocator_ReleaseOwner
+.type InteractionRecordAllocator_ReleaseOwner, @function
+InteractionRecordAllocator_Init: ; 0x02045058
     stmdb sp!, {r4, lr}
     mov r4, r0
     str r1, [r4, #0x0]
@@ -50,8 +50,8 @@ func_02045058: ; 0x02045058
 .L_020450d4: .word data_020e16a8
 .L_020450d8: .word gHeapContext
 
-.size func_02045058, . - func_02045058
-func_020450dc: ; 0x020450dc
+.size InteractionRecordAllocator_Init, . - InteractionRecordAllocator_Init
+InteractionRecordAllocator_ReserveRandomRecord: ; 0x020450dc
     stmdb sp!, {r3, r4, r5, r6, r7, lr}
     mov r5, r0
     ldr r0, [r5, #0x8]
@@ -98,8 +98,8 @@ func_020450dc: ; 0x020450dc
 .L_0204517c: .word data_020e16a8
 .L_02045180: .word gHeapContext
 
-.size func_020450dc, . - func_020450dc
-func_02045184: ; 0x02045184
+.size InteractionRecordAllocator_ReserveRandomRecord, . - InteractionRecordAllocator_ReserveRandomRecord
+InteractionRecordAllocator_ReleaseOwner: ; 0x02045184
     stmdb sp!, {r3, lr}
     mov lr, #0x0
     mov r3, lr
@@ -115,4 +115,4 @@ func_02045184: ; 0x02045184
     cmp lr, r2
     blt .L_02045194
     ldmia sp!, {r3, pc}
-.size func_02045184, . - func_02045184
+.size InteractionRecordAllocator_ReleaseOwner, . - InteractionRecordAllocator_ReleaseOwner

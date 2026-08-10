@@ -2,9 +2,9 @@
 .text
 .extern func_020050a4
 .extern Actor_RefreshTerrainHeight
-.extern func_02045364
-.extern func_0204539c
-.extern func_020453b0
+.extern InteractionWaypointCursor_Advance
+.extern InteractionWaypointCursor_GetCurrentRecord
+.extern InteractionWaypointCursor_GetCurrentYPointer
 .extern genrand_int32
     .global ActorExtendedType2_AdvancePositionTarget
     .type ActorExtendedType2_AdvancePositionTarget, @function
@@ -16,14 +16,14 @@ ActorExtendedType2_AdvancePositionTarget: ; 0x0203f4a0
     cmp r0, #0x0
     ldmneia sp!, {r4, pc}
     ldr r0, [r4, #0x26c]
-    bl func_02045364
+    bl InteractionWaypointCursor_Advance
     ldr r0, [r4, #0x26c]
-    bl func_0204539c
+    bl InteractionWaypointCursor_GetCurrentRecord
     ldr r0, [r0, #0x0]
     mov r0, r0, lsl #0xc
     str r0, [r4, #0x230]
     ldr r0, [r4, #0x26c]
-    bl func_020453b0
+    bl InteractionWaypointCursor_GetCurrentYPointer
     ldr r1, [r0, #0x0]
     add r0, r4, #0x200
     mov r1, r1, lsl #0xc

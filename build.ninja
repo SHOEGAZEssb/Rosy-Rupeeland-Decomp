@@ -17892,7 +17892,7 @@ build build/reports/interaction_timing_state_02045004.json: objdiff build/decomp
   base_object = build/decomp/asm/game/interaction_timing_state_02045004.o
 build build/reports/interaction_timing_state_02045004.txt: match_report build/reports/interaction_timing_state_02045004.json | tools/report_objdiff.py
   report_json = build/reports/interaction_timing_state_02045004.json
-  report_args = --section .text --function func_02045004 --function func_02045028 --require-exact
+  report_args = --section .text --function InteractionTimingState_Reset --function InteractionTimingState_Tick --require-exact
 build interaction_timing_state: phony build/decomp/src/game/interaction_timing_state.o build/decomp/asm/game/interaction_timing_state_02045004.o build/reports/interaction_timing_state_02045004.txt
 
 interaction_record_allocator_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
@@ -17906,7 +17906,7 @@ build build/reports/interaction_record_allocator_02045058.json: objdiff build/de
   base_object = build/decomp/asm/game/interaction_record_allocator_02045058.o
 build build/reports/interaction_record_allocator_02045058.txt: match_report build/reports/interaction_record_allocator_02045058.json | tools/report_objdiff.py
   report_json = build/reports/interaction_record_allocator_02045058.json
-  report_args = --section .text --function func_02045058 --function func_020450dc --function func_02045184 --require-exact
+  report_args = --section .text --function InteractionRecordAllocator_Init --function InteractionRecordAllocator_ReserveRandomRecord --function InteractionRecordAllocator_ReleaseOwner --require-exact
 build interaction_record_allocator: phony build/decomp/src/game/interaction_record_allocator.o build/decomp/asm/game/interaction_record_allocator_02045058.o build/reports/interaction_record_allocator_02045058.txt
 
 interaction_owned_object_pool_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
@@ -17920,7 +17920,7 @@ build build/reports/interaction_owned_object_pool_020451b8.json: objdiff build/d
   base_object = build/decomp/asm/game/interaction_owned_object_pool_020451b8.o
 build build/reports/interaction_owned_object_pool_020451b8.txt: match_report build/reports/interaction_owned_object_pool_020451b8.json | tools/report_objdiff.py
   report_json = build/reports/interaction_owned_object_pool_020451b8.json
-  report_args = --section .text --function func_020451b8 --function func_020451d4 --require-exact
+  report_args = --section .text --function InteractionRecordAllocatorPool_Init --function InteractionRecordAllocatorPool_DestroyContents --require-exact
 build interaction_owned_object_pool: phony build/decomp/src/game/interaction_owned_object_pool.o build/decomp/asm/game/interaction_owned_object_pool_020451b8.o build/reports/interaction_owned_object_pool_020451b8.txt
 
 interaction_owned_object_lookup_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
@@ -17934,7 +17934,7 @@ build build/reports/interaction_owned_object_lookup_02045210.json: objdiff build
   base_object = build/decomp/asm/game/interaction_owned_object_lookup_02045210.o
 build build/reports/interaction_owned_object_lookup_02045210.txt: match_report build/reports/interaction_owned_object_lookup_02045210.json | tools/report_objdiff.py
   report_json = build/reports/interaction_owned_object_lookup_02045210.json
-  report_args = --section .text --function func_02045210 --require-exact
+  report_args = --section .text --function InteractionRecordAllocatorPool_GetOrCreate --require-exact
 build interaction_owned_object_lookup: phony build/decomp/src/game/interaction_owned_object_lookup.o build/decomp/asm/game/interaction_owned_object_lookup_02045210.o build/reports/interaction_owned_object_lookup_02045210.txt
 
 interaction_waypoint_cursor_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
@@ -17952,19 +17952,19 @@ build build/reports/interaction_waypoint_cursor_initialize_02045288.json: objdif
   base_object = build/decomp/asm/game/interaction_waypoint_cursor_initialize_02045288.o
 build build/reports/interaction_waypoint_cursor_initialize_02045288.txt: match_report build/reports/interaction_waypoint_cursor_initialize_02045288.json | tools/report_objdiff.py
   report_json = build/reports/interaction_waypoint_cursor_initialize_02045288.json
-  report_args = --section .text --function func_02045288 --require-exact
+  report_args = --section .text --function InteractionWaypointCursor_InitNearest --require-exact
 build build/reports/interaction_waypoint_cursor_retarget_020452f8.json: objdiff build/decomp/delinks/asm/game/interaction_waypoint_cursor_retarget_020452f8.o | build/decomp/asm/game/interaction_waypoint_cursor_retarget_020452f8.o
   target_object = build/decomp/delinks/asm/game/interaction_waypoint_cursor_retarget_020452f8.o
   base_object = build/decomp/asm/game/interaction_waypoint_cursor_retarget_020452f8.o
 build build/reports/interaction_waypoint_cursor_retarget_020452f8.txt: match_report build/reports/interaction_waypoint_cursor_retarget_020452f8.json | tools/report_objdiff.py
   report_json = build/reports/interaction_waypoint_cursor_retarget_020452f8.json
-  report_args = --section .text --function func_020452f8 --require-exact
+  report_args = --section .text --function InteractionWaypointCursor_SelectNearest --require-exact
 build build/reports/interaction_waypoint_cursor_helpers_02045364.json: objdiff build/decomp/delinks/asm/game/interaction_waypoint_cursor_helpers_02045364.o | build/decomp/asm/game/interaction_waypoint_cursor_helpers_02045364.o
   target_object = build/decomp/delinks/asm/game/interaction_waypoint_cursor_helpers_02045364.o
   base_object = build/decomp/asm/game/interaction_waypoint_cursor_helpers_02045364.o
 build build/reports/interaction_waypoint_cursor_helpers_02045364.txt: match_report build/reports/interaction_waypoint_cursor_helpers_02045364.json | tools/report_objdiff.py
   report_json = build/reports/interaction_waypoint_cursor_helpers_02045364.json
-  report_args = --section .text --function func_02045364 --function func_0204539c --function func_020453b0 --function func_020453c8 --function func_020453e8 --require-exact
+  report_args = --section .text --function InteractionWaypointCursor_Advance --function InteractionWaypointCursor_GetCurrentRecord --function InteractionWaypointCursor_GetCurrentYPointer --function InteractionWaypointCursor_GetCurrentDurationFrames --function InteractionWaypointCursor_CountRecords --require-exact
 build interaction_waypoint_cursor: phony build/decomp/src/game/interaction_waypoint_cursor.o build/decomp/asm/game/interaction_waypoint_cursor_initialize_02045288.o build/decomp/asm/game/interaction_waypoint_cursor_retarget_020452f8.o build/decomp/asm/game/interaction_waypoint_cursor_helpers_02045364.o build/reports/interaction_waypoint_cursor_initialize_02045288.txt build/reports/interaction_waypoint_cursor_retarget_020452f8.txt build/reports/interaction_waypoint_cursor_helpers_02045364.txt
 
 interaction_forwarding_wrappers_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++

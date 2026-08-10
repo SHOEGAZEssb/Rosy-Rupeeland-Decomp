@@ -7,7 +7,7 @@ extern u8 data_0210576c[];
  * Clear state bytes +0, +1, +2, and +3 plus halfword +4. Returns no value;
  * only the shared timing state changes and no SDK or hardware access occurs.
  */
-void func_02045004(void)
+void InteractionTimingState_Reset(void)
 {
     data_0210576c[0] = 0;
     data_0210576c[1] = 0;
@@ -20,7 +20,7 @@ void func_02045004(void)
  * Decrement shared halfword timer +4 and byte timer +2 when each is nonzero.
  * Returns no value; the two timers may change without direct hardware effects.
  */
-void func_02045028(void)
+void InteractionTimingState_Tick(void)
 {
     if (*(u16 *)(data_0210576c + 4) != 0)
         --*(u16 *)(data_0210576c + 4);

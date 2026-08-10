@@ -15,13 +15,16 @@ extern void ActorDerivedRuntime_Init(void *actor, const void *config);
 extern void func_02004fe0(void *vector);
 extern void func_0204cca8(void *object, void *actor);
 extern void func_020050a4(void *destination, const void *source);
-extern void *func_02045210(void *manager, u32 value);
-extern s16 *func_020450dc(void *handle, void *actor);
+extern void *InteractionRecordAllocatorPool_GetOrCreate(void *manager,
+                                                        u32 value);
+extern s16 *InteractionRecordAllocator_ReserveRandomRecord(void *handle,
+                                                           void *actor);
 extern void Actor_AdjustPositionForTerrainHeight(void *actor);
-extern void func_02045288(void *object, u32 value, s32 x, s32 y);
-extern s32 *func_0204539c(void *object);
-extern s32 *func_020453b0(void *object);
-extern u16 func_020453c8(void *object);
+extern void InteractionWaypointCursor_InitNearest(void *object, u32 value,
+                                                  s32 x, s32 y);
+extern s32 *InteractionWaypointCursor_GetCurrentRecord(void *object);
+extern s32 *InteractionWaypointCursor_GetCurrentYPointer(void *object);
+extern u16 InteractionWaypointCursor_GetCurrentDurationFrames(void *object);
 extern void *ActorExtendedRecordArray_Init(void *allocation, u32 value);
 extern u8 *func_0206899c(s32 index);
 #ifdef __cplusplus
@@ -72,10 +75,10 @@ void *ActorExtendedType2_Init(void *self, const void *configuration)
 
     if (*(u32 *)(config + 0x34) != 0) {
         s16 *position;
-        void *handle = func_02045210(data_02105778,
-                                     *(u32 *)(config + 0x34));
+        void *handle = InteractionRecordAllocatorPool_GetOrCreate(
+            data_02105778, *(u32 *)(config + 0x34));
         *(void **)(actor + 0x274) = handle;
-        position = func_020450dc(handle, actor);
+        position = InteractionRecordAllocator_ReserveRandomRecord(handle, actor);
         *(s32 *)(actor + 0x1c) = *(s32 *)(actor + 0x230) =
             (s32)position[0] << 12;
         *(s32 *)(actor + 0x20) = *(s32 *)(actor + 0x234) =
@@ -90,12 +93,15 @@ void *ActorExtendedType2_Init(void *self, const void *configuration)
         if (object != 0)
             *(u32 *)object = 0;
         *(void **)(actor + 0x26c) = object;
-        func_02045288(object, *(u32 *)(config + 0x38),
-                       *(s32 *)(actor + 0x230) >> 12,
-                       *(s32 *)(actor + 0x234) >> 12);
-        *(s32 *)(actor + 0x230) = *func_0204539c(object) << 12;
-        *(s32 *)(actor + 0x234) = *func_020453b0(object) << 12;
-        *(u16 *)(actor + 0x26a) = func_020453c8(object);
+        InteractionWaypointCursor_InitNearest(object, *(u32 *)(config + 0x38),
+                                              *(s32 *)(actor + 0x230) >> 12,
+                                              *(s32 *)(actor + 0x234) >> 12);
+        *(s32 *)(actor + 0x230) =
+            *InteractionWaypointCursor_GetCurrentRecord(object) << 12;
+        *(s32 *)(actor + 0x234) =
+            *InteractionWaypointCursor_GetCurrentYPointer(object) << 12;
+        *(u16 *)(actor + 0x26a) =
+            InteractionWaypointCursor_GetCurrentDurationFrames(object);
     } else {
         *(void **)(actor + 0x26c) = 0;
         *(u16 *)(actor + 0x26a) = 0;

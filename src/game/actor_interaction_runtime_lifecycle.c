@@ -15,15 +15,15 @@ extern void *gSoundContext;
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *func_020451b8(void *allocation);
-extern void func_020451d4(void *object);
+extern void *InteractionRecordAllocatorPool_Init(void *allocation);
+extern void InteractionRecordAllocatorPool_DestroyContents(void *object);
 extern void ActorFeedbackResources_Load(void);
 extern void ActorFeedbackResources_Unload(void);
 extern void ActorRegisteredSubclass_ResetRegistry(void);
 extern void func_02034e58(void);
 extern void func_02034ea8(void);
 extern void ActorExtendedPairing_UpdateLinks(void);
-extern void func_02045004(void);
+extern void InteractionTimingState_Reset(void);
 extern void func_020454f8(void);
 extern void func_02045598(void);
 extern void func_0204fafc(void);
@@ -50,7 +50,7 @@ void ActorInteractionRuntime_Init(void)
     void *object = Heap_Alloc(0x40, data_020df4f8, 4, &gHeapContext);
     s32 i;
     if (object != 0)
-        object = func_020451b8(object);
+        object = InteractionRecordAllocatorPool_Init(object);
     data_02105778 = object;
     ActorFeedbackResources_Load();
     for (i = 0x90; i <= 0x9b; ++i)
@@ -74,7 +74,7 @@ void ActorInteractionRuntime_Start(void)
     data_02105774 = 0;
     *(u16 *)data_021056e4 = 0;
     ActorExtendedPairing_UpdateLinks();
-    func_02045004();
+    InteractionTimingState_Reset();
     func_020454f8();
     func_0204fafc();
     func_020534cc();
@@ -120,7 +120,7 @@ void ActorInteractionRuntime_Shutdown(void)
     func_0204fb2c();
     func_02045598();
     if (data_02105778 != 0) {
-        func_020451d4(data_02105778);
+        InteractionRecordAllocatorPool_DestroyContents(data_02105778);
         Heap_Free(data_02105778);
     }
     data_02105778 = 0;

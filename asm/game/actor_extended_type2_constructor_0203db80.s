@@ -11,12 +11,12 @@
 .extern Actor_AdjustPositionForTerrainHeight
 .extern ActorDerivedRuntime_Init
 .extern ActorExtendedRecordArray_Init
-.extern func_020450dc
-.extern func_02045210
-.extern func_02045288
-.extern func_0204539c
-.extern func_020453b0
-.extern func_020453c8
+.extern InteractionRecordAllocator_ReserveRandomRecord
+.extern InteractionRecordAllocatorPool_GetOrCreate
+.extern InteractionWaypointCursor_InitNearest
+.extern InteractionWaypointCursor_GetCurrentRecord
+.extern InteractionWaypointCursor_GetCurrentYPointer
+.extern InteractionWaypointCursor_GetCurrentDurationFrames
 .extern func_0204cca8
 .extern func_0206899c
 .extern gHeapContext
@@ -66,10 +66,10 @@ ActorExtendedType2_Init: ; 0x0203db80
     beq .L_0203dc64
     ldr r0, .L_0203de34
     ldr r0, [r0, #0x0]
-    bl func_02045210
+    bl InteractionRecordAllocatorPool_GetOrCreate
     str r0, [r5, #0x274]
     mov r1, r5
-    bl func_020450dc
+    bl InteractionRecordAllocator_ReserveRandomRecord
     ldrsh r1, [r0, #0x0]
     mov r1, r1, lsl #0xc
     str r1, [r5, #0x1c]
@@ -98,19 +98,19 @@ ActorExtendedType2_Init: ; 0x0203db80
     ldr r1, [r4, #0x38]
     mov r2, r2, asr #0xc
     mov r3, r3, asr #0xc
-    bl func_02045288
+    bl InteractionWaypointCursor_InitNearest
     ldr r0, [r5, #0x26c]
-    bl func_0204539c
+    bl InteractionWaypointCursor_GetCurrentRecord
     ldr r0, [r0, #0x0]
     mov r0, r0, lsl #0xc
     str r0, [r5, #0x230]
     ldr r0, [r5, #0x26c]
-    bl func_020453b0
+    bl InteractionWaypointCursor_GetCurrentYPointer
     ldr r0, [r0, #0x0]
     mov r0, r0, lsl #0xc
     str r0, [r5, #0x234]
     ldr r0, [r5, #0x26c]
-    bl func_020453c8
+    bl InteractionWaypointCursor_GetCurrentDurationFrames
     add r1, r5, #0x200
     strh r0, [r1, #0x6a]
     b .L_0203dcf8

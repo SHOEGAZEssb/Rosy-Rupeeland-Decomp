@@ -13,9 +13,10 @@ extern void func_02003e38(void *allocation);
 
 /*
  * Clear all 16 pointer slots in the supplied 0x40-byte pool and return the pool
- * pointer unchanged. Pool state changes; no allocation or hardware access occurs.
+ * pointer unchanged. Pool state changes; no allocation or hardware access
+ * occurs.
  */
-void *func_020451b8(void *self)
+void *InteractionRecordAllocatorPool_Init(void *self)
 {
     void **slots = (void **)self;
     s32 i;
@@ -30,7 +31,7 @@ void *func_020451b8(void *self)
  * pool pointer; owned object storage becomes invalid, while the pool itself is
  * not freed here. Heap ownership changes and no direct hardware access occurs.
  */
-void *func_020451d4(void *self)
+void *InteractionRecordAllocatorPool_DestroyContents(void *self)
 {
     void **slots = (void **)self;
     s32 i;

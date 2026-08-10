@@ -3,7 +3,7 @@
 .extern data_020df9e8
 .extern func_020050a4
 .extern ActorExtendedType2_PlayDescriptorSoundIfEnabled
-.extern func_020453c8
+.extern InteractionWaypointCursor_GetCurrentDurationFrames
 .extern func_020ada8c
 .extern genrand_int32
 .global ActorExtendedType2_CancelTargetState
@@ -37,7 +37,7 @@ ActorExtendedType2_SelectRandomDescriptorCallback: ; 0x02041c48
     ldrh r1, [r1, #0x6a]
     cmp r1, #0x0
     bne .L_02041cb8
-    bl func_020453c8
+    bl InteractionWaypointCursor_GetCurrentDurationFrames
     add r1, r5, #0x200
     strh r0, [r1, #0x6a]
     ldrsh r0, [r1, #0x80]

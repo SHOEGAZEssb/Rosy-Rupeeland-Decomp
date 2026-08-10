@@ -7,11 +7,11 @@
 .extern data_021052fc
 .extern Actor_AdjustPositionForTerrainHeight
 .extern func_020349b8
-.extern func_020450dc
-.extern func_020452f8
-.extern func_0204539c
-.extern func_020453b0
-.extern func_020453c8
+.extern InteractionRecordAllocator_ReserveRandomRecord
+.extern InteractionWaypointCursor_SelectNearest
+.extern InteractionWaypointCursor_GetCurrentRecord
+.extern InteractionWaypointCursor_GetCurrentYPointer
+.extern InteractionWaypointCursor_GetCurrentDurationFrames
 .extern gGameWork
 .global ActorExtendedType2_UpdateTimedAttachmentTransition
 .type ActorExtendedType2_UpdateTimedAttachmentTransition, @function
@@ -139,7 +139,7 @@ ActorExtendedType2_UpdateTimedAttachmentTransition: ; 0x0204067c
     cmp r0, #0x0
     beq .L_020408d4
     mov r1, r5
-    bl func_020450dc
+    bl InteractionRecordAllocator_ReserveRandomRecord
     ldrsh r1, [r0, #0x0]
     mov r1, r1, lsl #0xc
     str r1, [r5, #0x230]
@@ -155,19 +155,19 @@ ActorExtendedType2_UpdateTimedAttachmentTransition: ; 0x0204067c
     ldr r2, [r5, #0x234]
     mov r1, r1, asr #0xc
     mov r2, r2, asr #0xc
-    bl func_020452f8
+    bl InteractionWaypointCursor_SelectNearest
     ldr r0, [r5, #0x26c]
-    bl func_0204539c
+    bl InteractionWaypointCursor_GetCurrentRecord
     ldr r0, [r0, #0x0]
     mov r0, r0, lsl #0xc
     str r0, [r5, #0x230]
     ldr r0, [r5, #0x26c]
-    bl func_020453b0
+    bl InteractionWaypointCursor_GetCurrentYPointer
     ldr r0, [r0, #0x0]
     mov r0, r0, lsl #0xc
     str r0, [r5, #0x234]
     ldr r0, [r5, #0x26c]
-    bl func_020453c8
+    bl InteractionWaypointCursor_GetCurrentDurationFrames
     add r1, r5, #0x200
     strh r0, [r1, #0x6a]
 .L_020408d4:

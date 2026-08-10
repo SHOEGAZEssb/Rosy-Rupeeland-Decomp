@@ -1,16 +1,16 @@
 ; Matching retail form; see src/game/interaction_waypoint_cursor.c.
 .text
-.global func_02045364
-.type func_02045364, @function
-.global func_0204539c
-.type func_0204539c, @function
-.global func_020453b0
-.type func_020453b0, @function
-.global func_020453c8
-.type func_020453c8, @function
-.global func_020453e8
-.type func_020453e8, @function
-func_02045364: ; 0x02045364
+.global InteractionWaypointCursor_Advance
+.type InteractionWaypointCursor_Advance, @function
+.global InteractionWaypointCursor_GetCurrentRecord
+.type InteractionWaypointCursor_GetCurrentRecord, @function
+.global InteractionWaypointCursor_GetCurrentYPointer
+.type InteractionWaypointCursor_GetCurrentYPointer, @function
+.global InteractionWaypointCursor_GetCurrentDurationFrames
+.type InteractionWaypointCursor_GetCurrentDurationFrames, @function
+.global InteractionWaypointCursor_CountRecords
+.type InteractionWaypointCursor_CountRecords, @function
+InteractionWaypointCursor_Advance: ; 0x02045364
     ldr r2, [r0, #0x4]
     mov r1, #0xc
     add r3, r2, #0x1
@@ -26,23 +26,23 @@ func_02045364: ; 0x02045364
     mov r1, #0x0
     str r1, [r0, #0x4]
     bx lr
-.size func_02045364, . - func_02045364
-func_0204539c: ; 0x0204539c
+.size InteractionWaypointCursor_Advance, . - InteractionWaypointCursor_Advance
+InteractionWaypointCursor_GetCurrentRecord: ; 0x0204539c
     ldr r2, [r0, #0x0]
     ldr r1, [r0, #0x4]
     mov r0, #0xc
     mla r0, r1, r0, r2
     bx lr
-.size func_0204539c, . - func_0204539c
-func_020453b0: ; 0x020453b0
+.size InteractionWaypointCursor_GetCurrentRecord, . - InteractionWaypointCursor_GetCurrentRecord
+InteractionWaypointCursor_GetCurrentYPointer: ; 0x020453b0
     ldr r2, [r0, #0x0]
     ldr r1, [r0, #0x4]
     mov r0, #0xc
     mla r0, r1, r0, r2
     add r0, r0, #0x4
     bx lr
-.size func_020453b0, . - func_020453b0
-func_020453c8: ; 0x020453c8
+.size InteractionWaypointCursor_GetCurrentYPointer, . - InteractionWaypointCursor_GetCurrentYPointer
+InteractionWaypointCursor_GetCurrentDurationFrames: ; 0x020453c8
     ldr r2, [r0, #0x0]
     ldr r1, [r0, #0x4]
     mov r0, #0xc
@@ -51,8 +51,8 @@ func_020453c8: ; 0x020453c8
     mov r0, #0x3c
     mul r0, r1, r0
     bx lr
-.size func_020453c8, . - func_020453c8
-func_020453e8: ; 0x020453e8
+.size InteractionWaypointCursor_GetCurrentDurationFrames, . - InteractionWaypointCursor_GetCurrentDurationFrames
+InteractionWaypointCursor_CountRecords: ; 0x020453e8
     ldr r3, [r0, #0x0]
     mov r0, #0x0
     mov r1, #0xc
@@ -65,4 +65,4 @@ func_020453e8: ; 0x020453e8
     cmp r2, #0x0
     bne .L_020453f8
     bx lr
-.size func_020453e8, . - func_020453e8
+.size InteractionWaypointCursor_CountRecords, . - InteractionWaypointCursor_CountRecords

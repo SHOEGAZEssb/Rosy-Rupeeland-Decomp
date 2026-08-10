@@ -17,7 +17,7 @@ extern s16 data_020c9670[];
 extern "C" {
 #endif
 extern void **func_02007f0c(void *runtime, s32 collection);
-extern void func_02045184(void *handle, void *actor);
+extern void InteractionRecordAllocator_ReleaseOwner(void *handle, void *actor);
 extern void func_020349b8(void *actor, u32 sound, s32 extra);
 extern void Actor_SaveAndForceFlags(void *actor);
 extern s32 func_02032370(void *actor, const void *target, s32 step);
@@ -95,7 +95,8 @@ void ActorExtendedType2_UpdateFrame(void *self)
         if ((*(s32 (**)(void *))(*(u8 **)object + 0xa8))(object) == 0) {
             u16 sound;
             if (*(void **)(actor + 0x274) != 0)
-                func_02045184(*(void **)(actor + 0x274), actor);
+                InteractionRecordAllocator_ReleaseOwner(
+                    *(void **)(actor + 0x274), actor);
             *(u32 *)(actor + 0x218) = *(u32 *)(data_020df9e8 + 0x118);
             *(u32 *)(actor + 0x21c) = *(u32 *)(data_020df9e8 + 0x11c);
             sound = data_020e6f94[*(u16 *)(actor + 0x4e)];

@@ -5,7 +5,7 @@
 .extern Actor_SaveAndForceFlags
 .extern Actor_GetCachedTerrainHeight
 .extern func_020349b8
-.extern func_02045184
+.extern InteractionRecordAllocator_ReleaseOwner
 .extern func_ov084_022131fc
 
 .global func_ov084_022134f0
@@ -23,7 +23,7 @@ func_ov084_022134f0:
     cmp r0, #0x0
     beq .L_02213528
     mov r1, r4
-    bl func_02045184
+    bl InteractionRecordAllocator_ReleaseOwner
 .L_02213528:
     mov r1, #0x0
     mov r2, r1

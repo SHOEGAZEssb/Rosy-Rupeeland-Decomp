@@ -7,7 +7,7 @@
 .extern data_021056e4
 .extern func_02034ecc
 .extern ActorRegisteredSubclass_ProcessRegistry
-.extern func_02045028
+.extern InteractionTimingState_Tick
 .extern func_0204cfa4
 .extern func_02053560
     .global ActorInteractionRuntime_Update
@@ -57,7 +57,7 @@ ActorInteractionRuntime_Update: ; 0x0203ac9c
     ldr r0, .L_0203ad60
     mov r1, #0x0
     strh r1, [r0, #0x0]
-    bl func_02045028
+    bl InteractionTimingState_Tick
     ldmia sp!, {r3, r4, r5, pc}
 .L_0203ad50: .word data_02105680
 .L_0203ad54: .word data_02105682

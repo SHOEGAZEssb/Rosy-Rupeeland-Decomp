@@ -9,7 +9,7 @@ extern u8 data_020df9e8[];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern u16 func_020453c8(void *object);
+extern u16 InteractionWaypointCursor_GetCurrentDurationFrames(void *object);
 extern void ActorExtendedType2_PlayDescriptorSoundIfEnabled(void *actor);
 extern void func_020050a4(void *destination, ...);
 extern u32 genrand_int32(void);
@@ -34,10 +34,11 @@ s32 ActorExtendedType2_CancelTargetState(void *self)
 
 /*
  * If object +0x26c exists and cached halfword +0x26a is zero, cache the result
- * of func_020453c8. When signed +0x280 is also zero, invoke virtual +0x138 and
- * ActorExtendedType2_PlayDescriptorSoundIfEnabled and install global pair
- * +0xf8/+0xfc at +0x218/+0x21c. Reset transform +0x78 from +0x18, then build
- * a choice list from descriptor +0x18:
+ * of InteractionWaypointCursor_GetCurrentDurationFrames. When signed +0x280
+ * is also zero, invoke virtual +0x138 and
+ * ActorExtendedType2_PlayDescriptorSoundIfEnabled, then install global pair
+ * +0xf8/+0xfc at +0x218/+0x21c. Reset transform +0x78 from +0x18, then build a
+ * choice list from descriptor +0x18:
  * bit zero contributes 1, any bit in 0x1e contributes 0x1e, bit 0x20 contributes
  * 0x20, and bit 0x100 contributes 0x100 unless actor +0x260 bit 0x400000 is set.
  * A random eligible choice installs member pair +0x238, +0x230, +0x228, or
@@ -58,7 +59,9 @@ s32 ActorExtendedType2_SelectRandomDescriptorCallback(void *self, const void *de
     s32 selected;
 
     if (*(void **)(actor + 0x26c) != 0 && *(u16 *)(actor + 0x26a) == 0) {
-        *(u16 *)(actor + 0x26a) = func_020453c8(*(void **)(actor + 0x26c));
+        *(u16 *)(actor + 0x26a) =
+            InteractionWaypointCursor_GetCurrentDurationFrames(
+                *(void **)(actor + 0x26c));
         if (*(s16 *)(actor + 0x280) == 0) {
             (*(void (**)(void *))(*(u8 **)actor + 0x138))(actor);
             ActorExtendedType2_PlayDescriptorSoundIfEnabled(actor);

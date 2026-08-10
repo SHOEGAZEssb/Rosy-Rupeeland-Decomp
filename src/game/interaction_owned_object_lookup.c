@@ -7,7 +7,8 @@ extern const char data_020e16a8[];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *func_02045058(void *object, const void *recordTable);
+extern void *InteractionRecordAllocator_Init(void *object,
+                                             const void *recordTable);
 #ifdef __cplusplus
 }
 #endif
@@ -16,11 +17,13 @@ extern void *func_02045058(void *object, const void *recordTable);
  * Scan 16 pool slots. Return an existing object whose +0 table pointer equals
  * recordTable. At the first empty slot, allocate 12 bytes with label
  * data_020e16a8, alignment four, and gHeapContext; construct it through
- * func_02045058 when allocation succeeds, store the resulting pointer, and
- * return it. Return null if all slots hold different tables. Pool and heap
- * ownership may change; allocation crosses the engine heap boundary.
+ * InteractionRecordAllocator_Init when allocation succeeds, store the
+ * resulting pointer, and return it. Return null if all slots hold different
+ * tables. Pool and heap ownership may change; allocation crosses the engine
+ * heap boundary.
  */
-void *func_02045210(void *self, const void *recordTable)
+void *InteractionRecordAllocatorPool_GetOrCreate(
+    void *self, const void *recordTable)
 {
     void **slots = (void **)self;
     s32 i;
@@ -29,7 +32,7 @@ void *func_02045210(void *self, const void *recordTable)
         if (object == 0) {
             object = (u8 *)Heap_Alloc(12, data_020e16a8, 4, &gHeapContext);
             if (object != 0)
-                object = (u8 *)func_02045058(object, recordTable);
+                object = (u8 *)InteractionRecordAllocator_Init(object, recordTable);
             slots[i] = object;
             return object;
         }

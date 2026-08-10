@@ -16,9 +16,9 @@
 .extern ActorFeedbackResources_Unload
 .extern ActorRegisteredSubclass_ResetRegistry
 .extern ActorExtendedPairing_UpdateLinks
-.extern func_02045004
-.extern func_020451b8
-.extern func_020451d4
+.extern InteractionTimingState_Reset
+.extern InteractionRecordAllocatorPool_Init
+.extern InteractionRecordAllocatorPool_DestroyContents
 .extern func_020454f8
 .extern func_02045598
 .extern func_0204fafc
@@ -41,7 +41,7 @@ ActorInteractionRuntime_Init: ; 0x0203aac4
     bl Heap_Alloc
     cmp r0, #0x0
     beq .L_0203aae8
-    bl func_020451b8
+    bl InteractionRecordAllocatorPool_Init
 .L_0203aae8:
     ldr r1, .L_0203ab58
     str r0, [r1, #0x0]
@@ -91,7 +91,7 @@ ActorInteractionRuntime_Start: ; 0x0203ab6c
     strh r2, [r1, #0x0]
     strh r2, [r0, #0x0]
     bl ActorExtendedPairing_UpdateLinks
-    bl func_02045004
+    bl InteractionTimingState_Reset
     bl func_020454f8
     bl func_0204fafc
     bl func_020534cc
@@ -168,7 +168,7 @@ ActorInteractionRuntime_Shutdown: ; 0x0203abf4
     cmp r4, #0x0
     beq .L_0203ac7c
     mov r0, r4
-    bl func_020451d4
+    bl InteractionRecordAllocatorPool_DestroyContents
     mov r0, r4
     bl Heap_Free
 .L_0203ac7c:

@@ -1,14 +1,14 @@
 ; Matching retail form; see src/game/interaction_waypoint_cursor.c.
 .text
-.extern func_020453e8
-.global func_020452f8
-.type func_020452f8, @function
-func_020452f8: ; 0x020452f8
+.extern InteractionWaypointCursor_CountRecords
+.global InteractionWaypointCursor_SelectNearest
+.type InteractionWaypointCursor_SelectNearest, @function
+InteractionWaypointCursor_SelectNearest: ; 0x020452f8
     stmdb sp!, {r4, r5, r6, r7, r8, lr}
     mov r6, r0
     mov r5, r1
     mov r4, r2
-    bl func_020453e8
+    bl InteractionWaypointCursor_CountRecords
     mov r1, #0x0
     mov r3, r1
     sub r2, r1, #0x80000001
@@ -33,4 +33,4 @@ func_020452f8: ; 0x020452f8
     blt .L_02045320
     str r1, [r6, #0x4]
     ldmia sp!, {r4, r5, r6, r7, r8, pc}
-.size func_020452f8, . - func_020452f8
+.size InteractionWaypointCursor_SelectNearest, . - InteractionWaypointCursor_SelectNearest

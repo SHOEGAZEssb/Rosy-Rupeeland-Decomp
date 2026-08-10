@@ -2,11 +2,11 @@
 .text
 .extern Heap_Alloc
 .extern data_020e16a8
-.extern func_02045058
+.extern InteractionRecordAllocator_Init
 .extern gHeapContext
-.global func_02045210
-.type func_02045210, @function
-func_02045210: ; 0x02045210
+.global InteractionRecordAllocatorPool_GetOrCreate
+.type InteractionRecordAllocatorPool_GetOrCreate, @function
+InteractionRecordAllocatorPool_GetOrCreate: ; 0x02045210
     stmdb sp!, {r4, r5, r6, lr}
     mov r6, r0
     mov r5, r1
@@ -29,7 +29,7 @@ func_02045210: ; 0x02045210
     cmp r0, #0x0
     beq .L_02045264
     mov r1, r5
-    bl func_02045058
+    bl InteractionRecordAllocator_Init
 .L_02045264:
     str r0, [r6, r4, lsl #0x2]
     ldmia sp!, {r4, r5, r6, pc}
@@ -42,4 +42,4 @@ func_02045210: ; 0x02045210
     ldmia sp!, {r4, r5, r6, pc}
 .L_02045280: .word data_020e16a8
 .L_02045284: .word gHeapContext
-.size func_02045210, . - func_02045210
+.size InteractionRecordAllocatorPool_GetOrCreate, . - InteractionRecordAllocatorPool_GetOrCreate

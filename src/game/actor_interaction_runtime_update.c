@@ -14,7 +14,7 @@ extern s32 func_0204cfa4(void);
 extern void func_02034ecc(void);
 extern void func_02053560(void);
 extern void ActorRegisteredSubclass_ProcessRegistry(void);
-extern void func_02045028(void);
+extern void InteractionTimingState_Tick(void);
 #ifdef __cplusplus
 }
 #endif
@@ -26,8 +26,9 @@ extern void func_02045028(void);
  * plus the new fixed-point contribution. If magnitude is zero and
  * func_0204cfa4 returns less than 41, clear both components. Advance the four
  * recovered runtime helpers in order, clearing the leading resource-table
- * halfword before func_02045028. Returns no value; helper calls change global
- * engine state. The matching fallback preserves compiler-sensitive shifts.
+ * halfword before InteractionTimingState_Tick. Returns no value; helper calls
+ * change global engine state. The matching fallback preserves
+ * compiler-sensitive shifts.
  */
 void ActorInteractionRuntime_Update(void)
 {
@@ -48,5 +49,5 @@ void ActorInteractionRuntime_Update(void)
     func_02053560();
     ActorRegisteredSubclass_ProcessRegistry();
     *(u16 *)data_021056e4 = 0;
-    func_02045028();
+    InteractionTimingState_Tick();
 }

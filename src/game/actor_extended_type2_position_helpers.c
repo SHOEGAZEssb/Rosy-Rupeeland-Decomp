@@ -6,9 +6,9 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_02045364(void *object);
-extern s32 *func_0204539c(void *object);
-extern s32 *func_020453b0(void *object);
+extern void InteractionWaypointCursor_Advance(void *object);
+extern s32 *InteractionWaypointCursor_GetCurrentRecord(void *object);
+extern s32 *InteractionWaypointCursor_GetCurrentYPointer(void *object);
 extern void func_020050a4(void *destination, const void *source);
 extern void Actor_RefreshTerrainHeight(void *actor);
 #ifdef __cplusplus
@@ -17,10 +17,10 @@ extern void Actor_RefreshTerrainHeight(void *actor);
 
 /*
  * Return without changes while halfword +0x26a is nonzero. Otherwise advance
- * optional object +0x26c through func_02045364, query its two coordinates into
- * fixed-point words +0x230/+0x234, and zero halfword +0x25a. Returns no value;
- * path/object and actor position-target state change. Retail assumes +0x26c is
- * valid on this path.
+ * optional object +0x26c through InteractionWaypointCursor_Advance, query its
+ * two coordinates into fixed-point words +0x230/+0x234, and zero halfword
+ * +0x25a. Returns no value; cursor and actor position-target state change.
+ * Retail assumes +0x26c is valid on this path.
  */
 void ActorExtendedType2_AdvancePositionTarget(void *self)
 {
@@ -30,9 +30,11 @@ void ActorExtendedType2_AdvancePositionTarget(void *self)
     if (*(u16 *)(actor + 0x26a) != 0)
         return;
     object = *(void **)(actor + 0x26c);
-    func_02045364(object);
-    *(s32 *)(actor + 0x230) = *func_0204539c(object) << 12;
-    *(s32 *)(actor + 0x234) = *func_020453b0(object) << 12;
+    InteractionWaypointCursor_Advance(object);
+    *(s32 *)(actor + 0x230) =
+        *InteractionWaypointCursor_GetCurrentRecord(object) << 12;
+    *(s32 *)(actor + 0x234) =
+        *InteractionWaypointCursor_GetCurrentYPointer(object) << 12;
     *(u16 *)(actor + 0x25a) = 0;
 }
 

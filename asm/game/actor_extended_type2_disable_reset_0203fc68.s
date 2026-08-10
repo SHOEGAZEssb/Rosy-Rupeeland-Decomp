@@ -2,7 +2,7 @@
 .text
 .extern data_020df9e8
 .extern Actor_SaveAndForceFlags
-.extern func_02045184
+.extern InteractionRecordAllocator_ReleaseOwner
 .global ActorExtendedType2_DisableModesAndSetCallbackPair80
 .type ActorExtendedType2_DisableModesAndSetCallbackPair80, @function
 ActorExtendedType2_DisableModesAndSetCallbackPair80: ; 0x0203fc68
@@ -28,7 +28,7 @@ ActorExtendedType2_DisableModesAndSetCallbackPair80: ; 0x0203fc68
     cmp r0, #0x0
     beq .L_0203fcc4
     mov r1, r4
-    bl func_02045184
+    bl InteractionRecordAllocator_ReleaseOwner
 .L_0203fcc4:
     ldr r0, .L_0203fcfc
     mov r1, #0xff
