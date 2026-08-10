@@ -4543,63 +4543,63 @@ build build/reports/game_phase_script_vm_02012564.json: objdiff build/decomp/del
   base_object = build/decomp/asm/game/game_phase_script_vm_02012564.o
 build build/reports/game_phase_script_vm_02012564.txt: match_report build/reports/game_phase_script_vm_02012564.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_script_vm_02012564.json
-  report_args = --section .text --function func_02012564 --require-exact
+  report_args = --section .text --function GamePhaseScriptVm_Init --require-exact
 
 build build/reports/game_phase_script_vm_02012584.json: objdiff build/decomp/delinks/asm/game/game_phase_script_vm_02012584.o | build/decomp/asm/game/game_phase_script_vm_02012584.o
   target_object = build/decomp/delinks/asm/game/game_phase_script_vm_02012584.o
   base_object = build/decomp/asm/game/game_phase_script_vm_02012584.o
 build build/reports/game_phase_script_vm_02012584.txt: match_report build/reports/game_phase_script_vm_02012584.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_script_vm_02012584.json
-  report_args = --section .text --function func_02012584 --require-exact
+  report_args = --section .text --function GamePhaseScriptVm_Reset --require-exact
 
 build build/reports/game_phase_script_vm_020125ec.json: objdiff build/decomp/delinks/asm/game/game_phase_script_vm_020125ec.o | build/decomp/asm/game/game_phase_script_vm_020125ec.o
   target_object = build/decomp/delinks/asm/game/game_phase_script_vm_020125ec.o
   base_object = build/decomp/asm/game/game_phase_script_vm_020125ec.o
 build build/reports/game_phase_script_vm_020125ec.txt: match_report build/reports/game_phase_script_vm_020125ec.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_script_vm_020125ec.json
-  report_args = --section .text --function func_020125ec --require-exact
+  report_args = --section .text --function GamePhaseScriptVm_Destroy --require-exact
 
 build build/reports/game_phase_script_vm_020125f0.json: objdiff build/decomp/delinks/asm/game/game_phase_script_vm_020125f0.o | build/decomp/asm/game/game_phase_script_vm_020125f0.o
   target_object = build/decomp/delinks/asm/game/game_phase_script_vm_020125f0.o
   base_object = build/decomp/asm/game/game_phase_script_vm_020125f0.o
 build build/reports/game_phase_script_vm_020125f0.txt: match_report build/reports/game_phase_script_vm_020125f0.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_script_vm_020125f0.json
-  report_args = --section .text --function func_020125f0 --require-exact
+  report_args = --section .text --function GamePhaseScriptVm_DestroyAndFree --require-exact
 
 build build/reports/game_phase_script_vm_02012604.json: objdiff build/decomp/delinks/asm/game/game_phase_script_vm_02012604.o | build/decomp/asm/game/game_phase_script_vm_02012604.o
   target_object = build/decomp/delinks/asm/game/game_phase_script_vm_02012604.o
   base_object = build/decomp/asm/game/game_phase_script_vm_02012604.o
 build build/reports/game_phase_script_vm_02012604.txt: match_report build/reports/game_phase_script_vm_02012604.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_script_vm_02012604.json
-  report_args = --section .text --function func_02012604 --require-exact
+  report_args = --section .text --function GamePhaseScriptVm_DestroyBase --require-exact
 
 build build/reports/game_phase_script_vm_02012608.json: objdiff build/decomp/delinks/asm/game/game_phase_script_vm_02012608.o | build/decomp/asm/game/game_phase_script_vm_02012608.o
   target_object = build/decomp/delinks/asm/game/game_phase_script_vm_02012608.o
   base_object = build/decomp/asm/game/game_phase_script_vm_02012608.o
 build build/reports/game_phase_script_vm_02012608.txt: match_report build/reports/game_phase_script_vm_02012608.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_script_vm_02012608.json
-  report_args = --section .text --function func_02012608 --require-exact
+  report_args = --section .text --function GamePhaseScriptVm_InitWithScript --require-exact
 
 build build/reports/game_phase_script_vm_02012628.json: objdiff build/decomp/delinks/asm/game/game_phase_script_vm_02012628.o | build/decomp/asm/game/game_phase_script_vm_02012628.o
   target_object = build/decomp/delinks/asm/game/game_phase_script_vm_02012628.o
   base_object = build/decomp/asm/game/game_phase_script_vm_02012628.o
 build build/reports/game_phase_script_vm_02012628.txt: match_report build/reports/game_phase_script_vm_02012628.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_script_vm_02012628.json
-  report_args = --section .text --function func_02012628 --require-exact
+  report_args = --section .text --function GamePhaseScriptVm_ResetWithScript --require-exact
 
 build build/reports/game_phase_script_vm_0201264c.json: objdiff build/decomp/delinks/asm/game/game_phase_script_vm_0201264c.o | build/decomp/asm/game/game_phase_script_vm_0201264c.o
   target_object = build/decomp/delinks/asm/game/game_phase_script_vm_0201264c.o
   base_object = build/decomp/asm/game/game_phase_script_vm_0201264c.o
 build build/reports/game_phase_script_vm_0201264c.txt: match_report build/reports/game_phase_script_vm_0201264c.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_script_vm_0201264c.json
-  report_args = --section .text --function func_0201264c --require-exact
+  report_args = --section .text --function GamePhaseScriptVm_Assign --require-exact
 
 build build/reports/game_phase_script_vm_02012668.json: objdiff build/decomp/delinks/asm/game/game_phase_script_vm_02012668.o | build/decomp/asm/game/game_phase_script_vm_02012668.o
   target_object = build/decomp/delinks/asm/game/game_phase_script_vm_02012668.o
   base_object = build/decomp/asm/game/game_phase_script_vm_02012668.o
 build build/reports/game_phase_script_vm_02012668.txt: match_report build/reports/game_phase_script_vm_02012668.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_script_vm_02012668.json
-  report_args = --section .text --function func_02012668 --require-exact
+  report_args = --section .text --function GamePhaseScriptVm_CopyState --require-exact
 
 build build/reports/game_phase_script_vm_lifecycle.txt: phony build/reports/game_phase_script_vm_02012564.txt build/reports/game_phase_script_vm_02012584.txt build/reports/game_phase_script_vm_020125ec.txt build/reports/game_phase_script_vm_020125f0.txt build/reports/game_phase_script_vm_02012604.txt build/reports/game_phase_script_vm_02012608.txt build/reports/game_phase_script_vm_02012628.txt build/reports/game_phase_script_vm_0201264c.txt build/reports/game_phase_script_vm_02012668.txt
 
@@ -4608,21 +4608,21 @@ build build/reports/game_phase_script_vm_02012704.json: objdiff build/decomp/del
   base_object = build/decomp/asm/game/game_phase_script_vm_02012704.o
 build build/reports/game_phase_script_vm_02012704.txt: match_report build/reports/game_phase_script_vm_02012704.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_script_vm_02012704.json
-  report_args = --section .text --function func_02012704 --require-exact
+  report_args = --section .text --function GamePhaseScriptVm_Pop --require-exact
 
 build build/reports/game_phase_script_vm_02012720.json: objdiff build/decomp/delinks/asm/game/game_phase_script_vm_02012720.o | build/decomp/asm/game/game_phase_script_vm_02012720.o
   target_object = build/decomp/delinks/asm/game/game_phase_script_vm_02012720.o
   base_object = build/decomp/asm/game/game_phase_script_vm_02012720.o
 build build/reports/game_phase_script_vm_02012720.txt: match_report build/reports/game_phase_script_vm_02012720.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_script_vm_02012720.json
-  report_args = --section .text --function func_02012720 --require-exact
+  report_args = --section .text --function GamePhaseScriptVm_Push --require-exact
 
 build build/reports/game_phase_script_vm_0201273c.json: objdiff build/decomp/delinks/asm/game/game_phase_script_vm_0201273c.o | build/decomp/asm/game/game_phase_script_vm_0201273c.o
   target_object = build/decomp/delinks/asm/game/game_phase_script_vm_0201273c.o
   base_object = build/decomp/asm/game/game_phase_script_vm_0201273c.o
 build build/reports/game_phase_script_vm_0201273c.txt: match_report build/reports/game_phase_script_vm_0201273c.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_script_vm_0201273c.json
-  report_args = --section .text --function func_0201273c --require-exact
+  report_args = --section .text --function GamePhaseScriptVm_Execute --require-exact
 
 build build/reports/game_phase_script_vm_020127f0.json: objdiff build/decomp/delinks/asm/game/game_phase_script_vm_020127f0.o | build/decomp/asm/game/game_phase_script_vm_020127f0.o
   target_object = build/decomp/delinks/asm/game/game_phase_script_vm_020127f0.o
@@ -4636,7 +4636,7 @@ build build/reports/game_phase_script_vm_020127f8.json: objdiff build/decomp/del
   base_object = build/decomp/asm/game/game_phase_script_vm_020127f8.o
 build build/reports/game_phase_script_vm_020127f8.txt: match_report build/reports/game_phase_script_vm_020127f8.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_script_vm_020127f8.json
-  report_args = --section .text --function func_020127f8 --require-exact
+  report_args = --section .text --function GamePhaseScriptVm_SetResult --require-exact
 
 build build/reports/game_phase_script_vm_runtime.txt: phony build/reports/game_phase_script_vm_02012704.txt build/reports/game_phase_script_vm_02012720.txt build/reports/game_phase_script_vm_0201273c.txt build/reports/game_phase_script_vm_020127f0.txt build/reports/game_phase_script_vm_020127f8.txt
 

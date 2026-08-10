@@ -35,12 +35,12 @@ extern void func_ov062_02210674(void *allocation, void *actor,
  */
 s32 func_02013f10(GamePhaseActorScriptVm *self)
 {
-    u32 second = func_02012704(&self->base);
-    u32 first = func_02012704(&self->base);
-    s32 z = (s32)func_02012704(&self->base);
-    s32 y = (s32)func_02012704(&self->base);
-    s32 x = (s32)func_02012704(&self->base);
-    s32 selector = (s32)func_02012704(&self->base);
+    u32 second = GamePhaseScriptVm_Pop(&self->base);
+    u32 first = GamePhaseScriptVm_Pop(&self->base);
+    s32 z = (s32)GamePhaseScriptVm_Pop(&self->base);
+    s32 y = (s32)GamePhaseScriptVm_Pop(&self->base);
+    s32 x = (s32)GamePhaseScriptVm_Pop(&self->base);
+    s32 selector = (s32)GamePhaseScriptVm_Pop(&self->base);
     u8 *boundActor = (u8 *)self->actor_84;
 
     if (selector == -1) {

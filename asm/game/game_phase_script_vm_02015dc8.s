@@ -3,20 +3,20 @@
 .extern data_020d5b2c
 .extern Heap_Alloc
 .extern GamePhaseApplyScene_Init
-.extern func_02012704
+.extern GamePhaseScriptVm_Pop
 .extern func_02028388
 .extern gHeapContext
 .global func_02015dc8
 func_02015dc8:
     stmdb sp!, {r3, r4, r5, r6, r7, lr}
     mov r4, r0
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     mov r7, r0
     mov r0, r4
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     mov r6, r0
     mov r0, r4
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     mov r5, r0
     ldr r1, L_02015e38
     ldr r3, L_02015e3c

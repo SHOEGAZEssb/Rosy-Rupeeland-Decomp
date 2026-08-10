@@ -26,30 +26,30 @@ static s32 compareValues(s32 left, s32 right, VmComparison comparison)
 static void storeComparison(GamePhaseScriptVm *self, s32 destination, s32 result)
 {
     if (result)
-        self->flags_7d |= 2;
+        self->stateFlags |= 2;
     else
-        self->flags_7d &= (u8)~2;
-    self->values_2c[destination] = (u32)result;
+        self->stateFlags &= (u8)~2;
+    self->registers[destination] = (u32)result;
 }
 
 static s32 compareRegisters(GamePhaseScriptVm *self, VmComparison comparison)
 {
-    u8 operand = (u8)*self->cursor_04++;
+    u8 operand = (u8)*self->cursor++;
     s32 destination = operand & 7;
     s32 source = (operand >> 4) & 7;
     storeComparison(self, destination,
-                    compareValues((s32)self->values_2c[destination],
-                                  (s32)self->values_2c[source], comparison));
+                    compareValues((s32)self->registers[destination],
+                                  (s32)self->registers[source], comparison));
     return 0;
 }
 
 static s32 compareImmediate(GamePhaseScriptVm *self, VmComparison comparison)
 {
-    s32 destination = (u8)*self->cursor_04++ & 7;
-    s32 immediate = (s32)func_0201b278(self->cursor_04);
-    self->cursor_04 += 4;
+    s32 destination = (u8)*self->cursor++ & 7;
+    s32 immediate = (s32)func_0201b278(self->cursor);
+    self->cursor += 4;
     storeComparison(self, destination,
-                    compareValues((s32)self->values_2c[destination],
+                    compareValues((s32)self->registers[destination],
                                   immediate, comparison));
     return 0;
 }

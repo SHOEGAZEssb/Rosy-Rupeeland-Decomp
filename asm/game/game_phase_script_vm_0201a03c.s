@@ -3,17 +3,17 @@
 .extern data_020d430c
 .extern data_021052fc
 .extern GamePhaseRuntime_GetAuxiliaryOverlayObject
-.extern func_02012704
+.extern GamePhaseScriptVm_Pop
 .extern func_ov056_0220f054
 .global func_0201a03c
 func_0201a03c:
     stmdb sp!, {r4, r5, lr}
     sub sp, sp, #0xc
     mov r5, r0
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     mov r4, r0
     mov r0, r5
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     ldr r2, L_0201a088
     ldr r1, L_0201a08c
     str r0, [sp, #0x4]

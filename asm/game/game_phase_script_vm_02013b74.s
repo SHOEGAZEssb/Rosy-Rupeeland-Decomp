@@ -3,8 +3,8 @@
 .extern OS_Halt
 .extern data_021052fc
 .extern GamePhaseRuntime_GetActorCollection
-.extern func_02012704
-.extern func_020127f8
+.extern GamePhaseScriptVm_Pop
+.extern GamePhaseScriptVm_SetResult
 .extern ActorCollection_FindActorByDescriptorValue
 .extern Actor_GetCollection
 
@@ -12,7 +12,7 @@
 func_02013b74: ; 0x02013b74
     stmdb sp!, {r4, r5, r6, lr}
     mov r6, r0
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     ldr r1, L_02013c78
     mov r4, r0
     ldr r1, [r1, #0x0]
@@ -70,13 +70,13 @@ L_02013c28:
     mov r0, r6
     ldrb r1, [r1, #0x169]
     and r1, r1, #0x1
-    bl func_020127f8
+    bl GamePhaseScriptVm_SetResult
     b L_02013c70
 L_02013c60:
     ldrb r1, [r5, #0x169]
     mov r0, r6
     and r1, r1, #0x1
-    bl func_020127f8
+    bl GamePhaseScriptVm_SetResult
 L_02013c70:
     mov r0, #0x0
     ldmia sp!, {r4, r5, r6, pc}

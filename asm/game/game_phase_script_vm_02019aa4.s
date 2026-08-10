@@ -3,7 +3,7 @@
 .extern data_021052fc
 .extern GamePhaseRuntime_GetActorCollection
 .extern func_02013dfc
-.extern func_02012704
+.extern GamePhaseScriptVm_Pop
 .extern func_0201df64
 .extern func_0201e0ec
 .extern func_02025d14
@@ -18,19 +18,19 @@
 func_02019aa4:
     stmdb sp!, {r3, r4, r5, r6, r7, r8, r9, lr}
     mov r4, r0
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     mov r1, r0, lsl #0x10
     mov r0, r4
     mov r5, r1, asr #0x10
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     mov r1, r0, lsl #0x10
     mov r0, r4
     mov r8, r1, asr #0x10
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     mov r1, r0, lsl #0x10
     mov r0, r4
     mov r7, r1, asr #0x10
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     ldr r4, L_02019c5c
     cmp r0, #0x6
     ldr r1, [r4, #0x0]

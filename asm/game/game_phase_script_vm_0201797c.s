@@ -6,7 +6,7 @@
 .extern GameWork_SetFlag
 .extern GamePhaseRuntime_GetActorCollection
 .extern ActorMotionAreaFollower_GetPosition
-.extern func_02012704
+.extern GamePhaseScriptVm_Pop
 .extern func_0201ded4
 .extern func_02020794
 .extern ActorCollection_FindActorByDescriptorValue
@@ -16,13 +16,13 @@
 func_0201797c:
     stmdb sp!, {r4, r5, r6, lr}
     mov r6, r0
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     mov r4, r0
     mov r0, r6
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     mov r5, r0
     mov r0, r6
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     cmp r0, #0
     beq L_02017a28
     ldr r0, L_02017a40

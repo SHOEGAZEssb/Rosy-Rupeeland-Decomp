@@ -1,12 +1,12 @@
 ; Matching retail form; see src/game/game_phase_script_vm_actor_flag_opcodes.c.
 .text
-.extern func_02012704
+.extern GamePhaseScriptVm_Pop
 
     .global func_020136fc
 func_020136fc: ; 0x020136fc
     stmdb sp!, {r4, lr}
     mov r4, r0
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     ldr r1, [r4, #0x84]
     cmp r0, #0x0
     ldr r0, [r1, #0x10]

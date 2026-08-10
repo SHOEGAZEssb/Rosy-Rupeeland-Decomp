@@ -47,7 +47,7 @@ s32 func_020137ec(GamePhaseActorScriptVm *self)
  */
 s32 func_0201389c(GamePhaseActorScriptVm *self)
 {
-    s32 index = (s32)func_02012704(&self->base);
+    s32 index = (s32)GamePhaseScriptVm_Pop(&self->base);
     u8 *actor = (u8 *)self->actor_84;
     u8 *target = (u8 *)ActorCollection_FindActorByDescriptorValue(Actor_GetCollection(actor), index);
     fx32 dx = *(fx32 *)(target + 0x1c) - *(fx32 *)(actor + 0x1c);
@@ -55,13 +55,13 @@ s32 func_0201389c(GamePhaseActorScriptVm *self)
     u8 *object;
     Actor_UpdateAttachmentDirectionFromVector(actor, dx, dy);
     object = *(u8 **)(actor + 0x54);
-    func_020127f8(&self->base, object != 0 ? object[0x38] : 0);
+    GamePhaseScriptVm_SetResult(&self->base, object != 0 ? object[0x38] : 0);
     return 0;
 }
 
 /* Pop a value into the bound actor's byte at offset 0xe6 and return zero. */
 s32 func_02013914(GamePhaseActorScriptVm *self)
 {
-    *((u8 *)self->actor_84 + 0xe6) = (u8)func_02012704(&self->base);
+    *((u8 *)self->actor_84 + 0xe6) = (u8)GamePhaseScriptVm_Pop(&self->base);
     return 0;
 }

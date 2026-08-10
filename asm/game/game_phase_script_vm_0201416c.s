@@ -2,23 +2,23 @@
 .text
 .extern data_021052fc
 .extern GamePhaseRuntime_StageAreaRequest
-.extern func_02012704
+.extern GamePhaseScriptVm_Pop
 
     .global func_0201416c
 func_0201416c: ; 0x0201416c
     stmdb sp!, {r3, r4, r5, r6, r7, lr}
     sub sp, sp, #0x8
     mov r7, r0
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     mov r6, r0
     mov r0, r7
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     mov r5, r0
     mov r0, r7
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     mov r4, r0
     mov r0, r7
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     str r6, [sp, #0x0]
     mov r2, r4
     mov r3, r5

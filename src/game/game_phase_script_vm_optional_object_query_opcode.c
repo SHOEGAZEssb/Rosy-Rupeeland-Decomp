@@ -21,7 +21,7 @@ extern s32 func_ov088_0221b380(void *object);
  */
 s32 func_0201a304(GamePhaseActorScriptVm *self)
 {
-    s32 mode = (s32)func_02012704(&self->base);
+    s32 mode = (s32)GamePhaseScriptVm_Pop(&self->base);
     u8 *object = (u8 *)ActorDerivedType1_GetSingletonObject();
     s32 result = 0;
     switch (mode) {
@@ -51,6 +51,6 @@ s32 func_0201a304(GamePhaseActorScriptVm *self)
         result = func_ov088_0221b380(object);
         break;
     }
-    func_020127f8(&self->base, (u32)result);
+    GamePhaseScriptVm_SetResult(&self->base, (u32)result);
     return 0;
 }

@@ -6,8 +6,8 @@
 .extern data_021052fc
 .extern func_0200500c
 .extern func_02005058
-.extern func_02012704
-.extern func_020127f8
+.extern GamePhaseScriptVm_Pop
+.extern GamePhaseScriptVm_SetResult
 .extern Type7Actor_SetMotionTargetWithTimer
 .extern Type7Actor_ResetMotionAndCooldown
 .extern Type7Actor_ClearTarget
@@ -22,19 +22,19 @@ func_02018c3c:
     stmdb sp!, {r4, r5, r6, r7, r8, r9, lr}
     sub sp, sp, #0x14
     mov r9, r0
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     mov r6, r0
     mov r0, r9
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     mov r5, r0
     mov r0, r9
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     mov r4, r0
     mov r0, r9
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     mov r7, r0
     mov r0, r9
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     ldr r1, L_02018f00
     cmp r0, #0xf
     ldr r2, [r1, #0x0]
@@ -135,7 +135,7 @@ L_02018db8:
 L_02018ddc:
     mov r0, r9
     mvn r1, #0x0
-    bl func_020127f8
+    bl GamePhaseScriptVm_SetResult
     mov r4, #0x0
     ldr r2, L_02018f04
     mov r0, #0x68
@@ -148,7 +148,7 @@ L_02018df8:
     ldr r1, L_02018f08
     mov r0, r9
     ldrsh r1, [r1, r3]
-    bl func_020127f8
+    bl GamePhaseScriptVm_SetResult
     b L_02018ef4
 L_02018e1c:
     add r4, r4, #0x1

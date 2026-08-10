@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/game_phase_script_vm_sound_extended_command_opcode.c.
 .text
-.extern func_02012704
+.extern GamePhaseScriptVm_Pop
 .extern func_020593dc
 .extern func_02059484
 .extern func_020592d8
@@ -13,16 +13,16 @@ func_0201aa14: ; 0x0201aa14
     stmdb sp!, {r3, r4, r5, r6, r7, lr}
     sub sp, sp, #0x8
     mov r7, r0
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     mov r5, r0
     mov r0, r7
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     mov r4, r0
     mov r0, r7
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     mov r6, r0
     mov r0, r7
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     sub r0, r0, #0x1a
     cmp r0, #0x7
     addls pc, pc, r0, lsl #0x2

@@ -2,8 +2,8 @@
 .text
 .extern data_020e1964
 .extern data_021052fc
-.extern func_02012704
-.extern func_020127f8
+.extern GamePhaseScriptVm_Pop
+.extern GamePhaseScriptVm_SetResult
 .extern ActorCollection_FindActorByDescriptorValue
 .extern Actor_GetCollection
 .extern Type7Actor_GetStateCode
@@ -13,13 +13,13 @@
 func_02018f10:
     stmdb sp!, {r4, r5, r6, r7, r8, lr}
     mov r4, r0
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     mov r6, r0
     mov r0, r4
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     mov r5, r0
     mov r0, r4
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     mov r7, r0
     cmp r7, #0xf
     mov r1, #0x0
@@ -154,7 +154,7 @@ L_020190d8:
     ldr r1, [r0, #0x1fc]
 L_020190ec:
     mov r0, r4
-    bl func_020127f8
+    bl GamePhaseScriptVm_SetResult
     mov r0, #0x0
     ldmia sp!, {r4, r5, r6, r7, r8, pc}
 L_020190fc: .word data_021052fc

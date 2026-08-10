@@ -28,10 +28,10 @@ s32 func_02017540(GamePhaseActorScriptVm *self)
     s32 first;
     s32 variant;
     func_02004fe0(&position);
-    first = (s32)func_02012704(&self->base) << 12;
-    position.value.y = (s32)func_02012704(&self->base) << 12;
-    position.value.x = (s32)func_02012704(&self->base) << 12;
-    variant = (s32)func_02012704(&self->base);
+    first = (s32)GamePhaseScriptVm_Pop(&self->base) << 12;
+    position.value.y = (s32)GamePhaseScriptVm_Pop(&self->base) << 12;
+    position.value.x = (s32)GamePhaseScriptVm_Pop(&self->base) << 12;
+    variant = (s32)GamePhaseScriptVm_Pop(&self->base);
     Position_AdjustForTerrainHeight(&position);
     switch (variant) {
     case 0:

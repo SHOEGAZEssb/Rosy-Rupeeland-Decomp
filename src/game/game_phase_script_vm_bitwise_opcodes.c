@@ -4,13 +4,13 @@
 
 static u8 readOperand(GamePhaseScriptVm *self)
 {
-    return (u8)*self->cursor_04++;
+    return (u8)*self->cursor++;
 }
 
 static u32 readImmediate(GamePhaseScriptVm *self)
 {
-    u32 value = func_0201b278(self->cursor_04);
-    self->cursor_04 += 4;
+    u32 value = func_0201b278(self->cursor);
+    self->cursor += 4;
     return value;
 }
 
@@ -19,7 +19,7 @@ s32 func_0201b74c(GamePhaseScriptVm *self)
 {
     u8 operand = readOperand(self);
     s32 destination = operand & 7;
-    self->values_2c[destination] &= self->values_2c[(operand >> 4) & 7];
+    self->registers[destination] &= self->registers[(operand >> 4) & 7];
     func_0201b2b4(self, destination);
     return 0;
 }
@@ -28,7 +28,7 @@ s32 func_0201b74c(GamePhaseScriptVm *self)
 s32 func_0201b790(GamePhaseScriptVm *self)
 {
     u8 destination = readOperand(self);
-    self->values_2c[destination] &= readImmediate(self);
+    self->registers[destination] &= readImmediate(self);
     func_0201b2b4(self, destination);
     return 0;
 }
@@ -38,7 +38,7 @@ s32 func_0201b7dc(GamePhaseScriptVm *self)
 {
     u8 operand = readOperand(self);
     s32 destination = operand & 7;
-    self->values_2c[destination] |= self->values_2c[(operand >> 4) & 7];
+    self->registers[destination] |= self->registers[(operand >> 4) & 7];
     func_0201b2b4(self, destination);
     return 0;
 }
@@ -47,7 +47,7 @@ s32 func_0201b7dc(GamePhaseScriptVm *self)
 s32 func_0201b820(GamePhaseScriptVm *self)
 {
     u8 destination = readOperand(self);
-    self->values_2c[destination] |= readImmediate(self);
+    self->registers[destination] |= readImmediate(self);
     func_0201b2b4(self, destination);
     return 0;
 }
@@ -57,7 +57,7 @@ s32 func_0201b86c(GamePhaseScriptVm *self)
 {
     u8 operand = readOperand(self);
     s32 destination = operand & 7;
-    self->values_2c[destination] ^= self->values_2c[(operand >> 4) & 7];
+    self->registers[destination] ^= self->registers[(operand >> 4) & 7];
     func_0201b2b4(self, destination);
     return 0;
 }
@@ -66,7 +66,7 @@ s32 func_0201b86c(GamePhaseScriptVm *self)
 s32 func_0201b8b0(GamePhaseScriptVm *self)
 {
     u8 destination = readOperand(self);
-    self->values_2c[destination] ^= readImmediate(self);
+    self->registers[destination] ^= readImmediate(self);
     func_0201b2b4(self, destination);
     return 0;
 }

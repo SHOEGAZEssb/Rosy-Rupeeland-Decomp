@@ -8,8 +8,8 @@
 .extern ActorMotion_ConfigureGridTarget
 .extern ActorMotion_ConfigureBoundActorTarget
 .extern ActorMotionAreaFollower_BindActor
-.extern func_02012704
-.extern func_020127f8
+.extern GamePhaseScriptVm_Pop
+.extern GamePhaseScriptVm_SetResult
 .extern ActorCollection_FindActorByDescriptorValue
 
     .global func_02012814
@@ -17,19 +17,19 @@ func_02012814: ; 0x02012814
     stmdb sp!, {r3, r4, r5, r6, r7, r8, lr}
     sub sp, sp, #0x4
     mov r8, r0
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     mov r7, r0
     mov r0, r8
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     mov r6, r0
     mov r0, r8
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     mov r5, r0
     mov r0, r8
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     mov r4, r0
     mov r0, r8
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     cmp r0, #0xb
     addls pc, pc, r0, lsl #0x2
     b L_02012a4c
@@ -58,7 +58,7 @@ L_02012890:
     bl ActorMotion_ConfigureGridTarget
     mov r1, r0
     mov r0, r8
-    bl func_020127f8
+    bl GamePhaseScriptVm_SetResult
     b L_02012a50
 L_020128c4:
     ldr r0, L_02012a5c
@@ -70,7 +70,7 @@ L_020128c4:
     bl ActorMotion_ConfigureBoundActorTarget
     mov r1, r0
     mov r0, r8
-    bl func_020127f8
+    bl GamePhaseScriptVm_SetResult
     b L_02012a50
 L_020128f0:
     cmp r4, #0x0
@@ -97,7 +97,7 @@ L_02012928:
     moveq r1, #0x1
     movne r1, #0x0
     mov r0, r8
-    bl func_020127f8
+    bl GamePhaseScriptVm_SetResult
     b L_02012a50
 L_02012950:
     ldr r0, L_02012a5c
@@ -122,7 +122,7 @@ L_02012984:
     movne r1, #0x1
     moveq r1, #0x0
     mov r0, r8
-    bl func_020127f8
+    bl GamePhaseScriptVm_SetResult
     b L_02012a50
 L_020129ac:
     ldr r0, L_02012a5c
@@ -136,7 +136,7 @@ L_020129ac:
     bl ActorMotion_ConfigureGridTarget
     mov r1, r0
     mov r0, r8
-    bl func_020127f8
+    bl GamePhaseScriptVm_SetResult
     b L_02012a50
 L_020129e0:
     ldr r0, L_02012a5c
@@ -148,7 +148,7 @@ L_020129e0:
     bl ActorMotion_ConfigureBoundActorTarget
     mov r1, r0
     mov r0, r8
-    bl func_020127f8
+    bl GamePhaseScriptVm_SetResult
     b L_02012a50
 L_02012a0c:
     cmp r4, #0x0

@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/game_phase_script_vm_stack_storage_opcodes.c.
 .text
 .extern func_0201b278
-.extern func_02012720
+.extern GamePhaseScriptVm_Push
 .global func_0201bff0
 func_0201bff0: ; 0x0201bff0
     stmdb sp!, {r4, lr}
@@ -10,7 +10,7 @@ func_0201bff0: ; 0x0201bff0
     bl func_0201b278
     mov r1, r0
     mov r0, r4
-    bl func_02012720
+    bl GamePhaseScriptVm_Push
     ldr r1, [r4, #0x4]
     mov r0, #0x0
     add r1, r1, #0x4

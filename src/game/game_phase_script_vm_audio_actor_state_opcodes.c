@@ -28,11 +28,11 @@ extern void func_02074038(void *object);
  */
 s32 func_020198d0(GamePhaseActorScriptVm *self)
 {
-    u16 fourth = (u16)(s16)func_02012704(&self->base);
-    u16 third = (u16)func_02012704(&self->base);
-    u16 second = (u16)(s16)func_02012704(&self->base);
-    u16 first = (u16)(s16)func_02012704(&self->base);
-    s16 id = (s16)func_02012704(&self->base);
+    u16 fourth = (u16)(s16)GamePhaseScriptVm_Pop(&self->base);
+    u16 third = (u16)GamePhaseScriptVm_Pop(&self->base);
+    u16 second = (u16)(s16)GamePhaseScriptVm_Pop(&self->base);
+    u16 first = (u16)(s16)GamePhaseScriptVm_Pop(&self->base);
+    s16 id = (s16)GamePhaseScriptVm_Pop(&self->base);
     func_020020f8(func_020021c4(), id, first, second, third, fourth);
     func_02001f14(func_020020ec(func_020021c4(), id));
     return 0;
@@ -41,7 +41,7 @@ s32 func_020198d0(GamePhaseActorScriptVm *self)
 /* Pop an entry id, trigger its second recovered operation, and return zero. */
 s32 func_02019978(GamePhaseActorScriptVm *self)
 {
-    s32 id = (s32)func_02012704(&self->base);
+    s32 id = (s32)GamePhaseScriptVm_Pop(&self->base);
     func_02001f40(func_020020ec(func_020021c4(), id));
     return 0;
 }
@@ -49,8 +49,8 @@ s32 func_02019978(GamePhaseActorScriptVm *self)
 /* Pop an entry id, push its u16 field at offset 0x06, and return zero. */
 s32 func_0201999c(GamePhaseActorScriptVm *self)
 {
-    s32 id = (s32)func_02012704(&self->base);
-    func_020127f8(&self->base,
+    s32 id = (s32)GamePhaseScriptVm_Pop(&self->base);
+    GamePhaseScriptVm_SetResult(&self->base,
                   *(u16 *)(func_020020ec(func_020021c4(), id) + 6));
     return 0;
 }
@@ -61,9 +61,9 @@ s32 func_0201999c(GamePhaseActorScriptVm *self)
  */
 s32 func_020199cc(GamePhaseActorScriptVm *self)
 {
-    s32 id = (s32)func_02012704(&self->base);
+    s32 id = (s32)GamePhaseScriptVm_Pop(&self->base);
     u32 state = *(u32 *)(func_020020ec(func_020021c4(), id) + 8) >> 29;
-    func_020127f8(&self->base, state == 1 || state == 2);
+    GamePhaseScriptVm_SetResult(&self->base, state == 1 || state == 2);
     return 0;
 }
 

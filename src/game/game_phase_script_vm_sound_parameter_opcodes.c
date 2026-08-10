@@ -22,9 +22,9 @@ extern void func_020596e8(void *context, s32 first, s32 second);
  */
 s32 func_0201a938(GamePhaseActorScriptVm *self)
 {
-    s32 second = (s32)func_02012704(&self->base);
-    s32 first = (s32)func_02012704(&self->base);
-    s32 command = (s32)func_02012704(&self->base);
+    s32 second = (s32)GamePhaseScriptVm_Pop(&self->base);
+    s32 first = (s32)GamePhaseScriptVm_Pop(&self->base);
+    s32 command = (s32)GamePhaseScriptVm_Pop(&self->base);
 
     switch (command) {
     case 21: func_02059278(gSoundContext, (u16)first, (u16)second); break;

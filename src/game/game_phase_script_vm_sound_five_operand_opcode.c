@@ -21,11 +21,11 @@ extern void func_0205943c(void *context, s32 soundId, s32 variant,
  */
 s32 func_0201ab60(GamePhaseActorScriptVm *self)
 {
-    s32 fourth = (s32)func_02012704(&self->base);
-    s32 third = (s32)func_02012704(&self->base);
-    s32 second = (s32)func_02012704(&self->base);
-    s32 first = (s32)func_02012704(&self->base);
-    s32 command = (s32)func_02012704(&self->base);
+    s32 fourth = (s32)GamePhaseScriptVm_Pop(&self->base);
+    s32 third = (s32)GamePhaseScriptVm_Pop(&self->base);
+    s32 second = (s32)GamePhaseScriptVm_Pop(&self->base);
+    s32 first = (s32)GamePhaseScriptVm_Pop(&self->base);
+    s32 command = (s32)GamePhaseScriptVm_Pop(&self->base);
     u16 packed = (u16)first;
 
     if (command == 30) {

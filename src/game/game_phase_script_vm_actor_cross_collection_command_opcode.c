@@ -35,8 +35,8 @@ static void callActorValueMethod(void *actor, u32 offset, u32 value)
  */
 s32 func_02015b64(GamePhaseActorScriptVm *self)
 {
-    u32 value = func_02012704(&self->base);
-    s32 index = (s32)func_02012704(&self->base);
+    u32 value = GamePhaseScriptVm_Pop(&self->base);
+    s32 index = (s32)GamePhaseScriptVm_Pop(&self->base);
     u8 *runtime = (u8 *)data_021052fc;
     u8 *owner = *(u8 **)(runtime + 0x2fb8);
     void *target;
@@ -73,6 +73,6 @@ s32 func_02015b64(GamePhaseActorScriptVm *self)
         Actor_SetActive(target, 1);
     }
 
-    func_020127f8(&self->base, 1);
+    GamePhaseScriptVm_SetResult(&self->base, 1);
     return 0;
 }

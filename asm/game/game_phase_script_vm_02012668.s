@@ -1,8 +1,8 @@
 ; Matching retail form; see src/game/game_phase_script_vm_lifecycle.c.
 .text
 
-    .global func_02012668
-func_02012668: ; 0x02012668
+    .global GamePhaseScriptVm_CopyState
+GamePhaseScriptVm_CopyState: ; 0x02012668
     ldr r2, [r1, #0x4]
     mov ip, #0x0
     str r2, [r0, #0x4]
@@ -45,5 +45,5 @@ L_020126bc:
     ldr r1, [r1, #0x80]
     str r1, [r0, #0x80]
     bx lr
-    .size func_02012668, . - func_02012668
+    .size GamePhaseScriptVm_CopyState, . - GamePhaseScriptVm_CopyState
 

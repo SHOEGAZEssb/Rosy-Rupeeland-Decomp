@@ -1,13 +1,13 @@
 ; Matching retail form; see src/game/game_phase_script_vm_actor_opcodes.c.
 .text
-.extern func_02012704
+.extern GamePhaseScriptVm_Pop
 .extern Actor_SetAttachmentEnabled
 
     .global func_02012cd4
 func_02012cd4: ; 0x02012cd4
     stmdb sp!, {r4, lr}
     mov r4, r0
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     mov r1, r0
     ldr r0, [r4, #0x84]
     ldr r2, [r0, #0x54]

@@ -18,7 +18,7 @@ extern "C" {
 extern void *data_021f3ecc;
 extern void *data_021f4090;
 extern char data_020d5e00[];
-extern s32 func_02012704(void *script);
+extern s32 GamePhaseScriptVm_Pop(void *script);
 extern u32 func_020be328(void);
 extern void func_02072b68(void *sprite, u32 value);
 extern void *func_020791e0(void *table, u16 index);
@@ -84,11 +84,11 @@ void *func_0201da9c(Overlay60ScriptContext *context, s32 argument1,
                     s32 argument2, s32 argument3, s32 argument4,
                     s32 argument5)
 {
-    s32 useIndexed = func_02012704(context);
-    s32 secondOperand = func_02012704(context);
-    s32 thirdOperand = func_02012704(context);
-    s32 requestedDisplay = func_02012704(context);
-    s32 resourceIndex = func_02012704(context);
+    s32 useIndexed = GamePhaseScriptVm_Pop(context);
+    s32 secondOperand = GamePhaseScriptVm_Pop(context);
+    s32 thirdOperand = GamePhaseScriptVm_Pop(context);
+    s32 requestedDisplay = GamePhaseScriptVm_Pop(context);
+    s32 resourceIndex = GamePhaseScriptVm_Pop(context);
     void *resource;
     void *allocation;
     void *sprite;

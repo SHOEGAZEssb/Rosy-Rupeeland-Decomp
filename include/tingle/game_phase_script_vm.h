@@ -3,19 +3,19 @@
 
 #include "tingle/types.h"
 
-/* Compact bytecode interpreter state with callback and value stacks. */
+/* Compact bytecode interpreter state with registers and a shared value/call stack. */
 typedef struct GamePhaseScriptVm {
     const void *vtable;
-    const s8 *cursor_04;
-    const s8 *start_08;
+    const s8 *cursor;
+    const s8 *scriptStart;
     void *callbacks_0c[8];
-    u32 values_2c[8];
-    u32 stack_4c[12];
-    s8 stackDepth_7c;
-    u8 flags_7d;
+    u32 registers[8];
+    u32 stack[12];
+    s8 stackDepth;
+    u8 stateFlags;
     s8 field_7e;
     s8 field_7f;
-    void *context_80;
+    void *context;
 } GamePhaseScriptVm;
 
 /* Script VM specialization used by actor-bound phase scripts. */
@@ -31,24 +31,25 @@ typedef struct GamePhaseActorScriptVm {
 #ifdef __cplusplus
 extern "C" {
 #endif
-GamePhaseScriptVm *func_02012564(GamePhaseScriptVm *self);
-void func_02012584(GamePhaseScriptVm *self);
-GamePhaseScriptVm *func_020125ec(GamePhaseScriptVm *self);
-GamePhaseScriptVm *func_020125f0(GamePhaseScriptVm *self);
-GamePhaseScriptVm *func_02012604(GamePhaseScriptVm *self);
-GamePhaseScriptVm *func_02012608(GamePhaseScriptVm *self,
-                                 const s8 *script, void *context);
-void func_02012628(GamePhaseScriptVm *self,
-                   const s8 *script, void *context);
-GamePhaseScriptVm *func_0201264c(GamePhaseScriptVm *self,
+GamePhaseScriptVm *GamePhaseScriptVm_Init(GamePhaseScriptVm *self);
+void GamePhaseScriptVm_Reset(GamePhaseScriptVm *self);
+GamePhaseScriptVm *GamePhaseScriptVm_Destroy(GamePhaseScriptVm *self);
+GamePhaseScriptVm *GamePhaseScriptVm_DestroyAndFree(GamePhaseScriptVm *self);
+GamePhaseScriptVm *GamePhaseScriptVm_DestroyBase(GamePhaseScriptVm *self);
+GamePhaseScriptVm *GamePhaseScriptVm_InitWithScript(GamePhaseScriptVm *self,
+                                                    const s8 *script,
+                                                    void *context);
+void GamePhaseScriptVm_ResetWithScript(GamePhaseScriptVm *self,
+                                       const s8 *script, void *context);
+GamePhaseScriptVm *GamePhaseScriptVm_Assign(GamePhaseScriptVm *self,
+                                            const GamePhaseScriptVm *source);
+void GamePhaseScriptVm_CopyState(GamePhaseScriptVm *self,
                                  const GamePhaseScriptVm *source);
-void func_02012668(GamePhaseScriptVm *self,
-                   const GamePhaseScriptVm *source);
-u32 func_02012704(GamePhaseScriptVm *self);
-void func_02012720(GamePhaseScriptVm *self, u32 value);
-s32 func_0201273c(GamePhaseScriptVm *self, s32 singleStep);
+u32 GamePhaseScriptVm_Pop(GamePhaseScriptVm *self);
+void GamePhaseScriptVm_Push(GamePhaseScriptVm *self, u32 value);
+s32 GamePhaseScriptVm_Execute(GamePhaseScriptVm *self, s32 singleStep);
 s32 func_020127f0(GamePhaseScriptVm *self);
-void func_020127f8(GamePhaseScriptVm *self, u32 value);
+void GamePhaseScriptVm_SetResult(GamePhaseScriptVm *self, u32 value);
 s32 func_02012814(GamePhaseScriptVm *self);
 s32 func_02012a60(GamePhaseScriptVm *self);
 s32 func_02012a8c(GamePhaseActorScriptVm *self);

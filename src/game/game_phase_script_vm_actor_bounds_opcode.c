@@ -53,11 +53,11 @@ void func_020189b0(ActorBounds *bounds, s32 horizontal, s32 vertical);
  */
 s32 func_0201863c(GamePhaseActorScriptVm *self)
 {
-    s16 fourth = (s16)func_02012704(&self->base);
-    s16 third = (s16)func_02012704(&self->base);
-    s16 second = (s16)func_02012704(&self->base);
-    s16 first = (s16)func_02012704(&self->base);
-    s32 command = (s32)func_02012704(&self->base);
+    s16 fourth = (s16)GamePhaseScriptVm_Pop(&self->base);
+    s16 third = (s16)GamePhaseScriptVm_Pop(&self->base);
+    s16 second = (s16)GamePhaseScriptVm_Pop(&self->base);
+    s16 first = (s16)GamePhaseScriptVm_Pop(&self->base);
+    s32 command = (s32)GamePhaseScriptVm_Pop(&self->base);
     u8 *actor = (u8 *)self->actor_84;
     ActorBounds *bounds = (ActorBounds *)(actor + 0x70);
 
@@ -119,7 +119,7 @@ s32 func_0201863c(GamePhaseActorScriptVm *self)
                                           secondActor + 0x18);
         Actor_BuildWorldInteractionBounds(firstState, firstActor,
                                           firstActor + 0x18);
-        func_020127f8(&self->base,
+        GamePhaseScriptVm_SetResult(&self->base,
                       func_02056f34(result, secondState, firstState, scratch)
                           != 0);
         break;

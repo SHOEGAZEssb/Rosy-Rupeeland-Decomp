@@ -9,8 +9,8 @@
 .extern VecFx32_Subtract
 .extern ActorBounds_GetWidth
 .extern ActorBounds_GetHeight
-.extern func_02012704
-.extern func_020127f8
+.extern GamePhaseScriptVm_Pop
+.extern GamePhaseScriptVm_SetResult
 .extern func_02019890
 .extern ActorCollection_QueueGroupForRemoval
 .extern ActorCollection_SpawnActorFromDescriptor
@@ -29,28 +29,28 @@ func_0201939c:
     stmdb sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, lr}
     sub sp, sp, #0x150
     mov r9, r0
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     mov r10, r0
     mov r0, r9
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     mov r11, r0
     mov r0, r9
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     str r0, [sp, #0x0]
     mov r0, r9
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     mov r4, r0
     mov r0, r9
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     mov r5, r0
     mov r0, r9
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     mov r7, r0
     mov r0, r9
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     mov r6, r0
     mov r0, r9
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     cmp r0, #0x7
     addls pc, pc, r0, lsl #0x2
     b L_02019878
@@ -186,7 +186,7 @@ L_0201948c:
     bl ActorCollection_SpawnActorFromDescriptor
     mov r0, r9
     mov r1, r7
-    bl func_020127f8
+    bl GamePhaseScriptVm_SetResult
     add r0, sp, #0xdc
     bl func_02005058
     b L_02019878

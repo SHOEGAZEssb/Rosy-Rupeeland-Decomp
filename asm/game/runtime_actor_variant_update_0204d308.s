@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/runtime_actor_variant_update.c.
 .extern Actor_SetRuntimeFlag80
 .extern func_0201b23c
-.extern func_0201273c
+.extern GamePhaseScriptVm_Execute
 .extern ActorRuntimeCollection_TryCompleteAttachment
 .extern Actor_GetCollectionBySlot
 .extern Actor_GetCollection
@@ -23,7 +23,7 @@ func_0204d308: ; 0x0204d308
     ldmeqia sp!, {r3, r4, r5, pc}
     add r0, r4, #0xec
     mov r1, #0x0
-    bl func_0201273c
+    bl GamePhaseScriptVm_Execute
     ldrb r0, [r4, #0x169]
     tst r0, #0x1
     ldmeqia sp!, {r3, r4, r5, pc}

@@ -27,9 +27,9 @@ extern void func_0201ded4(void *list, void *object);
  */
 s32 func_0201797c(GamePhaseActorScriptVm *self)
 {
-    s32 actorIndex = (s32)func_02012704(&self->base);
-    s32 value = (s32)func_02012704(&self->base);
-    s32 enabled = (s32)func_02012704(&self->base);
+    s32 actorIndex = (s32)GamePhaseScriptVm_Pop(&self->base);
+    s32 value = (s32)GamePhaseScriptVm_Pop(&self->base);
+    s32 enabled = (s32)GamePhaseScriptVm_Pop(&self->base);
     u8 *runtime = (u8 *)data_021052fc;
     if (enabled) {
         void *actor = ActorCollection_FindActorByDescriptorValue(

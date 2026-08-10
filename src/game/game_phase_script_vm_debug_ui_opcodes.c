@@ -31,11 +31,11 @@ s32 func_02015610(GamePhaseActorScriptVm *self)
     void *first;
     void *second;
     void *state;
-    (void)func_02012704(&self->base);
-    (void)func_02012704(&self->base);
+    (void)GamePhaseScriptVm_Pop(&self->base);
+    (void)GamePhaseScriptVm_Pop(&self->base);
     {
-        u32 lookup = func_02012704(&self->base);
-        u32 value = func_02012704(&self->base);
+        u32 lookup = GamePhaseScriptVm_Pop(&self->base);
+        u32 value = GamePhaseScriptVm_Pop(&self->base);
         u8 *collection;
         func_0201da34(self);
         collection = (u8 *)Actor_GetCollection(self->actor_84);

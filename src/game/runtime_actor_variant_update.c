@@ -12,7 +12,7 @@ extern "C" {
 #endif
 extern void *ActorRuntimeCollection_GetPrimaryContainer(void *registry);
 extern s32 ActorRuntimeCollection_TryCompleteAttachment(void *registry, void *actor);
-extern void func_0201273c(void *state, s32 value);
+extern void GamePhaseScriptVm_Execute(void *state, s32 value);
 extern void func_0201b180(void *state, void *value);
 extern void func_0201b228(void *state);
 extern s32 func_0201b23c(void *state);
@@ -28,7 +28,7 @@ extern u8 *Actor_GetCollectionBySlot(void *actor, s32 category);
 /*
  * Input is a runtime actor variant. Run base update Actor_SetRuntimeFlag80. Continue
  * only when embedded state +0xec passes func_0201b23c; then clear its recovered
- * value through func_0201273c and require actor +0x169 bit 0x01.
+ * value through GamePhaseScriptVm_Execute and require actor +0x169 bit 0x01.
  *
  * When byte +0xe8 is nonzero, require ActorRuntimeCollection_TryCompleteAttachment to accept the actor in
  * registry data_02105310. Values other than two additionally obtain category
@@ -47,7 +47,7 @@ void func_0204d308(void *self)
     Actor_SetRuntimeFlag80(actor);
     if (func_0201b23c(state) == 0)
         return;
-    func_0201273c(state, 0);
+    GamePhaseScriptVm_Execute(state, 0);
     if ((actor[0x169] & 1) == 0)
         return;
 

@@ -3,7 +3,7 @@
 .extern func_02008354
 .extern func_020083b0
 .extern S16Rectangle_Translate
-.extern func_02012704
+.extern GamePhaseScriptVm_Pop
 .extern func_020188e4
 .extern func_020188fc
 .extern func_0201895c
@@ -14,23 +14,23 @@ func_020189e4:
     stmdb sp!, {r3, r4, r5, r6, r7, r8, lr}
     sub sp, sp, #0x2c
     mov r8, r0
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     mov r1, r0, lsl #0x10
     mov r0, r8
     mov r4, r1, asr #0x10
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     mov r1, r0, lsl #0x10
     mov r0, r8
     mov r5, r1, asr #0x10
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     mov r1, r0, lsl #0x10
     mov r0, r8
     mov r6, r1, asr #0x10
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     mov r1, r0, lsl #0x10
     mov r0, r8
     mov r7, r1, asr #0x10
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     cmp r0, #0x9
     addls pc, pc, r0, lsl #0x2
     b L_02018c08

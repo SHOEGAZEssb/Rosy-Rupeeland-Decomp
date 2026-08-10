@@ -21,7 +21,7 @@ extern s32 ActorDerivedType1_IsIdleEligible(void *manager);
  */
 s32 func_02019c60(GamePhaseActorScriptVm *self)
 {
-    s32 mode = (s32)func_02012704(&self->base);
+    s32 mode = (s32)GamePhaseScriptVm_Pop(&self->base);
     u8 *manager = *(u8 **)((u8 *)data_021052fc + 0x2ea4);
     s32 result = 0;
     switch (mode) {
@@ -56,6 +56,6 @@ s32 func_02019c60(GamePhaseActorScriptVm *self)
         result = *(s16 *)(manager + 0x298);
         break;
     }
-    func_020127f8(&self->base, (u32)result);
+    GamePhaseScriptVm_SetResult(&self->base, (u32)result);
     return 0;
 }

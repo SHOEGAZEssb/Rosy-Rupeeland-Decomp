@@ -16,7 +16,7 @@ extern void GamePhaseAreaScene_SetEnabled(void *object, s32 enabled);
 /* Pop a value, apply it to runtime collection 2 through func_0202d68c, and return zero. */
 s32 func_02017638(GamePhaseActorScriptVm *self)
 {
-    s32 value = (s32)func_02012704(&self->base);
+    s32 value = (s32)GamePhaseScriptVm_Pop(&self->base);
     func_0202d68c(GamePhaseRuntime_GetActorCollection((GamePhaseRuntime *)data_021052fc, 2), value);
     return 0;
 }
@@ -24,7 +24,7 @@ s32 func_02017638(GamePhaseActorScriptVm *self)
 /* Pop an enable value, apply it to the area-scene object at runtime offset 0x2fb8, and return zero. */
 s32 func_02017668(GamePhaseActorScriptVm *self)
 {
-    s32 enabled = (s32)func_02012704(&self->base);
+    s32 enabled = (s32)GamePhaseScriptVm_Pop(&self->base);
     GamePhaseAreaScene_SetEnabled(*(void **)((u8 *)data_021052fc + 0x2fb8), enabled);
     return 0;
 }
@@ -36,7 +36,7 @@ s32 func_02017668(GamePhaseActorScriptVm *self)
 s32 func_02017694(GamePhaseActorScriptVm *self)
 {
     typedef void (*Method)(void *, s32);
-    s32 value = (s32)func_02012704(&self->base);
+    s32 value = (s32)GamePhaseScriptVm_Pop(&self->base);
     void *object = *(void **)((u8 *)data_021052fc + 0x2ed4);
     Method method = *(Method *)((u8 *)*(void **)object + 0x24);
     method(object, value);

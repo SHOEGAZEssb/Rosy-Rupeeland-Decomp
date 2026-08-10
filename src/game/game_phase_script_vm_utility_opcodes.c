@@ -26,9 +26,9 @@ extern u32 func_02063670(void *table, u16 value);
  */
 s32 GamePhaseActorScriptVm_SetInteractionDirectionAndMagnitude(GamePhaseActorScriptVm *self)
 {
-    u16 magnitude = (u16)func_02012704(&self->base);
-    u16 directionIndex = (u16)func_02012704(&self->base);
-    (void)func_02012704(&self->base);
+    u16 magnitude = (u16)GamePhaseScriptVm_Pop(&self->base);
+    u16 directionIndex = (u16)GamePhaseScriptVm_Pop(&self->base);
+    (void)GamePhaseScriptVm_Pop(&self->base);
     ActorInteraction_SetDirectionAndMagnitude(directionIndex, magnitude);
     return 0;
 }
@@ -39,17 +39,17 @@ s32 GamePhaseActorScriptVm_SetInteractionDirectionAndMagnitude(GamePhaseActorScr
  */
 s32 func_02015d4c(GamePhaseActorScriptVm *self)
 {
-    s32 z1 = (s32)func_02012704(&self->base);
-    s32 x1 = (s32)func_02012704(&self->base);
-    s32 y1 = (s32)func_02012704(&self->base);
-    s32 z2 = (s32)func_02012704(&self->base);
-    s32 x2 = (s32)func_02012704(&self->base);
-    s32 y2 = (s32)func_02012704(&self->base);
+    s32 z1 = (s32)GamePhaseScriptVm_Pop(&self->base);
+    s32 x1 = (s32)GamePhaseScriptVm_Pop(&self->base);
+    s32 y1 = (s32)GamePhaseScriptVm_Pop(&self->base);
+    s32 z2 = (s32)GamePhaseScriptVm_Pop(&self->base);
+    s32 x2 = (s32)GamePhaseScriptVm_Pop(&self->base);
+    s32 y2 = (s32)GamePhaseScriptVm_Pop(&self->base);
     s32 dx = x1 - x2;
     s32 dy = z1 - z2;
     s32 dz = y1 - y2;
     s32 distance = func_020adc40(dx * dx + dy * dy + dz * dz);
-    func_020127f8(&self->base, (u32)(distance >> 6));
+    GamePhaseScriptVm_SetResult(&self->base, (u32)(distance >> 6));
     return 0;
 }
 
@@ -61,9 +61,9 @@ s32 func_02015d4c(GamePhaseActorScriptVm *self)
  */
 s32 func_02015dc8(GamePhaseActorScriptVm *self)
 {
-    u32 field2c = func_02012704(&self->base);
-    u32 field28 = func_02012704(&self->base);
-    s32 phaseId = (s32)func_02012704(&self->base);
+    u32 field2c = GamePhaseScriptVm_Pop(&self->base);
+    u32 field28 = GamePhaseScriptVm_Pop(&self->base);
+    s32 phaseId = (s32)GamePhaseScriptVm_Pop(&self->base);
     void *scene = Heap_Alloc(0x30, data_020d5b2c, 4, &gHeapContext);
     if (scene != 0)
         GamePhaseApplyScene_Init(scene, func_02028388(phaseId - 1), field28, field2c, 0);
@@ -73,15 +73,15 @@ s32 func_02015dc8(GamePhaseActorScriptVm *self)
 /* Pop a signed value, push its func_020be328 classification, and return zero. */
 s32 func_02015e40(GamePhaseActorScriptVm *self)
 {
-    s32 value = (s32)func_02012704(&self->base);
-    func_020127f8(&self->base, (u32)func_020be328(value));
+    s32 value = (s32)GamePhaseScriptVm_Pop(&self->base);
+    GamePhaseScriptVm_SetResult(&self->base, (u32)func_020be328(value));
     return 0;
 }
 
 /* Pop a u16 key, query the table referenced by data_021e9ac0, push the result, and return zero. */
 s32 func_02015e64(GamePhaseActorScriptVm *self)
 {
-    u16 value = (u16)func_02012704(&self->base);
-    func_020127f8(&self->base, func_02063670(data_021e9ac0, value));
+    u16 value = (u16)GamePhaseScriptVm_Pop(&self->base);
+    GamePhaseScriptVm_SetResult(&self->base, func_02063670(data_021e9ac0, value));
     return 0;
 }

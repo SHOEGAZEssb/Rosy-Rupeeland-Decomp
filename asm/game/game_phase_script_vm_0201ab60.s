@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/game_phase_script_vm_sound_five_operand_opcode.c.
 .text
-.extern func_02012704
+.extern GamePhaseScriptVm_Pop
 .extern func_020593ac
 .extern func_0205943c
 .extern gSoundContext
@@ -9,19 +9,19 @@ func_0201ab60: ; 0x0201ab60
     stmdb sp!, {r4, r5, r6, r7, r8, lr}
     sub sp, sp, #0x8
     mov r8, r0
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     mov r5, r0
     mov r0, r8
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     mov r7, r0
     mov r0, r8
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     mov r4, r0
     mov r0, r8
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     mov r6, r0
     mov r0, r8
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     cmp r0, #0x1e
     beq L_0201abb4
     cmp r0, #0x1f

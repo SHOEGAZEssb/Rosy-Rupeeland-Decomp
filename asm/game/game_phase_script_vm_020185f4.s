@@ -1,13 +1,13 @@
 ; Matching retail form; see src/game/game_phase_script_vm_actor_runtime_display_opcodes.c.
 .text
-.extern func_02012704
+.extern GamePhaseScriptVm_Pop
 .extern Actor_EnsureAuxiliaryCollisionResource
 .extern Actor_DestroyAuxiliaryCollisionResource
 .global func_020185f4
 func_020185f4:
     stmdb sp!, {r4, lr}
     mov r4, r0
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     cmp r0, #0x0
     ldr r0, [r4, #0x84]
     beq L_02018620

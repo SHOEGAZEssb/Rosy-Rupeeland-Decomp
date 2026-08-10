@@ -46,18 +46,18 @@ s32 func_02016f28(const RectS32 *rect, s32 x, s32 y)
  */
 s32 func_02016e44(GamePhaseActorScriptVm *self)
 {
-    s32 bottom = (s32)func_02012704(&self->base);
-    s32 right = (s32)func_02012704(&self->base);
-    s32 top = (s32)func_02012704(&self->base);
-    s32 left = (s32)func_02012704(&self->base);
-    s32 index = (s32)func_02012704(&self->base);
+    s32 bottom = (s32)GamePhaseScriptVm_Pop(&self->base);
+    s32 right = (s32)GamePhaseScriptVm_Pop(&self->base);
+    s32 top = (s32)GamePhaseScriptVm_Pop(&self->base);
+    s32 left = (s32)GamePhaseScriptVm_Pop(&self->base);
+    s32 index = (s32)GamePhaseScriptVm_Pop(&self->base);
     u8 *actor = (u8 *)ActorCollection_FindActorByDescriptorValue(GamePhaseRuntime_GetActorCollection(data_021052fc, 1), index);
     VecFx32Object position;
     RectS32 rect;
 
     func_02005030(&position, (const VecFx32Object *)(actor + 0x18));
     func_02016f14(&rect, left, top, right, bottom);
-    func_020127f8(&self->base,
+    GamePhaseScriptVm_SetResult(&self->base,
                   func_02016f28(&rect, position.value.x >> 12,
                                 position.value.y >> 12) != 0);
     func_02005058(&position);

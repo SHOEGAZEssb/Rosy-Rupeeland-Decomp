@@ -1,12 +1,12 @@
 ; Matching retail form; see src/game/game_phase_script_vm_actor_presentation_opcodes.c.
 .text
-.extern func_02012704
+.extern GamePhaseScriptVm_Pop
 
     .global GamePhaseActorScriptVm_SetAttachmentAngleFromByte
 GamePhaseActorScriptVm_SetAttachmentAngleFromByte: ; 0x02014314
     stmdb sp!, {r4, lr}
     mov r4, r0
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     mov r1, r0, lsl #0x8
     ldr r0, [r4, #0x84]
     rsb r2, r1, #0x10000

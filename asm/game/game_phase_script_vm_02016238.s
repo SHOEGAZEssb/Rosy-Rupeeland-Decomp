@@ -19,8 +19,8 @@
 .extern func_02005058
 .extern ActorMotionAreaFollower_GetPosition
 .extern GamePhaseLoadScene_Init
-.extern func_02012704
-.extern func_020127f8
+.extern GamePhaseScriptVm_Pop
+.extern GamePhaseScriptVm_SetResult
 .extern func_0201cfd0
 .extern func_0201ded4
 .extern func_020200bc
@@ -40,10 +40,10 @@ func_02016238:
     stmdb sp!, {r4, r5, r6, r7, lr}
     sub sp, sp, #0x14
     mov r5, r0
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     mov r4, r0
     mov r0, r5
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     mov r6, r0
     cmp r6, #0x52
     addls pc, pc, r6, lsl #2
@@ -373,19 +373,19 @@ L_020166cc:
     ldr r1, [r0, #0x14]
     mov r0, r5
     ldr r1, [r1, #0x10]
-    bl func_020127f8
+    bl GamePhaseScriptVm_SetResult
     b L_02016704
 L_020166e0:
     ldr r1, [r0, #0x18]
     mov r0, r5
     ldr r1, [r1, #0x10]
-    bl func_020127f8
+    bl GamePhaseScriptVm_SetResult
     b L_02016704
 L_020166f4:
     ldr r1, [r0, #0x1c]
     mov r0, r5
     ldr r1, [r1, #0x10]
-    bl func_020127f8
+    bl GamePhaseScriptVm_SetResult
 L_02016704:
     mov r0, #0
     b L_020167d4
@@ -415,18 +415,18 @@ L_02016734:
 L_0201675c:
     ldrh r1, [r0, #0x12]
     mov r0, r5
-    bl func_020127f8
+    bl GamePhaseScriptVm_SetResult
     b L_0201678c
 L_0201676c:
     ldrh r1, [r0, #0x14]
     mov r0, r5
-    bl func_020127f8
+    bl GamePhaseScriptVm_SetResult
     b L_0201678c
 L_0201677c:
     ldrh r1, [r0, #0x10]
     mov r0, r5
     and r1, r1, #0xff
-    bl func_020127f8
+    bl GamePhaseScriptVm_SetResult
 L_0201678c:
     mov r0, #0
     b L_020167d4

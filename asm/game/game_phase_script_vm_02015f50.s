@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/game_phase_script_vm_actor_presentation_rebuild_opcode.c.
 .text
-.extern func_02012704
+.extern GamePhaseScriptVm_Pop
 .extern Actor_SetAttachmentEnabled
 .extern Actor_SetAttachmentAnimation
 .extern Actor_RebuildPrimaryAttachment
@@ -9,19 +9,19 @@ func_02015f50:
     stmdb sp!, {r3, r4, r5, r6, r7, r8, r9, r10, lr}
     sub sp, sp, #4
     mov r5, r0
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     mov r4, r0
     mov r0, r5
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     mov r8, r0
     mov r0, r5
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     mov r7, r0
     mov r0, r5
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     mov r6, r0
     mov r0, r5
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     ldr r5, [r5, #0x84]
     mov r1, r8, lsl #16
     ldr r10, [r5, #0x54]

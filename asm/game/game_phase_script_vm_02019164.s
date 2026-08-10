@@ -2,11 +2,11 @@
 .text
 .extern data_02105300
 .extern GamePhaseTouchPrompt_SetEnabled
-.extern func_02012704
+.extern GamePhaseScriptVm_Pop
 .global func_02019164
 func_02019164:
     stmdb sp!, {r3, lr}
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     ldr r2, L_02019188
     mov r1, r0
     ldr r0, [r2, #0x0]

@@ -28,9 +28,9 @@ extern s32 Type7Actor_SelectRandomEligibleRecordId(s32 mode, s32 index);
  */
 s32 func_02018f10(GamePhaseActorScriptVm *self)
 {
-    s32 subIndex = (s32)func_02012704(&self->base);
-    s32 index = (s32)func_02012704(&self->base);
-    s32 mode = (s32)func_02012704(&self->base);
+    s32 subIndex = (s32)GamePhaseScriptVm_Pop(&self->base);
+    s32 index = (s32)GamePhaseScriptVm_Pop(&self->base);
+    s32 mode = (s32)GamePhaseScriptVm_Pop(&self->base);
     u8 *runtime = (u8 *)data_021052fc;
     u8 *entity;
     s32 result = 0;
@@ -90,6 +90,6 @@ s32 func_02018f10(GamePhaseActorScriptVm *self)
         break;
     }
     }
-    func_020127f8(&self->base, (u32)result);
+    GamePhaseScriptVm_SetResult(&self->base, (u32)result);
     return 0;
 }

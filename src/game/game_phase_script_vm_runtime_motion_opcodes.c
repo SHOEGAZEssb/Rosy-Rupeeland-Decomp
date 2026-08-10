@@ -14,9 +14,9 @@ extern void *data_021052fc;
  */
 s32 func_02017008(GamePhaseActorScriptVm *self)
 {
-    s32 duration = (s32)func_02012704(&self->base);
-    s32 yAmplitude = (s32)func_02012704(&self->base);
-    s32 xAmplitude = (s32)func_02012704(&self->base);
+    s32 duration = (s32)GamePhaseScriptVm_Pop(&self->base);
+    s32 yAmplitude = (s32)GamePhaseScriptVm_Pop(&self->base);
+    s32 xAmplitude = (s32)GamePhaseScriptVm_Pop(&self->base);
     ActorMotion_SetOscillation((ActorMotion *)((u8 *)data_021052fc + 0x3044),
                   xAmplitude, yAmplitude, duration);
     return 0;
@@ -36,9 +36,9 @@ s32 func_02017058(GamePhaseActorScriptVm *self)
  */
 s32 func_0201707c(GamePhaseActorScriptVm *self)
 {
-    s32 duration = (s32)func_02012704(&self->base);
-    s32 yAmplitude = (s32)func_02012704(&self->base);
-    s32 xAmplitude = (s32)func_02012704(&self->base);
+    s32 duration = (s32)GamePhaseScriptVm_Pop(&self->base);
+    s32 yAmplitude = (s32)GamePhaseScriptVm_Pop(&self->base);
+    s32 xAmplitude = (s32)GamePhaseScriptVm_Pop(&self->base);
     ActorMotion_SetOscillation((ActorMotion *)((u8 *)data_021052fc + 0x2fbc),
                   xAmplitude, yAmplitude, duration);
     return 0;

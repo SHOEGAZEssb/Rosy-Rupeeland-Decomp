@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/overlay60_object_spawn.c.
 .text
-.extern func_02012704
+.extern GamePhaseScriptVm_Pop
 .extern func_020be328
 .extern func_02072b68
 .extern func_020791e0
@@ -24,19 +24,19 @@ func_0201da9c: ; 0x0201da9c
     mov r9, r1
     mov r8, r2
     mov r7, r3
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     mov r5, r0
     mov r0, r10
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     mov r6, r0
     mov r0, r10
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     str r0, [sp, #0x20]
     mov r0, r10
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     mov r11, r0
     mov r0, r10
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     mov r4, r0
     mov r0, r10
     bl func_0201da34

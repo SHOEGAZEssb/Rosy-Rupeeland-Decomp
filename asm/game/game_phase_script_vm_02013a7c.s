@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/game_phase_script_vm_actor_interaction_opcodes.c.
 .text
-.extern func_02012704
+.extern GamePhaseScriptVm_Pop
 .extern ActorCollection_FindActorByDescriptorValue
 .extern func_020330fc
 .extern Actor_GetCollection
@@ -9,13 +9,13 @@
 func_02013a7c: ; 0x02013a7c
     stmdb sp!, {r3, r4, r5, r6, r7, lr}
     mov r7, r0
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     mov r6, r0
     mov r0, r7
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     mov r5, r0
     mov r0, r7
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     mov r4, r0
     ldr r0, [r7, #0x84]
     bl Actor_GetCollection

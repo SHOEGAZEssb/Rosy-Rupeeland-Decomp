@@ -3,11 +3,11 @@
 .extern func_02001f40
 .extern func_020020ec
 .extern func_020021c4
-.extern func_02012704
+.extern GamePhaseScriptVm_Pop
 .global func_02019978
 func_02019978:
     stmdb sp!, {r4, lr}
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     mov r4, r0
     bl func_020021c4
     mov r1, r4

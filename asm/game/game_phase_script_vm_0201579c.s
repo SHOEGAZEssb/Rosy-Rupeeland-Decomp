@@ -4,7 +4,7 @@
 .extern DebugHudState_Open
 .extern DebugHudState_RefreshRectangle
 .extern DebugHudState_GetGlobal
-.extern func_02012704
+.extern GamePhaseScriptVm_Pop
 .extern func_0201d9e4
 .extern func_0201da34
 .extern func_020791e0
@@ -13,14 +13,14 @@
 func_0201579c: ; 0x0201579c
     stmdb sp!, {r4, r5, r6, lr}
     mov r5, r0
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     mov r0, r5
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     mov r0, r5
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     mov r6, r0
     mov r0, r5
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     mov r4, r0
     mov r0, r5
     bl func_0201da34

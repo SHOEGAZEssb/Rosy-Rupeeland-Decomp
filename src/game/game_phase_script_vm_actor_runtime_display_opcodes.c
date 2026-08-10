@@ -27,8 +27,8 @@ extern void func_0204ea8c(void *actor, s32 value);
  */
 s32 func_020184d4(GamePhaseActorScriptVm *self)
 {
-    s32 second = (s32)func_02012704(&self->base);
-    s32 first = (s32)func_02012704(&self->base);
+    s32 second = (s32)GamePhaseScriptVm_Pop(&self->base);
+    s32 first = (s32)GamePhaseScriptVm_Pop(&self->base);
     Actor_SetAuxiliaryCollisionPosition(self->actor_84, first, second);
     return 0;
 }
@@ -46,8 +46,8 @@ s32 func_02018504(GamePhaseActorScriptVm *self)
  */
 s32 func_0201850c(GamePhaseActorScriptVm *self)
 {
-    s16 value = (s16)func_02012704(&self->base);
-    (void)func_02012704(&self->base);
+    s16 value = (s16)GamePhaseScriptVm_Pop(&self->base);
+    (void)GamePhaseScriptVm_Pop(&self->base);
     func_0204ea8c(self->actor_84, value);
     return 0;
 }
@@ -58,7 +58,7 @@ s32 func_0201850c(GamePhaseActorScriptVm *self)
  */
 s32 func_0201853c(GamePhaseActorScriptVm *self)
 {
-    s32 enabled = (s32)func_02012704(&self->base);
+    s32 enabled = (s32)GamePhaseScriptVm_Pop(&self->base);
     u32 *flags = (u32 *)((u8 *)self->actor_84 + 0x14);
     if (enabled)
         *flags |= 0x10;
@@ -74,10 +74,10 @@ s32 func_0201853c(GamePhaseActorScriptVm *self)
  */
 s32 func_0201856c(GamePhaseActorScriptVm *self)
 {
-    s32 third = (s32)func_02012704(&self->base);
-    s32 second = (s32)func_02012704(&self->base);
-    s32 first = (s32)func_02012704(&self->base);
-    s32 screenMask = (s32)func_02012704(&self->base);
+    s32 third = (s32)GamePhaseScriptVm_Pop(&self->base);
+    s32 second = (s32)GamePhaseScriptVm_Pop(&self->base);
+    s32 first = (s32)GamePhaseScriptVm_Pop(&self->base);
+    s32 screenMask = (s32)GamePhaseScriptVm_Pop(&self->base);
     if (screenMask & 1)
         DisplayBrightness_StartTransition(DisplayBrightnessPair_GetScreen(data_020f4dc8, 0),
                       first, second, third);
@@ -94,7 +94,7 @@ s32 func_0201856c(GamePhaseActorScriptVm *self)
  */
 s32 func_020185f4(GamePhaseActorScriptVm *self)
 {
-    s32 enabled = (s32)func_02012704(&self->base);
+    s32 enabled = (s32)GamePhaseScriptVm_Pop(&self->base);
     u32 *flags = (u32 *)((u8 *)self->actor_84 + 0x14);
     if (enabled) {
         Actor_EnsureAuxiliaryCollisionResource(self->actor_84);

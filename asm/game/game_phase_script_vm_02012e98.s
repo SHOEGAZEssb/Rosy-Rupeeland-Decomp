@@ -2,16 +2,16 @@
 .text
 .extern data_02105310
 .extern ActorRuntimeCollection_SelectObject
-.extern func_02012704
+.extern GamePhaseScriptVm_Pop
 
     .global func_02012e98
 func_02012e98: ; 0x02012e98
     stmdb sp!, {r3, r4, r5, lr}
     mov r5, r0
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     mov r4, r0
     mov r0, r5
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     ldr r5, [r5, #0x84]
     cmp r0, #0x3
     addls pc, pc, r0, lsl #0x2

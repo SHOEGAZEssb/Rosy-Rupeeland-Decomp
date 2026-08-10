@@ -18,17 +18,17 @@ extern u32 func_0207a4a8(void *context, s32 first, s32 second);
 /* Pop a selector, test func_0207a494 for a non-null result, push that boolean, and return zero. */
 s32 func_02017788(GamePhaseActorScriptVm *self)
 {
-    s32 selector = (s32)func_02012704(&self->base);
-    func_020127f8(&self->base, func_0207a494(data_021f5128, selector) != 0);
+    s32 selector = (s32)GamePhaseScriptVm_Pop(&self->base);
+    GamePhaseScriptVm_SetResult(&self->base, func_0207a494(data_021f5128, selector) != 0);
     return 0;
 }
 
 /* Pop second and first selectors, test func_0207a99c, push its non-null status, and return zero. */
 s32 func_020177c8(GamePhaseActorScriptVm *self)
 {
-    s32 second = (s32)func_02012704(&self->base);
-    s32 first = (s32)func_02012704(&self->base);
-    func_020127f8(&self->base,
+    s32 second = (s32)GamePhaseScriptVm_Pop(&self->base);
+    s32 first = (s32)GamePhaseScriptVm_Pop(&self->base);
+    GamePhaseScriptVm_SetResult(&self->base,
                   func_0207a99c(data_021f5128, first, second) != 0);
     return 0;
 }
@@ -36,24 +36,24 @@ s32 func_020177c8(GamePhaseActorScriptVm *self)
 /* Pop a selector, test func_0207a40c for a non-null result, push that boolean, and return zero. */
 s32 func_0201787c(GamePhaseActorScriptVm *self)
 {
-    s32 selector = (s32)func_02012704(&self->base);
-    func_020127f8(&self->base, func_0207a40c(data_021f5128, selector) != 0);
+    s32 selector = (s32)GamePhaseScriptVm_Pop(&self->base);
+    GamePhaseScriptVm_SetResult(&self->base, func_0207a40c(data_021f5128, selector) != 0);
     return 0;
 }
 
 /* Pop a selector, test func_0207a450 for a non-null result, push that boolean, and return zero. */
 s32 func_020178bc(GamePhaseActorScriptVm *self)
 {
-    s32 selector = (s32)func_02012704(&self->base);
-    func_020127f8(&self->base, func_0207a450(data_021f5128, selector) != 0);
+    s32 selector = (s32)GamePhaseScriptVm_Pop(&self->base);
+    GamePhaseScriptVm_SetResult(&self->base, func_0207a450(data_021f5128, selector) != 0);
     return 0;
 }
 
 /* Pop second and first selectors, push the value returned by func_0207a4a8, and return zero. */
 s32 func_02017938(GamePhaseActorScriptVm *self)
 {
-    s32 second = (s32)func_02012704(&self->base);
-    s32 first = (s32)func_02012704(&self->base);
-    func_020127f8(&self->base, func_0207a4a8(data_021f5128, first, second));
+    s32 second = (s32)GamePhaseScriptVm_Pop(&self->base);
+    s32 first = (s32)GamePhaseScriptVm_Pop(&self->base);
+    GamePhaseScriptVm_SetResult(&self->base, func_0207a4a8(data_021f5128, first, second));
     return 0;
 }

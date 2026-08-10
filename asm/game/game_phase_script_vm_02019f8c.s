@@ -1,15 +1,15 @@
 ; Matching retail form; see src/game/game_phase_script_vm_misc_runtime_opcodes.c.
 .text
 .extern data_021052fc
-.extern func_02012704
+.extern GamePhaseScriptVm_Pop
 .global func_02019f8c
 func_02019f8c:
     stmdb sp!, {r3, r4, r5, lr}
     mov r5, r0
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     mov r4, r0
     mov r0, r5
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     cmp r0, #0x1
     beq L_02019fb8
     cmp r0, #0x2

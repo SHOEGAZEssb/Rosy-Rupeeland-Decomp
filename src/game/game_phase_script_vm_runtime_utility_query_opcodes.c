@@ -25,7 +25,7 @@ extern s32 func_020befec(s32 numerator, s32 denominator);
 /* Pop a u16 value, pass it to the recovered global subsystem, and return zero. */
 s32 func_02019104(GamePhaseActorScriptVm *self)
 {
-    u16 value = (u16)func_02012704(&self->base);
+    u16 value = (u16)GamePhaseScriptVm_Pop(&self->base);
     func_0206f914(&data_021e9e00, value);
     return 0;
 }
@@ -36,7 +36,7 @@ s32 func_02019104(GamePhaseActorScriptVm *self)
  */
 s32 func_02019128(GamePhaseActorScriptVm *self)
 {
-    u16 count = (u16)func_02012704(&self->base);
+    u16 count = (u16)GamePhaseScriptVm_Pop(&self->base);
     u16 index;
     for (index = 0; index < count; index++)
         func_02065270((u8 *)data_021e9ac0 + 0x34);
@@ -46,7 +46,7 @@ s32 func_02019128(GamePhaseActorScriptVm *self)
 /* Pop a value, apply it to recovered global state offset 0x08, and return zero. */
 s32 func_02019164(GamePhaseActorScriptVm *self)
 {
-    s32 value = (s32)func_02012704(&self->base);
+    s32 value = (s32)GamePhaseScriptVm_Pop(&self->base);
     GamePhaseTouchPrompt_SetEnabled(*(void **)((u8 *)data_02105300 + 8), value);
     return 0;
 }
@@ -54,7 +54,7 @@ s32 func_02019164(GamePhaseActorScriptVm *self)
 /* Query the runtime context with fixed arguments (0, 0, 1), push, and return zero. */
 s32 func_0201918c(GamePhaseActorScriptVm *self)
 {
-    func_020127f8(&self->base, (u32)func_0207f80c(gRuntimeContext, 0, 0, 1));
+    GamePhaseScriptVm_SetResult(&self->base, (u32)func_0207f80c(gRuntimeContext, 0, 0, 1));
     return 0;
 }
 
@@ -72,12 +72,12 @@ static s32 squareFx32(s32 value)
  */
 s32 func_020191c4(GamePhaseActorScriptVm *self)
 {
-    s32 verticalRadius = (s32)func_02012704(&self->base);
-    s32 horizontalRadius = (s32)func_02012704(&self->base);
-    s32 firstY = (s32)func_02012704(&self->base);
-    s32 firstX = (s32)func_02012704(&self->base);
-    s32 secondY = (s32)func_02012704(&self->base);
-    s32 secondX = (s32)func_02012704(&self->base);
+    s32 verticalRadius = (s32)GamePhaseScriptVm_Pop(&self->base);
+    s32 horizontalRadius = (s32)GamePhaseScriptVm_Pop(&self->base);
+    s32 firstY = (s32)GamePhaseScriptVm_Pop(&self->base);
+    s32 firstX = (s32)GamePhaseScriptVm_Pop(&self->base);
+    s32 secondY = (s32)GamePhaseScriptVm_Pop(&self->base);
+    s32 secondX = (s32)GamePhaseScriptVm_Pop(&self->base);
     s32 dx = (secondX - firstX) << 12;
     s32 dy = (secondY - firstY) << 12;
     s32 inside = 0;
@@ -88,21 +88,21 @@ s32 func_020191c4(GamePhaseActorScriptVm *self)
              < 0x1000) {
         inside = 1;
     }
-    func_020127f8(&self->base, (u32)inside);
+    GamePhaseScriptVm_SetResult(&self->base, (u32)inside);
     return 0;
 }
 
 /* Push the confirmed GameWork word at offset 0x44 and return zero. */
 s32 func_02019288(GamePhaseActorScriptVm *self)
 {
-    func_020127f8(&self->base, *(u32 *)((u8 *)gGameWork + 0x44));
+    GamePhaseScriptVm_SetResult(&self->base, *(u32 *)((u8 *)gGameWork + 0x44));
     return 0;
 }
 
 /* Push the negated GameWork word at offset 0x48 and return zero. */
 s32 func_020192a8(GamePhaseActorScriptVm *self)
 {
-    func_020127f8(&self->base, (u32)-*(s32 *)((u8 *)gGameWork + 0x48));
+    GamePhaseScriptVm_SetResult(&self->base, (u32)-*(s32 *)((u8 *)gGameWork + 0x48));
     return 0;
 }
 

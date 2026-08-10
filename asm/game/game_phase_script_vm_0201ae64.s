@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/game_phase_script_vm_runtime_entity_position_opcodes.c.
 .text
-.extern func_020127f8
+.extern GamePhaseScriptVm_SetResult
 .extern data_021052fc
 .global func_0201ae64
 func_0201ae64: ; 0x0201ae64
@@ -13,7 +13,7 @@ func_0201ae64: ; 0x0201ae64
     cmp r2, #0x0
     ldrne r1, [r2, #0x1c]
     movne r1, r1, asr #0xc
-    bl func_020127f8
+    bl GamePhaseScriptVm_SetResult
     mov r0, #0x0
     ldmia sp!, {r3, pc}
 L_0201ae94: .word data_021052fc

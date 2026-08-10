@@ -19,10 +19,10 @@ extern void GamePhaseRuntime_StageAreaRequest(void *runtime, u32 first, u32 seco
  */
 s32 func_0201416c(GamePhaseActorScriptVm *self)
 {
-    u32 fourth = func_02012704(&self->base);
-    u32 third = func_02012704(&self->base);
-    u32 second = func_02012704(&self->base);
-    u32 first = func_02012704(&self->base);
+    u32 fourth = GamePhaseScriptVm_Pop(&self->base);
+    u32 third = GamePhaseScriptVm_Pop(&self->base);
+    u32 second = GamePhaseScriptVm_Pop(&self->base);
+    u32 first = GamePhaseScriptVm_Pop(&self->base);
     GamePhaseRuntime_StageAreaRequest(data_021052fc, first, second, third, fourth, 0);
     return 1;
 }

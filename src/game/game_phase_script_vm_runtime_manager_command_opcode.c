@@ -41,10 +41,10 @@ static void invokeModeZero(void *object)
  */
 s32 func_02019aa4(GamePhaseActorScriptVm *self)
 {
-    s16 third = (s16)func_02012704(&self->base);
-    s16 second = (s16)func_02012704(&self->base);
-    s16 first = (s16)func_02012704(&self->base);
-    s32 command = (s32)func_02012704(&self->base);
+    s16 third = (s16)GamePhaseScriptVm_Pop(&self->base);
+    s16 second = (s16)GamePhaseScriptVm_Pop(&self->base);
+    s16 first = (s16)GamePhaseScriptVm_Pop(&self->base);
+    s32 command = (s32)GamePhaseScriptVm_Pop(&self->base);
     u8 *runtime = (u8 *)data_021052fc;
     u8 *manager = *(u8 **)(runtime + 0x2ea4);
     switch (command) {

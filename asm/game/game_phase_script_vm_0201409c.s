@@ -3,7 +3,7 @@
 .extern func_0200500c
 .extern func_02005058
 .extern func_020050a4
-.extern func_02012704
+.extern GamePhaseScriptVm_Pop
 .extern Actor_AdjustPositionForTerrainHeight
 
     .global func_0201409c
@@ -11,10 +11,10 @@ func_0201409c: ; 0x0201409c
     stmdb sp!, {r3, r4, r5, lr}
     sub sp, sp, #0x10
     mov r5, r0
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     mov r4, r0
     mov r0, r5
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     mov r1, r0
     add r0, sp, #0x0
     mov r1, r1, lsl #0xc

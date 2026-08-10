@@ -2,13 +2,13 @@
 .text
 .extern RectS16_Copy
 .extern func_02008354
-.extern func_02012704
+.extern GamePhaseScriptVm_Pop
 .global func_02015a34
 func_02015a34:
     stmdb sp!, {r3, r4, r5, lr}
     sub sp, sp, #8
     mov r5, r0
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     ldr r1, [r5, #0x84]
     mov r4, r0
     add r0, sp, #0

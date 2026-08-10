@@ -1,10 +1,10 @@
 ; Matching retail form; see src/game/game_phase_script_vm_runtime.c.
 .text
-.extern data_020d5bec
+.extern gGamePhaseScriptVmOpcodeTable
 .extern gSystemState
 
-    .global func_0201273c
-func_0201273c: ; 0x0201273c
+    .global GamePhaseScriptVm_Execute
+GamePhaseScriptVm_Execute: ; 0x0201273c
     stmdb sp!, {r3, r4, r5, lr}
     mov r4, r0
     ldr r2, [r4, #0x4]
@@ -53,6 +53,6 @@ L_020127e0:
     mov r0, #0x0
     ldmia sp!, {r3, r4, r5, pc}
 L_020127e8: .word gSystemState
-L_020127ec: .word data_020d5bec
-    .size func_0201273c, . - func_0201273c
+L_020127ec: .word gGamePhaseScriptVmOpcodeTable
+    .size GamePhaseScriptVm_Execute, . - GamePhaseScriptVm_Execute
 

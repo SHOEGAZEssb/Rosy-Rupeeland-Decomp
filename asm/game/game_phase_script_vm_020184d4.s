@@ -1,15 +1,15 @@
 ; Matching retail form; see src/game/game_phase_script_vm_actor_runtime_display_opcodes.c.
 .text
-.extern func_02012704
+.extern GamePhaseScriptVm_Pop
 .extern Actor_SetAuxiliaryCollisionPosition
 .global func_020184d4
 func_020184d4:
     stmdb sp!, {r3, r4, r5, lr}
     mov r5, r0
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     mov r4, r0
     mov r0, r5
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     mov r1, r0
     ldr r0, [r5, #0x84]
     mov r2, r4

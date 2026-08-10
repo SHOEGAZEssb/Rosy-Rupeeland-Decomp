@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/game_phase_script_vm_sound_high_arity_opcodes.c.
 .text
-.extern func_02012704
+.extern GamePhaseScriptVm_Pop
 .extern func_02059550
 .extern gSoundContext
 .global func_0201ac18
@@ -8,22 +8,22 @@ func_0201ac18: ; 0x0201ac18
     stmdb sp!, {r3, r4, r5, r6, r7, r8, r9, lr}
     sub sp, sp, #0x8
     mov r9, r0
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     mov r8, r0
     mov r0, r9
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     mov r7, r0
     mov r0, r9
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     mov r6, r0
     mov r0, r9
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     mov r5, r0
     mov r0, r9
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     mov r4, r0
     mov r0, r9
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     cmp r0, #0x20
     bne L_0201ac8c
     ldr r0, L_0201ac98

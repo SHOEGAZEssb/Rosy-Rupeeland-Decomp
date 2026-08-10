@@ -119,7 +119,7 @@ static void spawnActorSnapshot(GamePhaseActorScriptVm *self, s32 actorIndex,
     *(s32 *)(descriptor + 0x54) = -1;
     *(s32 *)(descriptor + 0x58) = 0;
     ActorCollection_SpawnActorFromDescriptor(Actor_GetCollection(self->actor_84), descriptor);
-    func_020127f8(&self->base, (u32)value);
+    GamePhaseScriptVm_SetResult(&self->base, (u32)value);
     func_02005058(&transform);
 }
 
@@ -132,14 +132,14 @@ static void spawnActorSnapshot(GamePhaseActorScriptVm *self, s32 actorIndex,
  */
 s32 func_0201939c(GamePhaseActorScriptVm *self)
 {
-    s32 p0 = (s32)func_02012704(&self->base);
-    s32 p1 = (s32)func_02012704(&self->base);
-    s32 p2 = (s32)func_02012704(&self->base);
-    s32 p3 = (s32)func_02012704(&self->base);
-    s32 p4 = (s32)func_02012704(&self->base);
-    s32 p5 = (s32)func_02012704(&self->base);
-    s32 p6 = (s32)func_02012704(&self->base);
-    s32 mode = (s32)func_02012704(&self->base);
+    s32 p0 = (s32)GamePhaseScriptVm_Pop(&self->base);
+    s32 p1 = (s32)GamePhaseScriptVm_Pop(&self->base);
+    s32 p2 = (s32)GamePhaseScriptVm_Pop(&self->base);
+    s32 p3 = (s32)GamePhaseScriptVm_Pop(&self->base);
+    s32 p4 = (s32)GamePhaseScriptVm_Pop(&self->base);
+    s32 p5 = (s32)GamePhaseScriptVm_Pop(&self->base);
+    s32 p6 = (s32)GamePhaseScriptVm_Pop(&self->base);
+    s32 mode = (s32)GamePhaseScriptVm_Pop(&self->base);
     switch (mode) {
     case 0:
         spawnActorSnapshot(self, p6, p5, p4);

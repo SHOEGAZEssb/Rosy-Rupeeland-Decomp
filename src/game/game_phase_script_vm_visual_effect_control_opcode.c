@@ -22,9 +22,9 @@ extern void OS_Halt(void);
  */
 s32 func_0201a130(GamePhaseActorScriptVm *self)
 {
-    s32 second = (s32)func_02012704(&self->base);
-    s32 first = (s32)func_02012704(&self->base);
-    s32 mode = (s32)func_02012704(&self->base);
+    s32 second = (s32)GamePhaseScriptVm_Pop(&self->base);
+    s32 first = (s32)GamePhaseScriptVm_Pop(&self->base);
+    s32 mode = (s32)GamePhaseScriptVm_Pop(&self->base);
     u8 *runtime = (u8 *)data_021052fc;
     void *effect = runtime + 0x2ed8;
 

@@ -14,7 +14,7 @@ extern const void *data_020d5b20;
 /* Construct an empty actor VM, install its vtable, reset derived state, and return self. */
 GamePhaseActorScriptVm *func_0201b0f4(GamePhaseActorScriptVm *self)
 {
-    func_02012564(&self->base);
+    GamePhaseScriptVm_Init(&self->base);
     self->base.vtable = data_020d5b20;
     func_0201b15c(self);
     self->actor_84 = 0;
@@ -26,7 +26,7 @@ GamePhaseActorScriptVm *func_0201b124(GamePhaseActorScriptVm *self,
                                      void *actor, const s8 *script,
                                      void *context)
 {
-    func_02012608(&self->base, script, context);
+    GamePhaseScriptVm_InitWithScript(&self->base, script, context);
     self->base.vtable = data_020d5b20;
     func_0201b15c(self);
     self->actor_84 = actor;
@@ -47,7 +47,7 @@ GamePhaseActorScriptVm *func_0201b180(GamePhaseActorScriptVm *self,
                                      const GamePhaseActorScriptVm *source)
 {
     if (self != source) {
-        func_0201264c(&self->base, &source->base);
+        GamePhaseScriptVm_Assign(&self->base, &source->base);
         func_0201b1ac(self, source);
     }
     return self;
@@ -65,14 +65,14 @@ void func_0201b1ac(GamePhaseActorScriptVm *self,
 /* Run the recovered non-deleting base lifecycle hook and return self. */
 GamePhaseActorScriptVm *func_0201b1e0(GamePhaseActorScriptVm *self)
 {
-    func_02012604(&self->base);
+    GamePhaseScriptVm_DestroyBase(&self->base);
     return self;
 }
 
 /* Run the base lifecycle hook, free the outer allocation, and return its former address. */
 GamePhaseActorScriptVm *func_0201b1f4(GamePhaseActorScriptVm *self)
 {
-    func_02012604(&self->base);
+    GamePhaseScriptVm_DestroyBase(&self->base);
     Heap_Free(self);
     return self;
 }

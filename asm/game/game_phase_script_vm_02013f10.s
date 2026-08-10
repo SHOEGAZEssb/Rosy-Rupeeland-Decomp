@@ -7,7 +7,7 @@
 .extern OverlayManager_GetGlobal
 .extern func_0200500c
 .extern func_02005058
-.extern func_02012704
+.extern GamePhaseScriptVm_Pop
 .extern ActorCollection_FindActorByDescriptorValue
 .extern Actor_GetCollection
 .extern func_ov062_0220fe78
@@ -19,22 +19,22 @@ func_02013f10: ; 0x02013f10
     stmdb sp!, {r3, r4, r5, r6, r7, r8, r9, r10, lr}
     sub sp, sp, #0x1c
     mov r10, r0
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     mov r9, r0
     mov r0, r10
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     mov r8, r0
     mov r0, r10
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     mov r7, r0
     mov r0, r10
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     mov r6, r0
     mov r0, r10
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     mov r5, r0
     mov r0, r10
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     mov r4, r0
     mvn r0, #0x0
     cmp r4, r0

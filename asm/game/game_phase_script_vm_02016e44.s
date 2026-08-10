@@ -4,8 +4,8 @@
 .extern func_02005030
 .extern func_02005058
 .extern GamePhaseRuntime_GetActorCollection
-.extern func_02012704
-.extern func_020127f8
+.extern GamePhaseScriptVm_Pop
+.extern GamePhaseScriptVm_SetResult
 .extern func_02016f14
 .extern func_02016f28
 .extern ActorCollection_FindActorByDescriptorValue
@@ -14,19 +14,19 @@ func_02016e44:
     stmdb sp!, {r4, r5, r6, r7, r8, r9, lr}
     sub sp, sp, #0x24
     mov r4, r0
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     mov r9, r0
     mov r0, r4
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     mov r8, r0
     mov r0, r4
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     mov r7, r0
     mov r0, r4
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     mov r6, r0
     mov r0, r4
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     mov r5, r0
     ldr r0, L_02016f10
     mov r1, #1
@@ -53,11 +53,11 @@ func_02016e44:
     mov r0, r4
     beq L_02016ef4
     mov r1, #1
-    bl func_020127f8
+    bl GamePhaseScriptVm_SetResult
     b L_02016efc
 L_02016ef4:
     mov r1, #0
-    bl func_020127f8
+    bl GamePhaseScriptVm_SetResult
 L_02016efc:
     add r0, sp, #0x14
     bl func_02005058

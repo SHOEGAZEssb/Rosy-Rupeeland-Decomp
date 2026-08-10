@@ -20,9 +20,9 @@ extern void Actor_RestorePrimaryAttachmentState(void *actor);
  */
 s32 func_02013e14(GamePhaseActorScriptVm *self)
 {
-    u32 third = func_02012704(&self->base);
-    u32 second = func_02012704(&self->base);
-    u32 first = func_02012704(&self->base);
+    u32 third = GamePhaseScriptVm_Pop(&self->base);
+    u32 second = GamePhaseScriptVm_Pop(&self->base);
+    u32 first = GamePhaseScriptVm_Pop(&self->base);
     void *object = *(void **)((u8 *)data_021052fc + 0x2ed4);
     func_0202bb60(object, first, second, third);
     return 0;
@@ -31,16 +31,16 @@ s32 func_02013e14(GamePhaseActorScriptVm *self)
 /* Pop X/Y, push Actor_QueryTerrainHeight for the bound actor, and return zero. */
 s32 func_02013e64(GamePhaseActorScriptVm *self)
 {
-    u32 second = func_02012704(&self->base);
-    u32 first = func_02012704(&self->base);
-    func_020127f8(&self->base, Actor_QueryTerrainHeight(self->actor_84, first, second));
+    u32 second = GamePhaseScriptVm_Pop(&self->base);
+    u32 first = GamePhaseScriptVm_Pop(&self->base);
+    GamePhaseScriptVm_SetResult(&self->base, Actor_QueryTerrainHeight(self->actor_84, first, second));
     return 0;
 }
 
 /* Pop and discard one script operand, then return zero. */
 s32 func_02013ea0(GamePhaseActorScriptVm *self)
 {
-    (void)func_02012704(&self->base);
+    (void)GamePhaseScriptVm_Pop(&self->base);
     return 0;
 }
 

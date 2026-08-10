@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/game_phase_script_vm_record_dispatch_opcodes.c.
 .text
 .extern OS_Halt
-.extern func_02012704
+.extern GamePhaseScriptVm_Pop
 .extern func_0201c798
 .extern func_0201c91c
 .extern func_0201cabc
@@ -12,22 +12,22 @@ func_02016a84:
     stmdb sp!, {r3, r4, r5, r6, r7, r8, r9, lr}
     sub sp, sp, #8
     mov r9, r0
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     mov r8, r0
     mov r0, r9
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     mov r7, r0
     mov r0, r9
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     mov r6, r0
     mov r0, r9
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     mov r5, r0
     mov r0, r9
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     mov r4, r0
     mov r0, r9
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     cmp r0, #6
     addls pc, pc, r0, lsl #2
     b L_02016bb4

@@ -17,7 +17,7 @@ extern void OS_Halt(void);
 /* Push actor byte 0x169 bit 0 through the VM value stack. */
 static void pushActorBit(GamePhaseActorScriptVm *self, const void *actor)
 {
-    func_020127f8(&self->base, *((const u8 *)actor + 0x169) & 1);
+    GamePhaseScriptVm_SetResult(&self->base, *((const u8 *)actor + 0x169) & 1);
 }
 
 /*
@@ -29,7 +29,7 @@ static void pushActorBit(GamePhaseActorScriptVm *self, const void *actor)
  */
 s32 func_02013ac8(GamePhaseActorScriptVm *self)
 {
-    s32 selector = (s32)func_02012704(&self->base);
+    s32 selector = (s32)GamePhaseScriptVm_Pop(&self->base);
     u8 *actor;
     if (selector != 0) {
         actor = (u8 *)ActorCollection_FindActorByDescriptorValue(Actor_GetCollection(self->actor_84), selector);
@@ -53,7 +53,7 @@ s32 func_02013ac8(GamePhaseActorScriptVm *self)
  */
 s32 func_02013b74(GamePhaseActorScriptVm *self)
 {
-    s32 index = (s32)func_02012704(&self->base);
+    s32 index = (s32)GamePhaseScriptVm_Pop(&self->base);
     u8 *runtime = (u8 *)data_021052fc;
     u8 *owner = *(u8 **)(runtime + 0x2fb8);
     void *first = **(void ***)(runtime + 0x24);

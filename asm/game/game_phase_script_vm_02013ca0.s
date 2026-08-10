@@ -1,13 +1,13 @@
 ; Matching retail form; see src/game/game_phase_script_vm_gamework_flag_opcodes.c.
 .text
 .extern GameWork_ClearFlag
-.extern func_02012704
+.extern GamePhaseScriptVm_Pop
 .extern gGameWork
 
     .global func_02013ca0
 func_02013ca0: ; 0x02013ca0
     stmdb sp!, {r3, lr}
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     ldr r2, L_02013cc0
     mov r1, r0
     ldr r0, [r2, #0x0]

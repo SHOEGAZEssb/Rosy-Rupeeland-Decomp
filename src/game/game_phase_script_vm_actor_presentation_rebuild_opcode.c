@@ -22,11 +22,11 @@ extern void Actor_SetAttachmentEnabled(void *actor, u32 value);
  */
 s32 func_02015f50(GamePhaseActorScriptVm *self)
 {
-    u32 command = func_02012704(&self->base);
-    u16 fourth = (u16)func_02012704(&self->base);
-    u16 third = (u16)func_02012704(&self->base);
-    u16 second = (u16)func_02012704(&self->base);
-    u16 first = (u16)func_02012704(&self->base);
+    u32 command = GamePhaseScriptVm_Pop(&self->base);
+    u16 fourth = (u16)GamePhaseScriptVm_Pop(&self->base);
+    u16 third = (u16)GamePhaseScriptVm_Pop(&self->base);
+    u16 second = (u16)GamePhaseScriptVm_Pop(&self->base);
+    u16 first = (u16)GamePhaseScriptVm_Pop(&self->base);
     u8 *actor = (u8 *)self->actor_84;
     u8 *oldObject = *(u8 **)(actor + 0x54);
     u8 byte3a = oldObject[0x3a];

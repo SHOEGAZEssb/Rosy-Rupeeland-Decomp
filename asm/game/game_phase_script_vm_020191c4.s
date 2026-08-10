@@ -1,28 +1,28 @@
 ; Matching retail form; see src/game/game_phase_script_vm_runtime_utility_query_opcodes.c.
 .text
-.extern func_02012704
-.extern func_020127f8
+.extern GamePhaseScriptVm_Pop
+.extern GamePhaseScriptVm_SetResult
 .extern func_020befec
 .global func_020191c4
 func_020191c4:
     stmdb sp!, {r3, r4, r5, r6, r7, r8, r9, lr}
     mov r8, r0
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     mov r4, r0
     mov r0, r8
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     mov r5, r0
     mov r0, r8
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     mov r9, r0
     mov r0, r8
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     mov r7, r0
     mov r0, r8
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     mov r6, r0
     mov r0, r8
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     sub r1, r0, r7
     sub r0, r6, r9
     mov r6, r0, lsl #0xc
@@ -52,7 +52,7 @@ func_020191c4:
 L_02019274:
     mov r0, r8
     mov r1, r7
-    bl func_020127f8
+    bl GamePhaseScriptVm_SetResult
     mov r0, #0x0
     ldmia sp!, {r3, r4, r5, r6, r7, r8, r9, pc}
 .size func_020191c4, . - func_020191c4

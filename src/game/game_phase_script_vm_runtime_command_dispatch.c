@@ -48,8 +48,8 @@ static void *allocCommandObject(u32 size, const char *tag)
  */
 s32 func_02016238(GamePhaseActorScriptVm *self)
 {
-    u32 parameter = func_02012704(&self->base);
-    u32 selector = func_02012704(&self->base);
+    u32 parameter = GamePhaseScriptVm_Pop(&self->base);
+    u32 selector = GamePhaseScriptVm_Pop(&self->base);
     u32 kind = 0;
     void *object;
 
@@ -147,7 +147,7 @@ s32 func_02016238(GamePhaseActorScriptVm *self)
         u8 *presentation = actor != 0 ? *(u8 **)(actor + 0x54) : 0;
         if (presentation != 0) {
             u32 offset = selector == 31 ? 0x14 : selector == 32 ? 0x18 : 0x1c;
-            func_020127f8(&self->base,
+            GamePhaseScriptVm_SetResult(&self->base,
                           *(u32 *)(*(u8 **)(presentation + offset) + 0x10));
         }
         return 0;
@@ -162,11 +162,11 @@ s32 func_02016238(GamePhaseActorScriptVm *self)
     case 37: {
         u8 *record = func_02079a7c(data_021f3d68, parameter);
         if (selector == 35)
-            func_020127f8(&self->base, *(u16 *)(record + 0x12));
+            GamePhaseScriptVm_SetResult(&self->base, *(u16 *)(record + 0x12));
         else if (selector == 36)
-            func_020127f8(&self->base, *(u16 *)(record + 0x14));
+            GamePhaseScriptVm_SetResult(&self->base, *(u16 *)(record + 0x14));
         else
-            func_020127f8(&self->base, *(u16 *)(record + 0x10) & 0xff);
+            GamePhaseScriptVm_SetResult(&self->base, *(u16 *)(record + 0x10) & 0xff);
         return 0;
     }
     default:

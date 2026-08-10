@@ -4,7 +4,7 @@
 .extern func_02005030
 .extern func_02005058
 .extern GamePhaseRuntime_GetActorCollection
-.extern func_020127f8
+.extern GamePhaseScriptVm_SetResult
 
     .global func_020136a4
 func_020136a4: ; 0x020136a4
@@ -23,7 +23,7 @@ func_020136a4: ; 0x020136a4
     ldr r1, [sp, #0xc]
     mov r0, r4
     mov r1, r1, asr #0xc
-    bl func_020127f8
+    bl GamePhaseScriptVm_SetResult
     add r0, sp, #0x0
     bl func_02005058
     mov r0, #0x0

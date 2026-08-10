@@ -16,7 +16,7 @@ extern s32 func_020adc40(s32 value);
  */
 s32 func_020136fc(GamePhaseActorScriptVm *self)
 {
-    u32 enabled = func_02012704(&self->base);
+    u32 enabled = GamePhaseScriptVm_Pop(&self->base);
     u8 *actor = (u8 *)self->actor_84;
     u32 *actorFlags = (u32 *)(actor + 0x10);
     u16 *objectFlags = (u16 *)(*(u8 **)(actor + 0x54) + 0x24);
@@ -33,7 +33,7 @@ s32 func_020136fc(GamePhaseActorScriptVm *self)
 /* Pop a boolean and set or clear halfword flag 0x80 at actor->0x54->0x24. */
 s32 func_02013758(GamePhaseActorScriptVm *self)
 {
-    u32 enabled = func_02012704(&self->base);
+    u32 enabled = GamePhaseScriptVm_Pop(&self->base);
     u16 *flags = (u16 *)(*(u8 **)((u8 *)self->actor_84 + 0x54) + 0x24);
     if (enabled != 0)
         *flags |= 0x80;
@@ -45,7 +45,7 @@ s32 func_02013758(GamePhaseActorScriptVm *self)
 /* Pop a boolean and set or clear halfword flag 0x20 at actor->0x54->0x24. */
 s32 func_02013790(GamePhaseActorScriptVm *self)
 {
-    u32 enabled = func_02012704(&self->base);
+    u32 enabled = GamePhaseScriptVm_Pop(&self->base);
     u16 *flags = (u16 *)(*(u8 **)((u8 *)self->actor_84 + 0x54) + 0x24);
     if (enabled != 0)
         *flags |= 0x20;
@@ -57,7 +57,7 @@ s32 func_02013790(GamePhaseActorScriptVm *self)
 /* Pop a value, push func_020adc40's fixed-point root result, and return zero. */
 s32 func_020137c8(GamePhaseActorScriptVm *self)
 {
-    s32 value = (s32)func_02012704(&self->base);
-    func_020127f8(&self->base, func_020adc40(value));
+    s32 value = (s32)GamePhaseScriptVm_Pop(&self->base);
+    GamePhaseScriptVm_SetResult(&self->base, func_020adc40(value));
     return 0;
 }

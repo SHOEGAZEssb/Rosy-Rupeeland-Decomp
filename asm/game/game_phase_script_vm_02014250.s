@@ -2,14 +2,14 @@
 .text
 .extern DisplayBrightness_IsMainTransitionComplete
 .extern DisplayBrightness_IsSubTransitionComplete
-.extern func_02012704
-.extern func_020127f8
+.extern GamePhaseScriptVm_Pop
+.extern GamePhaseScriptVm_SetResult
 
     .global func_02014250
 func_02014250: ; 0x02014250
     stmdb sp!, {r4, lr}
     mov r4, r0
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     cmp r0, #0x1
     beq L_02014270
     cmp r0, #0x2
@@ -41,7 +41,7 @@ L_020142b8:
     mov r1, #0x0
 L_020142bc:
     mov r0, r4
-    bl func_020127f8
+    bl GamePhaseScriptVm_SetResult
     mov r0, #0x0
     ldmia sp!, {r4, pc}
     .size func_02014250, . - func_02014250

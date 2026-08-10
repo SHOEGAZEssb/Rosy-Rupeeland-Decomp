@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/game_phase_script_vm_optional_object_control_opcode.c.
 .text
-.extern func_02012704
+.extern GamePhaseScriptVm_Pop
 .extern ActorDerivedType1_GetSingletonObject
 .extern func_ov088_02218130
 .extern func_ov088_0221a8c4
@@ -8,20 +8,20 @@
 func_0201a1f0:
     stmdb sp!, {r3, r4, r5, r6, r7, lr}
     mov r4, r0
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     mov r0, r4
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     mov r0, r4
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     mov r7, r0
     mov r0, r4
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     mov r6, r0
     mov r0, r4
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     mov r5, r0
     mov r0, r4
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     mov r4, r0
     bl ActorDerivedType1_GetSingletonObject
     cmp r4, #0x5

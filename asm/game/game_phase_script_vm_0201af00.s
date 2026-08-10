@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/game_phase_script_vm_runtime_scene_mode_opcode.c.
 .text
-.extern func_02012704
+.extern GamePhaseScriptVm_Pop
 .extern GamePhaseRuntime_SetPlacementMode
 .extern GamePhaseRuntime_GetActorCollection
 .extern func_0202d68c
@@ -8,7 +8,7 @@
 .global func_0201af00
 func_0201af00: ; 0x0201af00
     stmdb sp!, {r3, lr}
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     cmp r0, #0x0
     beq L_0201af28
     ldr r0, L_0201af84

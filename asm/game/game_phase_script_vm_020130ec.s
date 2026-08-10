@@ -5,8 +5,8 @@
 .extern VecFx32Stepper_InitTransition
 .extern VecFx32Stepper_Assign
 .extern VecFx32Stepper_Destroy
-.extern func_02012704
-.extern func_020127f8
+.extern GamePhaseScriptVm_Pop
+.extern GamePhaseScriptVm_SetResult
 .extern Actor_UpdateAttachmentDirectionFromVector
 .extern func_020adc40
 .extern func_020befec
@@ -16,22 +16,22 @@ func_020130ec: ; 0x020130ec
     stmdb sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, lr}
     sub sp, sp, #0x50
     mov r9, r0
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     mov r11, r0
     mov r0, r9
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     mov r4, r0
     mov r0, r9
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     str r0, [sp, #0x8]
     mov r0, r9
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     mov r5, r0, lsl #0xc
     mov r0, r9
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     mov r6, r0, lsl #0xc
     mov r0, r9
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     mov r7, r0, lsl #0xc
     add r0, sp, #0x40
     bl func_02004fe0
@@ -202,7 +202,7 @@ L_02013354:
     mov r0, r9
     bic r2, r2, #0x1
     str r2, [r3, #0x10]
-    bl func_020127f8
+    bl GamePhaseScriptVm_SetResult
     ldr r1, [r9, #0x84]
     ldrsh r0, [r1, #0xe4]
     cmp r0, #0x1

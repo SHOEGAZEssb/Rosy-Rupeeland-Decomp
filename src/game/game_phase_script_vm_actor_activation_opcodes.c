@@ -19,8 +19,8 @@ extern void *Actor_GetCollection(void *actor);
  */
 s32 func_02015e9c(GamePhaseActorScriptVm *self)
 {
-    s32 active = (s32)func_02012704(&self->base);
-    s32 index = (s32)func_02012704(&self->base);
+    s32 active = (s32)GamePhaseScriptVm_Pop(&self->base);
+    s32 index = (s32)GamePhaseScriptVm_Pop(&self->base);
     u8 *actor = (u8 *)ActorCollection_FindActorByDescriptorValue(Actor_GetCollection(self->actor_84), index);
 
     if (actor != 0) {

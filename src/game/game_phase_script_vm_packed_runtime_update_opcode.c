@@ -22,10 +22,10 @@ typedef u32 (*RuntimePackedQueryMethod)(void *object, u32 first, u32 second);
  */
 s32 func_02016c7c(GamePhaseActorScriptVm *self)
 {
-    u32 replacement = func_02012704(&self->base);
-    u32 second = func_02012704(&self->base);
-    u32 first = func_02012704(&self->base);
-    u32 selector = func_02012704(&self->base);
+    u32 replacement = GamePhaseScriptVm_Pop(&self->base);
+    u32 second = GamePhaseScriptVm_Pop(&self->base);
+    u32 first = GamePhaseScriptVm_Pop(&self->base);
+    u32 selector = GamePhaseScriptVm_Pop(&self->base);
     void *object = *(void **)((u8 *)data_021052fc + 0x2ed4);
     RuntimePackedQueryMethod *vtable = *(RuntimePackedQueryMethod **)object;
     u32 packed = vtable[0x2c / sizeof(void *)](object, first, second);

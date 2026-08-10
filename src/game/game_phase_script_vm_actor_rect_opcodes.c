@@ -11,10 +11,10 @@
 s32 func_020159d4(GamePhaseActorScriptVm *self)
 {
     RectS16 bounds;
-    bounds.bottom = (s16)func_02012704(&self->base);
-    bounds.right = (s16)func_02012704(&self->base);
-    bounds.top = (s16)func_02012704(&self->base);
-    bounds.left = (s16)func_02012704(&self->base);
+    bounds.bottom = (s16)GamePhaseScriptVm_Pop(&self->base);
+    bounds.right = (s16)GamePhaseScriptVm_Pop(&self->base);
+    bounds.top = (s16)GamePhaseScriptVm_Pop(&self->base);
+    bounds.left = (s16)GamePhaseScriptVm_Pop(&self->base);
     func_02008354((u8 *)self->actor_84 + 0x68, &bounds);
     return 0;
 }
@@ -22,7 +22,7 @@ s32 func_020159d4(GamePhaseActorScriptVm *self)
 /* Pop an amount, move the actor rectangle's left edge left by it, and return zero. */
 s32 func_02015a34(GamePhaseActorScriptVm *self)
 {
-    s32 amount = (s32)func_02012704(&self->base);
+    s32 amount = (s32)GamePhaseScriptVm_Pop(&self->base);
     RectS16 bounds;
     RectS16_Copy(&bounds, (const RectS16 *)((u8 *)self->actor_84 + 0x68));
     bounds.left -= amount;
@@ -33,7 +33,7 @@ s32 func_02015a34(GamePhaseActorScriptVm *self)
 /* Pop an amount, move the actor rectangle's top edge upward by it, and return zero. */
 s32 func_02015a80(GamePhaseActorScriptVm *self)
 {
-    s32 amount = (s32)func_02012704(&self->base);
+    s32 amount = (s32)GamePhaseScriptVm_Pop(&self->base);
     RectS16 bounds;
     RectS16_Copy(&bounds, (const RectS16 *)((u8 *)self->actor_84 + 0x68));
     bounds.top -= amount;
@@ -44,7 +44,7 @@ s32 func_02015a80(GamePhaseActorScriptVm *self)
 /* Pop an amount, move the actor rectangle's right edge right by it, and return zero. */
 s32 func_02015acc(GamePhaseActorScriptVm *self)
 {
-    s32 amount = (s32)func_02012704(&self->base);
+    s32 amount = (s32)GamePhaseScriptVm_Pop(&self->base);
     RectS16 bounds;
     RectS16_Copy(&bounds, (const RectS16 *)((u8 *)self->actor_84 + 0x68));
     bounds.right += amount;
@@ -55,7 +55,7 @@ s32 func_02015acc(GamePhaseActorScriptVm *self)
 /* Pop an amount, move the actor rectangle's bottom edge down by it, and return zero. */
 s32 func_02015b18(GamePhaseActorScriptVm *self)
 {
-    s32 amount = (s32)func_02012704(&self->base);
+    s32 amount = (s32)GamePhaseScriptVm_Pop(&self->base);
     RectS16 bounds;
     RectS16_Copy(&bounds, (const RectS16 *)((u8 *)self->actor_84 + 0x68));
     bounds.bottom += amount;

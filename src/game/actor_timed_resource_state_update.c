@@ -8,7 +8,7 @@ extern void *data_021052fc;
 extern "C" {
 #endif
 extern s32 func_0201b23c(void *state);
-extern void func_0201273c(void *state, s32 value);
+extern void GamePhaseScriptVm_Execute(void *state, s32 value);
 extern s32 ActorRuntimeCollection_TryCompleteAttachment(void *effectState, void *actor);
 extern void *GamePhaseRuntime_GetActorCollection(void *manager, u32 slot);
 extern void *Actor_GetCollection(void *actor);
@@ -43,7 +43,7 @@ s32 func_02034164(void *self)
     if (func_0201b23c(actor + 0xec) == 0) {
         return 1;
     }
-    func_0201273c(actor + 0xec, 0);
+    GamePhaseScriptVm_Execute(actor + 0xec, 0);
     if ((actor[0x169] & 1) == 0) {
         return 1;
     }

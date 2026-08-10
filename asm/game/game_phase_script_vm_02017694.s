@@ -1,11 +1,11 @@
 ; Matching retail form; see src/game/game_phase_script_vm_runtime_control_opcodes.c.
 .text
 .extern data_021052fc
-.extern func_02012704
+.extern GamePhaseScriptVm_Pop
 .global func_02017694
 func_02017694:
     stmdb sp!, {r3, lr}
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     ldr r2, L_020176c4
     mov r1, r0
     ldr r0, [r2]

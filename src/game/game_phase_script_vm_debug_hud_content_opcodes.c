@@ -22,8 +22,8 @@ s32 func_02017414(GamePhaseActorScriptVm *self)
 /* Pop a numeric value and row index, write that debug-HUD row, and return zero. */
 s32 func_0201741c(GamePhaseActorScriptVm *self)
 {
-    s32 value = (s32)func_02012704(&self->base);
-    s32 row = (s32)func_02012704(&self->base);
+    s32 value = (s32)GamePhaseScriptVm_Pop(&self->base);
+    s32 row = (s32)GamePhaseScriptVm_Pop(&self->base);
     DebugHudState_SetNumberRow(DebugHudState_GetGlobal(), row, value);
     return 0;
 }
@@ -35,8 +35,8 @@ s32 func_0201741c(GamePhaseActorScriptVm *self)
  */
 s32 func_02017450(GamePhaseActorScriptVm *self)
 {
-    s32 index = (s32)func_02012704(&self->base);
-    s32 row = (s32)func_02012704(&self->base);
+    s32 index = (s32)GamePhaseScriptVm_Pop(&self->base);
+    s32 row = (s32)GamePhaseScriptVm_Pop(&self->base);
     u8 *collection = (u8 *)Actor_GetCollection(self->actor_84);
     const u16 *text = 0;
     switch (*(u32 *)(collection + 0x2e84)) {
@@ -61,10 +61,10 @@ s32 func_02017450(GamePhaseActorScriptVm *self)
 s32 func_020174dc(GamePhaseActorScriptVm *self)
 {
     DebugHudRect rect;
-    s32 height = (s32)func_02012704(&self->base);
-    s32 width = (s32)func_02012704(&self->base);
-    s32 top = (s32)func_02012704(&self->base);
-    s32 left = (s32)func_02012704(&self->base);
+    s32 height = (s32)GamePhaseScriptVm_Pop(&self->base);
+    s32 width = (s32)GamePhaseScriptVm_Pop(&self->base);
+    s32 top = (s32)GamePhaseScriptVm_Pop(&self->base);
+    s32 left = (s32)GamePhaseScriptVm_Pop(&self->base);
     rect.left = left;
     rect.top = top;
     rect.right = left + width;

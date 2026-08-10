@@ -22,14 +22,14 @@ extern s32 func_0208372c(s32 index);
 s32 func_020192f4(GamePhaseActorScriptVm *self)
 {
     typedef void (*Handler)(void);
-    s32 index = (s32)func_02012704(&self->base);
-    s32 mode = (s32)func_02012704(&self->base);
+    s32 index = (s32)GamePhaseScriptVm_Pop(&self->base);
+    s32 mode = (s32)GamePhaseScriptVm_Pop(&self->base);
     switch (mode) {
     case 1:
-        func_020127f8(&self->base, func_0208372c(index) == 2);
+        GamePhaseScriptVm_SetResult(&self->base, func_0208372c(index) == 2);
         break;
     case 2:
-        func_020127f8(&self->base, func_0208372c(index) == 1);
+        GamePhaseScriptVm_SetResult(&self->base, func_0208372c(index) == 1);
         break;
     case 3:
         ((Handler)data_020f1678[index][1])();

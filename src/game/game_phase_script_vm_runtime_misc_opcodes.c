@@ -20,7 +20,7 @@ extern s32 Actor_GetCachedTerrainHeight(void *actor);
  */
 s32 func_02016814(GamePhaseActorScriptVm *self)
 {
-    s32 enabled = (s32)func_02012704(&self->base);
+    s32 enabled = (s32)GamePhaseScriptVm_Pop(&self->base);
     u8 *collection;
     u8 *actor;
     if (enabled != 0)
@@ -71,6 +71,6 @@ s32 func_020168d0(GamePhaseActorScriptVm *self)
     if (!result)
         result = (*(s32 *)(actor + 0x24) >> 12) >
                  (Actor_GetCachedTerrainHeight(actor) >> 12);
-    func_020127f8(&self->base, result);
+    GamePhaseScriptVm_SetResult(&self->base, result);
     return 0;
 }

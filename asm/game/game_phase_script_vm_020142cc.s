@@ -2,12 +2,12 @@
 .text
 .extern data_02105310
 .extern ActorRuntimeCollection_SetPendingValue
-.extern func_02012704
+.extern GamePhaseScriptVm_Pop
 
     .global func_020142cc
 func_020142cc: ; 0x020142cc
     stmdb sp!, {r3, lr}
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     mov r1, r0
     ldr r0, L_020142e8
     bl ActorRuntimeCollection_SetPendingValue

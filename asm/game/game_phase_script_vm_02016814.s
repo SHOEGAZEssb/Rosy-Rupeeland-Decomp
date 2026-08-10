@@ -4,12 +4,12 @@
 .extern GameWork_SetFlag
 .extern data_021052fc
 .extern GamePhaseRuntime_GetActorCollection
-.extern func_02012704
+.extern GamePhaseScriptVm_Pop
 .extern gGameWork
 .global func_02016814
 func_02016814:
     stmdb sp!, {r3, lr}
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     cmp r0, #0
     mov r1, #0x3ec
     beq L_02016858

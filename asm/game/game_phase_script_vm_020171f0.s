@@ -2,7 +2,7 @@
 .text
 .extern func_02004fe0
 .extern func_02005058
-.extern func_02012704
+.extern GamePhaseScriptVm_Pop
 .extern func_0204e2ac
 .global func_020171f0
 func_020171f0:
@@ -14,34 +14,34 @@ func_020171f0:
     add r0, sp, #0x1c
     bl func_02004fe0
     mov r0, r5
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     mov r4, r0
     mov r0, r5
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     mov r1, r0, lsl #4
     mov r0, r5
     str r1, [sp, #0x28]
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     mov r1, r0, lsl #4
     mov r0, r5
     str r1, [sp, #0x24]
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     mov r1, r0, lsl #4
     mov r0, r5
     str r1, [sp, #0x20]
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     mov r1, r0, lsl #12
     mov r0, r5
     str r1, [sp, #0x38]
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     mov r1, r0, lsl #12
     mov r0, r5
     str r1, [sp, #0x34]
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     mov r1, r0, lsl #12
     mov r0, r5
     str r1, [sp, #0x30]
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     cmp r0, #200
     movge r3, #6
     bge L_020172c8

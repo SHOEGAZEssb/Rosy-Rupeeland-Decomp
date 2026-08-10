@@ -79,9 +79,9 @@ static void *runtimeObjectList(void)
  */
 s32 func_02017d1c(GamePhaseActorScriptVm *self)
 {
-    s32 parameter = (s32)func_02012704(&self->base);
-    s32 value = (s32)func_02012704(&self->base);
-    s32 mode = (s32)func_02012704(&self->base);
+    s32 parameter = (s32)GamePhaseScriptVm_Pop(&self->base);
+    s32 value = (s32)GamePhaseScriptVm_Pop(&self->base);
+    s32 mode = (s32)GamePhaseScriptVm_Pop(&self->base);
     void *object;
 
     switch (mode) {

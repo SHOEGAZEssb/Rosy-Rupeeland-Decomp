@@ -26,15 +26,15 @@ extern s32 func_02016f28(const RectS32 *rect, s32 x, s32 y);
  */
 s32 func_0201add4(GamePhaseActorScriptVm *self)
 {
-    s32 bottom = (s32)func_02012704(&self->base);
-    s32 right = (s32)func_02012704(&self->base);
-    s32 top = (s32)func_02012704(&self->base);
-    s32 left = (s32)func_02012704(&self->base);
-    s32 y = (s32)func_02012704(&self->base);
-    s32 x = (s32)func_02012704(&self->base);
+    s32 bottom = (s32)GamePhaseScriptVm_Pop(&self->base);
+    s32 right = (s32)GamePhaseScriptVm_Pop(&self->base);
+    s32 top = (s32)GamePhaseScriptVm_Pop(&self->base);
+    s32 left = (s32)GamePhaseScriptVm_Pop(&self->base);
+    s32 y = (s32)GamePhaseScriptVm_Pop(&self->base);
+    s32 x = (s32)GamePhaseScriptVm_Pop(&self->base);
     RectS32 rect;
 
     func_02016f14(&rect, left, top, right, bottom);
-    func_020127f8(&self->base, (u32)func_02016f28(&rect, x, y));
+    GamePhaseScriptVm_SetResult(&self->base, (u32)func_02016f28(&rect, x, y));
     return 0;
 }

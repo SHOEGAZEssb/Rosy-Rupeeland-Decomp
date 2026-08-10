@@ -42,11 +42,11 @@ extern void func_020189b0(void *bounds, s32 horizontal, s32 vertical);
  */
 s32 func_020189e4(GamePhaseActorScriptVm *self)
 {
-    s16 fourth = (s16)func_02012704(&self->base);
-    s16 third = (s16)func_02012704(&self->base);
-    s16 second = (s16)func_02012704(&self->base);
-    s16 first = (s16)func_02012704(&self->base);
-    s32 command = (s32)func_02012704(&self->base);
+    s16 fourth = (s16)GamePhaseScriptVm_Pop(&self->base);
+    s16 third = (s16)GamePhaseScriptVm_Pop(&self->base);
+    s16 second = (s16)GamePhaseScriptVm_Pop(&self->base);
+    s16 first = (s16)GamePhaseScriptVm_Pop(&self->base);
+    s32 command = (s32)GamePhaseScriptVm_Pop(&self->base);
     ActorInteractionBounds *bounds =
         (ActorInteractionBounds *)((u8 *)self->actor_84 + 0x60);
 

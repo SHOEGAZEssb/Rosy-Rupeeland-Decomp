@@ -4,16 +4,16 @@
 .extern DebugHudState_SetTextRow
 .extern DebugHud_GetTextTableEntry
 .extern DebugHudState_GetGlobal
-.extern func_02012704
+.extern GamePhaseScriptVm_Pop
 .extern Actor_GetCollection
 .global func_02017450
 func_02017450:
     stmdb sp!, {r3, r4, r5, r6, r7, lr}
     mov r7, r0
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     mov r4, r0
     mov r0, r7
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     mov r5, r0
     ldr r0, [r7, #0x84]
     bl Actor_GetCollection

@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/game_phase_actor_script_vm_lifecycle.c.
 .text
-.extern func_0201264c
+.extern GamePhaseScriptVm_Assign
 .extern func_0201b1ac
 .global func_0201b180
 func_0201b180: ; 0x0201b180
@@ -9,7 +9,7 @@ func_0201b180: ; 0x0201b180
     mov r4, r1
     cmp r5, r4
     ldmeqia sp!, {r3, r4, r5, pc}
-    bl func_0201264c
+    bl GamePhaseScriptVm_Assign
     mov r0, r5
     mov r1, r4
     bl func_0201b1ac

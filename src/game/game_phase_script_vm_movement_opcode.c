@@ -39,12 +39,12 @@ static fx32 squareFx32(fx32 value)
  */
 s32 func_020130ec(GamePhaseActorScriptVm *self)
 {
-    u32 useZ = func_02012704(&self->base);
-    u32 mode = func_02012704(&self->base);
-    s32 durationOrSpeed = (s32)func_02012704(&self->base);
-    fx32 z = (s32)func_02012704(&self->base) << 12;
-    fx32 y = (s32)func_02012704(&self->base) << 12;
-    fx32 x = (s32)func_02012704(&self->base) << 12;
+    u32 useZ = GamePhaseScriptVm_Pop(&self->base);
+    u32 mode = GamePhaseScriptVm_Pop(&self->base);
+    s32 durationOrSpeed = (s32)GamePhaseScriptVm_Pop(&self->base);
+    fx32 z = (s32)GamePhaseScriptVm_Pop(&self->base) << 12;
+    fx32 y = (s32)GamePhaseScriptVm_Pop(&self->base) << 12;
+    fx32 x = (s32)GamePhaseScriptVm_Pop(&self->base) << 12;
     u8 *actor = (u8 *)self->actor_84;
     VecFx32Object *position = (VecFx32Object *)(actor + 0x18);
     VecFx32Object target;
@@ -103,7 +103,7 @@ s32 func_020130ec(GamePhaseActorScriptVm *self)
     VecFx32Stepper_Assign(actor + 0x198, movement);
     VecFx32Stepper_Destroy(movement);
     *(u32 *)(actor + 0x10) &= ~1u;
-    func_020127f8(&self->base, duration);
+    GamePhaseScriptVm_SetResult(&self->base, duration);
     if (*(s16 *)(actor + 0xe4) == 1 && *(void **)(actor + 0x54) != 0)
         *(u16 *)(*(u8 **)(actor + 0x54) + 0x24) &= (u16)~0x20;
     func_02005058(&target);

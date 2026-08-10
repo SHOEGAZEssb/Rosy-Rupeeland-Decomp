@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/game_phase_script_vm_indexed_object_command_opcodes.c.
 .text
 .extern data_021f5128
-.extern func_02012704
+.extern GamePhaseScriptVm_Pop
 .extern func_0207ac84
 .extern func_0207b334
 .extern func_0207c5c8
@@ -9,13 +9,13 @@
 func_02017818:
     stmdb sp!, {r4, r5, r6, lr}
     mov r6, r0
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     mov r5, r0
     mov r0, r6
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     mov r4, r0
     mov r0, r6
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     ldr r1, L_02017878
     ldr r1, [r1]
     ldr r6, [r1, r0, lsl #2]

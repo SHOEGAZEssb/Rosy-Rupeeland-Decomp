@@ -2,16 +2,16 @@
 .text
 .extern DisplayBrightness_StartMainTransition
 .extern DisplayBrightness_StartSubTransition
-.extern func_02012704
+.extern GamePhaseScriptVm_Pop
 
     .global func_020141d4
 func_020141d4: ; 0x020141d4
     stmdb sp!, {r3, r4, r5, lr}
     mov r5, r0
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     mov r4, r0
     mov r0, r5
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     cmp r0, #0x0
     beq L_02014220
     tst r4, #0x1

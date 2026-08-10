@@ -53,12 +53,12 @@ static u16 updateDirectionFlags(u16 flags, s32 horizontal, s32 vertical)
  */
 s32 func_02018208(GamePhaseActorScriptVm *self)
 {
-    s32 action = (s32)func_02012704(&self->base);
-    s32 z = (s32)func_02012704(&self->base);
-    s32 y = (s32)func_02012704(&self->base);
-    s32 x = (s32)func_02012704(&self->base);
-    s32 command = (s32)func_02012704(&self->base);
-    s32 targetIndex = (s32)func_02012704(&self->base);
+    s32 action = (s32)GamePhaseScriptVm_Pop(&self->base);
+    s32 z = (s32)GamePhaseScriptVm_Pop(&self->base);
+    s32 y = (s32)GamePhaseScriptVm_Pop(&self->base);
+    s32 x = (s32)GamePhaseScriptVm_Pop(&self->base);
+    s32 command = (s32)GamePhaseScriptVm_Pop(&self->base);
+    s32 targetIndex = (s32)GamePhaseScriptVm_Pop(&self->base);
     u8 *object = (u8 *)ActorCollection_FindActorByDescriptorValue(Actor_GetCollection(self->actor_84),
                                      targetIndex);
     u16 subtype = *(u16 *)(object + 0x4e);

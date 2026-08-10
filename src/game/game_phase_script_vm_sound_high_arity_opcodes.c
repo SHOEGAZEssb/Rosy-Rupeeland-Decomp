@@ -21,12 +21,12 @@ extern void func_02059604(void *context, s32 first, s32 second, s32 third,
  */
 s32 func_0201ac18(GamePhaseActorScriptVm *self)
 {
-    s32 fifth = (s32)func_02012704(&self->base);
-    s32 fourth = (s32)func_02012704(&self->base);
-    s32 third = (s32)func_02012704(&self->base);
-    s32 second = (s32)func_02012704(&self->base);
-    s32 first = (s32)func_02012704(&self->base);
-    s32 command = (s32)func_02012704(&self->base);
+    s32 fifth = (s32)GamePhaseScriptVm_Pop(&self->base);
+    s32 fourth = (s32)GamePhaseScriptVm_Pop(&self->base);
+    s32 third = (s32)GamePhaseScriptVm_Pop(&self->base);
+    s32 second = (s32)GamePhaseScriptVm_Pop(&self->base);
+    s32 first = (s32)GamePhaseScriptVm_Pop(&self->base);
+    s32 command = (s32)GamePhaseScriptVm_Pop(&self->base);
 
     if (command == 32) {
         func_02059550(gSoundContext, (u16)first, second, third, fourth, fifth);
@@ -37,13 +37,13 @@ s32 func_0201ac18(GamePhaseActorScriptVm *self)
 /* Pop seven operands, pass them unchanged to the sound context, and return zero. */
 s32 func_0201ac9c(GamePhaseActorScriptVm *self)
 {
-    s32 seventh = (s32)func_02012704(&self->base);
-    s32 sixth = (s32)func_02012704(&self->base);
-    s32 fifth = (s32)func_02012704(&self->base);
-    s32 fourth = (s32)func_02012704(&self->base);
-    s32 third = (s32)func_02012704(&self->base);
-    s32 second = (s32)func_02012704(&self->base);
-    s32 first = (s32)func_02012704(&self->base);
+    s32 seventh = (s32)GamePhaseScriptVm_Pop(&self->base);
+    s32 sixth = (s32)GamePhaseScriptVm_Pop(&self->base);
+    s32 fifth = (s32)GamePhaseScriptVm_Pop(&self->base);
+    s32 fourth = (s32)GamePhaseScriptVm_Pop(&self->base);
+    s32 third = (s32)GamePhaseScriptVm_Pop(&self->base);
+    s32 second = (s32)GamePhaseScriptVm_Pop(&self->base);
+    s32 first = (s32)GamePhaseScriptVm_Pop(&self->base);
 
     func_02059604(gSoundContext, first, second, third, fourth,
                   fifth, sixth, seventh);

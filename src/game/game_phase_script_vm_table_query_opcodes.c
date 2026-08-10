@@ -18,7 +18,7 @@ extern void *func_0206f9d4(void *table, u32 value);
 /* Pop a u16 value, pass it to func_02063820 for data_021e9ac0, and return zero. */
 s32 func_02016144(GamePhaseActorScriptVm *self)
 {
-    u16 value = (u16)func_02012704(&self->base);
+    u16 value = (u16)GamePhaseScriptVm_Pop(&self->base);
     func_02063820(data_021e9ac0, value);
     return 0;
 }
@@ -26,22 +26,22 @@ s32 func_02016144(GamePhaseActorScriptVm *self)
 /* Push whether func_020636f0 returns a non-null entry for data_021e9ac0, then return zero. */
 s32 func_0201616c(GamePhaseActorScriptVm *self)
 {
-    func_020127f8(&self->base, func_020636f0(data_021e9ac0) != 0);
+    GamePhaseScriptVm_SetResult(&self->base, func_020636f0(data_021e9ac0) != 0);
     return 0;
 }
 
 /* Pop a value, push whether func_020636ac finds it in data_021e9ac0, and return zero. */
 s32 func_020161ac(GamePhaseActorScriptVm *self)
 {
-    u32 value = func_02012704(&self->base);
-    func_020127f8(&self->base, func_020636ac(data_021e9ac0, value) != 0);
+    u32 value = GamePhaseScriptVm_Pop(&self->base);
+    GamePhaseScriptVm_SetResult(&self->base, func_020636ac(data_021e9ac0, value) != 0);
     return 0;
 }
 
 /* Pop a value, push whether func_0206f9d4 finds it in data_021e9e00, and return zero. */
 s32 func_020161f4(GamePhaseActorScriptVm *self)
 {
-    u32 value = func_02012704(&self->base);
-    func_020127f8(&self->base, func_0206f9d4(data_021e9e00, value) != 0);
+    u32 value = GamePhaseScriptVm_Pop(&self->base);
+    GamePhaseScriptVm_SetResult(&self->base, func_0206f9d4(data_021e9e00, value) != 0);
     return 0;
 }

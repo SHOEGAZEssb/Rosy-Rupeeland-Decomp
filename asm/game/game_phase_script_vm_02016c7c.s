@@ -1,23 +1,23 @@
 ; Matching retail form; see src/game/game_phase_script_vm_packed_runtime_update_opcode.c.
 .text
 .extern data_021052fc
-.extern func_02012704
+.extern GamePhaseScriptVm_Pop
 .extern func_02029b70
 .global func_02016c7c
 func_02016c7c:
     stmdb sp!, {r3, r4, r5, r6, r7, lr}
     sub sp, sp, #8
     mov r4, r0
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     mov r5, r0
     mov r0, r4
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     mov r6, r0
     mov r0, r4
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     mov r7, r0
     mov r0, r4
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     mov r4, r0
     ldr r0, L_02016d5c
     mov r1, r7

@@ -35,14 +35,14 @@ s32 func_020171f0(GamePhaseActorScriptVm *self)
 
     func_02004fe0(&position);
     func_02004fe0(&secondary);
-    first = (s32)func_02012704(&self->base);
-    secondary.value.z = (s32)func_02012704(&self->base) << 4;
-    secondary.value.y = (s32)func_02012704(&self->base) << 4;
-    secondary.value.x = (s32)func_02012704(&self->base) << 4;
-    position.value.z = (s32)func_02012704(&self->base) << 12;
-    position.value.y = (s32)func_02012704(&self->base) << 12;
-    position.value.x = (s32)func_02012704(&self->base) << 12;
-    tierSource = (s32)func_02012704(&self->base);
+    first = (s32)GamePhaseScriptVm_Pop(&self->base);
+    secondary.value.z = (s32)GamePhaseScriptVm_Pop(&self->base) << 4;
+    secondary.value.y = (s32)GamePhaseScriptVm_Pop(&self->base) << 4;
+    secondary.value.x = (s32)GamePhaseScriptVm_Pop(&self->base) << 4;
+    position.value.z = (s32)GamePhaseScriptVm_Pop(&self->base) << 12;
+    position.value.y = (s32)GamePhaseScriptVm_Pop(&self->base) << 12;
+    position.value.x = (s32)GamePhaseScriptVm_Pop(&self->base) << 12;
+    tierSource = (s32)GamePhaseScriptVm_Pop(&self->base);
 
     if (tierSource >= 200)
         tier = 6;

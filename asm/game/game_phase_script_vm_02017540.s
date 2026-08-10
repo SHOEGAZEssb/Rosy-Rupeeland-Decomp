@@ -3,7 +3,7 @@
 .extern OS_Halt
 .extern func_02004fe0
 .extern func_02005058
-.extern func_02012704
+.extern GamePhaseScriptVm_Pop
 .extern Position_AdjustForTerrainHeight
 .extern func_0204eb18
 .global func_02017540
@@ -14,18 +14,18 @@ func_02017540:
     add r0, sp, #0x10
     bl func_02004fe0
     mov r0, r4
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     mov r5, r0, lsl #12
     mov r0, r4
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     mov r1, r0, lsl #12
     mov r0, r4
     str r1, [sp, #0x18]
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     mov r1, r0, lsl #12
     mov r0, r4
     str r1, [sp, #0x14]
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     mov r4, r0
     add r0, sp, #0x10
     bl Position_AdjustForTerrainHeight

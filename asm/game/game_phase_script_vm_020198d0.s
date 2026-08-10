@@ -4,35 +4,35 @@
 .extern func_020020ec
 .extern func_020020f8
 .extern func_020021c4
-.extern func_02012704
+.extern GamePhaseScriptVm_Pop
 .global func_020198d0
 func_020198d0:
     stmdb sp!, {r4, r5, r6, r7, r8, lr}
     sub sp, sp, #0x8
     mov r7, r0
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     mov r0, r0, lsl #0x10
     mov r0, r0, asr #0x10
     mov r1, r0, lsl #0x10
     mov r0, r7
     mov r4, r1, lsr #0x10
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     mov r1, r0, lsl #0x10
     mov r0, r7
     mov r5, r1, lsr #0x10
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     mov r0, r0, lsl #0x10
     mov r0, r0, asr #0x10
     mov r0, r0, lsl #0x10
     mov r6, r0, lsr #0x10
     mov r0, r7
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     mov r0, r0, lsl #0x10
     mov r0, r0, asr #0x10
     mov r0, r0, lsl #0x10
     mov r8, r0, lsr #0x10
     mov r0, r7
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     mov r0, r0, lsl #0x10
     mov r7, r0, asr #0x10
     bl func_020021c4

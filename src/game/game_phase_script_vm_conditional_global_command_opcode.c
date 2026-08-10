@@ -18,9 +18,9 @@ extern void func_020828ac(void *object, u32 value);
  */
 s32 func_020178fc(GamePhaseActorScriptVm *self)
 {
-    (void)func_02012704(&self->base);
-    (void)func_02012704(&self->base);
-    if (func_02012704(&self->base) == 0)
+    (void)GamePhaseScriptVm_Pop(&self->base);
+    (void)GamePhaseScriptVm_Pop(&self->base);
+    if (GamePhaseScriptVm_Pop(&self->base) == 0)
         func_020828ac(data_021f5ebc, 0x100);
     return 0;
 }

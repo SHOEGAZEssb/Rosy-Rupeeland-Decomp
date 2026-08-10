@@ -20,10 +20,10 @@ extern void Actor_AdjustPositionForTerrainHeight(void *actor);
  */
 s32 func_02016d60(GamePhaseActorScriptVm *self)
 {
-    s32 height = (s32)func_02012704(&self->base) << 4;
-    s32 width = (s32)func_02012704(&self->base) << 4;
-    s32 gridY = (s32)func_02012704(&self->base);
-    s32 gridX = (s32)func_02012704(&self->base);
+    s32 height = (s32)GamePhaseScriptVm_Pop(&self->base) << 4;
+    s32 width = (s32)GamePhaseScriptVm_Pop(&self->base) << 4;
+    s32 gridY = (s32)GamePhaseScriptVm_Pop(&self->base);
+    s32 gridX = (s32)GamePhaseScriptVm_Pop(&self->base);
     VecFx32Object position;
     u8 *actor = (u8 *)self->actor_84;
     s32 left = -width / 2;

@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/overlay60_object_spawn.c.
 .text
-.extern func_02012704
+.extern GamePhaseScriptVm_Pop
 .extern func_020be328
 .extern func_02072b68
 .extern func_020791e0

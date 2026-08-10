@@ -35,8 +35,8 @@ extern void func_02059248(void *context, s32 enabled);
  */
 s32 func_0201a614(GamePhaseActorScriptVm *self)
 {
-    s32 value = (s32)func_02012704(&self->base);
-    s32 command = (s32)func_02012704(&self->base);
+    s32 value = (s32)GamePhaseScriptVm_Pop(&self->base);
+    s32 command = (s32)GamePhaseScriptVm_Pop(&self->base);
     u16 packed;
     s32 soundId;
     s32 variant;
@@ -64,12 +64,12 @@ s32 func_0201a614(GamePhaseActorScriptVm *self)
         packed = (u16)value;
         soundId = packed >> 7;
         variant = packed & 0x7f;
-        func_020127f8(&self->base,
+        GamePhaseScriptVm_SetResult(&self->base,
                       (u32)func_020594a4(gSoundContext, soundId, variant));
         break;
     case 4: func_02058d40(gSoundContext, value); break;
     case 5:
-        func_020127f8(&self->base, (u32)func_02059344(gSoundContext, (u16)value));
+        GamePhaseScriptVm_SetResult(&self->base, (u32)func_02059344(gSoundContext, (u16)value));
         break;
     case 6: func_020594ec(gSoundContext, (u16)value); break;
     case 7: func_0205958c(gSoundContext, value); break;

@@ -21,15 +21,15 @@ extern void func_02059a00(void *context);
 /* Pop a value, pass its low byte shifted by eight to the converter, push, return zero. */
 s32 func_0201a50c(GamePhaseActorScriptVm *self)
 {
-    u16 value = (u16)((u8)func_02012704(&self->base) << 8);
-    func_020127f8(&self->base, (u32)func_020570b0(value));
+    u16 value = (u16)((u8)GamePhaseScriptVm_Pop(&self->base) << 8);
+    GamePhaseScriptVm_SetResult(&self->base, (u32)func_020570b0(value));
     return 0;
 }
 
 /* Pop a value, pass it to the recovered global operation, and return zero. */
 s32 func_0201a540(GamePhaseActorScriptVm *self)
 {
-    func_02099114((s32)func_02012704(&self->base));
+    func_02099114((s32)GamePhaseScriptVm_Pop(&self->base));
     return 0;
 }
 
@@ -41,10 +41,10 @@ s32 func_0201a540(GamePhaseActorScriptVm *self)
  */
 s32 func_0201a554(GamePhaseActorScriptVm *self)
 {
-    s32 command = (s32)func_02012704(&self->base);
+    s32 command = (s32)GamePhaseScriptVm_Pop(&self->base);
     switch (command) {
     case 15:
-        func_020127f8(&self->base, func_02059510(gSoundContext, -1) != 0);
+        GamePhaseScriptVm_SetResult(&self->base, func_02059510(gSoundContext, -1) != 0);
         break;
     case 16: func_020595d4(gSoundContext); break;
     case 17: func_020595ec(gSoundContext); break;

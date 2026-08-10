@@ -2,11 +2,11 @@
 .text
 .extern data_021052fc
 .extern GamePhaseAreaScene_SetEnabled
-.extern func_02012704
+.extern GamePhaseScriptVm_Pop
 .global func_02017668
 func_02017668:
     stmdb sp!, {r3, lr}
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     ldr r2, L_02017690
     mov r1, r0
     ldr r0, [r2]

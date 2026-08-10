@@ -15,7 +15,7 @@ extern void *func_02028388(s32 index);
 /* Query the subobject at global-context offset 0x34, push its result, and return zero. */
 s32 func_0201b040(GamePhaseActorScriptVm *self)
 {
-    func_020127f8(&self->base,
+    GamePhaseScriptVm_SetResult(&self->base,
                   (u32)func_0206522c((u8 *)data_021e9ac0 + 0x34));
     return 0;
 }
@@ -23,8 +23,8 @@ s32 func_0201b040(GamePhaseActorScriptVm *self)
 /* Pop a one-based record index, push its signed byte at offset 0x4c, and return zero. */
 s32 func_0201b070(GamePhaseActorScriptVm *self)
 {
-    s32 index = (s32)func_02012704(&self->base) - 1;
+    s32 index = (s32)GamePhaseScriptVm_Pop(&self->base) - 1;
     s8 value = *(s8 *)((u8 *)func_02028388(index) + 0x4c);
-    func_020127f8(&self->base, (u32)value);
+    GamePhaseScriptVm_SetResult(&self->base, (u32)value);
     return 0;
 }

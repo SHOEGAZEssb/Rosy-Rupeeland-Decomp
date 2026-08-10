@@ -2,18 +2,18 @@
 .text
 .extern data_021052fc
 .extern ActorMotion_SetOscillation
-.extern func_02012704
+.extern GamePhaseScriptVm_Pop
 .global func_02017008
 func_02017008:
     stmdb sp!, {r4, r5, r6, lr}
     mov r6, r0
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     mov r5, r0
     mov r0, r6
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     mov r4, r0
     mov r0, r6
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     mov r2, r4
     mov r3, r5
     mov r1, r0

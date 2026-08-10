@@ -55,16 +55,16 @@ s32 func_020139d0(GamePhaseActorScriptVm *self)
 /* Pop a value, push func_02032e14(bound actor, value), and return zero. */
 s32 func_020139d8(GamePhaseActorScriptVm *self)
 {
-    u32 value = func_02012704(&self->base);
-    func_020127f8(&self->base, func_02032e14(self->actor_84, value));
+    u32 value = GamePhaseScriptVm_Pop(&self->base);
+    GamePhaseScriptVm_SetResult(&self->base, func_02032e14(self->actor_84, value));
     return 0;
 }
 
 /* Pop second then first, call func_020330fc on the bound actor, and return zero. */
 s32 func_02013a04(GamePhaseActorScriptVm *self)
 {
-    u32 second = func_02012704(&self->base);
-    u32 first = func_02012704(&self->base);
+    u32 second = GamePhaseScriptVm_Pop(&self->base);
+    u32 first = GamePhaseScriptVm_Pop(&self->base);
     func_020330fc(self->actor_84, first, second);
     return 0;
 }
@@ -75,10 +75,10 @@ s32 func_02013a04(GamePhaseActorScriptVm *self)
  */
 s32 func_02013a34(GamePhaseActorScriptVm *self)
 {
-    u32 value = func_02012704(&self->base);
-    s32 index = (s32)func_02012704(&self->base);
+    u32 value = GamePhaseScriptVm_Pop(&self->base);
+    s32 index = (s32)GamePhaseScriptVm_Pop(&self->base);
     void *target = ActorCollection_FindActorByDescriptorValue(Actor_GetCollection(self->actor_84), index);
-    func_020127f8(&self->base, func_02032e14(target, value));
+    GamePhaseScriptVm_SetResult(&self->base, func_02032e14(target, value));
     return 0;
 }
 
@@ -88,9 +88,9 @@ s32 func_02013a34(GamePhaseActorScriptVm *self)
  */
 s32 func_02013a7c(GamePhaseActorScriptVm *self)
 {
-    u32 second = func_02012704(&self->base);
-    u32 first = func_02012704(&self->base);
-    s32 index = (s32)func_02012704(&self->base);
+    u32 second = GamePhaseScriptVm_Pop(&self->base);
+    u32 first = GamePhaseScriptVm_Pop(&self->base);
+    s32 index = (s32)GamePhaseScriptVm_Pop(&self->base);
     void *target = ActorCollection_FindActorByDescriptorValue(Actor_GetCollection(self->actor_84), index);
     func_020330fc(target, first, second);
     return 0;

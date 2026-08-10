@@ -2,8 +2,8 @@
 .text
 .extern ActorMotionOscillation_InitInterval
 .extern ActorMotionOscillation_Sample
-.extern func_02012704
-.extern func_020127f8
+.extern GamePhaseScriptVm_Pop
+.extern GamePhaseScriptVm_SetResult
 .extern func_020befec
 .extern gSystemState
 .extern OS_Halt
@@ -12,19 +12,19 @@ func_0201a3e4:
     stmdb sp!, {r4, r5, r6, r7, r8, r9, lr}
     sub sp, sp, #0x2c
     mov r4, r0
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     mov r8, r0
     mov r0, r4
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     mov r7, r0
     mov r0, r4
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     mov r6, r0
     mov r0, r4
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     mov r5, r0
     mov r0, r4
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     cmp r0, #0x4
     addls pc, pc, r0, lsl #0x2
     b L_0201a4ec
@@ -85,7 +85,7 @@ L_0201a4ec:
 L_0201a4f0:
     mov r0, r4
     mov r1, r9
-    bl func_020127f8
+    bl GamePhaseScriptVm_SetResult
     mov r0, #0x0
     add sp, sp, #0x2c
     ldmia sp!, {r4, r5, r6, r7, r8, r9, pc}

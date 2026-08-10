@@ -19,9 +19,9 @@ extern s32 func_020ae024(fx32 first, fx32 second);
  */
 s32 func_02012d18(GamePhaseActorScriptVm *self)
 {
-    u32 angle = func_02012704(&self->base);
+    u32 angle = GamePhaseScriptVm_Pop(&self->base);
     s32 index = (s16)((angle & 0xff) << 8) >> 4;
-    func_020127f8(&self->base, data_020c9670[index * 2]);
+    GamePhaseScriptVm_SetResult(&self->base, data_020c9670[index * 2]);
     return 0;
 }
 
@@ -31,9 +31,9 @@ s32 func_02012d18(GamePhaseActorScriptVm *self)
  */
 s32 func_02012d50(GamePhaseActorScriptVm *self)
 {
-    u32 angle = func_02012704(&self->base);
+    u32 angle = GamePhaseScriptVm_Pop(&self->base);
     s32 index = (s16)((angle & 0xff) << 8) >> 4;
-    func_020127f8(&self->base, data_020c9670[index * 2 + 1]);
+    GamePhaseScriptVm_SetResult(&self->base, data_020c9670[index * 2 + 1]);
     return 0;
 }
 
@@ -44,10 +44,10 @@ s32 func_02012d50(GamePhaseActorScriptVm *self)
  */
 s32 func_02012d90(GamePhaseActorScriptVm *self)
 {
-    fx32 second = (s32)func_02012704(&self->base) << 12;
-    fx32 first = (s32)func_02012704(&self->base) << 12;
+    fx32 second = (s32)GamePhaseScriptVm_Pop(&self->base) << 12;
+    fx32 first = (s32)GamePhaseScriptVm_Pop(&self->base) << 12;
     s32 angle = (s16)func_020ae024(first, second);
-    func_020127f8(&self->base, (angle + ((u32)angle >> 24)) >> 8);
+    GamePhaseScriptVm_SetResult(&self->base, (angle + ((u32)angle >> 24)) >> 8);
     return 0;
 }
 
@@ -56,7 +56,7 @@ s32 func_02012dd8(GamePhaseActorScriptVm *self)
 {
     VecFx32Object value;
     func_02005030(&value, (VecFx32Object *)((u8 *)self->actor_84 + 0x18));
-    func_020127f8(&self->base, value.value.x >> 12);
+    GamePhaseScriptVm_SetResult(&self->base, value.value.x >> 12);
     func_02005058(&value);
     return 0;
 }
@@ -66,7 +66,7 @@ s32 func_02012e18(GamePhaseActorScriptVm *self)
 {
     VecFx32Object value;
     func_02005030(&value, (VecFx32Object *)((u8 *)self->actor_84 + 0x18));
-    func_020127f8(&self->base, value.value.y >> 12);
+    GamePhaseScriptVm_SetResult(&self->base, value.value.y >> 12);
     func_02005058(&value);
     return 0;
 }
@@ -76,7 +76,7 @@ s32 func_02012e58(GamePhaseActorScriptVm *self)
 {
     VecFx32Object value;
     func_02005030(&value, (VecFx32Object *)((u8 *)self->actor_84 + 0x18));
-    func_020127f8(&self->base, value.value.z >> 12);
+    GamePhaseScriptVm_SetResult(&self->base, value.value.z >> 12);
     func_02005058(&value);
     return 0;
 }

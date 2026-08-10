@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/game_phase_script_vm_runtime_utility_query_opcodes.c.
 .text
-.extern func_020127f8
+.extern GamePhaseScriptVm_SetResult
 .extern func_0207f80c
 .extern gRuntimeContext
 .global func_0201918c
@@ -15,7 +15,7 @@ func_0201918c:
     bl func_0207f80c
     mov r1, r0
     mov r0, r4
-    bl func_020127f8
+    bl GamePhaseScriptVm_SetResult
     mov r0, #0x0
     ldmia sp!, {r4, pc}
 L_020191c0: .word gRuntimeContext

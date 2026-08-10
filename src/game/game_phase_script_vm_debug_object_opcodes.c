@@ -31,9 +31,9 @@ extern void func_ov059_0220fd20(void *allocation, void *first,
  */
 s32 func_020156fc(GamePhaseActorScriptVm *self)
 {
-    u32 third = func_02012704(&self->base);
-    u32 secondValue = func_02012704(&self->base);
-    u32 firstValue = func_02012704(&self->base);
+    u32 third = GamePhaseScriptVm_Pop(&self->base);
+    u32 secondValue = GamePhaseScriptVm_Pop(&self->base);
+    u32 firstValue = GamePhaseScriptVm_Pop(&self->base);
     u8 *collection = (u8 *)Actor_GetCollection(self->actor_84);
     void *second = func_0201da20(*(u32 *)(collection + 0x2e84), firstValue);
     void *first = func_0201d9e4(secondValue);
@@ -56,11 +56,11 @@ s32 func_0201579c(GamePhaseActorScriptVm *self)
     void *first;
     void *second;
     void *state;
-    (void)func_02012704(&self->base);
-    (void)func_02012704(&self->base);
+    (void)GamePhaseScriptVm_Pop(&self->base);
+    (void)GamePhaseScriptVm_Pop(&self->base);
     {
-        u32 lookup = func_02012704(&self->base);
-        u32 tableValue = func_02012704(&self->base);
+        u32 lookup = GamePhaseScriptVm_Pop(&self->base);
+        u32 tableValue = GamePhaseScriptVm_Pop(&self->base);
         func_0201da34(self);
         second = func_020791e0(data_021f3ecc, (u16)tableValue);
         first = func_0201d9e4(lookup);

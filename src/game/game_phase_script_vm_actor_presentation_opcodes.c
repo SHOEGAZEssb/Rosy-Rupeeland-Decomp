@@ -15,7 +15,7 @@ extern void Actor_SetAttachmentBaseScale(void *actor, s32 scaleX, s32 scaleY);
 /* Pop a value, pass it to data_02105310 through ActorRuntimeCollection_SetPendingValue, and return zero. */
 s32 func_020142cc(GamePhaseActorScriptVm *self)
 {
-    u32 value = func_02012704(&self->base);
+    u32 value = GamePhaseScriptVm_Pop(&self->base);
     ActorRuntimeCollection_SetPendingValue(data_02105310, value);
     return 0;
 }
@@ -30,7 +30,7 @@ s32 func_020142ec(GamePhaseActorScriptVm *self)
 /* Pop a raw angle into attachment halfword +0x30 and return zero. */
 s32 GamePhaseActorScriptVm_SetAttachmentAngle(GamePhaseActorScriptVm *self)
 {
-    u32 value = func_02012704(&self->base);
+    u32 value = GamePhaseScriptVm_Pop(&self->base);
     u8 *object = *(u8 **)((u8 *)self->actor_84 + 0x54);
     *(u16 *)(object + 0x30) = (u16)value;
     return 0;
@@ -42,7 +42,7 @@ s32 GamePhaseActorScriptVm_SetAttachmentAngle(GamePhaseActorScriptVm *self)
  */
 s32 GamePhaseActorScriptVm_SetAttachmentAngleFromByte(GamePhaseActorScriptVm *self)
 {
-    u32 value = func_02012704(&self->base);
+    u32 value = GamePhaseScriptVm_Pop(&self->base);
     u8 *object = *(u8 **)((u8 *)self->actor_84 + 0x54);
     *(u16 *)(object + 0x30) = (u16)(0x10000 - (value << 8));
     return 0;
@@ -55,8 +55,8 @@ s32 GamePhaseActorScriptVm_SetAttachmentAngleFromByte(GamePhaseActorScriptVm *se
  */
 s32 GamePhaseActorScriptVm_SetAttachmentScale(GamePhaseActorScriptVm *self)
 {
-    s32 second = (s32)func_02012704(&self->base);
-    s32 first = (s32)func_02012704(&self->base);
+    s32 second = (s32)GamePhaseScriptVm_Pop(&self->base);
+    s32 first = (s32)GamePhaseScriptVm_Pop(&self->base);
     u8 *object = *(u8 **)((u8 *)self->actor_84 + 0x54);
     if (first < 0x20)
         first = 0x20;

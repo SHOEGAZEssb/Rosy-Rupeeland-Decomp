@@ -2,12 +2,12 @@
 .text
 .extern data_021052fc
 .extern GamePhaseRuntime_GetActorCollection
-.extern func_02012704
+.extern GamePhaseScriptVm_Pop
 .extern func_0202d68c
 .global func_02017638
 func_02017638:
     stmdb sp!, {r4, lr}
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     ldr r1, L_02017664
     mov r4, r0
     ldr r0, [r1]

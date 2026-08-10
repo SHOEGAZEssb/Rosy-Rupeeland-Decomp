@@ -26,8 +26,8 @@ typedef void (*RuntimeDispatchMethod)(void *object, u32 first, u16 second,
  */
 s32 func_02012e98(GamePhaseActorScriptVm *self)
 {
-    u32 value = func_02012704(&self->base);
-    u32 mode = func_02012704(&self->base);
+    u32 value = GamePhaseScriptVm_Pop(&self->base);
+    u32 mode = GamePhaseScriptVm_Pop(&self->base);
     ActorModeMethod method;
     if (mode < 1 || mode > 3)
         return 0;
@@ -44,7 +44,7 @@ s32 func_02012e98(GamePhaseActorScriptVm *self)
 s32 func_02012f40(GamePhaseActorScriptVm *self)
 {
     u32 flags = *(u32 *)((u8 *)self->actor_84 + 0x10);
-    func_020127f8(&self->base, (flags & 1) != 0);
+    GamePhaseScriptVm_SetResult(&self->base, (flags & 1) != 0);
     return 0;
 }
 
@@ -56,10 +56,10 @@ s32 func_02012f40(GamePhaseActorScriptVm *self)
  */
 s32 func_02012f64(GamePhaseActorScriptVm *self)
 {
-    u32 fourth = func_02012704(&self->base);
-    u32 second = func_02012704(&self->base);
-    u32 fifth = func_02012704(&self->base);
-    u32 first = func_02012704(&self->base);
+    u32 fourth = GamePhaseScriptVm_Pop(&self->base);
+    u32 second = GamePhaseScriptVm_Pop(&self->base);
+    u32 fifth = GamePhaseScriptVm_Pop(&self->base);
+    u32 first = GamePhaseScriptVm_Pop(&self->base);
     u8 *collection = (u8 *)Actor_GetCollection(self->actor_84);
     u32 mode = *(u32 *)(collection + 0x2e84);
 
@@ -79,7 +79,7 @@ s32 func_02012f64(GamePhaseActorScriptVm *self)
 s32 func_02013014(GamePhaseActorScriptVm *self)
 {
     u8 *object = *(u8 **)((u8 *)self->actor_84 + 0x54);
-    func_020127f8(&self->base, object[0x38]);
+    GamePhaseScriptVm_SetResult(&self->base, object[0x38]);
     return 0;
 }
 
@@ -94,14 +94,14 @@ s32 func_02013030(GamePhaseActorScriptVm *self)
     *flags &= (u16)~2;
     if ((*flags & 1) != 0)
         return 0;
-    self->base.cursor_04 -= 2;
+    self->base.cursor -= 2;
     return 1;
 }
 
 /* Pop a value, store its low halfword at actor->0x54->0x36, and return zero. */
 s32 func_02013074(GamePhaseActorScriptVm *self)
 {
-    u32 value = func_02012704(&self->base);
+    u32 value = GamePhaseScriptVm_Pop(&self->base);
     u8 *object = *(u8 **)((u8 *)self->actor_84 + 0x54);
     *(u16 *)(object + 0x36) = (u16)value;
     return 0;
@@ -110,7 +110,7 @@ s32 func_02013074(GamePhaseActorScriptVm *self)
 /* Pop a boolean; clear actor flag bit 1 when true and set it when false. */
 s32 func_02013094(GamePhaseActorScriptVm *self)
 {
-    u32 value = func_02012704(&self->base);
+    u32 value = GamePhaseScriptVm_Pop(&self->base);
     u32 *flags = (u32 *)((u8 *)self->actor_84 + 0x14);
     if (value != 0)
         *flags &= ~2u;
@@ -122,7 +122,7 @@ s32 func_02013094(GamePhaseActorScriptVm *self)
 /* Pop a boolean; clear actor flag bit 2 when true and set it when false. */
 s32 func_020130c0(GamePhaseActorScriptVm *self)
 {
-    u32 value = func_02012704(&self->base);
+    u32 value = GamePhaseScriptVm_Pop(&self->base);
     u32 *flags = (u32 *)((u8 *)self->actor_84 + 0x14);
     if (value != 0)
         *flags &= ~4u;

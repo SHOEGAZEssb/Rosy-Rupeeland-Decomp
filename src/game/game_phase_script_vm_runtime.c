@@ -1,55 +1,55 @@
 #include "tingle/game_phase_script_vm.h"
 #include "tingle/system.h"
 
-/* Execute phase bytecode and manage the interpreter's recovered value stack. */
+/* Execute phase bytecode and manage the interpreter's shared value/call stack. */
 
 typedef s32 (*GamePhaseScriptOpcode)(GamePhaseScriptVm *self);
 
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern GamePhaseScriptOpcode data_020d5bec[];
+extern GamePhaseScriptOpcode gGamePhaseScriptVmOpcodeTable[];
 #ifdef __cplusplus
 }
 #endif
 
-/* Decrement stackDepth_7c and return the new top stack_4c value; no bounds check. */
-u32 func_02012704(GamePhaseScriptVm *self)
+/* Pop and return the top value or call address; retail performs no bounds check. */
+u32 GamePhaseScriptVm_Pop(GamePhaseScriptVm *self)
 {
-    self->stackDepth_7c--;
-    return self->stack_4c[self->stackDepth_7c];
+    self->stackDepth--;
+    return self->stack[self->stackDepth];
 }
 
-/* Push value at stackDepth_7c and increment the signed-byte depth; no bounds check. */
-void func_02012720(GamePhaseScriptVm *self, u32 value)
+/* Push a value or call address; retail performs no bounds or overflow check. */
+void GamePhaseScriptVm_Push(GamePhaseScriptVm *self, u32 value)
 {
-    self->stack_4c[self->stackDepth_7c] = value;
-    self->stackDepth_7c++;
+    self->stack[self->stackDepth] = value;
+    self->stackDepth++;
 }
 
 /*
- * Execute bytecode from cursor_04 through the signed-opcode dispatch table.
- * Null cursor or flags_7d bit 0 stops immediately. In singleStep mode, exactly
+ * Execute bytecode from cursor through the signed-opcode dispatch table.
+ * Null cursor or stateFlags bit 0 stops immediately. In singleStep mode, exactly
  * one opcode runs only while pad 0 pressed bit 3 is set; normal mode continues
  * until an opcode handler returns nonzero. Cursor advances before each call.
  * The handler return only controls the loop; this wrapper always returns zero.
  */
-s32 func_0201273c(GamePhaseScriptVm *self, s32 singleStep)
+s32 GamePhaseScriptVm_Execute(GamePhaseScriptVm *self, s32 singleStep)
 {
     s32 result = 0;
-    if (!self->cursor_04)
+    if (!self->cursor)
         return 0;
-    if (self->flags_7d & 1)
+    if (self->stateFlags & 1)
         return 0;
     if (singleStep) {
         if (gSystemState.pads[0].pressed & 8) {
-            s8 opcode = *self->cursor_04++;
-            data_020d5bec[opcode](self);
+            s8 opcode = *self->cursor++;
+            gGamePhaseScriptVmOpcodeTable[opcode](self);
         }
     } else {
         while (!result) {
-            s8 opcode = *self->cursor_04++;
-            result = data_020d5bec[opcode](self);
+            s8 opcode = *self->cursor++;
+            result = gGamePhaseScriptVmOpcodeTable[opcode](self);
         }
     }
     return 0;
@@ -63,14 +63,14 @@ s32 func_020127f0(GamePhaseScriptVm *self)
 }
 
 /*
- * Store value in values_2c[7] (offset 0x48) and mirror its nonzero state into
- * flags_7d bit 1. No value is returned.
+ * Store value in registers[7] (offset 0x48) and mirror its nonzero state into
+ * stateFlags bit 1. No value is returned.
  */
-void func_020127f8(GamePhaseScriptVm *self, u32 value)
+void GamePhaseScriptVm_SetResult(GamePhaseScriptVm *self, u32 value)
 {
-    self->values_2c[7] = value;
+    self->registers[7] = value;
     if (value)
-        self->flags_7d |= 2;
+        self->stateFlags |= 2;
     else
-        self->flags_7d &= ~2;
+        self->stateFlags &= ~2;
 }

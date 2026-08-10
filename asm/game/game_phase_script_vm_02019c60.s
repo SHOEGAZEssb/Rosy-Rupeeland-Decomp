@@ -1,8 +1,8 @@
 ; Matching retail form; see src/game/game_phase_script_vm_runtime_manager_query_opcode.c.
 .text
 .extern data_021052fc
-.extern func_02012704
-.extern func_020127f8
+.extern GamePhaseScriptVm_Pop
+.extern GamePhaseScriptVm_SetResult
 .extern ActorDerivedType1_IsIdleEligible
 .extern gSceneManager
 .extern SceneManager_GetCurrent
@@ -10,7 +10,7 @@
 func_02019c60:
     stmdb sp!, {r4, r5, r6, lr}
     mov r6, r0
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     ldr r1, L_02019dcc
     cmp r0, #0x5
     ldr r1, [r1, #0x0]
@@ -110,7 +110,7 @@ L_02019db0:
 L_02019db8:
     mov r0, r6
     mov r1, r4
-    bl func_020127f8
+    bl GamePhaseScriptVm_SetResult
     mov r0, #0x0
     ldmia sp!, {r4, r5, r6, pc}
 L_02019dcc: .word data_021052fc

@@ -2,22 +2,22 @@
 .text
 .extern DebugHudState_SetRectangle
 .extern DebugHudState_GetGlobal
-.extern func_02012704
+.extern GamePhaseScriptVm_Pop
 .global func_020174dc
 func_020174dc:
     stmdb sp!, {r3, r4, r5, r6, r7, lr}
     sub sp, sp, #0x10
     mov r7, r0
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     mov r6, r0
     mov r0, r7
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     mov r5, r0
     mov r0, r7
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     mov r4, r0
     mov r0, r7
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     add r2, r0, r5
     add r1, r4, r6
     str r0, [sp]

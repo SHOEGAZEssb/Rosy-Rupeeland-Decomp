@@ -30,12 +30,12 @@ extern s32 func_02027eac(void *state);
  */
 s32 func_02019dd4(GamePhaseActorScriptVm *self)
 {
-    s32 value = (s32)func_02012704(&self->base);
-    s32 command = (s32)func_02012704(&self->base);
+    s32 value = (s32)GamePhaseScriptVm_Pop(&self->base);
+    s32 command = (s32)GamePhaseScriptVm_Pop(&self->base);
     void *state;
     switch (command) {
     case 1:
-        func_020127f8(&self->base, (u32)func_02027818(func_02027f94(), value));
+        GamePhaseScriptVm_SetResult(&self->base, (u32)func_02027818(func_02027f94(), value));
         break;
     case 2:
         func_02027864(func_02027f94(), value);
@@ -48,31 +48,31 @@ s32 func_02019dd4(GamePhaseActorScriptVm *self)
         break;
     case 5:
         state = func_02027f94();
-        func_020127f8(&self->base, *(u32 *)state);
+        GamePhaseScriptVm_SetResult(&self->base, *(u32 *)state);
         break;
     case 6:
-        func_020127f8(&self->base, (u32)func_02027828(func_02027f94(), value));
+        GamePhaseScriptVm_SetResult(&self->base, (u32)func_02027828(func_02027f94(), value));
         break;
     case 7:
         func_02027e08(func_02027f94(), value);
         break;
     case 8:
-        func_020127f8(&self->base, func_02027d14(func_02027f94()) != 0);
+        GamePhaseScriptVm_SetResult(&self->base, func_02027d14(func_02027f94()) != 0);
         break;
     case 9:
         func_02027c34(func_02027f94());
         break;
     case 10:
-        func_020127f8(&self->base, (u32)func_02027e8c(func_02027f94()));
+        GamePhaseScriptVm_SetResult(&self->base, (u32)func_02027e8c(func_02027f94()));
         break;
     case 11:
-        func_020127f8(&self->base, (u32)func_02027eac(func_02027f94()));
+        GamePhaseScriptVm_SetResult(&self->base, (u32)func_02027eac(func_02027f94()));
         break;
     case 12:
         func_02027ea4(func_02027f94(), value);
         break;
     case 13:
-        func_020127f8(&self->base, func_02027df0(func_02027f94()) != 0);
+        GamePhaseScriptVm_SetResult(&self->base, func_02027df0(func_02027f94()) != 0);
         break;
     }
     return 0;

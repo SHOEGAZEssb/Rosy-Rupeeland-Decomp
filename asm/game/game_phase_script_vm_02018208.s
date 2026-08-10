@@ -2,7 +2,7 @@
 .text
 .extern func_0200500c
 .extern func_02005058
-.extern func_02012704
+.extern GamePhaseScriptVm_Pop
 .extern ActorCollection_FindActorByDescriptorValue
 .extern Actor_GetCollection
 .extern func_ov087_022184b0
@@ -14,22 +14,22 @@ func_02018208:
     stmdb sp!, {r4, r5, r6, r7, r8, r9, r10, lr}
     sub sp, sp, #0x20
     mov r9, r0
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     mov r7, r0
     mov r0, r9
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     mov r6, r0
     mov r0, r9
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     mov r8, r0
     mov r0, r9
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     mov r5, r0
     mov r0, r9
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     mov r4, r0
     mov r0, r9
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     mov r10, r0
     ldr r0, [r9, #0x84]
     bl Actor_GetCollection

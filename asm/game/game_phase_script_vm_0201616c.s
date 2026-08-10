@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/game_phase_script_vm_table_query_opcodes.c.
 .text
 .extern data_021e9ac0
-.extern func_020127f8
+.extern GamePhaseScriptVm_SetResult
 .extern func_020636f0
 .global func_0201616c
 func_0201616c:
@@ -14,11 +14,11 @@ func_0201616c:
     mov r0, r4
     beq L_02016198
     mov r1, #1
-    bl func_020127f8
+    bl GamePhaseScriptVm_SetResult
     b L_020161a0
 L_02016198:
     mov r1, #0
-    bl func_020127f8
+    bl GamePhaseScriptVm_SetResult
 L_020161a0:
     mov r0, #0
     ldmia sp!, {r4, pc}

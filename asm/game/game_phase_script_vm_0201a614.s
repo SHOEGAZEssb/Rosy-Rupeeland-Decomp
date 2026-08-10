@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/game_phase_script_vm_sound_command_opcode.c.
 .text
-.extern func_02012704
-.extern func_020127f8
+.extern GamePhaseScriptVm_Pop
+.extern GamePhaseScriptVm_SetResult
 .extern Sound_Play
 .extern func_0205940c
 .extern func_020593dc
@@ -24,10 +24,10 @@ func_0201a614: ; 0x0201a614
     stmdb sp!, {r3, r4, r5, lr}
     sub sp, sp, #0x8
     mov r5, r0
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     mov r4, r0
     mov r0, r5
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     cmp r0, #0x22
     addls pc, pc, r0, lsl #0x2
     b L_0201a928
@@ -109,7 +109,7 @@ L_0201a73c:
     bl func_020594a4
     mov r1, r0
     mov r0, r5
-    bl func_020127f8
+    bl GamePhaseScriptVm_SetResult
     b L_0201a928
 L_0201a768:
     ldr r0, L_0201a934
@@ -125,7 +125,7 @@ L_0201a77c:
     bl func_02059344
     mov r1, r0
     mov r0, r5
-    bl func_020127f8
+    bl GamePhaseScriptVm_SetResult
     b L_0201a928
 L_0201a7a0:
     ldr r0, L_0201a934

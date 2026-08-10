@@ -27,10 +27,10 @@ extern void func_020592fc(void *context, u16 index, u16 mask);
  */
 s32 func_0201aa14(GamePhaseActorScriptVm *self)
 {
-    s32 third = (s32)func_02012704(&self->base);
-    s32 second = (s32)func_02012704(&self->base);
-    s32 first = (s32)func_02012704(&self->base);
-    s32 command = (s32)func_02012704(&self->base);
+    s32 third = (s32)GamePhaseScriptVm_Pop(&self->base);
+    s32 second = (s32)GamePhaseScriptVm_Pop(&self->base);
+    s32 first = (s32)GamePhaseScriptVm_Pop(&self->base);
+    s32 command = (s32)GamePhaseScriptVm_Pop(&self->base);
     u16 packed;
     u16 mask;
 

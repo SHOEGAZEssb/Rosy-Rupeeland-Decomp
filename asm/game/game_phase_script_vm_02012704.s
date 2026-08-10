@@ -1,8 +1,8 @@
 ; Matching retail form; see src/game/game_phase_script_vm_runtime.c.
 .text
 
-    .global func_02012704
-func_02012704: ; 0x02012704
+    .global GamePhaseScriptVm_Pop
+GamePhaseScriptVm_Pop: ; 0x02012704
     ldrsb r1, [r0, #0x7c]
     sub r1, r1, #0x1
     strb r1, [r0, #0x7c]
@@ -10,5 +10,5 @@ func_02012704: ; 0x02012704
     add r0, r0, r1, lsl #0x2
     ldr r0, [r0, #0x4c]
     bx lr
-    .size func_02012704, . - func_02012704
+    .size GamePhaseScriptVm_Pop, . - GamePhaseScriptVm_Pop
 

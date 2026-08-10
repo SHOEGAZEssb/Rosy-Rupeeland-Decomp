@@ -22,25 +22,25 @@ extern u32 genrand_int32(void);
 /*
  * Pop four operands and a selector. Selectors 1-6 operate on runtime fields
  * 0x2fbc/0x2fd4/0x2fec; selectors 7-9 mirror the collection operations at
- * 0x3044. Query results are stored through func_020127f8, selector 5 resolves
+ * 0x3044. Query results are stored through GamePhaseScriptVm_SetResult, selector 5 resolves
  * an object from runtime collection 1, selector 11 is a no-op, and selectors
  * 0/10/out-of-range enter OS_Halt. Always returns zero after dispatch. The
  * underlying collection calls may mutate runtime state.
  */
 s32 func_02012814(GamePhaseScriptVm *self)
 {
-    u32 d = func_02012704(self);
-    u32 c = func_02012704(self);
-    u32 b = func_02012704(self);
-    u32 a = func_02012704(self);
-    u32 selector = func_02012704(self);
+    u32 d = GamePhaseScriptVm_Pop(self);
+    u32 c = GamePhaseScriptVm_Pop(self);
+    u32 b = GamePhaseScriptVm_Pop(self);
+    u32 a = GamePhaseScriptVm_Pop(self);
+    u32 selector = GamePhaseScriptVm_Pop(self);
     u8 *runtime = (u8 *)data_021052fc;
     switch (selector) {
     case 1:
-        func_020127f8(self, ActorMotion_ConfigureGridTarget(runtime + 0x2fbc, a, b, c, d));
+        GamePhaseScriptVm_SetResult(self, ActorMotion_ConfigureGridTarget(runtime + 0x2fbc, a, b, c, d));
         break;
     case 2:
-        func_020127f8(self, ActorMotion_ConfigureBoundActorTarget(runtime + 0x2fbc, a, b));
+        GamePhaseScriptVm_SetResult(self, ActorMotion_ConfigureBoundActorTarget(runtime + 0x2fbc, a, b));
         break;
     case 3:
         if (a)
@@ -49,7 +49,7 @@ s32 func_02012814(GamePhaseScriptVm *self)
             ActorMotion_SetMode1AndClearOutputs(runtime + 0x2fbc);
         break;
     case 4:
-        func_020127f8(self, *(u32 *)(runtime + 0x2fd4) == 2);
+        GamePhaseScriptVm_SetResult(self, *(u32 *)(runtime + 0x2fd4) == 2);
         break;
     case 5: {
         void *collection = GamePhaseRuntime_GetActorCollection(runtime, 1);
@@ -58,13 +58,13 @@ s32 func_02012814(GamePhaseScriptVm *self)
         break;
     }
     case 6:
-        func_020127f8(self, *(u32 *)(runtime + 0x2fec) & 1);
+        GamePhaseScriptVm_SetResult(self, *(u32 *)(runtime + 0x2fec) & 1);
         break;
     case 7:
-        func_020127f8(self, ActorMotion_ConfigureGridTarget(runtime + 0x3044, a, b, c, d));
+        GamePhaseScriptVm_SetResult(self, ActorMotion_ConfigureGridTarget(runtime + 0x3044, a, b, c, d));
         break;
     case 8:
-        func_020127f8(self, ActorMotion_ConfigureBoundActorTarget(runtime + 0x3044, a, b));
+        GamePhaseScriptVm_SetResult(self, ActorMotion_ConfigureBoundActorTarget(runtime + 0x3044, a, b));
         break;
     case 9:
         if (a)
@@ -86,7 +86,7 @@ s32 func_02012814(GamePhaseScriptVm *self)
 /* Pop an upper bound, store a global-RNG value modulo that bound, and return zero. */
 s32 func_02012a60(GamePhaseScriptVm *self)
 {
-    u32 limit = func_02012704(self);
-    func_020127f8(self, genrand_int32() % limit);
+    u32 limit = GamePhaseScriptVm_Pop(self);
+    GamePhaseScriptVm_SetResult(self, genrand_int32() % limit);
     return 0;
 }

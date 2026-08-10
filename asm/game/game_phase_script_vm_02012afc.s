@@ -4,7 +4,7 @@
 .extern data_02105310
 .extern GamePhaseRuntime_GetActorCollection
 .extern ActorRuntimeCollection_GetPendingAttachmentFlag
-.extern func_02012704
+.extern GamePhaseScriptVm_Pop
 .extern ActorCollection_FindActorByDescriptorValue
 .extern Actor_SetActive
 .extern Actor_GetCollection
@@ -13,10 +13,10 @@
 func_02012afc: ; 0x02012afc
     stmdb sp!, {r4, r5, r6, lr}
     mov r6, r0
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     mov r4, r0
     mov r0, r6
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     mov r5, r0
     ldr r0, [r6, #0x84]
     bl Actor_GetCollection

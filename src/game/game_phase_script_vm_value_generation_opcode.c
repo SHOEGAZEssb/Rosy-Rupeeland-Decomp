@@ -23,11 +23,11 @@ extern void OS_Halt(void);
  */
 s32 func_0201a3e4(GamePhaseActorScriptVm *self)
 {
-    s32 parameter = (s32)func_02012704(&self->base);
-    s32 third = (s32)func_02012704(&self->base);
-    s32 second = (s32)func_02012704(&self->base);
-    s32 first = (s32)func_02012704(&self->base);
-    s32 mode = (s32)func_02012704(&self->base);
+    s32 parameter = (s32)GamePhaseScriptVm_Pop(&self->base);
+    s32 third = (s32)GamePhaseScriptVm_Pop(&self->base);
+    s32 second = (s32)GamePhaseScriptVm_Pop(&self->base);
+    s32 first = (s32)GamePhaseScriptVm_Pop(&self->base);
+    s32 mode = (s32)GamePhaseScriptVm_Pop(&self->base);
     s32 result;
     if (mode >= 1 && mode <= 3) {
         u32 value[3];
@@ -41,6 +41,6 @@ s32 func_0201a3e4(GamePhaseActorScriptVm *self)
     } else {
         OS_Halt();
     }
-    func_020127f8(&self->base, (u32)result);
+    GamePhaseScriptVm_SetResult(&self->base, (u32)result);
     return 0;
 }

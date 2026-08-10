@@ -36,10 +36,10 @@ static void refreshPresentationObject(void *object)
  */
 s32 func_02017ac8(GamePhaseActorScriptVm *self)
 {
-    s32 third = (s32)func_02012704(&self->base);
-    s32 second = (s32)func_02012704(&self->base);
-    s32 first = (s32)func_02012704(&self->base);
-    s32 mode = (s32)func_02012704(&self->base);
+    s32 third = (s32)GamePhaseScriptVm_Pop(&self->base);
+    s32 second = (s32)GamePhaseScriptVm_Pop(&self->base);
+    s32 first = (s32)GamePhaseScriptVm_Pop(&self->base);
+    s32 mode = (s32)GamePhaseScriptVm_Pop(&self->base);
     u8 *actor = (u8 *)self->actor_84;
     u8 *primary = *(u8 **)(actor + 0x54);
     u8 *secondary = *(u8 **)(actor + 0x58);

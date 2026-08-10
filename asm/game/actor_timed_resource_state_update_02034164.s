@@ -5,7 +5,7 @@
 .extern GamePhaseRuntime_GetActorCollection
 .extern ActorRuntimeCollection_GetPrimaryContainer
 .extern ActorRuntimeCollection_TryCompleteAttachment
-.extern func_0201273c
+.extern GamePhaseScriptVm_Execute
 .extern func_0201b180
 .extern func_0201b228
 .extern func_0201b23c
@@ -25,7 +25,7 @@ func_02034164: ; 0x02034164
     beq .L_02034250
     add r0, r4, #0xec
     mov r1, #0x0
-    bl func_0201273c
+    bl GamePhaseScriptVm_Execute
     ldrb r0, [r4, #0x169]
     tst r0, #0x1
     beq .L_02034250

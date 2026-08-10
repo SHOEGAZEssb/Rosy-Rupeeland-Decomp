@@ -1,8 +1,8 @@
 ; Matching retail form; see src/game/game_phase_script_vm_lifecycle.c.
 .text
 
-    .global func_02012584
-func_02012584: ; 0x02012584
+    .global GamePhaseScriptVm_Reset
+GamePhaseScriptVm_Reset: ; 0x02012584
     mov r2, #0x0
     strb r2, [r0, #0x7d]
     str r2, [r0, #0x4]
@@ -32,5 +32,5 @@ L_020125c8:
     strb r2, [r0, #0x7f]
     str r2, [r0, #0x80]
     bx lr
-    .size func_02012584, . - func_02012584
+    .size GamePhaseScriptVm_Reset, . - GamePhaseScriptVm_Reset
 

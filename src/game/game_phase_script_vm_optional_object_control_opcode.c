@@ -26,12 +26,12 @@ s32 func_0201a1f0(GamePhaseActorScriptVm *self)
     s32 enabled;
     s32 mode;
     u8 *object;
-    (void)func_02012704(&self->base);
-    (void)func_02012704(&self->base);
-    second = (s32)func_02012704(&self->base);
-    first = (s32)func_02012704(&self->base);
-    enabled = (s32)func_02012704(&self->base);
-    mode = (s32)func_02012704(&self->base);
+    (void)GamePhaseScriptVm_Pop(&self->base);
+    (void)GamePhaseScriptVm_Pop(&self->base);
+    second = (s32)GamePhaseScriptVm_Pop(&self->base);
+    first = (s32)GamePhaseScriptVm_Pop(&self->base);
+    enabled = (s32)GamePhaseScriptVm_Pop(&self->base);
+    mode = (s32)GamePhaseScriptVm_Pop(&self->base);
     object = (u8 *)ActorDerivedType1_GetSingletonObject();
 
     switch (mode) {

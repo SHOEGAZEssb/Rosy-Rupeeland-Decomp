@@ -29,12 +29,12 @@ extern void func_0201cf34(...);
  */
 s32 func_02016930(GamePhaseActorScriptVm *self)
 {
-    u32 fifth = func_02012704(&self->base);
-    u32 fourth = func_02012704(&self->base);
-    u32 third = func_02012704(&self->base);
-    u32 second = func_02012704(&self->base);
-    u32 first = func_02012704(&self->base);
-    u32 selector = func_02012704(&self->base);
+    u32 fifth = GamePhaseScriptVm_Pop(&self->base);
+    u32 fourth = GamePhaseScriptVm_Pop(&self->base);
+    u32 third = GamePhaseScriptVm_Pop(&self->base);
+    u32 second = GamePhaseScriptVm_Pop(&self->base);
+    u32 first = GamePhaseScriptVm_Pop(&self->base);
+    u32 selector = GamePhaseScriptVm_Pop(&self->base);
 
     switch (selector) {
     case 0: func_0201c174(first, second, third, fourth); break;
@@ -63,12 +63,12 @@ s32 func_02016930(GamePhaseActorScriptVm *self)
  */
 s32 func_02016a84(GamePhaseActorScriptVm *self)
 {
-    u32 fifth = func_02012704(&self->base);
-    u32 fourth = func_02012704(&self->base);
-    u32 third = func_02012704(&self->base);
-    u32 second = func_02012704(&self->base);
-    u32 first = func_02012704(&self->base);
-    u32 selector = func_02012704(&self->base);
+    u32 fifth = GamePhaseScriptVm_Pop(&self->base);
+    u32 fourth = GamePhaseScriptVm_Pop(&self->base);
+    u32 third = GamePhaseScriptVm_Pop(&self->base);
+    u32 second = GamePhaseScriptVm_Pop(&self->base);
+    u32 first = GamePhaseScriptVm_Pop(&self->base);
+    u32 selector = GamePhaseScriptVm_Pop(&self->base);
 
     switch (selector) {
     case 1: func_0201c798(first, second, third, fourth); break;

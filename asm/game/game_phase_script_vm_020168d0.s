@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/game_phase_script_vm_runtime_misc_opcodes.c.
 .text
 .extern data_021052fc
-.extern func_020127f8
+.extern GamePhaseScriptVm_SetResult
 .extern Actor_GetCachedTerrainHeight
 .global func_020168d0
 func_020168d0:
@@ -22,12 +22,12 @@ func_020168d0:
 L_02016908:
     mov r0, r5
     mov r1, #1
-    bl func_020127f8
+    bl GamePhaseScriptVm_SetResult
     b L_02016924
 L_02016918:
     mov r0, r5
     mov r1, #0
-    bl func_020127f8
+    bl GamePhaseScriptVm_SetResult
 L_02016924:
     mov r0, #0
     ldmia sp!, {r3, r4, r5, pc}

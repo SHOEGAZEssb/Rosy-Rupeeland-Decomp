@@ -3,19 +3,19 @@
 .extern data_021052fc
 .extern GamePhaseVisualEffect_SetEnabled
 .extern GamePhaseVisualEffect_SetBlendCoefficients
-.extern func_02012704
+.extern GamePhaseScriptVm_Pop
 .extern OS_Halt
 .global func_0201a130
 func_0201a130:
     stmdb sp!, {r4, r5, r6, lr}
     mov r6, r0
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     mov r4, r0
     mov r0, r6
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     mov r5, r0
     mov r0, r6
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     cmp r0, #0x1
     beq L_0201a168
     cmp r0, #0x2

@@ -5,8 +5,8 @@
 .extern data_02105310
 .extern GamePhaseRuntime_GetActorCollection
 .extern ActorRuntimeCollection_GetPendingAttachmentFlag
-.extern func_02012704
-.extern func_020127f8
+.extern GamePhaseScriptVm_Pop
+.extern GamePhaseScriptVm_SetResult
 .extern ActorCollection_FindActorByDescriptorValue
 .extern Actor_SetActive
 .extern Actor_GetCollection
@@ -15,10 +15,10 @@
 func_02015b64:
     stmdb sp!, {r3, r4, r5, r6, r7, lr}
     mov r7, r0
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     mov r5, r0
     mov r0, r7
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     ldr r1, L_02015d04
     mov r4, r0
     ldr r1, [r1]
@@ -122,7 +122,7 @@ L_02015ce4:
 L_02015cf0:
     mov r0, r7
     mov r1, #1
-    bl func_020127f8
+    bl GamePhaseScriptVm_SetResult
     mov r0, #0
     ldmia sp!, {r3, r4, r5, r6, r7, pc}
 L_02015d04: .word data_021052fc

@@ -16,8 +16,8 @@
 .extern GamePhaseRuntime_GetActorCollection
 .extern ActorMotionAreaFollower_GetPosition
 .extern ActorRuntimeTriple_Assign
-.extern func_02012704
-.extern func_020127f8
+.extern GamePhaseScriptVm_Pop
+.extern GamePhaseScriptVm_SetResult
 .extern func_02015548
 .extern func_0201d240
 .extern func_0201ded4
@@ -76,30 +76,30 @@ func_020143a8: ; 0x020143a8
     stmdb sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, lr}
     sub sp, sp, #0xc0
     mov r11, r0
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     mov r4, r0
     mov r0, r11
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     mov r5, r0
     mov r0, r11
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     mov r6, r0
     mov r0, r11
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     mov r7, r0
     mov r0, r11
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     mov r8, r0
     mov r0, r11
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     mov r9, r0
     mov r0, r11
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     str r0, [sp, #0x1c]
     mov r0, r11
     mov r1, #0x0
     ldr r10, [r11, #0x84]
-    bl func_020127f8
+    bl GamePhaseScriptVm_SetResult
     ldr r0, [sp, #0x1c]
     cmp r0, #0x26
     addls pc, pc, r0, lsl #0x2
@@ -810,7 +810,7 @@ L_02014dfc:
     bl func_020a257c
     mov r1, r0
     mov r0, r11
-    bl func_020127f8
+    bl GamePhaseScriptVm_SetResult
     b L_0201553c
 L_02014e40:
     ldr r0, L_020154d0
@@ -828,7 +828,7 @@ L_02014e40:
     bl func_020a25c8
     mov r1, r0
     mov r0, r11
-    bl func_020127f8
+    bl GamePhaseScriptVm_SetResult
     b L_0201553c
 L_02014e84:
     ldr r0, L_020154d0
@@ -1061,7 +1061,7 @@ L_02015144:
     add r0, r0, #0x18
     str r0, [r5, #0x8]
     mov r0, r11
-    bl func_020127f8
+    bl GamePhaseScriptVm_SetResult
     b L_0201553c
 L_020151e4:
     ldr r0, L_020154d0
@@ -1123,7 +1123,7 @@ L_02015238:
     str r0, [r6, #0x8]
     mov r0, r11
     mov r1, r5
-    bl func_020127f8
+    bl GamePhaseScriptVm_SetResult
     b L_0201553c
 L_020152d0:
     ldr r0, L_020154f4
@@ -1132,7 +1132,7 @@ L_020152d0:
     movne r1, #0x1
     moveq r1, #0x0
     mov r0, r11
-    bl func_020127f8
+    bl GamePhaseScriptVm_SetResult
     b L_0201553c
 L_020152f0:
     ldr r0, L_020154d0
@@ -1158,7 +1158,7 @@ L_02015308:
     bl func_0201fe68
     mov r1, r0
     mov r0, r11
-    bl func_020127f8
+    bl GamePhaseScriptVm_SetResult
     b L_0201553c
 L_02015350:
     str r6, [sp, #0x0]
@@ -1177,7 +1177,7 @@ L_02015350:
     bl func_0201fe68
     mov r1, r0
     mov r0, r11
-    bl func_020127f8
+    bl GamePhaseScriptVm_SetResult
     b L_0201553c
 L_02015398:
     ldr r0, L_020154d0

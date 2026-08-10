@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/game_phase_script_vm_actor_presentation_mode_opcode.c.
 .text
 .extern data_020f4e14
-.extern func_02012704
+.extern GamePhaseScriptVm_Pop
 .extern func_020708c4
 .extern func_02070934
 .extern func_02070958
@@ -13,16 +13,16 @@ func_02017ac8:
     stmdb sp!, {r3, r4, r5, r6, r7, r8, lr}
     sub sp, sp, #4
     mov r7, r0
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     mov r5, r0
     mov r0, r7
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     mov r4, r0
     mov r0, r7
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     mov r6, r0
     mov r0, r7
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     ldr r1, [r7, #0x84]
     ldr r8, [r1, #0x54]
     ldr r7, [r1, #0x58]

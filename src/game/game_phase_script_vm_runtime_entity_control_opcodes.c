@@ -36,7 +36,7 @@ extern void Type7Actor_SpawnFromRecord(s32 first, void *owner, s32 second, s32 t
  */
 s32 func_02018c14(GamePhaseActorScriptVm *self)
 {
-    s32 value = (s32)func_02012704(&self->base);
+    s32 value = (s32)GamePhaseScriptVm_Pop(&self->base);
     func_020573fc(Actor_GetAuxiliaryCollisionResource(self->actor_84), value);
     return 0;
 }
@@ -52,11 +52,11 @@ s32 func_02018c14(GamePhaseActorScriptVm *self)
  */
 s32 func_02018c3c(GamePhaseActorScriptVm *self)
 {
-    s32 fourth = (s32)func_02012704(&self->base);
-    s32 third = (s32)func_02012704(&self->base);
-    s32 second = (s32)func_02012704(&self->base);
-    s32 first = (s32)func_02012704(&self->base);
-    s32 command = (s32)func_02012704(&self->base);
+    s32 fourth = (s32)GamePhaseScriptVm_Pop(&self->base);
+    s32 third = (s32)GamePhaseScriptVm_Pop(&self->base);
+    s32 second = (s32)GamePhaseScriptVm_Pop(&self->base);
+    s32 first = (s32)GamePhaseScriptVm_Pop(&self->base);
+    s32 command = (s32)GamePhaseScriptVm_Pop(&self->base);
     u8 *runtime = (u8 *)data_021052fc;
     u8 *entity = *(u8 **)(runtime + 0x2ea8);
 
@@ -106,11 +106,11 @@ s32 func_02018c3c(GamePhaseActorScriptVm *self)
         break;
     case 9: {
         s32 index;
-        func_020127f8(&self->base, (u32)-1);
+        GamePhaseScriptVm_SetResult(&self->base, (u32)-1);
         for (index = 0; index < 36; index++) {
             const u8 *record = data_020ea9b0 + index * 0x68;
             if (*(const s16 *)record == first) {
-                func_020127f8(&self->base, (u32)*(const s16 *)(record + 0x2e));
+                GamePhaseScriptVm_SetResult(&self->base, (u32)*(const s16 *)(record + 0x2e));
                 break;
             }
         }

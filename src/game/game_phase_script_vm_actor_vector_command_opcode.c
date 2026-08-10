@@ -12,10 +12,10 @@ s32 func_02017a54(GamePhaseActorScriptVm *self)
 {
     typedef void (*Method)(void *, const VecFx32Object *, s32);
     VecFx32Object vector;
-    s32 command = (s32)func_02012704(&self->base);
-    s32 z = (s32)func_02012704(&self->base) << 4;
-    s32 y = (s32)func_02012704(&self->base) << 4;
-    s32 x = (s32)func_02012704(&self->base) << 4;
+    s32 command = (s32)GamePhaseScriptVm_Pop(&self->base);
+    s32 z = (s32)GamePhaseScriptVm_Pop(&self->base) << 4;
+    s32 y = (s32)GamePhaseScriptVm_Pop(&self->base) << 4;
+    s32 x = (s32)GamePhaseScriptVm_Pop(&self->base) << 4;
     void *actor = self->actor_84;
     Method method;
     func_0200500c(&vector, x, y, z);

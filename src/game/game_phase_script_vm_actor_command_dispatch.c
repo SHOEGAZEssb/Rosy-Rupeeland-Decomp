@@ -120,15 +120,15 @@ static void addScriptObject(void *object)
  */
 s32 func_020143a8(GamePhaseActorScriptVm *self)
 {
-    u32 a6 = func_02012704(&self->base);
-    u32 a5 = func_02012704(&self->base);
-    u32 a4 = func_02012704(&self->base);
-    u32 a3 = func_02012704(&self->base);
-    u32 a2 = func_02012704(&self->base);
-    u32 a1 = func_02012704(&self->base);
-    u32 selector = func_02012704(&self->base);
+    u32 a6 = GamePhaseScriptVm_Pop(&self->base);
+    u32 a5 = GamePhaseScriptVm_Pop(&self->base);
+    u32 a4 = GamePhaseScriptVm_Pop(&self->base);
+    u32 a3 = GamePhaseScriptVm_Pop(&self->base);
+    u32 a2 = GamePhaseScriptVm_Pop(&self->base);
+    u32 a1 = GamePhaseScriptVm_Pop(&self->base);
+    u32 selector = GamePhaseScriptVm_Pop(&self->base);
     u8 *actor = (u8 *)self->actor_84;
-    func_020127f8(&self->base, 0);
+    GamePhaseScriptVm_SetResult(&self->base, 0);
 
     switch (selector) {
     case 1: {
@@ -241,12 +241,12 @@ s32 func_020143a8(GamePhaseActorScriptVm *self)
         break;
     }
     case 11:
-        func_020127f8(&self->base,
+        GamePhaseScriptVm_SetResult(&self->base,
                       func_020a257c(getScriptManagerInterface(), a1, a2, a3,
                                     a4, a5, 0x46));
         break;
     case 12:
-        func_020127f8(&self->base,
+        GamePhaseScriptVm_SetResult(&self->base,
                       func_020a25c8(getScriptManagerInterface(), a1, a2, a3,
                                     a4, a5, 0x46));
         break;
@@ -304,7 +304,7 @@ s32 func_020143a8(GamePhaseActorScriptVm *self)
             node = (u8 *)func_0201df5c(getScriptObjectManager(), handle);
             target = ActorCollection_FindActorByDescriptorValue(GamePhaseRuntime_GetActorCollection(data_021052fc, 1), a2);
             *(void **)(node + 8) = (u8 *)target + 0x18;
-            func_020127f8(&self->base, (u32)handle);
+            GamePhaseScriptVm_SetResult(&self->base, (u32)handle);
         } else if (a1 == 2) {
             u8 *node = (u8 *)func_0201df5c(getScriptObjectManager(), a2);
             void *target = ActorCollection_FindActorByDescriptorValue(
@@ -324,9 +324,9 @@ s32 func_020143a8(GamePhaseActorScriptVm *self)
             sourceNode = (u8 *)func_0201df54(getScriptObjectManager(), handle);
             targetNode = (u8 *)func_0201df5c(getScriptObjectManager(), a2);
             *(void **)(targetNode + 8) = func_ov054_0220ef78(sourceNode);
-            func_020127f8(&self->base, (u32)handle);
+            GamePhaseScriptVm_SetResult(&self->base, (u32)handle);
         } else if (a1 == 2) {
-            func_020127f8(&self->base, data_ov054_0220f160 != 0);
+            GamePhaseScriptVm_SetResult(&self->base, data_ov054_0220f160 != 0);
         }
         break;
     case 24:
@@ -347,7 +347,7 @@ s32 func_020143a8(GamePhaseActorScriptVm *self)
         break;
     case 30:
     case 33:
-        func_020127f8(
+        GamePhaseScriptVm_SetResult(
             &self->base,
             func_0201fe68(selector == 33, a1, a2, a3, a4, a5, a6,
                           0x100, *(u32 *)(actor + 0x110),

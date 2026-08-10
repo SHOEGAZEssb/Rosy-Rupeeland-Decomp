@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/game_phase_script_vm_subsystem_command_opcode.c.
 .text
-.extern func_02012704
-.extern func_020127f8
+.extern GamePhaseScriptVm_Pop
+.extern GamePhaseScriptVm_SetResult
 .extern func_02027818
 .extern func_02027828
 .extern func_02027864
@@ -19,10 +19,10 @@
 func_02019dd4:
     stmdb sp!, {r3, r4, r5, lr}
     mov r5, r0
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     mov r4, r0
     mov r0, r5
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     cmp r0, #0xd
     addls pc, pc, r0, lsl #0x2
     b L_02019f44
@@ -47,7 +47,7 @@ L_02019e30:
     bl func_02027818
     mov r1, r0
     mov r0, r5
-    bl func_020127f8
+    bl GamePhaseScriptVm_SetResult
     b L_02019f44
 L_02019e4c:
     bl func_02027f94
@@ -63,7 +63,7 @@ L_02019e6c:
     bl func_02027f94
     ldr r1, [r0, #0x0]
     mov r0, r5
-    bl func_020127f8
+    bl GamePhaseScriptVm_SetResult
     b L_02019f44
 L_02019e80:
     bl func_02027f94
@@ -76,7 +76,7 @@ L_02019e90:
     bl func_02027828
     mov r1, r0
     mov r0, r5
-    bl func_020127f8
+    bl GamePhaseScriptVm_SetResult
     b L_02019f44
 L_02019eac:
     bl func_02027f94
@@ -90,7 +90,7 @@ L_02019ebc:
     movne r1, #0x1
     moveq r1, #0x0
     mov r0, r5
-    bl func_020127f8
+    bl GamePhaseScriptVm_SetResult
     b L_02019f44
 L_02019edc:
     bl func_02027f94
@@ -101,14 +101,14 @@ L_02019ee8:
     bl func_02027e8c
     mov r1, r0
     mov r0, r5
-    bl func_020127f8
+    bl GamePhaseScriptVm_SetResult
     b L_02019f44
 L_02019f00:
     bl func_02027f94
     bl func_02027eac
     mov r1, r0
     mov r0, r5
-    bl func_020127f8
+    bl GamePhaseScriptVm_SetResult
     b L_02019f44
 L_02019f18:
     bl func_02027f94
@@ -122,7 +122,7 @@ L_02019f28:
     movne r1, #0x1
     moveq r1, #0x0
     mov r0, r5
-    bl func_020127f8
+    bl GamePhaseScriptVm_SetResult
 L_02019f44:
     mov r0, #0x0
     ldmia sp!, {r3, r4, r5, pc}

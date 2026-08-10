@@ -20,7 +20,7 @@ extern s32 func_0204fc6c(void);
  */
 s32 func_0201b098(GamePhaseActorScriptVm *self)
 {
-    s32 value = (s32)func_02012704(&self->base);
+    s32 value = (s32)GamePhaseScriptVm_Pop(&self->base);
     void *collection = GamePhaseRuntime_GetActorCollection(data_021052fc, 2);
     void *actor = ActorCollection_FindActorByDescriptorValue(collection, 0);
     func_020330fc(actor, 0x2a, value);
@@ -30,6 +30,6 @@ s32 func_0201b098(GamePhaseActorScriptVm *self)
 /* Query the recovered global runtime value, push it, and return zero. */
 s32 func_0201b0d4(GamePhaseActorScriptVm *self)
 {
-    func_020127f8(&self->base, (u32)func_0204fc6c());
+    GamePhaseScriptVm_SetResult(&self->base, (u32)func_0204fc6c());
     return 0;
 }

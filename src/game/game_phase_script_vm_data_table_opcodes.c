@@ -19,25 +19,25 @@ extern void func_02079ac0(void *table, u32 value);
  */
 s32 func_0201593c(GamePhaseActorScriptVm *self)
 {
-    u32 offset = func_02012704(&self->base);
-    u32 index = func_02012704(&self->base);
+    u32 offset = GamePhaseScriptVm_Pop(&self->base);
+    u32 index = GamePhaseScriptVm_Pop(&self->base);
     u8 *record = func_02079a7c(data_021f3d68, index);
-    func_020127f8(&self->base, record[offset + 0xc]);
+    GamePhaseScriptVm_SetResult(&self->base, record[offset + 0xc]);
     return 0;
 }
 
 /* Push whether func_02079ba4 finds the popped value in data_021f3d68. */
 s32 func_0201597c(GamePhaseActorScriptVm *self)
 {
-    u32 value = func_02012704(&self->base);
-    func_020127f8(&self->base, func_02079ba4(data_021f3d68, value) != 0);
+    u32 value = GamePhaseScriptVm_Pop(&self->base);
+    GamePhaseScriptVm_SetResult(&self->base, func_02079ba4(data_021f3d68, value) != 0);
     return 0;
 }
 
 /* Pop a value, pass it to func_02079ac0 for data_021f3d68, and return zero. */
 s32 func_020159b4(GamePhaseActorScriptVm *self)
 {
-    u32 value = func_02012704(&self->base);
+    u32 value = GamePhaseScriptVm_Pop(&self->base);
     func_02079ac0(data_021f3d68, value);
     return 0;
 }

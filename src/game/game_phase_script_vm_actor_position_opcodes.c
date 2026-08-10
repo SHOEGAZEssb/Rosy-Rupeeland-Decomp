@@ -21,8 +21,8 @@ extern void Actor_TranslateCollisionBounds(void *actor, u32 first, u32 second);
  */
 s32 func_0201409c(GamePhaseActorScriptVm *self)
 {
-    s32 y = (s32)func_02012704(&self->base);
-    s32 x = (s32)func_02012704(&self->base);
+    s32 y = (s32)GamePhaseScriptVm_Pop(&self->base);
+    s32 x = (s32)GamePhaseScriptVm_Pop(&self->base);
     u8 *actor = (u8 *)self->actor_84;
     VecFx32Object value;
     VecFx32Object *copy;
@@ -37,8 +37,8 @@ s32 func_0201409c(GamePhaseActorScriptVm *self)
 /* Translate the bound actor's secondary bounds by two popped values. */
 s32 func_0201410c(GamePhaseActorScriptVm *self)
 {
-    u32 second = func_02012704(&self->base);
-    u32 first = func_02012704(&self->base);
+    u32 second = GamePhaseScriptVm_Pop(&self->base);
+    u32 first = GamePhaseScriptVm_Pop(&self->base);
     Actor_TranslateSecondaryBounds(self->actor_84, first, second);
     return 0;
 }
@@ -46,8 +46,8 @@ s32 func_0201410c(GamePhaseActorScriptVm *self)
 /* Translate the bound actor's collision bounds by two popped values. */
 s32 func_0201413c(GamePhaseActorScriptVm *self)
 {
-    u32 second = func_02012704(&self->base);
-    u32 first = func_02012704(&self->base);
+    u32 second = GamePhaseScriptVm_Pop(&self->base);
+    u32 first = GamePhaseScriptVm_Pop(&self->base);
     Actor_TranslateCollisionBounds(self->actor_84, first, second);
     return 0;
 }

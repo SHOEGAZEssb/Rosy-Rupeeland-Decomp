@@ -4,7 +4,7 @@
 .extern data_020d5b2c
 .extern OverlayManager_LoadOverlay
 .extern OverlayManager_GetGlobal
-.extern func_02012704
+.extern GamePhaseScriptVm_Pop
 .extern func_0201d9e4
 .extern func_0201da20
 .extern Actor_GetCollection
@@ -15,13 +15,13 @@
 func_020156fc: ; 0x020156fc
     stmdb sp!, {r3, r4, r5, r6, r7, lr}
     mov r5, r0
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     mov r7, r0
     mov r0, r5
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     mov r6, r0
     mov r0, r5
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     mov r4, r0
     ldr r0, [r5, #0x84]
     bl Actor_GetCollection

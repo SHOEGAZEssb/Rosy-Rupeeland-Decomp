@@ -1,11 +1,11 @@
 ; Matching retail form; see src/game/game_phase_actor_script_vm_lifecycle.c.
 .text
-.extern func_02012604
+.extern GamePhaseScriptVm_DestroyBase
 .global func_0201b1e0
 func_0201b1e0: ; 0x0201b1e0
     stmdb sp!, {r4, lr}
     mov r4, r0
-    bl func_02012604
+    bl GamePhaseScriptVm_DestroyBase
     mov r0, r4
     ldmia sp!, {r4, pc}
 .size func_0201b1e0, . - func_0201b1e0

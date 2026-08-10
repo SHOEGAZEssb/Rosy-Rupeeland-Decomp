@@ -3,21 +3,21 @@
 .extern data_020f4dc8
 .extern DisplayBrightness_StartTransition
 .extern DisplayBrightnessPair_GetScreen
-.extern func_02012704
+.extern GamePhaseScriptVm_Pop
 .global func_0201856c
 func_0201856c:
     stmdb sp!, {r3, r4, r5, r6, r7, lr}
     mov r7, r0
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     mov r4, r0
     mov r0, r7
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     mov r5, r0
     mov r0, r7
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     mov r6, r0
     mov r0, r7
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     mov r7, r0
     tst r7, #0x1
     beq L_020185c4

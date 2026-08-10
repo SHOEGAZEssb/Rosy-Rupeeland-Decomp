@@ -1,15 +1,15 @@
 ; Matching retail form; see src/game/game_phase_script_vm_packed_bit_grid_opcodes.c.
 .text
-.extern func_02012704
+.extern GamePhaseScriptVm_Pop
 .extern func_020275b0
 .global func_0201ad7c
 func_0201ad7c: ; 0x0201ad7c
     stmdb sp!, {r3, r4, r5, lr}
     mov r4, r0
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     mov r5, r0
     mov r0, r4
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     mov r4, r0
     bl func_020275b0
     ldr r1, [r0, #0x8]

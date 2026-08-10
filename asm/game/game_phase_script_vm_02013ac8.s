@@ -2,8 +2,8 @@
 .text
 .extern data_021052fc
 .extern GamePhaseRuntime_GetActorCollection
-.extern func_02012704
-.extern func_020127f8
+.extern GamePhaseScriptVm_Pop
+.extern GamePhaseScriptVm_SetResult
 .extern ActorCollection_FindActorByDescriptorValue
 .extern Actor_GetCollection
 
@@ -11,7 +11,7 @@
 func_02013ac8: ; 0x02013ac8
     stmdb sp!, {r3, r4, r5, lr}
     mov r4, r0
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     movs r5, r0
     ldr r0, [r4, #0x84]
     bne L_02013b4c
@@ -29,7 +29,7 @@ func_02013ac8: ; 0x02013ac8
     mov r0, r4
     ldrb r1, [r1, #0x169]
     and r1, r1, #0x1
-    bl func_020127f8
+    bl GamePhaseScriptVm_SetResult
     b L_02013b68
 L_02013b20:
     ldr r1, L_02013b70
@@ -41,7 +41,7 @@ L_02013b20:
     ldr r1, [r1, #0xebc]
     ldrb r1, [r1, #0x169]
     and r1, r1, #0x1
-    bl func_020127f8
+    bl GamePhaseScriptVm_SetResult
     b L_02013b68
 L_02013b4c:
     bl Actor_GetCollection
@@ -50,7 +50,7 @@ L_02013b4c:
     ldrb r1, [r0, #0x169]
     mov r0, r4
     and r1, r1, #0x1
-    bl func_020127f8
+    bl GamePhaseScriptVm_SetResult
 L_02013b68:
     mov r0, #0x0
     ldmia sp!, {r3, r4, r5, pc}

@@ -19,14 +19,14 @@ extern void func_ov056_0220f054(void *state, const void *configuration);
 /* Pop a value, pass it to the first recovered global-state operation, return zero. */
 s32 func_02019f4c(GamePhaseActorScriptVm *self)
 {
-    func_02098020(data_021f5f18, (s32)func_02012704(&self->base));
+    func_02098020(data_021f5f18, (s32)GamePhaseScriptVm_Pop(&self->base));
     return 0;
 }
 
 /* Pop a value, pass it to the second recovered global-state operation, return zero. */
 s32 func_02019f6c(GamePhaseActorScriptVm *self)
 {
-    func_020983c0(data_021f5f18, (s32)func_02012704(&self->base));
+    func_020983c0(data_021f5f18, (s32)GamePhaseScriptVm_Pop(&self->base));
     return 0;
 }
 
@@ -44,8 +44,8 @@ static void invokeRuntimeValue(void *object, s32 value)
  */
 s32 func_02019f8c(GamePhaseActorScriptVm *self)
 {
-    s32 value = (s32)func_02012704(&self->base);
-    s32 mode = (s32)func_02012704(&self->base);
+    s32 value = (s32)GamePhaseScriptVm_Pop(&self->base);
+    s32 mode = (s32)GamePhaseScriptVm_Pop(&self->base);
     u8 *runtime = (u8 *)data_021052fc;
     if (mode == 1)
         invokeRuntimeValue(*(void **)(runtime + 0x2ed4), value);
@@ -57,7 +57,7 @@ s32 func_02019f8c(GamePhaseActorScriptVm *self)
 /* Mirror a popped enable value to actor flag bit 0x08000000; return zero. */
 s32 func_0201a00c(GamePhaseActorScriptVm *self)
 {
-    s32 enabled = (s32)func_02012704(&self->base);
+    s32 enabled = (s32)GamePhaseScriptVm_Pop(&self->base);
     u32 *flags = (u32 *)((u8 *)self->actor_84 + 0x14);
     if (enabled)
         *flags |= 0x08000000;
@@ -73,8 +73,8 @@ s32 func_0201a00c(GamePhaseActorScriptVm *self)
 s32 func_0201a03c(GamePhaseActorScriptVm *self)
 {
     struct Configuration { const void *tag; s32 first; s32 second; } config;
-    config.second = (s32)func_02012704(&self->base);
-    config.first = (s32)func_02012704(&self->base);
+    config.second = (s32)GamePhaseScriptVm_Pop(&self->base);
+    config.first = (s32)GamePhaseScriptVm_Pop(&self->base);
     config.tag = data_020d430c;
     func_ov056_0220f054(GamePhaseRuntime_GetAuxiliaryOverlayObject(data_021052fc), &config);
     return 0;

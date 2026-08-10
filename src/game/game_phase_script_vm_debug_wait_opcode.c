@@ -54,6 +54,6 @@ s32 func_02015818(GamePhaseActorScriptVm *self)
         DebugHudState_Close(DebugHudState_GetGlobal());
         return 0;
     }
-    self->base.cursor_04 -= 2;
+    self->base.cursor -= 2;
     return 1;
 }

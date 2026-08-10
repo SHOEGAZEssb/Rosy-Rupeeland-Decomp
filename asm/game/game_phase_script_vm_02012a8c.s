@@ -3,20 +3,20 @@
 .extern func_0200500c
 .extern func_02005058
 .extern func_020050a4
-.extern func_02012704
+.extern GamePhaseScriptVm_Pop
 
     .global func_02012a8c
 func_02012a8c: ; 0x02012a8c
     stmdb sp!, {r4, r5, r6, lr}
     sub sp, sp, #0x10
     mov r6, r0
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     mov r5, r0
     mov r0, r6
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     mov r4, r0
     mov r0, r6
-    bl func_02012704
+    bl GamePhaseScriptVm_Pop
     mov r1, r0, lsl #0xc
     mov r2, r4, lsl #0xc
     mov r3, r5, lsl #0xc
