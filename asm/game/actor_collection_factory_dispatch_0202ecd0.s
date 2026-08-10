@@ -23,7 +23,7 @@
 .extern func_0204d068
 .extern func_0204d284
 .extern func_0204d488
-.extern func_0204d620
+.extern PresentationBackedActor_Init
 .extern func_0204e740
 .extern func_0204e944
 .extern func_0204ec0c
@@ -1620,7 +1620,7 @@ ActorCollection_SpawnActorFromDescriptor: ; 0x0202ecd0
     movs r4, r0
     beq .L_020307bc
     mov r1, r5
-    bl func_0204d620
+    bl PresentationBackedActor_Init
     mov r4, r0
     b .L_020307bc
 .L_020302b0:

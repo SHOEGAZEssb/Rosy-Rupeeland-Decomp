@@ -18950,7 +18950,7 @@ build build/reports/presentation_backed_actor_lifecycle_0204d5c8.json: objdiff b
   base_object = build/decomp/asm/game/presentation_backed_actor_lifecycle_0204d5c8.o
 build build/reports/presentation_backed_actor_lifecycle_0204d5c8.txt: match_report build/reports/presentation_backed_actor_lifecycle_0204d5c8.json | tools/report_objdiff.py
   report_json = build/reports/presentation_backed_actor_lifecycle_0204d5c8.json
-  report_args = --section .text --function func_0204d5c8 --function func_0204d620 --function func_0204d678 --function func_0204d6d4 --function func_0204d738 --require-exact
+  report_args = --section .text --function PresentationBackedActor_InitBase --function PresentationBackedActor_Init --function PresentationBackedActor_DestroyComplete --function PresentationBackedActor_DestroyAndFree --function PresentationBackedActor_Destroy --require-exact
 build presentation_backed_actor_lifecycle: phony build/decomp/src/game/presentation_backed_actor_lifecycle.o build/decomp/asm/game/presentation_backed_actor_lifecycle_0204d5c8.o build/reports/presentation_backed_actor_lifecycle_0204d5c8.txt
 
 presentation_backed_actor_setup_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++

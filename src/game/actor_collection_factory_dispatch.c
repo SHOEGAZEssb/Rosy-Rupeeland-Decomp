@@ -61,7 +61,7 @@ DECLARE_ACTOR_CTOR(Type7Actor_Init);
 DECLARE_ACTOR_CTOR(func_0204d068);
 DECLARE_ACTOR_CTOR(func_0204d284);
 DECLARE_ACTOR_CTOR(func_0204d488);
-DECLARE_ACTOR_CTOR(func_0204d620);
+DECLARE_ACTOR_CTOR(PresentationBackedActor_Init);
 DECLARE_ACTOR_CTOR(func_0204e740);
 DECLARE_ACTOR_CTOR(func_0204e944);
 DECLARE_ACTOR_CTOR(func_0204ec0c);
@@ -173,7 +173,7 @@ static ActorFactorySpec kind4Spec(u16 subtype)
 {
     switch (subtype) {
     case 10: case 11: case 12: case 13: case 19:
-        return (ActorFactorySpec)SPEC(0x1fc, func_0204d620);
+        return (ActorFactorySpec)SPEC(0x1fc, PresentationBackedActor_Init);
     case 14: case 15: case 16: case 17:
         return (ActorFactorySpec)SPEC(0x1f0, func_0204e944);
     case 18: return (ActorFactorySpec)SPEC(0x200, func_0204e740);

@@ -32,7 +32,7 @@ extern void Type7Actor_ClearGlobalRelationshipToActor(void *actor);
  * Return self. The inherited constructor may change engine state; no hardware
  * is accessed directly.
  */
-void *func_0204d5c8(void *self)
+void *PresentationBackedActor_InitBase(void *self)
 {
     func_02030f98(self);
     FIELD(const void *, self, 0x000) = data_020e238c;
@@ -49,12 +49,12 @@ void *func_0204d5c8(void *self)
 
 /*
  * Input is actor storage. Perform the same construction, field initialization,
- * type-10 accounting, and return behavior as func_0204d5c8. This distinct
+ * type-10 accounting, and return behavior as PresentationBackedActor_InitBase. This distinct
  * entry point is retained because recovered callers may depend on its address.
  */
-void *func_0204d620(void *self)
+void *PresentationBackedActor_Init(void *self)
 {
-    return func_0204d5c8(self);
+    return PresentationBackedActor_InitBase(self);
 }
 
 /*
@@ -63,7 +63,7 @@ void *func_0204d620(void *self)
  * decrement the type-10 count when applicable, then run final base teardown.
  * Return self; heap storage is retained and no hardware is touched directly.
  */
-void *func_0204d678(void *self)
+void *PresentationBackedActor_DestroyComplete(void *self)
 {
     void (**vtable)(void *) = (void (**)(void *))data_020e238c;
     FIELD(const void *, self, 0x000) = data_020e238c;
@@ -79,23 +79,23 @@ void *func_0204d678(void *self)
 
 /*
  * Input is an actor. Perform the teardown sequence documented for
- * func_0204d678, then free the actor allocation and return its former address.
+ * PresentationBackedActor_DestroyComplete, then free the actor allocation and return its former address.
  * Engine and heap state change; there are no direct hardware effects.
  */
-void *func_0204d6d4(void *self)
+void *PresentationBackedActor_DestroyAndFree(void *self)
 {
-    func_0204d678(self);
+    PresentationBackedActor_DestroyComplete(self);
     Heap_Free(self);
     return self;
 }
 
 /*
  * Input is an actor. Perform the non-deleting teardown documented for
- * func_0204d678 and return self. This separate wrapper is preserved for the
+ * PresentationBackedActor_DestroyComplete and return self. This separate wrapper is preserved for the
  * recovered callback layout; no heap or hardware state changes directly.
  */
-void *func_0204d738(void *self)
+void *PresentationBackedActor_Destroy(void *self)
 {
-    return func_0204d678(self);
+    return PresentationBackedActor_DestroyComplete(self);
 }
 

@@ -7,8 +7,8 @@
 .extern data_020e238c
 .extern gPresentationBackedActorRuntimeState
 .text
-    .global func_0204d5c8
-func_0204d5c8:
+    .global PresentationBackedActor_InitBase
+PresentationBackedActor_InitBase:
     stmdb sp!, {r4, lr}
     mov r4, r0
     bl func_02030f98
@@ -31,10 +31,10 @@ func_0204d5c8:
     ldmia sp!, {r4, pc}
 .L_0204d618: .word data_020e238c
 .L_0204d61c: .word gPresentationBackedActorRuntimeState
-.size func_0204d5c8, . - func_0204d5c8
+.size PresentationBackedActor_InitBase, . - PresentationBackedActor_InitBase
 
-    .global func_0204d620
-func_0204d620:
+    .global PresentationBackedActor_Init
+PresentationBackedActor_Init:
     stmdb sp!, {r4, lr}
     mov r4, r0
     bl func_02030f98
@@ -57,10 +57,10 @@ func_0204d620:
     ldmia sp!, {r4, pc}
 .L_0204d670: .word data_020e238c
 .L_0204d674: .word gPresentationBackedActorRuntimeState
-.size func_0204d620, . - func_0204d620
+.size PresentationBackedActor_Init, . - PresentationBackedActor_Init
 
-    .global func_0204d678
-func_0204d678:
+    .global PresentationBackedActor_DestroyComplete
+PresentationBackedActor_DestroyComplete:
     stmdb sp!, {r4, lr}
     ldr r1, .L_0204d6cc
     mov r4, r0
@@ -84,10 +84,10 @@ func_0204d678:
     ldmia sp!, {r4, pc}
 .L_0204d6cc: .word data_020e238c
 .L_0204d6d0: .word gPresentationBackedActorRuntimeState
-.size func_0204d678, . - func_0204d678
+.size PresentationBackedActor_DestroyComplete, . - PresentationBackedActor_DestroyComplete
 
-    .global func_0204d6d4
-func_0204d6d4:
+    .global PresentationBackedActor_DestroyAndFree
+PresentationBackedActor_DestroyAndFree:
     stmdb sp!, {r4, lr}
     ldr r1, .L_0204d730
     mov r4, r0
@@ -113,10 +113,10 @@ func_0204d6d4:
     ldmia sp!, {r4, pc}
 .L_0204d730: .word data_020e238c
 .L_0204d734: .word gPresentationBackedActorRuntimeState
-.size func_0204d6d4, . - func_0204d6d4
+.size PresentationBackedActor_DestroyAndFree, . - PresentationBackedActor_DestroyAndFree
 
-    .global func_0204d738
-func_0204d738:
+    .global PresentationBackedActor_Destroy
+PresentationBackedActor_Destroy:
     stmdb sp!, {r4, lr}
     ldr r1, .L_0204d78c
     mov r4, r0
@@ -140,5 +140,5 @@ func_0204d738:
     ldmia sp!, {r4, pc}
 .L_0204d78c: .word data_020e238c
 .L_0204d790: .word gPresentationBackedActorRuntimeState
-.size func_0204d738, . - func_0204d738
+.size PresentationBackedActor_Destroy, . - PresentationBackedActor_Destroy
 

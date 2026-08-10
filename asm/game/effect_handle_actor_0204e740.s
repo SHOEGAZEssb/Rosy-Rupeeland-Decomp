@@ -3,8 +3,8 @@
 .extern data_020e2458
 .extern data_021052fc
 .extern func_0201e0ec
-.extern func_0204d5c8
-.extern func_0204d738
+.extern PresentationBackedActor_InitBase
+.extern PresentationBackedActor_Destroy
 .extern func_0204d858
 .extern func_020a2310
 .extern func_020a25c8
@@ -15,7 +15,7 @@
 func_0204e740: ; 0x0204e740
     stmdb sp!, {r4, lr}
     mov r4, r0
-    bl func_0204d5c8
+    bl PresentationBackedActor_InitBase
     ldr r1, .L_0204e770
     mov r0, #0x0
     str r1, [r4, #0x0]
@@ -49,7 +49,7 @@ func_0204e774: ; 0x0204e774
     bl func_020a2310
 .L_0204e7b4:
     mov r0, r4
-    bl func_0204d738
+    bl PresentationBackedActor_Destroy
     mov r0, r4
     ldmia sp!, {r3, r4, r5, pc}
 .L_0204e7c4: .word data_020e2458
@@ -77,7 +77,7 @@ func_0204e7cc: ; 0x0204e7cc
     bl func_020a2310
 .L_0204e80c:
     mov r0, r4
-    bl func_0204d738
+    bl PresentationBackedActor_Destroy
     mov r0, r4
     bl Heap_Free
     mov r0, r4

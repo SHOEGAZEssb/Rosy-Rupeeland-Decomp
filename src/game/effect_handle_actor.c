@@ -14,8 +14,8 @@ extern "C" {
 #endif
 extern void Heap_Free(void *allocation);
 extern void *func_0201e0ec(void *manager);
-extern void *func_0204d5c8(void *actor);
-extern void *func_0204d738(void *actor);
+extern void *PresentationBackedActor_InitBase(void *actor);
+extern void *PresentationBackedActor_Destroy(void *actor);
 extern void func_0204d858(void *actor);
 extern void func_020a2310(void *manager, s32 handle);
 extern void func_020a25c8(void *manager, s32 mode, s32 x, s32 y,
@@ -36,7 +36,7 @@ extern s32 func_020a257c(void *manager, s32 mode, s32 x, s32 y,
  */
 void *func_0204e740(void *self)
 {
-    func_0204d5c8(self);
+    PresentationBackedActor_InitBase(self);
     FIELD(const void *, self, 0) = data_020e2458;
     FIELD(s16, self, 0x1fc) = 0;
     FIELD(s16, self, 0x1fe) = -1;
@@ -57,7 +57,7 @@ void *func_0204e774(void *self)
         void *manager = func_0201e0ec((u8 *)data_021052fc + 0x2f7c);
         func_020a2310(manager, handle);
     }
-    func_0204d738(self);
+    PresentationBackedActor_Destroy(self);
     return self;
 }
 
