@@ -13,7 +13,7 @@ extern "C" {
 extern s32 func_0204cfa4(void);
 extern void func_02034ecc(void);
 extern void func_02053560(void);
-extern void func_0203d944(void);
+extern void ActorRegisteredSubclass_ProcessRegistry(void);
 extern void func_02045028(void);
 #ifdef __cplusplus
 }
@@ -46,7 +46,7 @@ void ActorInteractionRuntime_Update(void)
     }
     func_02034ecc();
     func_02053560();
-    func_0203d944();
+    ActorRegisteredSubclass_ProcessRegistry();
     *(u16 *)data_021056e4 = 0;
     func_02045028();
 }

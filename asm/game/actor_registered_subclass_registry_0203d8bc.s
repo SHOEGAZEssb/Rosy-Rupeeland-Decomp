@@ -7,9 +7,9 @@
 .extern ActorTableRecord_ApplyCollisionResponse
 .extern ActorRegisteredSubclass_TriggerPrimaryInteraction
 .extern ActorRegisteredSubclass_StartTimedState
-    .global func_0203d8bc
-    .type func_0203d8bc, @function
-func_0203d8bc: ; 0x0203d8bc
+    .global ActorRegisteredSubclass_ApplyCollisionAndStartTimedState
+    .type ActorRegisteredSubclass_ApplyCollisionAndStartTimedState, @function
+ActorRegisteredSubclass_ApplyCollisionAndStartTimedState: ; 0x0203d8bc
     stmdb sp!, {r4, lr}
     mov r4, r0
     ldr ip, [r4, #0x14]
@@ -31,11 +31,11 @@ func_0203d8bc: ; 0x0203d8bc
     strh r1, [r0, #0x0]
     ldmia sp!, {r4, pc}
 .L_0203d90c: .word data_02105714
-    .size func_0203d8bc, . - func_0203d8bc
+    .size ActorRegisteredSubclass_ApplyCollisionAndStartTimedState, . - ActorRegisteredSubclass_ApplyCollisionAndStartTimedState
 
-    .global func_0203d910
-    .type func_0203d910, @function
-func_0203d910: ; 0x0203d910
+    .global ActorRegisteredSubclass_ResetRegistry
+    .type ActorRegisteredSubclass_ResetRegistry, @function
+ActorRegisteredSubclass_ResetRegistry: ; 0x0203d910
     mov r2, #0x0
     ldr r0, .L_0203d93c
     mov r1, r2
@@ -50,11 +50,11 @@ func_0203d910: ; 0x0203d910
     bx lr
 .L_0203d93c: .word data_02105718
 .L_0203d940: .word data_02105714
-    .size func_0203d910, . - func_0203d910
+    .size ActorRegisteredSubclass_ResetRegistry, . - ActorRegisteredSubclass_ResetRegistry
 
-    .global func_0203d944
-    .type func_0203d944, @function
-func_0203d944: ; 0x0203d944
+    .global ActorRegisteredSubclass_ProcessRegistry
+    .type ActorRegisteredSubclass_ProcessRegistry, @function
+ActorRegisteredSubclass_ProcessRegistry: ; 0x0203d944
     stmdb sp!, {r4, r5, r6, lr}
     ldr r0, .L_0203da14
     ldrsh r0, [r0, #0x2]
@@ -114,11 +114,11 @@ func_0203d944: ; 0x0203d944
 .L_0203da14: .word data_02105714
 .L_0203da18: .word data_021052fc
 .L_0203da1c: .word data_02105718
-    .size func_0203d944, . - func_0203d944
+    .size ActorRegisteredSubclass_ProcessRegistry, . - ActorRegisteredSubclass_ProcessRegistry
 
-    .global func_0203da20
-    .type func_0203da20, @function
-func_0203da20: ; 0x0203da20
+    .global ActorRegisteredSubclass_AlwaysTrue
+    .type ActorRegisteredSubclass_AlwaysTrue, @function
+ActorRegisteredSubclass_AlwaysTrue: ; 0x0203da20
     mov r0, #0x1
     bx lr
-    .size func_0203da20, . - func_0203da20
+    .size ActorRegisteredSubclass_AlwaysTrue, . - ActorRegisteredSubclass_AlwaysTrue

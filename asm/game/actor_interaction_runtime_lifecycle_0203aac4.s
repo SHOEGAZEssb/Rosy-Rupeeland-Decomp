@@ -14,7 +14,7 @@
 .extern ActorDerivedType1_SetSingletonFieldE4To20E
 .extern ActorFeedbackResources_Load
 .extern ActorFeedbackResources_Unload
-.extern func_0203d910
+.extern ActorRegisteredSubclass_ResetRegistry
 .extern ActorExtendedPairing_UpdateLinks
 .extern func_02045004
 .extern func_020451b8
@@ -61,7 +61,7 @@ ActorInteractionRuntime_Init: ; 0x0203aac4
     ldr r0, .L_0203ab64
     strh r2, [r1, #0x0]
     strh r2, [r0, #0x0]
-    bl func_0203d910
+    bl ActorRegisteredSubclass_ResetRegistry
     mov r2, #0x0
     ldr r0, .L_0203ab68
     mov r1, r2

@@ -19,7 +19,7 @@ extern void *func_020451b8(void *allocation);
 extern void func_020451d4(void *object);
 extern void ActorFeedbackResources_Load(void);
 extern void ActorFeedbackResources_Unload(void);
-extern void func_0203d910(void);
+extern void ActorRegisteredSubclass_ResetRegistry(void);
 extern void func_02034e58(void);
 extern void func_02034ea8(void);
 extern void ActorExtendedPairing_UpdateLinks(void);
@@ -40,9 +40,10 @@ extern void func_0205929c(void *context, s32 channel, s32 value);
 /*
  * Allocate and initialize the 0x40-byte shared object, materialize the actor
  * resource table, set GameWork halfwords selected by indices 0x90..0x9b at
- * offset +0x4c to -1, clear the two recovered counters, invoke func_0203d910,
- * and clear all six feedback slots. Returns no value; allocation, resource,
- * and subsystem initialization change global ownership and engine state.
+ * offset +0x4c to -1, clear the two recovered counters, invoke
+ * ActorRegisteredSubclass_ResetRegistry, and clear all six feedback slots.
+ * Returns no value; allocation, resource, and subsystem initialization change
+ * global ownership and engine state.
  */
 void ActorInteractionRuntime_Init(void)
 {
@@ -56,7 +57,7 @@ void ActorInteractionRuntime_Init(void)
         *(s16 *)((u8 *)gGameWork + i * 2 + 0x4c) = -1;
     data_0210572a = 0;
     data_02105728 = 0;
-    func_0203d910();
+    ActorRegisteredSubclass_ResetRegistry();
     for (i = 0; i < 6; ++i)
         gActorFeedbackPresentations[i] = 0;
 }

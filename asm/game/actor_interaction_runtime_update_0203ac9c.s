@@ -6,7 +6,7 @@
 .extern data_02105684
 .extern data_021056e4
 .extern func_02034ecc
-.extern func_0203d944
+.extern ActorRegisteredSubclass_ProcessRegistry
 .extern func_02045028
 .extern func_0204cfa4
 .extern func_02053560
@@ -53,7 +53,7 @@ ActorInteractionRuntime_Update: ; 0x0203ac9c
 .L_0203ad30:
     bl func_02034ecc
     bl func_02053560
-    bl func_0203d944
+    bl ActorRegisteredSubclass_ProcessRegistry
     ldr r0, .L_0203ad60
     mov r1, #0x0
     strh r1, [r0, #0x0]

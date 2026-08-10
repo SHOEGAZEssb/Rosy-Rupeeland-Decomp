@@ -28,7 +28,9 @@ extern void ActorRegisteredSubclass_TriggerPrimaryInteraction(void *actor);
  * counter. Returns no value; actor interaction state and the global counter
  * change.
  */
-void func_0203d8bc(void *self, s32 value, s32 extra)
+void ActorRegisteredSubclass_ApplyCollisionAndStartTimedState(void *self,
+                                                              s32 value,
+                                                              s32 extra)
 {
     u8 *actor = (u8 *)self;
 
@@ -45,7 +47,7 @@ void func_0203d8bc(void *self, s32 value, s32 extra)
  * counters in data_02105714. Takes no arguments, returns no value, and resets
  * the complete registered-subclass global state.
  */
-void func_0203d910(void)
+void ActorRegisteredSubclass_ResetRegistry(void)
 {
     s32 i;
 
@@ -65,7 +67,7 @@ void func_0203d910(void)
  * data_02105714[0]. Returns no value; registry, counter, and actor interaction
  * state may change. A zero [1] counter returns without clearing.
  */
-void func_0203d944(void)
+void ActorRegisteredSubclass_ProcessRegistry(void)
 {
     u8 *primary;
     u8 *selected = 0;
@@ -100,7 +102,7 @@ void func_0203d944(void)
 }
 
 /* Return one without reading inputs or changing state. */
-s32 func_0203da20(void)
+s32 ActorRegisteredSubclass_AlwaysTrue(void)
 {
     return 1;
 }
