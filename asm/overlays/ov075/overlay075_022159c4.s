@@ -2,13 +2,13 @@
 ; Matching fallback for the portable implementation in src/overlays/ov075/overlay075_recovery.c.
 .extern data_ov075_022175ec
 .extern func_02004fe0
-.extern func_02043de4
+.extern ActorExtendedLinkSource_Init
 
 .global func_ov075_022159c4
 func_ov075_022159c4:
     stmdb sp!, {r4, lr}
     mov r4, r0
-    bl func_02043de4
+    bl ActorExtendedLinkSource_Init
     ldr r0, .L_02215a20
     add r2, r4, #0x200
     str r0, [r4, #0x0]

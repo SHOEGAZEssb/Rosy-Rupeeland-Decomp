@@ -15,7 +15,7 @@ extern "C" {
 extern void *ActorExtendedType2_Init(void *actor, const void *configuration);
 extern void *ActorExtendedType2_Destroy(void *actor);
 extern void ActorExtendedType2_UpdateFrame(void *actor);
-extern s32 func_02043340(void *actor, void *other, s32 context);
+extern s32 ActorExtendedType2_ApplyContactResponse(void *actor, void *other, s32 context);
 #ifdef __cplusplus
 }
 #endif
@@ -26,7 +26,7 @@ extern s32 func_02043340(void *actor, void *other, s32 context);
  * count is below eight. Return self. Base state and the global pairing list may
  * change; no direct SDK or hardware access occurs.
  */
-void *func_02043cd0(void *self, const void *configuration)
+void *ActorExtendedLinked_Init(void *self, const void *configuration)
 {
     u8 *actor = (u8 *)self;
     ActorExtendedType2_Init(actor, configuration);
@@ -50,7 +50,7 @@ void *func_02043d1c(void *self)
  * Invoke base destructor ActorExtendedType2_Destroy, free self, and return the original
  * pointer value. Actor storage becomes invalid after the heap operation.
  */
-void *func_02043d30(void *self)
+void *ActorExtendedLinked_DestroyAndFree(void *self)
 {
     ActorExtendedType2_Destroy(self);
     Heap_Free(self);
@@ -65,16 +65,16 @@ void *func_02043d4c(void *self)
 }
 
 /* Forward actor to base frame update ActorExtendedType2_UpdateFrame; actor state may change. */
-void func_02043d60(void *self)
+void ActorExtendedLinked_UpdateFrame(void *self)
 {
     ActorExtendedType2_UpdateFrame(self);
 }
 
 /*
- * Forward actor, other object, and context to func_02043340 and return its
+ * Forward actor, other object, and context to ActorExtendedType2_ApplyContactResponse and return its
  * result. Collision response and actor motion state may change.
  */
-s32 func_02043d6c(void *self, void *other, s32 context)
+s32 ActorExtendedLinked_ApplyContactResponse(void *self, void *other, s32 context)
 {
-    return func_02043340(self, other, context);
+    return ActorExtendedType2_ApplyContactResponse(self, other, context);
 }

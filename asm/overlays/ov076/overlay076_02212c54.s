@@ -3,7 +3,7 @@
 .extern func_02004fe0
 .extern func_02005058
 .extern func_02005084
-.extern func_02043340
+.extern ActorExtendedType2_ApplyContactResponse
 .extern func_ov076_02212e18
 
 .global func_ov076_02212c54
@@ -122,7 +122,7 @@ func_ov076_02212c54:
     mov r0, r8
     mov r1, r7
     mov r2, r6
-    bl func_02043340
+    bl ActorExtendedType2_ApplyContactResponse
     add sp, sp, #0x10
     ldmia sp!, {r4, r5, r6, r7, r8, pc}
 .L_02212e0c: .word 0x4cd

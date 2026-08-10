@@ -1,6 +1,6 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov076/overlay076_recovery.c.
-.extern func_02043e7c
+.extern ActorExtendedLinkSource_UpdateFrame
 
 .global func_ov076_022139d4
 func_ov076_022139d4:
@@ -13,7 +13,7 @@ func_ov076_022139d4:
     cmp r0, #0x0
     ldmeqia sp!, {r4, pc}
     mov r0, r4
-    bl func_02043e7c
+    bl ActorExtendedLinkSource_UpdateFrame
     ldr r0, [r4, #0x29c]
     tst r0, #0x1
     beq .L_02213a28

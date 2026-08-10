@@ -69,5 +69,5 @@ func_0204322c: ; 0x0204322c
     ldmia sp!, {r3, r4, r5, pc}
 .L_02043308: .word data_020e8380
 
-    .global func_0204330c
+    .global ActorExtendedType2_TriggerContactFeedback
 .size func_0204322c, . - func_0204322c

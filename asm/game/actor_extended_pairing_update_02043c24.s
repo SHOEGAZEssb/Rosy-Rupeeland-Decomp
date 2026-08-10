@@ -59,5 +59,5 @@ func_02043c24: ; 0x02043c24
 .L_02043cc8: .word data_020e70c0
 .L_02043ccc: .word data_0210572c
 
-    .global func_02043cd0
+    .global ActorExtendedLinked_Init
 .size func_02043c24, . - func_02043c24

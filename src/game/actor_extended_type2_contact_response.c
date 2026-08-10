@@ -24,7 +24,7 @@ extern s32 func_02032a94(void *actor, void *other, s32 context);
  * sound, and presentation state may change; the two calls cross engine sound
  * and presentation boundaries.
  */
-s32 func_0204330c(void *self)
+s32 ActorExtendedType2_TriggerContactFeedback(void *self)
 {
     u8 *actor = (u8 *)self;
     *(u16 *)(actor + 0x280) = 0;
@@ -42,7 +42,7 @@ s32 func_0204330c(void *self)
  * invoking func_02032a94(actor,other,context) and return its result. Actor motion
  * and base contact state may change; no direct SDK or hardware access occurs.
  */
-s32 func_02043340(void *self, void *otherObject, s32 context)
+s32 ActorExtendedType2_ApplyContactResponse(void *self, void *otherObject, s32 context)
 {
     u8 *actor = (u8 *)self;
     u8 *other = (u8 *)otherObject;

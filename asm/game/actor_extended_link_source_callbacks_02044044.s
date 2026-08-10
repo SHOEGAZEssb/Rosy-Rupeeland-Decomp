@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/actor_extended_link_source_callbacks.c.
 .text
-.extern func_02043340
+.extern ActorExtendedType2_ApplyContactResponse
 .global func_02044044
 .type func_02044044, @function
 .global func_0204404c
@@ -21,7 +21,7 @@ func_02044044: ; 0x02044044
 func_0204404c: ; 0x0204404c
     ldr ip, .L_02044054
     bx ip
-.L_02044054: .word func_02043340
+.L_02044054: .word ActorExtendedType2_ApplyContactResponse
 
 .size func_0204404c, . - func_0204404c
 func_02044058: ; 0x02044058

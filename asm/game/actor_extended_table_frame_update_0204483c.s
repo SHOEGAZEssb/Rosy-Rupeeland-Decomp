@@ -8,9 +8,9 @@
 .extern func_02043610
 .extern func_02044718
 .extern func_02044760
-.global func_0204483c
-.type func_0204483c, @function
-func_0204483c: ; 0x0204483c
+.global ActorExtendedTable_UpdateFrame
+.type ActorExtendedTable_UpdateFrame, @function
+ActorExtendedTable_UpdateFrame: ; 0x0204483c
     stmdb sp!, {r4, lr}
     mov r4, r0
     ldr r0, [r4, #0x14]
@@ -96,4 +96,4 @@ func_0204483c: ; 0x0204483c
 .L_02044970: .word data_020e0ac8
 .L_02044974: .word data_020e0ad8
 .L_02044978: .word data_020e0ad0
-.size func_0204483c, . - func_0204483c
+.size ActorExtendedTable_UpdateFrame, . - ActorExtendedTable_UpdateFrame

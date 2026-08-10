@@ -5,7 +5,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern s32 func_02043340(void *actor, void *other, s32 context);
+extern s32 ActorExtendedType2_ApplyContactResponse(void *actor, void *other, s32 context);
 #ifdef __cplusplus
 }
 #endif
@@ -16,10 +16,10 @@ s32 func_02044044(void)
     return 0x20000;
 }
 
-/* Forward all inputs to func_02043340 and return its collision-response result. */
+/* Forward all inputs to ActorExtendedType2_ApplyContactResponse and return its collision-response result. */
 s32 func_0204404c(void *self, void *other, s32 context)
 {
-    return func_02043340(self, other, context);
+    return ActorExtendedType2_ApplyContactResponse(self, other, context);
 }
 
 /*

@@ -12,7 +12,7 @@
 .extern func_ov096_022178c0
 .extern func_0203ef90
 .extern func_02031564
-.extern func_02043340
+.extern ActorExtendedType2_ApplyContactResponse
 .extern func_0203baa0
 .extern func_02031f44
 .extern func_0203213c
@@ -37,7 +37,7 @@
 .extern func_020425d4
 .extern func_02042864
 .extern Actor_RefreshTerrainHeightIfEnabled
-.extern func_0204330c
+.extern ActorExtendedType2_TriggerContactFeedback
 .extern Actor_ConvergeToTargetHeight
 .extern func_ov096_022182e8
 .extern func_ov096_022181ac
@@ -203,7 +203,7 @@ data_ov096_02218b98:
     .word func_ov096_022178c0
     .word func_0203ef90
     .word func_02031564
-    .word func_02043340
+    .word ActorExtendedType2_ApplyContactResponse
     .word func_0203baa0
     .word func_02031f44
     .word func_0203213c
@@ -228,7 +228,7 @@ data_ov096_02218b98:
     .word func_020425d4
     .word func_02042864
     .word Actor_RefreshTerrainHeightIfEnabled
-    .word func_0204330c
+    .word ActorExtendedType2_TriggerContactFeedback
     .word Actor_ConvergeToTargetHeight
     .word func_ov096_022182e8
     .word func_ov096_022181ac
@@ -350,7 +350,7 @@ data_ov096_02218de8:
     .word func_ov096_022185d8
     .word func_0203ef90
     .word func_02031564
-    .word func_02043340
+    .word ActorExtendedType2_ApplyContactResponse
     .word func_0203baa0
     .word func_02031f44
     .word func_0203213c
@@ -375,7 +375,7 @@ data_ov096_02218de8:
     .word func_020425d4
     .word func_02042864
     .word Actor_RefreshTerrainHeightIfEnabled
-    .word func_0204330c
+    .word ActorExtendedType2_TriggerContactFeedback
     .word Actor_ConvergeToTargetHeight
     .word func_ov096_022182e8
     .word func_ov096_022181ac

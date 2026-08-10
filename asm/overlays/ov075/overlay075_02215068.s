@@ -2,7 +2,7 @@
 ; Matching fallback for the portable implementation in src/overlays/ov075/overlay075_recovery.c.
 .extern data_ov075_02217410
 .extern func_0204362c
-.extern func_02043cd0
+.extern ActorExtendedLinked_Init
 .extern func_ov075_02215044
 .extern func_ov075_022158bc
 
@@ -10,7 +10,7 @@
 func_ov075_02215068:
     stmdb sp!, {r4, lr}
     mov r4, r0
-    bl func_02043cd0
+    bl ActorExtendedLinked_Init
     ldr r1, .L_022150c0
     mov r0, #0x0
     str r1, [r4, #0x0]

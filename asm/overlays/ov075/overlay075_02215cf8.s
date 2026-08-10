@@ -4,7 +4,7 @@
 .extern data_ov075_02217348
 .extern data_ov075_02217350
 .extern func_020050a4
-.extern func_02043e7c
+.extern ActorExtendedLinkSource_UpdateFrame
 .extern func_02044088
 .extern func_0204cfa4
 .extern func_ov075_022152ac
@@ -255,7 +255,7 @@ func_ov075_02215cf8:
     str r0, [r4, #0x5c]
 .L_02216084:
     mov r0, r4
-    bl func_02043e7c
+    bl ActorExtendedLinkSource_UpdateFrame
     ldmia sp!, {r4, pc}
 .L_02216090: .word data_ov075_02217290
 .L_02216094: .word data_ov075_02217350

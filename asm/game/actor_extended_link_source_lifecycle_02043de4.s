@@ -7,17 +7,17 @@
 .extern ActorExtendedType2_Init
 .extern ActorExtendedType2_Destroy
 .extern ActorExtendedType2_UpdateFrame
-.global func_02043de4
-.type func_02043de4, @function
+.global ActorExtendedLinkSource_Init
+.type ActorExtendedLinkSource_Init, @function
 .global func_02043e38
 .type func_02043e38, @function
-.global func_02043e4c
-.type func_02043e4c, @function
+.global ActorExtendedLinkSource_DestroyAndFree
+.type ActorExtendedLinkSource_DestroyAndFree, @function
 .global func_02043e68
 .type func_02043e68, @function
-.global func_02043e7c
-.type func_02043e7c, @function
-func_02043de4: ; 0x02043de4
+.global ActorExtendedLinkSource_UpdateFrame
+.type ActorExtendedLinkSource_UpdateFrame, @function
+ActorExtendedLinkSource_Init: ; 0x02043de4
     stmdb sp!, {r4, lr}
     mov r4, r0
     bl ActorExtendedType2_Init
@@ -40,7 +40,7 @@ func_02043de4: ; 0x02043de4
 .L_02043e30: .word data_02105728
 .L_02043e34: .word data_0210574c
 
-.size func_02043de4, . - func_02043de4
+.size ActorExtendedLinkSource_Init, . - ActorExtendedLinkSource_Init
 func_02043e38: ; 0x02043e38
     stmdb sp!, {r4, lr}
     mov r4, r0
@@ -49,7 +49,7 @@ func_02043e38: ; 0x02043e38
     ldmia sp!, {r4, pc}
 
 .size func_02043e38, . - func_02043e38
-func_02043e4c: ; 0x02043e4c
+ActorExtendedLinkSource_DestroyAndFree: ; 0x02043e4c
     stmdb sp!, {r4, lr}
     mov r4, r0
     bl ActorExtendedType2_Destroy
@@ -58,7 +58,7 @@ func_02043e4c: ; 0x02043e4c
     mov r0, r4
     ldmia sp!, {r4, pc}
 
-.size func_02043e4c, . - func_02043e4c
+.size ActorExtendedLinkSource_DestroyAndFree, . - ActorExtendedLinkSource_DestroyAndFree
 func_02043e68: ; 0x02043e68
     stmdb sp!, {r4, lr}
     mov r4, r0
@@ -67,7 +67,7 @@ func_02043e68: ; 0x02043e68
     ldmia sp!, {r4, pc}
 
 .size func_02043e68, . - func_02043e68
-func_02043e7c: ; 0x02043e7c
+ActorExtendedLinkSource_UpdateFrame: ; 0x02043e7c
     stmdb sp!, {r4, lr}
     mov r4, r0
     ldr r0, [r4, #0x14]
@@ -82,4 +82,4 @@ func_02043e7c: ; 0x02043e7c
     bic r0, r0, #0x2
     str r0, [r4, #0x29c]
     ldmia sp!, {r4, pc}
-.size func_02043e7c, . - func_02043e7c
+.size ActorExtendedLinkSource_UpdateFrame, . - ActorExtendedLinkSource_UpdateFrame

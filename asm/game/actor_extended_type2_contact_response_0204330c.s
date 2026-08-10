@@ -6,9 +6,9 @@
 .extern func_0204cfa4
 .extern func_020adae4
 .extern func_020adc90
-.global func_0204330c
-.type func_0204330c, @function
-func_0204330c: ; 0x0204330c
+.global ActorExtendedType2_TriggerContactFeedback
+.type ActorExtendedType2_TriggerContactFeedback, @function
+ActorExtendedType2_TriggerContactFeedback: ; 0x0204330c
     stmdb sp!, {r4, lr}
     mov r4, r0
     add r3, r4, #0x200
@@ -22,11 +22,11 @@ func_0204330c: ; 0x0204330c
     mov r3, #0x14
     bl func_020405c8
     ldmia sp!, {r4, pc}
-.size func_0204330c, . - func_0204330c
+.size ActorExtendedType2_TriggerContactFeedback, . - ActorExtendedType2_TriggerContactFeedback
 
-.global func_02043340
-.type func_02043340, @function
-func_02043340: ; 0x02043340
+.global ActorExtendedType2_ApplyContactResponse
+.type ActorExtendedType2_ApplyContactResponse, @function
+ActorExtendedType2_ApplyContactResponse: ; 0x02043340
     stmdb sp!, {r3, r4, r5, r6, r7, r8, r9, lr}
     mov r7, r1
     ldrb r1, [r7, #0x4d]
@@ -97,4 +97,4 @@ func_02043340: ; 0x02043340
     mov r2, r6
     bl func_02032a94
     ldmia sp!, {r3, r4, r5, r6, r7, r8, r9, pc}
-.size func_02043340, . - func_02043340
+.size ActorExtendedType2_ApplyContactResponse, . - ActorExtendedType2_ApplyContactResponse

@@ -37,7 +37,7 @@
 .extern func_ov097_02217d44
 .extern func_02042864
 .extern Actor_RefreshTerrainHeightIfEnabled
-.extern func_0204330c
+.extern ActorExtendedType2_TriggerContactFeedback
 .extern Actor_ConvergeToTargetHeight
 .extern func_ov097_02219cc4
 .extern func_ov097_02219b90
@@ -319,7 +319,7 @@ data_ov097_0221a5f4:
     .word func_ov097_02217d44
     .word func_02042864
     .word Actor_RefreshTerrainHeightIfEnabled
-    .word func_0204330c
+    .word ActorExtendedType2_TriggerContactFeedback
     .word Actor_ConvergeToTargetHeight
     .word func_ov097_02219cc4
     .word func_ov097_02219b90
@@ -454,7 +454,7 @@ data_ov097_0221a80c:
     .word func_020425d4
     .word func_02042864
     .word Actor_RefreshTerrainHeightIfEnabled
-    .word func_0204330c
+    .word ActorExtendedType2_TriggerContactFeedback
     .word Actor_ConvergeToTargetHeight
     .word func_ov097_02219cc4
     .word func_ov097_02219b90

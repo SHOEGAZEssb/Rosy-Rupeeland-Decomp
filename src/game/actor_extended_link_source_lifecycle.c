@@ -24,7 +24,7 @@ extern void ActorExtendedType2_UpdateFrame(void *actor);
  * +0x298, append self to data_0210574c when its signed count is below eight,
  * and clear flags +0x29c. Return self. Actor and global list state may change.
  */
-void *func_02043de4(void *self, const void *configuration)
+void *ActorExtendedLinkSource_Init(void *self, const void *configuration)
 {
     u8 *actor = (u8 *)self;
     ActorExtendedType2_Init(actor, configuration);
@@ -49,7 +49,7 @@ void *func_02043e38(void *self)
  * Invoke base destructor ActorExtendedType2_Destroy, free self, and return the original
  * pointer value. Actor storage becomes invalid after the heap operation.
  */
-void *func_02043e4c(void *self)
+void *ActorExtendedLinkSource_DestroyAndFree(void *self)
 {
     ActorExtendedType2_Destroy(self);
     Heap_Free(self);
@@ -68,7 +68,7 @@ void *func_02043e68(void *self)
  * base frame update and clear bit one in flags +0x29c. Returns no value; actor
  * frame and class flag state may change, with no direct hardware access.
  */
-void func_02043e7c(void *self)
+void ActorExtendedLinkSource_UpdateFrame(void *self)
 {
     u8 *actor = (u8 *)self;
     if ((*(u32 *)(actor + 0x14) & 0x200000) != 0)

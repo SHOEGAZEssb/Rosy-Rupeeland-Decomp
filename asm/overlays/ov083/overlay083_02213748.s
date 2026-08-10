@@ -1,7 +1,7 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov083/overlay083_recovery.c.
 .extern data_ov083_02214154
-.extern func_02043de4
+.extern ActorExtendedLinkSource_Init
 .extern func_ov083_02213734
 
 .global func_ov083_02213748
@@ -9,7 +9,7 @@ func_ov083_02213748:
     stmdb sp!, {r3, r4, lr}
     sub sp, sp, #0x4
     mov r4, r0
-    bl func_02043de4
+    bl ActorExtendedLinkSource_Init
     mov r1, #0x0
     ldr r0, .L_022137a4
     mov r2, r1

@@ -4,7 +4,7 @@
 .extern data_ov075_02217298
 .extern data_ov075_022172c0
 .extern data_ov075_02217308
-.extern func_02043d60
+.extern ActorExtendedLinked_UpdateFrame
 .extern func_ov075_02215044
 .extern func_ov075_022152ac
 .extern func_ov075_022154e8
@@ -106,7 +106,7 @@ func_ov075_022152f4:
     biceq r0, r0, #0x8000
     str r0, [r4, #0x260]
     mov r0, r4
-    bl func_02043d60
+    bl ActorExtendedLinked_UpdateFrame
     ldr r0, [r4, #0x298]
     cmp r0, #0x0
     beq .L_02215488

@@ -27,7 +27,7 @@ extern s32 func_02044760(const void *actor);
  * func_02032228(actor,0,0x1000,value). Finish with ActorExtendedType2_UpdateFrame. Actor, virtual,
  * and motion state may change; no direct SDK or hardware operation occurs.
  */
-void func_0204483c(void *self)
+void ActorExtendedTable_UpdateFrame(void *self)
 {
     u8 *actor = (u8 *)self;
     void *first;

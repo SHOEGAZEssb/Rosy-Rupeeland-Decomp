@@ -7,20 +7,20 @@
 .extern ActorExtendedType2_Init
 .extern ActorExtendedType2_Destroy
 .extern ActorExtendedType2_UpdateFrame
-.extern func_02043340
-.global func_02043cd0
-.type func_02043cd0, @function
+.extern ActorExtendedType2_ApplyContactResponse
+.global ActorExtendedLinked_Init
+.type ActorExtendedLinked_Init, @function
 .global func_02043d1c
 .type func_02043d1c, @function
-.global func_02043d30
-.type func_02043d30, @function
+.global ActorExtendedLinked_DestroyAndFree
+.type ActorExtendedLinked_DestroyAndFree, @function
 .global func_02043d4c
 .type func_02043d4c, @function
-.global func_02043d60
-.type func_02043d60, @function
-.global func_02043d6c
-.type func_02043d6c, @function
-func_02043cd0: ; 0x02043cd0
+.global ActorExtendedLinked_UpdateFrame
+.type ActorExtendedLinked_UpdateFrame, @function
+.global ActorExtendedLinked_ApplyContactResponse
+.type ActorExtendedLinked_ApplyContactResponse, @function
+ActorExtendedLinked_Init: ; 0x02043cd0
     stmdb sp!, {r4, lr}
     mov r4, r0
     bl ActorExtendedType2_Init
@@ -40,7 +40,7 @@ func_02043cd0: ; 0x02043cd0
 .L_02043d10: .word data_020e04d8
 .L_02043d14: .word data_02105728
 .L_02043d18: .word data_0210572c
-.size func_02043cd0, . - func_02043cd0
+.size ActorExtendedLinked_Init, . - ActorExtendedLinked_Init
 func_02043d1c: ; 0x02043d1c
     stmdb sp!, {r4, lr}
     mov r4, r0
@@ -48,7 +48,7 @@ func_02043d1c: ; 0x02043d1c
     mov r0, r4
     ldmia sp!, {r4, pc}
 .size func_02043d1c, . - func_02043d1c
-func_02043d30: ; 0x02043d30
+ActorExtendedLinked_DestroyAndFree: ; 0x02043d30
     stmdb sp!, {r4, lr}
     mov r4, r0
     bl ActorExtendedType2_Destroy
@@ -56,7 +56,7 @@ func_02043d30: ; 0x02043d30
     bl Heap_Free
     mov r0, r4
     ldmia sp!, {r4, pc}
-.size func_02043d30, . - func_02043d30
+.size ActorExtendedLinked_DestroyAndFree, . - ActorExtendedLinked_DestroyAndFree
 func_02043d4c: ; 0x02043d4c
     stmdb sp!, {r4, lr}
     mov r4, r0
@@ -64,13 +64,13 @@ func_02043d4c: ; 0x02043d4c
     mov r0, r4
     ldmia sp!, {r4, pc}
 .size func_02043d4c, . - func_02043d4c
-func_02043d60: ; 0x02043d60
+ActorExtendedLinked_UpdateFrame: ; 0x02043d60
     ldr ip, .L_02043d68
     bx ip
 .L_02043d68: .word ActorExtendedType2_UpdateFrame
-.size func_02043d60, . - func_02043d60
-func_02043d6c: ; 0x02043d6c
+.size ActorExtendedLinked_UpdateFrame, . - ActorExtendedLinked_UpdateFrame
+ActorExtendedLinked_ApplyContactResponse: ; 0x02043d6c
     ldr ip, .L_02043d74
     bx ip
-.L_02043d74: .word func_02043340
-.size func_02043d6c, . - func_02043d6c
+.L_02043d74: .word ActorExtendedType2_ApplyContactResponse
+.size ActorExtendedLinked_ApplyContactResponse, . - ActorExtendedLinked_ApplyContactResponse
