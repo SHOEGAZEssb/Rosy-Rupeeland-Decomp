@@ -6,8 +6,8 @@
 .extern GamePhaseState_GetConfiguration
 .extern GamePhaseAreaScene_SetEnabled
 .extern func_02026174
-.global func_0201a090
-func_0201a090:
+.global GamePhaseActorScriptVm_PrepareRuntimeScene
+GamePhaseActorScriptVm_PrepareRuntimeScene:
     stmdb sp!, {r4, lr}
     ldr r0, L_0201a12c
     ldr r1, [r0, #0x0]
@@ -48,4 +48,4 @@ func_0201a090:
     mov r0, #0x0
     ldmia sp!, {r4, pc}
 L_0201a12c: .word data_021052fc
-.size func_0201a090, . - func_0201a090
+.size GamePhaseActorScriptVm_PrepareRuntimeScene, . - GamePhaseActorScriptVm_PrepareRuntimeScene

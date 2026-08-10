@@ -28,7 +28,7 @@ static void configureObject(void *object)
  * and enable the nested state at offset 0x2fb8.  Consume no operands and
  * return zero.
  */
-s32 func_0201a090(GamePhaseActorScriptVm *self)
+s32 GamePhaseActorScriptVm_PrepareRuntimeScene(GamePhaseActorScriptVm *self)
 {
     u8 *runtime = (u8 *)data_021052fc;
     void *object = *(void **)(runtime + 0x30e8);
