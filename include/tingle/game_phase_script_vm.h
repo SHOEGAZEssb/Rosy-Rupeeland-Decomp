@@ -271,7 +271,7 @@ s32 func_0201ac18(GamePhaseActorScriptVm *self);
 s32 func_0201ac9c(GamePhaseActorScriptVm *self);
 s32 func_0201ad20(GamePhaseActorScriptVm *self);
 s32 func_0201ad7c(GamePhaseActorScriptVm *self);
-s32 func_0201add4(GamePhaseActorScriptVm *self);
+s32 GamePhaseActorScriptVm_IsPointInRectangle(GamePhaseActorScriptVm *self);
 s32 func_0201ae64(GamePhaseActorScriptVm *self);
 s32 func_0201ae98(GamePhaseActorScriptVm *self);
 s32 func_0201aecc(GamePhaseActorScriptVm *self);

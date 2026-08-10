@@ -4,8 +4,8 @@
 .extern GamePhaseScriptVm_SetResult
 .extern RectS32_Init
 .extern RectS32_ContainsPoint
-.global func_0201add4
-func_0201add4: ; 0x0201add4
+.global GamePhaseActorScriptVm_IsPointInRectangle
+GamePhaseActorScriptVm_IsPointInRectangle: ; 0x0201add4
     stmdb sp!, {r4, r5, r6, r7, r8, r9, lr}
     sub sp, sp, #0x14
     mov r9, r0
@@ -42,4 +42,4 @@ func_0201add4: ; 0x0201add4
     mov r0, #0x0
     add sp, sp, #0x14
     ldmia sp!, {r4, r5, r6, r7, r8, r9, pc}
-.size func_0201add4, . - func_0201add4
+.size GamePhaseActorScriptVm_IsPointInRectangle, . - GamePhaseActorScriptVm_IsPointInRectangle
