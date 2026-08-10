@@ -4,7 +4,7 @@
 .extern data_020c370c
 .extern data_020c3734
 .extern data_020d6c20
-.extern data_020d6c40
+.extern gSpriteOverlayControllerAllocationTag
 .extern data_020f4e14
 .extern data_020f4e18
 .extern func_0201e250
@@ -69,7 +69,7 @@ func_02027150: ; 0x02027150
 .L_02027204: .word data_020c370c
 .L_02027208: .word data_020f4e18
 .L_0202720c: .word data_020f4e14
-.L_02027210: .word data_020d6c40
+.L_02027210: .word gSpriteOverlayControllerAllocationTag
 .L_02027214: .word gHeapContext
 .L_02027218: .word data_020c3734
     .size func_02027150, . - func_02027150

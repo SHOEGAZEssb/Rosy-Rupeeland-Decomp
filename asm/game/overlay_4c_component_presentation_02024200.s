@@ -2,7 +2,7 @@
 .text
 .extern Heap_Alloc
 .extern data_020d690c
-.extern data_020d69dc
+.extern gOverlay4cComponentAllocationTag
 .extern OverlaySlot_Init
 .extern OverlaySlot_LoadOverlay
 .extern func_0201e250
@@ -36,6 +36,6 @@ func_02024200: ; 0x02024200
     ldmia sp!, {r4, pc}
 .L_02024254: .word data_020d690c
 .L_02024258: .word 0x5e
-.L_0202425c: .word data_020d69dc
+.L_0202425c: .word gOverlay4cComponentAllocationTag
 .L_02024260: .word gHeapContext
     .size func_02024200, . - func_02024200

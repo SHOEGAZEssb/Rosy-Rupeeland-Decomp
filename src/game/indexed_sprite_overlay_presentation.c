@@ -29,7 +29,7 @@ typedef s32 (*ControllerComplete)(void *);
 extern "C" {
 #endif
 extern void *data_020d6c20;
-extern const char data_020d6c40[];
+extern const char gSpriteOverlayControllerAllocationTag[];
 extern const IndexedResourceRecord data_020c370c[];
 extern const u8 data_020c3734[];
 extern void *data_020f4e18;
@@ -70,7 +70,7 @@ IndexedSpriteOverlayPresentation *func_02027150(
     self->spriteOwner14 = (u8 *)GraphicsSpriteGroupOwner_CreateGroup(data_020f4e14);
     sprite = GraphicsSpriteGroup_CreateStateFromSource(self->spriteOwner14, self->resource08, 2);
     GraphicsSpriteState_SetAnimationIndex(sprite, (u8)index);
-    self->controller18 = Heap_Alloc(0xa0, data_020d6c40, 4, &gHeapContext);
+    self->controller18 = Heap_Alloc(0xa0, gSpriteOverlayControllerAllocationTag, 4, &gHeapContext);
     if (self->controller18)
         self->controller18 = func_020953f4(self->controller18, sprite);
     func_02094cf0(self->controller18, data_020c3734, 1);

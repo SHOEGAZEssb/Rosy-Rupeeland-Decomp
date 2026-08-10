@@ -7054,11 +7054,11 @@ data_020d6934 kind:data(any) addr:0x020d6934
 data_020d695c kind:data(any) addr:0x020d695c
 data_020d6984 kind:data(any) addr:0x020d6984
 data_020d69ac kind:data(any) addr:0x020d69ac
-data_020d69cc kind:data(any) addr:0x020d69cc
-data_020d69d4 kind:data(any) addr:0x020d69d4
-data_020d69dc kind:data(any) addr:0x020d69dc
-data_020d69e4 kind:data(any) addr:0x020d69e4
-data_020d69ec kind:data(any) addr:0x020d69ec
+gOverlay2cComponentAllocationTag kind:data(any) addr:0x020d69cc
+gOverlay50ComponentAllocationTag kind:data(any) addr:0x020d69d4
+gOverlay4cComponentAllocationTag kind:data(any) addr:0x020d69dc
+gOverlay4cParameterizedComponentAllocationTag kind:data(any) addr:0x020d69e4
+gOverlay18ComponentAllocationTag kind:data(any) addr:0x020d69ec
 data_020d69fc kind:data(any) addr:0x020d69fc
 data_020d6a08 kind:data(any) addr:0x020d6a08
 data_020d6a24 kind:data(any) addr:0x020d6a24
@@ -7088,7 +7088,7 @@ data_020d6bb4 kind:data(any) addr:0x020d6bb4
 data_020d6bd0 kind:data(any) addr:0x020d6bd0
 data_020d6bf8 kind:data(any) addr:0x020d6bf8
 data_020d6c20 kind:data(any) addr:0x020d6c20
-data_020d6c40 kind:data(any) addr:0x020d6c40
+gSpriteOverlayControllerAllocationTag kind:data(any) addr:0x020d6c40
 data_020d6c48 kind:data(any) addr:0x020d6c48
 data_020d6c58 kind:data(any) addr:0x020d6c58
 data_020d6c68 kind:data(any) addr:0x020d6c68

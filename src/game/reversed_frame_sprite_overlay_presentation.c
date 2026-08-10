@@ -22,7 +22,7 @@ typedef s32 (*ControllerComplete)(void *);
 extern "C" {
 #endif
 extern void *data_020d6bd0;
-extern const char data_020d6c40[];
+extern const char gSpriteOverlayControllerAllocationTag[];
 extern const u8 data_020c378c[];
 extern void *data_020f4e18;
 extern void *data_020f4e14;
@@ -62,7 +62,7 @@ ReversedFrameSpriteOverlayPresentation *func_02027300(
     sprite = GraphicsSpriteGroup_CreateStateFromSource(self->spriteOwner14, self->resource08, 2);
     frame = value >= 0 ? 10 - value : 9 - value;
     GraphicsSpriteState_SetAnimationIndex(sprite, (u8)frame);
-    self->controller18 = Heap_Alloc(0xa0, data_020d6c40, 4, &gHeapContext);
+    self->controller18 = Heap_Alloc(0xa0, gSpriteOverlayControllerAllocationTag, 4, &gHeapContext);
     if (self->controller18)
         self->controller18 = func_020953f4(self->controller18, sprite);
     func_02094cf0(self->controller18, data_020c378c, 1);

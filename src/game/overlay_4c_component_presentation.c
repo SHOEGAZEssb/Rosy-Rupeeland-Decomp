@@ -17,7 +17,7 @@ typedef struct Overlay4cComponentPresentation {
 extern "C" {
 #endif
 extern void *data_020d690c;
-extern const char data_020d69dc[];
+extern const char gOverlay4cComponentAllocationTag[];
 extern void func_0201e250(void *);
 extern void func_0201e28c(void *);
 extern void OverlaySlot_Init(void *);
@@ -37,7 +37,7 @@ Overlay4cComponentPresentation *func_02024200(Overlay4cComponentPresentation *se
 {
     func_0201e250(self); self->vtable00=(void **)data_020d690c;
     OverlaySlot_Init(self->helper0c); OverlaySlot_LoadOverlay(self->helper0c,0x5e);
-    self->component08=Heap_Alloc(0x4c,data_020d69dc,4,&gHeapContext);
+    self->component08=Heap_Alloc(0x4c,gOverlay4cComponentAllocationTag,4,&gHeapContext);
     if(self->component08)self->component08=func_ov094_02218f14(self->component08);
     return self;
 }
