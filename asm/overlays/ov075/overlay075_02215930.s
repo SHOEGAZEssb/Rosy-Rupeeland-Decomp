@@ -1,7 +1,7 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov075/overlay075_recovery.c.
 .extern data_021052fc
-.extern func_02029b70
+.extern DualLayerTileRenderer_SetPackedTileValue
 
 .global func_ov075_02215930
 func_ov075_02215930:
@@ -32,7 +32,7 @@ func_ov075_02215930:
     mov r1, r5
     mov r2, r6
     str r3, [sp, #0x4]
-    bl func_02029b70
+    bl DualLayerTileRenderer_SetPackedTileValue
     add r6, r6, #0x1
 .L_0221599c:
     ldr r0, [r7, #0x2b4]

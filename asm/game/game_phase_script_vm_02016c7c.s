@@ -2,7 +2,7 @@
 .text
 .extern data_021052fc
 .extern GamePhaseScriptVm_Pop
-.extern func_02029b70
+.extern DualLayerTileRenderer_SetPackedTileValue
 .global func_02016c7c
 func_02016c7c:
     stmdb sp!, {r3, r4, r5, r6, r7, lr}
@@ -60,7 +60,7 @@ L_02016d2c:
     ldr r0, [r0, #0xed4]
     mov r1, r7
     mov r2, r6
-    bl func_02029b70
+    bl DualLayerTileRenderer_SetPackedTileValue
     mov r0, #0
     add sp, sp, #8
     ldmia sp!, {r3, r4, r5, r6, r7, pc}

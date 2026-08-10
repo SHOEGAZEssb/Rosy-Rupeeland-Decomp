@@ -3,7 +3,7 @@
 .extern GameFile_Destroy
 .extern GameFile_Init
 .extern GameFile_Open
-.extern data_020de970
+.extern gDualLayerTileRendererArchivePath
 .extern NcgFile_Init
 .extern NcgFile_Destroy
 .extern NcgFile_LoadCompressedFromFile
@@ -11,9 +11,9 @@
 .extern func_0202b834
 .extern func_0202b838
 
-    .global func_02029ca4
-    .type func_02029ca4, @function
-func_02029ca4: ; 0x02029ca4
+    .global DualLayerTileRenderer_LoadEmbeddedRendererEntry
+    .type DualLayerTileRenderer_LoadEmbeddedRendererEntry, @function
+DualLayerTileRenderer_LoadEmbeddedRendererEntry: ; 0x02029ca4
     stmdb sp!, {r4, r5, lr}
     sub sp, sp, #0x7c
     sub sp, sp, #0x1800
@@ -51,6 +51,6 @@ func_02029ca4: ; 0x02029ca4
     add sp, sp, #0x7c
     add sp, sp, #0x1800
     ldmia sp!, {r4, r5, pc}
-.L_02029d38: .word data_020de970
-    .size func_02029ca4, . - func_02029ca4
+.L_02029d38: .word gDualLayerTileRendererArchivePath
+    .size DualLayerTileRenderer_LoadEmbeddedRendererEntry, . - DualLayerTileRenderer_LoadEmbeddedRendererEntry
 

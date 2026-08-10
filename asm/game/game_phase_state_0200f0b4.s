@@ -5,7 +5,7 @@
 .extern GamePhaseRegionTable_Load
 .extern GamePhaseRegionTable_SetGameWorkFlagBase
 .extern DualLayerTileRendererBase_Init
-.extern func_02029ca4
+.extern DualLayerTileRenderer_LoadEmbeddedRendererEntry
 .extern func_0202becc
 .extern func_0202c308
 .extern func_0202c744
@@ -119,7 +119,7 @@ L_0200f204:
     add r0, r5, #0x2000
     ldr r0, [r0, #0xeb0]
     add r1, r4, #0x34
-    bl func_02029ca4
+    bl DualLayerTileRenderer_LoadEmbeddedRendererEntry
     ldr r1, [r4, #0x4]
     add r0, r5, #0x2f80
     bl GamePhaseRegionTable_Load

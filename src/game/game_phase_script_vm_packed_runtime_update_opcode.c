@@ -6,7 +6,7 @@
 extern "C" {
 #endif
 extern void *data_021052fc;
-extern void func_02029b70(void *object, u32 first, u32 second, u32 packed);
+extern void DualLayerTileRenderer_SetPackedTileValue(void *object, u32 first, u32 second, u32 packed);
 #ifdef __cplusplus
 }
 #endif
@@ -17,7 +17,7 @@ typedef u32 (*RuntimePackedQueryMethod)(void *object, u32 first, u32 second);
  * Pop replacement, second key, first key, and field selector values; query
  * the packed word through runtime object 0x2ed4's virtual method 0x2c;
  * replace signed/unsigned field bits 0..4, 5..9, or 10..13 for selectors
- * 0, 1, or 2; then submit the resulting word through func_02029b70.
+ * 0, 1, or 2; then submit the resulting word through DualLayerTileRenderer_SetPackedTileValue.
  * Unsupported selectors resubmit the unmodified word. Returns zero.
  */
 s32 func_02016c7c(GamePhaseActorScriptVm *self)
@@ -36,6 +36,6 @@ s32 func_02016c7c(GamePhaseActorScriptVm *self)
         packed = (packed & ~0x3e0u) | ((replacement & 0x1f) << 5);
     else if (selector == 2)
         packed = (packed & ~0x3c00u) | ((replacement & 0xf) << 10);
-    func_02029b70(object, first, second, packed);
+    DualLayerTileRenderer_SetPackedTileValue(object, first, second, packed);
     return 0;
 }

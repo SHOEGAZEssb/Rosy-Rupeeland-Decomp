@@ -27,8 +27,8 @@ extern void *data_020f4e18;
 extern PaletteBuffer gMainBgPaletteBuffer;
 extern void DualLayerTileRendererBase_InitBase(void *);
 extern void DualLayerTileRendererBase_Destroy(void *);
-extern void func_02029370(void *);
-extern void func_02029648(void *);
+extern void DualLayerTileRenderer_LoadFromConfig(void *);
+extern void DualLayerTileRenderer_ActivateLayers(void *);
 extern void func_020b44e8(void);
 extern void func_02070638(void *, s32, s32);
 extern void func_02070e0c(void *, s32, s32);
@@ -66,7 +66,7 @@ MainThreeLayerResourceRenderer *func_0202cc14(MainThreeLayerResourceRenderer *se
 /* Clear both attached refresh bits after first-path activation, then load resources. */
 void func_0202cc30(MainThreeLayerResourceRenderer *self)
 {
-    func_02029370(self);
+    DualLayerTileRenderer_LoadFromConfig(self);
     self->layer_28->status_1030 &= ~1u;
     self->layer_2c->status_1030 &= ~1u;
     func_0202cc88(self);
@@ -75,7 +75,7 @@ void func_0202cc30(MainThreeLayerResourceRenderer *self)
 /* Run second-path activation, then configure and upload the three resource sets. */
 void func_0202cc70(MainThreeLayerResourceRenderer *self)
 {
-    func_02029648(self);
+    DualLayerTileRenderer_ActivateLayers(self);
     func_0202cc88(self);
 }
 

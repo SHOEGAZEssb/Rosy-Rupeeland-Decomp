@@ -30,9 +30,9 @@ extern void *data_020dedb4;
 extern void *data_020f4e18;
 extern void DualLayerTileRendererBase_InitBase(void *);
 extern void DualLayerTileRendererBase_Destroy(void *);
-extern void func_02029370(void *);
-extern void func_02029648(void *);
-extern void func_02029914(void *);
+extern void DualLayerTileRenderer_LoadFromConfig(void *);
+extern void DualLayerTileRenderer_ActivateLayers(void *);
+extern void DualLayerTileRenderer_UploadPalette(void *);
 extern void func_020b44e8(void);
 extern void func_020706c4(void *, s32, s32);
 extern void func_02070eac(void *, s32, s32);
@@ -69,14 +69,14 @@ SubDualLayerResourceRendererSwapped *func_0202c528(SubDualLayerResourceRendererS
 /* Run the first common activation path, then perform the swapped resource setup. */
 void func_0202c544(SubDualLayerResourceRendererSwapped *self)
 {
-    func_02029370(self);
+    DualLayerTileRenderer_LoadFromConfig(self);
     func_0202c574(self);
 }
 
 /* Run the second common activation path, then perform the swapped resource setup. */
 void func_0202c55c(SubDualLayerResourceRendererSwapped *self)
 {
-    func_02029648(self);
+    DualLayerTileRenderer_ActivateLayers(self);
     func_0202c574(self);
 }
 
@@ -115,7 +115,7 @@ void func_0202c574(SubDualLayerResourceRendererSwapped *self)
     func_02070eac(set.resource2, 1, 0);
     MIi_CpuCopy16(func_02070874(set.resource1) + 0x80,
                   self->paletteBuffer_14 + 0x140, 0xc0);
-    func_02029914(self);
+    DualLayerTileRenderer_UploadPalette(self);
     *bg1 = (*bg1 & ~3u) | 3;
     *disp = (*disp & ~0x1f00u) | (((((*disp >> 8) & 0x1f) | 2) & 0x1f) << 8);
     GraphicsResourceSet_Destroy(&set);

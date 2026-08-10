@@ -2,9 +2,9 @@
 .text
 .extern func_0202a588
 
-    .global func_02029a1c
-    .type func_02029a1c, @function
-func_02029a1c: ; 0x02029a1c
+    .global DualLayerTileRenderer_ForwardLayerTriple
+    .type DualLayerTileRenderer_ForwardLayerTriple, @function
+DualLayerTileRenderer_ForwardLayerTriple: ; 0x02029a1c
     stmdb sp!, {r3, lr}
     add r0, r0, r1, lsl #0x2
     mov ip, r2
@@ -14,5 +14,5 @@ func_02029a1c: ; 0x02029a1c
     mov r3, ip
     bl func_0202a588
     ldmia sp!, {r3, pc}
-    .size func_02029a1c, . - func_02029a1c
+    .size DualLayerTileRenderer_ForwardLayerTriple, . - DualLayerTileRenderer_ForwardLayerTriple
 

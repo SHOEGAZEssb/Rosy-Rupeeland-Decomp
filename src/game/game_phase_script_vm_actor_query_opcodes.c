@@ -9,7 +9,7 @@ extern "C" {
 extern void *data_021052fc;
 extern const s8 data_020d5af8[];
 extern void *GamePhaseRuntime_GetActorCollection(void *runtime, s32 index);
-extern u32 func_02029a00(void *object, u32 first, u32 second, u32 third);
+extern u32 DualLayerTileRenderer_ForwardLayerPair(void *object, u32 first, u32 second, u32 third);
 extern s32 func_020ae024(fx32 first, fx32 second);
 #ifdef __cplusplus
 }
@@ -25,7 +25,7 @@ s32 GamePhaseActorScriptVm_SetField5cLowHalfword(GamePhaseActorScriptVm *self)
 }
 
 /*
- * Pop three operands, pass them in reverse pop order to func_02029a00 on the
+ * Pop three operands, pass them in reverse pop order to DualLayerTileRenderer_ForwardLayerPair on the
  * global runtime object at offset 0x2ed4, push its result, and return zero.
  */
 s32 func_0201350c(GamePhaseActorScriptVm *self)
@@ -34,7 +34,7 @@ s32 func_0201350c(GamePhaseActorScriptVm *self)
     u32 second = GamePhaseScriptVm_Pop(&self->base);
     u32 first = GamePhaseScriptVm_Pop(&self->base);
     void *object = *(void **)((u8 *)data_021052fc + 0x2ed4);
-    GamePhaseScriptVm_SetResult(&self->base, func_02029a00(object, first, second, third));
+    GamePhaseScriptVm_SetResult(&self->base, DualLayerTileRenderer_ForwardLayerPair(object, first, second, third));
     return 0;
 }
 

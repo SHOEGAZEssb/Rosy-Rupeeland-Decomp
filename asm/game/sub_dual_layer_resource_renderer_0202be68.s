@@ -1,13 +1,13 @@
 ; Matching retail form; see src/game/sub_dual_layer_resource_renderer.c.
 .text
-.extern func_02029a40
+.extern DualLayerTileRenderer_SetLayersEnabled
 
     .global SubDualLayerResourceRenderer_SetVisible
     .type SubDualLayerResourceRenderer_SetVisible, @function
 SubDualLayerResourceRenderer_SetVisible: ; 0x0202be68
     stmdb sp!, {r4, lr}
     mov r4, r1
-    bl func_02029a40
+    bl DualLayerTileRenderer_SetLayersEnabled
     cmp r4, #0x0
     ldr r2, .L_0202bec8
     beq .L_0202bea4

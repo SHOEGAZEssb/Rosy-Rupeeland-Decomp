@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/sub_dual_layer_resource_renderer.c.
 .text
-.extern func_02029648
+.extern DualLayerTileRenderer_ActivateLayers
 .extern SubDualLayerResourceRenderer_LoadBgResources
 
     .global SubDualLayerResourceRenderer_ActivateSecondary
@@ -8,7 +8,7 @@
 SubDualLayerResourceRenderer_ActivateSecondary: ; 0x0202bc80
     stmdb sp!, {r4, lr}
     mov r4, r0
-    bl func_02029648
+    bl DualLayerTileRenderer_ActivateLayers
     mov r0, r4
     bl SubDualLayerResourceRenderer_LoadBgResources
     ldmia sp!, {r4, pc}

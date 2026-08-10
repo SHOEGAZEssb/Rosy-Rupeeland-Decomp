@@ -2,9 +2,9 @@
 .text
 
 
-    .global func_0202973c
-    .type func_0202973c, @function
-func_0202973c: ; 0x0202973c
+    .global DualLayerTileRenderer_UpdateLayers
+    .type DualLayerTileRenderer_UpdateLayers, @function
+DualLayerTileRenderer_UpdateLayers: ; 0x0202973c
     stmdb sp!, {r3, r4, r5, lr}
     mov r5, r0
     ldr r0, [r5, #0x24]
@@ -25,5 +25,5 @@ func_0202973c: ; 0x0202973c
     cmp r4, #0x2
     blt .L_02029758
     ldmia sp!, {r3, r4, r5, pc}
-    .size func_0202973c, . - func_0202973c
+    .size DualLayerTileRenderer_UpdateLayers, . - DualLayerTileRenderer_UpdateLayers
 

@@ -8,7 +8,7 @@
 .extern func_020706c4
 .extern func_02070874
 .extern MIi_CpuCopy16
-.extern func_02029914
+.extern DualLayerTileRenderer_UploadPalette
 .extern GraphicsResourceSet_Destroy
 .extern data_020f4e18
 
@@ -109,7 +109,7 @@ SubDualLayerResourceRenderer_LoadBgResources: ; 0x0202bc98
     mov r2, #0xc0
     bl MIi_CpuCopy16
     mov r0, r4
-    bl func_02029914
+    bl DualLayerTileRenderer_UploadPalette
     ldr r2, .L_0202be60
     add r0, sp, #0x4
     ldrh r1, [r2, #0x0]

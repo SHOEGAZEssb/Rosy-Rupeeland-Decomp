@@ -3,7 +3,7 @@
 .extern data_021052fc
 .extern GamePhaseScriptVm_Pop
 .extern GamePhaseScriptVm_SetResult
-.extern func_02029a00
+.extern DualLayerTileRenderer_ForwardLayerPair
 
     .global func_0201350c
 func_0201350c: ; 0x0201350c
@@ -23,7 +23,7 @@ func_0201350c: ; 0x0201350c
     ldr r0, [r0, #0x0]
     add r0, r0, #0x2000
     ldr r0, [r0, #0xed4]
-    bl func_02029a00
+    bl DualLayerTileRenderer_ForwardLayerPair
     mov r1, r0
     mov r0, r6
     bl GamePhaseScriptVm_SetResult

@@ -2,9 +2,9 @@
 .text
 .extern func_0202a730
 
-    .global func_02029ad0
-    .type func_02029ad0, @function
-func_02029ad0: ; 0x02029ad0
+    .global DualLayerTileRenderer_GetPackedTileValue
+    .type DualLayerTileRenderer_GetPackedTileValue, @function
+DualLayerTileRenderer_GetPackedTileValue: ; 0x02029ad0
     stmdb sp!, {r3, r4, r5, r6, r7, r8, r9, lr}
     movs r8, r1
     mov r9, r0
@@ -49,5 +49,5 @@ func_02029ad0: ; 0x02029ad0
     strh r0, [r4, #0x0]
     ldr r0, [sp, #0x0]
     ldmia sp!, {r3, r4, r5, r6, r7, r8, r9, pc}
-    .size func_02029ad0, . - func_02029ad0
+    .size DualLayerTileRenderer_GetPackedTileValue, . - DualLayerTileRenderer_GetPackedTileValue
 

@@ -33,10 +33,10 @@ extern void *gSubDualLayerResourceRendererVtable;
 extern void *data_020f4e18;
 extern void DualLayerTileRendererBase_InitBase(void *self);
 extern void DualLayerTileRendererBase_Destroy(void *self);
-extern void func_02029370(void *self);
-extern void func_02029648(void *self);
-extern void func_02029914(void *self);
-extern void func_02029a40(void *self, s32 enabled);
+extern void DualLayerTileRenderer_LoadFromConfig(void *self);
+extern void DualLayerTileRenderer_ActivateLayers(void *self);
+extern void DualLayerTileRenderer_UploadPalette(void *self);
+extern void DualLayerTileRenderer_SetLayersEnabled(void *self, s32 enabled);
 extern void func_020b44e8(void);
 extern void func_020706c4(void *resource, s32 background, s32 value);
 extern void func_02070eac(void *resource, s32 background, s32 value);
@@ -73,14 +73,14 @@ SubDualLayerResourceRenderer *SubDualLayerResourceRenderer_DestroyAndFree(SubDua
 /* Run the first common activation path, then perform this variant's resource setup. */
 void SubDualLayerResourceRenderer_ActivatePrimary(SubDualLayerResourceRenderer *self)
 {
-    func_02029370(self);
+    DualLayerTileRenderer_LoadFromConfig(self);
     SubDualLayerResourceRenderer_LoadBgResources(self);
 }
 
 /* Run the second common activation path, then perform this variant's resource setup. */
 void SubDualLayerResourceRenderer_ActivateSecondary(SubDualLayerResourceRenderer *self)
 {
-    func_02029648(self);
+    DualLayerTileRenderer_ActivateLayers(self);
     SubDualLayerResourceRenderer_LoadBgResources(self);
 }
 
@@ -127,7 +127,7 @@ void SubDualLayerResourceRenderer_LoadBgResources(SubDualLayerResourceRenderer *
     func_02070eac(resources.resource2, 1, 0);
     palette = func_02070874(resources.resource1);
     MIi_CpuCopy16(palette + 0x80, self->paletteBuffer_14 + 0x140, 0xc0);
-    func_02029914(self);
+    DualLayerTileRenderer_UploadPalette(self);
     *bg1cnt = (*bg1cnt & ~3u) | 3;
     *dispcnt = (*dispcnt & ~0x1f00u) | ((((*dispcnt >> 8) & 0x1f) | 2) << 8);
     GraphicsResourceSet_Destroy(&resources);
@@ -142,7 +142,7 @@ void SubDualLayerResourceRenderer_SetVisible(SubDualLayerResourceRenderer *self,
     volatile u32 *dispcnt = (volatile u32 *)0x04001000;
     u32 planes;
 
-    func_02029a40(self, enabled);
+    DualLayerTileRenderer_SetLayersEnabled(self, enabled);
     planes = (*dispcnt >> 8) & 0x1f;
     if (enabled)
         planes |= 3;

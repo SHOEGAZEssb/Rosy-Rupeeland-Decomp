@@ -11,7 +11,7 @@
 .extern OverlaySlot_Init
 .extern DualLayerTileRendererBase_Init
 .extern DualLayerTileRendererBase_SetLayoutParameters
-.extern func_02029ca4
+.extern DualLayerTileRenderer_LoadEmbeddedRendererEntry
 .extern SubDualLayerResourceRenderer_Init
 .extern func_0202c0b8
 .extern func_0202c4f4
@@ -285,7 +285,7 @@ L_02011e14:
     bne L_02011e3c
     ldr r0, [r6, #0x4]
     add r1, r1, #0x34
-    bl func_02029ca4
+    bl DualLayerTileRenderer_LoadEmbeddedRendererEntry
 L_02011e3c:
     ldr r0, L_02011eb0
     mov r1, #0x0

@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/four_stage_command_presentation.c.
 .text
-.extern func_02029bfc
+.extern DualLayerTileRenderer_FillTileRectangle
 
     .global func_02026fbc
     .type func_02026fbc, @function
@@ -33,7 +33,7 @@ func_02026fbc: ; 0x02026fbc
     ldr r0, [r4, #0x20]
     ldr r2, [r4, #0x8]
     ldr r3, [r4, #0xc]
-    bl func_02029bfc
+    bl DualLayerTileRenderer_FillTileRectangle
     ldr r1, [r4, #0x18]
     mov r0, #0x0
     add r1, r1, #0x1
@@ -56,7 +56,7 @@ func_02026fbc: ; 0x02026fbc
     ldr r0, [r4, #0x20]
     ldr r2, [r4, #0x8]
     ldr r3, [r4, #0xc]
-    bl func_02029bfc
+    bl DualLayerTileRenderer_FillTileRectangle
     ldr r1, [r4, #0x18]
     mov r0, #0x0
     add r1, r1, #0x1
@@ -79,7 +79,7 @@ func_02026fbc: ; 0x02026fbc
     ldr r0, [r4, #0x20]
     ldr r2, [r4, #0x8]
     ldr r3, [r4, #0xc]
-    bl func_02029bfc
+    bl DualLayerTileRenderer_FillTileRectangle
     ldr r1, [r4, #0x18]
     mov r0, #0x0
     add r1, r1, #0x1
@@ -102,7 +102,7 @@ func_02026fbc: ; 0x02026fbc
     ldr r0, [r4, #0x20]
     ldr r2, [r4, #0x8]
     ldr r3, [r4, #0xc]
-    bl func_02029bfc
+    bl DualLayerTileRenderer_FillTileRectangle
     mov r0, #0x1
     b .L_0202713c
 .L_02027138:

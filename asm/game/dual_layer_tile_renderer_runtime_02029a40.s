@@ -2,9 +2,9 @@
 .text
 
 
-    .global func_02029a40
-    .type func_02029a40, @function
-func_02029a40: ; 0x02029a40
+    .global DualLayerTileRenderer_SetLayersEnabled
+    .type DualLayerTileRenderer_SetLayersEnabled, @function
+DualLayerTileRenderer_SetLayersEnabled: ; 0x02029a40
     stmdb sp!, {r4, r5, r6, lr}
     mov r6, r0
     mov r5, r1
@@ -23,5 +23,5 @@ func_02029a40: ; 0x02029a40
     cmp r4, #0x2
     blt .L_02029a50
     ldmia sp!, {r4, r5, r6, pc}
-    .size func_02029a40, . - func_02029a40
+    .size DualLayerTileRenderer_SetLayersEnabled, . - DualLayerTileRenderer_SetLayersEnabled
 

@@ -18,8 +18,8 @@ extern void *data_020f4e18;
 extern PaletteBuffer gMainBgPaletteBuffer;
 extern void DualLayerTileRendererBase_InitBase(void *);
 extern void DualLayerTileRendererBase_Destroy(void *);
-extern void func_02029370(void *);
-extern void func_02029648(void *);
+extern void DualLayerTileRenderer_LoadFromConfig(void *);
+extern void DualLayerTileRenderer_ActivateLayers(void *);
 extern void func_020b44e8(void);
 extern void func_02070638(void *, s32, s32);
 extern void func_02070e0c(void *, s32, s32);
@@ -55,14 +55,14 @@ MainBg0ResourceRenderer *func_0202c778(MainBg0ResourceRenderer *self)
 /* Run the first common activation path, then load and upload the BG0 resources. */
 void func_0202c794(MainBg0ResourceRenderer *self)
 {
-    func_02029370(self);
+    DualLayerTileRenderer_LoadFromConfig(self);
     func_0202c7c4(self);
 }
 
 /* Run the second common activation path, then load and upload the BG0 resources. */
 void func_0202c7ac(MainBg0ResourceRenderer *self)
 {
-    func_02029648(self);
+    DualLayerTileRenderer_ActivateLayers(self);
     func_0202c7c4(self);
 }
 

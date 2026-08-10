@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/main_three_layer_resource_renderer.c.
 .text
-.extern func_02029370
+.extern DualLayerTileRenderer_LoadFromConfig
 .extern func_0202cc88
 
     .global func_0202cc30
@@ -8,7 +8,7 @@
 func_0202cc30: ; 0x0202cc30
     stmdb sp!, {r4, lr}
     mov r4, r0
-    bl func_02029370
+    bl DualLayerTileRenderer_LoadFromConfig
     ldr r1, [r4, #0x28]
     mov r0, r4
     add r1, r1, #0x1000

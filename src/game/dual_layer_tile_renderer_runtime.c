@@ -56,7 +56,7 @@ typedef void (*RendererTileMethod)(DualLayerTileRenderer *, s32, s32, s32,
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern const char data_020de970[];
+extern const char gDualLayerTileRendererArchivePath[];
 extern const char gDualLayerTileRendererLayerAllocationTag[];
 extern void *gMainBgPaletteBuffer;
 extern void *gSubBgPaletteBuffer;
@@ -106,8 +106,8 @@ extern void *func_0202b9bc(void *);
 extern void func_0202b750(void *, void *, s32);
 extern void func_0202b838(void *, const void *);
 extern void func_0202b834(void *);
-extern void func_02029864(DualLayerTileRenderer *);
-extern void func_02029914(DualLayerTileRenderer *);
+extern void DualLayerTileRenderer_UploadGraphics(DualLayerTileRenderer *);
+extern void DualLayerTileRenderer_UploadPalette(DualLayerTileRenderer *);
 #ifdef __cplusplus
 }
 #endif
@@ -118,7 +118,7 @@ extern void func_02029914(DualLayerTileRenderer *);
  * variant 0 or 2 implementations, configure both layers, clear their runtime
  * counters, upload graphics/palettes, close the file, and destroy temporaries.
  */
-void func_02029370(DualLayerTileRenderer *self,
+void DualLayerTileRenderer_LoadFromConfig(DualLayerTileRenderer *self,
                    const TileRendererConfig *config, s32 mode, s32 variant)
 {
     u8 file[0x4c];
@@ -128,7 +128,7 @@ void func_02029370(DualLayerTileRenderer *self,
     self->layerVariant_31 = (u8)variant;
     self->config_1c = (const u8 *)config;
     GameFile_Init(file);
-    GameFile_Open(file, data_020de970);
+    GameFile_Open(file, gDualLayerTileRendererArchivePath);
     NclFile_LoadCompressedFromFile(&self->palette_10, file, config->resourceOffset_08,
                   config->resourceSize_0c);
     func_0202b520(self->resource_04, file, config->mapOffset_10,
@@ -180,8 +180,8 @@ void func_02029370(DualLayerTileRenderer *self,
         self->layerState_34[1] = 0;
         self->layerState_34[3] = 0;
     }
-    func_02029864(self);
-    func_02029914(self);
+    DualLayerTileRenderer_UploadGraphics(self);
+    DualLayerTileRenderer_UploadPalette(self);
     GameFile_Close(file);
     GameFile_Destroy(file);
 }
@@ -191,7 +191,7 @@ void func_02029370(DualLayerTileRenderer *self,
  * layer, optionally call renderer vtable slot nine with one, and set BG control
  * low bits to screen base mode two/character base mode one on the selected engine.
  */
-void func_02029648(DualLayerTileRenderer *self, s32 notify)
+void DualLayerTileRenderer_ActivateLayers(DualLayerTileRenderer *self, s32 notify)
 {
     s32 i;
     volatile u16 *screenControl;
@@ -200,8 +200,8 @@ void func_02029648(DualLayerTileRenderer *self, s32 notify)
         if (self->layers_28[i])
             ((LayerVoidMethod)(*(void ***)self->layers_28[i])[5])(
                 self->layers_28[i]);
-    func_02029864(self);
-    func_02029914(self);
+    DualLayerTileRenderer_UploadGraphics(self);
+    DualLayerTileRenderer_UploadPalette(self);
     for (i = 0; i < 2; i++)
         if (self->layers_28[i])
             func_02029fb0(self->layers_28[i]);
@@ -215,7 +215,7 @@ void func_02029648(DualLayerTileRenderer *self, s32 notify)
 }
 
 /* If base flag bit one is set, invoke vtable slot two on both existing layers. */
-void func_0202973c(DualLayerTileRenderer *self)
+void DualLayerTileRenderer_UpdateLayers(DualLayerTileRenderer *self)
 {
     s32 i;
     if (!((self->flags_24 >> 1) & 1))
@@ -231,7 +231,7 @@ void func_0202973c(DualLayerTileRenderer *self)
  * publish integer FX32 coordinates to both layers, update the embedded renderer
  * when enabled, and dispatch engine-specific transfer mode one or two.
  */
-void func_02029784(DualLayerTileRenderer *self, const void *position)
+void DualLayerTileRenderer_UpdatePosition(DualLayerTileRenderer *self, const void *position)
 {
     s32 transformed[4];
     s32 x;
@@ -258,7 +258,7 @@ void func_02029784(DualLayerTileRenderer *self, const void *position)
 }
 
 /* Load common graphics data and upload it to the engine/mode-selected 0x20/0x40 KiB destination. */
-void func_02029864(DualLayerTileRenderer *self)
+void DualLayerTileRenderer_UploadGraphics(DualLayerTileRenderer *self)
 {
     u8 resource[0x14];
     u8 file[0x4c];
@@ -266,7 +266,7 @@ void func_02029864(DualLayerTileRenderer *self)
     func_020b44e8();
     NcgFile_Init(resource);
     GameFile_Init(file);
-    GameFile_Open(file, data_020de970);
+    GameFile_Open(file, gDualLayerTileRendererArchivePath);
     NcgFile_LoadCompressedFromFile(resource, file,
                   *(const u32 *)(self->config_1c + 0),
                   *(const u32 *)(self->config_1c + 4));
@@ -279,7 +279,7 @@ void func_02029864(DualLayerTileRenderer *self)
 }
 
 /* Upload or split the loaded palette according to engine mode and layer variant. */
-void func_02029914(DualLayerTileRenderer *self)
+void DualLayerTileRenderer_UploadPalette(DualLayerTileRenderer *self)
 {
     func_020b44e8();
     if (self->engineMode_30 == 1) {
@@ -305,20 +305,20 @@ void func_02029914(DualLayerTileRenderer *self)
 }
 
 /* Forward two values to func_0202a708 on the indexed layer. */
-void func_02029a00(DualLayerTileRenderer *self, s32 layer, s32 a, s32 b)
+void DualLayerTileRenderer_ForwardLayerPair(DualLayerTileRenderer *self, s32 layer, s32 a, s32 b)
 {
     func_0202a708(self->layers_28[layer], a, b);
 }
 
 /* Forward three values to func_0202a588 on the indexed layer. */
-void func_02029a1c(DualLayerTileRenderer *self, s32 layer,
+void DualLayerTileRenderer_ForwardLayerTriple(DualLayerTileRenderer *self, s32 layer,
                    s32 a, s32 b, s32 c)
 {
     func_0202a588(self->layers_28[layer], b, c, a);
 }
 
 /* Invoke vtable slot three with the supplied value on both existing layers. */
-void func_02029a40(DualLayerTileRenderer *self, s32 value)
+void DualLayerTileRenderer_SetLayersEnabled(DualLayerTileRenderer *self, s32 value)
 {
     s32 i;
     for (i = 0; i < 2; i++)
@@ -328,7 +328,7 @@ void func_02029a40(DualLayerTileRenderer *self, s32 value)
 }
 
 /* Return one only when vtable slot four returns nonzero for both layers. */
-s32 func_02029a80(DualLayerTileRenderer *self)
+s32 DualLayerTileRenderer_AreBothLayersReady(DualLayerTileRenderer *self)
 {
     s32 i;
     s32 complete = 0;
@@ -344,7 +344,7 @@ s32 func_02029a80(DualLayerTileRenderer *self)
  * Read one tile from each layer when coordinates are within packed dimensions,
  * extract bits 9..15, and return layer zero in bits 0..6 plus layer one in 7..13.
  */
-u16 func_02029ad0(DualLayerTileRenderer *self, s32 x, s32 y)
+u16 DualLayerTileRenderer_GetPackedTileValue(DualLayerTileRenderer *self, s32 x, s32 y)
 {
     u16 low = 0;
     u16 high = 0;
@@ -360,7 +360,7 @@ u16 func_02029ad0(DualLayerTileRenderer *self, s32 x, s32 y)
 }
 
 /* Split a packed two-layer tile value and write bits 9..15 into each layer. */
-void func_02029b70(DualLayerTileRenderer *self, s32 x, s32 y, u16 value)
+void DualLayerTileRenderer_SetPackedTileValue(DualLayerTileRenderer *self, s32 x, s32 y, u16 value)
 {
     u16 width = (u16)self->packedDimensions_20;
     u16 height = (u16)(self->packedDimensions_20 >> 16);
@@ -374,7 +374,7 @@ void func_02029b70(DualLayerTileRenderer *self, s32 x, s32 y, u16 value)
 }
 
 /* Convert FX32-like rectangle bounds to tile units and dispatch vtable slot 12 for every tile. */
-void func_02029bfc(DualLayerTileRenderer *self, s32 layer, s32 left,
+void DualLayerTileRenderer_FillTileRectangle(DualLayerTileRenderer *self, s32 layer, s32 left,
                    s32 top, s32 right, s32 bottom, s32 value)
 {
     s32 x;
@@ -391,20 +391,20 @@ void func_02029bfc(DualLayerTileRenderer *self, s32 layer, s32 left,
 }
 
 /* Return the query result for the embedded renderer at offset 0x60. */
-void *func_02029c94(DualLayerTileRenderer *self)
+void *DualLayerTileRenderer_GetEmbeddedRendererState(DualLayerTileRenderer *self)
 {
     return func_0202b9bc(self->embeddedRenderer_60);
 }
 
 /* Load fixed archive data into a temporary large renderer and copy it into offset 0x60. */
-void func_02029ca4(DualLayerTileRenderer *self, s32 index)
+void DualLayerTileRenderer_LoadEmbeddedRendererEntry(DualLayerTileRenderer *self, s32 index)
 {
     u8 resource[0x14];
     u8 file[0x4c];
     u8 temporary[0x181c];
     NcgFile_Init(resource);
     GameFile_Init(file);
-    GameFile_Open(file, data_020de970);
+    GameFile_Open(file, gDualLayerTileRendererArchivePath);
     NcgFile_LoadCompressedFromFile(resource, file,
                   *(const u32 *)(self->config_1c + 0),
                   *(const u32 *)(self->config_1c + 4));

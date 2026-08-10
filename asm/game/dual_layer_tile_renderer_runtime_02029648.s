@@ -1,12 +1,12 @@
 ; Matching retail form; see src/game/dual_layer_tile_renderer_runtime.c.
 .text
-.extern func_02029864
-.extern func_02029914
+.extern DualLayerTileRenderer_UploadGraphics
+.extern DualLayerTileRenderer_UploadPalette
 .extern func_02029fb0
 
-    .global func_02029648
-    .type func_02029648, @function
-func_02029648: ; 0x02029648
+    .global DualLayerTileRenderer_ActivateLayers
+    .type DualLayerTileRenderer_ActivateLayers, @function
+DualLayerTileRenderer_ActivateLayers: ; 0x02029648
     stmdb sp!, {r4, r5, r6, lr}
     mov r4, r0
     mov r6, r1
@@ -24,9 +24,9 @@ func_02029648: ; 0x02029648
     cmp r5, #0x2
     blt .L_02029658
     mov r0, r4
-    bl func_02029864
+    bl DualLayerTileRenderer_UploadGraphics
     mov r0, r4
-    bl func_02029914
+    bl DualLayerTileRenderer_UploadPalette
     mov r5, #0x0
 .L_02029694:
     add r0, r4, r5, lsl #0x2
@@ -74,5 +74,5 @@ func_02029648: ; 0x02029648
     ldmia sp!, {r4, r5, r6, pc}
 .L_02029734: .word 0x400000e
 .L_02029738: .word 0x400100e
-    .size func_02029648, . - func_02029648
+    .size DualLayerTileRenderer_ActivateLayers, . - DualLayerTileRenderer_ActivateLayers
 

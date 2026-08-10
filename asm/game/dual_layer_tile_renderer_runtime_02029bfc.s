@@ -2,9 +2,9 @@
 .text
 
 
-    .global func_02029bfc
-    .type func_02029bfc, @function
-func_02029bfc: ; 0x02029bfc
+    .global DualLayerTileRenderer_FillTileRectangle
+    .type DualLayerTileRenderer_FillTileRectangle, @function
+DualLayerTileRenderer_FillTileRectangle: ; 0x02029bfc
     stmdb sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, lr}
     mov r10, r0
     mov r11, r1
@@ -47,5 +47,5 @@ func_02029bfc: ; 0x02029bfc
     cmp r7, r5, asr #0x4
     blt .L_02029c50
     ldmia sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, pc}
-    .size func_02029bfc, . - func_02029bfc
+    .size DualLayerTileRenderer_FillTileRectangle, . - DualLayerTileRenderer_FillTileRectangle
 

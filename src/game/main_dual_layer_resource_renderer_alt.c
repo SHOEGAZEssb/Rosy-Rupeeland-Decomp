@@ -16,8 +16,8 @@ extern "C" {
 extern void *data_020ded3c;
 extern void DualLayerTileRendererBase_InitBase(void *self);
 extern void DualLayerTileRendererBase_Destroy(void *self);
-extern void func_02029370(void *self);
-extern void func_02029648(void *self);
+extern void DualLayerTileRenderer_LoadFromConfig(void *self);
+extern void DualLayerTileRenderer_ActivateLayers(void *self);
 extern void func_0202bf4c(void *self);
 void func_0202c388(MainDualLayerResourceRendererAlt *self);
 #ifdef __cplusplus
@@ -50,14 +50,14 @@ MainDualLayerResourceRendererAlt *func_0202c33c(MainDualLayerResourceRendererAlt
 /* Run the first common activation path, then perform this variant's resource setup. */
 void func_0202c358(MainDualLayerResourceRendererAlt *self)
 {
-    func_02029370(self);
+    DualLayerTileRenderer_LoadFromConfig(self);
     func_0202c388(self);
 }
 
 /* Run the second common activation path, then perform this variant's resource setup. */
 void func_0202c370(MainDualLayerResourceRendererAlt *self)
 {
-    func_02029648(self);
+    DualLayerTileRenderer_ActivateLayers(self);
     func_0202c388(self);
 }
 

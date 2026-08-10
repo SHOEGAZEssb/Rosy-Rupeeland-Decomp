@@ -6,7 +6,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_02029bfc(void *renderer, s32 enabled,
+extern void DualLayerTileRenderer_FillTileRectangle(void *renderer, s32 enabled,
                           s32 left, s32 top, s32 right, s32 bottom,
                           s32 value);
 #ifdef __cplusplus
@@ -20,7 +20,7 @@ static s32 halfCoordinate(s16 value)
 
 /*
  * If a sub-renderer exists, iterate every region whose bound GameWork flag is
- * set and register its halved bounds through func_02029bfc with enabled=1 and
+ * set and register its halved bounds through DualLayerTileRenderer_FillTileRectangle with enabled=1 and
  * trailing value zero. The region table is unchanged; renderer state changes.
  */
 void GamePhaseAreaScene_RegisterEnabledRegions(
@@ -32,7 +32,7 @@ void GamePhaseAreaScene_RegisterEnabledRegions(
     for (i = 0; i < GamePhaseRegionTable_GetCount(table); i++) {
         if (GamePhaseRegionTable_IsRegionEnabled(table, i)) {
             GamePhaseRegion *region = GamePhaseRegionTable_GetRegion(table, i);
-            func_02029bfc(self->subRenderer, 1,
+            DualLayerTileRenderer_FillTileRectangle(self->subRenderer, 1,
                           halfCoordinate(region->left),
                           halfCoordinate(region->top),
                           halfCoordinate(region->right),

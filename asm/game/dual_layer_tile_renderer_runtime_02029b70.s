@@ -2,9 +2,9 @@
 .text
 .extern func_0202a6d0
 
-    .global func_02029b70
-    .type func_02029b70, @function
-func_02029b70: ; 0x02029b70
+    .global DualLayerTileRenderer_SetPackedTileValue
+    .type DualLayerTileRenderer_SetPackedTileValue, @function
+DualLayerTileRenderer_SetPackedTileValue: ; 0x02029b70
     stmdb sp!, {r0, r1, r2, r3}
     stmdb sp!, {r3, r4, r5, r6, r7, lr}
     movs r5, r1
@@ -42,5 +42,5 @@ func_02029b70: ; 0x02029b70
     ldmia sp!, {r3, r4, r5, r6, r7, lr}
     add sp, sp, #0x10
     bx lr
-    .size func_02029b70, . - func_02029b70
+    .size DualLayerTileRenderer_SetPackedTileValue, . - DualLayerTileRenderer_SetPackedTileValue
 

@@ -304,7 +304,7 @@ void func_ov075_022158bc(void);
 /* Processes the supplied ABI arguments and offset-based actor state, returns its encoded result, and invokes func_ov075_02215930; exact higher-level semantics remain unconfirmed. */
 void func_ov075_02215910(void);
 
-/* Processes the supplied ABI arguments and offset-based actor state, returns its encoded result, and invokes func_02029b70; exact higher-level semantics remain unconfirmed. */
+/* Processes the supplied ABI arguments and offset-based actor state, returns its encoded result, and invokes DualLayerTileRenderer_SetPackedTileValue; exact higher-level semantics remain unconfirmed. */
 void func_ov075_02215930(void);
 
 /* Processes the supplied ABI arguments and offset-based actor state, returns its encoded result, and invokes VecFx32Object_Init, ActorExtendedLinkSource_Init; exact higher-level semantics remain unconfirmed. */

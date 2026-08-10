@@ -8,9 +8,9 @@
 .extern func_020b17ec
 .extern func_020b1854
 
-    .global func_02029784
-    .type func_02029784, @function
-func_02029784: ; 0x02029784
+    .global DualLayerTileRenderer_UpdatePosition
+    .type DualLayerTileRenderer_UpdatePosition, @function
+DualLayerTileRenderer_UpdatePosition: ; 0x02029784
     stmdb sp!, {r4, r5, r6, lr}
     sub sp, sp, #0x10
     mov r4, r0
@@ -72,5 +72,5 @@ func_02029784: ; 0x02029784
     bl VecFx32Object_Destroy
     add sp, sp, #0x10
     ldmia sp!, {r4, r5, r6, pc}
-    .size func_02029784, . - func_02029784
+    .size DualLayerTileRenderer_UpdatePosition, . - DualLayerTileRenderer_UpdatePosition
 

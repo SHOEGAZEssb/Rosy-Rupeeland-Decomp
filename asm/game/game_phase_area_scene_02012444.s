@@ -3,7 +3,7 @@
 .extern GamePhaseRegionTable_GetRegion
 .extern GamePhaseRegionTable_IsRegionEnabled
 .extern GamePhaseRegionTable_GetCount
-.extern func_02029bfc
+.extern DualLayerTileRenderer_FillTileRectangle
 
     .global GamePhaseAreaScene_RegisterEnabledRegions
 GamePhaseAreaScene_RegisterEnabledRegions: ; 0x02012444
@@ -43,7 +43,7 @@ L_02012470:
     add r3, r3, r3, lsr #0x1f
     mov r2, r2, asr #0x1
     mov r3, r3, asr #0x1
-    bl func_02029bfc
+    bl DualLayerTileRenderer_FillTileRectangle
 L_020124d4:
     add r6, r6, #0x1
 L_020124d8:

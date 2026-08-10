@@ -2,9 +2,9 @@
 .text
 
 
-    .global func_02029a80
-    .type func_02029a80, @function
-func_02029a80: ; 0x02029a80
+    .global DualLayerTileRenderer_AreBothLayersReady
+    .type DualLayerTileRenderer_AreBothLayersReady, @function
+DualLayerTileRenderer_AreBothLayersReady: ; 0x02029a80
     stmdb sp!, {r4, r5, r6, lr}
     mov r4, #0x0
     mov r6, r0
@@ -27,5 +27,5 @@ func_02029a80: ; 0x02029a80
     moveq r0, #0x1
     movne r0, #0x0
     ldmia sp!, {r4, r5, r6, pc}
-    .size func_02029a80, . - func_02029a80
+    .size DualLayerTileRenderer_AreBothLayersReady, . - DualLayerTileRenderer_AreBothLayersReady
 

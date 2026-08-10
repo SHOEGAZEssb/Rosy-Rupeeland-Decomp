@@ -5,11 +5,11 @@
 .extern GameFile_Init
 .extern GameFile_Open
 .extern Heap_Alloc
-.extern data_020de970
+.extern gDualLayerTileRendererArchivePath
 .extern gDualLayerTileRendererLayerAllocationTag
 .extern NclFile_LoadCompressedFromFile
-.extern func_02029864
-.extern func_02029914
+.extern DualLayerTileRenderer_UploadGraphics
+.extern DualLayerTileRenderer_UploadPalette
 .extern func_0202a7fc
 .extern func_0202a884
 .extern func_0202a8b4
@@ -22,9 +22,9 @@
 .extern func_0202b5f4
 .extern gHeapContext
 
-    .global func_02029370
-    .type func_02029370, @function
-func_02029370: ; 0x02029370
+    .global DualLayerTileRenderer_LoadFromConfig
+    .type DualLayerTileRenderer_LoadFromConfig, @function
+DualLayerTileRenderer_LoadFromConfig: ; 0x02029370
     stmdb sp!, {r4, r5, r6, r7, lr}
     sub sp, sp, #0x5c
     mov r6, r0
@@ -208,17 +208,17 @@ func_02029370: ; 0x02029370
     str r0, [r6, #0x40]
 .L_02029614:
     mov r0, r6
-    bl func_02029864
+    bl DualLayerTileRenderer_UploadGraphics
     mov r0, r6
-    bl func_02029914
+    bl DualLayerTileRenderer_UploadPalette
     add r0, sp, #0x10
     bl GameFile_Close
     add r0, sp, #0x10
     bl GameFile_Destroy
     add sp, sp, #0x5c
     ldmia sp!, {r4, r5, r6, r7, pc}
-.L_0202963c: .word data_020de970
+.L_0202963c: .word gDualLayerTileRendererArchivePath
 .L_02029640: .word gDualLayerTileRendererLayerAllocationTag
 .L_02029644: .word gHeapContext
-    .size func_02029370, . - func_02029370
+    .size DualLayerTileRenderer_LoadFromConfig, . - DualLayerTileRenderer_LoadFromConfig
 

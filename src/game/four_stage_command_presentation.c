@@ -24,7 +24,7 @@ extern "C" {
 extern void *data_020d6bf8;
 extern void func_0201e250(void *);
 extern void func_0201e28c(void *);
-extern void func_02029bfc(void *context, s32 mode, s32 argument08,
+extern void DualLayerTileRenderer_FillTileRectangle(void *context, s32 mode, s32 argument08,
                           s32 argument0c, s32 argument10, s32 argument14,
                           s32 commandId);
 #ifdef __cplusplus
@@ -81,7 +81,7 @@ s32 func_02026fbc(FourStageCommandPresentation *self)
     if ((u32)self->stage18 > 3) return 0;
     self->timer1c++;
     if (self->timer1c <= 4) return 0;
-    func_02029bfc(self->context20, 1, self->argument08, self->argument0c,
+    DualLayerTileRenderer_FillTileRectangle(self->context20, 1, self->argument08, self->argument0c,
                   self->argument10, self->argument14,
                   commandIds[self->stage18]);
     if (self->stage18 == 3) return 1;

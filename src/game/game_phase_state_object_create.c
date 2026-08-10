@@ -8,7 +8,7 @@ extern "C" {
 #endif
 extern const u8 gGamePhaseStateRendererAllocationTag[];
 extern void *DualLayerTileRendererBase_Init(void *object);
-extern void func_02029ca4(void *object, const void *configuration);
+extern void DualLayerTileRenderer_LoadEmbeddedRendererEntry(void *object, const void *configuration);
 extern void *func_0202becc(void *object);
 extern void *func_0202c308(void *object);
 extern void *func_0202c744(void *object);
@@ -62,7 +62,7 @@ void GamePhaseState_CreatePhaseObject(GamePhaseState *self, const void *configur
     self->phaseObject = object;
     ((ObjectConfigureMethod)(*(void ***)object)[5])(
         object, *(u32 *)(config + 4), 1, 0);
-    func_02029ca4(object, config + 0x34);
+    DualLayerTileRenderer_LoadEmbeddedRendererEntry(object, config + 0x34);
     GamePhaseRegionTable_Load(self->helper_2f80, *(u32 *)(config + 4));
     GamePhaseRegionTable_SetGameWorkFlagBase(self->helper_2f80, *(u32 *)(config + 0x48));
 }

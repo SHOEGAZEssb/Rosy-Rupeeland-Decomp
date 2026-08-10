@@ -11,9 +11,9 @@
 .extern func_020b1618
 .extern func_020b44e8
 
-    .global func_02029914
-    .type func_02029914, @function
-func_02029914: ; 0x02029914
+    .global DualLayerTileRenderer_UploadPalette
+    .type DualLayerTileRenderer_UploadPalette, @function
+DualLayerTileRenderer_UploadPalette: ; 0x02029914
     stmdb sp!, {r4, lr}
     mov r4, r0
     bl func_020b44e8
@@ -79,5 +79,5 @@ func_02029914: ; 0x02029914
     ldmia sp!, {r4, pc}
 .L_020299f8: .word gMainBgPaletteBuffer
 .L_020299fc: .word gSubBgPaletteBuffer
-    .size func_02029914, . - func_02029914
+    .size DualLayerTileRenderer_UploadPalette, . - DualLayerTileRenderer_UploadPalette
 

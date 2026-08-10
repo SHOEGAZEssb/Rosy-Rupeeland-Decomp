@@ -9541,91 +9541,91 @@ build build/reports/dual_layer_tile_renderer_runtime_02029370.json: objdiff buil
   base_object = build/decomp/asm/game/dual_layer_tile_renderer_runtime_02029370.o
 build build/reports/dual_layer_tile_renderer_runtime_02029370.txt: match_report build/reports/dual_layer_tile_renderer_runtime_02029370.json | tools/report_objdiff.py
   report_json = build/reports/dual_layer_tile_renderer_runtime_02029370.json
-  report_args = --section .text --function func_02029370 --require-exact
+  report_args = --section .text --function DualLayerTileRenderer_LoadFromConfig --require-exact
 build build/reports/dual_layer_tile_renderer_runtime_02029648.json: objdiff build/decomp/delinks/asm/game/dual_layer_tile_renderer_runtime_02029648.o | build/decomp/asm/game/dual_layer_tile_renderer_runtime_02029648.o
   target_object = build/decomp/delinks/asm/game/dual_layer_tile_renderer_runtime_02029648.o
   base_object = build/decomp/asm/game/dual_layer_tile_renderer_runtime_02029648.o
 build build/reports/dual_layer_tile_renderer_runtime_02029648.txt: match_report build/reports/dual_layer_tile_renderer_runtime_02029648.json | tools/report_objdiff.py
   report_json = build/reports/dual_layer_tile_renderer_runtime_02029648.json
-  report_args = --section .text --function func_02029648 --require-exact
+  report_args = --section .text --function DualLayerTileRenderer_ActivateLayers --require-exact
 build build/reports/dual_layer_tile_renderer_runtime_0202973c.json: objdiff build/decomp/delinks/asm/game/dual_layer_tile_renderer_runtime_0202973c.o | build/decomp/asm/game/dual_layer_tile_renderer_runtime_0202973c.o
   target_object = build/decomp/delinks/asm/game/dual_layer_tile_renderer_runtime_0202973c.o
   base_object = build/decomp/asm/game/dual_layer_tile_renderer_runtime_0202973c.o
 build build/reports/dual_layer_tile_renderer_runtime_0202973c.txt: match_report build/reports/dual_layer_tile_renderer_runtime_0202973c.json | tools/report_objdiff.py
   report_json = build/reports/dual_layer_tile_renderer_runtime_0202973c.json
-  report_args = --section .text --function func_0202973c --require-exact
+  report_args = --section .text --function DualLayerTileRenderer_UpdateLayers --require-exact
 build build/reports/dual_layer_tile_renderer_runtime_02029784.json: objdiff build/decomp/delinks/asm/game/dual_layer_tile_renderer_runtime_02029784.o | build/decomp/asm/game/dual_layer_tile_renderer_runtime_02029784.o
   target_object = build/decomp/delinks/asm/game/dual_layer_tile_renderer_runtime_02029784.o
   base_object = build/decomp/asm/game/dual_layer_tile_renderer_runtime_02029784.o
 build build/reports/dual_layer_tile_renderer_runtime_02029784.txt: match_report build/reports/dual_layer_tile_renderer_runtime_02029784.json | tools/report_objdiff.py
   report_json = build/reports/dual_layer_tile_renderer_runtime_02029784.json
-  report_args = --section .text --function func_02029784 --require-exact
+  report_args = --section .text --function DualLayerTileRenderer_UpdatePosition --require-exact
 build build/reports/dual_layer_tile_renderer_runtime_02029864.json: objdiff build/decomp/delinks/asm/game/dual_layer_tile_renderer_runtime_02029864.o | build/decomp/asm/game/dual_layer_tile_renderer_runtime_02029864.o
   target_object = build/decomp/delinks/asm/game/dual_layer_tile_renderer_runtime_02029864.o
   base_object = build/decomp/asm/game/dual_layer_tile_renderer_runtime_02029864.o
 build build/reports/dual_layer_tile_renderer_runtime_02029864.txt: match_report build/reports/dual_layer_tile_renderer_runtime_02029864.json | tools/report_objdiff.py
   report_json = build/reports/dual_layer_tile_renderer_runtime_02029864.json
-  report_args = --section .text --function func_02029864 --require-exact
+  report_args = --section .text --function DualLayerTileRenderer_UploadGraphics --require-exact
 build build/reports/dual_layer_tile_renderer_runtime_02029914.json: objdiff build/decomp/delinks/asm/game/dual_layer_tile_renderer_runtime_02029914.o | build/decomp/asm/game/dual_layer_tile_renderer_runtime_02029914.o
   target_object = build/decomp/delinks/asm/game/dual_layer_tile_renderer_runtime_02029914.o
   base_object = build/decomp/asm/game/dual_layer_tile_renderer_runtime_02029914.o
 build build/reports/dual_layer_tile_renderer_runtime_02029914.txt: match_report build/reports/dual_layer_tile_renderer_runtime_02029914.json | tools/report_objdiff.py
   report_json = build/reports/dual_layer_tile_renderer_runtime_02029914.json
-  report_args = --section .text --function func_02029914 --require-exact
+  report_args = --section .text --function DualLayerTileRenderer_UploadPalette --require-exact
 build build/reports/dual_layer_tile_renderer_runtime_02029a00.json: objdiff build/decomp/delinks/asm/game/dual_layer_tile_renderer_runtime_02029a00.o | build/decomp/asm/game/dual_layer_tile_renderer_runtime_02029a00.o
   target_object = build/decomp/delinks/asm/game/dual_layer_tile_renderer_runtime_02029a00.o
   base_object = build/decomp/asm/game/dual_layer_tile_renderer_runtime_02029a00.o
 build build/reports/dual_layer_tile_renderer_runtime_02029a00.txt: match_report build/reports/dual_layer_tile_renderer_runtime_02029a00.json | tools/report_objdiff.py
   report_json = build/reports/dual_layer_tile_renderer_runtime_02029a00.json
-  report_args = --section .text --function func_02029a00 --require-exact
+  report_args = --section .text --function DualLayerTileRenderer_ForwardLayerPair --require-exact
 build build/reports/dual_layer_tile_renderer_runtime_02029a1c.json: objdiff build/decomp/delinks/asm/game/dual_layer_tile_renderer_runtime_02029a1c.o | build/decomp/asm/game/dual_layer_tile_renderer_runtime_02029a1c.o
   target_object = build/decomp/delinks/asm/game/dual_layer_tile_renderer_runtime_02029a1c.o
   base_object = build/decomp/asm/game/dual_layer_tile_renderer_runtime_02029a1c.o
 build build/reports/dual_layer_tile_renderer_runtime_02029a1c.txt: match_report build/reports/dual_layer_tile_renderer_runtime_02029a1c.json | tools/report_objdiff.py
   report_json = build/reports/dual_layer_tile_renderer_runtime_02029a1c.json
-  report_args = --section .text --function func_02029a1c --require-exact
+  report_args = --section .text --function DualLayerTileRenderer_ForwardLayerTriple --require-exact
 build build/reports/dual_layer_tile_renderer_runtime_02029a40.json: objdiff build/decomp/delinks/asm/game/dual_layer_tile_renderer_runtime_02029a40.o | build/decomp/asm/game/dual_layer_tile_renderer_runtime_02029a40.o
   target_object = build/decomp/delinks/asm/game/dual_layer_tile_renderer_runtime_02029a40.o
   base_object = build/decomp/asm/game/dual_layer_tile_renderer_runtime_02029a40.o
 build build/reports/dual_layer_tile_renderer_runtime_02029a40.txt: match_report build/reports/dual_layer_tile_renderer_runtime_02029a40.json | tools/report_objdiff.py
   report_json = build/reports/dual_layer_tile_renderer_runtime_02029a40.json
-  report_args = --section .text --function func_02029a40 --require-exact
+  report_args = --section .text --function DualLayerTileRenderer_SetLayersEnabled --require-exact
 build build/reports/dual_layer_tile_renderer_runtime_02029a80.json: objdiff build/decomp/delinks/asm/game/dual_layer_tile_renderer_runtime_02029a80.o | build/decomp/asm/game/dual_layer_tile_renderer_runtime_02029a80.o
   target_object = build/decomp/delinks/asm/game/dual_layer_tile_renderer_runtime_02029a80.o
   base_object = build/decomp/asm/game/dual_layer_tile_renderer_runtime_02029a80.o
 build build/reports/dual_layer_tile_renderer_runtime_02029a80.txt: match_report build/reports/dual_layer_tile_renderer_runtime_02029a80.json | tools/report_objdiff.py
   report_json = build/reports/dual_layer_tile_renderer_runtime_02029a80.json
-  report_args = --section .text --function func_02029a80 --require-exact
+  report_args = --section .text --function DualLayerTileRenderer_AreBothLayersReady --require-exact
 build build/reports/dual_layer_tile_renderer_runtime_02029ad0.json: objdiff build/decomp/delinks/asm/game/dual_layer_tile_renderer_runtime_02029ad0.o | build/decomp/asm/game/dual_layer_tile_renderer_runtime_02029ad0.o
   target_object = build/decomp/delinks/asm/game/dual_layer_tile_renderer_runtime_02029ad0.o
   base_object = build/decomp/asm/game/dual_layer_tile_renderer_runtime_02029ad0.o
 build build/reports/dual_layer_tile_renderer_runtime_02029ad0.txt: match_report build/reports/dual_layer_tile_renderer_runtime_02029ad0.json | tools/report_objdiff.py
   report_json = build/reports/dual_layer_tile_renderer_runtime_02029ad0.json
-  report_args = --section .text --function func_02029ad0 --require-exact
+  report_args = --section .text --function DualLayerTileRenderer_GetPackedTileValue --require-exact
 build build/reports/dual_layer_tile_renderer_runtime_02029b70.json: objdiff build/decomp/delinks/asm/game/dual_layer_tile_renderer_runtime_02029b70.o | build/decomp/asm/game/dual_layer_tile_renderer_runtime_02029b70.o
   target_object = build/decomp/delinks/asm/game/dual_layer_tile_renderer_runtime_02029b70.o
   base_object = build/decomp/asm/game/dual_layer_tile_renderer_runtime_02029b70.o
 build build/reports/dual_layer_tile_renderer_runtime_02029b70.txt: match_report build/reports/dual_layer_tile_renderer_runtime_02029b70.json | tools/report_objdiff.py
   report_json = build/reports/dual_layer_tile_renderer_runtime_02029b70.json
-  report_args = --section .text --function func_02029b70 --require-exact
+  report_args = --section .text --function DualLayerTileRenderer_SetPackedTileValue --require-exact
 build build/reports/dual_layer_tile_renderer_runtime_02029bfc.json: objdiff build/decomp/delinks/asm/game/dual_layer_tile_renderer_runtime_02029bfc.o | build/decomp/asm/game/dual_layer_tile_renderer_runtime_02029bfc.o
   target_object = build/decomp/delinks/asm/game/dual_layer_tile_renderer_runtime_02029bfc.o
   base_object = build/decomp/asm/game/dual_layer_tile_renderer_runtime_02029bfc.o
 build build/reports/dual_layer_tile_renderer_runtime_02029bfc.txt: match_report build/reports/dual_layer_tile_renderer_runtime_02029bfc.json | tools/report_objdiff.py
   report_json = build/reports/dual_layer_tile_renderer_runtime_02029bfc.json
-  report_args = --section .text --function func_02029bfc --require-exact
+  report_args = --section .text --function DualLayerTileRenderer_FillTileRectangle --require-exact
 build build/reports/dual_layer_tile_renderer_runtime_02029c94.json: objdiff build/decomp/delinks/asm/game/dual_layer_tile_renderer_runtime_02029c94.o | build/decomp/asm/game/dual_layer_tile_renderer_runtime_02029c94.o
   target_object = build/decomp/delinks/asm/game/dual_layer_tile_renderer_runtime_02029c94.o
   base_object = build/decomp/asm/game/dual_layer_tile_renderer_runtime_02029c94.o
 build build/reports/dual_layer_tile_renderer_runtime_02029c94.txt: match_report build/reports/dual_layer_tile_renderer_runtime_02029c94.json | tools/report_objdiff.py
   report_json = build/reports/dual_layer_tile_renderer_runtime_02029c94.json
-  report_args = --section .text --function func_02029c94 --require-exact
+  report_args = --section .text --function DualLayerTileRenderer_GetEmbeddedRendererState --require-exact
 build build/reports/dual_layer_tile_renderer_runtime_02029ca4.json: objdiff build/decomp/delinks/asm/game/dual_layer_tile_renderer_runtime_02029ca4.o | build/decomp/asm/game/dual_layer_tile_renderer_runtime_02029ca4.o
   target_object = build/decomp/delinks/asm/game/dual_layer_tile_renderer_runtime_02029ca4.o
   base_object = build/decomp/asm/game/dual_layer_tile_renderer_runtime_02029ca4.o
 build build/reports/dual_layer_tile_renderer_runtime_02029ca4.txt: match_report build/reports/dual_layer_tile_renderer_runtime_02029ca4.json | tools/report_objdiff.py
   report_json = build/reports/dual_layer_tile_renderer_runtime_02029ca4.json
-  report_args = --section .text --function func_02029ca4 --require-exact
+  report_args = --section .text --function DualLayerTileRenderer_LoadEmbeddedRendererEntry --require-exact
 build build/reports/dual_layer_tile_renderer_runtime_02029d3c.json: objdiff build/decomp/delinks/asm/game/dual_layer_tile_renderer_runtime_02029d3c.o | build/decomp/asm/game/dual_layer_tile_renderer_runtime_02029d3c.o
   target_object = build/decomp/delinks/asm/game/dual_layer_tile_renderer_runtime_02029d3c.o
   base_object = build/decomp/asm/game/dual_layer_tile_renderer_runtime_02029d3c.o
