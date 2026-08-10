@@ -2,8 +2,8 @@
 .text
 .extern GamePhaseScriptVm_Pop
 
-    .global func_02013914
-func_02013914: ; 0x02013914
+    .global GamePhaseActorScriptVm_SetFieldE6
+GamePhaseActorScriptVm_SetFieldE6: ; 0x02013914
     stmdb sp!, {r4, lr}
     mov r4, r0
     bl GamePhaseScriptVm_Pop
@@ -11,5 +11,5 @@ func_02013914: ; 0x02013914
     strb r0, [r1, #0xe6]
     mov r0, #0x0
     ldmia sp!, {r4, pc}
-    .size func_02013914, . - func_02013914
+    .size GamePhaseActorScriptVm_SetFieldE6, . - GamePhaseActorScriptVm_SetFieldE6
 

@@ -23,7 +23,7 @@ extern void Actor_UpdateAttachmentDirectionFromVector(void *actor, fx32 x, fx32 
  * Actor_SetVelocity, clearing actor flag 0x40, and destroying/resetting the
  * movement object at 0x198. Returns zero.
  */
-s32 func_020137ec(GamePhaseActorScriptVm *self)
+s32 GamePhaseActorScriptVm_CancelMovement(GamePhaseActorScriptVm *self)
 {
     u8 *actor = (u8 *)self->actor;
     VecFx32Object zero;
@@ -45,7 +45,7 @@ s32 func_020137ec(GamePhaseActorScriptVm *self)
  * bound actor toward the target's horizontal displacement, push byte 0x38 of
  * actor->0x54 when present (otherwise zero), and return zero.
  */
-s32 func_0201389c(GamePhaseActorScriptVm *self)
+s32 GamePhaseActorScriptVm_FaceIndexedActorAndGetAttachmentByte38(GamePhaseActorScriptVm *self)
 {
     s32 index = (s32)GamePhaseScriptVm_Pop(&self->base);
     u8 *actor = (u8 *)self->actor;
@@ -60,7 +60,7 @@ s32 func_0201389c(GamePhaseActorScriptVm *self)
 }
 
 /* Pop a value into the bound actor's byte at offset 0xe6 and return zero. */
-s32 func_02013914(GamePhaseActorScriptVm *self)
+s32 GamePhaseActorScriptVm_SetFieldE6(GamePhaseActorScriptVm *self)
 {
     *((u8 *)self->actor + 0xe6) = (u8)GamePhaseScriptVm_Pop(&self->base);
     return 0;

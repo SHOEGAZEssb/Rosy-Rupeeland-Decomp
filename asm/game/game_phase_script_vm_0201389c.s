@@ -6,8 +6,8 @@
 .extern Actor_UpdateAttachmentDirectionFromVector
 .extern Actor_GetCollection
 
-    .global func_0201389c
-func_0201389c: ; 0x0201389c
+    .global GamePhaseActorScriptVm_FaceIndexedActorAndGetAttachmentByte38
+GamePhaseActorScriptVm_FaceIndexedActorAndGetAttachmentByte38: ; 0x0201389c
     stmdb sp!, {r3, r4, r5, lr}
     mov r4, r0
     bl GamePhaseScriptVm_Pop
@@ -40,4 +40,4 @@ L_02013900:
 L_0201390c:
     mov r0, #0x0
     ldmia sp!, {r3, r4, r5, pc}
-    .size func_0201389c, . - func_0201389c
+    .size GamePhaseActorScriptVm_FaceIndexedActorAndGetAttachmentByte38, . - GamePhaseActorScriptVm_FaceIndexedActorAndGetAttachmentByte38

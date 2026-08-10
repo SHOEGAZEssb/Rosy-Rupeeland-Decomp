@@ -4933,21 +4933,21 @@ build build/reports/game_phase_script_vm_020137ec.json: objdiff build/decomp/del
   base_object = build/decomp/asm/game/game_phase_script_vm_020137ec.o
 build build/reports/game_phase_script_vm_020137ec.txt: match_report build/reports/game_phase_script_vm_020137ec.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_script_vm_020137ec.json
-  report_args = --section .text --function func_020137ec --require-exact
+  report_args = --section .text --function GamePhaseActorScriptVm_CancelMovement --require-exact
 
 build build/reports/game_phase_script_vm_0201389c.json: objdiff build/decomp/delinks/asm/game/game_phase_script_vm_0201389c.o | build/decomp/asm/game/game_phase_script_vm_0201389c.o
   target_object = build/decomp/delinks/asm/game/game_phase_script_vm_0201389c.o
   base_object = build/decomp/asm/game/game_phase_script_vm_0201389c.o
 build build/reports/game_phase_script_vm_0201389c.txt: match_report build/reports/game_phase_script_vm_0201389c.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_script_vm_0201389c.json
-  report_args = --section .text --function func_0201389c --require-exact
+  report_args = --section .text --function GamePhaseActorScriptVm_FaceIndexedActorAndGetAttachmentByte38 --require-exact
 
 build build/reports/game_phase_script_vm_02013914.json: objdiff build/decomp/delinks/asm/game/game_phase_script_vm_02013914.o | build/decomp/asm/game/game_phase_script_vm_02013914.o
   target_object = build/decomp/delinks/asm/game/game_phase_script_vm_02013914.o
   base_object = build/decomp/asm/game/game_phase_script_vm_02013914.o
 build build/reports/game_phase_script_vm_02013914.txt: match_report build/reports/game_phase_script_vm_02013914.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_script_vm_02013914.json
-  report_args = --section .text --function func_02013914 --require-exact
+  report_args = --section .text --function GamePhaseActorScriptVm_SetFieldE6 --require-exact
 
 build build/reports/game_phase_script_vm_actor_target_opcodes.txt: phony build/reports/game_phase_script_vm_020137ec.txt build/reports/game_phase_script_vm_0201389c.txt build/reports/game_phase_script_vm_02013914.txt
 

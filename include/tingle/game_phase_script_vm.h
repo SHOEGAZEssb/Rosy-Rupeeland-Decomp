@@ -89,9 +89,9 @@ s32 GamePhaseActorScriptVm_SetActorFlag10AndAttachmentFlag40(GamePhaseActorScrip
 s32 GamePhaseActorScriptVm_SetAttachmentFlag80(GamePhaseActorScriptVm *self);
 s32 GamePhaseActorScriptVm_SetAttachmentFlag20(GamePhaseActorScriptVm *self);
 s32 GamePhaseActorScriptVm_ComputeFixedPointRoot(GamePhaseActorScriptVm *self);
-s32 func_020137ec(GamePhaseActorScriptVm *self);
-s32 func_0201389c(GamePhaseActorScriptVm *self);
-s32 func_02013914(GamePhaseActorScriptVm *self);
+s32 GamePhaseActorScriptVm_CancelMovement(GamePhaseActorScriptVm *self);
+s32 GamePhaseActorScriptVm_FaceIndexedActorAndGetAttachmentByte38(GamePhaseActorScriptVm *self);
+s32 GamePhaseActorScriptVm_SetFieldE6(GamePhaseActorScriptVm *self);
 s32 func_02013930(GamePhaseActorScriptVm *self);
 s32 func_020139d0(GamePhaseActorScriptVm *self);
 s32 func_020139d8(GamePhaseActorScriptVm *self);

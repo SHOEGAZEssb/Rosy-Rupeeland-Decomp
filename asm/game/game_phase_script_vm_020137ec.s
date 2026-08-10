@@ -7,8 +7,8 @@
 .extern Actor_SetVelocity
 .extern ActorDerivedType1_ResetSpecialModeFlags
 
-    .global func_020137ec
-func_020137ec: ; 0x020137ec
+    .global GamePhaseActorScriptVm_CancelMovement
+GamePhaseActorScriptVm_CancelMovement: ; 0x020137ec
     stmdb sp!, {r4, lr}
     sub sp, sp, #0x10
     ldr r4, [r0, #0x84]
@@ -54,4 +54,4 @@ L_02013854:
     mov r0, #0x0
     add sp, sp, #0x10
     ldmia sp!, {r4, pc}
-    .size func_020137ec, . - func_020137ec
+    .size GamePhaseActorScriptVm_CancelMovement, . - GamePhaseActorScriptVm_CancelMovement
