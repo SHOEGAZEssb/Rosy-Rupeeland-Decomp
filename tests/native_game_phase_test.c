@@ -201,6 +201,39 @@ static int TestActorBootstrapRuntime(void)
     return ok;
 }
 
+static int TestRuntimeVariantActor(void)
+{
+    TingleNativeActorDescriptor descriptor = {0};
+    TingleNativeActorRuntime *runtime;
+    const TingleNativeActorImage *actor;
+    int ok;
+
+    descriptor.kind = 6;
+    descriptor.subtype = 0;
+    descriptor.selector_50 = 0;
+    descriptor.allocation_size = 0x1EC;
+    runtime = TingleNativeActorRuntime_Create(&descriptor, 1, NULL, 0);
+    actor = TingleNativeActorRuntime_GetActor(runtime, 0);
+    ok = runtime != NULL && actor != NULL && actor->size == 0x1EC &&
+         actor->initialization_stages ==
+             (TINGLE_NATIVE_ACTOR_STAGE_GEOMETRY |
+              TINGLE_NATIVE_ACTOR_STAGE_COMMON_RUNTIME |
+              TINGLE_NATIVE_ACTOR_STAGE_RUNTIME_VARIANT) &&
+         actor->pending_external_state == 0 &&
+         ReadU32At(actor->bytes, 0x00) == 0x020E2028 &&
+         (ReadU32At(actor->bytes, 0x14) & 0x0E) == 0x0E;
+    TingleNativeActorRuntime_Destroy(runtime);
+    if (!ok) return 0;
+
+    WriteU32(descriptor.raw + 0x2C, 0x02201234);
+    runtime = TingleNativeActorRuntime_Create(&descriptor, 1, NULL, 0);
+    actor = TingleNativeActorRuntime_GetActor(runtime, 0);
+    ok = actor != NULL && actor->pending_external_state ==
+                            TINGLE_NATIVE_ACTOR_PENDING_DESCRIPTOR_HOOK;
+    TingleNativeActorRuntime_Destroy(runtime);
+    return ok;
+}
+
 static int TestOverlayRegistration(void)
 {
     static const u32 words[] = {
@@ -276,14 +309,19 @@ static int ProbeMetadata(const char *kind, const char *source, const char *phase
     TingleNativeGamePhaseBoundary boundary = {{0}, 0};
     TingleNativeGameWork game_work;
     s32 phase_id = (s32)strtol(phase_text, NULL, 0);
+    int report_routes = strcmp(phase_text, "stats") == 0;
     int ok;
 
     TingleNativeGameWork_Init(&game_work);
-    if (data != NULL && strcmp(phase_text, "all") == 0) {
+    if (data != NULL &&
+        (strcmp(phase_text, "all") == 0 || report_routes)) {
         u32 primary_descriptors = 0;
         u32 secondary_descriptors = 0;
         u32 primary_eligible = 0;
         u32 secondary_eligible = 0;
+        u32 route_counts[10][256] = {{0}};
+        u32 pending_route_counts[10][256] = {{0}};
+        u32 pending_actors = 0;
 
         for (phase_id = 1; phase_id <= TINGLE_NATIVE_PHASE_COUNT; ++phase_id) {
             ok = TingleNativeGamePhaseBoundary_Start(
@@ -308,6 +346,24 @@ static int ProbeMetadata(const char *kind, const char *source, const char *phase
             secondary_descriptors += boundary.secondary_registration.descriptor_count;
             primary_eligible += boundary.primary_registration.eligible_descriptor_count;
             secondary_eligible += boundary.secondary_registration.eligible_descriptor_count;
+            if (report_routes) {
+                u32 actor_index;
+                for (actor_index = 0;
+                     actor_index < boundary.actor_runtime->actor_count;
+                     ++actor_index) {
+                    const TingleNativeActorImage *actor =
+                        &boundary.actor_runtime->actors[actor_index];
+                    s32 variant = actor->descriptor.factory_variant;
+                    if (!actor->synthetic && actor->descriptor.kind < 10 &&
+                        variant >= 0 && variant < 256) {
+                        route_counts[actor->descriptor.kind][variant]++;
+                        if (actor->pending_external_state != 0) {
+                            pending_actors++;
+                            pending_route_counts[actor->descriptor.kind][variant]++;
+                        }
+                    }
+                }
+            }
             TingleNativeGamePhaseBoundary_Destroy(&boundary);
             if (TingleNativeGameWork_TestFlag(&game_work, 0x3F3) != 0) {
                 TingleNativeData_Close(data);
@@ -317,6 +373,55 @@ static int ProbeMetadata(const char *kind, const char *source, const char *phase
         (void)printf("validated %d phase overlay pairs: %u+%u descriptors, %u+%u eligible\n",
                      TINGLE_NATIVE_PHASE_COUNT, primary_descriptors,
                      secondary_descriptors, primary_eligible, secondary_eligible);
+        if (report_routes) {
+            u32 rank;
+            (void)printf("real actors with pending constructor state: %u\n",
+                         pending_actors);
+            for (rank = 0; rank < 32; ++rank) {
+                u32 best_count = 0;
+                u32 best_kind = 0;
+                u32 best_variant = 0;
+                u32 route_kind;
+                u32 route_variant;
+                for (route_kind = 1; route_kind < 10; ++route_kind) {
+                    for (route_variant = 0; route_variant < 256;
+                         ++route_variant) {
+                        if (route_counts[route_kind][route_variant] > best_count) {
+                            best_count = route_counts[route_kind][route_variant];
+                            best_kind = route_kind;
+                            best_variant = route_variant;
+                        }
+                    }
+                }
+                if (best_count == 0) break;
+                (void)printf("route kind=%u variant=%u actors=%u\n",
+                             best_kind, best_variant, best_count);
+                route_counts[best_kind][best_variant] = 0;
+            }
+            for (rank = 0; rank < 16; ++rank) {
+                u32 best_count = 0;
+                u32 best_kind = 0;
+                u32 best_variant = 0;
+                u32 route_kind;
+                u32 route_variant;
+                for (route_kind = 1; route_kind < 10; ++route_kind) {
+                    for (route_variant = 0; route_variant < 256;
+                         ++route_variant) {
+                        if (pending_route_counts[route_kind][route_variant] >
+                            best_count) {
+                            best_count =
+                                pending_route_counts[route_kind][route_variant];
+                            best_kind = route_kind;
+                            best_variant = route_variant;
+                        }
+                    }
+                }
+                if (best_count == 0) break;
+                (void)printf("pending kind=%u variant=%u actors=%u\n",
+                             best_kind, best_variant, best_count);
+                pending_route_counts[best_kind][best_variant] = 0;
+            }
+        }
         TingleNativeData_Close(data);
         return EXIT_SUCCESS;
     }
@@ -355,7 +460,8 @@ int main(int argc, char **argv)
                       strcmp(argv[1], "--data") == 0))
         return ProbeMetadata(argv[1], argv[2], argv[3]);
     if (!TestOverlayRegistration() || !TestFactoryResolution() ||
-        !TestActorRuntime() || !TestActorBootstrapRuntime()) return EXIT_FAILURE;
+        !TestActorRuntime() || !TestActorBootstrapRuntime() ||
+        !TestRuntimeVariantActor()) return EXIT_FAILURE;
 
     WriteU32(record + 0x00, 7);
     WriteU16(record + 0x12, (u16)-2);

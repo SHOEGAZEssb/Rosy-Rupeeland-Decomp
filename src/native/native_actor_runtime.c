@@ -14,6 +14,7 @@ enum {
     ACTOR_SHARED_DERIVED_VTABLE_ADDRESS = 0x020DF510,
     ACTOR_TYPE1_VTABLE_ADDRESS = 0x020DF3C8,
     ACTOR_SINGLETON_TRACKER_VTABLE_ADDRESS = 0x020E1F2C,
+    ACTOR_RUNTIME_VARIANT_VTABLE_ADDRESS = 0x020E2028,
     MARKER_PRESENTATION_VTABLE_ADDRESS = 0x020E1ED8,
     VECTOR_VTABLE_ADDRESS = 0x020D405C,
     ACTOR_SCRIPT_VM_VTABLE_ADDRESS = 0x020D5B20,
@@ -174,6 +175,13 @@ static s32 UsesSingletonTrackerConstructor(
     return desc->kind == 3 && desc->subtype == 3;
 }
 
+static s32 UsesRuntimeVariantConstructor(
+    const TingleNativeActorDescriptor *desc)
+{
+    return desc->kind == 6 && desc->subtype != 1 && desc->subtype != 2 &&
+           desc->subtype != 3 && desc->subtype != 4;
+}
+
 /* Reproduce func_0203b554 after its common-base constructor has returned. */
 static void InitializeSharedDerived(TingleNativeActorImage *actor)
 {
@@ -249,6 +257,20 @@ static void InitializeSingletonTracker(TingleNativeActorImage *actor)
         TINGLE_NATIVE_ACTOR_STAGE_SINGLETON_TRACKER;
 }
 
+/*
+ * Reproduce func_0204d284. A nonzero descriptor word +0x2c is passed to a
+ * virtual hook whose implementation depends on the final subclass vtable.
+ */
+static void InitializeRuntimeVariant(TingleNativeActorImage *actor)
+{
+    WriteU32(actor->bytes, 0x00, ACTOR_RUNTIME_VARIANT_VTABLE_ADDRESS);
+    actor->initialization_stages |=
+        TINGLE_NATIVE_ACTOR_STAGE_RUNTIME_VARIANT;
+    if (ReadU32(actor->descriptor.raw, 0x2C) != 0)
+        actor->pending_external_state |=
+            TINGLE_NATIVE_ACTOR_PENDING_DESCRIPTOR_HOOK;
+}
+
 static s32 InitializeActor(TingleNativeActorImage *actor,
                            const TingleNativeActorDescriptor *descriptor,
                            u32 category, s32 synthetic)
@@ -292,7 +314,9 @@ static s32 InitializeActor(TingleNativeActorImage *actor,
     WriteU16(actor->bytes, 0x50, (u16)descriptor->selector_50);
     actor->initialization_stages = TINGLE_NATIVE_ACTOR_STAGE_GEOMETRY;
     if (actor->size >= 0x1EC) InitializeCommonRuntime(actor);
-    if (actor->size >= 0x208 &&
+    if (actor->size >= 0x1EC && UsesRuntimeVariantConstructor(descriptor)) {
+        InitializeRuntimeVariant(actor);
+    } else if (actor->size >= 0x208 &&
         (UsesSharedDerivedConstructor(descriptor) ||
          UsesType1Constructor(descriptor) ||
          UsesSingletonTrackerConstructor(descriptor)))
@@ -302,9 +326,13 @@ static s32 InitializeActor(TingleNativeActorImage *actor,
     else if (actor->size >= 0x218 &&
              UsesSingletonTrackerConstructor(descriptor))
         InitializeSingletonTracker(actor);
-    else if (!UsesSharedDerivedConstructor(descriptor))
+    else if (!UsesSharedDerivedConstructor(descriptor) &&
+             !UsesRuntimeVariantConstructor(descriptor))
         actor->pending_external_state |=
             TINGLE_NATIVE_ACTOR_PENDING_DERIVED_CONSTRUCTOR;
+    /* The factory adds these bits after every kind-six constructor. */
+    if (descriptor->kind == 6)
+        WriteU32(actor->bytes, 0x14, ReadU32(actor->bytes, 0x14) | 0x0Eu);
     /* The factory copies descriptor +0x52 after the derived initializer. */
     WriteU16(actor->bytes, 0xE4, (u16)descriptor->value_52);
     return 1;
