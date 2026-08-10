@@ -13,8 +13,8 @@ extern "C" {
 extern void Actor_SetPosition(void *actor);
 extern void Type7Actor_UpdateMotionTowardTransform(void *actor, const void *transform);
 extern void Type7Actor_ClearTarget(void *actor);
-extern void func_0204a014(void *actor);
-extern void func_0204a0d8(void *actor, s32 condition);
+extern void Type7Actor_InitializeStationaryMotionState(void *actor);
+extern void Type7Actor_InitializeActiveMotionState(void *actor, s32 condition);
 #ifdef __cplusplus
 }
 #endif
@@ -22,9 +22,9 @@ extern void func_0204a0d8(void *actor, s32 condition);
 /*
  * Inputs are a type-seven actor, one unused recovered argument, and a
  * condition. First run Actor_SetPosition. If signed/word count +0x1fc is not
- * positive, clear actor +0x10 mask 0x1f0000 and reset through func_0204a014.
+ * positive, clear actor +0x10 mask 0x1f0000 and reset through Type7Actor_InitializeStationaryMotionState.
  * Otherwise force the condition to one while game-work flag 0x44b is set,
- * initialize active state through func_0204a0d8, and update motion from the
+ * initialize active state through Type7Actor_InitializeActiveMotionState, and update motion from the
  * actor's current transform +0x18.
  *
  * Finally, when signed countdown +0x258 is positive, decrement it and call
@@ -40,12 +40,12 @@ void Type7Actor_UpdateMotionState(void *self, s32 unused, s32 condition)
     Actor_SetPosition(actor);
     if (*(s32 *)(actor + 0x1fc) <= 0) {
         *(u32 *)(actor + 0x10) &= ~0x1f0000;
-        func_0204a014(actor);
+        Type7Actor_InitializeStationaryMotionState(actor);
         return;
     }
     if (GameWork_TestFlag(gGameWork, 0x44b) != 0)
         condition = 1;
-    func_0204a0d8(actor, condition);
+    Type7Actor_InitializeActiveMotionState(actor, condition);
     Type7Actor_UpdateMotionTowardTransform(actor, actor + 0x18);
     if (*(s16 *)(actor + 0x258) > 0) {
         --*(s16 *)(actor + 0x258);

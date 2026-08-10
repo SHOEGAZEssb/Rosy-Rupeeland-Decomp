@@ -8,9 +8,9 @@
 .extern Type7Actor_SetCallbackPair
 .extern func_02072b68
 .text
-    .global func_0204a014
-.type func_0204a014, @function
-func_0204a014: ; 0x0204a014
+    .global Type7Actor_InitializeStationaryMotionState
+.type Type7Actor_InitializeStationaryMotionState, @function
+Type7Actor_InitializeStationaryMotionState: ; 0x0204a014
     stmdb sp!, {r4, lr}
     ldr r1, .L_0204a0d4
     mov r2, #0x0
@@ -60,11 +60,11 @@ func_0204a014: ; 0x0204a014
     str r0, [r4, #0xd0]
     ldmia sp!, {r4, pc}
 .L_0204a0d4: .word data_020e1780
-.size func_0204a014, . - func_0204a014
+.size Type7Actor_InitializeStationaryMotionState, . - Type7Actor_InitializeStationaryMotionState
 
-    .global func_0204a0d8
-.type func_0204a0d8, @function
-func_0204a0d8: ; 0x0204a0d8
+    .global Type7Actor_InitializeActiveMotionState
+.type Type7Actor_InitializeActiveMotionState, @function
+Type7Actor_InitializeActiveMotionState: ; 0x0204a0d8
     stmdb sp!, {r3, r4, r5, lr}
     mov r5, r0
     mov r3, #0x0
@@ -140,5 +140,5 @@ func_0204a0d8: ; 0x0204a0d8
 .L_0204a1f4: .word gGameWork
 .L_0204a1f8: .word 0x44b
 .L_0204a1fc: .word data_021056e0
-.size func_0204a0d8, . - func_0204a0d8
+.size Type7Actor_InitializeActiveMotionState, . - Type7Actor_InitializeActiveMotionState
 

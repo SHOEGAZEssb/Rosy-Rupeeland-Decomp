@@ -18516,7 +18516,7 @@ build build/reports/type7_actor_motion_state_init_0204a014.json: objdiff build/d
   base_object = build/decomp/asm/game/type7_actor_motion_state_init_0204a014.o
 build build/reports/type7_actor_motion_state_init_0204a014.txt: match_report build/reports/type7_actor_motion_state_init_0204a014.json | tools/report_objdiff.py
   report_json = build/reports/type7_actor_motion_state_init_0204a014.json
-  report_args = --section .text --function func_0204a014 --function func_0204a0d8 --require-exact
+  report_args = --section .text --function Type7Actor_InitializeStationaryMotionState --function Type7Actor_InitializeActiveMotionState --require-exact
 build type7_actor_motion_state_init: phony build/decomp/src/game/type7_actor_motion_state_init.o build/decomp/asm/game/type7_actor_motion_state_init_0204a014.o build/reports/type7_actor_motion_state_init_0204a014.txt
 
 type7_actor_state_entry_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++

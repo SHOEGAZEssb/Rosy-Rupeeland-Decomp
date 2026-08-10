@@ -4,8 +4,8 @@
 .extern Actor_SetPosition
 .extern Type7Actor_UpdateMotionTowardTransform
 .extern Type7Actor_ClearTarget
-.extern func_0204a014
-.extern func_0204a0d8
+.extern Type7Actor_InitializeStationaryMotionState
+.extern Type7Actor_InitializeActiveMotionState
 .text
     .global Type7Actor_UpdateMotionState
 .type Type7Actor_UpdateMotionState, @function
@@ -25,7 +25,7 @@ Type7Actor_UpdateMotionState: ; 0x02049f78
     movne r5, #0x1
     mov r0, r4
     mov r1, r5
-    bl func_0204a0d8
+    bl Type7Actor_InitializeActiveMotionState
     mov r0, r4
     add r1, r4, #0x18
     bl Type7Actor_UpdateMotionTowardTransform
@@ -46,7 +46,7 @@ Type7Actor_UpdateMotionState: ; 0x02049f78
     mov r0, r4
     bic r1, r1, #0x1f0000
     str r1, [r4, #0x10]
-    bl func_0204a014
+    bl Type7Actor_InitializeStationaryMotionState
     ldmia sp!, {r3, r4, r5, pc}
 .L_0204a00c: .word gGameWork
 .L_0204a010: .word 0x44b

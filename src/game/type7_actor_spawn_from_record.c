@@ -27,7 +27,7 @@ extern void ActorSpawnDescriptor_Init(
     void *, u16, u16, s32, s32, s32, u8, u8, u16, u16, u16, u8, u8,
     s32, s32, s32, s32, s32, u16, u8, u8, u8, u8);
 extern void Type7Actor_SetTarget(void *actor, void *object);
-extern void func_0204a014(void *actor);
+extern void Type7Actor_InitializeStationaryMotionState(void *actor);
 extern s32 func_0204a564(void *actor);
 extern u8 *func_0204c51c(s32 index);
 extern u8 *func_0204c55c(s32 index);
@@ -169,7 +169,7 @@ s32 func_0204bf9c(s32 recordIndex, s32 phase, s32 x, s32 y, s32 field2b8)
     if ((recordFlags & 1) == 0)
         *(u32 *)(actor + 0x268) |= 0x4000;
     if (*(u32 *)(actor + 0x1fc) == 0) {
-        func_0204a014(actor);
+        Type7Actor_InitializeStationaryMotionState(actor);
         callActorVoidMethod(actor, 0x5c);
     }
 

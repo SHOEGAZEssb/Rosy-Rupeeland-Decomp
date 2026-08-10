@@ -37,7 +37,7 @@ static void set_actor_mode(u8 *actor, s32 mode)
  * callback, target, mode, flag, and motion state may change. No value is
  * returned and no SDK or hardware effects occur directly.
  */
-void func_0204a014(void *self)
+void Type7Actor_InitializeStationaryMotionState(void *self)
 {
     u8 *actor = (u8 *)self;
     *(void **)(actor + 0x210) = 0;
@@ -70,7 +70,7 @@ void func_0204a014(void *self)
  * Actor, callback, global alternation, game-work-derived, mode, presentation,
  * and motion state may change; no direct hardware access occurs.
  */
-void func_0204a0d8(void *self, s32 launch)
+void Type7Actor_InitializeActiveMotionState(void *self, s32 launch)
 {
     u8 *actor = (u8 *)self;
     *(void **)(actor + 0x210) = 0;

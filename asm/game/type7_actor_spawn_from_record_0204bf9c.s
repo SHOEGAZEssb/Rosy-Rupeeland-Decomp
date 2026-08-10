@@ -14,7 +14,7 @@
 .extern func_020be8c0
 .extern func_020beb6c
 .extern func_020beae4
-.extern func_0204a014
+.extern Type7Actor_InitializeStationaryMotionState
 .extern func_0204c55c
 .extern func_02025d14
 .extern data_021052fc
@@ -240,7 +240,7 @@ func_0204bf9c: ; 0x0204bf9c
     cmp r0, #0x0
     bne .L_0204c2ec
     mov r0, r5
-    bl func_0204a014
+    bl Type7Actor_InitializeStationaryMotionState
     mov r0, r5
     ldr r1, [r0, #0x0]
     ldr r1, [r1, #0x5c]
