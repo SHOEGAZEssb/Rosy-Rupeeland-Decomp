@@ -30,7 +30,7 @@
 .extern TrackedResourceActorType21_Init
 .extern TrackedResourceActorType22And25_Init
 .extern TrackedResourceActorType24_Init
-.extern func_02051738
+.extern TrackedResourceActorType26_Init
 .extern func_02052120
 .extern func_020522c8
 .extern func_020525b0
@@ -1716,7 +1716,7 @@ ActorCollection_SpawnActorFromDescriptor: ; 0x0202ecd0
     movs r4, r0
     beq .L_020307bc
     mov r1, r5
-    bl func_02051738
+    bl TrackedResourceActorType26_Init
     mov r4, r0
     b .L_020307bc
 .L_02030410:

@@ -8,7 +8,7 @@ extern "C" {
 extern void *TrackedResourceActor_Init(void *actor);
 extern void *TrackedResourceActor_Destroy(void *actor);
 extern void Heap_Free(void *allocation);
-extern u32 data_020e2bfc[];
+extern u32 gTrackedResourceActorType26Vtable[];
 #ifdef __cplusplus
 }
 #endif
@@ -17,13 +17,13 @@ extern u32 data_020e2bfc[];
 
 /*
  * Input is variant storage. Constructs the tracked-resource base, installs
- * vtable data_020e2bfc, clears halfword 0x200, and returns the same storage.
+ * vtable gTrackedResourceActorType26Vtable, clears halfword 0x200, and returns the same storage.
  * Engine-owned fields may be initialized; no direct hardware access occurs.
  */
-void *func_02051738(void *actor)
+void *TrackedResourceActorType26_Init(void *actor)
 {
     TrackedResourceActor_Init(actor);
-    *(u32 **)actor = data_020e2bfc;
+    *(u32 **)actor = gTrackedResourceActorType26Vtable;
     FIELD(u16, actor, 0x200) = 0;
     return actor;
 }
@@ -32,7 +32,7 @@ void *func_02051738(void *actor)
  * Input is a timed-variant instance. Runs tracked-resource base teardown and
  * returns the instance without freeing it. Engine resources may be released.
  */
-void *func_02051764(void *actor)
+void *TrackedResourceActorType26_DestroyComplete(void *actor)
 {
     TrackedResourceActor_Destroy(actor);
     return actor;
@@ -43,7 +43,7 @@ void *func_02051764(void *actor)
  * the allocation, and returns its former address, which must not be
  * dereferenced. No direct hardware access occurs.
  */
-void *func_02051778(void *actor)
+void *TrackedResourceActorType26_DestroyAndFree(void *actor)
 {
     TrackedResourceActor_Destroy(actor);
     Heap_Free(actor);
