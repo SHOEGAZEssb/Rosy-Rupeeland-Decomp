@@ -7,7 +7,7 @@ extern "C" {
 #endif
 extern void *data_021052fc;
 extern void ActorMotionJitter_EnsureMinimum(void *manager_field, s32 event, s32 argument);
-extern void func_020505f0(void *actor, ...);
+extern void TrackedResourceActor_ScanNeighborhoodAndApplyRecordEffect(void *actor, ...);
 #ifdef __cplusplus
 }
 #endif
@@ -26,7 +26,7 @@ void TrackedResourceActorType22And25_CleanupSubtype19(void *actor)
 {
     if (FIELD(s16, actor, 0x4e) != 0x19)
         return;
-    func_020505f0(actor);
+    TrackedResourceActor_ScanNeighborhoodAndApplyRecordEffect(actor);
     if ((FIELD(u32, actor, 0x10) & 4) != 0)
         ActorMotionJitter_EnsureMinimum((u8 *)data_021052fc + 0x2fbc, 0x14, 3);
 }

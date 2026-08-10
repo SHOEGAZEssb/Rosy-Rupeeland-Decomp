@@ -4,7 +4,7 @@
 .extern ActorCollection_QueueActorForRemoval
 .extern Actor_GetCollection
 .extern TrackedResourceActor_EmitRecordEffects
-.extern func_020505f0
+.extern TrackedResourceActor_ScanNeighborhoodAndApplyRecordEffect
 .text
     .global TrackedResourceActorType27_Complete
 TrackedResourceActorType27_Complete:
@@ -27,7 +27,7 @@ TrackedResourceActorType27_Complete:
     bl ActorMotionJitter_EnsureMinimum
 .L_02052298:
     mov r0, r4
-    bl func_020505f0
+    bl TrackedResourceActor_ScanNeighborhoodAndApplyRecordEffect
     ldmia sp!, {r4, pc}
 .L_020522a4: .word data_021052fc
     .size TrackedResourceActorType27_Complete, . - TrackedResourceActorType27_Complete

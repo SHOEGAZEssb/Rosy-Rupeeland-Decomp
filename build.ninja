@@ -19479,7 +19479,7 @@ build build/reports/tracked_resource_actor_neighborhood_scan_020505f0.json: objd
   base_object = build/decomp/asm/game/tracked_resource_actor_neighborhood_scan_020505f0.o
 build build/reports/tracked_resource_actor_neighborhood_scan_020505f0.txt: match_report build/reports/tracked_resource_actor_neighborhood_scan_020505f0.json | tools/report_objdiff.py
   report_json = build/reports/tracked_resource_actor_neighborhood_scan_020505f0.json
-  report_args = --section .text --function func_020505f0 --require-exact
+  report_args = --section .text --function TrackedResourceActor_ScanNeighborhoodAndApplyRecordEffect --require-exact
 
 build tracked_resource_actor_neighborhood_scan: phony build/decomp/src/game/tracked_resource_actor_neighborhood_scan.o build/decomp/asm/game/tracked_resource_actor_neighborhood_scan_020505f0.o build/reports/tracked_resource_actor_neighborhood_scan_020505f0.txt
 

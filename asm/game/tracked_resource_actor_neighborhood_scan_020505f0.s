@@ -13,8 +13,8 @@
 .extern TrackedResourceActor_DispatchTargetInteraction
 .extern func_020be334
 .text
-    .global func_020505f0
-func_020505f0:
+    .global TrackedResourceActor_ScanNeighborhoodAndApplyRecordEffect
+TrackedResourceActor_ScanNeighborhoodAndApplyRecordEffect:
     stmdb sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, lr}
     sub sp, sp, #0x28
     mov r9, r0
@@ -295,5 +295,5 @@ func_020505f0:
     ldmia sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, pc}
 .L_02050a00: .word gActorRuntimeCollection
 .L_02050a04: .word data_021052fc
-    .size func_020505f0, . - func_020505f0
+    .size TrackedResourceActor_ScanNeighborhoodAndApplyRecordEffect, . - TrackedResourceActor_ScanNeighborhoodAndApplyRecordEffect
 

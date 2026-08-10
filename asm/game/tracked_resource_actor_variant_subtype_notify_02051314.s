@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/tracked_resource_actor_variant_subtype_notify.c.
 .extern data_021052fc
 .extern ActorMotionJitter_EnsureMinimum
-.extern func_020505f0
+.extern TrackedResourceActor_ScanNeighborhoodAndApplyRecordEffect
 .text
     .global TrackedResourceActorType22And25_CleanupSubtype19
 TrackedResourceActorType22And25_CleanupSubtype19:
@@ -10,7 +10,7 @@ TrackedResourceActorType22And25_CleanupSubtype19:
     ldrh r1, [r4, #0x4e]
     cmp r1, #0x19
     ldmneia sp!, {r4, pc}
-    bl func_020505f0
+    bl TrackedResourceActor_ScanNeighborhoodAndApplyRecordEffect
     ldr r0, [r4, #0x10]
     tst r0, #0x4
     ldmeqia sp!, {r4, pc}

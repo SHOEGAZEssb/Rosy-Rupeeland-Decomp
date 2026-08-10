@@ -3,7 +3,7 @@
 .extern gActorRuntimeCollection
 .extern ActorRuntimeCollection_GetPendingAttachmentFlag
 .extern TrackedResourceActor_EmitRecordEffects
-.extern func_020505f0
+.extern TrackedResourceActor_ScanNeighborhoodAndApplyRecordEffect
 
 .global func_ov095_0221ca14
 func_ov095_0221ca14:
@@ -44,7 +44,7 @@ func_ov095_0221ca14:
     mov r0, r4
     bl TrackedResourceActor_EmitRecordEffects
     mov r0, r4
-    bl func_020505f0
+    bl TrackedResourceActor_ScanNeighborhoodAndApplyRecordEffect
     mov r0, r4
     ldr r1, [r0, #0x0]
     ldr r1, [r1, #0xdc]

@@ -10,7 +10,7 @@ extern void ActorMotionJitter_EnsureMinimum(void *manager_field, s32 event, s32 
 extern void ActorCollection_QueueActorForRemoval(void *handle, void *actor);
 extern void *Actor_GetCollection(void *actor);
 extern void TrackedResourceActor_EmitRecordEffects(void *actor);
-extern void func_020505f0(void *actor, ...);
+extern void TrackedResourceActor_ScanNeighborhoodAndApplyRecordEffect(void *actor, ...);
 #ifdef __cplusplus
 }
 #endif
@@ -21,7 +21,7 @@ extern void func_020505f0(void *actor, ...);
  * Input is a sequence actor. Obtains its recovered handle, notifies
  * ActorCollection_QueueActorForRemoval, invokes the recovered effect helper, and, if actor flag 4 is
  * set at offset 0x10, calls ActorMotionJitter_EnsureMinimum on manager field 0x2FBC with values
- * 0x14 and 3. It finally runs the recovered neighborhood scan func_020505f0.
+ * 0x14 and 3. It finally runs the recovered neighborhood scan TrackedResourceActor_ScanNeighborhoodAndApplyRecordEffect.
  * Returns nothing. These engine callbacks can mutate global and actor state;
  * the wrapper does not access hardware directly. Manager-field semantics and
  * numeric notification values are not yet confirmed.
@@ -32,5 +32,5 @@ void TrackedResourceActorType27_Complete(void *actor)
     TrackedResourceActor_EmitRecordEffects(actor);
     if ((FIELD(u32, actor, 0x10) & 4) != 0)
         ActorMotionJitter_EnsureMinimum((u8 *)data_021052fc + 0x2fbc, 0x14, 3);
-    func_020505f0(actor);
+    TrackedResourceActor_ScanNeighborhoodAndApplyRecordEffect(actor);
 }

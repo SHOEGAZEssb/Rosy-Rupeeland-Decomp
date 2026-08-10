@@ -44,7 +44,7 @@ static VirtualFunction virtual_function(void *actor, u32 offset)
  * The semantic meanings of record fields 0x0E, 0x10, 0x2A, 0x2C, and 0x2E are
  * not yet confirmed, so their address-derived offsets remain explicit.
  */
-void func_020505f0(void *actor, u32 unused1, u32 unused2, u32 unused3)
+void TrackedResourceActor_ScanNeighborhoodAndApplyRecordEffect(void *actor, u32 unused1, u32 unused2, u32 unused3)
 {
     u8 direction[16];
     u8 scan_state[16];
