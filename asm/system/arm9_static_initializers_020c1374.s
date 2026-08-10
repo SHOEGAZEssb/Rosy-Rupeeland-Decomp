@@ -7,7 +7,7 @@
 .extern __construct_array
 .extern __register_global_object
 .extern func_02001d10
-.extern func_02002068
+.extern PackedTimerArray_Init
 .extern DisplayBrightnessPair_Init
 .extern func_020083b0
 .extern ActorRuntimeCollection_Init
@@ -30,7 +30,7 @@
 .extern SubBgPaletteBuffer_Destroy
 .extern data_020f3784
 .extern data_020f37a0
-.extern data_020f37ac
+.extern gPackedTimerArray
 .extern data_020f4dbc
 .extern data_020f4dc8
 .extern data_020f4e20
@@ -79,7 +79,7 @@
 .extern data_021f5f0c
 .extern data_021f5f18
 .extern func_02001d30
-.extern func_020020a0
+.extern PackedTimerArray_Destroy
 .extern DisplayBrightnessPair_Destroy
 .extern func_02004ac8
 .extern ActorRuntimeCollection_Destroy
@@ -157,14 +157,14 @@ __sinit_020c1374: ; 0x020c1374
 __sinit_020c13a0: ; 0x020c13a0
     stmdb sp!, {r3, lr}
     ldr r0, .L_020c13c0
-    bl func_02002068
+    bl PackedTimerArray_Init
     ldr r0, .L_020c13c0
     ldr r1, .L_020c13c4
     ldr r2, .L_020c13c8
     bl __register_global_object
     ldmia sp!, {r3, pc}
-.L_020c13c0: .word data_020f37ac
-.L_020c13c4: .word func_020020a0
+.L_020c13c0: .word gPackedTimerArray
+.L_020c13c4: .word PackedTimerArray_Destroy
 .L_020c13c8: .word data_020f37a0
 
 __sinit_020c13cc: ; 0x020c13cc

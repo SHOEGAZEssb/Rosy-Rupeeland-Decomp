@@ -3631,7 +3631,7 @@ build build/reports/packed_timer_array.json: objdiff build/decomp/delinks/src/sy
 
 build build/reports/packed_timer_array.txt: match_report build/reports/packed_timer_array.json | tools/report_objdiff.py
   report_json = build/reports/packed_timer_array.json
-  report_args = --section .text --section .bss --function func_02001db8 --function func_02001de8 --function func_02001e10 --function func_02001e14 --function func_02001f14 --function func_02001f40 --function func_02001f54 --function func_02001fb8 --function func_02002010 --function func_02002068 --function func_020020a0 --function func_020020c4 --function func_020020ec --function func_020020f8 --function func_0200213c --function func_02002180 --function func_020021c4
+  report_args = --section .text --section .bss --function PackedTimer_Init --function PackedTimer_Configure --function PackedTimer_DestroyNoOp --function PackedTimer_Update --function PackedTimer_Start --function PackedTimer_MarkComplete --function PackedTimer_Copy --function PackedTimer_CopyToPersistent --function PackedTimer_RestoreFromPersistent --function PackedTimerArray_Init --function PackedTimerArray_Destroy --function PackedTimerArray_Update --function PackedTimerArray_Get --function PackedTimerArray_ConfigureEntry --function PackedTimerArray_SaveToGameWork --function PackedTimerArray_LoadFromGameWork --function PackedTimerArray_GetGlobal
 
 build build/reports/overlay_manager.json: objdiff build/decomp/delinks/src/system/overlay_manager.o | build/decomp/src/system/overlay_manager.o
   target_object = build/decomp/delinks/src/system/overlay_manager.o
@@ -6156,28 +6156,28 @@ build build/reports/game_phase_script_vm_020198d0.json: objdiff build/decomp/del
   base_object = build/decomp/asm/game/game_phase_script_vm_020198d0.o
 build build/reports/game_phase_script_vm_020198d0.txt: match_report build/reports/game_phase_script_vm_020198d0.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_script_vm_020198d0.json
-  report_args = --section .text --function GamePhaseActorScriptVm_ConfigureAndStartManagerEntry --require-exact
+  report_args = --section .text --function GamePhaseActorScriptVm_ConfigureAndStartPackedTimer --require-exact
 
 build build/reports/game_phase_script_vm_02019978.json: objdiff build/decomp/delinks/asm/game/game_phase_script_vm_02019978.o | build/decomp/asm/game/game_phase_script_vm_02019978.o
   target_object = build/decomp/delinks/asm/game/game_phase_script_vm_02019978.o
   base_object = build/decomp/asm/game/game_phase_script_vm_02019978.o
 build build/reports/game_phase_script_vm_02019978.txt: match_report build/reports/game_phase_script_vm_02019978.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_script_vm_02019978.json
-  report_args = --section .text --function GamePhaseActorScriptVm_TriggerManagerEntrySecondOperation --require-exact
+  report_args = --section .text --function GamePhaseActorScriptVm_MarkPackedTimerComplete --require-exact
 
 build build/reports/game_phase_script_vm_0201999c.json: objdiff build/decomp/delinks/asm/game/game_phase_script_vm_0201999c.o | build/decomp/asm/game/game_phase_script_vm_0201999c.o
   target_object = build/decomp/delinks/asm/game/game_phase_script_vm_0201999c.o
   base_object = build/decomp/asm/game/game_phase_script_vm_0201999c.o
 build build/reports/game_phase_script_vm_0201999c.txt: match_report build/reports/game_phase_script_vm_0201999c.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_script_vm_0201999c.json
-  report_args = --section .text --function GamePhaseActorScriptVm_GetManagerEntryField06 --require-exact
+  report_args = --section .text --function GamePhaseActorScriptVm_GetPackedTimerRepeatCount --require-exact
 
 build build/reports/game_phase_script_vm_020199cc.json: objdiff build/decomp/delinks/asm/game/game_phase_script_vm_020199cc.o | build/decomp/asm/game/game_phase_script_vm_020199cc.o
   target_object = build/decomp/delinks/asm/game/game_phase_script_vm_020199cc.o
   base_object = build/decomp/asm/game/game_phase_script_vm_020199cc.o
 build build/reports/game_phase_script_vm_020199cc.txt: match_report build/reports/game_phase_script_vm_020199cc.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_script_vm_020199cc.json
-  report_args = --section .text --function GamePhaseActorScriptVm_IsManagerEntryState1Or2 --require-exact
+  report_args = --section .text --function GamePhaseActorScriptVm_IsPackedTimerActive --require-exact
 
 build build/reports/game_phase_script_vm_02019a10.json: objdiff build/decomp/delinks/asm/game/game_phase_script_vm_02019a10.o | build/decomp/asm/game/game_phase_script_vm_02019a10.o
   target_object = build/decomp/delinks/asm/game/game_phase_script_vm_02019a10.o

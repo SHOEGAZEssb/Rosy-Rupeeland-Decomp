@@ -4,8 +4,8 @@
 .extern data_020d4360
 .extern data_020f4e14
 .extern data_021f38fc
-.extern func_020020c4
-.extern func_020021c4
+.extern PackedTimerArray_Update
+.extern PackedTimerArray_GetGlobal
 .extern OverlayManager_LoadOverlay
 .extern OverlayManager_GetGlobal
 .extern func_02007868
@@ -141,8 +141,8 @@ L_02007548:
     mov r0, r0, lsl #0x7
     movs r0, r0, asr #0x1f
     beq L_020075d8
-    bl func_020021c4
-    bl func_020020c4
+    bl PackedTimerArray_GetGlobal
+    bl PackedTimerArray_Update
     ldr r0, L_02007844
     ldr r1, L_0200784c
     ldr r0, [r0, #0x0]

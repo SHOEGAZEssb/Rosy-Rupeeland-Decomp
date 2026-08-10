@@ -19,8 +19,8 @@ extern void __construct_array(void *array, u32 count, u32 elementSize,
 
 extern void func_02001d10(void *);
 extern void func_02001d30(void *);
-extern void func_02002068(void *);
-extern void func_020020a0(void *);
+extern void PackedTimerArray_Init(void *);
+extern void PackedTimerArray_Destroy(void *);
 extern void DisplayBrightnessPair_Init(void *);
 extern void DisplayBrightnessPair_Destroy(void *);
 extern void MainBgPaletteBuffer_Init(void *);
@@ -69,7 +69,7 @@ extern void func_02098450(void *);
 
 extern u8 gFrameTaskList[];
 extern u8 data_020f3784[];
-extern u8 data_020f37ac[];
+extern u8 gPackedTimerArray[];
 extern u8 data_020f37a0[];
 extern u8 data_020f4dc8[];
 extern u8 data_020f4dbc[];
@@ -134,14 +134,15 @@ void __sinit_020c1374(void)
 }
 
 /*
- * No inputs. Construct data_020f37ac and register func_020020a0 with record
- * data_020f37a0. Global timer-bank lifetime state changes; no value is returned
- * and no SDK or hardware service is called directly.
+ * No inputs. Construct gPackedTimerArray and register PackedTimerArray_Destroy
+ * with record data_020f37a0. Global timer-bank lifetime state changes; no value
+ * is returned and no SDK or hardware service is called directly.
  */
 void __sinit_020c13a0(void)
 {
-    func_02002068(data_020f37ac);
-    __register_global_object(data_020f37ac, func_020020a0, data_020f37a0);
+    PackedTimerArray_Init(gPackedTimerArray);
+    __register_global_object(gPackedTimerArray, PackedTimerArray_Destroy,
+                             data_020f37a0);
 }
 
 /*

@@ -240,10 +240,10 @@ s32 GamePhaseActorScriptVm_ClearGameWorkFields44And48(GamePhaseActorScriptVm *se
 s32 GamePhaseActorScriptVm_RuntimeUtilityNoOp(GamePhaseActorScriptVm *self);
 s32 func_020192f4(GamePhaseActorScriptVm *self);
 s32 func_0201939c(GamePhaseActorScriptVm *self);
-s32 GamePhaseActorScriptVm_ConfigureAndStartManagerEntry(GamePhaseActorScriptVm *self);
-s32 GamePhaseActorScriptVm_TriggerManagerEntrySecondOperation(GamePhaseActorScriptVm *self);
-s32 GamePhaseActorScriptVm_GetManagerEntryField06(GamePhaseActorScriptVm *self);
-s32 GamePhaseActorScriptVm_IsManagerEntryState1Or2(GamePhaseActorScriptVm *self);
+s32 GamePhaseActorScriptVm_ConfigureAndStartPackedTimer(GamePhaseActorScriptVm *self);
+s32 GamePhaseActorScriptVm_MarkPackedTimerComplete(GamePhaseActorScriptVm *self);
+s32 GamePhaseActorScriptVm_GetPackedTimerRepeatCount(GamePhaseActorScriptVm *self);
+s32 GamePhaseActorScriptVm_IsPackedTimerActive(GamePhaseActorScriptVm *self);
 s32 GamePhaseActorScriptVm_ResetType1ActorWhenFieldE4Zero(GamePhaseActorScriptVm *self);
 s32 GamePhaseActorScriptVm_SetActorFlag1AndApplyStateMode2(GamePhaseActorScriptVm *self);
 s32 GamePhaseActorScriptVm_DestroySecondaryPresentationAndClearFlag1(GamePhaseActorScriptVm *self);

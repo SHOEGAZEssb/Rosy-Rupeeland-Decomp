@@ -8,12 +8,12 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *func_020021c4(void);
-extern void func_020020f8(void *manager, s16 id, u16 first, u16 second,
-                          u16 third, u16 fourth);
-extern u8 *func_020020ec(void *manager, s32 id);
-extern void func_02001f14(void *state);
-extern void func_02001f40(void *state);
+extern void *PackedTimerArray_GetGlobal(void);
+extern void PackedTimerArray_ConfigureEntry(void *array, s16 id, u16 first,
+                                            u16 second, u16 third, u16 fourth);
+extern u8 *PackedTimerArray_Get(void *array, s32 id);
+extern void PackedTimer_Start(void *state);
+extern void PackedTimer_MarkComplete(void *state);
 extern void ActorDerivedType1_ResetToBaseState(void *actor);
 extern void func_020313b4(void *actor, void *state, s32 mode);
 extern void func_02074038(void *object);
@@ -22,47 +22,51 @@ extern void func_02074038(void *object);
 #endif
 
 /*
- * Pop four u16 parameters and one signed-16-bit identifier, configure the
- * recovered manager entry, resolve it again, trigger its first operation, and
- * return zero.
+ * Pop four u16 parameters and one signed-16-bit timer identifier, configure
+ * the selected packed timer, start its initial delay, and return zero.
  */
-s32 GamePhaseActorScriptVm_ConfigureAndStartManagerEntry(GamePhaseActorScriptVm *self)
+s32 GamePhaseActorScriptVm_ConfigureAndStartPackedTimer(GamePhaseActorScriptVm *self)
 {
     u16 fourth = (u16)(s16)GamePhaseScriptVm_Pop(&self->base);
     u16 third = (u16)GamePhaseScriptVm_Pop(&self->base);
     u16 second = (u16)(s16)GamePhaseScriptVm_Pop(&self->base);
     u16 first = (u16)(s16)GamePhaseScriptVm_Pop(&self->base);
     s16 id = (s16)GamePhaseScriptVm_Pop(&self->base);
-    func_020020f8(func_020021c4(), id, first, second, third, fourth);
-    func_02001f14(func_020020ec(func_020021c4(), id));
+    PackedTimerArray_ConfigureEntry(PackedTimerArray_GetGlobal(), id, first,
+                                    second, third, fourth);
+    PackedTimer_Start(
+        PackedTimerArray_Get(PackedTimerArray_GetGlobal(), id));
     return 0;
 }
 
-/* Pop an entry id, trigger its second recovered operation, and return zero. */
-s32 GamePhaseActorScriptVm_TriggerManagerEntrySecondOperation(GamePhaseActorScriptVm *self)
+/* Pop a timer id, mark that packed timer complete, and return zero. */
+s32 GamePhaseActorScriptVm_MarkPackedTimerComplete(GamePhaseActorScriptVm *self)
 {
     s32 id = (s32)GamePhaseScriptVm_Pop(&self->base);
-    func_02001f40(func_020020ec(func_020021c4(), id));
+    PackedTimer_MarkComplete(
+        PackedTimerArray_Get(PackedTimerArray_GetGlobal(), id));
     return 0;
 }
 
-/* Pop an entry id, push its u16 field at offset 0x06, and return zero. */
-s32 GamePhaseActorScriptVm_GetManagerEntryField06(GamePhaseActorScriptVm *self)
+/* Pop a timer id, push its repeat count, and return zero. */
+s32 GamePhaseActorScriptVm_GetPackedTimerRepeatCount(GamePhaseActorScriptVm *self)
 {
     s32 id = (s32)GamePhaseScriptVm_Pop(&self->base);
-    GamePhaseScriptVm_SetResult(&self->base,
-                  *(u16 *)(func_020020ec(func_020021c4(), id) + 6));
+    GamePhaseScriptVm_SetResult(
+        &self->base,
+        *(u16 *)(PackedTimerArray_Get(PackedTimerArray_GetGlobal(), id) + 6));
     return 0;
 }
 
 /*
- * Pop an entry id and push whether bits 29..31 of its word at offset 0x08
- * encode recovered state 1 or 2.  Return zero.
+ * Pop a timer id and push whether its packed state is the initial or repeating
+ * countdown state (one or two). Return zero.
  */
-s32 GamePhaseActorScriptVm_IsManagerEntryState1Or2(GamePhaseActorScriptVm *self)
+s32 GamePhaseActorScriptVm_IsPackedTimerActive(GamePhaseActorScriptVm *self)
 {
     s32 id = (s32)GamePhaseScriptVm_Pop(&self->base);
-    u32 state = *(u32 *)(func_020020ec(func_020021c4(), id) + 8) >> 29;
+    u32 state = *(u32 *)(
+        PackedTimerArray_Get(PackedTimerArray_GetGlobal(), id) + 8) >> 29;
     GamePhaseScriptVm_SetResult(&self->base, state == 1 || state == 2);
     return 0;
 }

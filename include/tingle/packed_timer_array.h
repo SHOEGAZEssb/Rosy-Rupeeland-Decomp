@@ -26,25 +26,29 @@ typedef char PackedTimerArraySizeCheck[
 extern "C" {
 #endif
 
-PackedTimer *func_02001db8(PackedTimer *timer);
-void func_02001de8(PackedTimer *timer, u16 initialSeconds,
-                   u16 repeatSeconds, u16 repeatLimit, u16 repeatCount);
-void func_02001e10(PackedTimer *timer);
-void func_02001e14(PackedTimer *timer);
-void func_02001f14(PackedTimer *timer);
-void func_02001f40(PackedTimer *timer);
-void func_02001f54(PackedTimer *destination, const PackedTimer *source);
-void func_02001fb8(const PackedTimer *source, PackedTimer *destination);
-void func_02002010(PackedTimer *destination, const PackedTimer *source);
-PackedTimerArray *func_02002068(PackedTimerArray *array);
-PackedTimerArray *func_020020a0(PackedTimerArray *array);
-void func_020020c4(PackedTimerArray *array);
-PackedTimer *func_020020ec(PackedTimerArray *array, int index);
-void func_020020f8(PackedTimerArray *array, int index, u16 initialSeconds,
-                   u16 repeatSeconds, u16 repeatLimit, u16 repeatCount);
-void func_0200213c(const PackedTimerArray *array);
-void func_02002180(PackedTimerArray *array);
-PackedTimerArray *func_020021c4(void);
+PackedTimer *PackedTimer_Init(PackedTimer *timer);
+void PackedTimer_Configure(PackedTimer *timer, u16 initialSeconds,
+                           u16 repeatSeconds, u16 repeatLimit,
+                           u16 repeatCount);
+void PackedTimer_DestroyNoOp(PackedTimer *timer);
+void PackedTimer_Update(PackedTimer *timer);
+void PackedTimer_Start(PackedTimer *timer);
+void PackedTimer_MarkComplete(PackedTimer *timer);
+void PackedTimer_Copy(PackedTimer *destination, const PackedTimer *source);
+void PackedTimer_CopyToPersistent(const PackedTimer *source,
+                                  PackedTimer *destination);
+void PackedTimer_RestoreFromPersistent(PackedTimer *destination,
+                                       const PackedTimer *source);
+PackedTimerArray *PackedTimerArray_Init(PackedTimerArray *array);
+PackedTimerArray *PackedTimerArray_Destroy(PackedTimerArray *array);
+void PackedTimerArray_Update(PackedTimerArray *array);
+PackedTimer *PackedTimerArray_Get(PackedTimerArray *array, int index);
+void PackedTimerArray_ConfigureEntry(
+    PackedTimerArray *array, int index, u16 initialSeconds,
+    u16 repeatSeconds, u16 repeatLimit, u16 repeatCount);
+void PackedTimerArray_SaveToGameWork(const PackedTimerArray *array);
+void PackedTimerArray_LoadFromGameWork(PackedTimerArray *array);
+PackedTimerArray *PackedTimerArray_GetGlobal(void);
 
 #ifdef __cplusplus
 }
