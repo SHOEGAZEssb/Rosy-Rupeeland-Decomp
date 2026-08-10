@@ -9,7 +9,7 @@ extern void *gLupyContext;
 extern "C" {
 #endif
 extern s32 func_02030b58(void *actor, s32 value);
-extern void func_0202e104(void *actor);
+extern void ActorCollection_UpdateFlag800Actors(void *actor);
 extern void func_0201dcec(void *object, s32 enabled);
 extern void func_02010e68(void *context);
 #ifdef __cplusplus
@@ -28,7 +28,7 @@ void func_02008e10(GamePhaseRuntime *self, s32 mode)
     u8 *b = (u8 *)self;
     s32 previous = func_02030b58(func_02007f0c(data_021052fc, 1), 0);
 
-    func_0202e104(b + 0x28);
+    ActorCollection_UpdateFlag800Actors(b + 0x28);
     if (mode == 0 || mode == 2)
         func_02008148(self, 0);
     if ((u32)(mode - 1) <= 1)

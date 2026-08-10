@@ -1,9 +1,9 @@
 ; Matching retail form; see src/game/actor_collection_update_dispatch.c.
 .text
 
-    .global func_0202e104
-    .type func_0202e104, @function
-func_0202e104: ; 0x0202e104
+    .global ActorCollection_UpdateFlag800Actors
+    .type ActorCollection_UpdateFlag800Actors, @function
+ActorCollection_UpdateFlag800Actors: ; 0x0202e104
     stmdb sp!, {r4, r5, r6, lr}
     mov r5, r0
     mov r4, #0x0
@@ -29,4 +29,4 @@ func_0202e104: ; 0x0202e104
     cmp r4, r0
     blt .L_0202e118
     ldmia sp!, {r4, r5, r6, pc}
-    .size func_0202e104, . - func_0202e104
+    .size ActorCollection_UpdateFlag800Actors, . - ActorCollection_UpdateFlag800Actors

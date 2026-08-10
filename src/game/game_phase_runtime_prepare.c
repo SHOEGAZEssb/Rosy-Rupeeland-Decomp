@@ -9,10 +9,10 @@ extern "C" {
 #endif
 extern void func_0203ac9c(GamePhaseRuntime *self);
 extern void ActorCollection_RebuildCategories(void *actor);
-extern void func_0202e06c(void *actor);
-extern void func_0202e15c(void *actor);
+extern void ActorCollection_UpdateFlag100Category0Actors(void *actor);
+extern void ActorCollection_ProcessCategory1And2Pairs(void *actor);
 extern void func_0202e858(void *actor);
-extern void func_0202dfec(void *actor);
+extern void ActorCollection_UpdateCategory0Actors(void *actor);
 extern void ActorCollection_RebuildBaseCategories(void *actor);
 extern s32 func_0200b04c(void *state);
 extern s32 func_0200b180(void *state);
@@ -39,13 +39,13 @@ void func_02007908(GamePhaseRuntime *self, s32 value, s32 mode)
         actor = b + 0x28;
         if (value == 2) {
             ActorCollection_RebuildCategories(actor);
-            func_0202e06c(actor);
-            func_0202e15c(actor);
+            ActorCollection_UpdateFlag100Category0Actors(actor);
+            ActorCollection_ProcessCategory1And2Pairs(actor);
             func_0202e858(actor);
         } else {
             ActorCollection_RebuildCategories(actor);
-            func_0202dfec(actor);
-            func_0202e15c(actor);
+            ActorCollection_UpdateCategory0Actors(actor);
+            ActorCollection_ProcessCategory1And2Pairs(actor);
             func_0202e858(actor);
         }
     }
@@ -56,10 +56,11 @@ void func_02007908(GamePhaseRuntime *self, s32 value, s32 mode)
             actor = (u8 *)actor + 8;
             if (value == 2 || value == 6) {
                 ActorCollection_RebuildBaseCategories(actor);
-                func_0202e06c((u8 *)*(void **)(b + 0x2fb8) + 8);
+                ActorCollection_UpdateFlag100Category0Actors(
+                    (u8 *)*(void **)(b + 0x2fb8) + 8);
             } else {
                 ActorCollection_RebuildBaseCategories(actor);
-                func_0202dfec((u8 *)*(void **)(b + 0x2fb8) + 8);
+                ActorCollection_UpdateCategory0Actors((u8 *)*(void **)(b + 0x2fb8) + 8);
             }
         }
     }

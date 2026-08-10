@@ -18,9 +18,9 @@
 .extern func_020adc90
 .extern func_020be334
 
-    .global func_0202e15c
-    .type func_0202e15c, @function
-func_0202e15c: ; 0x0202e15c
+    .global ActorCollection_ProcessCategory1And2Pairs
+    .type ActorCollection_ProcessCategory1And2Pairs, @function
+ActorCollection_ProcessCategory1And2Pairs: ; 0x0202e15c
     stmdb sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, lr}
     sub sp, sp, #0x88
     ldr r1, .L_0202e844
@@ -500,4 +500,4 @@ func_0202e15c: ; 0x0202e15c
 .L_0202e844: .word data_021052fc
 .L_0202e848: .word data_021f5ebc
 .L_0202e84c: .word data_02105310
-    .size func_0202e15c, . - func_0202e15c
+    .size ActorCollection_ProcessCategory1And2Pairs, . - ActorCollection_ProcessCategory1And2Pairs

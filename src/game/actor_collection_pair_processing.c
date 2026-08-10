@@ -174,7 +174,7 @@ static s32 testPair(PairActor *actorA, PairActor *actorB, u32 *contact)
  * actor may receive func_0200a3b8 and/or func_0200ac14 using global context
  * offset 0x2ed4. Returns no value; helper calls may update gameplay state.
  */
-void func_0202e15c(ActorPairCollection *self)
+void ActorCollection_ProcessCategory1And2Pairs(ActorPairCollection *self)
 {
     s32 firstPossible = 0;
     s32 outerCount = self->categoryCounts_0e20[1];

@@ -2,9 +2,9 @@
 .text
 .extern func_0203b798
 
-    .global func_0202dfec
-    .type func_0202dfec, @function
-func_0202dfec: ; 0x0202dfec
+    .global ActorCollection_UpdateCategory0Actors
+    .type ActorCollection_UpdateCategory0Actors, @function
+ActorCollection_UpdateCategory0Actors: ; 0x0202dfec
     stmdb sp!, {r4, r5, r6, lr}
     add r5, r0, #0x200
     ldr r4, [r0, #0xe20]
@@ -44,4 +44,4 @@ func_0202dfec: ; 0x0202dfec
     cmp r6, r4
     blt .L_0202e000
     ldmia sp!, {r4, r5, r6, pc}
-    .size func_0202dfec, . - func_0202dfec
+    .size ActorCollection_UpdateCategory0Actors, . - ActorCollection_UpdateCategory0Actors

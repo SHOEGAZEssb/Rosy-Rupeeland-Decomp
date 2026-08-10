@@ -45,7 +45,7 @@ extern void func_0203b798(CollectionDispatchActor *);
  * virtual callback at vtable offset 0x1c. The routine returns no value, and
  * any observable changes are those performed by the selected callee.
  */
-void func_0202dfec(ActorCollectionDispatch *self)
+void ActorCollection_UpdateCategory0Actors(ActorCollectionDispatch *self)
 {
     s32 count = self->categoryCounts_0e20[0];
     s32 i;
@@ -68,7 +68,7 @@ void func_0202dfec(ActorCollectionDispatch *self)
  * func_0203b798 when flag 0x01000000 is set; type one and all other cases use
  * the callback at vtable offset 0x1c. The routine returns no value.
  */
-void func_0202e06c(ActorCollectionDispatch *self)
+void ActorCollection_UpdateFlag100Category0Actors(ActorCollectionDispatch *self)
 {
     s32 count = self->categoryCounts_0e20[0];
     s32 i;
@@ -93,7 +93,7 @@ void func_0202e06c(ActorCollectionDispatch *self)
  * only when actor flag 0x800 is set. The callback owns any further state or
  * SDK effects; this routine returns no value.
  */
-void func_0202e104(ActorCollectionDispatch *self)
+void ActorCollection_UpdateFlag800Actors(ActorCollectionDispatch *self)
 {
     s32 i;
 

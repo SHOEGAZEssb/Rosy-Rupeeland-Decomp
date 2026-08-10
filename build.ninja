@@ -13339,19 +13339,19 @@ build build/reports/actor_collection_update_dispatch_0202dfec.json: objdiff buil
   base_object = build/decomp/asm/game/actor_collection_update_dispatch_0202dfec.o
 build build/reports/actor_collection_update_dispatch_0202dfec.txt: match_report build/reports/actor_collection_update_dispatch_0202dfec.json | tools/report_objdiff.py
   report_json = build/reports/actor_collection_update_dispatch_0202dfec.json
-  report_args = --section .text --function func_0202dfec --require-exact
+  report_args = --section .text --function ActorCollection_UpdateCategory0Actors --require-exact
 build build/reports/actor_collection_update_dispatch_0202e06c.json: objdiff build/decomp/delinks/asm/game/actor_collection_update_dispatch_0202e06c.o | build/decomp/asm/game/actor_collection_update_dispatch_0202e06c.o
   target_object = build/decomp/delinks/asm/game/actor_collection_update_dispatch_0202e06c.o
   base_object = build/decomp/asm/game/actor_collection_update_dispatch_0202e06c.o
 build build/reports/actor_collection_update_dispatch_0202e06c.txt: match_report build/reports/actor_collection_update_dispatch_0202e06c.json | tools/report_objdiff.py
   report_json = build/reports/actor_collection_update_dispatch_0202e06c.json
-  report_args = --section .text --function func_0202e06c --require-exact
+  report_args = --section .text --function ActorCollection_UpdateFlag100Category0Actors --require-exact
 build build/reports/actor_collection_update_dispatch_0202e104.json: objdiff build/decomp/delinks/asm/game/actor_collection_update_dispatch_0202e104.o | build/decomp/asm/game/actor_collection_update_dispatch_0202e104.o
   target_object = build/decomp/delinks/asm/game/actor_collection_update_dispatch_0202e104.o
   base_object = build/decomp/asm/game/actor_collection_update_dispatch_0202e104.o
 build build/reports/actor_collection_update_dispatch_0202e104.txt: match_report build/reports/actor_collection_update_dispatch_0202e104.json | tools/report_objdiff.py
   report_json = build/reports/actor_collection_update_dispatch_0202e104.json
-  report_args = --section .text --function func_0202e104 --require-exact
+  report_args = --section .text --function ActorCollection_UpdateFlag800Actors --require-exact
 build build/reports/actor_collection_update_dispatch.txt: phony build/reports/actor_collection_update_dispatch_0202dfec.txt build/reports/actor_collection_update_dispatch_0202e06c.txt build/reports/actor_collection_update_dispatch_0202e104.txt
 
 build actor_collection_update_dispatch: phony build/decomp/src/game/actor_collection_update_dispatch.o build/decomp/asm/game/actor_collection_update_dispatch_0202dfec.o build/decomp/asm/game/actor_collection_update_dispatch_0202e06c.o build/decomp/asm/game/actor_collection_update_dispatch_0202e104.o build/reports/actor_collection_update_dispatch.txt
@@ -13368,7 +13368,7 @@ build build/reports/actor_collection_pair_processing_0202e15c.json: objdiff buil
   base_object = build/decomp/asm/game/actor_collection_pair_processing_0202e15c.o
 build build/reports/actor_collection_pair_processing_0202e15c.txt: match_report build/reports/actor_collection_pair_processing_0202e15c.json | tools/report_objdiff.py
   report_json = build/reports/actor_collection_pair_processing_0202e15c.json
-  report_args = --section .text --function func_0202e15c --require-exact
+  report_args = --section .text --function ActorCollection_ProcessCategory1And2Pairs --require-exact
 build build/reports/actor_collection_pair_processing.txt: phony build/reports/actor_collection_pair_processing_0202e15c.txt
 
 build actor_collection_pair_processing: phony build/decomp/src/game/actor_collection_pair_processing.o build/decomp/asm/game/actor_collection_pair_processing_0202e15c.o build/reports/actor_collection_pair_processing.txt
