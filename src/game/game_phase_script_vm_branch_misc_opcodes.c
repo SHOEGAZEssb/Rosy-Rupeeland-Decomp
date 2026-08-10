@@ -5,7 +5,7 @@
 typedef s32 (*GamePhaseScriptVmByteMethod)(GamePhaseScriptVm *self, u8 value);
 
 /* Bitwise-complement the low-three-bit-selected register, update zero state, return zero. */
-s32 func_0201b8fc(GamePhaseScriptVm *self)
+s32 GamePhaseScriptVm_NotRegister(GamePhaseScriptVm *self)
 {
     s32 destination = (u8)*self->cursor++ & 7;
     self->registers[destination] = ~self->registers[destination];
@@ -13,8 +13,8 @@ s32 func_0201b8fc(GamePhaseScriptVm *self)
     return 0;
 }
 
-/* Jump to the encoded absolute address when zero state is set; otherwise skip it. */
-s32 func_0201b92c(GamePhaseScriptVm *self)
+/* Jump to the encoded absolute address when condition flag bit one is set; otherwise skip it. */
+s32 GamePhaseScriptVm_JumpIfConditionSet(GamePhaseScriptVm *self)
 {
     if (self->stateFlags & 2)
         self->cursor = (const s8 *)GamePhaseScriptVm_ReadU32Le(self->cursor);
@@ -23,8 +23,8 @@ s32 func_0201b92c(GamePhaseScriptVm *self)
     return 0;
 }
 
-/* Jump to the encoded absolute address when zero state is clear; otherwise skip it. */
-s32 func_0201b958(GamePhaseScriptVm *self)
+/* Jump to the encoded absolute address when condition flag bit one is clear; otherwise skip it. */
+s32 GamePhaseScriptVm_JumpIfConditionClear(GamePhaseScriptVm *self)
 {
     if (!(self->stateFlags & 2))
         self->cursor = (const s8 *)GamePhaseScriptVm_ReadU32Le(self->cursor);
@@ -34,7 +34,7 @@ s32 func_0201b958(GamePhaseScriptVm *self)
 }
 
 /* Consume one byte, invoke virtual slot 0x08 with it, and return the method result. */
-s32 func_0201b984(GamePhaseScriptVm *self)
+s32 GamePhaseScriptVm_InvokeByteMethod(GamePhaseScriptVm *self)
 {
     u8 value = (u8)*self->cursor++;
     void **vtable = *(void ***)self;

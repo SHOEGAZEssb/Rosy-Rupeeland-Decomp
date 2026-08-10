@@ -1,8 +1,8 @@
 ; Matching retail form; see src/game/game_phase_script_vm_branch_misc_opcodes.c.
 .text
 .extern GamePhaseScriptVm_ReadU32Le
-.global func_0201b958
-func_0201b958: ; 0x0201b958
+.global GamePhaseScriptVm_JumpIfConditionClear
+GamePhaseScriptVm_JumpIfConditionClear: ; 0x0201b958
     stmdb sp!, {r4, lr}
     mov r4, r0
     ldrb r0, [r4, #0x7d]
@@ -15,4 +15,4 @@ L_0201b978:
     str r0, [r4, #0x4]
     mov r0, #0x0
     ldmia sp!, {r4, pc}
-.size func_0201b958, . - func_0201b958
+.size GamePhaseScriptVm_JumpIfConditionClear, . - GamePhaseScriptVm_JumpIfConditionClear
