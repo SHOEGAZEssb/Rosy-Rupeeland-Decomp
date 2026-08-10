@@ -8,6 +8,7 @@
 #include "tingle/native_platform.h"
 
 #include <windows.h>
+#include <shellapi.h>
 #include <stdlib.h>
 #include <string.h>
 
@@ -209,13 +210,34 @@ void TingleNativePlatform_Present(TingleNativePlatform *platform, const u32 *pix
     UpdateWindow(platform->window);
 }
 
-extern int TingleNative_Run(void);
+extern int TingleNative_Run(int argc, char **argv);
 
 int WINAPI wWinMain(HINSTANCE instance, HINSTANCE previous, PWSTR command_line, int show_command)
 {
+    wchar_t **wide_argv;
+    char **argv;
+    int argc;
+    int i;
+    int result = EXIT_FAILURE;
     (void)instance;
     (void)previous;
     (void)command_line;
     (void)show_command;
-    return TingleNative_Run();
+    wide_argv = CommandLineToArgvW(GetCommandLineW(), &argc);
+    if (wide_argv == NULL) return EXIT_FAILURE;
+    argv = (char **)calloc((size_t)argc, sizeof(*argv));
+    if (argv != NULL) {
+        for (i = 0; i < argc; ++i) {
+            int size = WideCharToMultiByte(CP_UTF8, 0, wide_argv[i], -1, NULL, 0, NULL, NULL);
+            if (size <= 0) break;
+            argv[i] = (char *)malloc((size_t)size);
+            if (argv[i] == NULL ||
+                WideCharToMultiByte(CP_UTF8, 0, wide_argv[i], -1, argv[i], size, NULL, NULL) == 0) break;
+        }
+        if (i == argc) result = TingleNative_Run(argc, argv);
+        for (i = 0; i < argc; ++i) free(argv[i]);
+        free(argv);
+    }
+    LocalFree(wide_argv);
+    return result;
 }

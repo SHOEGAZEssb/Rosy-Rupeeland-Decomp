@@ -67,7 +67,7 @@ The broad barriers currently known are:
 | Input | Key registers, `PAD_Read`, touch input | Keyboard/controller/mouse mapping with DS-compatible edge and repeat behavior | implemented |
 | Graphics | 2D/3D engines, VRAM banks, GX/G2 commands, display capture | PC renderer reproducing both DS screens and resource semantics | unmapped |
 | Audio | ARM7 sound services, command queues, Nitro sound formats | Host mixer and sequencer with decoded game resources | unmapped |
-| Files and resources | NitroFS/FS calls and archive formats | ROM-backed or extracted-data virtual filesystem | identified |
+| Files and resources | NitroFS/FS calls and archive formats | ROM-backed or extracted-data virtual filesystem | implemented |
 | Overlays | `FS_LoadOverlay`, `FS_StartOverlay`, unload lifecycle | Static registration or host-side scene/module lifecycle | identified |
 | Power management | `PM_GoSleepMode`, lid and card events | Window focus/suspend policy with compatible game-visible state | identified |
 | ARM7/PXI services | Cross-processor messages and ARM7-owned hardware | Host services replacing each message protocol | unmapped |
@@ -127,5 +127,17 @@ cmake --build build/native --config Release
 ```
 
 The diagnostic image is intentionally game-data independent. The next native
-step is a user-supplied ROM or extracted-directory filesystem boundary, after
-which an early reconstructed scene can replace the diagnostic frame producer.
+step is to replace that frame producer with an early reconstructed scene.
+
+Supply game data from either a user-owned ROM or an extracted NitroFS root:
+
+```text
+build/native/tingle_native.exe --rom path/to/game.nds
+build/native/tingle_native.exe --data path/to/extracted/files
+```
+
+The top-right diagnostic square turns green after the provider successfully
+reads `db/lang.bin`; it remains red when no provider is selected. ROM reads
+resolve paths through validated FNT/FAT ranges, while directory reads reject
+absolute paths and dot traversal. Returned file buffers are always owned by
+the caller, giving reconstructed loaders one consistent native contract.
