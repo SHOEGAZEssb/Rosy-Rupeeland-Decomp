@@ -4,8 +4,8 @@
 .extern GamePhaseScriptVm_SetResult
 .extern func_02063698
 .extern data_021e9ac0
-.global func_0201af88
-func_0201af88: ; 0x0201af88
+.global GamePhaseActorScriptVm_QueryGlobalContextByIndex
+GamePhaseActorScriptVm_QueryGlobalContextByIndex: ; 0x0201af88
     stmdb sp!, {r4, lr}
     mov r4, r0
     bl GamePhaseScriptVm_Pop
@@ -20,4 +20,4 @@ func_0201af88: ; 0x0201af88
     mov r0, #0x0
     ldmia sp!, {r4, pc}
 L_0201afbc: .word data_021e9ac0
-.size func_0201af88, . - func_0201af88
+.size GamePhaseActorScriptVm_QueryGlobalContextByIndex, . - GamePhaseActorScriptVm_QueryGlobalContextByIndex

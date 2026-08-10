@@ -276,7 +276,7 @@ s32 GamePhaseActorScriptVm_GetActiveEntityPositionX(GamePhaseActorScriptVm *self
 s32 GamePhaseActorScriptVm_GetActiveEntityPositionY(GamePhaseActorScriptVm *self);
 s32 GamePhaseActorScriptVm_GetActiveEntityPositionZ(GamePhaseActorScriptVm *self);
 s32 GamePhaseActorScriptVm_SetPlacementModeAndSynchronize(GamePhaseActorScriptVm *self);
-s32 func_0201af88(GamePhaseActorScriptVm *self);
+s32 GamePhaseActorScriptVm_QueryGlobalContextByIndex(GamePhaseActorScriptVm *self);
 s32 GamePhaseActorScriptVm_CalculateScaledRuntimeValue(GamePhaseActorScriptVm *self);
 s32 func_0201b040(GamePhaseActorScriptVm *self);
 s32 GamePhaseActorScriptVm_GetOneBasedPhaseRecordByte4c(GamePhaseActorScriptVm *self);
