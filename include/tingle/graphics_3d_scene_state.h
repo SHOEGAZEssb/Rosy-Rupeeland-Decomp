@@ -5,7 +5,7 @@
 
 /* 0x94-byte 3D scene state; unknown fields retain address-derived offsets. */
 typedef struct Graphics3DSceneState {
-    s32 field_00;
+    s32 projectionMode;
     s32 field_04;
     s32 field_08;
     s32 field_0c;
@@ -17,12 +17,12 @@ typedef struct Graphics3DSceneState {
     s32 field_24;
     s32 field_28[12];
     s32 field_58[9];
-    s32 field_7c;
-    s32 field_80;
-    s32 field_84;
-    s32 field_88;
-    s32 field_8c;
-    s32 field_90;
+    s32 projectionLeft;
+    s32 projectionTop;
+    s32 projectionRight;
+    s32 projectionBottom;
+    s32 projectionOffsetX;
+    s32 projectionOffsetY;
 } Graphics3DSceneState;
 
 typedef char Graphics3DSceneStateSizeCheck[
@@ -32,8 +32,8 @@ typedef char Graphics3DSceneStateSizeCheck[
 extern "C" {
 #endif
 
-void func_02077ae8(Graphics3DSceneState *state);
-void func_02077b44(Graphics3DSceneState *state);
+void Graphics3DSceneState_Init(Graphics3DSceneState *state);
+void Graphics3DSceneState_Apply(Graphics3DSceneState *state);
 
 #ifdef __cplusplus
 }

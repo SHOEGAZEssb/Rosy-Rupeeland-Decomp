@@ -2,7 +2,7 @@
 
 /* Exact fallback; see src/overlays/ov036/overlay036_input_controller.c for documented portable C. */
 
-    .extern func_02077ae8
+    .extern Graphics3DSceneState_Init
     .extern func_02091b6c
     .extern func_020720c0
     .extern data_ov036_02206098
@@ -17,7 +17,7 @@ func_ov036_021fce00:
     add r0, r5, #0xc
     mov r4, r1
     str r2, [r5, #0x0]
-    bl func_02077ae8
+    bl Graphics3DSceneState_Init
     add r0, r5, #0xa4
     bl func_02091b6c
     mov r0, #0x0

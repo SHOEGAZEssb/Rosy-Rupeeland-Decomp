@@ -7,7 +7,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_02077b44(void *state);
+extern void Graphics3DSceneState_Apply(void *state);
 extern void func_ov035_021fe9dc(void *object);
 extern void func_ov035_021fe6e4(void *object, s32 mode);
 extern void func_020773e4(void *resourceSet, void *transform);
@@ -32,7 +32,7 @@ extern void func_ov035_021fda24(void *particle);
  */
 extern "C" void func_ov035_021ff3bc(void *scene)
 {
-    func_02077b44((u8 *)scene + 0x0c);
+    Graphics3DSceneState_Apply((u8 *)scene + 0x0c);
     func_ov035_021fe9dc(FIELD(void *, scene, 0x140));
     func_ov035_021fe6e4(FIELD(void *, scene, 0x13c),
                         (s32)((u8 *)scene + 0x64));

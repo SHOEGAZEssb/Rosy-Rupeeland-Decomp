@@ -13,7 +13,7 @@ extern void *gPadStates;
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_02077ae8(void *state);
+extern void Graphics3DSceneState_Init(void *state);
 extern void func_02091b6c(void *state);
 #ifdef __cplusplus
 }
@@ -28,7 +28,7 @@ extern void func_02091b6c(void *state);
 extern "C" void *func_ov037_021fce00(void *controller)
 {
     FIELD(const void *, controller, 0) = data_ov037_021fee40;
-    func_02077ae8((u8 *)controller + 8);
+    Graphics3DSceneState_Init((u8 *)controller + 8);
     func_02091b6c((u8 *)controller + 0xa0);
     FIELD(s32, controller, 0xbc) = 0;
     FIELD(s32, controller, 8) = 2;

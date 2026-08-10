@@ -46,7 +46,7 @@ extern void *Graphics3DResourceOwner_Init(void *, s32, s32);
 extern void *Graphics3DResourceOwner_CreateManager(void *);
 extern void Graphics3DResourceOwner_PrepareResources(void *, void *);
 extern void Graphics3DLightSet_Init(void *);
-extern void func_02077ae8(void *);
+extern void Graphics3DSceneState_Init(void *);
 extern void *Graphics3DRenderObject_Init(void *, void *, void *, s32, s32);
 extern s32 func_020918f4(void *, s32);
 extern void func_02091e28(void *);
@@ -121,7 +121,7 @@ extern "C" void *func_ov017_021feab4(void *state, s32 effectCount,
     func_ov017_021fd744((u8 *)state + 0x264);
     func_ov017_021fd744((u8 *)state + 0x290);
     Graphics3DLightSet_Init((u8 *)state + 0x2d0);
-    func_02077ae8((u8 *)state + 0x310);
+    Graphics3DSceneState_Init((u8 *)state + 0x310);
     func_ov017_021ff150((u8 *)state + 0x3ac);
     func_ov017_021fe9c0((u8 *)state + 0x3d8);
     func_ov017_021fe9c0((u8 *)state + 0x3ec);

@@ -9,7 +9,7 @@ extern "C" {
 #endif
 extern void func_020773e4(void *, void *);
 extern void Graphics3DLight_Apply(void *, s32);
-extern void func_02077b44(void *);
+extern void Graphics3DSceneState_Apply(void *);
 extern void func_020b0558(void);
 extern s32 func_ov043_0220b9bc(void *);
 extern void func_ov048_0220bad4(void *);
@@ -54,12 +54,12 @@ extern "C" void func_ov026_0220046c(void *scene)
 
     if (FIELD(s32, scene, 0x370) == 1) {
         *(volatile u32 *)0x04000444 = 0;
-        func_02077b44((u8 *)scene + 0x254);
+        Graphics3DSceneState_Apply((u8 *)scene + 0x254);
         func_020773e4(FIELD(void *, scene, 0x78), (u8 *)scene + 0x2ac);
         *(volatile u32 *)0x04000448 = 1;
     }
     *(volatile u32 *)0x04000444 = 0;
-    func_02077b44((u8 *)scene + 0x1c0);
+    Graphics3DSceneState_Apply((u8 *)scene + 0x1c0);
     for (s32 i = 0; i < 4; ++i)
         Graphics3DLight_Apply((u8 *)scene + 0x180 + i * 0x10, i);
 

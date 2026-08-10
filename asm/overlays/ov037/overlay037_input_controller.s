@@ -2,7 +2,7 @@
 
 /* Exact fallback; see src/overlays/ov037/overlay037_input_controller.c for documented portable C. */
 
-    .extern func_02077ae8
+    .extern Graphics3DSceneState_Init
     .extern func_02091b6c
     .extern data_ov037_021fee40
     .extern gTouchPanelManager
@@ -15,7 +15,7 @@ func_ov037_021fce00:
     ldr r1, L_021fce44
     add r0, r4, #0x8
     str r1, [r4, #0x0]
-    bl func_02077ae8
+    bl Graphics3DSceneState_Init
     add r0, r4, #0xa0
     bl func_02091b6c
     mov r1, #0x0

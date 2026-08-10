@@ -24,7 +24,7 @@
     .extern func_020755bc
     .extern func_02075858
     .extern Graphics3DLight_Apply
-    .extern func_02077b44
+    .extern Graphics3DSceneState_Apply
     .extern Graphics3DResourceBinding_GetTextureFormat
     .extern Graphics3DResourceBinding_GetTextureWidthClass
     .extern Graphics3DResourceBinding_GetTextureHeightClass
@@ -656,7 +656,7 @@ L_021fdfbc:
     ldr r1, [r9, #0x1bc]
     add r0, r9, #0x80
     str r1, [r9, #0x80]
-    bl func_02077b44
+    bl Graphics3DSceneState_Apply
     ldr r0, L_021fe32c
     mov r1, #0x0
     str r1, [r0, #0x0]

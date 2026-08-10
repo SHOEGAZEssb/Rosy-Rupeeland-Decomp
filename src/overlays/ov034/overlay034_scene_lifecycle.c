@@ -17,7 +17,7 @@ extern void func_020597fc(void *sound, s32 id);
 extern void Graphics3DLightSet_Destroy(void *descriptorArray);
 extern void func_ov034_021fce00(void *object);
 extern void Heap_Free(void *allocation);
-extern void func_02077b44(void *object);
+extern void Graphics3DSceneState_Apply(void *object);
 extern void Graphics3DLight_Apply(void *descriptor, s32 index);
 extern void func_ov034_021fd90c(s32 lightMask, s32 mode, s32 cullMode,
                                s32 polygonId, s32 alpha, s32 miscBits);
@@ -82,7 +82,7 @@ extern "C" void func_ov034_021fde6c(void *scene)
     REG16(0x04000060) = (REG16(0x04000060) & (u16)~0x3000) | 0x10;
     s32 mode = FIELD(s32, scene, 0x1bc);
     if (mode == 1) {
-        func_02077b44((u8 *)scene + 0x48);
+        Graphics3DSceneState_Apply((u8 *)scene + 0x48);
         for (s32 i = 0; i < 4; ++i)
             Graphics3DLight_Apply((u8 *)scene + 0x170 + i * 0x10, i);
         func_ov034_021fd90c(1, 0, 2, 0x23, 0x1f, 0);
@@ -91,7 +91,7 @@ extern "C" void func_ov034_021fde6c(void *scene)
             func_ov034_021fce50(FIELD(void *, scene, 8 + i * 4));
     }
     if (mode == 1 || mode == 2) {
-        func_02077b44((u8 *)scene + 0xdc);
+        Graphics3DSceneState_Apply((u8 *)scene + 0xdc);
         func_ov034_021fd6f4(FIELD(void *, scene, 0));
     }
     REG32(0x04000448) = 1;

@@ -2,7 +2,7 @@
 
 /* Exact fallback; see src/overlays/ov036/overlay036_composite_controller_render.c for documented portable C. */
 
-    .extern func_02077b44
+    .extern Graphics3DSceneState_Apply
     .extern func_ov036_022029b0
     .extern func_ov036_021fdef0
     .extern func_ov036_021fcfa0
@@ -17,7 +17,7 @@ func_ov036_02203774:
     sub sp, sp, #0x10
     mov r4, r0
     add r0, r4, #0xc
-    bl func_02077b44
+    bl Graphics3DSceneState_Apply
     add r0, r4, #0x160
     bl func_ov036_022029b0
     mov r0, #0x0

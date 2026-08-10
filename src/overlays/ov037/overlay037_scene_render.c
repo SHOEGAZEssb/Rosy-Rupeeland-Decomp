@@ -7,7 +7,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_02077b44(void *sceneTransform);
+extern void Graphics3DSceneState_Apply(void *sceneTransform);
 extern void Graphics3DLight_Apply(void *record, s32 index);
 extern void func_ov037_021fd324(void *resourceObject);
 extern void func_020773e4(void *resourceOwner, void *matrixContext);
@@ -27,7 +27,7 @@ extern void func_ov037_021fcf20(void *object, void *matrixContext);
  */
 extern "C" void func_ov037_021fe440(void *scene)
 {
-    func_02077b44((u8 *)scene + 8);
+    Graphics3DSceneState_Apply((u8 *)scene + 8);
     for (s32 i = 0; i < 4; ++i)
         Graphics3DLight_Apply((u8 *)scene + 0x14c + i * 16, i);
     func_ov037_021fd324(FIELD(void *, scene, 0x124));

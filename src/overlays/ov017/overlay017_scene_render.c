@@ -11,7 +11,7 @@ extern "C" {
 #endif
 extern void Graphics3DResourceOwner_RenderManagers(void *, void *);
 extern void Graphics3DLight_Apply(void *, s32);
-extern void func_02077b44(void *);
+extern void Graphics3DSceneState_Apply(void *);
 extern void Graphics3DRenderObject_Draw(void *);
 extern void func_020b0558(void);
 extern void func_ov017_021fd414(void *);
@@ -40,7 +40,7 @@ extern "C" void func_ov017_022008ac(void *state)
 
     func_020b0558();
     Graphics3DRenderObject_Draw(FIELD(void *, state, 0x2bc));
-    func_02077b44((u8 *)state + 0x310);
+    Graphics3DSceneState_Apply((u8 *)state + 0x310);
 
     for (i = 0; i < 4; i++) {
         Graphics3DLight_Apply((u8 *)state + 0x2d0 + i * 0x10, i);

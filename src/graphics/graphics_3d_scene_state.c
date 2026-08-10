@@ -7,15 +7,15 @@
  */
 
 /*
- * Clear offsets 0x00..0x08, 0x10..0x1c, 0x24, and 0x8c..0x90; set offsets
- * 0x0c and 0x20 to 0x1000; and set offsets 0x7c/0x80/0x84/0x88 to
- * -0x800, 0x600, 0x800, -0x600. These are confirmed raw defaults, plausibly
- * transform/projection bounds, but no hardware access or allocation occurs.
+ * Clear projectionMode, offsets 0x04..0x08, 0x10..0x1c, 0x24, and both
+ * projection offsets; set offsets 0x0c and 0x20 to 0x1000; and establish the
+ * projection bounds left/top/right/bottom as -0x800, 0x600, 0x800, -0x600.
+ * No hardware access or allocation occurs.
  */
 #ifndef MATCHING
-void func_02077ae8(Graphics3DSceneState *state)
+void Graphics3DSceneState_Init(Graphics3DSceneState *state)
 {
-    state->field_00 = 0;
+    state->projectionMode = 0;
     state->field_08 = 0;
     state->field_04 = 0;
     state->field_0c = 0x1000;
@@ -25,16 +25,16 @@ void func_02077ae8(Graphics3DSceneState *state)
     state->field_24 = 0;
     state->field_1c = 0;
     state->field_20 = 0x1000;
-    state->field_7c = -0x800;
-    state->field_80 = 0x600;
-    state->field_84 = 0x800;
-    state->field_88 = -0x600;
-    state->field_90 = 0;
-    state->field_8c = 0;
+    state->projectionLeft = -0x800;
+    state->projectionTop = 0x600;
+    state->projectionRight = 0x800;
+    state->projectionBottom = -0x600;
+    state->projectionOffsetY = 0;
+    state->projectionOffsetX = 0;
 }
 #else
 /* This matching fallback implements the documented portable C directly above. */
-asm void func_02077ae8(Graphics3DSceneState *state)
+asm void Graphics3DSceneState_Init(Graphics3DSceneState *state)
 {
     mov r3, #0
     str r3, [r0]

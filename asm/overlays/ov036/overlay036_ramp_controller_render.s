@@ -2,7 +2,7 @@
 
 /* Exact fallback; see src/overlays/ov036/overlay036_ramp_controller_render.c for documented portable C. */
 
-    .extern func_02077b44
+    .extern Graphics3DSceneState_Apply
     .extern func_ov045_0220bc3c
     .extern func_020773e4
     .extern func_ov036_021fd128
@@ -15,7 +15,7 @@ func_ov036_02201c7c:
     sub sp, sp, #0x10
     mov r4, r0
     add r0, r4, #0xc
-    bl func_02077b44
+    bl Graphics3DSceneState_Apply
     mov ip, #0x0
     mvn r0, #0x3f
     str r0, [sp, #0x0]

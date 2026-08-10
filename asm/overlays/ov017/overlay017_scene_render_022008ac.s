@@ -3,7 +3,7 @@
     .extern data_ov017_022016e0
     .extern Graphics3DResourceOwner_RenderManagers
     .extern Graphics3DLight_Apply
-    .extern func_02077b44
+    .extern Graphics3DSceneState_Apply
     .extern Graphics3DRenderObject_Draw
     .extern func_020b0558
     .extern func_ov017_021fd414
@@ -22,7 +22,7 @@ func_ov017_022008ac:
     ldr r0, [r5, #0x2bc]
     bl Graphics3DRenderObject_Draw
     add r0, r5, #0x310
-    bl func_02077b44
+    bl Graphics3DSceneState_Apply
     mov r6, #0x0
     add r4, r5, #0x2d0
 L_022008d4:

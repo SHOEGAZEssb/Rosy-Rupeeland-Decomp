@@ -2,7 +2,7 @@
 /* Exact fallback; see src/overlays/ov017/overlay017_projection_setup.c. */
     .extern data_ov017_02201414
     .extern data_ov017_022016e0
-    .extern func_02077b44
+    .extern Graphics3DSceneState_Apply
     .extern func_020adc90
     .extern func_020b01a0
     .extern func_020b0558
@@ -13,7 +13,7 @@ func_ov017_021ff75c:
     mov r4, r0
     bl func_020b0558
     add r0, r4, #0x310
-    bl func_02077b44
+    bl Graphics3DSceneState_Apply
     ldr r2, L_021ff898
     mov r3, #0x0
     ldr r0, L_021ff89c

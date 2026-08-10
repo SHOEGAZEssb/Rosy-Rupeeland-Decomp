@@ -17,7 +17,7 @@ extern u8 gHeapContext[];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_02077ae8(void *object);
+extern void Graphics3DSceneState_Init(void *object);
 extern void Graphics3DLightSet_Init(void *object);
 extern void *Heap_Alloc(u32 size, const void *tag, s32 alignment,
                        void *heapContext);
@@ -71,8 +71,8 @@ typedef struct Overlay034RenderSpec {
  */
 extern "C" void *func_ov034_021fdae8(void *scene)
 {
-    func_02077ae8((u8 *)scene + 0x48);
-    func_02077ae8((u8 *)scene + 0xdc);
+    Graphics3DSceneState_Init((u8 *)scene + 0x48);
+    Graphics3DSceneState_Init((u8 *)scene + 0xdc);
     Graphics3DLightSet_Init((u8 *)scene + 0x170);
 
     void *owner = Heap_Alloc(0xc8, data_ov034_021ff1b0, 4, gHeapContext);

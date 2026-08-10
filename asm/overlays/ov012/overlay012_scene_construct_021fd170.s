@@ -14,7 +14,7 @@
     .extern func_020755bc
     .extern Graphics3DResourceOwner_Init
     .extern Graphics3DLightSet_Init
-    .extern func_02077ae8
+    .extern Graphics3DSceneState_Init
     .extern Graphics3DResourceBinding_Init
     .extern func_02091e28
     .extern func_02092364
@@ -58,7 +58,7 @@ func_ov012_021fd170:
     str r0, [r4]
     add r0, r4, #0x80
     str r1, [r4, #0x24]
-    bl func_02077ae8
+    bl Graphics3DSceneState_Init
     add r0, r4, #0x114
     bl Graphics3DLightSet_Init
     add r0, r4, #0x158

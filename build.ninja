@@ -11472,7 +11472,7 @@ build build/reports/graphics_3d_scene_state.json: objdiff build/decomp/delinks/s
 
 build build/reports/graphics_3d_scene_state.txt: match_report build/reports/graphics_3d_scene_state.json | tools/report_objdiff.py
   report_json = build/reports/graphics_3d_scene_state.json
-  report_args = --section .text --function func_02077ae8
+  report_args = --section .text --function Graphics3DSceneState_Init
 
 build build/reports/graphics_3d_scene_state_apply.json: objdiff build/decomp/delinks/src/graphics/graphics_3d_scene_state_apply.o | build/decomp/src/graphics/graphics_3d_scene_state_apply.o
   target_object = build/decomp/delinks/src/graphics/graphics_3d_scene_state_apply.o
@@ -11480,7 +11480,7 @@ build build/reports/graphics_3d_scene_state_apply.json: objdiff build/decomp/del
 
 build build/reports/graphics_3d_scene_state_apply.txt: match_report build/reports/graphics_3d_scene_state_apply.json | tools/report_objdiff.py
   report_json = build/reports/graphics_3d_scene_state_apply.json
-  report_args = --section .text --function func_02077b44
+  report_args = --section .text --function Graphics3DSceneState_Apply
 
 build build/reports/graphics_3d_resource_binding.json: objdiff build/decomp/delinks/src/graphics/graphics_3d_resource_binding.o | build/decomp/src/graphics/graphics_3d_resource_binding.o
   target_object = build/decomp/delinks/src/graphics/graphics_3d_resource_binding.o

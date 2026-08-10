@@ -35,7 +35,7 @@
     .extern Graphics3DResourceOwner_CreateManager
     .extern Graphics3DResourceOwner_PrepareResources
     .extern Graphics3DLightSet_Init
-    .extern func_02077ae8
+    .extern Graphics3DSceneState_Init
     .extern Graphics3DRenderObject_Init
     .extern func_020918f4
     .extern func_02091e28
@@ -108,7 +108,7 @@ func_ov017_021feab4:
     add r0, r10, #0x2d0
     bl Graphics3DLightSet_Init
     add r0, r10, #0x310
-    bl func_02077ae8
+    bl Graphics3DSceneState_Init
     add r0, r10, #0x3ac
     bl func_ov017_021ff150
     add r0, r10, #0x3d8

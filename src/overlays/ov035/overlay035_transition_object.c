@@ -12,7 +12,7 @@ extern u8 gHeapContext[];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_02077b44(void *state);
+extern void Graphics3DSceneState_Apply(void *state);
 extern void func_020773e4(void *resourceSet, void *transform);
 extern void func_020949ec(void *object);
 extern void *Heap_Alloc(u32 size, const void *tag, s32 alignment, void *heap);
@@ -32,7 +32,7 @@ extern void func_ov035_021fcf30(void);
  */
 extern "C" void func_ov035_021fe5cc(void *scene)
 {
-    func_02077b44((u8 *)scene + 0x0c);
+    Graphics3DSceneState_Apply((u8 *)scene + 0x0c);
     func_020773e4(FIELD(void *, scene, 0x100), (u8 *)scene + 0x64);
 }
 

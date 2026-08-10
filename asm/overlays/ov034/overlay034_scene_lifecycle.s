@@ -7,7 +7,7 @@
     .extern Graphics3DLightSet_Destroy
     .extern func_ov034_021fce00
     .extern Heap_Free
-    .extern func_02077b44
+    .extern Graphics3DSceneState_Apply
     .extern Graphics3DLight_Apply
     .extern func_ov034_021fd90c
     .extern func_ov034_021fd938
@@ -100,7 +100,7 @@ func_ov034_021fde6c:
     b L_021fdf50
 L_021fdeb0:
     add r0, r4, #0x48
-    bl func_02077b44
+    bl Graphics3DSceneState_Apply
     mov r6, #0x0
     add r5, r4, #0x170
 L_021fdec0:
@@ -140,7 +140,7 @@ L_021fdf34:
     blt L_021fdf24
 L_021fdf40:
     add r0, r4, #0xdc
-    bl func_02077b44
+    bl Graphics3DSceneState_Apply
     ldr r0, [r4, #0x0]
     bl func_ov034_021fd6f4
 L_021fdf50:

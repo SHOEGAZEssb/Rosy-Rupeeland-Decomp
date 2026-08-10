@@ -7,7 +7,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_02077b44(void *camera);
+extern void Graphics3DSceneState_Apply(void *camera);
 extern void Graphics3DLight_Apply(void *record, s32 index);
 extern void func_ov048_0220baec(s32 x0, s32 y0, s32 x1, s32 y1,
                                s32 depth, s32 width, s32 height);
@@ -28,7 +28,7 @@ extern void func_ov035_021fcfa0(void *object, void *transform);
  */
 extern "C" void func_ov035_022007ec(void *scene)
 {
-    func_02077b44((u8 *)scene + 0x0c);
+    Graphics3DSceneState_Apply((u8 *)scene + 0x0c);
     for (s32 i = 0; i < 4; ++i)
         Graphics3DLight_Apply((u8 *)scene + 0x120 + i * 0x10, i);
 

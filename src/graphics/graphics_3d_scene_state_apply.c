@@ -34,32 +34,33 @@ extern void func_020ad378(s32 *destination, const s32 *source);
 /*
  * Select projection matrix mode and reset it first. Mode 0 installs fixed
  * perspective parameters; mode 1 uses the four stored boundaries offset by
- * fields 0x8c/0x90 with far value 0x8000; mode 2 builds a fixed-size frustum
- * around those offsets with far value 0x64000. Other modes retain identity.
+ * projectionOffsetX/projectionOffsetY with far value 0x8000; mode 2 builds a
+ * fixed-size frustum around those offsets with far value 0x64000. Other modes
+ * retain identity.
  * Then build field_28 from vectors at 0x04, 0x1c, and 0x10, derive/invert the
  * matrix at field_58, reset texture matrix mode, and finish in position-vector
  * mode. All geometry-register writes and SDK matrix calls are ordered effects.
  */
 #ifndef MATCHING
-void func_02077b44(Graphics3DSceneState *state)
+void Graphics3DSceneState_Apply(Graphics3DSceneState *state)
 {
     REG_G3_MTX_MODE = 0;
     REG_G3_MTX_IDENTITY = 0;
 
-    if (state->field_00 == 0) {
+    if (state->projectionMode == 0) {
         func_020b0d50(0x23a, 0xfd8, 0x1555, 0x1000, 0x64000, 0x1000,
                       1, 0);
-    } else if (state->field_00 == 1) {
-        func_020b0a54(state->field_90 + state->field_80,
-                      state->field_90 + state->field_88,
-                      state->field_8c + state->field_7c,
-                      state->field_8c + state->field_84,
+    } else if (state->projectionMode == 1) {
+        func_020b0a54(state->projectionOffsetY + state->projectionTop,
+                      state->projectionOffsetY + state->projectionBottom,
+                      state->projectionOffsetX + state->projectionLeft,
+                      state->projectionOffsetX + state->projectionRight,
                       0x1000, 0x8000, 0x1000, 1, 0);
-    } else if (state->field_00 == 2) {
-        func_020b0f40(state->field_90 + 0x23f,
-                      state->field_90 - 0x23f,
-                      state->field_8c - 0x2ff,
-                      state->field_8c + 0x2ff,
+    } else if (state->projectionMode == 2) {
+        func_020b0f40(state->projectionOffsetY + 0x23f,
+                      state->projectionOffsetY - 0x23f,
+                      state->projectionOffsetX - 0x2ff,
+                      state->projectionOffsetX + 0x2ff,
                       0x1000, 0x64000, 0x1000, 1, 0);
     }
 
@@ -73,7 +74,7 @@ void func_02077b44(Graphics3DSceneState *state)
 }
 #else
 /* This matching fallback implements the documented portable C directly above. */
-asm void func_02077b44(Graphics3DSceneState *state)
+asm void Graphics3DSceneState_Apply(Graphics3DSceneState *state)
 {
     stmdb sp!, {r3, r4, r5, r6, r7, r8, lr}
     sub sp, sp, #0x14

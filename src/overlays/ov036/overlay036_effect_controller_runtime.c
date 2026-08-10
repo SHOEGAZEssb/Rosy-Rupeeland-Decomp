@@ -14,7 +14,7 @@ extern s32 func_02091c7c(void *timer, s32 mode);
 extern void func_ov036_021fef6c(void *controller, s32 configIndex);
 extern void func_02095360(void *list);
 extern void func_020773a8(void *manager);
-extern void func_02077b44(void *transform);
+extern void Graphics3DSceneState_Apply(void *transform);
 extern void func_020773e4(void *manager, void *matrix);
 extern void func_ov036_021fe028(void *object);
 extern void func_ov036_021fd128(s32, s32, s32, s32, s32, s32);
@@ -77,7 +77,7 @@ extern "C" s32 func_ov036_021ff098(void *controller)
  */
 extern "C" void func_ov036_021ff184(void *controller)
 {
-    func_02077b44((u8 *)controller + 0xc);
+    Graphics3DSceneState_Apply((u8 *)controller + 0xc);
     func_020773e4(FIELD(void *, controller, 0xdc),
                   (u8 *)controller + 0x64);
     func_ov036_021fe028(FIELD(void *, controller, 0x11c));

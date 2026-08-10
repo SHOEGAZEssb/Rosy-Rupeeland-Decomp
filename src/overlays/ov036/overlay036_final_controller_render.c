@@ -7,7 +7,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_02077b44(void *state);
+extern void Graphics3DSceneState_Apply(void *state);
 extern void func_ov048_0220baec(s32 x, s32 y, s32 width, s32 height,
                                 s32 depth, s32 value, s32 flags);
 extern void func_020773e4(void *manager, void *transform);
@@ -27,7 +27,7 @@ extern void func_ov036_021fcfa0(void *object, void *transform);
  */
 extern "C" void func_ov036_02204510(void *controller)
 {
-    func_02077b44((u8 *)controller + 0xc);
+    Graphics3DSceneState_Apply((u8 *)controller + 0xc);
     func_ov048_0220baec(-0x100, 0x140, 0x100, 0,
                         -0x200, 0x3ff, 0x1f);
     func_ov048_0220baec(-0x100, 0, 0x100, -0x100,

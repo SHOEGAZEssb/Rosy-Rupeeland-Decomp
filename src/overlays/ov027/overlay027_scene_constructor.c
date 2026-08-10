@@ -23,7 +23,7 @@ extern "C" {
 extern void *Heap_Alloc(u32, const void *, u32, void *);
 extern void func_02091e28(void *);
 extern void func_020720c0(void *);
-extern void func_02077ae8(void *);
+extern void Graphics3DSceneState_Init(void *);
 extern void func_02092364(void *);
 extern void func_ov043_0220b740(void *);
 extern void func_02091b6c(void *);
@@ -69,7 +69,7 @@ extern "C" void *func_ov027_021fda30(void *scene)
     func_020720c0((u8 *)scene + 0x5c);
     func_020720c0((u8 *)scene + 0x68);
     func_020720c0((u8 *)scene + 0x74);
-    func_02077ae8((u8 *)scene + 0x80);
+    Graphics3DSceneState_Init((u8 *)scene + 0x80);
     func_ov027_021fd9c8((u8 *)scene + 0x120);
     func_ov027_021fd9c8((u8 *)scene + 0x130);
     func_ov027_021fd9c8((u8 *)scene + 0x140);

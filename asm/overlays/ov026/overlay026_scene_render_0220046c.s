@@ -3,7 +3,7 @@
 /* Exact fallback; see src/overlays/ov026/overlay026_scene_render.c. */
 .extern func_020773e4
 .extern Graphics3DLight_Apply
-.extern func_02077b44
+.extern Graphics3DSceneState_Apply
 .extern func_020b0558
 .extern func_ov026_021fd300
 .extern func_ov026_021fd540
@@ -44,7 +44,7 @@ func_ov026_0220046c:
     mov r0, #0x0
     str r0, [r1, #-0x7c]
     add r0, r4, #0x254
-    bl func_02077b44
+    bl Graphics3DSceneState_Apply
     ldr r0, [r4, #0x78]
     add r1, r4, #0x2ac
     bl func_020773e4
@@ -56,7 +56,7 @@ L_022004e0:
     mov r2, #0x0
     add r0, r4, #0x1c0
     str r2, [r1, #0x0]
-    bl func_02077b44
+    bl Graphics3DSceneState_Apply
     mov r6, #0x0
     add r5, r4, #0x180
 L_022004fc:

@@ -13,7 +13,7 @@ extern "C" {
 extern s32 func_020adc90(s32, s32);
 extern s32 func_020b01a0(s32 *, s32 *);
 extern void func_020b0558(void);
-extern void func_02077b44(void *);
+extern void Graphics3DSceneState_Apply(void *);
 #ifdef __cplusplus
 }
 #endif
@@ -36,7 +36,7 @@ extern "C" void func_ov017_021ff75c(void *state)
         FIELD(s32, data_ov017_022016e0, 0xc)];
 
     func_020b0558();
-    func_02077b44((u8 *)state + 0x310);
+    Graphics3DSceneState_Apply((u8 *)state + 0x310);
     *reg444 = 0;
     reg444[0xb] = radius * 0x10;
     reg444[0xb] = 0;
