@@ -135,9 +135,11 @@ host-owned XRGB8888 software canvas and bitmap font; the original DS debug-text
 renderer is not reused. Entry zero opens the recovered phase selector, including
 its three 90-phase pages, wrapping 10-by-9 grid, exact touch bounds, and
 16-frame transition. The selected 0x58-byte phase metadata record is read from
-the ARM9 image and decoded into host scalars; embedded ARM callbacks remain
-addresses and are never called as host function pointers. Execution then stops
-at the large phase-runtime construction boundary. Other menu entries likewise
+the ARM9 image and decoded into host scalars. Its primary and secondary overlay
+IDs at offsets `0x1C`/`0x20` are loaded, and callback offsets `0x24`/`0x28` are
+validated as addresses inside their respective DS code ranges. The ARM
+callbacks remain addresses and are never called as host function pointers.
+Execution then stops at the large phase-runtime construction boundary. Other menu entries likewise
 report their selected scene boundary until their graphics, sound, heap, and
 overlay dependencies have native implementations.
 

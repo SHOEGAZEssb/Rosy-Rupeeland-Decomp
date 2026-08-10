@@ -37,7 +37,10 @@ s32 TingleNativeGamePhase_DecodeMetadata(s32 phase_id, const void *record,
     metadata->phase_id = phase_id;
     metadata->field_00 = (s32)ReadU32(bytes + 0x00);
     metadata->field_12 = (s16)ReadU16(bytes + 0x12);
+    metadata->primary_overlay_id_1c = ReadU32(bytes + 0x1c);
+    metadata->secondary_overlay_id_20 = ReadU32(bytes + 0x20);
     metadata->callback_24 = ReadU32(bytes + 0x24);
+    metadata->callback_28 = ReadU32(bytes + 0x28);
     metadata->field_2c = (s32)ReadU32(bytes + 0x2c);
     metadata->field_30 = (s32)ReadU32(bytes + 0x30);
     metadata->flags_40 = ReadU32(bytes + 0x40);
@@ -68,7 +71,34 @@ s32 TingleNativeGamePhaseBoundary_Init(TingleNativeGamePhaseBoundary *boundary,
     boundary->metadata_loaded = TingleNativeGamePhase_DecodeMetadata(
         phase_id, record, TINGLE_NATIVE_PHASE_METADATA_SIZE, &boundary->metadata);
     free(record);
+    if (!boundary->metadata_loaded) return 0;
+    boundary->primary_overlay_loaded = TingleNativeData_ReadOverlay(
+        data, boundary->metadata.primary_overlay_id_1c, &boundary->primary_overlay);
+    boundary->secondary_overlay_loaded = TingleNativeData_ReadOverlay(
+        data, boundary->metadata.secondary_overlay_id_20, &boundary->secondary_overlay);
+    if (boundary->primary_overlay_loaded) {
+        u32 end = boundary->primary_overlay.load_address +
+                  boundary->primary_overlay.code_size;
+        boundary->primary_callback_valid =
+            boundary->metadata.callback_24 >= boundary->primary_overlay.load_address &&
+            boundary->metadata.callback_24 < end;
+    }
+    if (boundary->secondary_overlay_loaded) {
+        u32 end = boundary->secondary_overlay.load_address +
+                  boundary->secondary_overlay.code_size;
+        boundary->secondary_callback_valid =
+            boundary->metadata.callback_28 >= boundary->secondary_overlay.load_address &&
+            boundary->metadata.callback_28 < end;
+    }
     return boundary->metadata_loaded;
+}
+
+void TingleNativeGamePhaseBoundary_Destroy(TingleNativeGamePhaseBoundary *boundary)
+{
+    if (boundary == NULL) return;
+    TingleNativeData_CloseOverlay(&boundary->secondary_overlay);
+    TingleNativeData_CloseOverlay(&boundary->primary_overlay);
+    memset(boundary, 0, sizeof(*boundary));
 }
 
 s32 TingleNativeGamePhaseBoundary_Update(TingleNativeGamePhaseBoundary *boundary,
@@ -104,21 +134,31 @@ void TingleNativeGamePhaseBoundary_Draw(
                                 0x00a0b0b8u, 1);
 
     if (boundary->metadata_loaded) {
-        DrawField(canvas, 208, "FIELD 00", boundary->metadata.field_00);
-        DrawField(canvas, 222, "FIELD 12", boundary->metadata.field_12);
-        DrawField(canvas, 236, "FIELD 2C", boundary->metadata.field_2c);
-        DrawField(canvas, 250, "FIELD 30", boundary->metadata.field_30);
+        (void)snprintf(text, sizeof(text), "OV 1C %03u: %s",
+                       boundary->metadata.primary_overlay_id_1c,
+                       boundary->primary_overlay_loaded ? "READY" : "UNAVAILABLE");
+        TingleNativeCanvas_DrawText(canvas, 12, 208, text, 0x00d8e0d0u, 1);
+        (void)snprintf(text, sizeof(text), "CALLBACK 24 %08X: %s",
+                       boundary->metadata.callback_24,
+                       boundary->primary_callback_valid ? "VALID" : "INVALID");
+        TingleNativeCanvas_DrawText(canvas, 12, 222, text, 0x00d8e0d0u, 1);
+        (void)snprintf(text, sizeof(text), "OV 20 %03u: %s",
+                       boundary->metadata.secondary_overlay_id_20,
+                       boundary->secondary_overlay_loaded ? "READY" : "UNAVAILABLE");
+        TingleNativeCanvas_DrawText(canvas, 12, 236, text, 0x00d8e0d0u, 1);
+        (void)snprintf(text, sizeof(text), "CALLBACK 28 %08X: %s",
+                       boundary->metadata.callback_28,
+                       boundary->secondary_callback_valid ? "VALID" : "INVALID");
+        TingleNativeCanvas_DrawText(canvas, 12, 250, text, 0x00d8e0d0u, 1);
         (void)snprintf(text, sizeof(text), "FLAGS 40: %08X", boundary->metadata.flags_40);
         TingleNativeCanvas_DrawText(canvas, 12, 264, text, 0x00d8e0d0u, 1);
-        DrawField(canvas, 278, "FIELD 44", boundary->metadata.field_44);
-        DrawField(canvas, 292, "FIELD 48", boundary->metadata.field_48);
+        DrawField(canvas, 278, "FIELD 2C", boundary->metadata.field_2c);
+        DrawField(canvas, 292, "FIELD 30", boundary->metadata.field_30);
         DrawField(canvas, 306, "VARIANT 4C", boundary->metadata.variant_4c);
         DrawField(canvas, 320, "FIELD 4D", boundary->metadata.field_4d);
         DrawField(canvas, 334, "COORD X 4E", boundary->metadata.coordinate_x_4e);
         DrawField(canvas, 348, "COORD Y 4F", boundary->metadata.coordinate_y_4f);
-        (void)snprintf(text, sizeof(text), "CALLBACK 24: %08X",
-                       boundary->metadata.callback_24);
-        TingleNativeCanvas_DrawText(canvas, 12, 362, text, 0x00e0b060u, 1);
+        DrawField(canvas, 362, "FIELD 12", boundary->metadata.field_12);
     }
     TingleNativeCanvas_DrawText(canvas, 12, 104, "NEXT: GAME PHASE RUNTIME",
                                 0x00e0b060u, 1);

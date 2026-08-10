@@ -26,7 +26,7 @@ int TingleNative_Run(int argc, char **argv)
     TingleNativeCanvas canvas;
     TingleNativeDebugMenu menu;
     TingleNativePhaseSelector phase_selector;
-    TingleNativeGamePhaseBoundary game_phase;
+    TingleNativeGamePhaseBoundary game_phase = {0};
     enum { NATIVE_SCENE_DEBUG_MENU, NATIVE_SCENE_PHASE_SELECTOR,
            NATIVE_SCENE_GAME_PHASE } scene =
         NATIVE_SCENE_DEBUG_MENU;
@@ -97,6 +97,7 @@ int TingleNative_Run(int argc, char **argv)
                 scene = NATIVE_SCENE_GAME_PHASE;
             }
         } else if (TingleNativeGamePhaseBoundary_Update(&game_phase, &input)) {
+            TingleNativeGamePhaseBoundary_Destroy(&game_phase);
             TingleNativePhaseSelector_Init(&phase_selector);
             scene = NATIVE_SCENE_PHASE_SELECTOR;
         }
@@ -112,6 +113,7 @@ int TingleNative_Run(int argc, char **argv)
     }
 
     free(pixels);
+    TingleNativeGamePhaseBoundary_Destroy(&game_phase);
     TingleNativeData_Close(data);
     TingleNativePlatform_Destroy(platform);
     return EXIT_SUCCESS;

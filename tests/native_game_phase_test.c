@@ -26,13 +26,35 @@ static int ProbeMetadata(const char *kind, const char *source, const char *phase
         : TingleNativeData_OpenDirectory(source);
     TingleNativeGamePhaseBoundary boundary = {{0}, 0};
     s32 phase_id = (s32)strtol(phase_text, NULL, 0);
-    int ok = data != NULL && TingleNativeGamePhaseBoundary_Init(&boundary, data, phase_id);
+    int ok;
+
+    if (data != NULL && strcmp(phase_text, "all") == 0) {
+        for (phase_id = 1; phase_id <= TINGLE_NATIVE_PHASE_COUNT; ++phase_id) {
+            ok = TingleNativeGamePhaseBoundary_Init(&boundary, data, phase_id) &&
+                 boundary.primary_overlay_loaded && boundary.secondary_overlay_loaded &&
+                 boundary.primary_callback_valid && boundary.secondary_callback_valid;
+            TingleNativeGamePhaseBoundary_Destroy(&boundary);
+            if (!ok) {
+                TingleNativeData_Close(data);
+                return EXIT_FAILURE;
+            }
+        }
+        (void)printf("validated %d phase overlay pairs\n", TINGLE_NATIVE_PHASE_COUNT);
+        TingleNativeData_Close(data);
+        return EXIT_SUCCESS;
+    }
+    ok = data != NULL && TingleNativeGamePhaseBoundary_Init(&boundary, data, phase_id) &&
+             boundary.primary_overlay_loaded && boundary.secondary_overlay_loaded &&
+             boundary.primary_callback_valid && boundary.secondary_callback_valid;
 
     if (ok) {
-        (void)printf("phase %d: field00=%d field2c=%d field30=%d flags40=%08X\n",
-                     phase_id, boundary.metadata.field_00, boundary.metadata.field_2c,
-                     boundary.metadata.field_30, boundary.metadata.flags_40);
+        (void)printf("phase %d: ov1=%u cb1=%08X ov2=%u cb2=%08X flags40=%08X\n",
+                     phase_id, boundary.metadata.primary_overlay_id_1c,
+                     boundary.metadata.callback_24,
+                     boundary.metadata.secondary_overlay_id_20,
+                     boundary.metadata.callback_28, boundary.metadata.flags_40);
     }
+    TingleNativeGamePhaseBoundary_Destroy(&boundary);
     TingleNativeData_Close(data);
     return ok ? EXIT_SUCCESS : EXIT_FAILURE;
 }
@@ -52,7 +74,10 @@ int main(int argc, char **argv)
 
     WriteU32(record + 0x00, 7);
     WriteU16(record + 0x12, (u16)-2);
+    WriteU32(record + 0x1c, 106);
+    WriteU32(record + 0x20, 377);
     WriteU32(record + 0x24, 0x02001234);
+    WriteU32(record + 0x28, 0x02005678);
     WriteU32(record + 0x2c, (u32)-100);
     WriteU32(record + 0x30, 200);
     WriteU32(record + 0x40, 0xa5a55a5a);
@@ -66,7 +91,9 @@ int main(int argc, char **argv)
     WriteU16(record + 0x56, 270);
     if (!TingleNativeGamePhase_DecodeMetadata(9, record, sizeof(record), &metadata) ||
         metadata.phase_id != 9 || metadata.field_00 != 7 || metadata.field_12 != -2 ||
-        metadata.callback_24 != 0x02001234 || metadata.field_2c != -100 ||
+        metadata.primary_overlay_id_1c != 106 || metadata.secondary_overlay_id_20 != 377 ||
+        metadata.callback_24 != 0x02001234 || metadata.callback_28 != 0x02005678 ||
+        metadata.field_2c != -100 ||
         metadata.field_30 != 200 || metadata.flags_40 != 0xa5a55a5a ||
         metadata.field_44 != -1 || metadata.field_48 != 42 ||
         metadata.variant_4c != 3 || metadata.field_4d != -4 ||
@@ -98,5 +125,6 @@ int main(int argc, char **argv)
         return EXIT_FAILURE;
     }
     free(pixels);
+    TingleNativeGamePhaseBoundary_Destroy(&boundary);
     return EXIT_SUCCESS;
 }
