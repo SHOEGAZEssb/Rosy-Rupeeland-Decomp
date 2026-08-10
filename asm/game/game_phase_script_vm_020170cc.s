@@ -2,8 +2,8 @@
 .text
 .extern data_021052fc
 .extern ActorMotion_ClearOscillation
-.global func_020170cc
-func_020170cc:
+.global GamePhaseActorScriptVm_ClearRuntimeMotion2fbcOscillation
+GamePhaseActorScriptVm_ClearRuntimeMotion2fbcOscillation:
     stmdb sp!, {r3, lr}
     ldr r0, L_020170ec
     ldr r0, [r0]
@@ -13,4 +13,4 @@ func_020170cc:
     mov r0, #0
     ldmia sp!, {r3, pc}
 L_020170ec: .word data_021052fc
-    .size func_020170cc, . - func_020170cc
+    .size GamePhaseActorScriptVm_ClearRuntimeMotion2fbcOscillation, . - GamePhaseActorScriptVm_ClearRuntimeMotion2fbcOscillation

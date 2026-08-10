@@ -2,8 +2,8 @@
 .text
 .extern data_021052fc
 .extern ActorMotion_ClearOscillation
-.global func_02017058
-func_02017058:
+.global GamePhaseActorScriptVm_ClearRuntimeMotion3044Oscillation
+GamePhaseActorScriptVm_ClearRuntimeMotion3044Oscillation:
     stmdb sp!, {r3, lr}
     ldr r0, L_02017078
     ldr r0, [r0]
@@ -13,4 +13,4 @@ func_02017058:
     mov r0, #0
     ldmia sp!, {r3, pc}
 L_02017078: .word data_021052fc
-    .size func_02017058, . - func_02017058
+    .size GamePhaseActorScriptVm_ClearRuntimeMotion3044Oscillation, . - GamePhaseActorScriptVm_ClearRuntimeMotion3044Oscillation

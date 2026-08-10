@@ -3,8 +3,8 @@
 .extern data_021052fc
 .extern ActorMotion_SetOscillation
 .extern GamePhaseScriptVm_Pop
-.global func_0201707c
-func_0201707c:
+.global GamePhaseActorScriptVm_SetRuntimeMotion2fbcOscillation
+GamePhaseActorScriptVm_SetRuntimeMotion2fbcOscillation:
     stmdb sp!, {r4, r5, r6, lr}
     mov r6, r0
     bl GamePhaseScriptVm_Pop
@@ -25,4 +25,4 @@ func_0201707c:
     mov r0, #0
     ldmia sp!, {r4, r5, r6, pc}
 L_020170c8: .word data_021052fc
-    .size func_0201707c, . - func_0201707c
+    .size GamePhaseActorScriptVm_SetRuntimeMotion2fbcOscillation, . - GamePhaseActorScriptVm_SetRuntimeMotion2fbcOscillation

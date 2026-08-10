@@ -5645,28 +5645,28 @@ build build/reports/game_phase_script_vm_02017008.json: objdiff build/decomp/del
   base_object = build/decomp/asm/game/game_phase_script_vm_02017008.o
 build build/reports/game_phase_script_vm_02017008.txt: match_report build/reports/game_phase_script_vm_02017008.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_script_vm_02017008.json
-  report_args = --section .text --function func_02017008 --require-exact
+  report_args = --section .text --function GamePhaseActorScriptVm_SetRuntimeMotion3044Oscillation --require-exact
 
 build build/reports/game_phase_script_vm_02017058.json: objdiff build/decomp/delinks/asm/game/game_phase_script_vm_02017058.o | build/decomp/asm/game/game_phase_script_vm_02017058.o
   target_object = build/decomp/delinks/asm/game/game_phase_script_vm_02017058.o
   base_object = build/decomp/asm/game/game_phase_script_vm_02017058.o
 build build/reports/game_phase_script_vm_02017058.txt: match_report build/reports/game_phase_script_vm_02017058.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_script_vm_02017058.json
-  report_args = --section .text --function func_02017058 --require-exact
+  report_args = --section .text --function GamePhaseActorScriptVm_ClearRuntimeMotion3044Oscillation --require-exact
 
 build build/reports/game_phase_script_vm_0201707c.json: objdiff build/decomp/delinks/asm/game/game_phase_script_vm_0201707c.o | build/decomp/asm/game/game_phase_script_vm_0201707c.o
   target_object = build/decomp/delinks/asm/game/game_phase_script_vm_0201707c.o
   base_object = build/decomp/asm/game/game_phase_script_vm_0201707c.o
 build build/reports/game_phase_script_vm_0201707c.txt: match_report build/reports/game_phase_script_vm_0201707c.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_script_vm_0201707c.json
-  report_args = --section .text --function func_0201707c --require-exact
+  report_args = --section .text --function GamePhaseActorScriptVm_SetRuntimeMotion2fbcOscillation --require-exact
 
 build build/reports/game_phase_script_vm_020170cc.json: objdiff build/decomp/delinks/asm/game/game_phase_script_vm_020170cc.o | build/decomp/asm/game/game_phase_script_vm_020170cc.o
   target_object = build/decomp/delinks/asm/game/game_phase_script_vm_020170cc.o
   base_object = build/decomp/asm/game/game_phase_script_vm_020170cc.o
 build build/reports/game_phase_script_vm_020170cc.txt: match_report build/reports/game_phase_script_vm_020170cc.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_script_vm_020170cc.json
-  report_args = --section .text --function func_020170cc --require-exact
+  report_args = --section .text --function GamePhaseActorScriptVm_ClearRuntimeMotion2fbcOscillation --require-exact
 
 build build/reports/game_phase_script_vm_runtime_motion_opcodes.txt: phony build/reports/game_phase_script_vm_02017008.txt build/reports/game_phase_script_vm_02017058.txt build/reports/game_phase_script_vm_0201707c.txt build/reports/game_phase_script_vm_020170cc.txt
 build build/reports/game_phase_script_vm_020170f0.json: objdiff build/decomp/delinks/asm/game/game_phase_script_vm_020170f0.o | build/decomp/asm/game/game_phase_script_vm_020170f0.o
