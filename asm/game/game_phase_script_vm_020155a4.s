@@ -4,8 +4,8 @@
 .extern GamePhaseScriptVm_SetResult
 .extern func_020adc40
 
-    .global func_020155a4
-func_020155a4: ; 0x020155a4
+    .global GamePhaseActorScriptVm_CalculateDistanceToCoordinates
+GamePhaseActorScriptVm_CalculateDistanceToCoordinates: ; 0x020155a4
     stmdb sp!, {r4, r5, r6, lr}
     mov r5, r0
     bl GamePhaseScriptVm_Pop
@@ -33,5 +33,5 @@ func_020155a4: ; 0x020155a4
     bl GamePhaseScriptVm_SetResult
     mov r0, #0x0
     ldmia sp!, {r4, r5, r6, pc}
-    .size func_020155a4, . - func_020155a4
+    .size GamePhaseActorScriptVm_CalculateDistanceToCoordinates, . - GamePhaseActorScriptVm_CalculateDistanceToCoordinates
 

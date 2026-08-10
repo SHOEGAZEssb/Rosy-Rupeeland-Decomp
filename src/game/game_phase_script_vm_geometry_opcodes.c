@@ -48,7 +48,7 @@ s32 func_02015580(GamePhaseActorScriptVm *self)
  * squared sum through func_020adc40, divide the signed result by 64 with
  * truncation toward zero, push it, and return zero.
  */
-s32 func_020155a4(GamePhaseActorScriptVm *self)
+s32 GamePhaseActorScriptVm_CalculateDistanceToCoordinates(GamePhaseActorScriptVm *self)
 {
     s32 z = (s32)GamePhaseScriptVm_Pop(&self->base);
     s32 y = (s32)GamePhaseScriptVm_Pop(&self->base);

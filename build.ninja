@@ -5260,7 +5260,7 @@ build build/reports/game_phase_script_vm_020155a4.json: objdiff build/decomp/del
   base_object = build/decomp/asm/game/game_phase_script_vm_020155a4.o
 build build/reports/game_phase_script_vm_020155a4.txt: match_report build/reports/game_phase_script_vm_020155a4.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_script_vm_020155a4.json
-  report_args = --section .text --function func_020155a4 --require-exact
+  report_args = --section .text --function GamePhaseActorScriptVm_CalculateDistanceToCoordinates --require-exact
 
 build build/reports/game_phase_script_vm_geometry_opcodes.txt: phony build/reports/game_phase_script_vm_02015548.txt build/reports/game_phase_script_vm_0201555c.txt build/reports/game_phase_script_vm_02015580.txt build/reports/game_phase_script_vm_020155a4.txt
 
