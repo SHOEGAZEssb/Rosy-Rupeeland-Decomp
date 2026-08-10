@@ -16,7 +16,7 @@
 .extern GamePhaseRuntime_SynchronizeActorPlacement
 .extern GamePhaseState_SetEnabled
 .extern GamePhaseState_ApplyPlacementState
-.extern func_0200f878
+.extern GamePhaseResumeScene_Init
 .extern func_020122a0
 .extern func_02029c94
 .extern func_0202d68c
@@ -110,7 +110,7 @@ func_ov074_022105b4:
     cmp r0, #0x0
     beq .L_02210700
     mov r1, #0x1
-    bl func_0200f878
+    bl GamePhaseResumeScene_Init
 .L_02210700:
     ldr r0, .L_0221072c
     ldr r0, [r0, #0x0]

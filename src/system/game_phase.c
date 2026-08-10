@@ -29,7 +29,7 @@ extern void Scene_Destroy(void *scene);
 extern void *GamePhaseRuntime_Init(void *phase);
 extern void GamePhaseRuntime_Configure(void *phase, const GamePhaseConfig *config,
                           s32 value2C, s32 value30, int unknown);
-extern void *func_0200f878(void *object, int unknown);
+extern void *GamePhaseResumeScene_Init(void *object, int unknown);
 extern void *func_02010878(void *context);
 extern const GamePhaseConfig *func_02028388(int phaseIndex);
 
@@ -108,7 +108,7 @@ void GamePhase_Start(int phaseId, int resetGameWork)
     companion = Heap_Alloc(0x28, gGamePhaseInitialData.phaseTag, -4,
                            &gHeapContext);
     if (companion != 0) {
-        func_0200f878(companion, 0);
+        GamePhaseResumeScene_Init(companion, 0);
     }
 }
 

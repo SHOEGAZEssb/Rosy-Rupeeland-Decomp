@@ -13,7 +13,7 @@
 .extern GameWork_Reset
 .extern GamePhaseRuntime_ApplyStagedAreaRequest
 .extern Heap_Alloc
-.extern func_0200f878
+.extern GamePhaseResumeScene_Init
 .extern data_020d53b0
 .extern data_021052fc
 .extern gGameWork
@@ -113,7 +113,7 @@ L_0200c7fc:
     cmp r0, #0x0
     beq L_0200c82c
     mov r1, #0x1
-    bl func_0200f878
+    bl GamePhaseResumeScene_Init
 L_0200c82c:
     ldr r0, [r4, #0x8]
     add r0, r0, #0x1

@@ -14,8 +14,8 @@
 .extern gGameWork
 .extern gSceneManager
 
-    .global func_0200f878
-func_0200f878: ; 0x0200f878
+    .global GamePhaseResumeScene_Init
+GamePhaseResumeScene_Init: ; 0x0200f878
     stmdb sp!, {r3, r4, r5, lr}
     mov r5, r0
     mov r4, r1
@@ -32,10 +32,10 @@ func_0200f878: ; 0x0200f878
 L_0200f8ac: .word data_020d5594
 L_0200f8b0: .word gGameWork
 L_0200f8b4: .word 0x3f3
-    .size func_0200f878, . - func_0200f878
+    .size GamePhaseResumeScene_Init, . - GamePhaseResumeScene_Init
 
-    .global func_0200f8b8
-func_0200f8b8: ; 0x0200f8b8
+    .global GamePhaseResumeScene_Destroy
+GamePhaseResumeScene_Destroy: ; 0x0200f8b8
     stmdb sp!, {r4, lr}
     ldr r1, L_0200f8e8
     mov r4, r0
@@ -51,10 +51,10 @@ func_0200f8b8: ; 0x0200f8b8
 L_0200f8e8: .word data_020d5594
 L_0200f8ec: .word gGameWork
 L_0200f8f0: .word 0x3f3
-    .size func_0200f8b8, . - func_0200f8b8
+    .size GamePhaseResumeScene_Destroy, . - GamePhaseResumeScene_Destroy
 
-    .global func_0200f8f4
-func_0200f8f4: ; 0x0200f8f4
+    .global GamePhaseResumeScene_DestroyAndFree
+GamePhaseResumeScene_DestroyAndFree: ; 0x0200f8f4
     stmdb sp!, {r4, lr}
     ldr r1, L_0200f92c
     mov r4, r0
@@ -72,10 +72,10 @@ func_0200f8f4: ; 0x0200f8f4
 L_0200f92c: .word data_020d5594
 L_0200f930: .word gGameWork
 L_0200f934: .word 0x3f3
-    .size func_0200f8f4, . - func_0200f8f4
+    .size GamePhaseResumeScene_DestroyAndFree, . - GamePhaseResumeScene_DestroyAndFree
 
-    .global func_0200f938
-func_0200f938: ; 0x0200f938
+    .global GamePhaseResumeScene_Update
+GamePhaseResumeScene_Update: ; 0x0200f938
     stmdb sp!, {r4, lr}
     mov r4, r0
     ldr r0, [r4, #0x8]
@@ -149,5 +149,5 @@ L_0200fa2c:
 L_0200fa34: .word gSceneManager
 L_0200fa38: .word gGameWork
 L_0200fa3c: .word 0x386
-    .size func_0200f938, . - func_0200f938
+    .size GamePhaseResumeScene_Update, . - GamePhaseResumeScene_Update
 

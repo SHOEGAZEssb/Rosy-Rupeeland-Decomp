@@ -11,10 +11,10 @@ typedef struct GamePhaseResumeScene {
 #ifdef __cplusplus
 extern "C" {
 #endif
-GamePhaseResumeScene *func_0200f878(GamePhaseResumeScene *self, s32 skipFade);
-GamePhaseResumeScene *func_0200f8b8(GamePhaseResumeScene *self);
-GamePhaseResumeScene *func_0200f8f4(GamePhaseResumeScene *self);
-s32 func_0200f938(GamePhaseResumeScene *self);
+GamePhaseResumeScene *GamePhaseResumeScene_Init(GamePhaseResumeScene *self, s32 skipFade);
+GamePhaseResumeScene *GamePhaseResumeScene_Destroy(GamePhaseResumeScene *self);
+GamePhaseResumeScene *GamePhaseResumeScene_DestroyAndFree(GamePhaseResumeScene *self);
+s32 GamePhaseResumeScene_Update(GamePhaseResumeScene *self);
 #ifdef __cplusplus
 }
 #endif

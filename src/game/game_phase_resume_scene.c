@@ -16,7 +16,7 @@ extern void ActorDescriptorBatch_ApplyCategoryCallback(s32 value);
 #endif
 
 /* Initialize the Scene, retain skipFade, and set GameWork flag 0x3f3. */
-GamePhaseResumeScene *func_0200f878(GamePhaseResumeScene *self, s32 skipFade)
+GamePhaseResumeScene *GamePhaseResumeScene_Init(GamePhaseResumeScene *self, s32 skipFade)
 {
     Scene_Init(&self->base);
     self->base.vtable = &data_020d5594;
@@ -26,7 +26,7 @@ GamePhaseResumeScene *func_0200f878(GamePhaseResumeScene *self, s32 skipFade)
 }
 
 /* Clear flag 0x3f3, destroy the Scene base, and return self without freeing. */
-GamePhaseResumeScene *func_0200f8b8(GamePhaseResumeScene *self)
+GamePhaseResumeScene *GamePhaseResumeScene_Destroy(GamePhaseResumeScene *self)
 {
     self->base.vtable = &data_020d5594;
     GameWork_ClearFlag(gGameWork, 0x3f3);
@@ -35,7 +35,7 @@ GamePhaseResumeScene *func_0200f8b8(GamePhaseResumeScene *self)
 }
 
 /* Clear flag 0x3f3, destroy and free the Scene, and return its old address. */
-GamePhaseResumeScene *func_0200f8f4(GamePhaseResumeScene *self)
+GamePhaseResumeScene *GamePhaseResumeScene_DestroyAndFree(GamePhaseResumeScene *self)
 {
     self->base.vtable = &data_020d5594;
     GameWork_ClearFlag(gGameWork, 0x3f3);
@@ -50,7 +50,7 @@ GamePhaseResumeScene *func_0200f8f4(GamePhaseResumeScene *self)
  * 0x386 or starts both screen-1 fades, destroys this Scene, and returns one.
  * Other/incomplete states return zero.
  */
-s32 func_0200f938(GamePhaseResumeScene *self)
+s32 GamePhaseResumeScene_Update(GamePhaseResumeScene *self)
 {
     switch (self->base.value08) {
     case 0: {
