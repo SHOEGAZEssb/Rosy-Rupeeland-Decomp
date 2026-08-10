@@ -5,7 +5,7 @@
 .extern Sound_Play
 .extern data_020c9670
 .extern data_020d6740
-.extern data_020d6760
+.extern gArcingSpriteEffectAllocationTag
 .extern data_02105610
 .extern VecFx32Object_Destroy
 .extern AnimationResource_Init
@@ -116,7 +116,7 @@ func_02023434: ; 0x02023434
     add sp, sp, #0x3c
     ldmia sp!, {r4, r5, r6, r7, pc}
 .L_02023584: .word data_020d6740
-.L_02023588: .word data_020d6760
+.L_02023588: .word gArcingSpriteEffectAllocationTag
 .L_0202358c: .word gHeapContext
 .L_02023590: .word 0x1714
 .L_02023594: .word 0x1625

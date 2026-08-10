@@ -47,11 +47,11 @@ typedef struct BallisticSpriteEmitter {
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern const char data_020d6680[];
+extern const char gBallisticSpriteParticleListNodeAllocationTag[];
 extern void *data_020d66b8;
 extern void *data_020d6718;
-extern const char data_020d6768[];
-extern const char data_020d6770[];
+extern const char gBallisticSpriteParticleAllocationTag[];
+extern const char gBallisticSpriteEmitterAllocationTag[];
 extern void *gDebugFont;
 extern void *gSoundContext;
 extern u8 *data_021052fc;
@@ -119,7 +119,7 @@ BallisticSpriteEmitter *func_02023a8c(BallisticSpriteEmitter *self,
     self->spriteOwner38 = GraphicsSpriteGroupOwner_CreateGroup(gDebugFont);
 
     for (index = 0; index < 6; index++) {
-        void *particle = Heap_Alloc(0x34, data_020d6768, 4, &gHeapContext);
+        void *particle = Heap_Alloc(0x34, gBallisticSpriteParticleAllocationTag, 4, &gHeapContext);
         if (particle != 0) {
             particle = func_02023890(particle, self->spriteOwner38,
                                      &self->resources18[0], &self->position08,
@@ -169,7 +169,7 @@ void func_02023c0c(ParticleList *self)
 void func_02023c4c(ParticleList *self, void *particle)
 {
     ParticleListNode *node = (ParticleListNode *)Heap_Alloc(
-        0x0c, data_020d6680, 4, &gHeapContext);
+        0x0c, gBallisticSpriteParticleListNodeAllocationTag, 4, &gHeapContext);
     if (node != 0) {
         node->next00 = 0;
         node->previous04 = 0;
@@ -279,7 +279,7 @@ void func_02023ed4(s32 x, s32 y, s32 remaining, s32 direction)
 {
     EmitterVector position;
     BallisticSpriteEmitter *emitter = (BallisticSpriteEmitter *)Heap_Alloc(
-        0x4c, data_020d6770, 4, &gHeapContext);
+        0x4c, gBallisticSpriteEmitterAllocationTag, 4, &gHeapContext);
     VecFx32Object_InitComponents(&position, x << 12, y << 12, 0);
     if (emitter != 0) {
         emitter = func_02023a8c(emitter, &position, remaining, direction);

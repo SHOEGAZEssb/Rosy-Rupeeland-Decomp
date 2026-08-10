@@ -3,8 +3,8 @@
 .extern GameWork_TestFlag
 .extern Heap_Alloc
 .extern Heap_Free
-.extern data_020de860
-.extern data_020de8ec
+.extern gRandomizedSpriteParticleListNodeAllocationTag
+.extern gRandomizedSpriteParticleAllocationTag
 .extern VecFx32Object_Destroy
 .extern VecFx32_Subtract
 .extern func_02028860
@@ -113,8 +113,8 @@ func_02028f04: ; 0x02028f04
     ldmia sp!, {r4, r5, r6, pc}
 .L_02029058: .word gGameWork
 .L_0202905c: .word 0x414
-.L_02029060: .word data_020de8ec
+.L_02029060: .word gRandomizedSpriteParticleAllocationTag
 .L_02029064: .word gHeapContext
-.L_02029068: .word data_020de860
+.L_02029068: .word gRandomizedSpriteParticleListNodeAllocationTag
     .size func_02028f04, . - func_02028f04
 

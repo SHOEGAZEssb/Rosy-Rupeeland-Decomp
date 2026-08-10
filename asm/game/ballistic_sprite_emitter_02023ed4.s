@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/ballistic_sprite_emitter.c.
 .text
 .extern Heap_Alloc
-.extern data_020d6770
+.extern gBallisticSpriteEmitterAllocationTag
 .extern data_021052fc
 .extern VecFx32Object_InitComponents
 .extern VecFx32Object_Destroy
@@ -52,7 +52,7 @@ func_02023ed4: ; 0x02023ed4
 .L_02023f64:
     add sp, sp, #0x10
     ldmia sp!, {r3, r4, r5, r6, r7, r8, r9, pc}
-.L_02023f6c: .word data_020d6770
+.L_02023f6c: .word gBallisticSpriteEmitterAllocationTag
 .L_02023f70: .word gHeapContext
 .L_02023f74: .word data_021052fc
     .size func_02023ed4, . - func_02023ed4

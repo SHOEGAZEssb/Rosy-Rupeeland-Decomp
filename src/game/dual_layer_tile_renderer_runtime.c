@@ -57,7 +57,7 @@ typedef void (*RendererTileMethod)(DualLayerTileRenderer *, s32, s32, s32,
 extern "C" {
 #endif
 extern const char data_020de970[];
-extern const char data_020de984[];
+extern const char gDualLayerTileRendererLayerAllocationTag[];
 extern void *gMainBgPaletteBuffer;
 extern void *gSubBgPaletteBuffer;
 extern void GameFile_Init(void *);
@@ -140,7 +140,7 @@ void func_02029370(DualLayerTileRenderer *self,
         (u16)config->dimension0_38 | ((u32)(u16)config->dimension1_3a << 16);
 
     if (config->layer0Size_1c) {
-        self->layers_28[0] = Heap_Alloc(0x1040, data_020de984, 4,
+        self->layers_28[0] = Heap_Alloc(0x1040, gDualLayerTileRendererLayerAllocationTag, 4,
                                         &gHeapContext);
         if (self->layers_28[0]) {
             if (variant == 0)
@@ -161,7 +161,7 @@ void func_02029370(DualLayerTileRenderer *self,
         self->layerState_34[2] = 0;
     }
     if (config->layer1Size_24) {
-        self->layers_28[1] = Heap_Alloc(0x1040, data_020de984, 4,
+        self->layers_28[1] = Heap_Alloc(0x1040, gDualLayerTileRendererLayerAllocationTag, 4,
                                         &gHeapContext);
         if (self->layers_28[1]) {
             if (variant == 0)

@@ -3,7 +3,7 @@
 .extern Heap_Alloc
 .extern __construct_array
 .extern data_020d6718
-.extern data_020d6768
+.extern gBallisticSpriteParticleAllocationTag
 .extern VecFx32Object_InitCopy
 .extern AnimationResource_Init
 .extern AnimationResource_Destroy
@@ -100,6 +100,6 @@ func_02023a8c: ; 0x02023a8c
 .L_02023bb8: .word 0x1714
 .L_02023bbc: .word 0x1688
 .L_02023bc0: .word gDebugFont
-.L_02023bc4: .word data_020d6768
+.L_02023bc4: .word gBallisticSpriteParticleAllocationTag
 .L_02023bc8: .word gHeapContext
     .size func_02023a8c, . - func_02023a8c

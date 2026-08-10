@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/ballistic_sprite_emitter.c.
 .text
 .extern Heap_Alloc
-.extern data_020d6680
+.extern gBallisticSpriteParticleListNodeAllocationTag
 .extern gHeapContext
 
     .global func_02023c4c
@@ -30,6 +30,6 @@ func_02023c4c: ; 0x02023c4c
     add r1, r1, #0x1
     str r1, [r5, #0xc]
     ldmia sp!, {r3, r4, r5, pc}
-.L_02023ca8: .word data_020d6680
+.L_02023ca8: .word gBallisticSpriteParticleListNodeAllocationTag
 .L_02023cac: .word gHeapContext
     .size func_02023c4c, . - func_02023c4c

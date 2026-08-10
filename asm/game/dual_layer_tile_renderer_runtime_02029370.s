@@ -6,7 +6,7 @@
 .extern GameFile_Open
 .extern Heap_Alloc
 .extern data_020de970
-.extern data_020de984
+.extern gDualLayerTileRendererLayerAllocationTag
 .extern NclFile_LoadCompressedFromFile
 .extern func_02029864
 .extern func_02029914
@@ -218,7 +218,7 @@ func_02029370: ; 0x02029370
     add sp, sp, #0x5c
     ldmia sp!, {r4, r5, r6, r7, pc}
 .L_0202963c: .word data_020de970
-.L_02029640: .word data_020de984
+.L_02029640: .word gDualLayerTileRendererLayerAllocationTag
 .L_02029644: .word gHeapContext
     .size func_02029370, . - func_02029370
 

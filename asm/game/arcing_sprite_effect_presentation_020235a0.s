@@ -5,7 +5,7 @@
 .extern Sound_Play
 .extern data_020c9670
 .extern data_020d6740
-.extern data_020d6760
+.extern gArcingSpriteEffectAllocationTag
 .extern data_02105610
 .extern VecFx32Object_Destroy
 .extern AnimationResource_Init

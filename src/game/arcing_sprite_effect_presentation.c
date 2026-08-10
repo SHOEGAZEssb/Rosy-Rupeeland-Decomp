@@ -15,7 +15,7 @@ typedef struct ArcingSpriteEffectPresentation {
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *data_020d6740;extern const char data_020d6760[];
+extern void *data_020d6740;extern const char gArcingSpriteEffectAllocationTag[];
 extern const s16 data_020c9670[];extern u8 data_02105610;extern void *gSoundContext;
 extern void *func_0201e250(void *);extern void *func_0201e28c(void *);
 extern void *AnimationResource_Init(void *,s32,s32,s32);extern u8 *GraphicsSpriteState_Create(void *,void *,s32,s32,s32,s32,s32);
@@ -44,14 +44,14 @@ ArcingSpriteEffectPresentation *func_02023434(
     func_0201e250(self);self->vtable=(void **)data_020d6740;
     self->frame14=0;self->duration16=(s16)duration;self->state18=0;
     self->amplitude1a=0x30;self->switchResource20=(u8)switchResource;
-    self->firstDescriptor08=(u8 *)Heap_Alloc(0x10,data_020d6760,4,&gHeapContext);
+    self->firstDescriptor08=(u8 *)Heap_Alloc(0x10,gArcingSpriteEffectAllocationTag,4,&gHeapContext);
     if(self->firstDescriptor08)AnimationResource_Init(self->firstDescriptor08,0x1714,0x1715,0x1716);
-    self->secondDescriptor0c=(u8 *)Heap_Alloc(0x10,data_020d6760,4,&gHeapContext);
+    self->secondDescriptor0c=(u8 *)Heap_Alloc(0x10,gArcingSpriteEffectAllocationTag,4,&gHeapContext);
     if(self->secondDescriptor0c)AnimationResource_Init(self->secondDescriptor0c,0x1625,0x1626,0x1627);
     self->sprite10=GraphicsSpriteState_Create(spriteOwner,self->firstDescriptor08,0,0,0,10,0);
     VecFx32Object_ScaleRounded(&a,first,0x4cd);VecFx32Object_ScaleRounded(&b,second,0xb33);
     func_02008378(&combined,&a,&b);VecFx32Object_Destroy(&b);VecFx32Object_Destroy(&a);
-    self->path1c=(u8 *)Heap_Alloc(0x30,data_020d6760,4,&gHeapContext);
+    self->path1c=(u8 *)Heap_Alloc(0x30,gArcingSpriteEffectAllocationTag,4,&gHeapContext);
     if(self->path1c)VecFx32Triple_InitWithValues(self->path1c,first,second,&combined);
     VecFx32Object_Destroy(&combined);return self;
 }

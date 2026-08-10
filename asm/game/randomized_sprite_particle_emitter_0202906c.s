@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/randomized_sprite_particle_emitter.c.
 .text
 .extern Heap_Alloc
-.extern data_020de8f4
+.extern gRandomizedSpriteParticleEmitterAllocationTag
 .extern data_021052fc
 .extern VecFx32Object_InitComponents
 .extern VecFx32Object_InitCopy
@@ -78,7 +78,7 @@ func_0202906c: ; 0x0202906c
     mov r0, r4
     add sp, sp, #0x44
     ldmia sp!, {r4, r5, r6, r7, pc}
-.L_02029164: .word data_020de8f4
+.L_02029164: .word gRandomizedSpriteParticleEmitterAllocationTag
 .L_02029168: .word gHeapContext
 .L_0202916c: .word data_021052fc
     .size func_0202906c, . - func_0202906c

@@ -47,9 +47,9 @@ extern "C" {
 #endif
 extern void *data_020de89c;
 extern void *data_020de8cc;
-extern const char data_020de860[];
-extern const char data_020de8ec[];
-extern const char data_020de8f4[];
+extern const char gRandomizedSpriteParticleListNodeAllocationTag[];
+extern const char gRandomizedSpriteParticleAllocationTag[];
+extern const char gRandomizedSpriteParticleEmitterAllocationTag[];
 extern u8 *data_021052fc;
 extern void *data_020f4e14;
 extern u32 genrand_int32(void);
@@ -225,14 +225,14 @@ s32 func_02028f04(RandomizedSpriteParticleEmitter *self)
         void *particle;
         ParticleListNode *newNode;
         self->spawnTimer_54 = 30 + (s32)(genrand_int32() % 5);
-        particle = Heap_Alloc(0x4c, data_020de8ec, 4, &gHeapContext);
+        particle = Heap_Alloc(0x4c, gRandomizedSpriteParticleAllocationTag, 4, &gHeapContext);
         if (particle)
             particle = func_02028860(particle, self->spriteOwner_4c,
                                      self->resources_2c + 0x10,
                                      &self->position_0c, &self->target_1c,
                                      self->frame_58);
         newNode = (ParticleListNode *)Heap_Alloc(
-            sizeof(ParticleListNode), data_020de860, 4, &gHeapContext);
+            sizeof(ParticleListNode), gRandomizedSpriteParticleListNodeAllocationTag, 4, &gHeapContext);
         if (newNode) {
             newNode->next_00 = 0;
             newNode->previous_04 = 0;
@@ -282,7 +282,7 @@ void *func_0202906c(const void *projection, s32 x0, s32 y0, s32 x1,
     VecFx32Object_InitComponents(&position, x0 << 12, y0 << 12, 0);
     VecFx32Object_InitComponents(&target, x1 << 12, y1 << 12, 0);
     self = (RandomizedSpriteParticleEmitter *)Heap_Alloc(
-        sizeof(RandomizedSpriteParticleEmitter), data_020de8f4, 4,
+        sizeof(RandomizedSpriteParticleEmitter), gRandomizedSpriteParticleEmitterAllocationTag, 4,
         &gHeapContext);
     if (self)
         self = func_02028b98(self, projection, &position, &target, frame);
