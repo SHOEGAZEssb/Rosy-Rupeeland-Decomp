@@ -5,7 +5,7 @@
 .extern Type7Actor_ResetInteractionState
 .extern Type7Actor_UpdateFlag14Bit2FromCondition
 .extern Type7Actor_UpdateFlag14Bit4FromCondition
-.extern func_02048148
+.extern Type7Actor_DispatchCurrentCallback
 .extern func_0204820c
 .extern func_0204876c
 .extern func_0204a5dc
@@ -148,7 +148,7 @@ func_020496cc: ; 0x020496cc
     cmp r0, #0x0
     mov r0, r4
     bne .L_02049730
-    bl func_02048148
+    bl Type7Actor_DispatchCurrentCallback
     mov r0, #0x0
     ldmia sp!, {r4, pc}
 .L_02049730:

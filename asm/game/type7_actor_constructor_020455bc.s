@@ -7,7 +7,7 @@
 .extern func_020050a4
 .extern ActorDerivedRuntime_Init
 .extern Type7Actor_ResetBaseTransformAndMotion
-.extern func_020481dc
+.extern Type7Actor_SetCallbackPair
 .extern func_0204cca8
 .global Type7Actor_Init
 .type Type7Actor_Init, @function
@@ -87,7 +87,7 @@ Type7Actor_Init: ; 0x020455bc
     strne r0, [r4, #0xd0]
     mov r0, r4
     ldmia r1, {r1, r2}
-    bl func_020481dc
+    bl Type7Actor_SetCallbackPair
     mov r1, #0x0
     mov r0, r4
     str r1, [r4, #0x210]

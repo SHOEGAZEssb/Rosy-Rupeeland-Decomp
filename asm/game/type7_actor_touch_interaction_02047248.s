@@ -15,7 +15,7 @@
 .extern ActorDerivedType1_TrySetStateVector
 .extern ActorDerivedRuntime_AcceptInteractionQuery
 .extern Type7Actor_HasSpecialCallbackPair
-.extern func_020481dc
+.extern Type7Actor_SetCallbackPair
 .extern func_020486a8
 .extern func_0204b7bc
 .extern func_0204c74c
@@ -159,7 +159,7 @@ Type7Actor_HandleTouchInteraction: ; 0x02047248
     mov r0, r5
     mov r3, #0x3c
     ldmia r1, {r1, r2}
-    bl func_020481dc
+    bl Type7Actor_SetCallbackPair
     add r0, r5, #0x200
     mov r1, #0x0
     strh r1, [r0, #0xa2]
@@ -234,7 +234,7 @@ Type7Actor_HandleTouchInteraction: ; 0x02047248
     mov r0, r5
     mov r3, #0x14
     ldmia r1, {r1, r2}
-    bl func_020481dc
+    bl Type7Actor_SetCallbackPair
     add r0, r5, #0x224
     add r1, r5, #0x18
     bl func_020050a4

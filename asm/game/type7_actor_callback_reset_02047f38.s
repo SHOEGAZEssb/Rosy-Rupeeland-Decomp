@@ -3,7 +3,7 @@
 .extern GameWork_ClearFlag
 .extern Heap_Free
 .extern data_020e1938
-.extern func_020481dc
+.extern Type7Actor_SetCallbackPair
 .extern func_0206c978
 .extern func_02072b68
 .extern gGameWork
@@ -31,7 +31,7 @@ Type7Actor_ResetCallbackState: ; 0x02047f38
     mov r0, r4
     ldmia r1, {r1, r2}
     mov r3, #0x78
-    bl func_020481dc
+    bl Type7Actor_SetCallbackPair
     mov r0, #0x0
     str r0, [r4, #0x210]
     ldr r0, [r4, #0x268]

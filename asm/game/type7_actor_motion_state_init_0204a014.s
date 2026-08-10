@@ -5,7 +5,7 @@
 .extern gGameWork
 .extern GameWork_TestFlag
 .extern func_0200b2c0
-.extern func_020481dc
+.extern Type7Actor_SetCallbackPair
 .extern func_02072b68
 .text
     .global func_0204a014
@@ -18,7 +18,7 @@ func_0204a014: ; 0x0204a014
     str r2, [r4, #0x210]
     sub r3, r2, #0x1
     ldmia r1, {r1, r2}
-    bl func_020481dc
+    bl Type7Actor_SetCallbackPair
     mov r0, #0xc
     strh r0, [r4, #0xd6]
     ldr r0, [r4, #0x14]
@@ -73,7 +73,7 @@ func_0204a0d8: ; 0x0204a0d8
     mov r4, r1
     mov r3, #0x3c
     ldmia r2, {r1, r2}
-    bl func_020481dc
+    bl Type7Actor_SetCallbackPair
     ldr r1, [r5, #0x14]
     mov r0, r5
     bic r1, r1, #0x2

@@ -15,9 +15,9 @@ extern void func_0201f864(void *allocation, const void *transform, u32 value,
                           s32 firstId, s32 centerId, s32 lastId, s32 zero,
                           s32 presentation, s32 variant, s32 enabled);
 extern void func_02034a60(void *actor, s32 event, s32 value);
-extern void func_02048000(void *actor);
-extern void func_020480c8(void *actor);
-extern void func_02048148(void *actor);
+extern void Type7Actor_SelectRandomCallback(void *actor);
+extern void Type7Actor_SelectRandomCallbackPair01(void *actor);
+extern void Type7Actor_DispatchCurrentCallback(void *actor);
 extern void func_0204b7bc(void *actor, s32 mode);
 #ifdef __cplusplus
 }
@@ -55,7 +55,7 @@ static void complete_related_interaction(u8 *actor)
  * Input is a type-seven actor. Set duration-like halfword +0x2a0 to 180,
  * signed field +0x250 to -60, and adjustment +0x2a2 to zero. Configure shared
  * state with func_0204b7bc mode four, then install the randomized two-choice
- * callback through func_020480c8. Actor timing, mode, random, and callback
+ * callback through Type7Actor_SelectRandomCallbackPair01. Actor timing, mode, random, and callback
  * state may change; there is no return value or direct hardware access.
  */
 void func_02049be8(void *self)
@@ -65,7 +65,7 @@ void func_02049be8(void *self)
     *(s16 *)(actor + 0x250) = -60;
     *(u16 *)(actor + 0x2a2) = 0;
     func_0204b7bc(actor, 4);
-    func_020480c8(actor);
+    Type7Actor_SelectRandomCallbackPair01(actor);
 }
 
 /*
@@ -86,7 +86,7 @@ s32 func_02049c20(void *self)
     *(u32 *)(actor + 0xd0) |= 2;
     *(u16 *)(actor + 0xd6) = 16;
     if ((*(u16 *)(*(u8 **)(actor + 0x54) + 0x24) & 1) != 0) {
-        func_02048148(actor);
+        Type7Actor_DispatchCurrentCallback(actor);
         return 0;
     }
     ++*(s16 *)(actor + 0x248);
@@ -101,7 +101,7 @@ s32 func_02049c20(void *self)
  * Input is a type-seven actor. If related object +0x210 has subtype byte four
  * and halfword ID 0x68, perform the same event, virtual callback, and effect
  * creation as func_02049c20. Then always select a fresh randomized callback
- * through func_02048000. Actor, target, event, random, callback, and heap-owned
+ * through Type7Actor_SelectRandomCallback. Actor, target, event, random, callback, and heap-owned
  * presentation state may change; Heap_Alloc is the SDK-facing effect. No value
  * is returned.
  */
@@ -112,5 +112,5 @@ void func_02049d64(void *self)
     if (related != 0 && related[0x4d] == 4
         && *(u16 *)(related + 0x4e) == 0x68)
         complete_related_interaction(actor);
-    func_02048000(actor);
+    Type7Actor_SelectRandomCallback(actor);
 }

@@ -20,7 +20,7 @@ extern void Actor_SetInteractionFlag2000(void *actor, const void *input);
 extern s32 func_0204c74c(void *actor, const void *input);
 extern s32 Type7Actor_HasSpecialCallbackPair(const void *actor);
 extern void func_0204b7bc(void *actor, s32 mode);
-extern void func_020481dc(void *actor, u32 first, u32 second, s32 duration);
+extern void Type7Actor_SetCallbackPair(void *actor, u32 first, u32 second, s32 duration);
 extern void TouchPoint_Init(void *point, s32 x, s32 y);
 extern void func_02005030(void *destination, const void *source);
 extern void func_02005058(void *value);
@@ -133,7 +133,7 @@ s32 Type7Actor_HandleTouchInteraction(void *self, const void *inputRecord)
             *(s16 *)(actor + 0x264) = -20;
             func_0204b7bc(actor, 4);
         } else {
-            func_020481dc(actor, data_020e1730[0], data_020e1730[1], 60);
+            Type7Actor_SetCallbackPair(actor, data_020e1730[0], data_020e1730[1], 60);
             *(u16 *)(actor + 0x2a2) = 0;
         }
         if (target[0x4d] == 1) {
@@ -155,7 +155,7 @@ s32 Type7Actor_HandleTouchInteraction(void *self, const void *inputRecord)
         *(u16 *)(actor + 0x266) = 0;
         flags = *(u32 *)(actor + 0x268);
         *(u32 *)(actor + 0x268) = (flags | 4) & ~0xa0;
-        func_020481dc(actor, data_020e18f8[0], data_020e18f8[1], 20);
+        Type7Actor_SetCallbackPair(actor, data_020e18f8[0], data_020e18f8[1], 20);
         func_020050a4(actor + 0x224, actor + 0x18);
         *(u16 *)(actor + 0x250) = 90;
         if (record[0x54] == 2)

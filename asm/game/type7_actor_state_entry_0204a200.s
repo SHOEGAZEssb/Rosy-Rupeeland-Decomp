@@ -5,7 +5,7 @@
 .extern func_0200b2c0
 .extern AttachmentController_SetEnabled
 .extern Type7Actor_ResetMotionAndCooldown
-.extern func_020481dc
+.extern Type7Actor_SetCallbackPair
 .text
     .global func_0204a200
 .type func_0204a200, @function
@@ -19,7 +19,7 @@ func_0204a200: ; 0x0204a200
     str r2, [r4, #0x210]
     sub r3, r2, #0x1
     ldmia r1, {r1, r2}
-    bl func_020481dc
+    bl Type7Actor_SetCallbackPair
     mov r1, #0x0
     mov r0, #0x4
     strh r0, [r4, #0xd6]
@@ -81,7 +81,7 @@ func_0204a2e8: ; 0x0204a2e8
     str r2, [r4, #0x210]
     sub r3, r2, #0x1
     ldmia r1, {r1, r2}
-    bl func_020481dc
+    bl Type7Actor_SetCallbackPair
     mov r1, #0x0
     ldr r0, [r4, #0x268]
     mov r2, r1
@@ -116,7 +116,7 @@ func_0204a360: ; 0x0204a360
     str r2, [r4, #0x210]
     sub r3, r2, #0x1
     ldmia r1, {r1, r2}
-    bl func_020481dc
+    bl Type7Actor_SetCallbackPair
     mov r1, #0x0
     ldr r0, [r4, #0x268]
     mov r2, r1

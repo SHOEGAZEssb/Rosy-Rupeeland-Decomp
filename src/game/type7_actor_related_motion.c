@@ -14,7 +14,7 @@ extern void Type7Actor_UpdateMotionTowardTransform(void *actor, const void *tran
 extern void Type7Actor_ResetInteractionState(void *actor);
 extern void Type7Actor_UpdateFlag14Bit2FromCondition(void *actor, s32 condition);
 extern void Type7Actor_UpdateFlag14Bit4FromCondition(void *actor, s32 condition);
-extern void func_02048148(void *actor);
+extern void Type7Actor_DispatchCurrentCallback(void *actor);
 extern s32 func_0204820c(void *actor);
 extern s32 func_0204876c(void *actor, s32 finiteMode);
 extern void func_0204a5dc(void *actor);
@@ -140,7 +140,7 @@ s32 func_020496cc(void *self)
         return 0;
     }
     if (func_0204876c(actor, 1) == 0) {
-        func_02048148(actor);
+        Type7Actor_DispatchCurrentCallback(actor);
         return 0;
     }
     if (func_0204820c(actor) != 0)

@@ -15,7 +15,7 @@ extern u8 *data_021052fc;
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_020481dc(void *actor, u32 first, u32 second, s32 duration);
+extern void Type7Actor_SetCallbackPair(void *actor, u32 first, u32 second, s32 duration);
 #ifdef __cplusplus
 }
 #endif
@@ -55,7 +55,7 @@ void func_0204a3d8(void *self, void *candidate)
                               *(void **)(data_020e1758 + 4)))
         return;
     *(void **)(actor + 0x210) = candidate;
-    func_020481dc(actor, data_020e1760[0], data_020e1760[1], -1);
+    Type7Actor_SetCallbackPair(actor, data_020e1760[0], data_020e1760[1], -1);
 }
 
 /*

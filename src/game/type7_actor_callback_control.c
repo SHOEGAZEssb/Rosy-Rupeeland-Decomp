@@ -17,7 +17,7 @@ extern void GameWork_ClearFlag(void *gameWork, u32 flag);
 extern void Heap_Free(void *allocation);
 extern void func_0206c978(void *resource);
 extern void func_02072b68(void *object, u32 value);
-extern void func_020481dc(void *actor, u32 first, u32 second, s32 duration);
+extern void Type7Actor_SetCallbackPair(void *actor, u32 first, u32 second, s32 duration);
 extern u32 genrand_int32(void);
 extern s32 func_020ada8c(s32 value, s32 divisor);
 extern void OS_Halt(void);
@@ -51,7 +51,7 @@ void Type7Actor_ResetCallbackState(void *self)
     *(u16 *)(actor + 0xd6) = 3;
     *(u16 *)(actor + 0x264) = 60;
     func_02072b68(*(void **)(actor + 0x54), (actor[0xd4] + 8) & 0xff);
-    func_020481dc(actor, data_020e1938[0], data_020e1938[1], 120);
+    Type7Actor_SetCallbackPair(actor, data_020e1938[0], data_020e1938[1], 120);
     *(void **)(actor + 0x210) = 0;
     *(u32 *)(actor + 0x268) &= ~0xa0;
     resource = *(void **)(actor + 0x234);
@@ -75,7 +75,7 @@ void Type7Actor_ResetCallbackState(void *self)
  * and +0x10 mask 0x1f0000. Random, callback, actor flag, and animation state
  * change; no value is returned and there is no direct hardware access.
  */
-void func_02048000(void *self)
+void Type7Actor_SelectRandomCallback(void *self)
 {
     u8 *actor = (u8 *)self;
     u32 random = genrand_int32() & 0x7fffffff;
@@ -96,7 +96,7 @@ void func_02048000(void *self)
         timer = func_020ada8c((s32)random, 120) + 80;
     }
     *(u16 *)(actor + 0x24a) = (u16)timer;
-    func_020481dc(actor, data_020e19d4[index * 2],
+    Type7Actor_SetCallbackPair(actor, data_020e19d4[index * 2],
                   data_020e19d4[index * 2 + 1], timer);
     enter_callback_mode(actor);
     *(u32 *)(actor + 0x14) &= ~(2 | 4);
@@ -111,7 +111,7 @@ void func_02048000(void *self)
  * Random, callback, actor flag, and animation state change; no value is
  * returned and no hardware is accessed directly.
  */
-void func_020480c8(void *self)
+void Type7Actor_SelectRandomCallbackPair01(void *self)
 {
     u8 *actor = (u8 *)self;
     u32 selector = genrand_int32();
@@ -120,7 +120,7 @@ void func_020480c8(void *self)
     s32 index = selector & 1;
 
     *(u16 *)(actor + 0x24a) = (u16)timer;
-    func_020481dc(actor, data_020e19d4[index * 2],
+    Type7Actor_SetCallbackPair(actor, data_020e19d4[index * 2],
                   data_020e19d4[index * 2 + 1], timer);
     enter_callback_mode(actor);
     *(u32 *)(actor + 0x14) &= ~(2 | 4);
@@ -137,7 +137,7 @@ void func_020480c8(void *self)
  * no pair matches, call OS_Halt; it is expected not to return. Callback state
  * may change and OS_Halt is a direct SDK effect. This routine returns no value.
  */
-void func_02048148(void *self)
+void Type7Actor_DispatchCurrentCallback(void *self)
 {
     u8 *actor = (u8 *)self;
     s32 i;
@@ -171,7 +171,7 @@ void func_02048148(void *self)
  * duration at +0x24a. No value is returned and there are no SDK or hardware
  * effects.
  */
-void func_020481dc(void *self, u32 first, u32 second, s32 duration)
+void Type7Actor_SetCallbackPair(void *self, u32 first, u32 second, s32 duration)
 {
     u8 *actor = (u8 *)self;
     *(u32 *)(actor + 0x208) = first;

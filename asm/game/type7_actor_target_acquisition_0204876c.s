@@ -10,7 +10,7 @@
 .extern Actor_GetCachedTerrainHeight
 .extern ActorDerivedType1_IsSpecialRecordActive
 .extern Type7Actor_HasSpecialCallbackPair
-.extern func_020481dc
+.extern Type7Actor_SetCallbackPair
 .extern func_020adcac
 .extern func_020be334
 .global func_0204876c
@@ -80,14 +80,14 @@ func_0204876c: ; 0x0204876c
     mov r0, r10
     mov r3, #0x14
     ldmia r1, {r1, r2}
-    bl func_020481dc
+    bl Type7Actor_SetCallbackPair
     b .L_02048878
 .L_02048864:
     ldr r1, .L_02048a38
     mov r0, r10
     mvn r3, #0x0
     ldmia r1, {r1, r2}
-    bl func_020481dc
+    bl Type7Actor_SetCallbackPair
 .L_02048878:
     mov r0, #0x1
     ldmia sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, pc}
@@ -191,14 +191,14 @@ func_0204876c: ; 0x0204876c
     mov r0, r10
     mov r3, #0x14
     ldmia r1, {r1, r2}
-    bl func_020481dc
+    bl Type7Actor_SetCallbackPair
     b .L_02048a0c
 .L_020489f8:
     ldr r1, .L_02048a48
     mov r0, r10
     mvn r3, #0x0
     ldmia r1, {r1, r2}
-    bl func_020481dc
+    bl Type7Actor_SetCallbackPair
 .L_02048a0c:
     add r0, r10, #0x200
     mov r1, #0x3c

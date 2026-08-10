@@ -4,9 +4,9 @@
 .extern Heap_Alloc
 .extern func_0201f864
 .extern func_02034a60
-.extern func_02048000
-.extern func_020480c8
-.extern func_02048148
+.extern Type7Actor_SelectRandomCallback
+.extern Type7Actor_SelectRandomCallbackPair01
+.extern Type7Actor_DispatchCurrentCallback
 .extern func_0204b7bc
 .text
     .global func_02049be8
@@ -24,7 +24,7 @@ func_02049be8: ; 0x02049be8
     strh r3, [r2, #0xa2]
     bl func_0204b7bc
     mov r0, r4
-    bl func_020480c8
+    bl Type7Actor_SelectRandomCallbackPair01
     ldmia sp!, {r4, pc}
 .size func_02049be8, . - func_02049be8
 
@@ -48,7 +48,7 @@ func_02049c20: ; 0x02049c20
     mov r1, r1, lsl #0x10
     movs r1, r1, lsr #0x10
     beq .L_02049c6c
-    bl func_02048148
+    bl Type7Actor_DispatchCurrentCallback
     b .L_02049d4c
 .L_02049c6c:
     add r0, r4, #0x200
@@ -173,7 +173,7 @@ func_02049d64: ; 0x02049d64
     bl func_0201f864
 .L_02049e34:
     mov r0, r4
-    bl func_02048000
+    bl Type7Actor_SelectRandomCallback
     add sp, sp, #0x18
     ldmia sp!, {r4, pc}
 .L_02049e44: .word data_020e1d0c

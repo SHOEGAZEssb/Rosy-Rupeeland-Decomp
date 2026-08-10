@@ -14,8 +14,8 @@ extern "C" {
 extern void func_0201f864(void *allocation, const void *transform, u32 value,
                           s32 firstId, s32 centerId, s32 lastId, s32 zero,
                           s32 presentation, s32 negativeOne, s32 enabled);
-extern void func_02048000(void *actor);
-extern void func_02048148(void *actor);
+extern void Type7Actor_SelectRandomCallback(void *actor);
+extern void Type7Actor_DispatchCurrentCallback(void *actor);
 extern s32 func_0204876c(void *actor, s32 finiteMode);
 extern s32 func_020ada8c(s32 value, s32 divisor);
 #ifdef __cplusplus
@@ -77,7 +77,7 @@ s32 func_020497d0(void *self)
  * Input is a type-seven actor. When actor flag 0x200 is set, clear it and run
  * finite-mode-zero target acquisition. If acquisition succeeds, clear actor
  * +0x14 bits two/four and +0x10 mask 0x1f0000, then return. Otherwise select a
- * fresh randomized callback through func_02048000. Actor flags, target, random,
+ * fresh randomized callback through Type7Actor_SelectRandomCallback. Actor flags, target, random,
  * and callback state may change; there is no return value or direct hardware
  * access.
  */
@@ -92,7 +92,7 @@ void func_0204988c(void *self)
             return;
         }
     }
-    func_02048000(actor);
+    Type7Actor_SelectRandomCallback(actor);
 }
 
 /*
@@ -105,7 +105,7 @@ s32 func_020498e4(void *self)
 {
     u8 *actor = (u8 *)self;
     if ((*(u32 *)(actor + 0x10) & 4) == 0) {
-        func_02048148(actor);
+        Type7Actor_DispatchCurrentCallback(actor);
     } else {
         *(u16 *)(actor + 0xd6) = 12;
         set_actor_mode(actor, 0);

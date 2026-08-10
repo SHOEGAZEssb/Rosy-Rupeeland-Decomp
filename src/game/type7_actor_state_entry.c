@@ -15,7 +15,7 @@ extern "C" {
 extern void func_0200b2c0(void *value, s32 x, s32 y, s32 z);
 extern void AttachmentController_SetEnabled(void *value, s32 mode);
 extern void Type7Actor_ResetMotionAndCooldown(void *actor);
-extern void func_020481dc(void *actor, u32 first, u32 second, s32 duration);
+extern void Type7Actor_SetCallbackPair(void *actor, u32 first, u32 second, s32 duration);
 #ifdef __cplusplus
 }
 #endif
@@ -45,7 +45,7 @@ void func_0204a200(void *self, s32 condition)
     u8 *actor = (u8 *)self;
     if (condition != 0) {
         *(void **)(actor + 0x210) = 0;
-        func_020481dc(actor, data_020e18b8[0], data_020e18b8[1], -1);
+        Type7Actor_SetCallbackPair(actor, data_020e18b8[0], data_020e18b8[1], -1);
         *(u16 *)(actor + 0xd6) = 4;
         *(u32 *)(actor + 0x268) =
             (*(u32 *)(actor + 0x268) & ~0x20) | 0x40;
@@ -76,7 +76,7 @@ void func_0204a2e8(void *self)
 {
     u8 *actor = (u8 *)self;
     *(void **)(actor + 0x210) = 0;
-    func_020481dc(actor, data_020e18b0[0], data_020e18b0[1], -1);
+    Type7Actor_SetCallbackPair(actor, data_020e18b0[0], data_020e18b0[1], -1);
     *(u32 *)(actor + 0x268) |= 0x20;
     *(u16 *)(actor + 0xd6) = 5;
     clear_motion_vectors(actor);
@@ -93,7 +93,7 @@ void func_0204a360(void *self)
 {
     u8 *actor = (u8 *)self;
     *(void **)(actor + 0x210) = 0;
-    func_020481dc(actor, data_020e18a8[0], data_020e18a8[1], -1);
+    Type7Actor_SetCallbackPair(actor, data_020e18a8[0], data_020e18a8[1], -1);
     *(u32 *)(actor + 0x268) |= 0x80;
     *(u16 *)(actor + 0xd6) = 4;
     clear_motion_vectors(actor);

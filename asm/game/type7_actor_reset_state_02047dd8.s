@@ -4,7 +4,7 @@
 .extern Heap_Free
 .extern data_020e1930
 .extern AttachmentController_SetEnabled
-.extern func_020481dc
+.extern Type7Actor_SetCallbackPair
 .extern func_0206c978
 .extern func_0206e590
 .extern func_02072b68
@@ -73,7 +73,7 @@ Type7Actor_ResetInteractionState: ; 0x02047dd8
     mov r0, r4
     mov r3, #0x78
     ldmia r1, {r1, r2}
-    bl func_020481dc
+    bl Type7Actor_SetCallbackPair
     ldr r1, [r4, #0x14]
     add r0, r4, #0x200
     bic r1, r1, #0x2

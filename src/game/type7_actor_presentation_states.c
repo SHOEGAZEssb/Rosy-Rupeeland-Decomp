@@ -11,7 +11,7 @@ extern void *gSoundContext;
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_02048148(void *actor);
+extern void Type7Actor_DispatchCurrentCallback(void *actor);
 extern void func_020593dc(void *soundContext, s32 zero, s32 soundId,
                           void *actor, s32 parameter, s32 volume);
 #ifdef __cplusplus
@@ -33,7 +33,7 @@ s32 func_02049e50(void *self)
     *(u32 *)(actor + 0xd0) &= ~2;
     *(u16 *)(actor + 0xd6) = 17;
     if (*(void **)(globalObject + 0x270) == 0)
-        func_02048148(actor);
+        Type7Actor_DispatchCurrentCallback(actor);
     return 0;
 }
 

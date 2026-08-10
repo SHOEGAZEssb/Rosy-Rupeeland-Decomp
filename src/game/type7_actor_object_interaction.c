@@ -21,7 +21,7 @@ extern "C" {
 extern s32 func_0204c74c(void *actor, const void *other);
 extern s32 func_020486a8(void *actor);
 extern s32 Type7Actor_HasSpecialCallbackPair(const void *actor);
-extern void func_020481dc(void *actor, u32 first, u32 second, s32 duration);
+extern void Type7Actor_SetCallbackPair(void *actor, u32 first, u32 second, s32 duration);
 extern void func_0204b7bc(void *actor, s32 mode);
 extern void *func_0201f864(void *allocation, ...);
 extern void Type7Actor_SetMotionTarget(void *actor, const void *transform);
@@ -88,7 +88,7 @@ void func_02048378(void *self, void *otherObject)
             return;
         *(void **)(actor + 0x210) = other;
         if (Type7Actor_HasSpecialCallbackPair(actor) == 0) {
-            func_020481dc(actor, data_020e1908[0], data_020e1908[1], 20);
+            Type7Actor_SetCallbackPair(actor, data_020e1908[0], data_020e1908[1], 20);
             *(u16 *)(actor + 0x256) = 60;
             *(u16 *)(actor + 0x25a) = 180;
             return;
@@ -100,7 +100,7 @@ void func_02048378(void *self, void *otherObject)
             return;
         *(u16 *)(actor + 0x2a2) = 0;
         *(u16 *)(actor + 0x2a4) = 120;
-        func_020481dc(actor, data_020e1798[0], data_020e1798[1], -1);
+        Type7Actor_SetCallbackPair(actor, data_020e1798[0], data_020e1798[1], -1);
         *(u16 *)(actor + 0x256) = 60;
         *(u16 *)(actor + 0x25a) = 180;
         func_0204b7bc(actor, 0);
@@ -119,7 +119,7 @@ void func_02048378(void *self, void *otherObject)
         u16 kind;
         if ((*(u32 *)(actor + 0xd0) & 0x40000) != 0) {
             *(u16 *)(actor + 0x24a) = 180;
-            func_020481dc(actor, data_020e1750[0], data_020e1750[1], 180);
+            Type7Actor_SetCallbackPair(actor, data_020e1750[0], data_020e1750[1], 180);
             *(void **)(actor + 0x210) = other;
             return;
         }

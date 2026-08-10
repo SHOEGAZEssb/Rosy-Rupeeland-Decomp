@@ -11,7 +11,7 @@ extern "C" {
 #endif
 extern void *func_020050a4(void *destination, const void *source);
 extern void Type7Actor_UpdateMotionTowardTransform(void *actor, const void *transform);
-extern void func_02048148(void *actor);
+extern void Type7Actor_DispatchCurrentCallback(void *actor);
 extern s32 func_020adae4(s32 value, s32 divisor);
 #ifdef __cplusplus
 }
@@ -42,7 +42,7 @@ s32 func_02049ad4(void *self)
     *(u32 *)(actor + 0xd0) |= 2;
     related = *(u8 **)(actor + 0x210);
     if (related == 0) {
-        func_02048148(actor);
+        Type7Actor_DispatchCurrentCallback(actor);
         return 0;
     }
 

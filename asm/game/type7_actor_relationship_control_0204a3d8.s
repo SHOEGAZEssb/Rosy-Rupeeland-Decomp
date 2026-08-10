@@ -5,7 +5,7 @@
 .extern data_020e1768
 .extern data_020e1890
 .extern data_021052fc
-.extern func_020481dc
+.extern Type7Actor_SetCallbackPair
 .text
     .global func_0204a3d8
 .type func_0204a3d8, @function
@@ -64,7 +64,7 @@ func_0204a3d8: ; 0x0204a3d8
     mvn r3, #0x0
     str r1, [r0, #0x210]
     ldmia r2, {r1, r2}
-    bl func_020481dc
+    bl Type7Actor_SetCallbackPair
     ldmia sp!, {r4, pc}
 .L_0204a4a8: .word data_020e16b0
 .L_0204a4ac: .word data_020e1768

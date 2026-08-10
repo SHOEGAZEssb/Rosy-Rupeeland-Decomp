@@ -11,7 +11,7 @@
 .extern func_02034568
 .extern func_02034718
 .extern ActorDerivedType1_SetSpecialModeEnabled
-.extern func_020481dc
+.extern Type7Actor_SetCallbackPair
 .extern func_0206c978
 .extern func_0206e590
 .extern func_020adae4
@@ -429,7 +429,7 @@ func_0204a988: ; 0x0204a988
     str r2, [r8, #0x14]
     mvn r3, #0x0
     ldmia r1, {r1, r2}
-    bl func_020481dc
+    bl Type7Actor_SetCallbackPair
     ldr r4, [r8, #0x54]
     ldr r1, .L_0204afc8
     ldrh r3, [r4, #0x24]

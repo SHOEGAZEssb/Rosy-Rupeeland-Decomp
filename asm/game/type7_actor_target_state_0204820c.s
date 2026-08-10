@@ -7,7 +7,7 @@
 .extern data_021052fc
 .extern func_020050a4
 .extern Type7Actor_HasSpecialCallbackPair
-.extern func_020481dc
+.extern Type7Actor_SetCallbackPair
 .extern func_020adcac
 .global func_0204820c
 .global func_0204832c
@@ -82,7 +82,7 @@ func_0204820c: ; 0x0204820c
     mov r0, r4
     mov r3, #0x78
     ldmia r1, {r1, r2}
-    bl func_020481dc
+    bl Type7Actor_SetCallbackPair
     mov r0, #0x1
     ldmia sp!, {r3, r4, r5, pc}
 .L_02048314:
@@ -108,7 +108,7 @@ func_0204832c: ; 0x0204832c
     sub r3, r2, #0x1
     str r2, [r0, #0x210]
     ldmia r1, {r1, r2}
-    bl func_020481dc
+    bl Type7Actor_SetCallbackPair
     mov r0, #0x1
     ldmia sp!, {r3, pc}
 .L_02048370: .word data_021052fc

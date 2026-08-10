@@ -12,7 +12,7 @@
 .extern func_0201f864
 .extern Type7Actor_HasSpecialCallbackPair
 .extern Type7Actor_SetMotionTarget
-.extern func_020481dc
+.extern Type7Actor_SetCallbackPair
 .extern func_020486a8
 .extern func_0204b7bc
 .extern func_0204c74c
@@ -104,7 +104,7 @@ func_02048378: ; 0x02048378
     mov r0, r5
     ldmia r1, {r1, r2}
     mov r3, #0x14
-    bl func_020481dc
+    bl Type7Actor_SetCallbackPair
     add r0, r5, #0x200
     mov r1, #0x3c
     strh r1, [r0, #0x56]
@@ -139,7 +139,7 @@ func_02048378: ; 0x02048378
     mov r0, r5
     sub r3, r2, #0x79
     ldmia r1, {r1, r2}
-    bl func_020481dc
+    bl Type7Actor_SetCallbackPair
     add r2, r5, #0x200
     mov r1, #0x3c
     mov r0, r5
@@ -185,7 +185,7 @@ func_02048378: ; 0x02048378
     strh r3, [r0, #0x4a]
     ldmia r1, {r1, r2}
     mov r0, r5
-    bl func_020481dc
+    bl Type7Actor_SetCallbackPair
     str r4, [r5, #0x210]
     b .L_02048678
 .L_020485f8:

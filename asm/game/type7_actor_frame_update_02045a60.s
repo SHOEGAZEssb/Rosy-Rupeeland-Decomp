@@ -18,7 +18,7 @@
 .extern ActorDerivedRuntime_UpdateFrame
 .extern Actor_UpdateGroundContactProbe
 .extern Type7Actor_ResetMotionAndCooldown
-.extern func_02048148
+.extern Type7Actor_DispatchCurrentCallback
 .extern func_02048b94
 .extern func_0204b1e0
 .extern func_0204b7bc
@@ -218,7 +218,7 @@ Type7Actor_UpdateFrame: ; 0x02045a60
     mov r1, #0x0
     strb r1, [r0, #0x8d]
     mov r0, r4
-    bl func_02048148
+    bl Type7Actor_DispatchCurrentCallback
 .L_02045d34:
     ldr r1, [r4, #0x280]
     cmp r1, #0x0
@@ -272,7 +272,7 @@ Type7Actor_UpdateFrame: ; 0x02045a60
     strlth r1, [r0, #0x48]
     blt .L_02045dfc
     mov r0, r4
-    bl func_02048148
+    bl Type7Actor_DispatchCurrentCallback
 .L_02045dfc:
     ldr r0, [r4, #0x20c]
     tst r0, #0x1

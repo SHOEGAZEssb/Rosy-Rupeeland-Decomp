@@ -20,7 +20,7 @@ extern s32 Actor_GetCachedTerrainHeight(void *actor);
 extern s32 func_02034568(void *actor, s32 x, s32 y, s32 height);
 extern s32 func_02034718(void *actor, s32 x, s32 y, s32 height);
 extern void ActorDerivedType1_SetSpecialModeEnabled(void *object, s32 value);
-extern void func_020481dc(void *actor, u32 value0, u32 value1, s32 index);
+extern void Type7Actor_SetCallbackPair(void *actor, u32 value0, u32 value1, s32 index);
 extern void func_0206c978(void *object);
 extern void func_0206e590(void *object, s32 value);
 extern s32 func_020adae4(s32 value, s32 divisor);
@@ -205,7 +205,7 @@ void func_0204a988(void *self, const VecFx32Object *destination, s32 direction)
         *(u32 *)(actor + 0x268) |= 0x80004;
         *(u32 *)(actor + 0x14) =
             (*(u32 *)(actor + 0x14) | 6) & ~0x02000000;
-        func_020481dc(actor, data_020e17e8[0], data_020e17e8[1], -1);
+        Type7Actor_SetCallbackPair(actor, data_020e17e8[0], data_020e17e8[1], -1);
         *(u16 *)(*(u8 **)(actor + 0x54) + 0x24) &= (u16)~0x10;
         *(u16 *)(actor + 0x246) = 0;
         ActorDerivedType1_SetSpecialModeEnabled(*(void **)(data_021052fc + 0x2ea4), 1);

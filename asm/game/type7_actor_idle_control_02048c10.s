@@ -8,7 +8,7 @@
 .extern func_020099c0
 .extern func_0204820c
 .extern func_0204832c
-.extern func_020481dc
+.extern Type7Actor_SetCallbackPair
 .extern func_0204876c
 .extern func_02048a4c
 .extern func_02048bcc
@@ -65,7 +65,7 @@ func_02048c2c: ; 0x02048c2c
     sub r3, r2, #0x1
     mov r0, r4
     ldmia r1, {r1, r2}
-    bl func_020481dc
+    bl Type7Actor_SetCallbackPair
     ldr r1, [r4, #0x14]
     mov r0, r4
     orr r1, r1, #0x6
@@ -92,7 +92,7 @@ func_02048c2c: ; 0x02048c2c
     mov r0, r4
     mvn r3, #0x0
     ldmia r1, {r1, r2}
-    bl func_020481dc
+    bl Type7Actor_SetCallbackPair
     ldr r1, [r4, #0x14]
     mov r0, r4
     orr r1, r1, #0x6

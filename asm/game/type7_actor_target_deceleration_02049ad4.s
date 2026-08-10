@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/type7_actor_target_deceleration.c.
 .extern func_020050a4
 .extern Type7Actor_UpdateMotionTowardTransform
-.extern func_02048148
+.extern Type7Actor_DispatchCurrentCallback
 .extern func_020adae4
 .text
     .global func_02049ad4
@@ -18,7 +18,7 @@ func_02049ad4: ; 0x02049ad4
     ldr r1, [r4, #0x210]
     cmp r1, #0x0
     bne .L_02049b0c
-    bl func_02048148
+    bl Type7Actor_DispatchCurrentCallback
     mov r0, #0x0
     ldmia sp!, {r4, pc}
 .L_02049b0c:

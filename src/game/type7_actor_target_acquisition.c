@@ -18,7 +18,7 @@ extern "C" {
 #endif
 extern s32 ActorDerivedType1_IsSpecialRecordActive(void *object);
 extern s32 Type7Actor_HasSpecialCallbackPair(const void *actor);
-extern void func_020481dc(void *actor, u32 first, u32 second, s32 duration);
+extern void Type7Actor_SetCallbackPair(void *actor, u32 first, u32 second, s32 duration);
 extern s32 Actor_GetCachedTerrainHeight(void *actor);
 extern s32 func_020be334(s32 value);
 extern s32 func_020adcac(const void *first, const void *second);
@@ -87,10 +87,10 @@ s32 func_0204876c(void *self, s32 finiteMode)
             *(void **)(actor + 0x210) = globalObject;
             if (Type7Actor_HasSpecialCallbackPair(actor) == 0) {
                 if (finiteMode != 0)
-                    func_020481dc(actor, data_020e16e8[0],
+                    Type7Actor_SetCallbackPair(actor, data_020e16e8[0],
                                   data_020e16e8[1], 20);
                 else
-                    func_020481dc(actor, data_020e18f0[0],
+                    Type7Actor_SetCallbackPair(actor, data_020e18f0[0],
                                   data_020e18f0[1], -1);
             }
             return 1;
@@ -131,9 +131,9 @@ s32 func_0204876c(void *self, s32 finiteMode)
     *(void **)(actor + 0x210) = data_02105690[bestIndex];
     if (Type7Actor_HasSpecialCallbackPair(actor) == 0) {
         if (finiteMode != 0)
-            func_020481dc(actor, data_020e18e8[0], data_020e18e8[1], 20);
+            Type7Actor_SetCallbackPair(actor, data_020e18e8[0], data_020e18e8[1], 20);
         else
-            func_020481dc(actor, data_020e18e0[0], data_020e18e0[1], -1);
+            Type7Actor_SetCallbackPair(actor, data_020e18e0[0], data_020e18e0[1], -1);
         *(u16 *)(actor + 0x256) = 60;
         *(u16 *)(actor + 0x25a) = 0;
     }

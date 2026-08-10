@@ -18,7 +18,7 @@ extern void func_02048bcc(void *actor);
 extern s32 func_0206e3d0(void *object, void *resource);
 extern void func_0206c978(void *resource);
 extern void GameWork_ClearFlag(void *gameWork, u32 flag);
-extern void func_020481dc(void *actor, u32 first, u32 second, s32 duration);
+extern void Type7Actor_SetCallbackPair(void *actor, u32 first, u32 second, s32 duration);
 extern s32 func_0206cc68(void *object, void *actor, s32 mode);
 extern void func_020099c0(void *context, s32 id, s32 mode);
 extern s32 func_0204832c(void *actor);
@@ -74,11 +74,11 @@ void func_02048c2c(void *self, void *object)
         Heap_Free(resource);
         GameWork_ClearFlag(gGameWork, 0x3fd);
         *(void **)(actor + 0x234) = 0;
-        func_020481dc(actor, data_020e1788[0], data_020e1788[1], -1);
+        Type7Actor_SetCallbackPair(actor, data_020e1788[0], data_020e1788[1], -1);
     } else {
         if (func_0206cc68(object, actor, 1) == 0)
             return;
-        func_020481dc(actor, data_020e18d0[0], data_020e18d0[1], -1);
+        Type7Actor_SetCallbackPair(actor, data_020e18d0[0], data_020e18d0[1], -1);
     }
     *(u32 *)(actor + 0x14) |= 6;
     set_virtual_mode(actor, 0);

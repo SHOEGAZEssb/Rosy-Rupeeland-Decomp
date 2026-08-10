@@ -16,7 +16,7 @@ extern "C" {
 extern s32 Type7Actor_HasSpecialCallbackPair(const void *actor);
 extern s32 func_020adcac(const void *first, const void *second);
 extern void *func_020050a4(void *destination, const void *source);
-extern void func_020481dc(void *actor, u32 first, u32 second, s32 duration);
+extern void Type7Actor_SetCallbackPair(void *actor, u32 first, u32 second, s32 duration);
 #ifdef __cplusplus
 }
 #endif
@@ -66,7 +66,7 @@ s32 func_0204820c(void *self)
     if ((*(u32 *)(actor + 0x268) & 4) != 0)
         func_020050a4(actor + 0x214, actor + 0x224);
     *(void **)(actor + 0x210) = 0;
-    func_020481dc(actor, data_020e1928[0], data_020e1928[1], 120);
+    Type7Actor_SetCallbackPair(actor, data_020e1928[0], data_020e1928[1], 120);
     return 1;
 }
 
@@ -83,6 +83,6 @@ s32 func_0204832c(void *self)
     if (*(void **)(globalObject + 0x270) == 0)
         return 0;
     *(void **)(actor + 0x210) = 0;
-    func_020481dc(actor, data_020e1920[0], data_020e1920[1], -1);
+    Type7Actor_SetCallbackPair(actor, data_020e1920[0], data_020e1920[1], -1);
     return 1;
 }

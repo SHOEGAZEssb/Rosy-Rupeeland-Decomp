@@ -3,10 +3,10 @@
 .extern OS_Halt
 .extern data_020e19d4
 .extern data_020e1a84
-.global func_02048148
-.type func_02048148, @function
+.global Type7Actor_DispatchCurrentCallback
+.type Type7Actor_DispatchCurrentCallback, @function
 
-func_02048148: ; 0x02048148
+Type7Actor_DispatchCurrentCallback: ; 0x02048148
     stmdb sp!, {r4, r5, r6, lr}
     mov r5, #0x0
     mov r1, r5
@@ -49,5 +49,5 @@ func_02048148: ; 0x02048148
 .L_020481d4: .word data_020e19d4
 .L_020481d8: .word data_020e1a84
 
-.size func_02048148, . - func_02048148
+.size Type7Actor_DispatchCurrentCallback, . - Type7Actor_DispatchCurrentCallback
 

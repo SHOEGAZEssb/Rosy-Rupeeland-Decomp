@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/type7_actor_presentation_states.c.
 .extern data_021052fc
 .extern gSoundContext
-.extern func_02048148
+.extern Type7Actor_DispatchCurrentCallback
 .extern func_020593dc
 .text
     .global func_02049e50
@@ -23,7 +23,7 @@ func_02049e50: ; 0x02049e50
     ldr r1, [r1, #0x270]
     cmp r1, #0x0
     bne .L_02049e94
-    bl func_02048148
+    bl Type7Actor_DispatchCurrentCallback
 .L_02049e94:
     mov r0, #0x0
     ldmia sp!, {r3, pc}

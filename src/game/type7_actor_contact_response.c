@@ -26,7 +26,7 @@ extern void func_0206e590(void *resource, s32 mode);
 extern void func_0206c978(void *resource);
 extern void GameWork_SetFlag(void *work, u32 flag);
 extern void GameWork_ClearFlag(void *work, u32 flag);
-extern void func_020481dc(void *actor, u32 first, u32 second, s32 third);
+extern void Type7Actor_SetCallbackPair(void *actor, u32 first, u32 second, s32 third);
 extern s32 ActorDerivedType1_IsTargetStateEligible(void *actor);
 extern void Type7Actor_ApplyType2InteractionResponse(void *actor, void *other,
                                                      s32 value, s32 extra);
@@ -52,7 +52,7 @@ extern s32 func_02032a94(void *actor, void *other, s32 context);
  * requires func_0204c74c success, clear global state from func_0200b294 and
  * func_020828a0, nonnull actor target +0x280, and clear actor +0x10 bit
  * 0x01000000. A qualifying type-two object can allocate/construct the 0xb4-byte
- * owned resource at +0x234, install data_020e16d8 through func_020481dc, set
+ * owned resource at +0x234, install data_020e16d8 through Type7Actor_SetCallbackPair, set
  * GameWork flag 0x3fd, and submit the object to func_0206cb04. Other type-two
  * contacts derive signed extra from +0x27f/+0x29e and optional vtable +0x200;
  * an active resource completion bit releases the resource and clears the flag,
@@ -96,7 +96,7 @@ s32 Type7Actor_HandleContact(void *self, void *otherObject, s32 context)
             if (resource != 0)
                 resource = func_0206c68c(resource, actor);
             *(void **)(actor + 0x234) = resource;
-            func_020481dc(actor, data_020e16d8[0], data_020e16d8[1], -1);
+            Type7Actor_SetCallbackPair(actor, data_020e16d8[0], data_020e16d8[1], -1);
             GameWork_SetFlag(gGameWork, 0x3fd);
         }
         func_0206cb04(*(void **)(actor + 0x234), other, 1);
@@ -171,7 +171,7 @@ s32 Type7Actor_HandleContact(void *self, void *otherObject, s32 context)
                         && ActorDerivedType1_IsSpecialRecordActive(other) != 0) {
                         ActorDerivedType1_StartRecord(other, 0x88);
                         *(u16 *)(other + 0x268) = 0;
-                        func_020481dc(actor, data_020e16b0[0],
+                        Type7Actor_SetCallbackPair(actor, data_020e16b0[0],
                                       data_020e16b0[1], 30);
                         if (*(s16 *)(actor + 0xd6) != 18)
                             func_0204b7bc(actor, 2);
@@ -224,7 +224,7 @@ s32 Type7Actor_HandleContact(void *self, void *otherObject, s32 context)
                && *(u16 *)(other + 0x4e) >= 0x15
                && *(u16 *)(other + 0x4e) <= 0x26
                && *(u16 *)(other + 0x4e) != 0x20) {
-        func_020481dc(actor, data_020e1708[0], data_020e1708[1], 30);
+        Type7Actor_SetCallbackPair(actor, data_020e1708[0], data_020e1708[1], 30);
         if (*(s16 *)(actor + 0xd6) != 18)
             func_0204b7bc(actor, 2);
     }

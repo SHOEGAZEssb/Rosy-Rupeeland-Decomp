@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/type7_actor_destination_motion.c.
 .extern data_021052fc
 .extern ActorDerivedType1_SetSpecialModeEnabled
-.extern func_02048000
+.extern Type7Actor_SelectRandomCallback
 .text
     .global func_02049a7c
 .type func_02049a7c, @function
@@ -24,7 +24,7 @@ func_02049a7c: ; 0x02049a7c
     ldr r0, [r0, #0xea4]
     bl ActorDerivedType1_SetSpecialModeEnabled
     mov r0, r4
-    bl func_02048000
+    bl Type7Actor_SelectRandomCallback
     ldmia sp!, {r4, pc}
 .L_02049acc: .word 0xfff7fffb
 .L_02049ad0: .word data_021052fc

@@ -1,13 +1,13 @@
 ; Matching retail form; see src/game/type7_actor_callback_control.c.
 .text
 .extern data_020e19d4
-.extern func_020481dc
+.extern Type7Actor_SetCallbackPair
 .extern func_020ada8c
 .extern genrand_int32
-.global func_020480c8
-.type func_020480c8, @function
+.global Type7Actor_SelectRandomCallbackPair01
+.type Type7Actor_SelectRandomCallbackPair01, @function
 
-func_020480c8: ; 0x020480c8
+Type7Actor_SelectRandomCallbackPair01: ; 0x020480c8
     stmdb sp!, {r3, r4, r5, lr}
     mov r4, r0
     bl genrand_int32
@@ -25,7 +25,7 @@ func_020480c8: ; 0x020480c8
     add r1, r1, r2, lsr #0x1c
     mov r0, r4
     ldmia r1, {r1, r2}
-    bl func_020481dc
+    bl Type7Actor_SetCallbackPair
     mov r0, r4
     ldr r2, [r0, #0x0]
     mov r1, #0x1
@@ -41,5 +41,5 @@ func_020480c8: ; 0x020480c8
     ldmia sp!, {r3, r4, r5, pc}
 .L_02048144: .word data_020e19d4
 
-.size func_020480c8, . - func_020480c8
+.size Type7Actor_SelectRandomCallbackPair01, . - Type7Actor_SelectRandomCallbackPair01
 

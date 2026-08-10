@@ -16,7 +16,7 @@ extern void func_02004fe0(void *value);
 extern void func_0200500c(void *value, s32 x, s32 y, s32 z);
 extern void *func_020050a4(void *destination, const void *source);
 extern void func_0204cca8(void *helper, void *actor);
-extern u32 func_020481dc(void *actor, u32 first, u32 second, s32 third);
+extern u32 Type7Actor_SetCallbackPair(void *actor, u32 first, u32 second, s32 third);
 extern void Type7Actor_ResetBaseTransformAndMotion(void *actor);
 #ifdef __cplusplus
 }
@@ -33,7 +33,7 @@ extern void Type7Actor_ResetBaseTransformAndMotion(void *actor);
  * constructed value +0x284; and +0x294 through +0x2a6 zero. Initialize helper
  * +0x2a8 with self, copy actor transform +0x18 into +0x214 and then +0x26c,
  * and set actor +0xd0 bit two when +0x14 bit 0x400 is present. Invoke
- * func_020481dc with data_020e1740 words and 0x78, clear +0x210, invoke
+ * Type7Actor_SetCallbackPair with data_020e1740 words and 0x78, clear +0x210, invoke
  * Type7Actor_ResetBaseTransformAndMotion, clear the low 16 bits of +0x5c, and
  * return self. Actor, helper, resource/presentation, and base state may change;
  * no direct hardware access.
@@ -80,7 +80,7 @@ void *Type7Actor_Init(void *self, const void *configuration)
     func_020050a4(actor + 0x26c, copied);
     if ((*(u32 *)(actor + 0x14) & 0x400) != 0)
         *(u32 *)(actor + 0xd0) |= 4;
-    func_020481dc(actor, data_020e1740[0], data_020e1740[1], 0x78);
+    Type7Actor_SetCallbackPair(actor, data_020e1740[0], data_020e1740[1], 0x78);
     *(u32 *)(actor + 0x210) = 0;
     Type7Actor_ResetBaseTransformAndMotion(actor);
     *(u32 *)(actor + 0x5c) &= 0xffff0000u;

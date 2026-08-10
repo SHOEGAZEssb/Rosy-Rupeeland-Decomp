@@ -3,8 +3,8 @@
 .extern gHeapContext
 .extern Heap_Alloc
 .extern func_0201f864
-.extern func_02048000
-.extern func_02048148
+.extern Type7Actor_SelectRandomCallback
+.extern Type7Actor_DispatchCurrentCallback
 .extern func_0204876c
 .extern func_020ada8c
 .text
@@ -101,7 +101,7 @@ func_0204988c: ; 0x0204988c
     ldmia sp!, {r4, pc}
 .L_020498d8:
     mov r0, r4
-    bl func_02048000
+    bl Type7Actor_SelectRandomCallback
     ldmia sp!, {r4, pc}
 .size func_0204988c, . - func_0204988c
 
@@ -112,7 +112,7 @@ func_020498e4: ; 0x020498e4
     ldr r1, [r0, #0x10]
     tst r1, #0x4
     bne .L_020498fc
-    bl func_02048148
+    bl Type7Actor_DispatchCurrentCallback
     b .L_02049914
 .L_020498fc:
     mov r1, #0xc

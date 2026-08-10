@@ -14,7 +14,7 @@ extern u8 data_021056e0;
 extern "C" {
 #endif
 extern void func_0200b2c0(void *value, s32 x, s32 y, s32 z);
-extern void func_020481dc(void *actor, u32 first, u32 second, s32 duration);
+extern void Type7Actor_SetCallbackPair(void *actor, u32 first, u32 second, s32 duration);
 extern void func_02072b68(void *object, u32 value);
 #ifdef __cplusplus
 }
@@ -41,7 +41,7 @@ void func_0204a014(void *self)
 {
     u8 *actor = (u8 *)self;
     *(void **)(actor + 0x210) = 0;
-    func_020481dc(actor, data_020e1780[0], data_020e1780[1], -1);
+    Type7Actor_SetCallbackPair(actor, data_020e1780[0], data_020e1780[1], -1);
     *(u16 *)(actor + 0xd6) = 12;
     *(u32 *)(actor + 0x14) |= 6;
     *(u32 *)(actor + 0x10) =
@@ -74,7 +74,7 @@ void func_0204a0d8(void *self, s32 launch)
 {
     u8 *actor = (u8 *)self;
     *(void **)(actor + 0x210) = 0;
-    func_020481dc(actor, data_020e18c0[0], data_020e18c0[1], 60);
+    Type7Actor_SetCallbackPair(actor, data_020e18c0[0], data_020e18c0[1], 60);
     *(u32 *)(actor + 0x14) &= ~(2 | 4);
     *(u32 *)(actor + 0x10) |= 0x30000;
     set_actor_mode(actor, 1);

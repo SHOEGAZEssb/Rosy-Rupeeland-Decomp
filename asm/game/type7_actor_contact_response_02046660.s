@@ -20,7 +20,7 @@
 .extern Type7Actor_HasSpecialCallbackPair
 .extern Type7Actor_ApplyType2InteractionResponse
 .extern Type7Actor_SetMotionTargetWithTimer
-.extern func_020481dc
+.extern Type7Actor_SetCallbackPair
 .extern func_0204b7bc
 .extern func_0204c74c
 .extern func_0204cfa4
@@ -110,7 +110,7 @@ Type7Actor_HandleContact: ; 0x02046660
     mov r0, r6
     mvn r3, #0x0
     ldmia r1, {r1, r2}
-    bl func_020481dc
+    bl Type7Actor_SetCallbackPair
     ldr r0, .L_02046d74
     ldr r1, .L_02046d78
     ldr r0, [r0, #0x0]
@@ -345,7 +345,7 @@ Type7Actor_HandleContact: ; 0x02046660
     mov r0, r6
     mov r3, #0x1e
     ldmia r1, {r1, r2}
-    bl func_020481dc
+    bl Type7Actor_SetCallbackPair
     ldrsh r0, [r6, #0xd6]
     cmp r0, #0x12
     beq .L_02046b58
@@ -491,7 +491,7 @@ Type7Actor_HandleContact: ; 0x02046660
     mov r0, r6
     mov r3, #0x1e
     ldmia r1, {r1, r2}
-    bl func_020481dc
+    bl Type7Actor_SetCallbackPair
     ldrsh r0, [r6, #0xd6]
     cmp r0, #0x12
     beq .L_02046d48
