@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/game_phase_script_vm_actor_state_opcodes.c.
 .text
-.extern data_02105310
+.extern gActorRuntimeCollection
 .extern ActorRuntimeCollection_SelectObject
 .extern GamePhaseScriptVm_Pop
 
@@ -52,6 +52,6 @@ L_02012f1c:
 L_02012f34:
     mov r0, #0x0
     ldmia sp!, {r3, r4, r5, pc}
-L_02012f3c: .word data_02105310
+L_02012f3c: .word gActorRuntimeCollection
     .size GamePhaseActorScriptVm_DispatchActorModeCommand, . - GamePhaseActorScriptVm_DispatchActorModeCommand
 

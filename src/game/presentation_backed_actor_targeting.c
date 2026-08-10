@@ -7,7 +7,7 @@
  */
 
 extern void *data_021052fc;
-extern const u8 data_02105310[];
+extern const u8 gActorRuntimeCollection[];
 
 #ifdef __cplusplus
 extern "C" {
@@ -75,13 +75,13 @@ void func_0204dee0(void)
 
 /*
  * Input is an actor. Return one only when state 0x1EC is 1, the global gate
- * queried with data_02105310 is clear, and bit 0x100 is absent from the primary
+ * queried with gActorRuntimeCollection is clear, and bit 0x100 is absent from the primary
  * actor's word at 0xD0; otherwise return zero. No state or hardware is changed.
  */
 s32 func_0204deec(void *actor)
 {
     if (FIELD(u16, actor, 0x1ec) == 1 &&
-        ActorRuntimeCollection_GetPendingAttachmentFlag(data_02105310) == 0) {
+        ActorRuntimeCollection_GetPendingAttachmentFlag(gActorRuntimeCollection) == 0) {
         void *primary = FIELD(void *, data_021052fc, 0x2ea4);
         if ((FIELD(u32, primary, 0xd0) & 0x100) == 0)
             return 1;

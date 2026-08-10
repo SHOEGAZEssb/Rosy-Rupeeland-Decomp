@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/actor_effect_activation_callbacks.c.
 .text
-.extern data_02105310
+.extern gActorRuntimeCollection
 .extern ActorRuntimeCollection_GetPendingAttachmentFlag
 .extern ActorRuntimeCollection_GetBusyState
 
@@ -30,7 +30,7 @@ Actor_TryDispatchActivationMode2: ; 0x02033fe4
     blx r2
     mov r0, #0x1
     ldmia sp!, {r4, pc}
-.L_02034040: .word data_02105310
+.L_02034040: .word gActorRuntimeCollection
     .size Actor_TryDispatchActivationMode2, . - Actor_TryDispatchActivationMode2
 
     .global Actor_DispatchActivationMode1

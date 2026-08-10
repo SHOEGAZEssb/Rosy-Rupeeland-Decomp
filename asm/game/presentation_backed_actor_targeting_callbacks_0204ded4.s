@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/presentation_backed_actor_targeting.c.
 .extern data_021052fc
-.extern data_02105310
+.extern gActorRuntimeCollection
 .extern ActorRuntimeCollection_GetPendingAttachmentFlag
 .extern func_02031758
 .extern func_02032a94
@@ -44,7 +44,7 @@ func_0204deec: ; 0x0204deec
 .L_0204df30:
     mov r0, #0x0
     ldmia sp!, {r3, pc}
-.L_0204df38: .word data_02105310
+.L_0204df38: .word gActorRuntimeCollection
 .L_0204df3c: .word data_021052fc
 .size func_0204deec, . - func_0204deec
 

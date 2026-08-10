@@ -1,7 +1,7 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov085/overlay085_recovery.c.
 .extern data_021052fc
-.extern data_02105310
+.extern gActorRuntimeCollection
 .extern data_ov085_02214328
 .extern data_ov085_022143d8
 .extern data_ov085_022143e0
@@ -171,7 +171,7 @@ func_ov085_02213214:
     mov r2, r4
     bl ActorDerivedRuntime_HandlePairActive
     ldmia sp!, {r3, r4, r5, r6, r7, r8, r9, pc}
-.L_02213458: .word data_02105310
+.L_02213458: .word gActorRuntimeCollection
 .L_0221345c: .word data_ov085_02214328
 .L_02213460: .word data_ov085_02214408
 .L_02213464: .word data_ov085_02214400

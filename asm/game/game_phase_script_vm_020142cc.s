@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/game_phase_script_vm_actor_presentation_opcodes.c.
 .text
-.extern data_02105310
+.extern gActorRuntimeCollection
 .extern ActorRuntimeCollection_SetPendingValue
 .extern GamePhaseScriptVm_Pop
 
@@ -13,6 +13,6 @@ GamePhaseActorScriptVm_SetCollectionPendingValue: ; 0x020142cc
     bl ActorRuntimeCollection_SetPendingValue
     mov r0, #0x0
     ldmia sp!, {r3, pc}
-L_020142e8: .word data_02105310
+L_020142e8: .word gActorRuntimeCollection
     .size GamePhaseActorScriptVm_SetCollectionPendingValue, . - GamePhaseActorScriptVm_SetCollectionPendingValue
 

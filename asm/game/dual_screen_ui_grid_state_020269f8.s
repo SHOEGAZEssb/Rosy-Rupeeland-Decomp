@@ -2,7 +2,7 @@
 .text
 .extern Sound_Play
 .extern data_021052fc
-.extern data_02105310
+.extern gActorRuntimeCollection
 .extern ActorRuntimeCollection_GetPendingAttachmentFlag
 .extern ActorRuntimeCollection_GetBusyState
 .extern func_02026514
@@ -305,7 +305,7 @@ func_020269f8: ; 0x020269f8
     bl GraphicsSpriteGroup_AdvanceAnimations
     ldmia sp!, {r3, r4, r5, r6, r7, pc}
 .L_02026e28: .word data_021052fc
-.L_02026e2c: .word data_02105310
+.L_02026e2c: .word gActorRuntimeCollection
 .L_02026e30: .word gSoundContext
 .L_02026e34: .word 0xfffffccd
     .size func_020269f8, . - func_020269f8

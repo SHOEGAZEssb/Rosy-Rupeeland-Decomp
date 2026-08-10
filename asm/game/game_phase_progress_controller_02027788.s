@@ -3,7 +3,7 @@
 .extern GameWork_SetFlag
 .extern GameWork_TestFlag
 .extern data_020d3a59
-.extern data_02105310
+.extern gActorRuntimeCollection
 .extern ActorRuntimeCollection_QueueValue
 .extern ActorRuntimeCollection_GetBusyState
 .extern gGameWork
@@ -45,7 +45,7 @@ func_02027788: ; 0x02027788
 .L_02027800:
     mov r0, #0x0
     ldmia sp!, {r4, pc}
-.L_02027808: .word data_02105310
+.L_02027808: .word gActorRuntimeCollection
 .L_0202780c: .word gGameWork
 .L_02027810: .word 0x401
 .L_02027814: .word data_020d3a59

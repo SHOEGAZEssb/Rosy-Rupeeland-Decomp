@@ -6,7 +6,7 @@
  * are intentionally empty; the fourth clears motion and may enter state two.
  */
 
-extern u8 data_02105310[];
+extern u8 gActorRuntimeCollection[];
 
 #ifdef __cplusplus
 extern "C" {
@@ -38,7 +38,7 @@ void func_0204d3e0(void)
  * zero VecFx32Object, assign it into actor vector +0x38, and destroy the
  * temporary. If the other actor's type byte +0x4d is one, mode is zero, actor
  * pointer +0x188 is non-null, actor byte +0xe8 is zero, and registry predicate
- * ActorRuntimeCollection_GetPendingAttachmentFlag(data_02105310) is zero, invoke actor virtual slot 0x78 with
+ * ActorRuntimeCollection_GetPendingAttachmentFlag(gActorRuntimeCollection) is zero, invoke actor virtual slot 0x78 with
  * state two. Return one on every path. Actor/base/vector and virtual state may
  * change; there are no direct hardware effects.
  */
@@ -54,7 +54,7 @@ s32 func_0204d3e4(void *self, void *other, s32 mode)
 
     if (otherActor[0x4d] == 1 && mode == 0
         && *(void **)(actor + 0x188) != 0 && actor[0xe8] == 0
-        && ActorRuntimeCollection_GetPendingAttachmentFlag(data_02105310) == 0) {
+        && ActorRuntimeCollection_GetPendingAttachmentFlag(gActorRuntimeCollection) == 0) {
         void (**vtable)(void *, s32) = *(void (***)(void *, s32))actor;
         vtable[0x78 / 4](actor, 2);
     }

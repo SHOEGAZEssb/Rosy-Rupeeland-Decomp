@@ -3,7 +3,7 @@
 .extern Heap_Alloc
 .extern SceneManager_GetCurrent
 .extern data_021052fc
-.extern data_02105310
+.extern gActorRuntimeCollection
 .extern data_ov075_02217280
 .extern data_ov075_02217288
 .extern OverlayManager_LoadOverlay
@@ -340,7 +340,7 @@ func_ov075_022148d0:
 .L_02214d58:
     add sp, sp, #0x38
     ldmia sp!, {r3, r4, r5, pc}
-.L_02214d60: .word data_02105310
+.L_02214d60: .word gActorRuntimeCollection
 .L_02214d64: .word data_021052fc
 .L_02214d68: .word gSoundContext
 .L_02214d6c: .word 0x4cd

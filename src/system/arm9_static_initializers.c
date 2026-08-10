@@ -81,8 +81,8 @@ extern u8 gMainBgExtendedPaletteBuffer[];
 extern u8 gMainBgExtendedPaletteBufferDestructorRecord[];
 extern u8 gSubBgExtendedPaletteBuffer[];
 extern u8 gSubBgExtendedPaletteBufferDestructorRecord[];
-extern u8 data_02105310[];
-extern u8 data_02105304[];
+extern u8 gActorRuntimeCollection[];
+extern u8 gActorRuntimeCollectionDestructorRecord[];
 extern u8 gDefaultGamePhaseRegion[];
 extern u8 data_021055ac[];
 extern u8 data_021055c0[];
@@ -185,14 +185,14 @@ void __sinit_020c13f8(void)
 }
 
 /*
- * No inputs. Construct data_02105310 and register ActorRuntimeCollection_Destroy with record
- * data_02105304. Global object lifetime state changes; no value is returned and
+ * No inputs. Construct gActorRuntimeCollection and register ActorRuntimeCollection_Destroy with record
+ * gActorRuntimeCollectionDestructorRecord. Global object lifetime state changes; no value is returned and
  * no hardware is accessed directly.
  */
 void __sinit_020c1490(void)
 {
-    ActorRuntimeCollection_Init(data_02105310);
-    __register_global_object(data_02105310, ActorRuntimeCollection_Destroy, data_02105304);
+    ActorRuntimeCollection_Init(gActorRuntimeCollection);
+    __register_global_object(gActorRuntimeCollection, ActorRuntimeCollection_Destroy, gActorRuntimeCollectionDestructorRecord);
 }
 
 /*

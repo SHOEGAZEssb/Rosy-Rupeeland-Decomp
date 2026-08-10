@@ -1,7 +1,7 @@
 #include "tingle/types.h"
 
 /* Provide follow-up separation force and gated table-record interaction dispatch. */
-extern u8 data_02105310[];
+extern u8 gActorRuntimeCollection[];
 
 #ifdef __cplusplus
 extern "C" {
@@ -46,14 +46,14 @@ void ActorTableRecord_ApplySeparationImpulse(void *self, void *targetObject)
 }
 
 /*
- * When ActorRuntimeCollection_GetPendingAttachmentFlag(data_02105310) returns zero, dispatch the table-record
+ * When ActorRuntimeCollection_GetPendingAttachmentFlag(gActorRuntimeCollection) returns zero, dispatch the table-record
  * response with directional mode one and scale 0x1000. Always forward self,
  * other, and mode to func_02032a94 afterward. Returns no value; state query,
  * interaction, and base callback calls have observable actor state.
  */
 void ActorTableRecord_HandlePairActive(void *self, void *other, s32 mode)
 {
-    if (ActorRuntimeCollection_GetPendingAttachmentFlag(data_02105310) == 0)
+    if (ActorRuntimeCollection_GetPendingAttachmentFlag(gActorRuntimeCollection) == 0)
         ActorTableRecord_ApplyCollisionResponse(self, other, 1, 0x1000);
     func_02032a94(self, other, mode);
 }

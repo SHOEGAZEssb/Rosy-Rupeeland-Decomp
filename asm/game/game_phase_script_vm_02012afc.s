@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/game_phase_script_vm_actor_opcodes.c.
 .text
 .extern data_021052fc
-.extern data_02105310
+.extern gActorRuntimeCollection
 .extern GamePhaseRuntime_GetActorCollection
 .extern ActorRuntimeCollection_GetPendingAttachmentFlag
 .extern GamePhaseScriptVm_Pop
@@ -85,5 +85,5 @@ L_02012c04:
     mov r0, #0x0
     ldmia sp!, {r4, r5, r6, pc}
 L_02012c0c: .word data_021052fc
-L_02012c10: .word data_02105310
+L_02012c10: .word gActorRuntimeCollection
     .size GamePhaseActorScriptVm_DispatchIndexedActorValueCommand, . - GamePhaseActorScriptVm_DispatchIndexedActorValueCommand

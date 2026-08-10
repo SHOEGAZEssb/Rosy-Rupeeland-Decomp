@@ -4,7 +4,7 @@
 .extern Sound_Play
 .extern data_020e6e68
 .extern data_021052fc
-.extern data_02105310
+.extern gActorRuntimeCollection
 .extern data_ov082_02214aa4
 .extern VecFx32Object_InitComponents
 .extern VecFx32Object_Destroy
@@ -284,7 +284,7 @@ func_ov082_02213538:
     bl func_02032a94
     add sp, sp, #0x48
     ldmia sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, pc}
-.L_022138f8: .word data_02105310
+.L_022138f8: .word gActorRuntimeCollection
 .L_022138fc: .word 0xffff0001
 .L_02213900: .word gLupyContext
 .L_02213904: .word data_ov082_02214aa4

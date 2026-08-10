@@ -8,7 +8,7 @@ extern u8 data_0210568c[4];
 extern void *data_021052fc;
 extern s8 data_020c3d80[8];
 extern s8 data_020c3d88[8];
-extern u8 data_02105310[];
+extern u8 gActorRuntimeCollection[];
 extern void *gGameWork;
 extern u8 data_020d37dc[];
 extern void *data_021e9ac0;
@@ -219,13 +219,13 @@ s32 ActorDerivedType1_ProcessInteraction(void *self)
                     *(s16 *)(actor + 0x268) == 0 &&
                     (*(u32 *)(actor + 0xd0) & 0x4000) == 0);
 
-        if (eligible && ActorRuntimeCollection_GetBusyState(data_02105310) == 0 &&
+        if (eligible && ActorRuntimeCollection_GetBusyState(gActorRuntimeCollection) == 0 &&
             GameWork_TestFlag(gGameWork, 0x11) == 0 &&
             GameWork_TestFlag(gGameWork, 0x12) != 0 && terrainField == 1 &&
             heightDelta >= 0 && heightDelta <= 0x10 &&
-            ActorRuntimeCollection_IsQueuedValueMissing(data_02105310, data_020d37dc) == 0) {
+            ActorRuntimeCollection_IsQueuedValueMissing(gActorRuntimeCollection, data_020d37dc) == 0) {
             u8 snapshot[12];
-            ActorRuntimeCollection_QueueValue(data_02105310, data_020d37dc);
+            ActorRuntimeCollection_QueueValue(gActorRuntimeCollection, data_020d37dc);
             GraphicsSpriteState_SetAnimationIndex(*(void **)(actor + 0x54),
                           (actor[0xd4] + 0x10) & 0xff);
             *(u16 *)(*(u8 **)(actor + 0x54) + 0x24) &= (u16)~2;

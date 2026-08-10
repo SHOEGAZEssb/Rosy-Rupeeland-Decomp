@@ -1,6 +1,6 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov077/overlay077_recovery.c.
-.extern data_02105310
+.extern gActorRuntimeCollection
 .extern ActorRuntimeCollection_GetPendingAttachmentFlag
 .extern func_02032a94
 .extern func_0204cfa4
@@ -67,5 +67,5 @@ func_ov077_0221378c:
     mov r2, r5
     bl func_02032a94
     ldmia sp!, {r3, r4, r5, r6, r7, r8, r9, pc}
-.L_02213870: .word data_02105310
+.L_02213870: .word gActorRuntimeCollection
 .size func_ov077_0221378c, . - func_ov077_0221378c

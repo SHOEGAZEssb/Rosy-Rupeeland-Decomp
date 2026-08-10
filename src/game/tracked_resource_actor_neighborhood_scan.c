@@ -6,7 +6,7 @@
 extern "C" {
 #endif
 extern void *data_021052fc;
-extern void *data_02105310;
+extern void *gActorRuntimeCollection;
 extern s32 ActorRuntimeCollection_GetPendingAttachmentFlag(void *state);
 extern void VecFx32Object_Init(void *vector);
 extern void VecFx32Object_InitComponents(void *vector, s32 x, s32 y, s32 z);
@@ -33,7 +33,7 @@ static VirtualFunction virtual_function(void *actor, u32 offset)
 
 /*
  * Inputs are a tracked-resource actor and three unused callback arguments.
- * Unless global state data_02105310 disables processing, scan group 1 of the
+ * Unless global state gActorRuntimeCollection disables processing, scan group 1 of the
  * actor manager at data_021052fc. Candidates must pass type, state-bit, height,
  * and record-radius checks. Nearby candidates can receive a normalized and
  * record-rotated direction vector, followed by one of five behaviors selected
@@ -65,7 +65,7 @@ void func_020505f0(void *actor, u32 unused1, u32 unused2, u32 unused3)
     (void)unused2;
     (void)unused3;
 
-    if (ActorRuntimeCollection_GetPendingAttachmentFlag(&data_02105310) != 0)
+    if (ActorRuntimeCollection_GetPendingAttachmentFlag(&gActorRuntimeCollection) != 0)
         return;
 
     record = FIELD(void *, actor, 0x1fc);

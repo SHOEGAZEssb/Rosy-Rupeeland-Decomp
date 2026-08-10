@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/tracked_resource_actor_neighborhood_scan.c.
 .extern data_021052fc
-.extern data_02105310
+.extern gActorRuntimeCollection
 .extern VecFx32Object_Init
 .extern VecFx32Object_InitComponents
 .extern VecFx32Object_Destroy
@@ -293,7 +293,7 @@ func_020505f0:
 .L_020509f8:
     add sp, sp, #0x28
     ldmia sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, pc}
-.L_02050a00: .word data_02105310
+.L_02050a00: .word gActorRuntimeCollection
 .L_02050a04: .word data_021052fc
     .size func_020505f0, . - func_020505f0
 

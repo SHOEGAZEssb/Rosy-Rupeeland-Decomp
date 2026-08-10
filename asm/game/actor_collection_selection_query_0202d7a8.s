@@ -9,7 +9,7 @@
 .extern ActorDerivedType1_TrySetStateVector
 .extern VecFx32Object_Destroy
 .extern Actor_DispatchActivationMode1
-.extern data_02105310
+.extern gActorRuntimeCollection
 .extern data_021052fc
 
     .global ActorCollection_ProcessSelectionQuery
@@ -234,6 +234,6 @@ ActorCollection_ProcessSelectionQuery: ; 0x0202d7a8
     mov r0, r4
     add sp, sp, #0x10
     ldmia sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, pc}
-.L_0202dae4: .word data_02105310
+.L_0202dae4: .word gActorRuntimeCollection
 .L_0202dae8: .word data_021052fc
     .size ActorCollection_ProcessSelectionQuery, . - ActorCollection_ProcessSelectionQuery

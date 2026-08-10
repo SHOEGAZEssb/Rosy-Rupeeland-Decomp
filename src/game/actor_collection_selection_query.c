@@ -23,7 +23,7 @@ typedef struct SelectionVectorStorage {
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern u8 data_02105310[];
+extern u8 gActorRuntimeCollection[];
 extern void *data_021052fc;
 extern s32 Actor_TestQueryPoint(void *actor,
                                 const ActorSelectionQuery *query);
@@ -119,7 +119,7 @@ s32 ActorCollection_ProcessSelectionQuery(ActorSelectionCollection *self,
                     (!candidate || !Actor_IsInteractionEligible(candidate)))
                     candidate = actor;
             } else if ((!candidate || !Actor_IsInteractionEligible(candidate)) &&
-                       !ActorRuntimeCollection_GetPendingAttachmentFlag(data_02105310) &&
+                       !ActorRuntimeCollection_GetPendingAttachmentFlag(gActorRuntimeCollection) &&
                        (read_u32(actor, 0x268) & 0x8000) &&
                        Type7Actor_GetStateCode(actor) != 5) {
                 call_query_hook(actor, query);
@@ -130,7 +130,7 @@ s32 ActorCollection_ProcessSelectionQuery(ActorSelectionCollection *self,
     if (candidate) {
         scene = (u8 *)data_021052fc;
         actor = *(void **)(scene + 0x2ea4);
-        if (ActorDerivedType1_IsIdleEligible(actor) && !ActorRuntimeCollection_GetPendingAttachmentFlag(data_02105310)) {
+        if (ActorDerivedType1_IsIdleEligible(actor) && !ActorRuntimeCollection_GetPendingAttachmentFlag(gActorRuntimeCollection)) {
             if (Actor_IsInteractionEligible(candidate)) {
                 result = Actor_DispatchActivationMode1(candidate);
             } else if (read_u32(candidate, 0x14) & 0x08000000) {

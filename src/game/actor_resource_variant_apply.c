@@ -2,7 +2,7 @@
 
 /* Apply one of five actor resource variants and rebuild runtime resource 0xec. */
 extern void *gGameWork;
-extern u8 data_02105310[];
+extern u8 gActorRuntimeCollection[];
 
 #ifdef __cplusplus
 extern "C" {
@@ -21,7 +21,7 @@ extern void GamePhaseActorScriptVm_Activate(void *);
 /*
  * Store variant in byte 0xe8. If actor flag 0x40 is set, first snapshot the
  * attachment through Actor_SavePrimaryAttachmentState. A nonzero variant sets
- * actor flag 0x100 and notifies data_02105310. Construct a temporary resource from actor pointer
+ * actor flag 0x100 and notifies gActorRuntimeCollection. Construct a temporary resource from actor pointer
  * 0x180+variant*4 and GameWork offset 0x3cc when collection mode 0x2e84 is one,
  * otherwise offset 0x5cc. Assign it to actor resource 0xec, destroy the
  * temporary, then activate the new state at 0xec. Returns no value; called
@@ -39,7 +39,7 @@ void Actor_SetResourceVariant(void *self, s32 variant)
         Actor_SavePrimaryAttachmentState(actor);
     if (variant) {
         *(u32 *)(actor + 0x10) |= 0x100;
-        ActorRuntimeCollection_AttachObject(data_02105310, actor);
+        ActorRuntimeCollection_AttachObject(gActorRuntimeCollection, actor);
     }
     collection = Actor_GetCollection(actor);
     gameData = (u8 *)gGameWork +

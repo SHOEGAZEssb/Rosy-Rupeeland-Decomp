@@ -5,18 +5,18 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern u8 data_02105310[];
+extern u8 gActorRuntimeCollection[];
 extern void ActorRuntimeCollection_SetPendingValue(void *state, u32 value);
 extern void Actor_SetAttachmentBaseScale(void *actor, s32 scaleX, s32 scaleY);
 #ifdef __cplusplus
 }
 #endif
 
-/* Pop a value, pass it to data_02105310 through ActorRuntimeCollection_SetPendingValue, and return zero. */
+/* Pop a value, pass it to gActorRuntimeCollection through ActorRuntimeCollection_SetPendingValue, and return zero. */
 s32 GamePhaseActorScriptVm_SetCollectionPendingValue(GamePhaseActorScriptVm *self)
 {
     u32 value = GamePhaseScriptVm_Pop(&self->base);
-    ActorRuntimeCollection_SetPendingValue(data_02105310, value);
+    ActorRuntimeCollection_SetPendingValue(gActorRuntimeCollection, value);
     return 0;
 }
 

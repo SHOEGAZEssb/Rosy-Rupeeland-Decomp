@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/actor_timed_resource_state_update.c.
 .text
 .extern data_021052fc
-.extern data_02105310
+.extern gActorRuntimeCollection
 .extern GamePhaseRuntime_GetActorCollection
 .extern ActorRuntimeCollection_GetPrimaryContainer
 .extern ActorRuntimeCollection_TryCompleteAttachment
@@ -81,7 +81,7 @@ func_02034164: ; 0x02034164
 .L_02034250:
     mov r0, #0x1
     ldmia sp!, {r3, r4, r5, pc}
-.L_02034258: .word data_02105310
+.L_02034258: .word gActorRuntimeCollection
 .L_0203425c: .word data_021052fc
     .size func_02034164, . - func_02034164
 

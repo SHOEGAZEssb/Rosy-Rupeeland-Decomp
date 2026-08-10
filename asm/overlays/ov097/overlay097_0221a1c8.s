@@ -1,6 +1,6 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov097/overlay097_recovery.c.
-.extern data_02105310
+.extern gActorRuntimeCollection
 .extern VecFx32Object_InitCopy
 .extern VecFx32Object_Destroy
 .extern ActorRuntimeCollection_GetPendingAttachmentFlag
@@ -143,7 +143,7 @@ func_ov097_0221a1c8:
     bl func_02050560
     add sp, sp, #0x10
     ldmia sp!, {r4, r5, r6, pc}
-.L_0221a3ac: .word data_02105310
+.L_0221a3ac: .word gActorRuntimeCollection
 .L_0221a3b0: .word 0xff7fffbf
 .L_0221a3b4: .word 0xf686
 .size func_ov097_0221a1c8, . - func_ov097_0221a1c8

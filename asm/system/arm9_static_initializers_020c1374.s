@@ -41,8 +41,8 @@
 .extern gSubBgPaletteBuffer
 .extern gMainBgExtendedPaletteBuffer
 .extern gSubBgExtendedPaletteBuffer
-.extern data_02105304
-.extern data_02105310
+.extern gActorRuntimeCollectionDestructorRecord
+.extern gActorRuntimeCollection
 .extern data_021055a0
 .extern data_021055ac
 .extern gDefaultGamePhaseRegion
@@ -229,9 +229,9 @@ __sinit_020c1490: ; 0x020c1490
     ldr r2, .L_020c14b8
     bl __register_global_object
     ldmia sp!, {r3, pc}
-.L_020c14b0: .word data_02105310
+.L_020c14b0: .word gActorRuntimeCollection
 .L_020c14b4: .word ActorRuntimeCollection_Destroy
-.L_020c14b8: .word data_02105304
+.L_020c14b8: .word gActorRuntimeCollectionDestructorRecord
 
 __sinit_020c14bc: ; 0x020c14bc
     stmdb sp!, {r3, lr}

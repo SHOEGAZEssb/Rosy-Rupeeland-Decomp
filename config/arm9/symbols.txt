@@ -9235,8 +9235,8 @@ gGraphicsResourceSets kind:bss addr:0x021052dc
 gSoftwareCanvasTextCursor kind:bss addr:0x021052f4
 data_021052fc kind:bss addr:0x021052fc
 data_02105300 kind:bss addr:0x02105300
-data_02105304 kind:bss addr:0x02105304
-data_02105310 kind:bss addr:0x02105310
+gActorRuntimeCollectionDestructorRecord kind:bss addr:0x02105304
+gActorRuntimeCollection kind:bss addr:0x02105310
 data_02105458 kind:bss addr:0x02105458
 data_0210545c kind:bss addr:0x0210545c
 data_02105468 kind:bss addr:0x02105468

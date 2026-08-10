@@ -1,5 +1,5 @@
 ; Matching retail form; see src/game/tracked_resource_actor_impulse_collision.c.
-.extern data_02105310
+.extern gActorRuntimeCollection
 .extern VecFx32Object_InitCopy
 .extern VecFx32Object_Destroy
 .extern ActorRuntimeCollection_GetPendingAttachmentFlag
@@ -51,5 +51,5 @@ func_02051fc0:
     str r0, [r4, #0x14]
     add sp, sp, #0x10
     ldmia sp!, {r3, r4, r5, pc}
-.L_02052068: .word data_02105310
+.L_02052068: .word gActorRuntimeCollection
     .size func_02051fc0, . - func_02051fc0

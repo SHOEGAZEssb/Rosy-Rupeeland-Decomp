@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/game_phase_runtime_change_area.c for
 ; the documented portable implementation and recovered behavior.
 .text
-.extern data_02105310
+.extern gActorRuntimeCollection
 .extern VecFx32Object_Init
 .extern VecFx32Object_InitCopy
 .extern VecFx32Object_Destroy
@@ -301,7 +301,7 @@ L_02007e44:
 L_02007ef8:
     add sp, sp, #0x2c
     ldmia sp!, {r4, r5, r6, r7, pc}
-L_02007f00: .word data_02105310
+L_02007f00: .word gActorRuntimeCollection
 L_02007f04: .word gLupyContext
     .size GamePhaseRuntime_ChangeToNeighborArea, .-GamePhaseRuntime_ChangeToNeighborArea
 

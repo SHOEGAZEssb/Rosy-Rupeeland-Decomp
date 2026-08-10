@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/actor_resource_effect_dispatch.c.
 .text
-.extern data_02105310
+.extern gActorRuntimeCollection
 .extern ActorRuntimeCollection_CopyPrimaryContainerState
 .extern GamePhaseActorScriptVm_InitWithScript
 .extern GamePhaseActorScriptVm_Destroy
@@ -51,5 +51,5 @@ Actor_AssignPrimaryResourceWithEffect: ; 0x02032cc4
     add sp, sp, #0x128
     ldmia sp!, {r3, r4, r5, pc}
 .L_02032d5c: .word gGameWork
-.L_02032d60: .word data_02105310
+.L_02032d60: .word gActorRuntimeCollection
     .size Actor_AssignPrimaryResourceWithEffect, . - Actor_AssignPrimaryResourceWithEffect

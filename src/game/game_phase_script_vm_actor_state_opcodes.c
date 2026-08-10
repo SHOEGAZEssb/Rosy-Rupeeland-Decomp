@@ -6,7 +6,7 @@
 extern "C" {
 #endif
 extern void *data_021052fc;
-extern u8 data_02105310[];
+extern u8 gActorRuntimeCollection[];
 extern void *Actor_GetCollection(void *actor);
 extern void *GamePhaseRuntime_GetActorCollection(void *runtime, s32 index);
 extern void ActorRuntimeCollection_SelectObject(void *state, void *actor, u32 value);
@@ -21,7 +21,7 @@ typedef void (*RuntimeDispatchMethod)(void *object, u32 first, u16 second,
 
 /*
  * Pop a value and mode. Modes 1-3 call the bound actor's virtual method at
- * 0xac with that pair; mode 3 also registers the command in data_02105310 and
+ * 0xac with that pair; mode 3 also registers the command in gActorRuntimeCollection and
  * returns one to stop the VM loop. Other modes return zero without effects.
  */
 s32 GamePhaseActorScriptVm_DispatchActorModeCommand(GamePhaseActorScriptVm *self)
@@ -34,7 +34,7 @@ s32 GamePhaseActorScriptVm_DispatchActorModeCommand(GamePhaseActorScriptVm *self
     method = *(ActorModeMethod *)((u8 *)*(void **)self->actor + 0xac);
     method(self->actor, mode, value);
     if (mode == 3) {
-        ActorRuntimeCollection_SelectObject(data_02105310, self->actor, value);
+        ActorRuntimeCollection_SelectObject(gActorRuntimeCollection, self->actor, value);
         return 1;
     }
     return 0;

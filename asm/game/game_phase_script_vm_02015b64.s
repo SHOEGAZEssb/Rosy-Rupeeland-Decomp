@@ -2,7 +2,7 @@
 .text
 .extern OS_Halt
 .extern data_021052fc
-.extern data_02105310
+.extern gActorRuntimeCollection
 .extern GamePhaseRuntime_GetActorCollection
 .extern ActorRuntimeCollection_GetPendingAttachmentFlag
 .extern GamePhaseScriptVm_Pop
@@ -126,5 +126,5 @@ L_02015cf0:
     mov r0, #0
     ldmia sp!, {r3, r4, r5, r6, r7, pc}
 L_02015d04: .word data_021052fc
-L_02015d08: .word data_02105310
+L_02015d08: .word gActorRuntimeCollection
     .size func_02015b64, . - func_02015b64

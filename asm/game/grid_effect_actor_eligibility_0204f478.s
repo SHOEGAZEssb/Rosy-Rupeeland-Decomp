@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/grid_effect_actor_eligibility.c.
 .extern data_021052fc
-.extern data_02105310
+.extern gActorRuntimeCollection
 .extern ActorRuntimeCollection_GetPendingAttachmentFlag
 .text
     .global func_0204f478
@@ -27,7 +27,7 @@ func_0204f478:
 .L_0204f4c4:
     mov r0, #0x0
     ldmia sp!, {r3, pc}
-.L_0204f4cc: .word data_02105310
+.L_0204f4cc: .word gActorRuntimeCollection
 .L_0204f4d0: .word data_021052fc
 .size func_0204f478, . - func_0204f478
 

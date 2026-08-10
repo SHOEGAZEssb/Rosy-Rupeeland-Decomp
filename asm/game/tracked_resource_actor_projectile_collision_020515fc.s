@@ -1,5 +1,5 @@
 ; Matching retail form; see src/game/tracked_resource_actor_projectile_collision.c.
-.extern data_02105310
+.extern gActorRuntimeCollection
 .extern VecFx32Object_Init
 .extern VecFx32Object_Destroy
 .extern VecFx32Object_Assign
@@ -82,6 +82,6 @@ func_020515fc:
     bl VecFx32Object_Destroy
     add sp, sp, #0x10
     ldmia sp!, {r4, r5, r6, pc}
-.L_0205170c: .word data_02105310
+.L_0205170c: .word gActorRuntimeCollection
     .size func_020515fc, . - func_020515fc
 

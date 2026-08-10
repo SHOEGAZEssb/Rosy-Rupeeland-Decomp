@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/actor_resource_variant_apply.c.
 .text
-.extern data_02105310
+.extern gActorRuntimeCollection
 .extern ActorRuntimeCollection_AttachObject
 .extern GamePhaseActorScriptVm_InitWithScript
 .extern GamePhaseActorScriptVm_Assign
@@ -72,6 +72,6 @@ Actor_SetResourceVariant: ; 0x02032aec
     bl GamePhaseActorScriptVm_Activate
     add sp, sp, #0x128
     ldmia sp!, {r3, r4, r5, pc}
-.L_02032bc8: .word data_02105310
+.L_02032bc8: .word gActorRuntimeCollection
 .L_02032bcc: .word gGameWork
     .size Actor_SetResourceVariant, . - Actor_SetResourceVariant

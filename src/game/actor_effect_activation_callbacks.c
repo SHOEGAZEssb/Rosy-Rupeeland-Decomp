@@ -1,7 +1,7 @@
 #include "tingle/types.h"
 
 /* Gate and dispatch actor activation modes through virtual slot 0x78. */
-extern u8 data_02105310[];
+extern u8 gActorRuntimeCollection[];
 
 #ifdef __cplusplus
 extern "C" {
@@ -13,7 +13,7 @@ extern s32 ActorRuntimeCollection_GetPendingAttachmentFlag(void *state);
 #endif
 
 /*
- * Return zero without dispatch when either data_02105310 predicate is nonzero
+ * Return zero without dispatch when either gActorRuntimeCollection predicate is nonzero
  * or actor byte 0xe8 is nonzero. Otherwise dispatch activation mode two
  * through actor vtable slot 0x78 and return one. The callback may update
  * resource/presentation or SDK-managed state; the gate itself does not modify
@@ -24,8 +24,8 @@ s32 Actor_TryDispatchActivationMode2(void *self)
     u8 *actor = (u8 *)self;
     void (*callback)(void *, s32);
 
-    if (ActorRuntimeCollection_GetBusyState(data_02105310) != 0 || actor[0xe8] != 0 ||
-        ActorRuntimeCollection_GetPendingAttachmentFlag(data_02105310) != 0) {
+    if (ActorRuntimeCollection_GetBusyState(gActorRuntimeCollection) != 0 || actor[0xe8] != 0 ||
+        ActorRuntimeCollection_GetPendingAttachmentFlag(gActorRuntimeCollection) != 0) {
         return 0;
     }
     callback = *(void (**)(void *, s32))(*(u8 **)actor + 0x78);

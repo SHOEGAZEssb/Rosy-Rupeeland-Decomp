@@ -2,7 +2,7 @@
 .extern data_020d431c
 .extern gGamePhaseTouchPromptAllocationTag
 .extern data_021052fc
-.extern data_02105310
+.extern gActorRuntimeCollection
 .extern FrameTaskList_Add
 .extern DisplayController_SetVerticalOffset
 .extern VecFx32Object_Assign
@@ -379,7 +379,7 @@ L_02006f80:
     str r2, [r1, #0xb8]
     bl Scene_SetFlags03
     ldmia sp!, {r4, r5, r6, r7, r8, pc}
-L_02006fc0: .word data_02105310
+L_02006fc0: .word gActorRuntimeCollection
 L_02006fc4: .word gGameWork
 L_02006fc8: .word 0x3f2
 L_02006fcc: .word gLupyContext

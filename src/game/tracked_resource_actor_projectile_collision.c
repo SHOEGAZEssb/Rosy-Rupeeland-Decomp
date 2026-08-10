@@ -5,7 +5,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *data_02105310;
+extern void *gActorRuntimeCollection;
 extern u32 genrand_int32(void);
 extern void VecFx32Object_Init(void *vector);
 extern void VecFx32Object_Destroy(void *vector);
@@ -49,7 +49,7 @@ void func_020515fc(void *actor, void *target)
     random = genrand_int32();
     vector[1] = func_020ada8c((s32)(random & 0x7fffffff), 0x2000) - 0x1000;
     vector[2] = func_020ada8c((s32)((random & 0x7fffffff) >> 4), 0x2000) - 0x1000;
-    if (ActorRuntimeCollection_GetPendingAttachmentFlag(&data_02105310) == 0 && target != 0)
+    if (ActorRuntimeCollection_GetPendingAttachmentFlag(&gActorRuntimeCollection) == 0 && target != 0)
         virtual_function(target, 0xb8)(target, vector, 1);
     vector[1] = -vector[1];
     vector[2] = -vector[2];

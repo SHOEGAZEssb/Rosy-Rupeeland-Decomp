@@ -3,7 +3,7 @@
 /* Paired global warp-request setters used by the active game phase. */
 
 extern void *gGameWork;
-extern u8 data_02105310[];
+extern u8 gActorRuntimeCollection[];
 
 #ifdef __cplusplus
 extern "C" {
@@ -26,7 +26,7 @@ s32 func_020084b8(GamePhaseRuntime *self, s32 x, s32 y)
     *(u16 *)((u8 *)gGameWork + 0x5e) = (u16)(x >> 12);
     *(u16 *)((u8 *)gGameWork + 0x60) = (u16)(y >> 12);
     *(u16 *)((u8 *)gGameWork + 0x5c) = 2;
-    ActorRuntimeCollection_QueuePendingValue(data_02105310);
+    ActorRuntimeCollection_QueuePendingValue(gActorRuntimeCollection);
     return 1;
 }
 
@@ -41,6 +41,6 @@ s32 func_02008514(GamePhaseRuntime *self, s32 x, s32 y)
     *(u16 *)((u8 *)gGameWork + 0x5e) = (u16)(x >> 12);
     *(u16 *)((u8 *)gGameWork + 0x60) = (u16)(y >> 12);
     *(u16 *)((u8 *)gGameWork + 0x5c) = 1;
-    ActorRuntimeCollection_QueuePendingValue(data_02105310);
+    ActorRuntimeCollection_QueuePendingValue(gActorRuntimeCollection);
     return 1;
 }

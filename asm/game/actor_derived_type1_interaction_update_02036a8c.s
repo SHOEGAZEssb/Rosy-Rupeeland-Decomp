@@ -7,7 +7,7 @@
 .extern data_020c9670
 .extern data_020d37dc
 .extern data_021052fc
-.extern data_02105310
+.extern gActorRuntimeCollection
 .extern data_0210568c
 .extern data_02105690
 .extern data_021e9ac0
@@ -577,7 +577,7 @@ ActorDerivedType1_ProcessInteraction: ; 0x02036a8c
 .L_02037274: .word data_021052fc
 .L_02037278: .word data_020c3d80
 .L_0203727c: .word data_020c3d88
-.L_02037280: .word data_02105310
+.L_02037280: .word gActorRuntimeCollection
 .L_02037284: .word gGameWork
 .L_02037288: .word data_020d37dc
 .L_0203728c: .word data_021e9ac0

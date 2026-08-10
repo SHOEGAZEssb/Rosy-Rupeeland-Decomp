@@ -2,7 +2,7 @@
 
 /* Pre-transition synchronization for the runtime's primary and optional actors. */
 
-extern u8 data_02105310[];
+extern u8 gActorRuntimeCollection[];
 
 #ifdef __cplusplus
 extern "C" {
@@ -65,9 +65,9 @@ void GamePhaseRuntime_PrepareActorCollections(GamePhaseRuntime *self, s32 value,
         }
     }
 
-    if (!ActorRuntimeCollection_GetPendingAttachmentFlag(data_02105310) && value != 2 &&
+    if (!ActorRuntimeCollection_GetPendingAttachmentFlag(gActorRuntimeCollection) && value != 2 &&
         func_02007868(*(void **)(b + 0x2ea4)) &&
-        !ActorRuntimeCollection_DispatchQueuedValue(data_02105310) &&
-        ActorRuntimeCollection_GetBusyState(data_02105310))
-        ActorRuntimeCollection_ReleaseSelectedObject(data_02105310);
+        !ActorRuntimeCollection_DispatchQueuedValue(gActorRuntimeCollection) &&
+        ActorRuntimeCollection_GetBusyState(gActorRuntimeCollection))
+        ActorRuntimeCollection_ReleaseSelectedObject(gActorRuntimeCollection);
 }

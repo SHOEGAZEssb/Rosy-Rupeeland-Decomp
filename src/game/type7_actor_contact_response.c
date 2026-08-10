@@ -5,7 +5,7 @@
  * Recovered type-seven actor contact response. It handles capture resources,
  * type-specific separation, interaction cues, and then delegates to base contact.
  */
-extern u8 data_02105310[];
+extern u8 gActorRuntimeCollection[];
 extern u8 gActorRuntimeFlags[];
 extern const char gType7ActorContactResourceAllocationTag[];
 extern u32 data_020e16d8[];
@@ -78,7 +78,7 @@ s32 Type7Actor_HandleContact(void *self, void *otherObject, s32 context)
     s32 type;
 
     if (Type7Actor_IsInteractionSceneActive(actor, other, context) == 0
-        || ActorRuntimeCollection_GetBusyState(data_02105310) != 0
+        || ActorRuntimeCollection_GetBusyState(gActorRuntimeCollection) != 0
         || *(void **)(actor + 0x280) == 0
         || ActorRuntimeFlags_Test(gActorRuntimeFlags, 0x40) != 0
         || (*(u32 *)(actor + 0x10) & 0x01000000) != 0) {

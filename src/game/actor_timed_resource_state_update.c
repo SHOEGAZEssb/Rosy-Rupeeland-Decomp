@@ -1,7 +1,7 @@
 #include "tingle/types.h"
 
 /* Advance actor timed state, reconcile transient effects, and request removal. */
-extern u8 data_02105310[];
+extern u8 gActorRuntimeCollection[];
 extern void *data_021052fc;
 
 #ifdef __cplusplus
@@ -25,7 +25,7 @@ extern void ActorCollection_QueueActorForRemoval(void *collection, void *actor);
 /*
  * If timed state actor+0xec is inactive, return one. Otherwise update it with
  * zero and continue only when byte 0x169 bit 1 is set. A nonzero transient mode
- * byte 0xe8 must pass data_02105310's actor predicate or the function returns
+ * byte 0xe8 must pass gActorRuntimeCollection's actor predicate or the function returns
  * zero immediately. Modes other than two dispatch a collection/reference/actor
  * callback using global manager slot one; all nonzero modes are then cleared,
  * bind an effect-state value into +0xec, activate that state, and refresh actor
@@ -49,7 +49,7 @@ s32 func_02034164(void *self)
     }
 
     if (actor[0xe8] != 0) {
-        if (ActorRuntimeCollection_TryCompleteAttachment(data_02105310, actor) == 0) {
+        if (ActorRuntimeCollection_TryCompleteAttachment(gActorRuntimeCollection, actor) == 0) {
             return 0;
         }
         if (actor[0xe8] != 2) {
@@ -59,7 +59,7 @@ s32 func_02034164(void *self)
                           *(void **)((u8 *)slotOne + 0x2e7c), actor);
         }
         actor[0xe8] = 0;
-        GamePhaseActorScriptVm_Assign(actor + 0xec, ActorRuntimeCollection_GetPrimaryContainer(data_02105310, 0));
+        GamePhaseActorScriptVm_Assign(actor + 0xec, ActorRuntimeCollection_GetPrimaryContainer(gActorRuntimeCollection, 0));
         GamePhaseActorScriptVm_Activate(actor + 0xec);
         if (*(s32 *)(actor + 0x3c) + *(s32 *)(actor + 0x40) != 0) {
             Actor_UpdateAttachmentDirectionFromVector(actor, *(s32 *)(actor + 0x3c),

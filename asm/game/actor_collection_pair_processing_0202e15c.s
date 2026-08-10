@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/actor_collection_pair_processing.c.
 .text
 .extern data_021052fc
-.extern data_02105310
+.extern gActorRuntimeCollection
 .extern gActorRuntimeFlags
 .extern VecFx32Object_InitCopy
 .extern VecFx32Object_Destroy
@@ -499,5 +499,5 @@ ActorCollection_ProcessCategory1And2Pairs: ; 0x0202e15c
     ldmia sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, pc}
 .L_0202e844: .word data_021052fc
 .L_0202e848: .word gActorRuntimeFlags
-.L_0202e84c: .word data_02105310
+.L_0202e84c: .word gActorRuntimeCollection
     .size ActorCollection_ProcessCategory1And2Pairs, . - ActorCollection_ProcessCategory1And2Pairs

@@ -4,7 +4,7 @@
 .extern Heap_Alloc
 .extern SceneManager_GetCurrent
 .extern gGamePhaseBoundaryTransitionAllocationTag
-.extern data_02105310
+.extern gActorRuntimeCollection
 .extern OverlayManager_LoadOverlay
 .extern OverlayManager_GetGlobal
 .extern ActorRuntimeCollection_GetPendingAttachmentFlag
@@ -218,7 +218,7 @@ L_0200efbc:
     ldmia sp!, {r3, r4, r5, pc}
 L_0200efc4: .word gGameWork
 L_0200efc8: .word 0x3ee
-L_0200efcc: .word data_02105310
+L_0200efcc: .word gActorRuntimeCollection
 L_0200efd0: .word gSceneManager
 L_0200efd4: .word 0x4a
 L_0200efd8: .word gGamePhaseBoundaryTransitionAllocationTag

@@ -6,7 +6,7 @@
 .extern SceneManager_GetCurrent
 .extern data_020df48c
 .extern data_021052fc
-.extern data_02105310
+.extern gActorRuntimeCollection
 .extern gActorRuntimeFlags
 .extern ActorMotionJitter_EnsureMinimum
 .extern ActorRuntimeCollection_GetBusyState
@@ -233,7 +233,7 @@ ActorDerivedType1_HandleAuxiliaryInteraction: ; 0x02037d98
     mov r0, #0x1
     ldmia sp!, {r3, r4, r5, r6, r7, pc}
 .L_02038088: .word gSceneManager
-.L_0203808c: .word data_02105310
+.L_0203808c: .word gActorRuntimeCollection
 .L_02038090: .word gActorRuntimeFlags
 .L_02038094: .word data_020df48c
 .L_02038098: .word gHeapContext

@@ -6,7 +6,7 @@
  * The retail instruction schedule is retained in the matching assembly file.
  */
 
-extern u8 data_02105310[];
+extern u8 gActorRuntimeCollection[];
 extern void *gLupyContext;
 
 #ifdef __cplusplus
@@ -95,7 +95,7 @@ s32 GamePhaseRuntime_ChangeToNeighborArea(GamePhaseRuntime *self, s32 direction)
         !(*(u32 *)((u8 *)object + 0x268) & 0x20))
         *(u16 *)((u8 *)object + 0x27e) = (u16)(areaId + 1);
 
-    ActorRuntimeCollection_Reset(data_02105310);
+    ActorRuntimeCollection_Reset(gActorRuntimeCollection);
     GamePhaseRuntime_CreateSecondaryActorSubsystem(self, area, 1);
     *(u32 *)(b + 0x30b8) |= 0x30;
     GamePhaseState_ApplyAreaChange(b + 0x24, area, transform);

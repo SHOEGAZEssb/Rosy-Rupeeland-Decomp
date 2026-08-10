@@ -5,7 +5,7 @@
  * services embedded state +0xec, and coordinates collection insertion/removal.
  */
 
-extern u8 data_02105310[];
+extern u8 gActorRuntimeCollection[];
 
 #ifdef __cplusplus
 extern "C" {
@@ -31,7 +31,7 @@ extern u8 *Actor_GetCollectionBySlot(void *actor, s32 category);
  * +0x169 bit 0x01.
  *
  * When byte +0xe8 is nonzero, require ActorRuntimeCollection_TryCompleteAttachment to accept the actor in
- * registry data_02105310. Values other than two additionally obtain category
+ * registry gActorRuntimeCollection. Values other than two additionally obtain category
  * one through Actor_GetCollectionBySlot and call ActorCollection_EndTrackedPair with its
  * +0x2e7c anchor, runtime from Actor_GetCollection, and the actor. Then clear +0xe8,
  * copy the registry
@@ -52,7 +52,7 @@ void func_0204d308(void *self)
         return;
 
     if (actor[0xe8] != 0) {
-        if (ActorRuntimeCollection_TryCompleteAttachment(data_02105310, actor) == 0)
+        if (ActorRuntimeCollection_TryCompleteAttachment(gActorRuntimeCollection, actor) == 0)
             return;
         if (actor[0xe8] != 2) {
             u8 *category = Actor_GetCollectionBySlot(actor, 1);
@@ -60,7 +60,7 @@ void func_0204d308(void *self)
             ActorCollection_EndTrackedPair(runtime, *(void **)(category + 0x2e7c), actor);
         }
         actor[0xe8] = 0;
-        GamePhaseActorScriptVm_Assign(state, ActorRuntimeCollection_GetPrimaryContainer(data_02105310));
+        GamePhaseActorScriptVm_Assign(state, ActorRuntimeCollection_GetPrimaryContainer(gActorRuntimeCollection));
         GamePhaseActorScriptVm_Activate(state);
     }
     if ((*(u32 *)(actor + 0x14) & 0x20) != 0)

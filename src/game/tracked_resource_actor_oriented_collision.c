@@ -5,7 +5,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *data_02105310;
+extern void *gActorRuntimeCollection;
 extern s32 ActorRuntimeCollection_GetPendingAttachmentFlag(void *state);
 extern void ActorRuntimeTriple_Assign(void *vector, s32 x, s32 y, s32 z);
 extern void VecFx32Object_InitCopy(void *destination, const void *source);
@@ -45,7 +45,7 @@ void func_02052464(void *actor, void *target, u32 unused1, u32 unused2)
     s16 value;
     (void)unused1;
     (void)unused2;
-    if (ActorRuntimeCollection_GetPendingAttachmentFlag(&data_02105310) == 0 && target != 0) {
+    if (ActorRuntimeCollection_GetPendingAttachmentFlag(&gActorRuntimeCollection) == 0 && target != 0) {
         VecFx32Object_InitCopy(vector, (u8 *)actor + 0x38);
         vector[3] = 0;
         func_020328d0(vector, (s32)FIELD(s16, record, 0x2a) << 4);

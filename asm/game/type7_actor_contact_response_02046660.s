@@ -8,7 +8,7 @@
 .extern data_020e16d8
 .extern data_020e1708
 .extern gType7ActorContactResourceAllocationTag
-.extern data_02105310
+.extern gActorRuntimeCollection
 .extern gActorRuntimeFlags
 .extern VecFx32Object_InitCopy
 .extern VecFx32Object_Destroy
@@ -505,7 +505,7 @@ Type7Actor_HandleContact: ; 0x02046660
     bl func_02032a94
     add sp, sp, #0x18
     ldmia sp!, {r3, r4, r5, r6, r7, r8, r9, pc}
-.L_02046d60: .word data_02105310
+.L_02046d60: .word gActorRuntimeCollection
 .L_02046d64: .word gActorRuntimeFlags
 .L_02046d68: .word gType7ActorContactResourceAllocationTag
 .L_02046d6c: .word gHeapContext

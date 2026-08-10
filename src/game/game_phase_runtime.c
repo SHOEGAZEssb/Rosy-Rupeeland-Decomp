@@ -21,7 +21,7 @@ typedef struct GamePhaseRuntimeGlobal {
 extern u32 data_020d431c[];
 extern u8 gGamePhaseTouchPromptAllocationTag[];
 extern GamePhaseRuntimeGlobal data_021052fc;
-extern u8 data_02105310[];
+extern u8 gActorRuntimeCollection[];
 extern void *gLupyContext;
 
 #ifdef __cplusplus
@@ -137,7 +137,7 @@ void GamePhaseRuntime_Configure(GamePhaseRuntime *self, const void *configPointe
     DisplayController_SetVerticalOffset(*(const s16 *)(config + 0x54));
     ActorMotionAreaFollower_Reset(bytes + 0x2fbc);
     ActorMotion_Reset(bytes + 0x3044);
-    ActorRuntimeCollection_Reset(data_02105310);
+    ActorRuntimeCollection_Reset(gActorRuntimeCollection);
     GamePhaseRuntime_CreateSecondaryActorSubsystem(self, (void *)configPointer, 1);
     GamePhaseState_ConfigureForPhase(bytes + 0x24, configPointer);
     GamePhaseRuntime_RefreshAreaAuxiliaryObject(self, (void *)configPointer, 1);

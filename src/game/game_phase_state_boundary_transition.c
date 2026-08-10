@@ -9,7 +9,7 @@
 extern "C" {
 #endif
 extern const u8 gGamePhaseBoundaryTransitionAllocationTag[];
-extern u8 data_02105310[];
+extern u8 gActorRuntimeCollection[];
 extern void *ActorDerivedType1_GetSingletonObject(void);
 extern s32 ActorRuntimeCollection_GetPendingAttachmentFlag(void *object);
 extern s32 ActorRuntimeCollection_GetBusyState(void *object);
@@ -52,7 +52,7 @@ s32 GamePhaseState_TryStartBoundaryTransition(GamePhaseState *self)
     s32 direction;
 
     if (GameWork_TestFlag(gGameWork, 0x3ee) ||
-        ActorRuntimeCollection_GetPendingAttachmentFlag(data_02105310) || ActorRuntimeCollection_GetBusyState(data_02105310))
+        ActorRuntimeCollection_GetPendingAttachmentFlag(gActorRuntimeCollection) || ActorRuntimeCollection_GetBusyState(gActorRuntimeCollection))
         return 0;
     current = SceneManager_GetCurrent(gSceneManager);
     if (current->value04 != 1)

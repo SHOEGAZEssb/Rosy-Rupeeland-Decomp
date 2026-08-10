@@ -10,7 +10,7 @@
 .extern GamePhaseActorScriptVm_Assign
 .extern GamePhaseActorScriptVm_Activate
 .extern ActorCollection_QueueActorForRemoval
-.extern data_02105310
+.extern gActorRuntimeCollection
 .text
     .global func_0204d308
 func_0204d308: ; 0x0204d308
@@ -67,5 +67,5 @@ func_0204d308: ; 0x0204d308
     mov r1, r4
     bl ActorCollection_QueueActorForRemoval
     ldmia sp!, {r3, r4, r5, pc}
-.L_0204d3d4: .word data_02105310
+.L_0204d3d4: .word gActorRuntimeCollection
 .size func_0204d308, . - func_0204d308

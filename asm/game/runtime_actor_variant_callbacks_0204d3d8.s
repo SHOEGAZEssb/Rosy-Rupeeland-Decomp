@@ -4,7 +4,7 @@
 .extern VecFx32Object_Assign
 .extern VecFx32Object_Destroy
 .extern ActorRuntimeCollection_GetPendingAttachmentFlag
-.extern data_02105310
+.extern gActorRuntimeCollection
 .text
     .global func_0204d3d8
 func_0204d3d8: ; 0x0204d3d8
@@ -65,6 +65,6 @@ func_0204d3e4: ; 0x0204d3e4
 .L_0204d47c:
     add sp, sp, #0x10
     ldmia sp!, {r4, r5, r6, pc}
-.L_0204d484: .word data_02105310
+.L_0204d484: .word gActorRuntimeCollection
 .size func_0204d3e4, . - func_0204d3e4
 

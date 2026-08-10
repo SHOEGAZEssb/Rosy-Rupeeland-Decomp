@@ -3,7 +3,7 @@
 
 /* Dispatch type-1 interactions that create, update, or hand off an auxiliary resource. */
 extern void *gSceneManager;
-extern u8 data_02105310[];
+extern u8 gActorRuntimeCollection[];
 extern void *gActorRuntimeFlags;
 extern const char data_020df48c[];
 extern void *gGameWork;
@@ -65,7 +65,7 @@ s32 ActorDerivedType1_HandleAuxiliaryInteraction(void *self, void *other)
 
     func_02032a94(actor);
     scene = SceneManager_GetCurrent(gSceneManager);
-    if (*(s32 *)((u8 *)scene + 4) == 2 || ActorRuntimeCollection_GetBusyState(data_02105310) != 0 ||
+    if (*(s32 *)((u8 *)scene + 4) == 2 || ActorRuntimeCollection_GetBusyState(gActorRuntimeCollection) != 0 ||
         ActorDerivedType1_HasBlockingStateFlags(actor) != 0 || *(s16 *)(actor + 0xd6) == 0x0d ||
         (*(u32 *)(actor + 0x230) & 0x20000) != 0)
         return 1;

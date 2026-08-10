@@ -47,7 +47,7 @@ typedef struct CollisionWords {
 } CollisionWords;
 
 extern void *data_021052fc;
-extern u8 data_02105310[];
+extern u8 gActorRuntimeCollection[];
 extern u8 gActorRuntimeFlags[];
 
 #ifdef __cplusplus
@@ -241,7 +241,7 @@ void ActorCollection_ProcessCategory1And2Pairs(ActorPairCollection *self)
             (actorA->type_4d == 1 || actorA->type_4d == 7)) {
             if (!(actorA->flags_14 & 0x40) &&
                 !ActorRuntimeFlags_Test(gActorRuntimeFlags, 1)) {
-                if (!ActorRuntimeCollection_GetPendingAttachmentFlag(data_02105310))
+                if (!ActorRuntimeCollection_GetPendingAttachmentFlag(gActorRuntimeCollection))
                     ActorCollision_ResolveCornerContacts(actorA, contextValue);
                 ActorCollision_ResolveSweptMovement(actorA, contextValue);
             }
