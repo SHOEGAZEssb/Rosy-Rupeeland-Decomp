@@ -21,7 +21,7 @@ extern void OS_Halt(void);
  * 4 computes first + ((second-first)/third)*parameter using fx32 arithmetic.
  * Invalid modes halt.  Push the result and return zero otherwise.
  */
-s32 func_0201a3e4(GamePhaseActorScriptVm *self)
+s32 GamePhaseActorScriptVm_GenerateModeBasedValue(GamePhaseActorScriptVm *self)
 {
     s32 parameter = (s32)GamePhaseScriptVm_Pop(&self->base);
     s32 third = (s32)GamePhaseScriptVm_Pop(&self->base);

@@ -7,8 +7,8 @@
 .extern func_020befec
 .extern gSystemState
 .extern OS_Halt
-.global func_0201a3e4
-func_0201a3e4:
+.global GamePhaseActorScriptVm_GenerateModeBasedValue
+GamePhaseActorScriptVm_GenerateModeBasedValue:
     stmdb sp!, {r4, r5, r6, r7, r8, r9, lr}
     sub sp, sp, #0x2c
     mov r4, r0
@@ -90,4 +90,4 @@ L_0201a4f0:
     add sp, sp, #0x2c
     ldmia sp!, {r4, r5, r6, r7, r8, r9, pc}
 L_0201a508: .word gSystemState
-.size func_0201a3e4, . - func_0201a3e4
+.size GamePhaseActorScriptVm_GenerateModeBasedValue, . - GamePhaseActorScriptVm_GenerateModeBasedValue

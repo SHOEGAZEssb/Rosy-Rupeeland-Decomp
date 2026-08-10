@@ -259,7 +259,7 @@ s32 func_0201a090(GamePhaseActorScriptVm *self);
 s32 func_0201a130(GamePhaseActorScriptVm *self);
 s32 func_0201a1f0(GamePhaseActorScriptVm *self);
 s32 func_0201a304(GamePhaseActorScriptVm *self);
-s32 func_0201a3e4(GamePhaseActorScriptVm *self);
+s32 GamePhaseActorScriptVm_GenerateModeBasedValue(GamePhaseActorScriptVm *self);
 s32 func_0201a50c(GamePhaseActorScriptVm *self);
 s32 func_0201a540(GamePhaseActorScriptVm *self);
 s32 GamePhaseActorScriptVm_DispatchSoundContextUtilityCommand(GamePhaseActorScriptVm *self);
