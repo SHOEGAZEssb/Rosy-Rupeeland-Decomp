@@ -20,7 +20,7 @@ extern "C" {
 #endif
 extern s32 func_0204c74c(void *actor, const void *other);
 extern s32 func_020486a8(void *actor);
-extern s32 func_02046d8c(const void *actor);
+extern s32 Type7Actor_HasSpecialCallbackPair(const void *actor);
 extern void func_020481dc(void *actor, u32 first, u32 second, s32 duration);
 extern void func_0204b7bc(void *actor, s32 mode);
 extern void *func_0201f864(void *allocation, ...);
@@ -87,7 +87,7 @@ void func_02048378(void *self, void *otherObject)
         if ((*(u16 *)(record + 0x38) & 4) == 0)
             return;
         *(void **)(actor + 0x210) = other;
-        if (func_02046d8c(actor) == 0) {
+        if (Type7Actor_HasSpecialCallbackPair(actor) == 0) {
             func_020481dc(actor, data_020e1908[0], data_020e1908[1], 20);
             *(u16 *)(actor + 0x256) = 60;
             *(u16 *)(actor + 0x25a) = 180;

@@ -6,7 +6,7 @@
 .extern data_020e1928
 .extern data_021052fc
 .extern func_020050a4
-.extern func_02046d8c
+.extern Type7Actor_HasSpecialCallbackPair
 .extern func_020481dc
 .extern func_020adcac
 .global func_0204820c
@@ -57,7 +57,7 @@ func_0204820c: ; 0x0204820c
     tst ip, #0x4
     beq .L_020482bc
     mov r0, r4
-    bl func_02046d8c
+    bl Type7Actor_HasSpecialCallbackPair
     cmp r0, #0x0
     beq .L_020482d8
 .L_020482bc:

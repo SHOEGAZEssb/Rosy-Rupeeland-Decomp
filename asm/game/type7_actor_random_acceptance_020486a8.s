@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/type7_actor_random_acceptance.c.
 .text
-.extern func_02046d8c
+.extern Type7Actor_HasSpecialCallbackPair
 .extern func_02047f38
 .extern func_020ada8c
 .extern genrand_int32
@@ -31,7 +31,7 @@ func_020486a8: ; 0x020486a8
     ldmia sp!, {r4, pc}
 .L_020486f8:
     mov r0, r4
-    bl func_02046d8c
+    bl Type7Actor_HasSpecialCallbackPair
     cmp r0, #0x0
     bne .L_02048730
     bl genrand_int32

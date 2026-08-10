@@ -6,7 +6,7 @@
 .extern func_0200500c
 .extern func_020050a4
 .extern ActorDerivedRuntime_Init
-.extern func_020464f4
+.extern Type7Actor_ResetBaseTransformAndMotion
 .extern func_020481dc
 .extern func_0204cca8
 .global Type7Actor_Init
@@ -91,7 +91,7 @@ Type7Actor_Init: ; 0x020455bc
     mov r1, #0x0
     mov r0, r4
     str r1, [r4, #0x210]
-    bl func_020464f4
+    bl Type7Actor_ResetBaseTransformAndMotion
     mov r0, #0x10000
     ldr r1, [r4, #0x5c]
     rsb r0, r0, #0x0

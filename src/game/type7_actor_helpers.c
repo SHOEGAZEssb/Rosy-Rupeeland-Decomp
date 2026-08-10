@@ -25,7 +25,7 @@ extern void ActorVector_DivideByScalar(void *output, const void *input, s32 scal
  * +0x24, and zero vector-like fields +0x38 and +0x88. Returns no value; actor
  * transform/base motion state changes without direct hardware access.
  */
-void func_020464f4(void *self)
+void Type7Actor_ResetBaseTransformAndMotion(void *self)
 {
     u8 *actor = (u8 *)self;
     func_020050a4(actor + 0x18, actor + 0x214);
@@ -42,7 +42,7 @@ void func_020464f4(void *self)
  * zero. If resource +0x234 exists, pass it to func_0206dcac. Finalize the
  * temporary and return no value; actor/helper/resource state may change.
  */
-void func_02046544(void *context, void *self, void *value)
+void Type7Actor_ForwardHelperEvent(void *context, void *self, void *value)
 {
     u8 *actor = (u8 *)self;
     u32 temporary[4];
@@ -61,12 +61,15 @@ void func_02046544(void *context, void *self, void *value)
  * Inputs are actor, value, and condition. A nonzero condition returns early
  * when record +0x29c halfword +0x40 is zero. Otherwise compare callback pair
  * +0x208/+0x20c against data_020e16b0+0x20/data_020e16d0+4. Nonmatching pairs
- * forward actor/value/condition to Actor_ApplyMotionImpulse. A matching pair first derives
- * a temporary from value with ActorVector_DivideByScalar scale 0x2000, then calls
- * Actor_ApplyMotionImpulse(actor,temporary,0) and finalizes it. Actor/transform state may
- * change; no direct SDK or hardware access occurs.
+ * forward actor/value/condition to Actor_ApplyMotionImpulse. A matching pair
+ * first derives a temporary from value with ActorVector_DivideByScalar scale
+ * 0x2000, then calls Actor_ApplyMotionImpulse(actor,temporary,0) and finalizes
+ * it. Actor/transform state may change; no direct SDK or hardware access
+ * occurs.
  */
-void func_020465b8(void *self, const void *value, s32 condition)
+void Type7Actor_ApplyCallbackAdjustedMotionImpulse(void *self,
+                                                   const void *value,
+                                                   s32 condition)
 {
     u8 *actor = (u8 *)self;
     u32 temporary[4];

@@ -8,7 +8,7 @@
 .extern func_02005058
 .extern func_020050a4
 .extern func_020066a4
-.extern func_02046d8c
+.extern Type7Actor_HasSpecialCallbackPair
 .extern func_0204cfa4
 .extern func_020adae4
 .extern func_020ae024
@@ -63,7 +63,7 @@ func_02047908: ; 0x02047908
     tst r0, #0x2
     beq .L_02047b74
     mov r0, r5
-    bl func_02046d8c
+    bl Type7Actor_HasSpecialCallbackPair
     cmp r0, #0x0
     beq .L_02047a10
     ldr r0, [r5, #0x29c]

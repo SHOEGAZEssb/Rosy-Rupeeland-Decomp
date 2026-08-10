@@ -30,7 +30,7 @@ extern void func_02072b68(void *resource, u32 animation);
  * also force 0x140 when actor +0x268 bit 0x400000 is set. Returns no value;
  * animation/render resource state changes but no direct hardware access occurs.
  */
-void func_02046208(void *self)
+void Type7Actor_UpdateAnimationState(void *self)
 {
     u8 *actor = (u8 *)self;
     u8 *resource = *(u8 **)(actor + 0x54);

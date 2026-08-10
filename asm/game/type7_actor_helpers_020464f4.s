@@ -11,13 +11,13 @@
 .extern Actor_ApplyMotionImpulse
 .extern ActorVector_DivideByScalar
 .extern func_0206dcac
-.global func_020464f4
-.type func_020464f4, @function
-.global func_02046544
-.type func_02046544, @function
-.global func_020465b8
-.type func_020465b8, @function
-func_020464f4: ; 0x020464f4
+.global Type7Actor_ResetBaseTransformAndMotion
+.type Type7Actor_ResetBaseTransformAndMotion, @function
+.global Type7Actor_ForwardHelperEvent
+.type Type7Actor_ForwardHelperEvent, @function
+.global Type7Actor_ApplyCallbackAdjustedMotionImpulse
+.type Type7Actor_ApplyCallbackAdjustedMotionImpulse, @function
+Type7Actor_ResetBaseTransformAndMotion: ; 0x020464f4
     stmdb sp!, {r4, lr}
     mov r4, r0
     add r0, r4, #0x18
@@ -39,8 +39,8 @@ func_020464f4: ; 0x020464f4
     bl func_0200b2c0
     ldmia sp!, {r4, pc}
 
-.size func_020464f4, . - func_020464f4
-func_02046544: ; 0x02046544
+.size Type7Actor_ResetBaseTransformAndMotion, . - Type7Actor_ResetBaseTransformAndMotion
+Type7Actor_ForwardHelperEvent: ; 0x02046544
     stmdb sp!, {r3, r4, r5, lr}
     sub sp, sp, #0x10
     mov r5, r1
@@ -72,8 +72,8 @@ func_02046544: ; 0x02046544
     ldmia sp!, {r3, r4, r5, pc}
 .L_020465b4: .word 0xb33
 
-.size func_02046544, . - func_02046544
-func_020465b8: ; 0x020465b8
+.size Type7Actor_ForwardHelperEvent, . - Type7Actor_ForwardHelperEvent
+Type7Actor_ApplyCallbackAdjustedMotionImpulse: ; 0x020465b8
     stmdb sp!, {r4, lr}
     sub sp, sp, #0x10
     mov r4, r0
@@ -120,4 +120,4 @@ func_020465b8: ; 0x020465b8
     ldmia sp!, {r4, pc}
 .L_02046658: .word data_020e16b0
 .L_0204665c: .word data_020e16d0
-.size func_020465b8, . - func_020465b8
+.size Type7Actor_ApplyCallbackAdjustedMotionImpulse, . - Type7Actor_ApplyCallbackAdjustedMotionImpulse

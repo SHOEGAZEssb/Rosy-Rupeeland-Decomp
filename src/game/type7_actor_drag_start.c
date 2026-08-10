@@ -14,7 +14,7 @@ extern "C" {
 extern void ActorDerivedRuntime_TestInteractionQuery(void *actor, const void *input);
 extern s32 func_0204c74c(void *actor, const void *input);
 extern void Actor_TestQueryPointAndClearFlag2000(void *actor, const void *input);
-extern s32 func_02046d8c(const void *actor);
+extern s32 Type7Actor_HasSpecialCallbackPair(const void *actor);
 extern void TouchPoint_Init(void *point, s32 x, s32 y);
 extern void func_02005030(void *destination, const void *source);
 extern void func_02005058(void *value);
@@ -40,7 +40,7 @@ static s32 callback_pair_matches(const u8 *actor, void *first, void *second)
  * hooks and require: clear +0x2a6, record +0x38 bit one, actor
  * flag 0x8000, no +0x234 resource, a non-null +0x280 target, actor flag four,
  * nonnegative timer +0x250, clear flags 0x40 and eight, and a callback form not
- * recognized by func_02046d8c. The data_020e16b0+0x260/data_020e1910 pair is
+ * recognized by Type7Actor_HasSpecialCallbackPair. The data_020e16b0+0x260/data_020e1910 pair is
  * excluded. The +0x118/data_020e17c8 pair additionally requires actor flag
  * 0x2000; other pairs do not.
  *
@@ -94,7 +94,7 @@ void func_0204767c(void *self, const void *inputRecord)
     if (*(s16 *)(actor + 0x250) < 0)
         return;
     flags = *(u32 *)(actor + 0x268);
-    if ((flags & (0x40 | 8)) != 0 || func_02046d8c(actor) != 0)
+    if ((flags & (0x40 | 8)) != 0 || Type7Actor_HasSpecialCallbackPair(actor) != 0)
         return;
     *(u32 *)(actor + 0x268) = flags | 0x800;
 

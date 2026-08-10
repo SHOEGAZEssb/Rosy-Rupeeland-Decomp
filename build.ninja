@@ -18076,7 +18076,7 @@ build build/reports/type7_actor_animation_update_02046208.json: objdiff build/de
   base_object = build/decomp/asm/game/type7_actor_animation_update_02046208.o
 build build/reports/type7_actor_animation_update_02046208.txt: match_report build/reports/type7_actor_animation_update_02046208.json | tools/report_objdiff.py
   report_json = build/reports/type7_actor_animation_update_02046208.json
-  report_args = --section .text --function func_02046208 --require-exact
+  report_args = --section .text --function Type7Actor_UpdateAnimationState --require-exact
 build type7_actor_animation_update: phony build/decomp/src/game/type7_actor_animation_update.o build/decomp/asm/game/type7_actor_animation_update_02046208.o build/reports/type7_actor_animation_update_02046208.txt
 
 type7_actor_helpers_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
@@ -18090,7 +18090,7 @@ build build/reports/type7_actor_helpers_020464f4.json: objdiff build/decomp/deli
   base_object = build/decomp/asm/game/type7_actor_helpers_020464f4.o
 build build/reports/type7_actor_helpers_020464f4.txt: match_report build/reports/type7_actor_helpers_020464f4.json | tools/report_objdiff.py
   report_json = build/reports/type7_actor_helpers_020464f4.json
-  report_args = --section .text --function func_020464f4 --function func_02046544 --function func_020465b8 --require-exact
+  report_args = --section .text --function Type7Actor_ResetBaseTransformAndMotion --function Type7Actor_ForwardHelperEvent --function Type7Actor_ApplyCallbackAdjustedMotionImpulse --require-exact
 build type7_actor_helpers: phony build/decomp/src/game/type7_actor_helpers.o build/decomp/asm/game/type7_actor_helpers_020464f4.o build/reports/type7_actor_helpers_020464f4.txt
 
 type7_actor_contact_response_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
@@ -18118,7 +18118,7 @@ build build/reports/type7_actor_callback_predicate_02046d8c.json: objdiff build/
   base_object = build/decomp/asm/game/type7_actor_callback_predicate_02046d8c.o
 build build/reports/type7_actor_callback_predicate_02046d8c.txt: match_report build/reports/type7_actor_callback_predicate_02046d8c.json | tools/report_objdiff.py
   report_json = build/reports/type7_actor_callback_predicate_02046d8c.json
-  report_args = --section .text --function func_02046d8c --require-exact
+  report_args = --section .text --function Type7Actor_HasSpecialCallbackPair --require-exact
 build type7_actor_callback_predicate: phony build/decomp/src/game/type7_actor_callback_predicate.o build/decomp/asm/game/type7_actor_callback_predicate_02046d8c.o build/reports/type7_actor_callback_predicate_02046d8c.txt
 
 type7_actor_type2_interaction_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
@@ -18146,7 +18146,7 @@ build build/reports/type7_actor_auxiliary_spawn_020471e4.json: objdiff build/dec
   base_object = build/decomp/asm/game/type7_actor_auxiliary_spawn_020471e4.o
 build build/reports/type7_actor_auxiliary_spawn_020471e4.txt: match_report build/reports/type7_actor_auxiliary_spawn_020471e4.json | tools/report_objdiff.py
   report_json = build/reports/type7_actor_auxiliary_spawn_020471e4.json
-  report_args = --section .text --function func_020471e4 --require-exact
+  report_args = --section .text --function Type7Actor_SpawnAuxiliaryCollisionResource --require-exact
 build type7_actor_auxiliary_spawn: phony build/decomp/src/game/type7_actor_auxiliary_spawn.o build/decomp/asm/game/type7_actor_auxiliary_spawn_020471e4.o build/reports/type7_actor_auxiliary_spawn_020471e4.txt
 
 type7_actor_touch_interaction_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++

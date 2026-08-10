@@ -4,9 +4,9 @@
 .extern data_020e1778
 .extern data_020e1810
 .extern data_020e18c8
-.global func_02046d8c
-.type func_02046d8c, @function
-func_02046d8c: ; 0x02046d8c
+.global Type7Actor_HasSpecialCallbackPair
+.type Type7Actor_HasSpecialCallbackPair, @function
+Type7Actor_HasSpecialCallbackPair: ; 0x02046d8c
     stmdb sp!, {r4, lr}
     ldr r2, .L_02046e50
     mov r1, #0x1
@@ -65,4 +65,4 @@ func_02046d8c: ; 0x02046d8c
 .L_02046e54: .word data_020e18c8
 .L_02046e58: .word data_020e1810
 .L_02046e5c: .word data_020e1778
-.size func_02046d8c, . - func_02046d8c
+.size Type7Actor_HasSpecialCallbackPair, . - Type7Actor_HasSpecialCallbackPair

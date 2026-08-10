@@ -18,7 +18,7 @@ extern void *func_020050a4(void *destination, const void *source);
 extern void func_020066a4(void *output, const void *first, const void *second);
 extern void func_02005058(void *value);
 extern s32 func_0204cfa4(s32 x, s32 y);
-extern s32 func_02046d8c(const void *actor);
+extern s32 Type7Actor_HasSpecialCallbackPair(const void *actor);
 extern s32 func_020adae4(s32 value, s32 divisor);
 extern s32 func_020ae024(s32 y, s32 x);
 #ifdef __cplusplus
@@ -100,7 +100,7 @@ void func_02047908(void *self, const void *requestedTransform)
     magnitude = func_0204cfa4((s32)displacement[1], (s32)displacement[2]);
     if (magnitude > 0x4000) {
         if ((*(u32 *)(actor + 0xd0) & 2) != 0) {
-            if (func_02046d8c(actor) != 0) {
+            if (Type7Actor_HasSpecialCallbackPair(actor) != 0) {
                 u8 subtype = (*(u8 **)(actor + 0x29c))[0x54];
                 if (subtype == 1)
                     speed = multiply_fx_round(*(s32 *)(actor + 0x23c), 0x1800);

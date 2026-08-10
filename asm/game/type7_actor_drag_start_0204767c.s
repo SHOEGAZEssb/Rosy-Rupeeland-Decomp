@@ -9,7 +9,7 @@
 .extern Actor_TestQueryPointAndClearFlag2000
 .extern ActorDerivedType1_TrySetStateVector
 .extern ActorDerivedRuntime_TestInteractionQuery
-.extern func_02046d8c
+.extern Type7Actor_HasSpecialCallbackPair
 .extern func_020478b0
 .extern func_0204c74c
 .global func_0204767c
@@ -106,7 +106,7 @@ func_0204767c: ; 0x0204767c
     tst r0, #0x8
     bne .L_0204789c
     mov r0, r5
-    bl func_02046d8c
+    bl Type7Actor_HasSpecialCallbackPair
     cmp r0, #0x0
     bne .L_0204789c
     ldr r1, [r5, #0x268]

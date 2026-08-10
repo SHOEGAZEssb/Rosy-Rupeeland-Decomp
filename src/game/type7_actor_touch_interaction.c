@@ -18,7 +18,7 @@ extern "C" {
 extern void ActorDerivedRuntime_AcceptInteractionQuery(void *actor, const void *input);
 extern void Actor_SetInteractionFlag2000(void *actor, const void *input);
 extern s32 func_0204c74c(void *actor, const void *input);
-extern s32 func_02046d8c(const void *actor);
+extern s32 Type7Actor_HasSpecialCallbackPair(const void *actor);
 extern void func_0204b7bc(void *actor, s32 mode);
 extern void func_020481dc(void *actor, u32 first, u32 second, s32 duration);
 extern void TouchPoint_Init(void *point, s32 x, s32 y);
@@ -64,7 +64,7 @@ static void initialize_relative_touch(u32 point[3], const u8 *actor,
  * Three callback-pair representations are exclusion states; their symbol
  * offsets are retained because their semantic identities are not confirmed.
  *
- * For callback forms recognized by func_02046d8c, require a non-null +0x210
+ * For callback forms recognized by Type7Actor_HasSpecialCallbackPair, require a non-null +0x210
  * object whose type byte is not one. Start either the flag-0x4000 response or
  * the data_020e1730 response. If target +0x280 has type one, convert the touch
  * to actor-relative coordinates, add it to a temporary transform, forward it
@@ -124,7 +124,7 @@ s32 func_02047248(void *self, const void *inputRecord)
         || (*(u32 *)(actor + 0x268) & 0x68) != 0)
         return 1;
 
-    if (func_02046d8c(actor) != 0) {
+    if (Type7Actor_HasSpecialCallbackPair(actor) != 0) {
         u8 *related = *(u8 **)(actor + 0x210);
         if (related == 0 || related[0x4d] == 1)
             return 1;

@@ -6,9 +6,9 @@
 .extern Actor_GetCollection
 .extern func_02072b68
 .extern func_020740c8
-.global func_02046208
-.type func_02046208, @function
-func_02046208: ; 0x02046208
+.global Type7Actor_UpdateAnimationState
+.type Type7Actor_UpdateAnimationState, @function
+Type7Actor_UpdateAnimationState: ; 0x02046208
     stmdb sp!, {r3, r4, r5, lr}
     mov r5, r0
     bl Actor_GetCollection
@@ -212,4 +212,4 @@ func_02046208: ; 0x02046208
     ldmia sp!, {r3, r4, r5, pc}
 .L_020464ec: .word data_020e16b0
 .L_020464f0: .word data_020e1720
-.size func_02046208, . - func_02046208
+.size Type7Actor_UpdateAnimationState, . - Type7Actor_UpdateAnimationState

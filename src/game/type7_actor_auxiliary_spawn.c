@@ -19,9 +19,10 @@ extern void *func_0200cf00(void *allocation, s32 type, s32 value);
  * nonnull, allocate 0x9c bytes with
  * label data_020e1d04/alignment four from gHeapContext, and, on success,
  * construct it through func_0200cf00(allocation,10,0x7fff). The routine has no
- * meaningful return value; actor, heap ownership, and auxiliary state may change.
+ * meaningful return value; actor, heap ownership, and auxiliary state may
+ * change.
  */
-void func_020471e4(void *self)
+void Type7Actor_SpawnAuxiliaryCollisionResource(void *self)
 {
     u8 *actor = (u8 *)self;
     void *allocation;

@@ -17,7 +17,7 @@ extern u32 data_020e18e0[];
 extern "C" {
 #endif
 extern s32 ActorDerivedType1_IsSpecialRecordActive(void *object);
-extern s32 func_02046d8c(const void *actor);
+extern s32 Type7Actor_HasSpecialCallbackPair(const void *actor);
 extern void func_020481dc(void *actor, u32 first, u32 second, s32 duration);
 extern s32 Actor_GetCachedTerrainHeight(void *actor);
 extern s32 func_020be334(s32 value);
@@ -44,7 +44,7 @@ static s32 invoke_a8_predicate(void *object)
  *
  * Except for record subtype two, first consider the global object at
  * data_021052fc+0x2ea4 when its virtual +0xa8 predicate or ActorDerivedType1_IsSpecialRecordActive
- * accepts it. Bind it at +0x210; unless func_02046d8c recognizes the actor
+ * accepts it. Bind it at +0x210; unless Type7Actor_HasSpecialCallbackPair recognizes the actor
  * callback, install data_020e16e8 for 20 ticks in finite mode or
  * data_020e18f0 indefinitely. Return one after binding.
  *
@@ -52,7 +52,7 @@ static s32 invoke_a8_predicate(void *object)
  * A candidate needs +0x260 bit two, must fail its virtual +0xa8 predicate, must
  * clear +0x260 bit 0x10000, share the Actor_GetCachedTerrainHeight value with the actor, lie
  * within 0x20000 vertically, and have planar distance below actor +0x260 plus
- * 0x30000 when func_02046d8c recognizes the callback. Choose the eligible entry
+ * 0x30000 when Type7Actor_HasSpecialCallbackPair recognizes the callback. Choose the eligible entry
  * with the smallest parallel data_021056b8 priority. Bind it at +0x210 and,
  * for an unrecognized callback, install data_020e18e8 for 20 ticks or
  * data_020e18e0 indefinitely, then set +0x256/+0x25a to 60/0. Actor relation,
@@ -85,7 +85,7 @@ s32 func_0204876c(void *self, s32 finiteMode)
         if (invoke_a8_predicate(globalObject) != 0
             || ActorDerivedType1_IsSpecialRecordActive(globalObject) != 0) {
             *(void **)(actor + 0x210) = globalObject;
-            if (func_02046d8c(actor) == 0) {
+            if (Type7Actor_HasSpecialCallbackPair(actor) == 0) {
                 if (finiteMode != 0)
                     func_020481dc(actor, data_020e16e8[0],
                                   data_020e16e8[1], 20);
@@ -116,7 +116,7 @@ s32 func_0204876c(void *self, s32 finiteMode)
             continue;
         distance = func_020adcac(actor + 0x1c, candidate + 0x1c);
         range = *(s32 *)(actor + 0x260);
-        if (func_02046d8c(actor) != 0)
+        if (Type7Actor_HasSpecialCallbackPair(actor) != 0)
             range += 0x30000;
         if (distance >= range)
             continue;
@@ -129,7 +129,7 @@ s32 func_0204876c(void *self, s32 finiteMode)
         return 0;
 
     *(void **)(actor + 0x210) = data_02105690[bestIndex];
-    if (func_02046d8c(actor) == 0) {
+    if (Type7Actor_HasSpecialCallbackPair(actor) == 0) {
         if (finiteMode != 0)
             func_020481dc(actor, data_020e18e8[0], data_020e18e8[1], 20);
         else

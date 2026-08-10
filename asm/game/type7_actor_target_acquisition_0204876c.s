@@ -9,7 +9,7 @@
 .extern data_021056b8
 .extern Actor_GetCachedTerrainHeight
 .extern ActorDerivedType1_IsSpecialRecordActive
-.extern func_02046d8c
+.extern Type7Actor_HasSpecialCallbackPair
 .extern func_020481dc
 .extern func_020adcac
 .extern func_020be334
@@ -71,7 +71,7 @@ func_0204876c: ; 0x0204876c
 .L_02048830:
     mov r0, r10
     str r4, [r10, #0x210]
-    bl func_02046d8c
+    bl Type7Actor_HasSpecialCallbackPair
     cmp r0, #0x0
     bne .L_02048878
     cmp r9, #0x0
@@ -147,7 +147,7 @@ func_0204876c: ; 0x0204876c
     bl func_020adcac
     mov r8, r0
     mov r0, r10
-    bl func_02046d8c
+    bl Type7Actor_HasSpecialCallbackPair
     cmp r0, #0x0
     movne r1, #0x30000
     ldr r0, [r10, #0x260]
@@ -182,7 +182,7 @@ func_0204876c: ; 0x0204876c
     mov r0, r10
     ldr r1, [r1, r6, lsl #0x2]
     str r1, [r10, #0x210]
-    bl func_02046d8c
+    bl Type7Actor_HasSpecialCallbackPair
     cmp r0, #0x0
     bne .L_02048a20
     cmp r9, #0x0

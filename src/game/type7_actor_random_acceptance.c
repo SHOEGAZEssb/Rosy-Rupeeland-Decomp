@@ -7,7 +7,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern s32 func_02046d8c(const void *actor);
+extern s32 Type7Actor_HasSpecialCallbackPair(const void *actor);
 extern u32 genrand_int32(void);
 extern s32 func_020ada8c(s32 value, s32 divisor);
 extern void func_02047f38(void *actor);
@@ -18,7 +18,7 @@ extern void func_02047f38(void *actor);
 /*
  * Input is a type-seven actor. Return one unconditionally when collision flag
  * +0xd0/0x40000 is set or record subtype +0x54 is one. For subtype zero, return
- * one when func_02046d8c recognizes the callback or with four-in-five random
+ * one when Type7Actor_HasSpecialCallbackPair recognizes the callback or with four-in-five random
  * outcomes; on the remaining outcome run func_02047f38 and return zero. For
  * subtype two, return one on random modulo three equal to zero, otherwise run
  * func_02047f38 and return zero. Other subtypes return zero. The random stream,
@@ -36,7 +36,7 @@ s32 func_020486a8(void *self)
     if (subtype == 1)
         return 1;
     if (subtype == 0) {
-        if (func_02046d8c(actor) != 0)
+        if (Type7Actor_HasSpecialCallbackPair(actor) != 0)
             return 1;
         if (func_020ada8c((s32)(genrand_int32() & 0x7fffffff), 5) != 0)
             return 1;

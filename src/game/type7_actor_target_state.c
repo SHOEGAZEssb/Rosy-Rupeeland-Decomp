@@ -13,7 +13,7 @@ extern u32 data_020e1920[];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern s32 func_02046d8c(const void *actor);
+extern s32 Type7Actor_HasSpecialCallbackPair(const void *actor);
 extern s32 func_020adcac(const void *first, const void *second);
 extern void *func_020050a4(void *destination, const void *source);
 extern void func_020481dc(void *actor, u32 first, u32 second, s32 duration);
@@ -36,7 +36,7 @@ static s32 callback_pair_matches(const u8 *actor, void *first, void *second)
  * for callback pair data_020e16b0+0x108/data_020e17b8 and by one otherwise,
  * then add 0x20000 for collision bit +0xd0/0x40000 or 0x10000 otherwise.
  *
- * When flag four is clear or func_02046d8c recognizes the callback, compare
+ * When flag four is clear or Type7Actor_HasSpecialCallbackPair recognizes the callback, compare
  * the recovered distance between actor fields +0x1c and +0x218 to that limit
  * and return zero when within it. Otherwise, or when beyond it, restore +0x214
  * from saved transform +0x224 if flag four is set, null +0x210, install
@@ -59,7 +59,7 @@ s32 func_0204820c(void *self)
     limit = *(s32 *)(actor + 0x25c) * multiplier;
     limit += (*(u32 *)(actor + 0xd0) & 0x40000) != 0
         ? 0x20000 : 0x10000;
-    if ((flags & 4) == 0 || func_02046d8c(actor) != 0) {
+    if ((flags & 4) == 0 || Type7Actor_HasSpecialCallbackPair(actor) != 0) {
         if (func_020adcac(actor + 0x1c, actor + 0x218) <= limit)
             return 0;
     }

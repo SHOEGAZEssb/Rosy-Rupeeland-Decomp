@@ -13,7 +13,7 @@ extern u8 data_020e1778[];
  * zero-first-word acceptance after first-word equality. Return zero otherwise;
  * no state, SDK, or hardware effects occur.
  */
-s32 func_02046d8c(const void *self)
+s32 Type7Actor_HasSpecialCallbackPair(const void *self)
 {
     const u8 *actor = (const u8 *)self;
     void *first = *(void *const *)(actor + 0x208);

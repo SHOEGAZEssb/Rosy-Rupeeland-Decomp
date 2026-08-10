@@ -32,7 +32,7 @@ extern void func_02046e60(void *actor, void *other, s32 value, s32 extra);
 extern s32 func_0204cfa4(s32 x, s32 y);
 extern s32 func_020adc90(s32 value, s32 divisor);
 extern s32 func_020adae4(s32 value, s32 shift);
-extern s32 func_02046d8c(void *actor);
+extern s32 Type7Actor_HasSpecialCallbackPair(void *actor);
 extern void func_02005030(void *destination, const void *source);
 extern void func_02005058(void *value);
 extern void func_020478dc(void *actor, const void *transform, s32 value);
@@ -147,7 +147,7 @@ s32 func_02046660(void *self, void *otherObject, s32 context)
             if (type == 1) {
                 if (context == 0
                     && (*(u32 *)(actor + 0x268) & 4) == 0
-                    && func_02046d8c(actor) == 0
+                    && Type7Actor_HasSpecialCallbackPair(actor) == 0
                     && (*(u32 *)(actor + 0x268) & 0x8000) != 0) {
                     u32 temporary[4];
                     func_02005030(temporary, actor + 0x18);
@@ -163,7 +163,7 @@ s32 func_02046660(void *self, void *otherObject, s32 context)
                 if (context == 0) {
                     *(s32 *)(other + 0x9c) += dx;
                     *(s32 *)(other + 0xa0) += dy;
-                    if (func_02046d8c(actor) != 0
+                    if (Type7Actor_HasSpecialCallbackPair(actor) != 0
                         && *(void **)(actor + 0x210) == other
                         && ActorDerivedType1_IsSpecialRecordActive(other) != 0) {
                         ActorDerivedType1_StartRecord(other, 0x88);

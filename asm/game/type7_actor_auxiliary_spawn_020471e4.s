@@ -5,9 +5,9 @@
 .extern func_0200cf00
 .extern Actor_DestroyAuxiliaryCollisionResource
 .extern gHeapContext
-.global func_020471e4
-.type func_020471e4, @function
-func_020471e4: ; 0x020471e4
+.global Type7Actor_SpawnAuxiliaryCollisionResource
+.type Type7Actor_SpawnAuxiliaryCollisionResource, @function
+Type7Actor_SpawnAuxiliaryCollisionResource: ; 0x020471e4
     stmdb sp!, {r3, lr}
     ldr r1, [r0, #0x268]
     tst r1, #0x10
@@ -34,4 +34,4 @@ func_020471e4: ; 0x020471e4
 .L_0204723c: .word data_020e1d04
 .L_02047240: .word gHeapContext
 .L_02047244: .word 0x7fff
-.size func_020471e4, . - func_020471e4
+.size Type7Actor_SpawnAuxiliaryCollisionResource, . - Type7Actor_SpawnAuxiliaryCollisionResource
