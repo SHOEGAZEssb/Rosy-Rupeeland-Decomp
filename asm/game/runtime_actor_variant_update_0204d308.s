@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/runtime_actor_variant_update.c.
 .extern Actor_SetRuntimeFlag80
-.extern func_0201b23c
+.extern GamePhaseActorScriptVm_IsActive
 .extern GamePhaseScriptVm_Execute
 .extern ActorRuntimeCollection_TryCompleteAttachment
 .extern Actor_GetCollectionBySlot
@@ -8,7 +8,7 @@
 .extern ActorCollection_EndTrackedPair
 .extern ActorRuntimeCollection_GetPrimaryContainer
 .extern GamePhaseActorScriptVm_Assign
-.extern func_0201b228
+.extern GamePhaseActorScriptVm_Activate
 .extern ActorCollection_QueueActorForRemoval
 .extern data_02105310
 .text
@@ -18,7 +18,7 @@ func_0204d308: ; 0x0204d308
     mov r4, r0
     bl Actor_SetRuntimeFlag80
     add r0, r4, #0xec
-    bl func_0201b23c
+    bl GamePhaseActorScriptVm_IsActive
     cmp r0, #0x0
     ldmeqia sp!, {r3, r4, r5, pc}
     add r0, r4, #0xec
@@ -57,7 +57,7 @@ func_0204d308: ; 0x0204d308
     add r0, r4, #0xec
     bl GamePhaseActorScriptVm_Assign
     add r0, r4, #0xec
-    bl func_0201b228
+    bl GamePhaseActorScriptVm_Activate
 .L_0204d3b4:
     ldr r0, [r4, #0x14]
     tst r0, #0x20

@@ -6534,21 +6534,21 @@ build build/reports/game_phase_script_vm_0201b210.json: objdiff build/decomp/del
   base_object = build/decomp/asm/game/game_phase_script_vm_0201b210.o
 build build/reports/game_phase_script_vm_0201b210.txt: match_report build/reports/game_phase_script_vm_0201b210.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_script_vm_0201b210.json
-  report_args = --section .text --function func_0201b210 --require-exact
+  report_args = --section .text --function GamePhaseActorScriptVm_DispatchOpcode --require-exact
 
 build build/reports/game_phase_script_vm_0201b228.json: objdiff build/decomp/delinks/asm/game/game_phase_script_vm_0201b228.o | build/decomp/asm/game/game_phase_script_vm_0201b228.o
   target_object = build/decomp/delinks/asm/game/game_phase_script_vm_0201b228.o
   base_object = build/decomp/asm/game/game_phase_script_vm_0201b228.o
 build build/reports/game_phase_script_vm_0201b228.txt: match_report build/reports/game_phase_script_vm_0201b228.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_script_vm_0201b228.json
-  report_args = --section .text --function func_0201b228 --require-exact
+  report_args = --section .text --function GamePhaseActorScriptVm_Activate --require-exact
 
 build build/reports/game_phase_script_vm_0201b23c.json: objdiff build/decomp/delinks/asm/game/game_phase_script_vm_0201b23c.o | build/decomp/asm/game/game_phase_script_vm_0201b23c.o
   target_object = build/decomp/delinks/asm/game/game_phase_script_vm_0201b23c.o
   base_object = build/decomp/asm/game/game_phase_script_vm_0201b23c.o
 build build/reports/game_phase_script_vm_0201b23c.txt: match_report build/reports/game_phase_script_vm_0201b23c.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_script_vm_0201b23c.json
-  report_args = --section .text --function func_0201b23c --require-exact
+  report_args = --section .text --function GamePhaseActorScriptVm_IsActive --require-exact
 
 build build/reports/game_phase_actor_script_vm_dispatch.txt: phony build/reports/game_phase_script_vm_0201b210.txt build/reports/game_phase_script_vm_0201b228.txt build/reports/game_phase_script_vm_0201b23c.txt
 build build/reports/game_phase_script_vm_0201b24c.json: objdiff build/decomp/delinks/asm/game/game_phase_script_vm_0201b24c.o | build/decomp/asm/game/game_phase_script_vm_0201b24c.o

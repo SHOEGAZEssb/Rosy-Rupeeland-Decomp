@@ -7,8 +7,8 @@
 .extern ActorRuntimeCollection_TryCompleteAttachment
 .extern GamePhaseScriptVm_Execute
 .extern GamePhaseActorScriptVm_Assign
-.extern func_0201b228
-.extern func_0201b23c
+.extern GamePhaseActorScriptVm_Activate
+.extern GamePhaseActorScriptVm_IsActive
 .extern ActorCollection_QueueActorForRemoval
 .extern ActorCollection_EndTrackedPair
 .extern Actor_UpdateAttachmentDirectionFromVector
@@ -20,7 +20,7 @@ func_02034164: ; 0x02034164
     stmdb sp!, {r3, r4, r5, lr}
     mov r4, r0
     add r0, r4, #0xec
-    bl func_0201b23c
+    bl GamePhaseActorScriptVm_IsActive
     cmp r0, #0x0
     beq .L_02034250
     add r0, r4, #0xec
@@ -61,7 +61,7 @@ func_02034164: ; 0x02034164
     add r0, r4, #0xec
     bl GamePhaseActorScriptVm_Assign
     add r0, r4, #0xec
-    bl func_0201b228
+    bl GamePhaseActorScriptVm_Activate
     ldr r2, [r4, #0x40]
     ldr r1, [r4, #0x3c]
     adds r0, r1, r2

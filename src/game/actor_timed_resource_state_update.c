@@ -7,7 +7,7 @@ extern void *data_021052fc;
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern s32 func_0201b23c(void *state);
+extern s32 GamePhaseActorScriptVm_IsActive(void *state);
 extern void GamePhaseScriptVm_Execute(void *state, s32 value);
 extern s32 ActorRuntimeCollection_TryCompleteAttachment(void *effectState, void *actor);
 extern void *GamePhaseRuntime_GetActorCollection(void *manager, u32 slot);
@@ -15,7 +15,7 @@ extern void *Actor_GetCollection(void *actor);
 extern void ActorCollection_EndTrackedPair(void *collection, void *reference, void *actor);
 extern void *ActorRuntimeCollection_GetPrimaryContainer(void *effectState, s32 index);
 extern void GamePhaseActorScriptVm_Assign(void *state, void *value);
-extern void func_0201b228(void *state);
+extern void GamePhaseActorScriptVm_Activate(void *state);
 extern void Actor_UpdateAttachmentDirectionFromVector(void *actor, s32 x, s32 y);
 extern void ActorCollection_QueueActorForRemoval(void *collection, void *actor);
 #ifdef __cplusplus
@@ -28,7 +28,7 @@ extern void ActorCollection_QueueActorForRemoval(void *collection, void *actor);
  * byte 0xe8 must pass data_02105310's actor predicate or the function returns
  * zero immediately. Modes other than two dispatch a collection/reference/actor
  * callback using global manager slot one; all nonzero modes are then cleared,
- * bind an effect-state value into +0xec, finalize that state, and refresh actor
+ * bind an effect-state value into +0xec, activate that state, and refresh actor
  * direction from motion +0x3c/+0x40 when their sum is nonzero. Finally actor
  * flag 0x20 at +0x14 dispatches a collection removal/update callback and returns
  * zero; all other completed paths return one. Helpers may mutate collection,
@@ -40,7 +40,7 @@ s32 func_02034164(void *self)
     void *slotOne;
     void *collection;
 
-    if (func_0201b23c(actor + 0xec) == 0) {
+    if (GamePhaseActorScriptVm_IsActive(actor + 0xec) == 0) {
         return 1;
     }
     GamePhaseScriptVm_Execute(actor + 0xec, 0);
@@ -60,7 +60,7 @@ s32 func_02034164(void *self)
         }
         actor[0xe8] = 0;
         GamePhaseActorScriptVm_Assign(actor + 0xec, ActorRuntimeCollection_GetPrimaryContainer(data_02105310, 0));
-        func_0201b228(actor + 0xec);
+        GamePhaseActorScriptVm_Activate(actor + 0xec);
         if (*(s32 *)(actor + 0x3c) + *(s32 *)(actor + 0x40) != 0) {
             Actor_UpdateAttachmentDirectionFromVector(actor, *(s32 *)(actor + 0x3c),
                           *(s32 *)(actor + 0x40));

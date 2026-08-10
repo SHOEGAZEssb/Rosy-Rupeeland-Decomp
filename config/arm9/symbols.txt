@@ -921,9 +921,9 @@ GamePhaseActorScriptVm_Assign kind:function(arm,size=0x2c) addr:0x0201b180
 GamePhaseActorScriptVm_CopyState kind:function(arm,size=0x34) addr:0x0201b1ac
 GamePhaseActorScriptVm_Destroy kind:function(arm,size=0x14) addr:0x0201b1e0
 GamePhaseActorScriptVm_DestroyAndFree kind:function(arm,size=0x1c) addr:0x0201b1f4
-func_0201b210 kind:function(arm,size=0x18) addr:0x0201b210
-func_0201b228 kind:function(arm,size=0x14) addr:0x0201b228
-func_0201b23c kind:function(arm,size=0x10) addr:0x0201b23c
+GamePhaseActorScriptVm_DispatchOpcode kind:function(arm,size=0x18) addr:0x0201b210
+GamePhaseActorScriptVm_Activate kind:function(arm,size=0x14) addr:0x0201b228
+GamePhaseActorScriptVm_IsActive kind:function(arm,size=0x10) addr:0x0201b23c
 func_0201b24c kind:function(arm,size=0x14) addr:0x0201b24c
 func_0201b260 kind:function(arm,size=0x18) addr:0x0201b260
 func_0201b278 kind:function(arm,size=0x3c) addr:0x0201b278
@@ -6869,7 +6869,7 @@ data_020d56a0 kind:data(any) addr:0x020d56a0
 data_020d56b4 kind:data(any) addr:0x020d56b4
 data_020d56c8 kind:data(any) addr:0x020d56c8
 data_020d56d8 kind:data(any) addr:0x020d56d8
-data_020d56e4 kind:data(any) addr:0x020d56e4
+gGamePhaseActorScriptVmOpcodeTable kind:data(any) addr:0x020d56e4
 data_020d5ad8 kind:data(any) addr:0x020d5ad8
 data_020d5ae8 kind:data(any) addr:0x020d5ae8
 data_020d5af8 kind:data(any) addr:0x020d5af8

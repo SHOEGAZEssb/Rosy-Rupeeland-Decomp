@@ -13,7 +13,7 @@ extern void *Actor_GetCollection(void *);
 extern void GamePhaseActorScriptVm_InitWithScript(void *, void *, void *, void *);
 extern void GamePhaseActorScriptVm_Assign(void *, const void *);
 extern void GamePhaseActorScriptVm_Destroy(void *);
-extern void func_0201b228(void *);
+extern void GamePhaseActorScriptVm_Activate(void *);
 #ifdef __cplusplus
 }
 #endif
@@ -24,7 +24,7 @@ extern void func_0201b228(void *);
  * actor flag 0x100 and notifies data_02105310. Construct a temporary resource from actor pointer
  * 0x180+variant*4 and GameWork offset 0x3cc when collection mode 0x2e84 is one,
  * otherwise offset 0x5cc. Assign it to actor resource 0xec, destroy the
- * temporary, then finalize 0xec through func_0201b228. Returns no value; called
+ * temporary, then activate the new state at 0xec. Returns no value; called
  * resource helpers may allocate or update SDK-managed presentation state.
  */
 void Actor_SetResourceVariant(void *self, s32 variant)
@@ -48,5 +48,5 @@ void Actor_SetResourceVariant(void *self, s32 variant)
                   *(void **)(actor + 0x180 + variant * 4), gameData);
     GamePhaseActorScriptVm_Assign(actor + 0xec, temporary);
     GamePhaseActorScriptVm_Destroy(temporary);
-    func_0201b228(actor + 0xec);
+    GamePhaseActorScriptVm_Activate(actor + 0xec);
 }

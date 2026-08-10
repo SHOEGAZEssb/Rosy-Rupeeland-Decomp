@@ -14,8 +14,8 @@ extern void *ActorRuntimeCollection_GetPrimaryContainer(void *registry);
 extern s32 ActorRuntimeCollection_TryCompleteAttachment(void *registry, void *actor);
 extern void GamePhaseScriptVm_Execute(void *state, s32 value);
 extern void GamePhaseActorScriptVm_Assign(void *state, void *value);
-extern void func_0201b228(void *state);
-extern s32 func_0201b23c(void *state);
+extern void GamePhaseActorScriptVm_Activate(void *state);
+extern s32 GamePhaseActorScriptVm_IsActive(void *state);
 extern void ActorCollection_QueueActorForRemoval(void *runtime, void *actor);
 extern void ActorCollection_EndTrackedPair(void *runtime, void *anchor, void *actor);
 extern void Actor_SetRuntimeFlag80(void *actor);
@@ -27,15 +27,15 @@ extern u8 *Actor_GetCollectionBySlot(void *actor, s32 category);
 
 /*
  * Input is a runtime actor variant. Run base update Actor_SetRuntimeFlag80. Continue
- * only when embedded state +0xec passes func_0201b23c; then clear its recovered
- * value through GamePhaseScriptVm_Execute and require actor +0x169 bit 0x01.
+ * only when embedded state +0xec is active; then execute it and require actor
+ * +0x169 bit 0x01.
  *
  * When byte +0xe8 is nonzero, require ActorRuntimeCollection_TryCompleteAttachment to accept the actor in
  * registry data_02105310. Values other than two additionally obtain category
  * one through Actor_GetCollectionBySlot and call ActorCollection_EndTrackedPair with its
  * +0x2e7c anchor, runtime from Actor_GetCollection, and the actor. Then clear +0xe8,
  * copy the registry
- * value from ActorRuntimeCollection_GetPrimaryContainer into embedded state +0xec, and advance that state.
+ * value from ActorRuntimeCollection_GetPrimaryContainer into embedded state +0xec, and activate that state.
  * Finally, actor +0x14 bit 0x20 removes the actor through ActorCollection_QueueActorForRemoval.
  * No value is returned. Base, embedded state, registry, and collection
  * membership may change; there are no direct hardware effects.
@@ -45,7 +45,7 @@ void func_0204d308(void *self)
     u8 *actor = (u8 *)self;
     void *state = actor + 0xec;
     Actor_SetRuntimeFlag80(actor);
-    if (func_0201b23c(state) == 0)
+    if (GamePhaseActorScriptVm_IsActive(state) == 0)
         return;
     GamePhaseScriptVm_Execute(state, 0);
     if ((actor[0x169] & 1) == 0)
@@ -61,7 +61,7 @@ void func_0204d308(void *self)
         }
         actor[0xe8] = 0;
         GamePhaseActorScriptVm_Assign(state, ActorRuntimeCollection_GetPrimaryContainer(data_02105310));
-        func_0201b228(state);
+        GamePhaseActorScriptVm_Activate(state);
     }
     if ((*(u32 *)(actor + 0x14) & 0x20) != 0)
         ActorCollection_QueueActorForRemoval(Actor_GetCollection(actor), actor);

@@ -5,7 +5,7 @@
 .extern GamePhaseActorScriptVm_InitWithScript
 .extern GamePhaseActorScriptVm_Assign
 .extern GamePhaseActorScriptVm_Destroy
-.extern func_0201b228
+.extern GamePhaseActorScriptVm_Activate
 .extern Actor_SavePrimaryAttachmentState
 .extern Actor_GetCollection
 .extern gGameWork
@@ -69,7 +69,7 @@ Actor_SetResourceVariant: ; 0x02032aec
     bl GamePhaseActorScriptVm_Destroy
 .L_02032bb8:
     add r0, r5, #0xec
-    bl func_0201b228
+    bl GamePhaseActorScriptVm_Activate
     add sp, sp, #0x128
     ldmia sp!, {r3, r4, r5, pc}
 .L_02032bc8: .word data_02105310
