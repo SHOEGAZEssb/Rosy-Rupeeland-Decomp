@@ -4,7 +4,7 @@
 .extern data_020d4370
 .extern OverlayManager_LoadOverlay
 .extern OverlayManager_GetGlobal
-.extern func_02008b6c
+.extern GamePhaseRuntime_InitScaledAreaCoordinates
 .extern func_02012528
 .extern func_0202844c
 .extern func_0202852c
@@ -16,9 +16,9 @@
 .extern Heap_Alloc
 .extern Heap_Free
 
-    .global func_02008bb8
-.type func_02008bb8, @function
-func_02008bb8:
+    .global GamePhaseRuntime_RefreshAreaAuxiliaryObject
+.type GamePhaseRuntime_RefreshAreaAuxiliaryObject, @function
+GamePhaseRuntime_RefreshAreaAuxiliaryObject:
     stmdb sp!, {r4, r5, r6, r7, lr}
     sub sp, sp, #0xc
     mov r6, r0
@@ -88,7 +88,7 @@ L_02008c9c:
     add r0, sp, #0x0
     mov r1, r6
     mov r2, r5
-    bl func_02008b6c
+    bl GamePhaseRuntime_InitScaledAreaCoordinates
     add r0, r6, #0x3000
     ldr r0, [r0, #0xec]
     add r1, sp, #0x0
@@ -103,5 +103,5 @@ L_02008ce8: .word 0x38
 L_02008cec: .word 0x8ac
 L_02008cf0: .word data_020d4370
 L_02008cf4: .word gHeapContext
-    .size func_02008bb8, .-func_02008bb8
+    .size GamePhaseRuntime_RefreshAreaAuxiliaryObject, .-GamePhaseRuntime_RefreshAreaAuxiliaryObject
 

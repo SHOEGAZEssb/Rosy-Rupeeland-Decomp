@@ -18,7 +18,7 @@
 .extern func_ov052_0220da54
 .extern func_ov052_0220e178
 .extern Sound_Play
-.extern func_02008e10
+.extern GamePhaseRuntime_UpdateActorPresentationState
 .extern GamePhaseState_UpdateRenderHelpers
 .extern data_020d5d24
 .extern data_020d5d84

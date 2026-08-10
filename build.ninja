@@ -10234,7 +10234,7 @@ build build/reports/game_phase_runtime_area_helpers.json: objdiff build/decomp/d
 
 build build/reports/game_phase_runtime_area_helpers.txt: match_report build/reports/game_phase_runtime_area_helpers.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_runtime_area_helpers.json
-  report_args = --section .text --function GamePhaseRuntime_GetActiveAreaPlacementVariant --function func_02008b50 --function func_02008b6c --require-exact
+  report_args = --section .text --function GamePhaseRuntime_GetActiveAreaPlacementVariant --function GamePhaseRuntime_UpdateDualScreenUiPresentation --function GamePhaseRuntime_InitScaledAreaCoordinates --require-exact
 
 build build/reports/game_phase_runtime_auxiliary.json: objdiff build/decomp/delinks/asm/game/game_phase_runtime_auxiliary.o | build/decomp/asm/game/game_phase_runtime_auxiliary.o
   target_object = build/decomp/delinks/asm/game/game_phase_runtime_auxiliary.o
@@ -10242,7 +10242,7 @@ build build/reports/game_phase_runtime_auxiliary.json: objdiff build/decomp/deli
 
 build build/reports/game_phase_runtime_auxiliary.txt: match_report build/reports/game_phase_runtime_auxiliary.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_runtime_auxiliary.json
-  report_args = --section .text --function func_02008bb8 --require-exact
+  report_args = --section .text --function GamePhaseRuntime_RefreshAreaAuxiliaryObject --require-exact
 
 build build/reports/game_phase_runtime_scene_object.json: objdiff build/decomp/delinks/asm/game/game_phase_runtime_scene_object.o | build/decomp/asm/game/game_phase_runtime_scene_object.o
   target_object = build/decomp/delinks/asm/game/game_phase_runtime_scene_object.o
@@ -10250,7 +10250,7 @@ build build/reports/game_phase_runtime_scene_object.json: objdiff build/decomp/d
 
 build build/reports/game_phase_runtime_scene_object.txt: match_report build/reports/game_phase_runtime_scene_object.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_runtime_scene_object.json
-  report_args = --section .text --function func_02008cf8 --require-exact
+  report_args = --section .text --function GamePhaseRuntime_RecreateDualScreenUiPresentation --require-exact
 
 build build/reports/game_phase_runtime_transition_sync.json: objdiff build/decomp/delinks/src/game/game_phase_runtime_transition_sync.o | build/decomp/src/game/game_phase_runtime_transition_sync.o
   target_object = build/decomp/delinks/src/game/game_phase_runtime_transition_sync.o
@@ -10258,7 +10258,7 @@ build build/reports/game_phase_runtime_transition_sync.json: objdiff build/decom
 
 build build/reports/game_phase_runtime_transition_sync.txt: match_report build/reports/game_phase_runtime_transition_sync.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_runtime_transition_sync.json
-  report_args = --section .text --function func_02008e10 --require-exact
+  report_args = --section .text --function GamePhaseRuntime_UpdateActorPresentationState --require-exact
 
 build build/reports/game_phase_runtime_misc.json: objdiff build/decomp/delinks/src/game/game_phase_runtime_misc.o | build/decomp/src/game/game_phase_runtime_misc.o
   target_object = build/decomp/delinks/src/game/game_phase_runtime_misc.o

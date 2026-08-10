@@ -9,9 +9,9 @@
 .extern Heap_Alloc
 .extern OS_Halt
 
-    .global func_02008cf8
-.type func_02008cf8, @function
-func_02008cf8:
+    .global GamePhaseRuntime_RecreateDualScreenUiPresentation
+.type GamePhaseRuntime_RecreateDualScreenUiPresentation, @function
+GamePhaseRuntime_RecreateDualScreenUiPresentation:
     stmdb sp!, {r4, r5, r6, lr}
     mov r5, r0
     add r0, r5, #0x3000
@@ -92,5 +92,5 @@ L_02008e00:
     ldmia sp!, {r4, r5, r6, pc}
 L_02008e08: .word data_020d4378
 L_02008e0c: .word gHeapContext
-    .size func_02008cf8, .-func_02008cf8
+    .size GamePhaseRuntime_RecreateDualScreenUiPresentation, .-GamePhaseRuntime_RecreateDualScreenUiPresentation
 

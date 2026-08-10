@@ -23,7 +23,7 @@ extern void func_02010e68(void *context);
  * restore the secondary property. It enables object 0x2f7c, advances the Lupy
  * context, and invokes virtual slot four on object 0x30e8. Returns no value.
  */
-void func_02008e10(GamePhaseRuntime *self, s32 mode)
+void GamePhaseRuntime_UpdateActorPresentationState(GamePhaseRuntime *self, s32 mode)
 {
     u8 *b = (u8 *)self;
     s32 previous = func_02030b58(GamePhaseRuntime_GetActorCollection(data_021052fc, 1), 0);

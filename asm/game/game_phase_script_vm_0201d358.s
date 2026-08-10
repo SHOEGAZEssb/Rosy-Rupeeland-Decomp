@@ -15,7 +15,7 @@
 .extern GamePhaseRuntime_SetPlacementMode
 .extern func_02008570
 .extern func_020755bc
-.extern func_02008e10
+.extern GamePhaseRuntime_UpdateActorPresentationState
 .extern func_02091fb0
 .extern Heap_Alloc
 .extern func_ov029_021fd95c
@@ -216,7 +216,7 @@ L_0201d5ec:
     ldr r0, L_0201d604
     mov r1, #0x0
     ldr r0, [r0, #0x0]
-    bl func_02008e10
+    bl GamePhaseRuntime_UpdateActorPresentationState
     mov r0, #0x0
     ldmia sp!, {r4, pc}
 L_0201d604: .word data_021052fc

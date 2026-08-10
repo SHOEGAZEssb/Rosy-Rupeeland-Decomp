@@ -13,8 +13,8 @@
 .extern GamePhaseRuntime_CreateSecondaryActorSubsystem
 .extern GamePhaseRuntime_SetPlacementMode
 .extern GamePhaseRuntime_GetActiveAreaPlacementVariant
-.extern func_02008bb8
-.extern func_02008cf8
+.extern GamePhaseRuntime_RefreshAreaAuxiliaryObject
+.extern GamePhaseRuntime_RecreateDualScreenUiPresentation
 .extern func_020090c0
 .extern func_020091c0
 .extern func_020099dc
@@ -166,7 +166,7 @@ GamePhaseRuntime_Configure:
     add r1, r4, #0x3000
     ldr r1, [r1, #0xbc]
     mov r2, #0x1
-    bl func_02008bb8
+    bl GamePhaseRuntime_RefreshAreaAuxiliaryObject
     mov r0, #0x0
     add r1, r4, #0x3000
     ldr r1, [r1, #0xbc]
@@ -266,7 +266,7 @@ L_02006da0:
     mov r1, r0
     ldr r2, [r2, #0xbc]
     mov r0, r4
-    bl func_02008cf8
+    bl GamePhaseRuntime_RecreateDualScreenUiPresentation
     mov r1, #0x1
     add r0, r4, #0x3000
     str r1, [r0, #0xfc]

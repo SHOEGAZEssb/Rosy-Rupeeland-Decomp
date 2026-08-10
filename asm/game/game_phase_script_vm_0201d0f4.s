@@ -18,7 +18,7 @@
 .extern func_ov052_0220da54
 .extern func_ov052_0220e178
 .extern Sound_Play
-.extern func_02008e10
+.extern GamePhaseRuntime_UpdateActorPresentationState
 .extern GamePhaseState_UpdateRenderHelpers
 .extern data_020d5d24
 .extern data_020d5d84
@@ -100,7 +100,7 @@ L_0201d1f0:
     ldr r0, L_0201d21c
     mov r1, #0x2
     ldr r0, [r0, #0x0]
-    bl func_02008e10
+    bl GamePhaseRuntime_UpdateActorPresentationState
     mov r0, #0x0
     ldmia sp!, {r4, pc}
 L_0201d208: .word data_020f4dc8

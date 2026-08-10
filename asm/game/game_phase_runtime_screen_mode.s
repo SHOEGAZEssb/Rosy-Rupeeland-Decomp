@@ -2,7 +2,7 @@
 ; the documented portable implementation and recovered behavior.
 .text
 .extern GamePhaseRuntime_SetPlacementMode
-.extern func_02008bb8
+.extern GamePhaseRuntime_RefreshAreaAuxiliaryObject
 .extern func_0200eb58
 .extern func_020121f8
 .extern func_0201dff0
@@ -46,7 +46,7 @@ L_020085b8:
     ldr r1, [r0, #0xbc]
     mov r0, r5
     mov r2, #0x1
-    bl func_02008bb8
+    bl GamePhaseRuntime_RefreshAreaAuxiliaryObject
     add r0, r5, #0x3000
     ldr r0, [r0, #0xe8]
     ldr r1, [r0, #0x0]

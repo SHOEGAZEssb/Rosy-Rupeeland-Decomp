@@ -5,7 +5,7 @@
 .extern TouchRegionManager_SetEnabled
 .extern TouchRegionManager_Tick
 .extern data_021052fc
-.extern func_02008e10
+.extern GamePhaseRuntime_UpdateActorPresentationState
 .extern func_0200f5b8
 .extern func_0200f824
 .extern func_020740a4
@@ -92,7 +92,7 @@ func_ov060_022102f0:
     ldr r0, .L_0221042c
     mov r1, #0x2
     ldr r0, [r0, #0x0]
-    bl func_02008e10
+    bl GamePhaseRuntime_UpdateActorPresentationState
     mov r0, #0x0
 .L_02210424:
     add sp, sp, #0x8

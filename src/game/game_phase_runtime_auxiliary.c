@@ -29,10 +29,10 @@ extern void func_ov056_0220f054(void *object, const void *value);
  * 0x30ec, and detach it from the optional actor. For eligible orientation-one
  * areas, clear sub-display mode bit 3, load overlay mask 0x38, allocate and
  * construct a tagged 0x8ac-byte replacement, attach it, and provide scaled
- * area data from func_02008b6c. VBlank handling is always re-enabled. Returns
+ * area data from GamePhaseRuntime_InitScaledAreaCoordinates. VBlank handling is always re-enabled. Returns
  * no value; display-register, overlay, heap, and interrupt effects are ordered.
  */
-void func_02008bb8(GamePhaseRuntime *self, void *area, s32 enabled)
+void GamePhaseRuntime_RefreshAreaAuxiliaryObject(GamePhaseRuntime *self, void *area, s32 enabled)
 {
     u8 *b = (u8 *)self;
     void *object;
@@ -61,7 +61,7 @@ void func_02008bb8(GamePhaseRuntime *self, void *area, s32 enabled)
             object = func_ov054_0220e400(object, variant, enabled);
         *(void **)(b + 0x30ec) = object;
         func_02012528(*(void **)(b + 0x2fb8), object);
-        func_02008b6c(areaValue, self, area);
+        GamePhaseRuntime_InitScaledAreaCoordinates(areaValue, self, area);
         func_ov056_0220f054(*(void **)(b + 0x30ec), areaValue);
     }
     GX_VBlankIntr(1);

@@ -8,7 +8,7 @@
 .extern data_021052fc
 .extern GamePhaseRuntime_CreateSecondaryActorSubsystem
 .extern GamePhaseRuntime_DestroySecondaryActorSubsystem
-.extern func_02008bb8
+.extern GamePhaseRuntime_RefreshAreaAuxiliaryObject
 .extern func_020122a0
 .extern ActorDescriptorBatch_ApplyCategoryCallback
 
@@ -83,7 +83,7 @@ L_0200c970:
     ldr r1, [r4, #0x24]
     ldr r0, [r0, #0x0]
     mov r2, #0x1
-    bl func_02008bb8
+    bl GamePhaseRuntime_RefreshAreaAuxiliaryObject
     ldr r0, L_0200c9f8
     mov r1, #0x1
     ldr r0, [r0, #0x0]

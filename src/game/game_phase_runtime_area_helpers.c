@@ -34,7 +34,7 @@ s32 GamePhaseRuntime_GetActiveAreaPlacementVariant(GamePhaseRuntime *self)
 }
 
 /* Invoke virtual slot four of the object at runtime offset 0x30e8. */
-void func_02008b50(GamePhaseRuntime *self)
+void GamePhaseRuntime_UpdateDualScreenUiPresentation(GamePhaseRuntime *self)
 {
     void *object = *(void **)((u8 *)self + 0x30e8);
     (*(void (***)(void *))object)[4](object);
@@ -46,7 +46,7 @@ void func_02008b50(GamePhaseRuntime *self)
  * fields by 480 and 352. self is unused; destination is mutated; returns no
  * meaningful value.
  */
-void func_02008b6c(void *destination, GamePhaseRuntime *self, const void *area)
+void GamePhaseRuntime_InitScaledAreaCoordinates(void *destination, GamePhaseRuntime *self, const void *area)
 {
     u8 *out = (u8 *)destination;
     (void)self;

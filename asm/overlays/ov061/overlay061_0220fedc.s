@@ -7,7 +7,7 @@
 .extern DisplayBrightness_GetCurrent
 .extern DisplayBrightnessPair_GetScreen
 .extern GamePhaseRuntime_FinalizeActorCollections
-.extern func_02008e10
+.extern GamePhaseRuntime_UpdateActorPresentationState
 .extern func_0200f5b8
 .extern func_0200f824
 .extern func_020755bc
@@ -133,7 +133,7 @@ func_ov061_0220fedc:
     ldr r0, .L_0221008c
     mov r1, #0x2
     ldr r0, [r0, #0x0]
-    bl func_02008e10
+    bl GamePhaseRuntime_UpdateActorPresentationState
     mov r0, #0x0
 .L_02210084:
     add sp, sp, #0x8

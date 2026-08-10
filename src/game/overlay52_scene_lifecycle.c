@@ -34,7 +34,7 @@ extern void func_ov052_0220e14c(Overlay52Child *self, u16 parameter,
 extern s32 func_ov052_0220da54(Overlay52Child *self);
 extern void func_ov052_0220e178(Overlay52Child *self);
 extern void Sound_Play(void *context, s32 bank, s32 soundId);
-extern void func_02008e10(void *runtime, s32 mode);
+extern void GamePhaseRuntime_UpdateActorPresentationState(void *runtime, s32 mode);
 extern void GamePhaseState_UpdateRenderHelpers(void *value);
 #ifdef __cplusplus
 }
@@ -125,7 +125,7 @@ s32 func_0201d0f4(Overlay52Scene *self)
         if (self->child28->state04 == 1)
             func_ov052_0220e178(self->child28);
     }
-    func_02008e10(data_021052fc, 2);
+    GamePhaseRuntime_UpdateActorPresentationState(data_021052fc, 2);
     return 0;
 }
 

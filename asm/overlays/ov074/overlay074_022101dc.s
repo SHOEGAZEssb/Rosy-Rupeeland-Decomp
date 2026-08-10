@@ -8,7 +8,7 @@
 .extern func_02005058
 .extern SplineMover_Update
 .extern SplineMover_Evaluate2D
-.extern func_02008b50
+.extern GamePhaseRuntime_UpdateDualScreenUiPresentation
 .extern func_0200a310
 .extern func_02010104
 .extern func_02010e68
@@ -244,7 +244,7 @@ func_ov074_022101dc:
 .L_022104e8:
     ldr r0, .L_022105a8
     ldr r0, [r0, #0x0]
-    bl func_02008b50
+    bl GamePhaseRuntime_UpdateDualScreenUiPresentation
     ldr r0, [r4, #0x124]
     cmp r0, #0x0
     beq .L_02210524

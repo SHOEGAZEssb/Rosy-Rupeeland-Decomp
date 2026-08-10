@@ -63,7 +63,7 @@ s32 func_0200c924(GamePhaseApplyScene *self)
         break;
     case 2:
         GamePhaseRuntime_CreateSecondaryActorSubsystem(runtime, self->area, 1);
-        func_02008bb8(runtime, self->area, 1);
+        GamePhaseRuntime_RefreshAreaAuxiliaryObject(runtime, self->area, 1);
         func_020122a0(*(void **)((u8 *)runtime + 0x2fb8), 1);
         if (self != 0)
             self->base.vtable->destroyAndFree(&self->base);

@@ -11,7 +11,7 @@ extern void *gDebugFont;
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_02008e10(void *, s32);
+extern void GamePhaseRuntime_UpdateActorPresentationState(void *, s32);
 extern void func_020740a4(void *);
 extern void func_02075598(void *, void *);
 extern s32 func_02076148(void *, void *, s32, s32, s32, s32, s32);
@@ -48,7 +48,7 @@ extern "C" void func_ov018_021fd788(void *state)
         }
     }
     func_020958d8((u8 *)state + 0xd8);
-    func_02008e10(data_021052fc, 2);
+    GamePhaseRuntime_UpdateActorPresentationState(data_021052fc, 2);
 
     {
         void *actorData = FIELD(void *, FIELD(void *, state, 0x184), 0x54);

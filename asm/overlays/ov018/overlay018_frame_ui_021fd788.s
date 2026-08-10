@@ -2,7 +2,7 @@
 /* Exact fallback; see src/overlays/ov018/overlay018_frame_ui.c. */
     .extern data_021052fc
     .extern data_021f3ecc
-    .extern func_02008e10
+    .extern GamePhaseRuntime_UpdateActorPresentationState
     .extern func_020740a4
     .extern func_02075598
     .extern func_02076148
@@ -39,7 +39,7 @@ L_021fd7c8:
     ldr r0, L_021fd8fc
     mov r1, #0x2
     ldr r0, [r0, #0x0]
-    bl func_02008e10
+    bl GamePhaseRuntime_UpdateActorPresentationState
     ldr r0, [r4, #0x184]
     ldr r1, [r4, #0xd0]
     ldr r0, [r0, #0x54]

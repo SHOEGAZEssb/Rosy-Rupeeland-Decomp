@@ -1,7 +1,7 @@
     .text
 /* Exact fallback; see src/overlays/ov019/overlay019_scene_helpers.c. */
     .extern data_021052fc
-    .extern func_02008e10
+    .extern GamePhaseRuntime_UpdateActorPresentationState
     .extern func_02010e68
     .extern func_ov002_021fba00
     .extern gLupyContext
@@ -26,7 +26,7 @@ func_ov019_021fd170:
     ldr r0, L_021fd1b0
     mov r1, #0x0
     ldr r0, [r0, #0x0]
-    bl func_02008e10
+    bl GamePhaseRuntime_UpdateActorPresentationState
     b L_021fd1a4
 L_021fd198:
     ldr r0, L_021fd1b4

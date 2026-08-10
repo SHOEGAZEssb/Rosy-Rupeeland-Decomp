@@ -28,7 +28,7 @@ extern void func_ov030_021fd260(Overlay33Child *self);
 extern s32 func_ov014_021fd2f8(Overlay33Child *self);
 extern s32 func_ov033_021fd37c(Overlay33Child *self);
 extern void func_ov033_021fd324(Overlay33Child *self, void *value);
-extern void func_02008b50(void *runtime);
+extern void GamePhaseRuntime_UpdateDualScreenUiPresentation(void *runtime);
 extern void GamePhaseRuntime_PrepareActorCollections(void *runtime, u32 value, s32 mode);
 extern void GamePhaseRuntime_FinalizeActorCollections(void *runtime, u32 value, s32 mode);
 extern void GamePhaseRuntime_SynchronizeActorPlacement(void *runtime, s32 index);
@@ -127,7 +127,7 @@ s32 func_0201d884(Overlay33RuntimeScene *self)
         self->display2c = *(RuntimeDisplayObject **)(runtime + 0x2ea4);
         ((void (*)(void *, void *))self->display2c->vtable[0x1d])(
             self->display2c, data_020d36e1);
-        func_02008b50(runtime);
+        GamePhaseRuntime_UpdateDualScreenUiPresentation(runtime);
     }
     GamePhaseRuntime_PrepareActorCollections(runtime, self->base.value04, 3);
     if (func_ov014_021fd2f8(self->child3c) != 0) {

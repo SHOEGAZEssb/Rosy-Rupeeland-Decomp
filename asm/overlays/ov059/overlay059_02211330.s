@@ -21,7 +21,7 @@
 .extern GamePhaseRuntime_CreateSecondaryActorSubsystem
 .extern GamePhaseRuntime_DestroySecondaryActorSubsystem
 .extern func_02008570
-.extern func_02008e10
+.extern GamePhaseRuntime_UpdateActorPresentationState
 .extern func_02008f2c
 .extern func_02012438
 .extern func_02012444
@@ -385,7 +385,7 @@ func_ov059_02211330:
     ldr r0, .L_0221184c
     mov r1, #0x2
     ldr r0, [r0, #0x0]
-    bl func_02008e10
+    bl GamePhaseRuntime_UpdateActorPresentationState
     mov r0, #0x0
 .L_02211838:
     add sp, sp, #0x20

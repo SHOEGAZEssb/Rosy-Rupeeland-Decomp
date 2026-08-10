@@ -9,8 +9,8 @@
 .extern func_020050c8
 .extern GamePhaseRuntime_GetActorCollection
 .extern GamePhaseRuntime_CreateSecondaryActorSubsystem
-.extern func_02008b6c
-.extern func_02008bb8
+.extern GamePhaseRuntime_InitScaledAreaCoordinates
+.extern GamePhaseRuntime_RefreshAreaAuxiliaryObject
 .extern func_020091d8
 .extern func_02009d78
 .extern func_0200ae8c
@@ -222,7 +222,7 @@ L_02007d94:
     beq L_02007ddc
     mov r0, r7
     mov r2, #0x1
-    bl func_02008bb8
+    bl GamePhaseRuntime_RefreshAreaAuxiliaryObject
 L_02007ddc:
     add r1, r7, #0x3000
     ldr r0, [r1, #0xbc]
@@ -247,7 +247,7 @@ L_02007e14:
     ldr r2, [r0, #0xbc]
     add r0, sp, #0x0
     mov r1, r7
-    bl func_02008b6c
+    bl GamePhaseRuntime_InitScaledAreaCoordinates
     add r0, r7, #0x3000
     ldr r0, [r0, #0xec]
     add r1, sp, #0x0

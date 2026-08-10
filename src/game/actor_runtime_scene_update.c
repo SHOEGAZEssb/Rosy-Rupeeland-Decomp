@@ -12,7 +12,7 @@ extern void GamePhaseRuntime_FinalizeActorCollections(void *context, u32 value, 
 extern s32 GamePhaseRuntime_SynchronizeActorPlacement(void *context, s32 index);
 extern s32 GamePhaseRuntime_DispatchActorQueryRequest(void *runtime);
 extern void func_0200866c(void *context);
-extern void func_02008b50(void *context);
+extern void GamePhaseRuntime_UpdateDualScreenUiPresentation(void *context);
 extern void GamePhaseRuntime_ProcessPendingPresentationRefreshes(void *runtime);
 extern void func_02010e68(void *context);
 extern void func_0201dcec(void *context, s32 value);
@@ -47,7 +47,7 @@ s32 func_0200b6c4(ActorRuntimeScene *self)
     }
 
     func_0201dcec(root + 0x2f7c, 1);
-    func_02008b50(root);
+    GamePhaseRuntime_UpdateDualScreenUiPresentation(root);
     func_02010e68(gLupyContext);
     return 0;
 }

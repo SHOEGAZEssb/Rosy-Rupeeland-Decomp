@@ -140,7 +140,7 @@ void GamePhaseRuntime_Configure(GamePhaseRuntime *self, const void *configPointe
     func_0200ae8c(data_02105310);
     GamePhaseRuntime_CreateSecondaryActorSubsystem(self, (void *)configPointer, 1);
     func_0200e650(bytes + 0x24, configPointer);
-    func_02008bb8(self, (void *)configPointer, 1);
+    GamePhaseRuntime_RefreshAreaAuxiliaryObject(self, (void *)configPointer, 1);
     ((void (*)(s32))*(const void *const *)(config + 0x24))(0);
     ActorInteractionRuntime_Start();
 
@@ -178,7 +178,7 @@ void GamePhaseRuntime_Configure(GamePhaseRuntime *self, const void *configPointe
     func_0200a114(bytes + 0x2fbc, entity);
     func_020091c0(bytes + 0x3044, entity);
     func_0200a310(bytes + 0x2fbc);
-    func_02008cf8(self, GamePhaseRuntime_GetActiveAreaPlacementVariant(self), (void *)configPointer);
+    GamePhaseRuntime_RecreateDualScreenUiPresentation(self, GamePhaseRuntime_GetActiveAreaPlacementVariant(self), (void *)configPointer);
     *(s32 *)(bytes + 0x30fc) = 1;
     GamePhaseRuntime_SetPlacementMode(self, 1, 0);
     func_0200ec6c(bytes + 0x24, 1);

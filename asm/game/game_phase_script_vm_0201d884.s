@@ -14,7 +14,7 @@
 .extern func_ov014_021fd2f8
 .extern func_ov033_021fd37c
 .extern func_ov033_021fd324
-.extern func_02008b50
+.extern GamePhaseRuntime_UpdateDualScreenUiPresentation
 .extern GamePhaseRuntime_PrepareActorCollections
 .extern GamePhaseRuntime_FinalizeActorCollections
 .extern GamePhaseRuntime_SynchronizeActorPlacement
@@ -50,7 +50,7 @@ func_0201d884: ; 0x0201d884
     blx r2
     ldr r0, L_0201d9b4
     ldr r0, [r0, #0x0]
-    bl func_02008b50
+    bl GamePhaseRuntime_UpdateDualScreenUiPresentation
 L_0201d8dc:
     ldr r0, L_0201d9b4
     ldr r1, [r4, #0x4]

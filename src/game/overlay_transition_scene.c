@@ -35,7 +35,7 @@ extern void func_0201140c(void *context, s32 enabled);
 extern void GamePhaseRuntime_SetPlacementMode(void *runtime, s32 first, s32 second);
 extern void func_02008570(void *runtime, s32 first, s32 second);
 extern void func_020755bc(void *renderer);
-extern void func_02008e10(void *runtime, s32 mode);
+extern void GamePhaseRuntime_UpdateActorPresentationState(void *runtime, s32 mode);
 extern OverlayTransitionObject *func_ov029_021fd95c(
     OverlayTransitionObject *self, u32 parameter);
 extern OverlayTransitionObject *func_ov046_0220c7d8(
@@ -179,7 +179,7 @@ s32 func_0201d358(OverlayTransitionScene *self)
         }
         break;
     }
-    func_02008e10(runtime, 0);
+    GamePhaseRuntime_UpdateActorPresentationState(runtime, 0);
     return 0;
 }
 

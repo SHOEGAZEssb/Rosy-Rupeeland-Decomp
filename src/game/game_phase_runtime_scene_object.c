@@ -23,7 +23,7 @@ extern void OS_Halt(void);
  * object. Invalid modes/orientations halt. Allocation failure stores null.
  * Returns no value; destruction always precedes allocation.
  */
-void func_02008cf8(GamePhaseRuntime *self, s32 mode, void *area)
+void GamePhaseRuntime_RecreateDualScreenUiPresentation(GamePhaseRuntime *self, s32 mode, void *area)
 {
     u8 *b = (u8 *)self;
     void *object = *(void **)(b + 0x30e8);

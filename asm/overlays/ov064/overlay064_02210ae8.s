@@ -5,7 +5,7 @@
 .extern GamePhaseRuntime_GetActorCollection
 .extern GamePhaseRuntime_SynchronizeActorPlacement
 .extern func_0200875c
-.extern func_02008b50
+.extern GamePhaseRuntime_UpdateDualScreenUiPresentation
 .extern func_02009d78
 .extern func_02010e68
 .extern func_0201dcec
@@ -89,7 +89,7 @@ func_ov064_02210ae8:
     bl func_02010e68
     ldr r0, .L_02210c54
     ldr r0, [r0, #0x0]
-    bl func_02008b50
+    bl GamePhaseRuntime_UpdateDualScreenUiPresentation
     b .L_02210c20
 .L_02210c10:
     ldr r0, [r5, #0x3c]

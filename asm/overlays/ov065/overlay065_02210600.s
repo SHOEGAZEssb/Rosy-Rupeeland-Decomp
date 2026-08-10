@@ -5,7 +5,7 @@
 .extern data_020f4e14
 .extern data_021052fc
 .extern GraphicsSpriteState_SetDepthOrderedWorldPosition
-.extern func_02008e10
+.extern GamePhaseRuntime_UpdateActorPresentationState
 .extern func_02010c00
 .extern ActorDerivedType1_ApplyResourceIndex
 .extern func_02072b68
@@ -203,7 +203,7 @@ func_ov065_02210600:
     ldr r0, .L_022108ec
     mov r1, #0x2
     ldr r0, [r0, #0x0]
-    bl func_02008e10
+    bl GamePhaseRuntime_UpdateActorPresentationState
     mov r0, #0x4
     str r0, [sp, #0x0]
     ldr r3, [r4, #0x130]

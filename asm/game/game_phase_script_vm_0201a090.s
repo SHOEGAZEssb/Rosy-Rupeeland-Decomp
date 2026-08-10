@@ -1,8 +1,8 @@
 ; Matching retail form; see src/game/game_phase_script_vm_runtime_scene_prepare_opcode.c.
 .text
 .extern data_021052fc
-.extern func_02008b50
-.extern func_02008bb8
+.extern GamePhaseRuntime_UpdateDualScreenUiPresentation
+.extern GamePhaseRuntime_RefreshAreaAuxiliaryObject
 .extern func_0200eb0c
 .extern func_020122a0
 .extern func_02026174
@@ -29,7 +29,7 @@ func_0201a090:
     blx r3
     ldr r0, L_0201a12c
     ldr r0, [r0, #0x0]
-    bl func_02008b50
+    bl GamePhaseRuntime_UpdateDualScreenUiPresentation
     ldr r0, L_0201a12c
     ldr r0, [r0, #0x0]
     add r0, r0, #0x24
@@ -38,7 +38,7 @@ func_0201a090:
     ldr r0, L_0201a12c
     mov r2, #0x1
     ldr r0, [r0, #0x0]
-    bl func_02008bb8
+    bl GamePhaseRuntime_RefreshAreaAuxiliaryObject
     ldr r0, L_0201a12c
     mov r1, #0x1
     ldr r0, [r0, #0x0]

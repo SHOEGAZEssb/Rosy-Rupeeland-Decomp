@@ -6,7 +6,7 @@
 .extern func_02005058
 .extern func_020050a4
 .extern VecFx32Bezier_Evaluate3D
-.extern func_02008e10
+.extern GamePhaseRuntime_UpdateActorPresentationState
 .extern func_02009d78
 .extern Actor_RefreshTerrainHeight
 .extern func_020befec
@@ -26,7 +26,7 @@ func_ov062_022109d4:
     ldr r0, .L_02210b0c
     mov r1, #0x2
     ldr r0, [r0, #0x0]
-    bl func_02008e10
+    bl GamePhaseRuntime_UpdateActorPresentationState
     ldr r0, [r4, #0x2c]
     add r1, r0, #0x1
     str r1, [r4, #0x2c]

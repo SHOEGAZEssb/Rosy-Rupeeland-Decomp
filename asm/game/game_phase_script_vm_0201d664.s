@@ -15,7 +15,7 @@
 .extern GamePhaseRuntime_SetPlacementMode
 .extern func_02008570
 .extern func_020755bc
-.extern func_02008e10
+.extern GamePhaseRuntime_UpdateActorPresentationState
 .extern func_02091fb0
 .extern Heap_Alloc
 .extern func_ov029_021fd95c
