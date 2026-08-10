@@ -21,9 +21,9 @@
 .extern func_0204c74c
 .extern func_020ada8c
 .extern genrand_int32
-.global func_02047248
-.type func_02047248, @function
-func_02047248: ; 0x02047248
+.global Type7Actor_HandleTouchInteraction
+.type Type7Actor_HandleTouchInteraction, @function
+Type7Actor_HandleTouchInteraction: ; 0x02047248
     stmdb sp!, {r3, r4, r5, lr}
     sub sp, sp, #0x38
     mov r5, r0
@@ -306,4 +306,4 @@ func_02047248: ; 0x02047248
 .L_02047670: .word data_020e1790
 .L_02047674: .word data_020e1730
 .L_02047678: .word data_020e18f8
-.size func_02047248, . - func_02047248
+.size Type7Actor_HandleTouchInteraction, . - Type7Actor_HandleTouchInteraction

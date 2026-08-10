@@ -56,12 +56,13 @@ static s32 scale_shift_round(s32 value, s32 shift)
  * Build a transform from other +0x18 relative to actor +0x18 at scale 0x2000,
  * combine it with actor +0x18, adjust word +8 by 0x18000 minus word +0x0c,
  * create an effect through world +0x2f7c and func_0201e0ec/func_020a2894, then
- * when ActorDerivedType1_IsTargetStateEligible(other) succeeds or other byte +0x24c is three, invoke
- * func_02047dd8, ensure actor response mode one below timer 60, and set signed
- * halfword +0x246 to 90. Finalize all three temporaries. Actor, other, world
- * effect, motion, and callback state may change; the effect may reach rendering.
+ * when ActorDerivedType1_IsTargetStateEligible(other) succeeds or other byte
+ * +0x24c is three, invoke func_02047dd8, ensure actor response mode one below
+ * timer 60, and set signed halfword +0x246 to 90. Finalize all three
+ * temporaries. Actor, other, world effect, motion, and callback state may
+ * change; the effect may reach rendering.
  */
-void func_02046e60(void *self, void *otherObject, s32 value, s32 extra)
+void Type7Actor_ApplyType2InteractionResponse(void *self, void *otherObject, s32 value, s32 extra)
 {
     u8 *actor = (u8 *)self;
     u8 *other = (u8 *)otherObject;

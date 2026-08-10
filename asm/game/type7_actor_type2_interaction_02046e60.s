@@ -15,9 +15,9 @@
 .extern func_020a2894
 .extern func_020adae4
 .extern func_020ae024
-.global func_02046e60
-.type func_02046e60, @function
-func_02046e60: ; 0x02046e60
+.global Type7Actor_ApplyType2InteractionResponse
+.type Type7Actor_ApplyType2InteractionResponse, @function
+Type7Actor_ApplyType2InteractionResponse: ; 0x02046e60
     stmdb sp!, {r4, r5, r6, r7, r8, r9, r10, r11, lr}
     sub sp, sp, #0x54
     mov r7, r0
@@ -248,4 +248,4 @@ func_02046e60: ; 0x02046e60
     ldmia sp!, {r4, r5, r6, r7, r8, r9, r10, r11, pc}
 .L_020471dc: .word data_020c9670
 .L_020471e0: .word data_021052fc
-.size func_02046e60, . - func_02046e60
+.size Type7Actor_ApplyType2InteractionResponse, . - Type7Actor_ApplyType2InteractionResponse

@@ -52,7 +52,7 @@ static s32 callback_pair_matches(const u8 *actor, void *first, void *second)
  * interpolation state may change; the temporary is finalized and there is no
  * direct SDK or hardware access. This routine has no return value.
  */
-void func_0204767c(void *self, const void *inputRecord)
+void Type7Actor_HandleDragStart(void *self, const void *inputRecord)
 {
     u8 *actor = (u8 *)self;
     const u8 *input = (const u8 *)inputRecord;

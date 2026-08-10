@@ -79,7 +79,7 @@ static void initialize_relative_touch(u32 point[3], const u8 *actor,
  * either gate declines the state transition. Actor, target, callback, random,
  * and animation state may change; no direct hardware access occurs.
  */
-s32 func_02047248(void *self, const void *inputRecord)
+s32 Type7Actor_HandleTouchInteraction(void *self, const void *inputRecord)
 {
     u8 *actor = (u8 *)self;
     const u8 *input = (const u8 *)inputRecord;

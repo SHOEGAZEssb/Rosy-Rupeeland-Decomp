@@ -18,7 +18,7 @@
 .extern ActorDerivedType1_StartRecord
 .extern ActorDerivedType1_IsSpecialRecordActive
 .extern Type7Actor_HasSpecialCallbackPair
-.extern func_02046e60
+.extern Type7Actor_ApplyType2InteractionResponse
 .extern func_020478dc
 .extern func_020481dc
 .extern func_0204b7bc
@@ -35,9 +35,9 @@
 .extern gGameWork
 .extern gHeapContext
 .extern gSoundContext
-.global func_02046660
-.type func_02046660, @function
-func_02046660: ; 0x02046660
+.global Type7Actor_HandleContact
+.type Type7Actor_HandleContact, @function
+Type7Actor_HandleContact: ; 0x02046660
     stmdb sp!, {r3, r4, r5, r6, r7, r8, r9, lr}
     sub sp, sp, #0x18
     mov r6, r0
@@ -216,7 +216,7 @@ func_02046660: ; 0x02046660
     mov r3, r7
     mov r2, r2, lsl #0x10
     mov r2, r2, lsr #0x17
-    bl func_02046e60
+    bl Type7Actor_ApplyType2InteractionResponse
     b .L_02046d48
 .L_0204690c:
     ldr r1, [r6, #0x29c]
@@ -226,7 +226,7 @@ func_02046660: ; 0x02046660
     mov r3, r7
     mov r2, r2, lsl #0x10
     mov r2, r2, lsr #0x17
-    bl func_02046e60
+    bl Type7Actor_ApplyType2InteractionResponse
     b .L_02046d48
 .L_02046930:
     ldr r3, [r5, #0x1c]
@@ -516,4 +516,4 @@ func_02046660: ; 0x02046660
 .L_02046d80: .word 0xffff
 .L_02046d84: .word gSoundContext
 .L_02046d88: .word data_020e1708
-.size func_02046660, . - func_02046660
+.size Type7Actor_HandleContact, . - Type7Actor_HandleContact

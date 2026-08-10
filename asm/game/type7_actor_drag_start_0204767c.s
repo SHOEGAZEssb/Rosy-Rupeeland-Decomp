@@ -12,9 +12,9 @@
 .extern Type7Actor_HasSpecialCallbackPair
 .extern func_020478b0
 .extern func_0204c74c
-.global func_0204767c
-.type func_0204767c, @function
-func_0204767c: ; 0x0204767c
+.global Type7Actor_HandleDragStart
+.type Type7Actor_HandleDragStart, @function
+Type7Actor_HandleDragStart: ; 0x0204767c
     stmdb sp!, {r4, r5, lr}
     sub sp, sp, #0x1c
     mov r5, r0
@@ -164,5 +164,5 @@ func_0204767c: ; 0x0204767c
 .L_020478a8: .word data_020e1910
 .L_020478ac: .word data_020e17c8
 
-.size func_0204767c, . - func_0204767c
+.size Type7Actor_HandleDragStart, . - Type7Actor_HandleDragStart
 

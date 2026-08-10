@@ -28,7 +28,8 @@ extern void GameWork_SetFlag(void *work, u32 flag);
 extern void GameWork_ClearFlag(void *work, u32 flag);
 extern void func_020481dc(void *actor, u32 first, u32 second, s32 third);
 extern s32 ActorDerivedType1_IsTargetStateEligible(void *actor);
-extern void func_02046e60(void *actor, void *other, s32 value, s32 extra);
+extern void Type7Actor_ApplyType2InteractionResponse(void *actor, void *other,
+                                                     s32 value, s32 extra);
 extern s32 func_0204cfa4(s32 x, s32 y);
 extern s32 func_020adc90(s32 value, s32 divisor);
 extern s32 func_020adae4(s32 value, s32 shift);
@@ -55,7 +56,8 @@ extern s32 func_02032a94(void *actor, void *other, s32 context);
  * GameWork flag 0x3fd, and submit the object to func_0206cb04. Other type-two
  * contacts derive signed extra from +0x27f/+0x29e and optional vtable +0x200;
  * an active resource completion bit releases the resource and clears the flag,
- * otherwise func_02046e60 receives record +0x38 shifted by seven and the extra.
+ * otherwise Type7Actor_ApplyType2InteractionResponse receives record +0x38
+ * shifted by seven and the extra.
  *
  * Unflagged type-one/type-seven contacts beyond 0x1000 normalize displacement,
  * optionally halve it when actor +0xd0 bit 0x10 is set, and apply separation.
@@ -68,7 +70,7 @@ extern s32 func_02032a94(void *actor, void *other, s32 context);
  * func_02032a94(actor,other,context) and returns its result. Actor, other,
  * resource, heap, GameWork, sound, callback, and motion state may change.
  */
-s32 func_02046660(void *self, void *otherObject, s32 context)
+s32 Type7Actor_HandleContact(void *self, void *otherObject, s32 context)
 {
     u8 *actor = (u8 *)self;
     u8 *other = (u8 *)otherObject;
@@ -129,7 +131,8 @@ s32 func_02046660(void *self, void *otherObject, s32 context)
                 }
             }
             record = *(u8 **)(actor + 0x29c);
-            func_02046e60(actor, other, *(u16 *)(record + 0x38) >> 7, extra);
+            Type7Actor_ApplyType2InteractionResponse(
+                actor, other, *(u16 *)(record + 0x38) >> 7, extra);
             return func_02032a94(actor, other, context);
         }
         {
