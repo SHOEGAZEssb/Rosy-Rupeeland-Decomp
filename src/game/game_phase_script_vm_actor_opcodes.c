@@ -14,7 +14,7 @@ extern void *func_02007f0c(void *runtime, s32 index);
 extern void func_02032cac(void *actor, s32 active);
 extern s32 func_0200b04c(void *state);
 extern void func_02034be4(void *actor, u32 value);
-extern void func_02033ae8(void *actor, u32 value);
+extern void Actor_SetAttachmentEnabled(void *actor, u32 value);
 #ifdef __cplusplus
 }
 #endif
@@ -137,7 +137,8 @@ s32 func_02012cb0(GamePhaseActorScriptVm *self)
 }
 
 /*
- * Pop a value and send it through func_02033ae8 when the bound actor's pointer
+ * Pop a value and send it through Actor_SetAttachmentEnabled when the bound
+ * actor's pointer
  * at offset 0x54 is non-null. Returns zero whether or not the pointer exists.
  */
 s32 func_02012cd4(GamePhaseActorScriptVm *self)
@@ -145,7 +146,7 @@ s32 func_02012cd4(GamePhaseActorScriptVm *self)
     u32 value = func_02012704(&self->base);
     void *object = *(void **)((u8 *)self->actor_84 + 0x54);
     if (object != 0)
-        func_02033ae8(self->actor_84, value);
+        Actor_SetAttachmentEnabled(self->actor_84, value);
     return 0;
 }
 

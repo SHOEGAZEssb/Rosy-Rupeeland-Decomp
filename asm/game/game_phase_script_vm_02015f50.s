@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/game_phase_script_vm_actor_presentation_rebuild_opcode.c.
 .text
 .extern func_02012704
-.extern func_02033ae8
+.extern Actor_SetAttachmentEnabled
 .extern func_02034be4
 .extern func_0203bae4
 .global func_02015f50
@@ -51,7 +51,7 @@ func_02015f50:
     mov r0, r5
     mov r1, #1
     strh r10, [r4, #0x30]
-    bl func_02033ae8
+    bl Actor_SetAttachmentEnabled
     mov r0, #0
     add sp, sp, #4
     ldmia sp!, {r3, r4, r5, r6, r7, r8, r9, r10, pc}

@@ -10,7 +10,7 @@
  * invokes vtable slot 0x94 with argument zero. Returns no value; callbacks may
  * update actor, presentation, or SDK-managed state.
  */
-void func_02033a6c(void *self, s32 active)
+void Actor_RequestAttachmentActivation(void *self, s32 active)
 {
     u8 *actor = (u8 *)self;
     u8 *attachment = *(u8 **)(actor + 0x54);
@@ -43,7 +43,7 @@ void func_02033a6c(void *self, s32 active)
  * 0x10000000 and attachment flag 4; zero sets both flags. Returns no value
  * and invokes no hardware or SDK helper.
  */
-void func_02033ae8(void *self, s32 enabled)
+void Actor_SetAttachmentEnabled(void *self, s32 enabled)
 {
     u8 *actor = (u8 *)self;
     u8 *attachment = *(u8 **)(actor + 0x54);

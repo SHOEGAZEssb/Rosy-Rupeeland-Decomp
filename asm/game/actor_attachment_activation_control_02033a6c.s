@@ -1,9 +1,9 @@
 ; Matching retail form; see src/game/actor_attachment_activation_control.c.
 .text
 
-    .global func_02033a6c
-    .type func_02033a6c, @function
-func_02033a6c: ; 0x02033a6c
+    .global Actor_RequestAttachmentActivation
+    .type Actor_RequestAttachmentActivation, @function
+Actor_RequestAttachmentActivation: ; 0x02033a6c
     stmdb sp!, {r4, lr}
     mov r4, r0
     ldr r3, [r4, #0x54]
@@ -36,7 +36,6 @@ func_02033a6c: ; 0x02033a6c
     ldr r2, [r2, #0x94]
     blx r2
     ldmia sp!, {r4, pc}
-    .size func_02033a6c, . - func_02033a6c
+    .size Actor_RequestAttachmentActivation, . - Actor_RequestAttachmentActivation
 
-    .global func_02033ae8
-
+    .global Actor_SetAttachmentEnabled

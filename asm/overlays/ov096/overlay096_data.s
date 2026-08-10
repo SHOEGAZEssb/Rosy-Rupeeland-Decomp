@@ -23,7 +23,7 @@
 .extern func_0204344c
 .extern func_0203bac0
 .extern func_0203bad8
-.extern func_02033a6c
+.extern Actor_RequestAttachmentActivation
 .extern func_0203efac
 .extern func_ov096_02217eb0
 .extern func_ov096_022182b8
@@ -214,7 +214,7 @@ data_ov096_02218b98:
     .word func_0204344c
     .word func_0203bac0
     .word func_0203bad8
-    .word func_02033a6c
+    .word Actor_RequestAttachmentActivation
     .word func_0203efac
     .word func_ov096_02217eb0
     .word func_ov096_022182b8
@@ -361,7 +361,7 @@ data_ov096_02218de8:
     .word func_0204344c
     .word func_0203bac0
     .word func_0203bad8
-    .word func_02033a6c
+    .word Actor_RequestAttachmentActivation
     .word func_0203efac
     .word func_ov096_0221838c
     .word func_ov096_022182b8

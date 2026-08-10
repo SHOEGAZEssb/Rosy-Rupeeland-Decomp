@@ -13,7 +13,7 @@ extern void ActorBounds_Set(void *bounds, s32 minX, s32 minY, s32 maxX,
 extern void BoundsCenterSnapshot_Init(void *center, const void *bounds);
 extern void ActorBounds_SetMinimum(void *bounds, s32 minX, s32 minY);
 extern void func_02034be4(void *actor, s32 value);
-extern void func_02033ae8(void *actor, s32 value);
+extern void Actor_SetAttachmentEnabled(void *actor, s32 value);
 extern void func_020050a4(void *destination, const void *source);
 #ifdef __cplusplus
 }
@@ -170,7 +170,7 @@ void func_020330fc(void *self, u32 selector, s32 value)
         setWordFlag((u32 *)(actor + 0x14), 0x2000, value);
         break;
     case 42:
-        if (attachment != 0) func_02033ae8(actor, value);
+        if (attachment != 0) Actor_SetAttachmentEnabled(actor, value);
         break;
     case 43:
         attachmentValue = (u16)(0x10000u - ((u32)value << 8));

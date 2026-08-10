@@ -7,7 +7,7 @@
 .extern ActorBounds_Set
 .extern BoundsCenterSnapshot_Init
 .extern ActorBounds_SetMinimum
-.extern func_02033ae8
+.extern Actor_SetAttachmentEnabled
 .extern func_02034be4
 .extern func_020adae4
 
@@ -425,7 +425,7 @@ func_020330fc: ; 0x020330fc
     cmp r1, #0x0
     beq .L_0203372c
     mov r1, r4
-    bl func_02033ae8
+    bl Actor_SetAttachmentEnabled
     b .L_0203372c
 .L_020336e8:
     add r0, r5, #0x18

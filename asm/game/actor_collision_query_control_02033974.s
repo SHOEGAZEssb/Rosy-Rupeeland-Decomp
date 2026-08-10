@@ -75,4 +75,4 @@ Actor_TestQueryPoint: ; 0x02033974
     ldmia sp!, {r4, r5, r6, r7, r8, pc}
     .size Actor_TestQueryPoint, . - Actor_TestQueryPoint
 
-    .global func_02033a6c
+    .global Actor_RequestAttachmentActivation

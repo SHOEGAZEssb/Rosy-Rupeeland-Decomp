@@ -23,7 +23,7 @@
 .extern func_0204344c
 .extern func_0203bac0
 .extern func_0203bad8
-.extern func_02033a6c
+.extern Actor_RequestAttachmentActivation
 .extern func_0203efac
 .extern func_ov078_02212bc0
 .extern func_ov095_0221b1a0
@@ -330,7 +330,7 @@ data_ov095_0221cca0:
     .word func_0204344c
     .word func_0203bac0
     .word func_0203bad8
-    .word func_02033a6c
+    .word Actor_RequestAttachmentActivation
     .word func_0203efac
     .word func_ov078_02212bc0
     .word func_ov095_0221b1a0
@@ -494,7 +494,7 @@ data_ov095_0221cf4c:
     .word func_0204344c
     .word func_0203bac0
     .word func_0203bad8
-    .word func_02033a6c
+    .word Actor_RequestAttachmentActivation
     .word func_0203efac
     .word func_ov095_0221b38c
     .word func_ov095_0221b1a0
@@ -639,7 +639,7 @@ data_ov095_0221d1a4:
     .word func_ov095_0221c6a4
     .word func_02033940
     .word func_02033954
-    .word func_02033a6c
+    .word Actor_RequestAttachmentActivation
     .word func_0204fe18
     .word func_ov095_0221c6fc
     .word func_ov095_0221c6f4
@@ -718,7 +718,7 @@ data_ov095_0221d2e8:
     .word func_ov095_0221caf4
     .word func_02033940
     .word func_02033954
-    .word func_02033a6c
+    .word Actor_RequestAttachmentActivation
     .word func_0204fe18
     .word func_ov095_0221c6fc
     .word func_ov095_0221c6f4

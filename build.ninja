@@ -14440,7 +14440,7 @@ build build/reports/actor_attachment_activation_control_02033a6c.json: objdiff b
   base_object = build/decomp/asm/game/actor_attachment_activation_control_02033a6c.o
 build build/reports/actor_attachment_activation_control_02033a6c.txt: match_report build/reports/actor_attachment_activation_control_02033a6c.json | tools/report_objdiff.py
   report_json = build/reports/actor_attachment_activation_control_02033a6c.json
-  report_args = --section .text --function func_02033a6c --require-exact
+  report_args = --section .text --function Actor_RequestAttachmentActivation --require-exact
 build build/decomp/asm/game/actor_attachment_activation_control_02033ae8.o: mwasmarm asm/game/actor_attachment_activation_control_02033ae8.s
 build build/decomp/delinks/asm/game/actor_attachment_activation_control_02033ae8.o: dsd_delink config/arm9/config.yaml config/arm9/delinks.txt config/arm9/symbols.txt config/arm9/relocs.txt
 build build/reports/actor_attachment_activation_control_02033ae8.json: objdiff build/decomp/delinks/asm/game/actor_attachment_activation_control_02033ae8.o | build/decomp/asm/game/actor_attachment_activation_control_02033ae8.o
@@ -14448,7 +14448,7 @@ build build/reports/actor_attachment_activation_control_02033ae8.json: objdiff b
   base_object = build/decomp/asm/game/actor_attachment_activation_control_02033ae8.o
 build build/reports/actor_attachment_activation_control_02033ae8.txt: match_report build/reports/actor_attachment_activation_control_02033ae8.json | tools/report_objdiff.py
   report_json = build/reports/actor_attachment_activation_control_02033ae8.json
-  report_args = --section .text --function func_02033ae8 --require-exact
+  report_args = --section .text --function Actor_SetAttachmentEnabled --require-exact
 build build/reports/actor_attachment_activation_control.txt: phony build/reports/actor_attachment_activation_control_02033a6c.txt build/reports/actor_attachment_activation_control_02033ae8.txt
 
 build actor_attachment_activation_control: phony build/decomp/src/game/actor_attachment_activation_control.o build/decomp/asm/game/actor_attachment_activation_control_02033a6c.o build/decomp/asm/game/actor_attachment_activation_control_02033ae8.o build/reports/actor_attachment_activation_control.txt

@@ -1,13 +1,13 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov088/overlay088_recovery.c.
-.extern func_02033a6c
+.extern Actor_RequestAttachmentActivation
 
 .global func_ov088_02219960
 func_ov088_02219960:
     stmdb sp!, {r3, r4, r5, lr}
     mov r4, r0
     mov r5, r1
-    bl func_02033a6c
+    bl Actor_RequestAttachmentActivation
     add r0, r4, #0x200
     cmp r5, #0x0
     ldrh r1, [r0, #0x1a]
