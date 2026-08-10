@@ -24,7 +24,7 @@
 .extern func_0201ded4
 .extern func_0201df44
 .extern func_020200bc
-.extern func_02020e84
+.extern DisplayFadePresentation_Init
 .extern func_02021350
 .extern func_020215cc
 .extern func_0202225c
@@ -362,7 +362,7 @@ L_0201816c:
     mov r1, r4
     mov r2, r6
     mov r3, r5
-    bl func_02020e84
+    bl DisplayFadePresentation_Init
     mov r1, r0
 L_0201819c:
     ldr r0, L_020181c4

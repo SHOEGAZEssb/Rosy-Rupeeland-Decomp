@@ -13,7 +13,8 @@ typedef struct PairedReferenceState {
 } PairedReferenceState;
 
 /* Store both inputs, clear field10, and leave the first eight bytes unchanged. */
-void func_02020e60(PairedReferenceState *self, void *first, void *second)
+void PairedReferenceState_SetReferencesAndReset(PairedReferenceState *self,
+                                                void *first, void *second)
 {
     self->first08 = first;
     self->second0c = second;

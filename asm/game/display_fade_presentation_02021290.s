@@ -14,7 +14,7 @@
 .extern MainBg2_SetControl
 .extern SubBg1_SetControl
 .extern SubBg2_SetControl
-.extern func_02020e60
+.extern PairedReferenceState_SetReferencesAndReset
 .extern func_02070638
 .extern func_020706c4
 .extern func_02070874
@@ -36,9 +36,9 @@
 .extern func_020b44e8
 .extern gGameWork
 
-.global func_02021290
-    .type func_02021290, @function
-func_02021290: ; 0x02021290
+.global DisplayFadePresentation_ApplyScrollOffsets
+    .type DisplayFadePresentation_ApplyScrollOffsets, @function
+DisplayFadePresentation_ApplyScrollOffsets: ; 0x02021290
     stmdb sp!, {r3, r4, r5, r6, r7, lr}
     mov r4, r1
     mov r7, r0
@@ -88,5 +88,5 @@ func_02021290: ; 0x02021290
 .L_02021344: .word 0x1ff
 .L_02021348: .word 0x4000014
 .L_0202134c: .word 0x4001014
-    .size func_02021290, .-func_02021290
+    .size DisplayFadePresentation_ApplyScrollOffsets, .-DisplayFadePresentation_ApplyScrollOffsets
 

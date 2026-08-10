@@ -14,7 +14,7 @@
 .extern MainBg2_SetControl
 .extern SubBg1_SetControl
 .extern SubBg2_SetControl
-.extern func_02020e60
+.extern PairedReferenceState_SetReferencesAndReset
 .extern func_02070638
 .extern func_020706c4
 .extern func_02070874
@@ -36,9 +36,9 @@
 .extern func_020b44e8
 .extern gGameWork
 
-.global func_02020e84
-    .type func_02020e84, @function
-func_02020e84: ; 0x02020e84
+.global DisplayFadePresentation_Init
+    .type DisplayFadePresentation_Init, @function
+DisplayFadePresentation_Init: ; 0x02020e84
     stmdb sp!, {r3, r4, r5, r6, r7, lr}
     sub sp, sp, #0x10
     mov r6, r0
@@ -190,7 +190,7 @@ func_02020e84: ; 0x02020e84
     ldr r1, .L_02021114
     mov r0, r6
     ldmia r1, {r1, r2}
-    bl func_02020e60
+    bl PairedReferenceState_SetReferencesAndReset
     add r0, sp, #0x4
     bl GraphicsResourceSet_Destroy
     mov r0, r6
@@ -206,5 +206,5 @@ func_02020e84: ; 0x02020e84
 .L_0202110c: .word gGameWork
 .L_02021110: .word 0x3d3
 .L_02021114: .word data_020d63c0
-    .size func_02020e84, .-func_02020e84
+    .size DisplayFadePresentation_Init, .-DisplayFadePresentation_Init
 

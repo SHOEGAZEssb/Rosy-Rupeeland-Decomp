@@ -14,7 +14,7 @@
 .extern MainBg2_SetControl
 .extern SubBg1_SetControl
 .extern SubBg2_SetControl
-.extern func_02020e60
+.extern PairedReferenceState_SetReferencesAndReset
 .extern func_02070638
 .extern func_020706c4
 .extern func_02070874
@@ -36,10 +36,10 @@
 .extern func_020b44e8
 .extern gGameWork
 
-.global func_02021278
-    .type func_02021278, @function
-func_02021278: ; 0x02021278
+.global DisplayFadePresentation_ReportComplete
+    .type DisplayFadePresentation_ReportComplete, @function
+DisplayFadePresentation_ReportComplete: ; 0x02021278
     mov r0, #0x1
     bx lr
-    .size func_02021278, .-func_02021278
+    .size DisplayFadePresentation_ReportComplete, .-DisplayFadePresentation_ReportComplete
 

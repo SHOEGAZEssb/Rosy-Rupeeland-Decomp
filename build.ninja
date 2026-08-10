@@ -8011,44 +8011,44 @@ build build/reports/paired_reference_state_02020e60.json: objdiff build/decomp/d
   base_object = build/decomp/asm/game/paired_reference_state_02020e60.o
 build build/reports/paired_reference_state_02020e60.txt: match_report build/reports/paired_reference_state_02020e60.json | tools/report_objdiff.py
   report_json = build/reports/paired_reference_state_02020e60.json
-  report_args = --section .text --function func_02020e60 --require-exact
+  report_args = --section .text --function PairedReferenceState_SetReferencesAndReset --require-exact
 build build/reports/paired_reference_state.txt: phony build/reports/paired_reference_state_02020e60.txt
 build build/reports/display_fade_presentation_02020e84.json: objdiff build/decomp/delinks/asm/game/display_fade_presentation_02020e84.o | build/decomp/asm/game/display_fade_presentation_02020e84.o
   target_object = build/decomp/delinks/asm/game/display_fade_presentation_02020e84.o
   base_object = build/decomp/asm/game/display_fade_presentation_02020e84.o
 build build/reports/display_fade_presentation_02020e84.txt: match_report build/reports/display_fade_presentation_02020e84.json | tools/report_objdiff.py
   report_json = build/reports/display_fade_presentation_02020e84.json
-  report_args = --section .text --function func_02020e84 --require-exact
+  report_args = --section .text --function DisplayFadePresentation_Init --require-exact
 build build/reports/display_fade_presentation_02021118.json: objdiff build/decomp/delinks/asm/game/display_fade_presentation_02021118.o | build/decomp/asm/game/display_fade_presentation_02021118.o
   target_object = build/decomp/delinks/asm/game/display_fade_presentation_02021118.o
   base_object = build/decomp/asm/game/display_fade_presentation_02021118.o
 build build/reports/display_fade_presentation_02021118.txt: match_report build/reports/display_fade_presentation_02021118.json | tools/report_objdiff.py
   report_json = build/reports/display_fade_presentation_02021118.json
-  report_args = --section .text --function func_02021118 --require-exact
+  report_args = --section .text --function DisplayFadePresentation_DispatchCallback --require-exact
 build build/reports/display_fade_presentation_02021158.json: objdiff build/decomp/delinks/asm/game/display_fade_presentation_02021158.o | build/decomp/asm/game/display_fade_presentation_02021158.o
   target_object = build/decomp/delinks/asm/game/display_fade_presentation_02021158.o
   base_object = build/decomp/asm/game/display_fade_presentation_02021158.o
 build build/reports/display_fade_presentation_02021158.txt: match_report build/reports/display_fade_presentation_02021158.json | tools/report_objdiff.py
   report_json = build/reports/display_fade_presentation_02021158.json
-  report_args = --section .text --function func_02021158 --require-exact
+  report_args = --section .text --function DisplayFadePresentation_UpdateFade --require-exact
 build build/reports/display_fade_presentation_02021278.json: objdiff build/decomp/delinks/asm/game/display_fade_presentation_02021278.o | build/decomp/asm/game/display_fade_presentation_02021278.o
   target_object = build/decomp/delinks/asm/game/display_fade_presentation_02021278.o
   base_object = build/decomp/asm/game/display_fade_presentation_02021278.o
 build build/reports/display_fade_presentation_02021278.txt: match_report build/reports/display_fade_presentation_02021278.json | tools/report_objdiff.py
   report_json = build/reports/display_fade_presentation_02021278.json
-  report_args = --section .text --function func_02021278 --require-exact
+  report_args = --section .text --function DisplayFadePresentation_ReportComplete --require-exact
 build build/reports/display_fade_presentation_02021280.json: objdiff build/decomp/delinks/asm/game/display_fade_presentation_02021280.o | build/decomp/asm/game/display_fade_presentation_02021280.o
   target_object = build/decomp/delinks/asm/game/display_fade_presentation_02021280.o
   base_object = build/decomp/asm/game/display_fade_presentation_02021280.o
 build build/reports/display_fade_presentation_02021280.txt: match_report build/reports/display_fade_presentation_02021280.json | tools/report_objdiff.py
   report_json = build/reports/display_fade_presentation_02021280.json
-  report_args = --section .text --function func_02021280 --require-exact
+  report_args = --section .text --function DisplayFadePresentation_GetScrollStatus --require-exact
 build build/reports/display_fade_presentation_02021290.json: objdiff build/decomp/delinks/asm/game/display_fade_presentation_02021290.o | build/decomp/asm/game/display_fade_presentation_02021290.o
   target_object = build/decomp/delinks/asm/game/display_fade_presentation_02021290.o
   base_object = build/decomp/asm/game/display_fade_presentation_02021290.o
 build build/reports/display_fade_presentation_02021290.txt: match_report build/reports/display_fade_presentation_02021290.json | tools/report_objdiff.py
   report_json = build/reports/display_fade_presentation_02021290.json
-  report_args = --section .text --function func_02021290 --require-exact
+  report_args = --section .text --function DisplayFadePresentation_ApplyScrollOffsets --require-exact
 build build/reports/display_fade_presentation.txt: phony build/reports/display_fade_presentation_02020e84.txt build/reports/display_fade_presentation_02021118.txt build/reports/display_fade_presentation_02021158.txt build/reports/display_fade_presentation_02021278.txt build/reports/display_fade_presentation_02021280.txt build/reports/display_fade_presentation_02021290.txt
 build build/reports/scene_display_resource_setup_02021350.json: objdiff build/decomp/delinks/asm/graphics/scene_display_resource_setup_02021350.o | build/decomp/asm/graphics/scene_display_resource_setup_02021350.o
   target_object = build/decomp/delinks/asm/graphics/scene_display_resource_setup_02021350.o

@@ -58,7 +58,9 @@ extern void MainBg1_SetControl(s32, s32, s32, s32, s32);
 extern void MainBg2_SetControl(s32, s32, s32, s32);
 extern void SubBg1_SetControl(s32, s32, s32, s32, s32);
 extern void SubBg2_SetControl(s32, s32, s32, s32);
-extern void func_02020e60(void *self, void *first, void *second);
+extern void PairedReferenceState_SetReferencesAndReset(void *self,
+                                                       void *first,
+                                                       void *second);
 extern void func_02070638(void *resource);
 extern void func_020706c4(void *resource, s32 first, s32 second);
 extern void func_02070e0c(void *resource, s32 first, s32 second);
@@ -83,10 +85,9 @@ extern const void *data_020d63d8[];
  * data_020d63c0, destroy the temporary resource set, and return self.  All
  * direct 0x04000000/0x04001000 writes are confirmed hardware effects.
  */
-DisplayFadePresentation *func_02020e84(DisplayFadePresentation *self,
-                                                   s32 subEngine,
-                                                   s32 paletteIndex,
-                                                   s32 fadeParameter)
+DisplayFadePresentation *DisplayFadePresentation_Init(
+    DisplayFadePresentation *self, s32 subEngine, s32 paletteIndex,
+    s32 fadeParameter)
 {
     GraphicsResourceSet resources;
     void *palette;
@@ -138,8 +139,8 @@ DisplayFadePresentation *func_02020e84(DisplayFadePresentation *self,
     self->flags04 = (self->flags04 | 2) & ~1;
     self->flags04 |= 1;
     GameWork_ClearFlag(gGameWork, 0x3d3);
-    func_02020e60(self, (void *)data_020d63c0[0],
-                  (void *)data_020d63c0[1]);
+    PairedReferenceState_SetReferencesAndReset(
+        self, (void *)data_020d63c0[0], (void *)data_020d63c0[1]);
     GraphicsResourceSet_Destroy(&resources);
     return self;
 }
@@ -150,7 +151,7 @@ DisplayFadePresentation *func_02020e84(DisplayFadePresentation *self,
  * through callbackBase08 while even tags read it directly from the adjusted
  * object address.  Return the callback's result.
  */
-s32 func_02021118(DisplayFadePresentation *self)
+s32 DisplayFadePresentation_DispatchCallback(DisplayFadePresentation *self)
 {
     u8 *adjusted;
     TaggedCallback callback;
@@ -175,7 +176,7 @@ s32 func_02021118(DisplayFadePresentation *self)
  * register.  When GameWork flag 0x3d3 is set, consume it and install the next
  * callback pair from data_020d63d8.  Always return zero.
  */
-s32 func_02021158(DisplayFadePresentation *self)
+s32 DisplayFadePresentation_UpdateFade(DisplayFadePresentation *self)
 {
     if (self->state10 == 0) {
         func_02091b98(self->fade14, 0x1e);
@@ -193,22 +194,23 @@ s32 func_02021158(DisplayFadePresentation *self)
                       2, 4, self->alpha38, self->alpha38);
         if (GameWork_TestFlag(gGameWork, 0x3d3) != 0) {
             GameWork_ClearFlag(gGameWork, 0x3d3);
-            func_02020e60(self, (void *)data_020d63d8[0],
-                          (void *)data_020d63d8[1]);
+            PairedReferenceState_SetReferencesAndReset(
+                self, (void *)data_020d63d8[0],
+                (void *)data_020d63d8[1]);
         }
     }
     return 0;
 }
 
 /* Return one unconditionally; no state or hardware is changed. */
-s32 func_02021278(DisplayFadePresentation *self)
+s32 DisplayFadePresentation_ReportComplete(DisplayFadePresentation *self)
 {
     (void)self;
     return 1;
 }
 
 /* Return func_020929f4's status for the embedded scroll helper. */
-s32 func_02021280(DisplayFadePresentation *self)
+s32 DisplayFadePresentation_GetScrollStatus(DisplayFadePresentation *self)
 {
     return func_020929f4(self->scroll3c);
 }
@@ -218,7 +220,8 @@ s32 func_02021280(DisplayFadePresentation *self)
  * pack them into the selected engine's BG2/BG3 offset registers at 0x14..0x1b.
  * The low nine bits of each component are written directly to hardware.
  */
-void func_02021290(DisplayFadePresentation *self, s32 argument)
+void DisplayFadePresentation_ApplyScrollOffsets(DisplayFadePresentation *self,
+                                                s32 argument)
 {
     volatile u32 *registers;
     u32 first;

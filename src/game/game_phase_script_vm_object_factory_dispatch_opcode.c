@@ -33,8 +33,8 @@ extern void *func_0201d240(void *object, s32 enabled, s32 value);
 extern void *func_0201d688(void *object, s32 value);
 extern void *func_020200bc(void *object, s32 value, s32 zero0, s32 zero1,
                            s32 parameter);
-extern void *func_02020e84(void *object, s32 mode, s32 value,
-                           s32 parameter);
+extern void *DisplayFadePresentation_Init(void *object, s32 mode, s32 value,
+                                          s32 parameter);
 extern void func_02021350(s32 value);
 extern void *func_020215cc(void *object, s32 value);
 extern void *func_0202225c(void *object);
@@ -192,7 +192,8 @@ s32 func_02017d1c(GamePhaseActorScriptVm *self)
     default:
         object = allocateObject(0x54, data_020d5b34);
         if (object)
-            object = func_02020e84(object, mode, value, parameter);
+            object = DisplayFadePresentation_Init(object, mode, value,
+                                                  parameter);
         func_0201df44(runtimeObjectList(), object);
         break;
     }

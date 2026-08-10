@@ -14,7 +14,7 @@
 .extern MainBg2_SetControl
 .extern SubBg1_SetControl
 .extern SubBg2_SetControl
-.extern func_02020e60
+.extern PairedReferenceState_SetReferencesAndReset
 .extern func_02070638
 .extern func_020706c4
 .extern func_02070874
@@ -36,12 +36,12 @@
 .extern func_020b44e8
 .extern gGameWork
 
-.global func_02021280
-    .type func_02021280, @function
-func_02021280: ; 0x02021280
+.global DisplayFadePresentation_GetScrollStatus
+    .type DisplayFadePresentation_GetScrollStatus, @function
+DisplayFadePresentation_GetScrollStatus: ; 0x02021280
     ldr ip, .L_0202128c
     add r0, r0, #0x3c
     bx ip
 .L_0202128c: .word func_020929f4
-    .size func_02021280, .-func_02021280
+    .size DisplayFadePresentation_GetScrollStatus, .-DisplayFadePresentation_GetScrollStatus
 
