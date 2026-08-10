@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/dual_screen_ui_standard_presentation.c.
 .text
 .extern Heap_Free
-.extern func_02005cc8
+.extern DebugSpriteText_Destroy
 .extern func_02025bdc
 
     .global func_02025fe4
@@ -10,7 +10,7 @@ func_02025fe4: ; 0x02025fe4
     stmdb sp!, {r4, lr}
     mov r4, r0
     add r0, r4, #0xc8
-    bl func_02005cc8
+    bl DebugSpriteText_Destroy
     mov r0, r4
     bl func_02025bdc
     mov r0, r4

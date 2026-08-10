@@ -43,10 +43,10 @@ extern void func_02025d1c(void *);
 extern void func_02025e88(void *);
 extern void func_02025ed4(void *);
 extern void func_020269f8(void *embedded);
-extern void func_02005c90(void *helper);
-extern void func_02005cc8(void *helper);
-extern void func_02005cec(void *helper, u16 value);
-extern void func_02005d0c(void *helper, s32 x, s32 y);
+extern void DebugSpriteText_Init(void *helper);
+extern void DebugSpriteText_Destroy(void *helper);
+extern void DebugSpriteText_SetTextResource(void *helper, u16 value);
+extern void DebugSpriteText_DrawCentered(void *helper, s32 x, s32 y);
 extern u16 func_02028404(void *source);
 extern void func_020755bc(void *font);
 extern void func_020740a4(void *spriteOwner);
@@ -78,7 +78,7 @@ DualScreenUiIndexedIconPresentation *func_020261bc(
 
     func_02025a44(self, source);
     self->vtable00 = (void **)data_020d6b20;
-    func_02005c90(self->helperc8);
+    DebugSpriteText_Init(self->helperc8);
     self->iconWrapperd0 = 0;
     self->drawEnabledd4 = 1;
     self->flagsc4 = (self->flagsc4 & ~3u) | 3;
@@ -86,7 +86,7 @@ DualScreenUiIndexedIconPresentation *func_020261bc(
     func_02025ed4(self);
     func_02025d1c(self);
     func_020755bc(gDebugFont);
-    func_02005cec(self->helperc8, func_02028404(source));
+    DebugSpriteText_SetTextResource(self->helperc8, func_02028404(source));
 
     offset = (s8)source[0x4c] * 30;
     first = *(const u16 *)(data_020d4742 + offset);
@@ -116,7 +116,7 @@ DualScreenUiIndexedIconPresentation *func_02026308(
         AnimationBinding_Destroy(self->iconWrapperd0);
         Heap_Free(self->iconWrapperd0);
     }
-    func_02005cc8(self->helperc8);
+    DebugSpriteText_Destroy(self->helperc8);
     func_02025bdc(self);
     return self;
 }
@@ -138,7 +138,7 @@ void func_020263a0(DualScreenUiIndexedIconPresentation *self)
 {
     func_020755bc(gDebugFont);
     func_02025d1c(self);
-    func_02005d0c(self->helperc8, 104, 171);
+    DebugSpriteText_DrawCentered(self->helperc8, 104, 171);
 }
 
 /*
@@ -148,7 +148,7 @@ void func_020263a0(DualScreenUiIndexedIconPresentation *self)
 void func_020263d4(DualScreenUiIndexedIconPresentation *self)
 {
     if (self->drawEnabledd4)
-        func_02005d0c(self->helperc8, 104, 171);
+        DebugSpriteText_DrawCentered(self->helperc8, 104, 171);
     func_020269f8(self->embedded04);
     func_020740a4(self->spriteOwnera8);
 }

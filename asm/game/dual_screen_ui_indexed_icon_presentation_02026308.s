@@ -3,7 +3,7 @@
 .extern Heap_Free
 .extern data_020d6b20
 .extern AnimationBinding_Destroy
-.extern func_02005cc8
+.extern DebugSpriteText_Destroy
 .extern func_02025bdc
 
     .global func_02026308
@@ -22,7 +22,7 @@ func_02026308: ; 0x02026308
     bl Heap_Free
 .L_02026334:
     add r0, r5, #0xc8
-    bl func_02005cc8
+    bl DebugSpriteText_Destroy
     mov r0, r5
     bl func_02025bdc
     mov r0, r5

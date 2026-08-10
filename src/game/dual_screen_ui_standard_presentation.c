@@ -33,10 +33,10 @@ extern void func_02025dd8(void *);
 extern void func_02025e88(void *);
 extern void func_02025ed4(void *);
 extern void func_020269f8(void *embedded);
-extern void func_02005c90(void *helper);
-extern void func_02005cc8(void *helper);
-extern void func_02005cec(void *helper, u16 value);
-extern void func_02005d0c(void *helper, s32 x, s32 y);
+extern void DebugSpriteText_Init(void *helper);
+extern void DebugSpriteText_Destroy(void *helper);
+extern void DebugSpriteText_SetTextResource(void *helper, u16 value);
+extern void DebugSpriteText_DrawCentered(void *helper, s32 x, s32 y);
 extern s32 func_0202844c(void *source);
 extern u16 func_02028404(void *source);
 extern void func_020755bc(void *font);
@@ -60,7 +60,7 @@ DualScreenUiStandardPresentation *func_02025f20(
 {
     func_02025a44(self, source);
     self->vtable00 = (void **)data_020d6b04;
-    func_02005c90(self->helperc8);
+    DebugSpriteText_Init(self->helperc8);
     self->drawEnabledd0 = 1;
     self->flagsc4 = (self->flagsc4 & ~3u) | 1u |
                     ((u32)(func_0202844c(source) & 1) << 1);
@@ -77,7 +77,7 @@ DualScreenUiStandardPresentation *func_02025f20(
 DualScreenUiStandardPresentation *func_02025fc4(
     DualScreenUiStandardPresentation *self)
 {
-    func_02005cc8(self->helperc8);
+    DebugSpriteText_Destroy(self->helperc8);
     func_02025bdc(self);
     return self;
 }
@@ -133,7 +133,7 @@ void func_02026044(DualScreenUiStandardPresentation *self,
 void func_0202613c(DualScreenUiStandardPresentation *self)
 {
     if (self->drawEnabledd0)
-        func_02005d0c(self->helperc8, 104, 171);
+        DebugSpriteText_DrawCentered(self->helperc8, 104, 171);
     func_020269f8(self->embedded04);
     func_020740a4(self->spriteOwnera8);
 }
@@ -148,5 +148,5 @@ void func_02026174(DualScreenUiStandardPresentation *self, void *source)
     self->sourceac = source;
     self->flagsc4 = (self->flagsc4 & ~2u) |
                     ((u32)(func_0202844c(source) & 1) << 1);
-    func_02005cec(self->helperc8, func_02028404(source));
+    DebugSpriteText_SetTextResource(self->helperc8, func_02028404(source));
 }

@@ -1,7 +1,7 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov059/overlay059_recovery.c.
 .extern data_021052fc
-.extern func_02005cec
+.extern DebugSpriteText_SetTextResource
 .extern func_02028404
 .extern func_ov059_02210c24
 .extern func_ov059_02210c60
@@ -49,7 +49,7 @@ func_ov059_02211920:
     mov r0, r0, lsl #0x10
     mov r1, r0, lsr #0x10
     add r0, r5, #0x40
-    bl func_02005cec
+    bl DebugSpriteText_SetTextResource
     mov r0, #0x1
     str r0, [r5, #0x38]
     ldmia sp!, {r3, r4, r5, pc}

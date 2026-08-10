@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/dual_screen_ui_standard_presentation.c.
 .text
-.extern func_02005cec
+.extern DebugSpriteText_SetTextResource
 .extern func_02028404
 .extern func_0202844c
 
@@ -23,6 +23,6 @@ func_02026174: ; 0x02026174
     mov r1, r0, lsl #0x10
     add r0, r5, #0xc8
     mov r1, r1, lsr #0x10
-    bl func_02005cec
+    bl DebugSpriteText_SetTextResource
     ldmia sp!, {r3, r4, r5, pc}
     .size func_02026174, . - func_02026174

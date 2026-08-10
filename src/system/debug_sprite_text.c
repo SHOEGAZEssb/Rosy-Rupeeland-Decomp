@@ -27,7 +27,7 @@ extern u8 *func_02079f3c(void *table, u16 resourceId);
  * it in renderEntry, and return self. Allocation effects belong to the global
  * manager; no hardware register is written directly.
  */
-DebugSpriteText *func_02005c90(DebugSpriteText *self)
+DebugSpriteText *DebugSpriteText_Init(DebugSpriteText *self)
 {
     self->text = 0;
     self->renderEntry = 0;
@@ -39,7 +39,7 @@ DebugSpriteText *func_02005c90(DebugSpriteText *self)
  * Release renderEntry through the global manager and return self. The retail
  * routine does not clear either field after release.
  */
-DebugSpriteText *func_02005cc8(DebugSpriteText *self)
+DebugSpriteText *DebugSpriteText_Destroy(DebugSpriteText *self)
 {
     func_02071d4c(data_020f4e18, self->renderEntry);
     return self;
@@ -50,7 +50,7 @@ DebugSpriteText *func_02005cc8(DebugSpriteText *self)
  * two bytes into the returned record. Only self->text changes; no value is
  * returned, and lookup failure behavior belongs to func_02079f3c.
  */
-void func_02005cec(DebugSpriteText *self, u16 resourceId)
+void DebugSpriteText_SetTextResource(DebugSpriteText *self, u16 resourceId)
 {
     self->text = (const u16 *)(func_02079f3c(data_021f3ecc, resourceId) + 2);
 }
@@ -61,7 +61,7 @@ void func_02005cec(DebugSpriteText *self, u16 resourceId)
  * centered around centerX. The global renderer is modified and may queue
  * sprite/OAM work; no value is returned.
  */
-void func_02005d0c(DebugSpriteText *self, s32 centerX, s32 y)
+void DebugSpriteText_DrawCentered(DebugSpriteText *self, s32 centerX, s32 y)
 {
     s32 width;
 
@@ -71,7 +71,7 @@ void func_02005d0c(DebugSpriteText *self, s32 centerX, s32 y)
 }
 #else
 /* Matching forms implement the documented portable C above. */
-asm DebugSpriteText *func_02005c90(DebugSpriteText *)
+asm DebugSpriteText *DebugSpriteText_Init(DebugSpriteText *)
 {
     stmdb sp!, {r4, lr}
     mov r4, r0
@@ -87,7 +87,7 @@ asm DebugSpriteText *func_02005c90(DebugSpriteText *)
     ldmia sp!, {r4, pc}
 }
 
-asm DebugSpriteText *func_02005cc8(DebugSpriteText *)
+asm DebugSpriteText *DebugSpriteText_Destroy(DebugSpriteText *)
 {
     stmdb sp!, {r4, lr}
     ldr r1, =data_020f4e18
@@ -99,7 +99,7 @@ asm DebugSpriteText *func_02005cc8(DebugSpriteText *)
     ldmia sp!, {r4, pc}
 }
 
-asm void func_02005cec(DebugSpriteText *, u16)
+asm void DebugSpriteText_SetTextResource(DebugSpriteText *, u16)
 {
     stmdb sp!, {r4, lr}
     mov r4, r0
@@ -110,7 +110,7 @@ asm void func_02005cec(DebugSpriteText *, u16)
     ldmia sp!, {r4, pc}
 }
 
-asm void func_02005d0c(DebugSpriteText *, s32, s32)
+asm void DebugSpriteText_DrawCentered(DebugSpriteText *, s32, s32)
 {
     stmdb sp!, {r3, r4, r5, r6, lr}
     sub sp, sp, #0xc

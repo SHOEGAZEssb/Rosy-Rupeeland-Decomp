@@ -7,8 +7,8 @@
 .extern data_020d6b20
 .extern data_020d6b50
 .extern AnimationBinding_Init
-.extern func_02005c90
-.extern func_02005cec
+.extern DebugSpriteText_Init
+.extern DebugSpriteText_SetTextResource
 .extern func_02025a44
 .extern func_02025d1c
 .extern func_02025e88
@@ -29,7 +29,7 @@ func_020261bc: ; 0x020261bc
     ldr r1, .L_020262ec
     add r0, r5, #0xc8
     str r1, [r5, #0x0]
-    bl func_02005c90
+    bl DebugSpriteText_Init
     mov r0, #0x0
     str r0, [r5, #0xd0]
     mov r0, #0x1
@@ -52,7 +52,7 @@ func_020261bc: ; 0x020261bc
     mov r0, r0, lsl #0x10
     mov r1, r0, lsr #0x10
     add r0, r5, #0xc8
-    bl func_02005cec
+    bl DebugSpriteText_SetTextResource
     ldr r1, .L_020262f4
     ldr r3, .L_020262f8
     mov r0, #0x14

@@ -6,7 +6,7 @@
 .extern data_ov059_02211b7c
 .extern func_02002290
 .extern func_020022dc
-.extern func_02005cc8
+.extern DebugSpriteText_Destroy
 .extern func_020068e0
 .extern func_0201140c
 .extern func_ov059_02210968
@@ -50,7 +50,7 @@ func_ov059_02211134:
     add r0, r5, #0x54
     bl func_020068e0
     add r0, r5, #0x40
-    bl func_02005cc8
+    bl DebugSpriteText_Destroy
     mov r0, r5
     bl Scene_Destroy
     mov r0, r5

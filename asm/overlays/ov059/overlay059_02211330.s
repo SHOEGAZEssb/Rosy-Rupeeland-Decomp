@@ -13,8 +13,8 @@
 .extern DisplayBrightness_IsSubTransitionIncreasing
 .extern DisplayBrightness_IsSubTransitionDecreasing
 .extern func_02005058
-.extern func_02005cec
-.extern func_02005d0c
+.extern DebugSpriteText_SetTextResource
+.extern DebugSpriteText_DrawCentered
 .extern func_02006a94
 .extern func_02006acc
 .extern func_02007908
@@ -204,7 +204,7 @@ func_ov059_02211330:
     add r0, r5, #0x40
     mov r1, #0x68
     mov r2, #0xab
-    bl func_02005d0c
+    bl DebugSpriteText_DrawCentered
     b .L_022117f0
 .L_02211588:
     ldr r1, [r5, #0x28]
@@ -253,7 +253,7 @@ func_ov059_02211330:
     mov r1, r0, lsl #0x10
     add r0, r5, #0x40
     mov r1, r1, lsr #0x10
-    bl func_02005cec
+    bl DebugSpriteText_SetTextResource
     ldr r0, [r5, #0x3c]
     mov r1, #0x1
     bl func_ov059_02210f34
@@ -307,7 +307,7 @@ func_ov059_02211330:
     mov r1, r0, lsl #0x10
     add r0, r5, #0x40
     mov r1, r1, lsr #0x10
-    bl func_02005cec
+    bl DebugSpriteText_SetTextResource
     ldr r0, [r5, #0x3c]
     mov r1, #0x1
     bl func_ov059_02210f34

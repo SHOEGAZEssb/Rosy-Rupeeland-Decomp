@@ -3703,7 +3703,7 @@ build build/reports/debug_sprite_text.json: objdiff build/decomp/delinks/src/sys
 
 build build/reports/debug_sprite_text.txt: match_report build/reports/debug_sprite_text.json | tools/report_objdiff.py
   report_json = build/reports/debug_sprite_text.json
-  report_args = --section .text --function func_02005c90 --function func_02005cc8 --function func_02005cec --function func_02005d0c --require-exact
+  report_args = --section .text --function DebugSpriteText_Init --function DebugSpriteText_Destroy --function DebugSpriteText_SetTextResource --function DebugSpriteText_DrawCentered --require-exact
 
 build build/reports/system_state_init.json: objdiff build/decomp/delinks/src/system/system_state_init.o | build/decomp/src/system/system_state_init.o
   target_object = build/decomp/delinks/src/system/system_state_init.o

@@ -15,10 +15,10 @@ typedef char DebugSpriteTextSizeCheck[
 extern "C" {
 #endif
 
-DebugSpriteText *func_02005c90(DebugSpriteText *self);
-DebugSpriteText *func_02005cc8(DebugSpriteText *self);
-void func_02005cec(DebugSpriteText *self, u16 resourceId);
-void func_02005d0c(DebugSpriteText *self, s32 centerX, s32 y);
+DebugSpriteText *DebugSpriteText_Init(DebugSpriteText *self);
+DebugSpriteText *DebugSpriteText_Destroy(DebugSpriteText *self);
+void DebugSpriteText_SetTextResource(DebugSpriteText *self, u16 resourceId);
+void DebugSpriteText_DrawCentered(DebugSpriteText *self, s32 centerX, s32 y);
 
 #ifdef __cplusplus
 }

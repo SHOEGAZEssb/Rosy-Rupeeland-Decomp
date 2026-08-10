@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/dual_screen_ui_standard_presentation.c.
 .text
 .extern data_020d6b04
-.extern func_02005c90
+.extern DebugSpriteText_Init
 .extern func_02025a44
 .extern func_02025d1c
 .extern func_02025dd8
@@ -20,7 +20,7 @@ func_02025f20: ; 0x02025f20
     ldr r1, .L_02025fc0
     add r0, r4, #0xc8
     str r1, [r4, #0x0]
-    bl func_02005c90
+    bl DebugSpriteText_Init
     mov r0, #0x1
     str r0, [r4, #0xd0]
     ldr r1, [r4, #0xc4]

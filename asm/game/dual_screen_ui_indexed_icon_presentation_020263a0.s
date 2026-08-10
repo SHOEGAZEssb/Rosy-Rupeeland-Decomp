@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/dual_screen_ui_indexed_icon_presentation.c.
 .text
-.extern func_02005d0c
+.extern DebugSpriteText_DrawCentered
 .extern func_02025d1c
 .extern func_020755bc
 .extern gDebugFont
@@ -18,7 +18,7 @@ func_020263a0: ; 0x020263a0
     add r0, r4, #0xc8
     mov r1, #0x68
     mov r2, #0xab
-    bl func_02005d0c
+    bl DebugSpriteText_DrawCentered
     ldmia sp!, {r4, pc}
 .L_020263d0: .word gDebugFont
     .size func_020263a0, . - func_020263a0

@@ -10,7 +10,7 @@
 .extern data_ov059_02211b7c
 .extern data_ov059_02211ba8
 .extern data_ov059_02211bb0
-.extern func_02005c90
+.extern DebugSpriteText_Init
 .extern func_020068b0
 .extern func_0201140c
 .extern func_020284f0
@@ -36,7 +36,7 @@ func_ov059_02210fec:
     str r1, [r4, #0x34]
     add r0, r4, #0x40
     str r1, [r4, #0x38]
-    bl func_02005c90
+    bl DebugSpriteText_Init
     mov r1, #0x0
     str r1, [r4, #0x48]
     sub r0, r1, #0x1
