@@ -32,7 +32,7 @@ typedef struct GraphicsSpriteResource1c {
 extern "C" {
 #endif
 
-extern GraphicsSpriteStatePool data_021ede68;
+extern GraphicsSpriteStatePool gGraphicsSpriteStatePool;
 extern GraphicsVramRangeNode *
 GraphicsSpriteRenderer_AcquireGraphicsVramBinding(void *owner,
                                                   void *resource);
@@ -54,10 +54,10 @@ GraphicsSpriteState *GraphicsSpriteStatePool_Allocate(
     void *owner, void *field14, void *field18, void *field1c,
     u8 attach, GraphicsSpriteGroup *group)
 {
-    GraphicsSpriteState *state = data_021ede68.freeHead;
+    GraphicsSpriteState *state = gGraphicsSpriteStatePool.freeHead;
 
-    data_021ede68.freeHead = (GraphicsSpriteState *)state->field_08;
-    data_021ede68.count++;
+    gGraphicsSpriteStatePool.freeHead = (GraphicsSpriteState *)state->field_08;
+    gGraphicsSpriteStatePool.count++;
     GraphicsSpriteState_Reset(state);
     state->field_00 = group;
     state->field_14 = field14;
@@ -88,9 +88,9 @@ void GraphicsSpriteStatePool_Release(void *ownerPointer,
     GraphicsVramAllocator_Release(&owner->vramAllocator,
                   (GraphicsVramRangeNode *)state->field_0c);
     GraphicsSpriteRenderer_ReleaseIndexedEntry(owner, state->field_10);
-    state->field_08 = data_021ede68.freeHead;
-    data_021ede68.freeHead = state;
-    data_021ede68.count--;
+    state->field_08 = gGraphicsSpriteStatePool.freeHead;
+    gGraphicsSpriteStatePool.freeHead = state;
+    gGraphicsSpriteStatePool.count--;
 }
 
 /*

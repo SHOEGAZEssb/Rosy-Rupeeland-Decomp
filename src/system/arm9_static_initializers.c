@@ -102,8 +102,8 @@ extern u8 data_021e9e00[];
 extern u8 data_021e9df4[];
 extern u8 data_021e9e1c[];
 extern u8 data_021e9e10[];
-extern u8 data_021edea0[];
-extern u8 data_021ede74[];
+extern u8 gGraphicsSpriteStates[];
+extern u8 gGraphicsSpriteStatePoolDestructorRecord[];
 extern u8 data_021f38fc[];
 extern u8 data_021f38f0[];
 extern u8 data_021f3ecc[];
@@ -291,16 +291,18 @@ void __sinit_020c1658(void)
 }
 
 /*
- * No inputs. Construct 384 elements of size 0x3c at data_021edea0 using
- * GraphicsSpriteState_Init/GraphicsSpriteState_Destroy, then register array destructor thunk
- * GraphicsSpriteState_DestroyGlobalPool with a null object and record data_021ede74. Global pool
- * lifetime state changes; no value or direct hardware effect occurs.
+ * No inputs. Construct 384 elements of size 0x3c at gGraphicsSpriteStates
+ * using GraphicsSpriteState_Init/GraphicsSpriteState_Destroy, then register
+ * the GraphicsSpriteState_DestroyGlobalPool array-destructor thunk with a null
+ * object and gGraphicsSpriteStatePoolDestructorRecord. Global pool lifetime
+ * state changes; no value or direct hardware effect occurs.
  */
 void __sinit_020c1684(void)
 {
-    __construct_array(data_021edea0, 0x180, 0x3c,
+    __construct_array(gGraphicsSpriteStates, 0x180, 0x3c,
                       GraphicsSpriteState_Init, GraphicsSpriteState_Destroy);
-    __register_global_object(0, GraphicsSpriteState_DestroyGlobalPool, data_021ede74);
+    __register_global_object(0, GraphicsSpriteState_DestroyGlobalPool,
+                             gGraphicsSpriteStatePoolDestructorRecord);
 }
 
 /*

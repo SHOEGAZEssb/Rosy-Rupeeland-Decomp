@@ -9403,10 +9403,10 @@ data_021e9e10 kind:bss addr:0x021e9e10
 data_021e9e1c kind:bss addr:0x021e9e1c
 data_021e9e60 kind:bss addr:0x021e9e60
 data_021e9e68 kind:bss addr:0x021e9e68
-data_021ede68 kind:bss addr:0x021ede68
-data_021ede74 kind:bss addr:0x021ede74
+gGraphicsSpriteStatePool kind:bss addr:0x021ede68
+gGraphicsSpriteStatePoolDestructorRecord kind:bss addr:0x021ede74
 data_021ede80 kind:bss addr:0x021ede80
-data_021edea0 kind:bss addr:0x021edea0
+gGraphicsSpriteStates kind:bss addr:0x021edea0
 data_021f1400 kind:bss addr:0x021f1400
 data_021f2102 kind:bss addr:0x021f2102
 data_021f2c00 kind:bss addr:0x021f2c00

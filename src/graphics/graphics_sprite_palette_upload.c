@@ -26,7 +26,7 @@ typedef struct GraphicsSpriteStatePoolPrefix {
 extern "C" {
 #endif
 
-extern GraphicsSpriteStatePoolPrefix data_021ede68;
+extern GraphicsSpriteStatePoolPrefix gGraphicsSpriteStatePool;
 extern void *func_02070874(void *resource);
 extern u32 GX_VBlankIntr(u32 state);
 
@@ -51,7 +51,7 @@ void GraphicsSpriteRenderer_QueuePaletteUploads(GraphicsSpriteRenderer *renderer
         (GraphicsIndexedChainEntry *)renderer->field_08;
     s32 index;
 
-    data_021ede68.interruptState = GX_VBlankIntr(0);
+    gGraphicsSpriteStatePool.interruptState = GX_VBlankIntr(0);
     for (index = 0; index < resource->header->recordCount; index++) {
         u8 *source = (u8 *)func_02070874(resource) + index * 0x20;
 
@@ -60,7 +60,7 @@ void GraphicsSpriteRenderer_QueuePaletteUploads(GraphicsSpriteRenderer *renderer
             (u32)entry->index << 5, 0x20);
         entry = entry->chainNext;
     }
-    GX_VBlankIntr(data_021ede68.interruptState);
+    GX_VBlankIntr(gGraphicsSpriteStatePool.interruptState);
 }
 #else
 /* This matching fallback implements the documented portable C directly above. */
@@ -71,7 +71,7 @@ asm void GraphicsSpriteRenderer_QueuePaletteUploads(GraphicsSpriteRenderer *rend
     mov r0, #0
     ldr r6, [r8, #0x08]
     bl GX_VBlankIntr
-    ldr r1, =data_021ede68
+    ldr r1, =gGraphicsSpriteStatePool
     mov r7, #0
     str r0, [r1, #4]
     add r9, r8, #0x114
@@ -96,7 +96,7 @@ sprite_palette_upload_test:
     ldrh r1, [r1, #6]
     cmp r7, r1
     blt sprite_palette_upload_loop
-    ldr r0, =data_021ede68
+    ldr r0, =gGraphicsSpriteStatePool
     ldr r0, [r0, #4]
     bl GX_VBlankIntr
     ldmia sp!, {r3, r4, r5, r6, r7, r8, r9, pc}

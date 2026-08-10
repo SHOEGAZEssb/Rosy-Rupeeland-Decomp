@@ -22,8 +22,8 @@ typedef struct GraphicsSpriteStatePool {
 extern "C" {
 #endif
 
-extern GraphicsSpriteStatePool data_021ede68;
-extern GraphicsSpriteState data_021edea0[];
+extern GraphicsSpriteStatePool gGraphicsSpriteStatePool;
+extern GraphicsSpriteState gGraphicsSpriteStates[];
 extern void func_020703d8(void *resource);
 extern void func_02070418(void *resource);
 extern void func_02070830(void *resource);
@@ -383,9 +383,9 @@ void GraphicsSpriteState_InitGlobalPool(void)
 {
     s32 index;
 
-    data_021ede68.count = 0;
-    data_021ede68.freeHead = data_021edea0;
+    gGraphicsSpriteStatePool.count = 0;
+    gGraphicsSpriteStatePool.freeHead = gGraphicsSpriteStates;
     for (index = 0; index < 383; index++) {
-        data_021edea0[index].field_08 = &data_021edea0[index + 1];
+        gGraphicsSpriteStates[index].field_08 = &gGraphicsSpriteStates[index + 1];
     }
 }

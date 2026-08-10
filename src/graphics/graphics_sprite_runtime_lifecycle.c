@@ -14,7 +14,7 @@ extern "C" {
 
 extern void __destroy_arr(void *array, u32 count, u32 elementSize,
                           void (*destructor)(void *));
-extern GraphicsSpriteState data_021edea0[];
+extern GraphicsSpriteState gGraphicsSpriteStates[];
 
 #ifdef __cplusplus
 }
@@ -37,7 +37,7 @@ void GraphicsSpriteState_Destroy(GraphicsSpriteState *state)
  */
 void GraphicsSpriteState_DestroyGlobalPool(void)
 {
-    __destroy_arr(data_021edea0, GRAPHICS_SPRITE_GLOBAL_STATE_COUNT,
+    __destroy_arr(gGraphicsSpriteStates, GRAPHICS_SPRITE_GLOBAL_STATE_COUNT,
                   sizeof(GraphicsSpriteState),
                   (void (*)(void *))GraphicsSpriteState_Destroy);
 }

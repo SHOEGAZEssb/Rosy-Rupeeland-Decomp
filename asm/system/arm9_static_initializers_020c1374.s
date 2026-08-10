@@ -62,8 +62,8 @@
 .extern data_021e9e00
 .extern data_021e9e10
 .extern data_021e9e1c
-.extern data_021ede74
-.extern data_021edea0
+.extern gGraphicsSpriteStatePoolDestructorRecord
+.extern gGraphicsSpriteStates
 .extern data_021f38f0
 .extern data_021f38fc
 .extern data_021f3d44
@@ -378,10 +378,10 @@ __sinit_020c1684: ; 0x020c1684
     bl __register_global_object
     ldmia sp!, {r3, pc}
 .L_020c16b8: .word GraphicsSpriteState_Destroy
-.L_020c16bc: .word data_021edea0
+.L_020c16bc: .word gGraphicsSpriteStates
 .L_020c16c0: .word GraphicsSpriteState_Init
 .L_020c16c4: .word GraphicsSpriteState_DestroyGlobalPool
-.L_020c16c8: .word data_021ede74
+.L_020c16c8: .word gGraphicsSpriteStatePoolDestructorRecord
 
 __sinit_020c16cc: ; 0x020c16cc
     stmdb sp!, {r3, lr}
