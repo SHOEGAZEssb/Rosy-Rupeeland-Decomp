@@ -10,10 +10,10 @@
 .extern data_020d6564
 .extern data_020f4e18
 .extern func_0201e250
-.extern func_02020da0
-.extern func_02020dd4
-.extern func_02020e00
-.extern func_02020e34
+.extern MainBg1_SetControl
+.extern MainBg2_SetControl
+.extern SubBg1_SetControl
+.extern SubBg2_SetControl
 .extern func_02020e60
 .extern func_02070638
 .extern func_020706c4

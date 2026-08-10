@@ -54,10 +54,10 @@ extern void GraphicsResourceSet_Destroy(GraphicsResourceSet *set);
 extern void func_020b44e8(void);
 extern void func_020afd0c(volatile void *reg, s32 first, s32 second,
                           s32 third, s32 fourth);
-extern void func_02020da0(s32, s32, s32, s32, s32);
-extern void func_02020dd4(s32, s32, s32, s32);
-extern void func_02020e00(s32, s32, s32, s32, s32);
-extern void func_02020e34(s32, s32, s32, s32);
+extern void MainBg1_SetControl(s32, s32, s32, s32, s32);
+extern void MainBg2_SetControl(s32, s32, s32, s32);
+extern void SubBg1_SetControl(s32, s32, s32, s32, s32);
+extern void SubBg2_SetControl(s32, s32, s32, s32);
 extern void func_02020e60(void *self, void *first, void *second);
 extern void func_02070638(void *resource);
 extern void func_020706c4(void *resource, s32 first, s32 second);
@@ -104,8 +104,8 @@ DisplayFadePresentation *func_02020e84(DisplayFadePresentation *self,
     func_020b44e8();
     if (subEngine == 0) {
         func_020afd0c((void *)0x04000050, 2, 4, 0, 0);
-        func_02020da0(0, 0, 0x1a, 0, 1);
-        func_02020dd4(0, 0, 0x1c, 0);
+        MainBg1_SetControl(0, 0, 0x1a, 0, 1);
+        MainBg2_SetControl(0, 0, 0x1c, 0);
         *(volatile u16 *)0x0400000a =
             (u16)((*(volatile u16 *)0x0400000a & ~3) | 1);
         *(volatile u16 *)0x0400000c =
@@ -120,8 +120,8 @@ DisplayFadePresentation *func_02020e84(DisplayFadePresentation *self,
         func_020b2058(palette, 0, 0x20);
     } else {
         func_020afd0c((void *)0x04001050, 2, 4, 0, 0);
-        func_02020e00(0, 0, 0x1a, 0, 1);
-        func_02020e34(0, 0, 0x1c, 0);
+        SubBg1_SetControl(0, 0, 0x1a, 0, 1);
+        SubBg2_SetControl(0, 0, 0x1c, 0);
         *(volatile u16 *)0x0400100a =
             (u16)((*(volatile u16 *)0x0400100a & ~3) | 1);
         *(volatile u16 *)0x0400100c =

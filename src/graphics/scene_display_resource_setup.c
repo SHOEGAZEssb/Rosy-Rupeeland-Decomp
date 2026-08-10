@@ -23,8 +23,8 @@ extern void GraphicsResourceSet_Destroy(GraphicsResourceSet *);
 extern void func_020b44e8(void);
 extern void func_020923a4(void *);
 extern void func_020af1f8(s32);
-extern void func_02020da0(s32, s32, s32, s32, s32);
-extern void func_02020e34(s32, s32, s32, s32);
+extern void MainBg1_SetControl(s32, s32, s32, s32, s32);
+extern void SubBg2_SetControl(s32, s32, s32, s32);
 extern void func_02070638(void *);
 extern void func_020706c4(void *, s32, s32);
 extern void func_02070b50(void *, s32);
@@ -55,13 +55,13 @@ void func_02021350(s32 index)
         *(volatile u32 *)0x04000000 &= ~0x0300;
         *(volatile u16 *)0x04000008 =
             (u16)((*(volatile u16 *)0x04000008 & 0x43) | 0x7890);
-        func_02020da0(1, 1, 0x1a, 4, 1);
+        MainBg1_SetControl(1, 1, 0x1a, 4, 1);
         *(volatile u16 *)0x0400000a &= (u16)~3;
         *(volatile u16 *)0x0400000c =
             (u16)((*(volatile u16 *)0x0400000c & ~3) | 1);
     } else {
         *(volatile u32 *)0x04001000 &= ~0x0c00;
-        func_02020e34(1, 1, 0x18, 4);
+        SubBg2_SetControl(1, 1, 0x18, 4);
         *(volatile u16 *)0x0400100e =
             (u16)((*(volatile u16 *)0x0400100e & 0x43) | 0x5a90);
         *(volatile u16 *)0x0400100c &= (u16)~3;

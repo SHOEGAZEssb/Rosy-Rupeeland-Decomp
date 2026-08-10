@@ -3,7 +3,7 @@
 .extern Heap_Free
 .extern __destroy_arr
 .extern func_0201e28c
-.extern func_02020d9c
+.extern DisplayControlElement_NoOp
 
     .global func_020246a0
     .type func_020246a0, @function
@@ -21,5 +21,5 @@ func_020246a0: ; 0x020246a0
     bl Heap_Free
     mov r0, r4
     ldmia sp!, {r4, pc}
-.L_020246d4: .word func_02020d9c
+.L_020246d4: .word DisplayControlElement_NoOp
     .size func_020246a0, . - func_020246a0

@@ -5,7 +5,7 @@
 .extern data_020d6780
 .extern data_020d6934
 .extern func_0201e250
-.extern func_02020d9c
+.extern DisplayControlElement_NoOp
 .extern func_02091b6c
 .extern func_02091bac
 .extern gGameWork
@@ -66,7 +66,7 @@ func_02024594: ; 0x02024594
     mov r0, r10
     ldmia sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, pc}
 .L_0202465c: .word data_020d6934
-.L_02024660: .word func_02020d9c
+.L_02024660: .word DisplayControlElement_NoOp
 .L_02024664: .word func_02091b6c
 .L_02024668: .word data_020d6780
 .L_0202466c: .word gGameWork

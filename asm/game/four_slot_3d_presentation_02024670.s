@@ -2,7 +2,7 @@
 .text
 .extern __destroy_arr
 .extern func_0201e28c
-.extern func_02020d9c
+.extern DisplayControlElement_NoOp
 
     .global func_02024670
     .type func_02024670, @function
@@ -18,5 +18,5 @@ func_02024670: ; 0x02024670
     bl func_0201e28c
     mov r0, r4
     ldmia sp!, {r4, pc}
-.L_0202469c: .word func_02020d9c
+.L_0202469c: .word DisplayControlElement_NoOp
     .size func_02024670, . - func_02024670

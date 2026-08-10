@@ -1,9 +1,9 @@
 ; Matching retail form; see src/graphics/display_blend_control.c.
 .text
 
-.global func_02020e00
-    .type func_02020e00, @function
-func_02020e00: ; 0x02020e00
+.global SubBg1_SetControl
+    .type SubBg1_SetControl, @function
+SubBg1_SetControl: ; 0x02020e00
     stmdb sp!, {r4, lr}
     ldr lr, .L_02020e30
     ldr r4, [sp, #0x8]
@@ -17,5 +17,5 @@ func_02020e00: ; 0x02020e00
     strh r0, [lr, #0x0]
     ldmia sp!, {r4, pc}
 .L_02020e30: .word 0x400100a
-    .size func_02020e00, .-func_02020e00
+    .size SubBg1_SetControl, .-SubBg1_SetControl
 

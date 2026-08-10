@@ -7,8 +7,8 @@
 .extern data_020d6418
 .extern data_020f4e18
 .extern data_021055dc
-.extern func_02020da0
-.extern func_02020e34
+.extern MainBg1_SetControl
+.extern SubBg2_SetControl
 .extern func_02070638
 .extern func_020706c4
 .extern func_02070b50
@@ -55,7 +55,7 @@ func_02021350: ; 0x02021350
     mov r2, #0x1a
     mov r3, #0x4
     str r0, [sp, #0x0]
-    bl func_02020da0
+    bl MainBg1_SetControl
     ldr r1, .L_0202158c
     ldrh r0, [r1, #0x0]
     bic r0, r0, #0x3
@@ -79,7 +79,7 @@ func_02021350: ; 0x02021350
     mov r2, #0x18
     mov r3, #0x4
     str r4, [ip, #0x0]
-    bl func_02020e34
+    bl SubBg2_SetControl
     ldr r2, .L_02021594
     ldrh r0, [r2, #0x0]
     sub r1, r2, #0x2

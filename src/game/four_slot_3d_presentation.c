@@ -42,7 +42,7 @@ extern void *gGameWork;
 extern u8 *data_021052fc;
 extern void func_0201e250(void *);
 extern void func_0201e28c(void *);
-extern void func_02020d9c(DisplayControlElement *);
+extern void DisplayControlElement_NoOp(DisplayControlElement *);
 extern void func_02091b6c(DisplayControlElement *);
 extern void func_02091bac(DisplayControlElement *, s32, s32, s32, s32);
 extern s32 func_02091c7c(DisplayControlElement *, s32);
@@ -90,7 +90,7 @@ FourSlot3dPresentation *func_02024670(FourSlot3dPresentation *self)
 {
     s32 index;
     for (index = 3; index >= 0; index--) {
-        func_02020d9c(&self->elements1c[index]);
+        DisplayControlElement_NoOp(&self->elements1c[index]);
     }
     func_0201e28c(self);
     return self;

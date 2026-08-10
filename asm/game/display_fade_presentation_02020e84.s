@@ -10,10 +10,10 @@
 .extern data_020d6564
 .extern data_020f4e18
 .extern func_0201e250
-.extern func_02020da0
-.extern func_02020dd4
-.extern func_02020e00
-.extern func_02020e34
+.extern MainBg1_SetControl
+.extern MainBg2_SetControl
+.extern SubBg1_SetControl
+.extern SubBg2_SetControl
 .extern func_02020e60
 .extern func_02070638
 .extern func_020706c4
@@ -81,12 +81,12 @@ func_02020e84: ; 0x02020e84
     mov r3, r0
     mov r2, #0x1a
     str r5, [sp, #0x0]
-    bl func_02020da0
+    bl MainBg1_SetControl
     mov r0, #0x0
     mov r1, r0
     mov r3, r0
     mov r2, #0x1c
-    bl func_02020dd4
+    bl MainBg2_SetControl
     ldr r3, .L_02021100
     mov r5, #0x4000000
     ldrh r0, [r3, #0x0]
@@ -135,12 +135,12 @@ func_02020e84: ; 0x02020e84
     mov r3, r0
     mov r2, #0x1a
     str r5, [sp, #0x0]
-    bl func_02020e00
+    bl SubBg1_SetControl
     mov r0, #0x0
     mov r1, r0
     mov r3, r0
     mov r2, #0x1c
-    bl func_02020e34
+    bl SubBg2_SetControl
     ldr r3, .L_02021108
     mov r1, r5
     ldrh r0, [r3, #0x0]
