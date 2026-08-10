@@ -2,17 +2,17 @@
 .text
 .extern data_020f4e18
 .extern data_0210548c
-.extern func_0200f328
+.extern DebugHudState_ResetSelectedFont
 .extern func_02071d4c
 
-    .global func_0200f52c
-func_0200f52c: ; 0x0200f52c
+    .global DebugHudState_Close
+DebugHudState_Close: ; 0x0200f52c
     stmdb sp!, {r4, lr}
     mov r4, r0
     ldr r1, [r4, #0x20]
     cmp r1, #0x0
     beq L_0200f544
-    bl func_0200f328
+    bl DebugHudState_ResetSelectedFont
 L_0200f544:
     ldr r0, [r4, #0x8]
     cmp r0, #0x0
@@ -47,5 +47,5 @@ L_0200f598:
     ldmia sp!, {r4, pc}
 L_0200f5b0: .word data_020f4e18
 L_0200f5b4: .word data_0210548c
-    .size func_0200f52c, . - func_0200f52c
+    .size DebugHudState_Close, . - DebugHudState_Close
 

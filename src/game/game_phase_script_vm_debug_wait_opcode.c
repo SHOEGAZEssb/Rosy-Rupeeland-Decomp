@@ -6,31 +6,31 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *func_0200f824(...);
-extern u32 func_0200f5b8(void *state, u32 index);
-extern void func_0200f52c(void *state);
+extern void *DebugHudState_GetGlobal(...);
+extern u32 DebugHudState_PollInput(void *state, u32 index);
+extern void DebugHudState_Close(void *state);
 extern void func_02072c98(void *object);
 #ifdef __cplusplus
 }
 #endif
 
 /*
- * Clear GameWork flag 0x40e, read the address-derived UI bitfield through
- * func_0200f5b8, and—when VM flag 0x2 is armed—synchronize actor->0x54 flags.
+ * Clear GameWork flag 0x40e, poll the debug-HUD input bitfield, and—when VM
+ * flag 0x2 is armed—synchronize actor->0x54 flags.
  * UI bits 8 or 1 clear object flag 1; bit 13 additionally calls
  * func_02072c98, and that path sets GameWork flag 0x40e. With neither bit set,
  * UI bit 0 clears object flag 1, while its absence ensures flag 1 is set and
- * flag 0 is clear. Once UI bit 0 is set and bit 1 is clear, func_0200f52c is
- * invoked and the opcode returns zero. Otherwise it rewinds two script bytes
- * and returns one to poll again on a later update.
+ * flag 0 is clear. Once UI bit 0 is set and bit 1 is clear, close the HUD and
+ * return zero. Otherwise rewind two script bytes and return one to poll again
+ * on a later update.
  */
 s32 func_02015818(GamePhaseActorScriptVm *self)
 {
     void *uiState;
     u32 state;
     GameWork_ClearFlag(gGameWork, 0x40e);
-    uiState = func_0200f824();
-    state = func_0200f5b8(uiState, 0);
+    uiState = DebugHudState_GetGlobal();
+    state = DebugHudState_PollInput(uiState, 0);
 
     if ((self->flags_8c & 2) != 0) {
         u8 *object = *(u8 **)((u8 *)self->actor_84 + 0x54);
@@ -51,7 +51,7 @@ s32 func_02015818(GamePhaseActorScriptVm *self)
     }
 
     if ((state & 2) == 0 && (state & 1) != 0) {
-        func_0200f52c(func_0200f824());
+        DebugHudState_Close(DebugHudState_GetGlobal());
         return 0;
     }
     self->base.cursor_04 -= 2;

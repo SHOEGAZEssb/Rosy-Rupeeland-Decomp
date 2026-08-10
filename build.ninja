@@ -11064,35 +11064,35 @@ build build/reports/debug_hud_state_0200f260.json: objdiff build/decomp/delinks/
   base_object = build/decomp/asm/game/debug_hud_state_0200f260.o
 build build/reports/debug_hud_state_0200f260.txt: match_report build/reports/debug_hud_state_0200f260.json | tools/report_objdiff.py
   report_json = build/reports/debug_hud_state_0200f260.json
-  report_args = --section .text --function func_0200f260 --require-exact
+  report_args = --section .text --function DebugHudState_Init --require-exact
 
 build build/reports/debug_hud_state_0200f314.json: objdiff build/decomp/delinks/asm/game/debug_hud_state_0200f314.o | build/decomp/asm/game/debug_hud_state_0200f314.o
   target_object = build/decomp/delinks/asm/game/debug_hud_state_0200f314.o
   base_object = build/decomp/asm/game/debug_hud_state_0200f314.o
 build build/reports/debug_hud_state_0200f314.txt: match_report build/reports/debug_hud_state_0200f314.json | tools/report_objdiff.py
   report_json = build/reports/debug_hud_state_0200f314.json
-  report_args = --section .text --function func_0200f314 --require-exact
+  report_args = --section .text --function DebugHudState_Destroy --require-exact
 
 build build/reports/debug_hud_state_0200f328.json: objdiff build/decomp/delinks/asm/game/debug_hud_state_0200f328.o | build/decomp/asm/game/debug_hud_state_0200f328.o
   target_object = build/decomp/delinks/asm/game/debug_hud_state_0200f328.o
   base_object = build/decomp/asm/game/debug_hud_state_0200f328.o
 build build/reports/debug_hud_state_0200f328.txt: match_report build/reports/debug_hud_state_0200f328.json | tools/report_objdiff.py
   report_json = build/reports/debug_hud_state_0200f328.json
-  report_args = --section .text --function func_0200f328 --require-exact
+  report_args = --section .text --function DebugHudState_ResetSelectedFont --require-exact
 
 build build/reports/debug_hud_state_0200f360.json: objdiff build/decomp/delinks/asm/game/debug_hud_state_0200f360.o | build/decomp/asm/game/debug_hud_state_0200f360.o
   target_object = build/decomp/delinks/asm/game/debug_hud_state_0200f360.o
   base_object = build/decomp/asm/game/debug_hud_state_0200f360.o
 build build/reports/debug_hud_state_0200f360.txt: match_report build/reports/debug_hud_state_0200f360.json | tools/report_objdiff.py
   report_json = build/reports/debug_hud_state_0200f360.json
-  report_args = --section .text --function func_0200f360 --require-exact
+  report_args = --section .text --function DebugHud_CountDecimalDigits --require-exact
 
 build build/reports/debug_hud_state_0200f38c.json: objdiff build/decomp/delinks/asm/game/debug_hud_state_0200f38c.o | build/decomp/asm/game/debug_hud_state_0200f38c.o
   target_object = build/decomp/delinks/asm/game/debug_hud_state_0200f38c.o
   base_object = build/decomp/asm/game/debug_hud_state_0200f38c.o
 build build/reports/debug_hud_state_0200f38c.txt: match_report build/reports/debug_hud_state_0200f38c.json | tools/report_objdiff.py
   report_json = build/reports/debug_hud_state_0200f38c.json
-  report_args = --section .text --function func_0200f38c --require-exact
+  report_args = --section .text --function DebugHud_GetCurrentRectangle --require-exact
 
 build build/reports/debug_hud_state_lifecycle.txt: phony build/reports/debug_hud_state_0200f260.txt build/reports/debug_hud_state_0200f314.txt build/reports/debug_hud_state_0200f328.txt build/reports/debug_hud_state_0200f360.txt build/reports/debug_hud_state_0200f38c.txt
 build build/reports/debug_hud_state_0200f404.json: objdiff build/decomp/delinks/asm/game/debug_hud_state_0200f404.o | build/decomp/asm/game/debug_hud_state_0200f404.o
@@ -11100,70 +11100,70 @@ build build/reports/debug_hud_state_0200f404.json: objdiff build/decomp/delinks/
   base_object = build/decomp/asm/game/debug_hud_state_0200f404.o
 build build/reports/debug_hud_state_0200f404.txt: match_report build/reports/debug_hud_state_0200f404.json | tools/report_objdiff.py
   report_json = build/reports/debug_hud_state_0200f404.json
-  report_args = --section .text --function func_0200f404 --require-exact
+  report_args = --section .text --function DebugHudState_Open --require-exact
 
 build build/reports/debug_hud_state_0200f52c.json: objdiff build/decomp/delinks/asm/game/debug_hud_state_0200f52c.o | build/decomp/asm/game/debug_hud_state_0200f52c.o
   target_object = build/decomp/delinks/asm/game/debug_hud_state_0200f52c.o
   base_object = build/decomp/asm/game/debug_hud_state_0200f52c.o
 build build/reports/debug_hud_state_0200f52c.txt: match_report build/reports/debug_hud_state_0200f52c.json | tools/report_objdiff.py
   report_json = build/reports/debug_hud_state_0200f52c.json
-  report_args = --section .text --function func_0200f52c --require-exact
+  report_args = --section .text --function DebugHudState_Close --require-exact
 
 build build/reports/debug_hud_state_0200f5b8.json: objdiff build/decomp/delinks/asm/game/debug_hud_state_0200f5b8.o | build/decomp/asm/game/debug_hud_state_0200f5b8.o
   target_object = build/decomp/delinks/asm/game/debug_hud_state_0200f5b8.o
   base_object = build/decomp/asm/game/debug_hud_state_0200f5b8.o
 build build/reports/debug_hud_state_0200f5b8.txt: match_report build/reports/debug_hud_state_0200f5b8.json | tools/report_objdiff.py
   report_json = build/reports/debug_hud_state_0200f5b8.json
-  report_args = --section .text --function func_0200f5b8 --require-exact
+  report_args = --section .text --function DebugHudState_PollInput --require-exact
 
 build build/reports/debug_hud_state_0200f67c.json: objdiff build/decomp/delinks/asm/game/debug_hud_state_0200f67c.o | build/decomp/asm/game/debug_hud_state_0200f67c.o
   target_object = build/decomp/delinks/asm/game/debug_hud_state_0200f67c.o
   base_object = build/decomp/asm/game/debug_hud_state_0200f67c.o
 build build/reports/debug_hud_state_0200f67c.txt: match_report build/reports/debug_hud_state_0200f67c.json | tools/report_objdiff.py
   report_json = build/reports/debug_hud_state_0200f67c.json
-  report_args = --section .text --function func_0200f67c --require-exact
+  report_args = --section .text --function DebugHudState_SetNumberRow --require-exact
 
 build build/reports/debug_hud_state_0200f6f4.json: objdiff build/decomp/delinks/asm/game/debug_hud_state_0200f6f4.o | build/decomp/asm/game/debug_hud_state_0200f6f4.o
   target_object = build/decomp/delinks/asm/game/debug_hud_state_0200f6f4.o
   base_object = build/decomp/asm/game/debug_hud_state_0200f6f4.o
 build build/reports/debug_hud_state_0200f6f4.txt: match_report build/reports/debug_hud_state_0200f6f4.json | tools/report_objdiff.py
   report_json = build/reports/debug_hud_state_0200f6f4.json
-  report_args = --section .text --function func_0200f6f4 --require-exact
+  report_args = --section .text --function DebugHudState_SetTextRow --require-exact
 
 build build/reports/debug_hud_state_0200f73c.json: objdiff build/decomp/delinks/asm/game/debug_hud_state_0200f73c.o | build/decomp/asm/game/debug_hud_state_0200f73c.o
   target_object = build/decomp/delinks/asm/game/debug_hud_state_0200f73c.o
   base_object = build/decomp/asm/game/debug_hud_state_0200f73c.o
 build build/reports/debug_hud_state_0200f73c.txt: match_report build/reports/debug_hud_state_0200f73c.json | tools/report_objdiff.py
   report_json = build/reports/debug_hud_state_0200f73c.json
-  report_args = --section .text --function func_0200f73c --require-exact
+  report_args = --section .text --function DebugHud_GetTextTableEntry --require-exact
 
 build build/reports/debug_hud_state_0200f788.json: objdiff build/decomp/delinks/asm/game/debug_hud_state_0200f788.o | build/decomp/asm/game/debug_hud_state_0200f788.o
   target_object = build/decomp/delinks/asm/game/debug_hud_state_0200f788.o
   base_object = build/decomp/asm/game/debug_hud_state_0200f788.o
 build build/reports/debug_hud_state_0200f788.txt: match_report build/reports/debug_hud_state_0200f788.json | tools/report_objdiff.py
   report_json = build/reports/debug_hud_state_0200f788.json
-  report_args = --section .text --function func_0200f788 --require-exact
+  report_args = --section .text --function DebugHudState_SetRectangle --require-exact
 
 build build/reports/debug_hud_state_0200f7bc.json: objdiff build/decomp/delinks/asm/game/debug_hud_state_0200f7bc.o | build/decomp/asm/game/debug_hud_state_0200f7bc.o
   target_object = build/decomp/delinks/asm/game/debug_hud_state_0200f7bc.o
   base_object = build/decomp/asm/game/debug_hud_state_0200f7bc.o
 build build/reports/debug_hud_state_0200f7bc.txt: match_report build/reports/debug_hud_state_0200f7bc.json | tools/report_objdiff.py
   report_json = build/reports/debug_hud_state_0200f7bc.json
-  report_args = --section .text --function func_0200f7bc --require-exact
+  report_args = --section .text --function DebugHudState_RefreshRectangle --require-exact
 
 build build/reports/debug_hud_state_0200f7e4.json: objdiff build/decomp/delinks/asm/game/debug_hud_state_0200f7e4.o | build/decomp/asm/game/debug_hud_state_0200f7e4.o
   target_object = build/decomp/delinks/asm/game/debug_hud_state_0200f7e4.o
   base_object = build/decomp/asm/game/debug_hud_state_0200f7e4.o
 build build/reports/debug_hud_state_0200f7e4.txt: match_report build/reports/debug_hud_state_0200f7e4.json | tools/report_objdiff.py
   report_json = build/reports/debug_hud_state_0200f7e4.json
-  report_args = --section .text --function func_0200f7e4 --require-exact
+  report_args = --section .text --function DebugHudState_UploadRows --require-exact
 
 build build/reports/debug_hud_state_0200f824.json: objdiff build/decomp/delinks/asm/game/debug_hud_state_0200f824.o | build/decomp/asm/game/debug_hud_state_0200f824.o
   target_object = build/decomp/delinks/asm/game/debug_hud_state_0200f824.o
   base_object = build/decomp/asm/game/debug_hud_state_0200f824.o
 build build/reports/debug_hud_state_0200f824.txt: match_report build/reports/debug_hud_state_0200f824.json | tools/report_objdiff.py
   report_json = build/reports/debug_hud_state_0200f824.json
-  report_args = --section .text --function func_0200f824 --require-exact
+  report_args = --section .text --function DebugHudState_GetGlobal --require-exact
 
 build build/reports/debug_hud_state_runtime.txt: phony build/reports/debug_hud_state_0200f404.txt build/reports/debug_hud_state_0200f52c.txt build/reports/debug_hud_state_0200f5b8.txt build/reports/debug_hud_state_0200f67c.txt build/reports/debug_hud_state_0200f6f4.txt build/reports/debug_hud_state_0200f73c.txt build/reports/debug_hud_state_0200f788.txt build/reports/debug_hud_state_0200f7bc.txt build/reports/debug_hud_state_0200f7e4.txt build/reports/debug_hud_state_0200f824.txt
 build build/reports/game_phase_resume_scene.json: objdiff build/decomp/delinks/asm/game/game_phase_resume_scene.o | build/decomp/asm/game/game_phase_resume_scene.o

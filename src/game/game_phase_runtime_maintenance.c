@@ -5,8 +5,8 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_0200f824(void);
-extern void func_0200f52c(void);
+extern void DebugHudState_GetGlobal(void);
+extern void DebugHudState_Close(void);
 extern void GamePhaseState_ResetActivePhase(void *state);
 extern void GamePhaseRuntime_DestroySecondaryActorSubsystem(GamePhaseRuntime *self);
 extern void ActorRuntimeObjectLists_ClearSecond(void *loader);
@@ -22,8 +22,8 @@ extern void ActorRuntimeObjectLists_ClearSecond(void *loader);
 void GamePhaseRuntime_RunFrameMaintenance(GamePhaseRuntime *self)
 {
     u8 *b = (u8 *)self;
-    func_0200f824();
-    func_0200f52c();
+    DebugHudState_GetGlobal();
+    DebugHudState_Close();
     GamePhaseState_ResetActivePhase(b + 0x24);
     GamePhaseRuntime_DestroySecondaryActorSubsystem(self);
     ActorRuntimeObjectLists_ClearSecond(*(void **)(b + 0x30b4));

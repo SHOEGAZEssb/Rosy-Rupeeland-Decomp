@@ -3,8 +3,8 @@
 .extern OS_Halt
 .extern data_020d5554
 
-    .global func_0200f73c
-func_0200f73c: ; 0x0200f73c
+    .global DebugHud_GetTextTableEntry
+DebugHud_GetTextTableEntry: ; 0x0200f73c
     stmdb sp!, {r4, lr}
     cmp r1, #0x0
     mov r4, #0x0
@@ -28,5 +28,5 @@ L_0200f77c:
     mov r0, r4
     ldmia sp!, {r4, pc}
 L_0200f784: .word data_020d5554
-    .size func_0200f73c, . - func_0200f73c
+    .size DebugHud_GetTextTableEntry, . - DebugHud_GetTextTableEntry
 

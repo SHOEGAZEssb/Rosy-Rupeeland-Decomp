@@ -5,8 +5,8 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_0200f824(void);
-extern void func_0200f52c(void);
+extern void DebugHudState_GetGlobal(void);
+extern void DebugHudState_Close(void);
 extern void GamePhaseState_ResetRuntime(void *state);
 extern void GamePhaseRuntime_DestroySecondaryActorSubsystem(GamePhaseRuntime *self);
 extern void GamePhaseRuntime_TeardownActiveAreaState(GamePhaseRuntime *self);
@@ -29,8 +29,8 @@ void GamePhaseRuntime_ApplyStagedAreaRequest(GamePhaseRuntime *self)
     *(void **)(b + 0x30bc) = *(void **)(b + 0x30d0);
     *mainDisplay = (*mainDisplay & ~0x1f00) | 0x1000;
     *subDisplay = (*subDisplay & ~0x1f00) | 0x1000;
-    func_0200f824();
-    func_0200f52c();
+    DebugHudState_GetGlobal();
+    DebugHudState_Close();
     GamePhaseState_ResetRuntime(b + 0x24);
     GamePhaseRuntime_DestroySecondaryActorSubsystem(self);
     GamePhaseRuntime_TeardownActiveAreaState(self);

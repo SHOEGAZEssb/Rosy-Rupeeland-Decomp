@@ -1,10 +1,10 @@
 ; Matching retail form; see src/game/debug_hud_state_runtime.c.
 .text
 .extern data_0210548c
-.extern func_0200f7e4
+.extern DebugHudState_UploadRows
 
-    .global func_0200f6f4
-func_0200f6f4: ; 0x0200f6f4
+    .global DebugHudState_SetTextRow
+DebugHudState_SetTextRow: ; 0x0200f6f4
     stmdb sp!, {r3, lr}
     ldr ip, L_0200f738
     mov r3, #0x22
@@ -22,8 +22,8 @@ L_0200f710:
     ldr r1, [r0, #0x8]
     cmp r1, #0x0
     ldmeqia sp!, {r3, pc}
-    bl func_0200f7e4
+    bl DebugHudState_UploadRows
     ldmia sp!, {r3, pc}
 L_0200f738: .word data_0210548c
-    .size func_0200f6f4, . - func_0200f6f4
+    .size DebugHudState_SetTextRow, . - DebugHudState_SetTextRow
 

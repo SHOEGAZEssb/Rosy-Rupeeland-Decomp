@@ -1,13 +1,13 @@
 ; Matching retail form; see src/game/debug_hud_state_lifecycle.c.
 .text
-.extern func_0200f52c
+.extern DebugHudState_Close
 
-    .global func_0200f314
-func_0200f314: ; 0x0200f314
+    .global DebugHudState_Destroy
+DebugHudState_Destroy: ; 0x0200f314
     stmdb sp!, {r4, lr}
     mov r4, r0
-    bl func_0200f52c
+    bl DebugHudState_Close
     mov r0, r4
     ldmia sp!, {r4, pc}
-    .size func_0200f314, . - func_0200f314
+    .size DebugHudState_Destroy, . - DebugHudState_Destroy
 

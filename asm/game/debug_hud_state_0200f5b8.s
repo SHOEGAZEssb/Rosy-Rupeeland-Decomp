@@ -5,8 +5,8 @@
 .extern gPadState1
 .extern gTouchPanelManager
 
-    .global func_0200f5b8
-func_0200f5b8: ; 0x0200f5b8
+    .global DebugHudState_PollInput
+DebugHudState_PollInput: ; 0x0200f5b8
     stmdb sp!, {r3, lr}
     sub sp, sp, #0x28
     ldr lr, L_0200f670
@@ -58,5 +58,5 @@ L_0200f630:
 L_0200f670: .word gPadState1
 L_0200f674: .word gTouchPanelManager
 L_0200f678: .word gGameWork
-    .size func_0200f5b8, . - func_0200f5b8
+    .size DebugHudState_PollInput, . - DebugHudState_PollInput
 

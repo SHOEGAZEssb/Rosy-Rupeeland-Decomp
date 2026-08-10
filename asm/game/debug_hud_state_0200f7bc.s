@@ -1,19 +1,19 @@
 ; Matching retail form; see src/game/debug_hud_state_runtime.c.
 .text
-.extern func_0200f38c
-.extern func_0200f788
+.extern DebugHud_GetCurrentRectangle
+.extern DebugHudState_SetRectangle
 
-    .global func_0200f7bc
-func_0200f7bc: ; 0x0200f7bc
+    .global DebugHudState_RefreshRectangle
+DebugHudState_RefreshRectangle: ; 0x0200f7bc
     stmdb sp!, {r4, lr}
     sub sp, sp, #0x10
     mov r4, r0
     add r0, sp, #0x0
-    bl func_0200f38c
+    bl DebugHud_GetCurrentRectangle
     add r1, sp, #0x0
     mov r0, r4
-    bl func_0200f788
+    bl DebugHudState_SetRectangle
     add sp, sp, #0x10
     ldmia sp!, {r4, pc}
-    .size func_0200f7bc, . - func_0200f7bc
+    .size DebugHudState_RefreshRectangle, . - DebugHudState_RefreshRectangle
 

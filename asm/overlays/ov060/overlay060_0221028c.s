@@ -5,9 +5,9 @@
 .extern data_ov060_02210620
 .extern OverlayManager_UnloadOverlay
 .extern OverlayManager_GetGlobal
-.extern func_0200f52c
-.extern func_0200f7bc
-.extern func_0200f824
+.extern DebugHudState_Close
+.extern DebugHudState_RefreshRectangle
+.extern DebugHudState_GetGlobal
 .extern func_ov060_022100b0
 
 .global func_ov060_0221028c
@@ -16,10 +16,10 @@ func_ov060_0221028c:
     ldr r1, .L_022102ec
     mov r5, r0
     str r1, [r5, #0x0]
-    bl func_0200f824
-    bl func_0200f52c
-    bl func_0200f824
-    bl func_0200f7bc
+    bl DebugHudState_GetGlobal
+    bl DebugHudState_Close
+    bl DebugHudState_GetGlobal
+    bl DebugHudState_RefreshRectangle
     ldr r4, [r5, #0x24]
     cmp r4, #0x0
     beq .L_022102c8

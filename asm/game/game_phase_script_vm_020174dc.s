@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/game_phase_script_vm_debug_hud_content_opcodes.c.
 .text
-.extern func_0200f788
-.extern func_0200f824
+.extern DebugHudState_SetRectangle
+.extern DebugHudState_GetGlobal
 .extern func_02012704
 .global func_020174dc
 func_020174dc:
@@ -24,9 +24,9 @@ func_020174dc:
     str r4, [sp, #4]
     str r2, [sp, #8]
     str r1, [sp, #0xc]
-    bl func_0200f824
+    bl DebugHudState_GetGlobal
     add r1, sp, #0
-    bl func_0200f788
+    bl DebugHudState_SetRectangle
     mov r0, #0
     add sp, sp, #0x10
     ldmia sp!, {r3, r4, r5, r6, r7, pc}

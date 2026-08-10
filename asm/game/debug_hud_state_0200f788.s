@@ -2,8 +2,8 @@
 .text
 
 
-    .global func_0200f788
-func_0200f788: ; 0x0200f788
+    .global DebugHudState_SetRectangle
+DebugHudState_SetRectangle: ; 0x0200f788
     ldr r2, [r1, #0x0]
     str r2, [r0, #0x10]
     ldr r2, [r1, #0x4]
@@ -17,5 +17,5 @@ func_0200f788: ; 0x0200f788
     sub r1, r2, r1
     str r1, [r0, #0x1c]
     bx lr
-    .size func_0200f788, . - func_0200f788
+    .size DebugHudState_SetRectangle, . - DebugHudState_SetRectangle
 

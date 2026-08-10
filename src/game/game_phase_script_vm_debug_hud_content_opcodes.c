@@ -24,7 +24,7 @@ s32 func_0201741c(GamePhaseActorScriptVm *self)
 {
     s32 value = (s32)func_02012704(&self->base);
     s32 row = (s32)func_02012704(&self->base);
-    func_0200f67c(func_0200f824(), row, value);
+    DebugHudState_SetNumberRow(DebugHudState_GetGlobal(), row, value);
     return 0;
 }
 
@@ -41,16 +41,16 @@ s32 func_02017450(GamePhaseActorScriptVm *self)
     const u16 *text = 0;
     switch (*(u32 *)(collection + 0x2e84)) {
     case 1:
-        text = (const u16 *)func_0200f73c(func_0200f824(), 0, index);
+        text = (const u16 *)DebugHud_GetTextTableEntry(DebugHudState_GetGlobal(), 0, index);
         break;
     case 2:
-        text = (const u16 *)func_0200f73c(func_0200f824(), 1, index);
+        text = (const u16 *)DebugHud_GetTextTableEntry(DebugHudState_GetGlobal(), 1, index);
         break;
     default:
         OS_Halt();
         break;
     }
-    func_0200f6f4(func_0200f824(), row, text);
+    DebugHudState_SetTextRow(DebugHudState_GetGlobal(), row, text);
     return 0;
 }
 
@@ -69,6 +69,6 @@ s32 func_020174dc(GamePhaseActorScriptVm *self)
     rect.top = top;
     rect.right = left + width;
     rect.bottom = top + height;
-    func_0200f788(func_0200f824(), &rect);
+    DebugHudState_SetRectangle(DebugHudState_GetGlobal(), &rect);
     return 0;
 }

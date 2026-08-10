@@ -12,37 +12,37 @@ typedef struct DebugHudRect {
 
 /* State for a debug/HUD grid and its screen-space bounds. */
 typedef struct DebugHudState {
-    s32 displaySelect;
-    u32 field_04;
-    u32 field_08;
+    s32 fontSelect;
+    u32 resourceHandle;
+    u32 rendererHandle;
     u32 field_0c;
     s32 left;
     s32 top;
     s32 width;
     s32 height;
-    u32 field_20;
+    u32 resetFontOnClose;
 } DebugHudState;
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-DebugHudState *func_0200f260(DebugHudState *self);
-DebugHudState *func_0200f314(DebugHudState *self);
-void func_0200f328(DebugHudState *self);
-s32 func_0200f360(void *unused, s32 value);
-void func_0200f38c(DebugHudRect *rect);
-void func_0200f404(DebugHudState *self, s32 displaySelect, u32 parameter,
-                   u32 active);
-void func_0200f52c(DebugHudState *self);
-void func_0200f5b8(DebugHudState *self, s32 forceButtons);
-void func_0200f67c(DebugHudState *self, s32 row, s32 value);
-void func_0200f6f4(DebugHudState *self, s32 row, const u16 *text);
-void *func_0200f73c(void *unused, s32 table, s32 index);
-void func_0200f788(DebugHudState *self, const DebugHudRect *rect);
-void func_0200f7bc(DebugHudState *self);
-void func_0200f7e4(DebugHudState *self);
-DebugHudState *func_0200f824(void);
+DebugHudState *DebugHudState_Init(DebugHudState *self);
+DebugHudState *DebugHudState_Destroy(DebugHudState *self);
+void DebugHudState_ResetSelectedFont(DebugHudState *self);
+s32 DebugHud_CountDecimalDigits(void *unused, s32 value);
+void DebugHud_GetCurrentRectangle(DebugHudRect *rect);
+void DebugHudState_Open(DebugHudState *self, s32 fontSelect, u32 parameter,
+                        u32 resetFontOnClose);
+void DebugHudState_Close(DebugHudState *self);
+u32 DebugHudState_PollInput(DebugHudState *self, s32 forceButtons);
+void DebugHudState_SetNumberRow(DebugHudState *self, s32 row, s32 value);
+void DebugHudState_SetTextRow(DebugHudState *self, s32 row, const u16 *text);
+void *DebugHud_GetTextTableEntry(void *unused, s32 table, s32 index);
+void DebugHudState_SetRectangle(DebugHudState *self, const DebugHudRect *rect);
+void DebugHudState_RefreshRectangle(DebugHudState *self);
+void DebugHudState_UploadRows(DebugHudState *self);
+DebugHudState *DebugHudState_GetGlobal(void);
 
 #ifdef __cplusplus
 }

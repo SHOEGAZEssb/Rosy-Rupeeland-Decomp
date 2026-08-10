@@ -9,9 +9,9 @@ extern void func_0201da34(GamePhaseActorScriptVm *self);
 extern void *Actor_GetCollection(void *actor);
 extern void *func_0201da20(u32 mode, u32 value);
 extern void *func_0201d9e4(u32 value);
-extern void *func_0200f824(void *value);
-extern void *func_0200f7bc(void *value);
-extern void func_0200f404(void *state, void *first, void *second, u32 enabled);
+extern void *DebugHudState_GetGlobal(void *value);
+extern void *DebugHudState_RefreshRectangle(void *value);
+extern void DebugHudState_Open(void *state, void *first, void *second, u32 enabled);
 extern void func_0201da9c(GamePhaseActorScriptVm *self,
                          u32 first, u32 second, u32 third,
                          s32 fourth, s32 fifth);
@@ -23,8 +23,8 @@ extern void func_0201da9c(GamePhaseActorScriptVm *self,
  * Pop and discard two operands, then pop lookup and value operands. Let
  * func_0201da34 consume/update VM-side state, resolve the value through the
  * bound collection's mode at 0x2e84 and the lookup through func_0201d9e4,
- * traverse the address-derived debug-state accessors, and call func_0200f404
- * with enabled=1. Returns one to stop the VM loop.
+ * refresh the global debug-HUD rectangle, and open the HUD with font reset
+ * enabled. Returns one to stop the VM loop.
  */
 s32 func_02015610(GamePhaseActorScriptVm *self)
 {
@@ -42,10 +42,10 @@ s32 func_02015610(GamePhaseActorScriptVm *self)
         second = func_0201da20(*(u32 *)(collection + 0x2e84), value);
         first = func_0201d9e4(lookup);
     }
-    state = func_0200f824(first);
-    state = func_0200f7bc(state);
-    state = func_0200f824(state);
-    func_0200f404(state, first, second, 1);
+    state = DebugHudState_GetGlobal(first);
+    state = DebugHudState_RefreshRectangle(state);
+    state = DebugHudState_GetGlobal(state);
+    DebugHudState_Open(state, first, second, 1);
     return 1;
 }
 

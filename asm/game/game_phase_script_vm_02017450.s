@@ -1,9 +1,9 @@
 ; Matching retail form; see src/game/game_phase_script_vm_debug_hud_content_opcodes.c.
 .text
 .extern OS_Halt
-.extern func_0200f6f4
-.extern func_0200f73c
-.extern func_0200f824
+.extern DebugHudState_SetTextRow
+.extern DebugHud_GetTextTableEntry
+.extern DebugHudState_GetGlobal
 .extern func_02012704
 .extern Actor_GetCollection
 .global func_02017450
@@ -25,26 +25,26 @@ func_02017450:
     beq L_020174a8
     b L_020174c0
 L_02017490:
-    bl func_0200f824
+    bl DebugHudState_GetGlobal
     mov r2, r4
     mov r1, #0
-    bl func_0200f73c
+    bl DebugHud_GetTextTableEntry
     mov r6, r0
     b L_020174c4
 L_020174a8:
-    bl func_0200f824
+    bl DebugHudState_GetGlobal
     mov r2, r4
     mov r1, #1
-    bl func_0200f73c
+    bl DebugHud_GetTextTableEntry
     mov r6, r0
     b L_020174c4
 L_020174c0:
     bl OS_Halt
 L_020174c4:
-    bl func_0200f824
+    bl DebugHudState_GetGlobal
     mov r1, r5
     mov r2, r6
-    bl func_0200f6f4
+    bl DebugHudState_SetTextRow
     mov r0, #0
     ldmia sp!, {r3, r4, r5, r6, r7, pc}
     .size func_02017450, . - func_02017450

@@ -6,8 +6,8 @@
 .extern TouchRegionManager_Tick
 .extern data_021052fc
 .extern GamePhaseRuntime_UpdateActorPresentationState
-.extern func_0200f5b8
-.extern func_0200f824
+.extern DebugHudState_PollInput
+.extern DebugHudState_GetGlobal
 .extern func_020740a4
 .extern func_ov060_02210584
 
@@ -19,9 +19,9 @@ func_ov060_022102f0:
     ldr r0, [r4, #0x2c]
     sub r0, r0, #0x1
     str r0, [r4, #0x2c]
-    bl func_0200f824
+    bl DebugHudState_GetGlobal
     mov r1, #0x0
-    bl func_0200f5b8
+    bl DebugHudState_PollInput
     ldr r1, [r4, #0x28]
     str r0, [sp, #0x0]
     str r0, [sp, #0x4]

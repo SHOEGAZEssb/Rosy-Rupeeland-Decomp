@@ -14,9 +14,9 @@ extern void *func_0201da20(u32 mode, u32 value);
 extern void *func_0201d9e4(u32 value);
 extern void func_0201da34(GamePhaseActorScriptVm *self);
 extern void *func_020791e0(void *state, u16 value);
-extern void *func_0200f824(void *value);
-extern void *func_0200f7bc(void *value);
-extern void func_0200f404(void *state, void *first, void *second, u32 enabled);
+extern void *DebugHudState_GetGlobal(void *value);
+extern void *DebugHudState_RefreshRectangle(void *value);
+extern void DebugHudState_Open(void *state, void *first, void *second, u32 enabled);
 extern void func_ov059_0220fd20(void *allocation, void *first,
                                void *second, u32 third);
 #ifdef __cplusplus
@@ -65,9 +65,9 @@ s32 func_0201579c(GamePhaseActorScriptVm *self)
         second = func_020791e0(data_021f3ecc, (u16)tableValue);
         first = func_0201d9e4(lookup);
     }
-    state = func_0200f824(first);
-    state = func_0200f7bc(state);
-    state = func_0200f824(state);
-    func_0200f404(state, first, second, 1);
+    state = DebugHudState_GetGlobal(first);
+    state = DebugHudState_RefreshRectangle(state);
+    state = DebugHudState_GetGlobal(state);
+    DebugHudState_Open(state, first, second, 1);
     return 0;
 }

@@ -4,7 +4,7 @@
 .extern data_020d555c
 .extern data_020f4e14
 .extern data_020f4e18
-.extern func_0200f7e4
+.extern DebugHudState_UploadRows
 .extern func_02071980
 .extern func_02092cc0
 .extern func_02092e9c
@@ -12,8 +12,8 @@
 .extern gGameWork
 .extern gHeapContext
 
-    .global func_0200f404
-func_0200f404: ; 0x0200f404
+    .global DebugHudState_Open
+DebugHudState_Open: ; 0x0200f404
     stmdb sp!, {r3, r4, r5, lr}
     mov r5, r0
     str r3, [r5, #0x20]
@@ -55,7 +55,7 @@ L_0200f490:
     str r0, [r5, #0x8]
 L_0200f494:
     mov r0, r5
-    bl func_0200f7e4
+    bl DebugHudState_UploadRows
     ldr lr, [r5, #0x1c]
     ldr ip, [r5, #0x18]
     ldr r3, [r5, #0x14]
@@ -92,5 +92,5 @@ L_0200f51c: .word gHeapContext
 L_0200f520: .word data_020f4e14
 L_0200f524: .word gDebugFont
 L_0200f528: .word gGameWork
-    .size func_0200f404, . - func_0200f404
+    .size DebugHudState_Open, . - DebugHudState_Open
 

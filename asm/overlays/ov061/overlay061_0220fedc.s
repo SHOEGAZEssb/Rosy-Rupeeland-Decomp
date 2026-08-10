@@ -8,8 +8,8 @@
 .extern DisplayBrightnessPair_GetScreen
 .extern GamePhaseRuntime_FinalizeActorCollections
 .extern GamePhaseRuntime_UpdateActorPresentationState
-.extern func_0200f5b8
-.extern func_0200f824
+.extern DebugHudState_PollInput
+.extern DebugHudState_GetGlobal
 .extern func_020755bc
 .extern func_ov061_022100e4
 .extern func_ov061_022101dc
@@ -80,9 +80,9 @@ func_ov061_0220fedc:
     add r0, r0, #0x1
     str r0, [r4, #0x8]
 .L_0220ffc4:
-    bl func_0200f824
+    bl DebugHudState_GetGlobal
     mov r1, #0x0
-    bl func_0200f5b8
+    bl DebugHudState_PollInput
     mov r1, r0, lsl #0x1f
     str r0, [sp, #0x0]
     str r0, [sp, #0x4]

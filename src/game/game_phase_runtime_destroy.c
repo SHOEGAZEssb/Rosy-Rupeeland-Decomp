@@ -27,8 +27,8 @@ extern void func_020ae90c(void);
 extern void GamePhaseState_ResetRuntime(void *object);
 extern void func_ov056_0220e79c(void *object);
 extern void GamePhaseState_UnloadPhase(void *object);
-extern void func_0200f824(void);
-extern void func_0200f314(void);
+extern void DebugHudState_GetGlobal(void);
+extern void DebugHudState_Destroy(void);
 extern void func_02058ce0(void *soundContext);
 extern void ActorMotionGameWork_Destroy(void *object);
 extern void ActorMotionAreaFollower_Destroy(void *object);
@@ -80,8 +80,8 @@ GamePhaseRuntime *GamePhaseRuntime_Destroy(GamePhaseRuntime *self)
 
     GamePhaseState_UnloadPhase(bytes + 0x24);
     GamePhaseRuntime_DestroyFieldLoader(self);
-    func_0200f824();
-    func_0200f314();
+    DebugHudState_GetGlobal();
+    DebugHudState_Destroy();
 
     *(volatile u32 *)0x04000000 =
         (*(volatile u32 *)0x04000000 & ~0x1f00) | 0x1000;

@@ -4,18 +4,18 @@
 .extern data_02105458
 .extern data_0210545c
 .extern data_02105468
-.extern func_0200f260
-.extern func_0200f314
+.extern DebugHudState_Init
+.extern DebugHudState_Destroy
 
-    .global func_0200f824
-func_0200f824: ; 0x0200f824
+    .global DebugHudState_GetGlobal
+DebugHudState_GetGlobal: ; 0x0200f824
     stmdb sp!, {r3, lr}
     ldr r0, L_0200f868
     ldr r0, [r0, #0x0]
     tst r0, #0x1
     bne L_0200f860
     ldr r0, L_0200f86c
-    bl func_0200f260
+    bl DebugHudState_Init
     ldr r0, L_0200f86c
     ldr r1, L_0200f870
     ldr r2, L_0200f874
@@ -29,7 +29,7 @@ L_0200f860:
     ldmia sp!, {r3, pc}
 L_0200f868: .word data_02105458
 L_0200f86c: .word data_02105468
-L_0200f870: .word func_0200f314
+L_0200f870: .word DebugHudState_Destroy
 L_0200f874: .word data_0210545c
-    .size func_0200f824, . - func_0200f824
+    .size DebugHudState_GetGlobal, . - DebugHudState_GetGlobal
 

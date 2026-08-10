@@ -8,10 +8,10 @@
 .extern TouchRegionManager_SetEnabled
 .extern data_ov060_02210620
 .extern data_ov060_02210654
-.extern func_0200f38c
-.extern func_0200f404
-.extern func_0200f788
-.extern func_0200f824
+.extern DebugHud_GetCurrentRectangle
+.extern DebugHudState_Open
+.extern DebugHudState_SetRectangle
+.extern DebugHudState_GetGlobal
 .extern func_ov060_0220ff1c
 .extern func_ov060_022101fc
 .extern gHeapContext
@@ -42,19 +42,19 @@ func_ov060_022100e4:
     str r1, [r7, #0x3c]
     bl Scene_SetFlags03
     add r0, sp, #0xc
-    bl func_0200f38c
+    bl DebugHud_GetCurrentRectangle
     mov r1, #0x0
     add r0, sp, #0xc
     mov r2, r1
     bl func_ov060_022101fc
-    bl func_0200f824
+    bl DebugHudState_GetGlobal
     add r1, sp, #0xc
-    bl func_0200f788
-    bl func_0200f824
+    bl DebugHudState_SetRectangle
+    bl DebugHudState_GetGlobal
     mov r1, r6
     mov r2, r5
     mov r3, #0x1
-    bl func_0200f404
+    bl DebugHudState_Open
     ldr r1, .L_022101f4
     ldr r3, .L_022101f8
     mov r0, #0x10

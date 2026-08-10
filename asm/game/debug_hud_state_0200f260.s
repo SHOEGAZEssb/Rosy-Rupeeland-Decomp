@@ -1,10 +1,10 @@
 ; Matching retail form; see src/game/debug_hud_state_lifecycle.c.
 .text
 .extern data_0210548c
-.extern func_0200f38c
+.extern DebugHud_GetCurrentRectangle
 
-    .global func_0200f260
-func_0200f260: ; 0x0200f260
+    .global DebugHudState_Init
+DebugHudState_Init: ; 0x0200f260
     stmdb sp!, {r4, r5, r6, lr}
     sub sp, sp, #0x10
     mov lr, #0x0
@@ -35,7 +35,7 @@ L_0200f2ac:
     cmp lr, #0x8
     blt L_0200f2a4
     add r0, sp, #0x0
-    bl func_0200f38c
+    bl DebugHud_GetCurrentRectangle
     ldr r1, [sp, #0x0]
     mov r0, r4
     str r1, [r4, #0x10]
@@ -52,5 +52,5 @@ L_0200f2ac:
     add sp, sp, #0x10
     ldmia sp!, {r4, r5, r6, pc}
 L_0200f310: .word data_0210548c
-    .size func_0200f260, . - func_0200f260
+    .size DebugHudState_Init, . - DebugHudState_Init
 

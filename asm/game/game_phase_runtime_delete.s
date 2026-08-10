@@ -9,8 +9,8 @@
 .extern GamePhaseState_Destroy
 .extern GamePhaseState_UnloadPhase
 .extern GamePhaseState_ResetRuntime
-.extern func_0200f314
-.extern func_0200f824
+.extern DebugHudState_Destroy
+.extern DebugHudState_GetGlobal
 .extern func_02058ce0
 .extern func_020ae90c
 .extern func_020ae9a4
@@ -71,8 +71,8 @@ L_02007238:
     bl GamePhaseState_UnloadPhase
     mov r0, r4
     bl GamePhaseRuntime_DestroyFieldLoader
-    bl func_0200f824
-    bl func_0200f314
+    bl DebugHudState_GetGlobal
+    bl DebugHudState_Destroy
     mov r1, #0x4000000
     ldr r0, [r1, #0x0]
     add r2, r1, #0x1000

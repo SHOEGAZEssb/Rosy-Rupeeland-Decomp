@@ -1,9 +1,9 @@
 ; Matching retail form; see src/game/game_phase_script_vm_debug_object_opcodes.c.
 .text
 .extern data_021f3ecc
-.extern func_0200f404
-.extern func_0200f7bc
-.extern func_0200f824
+.extern DebugHudState_Open
+.extern DebugHudState_RefreshRectangle
+.extern DebugHudState_GetGlobal
 .extern func_02012704
 .extern func_0201d9e4
 .extern func_0201da34
@@ -32,13 +32,13 @@ func_0201579c: ; 0x0201579c
     mov r0, r6
     bl func_0201d9e4
     mov r4, r0
-    bl func_0200f824
-    bl func_0200f7bc
-    bl func_0200f824
+    bl DebugHudState_GetGlobal
+    bl DebugHudState_RefreshRectangle
+    bl DebugHudState_GetGlobal
     mov r1, r4
     mov r2, r5
     mov r3, #0x1
-    bl func_0200f404
+    bl DebugHudState_Open
     mov r0, #0x0
     ldmia sp!, {r4, r5, r6, pc}
 L_02015814: .word data_021f3ecc

@@ -2,9 +2,9 @@
 .text
 .extern GameWork_ClearFlag
 .extern GameWork_SetFlag
-.extern func_0200f52c
-.extern func_0200f5b8
-.extern func_0200f824
+.extern DebugHudState_Close
+.extern DebugHudState_PollInput
+.extern DebugHudState_GetGlobal
 .extern func_02072c98
 .extern gGameWork
 
@@ -17,9 +17,9 @@ func_02015818: ; 0x02015818
     ldr r0, [r1, #0x0]
     ldr r1, L_02015938
     bl GameWork_ClearFlag
-    bl func_0200f824
+    bl DebugHudState_GetGlobal
     mov r1, #0x0
-    bl func_0200f5b8
+    bl DebugHudState_PollInput
     ldr r1, [r4, #0x8c]
     str r0, [sp, #0x0]
     mov r1, r1, lsl #0x1e
@@ -74,8 +74,8 @@ L_020158f0:
     mov r0, r0, lsl #0x1f
     movs r0, r0, asr #0x1f
     beq L_0201591c
-    bl func_0200f824
-    bl func_0200f52c
+    bl DebugHudState_GetGlobal
+    bl DebugHudState_Close
     mov r0, #0x0
     b L_0201592c
 L_0201591c:

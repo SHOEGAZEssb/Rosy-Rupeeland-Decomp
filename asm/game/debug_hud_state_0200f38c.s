@@ -3,8 +3,8 @@
 .extern gGameWork
 .extern gSystemState
 
-    .global func_0200f38c
-func_0200f38c: ; 0x0200f38c
+    .global DebugHud_GetCurrentRectangle
+DebugHud_GetCurrentRectangle: ; 0x0200f38c
     ldr r1, L_0200f3fc
     ldrb r1, [r1, #0x5f]
     cmp r1, #0x0
@@ -37,5 +37,5 @@ L_0200f3d0:
     bx lr
 L_0200f3fc: .word gSystemState
 L_0200f400: .word gGameWork
-    .size func_0200f38c, . - func_0200f38c
+    .size DebugHud_GetCurrentRectangle, . - DebugHud_GetCurrentRectangle
 

@@ -3,8 +3,8 @@
 .extern data_0210548c
 .extern func_02092f88
 
-    .global func_0200f7e4
-func_0200f7e4: ; 0x0200f7e4
+    .global DebugHudState_UploadRows
+DebugHudState_UploadRows: ; 0x0200f7e4
     stmdb sp!, {r3, r4, r5, r6, r7, lr}
     ldr r5, L_0200f820
     mov r7, r0
@@ -23,5 +23,5 @@ L_0200f810:
     blt L_0200f7f8
     ldmia sp!, {r3, r4, r5, r6, r7, pc}
 L_0200f820: .word data_0210548c
-    .size func_0200f7e4, . - func_0200f7e4
+    .size DebugHudState_UploadRows, . - DebugHudState_UploadRows
 

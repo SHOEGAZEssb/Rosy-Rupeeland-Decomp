@@ -4,10 +4,10 @@
 .extern Scene_SetFlags03
 .extern Sound_Play
 .extern data_ov061_022102b0
-.extern func_0200f38c
-.extern func_0200f404
-.extern func_0200f788
-.extern func_0200f824
+.extern DebugHud_GetCurrentRectangle
+.extern DebugHudState_Open
+.extern DebugHudState_SetRectangle
+.extern DebugHudState_GetGlobal
 .extern func_ov061_0220fdd0
 .extern gSoundContext
 
@@ -28,19 +28,19 @@ func_ov061_0220fd20:
     str r0, [r4, #0x30]
     add r0, sp, #0x0
     str r5, [r4, #0x38]
-    bl func_0200f38c
+    bl DebugHud_GetCurrentRectangle
     mov r1, #0x0
     add r0, sp, #0x0
     sub r2, r1, #0x40
     bl func_ov061_0220fdd0
-    bl func_0200f824
+    bl DebugHudState_GetGlobal
     add r1, sp, #0x0
-    bl func_0200f788
-    bl func_0200f824
+    bl DebugHudState_SetRectangle
+    bl DebugHudState_GetGlobal
     mov r1, r7
     mov r2, r6
     mov r3, #0x1
-    bl func_0200f404
+    bl DebugHudState_Open
     ldr r0, [r4, #0x38]
     cmp r0, #0x0
     beq .L_0220fdb0

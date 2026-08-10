@@ -4,8 +4,8 @@
 .extern func_020755bc
 .extern gDebugFont
 
-    .global func_0200f328
-func_0200f328: ; 0x0200f328
+    .global DebugHudState_ResetSelectedFont
+DebugHudState_ResetSelectedFont: ; 0x0200f328
     stmdb sp!, {r3, lr}
     ldr r0, [r0, #0x0]
     cmp r0, #0x0
@@ -21,5 +21,5 @@ L_0200f348:
     ldmia sp!, {r3, pc}
 L_0200f358: .word data_020f4e14
 L_0200f35c: .word gDebugFont
-    .size func_0200f328, . - func_0200f328
+    .size DebugHudState_ResetSelectedFont, . - DebugHudState_ResetSelectedFont
 
