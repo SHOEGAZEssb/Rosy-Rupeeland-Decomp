@@ -2,7 +2,7 @@
 ; the documented portable implementation and recovered behavior.
 .text
 .extern Heap_Alloc
-.extern data_020d43fc
+.extern gActorRuntimeOwnedNodeAllocationTag
 .extern gHeapContext
 .global ActorRuntimeOwnedList_Append
 ActorRuntimeOwnedList_Append:
@@ -29,7 +29,6 @@ ActorRuntimeOwnedList_Append:
     add r0, r0, #0x1
     str r0, [r5, #0xc]
     ldmia sp!, {r3, r4, r5, pc}
-L_0200b15c: .word data_020d43fc
+L_0200b15c: .word gActorRuntimeOwnedNodeAllocationTag
 L_0200b160: .word gHeapContext
 .size ActorRuntimeOwnedList_Append, . - ActorRuntimeOwnedList_Append
-

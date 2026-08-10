@@ -6,8 +6,8 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern const u8 data_020d44c0[];
-extern const u8 data_020d4520[];
+extern const u8 gActorRuntimePayloadListNodeAllocationTag[];
+extern const u8 gActorRuntimePayloadAnimationResourceAllocationTag[];
 extern void *AnimationResource_Init(void *allocation, u32 first, u32 second, u32 third);
 #ifdef __cplusplus
 }
@@ -52,14 +52,17 @@ void ActorRuntimeObjectLists_AddRecord(ActorRuntimeObjectLists *self, u32 first,
     else
         list = &self->third;
 
-    payload = Heap_Alloc(0x10, (const char *)data_020d4520, 4, &gHeapContext);
+    payload = Heap_Alloc(
+        0x10, (const char *)gActorRuntimePayloadAnimationResourceAllocationTag,
+        4, &gHeapContext);
     if (payload != 0)
         payload = AnimationResource_Init(payload, first, second, third);
     object = *(u8 **)((u8 *)payload + 4);
     *(u32 *)(object + 0x28) |= 0x01000000;
 
     node = (ActorRuntimeOwnedNode *)Heap_Alloc(
-        0xc, (const char *)data_020d44c0, 4, &gHeapContext);
+        0xc, (const char *)gActorRuntimePayloadListNodeAllocationTag, 4,
+        &gHeapContext);
     if (node != 0) {
         node->next = 0;
         node->previous = 0;

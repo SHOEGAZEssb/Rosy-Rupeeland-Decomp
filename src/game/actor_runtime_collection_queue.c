@@ -6,7 +6,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern const u8 data_020d43fc[];
+extern const u8 gActorRuntimeOwnedNodeAllocationTag[];
 extern void *data_021052fc;
 extern void *GamePhaseRuntime_GetActorCollection(void *context, s32 index);
 #ifdef __cplusplus
@@ -46,8 +46,9 @@ void ActorRuntimeCollection_QueuePendingValue(ActorRuntimeCollection *self)
 void ActorRuntimeOwnedList_Append(ActorRuntimeOwnedList *list, void *value)
 {
     ActorRuntimeOwnedNode *node =
-        (ActorRuntimeOwnedNode *)Heap_Alloc(0xc, (const char *)data_020d43fc,
-                                           4, &gHeapContext);
+        (ActorRuntimeOwnedNode *)Heap_Alloc(
+            0xc, (const char *)gActorRuntimeOwnedNodeAllocationTag,
+            4, &gHeapContext);
 
     if (node != 0) {
         node->next = 0;

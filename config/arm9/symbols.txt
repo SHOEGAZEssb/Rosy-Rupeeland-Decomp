@@ -6754,7 +6754,7 @@ data_020d43bc kind:data(any) addr:0x020d43bc
 data_020d43d4 kind:data(any) addr:0x020d43d4
 data_020d43e4 kind:data(any) addr:0x020d43e4
 data_020d43f4 kind:data(any) addr:0x020d43f4
-data_020d43fc kind:data(any) addr:0x020d43fc
+gActorRuntimeOwnedNodeAllocationTag kind:data(any) addr:0x020d43fc
 data_020d440c kind:data(any) addr:0x020d440c
 data_020d441c kind:data(any) addr:0x020d441c
 data_020d4428 kind:data(any) addr:0x020d4428
@@ -6764,15 +6764,15 @@ data_020d4458 kind:data(any) addr:0x020d4458
 data_020d4468 kind:data(any) addr:0x020d4468
 data_020d4470 kind:data(any) addr:0x020d4470
 data_020d448c kind:data(any) addr:0x020d448c
-data_020d44b8 kind:data(any) addr:0x020d44b8
-data_020d44c0 kind:data(any) addr:0x020d44c0
+gActorRuntimeSceneAllocationTag kind:data(any) addr:0x020d44b8
+gActorRuntimePayloadListNodeAllocationTag kind:data(any) addr:0x020d44c0
 data_020d44c8 kind:data(any) addr:0x020d44c8
 data_020d44d0 kind:data(any) addr:0x020d44d0
 data_020d44d8 kind:data(any) addr:0x020d44d8
 data_020d44f0 kind:data(any) addr:0x020d44f0
 data_020d4500 kind:data(any) addr:0x020d4500
 data_020d4508 kind:data(any) addr:0x020d4508
-data_020d4520 kind:data(any) addr:0x020d4520
+gActorRuntimePayloadAnimationResourceAllocationTag kind:data(any) addr:0x020d4520
 data_020d4528 kind:data(any) addr:0x020d4528
 data_020d453c kind:data(any) addr:0x020d453c
 data_020d4550 kind:data(any) addr:0x020d4550

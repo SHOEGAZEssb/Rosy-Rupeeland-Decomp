@@ -6,7 +6,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern const u8 data_020d44b8[];
+extern const u8 gActorRuntimeSceneAllocationTag[];
 extern void *GamePhaseActorScriptVm_Assign(void *destination, const void *source);
 extern void *ActorRuntimeScene_Init(void *handler, void *object);
 #ifdef __cplusplus
@@ -33,7 +33,7 @@ void ActorRuntimeCollection_AttachObject(ActorRuntimeCollection *self, void *obj
     self->field_04 = (u32)object;
     GamePhaseActorScriptVm_Assign(self->firstContainer, (u8 *)object + 0xec);
     self->flags |= 9;
-    handler = Heap_Alloc(0x28, (const char *)data_020d44b8, 4,
+    handler = Heap_Alloc(0x28, (const char *)gActorRuntimeSceneAllocationTag, 4,
                          &gHeapContext);
     if (handler != 0)
         ActorRuntimeScene_Init(handler, object);
