@@ -17420,7 +17420,7 @@ build build/reports/actor_extended_type2_candidate_track_0204322c.json: objdiff 
   base_object = build/decomp/asm/game/actor_extended_type2_candidate_track_0204322c.o
 build build/reports/actor_extended_type2_candidate_track_0204322c.txt: match_report build/reports/actor_extended_type2_candidate_track_0204322c.json | tools/report_objdiff.py
   report_json = build/reports/actor_extended_type2_candidate_track_0204322c.json
-  report_args = --section .text --function func_0204322c --require-exact
+  report_args = --section .text --function ActorExtendedType2_TrackCandidate --require-exact
 build build/reports/actor_extended_type2_candidate_track.txt: phony build/reports/actor_extended_type2_candidate_track_0204322c.txt
 build actor_extended_type2_candidate_track: phony build/decomp/src/game/actor_extended_type2_candidate_track.o build/decomp/asm/game/actor_extended_type2_candidate_track_0204322c.o build/reports/actor_extended_type2_candidate_track.txt
 
@@ -17584,7 +17584,7 @@ build build/reports/actor_extended_pairing_update_02043c24.json: objdiff build/d
   base_object = build/decomp/asm/game/actor_extended_pairing_update_02043c24.o
 build build/reports/actor_extended_pairing_update_02043c24.txt: match_report build/reports/actor_extended_pairing_update_02043c24.json | tools/report_objdiff.py
   report_json = build/reports/actor_extended_pairing_update_02043c24.json
-  report_args = --section .text --function func_02043c24 --require-exact
+  report_args = --section .text --function ActorExtendedPairing_UpdateLinks --require-exact
 build build/reports/actor_extended_pairing_update.txt: phony build/reports/actor_extended_pairing_update_02043c24.txt
 build actor_extended_pairing_update: phony build/decomp/src/game/actor_extended_pairing_update.o build/decomp/asm/game/actor_extended_pairing_update_02043c24.o build/reports/actor_extended_pairing_update.txt
 

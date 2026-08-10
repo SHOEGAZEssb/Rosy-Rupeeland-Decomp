@@ -17,7 +17,7 @@ extern u8 data_020e8380[];
  * accepted candidate. Actor and virtual state may change; descriptor data is
  * read only and no direct SDK or hardware operation occurs.
  */
-s32 func_0204322c(void *self, void *candidate)
+s32 ActorExtendedType2_TrackCandidate(void *self, void *candidate)
 {
     u8 *actor = (u8 *)self;
     u32 descriptorClass;

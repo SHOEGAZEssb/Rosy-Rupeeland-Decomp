@@ -18,7 +18,7 @@ extern const s16 data_020e70c0[];
  * Negative mappings and actors already linked at +0x298 are skipped. Returns
  * no value; actor link state and callback-visible engine state may change.
  */
-void func_02043c24(void)
+void ActorExtendedPairing_UpdateLinks(void)
 {
     s32 destinationIndex;
 

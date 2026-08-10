@@ -6,9 +6,9 @@
 .extern data_0210574c
 .extern data_020e70c0
 
-.global func_02043c24
-.type func_02043c24, @function
-func_02043c24: ; 0x02043c24
+.global ActorExtendedPairing_UpdateLinks
+.type ActorExtendedPairing_UpdateLinks, @function
+ActorExtendedPairing_UpdateLinks: ; 0x02043c24
     stmdb sp!, {r4, r5, r6, r7, r8, r9, r10, lr}
     ldr r10, .L_02043cc0
     mov r9, #0x0
@@ -60,4 +60,4 @@ func_02043c24: ; 0x02043c24
 .L_02043ccc: .word data_0210572c
 
     .global ActorExtendedLinked_Init
-.size func_02043c24, . - func_02043c24
+.size ActorExtendedPairing_UpdateLinks, . - ActorExtendedPairing_UpdateLinks

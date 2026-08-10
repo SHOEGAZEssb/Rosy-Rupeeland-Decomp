@@ -1,9 +1,9 @@
 ; Matching retail form; see src/game/actor_extended_type2_candidate_track.c.
 .text
 .extern data_020e8380
-.global func_0204322c
-.type func_0204322c, @function
-func_0204322c: ; 0x0204322c
+.global ActorExtendedType2_TrackCandidate
+.type ActorExtendedType2_TrackCandidate, @function
+ActorExtendedType2_TrackCandidate: ; 0x0204322c
     stmdb sp!, {r3, r4, r5, lr}
     movs r4, r1
     mov r5, r0
@@ -70,4 +70,4 @@ func_0204322c: ; 0x0204322c
 .L_02043308: .word data_020e8380
 
     .global ActorExtendedType2_TriggerContactFeedback
-.size func_0204322c, . - func_0204322c
+.size ActorExtendedType2_TrackCandidate, . - ActorExtendedType2_TrackCandidate

@@ -91,5 +91,5 @@ func_020430ec: ; 0x020430ec
 .L_02043224: .word data_020df9e8
 .L_02043228: .word data_020dfbd8
 
-    .global func_0204322c
+    .global ActorExtendedType2_TrackCandidate
 .size func_020430ec, . - func_020430ec

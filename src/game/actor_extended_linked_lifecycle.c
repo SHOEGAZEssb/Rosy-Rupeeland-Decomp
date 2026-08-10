@@ -3,7 +3,7 @@
 
 /*
  * Recovered lifecycle and base-forwarding wrappers for actors participating in
- * the cross-type pairing list maintained by func_02043c24.
+ * the cross-type pairing list maintained by ActorExtendedPairing_UpdateLinks.
  */
 extern u8 data_020e04d8[];
 extern s16 data_0210572a;

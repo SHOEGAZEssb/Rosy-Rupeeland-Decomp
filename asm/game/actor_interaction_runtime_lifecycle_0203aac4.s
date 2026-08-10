@@ -15,7 +15,7 @@
 .extern ActorFeedbackResources_Load
 .extern ActorFeedbackResources_Unload
 .extern func_0203d910
-.extern func_02043c24
+.extern ActorExtendedPairing_UpdateLinks
 .extern func_02045004
 .extern func_020451b8
 .extern func_020451d4
@@ -90,7 +90,7 @@ ActorInteractionRuntime_Start: ; 0x0203ab6c
     ldr r0, .L_0203aba8
     strh r2, [r1, #0x0]
     strh r2, [r0, #0x0]
-    bl func_02043c24
+    bl ActorExtendedPairing_UpdateLinks
     bl func_02045004
     bl func_020454f8
     bl func_0204fafc

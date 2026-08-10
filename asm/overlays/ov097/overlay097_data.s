@@ -81,7 +81,7 @@
 .extern func_02040234
 .extern func_02040400
 .extern func_0203f4a0
-.extern func_0204322c
+.extern ActorExtendedType2_TrackCandidate
 .extern func_ov097_02219cb4
 .extern func_ov097_02219cac
 .extern func_020430ec
@@ -363,7 +363,7 @@ data_ov097_0221a5f4:
     .word func_02040234
     .word func_02040400
     .word func_0203f4a0
-    .word func_0204322c
+    .word ActorExtendedType2_TrackCandidate
     .word func_ov097_02219cb4
     .word func_ov097_02219cac
     .word func_020430ec
@@ -498,7 +498,7 @@ data_ov097_0221a80c:
     .word func_02040234
     .word func_02040400
     .word func_0203f4a0
-    .word func_0204322c
+    .word ActorExtendedType2_TrackCandidate
     .word func_ov097_02219cb4
     .word func_ov097_02219cac
     .word func_020430ec

@@ -22,7 +22,7 @@ extern void ActorFeedbackResources_Unload(void);
 extern void func_0203d910(void);
 extern void func_02034e58(void);
 extern void func_02034ea8(void);
-extern void func_02043c24(void);
+extern void ActorExtendedPairing_UpdateLinks(void);
 extern void func_02045004(void);
 extern void func_020454f8(void);
 extern void func_02045598(void);
@@ -72,7 +72,7 @@ void ActorInteractionRuntime_Start(void)
     func_02034e58();
     data_02105774 = 0;
     *(u16 *)data_021056e4 = 0;
-    func_02043c24();
+    ActorExtendedPairing_UpdateLinks();
     func_02045004();
     func_020454f8();
     func_0204fafc();
