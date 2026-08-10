@@ -17,9 +17,9 @@ extern void Heap_Free(void *allocation);
 #endif
 
 /* Initialize an empty list and install its two-entry destructor vtable. */
-OwnedPointerList *func_02001d10(OwnedPointerList *list)
+OwnedPointerList *OwnedPointerList_Init(OwnedPointerList *list)
 {
-    list->vtable = &data_020d3ca0;
+    list->vtable = &gOwnedPointerListVTable;
     list->head = 0;
     list->tail = 0;
     list->count = 0;
@@ -27,10 +27,10 @@ OwnedPointerList *func_02001d10(OwnedPointerList *list)
 }
 
 /* Clear every owned node, retain the allocation, and restore the base vtable. */
-OwnedPointerList *func_02001d30(OwnedPointerList *list)
+OwnedPointerList *OwnedPointerList_Destroy(OwnedPointerList *list)
 {
-    list->vtable = &data_020d3ca0;
-    func_02001d50(list);
+    list->vtable = &gOwnedPointerListVTable;
+    OwnedPointerList_Clear(list);
     return list;
 }
 
@@ -39,7 +39,7 @@ OwnedPointerList *func_02001d30(OwnedPointerList *list)
  * Each allocation stores the next pointer in its first word; its remaining
  * payload and concrete type are not yet known.
  */
-void func_02001d50(OwnedPointerList *list)
+void OwnedPointerList_Clear(OwnedPointerList *list)
 {
     OwnedPointerListNode *node = list->head;
 
@@ -57,10 +57,10 @@ void func_02001d50(OwnedPointerList *list)
 }
 
 /* Clear a heap-owned list, release the list itself, and return its old address. */
-OwnedPointerList *func_02001d90(OwnedPointerList *list)
+OwnedPointerList *OwnedPointerList_DestroyAndFree(OwnedPointerList *list)
 {
-    list->vtable = &data_020d3ca0;
-    func_02001d50(list);
+    list->vtable = &gOwnedPointerListVTable;
+    OwnedPointerList_Clear(list);
     Heap_Free(list);
     return list;
 }

@@ -21,16 +21,16 @@ struct OwnedPointerList {
     u32 count;
 };
 
-extern OwnedPointerListVTable data_020d3ca0;
+extern OwnedPointerListVTable gOwnedPointerListVTable;
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-OwnedPointerList *func_02001d10(OwnedPointerList *list);
-OwnedPointerList *func_02001d30(OwnedPointerList *list);
-void func_02001d50(OwnedPointerList *list);
-OwnedPointerList *func_02001d90(OwnedPointerList *list);
+OwnedPointerList *OwnedPointerList_Init(OwnedPointerList *list);
+OwnedPointerList *OwnedPointerList_Destroy(OwnedPointerList *list);
+void OwnedPointerList_Clear(OwnedPointerList *list);
+OwnedPointerList *OwnedPointerList_DestroyAndFree(OwnedPointerList *list);
 
 #ifdef __cplusplus
 }

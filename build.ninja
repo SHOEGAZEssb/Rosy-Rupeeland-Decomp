@@ -3619,7 +3619,7 @@ build build/reports/owned_pointer_list.json: objdiff build/decomp/delinks/src/sy
 
 build build/reports/owned_pointer_list.txt: match_report build/reports/owned_pointer_list.json | tools/report_objdiff.py
   report_json = build/reports/owned_pointer_list.json
-  report_args = --section .text --function func_02001d10 --function func_02001d30 --function func_02001d50 --function func_02001d90
+  report_args = --section .text --function OwnedPointerList_Init --function OwnedPointerList_Destroy --function OwnedPointerList_Clear --function OwnedPointerList_DestroyAndFree
 
 build build/reports/owned_pointer_list_data.json: objdiff build/decomp/delinks/src/system/owned_pointer_list_data.o | build/decomp/src/system/owned_pointer_list_data.o
   target_object = build/decomp/delinks/src/system/owned_pointer_list_data.o

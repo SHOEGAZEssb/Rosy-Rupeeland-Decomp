@@ -6,7 +6,7 @@
 .extern SubBgPaletteBuffer_Init
 .extern __construct_array
 .extern __register_global_object
-.extern func_02001d10
+.extern OwnedPointerList_Init
 .extern PackedTimerArray_Init
 .extern DisplayBrightnessPair_Init
 .extern func_020083b0
@@ -78,7 +78,7 @@
 .extern data_021f5ec0
 .extern data_021f5f0c
 .extern data_021f5f18
-.extern func_02001d30
+.extern OwnedPointerList_Destroy
 .extern PackedTimerArray_Destroy
 .extern DisplayBrightnessPair_Destroy
 .extern func_02004ac8
@@ -144,14 +144,14 @@
 __sinit_020c1374: ; 0x020c1374
     stmdb sp!, {r3, lr}
     ldr r0, .L_020c1394
-    bl func_02001d10
+    bl OwnedPointerList_Init
     ldr r0, .L_020c1394
     ldr r1, .L_020c1398
     ldr r2, .L_020c139c
     bl __register_global_object
     ldmia sp!, {r3, pc}
 .L_020c1394: .word gFrameTaskList
-.L_020c1398: .word func_02001d30
+.L_020c1398: .word OwnedPointerList_Destroy
 .L_020c139c: .word data_020f3784
 
 __sinit_020c13a0: ; 0x020c13a0

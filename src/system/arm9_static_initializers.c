@@ -17,8 +17,8 @@ extern void __construct_array(void *array, u32 count, u32 elementSize,
                               GlobalObjectRoutine constructor,
                               GlobalObjectRoutine destructor);
 
-extern void func_02001d10(void *);
-extern void func_02001d30(void *);
+extern void OwnedPointerList_Init(void *);
+extern void OwnedPointerList_Destroy(void *);
 extern void PackedTimerArray_Init(void *);
 extern void PackedTimerArray_Destroy(void *);
 extern void DisplayBrightnessPair_Init(void *);
@@ -123,14 +123,15 @@ extern u8 data_021f5f0c[];
 #endif
 
 /*
- * No inputs. Construct gFrameTaskList and register func_02001d30 with record
- * data_020f3784 for shutdown. Global task-list lifetime state changes; the
- * routine returns no value and has no direct hardware effect.
+ * No inputs. Construct gFrameTaskList and register OwnedPointerList_Destroy
+ * with record data_020f3784 for shutdown. Global task-list lifetime state
+ * changes; the routine returns no value and has no direct hardware effect.
  */
 void __sinit_020c1374(void)
 {
-    func_02001d10(gFrameTaskList);
-    __register_global_object(gFrameTaskList, func_02001d30, data_020f3784);
+    OwnedPointerList_Init(gFrameTaskList);
+    __register_global_object(gFrameTaskList, OwnedPointerList_Destroy,
+                             data_020f3784);
 }
 
 /*

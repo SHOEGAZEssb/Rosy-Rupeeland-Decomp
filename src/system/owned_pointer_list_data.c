@@ -6,7 +6,7 @@
  * before game-phase data while placing the corresponding code after it.
  */
 
-OwnedPointerListVTable data_020d3ca0 = {
-    func_02001d30,
-    func_02001d90,
+OwnedPointerListVTable gOwnedPointerListVTable = {
+    OwnedPointerList_Destroy,
+    OwnedPointerList_DestroyAndFree,
 };

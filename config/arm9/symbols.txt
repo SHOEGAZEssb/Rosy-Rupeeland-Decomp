@@ -49,10 +49,10 @@ GamePhaseTransition_Init kind:function(arm,size=0x28) addr:0x02001c14
 GamePhaseTransition_Destroy kind:function(arm,size=0x14) addr:0x02001c3c
 GamePhaseTransition_DestroyAndFree kind:function(arm,size=0x1c) addr:0x02001c50
 GamePhaseTransition_Update kind:function(arm,size=0xa4) addr:0x02001c6c
-func_02001d10 kind:function(arm,size=0x20) addr:0x02001d10
-func_02001d30 kind:function(arm,size=0x20) addr:0x02001d30
-func_02001d50 kind:function(arm,size=0x40) addr:0x02001d50
-func_02001d90 kind:function(arm,size=0x28) addr:0x02001d90
+OwnedPointerList_Init kind:function(arm,size=0x20) addr:0x02001d10
+OwnedPointerList_Destroy kind:function(arm,size=0x20) addr:0x02001d30
+OwnedPointerList_Clear kind:function(arm,size=0x40) addr:0x02001d50
+OwnedPointerList_DestroyAndFree kind:function(arm,size=0x28) addr:0x02001d90
 PackedTimer_Init kind:function(arm,size=0x30) addr:0x02001db8
 PackedTimer_Configure kind:function(arm,size=0x28) addr:0x02001de8
 PackedTimer_DestroyNoOp kind:function(arm,size=0x4) addr:0x02001e10
@@ -6627,7 +6627,7 @@ gGameWorkBufferTag kind:data(any) addr:0x020d3c74
 data_020d3c7c kind:data(any) addr:0x020d3c7c
 data_020d3c84 kind:data(any) addr:0x020d3c84
 data_020d3c8c kind:data(any) addr:0x020d3c8c
-data_020d3ca0 kind:data(any) addr:0x020d3ca0
+gOwnedPointerListVTable kind:data(any) addr:0x020d3ca0
 data_020d3ca8 kind:data(any) addr:0x020d3ca8
 data_020d3cb8 kind:data(any) addr:0x020d3cb8
 gGamePhaseInitialData kind:data(any) addr:0x020d3cd4
