@@ -171,6 +171,10 @@ retains the selected retail record address in its completed actor image.
 Overlay-backed kind-three subtype 22 has its complete vtable-only extension;
 subtype 20 also has its complete vector/scalar extension unless descriptor word
 `0x2C` requests the still-pending virtual resource hook.
+Overlay 81's kind-three subtypes 6 through 8 likewise have their complete
+host-independent motion-state layout and mandatory overlay-local initializer.
+Their terrain-height refresh remains an explicit map-context boundary, and a
+nonzero descriptor word `0x2C` remains an explicit resource-script boundary.
 The category-two singleton-tracker bootstrap has its complete constructor
 image. The category-one bootstrap includes its full type-one scalar/vector
 extension and the known header of its marker helper; resource lookup and host

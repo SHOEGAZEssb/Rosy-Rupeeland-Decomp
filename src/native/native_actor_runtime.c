@@ -20,6 +20,7 @@ enum {
     ACTOR_INDEXED_STATE_VTABLE_ADDRESS = 0x020E212C,
     ACTOR_TABLE_RECORD_VTABLE_ADDRESS = 0x020DF910,
     ACTOR_OV075_VECTOR_VTABLE_ADDRESS = 0x022171BC,
+    ACTOR_OV081_MOTION_VTABLE_ADDRESS = 0x02215670,
     ACTOR_OV088_SIMPLE_VTABLE_ADDRESS = 0x0221B780,
     MARKER_PRESENTATION_VTABLE_ADDRESS = 0x020E1ED8,
     VECTOR_VTABLE_ADDRESS = 0x020D405C,
@@ -220,6 +221,12 @@ static s32 UsesOv075VectorConstructor(
     return desc->kind == 3 && desc->subtype == 20;
 }
 
+static s32 UsesOv081MotionConstructor(
+    const TingleNativeActorDescriptor *desc)
+{
+    return desc->kind == 3 && desc->subtype >= 6 && desc->subtype <= 8;
+}
+
 static s32 UsesOv088SimpleConstructor(
     const TingleNativeActorDescriptor *desc)
 {
@@ -236,6 +243,7 @@ static s32 UsesKnownSharedBaseConstructor(
            UsesIndexedStateConstructor(desc) ||
            UsesTableRecordConstructor(desc) ||
            UsesOv075VectorConstructor(desc) ||
+           UsesOv081MotionConstructor(desc) ||
            UsesOv088SimpleConstructor(desc);
 }
 
@@ -415,6 +423,58 @@ static void InitializeOv075VectorActor(TingleNativeActorImage *actor)
     actor->initialization_stages |= TINGLE_NATIVE_ACTOR_STAGE_KIND3_DERIVED;
 }
 
+/*
+ * Reproduce overlay 81's subtype 6..8 constructor and its mandatory +0xc4
+ * vtable initializer. The latter refreshes terrain height through the global
+ * map unless actor flag 0x04000000 disables that query. A nonzero descriptor
+ * +0x2c is subsequently consumed by the common virtual resource hook.
+ */
+static void InitializeOv081MotionActor(TingleNativeActorImage *actor)
+{
+    u8 *bytes = actor->bytes;
+    u32 flags_14 = ReadU32(bytes, 0x14);
+
+    WriteU32(bytes, 0x00, ACTOR_OV081_MOTION_VTABLE_ADDRESS);
+    InitializeVector(bytes, 0x214, (s32)ReadU32(bytes, 0x1C),
+                     (s32)ReadU32(bytes, 0x20),
+                     (s32)ReadU32(bytes, 0x24));
+    WriteU32(bytes, 0x224, 0x666);
+    WriteU32(bytes, 0x228, 0x1000);
+    WriteU16(bytes, 0x23A, 0xFFFF);
+    WriteU16(bytes, 0x23C, 0);
+    WriteU16(bytes, 0x23E, 0);
+    WriteU32(bytes, 0x240, 0x1000);
+    if ((flags_14 & 0x400) != 0)
+        WriteU32(bytes, 0xD0, ReadU32(bytes, 0xD0) | 4u);
+
+    /* func_ov081_02212cec and func_ov081_02213710. */
+    WriteU32(bytes, 0x208, 0xDC);
+    WriteU32(bytes, 0x20C, 1);
+    WriteU32(bytes, 0x210, 0);
+    WriteU32(bytes, 0x22C, 0);
+    WriteU32(bytes, 0x230, 0);
+    WriteU32(bytes, 0x234, 0x78);
+
+    /* func_ov081_022130dc copies position, then refreshes terrain height. */
+    WriteU32(bytes, 0x18, ReadU32(bytes, 0x214));
+    WriteU32(bytes, 0x1C, ReadU32(bytes, 0x218));
+    WriteU32(bytes, 0x20, ReadU32(bytes, 0x21C));
+    WriteU32(bytes, 0x24, ReadU32(bytes, 0x1DC));
+    WriteU32(bytes, 0x3C, 0);
+    WriteU32(bytes, 0x40, 0);
+    WriteU32(bytes, 0x44, 0);
+    WriteU32(bytes, 0x8C, 0);
+    WriteU32(bytes, 0x90, 0);
+    WriteU32(bytes, 0x94, 0);
+    if ((flags_14 & 0x04000000u) == 0)
+        actor->pending_external_state |=
+            TINGLE_NATIVE_ACTOR_PENDING_TERRAIN_QUERY;
+    if (ReadU32(actor->descriptor.raw, 0x2C) != 0)
+        actor->pending_external_state |=
+            TINGLE_NATIVE_ACTOR_PENDING_DESCRIPTOR_HOOK;
+    actor->initialization_stages |= TINGLE_NATIVE_ACTOR_STAGE_KIND3_DERIVED;
+}
+
 /* Reproduce overlay 88's subtype-22 constructor, which only replaces vtable. */
 static void InitializeOv088SimpleActor(TingleNativeActorImage *actor)
 {
@@ -486,6 +546,8 @@ static s32 InitializeActor(TingleNativeActorImage *actor,
         InitializeTableRecordActor(actor);
     else if (actor->size >= 0x22C && UsesOv075VectorConstructor(descriptor))
         InitializeOv075VectorActor(actor);
+    else if (actor->size >= 0x244 && UsesOv081MotionConstructor(descriptor))
+        InitializeOv081MotionActor(actor);
     else if (actor->size >= 0x208 && UsesOv088SimpleConstructor(descriptor))
         InitializeOv088SimpleActor(actor);
     else if (!UsesSharedDerivedConstructor(descriptor) &&

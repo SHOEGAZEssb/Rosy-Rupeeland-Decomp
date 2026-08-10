@@ -248,13 +248,14 @@ static int TestRuntimeVariantActor(void)
 
 static int TestKind3DerivedActors(void)
 {
-    TingleNativeActorDescriptor descriptors[6] = {{0}};
+    TingleNativeActorDescriptor descriptors[7] = {{0}};
     TingleNativeActorRuntime *runtime;
     const TingleNativeActorImage *mode_actor;
     const TingleNativeActorImage *probe_actor;
     const TingleNativeActorImage *indexed_actor;
     const TingleNativeActorImage *table_actor;
     const TingleNativeActorImage *ov075_actor;
+    const TingleNativeActorImage *ov081_actor;
     const TingleNativeActorImage *ov088_actor;
     u32 expected_stages = TINGLE_NATIVE_ACTOR_STAGE_GEOMETRY |
                           TINGLE_NATIVE_ACTOR_STAGE_COMMON_RUNTIME |
@@ -286,16 +287,22 @@ static int TestKind3DerivedActors(void)
     descriptors[4].position_y = -8;
     WriteU32(descriptors[4].raw + 0x34, 0x12345678);
     descriptors[5] = descriptors[0];
-    descriptors[5].subtype = 22;
-    descriptors[5].allocation_size = 0x208;
-    runtime = TingleNativeActorRuntime_Create(descriptors, 6, NULL, 0);
+    descriptors[5].subtype = 7;
+    descriptors[5].allocation_size = 0x244;
+    descriptors[5].flags_28 = 0x400;
+    WriteU32(descriptors[5].raw + 0x2C, 0x0221F524);
+    descriptors[6] = descriptors[0];
+    descriptors[6].subtype = 22;
+    descriptors[6].allocation_size = 0x208;
+    runtime = TingleNativeActorRuntime_Create(descriptors, 7, NULL, 0);
     mode_actor = TingleNativeActorRuntime_GetActor(runtime, 0);
     probe_actor = TingleNativeActorRuntime_GetActor(runtime, 1);
     indexed_actor = TingleNativeActorRuntime_GetActor(runtime, 2);
     table_actor = TingleNativeActorRuntime_GetActor(runtime, 3);
     ov075_actor = TingleNativeActorRuntime_GetActor(runtime, 4);
-    ov088_actor = TingleNativeActorRuntime_GetActor(runtime, 5);
-    ok = runtime != NULL && runtime->actor_count == 6 &&
+    ov081_actor = TingleNativeActorRuntime_GetActor(runtime, 5);
+    ov088_actor = TingleNativeActorRuntime_GetActor(runtime, 6);
+    ok = runtime != NULL && runtime->actor_count == 7 &&
          mode_actor != NULL && mode_actor->initialization_stages == expected_stages &&
          mode_actor->pending_external_state == 0 &&
          ReadU32At(mode_actor->bytes, 0x00) == 0x020DF774 &&
@@ -328,6 +335,21 @@ static int TestKind3DerivedActors(void)
          ReadU32At(ov075_actor->bytes, 0x214) == (u32)(-8 * 0x1000) &&
          ReadU32At(ov075_actor->bytes, 0x21C) == 0x12345678 &&
          (ReadU32At(ov075_actor->bytes, 0x10) & 0x1F0000) == 0x1F0000 &&
+         ov081_actor != NULL &&
+         ov081_actor->initialization_stages == expected_stages &&
+         ov081_actor->pending_external_state ==
+             (TINGLE_NATIVE_ACTOR_PENDING_DESCRIPTOR_HOOK |
+              TINGLE_NATIVE_ACTOR_PENDING_TERRAIN_QUERY) &&
+         ReadU32At(ov081_actor->bytes, 0x00) == 0x02215670 &&
+         ReadU32At(ov081_actor->bytes, 0x208) == 0xDC &&
+         ReadU32At(ov081_actor->bytes, 0x20C) == 1 &&
+         ReadU32At(ov081_actor->bytes, 0x214) == 0x020D405C &&
+         ReadU32At(ov081_actor->bytes, 0x224) == 0x666 &&
+         ReadU32At(ov081_actor->bytes, 0x228) == 0x1000 &&
+         ReadU32At(ov081_actor->bytes, 0x234) == 0x78 &&
+         ReadU16At(ov081_actor->bytes, 0x23A) == 0xFFFF &&
+         ReadU32At(ov081_actor->bytes, 0x240) == 0x1000 &&
+         (ReadU32At(ov081_actor->bytes, 0xD0) & 4) != 0 &&
          ov088_actor != NULL &&
          ov088_actor->initialization_stages == expected_stages &&
          ov088_actor->pending_external_state == 0 &&
