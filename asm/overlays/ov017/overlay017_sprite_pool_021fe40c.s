@@ -7,7 +7,7 @@
     .extern data_ov017_022016e0
     .extern func_020720c0
     .extern func_020720e8
-    .extern func_02077308
+    .extern GraphicsAnimationInstanceManager_CreateInstance
     .extern Graphics3DResourceOwner_CreateManager
     .extern Graphics3DResourceOwner_PrepareResources
     .extern func_020918f4
@@ -61,7 +61,7 @@ L_021fe484:
     ldr r9, [r11, r0, lsl #0x2]
     ldr r0, [r10, #0x0]
     add r1, r10, #0x4
-    bl func_02077308
+    bl GraphicsAnimationInstanceManager_CreateInstance
     add r1, r10, r6, lsl #0x2
     str r0, [r1, #0x10]
     add r0, r10, #0x54

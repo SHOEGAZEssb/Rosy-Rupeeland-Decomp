@@ -10,7 +10,7 @@ extern "C" {
 extern void Graphics3DSceneState_Apply(void *sceneTransform);
 extern void Graphics3DLight_Apply(void *record, s32 index);
 extern void func_ov037_021fd324(void *resourceObject);
-extern void func_020773e4(void *resourceOwner, void *matrixContext);
+extern void GraphicsAnimationInstanceManager_Render(void *resourceOwner, void *matrixContext);
 extern void func_ov037_021fd4e0(u32, u32, u32, u32, u32, u32, u32, u32);
 extern void func_ov037_021fcf20(void *object, void *matrixContext);
 #ifdef __cplusplus
@@ -31,7 +31,7 @@ extern "C" void func_ov037_021fe440(void *scene)
     for (s32 i = 0; i < 4; ++i)
         Graphics3DLight_Apply((u8 *)scene + 0x14c + i * 16, i);
     func_ov037_021fd324(FIELD(void *, scene, 0x124));
-    func_020773e4(FIELD(void *, scene, 0x114), (u8 *)scene + 0x60);
+    GraphicsAnimationInstanceManager_Render(FIELD(void *, scene, 0x114), (u8 *)scene + 0x60);
     func_ov037_021fd4e0(0, 0, 0, 0, 0, 0, 0, 0);
     void *node = FIELD(void *, scene, 0x140);
     while (node != 0) {

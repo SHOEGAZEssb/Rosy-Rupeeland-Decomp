@@ -3,7 +3,7 @@
 /* Exact fallback; see src/overlays/ov035/overlay035_sprite_record.c for documented portable C. */
 
     .extern func_02095308
-    .extern func_02076be8
+    .extern GraphicsAnimationInstance_SetAnimation
     .extern data_ov035_02203af8
 
 
@@ -40,7 +40,7 @@ func_ov035_021fdd28:
     mov r6, r2
     and r1, r1, #0xff
     mov r5, r3
-    bl func_02076be8
+    bl GraphicsAnimationInstance_SetAnimation
     str r6, [r4, #0x20]
     ldr r0, [sp, #0x18]
     ldr r2, [sp, #0x10]

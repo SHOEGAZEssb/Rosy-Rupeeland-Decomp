@@ -31,7 +31,7 @@ extern GraphicsSpriteRegion *Graphics3DResourceOwner_AcquirePaletteRegion(Graphi
  * allocation and both acquisitions succeed; no cleanup path handles failure.
  */
 #ifndef MATCHING
-GraphicsAnimationInstance *func_02077734(
+GraphicsAnimationInstance *Graphics3DResourceOwner_CreateAnimationInstance(
     Graphics3DResourceOwner *owner, void *textureResource,
     void *paletteResource, GraphicsAnimationResource *animationResource,
     GraphicsAnimationInstanceManager *manager)
@@ -42,7 +42,7 @@ GraphicsAnimationInstance *func_02077734(
             gHeapContext);
 
     if (instance != 0) {
-        func_02076b48(instance, manager);
+        GraphicsAnimationInstance_Init(instance, manager);
     }
     instance->textureResource = textureResource;
     instance->paletteResource = paletteResource;
@@ -53,7 +53,7 @@ GraphicsAnimationInstance *func_02077734(
 }
 #else
 /* This matching fallback implements the documented portable C directly above. */
-asm GraphicsAnimationInstance *func_02077734(
+asm GraphicsAnimationInstance *Graphics3DResourceOwner_CreateAnimationInstance(
     Graphics3DResourceOwner *owner, void *textureResource,
     void *paletteResource, GraphicsAnimationResource *animationResource,
     GraphicsAnimationInstanceManager *manager)
@@ -73,7 +73,7 @@ asm GraphicsAnimationInstance *func_02077734(
     movs r4, r0
     beq graphics_animation_instance_resource_init_done
     ldr r1, [sp, #0x18]
-    bl func_02076b48
+    bl GraphicsAnimationInstance_Init
     mov r4, r0
 graphics_animation_instance_resource_init_done:
     str r7, [r4, #0x14]
@@ -101,7 +101,7 @@ graphics_animation_instance_resource_heap:
  * distinct allocators, then free the instance. Retail redundantly rechecks the
  * instance before Heap_Free; the valid path does not clear resource pointers.
  */
-void func_020777ac(Graphics3DResourceOwner *owner,
+void Graphics3DResourceOwner_DestroyAnimationInstance(Graphics3DResourceOwner *owner,
                    GraphicsAnimationInstance *instance)
 {
     if (instance == 0) {
@@ -117,34 +117,37 @@ void func_020777ac(Graphics3DResourceOwner *owner,
 /*
  * Ignore null. When either resource identity changes, release its old region,
  * retain the new pointer, and acquire its replacement region. Always replace
- * the animation resource with params->field_08. Acquisitions are assumed to
+ * the animation resource with params->animationResource. Acquisitions are assumed to
  * succeed, and a failed replacement policy is not present in retail.
  */
 #ifndef MATCHING
-void func_020777e8(Graphics3DResourceOwner *owner,
+void Graphics3DResourceOwner_RebindAnimationInstance(Graphics3DResourceOwner *owner,
                    GraphicsAnimationInstance *instance,
                    const GraphicsAnimationCreateParams *params)
 {
     if (instance == 0) {
         return;
     }
-    if (instance->textureResource != (void *)params->field_00) {
+    if (instance->textureResource != (void *)params->textureResource) {
         func_0207684c(&owner->textureRegions, instance->textureRegion);
-        instance->textureResource = (void *)params->field_00;
+        instance->textureResource = (void *)params->textureResource;
         instance->textureRegion =
-            Graphics3DResourceOwner_AcquireTextureRegion(owner, (void *)params->field_00);
+            Graphics3DResourceOwner_AcquireTextureRegion(
+                owner, (void *)params->textureResource);
     }
-    if (instance->paletteResource != (void *)params->field_04) {
+    if (instance->paletteResource != (void *)params->paletteResource) {
         func_02076a70(&owner->paletteRegions, instance->paletteRegion);
-        instance->paletteResource = (void *)params->field_04;
+        instance->paletteResource = (void *)params->paletteResource;
         instance->paletteRegion =
-            Graphics3DResourceOwner_AcquirePaletteRegion(owner, (void *)params->field_04);
+            Graphics3DResourceOwner_AcquirePaletteRegion(
+                owner, (void *)params->paletteResource);
     }
-    instance->resource = (GraphicsAnimationResource *)params->field_08;
+    instance->resource =
+        (GraphicsAnimationResource *)params->animationResource;
 }
 #else
 /* This matching fallback implements the documented portable C directly above. */
-asm void func_020777e8(Graphics3DResourceOwner *owner,
+asm void Graphics3DResourceOwner_RebindAnimationInstance(Graphics3DResourceOwner *owner,
                        GraphicsAnimationInstance *instance,
                        const GraphicsAnimationCreateParams *params)
 {

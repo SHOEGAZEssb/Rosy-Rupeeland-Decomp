@@ -11368,7 +11368,7 @@ build build/reports/graphics_animation_instance_setup.json: objdiff build/decomp
 
 build build/reports/graphics_animation_instance_setup.txt: match_report build/reports/graphics_animation_instance_setup.json | tools/report_objdiff.py
   report_json = build/reports/graphics_animation_instance_setup.json
-  report_args = --section .text --function func_02076b48 --function func_02076be8 --function func_02076c20
+  report_args = --section .text --function GraphicsAnimationInstance_Init --function GraphicsAnimationInstance_SetAnimation --function GraphicsAnimationInstance_SetFrame
 
 build build/reports/graphics_animation_instance_update.json: objdiff build/decomp/delinks/src/graphics/graphics_animation_instance_update.o | build/decomp/src/graphics/graphics_animation_instance_update.o
   target_object = build/decomp/delinks/src/graphics/graphics_animation_instance_update.o
@@ -11376,7 +11376,7 @@ build build/reports/graphics_animation_instance_update.json: objdiff build/decom
 
 build build/reports/graphics_animation_instance_update.txt: match_report build/reports/graphics_animation_instance_update.json | tools/report_objdiff.py
   report_json = build/reports/graphics_animation_instance_update.json
-  report_args = --section .text --function func_02076ca0
+  report_args = --section .text --function GraphicsAnimationInstance_Update
 
 build build/reports/graphics_3d_polygon_attr.json: objdiff build/decomp/delinks/src/graphics/graphics_3d_polygon_attr.o | build/decomp/src/graphics/graphics_3d_polygon_attr.o
   target_object = build/decomp/delinks/src/graphics/graphics_3d_polygon_attr.o
@@ -11392,7 +11392,7 @@ build build/reports/graphics_animation_instance_manager.json: objdiff build/deco
 
 build build/reports/graphics_animation_instance_manager.txt: match_report build/reports/graphics_animation_instance_manager.json | tools/report_objdiff.py
   report_json = build/reports/graphics_animation_instance_manager.json
-  report_args = --section .text --function func_02077220 --function func_02077248 --function func_02077260 --function func_02077294 --function func_020772d0 --function func_02077308 --function func_0207733c --function func_0207735c --function func_020773a8 --function func_020773cc
+  report_args = --section .text --function GraphicsAnimationInstance_Destroy --function GraphicsAnimationInstance_GetSequenceDuration --function GraphicsAnimationInstanceManager_Init --function GraphicsAnimationInstanceManager_Append --function GraphicsAnimationInstanceManager_Unlink --function GraphicsAnimationInstanceManager_CreateInstance --function GraphicsAnimationInstanceManager_DestroyInstance --function GraphicsAnimationInstanceManager_Clear --function GraphicsAnimationInstanceManager_Update --function GraphicsAnimationInstanceManager_RebindInstance
 
 build build/reports/graphics_animation_instance_manager_render.json: objdiff build/decomp/delinks/src/graphics/graphics_animation_instance_manager_render.o | build/decomp/src/graphics/graphics_animation_instance_manager_render.o
   target_object = build/decomp/delinks/src/graphics/graphics_animation_instance_manager_render.o
@@ -11400,7 +11400,7 @@ build build/reports/graphics_animation_instance_manager_render.json: objdiff bui
 
 build build/reports/graphics_animation_instance_manager_render.txt: match_report build/reports/graphics_animation_instance_manager_render.json | tools/report_objdiff.py
   report_json = build/reports/graphics_animation_instance_manager_render.json
-  report_args = --section .text --function func_020773e4
+  report_args = --section .text --function GraphicsAnimationInstanceManager_Render
 
 build build/reports/graphics_3d_resource_owner.json: objdiff build/decomp/delinks/src/graphics/graphics_3d_resource_owner.o | build/decomp/src/graphics/graphics_3d_resource_owner.o
   target_object = build/decomp/delinks/src/graphics/graphics_3d_resource_owner.o
@@ -11432,7 +11432,7 @@ build build/reports/graphics_animation_instance_resources.json: objdiff build/de
 
 build build/reports/graphics_animation_instance_resources.txt: match_report build/reports/graphics_animation_instance_resources.json | tools/report_objdiff.py
   report_json = build/reports/graphics_animation_instance_resources.json
-  report_args = --section .text --function func_02077734 --function func_020777ac --function func_020777e8
+  report_args = --section .text --function Graphics3DResourceOwner_CreateAnimationInstance --function Graphics3DResourceOwner_DestroyAnimationInstance --function Graphics3DResourceOwner_RebindAnimationInstance
 
 build build/reports/graphics_3d_resource_regions.json: objdiff build/decomp/delinks/src/graphics/graphics_3d_resource_regions.o | build/decomp/src/graphics/graphics_3d_resource_regions.o
   target_object = build/decomp/delinks/src/graphics/graphics_3d_resource_regions.o

@@ -10,7 +10,7 @@
     .extern func_02095224
     .extern func_020948e4
     .extern func_02094bbc
-    .extern func_020773cc
+    .extern GraphicsAnimationInstanceManager_RebindInstance
     .extern func_ov035_02200574
     .extern gSoundContext
     .extern data_ov035_02202eb8
@@ -133,7 +133,7 @@ L_02200730:
     ldr r0, [r4, #0x104]
     ldr r1, [r1, #0x9c]
     add r2, r4, #0xe8
-    bl func_020773cc
+    bl GraphicsAnimationInstanceManager_RebindInstance
     ldr r0, [r4, #0x108]
     mov r1, #0x0
     str r1, [r0, #0x90]

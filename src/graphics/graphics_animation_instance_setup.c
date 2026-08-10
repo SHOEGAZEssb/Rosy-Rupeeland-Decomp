@@ -14,11 +14,11 @@
  * occurs and the resource pointer remains null.
  */
 #ifndef MATCHING
-void func_02076b48(GraphicsAnimationInstance *instance, void *owner)
+void GraphicsAnimationInstance_Init(GraphicsAnimationInstance *instance, void *owner)
 {
     instance->owner = owner;
-    instance->field_08 = 0;
-    instance->field_04 = 0;
+    instance->next = 0;
+    instance->previous = 0;
     instance->textureRegion = 0;
     instance->paletteRegion = 0;
     instance->textureResource = 0;
@@ -39,7 +39,7 @@ void func_02076b48(GraphicsAnimationInstance *instance, void *owner)
     instance->field_4a = 0;
     instance->field_48 = 0;
     instance->flags = 0;
-    instance->field_52 = 0x100;
+    instance->timeStep = 0x100;
     instance->field_56 = 0;
     instance->frameIndex = 0;
     instance->animationIndex = 0;
@@ -51,7 +51,7 @@ void func_02076b48(GraphicsAnimationInstance *instance, void *owner)
 }
 #else
 /* This matching fallback implements the documented portable C directly above. */
-asm void func_02076b48(GraphicsAnimationInstance *instance, void *owner)
+asm void GraphicsAnimationInstance_Init(GraphicsAnimationInstance *instance, void *owner)
 {
     str r1, [r0, #0]
     mov r2, #0
@@ -104,7 +104,7 @@ animation_instance_field_4e_default:
  * and clear flags bit 0. The resource and its nested setHeader must be valid;
  * count zero and negative caller indices are outside the confirmed contract.
  */
-void func_02076be8(GraphicsAnimationInstance *instance, s32 animationIndex)
+void GraphicsAnimationInstance_SetAnimation(GraphicsAnimationInstance *instance, s32 animationIndex)
 {
     s32 count = instance->resource->setHeader->animationCount;
 
@@ -123,7 +123,7 @@ void func_02076be8(GraphicsAnimationInstance *instance, s32 animationIndex)
  * at firstFrame, convert that sum to signed 24.8 time, and set flags bit 0.
  * No rendering or hardware change occurs; all resource pointers must be valid.
  */
-void func_02076c20(GraphicsAnimationInstance *instance, s32 frameIndex)
+void GraphicsAnimationInstance_SetFrame(GraphicsAnimationInstance *instance, s32 frameIndex)
 {
     GraphicsAnimationSequenceInfo *sequence =
         &instance->resource->sequences[instance->animationIndex];

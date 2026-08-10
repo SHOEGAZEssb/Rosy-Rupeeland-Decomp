@@ -3,7 +3,7 @@
 /* Exact fallback; see src/overlays/ov035/overlay035_quinary_scene_update.c for documented portable C. */
 
     .extern func_02095360
-    .extern func_020773a8
+    .extern GraphicsAnimationInstanceManager_Update
     .extern func_02095224
     .extern func_ov035_022012ac
     .extern func_ov035_021fd5ac
@@ -22,7 +22,7 @@ func_ov035_02201000:
     add r0, r9, #0x118
     bl func_02095360
     ldr r0, [r9, #0xf8]
-    bl func_020773a8
+    bl GraphicsAnimationInstanceManager_Update
     ldr r0, [r9, #0x104]
     bl func_02095224
     cmp r0, #0x0

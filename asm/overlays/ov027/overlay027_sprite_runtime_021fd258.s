@@ -1,7 +1,7 @@
 .text
 
 /* Exact fallback; see src/overlays/ov027/overlay027_sprite_runtime.c. */
-.extern func_02076be8
+.extern GraphicsAnimationInstance_SetAnimation
 .extern func_02094dd4
 .extern func_ov027_021fd3d8
 .extern func_ov027_021fd3f0
@@ -55,7 +55,7 @@ L_021fd2e0:
     ldr r1, [r1, #0x0]
     add r1, r1, #0x6
     and r1, r1, #0xff
-    bl func_02076be8
+    bl GraphicsAnimationInstance_SetAnimation
     ldr r1, [r4, #0x9c]
     ldrh r0, [r1, #0x50]
     bic r0, r0, #0x2
@@ -78,7 +78,7 @@ L_021fd324:
     ldr r1, [r1, #0x0]
     add r1, r1, #0xc
     and r1, r1, #0xff
-    bl func_02076be8
+    bl GraphicsAnimationInstance_SetAnimation
     ldr r3, [r4, #0x9c]
     mov r1, #0x1e
     ldrh r2, [r3, #0x50]

@@ -12,7 +12,7 @@ extern "C" {
 extern void func_020955b0(void *controller, void *argument);
 extern void func_020720c0(void *state);
 extern void func_020956f0(void *controller);
-extern void func_02076be8(void *actor, s32 mode);
+extern void GraphicsAnimationInstance_SetAnimation(void *actor, s32 mode);
 #ifdef __cplusplus
 }
 #endif
@@ -69,7 +69,7 @@ extern "C" void func_ov037_021fd600(void *controller)
         u16 mask = (u16)(1 << bit);
         if ((flags & mask) != 0) {
             FIELD(u16, controller, 0x98) = flags & (u16)~mask;
-            func_02076be8(actor, bit + 1);
+            GraphicsAnimationInstance_SetAnimation(actor, bit + 1);
             return;
         }
     }

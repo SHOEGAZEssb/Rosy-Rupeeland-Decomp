@@ -32,11 +32,11 @@ extern void func_ov036_02200b38(void *owner, void *object,
 extern s32 func_ov036_021fd28c(void *object);
 extern void func_020948e4(void *field, s32 mode, s32 value);
 extern void func_02094bbc(void *object, s32 x, s32 y, s32 z);
-extern void func_02076be8(void *handle, u8 mode);
+extern void GraphicsAnimationInstance_SetAnimation(void *handle, u8 mode);
 extern void func_02094cf0(void *object, const void *data, s32 mode);
 extern s32 func_02095224(void *object);
 extern void func_02095360(void *list);
-extern void func_020773a8(void *manager);
+extern void GraphicsAnimationInstanceManager_Update(void *manager);
 #ifdef __cplusplus
 }
 #endif
@@ -131,7 +131,7 @@ extern "C" s32 func_ov036_02200bb0(void *controller)
             }
             for (s32 i = 0; i < 5; ++i) {
                 void *child = FIELD(void *, controller, 0x108 + i * 4);
-                func_02076be8(FIELD(void *, child, 0x9c), 1);
+                GraphicsAnimationInstance_SetAnimation(FIELD(void *, child, 0x9c), 1);
             }
             FIELD(s32, controller, 0xa0)++;
         } else {
@@ -145,7 +145,7 @@ extern "C" s32 func_ov036_02200bb0(void *controller)
         if (func_ov036_021fd28c(FIELD(void *, controller, 0x10c)) != 0) {
             for (s32 i = 0; i < 5; ++i) {
                 void *child = FIELD(void *, controller, 0x108 + i * 4);
-                func_02076be8(FIELD(void *, child, 0x9c), 0);
+                GraphicsAnimationInstance_SetAnimation(FIELD(void *, child, 0x9c), 0);
                 func_02094cf0(child, data_ov036_02204e24, 1);
             }
             func_02091b98((u8 *)controller + 0xa4, 0x1e);
@@ -167,11 +167,11 @@ extern "C" s32 func_ov036_02200bb0(void *controller)
 
     case 9:
         func_02095360((u8 *)controller + 0x11c);
-        func_020773a8(FIELD(void *, controller, 0x100));
+        GraphicsAnimationInstanceManager_Update(FIELD(void *, controller, 0x100));
         return 1;
     }
 
     func_02095360((u8 *)controller + 0x11c);
-    func_020773a8(FIELD(void *, controller, 0x100));
+    GraphicsAnimationInstanceManager_Update(FIELD(void *, controller, 0x100));
     return 0;
 }

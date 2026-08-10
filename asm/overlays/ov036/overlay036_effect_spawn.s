@@ -4,7 +4,7 @@
 
     .extern Heap_Alloc
     .extern func_ov036_021fe258
-    .extern func_02077308
+    .extern GraphicsAnimationInstanceManager_CreateInstance
     .extern func_ov036_021ff050
     .extern func_02095274
     .extern Sound_Play
@@ -36,11 +36,11 @@ L_021fefa8:
     ldr r0, [r6, #0xdc]
     beq L_021fefc4
     add r1, r6, #0xe0
-    bl func_02077308
+    bl GraphicsAnimationInstanceManager_CreateInstance
     b L_021fefcc
 L_021fefc4:
     add r1, r6, #0xec
-    bl func_02077308
+    bl GraphicsAnimationInstanceManager_CreateInstance
 L_021fefcc:
     mov r1, #0x0
     str r0, [r5, #0xcc]

@@ -4,7 +4,7 @@
 
     .extern func_020956f0
     .extern func_ov037_021fd6c0
-    .extern func_02076be8
+    .extern GraphicsAnimationInstance_SetAnimation
 
     .global func_ov037_021fd600
 func_ov037_021fd600:
@@ -30,7 +30,7 @@ func_ov037_021fd600:
     strh r0, [r4, #0x98]
     ldr r0, [r4, #0xac]
     mov r1, #0x1
-    bl func_02076be8
+    bl GraphicsAnimationInstance_SetAnimation
     ldmia sp!, {r4, pc}
 L_021fd660:
     tst r0, #0x2
@@ -39,7 +39,7 @@ L_021fd660:
     strh r0, [r4, #0x98]
     ldr r0, [r4, #0xac]
     mov r1, #0x2
-    bl func_02076be8
+    bl GraphicsAnimationInstance_SetAnimation
     ldmia sp!, {r4, pc}
 L_021fd680:
     tst r0, #0x4
@@ -48,7 +48,7 @@ L_021fd680:
     strh r0, [r4, #0x98]
     ldr r0, [r4, #0xac]
     mov r1, #0x3
-    bl func_02076be8
+    bl GraphicsAnimationInstance_SetAnimation
     ldmia sp!, {r4, pc}
 L_021fd6a0:
     tst r0, #0x8
@@ -57,6 +57,6 @@ L_021fd6a0:
     strh r0, [r4, #0x98]
     ldr r0, [r4, #0xac]
     mov r1, #0x4
-    bl func_02076be8
+    bl GraphicsAnimationInstance_SetAnimation
     ldmia sp!, {r4, pc}
     .size func_ov037_021fd600, .-func_ov037_021fd600

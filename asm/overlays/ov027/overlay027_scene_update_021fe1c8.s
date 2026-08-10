@@ -3,7 +3,7 @@
 /* Exact fallback; see src/overlays/ov027/overlay027_scene_update.c. */
 .extern data_ov027_021fe950
 .extern data_ov027_021fef44
-.extern func_020773a8
+.extern GraphicsAnimationInstanceManager_Update
 .extern func_0209189c
 .extern func_020918f4
 .extern func_020948d4
@@ -179,7 +179,7 @@ L_021fe41c:
     cmp r8, #0x0
     bne L_021fe330
     ldr r0, [r4, #0x58]
-    bl func_020773a8
+    bl GraphicsAnimationInstanceManager_Update
     ldr r1, [r4, #0x118]
     mov r0, r4
     ldr r3, [r1, #0x30]

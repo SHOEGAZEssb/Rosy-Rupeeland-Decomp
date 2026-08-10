@@ -8,7 +8,7 @@
  */
 
 /*
- * Advance signed 24.8 animationTime by field_52 unless flags bits 0, 2, or 4
+ * Advance signed 24.8 animationTime by timeStep unless flags bits 0, 2, or 4
  * block playback. At either sequence boundary, flags bit 1 selects a one-span
  * wrap; otherwise clamp to the first or last valid tick and set terminal bit
  * 0. Resolve frameIndex by accumulating the current sequence's 16-bit frame
@@ -17,7 +17,7 @@
  * the behavior handled by one retail update.
  */
 #ifndef MATCHING
-void func_02076ca0(GraphicsAnimationInstance *instance)
+void GraphicsAnimationInstance_Update(GraphicsAnimationInstance *instance)
 {
     GraphicsAnimationSequenceInfo *sequence;
     GraphicsAnimationFrameInfo *frame;
@@ -31,7 +31,7 @@ void func_02076ca0(GraphicsAnimationInstance *instance)
     }
 
     sequence = &instance->resource->sequences[instance->animationIndex];
-    position = instance->animationTime + (s16)instance->field_52;
+    position = instance->animationTime + (s16)instance->timeStep;
     instance->animationTime = position;
     if (position < 0) {
         if ((instance->flags & 2) != 0) {
@@ -69,7 +69,7 @@ void func_02076ca0(GraphicsAnimationInstance *instance)
 }
 #else
 /* This matching fallback implements the documented portable C directly above. */
-asm void func_02076ca0(GraphicsAnimationInstance *instance)
+asm void GraphicsAnimationInstance_Update(GraphicsAnimationInstance *instance)
 {
     stmdb sp!, {r3, r4, r5, lr}
     ldrh r1, [r0, #0x50]

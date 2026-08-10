@@ -5,7 +5,7 @@
     .extern func_02091a70
     .extern Heap_Alloc
     .extern func_ov036_02200234
-    .extern func_02077308
+    .extern GraphicsAnimationInstanceManager_CreateInstance
     .extern func_ov036_021ff050
     .extern func_02094bbc
     .extern func_02095274
@@ -41,7 +41,7 @@ func_ov036_022009b8:
 L_02200a14:
     ldr r0, [r10, #0x100]
     add r1, r10, #0xdc
-    bl func_02077308
+    bl GraphicsAnimationInstanceManager_CreateInstance
     str r0, [r8, #0x9c]
     ldr r0, [r9, #0x0]
     mov r2, #0x0
@@ -65,7 +65,7 @@ L_02200a14:
 L_02200a70:
     ldr r0, [r10, #0x100]
     add r1, r10, #0xdc
-    bl func_02077308
+    bl GraphicsAnimationInstanceManager_CreateInstance
     add r2, r8, r7, lsl #0x2
     str r0, [r2, #0xa0]
     mov r0, #0x0

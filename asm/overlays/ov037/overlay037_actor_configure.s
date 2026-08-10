@@ -2,7 +2,7 @@
 
 /* Exact fallback; see src/overlays/ov037/overlay037_scene_helpers.c for documented portable C. */
 
-    .extern func_02076be8
+    .extern GraphicsAnimationInstance_SetAnimation
 
     .global func_ov037_021fd710
 func_ov037_021fd710:
@@ -11,7 +11,7 @@ func_ov037_021fd710:
     mov r6, r2
     and r1, r1, #0xff
     mov r5, r3
-    bl func_02076be8
+    bl GraphicsAnimationInstance_SetAnimation
     str r6, [r4, #0x20]
     ldr r0, [sp, #0x18]
     ldr r2, [sp, #0x10]

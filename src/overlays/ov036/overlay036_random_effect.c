@@ -17,7 +17,7 @@ extern u32 genrand_int32(void);
 extern void func_02094bbc(void *object, s32 value, s32 minimum, s32 zero);
 extern void func_020948e4(void *field, s32 mode, s32 value);
 extern s32 func_02091a70(s32 minimum, s32 maximum, s32 scale, s32 value);
-extern void func_02077220(void *handle);
+extern void GraphicsAnimationInstance_Destroy(void *handle);
 extern void Heap_Free(void *allocation);
 #ifdef __cplusplus
 }
@@ -89,7 +89,7 @@ extern "C" void *func_ov036_021fe328(void *object)
 {
     FIELD(const void *, object, 0) = data_ov036_02205f80;
     if (FIELD(void *, object, 0xcc) != 0)
-        func_02077220(FIELD(void *, object, 0xcc));
+        GraphicsAnimationInstance_Destroy(FIELD(void *, object, 0xcc));
     FIELD(const void *, object, 0x9c) = data_ov036_02205eac;
     func_02095308((u8 *)object + 0x9c);
     func_ov036_021fcf30(object);
@@ -105,7 +105,7 @@ extern "C" void *func_ov036_021fe370(void *object)
 {
     FIELD(const void *, object, 0) = data_ov036_02205f80;
     if (FIELD(void *, object, 0xcc) != 0)
-        func_02077220(FIELD(void *, object, 0xcc));
+        GraphicsAnimationInstance_Destroy(FIELD(void *, object, 0xcc));
     FIELD(const void *, object, 0x9c) = data_ov036_02205eac;
     func_02095308((u8 *)object + 0x9c);
     func_ov036_021fcf30(object);

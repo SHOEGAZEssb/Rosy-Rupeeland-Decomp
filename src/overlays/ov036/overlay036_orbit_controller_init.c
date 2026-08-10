@@ -23,7 +23,7 @@ extern void Graphics3DResourceOwner_PrepareResources(void *owner, void *resource
 extern void *Graphics3DResourceOwner_CreateManager(void *owner);
 extern void func_ov036_021fe9fc(void *record, s32 x, s32 y, s32 z);
 extern void func_ov036_021fea04(void *record, s32 x, s32 y, s32 z);
-extern void *func_02077308(void *manager, void *resourceSet);
+extern void *GraphicsAnimationInstanceManager_CreateInstance(void *manager, void *resourceSet);
 extern void func_ov036_021ff050(void *handle, s32 mode,
                                 s32 x, s32 y, s32 z,
                                 s32 byte5A, s32 flags);
@@ -76,7 +76,7 @@ extern "C" void *func_ov036_0220059c(void *controller, void *owner,
     func_ov036_021fe9fc((u8 *)controller + 0xc, 0, 0, 0x2000);
     func_ov036_021fea04((u8 *)controller + 0xc, 0, 0, 0);
 
-    void *handle = func_02077308(FIELD(void *, controller, 0x100),
+    void *handle = GraphicsAnimationInstanceManager_CreateInstance(FIELD(void *, controller, 0x100),
                                   (u8 *)controller + 0xe8);
     func_ov036_021ff050(handle, 0, 0, 0, 0, 2, 0x46);
     void *child = Heap_Alloc(0xa0, data_ov036_02206160, 4, gHeapContext);
@@ -87,7 +87,7 @@ extern "C" void *func_ov036_0220059c(void *controller, void *owner,
     func_020948d4((u8 *)child + 0x6c, 0xccd);
 
     for (s32 i = 0; i < 5; ++i) {
-        handle = func_02077308(FIELD(void *, controller, 0x100),
+        handle = GraphicsAnimationInstanceManager_CreateInstance(FIELD(void *, controller, 0x100),
                                (u8 *)controller + 0xf4);
         func_ov036_021ff050(handle, 0, 0, 0, 0, i + 3, 0x46);
         child = Heap_Alloc(0xa0, data_ov036_02206160, 4, gHeapContext);
@@ -105,7 +105,7 @@ extern "C" void *func_ov036_0220059c(void *controller, void *owner,
     func_02095274((u8 *)controller + 0x11c, child);
     func_02094bbc(child, 0, 0, -0x600);
 
-    handle = func_02077308(FIELD(void *, controller, 0x100),
+    handle = GraphicsAnimationInstanceManager_CreateInstance(FIELD(void *, controller, 0x100),
                             (u8 *)controller + 0xcc);
     func_ov036_021ff050(handle, 0, 0, 0, 0, 1, 0x46);
     FIELD(u8, handle, 0x5b) = 1;

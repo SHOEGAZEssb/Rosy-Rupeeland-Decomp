@@ -10,8 +10,8 @@ extern const char data_ov026_02204ac4[];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *func_02077308(void *, void *);
-extern void func_0207735c(void *);
+extern void *GraphicsAnimationInstanceManager_CreateInstance(void *, void *);
+extern void GraphicsAnimationInstanceManager_Clear(void *);
 extern s32 func_020b35b0(char *, const char *, s32);
 extern s32 func_020befec(s32, s32);
 extern void func_ov026_021ff830(void *, u32, s32, s32, s32, u8, u32);
@@ -23,7 +23,7 @@ extern void func_ov026_02200880(void *, s32);
 /* Acquires one record from pool +0x78 using descriptor +0xA0. */
 static void *acquire_digit(void *scene)
 {
-    return func_02077308(FIELD(void *, scene, 0x78), (u8 *)scene + 0xa0);
+    return GraphicsAnimationInstanceManager_CreateInstance(FIELD(void *, scene, 0x78), (u8 *)scene + 0xa0);
 }
 
 /* Configures one numeric particle with fixed depth, byte value, and flags. */
@@ -41,7 +41,7 @@ static void setup_digit(void *record, s32 kind, s32 x, s32 y)
  */
 extern "C" void func_ov026_022006f8(void *scene, s32 value)
 {
-    func_0207735c(FIELD(void *, scene, 0x78));
+    GraphicsAnimationInstanceManager_Clear(FIELD(void *, scene, 0x78));
     if (value < 100) {
         func_ov026_02200880(scene, value);
         return;
@@ -74,7 +74,7 @@ extern "C" void func_ov026_022006f8(void *scene, s32 value)
  */
 extern "C" void func_ov026_02200880(void *scene, s32 value)
 {
-    func_0207735c(FIELD(void *, scene, 0x78));
+    GraphicsAnimationInstanceManager_Clear(FIELD(void *, scene, 0x78));
     char text[16];
     s32 count = func_020b35b0(text, data_ov026_02204ac4, value);
     s32 x = -((count * 16 + 108) / 2) + 42;

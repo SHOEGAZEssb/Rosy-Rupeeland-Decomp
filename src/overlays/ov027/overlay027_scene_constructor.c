@@ -39,7 +39,7 @@ extern void Graphics3DResourceOwner_PrepareResources(void *, void *);
 extern void *func_02094ad4(void *);
 extern void func_02095274(void *, void *);
 extern void func_02094bbc(void *, s32, s32, s32);
-extern void *func_02077308(void *, void *);
+extern void *GraphicsAnimationInstanceManager_CreateInstance(void *, void *);
 extern void func_ov027_021fd9c8(void *);
 extern void *func_ov027_021fce04(void *, s32);
 extern void *func_ov027_021fd1c8(void *, void *, const s32 *, s32);
@@ -136,7 +136,7 @@ extern "C" void *func_ov027_021fda30(void *scene)
         }
     }
     for (s32 i = 0; i < 58; ++i) {
-        void *resource = func_02077308(FIELD(void *, scene, 0x58),
+        void *resource = GraphicsAnimationInstanceManager_CreateInstance(FIELD(void *, scene, 0x58),
                                        (u8 *)scene + 0x5c);
         void *entry = Heap_Alloc(0xb0, data_ov027_021fef3c, 4,
                                  gHeapContext);
@@ -147,7 +147,7 @@ extern "C" void *func_ov027_021fda30(void *scene)
     }
 
     for (s32 i = 0; i < 28; ++i) {
-        void *sprite = func_02077308(FIELD(void *, scene, 0x58),
+        void *sprite = GraphicsAnimationInstanceManager_CreateInstance(FIELD(void *, scene, 0x58),
                                      (u8 *)scene + 0x68);
         const s32 *entry = data_ov027_021fea04 + i * 3;
         func_ov027_021fd180(sprite, entry[0], entry[1], entry[2], 0, 0x11,

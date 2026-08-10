@@ -3,7 +3,7 @@
     .extern data_020f4e18
     .extern data_ov010_021fec8c
     .extern func_020720e8
-    .extern func_02077308
+    .extern GraphicsAnimationInstanceManager_CreateInstance
     .extern Graphics3DResourceBinding_Init
     .extern gHeapContext
 
@@ -31,7 +31,7 @@ func_ov010_021fd45c: ; 0x021fd45c
     bl func_020720e8
     ldr r0, [r5, #0x88]
     add r1, r5, #0x7c
-    bl func_02077308
+    bl GraphicsAnimationInstanceManager_CreateInstance
     str r0, [r5, #0x8c]
     mov r1, #0x3
     strb r1, [r0, #0x59]

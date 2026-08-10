@@ -5,7 +5,7 @@
     .extern func_02095360
     .extern func_ov036_02203228
     .extern func_ov036_021fdcec
-    .extern func_020773a8
+    .extern GraphicsAnimationInstanceManager_Update
     .extern func_02091c7c
     .extern func_02091dac
     .extern func_02091b98
@@ -28,7 +28,7 @@ L_02202fe0:
     add r0, r4, #0x110
     bl func_02095360
     ldr r0, [r4, #0xf4]
-    bl func_020773a8
+    bl GraphicsAnimationInstanceManager_Update
     add r0, r4, #0x120
     mov r1, #0x2
     bl func_02091c7c

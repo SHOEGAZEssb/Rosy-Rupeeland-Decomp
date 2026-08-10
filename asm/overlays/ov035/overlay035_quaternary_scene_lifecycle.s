@@ -10,7 +10,7 @@
     .extern Heap_Free
     .extern func_02095360
     .extern func_ov035_021fdd70
-    .extern func_020773a8
+    .extern GraphicsAnimationInstanceManager_Update
     .extern data_ov035_02203c78
     .extern data_020f4e18
     .extern data_ov035_02203af8
@@ -116,7 +116,7 @@ func_ov035_02200574:
     ldr r3, [r3, #0x30]
     bl func_ov035_021fdd70
     ldr r0, [r4, #0x104]
-    bl func_020773a8
+    bl GraphicsAnimationInstanceManager_Update
     ldmia sp!, {r4, pc}
     .size func_ov035_02200574, .-func_ov035_02200574
 

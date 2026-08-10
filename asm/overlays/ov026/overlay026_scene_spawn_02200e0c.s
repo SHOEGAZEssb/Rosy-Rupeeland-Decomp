@@ -3,7 +3,7 @@
 /* Exact fallback; see src/overlays/ov026/overlay026_scene_spawn.c. */
 .extern data_020c9670
 .extern data_ov026_02204acc
-.extern func_02077308
+.extern GraphicsAnimationInstanceManager_CreateInstance
 .extern func_0209189c
 .extern func_020918f4
 .extern func_020948d4
@@ -27,7 +27,7 @@ func_ov026_02200e0c:
     ldr r0, [r4, #0x6c]
     mov r6, r1
     add r1, r4, #0x94
-    bl func_02077308
+    bl GraphicsAnimationInstanceManager_CreateInstance
     mov r5, r0
     ldr r1, L_02200fdc
     ldr r3, L_02200fe0

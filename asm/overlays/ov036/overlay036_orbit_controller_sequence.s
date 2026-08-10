@@ -16,12 +16,12 @@
     .extern Sound_Play
     .extern func_02094bbc
     .extern func_020948e4
-    .extern func_02076be8
+    .extern GraphicsAnimationInstance_SetAnimation
     .extern func_02094cf0
     .extern func_02095224
     .extern func_0205929c
     .extern func_02095360
-    .extern func_020773a8
+    .extern GraphicsAnimationInstanceManager_Update
     .extern gSoundContext
     .extern data_ov036_02205c2c
     .extern data_ov036_02205cac
@@ -214,7 +214,7 @@ L_02200e58:
     ldr r0, [r0, #0x108]
     mov r1, r4
     ldr r0, [r0, #0x9c]
-    bl func_02076be8
+    bl GraphicsAnimationInstance_SetAnimation
     add r5, r5, #0x1
     cmp r5, #0x5
     blt L_02200e58
@@ -244,7 +244,7 @@ L_02200ec4:
     ldr r0, [r0, #0x108]
     mov r1, r7
     ldr r0, [r0, #0x9c]
-    bl func_02076be8
+    bl GraphicsAnimationInstance_SetAnimation
     add r0, r8, r4, lsl #0x2
     ldr r0, [r0, #0x108]
     mov r1, r6
@@ -287,14 +287,14 @@ L_02200f68:
     add r0, r8, #0x11c
     bl func_02095360
     ldr r0, [r8, #0x100]
-    bl func_020773a8
+    bl GraphicsAnimationInstanceManager_Update
     mov r0, #0x1
     b L_02200f94
 L_02200f80:
     add r0, r8, #0x11c
     bl func_02095360
     ldr r0, [r8, #0x100]
-    bl func_020773a8
+    bl GraphicsAnimationInstanceManager_Update
     mov r0, #0x0
 L_02200f94:
     add sp, sp, #0x24

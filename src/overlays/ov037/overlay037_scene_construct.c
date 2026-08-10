@@ -22,7 +22,7 @@ extern void func_020720e8(void *slot, void *archive, s32 id0, s32 id1, s32 id2);
 extern void Graphics3DResourceOwner_PrepareResources(void *owner, void *slot);
 extern void *func_02071adc(void *archive, s32 resourceId);
 extern void *Graphics3DResourceOwner_CreateManager(void *owner);
-extern void *func_02077308(void *resourceOwner, void *slot);
+extern void *GraphicsAnimationInstanceManager_CreateInstance(void *resourceOwner, void *slot);
 extern void func_ov037_021fd710(void *actor, s32 mode, s32 x, s32 y,
                                 s32 z, u8 parameter, u16 flags);
 extern void *Heap_Alloc(u32 size, const void *tag, s32 alignment, void *heap);
@@ -85,9 +85,9 @@ extern "C" void *func_ov037_021fd7e4(void *scene, void *owner)
     void *resourceOwner = Graphics3DResourceOwner_CreateManager(owner);
     FIELD(void *, scene, 0x114) = resourceOwner;
 
-    void *actor0 = func_02077308(resourceOwner, (u8 *)scene + 0xc8);
+    void *actor0 = GraphicsAnimationInstanceManager_CreateInstance(resourceOwner, (u8 *)scene + 0xc8);
     func_ov037_021fd710(actor0, 0, 0, 0, 0, 1, 0x42);
-    void *actor1 = func_02077308(resourceOwner, (u8 *)scene + 0x104);
+    void *actor1 = GraphicsAnimationInstanceManager_CreateInstance(resourceOwner, (u8 *)scene + 0x104);
 
     void *child = Heap_Alloc(0xb0, data_ov037_021feeb0, 4, gHeapContext);
     if (child != 0)
@@ -95,14 +95,14 @@ extern "C" void *func_ov037_021fd7e4(void *scene, void *owner)
     FIELD(void *, scene, 0x118) = child;
     func_02095274((u8 *)scene + 0x12c, child);
 
-    void *actor = func_02077308(resourceOwner, (u8 *)scene + 0xd4);
+    void *actor = GraphicsAnimationInstanceManager_CreateInstance(resourceOwner, (u8 *)scene + 0xd4);
     child = Heap_Alloc(0xa0, data_ov037_021feeb0, 4, gHeapContext);
     if (child != 0)
         child = func_020955d8(child, actor);
     FIELD(void *, scene, 0x11c) = child;
     func_02095274((u8 *)scene + 0x12c, child);
 
-    actor = func_02077308(resourceOwner, (u8 *)scene + 0xe0);
+    actor = GraphicsAnimationInstanceManager_CreateInstance(resourceOwner, (u8 *)scene + 0xe0);
     FIELD(u8, actor, 0x5a) = 4;
     FIELD(u16, actor, 0x4e) = 0x43ff;
     child = Heap_Alloc(0xa0, data_ov037_021feeb0, 4, gHeapContext);

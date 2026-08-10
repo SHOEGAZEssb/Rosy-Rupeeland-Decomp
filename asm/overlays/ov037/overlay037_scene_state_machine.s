@@ -11,7 +11,7 @@
     .extern func_ov037_021fdf68
     .extern DisplayBrightness_IsMainTransitionComplete
     .extern func_02095360
-    .extern func_020773a8
+    .extern GraphicsAnimationInstanceManager_Update
     .extern data_ov037_021febb0
     .extern data_ov037_021feb5c
     .extern data_ov037_021feac8
@@ -124,7 +124,7 @@ L_021fe3e8:
     add r0, r4, #0x13c
     bl func_02095360
     ldr r0, [r4, #0x114]
-    bl func_020773a8
+    bl GraphicsAnimationInstanceManager_Update
     mov r0, #0x1
     ldmia sp!, {r4, pc}
 L_021fe40c:
@@ -133,7 +133,7 @@ L_021fe40c:
     add r0, r4, #0x13c
     bl func_02095360
     ldr r0, [r4, #0x114]
-    bl func_020773a8
+    bl GraphicsAnimationInstanceManager_Update
     mov r0, #0x0
     ldmia sp!, {r4, pc}
 L_021fe42c: .word data_ov037_021febb0

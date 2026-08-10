@@ -17,7 +17,7 @@ extern void Sound_Play(void *sound, s32 id, s32 mode);
 extern void func_02094cf0(void *object, const void *data, s32 mode);
 extern s32 func_02095248(void *object);
 extern s32 func_ov036_021fd28c(void *object);
-extern void func_020773cc(void *manager, s32 selector, void *resourceSet);
+extern void GraphicsAnimationInstanceManager_RebindInstance(void *manager, s32 selector, void *resourceSet);
 extern void func_ov036_022018a8(void *controller);
 extern void func_ov036_02201a78(void *controller);
 #ifdef __cplusplus
@@ -52,7 +52,7 @@ extern "C" s32 func_ov036_02201acc(void *controller)
     case 1:
         if (func_02095248(FIELD(void *, controller, 0x11c)) != 0) {
             void *child = FIELD(void *, controller, 0x11c);
-            func_020773cc(FIELD(void *, controller, 0x118),
+            GraphicsAnimationInstanceManager_RebindInstance(FIELD(void *, controller, 0x118),
                           FIELD(s32, child, 0x9c),
                           (u8 *)controller + 0xf4);
             FIELD(s32, child, 0x90) = 0;
@@ -63,7 +63,7 @@ extern "C" s32 func_ov036_02201acc(void *controller)
         if (func_02095248(FIELD(void *, controller, 0x11c)) != 0) {
             Sound_Play(gSoundContext, 0x1b0, 0);
             void *child = FIELD(void *, controller, 0x11c);
-            func_020773cc(FIELD(void *, controller, 0x118),
+            GraphicsAnimationInstanceManager_RebindInstance(FIELD(void *, controller, 0x118),
                           FIELD(s32, child, 0x9c),
                           (u8 *)controller + 0x100);
             func_ov036_022018a8(controller);

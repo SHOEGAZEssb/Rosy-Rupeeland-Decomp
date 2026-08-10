@@ -5,7 +5,7 @@
     .extern func_02059278
     .extern func_02094cf0
     .extern func_02095248
-    .extern func_020773cc
+    .extern GraphicsAnimationInstanceManager_RebindInstance
     .extern Sound_Play
     .extern func_ov036_022018a8
     .extern func_ov036_021fd28c
@@ -56,7 +56,7 @@ L_02201b3c:
     ldr r0, [r4, #0x118]
     ldr r1, [r1, #0x9c]
     add r2, r4, #0xf4
-    bl func_020773cc
+    bl GraphicsAnimationInstanceManager_RebindInstance
     ldr r0, [r4, #0x11c]
     mov r1, #0x0
     str r1, [r0, #0x90]
@@ -78,7 +78,7 @@ L_02201b7c:
     ldr r0, [r4, #0x118]
     ldr r1, [r1, #0x9c]
     add r2, r4, #0x100
-    bl func_020773cc
+    bl GraphicsAnimationInstanceManager_RebindInstance
     mov r0, r4
     bl func_ov036_022018a8
     ldr r0, [r4, #0x11c]

@@ -34,8 +34,8 @@ typedef struct GraphicsAnimationResource {
 /* 0x5c-byte runtime instance; unknown fields retain offset-derived names. */
 typedef struct GraphicsAnimationInstance {
     void *owner;
-    struct GraphicsAnimationInstance *field_04;
-    struct GraphicsAnimationInstance *field_08;
+    struct GraphicsAnimationInstance *previous;
+    struct GraphicsAnimationInstance *next;
     GraphicsSpriteRegion *textureRegion;
     GraphicsSpriteRegion *paletteRegion;
     void *textureResource;
@@ -56,7 +56,7 @@ typedef struct GraphicsAnimationInstance {
     u16 field_4c;
     u16 field_4e;
     u16 flags;
-    u16 field_52;
+    u16 timeStep;
     u8 animationIndex;
     u8 frameIndex;
     u8 field_56;
@@ -71,9 +71,9 @@ typedef char GraphicsAnimationInstanceSizeCheck[
     sizeof(GraphicsAnimationInstance) == 0x5c ? 1 : -1];
 
 typedef struct GraphicsAnimationCreateParams {
-    u32 field_00;
-    u32 field_04;
-    u32 field_08;
+    u32 textureResource;
+    u32 paletteResource;
+    u32 animationResource;
 } GraphicsAnimationCreateParams;
 
 /* 0x28-byte owner/list manager for GraphicsAnimationInstance nodes. */
@@ -84,10 +84,10 @@ typedef struct GraphicsAnimationInstanceManager {
     GraphicsAnimationInstance *head;
     GraphicsAnimationInstance *tail;
     s32 count;
-    u32 field_18;
-    u32 field_1c;
-    u32 field_20;
-    u32 field_24;
+    u32 translationX;
+    u32 translationY;
+    u32 translationZ;
+    u32 renderEnabled;
 } GraphicsAnimationInstanceManager;
 
 typedef char GraphicsAnimationInstanceManagerSizeCheck[
@@ -97,38 +97,51 @@ typedef char GraphicsAnimationInstanceManagerSizeCheck[
 extern "C" {
 #endif
 
-void func_02076b48(GraphicsAnimationInstance *instance, void *owner);
-void func_02076be8(GraphicsAnimationInstance *instance, s32 animationIndex);
-void func_02076c20(GraphicsAnimationInstance *instance, s32 frameIndex);
-void func_02076ca0(GraphicsAnimationInstance *instance);
-void func_02077220(GraphicsAnimationInstance *instance);
-u16 func_02077248(GraphicsAnimationInstance *instance);
-void func_02077260(GraphicsAnimationInstanceManager *manager, void *owner);
-void func_02077294(GraphicsAnimationInstanceManager *manager,
-                   GraphicsAnimationInstance *instance);
-void func_020772d0(GraphicsAnimationInstanceManager *manager,
-                   GraphicsAnimationInstance *instance);
-GraphicsAnimationInstance *func_02077308(
+void GraphicsAnimationInstance_Init(GraphicsAnimationInstance *instance,
+                                    void *owner);
+void GraphicsAnimationInstance_SetAnimation(
+    GraphicsAnimationInstance *instance, s32 animationIndex);
+void GraphicsAnimationInstance_SetFrame(GraphicsAnimationInstance *instance,
+                                        s32 frameIndex);
+void GraphicsAnimationInstance_Update(GraphicsAnimationInstance *instance);
+void GraphicsAnimationInstance_Destroy(GraphicsAnimationInstance *instance);
+u16 GraphicsAnimationInstance_GetSequenceDuration(
+    GraphicsAnimationInstance *instance);
+void GraphicsAnimationInstanceManager_Init(
+    GraphicsAnimationInstanceManager *manager, void *owner);
+void GraphicsAnimationInstanceManager_Append(
+    GraphicsAnimationInstanceManager *manager,
+    GraphicsAnimationInstance *instance);
+void GraphicsAnimationInstanceManager_Unlink(
+    GraphicsAnimationInstanceManager *manager,
+    GraphicsAnimationInstance *instance);
+GraphicsAnimationInstance *GraphicsAnimationInstanceManager_CreateInstance(
     GraphicsAnimationInstanceManager *manager,
     const GraphicsAnimationCreateParams *params);
-void func_0207733c(GraphicsAnimationInstanceManager *manager,
-                   GraphicsAnimationInstance *instance);
-void func_0207735c(GraphicsAnimationInstanceManager *manager);
-void func_020773a8(GraphicsAnimationInstanceManager *manager);
-void func_020773cc(GraphicsAnimationInstanceManager *manager,
-                   GraphicsAnimationInstance *instance,
-                   const GraphicsAnimationCreateParams *params);
-void func_020773e4(GraphicsAnimationInstanceManager *manager,
-                   void *renderContext);
-GraphicsAnimationInstance *func_02077734(
+void GraphicsAnimationInstanceManager_DestroyInstance(
+    GraphicsAnimationInstanceManager *manager,
+    GraphicsAnimationInstance *instance);
+void GraphicsAnimationInstanceManager_Clear(
+    GraphicsAnimationInstanceManager *manager);
+void GraphicsAnimationInstanceManager_Update(
+    GraphicsAnimationInstanceManager *manager);
+void GraphicsAnimationInstanceManager_RebindInstance(
+    GraphicsAnimationInstanceManager *manager,
+    GraphicsAnimationInstance *instance,
+    const GraphicsAnimationCreateParams *params);
+void GraphicsAnimationInstanceManager_Render(
+    GraphicsAnimationInstanceManager *manager, void *renderContext);
+GraphicsAnimationInstance *Graphics3DResourceOwner_CreateAnimationInstance(
     struct Graphics3DResourceOwner *owner, void *textureResource,
     void *paletteResource, GraphicsAnimationResource *animationResource,
     GraphicsAnimationInstanceManager *manager);
-void func_020777ac(struct Graphics3DResourceOwner *owner,
-                   GraphicsAnimationInstance *instance);
-void func_020777e8(struct Graphics3DResourceOwner *owner,
-                   GraphicsAnimationInstance *instance,
-                   const GraphicsAnimationCreateParams *params);
+void Graphics3DResourceOwner_DestroyAnimationInstance(
+    struct Graphics3DResourceOwner *owner,
+    GraphicsAnimationInstance *instance);
+void Graphics3DResourceOwner_RebindAnimationInstance(
+    struct Graphics3DResourceOwner *owner,
+    GraphicsAnimationInstance *instance,
+    const GraphicsAnimationCreateParams *params);
 
 #ifdef __cplusplus
 }

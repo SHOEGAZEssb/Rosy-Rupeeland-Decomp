@@ -20,20 +20,20 @@ extern "C" {
  * through that manager's external owner. The instance and manager must be
  * valid; list membership is a caller invariant. No value is returned.
  */
-void func_02077220(GraphicsAnimationInstance *instance)
+void GraphicsAnimationInstance_Destroy(GraphicsAnimationInstance *instance)
 {
     GraphicsAnimationInstanceManager *manager =
         (GraphicsAnimationInstanceManager *)instance->owner;
 
-    func_020772d0(manager, instance);
-    func_020777ac((struct Graphics3DResourceOwner *)manager->owner, instance);
+    GraphicsAnimationInstanceManager_Unlink(manager, instance);
+    Graphics3DResourceOwner_DestroyAnimationInstance((struct Graphics3DResourceOwner *)manager->owner, instance);
 }
 
 /*
  * Return the 16-bit duration of the currently selected sequence. Resource
  * pointers and animationIndex must be valid; state and hardware are unchanged.
  */
-u16 func_02077248(GraphicsAnimationInstance *instance)
+u16 GraphicsAnimationInstance_GetSequenceDuration(GraphicsAnimationInstance *instance)
 {
     return instance->resource->sequences[instance->animationIndex].duration;
 }
@@ -43,7 +43,7 @@ u16 func_02077248(GraphicsAnimationInstance *instance)
  * and field_24 set to one. No allocation or hardware access occurs.
  */
 #ifndef MATCHING
-void func_02077260(GraphicsAnimationInstanceManager *manager, void *owner)
+void GraphicsAnimationInstanceManager_Init(GraphicsAnimationInstanceManager *manager, void *owner)
 {
     manager->owner = owner;
     manager->next = 0;
@@ -51,14 +51,14 @@ void func_02077260(GraphicsAnimationInstanceManager *manager, void *owner)
     manager->tail = 0;
     manager->head = 0;
     manager->count = 0;
-    manager->field_20 = 0;
-    manager->field_1c = 0;
-    manager->field_18 = 0;
-    manager->field_24 = 1;
+    manager->translationZ = 0;
+    manager->translationY = 0;
+    manager->translationX = 0;
+    manager->renderEnabled = 1;
 }
 #else
 /* This matching fallback implements the documented portable C directly above. */
-asm void func_02077260(GraphicsAnimationInstanceManager *manager, void *owner)
+asm void GraphicsAnimationInstanceManager_Init(GraphicsAnimationInstanceManager *manager, void *owner)
 {
     str r1, [r0]
     mov r2, #0
@@ -81,7 +81,7 @@ asm void func_02077260(GraphicsAnimationInstanceManager *manager, void *owner)
  * both node links, and incrementing count. Ownership/allocation is unchanged.
  */
 #ifndef MATCHING
-void func_02077294(GraphicsAnimationInstanceManager *manager,
+void GraphicsAnimationInstanceManager_Append(GraphicsAnimationInstanceManager *manager,
                    GraphicsAnimationInstance *instance)
 {
     GraphicsAnimationInstance *tail;
@@ -93,16 +93,16 @@ void func_02077294(GraphicsAnimationInstanceManager *manager,
     if (manager->head == 0) {
         manager->head = instance;
     } else {
-        tail->field_08 = instance;
+        tail->next = instance;
     }
-    instance->field_04 = tail;
+    instance->previous = tail;
     manager->tail = instance;
-    instance->field_08 = 0;
+    instance->next = 0;
     manager->count++;
 }
 #else
 /* This matching fallback implements the documented portable C directly above. */
-asm void func_02077294(GraphicsAnimationInstanceManager *manager,
+asm void GraphicsAnimationInstanceManager_Append(GraphicsAnimationInstanceManager *manager,
                        GraphicsAnimationInstance *instance)
 {
     cmp r1, #0
@@ -129,7 +129,7 @@ asm void func_02077294(GraphicsAnimationInstanceManager *manager,
  * it neither destroys the instance nor validates membership.
  */
 #ifndef MATCHING
-void func_020772d0(GraphicsAnimationInstanceManager *manager,
+void GraphicsAnimationInstanceManager_Unlink(GraphicsAnimationInstanceManager *manager,
                    GraphicsAnimationInstance *instance)
 {
     GraphicsAnimationInstance *previous;
@@ -138,15 +138,15 @@ void func_020772d0(GraphicsAnimationInstanceManager *manager,
     if (instance == 0) {
         return;
     }
-    previous = instance->field_04;
-    next = instance->field_08;
+    previous = instance->previous;
+    next = instance->next;
     if (previous != 0) {
-        previous->field_08 = next;
+        previous->next = next;
     } else {
         manager->head = next;
     }
     if (next != 0) {
-        next->field_04 = previous;
+        next->previous = previous;
     } else {
         manager->tail = previous;
     }
@@ -154,7 +154,7 @@ void func_020772d0(GraphicsAnimationInstanceManager *manager,
 }
 #else
 /* This matching fallback implements the documented portable C directly above. */
-asm void func_020772d0(GraphicsAnimationInstanceManager *manager,
+asm void GraphicsAnimationInstanceManager_Unlink(GraphicsAnimationInstanceManager *manager,
                        GraphicsAnimationInstance *instance)
 {
     cmp r1, #0
@@ -180,16 +180,18 @@ asm void func_020772d0(GraphicsAnimationInstanceManager *manager,
  * is passed to the allocator as the new instance owner. Retail does not reject
  * a null allocation before append returns it.
  */
-GraphicsAnimationInstance *func_02077308(
+GraphicsAnimationInstance *GraphicsAnimationInstanceManager_CreateInstance(
     GraphicsAnimationInstanceManager *manager,
     const GraphicsAnimationCreateParams *params)
 {
     GraphicsAnimationInstance *instance =
-        func_02077734((struct Graphics3DResourceOwner *)manager->owner,
-                      (void *)params->field_00, (void *)params->field_04,
-                      (GraphicsAnimationResource *)params->field_08, manager);
+        Graphics3DResourceOwner_CreateAnimationInstance((struct Graphics3DResourceOwner *)manager->owner,
+                      (void *)params->textureResource,
+                      (void *)params->paletteResource,
+                      (GraphicsAnimationResource *)params->animationResource,
+                      manager);
 
-    func_02077294(manager, instance);
+    GraphicsAnimationInstanceManager_Append(manager, instance);
     return instance;
 }
 
@@ -197,11 +199,11 @@ GraphicsAnimationInstance *func_02077308(
  * Unlink instance and destroy it through manager's external owner. Null is
  * accepted by unlink but still forwarded to the destruction helper.
  */
-void func_0207733c(GraphicsAnimationInstanceManager *manager,
+void GraphicsAnimationInstanceManager_DestroyInstance(GraphicsAnimationInstanceManager *manager,
                    GraphicsAnimationInstance *instance)
 {
-    func_020772d0(manager, instance);
-    func_020777ac((struct Graphics3DResourceOwner *)manager->owner, instance);
+    GraphicsAnimationInstanceManager_Unlink(manager, instance);
+    Graphics3DResourceOwner_DestroyAnimationInstance((struct Graphics3DResourceOwner *)manager->owner, instance);
 }
 
 /*
@@ -209,16 +211,16 @@ void func_0207733c(GraphicsAnimationInstanceManager *manager,
  * then explicitly clear both endpoints and count. External owner callbacks are
  * the only possible allocator or graphics side effects.
  */
-void func_0207735c(GraphicsAnimationInstanceManager *manager)
+void GraphicsAnimationInstanceManager_Clear(GraphicsAnimationInstanceManager *manager)
 {
     GraphicsAnimationInstance *instance = manager->head;
 
     while (instance != 0) {
         GraphicsAnimationInstance *next =
-            instance->field_08;
+            instance->next;
 
-        func_020772d0(manager, instance);
-        func_020777ac((struct Graphics3DResourceOwner *)manager->owner, instance);
+        GraphicsAnimationInstanceManager_Unlink(manager, instance);
+        Graphics3DResourceOwner_DestroyAnimationInstance((struct Graphics3DResourceOwner *)manager->owner, instance);
         instance = next;
     }
     manager->tail = 0;
@@ -227,13 +229,13 @@ void func_0207735c(GraphicsAnimationInstanceManager *manager)
 }
 
 /* Advance every linked instance once in list order; list mutation is not guarded. */
-void func_020773a8(GraphicsAnimationInstanceManager *manager)
+void GraphicsAnimationInstanceManager_Update(GraphicsAnimationInstanceManager *manager)
 {
     GraphicsAnimationInstance *instance;
 
     for (instance = manager->head; instance != 0;
-         instance = instance->field_08) {
-        func_02076ca0(instance);
+         instance = instance->next) {
+        GraphicsAnimationInstance_Update(instance);
     }
 }
 
@@ -241,13 +243,13 @@ void func_020773a8(GraphicsAnimationInstanceManager *manager)
  * If instance is non-null, forward it and params to the owner's resource
  * rebinding helper. The manager itself is unchanged.
  */
-void func_020773cc(GraphicsAnimationInstanceManager *manager,
+void GraphicsAnimationInstanceManager_RebindInstance(GraphicsAnimationInstanceManager *manager,
                    GraphicsAnimationInstance *instance,
                    const GraphicsAnimationCreateParams *params)
 {
     if (instance == 0) {
         return;
     }
-    func_020777e8((struct Graphics3DResourceOwner *)manager->owner, instance,
+    Graphics3DResourceOwner_RebindAnimationInstance((struct Graphics3DResourceOwner *)manager->owner, instance,
                   params);
 }

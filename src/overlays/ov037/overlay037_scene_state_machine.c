@@ -22,7 +22,7 @@ extern void func_ov037_021fe1f0(void *scene);
 extern void func_ov037_021fdf68(void *scene);
 extern s32 DisplayBrightness_IsMainTransitionComplete(void);
 extern void func_02095360(void *container);
-extern void func_020773a8(void *resourceOwner);
+extern void GraphicsAnimationInstanceManager_Update(void *resourceOwner);
 #ifdef __cplusplus
 }
 #endif
@@ -31,7 +31,7 @@ static void updateOwnedSceneObjects(void *scene)
 {
     func_02095360((u8 *)scene + 0x12c);
     func_02095360((u8 *)scene + 0x13c);
-    func_020773a8(FIELD(void *, scene, 0x114));
+    GraphicsAnimationInstanceManager_Update(FIELD(void *, scene, 0x114));
 }
 
 /*

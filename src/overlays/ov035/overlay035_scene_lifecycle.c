@@ -16,7 +16,7 @@ extern void func_02095308(void *object);
 extern void Graphics3DResourceOwner_RemoveManager(void *resource);
 extern void func_020720d4(void *state);
 extern void Heap_Free(void *allocation);
-extern void *func_02077308(void *resourceSet, void *resource);
+extern void *GraphicsAnimationInstanceManager_CreateInstance(void *resourceSet, void *resource);
 extern s32 func_020918f4(void *randomState, s32 maximum);
 extern s32 func_0209189c(void *randomState, s32 minimum, s32 maximum);
 extern void func_ov035_021fdd28(void *record, s32 identifier, s32 value20,
@@ -83,7 +83,7 @@ extern "C" void *func_ov035_021fe1a0(void *scene)
  */
 extern "C" void func_ov035_021fe20c(void *scene, s32 direction)
 {
-    void *record = func_02077308(FIELD(void *, scene, 0x100),
+    void *record = GraphicsAnimationInstanceManager_CreateInstance(FIELD(void *, scene, 0x100),
                                   (u8 *)scene + 0xf4);
     s32 identifier = func_020918f4((u8 *)scene + 0xc0, 8);
     func_ov035_021fdd28(record, identifier, 0, 0, 0, 0x12, 0x40);

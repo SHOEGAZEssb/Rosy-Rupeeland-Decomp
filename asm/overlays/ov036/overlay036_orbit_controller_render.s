@@ -3,7 +3,7 @@
 /* Exact fallback; see src/overlays/ov036/overlay036_orbit_controller_render.c for documented portable C. */
 
     .extern Graphics3DSceneState_Apply
-    .extern func_020773e4
+    .extern GraphicsAnimationInstanceManager_Render
     .extern func_ov036_0220009c
     .extern func_ov036_021fd128
     .extern func_ov036_021fdef0
@@ -17,7 +17,7 @@ func_ov036_02200fb8:
     bl Graphics3DSceneState_Apply
     ldr r0, [r4, #0x100]
     add r1, r4, #0x64
-    bl func_020773e4
+    bl GraphicsAnimationInstanceManager_Render
     ldr r0, [r4, #0x144]
     bl func_ov036_0220009c
     mov r0, #0x1f

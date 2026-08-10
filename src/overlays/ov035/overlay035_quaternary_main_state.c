@@ -21,7 +21,7 @@ extern s32 func_02095248(void *object);
 extern s32 func_02095224(void *object);
 extern void func_020948e4(void *field, s32 mode, s32 value);
 extern void func_02094bbc(void *object, s32 x, s32 y, s32 z);
-extern void func_020773cc(void *resourceSet, void *spriteRecord,
+extern void GraphicsAnimationInstanceManager_RebindInstance(void *resourceSet, void *spriteRecord,
                          void *resource);
 extern void func_ov035_02200574(void *scene);
 #ifdef __cplusplus
@@ -84,7 +84,7 @@ extern "C" s32 func_ov035_022005b0(void *scene)
             void *sprite = FIELD(void *, scene, 0x108);
             func_02094bbc(sprite, FIELD(s32, sprite, 0x10),
                           FIELD(s32, sprite, 0x20), 0x400);
-            func_020773cc(FIELD(void *, scene, 0x104),
+            GraphicsAnimationInstanceManager_RebindInstance(FIELD(void *, scene, 0x104),
                           FIELD(void *, sprite, 0x9c),
                           (u8 *)scene + 0xe8);
             FIELD(s32, sprite, 0x90) = 0;

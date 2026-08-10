@@ -21,7 +21,7 @@ extern void func_02091b98(void *state, s32 duration);
 extern void func_ov035_02201df8(void *scene, s32 side);
 extern void func_02091dac(void *state);
 extern void func_02095360(void *collection);
-extern void func_020773a8(void *resourceSet);
+extern void GraphicsAnimationInstanceManager_Update(void *resourceSet);
 #ifdef __cplusplus
 }
 #endif
@@ -31,7 +31,7 @@ static void update_scene(void *scene)
 {
     func_02095360((u8 *)scene + 0x10c);
     func_02095360((u8 *)scene + 0x11c);
-    func_020773a8(FIELD(void *, scene, 0xf4));
+    GraphicsAnimationInstanceManager_Update(FIELD(void *, scene, 0xf4));
 }
 
 /*

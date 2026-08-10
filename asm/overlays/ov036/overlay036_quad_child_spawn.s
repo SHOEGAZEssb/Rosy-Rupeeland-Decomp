@@ -2,7 +2,7 @@
 
 /* Exact fallback; see src/overlays/ov036/overlay036_quad_child_spawn.c for documented portable C. */
 
-    .extern func_02077308
+    .extern GraphicsAnimationInstanceManager_CreateInstance
     .extern Heap_Alloc
     .extern func_ov036_02201d70
     .extern func_02094bbc
@@ -30,7 +30,7 @@ func_ov036_02202628:
     bne L_02202684
     ldr r0, [r6, #0xf8]
     add r1, r6, #0xe8
-    bl func_02077308
+    bl GraphicsAnimationInstanceManager_CreateInstance
     mov r4, r0
     mov r0, #0xd
     strb r0, [r4, #0x5a]
@@ -38,7 +38,7 @@ func_ov036_02202628:
 L_0220266c:
     ldr r0, [r6, #0xf8]
     add r1, r6, #0xdc
-    bl func_02077308
+    bl GraphicsAnimationInstanceManager_CreateInstance
     mov r4, r0
     mov r0, #0x2
     strb r0, [r4, #0x5a]

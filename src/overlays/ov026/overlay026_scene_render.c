@@ -7,7 +7,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_020773e4(void *, void *);
+extern void GraphicsAnimationInstanceManager_Render(void *, void *);
 extern void Graphics3DLight_Apply(void *, s32);
 extern void Graphics3DSceneState_Apply(void *);
 extern void func_020b0558(void);
@@ -55,7 +55,7 @@ extern "C" void func_ov026_0220046c(void *scene)
     if (FIELD(s32, scene, 0x370) == 1) {
         *(volatile u32 *)0x04000444 = 0;
         Graphics3DSceneState_Apply((u8 *)scene + 0x254);
-        func_020773e4(FIELD(void *, scene, 0x78), (u8 *)scene + 0x2ac);
+        GraphicsAnimationInstanceManager_Render(FIELD(void *, scene, 0x78), (u8 *)scene + 0x2ac);
         *(volatile u32 *)0x04000448 = 1;
     }
     *(volatile u32 *)0x04000444 = 0;
@@ -72,12 +72,12 @@ extern "C" void func_ov026_0220046c(void *scene)
     if (FIELD(u32, effect, 0x12c) & 0x2000)
         func_ov026_022006f8(scene, func_ov026_021ff4f8(effect));
 
-    func_020773e4(FIELD(void *, scene, 0x6c), (u8 *)scene + 0x218);
+    GraphicsAnimationInstanceManager_Render(FIELD(void *, scene, 0x6c), (u8 *)scene + 0x218);
     u32 flags = FIELD(u32, effect, 0x12c);
     if (flags & 4)
-        func_020773e4(FIELD(void *, scene, 0x70), (u8 *)scene + 0x218);
+        GraphicsAnimationInstanceManager_Render(FIELD(void *, scene, 0x70), (u8 *)scene + 0x218);
     if (flags & 8)
-        func_020773e4(FIELD(void *, scene, 0x74), (u8 *)scene + 0x218);
+        GraphicsAnimationInstanceManager_Render(FIELD(void *, scene, 0x74), (u8 *)scene + 0x218);
     if (flags & 0x10)
         func_ov026_021fd300(FIELD(void *, scene, 0x164));
     if (flags & 0x100)

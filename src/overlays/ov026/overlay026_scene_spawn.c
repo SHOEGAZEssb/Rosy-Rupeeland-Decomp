@@ -12,7 +12,7 @@ extern const u8 data_ov026_02204acc[];
 extern "C" {
 #endif
 extern void *Heap_Alloc(u32, const void *, u32, void *);
-extern void *func_02077308(void *, void *);
+extern void *GraphicsAnimationInstanceManager_CreateInstance(void *, void *);
 extern s32 func_0209189c(void *, s32, s32);
 extern s32 func_020918f4(void *, s32);
 extern void func_020948d4(void *, s32);
@@ -38,7 +38,7 @@ extern void func_ov026_021ff830(void *, u32, s32, s32, s32, u8, u32);
  */
 extern "C" void func_ov026_02200e0c(void *scene, s32 height)
 {
-    void *record = func_02077308(FIELD(void *, scene, 0x6c),
+    void *record = GraphicsAnimationInstanceManager_CreateInstance(FIELD(void *, scene, 0x6c),
                                   (u8 *)scene + 0x94);
     void *object = Heap_Alloc(0xa0, data_ov026_02204acc, 4, gHeapContext);
     if (object != 0)

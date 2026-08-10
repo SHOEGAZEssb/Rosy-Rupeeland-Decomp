@@ -9,7 +9,7 @@ extern "C" {
 #endif
 extern void Graphics3DSceneState_Apply(void *state);
 extern void func_ov036_022029b0(void *records);
-extern void func_020773e4(void *manager, void *transform);
+extern void GraphicsAnimationInstanceManager_Render(void *manager, void *transform);
 extern void func_ov036_021fdef0(s32, s32, s32, s32,
                                 s32, s32, s32, s32);
 extern void func_ov036_021fcfa0(void *object, void *transform);
@@ -29,7 +29,7 @@ extern "C" void func_ov036_0220293c(void *controller)
 {
     Graphics3DSceneState_Apply((u8 *)controller + 0xc);
     func_ov036_022029b0((u8 *)controller + 0x11c);
-    func_020773e4(FIELD(void *, controller, 0xf8),
+    GraphicsAnimationInstanceManager_Render(FIELD(void *, controller, 0xf8),
                   (u8 *)controller + 0x64);
     func_ov036_021fdef0(0, 0, 0, 0, 0, 0, 0, 0);
     for (void *object = FIELD(void *, controller, 0x110);

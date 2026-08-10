@@ -1,7 +1,7 @@
     .text
 
 /* Exact fallback; see src/overlays/ov017/overlay017_sprite_pool_state.c. */
-    .extern func_020773a8
+    .extern GraphicsAnimationInstanceManager_Update
     .extern func_0209189c
     .extern func_02091bac
     .extern func_02091c7c
@@ -85,7 +85,7 @@ L_021fe6ac:
     cmp r2, #0x8
     blt L_021fe6ac
     ldr r0, [r4, #0x0]
-    bl func_020773a8
+    bl GraphicsAnimationInstanceManager_Update
     add sp, sp, #0x4
     ldmia sp!, {r3, r4, r5, r6, pc}
 L_021fe6d8: .word 0xe66

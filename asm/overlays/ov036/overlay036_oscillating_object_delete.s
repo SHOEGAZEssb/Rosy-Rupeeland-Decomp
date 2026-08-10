@@ -2,7 +2,7 @@
 
 /* Exact fallback; see src/overlays/ov036/overlay036_oscillating_object_lifecycle.c for documented portable C. */
 
-    .extern func_02077220
+    .extern GraphicsAnimationInstance_Destroy
     .extern func_ov036_021fcf30
     .extern Heap_Free
     .extern data_ov036_0220600c
@@ -14,7 +14,7 @@ func_ov036_02201e1c:
     mov r4, r0
     str r1, [r4, #0x0]
     ldr r0, [r4, #0xd4]
-    bl func_02077220
+    bl GraphicsAnimationInstance_Destroy
     mov r0, r4
     bl func_ov036_021fcf30
     mov r0, r4

@@ -5,7 +5,7 @@
     .extern func_02059278
     .extern func_02094cf0
     .extern func_02095248
-    .extern func_02076be8
+    .extern GraphicsAnimationInstance_SetAnimation
     .extern Sound_Play
     .extern func_02091c7c
     .extern func_02091dac
@@ -14,7 +14,7 @@
     .extern func_02095224
     .extern func_0205929c
     .extern func_02095360
-    .extern func_020773a8
+    .extern GraphicsAnimationInstanceManager_Update
     .extern gSoundContext
     .extern data_ov035_02202f70
     .extern data_ov035_02203770
@@ -86,7 +86,7 @@ L_021ffd18:
     ldr r0, [r4, #0x134]
     mov r1, #0x2
     ldr r0, [r0, #0x9c]
-    bl func_02076be8
+    bl GraphicsAnimationInstance_SetAnimation
     ldr r0, L_021ffe20
     ldr r1, L_021ffe40
     ldr r0, [r0, #0x0]
@@ -134,7 +134,7 @@ L_021ffde0:
     add r0, r4, #0x184
     bl func_02095360
     ldr r0, [r4, #0x124]
-    bl func_020773a8
+    bl GraphicsAnimationInstanceManager_Update
     mov r0, #0x1
     ldmia sp!, {r4, pc}
 L_021ffe00:
@@ -143,7 +143,7 @@ L_021ffe00:
     add r0, r4, #0x184
     bl func_02095360
     ldr r0, [r4, #0x124]
-    bl func_020773a8
+    bl GraphicsAnimationInstanceManager_Update
     mov r0, #0x0
     ldmia sp!, {r4, pc}
 L_021ffe20: .word gSoundContext

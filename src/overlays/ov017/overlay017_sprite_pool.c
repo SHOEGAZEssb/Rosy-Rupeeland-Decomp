@@ -16,7 +16,7 @@ extern u32 genrand_int32(void);
 extern s32 func_020720c0(void *);
 extern void func_020720d4(void *);
 extern void func_020720e8(void *, void *, s32, s32, s32);
-extern void *func_02077308(void *, void *);
+extern void *GraphicsAnimationInstanceManager_CreateInstance(void *, void *);
 extern void *Graphics3DResourceOwner_CreateManager(void *);
 extern void Graphics3DResourceOwner_RemoveManager(void *, void *);
 extern void Graphics3DResourceOwner_PrepareResources(void *, void *);
@@ -56,7 +56,7 @@ extern "C" void *func_ov017_021fe40c(void *pool, void *resourceContext)
         s32 tableIndex = (s16)angle >> 4;
         s32 radius = data_ov017_02201414[
             FIELD(s32, data_ov017_022016e0, 0xc)];
-        void *sprite = func_02077308(FIELD(void *, pool, 0),
+        void *sprite = GraphicsAnimationInstanceManager_CreateInstance(FIELD(void *, pool, 0),
                                      (u8 *)pool + 4);
         s32 coordinateZ;
         s32 coordinateX;

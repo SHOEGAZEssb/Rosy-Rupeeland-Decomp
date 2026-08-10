@@ -14,13 +14,13 @@ extern "C" {
 #endif
 extern void *Heap_Alloc(u32 size, const void *tag, s32 alignment, void *heap);
 extern void *func_ov036_021fe258(void *object, const void *config);
-extern void *func_02077308(void *manager, void *resourceSet);
+extern void *GraphicsAnimationInstanceManager_CreateInstance(void *manager, void *resourceSet);
 extern void func_ov036_021ff050(void *handle, s32 mode,
                                 s32 x, s32 y, s32 z,
                                 s32 byte5A, s32 flags);
 extern void func_02095274(void *list, void *object);
 extern void Sound_Play(void *context, s32 id, s32 variant);
-extern void func_02076be8(void *handle, u8 mode);
+extern void GraphicsAnimationInstance_SetAnimation(void *handle, u8 mode);
 #ifdef __cplusplus
 }
 #endif
@@ -44,7 +44,7 @@ extern "C" void func_ov036_021fef6c(void *controller, s32 configIndex)
 
     void *resourceSet = (u8 *)controller +
         (FIELD(s32, config, 0x18) != 0 ? 0xe0 : 0xec);
-    void *handle = func_02077308(FIELD(void *, controller, 0xdc), resourceSet);
+    void *handle = GraphicsAnimationInstanceManager_CreateInstance(FIELD(void *, controller, 0xdc), resourceSet);
     FIELD(void *, effect, 0xcc) = handle;
     func_ov036_021ff050(handle, 0, 0, 0, 0, 2, 0x46);
     func_02095274((u8 *)controller + 0x108, effect);
@@ -62,7 +62,7 @@ extern "C" void func_ov036_021ff050(void *handle, s32 mode,
                                      s32 x, s32 y, s32 z,
                                      s32 byte5A, s32 flags)
 {
-    func_02076be8(handle, (u8)mode);
+    GraphicsAnimationInstance_SetAnimation(handle, (u8)mode);
     FIELD(s32, handle, 0x20) = x;
     FIELD(s32, handle, 0x24) = y;
     FIELD(s32, handle, 0x28) = z;

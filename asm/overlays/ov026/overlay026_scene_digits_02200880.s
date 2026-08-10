@@ -2,8 +2,8 @@
 
 /* Exact fallback; see src/overlays/ov026/overlay026_scene_digits.c. */
 .extern data_ov026_02204ac4
-.extern func_02077308
-.extern func_0207735c
+.extern GraphicsAnimationInstanceManager_CreateInstance
+.extern GraphicsAnimationInstanceManager_Clear
 .extern func_020b35b0
 .extern func_ov026_021ff830
 
@@ -15,7 +15,7 @@ func_ov026_02200880:
     mov r10, r0
     ldr r0, [r10, #0x78]
     mov r4, r1
-    bl func_0207735c
+    bl GraphicsAnimationInstanceManager_Clear
     ldr r1, L_022009d8
     add r0, sp, #0xc
     mov r2, r4
@@ -29,7 +29,7 @@ func_ov026_02200880:
     add r9, r1, #0x2a
     ldr r0, [r10, #0x78]
     add r1, r10, #0xa0
-    bl func_02077308
+    bl GraphicsAnimationInstanceManager_CreateInstance
     mov r1, #0x0
     str r1, [sp, #0x0]
     mov r1, #0x1b
@@ -51,7 +51,7 @@ func_ov026_02200880:
 L_02200918:
     ldr r0, [r10, #0x78]
     add r1, r10, #0xa0
-    bl func_02077308
+    bl GraphicsAnimationInstanceManager_CreateInstance
     str r6, [sp, #0x0]
     stmib sp, {r5, r11}
     add r1, sp, #0xc
@@ -66,7 +66,7 @@ L_02200918:
     bne L_02200990
     ldr r0, [r10, #0x78]
     add r1, r10, #0xa0
-    bl func_02077308
+    bl GraphicsAnimationInstanceManager_CreateInstance
     mov r1, #0x0
     str r1, [sp, #0x0]
     mov r1, #0x1b
@@ -86,7 +86,7 @@ L_02200994:
     blt L_02200918
     ldr r0, [r10, #0x78]
     add r1, r10, #0xa0
-    bl func_02077308
+    bl GraphicsAnimationInstanceManager_CreateInstance
     mov r1, #0x0
     mov r4, #0x40
     str r1, [sp, #0x0]

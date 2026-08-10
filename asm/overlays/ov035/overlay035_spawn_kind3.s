@@ -2,7 +2,7 @@
 
 /* Exact fallback; see src/overlays/ov035/overlay035_tertiary_scene_lifecycle.c for documented portable C. */
 
-    .extern func_02077308
+    .extern GraphicsAnimationInstanceManager_CreateInstance
     .extern func_020918f4
     .extern func_ov035_021fdd28
     .extern Heap_Alloc
@@ -21,7 +21,7 @@ func_ov035_021ffb74:
     ldr r0, [r5, #0x124]
     mov r4, r1
     add r1, r5, #0x118
-    bl func_02077308
+    bl GraphicsAnimationInstanceManager_CreateInstance
     mov r8, r0
     add r0, r5, #0xc0
     mov r1, #0x2

@@ -22,7 +22,7 @@ extern void func_020948f8(void *field, s32 mode, s32 value);
 extern void func_020948e4(void *field, s32 mode, s32 value);
 extern s32 func_ov035_021fd25c(void *object);
 extern void func_02095360(void *collection);
-extern void func_020773a8(void *resourceSet);
+extern void GraphicsAnimationInstanceManager_Update(void *resourceSet);
 #ifdef __cplusplus
 }
 #endif
@@ -112,10 +112,10 @@ extern "C" s32 func_ov035_021fe2f8(void *scene)
         break;
     case 6:
         func_02095360((u8 *)scene + 0x10c);
-        func_020773a8(FIELD(void *, scene, 0x100));
+        GraphicsAnimationInstanceManager_Update(FIELD(void *, scene, 0x100));
         return 1;
     }
     func_02095360((u8 *)scene + 0x10c);
-    func_020773a8(FIELD(void *, scene, 0x100));
+    GraphicsAnimationInstanceManager_Update(FIELD(void *, scene, 0x100));
     return 0;
 }

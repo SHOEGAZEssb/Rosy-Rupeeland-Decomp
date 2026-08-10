@@ -33,7 +33,7 @@ extern void func_020720c0(void *);
 extern void func_020720e8(void *, void *, s32, s32, s32);
 extern void func_02074568(void *);
 extern void func_02075238(void *);
-extern void *func_02077308(void *, void *);
+extern void *GraphicsAnimationInstanceManager_CreateInstance(void *, void *);
 extern void *Graphics3DResourceOwner_Init(void *, s32, s32);
 extern void *Graphics3DResourceOwner_CreateManager(void *);
 extern void Graphics3DResourceOwner_PrepareResources(void *, void *);
@@ -198,7 +198,7 @@ extern "C" void *func_ov026_021ff8a0(void *scene, s32 scene_id,
         s32 index = (angle >> 4) & 0xfff;
         s32 x = (data_020c9670[index * 2 + 1] * radius + 0x800) >> 12;
         s32 z = (data_020c9670[index * 2] * radius + 0x800) >> 12;
-        void *record = func_02077308(FIELD(void *, scene, 0x70),
+        void *record = GraphicsAnimationInstanceManager_CreateInstance(FIELD(void *, scene, 0x70),
                                      (u8 *)scene + 0x7c);
         FIELD(void *, scene, 0xf8 + i * 4) = record;
         func_ov026_021ff830(record, 0, x, 0xcd, z, 3, 0x40);
@@ -211,7 +211,7 @@ extern "C" void *func_ov026_021ff8a0(void *scene, s32 scene_id,
         s32 index = (angle >> 4) & 0xfff;
         s32 x = (data_020c9670[index * 2 + 1] * 0x800 + 0x800) >> 12;
         s32 z = (data_020c9670[index * 2] * 0x800 + 0x800) >> 12;
-        void *record = func_02077308(FIELD(void *, scene, 0x74),
+        void *record = GraphicsAnimationInstanceManager_CreateInstance(FIELD(void *, scene, 0x74),
                                      (u8 *)scene + 0x88);
         FIELD(void *, scene, 0xb8 + i * 4) = record;
         func_ov026_021ff830(record, 0, z, i * 0x333 + 0x800,
@@ -221,7 +221,7 @@ extern "C" void *func_ov026_021ff8a0(void *scene, s32 scene_id,
         FIELD(s32, record, 0x44) = 0x8000;
     }
 
-    void *central = func_02077308(FIELD(void *, scene, 0x6c),
+    void *central = GraphicsAnimationInstanceManager_CreateInstance(FIELD(void *, scene, 0x6c),
                                    (u8 *)scene + 0xac);
     FIELD(void *, scene, 0x158) = central;
     func_ov026_021ff830(central, 0, 0, 0, 0, 0x19, 0x44);

@@ -10,7 +10,7 @@ typedef void (*UpdateCallback)(void *object);
 extern "C" {
 #endif
 extern void func_02095360(void *list);
-extern void func_020773a8(void *manager);
+extern void GraphicsAnimationInstanceManager_Update(void *manager);
 #ifdef __cplusplus
 }
 #endif
@@ -28,5 +28,5 @@ extern "C" void func_ov036_0220429c(void *controller)
     (*(UpdateCallback *)((u8 *)FIELD(void *, object, 0) + 8))(object);
     func_02095360((u8 *)controller + 0xfc);
     func_02095360((u8 *)controller + 0x10c);
-    func_020773a8(FIELD(void *, controller, 0xe8));
+    GraphicsAnimationInstanceManager_Update(FIELD(void *, controller, 0xe8));
 }

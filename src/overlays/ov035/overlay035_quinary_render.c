@@ -8,7 +8,7 @@
 extern "C" {
 #endif
 extern void Graphics3DSceneState_Apply(void *camera);
-extern void func_020773e4(void *resourceSet, void *transform);
+extern void GraphicsAnimationInstanceManager_Render(void *resourceSet, void *transform);
 extern void func_ov035_021fd60c(void *list);
 extern void func_ov035_021fd128(s32 first, s32 second, s32 third, s32 fourth,
                                s32 fifth, s32 sixth);
@@ -31,7 +31,7 @@ extern void func_ov035_021fcfa0(void *object, void *transform);
 extern "C" void func_ov035_022014d0(void *scene)
 {
     Graphics3DSceneState_Apply((u8 *)scene + 0x0c);
-    func_020773e4(FIELD(void *, scene, 0xf8), (u8 *)scene + 0x64);
+    GraphicsAnimationInstanceManager_Render(FIELD(void *, scene, 0xf8), (u8 *)scene + 0x64);
     func_ov035_021fd60c(FIELD(void *, scene, 0x170));
     func_ov035_021fd128(0, 0, 3, 0x10, 0x1f, 0x8000);
     func_ov035_021fd7b0(0, 0, 0, 0, 0, 0, 0, 0);

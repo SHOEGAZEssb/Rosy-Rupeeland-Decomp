@@ -11,7 +11,7 @@ extern u8 data_ov017_022016e0[];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_02076be8(void *, s32);
+extern void GraphicsAnimationInstance_SetAnimation(void *, s32);
 extern void func_020948d4(void *, s32);
 extern void func_020948e4(void *, s32, s32);
 extern void func_020948f8(void *, s32, s32);
@@ -121,7 +121,7 @@ extern "C" void func_ov017_021fe3c4(void *sprite, u32 animationIndex,
                                       u32 value20, u32 value24, u32 value28,
                                       u8 value5a, u32 flags50)
 {
-    func_02076be8(sprite, (u8)animationIndex);
+    GraphicsAnimationInstance_SetAnimation(sprite, (u8)animationIndex);
     FIELD(u32, sprite, 0x20) = value20;
     FIELD(u32, sprite, 0x24) = value24;
     FIELD(u32, sprite, 0x28) = value28;

@@ -21,7 +21,7 @@ extern s32 func_02091c7c(void *timer, s32 mode);
 extern void func_02094cf0(void *object, const void *data, s32 mode);
 extern s32 func_02095224(void *object);
 extern s32 func_02095248(void *object);
-extern void func_02076be8(void *resource, s32 selector);
+extern void GraphicsAnimationInstance_SetAnimation(void *resource, s32 selector);
 extern void func_ov036_021fdc1c(void *auxiliary);
 extern void func_ov036_02203024(void *controller, s32 colorMode,
                                 s32 segmentType);
@@ -78,7 +78,7 @@ extern "C" s32 func_ov036_022032a8(void *controller)
     case 3:
         if (func_02091c7c((u8 *)controller + 0xa4, 2) != 0) {
             Sound_Play(gSoundContext, 0x1b2, 0);
-            func_02076be8(FIELD(void *, FIELD(void *, controller, 0xfc), 0x9c),
+            GraphicsAnimationInstance_SetAnimation(FIELD(void *, FIELD(void *, controller, 0xfc), 0x9c),
                           0);
             func_02094cf0(FIELD(void *, controller, 0x154),
                           data_ov036_022058e4, 1);
@@ -103,7 +103,7 @@ extern "C" s32 func_ov036_022032a8(void *controller)
     case 5:
         if (func_02091c7c((u8 *)controller + 0xa4, 2) != 0) {
             Sound_Play(gSoundContext, 0x1b2, 1);
-            func_02076be8(FIELD(void *, FIELD(void *, controller, 0xfc), 0x9c),
+            GraphicsAnimationInstance_SetAnimation(FIELD(void *, FIELD(void *, controller, 0xfc), 0x9c),
                           0);
             FIELD(s32, FIELD(void *, controller, 0x154), 0x90) = 0;
             FIELD(s32, FIELD(void *, controller, 0x158), 0x90) = 0;
@@ -125,7 +125,7 @@ extern "C" s32 func_ov036_022032a8(void *controller)
     case 7:
         if (func_02091c7c((u8 *)controller + 0xa4, 2) != 0) {
             Sound_Play(gSoundContext, 0x1b2, 0);
-            func_02076be8(FIELD(void *, FIELD(void *, controller, 0xfc), 0x9c),
+            GraphicsAnimationInstance_SetAnimation(FIELD(void *, FIELD(void *, controller, 0xfc), 0x9c),
                           0);
             FIELD(s32, FIELD(void *, controller, 0x154), 0x90) = 0;
             FIELD(s32, FIELD(void *, controller, 0x158), 0x90) = 0;
@@ -150,7 +150,7 @@ extern "C" s32 func_ov036_022032a8(void *controller)
     case 9:
         if (func_02091c7c((u8 *)controller + 0xa4, 2) != 0) {
             Sound_Play(gSoundContext, 0x1b2, 1);
-            func_02076be8(FIELD(void *, FIELD(void *, controller, 0xfc), 0x9c),
+            GraphicsAnimationInstance_SetAnimation(FIELD(void *, FIELD(void *, controller, 0xfc), 0x9c),
                           0);
             FIELD(s32, FIELD(void *, controller, 0x154), 0x90) = 0;
             FIELD(s32, FIELD(void *, controller, 0x158), 0x90) = 0;

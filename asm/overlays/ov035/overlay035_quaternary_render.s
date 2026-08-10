@@ -5,7 +5,7 @@
     .extern Graphics3DSceneState_Apply
     .extern Graphics3DLight_Apply
     .extern func_ov048_0220baec
-    .extern func_020773e4
+    .extern GraphicsAnimationInstanceManager_Render
     .extern func_ov035_021fd7b0
     .extern func_ov035_021fcfa0
 
@@ -49,7 +49,7 @@ L_02200808:
     bl func_ov048_0220baec
     ldr r0, [r4, #0x104]
     add r1, r4, #0x64
-    bl func_020773e4
+    bl GraphicsAnimationInstanceManager_Render
     mov r0, #0x0
     str r0, [sp, #0x0]
     str r0, [sp, #0x4]

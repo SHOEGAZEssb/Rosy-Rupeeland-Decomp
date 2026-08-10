@@ -10,7 +10,7 @@ extern const u8 data_ov027_021fe8ac[];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_02076be8(void *, u8);
+extern void GraphicsAnimationInstance_SetAnimation(void *, u8);
 extern void func_02094dd4(void *);
 extern s32 func_02094d28(void *, s32, s32, s32);
 extern void func_02094cf0(void *, const void *, s32);
@@ -63,7 +63,7 @@ extern "C" s32 func_ov027_021fd258(void *object)
         break;
     case 2:
         if (func_ov027_021fd3f0(object)) {
-            func_02076be8(sprite, (u8)(descriptor[0] + 6));
+            GraphicsAnimationInstance_SetAnimation(sprite, (u8)(descriptor[0] + 6));
             FIELD(u16, sprite, 0x50) &= (u16)~2;
             ++FIELD(s32, object, 0xa8);
         }
@@ -71,7 +71,7 @@ extern "C" s32 func_ov027_021fd258(void *object)
     case 3:
         if (FIELD(u16, sprite, 0x50) & 1) {
             FIELD(s32, object, 0xac) = 1;
-            func_02076be8(sprite, (u8)(descriptor[0] + 12));
+            GraphicsAnimationInstance_SetAnimation(sprite, (u8)(descriptor[0] + 12));
             FIELD(u16, sprite, 0x50) |= 2;
             FIELD(u16, sprite, 0x50) &= (u16)~1;
             ++FIELD(s32, object, 0xa8);
@@ -122,7 +122,7 @@ extern "C" void func_ov027_021fd4dc(void *object, s32 from, s32 to)
     void *sprite = FIELD(void *, object, 0x9c);
     s32 frame = scale < 0x20 ? 4 : (u32)func_020ae024(result_x, result_y) >> 13;
     if (FIELD(u8, sprite, 0x54) != (u8)frame)
-        func_02076be8(sprite, (u8)frame);
+        GraphicsAnimationInstance_SetAnimation(sprite, (u8)frame);
 }
 
 /*
@@ -138,7 +138,7 @@ extern "C" s32 func_ov027_021fd624(void *object)
     switch (FIELD(s32, object, 0xb8)) {
     case 0:
         if (func_ov027_021fd3f0(object)) {
-            func_02076be8(FIELD(void *, object, 0x9c), 0xc);
+            GraphicsAnimationInstance_SetAnimation(FIELD(void *, object, 0x9c), 0xc);
             func_02094cf0(object, data_ov027_021fe8ac, 0);
             ++FIELD(s32, object, 0xb8);
         } else {
@@ -147,7 +147,7 @@ extern "C" s32 func_ov027_021fd624(void *object)
         break;
     case 1:
         if (func_02095224(object)) {
-            func_02076be8(FIELD(void *, object, 0x9c), 0);
+            GraphicsAnimationInstance_SetAnimation(FIELD(void *, object, 0x9c), 0);
             FIELD(s32, object, 0x7c) = 0x78;
             FIELD(s32, object, 0x80) = 0;
             ++FIELD(s32, object, 0xb8);

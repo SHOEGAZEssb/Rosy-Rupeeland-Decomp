@@ -13,7 +13,7 @@ extern void func_ov036_021fdef0(s32, s32, s32, s32,
                                 s32, s32, s32, s32);
 extern void func_ov036_021fcfa0(void *object, void *transform);
 extern void func_ov036_021fdd4c(void *auxiliary);
-extern void func_020773e4(void *manager, void *transform);
+extern void GraphicsAnimationInstanceManager_Render(void *manager, void *transform);
 extern void func_ov036_021fd128(s32 lightMask, s32 polygonMode,
                                 s32 cullMode, s32 polygonId,
                                 s32 alpha, s32 misc);
@@ -40,7 +40,7 @@ extern "C" void func_ov036_02203774(void *controller)
     func_ov036_021fcfa0(FIELD(void *, controller, 0x158),
                         (u8 *)controller + 0x64);
     func_ov036_021fdd4c(FIELD(void *, controller, 0x1a0));
-    func_020773e4(FIELD(void *, controller, 0xf4),
+    GraphicsAnimationInstanceManager_Render(FIELD(void *, controller, 0xf4),
                   (u8 *)controller + 0x64);
     func_ov036_021fd128(0, 0, 3, 0x14, 0x1f, 0x8000);
     func_ov036_021fdef0(0, 0, 0, 0, 0, 0, 0, 0);

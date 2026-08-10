@@ -17,7 +17,7 @@ extern void Graphics3DResourceOwner_RemoveManager(void *manager);
 extern void func_020720d4(void *resourceSet);
 extern void Heap_Free(void *allocation);
 extern s32 func_02091c7c(void *timer, s32 mode);
-extern void *func_02077308(void *manager, void *resourceSet);
+extern void *GraphicsAnimationInstanceManager_CreateInstance(void *manager, void *resourceSet);
 extern void func_ov036_021ff050(void *handle, s32 mode,
                                 s32 x, s32 y, s32 z,
                                 s32 byte5A, s32 flags);
@@ -89,7 +89,7 @@ extern "C" void func_ov036_02201470(void *controller)
 {
     if (func_02091c7c((u8 *)controller + 0x184, 2) == 0)
         return;
-    void *handle = func_02077308(FIELD(void *, controller, 0x118),
+    void *handle = GraphicsAnimationInstanceManager_CreateInstance(FIELD(void *, controller, 0x118),
                                   (u8 *)controller + 0xdc);
     func_ov036_021ff050(handle, 0, 0, 0, 0, 2, 0x42);
     void *child = Heap_Alloc(0xa0, data_ov036_02206160, 4, gHeapContext);

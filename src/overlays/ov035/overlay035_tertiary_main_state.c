@@ -22,13 +22,13 @@ extern void Sound_Play(void *sound, s32 id, s32 parameter);
 extern void func_02094cf0(void *object, const void *motion, s32 enabled);
 extern s32 func_02095248(void *object);
 extern s32 func_02095224(void *object);
-extern void func_02076be8(void *object, u8 identifier);
+extern void GraphicsAnimationInstance_SetAnimation(void *object, u8 identifier);
 extern s32 func_02091c7c(void *state, s32 mode);
 extern void func_02091dac(void *state);
 extern void func_ov035_021ffb74(void *scene, s32 direction);
 extern void func_02091b98(void *state, s32 value);
 extern void func_02095360(void *collection);
-extern void func_020773a8(void *resourceSet);
+extern void GraphicsAnimationInstanceManager_Update(void *resourceSet);
 #ifdef __cplusplus
 }
 #endif
@@ -38,7 +38,7 @@ static void update_tertiary_scene(void *scene)
 {
     func_02095360((u8 *)scene + 0x174);
     func_02095360((u8 *)scene + 0x184);
-    func_020773a8(FIELD(void *, scene, 0x124));
+    GraphicsAnimationInstanceManager_Update(FIELD(void *, scene, 0x124));
 }
 
 /*
@@ -75,7 +75,7 @@ extern "C" s32 func_ov035_021ffc60(void *scene)
     case 1:
         if (func_02095248(FIELD(void *, scene, 0x12c))) {
             FIELD(s32, FIELD(void *, scene, 0x130), 0x90) = 0;
-            func_02076be8(
+            GraphicsAnimationInstance_SetAnimation(
                 FIELD(void *, FIELD(void *, scene, 0x134), 0x9c), 2);
             Sound_Play(gSoundContext, 0x1b6, 0);
             FIELD(s32, FIELD(void *, scene, 0x12c), 0x90) = 0;

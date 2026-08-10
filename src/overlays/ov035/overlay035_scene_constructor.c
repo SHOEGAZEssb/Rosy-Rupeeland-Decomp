@@ -21,7 +21,7 @@ extern void func_020720e8(void *state, void *resourceContext, s32 first,
                          s32 second, s32 third);
 extern void Graphics3DResourceOwner_PrepareResources(void *owner, void *resource);
 extern void *Graphics3DResourceOwner_CreateManager(void *owner);
-extern void *func_02077308(void *resourceSet, void *resource);
+extern void *GraphicsAnimationInstanceManager_CreateInstance(void *resourceSet, void *resource);
 extern void func_ov035_021fdd28(void *record, s32 identifier, s32 value20,
                                s32 value24, s32 value28, u8 value5a,
                                u16 flags);
@@ -84,7 +84,7 @@ extern "C" void *func_ov035_021fdd88(void *owner, void *resourceOwner,
     Graphics3DResourceOwner_PrepareResources(resourceOwner, (u8 *)owner + 0xf4);
     FIELD(void *, owner, 0x100) = Graphics3DResourceOwner_CreateManager(resourceOwner);
 
-    void *record = func_02077308(FIELD(void *, owner, 0x100),
+    void *record = GraphicsAnimationInstanceManager_CreateInstance(FIELD(void *, owner, 0x100),
                                   (u8 *)owner + 0xdc);
     func_ov035_021fdd28(record, 0, 0, 0, 0, 7, 0x42);
     void *object = Heap_Alloc(0xa0, data_ov035_02203d20, 4, gHeapContext);
@@ -94,7 +94,7 @@ extern "C" void *func_ov035_021fdd88(void *owner, void *resourceOwner,
     func_02095274((u8 *)owner + 0x10c, object);
     func_02094bbc(object, 0, 0x1600, 0);
 
-    record = func_02077308(FIELD(void *, owner, 0x100),
+    record = GraphicsAnimationInstanceManager_CreateInstance(FIELD(void *, owner, 0x100),
                            (u8 *)owner + 0xe8);
     func_ov035_021fdd28(record, 0, 0, 0, 0, 8, 0x42);
     object = Heap_Alloc(0xa0, data_ov035_02203d20, 4, gHeapContext);
@@ -104,7 +104,7 @@ extern "C" void *func_ov035_021fdd88(void *owner, void *resourceOwner,
     func_02095274((u8 *)owner + 0x10c, object);
     func_02094bbc(object, 0, 0, 0);
 
-    record = func_02077308(FIELD(void *, owner, 0x100),
+    record = GraphicsAnimationInstanceManager_CreateInstance(FIELD(void *, owner, 0x100),
                            (u8 *)owner + 0xcc);
     FIELD(u16, record, 0x50) |= 0x44;
     FIELD(u8, record, 0x5b) = 1;

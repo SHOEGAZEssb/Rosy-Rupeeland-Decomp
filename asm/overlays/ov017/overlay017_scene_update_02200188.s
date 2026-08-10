@@ -10,9 +10,9 @@
     .extern data_ov017_0220170c
     .extern data_ov017_02201754
     .extern func_020740a4
-    .extern func_02077248
-    .extern func_02077308
-    .extern func_020773a8
+    .extern GraphicsAnimationInstance_GetSequenceDuration
+    .extern GraphicsAnimationInstanceManager_CreateInstance
+    .extern GraphicsAnimationInstanceManager_Update
     .extern func_0209189c
     .extern func_020918f4
     .extern func_02092260
@@ -334,7 +334,7 @@ L_02200578:
     add r1, r10, #0x248
     mov r5, r2, asr #0x8
     mov r6, r3, asr #0x8
-    bl func_02077308
+    bl GraphicsAnimationInstanceManager_CreateInstance
     mov r4, r0
     ldr r1, L_02200870
     ldr r3, L_0220085c
@@ -364,7 +364,7 @@ L_02200630:
     mov r1, #0x2
     bl func_020948e4
     mov r0, r4
-    bl func_02077248
+    bl GraphicsAnimationInstance_GetSequenceDuration
     mov r0, r0, lsl #0x10
     mov r0, r0, asr #0x10
     str r0, [r7, #0x7c]
@@ -465,7 +465,7 @@ L_022007d0:
     ldr r0, [r10, #0x25c]
     bl func_ov017_021fe894
     ldr r0, [r10, #0x244]
-    bl func_020773a8
+    bl GraphicsAnimationInstanceManager_Update
     ldr r0, [r10, #0x58]
     bl func_020740a4
     ldr r0, [r10, #0x2c0]

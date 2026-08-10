@@ -2,8 +2,8 @@
 
 /* Exact fallback; see src/overlays/ov036/overlay036_ramp_child_pool_init.c for documented portable C. */
 
-    .extern func_02077308
-    .extern func_02076be8
+    .extern GraphicsAnimationInstanceManager_CreateInstance
+    .extern GraphicsAnimationInstance_SetAnimation
     .extern Heap_Alloc
     .extern func_020955d8
     .extern func_02095274
@@ -18,7 +18,7 @@ func_ov036_02201710:
     mov r10, r0
     ldr r0, [r10, #0x118]
     add r1, r10, #0x10c
-    bl func_02077308
+    bl GraphicsAnimationInstanceManager_CreateInstance
     mov r5, r0
     ldrh r0, [r5, #0x50]
     ldr r1, L_02201898
@@ -45,7 +45,7 @@ L_02201760:
     bl func_020948d4
     ldr r0, [r10, #0x118]
     add r1, r10, #0x10c
-    bl func_02077308
+    bl GraphicsAnimationInstanceManager_CreateInstance
     mov r4, r0
     ldrh r2, [r4, #0x50]
     mov r1, #0x17
@@ -82,13 +82,13 @@ L_022017c8:
 L_0220180c:
     ldr r0, [r10, #0x118]
     add r1, r10, #0x100
-    bl func_02077308
+    bl GraphicsAnimationInstanceManager_CreateInstance
     mul r2, r9, r4
     ldr r1, [r6, r2]
     mov r7, r0
     and r1, r1, #0xff
     add r8, r6, r2
-    bl func_02076be8
+    bl GraphicsAnimationInstance_SetAnimation
     ldrh r2, [r7, #0x50]
     ldr r3, L_0220189c
     mov r0, r5

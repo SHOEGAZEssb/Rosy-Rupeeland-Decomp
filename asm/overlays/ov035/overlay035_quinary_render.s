@@ -3,7 +3,7 @@
 /* Exact fallback; see src/overlays/ov035/overlay035_quinary_render.c for documented portable C. */
 
     .extern Graphics3DSceneState_Apply
-    .extern func_020773e4
+    .extern GraphicsAnimationInstanceManager_Render
     .extern func_ov035_021fd60c
     .extern func_ov035_021fd128
     .extern func_ov035_021fd7b0
@@ -19,7 +19,7 @@ func_ov035_022014d0:
     bl Graphics3DSceneState_Apply
     ldr r0, [r5, #0xf8]
     add r1, r5, #0x64
-    bl func_020773e4
+    bl GraphicsAnimationInstanceManager_Render
     ldr r0, [r5, #0x170]
     bl func_ov035_021fd60c
     mov r0, #0x1f

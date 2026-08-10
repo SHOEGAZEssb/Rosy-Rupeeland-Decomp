@@ -1,7 +1,7 @@
     .text
     .extern Heap_Free
     .extern func_02072140
-    .extern func_0207733c
+    .extern GraphicsAnimationInstanceManager_DestroyInstance
     .extern Graphics3DResourceBinding_Destroy
 
 /* Exact fallback; see src/overlays/ov010/overlay010_active_resource_release.c. */
@@ -24,7 +24,7 @@ L_021fd430:
 L_021fd43c:
     ldr r0, [r5, #0x88]
     ldr r1, [r5, #0x8c]
-    bl func_0207733c
+    bl GraphicsAnimationInstanceManager_DestroyInstance
     mov r1, #0x0
     add r0, r5, #0x7c
     str r1, [r5, #0x8c]

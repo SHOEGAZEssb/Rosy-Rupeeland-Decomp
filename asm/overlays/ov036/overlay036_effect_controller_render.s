@@ -3,7 +3,7 @@
 /* Exact fallback; see src/overlays/ov036/overlay036_effect_controller_runtime.c for documented portable C. */
 
     .extern Graphics3DSceneState_Apply
-    .extern func_020773e4
+    .extern GraphicsAnimationInstanceManager_Render
     .extern func_ov036_021fe028
     .extern func_ov036_021fd128
     .extern func_ov036_021fdef0
@@ -18,7 +18,7 @@ func_ov036_021ff184:
     bl Graphics3DSceneState_Apply
     ldr r0, [r4, #0xdc]
     add r1, r4, #0x64
-    bl func_020773e4
+    bl GraphicsAnimationInstanceManager_Render
     ldr r0, [r4, #0x11c]
     bl func_ov036_021fe028
     mov r0, #0x1f

@@ -18,7 +18,7 @@
     .extern func_020948d4
     .extern func_ov035_021fdd70
     .extern func_ov035_021fdd78
-    .extern func_02077308
+    .extern GraphicsAnimationInstanceManager_CreateInstance
     .extern func_ov035_021fdd28
     .extern func_020955d8
     .extern func_02094cf0
@@ -221,7 +221,7 @@ L_02201930:
     bl func_ov035_021fdd78
     ldr r0, [r5, #0xf4]
     add r1, r5, #0xcc
-    bl func_02077308
+    bl GraphicsAnimationInstanceManager_CreateInstance
     mov r1, #0x0
     str r1, [sp, #0x0]
     mov r2, #0x2
@@ -258,7 +258,7 @@ L_022019f4:
 L_02201a28:
     ldr r0, [r5, #0xf4]
     add r1, r5, #0xcc
-    bl func_02077308
+    bl GraphicsAnimationInstanceManager_CreateInstance
     mov r1, #0x0
     str r1, [sp, #0x0]
     add r1, r4, #0x3

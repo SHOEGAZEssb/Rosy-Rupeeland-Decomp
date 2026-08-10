@@ -2,7 +2,7 @@
 
 /* Exact fallback; see src/overlays/ov027/overlay027_sprite_runtime.c. */
 .extern data_ov027_021fe8ac
-.extern func_02076be8
+.extern GraphicsAnimationInstance_SetAnimation
 .extern func_02094cf0
 .extern func_02094dd4
 .extern func_02095224
@@ -29,7 +29,7 @@ L_021fd64c:
     beq L_021fd684
     ldr r0, [r4, #0x9c]
     mov r1, #0xc
-    bl func_02076be8
+    bl GraphicsAnimationInstance_SetAnimation
     ldr r1, L_021fd714
     mov r0, r4
     mov r2, #0x0
@@ -50,7 +50,7 @@ L_021fd698:
     beq L_021fd704
     ldr r0, [r4, #0x9c]
     mov r1, #0x0
-    bl func_02076be8
+    bl GraphicsAnimationInstance_SetAnimation
     mov r0, #0x78
     str r0, [r4, #0x7c]
     mov r0, #0x0

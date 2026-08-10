@@ -23,7 +23,7 @@ extern void func_020720e8(void *state, void *resourceContext, s32 first,
 extern void Graphics3DResourceOwner_PrepareResources(void *owner, void *resource);
 extern void *func_02071adc(void *resourceContext, s32 resourceId);
 extern void *Graphics3DResourceOwner_CreateManager(void *owner);
-extern void *func_02077308(void *resourceSet, void *resource);
+extern void *GraphicsAnimationInstanceManager_CreateInstance(void *resourceSet, void *resource);
 extern void *Heap_Alloc(u32 size, const void *tag, s32 alignment, void *heap);
 extern void *func_020955d8(void *allocation, void *spriteRecord);
 extern void func_02095274(void *collection, void *object);
@@ -57,14 +57,14 @@ static void load_group(void *scene, s32 offset, s32 finalId,
 
 /*
  * Creates one sprite from the requested resource state. The record flags are
- * ORed rather than replaced because func_02077308 supplies persistent flags.
+ * ORed rather than replaced because GraphicsAnimationInstanceManager_CreateInstance supplies persistent flags.
  * The allocation is attached even when allocation or construction returns
  * null, matching the original scene-assembly control flow.
  */
 static void *create_sprite(void *scene, s32 resourceOffset, u16 flags,
                            u8 value5a, s32 z)
 {
-    void *record = func_02077308(FIELD(void *, scene, 0x104),
+    void *record = GraphicsAnimationInstanceManager_CreateInstance(FIELD(void *, scene, 0x104),
                                   (u8 *)scene + resourceOffset);
     FIELD(u16, record, 0x50) |= flags;
     if (value5a != 0)

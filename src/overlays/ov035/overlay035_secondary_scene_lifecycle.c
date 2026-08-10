@@ -17,7 +17,7 @@ extern void func_02071e04(void *resourceContext, void *resource);
 extern void func_020720d4(void *state);
 extern void Heap_Free(void *allocation);
 extern void func_02095360(void *collection);
-extern void func_020773a8(void *resourceSet);
+extern void GraphicsAnimationInstanceManager_Update(void *resourceSet);
 #ifdef __cplusplus
 }
 #endif
@@ -73,5 +73,5 @@ extern "C" void func_ov035_021ff164(void *scene)
     func_02095360((u8 *)scene + 0x10c);
     func_02095360((u8 *)scene + 0x11c);
     func_02095360((u8 *)scene + 0x12c);
-    func_020773a8(FIELD(void *, scene, 0xf8));
+    GraphicsAnimationInstanceManager_Update(FIELD(void *, scene, 0xf8));
 }

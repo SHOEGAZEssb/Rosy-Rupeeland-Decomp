@@ -18,7 +18,7 @@ extern s32 func_0209189c(void *, s32, s32);
 extern s32 func_020918f4(void *, s32);
 extern void func_020948d4(void *, s32);
 extern void func_02095274(void *, void *);
-extern void func_020773a8(void *);
+extern void GraphicsAnimationInstanceManager_Update(void *);
 extern void func_ov027_021fe0f8(void *);
 #ifdef __cplusplus
 }
@@ -109,7 +109,7 @@ extern "C" void func_ov027_021fe1c8(void *scene)
         func_02095274((u8 *)scene + 0x150, motion);
     }
 
-    func_020773a8(FIELD(void *, scene, 0x58));
+    GraphicsAnimationInstanceManager_Update(FIELD(void *, scene, 0x58));
     void *first = FIELD(void *, scene, 0x118);
     FIELD(s32, scene, 0x84) = FIELD(s32, first, 0x10);
     FIELD(s32, scene, 0x88) = FIELD(s32, first, 0x20);

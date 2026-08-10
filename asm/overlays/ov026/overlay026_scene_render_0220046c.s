@@ -1,7 +1,7 @@
 .text
 
 /* Exact fallback; see src/overlays/ov026/overlay026_scene_render.c. */
-.extern func_020773e4
+.extern GraphicsAnimationInstanceManager_Render
 .extern Graphics3DLight_Apply
 .extern Graphics3DSceneState_Apply
 .extern func_020b0558
@@ -47,7 +47,7 @@ func_ov026_0220046c:
     bl Graphics3DSceneState_Apply
     ldr r0, [r4, #0x78]
     add r1, r4, #0x2ac
-    bl func_020773e4
+    bl GraphicsAnimationInstanceManager_Render
     ldr r0, L_022006f0
     mov r1, #0x1
     str r1, [r0, #0x0]
@@ -86,14 +86,14 @@ L_022004fc:
 L_02200558:
     ldr r0, [r4, #0x6c]
     add r1, r4, #0x218
-    bl func_020773e4
+    bl GraphicsAnimationInstanceManager_Render
     ldr r0, [r4, #0x160]
     ldr r0, [r0, #0x12c]
     tst r0, #0x4
     beq L_02200580
     ldr r0, [r4, #0x70]
     add r1, r4, #0x218
-    bl func_020773e4
+    bl GraphicsAnimationInstanceManager_Render
 L_02200580:
     ldr r0, [r4, #0x160]
     ldr r0, [r0, #0x12c]
@@ -101,7 +101,7 @@ L_02200580:
     beq L_0220059c
     ldr r0, [r4, #0x74]
     add r1, r4, #0x218
-    bl func_020773e4
+    bl GraphicsAnimationInstanceManager_Render
 L_0220059c:
     ldr r0, [r4, #0x160]
     ldr r0, [r0, #0x12c]

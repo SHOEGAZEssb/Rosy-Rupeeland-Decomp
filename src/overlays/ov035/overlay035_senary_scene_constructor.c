@@ -34,7 +34,7 @@ extern void func_02094bbc(void *object, s32 x, s32 y, s32 z);
 extern void func_020948d4(void *field, s32 value);
 extern void func_ov035_021fdd70(void *record, s32 x, s32 y, s32 z);
 extern void func_ov035_021fdd78(void *record, s32 x, s32 y, s32 z);
-extern void *func_02077308(void *resourceSet, void *resource);
+extern void *GraphicsAnimationInstanceManager_CreateInstance(void *resourceSet, void *resource);
 extern void func_ov035_021fdd28(void *record, s32 identifier, s32 value20,
                                s32 value24, s32 value28, u8 value5a,
                                u16 flags);
@@ -142,7 +142,7 @@ extern "C" void *func_ov035_022016e8(void *scene, void *resourceOwner,
 
     func_ov035_021fdd70((u8 *)scene + 0x0c, 0, 0, 0x2980);
     func_ov035_021fdd78((u8 *)scene + 0x0c, 0, 0, 0);
-    void *record = func_02077308(FIELD(void *, scene, 0xf4),
+    void *record = GraphicsAnimationInstanceManager_CreateInstance(FIELD(void *, scene, 0xf4),
                                   (u8 *)scene + 0xcc);
     func_ov035_021fdd28(record, 0, 0, 0, 0, 2, 0x42);
     void *sprite = allocate_sprite(scene, record);
@@ -150,7 +150,7 @@ extern "C" void *func_ov035_022016e8(void *scene, void *resourceOwner,
     func_02094cf0(sprite, data_ov035_02202d74, 1);
 
     for (s32 i = 0; i < 4; ++i) {
-        record = func_02077308(FIELD(void *, scene, 0xf4),
+        record = GraphicsAnimationInstanceManager_CreateInstance(FIELD(void *, scene, 0xf4),
                                (u8 *)scene + 0xcc);
         func_ov035_021fdd28(record, 0, 0, 0, 0, (u8)(i + 3), 0x42);
         FIELD(u8, record, 0x5b) = (u8)func_02091a70(0x18, 8, 4, i);

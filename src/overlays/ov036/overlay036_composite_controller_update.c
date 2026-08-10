@@ -10,7 +10,7 @@ extern "C" {
 extern void func_02095360(void *list);
 extern void func_ov036_02203228(void *controller);
 extern void func_ov036_021fdcec(void *auxiliary);
-extern void func_020773a8(void *manager);
+extern void GraphicsAnimationInstanceManager_Update(void *manager);
 extern s32 func_02091c7c(void *timer, s32 mode);
 extern void func_02091dac(void *timer);
 extern void func_02091b98(void *timer, s32 duration);
@@ -33,7 +33,7 @@ extern "C" void func_ov036_02202fb8(void *controller)
         func_ov036_02203228(controller);
     func_ov036_021fdcec(FIELD(void *, controller, 0x1a0));
     func_02095360((u8 *)controller + 0x110);
-    func_020773a8(FIELD(void *, controller, 0xf4));
+    GraphicsAnimationInstanceManager_Update(FIELD(void *, controller, 0xf4));
     if (func_02091c7c((u8 *)controller + 0x120, 2) != 0) {
         func_02091dac((u8 *)controller + 0x13c);
         func_02091b98((u8 *)controller + 0x120, 0x1e);

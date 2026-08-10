@@ -23,7 +23,7 @@ extern void func_020720e8(void *state, void *resourceContext, s32 first,
 extern void Graphics3DResourceOwner_PrepareResources(void *owner, void *resource);
 extern void *func_02071adc(void *resourceContext, s32 resourceId);
 extern void *Graphics3DResourceOwner_CreateManager(void *owner);
-extern void *func_02077308(void *resourceSet, void *resource);
+extern void *GraphicsAnimationInstanceManager_CreateInstance(void *resourceSet, void *resource);
 extern void func_ov035_021fdd28(void *record, s32 identifier, s32 value20,
                                s32 value24, s32 value28, u8 value5a,
                                u16 flags);
@@ -94,18 +94,18 @@ extern "C" void *func_ov035_021feb7c(void *scene, void *resourceOwner,
 
     FIELD(void *, scene, 0xf4) = func_02071adc(data_020f4e18[0], 0x5009);
     FIELD(void *, scene, 0xf8) = Graphics3DResourceOwner_CreateManager(resourceOwner);
-    void *record = func_02077308(FIELD(void *, scene, 0xf8),
+    void *record = GraphicsAnimationInstanceManager_CreateInstance(FIELD(void *, scene, 0xf8),
                                   (u8 *)scene + 0xdc);
     func_ov035_021fdd28(record, 0, 0, 0, 0, 7, 0x42);
     FIELD(void *, scene, 0xfc) = create_sprite(record);
     func_02095274((u8 *)scene + 0x10c, FIELD(void *, scene, 0xfc));
 
-    record = func_02077308(FIELD(void *, scene, 0xf8), (u8 *)scene + 0xe8);
+    record = GraphicsAnimationInstanceManager_CreateInstance(FIELD(void *, scene, 0xf8), (u8 *)scene + 0xe8);
     func_ov035_021fdd28(record, 0, 0, 0, 0, 8, 0x42);
     FIELD(void *, scene, 0x100) = create_sprite(record);
     func_02095274((u8 *)scene + 0x10c, FIELD(void *, scene, 0x100));
 
-    record = func_02077308(FIELD(void *, scene, 0xf8), (u8 *)scene + 0xcc);
+    record = GraphicsAnimationInstanceManager_CreateInstance(FIELD(void *, scene, 0xf8), (u8 *)scene + 0xcc);
     func_ov035_021fdd28(record, 0, 0, 0, 0, 8, 0x42);
     FIELD(void *, scene, 0xd8) = create_sprite(record);
     func_02095274((u8 *)scene + 0x10c, FIELD(void *, scene, 0xd8));

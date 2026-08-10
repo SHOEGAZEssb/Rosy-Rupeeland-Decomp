@@ -14,7 +14,7 @@ extern void *gHeapContext;
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *func_02077308(void *manager, void *resourceSet);
+extern void *GraphicsAnimationInstanceManager_CreateInstance(void *manager, void *resourceSet);
 extern void *Heap_Alloc(u32 size, const void *tag, s32 alignment, void *heap);
 extern void *func_ov036_02201d70(void *object, void *argument,
                                  void *resource, s32 variant, s32 valueC8);
@@ -46,11 +46,11 @@ extern "C" void func_ov036_02202628(void *controller)
     s32 variant = *(const s32 *)(data_ov036_022054e0 + index * 0x10);
     void *handle;
     if (variant == 0) {
-        handle = func_02077308(FIELD(void *, controller, 0xf8),
+        handle = GraphicsAnimationInstanceManager_CreateInstance(FIELD(void *, controller, 0xf8),
                                (u8 *)controller + 0xdc);
         FIELD(u8, handle, 0x5a) = 2;
     } else if (variant == 1) {
-        handle = func_02077308(FIELD(void *, controller, 0xf8),
+        handle = GraphicsAnimationInstanceManager_CreateInstance(FIELD(void *, controller, 0xf8),
                                (u8 *)controller + 0xe8);
         FIELD(u8, handle, 0x5a) = 0xd;
     }

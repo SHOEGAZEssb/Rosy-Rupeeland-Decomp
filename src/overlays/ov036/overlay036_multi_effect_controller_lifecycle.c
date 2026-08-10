@@ -19,7 +19,7 @@ extern void Graphics3DResourceOwner_RemoveManager(void *manager);
 extern void func_020720d4(void *resourceSet);
 extern void Heap_Free(void *allocation);
 extern void func_02095360(void *list);
-extern void func_020773a8(void *manager);
+extern void GraphicsAnimationInstanceManager_Update(void *manager);
 #ifdef __cplusplus
 }
 #endif
@@ -88,5 +88,5 @@ extern "C" void func_ov036_021ff74c(void *controller)
     func_02095360((u8 *)controller + 0x108);
     func_02095360((u8 *)controller + 0x118);
     func_02095360((u8 *)controller + 0x128);
-    func_020773a8(FIELD(void *, controller, 0xe8));
+    GraphicsAnimationInstanceManager_Update(FIELD(void *, controller, 0xe8));
 }

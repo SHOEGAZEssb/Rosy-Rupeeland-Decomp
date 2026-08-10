@@ -3,7 +3,7 @@
 /* Exact fallback; see src/overlays/ov036/overlay036_ramp_activation.c for documented portable C. */
 
     .extern func_02095360
-    .extern func_020773a8
+    .extern GraphicsAnimationInstanceManager_Update
     .extern func_02091c7c
     .extern func_ov036_02201580
     .extern func_ov036_02201470
@@ -17,7 +17,7 @@ func_ov036_02201a78:
     add r0, r5, #0x158
     bl func_02095360
     ldr r0, [r5, #0x118]
-    bl func_020773a8
+    bl GraphicsAnimationInstanceManager_Update
     add r0, r5, #0x168
     mov r1, #0x0
     bl func_02091c7c

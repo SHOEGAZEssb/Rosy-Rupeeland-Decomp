@@ -27,7 +27,7 @@ extern void func_ov036_021fea04(void *record, s32 x, s32 y, s32 z);
 extern void func_ov036_0220213c(void *records, s32 index,
                                 s32 value0, s32 value4, s32 value8,
                                 s32 red, s32 green, s32 blue);
-extern void *func_02077308(void *manager, void *resourceSet);
+extern void *GraphicsAnimationInstanceManager_CreateInstance(void *manager, void *resourceSet);
 extern void func_ov036_021ff050(void *handle, s32 mode,
                                 s32 x, s32 y, s32 z,
                                 s32 byte5A, s32 flags);
@@ -103,7 +103,7 @@ extern "C" void *func_ov036_022021b0(void *controller, void *owner,
     func_ov036_0220213c((u8 *)controller + 0x11c, 3,
                         0, 0, -0x1000, 0x1f, 0x1f, 0x1f);
 
-    void *handle = func_02077308(FIELD(void *, controller, 0xf8),
+    void *handle = GraphicsAnimationInstanceManager_CreateInstance(FIELD(void *, controller, 0xf8),
                                   (u8 *)controller + 0xcc);
     func_ov036_021ff050(handle, 0, 0, 0, 0, 1, 0x46);
     void *child = Heap_Alloc(0xa0, data_ov036_02206160, 4, gHeapContext);

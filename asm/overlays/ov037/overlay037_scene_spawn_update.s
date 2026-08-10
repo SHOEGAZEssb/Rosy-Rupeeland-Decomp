@@ -4,18 +4,18 @@
 
     .extern func_02091c7c
     .extern func_020918f4
-    .extern func_02077308
+    .extern GraphicsAnimationInstanceManager_CreateInstance
     .extern Heap_Alloc
     .extern func_020955d8
     .extern func_0209189c
     .extern func_02094bbc
     .extern func_020948d4
     .extern func_020948e4
-    .extern func_02077248
+    .extern GraphicsAnimationInstance_GetSequenceDuration
     .extern func_ov037_021fdf50
     .extern func_02095274
     .extern func_02091b98
-    .extern func_02076be8
+    .extern GraphicsAnimationInstance_SetAnimation
     .extern func_020948f8
     .extern data_ov037_021feeb0
     .extern gHeapContext
@@ -36,11 +36,11 @@ func_ov037_021fdd08:
     ldr r0, [r6, #0x114]
     beq L_021fdd48
     add r1, r6, #0xec
-    bl func_02077308
+    bl GraphicsAnimationInstanceManager_CreateInstance
     b L_021fdd50
 L_021fdd48:
     add r1, r6, #0xf8
-    bl func_02077308
+    bl GraphicsAnimationInstanceManager_CreateInstance
 L_021fdd50:
     mov r7, r0
     ldrh r0, [r7, #0x50]
@@ -88,7 +88,7 @@ L_021fdd88:
     mov r1, #0x1
     bl func_020948e4
     mov r0, r7
-    bl func_02077248
+    bl GraphicsAnimationInstance_GetSequenceDuration
     mov r1, r0
     mov r0, r5
     bl func_ov037_021fdf50
@@ -108,7 +108,7 @@ L_021fde34:
     ldmeqia sp!, {r3, r4, r5, r6, r7, pc}
     ldr r0, [r6, #0x114]
     add r1, r6, #0x104
-    bl func_02077308
+    bl GraphicsAnimationInstanceManager_CreateInstance
     mov r4, r0
     add r0, r6, #0xbc
     mov r1, #0x5
@@ -117,7 +117,7 @@ L_021fde34:
     mov r1, r0
     mov r0, r4
     and r1, r1, #0xff
-    bl func_02076be8
+    bl GraphicsAnimationInstance_SetAnimation
     mov r0, #0x6
     strb r0, [r4, #0x5a]
     mov r0, #0x18

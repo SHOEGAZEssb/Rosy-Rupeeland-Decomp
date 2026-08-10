@@ -21,7 +21,7 @@ extern void func_020720e8(void *state, void *resourceContext, s32 first,
                          s32 second, s32 third);
 extern void Graphics3DResourceOwner_PrepareResources(void *owner, void *resource);
 extern void *Graphics3DResourceOwner_CreateManager(void *owner);
-extern void *func_02077308(void *resourceSet, void *resource);
+extern void *GraphicsAnimationInstanceManager_CreateInstance(void *resourceSet, void *resource);
 extern void func_ov035_021fdd28(void *record, s32 identifier, s32 value20,
                                s32 value24, s32 value28, u8 value5a,
                                u16 flags);
@@ -53,7 +53,7 @@ static void load_group(void *scene, s32 offset, s32 finalId,
 static void *create_scene_sprite(void *scene, s32 resourceOffset,
                                  s32 identifier, u8 value5a, u16 flags)
 {
-    void *record = func_02077308(FIELD(void *, scene, 0x124),
+    void *record = GraphicsAnimationInstanceManager_CreateInstance(FIELD(void *, scene, 0x124),
                                   (u8 *)scene + resourceOffset);
     func_ov035_021fdd28(record, identifier, 0, 0, 0, value5a, flags);
     void *object = Heap_Alloc(0xa0, data_ov035_02203d20, 4, gHeapContext);

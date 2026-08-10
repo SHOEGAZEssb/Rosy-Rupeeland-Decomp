@@ -14,7 +14,7 @@ extern void *gSoundContext;
 extern "C" {
 #endif
 extern void *Heap_Alloc(u32, const void *, u32, void *);
-extern void *func_02077308(void *, void *);
+extern void *GraphicsAnimationInstanceManager_CreateInstance(void *, void *);
 extern s32 func_020918f4(void *, s32);
 extern void *func_ov027_021fd408(void *, void *, const s32 *, s32);
 extern void func_02095274(void *, void *);
@@ -56,7 +56,7 @@ extern "C" s32 func_ov027_021fe4a8(void *scene)
  */
 extern "C" void func_ov027_021fe4d4(void *scene)
 {
-    void *resource = func_02077308(FIELD(void *, scene, 0x58),
+    void *resource = GraphicsAnimationInstanceManager_CreateInstance(FIELD(void *, scene, 0x58),
                                     (u8 *)scene + 0x74);
     void *child = Heap_Alloc(0xbc, data_ov027_021fef4c, 4, gHeapContext);
     if (child) {

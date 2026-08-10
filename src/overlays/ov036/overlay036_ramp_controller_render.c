@@ -10,7 +10,7 @@ extern "C" {
 extern void Graphics3DSceneState_Apply(void *state);
 extern void func_ov045_0220bc3c(s32 x, s32 y, s32 width, s32 height,
                                 s32 depth, s32 scale, s32 flags);
-extern void func_020773e4(void *manager, void *transform);
+extern void GraphicsAnimationInstanceManager_Render(void *manager, void *transform);
 extern void func_ov036_021fd128(s32 lightMask, s32 polygonMode,
                                 s32 cullMode, s32 polygonId,
                                 s32 alpha, s32 misc);
@@ -37,7 +37,7 @@ extern "C" void func_ov036_02201c7c(void *controller)
                         -0x40, 0x1f, 0);
     func_ov045_0220bc3c(0x90, 0x140, 0x20, -0xa0,
                         -0x40, 0x1f, 0);
-    func_020773e4(FIELD(void *, controller, 0x118),
+    GraphicsAnimationInstanceManager_Render(FIELD(void *, controller, 0x118),
                   (u8 *)controller + 0x64);
     func_ov036_021fd128(0, 0, 3, 0x12, 0x1f, 0x8000);
     func_ov036_021fdef0(0, 0, 0, 0, 0, 0, 0, 0);

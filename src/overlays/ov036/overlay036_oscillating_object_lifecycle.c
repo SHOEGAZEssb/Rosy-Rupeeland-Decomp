@@ -13,7 +13,7 @@ extern void *func_ov036_021fcec4(void *object, void *argument,
                                  s32 mode, s32 type);
 extern void func_02091b6c(void *timer);
 extern void func_020948d4(void *field, s32 value);
-extern void func_02077220(void *resource);
+extern void GraphicsAnimationInstance_Destroy(void *resource);
 extern void func_ov036_021fcf30(void *object);
 extern void Heap_Free(void *allocation);
 #ifdef __cplusplus
@@ -66,7 +66,7 @@ extern "C" void *func_ov036_02201d70(void *object, void *argument,
 extern "C" void *func_ov036_02201df0(void *object)
 {
     FIELD(const void *, object, 0) = data_ov036_0220600c;
-    func_02077220(FIELD(void *, object, 0xd4));
+    GraphicsAnimationInstance_Destroy(FIELD(void *, object, 0xd4));
     func_ov036_021fcf30(object);
     return object;
 }
@@ -79,7 +79,7 @@ extern "C" void *func_ov036_02201df0(void *object)
 extern "C" void *func_ov036_02201e1c(void *object)
 {
     FIELD(const void *, object, 0) = data_ov036_0220600c;
-    func_02077220(FIELD(void *, object, 0xd4));
+    GraphicsAnimationInstance_Destroy(FIELD(void *, object, 0xd4));
     func_ov036_021fcf30(object);
     Heap_Free(object);
     return object;

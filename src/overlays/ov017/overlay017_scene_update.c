@@ -19,9 +19,9 @@ extern void *gHeapContext;
 extern "C" {
 #endif
 extern void *Heap_Alloc(u32, const void *, s32, void *);
-extern void *func_02077308(void *, void *);
-extern s32 func_02077248(void *);
-extern void func_020773a8(void *);
+extern void *GraphicsAnimationInstanceManager_CreateInstance(void *, void *);
+extern s32 GraphicsAnimationInstance_GetSequenceDuration(void *);
+extern void GraphicsAnimationInstanceManager_Update(void *);
 extern void func_020740a4(void *);
 extern s32 func_0209189c(void *, s32, s32);
 extern s32 func_020918f4(void *, s32);
@@ -201,7 +201,7 @@ extern "C" void func_ov017_02200188(void *state)
             distance = func_020918f4((u8 *)state + 0x3fc, radius);
             x = coordinateToGrid(distance * data_020c9670[angleIndex * 2]);
             z = coordinateToGrid(distance * data_020c9670[angleIndex * 2 + 1]);
-            sprite = func_02077308(FIELD(void *, state, 0x244),
+            sprite = GraphicsAnimationInstanceManager_CreateInstance(FIELD(void *, state, 0x244),
                                    (u8 *)state + 0x248);
             actor = Heap_Alloc(0xa0, data_ov017_022016cc, 4, gHeapContext);
             if (actor != 0)
@@ -210,7 +210,7 @@ extern "C" void func_ov017_02200188(void *state)
             func_02094bbc(actor, x, 0, z);
             func_020948e4((u8 *)actor + 0x1c, 2,
                           func_0209189c((u8 *)state + 0x3fc, 0x600, 0x900));
-            FIELD(s32, actor, 0x7c) = (s16)func_02077248(sprite);
+            FIELD(s32, actor, 0x7c) = (s16)GraphicsAnimationInstance_GetSequenceDuration(sprite);
             FIELD(s32, actor, 0x80) = 0;
             FIELD(s32, actor, 0x88) = 1;
             FIELD(u16, sprite, 0x50) |= 0x40;
@@ -252,7 +252,7 @@ extern "C" void func_ov017_02200188(void *state)
     func_020958d8((u8 *)state + 0x12c);
     func_020958d8((u8 *)state + 0x80);
     func_ov017_021fe894(FIELD(void *, state, 0x25c));
-    func_020773a8(FIELD(void *, state, 0x244));
+    GraphicsAnimationInstanceManager_Update(FIELD(void *, state, 0x244));
     func_020740a4(FIELD(void *, state, 0x58));
     func_ov017_021fcf6c(FIELD(void *, state, 0x2c0));
     if (func_ov017_0220087c(data_ov017_022016f0))

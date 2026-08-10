@@ -11,8 +11,8 @@ extern void *gHeapContext;
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *func_02077308(void *manager, void *resourceSet);
-extern void func_02076be8(void *handle, s32 selector);
+extern void *GraphicsAnimationInstanceManager_CreateInstance(void *manager, void *resourceSet);
+extern void GraphicsAnimationInstance_SetAnimation(void *handle, s32 selector);
 extern void *Heap_Alloc(u32 size, const void *tag, s32 alignment, void *heap);
 extern void *func_020955d8(void *object, void *handle);
 extern void func_02095274(void *list, void *object);
@@ -34,7 +34,7 @@ extern void func_020948d4(void *field, s32 value);
 extern "C" void func_ov036_02201710(void *controller)
 {
     void *manager = FIELD(void *, controller, 0x118);
-    void *handle = func_02077308(manager, (u8 *)controller + 0x10c);
+    void *handle = GraphicsAnimationInstanceManager_CreateInstance(manager, (u8 *)controller + 0x10c);
     FIELD(u16, handle, 0x50) |= 0x44;
     FIELD(u8, handle, 0x5a) = 0x17;
     void *child = Heap_Alloc(0xa0, data_ov036_02206160, 4, gHeapContext);
@@ -44,7 +44,7 @@ extern "C" void func_ov036_02201710(void *controller)
     func_02095274((u8 *)controller + 0x148, child);
     func_020948d4((u8 *)child + 0x6c, 0x19a);
 
-    handle = func_02077308(manager, (u8 *)controller + 0x10c);
+    handle = GraphicsAnimationInstanceManager_CreateInstance(manager, (u8 *)controller + 0x10c);
     FIELD(u16, handle, 0x50) |= 0x44;
     FIELD(u8, handle, 0x5a) = 0x17;
     child = Heap_Alloc(0xa0, data_ov036_02206160, 4, gHeapContext);
@@ -57,8 +57,8 @@ extern "C" void func_ov036_02201710(void *controller)
 
     for (s32 i = 0; i < 8; ++i) {
         const u8 *record = data_ov036_022051f0 + i * 0x14;
-        handle = func_02077308(manager, (u8 *)controller + 0x100);
-        func_02076be8(handle, record[0]);
+        handle = GraphicsAnimationInstanceManager_CreateInstance(manager, (u8 *)controller + 0x100);
+        GraphicsAnimationInstance_SetAnimation(handle, record[0]);
         FIELD(u16, handle, 0x50) |= 0x44;
         child = Heap_Alloc(0xa0, data_ov036_02206160, 4, gHeapContext);
         if (child != 0)

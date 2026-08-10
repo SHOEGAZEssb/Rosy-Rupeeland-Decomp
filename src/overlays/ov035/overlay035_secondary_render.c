@@ -10,7 +10,7 @@ extern "C" {
 extern void Graphics3DSceneState_Apply(void *state);
 extern void func_ov035_021fe9dc(void *object);
 extern void func_ov035_021fe6e4(void *object, s32 mode);
-extern void func_020773e4(void *resourceSet, void *transform);
+extern void GraphicsAnimationInstanceManager_Render(void *resourceSet, void *transform);
 extern void func_ov035_021fd7b0(s32 format, s32 transform, s32 sizeS,
                                s32 sizeT, s32 repeatS, s32 repeatT,
                                s32 flip, u32 address);
@@ -36,7 +36,7 @@ extern "C" void func_ov035_021ff3bc(void *scene)
     func_ov035_021fe9dc(FIELD(void *, scene, 0x140));
     func_ov035_021fe6e4(FIELD(void *, scene, 0x13c),
                         (s32)((u8 *)scene + 0x64));
-    func_020773e4(FIELD(void *, scene, 0xf8), (u8 *)scene + 0x64);
+    GraphicsAnimationInstanceManager_Render(FIELD(void *, scene, 0xf8), (u8 *)scene + 0x64);
     func_ov035_021fd7b0(0, 0, 0, 0, 0, 0, 0, 0);
 
     void *node = FIELD(void *, scene, 0x120);

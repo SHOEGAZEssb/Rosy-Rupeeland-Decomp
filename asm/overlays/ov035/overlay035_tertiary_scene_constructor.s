@@ -10,7 +10,7 @@
     .extern func_020720e8
     .extern Graphics3DResourceOwner_PrepareResources
     .extern Graphics3DResourceOwner_CreateManager
-    .extern func_02077308
+    .extern GraphicsAnimationInstanceManager_CreateInstance
     .extern func_ov035_021fdd28
     .extern Heap_Alloc
     .extern func_020955d8
@@ -182,7 +182,7 @@ L_021ff5f8:
     bl Graphics3DResourceOwner_CreateManager
     add r1, r5, #0xdc
     str r0, [r5, #0x124]
-    bl func_02077308
+    bl GraphicsAnimationInstanceManager_CreateInstance
     mov r1, #0x0
     str r1, [sp, #0x0]
     mov r2, #0x7
@@ -209,7 +209,7 @@ L_021ff720:
     bl func_02095274
     ldr r0, [r5, #0x124]
     add r1, r5, #0xe8
-    bl func_02077308
+    bl GraphicsAnimationInstanceManager_CreateInstance
     mov r1, #0x0
     str r1, [sp, #0x0]
     mov r4, #0xc
@@ -236,7 +236,7 @@ L_021ff788:
     bl func_02095274
     ldr r0, [r5, #0x124]
     add r1, r5, #0xf4
-    bl func_02077308
+    bl GraphicsAnimationInstanceManager_CreateInstance
     mov r1, #0x0
     str r1, [sp, #0x0]
     mov r4, #0xc
@@ -263,7 +263,7 @@ L_021ff7f0:
     bl func_02095274
     ldr r0, [r5, #0x124]
     add r1, r5, #0x100
-    bl func_02077308
+    bl GraphicsAnimationInstanceManager_CreateInstance
     mov r2, #0x0
     str r2, [sp, #0x0]
     mov r1, #0xc
@@ -290,7 +290,7 @@ L_021ff858:
     bl func_02095274
     ldr r0, [r5, #0x124]
     add r1, r5, #0x10c
-    bl func_02077308
+    bl GraphicsAnimationInstanceManager_CreateInstance
     mov r1, #0x0
     str r1, [sp, #0x0]
     mov r4, #0xc
@@ -317,7 +317,7 @@ L_021ff8c0:
     bl func_02095274
     ldr r0, [r5, #0x124]
     add r1, r5, #0x10c
-    bl func_02077308
+    bl GraphicsAnimationInstanceManager_CreateInstance
     mov r2, #0x0
     str r2, [sp, #0x0]
     mov r1, #0xc
@@ -344,7 +344,7 @@ L_021ff928:
     bl func_02095274
     ldr r0, [r5, #0x124]
     add r1, r5, #0xcc
-    bl func_02077308
+    bl GraphicsAnimationInstanceManager_CreateInstance
     mov r1, #0x0
     str r1, [sp, #0x0]
     mov r4, #0xc

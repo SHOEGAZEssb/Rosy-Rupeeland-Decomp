@@ -7,7 +7,7 @@
     .extern func_ov036_021fdef0
     .extern func_ov036_021fcfa0
     .extern func_ov036_021fdd4c
-    .extern func_020773e4
+    .extern GraphicsAnimationInstanceManager_Render
     .extern func_ov036_021fd128
     .extern func_ov036_021fd97c
 
@@ -39,7 +39,7 @@ func_ov036_02203774:
     bl func_ov036_021fdd4c
     ldr r0, [r4, #0xf4]
     add r1, r4, #0x64
-    bl func_020773e4
+    bl GraphicsAnimationInstanceManager_Render
     mov r0, #0x1f
     str r0, [sp, #0x0]
     mov r0, #0x8000

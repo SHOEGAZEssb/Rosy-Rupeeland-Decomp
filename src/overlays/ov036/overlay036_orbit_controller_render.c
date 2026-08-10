@@ -8,7 +8,7 @@
 extern "C" {
 #endif
 extern void Graphics3DSceneState_Apply(void *transform);
-extern void func_020773e4(void *manager, void *matrix);
+extern void GraphicsAnimationInstanceManager_Render(void *manager, void *matrix);
 extern void func_ov036_0220009c(void *object);
 extern void func_ov036_021fd128(s32, s32, s32, s32, s32, s32);
 extern void func_ov036_021fdef0(s32, s32, s32, s32,
@@ -27,7 +27,7 @@ extern void func_ov036_021fdef0(s32, s32, s32, s32,
 extern "C" void func_ov036_02200fb8(void *controller)
 {
     Graphics3DSceneState_Apply((u8 *)controller + 0xc);
-    func_020773e4(FIELD(void *, controller, 0x100),
+    GraphicsAnimationInstanceManager_Render(FIELD(void *, controller, 0x100),
                   (u8 *)controller + 0x64);
     func_ov036_0220009c(FIELD(void *, controller, 0x144));
     func_ov036_021fd128(0, 0, 3, 0x13, 0x1f, 0);

@@ -12,7 +12,7 @@ extern "C" {
 #endif
 extern s32 func_02091c7c(void *timer, s32 mode);
 extern s32 func_020918f4(void *randomState, s32 bound);
-extern void *func_02077308(void *resourceOwner, void *slot);
+extern void *GraphicsAnimationInstanceManager_CreateInstance(void *resourceOwner, void *slot);
 extern void *Heap_Alloc(u32 size, const void *tag, s32 alignment, void *heap);
 extern void *func_020955d8(void *object, void *actor);
 extern s32 func_0209189c(void *randomState, s32 minimum, s32 maximum);
@@ -20,10 +20,10 @@ extern void func_02094bbc(void *object, s32 x, s32 y, s32 z);
 extern void func_020948d4(void *field, s32 value, ...);
 extern void func_020948e4(void *field, s32 mode, s32 value);
 extern void func_020948f8(void *field, s32 mode, s32 value);
-extern s32 func_02077248(void *actor);
+extern s32 GraphicsAnimationInstance_GetSequenceDuration(void *actor);
 extern void func_02095274(void *container, void *object);
 extern void func_02091b98(void *timer, s32 delay);
-extern void func_02076be8(void *actor, s32 mode);
+extern void GraphicsAnimationInstance_SetAnimation(void *actor, s32 mode);
 #ifdef __cplusplus
 }
 #endif
@@ -55,7 +55,7 @@ extern "C" void func_ov037_021fdd08(void *scene)
     if (func_02091c7c((u8 *)scene + 0x1a8, 2)) {
         void *slot = (u8 *)scene +
             (func_020918f4(randomState, 2) ? 0xec : 0xf8);
-        void *actor = func_02077308(resourceOwner, slot);
+        void *actor = GraphicsAnimationInstanceManager_CreateInstance(resourceOwner, slot);
         FIELD(u16, actor, 0x50) |= 0x40;
 
         void *object = Heap_Alloc(0xa0, data_ov037_021feeb0, 4, gHeapContext);
@@ -68,7 +68,7 @@ extern "C" void func_ov037_021fdd08(void *scene)
                       func_0209189c(randomState, 0x1000, 0x2000));
         func_020948e4((u8 *)object + 0x1c, 1,
                       func_0209189c(randomState, 0x800, 0xc00));
-        func_ov037_021fdf50(object, func_02077248(actor));
+        func_ov037_021fdf50(object, GraphicsAnimationInstance_GetSequenceDuration(actor));
         FIELD(s32, object, 0x88) = 1;
         func_02095274((u8 *)scene + 0x12c, object);
         func_02091b98((u8 *)scene + 0x1a8, 2);
@@ -77,8 +77,8 @@ extern "C" void func_ov037_021fdd08(void *scene)
     if (!func_02091c7c((u8 *)scene + 0x1c4, 2))
         return;
 
-    void *actor = func_02077308(resourceOwner, (u8 *)scene + 0x104);
-    func_02076be8(actor, func_0209189c(randomState, 5, 10) & 0xff);
+    void *actor = GraphicsAnimationInstanceManager_CreateInstance(resourceOwner, (u8 *)scene + 0x104);
+    GraphicsAnimationInstance_SetAnimation(actor, func_0209189c(randomState, 5, 10) & 0xff);
     FIELD(u8, actor, 0x5a) = 6;
     FIELD(u8, actor, 0x5b) = 0x18;
     FIELD(u16, actor, 0x50) |= 0x40;

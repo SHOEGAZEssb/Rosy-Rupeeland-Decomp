@@ -11,7 +11,7 @@ extern s32 func_0209189c(void *, s32, s32);
 extern void func_02091bac(void *, s32, s32, s32, s32);
 extern void func_02091c7c(void *, s32);
 extern s32 func_02091cf0(void *);
-extern void func_020773a8(void *);
+extern void GraphicsAnimationInstanceManager_Update(void *);
 #ifdef __cplusplus
 }
 #endif
@@ -62,7 +62,7 @@ extern "C" void func_ov017_021fe5b0(void *pool)
         FIELD(s32, sprite, 0x34) = FIELD(s32, pool, 0x48);
         FIELD(s32, sprite, 0x38) = FIELD(s32, pool, 0x48);
     }
-    func_020773a8(FIELD(void *, pool, 0));
+    GraphicsAnimationInstanceManager_Update(FIELD(void *, pool, 0));
 }
 
 /*

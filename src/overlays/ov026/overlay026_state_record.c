@@ -9,7 +9,7 @@ extern const u8 data_ov026_022048b8[];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_02076be8(void *, u8);
+extern void GraphicsAnimationInstance_SetAnimation(void *, u8);
 extern void func_02095308(void *);
 #ifdef __cplusplus
 }
@@ -44,7 +44,7 @@ extern "C" void func_ov026_021ff830(void *record, u32 kind, s32 value20,
                                       s32 value24, s32 value28,
                                       u8 byte_value, u32 flags)
 {
-    func_02076be8(record, (u8)kind);
+    GraphicsAnimationInstance_SetAnimation(record, (u8)kind);
     FIELD(s32, record, 0x20) = value20;
     FIELD(s32, record, 0x24) = value24;
     FIELD(s32, record, 0x28) = value28;

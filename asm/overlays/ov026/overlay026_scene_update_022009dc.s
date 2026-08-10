@@ -1,7 +1,7 @@
 .text
 
 /* Exact fallback; see src/overlays/ov026/overlay026_scene_update.c. */
-.extern func_020773a8
+.extern GraphicsAnimationInstanceManager_Update
 .extern func_0209189c
 .extern func_020918f4
 .extern func_020948e4
@@ -80,13 +80,13 @@ L_02200aa8:
     add r0, r4, #0x314
     bl func_02095360
     ldr r0, [r4, #0x6c]
-    bl func_020773a8
+    bl GraphicsAnimationInstanceManager_Update
     ldr r0, [r4, #0x70]
-    bl func_020773a8
+    bl GraphicsAnimationInstanceManager_Update
     ldr r0, [r4, #0x74]
-    bl func_020773a8
+    bl GraphicsAnimationInstanceManager_Update
     ldr r0, [r4, #0x78]
-    bl func_020773a8
+    bl GraphicsAnimationInstanceManager_Update
     ldr r0, [r4, #0x2f0]
     bl func_ov026_02200d08
     cmp r0, #0x0

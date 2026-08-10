@@ -6,7 +6,7 @@
     .extern func_02091c7c
     .extern func_ov036_021fef6c
     .extern func_02095360
-    .extern func_020773a8
+    .extern GraphicsAnimationInstanceManager_Update
     .extern data_ov036_02205ce0
 
     .global func_ov036_021ff098
@@ -63,7 +63,7 @@ L_021ff140:
     add r0, r4, #0x108
     bl func_02095360
     ldr r0, [r4, #0xdc]
-    bl func_020773a8
+    bl GraphicsAnimationInstanceManager_Update
     mov r0, #0x1
     ldmia sp!, {r4, pc}
 L_021ff160:
@@ -72,7 +72,7 @@ L_021ff160:
     add r0, r4, #0x108
     bl func_02095360
     ldr r0, [r4, #0xdc]
-    bl func_020773a8
+    bl GraphicsAnimationInstanceManager_Update
     mov r0, #0x0
     ldmia sp!, {r4, pc}
 L_021ff180: .word data_ov036_02205ce0

@@ -27,9 +27,9 @@
     .extern func_02070464
     .extern func_020755bc
     .extern func_02075858
-    .extern func_02076be8
-    .extern func_02076c20
-    .extern func_020773a8
+    .extern GraphicsAnimationInstance_SetAnimation
+    .extern GraphicsAnimationInstance_SetFrame
+    .extern GraphicsAnimationInstanceManager_Update
     .extern Graphics3DResourceOwner_RenderManagers
     .extern Graphics3DSceneState_Apply
     .extern Graphics3DResourceBinding_GetTextureFormat
@@ -232,7 +232,7 @@ L_021fd878:
     str r0, [r9, #0x144]
     ldr r0, [r9, #0x8c]
     and r1, r1, #0xff
-    bl func_02076be8
+    bl GraphicsAnimationInstance_SetAnimation
     b L_021fdae0
 L_021fd8d4:
     ldr r0, [r9, #0x8c]
@@ -261,7 +261,7 @@ L_021fd8d4:
     str r0, [r9, #0x148]
     ldr r0, [r9, #0x8c]
     and r1, r1, #0xff
-    bl func_02076c20
+    bl GraphicsAnimationInstance_SetFrame
     b L_021fdae0
 L_021fd944:
     ldr r0, [r9, #0x8c]
@@ -426,7 +426,7 @@ L_021fdb3c:
     strh r1, [r0, #0x52]
 L_021fdba4:
     ldr r0, [r9, #0x88]
-    bl func_020773a8
+    bl GraphicsAnimationInstanceManager_Update
     ldr r1, [r9, #0x8c]
     cmp r1, #0x0
     beq L_021fdbd0

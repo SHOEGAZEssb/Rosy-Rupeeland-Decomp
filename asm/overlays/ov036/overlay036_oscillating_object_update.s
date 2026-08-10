@@ -6,7 +6,7 @@
     .extern func_ov036_021fe978
     .extern func_02091b98
     .extern func_02091c7c
-    .extern func_02076be8
+    .extern GraphicsAnimationInstance_SetAnimation
     .extern Sound_Play
     .extern func_02091bac
     .extern func_ov036_02201d60
@@ -117,7 +117,7 @@ L_02201f40:
     ldrb r1, [r0, #0x54]
     add r1, r2, r1
     and r1, r1, #0x7
-    bl func_02076be8
+    bl GraphicsAnimationInstance_SetAnimation
     ldr r1, [r4, #0xc8]
     ldr r0, L_0220212c
     ldr r3, [r4, #0x50]
@@ -144,7 +144,7 @@ L_02202000:
     bl Sound_Play
     ldr r0, [r4, #0xd4]
     mov r1, #0x1
-    bl func_02076be8
+    bl GraphicsAnimationInstance_SetAnimation
     mov r2, #0x1
     add r0, r4, #0x6c
     mov r1, #0x400
@@ -184,7 +184,7 @@ L_02202070:
     orr r0, r0, #0x1
     strh r0, [r4, #0x98]
     ldr r0, [r4, #0xd4]
-    bl func_02076be8
+    bl GraphicsAnimationInstance_SetAnimation
     ldr r0, [r4, #0xd0]
     add r0, r0, #0x1
     str r0, [r4, #0xd0]

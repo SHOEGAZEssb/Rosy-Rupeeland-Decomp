@@ -13,7 +13,7 @@ extern "C" {
 extern s32 func_02091a70(s32, s32, s32, s32);
 extern void *Heap_Alloc(u32 size, const void *tag, s32 alignment, void *heap);
 extern void *func_ov036_02200234(void *object, s32 selector);
-extern void *func_02077308(void *manager, void *resourceSet);
+extern void *GraphicsAnimationInstanceManager_CreateInstance(void *manager, void *resourceSet);
 extern void func_ov036_021ff050(void *handle, s32 mode,
                                 s32 x, s32 y, s32 z,
                                 s32 byte5A, s32 flags);
@@ -45,7 +45,7 @@ extern "C" void func_ov036_022009b8(void *controller, const void *config)
     if (orbit != 0)
         orbit = func_ov036_02200234(orbit, selector);
 
-    void *handle = func_02077308(FIELD(void *, controller, 0x100),
+    void *handle = GraphicsAnimationInstanceManager_CreateInstance(FIELD(void *, controller, 0x100),
                                   (u8 *)controller + 0xdc);
     FIELD(void *, orbit, 0x9c) = handle;
     func_ov036_021ff050(handle, (selector & 1) + 2, 0, 0, 0,
@@ -53,7 +53,7 @@ extern "C" void func_ov036_022009b8(void *controller, const void *config)
     FIELD(u16, handle, 0x4e) = color;
 
     for (s32 i = 0; i < 4; ++i) {
-        handle = func_02077308(FIELD(void *, controller, 0x100),
+        handle = GraphicsAnimationInstanceManager_CreateInstance(FIELD(void *, controller, 0x100),
                                (u8 *)controller + 0xdc);
         FIELD(void *, orbit, 0xa0 + i * 4) = handle;
         func_ov036_021ff050(handle, i & 1, 0, 0, 0,

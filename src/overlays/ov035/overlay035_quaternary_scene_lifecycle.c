@@ -19,7 +19,7 @@ extern void func_020720d4(void *state);
 extern void Heap_Free(void *allocation);
 extern void func_02095360(void *collection);
 extern void func_ov035_021fdd70(void *record, s32 x, s32 y, s32 z);
-extern void func_020773a8(void *resourceSet);
+extern void GraphicsAnimationInstanceManager_Update(void *resourceSet);
 #ifdef __cplusplus
 }
 #endif
@@ -77,5 +77,5 @@ extern "C" void func_ov035_02200574(void *scene)
                         FIELD(s32, animated, 0x10),
                         FIELD(s32, animated, 0x20),
                         FIELD(s32, animated, 0x30));
-    func_020773a8(FIELD(void *, scene, 0x104));
+    GraphicsAnimationInstanceManager_Update(FIELD(void *, scene, 0x104));
 }

@@ -22,37 +22,38 @@ extern void func_02076db0(GraphicsAnimationInstance *instance,
 #endif
 
 /*
- * Return immediately when field_24 is zero. Otherwise push the current matrix,
- * submit field_18/1c/20 as the three raw translation components, and traverse
- * the list while caching next before callbacks. An instance with flags bits 5
- * and 0 both set is unlinked and destroyed; other instances render only when
- * bits 2 and 3 are both clear. Finally pop one matrix. The volatile geometry
- * writes and delegated renderer/destructor calls are externally observable.
+ * Return immediately when renderEnabled is zero. Otherwise push the current
+ * matrix, submit translationX/Y/Z as the three raw translation components,
+ * and traverse the list while caching next before callbacks. An instance with
+ * flags bits 5 and 0 both set is unlinked and destroyed; other instances
+ * render only when bits 2 and 3 are both clear. Finally pop one matrix. The
+ * volatile geometry writes and delegated renderer/destructor calls are
+ * externally observable.
  */
 #ifndef MATCHING
-void func_020773e4(GraphicsAnimationInstanceManager *manager,
+void GraphicsAnimationInstanceManager_Render(GraphicsAnimationInstanceManager *manager,
                    void *renderContext)
 {
     GraphicsAnimationInstance *instance;
 
-    if (manager->field_24 == 0) {
+    if (manager->renderEnabled == 0) {
         return;
     }
 
     REG_G3_MTX_PUSH = 0;
-    REG_G3_MTX_TRANS = manager->field_18;
-    REG_G3_MTX_TRANS = manager->field_1c;
-    REG_G3_MTX_TRANS = manager->field_20;
+    REG_G3_MTX_TRANS = manager->translationX;
+    REG_G3_MTX_TRANS = manager->translationY;
+    REG_G3_MTX_TRANS = manager->translationZ;
 
     instance = manager->head;
     while (instance != 0) {
         GraphicsAnimationInstance *next =
-            instance->field_08;
+            instance->next;
         u16 flags = instance->flags;
 
         if ((flags & 0x20) != 0 && (flags & 1) != 0) {
-            func_020772d0(manager, instance);
-            func_020777ac((struct Graphics3DResourceOwner *)manager->owner,
+            GraphicsAnimationInstanceManager_Unlink(manager, instance);
+            Graphics3DResourceOwner_DestroyAnimationInstance((struct Graphics3DResourceOwner *)manager->owner,
                            instance);
         } else if ((flags & 0x0c) == 0) {
             func_02076db0(instance, renderContext);
@@ -64,7 +65,7 @@ void func_020773e4(GraphicsAnimationInstanceManager *manager,
 }
 #else
 /* This matching fallback implements the documented portable C directly above. */
-asm void func_020773e4(GraphicsAnimationInstanceManager *manager,
+asm void GraphicsAnimationInstanceManager_Render(GraphicsAnimationInstanceManager *manager,
                        void *renderContext)
 {
     stmdb sp!, {r3, r4, r5, r6, r7, lr}
@@ -98,10 +99,10 @@ animation_manager_render_loop:
     beq animation_manager_render_visible
     mov r0, r7
     mov r1, r4
-    bl func_020772d0
+    bl GraphicsAnimationInstanceManager_Unlink
     ldr r0, [r7]
     mov r1, r4
-    bl func_020777ac
+    bl Graphics3DResourceOwner_DestroyAnimationInstance
     b animation_manager_render_next
 animation_manager_render_visible:
     and r0, r1, #0xc

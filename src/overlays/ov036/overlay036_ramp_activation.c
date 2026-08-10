@@ -16,7 +16,7 @@ extern void func_020948f8(void *field, s32 mode, s32 value);
 extern void func_020956fc(void *object);
 extern s32 func_020ae024(s32 x, s32 y);
 extern void func_02095360(void *list);
-extern void func_020773a8(void *manager);
+extern void GraphicsAnimationInstanceManager_Update(void *manager);
 extern s32 func_02091c7c(void *timer, s32 mode);
 extern void func_ov036_02201580(void *controller, s32 duration);
 extern void func_ov036_02201470(void *controller);
@@ -95,7 +95,7 @@ extern "C" void func_ov036_02201a78(void *controller)
 {
     func_02095360((u8 *)controller + 0x148);
     func_02095360((u8 *)controller + 0x158);
-    func_020773a8(FIELD(void *, controller, 0x118));
+    GraphicsAnimationInstanceManager_Update(FIELD(void *, controller, 0x118));
     (void)func_02091c7c((u8 *)controller + 0x168, 0);
     for (s32 i = 0; i < 4; ++i)
         func_ov036_02201580(controller, i + 0x18);

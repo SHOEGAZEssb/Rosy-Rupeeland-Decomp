@@ -17,7 +17,7 @@ extern void func_ov035_02201d10(void *scene, s32 x, s32 y, s32 z,
                                s32 targetX, s32 targetY, s32 targetZ,
                                s32 targetScale, s32 resourceIndex);
 extern void func_020948e4(void *field, s32 mode, s32 value);
-extern void *func_02077308(void *resourceSet, void *resource);
+extern void *GraphicsAnimationInstanceManager_CreateInstance(void *resourceSet, void *resource);
 extern void *Heap_Alloc(u32 size, const void *tag, s32 alignment, void *heap);
 extern void *func_020955d8(void *allocation, void *spriteRecord);
 extern void func_02095274(void *collection, void *object);
@@ -88,7 +88,7 @@ extern "C" void func_ov035_02201df8(void *scene, s32 side)
     FIELD(s32, model, 0x7c) = 7;
     FIELD(s32, model, 0x80) = 0;
 
-    void *record = func_02077308(FIELD(void *, scene, 0xf4),
+    void *record = GraphicsAnimationInstanceManager_CreateInstance(FIELD(void *, scene, 0xf4),
                                   (u8 *)scene + 0xe8);
     void *sprite = allocate_sprite(scene, record);
     func_ov035_021fdd28(record,
@@ -116,7 +116,7 @@ extern "C" void func_ov035_02201fe4(void *scene)
         return;
     FIELD(s32, scene, 0x160) = 0;
 
-    void *record = func_02077308(FIELD(void *, scene, 0xf4),
+    void *record = GraphicsAnimationInstanceManager_CreateInstance(FIELD(void *, scene, 0xf4),
                                   (u8 *)scene + 0xdc);
     void *sprite = allocate_sprite(scene, record);
     func_ov035_021fdd28(record,

@@ -9,7 +9,7 @@ extern "C" {
 #endif
 extern s32 func_0209189c(void *, s32, s32);
 extern s32 func_020918f4(void *, s32);
-extern void func_020773a8(void *);
+extern void GraphicsAnimationInstanceManager_Update(void *);
 extern void func_020948e4(void *, s32, s32);
 extern void func_02095360(void *);
 extern void func_ov026_021fe5c0(void *, s32);
@@ -63,10 +63,10 @@ extern "C" void func_ov026_022009dc(void *scene)
     func_02095360((u8 *)scene + 0x2f4);
     func_02095360((u8 *)scene + 0x304);
     func_02095360((u8 *)scene + 0x314);
-    func_020773a8(FIELD(void *, scene, 0x6c));
-    func_020773a8(FIELD(void *, scene, 0x70));
-    func_020773a8(FIELD(void *, scene, 0x74));
-    func_020773a8(FIELD(void *, scene, 0x78));
+    GraphicsAnimationInstanceManager_Update(FIELD(void *, scene, 0x6c));
+    GraphicsAnimationInstanceManager_Update(FIELD(void *, scene, 0x70));
+    GraphicsAnimationInstanceManager_Update(FIELD(void *, scene, 0x74));
+    GraphicsAnimationInstanceManager_Update(FIELD(void *, scene, 0x78));
 
     void *motion = FIELD(void *, scene, 0x2f0);
     if (func_ov026_02200d08(motion)) {

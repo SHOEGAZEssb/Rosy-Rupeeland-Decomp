@@ -11,7 +11,7 @@ extern s32 func_ov043_0220b9bc(void *);
 extern void func_020b0558(void);
 extern void Graphics3DSceneState_Apply(void *);
 extern void func_ov027_021fcefc(void *);
-extern void func_020773e4(void *, void *);
+extern void GraphicsAnimationInstanceManager_Render(void *, void *);
 extern void func_ov027_021fd0b0(u32, u32, u32, u32, u32, u32, u32, u32);
 extern void func_ov027_021fd834(void *);
 extern void func_ov048_0220bad4(void *);
@@ -38,7 +38,7 @@ extern "C" void func_ov027_021fe0f8(void *scene)
     *(volatile u32 *)0x04000444 = 0;
     Graphics3DSceneState_Apply((u8 *)scene + 0x80);
     func_ov027_021fcefc(FIELD(void *, scene, 0x114));
-    func_020773e4(FIELD(void *, scene, 0x58), (u8 *)scene + 0xd8);
+    GraphicsAnimationInstanceManager_Render(FIELD(void *, scene, 0x58), (u8 *)scene + 0xd8);
     func_ov027_021fd0b0(0, 0, 0, 0, 0, 0, 0, 0);
     for (void *node = FIELD(void *, scene, 0x154); node;
          node = FIELD(void *, node, 8))

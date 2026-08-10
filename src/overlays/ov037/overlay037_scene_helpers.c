@@ -10,7 +10,7 @@ extern const u8 data_ov037_021fedac[];
 extern "C" {
 #endif
 extern void func_02095308(void *container);
-extern void func_02076be8(void *actor, s32 mode);
+extern void GraphicsAnimationInstance_SetAnimation(void *actor, s32 mode);
 extern void func_020add34(void *record, void *recordAgain);
 #ifdef __cplusplus
 }
@@ -48,7 +48,7 @@ extern "C" void *func_ov037_021fd6f0(void *container)
 extern "C" void func_ov037_021fd710(void *actor, s32 mode, s32 x, s32 y,
                                      s32 z, u8 parameter, u16 flags)
 {
-    func_02076be8(actor, mode & 0xff);
+    GraphicsAnimationInstance_SetAnimation(actor, mode & 0xff);
     FIELD(s32, actor, 0x20) = x;
     FIELD(s32, actor, 0x24) = y;
     FIELD(s32, actor, 0x28) = z;

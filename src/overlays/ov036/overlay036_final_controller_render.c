@@ -10,7 +10,7 @@ extern "C" {
 extern void Graphics3DSceneState_Apply(void *state);
 extern void func_ov048_0220baec(s32 x, s32 y, s32 width, s32 height,
                                 s32 depth, s32 value, s32 flags);
-extern void func_020773e4(void *manager, void *transform);
+extern void GraphicsAnimationInstanceManager_Render(void *manager, void *transform);
 extern void func_ov036_02203c44(void *object, void *transform);
 extern void func_ov036_021fcfa0(void *object, void *transform);
 #ifdef __cplusplus
@@ -32,7 +32,7 @@ extern "C" void func_ov036_02204510(void *controller)
                         -0x200, 0x3ff, 0x1f);
     func_ov048_0220baec(-0x100, 0, 0x100, -0x100,
                         -0x200, 0x1f, 0);
-    func_020773e4(FIELD(void *, controller, 0xe8),
+    GraphicsAnimationInstanceManager_Render(FIELD(void *, controller, 0xe8),
                   (u8 *)controller + 0x64);
     func_ov036_02203c44(FIELD(void *, controller, 0xf0),
                         (u8 *)controller + 0x64);

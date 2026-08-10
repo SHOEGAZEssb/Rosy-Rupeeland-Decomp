@@ -14,7 +14,7 @@ extern void func_020948d4(void *field, s32 value);
 extern void func_ov036_021fe978(void *resource, s32 x, s32 y, s32 z);
 extern void func_02091b98(void *timer, s32 duration);
 extern s32 func_02091c7c(void *timer, s32 mode);
-extern void func_02076be8(void *resource, s32 selector);
+extern void GraphicsAnimationInstance_SetAnimation(void *resource, s32 selector);
 extern void Sound_Play(void *sound, s32 id, s32 mode);
 extern void func_02091bac(void *timer, s32 mode, s32 first,
                           s32 second, s32 duration);
@@ -82,7 +82,7 @@ extern "C" s32 func_ov036_02201e50(void *object)
                 void *resource = FIELD(void *, object, 0xd4);
                 s32 selector = (FIELD(s32, object, 0xc8) +
                                 FIELD(u8, resource, 0x54)) & 7;
-                func_02076be8(resource, selector);
+                GraphicsAnimationInstance_SetAnimation(resource, selector);
                 func_020948d4((u8 *)object + 0x4c,
                               FIELD(s32, object, 0x50) -
                               FIELD(s32, object, 0xc8) * 0x333);
@@ -95,7 +95,7 @@ extern "C" s32 func_ov036_02201e50(void *object)
     case 2:
         if (func_02091c7c((u8 *)object + 0xd8, 2) != 0) {
             Sound_Play(gSoundContext, 0x1b1, 0);
-            func_02076be8(FIELD(void *, object, 0xd4), 1);
+            GraphicsAnimationInstance_SetAnimation(FIELD(void *, object, 0xd4), 1);
             FIELD(s32, object, 0xa0) = 1;
             func_020948d4((u8 *)object + 0x6c, 0x400);
             func_02091bac((u8 *)object + 0xd8, 1, 1, 1, 0x10);
@@ -109,7 +109,7 @@ extern "C" s32 func_ov036_02201e50(void *object)
         func_020948d4((u8 *)object + 0x6c, value);
         if (func_02091cf0((u8 *)object + 0xd8) != 0) {
             FIELD(u16, object, 0x98) |= 1;
-            func_02076be8(FIELD(void *, object, 0xd4), 2);
+            GraphicsAnimationInstance_SetAnimation(FIELD(void *, object, 0xd4), 2);
             ++FIELD(s32, object, 0xd0);
         }
         break;
