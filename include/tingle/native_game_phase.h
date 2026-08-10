@@ -76,6 +76,7 @@ typedef struct TingleNativeGamePhaseBoundary {
     TingleNativePhaseOverlayRegistration secondary_registration;
     TingleNativeActorDescriptor *primary_descriptors;
     TingleNativeActorDescriptor *secondary_descriptors;
+    struct TingleNativeActorRuntime *actor_runtime;
     s32 metadata_loaded;
     s32 primary_overlay_loaded;
     s32 secondary_overlay_loaded;
@@ -85,6 +86,7 @@ typedef struct TingleNativeGamePhaseBoundary {
     s32 secondary_descriptors_decoded;
     s32 primary_factories_resolved;
     s32 secondary_factories_resolved;
+    s32 actor_runtime_built;
 } TingleNativeGamePhaseBoundary;
 
 /* Decodes one verified generated phase-overlay entry callback as data. */

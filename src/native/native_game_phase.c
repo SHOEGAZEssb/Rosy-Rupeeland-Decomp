@@ -7,6 +7,7 @@
  */
 #include "tingle/native_game_phase.h"
 #include "tingle/native_actor_factory.h"
+#include "tingle/native_actor_runtime.h"
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -311,6 +312,15 @@ s32 TingleNativeGamePhaseBoundary_Init(TingleNativeGamePhaseBoundary *boundary,
         boundary->secondary_factories_resolved = ResolveDescriptorList(
             &factory_catalog, boundary->secondary_descriptors,
             boundary->secondary_registration.descriptor_count);
+        if (boundary->primary_factories_resolved &&
+            boundary->secondary_factories_resolved) {
+            boundary->actor_runtime = TingleNativeActorRuntime_Create(
+                boundary->primary_descriptors,
+                boundary->primary_registration.descriptor_count,
+                boundary->secondary_descriptors,
+                boundary->secondary_registration.descriptor_count);
+            boundary->actor_runtime_built = boundary->actor_runtime != NULL;
+        }
     }
     return boundary->metadata_loaded;
 }
@@ -318,6 +328,7 @@ s32 TingleNativeGamePhaseBoundary_Init(TingleNativeGamePhaseBoundary *boundary,
 void TingleNativeGamePhaseBoundary_Destroy(TingleNativeGamePhaseBoundary *boundary)
 {
     if (boundary == NULL) return;
+    TingleNativeActorRuntime_Destroy(boundary->actor_runtime);
     free(boundary->secondary_descriptors);
     free(boundary->primary_descriptors);
     TingleNativeData_CloseOverlay(&boundary->secondary_overlay);
@@ -391,6 +402,12 @@ void TingleNativeGamePhaseBoundary_Draw(
                            : "UNAVAILABLE");
         TingleNativeCanvas_DrawText(canvas, 132, 180, text,
                                     0x00e0b060u, 1);
+        if (boundary->actor_runtime_built) {
+            (void)snprintf(text, sizeof(text), "HOST ACTORS: %u",
+                           boundary->actor_runtime->actor_count);
+            TingleNativeCanvas_DrawText(canvas, 132, 194, text,
+                                        0x00e0b060u, 1);
+        }
         (void)snprintf(text, sizeof(text), "FLAGS 40: %08X", boundary->metadata.flags_40);
         TingleNativeCanvas_DrawText(canvas, 12, 264, text, 0x00d8e0d0u, 1);
         DrawField(canvas, 278, "FIELD 2C", boundary->metadata.field_2c);

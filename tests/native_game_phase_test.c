@@ -1,6 +1,7 @@
 /* Verifies host-safe decoding and presentation of fixed phase metadata. */
 #include "tingle/native_game_phase.h"
 #include "tingle/native_actor_factory.h"
+#include "tingle/native_actor_runtime.h"
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -51,6 +52,54 @@ static int TestFactoryResolution(void)
     descriptor.kind = 4;
     descriptor.subtype = 23;
     return !TingleNativeActorFactoryCatalog_Resolve(&catalog, &descriptor, &spec);
+}
+
+static u32 ReadU32At(const u8 *bytes, u32 offset)
+{
+    return (u32)bytes[offset] | ((u32)bytes[offset + 1] << 8) |
+           ((u32)bytes[offset + 2] << 16) |
+           ((u32)bytes[offset + 3] << 24);
+}
+
+static int TestActorRuntime(void)
+{
+    TingleNativeActorDescriptor descriptors[2] = {{0}};
+    TingleNativeActorRuntime *runtime;
+    const TingleNativeActorImage *actor;
+
+    descriptors[0].kind = 3;
+    descriptors[0].subtype = 4;
+    descriptors[0].half_width = 24;
+    descriptors[0].half_height = 18;
+    descriptors[0].bounds_offset_x = 2;
+    descriptors[0].bounds_offset_y = 3;
+    descriptors[0].position_x = -12;
+    descriptors[0].position_y = 34;
+    descriptors[0].position_z = -5;
+    descriptors[0].flags_28 = 0x12345678;
+    descriptors[0].selector_50 = 2;
+    descriptors[0].value_52 = -9;
+    descriptors[0].reference_58 = 0x02200170;
+    descriptors[0].allocation_size = 0x208;
+    descriptors[1] = descriptors[0];
+    descriptors[1].selector_50 = -1;
+    runtime = TingleNativeActorRuntime_Create(descriptors, 2, NULL, 0);
+    actor = TingleNativeActorRuntime_GetActor(runtime, 0);
+    if (runtime == NULL || runtime->actor_count != 1 ||
+        runtime->allocated_bytes != 0x208 || actor == NULL || actor->category != 1 ||
+        ReadU32At(actor->bytes, 0) != 0x020DEF7C ||
+        actor->bytes[4] != (u8)-12 || actor->bytes[8] != (u8)-10 ||
+        ReadU32At(actor->bytes, 0x0C) != 0x12345678 ||
+        ReadU32At(actor->bytes, 0x1C) != (u32)(-12 * 0x1000) ||
+        ReadU32At(actor->bytes, 0x20) != 34 * 0x1000 ||
+        actor->bytes[0x4D] != 3 || actor->bytes[0x4E] != 4 ||
+        actor->bytes[0xE4] != (u8)-9 || actor->bytes[0xE5] != 0xFF ||
+        TingleNativeActorRuntime_GetActor(runtime, 1) != NULL) {
+        TingleNativeActorRuntime_Destroy(runtime);
+        return 0;
+    }
+    TingleNativeActorRuntime_Destroy(runtime);
+    return 1;
 }
 
 static int TestOverlayRegistration(void)
@@ -141,7 +190,8 @@ static int ProbeMetadata(const char *kind, const char *source, const char *phase
                  boundary.primary_descriptors_decoded &&
                  boundary.secondary_descriptors_decoded &&
                  boundary.primary_factories_resolved &&
-                 boundary.secondary_factories_resolved;
+                 boundary.secondary_factories_resolved &&
+                 boundary.actor_runtime_built;
             if (!ok) {
                 TingleNativeGamePhaseBoundary_Destroy(&boundary);
                 TingleNativeData_Close(data);
@@ -163,7 +213,7 @@ static int ProbeMetadata(const char *kind, const char *source, const char *phase
              boundary.primary_overlay_loaded && boundary.secondary_overlay_loaded &&
              boundary.primary_callback_valid && boundary.secondary_callback_valid &&
              boundary.primary_factories_resolved &&
-             boundary.secondary_factories_resolved;
+             boundary.secondary_factories_resolved && boundary.actor_runtime_built;
 
     if (ok) {
         (void)printf("phase %d: ov1=%u cb1=%08X ov2=%u cb2=%08X flags40=%08X\n",
@@ -189,7 +239,8 @@ int main(int argc, char **argv)
     if (argc == 4 && (strcmp(argv[1], "--rom") == 0 ||
                       strcmp(argv[1], "--data") == 0))
         return ProbeMetadata(argv[1], argv[2], argv[3]);
-    if (!TestOverlayRegistration() || !TestFactoryResolution()) return EXIT_FAILURE;
+    if (!TestOverlayRegistration() || !TestFactoryResolution() ||
+        !TestActorRuntime()) return EXIT_FAILURE;
 
     WriteU32(record + 0x00, 7);
     WriteU16(record + 0x12, (u16)-2);

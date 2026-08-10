@@ -149,7 +149,11 @@ raw reference at `0x58`--are copied into host-owned scalar records. The
 recovered factory's kind/subtype matrix and its two ARM9 selector tables
 then resolve every record to a retail allocation size and a type-local
 constructor route. Constructors themselves remain behind the native runtime
-boundary. Fourteen 32-byte zero
+boundary. The native phase scaffold allocates a host-owned byte image of that
+size for each initially eligible descriptor and applies the recovered common
+geometry initializer, including fixed-point positions, byte bounds, raw NDS
+vtable identities, and descriptor value `0x52`. Derived constructors and the
+two category bootstrap actors are not yet represented. Fourteen 32-byte zero
 secondary images are omitted by the phase table; the decoder still represents
 such an image as an empty registration when read directly. The callbacks
 remain addresses and are never called as host function pointers.
