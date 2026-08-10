@@ -3,8 +3,8 @@
 .extern AttachmentController_SetEnabled
 .extern Type7Actor_GetStateCode
 .extern Type7Actor_UpdateAttachmentControllerAnimation
-.extern func_0204ced8
-.extern func_0204cf28
+.extern Type7MarkerPresentation_SelectAnimation
+.extern Type7MarkerPresentation_ReloadResources
 .extern func_020593dc
 .extern func_02072b68
 .extern gGameWork
@@ -135,11 +135,11 @@ Type7Actor_StartAnimation19Interaction: ; 0x0204b6ec
     cmp r0, #0x0
     beq .L_0204b790
     add r0, r4, #0x2a8
-    bl func_0204cf28
+    bl Type7MarkerPresentation_ReloadResources
 .L_0204b790:
     add r0, r4, #0x2a8
     mov r1, #0x19
-    bl func_0204ced8
+    bl Type7MarkerPresentation_SelectAnimation
     add r0, r4, #0x2a8
     mov r1, #0x1
     bl AttachmentController_SetEnabled

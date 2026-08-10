@@ -15,8 +15,8 @@ extern void func_0200b2c0(void *value, s32 x, s32 y, s32 z);
 extern void AttachmentController_SetEnabled(void *state, s32 enabled);
 extern s32 Type7Actor_GetStateCode(void *actor);
 extern void Type7Actor_UpdateAttachmentControllerAnimation(void *actor);
-extern void func_0204ced8(void *state, u32 index);
-extern void func_0204cf28(void *state);
+extern void Type7MarkerPresentation_SelectAnimation(void *state, u32 index);
+extern void Type7MarkerPresentation_ReloadResources(void *state);
 extern void func_020593dc(void *soundContext, s32 group, s32 index,
                           u32 argument, s32 zero, s32 volume);
 extern void func_02072b68(void *presentation, u32 index);
@@ -106,8 +106,8 @@ void Type7Actor_StartAnimation19Interaction(void *self, s32 value, s32 selector)
     actorVtable[0x74 / 4](actor, *(void **)(actor + 0x294));
     helper = actor + 0x2a8;
     if (*(s16 *)(actor + 0x2b6) != 0)
-        func_0204cf28(helper);
-    func_0204ced8(helper, 0x19);
+        Type7MarkerPresentation_ReloadResources(helper);
+    Type7MarkerPresentation_SelectAnimation(helper, 0x19);
     AttachmentController_SetEnabled(helper, 1);
     helperVtable = *(void (***)(void *))helper;
     helperVtable[2](helper);

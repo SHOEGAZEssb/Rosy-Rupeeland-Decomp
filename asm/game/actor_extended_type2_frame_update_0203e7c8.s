@@ -22,8 +22,8 @@
 .extern AttachmentController_SetEnabled
 .extern Actor_UpdateGroundContactProbe
 .extern InteractionRecordAllocator_ReleaseOwner
-.extern func_0204ced8
-.extern func_0204cf28
+.extern Type7MarkerPresentation_SelectAnimation
+.extern Type7MarkerPresentation_ReloadResources
 .extern func_0204cfa4
 .extern func_0204cff4
 .extern func_020ae024
@@ -529,11 +529,11 @@ ActorExtendedType2_UpdateFrame: ; 0x0203e7c8
     cmp r0, #0x0
     beq .L_0203eedc
     add r0, r6, #0x284
-    bl func_0204cf28
+    bl Type7MarkerPresentation_ReloadResources
 .L_0203eedc:
     add r0, r6, #0x284
     and r1, r4, #0xff
-    bl func_0204ced8
+    bl Type7MarkerPresentation_SelectAnimation
     add r0, r6, #0x284
     mov r1, #0x1
     bl AttachmentController_SetEnabled

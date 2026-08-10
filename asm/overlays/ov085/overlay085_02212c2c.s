@@ -3,14 +3,14 @@
 .extern Heap_Free
 .extern func_02005058
 .extern ActorDerivedRuntime_DestroyAlternate
-.extern func_0204cd7c
+.extern Type7MarkerPresentation_Destroy
 
 .global func_ov085_02212c2c
 func_ov085_02212c2c:
     stmdb sp!, {r4, lr}
     mov r4, r0
     add r0, r4, #0x23c
-    bl func_0204cd7c
+    bl Type7MarkerPresentation_Destroy
     add r0, r4, #0x214
     bl func_02005058
     mov r0, r4

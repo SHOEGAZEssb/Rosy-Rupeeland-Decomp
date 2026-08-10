@@ -8,8 +8,8 @@
 .extern data_020e1868
 .extern data_020e1878
 .extern AttachmentController_SetEnabled
-.extern func_0204ced8
-.extern func_0204cf28
+.extern Type7MarkerPresentation_SelectAnimation
+.extern Type7MarkerPresentation_ReloadResources
 .text
     .global Type7Actor_UpdateAttachmentControllerAnimation
 Type7Actor_UpdateAttachmentControllerAnimation: ; 0x0204b1e0
@@ -268,11 +268,11 @@ Type7Actor_UpdateAttachmentControllerAnimation: ; 0x0204b1e0
     cmp r0, #0x0
     beq .L_0204b578
     add r0, r5, #0x2a8
-    bl func_0204cf28
+    bl Type7MarkerPresentation_ReloadResources
 .L_0204b578:
     add r0, r5, #0x2a8
     and r1, r4, #0xff
-    bl func_0204ced8
+    bl Type7MarkerPresentation_SelectAnimation
     add r0, r5, #0x2a8
     mov r1, #0x1
     bl AttachmentController_SetEnabled

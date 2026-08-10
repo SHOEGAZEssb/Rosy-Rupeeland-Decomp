@@ -6,7 +6,7 @@
 .extern func_02005058
 .extern func_02031488
 .extern ActorDerivedRuntime_DestroyAlternate
-.extern func_0204cd7c
+.extern Type7MarkerPresentation_Destroy
 .extern func_0206c978
 .extern gGameWork
 
@@ -72,7 +72,7 @@ ActorDerivedType1_DestroyAndFree: ; 0x02035290
     blx r1
 .L_0203535c:
     add r0, r4, #0x2a8
-    bl func_0204cd7c
+    bl Type7MarkerPresentation_Destroy
     add r0, r4, #0x284
     bl func_02005058
     add r0, r4, #0x254

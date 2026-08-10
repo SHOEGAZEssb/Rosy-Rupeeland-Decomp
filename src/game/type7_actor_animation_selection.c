@@ -19,8 +19,8 @@ extern const u32 data_020e1878[];
 extern "C" {
 #endif
 extern void AttachmentController_SetEnabled(void *state, s32 enabled);
-extern void func_0204ced8(void *state, u32 index);
-extern void func_0204cf28(void *state);
+extern void Type7MarkerPresentation_SelectAnimation(void *state, u32 index);
+extern void Type7MarkerPresentation_ReloadResources(void *state);
 #ifdef __cplusplus
 }
 #endif
@@ -110,8 +110,8 @@ void Type7Actor_UpdateAttachmentControllerAnimation(void *self)
         AttachmentController_SetEnabled(helper, 0);
     } else {
         if (*(s16 *)(actor + 0x2b6) != 0)
-            func_0204cf28(helper);
-        func_0204ced8(helper, (u8)animation);
+            Type7MarkerPresentation_ReloadResources(helper);
+        Type7MarkerPresentation_SelectAnimation(helper, (u8)animation);
         AttachmentController_SetEnabled(helper, 1);
     }
 

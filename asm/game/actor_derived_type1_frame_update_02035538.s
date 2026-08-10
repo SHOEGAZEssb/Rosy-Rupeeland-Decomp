@@ -28,7 +28,7 @@
 .extern Type7Actor_ClearTarget
 .extern Type7AuxiliaryPresentation_Init
 .extern Type7AuxiliaryPresentation_Activate
-.extern func_0204ced8
+.extern Type7MarkerPresentation_SelectAnimation
 .extern func_0205940c
 .extern func_020ada8c
 .extern func_020adc90
@@ -422,7 +422,7 @@ ActorDerivedType1_UpdateFrame: ; 0x02035538
     bne .L_02035acc
     add r0, r5, #0x2a8
     mov r1, #0x17
-    bl func_0204ced8
+    bl Type7MarkerPresentation_SelectAnimation
     b .L_02035b20
 .L_02035acc:
     add r0, r5, #0x200
@@ -431,7 +431,7 @@ ActorDerivedType1_UpdateFrame: ; 0x02035538
     ble .L_02035aec
     add r0, r5, #0x2a8
     mov r1, #0x17
-    bl func_0204ced8
+    bl Type7MarkerPresentation_SelectAnimation
     b .L_02035b20
 .L_02035aec:
     ldrsh r1, [r0, #0x64]
@@ -442,12 +442,12 @@ ActorDerivedType1_UpdateFrame: ; 0x02035538
     blt .L_02035b14
     add r0, r5, #0x2a8
     mov r1, #0x0
-    bl func_0204ced8
+    bl Type7MarkerPresentation_SelectAnimation
     b .L_02035b20
 .L_02035b14:
     add r0, r5, #0x2a8
     mvn r1, #0x0
-    bl func_0204ced8
+    bl Type7MarkerPresentation_SelectAnimation
 .L_02035b20:
     add r0, r5, #0x2a8
     ldr r1, [r0, #0x0]

@@ -17,7 +17,7 @@
 .extern InteractionWaypointCursor_GetCurrentRecord
 .extern InteractionWaypointCursor_GetCurrentYPointer
 .extern InteractionWaypointCursor_GetCurrentDurationFrames
-.extern func_0204cca8
+.extern Type7MarkerPresentation_Init
 .extern func_0206899c
 .extern gHeapContext
     .global ActorExtendedType2_InitDuplicate
@@ -40,7 +40,7 @@ ActorExtendedType2_InitDuplicate: ; 0x0203df4c
     mov r1, r5
     add r0, r5, #0x284
     str r2, [r5, #0x260]
-    bl func_0204cca8
+    bl Type7MarkerPresentation_Init
     mov r2, #0x0
     add r0, r5, #0x22c
     add r1, r5, #0x18

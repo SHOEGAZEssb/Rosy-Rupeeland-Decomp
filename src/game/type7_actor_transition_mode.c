@@ -13,8 +13,8 @@ extern "C" {
 extern void AttachmentController_SetEnabled(void *state, s32 enabled);
 extern void ActorDerivedType1_SetSpecialModeEnabled(void *object, s32 value);
 extern void Type7Actor_ResetMotionAndCooldown(void *actor);
-extern void func_0204ced8(void *state, u32 value);
-extern void func_0204cf28(void *state);
+extern void Type7MarkerPresentation_SelectAnimation(void *state, u32 value);
+extern void Type7MarkerPresentation_ReloadResources(void *state);
 #ifdef __cplusplus
 }
 #endif
@@ -64,8 +64,8 @@ void Type7Actor_SetActorEnabled(void *self, s32 enabled)
  * Inputs are a type-seven actor and an animation/configuration index. Value
  * -2 clears embedded flags 0x3000 and disables helper +0x2a8; -1 sets both
  * flags and disables it. Other values set bit 0x1000, reset the helper through
- * func_0204cf28 when signed halfword +0x2b6 is nonzero, select the low byte via
- * func_0204ced8, and enable the helper. No value is returned. Actor/helper
+ * Type7MarkerPresentation_ReloadResources when signed halfword +0x2b6 is nonzero, select the low byte via
+ * Type7MarkerPresentation_SelectAnimation, and enable the helper. No value is returned. Actor/helper
  * state changes, with no direct SDK or hardware effects.
  */
 void Type7Actor_ConfigureAttachmentController(void *self, s32 index)
@@ -83,7 +83,7 @@ void Type7Actor_ConfigureAttachmentController(void *self, s32 index)
     }
     *(u32 *)(actor + 0x268) |= 0x1000;
     if (*(s16 *)(actor + 0x2b6) != 0)
-        func_0204cf28(actor + 0x2a8);
-    func_0204ced8(actor + 0x2a8, (u8)index);
+        Type7MarkerPresentation_ReloadResources(actor + 0x2a8);
+    Type7MarkerPresentation_SelectAnimation(actor + 0x2a8, (u8)index);
     AttachmentController_SetEnabled(actor + 0x2a8, 1);
 }

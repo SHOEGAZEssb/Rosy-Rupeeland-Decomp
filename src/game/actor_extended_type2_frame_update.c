@@ -30,8 +30,8 @@ extern void func_02005058(void *vector);
 extern void Actor_UpdateGroundContactProbe(void *actor);
 extern void Actor_UpdateAnimationState(void *actor);
 extern void AttachmentController_SetEnabled(void *owner, s32 enabled);
-extern void func_0204cf28(void *owner);
-extern void func_0204ced8(void *owner, u32 animation);
+extern void Type7MarkerPresentation_ReloadResources(void *owner);
+extern void Type7MarkerPresentation_SelectAnimation(void *owner, u32 animation);
 #ifdef __cplusplus
 }
 #endif
@@ -257,8 +257,8 @@ void ActorExtendedType2_UpdateFrame(void *self)
             s32 animation = mode <= 11 ? animations[mode] : -1;
             if (animation != -1) {
                 if (*(s16 *)(actor + 0x292) != 0)
-                    func_0204cf28(helper);
-                func_0204ced8(helper, (u8)animation);
+                    Type7MarkerPresentation_ReloadResources(helper);
+                Type7MarkerPresentation_SelectAnimation(helper, (u8)animation);
                 AttachmentController_SetEnabled(helper, 1);
             } else {
                 AttachmentController_SetEnabled(helper, 0);

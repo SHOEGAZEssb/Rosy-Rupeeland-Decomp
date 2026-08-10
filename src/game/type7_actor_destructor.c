@@ -17,7 +17,7 @@ extern "C" {
 extern void ActorDerivedType1_SetSpecialModeEnabled(void *object, s32 enabled);
 extern void func_0206c978(void *resource);
 extern void GameWork_ClearFlag(void *work, u32 flag);
-extern void func_0204cd7c(void *helper);
+extern void Type7MarkerPresentation_Destroy(void *helper);
 extern void func_02005058(void *value);
 extern void ActorDerivedRuntime_DestroyAlternate(void *actor);
 #ifdef __cplusplus
@@ -75,7 +75,7 @@ void *Type7Actor_Destroy(void *self)
         *(s32 *)(data_020e16b0 + 0x2c4) = *(s32 *)(actor + 0x1c) >> 12;
         *(s32 *)(data_020e16b0 + 0x2c8) = *(s32 *)(actor + 0x20) >> 12;
     }
-    func_0204cd7c(actor + 0x2a8);
+    Type7MarkerPresentation_Destroy(actor + 0x2a8);
     func_02005058(actor + 0x284);
     func_02005058(actor + 0x26c);
     func_02005058(actor + 0x224);

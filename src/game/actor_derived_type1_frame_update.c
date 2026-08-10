@@ -40,7 +40,7 @@ extern void func_0200b2c0(void *state, s32 first, s32 second, s32 third);
 extern s32 func_020adc90(s32 numerator, s32 denominator);
 extern void func_020328d0(void *state, s32 scale);
 extern void Actor_UpdateAnimationState(void *actor);
-extern void func_0204ced8(void *state, s32 mode);
+extern void Type7MarkerPresentation_SelectAnimation(void *state, s32 mode);
 extern void Actor_ClearTransientContactState(void *actor);
 #ifdef __cplusplus
 }
@@ -217,13 +217,13 @@ void ActorDerivedType1_UpdateFrame(void *self)
     object = *(void **)(actor + 0x27c);
     if (object != 0 &&
         (*(s16 *)object == 0x7b || *(s16 *)object == 0x8c)) {
-        func_0204ced8(actor + 0x2a8, 0x17);
+        Type7MarkerPresentation_SelectAnimation(actor + 0x2a8, 0x17);
     } else if (*(s16 *)(actor + 0x268) > 0) {
-        func_0204ced8(actor + 0x2a8, 0x17);
+        Type7MarkerPresentation_SelectAnimation(actor + 0x2a8, 0x17);
     } else if (*(s16 *)(actor + 0x264) > 0 && *(s8 *)(actor + 0x26a) >= 0) {
-        func_0204ced8(actor + 0x2a8, 0);
+        Type7MarkerPresentation_SelectAnimation(actor + 0x2a8, 0);
     } else {
-        func_0204ced8(actor + 0x2a8, -1);
+        Type7MarkerPresentation_SelectAnimation(actor + 0x2a8, -1);
     }
     (*(void (**)(void *))(*(u8 **)(actor + 0x2a8) + 8))(actor + 0x2a8);
     Actor_ClearTransientContactState(actor);

@@ -5,7 +5,7 @@
 .extern func_0200500c
 .extern func_0200b2c0
 .extern ActorDerivedRuntime_Init
-.extern func_0204cca8
+.extern Type7MarkerPresentation_Init
 
     .global ActorDerivedType1_Init
     .type ActorDerivedType1_Init, @function
@@ -58,7 +58,7 @@ ActorDerivedType1_Init: ; 0x02035060
     strh r1, [r0, #0xa4]
     add r0, r4, #0x2a8
     mov r1, r4
-    bl func_0204cca8
+    bl Type7MarkerPresentation_Init
     mov r0, #0x1
     strb r0, [r4, #0x4d]
     mov r1, #0x0

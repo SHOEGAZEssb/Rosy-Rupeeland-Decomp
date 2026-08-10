@@ -10,7 +10,7 @@ extern u8 data_020df9e8[];
 extern "C" {
 #endif
 extern void func_02031488(void *actor);
-extern void func_0204cd7c(void *object);
+extern void Type7MarkerPresentation_Destroy(void *object);
 extern void func_02005058(void *vector);
 extern void ActorDerivedRuntime_DestroyAlternate(void *actor);
 extern void func_020c0c24(void *array, s32 countOrSize, s32 elementSize,
@@ -84,7 +84,7 @@ void *ActorExtendedType2_DestroyComplete(void *self)
         void *object = *(void **)(actor + 0x214);
         (*(void (**)(void *))(*(u8 **)object + 4))(object);
     }
-    func_0204cd7c(actor + 0x284);
+    Type7MarkerPresentation_Destroy(actor + 0x284);
     func_02005058(actor + 0x23c);
     func_02005058(actor + 0x22c);
     ActorDerivedRuntime_DestroyAlternate(actor);

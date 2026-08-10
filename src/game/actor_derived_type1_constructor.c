@@ -9,7 +9,7 @@ extern "C" {
 extern void *ActorDerivedRuntime_Init(void *self);
 extern void func_0200500c(void *vector, s32 x, s32 y, s32 z);
 extern void func_02004fe0(void *vector);
-extern void func_0204cca8(void *state, void *owner);
+extern void Type7MarkerPresentation_Init(void *state, void *owner);
 extern void func_0200b2c0(void *state, s32 first, s32 second, s32 third);
 #ifdef __cplusplus
 }
@@ -53,7 +53,7 @@ void *ActorDerivedType1_Init(void *self)
     actor[0x2a1] = 0;
     *(u16 *)(actor + 0x2a2) = 0;
     *(u16 *)(actor + 0x2a4) = 0;
-    func_0204cca8(actor + 0x2a8, actor);
+    Type7MarkerPresentation_Init(actor + 0x2a8, actor);
     actor[0x4d] = 1;
     *(u32 *)(actor + 0x230) = 0;
     *(u16 *)(actor + 0x234) = 0;

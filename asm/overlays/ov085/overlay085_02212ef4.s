@@ -6,8 +6,8 @@
 .extern data_ov085_02214348
 .extern data_ov085_022143d0
 .extern func_0200b04c
-.extern func_0204ced8
-.extern func_0204cf28
+.extern Type7MarkerPresentation_SelectAnimation
+.extern Type7MarkerPresentation_ReloadResources
 .extern func_020593dc
 .extern func_ov085_02212d08
 .extern func_ov085_02213194
@@ -169,11 +169,11 @@ func_ov085_02212ef4:
     cmp r0, #0x0
     beq .L_02213134
     add r0, r5, #0x23c
-    bl func_0204cf28
+    bl Type7MarkerPresentation_ReloadResources
 .L_02213134:
     add r0, r5, #0x23c
     and r1, r4, #0xff
-    bl func_0204ced8
+    bl Type7MarkerPresentation_SelectAnimation
     add r0, r5, #0x23c
     mov r1, #0x1
     bl func_ov085_02213194

@@ -15,7 +15,7 @@ extern void ActorDerivedRuntime_Init(void *actor, const void *configuration);
 extern void func_02004fe0(void *value);
 extern void func_0200500c(void *value, s32 x, s32 y, s32 z);
 extern void *func_020050a4(void *destination, const void *source);
-extern void func_0204cca8(void *helper, void *actor);
+extern void Type7MarkerPresentation_Init(void *helper, void *actor);
 extern u32 Type7Actor_SetCallbackPair(void *actor, u32 first, u32 second, s32 third);
 extern void Type7Actor_ResetBaseTransformAndMotion(void *actor);
 #ifdef __cplusplus
@@ -75,7 +75,7 @@ void *Type7Actor_Init(void *self, const void *configuration)
     *(u16 *)(actor + 0x2a2) = 0;
     *(u16 *)(actor + 0x2a4) = 0;
     *(u16 *)(actor + 0x2a6) = 0;
-    func_0204cca8(actor + 0x2a8, actor);
+    Type7MarkerPresentation_Init(actor + 0x2a8, actor);
     copied = func_020050a4(actor + 0x214, actor + 0x18);
     func_020050a4(actor + 0x26c, copied);
     if ((*(u32 *)(actor + 0x14) & 0x400) != 0)

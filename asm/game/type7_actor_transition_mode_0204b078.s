@@ -3,8 +3,8 @@
 .extern AttachmentController_SetEnabled
 .extern ActorDerivedType1_SetSpecialModeEnabled
 .extern Type7Actor_ResetMotionAndCooldown
-.extern func_0204ced8
-.extern func_0204cf28
+.extern Type7MarkerPresentation_SelectAnimation
+.extern Type7MarkerPresentation_ReloadResources
 .text
     .global Type7Actor_SetActorEnabled
 Type7Actor_SetActorEnabled: ; 0x0204b078
@@ -98,11 +98,11 @@ Type7Actor_ConfigureAttachmentController: ; 0x0204b148
     cmp r0, #0x0
     beq .L_0204b1c4
     add r0, r5, #0x2a8
-    bl func_0204cf28
+    bl Type7MarkerPresentation_ReloadResources
 .L_0204b1c4:
     add r0, r5, #0x2a8
     and r1, r4, #0xff
-    bl func_0204ced8
+    bl Type7MarkerPresentation_SelectAnimation
     add r0, r5, #0x2a8
     mov r1, #0x1
     bl AttachmentController_SetEnabled

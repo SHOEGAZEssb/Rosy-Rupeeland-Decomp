@@ -2,7 +2,7 @@
 ; Matching fallback for the portable implementation in src/overlays/ov081/overlay081_recovery.c.
 .extern data_ov081_02215368
 .extern data_ov081_02215540
-.extern func_0204cca8
+.extern Type7MarkerPresentation_Init
 .extern func_ov081_02212b94
 .extern func_ov081_02213710
 
@@ -15,7 +15,7 @@ func_ov081_02214008:
     mov r1, r4
     add r0, r4, #0x244
     str r2, [r4, #0x0]
-    bl func_0204cca8
+    bl Type7MarkerPresentation_Init
     mov r2, #0x0
     add r0, r4, #0x200
     strh r2, [r0, #0x54]

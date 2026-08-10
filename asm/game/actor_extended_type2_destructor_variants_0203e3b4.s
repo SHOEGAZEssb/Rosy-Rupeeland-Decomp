@@ -5,7 +5,7 @@
 .extern func_02005058
 .extern func_02031488
 .extern ActorDerivedRuntime_DestroyAlternate
-.extern func_0204cd7c
+.extern Type7MarkerPresentation_Destroy
     .global ActorExtendedType2_DestroyAndFree
     .type ActorExtendedType2_DestroyAndFree, @function
 ActorExtendedType2_DestroyAndFree: ; 0x0203e3b4
@@ -59,7 +59,7 @@ ActorExtendedType2_DestroyAndFree: ; 0x0203e3b4
     blx r1
 .L_0203e460:
     add r0, r4, #0x284
-    bl func_0204cd7c
+    bl Type7MarkerPresentation_Destroy
     add r0, r4, #0x23c
     bl func_02005058
     add r0, r4, #0x22c
@@ -127,7 +127,7 @@ ActorExtendedType2_Destroy: ; 0x0203e494
     blx r1
 .L_0203e540:
     add r0, r4, #0x284
-    bl func_0204cd7c
+    bl Type7MarkerPresentation_Destroy
     add r0, r4, #0x23c
     bl func_02005058
     add r0, r4, #0x22c

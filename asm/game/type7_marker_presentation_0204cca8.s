@@ -6,15 +6,15 @@
 .extern ActorCollection_GetSpriteOwner
 .extern func_02073fc4
 .extern func_02072b68
-.extern func_0204cdcc
+.extern Type7MarkerPresentation_Reset
 .extern func_02073ef8
 .extern Heap_Free
-.extern func_0204cf28
+.extern Type7MarkerPresentation_ReloadResources
 .extern data_020e1ed8
 .extern data_020f4e18
 .text
-    .global func_0204cca8
-func_0204cca8: ; 0x0204cca8
+    .global Type7MarkerPresentation_Init
+Type7MarkerPresentation_Init: ; 0x0204cca8
     stmdb sp!, {r3, r4, r5, r6, r7, lr}
     ldr r2, .L_0204cd68
     mov r4, r0
@@ -60,7 +60,7 @@ func_0204cca8: ; 0x0204cca8
     orr r1, r1, #0x2
     strh r1, [r2, #0x24]
     strh r3, [r4, #0xe]
-    bl func_0204cdcc
+    bl Type7MarkerPresentation_Reset
     mov r0, r4
     ldmia sp!, {r3, r4, r5, r6, r7, pc}
 .L_0204cd68: .word data_020e1ed8
@@ -68,10 +68,10 @@ func_0204cca8: ; 0x0204cca8
 .L_0204cd70: .word 0x138a
 .L_0204cd74: .word 0x1078
 .L_0204cd78: .word 0x138b
-.size func_0204cca8, . - func_0204cca8
+.size Type7MarkerPresentation_Init, . - Type7MarkerPresentation_Init
 
-    .global func_0204cd7c
-func_0204cd7c: ; 0x0204cd7c
+    .global Type7MarkerPresentation_Destroy
+Type7MarkerPresentation_Destroy: ; 0x0204cd7c
     stmdb sp!, {r4, lr}
     ldr r1, .L_0204cd9c
     mov r4, r0
@@ -81,10 +81,10 @@ func_0204cd7c: ; 0x0204cd7c
     mov r0, r4
     ldmia sp!, {r4, pc}
 .L_0204cd9c: .word data_020e1ed8
-.size func_0204cd7c, . - func_0204cd7c
+.size Type7MarkerPresentation_Destroy, . - Type7MarkerPresentation_Destroy
 
-    .global func_0204cda0
-func_0204cda0: ; 0x0204cda0
+    .global Type7MarkerPresentation_DestroyAndFree
+Type7MarkerPresentation_DestroyAndFree: ; 0x0204cda0
     stmdb sp!, {r4, lr}
     ldr r1, .L_0204cdc8
     mov r4, r0
@@ -96,10 +96,10 @@ func_0204cda0: ; 0x0204cda0
     mov r0, r4
     ldmia sp!, {r4, pc}
 .L_0204cdc8: .word data_020e1ed8
-.size func_0204cda0, . - func_0204cda0
+.size Type7MarkerPresentation_DestroyAndFree, . - Type7MarkerPresentation_DestroyAndFree
 
-    .global func_0204cdcc
-func_0204cdcc: ; 0x0204cdcc
+    .global Type7MarkerPresentation_Reset
+Type7MarkerPresentation_Reset: ; 0x0204cdcc
     stmdb sp!, {r4, lr}
     mov r4, r0
     mov r1, #0x0
@@ -107,17 +107,17 @@ func_0204cdcc: ; 0x0204cdcc
     ldrsh r1, [r4, #0xe]
     cmp r1, #0x0
     beq .L_0204cdec
-    bl func_0204cf28
+    bl Type7MarkerPresentation_ReloadResources
 .L_0204cdec:
     ldr r1, [r4, #0x4]
     ldrh r0, [r1, #0x24]
     orr r0, r0, #0xc
     strh r0, [r1, #0x24]
     ldmia sp!, {r4, pc}
-.size func_0204cdcc, . - func_0204cdcc
+.size Type7MarkerPresentation_Reset, . - Type7MarkerPresentation_Reset
 
-    .global func_0204ce00
-func_0204ce00: ; 0x0204ce00
+    .global Type7MarkerPresentation_NoopCallback
+Type7MarkerPresentation_NoopCallback: ; 0x0204ce00
     bx lr
-.size func_0204ce00, . - func_0204ce00
+.size Type7MarkerPresentation_NoopCallback, . - Type7MarkerPresentation_NoopCallback
 

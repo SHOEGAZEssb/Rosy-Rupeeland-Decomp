@@ -5,7 +5,7 @@
 .extern func_02004fe0
 .extern func_020050a4
 .extern ActorDerivedRuntime_Init
-.extern func_0204cca8
+.extern Type7MarkerPresentation_Init
 .extern func_ov085_02213bd0
 .extern genrand_int32
 
@@ -30,7 +30,7 @@ func_ov085_02212aec:
     mov r1, r5
     add r0, r5, #0x23c
     str r2, [r5, #0x238]
-    bl func_0204cca8
+    bl Type7MarkerPresentation_Init
     mov r0, #0x0
     str r0, [r5, #0x24c]
     str r0, [r5, #0x254]

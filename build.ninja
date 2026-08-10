@@ -18782,7 +18782,7 @@ build build/reports/type7_marker_presentation_0204cca8.json: objdiff build/decom
   base_object = build/decomp/asm/game/type7_marker_presentation_0204cca8.o
 build build/reports/type7_marker_presentation_0204cca8.txt: match_report build/reports/type7_marker_presentation_0204cca8.json | tools/report_objdiff.py
   report_json = build/reports/type7_marker_presentation_0204cca8.json
-  report_args = --section .text --function func_0204cca8 --function func_0204cd7c --function func_0204cda0 --function func_0204cdcc --function func_0204ce00 --require-exact
+  report_args = --section .text --function Type7MarkerPresentation_Init --function Type7MarkerPresentation_Destroy --function Type7MarkerPresentation_DestroyAndFree --function Type7MarkerPresentation_Reset --function Type7MarkerPresentation_NoopCallback --require-exact
 build type7_marker_presentation: phony build/decomp/src/game/type7_marker_presentation.o build/decomp/asm/game/type7_marker_presentation_0204cca8.o build/reports/type7_marker_presentation_0204cca8.txt
 
 type7_marker_presentation_control_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
@@ -18796,7 +18796,7 @@ build build/reports/type7_marker_presentation_control_0204ce04.json: objdiff bui
   base_object = build/decomp/asm/game/type7_marker_presentation_control_0204ce04.o
 build build/reports/type7_marker_presentation_control_0204ce04.txt: match_report build/reports/type7_marker_presentation_control_0204ce04.json | tools/report_objdiff.py
   report_json = build/reports/type7_marker_presentation_control_0204ce04.json
-  report_args = --section .text --function func_0204ce04 --function func_0204ced8 --function func_0204cf28 --require-exact
+  report_args = --section .text --function Type7MarkerPresentation_UpdatePosition --function Type7MarkerPresentation_SelectAnimation --function Type7MarkerPresentation_ReloadResources --require-exact
 build type7_marker_presentation_control: phony build/decomp/src/game/type7_marker_presentation_control.o build/decomp/asm/game/type7_marker_presentation_control_0204ce04.o build/reports/type7_marker_presentation_control_0204ce04.txt
 
 fx32_vector_magnitude_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++

@@ -7,8 +7,8 @@
 .extern func_020740c8
 .extern data_020f4e18
 .text
-    .global func_0204ce04
-func_0204ce04: ; 0x0204ce04
+    .global Type7MarkerPresentation_UpdatePosition
+Type7MarkerPresentation_UpdatePosition: ; 0x0204ce04
     stmdb sp!, {r4, r5, r6, lr}
     ldr r5, [r2, #0x4]
     ldr r4, [r1, #0x4]
@@ -65,10 +65,10 @@ func_0204ce04: ; 0x0204ce04
     ldr r0, [r4, #0x4]
     strh r1, [r0, #0x30]
     ldmia sp!, {r4, r5, r6, pc}
-.size func_0204ce04, . - func_0204ce04
+.size Type7MarkerPresentation_UpdatePosition, . - Type7MarkerPresentation_UpdatePosition
 
-    .global func_0204ced8
-func_0204ced8: ; 0x0204ced8
+    .global Type7MarkerPresentation_SelectAnimation
+Type7MarkerPresentation_SelectAnimation: ; 0x0204ced8
     stmdb sp!, {r4, lr}
     mvn r2, #0x0
     mov r4, r0
@@ -90,10 +90,10 @@ func_0204ced8: ; 0x0204ced8
     bic r0, r0, #0x4
     strh r0, [r1, #0x24]
     ldmia sp!, {r4, pc}
-.size func_0204ced8, . - func_0204ced8
+.size Type7MarkerPresentation_SelectAnimation, . - Type7MarkerPresentation_SelectAnimation
 
-    .global func_0204cf28
-func_0204cf28: ; 0x0204cf28
+    .global Type7MarkerPresentation_ReloadResources
+Type7MarkerPresentation_ReloadResources: ; 0x0204cf28
     stmdb sp!, {r3, r4, r5, r6, lr}
     sub sp, sp, #0x4
     ldr r1, .L_0204cf94
@@ -125,5 +125,5 @@ func_0204cf28: ; 0x0204cf28
 .L_0204cf98: .word 0x138a
 .L_0204cf9c: .word 0x1078
 .L_0204cfa0: .word 0x138b
-.size func_0204cf28, . - func_0204cf28
+.size Type7MarkerPresentation_ReloadResources, . - Type7MarkerPresentation_ReloadResources
 

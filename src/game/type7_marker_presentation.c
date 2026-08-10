@@ -29,8 +29,8 @@ extern void func_02072b68(void *presentation, u32 index);
 extern void func_02073ef8(void *presentation);
 extern void *func_02073fc4(void *context, void *first, void *second,
                            void *third, u32 mode);
-extern void func_0204cdcc(Type7MarkerPresentation *self);
-extern void func_0204cf28(void *state);
+extern void Type7MarkerPresentation_Reset(Type7MarkerPresentation *self);
+extern void Type7MarkerPresentation_ReloadResources(void *state);
 #ifdef __cplusplus
 }
 #endif
@@ -41,10 +41,10 @@ extern void func_0204cf28(void *state);
  * accessors on data_020f4e18, notify the owner, and create presentation mode
  * two. Select animation zero, set presentation byte +0x3a to one, clear
  * halfwords +0x2c/+0x2e, set flag two, clear local +0x0e, and reset through
- * func_0204cdcc. Return self. Resource, owner, and presentation state may
+ * Type7MarkerPresentation_Reset. Return self. Resource, owner, and presentation state may
  * change through SDK-facing helpers; hardware is not accessed directly.
  */
-Type7MarkerPresentation *func_0204cca8(Type7MarkerPresentation *self,
+Type7MarkerPresentation *Type7MarkerPresentation_Init(Type7MarkerPresentation *self,
                                         void *owner)
 {
     void *first;
@@ -64,7 +64,7 @@ Type7MarkerPresentation *func_0204cca8(Type7MarkerPresentation *self,
     *(u16 *)(self->presentation + 0x2e) = 0;
     *(u16 *)(self->presentation + 0x24) |= 2;
     self->field0e = 0;
-    func_0204cdcc(self);
+    Type7MarkerPresentation_Reset(self);
     return self;
 }
 
@@ -73,7 +73,7 @@ Type7MarkerPresentation *func_0204cca8(Type7MarkerPresentation *self,
  * presentation +0x04, returning self without freeing its storage. Presentation
  * state changes through its SDK-facing destructor; no direct hardware effects.
  */
-Type7MarkerPresentation *func_0204cd7c(Type7MarkerPresentation *self)
+Type7MarkerPresentation *Type7MarkerPresentation_Destroy(Type7MarkerPresentation *self)
 {
     self->vtable = data_020e1ed8;
     func_02073ef8(self->presentation);
@@ -85,7 +85,7 @@ Type7MarkerPresentation *func_0204cd7c(Type7MarkerPresentation *self)
  * +0x04, free self, and return its original address as in retail code. Heap
  * and presentation state change; there are no direct hardware effects.
  */
-Type7MarkerPresentation *func_0204cda0(Type7MarkerPresentation *self)
+Type7MarkerPresentation *Type7MarkerPresentation_DestroyAndFree(Type7MarkerPresentation *self)
 {
     self->vtable = data_020e1ed8;
     func_02073ef8(self->presentation);
@@ -95,15 +95,15 @@ Type7MarkerPresentation *func_0204cda0(Type7MarkerPresentation *self)
 
 /*
  * Input is a marker presentation. Clear halfword +0x0c; when signed halfword
- * +0x0e is nonzero, reset related state through func_0204cf28 using self.
+ * +0x0e is nonzero, reset related state through Type7MarkerPresentation_ReloadResources using self.
  * Always set presentation +0x24 bits 0x04/0x08. No value is returned. Object
  * and presentation state may change, with no direct hardware effects.
  */
-void func_0204cdcc(Type7MarkerPresentation *self)
+void Type7MarkerPresentation_Reset(Type7MarkerPresentation *self)
 {
     self->field0c = 0;
     if (self->field0e != 0)
-        func_0204cf28(self);
+        Type7MarkerPresentation_ReloadResources(self);
     *(u16 *)(self->presentation + 0x24) |= 0x0c;
 }
 
@@ -111,6 +111,6 @@ void func_0204cdcc(Type7MarkerPresentation *self)
  * Empty recovered marker callback. Any register arguments are ignored; it
  * changes no state, returns no value, and has no SDK or hardware effects.
  */
-void func_0204ce00(void)
+void Type7MarkerPresentation_NoopCallback(void)
 {
 }

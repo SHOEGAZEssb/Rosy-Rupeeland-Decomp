@@ -13,7 +13,7 @@ extern "C" {
 #endif
 extern void ActorDerivedRuntime_Init(void *actor, const void *config);
 extern void func_02004fe0(void *vector);
-extern void func_0204cca8(void *object, void *actor);
+extern void Type7MarkerPresentation_Init(void *object, void *actor);
 extern void func_020050a4(void *destination, const void *source);
 extern void *InteractionRecordAllocatorPool_GetOrCreate(void *manager,
                                                         u32 value);
@@ -63,7 +63,7 @@ void *ActorExtendedType2_Init(void *self, const void *configuration)
     func_02004fe0(actor + 0x23c);
     *(u16 *)(actor + 0x252) = 0;
     *(u32 *)(actor + 0x260) = 0;
-    func_0204cca8(actor + 0x284, actor);
+    Type7MarkerPresentation_Init(actor + 0x284, actor);
     actor[0x294] = 0;
     func_020050a4(actor + 0x22c, actor + 0x18);
     actor[0x4d] = 2;

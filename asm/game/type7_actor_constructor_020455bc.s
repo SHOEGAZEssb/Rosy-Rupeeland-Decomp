@@ -8,7 +8,7 @@
 .extern ActorDerivedRuntime_Init
 .extern Type7Actor_ResetBaseTransformAndMotion
 .extern Type7Actor_SetCallbackPair
-.extern func_0204cca8
+.extern Type7MarkerPresentation_Init
 .global Type7Actor_Init
 .type Type7Actor_Init, @function
 Type7Actor_Init: ; 0x020455bc
@@ -71,7 +71,7 @@ Type7Actor_Init: ; 0x020455bc
     strh r1, [r0, #0xa6]
     add r0, r4, #0x2a8
     mov r1, r4
-    bl func_0204cca8
+    bl Type7MarkerPresentation_Init
     add r0, r4, #0x214
     add r1, r4, #0x18
     bl func_020050a4

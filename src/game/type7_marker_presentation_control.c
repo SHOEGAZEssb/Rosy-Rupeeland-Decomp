@@ -48,7 +48,7 @@ extern s16 func_020ae024(s32 y, s32 x);
  * and presentation state change and the angle SDK helper may run; there are no
  * direct hardware effects.
  */
-void func_0204ce04(Type7MarkerPresentation *self,
+void Type7MarkerPresentation_UpdatePosition(Type7MarkerPresentation *self,
                    const Type7PositionObject *reference,
                    const Type7PositionObject *target, s32 orient)
 {
@@ -80,7 +80,7 @@ void func_0204ce04(Type7MarkerPresentation *self,
  * bit four is cleared. No value is returned. Presentation state may change;
  * there are no direct hardware effects.
  */
-void func_0204ced8(Type7MarkerPresentation *self, u32 index)
+void Type7MarkerPresentation_SelectAnimation(Type7MarkerPresentation *self, u32 index)
 {
     if (index == 0xffffffff) {
         *(u16 *)(self->presentation + 0x24) |= 4;
@@ -99,7 +99,7 @@ void func_0204ced8(Type7MarkerPresentation *self, u32 index)
  * may change through SDK-facing helpers; no value is returned and hardware is
  * not accessed directly.
  */
-void func_0204cf28(Type7MarkerPresentation *self)
+void Type7MarkerPresentation_ReloadResources(Type7MarkerPresentation *self)
 {
     void *first = func_02071e60(data_020f4e18, 0x138a);
     void *second = func_02071e70(data_020f4e18, 0x1078);
