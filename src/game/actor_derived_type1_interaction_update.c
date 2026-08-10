@@ -19,7 +19,7 @@ extern u8 gSceneTouchInitialData[];
 extern "C" {
 #endif
 extern s32 Actor_IsAtCachedTerrainHeight(void *actor);
-extern s32 func_0203a314(void *actor);
+extern s32 ActorFeedback_DispatchEnvironment(void *actor);
 extern void func_020349b8(void *actor, u32 sound, s32 extra);
 extern void func_02004fe0(void *value);
 extern void func_02005030(void *temporary, const void *source);
@@ -43,7 +43,7 @@ extern void Sound_Play(void *context, u32 sound, u32 variant);
 extern void *func_0201e0ec(void *state);
 extern void func_020a25c8(void *object, s32 first, s32 x, s32 y,
                           s32 width, s32 height, s32 kind);
-extern void func_0203a8b8(const void *snapshot);
+extern void ActorFeedback_ProcessSnapshotCell(const void *snapshot);
 extern void func_02039468(void *actor);
 #ifdef __cplusplus
 }
@@ -132,7 +132,7 @@ s32 func_02036a8c(void *self)
         return 0;
 
     if ((*(u32 *)(actor + 0x230) & 0x1000) != 0) {
-        s32 result = func_0203a314(actor);
+        s32 result = ActorFeedback_DispatchEnvironment(actor);
         s32 actorPosition[4];
         s32 origin[4];
         s32 displacement[4];
@@ -245,7 +245,7 @@ s32 func_02036a8c(void *self)
             *(void **)snapshot = gSceneTouchInitialData;
             *(s32 *)(snapshot + 4) = x << 4;
             *(s32 *)(snapshot + 8) = y << 4;
-            func_0203a8b8(snapshot);
+            ActorFeedback_ProcessSnapshotCell(snapshot);
             *(u32 *)(actor + 0x230) |= 0x8000;
             return 1;
         }

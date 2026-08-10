@@ -20,7 +20,7 @@ extern void *func_0201f378(void *allocation, ...);
 extern void *func_0201f598(void *allocation, ...);
 extern void func_0201ded4(void *manager, void *presentation);
 extern s32 Actor_QueryTerrainHeight(void *actor, s32 x, s32 y);
-extern void *func_0203a0b4(u32 index);
+extern void *ActorFeedbackResources_GetResource(u32 index);
 extern void func_02072bdc(void *sprite, u32 animation);
 extern void Sound_Play(void *context, s32 channel, s32 sound);
 #ifdef __cplusplus
@@ -67,7 +67,7 @@ static void playPackedSound(u16 packed)
  * virtual, presentation, animation, and sound calls all have observable engine
  * or SDK effects. The matching assembly below preserves retail control flow.
  */
-s32 func_0203a314(void *self)
+s32 ActorFeedback_DispatchEnvironment(void *self)
 {
     u8 *actor = (u8 *)self;
     s32 position[4];
@@ -126,7 +126,7 @@ s32 func_0203a314(void *self)
 scanComplete:
     if (found24or25) {
         if (found24) {
-            u8 *resource = (u8 *)func_0203a0b4(2);
+            u8 *resource = (u8 *)ActorFeedbackResources_GetResource(2);
             if (resource != 0) {
                 void **slot = 0;
                 void **oldest = 0;
@@ -172,7 +172,7 @@ scanComplete:
                     }
                 }
             }
-            resource = (u8 *)func_0203a0b4(3);
+            resource = (u8 *)ActorFeedbackResources_GetResource(3);
             if (resource != 0)
                 spawnOffsetFeedback(position, resource);
             result = 0;
@@ -180,14 +180,14 @@ scanComplete:
         }
     } else if (foundSubtype5 || foundSubtype4) {
         u32 resourceIndex = foundSubtype5 ? 5 : 4;
-        u8 *resource = (u8 *)func_0203a0b4(resourceIndex);
+        u8 *resource = (u8 *)ActorFeedbackResources_GetResource(resourceIndex);
         if (resource != 0)
             spawnOffsetFeedback(position, resource);
         result = 1;
         sound = *(u16 *)(*(u8 **)(data_021056e4 + 4) +
                          (resourceIndex - 1) * 8 + 6);
     } else if (foundAny) {
-        u8 *resource = (u8 *)func_0203a0b4(15);
+        u8 *resource = (u8 *)ActorFeedbackResources_GetResource(15);
         if (resource != 0)
             spawnOffsetFeedback(position, resource);
         result = 2;

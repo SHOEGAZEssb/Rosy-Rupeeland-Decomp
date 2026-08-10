@@ -17,8 +17,8 @@ extern "C" {
 #endif
 extern void *func_020451b8(void *allocation);
 extern void func_020451d4(void *object);
-extern void func_02039f6c(void);
-extern void func_0203a050(void);
+extern void ActorFeedbackResources_Load(void);
+extern void ActorFeedbackResources_Unload(void);
 extern void func_0203d910(void);
 extern void func_02034e58(void);
 extern void func_02034ea8(void);
@@ -51,7 +51,7 @@ void ActorInteractionRuntime_Init(void)
     if (object != 0)
         object = func_020451b8(object);
     data_02105778 = object;
-    func_02039f6c();
+    ActorFeedbackResources_Load();
     for (i = 0x90; i <= 0x9b; ++i)
         *(s16 *)((u8 *)gGameWork + i * 2 + 0x4c) = -1;
     data_0210572a = 0;
@@ -124,5 +124,5 @@ void ActorInteractionRuntime_Shutdown(void)
     }
     data_02105778 = 0;
     func_02034ea8();
-    func_0203a050();
+    ActorFeedbackResources_Unload();
 }

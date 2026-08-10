@@ -1,8 +1,8 @@
 ; Matching retail form; see src/game/actor_terrain_motion_toggle.c.
 .text
 .extern data_021052fc
-.extern func_0203a0d4
-.extern func_0203a0f0
+.extern ActorFeedbackResources_GetPackedSound
+.extern ActorFeedback_SpawnIndexedPresentation
 
     .global func_02032394
     .type func_02032394, @function
@@ -11,11 +11,11 @@ func_02032394: ; 0x02032394
     sub sp, sp, #0x8
     mov r4, r0
     mov r0, #0x8
-    bl func_0203a0d4
+    bl ActorFeedbackResources_GetPackedSound
     cmp r0, #0x0
     bne .L_020323c0
     mov r0, #0x7
-    bl func_0203a0d4
+    bl ActorFeedbackResources_GetPackedSound
     cmp r0, #0x0
     beq .L_020323fc
 .L_020323c0:
@@ -71,7 +71,7 @@ func_02032394: ; 0x02032394
     bne .L_02032490
     ldrsh r2, [r0, #0xe8]
     mov r0, r4
-    bl func_0203a0f0
+    bl ActorFeedback_SpawnIndexedPresentation
     b .L_020324bc
 .L_02032490:
     ldrb r1, [r4, #0x1e7]

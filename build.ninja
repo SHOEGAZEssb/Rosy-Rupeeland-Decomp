@@ -15937,7 +15937,7 @@ build build/reports/actor_resource_table_lifecycle_02039f6c.json: objdiff build/
   base_object = build/decomp/asm/game/actor_resource_table_lifecycle_02039f6c.o
 build build/reports/actor_resource_table_lifecycle_02039f6c.txt: match_report build/reports/actor_resource_table_lifecycle_02039f6c.json | tools/report_objdiff.py
   report_json = build/reports/actor_resource_table_lifecycle_02039f6c.json
-  report_args = --section .text --function func_02039f6c --function func_0203a050 --function func_0203a0b4 --function func_0203a0d4 --require-exact
+  report_args = --section .text --function ActorFeedbackResources_Load --function ActorFeedbackResources_Unload --function ActorFeedbackResources_GetResource --function ActorFeedbackResources_GetPackedSound --require-exact
 build build/reports/actor_resource_table_lifecycle.txt: phony build/reports/actor_resource_table_lifecycle_02039f6c.txt
 
 build actor_resource_table_lifecycle: phony build/decomp/src/game/actor_resource_table_lifecycle.o build/decomp/asm/game/actor_resource_table_lifecycle_02039f6c.o build/reports/actor_resource_table_lifecycle.txt
@@ -15954,7 +15954,7 @@ build build/reports/actor_resource_indexed_presentation_spawn_0203a0f0.json: obj
   base_object = build/decomp/asm/game/actor_resource_indexed_presentation_spawn_0203a0f0.o
 build build/reports/actor_resource_indexed_presentation_spawn_0203a0f0.txt: match_report build/reports/actor_resource_indexed_presentation_spawn_0203a0f0.json | tools/report_objdiff.py
   report_json = build/reports/actor_resource_indexed_presentation_spawn_0203a0f0.json
-  report_args = --section .text --function func_0203a0f0 --require-exact
+  report_args = --section .text --function ActorFeedback_SpawnIndexedPresentation --require-exact
 build build/reports/actor_resource_indexed_presentation_spawn.txt: phony build/reports/actor_resource_indexed_presentation_spawn_0203a0f0.txt
 
 build actor_resource_indexed_presentation_spawn: phony build/decomp/src/game/actor_resource_indexed_presentation_spawn.o build/decomp/asm/game/actor_resource_indexed_presentation_spawn_0203a0f0.o build/reports/actor_resource_indexed_presentation_spawn.txt
@@ -15971,7 +15971,7 @@ build build/reports/actor_environment_feedback_dispatch_0203a314.json: objdiff b
   base_object = build/decomp/asm/game/actor_environment_feedback_dispatch_0203a314.o
 build build/reports/actor_environment_feedback_dispatch_0203a314.txt: match_report build/reports/actor_environment_feedback_dispatch_0203a314.json | tools/report_objdiff.py
   report_json = build/reports/actor_environment_feedback_dispatch_0203a314.json
-  report_args = --section .text --function func_0203a314 --require-exact
+  report_args = --section .text --function ActorFeedback_DispatchEnvironment --require-exact
 build build/reports/actor_environment_feedback_dispatch.txt: phony build/reports/actor_environment_feedback_dispatch_0203a314.txt
 
 build actor_environment_feedback_dispatch: phony build/decomp/src/game/actor_environment_feedback_dispatch.o build/decomp/asm/game/actor_environment_feedback_dispatch_0203a314.o build/reports/actor_environment_feedback_dispatch.txt
@@ -15988,7 +15988,7 @@ build build/reports/actor_snapshot_cell_feedback_0203a8b8.json: objdiff build/de
   base_object = build/decomp/asm/game/actor_snapshot_cell_feedback_0203a8b8.o
 build build/reports/actor_snapshot_cell_feedback_0203a8b8.txt: match_report build/reports/actor_snapshot_cell_feedback_0203a8b8.json | tools/report_objdiff.py
   report_json = build/reports/actor_snapshot_cell_feedback_0203a8b8.json
-  report_args = --section .text --function func_0203a8b8 --require-exact
+  report_args = --section .text --function ActorFeedback_ProcessSnapshotCell --require-exact
 build build/reports/actor_snapshot_cell_feedback.txt: phony build/reports/actor_snapshot_cell_feedback_0203a8b8.txt
 
 build actor_snapshot_cell_feedback: phony build/decomp/src/game/actor_snapshot_cell_feedback.o build/decomp/asm/game/actor_snapshot_cell_feedback_0203a8b8.o build/reports/actor_snapshot_cell_feedback.txt

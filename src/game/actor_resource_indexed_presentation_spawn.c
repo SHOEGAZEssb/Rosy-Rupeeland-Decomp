@@ -10,7 +10,7 @@ extern u8 *data_021052fc;
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *func_0203a0b4(u32 index);
+extern void *ActorFeedbackResources_GetResource(u32 index);
 extern u32 genrand_int32(void);
 extern void *func_0201f378(void *allocation, ...);
 extern void Sound_Play(void *context, s32 channel, s32 sound);
@@ -36,10 +36,10 @@ extern void func_0201ded4(void *manager, void *object);
  * nested access; RNG, heap, sound, construction, and manager calls have
  * observable engine/SDK effects.
  */
-void func_0203a0f0(void *self, u32 index, u16 value)
+void ActorFeedback_SpawnIndexedPresentation(void *self, u32 index, u16 value)
 {
     u8 *actor = (u8 *)self;
-    u8 *resource = (u8 *)func_0203a0b4(index);
+    u8 *resource = (u8 *)ActorFeedbackResources_GetResource(index);
     void *presentation = 0;
     void *allocation;
     u16 sound;

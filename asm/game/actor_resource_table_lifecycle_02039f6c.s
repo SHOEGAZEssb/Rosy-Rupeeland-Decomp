@@ -11,9 +11,9 @@
 .extern func_02028388
 .extern gHeapContext
 
-    .global func_02039f6c
-    .type func_02039f6c, @function
-func_02039f6c: ; 0x02039f6c
+    .global ActorFeedbackResources_Load
+    .type ActorFeedbackResources_Load, @function
+ActorFeedbackResources_Load: ; 0x02039f6c
     stmdb sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, lr}
     ldr r0, .L_0203a038
     ldr r0, [r0, #0x0]
@@ -75,11 +75,11 @@ func_02039f6c: ; 0x02039f6c
 .L_0203a044: .word data_020df4e0
 .L_0203a048: .word gHeapContext
 .L_0203a04c: .word data_020df4e8
-    .size func_02039f6c, . - func_02039f6c
+    .size ActorFeedbackResources_Load, . - ActorFeedbackResources_Load
 
-    .global func_0203a050
-    .type func_0203a050, @function
-func_0203a050: ; 0x0203a050
+    .global ActorFeedbackResources_Unload
+    .type ActorFeedbackResources_Unload, @function
+ActorFeedbackResources_Unload: ; 0x0203a050
     stmdb sp!, {r3, r4, r5, lr}
     ldr r4, .L_0203a0b0
     mov r5, #0x0
@@ -107,11 +107,11 @@ func_0203a050: ; 0x0203a050
     str r1, [r0, #0x8]
     ldmia sp!, {r3, r4, r5, pc}
 .L_0203a0b0: .word data_021056e4
-    .size func_0203a050, . - func_0203a050
+    .size ActorFeedbackResources_Unload, . - ActorFeedbackResources_Unload
 
-    .global func_0203a0b4
-    .type func_0203a0b4, @function
-func_0203a0b4: ; 0x0203a0b4
+    .global ActorFeedbackResources_GetResource
+    .type ActorFeedbackResources_GetResource, @function
+ActorFeedbackResources_GetResource: ; 0x0203a0b4
     cmp r0, #0x0
     ldrne r1, .L_0203a0d0
     subne r0, r0, #0x1
@@ -120,11 +120,11 @@ func_0203a0b4: ; 0x0203a0b4
     moveq r0, #0x0
     bx lr
 .L_0203a0d0: .word data_021056e4
-    .size func_0203a0b4, . - func_0203a0b4
+    .size ActorFeedbackResources_GetResource, . - ActorFeedbackResources_GetResource
 
-    .global func_0203a0d4
-    .type func_0203a0d4, @function
-func_0203a0d4: ; 0x0203a0d4
+    .global ActorFeedbackResources_GetPackedSound
+    .type ActorFeedbackResources_GetPackedSound, @function
+ActorFeedbackResources_GetPackedSound: ; 0x0203a0d4
     ldr r1, .L_0203a0ec
     sub r0, r0, #0x1
     ldr r1, [r1, #0x4]
@@ -132,4 +132,4 @@ func_0203a0d4: ; 0x0203a0d4
     ldrh r0, [r0, #0x6]
     bx lr
 .L_0203a0ec: .word data_021056e4
-    .size func_0203a0d4, . - func_0203a0d4
+    .size ActorFeedbackResources_GetPackedSound, . - ActorFeedbackResources_GetPackedSound

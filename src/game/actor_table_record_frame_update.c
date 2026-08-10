@@ -11,7 +11,7 @@ extern s32 func_02034164(void *actor);
 extern void func_020328d0(void *vector, s32 scale);
 extern s32 func_02005070(void *vector);
 extern s32 Actor_QueryTerrainHeight(void *actor, s32 x, s32 y);
-extern void func_0203a0f0(void *actor, u32 resource, u16 value);
+extern void ActorFeedback_SpawnIndexedPresentation(void *actor, u32 resource, u16 value);
 extern void func_02032228(void *actor, s32 x, s32 y, s32 scale);
 extern void Actor_UpdateAnimationState(void *actor);
 #ifdef __cplusplus
@@ -90,7 +90,7 @@ void func_0203cf8c(void *self)
         if (((cell >> 10) & 0x0f) == 1 &&
             (Actor_QueryTerrainHeight(actor, x, y) << 4) >=
                 (*(s32 *)(actor + 0x24) >> 12)) {
-            func_0203a0f0(actor, 1, 0x100);
+            ActorFeedback_SpawnIndexedPresentation(actor, 1, 0x100);
             (*(void (**)(void *, s32))(*(u8 **)actor + 0x54))(actor, 0);
             *(u32 *)(actor + 0x14) |= 0x10000000;
         }

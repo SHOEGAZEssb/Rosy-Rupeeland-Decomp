@@ -14,13 +14,13 @@
 .extern func_0201f378
 .extern func_0201f598
 .extern Actor_QueryTerrainHeight
-.extern func_0203a0b4
+.extern ActorFeedbackResources_GetResource
 .extern func_02072bdc
 .extern gHeapContext
 .extern gSceneTouchInitialData
 .extern gSoundContext
-    .global func_0203a314
-func_0203a314: ; 0x0203a314
+    .global ActorFeedback_DispatchEnvironment
+ActorFeedback_DispatchEnvironment: ; 0x0203a314
     stmdb sp!, {r4, r5, r6, r7, r8, r9, r10, r11, lr}
     sub sp, sp, #0x4c
     mov r10, r0
@@ -150,7 +150,7 @@ func_0203a314: ; 0x0203a314
     cmp r0, #0x0
     beq .L_0203a6dc
     mov r0, #0x2
-    bl func_0203a0b4
+    bl ActorFeedbackResources_GetResource
     movs r4, r0
     beq .L_0203a6dc
     mov r5, r6
@@ -247,7 +247,7 @@ func_0203a314: ; 0x0203a314
     blt .L_0203a5f0
     mov r0, #0x3
     str r10, [r7, #0x0]
-    bl func_0203a0b4
+    bl ActorFeedbackResources_GetResource
     movs r4, r0
     beq .L_0203a6dc
     ldr r1, .L_0203a8a0
@@ -298,7 +298,7 @@ func_0203a314: ; 0x0203a314
     moveq r4, #0x4
     mov r0, r4
     mov r6, #0x1
-    bl func_0203a0b4
+    bl ActorFeedbackResources_GetResource
     movs r5, r0
     beq .L_0203a79c
     ldr r1, .L_0203a8a0
@@ -347,7 +347,7 @@ func_0203a314: ; 0x0203a314
     beq .L_0203a860
     mov r0, #0xf
     mov r6, #0x2
-    bl func_0203a0b4
+    bl ActorFeedbackResources_GetResource
     movs r4, r0
     beq .L_0203a854
     ldr r1, .L_0203a8a0
@@ -413,4 +413,4 @@ func_0203a314: ; 0x0203a314
 .L_0203a8b4: .word gSoundContext
 
 
-    .size func_0203a314, . - func_0203a314
+    .size ActorFeedback_DispatchEnvironment, . - ActorFeedback_DispatchEnvironment

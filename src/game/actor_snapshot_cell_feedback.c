@@ -16,7 +16,7 @@ extern void func_0200500c(void *vector, s32 x, s32 y, s32 z);
 extern void func_02005058(void *vector);
 extern void Position_AdjustForTerrainHeight(void *vector);
 extern u32 genrand_int32(void);
-extern void *func_0203a0b4(u32 index);
+extern void *ActorFeedbackResources_GetResource(u32 index);
 extern void *func_0201f378(void *allocation, ...);
 extern void func_0201ded4(void *manager, void *presentation);
 extern void func_020593ac(void *context, s32 sound, s32 variant,
@@ -38,7 +38,7 @@ extern void func_020593ac(void *context, s32 sound, s32 variant,
  * heap, construction, registration, and temporary-vector calls have observable
  * engine or SDK effects; the matching fallback preserves retail arithmetic.
  */
-s32 func_0203a8b8(const void *snapshot)
+s32 ActorFeedback_ProcessSnapshotCell(const void *snapshot)
 {
     const s32 *saved = (const s32 *)snapshot;
     s32 position[4];
@@ -84,7 +84,7 @@ s32 func_0203a8b8(const void *snapshot)
                       volume, (s32)point.y - 0x80, 0);
     }
 
-    resource = (u8 *)func_0203a0b4(1);
+    resource = (u8 *)ActorFeedbackResources_GetResource(1);
     if (resource == 0) {
         func_02005058(position);
         return 1;

@@ -27,7 +27,7 @@ extern void *func_02005580(void *allocation, u16 first, u16 second, u16 third);
  * while zero stores null. Returns no value. The retail path assumes the array
  * allocation succeeds; heap and resource initialization change ownership.
  */
-void func_02039f6c(void)
+void ActorFeedbackResources_Load(void)
 {
     s32 selector;
     u8 *records;
@@ -61,9 +61,9 @@ void func_02039f6c(void)
  * Clear singleton table pointer +0x04. If resource array +0x08 exists,
  * destroy each of its 15 nonnull entries through virtual +0x04, free the
  * array, and clear +0x08. Returns no value; virtual and heap calls release all
- * ownership established by func_02039f6c.
+ * ownership established by ActorFeedbackResources_Load.
  */
-void func_0203a050(void)
+void ActorFeedbackResources_Unload(void)
 {
     void **resources;
     s32 i;
@@ -84,7 +84,7 @@ void func_0203a050(void)
  * Return null for one-based index zero; otherwise return resource array entry
  * index-1 from singleton +0x08. No bounds check or state change occurs.
  */
-void *func_0203a0b4(u32 index)
+void *ActorFeedbackResources_GetResource(u32 index)
 {
     if (index == 0)
         return 0;
@@ -95,7 +95,7 @@ void *func_0203a0b4(u32 index)
  * Return unsigned halfword +0x06 from one-based record index in singleton
  * table +0x04. The table and index are preconditions; no state changes.
  */
-u16 func_0203a0d4(u32 index)
+u16 ActorFeedbackResources_GetPackedSound(u32 index)
 {
     u8 *records = *(u8 **)(data_021056e4 + 4);
     return *(u16 *)(records + (index - 1) * 8 + 6);

@@ -10,14 +10,14 @@
 .extern func_0201ded4
 .extern func_0201f378
 .extern Position_AdjustForTerrainHeight
-.extern func_0203a0b4
+.extern ActorFeedbackResources_GetResource
 .extern func_020593ac
 .extern gHeapContext
 .extern gSoundContext
 .extern gTouchPanelManager
 .extern genrand_int32
-    .global func_0203a8b8
-func_0203a8b8: ; 0x0203a8b8
+    .global ActorFeedback_ProcessSnapshotCell
+ActorFeedback_ProcessSnapshotCell: ; 0x0203a8b8
     stmdb sp!, {r3, r4, r5, lr}
     sub sp, sp, #0x38
     ldmib r0, {r1, r2}
@@ -102,7 +102,7 @@ func_0203a8b8: ; 0x0203a8b8
     bl func_020593ac
 .L_0203a9f8:
     mov r0, #0x1
-    bl func_0203a0b4
+    bl ActorFeedbackResources_GetResource
     movs r5, r0
     bne .L_0203aa18
     add r0, sp, #0x1c
@@ -158,4 +158,4 @@ func_0203a8b8: ; 0x0203a8b8
 
     .global ActorInteractionRuntime_Init
 
-    .size func_0203a8b8, . - func_0203a8b8
+    .size ActorFeedback_ProcessSnapshotCell, . - ActorFeedback_ProcessSnapshotCell

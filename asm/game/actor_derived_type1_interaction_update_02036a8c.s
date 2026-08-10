@@ -29,8 +29,8 @@
 .extern func_020372b4
 .extern func_02039468
 .extern func_02039db8
-.extern func_0203a314
-.extern func_0203a8b8
+.extern ActorFeedback_DispatchEnvironment
+.extern ActorFeedback_ProcessSnapshotCell
 .extern func_02063820
 .extern func_02072b68
 .extern func_020a25c8
@@ -106,7 +106,7 @@ func_02036a8c: ; 0x02036a8c
     tst r0, #0x1000
     beq .L_02036e64
     mov r0, r10
-    bl func_0203a314
+    bl ActorFeedback_DispatchEnvironment
     cmp r0, #0x0
     beq .L_02036c24
     mvn r1, #0x0
@@ -470,7 +470,7 @@ func_02036a8c: ; 0x02036a8c
     str r3, [sp, #0x24]
     str r2, [sp, #0x28]
     str r1, [sp, #0x2c]
-    bl func_0203a8b8
+    bl ActorFeedback_ProcessSnapshotCell
     ldr r1, [r10, #0x230]
     mov r0, #0x1
     orr r1, r1, #0x8000

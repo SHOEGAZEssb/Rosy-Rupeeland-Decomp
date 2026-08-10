@@ -7,7 +7,7 @@
 .extern Actor_UpdateAnimationState
 .extern func_02034164
 .extern Actor_QueryTerrainHeight
-.extern func_0203a0f0
+.extern ActorFeedback_SpawnIndexedPresentation
 .extern func_020adae4
     .global func_0203cf8c
     .type func_0203cf8c, @function
@@ -127,7 +127,7 @@ func_0203cf8c: ; 0x0203cf8c
     mov r0, r4
     mov r1, r7
     mov r2, #0x100
-    bl func_0203a0f0
+    bl ActorFeedback_SpawnIndexedPresentation
     mov r0, r4
     ldr r2, [r0, #0x0]
     mov r1, #0x0

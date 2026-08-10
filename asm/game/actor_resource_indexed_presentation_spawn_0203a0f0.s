@@ -7,21 +7,21 @@
 .extern data_021056e4
 .extern func_0201ded4
 .extern func_0201f378
-.extern func_0203a0b4
+.extern ActorFeedbackResources_GetResource
 .extern gHeapContext
 .extern gSoundContext
 .extern genrand_int32
 
-    .global func_0203a0f0
-    .type func_0203a0f0, @function
-func_0203a0f0: ; 0x0203a0f0
+    .global ActorFeedback_SpawnIndexedPresentation
+    .type ActorFeedback_SpawnIndexedPresentation, @function
+ActorFeedback_SpawnIndexedPresentation: ; 0x0203a0f0
     stmdb sp!, {r3, r4, r5, r6, r7, r8, lr}
     sub sp, sp, #0x14
     mov r7, r1
     mov r8, r0
     mov r0, r7
     mov r6, r2
-    bl func_0203a0b4
+    bl ActorFeedbackResources_GetResource
     movs r4, r0
     beq .L_0203a2f8
     bl genrand_int32
@@ -159,4 +159,4 @@ func_0203a0f0: ; 0x0203a0f0
 .L_0203a308: .word data_021056e4
 .L_0203a30c: .word gSoundContext
 .L_0203a310: .word data_021052fc
-    .size func_0203a0f0, . - func_0203a0f0
+    .size ActorFeedback_SpawnIndexedPresentation, . - ActorFeedback_SpawnIndexedPresentation

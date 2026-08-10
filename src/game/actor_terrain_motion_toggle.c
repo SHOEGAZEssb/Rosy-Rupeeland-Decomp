@@ -18,8 +18,8 @@ extern void *data_021052fc;
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern s32 func_0203a0d4(s32);
-extern void func_0203a0f0(void *, s32);
+extern s32 ActorFeedbackResources_GetPackedSound(s32);
+extern void ActorFeedback_SpawnIndexedPresentation(void *, s32);
 #ifdef __cplusplus
 }
 #endif
@@ -28,7 +28,7 @@ extern void func_0203a0f0(void *, s32);
  * Gate processing through global queries 8/7, virtual queries at 0xa0/0xa8,
  * and actor flag 0x10 at 0xd0. A failed gate writes -6 to signed counter
  * 0x1e5. Otherwise query terrain at integer X/Y; terrain nibble 7 or 8 with
- * nonzero motion increments the counter. On wrap to zero, call func_0203a0f0
+ * nonzero motion increments the counter. On wrap to zero, call ActorFeedback_SpawnIndexedPresentation
  * with halfword 0x1e8. When the counter exceeds byte 0x1e7, toggle byte 0x1e6
  * and reset the counter to -1. Other terrain resets it to -1. Returns no value;
  * virtual and terrain queries may observe gameplay state.
@@ -42,7 +42,7 @@ void func_02032394(void *self)
     u32 nibble;
     s8 counter;
 
-    if ((func_0203a0d4(8) || func_0203a0d4(7)) &&
+    if ((ActorFeedbackResources_GetPackedSound(8) || ActorFeedbackResources_GetPackedSound(7)) &&
         !vtable->query_a0(actor) && !(*(u32 *)(actor + 0xd0) & 0x10) &&
         !vtable->query_a8(actor)) {
         queryObject = *(TerrainQueryVTable ***)((u8 *)data_021052fc + 0x2ed4);
@@ -57,7 +57,7 @@ void func_02032394(void *self)
             counter = (s8)(actor[0x1e5] + 1);
             actor[0x1e5] = (u8)counter;
             if (counter == 0) {
-                func_0203a0f0(actor, *(s16 *)(actor + 0x1e8));
+                ActorFeedback_SpawnIndexedPresentation(actor, *(s16 *)(actor + 0x1e8));
             } else if (counter > actor[0x1e7]) {
                 actor[0x1e6] ^= 1;
                 actor[0x1e5] = 0xff;

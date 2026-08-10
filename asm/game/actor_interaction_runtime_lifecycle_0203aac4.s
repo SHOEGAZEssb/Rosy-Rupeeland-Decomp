@@ -12,8 +12,8 @@
 .extern func_02034e58
 .extern func_02034ea8
 .extern func_02039e80
-.extern func_02039f6c
-.extern func_0203a050
+.extern ActorFeedbackResources_Load
+.extern ActorFeedbackResources_Unload
 .extern func_0203d910
 .extern func_02043c24
 .extern func_02045004
@@ -45,7 +45,7 @@ ActorInteractionRuntime_Init: ; 0x0203aac4
 .L_0203aae8:
     ldr r1, .L_0203ab58
     str r0, [r1, #0x0]
-    bl func_02039f6c
+    bl ActorFeedbackResources_Load
     ldr r0, .L_0203ab5c
     mov r3, #0x90
     mvn r2, #0x0
@@ -176,7 +176,7 @@ ActorInteractionRuntime_Shutdown: ; 0x0203abf4
     mov r1, #0x0
     str r1, [r0, #0x0]
     bl func_02034ea8
-    bl func_0203a050
+    bl ActorFeedbackResources_Unload
     ldmia sp!, {r4, pc}
 .L_0203ac94: .word gSoundContext
 .L_0203ac98: .word data_02105778
