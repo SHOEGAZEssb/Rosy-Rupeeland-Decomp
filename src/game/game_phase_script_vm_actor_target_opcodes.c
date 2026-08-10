@@ -8,7 +8,7 @@ extern "C" {
 #endif
 extern u32 *func_0200b2c0(void *object, u32 first, u32 second, u32 third);
 extern void func_02039db8(void *actor);
-extern void func_02032dd4(void *actor, const VecFx32Object *value);
+extern void Actor_SetVelocity(void *actor, const VecFx32Object *value);
 extern void func_02006818(void *movement);
 extern void *func_020337d4(void *actor);
 extern void *func_02030ad4(void *collection, s32 index);
@@ -20,7 +20,7 @@ extern void func_02032d64(void *actor, fx32 x, fx32 y);
 /*
  * Cancel bound-actor movement by zeroing four-word blocks at 0x38/0x88/0x98,
  * applying type-1 cleanup through func_02039db8, sending a zero vector through
- * func_02032dd4, clearing actor flag 0x40, and destroying/resetting the
+ * Actor_SetVelocity, clearing actor flag 0x40, and destroying/resetting the
  * movement object at 0x198. Returns zero.
  */
 s32 func_020137ec(GamePhaseActorScriptVm *self)
@@ -33,7 +33,7 @@ s32 func_020137ec(GamePhaseActorScriptVm *self)
     if (actor[0x4d] == 1)
         func_02039db8(actor);
     func_0200500c(&zero, 0, 0, 0);
-    func_02032dd4(actor, &zero);
+    Actor_SetVelocity(actor, &zero);
     func_02005058(&zero);
     *(u32 *)(actor + 0x10) &= ~0x40u;
     func_02006818(actor + 0x198);

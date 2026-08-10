@@ -39,7 +39,7 @@ void func_02032d64(void *self, s32 x, s32 y)
 }
 
 /* Copy the supplied vector into actor+0x38; returns no value. */
-void func_02032dd4(void *self, const void *value)
+void Actor_SetVelocity(void *self, const void *value)
 {
     func_020050a4((u8 *)self + 0x38, value);
 }

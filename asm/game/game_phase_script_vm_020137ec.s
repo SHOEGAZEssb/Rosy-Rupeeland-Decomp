@@ -4,7 +4,7 @@
 .extern func_02005058
 .extern func_02006818
 .extern func_0200b2c0
-.extern func_02032dd4
+.extern Actor_SetVelocity
 .extern func_02039db8
 
     .global func_020137ec
@@ -43,7 +43,7 @@ L_02013854:
     bl func_0200500c
     add r1, sp, #0x0
     mov r0, r4
-    bl func_02032dd4
+    bl Actor_SetVelocity
     add r0, sp, #0x0
     bl func_02005058
     ldr r1, [r4, #0x10]
@@ -55,4 +55,3 @@ L_02013854:
     add sp, sp, #0x10
     ldmia sp!, {r4, pc}
     .size func_020137ec, . - func_020137ec
-
