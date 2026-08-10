@@ -14831,7 +14831,7 @@ build build/reports/actor_orientation_animation_control_02034b3c.json: objdiff b
   base_object = build/decomp/asm/game/actor_orientation_animation_control_02034b3c.o
 build build/reports/actor_orientation_animation_control_02034b3c.txt: match_report build/reports/actor_orientation_animation_control_02034b3c.json | tools/report_objdiff.py
   report_json = build/reports/actor_orientation_animation_control_02034b3c.json
-  report_args = --section .text --function func_02034b3c --require-exact
+  report_args = --section .text --function Actor_SetInteractionBounds --require-exact
 build build/decomp/asm/game/actor_orientation_animation_control_02034b60.o: mwasmarm asm/game/actor_orientation_animation_control_02034b60.s
 build build/decomp/delinks/asm/game/actor_orientation_animation_control_02034b60.o: dsd_delink config/arm9/config.yaml config/arm9/delinks.txt config/arm9/symbols.txt config/arm9/relocs.txt
 build build/reports/actor_orientation_animation_control_02034b60.json: objdiff build/decomp/delinks/asm/game/actor_orientation_animation_control_02034b60.o | build/decomp/asm/game/actor_orientation_animation_control_02034b60.o

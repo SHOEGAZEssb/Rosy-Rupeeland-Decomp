@@ -15,7 +15,7 @@ extern void func_02072b68(void *attachment, u32 animation);
  * Copy four signed halfwords from source into actor+0x70..+0x76. Returns no
  * value and touches no hardware or SDK-managed state.
  */
-void func_02034b3c(void *self, const s16 source[4])
+void Actor_SetInteractionBounds(void *self, const s16 source[4])
 {
     u8 *actor = (u8 *)self;
 

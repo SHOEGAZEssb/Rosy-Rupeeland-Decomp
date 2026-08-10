@@ -28,7 +28,7 @@ extern const void *data_020d5b10;
 extern void *func_02030ad4(void *collection, s32 index);
 extern void *func_020337d4(void *actor);
 extern void func_02034378(void *destination, void *actor, void *actorField18);
-extern void func_02034b3c(void *actor, const ActorBounds *bounds);
+extern void Actor_SetInteractionBounds(void *actor, const ActorBounds *bounds);
 extern s32 func_02056f34(void *result, const void *first, const void *second,
                          void *scratch);
 #ifdef __cplusplus
@@ -64,7 +64,7 @@ s32 func_0201863c(GamePhaseActorScriptVm *self)
     case 1: {
         ActorBounds replacement;
         func_020083b0(&replacement, first, second, third, fourth);
-        func_02034b3c(actor, &replacement);
+        Actor_SetInteractionBounds(actor, &replacement);
         break;
     }
     case 2:
@@ -85,7 +85,7 @@ s32 func_0201863c(GamePhaseActorScriptVm *self)
         ActorBounds replacement;
         func_020188fc(&center, bounds);
         func_020083b0(&replacement, 0, 0, first, height);
-        func_02034b3c(actor, &replacement);
+        Actor_SetInteractionBounds(actor, &replacement);
         func_0201895c(bounds, (s16)(center.x - first / 2),
                       (s16)(center.y - height / 2));
         break;
@@ -96,7 +96,7 @@ s32 func_0201863c(GamePhaseActorScriptVm *self)
         ActorBounds replacement;
         func_020188fc(&center, bounds);
         func_020083b0(&replacement, 0, 0, width, first);
-        func_02034b3c(actor, &replacement);
+        Actor_SetInteractionBounds(actor, &replacement);
         func_0201895c(bounds, (s16)(center.x - width / 2),
                       (s16)(center.y - first / 2));
         break;

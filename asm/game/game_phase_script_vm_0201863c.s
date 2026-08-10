@@ -12,7 +12,7 @@
 .extern func_02030ad4
 .extern func_020337d4
 .extern func_02034378
-.extern func_02034b3c
+.extern Actor_SetInteractionBounds
 .extern func_02056f34
 .global func_0201863c
 func_0201863c:
@@ -60,7 +60,7 @@ L_020186c4:
     bl func_020083b0
     ldr r0, [r8, #0x84]
     add r1, sp, #0x14
-    bl func_02034b3c
+    bl Actor_SetInteractionBounds
     b L_020188d8
 L_020186ec:
     ldr r0, [r8, #0x84]
@@ -99,7 +99,7 @@ L_02018724:
     bl func_020083b0
     ldr r0, [r8, #0x84]
     add r1, sp, #0xc
-    bl func_02034b3c
+    bl Actor_SetInteractionBounds
     rsb r0, r7, #0x0
     ldr r2, [r8, #0x84]
     add r1, r0, r0, lsr #0x1f
@@ -134,7 +134,7 @@ L_020187b0:
     bl func_020083b0
     ldr r0, [r8, #0x84]
     add r1, sp, #0x4
-    bl func_02034b3c
+    bl Actor_SetInteractionBounds
     rsb r0, r4, #0x0
     ldr r2, [r8, #0x84]
     add r1, r0, r0, lsr #0x1f

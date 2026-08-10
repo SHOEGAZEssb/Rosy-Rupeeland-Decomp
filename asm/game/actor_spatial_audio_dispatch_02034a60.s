@@ -69,5 +69,4 @@ func_02034a60: ; 0x02034a60
 .L_02034b38: .word gSoundContext
     .size func_02034a60, . - func_02034a60
 
-    .global func_02034b3c
-
+    .global Actor_SetInteractionBounds
