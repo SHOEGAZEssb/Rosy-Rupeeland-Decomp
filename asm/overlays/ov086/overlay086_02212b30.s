@@ -2,7 +2,7 @@
 ; Matching fallback for the portable implementation in src/overlays/ov086/overlay086_recovery.c.
 .extern GameWork_TestFlag
 .extern data_021052fc
-.extern func_020425d4
+.extern ActorExtendedType2_InitializeReentryState
 .extern gGameWork
 
 .global func_ov086_02212b30
@@ -46,7 +46,7 @@ func_ov086_02212b30:
     mov r0, r6
     mov r1, r5
     mov r2, r4
-    bl func_020425d4
+    bl ActorExtendedType2_InitializeReentryState
     ldr r0, [r6, #0x260]
     bic r0, r0, #0x8
     str r0, [r6, #0x260]

@@ -24,7 +24,7 @@ extern void func_020349b8(void *actor, u32 sound, s32 extra);
  * actor, virtual, and sound state may change, with func_020349b8 crossing the
  * sound boundary.
  */
-void func_02042514(void *self, s32 delta)
+void ActorExtendedType2_UpdateActiveCountdown(void *self, s32 delta)
 {
     u8 *actor = (u8 *)self;
     u8 *vtable = *(u8 **)actor;

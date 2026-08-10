@@ -59,9 +59,9 @@
 .extern func_02033b38
 .extern func_020befec
 .extern gDebugFont
-.global func_02042864
-.type func_02042864, @function
-func_02042864: ; 0x02042864
+.global ActorExtendedType2_DrawDebugOverlay
+.type ActorExtendedType2_DrawDebugOverlay, @function
+ActorExtendedType2_DrawDebugOverlay: ; 0x02042864
     stmdb sp!, {r4, r5, r6, r7, lr}
     sub sp, sp, #0xc
     mov r5, r0
@@ -602,4 +602,4 @@ func_02042864: ; 0x02042864
 .L_02043058: .word data_020e0214
 
     .global ActorExtendedType2_IsDirectionToActorAccepted
-.size func_02042864, . - func_02042864
+.size ActorExtendedType2_DrawDebugOverlay, . - ActorExtendedType2_DrawDebugOverlay

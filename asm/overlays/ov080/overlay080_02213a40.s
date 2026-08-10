@@ -1,13 +1,13 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov080/overlay080_recovery.c.
-.extern func_020425d4
+.extern ActorExtendedType2_InitializeReentryState
 .extern func_ov080_02213a8c
 
 .global func_ov080_02213a40
 func_ov080_02213a40:
     stmdb sp!, {r4, lr}
     mov r4, r0
-    bl func_020425d4
+    bl ActorExtendedType2_InitializeReentryState
     mov r1, #0x0
     mov r2, r1
     mov r3, r1

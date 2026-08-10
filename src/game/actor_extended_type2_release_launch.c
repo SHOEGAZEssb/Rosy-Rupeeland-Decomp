@@ -25,7 +25,7 @@ extern void func_020349b8(void *actor, u32 sound, s32 extra);
  * Actor_SaveAndForceFlags. The routine has no meaningful return value; actor and engine
  * bookkeeping may change, with no direct hardware access.
  */
-void func_020423c8(void *self)
+void ActorExtendedType2_PrepareRelease(void *self)
 {
     u8 *actor = (u8 *)self;
     *(u32 *)(actor + 0xd0) |= 0x80;
@@ -47,7 +47,7 @@ void func_020423c8(void *self)
  * virtual, bookkeeping, and sound state may change; func_020349b8 crosses the
  * sound boundary.
  */
-void func_02042408(void *self)
+void ActorExtendedType2_LaunchRandomMotion(void *self)
 {
     u8 *actor = (u8 *)self;
     u8 *attachment;

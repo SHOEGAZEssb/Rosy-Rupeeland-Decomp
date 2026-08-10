@@ -2,9 +2,9 @@
 .text
 .extern data_020e6d3c
 .extern func_020349b8
-.global func_02042514
-.type func_02042514, @function
-func_02042514: ; 0x02042514
+.global ActorExtendedType2_UpdateActiveCountdown
+.type ActorExtendedType2_UpdateActiveCountdown, @function
+ActorExtendedType2_UpdateActiveCountdown: ; 0x02042514
     stmdb sp!, {r3, r4, r5, lr}
     mov r5, r0
     ldr r2, [r5, #0x260]
@@ -57,4 +57,4 @@ func_02042514: ; 0x02042514
     ldmia sp!, {r3, r4, r5, pc}
 .L_020425cc: .word data_020e6d3c
 .L_020425d0: .word 0xffff
-.size func_02042514, . - func_02042514
+.size ActorExtendedType2_UpdateActiveCountdown, . - ActorExtendedType2_UpdateActiveCountdown

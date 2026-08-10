@@ -11,9 +11,9 @@
 .extern func_02005058
 .extern func_020ada8c
 .extern genrand_int32
-.global func_020425d4
-.type func_020425d4, @function
-func_020425d4: ; 0x020425d4
+.global ActorExtendedType2_InitializeReentryState
+.type ActorExtendedType2_InitializeReentryState, @function
+ActorExtendedType2_InitializeReentryState: ; 0x020425d4
     stmdb sp!, {r3, r4, r5, r6, lr}
     sub sp, sp, #0x1c
     mov r4, r0
@@ -161,4 +161,4 @@ func_020425d4: ; 0x020425d4
 .L_02042804: .word data_02105774
 .L_02042808: .word data_020c9670
 .L_0204280c: .word data_021052fc
-.size func_020425d4, . - func_020425d4
+.size ActorExtendedType2_InitializeReentryState, . - ActorExtendedType2_InitializeReentryState

@@ -30,7 +30,7 @@ extern void func_020593dc(void *soundContext, s32 soundId, s32 mode,
  * three. Increment +0x25a and always return zero. Actor, random, classification,
  * callback, and sound state may change; func_020593dc crosses the sound boundary.
  */
-s32 func_02042170(void *self)
+s32 ActorExtendedType2_UpdateLongDelayAudio(void *self)
 {
     u8 *actor = (u8 *)self;
     s16 counter = *(s16 *)(actor + 0x25a);

@@ -9,7 +9,7 @@
 extern "C" {
 #endif
 extern s32 ActorExtendedType2_CheckRuntimeGroupProximity(void *actor);
-extern void func_02042408(void *actor);
+extern void ActorExtendedType2_LaunchRandomMotion(void *actor);
 #ifdef __cplusplus
 }
 #endif
@@ -36,15 +36,15 @@ s32 ActorExtendedLinked_CheckGroupProximityOrPartnerActive(void *self)
 }
 
 /*
- * Apply func_02042408 to actor, then, when partner +0x298 is nonnull, invoke
- * its vtable callback at +0x1d8. Returns no value; both actors' state may
- * change, with no direct SDK or hardware access.
+ * Apply ActorExtendedType2_LaunchRandomMotion to actor, then, when partner
+ * +0x298 is nonnull, invoke its vtable callback at +0x1d8. Returns no value;
+ * both actors' state may change, with no direct SDK or hardware access.
  */
 void ActorExtendedLinked_NotifyPartner(void *self)
 {
     u8 *actor = (u8 *)self;
     void *partner;
-    func_02042408(actor);
+    ActorExtendedType2_LaunchRandomMotion(actor);
     partner = *(void **)(actor + 0x298);
     if (partner != 0)
         (*(void (**)(void *))(*(u8 **)partner + 0x1d8))(partner);

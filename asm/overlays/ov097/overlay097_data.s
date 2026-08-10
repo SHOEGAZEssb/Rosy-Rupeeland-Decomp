@@ -35,7 +35,7 @@
 .extern Actor_SetResourceVariant
 .extern func_ov097_02217cf8
 .extern func_ov097_02217d44
-.extern func_02042864
+.extern ActorExtendedType2_DrawDebugOverlay
 .extern Actor_RefreshTerrainHeightIfEnabled
 .extern ActorExtendedType2_TriggerContactFeedback
 .extern Actor_ConvergeToTargetHeight
@@ -63,12 +63,12 @@
 .extern ActorExtendedType2_ConfigureCallbacks00And170
 .extern ActorExtendedType2_ConfigureCallbacks78And70
 .extern ActorExtendedType2_ConfigureCallbacks18And240
-.extern func_020422f4
+.extern ActorExtendedType2_BindTargetAndSpawnEffect
 .extern ActorExtendedType2_ConfigureCallback08
 .extern ActorExtendedType2_DisableModesAndSetCallbackPair80
 .extern ActorExtendedType2_RunVirtualFCAndResetProgress
 .extern func_ov097_02219d08
-.extern func_02042514
+.extern ActorExtendedType2_UpdateActiveCountdown
 .extern func_ov097_02219cf8
 .extern ActorExtendedType2_SetCallbackPair88
 .extern ActorExtendedType2_RestoreState1AndCallbackPair28
@@ -106,7 +106,7 @@
 .extern ActorExtendedType2_UpdateRandomCallbackDelay
 .extern ActorExtendedType2_UpdateRandomWaypoint
 .extern ActorExtendedType2_UpdateCenterWaypoint
-.extern func_02042170
+.extern ActorExtendedType2_UpdateLongDelayAudio
 .extern func_ov097_02219c44
 .extern func_ov097_02219c30
 .extern func_ov097_02219be8
@@ -138,8 +138,8 @@
 .extern func_ov097_0221972c
 .extern ActorExtendedType2_UpdateFrame
 .extern func_ov078_0221361c
-.extern func_020423c8
-.extern func_020425d4
+.extern ActorExtendedType2_PrepareRelease
+.extern ActorExtendedType2_InitializeReentryState
 .extern func_ov097_02219b50
 .extern func_ov097_02219760
 .extern ActorExtendedType2_ApplyMotionImpulseIfEnabled
@@ -317,7 +317,7 @@ data_ov097_0221a5f4:
     .word Actor_SetResourceVariant
     .word func_ov097_02217cf8
     .word func_ov097_02217d44
-    .word func_02042864
+    .word ActorExtendedType2_DrawDebugOverlay
     .word Actor_RefreshTerrainHeightIfEnabled
     .word ActorExtendedType2_TriggerContactFeedback
     .word Actor_ConvergeToTargetHeight
@@ -345,12 +345,12 @@ data_ov097_0221a5f4:
     .word ActorExtendedType2_ConfigureCallbacks00And170
     .word ActorExtendedType2_ConfigureCallbacks78And70
     .word ActorExtendedType2_ConfigureCallbacks18And240
-    .word func_020422f4
+    .word ActorExtendedType2_BindTargetAndSpawnEffect
     .word ActorExtendedType2_ConfigureCallback08
     .word ActorExtendedType2_DisableModesAndSetCallbackPair80
     .word ActorExtendedType2_RunVirtualFCAndResetProgress
     .word func_ov097_02219d08
-    .word func_02042514
+    .word ActorExtendedType2_UpdateActiveCountdown
     .word func_ov097_02219cf8
     .word ActorExtendedType2_SetCallbackPair88
     .word ActorExtendedType2_RestoreState1AndCallbackPair28
@@ -388,7 +388,7 @@ data_ov097_0221a5f4:
     .word ActorExtendedType2_UpdateRandomCallbackDelay
     .word ActorExtendedType2_UpdateRandomWaypoint
     .word ActorExtendedType2_UpdateCenterWaypoint
-    .word func_02042170
+    .word ActorExtendedType2_UpdateLongDelayAudio
     .word func_ov097_02219c44
     .word func_ov097_02219c30
     .word func_ov097_02219be8
@@ -450,9 +450,9 @@ data_ov097_0221a80c:
     .word Actor_AssignPrimaryResourceWithEffect
     .word Actor_AssignPrimaryResource
     .word Actor_SetResourceVariant
-    .word func_020423c8
-    .word func_020425d4
-    .word func_02042864
+    .word ActorExtendedType2_PrepareRelease
+    .word ActorExtendedType2_InitializeReentryState
+    .word ActorExtendedType2_DrawDebugOverlay
     .word Actor_RefreshTerrainHeightIfEnabled
     .word ActorExtendedType2_TriggerContactFeedback
     .word Actor_ConvergeToTargetHeight
@@ -480,12 +480,12 @@ data_ov097_0221a80c:
     .word ActorExtendedType2_ConfigureCallbacks00And170
     .word ActorExtendedType2_ConfigureCallbacks78And70
     .word ActorExtendedType2_ConfigureCallbacks18And240
-    .word func_020422f4
+    .word ActorExtendedType2_BindTargetAndSpawnEffect
     .word ActorExtendedType2_ConfigureCallback08
     .word ActorExtendedType2_DisableModesAndSetCallbackPair80
     .word func_ov097_02219748
     .word func_ov097_02219d08
-    .word func_02042514
+    .word ActorExtendedType2_UpdateActiveCountdown
     .word func_ov097_02219cf8
     .word ActorExtendedType2_SetCallbackPair88
     .word ActorExtendedType2_RestoreState1AndCallbackPair28
@@ -523,7 +523,7 @@ data_ov097_0221a80c:
     .word ActorExtendedType2_UpdateRandomCallbackDelay
     .word ActorExtendedType2_UpdateRandomWaypoint
     .word ActorExtendedType2_UpdateCenterWaypoint
-    .word func_02042170
+    .word ActorExtendedType2_UpdateLongDelayAudio
     .word func_ov097_02219c44
     .word func_ov097_02219c30
     .word func_ov097_02219be8

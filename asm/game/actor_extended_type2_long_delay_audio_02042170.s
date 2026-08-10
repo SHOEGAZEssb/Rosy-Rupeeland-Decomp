@@ -6,9 +6,9 @@
 .extern func_020ada8c
 .extern gSoundContext
 .extern genrand_int32
-.global func_02042170
-.type func_02042170, @function
-func_02042170: ; 0x02042170
+.global ActorExtendedType2_UpdateLongDelayAudio
+.type ActorExtendedType2_UpdateLongDelayAudio, @function
+ActorExtendedType2_UpdateLongDelayAudio: ; 0x02042170
     stmdb sp!, {r4, lr}
     sub sp, sp, #0x8
     mov r4, r0
@@ -111,4 +111,4 @@ func_02042170: ; 0x02042170
     ldmia sp!, {r4, pc}
 .L_020422ec: .word gSoundContext
 .L_020422f0: .word data_020df9e8
-.size func_02042170, . - func_02042170
+.size ActorExtendedType2_UpdateLongDelayAudio, . - ActorExtendedType2_UpdateLongDelayAudio

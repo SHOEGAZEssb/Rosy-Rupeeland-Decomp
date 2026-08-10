@@ -7,9 +7,9 @@
 .extern Actor_GetCachedTerrainHeight
 .extern func_020349b8
 .extern genrand_int32
-.global func_020423c8
-.type func_020423c8, @function
-func_020423c8: ; 0x020423c8
+.global ActorExtendedType2_PrepareRelease
+.type ActorExtendedType2_PrepareRelease, @function
+ActorExtendedType2_PrepareRelease: ; 0x020423c8
     stmdb sp!, {r4, lr}
     mov r4, r0
     ldr r2, [r4, #0xd0]
@@ -26,11 +26,11 @@ func_020423c8: ; 0x020423c8
     bl Actor_SaveAndForceFlags
     ldmia sp!, {r4, pc}
 .L_02042404: .word data_020df9e8
-.size func_020423c8, . - func_020423c8
+.size ActorExtendedType2_PrepareRelease, . - ActorExtendedType2_PrepareRelease
 
-.global func_02042408
-.type func_02042408, @function
-func_02042408: ; 0x02042408
+.global ActorExtendedType2_LaunchRandomMotion
+.type ActorExtendedType2_LaunchRandomMotion, @function
+ActorExtendedType2_LaunchRandomMotion: ; 0x02042408
     stmdb sp!, {r4, lr}
     mov r4, r0
     bl Actor_SaveAndForceFlags
@@ -99,4 +99,4 @@ func_02042408: ; 0x02042408
 .L_02042508: .word data_020c9670
 .L_0204250c: .word data_020e6d3c
 .L_02042510: .word 0xffff
-.size func_02042408, . - func_02042408
+.size ActorExtendedType2_LaunchRandomMotion, . - ActorExtendedType2_LaunchRandomMotion

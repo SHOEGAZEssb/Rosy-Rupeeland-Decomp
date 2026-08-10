@@ -65,7 +65,7 @@ static s32 callback_pair_matches(u32 first, u32 second,
  * routine has no meaningful return value, reads actor state, and mutates only
  * the debug-font output surface through DebugText_Printf.
  */
-void func_02042864(void *self, s32 row)
+void ActorExtendedType2_DrawDebugOverlay(void *self, s32 row)
 {
     u8 *actor = (u8 *)self;
     const char *name = 0;

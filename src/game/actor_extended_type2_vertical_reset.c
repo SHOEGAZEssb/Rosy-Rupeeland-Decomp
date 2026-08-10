@@ -10,7 +10,7 @@ extern u8 data_020df9e8[];
  * meaningful return value, changes only actor/callback state, and performs no
  * SDK or hardware operation.
  */
-void func_02042810(void *self)
+void ActorExtendedType2_ResetVerticalMotionCallbacks(void *self)
 {
     u8 *actor = (u8 *)self;
     *(s32 *)(actor + 0x40) = 0;

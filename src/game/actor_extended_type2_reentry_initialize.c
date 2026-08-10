@@ -40,7 +40,7 @@ extern void *func_02009d78(void *manager);
  * value. Actor, attachment, global angle, random, virtual, vector, and manager
  * state may change; no direct hardware access occurs.
  */
-void func_020425d4(void *self, const void *position, s32 variant)
+void ActorExtendedType2_InitializeReentryState(void *self, const void *position, s32 variant)
 {
     u8 *actor = (u8 *)self;
     u8 output[12];

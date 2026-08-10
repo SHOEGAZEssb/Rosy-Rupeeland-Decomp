@@ -7,9 +7,9 @@
 .extern func_020ada8c
 .extern gHeapContext
 .extern genrand_int32
-.global func_020422f4
-.type func_020422f4, @function
-func_020422f4: ; 0x020422f4
+.global ActorExtendedType2_BindTargetAndSpawnEffect
+.type ActorExtendedType2_BindTargetAndSpawnEffect, @function
+ActorExtendedType2_BindTargetAndSpawnEffect: ; 0x020422f4
     stmdb sp!, {r3, r4, r5, r6, r7, lr}
     sub sp, sp, #0x18
     ldr r2, .L_020423b8
@@ -64,4 +64,4 @@ func_020422f4: ; 0x020422f4
 .L_020423bc: .word data_020e00c8
 .L_020423c0: .word gHeapContext
 .L_020423c4: .word 0x135c
-.size func_020422f4, . - func_020422f4
+.size ActorExtendedType2_BindTargetAndSpawnEffect, . - ActorExtendedType2_BindTargetAndSpawnEffect

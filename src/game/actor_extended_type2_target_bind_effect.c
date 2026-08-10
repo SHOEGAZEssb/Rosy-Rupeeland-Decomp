@@ -26,7 +26,7 @@ extern void *func_0201f864(void *allocation, ...);
  * clear word +0x264 and bytes +0x268/+0x269, and return zero. Actor, heap,
  * random, and effect state may change; Heap_Alloc is the resource boundary.
  */
-s32 func_020422f4(void *self, void *target)
+s32 ActorExtendedType2_BindTargetAndSpawnEffect(void *self, void *target)
 {
     u8 *actor = (u8 *)self;
     void *allocation;

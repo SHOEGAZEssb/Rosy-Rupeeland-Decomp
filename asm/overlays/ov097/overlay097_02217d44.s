@@ -7,7 +7,7 @@
 .extern ActorCollection_FindActorByDescriptorValue
 .extern Actor_GetCollection
 .extern func_02034a60
-.extern func_020425d4
+.extern ActorExtendedType2_InitializeReentryState
 .extern ActorExtendedType2_GetDescriptorValue25
 .extern func_0206e590
 .extern func_020a2844
@@ -20,7 +20,7 @@
 func_ov097_02217d44:
     stmdb sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, lr}
     mov r7, r0
-    bl func_020425d4
+    bl ActorExtendedType2_InitializeReentryState
     ldr r0, [r7, #0x1fc]
     cmp r0, #0x0
     ble .L_02217dc8

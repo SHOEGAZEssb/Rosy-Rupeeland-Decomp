@@ -1,6 +1,6 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov095/overlay095_recovery.c.
-.extern func_020423c8
+.extern ActorExtendedType2_PrepareRelease
 .extern func_0205940c
 .extern func_020594a4
 .extern gSoundContext
@@ -23,7 +23,7 @@ func_ov095_0221ac20:
     bl func_0205940c
 .L_0221ac58:
     mov r0, r4
-    bl func_020423c8
+    bl ActorExtendedType2_PrepareRelease
     ldmia sp!, {r4, pc}
 .L_0221ac64: .word gSoundContext
 .L_0221ac68: .word 0x1ee

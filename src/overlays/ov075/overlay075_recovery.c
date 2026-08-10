@@ -268,10 +268,10 @@ void func_ov075_02215188(void);
 /* Processes the supplied ABI arguments and offset-based actor state, returns its encoded result, and invokes func_ov075_02215910; exact higher-level semantics remain unconfirmed. */
 void func_ov075_022151bc(void);
 
-/* Processes the supplied ABI arguments and offset-based actor state, returns its encoded result, and invokes func_020425d4, func_ov075_02215910; exact higher-level semantics remain unconfirmed. */
+/* Processes the supplied ABI arguments and offset-based actor state, returns its encoded result, and invokes ActorExtendedType2_InitializeReentryState, func_ov075_02215910; exact higher-level semantics remain unconfirmed. */
 void func_ov075_022151f4(void);
 
-/* Processes the supplied ABI arguments and offset-based actor state, returns its encoded result, and invokes func_02042810, func_020593dc, func_ov075_022152ac; exact higher-level semantics remain unconfirmed. */
+/* Processes the supplied ABI arguments and offset-based actor state, returns its encoded result, and invokes ActorExtendedType2_ResetVerticalMotionCallbacks, func_020593dc, func_ov075_022152ac; exact higher-level semantics remain unconfirmed. */
 void func_ov075_02215218(void);
 
 /* Processes the supplied ABI arguments using only local offset-based fields; observable mutations and the return value are preserved by the matching implementation, with no direct SDK call. */
@@ -283,7 +283,7 @@ void func_ov075_022152f4(void);
 /* Processes the supplied ABI arguments using only local offset-based fields; observable mutations and the return value are preserved by the matching implementation, with no direct SDK call. */
 void func_ov075_022154e8(void);
 
-/* Processes the supplied ABI arguments and offset-based actor state, returns its encoded result, and invokes func_02042408, func_ov075_02215910; exact higher-level semantics remain unconfirmed. */
+/* Processes the supplied ABI arguments and offset-based actor state, returns its encoded result, and invokes ActorExtendedType2_LaunchRandomMotion, func_ov075_02215910; exact higher-level semantics remain unconfirmed. */
 void func_ov075_02215574(void);
 
 /* Processes the supplied ABI arguments using only local offset-based fields; observable mutations and the return value are preserved by the matching implementation, with no direct SDK call. */
@@ -319,7 +319,7 @@ void func_ov075_02215a48(void);
 /* Processes the supplied ABI arguments and offset-based actor state, returns its encoded result, and invokes ActorCollection_GetSpriteOwner, Actor_GetCollection, func_02072b68 and other shared helpers; exact higher-level semantics remain unconfirmed. */
 void func_ov075_02215a70(void);
 
-/* Processes the supplied ABI arguments and offset-based actor state, returns its encoded result, and invokes func_02042810, func_020593dc, func_ov075_022152ac; exact higher-level semantics remain unconfirmed. */
+/* Processes the supplied ABI arguments and offset-based actor state, returns its encoded result, and invokes ActorExtendedType2_ResetVerticalMotionCallbacks, func_020593dc, func_ov075_022152ac; exact higher-level semantics remain unconfirmed. */
 void func_ov075_02215c90(void);
 
 /* Processes the supplied ABI arguments and offset-based actor state, returns its encoded result, and invokes func_020050a4, ActorExtendedLinkSource_UpdateFrame, ActorExtendedLinkSource_ClearPartnerLinkedFlag and other shared helpers; exact higher-level semantics remain unconfirmed. */

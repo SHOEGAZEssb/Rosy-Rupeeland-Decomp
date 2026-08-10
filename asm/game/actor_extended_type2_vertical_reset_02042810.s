@@ -1,9 +1,9 @@
 ; Matching retail form; see src/game/actor_extended_type2_vertical_reset.c.
 .text
 .extern data_020df9e8
-.global func_02042810
-.type func_02042810, @function
-func_02042810: ; 0x02042810
+.global ActorExtendedType2_ResetVerticalMotionCallbacks
+.type ActorExtendedType2_ResetVerticalMotionCallbacks, @function
+ActorExtendedType2_ResetVerticalMotionCallbacks: ; 0x02042810
     mov r1, #0x0
     str r1, [r0, #0x40]
     str r1, [r0, #0x3c]
@@ -26,4 +26,4 @@ func_02042810: ; 0x02042810
     str r1, [r0, #0x260]
     bx lr
 .L_02042860: .word data_020df9e8
-.size func_02042810, . - func_02042810
+.size ActorExtendedType2_ResetVerticalMotionCallbacks, . - ActorExtendedType2_ResetVerticalMotionCallbacks

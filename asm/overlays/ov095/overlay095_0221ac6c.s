@@ -2,7 +2,7 @@
 ; Matching fallback for the portable implementation in src/overlays/ov095/overlay095_recovery.c.
 .extern data_021052fc
 .extern func_0201e0ec
-.extern func_020425d4
+.extern ActorExtendedType2_InitializeReentryState
 .extern func_020593dc
 .extern func_0206e590
 .extern func_020a2844
@@ -14,7 +14,7 @@ func_ov095_0221ac6c:
     stmdb sp!, {r4, r5, r6, r7, r8, lr}
     sub sp, sp, #0x8
     mov r8, r0
-    bl func_020425d4
+    bl ActorExtendedType2_InitializeReentryState
     ldr r0, [r8, #0x1fc]
     cmp r0, #0x0
     ble .L_0221acd8

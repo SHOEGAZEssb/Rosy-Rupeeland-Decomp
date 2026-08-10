@@ -17277,7 +17277,7 @@ build build/reports/actor_extended_type2_long_delay_audio_02042170.json: objdiff
   base_object = build/decomp/asm/game/actor_extended_type2_long_delay_audio_02042170.o
 build build/reports/actor_extended_type2_long_delay_audio_02042170.txt: match_report build/reports/actor_extended_type2_long_delay_audio_02042170.json | tools/report_objdiff.py
   report_json = build/reports/actor_extended_type2_long_delay_audio_02042170.json
-  report_args = --section .text --function func_02042170 --require-exact
+  report_args = --section .text --function ActorExtendedType2_UpdateLongDelayAudio --require-exact
 build build/reports/actor_extended_type2_long_delay_audio.txt: phony build/reports/actor_extended_type2_long_delay_audio_02042170.txt
 build actor_extended_type2_long_delay_audio: phony build/decomp/src/game/actor_extended_type2_long_delay_audio.o build/decomp/asm/game/actor_extended_type2_long_delay_audio_02042170.o build/reports/actor_extended_type2_long_delay_audio.txt
 
@@ -17292,7 +17292,7 @@ build build/reports/actor_extended_type2_target_bind_effect_020422f4.json: objdi
   base_object = build/decomp/asm/game/actor_extended_type2_target_bind_effect_020422f4.o
 build build/reports/actor_extended_type2_target_bind_effect_020422f4.txt: match_report build/reports/actor_extended_type2_target_bind_effect_020422f4.json | tools/report_objdiff.py
   report_json = build/reports/actor_extended_type2_target_bind_effect_020422f4.json
-  report_args = --section .text --function func_020422f4 --require-exact
+  report_args = --section .text --function ActorExtendedType2_BindTargetAndSpawnEffect --require-exact
 build build/reports/actor_extended_type2_target_bind_effect.txt: phony build/reports/actor_extended_type2_target_bind_effect_020422f4.txt
 build actor_extended_type2_target_bind_effect: phony build/decomp/src/game/actor_extended_type2_target_bind_effect.o build/decomp/asm/game/actor_extended_type2_target_bind_effect_020422f4.o build/reports/actor_extended_type2_target_bind_effect.txt
 
@@ -17307,7 +17307,7 @@ build build/reports/actor_extended_type2_release_launch_020423c8.json: objdiff b
   base_object = build/decomp/asm/game/actor_extended_type2_release_launch_020423c8.o
 build build/reports/actor_extended_type2_release_launch_020423c8.txt: match_report build/reports/actor_extended_type2_release_launch_020423c8.json | tools/report_objdiff.py
   report_json = build/reports/actor_extended_type2_release_launch_020423c8.json
-  report_args = --section .text --function func_020423c8 --function func_02042408 --require-exact
+  report_args = --section .text --function ActorExtendedType2_PrepareRelease --function ActorExtendedType2_LaunchRandomMotion --require-exact
 build build/reports/actor_extended_type2_release_launch.txt: phony build/reports/actor_extended_type2_release_launch_020423c8.txt
 build actor_extended_type2_release_launch: phony build/decomp/src/game/actor_extended_type2_release_launch.o build/decomp/asm/game/actor_extended_type2_release_launch_020423c8.o build/reports/actor_extended_type2_release_launch.txt
 
@@ -17322,7 +17322,7 @@ build build/reports/actor_extended_type2_countdown_update_02042514.json: objdiff
   base_object = build/decomp/asm/game/actor_extended_type2_countdown_update_02042514.o
 build build/reports/actor_extended_type2_countdown_update_02042514.txt: match_report build/reports/actor_extended_type2_countdown_update_02042514.json | tools/report_objdiff.py
   report_json = build/reports/actor_extended_type2_countdown_update_02042514.json
-  report_args = --section .text --function func_02042514 --require-exact
+  report_args = --section .text --function ActorExtendedType2_UpdateActiveCountdown --require-exact
 build build/reports/actor_extended_type2_countdown_update.txt: phony build/reports/actor_extended_type2_countdown_update_02042514.txt
 build actor_extended_type2_countdown_update: phony build/decomp/src/game/actor_extended_type2_countdown_update.o build/decomp/asm/game/actor_extended_type2_countdown_update_02042514.o build/reports/actor_extended_type2_countdown_update.txt
 
@@ -17337,7 +17337,7 @@ build build/reports/actor_extended_type2_reentry_initialize_020425d4.json: objdi
   base_object = build/decomp/asm/game/actor_extended_type2_reentry_initialize_020425d4.o
 build build/reports/actor_extended_type2_reentry_initialize_020425d4.txt: match_report build/reports/actor_extended_type2_reentry_initialize_020425d4.json | tools/report_objdiff.py
   report_json = build/reports/actor_extended_type2_reentry_initialize_020425d4.json
-  report_args = --section .text --function func_020425d4 --require-exact
+  report_args = --section .text --function ActorExtendedType2_InitializeReentryState --require-exact
 build build/reports/actor_extended_type2_reentry_initialize.txt: phony build/reports/actor_extended_type2_reentry_initialize_020425d4.txt
 build actor_extended_type2_reentry_initialize: phony build/decomp/src/game/actor_extended_type2_reentry_initialize.o build/decomp/asm/game/actor_extended_type2_reentry_initialize_020425d4.o build/reports/actor_extended_type2_reentry_initialize.txt
 
@@ -17352,7 +17352,7 @@ build build/reports/actor_extended_type2_vertical_reset_02042810.json: objdiff b
   base_object = build/decomp/asm/game/actor_extended_type2_vertical_reset_02042810.o
 build build/reports/actor_extended_type2_vertical_reset_02042810.txt: match_report build/reports/actor_extended_type2_vertical_reset_02042810.json | tools/report_objdiff.py
   report_json = build/reports/actor_extended_type2_vertical_reset_02042810.json
-  report_args = --section .text --function func_02042810 --require-exact
+  report_args = --section .text --function ActorExtendedType2_ResetVerticalMotionCallbacks --require-exact
 build build/reports/actor_extended_type2_vertical_reset.txt: phony build/reports/actor_extended_type2_vertical_reset_02042810.txt
 build actor_extended_type2_vertical_reset: phony build/decomp/src/game/actor_extended_type2_vertical_reset.o build/decomp/asm/game/actor_extended_type2_vertical_reset_02042810.o build/reports/actor_extended_type2_vertical_reset.txt
 
@@ -17367,7 +17367,7 @@ build build/reports/actor_extended_type2_debug_overlay_02042864.json: objdiff bu
   base_object = build/decomp/asm/game/actor_extended_type2_debug_overlay_02042864.o
 build build/reports/actor_extended_type2_debug_overlay_02042864.txt: match_report build/reports/actor_extended_type2_debug_overlay_02042864.json | tools/report_objdiff.py
   report_json = build/reports/actor_extended_type2_debug_overlay_02042864.json
-  report_args = --section .text --function func_02042864 --require-exact
+  report_args = --section .text --function ActorExtendedType2_DrawDebugOverlay --require-exact
 build build/reports/actor_extended_type2_debug_overlay.txt: phony build/reports/actor_extended_type2_debug_overlay_02042864.txt
 build actor_extended_type2_debug_overlay: phony build/decomp/src/game/actor_extended_type2_debug_overlay.o build/decomp/asm/game/actor_extended_type2_debug_overlay_02042864.o build/reports/actor_extended_type2_debug_overlay.txt
 
