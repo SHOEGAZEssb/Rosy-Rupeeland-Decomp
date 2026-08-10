@@ -4,7 +4,7 @@
 .extern data_ov075_02216cc8
 .extern data_ov075_02217170
 .extern func_0201f864
-.extern func_02032a64
+.extern Actor_SetPosition
 .extern func_020593dc
 .extern func_02072b68
 .extern func_ov075_02212f10
@@ -16,7 +16,7 @@ func_ov075_0221360c:
     stmdb sp!, {r4, lr}
     sub sp, sp, #0x18
     mov r4, r0
-    bl func_02032a64
+    bl Actor_SetPosition
     mov r1, #0x0
     mov r2, r1
     mov r3, r1

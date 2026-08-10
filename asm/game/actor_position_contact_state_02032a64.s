@@ -2,9 +2,9 @@
 .text
 .extern func_020050a4
 
-    .global func_02032a64
-    .type func_02032a64, @function
-func_02032a64: ; 0x02032a64
+    .global Actor_SetPosition
+    .type Actor_SetPosition, @function
+Actor_SetPosition: ; 0x02032a64
     stmdb sp!, {r4, lr}
     mov r4, r0
     ldr r2, [r4, #0xd0]
@@ -17,5 +17,4 @@ func_02032a64: ; 0x02032a64
     add r0, r4, #0x18
     bl func_020050a4
     ldmia sp!, {r4, pc}
-    .size func_02032a64, . - func_02032a64
-
+    .size Actor_SetPosition, . - Actor_SetPosition

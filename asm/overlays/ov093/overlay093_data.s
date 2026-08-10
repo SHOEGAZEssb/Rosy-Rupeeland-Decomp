@@ -13,7 +13,7 @@
 .extern func_02032208
 .extern func_020324dc
 .extern func_02032520
-.extern func_02032a64
+.extern Actor_SetPosition
 .extern func_02032abc
 .extern func_02032aec
 .extern func_02032bd0
@@ -156,7 +156,7 @@ data_ov093_022188f0:
     .word func_02032bd0
     .word func_02032aec
     .word func_ov093_02218778
-    .word func_02032a64
+    .word Actor_SetPosition
     .word func_02033b38
     .word Actor_RefreshTerrainHeightIfEnabled
     .word func_ov093_02218774

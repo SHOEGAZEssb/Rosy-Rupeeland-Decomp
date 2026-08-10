@@ -8,7 +8,7 @@ extern void *gSoundContext;
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_02032a64(void *actor, const void *position);
+extern void Actor_SetPosition(void *actor, const void *position);
 extern s32 func_02010b64(void *context, s32 value);
 extern void func_0200b2c0(void *value, s32 x, s32 y, s32 z);
 extern void func_0200500c(void *value, s32 x, s32 y, s32 z);
@@ -42,7 +42,7 @@ void func_02038834(void *self, const void *position, s32 mode)
 {
     u8 *actor = (u8 *)self;
 
-    func_02032a64(actor, position);
+    Actor_SetPosition(actor, position);
     *(u32 *)(actor + 0x14) &= ~0x200;
     *(u16 *)(actor + 0x268) = 0;
 

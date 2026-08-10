@@ -31,7 +31,7 @@ void func_ov075_02212df8(void);
 /* Processes the supplied ABI arguments using only local offset-based fields; observable mutations and the return value are preserved by the matching implementation, with no direct SDK call. */
 void func_ov075_02212e04(void);
 
-/* Processes the supplied ABI arguments and offset-based actor state, returns its encoded result, and invokes func_02032a64, func_ov075_02212d80, func_ov075_02212f10; exact higher-level semantics remain unconfirmed. */
+/* Processes the supplied ABI arguments and offset-based actor state, returns its encoded result, and invokes Actor_SetPosition, func_ov075_02212d80, func_ov075_02212f10; exact higher-level semantics remain unconfirmed. */
 void func_ov075_02212e4c(void);
 
 /* Processes the supplied ABI arguments using only local offset-based fields; observable mutations and the return value are preserved by the matching implementation, with no direct SDK call. */
@@ -73,7 +73,7 @@ void func_ov075_022135c4(void);
 /* Processes the supplied ABI arguments and offset-based actor state, returns its encoded result, and invokes func_02005058, func_0203e494; exact higher-level semantics remain unconfirmed. */
 void func_ov075_022135e4(void);
 
-/* Processes the supplied ABI arguments and offset-based actor state, returns its encoded result, and invokes func_0201f864, func_02032a64, func_020593dc and other shared helpers; exact higher-level semantics remain unconfirmed. */
+/* Processes the supplied ABI arguments and offset-based actor state, returns its encoded result, and invokes func_0201f864, Actor_SetPosition, func_020593dc and other shared helpers; exact higher-level semantics remain unconfirmed. */
 void func_ov075_0221360c(void);
 
 /* Processes the supplied ABI arguments and offset-based actor state, returns its encoded result, and invokes func_020050a4, func_02031720, func_02033f44 and other shared helpers; exact higher-level semantics remain unconfirmed. */
@@ -369,4 +369,3 @@ void func_ov075_02216c68(void);
 
 /* Processes the supplied ABI arguments using only local offset-based fields; observable mutations and the return value are preserved by the matching implementation, with no direct SDK call. */
 void func_ov075_02216c8c(void);
-

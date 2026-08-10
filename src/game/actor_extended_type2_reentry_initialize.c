@@ -12,7 +12,7 @@ extern u8 *data_021052fc;
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_02032a64(void *actor, const void *position);
+extern void Actor_SetPosition(void *actor, const void *position);
 extern void func_0200b2c0(void *value, s32 x, s32 y, s32 z);
 extern u32 genrand_int32(void);
 extern s32 func_020ada8c(s32 value, s32 divisor);
@@ -24,7 +24,7 @@ extern void *func_02009d78(void *manager);
 #endif
 
 /*
- * Apply position through func_02032a64, clear +0x264, and zero vector-like
+ * Apply position through Actor_SetPosition, clear +0x264, and zero vector-like
  * fields +0x38, +0x88, and +0x98. If countdown +0x1fc is nonpositive, invoke
  * virtual +0x100 and only clear +0xd0 bit 0x20000. Otherwise clear attachment
  * +0x24 bit two and install global pair +0x1d0/+0x1d4. With variant zero, set
@@ -45,7 +45,7 @@ void func_020425d4(void *self, const void *position, s32 variant)
     u8 *actor = (u8 *)self;
     u8 output[12];
 
-    func_02032a64(actor, position);
+    Actor_SetPosition(actor, position);
     *(u32 *)(actor + 0x264) = 0;
     func_0200b2c0(actor + 0x38, 0, 0, 0);
     func_0200b2c0(actor + 0x88, 0, 0, 0);

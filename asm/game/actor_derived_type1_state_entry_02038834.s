@@ -7,7 +7,7 @@
 .extern func_02005058
 .extern func_0200b2c0
 .extern func_02010b64
-.extern func_02032a64
+.extern Actor_SetPosition
 .extern func_02033f44
 .extern Actor_ReplaceAttachmentSlotResource
 .extern Type1Actor_EnterFailureState
@@ -21,7 +21,7 @@ func_02038834: ; 0x02038834
     sub sp, sp, #0x14
     mov r5, r0
     mov r4, r2
-    bl func_02032a64
+    bl Actor_SetPosition
     ldr r1, [r5, #0x14]
     add r0, r5, #0x200
     bic r1, r1, #0x200

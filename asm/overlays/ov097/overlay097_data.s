@@ -176,7 +176,7 @@
 .extern func_ov097_0221a478
 .extern func_ov097_0221a470
 .extern func_ov097_0221a460
-.extern func_02032a64
+.extern Actor_SetPosition
 .extern func_02033b38
 .extern func_ov097_0221a45c
 .extern func_ov097_0221a458
@@ -612,7 +612,7 @@ data_ov097_0221aaa4:
     .word func_02032bd0
     .word func_02032aec
     .word func_ov097_0221a460
-    .word func_02032a64
+    .word Actor_SetPosition
     .word func_02033b38
     .word Actor_RefreshTerrainHeightIfEnabled
     .word func_ov097_0221a45c

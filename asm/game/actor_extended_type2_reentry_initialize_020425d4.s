@@ -6,7 +6,7 @@
 .extern data_02105774
 .extern func_02009d78
 .extern func_0200b2c0
-.extern func_02032a64
+.extern Actor_SetPosition
 .extern func_0200500c
 .extern func_02005058
 .extern func_020ada8c
@@ -18,7 +18,7 @@ func_020425d4: ; 0x020425d4
     sub sp, sp, #0x1c
     mov r4, r0
     mov r5, r2
-    bl func_02032a64
+    bl Actor_SetPosition
     mov r1, #0x0
     mov r2, r1
     mov r3, r1

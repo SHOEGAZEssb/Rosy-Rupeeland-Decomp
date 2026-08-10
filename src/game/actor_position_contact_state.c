@@ -15,7 +15,7 @@ extern void *func_020050a4(void *, const void *);
  * previous position 0x28, then copy that result to current position 0x18.
  * Returns no value; the value-copy helper may manage SDK object state.
  */
-void func_02032a64(void *self, const void *source)
+void Actor_SetPosition(void *self, const void *source)
 {
     u8 *actor = (u8 *)self;
     void *copied;

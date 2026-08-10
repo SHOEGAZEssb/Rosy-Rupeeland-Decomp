@@ -1,7 +1,7 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov075/overlay075_recovery.c.
 .extern data_ov075_02216cc8
-.extern func_02032a64
+.extern Actor_SetPosition
 .extern func_ov075_02212d80
 .extern func_ov075_02212f10
 
@@ -9,7 +9,7 @@
 func_ov075_02212e4c:
     stmdb sp!, {r4, lr}
     mov r4, r0
-    bl func_02032a64
+    bl Actor_SetPosition
     mov r1, #0x0
     mov r2, r1
     mov r3, r1

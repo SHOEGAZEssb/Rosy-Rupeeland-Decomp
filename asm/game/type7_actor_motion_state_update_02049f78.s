@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/type7_actor_motion_state_update.c.
 .extern gGameWork
 .extern GameWork_TestFlag
-.extern func_02032a64
+.extern Actor_SetPosition
 .extern func_02047908
 .extern func_02048bcc
 .extern func_0204a014
@@ -13,7 +13,7 @@ func_02049f78: ; 0x02049f78
     stmdb sp!, {r3, r4, r5, lr}
     mov r4, r0
     mov r5, r2
-    bl func_02032a64
+    bl Actor_SetPosition
     ldr r0, [r4, #0x1fc]
     cmp r0, #0x0
     ble .L_02049ff4
@@ -51,4 +51,3 @@ func_02049f78: ; 0x02049f78
 .L_0204a00c: .word gGameWork
 .L_0204a010: .word 0x44b
 .size func_02049f78, . - func_02049f78
-

@@ -10,7 +10,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_02032a64(void *actor);
+extern void Actor_SetPosition(void *actor);
 extern void func_02047908(void *actor, const void *transform);
 extern void func_02048bcc(void *actor);
 extern void func_0204a014(void *actor);
@@ -21,7 +21,7 @@ extern void func_0204a0d8(void *actor, s32 condition);
 
 /*
  * Inputs are a type-seven actor, one unused recovered argument, and a
- * condition. First run func_02032a64. If signed/word count +0x1fc is not
+ * condition. First run Actor_SetPosition. If signed/word count +0x1fc is not
  * positive, clear actor +0x10 mask 0x1f0000 and reset through func_0204a014.
  * Otherwise force the condition to one while game-work flag 0x44b is set,
  * initialize active state through func_0204a0d8, and update motion from the
@@ -37,7 +37,7 @@ void func_02049f78(void *self, s32 unused, s32 condition)
     u8 *actor = (u8 *)self;
     (void)unused;
 
-    func_02032a64(actor);
+    Actor_SetPosition(actor);
     if (*(s32 *)(actor + 0x1fc) <= 0) {
         *(u32 *)(actor + 0x10) &= ~0x1f0000;
         func_0204a014(actor);
