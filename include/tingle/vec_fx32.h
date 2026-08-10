@@ -45,6 +45,8 @@ VecFx32Object *VecFx32Object_Assign(VecFx32Object *self,
                                     const VecFx32Object *source);
 void VecFx32Object_Add(VecFx32Object *self, const VecFx32Object *other);
 void VecFx32Object_Subtract(VecFx32Object *self, const VecFx32Object *other);
+void VecFx32Object_ScaleRounded(VecFx32Object *destination,
+                                const VecFx32Object *source, fx32 scale);
 
 #ifdef __cplusplus
 }

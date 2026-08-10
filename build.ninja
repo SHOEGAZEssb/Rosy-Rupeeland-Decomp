@@ -2678,7 +2678,7 @@ build build/decomp/src/game/sprite_number_list_delete.o: mwccarm src/game/sprite
   cflags = $sprite_number_list_delete_cflags
 build build/decomp/asm/game/sprite_number_list_delete_020233a0.o: mwasmarm asm/game/sprite_number_list_delete_020233a0.s
 build build/decomp/delinks/asm/game/sprite_number_list_delete_020233a0.o: dsd_delink config/arm9/config.yaml config/arm9/delinks.txt config/arm9/symbols.txt config/arm9/relocs.txt
-build build/decomp/src/math/vec_fx32_scale_rounded.o: mwccarm src/math/vec_fx32_scale_rounded.c | include/tingle/types.h
+build build/decomp/src/math/vec_fx32_scale_rounded.o: mwccarm src/math/vec_fx32_scale_rounded.c | include/tingle/vec_fx32.h include/tingle/types.h
   source = src/math/vec_fx32_scale_rounded.c
   cflags = $vec_fx32_scale_rounded_cflags
 build build/decomp/asm/math/vec_fx32_scale_rounded_020233c8.o: mwasmarm asm/math/vec_fx32_scale_rounded_020233c8.s
@@ -8360,7 +8360,7 @@ build build/reports/vec_fx32_scale_rounded_020233c8.json: objdiff build/decomp/d
   base_object = build/decomp/asm/math/vec_fx32_scale_rounded_020233c8.o
 build build/reports/vec_fx32_scale_rounded_020233c8.txt: match_report build/reports/vec_fx32_scale_rounded_020233c8.json | tools/report_objdiff.py
   report_json = build/reports/vec_fx32_scale_rounded_020233c8.json
-  report_args = --section .text --function func_020233c8 --require-exact
+  report_args = --section .text --function VecFx32Object_ScaleRounded --require-exact
 build build/reports/vec_fx32_scale_rounded.txt: phony build/reports/vec_fx32_scale_rounded_020233c8.txt
 build build/reports/arcing_sprite_effect_presentation_02023434.json: objdiff build/decomp/delinks/asm/game/arcing_sprite_effect_presentation_02023434.o | build/decomp/asm/game/arcing_sprite_effect_presentation_02023434.o
   target_object = build/decomp/delinks/asm/game/arcing_sprite_effect_presentation_02023434.o

@@ -1,19 +1,18 @@
-#include "tingle/types.h"
+#include "tingle/vec_fx32.h"
 
 /*
  * Scale the three recovered components of a 16-byte fixed-point value using
  * signed 20.12 multiplication with half-up rounding.
  */
-typedef struct VecFx32Value { u32 field00;s32 x04,y08,z0c; } VecFx32Value;
-#ifdef __cplusplus
-extern "C" { extern void VecFx32Object_Init(void *); }
-#endif
-
-/* Initialize destination, multiply source X/Y/Z by scale with +0x800 before >>12, and return no value. */
-void func_020233c8(VecFx32Value *destination,const VecFx32Value *source,s32 scale)
+/*
+ * Initialize destination, multiply source X/Y/Z by scale with +0x800 before
+ * shifting right 12, and return no value.
+ */
+void VecFx32Object_ScaleRounded(VecFx32Object *destination,
+                                const VecFx32Object *source, fx32 scale)
 {
     VecFx32Object_Init(destination);
-    destination->x04=(s32)(((s64)source->x04*scale+0x800)>>12);
-    destination->y08=(s32)(((s64)source->y08*scale+0x800)>>12);
-    destination->z0c=(s32)(((s64)source->z0c*scale+0x800)>>12);
+    destination->value.x = (s32)(((s64)source->value.x * scale + 0x800) >> 12);
+    destination->value.y = (s32)(((s64)source->value.y * scale + 0x800) >> 12);
+    destination->value.z = (s32)(((s64)source->value.z * scale + 0x800) >> 12);
 }

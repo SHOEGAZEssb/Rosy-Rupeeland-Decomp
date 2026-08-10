@@ -17,7 +17,7 @@
 .extern func_02008378
 .extern func_0201e250
 .extern func_0201e28c
-.extern func_020233c8
+.extern VecFx32Object_ScaleRounded
 .extern GraphicsSpriteState_SetAnimationIndex
 .extern GraphicsSpriteGroup_ReleaseState
 .extern GraphicsSpriteGroup_ReplaceStateResources
@@ -84,11 +84,11 @@ func_02023434: ; 0x02023434
     ldr r2, .L_02023598
     add r0, sp, #0x1c
     mov r1, r5
-    bl func_020233c8
+    bl VecFx32Object_ScaleRounded
     ldr r2, .L_0202359c
     add r0, sp, #0xc
     mov r1, r4
-    bl func_020233c8
+    bl VecFx32Object_ScaleRounded
     add r0, sp, #0x2c
     add r1, sp, #0x1c
     add r2, sp, #0xc

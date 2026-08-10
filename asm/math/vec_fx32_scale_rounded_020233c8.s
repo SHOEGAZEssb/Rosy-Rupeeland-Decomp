@@ -1,9 +1,9 @@
 ; Matching retail form; see src/math/vec_fx32_scale_rounded.c.
 .text
 .extern VecFx32Object_Init
-.global func_020233c8
-    .type func_020233c8, @function
-func_020233c8:
+.global VecFx32Object_ScaleRounded
+    .type VecFx32Object_ScaleRounded, @function
+VecFx32Object_ScaleRounded:
     stmdb sp!, {r4, r5, r6, lr}
     mov r5, r1
     mov r6, r0
@@ -31,4 +31,4 @@ func_020233c8:
     orr r1, r1, r0, lsl #0x14
     str r1, [r6, #0xc]
     ldmia sp!, {r4, r5, r6, pc}
-    .size func_020233c8, .-func_020233c8
+    .size VecFx32Object_ScaleRounded, .-VecFx32Object_ScaleRounded
