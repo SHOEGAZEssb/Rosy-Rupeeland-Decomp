@@ -26,10 +26,13 @@ GamePhaseRuntime *func_02007064(GamePhaseRuntime *self);
 GamePhaseRuntime *func_0200719c(GamePhaseRuntime *self);
 s32 func_020072dc(GamePhaseRuntime *self);
 s32 func_02007308(GamePhaseRuntime *self);
-s32 func_02007328(GamePhaseRuntime *self, const void *source);
-void func_02007354(void *destination, const void *source);
-s32 func_0200736c(GamePhaseRuntime *self, const void *source);
-s32 func_02007398(GamePhaseRuntime *self, const void *source);
+s32 GamePhaseRuntime_QueueSelectionQuery(GamePhaseRuntime *self,
+                                         const void *query);
+void ActorQuery_CopyCoordinates(void *destination, const void *source);
+s32 GamePhaseRuntime_QueueQueryUntilHandled(GamePhaseRuntime *self,
+                                            const void *query);
+s32 GamePhaseRuntime_QueueBroadcastQuery(GamePhaseRuntime *self,
+                                         const void *query);
 s32 func_020073c4(GamePhaseRuntime *self, s32 event);
 s32 func_02007420(GamePhaseRuntime *self);
 s32 func_02007428(GamePhaseRuntime *self);

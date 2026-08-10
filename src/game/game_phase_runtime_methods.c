@@ -6,11 +6,11 @@
  * state, latch three independently requested actions, and handle event 100.
  */
 
-typedef struct RuntimeRequestSource {
+typedef struct ActorQueryPoint {
     u32 field_00;
-    u32 field_04;
-    u32 field_08;
-} RuntimeRequestSource;
+    u32 x_04;
+    u32 y_08;
+} ActorQueryPoint;
 
 extern u8 data_020d4358[];
 extern void *gSoundContext;
@@ -55,44 +55,47 @@ s32 func_02007308(GamePhaseRuntime *self)
     return 0;
 }
 
-/* Copy a request and latch request bit 0 at runtime offset 0x30b8; returns zero. */
-s32 func_02007328(GamePhaseRuntime *self, const void *source)
+/* Copy query coordinates and latch selection-query bit zero; returns zero. */
+s32 GamePhaseRuntime_QueueSelectionQuery(GamePhaseRuntime *self,
+                                         const void *query)
 {
     u8 *bytes = (u8 *)self;
-    func_02007354(bytes + 0x30a8, source);
+    ActorQuery_CopyCoordinates(bytes + 0x30a8, query);
     *(u32 *)(bytes + 0x30b8) |= 1;
     return 0;
 }
 
 /*
- * Copy source offsets 4 and 8 into the request record at runtime offset
- * 0x30a8 unless it is the same record. No other source fields are consumed.
+ * Copy query X/Y words +4/+8 unless source and destination are the same
+ * record. No other query fields are consumed and no hardware is touched.
  */
-void func_02007354(void *destination, const void *source)
+void ActorQuery_CopyCoordinates(void *destination, const void *source)
 {
-    RuntimeRequestSource *dst = (RuntimeRequestSource *)destination;
-    const RuntimeRequestSource *src = (const RuntimeRequestSource *)source;
+    ActorQueryPoint *dst = (ActorQueryPoint *)destination;
+    const ActorQueryPoint *src = (const ActorQueryPoint *)source;
 
     if (src != dst) {
-        dst->field_04 = src->field_04;
-        dst->field_08 = src->field_08;
+        dst->x_04 = src->x_04;
+        dst->y_08 = src->y_08;
     }
 }
 
-/* Copy a request and latch request bit 1 at runtime offset 0x30b8; returns zero. */
-s32 func_0200736c(GamePhaseRuntime *self, const void *source)
+/* Copy query coordinates and latch until-handled bit one; returns zero. */
+s32 GamePhaseRuntime_QueueQueryUntilHandled(GamePhaseRuntime *self,
+                                            const void *query)
 {
     u8 *bytes = (u8 *)self;
-    func_02007354(bytes + 0x30a8, source);
+    ActorQuery_CopyCoordinates(bytes + 0x30a8, query);
     *(u32 *)(bytes + 0x30b8) |= 2;
     return 0;
 }
 
-/* Copy a request and latch request bit 2 at runtime offset 0x30b8; returns zero. */
-s32 func_02007398(GamePhaseRuntime *self, const void *source)
+/* Copy query coordinates and latch broadcast-query bit two; returns zero. */
+s32 GamePhaseRuntime_QueueBroadcastQuery(GamePhaseRuntime *self,
+                                         const void *query)
 {
     u8 *bytes = (u8 *)self;
-    func_02007354(bytes + 0x30a8, source);
+    ActorQuery_CopyCoordinates(bytes + 0x30a8, query);
     *(u32 *)(bytes + 0x30b8) |= 4;
     return 0;
 }
