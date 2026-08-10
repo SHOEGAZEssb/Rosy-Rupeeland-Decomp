@@ -64,7 +64,7 @@ static void setAttachmentFlip(u8 *attachment, s32 enabled)
  * clear; for nonnegative animation the relationship is reversed. Returns no
  * value; func_02072b68 updates attachment presentation/animation state.
  */
-void func_02034be4(void *self, s32 animation)
+void Actor_SetAttachmentAnimation(void *self, s32 animation)
 {
     u8 *actor = (u8 *)self;
     u8 *primary = *(u8 **)(actor + 0x54);

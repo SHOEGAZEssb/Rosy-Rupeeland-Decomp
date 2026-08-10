@@ -2,7 +2,7 @@
 .text
 .extern func_02012704
 .extern Actor_SetAttachmentEnabled
-.extern func_02034be4
+.extern Actor_SetAttachmentAnimation
 .extern func_0203bae4
 .global func_02015f50
 func_02015f50:
@@ -43,7 +43,7 @@ func_02015f50:
     mov r1, r4
     mov r4, r0
     mov r0, r5
-    bl func_02034be4
+    bl Actor_SetAttachmentAnimation
     strb r6, [r4, #0x3a]
     strh r7, [r4, #0x36]
     strh r8, [r4, #0x32]

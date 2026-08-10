@@ -7,7 +7,7 @@ extern "C" {
 #endif
 extern void *func_0203bae4(void *actor, u16 first, u16 second, u16 third,
                            u16 fourth);
-extern void func_02034be4(void *actor, u32 value);
+extern void Actor_SetAttachmentAnimation(void *actor, u32 value);
 extern void Actor_SetAttachmentEnabled(void *actor, u32 value);
 #ifdef __cplusplus
 }
@@ -35,7 +35,7 @@ s32 func_02015f50(GamePhaseActorScriptVm *self)
     s16 value30 = *(s16 *)(oldObject + 0x30);
     u8 *newObject = (u8 *)func_0203bae4(actor, first, second, third, fourth);
 
-    func_02034be4(actor, command);
+    Actor_SetAttachmentAnimation(actor, command);
     newObject[0x3a] = byte3a;
     *(s16 *)(newObject + 0x36) = value36;
     *(s16 *)(newObject + 0x32) = value32;

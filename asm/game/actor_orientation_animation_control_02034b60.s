@@ -41,5 +41,4 @@ func_02034b60: ; 0x02034b60
     ldmia sp!, {r4, pc}
     .size func_02034b60, . - func_02034b60
 
-    .global func_02034be4
-
+    .global Actor_SetAttachmentAnimation

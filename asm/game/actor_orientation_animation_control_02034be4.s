@@ -2,9 +2,9 @@
 .text
 .extern func_02072b68
 
-    .global func_02034be4
-    .type func_02034be4, @function
-func_02034be4: ; 0x02034be4
+    .global Actor_SetAttachmentAnimation
+    .type Actor_SetAttachmentAnimation, @function
+Actor_SetAttachmentAnimation: ; 0x02034be4
     stmdb sp!, {r3, r4, r5, lr}
     mov r5, r0
     ldr r2, [r5, #0x54]
@@ -91,7 +91,6 @@ func_02034be4: ; 0x02034be4
     biceq r0, r0, #0x40
     streqh r0, [r1, #0x24]
     ldmia sp!, {r3, r4, r5, pc}
-    .size func_02034be4, . - func_02034be4
+    .size Actor_SetAttachmentAnimation, . - Actor_SetAttachmentAnimation
 
     .global func_02034d34
-

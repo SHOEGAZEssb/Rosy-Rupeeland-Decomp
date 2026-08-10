@@ -12,7 +12,7 @@ extern void ActorBounds_Set(void *bounds, s32 minX, s32 minY, s32 maxX,
                             s32 maxY);
 extern void BoundsCenterSnapshot_Init(void *center, const void *bounds);
 extern void ActorBounds_SetMinimum(void *bounds, s32 minX, s32 minY);
-extern void func_02034be4(void *actor, s32 value);
+extern void Actor_SetAttachmentAnimation(void *actor, s32 value);
 extern void Actor_SetAttachmentEnabled(void *actor, s32 value);
 extern void func_020050a4(void *destination, const void *source);
 #ifdef __cplusplus
@@ -99,7 +99,7 @@ void func_020330fc(void *self, u32 selector, s32 value)
         *(s32 *)(actor + 0x24) = value << 12;
         break;
     case 10:
-        func_02034be4(actor, value);
+        Actor_SetAttachmentAnimation(actor, value);
         break;
     case 17:
         *(s32 *)(actor + 0xcc) = value;

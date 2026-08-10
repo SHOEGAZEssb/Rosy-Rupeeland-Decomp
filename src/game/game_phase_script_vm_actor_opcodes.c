@@ -13,7 +13,7 @@ extern void *func_02030ad4(void *collection, s32 index);
 extern void *func_02007f0c(void *runtime, s32 index);
 extern void func_02032cac(void *actor, s32 active);
 extern s32 func_0200b04c(void *state);
-extern void func_02034be4(void *actor, u32 value);
+extern void Actor_SetAttachmentAnimation(void *actor, u32 value);
 extern void Actor_SetAttachmentEnabled(void *actor, u32 value);
 #ifdef __cplusplus
 }
@@ -89,11 +89,11 @@ s32 func_02012afc(GamePhaseActorScriptVm *self)
     return 0;
 }
 
-/* Pop a value, pass it to the bound actor through func_02034be4, and return zero. */
+/* Pop an attachment animation command, apply it to the bound actor, and return zero. */
 s32 func_02012c14(GamePhaseActorScriptVm *self)
 {
     u32 value = func_02012704(&self->base);
-    func_02034be4(self->actor_84, value);
+    Actor_SetAttachmentAnimation(self->actor_84, value);
     return 0;
 }
 
