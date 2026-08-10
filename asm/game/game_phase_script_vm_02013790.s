@@ -2,8 +2,8 @@
 .text
 .extern GamePhaseScriptVm_Pop
 
-    .global func_02013790
-func_02013790: ; 0x02013790
+    .global GamePhaseActorScriptVm_SetAttachmentFlag20
+GamePhaseActorScriptVm_SetAttachmentFlag20: ; 0x02013790
     stmdb sp!, {r4, lr}
     mov r4, r0
     bl GamePhaseScriptVm_Pop
@@ -18,5 +18,5 @@ func_02013790: ; 0x02013790
     strh r0, [r1, #0x24]
     mov r0, #0x0
     ldmia sp!, {r4, pc}
-    .size func_02013790, . - func_02013790
+    .size GamePhaseActorScriptVm_SetAttachmentFlag20, . - GamePhaseActorScriptVm_SetAttachmentFlag20
 

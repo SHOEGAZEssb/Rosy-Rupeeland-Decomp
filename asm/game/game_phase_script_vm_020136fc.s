@@ -2,8 +2,8 @@
 .text
 .extern GamePhaseScriptVm_Pop
 
-    .global func_020136fc
-func_020136fc: ; 0x020136fc
+    .global GamePhaseActorScriptVm_SetActorFlag10AndAttachmentFlag40
+GamePhaseActorScriptVm_SetActorFlag10AndAttachmentFlag40: ; 0x020136fc
     stmdb sp!, {r4, lr}
     mov r4, r0
     bl GamePhaseScriptVm_Pop
@@ -29,5 +29,5 @@ L_0201374c:
     strh r0, [r1, #0x24]
     mov r0, #0x0
     ldmia sp!, {r4, pc}
-    .size func_020136fc, . - func_020136fc
+    .size GamePhaseActorScriptVm_SetActorFlag10AndAttachmentFlag40, . - GamePhaseActorScriptVm_SetActorFlag10AndAttachmentFlag40
 
