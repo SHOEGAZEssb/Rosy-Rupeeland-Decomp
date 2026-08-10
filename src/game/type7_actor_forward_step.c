@@ -31,7 +31,7 @@ extern s32 func_020adc90(s32 value, s32 length);
  * Actor state and collision-query state may change; there are no direct SDK
  * or hardware effects.
  */
-s32 func_0204a890(void *self)
+s32 Type7Actor_TryStartForwardStepTransition(void *self)
 {
     u8 *actor = (u8 *)self;
     s32 directionPresent;

@@ -16,7 +16,7 @@
 .extern func_020091d8
 .extern func_02009d78
 .extern ActorDerivedType1_GetSingletonObject
-.extern func_0204a988
+.extern Type7Actor_ProcessBoundaryTransition
 .extern func_ov074_02210a04
 .extern func_ov074_02211644
 
@@ -675,7 +675,7 @@ func_ov074_02210b90:
     beq .L_022115ac
     ldr r2, [r6, #0x24]
     add r1, r6, #0x28
-    bl func_0204a988
+    bl Type7Actor_ProcessBoundaryTransition
 .L_022115ac:
     add r0, sp, #0x104
     add r1, r6, #0x8c

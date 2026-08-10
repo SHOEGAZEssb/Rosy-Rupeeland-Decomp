@@ -52,7 +52,7 @@ extern s32 func_020be328(s32 value);
  * game-work, heap-owned attachment, collision/presentation, and vector state;
  * there are no direct hardware effects.
  */
-void func_0204a988(void *self, const VecFx32Object *destination, s32 direction)
+void Type7Actor_ProcessBoundaryTransition(void *self, const VecFx32Object *destination, s32 direction)
 {
     u8 *actor = (u8 *)self;
     void *attachment = *(void **)(actor + 0x234);

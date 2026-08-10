@@ -18600,7 +18600,7 @@ build build/reports/type7_actor_forward_step_0204a890.json: objdiff build/decomp
   base_object = build/decomp/asm/game/type7_actor_forward_step_0204a890.o
 build build/reports/type7_actor_forward_step_0204a890.txt: match_report build/reports/type7_actor_forward_step_0204a890.json | tools/report_objdiff.py
   report_json = build/reports/type7_actor_forward_step_0204a890.json
-  report_args = --section .text --function func_0204a890 --require-exact
+  report_args = --section .text --function Type7Actor_TryStartForwardStepTransition --require-exact
 build type7_actor_forward_step: phony build/decomp/src/game/type7_actor_forward_step.o build/decomp/asm/game/type7_actor_forward_step_0204a890.o build/reports/type7_actor_forward_step_0204a890.txt
 
 type7_actor_boundary_transition_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
@@ -18614,7 +18614,7 @@ build build/reports/type7_actor_boundary_transition_0204a988.json: objdiff build
   base_object = build/decomp/asm/game/type7_actor_boundary_transition_0204a988.o
 build build/reports/type7_actor_boundary_transition_0204a988.txt: match_report build/reports/type7_actor_boundary_transition_0204a988.json | tools/report_objdiff.py
   report_json = build/reports/type7_actor_boundary_transition_0204a988.json
-  report_args = --section .text --function func_0204a988 --require-exact
+  report_args = --section .text --function Type7Actor_ProcessBoundaryTransition --require-exact
 build type7_actor_boundary_transition: phony build/decomp/src/game/type7_actor_boundary_transition.o build/decomp/asm/game/type7_actor_boundary_transition_0204a988.o build/reports/type7_actor_boundary_transition_0204a988.txt
 
 type7_actor_transition_flags_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++

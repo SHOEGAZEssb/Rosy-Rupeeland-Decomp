@@ -5,9 +5,9 @@
 .extern func_020adae4
 .extern func_020adc90
 .text
-    .global func_0204a890
-.type func_0204a890, @function
-func_0204a890: ; 0x0204a890
+    .global Type7Actor_TryStartForwardStepTransition
+.type Type7Actor_TryStartForwardStepTransition, @function
+Type7Actor_TryStartForwardStepTransition: ; 0x0204a890
     stmdb sp!, {r4, r5, r6, r7, r8, lr}
     mov r6, r0
     ldr r1, [r6, #0x24]
@@ -71,4 +71,4 @@ func_0204a890: ; 0x0204a890
 .L_0204a980:
     mov r0, #0x0
     ldmia sp!, {r4, r5, r6, r7, r8, pc}
-.size func_0204a890, . - func_0204a890
+.size Type7Actor_TryStartForwardStepTransition, . - Type7Actor_TryStartForwardStepTransition

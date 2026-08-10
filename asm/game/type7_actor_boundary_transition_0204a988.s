@@ -18,8 +18,8 @@
 .extern func_020be328
 .extern gGameWork
 .text
-    .global func_0204a988
-func_0204a988: ; 0x0204a988
+    .global Type7Actor_ProcessBoundaryTransition
+Type7Actor_ProcessBoundaryTransition: ; 0x0204a988
     stmdb sp!, {r4, r5, r6, r7, r8, r9, r10, r11, lr}
     sub sp, sp, #0x4c
     mov r8, r0
@@ -454,5 +454,5 @@ func_0204a988: ; 0x0204a988
 .L_0204afc8: .word data_021052fc
 .L_0204afcc: .word 0xdfd7
 .L_0204afd0: .word data_020e17e8
-.size func_0204a988, . - func_0204a988
+.size Type7Actor_ProcessBoundaryTransition, . - Type7Actor_ProcessBoundaryTransition
 
