@@ -8,7 +8,7 @@ extern u8 data_020d430c[];
 extern "C" {
 #endif
 extern void OS_Halt(void);
-extern void func_0202839c(void *destination, u32 areaValue);
+extern void GamePhaseMetadata_WriteAdjustedCoordinates(void *destination, u32 areaValue);
 #ifdef __cplusplus
 }
 #endif
@@ -42,7 +42,7 @@ void GamePhaseRuntime_UpdateDualScreenUiPresentation(GamePhaseRuntime *self)
 
 /*
  * Initialize a 12-byte area-derived value with recovered vtable data, ask
- * func_0202839c to populate fields 4/8 from area offset zero, then scale those
+ * GamePhaseMetadata_WriteAdjustedCoordinates to populate fields 4/8 from area offset zero, then scale those
  * fields by 480 and 352. self is unused; destination is mutated; returns no
  * meaningful value.
  */
@@ -53,7 +53,7 @@ void GamePhaseRuntime_InitScaledAreaCoordinates(void *destination, GamePhaseRunt
     *(void **)out = data_020d430c;
     *(s32 *)(out + 4) = 0;
     *(s32 *)(out + 8) = 0;
-    func_0202839c(out, *(u32 *)area);
+    GamePhaseMetadata_WriteAdjustedCoordinates(out, *(u32 *)area);
     *(s32 *)(out + 4) *= 480;
     *(s32 *)(out + 8) *= 352;
 }

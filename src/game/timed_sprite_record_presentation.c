@@ -33,7 +33,7 @@ extern const char data_020d62d0[];
 extern u8 *data_021052fc;
 extern void *func_0201e250(void *self);
 extern void *func_0201e28c(void *self);
-extern u8 *func_020284e0(s32 index);
+extern u8 *GamePhaseGraphicsMetadata_GetByIndex(s32 index);
 extern void GamePhaseVisualEffect_Configure(void *runtime, u32 field00, u32 field02,
                           u32 field04, u32 field06, u32 field08, u32 field0e,
                           void *copiedFields);
@@ -47,7 +47,7 @@ extern void func_0201ded4(void *manager, void *entry);
 
 /*
  * Initialize the recovered base, retain field08, and resolve config offset
- * 0x12 through func_020284e0.  Copy config offsets 0x34 and 0x38..0x3e into
+ * 0x12 through GamePhaseGraphicsMetadata_GetByIndex.  Copy config offsets 0x34 and 0x38..0x3e into
  * self, clear state0c, submit the record's offsets 0x00..0x08 and 0x0e plus
  * the copied block to the runtime at 0x2ed8, then submit a temporary position
  * made from signed record offsets 0x0a/0x0c shifted by four.  Destroy the
@@ -62,7 +62,7 @@ TimedSpriteRecordPresentation *func_0201ff2c(
     func_0201e250(self);
     self->vtable = (void **)data_020d62b0;
     self->field08 = field08;
-    self->record10 = func_020284e0(*(const s16 *)(config + 0x12));
+    self->record10 = GamePhaseGraphicsMetadata_GetByIndex(*(const s16 *)(config + 0x12));
     self->field14 = *(const s32 *)(config + 0x34);
     self->field18 = *(const s16 *)(config + 0x38);
     self->field1a = *(const s16 *)(config + 0x3a);

@@ -7,7 +7,7 @@ extern "C" {
 #endif
 extern void *data_021e9ac0;
 extern s32 func_0206522c(void *state);
-extern void *func_02028388(s32 index);
+extern void *GamePhaseMetadata_GetByIndex(s32 index);
 #ifdef __cplusplus
 }
 #endif
@@ -24,7 +24,7 @@ s32 func_0201b040(GamePhaseActorScriptVm *self)
 s32 GamePhaseActorScriptVm_GetOneBasedPhaseRecordByte4c(GamePhaseActorScriptVm *self)
 {
     s32 index = (s32)GamePhaseScriptVm_Pop(&self->base) - 1;
-    s8 value = *(s8 *)((u8 *)func_02028388(index) + 0x4c);
+    s8 value = *(s8 *)((u8 *)GamePhaseMetadata_GetByIndex(index) + 0x4c);
     GamePhaseScriptVm_SetResult(&self->base, (u32)value);
     return 0;
 }

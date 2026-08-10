@@ -12,7 +12,7 @@ extern void *gLupyContext;
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *func_02028388(s32 areaId);
+extern void *GamePhaseMetadata_GetByIndex(s32 areaId);
 extern void VecFx32Object_Init(void *value);
 extern s32 func_020beb18(s32 value);
 extern s32 func_020be8c0(s32 a, s32 b);
@@ -62,7 +62,7 @@ s32 GamePhaseRuntime_ChangeToNeighborArea(GamePhaseRuntime *self, s32 direction)
     if (areaId == -1)
         return 0;
 
-    area = (u8 *)func_02028388(areaId);
+    area = (u8 *)GamePhaseMetadata_GetByIndex(areaId);
     *(u8 **)(b + 0x30bc) = area;
     VecFx32Object_Init(offset);
 

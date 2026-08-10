@@ -2,7 +2,7 @@
 ; Matching fallback for the portable implementation in src/overlays/ov059/overlay059_recovery.c.
 .extern data_ov059_02211af8
 .extern data_ov059_02211b08
-.extern func_02028388
+.extern GamePhaseMetadata_GetByIndex
 .extern func_ov059_0220fd80
 .extern func_ov059_022104f0
 .extern func_ov059_02210d90
@@ -21,7 +21,7 @@ func_ov059_02210cf8:
     add r0, r1, r5, lsl #0x1
     ldrsh r0, [r0, #0x8]
     sub r0, r0, #0x1
-    bl func_02028388
+    bl GamePhaseMetadata_GetByIndex
     mov r7, r0
     mov r0, r6
     mov r1, r5

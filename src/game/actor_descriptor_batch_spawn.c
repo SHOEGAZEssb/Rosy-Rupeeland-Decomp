@@ -19,7 +19,7 @@ extern void ActorSpawnDescriptor_Init(
     s32, s32, s32, s32, s32, u16, u8, u8, u8, u8);
 extern void *GamePhaseRuntime_GetActorCollection(void *runtime, s32 category);
 extern void *ActorCollection_SpawnActorFromDescriptor(void *collection, const void *descriptor);
-extern void *func_02028508(s32 value);
+extern void *GamePhaseMetadata_GetFlagsBits12To15(s32 value);
 extern s32 GameWork_TestFlag(void *work, u32 flag);
 extern void GameWork_ClearFlag(void *work, u32 flag);
 extern void Type7Actor_SpawnFromRecord(s32 field00, s32 phase, s32 x, s32 y, s32 field04);
@@ -102,8 +102,8 @@ void ActorDescriptorBatch_RegisterAndSpawn(void *unused0, void *unused1,
                         x = *(s32 *)(actor + 0x1c) >> 12;
                         y = *(s32 *)(actor + 0x20) >> 12;
                     } else if (data_020e1964[2] > 0) {
-                        void *current = func_02028508(phase);
-                        void *saved = func_02028508(data_020e1964[3]);
+                        void *current = GamePhaseMetadata_GetFlagsBits12To15(phase);
+                        void *saved = GamePhaseMetadata_GetFlagsBits12To15(data_020e1964[3]);
                         if (data_020e1964[6] == 0 || current == 0 ||
                             saved == 0 || saved == current) {
                             u8 *actor = *(u8 **)(collection + 0x2e7c);

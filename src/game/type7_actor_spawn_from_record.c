@@ -18,7 +18,7 @@ extern "C" {
 #endif
 extern void *GamePhaseRuntime_GetActorCollection(void *runtime, s32 category);
 extern void *func_02025d14(void *state);
-extern u32 func_02028508(s32 phase);
+extern u32 GamePhaseMetadata_GetFlagsBits12To15(s32 phase);
 extern void ActorCollection_QueueActorForRemoval(void *collection, void *actor);
 extern void *ActorCollection_SpawnActorFromDescriptor(void *collection, const void *descriptor);
 extern void Actor_RefreshTerrainHeight(void *actor);
@@ -57,7 +57,7 @@ static void callActorVoidMethod(u8 *actor, u32 byteOffset)
 /*
  * Inputs are a record index, phase-like halfword, X/Y descriptor values, and a
  * fifth word supplied on the stack. Return zero when the record is absent or
- * its byte +0x55 rejects the phase mapping from func_02028508; otherwise spawn
+ * its byte +0x55 rejects the phase mapping from GamePhaseMetadata_GetFlagsBits12To15; otherwise spawn
  * a category-seven actor and return one.
  *
  * The record supplies descriptor words +0x02..+0x06, signed bytes +0x42/+0x43,
@@ -89,9 +89,9 @@ s32 Type7Actor_SpawnFromRecord(s32 recordIndex, s32 phase, s32 x, s32 y, s32 fie
 
     if (record == 0)
         return 0;
-    mappedPhase = func_02028508(phase);
+    mappedPhase = GamePhaseMetadata_GetFlagsBits12To15(phase);
     if (record[0x55] != 0 && mappedPhase != 0
-        && record[0x55] != func_02028508(phase))
+        && record[0x55] != GamePhaseMetadata_GetFlagsBits12To15(phase))
         return 0;
 
     recordFlags = *(u16 *)(record + 0x38);

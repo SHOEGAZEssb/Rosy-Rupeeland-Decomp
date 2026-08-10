@@ -6,7 +6,7 @@
     .extern VecFx32Object_Destroy
     .extern func_0200875c
     .extern GamePhaseRuntime_GetAuxiliaryOverlayObject
-    .extern func_0202839c
+    .extern GamePhaseMetadata_WriteAdjustedCoordinates
     .extern func_020afaec
     .extern func_020afd0c
     .extern func_020afd28
@@ -48,7 +48,7 @@ func_ov018_021fd5d0:
     ldr r1, [r0, #0xbc]
     add r0, sp, #0x8
     ldr r1, [r1, #0x0]
-    bl func_0202839c
+    bl GamePhaseMetadata_WriteAdjustedCoordinates
     ldr r0, L_021fd6b4
     ldr r0, [r0, #0x0]
     bl GamePhaseRuntime_GetAuxiliaryOverlayObject

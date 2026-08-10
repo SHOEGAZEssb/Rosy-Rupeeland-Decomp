@@ -14,7 +14,7 @@ extern void GXS_SetGraphicsMode(s32);
 extern void VecFx32Object_Destroy(void *);
 extern void func_0200875c(void *, void *);
 extern void *GamePhaseRuntime_GetAuxiliaryOverlayObject(void *);
-extern void func_0202839c(void *, void *);
+extern void GamePhaseMetadata_WriteAdjustedCoordinates(void *, void *);
 extern void func_020afd0c(void *, s32, s32, s32, s32);
 extern void func_020afd28(void *, void *, s32, s32, s32, s32);
 extern void *func_020afaec(void);
@@ -48,7 +48,7 @@ extern "C" void func_ov018_021fd5d0(void *state)
     GXS_SetGraphicsMode(5);
     *(volatile u16 *)0x0400100c =
         (*(volatile u16 *)0x0400100c & 0x43) | 0x4480;
-    func_0202839c(&request,
+    GamePhaseMetadata_WriteAdjustedCoordinates(&request,
                   FIELD(void *, FIELD(void *, (u8 *)global + 0x3000, 0xbc), 0));
     renderer = GamePhaseRuntime_GetAuxiliaryOverlayObject(global);
     func_ov056_0220f0ac(renderer, func_020afaec(),

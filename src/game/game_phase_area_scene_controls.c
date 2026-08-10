@@ -9,7 +9,7 @@ extern void GX_SetBankForSubBG(s32 bank);
 extern void GXS_SetGraphicsMode(s32 mode);
 extern void func_020aea7c(s32 value);
 extern void ActorCollection_SetEnabled(void *renderer, s32 enabled);
-extern s32 func_0202844c(GamePhaseAreaSceneConfig *config);
+extern s32 GamePhaseMetadata_IsAreaBehaviorPermitted(GamePhaseAreaSceneConfig *config);
 extern void func_ov056_0220ee78(void *object);
 extern void func_ov056_0220ee20(void *object, s32 enabled);
 #ifdef __cplusplus
@@ -58,7 +58,7 @@ void GamePhaseAreaScene_RestoreSubDisplay(GamePhaseAreaScene *self)
  * Propagate enabled to the embedded renderer, sub-renderer virtual method
  * 0x24, optional overlay, and secondaryActor virtual method 0x54. Config modes
  * 0/3 use the caller value but pass zero to secondaryActor; other modes only
- * force an enabled state when config flags bit 17 and func_0202844c both permit
+ * force an enabled state when config flags bit 17 and GamePhaseMetadata_IsAreaBehaviorPermitted both permit
  * it, otherwise all consumers receive zero. StateFlags bit 5 records the final
  * state. No value is returned; renderer/overlay state changes.
  */
@@ -71,7 +71,7 @@ void GamePhaseAreaScene_SetEnabled(GamePhaseAreaScene *self, s32 enabled)
         finalEnabled = enabled;
         secondaryActorValue = 0;
     } else if (enabled && (self->config->flags & 0x20000) &&
-               func_0202844c(self->config)) {
+               GamePhaseMetadata_IsAreaBehaviorPermitted(self->config)) {
         finalEnabled = 1;
         secondaryActorValue = 1;
     } else {

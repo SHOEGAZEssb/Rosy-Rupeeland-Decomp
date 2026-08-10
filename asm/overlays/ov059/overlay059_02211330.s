@@ -25,7 +25,7 @@
 .extern func_02008f2c
 .extern GamePhaseAreaScene_GetConfig
 .extern GamePhaseAreaScene_RegisterEnabledRegions
-.extern func_02028404
+.extern GamePhaseMetadata_GetTextResourceId
 .extern GraphicsSpriteGroup_AdvanceAnimations
 .extern GraphicsSpriteRenderer_ClearTextBuffer
 .extern func_ov059_02210c24
@@ -249,7 +249,7 @@ func_ov059_02211330:
     add r0, r0, #0x2000
     ldr r0, [r0, #0xfb8]
     bl GamePhaseAreaScene_GetConfig
-    bl func_02028404
+    bl GamePhaseMetadata_GetTextResourceId
     mov r1, r0, lsl #0x10
     add r0, r5, #0x40
     mov r1, r1, lsr #0x10
@@ -303,7 +303,7 @@ func_ov059_02211330:
     add r0, r0, #0x2000
     ldr r0, [r0, #0xfb8]
     bl GamePhaseAreaScene_GetConfig
-    bl func_02028404
+    bl GamePhaseMetadata_GetTextResourceId
     mov r1, r0, lsl #0x10
     add r0, r5, #0x40
     mov r1, r1, lsr #0x10

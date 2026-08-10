@@ -6,8 +6,8 @@
 .extern OverlayManager_GetGlobal
 .extern GamePhaseRuntime_InitScaledAreaCoordinates
 .extern GamePhaseAreaScene_SetOverlayObject
-.extern func_0202844c
-.extern func_0202852c
+.extern GamePhaseMetadata_IsAreaBehaviorPermitted
+.extern GamePhaseVariant_GetPointerTableEntry
 .extern func_ov054_0220e400
 .extern func_ov056_0220e79c
 .extern func_ov056_0220f054
@@ -49,7 +49,7 @@ L_02008c10:
     cmp r0, #0x1
     bne L_02008cd4
     mov r0, r5
-    bl func_0202844c
+    bl GamePhaseMetadata_IsAreaBehaviorPermitted
     cmp r0, #0x0
     beq L_02008cd4
     ldr r2, L_02008ce4
@@ -66,7 +66,7 @@ L_02008c10:
     mov r1, #0x1
     bl OverlayManager_LoadOverlay
     ldrsb r0, [r5, #0x4c]
-    bl func_0202852c
+    bl GamePhaseVariant_GetPointerTableEntry
     mov r7, r0
     ldr r0, L_02008cec
     ldr r1, L_02008cf0

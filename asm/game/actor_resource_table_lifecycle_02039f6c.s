@@ -8,7 +8,7 @@
 .extern data_021052fc
 .extern gActorInteractionResourceState
 .extern AnimationResource_Init
-.extern func_02028388
+.extern GamePhaseMetadata_GetByIndex
 .extern gHeapContext
 
     .global ActorFeedbackResources_Load
@@ -20,7 +20,7 @@ ActorFeedbackResources_Load: ; 0x02039f6c
     ldr r0, [r0, #0x24]
     ldr r0, [r0, #0x0]
     sub r0, r0, #0x1
-    bl func_02028388
+    bl GamePhaseMetadata_GetByIndex
     ldr r0, [r0, #0x40]
     ldr r1, .L_0203a03c
     mov r0, r0, lsl #0x14

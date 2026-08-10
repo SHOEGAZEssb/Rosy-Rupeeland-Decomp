@@ -11,7 +11,7 @@ extern const char gActorFeedbackAnimationResourceAllocationTag[];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *func_02028388(s32 index);
+extern void *GamePhaseMetadata_GetByIndex(s32 index);
 extern void *AnimationResource_Init(void *allocation, u16 first, u16 second, u16 third);
 #ifdef __cplusplus
 }
@@ -19,7 +19,7 @@ extern void *AnimationResource_Init(void *allocation, u16 first, u16 second, u16
 
 /*
  * Resolve the active table index from data_021052fc -> +0x24 -> +0x00 minus
- * one through func_02028388, sign-extend the low 12 bits of returned word
+ * one through GamePhaseMetadata_GetByIndex, sign-extend the low 12 bits of returned word
  * +0x40, and select its 0x78-byte record block in data_020e9fa0. Store that
  * block at singleton gActorInteractionResourceState +0x04 and allocate a 0x3c-byte array at
  * +0x08. For each of 15 eight-byte records, read signed halfwords +0/+2/+4;
@@ -35,7 +35,7 @@ void ActorFeedbackResources_Load(void)
     s32 i;
     void *state = *(void **)(*(u8 **)(data_021052fc + 0x24));
 
-    state = func_02028388(*(s32 *)state - 1);
+    state = GamePhaseMetadata_GetByIndex(*(s32 *)state - 1);
     selector = (*(s32 *)((u8 *)state + 0x40) << 20) >> 20;
     records = data_020e9fa0 + selector * 0x78;
     *(u8 **)(gActorInteractionResourceState + 4) = records;

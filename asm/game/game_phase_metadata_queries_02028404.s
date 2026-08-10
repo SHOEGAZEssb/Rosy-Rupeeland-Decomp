@@ -2,9 +2,9 @@
 .text
 .extern data_020d4864
 
-    .global func_02028404
-    .type func_02028404, @function
-func_02028404: ; 0x02028404
+    .global GamePhaseMetadata_GetTextResourceId
+    .type GamePhaseMetadata_GetTextResourceId, @function
+GamePhaseMetadata_GetTextResourceId: ; 0x02028404
     ldr r1, [r0, #0x40]
     mov r1, r1, lsl #0xc
     mov r1, r1, lsr #0x1e
@@ -24,5 +24,5 @@ func_02028404: ; 0x02028404
     ldrh r0, [r0, #0x0]
     bx lr
 .L_02028448: .word data_020d4864
-    .size func_02028404, . - func_02028404
+    .size GamePhaseMetadata_GetTextResourceId, . - GamePhaseMetadata_GetTextResourceId
 

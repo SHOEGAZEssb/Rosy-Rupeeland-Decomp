@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/type7_actor_spawn_from_record.c.
 .extern Type7Actor_FindSpawnRecord
-.extern func_02028508
+.extern GamePhaseMetadata_GetFlagsBits12To15
 .extern GamePhaseRuntime_GetActorCollection
 .extern ActorCollection_QueueActorForRemoval
 .extern ActorSpawnDescriptor_Init
@@ -34,13 +34,13 @@ Type7Actor_SpawnFromRecord: ; 0x0204bf9c
     moveq r0, #0x0
     beq .L_0204c410
     mov r0, r9
-    bl func_02028508
+    bl GamePhaseMetadata_GetFlagsBits12To15
     ldrb r1, [r4, #0x55]
     cmp r1, #0x0
     cmpne r0, #0x0
     beq .L_0204bff4
     mov r0, r9
-    bl func_02028508
+    bl GamePhaseMetadata_GetFlagsBits12To15
     ldrb r1, [r4, #0x55]
     cmp r1, r0
     movne r0, #0x0

@@ -8,7 +8,7 @@
 .extern func_02025e88
 .extern func_02025ed4
 .extern func_02026174
-.extern func_0202844c
+.extern GamePhaseMetadata_IsAreaBehaviorPermitted
 
     .global func_02025f20
     .type func_02025f20, @function
@@ -28,7 +28,7 @@ func_02025f20: ; 0x02025f20
     bic r1, r1, #0x1
     orr r1, r1, #0x1
     str r1, [r4, #0xc4]
-    bl func_0202844c
+    bl GamePhaseMetadata_IsAreaBehaviorPermitted
     ldr r1, [r4, #0xc4]
     mov r0, r0, lsl #0x1f
     bic r1, r1, #0x2

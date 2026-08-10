@@ -6,7 +6,7 @@
 .extern PaletteBuffer_Write
 .extern data_020f4e18
 .extern gMainBgPaletteBuffer
-.extern func_020284e0
+.extern GamePhaseGraphicsMetadata_GetByIndex
 .extern func_02070874
 .extern func_02070f80
 .extern func_02072048
@@ -18,7 +18,7 @@ func_02028684: ; 0x02028684
     stmdb sp!, {r4, lr}
     sub sp, sp, #0x10
     mov r0, #0xa
-    bl func_020284e0
+    bl GamePhaseGraphicsMetadata_GetByIndex
     mov r4, r0
     add r0, sp, #0x4
     bl GraphicsResourceSet_Init

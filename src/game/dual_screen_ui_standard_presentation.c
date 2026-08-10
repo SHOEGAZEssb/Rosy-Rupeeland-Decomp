@@ -37,8 +37,8 @@ extern void DebugSpriteText_Init(void *helper);
 extern void DebugSpriteText_Destroy(void *helper);
 extern void DebugSpriteText_SetTextResource(void *helper, u16 value);
 extern void DebugSpriteText_DrawCentered(void *helper, s32 x, s32 y);
-extern s32 func_0202844c(void *source);
-extern u16 func_02028404(void *source);
+extern s32 GamePhaseMetadata_IsAreaBehaviorPermitted(void *source);
+extern u16 GamePhaseMetadata_GetTextResourceId(void *source);
 extern void GraphicsSpriteRenderer_ClearTextBuffer(void *font);
 extern void GraphicsSpriteGroup_AdvanceAnimations(void *spriteOwner);
 #ifdef __cplusplus
@@ -52,7 +52,7 @@ void func_02026174(DualScreenUiStandardPresentation *self, void *source);
 /*
  * Construct the shared base, install this vtable, initialize helper c8, set
  * drawEnabledd0 and base flag bit 0, derive base flag bit 1 from
- * func_0202844c(source), create both fixed sprites, configure both extended
+ * GamePhaseMetadata_IsAreaBehaviorPermitted(source), create both fixed sprites, configure both extended
  * palettes, bind source through func_02026174, enable mask 0x1f, and return self.
  */
 DualScreenUiStandardPresentation *func_02025f20(
@@ -63,7 +63,7 @@ DualScreenUiStandardPresentation *func_02025f20(
     DebugSpriteText_Init(self->helperc8);
     self->drawEnabledd0 = 1;
     self->flagsc4 = (self->flagsc4 & ~3u) | 1u |
-                    ((u32)(func_0202844c(source) & 1) << 1);
+                    ((u32)(GamePhaseMetadata_IsAreaBehaviorPermitted(source) & 1) << 1);
     func_02025e88(self);
     func_02025ed4(self);
     func_02025d1c(self);
@@ -139,14 +139,14 @@ void func_0202613c(DualScreenUiStandardPresentation *self)
 }
 
 /*
- * Retain source, replace base flag bit 1 with func_0202844c(source), obtain the
- * source's recovered 16-bit value through func_02028404, and publish it to the
+ * Retain source, replace base flag bit 1 with GamePhaseMetadata_IsAreaBehaviorPermitted(source), obtain the
+ * source's recovered 16-bit value through GamePhaseMetadata_GetTextResourceId, and publish it to the
  * helper at offset 0xc8.
  */
 void func_02026174(DualScreenUiStandardPresentation *self, void *source)
 {
     self->sourceac = source;
     self->flagsc4 = (self->flagsc4 & ~2u) |
-                    ((u32)(func_0202844c(source) & 1) << 1);
-    DebugSpriteText_SetTextResource(self->helperc8, func_02028404(source));
+                    ((u32)(GamePhaseMetadata_IsAreaBehaviorPermitted(source) & 1) << 1);
+    DebugSpriteText_SetTextResource(self->helperc8, GamePhaseMetadata_GetTextResourceId(source));
 }

@@ -2,7 +2,7 @@
 /* Exact fallback; see src/overlays/ov018/overlay018_scene_helpers.c. */
     .extern data_020d4a60
     .extern data_ov018_021ffd08
-    .extern func_02028388
+    .extern GamePhaseMetadata_GetByIndex
     .extern GraphicsSpriteState_SetAnimationIndex
     .extern func_02092260
     .extern func_02092288
@@ -108,7 +108,7 @@ func_ov018_021fdc64:
     cmp r0, #0x0
     beq L_021fdccc
     sub r0, r0, #0x1
-    bl func_02028388
+    bl GamePhaseMetadata_GetByIndex
     ldrsb r1, [r0, #0x4d]
 L_021fdccc:
     ldr r0, [r4, #0x19c]

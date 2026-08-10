@@ -4,7 +4,7 @@
 .extern GamePhaseRuntime_GetActorCollection
 .extern GamePhaseRuntime_CreateSecondaryActorSubsystem
 .extern GamePhaseRuntime_DestroySecondaryActorSubsystem
-.extern func_02028388
+.extern GamePhaseMetadata_GetByIndex
 .extern ActorCollection_GetSpriteOwner
 .extern ActorCollection_SetActorScale
 .extern Actor_RebuildPrimaryAttachment
@@ -25,7 +25,7 @@ func_ov059_02210dfc:
     add r0, r0, r4, lsl #0x1
     ldrsh r0, [r0, #0x8]
     sub r0, r0, #0x1
-    bl func_02028388
+    bl GamePhaseMetadata_GetByIndex
     ldr r2, .L_02210f20
     mov r1, r0
     ldr r0, [r2, #0x0]

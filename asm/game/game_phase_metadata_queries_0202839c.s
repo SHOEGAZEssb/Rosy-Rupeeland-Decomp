@@ -1,14 +1,14 @@
 ; Matching retail form; see src/game/game_phase_metadata_queries.c.
 .text
-.extern data_020d4850
-.extern data_020d4854
+.extern gGamePhaseVariantCoordinateXOffsets
+.extern gGamePhaseVariantCoordinateYOffsets
 .extern data_020d8b30
 .extern data_020d8b32
 .extern data_020d8b33
 
-    .global func_0202839c
-    .type func_0202839c, @function
-func_0202839c: ; 0x0202839c
+    .global GamePhaseMetadata_WriteAdjustedCoordinates
+    .type GamePhaseMetadata_WriteAdjustedCoordinates, @function
+GamePhaseMetadata_WriteAdjustedCoordinates: ; 0x0202839c
     stmdb sp!, {r3, lr}
     sub r2, r1, #0x1
     mov r1, #0x58
@@ -32,8 +32,8 @@ func_0202839c: ; 0x0202839c
     ldmia sp!, {r3, pc}
 .L_020283f0: .word data_020d8b30
 .L_020283f4: .word data_020d8b32
-.L_020283f8: .word data_020d4850
+.L_020283f8: .word gGamePhaseVariantCoordinateXOffsets
 .L_020283fc: .word data_020d8b33
-.L_02028400: .word data_020d4854
-    .size func_0202839c, . - func_0202839c
+.L_02028400: .word gGamePhaseVariantCoordinateYOffsets
+    .size GamePhaseMetadata_WriteAdjustedCoordinates, . - GamePhaseMetadata_WriteAdjustedCoordinates
 

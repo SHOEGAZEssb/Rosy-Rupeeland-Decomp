@@ -12,7 +12,7 @@ extern void *data_021052fc;
 extern "C" {
 #endif
 extern void *GamePhaseRuntime_GetActorCollection(void *context, s32 index);
-extern void *func_02028388(s32 index);
+extern void *GamePhaseMetadata_GetByIndex(s32 index);
 extern void *ActorCollection_SpawnActorFromDescriptor(void *manager, const void *descriptor);
 extern void ActorSpawnDescriptor_Init(void *destination, ...);
 extern void **GridEffectActorRegistry_AcquireSlot(void);
@@ -69,7 +69,7 @@ void *GridEffectActor_SpawnCore(const void *position, void *source, s16 timer)
 
     void *records = FIELD(void *, data_021052fc, 0x24);
     s32 last_index = FIELD(s32, records, 0) - 1;
-    void *record = func_02028388(last_index);
+    void *record = GamePhaseMetadata_GetByIndex(last_index);
     if ((FIELD(u32, record, 0x40) >> 18 & 3) == 3)
         FIELD(u32, descriptor, 0x28) |= 1;
 

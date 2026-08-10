@@ -9,7 +9,7 @@
     .extern data_021052fc
     .extern data_ov013_021febb4
     .extern data_ov013_021fec18
-    .extern func_0202844c
+    .extern GamePhaseMetadata_IsAreaBehaviorPermitted
     .extern func_02070f34
     .extern func_02072048
     .extern func_02073e48
@@ -225,7 +225,7 @@ L_021fd5cc:
     ldr r0, [r0, #0x0]
     add r0, r0, #0x3000
     ldr r0, [r0, #0xbc]
-    bl func_0202844c
+    bl GamePhaseMetadata_IsAreaBehaviorPermitted
     cmp r0, #0x0
     bne L_021fd5f4
     mov r0, r4

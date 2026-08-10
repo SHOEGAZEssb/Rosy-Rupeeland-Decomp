@@ -47,7 +47,7 @@ extern void DebugSpriteText_Init(void *helper);
 extern void DebugSpriteText_Destroy(void *helper);
 extern void DebugSpriteText_SetTextResource(void *helper, u16 value);
 extern void DebugSpriteText_DrawCentered(void *helper, s32 x, s32 y);
-extern u16 func_02028404(void *source);
+extern u16 GamePhaseMetadata_GetTextResourceId(void *source);
 extern void GraphicsSpriteRenderer_ClearTextBuffer(void *font);
 extern void GraphicsSpriteGroup_AdvanceAnimations(void *spriteOwner);
 extern void *AnimationBinding_Init(void *, void *, s32, s32, s32, s32);
@@ -62,7 +62,7 @@ void func_0202640c(DualScreenUiIndexedIconPresentation *self, s32 enabled);
  * Construct the shared base, install this vtable, initialize helper c8, clear
  * iconWrapperd0, set drawEnabledd4 and base flag bits 0/1, create the two base
  * sprites, configure the first extended palette, flush the debug-font owner,
- * and publish func_02028404(source) to helper c8.  Allocate a 0x14-byte wrapper
+ * and publish GamePhaseMetadata_GetTextResourceId(source) to helper c8.  Allocate a 0x14-byte wrapper
  * and construct it with three halfword IDs selected at byte offset
  * (s8)source[0x4c]*30 in data_020d4742/44/46 and trailing mode 2.  Configure its
  * sprite at (48,16), byte 0x3a=0, halfword 0x28=1000, enable the subclass, and
@@ -86,7 +86,7 @@ DualScreenUiIndexedIconPresentation *func_020261bc(
     func_02025ed4(self);
     func_02025d1c(self);
     GraphicsSpriteRenderer_ClearTextBuffer(gDebugFont);
-    DebugSpriteText_SetTextResource(self->helperc8, func_02028404(source));
+    DebugSpriteText_SetTextResource(self->helperc8, GamePhaseMetadata_GetTextResourceId(source));
 
     offset = (s8)source[0x4c] * 30;
     first = *(const u16 *)(data_020d4742 + offset);

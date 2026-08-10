@@ -25,35 +25,35 @@ typedef char GamePhaseMetadataSizeCheck[
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern const GamePhaseMetadata data_020d8ae4[];
-extern const s32 data_020d4850[];
-extern const s32 data_020d4854[];
+extern const GamePhaseMetadata gGamePhaseMetadataTable[];
+extern const s32 gGamePhaseVariantCoordinateXOffsets[];
+extern const s32 gGamePhaseVariantCoordinateYOffsets[];
 extern const u8 data_020d4860[];
 extern const u8 data_020d4864[];
-extern const u8 data_020d4640[];
-extern const u8 data_020d4740[];
+extern const u8 gGamePhaseGraphicsMetadataTable[];
+extern const u8 gGamePhaseVariantMetadataTable[];
 #ifdef __cplusplus
 }
 #endif
 
 /* Return the indexed 0x58-byte game-phase metadata record. */
-const GamePhaseMetadata *func_02028388(s32 index)
+const GamePhaseMetadata *GamePhaseMetadata_GetByIndex(s32 index)
 {
-    return &data_020d8ae4[index];
+    return &gGamePhaseMetadataTable[index];
 }
 
 /*
  * For a one-based phase ID, derive two coordinates by subtracting the
- * variant-indexed entries in data_020d4850/54 from record bytes 0x4e/0x4f.
+ * variant-indexed entries in gGamePhaseVariantCoordinateXOffsets/54 from record bytes 0x4e/0x4f.
  * Only destination offsets 4 and 8 are modified.
  */
-void func_0202839c(void *destination, s32 phaseId)
+void GamePhaseMetadata_WriteAdjustedCoordinates(void *destination, s32 phaseId)
 {
-    const GamePhaseMetadata *record = &data_020d8ae4[phaseId - 1];
+    const GamePhaseMetadata *record = &gGamePhaseMetadataTable[phaseId - 1];
     *(s32 *)((u8 *)destination + 4) =
-        record->coordinateX_4e - data_020d4850[record->variant_4c * 6];
+        record->coordinateX_4e - gGamePhaseVariantCoordinateXOffsets[record->variant_4c * 6];
     *(s32 *)((u8 *)destination + 8) =
-        record->coordinateY_4f - data_020d4854[record->variant_4c * 6];
+        record->coordinateY_4f - gGamePhaseVariantCoordinateYOffsets[record->variant_4c * 6];
 }
 
 /*
@@ -61,7 +61,7 @@ void func_0202839c(void *destination, s32 phaseId)
  * the first halfword through the variant's 0x18-byte pointer-table entry;
  * other modes return offset 0x44, replacing -1 with the fixed value 0x9b.
  */
-u16 func_02028404(const GamePhaseMetadata *record)
+u16 GamePhaseMetadata_GetTextResourceId(const GamePhaseMetadata *record)
 {
     if (((record->flags_40 >> 18) & 3) == 1) {
         const u8 *entry = data_020d4864 + record->variant_4c * 0x18;
@@ -75,7 +75,7 @@ u16 func_02028404(const GamePhaseMetadata *record)
  * always permitted. Otherwise a nonnegative variant requires the first flag
  * at pointed-record offset 0x1e to be set and the second at 0x20 to be clear.
  */
-s32 func_0202844c(const GamePhaseMetadata *record)
+s32 GamePhaseMetadata_IsAreaBehaviorPermitted(const GamePhaseMetadata *record)
 {
     const u8 *entry;
     const u8 *pointed;
@@ -94,25 +94,25 @@ s32 func_0202844c(const GamePhaseMetadata *record)
 }
 
 /* Return an indexed 0x10-byte graphics/resource metadata record. */
-const u8 *func_020284e0(s32 index)
+const u8 *GamePhaseGraphicsMetadata_GetByIndex(s32 index)
 {
-    return data_020d4640 + index * 0x10;
+    return gGamePhaseGraphicsMetadataTable + index * 0x10;
 }
 
 /* Return the 0x1e-byte record selected by phase metadata offset 0x4c. */
-const u8 *func_020284f0(const GamePhaseMetadata *record)
+const u8 *GamePhaseVariantMetadata_GetForPhase(const GamePhaseMetadata *record)
 {
-    return data_020d4740 + record->variant_4c * 0x1e;
+    return gGamePhaseVariantMetadataTable + record->variant_4c * 0x1e;
 }
 
 /* Extract and sign-extend phase flag bits 12..15 for a one-based phase ID. */
-s32 func_02028508(s32 phaseId)
+s32 GamePhaseMetadata_GetFlagsBits12To15(s32 phaseId)
 {
-    return (s32)(data_020d8ae4[phaseId - 1].flags_40 << 16) >> 28;
+    return (s32)(gGamePhaseMetadataTable[phaseId - 1].flags_40 << 16) >> 28;
 }
 
 /* Return the pointer stored at variant*0x18 in data_020d4860. */
-const void *func_0202852c(s32 variant)
+const void *GamePhaseVariant_GetPointerTableEntry(s32 variant)
 {
     return *(const void *const *)(data_020d4860 + variant * 0x18);
 }

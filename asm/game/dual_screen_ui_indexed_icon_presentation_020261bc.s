@@ -13,7 +13,7 @@
 .extern func_02025d1c
 .extern func_02025e88
 .extern func_02025ed4
-.extern func_02028404
+.extern GamePhaseMetadata_GetTextResourceId
 .extern GraphicsSpriteRenderer_ClearTextBuffer
 .extern gDebugFont
 .extern gHeapContext
@@ -48,7 +48,7 @@ func_020261bc: ; 0x020261bc
     ldr r0, [r0, #0x0]
     bl GraphicsSpriteRenderer_ClearTextBuffer
     mov r0, r4
-    bl func_02028404
+    bl GamePhaseMetadata_GetTextResourceId
     mov r0, r0, lsl #0x10
     mov r1, r0, lsr #0x10
     add r0, r5, #0xc8

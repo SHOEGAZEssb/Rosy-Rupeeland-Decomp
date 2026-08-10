@@ -4,7 +4,7 @@
 .extern Heap_Alloc
 .extern GamePhaseApplyScene_Init
 .extern GamePhaseScriptVm_Pop
-.extern func_02028388
+.extern GamePhaseMetadata_GetByIndex
 .extern gHeapContext
 .global GamePhaseActorScriptVm_CreateApplyScene
 GamePhaseActorScriptVm_CreateApplyScene:
@@ -26,7 +26,7 @@ GamePhaseActorScriptVm_CreateApplyScene:
     movs r4, r0
     beq L_02015e30
     sub r0, r5, #1
-    bl func_02028388
+    bl GamePhaseMetadata_GetByIndex
     mov r1, r0
     mov r12, #0
     mov r0, r4

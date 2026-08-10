@@ -34,7 +34,7 @@ extern void func_020954f4(void *);
 extern void func_02095940(void *);
 extern void func_020958d8(void *);
 extern void func_02095988(void *, s32);
-extern void func_0202844c(void *);
+extern void GamePhaseMetadata_IsAreaBehaviorPermitted(void *);
 extern void func_ov013_021fda28(void *, s32);
 extern void func_ov013_021fdb50(void *, s32);
 extern void GraphicsSpriteRenderer_ClearTextBuffer(void *);

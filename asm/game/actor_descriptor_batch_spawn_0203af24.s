@@ -6,7 +6,7 @@
 .extern data_021052fc
 .extern gActorCategory1DescriptorTable
 .extern GamePhaseRuntime_GetActorCollection
-.extern func_02028508
+.extern GamePhaseMetadata_GetFlagsBits12To15
 .extern ActorCollection_SpawnActorFromDescriptor
 .extern ActorSpawnDescriptor_Init
 .extern Type7Actor_SpawnFromRecord
@@ -142,10 +142,10 @@ ActorDescriptorBatch_RegisterAndSpawn: ; 0x0203af24
     add r0, r0, #0x3000
     ldr r0, [r0, #0xbc]
     ldr r0, [r0, #0x0]
-    bl func_02028508
+    bl GamePhaseMetadata_GetFlagsBits12To15
     mov r4, r0
     ldr r0, [r5, #0xc]
-    bl func_02028508
+    bl GamePhaseMetadata_GetFlagsBits12To15
     ldr r1, [r5, #0x18]
     cmp r1, #0x0
     cmpne r4, #0x0

@@ -7,7 +7,7 @@
 .extern GamePhaseVisualEffect_Configure
 .extern GamePhaseVisualEffect_SetBaseOffset
 .extern func_0201e250
-.extern func_020284e0
+.extern GamePhaseGraphicsMetadata_GetByIndex
 
 .global func_0201ff2c
     .type func_0201ff2c, @function
@@ -22,7 +22,7 @@ func_0201ff2c: ; 0x0201ff2c
     str r0, [r5, #0x0]
     str r6, [r5, #0x8]
     ldrsh r0, [r4, #0x12]
-    bl func_020284e0
+    bl GamePhaseGraphicsMetadata_GetByIndex
     str r0, [r5, #0x10]
     ldr r0, [r4, #0x34]
     mov r2, #0x0

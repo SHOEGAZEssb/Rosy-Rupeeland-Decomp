@@ -32,7 +32,7 @@ extern void *gMainBgPaletteBuffer;
 extern void func_0201e250(void *);
 extern void func_0201e28c(void *);
 extern void func_0201ded4(void *, void *);
-extern const u8 *func_020284e0(s32);
+extern const u8 *GamePhaseGraphicsMetadata_GetByIndex(s32);
 extern void *ActorMotionAreaFollower_GetPosition(void *);
 extern void VecFx32Object_InitCopy(void *, const void *);
 extern void func_02008740(void *, const void *);
@@ -115,7 +115,7 @@ void func_02028630(void *target)
 void func_02028684(MainBg1FollowPresentation *self)
 {
     const BgResourceRecord *record =
-        (const BgResourceRecord *)func_020284e0(10);
+        (const BgResourceRecord *)GamePhaseGraphicsMetadata_GetByIndex(10);
     GraphicsResourceSet resources;
     u16 control;
     u32 display;

@@ -2,7 +2,7 @@
 ; Matching fallback for the portable implementation in src/overlays/ov059/overlay059_recovery.c.
 .extern data_021052fc
 .extern DebugSpriteText_SetTextResource
-.extern func_02028404
+.extern GamePhaseMetadata_GetTextResourceId
 .extern func_ov059_02210c24
 .extern func_ov059_02210c60
 .extern func_ov059_02211870
@@ -45,7 +45,7 @@ func_ov059_02211920:
     ldr r0, [r0, #0x0]
     add r0, r0, #0x3000
     ldr r0, [r0, #0xbc]
-    bl func_02028404
+    bl GamePhaseMetadata_GetTextResourceId
     mov r0, r0, lsl #0x10
     mov r1, r0, lsr #0x10
     add r0, r5, #0x40

@@ -31,7 +31,7 @@ extern void GamePhaseRuntime_Configure(void *phase, const GamePhaseConfig *confi
                           s32 value2C, s32 value30, int unknown);
 extern void *GamePhaseResumeScene_Init(void *object, int unknown);
 extern void *GamePhaseCurrencyHud_Init(void *context);
-extern const GamePhaseConfig *func_02028388(int phaseIndex);
+extern const GamePhaseConfig *GamePhaseMetadata_GetByIndex(int phaseIndex);
 
 extern void DisplayBrightness_StartMainTransition(int mode, int duration);
 extern void DisplayBrightness_StartSubTransition(int mode, int duration);
@@ -102,7 +102,7 @@ void GamePhase_Start(int phaseId, int resetGameWork)
     }
 
     /* Phase IDs are one-based while the configuration table is zero-based. */
-    config = func_02028388(phaseId - 1);
+    config = GamePhaseMetadata_GetByIndex(phaseId - 1);
     GamePhaseRuntime_Configure(phase, config, config->value2C, config->value30, 0);
 
     companion = Heap_Alloc(0x28, gGamePhaseInitialData.phaseTag, -4,

@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/game_phase_area_scene_controls.c.
 .text
-.extern func_0202844c
+.extern GamePhaseMetadata_IsAreaBehaviorPermitted
 .extern ActorCollection_SetEnabled
 .extern func_ov056_0220ee20
 
@@ -54,7 +54,7 @@ L_0201233c:
     mov r1, r1, lsl #0xe
     movs r1, r1, asr #0x1f
     beq L_020123cc
-    bl func_0202844c
+    bl GamePhaseMetadata_IsAreaBehaviorPermitted
     cmp r0, #0x0
     beq L_020123cc
     add r0, r5, #0x8

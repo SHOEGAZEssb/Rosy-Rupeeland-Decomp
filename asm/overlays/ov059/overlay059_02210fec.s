@@ -13,7 +13,7 @@
 .extern DebugSpriteText_Init
 .extern SplineMover_Init
 .extern GamePhaseCurrencyHud_SetVisible
-.extern func_020284f0
+.extern GamePhaseVariantMetadata_GetForPhase
 .extern func_ov059_022106fc
 .extern func_ov059_022109bc
 .extern func_ov059_022109f0
@@ -45,7 +45,7 @@ func_ov059_02210fec:
     str r1, [r4, #0x50]
     bl SplineMover_Init
     mov r0, r5
-    bl func_020284f0
+    bl GamePhaseVariantMetadata_GetForPhase
     str r0, [r4, #0x30]
     ldr r1, [r5, #0x0]
     bl func_ov059_022109bc

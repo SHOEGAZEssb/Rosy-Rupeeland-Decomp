@@ -7,7 +7,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *func_02028388(s32);
+extern void *GamePhaseMetadata_GetByIndex(s32);
 #ifdef __cplusplus
 }
 #endif
@@ -33,7 +33,7 @@ extern "C" void func_ov018_021fe184(void *destination, const void *source)
  */
 extern "C" s32 func_ov018_021fe19c(void *state, const void *descriptor)
 {
-    void *entry = func_02028388(FIELD(s16, descriptor, 2) - 1);
+    void *entry = GamePhaseMetadata_GetByIndex(FIELD(s16, descriptor, 2) - 1);
     s32 delta = FIELD(s8, entry, 0x4e) - FIELD(s32, state, 0x1a0);
     return FIELD(s16, descriptor, 0xc) + (delta * 0x3c0) / 2;
 }
@@ -46,7 +46,7 @@ extern "C" s32 func_ov018_021fe19c(void *state, const void *descriptor)
  */
 extern "C" s32 func_ov018_021fe1d8(void *state, const void *descriptor)
 {
-    void *entry = func_02028388(FIELD(s16, descriptor, 2) - 1);
+    void *entry = GamePhaseMetadata_GetByIndex(FIELD(s16, descriptor, 2) - 1);
     s32 delta = FIELD(s8, entry, 0x4f) - FIELD(s32, state, 0x1a4);
     return FIELD(s16, descriptor, 0xe) + (delta * 0x2c0) / 2;
 }

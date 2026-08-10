@@ -12,7 +12,7 @@
 .extern GamePhaseTouchPrompt_SetEnabled
 .extern func_0201df64
 .extern func_0201e0ec
-.extern func_02028388
+.extern GamePhaseMetadata_GetByIndex
 .extern ActorDerivedType1_ResetToBaseState
 .extern ActorDerivedType1_GetSingletonObject
 .extern GridEffectActorRegistry_BroadcastStateValue0
@@ -134,7 +134,7 @@ func_ov074_0220fda8:
     ldr r0, [r0, #0xbc]
     add r0, r0, r1, lsl #0x1
     ldrsh r0, [r0, #0x14]
-    bl func_02028388
+    bl GamePhaseMetadata_GetByIndex
     ldr r1, .L_0220fff0
     ldrsb r2, [r0, #0x4c]
     ldr r0, [r1, #0x0]

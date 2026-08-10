@@ -10,7 +10,7 @@ extern const s8 data_ov018_021ffd08[];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *func_02028388(s32);
+extern void *GamePhaseMetadata_GetByIndex(s32);
 extern void GraphicsSpriteState_SetAnimationIndex(void *, s32);
 extern void func_02092260(void *, s32);
 extern void func_02092288(void *, s32);
@@ -99,6 +99,6 @@ extern "C" s32 func_ov018_021fdc64(void *state)
     s32 value = -1;
 
     if (entry != 0)
-        value = FIELD(s8, func_02028388((s32)entry - 1), 0x4d);
+        value = FIELD(s8, GamePhaseMetadata_GetByIndex((s32)entry - 1), 0x4d);
     return value == FIELD(s32, state, 0x19c);
 }

@@ -4,9 +4,9 @@
 .extern data_020d4864
 .extern gGameWork
 
-    .global func_0202844c
-    .type func_0202844c, @function
-func_0202844c: ; 0x0202844c
+    .global GamePhaseMetadata_IsAreaBehaviorPermitted
+    .type GamePhaseMetadata_IsAreaBehaviorPermitted, @function
+GamePhaseMetadata_IsAreaBehaviorPermitted: ; 0x0202844c
     stmdb sp!, {r3, r4, r5, lr}
     ldr r1, [r0, #0x40]
     mov r3, #0x0
@@ -46,5 +46,5 @@ func_0202844c: ; 0x0202844c
     ldmia sp!, {r3, r4, r5, pc}
 .L_020284d8: .word data_020d4864
 .L_020284dc: .word gGameWork
-    .size func_0202844c, . - func_0202844c
+    .size GamePhaseMetadata_IsAreaBehaviorPermitted, . - GamePhaseMetadata_IsAreaBehaviorPermitted
 

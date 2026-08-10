@@ -13,7 +13,7 @@ extern void *data_021052fc;
 extern "C" {
 #endif
 extern void *GamePhaseRuntime_GetActorCollection(void *context, s32 index);
-extern void *func_02028388(s32 index);
+extern void *GamePhaseMetadata_GetByIndex(s32 index);
 extern void *ActorCollection_SpawnActorFromDescriptor(void *manager, const void *descriptor);
 extern void ActorSpawnDescriptor_Init(void *destination, ...);
 #ifdef __cplusplus
@@ -87,7 +87,7 @@ void *TrackedResourceActor_SpawnFromKey(s32 key, const void *position, u32 argum
                   0, 0, 0, 0, 0xff, 0, 0, 0, 0);
 
     void *records = FIELD(void *, data_021052fc, 0x24);
-    void *latest = func_02028388(FIELD(s32, records, 0) - 1);
+    void *latest = GamePhaseMetadata_GetByIndex(FIELD(s32, records, 0) - 1);
     if ((FIELD(u32, latest, 0x40) >> 18 & 3) == 3)
         FIELD(u32, descriptor, 0x28) |= 1;
 

@@ -2,7 +2,7 @@
 .extern gTrackedResourceActorRecordTable
 .extern data_021052fc
 .extern GamePhaseRuntime_GetActorCollection
-.extern func_02028388
+.extern GamePhaseMetadata_GetByIndex
 .extern ActorCollection_SpawnActorFromDescriptor
 .extern ActorSpawnDescriptor_Init
 .text
@@ -77,7 +77,7 @@ TrackedResourceActor_SpawnFromKey: ; 0x02050078
     ldr r0, [r0, #0x24]
     ldr r0, [r0, #0x0]
     sub r0, r0, #0x1
-    bl func_02028388
+    bl GamePhaseMetadata_GetByIndex
     ldr r0, [r0, #0x40]
     mov r1, #0x1
     mov r0, r0, lsl #0xc

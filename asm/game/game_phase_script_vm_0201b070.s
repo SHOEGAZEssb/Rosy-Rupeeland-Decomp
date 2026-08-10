@@ -2,14 +2,14 @@
 .text
 .extern GamePhaseScriptVm_Pop
 .extern GamePhaseScriptVm_SetResult
-.extern func_02028388
+.extern GamePhaseMetadata_GetByIndex
 .global GamePhaseActorScriptVm_GetOneBasedPhaseRecordByte4c
 GamePhaseActorScriptVm_GetOneBasedPhaseRecordByte4c: ; 0x0201b070
     stmdb sp!, {r4, lr}
     mov r4, r0
     bl GamePhaseScriptVm_Pop
     sub r0, r0, #0x1
-    bl func_02028388
+    bl GamePhaseMetadata_GetByIndex
     ldrsb r1, [r0, #0x4c]
     mov r0, r4
     bl GamePhaseScriptVm_SetResult

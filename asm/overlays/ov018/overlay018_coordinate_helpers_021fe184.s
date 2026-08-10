@@ -1,6 +1,6 @@
     .text
 /* Exact fallback; see src/overlays/ov018/overlay018_coordinate_helpers.c. */
-    .extern func_02028388
+    .extern GamePhaseMetadata_GetByIndex
 .global func_ov018_021fe184
 func_ov018_021fe184:
     cmp r1, r0
@@ -18,7 +18,7 @@ func_ov018_021fe19c:
     ldrsh r1, [r4, #0x2]
     mov r5, r0
     sub r0, r1, #0x1
-    bl func_02028388
+    bl GamePhaseMetadata_GetByIndex
     ldrsb r2, [r0, #0x4e]
     ldr r1, [r5, #0x1a0]
     mov r0, #0x3c0
@@ -37,7 +37,7 @@ func_ov018_021fe1d8:
     ldrsh r1, [r4, #0x2]
     mov r5, r0
     sub r0, r1, #0x1
-    bl func_02028388
+    bl GamePhaseMetadata_GetByIndex
     ldrsb r2, [r0, #0x4f]
     ldr r1, [r5, #0x1a4]
     mov r0, #0x2c0

@@ -10,7 +10,7 @@
 .extern AnimationResource_Init
 .extern UtilAnimationResource_Init
 .extern GamePhaseRuntime_GetActorCollection
-.extern func_02028388
+.extern GamePhaseMetadata_GetByIndex
 .extern ActorCollection_GetSpriteOwner
 .extern func_ov077_02212d04
 .extern func_ov077_02213768
@@ -30,7 +30,7 @@ func_ov077_02213490:
     ldr r0, [r0, #0x24]
     ldr r0, [r0, #0x0]
     sub r0, r0, #0x1
-    bl func_02028388
+    bl GamePhaseMetadata_GetByIndex
     ldr r0, [r0, #0x40]
     ldr r1, .L_02213750
     mov r0, r0, lsl #0xc

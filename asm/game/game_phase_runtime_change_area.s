@@ -20,7 +20,7 @@
 .extern GamePhaseAreaScene_SetOverlayObject
 .extern func_02020060
 .extern func_02026174
-.extern func_02028388
+.extern GamePhaseMetadata_GetByIndex
 .extern ActorCollection_DispatchEventToActors
 .extern func_020be8c0
 .extern func_020beae4
@@ -46,7 +46,7 @@ GamePhaseRuntime_ChangeToNeighborArea:
     moveq r0, #0x0
     beq L_02007ef8
     mov r0, r5
-    bl func_02028388
+    bl GamePhaseMetadata_GetByIndex
     add r1, r7, #0x3000
     str r0, [r1, #0xbc]
     add r0, sp, #0x1c
