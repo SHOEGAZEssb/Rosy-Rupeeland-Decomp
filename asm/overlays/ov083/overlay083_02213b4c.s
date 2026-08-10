@@ -1,6 +1,6 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov083/overlay083_recovery.c.
-.extern func_0204404c
+.extern ActorExtendedLinkSource_ApplyContactResponse
 .extern func_ov083_02213bd4
 
 .global func_ov083_02213b4c
@@ -39,6 +39,6 @@ func_ov083_02213b4c:
     mov r0, r6
     mov r1, r5
     mov r2, r4
-    bl func_0204404c
+    bl ActorExtendedLinkSource_ApplyContactResponse
     ldmia sp!, {r4, r5, r6, pc}
 .size func_ov083_02213b4c, . - func_ov083_02213b4c

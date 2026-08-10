@@ -11,13 +11,13 @@ extern s32 ActorExtendedType2_ApplyContactResponse(void *actor, void *other, s32
 #endif
 
 /* Accept no meaningful input or state changes and return the fixed value 0x20000. */
-s32 func_02044044(void)
+s32 ActorExtendedLinkSource_GetConstant20000(void)
 {
     return 0x20000;
 }
 
 /* Forward all inputs to ActorExtendedType2_ApplyContactResponse and return its collision-response result. */
-s32 func_0204404c(void *self, void *other, s32 context)
+s32 ActorExtendedLinkSource_ApplyContactResponse(void *self, void *other, s32 context)
 {
     return ActorExtendedType2_ApplyContactResponse(self, other, context);
 }
@@ -27,7 +27,7 @@ s32 func_0204404c(void *self, void *other, s32 context)
  * 0x100 at +0xd0, and set object +0x54 halfwords +0x32/+0x34 to 0x100.
  * Returns no value; link, actor, and presentation state change.
  */
-void func_02044058(void *self, void *partner)
+void ActorExtendedLinkSource_LinkPartner(void *self, void *partner)
 {
     u8 *actor = (u8 *)self;
     u8 *object;
@@ -40,13 +40,13 @@ void func_02044058(void *self, void *partner)
 }
 
 /* Clear class flag bit zero at actor +0x29c; return no value. */
-void func_02044088(void *self)
+void ActorExtendedLinkSource_ClearPartnerLinkedFlag(void *self)
 {
     *(u32 *)((u8 *)self + 0x29c) &= ~1u;
 }
 
 /* Clear class flag bit one at actor +0x29c; return no value. */
-void func_02044098(void *self)
+void ActorExtendedLinkSource_ClearRuntimeFlag2(void *self)
 {
     *(u32 *)((u8 *)self + 0x29c) &= ~2u;
 }
@@ -55,7 +55,7 @@ void func_02044098(void *self)
  * Return one exactly when signed state +0xd6 is not 16 and class flag bit zero
  * at +0x29c is clear; otherwise return zero. No state or hardware changes occur.
  */
-s32 func_020440a8(const void *self)
+s32 ActorExtendedLinkSource_IsPartnerLinkAvailable(const void *self)
 {
     const u8 *actor = (const u8 *)self;
     return *(const s16 *)(actor + 0xd6) != 16

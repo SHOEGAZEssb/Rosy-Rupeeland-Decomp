@@ -5,7 +5,7 @@
 .extern data_ov075_02217350
 .extern func_020050a4
 .extern ActorExtendedLinkSource_UpdateFrame
-.extern func_02044088
+.extern ActorExtendedLinkSource_ClearPartnerLinkedFlag
 .extern func_0204cfa4
 .extern func_ov075_022152ac
 .extern func_ov075_022154e8
@@ -37,7 +37,7 @@ func_ov075_02215cf8:
     cmp r3, #0x0
     bne .L_02215d68
     mov r0, r4
-    bl func_02044088
+    bl ActorExtendedLinkSource_ClearPartnerLinkedFlag
     add r0, r4, #0x200
     mov r1, #0x0
     strh r1, [r0, #0xa4]
@@ -107,7 +107,7 @@ func_ov075_02215cf8:
     tst r0, #0x100
     beq .L_02215e74
     mov r0, r4
-    bl func_02044088
+    bl ActorExtendedLinkSource_ClearPartnerLinkedFlag
     add r0, r4, #0x200
     mov r1, #0x0
     strh r1, [r0, #0xa4]

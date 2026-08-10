@@ -1,12 +1,12 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov083/overlay083_recovery.c.
-.extern func_02044098
+.extern ActorExtendedLinkSource_ClearRuntimeFlag2
 
 .global func_ov083_02213c3c
 func_ov083_02213c3c:
     stmdb sp!, {r4, lr}
     mov r4, r0
-    bl func_02044098
+    bl ActorExtendedLinkSource_ClearRuntimeFlag2
     add r0, r4, #0x200
     mov r1, #0x20
     strh r1, [r0, #0xb2]

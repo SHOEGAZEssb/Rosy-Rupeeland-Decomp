@@ -1,12 +1,12 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov076/overlay076_recovery.c.
-.extern func_02044088
+.extern ActorExtendedLinkSource_ClearPartnerLinkedFlag
 
 .global func_ov076_02214064
 func_ov076_02214064:
     stmdb sp!, {r4, lr}
     mov r4, r0
-    bl func_02044088
+    bl ActorExtendedLinkSource_ClearPartnerLinkedFlag
     ldr r0, [r4, #0x14]
     orr r1, r0, #0x10
     bic r0, r1, #0x2

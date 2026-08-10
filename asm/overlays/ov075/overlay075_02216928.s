@@ -10,7 +10,7 @@
 .extern func_020064b8
 .extern func_02032370
 .extern func_020417dc
-.extern func_02044058
+.extern ActorExtendedLinkSource_LinkPartner
 .extern func_020befec
 .extern func_ov075_02214898
 .extern func_ov075_022154e8
@@ -130,7 +130,7 @@ func_ov075_02216928:
     bne .L_02216af0
     ldr r1, [r4, #0x2a8]
     mov r0, r4
-    bl func_02044058
+    bl ActorExtendedLinkSource_LinkPartner
     ldr r0, [r4, #0xd0]
     orr r0, r0, #0x1000
     str r0, [r4, #0xd0]

@@ -2,7 +2,7 @@
 ; Matching fallback for the portable implementation in src/overlays/ov075/overlay075_recovery.c.
 .extern data_ov075_02217290
 .extern func_020050a4
-.extern func_02044058
+.extern ActorExtendedLinkSource_LinkPartner
 .extern func_ov075_0221625c
 
 .global func_ov075_02216174
@@ -17,7 +17,7 @@ func_ov075_02216174:
     beq .L_022161d0
     bic r3, r3, #0x2
     strh r3, [r2, #0xa2]
-    bl func_02044058
+    bl ActorExtendedLinkSource_LinkPartner
     mov r0, #0x0
     str r0, [r5, #0x2a8]
     add r0, r5, #0x200
