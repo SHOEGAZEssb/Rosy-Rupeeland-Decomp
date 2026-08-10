@@ -1,25 +1,33 @@
 /*
- * Recovered overlay 90 actor-derived lifecycle, behavior, and interaction subsystem.
+ * Recovered overlay 90 title-cinematic actor subsystem.
  *
- * The overlay coordinates actor construction and teardown, extensive state-driven
- * updates, interaction and presentation effects, resource ownership, transforms,
- * and compact virtual or offset-field helpers. Unconfirmed members retain
- * address-based names and offset-based descriptions.
+ * The first actor owns the retail phase-90 title sequence reached from overlay
+ * 225. It binds three title actors, owns logo/copyright sprite resources, and
+ * advances a 0x00-0x20 state machine containing NDS display fades, camera and
+ * actor motion, audio cues, timed effects, and terminal scene transitions.
+ * Later actor types implement the participants and effects used by that path.
+ * Unconfirmed members retain address-based names and offset descriptions.
  */
 
-/* Processes the supplied ABI arguments and offset-based object state; observable mutations, calls, and the encoded return value are preserved by the matching implementation, while higher-level semantics remain unconfirmed. */
+/* Initialize the title controller, bind three actors, set phase flags, and white both NDS engines. */
 void func_ov090_022177e0(void);
 
-/* Processes the supplied ABI arguments and offset-based object state; observable mutations, calls, and the encoded return value are preserved by the matching implementation, while higher-level semantics remain unconfirmed. */
+/* Load and create the retail title logo and copyright sprite resources. */
 void func_ov090_02217a3c(void);
 
-/* Processes the supplied ABI arguments and offset-based object state; observable mutations, calls, and the encoded return value are preserved by the matching implementation, while higher-level semantics remain unconfirmed. */
+/* Release title sprites/resources and embedded vectors without freeing the actor. */
 void func_ov090_02217b70(void);
 
-/* Processes the supplied ABI arguments and offset-based object state; observable mutations, calls, and the encoded return value are preserved by the matching implementation, while higher-level semantics remain unconfirmed. */
+/* Perform the complete title-controller teardown and free its actor allocation. */
 void func_ov090_02217c6c(void);
 
-/* Processes the supplied ABI arguments and offset-based object state; observable mutations, calls, and the encoded return value are preserved by the matching implementation, while higher-level semantics remain unconfirmed. */
+/*
+ * Advance the canonical title sequence. States 0x00-0x0b initialize display
+ * routing and fades; 0x0c-0x17 animate the three bound actors and camera;
+ * 0x18-0x20 run the long effect branch and its final brightness transitions.
+ * The routine increments the shared state timer, blends camera vectors, updates
+ * the two phase render helpers, and preserves the original NDS GX boundaries.
+ */
 void func_ov090_02217d70(void);
 
 /* Processes the supplied ABI arguments and offset-based object state; observable mutations, calls, and the encoded return value are preserved by the matching implementation, while higher-level semantics remain unconfirmed. */
@@ -264,5 +272,4 @@ void func_ov090_0221ca34(void);
 
 /* Processes the supplied ABI arguments and offset-based object state; observable mutations, calls, and the encoded return value are preserved by the matching implementation, while higher-level semantics remain unconfirmed. */
 void func_ov090_0221ca58(void);
-
 

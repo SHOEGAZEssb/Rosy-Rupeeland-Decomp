@@ -18,33 +18,21 @@ asm/overlays/ov090/overlay090_02217c6c.s:
 asm/overlays/ov090/overlay090_02217d70.s:
     categories: Game code
     .text start:0x02217d70 end:0x0221a3cc
-asm/overlays/ov090/overlay090_0221a3cc.s:
+src/overlays/ov090/overlay090_title_vector_store.c:
     categories: Game code
     .text start:0x0221a3cc end:0x0221a3dc
-asm/overlays/ov090/overlay090_0221a3dc.s:
+src/overlays/ov090/overlay090_title_vector_helpers.c:
     categories: Game code
-    .text start:0x0221a3dc end:0x0221a420
-asm/overlays/ov090/overlay090_0221a420.s:
-    categories: Game code
-    .text start:0x0221a420 end:0x0221a460
-asm/overlays/ov090/overlay090_0221a460.s:
-    categories: Game code
-    .text start:0x0221a460 end:0x0221a498
-asm/overlays/ov090/overlay090_0221a498.s:
-    categories: Game code
-    .text start:0x0221a498 end:0x0221a504
+    .text start:0x0221a3dc end:0x0221a504
 asm/overlays/ov090/overlay090_0221a504.s:
     categories: Game code
     .text start:0x0221a504 end:0x0221a544
 asm/overlays/ov090/overlay090_0221a544.s:
     categories: Game code
     .text start:0x0221a544 end:0x0221a6ac
-asm/overlays/ov090/overlay090_0221a6ac.s:
+src/overlays/ov090/overlay090_title_noop_hooks.c:
     categories: Game code
-    .text start:0x0221a6ac end:0x0221a6b0
-asm/overlays/ov090/overlay090_0221a6b0.s:
-    categories: Game code
-    .text start:0x0221a6b0 end:0x0221a6b4
+    .text start:0x0221a6ac end:0x0221a6b4
 asm/overlays/ov090/overlay090_0221a6b4.s:
     categories: Game code
     .text start:0x0221a6b4 end:0x0221a6d8
