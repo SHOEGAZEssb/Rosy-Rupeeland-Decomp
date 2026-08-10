@@ -4,7 +4,7 @@
 .extern data_020df48c
 .extern func_02005580
 .extern func_02030acc
-.extern func_020337d4
+.extern Actor_GetCollection
 .extern func_020740c8
 .extern gHeapContext
 
@@ -39,7 +39,7 @@ Actor_ReplaceAttachmentSlotResource: ; 0x02039720
     cmp r1, r0
     bne .L_020397a8
     mov r0, r8
-    bl func_020337d4
+    bl Actor_GetCollection
     bl func_02030acc
     ldr r2, [r5, #0xc]
     mov r1, r6

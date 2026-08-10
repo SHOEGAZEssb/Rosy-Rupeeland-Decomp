@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/type7_auxiliary_presentation.c.
 .extern Heap_Alloc
 .extern func_02005580
-.extern func_020337d4
+.extern Actor_GetCollection
 .extern func_02030acc
 .extern func_02073fc4
 .extern func_02072b68
@@ -37,7 +37,7 @@ func_0204c798: ; 0x0204c798
     mov r5, r0
     str r0, [r4, #0xc]
     mov r0, r6
-    bl func_020337d4
+    bl Actor_GetCollection
     bl func_02030acc
     mov r1, #0x2
     str r1, [sp, #0x0]

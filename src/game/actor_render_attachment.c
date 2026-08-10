@@ -14,7 +14,7 @@ extern void *data_021052fc;
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *func_020337d4(ActorRenderAttachmentOwner *);
+extern void *Actor_GetCollection(ActorRenderAttachmentOwner *);
 extern void *func_02007f0c(void *, s32);
 extern void *func_02030acc(void *);
 extern void *func_02073fc4(void *, u32, u32, u32, s32);
@@ -42,7 +42,7 @@ void func_020313b4(ActorRenderAttachmentOwner *self, void *unused,
     (void)unused;
     if (!(self->flags_14 & 1))
         return;
-    collection = func_020337d4(self);
+    collection = Actor_GetCollection(self);
     if (*(s32 *)((u8 *)collection + 0x2e84) != 1)
         return;
     config = (u8 *)self->attachmentConfig_54;

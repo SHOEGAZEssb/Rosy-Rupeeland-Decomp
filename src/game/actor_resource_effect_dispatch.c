@@ -7,7 +7,7 @@ extern u8 data_02105310[];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *func_020337d4(void *);
+extern void *Actor_GetCollection(void *);
 extern void func_0201b124(void *, void *, void *, void *);
 extern void func_0200aef4(void *, const void *);
 extern void func_0201b1e0(void *);
@@ -30,7 +30,7 @@ void Actor_AssignPrimaryResourceWithEffect(void *self, void *resource)
     void *gameData;
 
     *(void **)(actor + 0x180) = resource;
-    collection = func_020337d4(actor);
+    collection = Actor_GetCollection(actor);
     gameData = (u8 *)gGameWork +
                (*(s32 *)((u8 *)collection + 0x2e84) == 1 ? 0x3cc : 0x5cc);
     func_0201b124(temporary, actor, resource, gameData);

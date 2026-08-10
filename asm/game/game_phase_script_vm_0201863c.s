@@ -10,7 +10,7 @@
 .extern func_02018998
 .extern func_020189b0
 .extern ActorCollection_FindActorByDescriptorValue
-.extern func_020337d4
+.extern Actor_GetCollection
 .extern Actor_BuildWorldInteractionBounds
 .extern Actor_SetInteractionBounds
 .extern func_02056f34
@@ -168,12 +168,12 @@ L_02018850:
 L_02018868:
     ldr r5, [r8, #0x84]
     mov r0, r5
-    bl func_020337d4
+    bl Actor_GetCollection
     mov r1, r7
     bl ActorCollection_FindActorByDescriptorValue
     mov r4, r0
     mov r0, r5
-    bl func_020337d4
+    bl Actor_GetCollection
     mov r1, r6
     bl ActorCollection_FindActorByDescriptorValue
     mov r1, r0

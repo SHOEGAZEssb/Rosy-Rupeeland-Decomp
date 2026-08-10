@@ -5,7 +5,7 @@
 .extern func_02005580
 .extern func_02030acc
 .extern func_020313b4
-.extern func_020337d4
+.extern Actor_GetCollection
 .extern func_02072b68
 .extern func_02073fc4
 .text
@@ -29,7 +29,7 @@ func_0204fe68: ; 0x0204fe68
     mov r4, r0
     str r0, [r6, #0x1ec]
     mov r0, r6
-    bl func_020337d4
+    bl Actor_GetCollection
     bl func_02030acc
     ldrb r1, [r5, #0x10]
     str r1, [sp, #0x0]

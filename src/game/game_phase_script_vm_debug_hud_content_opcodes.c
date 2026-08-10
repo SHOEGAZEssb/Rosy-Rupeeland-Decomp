@@ -6,7 +6,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *func_020337d4(void *actor);
+extern void *Actor_GetCollection(void *actor);
 extern void OS_Halt(void);
 #ifdef __cplusplus
 }
@@ -37,7 +37,7 @@ s32 func_02017450(GamePhaseActorScriptVm *self)
 {
     s32 index = (s32)func_02012704(&self->base);
     s32 row = (s32)func_02012704(&self->base);
-    u8 *collection = (u8 *)func_020337d4(self->actor_84);
+    u8 *collection = (u8 *)Actor_GetCollection(self->actor_84);
     const u16 *text = 0;
     switch (*(u32 *)(collection + 0x2e84)) {
     case 1:

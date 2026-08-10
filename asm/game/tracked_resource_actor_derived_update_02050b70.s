@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/tracked_resource_actor_derived_update.c.
 .extern func_0202d494
 .extern Actor_UpdateAnimationState
-.extern func_020337d4
+.extern Actor_GetCollection
 .text
     .global func_02050b70
 func_02050b70:
@@ -82,7 +82,7 @@ func_02050b70:
     b .L_02050cd0
 .L_02050c8c:
     mov r0, r4
-    bl func_020337d4
+    bl Actor_GetCollection
     mov r1, r4
     bl func_0202d494
     add r1, r4, #0x100

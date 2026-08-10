@@ -14,7 +14,7 @@ extern const char data_020e00c0[];
 extern "C" {
 #endif
 extern void *func_02005580(void *allocation, u16 first, u16 second, u16 third);
-extern void *func_020337d4(void *actor);
+extern void *Actor_GetCollection(void *actor);
 extern void *func_02030acc(void *value);
 extern void *func_02073fc4(void *context, u32 first, u32 second, u32 third,
                            s32 kind);
@@ -37,7 +37,7 @@ static void *createResource(const u16 *record)
  * Use actor index +0x4e to select six-byte records from data_020e78f4 and
  * data_020e7c78, creating resources +0x208/+0x20c. Records from data_020e7570
  * and data_020e7ffc create optional +0x210/+0x214 resources only when their
- * first halfword is nonzero. Resolve func_020337d4 then func_02030acc and build
+ * first halfword is nonzero. Resolve Actor_GetCollection then func_02030acc and build
  * attachment +0x54 through func_02073fc4 using words +0x04/+0x08/+0x0c of the
  * first resource and kind two.
  *
@@ -69,7 +69,7 @@ void func_0203e56c(void *self, const void *configuration)
     record = data_020e7ffc + index * 3;
     *(void **)(actor + 0x214) = record[0] != 0 ? createResource(record) : 0;
 
-    context = func_02030acc(func_020337d4(actor));
+    context = func_02030acc(Actor_GetCollection(actor));
     {
         u32 *resource = (u32 *)*(void **)(actor + 0x208);
         attachment = (u8 *)func_02073fc4(context, resource[1], resource[2],

@@ -10,7 +10,7 @@ extern u32 *func_0200b2c0(void *object, u32 first, u32 second, u32 third);
 extern void func_02039db8(void *actor);
 extern void Actor_SetVelocity(void *actor, const VecFx32Object *value);
 extern void func_02006818(void *movement);
-extern void *func_020337d4(void *actor);
+extern void *Actor_GetCollection(void *actor);
 extern void *ActorCollection_FindActorByDescriptorValue(void *collection, s32 index);
 extern void Actor_UpdateAttachmentDirectionFromVector(void *actor, fx32 x, fx32 y);
 #ifdef __cplusplus
@@ -49,7 +49,7 @@ s32 func_0201389c(GamePhaseActorScriptVm *self)
 {
     s32 index = (s32)func_02012704(&self->base);
     u8 *actor = (u8 *)self->actor_84;
-    u8 *target = (u8 *)ActorCollection_FindActorByDescriptorValue(func_020337d4(actor), index);
+    u8 *target = (u8 *)ActorCollection_FindActorByDescriptorValue(Actor_GetCollection(actor), index);
     fx32 dx = *(fx32 *)(target + 0x1c) - *(fx32 *)(actor + 0x1c);
     fx32 dy = *(fx32 *)(target + 0x20) - *(fx32 *)(actor + 0x20);
     u8 *object;

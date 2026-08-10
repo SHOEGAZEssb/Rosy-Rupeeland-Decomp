@@ -10,7 +10,7 @@ extern "C" {
 #endif
 extern void *data_021052fc;
 extern const char data_020d5b2c[];
-extern void *func_020337d4(void *actor);
+extern void *Actor_GetCollection(void *actor);
 extern void *ActorCollection_FindActorByDescriptorValue(void *collection, s32 index);
 extern void func_ov062_0220fe78(void *allocation, const VecFx32Object *position,
                                u32 first, u32 second, u32 zero,
@@ -61,7 +61,7 @@ s32 func_02013f10(GamePhaseActorScriptVm *self)
             }
         } else {
             u8 *target = (u8 *)ActorCollection_FindActorByDescriptorValue(
-                func_020337d4(boundActor), selector);
+                Actor_GetCollection(boundActor), selector);
             void *allocation = Heap_Alloc(0x40, data_020d5b2c, 4,
                                           &gHeapContext);
             if (allocation != 0)

@@ -1,13 +1,13 @@
 ; Matching retail form; see src/game/tracked_resource_actor_impulse_callbacks.c.
 .extern func_0202d494
-.extern func_020337d4
+.extern Actor_GetCollection
 .extern func_02050260
 .text
     .global func_020520b4
 func_020520b4:
     stmdb sp!, {r4, lr}
     mov r4, r0
-    bl func_020337d4
+    bl Actor_GetCollection
     mov r1, r4
     bl func_0202d494
     mov r0, r4

@@ -3,7 +3,7 @@
 .extern data_020f4e18
 .extern func_02030acc
 .extern func_020313b4
-.extern func_020337d4
+.extern Actor_GetCollection
 .extern func_02071ee0
 .extern func_02071f38
 .extern func_02073fc4
@@ -40,7 +40,7 @@ func_0203bae4: ; 0x0203bae4
     add r0, r4, #0x1f0
     bl func_02071ee0
     mov r0, r4
-    bl func_020337d4
+    bl Actor_GetCollection
     bl func_02030acc
     ldrh r1, [sp, #0x18]
     and r1, r1, #0xff

@@ -6,7 +6,7 @@
 .extern func_02012704
 .extern func_020127f8
 .extern ActorCollection_FindActorByDescriptorValue
-.extern func_020337d4
+.extern Actor_GetCollection
 
     .global func_02013b74
 func_02013b74: ; 0x02013b74
@@ -27,7 +27,7 @@ func_02013b74: ; 0x02013b74
     movne r0, #0x0
     ldmneia sp!, {r4, r5, r6, pc}
     ldr r0, [r6, #0x84]
-    bl func_020337d4
+    bl Actor_GetCollection
     add r0, r0, #0x2000
     ldr r0, [r0, #0xe84]
     cmp r0, #0x1
@@ -42,7 +42,7 @@ func_02013b74: ; 0x02013b74
     b L_02013c28
 L_02013bec:
     ldr r0, [r6, #0x84]
-    bl func_020337d4
+    bl Actor_GetCollection
     add r0, r0, #0x2000
     ldr r0, [r0, #0xe84]
     cmp r0, #0x2

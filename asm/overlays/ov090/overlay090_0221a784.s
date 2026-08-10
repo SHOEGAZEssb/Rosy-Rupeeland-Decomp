@@ -4,7 +4,7 @@
 .extern Sound_Play
 .extern data_021052fc
 .extern func_0202d494
-.extern func_020337d4
+.extern Actor_GetCollection
 .extern func_020390c8
 .extern func_020393f4
 .extern func_02072b68
@@ -78,7 +78,7 @@ func_ov090_0221a784:
     ldrh r1, [r2, #0x24]
     orr r1, r1, #0x10
     strh r1, [r2, #0x24]
-    bl func_020337d4
+    bl Actor_GetCollection
     mov r1, r5
     bl func_0202d494
     ldr r4, [r6, #0x200]

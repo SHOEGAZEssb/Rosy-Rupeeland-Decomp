@@ -5,7 +5,7 @@
 .extern data_ov095_0221cbf8
 .extern func_02007f0c
 .extern func_0202d494
-.extern func_020337d4
+.extern Actor_GetCollection
 .extern func_0204cfa4
 
 .global func_ov095_0221af0c
@@ -84,7 +84,7 @@ func_ov095_0221af0c:
     cmp r0, r7, lsl #0xc
     bge .L_0221b030
     mov r0, r10
-    bl func_020337d4
+    bl Actor_GetCollection
     mov r1, r5
     bl func_0202d494
 .L_0221b030:

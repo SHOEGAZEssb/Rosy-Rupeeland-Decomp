@@ -3,7 +3,7 @@
 .extern Heap_Alloc
 .extern data_020df208
 .extern func_02030acc
-.extern func_020337d4
+.extern Actor_GetCollection
 .extern func_020570c4
 .extern gHeapContext
 
@@ -23,7 +23,7 @@ Actor_EnsureAuxiliaryCollisionResource: ; 0x020342ac
     movs r4, r0
     beq .L_020342f8
     mov r0, r5
-    bl func_020337d4
+    bl Actor_GetCollection
     bl func_02030acc
     mov r1, r0
     mov r0, r4

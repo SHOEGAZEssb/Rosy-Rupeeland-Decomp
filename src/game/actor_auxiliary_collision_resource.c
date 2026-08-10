@@ -7,7 +7,7 @@ extern u8 data_020df208[];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *func_020337d4(void *actor);
+extern void *Actor_GetCollection(void *actor);
 extern void *func_02030acc(void *collection);
 extern void *func_020570c4(void *storage, void *collectionData);
 extern void func_02057184(void *resource);
@@ -33,7 +33,7 @@ void Actor_EnsureAuxiliaryCollisionResource(void *self)
                                     &gHeapContext);
         if (resource != 0) {
             resource = (u8 *)func_020570c4(
-                resource, func_02030acc(func_020337d4(actor)));
+                resource, func_02030acc(Actor_GetCollection(actor)));
         }
         *(u8 **)(actor + 0x1e0) = resource;
     }

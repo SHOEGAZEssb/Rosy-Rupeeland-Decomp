@@ -3,7 +3,7 @@
 .extern data_02105790
 .extern data_0210579c
 .extern func_0202d494
-.extern func_020337d4
+.extern Actor_GetCollection
 .text
 
     .global func_0204f990
@@ -49,7 +49,7 @@ func_0204f9c0: ; 0x0204f9c0
     blt .L_0204f9d4
     ldr r5, [r4, #0x0]
     mov r0, r5
-    bl func_020337d4
+    bl Actor_GetCollection
     mov r1, r5
     bl func_0202d494
     ldr r1, .L_0204fa44

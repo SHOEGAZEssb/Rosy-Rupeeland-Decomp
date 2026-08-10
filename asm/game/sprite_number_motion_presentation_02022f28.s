@@ -18,7 +18,7 @@
 .extern func_02022c30
 .extern func_02022c80
 .extern func_02030acc
-.extern func_020337d4
+.extern Actor_GetCollection
 .extern func_02056f00
 .extern gHeapContext
 

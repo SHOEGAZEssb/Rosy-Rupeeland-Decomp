@@ -2,7 +2,7 @@
 .extern data_021052fc
 .extern func_020099c0
 .extern func_0202d494
-.extern func_020337d4
+.extern Actor_GetCollection
 .extern func_02050260
 .extern func_020505f0
 .text
@@ -10,7 +10,7 @@
 func_02052254:
     stmdb sp!, {r4, lr}
     mov r4, r0
-    bl func_020337d4
+    bl Actor_GetCollection
     mov r1, r4
     bl func_0202d494
     mov r0, r4

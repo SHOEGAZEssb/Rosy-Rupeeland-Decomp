@@ -7,7 +7,7 @@ extern "C" {
 #endif
 extern void func_0202d494(void *handle, void *actor);
 extern void Actor_UpdateAnimationState(void *actor);
-extern void *func_020337d4(void *actor);
+extern void *Actor_GetCollection(void *actor);
 #ifdef __cplusplus
 }
 #endif
@@ -65,7 +65,7 @@ void func_02050b70(void *actor)
             else
                 FIELD(u16, presentation, 0x24) &= (u16)~4;
         } else {
-            func_0202d494(func_020337d4(actor), actor);
+            func_0202d494(Actor_GetCollection(actor), actor);
             FIELD(u16, actor, 0x1f0) =
                 (FIELD(u16, actor, 0x1f0) & 0x8000) | 2;
         }

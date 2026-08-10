@@ -4,7 +4,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *func_020337d4(void *actor);
+extern void *Actor_GetCollection(void *actor);
 extern void *func_02030acc(void *collection);
 extern void func_020740c8(void *collectionData, void *attachment, u32 first,
                           u32 second, u32 third);
@@ -23,7 +23,7 @@ void func_020354e8(void *self, u32 index)
     u8 *actor = (u8 *)self;
     u8 *resource = *(u8 **)(actor + 0x208 + index * 4);
 
-    func_020740c8(func_02030acc(func_020337d4(actor)),
+    func_020740c8(func_02030acc(Actor_GetCollection(actor)),
                   *(void **)(actor + 0x54), *(u32 *)(resource + 4),
                   *(u32 *)(resource + 8), *(u32 *)(resource + 0x0c));
 }

@@ -18,7 +18,7 @@ extern u32 Actor_QueryTerrainCell(void *actor, s32 x, s32 y);
  * at +0x14 selects slot two; otherwise slot one is used. Returns the manager
  * lookup result and does not directly change actor or hardware state.
  */
-void *func_020337d4(void *self)
+void *Actor_GetCollection(void *self)
 {
     u8 *actor = (u8 *)self;
     u32 slot = (*(u32 *)(actor + 0x14) & 0x04000000) != 0 ? 2 : 1;

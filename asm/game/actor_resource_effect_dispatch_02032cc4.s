@@ -4,7 +4,7 @@
 .extern func_0200aef4
 .extern func_0201b124
 .extern func_0201b1e0
-.extern func_020337d4
+.extern Actor_GetCollection
 .extern gGameWork
 
     .global Actor_AssignPrimaryResourceWithEffect
@@ -15,7 +15,7 @@ Actor_AssignPrimaryResourceWithEffect: ; 0x02032cc4
     mov r5, r0
     mov r4, r1
     str r4, [r5, #0x180]
-    bl func_020337d4
+    bl Actor_GetCollection
     add r0, r0, #0x2000
     ldr r0, [r0, #0xe84]
     cmp r0, #0x1

@@ -6,7 +6,7 @@
 .extern func_0201e0ec
 .extern func_0201f864
 .extern func_02030acc
-.extern func_020337d4
+.extern Actor_GetCollection
 .extern func_02034a60
 .extern func_020a2614
 .extern func_020a2844
@@ -189,7 +189,7 @@ func_02050260: ; 0x02050260
     beq .L_02050530
     ldr r5, [r6, #0x1fc]
     mov r0, r6
-    bl func_020337d4
+    bl Actor_GetCollection
     bl func_02030acc
     ldrh r1, [r5, #0x18]
     mov ip, #0x0

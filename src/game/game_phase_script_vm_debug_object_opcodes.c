@@ -9,7 +9,7 @@ extern "C" {
 #endif
 extern const char data_020d5b2c[];
 extern u8 data_021f3ecc[];
-extern void *func_020337d4(void *actor);
+extern void *Actor_GetCollection(void *actor);
 extern void *func_0201da20(u32 mode, u32 value);
 extern void *func_0201d9e4(u32 value);
 extern void func_0201da34(GamePhaseActorScriptVm *self);
@@ -34,7 +34,7 @@ s32 func_020156fc(GamePhaseActorScriptVm *self)
     u32 third = func_02012704(&self->base);
     u32 secondValue = func_02012704(&self->base);
     u32 firstValue = func_02012704(&self->base);
-    u8 *collection = (u8 *)func_020337d4(self->actor_84);
+    u8 *collection = (u8 *)Actor_GetCollection(self->actor_84);
     void *second = func_0201da20(*(u32 *)(collection + 0x2e84), firstValue);
     void *first = func_0201d9e4(secondValue);
     void *allocation;

@@ -142,7 +142,7 @@ void func_ov079_02213ab0(void);
 /* Processes the supplied ABI arguments using only local offset-based fields; observable mutations and the return value are preserved by the matching implementation, with no direct SDK call. */
 void func_ov079_02213ad0(void);
 
-/* Processes the supplied ABI arguments and offset-based actor state, returns its encoded result, and invokes func_0203db80, func_0203e494, func_020337d4 and other shared helpers; exact higher-level semantics remain unconfirmed. */
+/* Processes the supplied ABI arguments and offset-based actor state, returns its encoded result, and invokes func_0203db80, func_0203e494, Actor_GetCollection and other shared helpers; exact higher-level semantics remain unconfirmed. */
 void func_ov079_02213ad8(void);
 
 

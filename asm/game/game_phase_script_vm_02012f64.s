@@ -3,7 +3,7 @@
 .extern OS_Halt
 .extern data_021052fc
 .extern func_02012704
-.extern func_020337d4
+.extern Actor_GetCollection
 
     .global func_02012f64
 func_02012f64: ; 0x02012f64
@@ -22,7 +22,7 @@ func_02012f64: ; 0x02012f64
     bl func_02012704
     mov r4, r0
     ldr r0, [r8, #0x84]
-    bl func_020337d4
+    bl Actor_GetCollection
     add r0, r0, #0x2000
     ldr r0, [r0, #0xe84]
     cmp r0, #0x1
@@ -42,7 +42,7 @@ func_02012f64: ; 0x02012f64
     b L_02013004
 L_02012fe8:
     ldr r0, [r8, #0x84]
-    bl func_020337d4
+    bl Actor_GetCollection
     add r0, r0, #0x2000
     ldr r0, [r0, #0xe84]
     cmp r0, #0x2

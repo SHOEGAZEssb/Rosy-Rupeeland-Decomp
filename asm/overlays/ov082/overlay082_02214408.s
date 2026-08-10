@@ -1,7 +1,7 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov082/overlay082_recovery.c.
 .extern ActorCollection_FindActorByDescriptorValue
-.extern func_020337d4
+.extern Actor_GetCollection
 
 .global func_ov082_02214408
 func_ov082_02214408:
@@ -10,7 +10,7 @@ func_ov082_02214408:
     mov r5, r0
     movmi r0, #0x0
     bmi .L_02214428
-    bl func_020337d4
+    bl Actor_GetCollection
     mov r1, r4
     bl ActorCollection_FindActorByDescriptorValue
 .L_02214428:

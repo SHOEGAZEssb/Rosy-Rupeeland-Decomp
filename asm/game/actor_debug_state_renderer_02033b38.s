@@ -16,7 +16,7 @@
 .extern data_020df1d8
 .extern data_020df1f0
 .extern data_020df1f8
-.extern func_020337d4
+.extern Actor_GetCollection
 .extern func_020adcac
 .extern gDebugFont
 
@@ -214,7 +214,7 @@ func_02033b38: ; 0x02033b38
     ldr r0, [r0, #0x0]
     bl DebugText_Printf
     mov r0, r5
-    bl func_020337d4
+    bl Actor_GetCollection
     add r0, r0, #0x2000
     ldr r0, [r0, #0xe7c]
     adds r1, r0, #0x18

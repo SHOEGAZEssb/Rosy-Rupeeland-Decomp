@@ -29,7 +29,7 @@ extern void func_02005058(void *);
 extern void func_020050c8(void *,const void *);
 extern void func_020066a4(void *,const void *,s32);
 extern void func_02056f00(void *,const void *);
-extern void *func_020337d4(void *);
+extern void *Actor_GetCollection(void *);
 extern void *func_02030acc(void *);
 extern void *func_0202293c(void *,void *,s32);
 extern void func_02022b70(void *);
@@ -58,7 +58,7 @@ SpriteNumberMotionPresentation *func_02022cb0(
     func_02004fe0(&self->firstOffset1c);func_02004fe0(&self->secondOffset2c);
     *(s32 *)&self->track0c.bytes[0x0c]+=0x10000;
     group=Heap_Alloc(0x24,data_020d6678,4,&gHeapContext);
-    if(group){owner=func_02030acc(func_020337d4((void *)config));func_0202293c(group,owner,value);}
+    if(group){owner=func_02030acc(Actor_GetCollection((void *)config));func_0202293c(group,owner,value);}
     self->numberGroup3c=group;if(value==0)func_02022c80(group,0);
     func_020066a4(&sampled,&self->track0c,self->sampleArgument08);
     func_02056f00(&position,&sampled);func_02005058(&sampled);

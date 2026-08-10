@@ -4,7 +4,7 @@
 .extern data_021052fc
 .extern data_ov089_022199ec
 .extern func_02030acc
-.extern func_020337d4
+.extern Actor_GetCollection
 .extern func_ov089_02217b04
 .extern gHeapContext
 
@@ -24,7 +24,7 @@ func_ov089_022179dc:
     strne r1, [r0, #0x4]
     str r0, [r4, #0x240]
     mov r0, r4
-    bl func_020337d4
+    bl Actor_GetCollection
     bl func_02030acc
     ldr r1, .L_02217afc
     str r0, [sp, #0x0]
@@ -65,7 +65,7 @@ func_ov089_022179dc:
     strne r1, [r0, #0x4]
     str r0, [r4, #0x244]
     mov r0, r4
-    bl func_020337d4
+    bl Actor_GetCollection
     bl func_02030acc
     str r0, [sp, #0x0]
     mov r0, #0x2

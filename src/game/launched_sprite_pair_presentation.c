@@ -52,7 +52,7 @@ extern void func_02071ea4(void *resource);
 extern void func_02071eb8(void *resource);
 extern void func_02071ee0(void *resource, void *owner, s32, s32, s32);
 extern void func_02071f38(void *resource);
-extern void *func_020337d4(void *actor);
+extern void *Actor_GetCollection(void *actor);
 extern void *Actor_GetCollectionBySlot(void *actor, s32 index);
 extern void *func_02030acc(void *resource);
 extern u8 *func_02079a7c(void *table, s32 index);
@@ -72,7 +72,7 @@ extern u32 genrand_int32(void);
 /*
  * Initialize base, copy actor position from actor offset 0x18, initialize
  * velocity and the 12-byte resource helper, and acquire the primary sprite
- * owner through func_020337d4/func_02030acc.  Configure resources 0x300a..0x300c,
+ * owner through Actor_GetCollection/func_02030acc.  Configure resources 0x300a..0x300c,
  * create the primary mode-2 sprite at frame zero, and set sprite flag bit 1.
  *
  * A secondary owner/sprite is created from actor subobject 2 when runtime object
@@ -100,7 +100,7 @@ LaunchedSpritePairPresentation *func_02024b04(
                   (const PresentationVector *)((u8 *)actor + 0x18));
     func_02004fe0(&self->velocity1c);
     func_02071ea4(self->resource3c);
-    self->primaryOwner48 = func_02030acc(func_020337d4(actor));
+    self->primaryOwner48 = func_02030acc(Actor_GetCollection(actor));
     record = func_02079a7c(data_021f3d68, recordIndex);
     func_02071ee0(self->resource3c, data_020f4e18, 0x300a, 0x300b, 0x300c);
     self->primarySprite50 =

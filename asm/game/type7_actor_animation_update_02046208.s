@@ -3,7 +3,7 @@
 .extern data_020e16b0
 .extern data_020e1720
 .extern func_02030acc
-.extern func_020337d4
+.extern Actor_GetCollection
 .extern func_02072b68
 .extern func_020740c8
 .global func_02046208
@@ -11,7 +11,7 @@
 func_02046208: ; 0x02046208
     stmdb sp!, {r3, r4, r5, lr}
     mov r5, r0
-    bl func_020337d4
+    bl Actor_GetCollection
     bl func_02030acc
     ldr r1, [r5, #0x1f8]
     str r1, [sp, #0x0]

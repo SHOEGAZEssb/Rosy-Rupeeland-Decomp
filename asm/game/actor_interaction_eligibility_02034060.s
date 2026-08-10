@@ -4,7 +4,7 @@
 .extern func_02005058
 .extern func_02015548
 .extern Actor_BuildCollisionRect
-.extern func_020337d4
+.extern Actor_GetCollection
 .extern Actor_BuildWorldInteractionBounds
 .extern func_02056f34
 
@@ -27,7 +27,7 @@ func_02034060: ; 0x02034060
     orrs r0, r2, r0
     bne .L_02034120
     mov r0, r4
-    bl func_020337d4
+    bl Actor_GetCollection
     add r0, r0, #0x2000
     ldr r5, [r0, #0xe7c]
     cmp r5, #0x0

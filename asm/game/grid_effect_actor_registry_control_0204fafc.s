@@ -4,7 +4,7 @@
 .extern data_02105790
 .extern data_0210579c
 .extern func_0202d494
-.extern func_020337d4
+.extern Actor_GetCollection
 .extern func_0204f990
 .extern func_02071980
 .extern func_02071d4c
@@ -114,7 +114,7 @@ func_0204fbdc: ; 0x0204fbdc
     bic r2, r2, #0x3
     orr r2, r2, #0x3
     strh r2, [r1, #0xf0]
-    bl func_020337d4
+    bl Actor_GetCollection
     mov r1, r6
     bl func_0202d494
 .L_0204fc3c:

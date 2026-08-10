@@ -22,7 +22,7 @@ extern s32 func_02012704(void *script);
 extern u32 func_020be328(void);
 extern void func_02072b68(void *sprite, u32 value);
 extern void *func_020791e0(void *table, u16 index);
-extern void func_020337d4(void *owner);
+extern void Actor_GetCollection(void *owner);
 extern void *func_02078e98(void *table, u32 index);
 extern void *func_ov060_022100e4(void *self, s32 routedDisplay,
                                 void *resource, s32 thirdOperand,
@@ -98,7 +98,7 @@ void *func_0201da9c(Overlay60ScriptContext *context, s32 argument1,
     if (useIndexed != 0)
         resource = func_020791e0(data_021f3ecc, (u16)resourceIndex);
     else {
-        func_020337d4(context->owner84);
+        Actor_GetCollection(context->owner84);
         resource = func_02078e98(data_021f4090, resourceIndex);
     }
     requestedDisplay = func_0201d9e4(requestedDisplay);

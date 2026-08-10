@@ -7,7 +7,7 @@ extern "C" {
 #endif
 extern void *data_021052fc;
 extern u8 data_02105310[];
-extern void *func_020337d4(void *actor);
+extern void *Actor_GetCollection(void *actor);
 extern void *func_02007f0c(void *runtime, s32 index);
 extern void func_0200af0c(void *state, void *actor, u32 value);
 extern void OS_Halt(void);
@@ -60,7 +60,7 @@ s32 func_02012f64(GamePhaseActorScriptVm *self)
     u32 second = func_02012704(&self->base);
     u32 fifth = func_02012704(&self->base);
     u32 first = func_02012704(&self->base);
-    u8 *collection = (u8 *)func_020337d4(self->actor_84);
+    u8 *collection = (u8 *)Actor_GetCollection(self->actor_84);
     u32 mode = *(u32 *)(collection + 0x2e84);
 
     if (mode == 1) {

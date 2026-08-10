@@ -5,7 +5,7 @@
 .extern func_02012704
 .extern func_020127f8
 .extern ActorCollection_FindActorByDescriptorValue
-.extern func_020337d4
+.extern Actor_GetCollection
 
     .global func_02013ac8
 func_02013ac8: ; 0x02013ac8
@@ -15,7 +15,7 @@ func_02013ac8: ; 0x02013ac8
     movs r5, r0
     ldr r0, [r4, #0x84]
     bne L_02013b4c
-    bl func_020337d4
+    bl Actor_GetCollection
     add r0, r0, #0x2000
     ldr r0, [r0, #0xe84]
     cmp r0, #0x1
@@ -44,7 +44,7 @@ L_02013b20:
     bl func_020127f8
     b L_02013b68
 L_02013b4c:
-    bl func_020337d4
+    bl Actor_GetCollection
     mov r1, r5
     bl ActorCollection_FindActorByDescriptorValue
     ldrb r1, [r0, #0x169]

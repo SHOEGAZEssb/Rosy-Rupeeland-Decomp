@@ -3,7 +3,7 @@
 .extern data_020e6adc
 .extern data_020e6b74
 .extern func_02030acc
-.extern func_020337d4
+.extern Actor_GetCollection
 .extern func_02072b68
 .extern func_020740c8
 
@@ -15,7 +15,7 @@ func_ov083_02212b68:
     cmp r1, #0x1
     bne .L_02212bbc
     ldr r4, [r5, #0x208]
-    bl func_020337d4
+    bl Actor_GetCollection
     bl func_02030acc
     ldr r1, [r4, #0xc]
     str r1, [sp, #0x0]
@@ -77,7 +77,7 @@ func_ov083_02212b68:
     beq .L_02213150
     ldr r6, [r5, #0x208]
     mov r0, r5
-    bl func_020337d4
+    bl Actor_GetCollection
     bl func_02030acc
     ldr r2, [r6, #0xc]
     mov r1, r7
@@ -97,7 +97,7 @@ func_ov083_02212b68:
     beq .L_02212ce0
     ldr r6, [r5, #0x20c]
     mov r0, r5
-    bl func_020337d4
+    bl Actor_GetCollection
     bl func_02030acc
     ldr r1, [r6, #0xc]
     str r1, [sp, #0x0]
@@ -111,7 +111,7 @@ func_ov083_02212b68:
 .L_02212ce0:
     ldr r6, [r5, #0x208]
     mov r0, r5
-    bl func_020337d4
+    bl Actor_GetCollection
     bl func_02030acc
     ldr r1, [r6, #0xc]
     str r1, [sp, #0x0]
@@ -134,7 +134,7 @@ func_ov083_02212b68:
 .L_02212d34:
     ldr r6, [r5, #0x208]
     mov r0, r5
-    bl func_020337d4
+    bl Actor_GetCollection
     bl func_02030acc
     ldr r1, [r6, #0xc]
     str r1, [sp, #0x0]
@@ -158,7 +158,7 @@ func_ov083_02212b68:
     beq .L_02212dcc
     ldr r6, [r5, #0x20c]
     mov r0, r5
-    bl func_020337d4
+    bl Actor_GetCollection
     bl func_02030acc
     ldr r1, [r6, #0xc]
     str r1, [sp, #0x0]
@@ -174,7 +174,7 @@ func_ov083_02212b68:
 .L_02212dcc:
     ldr r6, [r5, #0x208]
     mov r0, r5
-    bl func_020337d4
+    bl Actor_GetCollection
     bl func_02030acc
     ldr r1, [r6, #0xc]
     str r1, [sp, #0x0]
@@ -201,7 +201,7 @@ func_ov083_02212b68:
     beq .L_02212e58
     ldr r6, [r5, #0x20c]
     mov r0, r5
-    bl func_020337d4
+    bl Actor_GetCollection
     bl func_02030acc
     ldr r1, [r6, #0xc]
     str r1, [sp, #0x0]
@@ -212,7 +212,7 @@ func_ov083_02212b68:
 .L_02212e58:
     ldr r6, [r5, #0x208]
     mov r0, r5
-    bl func_020337d4
+    bl Actor_GetCollection
     bl func_02030acc
     ldr r1, [r6, #0xc]
     str r1, [sp, #0x0]
@@ -237,7 +237,7 @@ func_ov083_02212b68:
     beq .L_02212ef0
     ldr r4, [r5, #0x20c]
     mov r0, r5
-    bl func_020337d4
+    bl Actor_GetCollection
     bl func_02030acc
     ldr r1, [r4, #0xc]
     str r1, [sp, #0x0]
@@ -253,7 +253,7 @@ func_ov083_02212b68:
 .L_02212ef0:
     ldr r4, [r5, #0x208]
     mov r0, r5
-    bl func_020337d4
+    bl Actor_GetCollection
     bl func_02030acc
     ldr r1, [r4, #0xc]
     str r1, [sp, #0x0]
@@ -279,7 +279,7 @@ func_ov083_02212b68:
 .L_02212f50:
     ldr r6, [r5, #0x208]
     mov r0, r5
-    bl func_020337d4
+    bl Actor_GetCollection
     bl func_02030acc
     ldr r1, [r6, #0xc]
     str r1, [sp, #0x0]
@@ -306,7 +306,7 @@ func_ov083_02212b68:
     beq .L_02213150
     ldr r6, [r5, #0x208]
     mov r0, r5
-    bl func_020337d4
+    bl Actor_GetCollection
     bl func_02030acc
     ldr r1, [r6, #0xc]
     str r1, [sp, #0x0]
@@ -326,7 +326,7 @@ func_ov083_02212b68:
     beq .L_0221302c
     ldr r6, [r5, #0x20c]
     mov r0, r5
-    bl func_020337d4
+    bl Actor_GetCollection
     bl func_02030acc
     ldr r1, [r6, #0xc]
     str r1, [sp, #0x0]
@@ -337,7 +337,7 @@ func_ov083_02212b68:
 .L_0221302c:
     ldr r6, [r5, #0x208]
     mov r0, r5
-    bl func_020337d4
+    bl Actor_GetCollection
     bl func_02030acc
     ldr r1, [r6, #0xc]
     str r1, [sp, #0x0]
@@ -365,7 +365,7 @@ func_ov083_02212b68:
     cmp r0, #0x0
     mov r0, r5
     beq .L_022130d8
-    bl func_020337d4
+    bl Actor_GetCollection
     bl func_02030acc
     ldr r1, [r6, #0xc]
     str r1, [sp, #0x0]
@@ -381,7 +381,7 @@ func_ov083_02212b68:
     strh r0, [r1, #0x24]
     b .L_02213150
 .L_022130d8:
-    bl func_020337d4
+    bl Actor_GetCollection
     bl func_02030acc
     ldr r1, [r6, #0xc]
     str r1, [sp, #0x0]

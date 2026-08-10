@@ -23,7 +23,7 @@ extern "C" {
 #endif
 extern void DebugText_Printf(void *font, s32 page, s32 row, s32 column,
                              const char *format, ...);
-extern void *func_020337d4(void *actor);
+extern void *Actor_GetCollection(void *actor);
 extern s32 func_020adcac(const void *first, const void *second);
 #ifdef __cplusplus
 }
@@ -97,7 +97,7 @@ void func_02033b38(void *self, s32 column)
                      *(s32 *)(actor + 0xa0) >> 9,
                      *(s32 *)(actor + 0xa4) >> 9);
 
-    collection = (u8 *)func_020337d4(actor);
+    collection = (u8 *)Actor_GetCollection(actor);
     reference = *(u8 **)(collection + 0x2e7c);
     distance = func_020adcac(reference + 0x1c, actor + 0x1c);
     DebugText_Printf(gDebugFont, 1, 9, column, data_020df1f0,

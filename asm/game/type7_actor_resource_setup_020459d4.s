@@ -2,7 +2,7 @@
 .text
 .extern data_020f4e18
 .extern func_02030acc
-.extern func_020337d4
+.extern Actor_GetCollection
 .extern func_02071ee0
 .extern func_02073fc4
 .global func_020459d4
@@ -23,7 +23,7 @@ func_020459d4: ; 0x020459d4
     ldr r1, [r2, #0x28]
     orr r1, r1, #0x1000000
     str r1, [r2, #0x28]
-    bl func_020337d4
+    bl Actor_GetCollection
     bl func_02030acc
     ldrb r1, [r4, #0x10]
     str r1, [sp, #0x0]

@@ -1,7 +1,7 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov078/overlay078_recovery.c.
 .extern func_02030acc
-.extern func_020337d4
+.extern Actor_GetCollection
 .extern func_02072b68
 .extern func_020740c8
 
@@ -17,7 +17,7 @@ func_ov078_02213280:
     b .L_0221334c
 .L_022132a0:
     ldr r5, [r4, #0x208]
-    bl func_020337d4
+    bl Actor_GetCollection
     bl func_02030acc
     ldr r1, [r5, #0xc]
     str r1, [sp, #0x0]
@@ -40,7 +40,7 @@ func_ov078_02213280:
     b .L_0221334c
 .L_022132f8:
     ldr r5, [r4, #0x208]
-    bl func_020337d4
+    bl Actor_GetCollection
     bl func_02030acc
     ldr r1, [r5, #0xc]
     str r1, [sp, #0x0]

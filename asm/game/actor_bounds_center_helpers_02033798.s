@@ -22,4 +22,4 @@ ActorBounds_SetMinimum: ; 0x02033798
     ldmia sp!, {r3, r4, r5, pc}
     .size ActorBounds_SetMinimum, . - ActorBounds_SetMinimum
 
-    .global func_020337d4
+    .global Actor_GetCollection

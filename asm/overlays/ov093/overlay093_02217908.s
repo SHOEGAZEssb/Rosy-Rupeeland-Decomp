@@ -8,7 +8,7 @@
 .extern func_02005bfc
 .extern func_02005c3c
 .extern func_02030acc
-.extern func_020337d4
+.extern Actor_GetCollection
 .extern func_0204b078
 .extern func_0204d3d8
 .extern func_02073fc4
@@ -35,7 +35,7 @@ func_ov093_02217908:
     mov r5, r0
     str r0, [r4, #0x200]
     mov r0, r4
-    bl func_020337d4
+    bl Actor_GetCollection
     bl func_02030acc
     mov r1, #0x1
     str r1, [sp, #0x0]
@@ -63,7 +63,7 @@ func_ov093_02217908:
 .L_022179b4:
     str r0, [r4, #0x20c]
     mov r0, r4
-    bl func_020337d4
+    bl Actor_GetCollection
     bl func_02030acc
     mov r3, #0x0
     str r3, [sp, #0x0]
@@ -75,7 +75,7 @@ func_ov093_02217908:
     str r0, [r4, #0x210]
     mov r0, r4
     ldr r5, [r4, #0x200]
-    bl func_020337d4
+    bl Actor_GetCollection
     bl func_02030acc
     mov r1, #0x1
     str r1, [sp, #0x0]
@@ -108,7 +108,7 @@ func_ov093_02217908:
 .L_02217a60:
     ldr r10, [r4, #0x200]
     mov r0, r4
-    bl func_020337d4
+    bl Actor_GetCollection
     bl func_02030acc
     str r8, [sp, #0x0]
     ldmib r10, {r1, r2, r3}

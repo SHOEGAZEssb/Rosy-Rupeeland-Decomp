@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/tracked_resource_actor_variant_update.c.
 .extern func_0202d494
 .extern Actor_UpdateAnimationState
-.extern func_020337d4
+.extern Actor_GetCollection
 .extern Actor_GetCachedTerrainHeight
 .extern func_020adae4
 .text
@@ -111,7 +111,7 @@ func_02050fa0:
     b .L_02051168
 .L_02051124:
     mov r0, r4
-    bl func_020337d4
+    bl Actor_GetCollection
     mov r1, r4
     bl func_0202d494
     add r1, r4, #0x100

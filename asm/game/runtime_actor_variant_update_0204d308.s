@@ -4,7 +4,7 @@
 .extern func_0201273c
 .extern func_0200b058
 .extern Actor_GetCollectionBySlot
-.extern func_020337d4
+.extern Actor_GetCollection
 .extern func_0202eba4
 .extern func_0200af04
 .extern func_0201b180
@@ -43,7 +43,7 @@ func_0204d308: ; 0x0204d308
     bl Actor_GetCollectionBySlot
     mov r5, r0
     mov r0, r4
-    bl func_020337d4
+    bl Actor_GetCollection
     add r1, r5, #0x2000
     ldr r1, [r1, #0xe7c]
     mov r2, r4
@@ -63,7 +63,7 @@ func_0204d308: ; 0x0204d308
     tst r0, #0x20
     ldmeqia sp!, {r3, r4, r5, pc}
     mov r0, r4
-    bl func_020337d4
+    bl Actor_GetCollection
     mov r1, r4
     bl func_0202d494
     ldmia sp!, {r3, r4, r5, pc}

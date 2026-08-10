@@ -25,7 +25,7 @@ extern void *func_0201e0ec(void *manager);
 extern void *func_02022cb0(void *storage, void *point, void *actor, s32 value,
                            s32 scale, s32 vertical_offset);
 extern void *func_0202d494(void *value, void *actor);
-extern void *func_020337d4(void *actor);
+extern void *Actor_GetCollection(void *actor);
 extern void func_02038d38(void *actor, const void *position, s32 value,
                           s32 mode);
 extern void func_02072b68(void *presentation, u32 selection);
@@ -42,7 +42,7 @@ typedef s32 (*ActorPredicate)(void *actor);
 static void complete_interaction(void *actor)
 {
     FIELD(u16, FIELD(void *, actor, 0x54), 0x24) |= 4;
-    func_0202d494(func_020337d4(actor), actor);
+    func_0202d494(Actor_GetCollection(actor), actor);
     FIELD(u16, actor, 0x1ec) = 3;
 }
 

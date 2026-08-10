@@ -11,7 +11,7 @@ extern "C" {
 #endif
 extern void *func_02005580(void *storage, u32 first, u32 second, u32 third);
 extern s32 GameWork_TestFlag(void *work, u32 flag);
-extern void *func_020337d4(void *actor);
+extern void *Actor_GetCollection(void *actor);
 extern void *func_02030acc(void *collection);
 extern void *func_02073fc4(void *collectionData, u32 first, u32 second,
                            u32 third, u32 mode);
@@ -65,7 +65,7 @@ void func_020353a0(void *self, const void *descriptor)
         *(void **)(actor + 0x22c) = 0;
 
     first = *(u8 **)(actor + 0x208);
-    attachment = func_02073fc4(func_02030acc(func_020337d4(actor)),
+    attachment = func_02073fc4(func_02030acc(Actor_GetCollection(actor)),
                                *(u32 *)(first + 4), *(u32 *)(first + 8),
                                *(u32 *)(first + 0x0c), 2);
     *(void **)(actor + 0x54) = attachment;

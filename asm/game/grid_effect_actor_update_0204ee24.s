@@ -8,7 +8,7 @@
 .extern func_020050c8
 .extern func_02005a00
 .extern func_0202d494
-.extern func_020337d4
+.extern Actor_GetCollection
 .extern Actor_QueryTerrainHeight
 .extern func_0204aff4
 .extern func_0204f478
@@ -130,7 +130,7 @@ func_0204ee24: ; 0x0204ee24
     cmp r0, r1, asr #0xc
     blt .L_0204f064
     mov r0, r5
-    bl func_020337d4
+    bl Actor_GetCollection
     mov r1, r5
     bl func_0202d494
     add r0, r5, #0x100
@@ -159,7 +159,7 @@ func_0204ee24: ; 0x0204ee24
     cmp r0, r1, asr #0xc
     blt .L_0204f064
     mov r0, r5
-    bl func_020337d4
+    bl Actor_GetCollection
     mov r1, r5
     bl func_0202d494
     ldr r0, .L_0204f464
@@ -208,7 +208,7 @@ func_0204ee24: ; 0x0204ee24
     b .L_0204f3a8
 .L_0204f0e4:
     mov r0, r5
-    bl func_020337d4
+    bl Actor_GetCollection
     mov r1, r5
     bl func_0202d494
     ldr r0, .L_0204f464
@@ -362,7 +362,7 @@ func_0204ee24: ; 0x0204ee24
     ldrh r1, [r2, #0x24]
     orr r1, r1, #0x4
     strh r1, [r2, #0x24]
-    bl func_020337d4
+    bl Actor_GetCollection
     mov r1, r5
     bl func_0202d494
     ldr r0, .L_0204f464

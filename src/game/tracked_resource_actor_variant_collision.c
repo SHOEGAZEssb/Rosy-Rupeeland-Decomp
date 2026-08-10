@@ -12,7 +12,7 @@ extern void func_02005030(void *destination, const void *source);
 extern void func_02005058(void *vector);
 extern void func_0202d494(void *handle, void *actor);
 extern void func_020328d0(void *vector, s32 angle);
-extern void *func_020337d4(void *actor);
+extern void *Actor_GetCollection(void *actor);
 extern void func_02050260(void *actor);
 extern void func_02050560(void *actor, void *target, ...);
 #ifdef __cplusplus
@@ -55,7 +55,7 @@ void func_020511a4(void *actor, void *target, u32 unused1, u32 unused2)
     FIELD(u32, actor, 0x10) |= 0x1f0000;
     FIELD(u16, actor, 0x1f8) = 0;
     FIELD(u32, actor, 0x14) &= 0xff7fffff;
-    func_0202d494(func_020337d4(actor), actor);
+    func_0202d494(Actor_GetCollection(actor), actor);
     func_02050260(actor);
     func_02050560(actor, target);
 }

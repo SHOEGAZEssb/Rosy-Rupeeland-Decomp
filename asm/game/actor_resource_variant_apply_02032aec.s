@@ -7,7 +7,7 @@
 .extern func_0201b1e0
 .extern func_0201b228
 .extern Actor_SavePrimaryAttachmentState
-.extern func_020337d4
+.extern Actor_GetCollection
 .extern gGameWork
 
     .global Actor_SetResourceVariant
@@ -33,7 +33,7 @@ Actor_SetResourceVariant: ; 0x02032aec
     bl func_0200afd0
 .L_02032b30:
     mov r0, r5
-    bl func_020337d4
+    bl Actor_GetCollection
     add r0, r0, #0x2000
     ldr r0, [r0, #0xe84]
     cmp r0, #0x1

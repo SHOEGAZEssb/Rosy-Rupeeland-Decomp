@@ -11,7 +11,7 @@ extern void *func_02007f0c(void *runtime, s32 index);
 extern s32 func_0200b04c(void *state);
 extern void *ActorCollection_FindActorByDescriptorValue(void *collection, s32 index);
 extern void Actor_SetActive(void *actor, s32 active);
-extern void *func_020337d4(void *actor);
+extern void *Actor_GetCollection(void *actor);
 extern void OS_Halt(void);
 #ifdef __cplusplus
 }
@@ -45,7 +45,7 @@ s32 func_02015b64(GamePhaseActorScriptVm *self)
     if (**(void ***)(runtime + 0x24) != **(void ***)(owner + 0x2eac))
         return 0;
 
-    mode = *(u32 *)((u8 *)func_020337d4(self->actor_84) + 0x2e84);
+    mode = *(u32 *)((u8 *)Actor_GetCollection(self->actor_84) + 0x2e84);
     if (mode == 1)
         target = ActorCollection_FindActorByDescriptorValue(func_02007f0c(runtime, 2), index);
     else if (mode == 2)

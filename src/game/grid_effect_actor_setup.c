@@ -17,7 +17,7 @@ extern void *func_02005580(void *storage, u32 resource0, u32 resource1,
                            u32 resource2);
 extern void *func_02030acc(void);
 extern void func_020313b4(void *actor, void *bundle, u32 mode);
-extern void func_020337d4(void *actor);
+extern void Actor_GetCollection(void *actor);
 extern void func_02072b68(void *presentation, u32 selection);
 extern void *func_02073fc4(void *context, void *resource0, void *resource1,
                            void *resource2, u32 mode);
@@ -46,7 +46,7 @@ void func_0204ed3c(void *actor, const void *descriptor)
                               FIELD(u32, descriptor, 12));
     }
     FIELD(void *, actor, 0x1ec) = bundle;
-    func_020337d4(actor);
+    Actor_GetCollection(actor);
     void *presentation = func_02073fc4(
         func_02030acc(), FIELD(void *, bundle, 4), FIELD(void *, bundle, 8),
         FIELD(void *, bundle, 12), FIELD(u8, descriptor, 0x10));

@@ -5,7 +5,7 @@
 .extern func_0200f73c
 .extern func_0200f824
 .extern func_02012704
-.extern func_020337d4
+.extern Actor_GetCollection
 .global func_02017450
 func_02017450:
     stmdb sp!, {r3, r4, r5, r6, r7, lr}
@@ -16,7 +16,7 @@ func_02017450:
     bl func_02012704
     mov r5, r0
     ldr r0, [r7, #0x84]
-    bl func_020337d4
+    bl Actor_GetCollection
     add r0, r0, #0x2000
     ldr r0, [r0, #0xe84]
     cmp r0, #1

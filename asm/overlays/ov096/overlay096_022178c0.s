@@ -4,7 +4,7 @@
 .extern data_ov096_02218b18
 .extern data_ov096_02218b20
 .extern func_02030acc
-.extern func_020337d4
+.extern Actor_GetCollection
 .extern func_0203e7c8
 .extern func_020435f4
 .extern func_020593dc
@@ -105,7 +105,7 @@ func_ov096_022178c0:
     bic r1, r1, #0x3
     strh r1, [r2, #0x24]
     ldr r5, [r4, #0x208]
-    bl func_020337d4
+    bl Actor_GetCollection
     bl func_02030acc
     ldr r1, [r5, #0xc]
     str r1, [sp, #0x0]
@@ -193,7 +193,7 @@ func_ov096_022178c0:
     bic r1, r1, #0x3
     strh r1, [r2, #0x24]
     ldr r5, [r4, #0x208]
-    bl func_020337d4
+    bl Actor_GetCollection
     bl func_02030acc
     ldr r1, [r5, #0xc]
     str r1, [sp, #0x0]
@@ -228,7 +228,7 @@ func_ov096_022178c0:
     bic r1, r1, #0x3
     strh r1, [r2, #0x24]
     ldr r5, [r4, #0x208]
-    bl func_020337d4
+    bl Actor_GetCollection
     bl func_02030acc
     ldr r1, [r5, #0xc]
     str r1, [sp, #0x0]
@@ -270,7 +270,7 @@ func_ov096_022178c0:
     strh r2, [r3, #0x24]
     strb r1, [r4, #0x299]
     ldr r5, [r4, #0x208]
-    bl func_020337d4
+    bl Actor_GetCollection
     bl func_02030acc
     ldr r1, [r5, #0xc]
     str r1, [sp, #0x0]
@@ -350,7 +350,7 @@ func_ov096_022178c0:
     strh r2, [r3, #0x24]
     strb r1, [r4, #0x299]
     ldr r5, [r4, #0x208]
-    bl func_020337d4
+    bl Actor_GetCollection
     bl func_02030acc
     ldr r1, [r5, #0xc]
     str r1, [sp, #0x0]

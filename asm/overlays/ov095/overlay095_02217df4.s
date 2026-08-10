@@ -1,7 +1,7 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov095/overlay095_recovery.c.
 .extern func_02030acc
-.extern func_020337d4
+.extern Actor_GetCollection
 .extern func_02072b68
 .extern func_020740c8
 
@@ -19,7 +19,7 @@ func_ov095_02217df4:
     b .L_02218094
 .L_02217e1c:
     ldr r4, [r6, #0x208]
-    bl func_020337d4
+    bl Actor_GetCollection
     bl func_02030acc
     ldr r1, [r4, #0xc]
     str r1, [sp, #0x0]
@@ -39,7 +39,7 @@ func_ov095_02217df4:
     b .L_02218094
 .L_02217e68:
     ldr r7, [r6, #0x208]
-    bl func_020337d4
+    bl Actor_GetCollection
     bl func_02030acc
     ldr r1, [r7, #0xc]
     str r1, [sp, #0x0]

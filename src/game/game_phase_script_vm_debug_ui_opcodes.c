@@ -6,7 +6,7 @@
 extern "C" {
 #endif
 extern void func_0201da34(GamePhaseActorScriptVm *self);
-extern void *func_020337d4(void *actor);
+extern void *Actor_GetCollection(void *actor);
 extern void *func_0201da20(u32 mode, u32 value);
 extern void *func_0201d9e4(u32 value);
 extern void *func_0200f824(void *value);
@@ -38,7 +38,7 @@ s32 func_02015610(GamePhaseActorScriptVm *self)
         u32 value = func_02012704(&self->base);
         u8 *collection;
         func_0201da34(self);
-        collection = (u8 *)func_020337d4(self->actor_84);
+        collection = (u8 *)Actor_GetCollection(self->actor_84);
         second = func_0201da20(*(u32 *)(collection + 0x2e84), value);
         first = func_0201d9e4(lookup);
     }

@@ -5,7 +5,7 @@
 .extern data_ov088_0221b928
 .extern func_0202d494
 .extern Actor_GetCollisionBounds
-.extern func_020337d4
+.extern Actor_GetCollection
 .extern func_0203b514
 .extern func_020befec
 .extern func_ov088_022179e0
@@ -135,7 +135,7 @@ func_ov088_02217a3c:
     streq r5, [r1, #0x0]
     beq .L_02217c24
     mov r0, r5
-    bl func_020337d4
+    bl Actor_GetCollection
     mov r1, r5
     bl func_0202d494
 .L_02217c24:

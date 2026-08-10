@@ -3,7 +3,7 @@
 .extern data_020e6adc
 .extern data_020e6b74
 .extern func_02030acc
-.extern func_020337d4
+.extern Actor_GetCollection
 .extern func_02072b68
 .extern func_020740c8
 
@@ -43,7 +43,7 @@ func_ov079_02212b94:
     b .L_02212cb0
 .L_02212c10:
     ldr r6, [r5, #0x208]
-    bl func_020337d4
+    bl Actor_GetCollection
     bl func_02030acc
     ldr r1, [r6, #0xc]
     str r1, [sp, #0x0]
@@ -64,7 +64,7 @@ func_ov079_02212b94:
     b .L_02212f44
 .L_02212c60:
     ldr r6, [r5, #0x208]
-    bl func_020337d4
+    bl Actor_GetCollection
     bl func_02030acc
     ldr r1, [r6, #0xc]
     str r1, [sp, #0x0]
@@ -85,7 +85,7 @@ func_ov079_02212b94:
     b .L_02212f44
 .L_02212cb0:
     ldr r6, [r5, #0x208]
-    bl func_020337d4
+    bl Actor_GetCollection
     bl func_02030acc
     ldr r1, [r6, #0xc]
     str r1, [sp, #0x0]
@@ -106,7 +106,7 @@ func_ov079_02212b94:
     b .L_02212f44
 .L_02212d00:
     ldr r4, [r5, #0x208]
-    bl func_020337d4
+    bl Actor_GetCollection
     bl func_02030acc
     ldr r1, [r4, #0xc]
     str r1, [sp, #0x0]
@@ -133,7 +133,7 @@ func_ov079_02212b94:
     cmp r1, #0x0
     beq .L_02212f44
     ldr r6, [r5, #0x208]
-    bl func_020337d4
+    bl Actor_GetCollection
     bl func_02030acc
     ldr r1, [r6, #0xc]
     str r1, [sp, #0x0]
@@ -155,7 +155,7 @@ func_ov079_02212b94:
     ldrb r1, [r1, r2]
     cmp r1, #0x0
     beq .L_02212dfc
-    bl func_020337d4
+    bl Actor_GetCollection
     bl func_02030acc
     ldr r1, [r6, #0xc]
     str r1, [sp, #0x0]
@@ -171,7 +171,7 @@ func_ov079_02212b94:
     strh r0, [r1, #0x24]
     b .L_02212f44
 .L_02212dfc:
-    bl func_020337d4
+    bl Actor_GetCollection
     bl func_02030acc
     ldr r1, [r6, #0xc]
     str r1, [sp, #0x0]
@@ -192,7 +192,7 @@ func_ov079_02212b94:
     b .L_02212f44
 .L_02212e48:
     ldr r6, [r5, #0x208]
-    bl func_020337d4
+    bl Actor_GetCollection
     bl func_02030acc
     ldr r1, [r6, #0xc]
     str r1, [sp, #0x0]
@@ -213,7 +213,7 @@ func_ov079_02212b94:
     b .L_02212f44
 .L_02212e98:
     ldr r6, [r5, #0x208]
-    bl func_020337d4
+    bl Actor_GetCollection
     bl func_02030acc
     ldr r1, [r6, #0xc]
     str r1, [sp, #0x0]
@@ -236,7 +236,7 @@ func_ov079_02212b94:
     b .L_02212f44
 .L_02212ef0:
     ldr r6, [r5, #0x208]
-    bl func_020337d4
+    bl Actor_GetCollection
     bl func_02030acc
     ldr r1, [r6, #0xc]
     str r1, [sp, #0x0]

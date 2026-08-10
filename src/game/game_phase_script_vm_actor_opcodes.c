@@ -8,7 +8,7 @@ extern "C" {
 #endif
 extern void *data_021052fc;
 extern u8 data_02105310[];
-extern void *func_020337d4(void *actor);
+extern void *Actor_GetCollection(void *actor);
 extern void *ActorCollection_FindActorByDescriptorValue(void *collection, s32 index);
 extern void *func_02007f0c(void *runtime, s32 index);
 extern void Actor_SetActive(void *actor, s32 active);
@@ -61,7 +61,7 @@ s32 func_02012afc(GamePhaseActorScriptVm *self)
 {
     u32 value = func_02012704(&self->base);
     s32 index = (s32)func_02012704(&self->base);
-    void *collection = func_020337d4(self->actor_84);
+    void *collection = Actor_GetCollection(self->actor_84);
     void *target = ActorCollection_FindActorByDescriptorValue(collection, index);
 
     if (*((u8 *)target + 0x4d) == 1) {

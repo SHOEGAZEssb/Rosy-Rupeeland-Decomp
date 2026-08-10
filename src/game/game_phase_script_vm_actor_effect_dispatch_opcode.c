@@ -23,7 +23,7 @@ extern void ActorCollection_SpawnDescriptorsBySelector(
     void *collection, void *descriptors, s32 selector);
 extern void *ActorCollection_FindActorByDescriptorValue(void *collection, s32 index);
 extern void *Actor_GetCollisionCenter(VecFx32Object *destination, void *actor);
-extern void *func_020337d4(void *actor);
+extern void *Actor_GetCollection(void *actor);
 extern void func_02038ecc(void *manager, s32 value);
 extern s32 func_020397d4(void *manager);
 extern void func_0204e3f4(s32 duration, s16 amount,
@@ -59,7 +59,7 @@ static void spawnActorSnapshot(GamePhaseActorScriptVm *self, s32 actorIndex,
     u8 descriptor[0x5c];
     VecFx32Object transform;
     VecFx32Object position;
-    u8 *actor = (u8 *)ActorCollection_FindActorByDescriptorValue(func_020337d4(self->actor_84), actorIndex);
+    u8 *actor = (u8 *)ActorCollection_FindActorByDescriptorValue(Actor_GetCollection(self->actor_84), actorIndex);
     u8 *presentation = *(u8 **)(actor + 0x54);
     s32 resource0 = 0x1000;
     s32 resource1 = 0x1001;
@@ -118,7 +118,7 @@ static void spawnActorSnapshot(GamePhaseActorScriptVm *self, s32 actorIndex,
     *(s16 *)(descriptor + 0x52) = (s16)value;
     *(s32 *)(descriptor + 0x54) = -1;
     *(s32 *)(descriptor + 0x58) = 0;
-    func_0202ecd0(func_020337d4(self->actor_84), descriptor);
+    func_0202ecd0(Actor_GetCollection(self->actor_84), descriptor);
     func_020127f8(&self->base, (u32)value);
     func_02005058(&transform);
 }
@@ -179,11 +179,11 @@ s32 func_0201939c(GamePhaseActorScriptVm *self)
         s32 selection = (*(u32 *)((u8 *)self->actor_84 + 0x14) & 0x04000000)
                             ? data_02105710 : data_0210570c;
         ActorCollection_SpawnDescriptorsBySelector(
-            func_020337d4(self->actor_84), (void *)selection, p6);
+            Actor_GetCollection(self->actor_84), (void *)selection, p6);
         break;
     }
     case 5:
-        func_0202d568(func_020337d4(self->actor_84), p6);
+        func_0202d568(Actor_GetCollection(self->actor_84), p6);
         break;
     case 6: {
         VecFx32Object first;

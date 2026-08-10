@@ -16,7 +16,7 @@
 .extern func_0201e28c
 .extern func_02022fbc
 .extern func_02030acc
-.extern func_020337d4
+.extern Actor_GetCollection
 .extern func_02056f00
 .extern func_020627a0
 .extern func_020627d0
@@ -51,7 +51,7 @@ func_02022ff4: ; 0x02022ff4
     add r0, r4, #0x2c
     bl func_02004fe0
     mov r0, r6
-    bl func_020337d4
+    bl Actor_GetCollection
     bl func_02030acc
     str r0, [r4, #0x44]
     add r0, r4, #0x48

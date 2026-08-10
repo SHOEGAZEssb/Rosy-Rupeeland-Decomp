@@ -9,7 +9,7 @@ extern void *data_021052fc;
 extern void func_02047d40(void *actor);
 extern u32 func_02032e14(void *actor, u32 value);
 extern void func_020330fc(void *actor, u32 first, u32 second);
-extern void *func_020337d4(void *actor);
+extern void *Actor_GetCollection(void *actor);
 extern void *ActorCollection_FindActorByDescriptorValue(void *collection, s32 index);
 #ifdef __cplusplus
 }
@@ -77,7 +77,7 @@ s32 func_02013a34(GamePhaseActorScriptVm *self)
 {
     u32 value = func_02012704(&self->base);
     s32 index = (s32)func_02012704(&self->base);
-    void *target = ActorCollection_FindActorByDescriptorValue(func_020337d4(self->actor_84), index);
+    void *target = ActorCollection_FindActorByDescriptorValue(Actor_GetCollection(self->actor_84), index);
     func_020127f8(&self->base, func_02032e14(target, value));
     return 0;
 }
@@ -91,7 +91,7 @@ s32 func_02013a7c(GamePhaseActorScriptVm *self)
     u32 second = func_02012704(&self->base);
     u32 first = func_02012704(&self->base);
     s32 index = (s32)func_02012704(&self->base);
-    void *target = ActorCollection_FindActorByDescriptorValue(func_020337d4(self->actor_84), index);
+    void *target = ActorCollection_FindActorByDescriptorValue(Actor_GetCollection(self->actor_84), index);
     func_020330fc(target, first, second);
     return 0;
 }

@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/presentation_backed_actor_setup.c.
 .extern data_020f4e18
 .extern func_02030acc
-.extern func_020337d4
+.extern Actor_GetCollection
 .extern func_02071e60
 .extern func_02071e70
 .extern func_02071e80
@@ -30,7 +30,7 @@ func_0204d794:
     bl func_02071e80
     mov r6, r0
     mov r0, r5
-    bl func_020337d4
+    bl Actor_GetCollection
     bl func_02030acc
     ldrb ip, [r4, #0x10]
     mov r1, r8

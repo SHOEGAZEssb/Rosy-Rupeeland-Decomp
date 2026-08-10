@@ -2,7 +2,7 @@
 .text
 .extern data_020f4e18
 .extern func_02030acc
-.extern func_020337d4
+.extern Actor_GetCollection
 .extern func_02071e60
 .extern func_02071e70
 .extern func_02071e80
@@ -35,7 +35,7 @@ func_020314b8: ; 0x020314b8
     bl func_02071e80
     mov r5, r0
     mov r0, r4
-    bl func_020337d4
+    bl Actor_GetCollection
     bl func_02030acc
     mov ip, #0x2
     mov r1, r7

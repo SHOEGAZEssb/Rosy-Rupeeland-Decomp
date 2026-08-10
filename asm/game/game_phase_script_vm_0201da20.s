@@ -4,7 +4,7 @@
 .extern func_020be328
 .extern func_02072b68
 .extern func_020791e0
-.extern func_020337d4
+.extern Actor_GetCollection
 .extern func_02078e98
 .extern func_0201d9e4
 .extern func_0201da34

@@ -5,7 +5,7 @@
 .extern data_ov097_0221a4c8
 .extern func_0201e0ec
 .extern ActorCollection_FindActorByDescriptorValue
-.extern func_020337d4
+.extern Actor_GetCollection
 .extern func_02034a60
 .extern func_020425d4
 .extern func_0204362c
@@ -140,7 +140,7 @@ func_ov097_02217d44:
     cmp r0, #0x0
     beq .L_02217f84
     mov r0, r7
-    bl func_020337d4
+    bl Actor_GetCollection
     mov r10, r0
     ldr r0, [r8, #0x0]
     mov r1, r11

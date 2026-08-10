@@ -8,7 +8,7 @@
 .extern func_02030acc
 .extern func_02030e08
 .extern func_02031488
-.extern func_020337d4
+.extern Actor_GetCollection
 .extern func_02057184
 .extern func_02074038
 
@@ -28,7 +28,7 @@ func_0203130c: ; 0x0203130c
     cmp r4, #0x0
     beq .L_02031350
     mov r0, r5
-    bl func_020337d4
+    bl Actor_GetCollection
     bl func_02030acc
     mov r1, r4
     bl func_02074038

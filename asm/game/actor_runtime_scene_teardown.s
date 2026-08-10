@@ -8,7 +8,7 @@
 .extern func_0204b680
 .extern func_02038aac
 .extern GameWork_ClearFlag
-.extern func_020337d4
+.extern Actor_GetCollection
 .extern func_0202d358
 .extern func_02030b58
 .extern Scene_Destroy
@@ -85,7 +85,7 @@ L_0200b4e8:
     cmpeq r0, #0x2
     bne L_0200b530
     mov r0, r4
-    bl func_020337d4
+    bl Actor_GetCollection
     mov r1, r4
     bl func_0202d358
 L_0200b530:

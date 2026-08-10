@@ -19,7 +19,7 @@ extern s32 func_0201b23c(void *state);
 extern void func_0202d494(void *runtime, void *actor);
 extern void func_0202eba4(void *runtime, void *anchor, void *actor);
 extern void func_02031748(void *actor);
-extern void *func_020337d4(void *actor);
+extern void *Actor_GetCollection(void *actor);
 extern u8 *Actor_GetCollectionBySlot(void *actor, s32 category);
 #ifdef __cplusplus
 }
@@ -33,7 +33,7 @@ extern u8 *Actor_GetCollectionBySlot(void *actor, s32 category);
  * When byte +0xe8 is nonzero, require func_0200b058 to accept the actor in
  * registry data_02105310. Values other than two additionally obtain category
  * one through Actor_GetCollectionBySlot and call func_0202eba4 with its
- * +0x2e7c anchor, runtime from func_020337d4, and the actor. Then clear +0xe8,
+ * +0x2e7c anchor, runtime from Actor_GetCollection, and the actor. Then clear +0xe8,
  * copy the registry
  * value from func_0200af04 into embedded state +0xec, and advance that state.
  * Finally, actor +0x14 bit 0x20 removes the actor through func_0202d494.
@@ -56,7 +56,7 @@ void func_0204d308(void *self)
             return;
         if (actor[0xe8] != 2) {
             u8 *category = Actor_GetCollectionBySlot(actor, 1);
-            void *runtime = func_020337d4(actor);
+            void *runtime = Actor_GetCollection(actor);
             func_0202eba4(runtime, *(void **)(category + 0x2e7c), actor);
         }
         actor[0xe8] = 0;
@@ -64,5 +64,5 @@ void func_0204d308(void *self)
         func_0201b228(state);
     }
     if ((*(u32 *)(actor + 0x14) & 0x20) != 0)
-        func_0202d494(func_020337d4(actor), actor);
+        func_0202d494(Actor_GetCollection(actor), actor);
 }

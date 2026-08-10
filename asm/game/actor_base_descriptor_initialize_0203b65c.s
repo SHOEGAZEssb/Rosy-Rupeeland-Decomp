@@ -3,7 +3,7 @@
 .extern data_020f4e18
 .extern func_02030acc
 .extern func_020313b4
-.extern func_020337d4
+.extern Actor_GetCollection
 .extern func_02034260
 .extern func_02071ee0
 .extern func_02072b68
@@ -36,7 +36,7 @@ Actor_InitializeFromDescriptor: ; 0x0203b65c
     add r0, r5, #0x1f0
     bl func_02071ee0
     mov r0, r5
-    bl func_020337d4
+    bl Actor_GetCollection
     bl func_02030acc
     ldrb r1, [r4, #0x10]
     str r1, [sp, #0x0]

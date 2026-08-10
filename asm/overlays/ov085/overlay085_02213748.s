@@ -1,7 +1,7 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov085/overlay085_recovery.c.
 .extern func_02030acc
-.extern func_020337d4
+.extern Actor_GetCollection
 .extern Actor_GetCachedTerrainHeight
 .extern func_02072b68
 .extern func_020740c8
@@ -11,7 +11,7 @@ func_ov085_02213748:
     stmdb sp!, {r3, r4, lr}
     sub sp, sp, #0x4
     mov r4, r0
-    bl func_020337d4
+    bl Actor_GetCollection
     bl func_02030acc
     ldr r1, [r4, #0x1f8]
     str r1, [sp, #0x0]

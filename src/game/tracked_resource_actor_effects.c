@@ -19,7 +19,7 @@ extern void func_0201f864(void *storage, const void *position, void *context,
                           u16 id, u16 value0, u16 value1, s32 arg0,
                           s32 arg1, s32 arg2, s32 arg3);
 extern void *func_02030acc(void);
-extern void func_020337d4(void *actor);
+extern void Actor_GetCollection(void *actor);
 extern void func_02034a60(void *actor, u16 value, s32 mode, ...);
 extern void func_020a2614(void *manager, s32 subtype, s32 x, s32 y,
                           s32 variant);
@@ -92,7 +92,7 @@ void func_02050260(void *actor)
     if (FIELD(u16, record, 0x16) != 0) {
         void *object = Heap_Alloc(0x14, data_020e35cc, 4, gHeapContext);
         if (object != 0) {
-            func_020337d4(actor);
+            Actor_GetCollection(actor);
             func_0201f864(object, (u8 *)actor + 0x18, func_02030acc(),
                           FIELD(u16, record, 0x16),
                           FIELD(u16, record, 0x18),

@@ -10,7 +10,7 @@
 .extern func_0200a114
 .extern ActorCollection_SpawnDescriptorsBySelector
 .extern Actor_SetActive
-.extern func_020337d4
+.extern Actor_GetCollection
 .extern func_0204d570
 .extern func_02073ef8
 .extern gGameWork
@@ -78,7 +78,7 @@ func_ov091_02217b3c:
     ldr r1, [r2, #0x14]
     orr r1, r1, #0x4
     str r1, [r2, #0x14]
-    bl func_020337d4
+    bl Actor_GetCollection
     ldr r1, .L_02217cdc
     mvn r2, #0x0
     ldr r1, [r1, #0x0]

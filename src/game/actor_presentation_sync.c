@@ -16,7 +16,7 @@ extern u8 gSceneTouchInitialData[];
 extern "C" {
 #endif
 extern s32 func_020adae4(s32, s32);
-extern void *func_020337d4(void *);
+extern void *Actor_GetCollection(void *);
 extern s32 func_02030b7c(void *);
 extern void func_02057394(void *, s32);
 extern void Actor_GetCollisionCenter(void *, void *);
@@ -120,7 +120,7 @@ void func_02031758(PresentationPoint *output, void *actorPointer,
         *(void **)(actor + 0x1e0)) {
         u8 center[0x10];
         s32 enabled = *(void **)(actor + 0x184) &&
-                      (func_02030b7c(func_020337d4(actor)) & 1);
+                      (func_02030b7c(Actor_GetCollection(actor)) & 1);
         if (!*(void **)(actor + 0x184) &&
             !(*(u32 *)(actor + 0x14) & 0x1000))
             enabled = 0;

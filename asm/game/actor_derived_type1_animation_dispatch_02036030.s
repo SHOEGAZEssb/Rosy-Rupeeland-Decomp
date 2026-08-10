@@ -2,7 +2,7 @@
 .text
 .extern GameWork_TestFlag
 .extern func_02030acc
-.extern func_020337d4
+.extern Actor_GetCollection
 .extern func_020354e8
 .extern func_02072b68
 .extern func_020740c8
@@ -21,7 +21,7 @@ func_02036030: ; 0x02036030
     mov r5, #0x100
     cmp r6, #0x0
     beq .L_0203613c
-    bl func_020337d4
+    bl Actor_GetCollection
     bl func_02030acc
     ldr r1, [r6, #0xc]
     str r1, [sp, #0x0]
@@ -288,7 +288,7 @@ func_02036030: ; 0x02036030
     cmpne r10, #0x0
     beq .L_02036418
     mov r0, r4
-    bl func_020337d4
+    bl Actor_GetCollection
     bl func_02030acc
     ldr r1, [r10, #0xc]
     str r1, [sp, #0x0]

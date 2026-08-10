@@ -5,7 +5,7 @@
 .extern func_02012704
 .extern func_020127f8
 .extern ActorCollection_FindActorByDescriptorValue
-.extern func_020337d4
+.extern Actor_GetCollection
 .extern func_0204aff4
 .extern func_0204c51c
 .extern func_0204c59c
@@ -148,7 +148,7 @@ L_020190c8:
     b L_020190ec
 L_020190d8:
     ldr r0, [r4, #0x84]
-    bl func_020337d4
+    bl Actor_GetCollection
     mov r1, r5
     bl ActorCollection_FindActorByDescriptorValue
     ldr r1, [r0, #0x1fc]

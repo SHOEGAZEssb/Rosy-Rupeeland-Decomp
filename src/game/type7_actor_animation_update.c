@@ -7,7 +7,7 @@ extern u8 data_020e1720[];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *func_020337d4(void *actor);
+extern void *Actor_GetCollection(void *actor);
 extern void *func_02030acc(void *value);
 extern void func_020740c8(void *context, void *resource, void *first,
                           void *second, void *third);
@@ -18,7 +18,7 @@ extern void func_02072b68(void *resource, u32 animation);
 
 /*
  * Refresh actor resource +0x54 through func_020740c8 using the transformed
- * func_020337d4 context and actor fields +0x1f0/+0x1f4/+0x1f8. Select animation
+ * Actor_GetCollection context and actor fields +0x1f0/+0x1f4/+0x1f8. Select animation
  * from signed state +0xd6: states 1,2,3,6,7,11 use actor byte +0xd4 plus eight;
  * 4,5,17 use 0x21; 12 uses 0x12; 13 uses 0x11; 15 uses 0x10; state 16 ensures
  * 0x24; and state 18 ensures 0x1a. The ordinary/default path ensures animation
@@ -34,7 +34,7 @@ void func_02046208(void *self)
 {
     u8 *actor = (u8 *)self;
     u8 *resource = *(u8 **)(actor + 0x54);
-    void *context = func_02030acc(func_020337d4(actor));
+    void *context = func_02030acc(Actor_GetCollection(actor));
     s32 state;
     u16 scale = 0x100;
     u32 animation;

@@ -12,7 +12,7 @@ extern void *data_020f4e18;
 extern "C" {
 #endif
 extern void *func_02030acc(void);
-extern void func_020337d4(void *actor);
+extern void Actor_GetCollection(void *actor);
 extern void *func_02071e60(void *archive, u32 resource_id);
 extern void *func_02071e70(void *archive, u32 resource_id);
 extern void *func_02071e80(void *archive, u32 resource_id);
@@ -42,7 +42,7 @@ void func_0204d794(void *actor, const void *descriptor)
     void *resource2 = func_02071e80(data_020f4e18,
                                     FIELD(u32, descriptor, 0x0c));
 
-    func_020337d4(actor);
+    Actor_GetCollection(actor);
     FIELD(void *, actor, 0x54) =
         func_02073fc4(func_02030acc(), resource0, resource1, resource2,
                       FIELD(u8, descriptor, 0x10));

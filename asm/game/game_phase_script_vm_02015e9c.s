@@ -3,7 +3,7 @@
 .extern func_02012704
 .extern ActorCollection_FindActorByDescriptorValue
 .extern Actor_SetActive
-.extern func_020337d4
+.extern Actor_GetCollection
 .global func_02015e9c
 func_02015e9c:
     stmdb sp!, {r4, r5, r6, lr}
@@ -14,7 +14,7 @@ func_02015e9c:
     bl func_02012704
     mov r4, r0
     ldr r0, [r6, #0x84]
-    bl func_020337d4
+    bl Actor_GetCollection
     mov r1, r4
     bl ActorCollection_FindActorByDescriptorValue
     movs r4, r0

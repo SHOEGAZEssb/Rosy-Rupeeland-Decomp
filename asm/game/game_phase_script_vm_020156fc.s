@@ -7,7 +7,7 @@
 .extern func_02012704
 .extern func_0201d9e4
 .extern func_0201da20
-.extern func_020337d4
+.extern Actor_GetCollection
 .extern func_ov059_0220fd20
 .extern gHeapContext
 
@@ -24,7 +24,7 @@ func_020156fc: ; 0x020156fc
     bl func_02012704
     mov r4, r0
     ldr r0, [r5, #0x84]
-    bl func_020337d4
+    bl Actor_GetCollection
     mov r1, r4
     add r0, r0, #0x2000
     ldr r0, [r0, #0xe84]

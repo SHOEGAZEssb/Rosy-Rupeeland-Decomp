@@ -14,7 +14,7 @@ extern void *data_0210579c[];
 extern "C" {
 #endif
 extern void *func_0202d494(void *value, void *actor);
-extern void *func_020337d4(void *actor);
+extern void *Actor_GetCollection(void *actor);
 #ifdef __cplusplus
 }
 #endif
@@ -37,7 +37,7 @@ void func_0204f990(void)
 /*
  * Ignore all register inputs and return the address of the first empty slot.
  * If every slot is occupied, select the actor with the greatest upper-bit age
- * value from halfword 0x1F0, finish it through func_020337d4/func_0202d494, set
+ * value from halfword 0x1F0, finish it through Actor_GetCollection/func_0202d494, set
  * global flag 0x10 at data_021052fc+0x30B8, and return its slot for reuse. The
  * evicted actor and global state change; no direct hardware effects occur.
  */
@@ -59,7 +59,7 @@ void **func_0204f9c0(void)
     }
 
     void *actor = *oldest_slot;
-    func_0202d494(func_020337d4(actor), actor);
+    func_0202d494(Actor_GetCollection(actor), actor);
     FIELD(u32, data_021052fc, 0x30b8) |= 0x10;
     return oldest_slot;
 }

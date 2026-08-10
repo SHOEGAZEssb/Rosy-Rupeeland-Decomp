@@ -6,7 +6,7 @@
 .extern func_0200b2c0
 .extern func_0202d494
 .extern func_020328d0
-.extern func_020337d4
+.extern Actor_GetCollection
 .extern func_02050260
 .extern func_02050560
 .text
@@ -66,7 +66,7 @@ func_020511a4:
     ldr r1, [r5, #0x14]
     bic r1, r1, #0x800000
     str r1, [r5, #0x14]
-    bl func_020337d4
+    bl Actor_GetCollection
     mov r1, r5
     bl func_0202d494
     mov r0, r5

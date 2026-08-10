@@ -17,7 +17,7 @@
 .extern ActorCollection_SpawnDescriptorsBySelector
 .extern ActorCollection_FindActorByDescriptorValue
 .extern Actor_GetCollisionCenter
-.extern func_020337d4
+.extern Actor_GetCollection
 .extern func_02038ecc
 .extern func_020397d4
 .extern func_0204e3f4
@@ -65,7 +65,7 @@ L_0201940c: ; jump table
     b L_02019818 ; case 7
 L_0201942c:
     ldr r0, [r9, #0x84]
-    bl func_020337d4
+    bl Actor_GetCollection
     mov r1, r6
     bl ActorCollection_FindActorByDescriptorValue
     mov r8, #0x1000
@@ -181,7 +181,7 @@ L_0201948c:
     str r1, [sp, #0x140]
     str r2, [sp, #0x144]
     ldr r0, [r9, #0x84]
-    bl func_020337d4
+    bl Actor_GetCollection
     add r1, sp, #0xec
     bl func_0202ecd0
     mov r0, r9
@@ -321,14 +321,14 @@ L_020197d8:
     ldrne r1, L_02019888
     ldreq r1, L_0201988c
     ldr r4, [r1, #0x0]
-    bl func_020337d4
+    bl Actor_GetCollection
     mov r1, r4
     mov r2, r6
     bl ActorCollection_SpawnDescriptorsBySelector
     b L_02019878
 L_02019804:
     ldr r0, [r9, #0x84]
-    bl func_020337d4
+    bl Actor_GetCollection
     mov r1, r6
     bl func_0202d568
     b L_02019878

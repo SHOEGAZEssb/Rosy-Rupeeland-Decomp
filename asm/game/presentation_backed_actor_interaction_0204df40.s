@@ -13,7 +13,7 @@
 .extern func_0201e0ec
 .extern func_02022cb0
 .extern func_0202d494
-.extern func_020337d4
+.extern Actor_GetCollection
 .extern func_02038d38
 .extern func_02072b68
 .extern func_020a25c8
@@ -155,7 +155,7 @@ func_0204df40: ; 0x0204df40
     mov r4, #0xf
     orr r1, r1, #0x4
     strh r1, [r2, #0x24]
-    bl func_020337d4
+    bl Actor_GetCollection
     mov r1, r6
     bl func_0202d494
     add r0, r6, #0x100
@@ -196,7 +196,7 @@ func_0204df40: ; 0x0204df40
     mov r4, #0xf
     orr r1, r1, #0x4
     strh r1, [r2, #0x24]
-    bl func_020337d4
+    bl Actor_GetCollection
     mov r1, r6
     bl func_0202d494
     add r0, r6, #0x100

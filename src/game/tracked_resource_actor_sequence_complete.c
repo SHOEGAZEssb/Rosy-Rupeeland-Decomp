@@ -8,7 +8,7 @@ extern "C" {
 extern void *data_021052fc;
 extern void func_020099c0(void *manager_field, s32 event, s32 argument);
 extern void func_0202d494(void *handle, void *actor);
-extern void *func_020337d4(void *actor);
+extern void *Actor_GetCollection(void *actor);
 extern void func_02050260(void *actor);
 extern void func_020505f0(void *actor, ...);
 #ifdef __cplusplus
@@ -28,7 +28,7 @@ extern void func_020505f0(void *actor, ...);
  */
 void func_02052254(void *actor)
 {
-    func_0202d494(func_020337d4(actor), actor);
+    func_0202d494(Actor_GetCollection(actor), actor);
     func_02050260(actor);
     if ((FIELD(u32, actor, 0x10) & 4) != 0)
         func_020099c0((u8 *)data_021052fc + 0x2fbc, 0x14, 3);

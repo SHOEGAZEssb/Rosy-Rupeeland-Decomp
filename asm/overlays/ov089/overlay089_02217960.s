@@ -2,7 +2,7 @@
 ; Matching fallback for the portable implementation in src/overlays/ov089/overlay089_recovery.c.
 .extern data_020f4e18
 .extern func_02030acc
-.extern func_020337d4
+.extern Actor_GetCollection
 .extern func_02071ee0
 .extern func_02073fc4
 
@@ -19,7 +19,7 @@ func_ov089_02217960:
     ldmib r4, {r2, r3}
     bl func_02071ee0
     mov r0, r5
-    bl func_020337d4
+    bl Actor_GetCollection
     bl func_02030acc
     ldrb r1, [r4, #0x10]
     str r1, [sp, #0x0]

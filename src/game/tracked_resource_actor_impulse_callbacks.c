@@ -6,7 +6,7 @@
 extern "C" {
 #endif
 extern void func_0202d494(void *handle, void *actor);
-extern void *func_020337d4(void *actor);
+extern void *Actor_GetCollection(void *actor);
 extern void func_02050260(void *actor);
 #ifdef __cplusplus
 }
@@ -15,14 +15,14 @@ extern void func_02050260(void *actor);
 #define FIELD(type, object, offset) (*(type *)((u8 *)(object) + (offset)))
 
 /*
- * Input is an impulse actor. Obtains its recovered handle through func_020337d4,
+ * Input is an impulse actor. Obtains its recovered handle through Actor_GetCollection,
  * notifies func_0202d494 with the handle and actor, then invokes the recovered
  * effect helper func_02050260. Returns nothing; engine resources and effects
  * may change, but hardware is not accessed directly.
  */
 void func_020520b4(void *actor)
 {
-    func_0202d494(func_020337d4(actor), actor);
+    func_0202d494(Actor_GetCollection(actor), actor);
     func_02050260(actor);
 }
 

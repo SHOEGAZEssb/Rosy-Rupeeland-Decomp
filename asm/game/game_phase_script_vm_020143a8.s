@@ -38,7 +38,7 @@
 .extern func_0202906c
 .extern func_02030acc
 .extern ActorCollection_FindActorByDescriptorValue
-.extern func_020337d4
+.extern Actor_GetCollection
 .extern func_020a2310
 .extern func_020a245c
 .extern func_020a2480
@@ -289,7 +289,7 @@ L_020146bc:
     movs r4, r0
     beq L_02014718
     mov r0, r10
-    bl func_020337d4
+    bl Actor_GetCollection
     bl func_02030acc
     str r8, [sp, #0x0]
     str r7, [sp, #0x4]
@@ -481,7 +481,7 @@ L_0201493c:
     movs r5, r0
     beq L_020149c0
     mov r0, r10
-    bl func_020337d4
+    bl Actor_GetCollection
     bl func_02030acc
     mov r3, r6, lsl #0x10
     mov r4, #0x1
@@ -619,7 +619,7 @@ L_02014b2c:
     movs r4, r0
     beq L_02014bc4
     mov r0, r10
-    bl func_020337d4
+    bl Actor_GetCollection
     bl func_02030acc
     mov r5, r0
     bl genrand_int32
@@ -764,7 +764,7 @@ L_02014d38:
     movs r4, r0
     beq L_02014dd0
     mov r0, r10
-    bl func_020337d4
+    bl Actor_GetCollection
     bl func_02030acc
     mov r5, r0
     bl genrand_int32

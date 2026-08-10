@@ -7,7 +7,7 @@
 .extern func_02012704
 .extern ActorCollection_FindActorByDescriptorValue
 .extern Actor_SetActive
-.extern func_020337d4
+.extern Actor_GetCollection
 
     .global func_02012afc
 func_02012afc: ; 0x02012afc
@@ -19,7 +19,7 @@ func_02012afc: ; 0x02012afc
     bl func_02012704
     mov r5, r0
     ldr r0, [r6, #0x84]
-    bl func_020337d4
+    bl Actor_GetCollection
     mov r1, r5
     bl ActorCollection_FindActorByDescriptorValue
     mov r5, r0

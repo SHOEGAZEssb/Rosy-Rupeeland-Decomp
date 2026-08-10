@@ -12,7 +12,7 @@
 .extern func_0202d494
 .extern func_0202eba4
 .extern Actor_UpdateAttachmentDirectionFromVector
-.extern func_020337d4
+.extern Actor_GetCollection
 
     .global func_02034164
     .type func_02034164, @function
@@ -47,7 +47,7 @@ func_02034164: ; 0x02034164
     bl func_02007f0c
     mov r5, r0
     mov r0, r4
-    bl func_020337d4
+    bl Actor_GetCollection
     add r1, r5, #0x2000
     ldr r1, [r1, #0xe7c]
     mov r2, r4
@@ -73,7 +73,7 @@ func_02034164: ; 0x02034164
     tst r0, #0x20
     beq .L_02034250
     mov r0, r4
-    bl func_020337d4
+    bl Actor_GetCollection
     mov r1, r4
     bl func_0202d494
     mov r0, #0x0

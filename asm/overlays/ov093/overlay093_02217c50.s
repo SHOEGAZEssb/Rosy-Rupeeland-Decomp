@@ -22,7 +22,7 @@
 .extern func_0201e0ec
 .extern func_0201f864
 .extern func_02030acc
-.extern func_020337d4
+.extern Actor_GetCollection
 .extern func_0204d308
 .extern func_020593ac
 .extern func_02059484
@@ -223,7 +223,7 @@ func_ov093_02217c50:
     movs r5, r0
     beq .L_02217f40
     mov r0, r4
-    bl func_020337d4
+    bl Actor_GetCollection
     bl func_02030acc
     ldr r3, .L_022184ec
     mov r2, r0
