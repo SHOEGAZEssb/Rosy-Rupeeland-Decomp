@@ -31,7 +31,7 @@ extern s32 func_020adae4(s32 value, s32 divisor);
  * and return zero. Actor, callback, target, and motion state may change; there
  * are no direct SDK or hardware effects.
  */
-s32 func_02049ad4(void *self)
+s32 Type7Actor_UpdateTargetDeceleration(void *self)
 {
     u8 *actor = (u8 *)self;
     u8 *related;

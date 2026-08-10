@@ -4,9 +4,9 @@
 .extern Type7Actor_DispatchCurrentCallback
 .extern func_020adae4
 .text
-    .global func_02049ad4
-.type func_02049ad4, @function
-func_02049ad4: ; 0x02049ad4
+    .global Type7Actor_UpdateTargetDeceleration
+.type Type7Actor_UpdateTargetDeceleration, @function
+Type7Actor_UpdateTargetDeceleration: ; 0x02049ad4
     stmdb sp!, {r4, lr}
     mov r4, r0
     ldr r1, [r4, #0x268]
@@ -80,5 +80,5 @@ func_02049ad4: ; 0x02049ad4
     mov r0, r1
     strh r2, [r4, #0xd6]
     ldmia sp!, {r4, pc}
-.size func_02049ad4, . - func_02049ad4
+.size Type7Actor_UpdateTargetDeceleration, . - Type7Actor_UpdateTargetDeceleration
 
