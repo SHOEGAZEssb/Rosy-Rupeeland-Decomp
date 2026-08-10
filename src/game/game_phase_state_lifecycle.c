@@ -21,7 +21,7 @@ extern void ActorCollection_Init(void *object);
 extern void ActorCollection_Destructor(void *object);
 extern void ActorCollection_Deinit(void *object);
 extern void ActorCollection_UnregisterAndDestroyAllActors(void *object);
-extern void func_0203abb0(void);
+extern void ActorFeedback_DestroyPresentations(void);
 extern void func_020a2324(void);
 #ifdef __cplusplus
 }
@@ -93,6 +93,6 @@ void func_0200e61c(GamePhaseState *self)
     func_0201df64(self->helper_2f58);
     func_0201e0ec(self->helper_2f58);
     func_020a2324();
-    func_0203abb0();
+    ActorFeedback_DestroyPresentations();
     ActorCollection_UnregisterAndDestroyAllActors(self->storage_0004);
 }

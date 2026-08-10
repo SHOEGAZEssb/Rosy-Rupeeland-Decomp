@@ -37,7 +37,7 @@
 .extern Actor_AdjustPositionForTerrainHeight
 .extern func_02038b64
 .extern func_02038e50
-.extern func_0203ab6c
+.extern ActorInteractionRuntime_Start
 .extern func_020ae90c
 .extern GameWork_TestFlag
 .extern gGameWork
@@ -172,7 +172,7 @@ func_02006bdc:
     ldr r1, [r1, #0xbc]
     ldr r1, [r1, #0x24]
     blx r1
-    bl func_0203ab6c
+    bl ActorInteractionRuntime_Start
     mov r6, r5, lsl #0xc
     add r0, r4, #0x2000
     ldr r5, [r0, #0xea4]

@@ -6,7 +6,7 @@
 .extern data_ov121_02225b60
 .extern data_ov121_02225b64
 .extern func_02008f58
-.extern func_0203aac4
+.extern ActorInteractionRuntime_Init
 .extern func_0203abac
 .extern func_0203b38c
 .extern func_0203b3ac
@@ -16,7 +16,7 @@ func_ov121_0221d6c0:
     stmdb sp!, {r3, lr}
     cmp r0, #0x0
     ldmneia sp!, {r3, pc}
-    bl func_0203aac4
+    bl ActorInteractionRuntime_Init
     ldr r0, .L_0221d6fc
     ldr r2, .L_0221d700
     mov r1, #0x3

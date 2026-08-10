@@ -7,7 +7,7 @@
 .extern func_0201e0ec
 .extern func_0202d3cc
 .extern func_02039ba0
-.extern func_0203abb0
+.extern ActorFeedback_DestroyPresentations
 .extern func_020a2324
 .extern gGameWork
 
@@ -40,7 +40,7 @@ func_0200ea48: ; 0x0200ea48
     add r0, r0, #0x2c00
     bl func_0201e0ec
     bl func_020a2324
-    bl func_0203abb0
+    bl ActorFeedback_DestroyPresentations
     add r0, r4, #0x2000
     ldr r0, [r0, #0xeb0]
     mov r1, #0x0

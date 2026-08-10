@@ -3,7 +3,7 @@
 .extern func_0201df64
 .extern func_0201e0ec
 .extern ActorCollection_UnregisterAndDestroyAllActors
-.extern func_0203abb0
+.extern ActorFeedback_DestroyPresentations
 .extern func_020a2324
 
     .global func_0200e61c
@@ -17,7 +17,7 @@ func_0200e61c: ; 0x0200e61c
     add r0, r0, #0x2c00
     bl func_0201e0ec
     bl func_020a2324
-    bl func_0203abb0
+    bl ActorFeedback_DestroyPresentations
     add r0, r4, #0x4
     bl ActorCollection_UnregisterAndDestroyAllActors
     ldmia sp!, {r4, pc}

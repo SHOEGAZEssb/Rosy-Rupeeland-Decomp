@@ -5,7 +5,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_0203abf4(void);
+extern void ActorInteractionRuntime_Shutdown(void);
 #ifdef __cplusplus
 }
 #endif
@@ -22,7 +22,7 @@ void func_0200bd10(ActorRuntimeObjectLists *self)
 {
     ActorRuntimeOwnedNode *node;
 
-    func_0203abf4();
+    ActorInteractionRuntime_Shutdown();
     if (self->second.count == 0)
         return;
     for (node = self->second.head; node != 0; node = node->next) {

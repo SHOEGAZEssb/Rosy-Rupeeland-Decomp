@@ -156,6 +156,6 @@ func_0203a8b8: ; 0x0203a8b8
 .L_0203aabc: .word data_020df4f0
 .L_0203aac0: .word gHeapContext
 
-    .global func_0203aac4
+    .global ActorInteractionRuntime_Init
 
     .size func_0203a8b8, . - func_0203a8b8

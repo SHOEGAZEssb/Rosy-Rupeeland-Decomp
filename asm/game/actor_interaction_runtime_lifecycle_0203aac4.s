@@ -30,9 +30,9 @@
 .extern gGameWork
 .extern gHeapContext
 .extern gSoundContext
-    .global func_0203aac4
-    .type func_0203aac4, @function
-func_0203aac4: ; 0x0203aac4
+    .global ActorInteractionRuntime_Init
+    .type ActorInteractionRuntime_Init, @function
+ActorInteractionRuntime_Init: ; 0x0203aac4
     stmdb sp!, {r3, lr}
     ldr r1, .L_0203ab50
     ldr r3, .L_0203ab54
@@ -78,11 +78,11 @@ func_0203aac4: ; 0x0203aac4
 .L_0203ab60: .word data_0210572a
 .L_0203ab64: .word data_02105728
 .L_0203ab68: .word gActorFeedbackPresentations
-    .size func_0203aac4, . - func_0203aac4
+    .size ActorInteractionRuntime_Init, . - ActorInteractionRuntime_Init
 
-    .global func_0203ab6c
-    .type func_0203ab6c, @function
-func_0203ab6c: ; 0x0203ab6c
+    .global ActorInteractionRuntime_Start
+    .type ActorInteractionRuntime_Start, @function
+ActorInteractionRuntime_Start: ; 0x0203ab6c
     stmdb sp!, {r3, lr}
     bl func_02034e58
     ldr r1, .L_0203aba4
@@ -99,7 +99,7 @@ func_0203ab6c: ; 0x0203ab6c
     ldmia sp!, {r3, pc}
 .L_0203aba4: .word data_02105774
 .L_0203aba8: .word data_021056e4
-    .size func_0203ab6c, . - func_0203ab6c
+    .size ActorInteractionRuntime_Start, . - ActorInteractionRuntime_Start
 
     .global func_0203abac
     .type func_0203abac, @function
@@ -107,9 +107,9 @@ func_0203abac: ; 0x0203abac
     bx lr
     .size func_0203abac, . - func_0203abac
 
-    .global func_0203abb0
-    .type func_0203abb0, @function
-func_0203abb0: ; 0x0203abb0
+    .global ActorFeedback_DestroyPresentations
+    .type ActorFeedback_DestroyPresentations, @function
+ActorFeedback_DestroyPresentations: ; 0x0203abb0
     stmdb sp!, {r4, r5, r6, lr}
     mov r6, #0x0
     ldr r5, .L_0203abf0
@@ -130,11 +130,11 @@ func_0203abb0: ; 0x0203abb0
     blt .L_0203abc0
     ldmia sp!, {r4, r5, r6, pc}
 .L_0203abf0: .word gActorFeedbackPresentations
-    .size func_0203abb0, . - func_0203abb0
+    .size ActorFeedback_DestroyPresentations, . - ActorFeedback_DestroyPresentations
 
-    .global func_0203abf4
-    .type func_0203abf4, @function
-func_0203abf4: ; 0x0203abf4
+    .global ActorInteractionRuntime_Shutdown
+    .type ActorInteractionRuntime_Shutdown, @function
+ActorInteractionRuntime_Shutdown: ; 0x0203abf4
     stmdb sp!, {r4, lr}
     ldr r0, .L_0203ac94
     mov r1, #0x1f
@@ -180,5 +180,5 @@ func_0203abf4: ; 0x0203abf4
     ldmia sp!, {r4, pc}
 .L_0203ac94: .word gSoundContext
 .L_0203ac98: .word data_02105778
-    .size func_0203abf4, . - func_0203abf4
+    .size ActorInteractionRuntime_Shutdown, . - ActorInteractionRuntime_Shutdown
 

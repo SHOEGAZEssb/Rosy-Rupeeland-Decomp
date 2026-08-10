@@ -44,7 +44,7 @@ extern void func_0205929c(void *context, s32 channel, s32 value);
  * and clear all six feedback slots. Returns no value; allocation, resource,
  * and subsystem initialization change global ownership and engine state.
  */
-void func_0203aac4(void)
+void ActorInteractionRuntime_Init(void)
 {
     void *object = Heap_Alloc(0x40, data_020df4f8, 4, &gHeapContext);
     s32 i;
@@ -67,7 +67,7 @@ void func_0203aac4(void)
  * halfword first. Returns no value; every called initializer changes global
  * subsystem state.
  */
-void func_0203ab6c(void)
+void ActorInteractionRuntime_Start(void)
 {
     func_02034e58();
     data_02105774 = 0;
@@ -90,7 +90,7 @@ void func_0203abac(void)
  * vtable slot +0x04 and clear its slot. Returns no value; virtual calls release
  * presentation ownership.
  */
-void func_0203abb0(void)
+void ActorFeedback_DestroyPresentations(void)
 {
     s32 i;
     for (i = 0; i < 6; ++i) {
@@ -109,7 +109,7 @@ void func_0203abb0(void)
  * Returns no value; sound, virtual subsystem, heap, and resource calls have
  * observable hardware and ownership effects.
  */
-void func_0203abf4(void)
+void ActorInteractionRuntime_Shutdown(void)
 {
     if (func_02059344(gSoundContext, 0x1f) != 0)
         func_0205929c(gSoundContext, 0x1f, 0);

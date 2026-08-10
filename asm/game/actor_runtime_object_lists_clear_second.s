@@ -1,13 +1,13 @@
 ; Matching retail form; see src/game/actor_runtime_object_lists_cleanup.c for
 ; the documented portable implementation and recovered behavior.
 .text
-.extern func_0203abf4
+.extern ActorInteractionRuntime_Shutdown
 .extern func_0200bba8
 .global func_0200bd10
 func_0200bd10:
     stmdb sp!, {r3, r4, r5, lr}
     mov r5, r0
-    bl func_0203abf4
+    bl ActorInteractionRuntime_Shutdown
     ldr r0, [r5, #0x20]
     cmp r0, #0x0
     moveq r0, #0x1

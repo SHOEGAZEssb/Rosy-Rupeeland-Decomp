@@ -2,7 +2,7 @@
 .text
 .extern func_0200e780
 .extern func_02038e50
-.extern func_0203ab6c
+.extern ActorInteractionRuntime_Start
 
     .global func_0200e714
 func_0200e714: ; 0x0200e714
@@ -14,7 +14,7 @@ func_0200e714: ; 0x0200e714
     ldr r1, [r5, #0x24]
     mov r0, #0x0
     blx r1
-    bl func_0203ab6c
+    bl ActorInteractionRuntime_Start
     ldr r0, [r5, #0x0]
     sub r0, r0, #0x2
     cmp r0, #0x2

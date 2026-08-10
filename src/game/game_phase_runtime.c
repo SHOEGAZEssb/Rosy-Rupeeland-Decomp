@@ -40,7 +40,7 @@ extern void func_0200a35c(void *object);
 extern void func_020090c0(void *object);
 extern void func_0200ae8c(void *object);
 extern void func_0200e650(void *object, const void *config);
-extern void func_0203ab6c(void);
+extern void ActorInteractionRuntime_Start(void);
 extern void func_02038b64(void *entity);
 extern void Actor_AdjustPositionForTerrainHeight(void *entity);
 extern void func_02038e50(void *entity, s32 enabled);
@@ -142,7 +142,7 @@ void func_02006bdc(GamePhaseRuntime *self, const void *configPointer,
     func_0200e650(bytes + 0x24, configPointer);
     func_02008bb8(self, (void *)configPointer, 1);
     ((void (*)(s32))*(const void *const *)(config + 0x24))(0);
-    func_0203ab6c();
+    ActorInteractionRuntime_Start();
 
     entity = *(void **)(bytes + 0x2ea4);
     *(s32 *)((u8 *)entity + 0x1c) = x << 12;

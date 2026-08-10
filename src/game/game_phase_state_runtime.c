@@ -16,7 +16,7 @@ extern void *func_0201e0ec(void *object);
 extern void *func_0202baec(void *object, s32 x, s32 y);
 extern void func_0202d3cc(void *object);
 extern void func_02039ba0(void *object);
-extern void func_0203abb0(void);
+extern void ActorFeedback_DestroyPresentations(void);
 extern void func_020a2324(void);
 extern void func_020a2348(void *object, s32 a, s32 b);
 extern void func_020a23a8(void *object, s32 a, s32 b);
@@ -71,7 +71,7 @@ void func_0200ea48(GamePhaseState *self)
     func_0201df64(self->helper_2f58);
     func_0201e0ec(self->helper_2f58);
     func_020a2324();
-    func_0203abb0();
+    ActorFeedback_DestroyPresentations();
     ((PhaseVirtualValueMethod)phaseVirtual(self, 0x24))(self->owned_2eb0, 0);
     if (self->owned_2eb0)
         ((PhaseVirtualMethod)phaseVirtual(self, 4))(self->owned_2eb0);
