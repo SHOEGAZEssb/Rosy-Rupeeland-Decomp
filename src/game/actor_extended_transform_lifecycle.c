@@ -25,7 +25,7 @@ extern s32 ActorExtendedType2_GetDescriptorValue2C(const void *actor);
  * descriptor value +0x2c at +0x29a. Return self; actor/owned-value state
  * changes.
  */
-void *func_020440cc(void *self, const void *configuration)
+void *ActorExtendedTransform_Init(void *self, const void *configuration)
 {
     u8 *actor = (u8 *)self;
     ActorExtendedType2_Init(actor, configuration);
@@ -36,8 +36,8 @@ void *func_020440cc(void *self, const void *configuration)
     return actor;
 }
 
-/* Same inputs, state changes, and return contract as func_020440cc. */
-void *func_02044118(void *self, const void *configuration)
+/* Same inputs, state changes, and return contract as ActorExtendedTransform_Init. */
+void *ActorExtendedTransform_InitDuplicate(void *self, const void *configuration)
 {
     u8 *actor = (u8 *)self;
     ActorExtendedType2_Init(actor, configuration);
@@ -49,7 +49,7 @@ void *func_02044118(void *self, const void *configuration)
 }
 
 /* Finalize +0x29c, invoke the base destructor, and return self. */
-void *func_02044164(void *self)
+void *ActorExtendedTransform_DestroyComplete(void *self)
 {
     func_02005058((u8 *)self + 0x29c);
     ActorExtendedType2_Destroy(self);
@@ -60,7 +60,7 @@ void *func_02044164(void *self)
  * Finalize +0x29c, invoke the base destructor, free self, and return the
  * original pointer value. Actor storage becomes invalid after Heap_Free.
  */
-void *func_02044184(void *self)
+void *ActorExtendedTransform_DestroyAndFree(void *self)
 {
     func_02005058((u8 *)self + 0x29c);
     ActorExtendedType2_Destroy(self);
@@ -69,7 +69,7 @@ void *func_02044184(void *self)
 }
 
 /* Finalize +0x29c, invoke the base destructor, and return self. */
-void *func_020441ac(void *self)
+void *ActorExtendedTransform_Destroy(void *self)
 {
     func_02005058((u8 *)self + 0x29c);
     ActorExtendedType2_Destroy(self);

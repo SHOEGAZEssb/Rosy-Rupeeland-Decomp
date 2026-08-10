@@ -4,13 +4,13 @@
 .extern Actor_IsAtCachedTerrainHeight
 .extern ActorExtendedType2_GetDescriptorValue2A
 .extern ActorExtendedType2_ApplyMotionImpulseIfEnabled
-.global func_020443f0
-.type func_020443f0, @function
-.global func_02044434
-.type func_02044434, @function
-.global func_020444b4
-.type func_020444b4, @function
-func_020443f0: ; 0x020443f0
+.global ActorExtendedTransform_ResetMotionImpulseState
+.type ActorExtendedTransform_ResetMotionImpulseState, @function
+.global ActorExtendedTransform_AdjustTerrainCoordinates
+.type ActorExtendedTransform_AdjustTerrainCoordinates, @function
+.global ActorExtendedTransform_AdvanceTerrainRetry
+.type ActorExtendedTransform_AdvanceTerrainRetry, @function
+ActorExtendedTransform_ResetMotionImpulseState: ; 0x020443f0
     stmdb sp!, {r4, r5, r6, lr}
     mov r6, r0
     mov r5, r1
@@ -29,8 +29,8 @@ func_020443f0: ; 0x020443f0
     bl ActorExtendedType2_ApplyMotionImpulseIfEnabled
     ldmia sp!, {r4, r5, r6, pc}
 
-.size func_020443f0, . - func_020443f0
-func_02044434: ; 0x02044434
+.size ActorExtendedTransform_ResetMotionImpulseState, . - ActorExtendedTransform_ResetMotionImpulseState
+ActorExtendedTransform_AdjustTerrainCoordinates: ; 0x02044434
     stmdb sp!, {r4, r5, r6, lr}
     mov r6, r0
     mov r5, r1
@@ -65,8 +65,8 @@ func_02044434: ; 0x02044434
     str r0, [r4, #0x0]
     ldmia sp!, {r4, r5, r6, pc}
 
-.size func_02044434, . - func_02044434
-func_020444b4: ; 0x020444b4
+.size ActorExtendedTransform_AdjustTerrainCoordinates, . - ActorExtendedTransform_AdjustTerrainCoordinates
+ActorExtendedTransform_AdvanceTerrainRetry: ; 0x020444b4
     stmdb sp!, {r4, lr}
     mov r4, r0
     bl Actor_IsAtCachedTerrainHeight
@@ -93,4 +93,4 @@ func_020444b4: ; 0x020444b4
 .L_02044510:
     mov r0, #0x0
     ldmia sp!, {r4, pc}
-.size func_020444b4, . - func_020444b4
+.size ActorExtendedTransform_AdvanceTerrainRetry, . - ActorExtendedTransform_AdvanceTerrainRetry

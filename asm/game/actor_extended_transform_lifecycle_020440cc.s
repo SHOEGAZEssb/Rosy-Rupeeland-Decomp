@@ -7,17 +7,17 @@
 .extern ActorExtendedType2_Init
 .extern ActorExtendedType2_Destroy
 .extern ActorExtendedType2_GetDescriptorValue2C
-.global func_020440cc
-.type func_020440cc, @function
-.global func_02044118
-.type func_02044118, @function
-.global func_02044164
-.type func_02044164, @function
-.global func_02044184
-.type func_02044184, @function
-.global func_020441ac
-.type func_020441ac, @function
-func_020440cc: ; 0x020440cc
+.global ActorExtendedTransform_Init
+.type ActorExtendedTransform_Init, @function
+.global ActorExtendedTransform_InitDuplicate
+.type ActorExtendedTransform_InitDuplicate, @function
+.global ActorExtendedTransform_DestroyComplete
+.type ActorExtendedTransform_DestroyComplete, @function
+.global ActorExtendedTransform_DestroyAndFree
+.type ActorExtendedTransform_DestroyAndFree, @function
+.global ActorExtendedTransform_Destroy
+.type ActorExtendedTransform_Destroy, @function
+ActorExtendedTransform_Init: ; 0x020440cc
     stmdb sp!, {r4, lr}
     mov r4, r0
     bl ActorExtendedType2_Init
@@ -38,8 +38,8 @@ func_020440cc: ; 0x020440cc
     ldmia sp!, {r4, pc}
 .L_02044114: .word data_020e08ec
 
-.size func_020440cc, . - func_020440cc
-func_02044118: ; 0x02044118
+.size ActorExtendedTransform_Init, . - ActorExtendedTransform_Init
+ActorExtendedTransform_InitDuplicate: ; 0x02044118
     stmdb sp!, {r4, lr}
     mov r4, r0
     bl ActorExtendedType2_Init
@@ -60,8 +60,8 @@ func_02044118: ; 0x02044118
     ldmia sp!, {r4, pc}
 .L_02044160: .word data_020e08ec
 
-.size func_02044118, . - func_02044118
-func_02044164: ; 0x02044164
+.size ActorExtendedTransform_InitDuplicate, . - ActorExtendedTransform_InitDuplicate
+ActorExtendedTransform_DestroyComplete: ; 0x02044164
     stmdb sp!, {r4, lr}
     mov r4, r0
     add r0, r4, #0x29c
@@ -71,8 +71,8 @@ func_02044164: ; 0x02044164
     mov r0, r4
     ldmia sp!, {r4, pc}
 
-.size func_02044164, . - func_02044164
-func_02044184: ; 0x02044184
+.size ActorExtendedTransform_DestroyComplete, . - ActorExtendedTransform_DestroyComplete
+ActorExtendedTransform_DestroyAndFree: ; 0x02044184
     stmdb sp!, {r4, lr}
     mov r4, r0
     add r0, r4, #0x29c
@@ -84,8 +84,8 @@ func_02044184: ; 0x02044184
     mov r0, r4
     ldmia sp!, {r4, pc}
 
-.size func_02044184, . - func_02044184
-func_020441ac: ; 0x020441ac
+.size ActorExtendedTransform_DestroyAndFree, . - ActorExtendedTransform_DestroyAndFree
+ActorExtendedTransform_Destroy: ; 0x020441ac
     stmdb sp!, {r4, lr}
     mov r4, r0
     add r0, r4, #0x29c
@@ -94,4 +94,4 @@ func_020441ac: ; 0x020441ac
     bl ActorExtendedType2_Destroy
     mov r0, r4
     ldmia sp!, {r4, pc}
-.size func_020441ac, . - func_020441ac
+.size ActorExtendedTransform_Destroy, . - ActorExtendedTransform_Destroy

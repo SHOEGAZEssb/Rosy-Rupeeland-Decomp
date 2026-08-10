@@ -15,10 +15,11 @@ extern void ActorExtendedType2_ApplyMotionImpulseIfEnabled(void *actor, void *fi
 
 /*
  * Clear halfword +0x298 and word +0x44, zero the value at +0x29c, then forward
- * actor and both remaining inputs to ActorExtendedType2_ApplyMotionImpulseIfEnabled. Returns no value; actor and
+ * actor and both remaining inputs to
+ * ActorExtendedType2_ApplyMotionImpulseIfEnabled. Returns no value; actor and
  * descriptor-related state may change.
  */
-void func_020443f0(void *self, void *first, void *second)
+void ActorExtendedTransform_ResetMotionImpulseState(void *self, void *first, void *second)
 {
     u8 *actor = (u8 *)self;
     *(u16 *)(actor + 0x298) = 0;
@@ -35,7 +36,7 @@ void func_020443f0(void *self, void *first, void *second)
  * truncating halves added to truncating halves of actor +0x2a0/+0x2a4.
  * Returns no value; actor or caller-owned coordinates may change.
  */
-void func_02044434(void *self, s32 *x, s32 *y)
+void ActorExtendedTransform_AdjustTerrainCoordinates(void *self, s32 *x, s32 *y)
 {
     u8 *actor = (u8 *)self;
     if (Actor_IsAtCachedTerrainHeight(actor, x, y) != 0) {
@@ -57,7 +58,7 @@ void func_02044434(void *self, s32 *x, s32 *y)
  * limit +0x29a, increment the counter, enter state one at +0xd6, zero +0x29c
  * and +0x44, and return one. Otherwise return zero without those changes.
  */
-s32 func_020444b4(void *self)
+s32 ActorExtendedTransform_AdvanceTerrainRetry(void *self)
 {
     u8 *actor = (u8 *)self;
     if (Actor_IsAtCachedTerrainHeight(actor) != 0

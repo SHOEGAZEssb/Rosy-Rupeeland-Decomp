@@ -1,13 +1,13 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov096/overlay096_recovery.c.
 .extern data_ov096_02218de8
-.extern func_020440cc
+.extern ActorExtendedTransform_Init
 
 .global func_ov096_02218310
 func_ov096_02218310:
     stmdb sp!, {r4, lr}
     mov r4, r0
-    bl func_020440cc
+    bl ActorExtendedTransform_Init
     ldr r0, .L_02218354
     add r2, r4, #0x200
     str r0, [r4, #0x0]

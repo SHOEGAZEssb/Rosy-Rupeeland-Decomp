@@ -123,7 +123,7 @@
 .extern func_ov096_02218370
 .extern func_ov096_022185d8
 .extern func_ov096_0221838c
-.extern func_020443f0
+.extern ActorExtendedTransform_ResetMotionImpulseState
 .extern func_0203f2ec
 .extern func_ov096_0221865c
 .extern func_0203fc0c
@@ -386,7 +386,7 @@ data_ov096_02218de8:
     .word Actor_SetResourceSlot
     .word func_02033f4c
     .word func_ov096_02218180
-    .word func_020443f0
+    .word ActorExtendedTransform_ResetMotionImpulseState
     .word func_02031464
     .word func_0203baac
     .word ActorExtendedType2_ResetRuntimeState
