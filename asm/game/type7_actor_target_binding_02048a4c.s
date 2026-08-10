@@ -4,7 +4,7 @@
 .extern func_02007f0c
 .extern Actor_DestroyAuxiliaryCollisionResource
 .extern AttachmentController_SetEnabled
-.extern func_02048378
+.extern Type7Actor_HandleObjectInteraction
 .extern func_020adcac
 .global func_02048a4c
 .global func_02048b94
@@ -96,7 +96,7 @@ func_02048a4c: ; 0x02048a4c
     beq .L_02048b88
     mov r0, r10
     mov r1, r5
-    bl func_02048378
+    bl Type7Actor_HandleObjectInteraction
     mov r0, #0x1
     ldmia sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, pc}
 .L_02048b88:

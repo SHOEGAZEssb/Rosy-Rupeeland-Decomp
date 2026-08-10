@@ -61,7 +61,7 @@ static s32 callback_pair_matches(const u8 *actor, void *first, void *second)
  * animation, heap, and auxiliary presentation state may change. Heap_Alloc is
  * the SDK-facing allocator effect; this routine has no return value.
  */
-void func_02048378(void *self, void *otherObject)
+void Type7Actor_HandleObjectInteraction(void *self, void *otherObject)
 {
     u8 *actor = (u8 *)self;
     u8 *other = (u8 *)otherObject;

@@ -18284,7 +18284,7 @@ build build/reports/type7_actor_object_interaction_02048378.json: objdiff build/
   base_object = build/decomp/asm/game/type7_actor_object_interaction_02048378.o
 build build/reports/type7_actor_object_interaction_02048378.txt: match_report build/reports/type7_actor_object_interaction_02048378.json | tools/report_objdiff.py
   report_json = build/reports/type7_actor_object_interaction_02048378.json
-  report_args = --section .text --function func_02048378 --require-exact
+  report_args = --section .text --function Type7Actor_HandleObjectInteraction --require-exact
 build type7_actor_object_interaction: phony build/decomp/src/game/type7_actor_object_interaction.o build/decomp/asm/game/type7_actor_object_interaction_02048378.o build/reports/type7_actor_object_interaction_02048378.txt
 
 type7_actor_random_acceptance_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++

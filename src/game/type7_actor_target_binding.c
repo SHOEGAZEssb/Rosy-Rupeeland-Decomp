@@ -12,7 +12,7 @@ extern "C" {
 #endif
 extern void **func_02007f0c(void *world, s32 collection);
 extern s32 func_020adcac(const void *first, const void *second);
-extern void func_02048378(void *actor, void *other);
+extern void Type7Actor_HandleObjectInteraction(void *actor, void *other);
 extern void Actor_DestroyAuxiliaryCollisionResource(void *actor, void *object);
 extern void AttachmentController_SetEnabled(void *value, s32 mode);
 #ifdef __cplusplus
@@ -28,7 +28,7 @@ extern void AttachmentController_SetEnabled(void *value, s32 mode);
  * count at returned-base +0x2e74. Consider non-null type-four entries whose
  * halfword +0x4e is 0x21 or 0x12. Their planar distance from actor +0x1c must
  * be below 0x60000 for kind 0x21 or 0xa0000 for kind 0x12. Select the nearest
- * eligible object, pass it to func_02048378, and return one; return zero when
+ * eligible object, pass it to Type7Actor_HandleObjectInteraction, and return one; return zero when
  * none exists. Actor interaction state may change through that dispatcher; no
  * direct SDK or hardware effects occur.
  */
@@ -73,7 +73,7 @@ s32 func_02048a4c(void *self)
     }
     if (best == 0)
         return 0;
-    func_02048378(actor, best);
+    Type7Actor_HandleObjectInteraction(actor, best);
     return 1;
 }
 

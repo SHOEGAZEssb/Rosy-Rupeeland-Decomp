@@ -17,10 +17,10 @@
 .extern func_0204b7bc
 .extern func_0204c74c
 .extern gHeapContext
-.global func_02048378
-.type func_02048378, @function
+.global Type7Actor_HandleObjectInteraction
+.type Type7Actor_HandleObjectInteraction, @function
 
-func_02048378: ; 0x02048378
+Type7Actor_HandleObjectInteraction: ; 0x02048378
     stmdb sp!, {r3, r4, r5, lr}
     sub sp, sp, #0x18
     mov r5, r0
@@ -237,5 +237,5 @@ func_02048378: ; 0x02048378
 .L_020486a0: .word 0x162c
 .L_020486a4: .word data_020e1750
 
-.size func_02048378, . - func_02048378
+.size Type7Actor_HandleObjectInteraction, . - Type7Actor_HandleObjectInteraction
 

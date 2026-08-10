@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/type7_actor_global_interaction.c.
 .extern data_021052fc
 .extern ActorDerivedType1_TrySetStateVector
-.extern func_02048378
+.extern Type7Actor_HandleObjectInteraction
 .extern func_0204aff4
 .extern func_0204c74c
 .text
@@ -34,7 +34,7 @@ func_0204a4f0: ; 0x0204a4f0
     ldmhiia sp!, {r3, r4, r5, pc}
     mov r0, r5
     mov r1, r4
-    bl func_02048378
+    bl Type7Actor_HandleObjectInteraction
     ldmia sp!, {r3, r4, r5, pc}
 .L_0204a560: .word data_021052fc
 .size func_0204a4f0, . - func_0204a4f0

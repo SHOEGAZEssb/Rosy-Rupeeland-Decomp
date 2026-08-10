@@ -5,7 +5,7 @@
 .extern Actor_SetInteractionFlag2000
 .extern ActorDerivedType1_TrySetStateVector
 .extern ActorSelection_Contains
-.extern func_02048378
+.extern Type7Actor_HandleObjectInteraction
 .extern gSceneManager
 .global ActorExtendedType2_UpdateSceneInteraction
 .type ActorExtendedType2_UpdateSceneInteraction, @function
@@ -63,7 +63,7 @@ ActorExtendedType2_UpdateSceneInteraction: ; 0x0204344c
     bl ActorDerivedType1_TrySetStateVector
     mov r0, r4
     mov r1, r6
-    bl func_02048378
+    bl Type7Actor_HandleObjectInteraction
 .L_0204351c:
     mov r0, r6
     mov r1, r5

@@ -3,7 +3,7 @@
 .extern data_021052fc
 .extern Actor_SetInteractionFlag2000
 .extern ActorDerivedType1_TrySetStateVector
-.extern func_02048378
+.extern Type7Actor_HandleObjectInteraction
 
 .global func_ov076_02212e70
 func_ov076_02212e70:
@@ -29,7 +29,7 @@ func_ov076_02212e70:
     ldr r0, [r0, #0x0]
     add r0, r0, #0x2000
     ldr r0, [r0, #0xea8]
-    bl func_02048378
+    bl Type7Actor_HandleObjectInteraction
 .L_02212ecc:
     mov r0, r5
     mov r1, r4
