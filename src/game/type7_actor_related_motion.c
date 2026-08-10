@@ -10,7 +10,7 @@ extern "C" {
 #endif
 extern void *func_020050a4(void *destination, const void *source);
 extern void func_02005058(void *value);
-extern void func_02047908(void *actor, const void *transform);
+extern void Type7Actor_UpdateMotionTowardTransform(void *actor, const void *transform);
 extern void func_02047dd8(void *actor);
 extern void func_02047f08(void *actor, s32 condition);
 extern void func_02047f20(void *actor, s32 condition);
@@ -63,7 +63,7 @@ s32 func_0204955c(void *self)
             *(TransformCallback *)(*(u8 **)related + 0xb4);
         callback(value, related, actor);
     }
-    func_02047908(actor, value);
+    Type7Actor_UpdateMotionTowardTransform(actor, value);
     if ((*(u32 *)(actor + 0xd0) & 0x40000) != 0
         && !(related[0x4d] == 4 && *(u16 *)(related + 0x4e) == 0x12))
         *(u16 *)(actor + 0xd6) = 14;
@@ -90,9 +90,9 @@ s32 func_0204960c(void *self)
     set_actor_mode(actor, 0);
     related = *(u8 **)(actor + 0x210);
     if (hasResource && related != 0)
-        func_02047908(actor, related + 0x18);
+        Type7Actor_UpdateMotionTowardTransform(actor, related + 0x18);
     else
-        func_02047908(actor, actor + 0x18);
+        Type7Actor_UpdateMotionTowardTransform(actor, actor + 0x18);
     return 0;
 }
 
@@ -150,7 +150,7 @@ s32 func_020496cc(void *self)
     related = *(u8 **)(actor + 0x210);
     func_020050a4(actor + 0x78, related + 0x18);
     func_0204a5dc(actor);
-    func_02047908(actor, actor + 0x78);
+    Type7Actor_UpdateMotionTowardTransform(actor, actor + 0x78);
     *(u16 *)(actor + 0xd6) = related[0x4d] == 1 ? 10 : 14;
     return 0;
 }

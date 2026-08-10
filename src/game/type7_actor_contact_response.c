@@ -36,7 +36,7 @@ extern s32 func_020adae4(s32 value, s32 shift);
 extern s32 Type7Actor_HasSpecialCallbackPair(void *actor);
 extern void func_02005030(void *destination, const void *source);
 extern void func_02005058(void *value);
-extern void func_020478dc(void *actor, const void *transform, s32 value);
+extern void Type7Actor_SetMotionTargetWithTimer(void *actor, const void *transform, s32 value);
 extern s32 ActorDerivedType1_IsSpecialRecordActive(void *actor);
 extern void ActorDerivedType1_StartRecord(void *actor, s32 value);
 extern void func_0204b7bc(void *actor, s32 mode);
@@ -61,7 +61,7 @@ extern s32 func_02032a94(void *actor, void *other, s32 context);
  *
  * Unflagged type-one/type-seven contacts beyond 0x1000 normalize displacement,
  * optionally halve it when actor +0xd0 bit 0x10 is set, and apply separation.
- * Type one may also submit an offset transform through func_020478dc, update
+ * Type one may also submit an offset transform through Type7Actor_SetMotionTargetWithTimer, update
  * both objects' +0x9c/+0xa0, trigger other-object state helpers, install
  * data_020e16b0, and start a ten-frame encoded sound cooldown. Type seven uses
  * actor +0x9c/+0xa0 and other +0x8c/+0x90. Objects with +0x14 bit 0x10 instead
@@ -156,7 +156,7 @@ s32 Type7Actor_HandleContact(void *self, void *otherObject, s32 context)
                     func_02005030(temporary, actor + 0x18);
                     temporary[1] = (u32)((s32)temporary[1] - dx * 20);
                     temporary[2] = (u32)((s32)temporary[2] - dy * 30);
-                    func_020478dc(actor, temporary, 0x4b);
+                    Type7Actor_SetMotionTargetWithTimer(actor, temporary, 0x4b);
                     func_02005058(temporary);
                 }
                 if (*(u16 *)(actor + 0x254) == 0) {

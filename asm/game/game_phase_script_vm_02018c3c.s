@@ -8,7 +8,7 @@
 .extern func_02005058
 .extern func_02012704
 .extern func_020127f8
-.extern func_020478dc
+.extern Type7Actor_SetMotionTargetWithTimer
 .extern func_02047d40
 .extern func_02048bcc
 .extern func_02048c10
@@ -104,7 +104,7 @@ L_02018d50:
     add r1, sp, #0x4
     mov r0, r8
     mov r2, #0xb4
-    bl func_020478dc
+    bl Type7Actor_SetMotionTargetWithTimer
     add r0, sp, #0x4
     bl func_02005058
     b L_02018ef4

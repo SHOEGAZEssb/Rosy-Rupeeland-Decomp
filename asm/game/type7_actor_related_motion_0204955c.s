@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/type7_actor_related_motion.c.
 .extern func_02005058
 .extern func_020050a4
-.extern func_02047908
+.extern Type7Actor_UpdateMotionTowardTransform
 .extern func_02047dd8
 .extern func_02047f08
 .extern func_02047f20
@@ -36,7 +36,7 @@ func_0204955c: ; 0x0204955c
     blx r3
     add r1, sp, #0x0
     mov r0, r4
-    bl func_02047908
+    bl Type7Actor_UpdateMotionTowardTransform
     ldr r0, [r4, #0xd0]
     tst r0, #0x40000
     movne r0, #0x1
@@ -88,11 +88,11 @@ func_0204960c: ; 0x0204960c
     cmpne r1, #0x0
     beq .L_02049670
     add r1, r1, #0x18
-    bl func_02047908
+    bl Type7Actor_UpdateMotionTowardTransform
     b .L_02049678
 .L_02049670:
     add r1, r5, #0x18
-    bl func_02047908
+    bl Type7Actor_UpdateMotionTowardTransform
 .L_02049678:
     mov r0, #0x0
     ldmia sp!, {r3, r4, r5, pc}
@@ -171,7 +171,7 @@ func_020496cc: ; 0x020496cc
     bl func_0204a5dc
     mov r0, r4
     add r1, r4, #0x78
-    bl func_02047908
+    bl Type7Actor_UpdateMotionTowardTransform
     ldr r0, [r4, #0x210]
     ldrb r0, [r0, #0x4d]
     cmp r0, #0x1

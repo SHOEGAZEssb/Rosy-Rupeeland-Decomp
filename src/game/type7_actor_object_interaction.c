@@ -24,7 +24,7 @@ extern s32 Type7Actor_HasSpecialCallbackPair(const void *actor);
 extern void func_020481dc(void *actor, u32 first, u32 second, s32 duration);
 extern void func_0204b7bc(void *actor, s32 mode);
 extern void *func_0201f864(void *allocation, ...);
-extern void func_020478b0(void *actor, const void *transform);
+extern void Type7Actor_SetMotionTarget(void *actor, const void *transform);
 #ifdef __cplusplus
 }
 #endif
@@ -57,7 +57,7 @@ static s32 callback_pair_matches(const u8 *actor, void *first, void *second)
  * +0xd0/0x40000 is set. Otherwise other halfword +0x4e values 0x68 and 0x14
  * require record bits three and four respectively; values 0x24..0x26 need no
  * record bit. Accepted values bind +0x210 and initialize drag state from other
- * transform +0x18 through func_020478b0. Actor callback, counters, relation,
+ * transform +0x18 through Type7Actor_SetMotionTarget. Actor callback, counters, relation,
  * animation, heap, and auxiliary presentation state may change. Heap_Alloc is
  * the SDK-facing allocator effect; this routine has no return value.
  */
@@ -134,6 +134,6 @@ void func_02048378(void *self, void *otherObject)
             return;
         }
         *(void **)(actor + 0x210) = other;
-        func_020478b0(actor, other + 0x18);
+        Type7Actor_SetMotionTarget(actor, other + 0x18);
     }
 }

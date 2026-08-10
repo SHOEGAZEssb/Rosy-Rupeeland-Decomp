@@ -11,7 +11,7 @@
 .extern data_020e1d0c
 .extern func_0201f864
 .extern Type7Actor_HasSpecialCallbackPair
-.extern func_020478b0
+.extern Type7Actor_SetMotionTarget
 .extern func_020481dc
 .extern func_020486a8
 .extern func_0204b7bc
@@ -200,7 +200,7 @@ func_02048378: ; 0x02048378
     mov r0, r5
     add r1, r4, #0x18
     str r4, [r5, #0x210]
-    bl func_020478b0
+    bl Type7Actor_SetMotionTarget
     b .L_02048678
 .L_0204862c:
     cmp r0, #0x14
@@ -213,7 +213,7 @@ func_02048378: ; 0x02048378
     mov r0, r5
     add r1, r4, #0x18
     str r4, [r5, #0x210]
-    bl func_020478b0
+    bl Type7Actor_SetMotionTarget
     b .L_02048678
 .L_0204865c:
     sub r0, r0, #0x24
@@ -222,7 +222,7 @@ func_02048378: ; 0x02048378
     mov r0, r5
     add r1, r4, #0x18
     str r4, [r5, #0x210]
-    bl func_020478b0
+    bl Type7Actor_SetMotionTarget
 .L_02048678:
     add sp, sp, #0x18
     ldmia sp!, {r3, r4, r5, pc}

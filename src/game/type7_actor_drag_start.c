@@ -18,7 +18,7 @@ extern s32 Type7Actor_HasSpecialCallbackPair(const void *actor);
 extern void TouchPoint_Init(void *point, s32 x, s32 y);
 extern void func_02005030(void *destination, const void *source);
 extern void func_02005058(void *value);
-extern void func_020478b0(void *actor, const void *transform);
+extern void Type7Actor_SetMotionTarget(void *actor, const void *transform);
 extern void ActorDerivedType1_TrySetStateVector(void *target, const void *transform, s32 duration,
                           s32 mode);
 #ifdef __cplusplus
@@ -47,7 +47,7 @@ static s32 callback_pair_matches(const u8 *actor, void *first, void *second)
  * Set flags 0x100 after the early actor gates and 0x800 after all drag gates.
  * Convert the touch position relative to actor +0x1c/+0x20/+0x24 and ignore a
  * squared displacement of 256 or less. For a larger displacement, add it to a
- * temporary +0x18 transform, pass that transform to func_020478b0, and forward
+ * temporary +0x18 transform, pass that transform to Type7Actor_SetMotionTarget, and forward
  * it to target +0x280 when the target type byte is one. Actor motion and target
  * interpolation state may change; the temporary is finalized and there is no
  * direct SDK or hardware access. This routine has no return value.
@@ -110,7 +110,7 @@ void Type7Actor_HandleDragStart(void *self, const void *inputRecord)
     func_02005030(transform, actor + 0x18);
     transform[1] += x << 12;
     transform[2] += y << 12;
-    func_020478b0(actor, transform);
+    Type7Actor_SetMotionTarget(actor, transform);
     if (target[0x4d] == 1)
         ActorDerivedType1_TrySetStateVector(target, transform, 20, 0);
     func_02005058(transform);

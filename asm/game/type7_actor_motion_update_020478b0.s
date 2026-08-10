@@ -12,13 +12,13 @@
 .extern func_0204cfa4
 .extern func_020adae4
 .extern func_020ae024
-.global func_020478b0
-.global func_020478dc
-.global func_02047908
-.type func_020478b0, @function
-.type func_020478dc, @function
-.type func_02047908, @function
-func_020478b0: ; 0x020478b0
+.global Type7Actor_SetMotionTarget
+.global Type7Actor_SetMotionTargetWithTimer
+.global Type7Actor_UpdateMotionTowardTransform
+.type Type7Actor_SetMotionTarget, @function
+.type Type7Actor_SetMotionTargetWithTimer, @function
+.type Type7Actor_UpdateMotionTowardTransform, @function
+Type7Actor_SetMotionTarget: ; 0x020478b0
     stmdb sp!, {r4, lr}
     mov r4, r0
     add r0, r4, #0x224
@@ -31,7 +31,7 @@ func_020478b0: ; 0x020478b0
     strh r1, [r0, #0x50]
     ldmia sp!, {r4, pc}
 
-func_020478dc: ; 0x020478dc
+Type7Actor_SetMotionTargetWithTimer: ; 0x020478dc
     stmdb sp!, {r3, r4, r5, lr}
     mov r5, r0
     ldr r3, [r5, #0x268]
@@ -44,7 +44,7 @@ func_020478dc: ; 0x020478dc
     strh r4, [r0, #0x50]
     ldmia sp!, {r3, r4, r5, pc}
 
-func_02047908: ; 0x02047908
+Type7Actor_UpdateMotionTowardTransform: ; 0x02047908
     stmdb sp!, {r4, r5, r6, lr}
     sub sp, sp, #0x10
     mov r5, r0
@@ -336,7 +336,7 @@ func_02047908: ; 0x02047908
 .L_02047d38: .word data_020c9670
 .L_02047d3c: .word 0x19a
 
-.size func_020478b0, func_020478dc - func_020478b0
-.size func_020478dc, func_02047908 - func_020478dc
-.size func_02047908, . - func_02047908
+.size Type7Actor_SetMotionTarget, Type7Actor_SetMotionTargetWithTimer - Type7Actor_SetMotionTarget
+.size Type7Actor_SetMotionTargetWithTimer, Type7Actor_UpdateMotionTowardTransform - Type7Actor_SetMotionTargetWithTimer
+.size Type7Actor_UpdateMotionTowardTransform, . - Type7Actor_UpdateMotionTowardTransform
 

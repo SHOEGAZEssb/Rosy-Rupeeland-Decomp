@@ -15,7 +15,7 @@ extern const u8 data_020ea9b0[];
 extern s32 data_020e1964;
 extern void *Actor_GetAuxiliaryCollisionResource(void *actor);
 extern void func_020573fc(void *state, s32 value);
-extern void func_020478dc(void *entity, const VecFx32Object *position,
+extern void Type7Actor_SetMotionTargetWithTimer(void *entity, const VecFx32Object *position,
                           s32 angle);
 extern void func_02047d40(void *entity);
 extern void func_02048bcc(void *entity);
@@ -83,7 +83,7 @@ s32 func_02018c3c(GamePhaseActorScriptVm *self)
         if (entity) {
             VecFx32Object position;
             func_0200500c(&position, first << 12, second << 12, third << 12);
-            func_020478dc(entity, &position, 0xb4);
+            Type7Actor_SetMotionTargetWithTimer(entity, &position, 0xb4);
             func_02005058(&position);
         }
         break;

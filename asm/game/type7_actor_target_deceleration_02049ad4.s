@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/type7_actor_target_deceleration.c.
 .extern func_020050a4
-.extern func_02047908
+.extern Type7Actor_UpdateMotionTowardTransform
 .extern func_02048148
 .extern func_020adae4
 .text
@@ -44,7 +44,7 @@ func_02049ad4: ; 0x02049ad4
     bl func_020050a4
     mov r0, r4
     add r1, r4, #0x78
-    bl func_02047908
+    bl Type7Actor_UpdateMotionTowardTransform
     add r0, r4, #0x200
     ldrsh r1, [r0, #0x4a]
     cmp r1, #0x0

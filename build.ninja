@@ -18188,7 +18188,7 @@ build build/reports/type7_actor_motion_update_020478b0.json: objdiff build/decom
   base_object = build/decomp/asm/game/type7_actor_motion_update_020478b0.o
 build build/reports/type7_actor_motion_update_020478b0.txt: match_report build/reports/type7_actor_motion_update_020478b0.json | tools/report_objdiff.py
   report_json = build/reports/type7_actor_motion_update_020478b0.json
-  report_args = --section .text --function func_020478b0 --function func_020478dc --function func_02047908 --require-exact
+  report_args = --section .text --function Type7Actor_SetMotionTarget --function Type7Actor_SetMotionTargetWithTimer --function Type7Actor_UpdateMotionTowardTransform --require-exact
 build type7_actor_motion_update: phony build/decomp/src/game/type7_actor_motion_update.o build/decomp/asm/game/type7_actor_motion_update_020478b0.o build/reports/type7_actor_motion_update_020478b0.txt
 
 type7_actor_reset_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++

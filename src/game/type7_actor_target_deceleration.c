@@ -10,7 +10,7 @@
 extern "C" {
 #endif
 extern void *func_020050a4(void *destination, const void *source);
-extern void func_02047908(void *actor, const void *transform);
+extern void Type7Actor_UpdateMotionTowardTransform(void *actor, const void *transform);
 extern void func_02048148(void *actor);
 extern s32 func_020adae4(s32 value, s32 divisor);
 #ifdef __cplusplus
@@ -54,7 +54,7 @@ s32 func_02049ad4(void *self)
     func_020050a4(actor + 0x78, related + 0x18);
     related = *(u8 **)(actor + 0x210);
     func_020050a4(actor + 0x78, related + 0x18);
-    func_02047908(actor, actor + 0x78);
+    Type7Actor_UpdateMotionTowardTransform(actor, actor + 0x78);
 
     if (*(s16 *)(actor + 0x24a) > 0) {
         scale = func_020adae4(

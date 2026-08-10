@@ -39,7 +39,7 @@
 .extern Actor_SetDirectionFromVector
 .extern ActorDerivedType1_StartRecord
 .extern ActorDerivedType1_TeardownActiveRecord
-.extern func_020478dc
+.extern Type7Actor_SetMotionTargetWithTimer
 .extern func_0204a200
 .extern func_0204d308
 .extern func_02058d40
@@ -439,7 +439,7 @@ func_ov090_02217d70:
     add r1, sp, #0x2d8
     mov r0, r6
     mov r2, #0xf0
-    bl func_020478dc
+    bl Type7Actor_SetMotionTargetWithTimer
     add r0, sp, #0x2d8
     bl func_02005058
     b .L_0221a284

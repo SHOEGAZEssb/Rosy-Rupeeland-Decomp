@@ -17,7 +17,7 @@ extern s32 Actor_GetCachedTerrainHeight(void *actor);
 extern s32 func_0204832c(void *actor);
 extern s32 func_0204820c(void *actor);
 extern s32 func_0204876c(void *actor, s32 finiteMode);
-extern void func_02047908(void *actor, const void *transform);
+extern void Type7Actor_UpdateMotionTowardTransform(void *actor, const void *transform);
 extern void func_02047dd8(void *actor);
 #ifdef __cplusplus
 }
@@ -34,10 +34,11 @@ extern void func_02047dd8(void *actor);
  * Try func_0204832c, func_0204820c, and finite-mode func_0204876c in order,
  * returning zero when any succeeds. Otherwise choose the motion destination:
  * copy current transform +0x18 to +0x78 while signed +0x264 is positive, or
- * saved transform +0x224 when flag four is set. Run func_02047908 on +0x78; if
- * both resulting directional words +0x3c/+0x40 are zero, run func_02047dd8.
- * Return zero on every path. Actor random, target, callback, transform, motion,
- * and resource state may change; no direct hardware access occurs.
+ * saved transform +0x224 when flag four is set. Run
+ * Type7Actor_UpdateMotionTowardTransform on +0x78; if both resulting
+ * directional words +0x3c/+0x40 are zero, run func_02047dd8. Return zero on
+ * every path. Actor random, target, callback, transform, motion, and resource
+ * state may change; no direct hardware access occurs.
  */
 s32 func_02048fe4(void *self)
 {
@@ -70,7 +71,7 @@ s32 func_02048fe4(void *self)
         func_020050a4(actor + 0x78, actor + 0x18);
     else if ((*(u32 *)(actor + 0x268) & 4) != 0)
         func_020050a4(actor + 0x78, actor + 0x224);
-    func_02047908(actor, actor + 0x78);
+    Type7Actor_UpdateMotionTowardTransform(actor, actor + 0x78);
     if (*(s32 *)(actor + 0x3c) == 0 && *(s32 *)(actor + 0x40) == 0)
         func_02047dd8(actor);
     return 0;

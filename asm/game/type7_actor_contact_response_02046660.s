@@ -19,7 +19,7 @@
 .extern ActorDerivedType1_IsSpecialRecordActive
 .extern Type7Actor_HasSpecialCallbackPair
 .extern Type7Actor_ApplyType2InteractionResponse
-.extern func_020478dc
+.extern Type7Actor_SetMotionTargetWithTimer
 .extern func_020481dc
 .extern func_0204b7bc
 .extern func_0204c74c
@@ -301,7 +301,7 @@ Type7Actor_HandleContact: ; 0x02046660
     mov r2, #0x4b
     str r9, [sp, #0xc]
     str r3, [sp, #0x10]
-    bl func_020478dc
+    bl Type7Actor_SetMotionTargetWithTimer
     add r0, sp, #0x8
     bl func_02005058
 .L_02046a58:

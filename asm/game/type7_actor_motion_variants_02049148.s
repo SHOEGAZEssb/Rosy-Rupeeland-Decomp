@@ -2,7 +2,7 @@
 .extern data_020c9670
 .extern func_020050a4
 .extern Actor_GetCachedTerrainHeight
-.extern func_02047908
+.extern Type7Actor_UpdateMotionTowardTransform
 .extern func_02047dd8
 .extern func_0204820c
 .extern func_0204832c
@@ -95,7 +95,7 @@ func_02049148: ; 0x02049148
 .L_02049268:
     mov r0, r4
     add r1, r4, #0x78
-    bl func_02047908
+    bl Type7Actor_UpdateMotionTowardTransform
     ldr r0, [r4, #0x3c]
     cmp r0, #0x0
     ldreq r0, [r4, #0x40]
@@ -191,7 +191,7 @@ func_0204929c: ; 0x0204929c
     bl func_0204a5dc
     mov r0, r4
     add r1, r4, #0x78
-    bl func_02047908
+    bl Type7Actor_UpdateMotionTowardTransform
     ldr r0, [r4, #0x3c]
     cmp r0, #0x0
     ldreq r0, [r4, #0x40]
@@ -287,7 +287,7 @@ func_020493f8: ; 0x020493f8
     bl func_0204a5dc
     mov r0, r5
     add r1, r5, #0x78
-    bl func_02047908
+    bl Type7Actor_UpdateMotionTowardTransform
     ldr r0, [r5, #0x268]
     tst r0, #0x4
     bne .L_02049554

@@ -2,7 +2,7 @@
 .extern gGameWork
 .extern GameWork_TestFlag
 .extern Actor_SetPosition
-.extern func_02047908
+.extern Type7Actor_UpdateMotionTowardTransform
 .extern func_02048bcc
 .extern func_0204a014
 .extern func_0204a0d8
@@ -28,7 +28,7 @@ func_02049f78: ; 0x02049f78
     bl func_0204a0d8
     mov r0, r4
     add r1, r4, #0x18
-    bl func_02047908
+    bl Type7Actor_UpdateMotionTowardTransform
     add r0, r4, #0x200
     ldrsh r1, [r0, #0x58]
     cmp r1, #0x0

@@ -44,7 +44,7 @@ static s32 callback_pair_matches(const u8 *actor, void *first, void *second)
  * flag four at +0x268, and set signed timer +0x250 to 180. The copy helper may
  * update transform-owned state; this routine has no return or hardware effect.
  */
-void func_020478b0(void *self, const void *transform)
+void Type7Actor_SetMotionTarget(void *self, const void *transform)
 {
     u8 *actor = (u8 *)self;
     func_020050a4(actor + 0x224, transform);
@@ -57,7 +57,7 @@ void func_020478b0(void *self, const void *transform)
  * transform to +0x224, and store the timer at +0x250. No value is returned and
  * no SDK or hardware service is called directly.
  */
-void func_020478dc(void *self, const void *transform, s32 timer)
+void Type7Actor_SetMotionTargetWithTimer(void *self, const void *transform, s32 timer)
 {
     u8 *actor = (u8 *)self;
     *(u32 *)(actor + 0x268) |= 0x0c;
@@ -85,7 +85,7 @@ void func_020478dc(void *self, const void *transform, s32 timer)
  * displacement temporary is finalized. Actor transform, velocity, flags, and
  * animation state change; no direct hardware access occurs.
  */
-void func_02047908(void *self, const void *requestedTransform)
+void Type7Actor_UpdateMotionTowardTransform(void *self, const void *requestedTransform)
 {
     u8 *actor = (u8 *)self;
     u32 displacement[4];

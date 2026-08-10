@@ -10,7 +10,7 @@
 .extern ActorDerivedType1_TrySetStateVector
 .extern ActorDerivedRuntime_TestInteractionQuery
 .extern Type7Actor_HasSpecialCallbackPair
-.extern func_020478b0
+.extern Type7Actor_SetMotionTarget
 .extern func_0204c74c
 .global Type7Actor_HandleDragStart
 .type Type7Actor_HandleDragStart, @function
@@ -142,7 +142,7 @@ Type7Actor_HandleDragStart: ; 0x0204767c
     add r1, sp, #0x0
     mov r0, r5
     str r2, [sp, #0x8]
-    bl func_020478b0
+    bl Type7Actor_SetMotionTarget
     ldr r0, [r5, #0x280]
     ldrb r1, [r0, #0x4d]
     cmp r1, #0x1

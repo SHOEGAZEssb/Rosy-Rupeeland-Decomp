@@ -17,7 +17,7 @@ extern s32 func_020ada8c(s32 value, s32 divisor);
 extern s32 func_020adcac(const void *first, const void *second);
 extern s32 func_020be328(s32 value);
 extern s32 Actor_GetCachedTerrainHeight(void *actor);
-extern void func_02047908(void *actor, const void *transform);
+extern void Type7Actor_UpdateMotionTowardTransform(void *actor, const void *transform);
 extern void func_02047dd8(void *actor);
 extern s32 func_0204820c(void *actor);
 extern s32 func_0204832c(void *actor);
@@ -73,7 +73,7 @@ s32 func_02049148(void *self)
         func_020050a4(actor + 0x78, actor + 0x18);
     else if ((*(u32 *)(actor + 0x268) & 4) != 0)
         func_020050a4(actor + 0x78, actor + 0x224);
-    func_02047908(actor, actor + 0x78);
+    Type7Actor_UpdateMotionTowardTransform(actor, actor + 0x78);
     if (*(s32 *)(actor + 0x3c) == 0 && *(s32 *)(actor + 0x40) == 0)
         func_02047dd8(actor);
     return 0;
@@ -117,7 +117,7 @@ s32 func_0204929c(void *self)
     else if ((*(u32 *)(actor + 0x268) & 4) != 0)
         func_020050a4(actor + 0x78, actor + 0x224);
     func_0204a5dc(actor);
-    func_02047908(actor, actor + 0x78);
+    Type7Actor_UpdateMotionTowardTransform(actor, actor + 0x78);
     if (*(s32 *)(actor + 0x3c) == 0 && *(s32 *)(actor + 0x40) == 0)
         func_02047dd8(actor);
     return 0;
@@ -172,7 +172,7 @@ s32 func_020493f8(void *self)
     else
         func_020050a4(actor + 0x78, actor + 0x214);
     func_0204a5dc(actor);
-    func_02047908(actor, actor + 0x78);
+    Type7Actor_UpdateMotionTowardTransform(actor, actor + 0x78);
     if ((*(u32 *)(actor + 0x268) & 4) == 0
         && func_020adcac(actor + 0x1c, actor + 0x7c) < 0x28000)
         func_02047dd8(actor);

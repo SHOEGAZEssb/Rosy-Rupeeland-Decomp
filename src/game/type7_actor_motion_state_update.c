@@ -11,7 +11,7 @@
 extern "C" {
 #endif
 extern void Actor_SetPosition(void *actor);
-extern void func_02047908(void *actor, const void *transform);
+extern void Type7Actor_UpdateMotionTowardTransform(void *actor, const void *transform);
 extern void func_02048bcc(void *actor);
 extern void func_0204a014(void *actor);
 extern void func_0204a0d8(void *actor, s32 condition);
@@ -46,7 +46,7 @@ void func_02049f78(void *self, s32 unused, s32 condition)
     if (GameWork_TestFlag(gGameWork, 0x44b) != 0)
         condition = 1;
     func_0204a0d8(actor, condition);
-    func_02047908(actor, actor + 0x18);
+    Type7Actor_UpdateMotionTowardTransform(actor, actor + 0x18);
     if (*(s16 *)(actor + 0x258) > 0) {
         --*(s16 *)(actor + 0x258);
         if (*(s16 *)(actor + 0x258) == 0)
