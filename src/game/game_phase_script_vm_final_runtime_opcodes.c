@@ -8,7 +8,7 @@ extern "C" {
 extern void *data_021052fc;
 extern void *GamePhaseRuntime_GetActorCollection(void *runtime, s32 index);
 extern void *ActorCollection_FindActorByDescriptorValue(void *collection, s32 index);
-extern void func_020330fc(void *actor, s32 command, s32 value);
+extern void Actor_SetRuntimeProperty(void *actor, s32 command, s32 value);
 extern s32 func_0204fc6c(void);
 #ifdef __cplusplus
 }
@@ -23,7 +23,7 @@ s32 GamePhaseActorScriptVm_SendCommand2aToCollection2Actor0(GamePhaseActorScript
     s32 value = (s32)GamePhaseScriptVm_Pop(&self->base);
     void *collection = GamePhaseRuntime_GetActorCollection(data_021052fc, 2);
     void *actor = ActorCollection_FindActorByDescriptorValue(collection, 0);
-    func_020330fc(actor, 0x2a, value);
+    Actor_SetRuntimeProperty(actor, 0x2a, value);
     return 0;
 }
 

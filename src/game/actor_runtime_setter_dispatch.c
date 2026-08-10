@@ -63,7 +63,7 @@ static void setWordFlag(u32 *flags, u32 mask, s32 value)
  * confirmed no-ops. Returns no value; selector 32 invokes vtable slot 0x98,
  * while selectors 10 and 42 can update presentation or SDK-managed state.
  */
-void func_020330fc(void *self, u32 selector, s32 value)
+void Actor_SetRuntimeProperty(void *self, u32 selector, s32 value)
 {
     u8 *actor = (u8 *)self;
     u8 *attachment = *(u8 **)(actor + 0x54);

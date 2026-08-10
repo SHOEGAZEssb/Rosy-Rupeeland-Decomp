@@ -7,8 +7,8 @@ extern "C" {
 #endif
 extern void *data_021052fc;
 extern void Type7Actor_ResetMotionAndCooldown(void *actor);
-extern u32 func_02032e14(void *actor, u32 value);
-extern void func_020330fc(void *actor, u32 first, u32 second);
+extern u32 Actor_QueryRuntimeProperty(void *actor, u32 value);
+extern void Actor_SetRuntimeProperty(void *actor, u32 first, u32 second);
 extern void *Actor_GetCollection(void *actor);
 extern void *ActorCollection_FindActorByDescriptorValue(void *collection, s32 index);
 #ifdef __cplusplus
@@ -52,46 +52,46 @@ s32 GamePhaseActorScriptVm_NoOp(GamePhaseActorScriptVm *self)
     return 0;
 }
 
-/* Pop a value, push func_02032e14(bound actor, value), and return zero. */
-s32 func_020139d8(GamePhaseActorScriptVm *self)
+/* Pop a value, push Actor_QueryRuntimeProperty(bound actor, value), and return zero. */
+s32 GamePhaseActorScriptVm_QueryActorProperty(GamePhaseActorScriptVm *self)
 {
     u32 value = GamePhaseScriptVm_Pop(&self->base);
-    GamePhaseScriptVm_SetResult(&self->base, func_02032e14(self->actor, value));
+    GamePhaseScriptVm_SetResult(&self->base, Actor_QueryRuntimeProperty(self->actor, value));
     return 0;
 }
 
-/* Pop second then first, call func_020330fc on the bound actor, and return zero. */
-s32 func_02013a04(GamePhaseActorScriptVm *self)
+/* Pop second then first, call Actor_SetRuntimeProperty on the bound actor, and return zero. */
+s32 GamePhaseActorScriptVm_SetActorProperty(GamePhaseActorScriptVm *self)
 {
     u32 second = GamePhaseScriptVm_Pop(&self->base);
     u32 first = GamePhaseScriptVm_Pop(&self->base);
-    func_020330fc(self->actor, first, second);
+    Actor_SetRuntimeProperty(self->actor, first, second);
     return 0;
 }
 
 /*
  * Pop a value and actor index, resolve the indexed actor from the bound
- * collection, push func_02032e14(target, value), and return zero.
+ * collection, push Actor_QueryRuntimeProperty(target, value), and return zero.
  */
-s32 func_02013a34(GamePhaseActorScriptVm *self)
+s32 GamePhaseActorScriptVm_QueryIndexedActorProperty(GamePhaseActorScriptVm *self)
 {
     u32 value = GamePhaseScriptVm_Pop(&self->base);
     s32 index = (s32)GamePhaseScriptVm_Pop(&self->base);
     void *target = ActorCollection_FindActorByDescriptorValue(Actor_GetCollection(self->actor), index);
-    GamePhaseScriptVm_SetResult(&self->base, func_02032e14(target, value));
+    GamePhaseScriptVm_SetResult(&self->base, Actor_QueryRuntimeProperty(target, value));
     return 0;
 }
 
 /*
  * Pop second, first, and actor index; resolve that target and invoke
- * func_020330fc(target, first, second). Returns zero.
+ * Actor_SetRuntimeProperty(target, first, second). Returns zero.
  */
-s32 func_02013a7c(GamePhaseActorScriptVm *self)
+s32 GamePhaseActorScriptVm_SetIndexedActorProperty(GamePhaseActorScriptVm *self)
 {
     u32 second = GamePhaseScriptVm_Pop(&self->base);
     u32 first = GamePhaseScriptVm_Pop(&self->base);
     s32 index = (s32)GamePhaseScriptVm_Pop(&self->base);
     void *target = ActorCollection_FindActorByDescriptorValue(Actor_GetCollection(self->actor), index);
-    func_020330fc(target, first, second);
+    Actor_SetRuntimeProperty(target, first, second);
     return 0;
 }

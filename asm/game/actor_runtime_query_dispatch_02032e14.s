@@ -6,9 +6,9 @@
 .extern ActorBounds_GetWidth
 .extern ActorBounds_GetHeight
 
-    .global func_02032e14
-    .type func_02032e14, @function
-func_02032e14: ; 0x02032e14
+    .global Actor_QueryRuntimeProperty
+    .type Actor_QueryRuntimeProperty, @function
+Actor_QueryRuntimeProperty: ; 0x02032e14
     stmdb sp!, {r4, lr}
     sub sp, sp, #0x30
     mov r2, r0
@@ -231,6 +231,6 @@ func_02032e14: ; 0x02032e14
 .L_020330f4:
     add sp, sp, #0x30
     ldmia sp!, {r4, pc}
-    .size func_02032e14, . - func_02032e14
+    .size Actor_QueryRuntimeProperty, . - Actor_QueryRuntimeProperty
 
-    .global func_020330fc
+    .global Actor_SetRuntimeProperty

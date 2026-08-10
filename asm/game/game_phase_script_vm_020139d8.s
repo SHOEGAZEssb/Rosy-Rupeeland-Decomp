@@ -2,20 +2,20 @@
 .text
 .extern GamePhaseScriptVm_Pop
 .extern GamePhaseScriptVm_SetResult
-.extern func_02032e14
+.extern Actor_QueryRuntimeProperty
 
-    .global func_020139d8
-func_020139d8: ; 0x020139d8
+    .global GamePhaseActorScriptVm_QueryActorProperty
+GamePhaseActorScriptVm_QueryActorProperty: ; 0x020139d8
     stmdb sp!, {r4, lr}
     mov r4, r0
     bl GamePhaseScriptVm_Pop
     mov r1, r0
     ldr r0, [r4, #0x84]
-    bl func_02032e14
+    bl Actor_QueryRuntimeProperty
     mov r1, r0
     mov r0, r4
     bl GamePhaseScriptVm_SetResult
     mov r0, #0x0
     ldmia sp!, {r4, pc}
-    .size func_020139d8, . - func_020139d8
+    .size GamePhaseActorScriptVm_QueryActorProperty, . - GamePhaseActorScriptVm_QueryActorProperty
 

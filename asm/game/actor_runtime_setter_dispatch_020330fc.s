@@ -11,9 +11,9 @@
 .extern Actor_SetAttachmentAnimation
 .extern func_020adae4
 
-    .global func_020330fc
-    .type func_020330fc, @function
-func_020330fc: ; 0x020330fc
+    .global Actor_SetRuntimeProperty
+    .type Actor_SetRuntimeProperty, @function
+Actor_SetRuntimeProperty: ; 0x020330fc
     stmdb sp!, {r3, r4, r5, r6, lr}
     sub sp, sp, #0x34
     mov r5, r0
@@ -450,6 +450,6 @@ func_020330fc: ; 0x020330fc
 .L_0203372c:
     add sp, sp, #0x34
     ldmia sp!, {r3, r4, r5, r6, pc}
-    .size func_020330fc, . - func_020330fc
+    .size Actor_SetRuntimeProperty, . - Actor_SetRuntimeProperty
 
     .global func_02033734

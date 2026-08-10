@@ -22,7 +22,7 @@ extern void *VecFx32Stepper_GetStep(void *resourceState);
  * and 43 are confirmed zero slots rather than inferred omissions. Temporary
  * vector construction/destruction for 7..9 may have SDK-side ownership effects.
  */
-s32 func_02032e14(void *self, u32 selector)
+s32 Actor_QueryRuntimeProperty(void *self, u32 selector)
 {
     u8 *actor = (u8 *)self;
     u8 *attachment = *(u8 **)(actor + 0x54);

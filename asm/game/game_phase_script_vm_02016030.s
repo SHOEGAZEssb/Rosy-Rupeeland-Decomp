@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/game_phase_script_vm_actor_orientation_opcodes.c.
 .text
 .extern GamePhaseScriptVm_Pop
-.extern func_020330fc
+.extern Actor_SetRuntimeProperty
 .extern func_02072b68
 .global GamePhaseActorScriptVm_StepActorOrientation
 GamePhaseActorScriptVm_StepActorOrientation:
@@ -18,7 +18,7 @@ GamePhaseActorScriptVm_StepActorOrientation:
     ldr r0, [r5, #0x84]
     mov r2, r4, lsl #13
     mov r1, #0x11
-    bl func_020330fc
+    bl Actor_SetRuntimeProperty
     mov r0, #0
     ldmia sp!, {r3, r4, r5, pc}
     .size GamePhaseActorScriptVm_StepActorOrientation, . - GamePhaseActorScriptVm_StepActorOrientation

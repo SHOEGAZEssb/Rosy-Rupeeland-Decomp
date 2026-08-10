@@ -3,11 +3,11 @@
 .extern GamePhaseScriptVm_Pop
 .extern GamePhaseScriptVm_SetResult
 .extern ActorCollection_FindActorByDescriptorValue
-.extern func_02032e14
+.extern Actor_QueryRuntimeProperty
 .extern Actor_GetCollection
 
-    .global func_02013a34
-func_02013a34: ; 0x02013a34
+    .global GamePhaseActorScriptVm_QueryIndexedActorProperty
+GamePhaseActorScriptVm_QueryIndexedActorProperty: ; 0x02013a34
     stmdb sp!, {r4, r5, r6, lr}
     mov r6, r0
     bl GamePhaseScriptVm_Pop
@@ -20,11 +20,11 @@ func_02013a34: ; 0x02013a34
     mov r1, r4
     bl ActorCollection_FindActorByDescriptorValue
     mov r1, r5
-    bl func_02032e14
+    bl Actor_QueryRuntimeProperty
     mov r1, r0
     mov r0, r6
     bl GamePhaseScriptVm_SetResult
     mov r0, #0x0
     ldmia sp!, {r4, r5, r6, pc}
-    .size func_02013a34, . - func_02013a34
+    .size GamePhaseActorScriptVm_QueryIndexedActorProperty, . - GamePhaseActorScriptVm_QueryIndexedActorProperty
 

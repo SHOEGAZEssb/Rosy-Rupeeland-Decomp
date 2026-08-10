@@ -94,10 +94,10 @@ s32 GamePhaseActorScriptVm_FaceIndexedActorAndGetAttachmentByte38(GamePhaseActor
 s32 GamePhaseActorScriptVm_SetFieldE6(GamePhaseActorScriptVm *self);
 s32 GamePhaseActorScriptVm_ClearFlag01000000AndCleanup(GamePhaseActorScriptVm *self);
 s32 GamePhaseActorScriptVm_NoOp(GamePhaseActorScriptVm *self);
-s32 func_020139d8(GamePhaseActorScriptVm *self);
-s32 func_02013a04(GamePhaseActorScriptVm *self);
-s32 func_02013a34(GamePhaseActorScriptVm *self);
-s32 func_02013a7c(GamePhaseActorScriptVm *self);
+s32 GamePhaseActorScriptVm_QueryActorProperty(GamePhaseActorScriptVm *self);
+s32 GamePhaseActorScriptVm_SetActorProperty(GamePhaseActorScriptVm *self);
+s32 GamePhaseActorScriptVm_QueryIndexedActorProperty(GamePhaseActorScriptVm *self);
+s32 GamePhaseActorScriptVm_SetIndexedActorProperty(GamePhaseActorScriptVm *self);
 s32 func_02013ac8(GamePhaseActorScriptVm *self);
 s32 func_02013b74(GamePhaseActorScriptVm *self);
 s32 GamePhaseActorScriptVm_SetGameWorkFlag(GamePhaseActorScriptVm *self);
