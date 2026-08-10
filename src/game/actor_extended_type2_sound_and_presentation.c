@@ -2,7 +2,7 @@
 #include "tingle/types.h"
 
 /* Play descriptor-indexed sound and spawn the optional fourth actor presentation. */
-extern u16 data_020e7444[];extern const char data_020e00c8[];extern u8 *data_021052fc;
+extern u16 data_020e7444[];extern const char gActorExtendedType2SpritePresentationAllocationTag[];extern u8 *data_021052fc;
 #ifdef __cplusplus
 extern "C" {extern void func_020349b8(void *actor,u32 sound,s32 extra);extern void *func_0201f378(void *allocation,...);extern void func_0201ded4(void *manager,void *presentation);}
 #endif
@@ -22,5 +22,5 @@ void ActorExtendedType2_PlayDescriptorSoundIfEnabled(void *self)
  */
 void ActorExtendedType2_SpawnOptionalPresentation(void *self,u32 index,u16 value,s32 extra)
 {
- u8 *a=(u8 *)self,*r=*(u8 **)(a+0x214);void *p=0;if(!r)return;void *mem=Heap_Alloc(0x14,data_020e00c8,4,&gHeapContext);if(mem)p=func_0201f378(mem,a+0x18,index&0xff,**(void ***)(a+0x54),*(u32 *)(r+4),*(u32 *)(r+8),*(u32 *)(r+0xc),extra,-1);*(u16 *)(*(u8 **)(*(u8 **)((u8 *)p+8)+4)+0x36)=value;func_0201ded4(data_021052fc+0x2f7c,p);
+ u8 *a=(u8 *)self,*r=*(u8 **)(a+0x214);void *p=0;if(!r)return;void *mem=Heap_Alloc(0x14,gActorExtendedType2SpritePresentationAllocationTag,4,&gHeapContext);if(mem)p=func_0201f378(mem,a+0x18,index&0xff,**(void ***)(a+0x54),*(u32 *)(r+4),*(u32 *)(r+8),*(u32 *)(r+0xc),extra,-1);*(u16 *)(*(u8 **)(*(u8 **)((u8 *)p+8)+4)+0x36)=value;func_0201ded4(data_021052fc+0x2f7c,p);
 }

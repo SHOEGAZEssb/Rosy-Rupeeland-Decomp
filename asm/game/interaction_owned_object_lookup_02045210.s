@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/interaction_owned_object_lookup.c.
 .text
 .extern Heap_Alloc
-.extern data_020e16a8
+.extern gInteractionRecordAllocatorAllocationTag
 .extern InteractionRecordAllocator_Init
 .extern gHeapContext
 .global InteractionRecordAllocatorPool_GetOrCreate
@@ -40,6 +40,6 @@ InteractionRecordAllocatorPool_GetOrCreate: ; 0x02045210
     blt .L_02045224
     mov r0, #0x0
     ldmia sp!, {r4, r5, r6, pc}
-.L_02045280: .word data_020e16a8
+.L_02045280: .word gInteractionRecordAllocatorAllocationTag
 .L_02045284: .word gHeapContext
 .size InteractionRecordAllocatorPool_GetOrCreate, . - InteractionRecordAllocatorPool_GetOrCreate

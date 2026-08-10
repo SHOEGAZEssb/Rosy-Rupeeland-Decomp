@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/tracked_resource_actor_setup.c.
 .extern Heap_Alloc
-.extern data_020e35c4
+.extern gTrackedResourceActorAnimationResourceAllocationTag
 .extern gHeapContext
 .extern AnimationResource_Init
 .extern ActorCollection_GetSpriteOwner
@@ -10,8 +10,8 @@
 .extern GraphicsSpriteGroup_CreateState
 .text
 
-    .global func_0204fe68
-func_0204fe68: ; 0x0204fe68
+    .global TrackedResourceActor_SetupPresentationResources
+TrackedResourceActor_SetupPresentationResources: ; 0x0204fe68
     stmdb sp!, {r3, r4, r5, r6, lr}
     sub sp, sp, #0x4
     mov r5, r1
@@ -52,7 +52,7 @@ func_0204fe68: ; 0x0204fe68
     blx r1
     add sp, sp, #0x4
     ldmia sp!, {r3, r4, r5, r6, pc}
-.L_0204ff04: .word data_020e35c4
+.L_0204ff04: .word gTrackedResourceActorAnimationResourceAllocationTag
 .L_0204ff08: .word gHeapContext
-.size func_0204fe68, . - func_0204fe68
+.size TrackedResourceActor_SetupPresentationResources, . - TrackedResourceActor_SetupPresentationResources
 

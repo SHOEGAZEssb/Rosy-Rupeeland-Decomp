@@ -6,7 +6,7 @@
  * maintain presentation state, optionally spawn a heap-owned effect, and
  * select the next installed callback.
  */
-extern char data_020e1d0c[];
+extern char gType7ActorPresentationEffectAllocationTag[];
 
 #ifdef __cplusplus
 extern "C" {
@@ -47,7 +47,7 @@ s32 Type7Actor_EnterMode1WithPresentation12(void *self)
  * Input is a type-seven actor. Select presentation 13 while actor flag 0x200
  * is clear. When it is set, select presentation 14 and test whether signed
  * counter +0x248 modulo 20 equals five. On that cadence, allocate 20 bytes
- * from the heap described by data_020e1d0c/gHeapContext; if successful, pass
+ * from the heap described by gType7ActorPresentationEffectAllocationTag/gHeapContext; if successful, pass
  * it to func_0201f864 with actor transform +0x18, the first word of object
  * +0x54, effect identifiers 0x162b..0x162d, and the recovered control tuple
  * (0, 12, -1, 1). Always return zero. Presentation and heap-owned effect state
@@ -63,7 +63,7 @@ s32 Type7Actor_UpdateFlag200PresentationEffect(void *self)
         *(u16 *)(actor + 0xd6) = 14;
         if (func_020ada8c(*(s16 *)(actor + 0x248), 20) != 5)
             return 0;
-        allocation = Heap_Alloc(20, data_020e1d0c, 4, &gHeapContext);
+        allocation = Heap_Alloc(20, gType7ActorPresentationEffectAllocationTag, 4, &gHeapContext);
         if (allocation != 0) {
             func_0201f864(allocation, actor + 0x18,
                           **(u32 **)(actor + 0x54),

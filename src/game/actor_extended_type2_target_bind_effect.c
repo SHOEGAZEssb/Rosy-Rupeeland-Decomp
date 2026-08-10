@@ -6,7 +6,7 @@
  * callback state and spawns the same small randomized presentation effect.
  */
 extern u8 data_020df9e8[];
-extern char data_020e00c8[];
+extern char gActorExtendedType2SpritePresentationAllocationTag[];
 
 #ifdef __cplusplus
 extern "C" {
@@ -34,7 +34,7 @@ s32 ActorExtendedType2_BindTargetAndSpawnEffect(void *self, void *target)
     *(u32 *)(actor + 0x218) = *(u32 *)(data_020df9e8 + 0x1e8);
     *(u32 *)(actor + 0x21c) = *(u32 *)(data_020df9e8 + 0x1ec);
     *(u16 *)(actor + 0x254) = 0;
-    allocation = Heap_Alloc(0x14, data_020e00c8, 4, &gHeapContext);
+    allocation = Heap_Alloc(0x14, gActorExtendedType2SpritePresentationAllocationTag, 4, &gHeapContext);
     if (allocation != 0) {
         u32 random = genrand_int32() & 0x7fffffff;
         void *resource = **(void ***)(actor + 0x54);

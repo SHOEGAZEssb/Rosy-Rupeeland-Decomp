@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/tracked_resource_actor_effects.c.
 .extern Heap_Alloc
-.extern data_020e35cc
+.extern gTrackedResourceActorSpriteEffectAllocationTag
 .extern data_021052fc
 .extern gHeapContext
 .extern func_0201e0ec
@@ -220,7 +220,7 @@ func_02050260: ; 0x02050260
     add sp, sp, #0x18
     ldmia sp!, {r4, r5, r6, pc}
 .L_02050554: .word data_021052fc
-.L_02050558: .word data_020e35cc
+.L_02050558: .word gTrackedResourceActorSpriteEffectAllocationTag
 .L_0205055c: .word gHeapContext
 .size func_02050260, . - func_02050260
 

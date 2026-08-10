@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/grid_effect_actor_setup.c.
 .extern Heap_Alloc
-.extern data_020e2724
+.extern gGridEffectActorAnimationResourceAllocationTag
 .extern gHeapContext
 .extern AnimationResource_Init
 .extern ActorCollection_GetSpriteOwner
@@ -10,8 +10,8 @@
 .extern GraphicsSpriteGroup_CreateState
 .text
 
-    .global func_0204ed3c
-func_0204ed3c: ; 0x0204ed3c
+    .global GridEffectActor_SetupPresentationResources
+GridEffectActor_SetupPresentationResources: ; 0x0204ed3c
     stmdb sp!, {r3, r4, r5, r6, lr}
     sub sp, sp, #0x4
     mov r5, r1
@@ -49,7 +49,7 @@ func_0204ed3c: ; 0x0204ed3c
     strh r0, [r1, #0x24]
     add sp, sp, #0x4
     ldmia sp!, {r3, r4, r5, r6, pc}
-.L_0204edcc: .word data_020e2724
+.L_0204edcc: .word gGridEffectActorAnimationResourceAllocationTag
 .L_0204edd0: .word gHeapContext
-.size func_0204ed3c, . - func_0204ed3c
+.size GridEffectActor_SetupPresentationResources, . - GridEffectActor_SetupPresentationResources
 

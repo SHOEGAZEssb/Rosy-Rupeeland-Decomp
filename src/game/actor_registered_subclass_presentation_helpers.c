@@ -5,7 +5,7 @@
  * Provide impact feedback and attachment-state transitions for the registered
  * table-record actor subclass.
  */
-extern const char data_020df9d8[];
+extern const char gActorRegisteredSubclassPresentationAllocationTag[];
 extern u8 *data_021052fc;
 extern void *gSoundContext;
 
@@ -56,7 +56,7 @@ void ActorRegisteredSubclass_EmitImpactFeedback(void *self)
             volume = 0;
         func_020593ac(gSoundContext, 0x1c4, 7, volume, pan, 0);
 
-        allocation = Heap_Alloc(0x14, data_020df9d8, 4, &gHeapContext);
+        allocation = Heap_Alloc(0x14, gActorRegisteredSubclassPresentationAllocationTag, 4, &gHeapContext);
         if (allocation != 0) {
             u8 *attachment = *(u8 **)(actor + 0x54);
             (void)func_0201f864(allocation, actor + 0x18,

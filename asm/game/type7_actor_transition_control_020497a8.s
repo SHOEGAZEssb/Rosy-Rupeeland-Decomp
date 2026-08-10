@@ -1,5 +1,5 @@
 ; Matching retail form; see src/game/type7_actor_transition_control.c.
-.extern data_020e1d0c
+.extern gType7ActorPresentationEffectAllocationTag
 .extern gHeapContext
 .extern Heap_Alloc
 .extern func_0201f864
@@ -72,7 +72,7 @@ Type7Actor_UpdateFlag200PresentationEffect: ; 0x020497d0
     mov r0, #0x0
     add sp, sp, #0x18
     ldmia sp!, {r4, pc}
-.L_02049880: .word data_020e1d0c
+.L_02049880: .word gType7ActorPresentationEffectAllocationTag
 .L_02049884: .word gHeapContext
 .L_02049888: .word 0x162c
 .size Type7Actor_UpdateFlag200PresentationEffect, . - Type7Actor_UpdateFlag200PresentationEffect

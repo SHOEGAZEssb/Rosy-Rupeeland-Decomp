@@ -7,7 +7,7 @@
  */
 
 extern void *data_021052fc;
-extern const u8 data_020e35cc[];
+extern const u8 gTrackedResourceActorSpriteEffectAllocationTag[];
 extern void *gHeapContext;
 
 #ifdef __cplusplus
@@ -90,7 +90,7 @@ void func_02050260(void *actor)
     }
 
     if (FIELD(u16, record, 0x16) != 0) {
-        void *object = Heap_Alloc(0x14, data_020e35cc, 4, gHeapContext);
+        void *object = Heap_Alloc(0x14, gTrackedResourceActorSpriteEffectAllocationTag, 4, gHeapContext);
         if (object != 0) {
             Actor_GetCollection(actor);
             func_0201f864(object, (u8 *)actor + 0x18, ActorCollection_GetSpriteOwner(),

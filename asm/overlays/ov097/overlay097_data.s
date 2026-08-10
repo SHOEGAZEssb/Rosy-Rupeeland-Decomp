@@ -161,7 +161,7 @@
 .extern func_ov097_02219e4c
 .extern func_ov097_02219e80
 .extern func_ov097_0221a494
-.extern func_0204fe68
+.extern TrackedResourceActor_SetupPresentationResources
 .extern func_ov097_0221a07c
 .extern Actor_ClearTransientContactState
 .extern func_0204ff0c
@@ -584,7 +584,7 @@ data_ov097_0221aaa4:
     .word func_ov097_02219e80
     .word func_ov097_02219b58
     .word func_ov097_0221a494
-    .word func_0204fe68
+    .word TrackedResourceActor_SetupPresentationResources
     .word func_020314b8
     .word Actor_SnapshotTransientState
     .word func_ov097_0221a07c

@@ -4,7 +4,7 @@
  * Recovered allocator for choosing records from a sentinel-terminated table
  * while tracking the object currently owning each record.
  */
-extern const char data_020e16a8[];
+extern const char gInteractionRecordAllocatorAllocationTag[];
 extern void *gHeapContext;
 
 #ifdef __cplusplus
@@ -21,7 +21,7 @@ extern u32 genrand_int32(void);
 /*
  * Store the four-byte record table at object +0, count records until a signed
  * halfword -1 sentinel, allocate a four-byte-per-record owner array with label
- * data_020e16a8/alignment four, clear every owner slot, and return self. Object,
+ * gInteractionRecordAllocatorAllocationTag/alignment four, clear every owner slot, and return self. Object,
  * heap ownership, and allocation state change; the allocator crosses the heap
  * boundary but performs no direct hardware access.
  */
@@ -38,7 +38,7 @@ void *InteractionRecordAllocator_Init(void *self, const void *recordTable)
     }
     *(s32 *)(object + 8) = count;
     *(void **)(object + 4) =
-        func_02003e20((u32)count * 4, data_020e16a8, 4, &gHeapContext);
+        func_02003e20((u32)count * 4, gInteractionRecordAllocatorAllocationTag, 4, &gHeapContext);
     for (i = 0; i < count; ++i)
         (*(void ***)(object + 4))[i] = 0;
     return object;
@@ -57,7 +57,7 @@ void *InteractionRecordAllocator_ReserveRandomRecord(void *self, void *owner)
     u8 *object = (u8 *)self;
     s32 count = *(s32 *)(object + 8);
     s32 *indices = (s32 *)func_02003e20(
-        (u32)count * 4, data_020e16a8, 4, &gHeapContext);
+        (u32)count * 4, gInteractionRecordAllocatorAllocationTag, 4, &gHeapContext);
     void **owners = *(void ***)(object + 4);
     s32 candidateCount = 0;
     s32 i;

@@ -12,7 +12,7 @@ extern u8 data_020e17a8[];
 extern u32 data_020e1908[];
 extern u8 data_020e1900[];
 extern u32 data_020e1798[];
-extern const char data_020e1d0c[];
+extern const char gType7ActorPresentationEffectAllocationTag[];
 extern u32 data_020e1750[];
 
 #ifdef __cplusplus
@@ -105,7 +105,7 @@ void Type7Actor_HandleObjectInteraction(void *self, void *otherObject)
         *(u16 *)(actor + 0x25a) = 180;
         Type7Actor_PlayStateSound(actor, 0);
         {
-            void *allocation = Heap_Alloc(0x14, data_020e1d0c, 4,
+            void *allocation = Heap_Alloc(0x14, gType7ActorPresentationEffectAllocationTag, 4,
                                           &gHeapContext);
             if (allocation != 0)
                 func_0201f864(allocation, actor + 0x18,

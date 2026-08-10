@@ -11,7 +11,7 @@ extern void *gGameWork;
 extern void *gHeapContext;
 extern void *gLupyContext;
 extern void *gSoundContext;
-extern const u8 data_020e251c[];
+extern const u8 gPresentationBackedActorCurrencyEffectAllocationTag[];
 
 #ifdef __cplusplus
 extern "C" {
@@ -81,7 +81,7 @@ s32 func_0204df40(void *actor, void *trigger)
         }
 
         GamePhaseCurrencyHud_AddCurrency(gLupyContext, FIELD(s16, actor, 0x1f2), 0);
-        void *effect = Heap_Alloc(0x44, data_020e251c, 4, gHeapContext);
+        void *effect = Heap_Alloc(0x44, gPresentationBackedActorCurrencyEffectAllocationTag, 4, gHeapContext);
         if (effect != 0) {
             void *point = ActorMotionAreaFollower_GetPosition((u8 *)data_021052fc + 0x2fbc);
             effect = func_02022cb0(effect, point, actor,

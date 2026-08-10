@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/actor_extended_type2_sound_and_presentation.c.
 .text
 .extern Heap_Alloc
-.extern data_020e00c8
+.extern gActorExtendedType2SpritePresentationAllocationTag
 .extern data_020e7444
 .extern data_021052fc
 .extern func_0201ded4
@@ -74,7 +74,7 @@ ActorExtendedType2_SpawnOptionalPresentation: ; 0x020405c8
 .L_02040668:
     add sp, sp, #0x14
     ldmia sp!, {r4, r5, r6, r7, pc}
-.L_02040670: .word data_020e00c8
+.L_02040670: .word gActorExtendedType2SpritePresentationAllocationTag
 .L_02040674: .word gHeapContext
 .L_02040678: .word data_021052fc
 .size ActorExtendedType2_SpawnOptionalPresentation, . - ActorExtendedType2_SpawnOptionalPresentation

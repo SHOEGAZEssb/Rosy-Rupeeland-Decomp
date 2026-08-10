@@ -19184,7 +19184,7 @@ build build/reports/grid_effect_actor_setup_0204ed3c.json: objdiff build/decomp/
   base_object = build/decomp/asm/game/grid_effect_actor_setup_0204ed3c.o
 build build/reports/grid_effect_actor_setup_0204ed3c.txt: match_report build/reports/grid_effect_actor_setup_0204ed3c.json | tools/report_objdiff.py
   report_json = build/reports/grid_effect_actor_setup_0204ed3c.json
-  report_args = --section .text --function func_0204ed3c --require-exact
+  report_args = --section .text --function GridEffectActor_SetupPresentationResources --require-exact
 build grid_effect_actor_setup: phony build/decomp/src/game/grid_effect_actor_setup.o build/decomp/asm/game/grid_effect_actor_setup_0204ed3c.o build/reports/grid_effect_actor_setup_0204ed3c.txt
 
 grid_effect_actor_touch_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
@@ -19380,7 +19380,7 @@ build build/reports/tracked_resource_actor_setup_0204fe68.json: objdiff build/de
   base_object = build/decomp/asm/game/tracked_resource_actor_setup_0204fe68.o
 build build/reports/tracked_resource_actor_setup_0204fe68.txt: match_report build/reports/tracked_resource_actor_setup_0204fe68.json | tools/report_objdiff.py
   report_json = build/reports/tracked_resource_actor_setup_0204fe68.json
-  report_args = --section .text --function func_0204fe68 --require-exact
+  report_args = --section .text --function TrackedResourceActor_SetupPresentationResources --require-exact
 build tracked_resource_actor_setup: phony build/decomp/src/game/tracked_resource_actor_setup.o build/decomp/asm/game/tracked_resource_actor_setup_0204fe68.o build/reports/tracked_resource_actor_setup_0204fe68.txt
 
 tracked_resource_actor_callbacks_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++

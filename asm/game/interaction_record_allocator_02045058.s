@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/interaction_record_allocator.c.
 .text
-.extern data_020e16a8
+.extern gInteractionRecordAllocatorAllocationTag
 .extern func_02003e20
 .extern func_02003e38
 .extern func_020bf1f8
@@ -47,7 +47,7 @@ InteractionRecordAllocator_Init: ; 0x02045058
     blt .L_020450b4
     mov r0, r4
     ldmia sp!, {r4, pc}
-.L_020450d4: .word data_020e16a8
+.L_020450d4: .word gInteractionRecordAllocatorAllocationTag
 .L_020450d8: .word gHeapContext
 
 .size InteractionRecordAllocator_Init, . - InteractionRecordAllocator_Init
@@ -95,7 +95,7 @@ InteractionRecordAllocator_ReserveRandomRecord: ; 0x020450dc
     bl func_02003e38
     mov r0, #0x0
     ldmia sp!, {r3, r4, r5, r6, r7, pc}
-.L_0204517c: .word data_020e16a8
+.L_0204517c: .word gInteractionRecordAllocatorAllocationTag
 .L_02045180: .word gHeapContext
 
 .size InteractionRecordAllocator_ReserveRandomRecord, . - InteractionRecordAllocator_ReserveRandomRecord

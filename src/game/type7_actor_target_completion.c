@@ -6,7 +6,7 @@
  * approach, detect a specific related-object subtype, notify both actors, and
  * create the associated presentation effect.
  */
-extern char data_020e1d0c[];
+extern char gType7ActorPresentationEffectAllocationTag[];
 
 #ifdef __cplusplus
 extern "C" {
@@ -43,7 +43,7 @@ static void complete_related_interaction(u8 *actor)
     func_02034a60(actor, 0x47, 0);
     callback = *(RelatedModeCallback *)(*(u8 **)related + 0xe8);
     callback(related, 0);
-    allocation = Heap_Alloc(20, data_020e1d0c, 4, &gHeapContext);
+    allocation = Heap_Alloc(20, gType7ActorPresentationEffectAllocationTag, 4, &gHeapContext);
     if (allocation != 0) {
         func_0201f864(allocation, actor + 0x18,
                       **(u32 **)(actor + 0x54),

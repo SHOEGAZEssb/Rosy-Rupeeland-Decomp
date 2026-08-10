@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/actor_registered_subclass_presentation_helpers.c.
 .text
 .extern Heap_Alloc
-.extern data_020df9d8
+.extern gActorRegisteredSubclassPresentationAllocationTag
 .extern data_021052fc
 .extern ActorMotionAreaFollower_GetPosition
 .extern func_0201f864
@@ -89,7 +89,7 @@ ActorRegisteredSubclass_EmitImpactFeedback: ; 0x0203d6e0
     ldmia sp!, {r4, r5, r6, pc}
 .L_0203d7f0: .word data_021052fc
 .L_0203d7f4: .word gSoundContext
-.L_0203d7f8: .word data_020df9d8
+.L_0203d7f8: .word gActorRegisteredSubclassPresentationAllocationTag
 .L_0203d7fc: .word gHeapContext
 .L_0203d800: .word 0x162c
     .size ActorRegisteredSubclass_EmitImpactFeedback, . - ActorRegisteredSubclass_EmitImpactFeedback

@@ -4,7 +4,7 @@
 /* Register the derived actor, initiate its timed state, and notify the primary runtime actor. */
 extern void *data_02105718[4];
 extern u8 *data_021052fc;
-extern const char data_020df9d8[];
+extern const char gActorRegisteredSubclassPresentationAllocationTag[];
 
 #ifdef __cplusplus
 extern "C" {
@@ -87,7 +87,7 @@ void ActorRegisteredSubclass_StartTimedState(void *self, u16 limit)
         *(u16 *)(actor + 0x21a) = limit;
     *(s16 *)(actor + 0xd6) = 1;
     *(u32 *)(actor + 0xd0) |= 0x1000;
-    allocation = Heap_Alloc(0x14, data_020df9d8, 4, &gHeapContext);
+    allocation = Heap_Alloc(0x14, gActorRegisteredSubclassPresentationAllocationTag, 4, &gHeapContext);
     if (allocation == 0)
         return;
     attachment = *(u8 **)(actor + 0x54);

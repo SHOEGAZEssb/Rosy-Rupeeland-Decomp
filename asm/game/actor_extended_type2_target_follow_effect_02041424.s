@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/actor_extended_type2_target_follow_effect.c.
 .text
 .extern Heap_Alloc
-.extern data_020e00c8
+.extern gActorExtendedType2SpritePresentationAllocationTag
 .extern func_0201f864
 .extern ActorExtendedType2_ApplyTargetImpulse
 .extern func_020ada8c
@@ -99,7 +99,7 @@ ActorExtendedType2_UpdateTargetFollowEffect: ; 0x02041424
 .L_02041568:
     add sp, sp, #0x18
     ldmia sp!, {r4, r5, r6, pc}
-.L_02041570: .word data_020e00c8
+.L_02041570: .word gActorExtendedType2SpritePresentationAllocationTag
 .L_02041574: .word gHeapContext
 .L_02041578: .word 0x135c
 .size ActorExtendedType2_UpdateTargetFollowEffect, . - ActorExtendedType2_UpdateTargetFollowEffect

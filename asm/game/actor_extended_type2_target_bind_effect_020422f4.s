@@ -2,7 +2,7 @@
 .text
 .extern Heap_Alloc
 .extern data_020df9e8
-.extern data_020e00c8
+.extern gActorExtendedType2SpritePresentationAllocationTag
 .extern func_0201f864
 .extern func_020ada8c
 .extern gHeapContext
@@ -61,7 +61,7 @@ ActorExtendedType2_BindTargetAndSpawnEffect: ; 0x020422f4
     add sp, sp, #0x18
     ldmia sp!, {r3, r4, r5, r6, r7, pc}
 .L_020423b8: .word data_020df9e8
-.L_020423bc: .word data_020e00c8
+.L_020423bc: .word gActorExtendedType2SpritePresentationAllocationTag
 .L_020423c0: .word gHeapContext
 .L_020423c4: .word 0x135c
 .size ActorExtendedType2_BindTargetAndSpawnEffect, . - ActorExtendedType2_BindTargetAndSpawnEffect

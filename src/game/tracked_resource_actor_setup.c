@@ -6,7 +6,7 @@
  * the actor's virtual initialization callback.
  */
 
-extern const u8 data_020e35c4[];
+extern const u8 gTrackedResourceActorAnimationResourceAllocationTag[];
 extern void *gHeapContext;
 
 #ifdef __cplusplus
@@ -32,15 +32,15 @@ typedef void (*ActorCallback)(void *actor);
 /*
  * Inputs are an actor and descriptor with resource values at 0x04..0x0C and
  * mode bytes at 0x10/0x11. Allocate and initialize a 16-byte bundle tagged by
- * data_020e35c4, store it at 0x1EC, prepare the actor, create presentation 0x54,
+ * gTrackedResourceActorAnimationResourceAllocationTag, store it at 0x1EC, prepare the actor, create presentation 0x54,
  * select its initial entry, set flags 1 and 2, bind the bundle with
  * func_020313b4, then invoke virtual slot 0x14. Returns nothing; heap, resource,
  * and presentation state change. Retail assumes allocation succeeds; no direct
  * hardware effects occur.
  */
-void func_0204fe68(void *actor, const void *descriptor)
+void TrackedResourceActor_SetupPresentationResources(void *actor, const void *descriptor)
 {
-    void *bundle = Heap_Alloc(0x10, data_020e35c4, 4, gHeapContext);
+    void *bundle = Heap_Alloc(0x10, gTrackedResourceActorAnimationResourceAllocationTag, 4, gHeapContext);
     if (bundle != 0) {
         bundle = AnimationResource_Init(bundle,
                               FIELD(u32, descriptor, 4),

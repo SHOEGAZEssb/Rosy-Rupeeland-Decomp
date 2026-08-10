@@ -2,7 +2,7 @@
 #include "tingle/types.h"
 
 /* Recovered lookup-or-create operation for the fixed interaction object pool. */
-extern const char data_020e16a8[];
+extern const char gInteractionRecordAllocatorAllocationTag[];
 
 #ifdef __cplusplus
 extern "C" {
@@ -16,7 +16,7 @@ extern void *InteractionRecordAllocator_Init(void *object,
 /*
  * Scan 16 pool slots. Return an existing object whose +0 table pointer equals
  * recordTable. At the first empty slot, allocate 12 bytes with label
- * data_020e16a8, alignment four, and gHeapContext; construct it through
+ * gInteractionRecordAllocatorAllocationTag, alignment four, and gHeapContext; construct it through
  * InteractionRecordAllocator_Init when allocation succeeds, store the
  * resulting pointer, and return it. Return null if all slots hold different
  * tables. Pool and heap ownership may change; allocation crosses the engine
@@ -30,7 +30,7 @@ void *InteractionRecordAllocatorPool_GetOrCreate(
     for (i = 0; i < 16; ++i) {
         u8 *object = (u8 *)slots[i];
         if (object == 0) {
-            object = (u8 *)Heap_Alloc(12, data_020e16a8, 4, &gHeapContext);
+            object = (u8 *)Heap_Alloc(12, gInteractionRecordAllocatorAllocationTag, 4, &gHeapContext);
             if (object != 0)
                 object = (u8 *)InteractionRecordAllocator_Init(object, recordTable);
             slots[i] = object;

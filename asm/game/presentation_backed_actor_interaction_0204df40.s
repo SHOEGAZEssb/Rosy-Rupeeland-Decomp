@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/presentation_backed_actor_interaction.c.
 .extern Heap_Alloc
 .extern Sound_Play
-.extern data_020e251c
+.extern gPresentationBackedActorCurrencyEffectAllocationTag
 .extern data_021052fc
 .extern gGameWork
 .extern gHeapContext
@@ -247,7 +247,7 @@ func_0204df40: ; 0x0204df40
     ldmia sp!, {r3, r4, r5, r6, pc}
 .L_0204e294: .word data_021052fc
 .L_0204e298: .word gLupyContext
-.L_0204e29c: .word data_020e251c
+.L_0204e29c: .word gPresentationBackedActorCurrencyEffectAllocationTag
 .L_0204e2a0: .word gHeapContext
 .L_0204e2a4: .word gGameWork
 .L_0204e2a8: .word gSoundContext

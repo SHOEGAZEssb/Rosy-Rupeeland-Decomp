@@ -5,7 +5,7 @@
  * Recovered extended type-two actor target-follow effect handler. It follows
  * a live target for a bounded duration and periodically spawns a small effect.
  */
-extern char data_020e00c8[];
+extern char gActorExtendedType2SpritePresentationAllocationTag[];
 
 #ifdef __cplusplus
 extern "C" {
@@ -55,7 +55,7 @@ s32 ActorExtendedType2_UpdateTargetFollowEffect(void *self)
         ActorExtendedType2_ApplyTargetImpulse(actor, target + 0x18);
 
     if (func_020ada8c(*(u16 *)(actor + 0x254), 16) == 0) {
-        void *allocation = Heap_Alloc(0x14, data_020e00c8, 4, &gHeapContext);
+        void *allocation = Heap_Alloc(0x14, gActorExtendedType2SpritePresentationAllocationTag, 4, &gHeapContext);
         if (allocation != 0) {
             u32 random = genrand_int32() & 0x7fffffff;
             void *resource = **(void ***)(actor + 0x54);

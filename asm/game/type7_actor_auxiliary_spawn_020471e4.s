@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/type7_actor_auxiliary_spawn.c.
 .text
 .extern Heap_Alloc
-.extern data_020e1d04
+.extern gType7ActorAuxiliaryLoadSceneAllocationTag
 .extern GamePhaseLoadScene_Init
 .extern Actor_DestroyAuxiliaryCollisionResource
 .extern gHeapContext
@@ -31,7 +31,7 @@ Type7Actor_SpawnAuxiliaryCollisionResource: ; 0x020471e4
     mov r1, #0xa
     bl GamePhaseLoadScene_Init
     ldmia sp!, {r3, pc}
-.L_0204723c: .word data_020e1d04
+.L_0204723c: .word gType7ActorAuxiliaryLoadSceneAllocationTag
 .L_02047240: .word gHeapContext
 .L_02047244: .word 0x7fff
 .size Type7Actor_SpawnAuxiliaryCollisionResource, . - Type7Actor_SpawnAuxiliaryCollisionResource

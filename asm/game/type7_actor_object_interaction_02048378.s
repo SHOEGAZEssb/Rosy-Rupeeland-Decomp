@@ -8,7 +8,7 @@
 .extern data_020e1900
 .extern data_020e1908
 .extern data_020e1918
-.extern data_020e1d0c
+.extern gType7ActorPresentationEffectAllocationTag
 .extern func_0201f864
 .extern Type7Actor_HasSpecialCallbackPair
 .extern Type7Actor_SetMotionTarget
@@ -232,7 +232,7 @@ Type7Actor_HandleObjectInteraction: ; 0x02048378
 .L_0204868c: .word data_020e1908
 .L_02048690: .word data_020e1900
 .L_02048694: .word data_020e1798
-.L_02048698: .word data_020e1d0c
+.L_02048698: .word gType7ActorPresentationEffectAllocationTag
 .L_0204869c: .word gHeapContext
 .L_020486a0: .word 0x162c
 .L_020486a4: .word data_020e1750

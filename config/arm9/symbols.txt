@@ -2278,7 +2278,7 @@ func_0204ebf4 kind:function(arm,size=0x18) addr:0x0204ebf4
 func_0204ec0c kind:function(arm,size=0x68) addr:0x0204ec0c
 func_0204ec74 kind:function(arm,size=0x60) addr:0x0204ec74
 func_0204ecd4 kind:function(arm,size=0x68) addr:0x0204ecd4
-func_0204ed3c kind:function(arm,size=0x98) addr:0x0204ed3c
+GridEffectActor_SetupPresentationResources kind:function(arm,size=0x98) addr:0x0204ed3c
 func_0204edd4 kind:function(arm,size=0x50) addr:0x0204edd4
 func_0204ee24 kind:function(arm,size=0x654) addr:0x0204ee24
 func_0204f478 kind:function(arm,size=0x5c) addr:0x0204f478
@@ -2305,7 +2305,7 @@ func_0204fd08 kind:function(arm,size=0x58) addr:0x0204fd08
 func_0204fd60 kind:function(arm,size=0x60) addr:0x0204fd60
 func_0204fdc0 kind:function(arm,size=0x58) addr:0x0204fdc0
 func_0204fe18 kind:function(arm,size=0x50) addr:0x0204fe18
-func_0204fe68 kind:function(arm,size=0xa4) addr:0x0204fe68
+TrackedResourceActor_SetupPresentationResources kind:function(arm,size=0xa4) addr:0x0204fe68
 func_0204ff0c kind:function(arm,size=0x34) addr:0x0204ff0c
 func_0204ff40 kind:function(arm,size=0x58) addr:0x0204ff40
 func_0204ff98 kind:function(arm,size=0xe0) addr:0x0204ff98
@@ -7321,7 +7321,7 @@ data_020df74c kind:data(any) addr:0x020df74c
 data_020df774 kind:data(any) addr:0x020df774
 data_020df840 kind:data(any) addr:0x020df840
 data_020df910 kind:data(any) addr:0x020df910
-data_020df9d8 kind:data(any) addr:0x020df9d8
+gActorRegisteredSubclassPresentationAllocationTag kind:data(any) addr:0x020df9d8
 data_020df9e0 kind:data(any) addr:0x020df9e0
 data_020df9e8 kind:data(any) addr:0x020df9e8
 data_020dfa20 kind:data(any) addr:0x020dfa20
@@ -7397,7 +7397,7 @@ data_020dfee4 kind:data(any) addr:0x020dfee4
 data_020e0008 kind:data(any) addr:0x020e0008
 gInteractionWaypointCursorAllocationTag kind:data(any) addr:0x020e00b8
 data_020e00c0 kind:data(any) addr:0x020e00c0
-data_020e00c8 kind:data(any) addr:0x020e00c8
+gActorExtendedType2SpritePresentationAllocationTag kind:data(any) addr:0x020e00c8
 data_020e00d0 kind:data(any) addr:0x020e00d0
 data_020e00d8 kind:data(any) addr:0x020e00d8
 data_020e00dc kind:data(any) addr:0x020e00dc
@@ -7456,7 +7456,7 @@ data_020e0b70 kind:data(any) addr:0x020e0b70
 data_020e0d50 kind:data(any) addr:0x020e0d50
 data_020e0f28 kind:data(any) addr:0x020e0f28
 data_020e0fde kind:data(any) addr:0x020e0fde
-data_020e16a8 kind:data(any) addr:0x020e16a8
+gInteractionRecordAllocatorAllocationTag kind:data(any) addr:0x020e16a8
 data_020e16b0 kind:data(any) addr:0x020e16b0
 data_020e16b8 kind:data(any) addr:0x020e16b8
 data_020e16c0 kind:data(any) addr:0x020e16c0
@@ -7564,8 +7564,8 @@ data_020e1c10 kind:data(any) addr:0x020e1c10
 data_020e1c20 kind:data(any) addr:0x020e1c20
 data_020e1c38 kind:data(any) addr:0x020e1c38
 gType7ActorContactResourceAllocationTag kind:data(any) addr:0x020e1cfc
-data_020e1d04 kind:data(any) addr:0x020e1d04
-data_020e1d0c kind:data(any) addr:0x020e1d0c
+gType7ActorAuxiliaryLoadSceneAllocationTag kind:data(any) addr:0x020e1d04
+gType7ActorPresentationEffectAllocationTag kind:data(any) addr:0x020e1d0c
 data_020e1d14 kind:data(any) addr:0x020e1d14
 data_020e1d24 kind:data(any) addr:0x020e1d24
 data_020e1d40 kind:data(any) addr:0x020e1d40
@@ -7624,14 +7624,14 @@ data_020e2354 kind:data(any) addr:0x020e2354
 data_020e2368 kind:data(any) addr:0x020e2368
 data_020e238c kind:data(any) addr:0x020e238c
 data_020e2458 kind:data(any) addr:0x020e2458
-data_020e251c kind:data(any) addr:0x020e251c
+gPresentationBackedActorCurrencyEffectAllocationTag kind:data(any) addr:0x020e251c
 data_020e2538 kind:data(any) addr:0x020e2538
 data_020e2544 kind:data(any) addr:0x020e2544
 data_020e2560 kind:data(any) addr:0x020e2560
 data_020e263c kind:data(any) addr:0x020e263c
 data_020e2648 kind:data(any) addr:0x020e2648
 data_020e2664 kind:data(any) addr:0x020e2664
-data_020e2724 kind:data(any) addr:0x020e2724
+gGridEffectActorAnimationResourceAllocationTag kind:data(any) addr:0x020e2724
 data_020e273c kind:data(any) addr:0x020e273c
 data_020e2748 kind:data(any) addr:0x020e2748
 data_020e2754 kind:data(any) addr:0x020e2754
@@ -7676,8 +7676,8 @@ data_020e321c kind:data(any) addr:0x020e321c
 data_020e3308 kind:data(any) addr:0x020e3308
 data_020e33f4 kind:data(any) addr:0x020e33f4
 data_020e34e0 kind:data(any) addr:0x020e34e0
-data_020e35c4 kind:data(any) addr:0x020e35c4
-data_020e35cc kind:data(any) addr:0x020e35cc
+gTrackedResourceActorAnimationResourceAllocationTag kind:data(any) addr:0x020e35c4
+gTrackedResourceActorSpriteEffectAllocationTag kind:data(any) addr:0x020e35cc
 data_020e35d4 kind:data(any) addr:0x020e35d4
 data_020e35e4 kind:data(any) addr:0x020e35e4
 data_020e35ec kind:data(any) addr:0x020e35ec

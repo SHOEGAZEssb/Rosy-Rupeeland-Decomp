@@ -1,5 +1,5 @@
 ; Matching retail form; see src/game/type7_actor_target_completion.c.
-.extern data_020e1d0c
+.extern gType7ActorPresentationEffectAllocationTag
 .extern gHeapContext
 .extern Heap_Alloc
 .extern func_0201f864
@@ -111,7 +111,7 @@ Type7Actor_UpdateTargetCompletion: ; 0x02049c20
     mov r0, #0x0
     add sp, sp, #0x18
     ldmia sp!, {r4, pc}
-.L_02049d58: .word data_020e1d0c
+.L_02049d58: .word gType7ActorPresentationEffectAllocationTag
 .L_02049d5c: .word gHeapContext
 .L_02049d60: .word 0x162c
 .size Type7Actor_UpdateTargetCompletion, . - Type7Actor_UpdateTargetCompletion
@@ -176,7 +176,7 @@ Type7Actor_FinishTargetCompletion: ; 0x02049d64
     bl Type7Actor_SelectRandomCallback
     add sp, sp, #0x18
     ldmia sp!, {r4, pc}
-.L_02049e44: .word data_020e1d0c
+.L_02049e44: .word gType7ActorPresentationEffectAllocationTag
 .L_02049e48: .word gHeapContext
 .L_02049e4c: .word 0x162c
 .size Type7Actor_FinishTargetCompletion, . - Type7Actor_FinishTargetCompletion

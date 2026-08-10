@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/actor_registered_subclass_state_helpers.c.
 .text
 .extern Heap_Alloc
-.extern data_020df9d8
+.extern gActorRegisteredSubclassPresentationAllocationTag
 .extern func_0201f864
 .extern gHeapContext
     .global ActorRegisteredSubclass_StartTimedState
@@ -52,5 +52,5 @@ ActorRegisteredSubclass_StartTimedState: ; 0x0203d48c
     add sp, sp, #0x18
     ldmia sp!, {r4, r5, r6, pc}
 .L_0203d538: .word gHeapContext
-.L_0203d53c: .word data_020df9d8
+.L_0203d53c: .word gActorRegisteredSubclassPresentationAllocationTag
     .size ActorRegisteredSubclass_StartTimedState, . - ActorRegisteredSubclass_StartTimedState
