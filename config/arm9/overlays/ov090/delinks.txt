@@ -120,36 +120,21 @@ asm/overlays/ov090/overlay090_0221bdd8.s:
 asm/overlays/ov090/overlay090_0221be40.s:
     categories: Game code
     .text start:0x0221be40 end:0x0221c138
-asm/overlays/ov090/overlay090_0221c138.s:
+src/overlays/ov090/overlay090_title_chain_vector_helpers.c:
     categories: Game code
-    .text start:0x0221c138 end:0x0221c170
-asm/overlays/ov090/overlay090_0221c170.s:
-    categories: Game code
-    .text start:0x0221c170 end:0x0221c184
+    .text start:0x0221c138 end:0x0221c184
 asm/overlays/ov090/overlay090_0221c184.s:
     categories: Game code
     .text start:0x0221c184 end:0x0221c318
-asm/overlays/ov090/overlay090_0221c318.s:
+src/overlays/ov090/overlay090_title_chain_member_state.c:
     categories: Game code
     .text start:0x0221c318 end:0x0221c350
-asm/overlays/ov090/overlay090_0221c350.s:
+src/overlays/ov090/overlay090_title_chain_distance_filter.c:
     categories: Game code
     .text start:0x0221c350 end:0x0221c3dc
-asm/overlays/ov090/overlay090_0221c3dc.s:
+src/overlays/ov090/overlay090_title_chain_accessors.c:
     categories: Game code
-    .text start:0x0221c3dc end:0x0221c434
-asm/overlays/ov090/overlay090_0221c434.s:
-    categories: Game code
-    .text start:0x0221c434 end:0x0221c440
-asm/overlays/ov090/overlay090_0221c440.s:
-    categories: Game code
-    .text start:0x0221c440 end:0x0221c44c
-asm/overlays/ov090/overlay090_0221c44c.s:
-    categories: Game code
-    .text start:0x0221c44c end:0x0221c454
-asm/overlays/ov090/overlay090_0221c454.s:
-    categories: Game code
-    .text start:0x0221c454 end:0x0221c468
+    .text start:0x0221c3dc end:0x0221c468
 asm/overlays/ov090/overlay090_0221c468.s:
     categories: Game code
     .text start:0x0221c468 end:0x0221c5ec
