@@ -5,8 +5,11 @@
  *
  * The overlay initializes the actor-interaction runtime, registers three
  * category-one descriptors, and publishes its script and callback records.
- * The record semantics remain partly unconfirmed, so address-derived data
- * names are retained.
+ * The installed retail bytecode drives the splash actors. Its normal boot
+ * branch reaches the subscript at 0x02220f14; the command at 0x02220fbd passes
+ * stage 84, area 912, phase 90, and mode 0 to the shared phase-request opcode.
+ * Other record semantics remain partly unconfirmed, so address-derived data
+ * names are retained rather than replacing them with inferred meanings.
  */
 
 #ifdef __cplusplus
@@ -22,6 +25,7 @@ extern void func_02008f58(void *value);
 
 extern u8 data_ov225_0221d720[];
 extern u8 data_ov225_0221d734[];
+/* Actor callback bytecode containing the confirmed splash-to-phase-90 path. */
 extern u8 data_ov225_02220a93[];
 extern u8 data_ov225_02221d00[];
 extern u8 data_ov225_02221d04[];

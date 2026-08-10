@@ -1138,15 +1138,11 @@ asm/game/game_phase_script_vm_02012668.s:
     categories: Game code
     .text       start:0x02012668 end:0x02012704
 
-asm/game/game_phase_script_vm_02012704.s:
+src/game/game_phase_script_vm_stack.c:
     categories: Game code
-    .text       start:0x02012704 end:0x02012720
+    .text       start:0x02012704 end:0x0201273c
 
-asm/game/game_phase_script_vm_02012720.s:
-    categories: Game code
-    .text       start:0x02012720 end:0x0201273c
-
-asm/game/game_phase_script_vm_0201273c.s:
+src/game/game_phase_script_vm_execute.c:
     categories: Game code
     .text       start:0x0201273c end:0x020127f0
 
@@ -1182,13 +1178,9 @@ asm/game/game_phase_script_vm_02012c34.s:
     categories: Game code
     .text       start:0x02012c34 end:0x02012c98
 
-asm/game/game_phase_script_vm_02012c98.s:
+src/game/game_phase_script_vm_wait_opcodes.c:
     categories: Game code
-    .text       start:0x02012c98 end:0x02012cb0
-
-asm/game/game_phase_script_vm_02012cb0.s:
-    categories: Game code
-    .text       start:0x02012cb0 end:0x02012cd4
+    .text       start:0x02012c98 end:0x02012cd4
 
 asm/game/game_phase_script_vm_02012cd4.s:
     categories: Game code
@@ -1438,7 +1430,7 @@ asm/game/game_phase_script_vm_0201413c.s:
     categories: Game code
     .text       start:0x0201413c end:0x0201416c
 
-asm/game/game_phase_script_vm_0201416c.s:
+src/game/game_phase_script_vm_phase_request_opcode.c:
     categories: Game code
     .text       start:0x0201416c end:0x020141d4
 
