@@ -2,8 +2,8 @@
 .text
 .extern data_021052fc
 .extern GamePhaseScriptVm_Pop
-.global func_02017694
-func_02017694:
+.global GamePhaseActorScriptVm_DispatchRuntimeObjectSlot9
+GamePhaseActorScriptVm_DispatchRuntimeObjectSlot9:
     stmdb sp!, {r3, lr}
     bl GamePhaseScriptVm_Pop
     ldr r2, L_020176c4
@@ -17,4 +17,4 @@ func_02017694:
     mov r0, #0
     ldmia sp!, {r3, pc}
 L_020176c4: .word data_021052fc
-    .size func_02017694, . - func_02017694
+    .size GamePhaseActorScriptVm_DispatchRuntimeObjectSlot9, . - GamePhaseActorScriptVm_DispatchRuntimeObjectSlot9

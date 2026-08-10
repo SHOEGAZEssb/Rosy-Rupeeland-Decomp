@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/game_phase_script_vm_runtime_control_opcodes.c.
 .text
-.global func_02017710
-func_02017710:
+.global GamePhaseActorScriptVm_RuntimeControlNoOp
+GamePhaseActorScriptVm_RuntimeControlNoOp:
     mov r0, #0
     bx lr
-    .size func_02017710, . - func_02017710
+    .size GamePhaseActorScriptVm_RuntimeControlNoOp, . - GamePhaseActorScriptVm_RuntimeControlNoOp

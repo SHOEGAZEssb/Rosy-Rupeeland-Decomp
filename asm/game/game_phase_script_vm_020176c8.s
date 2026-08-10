@@ -2,8 +2,8 @@
 .text
 .extern data_021052fc
 .extern func_02008570
-.global func_020176c8
-func_020176c8:
+.global GamePhaseActorScriptVm_SelectRuntimeScreenMode1
+GamePhaseActorScriptVm_SelectRuntimeScreenMode1:
     stmdb sp!, {r3, lr}
     ldr r0, L_020176e8
     mov r1, #1
@@ -13,4 +13,4 @@ func_020176c8:
     mov r0, #0
     ldmia sp!, {r3, pc}
 L_020176e8: .word data_021052fc
-    .size func_020176c8, . - func_020176c8
+    .size GamePhaseActorScriptVm_SelectRuntimeScreenMode1, . - GamePhaseActorScriptVm_SelectRuntimeScreenMode1

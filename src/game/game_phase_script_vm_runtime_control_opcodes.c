@@ -22,7 +22,7 @@ s32 GamePhaseActorScriptVm_SetRuntimeCollection2Enabled(GamePhaseActorScriptVm *
 }
 
 /* Pop an enable value, apply it to the area-scene object at runtime offset 0x2fb8, and return zero. */
-s32 func_02017668(GamePhaseActorScriptVm *self)
+s32 GamePhaseActorScriptVm_SetAreaSceneEnabled(GamePhaseActorScriptVm *self)
 {
     s32 enabled = (s32)GamePhaseScriptVm_Pop(&self->base);
     GamePhaseAreaScene_SetEnabled(*(void **)((u8 *)data_021052fc + 0x2fb8), enabled);
@@ -33,7 +33,7 @@ s32 func_02017668(GamePhaseActorScriptVm *self)
  * Pop a value and pass it to virtual slot 9 of the runtime object at offset
  * 0x2ed4; the method's precise semantic role remains unconfirmed. Return zero.
  */
-s32 func_02017694(GamePhaseActorScriptVm *self)
+s32 GamePhaseActorScriptVm_DispatchRuntimeObjectSlot9(GamePhaseActorScriptVm *self)
 {
     typedef void (*Method)(void *, s32);
     s32 value = (s32)GamePhaseScriptVm_Pop(&self->base);
@@ -44,7 +44,7 @@ s32 func_02017694(GamePhaseActorScriptVm *self)
 }
 
 /* Select runtime screen mode 1 with the recovered non-null state token and return zero. */
-s32 func_020176c8(GamePhaseActorScriptVm *self)
+s32 GamePhaseActorScriptVm_SelectRuntimeScreenMode1(GamePhaseActorScriptVm *self)
 {
     (void)self;
     func_02008570((GamePhaseRuntime *)data_021052fc, 1, (void *)1);
@@ -52,7 +52,7 @@ s32 func_020176c8(GamePhaseActorScriptVm *self)
 }
 
 /* Select runtime screen mode 0 with the recovered non-null state token and return zero. */
-s32 func_020176ec(GamePhaseActorScriptVm *self)
+s32 GamePhaseActorScriptVm_SelectRuntimeScreenMode0(GamePhaseActorScriptVm *self)
 {
     (void)self;
     func_02008570((GamePhaseRuntime *)data_021052fc, 0, (void *)1);
@@ -60,7 +60,7 @@ s32 func_020176ec(GamePhaseActorScriptVm *self)
 }
 
 /* Accept the VM, perform no state changes or SDK effects, and return zero. */
-s32 func_02017710(GamePhaseActorScriptVm *self)
+s32 GamePhaseActorScriptVm_RuntimeControlNoOp(GamePhaseActorScriptVm *self)
 {
     (void)self;
     return 0;

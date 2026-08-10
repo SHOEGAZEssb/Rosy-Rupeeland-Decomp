@@ -3,8 +3,8 @@
 .extern data_021052fc
 .extern GamePhaseAreaScene_SetEnabled
 .extern GamePhaseScriptVm_Pop
-.global func_02017668
-func_02017668:
+.global GamePhaseActorScriptVm_SetAreaSceneEnabled
+GamePhaseActorScriptVm_SetAreaSceneEnabled:
     stmdb sp!, {r3, lr}
     bl GamePhaseScriptVm_Pop
     ldr r2, L_02017690
@@ -16,4 +16,4 @@ func_02017668:
     mov r0, #0
     ldmia sp!, {r3, pc}
 L_02017690: .word data_021052fc
-    .size func_02017668, . - func_02017668
+    .size GamePhaseActorScriptVm_SetAreaSceneEnabled, . - GamePhaseActorScriptVm_SetAreaSceneEnabled
