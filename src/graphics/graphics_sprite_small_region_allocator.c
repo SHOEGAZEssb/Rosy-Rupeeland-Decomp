@@ -22,7 +22,8 @@ extern void __construct_array(void *array, u32 count, u32 elementSize,
  * Zero all links, ownership, range, type, and reference fields and return the
  * descriptor. No allocation, hardware access, or SDK graphics effect occurs.
  */
-GraphicsSpriteRegion *func_02076920(GraphicsSpriteRegion *region)
+GraphicsSpriteRegion *GraphicsSpriteSmallRegion_Init(
+    GraphicsSpriteRegion *region)
 {
     region->next = 0;
     region->previous = 0;
@@ -35,7 +36,7 @@ GraphicsSpriteRegion *func_02076920(GraphicsSpriteRegion *region)
 }
 
 /* No-op descriptor destructor; its input is ignored and no state changes. */
-void func_02076944(GraphicsSpriteRegion *region)
+void GraphicsSpriteSmallRegion_Destroy(GraphicsSpriteRegion *region)
 {
     (void)region;
 }
@@ -45,14 +46,14 @@ void func_02076944(GraphicsSpriteRegion *region)
  * expose descriptor zero as a free 0x4000-unit region. Return allocator. The
  * Metrowerks array runtime performs construction; no heap or hardware is used.
  */
-GraphicsSpriteSmallRegionAllocator *func_02076948(
+GraphicsSpriteSmallRegionAllocator *GraphicsSpriteSmallRegionAllocator_Init(
     GraphicsSpriteSmallRegionAllocator *allocator)
 {
     s32 i;
 
     __construct_array(allocator->regions, 32, sizeof(GraphicsSpriteRegion),
-                      (void (*)(void *))func_02076920,
-                      (void (*)(void *))func_02076944);
+                      (void (*)(void *))GraphicsSpriteSmallRegion_Init,
+                      (void (*)(void *))GraphicsSpriteSmallRegion_Destroy);
     allocator->freeHead = &allocator->regions[1];
     for (i = 1; i < 31; i++) {
         allocator->regions[i].next = &allocator->regions[i + 1];
@@ -69,7 +70,7 @@ GraphicsSpriteSmallRegionAllocator *func_02076948(
  * Return the selected region or null when no region fits. Only metadata changes.
  */
 #ifndef MATCHING
-GraphicsSpriteRegion *func_020769c0(
+GraphicsSpriteRegion *GraphicsSpriteSmallRegionAllocator_Allocate(
     GraphicsSpriteSmallRegionAllocator *allocator, u32 size, void *owner,
     u16 type)
 {
@@ -109,7 +110,7 @@ GraphicsSpriteRegion *func_020769c0(
 }
 #else
 /* This matching fallback implements the documented portable C directly above. */
-asm GraphicsSpriteRegion *func_020769c0(
+asm GraphicsSpriteRegion *GraphicsSpriteSmallRegionAllocator_Allocate(
     GraphicsSpriteSmallRegionAllocator *allocator, u32 size, void *owner,
     u16 type)
 {
@@ -174,8 +175,9 @@ sprite_small_region_allocate_return:
  * the valid contract.
  */
 #ifndef MATCHING
-void func_02076a70(GraphicsSpriteSmallRegionAllocator *allocator,
-                   GraphicsSpriteRegion *region)
+void GraphicsSpriteSmallRegionAllocator_Release(
+    GraphicsSpriteSmallRegionAllocator *allocator,
+    GraphicsSpriteRegion *region)
 {
     GraphicsSpriteRegion *neighbor;
 
@@ -217,8 +219,9 @@ void func_02076a70(GraphicsSpriteSmallRegionAllocator *allocator,
 }
 #else
 /* This matching fallback implements the documented portable C directly above. */
-asm void func_02076a70(GraphicsSpriteSmallRegionAllocator *allocator,
-                       GraphicsSpriteRegion *region)
+asm void GraphicsSpriteSmallRegionAllocator_Release(
+    GraphicsSpriteSmallRegionAllocator *allocator,
+    GraphicsSpriteRegion *region)
 {
     cmp r1, #0
     bxeq lr

@@ -17,12 +17,12 @@ typedef char GraphicsSpriteRegionAllocatorSizeCheck[
 extern "C" {
 #endif
 
-GraphicsSpriteRegionAllocator *func_0207671c(
+GraphicsSpriteRegionAllocator *GraphicsSpriteRegionAllocator_Init(
     GraphicsSpriteRegionAllocator *allocator);
-GraphicsSpriteRegion *func_0207679c(GraphicsSpriteRegionAllocator *allocator,
-                                    u32 size, void *owner, u16 type);
-void func_0207684c(GraphicsSpriteRegionAllocator *allocator,
-                   GraphicsSpriteRegion *region);
+GraphicsSpriteRegion *GraphicsSpriteRegionAllocator_Allocate(
+    GraphicsSpriteRegionAllocator *allocator, u32 size, void *owner, u16 type);
+void GraphicsSpriteRegionAllocator_Release(
+    GraphicsSpriteRegionAllocator *allocator, GraphicsSpriteRegion *region);
 
 #ifdef __cplusplus
 }

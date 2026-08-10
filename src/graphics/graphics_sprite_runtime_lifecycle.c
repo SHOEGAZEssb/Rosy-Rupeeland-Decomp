@@ -24,7 +24,7 @@ extern GraphicsSpriteState data_021edea0[];
  * No-op destructor for one global GraphicsSpriteState. The input is ignored,
  * no state is changed, and no hardware or SDK operation occurs.
  */
-void func_020766cc(GraphicsSpriteState *state)
+void GraphicsSpriteState_Destroy(GraphicsSpriteState *state)
 {
     (void)state;
 }
@@ -35,11 +35,11 @@ void func_020766cc(GraphicsSpriteState *state)
  * destructor, so observable state is unchanged; the runtime call itself is
  * retained because it is part of global C++ shutdown registration.
  */
-void func_020766d0(void)
+void GraphicsSpriteState_DestroyGlobalPool(void)
 {
     __destroy_arr(data_021edea0, GRAPHICS_SPRITE_GLOBAL_STATE_COUNT,
                   sizeof(GraphicsSpriteState),
-                  (void (*)(void *))func_020766cc);
+                  (void (*)(void *))GraphicsSpriteState_Destroy);
 }
 
 /*
@@ -47,7 +47,7 @@ void func_020766d0(void)
  * allocation, ownership transfer, hardware access, or SDK call
  * occurs.
  */
-GraphicsSpriteRegion *func_020766f4(GraphicsSpriteRegion *region)
+GraphicsSpriteRegion *GraphicsSpriteRegion_Init(GraphicsSpriteRegion *region)
 {
     region->next = 0;
     region->previous = 0;
@@ -63,7 +63,7 @@ GraphicsSpriteRegion *func_020766f4(GraphicsSpriteRegion *region)
  * No-op destructor for a region descriptor. The input is ignored, no state
  * changes, and no hardware or SDK operation occurs.
  */
-void func_02076718(GraphicsSpriteRegion *region)
+void GraphicsSpriteRegion_Destroy(GraphicsSpriteRegion *region)
 {
     (void)region;
 }

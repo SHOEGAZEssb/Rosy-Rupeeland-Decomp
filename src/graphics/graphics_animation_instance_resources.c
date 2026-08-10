@@ -15,10 +15,10 @@ extern void *Heap_Alloc(u32 size, const char *tag, s32 alignment, void *heap);
 extern void Heap_Free(void *allocation);
 extern const char data_020e6a04[];
 extern u8 gHeapContext[];
-extern GraphicsSpriteRegion *Graphics3DResourceOwner_AcquireTextureRegion(Graphics3DResourceOwner *owner,
-                                           void *resource);
-extern GraphicsSpriteRegion *Graphics3DResourceOwner_AcquirePaletteRegion(Graphics3DResourceOwner *owner,
-                                           void *resource);
+extern GraphicsSpriteRegion *Graphics3DResourceOwner_AcquireTextureRegion(
+    Graphics3DResourceOwner *owner, void *resource);
+extern GraphicsSpriteRegion *Graphics3DResourceOwner_AcquirePaletteRegion(
+    Graphics3DResourceOwner *owner, void *resource);
 
 #ifdef __cplusplus
 }
@@ -107,8 +107,8 @@ void Graphics3DResourceOwner_DestroyAnimationInstance(Graphics3DResourceOwner *o
     if (instance == 0) {
         return;
     }
-    func_0207684c(&owner->textureRegions, instance->textureRegion);
-    func_02076a70(&owner->paletteRegions, instance->paletteRegion);
+    GraphicsSpriteRegionAllocator_Release(&owner->textureRegions, instance->textureRegion);
+    GraphicsSpriteSmallRegionAllocator_Release(&owner->paletteRegions, instance->paletteRegion);
     if (instance != 0) {
         Heap_Free(instance);
     }
@@ -129,14 +129,14 @@ void Graphics3DResourceOwner_RebindAnimationInstance(Graphics3DResourceOwner *ow
         return;
     }
     if (instance->textureResource != (void *)params->textureResource) {
-        func_0207684c(&owner->textureRegions, instance->textureRegion);
+        GraphicsSpriteRegionAllocator_Release(&owner->textureRegions, instance->textureRegion);
         instance->textureResource = (void *)params->textureResource;
         instance->textureRegion =
             Graphics3DResourceOwner_AcquireTextureRegion(
                 owner, (void *)params->textureResource);
     }
     if (instance->paletteResource != (void *)params->paletteResource) {
-        func_02076a70(&owner->paletteRegions, instance->paletteRegion);
+        GraphicsSpriteSmallRegionAllocator_Release(&owner->paletteRegions, instance->paletteRegion);
         instance->paletteResource = (void *)params->paletteResource;
         instance->paletteRegion =
             Graphics3DResourceOwner_AcquirePaletteRegion(
@@ -162,7 +162,7 @@ asm void Graphics3DResourceOwner_RebindAnimationInstance(Graphics3DResourceOwner
     beq graphics_animation_instance_palette_rebind
     ldr r1, [r5, #0xc]
     add r0, r6, #0x14
-    bl func_0207684c
+    bl GraphicsSpriteRegionAllocator_Release
     ldr r1, [r4]
     mov r0, r6
     str r1, [r5, #0x14]
@@ -176,7 +176,7 @@ graphics_animation_instance_palette_rebind:
     beq graphics_animation_instance_animation_rebind
     ldr r1, [r5, #0x10]
     add r0, r6, #0x31c
-    bl func_02076a70
+    bl GraphicsSpriteSmallRegionAllocator_Release
     ldr r1, [r4, #4]
     mov r0, r6
     str r1, [r5, #0x18]

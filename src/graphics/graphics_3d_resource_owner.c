@@ -31,8 +31,8 @@ extern void func_020aee48(u32 bankSelection);
 Graphics3DResourceOwner *Graphics3DResourceOwner_Init(
     Graphics3DResourceOwner *owner, u32 textureBankMode, u32 paletteBankMode)
 {
-    func_0207671c(&owner->textureRegions);
-    func_02076948(&owner->paletteRegions);
+    GraphicsSpriteRegionAllocator_Init(&owner->textureRegions);
+    GraphicsSpriteSmallRegionAllocator_Init(&owner->paletteRegions);
     owner->textureBankMode = textureBankMode;
     owner->paletteBankMode = paletteBankMode;
     owner->managerCount = 0;
@@ -93,9 +93,9 @@ asm Graphics3DResourceOwner *Graphics3DResourceOwner_Init(
     add r0, r4, #0x14
     mov r6, r1
     mov r5, r2
-    bl func_0207671c
+    bl GraphicsSpriteRegionAllocator_Init
     add r0, r4, #0x31c
-    bl func_02076948
+    bl GraphicsSpriteSmallRegionAllocator_Init
     str r6, [r4]
     mov r0, #0
     str r5, [r4, #4]

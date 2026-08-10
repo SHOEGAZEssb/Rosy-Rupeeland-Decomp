@@ -11344,7 +11344,7 @@ build build/reports/graphics_sprite_runtime_lifecycle.json: objdiff build/decomp
 
 build build/reports/graphics_sprite_runtime_lifecycle.txt: match_report build/reports/graphics_sprite_runtime_lifecycle.json | tools/report_objdiff.py
   report_json = build/reports/graphics_sprite_runtime_lifecycle.json
-  report_args = --section .text --function func_020766cc --function func_020766d0 --function func_020766f4 --function func_02076718
+  report_args = --section .text --function GraphicsSpriteState_Destroy --function GraphicsSpriteState_DestroyGlobalPool --function GraphicsSpriteRegion_Init --function GraphicsSpriteRegion_Destroy
 
 build build/reports/graphics_sprite_region_allocator.json: objdiff build/decomp/delinks/src/graphics/graphics_sprite_region_allocator.o | build/decomp/src/graphics/graphics_sprite_region_allocator.o
   target_object = build/decomp/delinks/src/graphics/graphics_sprite_region_allocator.o
@@ -11352,7 +11352,7 @@ build build/reports/graphics_sprite_region_allocator.json: objdiff build/decomp/
 
 build build/reports/graphics_sprite_region_allocator.txt: match_report build/reports/graphics_sprite_region_allocator.json | tools/report_objdiff.py
   report_json = build/reports/graphics_sprite_region_allocator.json
-  report_args = --section .text --function func_0207671c --function func_0207679c --function func_0207684c
+  report_args = --section .text --function GraphicsSpriteRegionAllocator_Init --function GraphicsSpriteRegionAllocator_Allocate --function GraphicsSpriteRegionAllocator_Release
 
 build build/reports/graphics_sprite_small_region_allocator.json: objdiff build/decomp/delinks/src/graphics/graphics_sprite_small_region_allocator.o | build/decomp/src/graphics/graphics_sprite_small_region_allocator.o
   target_object = build/decomp/delinks/src/graphics/graphics_sprite_small_region_allocator.o
@@ -11360,7 +11360,7 @@ build build/reports/graphics_sprite_small_region_allocator.json: objdiff build/d
 
 build build/reports/graphics_sprite_small_region_allocator.txt: match_report build/reports/graphics_sprite_small_region_allocator.json | tools/report_objdiff.py
   report_json = build/reports/graphics_sprite_small_region_allocator.json
-  report_args = --section .text --function func_02076920 --function func_02076944 --function func_02076948 --function func_020769c0 --function func_02076a70
+  report_args = --section .text --function GraphicsSpriteSmallRegion_Init --function GraphicsSpriteSmallRegion_Destroy --function GraphicsSpriteSmallRegionAllocator_Init --function GraphicsSpriteSmallRegionAllocator_Allocate --function GraphicsSpriteSmallRegionAllocator_Release
 
 build build/reports/graphics_animation_instance_setup.json: objdiff build/decomp/delinks/src/graphics/graphics_animation_instance_setup.o | build/decomp/src/graphics/graphics_animation_instance_setup.o
   target_object = build/decomp/delinks/src/graphics/graphics_animation_instance_setup.o

@@ -25,14 +25,14 @@ extern void __construct_array(void *array, u32 count, u32 elementSize,
  * 0x20000. Return allocator. Construction uses the Metrowerks array runtime;
  * no heap, graphics hardware, or SDK graphics operation is involved.
  */
-GraphicsSpriteRegionAllocator *func_0207671c(
+GraphicsSpriteRegionAllocator *GraphicsSpriteRegionAllocator_Init(
     GraphicsSpriteRegionAllocator *allocator)
 {
     s32 i;
 
     __construct_array(allocator->regions, 32, sizeof(GraphicsSpriteRegion),
-                      (void (*)(void *))func_020766f4,
-                      (void (*)(void *))func_02076718);
+                      (void (*)(void *))GraphicsSpriteRegion_Init,
+                      (void (*)(void *))GraphicsSpriteRegion_Destroy);
     allocator->freeHead = &allocator->regions[1];
     for (i = 1; i < 31; i++) {
         allocator->regions[i].next = &allocator->regions[i + 1];
@@ -51,8 +51,8 @@ GraphicsSpriteRegionAllocator *func_0207671c(
  * or null when no free region fits. Only allocator metadata changes.
  */
 #ifndef MATCHING
-GraphicsSpriteRegion *func_0207679c(GraphicsSpriteRegionAllocator *allocator,
-                                    u32 size, void *owner, u16 type)
+GraphicsSpriteRegion *GraphicsSpriteRegionAllocator_Allocate(
+    GraphicsSpriteRegionAllocator *allocator, u32 size, void *owner, u16 type)
 {
     GraphicsSpriteRegion *region = &allocator->regions[0];
     s32 remainder;
@@ -91,7 +91,7 @@ GraphicsSpriteRegion *func_0207679c(GraphicsSpriteRegionAllocator *allocator,
 }
 #else
 /* This matching fallback implements the documented portable C directly above. */
-asm GraphicsSpriteRegion *func_0207679c(
+asm GraphicsSpriteRegion *GraphicsSpriteRegionAllocator_Allocate(
     GraphicsSpriteRegionAllocator *allocator, u32 size, void *owner, u16 type)
 {
     stmdb sp!, {r4, r5}
@@ -154,8 +154,8 @@ sprite_region_allocate_return:
  * and is outside the valid contract. No hardware or SDK effects occur.
  */
 #ifndef MATCHING
-void func_0207684c(GraphicsSpriteRegionAllocator *allocator,
-                   GraphicsSpriteRegion *region)
+void GraphicsSpriteRegionAllocator_Release(
+    GraphicsSpriteRegionAllocator *allocator, GraphicsSpriteRegion *region)
 {
     GraphicsSpriteRegion *neighbor;
 
@@ -196,8 +196,8 @@ void func_0207684c(GraphicsSpriteRegionAllocator *allocator,
 }
 #else
 /* This matching fallback implements the documented portable C directly above. */
-asm void func_0207684c(GraphicsSpriteRegionAllocator *allocator,
-                       GraphicsSpriteRegion *region)
+asm void GraphicsSpriteRegionAllocator_Release(
+    GraphicsSpriteRegionAllocator *allocator, GraphicsSpriteRegion *region)
 {
     cmp r1, #0
     bxeq lr

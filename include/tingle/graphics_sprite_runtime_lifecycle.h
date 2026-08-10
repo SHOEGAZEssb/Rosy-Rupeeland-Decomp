@@ -21,10 +21,10 @@ typedef char GraphicsSpriteRegionSizeCheck[
 extern "C" {
 #endif
 
-void func_020766cc(GraphicsSpriteState *state);
-void func_020766d0(void);
-GraphicsSpriteRegion *func_020766f4(GraphicsSpriteRegion *region);
-void func_02076718(GraphicsSpriteRegion *region);
+void GraphicsSpriteState_Destroy(GraphicsSpriteState *state);
+void GraphicsSpriteState_DestroyGlobalPool(void);
+GraphicsSpriteRegion *GraphicsSpriteRegion_Init(GraphicsSpriteRegion *region);
+void GraphicsSpriteRegion_Destroy(GraphicsSpriteRegion *region);
 
 #ifdef __cplusplus
 }

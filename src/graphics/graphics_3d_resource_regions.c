@@ -40,7 +40,7 @@ GraphicsSpriteRegion *Graphics3DResourceOwner_AcquireTextureRegion(
     if (region == 0) {
         u32 size = func_0207043c(resource);
 
-        region = func_0207679c(&owner->textureRegions, size, resource, 1);
+        region = GraphicsSpriteRegionAllocator_Allocate(&owner->textureRegions, size, resource, 1);
         size = func_0207043c(resource);
         func_020b239c();
         func_020b2238(*(void **)((u8 *)resource + 0x24), region->offset, size);
@@ -71,7 +71,7 @@ asm GraphicsSpriteRegion *Graphics3DResourceOwner_AcquireTextureRegion(
     mov r2, r4
     add r0, r6, #0x14
     mov r3, #1
-    bl func_0207679c
+    bl GraphicsSpriteRegionAllocator_Allocate
     mov r5, r0
     mov r0, r4
     bl func_0207043c
@@ -150,7 +150,7 @@ GraphicsSpriteRegion *Graphics3DResourceOwner_AcquirePaletteRegion(
     if (region == 0) {
         u32 size = func_02070888(resource);
 
-        region = func_020769c0(&owner->paletteRegions, size, resource, 1);
+        region = GraphicsSpriteSmallRegionAllocator_Allocate(&owner->paletteRegions, size, resource, 1);
         func_020b2180();
         func_020b210c(func_02070874(resource), region->offset, region->size);
         func_020b20b4();
@@ -190,7 +190,7 @@ graphics_3d_palette_region_found:
     mov r2, r4
     add r0, r6, #0x31c
     mov r3, #1
-    bl func_020769c0
+    bl GraphicsSpriteSmallRegionAllocator_Allocate
     mov r5, r0
     mov r0, r4
     ldr r7, [r5, #0x10]

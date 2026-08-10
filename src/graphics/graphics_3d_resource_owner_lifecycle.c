@@ -34,9 +34,9 @@ Graphics3DResourceOwner *Graphics3DResourceOwner_Destroy(Graphics3DResourceOwner
     func_020ae72c();
     __destroy_arr(owner->paletteRegions.regions, 32,
                   sizeof(GraphicsSpriteRegion),
-                  (void (*)(void *))func_02076944);
+                  (void (*)(void *))GraphicsSpriteSmallRegion_Destroy);
     __destroy_arr(owner->textureRegions.regions, 32,
                   sizeof(GraphicsSpriteRegion),
-                  (void (*)(void *))func_02076718);
+                  (void (*)(void *))GraphicsSpriteRegion_Destroy);
     return owner;
 }

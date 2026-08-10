@@ -51,8 +51,8 @@ Graphics3DResourceBinding *Graphics3DResourceBinding_Init(
 Graphics3DResourceBinding *Graphics3DResourceBinding_Destroy(
     Graphics3DResourceBinding *binding)
 {
-    func_0207684c(&binding->owner->textureRegions, binding->textureRegion);
-    func_02076a70(&binding->owner->paletteRegions, binding->paletteRegion);
+    GraphicsSpriteRegionAllocator_Release(&binding->owner->textureRegions, binding->textureRegion);
+    GraphicsSpriteSmallRegionAllocator_Release(&binding->owner->paletteRegions, binding->paletteRegion);
     func_02071bdc(binding->archive, binding->textureResource);
     func_02071c38(binding->archive, binding->paletteResource);
     return binding;

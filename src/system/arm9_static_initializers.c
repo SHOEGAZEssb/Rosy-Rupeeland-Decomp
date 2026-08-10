@@ -50,8 +50,8 @@ extern void func_0206fbe8(void *);
 extern void func_0206fd78(void *);
 extern void func_0206fdd8(void *);
 extern void func_02072aec(void *);
-extern void func_020766cc(void *);
-extern void func_020766d0(void *);
+extern void GraphicsSpriteState_Destroy(void *);
+extern void GraphicsSpriteState_DestroyGlobalPool(void *);
 extern void func_020787bc(void *);
 extern void func_020787c0(void *);
 extern void func_0207a064(void *);
@@ -288,15 +288,15 @@ void __sinit_020c1658(void)
 
 /*
  * No inputs. Construct 384 elements of size 0x3c at data_021edea0 using
- * func_02072aec/func_020766cc, then register array destructor thunk
- * func_020766d0 with a null object and record data_021ede74. Global pool
+ * func_02072aec/GraphicsSpriteState_Destroy, then register array destructor thunk
+ * GraphicsSpriteState_DestroyGlobalPool with a null object and record data_021ede74. Global pool
  * lifetime state changes; no value or direct hardware effect occurs.
  */
 void __sinit_020c1684(void)
 {
     __construct_array(data_021edea0, 0x180, 0x3c,
-                      func_02072aec, func_020766cc);
-    __register_global_object(0, func_020766d0, data_021ede74);
+                      func_02072aec, GraphicsSpriteState_Destroy);
+    __register_global_object(0, GraphicsSpriteState_DestroyGlobalPool, data_021ede74);
 }
 
 /*

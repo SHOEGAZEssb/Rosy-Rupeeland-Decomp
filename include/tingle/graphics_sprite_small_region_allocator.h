@@ -10,15 +10,17 @@ typedef GraphicsSpriteRegionAllocator GraphicsSpriteSmallRegionAllocator;
 extern "C" {
 #endif
 
-GraphicsSpriteRegion *func_02076920(GraphicsSpriteRegion *region);
-void func_02076944(GraphicsSpriteRegion *region);
-GraphicsSpriteSmallRegionAllocator *func_02076948(
+GraphicsSpriteRegion *GraphicsSpriteSmallRegion_Init(
+    GraphicsSpriteRegion *region);
+void GraphicsSpriteSmallRegion_Destroy(GraphicsSpriteRegion *region);
+GraphicsSpriteSmallRegionAllocator *GraphicsSpriteSmallRegionAllocator_Init(
     GraphicsSpriteSmallRegionAllocator *allocator);
-GraphicsSpriteRegion *func_020769c0(
+GraphicsSpriteRegion *GraphicsSpriteSmallRegionAllocator_Allocate(
     GraphicsSpriteSmallRegionAllocator *allocator, u32 size, void *owner,
     u16 type);
-void func_02076a70(GraphicsSpriteSmallRegionAllocator *allocator,
-                   GraphicsSpriteRegion *region);
+void GraphicsSpriteSmallRegionAllocator_Release(
+    GraphicsSpriteSmallRegionAllocator *allocator,
+    GraphicsSpriteRegion *region);
 
 #ifdef __cplusplus
 }
