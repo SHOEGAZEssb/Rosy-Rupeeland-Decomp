@@ -3979,7 +3979,7 @@ build build/reports/graphics_render_entry_pool.json: objdiff build/decomp/delink
 
 build build/reports/graphics_render_entry_pool.txt: match_report build/reports/graphics_render_entry_pool.json | tools/report_objdiff.py
   report_json = build/reports/graphics_render_entry_pool.json
-  report_args = --section .text --function func_020723e0 --function func_02072400 --function func_02072404 --function func_02072444 --function func_0207248c --function func_02072518 --function func_02072560
+  report_args = --section .text --function GraphicsRenderEntry_Init --function GraphicsRenderEntry_Destroy --function GraphicsRenderEntryPool_Init --function GraphicsRenderEntryPool_Reset --function GraphicsRenderEntryPool_AllocateChain --function GraphicsRenderEntryPool_AppendRoot --function GraphicsRenderEntryPool_SortRoots
 
 build build/reports/graphics_transfer_queue.json: objdiff build/decomp/delinks/src/graphics/graphics_transfer_queue.o | build/decomp/src/graphics/graphics_transfer_queue.o
   target_object = build/decomp/delinks/src/graphics/graphics_transfer_queue.o
@@ -3995,7 +3995,7 @@ build build/reports/graphics_indexed_chain_pool.json: objdiff build/decomp/delin
 
 build build/reports/graphics_indexed_chain_pool.txt: match_report build/reports/graphics_indexed_chain_pool.json | tools/report_objdiff.py
   report_json = build/reports/graphics_indexed_chain_pool.json
-  report_args = --section .text --function func_020727c4 --function func_020727e8 --function func_020727ec --function func_0207287c --function func_0207290c
+  report_args = --section .text --function GraphicsIndexedChainEntry_Init --function GraphicsIndexedChainEntry_Destroy --function GraphicsIndexedChainPool_Init --function GraphicsIndexedChainPool_AllocateChain --function GraphicsIndexedChainPool_ReleaseChain
 
 build build/reports/graphics_lookup_cache.json: objdiff build/decomp/delinks/src/graphics/graphics_lookup_cache.o | build/decomp/src/graphics/graphics_lookup_cache.o
   target_object = build/decomp/delinks/src/graphics/graphics_lookup_cache.o

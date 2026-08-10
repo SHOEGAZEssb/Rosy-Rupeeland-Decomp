@@ -23,7 +23,7 @@ extern void __construct_array(void *array, u32 count, u32 elementSize,
  * Clear all links, the offset-0x0c pointer, and three payload bytes in entry.
  * The descriptor changes in place; there is no return value or hardware I/O.
  */
-void func_020727c4(GraphicsIndexedChainEntry *entry)
+void GraphicsIndexedChainEntry_Init(GraphicsIndexedChainEntry *entry)
 {
     entry->chainNext = 0;
     entry->next = 0;
@@ -38,7 +38,7 @@ void func_020727c4(GraphicsIndexedChainEntry *entry)
  * No-op descriptor destructor used by the Metrowerks array runtime. It changes
  * no state, returns no value, and has no SDK or graphics-hardware effects.
  */
-void func_020727e8(GraphicsIndexedChainEntry *entry)
+void GraphicsIndexedChainEntry_Destroy(GraphicsIndexedChainEntry *entry)
 {
     (void)entry;
 }
@@ -48,15 +48,16 @@ void func_020727e8(GraphicsIndexedChainEntry *entry)
  * list, and initialize an empty active-root list. Returns pool and performs no
  * graphics operation beyond invoking the compiler's array runtime.
  */
-GraphicsIndexedChainPool *func_020727ec(GraphicsIndexedChainPool *pool)
+GraphicsIndexedChainPool *GraphicsIndexedChainPool_Init(
+    GraphicsIndexedChainPool *pool)
 {
     u8 i;
 
     __construct_array(
         pool->entries, GRAPHICS_INDEXED_CHAIN_CAPACITY,
         sizeof(GraphicsIndexedChainEntry),
-        (void (*)(void *))func_020727c4,
-        (void (*)(void *))func_020727e8);
+        (void (*)(void *))GraphicsIndexedChainEntry_Init,
+        (void (*)(void *))GraphicsIndexedChainEntry_Destroy);
 
     pool->tail = 0;
     pool->head = 0;
@@ -80,8 +81,8 @@ GraphicsIndexedChainPool *func_020727ec(GraphicsIndexedChainPool *pool)
  * retail zero-count behavior consumes the free list because this is do-while.
  */
 #ifndef MATCHING
-GraphicsIndexedChainEntry *func_0207287c(GraphicsIndexedChainPool *pool,
-                                         s32 requestedCount, u8 mode)
+GraphicsIndexedChainEntry *GraphicsIndexedChainPool_AllocateChain(
+    GraphicsIndexedChainPool *pool, s32 requestedCount, u8 mode)
 {
     GraphicsIndexedChainEntry *head = pool->head;
     GraphicsIndexedChainEntry *tail = pool->tail;
@@ -125,8 +126,8 @@ GraphicsIndexedChainEntry *func_0207287c(GraphicsIndexedChainPool *pool,
 }
 #else
 /* This matching fallback implements the documented portable C directly above. */
-asm GraphicsIndexedChainEntry *func_0207287c(GraphicsIndexedChainPool *pool,
-                                             s32 requestedCount, u8 mode)
+asm GraphicsIndexedChainEntry *GraphicsIndexedChainPool_AllocateChain(
+    GraphicsIndexedChainPool *pool, s32 requestedCount, u8 mode)
 {
     stmdb sp!, {r4, r5, r6, r7, r8, r9}
     mov r12, r0
@@ -177,8 +178,8 @@ indexed_chain_allocate_done:
  * there is no SDK or graphics-hardware operation.
  */
 #ifndef MATCHING
-void func_0207290c(GraphicsIndexedChainPool *pool,
-                   GraphicsIndexedChainEntry *root)
+void GraphicsIndexedChainPool_ReleaseChain(GraphicsIndexedChainPool *pool,
+                                           GraphicsIndexedChainEntry *root)
 {
     GraphicsIndexedChainEntry *head;
     GraphicsIndexedChainEntry *tail;
@@ -229,8 +230,8 @@ void func_0207290c(GraphicsIndexedChainPool *pool,
 }
 #else
 /* This matching fallback implements the documented portable C directly above. */
-asm void func_0207290c(GraphicsIndexedChainPool *pool,
-                       GraphicsIndexedChainEntry *root)
+asm void GraphicsIndexedChainPool_ReleaseChain(GraphicsIndexedChainPool *pool,
+                                               GraphicsIndexedChainEntry *root)
 {
     cmp r1, #0
     bxeq lr

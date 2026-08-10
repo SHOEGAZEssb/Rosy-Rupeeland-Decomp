@@ -23,7 +23,7 @@ extern void __construct_array(void *array, u32 count, u32 elementSize,
  * Clear all links, the sort key, and both payload words in entry. This mutates
  * only the supplied descriptor, returns no value, and has no hardware effects.
  */
-void func_020723e0(GraphicsRenderEntry *entry)
+void GraphicsRenderEntry_Init(GraphicsRenderEntry *entry)
 {
     entry->chainNext = 0;
     entry->next = 0;
@@ -37,7 +37,7 @@ void func_020723e0(GraphicsRenderEntry *entry)
  * No-op entry destructor used by the Metrowerks array runtime. It changes no
  * state, returns no value, and has no SDK or graphics-hardware effects.
  */
-void func_02072400(GraphicsRenderEntry *entry)
+void GraphicsRenderEntry_Destroy(GraphicsRenderEntry *entry)
 {
     (void)entry;
 }
@@ -47,14 +47,15 @@ void func_02072400(GraphicsRenderEntry *entry)
  * one full descriptor free list. The initialized pool is returned; this calls
  * only the compiler's array-construction runtime and does not submit graphics.
  */
-GraphicsRenderEntryPool *func_02072404(GraphicsRenderEntryPool *pool)
+GraphicsRenderEntryPool *GraphicsRenderEntryPool_Init(
+    GraphicsRenderEntryPool *pool)
 {
     __construct_array(
         pool->entries, GRAPHICS_RENDER_ENTRY_CAPACITY,
         sizeof(GraphicsRenderEntry),
-        (void (*)(void *))func_020723e0,
-        (void (*)(void *))func_02072400);
-    func_02072444(pool);
+        (void (*)(void *))GraphicsRenderEntry_Init,
+        (void (*)(void *))GraphicsRenderEntry_Destroy);
+    GraphicsRenderEntryPool_Reset(pool);
     return pool;
 }
 
@@ -63,7 +64,7 @@ GraphicsRenderEntryPool *func_02072404(GraphicsRenderEntryPool *pool)
  * through next as the free list. Existing entry payloads are not cleared. This
  * mutates pool in place, returns no value, and performs no SDK or hardware I/O.
  */
-void func_02072444(GraphicsRenderEntryPool *pool)
+void GraphicsRenderEntryPool_Reset(GraphicsRenderEntryPool *pool)
 {
     s32 i;
 
@@ -87,8 +88,8 @@ void func_02072444(GraphicsRenderEntryPool *pool)
  * entire free list rather than allocate nothing. No graphics hardware is used.
  */
 #ifndef MATCHING
-GraphicsRenderEntry *func_0207248c(GraphicsRenderEntryPool *pool,
-                                   s32 requestedCount)
+GraphicsRenderEntry *GraphicsRenderEntryPool_AllocateChain(
+    GraphicsRenderEntryPool *pool, s32 requestedCount)
 {
     GraphicsRenderEntry *head = pool->head;
     GraphicsRenderEntry *tail = pool->tail;
@@ -133,8 +134,8 @@ GraphicsRenderEntry *func_0207248c(GraphicsRenderEntryPool *pool,
 }
 #else
 /* This matching fallback implements the documented portable C directly above. */
-asm GraphicsRenderEntry *func_0207248c(GraphicsRenderEntryPool *pool,
-                                       s32 requestedCount)
+asm GraphicsRenderEntry *GraphicsRenderEntryPool_AllocateChain(
+    GraphicsRenderEntryPool *pool, s32 requestedCount)
 {
     stmdb sp!, {r4, r5, r6, r7, r8, r9}
     mov r2, r0
@@ -183,7 +184,8 @@ render_entry_allocate_done:
  * is ignored. The operation has no direct SDK or graphics-hardware effects.
  */
 #ifndef MATCHING
-void func_02072518(GraphicsRenderEntryPool *pool, GraphicsRenderEntry *entry)
+void GraphicsRenderEntryPool_AppendRoot(GraphicsRenderEntryPool *pool,
+                                        GraphicsRenderEntry *entry)
 {
     GraphicsRenderEntry *head;
     GraphicsRenderEntry *tail;
@@ -209,8 +211,8 @@ void func_02072518(GraphicsRenderEntryPool *pool, GraphicsRenderEntry *entry)
 }
 #else
 /* This matching fallback implements the documented portable C directly above. */
-asm void func_02072518(GraphicsRenderEntryPool *pool,
-                       GraphicsRenderEntry *entry)
+asm void GraphicsRenderEntryPool_AppendRoot(GraphicsRenderEntryPool *pool,
+                                            GraphicsRenderEntry *entry)
 {
     cmp r1, #0
     bxeq lr
@@ -242,7 +244,7 @@ render_entry_append_done:
  * the function returns no value or direct graphics-hardware result.
  */
 #ifndef MATCHING
-void func_02072560(GraphicsRenderEntryPool *pool)
+void GraphicsRenderEntryPool_SortRoots(GraphicsRenderEntryPool *pool)
 {
     GraphicsRenderEntry *head = pool->head;
     GraphicsRenderEntry *tail = pool->tail;
@@ -299,7 +301,7 @@ void func_02072560(GraphicsRenderEntryPool *pool)
 }
 #else
 /* This matching fallback implements the documented portable C directly above. */
-asm void func_02072560(GraphicsRenderEntryPool *pool)
+asm void GraphicsRenderEntryPool_SortRoots(GraphicsRenderEntryPool *pool)
 {
     stmdb sp!, {r4, r5, r6, r7, r8, r9}
     ldr r2, [r0, #0xc00]

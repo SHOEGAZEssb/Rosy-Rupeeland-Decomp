@@ -32,20 +32,20 @@ void func_02074d40(void *rendererPointer, GraphicsIndexedChainEntry *entry)
         if (entry->field_10 != 0) {
             return;
         }
-        func_0207290c(&renderer->pool0, entry);
+        GraphicsIndexedChainPool_ReleaseChain(&renderer->pool0, entry);
         return;
     case 2:
-        func_0207290c(&renderer->pool0, entry);
+        GraphicsIndexedChainPool_ReleaseChain(&renderer->pool0, entry);
         return;
     case 3:
         entry->field_10--;
         if (entry->field_10 != 0) {
             return;
         }
-        func_0207290c(&renderer->pool1, entry);
+        GraphicsIndexedChainPool_ReleaseChain(&renderer->pool1, entry);
         return;
     case 4:
-        func_0207290c(&renderer->pool1, entry);
+        GraphicsIndexedChainPool_ReleaseChain(&renderer->pool1, entry);
         return;
     default:
         return;

@@ -35,14 +35,16 @@ typedef char GraphicsRenderEntryPoolSizeCheck[
 extern "C" {
 #endif
 
-void func_020723e0(GraphicsRenderEntry *entry);
-void func_02072400(GraphicsRenderEntry *entry);
-GraphicsRenderEntryPool *func_02072404(GraphicsRenderEntryPool *pool);
-void func_02072444(GraphicsRenderEntryPool *pool);
-GraphicsRenderEntry *func_0207248c(GraphicsRenderEntryPool *pool,
-                                   s32 requestedCount);
-void func_02072518(GraphicsRenderEntryPool *pool, GraphicsRenderEntry *entry);
-void func_02072560(GraphicsRenderEntryPool *pool);
+void GraphicsRenderEntry_Init(GraphicsRenderEntry *entry);
+void GraphicsRenderEntry_Destroy(GraphicsRenderEntry *entry);
+GraphicsRenderEntryPool *GraphicsRenderEntryPool_Init(
+    GraphicsRenderEntryPool *pool);
+void GraphicsRenderEntryPool_Reset(GraphicsRenderEntryPool *pool);
+GraphicsRenderEntry *GraphicsRenderEntryPool_AllocateChain(
+    GraphicsRenderEntryPool *pool, s32 requestedCount);
+void GraphicsRenderEntryPool_AppendRoot(GraphicsRenderEntryPool *pool,
+                                        GraphicsRenderEntry *entry);
+void GraphicsRenderEntryPool_SortRoots(GraphicsRenderEntryPool *pool);
 void func_02073304(GraphicsRenderEntryPool *pool, u32 delta);
 
 #ifdef __cplusplus

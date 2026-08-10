@@ -29,9 +29,9 @@ GraphicsSpriteRenderer *func_02074200(GraphicsSpriteRenderer *renderer,
                                       u32 engine, u32 field28, u32 field2c)
 {
     func_020721b4(&renderer->vramAllocator);
-    func_020727ec(&renderer->indexedPool0);
-    func_020727ec(&renderer->indexedPool1);
-    func_02072404(&renderer->renderEntryPool);
+    GraphicsIndexedChainPool_Init(&renderer->indexedPool0);
+    GraphicsIndexedChainPool_Init(&renderer->indexedPool1);
+    GraphicsRenderEntryPool_Init(&renderer->renderEntryPool);
     func_020729a8(&renderer->lookupCache);
     func_02072644(&renderer->transferQueue);
     renderer->engine = engine;
@@ -43,7 +43,7 @@ GraphicsSpriteRenderer *func_02074200(GraphicsSpriteRenderer *renderer,
     renderer->groupTail = 0;
     renderer->groupHead = 0;
     func_02074f0c(renderer);
-    func_02072444(&renderer->renderEntryPool);
+    GraphicsRenderEntryPool_Reset(&renderer->renderEntryPool);
     func_02072a38(&renderer->lookupCache, renderer->shadowBuffer);
     renderer->field_38 = 1;
     renderer->field_1c = 0;

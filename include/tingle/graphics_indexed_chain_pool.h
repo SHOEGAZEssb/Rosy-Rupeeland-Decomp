@@ -37,13 +37,14 @@ typedef char GraphicsIndexedChainPoolSizeCheck[
 extern "C" {
 #endif
 
-void func_020727c4(GraphicsIndexedChainEntry *entry);
-void func_020727e8(GraphicsIndexedChainEntry *entry);
-GraphicsIndexedChainPool *func_020727ec(GraphicsIndexedChainPool *pool);
-GraphicsIndexedChainEntry *func_0207287c(GraphicsIndexedChainPool *pool,
-                                         s32 requestedCount, u8 mode);
-void func_0207290c(GraphicsIndexedChainPool *pool,
-                   GraphicsIndexedChainEntry *root);
+void GraphicsIndexedChainEntry_Init(GraphicsIndexedChainEntry *entry);
+void GraphicsIndexedChainEntry_Destroy(GraphicsIndexedChainEntry *entry);
+GraphicsIndexedChainPool *GraphicsIndexedChainPool_Init(
+    GraphicsIndexedChainPool *pool);
+GraphicsIndexedChainEntry *GraphicsIndexedChainPool_AllocateChain(
+    GraphicsIndexedChainPool *pool, s32 requestedCount, u8 mode);
+void GraphicsIndexedChainPool_ReleaseChain(GraphicsIndexedChainPool *pool,
+                                           GraphicsIndexedChainEntry *root);
 
 #ifdef __cplusplus
 }
