@@ -21,8 +21,8 @@
 .extern func_0201dcec
 .extern ActorMotionAreaFollower_GetPosition
 .extern GamePhaseCurrencyHud_Update
-.extern data_020d5dcc
-.extern data_020d5df8
+.extern gOverlay33RuntimeSceneVTable
+.extern gOverlay33RuntimeSceneChildAllocationTag
 .extern data_020d36e1
 .extern data_021052fc
 .extern gLupyContext
@@ -68,7 +68,7 @@ L_0201d858:
     bl Heap_Free
     mov r0, r4
     ldmia sp!, {r3, r4, r5, pc}
-L_0201d880: .word data_020d5dcc
+L_0201d880: .word gOverlay33RuntimeSceneVTable
 
 
 .size func_0201d7e8, . - func_0201d7e8

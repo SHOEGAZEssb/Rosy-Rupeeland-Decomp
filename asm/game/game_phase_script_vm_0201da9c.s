@@ -14,7 +14,7 @@
 .extern func_ov060_022100e4
 .extern data_021f3ecc
 .extern data_021f4090
-.extern data_020d5e00
+.extern gOverlay60ScriptObjectAllocationTag
 .extern gHeapContext
 .global func_0201da9c
 func_0201da9c: ; 0x0201da9c
@@ -94,7 +94,7 @@ L_0201dbac:
 L_0201dbb4: .word data_021f3ecc
 L_0201dbb8: .word data_021f4090
 L_0201dbbc: .word 0x3c
-L_0201dbc0: .word data_020d5e00
+L_0201dbc0: .word gOverlay60ScriptObjectAllocationTag
 L_0201dbc4: .word gHeapContext
 
 

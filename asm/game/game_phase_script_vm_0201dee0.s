@@ -11,9 +11,9 @@
 .extern func_0201dde4
 .extern func_0201dee0
 .extern func_0201df64
-.extern data_020d5e20
-.extern data_020d5e08
-.extern data_020d5e40
+.extern gRuntimePresentationListVTable
+.extern gRuntimePresentationListNodeAllocationTag
+.extern gRuntimePresentationAuxiliaryAllocationTag
 .extern data_021052fc
 .extern gHeapContext
 .global func_0201dee0
@@ -41,7 +41,7 @@ func_0201dee0: ; 0x0201dee0
     add r1, r1, #0x1
     str r1, [r5, #0xc]
     ldmia sp!, {r3, r4, r5, pc}
-L_0201df3c: .word data_020d5e08
+L_0201df3c: .word gRuntimePresentationListNodeAllocationTag
 L_0201df40: .word gHeapContext
 
 

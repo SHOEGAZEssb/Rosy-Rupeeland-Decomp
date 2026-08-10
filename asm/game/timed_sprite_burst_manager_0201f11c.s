@@ -4,7 +4,7 @@
 .extern Heap_Free
 .extern TouchPoint_Init
 .extern data_020c9670
-.extern data_020d5e48
+.extern gTimedSpritePointerArrayAllocationTag
 .extern data_020d6220
 .extern gTimedSpritePresentationAllocationTag
 .extern data_020f4e18
@@ -55,7 +55,7 @@ func_0201f11c: ; 0x0201f11c
     bl func_02003e20
     stmia r5, {r0, r4}
     ldmia sp!, {r3, r4, r5, pc}
-.L_0201f154: .word data_020d5e48
+.L_0201f154: .word gTimedSpritePointerArrayAllocationTag
 .L_0201f158: .word gHeapContext
     .size func_0201f11c, .-func_0201f11c
 

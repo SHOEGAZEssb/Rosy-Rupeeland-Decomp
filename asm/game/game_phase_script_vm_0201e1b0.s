@@ -7,7 +7,7 @@
 .extern func_020a2348
 .extern func_020a23a8
 .extern GX_SetGraphicsMode
-.extern data_020d5e20
+.extern gRuntimePresentationListVTable
 .extern data_021052fc
 .global func_0201e1b0
 func_0201e1b0: ; 0x0201e1b0

@@ -7,7 +7,7 @@
 .extern func_020a2348
 .extern func_020a23a8
 .extern GX_SetGraphicsMode
-.extern data_020d5e20
+.extern gRuntimePresentationListVTable
 .extern data_021052fc
 .global func_0201e228
 func_0201e228: ; 0x0201e228
@@ -20,7 +20,7 @@ func_0201e228: ; 0x0201e228
     bl Heap_Free
     mov r0, r4
     ldmia sp!, {r4, pc}
-L_0201e24c: .word data_020d5e20
+L_0201e24c: .word gRuntimePresentationListVTable
 
 
 .size func_0201e228, . - func_0201e228

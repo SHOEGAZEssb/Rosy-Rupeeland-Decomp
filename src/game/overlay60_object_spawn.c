@@ -17,7 +17,7 @@ extern "C" {
 #endif
 extern void *data_021f3ecc;
 extern void *data_021f4090;
-extern char data_020d5e00[];
+extern char gOverlay60ScriptObjectAllocationTag[];
 extern s32 GamePhaseScriptVm_Pop(void *script);
 extern u32 func_020be328(void);
 extern void GraphicsSpriteState_SetAnimationIndex(void *sprite, u32 value);
@@ -103,7 +103,7 @@ void *func_0201da9c(Overlay60ScriptContext *context, s32 argument1,
     }
     requestedDisplay = func_0201d9e4(requestedDisplay);
     OverlayManager_LoadOverlay(OverlayManager_GetGlobal(), 2, 0x3c);
-    allocation = Heap_Alloc(0x40, data_020d5e00, 4, &gHeapContext);
+    allocation = Heap_Alloc(0x40, gOverlay60ScriptObjectAllocationTag, 4, &gHeapContext);
     if (allocation == 0)
         return 0;
     sprite = *(void **)((u8 *)context->owner84 + 0x54);

@@ -11,9 +11,9 @@
 .extern func_0201dde4
 .extern func_0201dee0
 .extern func_0201df64
-.extern data_020d5e20
-.extern data_020d5e08
-.extern data_020d5e40
+.extern gRuntimePresentationListVTable
+.extern gRuntimePresentationListNodeAllocationTag
+.extern gRuntimePresentationAuxiliaryAllocationTag
 .extern data_021052fc
 .extern gHeapContext
 .global func_0201df44

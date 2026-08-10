@@ -21,8 +21,8 @@
 .extern func_0201dcec
 .extern ActorMotionAreaFollower_GetPosition
 .extern GamePhaseCurrencyHud_Update
-.extern data_020d5dcc
-.extern data_020d5df8
+.extern gOverlay33RuntimeSceneVTable
+.extern gOverlay33RuntimeSceneChildAllocationTag
 .extern data_020d36e1
 .extern data_021052fc
 .extern gLupyContext
@@ -75,9 +75,9 @@ L_0201d6dc:
     bl Scene_SetFlags03
     mov r0, r4
     ldmia sp!, {r3, r4, r5, pc}
-L_0201d73c: .word data_020d5dcc
+L_0201d73c: .word gOverlay33RuntimeSceneVTable
 L_0201d740: .word 0x21
-L_0201d744: .word data_020d5df8
+L_0201d744: .word gOverlay33RuntimeSceneChildAllocationTag
 L_0201d748: .word gHeapContext
 L_0201d74c: .word data_021052fc
 L_0201d750: .word data_020d36e1

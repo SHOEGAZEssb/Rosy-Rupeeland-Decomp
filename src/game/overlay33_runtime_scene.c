@@ -18,8 +18,8 @@ typedef struct Overlay33RuntimeScene {
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern SceneVTable data_020d5dcc;
-extern char data_020d5df8[];
+extern SceneVTable gOverlay33RuntimeSceneVTable;
+extern char gOverlay33RuntimeSceneChildAllocationTag[];
 extern u8 data_020d36e1[];
 extern void *data_021052fc;
 extern void *gLupyContext;
@@ -51,11 +51,11 @@ Overlay33RuntimeScene *func_0201d688(Overlay33RuntimeScene *self, u32 parameter)
     Overlay33Child *child;
 
     Scene_Init(&self->base);
-    self->base.vtable = &data_020d5dcc;
+    self->base.vtable = &gOverlay33RuntimeSceneVTable;
     OverlaySlot_Init(&self->overlay30);
     self->parameter24 = parameter;
     OverlaySlot_LoadOverlay(&self->overlay30, 0x21);
-    child = (Overlay33Child *)Heap_Alloc(0xd4, data_020d5df8, 4, &gHeapContext);
+    child = (Overlay33Child *)Heap_Alloc(0xd4, gOverlay33RuntimeSceneChildAllocationTag, 4, &gHeapContext);
     if (child != 0)
         child = func_ov033_021fd070(child, parameter);
     self->child3c = child;
@@ -76,7 +76,7 @@ Overlay33RuntimeScene *func_0201d688(Overlay33RuntimeScene *self, u32 parameter)
  */
 Overlay33RuntimeScene *func_0201d754(Overlay33RuntimeScene *self)
 {
-    self->base.vtable = &data_020d5dcc;
+    self->base.vtable = &gOverlay33RuntimeSceneVTable;
     self->display2c->flags14 &= ~0x40;
     ((void (*)(void *, s32))self->display2c->vtable[0x1d])(self->display2c, 0);
     self->display2c->flags10 &= ~0x8;
@@ -94,7 +94,7 @@ Overlay33RuntimeScene *func_0201d754(Overlay33RuntimeScene *self)
 /* Perform func_0201d754's teardown, free the scene, and return its old address. */
 Overlay33RuntimeScene *func_0201d7e8(Overlay33RuntimeScene *self)
 {
-    self->base.vtable = &data_020d5dcc;
+    self->base.vtable = &gOverlay33RuntimeSceneVTable;
     self->display2c->flags14 &= ~0x40;
     ((void (*)(void *, s32))self->display2c->vtable[0x1d])(self->display2c, 0);
     self->display2c->flags10 &= ~0x8;

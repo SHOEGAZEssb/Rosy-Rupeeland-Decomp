@@ -4,7 +4,7 @@
 .extern Heap_Free
 .extern TouchPoint_Init
 .extern data_020c9670
-.extern data_020d5e48
+.extern gTimedSpritePointerArrayAllocationTag
 .extern data_020d6220
 .extern gTimedSpritePresentationAllocationTag
 .extern data_020f4e18

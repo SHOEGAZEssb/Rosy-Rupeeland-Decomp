@@ -61,7 +61,7 @@ extern "C" {
 #endif
 extern void *data_020d6220;
 extern const s16 data_020c9670[];
-extern const char data_020d5e48[];
+extern const char gTimedSpritePointerArrayAllocationTag[];
 extern const char gTimedSpritePresentationAllocationTag[];
 extern void *data_020f4e18;
 extern u8 *data_021052fc;
@@ -195,7 +195,7 @@ void func_0201f11c(OwnedPointerArray *array, s32 count)
         func_0201f0d0(array);
     }
     array->items =
-        (void **)func_02003e20((u32)count * 4, data_020d5e48, 4,
+        (void **)func_02003e20((u32)count * 4, gTimedSpritePointerArrayAllocationTag, 4,
                               &gHeapContext);
     array->count = count;
 }

@@ -14,7 +14,7 @@
 .extern func_ov060_022100e4
 .extern data_021f3ecc
 .extern data_021f4090
-.extern data_020d5e00
+.extern gOverlay60ScriptObjectAllocationTag
 .extern gHeapContext
 .global func_0201da34
 func_0201da34: ; 0x0201da34

@@ -21,8 +21,8 @@
 .extern func_0201dcec
 .extern ActorMotionAreaFollower_GetPosition
 .extern GamePhaseCurrencyHud_Update
-.extern data_020d5dcc
-.extern data_020d5df8
+.extern gOverlay33RuntimeSceneVTable
+.extern gOverlay33RuntimeSceneChildAllocationTag
 .extern data_020d36e1
 .extern data_021052fc
 .extern gLupyContext

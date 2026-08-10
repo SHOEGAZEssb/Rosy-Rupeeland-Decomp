@@ -24,9 +24,9 @@ typedef struct RuntimePresentationManager {
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *data_020d5e20;
-extern char data_020d5e08[];
-extern char data_020d5e40[];
+extern void *gRuntimePresentationListVTable;
+extern char gRuntimePresentationListNodeAllocationTag[];
+extern char gRuntimePresentationAuxiliaryAllocationTag[];
 extern void *data_021052fc;
 extern void *func_020a1f80(void *self, s32 value);
 extern void func_020a20d4(void *self);
@@ -48,7 +48,7 @@ RuntimePresentationManager *func_0201dbc8(RuntimePresentationManager *self)
     void *auxiliary;
     func_0201dc18(&self->first);
     func_0201dc18(&self->second);
-    auxiliary = Heap_Alloc(0x50c, data_020d5e40, 4, &gHeapContext);
+    auxiliary = Heap_Alloc(0x50c, gRuntimePresentationAuxiliaryAllocationTag, 4, &gHeapContext);
     if (auxiliary != 0)
         auxiliary = func_020a1f80(auxiliary, 1);
     self->auxiliary = (u8 *)auxiliary;
@@ -58,7 +58,7 @@ RuntimePresentationManager *func_0201dbc8(RuntimePresentationManager *self)
 /* Install the recovered list vtable, clear head/tail/count, and return self. */
 PresentationList *func_0201dc18(PresentationList *self)
 {
-    self->vtable = data_020d5e20;
+    self->vtable = gRuntimePresentationListVTable;
     self->head = 0;
     self->tail = 0;
     self->count = 0;
@@ -68,7 +68,7 @@ PresentationList *func_0201dc18(PresentationList *self)
 /* Install the list vtable, clear all nodes, and return self. */
 PresentationList *func_0201dc38(PresentationList *self)
 {
-    self->vtable = data_020d5e20;
+    self->vtable = gRuntimePresentationListVTable;
     func_0201dc58(self);
     return self;
 }
@@ -95,9 +95,9 @@ RuntimePresentationManager *func_0201dc98(RuntimePresentationManager *self)
         func_020a20d4(self->auxiliary);
         Heap_Free(self->auxiliary);
     }
-    self->second.vtable = data_020d5e20;
+    self->second.vtable = gRuntimePresentationListVTable;
     func_0201dc58(&self->second);
-    self->first.vtable = data_020d5e20;
+    self->first.vtable = gRuntimePresentationListVTable;
     func_0201dc58(&self->first);
     return self;
 }
@@ -187,7 +187,7 @@ PresentationNode *func_0201ded4(PresentationList *list, PresentationObject *obje
 PresentationNode *func_0201dee0(PresentationList *list, PresentationObject *object)
 {
     PresentationNode *node = (PresentationNode *)Heap_Alloc(
-        sizeof(PresentationNode), data_020d5e08, 4, &gHeapContext);
+        sizeof(PresentationNode), gRuntimePresentationListNodeAllocationTag, 4, &gHeapContext);
     if (node != 0) {
         node->next = 0;
         node->previous = 0;

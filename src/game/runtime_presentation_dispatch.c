@@ -11,7 +11,7 @@ typedef struct RuntimePresentationManager { PresentationList first; Presentation
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *data_020d5e20;
+extern void *gRuntimePresentationListVTable;
 extern void *data_021052fc;
 extern void func_0201dc58(PresentationList *list);
 extern void func_0201dde4(PresentationList *list, PresentationNode *node);
@@ -97,7 +97,7 @@ void func_0201e1b0(RuntimePresentationManager *self, s32 key)
 /* Clear a list, free the list object itself, and return its old address. */
 PresentationList *func_0201e228(PresentationList *self)
 {
-    self->vtable=data_020d5e20;
+    self->vtable=gRuntimePresentationListVTable;
     func_0201dc58(self);
     Heap_Free(self);
     return self;

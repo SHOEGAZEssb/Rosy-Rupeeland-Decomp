@@ -11,9 +11,9 @@
 .extern func_0201dde4
 .extern func_0201dee0
 .extern func_0201df64
-.extern data_020d5e20
-.extern data_020d5e08
-.extern data_020d5e40
+.extern gRuntimePresentationListVTable
+.extern gRuntimePresentationListNodeAllocationTag
+.extern gRuntimePresentationAuxiliaryAllocationTag
 .extern data_021052fc
 .extern gHeapContext
 .global func_0201dc38
@@ -25,7 +25,7 @@ func_0201dc38: ; 0x0201dc38
     bl func_0201dc58
     mov r0, r4
     ldmia sp!, {r4, pc}
-L_0201dc54: .word data_020d5e20
+L_0201dc54: .word gRuntimePresentationListVTable
 
 
 .size func_0201dc38, . - func_0201dc38
