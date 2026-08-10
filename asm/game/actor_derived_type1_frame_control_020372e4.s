@@ -18,7 +18,7 @@
 .extern func_0201e0ec
 .extern func_0201f864
 .extern func_02022cb0
-.extern func_020329bc
+.extern Actor_TryInitializeHeightBandFromPoint
 .extern Actor_IsAtCachedTerrainHeight
 .extern func_02038ecc
 .extern func_020390c8
@@ -444,7 +444,7 @@ func_020372e4: ; 0x020372e4
     ldr r2, [r7, #0xd0]
     bic r2, r2, #0x2
     str r2, [r7, #0xd0]
-    bl func_020329bc
+    bl Actor_TryInitializeHeightBandFromPoint
     mov r0, #0x0
     str r0, [r7, #0x40]
     str r0, [r7, #0x3c]

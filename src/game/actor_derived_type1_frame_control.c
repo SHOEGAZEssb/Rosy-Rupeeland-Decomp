@@ -41,7 +41,8 @@ extern void func_02059278(void *context, s32 first, s32 second);
 extern s32 Actor_IsAtCachedTerrainHeight(void *actor);
 extern void func_02038ecc(void *actor);
 extern s32 func_020adae4(s32 numerator, s32 denominator);
-extern void func_020329bc(void *actor, const void *record);
+extern void Actor_TryInitializeHeightBandFromPoint(void *actor,
+                                                  const void *record);
 extern s32 func_020be334(s32 value);
 extern void func_0203bba4(void *actor);
 #ifdef __cplusplus
@@ -80,7 +81,8 @@ static s32 directionWord(const s32 *table, s32 direction)
  * can allocate manager-owned objects, play descriptor sound, and emit random
  * scene effects. GameWork flag 0x393 controls a temporary +0x230 bit-0x10
  * sound state. Confirmed system input selects one of eight motion vectors;
- * unavailable input instead submits current coordinates through func_020329bc.
+ * unavailable input instead submits current coordinates through
+ * Actor_TryInitializeHeightBandFromPoint.
  * Resource +0x274 scales motion by descriptor +0x0a and IDs 0x67/0x68/0x7b
  * apply additional accumulated-motion rules. The function also updates scale
  * halfword +0xde, invokes func_0203bba4 unless bit 0x20000 is set, and clears
@@ -235,7 +237,7 @@ void func_020372e4(void *self)
             *(u32 *)(actor + 0x230) =
                 (*(u32 *)(actor + 0x230) & ~1) | 2;
             *(u32 *)(actor + 0xd0) &= ~2;
-            func_020329bc(actor, record);
+            Actor_TryInitializeHeightBandFromPoint(actor, record);
             *(s32 *)(actor + 0x3c) = 0;
             *(s32 *)(actor + 0x40) = 0;
         }

@@ -4,9 +4,9 @@
 .extern func_020343e4
 .extern func_020adae4
 
-    .global func_020329bc
-    .type func_020329bc, @function
-func_020329bc: ; 0x020329bc
+    .global Actor_TryInitializeHeightBandFromPoint
+    .type Actor_TryInitializeHeightBandFromPoint, @function
+Actor_TryInitializeHeightBandFromPoint: ; 0x020329bc
     stmdb sp!, {r4, r5, r6, r7, r8, lr}
     ldr r2, .L_02032a60
     mov r5, r1
@@ -52,5 +52,4 @@ func_020329bc: ; 0x020329bc
     bge .L_02032a10
     ldmia sp!, {r4, r5, r6, r7, r8, pc}
 .L_02032a60: .word data_021052fc
-    .size func_020329bc, . - func_020329bc
-
+    .size Actor_TryInitializeHeightBandFromPoint, . - Actor_TryInitializeHeightBandFromPoint

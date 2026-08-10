@@ -21,7 +21,8 @@ extern s32 func_020343e4(void *, s32, s32);
  * leave these fields unchanged. Returns no value; terrain queries observe
  * world state without direct hardware access.
  */
-void func_020329bc(void *self, const void *inputPointer)
+void Actor_TryInitializeHeightBandFromPoint(void *self,
+                                           const void *inputPointer)
 {
     u8 *actor = (u8 *)self;
     const u8 *input = (const u8 *)inputPointer;
