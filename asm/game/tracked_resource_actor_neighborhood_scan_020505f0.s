@@ -8,7 +8,7 @@
 .extern func_02007f0c
 .extern func_0200b04c
 .extern func_020328d0
-.extern func_02038ecc
+.extern ActorDerivedType1_StartRecord
 .extern func_0204cfa4
 .extern func_02050560
 .extern func_020be334
@@ -161,7 +161,7 @@ func_020505f0:
     cmp r1, r0
     moveq r1, #0x7b
     mov r0, r6
-    bl func_02038ecc
+    bl ActorDerivedType1_StartRecord
     b .L_020509cc
 .L_0205082c:
     ldrb r0, [r6, #0x4d]
@@ -172,7 +172,7 @@ func_020505f0:
     beq .L_020509cc
     mov r0, r6
     mov r1, #0x80
-    bl func_02038ecc
+    bl ActorDerivedType1_StartRecord
     b .L_020509cc
 .L_02050854:
     ldrb r0, [r6, #0x4d]

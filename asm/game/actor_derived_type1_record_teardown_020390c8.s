@@ -9,9 +9,9 @@
 .extern gHeapContext
 .extern gSoundContext
 
-    .global func_020390c8
-    .type func_020390c8, @function
-func_020390c8: ; 0x020390c8
+    .global ActorDerivedType1_TeardownActiveRecord
+    .type ActorDerivedType1_TeardownActiveRecord, @function
+ActorDerivedType1_TeardownActiveRecord: ; 0x020390c8
     stmdb sp!, {r4, r5, r6, lr}
     sub sp, sp, #0x18
     mov r4, r0
@@ -112,4 +112,4 @@ func_020390c8: ; 0x020390c8
 .L_02039234: .word data_020df4a4
 .L_02039238: .word gHeapContext
 .L_0203923c: .word gSoundContext
-    .size func_020390c8, . - func_020390c8
+    .size ActorDerivedType1_TeardownActiveRecord, . - ActorDerivedType1_TeardownActiveRecord

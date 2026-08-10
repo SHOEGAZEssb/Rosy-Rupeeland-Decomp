@@ -3,12 +3,12 @@
 .extern Heap_Alloc
 .extern data_020df48c
 .extern func_02005580
-.extern func_020390c8
+.extern ActorDerivedType1_TeardownActiveRecord
 .extern gHeapContext
 
-    .global func_02038f98
-    .type func_02038f98, @function
-func_02038f98: ; 0x02038f98
+    .global ActorDerivedType1_ApplyActiveRecord
+    .type ActorDerivedType1_ApplyActiveRecord, @function
+ActorDerivedType1_ApplyActiveRecord: ; 0x02038f98
     stmdb sp!, {r4, lr}
     ldr r1, .L_020390c0
     mov r4, r0
@@ -89,8 +89,8 @@ func_02038f98: ; 0x02038f98
     cmp r0, #0x0
     ldmneia sp!, {r4, pc}
     mov r0, r4
-    bl func_020390c8
+    bl ActorDerivedType1_TeardownActiveRecord
     ldmia sp!, {r4, pc}
 .L_020390c0: .word data_020df48c
 .L_020390c4: .word gHeapContext
-    .size func_02038f98, . - func_02038f98
+    .size ActorDerivedType1_ApplyActiveRecord, . - ActorDerivedType1_ApplyActiveRecord

@@ -15,7 +15,7 @@
 .extern func_0200b294
 .extern func_02032a94
 .extern func_020380f0
-.extern func_02038ecc
+.extern ActorDerivedType1_StartRecord
 .extern func_02039d0c
 .extern func_02046d8c
 .extern func_02046e60
@@ -337,7 +337,7 @@ func_02046660: ; 0x02046660
     beq .L_02046b58
     mov r0, r5
     mov r1, #0x88
-    bl func_02038ecc
+    bl ActorDerivedType1_StartRecord
     add r0, r5, #0x200
     mov r2, #0x0
     ldr r1, .L_02046d7c

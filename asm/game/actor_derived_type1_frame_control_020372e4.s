@@ -20,8 +20,8 @@
 .extern func_02022cb0
 .extern Actor_TryInitializeHeightBandFromPoint
 .extern Actor_IsAtCachedTerrainHeight
-.extern func_02038ecc
-.extern func_020390c8
+.extern ActorDerivedType1_StartRecord
+.extern ActorDerivedType1_TeardownActiveRecord
 .extern Type1Actor_TryEnterFailureState
 .extern Actor_UpdateGroundContactProbe
 .extern func_02058d40
@@ -84,7 +84,7 @@ ActorDerivedType1_UpdateFrameControl: ; 0x020372e4
     tst r0, #0x8000
     beq .L_02037a54
     mov r0, r7
-    bl func_020390c8
+    bl ActorDerivedType1_TeardownActiveRecord
     b .L_02037a54
 .L_0203738c:
     ldrsh r0, [r0, #0x82]
@@ -239,7 +239,7 @@ ActorDerivedType1_UpdateFrameControl: ; 0x020372e4
     cmp r0, #0x0
     bne .L_020375dc
     mov r0, r7
-    bl func_020390c8
+    bl ActorDerivedType1_TeardownActiveRecord
 .L_020375dc:
     ldr r0, [r7, #0xd0]
     tst r0, #0x20
@@ -304,7 +304,7 @@ ActorDerivedType1_UpdateFrameControl: ; 0x020372e4
     tst r0, #0x100
     beq .L_020376d4
     mov r0, r7
-    bl func_02038ecc
+    bl ActorDerivedType1_StartRecord
 .L_020376d4:
     ldrsh r0, [r7, #0xd6]
     cmp r0, #0xb

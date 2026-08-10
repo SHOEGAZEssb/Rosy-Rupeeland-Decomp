@@ -5,10 +5,10 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_02038ecc(void *actor, void *records);
-extern void func_020390c8(void *actor);
+extern void ActorDerivedType1_StartRecord(void *actor, void *records);
+extern void ActorDerivedType1_TeardownActiveRecord(void *actor);
 extern void func_020551f0(void *object);
-extern void func_02038f98(void *actor);
+extern void ActorDerivedType1_ApplyActiveRecord(void *actor);
 extern s32 Actor_IsAtCachedTerrainHeight(void *actor);
 extern void Actor_ApplyMotionImpulse(void *actor, const void *vector, s32 mark);
 extern void Type1Actor_TryEnterFailureState(void *actor);
@@ -19,7 +19,7 @@ extern void Type1Actor_TryEnterFailureState(void *actor);
 /*
  * If descriptor +0x27c exists and has type byte 0x6d plus signed halfword
  * +0x00 equal to 0x66, set actor halfword +0x282 to six. If no descriptor is
- * active, start one from records through func_02038ecc. Other active descriptor
+ * active, start one from records through ActorDerivedType1_StartRecord. Other active descriptor
  * types are unchanged. Returns no value; record start may allocate/play audio.
  */
 void func_02039240(void *self, void *records)
@@ -27,7 +27,7 @@ void func_02039240(void *self, void *records)
     u8 *actor = (u8 *)self;
     u8 *descriptor = *(u8 **)(actor + 0x27c);
     if (descriptor == 0) {
-        func_02038ecc(actor, records);
+        ActorDerivedType1_StartRecord(actor, records);
     } else if (descriptor[8] == 0x6d && *(s16 *)descriptor == 0x66) {
         *(u16 *)(actor + 0x282) = 6;
     }
@@ -37,18 +37,18 @@ void func_02039240(void *self, void *records)
  * Return while auxiliary +0x26c exists. Otherwise tear down the old record,
  * store external object +0x1f8 as descriptor +0x27c and the object itself at
  * +0x278, call func_020551f0 on it, and materialize the descriptor through
- * func_02038f98. Returns no value; teardown/object/apply calls alter ownership.
+ * ActorDerivedType1_ApplyActiveRecord. Returns no value; teardown/object/apply calls alter ownership.
  */
 void func_02039278(void *self, void *object)
 {
     u8 *actor = (u8 *)self;
     if (*(void **)(actor + 0x26c) != 0)
         return;
-    func_020390c8(actor);
+    ActorDerivedType1_TeardownActiveRecord(actor);
     *(void **)(actor + 0x27c) = *(void **)((u8 *)object + 0x1f8);
     *(void **)(actor + 0x278) = object;
     func_020551f0(object);
-    func_02038f98(actor);
+    ActorDerivedType1_ApplyActiveRecord(actor);
 }
 
 /*
@@ -76,7 +76,7 @@ void func_020392b4(void *self, const void *vector, s32 mode)
     if (object != 0 && (object[0x10] & 1) != 0)
         return;
     if (mode != 0)
-        func_020390c8(actor);
+        ActorDerivedType1_TeardownActiveRecord(actor);
     Actor_ApplyMotionImpulse(actor, vector, mode);
     Type1Actor_TryEnterFailureState(actor);
 }
@@ -87,6 +87,6 @@ void func_020392b4(void *self, const void *vector, s32 mode)
  */
 void func_02039348(void *self, const void *vector)
 {
-    func_020390c8(self);
+    ActorDerivedType1_TeardownActiveRecord(self);
     Actor_ApplyMotionImpulse(self, vector, 1);
 }

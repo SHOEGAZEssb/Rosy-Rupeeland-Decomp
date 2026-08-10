@@ -18,7 +18,7 @@ extern void func_0201ded4(void *manager, void *object);
 extern void func_0203811c(void *actor);
 extern void func_020349b8(void *actor, u32 sound, s32 extra);
 extern void Type1Actor_TryEnterFailureState(void *actor);
-extern void func_02038ecc(void *actor, s32 record);
+extern void ActorDerivedType1_StartRecord(void *actor, s32 record);
 extern void *SceneManager_GetCurrent(void *manager);
 #ifdef __cplusplus
 }
@@ -33,7 +33,7 @@ extern void *SceneManager_GetCurrent(void *manager);
  * +0x230 bit 0x400000 when descriptor byte +0x2c is four or 0x200000 otherwise;
  * finally call Type1Actor_TryEnterFailureState. Independently, descriptor
  * halfword +0x2e other
- * than -1 starts a record through func_02038ecc.
+ * than -1 starts a record through ActorDerivedType1_StartRecord.
  *
  * With actor +0xd0 bit 0x40000 set, positive amount instead dispatches source
  * to virtual +0xc8 on current scene object +0x4c. Returns no value; Lupy, heap,
@@ -87,5 +87,5 @@ void func_020398a4(void *self, s32 amount, void *sourceValue)
     }
     descriptor = *(u8 **)(source + 0x1fc);
     if (*(s16 *)(descriptor + 0x2e) != -1)
-        func_02038ecc(actor, *(s16 *)(descriptor + 0x2e));
+        ActorDerivedType1_StartRecord(actor, *(s16 *)(descriptor + 0x2e));
 }

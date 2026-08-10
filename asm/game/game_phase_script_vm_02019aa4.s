@@ -10,7 +10,7 @@
 .extern func_02026514
 .extern ActorCollection_GetSpriteOwner
 .extern func_02038c1c
-.extern func_020390c8
+.extern ActorDerivedType1_TeardownActiveRecord
 .extern func_02055688
 .extern func_02074154
 .extern func_020a2324
@@ -48,7 +48,7 @@ L_02019afc: ; jump table
     b L_02019c4c ; case 6
 L_02019b18:
     mov r0, r1
-    bl func_020390c8
+    bl ActorDerivedType1_TeardownActiveRecord
     b L_02019c54
 L_02019b24:
     add r0, r1, #0x200

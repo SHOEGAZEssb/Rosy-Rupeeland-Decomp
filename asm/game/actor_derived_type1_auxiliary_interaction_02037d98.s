@@ -16,7 +16,7 @@
 .extern func_020380f0
 .extern func_0203811c
 .extern func_0203825c
-.extern func_020390c8
+.extern ActorDerivedType1_TeardownActiveRecord
 .extern func_02048c2c
 .extern func_0206c68c
 .extern func_0206c978
@@ -89,7 +89,7 @@ func_02037d98: ; 0x02037d98
     cmp r0, #0x0
     bgt .L_02038080
     mov r0, r5
-    bl func_020390c8
+    bl ActorDerivedType1_TeardownActiveRecord
     mov r0, r4
     ldr r1, [r0, #0x0]
     ldr r1, [r1, #0x1ac]
@@ -198,7 +198,7 @@ func_02037d98: ; 0x02037d98
     cmp r7, #0x0
     beq .L_0203804c
     mov r0, r5
-    bl func_020390c8
+    bl ActorDerivedType1_TeardownActiveRecord
     ldr r1, .L_02038094
     ldr r3, .L_02038098
     mov r0, #0xb4

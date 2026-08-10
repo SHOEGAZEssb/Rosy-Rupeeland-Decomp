@@ -2,7 +2,7 @@
 ; Matching fallback for the portable implementation in src/overlays/ov092/overlay092_recovery.c.
 .extern GameWork_SetFlag
 .extern data_021052fc
-.extern func_020390c8
+.extern ActorDerivedType1_TeardownActiveRecord
 .extern func_ov092_02218394
 .extern func_ov092_02219fc8
 .extern gGameWork
@@ -27,7 +27,7 @@ func_ov092_02219fec:
     ldr r0, [r2, #0x0]
     bl GameWork_SetFlag
     mov r0, r4
-    bl func_020390c8
+    bl ActorDerivedType1_TeardownActiveRecord
     ldr r0, .L_0221a09c
     mov r1, #0x0
     ldr r0, [r0, #0x0]

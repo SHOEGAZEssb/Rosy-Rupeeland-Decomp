@@ -3,15 +3,15 @@
 .extern Sound_Play
 .extern func_02005030
 .extern func_02005058
-.extern func_02038f98
-.extern func_020390c8
+.extern ActorDerivedType1_ApplyActiveRecord
+.extern ActorDerivedType1_TeardownActiveRecord
 .extern func_02053f9c
 .extern func_020541d4
 .extern gSoundContext
 
-    .global func_02038ecc
-    .type func_02038ecc, @function
-func_02038ecc: ; 0x02038ecc
+    .global ActorDerivedType1_StartRecord
+    .type ActorDerivedType1_StartRecord, @function
+ActorDerivedType1_StartRecord: ; 0x02038ecc
     stmdb sp!, {r3, r4, r5, lr}
     sub sp, sp, #0x10
     mov r5, r0
@@ -33,7 +33,7 @@ func_02038ecc: ; 0x02038ecc
     cmp r0, #0x0
     bne .L_02038f8c
     mov r0, r5
-    bl func_020390c8
+    bl ActorDerivedType1_TeardownActiveRecord
     add r0, sp, #0x0
     add r1, r5, #0x18
     bl func_02005030
@@ -60,11 +60,11 @@ func_02038ecc: ; 0x02038ecc
     bl Sound_Play
 .L_02038f7c:
     mov r0, r5
-    bl func_02038f98
+    bl ActorDerivedType1_ApplyActiveRecord
     add r0, sp, #0x0
     bl func_02005058
 .L_02038f8c:
     add sp, sp, #0x10
     ldmia sp!, {r3, r4, r5, pc}
 .L_02038f94: .word gSoundContext
-    .size func_02038ecc, . - func_02038ecc
+    .size ActorDerivedType1_StartRecord, . - ActorDerivedType1_StartRecord

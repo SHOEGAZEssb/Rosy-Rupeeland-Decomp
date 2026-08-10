@@ -8,7 +8,7 @@
 .extern func_0200222c
 .extern func_020022dc
 .extern Actor_IsAtCachedTerrainHeight
-.extern func_020390c8
+.extern ActorDerivedType1_TeardownActiveRecord
 .extern func_0204cc14
 .extern func_ov059_0220fd20
 .extern gGameWork
@@ -170,7 +170,7 @@ func_0203647c: ; 0x0203647c
     cmp r1, #0x1
     bne .L_02036724
     mov r0, r4
-    bl func_020390c8
+    bl ActorDerivedType1_TeardownActiveRecord
     bl func_020022dc
     ldr r2, .L_02036a70
     mov r1, #0x2

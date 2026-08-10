@@ -5,7 +5,7 @@
 .extern data_021052fc
 .extern ActorCollection_QueueActorForRemoval
 .extern Actor_GetCollection
-.extern func_020390c8
+.extern ActorDerivedType1_TeardownActiveRecord
 .extern func_020393f4
 .extern func_02072b68
 .extern func_ov090_0221ad64
@@ -34,10 +34,10 @@ func_ov090_0221a784:
     strls r0, [r1, #0x1f0]
     bls .L_0221a7e0
     mov r0, r4
-    bl func_020390c8
+    bl ActorDerivedType1_TeardownActiveRecord
     b .L_0221a7e0
 .L_0221a7dc:
-    bl func_020390c8
+    bl ActorDerivedType1_TeardownActiveRecord
 .L_0221a7e0:
     ldr r1, [r4, #0x230]
     mov r0, r4

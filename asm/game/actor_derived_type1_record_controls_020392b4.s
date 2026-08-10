@@ -2,7 +2,7 @@
 .text
 .extern Actor_ApplyMotionImpulse
 .extern Actor_IsAtCachedTerrainHeight
-.extern func_020390c8
+.extern ActorDerivedType1_TeardownActiveRecord
 .extern Type1Actor_TryEnterFailureState
 
     .global func_020392b4
@@ -39,7 +39,7 @@ func_020392b4: ; 0x020392b4
     cmp r4, #0x0
     beq .L_0203932c
     mov r0, r6
-    bl func_020390c8
+    bl ActorDerivedType1_TeardownActiveRecord
 .L_0203932c:
     mov r0, r6
     mov r1, r5

@@ -3,7 +3,7 @@
 .extern data_021052fc
 .extern func_020349b8
 .extern Actor_SetDirectionFromVector
-.extern func_02038ecc
+.extern ActorDerivedType1_StartRecord
 .extern func_0203d48c
     .global func_0203d3fc
     .type func_0203d3fc, @function
@@ -29,7 +29,7 @@ func_0203d3fc: ; 0x0203d3fc
     add r0, r0, #0x2000
     ldr r5, [r0, #0xea4]
     mov r0, r5
-    bl func_02038ecc
+    bl ActorDerivedType1_StartRecord
     ldr ip, [r4, #0x1c]
     ldr r1, [r5, #0x1c]
     ldr r3, [r4, #0x20]

@@ -18,7 +18,7 @@
 .extern ActorCollection_FindActorByDescriptorValue
 .extern Actor_GetCollisionCenter
 .extern Actor_GetCollection
-.extern func_02038ecc
+.extern ActorDerivedType1_StartRecord
 .extern func_020397d4
 .extern func_0204e3f4
 .extern func_0204f7e4
@@ -272,7 +272,7 @@ L_02019708:
     ldr r0, [r0, #0x0]
     add r0, r0, #0x2000
     ldr r0, [r0, #0xea4]
-    bl func_02038ecc
+    bl ActorDerivedType1_StartRecord
     b L_02019878
 L_02019740:
     ldr r1, [r9, #0x84]

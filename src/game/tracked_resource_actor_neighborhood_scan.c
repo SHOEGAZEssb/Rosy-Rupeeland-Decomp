@@ -14,7 +14,7 @@ extern void func_02005058(void *vector);
 extern void func_02005084(void *vector);
 extern void *func_02007f0c(void *manager, s32 group);
 extern void func_020328d0(void *vector, s32 angle);
-extern void func_02038ecc(void *actor, s32 value);
+extern void ActorDerivedType1_StartRecord(void *actor, s32 value);
 extern s32 func_0204cfa4(s32 x, s32 y);
 extern void func_02050560(void *actor, void *target, ...);
 extern s32 func_020be334(s32 value);
@@ -114,7 +114,7 @@ void func_020505f0(void *actor, u32 unused1, u32 unused2, u32 unused3)
         case 1:
             if (type == 1) {
                 value = FIELD(s16, record, 0x2e);
-                func_02038ecc(candidate, value == -1 ? 0x7b : value);
+                ActorDerivedType1_StartRecord(candidate, value == -1 ? 0x7b : value);
             }
             break;
         case 2:
@@ -133,7 +133,7 @@ void func_020505f0(void *actor, u32 unused1, u32 unused2, u32 unused3)
             break;
         case 3:
             if (type == 1)
-                func_02038ecc(candidate, 0x80);
+                ActorDerivedType1_StartRecord(candidate, 0x80);
             break;
         case 4:
             if (type == 1) {

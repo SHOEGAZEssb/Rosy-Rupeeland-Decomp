@@ -3,7 +3,7 @@
 .extern data_021052fc
 .extern func_02005058
 .extern func_020050a4
-.extern func_020390c8
+.extern ActorDerivedType1_TeardownActiveRecord
 .extern func_02072b68
 .extern func_020adcac
 .extern func_ov077_02214eec
@@ -144,7 +144,7 @@ func_ov090_0221ae1c:
     ldr r2, [r2, #0xe8]
     blx r2
     mov r0, r8
-    bl func_020390c8
+    bl ActorDerivedType1_TeardownActiveRecord
 .L_0221b01c:
     ldr r0, [r8, #0x14]
     orr r0, r0, #0x2

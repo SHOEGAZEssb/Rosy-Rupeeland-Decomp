@@ -20,7 +20,7 @@ extern "C" {
 extern void GameWork_ClearFlag(void *, s32);
 extern void GameWork_SetFlag(void *, s32);
 extern s32 GameWork_TestFlag(void *, s32);
-extern void func_02038ecc(void *, s32);
+extern void ActorDerivedType1_StartRecord(void *, s32);
 extern s32 func_020628c8(void *);
 extern s32 func_02062a10(void *);
 extern void func_02062db0(void *);
@@ -213,7 +213,7 @@ extern "C" s32 func_ov015_021fe9b8(void *state)
             GameWork_SetFlag(gGameWork, FIELD(u16, metadata, 4) == 1 ? 0x3cc : 0x3cd);
         } else {
             void *manager = FIELD(void *, (u8 *)FIELD(void *, data_021052fc, 0) + 0x2000, 0xea4);
-            func_02038ecc(manager, func_02062a10(item));
+            ActorDerivedType1_StartRecord(manager, func_02062a10(item));
             func_02062db0(item);
         }
         GameWork_ClearFlag(gGameWork, 0x389);

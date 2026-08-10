@@ -6,7 +6,7 @@
 .extern TouchPanelManager_GetPoint
 .extern data_020c3630
 .extern data_021052fc
-.extern func_020390c8
+.extern ActorDerivedType1_TeardownActiveRecord
 .extern func_02039408
 .extern func_02039428
 .extern func_020397d4
@@ -85,7 +85,7 @@ L_020105c4:
     beq L_020106a0
 L_02010634:
     mov r0, r5
-    bl func_020390c8
+    bl ActorDerivedType1_TeardownActiveRecord
     b L_020106a0
 L_02010640:
     tst r0, #0x20000

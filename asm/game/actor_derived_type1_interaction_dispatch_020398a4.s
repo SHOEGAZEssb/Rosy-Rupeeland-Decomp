@@ -10,7 +10,7 @@
 .extern func_02022cb0
 .extern func_020349b8
 .extern func_0203811c
-.extern func_02038ecc
+.extern ActorDerivedType1_StartRecord
 .extern Type1Actor_TryEnterFailureState
 .extern gHeapContext
 .extern gLupyContext
@@ -111,7 +111,7 @@ func_020398a4: ; 0x020398a4
     cmp r1, r0
     beq .L_02039a34
     mov r0, r7
-    bl func_02038ecc
+    bl ActorDerivedType1_StartRecord
     b .L_02039a34
 .L_02039a0c:
     cmp r1, #0x0

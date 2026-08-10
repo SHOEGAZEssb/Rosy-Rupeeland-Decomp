@@ -18,7 +18,7 @@ extern s32 func_0200b294(void *state);
 extern s32 func_020372b4(void *actor);
 extern s32 Actor_IsAtCachedTerrainHeight(void *actor);
 extern s32 func_020828a0(void *state, s32 mask);
-extern void func_020390c8(void *actor);
+extern void ActorDerivedType1_TeardownActiveRecord(void *actor);
 extern void func_0206c978(void *resource);
 extern void *func_0206c68c(void *allocation, void *actor);
 extern void GameWork_SetFlag(void *work, u32 flag);
@@ -75,7 +75,7 @@ s32 func_02037d98(void *self, void *other)
         if (func_020828a0(data_021f5ebc, 0x40) != 0 ||
             *(s16 *)(actor + 0x268) > 0)
             return 1;
-        func_020390c8(actor);
+        ActorDerivedType1_TeardownActiveRecord(actor);
         if ((*(s32 (**)(void *))(*(u8 **)target + 0x1ac))(target) != 0) {
             if ((*(s32 (**)(void *))(*(u8 **)actor + 0xa8))(actor) == 0) {
                 void *resource = *(void **)(actor + 0x26c);
@@ -105,7 +105,7 @@ s32 func_02037d98(void *self, void *other)
         if (targetResource != 0 && func_0206e3a4(targetResource) == 0)
             eligible = 1;
         if (*(void **)(actor + 0x26c) == 0 && eligible) {
-            func_020390c8(actor);
+            ActorDerivedType1_TeardownActiveRecord(actor);
             createAuxiliary(actor);
         }
         if (*(void **)(actor + 0x26c) != 0 &&

@@ -28,7 +28,7 @@ extern void ActorDerivedType1_ApplyResourceIndex(void *actor, s32 value);
  * +0x5c. Returns no value; heap, presentation, audio, and virtual calls have
  * observable engine/SDK effects.
  */
-void func_020390c8(void *self)
+void ActorDerivedType1_TeardownActiveRecord(void *self)
 {
     u8 *actor = (u8 *)self;
     u8 *descriptor;

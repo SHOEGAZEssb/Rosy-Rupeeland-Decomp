@@ -24,7 +24,7 @@ extern void ActorCollection_SpawnDescriptorsBySelector(
 extern void *ActorCollection_FindActorByDescriptorValue(void *collection, s32 index);
 extern void *Actor_GetCollisionCenter(VecFx32Object *destination, void *actor);
 extern void *Actor_GetCollection(void *actor);
-extern void func_02038ecc(void *manager, s32 value);
+extern void ActorDerivedType1_StartRecord(void *manager, s32 value);
 extern s32 func_020397d4(void *manager);
 extern void func_0204e3f4(s32 duration, s16 amount,
                           const VecFx32Object *position);
@@ -161,7 +161,7 @@ s32 func_0201939c(GamePhaseActorScriptVm *self)
     case 2: {
         void *manager = *(void **)((u8 *)data_021052fc + 0x2ea4);
         if (func_020397d4(manager))
-            func_02038ecc(manager, p6);
+            ActorDerivedType1_StartRecord(manager, p6);
         break;
     }
     case 3: {

@@ -17,7 +17,7 @@
 .extern func_02022cb0
 .extern func_02032228
 .extern func_02032a94
-.extern func_02038ecc
+.extern ActorDerivedType1_StartRecord
 .extern ActorExtendedType2_GetDescriptorValue28
 .extern ActorExtendedType2_GetDescriptorValue25
 .extern func_0204cfa4
@@ -150,7 +150,7 @@ func_ov082_02213538:
     beq .L_02213740
     mov r0, r4
     mov r1, #0x84
-    bl func_02038ecc
+    bl ActorDerivedType1_StartRecord
     b .L_02213740
 .L_02213704:
     cmp r0, #0x7

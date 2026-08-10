@@ -19,7 +19,7 @@ extern void func_020954e0(void *actor);
 extern void func_020954f4(void *actor);
 extern s32 func_02039408(void *actor);
 extern s32 func_02039428(void *actor);
-extern void func_020390c8(void *actor);
+extern void ActorDerivedType1_TeardownActiveRecord(void *actor);
 extern s32 func_020397d4(void *actor);
 #ifdef __cplusplus
 }
@@ -54,7 +54,7 @@ void func_0201054c(GamePhaseTouchPrompt *self)
                     if (flags & 0x800) {
                         if (func_02039408(phaseActor) ||
                             func_02039428(phaseActor))
-                            func_020390c8(phaseActor);
+                            ActorDerivedType1_TeardownActiveRecord(phaseActor);
                     } else if ((flags & 0x20000) ||
                                func_020397d4(phaseActor)) {
                         Scene *scene = SceneManager_GetCurrent(gSceneManager);

@@ -3,7 +3,7 @@
     .extern GameWork_SetFlag
     .extern data_021052fc
     .extern data_ov015_021feba8
-    .extern func_02038ecc
+    .extern ActorDerivedType1_StartRecord
     .extern func_02062a10
     .extern func_02062db0
     .extern func_02062e00
@@ -92,7 +92,7 @@ L_021feab0:
     bl func_02062a10
     mov r1, r0
     mov r0, r6
-    bl func_02038ecc
+    bl ActorDerivedType1_StartRecord
     mov r0, r4
     bl func_02062db0
 L_021feadc:

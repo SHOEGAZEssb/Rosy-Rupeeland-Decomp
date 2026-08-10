@@ -8,7 +8,7 @@ extern const char data_020df48c[];
 extern "C" {
 #endif
 extern void *func_02005580(void *allocation, u16 first, u16 second, u16 third);
-extern void func_020390c8(void *actor);
+extern void ActorDerivedType1_TeardownActiveRecord(void *actor);
 #ifdef __cplusplus
 }
 #endif
@@ -21,10 +21,10 @@ extern void func_020390c8(void *actor);
  * 0x8000 (0x6d/0x73/0x74); the last group also copies descriptor halfword
  * +0x1e to actor +0x282, while 0x73/0x74 clear byte +0x2a1. Clear halfword
  * +0x2a2. Unless the type path is retained—or actor +0xd0 bit 0x4000 is clear
- * for type 0x6d—roll back through func_020390c8. Returns no value; allocation,
+ * for type 0x6d—roll back through ActorDerivedType1_TeardownActiveRecord. Returns no value; allocation,
  * initialization, virtual dispatch, and rollback change engine/heap state.
  */
-void func_02038f98(void *self)
+void ActorDerivedType1_ApplyActiveRecord(void *self)
 {
     u8 *actor = (u8 *)self;
     u8 *descriptor = *(u8 **)(actor + 0x27c);
@@ -63,5 +63,5 @@ void func_02038f98(void *self)
     }
     *(u16 *)(actor + 0x2a2) = 0;
     if (!retain)
-        func_020390c8(actor);
+        ActorDerivedType1_TeardownActiveRecord(actor);
 }

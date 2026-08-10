@@ -17,7 +17,7 @@ extern void *func_02025d14(void *state);
 extern void func_02026514(void *state);
 extern void *ActorCollection_GetSpriteOwner(void *collection);
 extern void func_02038c1c(void *manager);
-extern void func_020390c8(void *manager);
+extern void ActorDerivedType1_TeardownActiveRecord(void *manager);
 extern void func_02055688(void);
 extern void func_02074154(void *object);
 extern void func_020a2324(void);
@@ -49,7 +49,7 @@ s32 func_02019aa4(GamePhaseActorScriptVm *self)
     u8 *manager = *(u8 **)(runtime + 0x2ea4);
     switch (command) {
     case 0:
-        func_020390c8(manager);
+        ActorDerivedType1_TeardownActiveRecord(manager);
         break;
     case 1:
         *(s16 *)(manager + 0x29a) = first;

@@ -11,7 +11,7 @@ extern u8 data_020df49c[];
 extern "C" {
 #endif
 extern s32 Actor_IsAtCachedTerrainHeight(void *actor);
-extern void *func_020390c8(void *actor);
+extern void *ActorDerivedType1_TeardownActiveRecord(void *actor);
 extern void *func_020022dc(void *value);
 extern void func_0200222c(void *value, s32 mode, u32 mask);
 extern s32 GameWork_TestFlag(void *work, u32 flag);
@@ -39,7 +39,7 @@ static u32 queryPackedTerrain(u8 *actor)
  * +0xd8, attachment completion flag 1, motion, countdowns, optional object
  * +0x270, and virtual queries. The confirmed state codes span 1..17. Falling
  * onto packed terrain subtype bits 10..13 equal to one launches an overlay
- * helper after func_020390c8/func_020022dc/func_0200222c and sets +0x230 bit
+ * helper after ActorDerivedType1_TeardownActiveRecord/func_020022dc/func_0200222c and sets +0x230 bit
  * 0x80000. Grounded transitions can play sound 0x60 and update secondary
  * motion +0x8c/+0x90. Substate priority is countdown +0x268, +0x280, +0x264
  * with byte +0x26a, then +0x230 bit 0x200. Vtable slot 0xa8 can clear mode
@@ -133,7 +133,7 @@ void func_0203647c(void *self)
         *(u32 *)(actor + 0x230) = (flags230 & ~1) | 2;
         packed = queryPackedTerrain(actor);
         if (((packed >> 10) & 0x0f) == 1) {
-            void *value = func_020022dc(func_020390c8(actor));
+            void *value = func_020022dc(ActorDerivedType1_TeardownActiveRecord(actor));
             void *allocation;
             func_0200222c(value, 2, 0x40);
             allocation = Heap_Alloc(0x88, (const char *)data_020df49c, 4,

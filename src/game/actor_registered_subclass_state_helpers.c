@@ -11,7 +11,7 @@ extern "C" {
 #endif
 extern s32 func_0203392c(void *actor);
 extern void func_020349b8(void *actor, u32 sound, s32 extra);
-extern void func_02038ecc(void *actor, s32 value);
+extern void ActorDerivedType1_StartRecord(void *actor, s32 value);
 extern void Actor_SetDirectionFromVector(void *actor, s32 x, s32 y);
 extern void *func_0201f864(void *allocation, ...);
 void func_0203d48c(void *self, u16 limit);
@@ -45,7 +45,7 @@ s32 func_0203d3b4(void *self)
  * If actor state +0xd6 is zero, clear halfword +0x218, initiate state through
  * func_0203d48c(actor,120), and play packed sound 0xe204 through
  * func_020349b8. Then obtain the primary runtime actor at +0x2ea4, invoke
- * func_02038ecc(target,126), pass self-minus-target X/Y displacement to
+ * ActorDerivedType1_StartRecord(target,126), pass self-minus-target X/Y displacement to
  * Actor_SetDirectionFromVector, and invoke target virtual +0x5c. Returns no value; sound,
  * state, motion, and virtual calls mutate global actor state.
  */
@@ -59,7 +59,7 @@ void func_0203d3fc(void *self)
         func_020349b8(actor, 0xe204, 0);
     }
     target = *(u8 **)(data_021052fc + 0x2ea4);
-    func_02038ecc(target, 0x7e);
+    ActorDerivedType1_StartRecord(target, 0x7e);
     Actor_SetDirectionFromVector(target,
                   *(s32 *)(actor + 0x1c) - *(s32 *)(target + 0x1c),
                   *(s32 *)(actor + 0x20) - *(s32 *)(target + 0x20));

@@ -17,7 +17,7 @@ extern u8 gSceneTouchInitialData[];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_020390c8(void *actor);
+extern void ActorDerivedType1_TeardownActiveRecord(void *actor);
 extern s32 func_020ada8c(s32 value, s32 divisor);
 extern void func_02010c00(void *context, s32 value, s32 extra);
 extern void *func_02009d78(void *manager);
@@ -39,7 +39,7 @@ extern void func_02058d40(void *context, s32 value);
 extern void func_0205958c(void *context, s32 value);
 extern void func_02059278(void *context, s32 first, s32 second);
 extern s32 Actor_IsAtCachedTerrainHeight(void *actor);
-extern void func_02038ecc(void *actor);
+extern void ActorDerivedType1_StartRecord(void *actor);
 extern s32 func_020adae4(s32 numerator, s32 denominator);
 extern void Actor_TryInitializeHeightBandFromPoint(void *actor,
                                                   const void *record);
@@ -119,7 +119,7 @@ void ActorDerivedType1_UpdateFrameControl(void *self)
     if (*counter > 0) {
         --*counter;
         if (*counter == 0 && (*(u32 *)(actor + 0x230) & 0x8000) != 0)
-            func_020390c8(actor);
+            ActorDerivedType1_TeardownActiveRecord(actor);
         return;
     }
 
@@ -176,7 +176,7 @@ void ActorDerivedType1_UpdateFrameControl(void *self)
 
         ++actor[0x2a1];
         --*counter;
-        if (*counter == 0) func_020390c8(actor);
+        if (*counter == 0) ActorDerivedType1_TeardownActiveRecord(actor);
     }
 
     if ((*(u32 *)(actor + 0xd0) & 0x20) != 0 &&
@@ -200,7 +200,7 @@ void ActorDerivedType1_UpdateFrameControl(void *self)
     input = *(u16 *)(gSystemState + 0x1a);
     if (data_0210568c[0] >= 0 &&
         (*(u16 *)(gSystemState + 6) & 0x100) != 0)
-        func_02038ecc(actor);
+        ActorDerivedType1_StartRecord(actor);
 
     if (*(s16 *)(actor + 0xd6) == 0x0b) {
         *(s32 *)(actor + 0x8c) = func_020adae4(*(s32 *)(actor + 0x8c) * 98, 100);

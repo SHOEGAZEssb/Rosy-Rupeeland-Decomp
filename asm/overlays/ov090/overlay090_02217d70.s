@@ -37,8 +37,8 @@
 .extern func_0201f864
 .extern func_020349b8
 .extern Actor_SetDirectionFromVector
-.extern func_02038ecc
-.extern func_020390c8
+.extern ActorDerivedType1_StartRecord
+.extern ActorDerivedType1_TeardownActiveRecord
 .extern func_020478dc
 .extern func_0204a200
 .extern func_0204d308
@@ -1963,7 +1963,7 @@ func_ov090_02217d70:
     ldr r1, [r1, #0x5c]
     blx r1
     mov r0, r9
-    bl func_020390c8
+    bl ActorDerivedType1_TeardownActiveRecord
     ldr r0, [r9, #0xd0]
     mov r1, #0x0
     bic r0, r0, #0x4000
@@ -2335,7 +2335,7 @@ func_ov090_02217d70:
     strh r1, [r0, #0x68]
     mov r0, r9
     mov r1, #0x7d
-    bl func_02038ecc
+    bl ActorDerivedType1_StartRecord
     mov r1, #0x0
     add r0, r4, #0x100
     strh r1, [r0, #0xf0]
