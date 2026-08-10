@@ -5,7 +5,7 @@
 .extern gSoundContext
 .extern func_020050f0
 .extern func_02009d78
-.extern func_02038d38
+.extern ActorDerivedType1_TrySetStateVector
 .extern func_0204a4bc
 .extern func_0204faac
 .extern func_02064a18
@@ -37,7 +37,7 @@ func_0204f4d4: ; 0x0204f4d4
     add r0, r0, #0x2000
     ldr r0, [r0, #0xea4]
     mov r3, #0x2
-    bl func_02038d38
+    bl ActorDerivedType1_TrySetStateVector
 .L_0204f538:
     mov r0, r4
     bl func_0204a4bc

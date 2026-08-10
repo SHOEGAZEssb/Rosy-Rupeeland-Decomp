@@ -20,7 +20,7 @@ extern void func_0205940c(void *sound, s32 first, s32 second);
 extern void GameWork_ClearFlag(void *work, u32 flag);
 extern void GameWork_SetFlag(void *work, u32 flag);
 extern s32 GameWork_TestFlag(void *work, u32 flag);
-extern void func_02037a94(void *actor);
+extern void ActorDerivedType1_UpdateHorizontalInputMotion(void *actor);
 extern void func_02002d54(s32 first, s32 second);
 extern void func_02002d74(s32 first, s32 second);
 extern s32 func_02002d94(void);
@@ -118,7 +118,7 @@ void ActorDerivedType1_UpdateFrame(void *self)
             if (*(void **)(actor + 0x26c) != 0) {
                 func_02037bb0(actor);
             } else if ((*(u32 *)(actor + 0x230) & 0x40000000) != 0) {
-                func_02037a94(actor);
+                ActorDerivedType1_UpdateHorizontalInputMotion(actor);
             } else if (state != 0x11) {
                 callActorVoid(actor, 0x44);
             } else if (*(u16 *)(actor + 0x234) != 0) {

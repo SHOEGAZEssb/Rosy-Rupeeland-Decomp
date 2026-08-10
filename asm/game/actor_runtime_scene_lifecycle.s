@@ -5,7 +5,7 @@
 .extern Scene_SetFlags03
 .extern GameWork_TestFlag
 .extern func_02072b68
-.extern func_02038e38
+.extern ActorDerivedType1_ClearStateVectorTimers
 .extern func_0200b2c0
 .extern func_0204b5d8
 .extern func_0200ba00
@@ -58,7 +58,7 @@ L_0200b364:
     mov r0, r4
     bic r1, r1, #0x4
     str r1, [r4, #0x230]
-    bl func_02038e38
+    bl ActorDerivedType1_ClearStateVectorTimers
     mov r1, #0x0
     mov r2, r1
     mov r3, r1

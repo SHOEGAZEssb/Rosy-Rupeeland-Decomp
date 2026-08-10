@@ -9,7 +9,7 @@
 .extern func_02025d14
 .extern func_02026514
 .extern ActorCollection_GetSpriteOwner
-.extern func_02038c1c
+.extern ActorDerivedType1_UpdateOrientationFlag
 .extern ActorDerivedType1_TeardownActiveRecord
 .extern func_02055688
 .extern func_02074154
@@ -135,7 +135,7 @@ L_02019c18:
     b L_02019c54
 L_02019c4c:
     mov r0, r1
-    bl func_02038c1c
+    bl ActorDerivedType1_UpdateOrientationFlag
 L_02019c54:
     mov r0, #0x0
     ldmia sp!, {r3, r4, r5, r6, r7, r8, r9, pc}

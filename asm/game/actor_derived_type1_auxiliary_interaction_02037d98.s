@@ -15,7 +15,7 @@
 .extern func_020372b4
 .extern func_020380f0
 .extern ActorDerivedType1_ReleaseAuxiliaryAndSpawnResetEffect
-.extern func_0203825c
+.extern ActorDerivedType1_ApplyWeightedCollisionDisplacement
 .extern ActorDerivedType1_TeardownActiveRecord
 .extern func_02048c2c
 .extern func_0206c68c
@@ -173,7 +173,7 @@ func_02037d98: ; 0x02037d98
     mov r1, r4
     mov r3, r6
     mov r2, #0x14
-    bl func_0203825c
+    bl ActorDerivedType1_ApplyWeightedCollisionDisplacement
     b .L_02038080
 .L_02037fc0:
     ldr r0, .L_02038090

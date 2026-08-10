@@ -26,7 +26,7 @@ extern void *func_02022cb0(void *storage, void *point, void *actor, s32 value,
                            s32 scale, s32 vertical_offset);
 extern void *ActorCollection_QueueActorForRemoval(void *value, void *actor);
 extern void *Actor_GetCollection(void *actor);
-extern void func_02038d38(void *actor, const void *position, s32 value,
+extern void ActorDerivedType1_TrySetStateVector(void *actor, const void *position, s32 value,
                           s32 mode);
 extern void func_02072b68(void *presentation, u32 selection);
 extern void func_020a25c8(void *manager, s32 mode, s32 x, s32 y,
@@ -77,7 +77,7 @@ s32 func_0204df40(void *actor, void *trigger)
             ActorPredicate predicate =
                 *(ActorPredicate *)((u8 *)FIELD(void *, primary, 0) + 0xa8);
             if (predicate(primary) == 0)
-                func_02038d38(primary, (u8 *)actor + 0x18, 15, 2);
+                ActorDerivedType1_TrySetStateVector(primary, (u8 *)actor + 0x18, 15, 2);
         }
 
         func_02010c00(gLupyContext, FIELD(s16, actor, 0x1f2), 0);

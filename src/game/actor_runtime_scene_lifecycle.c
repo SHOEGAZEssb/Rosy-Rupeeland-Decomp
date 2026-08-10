@@ -10,7 +10,7 @@ extern SceneVTable data_020d448c;
 extern void *data_021052fc;
 extern void *func_02007f0c(void *context, s32 index);
 extern void func_02030b58(void *context, s32 value);
-extern void func_02038e38(void *object);
+extern void ActorDerivedType1_ClearStateVectorTimers(void *object);
 extern void func_0204b5d8(void *object);
 extern void func_02072b68(u8 value);
 extern void func_0200ba00(ActorRuntimeScene *self);
@@ -53,7 +53,7 @@ ActorRuntimeScene *func_0200b2d0(ActorRuntimeScene *self, void *object)
     }
 
     *(u32 *)(active + 0x230) &= ~4;
-    func_02038e38(active);
+    ActorDerivedType1_ClearStateVectorTimers(active);
     func_0200b2c0(active + 0x38, 0, 0, 0);
     func_0200b2c0(active + 0x88, 0, 0, 0);
     func_0200b2c0(active + 0x98, 0, 0, 0);

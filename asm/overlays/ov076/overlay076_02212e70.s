@@ -2,7 +2,7 @@
 ; Matching fallback for the portable implementation in src/overlays/ov076/overlay076_recovery.c.
 .extern data_021052fc
 .extern func_0203392c
-.extern func_02038d38
+.extern ActorDerivedType1_TrySetStateVector
 .extern func_02048378
 
 .global func_ov076_02212e70
@@ -23,7 +23,7 @@ func_ov076_02212e70:
     add r1, r5, #0x18
     mov r2, #0x14
     mov r3, #0x0
-    bl func_02038d38
+    bl ActorDerivedType1_TrySetStateVector
     ldr r0, .L_02212edc
     mov r1, r5
     ldr r0, [r0, #0x0]

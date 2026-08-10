@@ -10,7 +10,7 @@
 .extern data_ov081_02215380
 .extern data_ov081_0221551c
 .extern func_0200b04c
-.extern func_02038d38
+.extern ActorDerivedType1_TrySetStateVector
 .extern func_0203bab0
 .extern func_020573e4
 .extern func_020593dc
@@ -105,7 +105,7 @@ func_ov081_0221487c:
     mov r2, #0x14
     add r1, r5, #0x18
     sub r3, r2, #0x16
-    bl func_02038d38
+    bl ActorDerivedType1_TrySetStateVector
     b .L_02214b10
 .L_022149cc:
     ldr r0, .L_02214b28

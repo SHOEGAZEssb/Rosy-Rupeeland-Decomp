@@ -5,9 +5,9 @@
 .extern Actor_IsAtCachedTerrainHeight
 .extern gSoundContext
 
-    .global func_02038d38
-    .type func_02038d38, @function
-func_02038d38: ; 0x02038d38
+    .global ActorDerivedType1_TrySetStateVector
+    .type ActorDerivedType1_TrySetStateVector, @function
+ActorDerivedType1_TrySetStateVector: ; 0x02038d38
     stmdb sp!, {r3, r4, r5, r6, r7, lr}
     mov r7, r0
     ldr ip, [r7, #0x26c]
@@ -75,4 +75,4 @@ func_02038d38: ; 0x02038d38
     strh r1, [r0, #0x52]
     ldmia sp!, {r3, r4, r5, r6, r7, pc}
 .L_02038e34: .word gSoundContext
-    .size func_02038d38, . - func_02038d38
+    .size ActorDerivedType1_TrySetStateVector, . - ActorDerivedType1_TrySetStateVector

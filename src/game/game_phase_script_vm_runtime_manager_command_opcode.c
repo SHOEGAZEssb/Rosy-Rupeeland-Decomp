@@ -16,7 +16,7 @@ extern void func_0201e0ec(void *list);
 extern void *func_02025d14(void *state);
 extern void func_02026514(void *state);
 extern void *ActorCollection_GetSpriteOwner(void *collection);
-extern void func_02038c1c(void *manager);
+extern void ActorDerivedType1_UpdateOrientationFlag(void *manager);
 extern void ActorDerivedType1_TeardownActiveRecord(void *manager);
 extern void func_02055688(void);
 extern void func_02074154(void *object);
@@ -88,7 +88,7 @@ s32 func_02019aa4(GamePhaseActorScriptVm *self)
         break;
     }
     case 6:
-        func_02038c1c(manager);
+        ActorDerivedType1_UpdateOrientationFlag(manager);
         break;
     }
     return 0;

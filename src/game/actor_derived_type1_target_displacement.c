@@ -72,7 +72,8 @@ static s32 displacementStrength(s32 total)
  * manager, random,
  * Lupy, heap, sound, and effect calls have observable engine/SDK effects.
  */
-void func_0203825c(void *self, void *other, s32 firstWeight, s32 secondWeight)
+void ActorDerivedType1_ApplyWeightedCollisionDisplacement(
+    void *self, void *other, s32 firstWeight, s32 secondWeight)
 {
     u8 *actor = (u8 *)self;
     u8 *target = (u8 *)other;

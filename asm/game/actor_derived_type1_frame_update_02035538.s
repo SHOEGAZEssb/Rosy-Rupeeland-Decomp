@@ -22,7 +22,7 @@
 .extern func_020349b8
 .extern Actor_IsAtCachedTerrainHeight
 .extern func_0203647c
-.extern func_02037a94
+.extern ActorDerivedType1_UpdateHorizontalInputMotion
 .extern func_02037bb0
 .extern ActorDerivedRuntime_UpdateFrame
 .extern func_02048bcc
@@ -142,7 +142,7 @@ ActorDerivedType1_UpdateFrame: ; 0x02035538
     tst r0, #0x40000000
     beq .L_020356c0
     mov r0, r5
-    bl func_02037a94
+    bl ActorDerivedType1_UpdateHorizontalInputMotion
     b .L_020357cc
 .L_020356c0:
     cmp r1, #0x11

@@ -18,7 +18,7 @@ extern s32 func_0204cfa4(s32 x, s32 y);
 extern void func_02034a60(void *actor, u32 sound, s32 extra);
 extern void func_ov092_0221ad80(void *target, void *actor, s32 amount,
                                 s32 scale);
-extern void func_02038d38(void *actor, const void *vector, s32 value, s32 kind);
+extern void ActorDerivedType1_TrySetStateVector(void *actor, const void *vector, s32 value, s32 kind);
 #ifdef __cplusplus
 }
 #endif
@@ -97,7 +97,7 @@ void func_02039468(void *self)
                 scale = 0x800;
             }
             func_ov092_0221ad80(target, actor, amount, scale);
-            func_02038d38(actor, target + 0x18, 15, -1);
+            ActorDerivedType1_TrySetStateVector(actor, target + 0x18, 15, -1);
         } else if (target[0x4d] == 7 &&
                    (*(u32 *)(target + 0x10) & 0x1000000) == 0) {
             s32 direction[4];

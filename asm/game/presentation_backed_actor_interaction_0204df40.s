@@ -14,7 +14,7 @@
 .extern func_02022cb0
 .extern ActorCollection_QueueActorForRemoval
 .extern Actor_GetCollection
-.extern func_02038d38
+.extern ActorDerivedType1_TrySetStateVector
 .extern func_02072b68
 .extern func_020a25c8
 .text
@@ -87,7 +87,7 @@ func_0204df40: ; 0x0204df40
     add r0, r0, #0x2000
     ldr r0, [r0, #0xea4]
     mov r3, #0x2
-    bl func_02038d38
+    bl ActorDerivedType1_TrySetStateVector
 .L_0204e044:
     add r0, r6, #0x100
     ldr r2, .L_0204e298

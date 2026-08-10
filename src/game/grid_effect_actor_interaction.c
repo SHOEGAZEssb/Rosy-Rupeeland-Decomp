@@ -16,7 +16,7 @@ extern "C" {
 extern void Sound_Play(void *context, s32 bank, s32 sound);
 extern void *func_02009d78(void *object);
 extern void func_020050f0(void *destination, const void *source);
-extern void func_02038d38(void *actor, const void *position, s32 value,
+extern void ActorDerivedType1_TrySetStateVector(void *actor, const void *position, s32 value,
                           s32 mode);
 extern void func_0204a4bc(void *actor);
 extern s32 func_0204faac(void);
@@ -48,7 +48,7 @@ void func_0204f4d4(void *actor, const void *trigger)
         ActorPredicate predicate =
             *(ActorPredicate *)((u8 *)FIELD(void *, primary, 0) + 0xa8);
         if (predicate(primary) == 0)
-            func_02038d38(primary, (u8 *)actor + 0x18, 15, 2);
+            ActorDerivedType1_TrySetStateVector(primary, (u8 *)actor + 0x18, 15, 2);
     }
 
     func_0204a4bc(actor);

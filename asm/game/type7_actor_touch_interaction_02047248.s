@@ -12,7 +12,7 @@
 .extern func_020050a4
 .extern func_0203392c
 .extern Actor_TestQueryPoint
-.extern func_02038d38
+.extern ActorDerivedType1_TrySetStateVector
 .extern func_0203bab0
 .extern func_02046d8c
 .extern func_020481dc
@@ -197,7 +197,7 @@ func_02047248: ; 0x02047248
     add r1, sp, #0x1c
     mov r2, #0x14
     mov r3, #0x0
-    bl func_02038d38
+    bl ActorDerivedType1_TrySetStateVector
     add r0, sp, #0x1c
     add r1, r5, #0x200
     mvn r2, #0x9
@@ -292,7 +292,7 @@ func_02047248: ; 0x02047248
     add r1, sp, #0x0
     mov r2, #0x14
     mov r3, #0x0
-    bl func_02038d38
+    bl ActorDerivedType1_TrySetStateVector
     add r0, sp, #0x0
     bl func_02005058
 .L_02047658:

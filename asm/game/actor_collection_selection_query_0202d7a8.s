@@ -6,7 +6,7 @@
 .extern func_0204aff4
 .extern func_020397d4
 .extern func_0200500c
-.extern func_02038d38
+.extern ActorDerivedType1_TrySetStateVector
 .extern func_02005058
 .extern Actor_DispatchActivationMode1
 .extern data_02105310
@@ -222,7 +222,7 @@ ActorCollection_ProcessSelectionQuery: ; 0x0202d7a8
     mov r0, r6
     mov r2, #0x14
     mov r3, #0x3
-    bl func_02038d38
+    bl ActorDerivedType1_TrySetStateVector
     add r0, sp, #0x0
     bl func_02005058
     b .L_0202dad8

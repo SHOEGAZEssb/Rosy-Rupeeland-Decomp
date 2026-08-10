@@ -30,9 +30,9 @@
 .extern gLupyContext
 .extern genrand_int32
 
-    .global func_0203825c
-    .type func_0203825c, @function
-func_0203825c: ; 0x0203825c
+    .global ActorDerivedType1_ApplyWeightedCollisionDisplacement
+    .type ActorDerivedType1_ApplyWeightedCollisionDisplacement, @function
+ActorDerivedType1_ApplyWeightedCollisionDisplacement: ; 0x0203825c
     stmdb sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, lr}
     sub sp, sp, #0x78
     mov r7, r0
@@ -371,4 +371,4 @@ func_0203825c: ; 0x0203825c
 .L_02038778: .word gLupyContext
 .L_0203877c: .word data_020df4a4
 .L_02038780: .word gHeapContext
-    .size func_0203825c, . - func_0203825c
+    .size ActorDerivedType1_ApplyWeightedCollisionDisplacement, . - ActorDerivedType1_ApplyWeightedCollisionDisplacement

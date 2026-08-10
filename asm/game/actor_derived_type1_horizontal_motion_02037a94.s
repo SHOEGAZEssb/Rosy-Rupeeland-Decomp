@@ -2,9 +2,9 @@
 .text
 .extern gSystemState
 
-    .global func_02037a94
-    .type func_02037a94, @function
-func_02037a94: ; 0x02037a94
+    .global ActorDerivedType1_UpdateHorizontalInputMotion
+    .type ActorDerivedType1_UpdateHorizontalInputMotion, @function
+ActorDerivedType1_UpdateHorizontalInputMotion: ; 0x02037a94
     stmdb sp!, {r3, r4, r5, r6, r7, lr}
     mov r2, #0x0
     str r2, [r0, #0x90]
@@ -77,4 +77,4 @@ func_02037a94: ; 0x02037a94
 .L_02037ba4: .word gSystemState
 .L_02037ba8: .word 0xe66
 .L_02037bac: .word 0xccd
-    .size func_02037a94, . - func_02037a94
+    .size ActorDerivedType1_UpdateHorizontalInputMotion, . - ActorDerivedType1_UpdateHorizontalInputMotion

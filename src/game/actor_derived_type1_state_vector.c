@@ -23,7 +23,7 @@ extern void Sound_Play(void *context, s32 channel, s32 sound);
  * +0x26a, value in +0x264, five in +0x266, and 15 in +0x252. Returns no value;
  * vector-copy and sound calls have observable engine/SDK effects.
  */
-void func_02038d38(void *self, const void *vector, s32 value, s32 kind)
+void ActorDerivedType1_TrySetStateVector(void *self, const void *vector, s32 value, s32 kind)
 {
     u8 *actor = (u8 *)self;
     u16 objectFlags;
@@ -61,7 +61,7 @@ void func_02038d38(void *self, const void *vector, s32 value, s32 kind)
  * Clear actor halfwords +0x264, +0x266, and +0x252. Returns no value and
  * calls no helpers.
  */
-void func_02038e38(void *self)
+void ActorDerivedType1_ClearStateVectorTimers(void *self)
 {
     u8 *actor = (u8 *)self;
     *(u16 *)(actor + 0x264) = 0;

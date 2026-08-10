@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/type7_actor_global_interaction.c.
 .extern data_021052fc
-.extern func_02038d38
+.extern ActorDerivedType1_TrySetStateVector
 .extern func_02048378
 .extern func_0204aff4
 .extern func_0204c74c
@@ -22,7 +22,7 @@ func_0204a4f0: ; 0x0204a4f0
     add r1, r5, #0x18
     mov r2, #0x14
     mov r3, #0x0
-    bl func_02038d38
+    bl ActorDerivedType1_TrySetStateVector
     ldr r0, [r5, #0x29c]
     ldrh r0, [r0, #0x38]
     mov r0, r0, lsl #0x1c

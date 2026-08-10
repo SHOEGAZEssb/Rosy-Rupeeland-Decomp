@@ -34,7 +34,7 @@ extern s32 func_0204aff4(void *actor);
 extern s32 func_020397d4(void *actor);
 extern void func_0200500c(void *storage, s32 first, s32 second);
 extern void func_02005058(void *storage);
-extern void func_02038d38(void *actor, void *storage, s32 value, s32 mode);
+extern void ActorDerivedType1_TrySetStateVector(void *actor, void *storage, s32 value, s32 mode);
 #ifdef __cplusplus
 }
 #endif
@@ -148,7 +148,7 @@ s32 ActorCollection_ProcessSelectionQuery(ActorSelectionCollection *self,
                                  *(s32 *)((u8 *)candidate + 0x24) +
                                  (query->field_08 << 12);
                     func_0200500c(&storage, query->field_04 << 12, second);
-                    func_02038d38(actor, &storage, 0x14, 3);
+                    ActorDerivedType1_TrySetStateVector(actor, &storage, 0x14, 3);
                     func_02005058(&storage);
                 }
             }

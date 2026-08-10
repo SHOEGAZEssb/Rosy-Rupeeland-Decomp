@@ -5,9 +5,9 @@
 .extern Actor_GetCachedTerrainHeight
 .extern Actor_QueryTerrainHeight
 
-    .global func_02038c4c
-    .type func_02038c4c, @function
-func_02038c4c: ; 0x02038c4c
+    .global ActorDerivedType1_BuildContactPosition
+    .type ActorDerivedType1_BuildContactPosition, @function
+ActorDerivedType1_BuildContactPosition: ; 0x02038c4c
     stmdb sp!, {r4, r5, r6, r7, r8, lr}
     sub sp, sp, #0x10
     mov r5, r1
@@ -70,4 +70,4 @@ func_02038c4c: ; 0x02038c4c
 .L_02038d30:
     add sp, sp, #0x10
     ldmia sp!, {r4, r5, r6, r7, r8, pc}
-    .size func_02038c4c, . - func_02038c4c
+    .size ActorDerivedType1_BuildContactPosition, . - ActorDerivedType1_BuildContactPosition

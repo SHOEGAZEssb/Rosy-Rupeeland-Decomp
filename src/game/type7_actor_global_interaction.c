@@ -10,7 +10,7 @@ extern u8 *data_021052fc;
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_02038d38(void *globalObject, const void *transform,
+extern void ActorDerivedType1_TrySetStateVector(void *globalObject, const void *transform,
                           s32 distance, s32 mode);
 extern void func_02048378(void *actor, void *trigger);
 extern s32 func_0204aff4(void *actor);
@@ -40,7 +40,7 @@ void func_0204a4f0(void *trigger)
     actor = *(u8 **)(state + 0x2ea8);
     if (actor == 0)
         return;
-    func_02038d38(*(void **)(state + 0x2ea4), actor + 0x18, 20, 0);
+    ActorDerivedType1_TrySetStateVector(*(void **)(state + 0x2ea4), actor + 0x18, 20, 0);
     if ((*(u16 *)(*(u8 **)(actor + 0x29c) + 0x38) & 8) == 0)
         return;
     if (func_0204aff4(actor) < 2)

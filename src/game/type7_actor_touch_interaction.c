@@ -24,7 +24,7 @@ extern void func_020481dc(void *actor, u32 first, u32 second, s32 duration);
 extern void TouchPoint_Init(void *point, s32 x, s32 y);
 extern void func_02005030(void *destination, const void *source);
 extern void func_02005058(void *value);
-extern void func_02038d38(void *target, const void *transform, s32 duration,
+extern void ActorDerivedType1_TrySetStateVector(void *target, const void *transform, s32 duration,
                           s32 mode);
 extern s32 Actor_TestQueryPoint(void *actor, const void *input);
 extern s32 func_020486a8(void *actor);
@@ -67,7 +67,7 @@ static void initialize_relative_touch(u32 point[3], const u8 *actor,
  * object whose type byte is not one. Start either the flag-0x4000 response or
  * the data_020e1730 response. If target +0x280 has type one, convert the touch
  * to actor-relative coordinates, add it to a temporary transform, forward it
- * through func_02038d38, and set timer +0x250 to -10.
+ * through ActorDerivedType1_TrySetStateVector, and set timer +0x250 to -10.
  *
  * For other callback forms, require actor flag 0x2000 and a clear flag four.
  * Successful Actor_TestQueryPoint/func_020486a8 gates initialize the
@@ -140,7 +140,7 @@ s32 func_02047248(void *self, const void *inputRecord)
             func_02005030(transform, actor + 0x18);
             transform[1] += (s32)point[1] << 12;
             transform[2] += (s32)point[2] << 12;
-            func_02038d38(target, transform, 20, 0);
+            ActorDerivedType1_TrySetStateVector(target, transform, 20, 0);
             *(s16 *)(actor + 0x250) = -10;
             func_02005058(transform);
         }
@@ -170,7 +170,7 @@ s32 func_02047248(void *self, const void *inputRecord)
         func_02005030(transform, actor + 0x18);
         transform[1] += (s32)point[1] << 12;
         transform[2] += (s32)point[2] << 12;
-        func_02038d38(target, transform, 20, 0);
+        ActorDerivedType1_TrySetStateVector(target, transform, 20, 0);
         func_02005058(transform);
     }
     return 1;

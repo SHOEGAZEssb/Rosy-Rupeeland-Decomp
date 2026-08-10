@@ -26,7 +26,8 @@ extern s32 func_0206cb04(void *resource, void *target, s32 mode);
 extern void func_020099c0(void *manager, s32 first, s32 second);
 extern s32 func_020380f0(void *target);
 extern void ActorDerivedType1_ReleaseAuxiliaryAndSpawnResetEffect(void *actor);
-extern void func_0203825c(void *actor, void *target, s32 distance, s32 offset);
+extern void ActorDerivedType1_ApplyWeightedCollisionDisplacement(
+    void *actor, void *target, s32 distance, s32 offset);
 extern s32 func_0206e3a4(void *resource);
 extern void func_02048c2c(void *target, void *resource);
 #ifdef __cplusplus
@@ -49,7 +50,8 @@ static void *createAuxiliary(u8 *actor)
  * and height gates suppress further work. Target type 2 can reset the actor,
  * recreate +0x26c, attach it with func_0206cb04, play a manager event, or use
  * target +0x260/+0x27f/+0x29e to dispatch
- * ActorDerivedType1_ReleaseAuxiliaryAndSpawnResetEffect or func_0203825c.
+ * ActorDerivedType1_ReleaseAuxiliaryAndSpawnResetEffect or
+ * ActorDerivedType1_ApplyWeightedCollisionDisplacement.
  * Target type 7 can create +0x26c when its +0x234 resource is eligible and hand that
  * auxiliary resource to func_02048c2c. Allocation, freeing, GameWork, scene,
  * manager, target virtual, and resource calls have observable engine/SDK
@@ -96,7 +98,7 @@ s32 func_02037d98(void *self, void *other)
                 offset += *(s16 *)(target + 0x29e);
             if (func_020380f0(target) != 0 || target[0x24c] == 3)
                 ActorDerivedType1_ReleaseAuxiliaryAndSpawnResetEffect(actor);
-            func_0203825c(actor, target, 0x14, offset);
+            ActorDerivedType1_ApplyWeightedCollisionDisplacement(actor, target, 0x14, offset);
         }
     } else if (target[0x4d] == 7) {
         void *targetResource;

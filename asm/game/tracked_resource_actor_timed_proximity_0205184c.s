@@ -4,7 +4,7 @@
 .extern func_02005070
 .extern func_020066a4
 .extern func_0203392c
-.extern func_02038d38
+.extern ActorDerivedType1_TrySetStateVector
 .extern func_020adae4
 .text
     .global func_0205184c
@@ -70,7 +70,7 @@ func_0205184c:
     sub r3, r2, #0xb
     add r0, r0, #0x2000
     ldr r0, [r0, #0xea4]
-    bl func_02038d38
+    bl ActorDerivedType1_TrySetStateVector
 .L_02051944:
     mov r0, r5
     mov r1, r4

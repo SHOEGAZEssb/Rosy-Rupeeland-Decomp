@@ -15266,7 +15266,7 @@ build build/reports/actor_derived_type1_horizontal_motion_02037a94.json: objdiff
   base_object = build/decomp/asm/game/actor_derived_type1_horizontal_motion_02037a94.o
 build build/reports/actor_derived_type1_horizontal_motion_02037a94.txt: match_report build/reports/actor_derived_type1_horizontal_motion_02037a94.json | tools/report_objdiff.py
   report_json = build/reports/actor_derived_type1_horizontal_motion_02037a94.json
-  report_args = --section .text --function func_02037a94 --require-exact
+  report_args = --section .text --function ActorDerivedType1_UpdateHorizontalInputMotion --require-exact
 build build/reports/actor_derived_type1_horizontal_motion.txt: phony build/reports/actor_derived_type1_horizontal_motion_02037a94.txt
 
 build actor_derived_type1_horizontal_motion: phony build/decomp/src/game/actor_derived_type1_horizontal_motion.o build/decomp/asm/game/actor_derived_type1_horizontal_motion_02037a94.o build/reports/actor_derived_type1_horizontal_motion.txt
@@ -15359,7 +15359,7 @@ build build/reports/actor_derived_type1_target_displacement_0203825c.json: objdi
   base_object = build/decomp/asm/game/actor_derived_type1_target_displacement_0203825c.o
 build build/reports/actor_derived_type1_target_displacement_0203825c.txt: match_report build/reports/actor_derived_type1_target_displacement_0203825c.json | tools/report_objdiff.py
   report_json = build/reports/actor_derived_type1_target_displacement_0203825c.json
-  report_args = --section .text --function func_0203825c --require-exact
+  report_args = --section .text --function ActorDerivedType1_ApplyWeightedCollisionDisplacement --require-exact
 build build/reports/actor_derived_type1_target_displacement.txt: phony build/reports/actor_derived_type1_target_displacement_0203825c.txt
 
 build actor_derived_type1_target_displacement: phony build/decomp/src/game/actor_derived_type1_target_displacement.o build/decomp/asm/game/actor_derived_type1_target_displacement_0203825c.o build/reports/actor_derived_type1_target_displacement.txt
@@ -15477,7 +15477,7 @@ build build/reports/actor_derived_type1_orientation_flag_02038c1c.json: objdiff 
   base_object = build/decomp/asm/game/actor_derived_type1_orientation_flag_02038c1c.o
 build build/reports/actor_derived_type1_orientation_flag_02038c1c.txt: match_report build/reports/actor_derived_type1_orientation_flag_02038c1c.json | tools/report_objdiff.py
   report_json = build/reports/actor_derived_type1_orientation_flag_02038c1c.json
-  report_args = --section .text --function func_02038c1c --require-exact
+  report_args = --section .text --function ActorDerivedType1_UpdateOrientationFlag --require-exact
 build build/reports/actor_derived_type1_orientation_flag.txt: phony build/reports/actor_derived_type1_orientation_flag_02038c1c.txt
 
 build actor_derived_type1_orientation_flag: phony build/decomp/src/game/actor_derived_type1_orientation_flag.o build/decomp/asm/game/actor_derived_type1_orientation_flag_02038c1c.o build/reports/actor_derived_type1_orientation_flag.txt
@@ -15494,7 +15494,7 @@ build build/reports/actor_derived_type1_contact_position_02038c4c.json: objdiff 
   base_object = build/decomp/asm/game/actor_derived_type1_contact_position_02038c4c.o
 build build/reports/actor_derived_type1_contact_position_02038c4c.txt: match_report build/reports/actor_derived_type1_contact_position_02038c4c.json | tools/report_objdiff.py
   report_json = build/reports/actor_derived_type1_contact_position_02038c4c.json
-  report_args = --section .text --function func_02038c4c --require-exact
+  report_args = --section .text --function ActorDerivedType1_BuildContactPosition --require-exact
 build build/reports/actor_derived_type1_contact_position.txt: phony build/reports/actor_derived_type1_contact_position_02038c4c.txt
 
 build actor_derived_type1_contact_position: phony build/decomp/src/game/actor_derived_type1_contact_position.o build/decomp/asm/game/actor_derived_type1_contact_position_02038c4c.o build/reports/actor_derived_type1_contact_position.txt
@@ -15511,7 +15511,7 @@ build build/reports/actor_derived_type1_state_vector_02038d38.json: objdiff buil
   base_object = build/decomp/asm/game/actor_derived_type1_state_vector_02038d38.o
 build build/reports/actor_derived_type1_state_vector_02038d38.txt: match_report build/reports/actor_derived_type1_state_vector_02038d38.json | tools/report_objdiff.py
   report_json = build/reports/actor_derived_type1_state_vector_02038d38.json
-  report_args = --section .text --function func_02038d38 --require-exact
+  report_args = --section .text --function ActorDerivedType1_TrySetStateVector --require-exact
 build build/decomp/asm/game/actor_derived_type1_state_vector_02038e38.o: mwasmarm asm/game/actor_derived_type1_state_vector_02038e38.s
 build build/decomp/delinks/asm/game/actor_derived_type1_state_vector_02038e38.o: dsd_delink config/arm9/config.yaml config/arm9/delinks.txt config/arm9/symbols.txt config/arm9/relocs.txt
 build build/reports/actor_derived_type1_state_vector_02038e38.json: objdiff build/decomp/delinks/asm/game/actor_derived_type1_state_vector_02038e38.o | build/decomp/asm/game/actor_derived_type1_state_vector_02038e38.o
@@ -15519,7 +15519,7 @@ build build/reports/actor_derived_type1_state_vector_02038e38.json: objdiff buil
   base_object = build/decomp/asm/game/actor_derived_type1_state_vector_02038e38.o
 build build/reports/actor_derived_type1_state_vector_02038e38.txt: match_report build/reports/actor_derived_type1_state_vector_02038e38.json | tools/report_objdiff.py
   report_json = build/reports/actor_derived_type1_state_vector_02038e38.json
-  report_args = --section .text --function func_02038e38 --require-exact
+  report_args = --section .text --function ActorDerivedType1_ClearStateVectorTimers --require-exact
 build build/reports/actor_derived_type1_state_vector.txt: phony build/reports/actor_derived_type1_state_vector_02038d38.txt build/reports/actor_derived_type1_state_vector_02038e38.txt
 
 build actor_derived_type1_state_vector: phony build/decomp/src/game/actor_derived_type1_state_vector.o build/decomp/asm/game/actor_derived_type1_state_vector_02038d38.o build/decomp/asm/game/actor_derived_type1_state_vector_02038e38.o build/reports/actor_derived_type1_state_vector.txt

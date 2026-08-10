@@ -17,7 +17,7 @@ static s32 multiplyFx(s32 first, s32 second)
  * fixed damping 0x0ccd, and set scale +0xde to 0x180 while moving or 0x100
  * while idle. Returns no value and performs no direct hardware or SDK calls.
  */
-void func_02037a94(void *self)
+void ActorDerivedType1_UpdateHorizontalInputMotion(void *self)
 {
     u8 *actor = (u8 *)self;
     s32 primary;

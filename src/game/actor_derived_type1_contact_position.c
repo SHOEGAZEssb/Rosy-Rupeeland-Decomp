@@ -22,7 +22,7 @@ extern s32 Actor_GetCachedTerrainHeight(void *actor);
  * Copy the temporary to output and destroy it. Returns no value; vector copy/
  * teardown may maintain SDK object state, while terrain queries are read-only.
  */
-void func_02038c4c(void *output, void *self, const void *recordValue)
+void ActorDerivedType1_BuildContactPosition(void *output, void *self, const void *recordValue)
 {
     u8 *actor = (u8 *)self;
     const u8 *record = (const u8 *)recordValue;

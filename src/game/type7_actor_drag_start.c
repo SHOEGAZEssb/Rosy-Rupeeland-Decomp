@@ -19,7 +19,7 @@ extern void TouchPoint_Init(void *point, s32 x, s32 y);
 extern void func_02005030(void *destination, const void *source);
 extern void func_02005058(void *value);
 extern void func_020478b0(void *actor, const void *transform);
-extern void func_02038d38(void *target, const void *transform, s32 duration,
+extern void ActorDerivedType1_TrySetStateVector(void *target, const void *transform, s32 duration,
                           s32 mode);
 #ifdef __cplusplus
 }
@@ -111,6 +111,6 @@ void func_0204767c(void *self, const void *inputRecord)
     transform[2] += y << 12;
     func_020478b0(actor, transform);
     if (target[0x4d] == 1)
-        func_02038d38(target, transform, 20, 0);
+        ActorDerivedType1_TrySetStateVector(target, transform, 20, 0);
     func_02005058(transform);
 }

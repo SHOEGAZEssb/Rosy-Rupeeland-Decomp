@@ -12,7 +12,7 @@ extern "C" {
 #endif
 extern void *SceneManager_GetCurrent(void *manager);
 extern s32 func_02039c3c(void *primary, void *actor);
-extern void func_02038d38(void *primary, const void *position, s32 value, s32 extra);
+extern void ActorDerivedType1_TrySetStateVector(void *primary, const void *position, s32 value, s32 extra);
 extern void func_02048378(void *secondary, void *actor);
 extern s32 func_0203392c(void *actor, s32 context);
 #ifdef __cplusplus
@@ -24,7 +24,7 @@ extern s32 func_0203392c(void *actor, s32 context);
  * +0x2ea8. Continue the special path only when actor +0x260 bit one is set,
  * actor virtual +0xa8 reports inactive, the secondary actor exists and has
  * +0x268 bit 0x10, and func_02039c3c(primary,actor) accepts. Then send actor
- * transform +0x18 with value 20 and extra zero through func_02038d38 and notify
+ * transform +0x18 with value 20 and extra zero through ActorDerivedType1_TrySetStateVector and notify
  * the secondary through func_02048378. Always finish with func_0203392c(actor,
  * context) and return its result. Scene, global actor, and base-update state may
  * change; no direct hardware access occurs.
@@ -40,7 +40,7 @@ s32 ActorExtendedType2_UpdateSceneInteraction(void *self, s32 context)
             secondary != 0 && (*(u32 *)(secondary + 0x268) & 0x10) != 0) {
             void *primary = *(void **)(data_021052fc + 0x2ea4);
             if (func_02039c3c(primary, actor) != 0) {
-                func_02038d38(primary, actor + 0x18, 20, 0);
+                ActorDerivedType1_TrySetStateVector(primary, actor + 0x18, 20, 0);
                 func_02048378(secondary, actor);
             }
         }

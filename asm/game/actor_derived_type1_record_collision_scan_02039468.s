@@ -7,7 +7,7 @@
 .extern func_02005058
 .extern func_02007f0c
 .extern func_02034a60
-.extern func_02038d38
+.extern ActorDerivedType1_TrySetStateVector
 .extern ActorDerivedType1_IsActiveRecordType6F
 .extern func_0204cfa4
 .extern func_020adae4
@@ -126,7 +126,7 @@ func_02039468: ; 0x02039468
     mov r0, r10
     mov r2, #0xf
     mov r3, r5
-    bl func_02038d38
+    bl ActorDerivedType1_TrySetStateVector
     b .L_020396b8
 .L_02039618:
     cmp r0, #0x7

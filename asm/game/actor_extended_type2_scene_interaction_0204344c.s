@@ -3,7 +3,7 @@
 .extern SceneManager_GetCurrent
 .extern data_021052fc
 .extern func_0203392c
-.extern func_02038d38
+.extern ActorDerivedType1_TrySetStateVector
 .extern func_02039c3c
 .extern func_02048378
 .extern gSceneManager
@@ -60,7 +60,7 @@ ActorExtendedType2_UpdateSceneInteraction: ; 0x0204344c
     add r0, r0, #0x2000
     ldr r0, [r0, #0xea4]
     mov r3, #0x0
-    bl func_02038d38
+    bl ActorDerivedType1_TrySetStateVector
     mov r0, r4
     mov r1, r6
     bl func_02048378
