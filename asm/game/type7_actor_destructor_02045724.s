@@ -5,7 +5,7 @@
 .extern data_020e16b0
 .extern data_020e1c38
 .extern data_021052fc
-.extern data_0210577c
+.extern gType7ActorRegistry
 .extern VecFx32Object_Destroy
 .extern ActorDerivedType1_SetSpecialModeEnabled
 .extern ActorDerivedRuntime_DestroyAlternate
@@ -104,7 +104,7 @@ Type7Actor_Destroy: ; 0x02045724
     ldmia sp!, {r3, r4, r5, pc}
 .L_02045860: .word data_020e1c38
 .L_02045864: .word data_021052fc
-.L_02045868: .word data_0210577c
+.L_02045868: .word gType7ActorRegistry
 .L_0204586c: .word gGameWork
 .L_02045870: .word 0x3fd
 .L_02045874: .word data_020e16b0

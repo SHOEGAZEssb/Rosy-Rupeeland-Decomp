@@ -8,7 +8,7 @@
 
 extern const s16 data_020c3e78[];
 extern const s16 data_020c9670[];
-extern u16 data_02105788[];
+extern u16 gPresentationBackedActorRuntimeState[];
 
 #ifdef __cplusplus
 extern "C" {
@@ -61,7 +61,7 @@ void func_0204e3f4(u32 playback_value, s32 amount,
         for (candidate = tier; candidate >= 0; candidate--) {
             s32 denomination = data_020c3e78[candidate];
             if (denomination <= amount) {
-                s32 angle_index = ((s16)data_02105788[0] >> 4);
+                s32 angle_index = ((s16)gPresentationBackedActorRuntimeState[0] >> 4);
                 amount = (s16)(amount - denomination);
                 velocity.y = func_020adae4(
                     data_020c9670[angle_index * 2 + 1] * 3, 2);
@@ -70,7 +70,7 @@ void func_0204e3f4(u32 playback_value, s32 amount,
                 func_0204e2ac(10, playback_value, denomination, position,
                               &velocity, 0x300d, 0x300e, 0x300f,
                               candidate, 7, 1);
-                data_02105788[0] = (u16)(data_02105788[0] +
+                gPresentationBackedActorRuntimeState[0] = (u16)(gPresentationBackedActorRuntimeState[0] +
                     (genrand_int32() % 0x3000) + 0x1800);
                 break;
             }

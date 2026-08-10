@@ -8,7 +8,7 @@
 
 extern const s16 data_020c3e78[];
 extern const s16 data_020c9670[];
-extern u16 data_02105788[];
+extern u16 gPresentationBackedActorRuntimeState[];
 
 #ifdef __cplusplus
 extern "C" {
@@ -77,14 +77,14 @@ void func_0204e628(u32 playback_value, s32 amount, const void *position)
 
     VecFx32Object_InitComponents(&velocity, 0, 0, 0x2000);
     for (i = 0; i < 3; i++) {
-        s32 angle_index = (s16)data_02105788[0] >> 4;
+        s32 angle_index = (s16)gPresentationBackedActorRuntimeState[0] >> 4;
         velocity.y = func_020adae4(
             data_020c9670[angle_index * 2 + 1] * 3, 2);
         velocity.z = func_020adae4(
             data_020c9670[angle_index * 2] * 3, 2);
         func_0204e2ac(19, playback_value, divided_amount, position,
                       &velocity, 0x3010, 0x300e, 0x3011, 0, 7, 1);
-        data_02105788[0] = (u16)(data_02105788[0] +
+        gPresentationBackedActorRuntimeState[0] = (u16)(gPresentationBackedActorRuntimeState[0] +
             (genrand_int32() % 0x3000) + 0x3000);
     }
     VecFx32Object_Destroy(&velocity);

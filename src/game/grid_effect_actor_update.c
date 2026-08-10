@@ -8,7 +8,7 @@
 
 extern void *data_020f4e14;
 extern void *data_021052fc;
-extern u8 data_02105790[];
+extern u8 gGridEffectActorRuntimeState[];
 extern void *gSceneManager;
 
 #ifdef __cplusplus
@@ -148,7 +148,7 @@ void func_0204ee24(void *actor)
         FIELD(u8, FIELD(void *, actor, 0x54), 0x3a) = 0;
         s8 mode = FIELD(s8, actor, 0x21a);
         void *grid_context = data_020f4e14;
-        GraphicsSpriteRenderer_SetFontResource(grid_context, FIELD(u32, data_02105790, 8));
+        GraphicsSpriteRenderer_SetFontResource(grid_context, FIELD(u32, gGridEffectActorRuntimeState, 8));
         u32 value = func_020628c8((u8 *)actor + 0x1f4);
         s32 grid_x = GraphicsSpriteRenderer_MeasureText(grid_context, value, 8, 0);
         s32 target_x = mode < 6 ? 0x12000 : 0xe8000 - grid_x * 0x1000;
@@ -164,7 +164,7 @@ void func_0204ee24(void *actor)
             s32 pixel_x = FIELD(s32, actor, 0x1c) >> 12;
             s32 pixel_y = FIELD(s32, actor, 0x20) >> 12;
             if (pixel_x > 8 && pixel_x < 230 && pixel_y > 12 && pixel_y < 180) {
-                GraphicsSpriteRenderer_SetFontResource(grid_context, FIELD(u32, data_02105790, 8));
+                GraphicsSpriteRenderer_SetFontResource(grid_context, FIELD(u32, gGridEffectActorRuntimeState, 8));
                 value = func_020628c8((u8 *)actor + 0x1f4);
                 GraphicsSpriteRenderer_DrawText(grid_context, value, pixel_x, pixel_y, 13, 8, 0);
             }

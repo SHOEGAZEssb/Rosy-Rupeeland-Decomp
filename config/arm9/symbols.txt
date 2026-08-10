@@ -9282,10 +9282,10 @@ data_0210576f kind:bss addr:0x0210576f
 data_02105770 kind:bss addr:0x02105770
 gActorExtendedType2ReentryAngleAccumulator kind:bss addr:0x02105774
 gInteractionRecordAllocatorPool kind:bss addr:0x02105778
-data_0210577c kind:bss addr:0x0210577c
-data_02105788 kind:bss addr:0x02105788
-data_02105790 kind:bss addr:0x02105790
-data_0210579c kind:bss addr:0x0210579c
+gType7ActorRegistry kind:bss addr:0x0210577c
+gPresentationBackedActorRuntimeState kind:bss addr:0x02105788
+gGridEffectActorRuntimeState kind:bss addr:0x02105790
+gGridEffectActorRegistry kind:bss addr:0x0210579c
 data_021057cc kind:bss addr:0x021057cc
 data_021057d0 kind:bss addr:0x021057d0
 data_021057d4 kind:bss addr:0x021057d4

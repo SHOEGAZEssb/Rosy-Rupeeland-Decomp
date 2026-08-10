@@ -8,8 +8,8 @@
 
 extern void *data_020f4e18;
 extern void *data_021052fc;
-extern u8 data_02105790[];
-extern void *data_0210579c[];
+extern u8 gGridEffectActorRuntimeState[];
+extern void *gGridEffectActorRegistry[];
 
 #ifdef __cplusplus
 extern "C" {
@@ -30,27 +30,27 @@ typedef void (*ActorStateCallback)(void *actor, s32 value);
 
 /*
  * Ignore all register inputs. Acquire shared resource 0x7005 from
- * data_020f4e18, store it at data_02105790+8, then initialize the registry
+ * data_020f4e18, store it at gGridEffectActorRuntimeState+8, then initialize the registry
  * through func_0204f990. Returns nothing; resource and registry state change
  * without direct hardware access.
  */
 void GridEffectActorRegistry_LoadSharedResource(void)
 {
-    FIELD(void *, data_02105790, 8) = func_02071980(data_020f4e18, 0x7005);
+    FIELD(void *, gGridEffectActorRuntimeState, 8) = func_02071980(data_020f4e18, 0x7005);
     func_0204f990();
 }
 
 /*
- * Ignore all register inputs. If the shared resource at data_02105790+8 exists,
+ * Ignore all register inputs. If the shared resource at gGridEffectActorRuntimeState+8 exists,
  * release it through func_02071d4c using data_020f4e18 and clear the pointer.
  * Returns nothing; resource state changes and hardware is not touched directly.
  */
 void GridEffectActorRegistry_UnloadSharedResource(void)
 {
-    void *resource = FIELD(void *, data_02105790, 8);
+    void *resource = FIELD(void *, gGridEffectActorRuntimeState, 8);
     if (resource != 0) {
         func_02071d4c(data_020f4e18, resource);
-        FIELD(void *, data_02105790, 8) = 0;
+        FIELD(void *, gGridEffectActorRuntimeState, 8) = 0;
     }
 }
 
@@ -63,7 +63,7 @@ void GridEffectActorRegistry_BroadcastSlot1c(void)
 {
     s32 i;
     for (i = 0; i < 12; i++) {
-        void *actor = data_0210579c[i];
+        void *actor = gGridEffectActorRegistry[i];
         if (actor != 0) {
             ActorCallback callback =
                 *(ActorCallback *)((u8 *)FIELD(void *, actor, 0) + 0x1c);
@@ -81,7 +81,7 @@ void GridEffectActorRegistry_BroadcastStateValue0(void)
 {
     s32 i;
     for (i = 0; i < 12; i++) {
-        void *actor = data_0210579c[i];
+        void *actor = gGridEffectActorRegistry[i];
         if (actor != 0) {
             ActorStateCallback callback =
                 *(ActorStateCallback *)((u8 *)FIELD(void *, actor, 0) + 0x54);
@@ -101,7 +101,7 @@ void GridEffectActorRegistry_FinalizeDepartingActors(void)
 {
     s32 i;
     for (i = 0; i < 12; i++) {
-        void *actor = data_0210579c[i];
+        void *actor = gGridEffectActorRegistry[i];
         if (actor != 0 && (FIELD(u16, actor, 0x1f0) & 3) == 2) {
             FIELD(u16, FIELD(void *, actor, 0x54), 0x24) |= 0x14;
             FIELD(u16, actor, 0x1f0) =
@@ -122,7 +122,7 @@ s32 GridEffectActorRegistry_CountDepartingOrFinishedActors(void)
     s32 i;
     s32 count = 0;
     for (i = 0; i < 12; i++) {
-        void *actor = data_0210579c[i];
+        void *actor = gGridEffectActorRegistry[i];
         if (actor != 0 && (FIELD(u16, actor, 0x1f0) & 3) >= 2)
             count++;
     }

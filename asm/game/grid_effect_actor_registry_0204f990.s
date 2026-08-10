@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/grid_effect_actor_registry.c.
 .extern data_021052fc
-.extern data_02105790
-.extern data_0210579c
+.extern gGridEffectActorRuntimeState
+.extern gGridEffectActorRegistry
 .extern ActorCollection_QueueActorForRemoval
 .extern Actor_GetCollection
 .text
@@ -19,8 +19,8 @@ func_0204f990: ; 0x0204f990
     ldr r0, .L_0204f9bc
     str r1, [r0, #0x4]
     bx lr
-.L_0204f9b8: .word data_0210579c
-.L_0204f9bc: .word data_02105790
+.L_0204f9b8: .word gGridEffectActorRegistry
+.L_0204f9bc: .word gGridEffectActorRuntimeState
 .size func_0204f990, . - func_0204f990
 
     .global func_0204f9c0
@@ -60,7 +60,7 @@ func_0204f9c0: ; 0x0204f9c0
     orr r2, r2, #0x10
     str r2, [r1, #0xb8]
     ldmia sp!, {r3, r4, r5, pc}
-.L_0204fa40: .word data_0210579c
+.L_0204fa40: .word gGridEffectActorRegistry
 .L_0204fa44: .word data_021052fc
 .size func_0204f9c0, . - func_0204f9c0
 
@@ -93,7 +93,7 @@ func_0204fa48: ; 0x0204fa48
     cmp r3, #0xc
     blt .L_0204fa80
     bx lr
-.L_0204faa4: .word data_02105790
-.L_0204faa8: .word data_0210579c
+.L_0204faa4: .word gGridEffectActorRuntimeState
+.L_0204faa8: .word gGridEffectActorRegistry
 .size func_0204fa48, . - func_0204fa48
 

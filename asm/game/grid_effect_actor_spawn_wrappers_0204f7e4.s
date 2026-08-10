@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/grid_effect_actor_spawn_wrappers.c.
 .extern data_020c9670
-.extern data_02105790
+.extern gGridEffectActorRuntimeState
 .extern VecFx32Object_InitComponents
 .extern VecFx32Object_Destroy
 .extern VecFx32Object_Assign
@@ -131,7 +131,7 @@ func_0204f894: ; 0x0204f894
 .L_0204f978:
     add sp, sp, #0x10
     ldmia sp!, {r4, r5, r6, pc}
-.L_0204f980: .word data_02105790
+.L_0204f980: .word gGridEffectActorRuntimeState
 .L_0204f984: .word 0xfff
 .L_0204f988: .word data_020c9670
 .L_0204f98c: .word 0x1333

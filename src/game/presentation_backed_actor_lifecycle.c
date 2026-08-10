@@ -8,7 +8,7 @@
  */
 
 extern const u8 data_020e238c[];
-extern u8 data_02105788[];
+extern u8 gPresentationBackedActorRuntimeState[];
 
 #ifdef __cplusplus
 extern "C" {
@@ -28,7 +28,7 @@ extern void Type7Actor_ClearGlobalRelationshipToActor(void *actor);
 /*
  * Input is actor storage. Construct the inherited actor, install the recovered
  * vtable, clear private halfwords at 0x1EC/0x1F0, word 0x1F8, and bytes
- * 0x1EE/0x1EF, then increment data_02105788+4 when actor type 10 is observed.
+ * 0x1EE/0x1EF, then increment gPresentationBackedActorRuntimeState+4 when actor type 10 is observed.
  * Return self. The inherited constructor may change engine state; no hardware
  * is accessed directly.
  */
@@ -42,7 +42,7 @@ void *func_0204d5c8(void *self)
     FIELD(u8, self, 0x1ef) = 0;
     FIELD(u8, self, 0x1ee) = 0;
     if (FIELD(u16, self, 0x04e) == 10) {
-        FIELD(u32, data_02105788, 4)++;
+        FIELD(u32, gPresentationBackedActorRuntimeState, 4)++;
     }
     return self;
 }
@@ -71,7 +71,7 @@ void *func_0204d678(void *self)
     vtable[0xbc / sizeof(void *)](self);
     func_02031488(self);
     if (FIELD(u16, self, 0x04e) == 10) {
-        FIELD(u32, data_02105788, 4)--;
+        FIELD(u32, gPresentationBackedActorRuntimeState, 4)--;
     }
     func_0203130c(self);
     return self;

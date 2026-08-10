@@ -1,8 +1,8 @@
 ; Matching retail form; see src/game/grid_effect_actor_registry_control.c.
 .extern data_020f4e18
 .extern data_021052fc
-.extern data_02105790
-.extern data_0210579c
+.extern gGridEffectActorRuntimeState
+.extern gGridEffectActorRegistry
 .extern ActorCollection_QueueActorForRemoval
 .extern Actor_GetCollection
 .extern func_0204f990
@@ -23,7 +23,7 @@ GridEffectActorRegistry_LoadSharedResource: ; 0x0204fafc
     ldmia sp!, {r3, pc}
 .L_0204fb20: .word data_020f4e18
 .L_0204fb24: .word 0x7005
-.L_0204fb28: .word data_02105790
+.L_0204fb28: .word gGridEffectActorRuntimeState
 .size GridEffectActorRegistry_LoadSharedResource, . - GridEffectActorRegistry_LoadSharedResource
 
     .global GridEffectActorRegistry_UnloadSharedResource
@@ -41,7 +41,7 @@ GridEffectActorRegistry_UnloadSharedResource: ; 0x0204fb2c
     mov r1, #0x0
     str r1, [r0, #0x8]
     ldmia sp!, {r3, pc}
-.L_0204fb5c: .word data_02105790
+.L_0204fb5c: .word gGridEffectActorRuntimeState
 .L_0204fb60: .word data_020f4e18
 .size GridEffectActorRegistry_UnloadSharedResource, . - GridEffectActorRegistry_UnloadSharedResource
 
@@ -63,7 +63,7 @@ GridEffectActorRegistry_BroadcastSlot1c: ; 0x0204fb64
     cmp r5, #0xc
     blt .L_0204fb70
     ldmia sp!, {r3, r4, r5, pc}
-.L_0204fb98: .word data_0210579c
+.L_0204fb98: .word gGridEffectActorRegistry
 .size GridEffectActorRegistry_BroadcastSlot1c, . - GridEffectActorRegistry_BroadcastSlot1c
 
     .global GridEffectActorRegistry_BroadcastStateValue0
@@ -86,7 +86,7 @@ GridEffectActorRegistry_BroadcastStateValue0: ; 0x0204fb9c
     cmp r6, #0xc
     blt .L_0204fbac
     ldmia sp!, {r4, r5, r6, pc}
-.L_0204fbd8: .word data_0210579c
+.L_0204fbd8: .word gGridEffectActorRegistry
 .size GridEffectActorRegistry_BroadcastStateValue0, . - GridEffectActorRegistry_BroadcastStateValue0
 
     .global GridEffectActorRegistry_FinalizeDepartingActors
@@ -128,7 +128,7 @@ GridEffectActorRegistry_FinalizeDepartingActors: ; 0x0204fbdc
     orr r1, r1, #0x10
     str r1, [r0, #0xb8]
     ldmia sp!, {r4, r5, r6, pc}
-.L_0204fc64: .word data_0210579c
+.L_0204fc64: .word gGridEffectActorRegistry
 .L_0204fc68: .word data_021052fc
 .size GridEffectActorRegistry_FinalizeDepartingActors, . - GridEffectActorRegistry_FinalizeDepartingActors
 
@@ -153,6 +153,6 @@ GridEffectActorRegistry_CountDepartingOrFinishedActors: ; 0x0204fc6c
     cmp r3, #0xc
     blt .L_0204fc78
     bx lr
-.L_0204fcac: .word data_0210579c
+.L_0204fcac: .word gGridEffectActorRegistry
 .size GridEffectActorRegistry_CountDepartingOrFinishedActors, . - GridEffectActorRegistry_CountDepartingOrFinishedActors
 

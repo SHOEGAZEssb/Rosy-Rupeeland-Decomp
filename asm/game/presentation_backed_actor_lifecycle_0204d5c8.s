@@ -5,7 +5,7 @@
 .extern func_0203130c
 .extern Heap_Free
 .extern data_020e238c
-.extern data_02105788
+.extern gPresentationBackedActorRuntimeState
 .text
     .global func_0204d5c8
 func_0204d5c8:
@@ -30,7 +30,7 @@ func_0204d5c8:
     mov r0, r4
     ldmia sp!, {r4, pc}
 .L_0204d618: .word data_020e238c
-.L_0204d61c: .word data_02105788
+.L_0204d61c: .word gPresentationBackedActorRuntimeState
 .size func_0204d5c8, . - func_0204d5c8
 
     .global func_0204d620
@@ -56,7 +56,7 @@ func_0204d620:
     mov r0, r4
     ldmia sp!, {r4, pc}
 .L_0204d670: .word data_020e238c
-.L_0204d674: .word data_02105788
+.L_0204d674: .word gPresentationBackedActorRuntimeState
 .size func_0204d620, . - func_0204d620
 
     .global func_0204d678
@@ -83,7 +83,7 @@ func_0204d678:
     mov r0, r4
     ldmia sp!, {r4, pc}
 .L_0204d6cc: .word data_020e238c
-.L_0204d6d0: .word data_02105788
+.L_0204d6d0: .word gPresentationBackedActorRuntimeState
 .size func_0204d678, . - func_0204d678
 
     .global func_0204d6d4
@@ -112,7 +112,7 @@ func_0204d6d4:
     mov r0, r4
     ldmia sp!, {r4, pc}
 .L_0204d730: .word data_020e238c
-.L_0204d734: .word data_02105788
+.L_0204d734: .word gPresentationBackedActorRuntimeState
 .size func_0204d6d4, . - func_0204d6d4
 
     .global func_0204d738
@@ -139,6 +139,6 @@ func_0204d738:
     mov r0, r4
     ldmia sp!, {r4, pc}
 .L_0204d78c: .word data_020e238c
-.L_0204d790: .word data_02105788
+.L_0204d790: .word gPresentationBackedActorRuntimeState
 .size func_0204d738, . - func_0204d738
 

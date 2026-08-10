@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/presentation_backed_actor_split_spawn.c.
 .extern data_020c3e78
 .extern data_020c9670
-.extern data_02105788
+.extern gPresentationBackedActorRuntimeState
 .extern VecFx32Object_InitComponents
 .extern VecFx32Object_Destroy
 .extern func_0204e2ac
@@ -119,7 +119,7 @@ func_0204e3f4: ; 0x0204e3f4
     add sp, sp, #0x2c
     ldmia sp!, {r3, r4, r5, r6, r7, r8, r9, r10, pc}
 .L_0204e574: .word data_020c3e78
-.L_0204e578: .word data_02105788
+.L_0204e578: .word gPresentationBackedActorRuntimeState
 .L_0204e57c: .word data_020c9670
 .L_0204e580: .word 0x300d
 .size func_0204e3f4, . - func_0204e3f4

@@ -2,7 +2,7 @@
 .extern SceneManager_GetCurrent
 .extern data_020f4e14
 .extern data_021052fc
-.extern data_02105790
+.extern gGridEffectActorRuntimeState
 .extern gSceneManager
 .extern VecFx32Object_Assign
 .extern VecFx32Object_Add
@@ -443,7 +443,7 @@ func_0204ee24: ; 0x0204ee24
 .L_0204f460: .word 0xffff0003
 .L_0204f464: .word data_021052fc
 .L_0204f468: .word gSceneManager
-.L_0204f46c: .word data_02105790
+.L_0204f46c: .word gGridEffectActorRuntimeState
 .L_0204f470: .word data_020f4e14
 .L_0204f474: .word 0xd9a
 .size func_0204ee24, . - func_0204ee24

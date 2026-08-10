@@ -6,7 +6,7 @@
  */
 
 extern const s16 data_020c9670[];
-extern u16 data_02105790[];
+extern u16 gGridEffectActorRuntimeState[];
 
 #ifdef __cplusplus
 extern "C" {
@@ -95,11 +95,11 @@ s32 func_0204f894(const void *position, void *source, s16 timer)
     if (actor == 0)
         return 0;
 
-    data_02105790[0] = (u16)(data_02105790[0] +
+    gGridEffectActorRuntimeState[0] = (u16)(gGridEffectActorRuntimeState[0] +
         (genrand_int32() & 0xfff) + 0x1999);
-    if (data_02105790[0] > 0x8000)
-        data_02105790[0] -= 0x8000;
-    s32 index = (s16)data_02105790[0] >> 4;
+    if (gGridEffectActorRuntimeState[0] > 0x8000)
+        gGridEffectActorRuntimeState[0] -= 0x8000;
+    s32 index = (s16)gGridEffectActorRuntimeState[0] >> 4;
     VecFx32Object_InitComponents(&velocity,
                   fx_mul(data_020c9670[index * 2 + 1], 0x1333),
                   fx_mul(data_020c9670[index * 2], 0x1333),
