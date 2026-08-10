@@ -15,7 +15,7 @@ extern void *gLupyContext;
 extern "C" {
 #endif
 extern void func_02003e38(void *);
-extern s32 func_02002d94(void);
+extern s32 DisplayBrightness_IsMainTransitionComplete(void);
 extern void func_0201140c(void *, s32);
 extern void func_020755bc(void *);
 extern void func_020b1ccc(void *, s32, s32);
@@ -60,7 +60,7 @@ extern "C" s32 func_ov018_021fe6f0(void *state)
         break;
     }
     case 1:
-        if (func_02002d94() != 0 &&
+        if (DisplayBrightness_IsMainTransitionComplete() != 0 &&
             (FIELD(u16, FIELD(void *, state, 0xd0), 0x24) & 1)) {
             void *sprite = FIELD(void *, state, 0xd0);
             FIELD(u16, sprite, 0x24) |= 2;

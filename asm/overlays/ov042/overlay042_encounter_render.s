@@ -20,8 +20,8 @@
 .extern genrand_int32
 .extern func_020bf1f8
 .extern func_020adc90
-.extern func_02002d28
-.extern func_02002ac0
+.extern DisplayBrightnessPair_GetScreen
+.extern DisplayBrightness_StartTransition
 .extern data_ov042_0220ad98
 .extern data_020c9670
 .extern data_ov042_0220b6e0
@@ -1347,18 +1347,18 @@ func_ov042_022036c4:
 .L_02204a9c:
     bne .L_02204ae4
     ldr r0, .L_02204e60
-    bl func_02002d28
+    bl DisplayBrightnessPair_GetScreen
     mov r1, #0x0
     mov r2, #0x10
     mov r3, #0x20
-    bl func_02002ac0
+    bl DisplayBrightness_StartTransition
     ldr r0, .L_02204e60
     mov r1, #0x1
-    bl func_02002d28
+    bl DisplayBrightnessPair_GetScreen
     mov r1, #0x0
     mov r2, #0x10
     mov r3, #0x20
-    bl func_02002ac0
+    bl DisplayBrightness_StartTransition
     ldr r0, [r10, #0x248]
     add r0, r0, #0x1
     str r0, [r10, #0x248]
@@ -1374,18 +1374,18 @@ func_ov042_022036c4:
     ldr r2, [r2, #0x8]
     mov r3, #0x2
     strh r3, [r2, #0xf8]
-    bl func_02002d28
+    bl DisplayBrightnessPair_GetScreen
     mov r1, #0x10
     mov r3, r1
     mov r2, #0x0
-    bl func_02002ac0
+    bl DisplayBrightness_StartTransition
     ldr r0, .L_02204e60
     mov r1, #0x1
-    bl func_02002d28
+    bl DisplayBrightnessPair_GetScreen
     mov r1, #0x10
     mov r2, #0x0
     mov r3, r1
-    bl func_02002ac0
+    bl DisplayBrightness_StartTransition
 .L_02204b3c:
     ldr r3, [r10, #0x278]
     ldr r0, [r10, #0x274]

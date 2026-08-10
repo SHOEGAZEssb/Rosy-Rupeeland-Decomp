@@ -1,7 +1,7 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov090/overlay090_recovery.c.
 .extern data_ov090_0221cc88
-.extern func_02002e38
+.extern DisplayController_GetVerticalOffset
 .extern func_02005810
 .extern func_02072b68
 .extern func_020bf1f8
@@ -157,7 +157,7 @@ func_ov090_0221c780:
     add r0, r1, #0x3c
     strh r0, [r4, #0x12]
 .L_0221c990:
-    bl func_02002e38
+    bl DisplayController_GetVerticalOffset
     mvn r1, #0xbf
     sub r5, r1, r0
     ldr r3, .L_0221c9f4

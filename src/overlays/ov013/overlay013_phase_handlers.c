@@ -37,8 +37,8 @@ extern s32 func_ov013_021fdfbc(void *);
 extern void func_ov013_021fda9c(void *, s32, void *);
 extern void func_ov013_021fdb10(void *);
 extern void func_02091fb0(void *, s32);
-extern s32 func_02002d94(void);
-extern s32 func_02002db0(void);
+extern s32 DisplayBrightness_IsMainTransitionComplete(void);
+extern s32 DisplayBrightness_IsSubTransitionComplete(void);
 extern s32 GameWork_TestFlag(void *, s32);
 extern void GameWork_ClearFlag(void *, s32);
 extern void func_02092260(void *, s32);
@@ -89,7 +89,7 @@ s32 func_ov013_021fe148(void *state)
     case 1:
         if (FIELD(void *, state, 0x9a8) != 0)
             func_02091fb0(FIELD(void *, state, 0x9a8), 0);
-        if (func_02002d94() && func_02002db0()) {
+        if (DisplayBrightness_IsMainTransitionComplete() && DisplayBrightness_IsSubTransitionComplete()) {
             if (FIELD(s32, state, 0x974) != 0) {
                 overlay013_set_callback(state, data_ov013_021fece8);
             } else if (GameWork_TestFlag(gGameWork, 0x3bd)) {

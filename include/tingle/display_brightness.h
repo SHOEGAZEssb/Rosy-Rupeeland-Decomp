@@ -25,15 +25,15 @@ typedef char DisplayBrightnessSizeCheck[sizeof(DisplayBrightness) == 0x14 ? 1 : 
 extern "C" {
 #endif
 
-void func_020028f0(DisplayBrightness *state, u32 screen);
-void func_02002930(DisplayBrightness *destination,
+void DisplayBrightness_Init(DisplayBrightness *state, u32 screen);
+void DisplayBrightness_Copy(DisplayBrightness *destination,
                    const DisplayBrightness *source);
-void func_02002a04(DisplayBrightness *state, s32 direction,
+void DisplayBrightness_StartBoundTransition(DisplayBrightness *state, s32 direction,
                    fx32 transitionDivisor);
-void func_02002ac0(DisplayBrightness *state, s32 startBrightness,
+void DisplayBrightness_StartTransition(DisplayBrightness *state, s32 startBrightness,
                    s32 targetBrightness, fx32 transitionDivisor);
-void func_02002b3c(DisplayBrightness *state);
-s32 func_02002cd0(const DisplayBrightness *state);
+void DisplayBrightness_Update(DisplayBrightness *state);
+s32 DisplayBrightness_GetCurrent(const DisplayBrightness *state);
 
 #ifdef __cplusplus
 }

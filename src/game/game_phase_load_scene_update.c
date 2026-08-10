@@ -49,8 +49,8 @@ extern u8 data_020d54b4[];
 extern u8 data_020d552c[];
 extern u8 data_020d54d4[];
 extern int func_02092c8c(...);
-extern int func_02002d94(...);
-extern int func_02002db0(...);
+extern int DisplayBrightness_IsMainTransitionComplete(...);
+extern int DisplayBrightness_IsSubTransitionComplete(...);
 extern int func_02007f0c(...);
 extern int ActorCollection_GetSpriteOwner(...);
 extern int func_020740a4(...);
@@ -242,8 +242,8 @@ code_r0x0200d150:
 code_r0x0200d170:
     func_02092c8c(3,0xfffffff0);
 code_r0x0200d17c:
-    iVar5 = func_02002d94();
-    if ((iVar5 == 0) || (iVar5 = func_02002db0(), iVar5 == 0)) {
+    iVar5 = DisplayBrightness_IsMainTransitionComplete();
+    if ((iVar5 == 0) || (iVar5 = DisplayBrightness_IsSubTransitionComplete(), iVar5 == 0)) {
       func_02007f0c(*UNK_0200e0e4,1);
       ActorCollection_GetSpriteOwner();
       func_020740a4();
@@ -262,11 +262,11 @@ code_r0x0200d17c:
     return 0;
   case 3:
     func_02091fb0(param_1[9],0,param_3,param_4,param_4);
-    iVar5 = func_02002d94();
+    iVar5 = DisplayBrightness_IsMainTransitionComplete();
     if (iVar5 == 0) {
       return 0;
     }
-    iVar5 = func_02002db0();
+    iVar5 = DisplayBrightness_IsSubTransitionComplete();
     if (iVar5 == 0) {
       return 0;
     }
@@ -319,11 +319,11 @@ code_r0x0200dd3c:
     return 0;
   case 5:
     func_02091fb0(param_1[9],0,param_3,param_4,param_4);
-    iVar5 = func_02002d94();
+    iVar5 = DisplayBrightness_IsMainTransitionComplete();
     if (iVar5 == 0) {
       return 0;
     }
-    iVar5 = func_02002db0();
+    iVar5 = DisplayBrightness_IsSubTransitionComplete();
     if (iVar5 == 0) {
       return 0;
     }

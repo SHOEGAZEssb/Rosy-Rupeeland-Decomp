@@ -14,7 +14,7 @@ extern const u32 data_ov021_02202ef8[];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern s32 func_02002d94(void);
+extern s32 DisplayBrightness_IsMainTransitionComplete(void);
 extern void func_020755bc(void *);
 extern void func_02092260(void *, s32);
 extern void func_02092288(void *, s32);
@@ -158,7 +158,7 @@ extern "C" s32 func_ov021_021ffd5c(void *state)
         break;
     }
     case 3:
-        if (func_02002d94() != 0) {
+        if (DisplayBrightness_IsMainTransitionComplete() != 0) {
             func_020939d8(FIELD(void *, state, 0x388));
             func_020755bc(data_020f4e14);
             FIELD(u32, state, 0x48) &= ~2U;

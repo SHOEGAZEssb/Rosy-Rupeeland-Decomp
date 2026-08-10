@@ -16,7 +16,7 @@ extern "C" void *gGameWork;
 extern "C" u32 data_ov044_0220d2c8[2];
 extern "C" u32 data_ov044_0220d2c0[2];
 extern "C" void func_02092c8c(s32 first, s32 second);
-extern "C" s32 func_02002d94(void);
+extern "C" s32 DisplayBrightness_IsMainTransitionComplete(void);
 extern "C" void *func_ov044_0220bd98(void *panel);
 extern "C" void func_02095940(void *presentation);
 extern "C" void func_ov044_0220c5c0(void *object);
@@ -67,7 +67,7 @@ extern "C" s32 func_ov044_0220cf60(void *object)
         advance_handoff(object);
         /* Intentional same-frame fallthrough. */
     case 1:
-        if (func_02002d94()) {
+        if (DisplayBrightness_IsMainTransitionComplete()) {
             void *record = func_ov044_0220bd98(FIELD(void *, object, 0x228));
             void *item = FIELD(void *, record, 0xc);
             func_02095940((u8 *)object + 0x17c);
@@ -87,7 +87,7 @@ extern "C" s32 func_ov044_0220cf60(void *object)
         break;
     case 2:
         func_02091fb0(FIELD(void *, object, 0x23c), 0);
-        if (func_02002d94())
+        if (DisplayBrightness_IsMainTransitionComplete())
             advance_handoff(object);
         break;
     case 3:
@@ -98,7 +98,7 @@ extern "C" s32 func_ov044_0220cf60(void *object)
         break;
     case 4:
         func_02091fb0(FIELD(void *, object, 0x23c), 0);
-        if (func_02002d94()) {
+        if (DisplayBrightness_IsMainTransitionComplete()) {
             FIELD(u32, object, 0x20) &= ~0x400;
             void *scene = FIELD(void *, object, 0x23c);
             if (scene) {
@@ -135,7 +135,7 @@ extern "C" s32 func_ov044_0220cf60(void *object)
     }
     case 6:
         func_ov044_0220c880(object);
-        if (func_02002d94())
+        if (DisplayBrightness_IsMainTransitionComplete())
             func_ov044_0220be38(object, data_ov044_0220d2c0[0],
                                 data_ov044_0220d2c0[1]);
         break;

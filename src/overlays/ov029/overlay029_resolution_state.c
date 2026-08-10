@@ -22,7 +22,7 @@ extern "C" {
 #endif
 extern void *Heap_Alloc(u32, const void *, s32, void *);
 extern void GameWork_SetFlag(void *, s32);
-extern s32 func_02002d94(void);
+extern s32 DisplayBrightness_IsMainTransitionComplete(void);
 extern s32 func_0209189c(void *, s32, s32);
 extern void func_02092260(void *, s32);
 extern void func_02092288(void *, s32);
@@ -95,7 +95,7 @@ extern "C" s32 func_ov029_021fe0cc(void *state)
         Overlay029_NextPhase(state);
         /* fall through */
     case 1:
-        if (func_02002d94() == 0)
+        if (DisplayBrightness_IsMainTransitionComplete() == 0)
             break;
         func_02092288(state, FIELD(s32, state, 0x58) == 5 ? 0x6d : 0x69);
         func_02092260(state, 0x6c);
@@ -241,7 +241,7 @@ extern "C" s32 func_ov029_021fe0cc(void *state)
         }
         break;
     case 6:
-        if (func_02002d94() != 0) {
+        if (DisplayBrightness_IsMainTransitionComplete() != 0) {
             func_ov002_021fbe68(FIELD(void *, state, 0xa8));
             func_02092260(state, 0x69);
             Overlay029_SetPair(state, data_ov029_021fec68);

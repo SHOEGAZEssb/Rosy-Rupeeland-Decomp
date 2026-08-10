@@ -28,18 +28,18 @@ extern DisplayBrightness data_020f4ddc;
 
 /*
  * Construct a caller-provided pair with main-screen selector 0 and sub-screen
- * selector 1. Temporary states are copied through func_02002930; the pair
+ * selector 1. Temporary states are copied through DisplayBrightness_Copy; the pair
  * address is returned and no hardware is changed.
  */
-DisplayBrightnessPair *func_02002cdc(DisplayBrightnessPair *pair)
+DisplayBrightnessPair *DisplayBrightnessPair_Init(DisplayBrightnessPair *pair)
 {
     DisplayBrightness mainTemporary;
     DisplayBrightness subTemporary;
 
-    func_020028f0(&mainTemporary, 0);
-    func_02002930(&pair->screens[0], &mainTemporary);
-    func_020028f0(&subTemporary, 1);
-    func_02002930(&pair->screens[1], &subTemporary);
+    DisplayBrightness_Init(&mainTemporary, 0);
+    DisplayBrightness_Copy(&pair->screens[0], &mainTemporary);
+    DisplayBrightness_Init(&subTemporary, 1);
+    DisplayBrightness_Copy(&pair->screens[1], &subTemporary);
     return pair;
 }
 
@@ -47,7 +47,7 @@ DisplayBrightnessPair *func_02002cdc(DisplayBrightnessPair *pair)
  * Trivial destructor hook for a brightness pair. It accepts the registered
  * global object, changes no state, performs no SDK work, and returns nothing.
  */
-void func_02002d24(DisplayBrightnessPair *pair)
+void DisplayBrightnessPair_Destroy(DisplayBrightnessPair *pair)
 {
     (void)pair;
 }
@@ -56,7 +56,7 @@ void func_02002d24(DisplayBrightnessPair *pair)
  * Return the main state when screen is zero, otherwise the sub state. This
  * performs no validation or mutation; every nonzero selector chooses sub.
  */
-DisplayBrightness *func_02002d28(DisplayBrightnessPair *pair, u32 screen)
+DisplayBrightness *DisplayBrightnessPair_GetScreen(DisplayBrightnessPair *pair, u32 screen)
 {
     if (screen != 0)
         return &pair->screens[1];
@@ -64,68 +64,68 @@ DisplayBrightness *func_02002d28(DisplayBrightnessPair *pair, u32 screen)
 }
 
 /* Advance both global transitions and apply their visible hardware values. */
-void func_02002d34(void)
+void DisplayBrightness_UpdateAll(void)
 {
-    func_02002b3c(MAIN_BRIGHTNESS);
-    func_02002b3c(SUB_BRIGHTNESS);
+    DisplayBrightness_Update(MAIN_BRIGHTNESS);
+    DisplayBrightness_Update(SUB_BRIGHTNESS);
 }
 
 /* Start the main-screen transition; observable effects are confined to its state. */
-void func_02002d54(s32 direction, fx32 transitionDivisor)
+void DisplayBrightness_StartMainTransition(s32 direction, fx32 transitionDivisor)
 {
-    func_02002a04(MAIN_BRIGHTNESS, direction, transitionDivisor);
+    DisplayBrightness_StartBoundTransition(MAIN_BRIGHTNESS, direction, transitionDivisor);
 }
 
 /* Start the sub-screen transition; observable effects are confined to its state. */
-void func_02002d74(s32 direction, fx32 transitionDivisor)
+void DisplayBrightness_StartSubTransition(s32 direction, fx32 transitionDivisor)
 {
-    func_02002a04(SUB_BRIGHTNESS, direction, transitionDivisor);
+    DisplayBrightness_StartBoundTransition(SUB_BRIGHTNESS, direction, transitionDivisor);
 }
 
 /* Return TRUE exactly when the main-screen transition direction is idle. */
-s32 func_02002d94(void)
+s32 DisplayBrightness_IsMainTransitionComplete(void)
 {
     return data_020f4dbc.pair.screens[0].direction == 0;
 }
 
 /* Return TRUE exactly when the sub-screen transition direction is idle. */
-s32 func_02002db0(void)
+s32 DisplayBrightness_IsSubTransitionComplete(void)
 {
     return data_020f4dbc.pair.screens[1].direction == 0;
 }
 
 /* Return TRUE when the sub-screen packed transition mode is positive one. */
-s32 func_02002dcc(void)
+s32 DisplayBrightness_IsSubTransitionIncreasing(void)
 {
     return data_020f4dbc.pair.screens[1].mode == 1;
 }
 
 /* Return TRUE when the main-screen packed transition mode is negative one. */
-s32 func_02002df0(void)
+s32 DisplayBrightness_IsMainTransitionDecreasing(void)
 {
     return data_020f4dbc.pair.screens[0].mode == -1;
 }
 
 /* Return TRUE when the sub-screen packed transition mode is negative one. */
-s32 func_02002e14(void)
+s32 DisplayBrightness_IsSubTransitionDecreasing(void)
 {
     return data_020f4dbc.pair.screens[1].mode == -1;
 }
 
 /* Return the unclassified display offset retained at SystemState offset 0x5e. */
-u8 func_02002e38(void)
+u8 DisplayController_GetVerticalOffset(void)
 {
     return gSystemState.unknown5E;
 }
 
 /* Return the retained display offset translated by the DS screen height, 192. */
-u32 func_02002e48(void)
+u32 DisplayController_GetSubScreenVerticalOffset(void)
 {
     return gSystemState.unknown5E + 192;
 }
 
 /* Store a new eight-bit display offset at SystemState offset 0x5e. */
-void func_02002e5c(u8 value)
+void DisplayController_SetVerticalOffset(u8 value)
 {
     gSystemState.unknown5E = value;
 }

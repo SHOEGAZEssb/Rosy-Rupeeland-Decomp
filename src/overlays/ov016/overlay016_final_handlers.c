@@ -19,7 +19,7 @@ extern "C" {
 #endif
 extern void Heap_Free(void *);
 extern void GameWork_ClearFlag(void *, u32);
-extern s32 func_02002d94(void);
+extern s32 DisplayBrightness_IsMainTransitionComplete(void);
 extern s32 func_020651a4(void *, u16);
 extern s32 func_0206fb18(void *);
 extern void func_020755bc(void *);
@@ -101,7 +101,7 @@ extern "C" s32 func_ov016_022010c0(void *state)
         FIELD(s32, state, 8) = 0;
         /* Deliberate fall-through while fading out. */
     case 1:
-        if (func_02002d94() != 0) {
+        if (DisplayBrightness_IsMainTransitionComplete() != 0) {
             func_ov016_021ff71c(state);
             func_020755bc(data_020f4e14);
             func_ov016_021ff848(state, 0x18);
@@ -115,7 +115,7 @@ extern "C" s32 func_ov016_022010c0(void *state)
         }
         break;
     case 2:
-        if (func_02002d94() != 0) {
+        if (DisplayBrightness_IsMainTransitionComplete() != 0) {
             func_ov016_021fe754(state, data_ov016_02201430[0],
                                 data_ov016_02201430[1]);
             FIELD(s32, state, 4)++;

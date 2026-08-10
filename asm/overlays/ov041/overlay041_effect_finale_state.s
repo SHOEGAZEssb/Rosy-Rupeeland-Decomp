@@ -5,8 +5,8 @@
 .extern GXx_SetMasterBrightness_
 .extern Sound_Play
 .extern data_020f4dc8
-.extern func_02002ac0
-.extern func_02002d28
+.extern DisplayBrightness_StartTransition
+.extern DisplayBrightnessPair_GetScreen
 .extern func_020befec
 .extern func_ov004_021fb868
 .extern func_ov041_02202aa4
@@ -190,18 +190,18 @@ func_ov041_022025b0: ; 0x022025b0
     subs r2, r2, #0x1
     bpl .L_02202824
     ldr r0, .L_022029c8
-    bl func_02002d28
+    bl DisplayBrightnessPair_GetScreen
     mov r1, #0x10
     mov r2, #0x0
     mov r3, #0x18
-    bl func_02002ac0
+    bl DisplayBrightness_StartTransition
     ldr r0, .L_022029c8
     mov r1, #0x1
-    bl func_02002d28
+    bl DisplayBrightnessPair_GetScreen
     mov r1, #0x10
     mov r2, #0x0
     mov r3, #0x18
-    bl func_02002ac0
+    bl DisplayBrightness_StartTransition
     mov r0, #0x0
     str r0, [r10, #0x918]
     str r0, [r10, #0x930]

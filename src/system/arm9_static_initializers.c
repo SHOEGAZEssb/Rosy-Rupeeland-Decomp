@@ -21,8 +21,8 @@ extern void func_02001d10(void *);
 extern void func_02001d30(void *);
 extern void func_02002068(void *);
 extern void func_020020a0(void *);
-extern void func_02002cdc(void *);
-extern void func_02002d24(void *);
+extern void DisplayBrightnessPair_Init(void *);
+extern void DisplayBrightnessPair_Destroy(void *);
 extern void MainBgPaletteBuffer_Init(void *);
 extern void MainBgPaletteBuffer_Destroy(void *);
 extern void SubBgPaletteBuffer_Init(void *);
@@ -145,14 +145,14 @@ void __sinit_020c13a0(void)
 }
 
 /*
- * No inputs. Construct data_020f4dc8 and register func_02002d24 with record
+ * No inputs. Construct data_020f4dc8 and register DisplayBrightnessPair_Destroy with record
  * data_020f4dbc. Global subsystem lifetime state changes; this routine returns
  * no value and has no direct hardware effect.
  */
 void __sinit_020c13cc(void)
 {
-    func_02002cdc(data_020f4dc8);
-    __register_global_object(data_020f4dc8, func_02002d24, data_020f4dbc);
+    DisplayBrightnessPair_Init(data_020f4dc8);
+    __register_global_object(data_020f4dc8, DisplayBrightnessPair_Destroy, data_020f4dbc);
 }
 
 /*

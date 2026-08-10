@@ -4,8 +4,8 @@
  * src/overlays/ov041/overlay041_resource_transition.c. */
 .extern Sound_Play
 .extern data_020f4dc8
-.extern func_02002ac0
-.extern func_02002d28
+.extern DisplayBrightness_StartTransition
+.extern DisplayBrightnessPair_GetScreen
 .extern func_02058d28
 .extern func_ov041_021fd01c
 .extern func_ov041_021fdeb4
@@ -37,18 +37,18 @@ func_ov041_021fdfd0: ; 0x021fdfd0
     mov r1, #0x0
     str r1, [r4, #0x1f8]
     ldr r0, .L_021fe084
-    bl func_02002d28
+    bl DisplayBrightnessPair_GetScreen
     mov r1, #0x10
     mov r2, #0x0
     mov r3, #0x1e
-    bl func_02002ac0
+    bl DisplayBrightness_StartTransition
     ldr r0, .L_021fe084
     mov r1, #0x1
-    bl func_02002d28
+    bl DisplayBrightnessPair_GetScreen
     mov r1, #0x10
     mov r2, #0x0
     mov r3, #0x1e
-    bl func_02002ac0
+    bl DisplayBrightness_StartTransition
     ldr r0, [r4, #0xc]
     mov r1, #0xe
     mov r2, #0xa000

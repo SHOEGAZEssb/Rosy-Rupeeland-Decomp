@@ -16,7 +16,7 @@ extern const s32 data_ov028_021ff218[];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern s32 func_02002d94(void);
+extern s32 DisplayBrightness_IsMainTransitionComplete(void);
 extern void func_02092260(void *, s32);
 extern s32 func_02092910(void *, const void *);
 extern void func_02092c8c(s32, s32);
@@ -91,7 +91,7 @@ extern "C" s32 func_ov028_021febd0(void *state)
         Overlay028_NextPhase(state);
         /* fall through */
     case 1:
-        if (func_02002d94() == 0)
+        if (DisplayBrightness_IsMainTransitionComplete() == 0)
             break;
         func_ov028_021fd2c4(list);
         func_ov028_021fd34c(list);
@@ -114,7 +114,7 @@ extern "C" s32 func_ov028_021febd0(void *state)
         Overlay028_NextPhase(state);
         break;
     case 2:
-        if (func_02002d94() != 0)
+        if (DisplayBrightness_IsMainTransitionComplete() != 0)
             Overlay028_NextPhase(state);
         break;
     case 3:
@@ -192,7 +192,7 @@ extern "C" s32 func_ov028_021febd0(void *state)
         Overlay028_NextPhase(state);
         /* fall through */
     case 11:
-        if (func_02002d94() == 0)
+        if (DisplayBrightness_IsMainTransitionComplete() == 0)
             break;
         func_020954f4(FIELD(void *, state, 0x1f0));
         func_020954f4(FIELD(void *, state, 0x1f4));
@@ -214,7 +214,7 @@ extern "C" s32 func_ov028_021febd0(void *state)
         Overlay028_NextPhase(state);
         break;
     case 12:
-        if (func_02002d94() != 0)
+        if (DisplayBrightness_IsMainTransitionComplete() != 0)
             func_ov028_021fdad8(state,
                                 data_ov028_021ff218[0],
                                 data_ov028_021ff218[1]);

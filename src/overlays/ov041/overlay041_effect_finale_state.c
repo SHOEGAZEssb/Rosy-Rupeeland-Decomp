@@ -13,8 +13,8 @@ s32 func_ov041_02202aa4(void *);
 void func_ov004_021fb868(void *, s32, s32, s32);
 void Sound_Play(void *, s32, s32);
 void GXx_SetMasterBrightness_(u32, s32);
-void *func_02002d28(void *, s32);
-void func_02002ac0(void *, s32, s32, s32);
+void *DisplayBrightnessPair_GetScreen(void *, s32);
+void DisplayBrightness_StartTransition(void *, s32, s32, s32);
 extern void *gSoundContext;
 extern u8 data_020f4dc8[];
 }
@@ -106,10 +106,10 @@ extern "C" void func_ov041_022025b0(void *object)
             return;
         for (s32 slot = 6; slot >= 0; --slot)
             FIELD(s32, object, 0x8fc + slot * 4) = 0;
-        void *firstResource = func_02002d28(data_020f4dc8, 0);
-        func_02002ac0(firstResource, 16, 0, 24);
-        void *secondResource = func_02002d28(data_020f4dc8, 1);
-        func_02002ac0(secondResource, 16, 0, 24);
+        void *firstResource = DisplayBrightnessPair_GetScreen(data_020f4dc8, 0);
+        DisplayBrightness_StartTransition(firstResource, 16, 0, 24);
+        void *secondResource = DisplayBrightnessPair_GetScreen(data_020f4dc8, 1);
+        DisplayBrightness_StartTransition(secondResource, 16, 0, 24);
         FIELD(s32, object, 0x918) = 0;
         FIELD(s32, object, 0x930) = 0;
         FIELD(s32, object, 0x91c)++;

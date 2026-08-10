@@ -2,13 +2,13 @@
 ; the documented portable implementation and recovered behavior.
 .text
 .extern GameWork_TestFlag
-.extern func_02002df0
-.extern func_02002d54
-.extern func_02002e14
-.extern func_02002d74
+.extern DisplayBrightness_IsMainTransitionDecreasing
+.extern DisplayBrightness_StartMainTransition
+.extern DisplayBrightness_IsSubTransitionDecreasing
+.extern DisplayBrightness_StartSubTransition
 .extern GameWork_ClearFlag
-.extern func_02002d94
-.extern func_02002db0
+.extern DisplayBrightness_IsMainTransitionComplete
+.extern DisplayBrightness_IsSubTransitionComplete
 .extern func_0201140c
 .extern GameWork_Reset
 .extern func_02007ff4
@@ -39,19 +39,19 @@ L_0200c700:
     bl GameWork_TestFlag
     cmp r0, #0x0
     bne L_0200c758
-    bl func_02002df0
+    bl DisplayBrightness_IsMainTransitionDecreasing
     cmp r0, #0x0
     bne L_0200c730
     mov r0, #0x2
     mov r1, #0x10
-    bl func_02002d54
+    bl DisplayBrightness_StartMainTransition
 L_0200c730:
-    bl func_02002e14
+    bl DisplayBrightness_IsSubTransitionDecreasing
     cmp r0, #0x0
     bne L_0200c748
     mov r0, #0x2
     mov r1, #0x10
-    bl func_02002d74
+    bl DisplayBrightness_StartSubTransition
 L_0200c748:
     ldr r0, [r4, #0x8]
     add r0, r0, #0x1
@@ -66,10 +66,10 @@ L_0200c758:
     str r0, [r4, #0x8]
     b L_0200c89c
 L_0200c774:
-    bl func_02002d94
+    bl DisplayBrightness_IsMainTransitionComplete
     cmp r0, #0x0
     beq L_0200c89c
-    bl func_02002db0
+    bl DisplayBrightness_IsSubTransitionComplete
     cmp r0, #0x0
     beq L_0200c89c
     ldr r0, L_0200c8a8
@@ -140,10 +140,10 @@ L_0200c850:
 L_0200c87c:
     mov r0, #0x1
     mov r1, #0x10
-    bl func_02002d54
+    bl DisplayBrightness_StartMainTransition
     mov r0, #0x1
     mov r1, #0x10
-    bl func_02002d74
+    bl DisplayBrightness_StartSubTransition
 L_0200c894:
     mov r0, #0x1
     ldmia sp!, {r4, pc}

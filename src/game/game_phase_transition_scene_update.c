@@ -10,12 +10,12 @@ extern "C" {
 extern const u8 data_020d53b0[];
 extern void *data_021052fc;
 extern void *gLupyContext;
-extern void func_02002d54(s32 screen, s32 frames);
-extern void func_02002d74(s32 screen, s32 frames);
-extern s32 func_02002d94(void);
-extern s32 func_02002db0(void);
-extern s32 func_02002df0(void);
-extern s32 func_02002e14(void);
+extern void DisplayBrightness_StartMainTransition(s32 screen, s32 frames);
+extern void DisplayBrightness_StartSubTransition(s32 screen, s32 frames);
+extern s32 DisplayBrightness_IsMainTransitionComplete(void);
+extern s32 DisplayBrightness_IsSubTransitionComplete(void);
+extern s32 DisplayBrightness_IsMainTransitionDecreasing(void);
+extern s32 DisplayBrightness_IsSubTransitionDecreasing(void);
 extern void func_02007ff4(void *context);
 extern void func_0201140c(void *context, s32 value);
 extern void *func_0200f878(void *allocation, s32 mode);
@@ -43,10 +43,10 @@ s32 func_0200c6d8(GamePhaseTransitionScene *self)
             self->base.value08 = 2;
             return 0;
         }
-        if (!func_02002df0())
-            func_02002d54(2, 0x10);
-        if (!func_02002e14())
-            func_02002d74(2, 0x10);
+        if (!DisplayBrightness_IsMainTransitionDecreasing())
+            DisplayBrightness_StartMainTransition(2, 0x10);
+        if (!DisplayBrightness_IsSubTransitionDecreasing())
+            DisplayBrightness_StartSubTransition(2, 0x10);
         self->base.value08++;
     }
 
@@ -54,7 +54,7 @@ s32 func_0200c6d8(GamePhaseTransitionScene *self)
         void *object;
         void **vtable;
 
-        if (!func_02002d94() || !func_02002db0())
+        if (!DisplayBrightness_IsMainTransitionComplete() || !DisplayBrightness_IsSubTransitionComplete())
             return 0;
         func_0201140c(gLupyContext, 0);
         object = *(void **)((u8 *)data_021052fc + 0x30e8);
@@ -80,8 +80,8 @@ s32 func_0200c6d8(GamePhaseTransitionScene *self)
         if (GameWork_TestFlag(gGameWork, 0x386))
             GameWork_ClearFlag(gGameWork, 0x386);
         else {
-            func_02002d54(1, 0x10);
-            func_02002d74(1, 0x10);
+            DisplayBrightness_StartMainTransition(1, 0x10);
+            DisplayBrightness_StartSubTransition(1, 0x10);
         }
         return 1;
     }

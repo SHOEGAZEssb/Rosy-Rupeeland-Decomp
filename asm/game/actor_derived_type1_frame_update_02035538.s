@@ -7,10 +7,10 @@
 .extern SceneManager_GetCurrent
 .extern data_020df494
 .extern data_021052fc
-.extern func_02002d54
-.extern func_02002d74
-.extern func_02002d94
-.extern func_02002db0
+.extern DisplayBrightness_StartMainTransition
+.extern DisplayBrightness_StartSubTransition
+.extern DisplayBrightness_IsMainTransitionComplete
+.extern DisplayBrightness_IsSubTransitionComplete
 .extern func_02005070
 .extern func_02007f24
 .extern func_0200b2c0
@@ -164,16 +164,16 @@ ActorDerivedType1_UpdateFrame: ; 0x02035538
     bne .L_020357cc
     mov r0, #0x2
     mov r1, #0x10
-    bl func_02002d54
+    bl DisplayBrightness_StartMainTransition
     mov r0, #0x2
     mov r1, #0x10
-    bl func_02002d74
+    bl DisplayBrightness_StartSubTransition
     b .L_020357cc
 .L_0203571c:
-    bl func_02002d94
+    bl DisplayBrightness_IsMainTransitionComplete
     cmp r0, #0x0
     beq .L_020357cc
-    bl func_02002db0
+    bl DisplayBrightness_IsSubTransitionComplete
     cmp r0, #0x0
     beq .L_020357cc
     ldr r0, .L_02035ba4

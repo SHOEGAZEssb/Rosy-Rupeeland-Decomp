@@ -1,6 +1,6 @@
 .text
 .extern func_02092c8c
-.extern func_02002d94
+.extern DisplayBrightness_IsMainTransitionComplete
 .extern func_ov043_0220bcf4
 .extern func_020755bc
 .extern func_020062a0
@@ -52,7 +52,7 @@ func_ov043_0220bed4:
     str r1, [r4, #0x4]
     str r0, [r4, #0x8]
 .L_0220bf2c:
-    bl func_02002d94
+    bl DisplayBrightness_IsMainTransitionComplete
     cmp r0, #0x0
     mov r0, r4
     beq .L_0220bfc0
@@ -97,7 +97,7 @@ func_ov043_0220bed4:
     ldr r0, [r4, #0x2f4]
     mov r1, #0x0
     bl func_02091fb0
-    bl func_02002d94
+    bl DisplayBrightness_IsMainTransitionComplete
     cmp r0, #0x0
     beq .L_0220c184
     ldr r1, [r4, #0x4]
@@ -125,7 +125,7 @@ func_ov043_0220bed4:
     ldr r0, [r4, #0x2f4]
     mov r1, #0x0
     bl func_02091fb0
-    bl func_02002d94
+    bl DisplayBrightness_IsMainTransitionComplete
     cmp r0, #0x0
     beq .L_0220c184
     ldr ip, [r4, #0x2f4]
@@ -203,7 +203,7 @@ func_ov043_0220bed4:
     str r0, [r4, #0x8]
     b .L_0220c184
 .L_0220c15c:
-    bl func_02002d94
+    bl DisplayBrightness_IsMainTransitionComplete
     cmp r0, #0x0
     beq .L_0220c17c
     ldr r1, .L_0220c1ac
@@ -254,7 +254,7 @@ func_ov043_0220c1b0:
     str r1, [r4, #0x4]
     str r0, [r4, #0x8]
 .L_0220c204:
-    bl func_02002d94
+    bl DisplayBrightness_IsMainTransitionComplete
     cmp r0, #0x0
     beq .L_0220c278
     ldr r1, .L_0220c3f0
@@ -292,7 +292,7 @@ func_ov043_0220c1b0:
     ldr r0, [r4, #0x2f4]
     mov r1, #0x0
     bl func_02091fb0
-    bl func_02002d94
+    bl DisplayBrightness_IsMainTransitionComplete
     cmp r0, #0x0
     beq .L_0220c3e4
     ldr r1, [r4, #0x4]
@@ -320,7 +320,7 @@ func_ov043_0220c1b0:
     ldr r0, [r4, #0x2f4]
     mov r1, #0x0
     bl func_02091fb0
-    bl func_02002d94
+    bl DisplayBrightness_IsMainTransitionComplete
     cmp r0, #0x0
     beq .L_0220c3e4
     ldr r0, [r4, #0x20]
@@ -372,7 +372,7 @@ func_ov043_0220c1b0:
     str r0, [r4, #0x8]
     b .L_0220c3e4
 .L_0220c3bc:
-    bl func_02002d94
+    bl DisplayBrightness_IsMainTransitionComplete
     cmp r0, #0x0
     beq .L_0220c3dc
     ldr r1, .L_0220c414

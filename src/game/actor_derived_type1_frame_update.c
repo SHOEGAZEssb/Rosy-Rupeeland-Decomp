@@ -21,10 +21,10 @@ extern void GameWork_ClearFlag(void *work, u32 flag);
 extern void GameWork_SetFlag(void *work, u32 flag);
 extern s32 GameWork_TestFlag(void *work, u32 flag);
 extern void ActorDerivedType1_UpdateHorizontalInputMotion(void *actor);
-extern void func_02002d54(s32 first, s32 second);
-extern void func_02002d74(s32 first, s32 second);
-extern s32 func_02002d94(void);
-extern s32 func_02002db0(void);
+extern void DisplayBrightness_StartMainTransition(s32 first, s32 second);
+extern void DisplayBrightness_StartSubTransition(s32 first, s32 second);
+extern s32 DisplayBrightness_IsMainTransitionComplete(void);
+extern s32 DisplayBrightness_IsSubTransitionComplete(void);
 extern void Type7Actor_ClearTarget(void *object);
 extern void func_02007f24(void *manager, s32 first, s32 second, s32 third,
                           s32 fourth, s32 fifth);
@@ -123,10 +123,10 @@ void ActorDerivedType1_UpdateFrame(void *self)
                 callActorVoid(actor, 0x44);
             } else if (*(u16 *)(actor + 0x234) != 0) {
                 if (--*(u16 *)(actor + 0x234) == 0) {
-                    func_02002d54(2, 0x10);
-                    func_02002d74(2, 0x10);
+                    DisplayBrightness_StartMainTransition(2, 0x10);
+                    DisplayBrightness_StartSubTransition(2, 0x10);
                 }
-            } else if (func_02002d94() != 0 && func_02002db0() != 0) {
+            } else if (DisplayBrightness_IsMainTransitionComplete() != 0 && DisplayBrightness_IsSubTransitionComplete() != 0) {
                 u8 *managed = *(u8 **)((u8 *)data_021052fc + 0x2ea8);
                 u8 *work = (u8 *)gGameWork;
                 GameWork_SetFlag(work, 0x3f8);

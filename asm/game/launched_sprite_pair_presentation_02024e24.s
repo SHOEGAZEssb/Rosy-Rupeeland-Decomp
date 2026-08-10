@@ -3,7 +3,7 @@
 .extern GameWork_TestFlag
 .extern data_020c9670
 .extern data_020f4e18
-.extern func_02002e38
+.extern DisplayController_GetVerticalOffset
 .extern func_02071ee0
 .extern func_02071f38
 .extern func_02072b68
@@ -178,7 +178,7 @@ func_02024e24: ; 0x02024e24
     ldr r0, [r4, #0x54]
     cmp r0, #0x0
     beq .L_020250a0
-    bl func_02002e38
+    bl DisplayController_GetVerticalOffset
     ldr r1, [r4, #0x54]
     add r2, r6, #0xc0
     strh r5, [r1, #0x2c]
@@ -193,7 +193,7 @@ func_02024e24: ; 0x02024e24
     bge .L_020250d4
     ldr r0, [r4, #0x50]
     ldrsh r4, [r0, #0x2e]
-    bl func_02002e38
+    bl DisplayController_GetVerticalOffset
     mvn r1, #0xdf
     sub r0, r1, r0
     cmp r4, r0

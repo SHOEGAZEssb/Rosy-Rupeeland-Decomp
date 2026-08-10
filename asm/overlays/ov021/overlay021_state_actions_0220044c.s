@@ -4,7 +4,7 @@
     .extern GameWork_TestFlag
     .extern data_021f5128
     .extern data_ov021_02202ec8
-    .extern func_02002d94
+    .extern DisplayBrightness_IsMainTransitionComplete
     .extern func_0207ab48
     .extern func_0207c4cc
     .extern func_02092c8c
@@ -35,7 +35,7 @@ L_02200474:
     mov r0, #0x0
     str r0, [r4, #0x8]
 L_02200484:
-    bl func_02002d94
+    bl DisplayBrightness_IsMainTransitionComplete
     cmp r0, #0x0
     beq L_02200604
     ldr r0, [r4, #0x2bc]

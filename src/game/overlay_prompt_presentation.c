@@ -29,7 +29,7 @@ extern void func_020062a0(void *, s32);
 extern void func_020062f8(void *);
 extern void func_0201140c(void *, s32);
 extern void func_02092c8c(s32, s32);
-extern s32 func_02002db0(void);
+extern s32 DisplayBrightness_IsSubTransitionComplete(void);
 extern void *func_ov001_021fbe6c(void *);
 extern void func_02091fb0(void *, s32);
 extern void func_020755bc(void *);
@@ -80,7 +80,7 @@ OverlayPromptPresentation *func_02022354(OverlayPromptPresentation *self)
 
 /*
  * State zero enables callbacks and starts transition (2,-16). State one waits
- * for func_02002db0, changes Lupy mode, acquires shared resource ID 5, allocates
+ * for DisplayBrightness_IsSubTransitionComplete, changes Lupy mode, acquires shared resource ID 5, allocates
  * and constructs the overlay worker, resets transition (2,0), and advances.
  * State two steps the worker and, on flag 0x408, clears it, refreshes debug-font
  * state, destroys the worker, releases the shared resource and advances. State
@@ -95,7 +95,7 @@ s32 func_020223d4(OverlayPromptPresentation *self)
         self->state08++;
         /* Retail falls through into the readiness check. */
     case 1:
-        if (!func_02002db0()) return 0;
+        if (!DisplayBrightness_IsSubTransitionComplete()) return 0;
         func_0201140c(gLupyContext, 0);
         func_020062a0(self->sharedResource10, 5);
         self->worker0c = Heap_Alloc(0x88, data_020d65ac, 4, &gHeapContext);

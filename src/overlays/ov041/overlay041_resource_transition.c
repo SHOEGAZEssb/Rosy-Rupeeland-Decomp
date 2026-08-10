@@ -18,8 +18,8 @@ void func_02058d28(void *);
 void func_ov041_021ff6b8(void *);
 void func_ov041_021fd01c(void *);
 void func_ov041_021ff6f8(void *, void *);
-void *func_02002d28(void *, s32);
-void func_02002ac0(void *, s32, s32, s32);
+void *DisplayBrightnessPair_GetScreen(void *, s32);
+void DisplayBrightness_StartTransition(void *, s32, s32, s32);
 void func_ov041_022013cc(void *, s32, s32, s32);
 void Sound_Play(void *, s32, s32);
 void GameFile_Init(void *);
@@ -86,10 +86,10 @@ extern "C" void func_ov041_021fdfd0(void *owner)
     func_ov041_021ff6f8(FIELD(void *, owner, 0x10), FIELD(void *, owner, 0));
     FIELD(s32, owner, 0x1f8) = 0;
 
-    void *transition = func_02002d28(&data_020f4dc8, 0);
-    func_02002ac0(transition, 0x10, 0, 0x1e);
-    transition = func_02002d28(&data_020f4dc8, 1);
-    func_02002ac0(transition, 0x10, 0, 0x1e);
+    void *transition = DisplayBrightnessPair_GetScreen(&data_020f4dc8, 0);
+    DisplayBrightness_StartTransition(transition, 0x10, 0, 0x1e);
+    transition = DisplayBrightnessPair_GetScreen(&data_020f4dc8, 1);
+    DisplayBrightness_StartTransition(transition, 0x10, 0, 0x1e);
     func_ov041_022013cc(FIELD(void *, owner, 0x0c), 0x0e, 0xa000, 0x140000);
     Sound_Play(gSoundContext, 0xf8, 0);
 }

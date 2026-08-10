@@ -6,8 +6,8 @@
 .extern Scene_SetFlags03
 .extern data_ov066_02210f20
 .extern data_ov066_02210f4c
-.extern func_02002d54
-.extern func_02002d74
+.extern DisplayBrightness_StartMainTransition
+.extern DisplayBrightness_StartSubTransition
 .extern func_ov066_0220fd20
 .extern func_ov066_0220fe40
 .extern func_ov066_0220fee0
@@ -67,10 +67,10 @@ func_ov066_0220fd3c:
     mov r2, #0x0
     mov r1, #0x10
     str r2, [r4, #0x2c]
-    bl func_02002d54
+    bl DisplayBrightness_StartMainTransition
     mov r0, #0x1
     mov r1, #0x10
-    bl func_02002d74
+    bl DisplayBrightness_StartSubTransition
     ldr r0, [r4, #0x3c]
     cmp r0, #0x0
     beq .L_0220fe24

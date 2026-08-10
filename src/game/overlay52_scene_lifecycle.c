@@ -53,8 +53,8 @@ Overlay52Scene *func_0201cfd0(Overlay52Scene *self, u32 parameter)
     self->base.vtable = &data_020d5d24;
     self->parameter24 = parameter;
     self->child28 = 0;
-    brightness = func_02002d28(&data_020f4dc8, 1);
-    func_02002ac0(brightness, 0, -16, 8);
+    brightness = DisplayBrightnessPair_GetScreen(&data_020f4dc8, 1);
+    DisplayBrightness_StartTransition(brightness, 0, -16, 8);
     func_0200222c(func_020022dc(), 0, 0x34);
     Scene_SetFlags03(&self->base);
     return self;
@@ -103,8 +103,8 @@ s32 func_0201d0f4(Overlay52Scene *self)
     Overlay52Child *child;
 
     if (self->child28 == 0) {
-        brightness = func_02002d28(&data_020f4dc8, 1);
-        if (func_02002cd0(brightness) == -16) {
+        brightness = DisplayBrightnessPair_GetScreen(&data_020f4dc8, 1);
+        if (DisplayBrightness_GetCurrent(brightness) == -16) {
             func_020755bc(gDebugFont);
             child = (Overlay52Child *)Heap_Alloc(
                 0x34, data_020d5d84, 4, &gHeapContext);
@@ -113,8 +113,8 @@ s32 func_0201d0f4(Overlay52Scene *self)
             self->child28 = child;
             func_ov052_0220e14c(child, (u16)self->parameter24, 0);
             Sound_Play(gSoundContext, 0, 0x6f);
-            brightness = func_02002d28(&data_020f4dc8, 1);
-            func_02002ac0(brightness, -16, 0, 4);
+            brightness = DisplayBrightnessPair_GetScreen(&data_020f4dc8, 1);
+            DisplayBrightness_StartTransition(brightness, -16, 0, 4);
         }
     } else {
         if (func_ov052_0220da54(self->child28) != 0) {

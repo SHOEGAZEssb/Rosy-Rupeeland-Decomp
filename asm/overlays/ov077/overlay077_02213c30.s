@@ -7,7 +7,7 @@
 .extern data_ov077_02216fc8
 .extern data_ov077_02216fd0
 .extern data_ov077_022170d8
-.extern func_02002e38
+.extern DisplayController_GetVerticalOffset
 .extern func_02005810
 .extern func_02072b68
 .extern func_ov077_02212e60
@@ -116,7 +116,7 @@ func_ov077_02213c30:
     ldr r0, [r10, #0x2c4]
     ldrb r1, [r1, #0x3a]
     bl func_ov077_022142b4
-    bl func_02002e38
+    bl DisplayController_GetVerticalOffset
     mvn r1, #0xbf
     sub r2, r1, r0
     ldr r1, .L_02214280

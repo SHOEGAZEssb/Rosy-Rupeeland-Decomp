@@ -19,7 +19,7 @@ extern void func_020755bc(void *);
 extern void func_0201140c(void *, s32);
 extern void func_02075598(void *, void *);
 extern void func_ov045_0220d2f8(s32, s32);
-extern s32 func_02002d94(void);
+extern s32 DisplayBrightness_IsMainTransitionComplete(void);
 extern s32 func_ov045_0220c9e8(s32, s32);
 extern void func_ov030_021feb0c(void *);
 extern void func_ov030_021fda14(void *, s32, s32);
@@ -57,7 +57,7 @@ extern "C" s32 func_ov030_021feb64(void *scene)
         FIELD(s32, scene, 8) = 0;
         break;
     case 1:
-        if (func_02002d94() != 0) {
+        if (DisplayBrightness_IsMainTransitionComplete() != 0) {
             FIELD(s32, scene, 0x35c) = func_ov045_0220c9e8(8, 0x21);
             func_ov030_021feb0c(scene);
             func_ov030_021fda14(scene, data_ov030_021ff780[0],
@@ -92,7 +92,7 @@ extern "C" s32 func_ov030_021fec44(void *scene)
         FIELD(s32, scene, 8) = 0;
         /* The recovered control flow intentionally continues into state 1. */
     case 1:
-        if (func_02002d94() != 0) {
+        if (DisplayBrightness_IsMainTransitionComplete() != 0) {
             ++FIELD(s32, scene, 4);
             FIELD(s32, scene, 8) = 0;
         }

@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/game_phase_script_vm_display_opcodes.c.
 .text
-.extern func_02002d94
-.extern func_02002db0
+.extern DisplayBrightness_IsMainTransitionComplete
+.extern DisplayBrightness_IsSubTransitionComplete
 .extern func_02012704
 .extern func_020127f8
 
@@ -16,22 +16,22 @@ func_02014250: ; 0x02014250
     beq L_02014284
     b L_02014298
 L_02014270:
-    bl func_02002d94
+    bl DisplayBrightness_IsMainTransitionComplete
     cmp r0, #0x0
     moveq r1, #0x1
     movne r1, #0x0
     b L_020142bc
 L_02014284:
-    bl func_02002db0
+    bl DisplayBrightness_IsSubTransitionComplete
     cmp r0, #0x0
     moveq r1, #0x1
     movne r1, #0x0
     b L_020142bc
 L_02014298:
-    bl func_02002d94
+    bl DisplayBrightness_IsMainTransitionComplete
     cmp r0, #0x0
     beq L_020142b0
-    bl func_02002db0
+    bl DisplayBrightness_IsSubTransitionComplete
     cmp r0, #0x0
     bne L_020142b8
 L_020142b0:

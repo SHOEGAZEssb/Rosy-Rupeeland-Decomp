@@ -14,9 +14,9 @@ s32 func_020141d4(GamePhaseActorScriptVm *self)
     u32 selector = func_02012704(&self->base);
     s32 direction = selector != 0 ? 1 : 2;
     if ((mask & 1) != 0)
-        func_02002d54(direction, 0x10);
+        DisplayBrightness_StartMainTransition(direction, 0x10);
     if ((mask & 2) != 0)
-        func_02002d74(direction, 0x10);
+        DisplayBrightness_StartSubTransition(direction, 0x10);
     return 0;
 }
 
@@ -31,11 +31,11 @@ s32 func_02014250(GamePhaseActorScriptVm *self)
     u32 selector = func_02012704(&self->base);
     u32 pending;
     if (selector == 1)
-        pending = func_02002d94() == 0;
+        pending = DisplayBrightness_IsMainTransitionComplete() == 0;
     else if (selector == 2)
-        pending = func_02002db0() == 0;
+        pending = DisplayBrightness_IsSubTransitionComplete() == 0;
     else
-        pending = func_02002d94() == 0 || func_02002db0() == 0;
+        pending = DisplayBrightness_IsMainTransitionComplete() == 0 || DisplayBrightness_IsSubTransitionComplete() == 0;
     func_020127f8(&self->base, pending);
     return 0;
 }

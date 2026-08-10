@@ -37,7 +37,7 @@ extern RisingAuxiliaryPresentation *func_0201fa44(
 extern void func_02005030(PresentationTrack *track, const void *source);
 extern void func_02005058(void *track);
 extern void *func_02009d78(void *source);
-extern s32 func_02002e48(void);
+extern s32 DisplayController_GetSubScreenVerticalOffset(void);
 #ifdef __cplusplus
 }
 #endif
@@ -78,7 +78,7 @@ RisingAuxiliaryPresentation *func_0201fb68(
 
 /*
  * Construct a temporary position from global runtime offset 0x2fbc, subtract
- * func_02002e48's integer result in fx32 units from its field at offset 0x08,
+ * DisplayController_GetSubScreenVerticalOffset's integer result in fx32 units from its field at offset 0x08,
  * and pass it to child vtable slot 2.  Ignore the child result, optionally write
  * spriteByte12 to nested sprite byte 0x3a, decrement timer10, destroy the
  * temporary position, and return whether the timer became negative.
@@ -89,7 +89,7 @@ s32 func_0201fb84(RisingAuxiliaryPresentation *self)
     s32 finished;
 
     func_02005030(&position, func_02009d78(data_021052fc + 0x2fbc));
-    *(s32 *)&position.bytes[8] -= func_02002e48() << 12;
+    *(s32 *)&position.bytes[8] -= DisplayController_GetSubScreenVerticalOffset() << 12;
     ((ChildUpdate)(*(void ***)self->presentation08)[2])(
         self->presentation08, &position);
     if (self->spriteByte12 != -1) {

@@ -8,8 +8,8 @@
 .extern Scene_Destroy
 .extern Scene_Init
 .extern data_020d5594
-.extern func_02002d54
-.extern func_02002d74
+.extern DisplayBrightness_StartMainTransition
+.extern DisplayBrightness_StartSubTransition
 .extern ActorDescriptorBatch_ApplyCategoryCallback
 .extern gGameWork
 .extern gSceneManager
@@ -129,10 +129,10 @@ L_0200f9bc:
 L_0200f9f4:
     mov r0, #0x1
     mov r1, #0x10
-    bl func_02002d54
+    bl DisplayBrightness_StartMainTransition
     mov r0, #0x1
     mov r1, #0x10
-    bl func_02002d74
+    bl DisplayBrightness_StartSubTransition
 L_0200fa0c:
     cmp r4, #0x0
     beq L_0200fa24

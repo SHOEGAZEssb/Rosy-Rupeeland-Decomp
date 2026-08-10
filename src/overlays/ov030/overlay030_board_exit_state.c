@@ -13,7 +13,7 @@ extern "C" {
 #endif
 extern void func_ov030_021fea00(void *);
 extern void func_02092c8c(s32, s32, ...);
-extern s32 func_02002d94(void);
+extern s32 DisplayBrightness_IsMainTransitionComplete(void);
 extern void func_02064e7c(void *, s32, u16);
 extern void *func_ov030_021fd27c(void *);
 extern void Heap_Free(void *);
@@ -47,7 +47,7 @@ extern "C" s32 func_ov030_021ff5a4(void *scene)
         FIELD(s32, scene, 8) = 0;
         /* Recovered control flow intentionally continues into state 1. */
     case 1:
-        if (func_02002d94() != 0) {
+        if (DisplayBrightness_IsMainTransitionComplete() != 0) {
             void *board = FIELD(void *, scene, 0x2c4);
             s32 mode = FIELD(s32, scene, 0x390);
             s32 count = mode == 1 ? FIELD(s32, scene, 0x384)

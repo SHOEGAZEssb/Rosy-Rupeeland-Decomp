@@ -29,8 +29,8 @@ extern "C" void func_0209b668(void *graphics);
 extern "C" void func_020a1794(void *owner, const void *position,
                                const void *matrix, s32 flags);
 extern "C" void func_020a227c(void *graphics, const void *position, s32 angle);
-extern "C" void *func_02002d28(void *controller, s32 screen);
-extern "C" void func_02002ac0(void *brightness, s32 start, s32 end, s32 duration);
+extern "C" void *DisplayBrightnessPair_GetScreen(void *controller, s32 screen);
+extern "C" void DisplayBrightness_StartTransition(void *brightness, s32 start, s32 end, s32 duration);
 extern "C" void func_020c10d4(void *object);
 extern "C" void func_ov042_02204e74(s32 polygon, s32 texture,
                                      s32 palette, s32 alpha,
@@ -54,8 +54,8 @@ static void submit_displays(void *scene, s32 offset, s32 count,
 /* Configure the confirmed brightness ramp on both Nintendo DS screens. */
 static void start_brightness_ramp(s32 start, s32 end, s32 duration)
 {
-    func_02002ac0(func_02002d28(data_020f4dc8, 0), start, end, duration);
-    func_02002ac0(func_02002d28(data_020f4dc8, 1), start, end, duration);
+    DisplayBrightness_StartTransition(DisplayBrightnessPair_GetScreen(data_020f4dc8, 0), start, end, duration);
+    DisplayBrightness_StartTransition(DisplayBrightnessPair_GetScreen(data_020f4dc8, 1), start, end, duration);
 }
 
 /* Emit a single reconstructed billboard through the overlay geometry helper. */

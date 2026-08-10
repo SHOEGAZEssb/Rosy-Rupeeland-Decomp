@@ -33,8 +33,8 @@
 .extern data_021052fc
 .extern func_0200222c
 .extern func_020022dc
-.extern func_02002d94
-.extern func_02002db0
+.extern DisplayBrightness_IsMainTransitionComplete
+.extern DisplayBrightness_IsSubTransitionComplete
 .extern func_020062a0
 .extern func_020062f8
 .extern func_02007f0c
@@ -153,10 +153,10 @@ L_0200d170:
     sub r1, r0, #0x13
     bl func_02092c8c
 L_0200d17c:
-    bl func_02002d94
+    bl DisplayBrightness_IsMainTransitionComplete
     cmp r0, #0x0
     beq L_0200dbf4
-    bl func_02002db0
+    bl DisplayBrightness_IsSubTransitionComplete
     cmp r0, #0x0
     beq L_0200dbf4
     mov r0, #0x0
@@ -925,10 +925,10 @@ L_0200dc4c:
     ldr r0, [r5, #0x24]
     mov r1, #0x0
     bl func_02091fb0
-    bl func_02002d94
+    bl DisplayBrightness_IsMainTransitionComplete
     cmp r0, #0x0
     beq L_0200e3bc
-    bl func_02002db0
+    bl DisplayBrightness_IsSubTransitionComplete
     cmp r0, #0x0
     ldrne r0, [r5, #0x28]
     addne r0, r0, #0x1
@@ -998,10 +998,10 @@ L_0200dd4c:
     ldr r0, [r5, #0x24]
     mov r1, #0x0
     bl func_02091fb0
-    bl func_02002d94
+    bl DisplayBrightness_IsMainTransitionComplete
     cmp r0, #0x0
     beq L_0200e3bc
-    bl func_02002db0
+    bl DisplayBrightness_IsSubTransitionComplete
     cmp r0, #0x0
     beq L_0200e3bc
     mov r4, #0x0

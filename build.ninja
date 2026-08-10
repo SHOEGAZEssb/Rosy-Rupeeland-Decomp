@@ -3675,7 +3675,7 @@ build build/reports/display_brightness.json: objdiff build/decomp/delinks/src/sy
 
 build build/reports/display_brightness.txt: match_report build/reports/display_brightness.json | tools/report_objdiff.py
   report_json = build/reports/display_brightness.json
-  report_args = --section .text --function func_020028f0 --function func_02002930 --function func_02002a04 --function func_02002ac0 --function func_02002b3c --function func_02002cd0 --require-exact
+  report_args = --section .text --function DisplayBrightness_Init --function DisplayBrightness_Copy --function DisplayBrightness_StartBoundTransition --function DisplayBrightness_StartTransition --function DisplayBrightness_Update --function DisplayBrightness_GetCurrent --require-exact
 
 build build/reports/display_controller.json: objdiff build/decomp/delinks/src/system/display_controller.o | build/decomp/src/system/display_controller.o
   target_object = build/decomp/delinks/src/system/display_controller.o
@@ -3683,7 +3683,7 @@ build build/reports/display_controller.json: objdiff build/decomp/delinks/src/sy
 
 build build/reports/display_controller.txt: match_report build/reports/display_controller.json | tools/report_objdiff.py
   report_json = build/reports/display_controller.json
-  report_args = --section .text --function func_02002cdc --function func_02002d24 --function func_02002d28 --function func_02002d34 --function func_02002d54 --function func_02002d74 --function func_02002d94 --function func_02002db0 --function func_02002dcc --function func_02002df0 --function func_02002e14 --function func_02002e38 --function func_02002e48 --function func_02002e5c --require-exact
+  report_args = --section .text --function DisplayBrightnessPair_Init --function DisplayBrightnessPair_Destroy --function DisplayBrightnessPair_GetScreen --function DisplayBrightness_UpdateAll --function DisplayBrightness_StartMainTransition --function DisplayBrightness_StartSubTransition --function DisplayBrightness_IsMainTransitionComplete --function DisplayBrightness_IsSubTransitionComplete --function DisplayBrightness_IsSubTransitionIncreasing --function DisplayBrightness_IsMainTransitionDecreasing --function DisplayBrightness_IsSubTransitionDecreasing --function DisplayController_GetVerticalOffset --function DisplayController_GetSubScreenVerticalOffset --function DisplayController_SetVerticalOffset --require-exact
 
 build build/reports/display_controller_state.json: objdiff build/decomp/delinks/asm/system/display_controller_state.o | build/decomp/asm/system/display_controller_state.o
   target_object = build/decomp/delinks/asm/system/display_controller_state.o

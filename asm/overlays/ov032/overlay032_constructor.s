@@ -7,7 +7,7 @@
 .extern data_020f4e18
 .extern data_ov032_02202220
 .extern data_ov032_02202340
-.extern func_02002d28
+.extern DisplayBrightnessPair_GetScreen
 .extern func_02027854
 .extern func_02027f94
 .extern func_02058eb8
@@ -180,11 +180,11 @@ L_021fcf84:
     str r1, [r4, #0xbdc]
     ldr r0, L_021fd770
     mov r1, #0x0
-    bl func_02002d28
+    bl DisplayBrightnessPair_GetScreen
     str r0, [r4, #0xbe0]
     ldr r0, L_021fd770
     mov r1, #0x1
-    bl func_02002d28
+    bl DisplayBrightnessPair_GetScreen
     str r0, [r4, #0xbe4]
     ldr r0, L_021fd774
     ldr r1, L_021fd778

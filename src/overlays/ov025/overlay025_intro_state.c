@@ -17,7 +17,7 @@ extern "C" {
 extern void GameWork_Reset(void);
 extern void *Heap_Alloc(u32, const void *, u32, void *);
 extern void Heap_Free(void *);
-extern s32 func_02002d94(void);
+extern s32 DisplayBrightness_IsMainTransitionComplete(void);
 extern void func_02071eb8(void *);
 extern void func_0207419c(void *);
 extern s32 func_0207f248(void *);
@@ -99,7 +99,7 @@ extern "C" s32 func_ov025_022009d8(void *scene)
         break;
     }
     case 2:
-        if (!func_02091c7c((u8 *)scene + 0x5fc, 2) || !func_02002d94())
+        if (!func_02091c7c((u8 *)scene + 0x5fc, 2) || !DisplayBrightness_IsMainTransitionComplete())
             break;
         FIELD(s32, FIELD(void *, scene, 0xdc), 0x90) = 0;
         FIELD(s32, FIELD(void *, scene, 0xe0), 0x90) = 0;

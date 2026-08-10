@@ -20,7 +20,7 @@ extern void *gLupyContext;
 extern "C" {
 #endif
 extern void *Heap_Alloc(u32, const void *, u32, void *);
-extern s32 func_02002d94(void);
+extern s32 DisplayBrightness_IsMainTransitionComplete(void);
 extern s32 func_02010b64(void *);
 extern void func_02010c00(void *, s32, s32);
 extern void func_02062ca8(void *);
@@ -121,7 +121,7 @@ extern "C" s32 func_ov021_022023f0(void *state)
         advance(state);
         /* Deliberate fall-through. */
     case 1: {
-        if (func_02002d94() == 0)
+        if (DisplayBrightness_IsMainTransitionComplete() == 0)
             break;
         func_02092260(state, 0x6c);
         void *prompt = Heap_Alloc(0xb0, data_ov021_02202fb8, 4, gHeapContext);
@@ -241,7 +241,7 @@ extern "C" s32 func_ov021_022023f0(void *state)
         }
         break;
     case 30:
-        if (func_02002d94() != 0) {
+        if (DisplayBrightness_IsMainTransitionComplete() != 0) {
             func_ov021_021fee14(state);
             func_ov021_021fe6b0(state);
             func_ov021_021ff050(state, FIELD(s32, state, 0x2c4));
@@ -289,7 +289,7 @@ extern "C" s32 func_ov021_022023f0(void *state)
         }
         break;
     case 52:
-        if (func_02002d94() != 0) {
+        if (DisplayBrightness_IsMainTransitionComplete() != 0) {
             func_ov002_021fbe68(FIELD(void *, state, 0x390));
             change_state(state, data_ov021_02202d90);
         }
@@ -315,7 +315,7 @@ extern "C" s32 func_ov021_02202be0(void *state)
         advance(state);
         /* Deliberate fall-through. */
     case 1:
-        if (func_02002d94() != 0) {
+        if (DisplayBrightness_IsMainTransitionComplete() != 0) {
             func_ov021_021ff0e0(
                 state, func_ov021_021ff4f0(FIELD(void *, state, 0x2bc)) == 2
                            ? 1 : 8);

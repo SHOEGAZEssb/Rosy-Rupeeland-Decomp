@@ -3,10 +3,10 @@
 /* Exact fallback; see src/overlays/ov032/overlay032_scene_transitions.c for documented portable C. */
 .extern GameWork_TestFlag
 .extern data_ov032_02202220
-.extern func_02002d54
-.extern func_02002d74
-.extern func_02002d94
-.extern func_02002db0
+.extern DisplayBrightness_StartMainTransition
+.extern DisplayBrightness_StartSubTransition
+.extern DisplayBrightness_IsMainTransitionComplete
+.extern DisplayBrightness_IsSubTransitionComplete
 .extern func_02058ffc
 .extern func_020594ec
 .extern func_020595d4
@@ -29,19 +29,19 @@ func_ov032_021febec:
 L_021fec14:
     mov r0, #0x2
     mov r1, #0x10
-    bl func_02002d54
+    bl DisplayBrightness_StartMainTransition
     mov r0, #0x2
     mov r1, #0x10
-    bl func_02002d74
+    bl DisplayBrightness_StartSubTransition
     ldr r0, [r4, #0xb64]
     add r0, r0, #0x1
     str r0, [r4, #0xb64]
     b L_021fed74
 L_021fec3c:
-    bl func_02002d94
+    bl DisplayBrightness_IsMainTransitionComplete
     cmp r0, #0x0
     beq L_021fed74
-    bl func_02002db0
+    bl DisplayBrightness_IsSubTransitionComplete
     cmp r0, #0x0
     beq L_021fed74
     mov r0, r4
@@ -55,13 +55,13 @@ L_021fec3c:
     ldr r2, [r4, #0x0]
     mov r1, #0x10
     str r0, [r2, #0x20]
-    bl func_02002d74
+    bl DisplayBrightness_StartSubTransition
     ldr r0, [r4, #0xb64]
     add r0, r0, #0x1
     str r0, [r4, #0xb64]
     b L_021fed74
 L_021fec94:
-    bl func_02002db0
+    bl DisplayBrightness_IsSubTransitionComplete
     cmp r0, #0x0
     beq L_021fed74
     ldr r0, L_021fed7c

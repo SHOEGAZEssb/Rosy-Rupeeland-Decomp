@@ -4,12 +4,12 @@
 .extern DebugText_BeginFrame
 .extern func_0200c00c
 .extern DebugMenu_Create
-.extern func_02002d54
-.extern func_02002d74
+.extern DisplayBrightness_StartMainTransition
+.extern DisplayBrightness_StartSubTransition
 .extern Heap_Alloc
 .extern func_02082db4
 .extern func_0200c178
-.extern func_02002d94
+.extern DisplayBrightness_IsMainTransitionComplete
 .extern GamePhase_Start
 .extern data_020d52f8
 .extern gHeapContext
@@ -51,10 +51,10 @@ L_0200c3c8:
     beq L_0200c400
     mov r0, #0x2
     mov r1, #0x10
-    bl func_02002d54
+    bl DisplayBrightness_StartMainTransition
     mov r0, #0x2
     mov r1, #0x10
-    bl func_02002d74
+    bl DisplayBrightness_StartSubTransition
     ldr r0, [r4, #0x24]
     add r0, r0, #0x1
     str r0, [r4, #0x24]
@@ -94,10 +94,10 @@ L_0200c454:
     mov r0, #0x2
     mov r1, #0x10
     str r2, [r4, #0x28]
-    bl func_02002d54
+    bl DisplayBrightness_StartMainTransition
     mov r0, #0x2
     mov r1, #0x10
-    bl func_02002d74
+    bl DisplayBrightness_StartSubTransition
     ldr r0, [r4, #0x24]
     add r0, r0, #0x1
     str r0, [r4, #0x24]
@@ -154,7 +154,7 @@ L_0200c538:
     strge r0, [r4, #0x2c]
     b L_0200c59c
 L_0200c55c:
-    bl func_02002d94
+    bl DisplayBrightness_IsMainTransitionComplete
     cmp r0, #0x0
     beq L_0200c59c
     ldr r5, [r4, #0x28]

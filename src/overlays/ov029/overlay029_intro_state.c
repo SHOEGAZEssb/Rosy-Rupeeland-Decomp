@@ -16,7 +16,7 @@ extern const s32 data_ov029_021fec28[];
 extern "C" {
 #endif
 extern void *Heap_Alloc(u32, const void *, s32, void *);
-extern s32 func_02002d94(void);
+extern s32 DisplayBrightness_IsMainTransitionComplete(void);
 extern s32 func_02010b64(void *);
 extern void func_0201140c(void *, s32);
 extern void func_02075598(void *, void *);
@@ -74,7 +74,7 @@ extern "C" s32 func_ov029_021fd9e0(void *state)
         Overlay029_NextPhase(state);
         break;
     case 1:
-        if (func_02002d94() == 0)
+        if (DisplayBrightness_IsMainTransitionComplete() == 0)
             break;
         FIELD(s32, state, 0x70) = func_ov045_0220c9e8(
             FIELD(s32, state, 0x54), FIELD(s32, state, 0x58));
@@ -98,7 +98,7 @@ extern "C" s32 func_ov029_021fd9e0(void *state)
         }
         break;
     case 3:
-        if (func_02002d94() == 0)
+        if (DisplayBrightness_IsMainTransitionComplete() == 0)
             break;
         {
             void *child = Heap_Alloc(0xb4, data_ov029_021fed20,
@@ -114,7 +114,7 @@ extern "C" s32 func_ov029_021fd9e0(void *state)
         break;
     case 4:
         if (func_ov002_021fbe08(FIELD(void *, state, 0xa8)) != 0 &&
-            func_02002d94() != 0) {
+            DisplayBrightness_IsMainTransitionComplete() != 0) {
             func_02092260(state, 0x3c84);
             FIELD(s32, state, 0xe0) = 0;
             func_ov029_021fce4c(state,

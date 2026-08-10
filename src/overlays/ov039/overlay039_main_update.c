@@ -56,9 +56,9 @@ extern void func_020a28e0(void *context, s32 type, s32 x, s32 y, s32 value);
 extern void func_020a2614(void *context, s32 type, s32 x, s32 y, s32 value);
 extern void func_0209f158(void *system, const void *position);
 extern void Sound_Play(void *context, s32 soundId, s32 parameter);
-extern void *func_02002d28(void *object, s32 mode);
-extern void func_02002ac0(void *object, s32 first, s32 second, s32 third);
-extern s32 func_02002cd0(void *object);
+extern void *DisplayBrightnessPair_GetScreen(void *object, s32 mode);
+extern void DisplayBrightness_StartTransition(void *object, s32 first, s32 second, s32 third);
+extern s32 DisplayBrightness_GetCurrent(void *object);
 #ifdef __cplusplus
 }
 #endif
@@ -234,15 +234,15 @@ static void updateTimedSequence(void *scene, s32 variant)
         FIELD(s32, owner, 0x44) = 20;
         FIELD(s32, owner, 0x48) = 7;
         if (which == 2 && variant == 1) {
-            void *screen = func_02002d28(data_020f4dc8, 0);
-            func_02002ac0(screen, 0, 0x10, 0x30);
+            void *screen = DisplayBrightnessPair_GetScreen(data_020f4dc8, 0);
+            DisplayBrightness_StartTransition(screen, 0, 0x10, 0x30);
         }
     } else if (time == 0x1f4 && variant == 0) {
         FIELD(s32, owner, 0x74) = 0x19;
         if (ownerEffect != 0) func_ov069_022119bc(ownerEffect);
     } else if (time >= 0x1f4 && variant != 0) {
-        void *screen = func_02002d28(data_020f4dc8, 0);
-        if (func_02002cd0(screen) == 0x10) FIELD(s32, owner, 0x74) = 0x2b;
+        void *screen = DisplayBrightnessPair_GetScreen(data_020f4dc8, 0);
+        if (DisplayBrightness_GetCurrent(screen) == 0x10) FIELD(s32, owner, 0x74) = 0x2b;
     }
 }
 

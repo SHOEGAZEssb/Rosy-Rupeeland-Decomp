@@ -9,7 +9,7 @@
     .extern func_02092c8c
     .extern func_ov037_021fe1f0
     .extern func_ov037_021fdf68
-    .extern func_02002d94
+    .extern DisplayBrightness_IsMainTransitionComplete
     .extern func_02095360
     .extern func_020773a8
     .extern data_ov037_021febb0
@@ -111,7 +111,7 @@ L_021fe3bc:
     bl func_ov037_021fdf68
     mov r0, r4
     bl func_ov037_021fdd08
-    bl func_02002d94
+    bl DisplayBrightness_IsMainTransitionComplete
     cmp r0, #0x0
     ldrne r0, [r4, #0x9c]
     addne r0, r0, #0x1

@@ -17,9 +17,9 @@
 .extern data_ov090_0221cc10
 .extern func_0200222c
 .extern func_020022dc
-.extern func_02002ac0
-.extern func_02002d28
-.extern func_02002d94
+.extern DisplayBrightness_StartTransition
+.extern DisplayBrightnessPair_GetScreen
+.extern DisplayBrightness_IsMainTransitionComplete
 .extern func_02004fe0
 .extern func_0200500c
 .extern func_02005030
@@ -272,18 +272,18 @@ func_ov090_02217d70:
     bl GX_HBlankIntr
     ldr r0, .L_02218d04
     mov r1, #0x0
-    bl func_02002d28
+    bl DisplayBrightnessPair_GetScreen
     mov r1, #0x10
     mov r2, #0x0
     mov r3, #0x40
-    bl func_02002ac0
+    bl DisplayBrightness_StartTransition
     ldr r0, .L_02218d04
     mov r1, #0x1
-    bl func_02002d28
+    bl DisplayBrightnessPair_GetScreen
     mov r1, #0x10
     mov r2, #0x0
     mov r3, #0x40
-    bl func_02002ac0
+    bl DisplayBrightness_StartTransition
     b .L_0221a284
 .L_02218078:
     ldr r6, [r4, #0x200]
@@ -814,11 +814,11 @@ func_ov090_02217d70:
     orr r5, r5, #0x4
     strh r5, [r2, #0xf2]
     strh r3, [r2, #0xc8]
-    bl func_02002d28
+    bl DisplayBrightnessPair_GetScreen
     mvn r1, #0xf
     mov r2, #0x0
     mov r3, #0xa
-    bl func_02002ac0
+    bl DisplayBrightness_StartTransition
     cmp r6, #0x0
     beq .L_0221a284
     mov r0, r6
@@ -1997,18 +1997,18 @@ func_ov090_02217d70:
     ldr r3, [r4, #0x200]
     strh r2, [r3, #0x2c]
     strh r5, [r3, #0x2e]
-    bl func_02002d28
+    bl DisplayBrightnessPair_GetScreen
     mov r1, #0x0
     mov r2, #0x10
     mov r3, #0x5a
-    bl func_02002ac0
+    bl DisplayBrightness_StartTransition
     ldr r0, .L_02218d04
     mov r1, #0x1
-    bl func_02002d28
+    bl DisplayBrightnessPair_GetScreen
     mov r1, #0x0
     mov r2, #0x10
     mov r3, #0x5a
-    bl func_02002ac0
+    bl DisplayBrightness_StartTransition
     mov r1, #0x0
     add r0, r4, #0x100
     strh r1, [r0, #0xf0]
@@ -2036,7 +2036,7 @@ func_ov090_02217d70:
     movgt r0, #0x200
     strh r0, [r1, #0x32]
     strh r0, [r1, #0x34]
-    bl func_02002d94
+    bl DisplayBrightness_IsMainTransitionComplete
     cmp r0, #0x0
     movne r0, #0x1a
     strneb r0, [r4, #0x1ec]
@@ -2484,18 +2484,18 @@ func_ov090_02217d70:
     bne .L_0221a1b8
     ldr r0, .L_0221a3c8
     mov r1, #0x0
-    bl func_02002d28
+    bl DisplayBrightnessPair_GetScreen
     mov r2, #0x10
     add r3, r2, #0xfe
     mov r1, #0x0
-    bl func_02002ac0
+    bl DisplayBrightness_StartTransition
     ldr r0, .L_0221a3c8
     mov r1, #0x1
-    bl func_02002d28
+    bl DisplayBrightnessPair_GetScreen
     mov r2, #0x10
     mov r1, #0x0
     add r3, r2, #0xfe
-    bl func_02002ac0
+    bl DisplayBrightness_StartTransition
 .L_0221a1b8:
     add r0, r4, #0x100
     ldrh r0, [r0, #0xf0]
@@ -2545,7 +2545,7 @@ func_ov090_02217d70:
     movgt r0, #0x200
     strh r0, [r1, #0x32]
     strh r0, [r1, #0x34]
-    bl func_02002d94
+    bl DisplayBrightness_IsMainTransitionComplete
     cmp r0, #0x0
     movne r0, #0x20
     strneb r0, [r4, #0x1ec]

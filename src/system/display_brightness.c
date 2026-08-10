@@ -26,9 +26,9 @@ extern void GXx_SetMasterBrightness_(volatile u32 *registerAddress,
 /*
  * Initialize one brightness state for screen 0 or 1. This sets the packed
  * bounds to -16 and 0, clears the current value and direction, and returns
- * nothing; no hardware register is touched until func_02002b3c runs.
+ * nothing; no hardware register is touched until DisplayBrightness_Update runs.
  */
-void func_020028f0(DisplayBrightness *state, u32 screen)
+void DisplayBrightness_Init(DisplayBrightness *state, u32 screen)
 {
     state->screen = screen;
     state->lowerBrightness = -16;
@@ -44,7 +44,7 @@ void func_020028f0(DisplayBrightness *state, u32 screen)
  * preserving destination bits 27..31 whose purpose remains unknown.
  */
 #ifndef MATCHING
-void func_02002930(DisplayBrightness *destination,
+void DisplayBrightness_Copy(DisplayBrightness *destination,
                    const DisplayBrightness *source)
 {
     destination->screen = source->screen;
@@ -60,7 +60,7 @@ void func_02002930(DisplayBrightness *destination,
 }
 #else
 /* Matching form of the documented field-by-field copy above. */
-asm void func_02002930(DisplayBrightness *destination,
+asm void DisplayBrightness_Copy(DisplayBrightness *destination,
                        const DisplayBrightness *source)
 {
     ldr r2, [r1, #0]
@@ -125,7 +125,7 @@ asm void func_02002930(DisplayBrightness *destination,
  * helper. Other direction values only update the two scalar fields. There is
  * no return value and no immediate hardware write.
  */
-void func_02002a04(DisplayBrightness *state, s32 direction,
+void DisplayBrightness_StartBoundTransition(DisplayBrightness *state, s32 direction,
                    fx32 transitionDivisor)
 {
     state->direction = direction;
@@ -153,7 +153,7 @@ void func_02002a04(DisplayBrightness *state, s32 direction,
  * scalars. Equal endpoints leave the existing direction/mode unchanged, as
  * observed in retail; otherwise the transition direction is selected.
  */
-void func_02002ac0(DisplayBrightness *state, s32 startBrightness,
+void DisplayBrightness_StartTransition(DisplayBrightness *state, s32 startBrightness,
                    s32 targetBrightness, fx32 transitionDivisor)
 {
     state->transitionDivisor = transitionDivisor;
@@ -177,7 +177,7 @@ void func_02002ac0(DisplayBrightness *state, s32 startBrightness,
  * direction and mode. The visible output is clamped to the hardware-supported
  * -16..16 range; the function has no return value.
  */
-void func_02002b3c(DisplayBrightness *state)
+void DisplayBrightness_Update(DisplayBrightness *state)
 {
     s32 target;
 
@@ -235,7 +235,7 @@ void func_02002b3c(DisplayBrightness *state)
 }
 
 /* Return the current signed brightness after converting from 20.12 fixed point. */
-s32 func_02002cd0(const DisplayBrightness *state)
+s32 DisplayBrightness_GetCurrent(const DisplayBrightness *state)
 {
     return state->currentFx >> FX32_SHIFT;
 }

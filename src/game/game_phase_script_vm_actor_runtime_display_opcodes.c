@@ -9,8 +9,8 @@
 extern "C" {
 #endif
 extern void *data_020f4dc8;
-extern void *func_02002d28(void *state, s32 screen);
-extern void func_02002ac0(void *state, s32 first, s32 second, s32 third);
+extern void *DisplayBrightnessPair_GetScreen(void *state, s32 screen);
+extern void DisplayBrightness_StartTransition(void *state, s32 first, s32 second, s32 third);
 extern void Actor_EnsureAuxiliaryCollisionResource(void *actor);
 extern void Actor_DestroyAuxiliaryCollisionResource(void *actor);
 extern void Actor_SetAuxiliaryCollisionPosition(void *actor, s32 first,
@@ -79,10 +79,10 @@ s32 func_0201856c(GamePhaseActorScriptVm *self)
     s32 first = (s32)func_02012704(&self->base);
     s32 screenMask = (s32)func_02012704(&self->base);
     if (screenMask & 1)
-        func_02002ac0(func_02002d28(data_020f4dc8, 0),
+        DisplayBrightness_StartTransition(DisplayBrightnessPair_GetScreen(data_020f4dc8, 0),
                       first, second, third);
     if (screenMask & 2)
-        func_02002ac0(func_02002d28(data_020f4dc8, 1),
+        DisplayBrightness_StartTransition(DisplayBrightnessPair_GetScreen(data_020f4dc8, 1),
                       first, second, third);
     return 0;
 }

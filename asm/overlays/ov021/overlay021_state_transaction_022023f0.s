@@ -7,7 +7,7 @@
     .extern data_ov021_02202d68
     .extern data_ov021_02202d90
     .extern data_ov021_02202fb8
-    .extern func_02002d94
+    .extern DisplayBrightness_IsMainTransitionComplete
     .extern func_02010b64
     .extern func_02010c00
     .extern func_02062ca8
@@ -105,7 +105,7 @@ L_0220247c:
     str r1, [r4, #0x4]
     str r0, [r4, #0x8]
 L_0220249c:
-    bl func_02002d94
+    bl DisplayBrightness_IsMainTransitionComplete
     cmp r0, #0x0
     beq L_02202ba8
     mov r0, r4
@@ -449,7 +449,7 @@ L_02202968:
     str r0, [r4, #0x8]
     b L_02202ba8
 L_02202998:
-    bl func_02002d94
+    bl DisplayBrightness_IsMainTransitionComplete
     cmp r0, #0x0
     beq L_02202ba8
     mov r0, r4
@@ -578,7 +578,7 @@ L_02202b5c:
     str r0, [r4, #0x8]
     b L_02202ba8
 L_02202b84:
-    bl func_02002d94
+    bl DisplayBrightness_IsMainTransitionComplete
     cmp r0, #0x0
     beq L_02202ba8
     ldr r0, [r4, #0x390]

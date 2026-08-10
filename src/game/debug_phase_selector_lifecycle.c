@@ -11,8 +11,8 @@ extern SceneVTable data_020d52c8;
 extern void GXx_SetMasterBrightness_(volatile void *registerAddress,
                                      s32 brightness);
 extern void GX_SetGraphicsMode(s32 displayMode, s32 bgMode, s32 bg0As);
-extern void func_02002d54(s32 screen, s32 frames);
-extern void func_02002d74(s32 screen, s32 frames);
+extern void DisplayBrightness_StartMainTransition(s32 screen, s32 frames);
+extern void DisplayBrightness_StartSubTransition(s32 screen, s32 frames);
 extern void func_020ae90c(void);
 #ifdef __cplusplus
 }
@@ -41,8 +41,8 @@ DebugPhaseSelector *func_0200c244(DebugPhaseSelector *self)
     self->column = 0;
     self->row = 0;
     func_0200bf20(&self->grid);
-    func_02002d54(1, 0x10);
-    func_02002d74(1, 0x10);
+    DisplayBrightness_StartMainTransition(1, 0x10);
+    DisplayBrightness_StartSubTransition(1, 0x10);
     GameWork_Reset();
     func_0200c228(1);
     return self;

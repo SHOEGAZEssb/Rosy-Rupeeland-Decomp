@@ -5,9 +5,9 @@
 .extern Scene_ClearFlags03
 .extern Scene_Destroy
 .extern Heap_Free
-.extern func_02002d28
-.extern func_02002ac0
-.extern func_02002cd0
+.extern DisplayBrightnessPair_GetScreen
+.extern DisplayBrightness_StartTransition
+.extern DisplayBrightness_GetCurrent
 .extern func_020022dc
 .extern func_0200222c
 .extern func_02002290
@@ -40,11 +40,11 @@ func_0201cfd0: ; 0x0201cfd0
     mov r2, #0x0
     mov r1, #0x1
     str r2, [r5, #0x28]
-    bl func_02002d28
+    bl DisplayBrightnessPair_GetScreen
     mov r1, #0x0
     sub r2, r1, #0x10
     mov r3, #0x8
-    bl func_02002ac0
+    bl DisplayBrightness_StartTransition
     bl func_020022dc
     mov r1, #0x0
     ldr r2, L_0201d038

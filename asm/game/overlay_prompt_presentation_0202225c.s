@@ -6,7 +6,7 @@
 .extern Heap_Free
 .extern data_020d653c
 .extern data_020d65ac
-.extern func_02002db0
+.extern DisplayBrightness_IsSubTransitionComplete
 .extern func_02006268
 .extern func_02006280
 .extern func_020062a0

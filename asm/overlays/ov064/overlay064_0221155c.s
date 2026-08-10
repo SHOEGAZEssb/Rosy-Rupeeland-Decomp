@@ -4,8 +4,8 @@
 .extern Sound_Play
 .extern data_020f4dc8
 .extern data_ov064_02211de4
-.extern func_02002ac0
-.extern func_02002d28
+.extern DisplayBrightness_StartTransition
+.extern DisplayBrightnessPair_GetScreen
 .extern func_0200500c
 .extern func_02005058
 .extern func_020050a4
@@ -317,18 +317,18 @@ func_ov064_0221155c:
     str r1, [r5, #0x8]
     mov r1, #0x0
     strh r1, [r5, #0x74]
-    bl func_02002d28
+    bl DisplayBrightnessPair_GetScreen
     mov r1, #0x0
     sub r2, r1, #0x10
     mov r3, #0x5a
-    bl func_02002ac0
+    bl DisplayBrightness_StartTransition
     ldr r0, .L_02211ab8
     mov r1, #0x1
-    bl func_02002d28
+    bl DisplayBrightnessPair_GetScreen
     mov r1, #0x0
     sub r2, r1, #0x10
     mov r3, #0x5a
-    bl func_02002ac0
+    bl DisplayBrightness_StartTransition
 .L_022119f0:
     mov lr, #0x0
     add r3, sp, #0x110

@@ -21,9 +21,9 @@
     .extern func_020a2614
     .extern func_0209f158
     .extern Sound_Play
-    .extern func_02002d28
-    .extern func_02002ac0
-    .extern func_02002cd0
+    .extern DisplayBrightnessPair_GetScreen
+    .extern DisplayBrightness_StartTransition
+    .extern DisplayBrightness_GetCurrent
     .extern data_ov039_0220801c
     .extern data_ov039_02208028
     .extern data_ov039_02208034
@@ -676,11 +676,11 @@ L_021ffeb0:
     bne L_0220002c
     ldr r0, L_022003f8
     mov r1, #0x0
-    bl func_02002d28
+    bl DisplayBrightnessPair_GetScreen
     mov r1, #0x0
     mov r2, #0x10
     mov r3, #0x30
-    bl func_02002ac0
+    bl DisplayBrightness_StartTransition
     b L_0220002c
 L_021fffc0:
     cmp r3, #0x1f4
@@ -705,8 +705,8 @@ L_021ffff4:
     beq L_0220002c
     ldr r0, L_022003f8
     mov r1, #0x0
-    bl func_02002d28
-    bl func_02002cd0
+    bl DisplayBrightnessPair_GetScreen
+    bl DisplayBrightness_GetCurrent
     cmp r0, #0x10
     ldreq r0, [r10, #0x48]
     moveq r1, #0x2b

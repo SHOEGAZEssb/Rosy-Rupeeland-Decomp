@@ -23,7 +23,7 @@ extern "C" {
 extern void GameWork_ClearFlag(void *, u32);
 extern void GameWork_SetFlag(void *, u32);
 extern s32 GameWork_TestFlag(void *, u32);
-extern s32 func_02002d94(void);
+extern s32 DisplayBrightness_IsMainTransitionComplete(void);
 extern s32 func_02010b64(void *);
 extern void func_02010c00(void *, s32, s32);
 extern s32 func_02062b28(void *);
@@ -244,7 +244,7 @@ extern "C" s32 func_ov021_02201800(void *state)
         }
         break;
     case 2:
-        if (func_02002d94() != 0) {
+        if (DisplayBrightness_IsMainTransitionComplete() != 0) {
             func_ov021_021ff0e0(state, 6);
             FIELD(s32, state, 4)++;
             FIELD(s32, state, 8) = 0;
@@ -265,7 +265,7 @@ extern "C" s32 func_ov021_02201800(void *state)
         }
         break;
     case 5:
-        if (func_02002d94() != 0) {
+        if (DisplayBrightness_IsMainTransitionComplete() != 0) {
             if (func_ov021_021ffa10(FIELD(void *, state, 0x2bc)) != 0)
                 FIELD(s32, state, 0x3d8) = 1;
             func_ov021_021fea68(state);
@@ -295,7 +295,7 @@ extern "C" s32 func_ov021_02201a88(void *state)
         FIELD(s32, state, 8) = 0;
         /* Deliberate fall-through. */
     case 1:
-        if (func_02002d94() != 0) {
+        if (DisplayBrightness_IsMainTransitionComplete() != 0) {
             func_02095940((u8 *)state + 0xa0);
             func_ov021_021ff050(state, FIELD(s32, state, 0x2c4));
             func_020755bc(data_020f4e14);
@@ -312,7 +312,7 @@ extern "C" s32 func_ov021_02201a88(void *state)
         FIELD(s32, state, 8) = 0;
         break;
     case 3:
-        if (func_02002d94() != 0)
+        if (DisplayBrightness_IsMainTransitionComplete() != 0)
             change_state(state, data_ov021_02202dd0);
         break;
     }

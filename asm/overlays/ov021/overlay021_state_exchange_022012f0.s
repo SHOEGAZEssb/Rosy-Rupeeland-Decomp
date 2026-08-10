@@ -2,7 +2,7 @@
 /* Exact fallback; see src/overlays/ov021/overlay021_state_exchange.c. */
     .extern data_020f4e14
     .extern data_ov021_02202e18
-    .extern func_02002d94
+    .extern DisplayBrightness_IsMainTransitionComplete
     .extern func_020755bc
     .extern func_02092c8c
     .extern func_02095940
@@ -45,7 +45,7 @@ L_0220131c:
     str r1, [r4, #0x4]
     str r0, [r4, #0x8]
 L_02201350:
-    bl func_02002d94
+    bl DisplayBrightness_IsMainTransitionComplete
     cmp r0, #0x0
     beq L_022013f0
     add r0, r4, #0xa0
@@ -80,7 +80,7 @@ L_0220139c:
     str r0, [r4, #0x8]
     b L_022013f0
 L_022013d4:
-    bl func_02002d94
+    bl DisplayBrightness_IsMainTransitionComplete
     cmp r0, #0x0
     beq L_022013f0
     ldr r1, L_0220140c

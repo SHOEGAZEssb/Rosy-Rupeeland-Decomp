@@ -3,7 +3,7 @@
 .extern Heap_Free
 .extern data_020d6180
 .extern data_021052fc
-.extern func_02002e48
+.extern DisplayController_GetSubScreenVerticalOffset
 .extern func_02005030
 .extern func_02005058
 .extern func_02009d78

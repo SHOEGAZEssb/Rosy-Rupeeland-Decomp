@@ -5,7 +5,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern s32 func_02002e48(void);
+extern s32 DisplayController_GetSubScreenVerticalOffset(void);
 extern void func_020083b0(void *, s32, s32, s32, s32);
 extern s32 func_02011738(const void *, s32, s32);
 extern void func_02072b68(void *, s32);
@@ -24,7 +24,7 @@ static void copyFlag(u8 *destination, const u8 *source, u16 mask)
 
 /*
  * If secondary attachment 0x58 exists, place it at point 0x04/0x08 plus the
- * func_02002e48 vertical offset. Test that point against a 256x192 rectangle
+ * DisplayController_GetSubScreenVerticalOffset vertical offset. Test that point against a 256x192 rectangle
  * reduced by actor halfwords 0x68-0x6e and mirror visibility to attachment flag
  * eight. Synchronize animation bytes 0x38/0x39 through their helpers, copy
  * flags 2/4/0x10/0x20/0x40/0x80/0x200, then copy fields 0x28/0x30/0x32-0x36
@@ -43,7 +43,7 @@ void func_02031cac(void *self, const void *pointPointer)
 
     if (!destination)
         return;
-    verticalOffset = func_02002e48();
+    verticalOffset = DisplayController_GetSubScreenVerticalOffset();
     *(s16 *)(destination + 0x2c) = (s16)*(s32 *)(point + 0x04);
     *(s16 *)(destination + 0x2e) =
         (s16)(*(s32 *)(point + 0x08) + verticalOffset);
@@ -52,7 +52,7 @@ void func_02031cac(void *self, const void *pointPointer)
     rectangle[1] -= *(s16 *)(actor + 0x6e);
     rectangle[2] -= *(s16 *)(actor + 0x68);
     rectangle[3] -= *(s16 *)(actor + 0x6a);
-    verticalOffset = func_02002e48();
+    verticalOffset = DisplayController_GetSubScreenVerticalOffset();
     if (func_02011738(rectangle, *(s32 *)(point + 0x04),
                       *(s32 *)(point + 0x08) + verticalOffset))
         *(u16 *)(destination + 0x24) &= ~8;

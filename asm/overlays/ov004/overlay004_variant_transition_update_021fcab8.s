@@ -1,7 +1,7 @@
     .text
     .extern func_02091fb0
     .extern func_02092c8c
-    .extern func_02002d94
+    .extern DisplayBrightness_IsMainTransitionComplete
     .extern func_02092314
     .extern func_ov004_021fb6e4
     .extern Heap_Alloc
@@ -69,7 +69,7 @@ L_021fcb68:
     ldr r0, [r4, #0x54]
     mov r1, #0x0
     bl func_02091fb0
-    bl func_02002d94
+    bl DisplayBrightness_IsMainTransitionComplete
     cmp r0, #0x0
     beq L_021fcce0
     ldr r0, [r4, #0x58]
@@ -128,7 +128,7 @@ L_021fcc40:
     ldr r0, [r4, #0x54]
     mov r1, #0x0
     bl func_02091fb0
-    bl func_02002d94
+    bl DisplayBrightness_IsMainTransitionComplete
     cmp r0, #0x0
     beq L_021fcce0
     ldr r1, [r4, #0x4]
@@ -156,7 +156,7 @@ L_021fcca8:
     ldr r0, [r4, #0x54]
     mov r1, #0x0
     bl func_02091fb0
-    bl func_02002d94
+    bl DisplayBrightness_IsMainTransitionComplete
     cmp r0, #0x0
     beq L_021fcce0
     mov r0, r4

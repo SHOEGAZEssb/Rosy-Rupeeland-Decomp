@@ -5,9 +5,9 @@
 .extern Scene_ClearFlags03
 .extern Scene_Destroy
 .extern Heap_Free
-.extern func_02002d28
-.extern func_02002ac0
-.extern func_02002cd0
+.extern DisplayBrightnessPair_GetScreen
+.extern DisplayBrightness_StartTransition
+.extern DisplayBrightness_GetCurrent
 .extern func_020022dc
 .extern func_0200222c
 .extern func_02002290

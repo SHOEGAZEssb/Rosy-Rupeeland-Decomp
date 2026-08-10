@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/actor_attachment_state_copy.c.
 .text
-.extern func_02002e48
+.extern DisplayController_GetSubScreenVerticalOffset
 .extern func_020083b0
 .extern func_02011738
 .extern func_02072b68
@@ -16,7 +16,7 @@ func_02031cac: ; 0x02031cac
     mov r4, r1
     cmp r0, #0x0
     beq .L_02031f3c
-    bl func_02002e48
+    bl DisplayController_GetSubScreenVerticalOffset
     ldr r2, [r4, #0x8]
     mov r1, #0x0
     add ip, r2, r0
@@ -46,7 +46,7 @@ func_02031cac: ; 0x02031cac
     ldrsh r0, [r5, #0x6a]
     sub r0, r1, r0
     strh r0, [sp, #0xa]
-    bl func_02002e48
+    bl DisplayController_GetSubScreenVerticalOffset
     ldmib r4, {r1, r2}
     add r2, r2, r0
     add r0, sp, #0x4

@@ -115,7 +115,7 @@ s32 func_0201d358(OverlayTransitionScene *self)
         self->state40++;
         /* fall through */
     case 1:
-        if (func_02002db0() == 0)
+        if (DisplayBrightness_IsSubTransitionComplete() == 0)
             break;
         runtimeObject = *(void **)((u8 *)runtime + 0x2fb8);
         if (runtimeObject != 0)
@@ -143,7 +143,7 @@ s32 func_0201d358(OverlayTransitionScene *self)
         break;
     case 2:
         func_02091fb0(self->object24, 0);
-        if (func_02002db0() != 0)
+        if (DisplayBrightness_IsSubTransitionComplete() != 0)
             self->state40++;
         break;
     case 3:
@@ -154,7 +154,7 @@ s32 func_0201d358(OverlayTransitionScene *self)
         break;
     case 4:
         func_02091fb0(self->object24, 0);
-        if (func_02002db0() == 0)
+        if (DisplayBrightness_IsSubTransitionComplete() == 0)
             break;
         if (self->object24 != 0)
             ((void (*)(void *))self->object24->vtable[2])(self->object24);
@@ -172,7 +172,7 @@ s32 func_0201d358(OverlayTransitionScene *self)
         self->state40++;
         break;
     case 5:
-        if (func_02002db0() != 0) {
+        if (DisplayBrightness_IsSubTransitionComplete() != 0) {
             if (self != 0)
                 self->base.vtable->destroyAndFree(&self->base);
             return 1;

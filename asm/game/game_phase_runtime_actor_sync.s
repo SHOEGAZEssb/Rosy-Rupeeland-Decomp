@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/game_phase_runtime_actor_sync.c for
 ; the documented portable implementation and recovered behavior.
 .text
-.extern func_02002e48
+.extern DisplayController_GetSubScreenVerticalOffset
 .extern func_0200500c
 .extern func_02005058
 .extern func_02008354
@@ -73,7 +73,7 @@ L_020081fc:
     mov r0, r0, lsr #0x1e
     cmp r0, #0x3
     bne L_0200827c
-    bl func_02002e48
+    bl DisplayController_GetSubScreenVerticalOffset
     mov r2, r0, lsl #0xc
     mov r1, #0x0
     add r0, sp, #0x64

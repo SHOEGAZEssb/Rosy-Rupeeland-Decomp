@@ -7,8 +7,8 @@
     .extern GXS_SetGraphicsMode
     .extern data_020f4dc8
     .extern data_020f4e18
-    .extern func_02002ac0
-    .extern func_02002d28
+    .extern DisplayBrightness_StartTransition
+    .extern DisplayBrightnessPair_GetScreen
     .extern func_0207043c
     .extern func_02070874
     .extern func_02070888
@@ -114,11 +114,11 @@ func_ov040_02202640: ; 0x02202640
     bl func_020afd28
     ldr r0, .L_022029fc
     mov r1, #0x1
-    bl func_02002d28
+    bl DisplayBrightnessPair_GetScreen
     mvn r1, #0xf
     mov r2, #0x0
     mov r3, #0xa
-    bl func_02002ac0
+    bl DisplayBrightness_StartTransition
     ldr r1, .L_02202a00
     str r4, [sp, #0x0]
     mov r0, #0x2

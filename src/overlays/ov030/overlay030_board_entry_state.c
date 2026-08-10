@@ -16,7 +16,7 @@ extern "C" {
 #endif
 extern void func_ov030_021fea00(void *);
 extern void func_020922f0(void *, s32);
-extern s32 func_02002d94(void);
+extern s32 DisplayBrightness_IsMainTransitionComplete(void);
 extern void func_02074110(void *);
 extern void *Heap_Alloc(u32, const void *, s32, void *);
 extern void *func_ov030_021fcf20(void *, void *, void *, s32);
@@ -54,7 +54,7 @@ extern "C" s32 func_ov030_021fee6c(void *scene)
         FIELD(s32, scene, 8) = 0;
         /* Recovered control flow intentionally continues into state 1. */
     case 1:
-        if (func_02002d94() != 0) {
+        if (DisplayBrightness_IsMainTransitionComplete() != 0) {
             func_02074110(FIELD(void *, scene, 0x78));
             void *widget = Heap_Alloc(0x1f0, data_ov030_021ff8dc,
                                       4, gHeapContext);
@@ -71,7 +71,7 @@ extern "C" s32 func_ov030_021fee6c(void *scene)
         }
         break;
     case 2:
-        if (func_02002d94() != 0) {
+        if (DisplayBrightness_IsMainTransitionComplete() != 0) {
             func_020939d8(FIELD(void *, scene, 0x2bc));
             if (GameWork_TestFlag(gGameWork, 0x3e1) != 0) {
                 GameWork_ClearFlag(gGameWork, 0x3e1);

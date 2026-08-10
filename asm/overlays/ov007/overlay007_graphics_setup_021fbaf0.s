@@ -13,8 +13,8 @@
     .extern func_02070eac
     .extern func_02072000
     .extern func_020afd28
-    .extern func_02002d28
-    .extern func_02002ac0
+    .extern DisplayBrightnessPair_GetScreen
+    .extern DisplayBrightness_StartTransition
     .extern GraphicsResourceSet_Destroy
     .extern data_020f4e18
     .extern data_020f4dc8
@@ -107,11 +107,11 @@ func_ov007_021fbaf0: ; 0x021fbaf0
     ldr r0, L_021fbc7c
     mov r1, #0x1
     str r2, [r4, #0xd4]
-    bl func_02002d28
+    bl DisplayBrightnessPair_GetScreen
     mvn r1, #0xf
     mov r2, #0x0
     mov r3, #0xa
-    bl func_02002ac0
+    bl DisplayBrightness_StartTransition
     add r0, sp, #0x18
     bl GraphicsResourceSet_Destroy
     add sp, sp, #0x24

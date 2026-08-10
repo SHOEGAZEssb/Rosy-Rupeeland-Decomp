@@ -3,8 +3,8 @@
 /* Exact fallback; see src/overlays/ov031/overlay031_transition_setup.c for documented portable C. */
 .extern data_020f4dc8
 .extern data_020f4e18
-.extern func_02002ac0
-.extern func_02002d28
+.extern DisplayBrightness_StartTransition
+.extern DisplayBrightnessPair_GetScreen
 .extern func_020706c4
 .extern func_02070bc4
 .extern func_02070eac
@@ -61,11 +61,11 @@ func_ov031_021fe1a8:
     mov r3, #0x0
     ldr r0, L_021fe288
     str r3, [r2, #0x0]
-    bl func_02002d28
+    bl DisplayBrightnessPair_GetScreen
     mvn r1, #0xf
     mov r2, #0x0
     mov r3, #0x8
-    bl func_02002ac0
+    bl DisplayBrightness_StartTransition
     add r0, sp, #0x4
     bl GraphicsResourceSet_Destroy
     add sp, sp, #0x10

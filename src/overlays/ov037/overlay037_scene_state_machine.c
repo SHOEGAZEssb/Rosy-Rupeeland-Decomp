@@ -20,7 +20,7 @@ extern s32 func_ov037_021fd1b4(void *object);
 extern void func_02092c8c(s32 effect, s32 duration);
 extern void func_ov037_021fe1f0(void *scene);
 extern void func_ov037_021fdf68(void *scene);
-extern s32 func_02002d94(void);
+extern s32 DisplayBrightness_IsMainTransitionComplete(void);
 extern void func_02095360(void *container);
 extern void func_020773a8(void *resourceOwner);
 #ifdef __cplusplus
@@ -83,7 +83,7 @@ extern "C" s32 func_ov037_021fe284(void *scene)
         func_ov037_021fe1f0(scene);
         func_ov037_021fdf68(scene);
         func_ov037_021fdd08(scene);
-        if (func_02002d94())
+        if (DisplayBrightness_IsMainTransitionComplete())
             ++FIELD(s32, scene, 0x9c);
         break;
     case 5:

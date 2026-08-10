@@ -14,7 +14,7 @@ extern void func_020086f8(void *state, GamePhaseRuntime *self);
 extern void func_0200875c(void *state, GamePhaseRuntime *self);
 extern void func_0200ecbc(void *object, const void *state);
 extern void func_02005058(void *state);
-extern s32 func_02002e48(void);
+extern s32 DisplayController_GetSubScreenVerticalOffset(void);
 extern void func_0200500c(void *vector, s32 x, s32 y, s32 z);
 extern void func_02008378(void *output, const void *state, const void *offset);
 extern void func_02012150(void *actor, const void *state);
@@ -63,7 +63,7 @@ s32 func_02008148(GamePhaseRuntime *self, s32 actorIndex)
     } else if (actorIndex == 1) {
         orientation = (*(u32 *)(*(u8 **)(b + 0x30bc) + 0x40) << 12) >> 30;
         if (orientation == 3) {
-            func_0200500c(offset, 0, -(func_02002e48() << 12), 0);
+            func_0200500c(offset, 0, -(DisplayController_GetSubScreenVerticalOffset() << 12), 0);
             func_020086f8(full1, self);
             func_02008378(full2, full1, offset);
             func_02012150(*(void **)(b + 0x2fb8), full2);

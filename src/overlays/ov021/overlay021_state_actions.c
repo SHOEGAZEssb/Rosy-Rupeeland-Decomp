@@ -21,7 +21,7 @@ extern "C" {
 #endif
 extern void GameWork_SetFlag(void *, u32);
 extern s32 GameWork_TestFlag(void *, u32);
-extern s32 func_02002d94(void);
+extern s32 DisplayBrightness_IsMainTransitionComplete(void);
 extern void func_020755bc(void *);
 extern const void *func_0207c4cc(const void *, s32);
 extern void func_0207ab48(void *, u16);
@@ -77,7 +77,7 @@ extern "C" s32 func_ov021_02200360(void *state)
         FIELD(s32, state, 8) = 0;
         /* Deliberate fall-through. */
     case 1:
-        if (func_02002d94() != 0) {
+        if (DisplayBrightness_IsMainTransitionComplete() != 0) {
             const void *content =
                 func_0207c4cc(FIELD(void *, state, 0x2bc), 0);
             func_ov021_021ff1d0(state, content);
@@ -120,7 +120,7 @@ extern "C" s32 func_ov021_0220044c(void *state)
         FIELD(s32, state, 8) = 0;
         /* Deliberate fall-through. */
     case 1:
-        if (func_02002d94() != 0) {
+        if (DisplayBrightness_IsMainTransitionComplete() != 0) {
             const void *content = func_0207c4cc(
                 FIELD(void *, state, 0x2bc),
                 FIELD(s32, state, 0x3dc));
@@ -187,7 +187,7 @@ extern "C" s32 func_ov021_02200630(void *state)
         FIELD(s32, state, 8) = 0;
         /* Deliberate fall-through. */
     case 1:
-        if (func_02002d94() != 0) {
+        if (DisplayBrightness_IsMainTransitionComplete() != 0) {
             func_020755bc(data_020f4e14);
             func_ov021_021fe63c(state);
             FIELD(s32, state, 4)++;
@@ -240,7 +240,7 @@ extern "C" s32 func_ov021_02200630(void *state)
         break;
     }
     case 3:
-        if (func_02002d94() != 0)
+        if (DisplayBrightness_IsMainTransitionComplete() != 0)
             func_ov021_021fd7c0(state, data_ov021_02202ea0[0],
                                 data_ov021_02202ea0[1]);
         break;
@@ -269,7 +269,7 @@ extern "C" s32 func_ov021_02200840(void *state)
         FIELD(s32, state, 8) = 0;
         /* Deliberate fall-through. */
     case 1:
-        if (func_02002d94() != 0) {
+        if (DisplayBrightness_IsMainTransitionComplete() != 0) {
             if (FIELD(void *, state, 0x354) != 0)
                 func_ov021_021fea68(state);
             else if (FIELD(void *, state, 0x358) != 0)
@@ -299,7 +299,7 @@ extern "C" s32 func_ov021_02200840(void *state)
         break;
     case 3:
         if (func_ov002_021fbe08(FIELD(void *, state, 0x390)) != 0 &&
-            func_02002d94() != 0) {
+            DisplayBrightness_IsMainTransitionComplete() != 0) {
             func_02092260(state, 0x3c84);
             FIELD(s32, state, 0x3fc) = 0;
             func_ov021_021fd7c0(state, data_ov021_02202e98[0],

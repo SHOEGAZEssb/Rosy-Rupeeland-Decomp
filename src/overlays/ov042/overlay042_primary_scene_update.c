@@ -29,9 +29,9 @@ extern "C" void func_020a1e50(void *owner);
 extern "C" void func_02072b68(void *animation, s32 index);
 extern "C" void func_020a1794(void *owner, const void *position, const void *display, s32 arg);
 extern "C" void func_020050a4(void *destination, const void *source);
-extern "C" void *func_02002d28(void *controller, s32 screen);
-extern "C" void func_02002ac0(void *brightness, s32 start, s32 end, s32 duration);
-extern "C" s32 func_02002cd0(void *brightness);
+extern "C" void *DisplayBrightnessPair_GetScreen(void *controller, s32 screen);
+extern "C" void DisplayBrightness_StartTransition(void *brightness, s32 start, s32 end, s32 duration);
+extern "C" s32 DisplayBrightness_GetCurrent(void *brightness);
 extern "C" void func_ov042_02205d80(void *scene);
 extern "C" void func_ov042_0220549c(void *pool);
 extern "C" void func_ov042_02209cd8(void *object);
@@ -273,15 +273,15 @@ extern "C" void func_ov042_02207114(void *scene)
             FIELD(s32, owner, 0x1ec) = 1;
         }
         if (tick == 210) {
-            func_02002ac0(func_02002d28(data_020f4dc8, 0), 0, 16, 17);
-            func_02002ac0(func_02002d28(data_020f4dc8, 1), 0, 16, 17);
+            DisplayBrightness_StartTransition(DisplayBrightnessPair_GetScreen(data_020f4dc8, 0), 0, 16, 17);
+            DisplayBrightness_StartTransition(DisplayBrightnessPair_GetScreen(data_020f4dc8, 1), 0, 16, 17);
             func_0205929c(gSoundContext, 0x16, 0);
         }
         if (tick > 210 && tick < 234 &&
-            func_02002cd0(func_02002d28(data_020f4dc8, 0)) == 16 &&
-            func_02002cd0(func_02002d28(data_020f4dc8, 1)) == 16) {
-            func_02002ac0(func_02002d28(data_020f4dc8, 0), 16, 0, 16);
-            func_02002ac0(func_02002d28(data_020f4dc8, 1), 16, 0, 16);
+            DisplayBrightness_GetCurrent(DisplayBrightnessPair_GetScreen(data_020f4dc8, 0)) == 16 &&
+            DisplayBrightness_GetCurrent(DisplayBrightnessPair_GetScreen(data_020f4dc8, 1)) == 16) {
+            DisplayBrightness_StartTransition(DisplayBrightnessPair_GetScreen(data_020f4dc8, 0), 16, 0, 16);
+            DisplayBrightness_StartTransition(DisplayBrightnessPair_GetScreen(data_020f4dc8, 1), 16, 0, 16);
             FIELD(s32, scene, 0x24c) = FIELD(s32, scene, 0x1c0) = 0;
             FIELD(s32, scene, 0x1bc) = 234;
             FIELD(s32, scene, 0xac) -= 0x20000;

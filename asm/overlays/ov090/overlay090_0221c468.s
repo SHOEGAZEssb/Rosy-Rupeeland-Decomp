@@ -3,7 +3,7 @@
 .extern Heap_Alloc
 .extern data_ov090_0221ccc8
 .extern data_ov090_0221ccd0
-.extern func_02002e38
+.extern DisplayController_GetVerticalOffset
 .extern func_0200572c
 .extern func_02072b68
 .extern func_ov090_0221b97c
@@ -42,7 +42,7 @@ func_ov090_0221c468:
     ldr r4, [r8, #0xc]
     ldr r5, [r8, #0x8]
     ldr r6, [r8, #0x4]
-    bl func_02002e38
+    bl DisplayController_GetVerticalOffset
     mov r1, #0x2
     stmia sp, {r1, r6}
     str r5, [sp, #0x8]
@@ -71,7 +71,7 @@ func_ov090_0221c468:
     ldr r5, [r8, #0xc]
     ldr r6, [r8, #0x8]
     ldr r8, [r8, #0x4]
-    bl func_02002e38
+    bl DisplayController_GetVerticalOffset
     mov r1, #0x2
     stmia sp, {r1, r8}
     str r6, [sp, #0x8]

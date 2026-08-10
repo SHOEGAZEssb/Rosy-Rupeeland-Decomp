@@ -5,8 +5,8 @@
 .extern data_021f5f18
 .extern data_021f6288
 .extern data_ov032_02202220
-.extern func_02002d54
-.extern func_02002d94
+.extern DisplayBrightness_StartMainTransition
+.extern DisplayBrightness_IsMainTransitionComplete
 .extern func_02092e9c
 .extern func_02097f18
 .extern func_02098348
@@ -84,13 +84,13 @@ L_021ff3b8:
 L_021ff3d8:
     mov r0, #0x2
     mov r1, #0x10
-    bl func_02002d54
+    bl DisplayBrightness_StartMainTransition
     ldr r0, [r4, #0xb64]
     add r0, r0, #0x1
     str r0, [r4, #0xb64]
     b L_021ff6c8
 L_021ff3f4:
-    bl func_02002d94
+    bl DisplayBrightness_IsMainTransitionComplete
     cmp r0, #0x0
     ldrne r0, [r4, #0xb64]
     addne r0, r0, #0x1
@@ -122,13 +122,13 @@ L_021ff40c:
 L_021ff464:
     mov r0, #0x1
     mov r1, #0x10
-    bl func_02002d54
+    bl DisplayBrightness_StartMainTransition
     ldr r0, [r4, #0xb64]
     add r0, r0, #0x1
     str r0, [r4, #0xb64]
     b L_021ff6c8
 L_021ff480:
-    bl func_02002d94
+    bl DisplayBrightness_IsMainTransitionComplete
     cmp r0, #0x0
     movne r0, #0xa
     strne r0, [r4, #0xb64]
@@ -180,13 +180,13 @@ L_021ff51c:
 L_021ff534:
     mov r0, #0x2
     mov r1, #0x10
-    bl func_02002d54
+    bl DisplayBrightness_StartMainTransition
     ldr r0, [r4, #0xb64]
     add r0, r0, #0x1
     str r0, [r4, #0xb64]
     b L_021ff6c8
 L_021ff550:
-    bl func_02002d94
+    bl DisplayBrightness_IsMainTransitionComplete
     cmp r0, #0x0
     ldrne r0, [r4, #0xb64]
     addne r0, r0, #0x1
@@ -262,7 +262,7 @@ L_021ff654:
     str r0, [r4, #0xb64]
     b L_021ff6c8
 L_021ff66c:
-    bl func_02002d94
+    bl DisplayBrightness_IsMainTransitionComplete
     cmp r0, #0x0
     ldrne r0, [r4, #0xb64]
     addne r0, r0, #0x1

@@ -26,8 +26,8 @@ extern void *gLupyContext;
 extern "C" {
 #endif
 extern void Heap_Free(void *);
-extern s32 func_02002d94(void);
-extern s32 func_02002db0(void);
+extern s32 DisplayBrightness_IsMainTransitionComplete(void);
+extern s32 DisplayBrightness_IsSubTransitionComplete(void);
 extern void *func_02010b64(void *);
 extern void func_02010c00(void *, s32, void *);
 extern void func_02074110(void *);
@@ -124,7 +124,7 @@ extern "C" s32 func_ov022_021ff5ec(void *scene)
         ADVANCE(scene);
         /* fall through */
     case 1:
-        if (func_02002d94())
+        if (DisplayBrightness_IsMainTransitionComplete())
             ADVANCE(scene);
         break;
     case 2:
@@ -159,7 +159,7 @@ extern "C" s32 func_ov022_021ff5ec(void *scene)
         }
         break;
     case 3:
-        if (!func_02002d94())
+        if (!DisplayBrightness_IsMainTransitionComplete())
             break;
         if (FIELD(s32, scene, 0x2c0) == 0) {
             func_020755bc(data_020f4e14);
@@ -179,7 +179,7 @@ extern "C" s32 func_ov022_021ff5ec(void *scene)
         ADVANCE(scene);
         break;
     case 4:
-        if (!func_02002d94())
+        if (!DisplayBrightness_IsMainTransitionComplete())
             break;
         if (FIELD(s32, scene, 0x2c0) == 0) {
             GameWork_ClearFlag(gGameWork, 0x3ca);
@@ -189,7 +189,7 @@ extern "C" s32 func_ov022_021ff5ec(void *scene)
         }
         break;
     case 10:
-        if (func_02002d94()) {
+        if (DisplayBrightness_IsMainTransitionComplete()) {
             FIELD(s32, scene, 0x2b0) = 0;
             func_ov022_021ff2c4(scene, 0x312);
             func_02095820((u8 *)scene + 0x200, 128, 208);
@@ -240,7 +240,7 @@ extern "C" s32 func_ov022_021ffa1c(void *scene)
         ADVANCE(scene);
         /* fall through */
     case 1:
-        if (func_02002db0()) {
+        if (DisplayBrightness_IsSubTransitionComplete()) {
             func_02092260(scene, 0x30);
             ADVANCE(scene);
         }
@@ -313,7 +313,7 @@ extern "C" s32 func_ov022_021ffa1c(void *scene)
         func_ov022_021fed74(scene);
         break;
     case 20:
-        if (func_02002d94()) {
+        if (DisplayBrightness_IsMainTransitionComplete()) {
             func_ov022_021fe920(scene);
             func_ov022_021fe81c(scene);
             func_ov022_021fe688(scene);
@@ -418,7 +418,7 @@ extern "C" s32 func_ov022_021ffd8c(void *scene)
         break;
     }
     case 3:
-        if (func_02002d94()) {
+        if (DisplayBrightness_IsMainTransitionComplete()) {
             func_020939d8(FIELD(void *, scene, 0x2cc));
             func_020755bc(data_020f4e14);
             FIELD(u32, scene, 0x48) &= ~2u;
@@ -502,7 +502,7 @@ extern "C" s32 func_ov022_022002e4(void *scene)
         ADVANCE(scene);
         /* fall through */
     case 1:
-        if (func_02002d94()) {
+        if (DisplayBrightness_IsMainTransitionComplete()) {
             void *descriptor = FIELD(void *, scene, 0x2bc);
             s32 id = FIELD(s32, descriptor, 0x24);
             void *context = func_02010b64(gLupyContext);

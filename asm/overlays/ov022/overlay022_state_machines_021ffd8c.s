@@ -6,7 +6,7 @@
 .extern data_ov022_02200510
 .extern data_ov022_02200548
 .extern data_ov022_02200560
-.extern func_02002d94
+.extern DisplayBrightness_IsMainTransitionComplete
 .extern func_02074110
 .extern func_020755bc
 .extern func_02092260
@@ -276,7 +276,7 @@ L_022000c0:
     str r0, [r5, #0x8]
     b L_0220017c
 L_022000f4:
-    bl func_02002d94
+    bl DisplayBrightness_IsMainTransitionComplete
     cmp r0, #0x0
     beq L_0220017c
     ldr r0, [r5, #0x2cc]

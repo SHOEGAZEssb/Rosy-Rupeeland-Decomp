@@ -3,7 +3,7 @@
 .extern Heap_Free
 .extern data_020d6180
 .extern data_021052fc
-.extern func_02002e48
+.extern DisplayController_GetSubScreenVerticalOffset
 .extern func_02005030
 .extern func_02005058
 .extern func_02009d78
@@ -24,7 +24,7 @@ func_0201fb84: ; 0x0201fb84
     mov r1, r0
     add r0, sp, #0x0
     bl func_02005030
-    bl func_02002e48
+    bl DisplayController_GetSubScreenVerticalOffset
     ldr r2, [sp, #0x8]
     add r1, sp, #0x0
     sub r0, r2, r0, lsl #0xc

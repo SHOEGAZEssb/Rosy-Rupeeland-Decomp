@@ -10,8 +10,8 @@ s32 func_02017334(GamePhaseActorScriptVm *self)
 {
     DisplayBrightness *state;
     (void)self;
-    state = func_02002d28(&data_020f4dc8, 0);
-    func_02002ac0(state, func_02002cd0(state), 0, 16);
+    state = DisplayBrightnessPair_GetScreen(&data_020f4dc8, 0);
+    DisplayBrightness_StartTransition(state, DisplayBrightness_GetCurrent(state), 0, 16);
     return 0;
 }
 
@@ -20,8 +20,8 @@ s32 func_0201736c(GamePhaseActorScriptVm *self)
 {
     DisplayBrightness *state;
     (void)self;
-    state = func_02002d28(&data_020f4dc8, 0);
-    func_02002ac0(state, func_02002cd0(state), -8, 16);
+    state = DisplayBrightnessPair_GetScreen(&data_020f4dc8, 0);
+    DisplayBrightness_StartTransition(state, DisplayBrightness_GetCurrent(state), -8, 16);
     return 0;
 }
 
@@ -30,8 +30,8 @@ s32 func_020173a4(GamePhaseActorScriptVm *self)
 {
     DisplayBrightness *state;
     (void)self;
-    state = func_02002d28(&data_020f4dc8, 1);
-    func_02002ac0(state, func_02002cd0(state), 0, 16);
+    state = DisplayBrightnessPair_GetScreen(&data_020f4dc8, 1);
+    DisplayBrightness_StartTransition(state, DisplayBrightness_GetCurrent(state), 0, 16);
     return 0;
 }
 
@@ -40,7 +40,7 @@ s32 func_020173dc(GamePhaseActorScriptVm *self)
 {
     DisplayBrightness *state;
     (void)self;
-    state = func_02002d28(&data_020f4dc8, 1);
-    func_02002ac0(state, func_02002cd0(state), -8, 16);
+    state = DisplayBrightnessPair_GetScreen(&data_020f4dc8, 1);
+    DisplayBrightness_StartTransition(state, DisplayBrightness_GetCurrent(state), -8, 16);
     return 0;
 }

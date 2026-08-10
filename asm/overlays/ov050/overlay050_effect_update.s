@@ -1,6 +1,6 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov050/overlay050_effect_recovery.c.
-.extern func_02002e48
+.extern DisplayController_GetSubScreenVerticalOffset
 .extern func_020050c8
 .extern func_02072b68
 .extern gGameWork
@@ -43,7 +43,7 @@ func_ov050_0220d6e8:
     ldr r0, [r4, #0x8]
     rsb r6, r2, r3, asr #0xc
     rsb r4, r0, r1, asr #0xc
-    bl func_02002e48
+    bl DisplayController_GetSubScreenVerticalOffset
     mov r1, r6, lsl #0x10
     sub r3, r4, r0
     ldr r0, [r5, #0x0]

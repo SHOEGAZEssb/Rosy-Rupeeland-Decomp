@@ -33,10 +33,10 @@ extern void *func_0200f878(void *object, int unknown);
 extern void *func_02010878(void *context);
 extern const GamePhaseConfig *func_02028388(int phaseIndex);
 
-extern void func_02002d54(int mode, int duration);
-extern void func_02002d74(int mode, int duration);
-extern int func_02002d94(void);
-extern int func_02002db0(void);
+extern void DisplayBrightness_StartMainTransition(int mode, int duration);
+extern void DisplayBrightness_StartSubTransition(int mode, int duration);
+extern int DisplayBrightness_IsMainTransitionComplete(void);
+extern int DisplayBrightness_IsSubTransitionComplete(void);
 
 extern int Scene_NoopMethod0C(GamePhaseTransition *transition);
 extern int Scene_NoopMethod10(GamePhaseTransition *transition);
@@ -171,13 +171,13 @@ int GamePhaseTransition_Update(GamePhaseTransition *transition)
 {
     switch (transition->state) {
     case 0:
-        func_02002d54(2, 0x10);
-        func_02002d74(2, 0x10);
+        DisplayBrightness_StartMainTransition(2, 0x10);
+        DisplayBrightness_StartSubTransition(2, 0x10);
         transition->state++;
         break;
 
     case 1:
-        if (func_02002d94() != 0 && func_02002db0() != 0) {
+        if (DisplayBrightness_IsMainTransitionComplete() != 0 && DisplayBrightness_IsSubTransitionComplete() != 0) {
             transition->state++;
         }
         break;

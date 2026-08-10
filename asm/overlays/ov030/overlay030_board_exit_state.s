@@ -3,7 +3,7 @@
 /* Exact fallback; see src/overlays/ov030/overlay030_board_exit_state.c for documented portable C. */
 .extern data_020f4e14
 .extern data_ov030_021ff790
-.extern func_02002d94
+.extern DisplayBrightness_IsMainTransitionComplete
 .extern func_02064e7c
 .extern func_020755bc
 .extern func_02092c8c
@@ -38,7 +38,7 @@ L_021ff5c8:
     str r1, [r4, #0x4]
     str r0, [r4, #0x8]
 L_021ff5e8:
-    bl func_02002d94
+    bl DisplayBrightness_IsMainTransitionComplete
     cmp r0, #0x0
     beq L_021ff6c8
     ldr r0, [r4, #0x390]

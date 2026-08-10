@@ -4,7 +4,7 @@
 .extern data_021052fc
 .extern data_02105310
 .extern FrameTaskList_Add
-.extern func_02002e5c
+.extern DisplayController_SetVerticalOffset
 .extern func_020050a4
 .extern func_020057dc
 .extern func_02006268
@@ -144,7 +144,7 @@ func_02006bdc:
     str r1, [r2, #0x0]
     ldr r0, [r0, #0xbc]
     ldrsh r0, [r0, #0x54]
-    bl func_02002e5c
+    bl DisplayController_SetVerticalOffset
     add r0, r4, #0x3bc
     add r0, r0, #0x2c00
     bl func_0200a35c

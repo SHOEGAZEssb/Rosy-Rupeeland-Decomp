@@ -11,10 +11,10 @@ extern const u8 data_ov032_02202220[];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_02002d54(...);
-extern void func_02002d74(...);
-extern s32 func_02002d94(void);
-extern s32 func_02002db0(void);
+extern void DisplayBrightness_StartMainTransition(...);
+extern void DisplayBrightness_StartSubTransition(...);
+extern s32 DisplayBrightness_IsMainTransitionComplete(void);
+extern s32 DisplayBrightness_IsSubTransitionComplete(void);
 extern void func_ov032_021fd994(void *);
 extern void func_ov032_021fde38(void *);
 extern void func_020595d4(void *);
@@ -23,8 +23,8 @@ extern void func_020595ec(void *);
 extern void func_02058ffc(...);
 extern void func_020594ec(...);
 extern s32 GameWork_TestFlag(...);
-extern s32 func_02002cd0(void *);
-extern void func_02002ac0(...);
+extern s32 DisplayBrightness_GetCurrent(void *);
+extern void DisplayBrightness_StartTransition(...);
 #ifdef __cplusplus
 }
 #endif
@@ -48,22 +48,22 @@ extern "C" s32 func_ov032_021febec(void *scene)
 {
     switch (FIELD(s32, scene, 0xb64)) {
     case 0:
-        func_02002d54(2, 0x10);
-        func_02002d74(2, 0x10);
+        DisplayBrightness_StartMainTransition(2, 0x10);
+        DisplayBrightness_StartSubTransition(2, 0x10);
         ++FIELD(s32, scene, 0xb64);
         break;
     case 1:
-        if (func_02002d94() && func_02002db0()) {
+        if (DisplayBrightness_IsMainTransitionComplete() && DisplayBrightness_IsSubTransitionComplete()) {
             func_ov032_021fd994(scene);
             func_020595d4(gSoundContext);
             FIELD(s32, FIELD(void *, scene, 4), 0x20) = 1;
             FIELD(s32, FIELD(void *, scene, 0), 0x20) = 1;
-            func_02002d74(1, 0x10);
+            DisplayBrightness_StartSubTransition(1, 0x10);
             ++FIELD(s32, scene, 0xb64);
         }
         break;
     case 2:
-        if (func_02002db0()) {
+        if (DisplayBrightness_IsSubTransitionComplete()) {
             func_02058ffc(gSoundContext, 1, 0, 0x1e);
             func_02058ffc(gSoundContext, 0, 0, 0x1e);
             func_020594ec(gSoundContext, 0x12);
@@ -93,24 +93,24 @@ extern "C" s32 func_ov032_021fed8c(void *scene)
     case 0:
         if (FIELD(s32, scene, 0xbc8)) {
             void *handle = FIELD(void *, scene, 0xbe0);
-            func_02002ac0(handle, func_02002cd0(handle), -0x10, 0x10);
+            DisplayBrightness_StartTransition(handle, DisplayBrightness_GetCurrent(handle), -0x10, 0x10);
         } else {
-            func_02002d54(2, 0x10);
+            DisplayBrightness_StartMainTransition(2, 0x10);
         }
-        func_02002d74(2, 0x10);
+        DisplayBrightness_StartSubTransition(2, 0x10);
         func_0205958c(gSoundContext, 0);
         ++FIELD(s32, scene, 0xb64);
         break;
     case 1:
-        if (func_02002d94() && func_02002db0()) {
+        if (DisplayBrightness_IsMainTransitionComplete() && DisplayBrightness_IsSubTransitionComplete()) {
             func_ov032_021fde38(scene);
             ++FIELD(s32, scene, 0xb64);
         }
         break;
     case 2:
         if (!GameWork_TestFlag(gGameWork, 0x3fb)) {
-            func_02002d54(1, 0x10);
-            func_02002d74(1, 0x10);
+            DisplayBrightness_StartMainTransition(1, 0x10);
+            DisplayBrightness_StartSubTransition(1, 0x10);
         }
         func_020595ec(gSoundContext);
         return 1;

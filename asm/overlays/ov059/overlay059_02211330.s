@@ -8,10 +8,10 @@
 .extern TouchRegionManager_SetEnabled
 .extern TouchRegionManager_Tick
 .extern data_021052fc
-.extern func_02002d54
-.extern func_02002d74
-.extern func_02002dcc
-.extern func_02002e14
+.extern DisplayBrightness_StartMainTransition
+.extern DisplayBrightness_StartSubTransition
+.extern DisplayBrightness_IsSubTransitionIncreasing
+.extern DisplayBrightness_IsSubTransitionDecreasing
 .extern func_02005058
 .extern func_02005cec
 .extern func_02005d0c
@@ -102,10 +102,10 @@ func_ov059_02211330:
     bl Scene_SetFlags03
     mov r0, #0x1
     mov r1, #0x10
-    bl func_02002d74
+    bl DisplayBrightness_StartSubTransition
     mov r0, #0x1
     mov r1, #0x10
-    bl func_02002d54
+    bl DisplayBrightness_StartMainTransition
     ldr r0, [r5, #0x24]
     add r0, r0, #0x1
     str r0, [r5, #0x24]
@@ -114,7 +114,7 @@ func_ov059_02211330:
     ldr r2, [r5, #0x50]
     mov r1, #0x0
     bl func_ov059_02210db0
-    bl func_02002dcc
+    bl DisplayBrightness_IsSubTransitionIncreasing
     cmp r0, #0x0
     bne .L_022117f0
     mov r0, #0xa
@@ -134,10 +134,10 @@ func_ov059_02211330:
     bl Sound_Play
     mov r0, #0x2
     mov r1, #0x10
-    bl func_02002d74
+    bl DisplayBrightness_StartSubTransition
     mov r0, #0x2
     mov r1, #0x10
-    bl func_02002d54
+    bl DisplayBrightness_StartMainTransition
     mov r0, #0x12c
     str r0, [r5, #0x24]
     b .L_022117f0
@@ -315,7 +315,7 @@ func_ov059_02211330:
     str r0, [r5, #0x24]
     b .L_022117f0
 .L_02211728:
-    bl func_02002e14
+    bl DisplayBrightness_IsSubTransitionDecreasing
     cmp r0, #0x0
     bne .L_022117f0
     ldr r0, [r5, #0x24]
@@ -354,10 +354,10 @@ func_ov059_02211330:
     bl func_02008570
     mov r0, #0x1
     mov r1, #0x10
-    bl func_02002d74
+    bl DisplayBrightness_StartSubTransition
     mov r0, #0x1
     mov r1, #0x10
-    bl func_02002d54
+    bl DisplayBrightness_StartMainTransition
     cmp r5, #0x0
     beq .L_022117e8
     mov r0, r5

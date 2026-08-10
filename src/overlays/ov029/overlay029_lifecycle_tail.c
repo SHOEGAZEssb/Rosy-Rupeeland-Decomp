@@ -17,7 +17,7 @@ extern const s32 data_ov029_021fec38[];
 extern "C" {
 #endif
 extern void Heap_Free(void *);
-extern s32 func_02002d94(void);
+extern s32 DisplayBrightness_IsMainTransitionComplete(void);
 extern s32 func_02010b64(void *);
 extern void func_02010c00(void *, s32, s32);
 extern void func_02092260(void *, s32);
@@ -174,7 +174,7 @@ extern "C" s32 func_ov029_021fe870(void *state)
         }
         break;
     case 3:
-        if (func_02002d94() != 0) {
+        if (DisplayBrightness_IsMainTransitionComplete() != 0) {
             func_ov002_021fbe68(FIELD(void *, state, 0xa8));
             func_02092260(state,
                           FIELD(s32, state, 0x58) == 5 ? 0x6d : 0x69);

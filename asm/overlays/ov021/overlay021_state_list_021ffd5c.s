@@ -3,7 +3,7 @@
     .extern data_020f4e14
     .extern data_ov021_02202ef0
     .extern data_ov021_02202ef8
-    .extern func_02002d94
+    .extern DisplayBrightness_IsMainTransitionComplete
     .extern func_020755bc
     .extern func_02092260
     .extern func_02092c8c
@@ -238,7 +238,7 @@ L_02200010:
     str r0, [r5, #0x8]
     b L_022000d4
 L_02200044:
-    bl func_02002d94
+    bl DisplayBrightness_IsMainTransitionComplete
     cmp r0, #0x0
     beq L_022000d4
     ldr r0, [r5, #0x388]

@@ -1,8 +1,8 @@
 .text
 
 /* Exact fallback; see src/overlays/ov032/overlay032_input_runtime.c for documented portable C. */
-.extern func_02002ac0
-.extern func_02002cd0
+.extern DisplayBrightness_StartTransition
+.extern DisplayBrightness_GetCurrent
 
     .global func_ov032_021fe23c
 func_ov032_021fe23c:
@@ -14,12 +14,12 @@ func_ov032_021fe23c:
     cmp r0, #0x0
     bne L_021fe280
     ldr r0, [r4, #0xbe0]
-    bl func_02002cd0
+    bl DisplayBrightness_GetCurrent
     mov r1, r0
     ldr r0, [r4, #0xbe0]
     mvn r2, #0x7
     mov r3, #0x8
-    bl func_02002ac0
+    bl DisplayBrightness_StartTransition
     mov r0, #0x1
     str r0, [r4, #0xbc8]
     ldmia sp!, {r4, pc}
@@ -30,12 +30,12 @@ L_021fe280:
     cmp r0, #0x0
     ldmeqia sp!, {r4, pc}
     ldr r0, [r4, #0xbe0]
-    bl func_02002cd0
+    bl DisplayBrightness_GetCurrent
     mov r1, r0
     ldr r0, [r4, #0xbe0]
     mov r2, #0x0
     mov r3, #0x8
-    bl func_02002ac0
+    bl DisplayBrightness_StartTransition
     mov r0, #0x0
     str r0, [r4, #0xbc8]
     ldmia sp!, {r4, pc}

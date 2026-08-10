@@ -6,7 +6,7 @@
 .extern Heap_Free
 .extern data_020d653c
 .extern data_020d65ac
-.extern func_02002db0
+.extern DisplayBrightness_IsSubTransitionComplete
 .extern func_02006268
 .extern func_02006280
 .extern func_020062a0
@@ -47,7 +47,7 @@ func_020223d4: ; 0x020223d4
     add r0, r0, #0x1
     str r0, [r4, #0x8]
 .L_0202241c:
-    bl func_02002db0
+    bl DisplayBrightness_IsSubTransitionComplete
     cmp r0, #0x0
     beq .L_0202250c
     ldr r0, .L_02022514

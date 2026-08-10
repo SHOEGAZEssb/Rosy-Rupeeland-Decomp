@@ -31,7 +31,7 @@ extern "C" {
 extern void GameWork_SetFlag(void *, s32);
 extern void *Heap_Alloc(u32, const void *, u32, void *);
 extern void Heap_Free(void *);
-extern s32 func_02002d94(void);
+extern s32 DisplayBrightness_IsMainTransitionComplete(void);
 extern void func_02071eb8(void *);
 extern void func_02074110(void *);
 extern void func_0207419c(void *);
@@ -276,13 +276,13 @@ extern "C" s32 func_ov025_02201f28(void *scene)
         advance_state(scene);
         /* Fade setup intentionally falls through to resource initialization. */
     case 1:
-        if (func_02002d94()) {
+        if (DisplayBrightness_IsMainTransitionComplete()) {
             setup_editor(scene);
             advance_state(scene);
         }
         break;
     case 2:
-        if (func_02002d94())
+        if (DisplayBrightness_IsMainTransitionComplete())
             advance_state(scene);
         break;
     case 3:
@@ -378,18 +378,18 @@ extern "C" s32 func_ov025_02201f28(void *scene)
         }
         break;
     case 20:
-        if (func_02002d94()) {
+        if (DisplayBrightness_IsMainTransitionComplete()) {
             func_ov025_022002b0(scene);
             teardown_editor(scene);
             advance_state(scene);
         }
         break;
     case 21:
-        if (func_02002d94())
+        if (DisplayBrightness_IsMainTransitionComplete())
             transition_pair(scene, (const u32 *)data_ov025_02202e60);
         break;
     case 30:
-        if (func_ov025_02200940(scene) && func_02002d94()) {
+        if (func_ov025_02200940(scene) && DisplayBrightness_IsMainTransitionComplete()) {
             func_02092c8c(3, 0);
             func_020755bc(gDebugFont);
             void *font = func_020791e0(data_021f3ecc, 0x6b);

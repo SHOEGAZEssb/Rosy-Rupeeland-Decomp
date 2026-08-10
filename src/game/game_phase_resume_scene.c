@@ -8,8 +8,8 @@
 extern "C" {
 #endif
 extern SceneVTable data_020d5594;
-extern void func_02002d54(s32 screen, s32 frames);
-extern void func_02002d74(s32 screen, s32 frames);
+extern void DisplayBrightness_StartMainTransition(s32 screen, s32 frames);
+extern void DisplayBrightness_StartSubTransition(s32 screen, s32 frames);
 extern void ActorDescriptorBatch_ApplyCategoryCallback(s32 value);
 #ifdef __cplusplus
 }
@@ -74,8 +74,8 @@ s32 func_0200f938(GamePhaseResumeScene *self)
             if (GameWork_TestFlag(gGameWork, 0x386))
                 GameWork_ClearFlag(gGameWork, 0x386);
             else {
-                func_02002d54(1, 0x10);
-                func_02002d74(1, 0x10);
+                DisplayBrightness_StartMainTransition(1, 0x10);
+                DisplayBrightness_StartSubTransition(1, 0x10);
             }
         }
         if (self)

@@ -6,8 +6,8 @@
 .extern GXx_SetMasterBrightness_
 .extern GX_SetGraphicsMode
 .extern func_0200bf20
-.extern func_02002d54
-.extern func_02002d74
+.extern DisplayBrightness_StartMainTransition
+.extern DisplayBrightness_StartSubTransition
 .extern GameWork_Reset
 .extern func_0200c228
 .extern data_020d52c8
@@ -46,10 +46,10 @@ func_0200c244:
     bl func_0200bf20
     mov r0, #0x1
     mov r1, #0x10
-    bl func_02002d54
+    bl DisplayBrightness_StartMainTransition
     mov r0, #0x1
     mov r1, #0x10
-    bl func_02002d74
+    bl DisplayBrightness_StartSubTransition
     bl GameWork_Reset
     mov r0, #0x1
     bl func_0200c228

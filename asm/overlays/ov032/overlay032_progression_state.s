@@ -5,8 +5,8 @@
 .extern GameWork_TestFlag
 .extern data_021f5f18
 .extern data_ov032_02202220
-.extern func_02002d54
-.extern func_02002d94
+.extern DisplayBrightness_StartMainTransition
+.extern DisplayBrightness_IsMainTransitionComplete
 .extern func_02072b68
 .extern func_02098348
 .extern func_ov032_021fe0e8
@@ -131,13 +131,13 @@ L_021ff828:
     mov r0, #0x2
     str r1, [r4, #0xc24]
     mov r1, #0x10
-    bl func_02002d54
+    bl DisplayBrightness_StartMainTransition
     ldr r0, [r4, #0xb64]
     add r0, r0, #0x1
     str r0, [r4, #0xb64]
     b L_0220016c
 L_021ff84c:
-    bl func_02002d94
+    bl DisplayBrightness_IsMainTransitionComplete
     cmp r0, #0x0
     beq L_0220016c
     ldr r1, [r4, #0xc24]
@@ -211,13 +211,13 @@ L_021ff944:
 L_021ff954:
     mov r0, #0x1
     mov r1, #0x10
-    bl func_02002d54
+    bl DisplayBrightness_StartMainTransition
     ldr r0, [r4, #0xb64]
     add r0, r0, #0x1
     str r0, [r4, #0xb64]
     b L_0220016c
 L_021ff970:
-    bl func_02002d94
+    bl DisplayBrightness_IsMainTransitionComplete
     cmp r0, #0x0
     movne r0, #0xa
     strne r0, [r4, #0xb64]
@@ -417,13 +417,13 @@ L_021ffbfc:
 L_021ffc38:
     mov r0, #0x1
     mov r1, #0x10
-    bl func_02002d54
+    bl DisplayBrightness_StartMainTransition
     ldr r0, [r4, #0xb64]
     add r0, r0, #0x1
     str r0, [r4, #0xb64]
     b L_0220016c
 L_021ffc54:
-    bl func_02002d94
+    bl DisplayBrightness_IsMainTransitionComplete
     cmp r0, #0x0
     beq L_0220016c
     mov r0, #0x78
@@ -655,13 +655,13 @@ L_021fff5c:
     bl func_ov032_021fe848
     mov r0, #0x1
     mov r1, #0x10
-    bl func_02002d54
+    bl DisplayBrightness_StartMainTransition
     ldr r0, [r4, #0xb64]
     add r0, r0, #0x1
     str r0, [r4, #0xb64]
     b L_0220016c
 L_021fffc0:
-    bl func_02002d94
+    bl DisplayBrightness_IsMainTransitionComplete
     cmp r0, #0x0
     beq L_0220016c
     mov r0, r4
@@ -674,13 +674,13 @@ L_021fffc0:
 L_021fffe8:
     mov r0, #0x2
     mov r1, #0x10
-    bl func_02002d54
+    bl DisplayBrightness_StartMainTransition
     ldr r0, [r4, #0xb64]
     add r0, r0, #0x1
     str r0, [r4, #0xb64]
     b L_0220016c
 L_02200004:
-    bl func_02002d94
+    bl DisplayBrightness_IsMainTransitionComplete
     cmp r0, #0x0
     ldrne r0, [r4, #0xb64]
     addne r0, r0, #0x1
@@ -751,7 +751,7 @@ L_022000f8:
     str r0, [r4, #0xb64]
     b L_0220016c
 L_02200110:
-    bl func_02002d94
+    bl DisplayBrightness_IsMainTransitionComplete
     cmp r0, #0x0
     ldrne r0, [r4, #0xb64]
     addne r0, r0, #0x1

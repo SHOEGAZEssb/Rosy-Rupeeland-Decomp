@@ -13,8 +13,8 @@ extern const u8 data_ov032_02202220[];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_02002d54(...);
-extern s32 func_02002d94(void);
+extern void DisplayBrightness_StartMainTransition(...);
+extern s32 DisplayBrightness_IsMainTransitionComplete(void);
 extern void func_ov032_021fe4a8(void);
 extern void func_ov032_0220173c(...);
 extern s32 func_ov032_02201960(void *);
@@ -50,11 +50,11 @@ extern "C" s32 func_ov032_021ff308(void *scene)
 {
     switch (FIELD(s32, scene, 0xb64)) {
     case 0:
-        func_02002d54(2, 0x10);
+        DisplayBrightness_StartMainTransition(2, 0x10);
         ++FIELD(s32, scene, 0xb64);
         break;
     case 1:
-        if (func_02002d94()) ++FIELD(s32, scene, 0xb64);
+        if (DisplayBrightness_IsMainTransitionComplete()) ++FIELD(s32, scene, 0xb64);
         break;
     case 2: {
         func_ov032_021fe4a8();
@@ -68,11 +68,11 @@ extern "C" s32 func_ov032_021ff308(void *scene)
         break;
     }
     case 3:
-        func_02002d54(1, 0x10);
+        DisplayBrightness_StartMainTransition(1, 0x10);
         ++FIELD(s32, scene, 0xb64);
         break;
     case 4:
-        if (func_02002d94()) FIELD(s32, scene, 0xb64) = 10;
+        if (DisplayBrightness_IsMainTransitionComplete()) FIELD(s32, scene, 0xb64) = 10;
         break;
     case 10:
         if (func_ov032_02201960((u8 *)scene + 0xec4))
@@ -93,11 +93,11 @@ extern "C" s32 func_ov032_021ff308(void *scene)
         FIELD(s32, scene, 0xb64) = 10;
         break;
     case 90:
-        func_02002d54(2, 0x10);
+        DisplayBrightness_StartMainTransition(2, 0x10);
         ++FIELD(s32, scene, 0xb64);
         break;
     case 91:
-        if (func_02002d94()) ++FIELD(s32, scene, 0xb64);
+        if (DisplayBrightness_IsMainTransitionComplete()) ++FIELD(s32, scene, 0xb64);
         break;
     case 92:
         REG32(0x04000000) = (REG32(0x04000000) & ~0x1f00) | 0x1300;
@@ -125,7 +125,7 @@ extern "C" s32 func_ov032_021ff308(void *scene)
         ++FIELD(s32, scene, 0xb64);
         break;
     case 94:
-        if (func_02002d94()) ++FIELD(s32, scene, 0xb64);
+        if (DisplayBrightness_IsMainTransitionComplete()) ++FIELD(s32, scene, 0xb64);
         break;
     case 95:
         func_ov032_021fe2bc(scene, 0x23);

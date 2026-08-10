@@ -6,7 +6,7 @@
 .extern data_020f4e18
 .extern data_021052fc
 .extern data_021f3d68
-.extern func_02002e38
+.extern DisplayController_GetVerticalOffset
 .extern func_02004fe0
 .extern func_0200500c
 .extern func_02005030
@@ -132,7 +132,7 @@ func_02024b04: ; 0x02024b04
     ldr r0, [r6, #0x4c]
     cmp r0, #0x0
     beq .L_02024cb8
-    bl func_02002e38
+    bl DisplayController_GetVerticalOffset
     ldr r1, [r6, #0x54]
     add r2, r5, #0xc0
     strh r4, [r1, #0x2c]

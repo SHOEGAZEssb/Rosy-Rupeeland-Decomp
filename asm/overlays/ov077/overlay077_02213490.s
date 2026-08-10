@@ -6,7 +6,7 @@
 .extern data_ov077_02217030
 .extern data_ov077_022174c8
 .extern data_ov077_022174d0
-.extern func_02002e38
+.extern DisplayController_GetVerticalOffset
 .extern func_02005580
 .extern func_0200572c
 .extern func_02007f0c
@@ -60,7 +60,7 @@ func_ov077_02213490:
     bl func_02007f0c
     bl ActorCollection_GetSpriteOwner
     mov r11, r0
-    bl func_02002e38
+    bl DisplayController_GetVerticalOffset
     mov r1, #0x2
     stmia sp, {r1, r8}
     str r7, [sp, #0x8]

@@ -35,7 +35,7 @@ extern void func_020ae90c(void *object);
 extern void *func_0201022c(void *task, GamePhaseRuntime *runtime);
 extern void func_02006ff0(GamePhaseRuntime *runtime);
 extern void GXS_SetGraphicsMode(u32 bgMode);
-extern void func_02002e5c(s32 value);
+extern void DisplayController_SetVerticalOffset(s32 value);
 extern void func_0200a35c(void *object);
 extern void func_020090c0(void *object);
 extern void func_0200ae8c(void *object);
@@ -134,7 +134,7 @@ void func_02006bdc(GamePhaseRuntime *self, const void *configPointer,
     *(volatile u32 *)0x04001000 =
         (*(volatile u32 *)0x04001000 & ~0x1f00) | 0x1000;
 
-    func_02002e5c(*(const s16 *)(config + 0x54));
+    DisplayController_SetVerticalOffset(*(const s16 *)(config + 0x54));
     func_0200a35c(bytes + 0x2fbc);
     func_020090c0(bytes + 0x3044);
     func_0200ae8c(data_02105310);

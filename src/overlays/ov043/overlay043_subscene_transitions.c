@@ -19,7 +19,7 @@ extern "C" u32 data_ov043_0220c460[];
 extern "C" u32 data_ov043_0220c468[];
 extern "C" u32 data_ov043_0220c478[];
 extern "C" void func_02092c8c(s32 screen, s32 brightness);
-extern "C" s32 func_02002d94(void);
+extern "C" s32 DisplayBrightness_IsMainTransitionComplete(void);
 extern "C" void func_ov043_0220bcf4(void *object);
 extern "C" void func_ov043_0220bd24(void *object);
 extern "C" void func_020755bc(void *font);
@@ -84,7 +84,7 @@ extern "C" s32 func_ov043_0220bed4(void *object)
         advance_state(object);
         /* fall through */
     case 1:
-        if (!func_02002d94()) {
+        if (!DisplayBrightness_IsMainTransitionComplete()) {
             func_ov043_0220bd24(object);
             break;
         }
@@ -106,7 +106,7 @@ extern "C" s32 func_ov043_0220bed4(void *object)
         break;
     case 2:
         func_02091fb0(FIELD(void *, object, 0x2f4), 0);
-        if (func_02002d94())
+        if (DisplayBrightness_IsMainTransitionComplete())
             advance_state(object);
         break;
     case 3:
@@ -117,7 +117,7 @@ extern "C" s32 func_ov043_0220bed4(void *object)
         break;
     case 4:
         func_02091fb0(FIELD(void *, object, 0x2f4), 0);
-        if (!func_02002d94())
+        if (!DisplayBrightness_IsMainTransitionComplete())
             break;
         {
             void *child = FIELD(void *, object, 0x2f4);
@@ -149,7 +149,7 @@ extern "C" s32 func_ov043_0220bed4(void *object)
         }
         break;
     case 5:
-        if (func_02002d94())
+        if (DisplayBrightness_IsMainTransitionComplete())
             func_ov043_0220b744(object, data_ov043_0220c450[0],
                                  data_ov043_0220c450[1]);
         else
@@ -176,7 +176,7 @@ extern "C" s32 func_ov043_0220c1b0(void *object)
         advance_state(object);
         /* fall through */
     case 1:
-        if (!func_02002d94()) {
+        if (!DisplayBrightness_IsMainTransitionComplete()) {
             func_ov043_0220bd24(object);
             break;
         }
@@ -196,7 +196,7 @@ extern "C" s32 func_ov043_0220c1b0(void *object)
         break;
     case 2:
         func_02091fb0(FIELD(void *, object, 0x2f4), 0);
-        if (func_02002d94())
+        if (DisplayBrightness_IsMainTransitionComplete())
             advance_state(object);
         break;
     case 3:
@@ -207,7 +207,7 @@ extern "C" s32 func_ov043_0220c1b0(void *object)
         break;
     case 4:
         func_02091fb0(FIELD(void *, object, 0x2f4), 0);
-        if (!func_02002d94())
+        if (!DisplayBrightness_IsMainTransitionComplete())
             break;
         FIELD(u32, object, 0x20) &= ~0x400;
         destroy_child(object);
@@ -221,7 +221,7 @@ extern "C" s32 func_ov043_0220c1b0(void *object)
         }
         break;
     case 5:
-        if (func_02002d94())
+        if (DisplayBrightness_IsMainTransitionComplete())
             func_ov043_0220b744(object, data_ov043_0220c460[0],
                                  data_ov043_0220c460[1]);
         else

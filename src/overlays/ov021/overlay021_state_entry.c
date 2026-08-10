@@ -24,7 +24,7 @@ extern "C" {
 #endif
 extern void GameWork_ClearFlag(void *, u32);
 extern s32 GameWork_TestFlag(void *, u32);
-extern s32 func_02002d94(void);
+extern s32 DisplayBrightness_IsMainTransitionComplete(void);
 extern void func_0201140c(void *, s32);
 extern void func_02075598(void *, void *);
 extern void func_020755bc(void *);
@@ -135,7 +135,7 @@ extern "C" s32 func_ov021_021ff834(void *state)
         FIELD(s32, state, 8) = 0;
         /* Deliberate fall-through to wait state 1. */
     case 1:
-        if (func_02002d94() != 0) {
+        if (DisplayBrightness_IsMainTransitionComplete() != 0) {
             const void *content =
                 func_0207c4cc(FIELD(void *, state, 0x2bc), 0);
             func_ov021_021ff1d0(state, content);
@@ -162,7 +162,7 @@ extern "C" s32 func_ov021_021ff834(void *state)
         }
         break;
     case 3:
-        if (func_02002d94() != 0) {
+        if (DisplayBrightness_IsMainTransitionComplete() != 0) {
             func_020939d8(FIELD(void *, state, 0x388));
             func_020755bc(data_020f4e14);
             func_ov021_021fe63c(state);
@@ -216,7 +216,7 @@ extern "C" s32 func_ov021_021ffa38(void *state)
         FIELD(s32, state, 8) = 0;
         /* Deliberate fall-through to wait state 1. */
     case 1:
-        if (func_02002d94() != 0) {
+        if (DisplayBrightness_IsMainTransitionComplete() != 0) {
             FIELD(s32, state, 4)++;
             FIELD(s32, state, 8) = 0;
         }
@@ -263,7 +263,7 @@ extern "C" s32 func_ov021_021ffa38(void *state)
         }
         break;
     case 3:
-        if (func_02002d94() != 0) {
+        if (DisplayBrightness_IsMainTransitionComplete() != 0) {
             func_ov021_021ff050(state, FIELD(s32, state, 0x2c4));
             func_ov021_021fd1cc(FIELD(void *, state, 0x2c0));
             func_ov021_021fd39c(FIELD(void *, state, 0x2c0));
@@ -275,7 +275,7 @@ extern "C" s32 func_ov021_021ffa38(void *state)
         }
         break;
     case 4:
-        if (func_02002d94() != 0)
+        if (DisplayBrightness_IsMainTransitionComplete() != 0)
             func_ov021_021fd7c0(state, data_ov021_02202f10[0],
                                 data_ov021_02202f10[1]);
         break;

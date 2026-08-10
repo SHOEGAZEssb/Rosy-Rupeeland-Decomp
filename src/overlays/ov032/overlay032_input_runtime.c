@@ -43,8 +43,8 @@ extern u32 genrand_int32(void);
 extern s32 func_020bf1f8(...);
 extern void func_020939d8(void *);
 extern u32 func_02093360(...);
-extern s32 func_02002cd0(void *);
-extern void func_02002ac0(...);
+extern s32 DisplayBrightness_GetCurrent(void *);
+extern void DisplayBrightness_StartTransition(...);
 extern void *func_02079408(...);
 extern void func_02092e9c(...);
 #ifdef __cplusplus
@@ -203,11 +203,11 @@ extern "C" void func_ov032_021fe23c(void *scene, s32 enabled)
     s32 active = FIELD(s32, scene, 0xbc8);
     if (enabled && !active) {
         void *handle = FIELD(void *, scene, 0xbe0);
-        func_02002ac0(handle, func_02002cd0(handle), -8, 8);
+        DisplayBrightness_StartTransition(handle, DisplayBrightness_GetCurrent(handle), -8, 8);
         FIELD(s32, scene, 0xbc8) = 1;
     } else if (!enabled && active) {
         void *handle = FIELD(void *, scene, 0xbe0);
-        func_02002ac0(handle, func_02002cd0(handle), 0, 8);
+        DisplayBrightness_StartTransition(handle, DisplayBrightness_GetCurrent(handle), 0, 8);
         FIELD(s32, scene, 0xbc8) = 0;
     }
 }

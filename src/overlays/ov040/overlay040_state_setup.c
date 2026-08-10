@@ -47,8 +47,8 @@ extern void func_02070eac(void *resource, s32 first, s32 second);
 extern void func_02072000(void *set);
 extern void func_020afd28(volatile void *reg, const void *transform,
                           s32 a2, s32 a3, s32 a4, s32 a5);
-extern void *func_02002d28(void *resource, s32 index);
-extern void func_02002ac0(void *object, s32 x, s32 y, s32 value);
+extern void *DisplayBrightnessPair_GetScreen(void *resource, s32 index);
+extern void DisplayBrightness_StartTransition(void *object, s32 x, s32 y, s32 value);
 extern void *func_0209a208(void *scene, s32 first, s32 second, s32 third,
                            void *argument, s32 value);
 extern void *func_020755e0(void *font);
@@ -360,7 +360,7 @@ extern "C" void func_ov040_02202640(void *scene, void *argument)
 
     func_020afd28((volatile void *)0x04001020, transform, 0, 0, 0, 0);
     func_020afd28((volatile void *)0x04001030, transform, 0, 0, 0, 0);
-    func_02002ac0(func_02002d28(data_020f4dc8, 1), -0x10, 0, 10);
+    DisplayBrightness_StartTransition(DisplayBrightnessPair_GetScreen(data_020f4dc8, 1), -0x10, 0, 10);
 
     FIELD(void *, scene, 0x58) =
         create_sub_object(scene, 0x13c3, argument, 0xdc000, 0x5f000, 0);

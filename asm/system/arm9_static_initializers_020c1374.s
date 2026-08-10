@@ -8,7 +8,7 @@
 .extern __register_global_object
 .extern func_02001d10
 .extern func_02002068
-.extern func_02002cdc
+.extern DisplayBrightnessPair_Init
 .extern func_020083b0
 .extern func_0200ad90
 .extern func_02059a48
@@ -80,7 +80,7 @@
 .extern data_021f5f18
 .extern func_02001d30
 .extern func_020020a0
-.extern func_02002d24
+.extern DisplayBrightnessPair_Destroy
 .extern func_02004ac8
 .extern func_0200ae10
 .extern func_02022fbc
@@ -170,14 +170,14 @@ __sinit_020c13a0: ; 0x020c13a0
 __sinit_020c13cc: ; 0x020c13cc
     stmdb sp!, {r3, lr}
     ldr r0, .L_020c13ec
-    bl func_02002cdc
+    bl DisplayBrightnessPair_Init
     ldr r0, .L_020c13ec
     ldr r1, .L_020c13f0
     ldr r2, .L_020c13f4
     bl __register_global_object
     ldmia sp!, {r3, pc}
 .L_020c13ec: .word data_020f4dc8
-.L_020c13f0: .word func_02002d24
+.L_020c13f0: .word DisplayBrightnessPair_Destroy
 .L_020c13f4: .word data_020f4dbc
 
 __sinit_020c13f8: ; 0x020c13f8

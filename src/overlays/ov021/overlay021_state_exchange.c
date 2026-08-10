@@ -29,7 +29,7 @@ extern void *gLupyContext;
 extern "C" {
 #endif
 extern void GameWork_ClearFlag(void *, u32);
-extern s32 func_02002d94(void);
+extern s32 DisplayBrightness_IsMainTransitionComplete(void);
 extern s32 func_02010b64(void *);
 extern void func_02010c00(void *, s32, s32);
 extern void func_02062ca8(void *);
@@ -202,7 +202,7 @@ extern "C" s32 func_ov021_02200d10(void *state)
         FIELD(s32, state, 8) = 0;
         /* Deliberate fall-through. */
     case 1: {
-        if (func_02002d94() == 0)
+        if (DisplayBrightness_IsMainTransitionComplete() == 0)
             break;
         u8 *desc = FIELD(u8 *, state, 0x2bc);
         s32 amount = FIELD(s32, state, 0x394);
@@ -257,7 +257,7 @@ extern "C" s32 func_ov021_02200d10(void *state)
         }
         break;
     case 5:
-        if (func_02002d94() != 0)
+        if (DisplayBrightness_IsMainTransitionComplete() != 0)
             change_state(state, data_ov021_02202e58);
         break;
     case 10: {
@@ -278,7 +278,7 @@ extern "C" s32 func_ov021_02200d10(void *state)
         }
         break;
     case 30:
-        if (func_02002d94() != 0) {
+        if (DisplayBrightness_IsMainTransitionComplete() != 0) {
             func_ov021_021fee14(state);
             func_ov021_021fe6b0(state);
             func_ov021_021ff050(state, FIELD(s32, state, 0x2c4));
@@ -334,7 +334,7 @@ extern "C" s32 func_ov021_022011a4(void *state)
         FIELD(s32, state, 8) = 0;
         /* Deliberate fall-through. */
     case 1:
-        if (func_02002d94() != 0) {
+        if (DisplayBrightness_IsMainTransitionComplete() != 0) {
             func_ov021_021fee14(state);
             func_ov021_021fe6b0(state);
             func_ov021_021ff050(state, FIELD(s32, state, 0x2c4));
@@ -357,7 +357,7 @@ extern "C" s32 func_ov021_022011a4(void *state)
         }
         break;
     case 2:
-        if (func_02002d94() != 0) {
+        if (DisplayBrightness_IsMainTransitionComplete() != 0) {
             FIELD(s32, state, 0x3e0) = 0;
             change_state(state, data_ov021_02202e20);
         }
@@ -385,7 +385,7 @@ extern "C" s32 func_ov021_022012f0(void *state)
         FIELD(s32, state, 8) = 0;
         /* Deliberate fall-through. */
     case 1:
-        if (func_02002d94() != 0) {
+        if (DisplayBrightness_IsMainTransitionComplete() != 0) {
             func_02095940((u8 *)state + 0xa0);
             func_ov021_021ff050(state, FIELD(s32, state, 0x2c4));
             func_020755bc(data_020f4e14);
@@ -402,7 +402,7 @@ extern "C" s32 func_ov021_022012f0(void *state)
         FIELD(s32, state, 8) = 0;
         break;
     case 3:
-        if (func_02002d94() != 0)
+        if (DisplayBrightness_IsMainTransitionComplete() != 0)
             change_state(state, data_ov021_02202e18);
         break;
     }

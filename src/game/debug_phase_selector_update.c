@@ -11,9 +11,9 @@ extern "C" {
 #endif
 extern const u8 data_020d52f8[];
 extern void DebugText_BeginFrame(void);
-extern void func_02002d54(s32 screen, s32 frames);
-extern void func_02002d74(s32 screen, s32 frames);
-extern s32 func_02002d94(void);
+extern void DisplayBrightness_StartMainTransition(s32 screen, s32 frames);
+extern void DisplayBrightness_StartSubTransition(s32 screen, s32 frames);
+extern s32 DisplayBrightness_IsMainTransitionComplete(void);
 extern void *func_02082db4(void *allocation);
 #ifdef __cplusplus
 }
@@ -44,8 +44,8 @@ s32 func_0200c360(DebugPhaseSelector *self)
             return 1;
         }
         if (self->selectedPhase != -1) {
-            func_02002d54(2, 0x10);
-            func_02002d74(2, 0x10);
+            DisplayBrightness_StartMainTransition(2, 0x10);
+            DisplayBrightness_StartSubTransition(2, 0x10);
             self->state++;
         } else if (pressed & 4) {
             volatile u32 *subDisplayControl = (volatile u32 *)0x04001000;
@@ -62,8 +62,8 @@ s32 func_0200c360(DebugPhaseSelector *self)
         } else if (pressed & 1) {
             self->selectedPhase = self->grid.selectedCell * 90 +
                                   self->row * 10 + self->column;
-            func_02002d54(2, 0x10);
-            func_02002d74(2, 0x10);
+            DisplayBrightness_StartMainTransition(2, 0x10);
+            DisplayBrightness_StartSubTransition(2, 0x10);
             self->state++;
         } else if (pressed & 0x100) {
             self->grid.selectedCell++;
@@ -87,7 +87,7 @@ s32 func_0200c360(DebugPhaseSelector *self)
                     self->column = 0;
             }
         }
-    } else if (self->state == 1 && func_02002d94()) {
+    } else if (self->state == 1 && DisplayBrightness_IsMainTransitionComplete()) {
         s32 phase = self->selectedPhase;
         DebugText_BeginFrame();
         if (self != 0)

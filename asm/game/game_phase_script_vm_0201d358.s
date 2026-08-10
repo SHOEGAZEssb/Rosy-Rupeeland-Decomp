@@ -9,7 +9,7 @@
 .extern func_020062a0
 .extern func_020062f8
 .extern func_02092c8c
-.extern func_02002db0
+.extern DisplayBrightness_IsSubTransitionComplete
 .extern func_020122a0
 .extern func_0201140c
 .extern func_020088b8
@@ -53,7 +53,7 @@ L_0201d388:
     add r0, r0, #0x1
     str r0, [r4, #0x40]
 L_0201d3ac:
-    bl func_02002db0
+    bl DisplayBrightness_IsSubTransitionComplete
     cmp r0, #0x0
     beq L_0201d5ec
     ldr r0, L_0201d604
@@ -129,7 +129,7 @@ L_0201d4b0:
     ldr r0, [r4, #0x24]
     mov r1, #0x0
     bl func_02091fb0
-    bl func_02002db0
+    bl DisplayBrightness_IsSubTransitionComplete
     cmp r0, #0x0
     ldrne r0, [r4, #0x40]
     addne r0, r0, #0x1
@@ -152,7 +152,7 @@ L_0201d504:
     ldr r0, [r4, #0x24]
     mov r1, #0x0
     bl func_02091fb0
-    bl func_02002db0
+    bl DisplayBrightness_IsSubTransitionComplete
     cmp r0, #0x0
     beq L_0201d5ec
     ldr r0, [r4, #0x24]
@@ -200,7 +200,7 @@ L_0201d5a4:
     str r0, [r4, #0x40]
     b L_0201d5ec
 L_0201d5c0:
-    bl func_02002db0
+    bl DisplayBrightness_IsSubTransitionComplete
     cmp r0, #0x0
     beq L_0201d5ec
     cmp r4, #0x0

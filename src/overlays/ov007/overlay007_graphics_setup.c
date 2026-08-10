@@ -42,8 +42,8 @@ extern void func_02072000(Overlay007GraphicsResourceSet *set);
 extern void func_020afd28(volatile void *registers,
                           const Overlay007AffineMatrix *matrix, s32 width,
                           s32 height, s32 centerX, s32 centerY);
-extern void *func_02002d28(void *context, s32 first, s32 second);
-extern void func_02002ac0(void *object, s32 first, s32 second, s32 third);
+extern void *DisplayBrightnessPair_GetScreen(void *context, s32 first, s32 second);
+extern void DisplayBrightness_StartTransition(void *object, s32 first, s32 second, s32 third);
 extern void GraphicsResourceSet_Destroy(Overlay007GraphicsResourceSet *set);
 #ifdef __cplusplus
 }
@@ -62,8 +62,8 @@ extern void GraphicsResourceSet_Destroy(Overlay007GraphicsResourceSet *set);
  *
  * Apply the identity 20.12 matrix {0x1000,0,0,0x1000} with zero extents/centers
  * to sub BG2/BG3 blocks 0x04001020/0x04001030. Set state +0xD4 to 2, call
- * func_02002d28(data_020f4dc8,1,2), pass its result to
- * func_02002ac0(result,-16,0,10), destroy the temporary resource set, and
+ * DisplayBrightnessPair_GetScreen(data_020f4dc8,1,2), pass its result to
+ * DisplayBrightness_StartTransition(result,-16,0,10), destroy the temporary resource set, and
  * return no value. All MMIO destinations, resource IDs, and transfer ordering
  * are confirmed; helper-level SDK semantics remain partially unidentified.
  */
@@ -104,7 +104,7 @@ void func_ov007_021fbaf0(void *state)
     func_020afd28((volatile void *)0x04001020, &matrix, 0, 0, 0, 0);
     func_020afd28((volatile void *)0x04001030, &matrix, 0, 0, 0, 0);
     *(s32 *)((u8 *)state + 0xd4) = 2;
-    effect = func_02002d28(data_020f4dc8, 1, 2);
-    func_02002ac0(effect, -16, 0, 10);
+    effect = DisplayBrightnessPair_GetScreen(data_020f4dc8, 1, 2);
+    DisplayBrightness_StartTransition(effect, -16, 0, 10);
     GraphicsResourceSet_Destroy(&set);
 }

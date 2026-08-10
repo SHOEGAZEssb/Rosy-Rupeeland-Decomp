@@ -59,7 +59,7 @@ extern u8 *func_02079a7c(void *table, s32 index);
 extern u8 *func_02073ffc(void *owner, void *resource, s32 mode);
 extern void func_02072b68(void *sprite, s32 frame);
 extern void func_02074038(void *owner, void *sprite);
-extern s32 func_02002e38(void);
+extern s32 DisplayController_GetVerticalOffset(void);
 extern s32 func_02091a70(s32, s32, s32, s32);
 extern s32 GameWork_TestFlag(void *, u16);
 extern void GameWork_SetFlag(void *, u16);
@@ -132,7 +132,7 @@ LaunchedSpritePairPresentation *func_02024b04(
     if (self->secondaryOwner4c != 0) {
         *(u16 *)(self->secondarySprite54 + 0x2c) = (u16)screenX;
         *(u16 *)(self->secondarySprite54 + 0x2e) =
-            (u16)(screenY + 0xc0 + func_02002e38());
+            (u16)(screenY + 0xc0 + DisplayController_GetVerticalOffset());
     }
     self->acceleration2c = 0;
     self->angle30 = 0;
@@ -183,7 +183,7 @@ LaunchedSpritePairPresentation *func_02024dac(
  * a sine/easing horizontal velocity, advances angle by 0x400 and frame count.
  *
  * Every update projects position+velocity relative to anchor into sprite x/y;
- * the optional secondary adds 0xc0 and func_02002e38. Return one after 240
+ * the optional secondary adds 0xc0 and DisplayController_GetVerticalOffset. Return one after 240
  * launched frames or when the primary passes its secondary-dependent lower
  * boundary; without a secondary the limits are 120 frames and y < -32.
  */
@@ -254,10 +254,10 @@ s32 func_02024e24(LaunchedSpritePairPresentation *self)
     if (self->secondarySprite54 != 0) {
         *(u16 *)(self->secondarySprite54 + 0x2c) = (u16)screenX;
         *(u16 *)(self->secondarySprite54 + 0x2e) =
-            (u16)(screenY + 0xc0 + func_02002e38());
+            (u16)(screenY + 0xc0 + DisplayController_GetVerticalOffset());
         return self->frame34 >= 0xf0 ||
                *(s16 *)(self->primarySprite50 + 0x2e) <
-                   -0xe0 - func_02002e38();
+                   -0xe0 - DisplayController_GetVerticalOffset();
     }
     return self->frame34 >= 0x78 ||
            *(s16 *)(self->primarySprite50 + 0x2e) < -0x20;

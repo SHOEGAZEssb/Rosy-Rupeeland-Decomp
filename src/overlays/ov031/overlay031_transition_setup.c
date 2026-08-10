@@ -28,8 +28,8 @@ extern void func_02074110(void *);
 extern void func_ov031_021fce00(void *, s32, s32);
 extern void GXx_SetMasterBrightness_(void *, s32);
 extern void func_ov031_021fe148(s32, s32, s32, s32, s32);
-extern void *func_02002d28(void *);
-extern void func_02002ac0(void *, s32, s32, s32);
+extern void *DisplayBrightnessPair_GetScreen(void *);
+extern void DisplayBrightness_StartTransition(void *, s32, s32, s32);
 #ifdef __cplusplus
 }
 #endif
@@ -150,7 +150,7 @@ extern "C" void func_ov031_021fe1a8(void *scene)
     func_02070eac((void *)resources[2], 0, 0);
     FIELD(s32, FIELD(void *, scene, 0x58), 0x20) = 1;
     *(volatile u32 *)0x04001010 = 0;
-    void *transition = func_02002d28(data_020f4dc8[0]);
-    func_02002ac0(transition, -16, 0, 8);
+    void *transition = DisplayBrightnessPair_GetScreen(data_020f4dc8[0]);
+    DisplayBrightness_StartTransition(transition, -16, 0, 8);
     GraphicsResourceSet_Destroy(resources);
 }

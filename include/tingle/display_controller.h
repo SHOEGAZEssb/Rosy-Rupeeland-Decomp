@@ -14,20 +14,20 @@ typedef char DisplayBrightnessPairSizeCheck[
 extern "C" {
 #endif
 
-DisplayBrightnessPair *func_02002cdc(DisplayBrightnessPair *pair);
-void func_02002d24(DisplayBrightnessPair *pair);
-DisplayBrightness *func_02002d28(DisplayBrightnessPair *pair, u32 screen);
-void func_02002d34(void);
-void func_02002d54(s32 direction, fx32 transitionDivisor);
-void func_02002d74(s32 direction, fx32 transitionDivisor);
-s32 func_02002d94(void);
-s32 func_02002db0(void);
-s32 func_02002dcc(void);
-s32 func_02002df0(void);
-s32 func_02002e14(void);
-u8 func_02002e38(void);
-u32 func_02002e48(void);
-void func_02002e5c(u8 value);
+DisplayBrightnessPair *DisplayBrightnessPair_Init(DisplayBrightnessPair *pair);
+void DisplayBrightnessPair_Destroy(DisplayBrightnessPair *pair);
+DisplayBrightness *DisplayBrightnessPair_GetScreen(DisplayBrightnessPair *pair, u32 screen);
+void DisplayBrightness_UpdateAll(void);
+void DisplayBrightness_StartMainTransition(s32 direction, fx32 transitionDivisor);
+void DisplayBrightness_StartSubTransition(s32 direction, fx32 transitionDivisor);
+s32 DisplayBrightness_IsMainTransitionComplete(void);
+s32 DisplayBrightness_IsSubTransitionComplete(void);
+s32 DisplayBrightness_IsSubTransitionIncreasing(void);
+s32 DisplayBrightness_IsMainTransitionDecreasing(void);
+s32 DisplayBrightness_IsSubTransitionDecreasing(void);
+u8 DisplayController_GetVerticalOffset(void);
+u32 DisplayController_GetSubScreenVerticalOffset(void);
+void DisplayController_SetVerticalOffset(u8 value);
 
 #ifdef __cplusplus
 }

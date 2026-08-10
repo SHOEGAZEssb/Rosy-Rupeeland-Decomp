@@ -22,7 +22,7 @@ extern void *gDebugFont;
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern s32 func_02002d94(void);
+extern s32 DisplayBrightness_IsMainTransitionComplete(void);
 extern void func_020755bc(void *);
 extern const void *func_0207c4cc(void *, s32);
 extern void func_02091bac(void *, s32, s32, s32, s32);
@@ -254,7 +254,7 @@ static s32 detail_machine(void *scene, void *entry, void **next)
                             func_02091c7c(transition, 1));
         func_ov045_0220c2a0(FIELD(void *, scene, 0x4bc),
                             func_02091bd0(transition, 1, 0x200, 0x180));
-        if (func_02091cf0(transition) && func_02002d94()) {
+        if (func_02091cf0(transition) && DisplayBrightness_IsMainTransitionComplete()) {
             void *record = FIELD(void *, entry, 0);
             const void *text = func_0207c4cc(
                 record, FIELD(s32, record, 0xc));

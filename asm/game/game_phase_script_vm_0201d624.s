@@ -9,7 +9,7 @@
 .extern func_020062a0
 .extern func_020062f8
 .extern func_02092c8c
-.extern func_02002db0
+.extern DisplayBrightness_IsSubTransitionComplete
 .extern func_020122a0
 .extern func_0201140c
 .extern func_020088b8

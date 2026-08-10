@@ -6,8 +6,8 @@
 .extern data_020f4dc8
 .extern data_021052fc
 .extern data_ov064_02211ecc
-.extern func_02002ac0
-.extern func_02002d28
+.extern DisplayBrightness_StartTransition
+.extern DisplayBrightnessPair_GetScreen
 .extern func_02009d78
 .extern func_02010c00
 .extern func_0201ded4
@@ -141,18 +141,18 @@ func_ov064_02211114:
     ble .L_02211344
     ldr r0, .L_02211370
     mov r1, #0x0
-    bl func_02002d28
+    bl DisplayBrightnessPair_GetScreen
     mov r1, #0x0
     sub r2, r1, #0x10
     mov r3, #0x3c
-    bl func_02002ac0
+    bl DisplayBrightness_StartTransition
     ldr r0, .L_02211370
     mov r1, #0x1
-    bl func_02002d28
+    bl DisplayBrightnessPair_GetScreen
     mov r1, #0x0
     sub r2, r1, #0x10
     mov r3, #0x3c
-    bl func_02002ac0
+    bl DisplayBrightness_StartTransition
     mov r1, #0x0
     strh r1, [r6, #0x74]
     ldr r2, [r6, #0x8]

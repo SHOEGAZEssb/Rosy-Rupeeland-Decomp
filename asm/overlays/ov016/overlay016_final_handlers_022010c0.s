@@ -3,7 +3,7 @@
 /* Exact fallback; see src/overlays/ov016/overlay016_final_handlers.c. */
     .extern data_020f4e14
     .extern data_ov016_02201430
-    .extern func_02002d94
+    .extern DisplayBrightness_IsMainTransitionComplete
     .extern func_020755bc
     .extern func_02092c8c
     .extern func_ov016_021fd3f8
@@ -36,7 +36,7 @@ L_022010e8:
     str r1, [r4, #0x4]
     str r0, [r4, #0x8]
 L_02201108:
-    bl func_02002d94
+    bl DisplayBrightness_IsMainTransitionComplete
     cmp r0, #0x0
     beq L_022011a8
     mov r0, r4
@@ -65,7 +65,7 @@ L_02201108:
     str r0, [r4, #0x8]
     b L_022011a8
 L_02201178:
-    bl func_02002d94
+    bl DisplayBrightness_IsMainTransitionComplete
     cmp r0, #0x0
     beq L_022011a8
     ldr r1, L_022011bc

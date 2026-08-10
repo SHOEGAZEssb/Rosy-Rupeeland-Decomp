@@ -22,7 +22,7 @@ extern void *gLupyContext;
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern s32 func_02002d94(void);
+extern s32 DisplayBrightness_IsMainTransitionComplete(void);
 extern s32 func_02010b64(void *);
 extern void func_02010c00(void *, s32, s32);
 extern void func_02062ca8(void *);
@@ -236,7 +236,7 @@ extern "C" s32 func_ov021_02201f98(void *state)
         }
         break;
     case 2:
-        if (func_02002d94() != 0) {
+        if (DisplayBrightness_IsMainTransitionComplete() != 0) {
             func_ov021_021ff0e0(state, 6);
             FIELD(s32, state, 4)++;
             FIELD(s32, state, 8) = 0;
@@ -257,7 +257,7 @@ extern "C" s32 func_ov021_02201f98(void *state)
         }
         break;
     case 5:
-        if (func_02002d94() != 0) {
+        if (DisplayBrightness_IsMainTransitionComplete() != 0) {
             func_ov021_021fecd0(state);
             change_state(state, data_ov021_02202d50);
         }
@@ -284,7 +284,7 @@ extern "C" s32 func_ov021_02202194(void *state)
         FIELD(s32, state, 8) = 0;
         /* Deliberate fall-through. */
     case 1:
-        if (func_02002d94() != 0) {
+        if (DisplayBrightness_IsMainTransitionComplete() != 0) {
             func_ov021_021fea68(state);
             func_ov021_021fecd0(state);
             func_ov021_021fe144(state);
@@ -300,7 +300,7 @@ extern "C" s32 func_ov021_02202194(void *state)
         }
         break;
     case 2:
-        if (func_02002d94() != 0)
+        if (DisplayBrightness_IsMainTransitionComplete() != 0)
             change_state(state, data_ov021_02202d88);
         break;
     }
@@ -325,7 +325,7 @@ extern "C" s32 func_ov021_022022a4(void *state)
         FIELD(s32, state, 8) = 0;
         /* Deliberate fall-through. */
     case 1:
-        if (func_02002d94() != 0) {
+        if (DisplayBrightness_IsMainTransitionComplete() != 0) {
             func_020755bc(data_020f4e14);
             if (FIELD(void *, state, 0x354) != 0) {
                 func_ov021_021fea68(state);
@@ -349,7 +349,7 @@ extern "C" s32 func_ov021_022022a4(void *state)
         FIELD(s32, state, 8) = 0;
         break;
     case 3:
-        if (func_02002d94() != 0)
+        if (DisplayBrightness_IsMainTransitionComplete() != 0)
             change_state(state, FIELD(void *, state, 0x354) != 0
                                     ? data_ov021_02202d80
                                     : data_ov021_02202d78);
