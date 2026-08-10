@@ -2,7 +2,7 @@
 .text
 .extern data_020e0224
 .extern data_020e6f94
-.extern func_02033ed0
+.extern Actor_SaveAndForceFlags
 .extern func_020349b8
 .extern func_02045184
 .global func_02043958
@@ -16,7 +16,7 @@ func_02043958: ; 0x02043958
     str r2, [r4, #0xd0]
     mov r2, #0x0
     strh r2, [r1, #0x4e]
-    bl func_02033ed0
+    bl Actor_SaveAndForceFlags
     ldr r0, [r4, #0x274]
     cmp r0, #0x0
     beq .L_02043990

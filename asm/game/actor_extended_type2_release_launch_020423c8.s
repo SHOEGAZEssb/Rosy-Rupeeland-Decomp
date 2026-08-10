@@ -3,7 +3,7 @@
 .extern data_020c9670
 .extern data_020df9e8
 .extern data_020e6d3c
-.extern func_02033ed0
+.extern Actor_SaveAndForceFlags
 .extern func_02033f44
 .extern func_020349b8
 .extern genrand_int32
@@ -23,7 +23,7 @@ func_020423c8: ; 0x020423c8
     bl func_02033f44
     str r0, [r4, #0x24]
     mov r0, r4
-    bl func_02033ed0
+    bl Actor_SaveAndForceFlags
     ldmia sp!, {r4, pc}
 .L_02042404: .word data_020df9e8
 .size func_020423c8, . - func_020423c8
@@ -33,7 +33,7 @@ func_020423c8: ; 0x020423c8
 func_02042408: ; 0x02042408
     stmdb sp!, {r4, lr}
     mov r4, r0
-    bl func_02033ed0
+    bl Actor_SaveAndForceFlags
     ldr r1, [r4, #0x14]
     mov r0, r4
     bic r1, r1, #0x46

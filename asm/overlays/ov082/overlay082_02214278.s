@@ -1,13 +1,13 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov082/overlay082_recovery.c.
 .extern data_ov082_0221483c
-.extern func_02033efc
+.extern Actor_RestoreSavedFlags
 
 .global func_ov082_02214278
 func_ov082_02214278:
     stmdb sp!, {r4, lr}
     mov r4, r0
-    bl func_02033efc
+    bl Actor_RestoreSavedFlags
     ldr r1, [r4, #0x10]
     ldr r0, .L_022142d0
     bic r1, r1, #0x1f0000

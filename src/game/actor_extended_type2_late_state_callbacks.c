@@ -9,13 +9,13 @@ extern u8 data_020df9e8[];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_02033efc(void *actor);
+extern void Actor_RestoreSavedFlags(void *actor);
 #ifdef __cplusplus
 }
 #endif
 
 /*
- * Invoke func_02033efc, clear actor +0x10 mask 0x1f0000, install global pairs
+ * Invoke Actor_RestoreSavedFlags, clear actor +0x10 mask 0x1f0000, install global pairs
  * +0x288/+0x28c and +0x280/+0x284 at +0x218..+0x224, clear +0xd0 bit 0x200,
  * enter state two, and return zero. Actor/callback state may change; no direct
  * SDK or hardware operation occurs.
@@ -23,7 +23,7 @@ extern void func_02033efc(void *actor);
 s32 func_02041710(void *self)
 {
     u8 *actor = (u8 *)self;
-    func_02033efc(actor);
+    Actor_RestoreSavedFlags(actor);
     *(u32 *)(actor + 0x10) &= ~0x1f0000;
     *(u32 *)(actor + 0x218) = *(u32 *)(data_020df9e8 + 0x288);
     *(u32 *)(actor + 0x21c) = *(u32 *)(data_020df9e8 + 0x28c);

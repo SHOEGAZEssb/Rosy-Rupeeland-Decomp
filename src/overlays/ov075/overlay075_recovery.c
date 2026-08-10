@@ -289,7 +289,7 @@ void func_ov075_02215574(void);
 /* Processes the supplied ABI arguments using only local offset-based fields; observable mutations and the return value are preserved by the matching implementation, with no direct SDK call. */
 void func_ov075_0221558c(void);
 
-/* Processes the supplied ABI arguments and offset-based actor state, returns its encoded result, and invokes func_02033efc; exact higher-level semantics remain unconfirmed. */
+/* Processes the supplied ABI arguments and offset-based actor state, returns its encoded result, and invokes Actor_RestoreSavedFlags; exact higher-level semantics remain unconfirmed. */
 void func_ov075_022157c8(void);
 
 /* Processes the supplied ABI arguments using only local offset-based fields; observable mutations and the return value are preserved by the matching implementation, with no direct SDK call. */
@@ -355,7 +355,7 @@ void func_ov075_022168f0(void);
 /* Processes the supplied ABI arguments and offset-based actor state, returns its encoded result, and invokes func_02004fe0, func_02005030, func_02005058 and other shared helpers; exact higher-level semantics remain unconfirmed. */
 void func_ov075_02216928(void);
 
-/* Processes the supplied ABI arguments and offset-based actor state, returns its encoded result, and invokes func_02033efc; exact higher-level semantics remain unconfirmed. */
+/* Processes the supplied ABI arguments and offset-based actor state, returns its encoded result, and invokes Actor_RestoreSavedFlags; exact higher-level semantics remain unconfirmed. */
 void func_ov075_02216b5c(void);
 
 /* Processes the supplied ABI arguments using only local offset-based fields; observable mutations and the return value are preserved by the matching implementation, with no direct SDK call. */

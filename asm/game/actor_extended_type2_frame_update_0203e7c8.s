@@ -17,7 +17,7 @@
 .extern func_02032228
 .extern func_02032370
 .extern Actor_UpdateAnimationState
-.extern func_02033ed0
+.extern Actor_SaveAndForceFlags
 .extern func_020349b8
 .extern func_02035518
 .extern func_0203bba4
@@ -127,7 +127,7 @@ func_0203e7c8: ; 0x0203e7c8
     mov r0, r6
     bic r1, r1, #0x3
     str r1, [r6, #0x260]
-    bl func_02033ed0
+    bl Actor_SaveAndForceFlags
 .L_0203e934:
     mov r0, r6
     ldr r2, [r0, #0x0]

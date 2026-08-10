@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/actor_extended_type2_progress_and_state_reset.c.
 .text
 .extern data_020df9e8
-.extern func_02033efc
+.extern Actor_RestoreSavedFlags
 .extern func_02072b68
 .extern gGameWork
 .global func_0203fd00
@@ -55,7 +55,7 @@ func_0203fd68: ; 0x0203fd68
 func_0203fd84: ; 0x0203fd84
     stmdb sp!, {r4, lr}
     mov r4, r0
-    bl func_02033efc
+    bl Actor_RestoreSavedFlags
     ldr r1, [r4, #0xd0]
     mov r0, #0x1
     bic r1, r1, #0x100

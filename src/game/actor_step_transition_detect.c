@@ -11,7 +11,7 @@ extern "C" {
 #endif
 extern u32 Actor_QueryTerrainCell(void *, s32, s32);
 extern s32 Actor_QueryTerrainHeight(void *, s32, s32);
-extern void func_02033ed0(void *);
+extern void Actor_SaveAndForceFlags(void *);
 extern s32 func_020adae4(s32, s32);
 #ifdef __cplusplus
 }
@@ -29,7 +29,7 @@ static s32 terrainCodeBlocksStep(u32 terrain)
  * 0x4a or 0x4b. Probe 20 motion units ahead, reject recovered terrain codes,
  * and accept a positive height rise of at most 16 units (32 with flag
  * 0x400000), provided the eight-unit midpoint also stays within that limit.
- * On success store target X/Y/Z at 0xb4/0xb8/0xbc, call func_02033ed0 and the
+ * On success store target X/Y/Z at 0xb4/0xb8/0xbc, call Actor_SaveAndForceFlags and the
  * vtable-offset-0x3c transition callback with the rise, derive per-frame X/Y
  * deltas as motion*20/24 at 0xc0/0xc4, clear field 0x44, and return one.
  * Return zero without transition otherwise. Terrain helpers observe world
@@ -68,7 +68,7 @@ s32 func_02031f44(void *self)
     *(s32 *)(actor + 0xb4) = targetX;
     *(s32 *)(actor + 0xb8) = targetY;
     *(s32 *)(actor + 0xbc) = targetHeight << 12;
-    func_02033ed0(actor);
+    Actor_SaveAndForceFlags(actor);
     (*(StepActorVTable **)actor)->transition_3c(actor, rise);
     *(s32 *)(actor + 0xc0) =
         func_020adae4(*(s32 *)(actor + 0x3c) * 20, 24);

@@ -2,7 +2,7 @@
 .text
 .extern func_02005030
 .extern func_02005058
-.extern func_02033efc
+.extern Actor_RestoreSavedFlags
 .extern func_0204e3f4
 .extern func_0204e628
 .extern func_0204f7e4
@@ -101,7 +101,7 @@ func_020415a8: ; 0x020415a8
     ldr r2, [r2, #0x54]
     blx r2
     mov r0, r4
-    bl func_02033efc
+    bl Actor_RestoreSavedFlags
     mov r0, r4
     ldr r1, [r0, #0x0]
     ldr r1, [r1, #0x100]

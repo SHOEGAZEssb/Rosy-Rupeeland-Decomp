@@ -10,7 +10,7 @@ extern u16 data_020e6f94[];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_02033ed0(void *actor);
+extern void Actor_SaveAndForceFlags(void *actor);
 extern void func_02045184(void *handle, void *actor);
 extern void func_020349b8(void *actor, u32 sound, s32 extra);
 #ifdef __cplusplus
@@ -18,7 +18,7 @@ extern void func_020349b8(void *actor, u32 sound, s32 extra);
 #endif
 
 /*
- * Clear actor +0xd0 bit 0x200 and halfword +0x24e, invoke func_02033ed0, and if
+ * Clear actor +0xd0 bit 0x200 and halfword +0x24e, invoke Actor_SaveAndForceFlags, and if
  * handle +0x274 exists notify it through func_02045184(handle,actor). Install
  * callback pair data_020e0224+0x18/+0x1c at +0x218/+0x21c. Play nonzero sound
  * data_020e6f94[index +0x4e] with extra zero. Finally clear +0x260 bits zero
@@ -32,7 +32,7 @@ s32 func_02043958(void *self)
     u16 sound;
     *(u32 *)(actor + 0xd0) &= ~0x200;
     *(u16 *)(actor + 0x24e) = 0;
-    func_02033ed0(actor);
+    Actor_SaveAndForceFlags(actor);
     if (*(void **)(actor + 0x274) != 0)
         func_02045184(*(void **)(actor + 0x274), actor);
     *(u32 *)(actor + 0x218) = *(u32 *)(data_020e0224 + 0x18);

@@ -2,7 +2,7 @@
 .text
 .extern data_020df9e8
 .extern data_020e6adc
-.extern func_02033efc
+.extern Actor_RestoreSavedFlags
 .extern func_020919e8
 .global func_02040a58
 .type func_02040a58, @function
@@ -47,7 +47,7 @@ func_02040a5c: ; 0x02040a5c
     ldr r1, [r1, #0x2cc]
     str r2, [r4, #0x218]
     str r1, [r4, #0x21c]
-    bl func_02033efc
+    bl Actor_RestoreSavedFlags
     ldr r1, [r4, #0x10]
     mov r0, #0x2
     bic r1, r1, #0x1f0000
@@ -80,7 +80,7 @@ func_02040a5c: ; 0x02040a5c
     ldr r1, [r1, #0x2c4]
     str r2, [r4, #0x218]
     str r1, [r4, #0x21c]
-    bl func_02033efc
+    bl Actor_RestoreSavedFlags
     ldr r1, [r4, #0x10]
     mov r0, #0x2
     bic r1, r1, #0x1f0000

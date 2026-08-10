@@ -2,7 +2,7 @@
 ; Matching fallback for the portable implementation in src/overlays/ov080/overlay080_recovery.c.
 .extern data_0210576d
 .extern data_ov080_02213e68
-.extern func_02033efc
+.extern Actor_RestoreSavedFlags
 .extern func_02072b68
 .extern func_ov080_022136f4
 
@@ -56,7 +56,7 @@ func_ov080_022133a8:
     ldr r1, [r1, #0x3c]
     str r2, [r4, #0x218]
     str r1, [r4, #0x21c]
-    bl func_02033efc
+    bl Actor_RestoreSavedFlags
     ldr r2, .L_022134d4
     ldrb r0, [r4, #0x298]
     mov r1, #0x1

@@ -267,5 +267,5 @@ func_02033b38: ; 0x02033b38
 .L_02033ecc: .word data_020defd0
     .size func_02033b38, . - func_02033b38
 
-    .global func_02033ed0
+    .global Actor_SaveAndForceFlags
 

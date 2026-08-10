@@ -1,5 +1,5 @@
 ; Matching retail form; see src/game/type7_actor_forward_step.c.
-.extern func_02033ed0
+.extern Actor_SaveAndForceFlags
 .extern Actor_QueryTerrainHeight
 .extern func_02034d34
 .extern func_020adae4
@@ -50,7 +50,7 @@ func_0204a890: ; 0x0204a890
     str r7, [r6, #0xb8]
     mov r0, r6
     str r8, [r6, #0xbc]
-    bl func_02033ed0
+    bl Actor_SaveAndForceFlags
     mov r0, #0x0
     strh r0, [r6, #0xac]
     mov r1, #0x18

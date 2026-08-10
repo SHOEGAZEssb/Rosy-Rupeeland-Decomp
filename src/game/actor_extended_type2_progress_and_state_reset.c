@@ -6,7 +6,7 @@ extern u8 data_020df9e8[];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_02033efc(void *actor);
+extern void Actor_RestoreSavedFlags(void *actor);
 extern void func_02072b68(void *attachment, u32 animation);
 #ifdef __cplusplus
 }
@@ -30,7 +30,7 @@ void func_0203fd68(void *self)
 { u8 *a=(u8 *)self; *(u32 *)(a+0x218)=*(u32 *)(data_020df9e8+0x88); *(u32 *)(a+0x21c)=*(u32 *)(data_020df9e8+0x8c); }
 
 /*
- * Invoke func_02033efc, clear +0xd0 bit 0x100, enter state one, clear attachment
+ * Invoke Actor_RestoreSavedFlags, clear +0xd0 bit 0x100, enter state one, clear attachment
  * +0x24 bit 0x10, and select animation (word +0xc8 plus eight) truncated to a
  * byte. Clear actor +0x14 bit 0x10000000, install global pair +0x28/+0x2c,
  * clear +0x10 bits 0x1f0000 and +0x14 bits two/four. Returns no value; actor
@@ -38,7 +38,7 @@ void func_0203fd68(void *self)
  */
 void func_0203fd84(void *self)
 {
-    u8 *a=(u8 *)self,*p; func_02033efc(a); *(u32 *)(a+0xd0)&=~0x100; *(s16 *)(a+0xd6)=1;
+    u8 *a=(u8 *)self,*p; Actor_RestoreSavedFlags(a); *(u32 *)(a+0xd0)&=~0x100; *(s16 *)(a+0xd6)=1;
     p=*(u8 **)(a+0x54); *(u16 *)(p+0x24)&=~0x10; func_02072b68(p,(u8)(*(u32 *)(a+0xc8)+8));
     *(u32 *)(a+0x14)&=~0x10000000; *(u32 *)(a+0x218)=*(u32 *)(data_020df9e8+0x28); *(u32 *)(a+0x21c)=*(u32 *)(data_020df9e8+0x2c);
     *(u32 *)(a+0x10)&=~0x1f0000; *(u32 *)(a+0x14)&=~6;

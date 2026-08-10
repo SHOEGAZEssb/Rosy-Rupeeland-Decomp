@@ -9,7 +9,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_02033ed0(void *actor);
+extern void Actor_SaveAndForceFlags(void *actor);
 extern s32 Actor_QueryTerrainHeight(void *actor, s32 x, s32 y);
 extern s32 func_02034d34(void *actor, s32 x, s32 y, s32 height);
 extern s32 func_020adae4(s32 value, s32 divisor);
@@ -25,7 +25,7 @@ extern s32 func_020adc90(s32 value, s32 length);
  * +0x3c/+0x40 by 0x11000 divided by magnitude field +0x240, then query
  * the projected cell. If it is exactly one fixed-point level above +0x1dc and
  * func_02034d34 accepts the position, copy it to +0xb4..+0xbc, reset related
- * motion state through func_02033ed0, and begin an 0x18-frame interpolation.
+ * motion state through Actor_SaveAndForceFlags, and begin an 0x18-frame interpolation.
  * The X/Y increments at +0xc0/+0xc4 are the projected deltas divided by 0x18;
  * +0x44 is cleared. Return one when the transition begins, otherwise zero.
  * Actor state and collision-query state may change; there are no direct SDK
@@ -58,7 +58,7 @@ s32 func_0204a890(void *self)
         *(s32 *)(actor + 0xb4) = x;
         *(s32 *)(actor + 0xb8) = y;
         *(s32 *)(actor + 0xbc) = height;
-        func_02033ed0(actor);
+        Actor_SaveAndForceFlags(actor);
         *(u16 *)(actor + 0xac) = 0;
         *(u16 *)(actor + 0xae) = 0x18;
         *(s32 *)(actor + 0xc0) =

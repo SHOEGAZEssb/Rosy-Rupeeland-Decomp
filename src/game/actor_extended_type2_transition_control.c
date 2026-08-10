@@ -11,7 +11,7 @@ extern u8 data_020df9e8[];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_02033efc(void *actor);
+extern void Actor_RestoreSavedFlags(void *actor);
 extern s32 func_020919e8(s32 start, s32 end, s32 step_count);
 #ifdef __cplusplus
 }
@@ -35,7 +35,7 @@ void func_02040a58(void)
  * enters state two. A zero descriptor byte increments actor +0x24e: before 20
  * ticks it writes the interpolated attachment scale and waits in state 19;
  * at 20 ticks it installs pair +0x2c0/+0x2c4 and enters state two. Callback
- * installation invokes func_02033efc; no direct SDK or hardware access occurs.
+ * installation invokes Actor_RestoreSavedFlags; no direct SDK or hardware access occurs.
  */
 s32 func_02040a5c(void *self)
 {
@@ -56,7 +56,7 @@ s32 func_02040a5c(void *self)
 
         *(u32 *)(actor + 0x218) = *(u32 *)(data_020df9e8 + 0x2c8);
         *(u32 *)(actor + 0x21c) = *(u32 *)(data_020df9e8 + 0x2cc);
-        func_02033efc(actor);
+        Actor_RestoreSavedFlags(actor);
         *(u32 *)(actor + 0x10) &= ~0x1f0000;
         *(u32 *)(actor + 0x260) |= 4;
         *(u16 *)(actor + 0xd6) = 2;
@@ -69,7 +69,7 @@ s32 func_02040a5c(void *self)
             *(u16 *)(attachment + 0x34) = 0x100;
             *(u32 *)(actor + 0x218) = *(u32 *)(data_020df9e8 + 0x2c0);
             *(u32 *)(actor + 0x21c) = *(u32 *)(data_020df9e8 + 0x2c4);
-            func_02033efc(actor);
+            Actor_RestoreSavedFlags(actor);
             *(u32 *)(actor + 0x10) &= ~0x1f0000;
             *(u16 *)(actor + 0xd6) = 2;
             *(u32 *)(actor + 0x260) |= 3;

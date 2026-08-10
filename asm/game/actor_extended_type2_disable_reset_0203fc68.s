@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/actor_extended_type2_disable_reset.c.
 .text
 .extern data_020df9e8
-.extern func_02033ed0
+.extern Actor_SaveAndForceFlags
 .extern func_02045184
 .global func_0203fc68
 .type func_0203fc68, @function
@@ -23,7 +23,7 @@ func_0203fc68: ; 0x0203fc68
     orrne r0, r0, #0x10
     strneh r0, [r1, #0x24]
     mov r0, r4
-    bl func_02033ed0
+    bl Actor_SaveAndForceFlags
     ldr r0, [r4, #0x274]
     cmp r0, #0x0
     beq .L_0203fcc4

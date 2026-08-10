@@ -15,7 +15,7 @@ extern void func_02062864(void *object, s32 enabled);
 extern void func_0204f7e4(void *temporary, void *object, s32 kind);
 extern void func_0204e3f4(s32 kind, s32 count, void *temporary);
 extern void func_0204e628(s32 kind, s32 count, void *temporary);
-extern void func_02033efc(void *actor);
+extern void Actor_RestoreSavedFlags(void *actor);
 #ifdef __cplusplus
 }
 #endif
@@ -44,7 +44,7 @@ s32 func_0204157c(void *self)
  * object is enabled and submitted once per halfword +4 entry with kind 300;
  * without one, positive counts choose func_0204e3f4 through 1000 and
  * func_0204e628 above it. The transform is finalized, then virtual +0x54 is
- * called with zero, func_02033efc runs, and virtual +0x100 completes the state.
+ * called with zero, Actor_RestoreSavedFlags runs, and virtual +0x100 completes the state.
  * The routine always returns zero and may change actor, attachment, virtual,
  * selected-object, and emitted-object state; no direct hardware access occurs.
  */
@@ -79,7 +79,7 @@ s32 func_020415a8(void *self)
             func_02005058(temporary);
         }
         (*(void (**)(void *, s32))(vtable + 0x54))(actor, 0);
-        func_02033efc(actor);
+        Actor_RestoreSavedFlags(actor);
         (*(void (**)(void *))(vtable + 0x100))(actor);
     } else {
         u8 *attachment = *(u8 **)(actor + 0x54);

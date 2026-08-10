@@ -4,7 +4,7 @@
 .extern data_ov084_022145d4
 .extern data_ov084_022145e4
 .extern data_ov084_022145ec
-.extern func_02033ed0
+.extern Actor_SaveAndForceFlags
 .extern func_020349b8
 .extern func_0203e7c8
 .extern func_020435f4
@@ -91,7 +91,7 @@ func_ov084_02213f38:
     bic r3, r3, #0x200
     str r3, [r5, #0xd0]
     strh r2, [r1, #0x4e]
-    bl func_02033ed0
+    bl Actor_SaveAndForceFlags
     ldr r0, [r5, #0x274]
     cmp r0, #0x0
     beq .L_02214078

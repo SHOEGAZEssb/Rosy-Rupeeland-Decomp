@@ -18,7 +18,7 @@ extern void func_0200b2c0(void *state, s32 first, s32 second, s32 third);
  * into +0x0c, and force flag bits 1..3. Calls while marked are no-ops. Returns
  * no value and touches no hardware or SDK state.
  */
-void func_02033ed0(void *self)
+void Actor_SaveAndForceFlags(void *self)
 {
     u8 *actor = (u8 *)self;
 
@@ -32,7 +32,7 @@ void func_02033ed0(void *self)
  * If marker 0x400 at actor+0xd0 is set, clear it and restore flags +0x14 from
  * saved word +0x0c. Otherwise do nothing. Returns no value.
  */
-void func_02033efc(void *self)
+void Actor_RestoreSavedFlags(void *self)
 {
     u8 *actor = (u8 *)self;
 

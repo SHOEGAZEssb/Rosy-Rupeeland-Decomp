@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/actor_step_transition_cancel.c.
 .text
-.extern func_02033efc
+.extern Actor_RestoreSavedFlags
 
     .global func_02032208
     .type func_02032208, @function
@@ -11,6 +11,6 @@ func_02032208: ; 0x02032208
     ldmeqia sp!, {r3, pc}
     mov r1, #0xff
     strh r1, [r0, #0xac]
-    bl func_02033efc
+    bl Actor_RestoreSavedFlags
     ldmia sp!, {r3, pc}
     .size func_02032208, . - func_02032208

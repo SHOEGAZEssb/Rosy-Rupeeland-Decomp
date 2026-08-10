@@ -2,7 +2,7 @@
 ; Matching fallback for the portable implementation in src/overlays/ov084/overlay084_recovery.c.
 .extern data_020e6f94
 .extern data_ov084_02214108
-.extern func_02033ed0
+.extern Actor_SaveAndForceFlags
 .extern func_02033f44
 .extern func_020349b8
 .extern func_02045184
@@ -18,7 +18,7 @@ func_ov084_022134f0:
     str r2, [r4, #0xd0]
     mov r2, #0x0
     strh r2, [r1, #0x4e]
-    bl func_02033ed0
+    bl Actor_SaveAndForceFlags
     ldr r0, [r4, #0x274]
     cmp r0, #0x0
     beq .L_02213528

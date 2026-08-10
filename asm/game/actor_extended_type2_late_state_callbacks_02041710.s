@@ -1,13 +1,13 @@
 ; Matching retail form; see src/game/actor_extended_type2_late_state_callbacks.c.
 .text
 .extern data_020df9e8
-.extern func_02033efc
+.extern Actor_RestoreSavedFlags
 .global func_02041710
 .type func_02041710, @function
 func_02041710: ; 0x02041710
     stmdb sp!, {r4, lr}
     mov r4, r0
-    bl func_02033efc
+    bl Actor_RestoreSavedFlags
     ldr r1, [r4, #0x10]
     ldr r0, .L_02041768
     bic r1, r1, #0x1f0000

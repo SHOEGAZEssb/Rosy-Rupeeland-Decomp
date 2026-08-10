@@ -12,7 +12,7 @@ extern u16 data_020e6d3c[];
 extern "C" {
 #endif
 extern s32 func_02033f44(void *actor);
-extern void func_02033ed0(void *actor);
+extern void Actor_SaveAndForceFlags(void *actor);
 extern u32 genrand_int32(void);
 extern void func_020349b8(void *actor, u32 sound, s32 extra);
 #ifdef __cplusplus
@@ -22,7 +22,7 @@ extern void func_020349b8(void *actor, u32 sound, s32 extra);
 /*
  * Set actor +0xd0 bit 0x80, install global pair +0x1e0/+0x1e4 at
  * +0x218/+0x21c, store func_02033f44(actor) at +0x24, then invoke
- * func_02033ed0. The routine has no meaningful return value; actor and engine
+ * Actor_SaveAndForceFlags. The routine has no meaningful return value; actor and engine
  * bookkeeping may change, with no direct hardware access.
  */
 void func_020423c8(void *self)
@@ -32,11 +32,11 @@ void func_020423c8(void *self)
     *(u32 *)(actor + 0x218) = *(u32 *)(data_020df9e8 + 0x1e0);
     *(u32 *)(actor + 0x21c) = *(u32 *)(data_020df9e8 + 0x1e4);
     *(s32 *)(actor + 0x24) = func_02033f44(actor);
-    func_02033ed0(actor);
+    Actor_SaveAndForceFlags(actor);
 }
 
 /*
- * Refresh actor bookkeeping with func_02033ed0, clear +0x14 bits 1, 2, and
+ * Refresh actor bookkeeping with Actor_SaveAndForceFlags, clear +0x14 bits 1, 2, and
  * 0x40, invoke virtual +0x40, set +0x10 mask 0x1f0000, and install global pair
  * +0x1d8/+0x1dc. Unless +0x260 bit 0x8000 is set, a random low-16-bit angle
  * indexes data_020c9670 to set +0x3c/+0x40 velocity at twice table magnitude
@@ -53,7 +53,7 @@ void func_02042408(void *self)
     u8 *attachment;
     u16 sound;
 
-    func_02033ed0(actor);
+    Actor_SaveAndForceFlags(actor);
     *(u32 *)(actor + 0x14) &= ~0x46;
     (*(void (**)(void *))(*(u8 **)actor + 0x40))(actor);
     *(u32 *)(actor + 0x10) |= 0x1f0000;

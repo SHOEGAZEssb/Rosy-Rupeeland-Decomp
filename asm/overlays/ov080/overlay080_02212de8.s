@@ -5,7 +5,7 @@
 .extern data_ov080_02213e68
 .extern data_ov080_02213e70
 .extern data_ov080_02213e78
-.extern func_02033ed0
+.extern Actor_SaveAndForceFlags
 .extern func_02033f44
 .extern func_0203e7c8
 .extern func_ov080_02212ae0
@@ -80,7 +80,7 @@ func_ov080_02212de8:
     beq .L_02212f18
 .L_02212ee4:
     mov r0, r4
-    bl func_02033ed0
+    bl Actor_SaveAndForceFlags
     add r0, r4, #0x200
     mov r1, #0x1
     strh r1, [r0, #0x5a]

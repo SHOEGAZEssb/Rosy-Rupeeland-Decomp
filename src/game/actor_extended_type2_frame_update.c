@@ -19,7 +19,7 @@ extern "C" {
 extern void **func_02007f0c(void *runtime, s32 collection);
 extern void func_02045184(void *handle, void *actor);
 extern void func_020349b8(void *actor, u32 sound, s32 extra);
-extern void func_02033ed0(void *actor);
+extern void Actor_SaveAndForceFlags(void *actor);
 extern s32 func_02032370(void *actor, const void *target, s32 step);
 extern s32 func_02032228(void *actor, s32 x, s32 y, s32 step);
 extern void func_020066a4(void *output, ...);
@@ -103,7 +103,7 @@ void func_0203e7c8(void *self)
                 func_020349b8(actor, sound, 0);
             *(s16 *)(actor + 0xd6) = 0x11;
             *(u32 *)(actor + 0x260) &= ~3;
-            func_02033ed0(actor);
+            Actor_SaveAndForceFlags(actor);
         }
     }
 
