@@ -10,7 +10,7 @@ extern "C" {
 extern SceneVTable data_020d5384;
 extern void *data_021052fc;
 extern void func_020122a0(void *object, s32 enabled);
-extern void func_0203b3cc(s32 value);
+extern void ActorDescriptorBatch_ApplyCategoryCallback(s32 value);
 #ifdef __cplusplus
 }
 #endif
@@ -68,7 +68,7 @@ s32 func_0200c924(GamePhaseApplyScene *self)
         if (self != 0)
             self->base.vtable->destroyAndFree(&self->base);
         *((u8 *)runtime + 0x30cc) &= (u8)~8;
-        func_0203b3cc(1);
+        ActorDescriptorBatch_ApplyCategoryCallback(1);
         return 1;
     default:
         break;

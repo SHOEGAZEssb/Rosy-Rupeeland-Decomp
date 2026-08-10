@@ -7,9 +7,9 @@
 .extern data_ov215_02222f60
 .extern func_02008f58
 .extern ActorInteractionRuntime_Init
-.extern func_0203abac
-.extern func_0203b38c
-.extern func_0203b3ac
+.extern ActorInteractionRuntime_NoOp
+.extern ActorDescriptorBatch_RegisterAndSpawnCategory1
+.extern ActorDescriptorBatch_SetCategory1Callback
 
 .global func_ov215_0221d6c0
 func_ov215_0221d6c0:
@@ -20,13 +20,13 @@ func_ov215_0221d6c0:
     ldr r0, .L_0221d6fc
     ldr r2, .L_0221d700
     mov r1, #0x1b
-    bl func_0203b38c
+    bl ActorDescriptorBatch_RegisterAndSpawnCategory1
     ldr r0, .L_0221d704
-    bl func_0203abac
+    bl ActorInteractionRuntime_NoOp
     ldr r0, .L_0221d708
     bl func_02008f58
     ldr r0, .L_0221d70c
-    bl func_0203b3ac
+    bl ActorDescriptorBatch_SetCategory1Callback
     ldmia sp!, {r3, pc}
 .L_0221d6fc: .word data_ov215_0221d734
 .L_0221d700: .word data_ov215_0221d750

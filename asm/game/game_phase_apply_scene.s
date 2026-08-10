@@ -10,7 +10,7 @@
 .extern func_020080d0
 .extern func_02008bb8
 .extern func_020122a0
-.extern func_0203b3cc
+.extern ActorDescriptorBatch_ApplyCategoryCallback
 
 .global func_0200c8bc
 func_0200c8bc:
@@ -104,7 +104,7 @@ L_0200c9c8:
     ldrb r2, [r1, #0xcc]
     bic r2, r2, #0x8
     strb r2, [r1, #0xcc]
-    bl func_0203b3cc
+    bl ActorDescriptorBatch_ApplyCategoryCallback
     mov r0, #0x1
     ldmia sp!, {r4, pc}
 L_0200c9f0:

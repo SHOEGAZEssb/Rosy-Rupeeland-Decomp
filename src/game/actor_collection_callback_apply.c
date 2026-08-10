@@ -23,7 +23,7 @@ extern void Actor_SetActive(void *actor, s32 enabled);
  * no value; collection lookup, virtual calls, and enable calls mutate actor
  * state. The retail implementation assumes the control actor lookup succeeds.
  */
-void func_0203b3cc(s32 mode)
+void ActorDescriptorBatch_ApplyCategoryCallback(s32 mode)
 {
     s32 category = mode == 0 ? 1 : 2;
     u8 *collection = (u8 *)func_02007f0c(data_021052fc, category);

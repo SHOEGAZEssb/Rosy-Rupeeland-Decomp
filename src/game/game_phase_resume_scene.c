@@ -10,7 +10,7 @@ extern "C" {
 extern SceneVTable data_020d5594;
 extern void func_02002d54(s32 screen, s32 frames);
 extern void func_02002d74(s32 screen, s32 frames);
-extern void func_0203b3cc(s32 value);
+extern void ActorDescriptorBatch_ApplyCategoryCallback(s32 value);
 #ifdef __cplusplus
 }
 #endif
@@ -55,7 +55,7 @@ s32 func_0200f938(GamePhaseResumeScene *self)
     switch (self->base.value08) {
     case 0: {
         Scene *current;
-        func_0203b3cc(0);
+        ActorDescriptorBatch_ApplyCategoryCallback(0);
         current = SceneManager_GetCurrent(gSceneManager);
         current->vtable->update(current);
         self->base.value08++;
@@ -63,7 +63,7 @@ s32 func_0200f938(GamePhaseResumeScene *self)
         /* fall through */
     case 1: {
         Scene *current;
-        func_0203b3cc(1);
+        ActorDescriptorBatch_ApplyCategoryCallback(1);
         current = SceneManager_GetCurrent(gSceneManager);
         current->vtable->update(current);
         self->base.value08++;

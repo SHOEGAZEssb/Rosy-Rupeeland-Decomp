@@ -5,8 +5,8 @@
 .extern data_ov567_022343ce
 .extern data_ov567_022343e4
 .extern func_02011a4c
-.extern func_0203b39c
-.extern func_0203b3bc
+.extern ActorDescriptorBatch_RegisterAndSpawnCategory2
+.extern ActorDescriptorBatch_SetCategory2Callback
 
 .global func_ov567_02233c60
 func_ov567_02233c60:
@@ -14,9 +14,9 @@ func_ov567_02233c60:
     ldr r0, .L_02233c88
     ldr r2, .L_02233c8c
     mov r1, #0x3
-    bl func_0203b39c
+    bl ActorDescriptorBatch_RegisterAndSpawnCategory2
     ldr r0, .L_02233c90
-    bl func_0203b3bc
+    bl ActorDescriptorBatch_SetCategory2Callback
     ldr r0, .L_02233c94
     bl func_02011a4c
     ldmia sp!, {r3, pc}

@@ -16005,7 +16005,7 @@ build build/reports/actor_interaction_runtime_lifecycle_0203aac4.json: objdiff b
   base_object = build/decomp/asm/game/actor_interaction_runtime_lifecycle_0203aac4.o
 build build/reports/actor_interaction_runtime_lifecycle_0203aac4.txt: match_report build/reports/actor_interaction_runtime_lifecycle_0203aac4.json | tools/report_objdiff.py
   report_json = build/reports/actor_interaction_runtime_lifecycle_0203aac4.json
-  report_args = --section .text --function ActorInteractionRuntime_Init --function ActorInteractionRuntime_Start --function func_0203abac --function ActorFeedback_DestroyPresentations --function ActorInteractionRuntime_Shutdown --require-exact
+  report_args = --section .text --function ActorInteractionRuntime_Init --function ActorInteractionRuntime_Start --function ActorInteractionRuntime_NoOp --function ActorFeedback_DestroyPresentations --function ActorInteractionRuntime_Shutdown --require-exact
 build build/reports/actor_interaction_runtime_lifecycle.txt: phony build/reports/actor_interaction_runtime_lifecycle_0203aac4.txt
 
 build actor_interaction_runtime_lifecycle: phony build/decomp/src/game/actor_interaction_runtime_lifecycle.o build/decomp/asm/game/actor_interaction_runtime_lifecycle_0203aac4.o build/reports/actor_interaction_runtime_lifecycle.txt
@@ -16090,7 +16090,7 @@ build build/reports/actor_descriptor_batch_wrappers_0203b38c.json: objdiff build
   base_object = build/decomp/asm/game/actor_descriptor_batch_wrappers_0203b38c.o
 build build/reports/actor_descriptor_batch_wrappers_0203b38c.txt: match_report build/reports/actor_descriptor_batch_wrappers_0203b38c.json | tools/report_objdiff.py
   report_json = build/reports/actor_descriptor_batch_wrappers_0203b38c.json
-  report_args = --section .text --function func_0203b38c --function func_0203b39c --function func_0203b3ac --function func_0203b3bc --require-exact
+  report_args = --section .text --function ActorDescriptorBatch_RegisterAndSpawnCategory1 --function ActorDescriptorBatch_RegisterAndSpawnCategory2 --function ActorDescriptorBatch_SetCategory1Callback --function ActorDescriptorBatch_SetCategory2Callback --require-exact
 build build/reports/actor_descriptor_batch_wrappers.txt: phony build/reports/actor_descriptor_batch_wrappers_0203b38c.txt
 
 build actor_descriptor_batch_wrappers: phony build/decomp/src/game/actor_descriptor_batch_wrappers.o build/decomp/asm/game/actor_descriptor_batch_wrappers_0203b38c.o build/reports/actor_descriptor_batch_wrappers.txt
@@ -16107,7 +16107,7 @@ build build/reports/actor_collection_callback_apply_0203b3cc.json: objdiff build
   base_object = build/decomp/asm/game/actor_collection_callback_apply_0203b3cc.o
 build build/reports/actor_collection_callback_apply_0203b3cc.txt: match_report build/reports/actor_collection_callback_apply_0203b3cc.json | tools/report_objdiff.py
   report_json = build/reports/actor_collection_callback_apply_0203b3cc.json
-  report_args = --section .text --function func_0203b3cc --require-exact
+  report_args = --section .text --function ActorDescriptorBatch_ApplyCategoryCallback --require-exact
 build build/reports/actor_collection_callback_apply.txt: phony build/reports/actor_collection_callback_apply_0203b3cc.txt
 
 build actor_collection_callback_apply: phony build/decomp/src/game/actor_collection_callback_apply.o build/decomp/asm/game/actor_collection_callback_apply_0203b3cc.o build/reports/actor_collection_callback_apply.txt

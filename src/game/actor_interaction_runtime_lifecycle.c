@@ -81,7 +81,7 @@ void ActorInteractionRuntime_Start(void)
 }
 
 /* Accept no inputs, change no known state, and return no value. */
-void func_0203abac(void)
+void ActorInteractionRuntime_NoOp(void)
 {
 }
 

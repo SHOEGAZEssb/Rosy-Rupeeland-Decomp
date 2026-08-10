@@ -101,11 +101,11 @@ ActorInteractionRuntime_Start: ; 0x0203ab6c
 .L_0203aba8: .word data_021056e4
     .size ActorInteractionRuntime_Start, . - ActorInteractionRuntime_Start
 
-    .global func_0203abac
-    .type func_0203abac, @function
-func_0203abac: ; 0x0203abac
+    .global ActorInteractionRuntime_NoOp
+    .type ActorInteractionRuntime_NoOp, @function
+ActorInteractionRuntime_NoOp: ; 0x0203abac
     bx lr
-    .size func_0203abac, . - func_0203abac
+    .size ActorInteractionRuntime_NoOp, . - ActorInteractionRuntime_NoOp
 
     .global ActorFeedback_DestroyPresentations
     .type ActorFeedback_DestroyPresentations, @function

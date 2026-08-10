@@ -10,7 +10,7 @@
 .extern data_020d5594
 .extern func_02002d54
 .extern func_02002d74
-.extern func_0203b3cc
+.extern ActorDescriptorBatch_ApplyCategoryCallback
 .extern gGameWork
 .extern gSceneManager
 
@@ -88,7 +88,7 @@ func_0200f938: ; 0x0200f938
     b L_0200fa2c
 L_0200f960:
     mov r0, #0x0
-    bl func_0203b3cc
+    bl ActorDescriptorBatch_ApplyCategoryCallback
     ldr r0, L_0200fa34
     ldr r0, [r0, #0x0]
     bl SceneManager_GetCurrent
@@ -100,7 +100,7 @@ L_0200f960:
     str r0, [r4, #0x8]
 L_0200f98c:
     mov r0, #0x1
-    bl func_0203b3cc
+    bl ActorDescriptorBatch_ApplyCategoryCallback
     ldr r0, L_0200fa34
     ldr r0, [r0, #0x0]
     bl SceneManager_GetCurrent

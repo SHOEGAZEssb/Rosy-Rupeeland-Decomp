@@ -5,9 +5,9 @@
 .extern func_02007f0c
 .extern ActorCollection_FindActorByTypeAndId
 .extern Actor_SetActive
-    .global func_0203b3cc
-    .type func_0203b3cc, @function
-func_0203b3cc: ; 0x0203b3cc
+    .global ActorDescriptorBatch_ApplyCategoryCallback
+    .type ActorDescriptorBatch_ApplyCategoryCallback, @function
+ActorDescriptorBatch_ApplyCategoryCallback: ; 0x0203b3cc
     stmdb sp!, {r3, r4, r5, r6, r7, r8, r9, lr}
     cmp r0, #0x0
     bne .L_0203b43c
@@ -95,4 +95,4 @@ func_0203b3cc: ; 0x0203b3cc
 .L_0203b50c: .word data_021052fc
 .L_0203b510: .word data_020df500
 
-    .size func_0203b3cc, . - func_0203b3cc
+    .size ActorDescriptorBatch_ApplyCategoryCallback, . - ActorDescriptorBatch_ApplyCategoryCallback
