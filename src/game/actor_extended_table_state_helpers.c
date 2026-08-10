@@ -6,7 +6,7 @@ extern u8 data_020e0ac8[];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern s32 func_02040d64(void *actor);
+extern s32 ActorExtendedType2_SetCallbackPair130AndForwardD0(void *actor);
 #ifdef __cplusplus
 }
 #endif
@@ -28,13 +28,15 @@ void ActorExtendedTable_ResetStageCounters(void *self)
 
 /*
  * Copy the callback representation at data_020e0ac8+0x30/+0x34 to actor
- * +0x218/+0x21c, then invoke func_02040d64(actor) and return its result. Actor
- * callback and virtual state may change; no direct SDK or hardware access.
+ * +0x218/+0x21c, then invoke
+ * ActorExtendedType2_SetCallbackPair130AndForwardD0(actor) and return its
+ * result. Actor callback and virtual state may change; no direct SDK or
+ * hardware access.
  */
 s32 ActorExtendedTable_InstallCallback30AndDispatch(void *self)
 {
     u8 *actor = (u8 *)self;
     *(u32 *)(actor + 0x218) = *(u32 *)(data_020e0ac8 + 0x30);
     *(u32 *)(actor + 0x21c) = *(u32 *)(data_020e0ac8 + 0x34);
-    return func_02040d64(actor);
+    return ActorExtendedType2_SetCallbackPair130AndForwardD0(actor);
 }

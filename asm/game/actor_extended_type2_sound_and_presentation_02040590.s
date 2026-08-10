@@ -8,9 +8,9 @@
 .extern func_0201f378
 .extern func_020349b8
 .extern gHeapContext
-.global func_02040590
-.type func_02040590, @function
-func_02040590: ; 0x02040590
+.global ActorExtendedType2_PlayDescriptorSoundIfEnabled
+.type ActorExtendedType2_PlayDescriptorSoundIfEnabled, @function
+ActorExtendedType2_PlayDescriptorSoundIfEnabled: ; 0x02040590
     stmdb sp!, {r3, lr}
     ldrh r2, [r0, #0x4e]
     ldr r1, .L_020405c4
@@ -25,11 +25,11 @@ func_02040590: ; 0x02040590
     bl func_020349b8
     ldmia sp!, {r3, pc}
 .L_020405c4: .word data_020e7444
-.size func_02040590, . - func_02040590
-.global func_020405c8
-.type func_020405c8, @function
+.size ActorExtendedType2_PlayDescriptorSoundIfEnabled, . - ActorExtendedType2_PlayDescriptorSoundIfEnabled
+.global ActorExtendedType2_SpawnOptionalPresentation
+.type ActorExtendedType2_SpawnOptionalPresentation, @function
 
-func_020405c8: ; 0x020405c8
+ActorExtendedType2_SpawnOptionalPresentation: ; 0x020405c8
     stmdb sp!, {r4, r5, r6, r7, lr}
     sub sp, sp, #0x14
     mov r7, r0
@@ -77,5 +77,5 @@ func_020405c8: ; 0x020405c8
 .L_02040670: .word data_020e00c8
 .L_02040674: .word gHeapContext
 .L_02040678: .word data_021052fc
-.size func_020405c8, . - func_020405c8
+.size ActorExtendedType2_SpawnOptionalPresentation, . - ActorExtendedType2_SpawnOptionalPresentation
 

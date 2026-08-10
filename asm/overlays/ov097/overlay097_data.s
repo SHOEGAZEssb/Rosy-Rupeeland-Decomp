@@ -85,11 +85,11 @@
 .extern func_ov097_02219cb4
 .extern func_ov097_02219cac
 .extern ActorExtendedType2_IsInteractionEligible
-.extern func_0204067c
-.extern func_02040a5c
-.extern func_02040bdc
-.extern func_02040d94
-.extern func_02040e28
+.extern ActorExtendedType2_UpdateTimedAttachmentTransition
+.extern ActorExtendedType2_UpdateAttachmentScaleTransition
+.extern ActorExtendedType2_DispatchTransitionCallback
+.extern ActorExtendedType2_RouteDescriptorTransition
+.extern ActorExtendedType2_TryCompleteAttachmentGate
 .extern func_ov078_02213574
 .extern func_020412a8
 .extern func_02041424
@@ -110,7 +110,7 @@
 .extern func_ov097_02219c44
 .extern func_ov097_02219c30
 .extern func_ov097_02219be8
-.extern func_02040d64
+.extern ActorExtendedType2_SetCallbackPair130AndForwardD0
 .extern func_ov097_022179a4
 .extern ActorExtendedType2_UpdateDescriptorQueryFlags
 .extern func_ov097_02219458
@@ -367,11 +367,11 @@ data_ov097_0221a5f4:
     .word func_ov097_02219cb4
     .word func_ov097_02219cac
     .word ActorExtendedType2_IsInteractionEligible
-    .word func_0204067c
-    .word func_02040a5c
-    .word func_02040bdc
-    .word func_02040d94
-    .word func_02040e28
+    .word ActorExtendedType2_UpdateTimedAttachmentTransition
+    .word ActorExtendedType2_UpdateAttachmentScaleTransition
+    .word ActorExtendedType2_DispatchTransitionCallback
+    .word ActorExtendedType2_RouteDescriptorTransition
+    .word ActorExtendedType2_TryCompleteAttachmentGate
     .word func_ov078_02213574
     .word func_020412a8
     .word func_02041424
@@ -392,7 +392,7 @@ data_ov097_0221a5f4:
     .word func_ov097_02219c44
     .word func_ov097_02219c30
     .word func_ov097_02219be8
-    .word func_02040d64
+    .word ActorExtendedType2_SetCallbackPair130AndForwardD0
     .word func_ov097_022179a4
     .word ActorExtendedType2_UpdateDescriptorQueryFlags
     .word func_ov097_02219458
@@ -503,10 +503,10 @@ data_ov097_0221a80c:
     .word func_ov097_02219cac
     .word ActorExtendedType2_IsInteractionEligible
     .word func_ov097_0221978c
-    .word func_02040a5c
-    .word func_02040bdc
-    .word func_02040d94
-    .word func_02040e28
+    .word ActorExtendedType2_UpdateAttachmentScaleTransition
+    .word ActorExtendedType2_DispatchTransitionCallback
+    .word ActorExtendedType2_RouteDescriptorTransition
+    .word ActorExtendedType2_TryCompleteAttachmentGate
     .word func_ov078_02213574
     .word func_020412a8
     .word func_02041424
@@ -527,7 +527,7 @@ data_ov097_0221a80c:
     .word func_ov097_02219c44
     .word func_ov097_02219c30
     .word func_ov097_02219be8
-    .word func_02040d64
+    .word ActorExtendedType2_SetCallbackPair130AndForwardD0
     .word func_ov078_022138c0
     .word ActorExtendedType2_UpdateDescriptorQueryFlags
     .word func_ov097_02219bc8

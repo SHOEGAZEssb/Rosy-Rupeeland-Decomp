@@ -22,7 +22,7 @@ extern s32 func_020919e8(s32 start, s32 end, s32 step_count);
  * no observable state, performs no SDK or hardware operation, and returns
  * immediately; the original return register is therefore left unchanged.
  */
-void func_02040a58(void)
+void ActorExtendedType2_TransitionNoOp(void)
 {
 }
 
@@ -37,7 +37,7 @@ void func_02040a58(void)
  * at 20 ticks it installs pair +0x2c0/+0x2c4 and enters state two. Callback
  * installation invokes Actor_RestoreSavedFlags; no direct SDK or hardware access occurs.
  */
-s32 func_02040a5c(void *self)
+s32 ActorExtendedType2_UpdateAttachmentScaleTransition(void *self)
 {
     u8 *actor = (u8 *)self;
     u8 *attachment = *(u8 **)(actor + 0x54);

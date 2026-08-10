@@ -1,9 +1,9 @@
 ; Matching retail form; see src/game/actor_extended_type2_transition_dispatch.c.
 .text
 .extern data_020df9e8
-.global func_02040bdc
-.type func_02040bdc, @function
-func_02040bdc: ; 0x02040bdc
+.global ActorExtendedType2_DispatchTransitionCallback
+.type ActorExtendedType2_DispatchTransitionCallback, @function
+ActorExtendedType2_DispatchTransitionCallback: ; 0x02040bdc
     stmdb sp!, {r3, r4, r5, lr}
     mov r5, r0
     ldr r2, [r5, #0x260]
@@ -105,4 +105,4 @@ func_02040bdc: ; 0x02040bdc
     mov r0, #0x0
     ldmia sp!, {r3, r4, r5, pc}
 .L_02040d60: .word data_020df9e8
-.size func_02040bdc, . - func_02040bdc
+.size ActorExtendedType2_DispatchTransitionCallback, . - ActorExtendedType2_DispatchTransitionCallback

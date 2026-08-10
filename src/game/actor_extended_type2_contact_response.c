@@ -9,7 +9,8 @@
 extern "C" {
 #endif
 extern void func_020349b8(void *actor, u32 sound, s32 extra);
-extern s32 func_020405c8(void *actor, s32 first, s32 second, s32 third);
+extern s32 ActorExtendedType2_SpawnOptionalPresentation(
+    void *actor, s32 first, s32 second, s32 third);
 extern s32 func_0204cfa4(s32 x, s32 y);
 extern s32 func_020adc90(s32 value, s32 divisor);
 extern s32 func_020adae4(s32 value, s32 shift);
@@ -20,16 +21,16 @@ extern s32 func_02032a94(void *actor, void *other, s32 context);
 
 /*
  * Clear signed halfword actor +0x280, play sound 0x57 with extra zero, and
- * invoke func_020405c8(actor,0,0x100,20). Its return value is forwarded. Actor,
- * sound, and presentation state may change; the two calls cross engine sound
- * and presentation boundaries.
+ * invoke ActorExtendedType2_SpawnOptionalPresentation(actor, 0, 0x100, 20).
+ * Its return value is forwarded. Actor, sound, and presentation state may
+ * change; the two calls cross engine sound and presentation boundaries.
  */
 s32 ActorExtendedType2_TriggerContactFeedback(void *self)
 {
     u8 *actor = (u8 *)self;
     *(u16 *)(actor + 0x280) = 0;
     func_020349b8(actor, 0x57, 0);
-    return func_020405c8(actor, 0, 0x100, 20);
+    return ActorExtendedType2_SpawnOptionalPresentation(actor, 0, 0x100, 20);
 }
 
 /*

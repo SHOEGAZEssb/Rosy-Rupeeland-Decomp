@@ -4,14 +4,14 @@
 .extern data_020e6adc
 .extern Actor_RestoreSavedFlags
 .extern func_020919e8
-.global func_02040a58
-.type func_02040a58, @function
-func_02040a58: ; 0x02040a58
+.global ActorExtendedType2_TransitionNoOp
+.type ActorExtendedType2_TransitionNoOp, @function
+ActorExtendedType2_TransitionNoOp: ; 0x02040a58
     bx lr
-.size func_02040a58, . - func_02040a58
-.global func_02040a5c
-.type func_02040a5c, @function
-func_02040a5c: ; 0x02040a5c
+.size ActorExtendedType2_TransitionNoOp, . - ActorExtendedType2_TransitionNoOp
+.global ActorExtendedType2_UpdateAttachmentScaleTransition
+.type ActorExtendedType2_UpdateAttachmentScaleTransition, @function
+ActorExtendedType2_UpdateAttachmentScaleTransition: ; 0x02040a5c
     stmdb sp!, {r4, lr}
     mov r4, r0
     ldr r1, [r4, #0x54]
@@ -111,4 +111,4 @@ func_02040a5c: ; 0x02040a5c
 .L_02040bd0: .word 0xffffbffc
 .L_02040bd4: .word data_020e6adc
 .L_02040bd8: .word data_020df9e8
-.size func_02040a5c, . - func_02040a5c
+.size ActorExtendedType2_UpdateAttachmentScaleTransition, . - ActorExtendedType2_UpdateAttachmentScaleTransition

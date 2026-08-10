@@ -2,7 +2,7 @@
 .text
 .extern func_02032a94
 .extern func_020349b8
-.extern func_020405c8
+.extern ActorExtendedType2_SpawnOptionalPresentation
 .extern func_0204cfa4
 .extern func_020adae4
 .extern func_020adc90
@@ -20,7 +20,7 @@ ActorExtendedType2_TriggerContactFeedback: ; 0x0204330c
     mov r1, #0x0
     mov r2, #0x100
     mov r3, #0x14
-    bl func_020405c8
+    bl ActorExtendedType2_SpawnOptionalPresentation
     ldmia sp!, {r4, pc}
 .size ActorExtendedType2_TriggerContactFeedback, . - ActorExtendedType2_TriggerContactFeedback
 

@@ -17007,7 +17007,7 @@ build build/reports/actor_extended_type2_sound_and_presentation_02040590.json: o
   base_object = build/decomp/asm/game/actor_extended_type2_sound_and_presentation_02040590.o
 build build/reports/actor_extended_type2_sound_and_presentation_02040590.txt: match_report build/reports/actor_extended_type2_sound_and_presentation_02040590.json | tools/report_objdiff.py
   report_json = build/reports/actor_extended_type2_sound_and_presentation_02040590.json
-  report_args = --section .text --function func_02040590 --function func_020405c8 --require-exact
+  report_args = --section .text --function ActorExtendedType2_PlayDescriptorSoundIfEnabled --function ActorExtendedType2_SpawnOptionalPresentation --require-exact
 build build/reports/actor_extended_type2_sound_and_presentation.txt: phony build/reports/actor_extended_type2_sound_and_presentation_02040590.txt
 build actor_extended_type2_sound_and_presentation: phony build/decomp/src/game/actor_extended_type2_sound_and_presentation.o build/decomp/asm/game/actor_extended_type2_sound_and_presentation_02040590.o build/reports/actor_extended_type2_sound_and_presentation.txt
 
@@ -17022,7 +17022,7 @@ build build/reports/actor_extended_type2_timed_transition_0204067c.json: objdiff
   base_object = build/decomp/asm/game/actor_extended_type2_timed_transition_0204067c.o
 build build/reports/actor_extended_type2_timed_transition_0204067c.txt: match_report build/reports/actor_extended_type2_timed_transition_0204067c.json | tools/report_objdiff.py
   report_json = build/reports/actor_extended_type2_timed_transition_0204067c.json
-  report_args = --section .text --function func_0204067c --require-exact
+  report_args = --section .text --function ActorExtendedType2_UpdateTimedAttachmentTransition --require-exact
 build build/reports/actor_extended_type2_timed_transition.txt: phony build/reports/actor_extended_type2_timed_transition_0204067c.txt
 build actor_extended_type2_timed_transition: phony build/decomp/src/game/actor_extended_type2_timed_transition.o build/decomp/asm/game/actor_extended_type2_timed_transition_0204067c.o build/reports/actor_extended_type2_timed_transition.txt
 
@@ -17037,7 +17037,7 @@ build build/reports/actor_extended_type2_transition_control_02040a58.json: objdi
   base_object = build/decomp/asm/game/actor_extended_type2_transition_control_02040a58.o
 build build/reports/actor_extended_type2_transition_control_02040a58.txt: match_report build/reports/actor_extended_type2_transition_control_02040a58.json | tools/report_objdiff.py
   report_json = build/reports/actor_extended_type2_transition_control_02040a58.json
-  report_args = --section .text --function func_02040a58 --function func_02040a5c --require-exact
+  report_args = --section .text --function ActorExtendedType2_TransitionNoOp --function ActorExtendedType2_UpdateAttachmentScaleTransition --require-exact
 build build/reports/actor_extended_type2_transition_control.txt: phony build/reports/actor_extended_type2_transition_control_02040a58.txt
 build actor_extended_type2_transition_control: phony build/decomp/src/game/actor_extended_type2_transition_control.o build/decomp/asm/game/actor_extended_type2_transition_control_02040a58.o build/reports/actor_extended_type2_transition_control.txt
 
@@ -17052,7 +17052,7 @@ build build/reports/actor_extended_type2_transition_dispatch_02040bdc.json: objd
   base_object = build/decomp/asm/game/actor_extended_type2_transition_dispatch_02040bdc.o
 build build/reports/actor_extended_type2_transition_dispatch_02040bdc.txt: match_report build/reports/actor_extended_type2_transition_dispatch_02040bdc.json | tools/report_objdiff.py
   report_json = build/reports/actor_extended_type2_transition_dispatch_02040bdc.json
-  report_args = --section .text --function func_02040bdc --require-exact
+  report_args = --section .text --function ActorExtendedType2_DispatchTransitionCallback --require-exact
 build build/reports/actor_extended_type2_transition_dispatch.txt: phony build/reports/actor_extended_type2_transition_dispatch_02040bdc.txt
 build actor_extended_type2_transition_dispatch: phony build/decomp/src/game/actor_extended_type2_transition_dispatch.o build/decomp/asm/game/actor_extended_type2_transition_dispatch_02040bdc.o build/reports/actor_extended_type2_transition_dispatch.txt
 
@@ -17067,7 +17067,7 @@ build build/reports/actor_extended_type2_callback_routing_02040d64.json: objdiff
   base_object = build/decomp/asm/game/actor_extended_type2_callback_routing_02040d64.o
 build build/reports/actor_extended_type2_callback_routing_02040d64.txt: match_report build/reports/actor_extended_type2_callback_routing_02040d64.json | tools/report_objdiff.py
   report_json = build/reports/actor_extended_type2_callback_routing_02040d64.json
-  report_args = --section .text --function func_02040d64 --function func_02040d94 --require-exact
+  report_args = --section .text --function ActorExtendedType2_SetCallbackPair130AndForwardD0 --function ActorExtendedType2_RouteDescriptorTransition --require-exact
 build build/reports/actor_extended_type2_callback_routing.txt: phony build/reports/actor_extended_type2_callback_routing_02040d64.txt
 build actor_extended_type2_callback_routing: phony build/decomp/src/game/actor_extended_type2_callback_routing.o build/decomp/asm/game/actor_extended_type2_callback_routing_02040d64.o build/reports/actor_extended_type2_callback_routing.txt
 
@@ -17082,7 +17082,7 @@ build build/reports/actor_extended_type2_completion_gate_02040e28.json: objdiff 
   base_object = build/decomp/asm/game/actor_extended_type2_completion_gate_02040e28.o
 build build/reports/actor_extended_type2_completion_gate_02040e28.txt: match_report build/reports/actor_extended_type2_completion_gate_02040e28.json | tools/report_objdiff.py
   report_json = build/reports/actor_extended_type2_completion_gate_02040e28.json
-  report_args = --section .text --function func_02040e28 --require-exact
+  report_args = --section .text --function ActorExtendedType2_TryCompleteAttachmentGate --require-exact
 build build/reports/actor_extended_type2_completion_gate.txt: phony build/reports/actor_extended_type2_completion_gate_02040e28.txt
 build actor_extended_type2_completion_gate: phony build/decomp/src/game/actor_extended_type2_completion_gate.o build/decomp/asm/game/actor_extended_type2_completion_gate_02040e28.o build/reports/actor_extended_type2_completion_gate.txt
 

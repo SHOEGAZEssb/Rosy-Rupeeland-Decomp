@@ -3,7 +3,7 @@
 .extern data_ov078_02215c88
 .extern func_02005030
 .extern func_02005058
-.extern func_020405c8
+.extern ActorExtendedType2_SpawnOptionalPresentation
 .extern ActorExtendedType2_GetDescriptorValue2A
 .extern func_020593dc
 .extern func_020befec
@@ -205,7 +205,7 @@ func_ov078_02214814:
     mov r1, #0x0
     mov r2, #0x100
     mov r3, #0x14
-    bl func_020405c8
+    bl ActorExtendedType2_SpawnOptionalPresentation
     add r0, r8, #0x200
     ldrh r0, [r0, #0xc6]
     mov r1, #0x100

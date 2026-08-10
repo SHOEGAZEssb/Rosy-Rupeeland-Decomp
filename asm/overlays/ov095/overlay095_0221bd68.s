@@ -1,6 +1,6 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov095/overlay095_recovery.c.
-.extern func_02040bdc
+.extern ActorExtendedType2_DispatchTransitionCallback
 .extern func_ov095_0221bf8c
 
 .global func_ov095_0221bd68
@@ -19,6 +19,6 @@ func_ov095_0221bd68:
     ldmia sp!, {r3, r4, r5, pc}
 .L_0221bd98:
     mov r1, r4
-    bl func_02040bdc
+    bl ActorExtendedType2_DispatchTransitionCallback
     ldmia sp!, {r3, r4, r5, pc}
 .size func_ov095_0221bd68, . - func_ov095_0221bd68

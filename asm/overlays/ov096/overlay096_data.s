@@ -85,11 +85,11 @@
 .extern func_ov096_022182d8
 .extern func_ov096_022182d0
 .extern ActorExtendedType2_IsInteractionEligible
-.extern func_0204067c
-.extern func_02040a5c
+.extern ActorExtendedType2_UpdateTimedAttachmentTransition
+.extern ActorExtendedType2_UpdateAttachmentScaleTransition
 .extern func_ov096_02217ef8
-.extern func_02040d94
-.extern func_02040e28
+.extern ActorExtendedType2_RouteDescriptorTransition
+.extern ActorExtendedType2_TryCompleteAttachmentGate
 .extern func_02040f4c
 .extern func_020412a8
 .extern func_02041424
@@ -110,7 +110,7 @@
 .extern func_ov096_02218268
 .extern func_ov096_02218254
 .extern func_ov096_0221820c
-.extern func_02040d64
+.extern ActorExtendedType2_SetCallbackPair130AndForwardD0
 .extern func_ov096_022181fc
 .extern ActorExtendedType2_UpdateDescriptorQueryFlags
 .extern func_ov096_022181dc
@@ -127,7 +127,7 @@
 .extern ActorExtendedType2_CopyAdjustedDescriptor
 .extern func_ov096_0221865c
 .extern ActorExtendedType2_ConfigureCallback08
-.extern func_02040bdc
+.extern ActorExtendedType2_DispatchTransitionCallback
 .extern func_ov096_02218958
 .extern func_ov096_02218aa4
 .extern func_02041c48
@@ -276,11 +276,11 @@ data_ov096_02218b98:
     .word func_ov096_022182d8
     .word func_ov096_022182d0
     .word ActorExtendedType2_IsInteractionEligible
-    .word func_0204067c
-    .word func_02040a5c
+    .word ActorExtendedType2_UpdateTimedAttachmentTransition
+    .word ActorExtendedType2_UpdateAttachmentScaleTransition
     .word func_ov096_02217ef8
-    .word func_02040d94
-    .word func_02040e28
+    .word ActorExtendedType2_RouteDescriptorTransition
+    .word ActorExtendedType2_TryCompleteAttachmentGate
     .word func_02040f4c
     .word func_020412a8
     .word func_02041424
@@ -301,7 +301,7 @@ data_ov096_02218b98:
     .word func_ov096_02218268
     .word func_ov096_02218254
     .word func_ov096_0221820c
-    .word func_02040d64
+    .word ActorExtendedType2_SetCallbackPair130AndForwardD0
     .word func_ov096_022181fc
     .word ActorExtendedType2_UpdateDescriptorQueryFlags
     .word func_ov096_022181dc
@@ -423,11 +423,11 @@ data_ov096_02218de8:
     .word func_ov096_022182d8
     .word func_ov096_022182d0
     .word ActorExtendedType2_IsInteractionEligible
-    .word func_0204067c
-    .word func_02040a5c
-    .word func_02040bdc
-    .word func_02040d94
-    .word func_02040e28
+    .word ActorExtendedType2_UpdateTimedAttachmentTransition
+    .word ActorExtendedType2_UpdateAttachmentScaleTransition
+    .word ActorExtendedType2_DispatchTransitionCallback
+    .word ActorExtendedType2_RouteDescriptorTransition
+    .word ActorExtendedType2_TryCompleteAttachmentGate
     .word func_ov096_02218958
     .word func_020412a8
     .word func_02041424
@@ -448,7 +448,7 @@ data_ov096_02218de8:
     .word func_ov096_02218268
     .word func_ov096_02218254
     .word func_ov096_0221820c
-    .word func_02040d64
+    .word ActorExtendedType2_SetCallbackPair130AndForwardD0
     .word func_ov096_022181fc
     .word ActorExtendedType2_UpdateDescriptorQueryFlags
     .word func_ov096_022181dc

@@ -1,9 +1,9 @@
 ; Matching retail form; see src/game/actor_extended_type2_callback_routing.c.
 .text
 .extern data_020df9e8
-.global func_02040d64
-.type func_02040d64, @function
-func_02040d64: ; 0x02040d64
+.global ActorExtendedType2_SetCallbackPair130AndForwardD0
+.type ActorExtendedType2_SetCallbackPair130AndForwardD0, @function
+ActorExtendedType2_SetCallbackPair130AndForwardD0: ; 0x02040d64
     stmdb sp!, {r3, lr}
     ldr r2, .L_02040d90
     add r1, r0, #0x22c
@@ -16,11 +16,11 @@ func_02040d64: ; 0x02040d64
     blx r2
     ldmia sp!, {r3, pc}
 .L_02040d90: .word data_020df9e8
-.size func_02040d64, . - func_02040d64
+.size ActorExtendedType2_SetCallbackPair130AndForwardD0, . - ActorExtendedType2_SetCallbackPair130AndForwardD0
 
-.global func_02040d94
-.type func_02040d94, @function
-func_02040d94: ; 0x02040d94
+.global ActorExtendedType2_RouteDescriptorTransition
+.type ActorExtendedType2_RouteDescriptorTransition, @function
+ActorExtendedType2_RouteDescriptorTransition: ; 0x02040d94
     stmdb sp!, {r3, r4, r5, lr}
     mov r4, r0
     ldr r2, [r4, #0x260]
@@ -61,4 +61,4 @@ func_02040d94: ; 0x02040d94
     mov r0, #0x0
     ldmia sp!, {r3, r4, r5, pc}
 .L_02040e24: .word data_020df9e8
-.size func_02040d94, . - func_02040d94
+.size ActorExtendedType2_RouteDescriptorTransition, . - ActorExtendedType2_RouteDescriptorTransition

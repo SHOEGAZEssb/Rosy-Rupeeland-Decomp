@@ -1,12 +1,12 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov083/overlay083_recovery.c.
-.extern func_0204067c
+.extern ActorExtendedType2_UpdateTimedAttachmentTransition
 
 .global func_ov083_022132b8
 func_ov083_022132b8:
     stmdb sp!, {r3, r4, r5, lr}
     mov r5, r0
-    bl func_0204067c
+    bl ActorExtendedType2_UpdateTimedAttachmentTransition
     movs r4, r0
     ldrne r0, [r5, #0x298]
     cmpne r0, #0x0

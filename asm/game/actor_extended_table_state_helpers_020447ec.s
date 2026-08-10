@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/actor_extended_table_state_helpers.c.
 .text
 .extern data_020e0ac8
-.extern func_02040d64
+.extern ActorExtendedType2_SetCallbackPair130AndForwardD0
 .global ActorExtendedTable_ResetStageCounters
 .type ActorExtendedTable_ResetStageCounters, @function
 .global ActorExtendedTable_InstallCallback30AndDispatch
@@ -29,5 +29,5 @@ ActorExtendedTable_InstallCallback30AndDispatch: ; 0x02044818
     str r1, [r0, #0x21c]
     bx ip
 .L_02044834: .word data_020e0ac8
-.L_02044838: .word func_02040d64
+.L_02044838: .word ActorExtendedType2_SetCallbackPair130AndForwardD0
 .size ActorExtendedTable_InstallCallback30AndDispatch, . - ActorExtendedTable_InstallCallback30AndDispatch

@@ -3,7 +3,7 @@
 .extern func_02005030
 .extern func_02005058
 .extern Actor_GetCachedTerrainHeight
-.extern func_02040e28
+.extern ActorExtendedType2_TryCompleteAttachmentGate
 .extern func_ov084_02213b2c
 
 .global func_ov084_02213954
@@ -11,7 +11,7 @@ func_ov084_02213954:
     stmdb sp!, {r4, lr}
     sub sp, sp, #0x10
     mov r4, r0
-    bl func_02040e28
+    bl ActorExtendedType2_TryCompleteAttachmentGate
     cmp r0, #0x0
     moveq r0, #0x0
     beq .L_022139a4

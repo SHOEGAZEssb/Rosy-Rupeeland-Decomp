@@ -6,7 +6,7 @@
 .extern func_02005058
 .extern Actor_GetCachedTerrainHeight
 .extern func_02034a60
-.extern func_020405c8
+.extern ActorExtendedType2_SpawnOptionalPresentation
 .extern ActorExtendedType2_GetDescriptorValue2A
 .extern ActorExtendedType2_GetDescriptorValue2C
 .extern func_0204cfa4
@@ -169,7 +169,7 @@ func_ov078_02214cb8:
     mov r1, #0x2
     mov r2, #0x100
     mov r3, #0x14
-    bl func_020405c8
+    bl ActorExtendedType2_SpawnOptionalPresentation
     mov r0, #0x0
     str r0, [sp, #0x0]
     mov r1, #0x100

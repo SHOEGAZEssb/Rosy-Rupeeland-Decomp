@@ -2,7 +2,7 @@
 .text
 .extern data_020df9e8
 .extern func_020050a4
-.extern func_02040590
+.extern ActorExtendedType2_PlayDescriptorSoundIfEnabled
 .extern func_020453c8
 .extern func_020ada8c
 .extern genrand_int32
@@ -48,7 +48,7 @@ func_02041c48: ; 0x02041c48
     ldr r1, [r1, #0x138]
     blx r1
     mov r0, r5
-    bl func_02040590
+    bl ActorExtendedType2_PlayDescriptorSoundIfEnabled
     ldr r0, .L_02041e14
     ldr r1, [r0, #0xf8]
     ldr r0, [r0, #0xfc]
@@ -121,7 +121,7 @@ func_02041c48: ; 0x02041c48
     b .L_02041df0
 .L_02041da8:
     mov r0, r5
-    bl func_02040590
+    bl ActorExtendedType2_PlayDescriptorSoundIfEnabled
     ldr r0, .L_02041e14
     ldr r1, [r0, #0x230]
     ldr r0, [r0, #0x234]
@@ -133,7 +133,7 @@ func_02041c48: ; 0x02041c48
     add r1, r5, #0x200
     mov r2, #0x0
     strh r2, [r1, #0x56]
-    bl func_02040590
+    bl ActorExtendedType2_PlayDescriptorSoundIfEnabled
     ldr r0, .L_02041e14
     ldr r1, [r0, #0x228]
     ldr r0, [r0, #0x22c]

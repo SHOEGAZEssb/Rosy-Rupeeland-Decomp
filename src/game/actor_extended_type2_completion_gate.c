@@ -13,7 +13,7 @@ extern void *gSoundContext;
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_02040590(void *actor);
+extern void ActorExtendedType2_PlayDescriptorSoundIfEnabled(void *actor);
 extern void func_0205940c(void *soundContext, s32 group, s32 value);
 #ifdef __cplusplus
 }
@@ -26,11 +26,13 @@ extern void func_0205940c(void *soundContext, s32 group, s32 value);
  * increment signed counter +0x25a and complete after it exceeds 30. Completion
  * clears +0x25a/+0x256, installs global pair +0x2a0/+0x2a4 at +0x218/+0x21c,
  * sets +0x260 bit two, optionally submits the packed data_020e7318 sound value
- * unless it is 0xffff, invokes func_02040590, and puts index 0x30 in state seven.
+ * unless it is 0xffff, invokes
+ * ActorExtendedType2_PlayDescriptorSoundIfEnabled, and puts index 0x30 in
+ * state seven.
  * It returns one only on completion. Actor, virtual, sound, and presentation
  * state may change; func_0205940c is the only external subsystem boundary.
  */
-s32 func_02040e28(void *self)
+s32 ActorExtendedType2_TryCompleteAttachmentGate(void *self)
 {
     u8 *actor = (u8 *)self;
     u8 *attachment;
@@ -67,7 +69,7 @@ s32 func_02040e28(void *self)
         if (packed != 0xffff)
             func_0205940c(gSoundContext, packed >> 7, packed & 0x7f);
     }
-    func_02040590(actor);
+    ActorExtendedType2_PlayDescriptorSoundIfEnabled(actor);
     if (*(u16 *)(actor + 0x4e) == 0x30)
         *(u16 *)(actor + 0xd6) = 7;
     return 1;

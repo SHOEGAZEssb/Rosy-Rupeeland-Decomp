@@ -19,7 +19,7 @@ extern u8 data_020df9e8[];
  * held at +0x220/+0x224 with descriptorRecord. Virtual and actor state may
  * change; no direct SDK or hardware access occurs.
  */
-s32 func_02040bdc(void *self, void *descriptorRecord)
+s32 ActorExtendedType2_DispatchTransitionCallback(void *self, void *descriptorRecord)
 {
     u8 *actor = (u8 *)self;
     u8 *record = (u8 *)descriptorRecord;

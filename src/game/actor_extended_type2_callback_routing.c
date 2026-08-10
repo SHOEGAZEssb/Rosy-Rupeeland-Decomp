@@ -12,7 +12,7 @@ extern u8 data_020df9e8[];
  * actor and its return value is forwarded unchanged; no direct SDK or hardware
  * operation occurs.
  */
-s32 func_02040d64(void *self)
+s32 ActorExtendedType2_SetCallbackPair130AndForwardD0(void *self)
 {
     u8 *actor = (u8 *)self;
     u8 *vtable = *(u8 **)actor;
@@ -30,7 +30,7 @@ s32 func_02040d64(void *self)
  * leave those fields unchanged. The routine always returns zero, may change
  * actor/virtual state, and performs no direct SDK or hardware operation.
  */
-s32 func_02040d94(void *self, void *descriptorRecord)
+s32 ActorExtendedType2_RouteDescriptorTransition(void *self, void *descriptorRecord)
 {
     u8 *actor = (u8 *)self;
     u8 *record = (u8 *)descriptorRecord;

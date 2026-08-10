@@ -3,12 +3,12 @@
 .extern data_020df9e8
 .extern data_020e6c0c
 .extern data_020e7318
-.extern func_02040590
+.extern ActorExtendedType2_PlayDescriptorSoundIfEnabled
 .extern func_0205940c
 .extern gSoundContext
-.global func_02040e28
-.type func_02040e28, @function
-func_02040e28: ; 0x02040e28
+.global ActorExtendedType2_TryCompleteAttachmentGate
+.type ActorExtendedType2_TryCompleteAttachmentGate, @function
+ActorExtendedType2_TryCompleteAttachmentGate: ; 0x02040e28
     stmdb sp!, {r4, lr}
     mov r4, r0
     ldr r2, [r4, #0x260]
@@ -71,7 +71,7 @@ func_02040e28: ; 0x02040e28
     bl func_0205940c
 .L_02040f10:
     mov r0, r4
-    bl func_02040590
+    bl ActorExtendedType2_PlayDescriptorSoundIfEnabled
     ldrh r0, [r4, #0x4e]
     cmp r0, #0x30
     moveq r0, #0x7
@@ -86,4 +86,4 @@ func_02040e28: ; 0x02040e28
 .L_02040f40: .word data_020e7318
 .L_02040f44: .word 0xffff
 .L_02040f48: .word gSoundContext
-.size func_02040e28, . - func_02040e28
+.size ActorExtendedType2_TryCompleteAttachmentGate, . - ActorExtendedType2_TryCompleteAttachmentGate

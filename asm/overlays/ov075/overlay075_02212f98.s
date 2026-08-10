@@ -1,7 +1,7 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov075/overlay075_recovery.c.
 .extern func_020349b8
-.extern func_020405c8
+.extern ActorExtendedType2_SpawnOptionalPresentation
 
 .global func_ov075_02212f98
 func_ov075_02212f98:
@@ -14,11 +14,11 @@ func_ov075_02212f98:
     mov r0, r4
     sub r3, r2, #0x114
     mov r1, #0x0
-    bl func_020405c8
+    bl ActorExtendedType2_SpawnOptionalPresentation
     mov r0, r4
     mov r1, #0x1
     mov r2, #0x100
     mov r3, #0x14
-    bl func_020405c8
+    bl ActorExtendedType2_SpawnOptionalPresentation
     ldmia sp!, {r4, pc}
 .size func_ov075_02212f98, . - func_ov075_02212f98

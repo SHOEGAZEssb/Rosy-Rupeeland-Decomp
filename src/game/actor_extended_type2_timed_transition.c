@@ -20,7 +20,7 @@ extern "C" {extern s32 GameWork_TestFlag(void *work,s32 flag);extern s16 *func_0
  * descriptor-indexed sound, and return one. All incomplete paths return zero.
  * Actor, attachment, path, game-work, virtual, and sound state may change.
  */
-s32 func_0204067c(void *self,const void *descriptorRecord)
+s32 ActorExtendedType2_UpdateTimedAttachmentTransition(void *self,const void *descriptorRecord)
 {
  u8 *a=(u8 *)self,*d=(u8 *)descriptorRecord,*att=*(u8 **)(a+0x54);u16 index=*(u16 *)(a+0x4e);*(s16 *)(a+0xd6)=17;
  if((*(u32 *)(a+0x260)&0x800)==0){

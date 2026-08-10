@@ -1,6 +1,6 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov097/overlay097_recovery.c.
-.extern func_0204067c
+.extern ActorExtendedType2_UpdateTimedAttachmentTransition
 .extern func_ov097_022177e0
 .extern gGameWork
 
@@ -25,7 +25,7 @@ func_ov097_0221978c:
 .L_022197cc:
     mov r0, r5
     mov r1, r4
-    bl func_0204067c
+    bl ActorExtendedType2_UpdateTimedAttachmentTransition
     ldmia sp!, {r3, r4, r5, pc}
 .L_022197dc: .word gGameWork
 .size func_ov097_0221978c, . - func_ov097_0221978c

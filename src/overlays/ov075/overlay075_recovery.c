@@ -40,7 +40,7 @@ void func_ov075_02212f10(void);
 /* Processes the supplied ABI arguments and offset-based actor state, returns its encoded result, and invokes func_020050a4, Actor_GetCachedTerrainHeight; exact higher-level semantics remain unconfirmed. */
 void func_ov075_02212f20(void);
 
-/* Processes the supplied ABI arguments and offset-based actor state, returns its encoded result, and invokes func_020349b8, func_020405c8; exact higher-level semantics remain unconfirmed. */
+/* Processes the supplied ABI arguments and offset-based actor state, returns its encoded result, and invokes func_020349b8, ActorExtendedType2_SpawnOptionalPresentation; exact higher-level semantics remain unconfirmed. */
 void func_ov075_02212f98(void);
 
 /* Processes the supplied ABI arguments and offset-based actor state, returns its encoded result, and invokes func_020050a4, Actor_ClearTransientContactState, Actor_GetCachedTerrainHeight and other shared helpers; exact higher-level semantics remain unconfirmed. */

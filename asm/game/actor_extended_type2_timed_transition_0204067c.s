@@ -13,9 +13,9 @@
 .extern func_020453b0
 .extern func_020453c8
 .extern gGameWork
-.global func_0204067c
-.type func_0204067c, @function
-func_0204067c: ; 0x0204067c
+.global ActorExtendedType2_UpdateTimedAttachmentTransition
+.type ActorExtendedType2_UpdateTimedAttachmentTransition, @function
+ActorExtendedType2_UpdateTimedAttachmentTransition: ; 0x0204067c
     stmdb sp!, {r3, r4, r5, lr}
     mov r5, r0
     mov r2, #0x11
@@ -276,4 +276,4 @@ func_0204067c: ; 0x0204067c
 .L_02040a4c: .word data_021052fc
 .L_02040a50: .word data_020df9e8
 .L_02040a54: .word data_020e71ec
-.size func_0204067c, . - func_0204067c
+.size ActorExtendedType2_UpdateTimedAttachmentTransition, . - ActorExtendedType2_UpdateTimedAttachmentTransition
