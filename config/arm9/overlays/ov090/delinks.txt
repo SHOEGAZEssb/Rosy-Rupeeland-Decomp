@@ -24,7 +24,7 @@ src/overlays/ov090/overlay090_title_vector_store.c:
 src/overlays/ov090/overlay090_title_vector_helpers.c:
     categories: Game code
     .text start:0x0221a3dc end:0x0221a504
-asm/overlays/ov090/overlay090_0221a504.s:
+src/overlays/ov090/overlay090_title_virtual_dispatch.c:
     categories: Game code
     .text start:0x0221a504 end:0x0221a544
 asm/overlays/ov090/overlay090_0221a544.s:
@@ -33,7 +33,7 @@ asm/overlays/ov090/overlay090_0221a544.s:
 src/overlays/ov090/overlay090_title_noop_hooks.c:
     categories: Game code
     .text start:0x0221a6ac end:0x0221a6b4
-asm/overlays/ov090/overlay090_0221a6b4.s:
+src/overlays/ov090/overlay090_title_countdown.c:
     categories: Game code
     .text start:0x0221a6b4 end:0x0221a6d8
 asm/overlays/ov090/overlay090_0221a6d8.s:
@@ -48,13 +48,13 @@ asm/overlays/ov090/overlay090_0221a784.s:
 asm/overlays/ov090/overlay090_0221a8bc.s:
     categories: Game code
     .text start:0x0221a8bc end:0x0221aa98
-asm/overlays/ov090/overlay090_0221aa98.s:
+src/overlays/ov090/overlay090_title_state_classify.c:
     categories: Game code
     .text start:0x0221aa98 end:0x0221aab8
-asm/overlays/ov090/overlay090_0221aab8.s:
+src/overlays/ov090/overlay090_title_direction_query.c:
     categories: Game code
     .text start:0x0221aab8 end:0x0221ab2c
-asm/overlays/ov090/overlay090_0221ab2c.s:
+src/overlays/ov090/overlay090_title_state_active_query.c:
     categories: Game code
     .text start:0x0221ab2c end:0x0221ab4c
 asm/overlays/ov090/overlay090_0221ab4c.s:
@@ -75,18 +75,15 @@ asm/overlays/ov090/overlay090_0221b194.s:
 asm/overlays/ov090/overlay090_0221b280.s:
     categories: Game code
     .text start:0x0221b280 end:0x0221b3d0
-asm/overlays/ov090/overlay090_0221b3d0.s:
+src/overlays/ov090/overlay090_title_vector_scale_in_place.c:
     categories: Game code
     .text start:0x0221b3d0 end:0x0221b428
 asm/overlays/ov090/overlay090_0221b428.s:
     categories: Game code
     .text start:0x0221b428 end:0x0221b7e0
-asm/overlays/ov090/overlay090_0221b7e0.s:
+src/overlays/ov090/overlay090_title_sound_fade.c:
     categories: Game code
-    .text start:0x0221b7e0 end:0x0221b7f8
-asm/overlays/ov090/overlay090_0221b7f8.s:
-    categories: Game code
-    .text start:0x0221b7f8 end:0x0221b8c8
+    .text start:0x0221b7e0 end:0x0221b8c8
 asm/overlays/ov090/overlay090_0221b8c8.s:
     categories: Game code
     .text start:0x0221b8c8 end:0x0221b8d0
