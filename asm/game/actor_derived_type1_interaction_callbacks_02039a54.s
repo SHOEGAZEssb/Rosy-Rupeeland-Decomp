@@ -5,7 +5,7 @@
 .extern data_020df4a4
 .extern data_021052fc
 .extern ActorMotionAreaFollower_GetPosition
-.extern func_02010c00
+.extern GamePhaseCurrencyHud_AddCurrency
 .extern func_0201ded4
 .extern func_02022cb0
 .extern Type1Actor_TryEnterFailureState
@@ -48,7 +48,7 @@ ActorDerivedType1_TryApplyInteractionAmount: ; 0x02039a54
     ldr r0, [r0, #0x0]
     mov r1, r4
     mov r2, #0x0
-    bl func_02010c00
+    bl GamePhaseCurrencyHud_AddCurrency
     ldr r1, .L_02039b88
     ldr r3, .L_02039b8c
     mov r0, #0x44

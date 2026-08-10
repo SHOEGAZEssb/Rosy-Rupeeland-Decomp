@@ -4243,14 +4243,14 @@ build build/reports/game_phase_currency_hud_02010854.json: objdiff build/decomp/
   base_object = build/decomp/asm/game/game_phase_currency_hud_02010854.o
 build build/reports/game_phase_currency_hud_02010854.txt: match_report build/reports/game_phase_currency_hud_02010854.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_currency_hud_02010854.json
-  report_args = --section .text --function func_02010854 --require-exact
+  report_args = --section .text --function AnimationResource_InitEmpty --require-exact
 
 build build/reports/game_phase_currency_hud_02010878.json: objdiff build/decomp/delinks/asm/game/game_phase_currency_hud_02010878.o | build/decomp/asm/game/game_phase_currency_hud_02010878.o
   target_object = build/decomp/delinks/asm/game/game_phase_currency_hud_02010878.o
   base_object = build/decomp/asm/game/game_phase_currency_hud_02010878.o
 build build/reports/game_phase_currency_hud_02010878.txt: match_report build/reports/game_phase_currency_hud_02010878.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_currency_hud_02010878.json
-  report_args = --section .text --function func_02010878 --require-exact
+  report_args = --section .text --function GamePhaseCurrencyHud_Init --require-exact
 
 build build/reports/game_phase_currency_hud_lifecycle.txt: phony build/reports/game_phase_currency_hud_02010854.txt build/reports/game_phase_currency_hud_02010878.txt
 
@@ -4259,21 +4259,21 @@ build build/reports/game_phase_currency_hud_02010b64.json: objdiff build/decomp/
   base_object = build/decomp/asm/game/game_phase_currency_hud_02010b64.o
 build build/reports/game_phase_currency_hud_02010b64.txt: match_report build/reports/game_phase_currency_hud_02010b64.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_currency_hud_02010b64.json
-  report_args = --section .text --function func_02010b64 --require-exact
+  report_args = --section .text --function GamePhaseCurrencyHud_GetCurrency --require-exact
 
 build build/reports/game_phase_currency_hud_02010b78.json: objdiff build/decomp/delinks/asm/game/game_phase_currency_hud_02010b78.o | build/decomp/asm/game/game_phase_currency_hud_02010b78.o
   target_object = build/decomp/delinks/asm/game/game_phase_currency_hud_02010b78.o
   base_object = build/decomp/asm/game/game_phase_currency_hud_02010b78.o
 build build/reports/game_phase_currency_hud_02010b78.txt: match_report build/reports/game_phase_currency_hud_02010b78.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_currency_hud_02010b78.json
-  report_args = --section .text --function func_02010b78 --require-exact
+  report_args = --section .text --function GamePhaseCurrencyHud_SetCurrency --require-exact
 
 build build/reports/game_phase_currency_hud_02010c00.json: objdiff build/decomp/delinks/asm/game/game_phase_currency_hud_02010c00.o | build/decomp/asm/game/game_phase_currency_hud_02010c00.o
   target_object = build/decomp/delinks/asm/game/game_phase_currency_hud_02010c00.o
   base_object = build/decomp/asm/game/game_phase_currency_hud_02010c00.o
 build build/reports/game_phase_currency_hud_02010c00.txt: match_report build/reports/game_phase_currency_hud_02010c00.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_currency_hud_02010c00.json
-  report_args = --section .text --function func_02010c00 --require-exact
+  report_args = --section .text --function GamePhaseCurrencyHud_AddCurrency --require-exact
 
 build build/reports/game_phase_currency_hud_values.txt: phony build/reports/game_phase_currency_hud_02010b64.txt build/reports/game_phase_currency_hud_02010b78.txt build/reports/game_phase_currency_hud_02010c00.txt
 
@@ -4282,21 +4282,21 @@ build build/reports/game_phase_currency_hud_02010e68.json: objdiff build/decomp/
   base_object = build/decomp/asm/game/game_phase_currency_hud_02010e68.o
 build build/reports/game_phase_currency_hud_update.txt: match_report build/reports/game_phase_currency_hud_02010e68.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_currency_hud_02010e68.json
-  report_args = --section .text --function func_02010e68 --require-exact
+  report_args = --section .text --function GamePhaseCurrencyHud_Update --require-exact
 
 build build/reports/game_phase_currency_hud_020112f0.json: objdiff build/decomp/delinks/asm/game/game_phase_currency_hud_020112f0.o | build/decomp/asm/game/game_phase_currency_hud_020112f0.o
   target_object = build/decomp/delinks/asm/game/game_phase_currency_hud_020112f0.o
   base_object = build/decomp/asm/game/game_phase_currency_hud_020112f0.o
 build build/reports/game_phase_currency_hud_020112f0.txt: match_report build/reports/game_phase_currency_hud_020112f0.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_currency_hud_020112f0.json
-  report_args = --section .text --function func_020112f0 --require-exact
+  report_args = --section .text --function GamePhaseCurrencyHud_UpdateDigits --require-exact
 
 build build/reports/game_phase_currency_hud_0201140c.json: objdiff build/decomp/delinks/asm/game/game_phase_currency_hud_0201140c.o | build/decomp/asm/game/game_phase_currency_hud_0201140c.o
   target_object = build/decomp/delinks/asm/game/game_phase_currency_hud_0201140c.o
   base_object = build/decomp/asm/game/game_phase_currency_hud_0201140c.o
 build build/reports/game_phase_currency_hud_0201140c.txt: match_report build/reports/game_phase_currency_hud_0201140c.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_currency_hud_0201140c.json
-  report_args = --section .text --function func_0201140c --require-exact
+  report_args = --section .text --function GamePhaseCurrencyHud_SetVisible --require-exact
 
 build build/reports/game_phase_currency_hud_display.txt: phony build/reports/game_phase_currency_hud_020112f0.txt build/reports/game_phase_currency_hud_0201140c.txt
 

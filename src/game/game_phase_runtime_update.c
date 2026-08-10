@@ -35,8 +35,8 @@ extern s32 FrameCounter_Tick31(void *object);
 extern void func_020783cc(void *object);
 extern void func_02078384(void *object);
 extern void func_020755bc(void *object);
-extern s32 func_02010b64(void *context);
-extern void func_02010e68(void *context);
+extern s32 GamePhaseCurrencyHud_GetCurrency(void *context);
+extern void GamePhaseCurrencyHud_Update(void *context);
 extern s32 GamePhaseState_TryStartBoundaryTransition(void *object);
 extern void func_0200866c(GamePhaseRuntime *self);
 extern s32 GamePhaseRuntime_SynchronizeActorPlacement(GamePhaseRuntime *self, s32 index);
@@ -142,7 +142,7 @@ s32 GamePhaseRuntime_Update(GamePhaseRuntime *self)
 
     restricted = 0;
     if (!GameWork_TestFlag(gGameWork, 0x3f5) &&
-        func_02010b64(gLupyContext) <= 0)
+        GamePhaseCurrencyHud_GetCurrency(gLupyContext) <= 0)
         restricted = 1;
 
     if (!restricted) {
@@ -158,7 +158,7 @@ s32 GamePhaseRuntime_Update(GamePhaseRuntime *self)
             return 0;
     }
 
-    func_02010e68(gLupyContext);
+    GamePhaseCurrencyHud_Update(gLupyContext);
     if (restricted) {
         func_020338e4(*(void **)(b + 0x2ea4));
         object = *(void **)(b + 0x2ea8);

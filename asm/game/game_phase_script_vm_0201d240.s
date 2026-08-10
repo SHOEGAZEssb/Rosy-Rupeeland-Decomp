@@ -11,7 +11,7 @@
 .extern func_02092c8c
 .extern DisplayBrightness_IsSubTransitionComplete
 .extern func_020122a0
-.extern func_0201140c
+.extern GamePhaseCurrencyHud_SetVisible
 .extern GamePhaseRuntime_SetPlacementMode
 .extern func_02008570
 .extern func_020755bc

@@ -2,7 +2,7 @@
     .extern data_ov013_021feb40
     .extern data_ov013_021feb58
     .extern data_ov013_021febb4
-    .extern func_02010e68
+    .extern GamePhaseCurrencyHud_Update
     .extern func_02072b68
     .extern func_020740a4
     .extern func_02092260
@@ -150,7 +150,7 @@ L_021fdd64:
     ldmeqia sp!, {r4, r5, r6, r7, r8, pc}
     ldr r0, L_021fdd88
     ldr r0, [r0, #0x0]
-    bl func_02010e68
+    bl GamePhaseCurrencyHud_Update
     ldmia sp!, {r4, r5, r6, r7, r8, pc}
 L_021fdd80: .word data_ov013_021feb58
 L_021fdd84: .word data_ov013_021feb40

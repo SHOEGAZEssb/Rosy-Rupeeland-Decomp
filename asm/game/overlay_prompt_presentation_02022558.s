@@ -11,7 +11,7 @@
 .extern OverlaySlot_Destroy
 .extern OverlaySlot_LoadOverlay
 .extern OverlaySlot_UnloadOverlay
-.extern func_0201140c
+.extern GamePhaseCurrencyHud_SetVisible
 .extern func_0201e250
 .extern func_0201e28c
 .extern func_020755bc

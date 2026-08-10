@@ -3,7 +3,7 @@
     .extern GameWork_SetFlag
     .extern data_ov019_021fd600
     .extern data_ov019_021fd608
-    .extern func_02010b64
+    .extern GamePhaseCurrencyHud_GetCurrency
     .extern func_02092260
     .extern func_ov002_021fbb68
     .extern func_ov002_021fbc54
@@ -109,7 +109,7 @@ L_021fd380:
     ldr r0, L_021fd4b4
     ldr r5, [r1, #0x88]
     ldr r0, [r0, #0x0]
-    bl func_02010b64
+    bl GamePhaseCurrencyHud_GetCurrency
     cmp r5, r0
     blt L_021fd3ec
     mov r0, r4

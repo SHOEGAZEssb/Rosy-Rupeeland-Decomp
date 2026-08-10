@@ -30,8 +30,8 @@ extern "C" {
 #endif
 extern void GameWork_ClearFlag(void *, u32);
 extern s32 DisplayBrightness_IsMainTransitionComplete(void);
-extern s32 func_02010b64(void *);
-extern void func_02010c00(void *, s32, s32);
+extern s32 GamePhaseCurrencyHud_GetCurrency(void *);
+extern void GamePhaseCurrencyHud_AddCurrency(void *, s32, s32);
 extern void func_02062ca8(void *);
 extern void func_020755bc(void *);
 extern void func_02076004(void *, s32, u32, s32);
@@ -133,7 +133,7 @@ extern "C" s32 func_ov021_022009e0(void *state)
                 FIELD(s32, state, 4) = 0;
                 FIELD(s32, state, 8) = 0;
             } else if (func_ov021_021fd1b8(FIELD(void *, state, 0x2bc)) == 1 &&
-                       func_02010b64(gLupyContext) <= FIELD(s32, state, 0x394)) {
+                       GamePhaseCurrencyHud_GetCurrency(gLupyContext) <= FIELD(s32, state, 0x394)) {
                 func_02092260(state, 9);
                 FIELD(s32, state, 4) = 10;
                 FIELD(s32, state, 8) = 0;
@@ -216,9 +216,9 @@ extern "C" s32 func_ov021_02200d10(void *state)
             s32 capacity = FIELD(s32, FIELD(u8 *, desc, 4), 0x10);
             if (capacity > amount) {
                 s32 anim = func_ov045_0220b924(FIELD(void *, state, 0x3ec),
-                                               func_02010b64(gLupyContext),
+                                               GamePhaseCurrencyHud_GetCurrency(gLupyContext),
                                                amount, 1);
-                func_02010c00(gLupyContext, -amount, anim);
+                GamePhaseCurrencyHud_AddCurrency(gLupyContext, -amount, anim);
                 FIELD(s32, state, 4)++;
                 FIELD(s32, state, 8) = 0;
             } else {
@@ -262,9 +262,9 @@ extern "C" s32 func_ov021_02200d10(void *state)
         break;
     case 10: {
         s32 anim = func_ov045_0220b924(FIELD(void *, state, 0x3ec),
-                                       func_02010b64(gLupyContext),
+                                       GamePhaseCurrencyHud_GetCurrency(gLupyContext),
                                        FIELD(s32, state, 0x394), 1);
-        func_02010c00(gLupyContext, -FIELD(s32, state, 0x394), anim);
+        GamePhaseCurrencyHud_AddCurrency(gLupyContext, -FIELD(s32, state, 0x394), anim);
         FIELD(s32, state, 4)++;
         FIELD(s32, state, 8) = 0;
         /* Deliberate fall-through into the animation wait. */

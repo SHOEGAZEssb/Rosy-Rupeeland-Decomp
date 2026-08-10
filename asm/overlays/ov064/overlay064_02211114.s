@@ -9,7 +9,7 @@
 .extern DisplayBrightness_StartTransition
 .extern DisplayBrightnessPair_GetScreen
 .extern ActorMotionAreaFollower_GetPosition
-.extern func_02010c00
+.extern GamePhaseCurrencyHud_AddCurrency
 .extern func_0201ded4
 .extern func_02022cb0
 .extern ActorDerivedType1_ApplyResourceIndex
@@ -91,7 +91,7 @@ func_ov064_02211114:
     ldr r1, [r6, #0x80]
     ldr r0, [r0, #0x0]
     rsb r1, r1, #0x0
-    bl func_02010c00
+    bl GamePhaseCurrencyHud_AddCurrency
     ldr r1, .L_02211368
     ldr r3, .L_0221136c
     mov r0, #0x44

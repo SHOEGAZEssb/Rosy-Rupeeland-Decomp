@@ -4,7 +4,7 @@
 .extern GamePhaseRuntime_PrepareActorCollections
 .extern GamePhaseRuntime_FinalizeActorCollections
 .extern GamePhaseRuntime_SynchronizeActorPlacement
-.extern func_02010e68
+.extern GamePhaseCurrencyHud_Update
 .extern func_0201dcec
 .extern func_020a681c
 .extern func_020a6990
@@ -108,7 +108,7 @@ func_ov063_0220ffd0:
     movne r1, #0x0
     cmp r1, #0x0
     beq .L_02210138
-    bl func_02010e68
+    bl GamePhaseCurrencyHud_Update
 .L_02210138:
     ldr r0, [r4, #0x50]
     mov r0, r0, lsl #0x1f

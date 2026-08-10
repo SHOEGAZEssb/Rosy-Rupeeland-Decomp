@@ -9,7 +9,7 @@
 .extern func_0200500c
 .extern func_02005058
 .extern ActorMotionAreaFollower_GetPosition
-.extern func_02010c00
+.extern GamePhaseCurrencyHud_AddCurrency
 .extern func_0201ded4
 .extern func_0201f864
 .extern func_02022cb0
@@ -201,7 +201,7 @@ func_ov075_0221647c:
     rsb r1, r7, #0x0
     ldr r0, [r0, #0x0]
     mov r2, #0x0
-    bl func_02010c00
+    bl GamePhaseCurrencyHud_AddCurrency
     ldr r0, [r5, #0x230]
     add r1, sp, #0x4c
     orr r2, r0, #0x40000

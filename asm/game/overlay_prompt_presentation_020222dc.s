@@ -11,7 +11,7 @@
 .extern OverlaySlot_Destroy
 .extern OverlaySlot_LoadOverlay
 .extern OverlaySlot_UnloadOverlay
-.extern func_0201140c
+.extern GamePhaseCurrencyHud_SetVisible
 .extern func_0201e250
 .extern func_0201e28c
 .extern func_020755bc
@@ -49,7 +49,7 @@ func_020222dc: ; 0x020222dc
     ldr r0, .L_02022350
     mov r1, #0x1
     ldr r0, [r0, #0x0]
-    bl func_0201140c
+    bl GamePhaseCurrencyHud_SetVisible
 .L_02022334:
     add r0, r4, #0x10
     bl OverlaySlot_Destroy

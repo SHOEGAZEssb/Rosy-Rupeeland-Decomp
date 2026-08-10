@@ -16,7 +16,7 @@ extern const s32 data_ov030_021ff7b8[];
 extern "C" {
 #endif
 extern void func_020755bc(void *);
-extern void func_0201140c(void *, s32);
+extern void GamePhaseCurrencyHud_SetVisible(void *, s32);
 extern void func_02075598(void *, void *);
 extern void func_ov045_0220d2f8(s32, s32);
 extern s32 DisplayBrightness_IsMainTransitionComplete(void);
@@ -49,7 +49,7 @@ extern "C" s32 func_ov030_021feb64(void *scene)
     case 0:
         func_020755bc(data_020f4e14[0]);
         func_020755bc(gDebugFont);
-        func_0201140c(gLupyContext, 1);
+        GamePhaseCurrencyHud_SetVisible(gLupyContext, 1);
         func_02075598(gDebugFont, FIELD(void *, scene, 0x54));
         func_ov045_0220d2f8(8, 0x21);
         FIELD(u32, scene, 0x20) |= 1;

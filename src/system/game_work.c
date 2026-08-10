@@ -256,7 +256,7 @@ void GameWork_Init(GameWork *work)
     int i;
     int j;
 
-    work->unknown0040 = 0;
+    work->currency = 0;
     work->unknown0044 = 0;
     work->unknown0048 = 0;
 

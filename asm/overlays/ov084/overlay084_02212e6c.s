@@ -12,8 +12,8 @@
 .extern VecFx32Triple_Set
 .extern VecFx32Bezier_Evaluate3D
 .extern ActorMotionAreaFollower_GetPosition
-.extern func_02010b64
-.extern func_02010c00
+.extern GamePhaseCurrencyHud_GetCurrency
+.extern GamePhaseCurrencyHud_AddCurrency
 .extern func_0201ded4
 .extern func_02022cb0
 .extern func_020befec
@@ -128,12 +128,12 @@ func_ov084_02212e6c:
     ldr r0, .L_022131e0
     ldr r6, [r7, #0x114]
     ldr r0, [r0, #0x0]
-    bl func_02010b64
+    bl GamePhaseCurrencyHud_GetCurrency
     cmp r0, r6
     bgt .L_0221301c
     ldr r0, .L_022131e0
     ldr r0, [r0, #0x0]
-    bl func_02010b64
+    bl GamePhaseCurrencyHud_GetCurrency
     sub r6, r0, #0x1
 .L_0221301c:
     ldr r0, .L_022131e0
@@ -141,7 +141,7 @@ func_ov084_02212e6c:
     ldr r0, [r0, #0x0]
     mov r1, r5
     mov r2, #0x0
-    bl func_02010c00
+    bl GamePhaseCurrencyHud_AddCurrency
     ldr r1, [r7, #0x14]
     ldr r0, .L_022131e4
     bic r1, r1, #0x30000

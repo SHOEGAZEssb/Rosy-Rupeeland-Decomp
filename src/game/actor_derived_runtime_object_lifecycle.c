@@ -10,7 +10,7 @@ extern "C" {
 extern void *func_02030f98(void *self);
 extern void *func_0203130c(void *self);
 extern void func_02031488(void *self);
-extern void *func_02010854(void *embedded);
+extern void *AnimationResource_InitEmpty(void *embedded);
 extern void *AnimationResource_Destroy(void *embedded);
 #ifdef __cplusplus
 }
@@ -21,7 +21,7 @@ static void *initializeDerivedRuntimeObject(void *self)
 {
     u8 *object = (u8 *)func_02030f98(self);
     *(void **)object = data_020df510;
-    func_02010854(object + 0x1ec);
+    AnimationResource_InitEmpty(object + 0x1ec);
     *(s32 *)(object + 0x1fc) = -1;
     *(s32 *)(object + 0x200) = -1;
     *(u16 *)(object + 0x204) = 0;

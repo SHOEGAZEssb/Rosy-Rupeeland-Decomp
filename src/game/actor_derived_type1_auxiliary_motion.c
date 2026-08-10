@@ -12,7 +12,7 @@ extern s32 data_020df258[];
 extern "C" {
 #endif
 extern s32 func_0206cd10(void *resource);
-extern s32 func_02010b64(void *context);
+extern s32 GamePhaseCurrencyHud_GetCurrency(void *context);
 extern void func_0206c978(void *resource);
 extern void GameWork_ClearFlag(void *work, u32 flag);
 extern s32 func_0206e3a4(void *resource);
@@ -72,7 +72,7 @@ void ActorDerivedType1_UpdateAuxiliaryResourceMotion(void *self)
     }
 
     if (mode == 2) {
-        if (func_02010b64(gLupyContext) > 0)
+        if (GamePhaseCurrencyHud_GetCurrency(gLupyContext) > 0)
             *(u32 *)(actor + 0x10) &= ~0x1f0000;
         resource = *(void **)(actor + 0x26c);
         if (resource != 0) {

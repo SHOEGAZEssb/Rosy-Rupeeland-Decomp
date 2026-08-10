@@ -3,27 +3,27 @@
 .extern data_020f4e14
 .extern data_020f4e18
 .extern GraphicsSpriteState_Create
-.extern func_02010854
-.extern func_020112f0
-.extern func_0201140c
+.extern AnimationResource_InitEmpty
+.extern GamePhaseCurrencyHud_UpdateDigits
+.extern GamePhaseCurrencyHud_SetVisible
 .extern func_02071ee0
 .extern func_020742cc
 .extern gDebugFont
 .extern gGameWork
 
-    .global func_02010878
-func_02010878: ; 0x02010878
+    .global GamePhaseCurrencyHud_Init
+GamePhaseCurrencyHud_Init: ; 0x02010878
     stmdb sp!, {r4, r5, r6, r7, r8, r9, r10, r11, lr}
     sub sp, sp, #0xc
     mov r10, r0
     add r0, r10, #0x8
-    bl func_02010854
+    bl AnimationResource_InitEmpty
     add r0, r10, #0x18
-    bl func_02010854
+    bl AnimationResource_InitEmpty
     add r0, r10, #0x28
-    bl func_02010854
+    bl AnimationResource_InitEmpty
     add r0, r10, #0x38
-    bl func_02010854
+    bl AnimationResource_InitEmpty
     mov r0, #0x1
     strh r0, [r10, #0xb0]
     mov r1, #0x0
@@ -185,7 +185,7 @@ L_02010ac8:
     mov r0, r10
     ldr r1, [r1, #0x0]
     ldr r1, [r1, #0x40]
-    bl func_020112f0
+    bl GamePhaseCurrencyHud_UpdateDigits
     ldr r1, L_02010b60
     mov r0, r10
     ldr r2, [r1, #0x0]
@@ -193,7 +193,7 @@ L_02010ac8:
     ldr r2, [r2, #0x40]
     str r2, [r10, #0xc0]
     str r2, [r10, #0xc4]
-    bl func_0201140c
+    bl GamePhaseCurrencyHud_SetVisible
     mov r0, r10
     add sp, sp, #0xc
     ldmia sp!, {r4, r5, r6, r7, r8, r9, r10, r11, pc}
@@ -205,5 +205,5 @@ L_02010b54: .word 0x32ad
 L_02010b58: .word 0x32ab
 L_02010b5c: .word 0x32a0
 L_02010b60: .word gGameWork
-    .size func_02010878, . - func_02010878
+    .size GamePhaseCurrencyHud_Init, . - GamePhaseCurrencyHud_Init
 

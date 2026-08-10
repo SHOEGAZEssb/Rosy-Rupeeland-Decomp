@@ -3,7 +3,7 @@
 .extern GameWork_ClearFlag
 .extern GameWork_SetFlag
 .extern data_021052fc
-.extern func_0201140c
+.extern GamePhaseCurrencyHud_SetVisible
 .extern func_ov092_02218380
 .extern func_ov092_02218394
 .extern func_ov092_02219fc8
@@ -85,7 +85,7 @@ func_ov092_02219e8c:
     add r0, r0, #0x200
     strh r3, [r0, #0x12]
     ldr r0, [r2, #0x0]
-    bl func_0201140c
+    bl GamePhaseCurrencyHud_SetVisible
     ldmia sp!, {r3, r4, r5, pc}
 .L_02219fb8: .word gGameWork
 .L_02219fbc: .word data_021052fc

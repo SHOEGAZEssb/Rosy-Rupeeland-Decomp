@@ -3,7 +3,7 @@
     .extern data_ov021_02202e80
     .extern data_ov021_02202e88
     .extern data_ov021_02202e90
-    .extern func_02010b64
+    .extern GamePhaseCurrencyHud_GetCurrency
     .extern func_02076004
     .extern func_0207c4cc
     .extern func_02092260
@@ -139,7 +139,7 @@ L_02200b68:
     bne L_02200bb0
     ldr r0, L_02200cfc
     ldr r0, [r0, #0x0]
-    bl func_02010b64
+    bl GamePhaseCurrencyHud_GetCurrency
     ldr r1, [r4, #0x394]
     cmp r0, r1
     bgt L_02200bb0

@@ -11,7 +11,7 @@ extern const u8 data_021f5ee8[];
 extern "C" {
 #endif
 extern void func_020958d8(void *);
-extern void func_02010e68(void *);
+extern void GamePhaseCurrencyHud_Update(void *);
 extern void func_ov045_0220c18c(void *);
 extern void func_ov030_021fd304(void *);
 extern void func_ov045_0220b908(void *);
@@ -38,7 +38,7 @@ extern "C" void func_ov030_021fe768(void *scene)
     func_020958d8((u8 *)scene + 0xb8);
     func_020958d8((u8 *)scene + 0x164);
     func_020958d8((u8 *)scene + 0x210);
-    func_02010e68(gLupyContext);
+    GamePhaseCurrencyHud_Update(gLupyContext);
     if (FIELD(void *, scene, 0x2c0) != 0)
         func_ov045_0220c18c(FIELD(void *, scene, 0x2c0));
     if (FIELD(void *, scene, 0x2c4) != 0)

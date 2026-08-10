@@ -17,7 +17,7 @@ extern u32 genrand_int32(void);
  * when a digit changes (usually 0xe0..0x2df, with a 1/16 chance of 0xc0).
  * Consumes the global RNG and changes sprite animation state; returns nothing.
  */
-void func_020112f0(GamePhaseCurrencyHud *self, u32 value)
+void GamePhaseCurrencyHud_UpdateDigits(GamePhaseCurrencyHud *self, u32 value)
 {
     s32 digit;
     s32 display;
@@ -43,20 +43,20 @@ void func_020112f0(GamePhaseCurrencyHud *self, u32 value)
 
 /*
  * Clear the value-transition state. A nonzero visible argument clears hidden
- * flag bit 0 and synchronizes the HUD to GameWork offset 0x40; zero sets the
+ * flag bit 0 and synchronizes the HUD to persistent currency; zero sets the
  * bit, clears the threshold timer, and disables both sprite groups.
  */
-void func_0201140c(GamePhaseCurrencyHud *self, s32 visible)
+void GamePhaseCurrencyHud_SetVisible(GamePhaseCurrencyHud *self, s32 visible)
 {
     s32 display;
-    self->field_b2 = 0;
+    self->transitionState = 0;
     if (visible) {
-        self->field_b0 &= ~1;
-        func_02010b78(self, gGameWork->unknown0040);
+        self->flags &= ~1;
+        GamePhaseCurrencyHud_SetCurrency(self, gGameWork->currency);
         return;
     }
-    self->field_b0 |= 1;
-    self->field_cc = 0;
+    self->flags |= 1;
+    self->thresholdReminderTimer = 0;
     for (display = 0; display < 2; display++)
         func_02074110(self->groups[display]);
 }

@@ -19,7 +19,7 @@ extern "C" {
 #endif
 extern void ActorDerivedType1_TeardownActiveRecord(void *actor);
 extern s32 func_020ada8c(s32 value, s32 divisor);
-extern void func_02010c00(void *context, s32 value, s32 extra);
+extern void GamePhaseCurrencyHud_AddCurrency(void *context, s32 value, s32 extra);
 extern void *ActorMotionAreaFollower_GetPosition(void *manager);
 extern void *func_02022cb0(void *allocation, void *resource, void *actor,
                            s32 value, s32 first, s32 second);
@@ -137,7 +137,7 @@ void ActorDerivedType1_UpdateFrameControl(void *self)
             kind >= 0x73 && kind <= 0x74) {
             s32 value = -*(s16 *)(descriptor + 0x0e);
             void *object;
-            func_02010c00(gLupyContext, value, 0);
+            GamePhaseCurrencyHud_AddCurrency(gLupyContext, value, 0);
             object = Heap_Alloc(0x44, data_020df4a4, 4, &gHeapContext);
             if (object != 0) {
                 void *resource = ActorMotionAreaFollower_GetPosition(data_021052fc + 0x2fbc);

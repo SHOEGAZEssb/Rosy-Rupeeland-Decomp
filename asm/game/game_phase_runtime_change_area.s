@@ -15,7 +15,7 @@
 .extern ActorMotionAreaFollower_GetPosition
 .extern ActorRuntimeCollection_Reset
 .extern GamePhaseState_ApplyAreaChange
-.extern func_0201140c
+.extern GamePhaseCurrencyHud_SetVisible
 .extern func_020122a0
 .extern func_02012528
 .extern func_02020060
@@ -208,7 +208,7 @@ L_02007d94:
     ldr r0, L_02007f04
     mov r1, #0x1
     ldr r0, [r0, #0x0]
-    bl func_0201140c
+    bl GamePhaseCurrencyHud_SetVisible
     ldr r0, L_02007f04
     mov r1, #0xfa
     ldr r2, [r0, #0x0]

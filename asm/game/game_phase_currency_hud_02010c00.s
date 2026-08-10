@@ -8,8 +8,8 @@
 .extern gGameWork
 .extern gSoundContext
 
-    .global func_02010c00
-func_02010c00: ; 0x02010c00
+    .global GamePhaseCurrencyHud_AddCurrency
+GamePhaseCurrencyHud_AddCurrency: ; 0x02010c00
     stmdb sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, lr}
     movs r9, r1
     mov r10, r0
@@ -170,5 +170,5 @@ L_02010e58: .word gGameWork
 L_02010e5c: .word 0x98967f
 L_02010e60: .word data_020c368c
 L_02010e64: .word gSoundContext
-    .size func_02010c00, . - func_02010c00
+    .size GamePhaseCurrencyHud_AddCurrency, . - GamePhaseCurrencyHud_AddCurrency
 

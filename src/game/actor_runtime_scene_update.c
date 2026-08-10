@@ -14,7 +14,7 @@ extern s32 GamePhaseRuntime_DispatchActorQueryRequest(void *runtime);
 extern void func_0200866c(void *context);
 extern void GamePhaseRuntime_UpdateDualScreenUiPresentation(void *context);
 extern void GamePhaseRuntime_ProcessPendingPresentationRefreshes(void *runtime);
-extern void func_02010e68(void *context);
+extern void GamePhaseCurrencyHud_Update(void *context);
 extern void func_0201dcec(void *context, s32 value);
 #ifdef __cplusplus
 }
@@ -48,6 +48,6 @@ s32 ActorRuntimeScene_Update(ActorRuntimeScene *self)
 
     func_0201dcec(root + 0x2f7c, 1);
     GamePhaseRuntime_UpdateDualScreenUiPresentation(root);
-    func_02010e68(gLupyContext);
+    GamePhaseCurrencyHud_Update(gLupyContext);
     return 0;
 }

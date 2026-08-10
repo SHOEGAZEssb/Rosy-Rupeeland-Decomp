@@ -10,7 +10,7 @@ extern "C" {
 #endif
 extern s32 GameWork_TestFlag(void *work, u32 flag);
 extern void GameWork_SetFlag(void *work, u32 flag);
-extern s32 func_02010b64(void *context);
+extern s32 GamePhaseCurrencyHud_GetCurrency(void *context);
 extern void func_020338e4(void *actor);
 extern void func_02058ce0(void *soundContext);
 extern void Type1Actor_EnterFailureState(void *actor);
@@ -35,7 +35,7 @@ void Type1Actor_TryEnterFailureState(void *self)
 {
     if (GameWork_TestFlag(gGameWork, 0x3f5) != 0)
         return;
-    if (func_02010b64(gLupyContext) > 0)
+    if (GamePhaseCurrencyHud_GetCurrency(gLupyContext) > 0)
         return;
     Type1Actor_EnterFailureState(self);
 }

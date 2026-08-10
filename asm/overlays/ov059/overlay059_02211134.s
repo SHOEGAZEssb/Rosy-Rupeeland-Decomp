@@ -8,7 +8,7 @@
 .extern OverlayManager_GetGlobal
 .extern DebugSpriteText_Destroy
 .extern SplineMover_Destroy
-.extern func_0201140c
+.extern GamePhaseCurrencyHud_SetVisible
 .extern func_ov059_02210968
 .extern func_ov059_02210ba4
 .extern gLupyContext
@@ -23,7 +23,7 @@ func_ov059_02211134:
     str r1, [r5, #0x0]
     ldr r0, [r0, #0x0]
     mov r1, #0x1
-    bl func_0201140c
+    bl GamePhaseCurrencyHud_SetVisible
     ldr r4, [r5, #0x3c]
     cmp r4, #0x0
     beq .L_02211170

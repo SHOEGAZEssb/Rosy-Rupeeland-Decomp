@@ -20,7 +20,7 @@
 .extern GamePhaseRuntime_SynchronizeActorPlacement
 .extern func_0201dcec
 .extern ActorMotionAreaFollower_GetPosition
-.extern func_02010e68
+.extern GamePhaseCurrencyHud_Update
 .extern data_020d5dcc
 .extern data_020d5df8
 .extern data_020d36e1

@@ -27,7 +27,7 @@ extern void GamePhaseRuntime_CreateSecondaryActorSubsystem(GamePhaseRuntime *sel
 extern void GamePhaseState_ApplyAreaChange(void *state, void *area, const void *transform);
 extern void ActorCollection_DispatchEventToActors(void *actor, const void *transform);
 extern void func_02020060(void *object, void *area);
-extern void func_0201140c(void *context, s32 enabled);
+extern void GamePhaseCurrencyHud_SetVisible(void *context, s32 enabled);
 extern void GamePhaseRuntime_RefreshAreaAuxiliaryObject(GamePhaseRuntime *self, void *area, s32 enabled);
 extern void func_02012528(void *actor, void *object);
 extern void func_020122a0(void *actor, s32 value);
@@ -104,7 +104,7 @@ s32 GamePhaseRuntime_ChangeToNeighborArea(GamePhaseRuntime *self, s32 direction)
     if (*(s16 *)(area + 0x12) >= 0)
         func_02020060(ActorMotionAreaFollower_GetPosition(b + 0x2fbc), area);
 
-    func_0201140c(gLupyContext, 1);
+    GamePhaseCurrencyHud_SetVisible(gLupyContext, 1);
     *(u16 *)((u8 *)gLupyContext + 0xbc) = 250;
     *(u16 *)((u8 *)gLupyContext + 0xbe) = 30;
 

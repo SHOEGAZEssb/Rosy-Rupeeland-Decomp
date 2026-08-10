@@ -16,7 +16,7 @@ extern "C" {
 extern void GraphicsResourceSet_Init(void *);
 extern void GraphicsResourceSet_Load(void *, void *, s32, s32, s32);
 extern void GraphicsResourceSet_Destroy(void *);
-extern void func_02010e68(void *);
+extern void GamePhaseCurrencyHud_Update(void *);
 extern void func_02070e0c(void *, s32, s32);
 extern void func_02072048(void *, s32, s32);
 extern void *func_0207c4cc(void *, s32);
@@ -81,7 +81,7 @@ extern "C" void func_ov029_021fd644(void *state)
  */
 extern "C" void func_ov029_021fd6fc(void *state)
 {
-    func_02010e68(gLupyContext);
+    GamePhaseCurrencyHud_Update(gLupyContext);
     if (FIELD(void *, state, 0xa4) != 0)
         func_ov045_0220c18c(FIELD(void *, state, 0xa4));
     void *object = FIELD(void *, state, 0xa0);

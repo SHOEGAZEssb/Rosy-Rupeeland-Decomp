@@ -7,7 +7,7 @@
 .extern func_0200875c
 .extern GamePhaseRuntime_UpdateDualScreenUiPresentation
 .extern ActorMotionAreaFollower_GetPosition
-.extern func_02010e68
+.extern GamePhaseCurrencyHud_Update
 .extern func_0201dcec
 .extern ActorCollection_DispatchEventToActors
 .extern ActorCollection_GetSpriteOwner
@@ -86,7 +86,7 @@ func_ov064_02210ae8:
     bl func_0201dcec
     ldr r0, .L_02210c58
     ldr r0, [r0, #0x0]
-    bl func_02010e68
+    bl GamePhaseCurrencyHud_Update
     ldr r0, .L_02210c54
     ldr r0, [r0, #0x0]
     bl GamePhaseRuntime_UpdateDualScreenUiPresentation

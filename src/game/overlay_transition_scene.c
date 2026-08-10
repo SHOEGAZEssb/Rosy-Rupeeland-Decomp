@@ -31,7 +31,7 @@ extern void *gDebugFont;
 extern void func_02092c8c(s32 screen, s32 brightness);
 extern s32 func_02091fb0(void *object, s32 mode);
 extern void func_020122a0(void *object, s32 value);
-extern void func_0201140c(void *context, s32 enabled);
+extern void GamePhaseCurrencyHud_SetVisible(void *context, s32 enabled);
 extern void GamePhaseRuntime_SetPlacementMode(void *runtime, s32 first, s32 second);
 extern void func_02008570(void *runtime, s32 first, s32 second);
 extern void func_020755bc(void *renderer);
@@ -121,7 +121,7 @@ s32 func_0201d358(OverlayTransitionScene *self)
         if (runtimeObject != 0)
             func_020122a0(runtimeObject, 0);
         if (self->restoreLupy28 != 0)
-            func_0201140c(gLupyContext, 0);
+            GamePhaseCurrencyHud_SetVisible(gLupyContext, 0);
         GamePhaseRuntime_SetPlacementMode(runtime, 0, 1);
         if (self->kind38 == 0) {
             OverlaySlot_LoadOverlay(&self->overlay2c, 0x1f);
@@ -167,7 +167,7 @@ s32 func_0201d358(OverlayTransitionScene *self)
             GamePhaseRuntime_SetPlacementMode(runtime, 1, 1);
         }
         if (self->restoreLupy28 != 0)
-            func_0201140c(gLupyContext, 1);
+            GamePhaseCurrencyHud_SetVisible(gLupyContext, 1);
         func_02092c8c(3, 0);
         self->state40++;
         break;

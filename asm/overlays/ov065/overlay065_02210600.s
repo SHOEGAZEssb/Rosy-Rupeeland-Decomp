@@ -6,7 +6,7 @@
 .extern data_021052fc
 .extern GraphicsSpriteState_SetDepthOrderedWorldPosition
 .extern GamePhaseRuntime_UpdateActorPresentationState
-.extern func_02010c00
+.extern GamePhaseCurrencyHud_AddCurrency
 .extern ActorDerivedType1_ApplyResourceIndex
 .extern func_02072b68
 .extern func_020740a4
@@ -89,7 +89,7 @@ func_ov065_02210600:
     rsb r1, r5, #0x0
     ldr r0, [r0, #0x0]
     mov r2, #0x0
-    bl func_02010c00
+    bl GamePhaseCurrencyHud_AddCurrency
     mov r0, r4
     mov r1, r5
     bl func_ov065_02210a04

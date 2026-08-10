@@ -11,7 +11,7 @@
 .extern GamePhaseRuntime_UpdateDualScreenUiPresentation
 .extern ActorMotionAreaFollower_RefreshCurrentArea
 .extern GamePhaseVisualEffect_SetBlendCoefficients
-.extern func_02010e68
+.extern GamePhaseCurrencyHud_Update
 .extern func_020122a0
 .extern func_0201dcec
 .extern func_0201e0ec
@@ -290,7 +290,7 @@ func_ov074_022101dc:
 .L_02210590:
     ldr r0, .L_022105b0
     ldr r0, [r0, #0x0]
-    bl func_02010e68
+    bl GamePhaseCurrencyHud_Update
     mov r0, #0x0
 .L_022105a0:
     add sp, sp, #0x30

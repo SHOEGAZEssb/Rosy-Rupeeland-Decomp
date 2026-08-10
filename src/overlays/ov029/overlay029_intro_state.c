@@ -17,8 +17,8 @@ extern "C" {
 #endif
 extern void *Heap_Alloc(u32, const void *, s32, void *);
 extern s32 DisplayBrightness_IsMainTransitionComplete(void);
-extern s32 func_02010b64(void *);
-extern void func_0201140c(void *, s32);
+extern s32 GamePhaseCurrencyHud_GetCurrency(void *);
+extern void GamePhaseCurrencyHud_SetVisible(void *, s32);
 extern void func_02075598(void *, void *);
 extern void func_020755bc(void *);
 extern void func_02092260(void *, s32);
@@ -67,7 +67,7 @@ extern "C" s32 func_ov029_021fd9e0(void *state)
         func_020755bc(gDebugFont);
         FIELD(u16, gLupyContext, 0xbc) = 0xfa;
         FIELD(u16, gLupyContext, 0xbe) = 0x1e;
-        func_0201140c(gLupyContext, 1);
+        GamePhaseCurrencyHud_SetVisible(gLupyContext, 1);
         func_02075598(gDebugFont, FIELD(void *, state, 0x78));
         func_ov045_0220d2f8(FIELD(s32, state, 0x54), FIELD(s32, state, 0x58));
         FIELD(u32, state, 0x20) = (FIELD(u32, state, 0x20) & ~1u) | 1;
@@ -80,7 +80,7 @@ extern "C" s32 func_ov029_021fd9e0(void *state)
             FIELD(s32, state, 0x54), FIELD(s32, state, 0x58));
         func_02092260(state, FIELD(s32, state, 0x58) == 5 ? 0x6d : 0x69);
         if (FIELD(s32, state, 0x5c) == 4 &&
-            func_02010b64(gLupyContext) == 1) {
+            GamePhaseCurrencyHud_GetCurrency(gLupyContext) == 1) {
             FIELD(s32, state, 0x6c) = 0;
             func_ov029_021fd7a8(state, 6);
             func_ov029_021fce4c(state,

@@ -8,7 +8,7 @@
 .extern gLupyContext
 .extern gSoundContext
 .extern ActorMotionAreaFollower_GetPosition
-.extern func_02010c00
+.extern GamePhaseCurrencyHud_AddCurrency
 .extern func_0201ded4
 .extern func_0201e0ec
 .extern func_02022cb0
@@ -94,7 +94,7 @@ func_0204df40: ; 0x0204df40
     ldrsh r1, [r0, #0xf2]
     ldr r0, [r2, #0x0]
     mov r2, #0x0
-    bl func_02010c00
+    bl GamePhaseCurrencyHud_AddCurrency
     ldr r1, .L_0204e29c
     ldr r3, .L_0204e2a0
     mov r0, #0x44
@@ -211,7 +211,7 @@ func_0204df40: ; 0x0204df40
     ldr r0, [r0, #0x0]
     add r1, r1, r1, lsl #0x1
     mov r4, #0x11
-    bl func_02010c00
+    bl GamePhaseCurrencyHud_AddCurrency
     add r0, r6, #0x100
     mov r1, #0x2
     strh r1, [r0, #0xec]
@@ -224,7 +224,7 @@ func_0204df40: ; 0x0204df40
     ldr r0, [r0, #0x0]
     add r1, r1, r1, lsl #0x1
     mov r4, #0x12
-    bl func_02010c00
+    bl GamePhaseCurrencyHud_AddCurrency
     add r0, r6, #0x100
     mov r1, #0x2
     strh r1, [r0, #0xec]

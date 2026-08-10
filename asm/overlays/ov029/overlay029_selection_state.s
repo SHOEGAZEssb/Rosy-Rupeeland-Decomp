@@ -5,7 +5,7 @@
 .extern data_ov029_021feca0
 .extern data_ov029_021fecb0
 .extern data_ov029_021fecb8
-.extern func_02010b64
+.extern GamePhaseCurrencyHud_GetCurrency
 .extern func_02076004
 .extern func_02092260
 .extern func_02092c8c
@@ -139,7 +139,7 @@ L_021fdde4:
     ldr r0, L_021fe0ac
     ldr r5, [r4, #0xac]
     ldr r0, [r0, #0x0]
-    bl func_02010b64
+    bl GamePhaseCurrencyHud_GetCurrency
     cmp r0, r5
     bgt L_021fde1c
     mov r0, r4

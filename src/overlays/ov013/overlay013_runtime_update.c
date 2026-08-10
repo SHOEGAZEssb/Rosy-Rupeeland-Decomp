@@ -21,7 +21,7 @@ extern void func_02094cf0(void *, const void *, s32);
 extern void func_020958f0(void *);
 extern void func_020958d8(void *);
 extern void func_020740a4(void *);
-extern void func_02010e68(void *);
+extern void GamePhaseCurrencyHud_Update(void *);
 extern s32 func_02095860(void *, void *, s32, s32);
 extern void func_02092260(void *, s32);
 extern void func_02095988(void *, s32);
@@ -111,7 +111,7 @@ void func_ov013_021fdbb0(void *state)
         func_020740a4(FIELD(void *, state, 0x88));
     }
     if (FIELD(s32, state, 0x97c) != 0)
-        func_02010e68(gLupyContext);
+        GamePhaseCurrencyHud_Update(gLupyContext);
 }
 
 /*

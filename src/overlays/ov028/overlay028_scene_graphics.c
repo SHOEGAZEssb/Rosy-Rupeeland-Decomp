@@ -19,7 +19,7 @@ extern void *Heap_Alloc(u32, const void *, s32, void *);
 extern void GraphicsResourceSet_Init(void *);
 extern void GraphicsResourceSet_Load(void *, void *, s32, s32, s32);
 extern void GraphicsResourceSet_Destroy(void *);
-extern void func_02010e68(void *);
+extern void GamePhaseCurrencyHud_Update(void *);
 extern void func_02070638(void *, s32, s32);
 extern void *func_02070874(void *);
 extern void func_02070e0c(void *, s32, s32);
@@ -145,7 +145,7 @@ extern "C" void func_ov028_021fe438(void *state)
         func_ov028_021fe540(child,
                            func_0209189c((u8 *)state + 0x27c, 0x10, 0x20));
     }
-    func_02010e68(gLupyContext);
+    GamePhaseCurrencyHud_Update(gLupyContext);
     func_020958d8((u8 *)state + 0x98);
     func_020958d8((u8 *)state + 0x144);
     func_020740a4(FIELD(void *, state, 0x54));

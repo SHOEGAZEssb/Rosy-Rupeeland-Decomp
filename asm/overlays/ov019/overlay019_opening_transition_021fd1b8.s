@@ -1,7 +1,7 @@
     .text
 /* Exact fallback; see src/overlays/ov019/overlay019_opening_transition.c. */
     .extern data_ov019_021fd5e8
-    .extern func_0201140c
+    .extern GamePhaseCurrencyHud_SetVisible
     .extern func_02092260
     .extern func_ov002_021fbdc0
     .extern func_ov002_021fbe08
@@ -24,7 +24,7 @@ L_021fd1d8:
     ldr r0, L_021fd26c
     mov r1, #0x1
     ldr r0, [r0, #0x0]
-    bl func_0201140c
+    bl GamePhaseCurrencyHud_SetVisible
     ldr r0, [r4, #0x5c]
     bl func_ov002_021fbdc0
     ldr r1, [r4, #0x20]

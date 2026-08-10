@@ -12,7 +12,7 @@
 .extern data_ov059_02211bb0
 .extern DebugSpriteText_Init
 .extern SplineMover_Init
-.extern func_0201140c
+.extern GamePhaseCurrencyHud_SetVisible
 .extern func_020284f0
 .extern func_ov059_022106fc
 .extern func_ov059_022109bc
@@ -94,7 +94,7 @@ func_ov059_02210fec:
     ldr r0, .L_0221112c
     mov r1, #0x0
     ldr r0, [r0, #0x0]
-    bl func_0201140c
+    bl GamePhaseCurrencyHud_SetVisible
     ldr r0, .L_02211130
     mov r1, #0x1
     ldr r0, [r0, #0x0]

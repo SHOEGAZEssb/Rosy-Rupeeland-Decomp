@@ -8,8 +8,8 @@
     .extern data_ov021_02202d90
     .extern data_ov021_02202fb8
     .extern DisplayBrightness_IsMainTransitionComplete
-    .extern func_02010b64
-    .extern func_02010c00
+    .extern GamePhaseCurrencyHud_GetCurrency
+    .extern GamePhaseCurrencyHud_AddCurrency
     .extern func_02062ca8
     .extern func_02076004
     .extern func_0207ab48
@@ -299,7 +299,7 @@ L_02202744: ; jump table
 L_02202758:
     ldr r0, L_02202bc8
     ldr r0, [r0, #0x0]
-    bl func_02010b64
+    bl GamePhaseCurrencyHud_GetCurrency
     mov r1, r0
     ldr r0, [r4, #0x3ec]
     ldr r2, [r4, #0x394]
@@ -309,7 +309,7 @@ L_02202758:
     mov r2, r0
     ldr r0, [r1, #0x0]
     ldr r1, [r4, #0x394]
-    bl func_02010c00
+    bl GamePhaseCurrencyHud_AddCurrency
     mov r0, #0x14
     str r0, [r4, #0x4]
     mov r0, #0x0
@@ -321,7 +321,7 @@ L_022027a0:
     ldr r1, [r1, #0x4]
     ldr r0, [r0, #0x0]
     ldr r5, [r1, #0x14]
-    bl func_02010b64
+    bl GamePhaseCurrencyHud_GetCurrency
     mov r1, r0
     ldr r0, [r4, #0x3ec]
     mov r2, r5
@@ -331,7 +331,7 @@ L_022027a0:
     mov r2, r0
     ldr r0, [r1, #0x0]
     mov r1, r5
-    bl func_02010c00
+    bl GamePhaseCurrencyHud_AddCurrency
     mov r0, #0x14
     str r0, [r4, #0x4]
     mov r0, #0x0
@@ -345,7 +345,7 @@ L_022027f4:
     bl func_0207c5c8
     ldr r0, L_02202bc8
     ldr r0, [r0, #0x0]
-    bl func_02010b64
+    bl GamePhaseCurrencyHud_GetCurrency
     mov r1, r0
     ldr r0, [r4, #0x3ec]
     ldr r2, [r4, #0x394]
@@ -356,7 +356,7 @@ L_022027f4:
     rsb r1, r1, #0x0
     mov r2, r0
     ldr r0, [r3, #0x0]
-    bl func_02010c00
+    bl GamePhaseCurrencyHud_AddCurrency
     mov r0, #0xa
     str r0, [r4, #0x4]
     mov r0, #0x0
@@ -365,7 +365,7 @@ L_022027f4:
 L_02202854:
     ldr r0, L_02202bc8
     ldr r0, [r0, #0x0]
-    bl func_02010b64
+    bl GamePhaseCurrencyHud_GetCurrency
     mov r1, r0
     ldr r0, [r4, #0x3ec]
     ldr r2, [r4, #0x394]
@@ -376,7 +376,7 @@ L_02202854:
     mov r2, r0
     ldr r0, [r1, #0x0]
     rsb r1, r3, #0x0
-    bl func_02010c00
+    bl GamePhaseCurrencyHud_AddCurrency
     mov r0, #0x32
     str r0, [r4, #0x4]
     mov r0, #0x0

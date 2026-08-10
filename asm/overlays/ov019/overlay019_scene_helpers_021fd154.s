@@ -2,7 +2,7 @@
 /* Exact fallback; see src/overlays/ov019/overlay019_scene_helpers.c. */
     .extern data_021052fc
     .extern GamePhaseRuntime_UpdateActorPresentationState
-    .extern func_02010e68
+    .extern GamePhaseCurrencyHud_Update
     .extern func_ov002_021fba00
     .extern gLupyContext
 
@@ -31,7 +31,7 @@ func_ov019_021fd170:
 L_021fd198:
     ldr r0, L_021fd1b4
     ldr r0, [r0, #0x0]
-    bl func_02010e68
+    bl GamePhaseCurrencyHud_Update
 L_021fd1a4:
     ldr r0, [r4, #0x5c]
     bl func_ov002_021fba00

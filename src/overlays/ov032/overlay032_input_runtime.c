@@ -34,7 +34,7 @@ extern void func_02008570(...);
 extern void GamePhaseState_SetEnabled(...);
 extern void TouchPanelManager_GetPoint(...);
 extern void func_020740a4(void *);
-extern void func_02010e68(void *);
+extern void GamePhaseCurrencyHud_Update(void *);
 extern void func_ov032_021fe024(void *);
 extern void func_ov032_021fe0c4(void *);
 extern void func_ov032_021fe0e8(void *);
@@ -108,7 +108,7 @@ extern "C" s32 func_ov032_021fdf30(void *scene)
     if (result == 0) {
         func_020740a4(FIELD(void *, scene, 4));
         func_020740a4(FIELD(void *, scene, 0));
-        func_02010e68(gLupyContext);
+        GamePhaseCurrencyHud_Update(gLupyContext);
         func_ov032_021fde38(scene);
     }
     return result;

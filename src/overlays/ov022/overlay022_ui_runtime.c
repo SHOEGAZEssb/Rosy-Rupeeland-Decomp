@@ -24,7 +24,7 @@ extern void func_02076004(void *, s32, u32, s32);
 extern const void *func_020791e0(const void *, u16);
 extern const void *func_02079f3c(const void *, u16);
 extern const void *func_0207b388(void *, s32);
-extern void func_02010e68(void *);
+extern void GamePhaseCurrencyHud_Update(void *);
 extern void func_02092b70(void *, void *);
 extern void func_02092e9c(void *, const void *, s32);
 extern s32 func_02093360(void *, const void *);
@@ -151,7 +151,7 @@ extern "C" void func_ov022_021ff048(void *scene)
  */
 extern "C" void func_ov022_021ff0d0(void *scene)
 {
-    func_02010e68(gLupyContext);
+    GamePhaseCurrencyHud_Update(gLupyContext);
     func_020958d8((u8 *)scene + 0xa8);
     for (s32 i = 0; i < 2; ++i)
         func_020958d8((u8 *)scene + 0x154 + i * 0xac);

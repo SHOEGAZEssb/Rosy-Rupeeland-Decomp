@@ -12,7 +12,7 @@
 .extern AnimationResource_Init
 .extern GraphicsSpriteState_Create
 .extern GamePhaseRuntime_SetPlacementMode
-.extern func_0201140c
+.extern GamePhaseCurrencyHud_SetVisible
 .extern func_02071980
 .extern func_020742cc
 .extern func_020755bc
@@ -158,7 +158,7 @@ func_ov052_0220d618:
     ldr r0, .L_0220d87c
     mov r1, #0x0
     ldr r0, [r0, #0x0]
-    bl func_0201140c
+    bl GamePhaseCurrencyHud_SetVisible
 .L_0220d82c:
     ldr r0, .L_0220d880
     mov r1, #0x0

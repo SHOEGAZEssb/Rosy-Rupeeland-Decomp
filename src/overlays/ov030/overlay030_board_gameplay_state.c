@@ -18,9 +18,9 @@ extern void func_02092260(void *, s32);
 extern void func_020939d8(void *);
 extern void func_ov030_021fe954(void *, u16);
 extern void func_020922f0(void *, s32);
-extern s32 func_02010b64(void *);
+extern s32 GamePhaseCurrencyHud_GetCurrency(void *);
 extern s32 func_ov045_0220b924(void *, s32, s32, s32);
-extern void func_02010c00(void *, s32, s32);
+extern void GamePhaseCurrencyHud_AddCurrency(void *, s32, s32);
 extern s32 func_ov045_0220b9b8(void *);
 extern s32 func_ov045_0220bc34(void *);
 extern void func_02095928(void *);
@@ -63,10 +63,10 @@ static void service_board_timers(void *scene, s32 includeSuccessTimers)
 static void apply_reward(void *scene, s32 reward)
 {
     if (reward != 0) {
-        s32 current = func_02010b64(gLupyContext);
+        s32 current = GamePhaseCurrencyHud_GetCurrency(gLupyContext);
         s32 displayed = func_ov045_0220b924(
             FIELD(void *, scene, 0x2c8), current, reward, 0);
-        func_02010c00(gLupyContext, reward, displayed);
+        GamePhaseCurrencyHud_AddCurrency(gLupyContext, reward, displayed);
     }
 }
 

@@ -5,8 +5,8 @@
 .extern data_ov022_022004f0
 .extern DisplayBrightness_IsMainTransitionComplete
 .extern DisplayBrightness_IsSubTransitionComplete
-.extern func_02010b64
-.extern func_02010c00
+.extern GamePhaseCurrencyHud_GetCurrency
+.extern GamePhaseCurrencyHud_AddCurrency
 .extern func_02092260
 .extern func_020922f0
 .extern func_02092c8c
@@ -126,7 +126,7 @@ L_021ffb54:
     beq L_021ffbb8
     ldr r0, L_021ffd80
     ldr r0, [r0, #0x0]
-    bl func_02010b64
+    bl GamePhaseCurrencyHud_GetCurrency
     ldr r2, [r4, #0x360]
     mov r1, r0
     ldrh r2, [r2, #0x18]
@@ -138,7 +138,7 @@ L_021ffb54:
     mov r2, r0
     ldrh r1, [r1, #0x18]
     ldr r0, [r3, #0x0]
-    bl func_02010c00
+    bl GamePhaseCurrencyHud_AddCurrency
     ldr r1, [r4, #0x4]
     mov r0, #0x0
     add r1, r1, #0x1
@@ -175,7 +175,7 @@ L_021ffbfc:
     beq L_021ffc6c
     ldr r0, L_021ffd80
     ldr r0, [r0, #0x0]
-    bl func_02010b64
+    bl GamePhaseCurrencyHud_GetCurrency
     ldr r2, [r4, #0x358]
     mov r1, #0x34
     mul r3, r2, r1
@@ -193,7 +193,7 @@ L_021ffbfc:
     mov r2, r0
     ldrh r1, [r1, ip]
     ldr r0, [r3, #0x0]
-    bl func_02010c00
+    bl GamePhaseCurrencyHud_AddCurrency
 L_021ffc6c:
     ldr r1, [r4, #0x4]
     mov r0, #0x0

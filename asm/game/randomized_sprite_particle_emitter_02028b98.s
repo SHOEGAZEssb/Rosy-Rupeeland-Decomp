@@ -7,7 +7,7 @@
 .extern AnimationResource_Init
 .extern AnimationResource_Destroy
 .extern AnimationResource_Assign
-.extern func_02010854
+.extern AnimationResource_InitEmpty
 .extern func_0201e250
 .extern func_02028c94
 .extern func_020742cc
@@ -73,7 +73,7 @@ func_02028b98: ; 0x02028b98
     ldmia sp!, {r4, r5, r6, r7, pc}
 .L_02028c78: .word data_020de8cc
 .L_02028c7c: .word AnimationResource_Destroy
-.L_02028c80: .word func_02010854
+.L_02028c80: .word AnimationResource_InitEmpty
 .L_02028c84: .word 0x138e
 .L_02028c88: .word 0x1078
 .L_02028c8c: .word 0x168b

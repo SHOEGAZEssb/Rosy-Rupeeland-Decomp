@@ -1,11 +1,11 @@
 ; Matching retail form; see src/game/game_phase_currency_hud_values.c.
 .text
 .extern data_021052fc
-.extern func_020112f0
+.extern GamePhaseCurrencyHud_UpdateDigits
 .extern gGameWork
 
-    .global func_02010b78
-func_02010b78: ; 0x02010b78
+    .global GamePhaseCurrencyHud_SetCurrency
+GamePhaseCurrencyHud_SetCurrency: ; 0x02010b78
     stmdb sp!, {r3, lr}
     ldr r2, L_02010bf4
     ldr r2, [r2, #0x0]
@@ -35,10 +35,10 @@ func_02010b78: ; 0x02010b78
     str r1, [r0, #0xc4]
     str r1, [r0, #0xc0]
     strh r2, [r0, #0xb4]
-    bl func_020112f0
+    bl GamePhaseCurrencyHud_UpdateDigits
     ldmia sp!, {r3, pc}
 L_02010bf4: .word data_021052fc
 L_02010bf8: .word 0x98967f
 L_02010bfc: .word gGameWork
-    .size func_02010b78, . - func_02010b78
+    .size GamePhaseCurrencyHud_SetCurrency, . - GamePhaseCurrencyHud_SetCurrency
 

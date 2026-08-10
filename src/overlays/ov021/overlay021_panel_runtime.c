@@ -17,7 +17,7 @@ extern "C" {
 #endif
 extern void *Heap_Alloc(u32, const void *, s32, void *);
 extern void OverlaySlot_LoadOverlay(void *, s32);
-extern void func_02010e68(void *);
+extern void GamePhaseCurrencyHud_Update(void *);
 extern void func_02064d90(void *, s32);
 extern void func_0206563c(void *, s32);
 extern void func_020740a4(void *);
@@ -171,7 +171,7 @@ extern "C" void func_ov021_021feb60(void *state)
  */
 extern "C" void func_ov021_021feea4(void *state)
 {
-    func_02010e68(gLupyContext);
+    GamePhaseCurrencyHud_Update(gLupyContext);
     func_020958d8((u8 *)state + 0xa0);
     s32 i;
     for (i = 0; i < 2; i++)

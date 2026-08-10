@@ -7,7 +7,7 @@
 .extern data_ov030_021ff7a0
 .extern data_ov030_021ff7b8
 .extern DisplayBrightness_IsMainTransitionComplete
-.extern func_0201140c
+.extern GamePhaseCurrencyHud_SetVisible
 .extern func_02075598
 .extern func_020755bc
 .extern func_02092260
@@ -44,7 +44,7 @@ L_021feb84:
     ldr r0, L_021fec3c
     mov r1, #0x1
     ldr r0, [r0, #0x0]
-    bl func_0201140c
+    bl GamePhaseCurrencyHud_SetVisible
     ldr r0, L_021fec38
     ldr r1, [r4, #0x54]
     ldr r0, [r0, #0x0]

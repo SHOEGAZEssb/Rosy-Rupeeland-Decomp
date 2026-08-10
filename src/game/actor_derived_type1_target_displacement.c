@@ -24,7 +24,7 @@ extern s32 ActorDerivedType1_IsTargetStateEligible(void *target);
 extern s32 ActorExtendedType2_GetDescriptorValue28(void *target);
 extern u32 genrand_int32(void);
 extern s32 func_020ada8c(s32 value, s32 divisor);
-extern void func_02010c00(void *context, s32 value, s32 extra);
+extern void GamePhaseCurrencyHud_AddCurrency(void *context, s32 value, s32 extra);
 extern void func_0200500c(void *vector, s32 x, s32 y, s32 z);
 extern void func_02004fe0(void *vector);
 extern void *ActorMotionAreaFollower_GetPosition(void *manager);
@@ -172,7 +172,7 @@ void ActorDerivedType1_ApplyWeightedCollisionDisplacement(
             void *object;
             s32 negative = -magnitude;
             *(s16 *)(actor + 0x268) = 30;
-            func_02010c00(gLupyContext, negative, 0);
+            GamePhaseCurrencyHud_AddCurrency(gLupyContext, negative, 0);
             func_0200500c(position, *(s32 *)(actor + 0x1c),
                           *(s32 *)(actor + 0x20),
                           *(s32 *)(actor + 0x24) + 0x18000);

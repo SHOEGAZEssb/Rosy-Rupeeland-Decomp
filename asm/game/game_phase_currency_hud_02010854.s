@@ -3,8 +3,8 @@
 .extern data_020d4178
 .extern func_02071e90
 
-    .global func_02010854
-func_02010854: ; 0x02010854
+    .global AnimationResource_InitEmpty
+AnimationResource_InitEmpty: ; 0x02010854
     stmdb sp!, {r4, lr}
     mov r4, r0
     add r0, r4, #0x4
@@ -14,5 +14,5 @@ func_02010854: ; 0x02010854
     str r1, [r4, #0x0]
     ldmia sp!, {r4, pc}
 L_02010874: .word data_020d4178
-    .size func_02010854, . - func_02010854
+    .size AnimationResource_InitEmpty, . - AnimationResource_InitEmpty
 

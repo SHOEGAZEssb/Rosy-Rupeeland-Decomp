@@ -10,7 +10,7 @@ typedef struct Overlay001LayoutState {
     s32 field_a4;
     s32 field_a8;
     s32 field_ac;
-    s32 field_b0;
+    s32 flags;
 } Overlay001LayoutState;
 
 /*
@@ -27,5 +27,5 @@ void func_ov001_021fb6e0(Overlay001LayoutState *state, s32 first, s32 second,
     state->field_a4 = first;
     state->field_a8 = second;
     state->field_ac = third;
-    state->field_b0 = fourth;
+    state->flags = fourth;
 }

@@ -13,7 +13,7 @@
 .extern func_02005058
 .extern func_02008378
 .extern ActorMotionAreaFollower_GetPosition
-.extern func_02010c00
+.extern GamePhaseCurrencyHud_AddCurrency
 .extern func_0201ded4
 .extern func_0201e0ec
 .extern func_0201f864
@@ -112,7 +112,7 @@ ActorDerivedType1_UpdateFrameControl: ; 0x020372e4
     mov r2, #0x0
     rsb r5, r1, #0x0
     mov r1, r5
-    bl func_02010c00
+    bl GamePhaseCurrencyHud_AddCurrency
     ldr r1, .L_02037a60
     ldr r3, .L_02037a64
     mov r0, #0x44

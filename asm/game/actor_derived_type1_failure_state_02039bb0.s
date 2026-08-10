@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/actor_derived_type1_failure_state.c.
 .text
 .extern GameWork_TestFlag
-.extern func_02010b64
+.extern GamePhaseCurrencyHud_GetCurrency
 .extern Type1Actor_EnterFailureState
 .extern gGameWork
 .extern gLupyContext
@@ -19,7 +19,7 @@ Type1Actor_TryEnterFailureState: ; 0x02039bb0
     ldmneia sp!, {r4, pc}
     ldr r0, .L_02039bf8
     ldr r0, [r0, #0x0]
-    bl func_02010b64
+    bl GamePhaseCurrencyHud_GetCurrency
     cmp r0, #0x0
     ldmgtia sp!, {r4, pc}
     mov r0, r4

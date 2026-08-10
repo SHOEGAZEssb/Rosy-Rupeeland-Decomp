@@ -17,7 +17,7 @@ extern s32 DisplayBrightness_IsSubTransitionComplete(void);
 extern s32 DisplayBrightness_IsMainTransitionDecreasing(void);
 extern s32 DisplayBrightness_IsSubTransitionDecreasing(void);
 extern void GamePhaseRuntime_ApplyStagedAreaRequest(void *context);
-extern void func_0201140c(void *context, s32 value);
+extern void GamePhaseCurrencyHud_SetVisible(void *context, s32 value);
 extern void *GamePhaseResumeScene_Init(void *allocation, s32 mode);
 #ifdef __cplusplus
 }
@@ -56,7 +56,7 @@ s32 GamePhaseTransitionScene_Update(GamePhaseTransitionScene *self)
 
         if (!DisplayBrightness_IsMainTransitionComplete() || !DisplayBrightness_IsSubTransitionComplete())
             return 0;
-        func_0201140c(gLupyContext, 0);
+        GamePhaseCurrencyHud_SetVisible(gLupyContext, 0);
         object = *(void **)((u8 *)data_021052fc + 0x30e8);
         vtable = *(void ***)object;
         ((GamePhaseTransitionMethod)vtable[3])(object, 0, 0x1f);

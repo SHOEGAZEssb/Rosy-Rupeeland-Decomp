@@ -2,7 +2,7 @@
 
 /* Exact fallback; see src/overlays/ov022/overlay022_ui_runtime.c. */
 .extern data_021f5ee8
-.extern func_02010e68
+.extern GamePhaseCurrencyHud_Update
 .extern func_020740a4
 .extern func_02092b70
 .extern func_02094574
@@ -20,7 +20,7 @@ func_ov022_021ff0d0:
     ldr r1, L_021ff1dc
     mov r4, r0
     ldr r0, [r1, #0x0]
-    bl func_02010e68
+    bl GamePhaseCurrencyHud_Update
     add r0, r4, #0xa8
     bl func_020958d8
     mov r7, #0x0

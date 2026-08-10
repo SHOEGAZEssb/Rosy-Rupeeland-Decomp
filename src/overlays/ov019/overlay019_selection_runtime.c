@@ -14,7 +14,7 @@ extern "C" {
 #endif
 extern void GameWork_SetFlag(void *, u32);
 extern u32 genrand_int32(void);
-extern s32 func_02010b64(void *);
+extern s32 GamePhaseCurrencyHud_GetCurrency(void *);
 extern void func_02092260(void *, s32);
 extern s32 func_ov002_021fbb68(void *, const void *);
 extern s32 func_ov002_021fbc54(void *);
@@ -79,7 +79,7 @@ extern "C" s32 func_ov019_021fd278(void *state)
             s32 value = FIELD(s32, presentation, 0x88);
             if (FIELD(s32, presentation, 0x90) == 0 ||
                 (FIELD(s32, state, 0x54) == 1 &&
-                 value >= func_02010b64(gLupyContext))) {
+                 value >= GamePhaseCurrencyHud_GetCurrency(gLupyContext))) {
                 func_02092260(state, 9);
                 FIELD(s32, state, 4) = 0;
                 FIELD(s32, state, 8) = 0;

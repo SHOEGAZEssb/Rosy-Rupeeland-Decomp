@@ -19,7 +19,7 @@
 .extern GraphicsSpriteState_Create
 .extern GamePhaseRuntime_GetActorCollection
 .extern GamePhaseTouchPrompt_SetEnabled
-.extern func_0201140c
+.extern GamePhaseCurrencyHud_SetVisible
 .extern func_0201ded4
 .extern func_0201e14c
 .extern func_02025300
@@ -350,7 +350,7 @@ func_ov064_0220fd20:
     ldr r0, .L_0221062c
     mov r1, #0x0
     ldr r0, [r0, #0x0]
-    bl func_0201140c
+    bl GamePhaseCurrencyHud_SetVisible
     ldr r1, [r5, #0x26c]
     cmp r1, #0x0
     ldrne r0, [r1, #0x20]

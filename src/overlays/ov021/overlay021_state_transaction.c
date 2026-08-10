@@ -21,8 +21,8 @@ extern "C" {
 #endif
 extern void *Heap_Alloc(u32, const void *, u32, void *);
 extern s32 DisplayBrightness_IsMainTransitionComplete(void);
-extern s32 func_02010b64(void *);
-extern void func_02010c00(void *, s32, s32);
+extern s32 GamePhaseCurrencyHud_GetCurrency(void *);
+extern void GamePhaseCurrencyHud_AddCurrency(void *, s32, s32);
 extern void func_02062ca8(void *);
 extern void func_02076004(void *, s32, u32, s32);
 extern void func_0207ab48(void *, u16);
@@ -90,8 +90,8 @@ static void destroy_polymorphic(void *object)
 static void animate_currency(void *state, s32 amount, s32 debit)
 {
     s32 anim = func_ov045_0220b924(FIELD(void *, state, 0x3ec),
-                                   func_02010b64(gLupyContext), amount, debit);
-    func_02010c00(gLupyContext, debit ? -amount : amount, anim);
+                                   GamePhaseCurrencyHud_GetCurrency(gLupyContext), amount, debit);
+    GamePhaseCurrencyHud_AddCurrency(gLupyContext, debit ? -amount : amount, anim);
 }
 
 static void prepare_result_widget(void *state)

@@ -3,7 +3,7 @@
 .extern Heap_Free
 .extern data_020df510
 .extern AnimationResource_Destroy
-.extern func_02010854
+.extern AnimationResource_InitEmpty
 .extern func_02030f98
 .extern func_0203130c
 .extern func_02031488
@@ -16,7 +16,7 @@ ActorDerivedRuntime_Init: ; 0x0203b514
     ldr r1, .L_0203b550
     add r0, r4, #0x1ec
     str r1, [r4, #0x0]
-    bl func_02010854
+    bl AnimationResource_InitEmpty
     mvn r0, #0x0
     str r0, [r4, #0x1fc]
     str r0, [r4, #0x200]
@@ -37,7 +37,7 @@ ActorDerivedRuntime_InitAlternate: ; 0x0203b554
     ldr r1, .L_0203b590
     add r0, r4, #0x1ec
     str r1, [r4, #0x0]
-    bl func_02010854
+    bl AnimationResource_InitEmpty
     mvn r0, #0x0
     str r0, [r4, #0x1fc]
     str r0, [r4, #0x200]

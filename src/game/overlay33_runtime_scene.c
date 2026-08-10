@@ -34,7 +34,7 @@ extern void GamePhaseRuntime_FinalizeActorCollections(void *runtime, u32 value, 
 extern void GamePhaseRuntime_SynchronizeActorPlacement(void *runtime, s32 index);
 extern void func_0201dcec(void *manager, s32 value);
 extern void *ActorMotionAreaFollower_GetPosition(void *object);
-extern void func_02010e68(void *context);
+extern void GamePhaseCurrencyHud_Update(void *context);
 #ifdef __cplusplus
 }
 #endif
@@ -143,7 +143,7 @@ s32 func_0201d884(Overlay33RuntimeScene *self)
     GamePhaseRuntime_FinalizeActorCollections(runtime, self->base.value04, 3);
     value = ActorMotionAreaFollower_GetPosition(runtime + 0x2fbc);
     func_ov033_021fd324(self->child3c, value);
-    func_02010e68(gLupyContext);
+    GamePhaseCurrencyHud_Update(gLupyContext);
     return 0;
 }
 

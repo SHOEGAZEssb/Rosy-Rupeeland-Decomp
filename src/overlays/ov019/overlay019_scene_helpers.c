@@ -14,7 +14,7 @@ extern "C" {
 extern void Heap_Free(void *);
 extern void GamePhaseRuntime_UpdateActorPresentationState(void *, s32);
 extern void GamePhaseState_ForwardVCount(void *, u16);
-extern void func_02010e68(void *);
+extern void GamePhaseCurrencyHud_Update(void *);
 extern void func_ov002_021fb9c4(void *);
 extern void func_ov002_021fba00(void *);
 #ifdef __cplusplus
@@ -93,7 +93,7 @@ extern "C" void func_ov019_021fd170(void *state)
     if (FIELD(void *, state, 0x58) != 0)
         GamePhaseRuntime_UpdateActorPresentationState(data_021052fc, 0);
     else
-        func_02010e68(gLupyContext);
+        GamePhaseCurrencyHud_Update(gLupyContext);
     func_ov002_021fba00(FIELD(void *, state, 0x5c));
 }
 

@@ -30,7 +30,7 @@ extern void *GamePhaseRuntime_Init(void *phase);
 extern void GamePhaseRuntime_Configure(void *phase, const GamePhaseConfig *config,
                           s32 value2C, s32 value30, int unknown);
 extern void *GamePhaseResumeScene_Init(void *object, int unknown);
-extern void *func_02010878(void *context);
+extern void *GamePhaseCurrencyHud_Init(void *context);
 extern const GamePhaseConfig *func_02028388(int phaseIndex);
 
 extern void DisplayBrightness_StartMainTransition(int mode, int duration);
@@ -123,7 +123,7 @@ GamePhaseTransition *GamePhase_Bootstrap(void)
     GamePhaseTransition *transition;
 
     if (lupy != 0) {
-        lupy = func_02010878(lupy);
+        lupy = GamePhaseCurrencyHud_Init(lupy);
     }
     gLupyContext = lupy;
 

@@ -4,7 +4,7 @@
 .extern Heap_Free
 .extern data_020df254
 .extern data_020df258
-.extern func_02010b64
+.extern GamePhaseCurrencyHud_GetCurrency
 .extern Actor_IsAtCachedTerrainHeight
 .extern func_0206c978
 .extern func_0206cd10
@@ -48,7 +48,7 @@ ActorDerivedType1_UpdateAuxiliaryResourceMotion: ; 0x02037bb0
     bne .L_02037c6c
     ldr r0, .L_02037d80
     ldr r0, [r0, #0x0]
-    bl func_02010b64
+    bl GamePhaseCurrencyHud_GetCurrency
     cmp r0, #0x0
     ldrgt r0, [r5, #0x10]
     bicgt r0, r0, #0x1f0000

@@ -4,7 +4,7 @@
 .extern data_020f4e18
 .extern data_021f5ed0
 .extern data_021f5ee8
-.extern func_02010e68
+.extern GamePhaseCurrencyHud_Update
 .extern func_02070e0c
 .extern func_02072048
 .extern func_02075598
@@ -90,7 +90,7 @@ func_ov029_021fd6fc:
     ldr r1, L_021fd7a0
     mov r4, r0
     ldr r0, [r1, #0x0]
-    bl func_02010e68
+    bl GamePhaseCurrencyHud_Update
     ldr r0, [r4, #0xa4]
     cmp r0, #0x0
     beq L_021fd720

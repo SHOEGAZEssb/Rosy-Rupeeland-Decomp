@@ -41,7 +41,7 @@
 .extern func_02008570
 .extern GamePhaseRuntime_SetPlacementMode
 .extern GamePhaseState_SetEnabled
-.extern func_0201140c
+.extern GamePhaseCurrencyHud_SetVisible
 .extern func_020122a0
 .extern func_0201e0f4
 .extern ActorCollection_GetSpriteOwner
@@ -251,7 +251,7 @@ L_0200d2b8:
     ldr r0, L_0200e0f4
     mov r1, #0x1
     ldr r0, [r0, #0x0]
-    bl func_0201140c
+    bl GamePhaseCurrencyHud_SetVisible
     b L_0200d344
 L_0200d2f0:
     ldr r2, L_0200e0f8
@@ -274,7 +274,7 @@ L_0200d2f0:
     ldr r0, L_0200e0f4
     mov r1, #0x0
     ldr r0, [r0, #0x0]
-    bl func_0201140c
+    bl GamePhaseCurrencyHud_SetVisible
 L_0200d344:
     ldr r0, [r5, #0x2c]
     cmp r0, #0x19
@@ -1365,7 +1365,7 @@ L_0200e2ac:
     ldr r0, L_0200e0f4
     mov r1, #0x1
     ldr r0, [r0, #0x0]
-    bl func_0201140c
+    bl GamePhaseCurrencyHud_SetVisible
 L_0200e2c8:
     ldr r0, L_0200e0e4
     mov r1, #0x1

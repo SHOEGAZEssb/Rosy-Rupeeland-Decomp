@@ -9,7 +9,7 @@
 .extern GameWork_ClearFlag
 .extern DisplayBrightness_IsMainTransitionComplete
 .extern DisplayBrightness_IsSubTransitionComplete
-.extern func_0201140c
+.extern GamePhaseCurrencyHud_SetVisible
 .extern GameWork_Reset
 .extern GamePhaseRuntime_ApplyStagedAreaRequest
 .extern Heap_Alloc
@@ -75,7 +75,7 @@ L_0200c774:
     ldr r0, L_0200c8a8
     mov r1, #0x0
     ldr r0, [r0, #0x0]
-    bl func_0201140c
+    bl GamePhaseCurrencyHud_SetVisible
     ldr r0, L_0200c8ac
     mov r1, #0x0
     ldr r0, [r0, #0x0]

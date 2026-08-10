@@ -19,7 +19,7 @@ extern "C" {
 extern void *Heap_Alloc(u32 size, const void *tag, u32 align, void *heap);
 extern void Sound_Play(void *context, s32 bank, s32 sound);
 extern void *ActorMotionAreaFollower_GetPosition(void *object);
-extern void func_02010c00(void *context, s32 value, s32 mode);
+extern void GamePhaseCurrencyHud_AddCurrency(void *context, s32 value, s32 mode);
 extern void func_0201ded4(void *manager, void *effect);
 extern void *func_0201e0ec(void *manager);
 extern void *func_02022cb0(void *storage, void *point, void *actor, s32 value,
@@ -80,7 +80,7 @@ s32 func_0204df40(void *actor, void *trigger)
                 ActorDerivedType1_TrySetStateVector(primary, (u8 *)actor + 0x18, 15, 2);
         }
 
-        func_02010c00(gLupyContext, FIELD(s16, actor, 0x1f2), 0);
+        GamePhaseCurrencyHud_AddCurrency(gLupyContext, FIELD(s16, actor, 0x1f2), 0);
         void *effect = Heap_Alloc(0x44, data_020e251c, 4, gHeapContext);
         if (effect != 0) {
             void *point = ActorMotionAreaFollower_GetPosition((u8 *)data_021052fc + 0x2fbc);
@@ -99,7 +99,7 @@ s32 func_0204df40(void *actor, void *trigger)
         complete_interaction(actor);
         sound = 15;
     } else if (type == 11 || type == 12) {
-        func_02010c00(gLupyContext, FIELD(s16, actor, 0x1f2) * 3, 0);
+        GamePhaseCurrencyHud_AddCurrency(gLupyContext, FIELD(s16, actor, 0x1f2) * 3, 0);
         FIELD(u16, actor, 0x1ec) = 2;
         sound = type == 11 ? 17 : 18;
     } else if (type == 18) {

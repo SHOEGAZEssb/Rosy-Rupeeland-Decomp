@@ -28,8 +28,8 @@ extern "C" {
 extern void Heap_Free(void *);
 extern s32 DisplayBrightness_IsMainTransitionComplete(void);
 extern s32 DisplayBrightness_IsSubTransitionComplete(void);
-extern void *func_02010b64(void *);
-extern void func_02010c00(void *, s32, void *);
+extern void *GamePhaseCurrencyHud_GetCurrency(void *);
+extern void GamePhaseCurrencyHud_AddCurrency(void *, s32, void *);
 extern void func_02074110(void *);
 extern void func_020755bc(void *);
 extern void func_02092c8c(s32, s32);
@@ -258,11 +258,11 @@ extern "C" s32 func_ov022_021ffa1c(void *scene)
         break;
     case 3:
         if (func_ov022_021ff368(scene)) {
-            void *context = func_02010b64(gLupyContext);
+            void *context = GamePhaseCurrencyHud_GetCurrency(gLupyContext);
             s32 id = FIELD(u16, FIELD(void *, scene, 0x360), 0x18);
             void *effect = func_ov022_021fcfd4(
                 FIELD(void *, scene, 0x354), context, id, 0);
-            func_02010c00(gLupyContext, id, effect);
+            GamePhaseCurrencyHud_AddCurrency(gLupyContext, id, effect);
             ADVANCE(scene);
         } else {
             func_ov022_021fe9e8(scene);
@@ -281,10 +281,10 @@ extern "C" s32 func_ov022_021ffa1c(void *scene)
             if (FIELD(s32, scene, 0x2ac)) {
                 s32 offset = FIELD(s32, scene, 0x358) * 0x34;
                 s32 id = FIELD(u16, data_020d782e, offset);
-                void *context = func_02010b64(gLupyContext);
+                void *context = GamePhaseCurrencyHud_GetCurrency(gLupyContext);
                 void *effect = func_ov022_021fcfd4(
                     FIELD(void *, scene, 0x354), context, id, 0);
-                func_02010c00(gLupyContext, id, effect);
+                GamePhaseCurrencyHud_AddCurrency(gLupyContext, id, effect);
             }
             ADVANCE(scene);
         }
@@ -505,10 +505,10 @@ extern "C" s32 func_ov022_022002e4(void *scene)
         if (DisplayBrightness_IsMainTransitionComplete()) {
             void *descriptor = FIELD(void *, scene, 0x2bc);
             s32 id = FIELD(s32, descriptor, 0x24);
-            void *context = func_02010b64(gLupyContext);
+            void *context = GamePhaseCurrencyHud_GetCurrency(gLupyContext);
             void *effect = func_ov022_021fcfd4(
                 FIELD(void *, scene, 0x354), context, id, 1);
-            func_02010c00(gLupyContext, -id, effect);
+            GamePhaseCurrencyHud_AddCurrency(gLupyContext, -id, effect);
             ADVANCE(scene);
         }
         break;

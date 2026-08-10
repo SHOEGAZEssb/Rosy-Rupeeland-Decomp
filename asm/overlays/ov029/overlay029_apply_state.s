@@ -2,8 +2,8 @@
 
 /* Exact fallback; see src/overlays/ov029/overlay029_lifecycle_tail.c. */
 .extern data_ov029_021fec60
-.extern func_02010b64
-.extern func_02010c00
+.extern GamePhaseCurrencyHud_GetCurrency
+.extern GamePhaseCurrencyHud_AddCurrency
 .extern func_ov029_021fce4c
 .extern func_ov029_021fd6fc
 .extern func_ov029_021fd850
@@ -29,7 +29,7 @@ L_021fe7d0:
     beq L_021fe858
     ldr r0, L_021fe868
     ldr r0, [r0, #0x0]
-    bl func_02010b64
+    bl GamePhaseCurrencyHud_GetCurrency
     mov r1, r0
     ldr r0, [r4, #0xd0]
     ldr r2, [r4, #0xac]
@@ -39,7 +39,7 @@ L_021fe7d0:
     mov r2, r0
     ldr r0, [r1, #0x0]
     ldr r1, [r4, #0xac]
-    bl func_02010c00
+    bl GamePhaseCurrencyHud_AddCurrency
     ldr r1, [r4, #0x4]
     mov r0, #0x0
     add r1, r1, #0x1

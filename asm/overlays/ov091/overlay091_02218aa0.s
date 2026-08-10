@@ -4,7 +4,7 @@
 .extern data_021052fc
 .extern data_ov091_02218dd0
 .extern ActorMotionAreaFollower_GetPosition
-.extern func_02010c00
+.extern GamePhaseCurrencyHud_AddCurrency
 .extern func_0201ded4
 .extern func_02022cb0
 .extern Type1Actor_TryEnterFailureState
@@ -32,7 +32,7 @@ func_ov091_02218aa0:
     mov r1, r4
     mov r2, #0x0
     ldr r5, [r3, #0xea4]
-    bl func_02010c00
+    bl GamePhaseCurrencyHud_AddCurrency
     ldr r1, .L_02218b78
     ldr r3, .L_02218b7c
     mov r0, #0x44

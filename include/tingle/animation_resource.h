@@ -31,6 +31,7 @@ extern AnimationResourceVTable data_020d4178;
 
 AnimationResource *AnimationResource_Init(AnimationResource *self, void *resource0,
                                  void *resource1, void *resource2);
+AnimationResource *AnimationResource_InitEmpty(AnimationResource *self);
 AnimationResource *AnimationResource_Destroy(AnimationResource *self);
 AnimationResource *AnimationResource_DestroyAndFree(AnimationResource *self);
 void AnimationResource_RebindFrom(AnimationResource *self,

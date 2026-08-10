@@ -3,8 +3,8 @@
 /* Exact fallback; see src/overlays/ov022/overlay022_state_machines.c. */
 .extern data_ov022_022004f8
 .extern DisplayBrightness_IsMainTransitionComplete
-.extern func_02010b64
-.extern func_02010c00
+.extern GamePhaseCurrencyHud_GetCurrency
+.extern GamePhaseCurrencyHud_AddCurrency
 .extern func_02092c8c
 .extern func_ov022_021fcfd4
 .extern func_ov022_021fd068
@@ -51,7 +51,7 @@ L_02200344:
     beq L_0220045c
     ldr r0, L_02200470
     ldr r0, [r0, #0x0]
-    bl func_02010b64
+    bl GamePhaseCurrencyHud_GetCurrency
     ldr r2, [r4, #0x2bc]
     mov r1, r0
     ldr r0, [r4, #0x354]
@@ -64,7 +64,7 @@ L_02200344:
     mov r2, r0
     ldr r0, [r1, #0x0]
     rsb r1, r3, #0x0
-    bl func_02010c00
+    bl GamePhaseCurrencyHud_AddCurrency
     ldr r1, [r4, #0x4]
     mov r0, #0x0
     add r1, r1, #0x1

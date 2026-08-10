@@ -10,7 +10,7 @@ extern void *gSceneManager;
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_02010c00(void *context, s32 value, s32 extra);
+extern void GamePhaseCurrencyHud_AddCurrency(void *context, s32 value, s32 extra);
 extern void *ActorMotionAreaFollower_GetPosition(void *manager);
 extern void *func_02022cb0(void *allocation, void *resource, void *owner,
                            s32 value, s32 first, s32 second);
@@ -64,7 +64,7 @@ void ActorDerivedType1_DispatchInteractionAmount(void *self, s32 amount, void *s
         s32 negative = -amount;
         void *allocation;
         void *effect = 0;
-        func_02010c00(gLupyContext, negative, 0);
+        GamePhaseCurrencyHud_AddCurrency(gLupyContext, negative, 0);
         allocation = Heap_Alloc(0x44, data_020df4a4, 4, &gHeapContext);
         if (allocation != 0) {
             void *resource = ActorMotionAreaFollower_GetPosition(data_021052fc + 0x2fbc);

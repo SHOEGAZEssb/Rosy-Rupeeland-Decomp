@@ -12,7 +12,7 @@
 .extern func_02008378
 .extern ActorMotionJitter_EnsureMinimum
 .extern ActorMotionAreaFollower_GetPosition
-.extern func_02010c00
+.extern GamePhaseCurrencyHud_AddCurrency
 .extern func_0201ded4
 .extern func_0201e0ec
 .extern func_02022cb0
@@ -296,7 +296,7 @@ ActorDerivedType1_ApplyWeightedCollisionDisplacement: ; 0x0203825c
     ldr r0, [r1, #0x0]
     mov r1, r5
     mov r2, #0x0
-    bl func_02010c00
+    bl GamePhaseCurrencyHud_AddCurrency
     ldr r3, [r7, #0x24]
     ldr r1, [r7, #0x1c]
     ldr r2, [r7, #0x20]

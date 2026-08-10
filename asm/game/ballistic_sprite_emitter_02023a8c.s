@@ -8,7 +8,7 @@
 .extern AnimationResource_Init
 .extern AnimationResource_Destroy
 .extern AnimationResource_Assign
-.extern func_02010854
+.extern AnimationResource_InitEmpty
 .extern func_0201e250
 .extern func_02023890
 .extern func_02023bcc
@@ -96,7 +96,7 @@ func_02023a8c: ; 0x02023a8c
     ldmia sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, pc}
 .L_02023bac: .word data_020d6718
 .L_02023bb0: .word AnimationResource_Destroy
-.L_02023bb4: .word func_02010854
+.L_02023bb4: .word AnimationResource_InitEmpty
 .L_02023bb8: .word 0x1714
 .L_02023bbc: .word 0x1688
 .L_02023bc0: .word gDebugFont

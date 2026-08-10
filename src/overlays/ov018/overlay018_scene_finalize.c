@@ -16,7 +16,7 @@ extern "C" {
 #endif
 extern void func_02003e38(void *);
 extern s32 DisplayBrightness_IsMainTransitionComplete(void);
-extern void func_0201140c(void *, s32);
+extern void GamePhaseCurrencyHud_SetVisible(void *, s32);
 extern void func_020755bc(void *);
 extern void func_020b1ccc(void *, s32, s32);
 extern void func_020b1ff0(void *, s32, s32);
@@ -45,7 +45,7 @@ extern "C" s32 func_ov018_021fe6f0(void *state)
 {
     switch (FIELD(s32, state, 4)) {
     case 0: {
-        func_0201140c(gLupyContext, 1);
+        GamePhaseCurrencyHud_SetVisible(gLupyContext, 1);
         func_020755bc(data_020f4e14);
         func_020755bc(gDebugFont);
         FIELD(u32, (u8 *)data_021052fc + 0x2000, 0xf6c) |= 2;

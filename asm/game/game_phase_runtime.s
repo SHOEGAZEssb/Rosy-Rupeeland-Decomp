@@ -30,7 +30,7 @@
 .extern GamePhaseState_SetEnabled
 .extern GamePhaseTouchPrompt_Init
 .extern GamePhaseTouchPrompt_SetEnabled
-.extern func_0201140c
+.extern GamePhaseCurrencyHud_SetVisible
 .extern func_02012444
 .extern func_02020060
 .extern ActorCollection_DispatchEventToActors
@@ -339,7 +339,7 @@ L_02006f0c:
     str r2, [r0, #0xe4]
     ldr r0, [r1, #0x0]
     mov r1, #0x1
-    bl func_0201140c
+    bl GamePhaseCurrencyHud_SetVisible
     ldr r0, L_02006fcc
     mov r1, #0xfa
     ldr r0, [r0, #0x0]

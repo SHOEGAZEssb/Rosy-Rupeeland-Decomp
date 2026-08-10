@@ -3,7 +3,7 @@
 /* Exact fallback; see src/overlays/ov022/overlay022_state_transitions.c. */
 .extern data_020f4e14
 .extern data_ov022_02200508
-.extern func_0201140c
+.extern GamePhaseCurrencyHud_SetVisible
 .extern func_0205974c
 .extern func_020755bc
 .extern func_02095940
@@ -43,7 +43,7 @@ func_ov022_021ff480:
     ldr r0, L_021ff534
     mov r1, #0x1
     ldr r0, [r0, #0x0]
-    bl func_0201140c
+    bl GamePhaseCurrencyHud_SetVisible
     mov r0, r4
     mov r1, #0x0
     bl func_ov022_021ff220

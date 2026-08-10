@@ -4,8 +4,8 @@
 .extern func_020befec
 .extern genrand_int32
 
-    .global func_020112f0
-func_020112f0: ; 0x020112f0
+    .global GamePhaseCurrencyHud_UpdateDigits
+GamePhaseCurrencyHud_UpdateDigits: ; 0x020112f0
     stmdb sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, lr}
     mov r10, r0
     mov r9, r1
@@ -85,5 +85,5 @@ L_020113fc:
     blt L_020113cc
     ldmia sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, pc}
 L_02011408: .word 0x1ff
-    .size func_020112f0, . - func_020112f0
+    .size GamePhaseCurrencyHud_UpdateDigits, . - GamePhaseCurrencyHud_UpdateDigits
 

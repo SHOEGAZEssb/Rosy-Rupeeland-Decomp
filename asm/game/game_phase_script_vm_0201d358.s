@@ -11,7 +11,7 @@
 .extern func_02092c8c
 .extern DisplayBrightness_IsSubTransitionComplete
 .extern func_020122a0
-.extern func_0201140c
+.extern GamePhaseCurrencyHud_SetVisible
 .extern GamePhaseRuntime_SetPlacementMode
 .extern func_02008570
 .extern func_020755bc
@@ -71,7 +71,7 @@ L_0201d3d8:
     ldr r0, L_0201d608
     mov r1, #0x0
     ldr r0, [r0, #0x0]
-    bl func_0201140c
+    bl GamePhaseCurrencyHud_SetVisible
 L_0201d3f4:
     ldr r0, L_0201d604
     mov r1, #0x0
@@ -190,7 +190,7 @@ L_0201d588:
     ldr r0, L_0201d608
     mov r1, #0x1
     ldr r0, [r0, #0x0]
-    bl func_0201140c
+    bl GamePhaseCurrencyHud_SetVisible
 L_0201d5a4:
     mov r0, #0x3
     mov r1, #0x0

@@ -11,7 +11,7 @@
 .extern ActorMotionAreaFollower_GetPosition
 .extern ActorRuntimeCollection_GetPendingAttachmentFlag
 .extern ActorRuntimeCollection_GetBusyState
-.extern func_02010c00
+.extern GamePhaseCurrencyHud_AddCurrency
 .extern func_0201ded4
 .extern func_0201e0ec
 .extern func_02022cb0
@@ -189,7 +189,7 @@ func_ov082_02213538:
     ldr r0, [r0, #0x0]
     mov r1, r10
     mov r2, #0x0
-    bl func_02010c00
+    bl GamePhaseCurrencyHud_AddCurrency
     ldr r1, .L_02213904
     ldr r3, .L_02213908
     mov r0, #0x44

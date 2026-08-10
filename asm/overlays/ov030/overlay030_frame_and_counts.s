@@ -2,7 +2,7 @@
 
 /* Exact fallback; see src/overlays/ov030/overlay030_frame_and_counts.c for documented portable C. */
 .extern data_021f5ee8
-.extern func_02010e68
+.extern GamePhaseCurrencyHud_Update
 .extern func_0206492c
 .extern func_02072b68
 .extern func_02092b70
@@ -29,7 +29,7 @@ func_ov030_021fe768:
     bl func_020958d8
     ldr r0, L_021fe800
     ldr r0, [r0, #0x0]
-    bl func_02010e68
+    bl GamePhaseCurrencyHud_Update
     ldr r0, [r4, #0x2c0]
     cmp r0, #0x0
     beq L_021fe7a4

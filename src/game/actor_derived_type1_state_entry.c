@@ -9,7 +9,7 @@ extern void *gSoundContext;
 extern "C" {
 #endif
 extern void Actor_SetPosition(void *actor, const void *position);
-extern s32 func_02010b64(void *context, s32 value);
+extern s32 GamePhaseCurrencyHud_GetCurrency(void *context, s32 value);
 extern void ActorRuntimeTriple_Assign(void *value, s32 x, s32 y, s32 z);
 extern void func_0200500c(void *value, s32 x, s32 y, s32 z);
 extern void func_02005058(void *value);
@@ -46,7 +46,7 @@ void ActorDerivedType1_EnterPositionedState(void *self, const void *position, s3
     *(u32 *)(actor + 0x14) &= ~0x200;
     *(u16 *)(actor + 0x268) = 0;
 
-    if (func_02010b64(gLupyContext, 0) > 0) {
+    if (GamePhaseCurrencyHud_GetCurrency(gLupyContext, 0) > 0) {
         *(u32 *)(actor + 0xd0) &= ~0x200;
         ActorRuntimeTriple_Assign(actor + 0x38, 0, 0, 0);
         ActorRuntimeTriple_Assign(actor + 0x88, 0, 0, 0);

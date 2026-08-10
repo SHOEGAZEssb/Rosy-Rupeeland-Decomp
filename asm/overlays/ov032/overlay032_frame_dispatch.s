@@ -2,7 +2,7 @@
 
 /* Exact fallback; see src/overlays/ov032/overlay032_input_runtime.c for documented portable C. */
 .extern TouchPanelManager_GetPoint
-.extern func_02010e68
+.extern GamePhaseCurrencyHud_Update
 .extern func_020740a4
 .extern func_ov032_021fe024
 .extern gLupyContext
@@ -65,7 +65,7 @@ L_021fdfb8:
     bl func_020740a4
     ldr r0, L_021fe020
     ldr r0, [r0, #0x0]
-    bl func_02010e68
+    bl GamePhaseCurrencyHud_Update
     mov r0, r4
     bl func_ov032_021fe024
 L_021fe00c:

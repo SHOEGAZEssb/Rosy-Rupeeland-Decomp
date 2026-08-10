@@ -53,7 +53,7 @@ extern void *ActorMotionAreaFollower_GetPosition(void *object);
 extern void ActorCollection_DispatchEventToActors(void *object, void *value);
 extern void GamePhaseRuntime_SetDisplayRouting(s32 value);
 extern void func_02020060(void *object, const void *config);
-extern void func_0201140c(void *object, s32 enabled);
+extern void GamePhaseCurrencyHud_SetVisible(void *object, s32 enabled);
 extern void func_02012444(void *object, void *source);
 extern void GamePhaseTouchPrompt_SetEnabled(FrameTask *task, s32 enabled);
 
@@ -205,7 +205,7 @@ void GamePhaseRuntime_Configure(GamePhaseRuntime *self, const void *configPointe
     }
 
     *(s32 *)(bytes + 0x30e4) = -1;
-    func_0201140c(gLupyContext, 1);
+    GamePhaseCurrencyHud_SetVisible(gLupyContext, 1);
     *(u16 *)((u8 *)gLupyContext + 0xbc) = 250;
     *(u16 *)((u8 *)gLupyContext + 0xbe) = 30;
 

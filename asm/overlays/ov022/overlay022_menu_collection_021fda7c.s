@@ -2,7 +2,7 @@
 /* Exact fallback; see src/overlays/ov022/overlay022_menu_collection.c. */
     .extern data_020d780c
     .extern data_020d7830
-    .extern func_02010b64
+    .extern GamePhaseCurrencyHud_GetCurrency
     .extern gLupyContext
 
 .global func_ov022_021fda7c
@@ -23,7 +23,7 @@ func_ov022_021fda7c:
     add r1, r1, r4
     str r1, [r3, r2, lsl #0x3]
     ldr r0, [r0, #0x0]
-    bl func_02010b64
+    bl GamePhaseCurrencyHud_GetCurrency
     ldr r1, L_021fdaf8
     ldr r1, [r1, r4]
     cmp r1, r0

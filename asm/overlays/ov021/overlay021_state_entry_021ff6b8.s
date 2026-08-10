@@ -8,7 +8,7 @@
     .extern gLupyContext
     .extern GameWork_ClearFlag
     .extern GameWork_TestFlag
-    .extern func_0201140c
+    .extern GamePhaseCurrencyHud_SetVisible
     .extern func_02075598
     .extern func_020755bc
     .extern func_0207c4cc
@@ -49,7 +49,7 @@ L_021ff6f4:
     ldr r0, L_021ff824
     mov r1, #0x1
     ldr r0, [r0, #0x0]
-    bl func_0201140c
+    bl GamePhaseCurrencyHud_SetVisible
     ldr r0, [r4, #0x3e4]
     cmp r0, #0x0
     blt L_021ff790

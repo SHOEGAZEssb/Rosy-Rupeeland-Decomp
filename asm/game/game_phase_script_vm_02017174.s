@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/game_phase_script_vm_currency_opcodes.c.
 .text
-.extern func_0201140c
+.extern GamePhaseCurrencyHud_SetVisible
 .extern func_02012704
 .extern gLupyContext
 .global func_02017174
@@ -17,7 +17,7 @@ func_02017174:
     ldr r2, L_020171c0
     mov r1, r0
     ldr r0, [r2]
-    bl func_0201140c
+    bl GamePhaseCurrencyHud_SetVisible
     ldr r1, L_020171c0
     mov r0, #0
     ldr r1, [r1]

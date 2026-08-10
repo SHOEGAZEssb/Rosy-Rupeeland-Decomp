@@ -4,7 +4,7 @@
 .extern func_02008570
 .extern GamePhaseRuntime_SetPlacementMode
 .extern GamePhaseState_SetEnabled
-.extern func_0201140c
+.extern GamePhaseCurrencyHud_SetVisible
 .extern gLupyContext
 
 .global func_ov061_022101dc
@@ -40,7 +40,7 @@ func_ov061_022101dc:
     ldr r0, .L_0221025c
     ldr r1, [r4, #0x30]
     ldr r0, [r0, #0x0]
-    bl func_0201140c
+    bl GamePhaseCurrencyHud_SetVisible
     ldmia sp!, {r4, pc}
 .L_02210258: .word data_021052fc
 .L_0221025c: .word gLupyContext

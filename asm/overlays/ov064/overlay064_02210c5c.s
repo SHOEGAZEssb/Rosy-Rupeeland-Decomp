@@ -12,7 +12,7 @@
 .extern GraphicsSpriteState_SetDepthOrderedWorldPosition
 .extern VecFx32Bezier_Evaluate3D
 .extern ActorMotionAreaFollower_GetPosition
-.extern func_02010c00
+.extern GamePhaseCurrencyHud_AddCurrency
 .extern func_0201ded4
 .extern func_02022cb0
 .extern Actor_RefreshTerrainHeight
@@ -140,7 +140,7 @@ func_ov064_02210c5c:
     ldr r0, [r0, #0x0]
     rsb r1, r1, #0x0
     mov r2, #0x0
-    bl func_02010c00
+    bl GamePhaseCurrencyHud_AddCurrency
     add r0, sp, #0x38
     add r1, r4, #0x18
     bl func_02005030

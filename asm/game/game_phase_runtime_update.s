@@ -20,8 +20,8 @@
 .extern GamePhaseApplyScene_Init
 .extern GamePhaseEffectScene_Init
 .extern GamePhaseState_TryStartBoundaryTransition
-.extern func_02010b64
-.extern func_02010e68
+.extern GamePhaseCurrencyHud_GetCurrency
+.extern GamePhaseCurrencyHud_Update
 .extern func_0201dcec
 .extern func_02027654
 .extern func_02027f94
@@ -212,7 +212,7 @@ L_0200766c:
     bne L_0200769c
     ldr r0, L_02007860
     ldr r0, [r0, #0x0]
-    bl func_02010b64
+    bl GamePhaseCurrencyHud_GetCurrency
     cmp r0, #0x0
     movle r5, #0x1
     ble L_020076a0
@@ -254,7 +254,7 @@ L_020076a0:
 L_02007720:
     ldr r0, L_02007860
     ldr r0, [r0, #0x0]
-    bl func_02010e68
+    bl GamePhaseCurrencyHud_Update
     cmp r5, #0x0
     beq L_020077ac
     add r0, r4, #0x2000

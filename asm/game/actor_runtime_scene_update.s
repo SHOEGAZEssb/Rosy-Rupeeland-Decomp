@@ -9,7 +9,7 @@
 .extern GamePhaseRuntime_FinalizeActorCollections
 .extern func_0201dcec
 .extern GamePhaseRuntime_UpdateDualScreenUiPresentation
-.extern func_02010e68
+.extern GamePhaseCurrencyHud_Update
 .extern data_021052fc
 .extern gLupyContext
 .global ActorRuntimeScene_Update
@@ -73,7 +73,7 @@ L_0200b774:
     bl GamePhaseRuntime_UpdateDualScreenUiPresentation
     ldr r0, L_0200b7b0
     ldr r0, [r0, #0x0]
-    bl func_02010e68
+    bl GamePhaseCurrencyHud_Update
     mov r0, #0x0
     ldmia sp!, {r4, pc}
 L_0200b7ac: .word data_021052fc

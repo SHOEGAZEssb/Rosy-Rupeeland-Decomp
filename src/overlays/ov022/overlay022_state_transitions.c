@@ -15,7 +15,7 @@ extern void *gSoundContext;
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_0201140c(void *, s32);
+extern void GamePhaseCurrencyHud_SetVisible(void *, s32);
 extern void func_0205974c(void *, s32);
 extern void func_020755bc(void *);
 extern s32 func_02093360(void *, const void *);
@@ -91,7 +91,7 @@ extern "C" s32 func_ov022_021ff480(void *scene)
         func_020755bc(data_020f4e14);
         func_020755bc(gDebugFont);
         func_02095940((u8 *)scene + 0xa8);
-        func_0201140c(gLupyContext, 1);
+        GamePhaseCurrencyHud_SetVisible(gLupyContext, 1);
         func_ov022_021ff220(scene, 0);
         func_ov022_021fdd1c(scene, data_ov022_02200508[0],
                            data_ov022_02200508[1]);

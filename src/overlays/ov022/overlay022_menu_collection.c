@@ -18,7 +18,7 @@ extern "C" {
 #endif
 extern void *Heap_Alloc(u32, const void *, u32, void *);
 extern void *func_02003e20(u32, const void *, u32, void *);
-extern s32 func_02010b64(void *);
+extern s32 GamePhaseCurrencyHud_GetCurrency(void *);
 extern void func_02074110(void *);
 extern void func_02092798(void *);
 extern void func_020927b8(void *);
@@ -136,7 +136,7 @@ extern "C" void func_ov022_021fda7c(void *menu, s32 index)
     s32 offset = index * 0x34;
     void *entry = (u8 *)entries + count * 8;
     FIELD(const void *, entry, 0) = data_020d780c + offset;
-    if (data_020d7830[offset / 4] >= func_02010b64(gLupyContext))
+    if (data_020d7830[offset / 4] >= GamePhaseCurrencyHud_GetCurrency(gLupyContext))
         FIELD(s32, entry, 4) = 1;
     FIELD(s32, menu, 0x2c) = count + 1;
 }

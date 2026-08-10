@@ -2,8 +2,8 @@
 
 /* Exact fallback; see src/overlays/ov030/overlay030_board_gameplay_state.c for documented portable C. */
 .extern data_ov030_021ff778
-.extern func_02010b64
-.extern func_02010c00
+.extern GamePhaseCurrencyHud_GetCurrency
+.extern GamePhaseCurrencyHud_AddCurrency
 .extern func_02091bac
 .extern func_02091c7c
 .extern func_02091cf0
@@ -182,7 +182,7 @@ L_021ff248:
     beq L_021ff284
     ldr r0, L_021ff568
     ldr r0, [r0, #0x0]
-    bl func_02010b64
+    bl GamePhaseCurrencyHud_GetCurrency
     mov r1, r0
     ldr r0, [r4, #0x2c8]
     mov r2, r5
@@ -192,7 +192,7 @@ L_021ff248:
     mov r2, r0
     ldr r0, [r1, #0x0]
     mov r1, r5
-    bl func_02010c00
+    bl GamePhaseCurrencyHud_AddCurrency
 L_021ff284:
     ldr r1, [r4, #0x4]
     mov r0, #0x0

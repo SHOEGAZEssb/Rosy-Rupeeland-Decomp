@@ -20,7 +20,7 @@
 .extern GamePhaseRuntime_SynchronizeActorPlacement
 .extern func_0201dcec
 .extern ActorMotionAreaFollower_GetPosition
-.extern func_02010e68
+.extern GamePhaseCurrencyHud_Update
 .extern data_020d5dcc
 .extern data_020d5df8
 .extern data_020d36e1
@@ -105,7 +105,7 @@ L_0201d920:
     bl func_ov033_021fd324 ; func_ov037_021fd324
     ldr r0, L_0201d9bc
     ldr r0, [r0, #0x0]
-    bl func_02010e68
+    bl GamePhaseCurrencyHud_Update
     mov r0, #0x0
     ldmia sp!, {r4, pc}
 L_0201d9b4: .word data_021052fc

@@ -27,7 +27,7 @@ extern void OverlaySlot_Init(void *);
 extern void OverlaySlot_Destroy(void *);
 extern void OverlaySlot_LoadOverlay(void *, s32);
 extern void OverlaySlot_UnloadOverlay(void *);
-extern void func_0201140c(void *, s32);
+extern void GamePhaseCurrencyHud_SetVisible(void *, s32);
 extern void func_02092c8c(s32, s32);
 extern s32 DisplayBrightness_IsSubTransitionComplete(void);
 extern void *func_ov001_021fbe6c(void *);
@@ -64,7 +64,7 @@ static OverlayPromptPresentation *teardown_prompt(OverlayPromptPresentation *sel
         ((WorkerMethod)(*(void ***)self->worker0c)[2])(self->worker0c);
         OverlaySlot_UnloadOverlay(self->sharedResource10);
     }
-    if (self->restoreMode1c != 0) func_0201140c(gLupyContext, 1);
+    if (self->restoreMode1c != 0) GamePhaseCurrencyHud_SetVisible(gLupyContext, 1);
     OverlaySlot_Destroy(self->sharedResource10);
     func_0201e28c(self);
     return self;
@@ -96,7 +96,7 @@ s32 func_020223d4(OverlayPromptPresentation *self)
         /* Retail falls through into the readiness check. */
     case 1:
         if (!DisplayBrightness_IsSubTransitionComplete()) return 0;
-        func_0201140c(gLupyContext, 0);
+        GamePhaseCurrencyHud_SetVisible(gLupyContext, 0);
         OverlaySlot_LoadOverlay(self->sharedResource10, 5);
         self->worker0c = Heap_Alloc(0x88, data_020d65ac, 4, &gHeapContext);
         if (self->worker0c != 0) func_ov001_021fbe6c(self->worker0c);

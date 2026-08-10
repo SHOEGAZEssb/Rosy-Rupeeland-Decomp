@@ -10,7 +10,7 @@ extern void *gLupyContext;
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_0201140c(void *, s32);
+extern void GamePhaseCurrencyHud_SetVisible(void *, s32);
 extern void func_02092260(void *, s32);
 extern void func_ov002_021fbdc0(void *);
 extern s32 func_ov002_021fbe08(void *);
@@ -35,7 +35,7 @@ extern "C" s32 func_ov019_021fd1b8(void *state)
 {
     switch (FIELD(s32, state, 4)) {
     case 0:
-        func_0201140c(gLupyContext, 1);
+        GamePhaseCurrencyHud_SetVisible(gLupyContext, 1);
         func_ov002_021fbdc0(FIELD(void *, state, 0x5c));
         FIELD(u32, state, 0x20) |= 1;
         FIELD(s32, state, 4)++;

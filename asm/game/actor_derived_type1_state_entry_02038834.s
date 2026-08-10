@@ -6,7 +6,7 @@
 .extern func_0200500c
 .extern func_02005058
 .extern ActorRuntimeTriple_Assign
-.extern func_02010b64
+.extern GamePhaseCurrencyHud_GetCurrency
 .extern Actor_SetPosition
 .extern Actor_GetCachedTerrainHeight
 .extern Actor_ReplaceAttachmentSlotResource
@@ -30,7 +30,7 @@ ActorDerivedType1_EnterPositionedState: ; 0x02038834
     ldr r1, .L_020389dc
     strh r2, [r0, #0x68]
     ldr r0, [r1, #0x0]
-    bl func_02010b64
+    bl GamePhaseCurrencyHud_GetCurrency
     cmp r0, #0x0
     ble .L_02038950
     ldr r0, [r5, #0xd0]

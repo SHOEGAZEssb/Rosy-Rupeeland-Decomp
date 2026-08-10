@@ -25,7 +25,7 @@ extern "C" {
 extern void GameWork_ClearFlag(void *, u32);
 extern s32 GameWork_TestFlag(void *, u32);
 extern s32 DisplayBrightness_IsMainTransitionComplete(void);
-extern void func_0201140c(void *, s32);
+extern void GamePhaseCurrencyHud_SetVisible(void *, s32);
 extern void func_02075598(void *, void *);
 extern void func_020755bc(void *);
 extern const void *func_0207c4cc(const void *, s32);
@@ -83,7 +83,7 @@ extern "C" s32 func_ov021_021ff6b8(void *state)
         func_020755bc(data_020f4e14);
         func_020755bc(gDebugFont);
         func_02095940((u8 *)state + 0xa0);
-        func_0201140c(gLupyContext, 1);
+        GamePhaseCurrencyHud_SetVisible(gLupyContext, 1);
 
         if (FIELD(s32, state, 0x3e4) >= 0) {
             FIELD(s32, state, 0x2c4) = 0;

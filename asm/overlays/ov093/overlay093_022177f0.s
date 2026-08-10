@@ -5,7 +5,7 @@
 .extern data_021052fc
 .extern data_ov093_022188f0
 .extern func_02004fe0
-.extern func_0201140c
+.extern GamePhaseCurrencyHud_SetVisible
 .extern func_0204d520
 .extern func_ov093_022177e0
 .extern gGameWork
@@ -64,7 +64,7 @@ func_ov093_022177f0:
     ldr r0, .L_02217904
     mov r1, #0x0
     ldr r0, [r0, #0x0]
-    bl func_0201140c
+    bl GamePhaseCurrencyHud_SetVisible
     add r0, r4, #0x18
     mov r1, #0x180000
     ldr r2, [r4, #0x244]

@@ -18,8 +18,8 @@ extern "C" {
 #endif
 extern void Heap_Free(void *);
 extern s32 DisplayBrightness_IsMainTransitionComplete(void);
-extern s32 func_02010b64(void *);
-extern void func_02010c00(void *, s32, s32);
+extern s32 GamePhaseCurrencyHud_GetCurrency(void *);
+extern void GamePhaseCurrencyHud_AddCurrency(void *, s32, s32);
 extern void func_02092260(void *, s32);
 extern void func_02092288(void *, s32);
 extern void func_02092c8c(s32, s32);
@@ -79,11 +79,11 @@ extern "C" s32 func_ov029_021fe7b0(void *state)
 {
     if (FIELD(s32, state, 4) == 0) {
         if (func_ov029_021fd850(state) != 0) {
-            s32 count = func_02010b64(gLupyContext);
+            s32 count = GamePhaseCurrencyHud_GetCurrency(gLupyContext);
             s32 delta = func_ov045_0220b924(
                 FIELD(void *, state, 0xd0), count,
                 FIELD(s32, state, 0xac), 0);
-            func_02010c00(gLupyContext, FIELD(s32, state, 0xac), delta);
+            GamePhaseCurrencyHud_AddCurrency(gLupyContext, FIELD(s32, state, 0xac), delta);
             Overlay029_NextPhase(state);
         }
     } else if (FIELD(s32, state, 4) == 1) {
@@ -123,11 +123,11 @@ extern "C" s32 func_ov029_021fe870(void *state)
         }
         func_020939d8(FIELD(void *, state, 0x9c));
         {
-            s32 count = func_02010b64(gLupyContext);
+            s32 count = GamePhaseCurrencyHud_GetCurrency(gLupyContext);
             s32 delta = func_ov045_0220b924(
                 FIELD(void *, state, 0xd0), count,
                 FIELD(s32, state, 0xac), 1);
-            func_02010c00(gLupyContext, -FIELD(s32, state, 0xac), delta);
+            GamePhaseCurrencyHud_AddCurrency(gLupyContext, -FIELD(s32, state, 0xac), delta);
         }
         Overlay029_NextPhase(state);
         break;
@@ -140,7 +140,7 @@ extern "C" s32 func_ov029_021fe870(void *state)
         } else if (FIELD(s32, state, 0x6c) == 1 ||
                    FIELD(s32, state, 0x6c) == 2) {
             if (FIELD(s32, state, 0x5c) == 4 &&
-                func_02010b64(gLupyContext) == 1) {
+                GamePhaseCurrencyHud_GetCurrency(gLupyContext) == 1) {
                 FIELD(s32, state, 0xac) = 0;
                 FIELD(s32, state, 0x6c) = 5;
                 func_ov029_021fd7a8(state, 5);

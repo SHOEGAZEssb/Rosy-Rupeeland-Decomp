@@ -18,7 +18,7 @@
 .extern ActorMotion_SetTarget
 .extern ActorMotionJitter_EnsureMinimum
 .extern ActorMotionAreaFollower_BindActor
-.extern func_02010b64
+.extern GamePhaseCurrencyHud_GetCurrency
 .extern func_0201e0ec
 .extern Actor_SetActive
 .extern func_0204d308
@@ -199,7 +199,7 @@ func_ov091_02217ce0:
     bl func_020050a4
     ldr r0, .L_02218830
     ldr r0, [r0, #0x0]
-    bl func_02010b64
+    bl GamePhaseCurrencyHud_GetCurrency
     cmp r0, #0x0
     bne .L_02217f68
     ldr r1, [r7, #0x230]
@@ -282,7 +282,7 @@ func_ov091_02217ce0:
     bl func_ov091_02218838
     ldr r0, .L_02218830
     ldr r0, [r0, #0x0]
-    bl func_02010b64
+    bl GamePhaseCurrencyHud_GetCurrency
     cmp r0, #0x0
     bne .L_022180a8
     ldr r1, [r7, #0x230]

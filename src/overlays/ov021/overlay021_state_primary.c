@@ -24,8 +24,8 @@ extern void GameWork_ClearFlag(void *, u32);
 extern void GameWork_SetFlag(void *, u32);
 extern s32 GameWork_TestFlag(void *, u32);
 extern s32 DisplayBrightness_IsMainTransitionComplete(void);
-extern s32 func_02010b64(void *);
-extern void func_02010c00(void *, s32, s32);
+extern s32 GamePhaseCurrencyHud_GetCurrency(void *);
+extern void GamePhaseCurrencyHud_AddCurrency(void *, s32, s32);
 extern s32 func_02062b28(void *);
 extern void func_02062ca8(void *);
 extern void func_020755bc(void *);
@@ -215,8 +215,8 @@ extern "C" s32 func_ov021_02201800(void *state)
             FIELD(s32, state, 0x3d8) = 1;
         s32 gain = FIELD(s32, FIELD(void *, state, 0x2bc), 8);
         s32 anim = func_ov045_0220b924(FIELD(void *, state, 0x3ec),
-                                       func_02010b64(gLupyContext), gain, 0);
-        func_02010c00(gLupyContext, gain, anim);
+                                       GamePhaseCurrencyHud_GetCurrency(gLupyContext), gain, 0);
+        GamePhaseCurrencyHud_AddCurrency(gLupyContext, gain, anim);
         func_02062ca8(FIELD(void *, state, 0x37c));
         FIELD(s32, state, 4)++;
         FIELD(s32, state, 8) = 0;

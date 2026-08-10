@@ -16,7 +16,7 @@ extern "C" {
 #endif
 extern void GameWork_SetFlag(void *, s32);
 extern u32 genrand_int32(void);
-extern s32 func_02010b64(void *);
+extern s32 GamePhaseCurrencyHud_GetCurrency(void *);
 extern void func_02076004(void *, s32, u32, s32);
 extern void func_02092260(void *, s32);
 extern void func_02092c8c(s32, s32);
@@ -95,7 +95,7 @@ extern "C" s32 func_ov029_021fdc5c(void *state)
             }
             FIELD(s32, state, 0xac) = FIELD(s32, child, 0x88);
             s32 mode = FIELD(s32, state, 0x5c);
-            if (mode >= 2 && func_02010b64(gLupyContext) <=
+            if (mode >= 2 && GamePhaseCurrencyHud_GetCurrency(gLupyContext) <=
                              FIELD(s32, state, 0xac)) {
                 func_02092260(state, 9);
                 Overlay029_ResetPhase(state, 20);

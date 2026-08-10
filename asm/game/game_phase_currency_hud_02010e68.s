@@ -4,8 +4,8 @@
 .extern Sound_Play
 .extern data_020c368c
 .extern data_021052fc
-.extern func_020112f0
-.extern func_0201140c
+.extern GamePhaseCurrencyHud_UpdateDigits
+.extern GamePhaseCurrencyHud_SetVisible
 .extern func_02072b68
 .extern func_020740a4
 .extern func_02074110
@@ -15,8 +15,8 @@
 .extern gSoundContext
 .extern genrand_int32
 
-    .global func_02010e68
-func_02010e68: ; 0x02010e68
+    .global GamePhaseCurrencyHud_Update
+GamePhaseCurrencyHud_Update: ; 0x02010e68
     stmdb sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, lr}
     ldr r1, L_020112d8
     mov r10, r0
@@ -34,7 +34,7 @@ func_02010e68: ; 0x02010e68
     ldmeqia sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, pc}
     mov r0, r10
     mov r1, #0x0
-    bl func_0201140c
+    bl GamePhaseCurrencyHud_SetVisible
     ldmia sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, pc}
 L_02010eb4:
     ldr r0, L_020112dc
@@ -183,7 +183,7 @@ L_020110a8:
 L_020110c0:
     ldr r1, [r10, #0xc4]
     mov r0, r10
-    bl func_020112f0
+    bl GamePhaseCurrencyHud_UpdateDigits
     ldrsh r0, [r10, #0xb6]
     cmp r0, #0x0
     bne L_0201117c
@@ -330,5 +330,5 @@ L_020112e0: .word data_020c368c
 L_020112e4: .word 0x3f5
 L_020112e8: .word gSoundContext
 L_020112ec: .word 0x4000304
-    .size func_02010e68, . - func_02010e68
+    .size GamePhaseCurrencyHud_Update, . - GamePhaseCurrencyHud_Update
 

@@ -7,7 +7,7 @@
 .extern DisplayBrightness_StartTransition
 .extern DisplayBrightnessPair_GetScreen
 .extern func_02008570
-.extern func_0201140c
+.extern GamePhaseCurrencyHud_SetVisible
 .extern func_02071d4c
 .extern func_0207419c
 .extern gLupyContext
@@ -67,7 +67,7 @@ func_ov052_0220d884:
     ldr r0, .L_0220d964
     mov r1, #0x1
     ldr r0, [r0, #0x0]
-    bl func_0201140c
+    bl GamePhaseCurrencyHud_SetVisible
 .L_0220d94c:
     mov r0, r4
     ldmia sp!, {r4, pc}
