@@ -15,7 +15,7 @@ extern void *func_020050a4(void *destination, const void *source);
 extern void func_0200b2c0(void *value, s32 x, s32 y, s32 z);
 extern void ActorDerivedType1_SetSpecialModeEnabled(void *object, s32 mode);
 extern void Type7Actor_SelectRandomCallback(void *actor);
-extern void func_02049a7c(void *actor);
+extern void Type7Actor_CompleteDestinationMotion(void *actor);
 extern s32 func_0204cfa4(s32 x, s32 y);
 extern s32 func_020adae4(s32 value, s32 divisor);
 extern s32 func_020ae024(s32 y, s32 x);
@@ -28,7 +28,7 @@ extern s32 func_020ae024(s32 y, s32 x);
  * and copy destination transform +0x284 to temporary transform +0x78. Measure
  * the X/Y delta from current transform +0x18 with func_0204cfa4. If it is less
  * than one fx32 unit (0x1000), select presentation two, snap current transform
- * to the destination, and run func_02049a7c.
+ * to the destination, and run Type7Actor_CompleteDestinationMotion.
  *
  * Otherwise select presentation 10, clear the vector-like values at
  * +0x38/+0x88/+0x98, derive a direction with func_020ae024, and compute a step
@@ -38,7 +38,7 @@ extern s32 func_020ae024(s32 y, s32 x);
  * +0x18 to +0x28. Always return zero. Actor transform, presentation, vector,
  * and callback state may change; no SDK or hardware effects occur directly.
  */
-s32 func_0204991c(void *self)
+s32 Type7Actor_UpdateDestinationMotion(void *self)
 {
     u8 *actor = (u8 *)self;
     s32 dx;
@@ -54,7 +54,7 @@ s32 func_0204991c(void *self)
     if (distance < 0x1000) {
         *(u16 *)(actor + 0xd6) = 2;
         func_020050a4(actor + 0x18, actor + 0x78);
-        func_02049a7c(actor);
+        Type7Actor_CompleteDestinationMotion(actor);
     } else {
         s32 direction;
         s32 index;
@@ -87,7 +87,7 @@ s32 func_0204991c(void *self)
  * global-object, random, and callback state may change; there is no return
  * value or direct hardware access.
  */
-void func_02049a7c(void *self)
+void Type7Actor_CompleteDestinationMotion(void *self)
 {
     u8 *actor = (u8 *)self;
     u8 *globalObject = *(u8 **)(data_021052fc + 0x2ea4);

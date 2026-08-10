@@ -2,14 +2,14 @@
 .extern data_020c9670
 .extern func_020050a4
 .extern func_0200b2c0
-.extern func_02049a7c
+.extern Type7Actor_CompleteDestinationMotion
 .extern func_0204cfa4
 .extern func_020adae4
 .extern func_020ae024
 .text
-    .global func_0204991c
-.type func_0204991c, @function
-func_0204991c: ; 0x0204991c
+    .global Type7Actor_UpdateDestinationMotion
+.type Type7Actor_UpdateDestinationMotion, @function
+Type7Actor_UpdateDestinationMotion: ; 0x0204991c
     stmdb sp!, {r3, r4, r5, r6, r7, lr}
     mov r4, r0
     ldr r1, [r4, #0x268]
@@ -39,7 +39,7 @@ func_0204991c: ; 0x0204991c
     strh r2, [r4, #0xd6]
     bl func_020050a4
     mov r0, r4
-    bl func_02049a7c
+    bl Type7Actor_CompleteDestinationMotion
     b .L_02049a70
 .L_02049998:
     mov r1, #0x0
@@ -100,5 +100,5 @@ func_0204991c: ; 0x0204991c
     mov r0, #0x0
     ldmia sp!, {r3, r4, r5, r6, r7, pc}
 .L_02049a78: .word data_020c9670
-.size func_0204991c, . - func_0204991c
+.size Type7Actor_UpdateDestinationMotion, . - Type7Actor_UpdateDestinationMotion
 

@@ -3,9 +3,9 @@
 .extern ActorDerivedType1_SetSpecialModeEnabled
 .extern Type7Actor_SelectRandomCallback
 .text
-    .global func_02049a7c
-.type func_02049a7c, @function
-func_02049a7c: ; 0x02049a7c
+    .global Type7Actor_CompleteDestinationMotion
+.type Type7Actor_CompleteDestinationMotion, @function
+Type7Actor_CompleteDestinationMotion: ; 0x02049a7c
     stmdb sp!, {r4, lr}
     mov r4, r0
     ldr r1, [r4, #0x268]
@@ -28,5 +28,5 @@ func_02049a7c: ; 0x02049a7c
     ldmia sp!, {r4, pc}
 .L_02049acc: .word 0xfff7fffb
 .L_02049ad0: .word data_021052fc
-.size func_02049a7c, . - func_02049a7c
+.size Type7Actor_CompleteDestinationMotion, . - Type7Actor_CompleteDestinationMotion
 
