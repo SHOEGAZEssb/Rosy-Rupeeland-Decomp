@@ -27,20 +27,20 @@ extern "C" {
 
 extern SoftwareCanvasVTable data_020d4190;
 
-SoftwareCanvas *func_02005d88(SoftwareCanvas *self);
-SoftwareCanvas *func_02005dac(SoftwareCanvas *self, s32 field04,
+SoftwareCanvas *SoftwareCanvas_Init(SoftwareCanvas *self);
+SoftwareCanvas *SoftwareCanvas_InitWithBuffer(SoftwareCanvas *self, s32 field04,
                               u16 *pixels, s32 stride, s32 field10);
-SoftwareCanvas *func_02005dc8(SoftwareCanvas *self);
-SoftwareCanvas *func_02005dcc(SoftwareCanvas *self);
-void func_02005de0(SoftwareCanvas *self, s32 x, s32 y, u16 color);
-void func_02005dfc(SoftwareCanvas *self, s32 x0, s32 y0,
+SoftwareCanvas *SoftwareCanvas_Destroy(SoftwareCanvas *self);
+SoftwareCanvas *SoftwareCanvas_DestroyAndFree(SoftwareCanvas *self);
+void SoftwareCanvas_SetPixel(SoftwareCanvas *self, s32 x, s32 y, u16 color);
+void SoftwareCanvas_DrawLine(SoftwareCanvas *self, s32 x0, s32 y0,
                    s32 x1, s32 y1, u16 color);
-void func_02005eb8(SoftwareCanvas *self, s32 x0, s32 y0,
+void SoftwareCanvas_FillRect(SoftwareCanvas *self, s32 x0, s32 y0,
                    s32 x1, s32 y1, u16 color);
-void func_02005f38(SoftwareCanvas *self, s32 x0, s32 y0,
+void SoftwareCanvas_DrawRect(SoftwareCanvas *self, s32 x0, s32 y0,
                    s32 x1, s32 y1, u16 color);
-void func_02005fec(SoftwareCanvas *self, s32 glyphIndex);
-void func_02006078(SoftwareCanvas *self, s32 x, s32 y,
+void SoftwareCanvas_DrawGlyph(SoftwareCanvas *self, s32 glyphIndex);
+void SoftwareCanvas_DrawFormattedText(SoftwareCanvas *self, s32 x, s32 y,
                    const char *format, ...);
 
 #ifdef __cplusplus

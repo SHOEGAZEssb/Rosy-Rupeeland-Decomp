@@ -13,7 +13,7 @@
  * pixels are written more than once. Only the borrowed buffer changes and no
  * value is returned.
  */
-void func_02005f38(SoftwareCanvas *self, s32 x0, s32 y0,
+void SoftwareCanvas_DrawRect(SoftwareCanvas *self, s32 x0, s32 y0,
                    s32 x1, s32 y1, u16 color)
 {
     u16 opaqueColor = color | 0x8000;
@@ -27,14 +27,14 @@ void func_02005f38(SoftwareCanvas *self, s32 x0, s32 y0,
     if (y1 >= 192)
         y1 = 192;
 
-    func_02005dfc(self, x0, y0, x1, y0, opaqueColor);
-    func_02005dfc(self, x0, y1, x1, y1, opaqueColor);
-    func_02005dfc(self, x0, y0, x0, y1, opaqueColor);
-    func_02005dfc(self, x1, y0, x1, y1, opaqueColor);
+    SoftwareCanvas_DrawLine(self, x0, y0, x1, y0, opaqueColor);
+    SoftwareCanvas_DrawLine(self, x0, y1, x1, y1, opaqueColor);
+    SoftwareCanvas_DrawLine(self, x0, y0, x0, y1, opaqueColor);
+    SoftwareCanvas_DrawLine(self, x1, y0, x1, y1, opaqueColor);
 }
 #else
 /* This matching form implements the documented portable C directly above. */
-asm void func_02005f38(SoftwareCanvas *, s32, s32, s32, s32, u16)
+asm void SoftwareCanvas_DrawRect(SoftwareCanvas *, s32, s32, s32, s32, u16)
 {
     stmdb sp!, {r3, r4, r5, r6, r7, r8, r9, lr}
     sub sp, sp, #8
@@ -60,25 +60,25 @@ asm void func_02005f38(SoftwareCanvas *, s32, s32, s32, s32, u16)
     mov r2, r7
     mov r3, r6
     str r5, [sp, #4]
-    bl func_02005dfc
+    bl SoftwareCanvas_DrawLine
     stmia sp, {r4, r5}
     mov r0, r9
     mov r1, r8
     mov r2, r4
     mov r3, r6
-    bl func_02005dfc
+    bl SoftwareCanvas_DrawLine
     stmia sp, {r4, r5}
     mov r0, r9
     mov r1, r8
     mov r3, r8
     mov r2, r7
-    bl func_02005dfc
+    bl SoftwareCanvas_DrawLine
     mov r0, r9
     mov r2, r7
     mov r1, r6
     mov r3, r6
     stmia sp, {r4, r5}
-    bl func_02005dfc
+    bl SoftwareCanvas_DrawLine
     add sp, sp, #8
     ldmia sp!, {r3, r4, r5, r6, r7, r8, r9, pc}
 }

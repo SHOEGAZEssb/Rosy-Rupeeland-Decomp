@@ -6,6 +6,6 @@
  */
 
 SoftwareCanvasVTable data_020d4190 = {
-    func_02005dc8,
-    func_02005dcc,
+    SoftwareCanvas_Destroy,
+    SoftwareCanvas_DestroyAndFree,
 };

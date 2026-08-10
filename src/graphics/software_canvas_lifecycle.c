@@ -13,7 +13,7 @@
  * Install the recovered vtable, clear all four payload fields, and return
  * self. No allocation, SDK call, or hardware access occurs.
  */
-SoftwareCanvas *func_02005d88(SoftwareCanvas *self)
+SoftwareCanvas *SoftwareCanvas_Init(SoftwareCanvas *self)
 {
     self->vtable = &data_020d4190;
     self->field_04 = 0;
@@ -27,7 +27,7 @@ SoftwareCanvas *func_02005d88(SoftwareCanvas *self)
  * Install the recovered vtable and retain field04, pixels, stride, and
  * field10 verbatim. The pixel buffer remains caller-owned; return self.
  */
-SoftwareCanvas *func_02005dac(SoftwareCanvas *self, s32 field04,
+SoftwareCanvas *SoftwareCanvas_InitWithBuffer(SoftwareCanvas *self, s32 field04,
                               u16 *pixels, s32 stride, s32 field10)
 {
     self->vtable = &data_020d4190;
@@ -42,7 +42,7 @@ SoftwareCanvas *func_02005dac(SoftwareCanvas *self, s32 field04,
  * Non-deleting destructor. It intentionally leaves every field and the
  * caller-owned pixel buffer untouched, then returns self.
  */
-SoftwareCanvas *func_02005dc8(SoftwareCanvas *self)
+SoftwareCanvas *SoftwareCanvas_Destroy(SoftwareCanvas *self)
 {
     return self;
 }
@@ -51,14 +51,14 @@ SoftwareCanvas *func_02005dc8(SoftwareCanvas *self)
  * Free the canvas object through Heap_Free and return its former address.
  * The pixel buffer is not released and the returned pointer is invalidated.
  */
-SoftwareCanvas *func_02005dcc(SoftwareCanvas *self)
+SoftwareCanvas *SoftwareCanvas_DestroyAndFree(SoftwareCanvas *self)
 {
     Heap_Free(self);
     return self;
 }
 #else
 /* Matching forms implement the documented portable C above. */
-asm SoftwareCanvas *func_02005d88(SoftwareCanvas *)
+asm SoftwareCanvas *SoftwareCanvas_Init(SoftwareCanvas *)
 {
     ldr r2, =data_020d4190
     mov r1, #0
@@ -70,7 +70,7 @@ asm SoftwareCanvas *func_02005d88(SoftwareCanvas *)
     bx lr
 }
 
-asm SoftwareCanvas *func_02005dac(SoftwareCanvas *, s32, u16 *, s32, s32)
+asm SoftwareCanvas *SoftwareCanvas_InitWithBuffer(SoftwareCanvas *, s32, u16 *, s32, s32)
 {
     stmdb sp!, {r3, lr}
     ldr lr, =data_020d4190
@@ -80,12 +80,12 @@ asm SoftwareCanvas *func_02005dac(SoftwareCanvas *, s32, u16 *, s32, s32)
     ldmia sp!, {r3, pc}
 }
 
-asm SoftwareCanvas *func_02005dc8(SoftwareCanvas *)
+asm SoftwareCanvas *SoftwareCanvas_Destroy(SoftwareCanvas *)
 {
     bx lr
 }
 
-asm SoftwareCanvas *func_02005dcc(SoftwareCanvas *)
+asm SoftwareCanvas *SoftwareCanvas_DestroyAndFree(SoftwareCanvas *)
 {
     stmdb sp!, {r4, lr}
     mov r4, r0

@@ -1,12 +1,12 @@
 .text
-.global func_02005fec
-.type func_02005fec, @function
+.global SoftwareCanvas_DrawGlyph
+.type SoftwareCanvas_DrawGlyph, @function
 .extern data_020c19f0
 .extern data_020c17f0
 .extern data_021052f4
 
 /* Matching implementation; see the documented portable C equivalent. */
-func_02005fec:
+SoftwareCanvas_DrawGlyph:
     stmdb sp!, {r3, r4, r5, r6, r7, lr}
     mov r1, r1, lsl #5
     ldr r2, glyph_data
@@ -47,4 +47,4 @@ palette_data:
     .word data_020c17f0
 cursor_data:
     .word data_021052f4
-    .size func_02005fec, .-func_02005fec
+    .size SoftwareCanvas_DrawGlyph, .-SoftwareCanvas_DrawGlyph

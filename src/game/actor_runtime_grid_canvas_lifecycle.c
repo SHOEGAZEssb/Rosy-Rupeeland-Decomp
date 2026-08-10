@@ -5,7 +5,7 @@
 /* Initialize the SoftwareCanvas base, select cell zero, and return self. */
 ActorRuntimeGridCanvas *func_0200bf04(ActorRuntimeGridCanvas *self)
 {
-    func_02005d88(&self->base);
+    SoftwareCanvas_Init(&self->base);
     self->selectedCell = 0;
     return self;
 }

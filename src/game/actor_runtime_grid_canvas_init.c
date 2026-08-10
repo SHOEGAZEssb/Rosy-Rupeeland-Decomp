@@ -37,12 +37,12 @@ void func_0200bf20(ActorRuntimeGridCanvas *self)
     func_020afd28((volatile u8 *)bg2Control + 0x14, matrix, 0, 0);
 
     pixels = func_020afaec();
-    func_02005dac(&temporary, 0, pixels, 0x100, 0);
+    SoftwareCanvas_InitWithBuffer(&temporary, 0, pixels, 0x100, 0);
     self->base.field_04 = temporary.field_04;
     self->base.pixels = temporary.pixels;
     self->base.stride = temporary.stride;
     self->base.field_10 = temporary.field_10;
-    func_02005dc8(&temporary);
-    func_02005f38(&self->base, 0, 0, 0x100, 0x100, 0);
+    SoftwareCanvas_Destroy(&temporary);
+    SoftwareCanvas_DrawRect(&self->base, 0, 0, 0x100, 0x100, 0);
     func_0200c178(self);
 }

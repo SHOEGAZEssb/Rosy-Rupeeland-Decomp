@@ -5,9 +5,9 @@
 .extern GX_SetBankForSubBG
 .extern func_020afd28
 .extern func_020afaec
-.extern func_02005dac
-.extern func_02005dc8
-.extern func_02005f38
+.extern SoftwareCanvas_InitWithBuffer
+.extern SoftwareCanvas_Destroy
+.extern SoftwareCanvas_DrawRect
 .extern func_0200c178
 .global func_0200bf20
 func_0200bf20:
@@ -47,7 +47,7 @@ func_0200bf20:
     str r3, [sp, #0x0]
     add r0, sp, #0x8
     mov r1, #0x0
-    bl func_02005dac
+    bl SoftwareCanvas_InitWithBuffer
     ldr r1, [sp, #0xc]
     add r0, sp, #0x8
     str r1, [r4, #0x4]
@@ -57,14 +57,14 @@ func_0200bf20:
     str r1, [r4, #0xc]
     ldr r1, [sp, #0x18]
     str r1, [r4, #0x10]
-    bl func_02005dc8
+    bl SoftwareCanvas_Destroy
     mov r3, #0x100
     mov r1, #0x0
     str r3, [sp, #0x0]
     mov r0, r4
     mov r2, r1
     str r1, [sp, #0x4]
-    bl func_02005f38
+    bl SoftwareCanvas_DrawRect
     mov r0, r4
     bl func_0200c178
     add sp, sp, #0x2c

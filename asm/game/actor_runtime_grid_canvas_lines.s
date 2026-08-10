@@ -1,8 +1,8 @@
 ; Matching retail form; see src/game/actor_runtime_grid_canvas_lines.c for
 ; the documented portable implementation and recovered behavior.
 .text
-.extern func_02005eb8
-.extern func_02005dfc
+.extern SoftwareCanvas_FillRect
+.extern SoftwareCanvas_DrawLine
 .global func_0200c178
 func_0200c178:
     stmdb sp!, {r3, r4, r5, r6, r7, r8, r9, lr}
@@ -14,7 +14,7 @@ func_0200c178:
     mov r3, #0x100
     mov r4, r0
     str r1, [sp, #0x4]
-    bl func_02005eb8
+    bl SoftwareCanvas_FillRect
     ldr r7, L_0200c224
     mov r9, #0x0
     mov r8, #0xba
@@ -28,7 +28,7 @@ L_0200c1b4:
     add r1, r3, #0x9
     add r3, r3, #0x9
     str r7, [sp, #0x4]
-    bl func_02005dfc
+    bl SoftwareCanvas_DrawLine
     add r9, r9, #0x1
     cmp r9, #0xb
     blt L_0200c1b4
@@ -44,7 +44,7 @@ L_0200c1f4:
     mov r1, r7
     mov r3, r6
     stmia sp, {r2, r8}
-    bl func_02005dfc
+    bl SoftwareCanvas_DrawLine
     add r9, r9, #0x1
     cmp r9, #0xa
     blt L_0200c1f4

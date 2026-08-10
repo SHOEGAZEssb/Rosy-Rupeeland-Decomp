@@ -28,7 +28,7 @@ extern void OS_Halt(void);
  * string is terminated and each signed byte selects a glyph. Destination
  * pixels and the shared cursor change, and no value is returned.
  */
-void func_02006078(SoftwareCanvas *self, s32 x, s32 y,
+void SoftwareCanvas_DrawFormattedText(SoftwareCanvas *self, s32 x, s32 y,
                    const char *format, ...)
 {
     char buffer[SOFTWARE_CANVAS_TEXT_BUFFER_SIZE];
@@ -45,7 +45,7 @@ void func_02006078(SoftwareCanvas *self, s32 x, s32 y,
 
     buffer[length] = '\0';
     for (i = 0; i < length; i++) {
-        func_02005fec(self, (s8)buffer[i]);
+        SoftwareCanvas_DrawGlyph(self, (s8)buffer[i]);
         data_021052f4[1] += 8;
     }
 }

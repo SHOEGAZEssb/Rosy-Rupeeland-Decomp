@@ -22,7 +22,7 @@ extern s32 func_020befec(s32 dividend, s32 divisor);
  * modified, no value is returned, and no graphics hardware is accessed.
  */
 #ifndef MATCHING
-void func_02005dfc(SoftwareCanvas *self, s32 x0, s32 y0,
+void SoftwareCanvas_DrawLine(SoftwareCanvas *self, s32 x0, s32 y0,
                    s32 x1, s32 y1, u16 color)
 {
     s32 dx = x1 - x0;
@@ -46,14 +46,14 @@ void func_02005dfc(SoftwareCanvas *self, s32 x0, s32 y0,
     yStep = func_020befec(dyFx, steps);
 
     for (i = 0; i <= steps; ++i) {
-        func_02005de0(self, xFx >> 12, yFx >> 12, opaqueColor);
+        SoftwareCanvas_SetPixel(self, xFx >> 12, yFx >> 12, opaqueColor);
         xFx += xStep;
         yFx += yStep;
     }
 }
 #else
 /* This matching form implements the documented portable C directly above. */
-asm void func_02005dfc(SoftwareCanvas *, s32, s32, s32, s32, u16)
+asm void SoftwareCanvas_DrawLine(SoftwareCanvas *, s32, s32, s32, s32, u16)
 {
     stmdb sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, lr}
     ldr r4, [sp, #0x28]
@@ -98,7 +98,7 @@ loop:
     mov r3, r10
     mov r1, r6, asr #12
     mov r2, r7, asr #12
-    bl func_02005de0
+    bl SoftwareCanvas_SetPixel
     add r9, r9, #1
     add r6, r6, r4
     add r7, r7, r5

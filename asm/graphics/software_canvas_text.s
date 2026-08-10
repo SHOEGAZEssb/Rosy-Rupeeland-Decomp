@@ -1,13 +1,13 @@
 .text
-.global func_02006078
-.type func_02006078, @function
+.global SoftwareCanvas_DrawFormattedText
+.type SoftwareCanvas_DrawFormattedText, @function
 .extern data_021052f4
 .extern func_020b3598
 .extern OS_Halt
-.extern func_02005fec
+.extern SoftwareCanvas_DrawGlyph
 
 /* Matching implementation; see the documented portable C equivalent. */
-func_02006078:
+SoftwareCanvas_DrawFormattedText:
     stmdb sp!, {r0, r1, r2, r3}
     stmdb sp!, {r3, r4, r5, r6, r7, r8, lr}
     sub sp, sp, #0x104
@@ -34,7 +34,7 @@ length_ok:
 draw:
     ldrsb r1, [r6, r8]
     mov r0, r4
-    bl func_02005fec
+    bl SoftwareCanvas_DrawGlyph
     ldr r0, [r5, #4]
     add r8, r8, #1
     add r0, r0, #8
@@ -48,4 +48,4 @@ test:
     bx lr
 cursor_data:
     .word data_021052f4
-    .size func_02006078, .-func_02006078
+    .size SoftwareCanvas_DrawFormattedText, .-SoftwareCanvas_DrawFormattedText

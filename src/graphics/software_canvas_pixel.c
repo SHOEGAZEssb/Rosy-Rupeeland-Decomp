@@ -10,7 +10,7 @@
  * coordinates; no bounds check, return value, SDK call, or hardware access is
  * performed, and the borrowed pixel buffer is the only modified state.
  */
-void func_02005de0(SoftwareCanvas *self, s32 x, s32 y, u16 color)
+void SoftwareCanvas_SetPixel(SoftwareCanvas *self, s32 x, s32 y, u16 color)
 {
     self->pixels[y * self->stride + x] = color;
 }

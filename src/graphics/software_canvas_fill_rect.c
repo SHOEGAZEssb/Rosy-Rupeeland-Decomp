@@ -13,7 +13,7 @@
  * otherwise empty intervals naturally draw nothing.
  */
 #ifndef MATCHING
-void func_02005eb8(SoftwareCanvas *self, s32 x0, s32 y0,
+void SoftwareCanvas_FillRect(SoftwareCanvas *self, s32 x0, s32 y0,
                    s32 x1, s32 y1, u16 color)
 {
     s32 x;
@@ -31,11 +31,11 @@ void func_02005eb8(SoftwareCanvas *self, s32 x0, s32 y0,
 
     for (y = y0; y < y1; ++y)
         for (x = x0; x < x1; ++x)
-            func_02005de0(self, x, y, opaqueColor);
+            SoftwareCanvas_SetPixel(self, x, y, opaqueColor);
 }
 #else
 /* This matching form implements the documented portable C directly above. */
-asm void func_02005eb8(SoftwareCanvas *, s32, s32, s32, s32, u16)
+asm void SoftwareCanvas_FillRect(SoftwareCanvas *, s32, s32, s32, s32, u16)
 {
     stmdb sp!, {r4, r5, r6, r7, r8, r9, r10, lr}
     ldr r10, [sp, #0x24]
@@ -63,7 +63,7 @@ inner:
     mov r1, r8
     mov r2, r5
     mov r3, r10
-    bl func_02005de0
+    bl SoftwareCanvas_SetPixel
     add r8, r8, #1
 inner_test:
     cmp r8, r4

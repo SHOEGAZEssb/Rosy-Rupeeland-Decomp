@@ -56,7 +56,7 @@ DebugPhaseSelector *func_0200c2f8(DebugPhaseSelector *self)
 {
     self->base.vtable = &data_020d52c8;
     func_020ae90c();
-    func_02005dc8(&self->grid.base);
+    SoftwareCanvas_Destroy(&self->grid.base);
     Scene_Destroy(&self->base);
     return self;
 }

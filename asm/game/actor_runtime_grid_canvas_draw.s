@@ -2,7 +2,7 @@
 ; the documented portable implementation and recovered behavior.
 .text
 .extern func_0200c144
-.extern func_02006078
+.extern SoftwareCanvas_DrawFormattedText
 .extern func_02076428
 .extern data_020d52f4
 .extern gDebugFont
@@ -49,7 +49,7 @@ L_0200c03c:
     mov r0, r10
     add r1, r1, #0x1
     add r2, r2, #0x4
-    bl func_02006078
+    bl SoftwareCanvas_DrawFormattedText
     add r5, r5, #0x1
     cmp r5, #0xa
     blt L_0200c03c

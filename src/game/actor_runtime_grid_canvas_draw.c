@@ -35,7 +35,7 @@ void func_0200c00c(ActorRuntimeGridCanvas *self, s32 row, s32 column)
             func_0200c144(rectangle, gridColumn * 24, gridRow * 20);
             func_0200c144(rectangle, 9, 6);
             value = self->selectedCell * 90 + gridRow * 10 + gridColumn + 1;
-            func_02006078(&self->base, rectangle[0] + 1,
+            SoftwareCanvas_DrawFormattedText(&self->base, rectangle[0] + 1,
                           rectangle[1] + 4, data_020d52f4, value);
         }
     }

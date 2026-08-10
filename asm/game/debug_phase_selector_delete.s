@@ -2,7 +2,7 @@
 ; the documented portable implementation and recovered behavior.
 .text
 .extern func_020ae90c
-.extern func_02005dc8
+.extern SoftwareCanvas_Destroy
 .extern Scene_Destroy
 .extern Heap_Free
 .extern data_020d52c8
@@ -14,7 +14,7 @@ func_0200c328:
     str r1, [r4, #0x0]
     bl func_020ae90c
     add r0, r4, #0x34
-    bl func_02005dc8
+    bl SoftwareCanvas_Destroy
     mov r0, r4
     bl Scene_Destroy
     mov r0, r4

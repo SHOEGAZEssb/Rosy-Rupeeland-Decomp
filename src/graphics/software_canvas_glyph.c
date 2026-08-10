@@ -16,7 +16,7 @@ extern s32 data_021052f4[2];
  * The retail routine assumes a fixed 256-pixel row pitch, does no clipping,
  * changes only destination pixels, and returns no value.
  */
-void func_02005fec(SoftwareCanvas *self, s32 glyphIndex)
+void SoftwareCanvas_DrawGlyph(SoftwareCanvas *self, s32 glyphIndex)
 {
     const u32 *glyph = data_020c19f0 + glyphIndex * 8;
     const u16 *palette = data_020c17f0 + 16;
