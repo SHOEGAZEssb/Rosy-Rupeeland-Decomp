@@ -2,7 +2,7 @@
 .text
 .extern data_020dfec0
 .extern data_020e0290
-.extern func_02004ac8
+.extern NoOpDestructor
 .extern ActorExtendedType2_Init
 .extern func_020c0c24
 .global ActorExtendedRecordArray_Destroy
@@ -23,7 +23,7 @@ ActorExtendedRecordArray_Destroy: ; 0x020437f4
     mov r0, r4
     ldmia sp!, {r4, pc}
 .L_02043828: .word data_020dfec0
-.L_0204382c: .word func_02004ac8
+.L_0204382c: .word NoOpDestructor
 
 .size ActorExtendedRecordArray_Destroy, . - ActorExtendedRecordArray_Destroy
 

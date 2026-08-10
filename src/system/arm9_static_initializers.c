@@ -34,7 +34,7 @@ extern void SubBgExtendedPaletteBuffer_Destroy(void *);
 extern void ActorRuntimeCollection_Init(void *);
 extern void ActorRuntimeCollection_Destroy(void *);
 extern void func_020083b0(void *, s32, s32, s32, s32);
-extern void func_02004ac8(void *);
+extern void NoOpDestructor(void *);
 extern void func_02092364(void *);
 extern void func_020923a0(void *);
 extern void func_02059a48(void *);
@@ -198,15 +198,15 @@ void __sinit_020c1490(void)
 /*
  * No inputs. Initialize gDefaultGamePhaseRegion with recovered values
  * (0,0,0x400,0x300) and data_021055c0 with five zeros, then register
- * func_02004ac8 for each using records data_021055ac/data_021055a0. Both
+ * NoOpDestructor for each using records data_021055ac/data_021055a0. Both
  * global object lifetimes change; no value or direct hardware effect occurs.
  */
 void __sinit_020c14bc(void)
 {
     func_020083b0(gDefaultGamePhaseRegion, 0, 0, 0x400, 0x300);
-    __register_global_object(gDefaultGamePhaseRegion, func_02004ac8, data_021055ac);
+    __register_global_object(gDefaultGamePhaseRegion, NoOpDestructor, data_021055ac);
     func_020083b0(data_021055c0, 0, 0, 0, 0);
-    __register_global_object(data_021055c0, func_02004ac8, data_021055a0);
+    __register_global_object(data_021055c0, NoOpDestructor, data_021055a0);
 }
 
 /*

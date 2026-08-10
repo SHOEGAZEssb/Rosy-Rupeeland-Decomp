@@ -4,7 +4,7 @@
 .extern data_020dfee4
 .extern data_020df9e8
 .extern data_020dfec0
-.extern func_02004ac8
+.extern NoOpDestructor
 .extern VecFx32Object_Destroy
 .extern func_02031488
 .extern ActorDerivedRuntime_DestroyAlternate
@@ -135,6 +135,6 @@ ActorExtendedRecordArray_DestroyAndFree: ; 0x0203e370
     mov r0, r4
     ldmia sp!, {r4, pc}
 .L_0203e3ac: .word data_020dfec0
-.L_0203e3b0: .word func_02004ac8
+.L_0203e3b0: .word NoOpDestructor
     .size ActorExtendedRecordArray_DestroyAndFree, . - ActorExtendedRecordArray_DestroyAndFree
 

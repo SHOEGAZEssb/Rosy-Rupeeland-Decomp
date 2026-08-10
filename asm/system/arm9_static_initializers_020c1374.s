@@ -81,7 +81,7 @@
 .extern OwnedPointerList_Destroy
 .extern PackedTimerArray_Destroy
 .extern DisplayBrightnessPair_Destroy
-.extern func_02004ac8
+.extern NoOpDestructor
 .extern ActorRuntimeCollection_Destroy
 .extern func_02022fbc
 .extern func_02059a64
@@ -258,7 +258,7 @@ __sinit_020c14bc: ; 0x020c14bc
     bl __register_global_object
     ldmia sp!, {r3, pc}
 .L_020c1518: .word gDefaultGamePhaseRegion
-.L_020c151c: .word func_02004ac8
+.L_020c151c: .word NoOpDestructor
 .L_020c1520: .word data_021055ac
 .L_020c1524: .word data_021055c0
 .L_020c1528: .word data_021055a0

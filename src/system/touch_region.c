@@ -28,9 +28,10 @@ extern const void *gTouchRegionManagerVTable[];
 }
 #endif
 
-/* Empty callback used by several clients that need a valid no-op function. */
-void func_02004ac8(void)
+/* Accept an object pointer and intentionally perform no destruction work. */
+void NoOpDestructor(void *object)
 {
+    (void)object;
 }
 
 /* Initialize a region with its result value, bounds, and initial enable bit. */

@@ -50,7 +50,7 @@ typedef char TouchRegionManagerSizeCheck[sizeof(TouchRegionManager) == 0x14 ? 1 
 extern "C" {
 #endif
 
-void func_02004ac8(void);
+void NoOpDestructor(void *object);
 TouchRegion *TouchRegion_Init(TouchRegion *region, s32 value,
                               const RectS16 *bounds, s32 enabled);
 void RectS16_Copy(RectS16 *destination, const RectS16 *source);
