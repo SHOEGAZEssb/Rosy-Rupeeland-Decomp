@@ -8,8 +8,8 @@ extern "C" {
 extern void *data_021052fc;
 extern void func_0202bb60(void *object, u32 first, u32 second, u32 third);
 extern u32 func_020343e4(void *actor, u32 first, u32 second);
-extern void func_02032c14(void *actor);
-extern void func_02032c4c(void *actor);
+extern void Actor_SavePrimaryAttachmentState(void *actor);
+extern void Actor_RestorePrimaryAttachmentState(void *actor);
 #ifdef __cplusplus
 }
 #endif
@@ -44,16 +44,16 @@ s32 func_02013ea0(GamePhaseActorScriptVm *self)
     return 0;
 }
 
-/* Invoke func_02032c14 on the bound actor and return zero. */
+/* Save the bound actor's primary attachment state and return zero. */
 s32 func_02013eb0(GamePhaseActorScriptVm *self)
 {
-    func_02032c14(self->actor_84);
+    Actor_SavePrimaryAttachmentState(self->actor_84);
     return 0;
 }
 
-/* Invoke func_02032c4c on the bound actor and return zero. */
+/* Restore the bound actor's primary attachment state and return zero. */
 s32 func_02013ec4(GamePhaseActorScriptVm *self)
 {
-    func_02032c4c(self->actor_84);
+    Actor_RestorePrimaryAttachmentState(self->actor_84);
     return 0;
 }

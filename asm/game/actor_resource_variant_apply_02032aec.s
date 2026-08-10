@@ -6,7 +6,7 @@
 .extern func_0201b180
 .extern func_0201b1e0
 .extern func_0201b228
-.extern func_02032c14
+.extern Actor_SavePrimaryAttachmentState
 .extern func_020337d4
 .extern gGameWork
 
@@ -21,7 +21,7 @@ func_02032aec: ; 0x02032aec
     ldr r1, [r5, #0x10]
     tst r1, #0x40
     beq .L_02032b10
-    bl func_02032c14
+    bl Actor_SavePrimaryAttachmentState
 .L_02032b10:
     cmp r4, #0x0
     beq .L_02032b30
@@ -75,4 +75,3 @@ func_02032aec: ; 0x02032aec
 .L_02032bc8: .word data_02105310
 .L_02032bcc: .word gGameWork
     .size func_02032aec, . - func_02032aec
-

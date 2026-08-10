@@ -2,9 +2,9 @@
 .text
 .extern func_02072b68
 
-    .global func_02032c4c
-    .type func_02032c4c, @function
-func_02032c4c: ; 0x02032c4c
+    .global Actor_RestorePrimaryAttachmentState
+    .type Actor_RestorePrimaryAttachmentState, @function
+Actor_RestorePrimaryAttachmentState: ; 0x02032c4c
     stmdb sp!, {r4, lr}
     mov r4, r0
     ldrb r1, [r4, #0x194]
@@ -29,5 +29,4 @@ func_02032c4c: ; 0x02032c4c
     bic r0, r0, #0x200
     str r0, [r4, #0x10]
     ldmia sp!, {r4, pc}
-    .size func_02032c4c, . - func_02032c4c
-
+    .size Actor_RestorePrimaryAttachmentState, . - Actor_RestorePrimaryAttachmentState

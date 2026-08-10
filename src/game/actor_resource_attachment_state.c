@@ -38,7 +38,7 @@ void func_02032c08(void *self, s32 index, void *value)
  * Snapshot primary attachment byte 0x38 to actor 0x194, byte 0x3a to 0x195,
  * and halfword flags 0x24 to 0x196, then set actor flag 0x200. Returns no value.
  */
-void func_02032c14(void *self)
+void Actor_SavePrimaryAttachmentState(void *self)
 {
     u8 *actor = (u8 *)self;
     u8 *attachment = *(u8 **)(actor + 0x54);
@@ -55,7 +55,7 @@ void func_02032c14(void *self)
  * read by the retail body. Returns no value; the animation helper may mutate
  * presentation state.
  */
-void func_02032c4c(void *self)
+void Actor_RestorePrimaryAttachmentState(void *self)
 {
     u8 *actor = (u8 *)self;
     u8 *attachment = *(u8 **)(actor + 0x54);

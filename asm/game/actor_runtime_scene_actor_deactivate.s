@@ -2,7 +2,7 @@
 ; the documented portable implementation and recovered behavior.
 .text
 .extern func_02007f0c
-.extern func_02032c4c
+.extern Actor_RestorePrimaryAttachmentState
 .extern func_02032cac
 .extern data_021052fc
 .global func_0200b8cc
@@ -34,7 +34,7 @@ L_0200b8f8:
     tst r0, #0x40
     beq L_0200b938
     mov r0, r5
-    bl func_02032c4c
+    bl Actor_RestorePrimaryAttachmentState
 L_0200b938:
     mov r0, r5
     mov r1, r9
@@ -76,7 +76,7 @@ L_0200b98c:
     tst r0, #0x40
     beq L_0200b9cc
     mov r0, r4
-    bl func_02032c4c
+    bl Actor_RestorePrimaryAttachmentState
 L_0200b9cc:
     mov r0, r4
     mov r1, r9
@@ -95,4 +95,3 @@ L_0200b9ec:
     ldmia sp!, {r3, r4, r5, r6, r7, r8, r9, pc}
 L_0200b9fc: .word data_021052fc
 .size func_0200b8cc, . - func_0200b8cc
-
