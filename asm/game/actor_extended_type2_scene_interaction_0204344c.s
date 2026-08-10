@@ -7,9 +7,9 @@
 .extern func_02039c3c
 .extern func_02048378
 .extern gSceneManager
-.global func_0204344c
-.type func_0204344c, @function
-func_0204344c: ; 0x0204344c
+.global ActorExtendedType2_UpdateSceneInteraction
+.type ActorExtendedType2_UpdateSceneInteraction, @function
+ActorExtendedType2_UpdateSceneInteraction: ; 0x0204344c
     stmdb sp!, {r4, r5, r6, lr}
     ldr r2, .L_0204352c
     mov r6, r0
@@ -73,4 +73,4 @@ func_0204344c: ; 0x0204344c
 .L_02043530: .word data_021052fc
 
     .global ActorExtendedType2_UpdateDescriptorQueryFlags
-.size func_0204344c, . - func_0204344c
+.size ActorExtendedType2_UpdateSceneInteraction, . - ActorExtendedType2_UpdateSceneInteraction

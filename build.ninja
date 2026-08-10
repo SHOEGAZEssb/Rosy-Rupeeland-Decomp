@@ -17450,7 +17450,7 @@ build build/reports/actor_extended_type2_scene_interaction_0204344c.json: objdif
   base_object = build/decomp/asm/game/actor_extended_type2_scene_interaction_0204344c.o
 build build/reports/actor_extended_type2_scene_interaction_0204344c.txt: match_report build/reports/actor_extended_type2_scene_interaction_0204344c.json | tools/report_objdiff.py
   report_json = build/reports/actor_extended_type2_scene_interaction_0204344c.json
-  report_args = --section .text --function func_0204344c --require-exact
+  report_args = --section .text --function ActorExtendedType2_UpdateSceneInteraction --require-exact
 build build/reports/actor_extended_type2_scene_interaction.txt: phony build/reports/actor_extended_type2_scene_interaction_0204344c.txt
 build actor_extended_type2_scene_interaction: phony build/decomp/src/game/actor_extended_type2_scene_interaction.o build/decomp/asm/game/actor_extended_type2_scene_interaction_0204344c.o build/reports/actor_extended_type2_scene_interaction.txt
 

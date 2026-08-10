@@ -29,7 +29,7 @@ extern s32 func_0203392c(void *actor, s32 context);
  * context) and return its result. Scene, global actor, and base-update state may
  * change; no direct hardware access occurs.
  */
-s32 func_0204344c(void *self, s32 context)
+s32 ActorExtendedType2_UpdateSceneInteraction(void *self, s32 context)
 {
     u8 *actor = (u8 *)self;
     u8 *scene = (u8 *)SceneManager_GetCurrent(gSceneManager);

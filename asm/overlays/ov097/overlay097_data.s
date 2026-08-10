@@ -20,7 +20,7 @@
 .extern func_020320fc
 .extern func_02032208
 .extern func_ov097_02219b94
-.extern func_0204344c
+.extern ActorExtendedType2_UpdateSceneInteraction
 .extern func_0203bac0
 .extern func_0203bad8
 .extern Actor_RequestAttachmentActivation
@@ -302,7 +302,7 @@ data_ov097_0221a5f4:
     .word func_020320fc
     .word func_02032208
     .word func_ov097_02219b94
-    .word func_0204344c
+    .word ActorExtendedType2_UpdateSceneInteraction
     .word func_0203bac0
     .word func_0203bad8
     .word Actor_RequestAttachmentActivation
@@ -437,7 +437,7 @@ data_ov097_0221a80c:
     .word func_020320fc
     .word func_02032208
     .word func_ov097_02219b94
-    .word func_0204344c
+    .word ActorExtendedType2_UpdateSceneInteraction
     .word func_0203bac0
     .word func_0203bad8
     .word Actor_RequestAttachmentActivation
