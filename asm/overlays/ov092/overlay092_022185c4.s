@@ -7,7 +7,7 @@
 .extern func_02005030
 .extern func_02005058
 .extern func_02005afc
-.extern func_02032cac
+.extern Actor_SetActive
 .extern func_02050078
 .extern func_020593ac
 .extern func_02072b68
@@ -172,7 +172,7 @@ func_ov092_022185c4:
     add r2, sp, #0x18
     bl func_02050078
     mov r1, #0x1
-    bl func_02032cac
+    bl Actor_SetActive
     ldr r0, [r4, #0x248]
     mov r1, #0x1
     bl func_02072b68

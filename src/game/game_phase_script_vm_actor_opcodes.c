@@ -11,7 +11,7 @@ extern u8 data_02105310[];
 extern void *func_020337d4(void *actor);
 extern void *func_02030ad4(void *collection, s32 index);
 extern void *func_02007f0c(void *runtime, s32 index);
-extern void func_02032cac(void *actor, s32 active);
+extern void Actor_SetActive(void *actor, s32 active);
 extern s32 func_0200b04c(void *state);
 extern void Actor_SetAttachmentAnimation(void *actor, u32 value);
 extern void Actor_SetAttachmentEnabled(void *actor, u32 value);
@@ -55,7 +55,7 @@ s32 func_02012a8c(GamePhaseActorScriptVm *self)
  * bound actor's collection, and route the command through virtual method 0x70
  * or 0x74. Type byte 1 redirects to runtime collection 1's actor at offset
  * 0x2e7c. The global state at data_02105310 affects method selection and may
- * reactivate the target through func_02032cac. Returns zero.
+ * reactivate the target through Actor_SetActive. Returns zero.
  */
 s32 func_02012afc(GamePhaseActorScriptVm *self)
 {
@@ -68,7 +68,7 @@ s32 func_02012afc(GamePhaseActorScriptVm *self)
         u8 *runtimeCollection = (u8 *)func_02007f0c(data_021052fc, 1);
         target = *(void **)(runtimeCollection + 0x2e7c);
         callActorValueMethod(target, 0x74, value);
-        func_02032cac(target, 1);
+        Actor_SetActive(target, 1);
         return 0;
     }
 
@@ -85,7 +85,7 @@ s32 func_02012afc(GamePhaseActorScriptVm *self)
             callActorValueMethod(target, 0x74, value);
     }
     if (func_0200b04c(data_02105310))
-        func_02032cac(target, 1);
+        Actor_SetActive(target, 1);
     return 0;
 }
 

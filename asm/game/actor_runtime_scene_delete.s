@@ -3,7 +3,7 @@
 .text
 .extern func_0200b8cc
 .extern func_02007f0c
-.extern func_02032cac
+.extern Actor_SetActive
 .extern GameWork_TestFlag
 .extern func_0204b680
 .extern func_02038aac
@@ -31,7 +31,7 @@ func_0200b56c:
     ldr r4, [r0, #0xe7c]
     mov r1, #0x0
     mov r0, r4
-    bl func_02032cac
+    bl Actor_SetActive
     ldr r0, L_0200b6b8
     mov r1, #0x3ec
     ldr r0, [r0, #0x0]
@@ -108,4 +108,3 @@ L_0200b6b8: .word gGameWork
 L_0200b6bc: .word 0x3f3
 L_0200b6c0: .word 0x403
 .size func_0200b56c, . - func_0200b56c
-

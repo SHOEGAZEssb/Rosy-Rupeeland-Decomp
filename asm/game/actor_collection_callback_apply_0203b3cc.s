@@ -4,7 +4,7 @@
 .extern data_021052fc
 .extern func_02007f0c
 .extern func_0202d640
-.extern func_02032cac
+.extern Actor_SetActive
     .global func_0203b3cc
     .type func_0203b3cc, @function
 func_0203b3cc: ; 0x0203b3cc
@@ -80,7 +80,7 @@ func_0203b3cc: ; 0x0203b3cc
     bl func_02007f0c
     ldr r0, [r0, r8, lsl #0x2]
     mov r1, r5
-    bl func_02032cac
+    bl Actor_SetActive
 .L_0203b4e8:
     add r8, r8, #0x1
 .L_0203b4ec:
@@ -96,4 +96,3 @@ func_0203b3cc: ; 0x0203b3cc
 .L_0203b510: .word data_020df500
 
     .size func_0203b3cc, . - func_0203b3cc
-

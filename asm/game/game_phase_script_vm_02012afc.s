@@ -6,7 +6,7 @@
 .extern func_0200b04c
 .extern func_02012704
 .extern func_02030ad4
-.extern func_02032cac
+.extern Actor_SetActive
 .extern func_020337d4
 
     .global func_02012afc
@@ -39,7 +39,7 @@ func_02012afc: ; 0x02012afc
     blx r2
     mov r0, r5
     mov r1, #0x1
-    bl func_02032cac
+    bl Actor_SetActive
     b L_02012c04
 L_02012b74:
     ldr r1, [r6, #0x84]
@@ -80,11 +80,10 @@ L_02012be8:
     beq L_02012c04
     mov r0, r5
     mov r1, #0x1
-    bl func_02032cac
+    bl Actor_SetActive
 L_02012c04:
     mov r0, #0x0
     ldmia sp!, {r4, r5, r6, pc}
 L_02012c0c: .word data_021052fc
 L_02012c10: .word data_02105310
     .size func_02012afc, . - func_02012afc
-

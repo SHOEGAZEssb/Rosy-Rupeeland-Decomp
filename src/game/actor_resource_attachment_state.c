@@ -68,7 +68,7 @@ void Actor_RestorePrimaryAttachmentState(void *self)
 }
 
 /* Set or clear actor flag 0x100 according to enabled and return no value. */
-void func_02032cac(void *self, s32 enabled)
+void Actor_SetActive(void *self, s32 enabled)
 {
     u32 *flags = (u32 *)((u8 *)self + 0x10);
     if (enabled)

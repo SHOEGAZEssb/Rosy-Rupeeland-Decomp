@@ -10,7 +10,7 @@ extern u8 data_02105310[];
 extern void *func_02007f0c(void *runtime, s32 index);
 extern s32 func_0200b04c(void *state);
 extern void *func_02030ad4(void *collection, s32 index);
-extern void func_02032cac(void *actor, s32 active);
+extern void Actor_SetActive(void *actor, s32 active);
 extern void *func_020337d4(void *actor);
 extern void OS_Halt(void);
 #ifdef __cplusplus
@@ -59,7 +59,7 @@ s32 func_02015b64(GamePhaseActorScriptVm *self)
         u8 *collection = (u8 *)func_02007f0c(runtime, 1);
         target = *(void **)(collection + 0x2e7c);
         callActorValueMethod(target, 0x74, value);
-        func_02032cac(target, 1);
+        Actor_SetActive(target, 1);
     } else if (target == self->actor_84) {
         callActorValueMethod(target, 0x70, value);
     } else {
@@ -70,7 +70,7 @@ s32 func_02015b64(GamePhaseActorScriptVm *self)
             else
                 callActorValueMethod(target, 0x74, value);
         }
-        func_02032cac(target, 1);
+        Actor_SetActive(target, 1);
     }
 
     func_020127f8(&self->base, 1);

@@ -20,7 +20,7 @@
 .extern func_0200a114
 .extern func_02010b64
 .extern func_0201e0ec
-.extern func_02032cac
+.extern Actor_SetActive
 .extern func_0204d308
 .extern func_02059278
 .extern func_0205929c
@@ -139,7 +139,7 @@ func_ov091_02217ce0:
     ldr r0, [r0, #0x0]
     add r0, r0, #0x2000
     ldr r0, [r0, #0xea4]
-    bl func_02032cac
+    bl Actor_SetActive
     ldr r0, .L_0221881c
     ldr r0, [r0, #0x0]
     add r0, r0, #0x2000
@@ -147,21 +147,21 @@ func_ov091_02217ce0:
     cmp r0, #0x0
     beq .L_02217e70
     mov r1, #0x1
-    bl func_02032cac
+    bl Actor_SetActive
 .L_02217e70:
     ldr r0, [r4, #0x1f4]
     mov r1, #0x1
-    bl func_02032cac
+    bl Actor_SetActive
     ldr r0, [r4, #0x1f0]
     mov r1, #0x1
-    bl func_02032cac
+    bl Actor_SetActive
     mov r6, #0x0
     mov r5, #0x1
 .L_02217e90:
     add r0, r4, r6, lsl #0x2
     ldr r0, [r0, #0x1f8]
     mov r1, r5
-    bl func_02032cac
+    bl Actor_SetActive
     add r6, r6, #0x1
     cmp r6, #0x6
     blt .L_02217e90

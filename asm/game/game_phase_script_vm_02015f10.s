@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/game_phase_script_vm_actor_activation_opcodes.c.
 .text
-.extern func_02032cac
+.extern Actor_SetActive
 .extern func_020337d4
 .global func_02015f10
 func_02015f10:
@@ -15,7 +15,7 @@ L_02015f20:
     cmp r0, #0
     beq L_02015f3c
     mov r1, r4
-    bl func_02032cac
+    bl Actor_SetActive
 L_02015f3c:
     add r5, r5, #1
     cmp r5, #0x80

@@ -2,7 +2,7 @@
 .text
 .extern func_02012704
 .extern func_02030ad4
-.extern func_02032cac
+.extern Actor_SetActive
 .extern func_020337d4
 .global func_02015e9c
 func_02015e9c:
@@ -22,11 +22,11 @@ func_02015e9c:
     cmp r5, #0
     beq L_02015ee4
     mov r1, #1
-    bl func_02032cac
+    bl Actor_SetActive
     b L_02015f08
 L_02015ee4:
     mov r1, #0
-    bl func_02032cac
+    bl Actor_SetActive
     ldrb r0, [r4, #0x4d]
     cmp r0, #1
     moveq r0, #1

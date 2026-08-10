@@ -9,7 +9,7 @@ extern "C" {
 #endif
 extern void *func_02007f0c(void *runtime, s32 category);
 extern void *func_0202d640(void *collection, s32 type, s32 subtype);
-extern void func_02032cac(void *actor, s32 enabled);
+extern void Actor_SetActive(void *actor, s32 enabled);
 #ifdef __cplusplus
 }
 #endif
@@ -19,7 +19,7 @@ extern void func_02032cac(void *actor, s32 enabled);
  * type-three/subtype-four control actor, invoke virtual +0x74 with zero,
  * virtual +0xac with index four and the corresponding callback slot, then
  * virtual +0x78 with four. Category two additionally walks collection entries
- * [0,+0x2e74), invoking func_02032cac(entry,1) for every nonnull entry. Returns
+ * [0,+0x2e74), invoking Actor_SetActive(entry,1) for every nonnull entry. Returns
  * no value; collection lookup, virtual calls, and enable calls mutate actor
  * state. The retail implementation assumes the control actor lookup succeeds.
  */
@@ -40,7 +40,7 @@ void func_0203b3cc(s32 mode)
         for (i = 0; i < *(s32 *)(collection + 0x2e74); ++i) {
             void *actor = *(void **)(collection + i * 4);
             if (actor != 0)
-                func_02032cac(actor, 1);
+                Actor_SetActive(actor, 1);
         }
     }
 }

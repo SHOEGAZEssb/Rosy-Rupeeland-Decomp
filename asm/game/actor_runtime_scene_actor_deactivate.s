@@ -3,7 +3,7 @@
 .text
 .extern func_02007f0c
 .extern Actor_RestorePrimaryAttachmentState
-.extern func_02032cac
+.extern Actor_SetActive
 .extern data_021052fc
 .global func_0200b8cc
 func_0200b8cc:
@@ -38,12 +38,12 @@ L_0200b8f8:
 L_0200b938:
     mov r0, r5
     mov r1, r9
-    bl func_02032cac
+    bl Actor_SetActive
     b L_0200b954
 L_0200b948:
     mov r0, r5
     mov r1, r8
-    bl func_02032cac
+    bl Actor_SetActive
 L_0200b954:
     add r6, r6, #0x1
 L_0200b958:
@@ -80,12 +80,12 @@ L_0200b98c:
 L_0200b9cc:
     mov r0, r4
     mov r1, r9
-    bl func_02032cac
+    bl Actor_SetActive
     b L_0200b9e8
 L_0200b9dc:
     mov r0, r4
     mov r1, r8
-    bl func_02032cac
+    bl Actor_SetActive
 L_0200b9e8:
     add r5, r5, #0x1
 L_0200b9ec:

@@ -12,7 +12,7 @@ extern void *data_021052fc;
 extern void *func_02007f0c(void *context, s32 index);
 extern void func_0200b8cc(ActorRuntimeScene *self);
 extern void func_02030b58(void *context, s32 value);
-extern void func_02032cac(void *object, s32 value);
+extern void Actor_SetActive(void *object, s32 value);
 extern void *func_020337d4(void *object);
 extern void func_0202d358(void *result, void *object);
 extern void func_02038aac(void *object);
@@ -42,7 +42,7 @@ ActorRuntimeScene *func_0200b41c(ActorRuntimeScene *self)
     root = (u8 *)data_021052fc;
     context = func_02007f0c(data_021052fc, 1);
     active = *(u8 **)((u8 *)context + 0x2e7c);
-    func_02032cac(active, 0);
+    Actor_SetActive(active, 0);
     if (GameWork_TestFlag(gGameWork, 0x3ec))
         *(u32 *)(active + 0x230) |= 4;
     *(u32 *)(active + 0x10) &= ~0x1000008;

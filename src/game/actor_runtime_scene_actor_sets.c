@@ -8,7 +8,7 @@ extern "C" {
 extern void *data_021052fc;
 extern void *func_02007f0c(void *context, s32 index);
 extern void Actor_RestorePrimaryAttachmentState(void *actor);
-extern void func_02032cac(void *actor, s32 active);
+extern void Actor_SetActive(void *actor, s32 active);
 #ifdef __cplusplus
 }
 #endif
@@ -40,7 +40,7 @@ void func_0200b8cc(ActorRuntimeScene *self)
                 if ((flags & 0x100) && (flags & 1) && (flags & 0x40))
                     Actor_RestorePrimaryAttachmentState(actor);
             }
-            func_02032cac(actor, 0);
+            Actor_SetActive(actor, 0);
         }
     }
 }
@@ -48,7 +48,7 @@ void func_0200b8cc(ActorRuntimeScene *self)
 /*
  * For context banks 1 and 2, activate each nonnull non-type-1 actor carrying
  * bit 0x8000 at offset 0x14. Returns no value; self is unused and actor state
- * changes are delegated to func_02032cac.
+ * changes are delegated to Actor_SetActive.
  */
 void func_0200ba00(ActorRuntimeScene *self)
 {
@@ -65,7 +65,7 @@ void func_0200ba00(ActorRuntimeScene *self)
 
             if (actor != 0 && actor[0x4d] != 1 &&
                 (*(u32 *)(actor + 0x14) & 0x8000))
-                func_02032cac(actor, 1);
+                Actor_SetActive(actor, 1);
         }
     }
 }

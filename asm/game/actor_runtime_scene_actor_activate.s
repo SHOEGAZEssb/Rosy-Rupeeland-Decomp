@@ -2,7 +2,7 @@
 ; the documented portable implementation and recovered behavior.
 .text
 .extern func_02007f0c
-.extern func_02032cac
+.extern Actor_SetActive
 .extern data_021052fc
 .global func_0200ba00
 func_0200ba00:
@@ -26,7 +26,7 @@ L_0200ba28:
     tst r1, #0x8000
     beq L_0200ba50
     mov r1, r5
-    bl func_02032cac
+    bl Actor_SetActive
 L_0200ba50:
     add r7, r7, #0x1
 L_0200ba54:
@@ -52,7 +52,7 @@ L_0200ba84:
     tst r1, #0x8000
     beq L_0200baac
     mov r1, r5
-    bl func_02032cac
+    bl Actor_SetActive
 L_0200baac:
     add r6, r6, #0x1
 L_0200bab0:
@@ -62,4 +62,3 @@ L_0200bab0:
     ldmia sp!, {r3, r4, r5, r6, r7, pc}
 L_0200bac0: .word data_021052fc
 .size func_0200ba00, . - func_0200ba00
-

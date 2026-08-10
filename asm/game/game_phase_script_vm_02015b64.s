@@ -8,7 +8,7 @@
 .extern func_02012704
 .extern func_020127f8
 .extern func_02030ad4
-.extern func_02032cac
+.extern Actor_SetActive
 .extern func_020337d4
 
 .global func_02015b64
@@ -80,7 +80,7 @@ L_02015c24:
     blx r2
     mov r0, r6
     mov r1, #1
-    bl func_02032cac
+    bl Actor_SetActive
     b L_02015cf0
 L_02015c6c:
     ldr r0, [r7, #0x84]
@@ -118,7 +118,7 @@ L_02015cd0:
 L_02015ce4:
     mov r0, r6
     mov r1, #1
-    bl func_02032cac
+    bl Actor_SetActive
 L_02015cf0:
     mov r0, r7
     mov r1, #1

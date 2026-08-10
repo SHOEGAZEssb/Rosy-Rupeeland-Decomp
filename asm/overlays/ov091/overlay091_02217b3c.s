@@ -9,7 +9,7 @@
 .extern func_020091c0
 .extern func_0200a114
 .extern ActorCollection_SpawnDescriptorsBySelector
-.extern func_02032cac
+.extern Actor_SetActive
 .extern func_020337d4
 .extern func_0204d570
 .extern func_02073ef8
@@ -86,7 +86,7 @@ func_ov091_02217b3c:
 .L_02217c40:
     mov r0, r4
     mov r1, #0x0
-    bl func_02032cac
+    bl Actor_SetActive
 .L_02217c4c:
     ldr r0, .L_02217cd4
     ldr r0, [r0, #0x0]
@@ -95,21 +95,21 @@ func_ov091_02217b3c:
     cmp r0, #0x0
     beq .L_02217c6c
     mov r1, #0x0
-    bl func_02032cac
+    bl Actor_SetActive
 .L_02217c6c:
     ldr r0, [r5, #0x1f4]
     mov r1, #0x0
-    bl func_02032cac
+    bl Actor_SetActive
     ldr r0, [r5, #0x1f0]
     mov r1, #0x0
-    bl func_02032cac
+    bl Actor_SetActive
     mov r6, #0x0
     mov r4, r6
 .L_02217c8c:
     add r0, r5, r6, lsl #0x2
     ldr r0, [r0, #0x1f8]
     mov r1, r4
-    bl func_02032cac
+    bl Actor_SetActive
     add r6, r6, #0x1
     cmp r6, #0x6
     blt .L_02217c8c

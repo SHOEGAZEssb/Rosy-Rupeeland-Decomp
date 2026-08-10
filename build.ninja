@@ -14192,7 +14192,7 @@ build build/reports/actor_resource_attachment_state_02032cac.json: objdiff build
   base_object = build/decomp/asm/game/actor_resource_attachment_state_02032cac.o
 build build/reports/actor_resource_attachment_state_02032cac.txt: match_report build/reports/actor_resource_attachment_state_02032cac.json | tools/report_objdiff.py
   report_json = build/reports/actor_resource_attachment_state_02032cac.json
-  report_args = --section .text --function func_02032cac --require-exact
+  report_args = --section .text --function Actor_SetActive --require-exact
 build build/reports/actor_resource_attachment_state.txt: phony build/reports/actor_resource_attachment_state_02032bd0.txt build/reports/actor_resource_attachment_state_02032c08.txt build/reports/actor_resource_attachment_state_02032c14.txt build/reports/actor_resource_attachment_state_02032c4c.txt build/reports/actor_resource_attachment_state_02032cac.txt
 
 build actor_resource_attachment_state: phony build/decomp/src/game/actor_resource_attachment_state.o build/decomp/asm/game/actor_resource_attachment_state_02032bd0.o build/decomp/asm/game/actor_resource_attachment_state_02032c08.o build/decomp/asm/game/actor_resource_attachment_state_02032c14.o build/decomp/asm/game/actor_resource_attachment_state_02032c4c.o build/decomp/asm/game/actor_resource_attachment_state_02032cac.o build/reports/actor_resource_attachment_state.txt
