@@ -9,7 +9,7 @@ s32 func_0201b8fc(GamePhaseScriptVm *self)
 {
     s32 destination = (u8)*self->cursor++ & 7;
     self->registers[destination] = ~self->registers[destination];
-    func_0201b2b4(self, destination);
+    GamePhaseScriptVm_UpdateZeroFlag(self, destination);
     return 0;
 }
 

@@ -9,7 +9,7 @@ s32 func_0201b45c(GamePhaseScriptVm *self)
     s32 destination = operand & 7;
     s32 source = (operand >> 4) & 7;
     self->registers[destination] += self->registers[source];
-    func_0201b2b4(self, destination);
+    GamePhaseScriptVm_UpdateZeroFlag(self, destination);
     return 0;
 }
 
@@ -20,7 +20,7 @@ s32 func_0201b4a0(GamePhaseScriptVm *self)
     u32 immediate = GamePhaseScriptVm_ReadU32Le(self->cursor);
     self->cursor += 4;
     self->registers[destination] += immediate;
-    func_0201b2b4(self, destination);
+    GamePhaseScriptVm_UpdateZeroFlag(self, destination);
     return 0;
 }
 
@@ -31,7 +31,7 @@ s32 func_0201b4ec(GamePhaseScriptVm *self)
     s32 destination = operand & 7;
     s32 source = (operand >> 4) & 7;
     self->registers[destination] -= self->registers[source];
-    func_0201b2b4(self, destination);
+    GamePhaseScriptVm_UpdateZeroFlag(self, destination);
     return 0;
 }
 
@@ -42,6 +42,6 @@ s32 func_0201b530(GamePhaseScriptVm *self)
     u32 immediate = GamePhaseScriptVm_ReadU32Le(self->cursor);
     self->cursor += 4;
     self->registers[destination] -= immediate;
-    func_0201b2b4(self, destination);
+    GamePhaseScriptVm_UpdateZeroFlag(self, destination);
     return 0;
 }

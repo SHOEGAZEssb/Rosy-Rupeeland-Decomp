@@ -2,7 +2,7 @@
 .text
 .extern GamePhaseScriptVm_ReadU32Le
 .extern func_020befec
-.extern func_0201b2b4
+.extern GamePhaseScriptVm_UpdateZeroFlag
 .global func_0201b6fc
 func_0201b6fc: ; 0x0201b6fc
     stmdb sp!, {r4, r5, r6, lr}
@@ -22,7 +22,7 @@ func_0201b6fc: ; 0x0201b6fc
     str r1, [r4, r5, lsl #0x2]
     mov r0, r6
     mov r1, r5
-    bl func_0201b2b4
+    bl GamePhaseScriptVm_UpdateZeroFlag
     mov r0, #0x0
     ldmia sp!, {r4, r5, r6, pc}
 .size func_0201b6fc, . - func_0201b6fc

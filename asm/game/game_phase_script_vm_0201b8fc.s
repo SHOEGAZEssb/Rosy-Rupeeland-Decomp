@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/game_phase_script_vm_branch_misc_opcodes.c.
 .text
-.extern func_0201b2b4
+.extern GamePhaseScriptVm_UpdateZeroFlag
 .global func_0201b8fc
 func_0201b8fc: ; 0x0201b8fc
     stmdb sp!, {r3, lr}
@@ -12,7 +12,7 @@ func_0201b8fc: ; 0x0201b8fc
     ldr r2, [r3, #0x2c]
     mvn r2, r2
     str r2, [r3, #0x2c]
-    bl func_0201b2b4
+    bl GamePhaseScriptVm_UpdateZeroFlag
     mov r0, #0x0
     ldmia sp!, {r3, pc}
 .size func_0201b8fc, . - func_0201b8fc

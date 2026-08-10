@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/game_phase_script_vm_multiply_divide_opcodes.c.
 .text
 .extern func_020befec
-.extern func_0201b2b4
+.extern GamePhaseScriptVm_UpdateZeroFlag
 .global func_0201b60c
 func_0201b60c: ; 0x0201b60c
     stmdb sp!, {r4, r5, r6, lr}
@@ -21,7 +21,7 @@ func_0201b60c: ; 0x0201b60c
     str r0, [r5, r6, lsl #0x2]
     mov r0, r4
     mov r1, r6
-    bl func_0201b2b4
+    bl GamePhaseScriptVm_UpdateZeroFlag
     mov r0, #0x0
     ldmia sp!, {r4, r5, r6, pc}
 .size func_0201b60c, . - func_0201b60c

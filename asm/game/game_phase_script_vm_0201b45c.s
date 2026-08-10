@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/game_phase_script_vm_add_subtract_opcodes.c.
 .text
-.extern func_0201b2b4
+.extern GamePhaseScriptVm_UpdateZeroFlag
 .global func_0201b45c
 func_0201b45c: ; 0x0201b45c
     stmdb sp!, {r3, lr}
@@ -17,7 +17,7 @@ func_0201b45c: ; 0x0201b45c
     ldr r2, [r2, #0x2c]
     add r2, r3, r2
     str r2, [ip, r1, lsl #0x2]
-    bl func_0201b2b4
+    bl GamePhaseScriptVm_UpdateZeroFlag
     mov r0, #0x0
     ldmia sp!, {r3, pc}
 .size func_0201b45c, . - func_0201b45c

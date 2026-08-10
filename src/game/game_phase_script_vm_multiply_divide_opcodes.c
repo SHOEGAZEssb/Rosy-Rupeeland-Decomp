@@ -12,7 +12,7 @@ extern s32 func_020befec(s32 dividend, s32 divisor);
 
 static void updateZero(GamePhaseScriptVm *self, s32 destination)
 {
-    func_0201b2b4(self, destination);
+    GamePhaseScriptVm_UpdateZeroFlag(self, destination);
 }
 
 /* Multiply the encoded destination by the encoded source, update zero state, return zero. */
