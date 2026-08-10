@@ -15,7 +15,7 @@ typedef struct CompressedByteBuffer {
 extern "C" {
 #endif
 extern const char data_020deb34[];
-extern const char data_020deb3c[];
+extern const char gSizedCompressedBufferTempAllocationTag[];
 extern void MI_UncompressLZ8(const void *source, void *destination);
 extern void MI_CpuCopy8(const void *source, void *destination, u32 size);
 extern void func_020b4554(void *address, u32 size);
@@ -71,7 +71,7 @@ s32 CompressedByteBuffer_LoadLz8Payload(CompressedByteBuffer *self, GameFile *fi
     u32 expandedSize;
     u32 payloadSize;
 
-    compressed = (u8 *)func_02003e20(compressedSize, data_020deb3c, -4,
+    compressed = (u8 *)func_02003e20(compressedSize, gSizedCompressedBufferTempAllocationTag, -4,
                                      &gHeapContext);
     GameFile_Seek(file, fileOffset, 0);
     GameFile_Read(file, compressed, compressedSize);

@@ -18,8 +18,8 @@
 .extern Bg3ExtendedTileLayer_Init
 .extern CompressedByteBuffer_GetData
 .extern CompressedByteBuffer_LoadLz8Payload
-.extern func_0202b520
-.extern func_0202b5f4
+.extern SizedCompressedBuffer_LoadLz8Section
+.extern SizedCompressedBuffer_GetData
 .extern gHeapContext
 
     .global DualLayerTileRenderer_LoadFromConfig
@@ -47,7 +47,7 @@ DualLayerTileRenderer_LoadFromConfig: ; 0x02029370
     ldr r3, [r5, #0x14]
     add r0, r6, #0x4
     add r1, sp, #0x10
-    bl func_0202b520
+    bl SizedCompressedBuffer_LoadLz8Section
     ldr r3, [r5, #0x2c]
     cmp r3, #0x0
     beq .L_020293e8
@@ -109,7 +109,7 @@ DualLayerTileRenderer_LoadFromConfig: ; 0x02029370
     str r0, [r6, #0x28]
 .L_020294a4:
     add r0, r6, #0x4
-    bl func_0202b5f4
+    bl SizedCompressedBuffer_GetData
     mov r7, r0
     add r0, r6, #0xc
     bl CompressedByteBuffer_GetData
@@ -179,7 +179,7 @@ DualLayerTileRenderer_LoadFromConfig: ; 0x02029370
     str r0, [r6, #0x2c]
 .L_020295a4:
     add r0, r6, #0x4
-    bl func_0202b5f4
+    bl SizedCompressedBuffer_GetData
     str r0, [sp, #0x0]
     ldr r0, [r6, #0x20]
     mov r2, #0x0

@@ -20,8 +20,8 @@ typedef struct ByteTileMapOwner {
 extern "C" {
 #endif
 extern void *gByteTileMapOwnerVtable;
-extern void func_0202b4d4(void *self);
-extern void *func_0202b4e4(void *self);
+extern void SizedCompressedBuffer_Init(void *self);
+extern void *SizedCompressedBuffer_Destroy(void *self);
 extern void CompressedByteBuffer_Init(void *self);
 extern void *CompressedByteBuffer_Destroy(void *self);
 extern s32 CompressedByteBuffer_IsEmpty(const void *self);
@@ -41,7 +41,7 @@ extern void NclFile_Destroy(void *self);
 ByteTileMapOwner *ByteTileMapOwner_Init(ByteTileMapOwner *self)
 {
     self->vtable_00 = (void **)gByteTileMapOwnerVtable;
-    func_0202b4d4(self->sizedBuffer_04);
+    SizedCompressedBuffer_Init(self->sizedBuffer_04);
     CompressedByteBuffer_Init(self->tileBytes_0c);
     NclFile_Init(self->metadata_10);
     self->flags_24 &= ~1u;
@@ -56,7 +56,7 @@ ByteTileMapOwner *ByteTileMapOwner_DestroyComplete(ByteTileMapOwner *self)
 {
     NclFile_Destroy(self->metadata_10);
     CompressedByteBuffer_Destroy(self->tileBytes_0c);
-    func_0202b4e4(self->sizedBuffer_04);
+    SizedCompressedBuffer_Destroy(self->sizedBuffer_04);
     return self;
 }
 
@@ -65,7 +65,7 @@ ByteTileMapOwner *ByteTileMapOwner_DestroyAndFree(ByteTileMapOwner *self)
 {
     NclFile_Destroy(self->metadata_10);
     CompressedByteBuffer_Destroy(self->tileBytes_0c);
-    func_0202b4e4(self->sizedBuffer_04);
+    SizedCompressedBuffer_Destroy(self->sizedBuffer_04);
     Heap_Free(self);
     return self;
 }
@@ -75,7 +75,7 @@ ByteTileMapOwner *ByteTileMapOwner_Destroy(ByteTileMapOwner *self)
 {
     NclFile_Destroy(self->metadata_10);
     CompressedByteBuffer_Destroy(self->tileBytes_0c);
-    func_0202b4e4(self->sizedBuffer_04);
+    SizedCompressedBuffer_Destroy(self->sizedBuffer_04);
     return self;
 }
 

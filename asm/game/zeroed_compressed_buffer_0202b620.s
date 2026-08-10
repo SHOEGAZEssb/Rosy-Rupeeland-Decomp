@@ -2,9 +2,9 @@
 .text
 .extern func_02003e38
 
-    .global func_0202b620
-    .type func_0202b620, @function
-func_0202b620: ; 0x0202b620
+    .global ZeroedCompressedBuffer_Clear
+    .type ZeroedCompressedBuffer_Clear, @function
+ZeroedCompressedBuffer_Clear: ; 0x0202b620
     stmdb sp!, {r4, lr}
     mov r4, r0
     ldr r0, [r4, #0x0]
@@ -16,4 +16,4 @@ func_0202b620: ; 0x0202b620
     str r0, [r4, #0x0]
     str r0, [r4, #0x4]
     ldmia sp!, {r4, pc}
-    .size func_0202b620, . - func_0202b620
+    .size ZeroedCompressedBuffer_Clear, . - ZeroedCompressedBuffer_Clear

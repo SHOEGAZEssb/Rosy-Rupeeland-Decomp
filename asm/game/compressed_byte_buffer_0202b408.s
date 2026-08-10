@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/compressed_byte_buffer.c.
 .text
-.extern data_020deb3c
+.extern gSizedCompressedBufferTempAllocationTag
 .extern gHeapContext
 .extern data_020deb34
 .extern func_02003e20
@@ -58,7 +58,7 @@ CompressedByteBuffer_LoadLz8Payload: ; 0x0202b408
     bl func_02003e38
     mov r0, #0x1
     ldmia sp!, {r4, r5, r6, r7, r8, pc}
-.L_0202b4b4: .word data_020deb3c
+.L_0202b4b4: .word gSizedCompressedBufferTempAllocationTag
 .L_0202b4b8: .word gHeapContext
 .L_0202b4bc: .word data_020deb34
     .size CompressedByteBuffer_LoadLz8Payload, . - CompressedByteBuffer_LoadLz8Payload

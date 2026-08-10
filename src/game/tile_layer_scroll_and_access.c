@@ -37,10 +37,10 @@ extern void TileLayer_RefreshCacheColumn(void *, s32, s32, u8 *);
 extern void TileLayer_RefreshCacheRow(void *, s32, s32, u8 *);
 extern void TileLayer_RebuildCache(void *);
 extern void OwnedTileBuffer_Clear(void *);
-extern void func_0202b5fc(void *);
-extern void func_0202b648(void *, void *, u32, u32);
-extern void *func_0202b728(void *);
-extern void func_0202b60c(void *);
+extern void ZeroedCompressedBuffer_Init(void *);
+extern void ZeroedCompressedBuffer_LoadLz8Section(void *, void *, u32, u32);
+extern void *ZeroedCompressedBuffer_GetData(void *);
+extern void ZeroedCompressedBuffer_Destroy(void *);
 extern void MI_CpuCopy8(const void *, void *, u32);
 void TileLayer_WriteMetatileToCache(TileLayerAccessState *, s32, s32, u16);
 void OwnedTileBuffer_Resize(void *, u32);
@@ -185,12 +185,12 @@ void TileLayer_LoadSourceTileSection(TileLayerAccessState *self, void *file,
 {
     u8 view[8];
     const void *source;
-    func_0202b5fc(view);
-    func_0202b648(view, file, offset, size);
+    ZeroedCompressedBuffer_Init(view);
+    ZeroedCompressedBuffer_LoadLz8Section(view, file, offset, size);
     OwnedTileBuffer_Resize(&self->sourceTiles_1008, *(u32 *)(view + 4) >> 1);
-    source = func_0202b728(view);
+    source = ZeroedCompressedBuffer_GetData(view);
     MI_CpuCopy8(source, self->sourceTiles_1008, *(u32 *)(view + 4));
-    func_0202b60c(view);
+    ZeroedCompressedBuffer_Destroy(view);
 }
 
 /*

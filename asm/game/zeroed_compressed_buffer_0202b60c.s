@@ -1,13 +1,13 @@
 ; Matching retail form; see src/game/zeroed_compressed_buffer.c.
 .text
-.extern func_0202b620
+.extern ZeroedCompressedBuffer_Clear
 
-    .global func_0202b60c
-    .type func_0202b60c, @function
-func_0202b60c: ; 0x0202b60c
+    .global ZeroedCompressedBuffer_Destroy
+    .type ZeroedCompressedBuffer_Destroy, @function
+ZeroedCompressedBuffer_Destroy: ; 0x0202b60c
     stmdb sp!, {r4, lr}
     mov r4, r0
-    bl func_0202b620
+    bl ZeroedCompressedBuffer_Clear
     mov r0, r4
     ldmia sp!, {r4, pc}
-    .size func_0202b60c, . - func_0202b60c
+    .size ZeroedCompressedBuffer_Destroy, . - ZeroedCompressedBuffer_Destroy

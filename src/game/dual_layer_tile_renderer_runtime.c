@@ -65,9 +65,9 @@ extern void GameFile_Destroy(void *);
 extern void GameFile_Open(void *, const char *);
 extern void GameFile_Close(void *);
 extern void NclFile_LoadCompressedFromFile(void *, void *, u32, u32);
-extern void func_0202b520(void *, void *, u32, u32);
+extern void SizedCompressedBuffer_LoadLz8Section(void *, void *, u32, u32);
 extern void CompressedByteBuffer_LoadLz8Payload(void *, void *, u32, u32);
-extern void *func_0202b5f4(void *);
+extern void *SizedCompressedBuffer_GetData(void *);
 extern void *CompressedByteBuffer_GetData(void *);
 extern void *Bg3TileLayer_Init(void *, s32, s32, s32);
 extern void *Bg3ExtendedTileLayer_Init(void *, s32, s32, s32);
@@ -131,7 +131,7 @@ void DualLayerTileRenderer_LoadFromConfig(DualLayerTileRenderer *self,
     GameFile_Open(file, gDualLayerTileRendererArchivePath);
     NclFile_LoadCompressedFromFile(&self->palette_10, file, config->resourceOffset_08,
                   config->resourceSize_0c);
-    func_0202b520(self->resource_04, file, config->mapOffset_10,
+    SizedCompressedBuffer_LoadLz8Section(self->resource_04, file, config->mapOffset_10,
                   config->mapSize_14);
     if (config->optionalSize_2c)
         CompressedByteBuffer_LoadLz8Payload(self->optionalResource_0c, file,
@@ -150,7 +150,7 @@ void DualLayerTileRenderer_LoadFromConfig(DualLayerTileRenderer *self,
                 self->layers_28[0] = Bg3ExtendedTileLayer_Init(
                     self->layers_28[0], mode, self->field_44, self->width_48);
         }
-        map = func_0202b5f4(self->resource_04);
+        map = SizedCompressedBuffer_GetData(self->resource_04);
         optional = CompressedByteBuffer_GetData(self->optionalResource_0c);
         TileLayer_InitSourceMap(self->layers_28[0], file, config->layer0Offset_18,
                       config->layer0Size_1c, map,
@@ -171,7 +171,7 @@ void DualLayerTileRenderer_LoadFromConfig(DualLayerTileRenderer *self,
                 self->layers_28[1] = Bg2ExtendedTileLayer_Init(
                     self->layers_28[1], mode, self->field_44, self->height_4c);
         }
-        map = func_0202b5f4(self->resource_04);
+        map = SizedCompressedBuffer_GetData(self->resource_04);
         TileLayer_InitSourceMap(self->layers_28[1], file, config->layer1Offset_20,
                       config->layer1Size_24, map,
                       (s16)(self->packedDimensions_20 & 0xffff),

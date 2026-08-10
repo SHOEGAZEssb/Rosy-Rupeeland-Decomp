@@ -12249,31 +12249,31 @@ build build/reports/sized_compressed_buffer_0202b4d4.json: objdiff build/decomp/
   base_object = build/decomp/asm/game/sized_compressed_buffer_0202b4d4.o
 build build/reports/sized_compressed_buffer_0202b4d4.txt: match_report build/reports/sized_compressed_buffer_0202b4d4.json | tools/report_objdiff.py
   report_json = build/reports/sized_compressed_buffer_0202b4d4.json
-  report_args = --section .text --function func_0202b4d4 --require-exact
+  report_args = --section .text --function SizedCompressedBuffer_Init --require-exact
 build build/reports/sized_compressed_buffer_0202b4e4.json: objdiff build/decomp/delinks/asm/game/sized_compressed_buffer_0202b4e4.o | build/decomp/asm/game/sized_compressed_buffer_0202b4e4.o
   target_object = build/decomp/delinks/asm/game/sized_compressed_buffer_0202b4e4.o
   base_object = build/decomp/asm/game/sized_compressed_buffer_0202b4e4.o
 build build/reports/sized_compressed_buffer_0202b4e4.txt: match_report build/reports/sized_compressed_buffer_0202b4e4.json | tools/report_objdiff.py
   report_json = build/reports/sized_compressed_buffer_0202b4e4.json
-  report_args = --section .text --function func_0202b4e4 --require-exact
+  report_args = --section .text --function SizedCompressedBuffer_Destroy --require-exact
 build build/reports/sized_compressed_buffer_0202b4f8.json: objdiff build/decomp/delinks/asm/game/sized_compressed_buffer_0202b4f8.o | build/decomp/asm/game/sized_compressed_buffer_0202b4f8.o
   target_object = build/decomp/delinks/asm/game/sized_compressed_buffer_0202b4f8.o
   base_object = build/decomp/asm/game/sized_compressed_buffer_0202b4f8.o
 build build/reports/sized_compressed_buffer_0202b4f8.txt: match_report build/reports/sized_compressed_buffer_0202b4f8.json | tools/report_objdiff.py
   report_json = build/reports/sized_compressed_buffer_0202b4f8.json
-  report_args = --section .text --function func_0202b4f8 --require-exact
+  report_args = --section .text --function SizedCompressedBuffer_Clear --require-exact
 build build/reports/sized_compressed_buffer_0202b520.json: objdiff build/decomp/delinks/asm/game/sized_compressed_buffer_0202b520.o | build/decomp/asm/game/sized_compressed_buffer_0202b520.o
   target_object = build/decomp/delinks/asm/game/sized_compressed_buffer_0202b520.o
   base_object = build/decomp/asm/game/sized_compressed_buffer_0202b520.o
 build build/reports/sized_compressed_buffer_0202b520.txt: match_report build/reports/sized_compressed_buffer_0202b520.json | tools/report_objdiff.py
   report_json = build/reports/sized_compressed_buffer_0202b520.json
-  report_args = --section .text --function func_0202b520 --require-exact
+  report_args = --section .text --function SizedCompressedBuffer_LoadLz8Section --require-exact
 build build/reports/sized_compressed_buffer_0202b5f4.json: objdiff build/decomp/delinks/asm/game/sized_compressed_buffer_0202b5f4.o | build/decomp/asm/game/sized_compressed_buffer_0202b5f4.o
   target_object = build/decomp/delinks/asm/game/sized_compressed_buffer_0202b5f4.o
   base_object = build/decomp/asm/game/sized_compressed_buffer_0202b5f4.o
 build build/reports/sized_compressed_buffer_0202b5f4.txt: match_report build/reports/sized_compressed_buffer_0202b5f4.json | tools/report_objdiff.py
   report_json = build/reports/sized_compressed_buffer_0202b5f4.json
-  report_args = --section .text --function func_0202b5f4 --require-exact
+  report_args = --section .text --function SizedCompressedBuffer_GetData --require-exact
 build build/reports/sized_compressed_buffer.txt: phony build/reports/sized_compressed_buffer_0202b4d4.txt build/reports/sized_compressed_buffer_0202b4e4.txt build/reports/sized_compressed_buffer_0202b4f8.txt build/reports/sized_compressed_buffer_0202b520.txt build/reports/sized_compressed_buffer_0202b5f4.txt
 
 build sized_compressed_buffer: phony build/decomp/src/game/sized_compressed_buffer.o build/decomp/asm/game/sized_compressed_buffer_0202b4d4.o build/decomp/asm/game/sized_compressed_buffer_0202b4e4.o build/decomp/asm/game/sized_compressed_buffer_0202b4f8.o build/decomp/asm/game/sized_compressed_buffer_0202b520.o build/decomp/asm/game/sized_compressed_buffer_0202b5f4.o build/reports/sized_compressed_buffer.txt
@@ -12298,31 +12298,31 @@ build build/reports/zeroed_compressed_buffer_0202b5fc.json: objdiff build/decomp
   base_object = build/decomp/asm/game/zeroed_compressed_buffer_0202b5fc.o
 build build/reports/zeroed_compressed_buffer_0202b5fc.txt: match_report build/reports/zeroed_compressed_buffer_0202b5fc.json | tools/report_objdiff.py
   report_json = build/reports/zeroed_compressed_buffer_0202b5fc.json
-  report_args = --section .text --function func_0202b5fc --require-exact
+  report_args = --section .text --function ZeroedCompressedBuffer_Init --require-exact
 build build/reports/zeroed_compressed_buffer_0202b60c.json: objdiff build/decomp/delinks/asm/game/zeroed_compressed_buffer_0202b60c.o | build/decomp/asm/game/zeroed_compressed_buffer_0202b60c.o
   target_object = build/decomp/delinks/asm/game/zeroed_compressed_buffer_0202b60c.o
   base_object = build/decomp/asm/game/zeroed_compressed_buffer_0202b60c.o
 build build/reports/zeroed_compressed_buffer_0202b60c.txt: match_report build/reports/zeroed_compressed_buffer_0202b60c.json | tools/report_objdiff.py
   report_json = build/reports/zeroed_compressed_buffer_0202b60c.json
-  report_args = --section .text --function func_0202b60c --require-exact
+  report_args = --section .text --function ZeroedCompressedBuffer_Destroy --require-exact
 build build/reports/zeroed_compressed_buffer_0202b620.json: objdiff build/decomp/delinks/asm/game/zeroed_compressed_buffer_0202b620.o | build/decomp/asm/game/zeroed_compressed_buffer_0202b620.o
   target_object = build/decomp/delinks/asm/game/zeroed_compressed_buffer_0202b620.o
   base_object = build/decomp/asm/game/zeroed_compressed_buffer_0202b620.o
 build build/reports/zeroed_compressed_buffer_0202b620.txt: match_report build/reports/zeroed_compressed_buffer_0202b620.json | tools/report_objdiff.py
   report_json = build/reports/zeroed_compressed_buffer_0202b620.json
-  report_args = --section .text --function func_0202b620 --require-exact
+  report_args = --section .text --function ZeroedCompressedBuffer_Clear --require-exact
 build build/reports/zeroed_compressed_buffer_0202b648.json: objdiff build/decomp/delinks/asm/game/zeroed_compressed_buffer_0202b648.o | build/decomp/asm/game/zeroed_compressed_buffer_0202b648.o
   target_object = build/decomp/delinks/asm/game/zeroed_compressed_buffer_0202b648.o
   base_object = build/decomp/asm/game/zeroed_compressed_buffer_0202b648.o
 build build/reports/zeroed_compressed_buffer_0202b648.txt: match_report build/reports/zeroed_compressed_buffer_0202b648.json | tools/report_objdiff.py
   report_json = build/reports/zeroed_compressed_buffer_0202b648.json
-  report_args = --section .text --function func_0202b648 --require-exact
+  report_args = --section .text --function ZeroedCompressedBuffer_LoadLz8Section --require-exact
 build build/reports/zeroed_compressed_buffer_0202b728.json: objdiff build/decomp/delinks/asm/game/zeroed_compressed_buffer_0202b728.o | build/decomp/asm/game/zeroed_compressed_buffer_0202b728.o
   target_object = build/decomp/delinks/asm/game/zeroed_compressed_buffer_0202b728.o
   base_object = build/decomp/asm/game/zeroed_compressed_buffer_0202b728.o
 build build/reports/zeroed_compressed_buffer_0202b728.txt: match_report build/reports/zeroed_compressed_buffer_0202b728.json | tools/report_objdiff.py
   report_json = build/reports/zeroed_compressed_buffer_0202b728.json
-  report_args = --section .text --function func_0202b728 --require-exact
+  report_args = --section .text --function ZeroedCompressedBuffer_GetData --require-exact
 build build/reports/zeroed_compressed_buffer.txt: phony build/reports/zeroed_compressed_buffer_0202b5fc.txt build/reports/zeroed_compressed_buffer_0202b60c.txt build/reports/zeroed_compressed_buffer_0202b620.txt build/reports/zeroed_compressed_buffer_0202b648.txt build/reports/zeroed_compressed_buffer_0202b728.txt
 
 build zeroed_compressed_buffer: phony build/decomp/src/game/zeroed_compressed_buffer.o build/decomp/asm/game/zeroed_compressed_buffer_0202b5fc.o build/decomp/asm/game/zeroed_compressed_buffer_0202b60c.o build/decomp/asm/game/zeroed_compressed_buffer_0202b620.o build/decomp/asm/game/zeroed_compressed_buffer_0202b648.o build/decomp/asm/game/zeroed_compressed_buffer_0202b728.o build/reports/zeroed_compressed_buffer.txt

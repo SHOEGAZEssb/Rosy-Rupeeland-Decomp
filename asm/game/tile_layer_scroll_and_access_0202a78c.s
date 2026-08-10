@@ -2,10 +2,10 @@
 .text
 .extern MI_CpuCopy8
 .extern OwnedTileBuffer_Resize
-.extern func_0202b5fc
-.extern func_0202b60c
-.extern func_0202b648
-.extern func_0202b728
+.extern ZeroedCompressedBuffer_Init
+.extern ZeroedCompressedBuffer_Destroy
+.extern ZeroedCompressedBuffer_LoadLz8Section
+.extern ZeroedCompressedBuffer_GetData
 
     .global TileLayer_LoadSourceTileSection
     .type TileLayer_LoadSourceTileSection, @function
@@ -17,25 +17,25 @@ TileLayer_LoadSourceTileSection: ; 0x0202a78c
     mov r6, r1
     mov r5, r2
     mov r4, r3
-    bl func_0202b5fc
+    bl ZeroedCompressedBuffer_Init
     add r0, sp, #0x0
     mov r1, r6
     mov r2, r5
     mov r3, r4
-    bl func_0202b648
+    bl ZeroedCompressedBuffer_LoadLz8Section
     ldr r1, [sp, #0x4]
     add r0, r7, #0x8
     add r0, r0, #0x1000
     mov r1, r1, lsr #0x1
     bl OwnedTileBuffer_Resize
     add r0, sp, #0x0
-    bl func_0202b728
+    bl ZeroedCompressedBuffer_GetData
     add r1, r7, #0x1000
     ldr r1, [r1, #0x8]
     ldr r2, [sp, #0x4]
     bl MI_CpuCopy8
     add r0, sp, #0x0
-    bl func_0202b60c
+    bl ZeroedCompressedBuffer_Destroy
     add sp, sp, #0x8
     ldmia sp!, {r3, r4, r5, r6, r7, pc}
     .size TileLayer_LoadSourceTileSection, . - TileLayer_LoadSourceTileSection

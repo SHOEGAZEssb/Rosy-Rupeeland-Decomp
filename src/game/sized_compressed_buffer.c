@@ -15,33 +15,33 @@ typedef struct SizedCompressedBuffer {
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern const char data_020deb3c[];
-extern const char data_020deb44[];
+extern const char gSizedCompressedBufferTempAllocationTag[];
+extern const char gSizedCompressedBufferPayloadAllocationTag[];
 extern void MI_UncompressLZ8(const void *source, void *destination);
 extern void MI_CpuCopy8(const void *source, void *destination, u32 size);
 extern void func_020b4554(void *address, u32 size);
 extern void func_020b44e8(void);
-void func_0202b4f8(SizedCompressedBuffer *self);
+void SizedCompressedBuffer_Clear(SizedCompressedBuffer *self);
 #ifdef __cplusplus
 }
 #endif
 
 /* Initialize an empty buffer and zero its recorded expanded size. */
-void func_0202b4d4(SizedCompressedBuffer *self)
+void SizedCompressedBuffer_Init(SizedCompressedBuffer *self)
 {
     self->bytes_00 = 0;
     self->expandedSize_04 = 0;
 }
 
 /* Release the owned payload, clear both fields, and return self. */
-SizedCompressedBuffer *func_0202b4e4(SizedCompressedBuffer *self)
+SizedCompressedBuffer *SizedCompressedBuffer_Destroy(SizedCompressedBuffer *self)
 {
-    func_0202b4f8(self);
+    SizedCompressedBuffer_Clear(self);
     return self;
 }
 
 /* Free an installed payload and reset the pointer and expanded-size fields. */
-void func_0202b4f8(SizedCompressedBuffer *self)
+void SizedCompressedBuffer_Clear(SizedCompressedBuffer *self)
 {
     if (self->bytes_00)
         func_02003e38(self->bytes_00);
@@ -57,7 +57,7 @@ void func_0202b4f8(SizedCompressedBuffer *self)
  * temporary compressed input, record the unadjusted expanded size, and return
  * one. I/O and allocation failures are not reported by this interface.
  */
-s32 func_0202b520(SizedCompressedBuffer *self, GameFile *file,
+s32 SizedCompressedBuffer_LoadLz8Section(SizedCompressedBuffer *self, GameFile *file,
                   s32 fileOffset, u32 compressedSize)
 {
     u8 *compressed;
@@ -65,14 +65,14 @@ s32 func_0202b520(SizedCompressedBuffer *self, GameFile *file,
     u32 payloadSize;
 
     if (self->bytes_00)
-        func_0202b4f8(self);
-    compressed = (u8 *)func_02003e20(compressedSize, data_020deb3c, -4,
+        SizedCompressedBuffer_Clear(self);
+    compressed = (u8 *)func_02003e20(compressedSize, gSizedCompressedBufferTempAllocationTag, -4,
                                      &gHeapContext);
     GameFile_Seek(file, fileOffset, 0);
     GameFile_Read(file, compressed, compressedSize);
     expandedSize = *(u32 *)compressed >> 8;
     self->bytes_00 = (u8 *)func_02003e20(expandedSize & ~1u,
-                                         data_020deb44, 4, &gHeapContext);
+                                         gSizedCompressedBufferPayloadAllocationTag, 4, &gHeapContext);
     MI_UncompressLZ8(compressed, self->bytes_00);
     payloadSize = expandedSize - 4;
     MI_CpuCopy8(self->bytes_00 + 4, self->bytes_00, payloadSize);
@@ -84,7 +84,7 @@ s32 func_0202b520(SizedCompressedBuffer *self, GameFile *file,
 }
 
 /* Return the owned payload pointer without changing its lifetime. */
-u8 *func_0202b5f4(SizedCompressedBuffer *self)
+u8 *SizedCompressedBuffer_GetData(SizedCompressedBuffer *self)
 {
     return self->bytes_00;
 }

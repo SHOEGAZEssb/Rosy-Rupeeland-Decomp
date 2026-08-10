@@ -2,7 +2,7 @@
 .text
 .extern NclFile_Destroy
 .extern CompressedByteBuffer_Destroy
-.extern func_0202b4e4
+.extern SizedCompressedBuffer_Destroy
 
     .global ByteTileMapOwner_Destroy
     .type ByteTileMapOwner_Destroy, @function
@@ -14,7 +14,7 @@ ByteTileMapOwner_Destroy: ; 0x0202baa4
     add r0, r4, #0xc
     bl CompressedByteBuffer_Destroy
     add r0, r4, #0x4
-    bl func_0202b4e4
+    bl SizedCompressedBuffer_Destroy
     mov r0, r4
     ldmia sp!, {r4, pc}
     .size ByteTileMapOwner_Destroy, . - ByteTileMapOwner_Destroy
