@@ -4,9 +4,9 @@
 .extern Actor_GetCollection
 .extern func_020740c8
 
-    .global func_020354e8
-    .type func_020354e8, @function
-func_020354e8: ; 0x020354e8
+    .global ActorDerivedType1_ApplyResourceIndex
+    .type ActorDerivedType1_ApplyResourceIndex, @function
+ActorDerivedType1_ApplyResourceIndex: ; 0x020354e8
     stmdb sp!, {r3, r4, r5, lr}
     mov r5, r0
     add r1, r5, r1, lsl #0x2
@@ -19,7 +19,7 @@ func_020354e8: ; 0x020354e8
     ldmib r4, {r2, r3}
     bl func_020740c8
     ldmia sp!, {r3, r4, r5, pc}
-    .size func_020354e8, . - func_020354e8
+    .size ActorDerivedType1_ApplyResourceIndex, . - ActorDerivedType1_ApplyResourceIndex
 
     .global AttachmentController_SetEnabled
 

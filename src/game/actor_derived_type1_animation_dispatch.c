@@ -12,7 +12,7 @@ extern void func_020740c8(void *collectionData, void *attachment, u32 first,
                           u32 second, u32 third);
 extern void func_02072b68(void *attachment, u32 animation);
 extern s32 GameWork_TestFlag(void *work, u32 flag);
-extern void func_020354e8(void *actor, u32 index);
+extern void ActorDerivedType1_ApplyResourceIndex(void *actor, u32 index);
 #ifdef __cplusplus
 }
 #endif
@@ -159,7 +159,7 @@ void func_02036030(void *self)
     if (resource != 0)
         applyDescriptor(actor, resource);
     else if (resourceIndex >= 0)
-        func_020354e8(actor, (u32)resourceIndex);
+        ActorDerivedType1_ApplyResourceIndex(actor, (u32)resourceIndex);
     if (animation >= 0) func_02072b68(attachment, (u32)animation & 0xff);
     *(u16 *)(attachment + 0x24) |= setMask;
     *(u16 *)(attachment + 0x24) &= (u16)~clearMask;

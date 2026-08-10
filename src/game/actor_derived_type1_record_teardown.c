@@ -11,7 +11,7 @@ extern "C" {
 extern void *func_0201f864(void *allocation, ...);
 extern void func_020349b8(void *actor, u32 sound, s32 extra);
 extern void func_0205940c(void *context, s32 channel, s32 sound);
-extern void func_020354e8(void *actor, s32 value);
+extern void ActorDerivedType1_ApplyResourceIndex(void *actor, s32 value);
 #ifdef __cplusplus
 }
 #endif
@@ -55,7 +55,7 @@ void func_020390c8(void *self)
         s32 sound = *(u16 *)(descriptor + 0x2e);
         func_0205940c(gSoundContext, sound >> 7, sound & 0x7f);
     }
-    func_020354e8(actor, 0);
+    ActorDerivedType1_ApplyResourceIndex(actor, 0);
     object = *(void **)(actor + 0x274);
     if (object != 0)
         (*(void (**)(void *))(*(u8 **)object + 4))(object);

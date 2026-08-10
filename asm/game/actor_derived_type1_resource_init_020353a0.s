@@ -14,9 +14,9 @@
 .extern gGameWork
 .extern gHeapContext
 
-    .global func_020353a0
-    .type func_020353a0, @function
-func_020353a0: ; 0x020353a0
+    .global ActorDerivedType1_InitializeResources
+    .type ActorDerivedType1_InitializeResources, @function
+ActorDerivedType1_InitializeResources: ; 0x020353a0
     stmdb sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, lr}
     sub sp, sp, #0x70
     ldr r6, .L_020354d0
@@ -105,6 +105,6 @@ func_020353a0: ; 0x020353a0
 .L_020354dc: .word gGameWork
 .L_020354e0: .word 0x25d
 .L_020354e4: .word 0x1046
-    .size func_020353a0, . - func_020353a0
+    .size ActorDerivedType1_InitializeResources, . - ActorDerivedType1_InitializeResources
 
-    .global func_020354e8
+    .global ActorDerivedType1_ApplyResourceIndex

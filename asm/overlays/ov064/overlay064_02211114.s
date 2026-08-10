@@ -12,7 +12,7 @@
 .extern func_02010c00
 .extern func_0201ded4
 .extern func_02022cb0
-.extern func_020354e8
+.extern ActorDerivedType1_ApplyResourceIndex
 .extern Actor_ReplaceAttachmentSlotResource
 .extern func_0204fb64
 .extern func_0205557c
@@ -54,7 +54,7 @@ func_ov064_02211114:
     bl Actor_ReplaceAttachmentSlotResource
     mov r0, r4
     mov r1, #0x0
-    bl func_020354e8
+    bl ActorDerivedType1_ApplyResourceIndex
     ldr r0, [r4, #0x54]
     mov r1, #0x0
     bl func_02072b68

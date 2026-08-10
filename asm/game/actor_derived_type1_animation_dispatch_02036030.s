@@ -3,7 +3,7 @@
 .extern GameWork_TestFlag
 .extern ActorCollection_GetSpriteOwner
 .extern Actor_GetCollection
-.extern func_020354e8
+.extern ActorDerivedType1_ApplyResourceIndex
 .extern func_02072b68
 .extern func_020740c8
 .extern gGameWork
@@ -301,7 +301,7 @@ func_02036030: ; 0x02036030
     blt .L_0203642c
     mov r0, r4
     mov r1, r6
-    bl func_020354e8
+    bl ActorDerivedType1_ApplyResourceIndex
 .L_0203642c:
     cmp r7, #0x0
     blt .L_02036440

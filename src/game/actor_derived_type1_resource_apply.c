@@ -18,7 +18,7 @@ extern void func_020740c8(void *collectionData, void *attachment, u32 first,
  * to func_020740c8. Returns no explicit value; the helper replaces or updates
  * attachment presentation resources and may affect SDK-managed state.
  */
-void func_020354e8(void *self, u32 index)
+void ActorDerivedType1_ApplyResourceIndex(void *self, u32 index)
 {
     u8 *actor = (u8 *)self;
     u8 *resource = *(u8 **)(actor + 0x208 + index * 4);

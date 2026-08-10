@@ -90,5 +90,5 @@ ActorDerivedType1_DestroyAndFree: ; 0x02035290
 .L_0203539c: .word 0x3ee
     .size ActorDerivedType1_DestroyAndFree, . - ActorDerivedType1_DestroyAndFree
 
-    .global func_020353a0
+    .global ActorDerivedType1_InitializeResources
 

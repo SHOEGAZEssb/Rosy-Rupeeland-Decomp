@@ -44,7 +44,7 @@ static void *allocateResource(u32 first, u32 second, u32 third)
  * through Actor_InitializeFromDescriptor. Returns no explicit value; heap,
  * resource, attachment, and presentation helpers establish owned SDK state.
  */
-void func_020353a0(void *self, const void *descriptor)
+void ActorDerivedType1_InitializeResources(void *self, const void *descriptor)
 {
     u8 *actor = (u8 *)self;
     const u8 *record = (const u8 *)descriptor;

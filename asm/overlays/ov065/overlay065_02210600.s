@@ -7,7 +7,7 @@
 .extern func_02005afc
 .extern func_02008e10
 .extern func_02010c00
-.extern func_020354e8
+.extern ActorDerivedType1_ApplyResourceIndex
 .extern func_02072b68
 .extern func_020740a4
 .extern func_020755bc
@@ -118,7 +118,7 @@ func_ov065_02210600:
 .L_0221076c:
     mov r0, r5
     mov r1, #0x0
-    bl func_020354e8
+    bl ActorDerivedType1_ApplyResourceIndex
     ldr r5, [r5, #0x54]
     mov r1, #0x4
     mov r0, r5

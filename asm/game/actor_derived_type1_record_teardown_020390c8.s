@@ -4,7 +4,7 @@
 .extern data_020df4a4
 .extern func_0201f864
 .extern func_020349b8
-.extern func_020354e8
+.extern ActorDerivedType1_ApplyResourceIndex
 .extern func_0205940c
 .extern gHeapContext
 .extern gSoundContext
@@ -71,7 +71,7 @@ func_020390c8: ; 0x020390c8
 .L_020391a0:
     mov r0, r4
     mov r1, #0x0
-    bl func_020354e8
+    bl ActorDerivedType1_ApplyResourceIndex
     ldr r0, [r4, #0x274]
     cmp r0, #0x0
     beq .L_020391c4
