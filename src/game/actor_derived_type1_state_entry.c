@@ -15,8 +15,8 @@ extern void func_0200500c(void *value, s32 x, s32 y, s32 z);
 extern void func_02005058(void *value);
 extern s32 func_02033f44(void *actor);
 extern void Type1Actor_EnterFailureState(void *actor);
-extern void func_02039720(void *actor, s32 kind, s32 first, s32 second,
-                          s32 third);
+extern void Actor_ReplaceAttachmentSlotResource(
+    void *actor, s32 kind, s32 first, s32 second, s32 third);
 extern void Sound_Play(void *context, s32 channel, s32 sound);
 #ifdef __cplusplus
 }
@@ -32,7 +32,8 @@ extern void Sound_Play(void *context, s32 channel, s32 sound);
  *
  * Otherwise invoke Type1Actor_EnterFailureState, configure effect values
  * 6/0x109d/0x1001/
- * 0x109e through func_02039720, enter state 14 with the same velocity/height,
+ * 0x109e through Actor_ReplaceAttachmentSlotResource, enter state 14 with the
+ * same velocity/height,
  * set +0xd0 bit 0x2000, and play sound 0x2d. Finally clear bit four in the
  * halfword at object +0x54/+0x24 and call actor virtual +0x5c. Returns no
  * value; virtual, Lupy, effect, and sound calls have observable engine state.
@@ -66,7 +67,8 @@ void func_02038834(void *self, const void *position, s32 mode)
         }
     } else {
         Type1Actor_EnterFailureState(actor);
-        func_02039720(actor, 6, 0x109d, 0x1001, 0x109e);
+        Actor_ReplaceAttachmentSlotResource(actor, 6, 0x109d, 0x1001,
+                                            0x109e);
         *(u16 *)(actor + 0xd6) = 14;
         *(s32 *)(actor + 0x44) = 0x4000;
         *(s32 *)(actor + 0x24) = func_02033f44(actor) + 0x1000;

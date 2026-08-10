@@ -9,7 +9,7 @@
 .extern func_02010b64
 .extern func_02032a64
 .extern func_02033f44
-.extern func_02039720
+.extern Actor_ReplaceAttachmentSlotResource
 .extern Type1Actor_EnterFailureState
 .extern gLupyContext
 .extern gSoundContext
@@ -98,7 +98,7 @@ func_02038834: ; 0x02038834
     sub r3, r4, #0x9d
     mov r1, #0x6
     str r4, [sp, #0x0]
-    bl func_02039720
+    bl Actor_ReplaceAttachmentSlotResource
     mov r1, #0xe
     mov r0, r5
     strh r1, [r5, #0xd6]

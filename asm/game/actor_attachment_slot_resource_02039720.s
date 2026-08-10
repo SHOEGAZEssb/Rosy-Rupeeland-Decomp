@@ -8,9 +8,9 @@
 .extern func_020740c8
 .extern gHeapContext
 
-    .global func_02039720
-    .type func_02039720, @function
-func_02039720: ; 0x02039720
+    .global Actor_ReplaceAttachmentSlotResource
+    .type Actor_ReplaceAttachmentSlotResource, @function
+Actor_ReplaceAttachmentSlotResource: ; 0x02039720
     stmdb sp!, {r3, r4, r5, r6, r7, r8, r9, lr}
     mov r8, r0
     mov r7, r1
@@ -59,4 +59,4 @@ func_02039720: ; 0x02039720
     ldmia sp!, {r3, r4, r5, r6, r7, r8, r9, pc}
 .L_020397cc: .word data_020df48c
 .L_020397d0: .word gHeapContext
-    .size func_02039720, . - func_02039720
+    .size Actor_ReplaceAttachmentSlotResource, . - Actor_ReplaceAttachmentSlotResource

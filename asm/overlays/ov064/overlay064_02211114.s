@@ -13,7 +13,7 @@
 .extern func_0201ded4
 .extern func_02022cb0
 .extern func_020354e8
-.extern func_02039720
+.extern Actor_ReplaceAttachmentSlotResource
 .extern func_0204fb64
 .extern func_0205557c
 .extern func_02058d40
@@ -51,7 +51,7 @@ func_ov064_02211114:
     sub r3, r5, #0x3
     mov r1, #0x0
     str r5, [sp, #0x0]
-    bl func_02039720
+    bl Actor_ReplaceAttachmentSlotResource
     mov r0, r4
     mov r1, #0x0
     bl func_020354e8

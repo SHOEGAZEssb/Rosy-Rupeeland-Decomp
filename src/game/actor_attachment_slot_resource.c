@@ -33,7 +33,8 @@ u32 func_02039714(void *self)
  * that old-resource comparison matches; heap and virtual calls change owned
  * resource and presentation state.
  */
-void func_02039720(void *self, s32 index, u16 first, u16 second, u16 third)
+void Actor_ReplaceAttachmentSlotResource(void *self, s32 index, u16 first,
+                                         u16 second, u16 third)
 {
     u8 *actor = (u8 *)self;
     void **slot = (void **)(actor + 0x208 + index * 4);

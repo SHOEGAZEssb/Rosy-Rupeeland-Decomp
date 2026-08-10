@@ -15,7 +15,7 @@
 .extern func_0203292c
 .extern func_02033f44
 .extern func_02034a60
-.extern func_02039720
+.extern Actor_ReplaceAttachmentSlotResource
 .extern func_0203b798
 .extern func_0203bba4
 .extern func_0204cfa4
@@ -103,14 +103,14 @@ func_ov088_02218328:
     sub r3, r6, #0x88
     mov r1, #0x0
     str r6, [sp, #0x0]
-    bl func_02039720
+    bl Actor_ReplaceAttachmentSlotResource
     add r6, r6, #0x2
     mov r1, #0x1
     mov r0, r5
     sub r2, r6, #0x1
     add r3, r1, #0x1000
     str r6, [sp, #0x0]
-    bl func_02039720
+    bl Actor_ReplaceAttachmentSlotResource
     ldr r1, .L_02219114
     add r0, r4, #0x25c
     bl func_ov088_02219154
