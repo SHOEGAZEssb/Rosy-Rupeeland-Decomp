@@ -3,7 +3,7 @@
 .extern func_0200500c
 .extern func_02005058
 .extern VecFx32Stepper_Reset
-.extern func_0200b2c0
+.extern ActorRuntimeTriple_Assign
 .extern Actor_SetVelocity
 .extern ActorDerivedType1_ResetSpecialModeFlags
 
@@ -16,17 +16,17 @@ func_020137ec: ; 0x020137ec
     mov r2, r1
     mov r3, r1
     add r0, r4, #0x38
-    bl func_0200b2c0
+    bl ActorRuntimeTriple_Assign
     mov r1, #0x0
     mov r2, r1
     mov r3, r1
     add r0, r4, #0x88
-    bl func_0200b2c0
+    bl ActorRuntimeTriple_Assign
     mov r1, #0x0
     mov r2, r1
     mov r3, r1
     add r0, r4, #0x98
-    bl func_0200b2c0
+    bl ActorRuntimeTriple_Assign
     ldrb r0, [r4, #0x4d]
     cmp r0, #0x1
     moveq r0, #0x1

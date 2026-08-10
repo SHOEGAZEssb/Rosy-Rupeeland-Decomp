@@ -3,7 +3,7 @@
 .extern data_020df3c8
 .extern func_02004fe0
 .extern func_0200500c
-.extern func_0200b2c0
+.extern ActorRuntimeTriple_Assign
 .extern ActorDerivedRuntime_Init
 .extern Type7MarkerPresentation_Init
 
@@ -75,7 +75,7 @@ ActorDerivedType1_Init: ; 0x02035060
     orr r3, r3, #0x100000
     str r3, [r4, #0x14]
     mov r3, r1
-    bl func_0200b2c0
+    bl ActorRuntimeTriple_Assign
     mov r1, #0x0
     add r0, r4, #0x200
     strh r1, [r0, #0x64]

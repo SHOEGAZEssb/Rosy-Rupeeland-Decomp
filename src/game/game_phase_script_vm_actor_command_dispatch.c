@@ -19,7 +19,7 @@ extern void *GamePhaseRuntime_GetActorCollection(...);
 extern void *ActorCollection_FindActorByDescriptorValue(...);
 extern void *Actor_GetCollection(...);
 extern void *ActorCollection_GetSpriteOwner(...);
-extern u32 *func_0200b2c0(void *object, u32 first, u32 second, u32 third);
+extern u32 *ActorRuntimeTriple_Assign(void *object, u32 first, u32 second, u32 third);
 extern void *func_0201eefc(...);
 extern void *func_02022cb0(...);
 extern void *func_02022ff4(...);
@@ -172,7 +172,7 @@ s32 func_020143a8(GamePhaseActorScriptVm *self)
         void *object;
         func_02004fe0(&position);
         if (a6 != 0)
-            func_0200b2c0(&position, *(s32 *)(actor + 0x10c) << 12,
+            ActorRuntimeTriple_Assign(&position, *(s32 *)(actor + 0x10c) << 12,
                           *(s32 *)(actor + 0x110) << 12,
                           *(s32 *)(actor + 0x114) << 12);
         else

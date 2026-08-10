@@ -6,7 +6,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern u32 *func_0200b2c0(void *object, u32 first, u32 second, u32 third);
+extern u32 *ActorRuntimeTriple_Assign(void *object, u32 first, u32 second, u32 third);
 extern void ActorDerivedType1_ResetSpecialModeFlags(void *actor);
 extern void Actor_SetVelocity(void *actor, const VecFx32Object *value);
 extern void VecFx32Stepper_Reset(void *movement);
@@ -27,9 +27,9 @@ s32 func_020137ec(GamePhaseActorScriptVm *self)
 {
     u8 *actor = (u8 *)self->actor_84;
     VecFx32Object zero;
-    func_0200b2c0(actor + 0x38, 0, 0, 0);
-    func_0200b2c0(actor + 0x88, 0, 0, 0);
-    func_0200b2c0(actor + 0x98, 0, 0, 0);
+    ActorRuntimeTriple_Assign(actor + 0x38, 0, 0, 0);
+    ActorRuntimeTriple_Assign(actor + 0x88, 0, 0, 0);
+    ActorRuntimeTriple_Assign(actor + 0x98, 0, 0, 0);
     if (actor[0x4d] == 1)
         ActorDerivedType1_ResetSpecialModeFlags(actor);
     func_0200500c(&zero, 0, 0, 0);

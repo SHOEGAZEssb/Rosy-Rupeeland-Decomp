@@ -10,7 +10,7 @@ extern "C" {
 extern void *func_020050a4(void *destination, const void *source);
 extern void func_02005030(void *destination, const void *source);
 extern void func_02005058(void *value);
-extern void func_0200b2c0(void *vector, s32 x, s32 y, s32 z);
+extern void ActorRuntimeTriple_Assign(void *vector, s32 x, s32 y, s32 z);
 extern void Actor_RefreshTerrainHeight(void *actor);
 extern void func_02031758(void *context, void *actor, void *value);
 extern void func_0206dcac(void *resource);
@@ -31,8 +31,8 @@ void Type7Actor_ResetBaseTransformAndMotion(void *self)
     func_020050a4(actor + 0x18, actor + 0x214);
     Actor_RefreshTerrainHeight(actor);
     *(u32 *)(actor + 0x24) = *(u32 *)(actor + 0x1dc);
-    func_0200b2c0(actor + 0x38, 0, 0, 0);
-    func_0200b2c0(actor + 0x88, 0, 0, 0);
+    ActorRuntimeTriple_Assign(actor + 0x38, 0, 0, 0);
+    ActorRuntimeTriple_Assign(actor + 0x88, 0, 0, 0);
 }
 
 /*

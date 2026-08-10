@@ -2,7 +2,7 @@
 .extern data_020e18a8
 .extern data_020e18b0
 .extern data_020e18b8
-.extern func_0200b2c0
+.extern ActorRuntimeTriple_Assign
 .extern AttachmentController_SetEnabled
 .extern Type7Actor_ResetMotionAndCooldown
 .extern Type7Actor_SetCallbackPair
@@ -30,17 +30,17 @@ Type7Actor_SetFlag40StateEnabled: ; 0x0204a200
     mov r3, r1
     add r0, r4, #0x38
     str ip, [r4, #0x268]
-    bl func_0200b2c0
+    bl ActorRuntimeTriple_Assign
     mov r1, #0x0
     mov r2, r1
     mov r3, r1
     add r0, r4, #0x88
-    bl func_0200b2c0
+    bl ActorRuntimeTriple_Assign
     mov r1, #0x0
     add r0, r4, #0x98
     mov r2, r1
     mov r3, r1
-    bl func_0200b2c0
+    bl ActorRuntimeTriple_Assign
     ldmia sp!, {r4, pc}
 .L_0204a280:
     ldr r1, [r4, #0x268]
@@ -91,17 +91,17 @@ Type7Actor_EnterFlag20State: ; 0x0204a2e8
     mov ip, #0x5
     add r0, r4, #0x38
     strh ip, [r4, #0xd6]
-    bl func_0200b2c0
+    bl ActorRuntimeTriple_Assign
     mov r1, #0x0
     mov r2, r1
     mov r3, r1
     add r0, r4, #0x88
-    bl func_0200b2c0
+    bl ActorRuntimeTriple_Assign
     mov r1, #0x0
     add r0, r4, #0x98
     mov r2, r1
     mov r3, r1
-    bl func_0200b2c0
+    bl ActorRuntimeTriple_Assign
     ldmia sp!, {r4, pc}
 .L_0204a35c: .word data_020e18b0
 .size Type7Actor_EnterFlag20State, . - Type7Actor_EnterFlag20State
@@ -126,17 +126,17 @@ Type7Actor_EnterFlag80State: ; 0x0204a360
     mov ip, #0x4
     add r0, r4, #0x38
     strh ip, [r4, #0xd6]
-    bl func_0200b2c0
+    bl ActorRuntimeTriple_Assign
     mov r1, #0x0
     mov r2, r1
     mov r3, r1
     add r0, r4, #0x88
-    bl func_0200b2c0
+    bl ActorRuntimeTriple_Assign
     mov r1, #0x0
     add r0, r4, #0x98
     mov r2, r1
     mov r3, r1
-    bl func_0200b2c0
+    bl ActorRuntimeTriple_Assign
     ldmia sp!, {r4, pc}
 .L_0204a3d4: .word data_020e18a8
 .size Type7Actor_EnterFlag80State, . - Type7Actor_EnterFlag80State

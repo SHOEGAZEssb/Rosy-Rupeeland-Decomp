@@ -12,7 +12,7 @@ extern u8 *data_021052fc;
 extern "C" {
 #endif
 extern void *func_020050a4(void *destination, const void *source);
-extern void func_0200b2c0(void *value, s32 x, s32 y, s32 z);
+extern void ActorRuntimeTriple_Assign(void *value, s32 x, s32 y, s32 z);
 extern void ActorDerivedType1_SetSpecialModeEnabled(void *object, s32 mode);
 extern void Type7Actor_SelectRandomCallback(void *actor);
 extern void Type7Actor_CompleteDestinationMotion(void *actor);
@@ -62,9 +62,9 @@ s32 Type7Actor_UpdateDestinationMotion(void *self)
         s64 product;
 
         *(u16 *)(actor + 0xd6) = 10;
-        func_0200b2c0(actor + 0x38, 0, 0, 0);
-        func_0200b2c0(actor + 0x88, 0, 0, 0);
-        func_0200b2c0(actor + 0x98, 0, 0, 0);
+        ActorRuntimeTriple_Assign(actor + 0x38, 0, 0, 0);
+        ActorRuntimeTriple_Assign(actor + 0x88, 0, 0, 0);
+        ActorRuntimeTriple_Assign(actor + 0x98, 0, 0, 0);
         direction = func_020ae024(dy, dx);
         step = func_020adae4(*(s32 *)(actor + 0x23c) << 2, 2);
         if (distance <= step)

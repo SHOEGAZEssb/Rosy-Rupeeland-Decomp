@@ -10,7 +10,7 @@ extern "C" {
 #endif
 extern void Actor_SetPosition(void *actor, const void *position);
 extern s32 func_02010b64(void *context, s32 value);
-extern void func_0200b2c0(void *value, s32 x, s32 y, s32 z);
+extern void ActorRuntimeTriple_Assign(void *value, s32 x, s32 y, s32 z);
 extern void func_0200500c(void *value, s32 x, s32 y, s32 z);
 extern void func_02005058(void *value);
 extern s32 Actor_GetCachedTerrainHeight(void *actor);
@@ -48,9 +48,9 @@ void ActorDerivedType1_EnterPositionedState(void *self, const void *position, s3
 
     if (func_02010b64(gLupyContext, 0) > 0) {
         *(u32 *)(actor + 0xd0) &= ~0x200;
-        func_0200b2c0(actor + 0x38, 0, 0, 0);
-        func_0200b2c0(actor + 0x88, 0, 0, 0);
-        func_0200b2c0(actor + 0x98, 0, 0, 0);
+        ActorRuntimeTriple_Assign(actor + 0x38, 0, 0, 0);
+        ActorRuntimeTriple_Assign(actor + 0x88, 0, 0, 0);
+        ActorRuntimeTriple_Assign(actor + 0x98, 0, 0, 0);
         if (mode != 0) {
             s32 offset[4];
             s32 x = (data_021056e0 & 1) ? -0x1800 : 0x1800;

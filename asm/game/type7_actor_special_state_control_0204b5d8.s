@@ -1,5 +1,5 @@
 ; Matching retail form; see src/game/type7_actor_special_state_control.c.
-.extern func_0200b2c0
+.extern ActorRuntimeTriple_Assign
 .extern AttachmentController_SetEnabled
 .extern Type7Actor_GetStateCode
 .extern Type7Actor_UpdateAttachmentControllerAnimation
@@ -43,17 +43,17 @@ Type7Actor_EnterSpecialPresentationState: ; 0x0204b5d8
     orr ip, r0, #0x20
     add r0, r4, #0x38
     strh ip, [lr, #0x24]
-    bl func_0200b2c0
+    bl ActorRuntimeTriple_Assign
     mov r1, #0x0
     mov r2, r1
     mov r3, r1
     add r0, r4, #0x88
-    bl func_0200b2c0
+    bl ActorRuntimeTriple_Assign
     mov r1, #0x0
     mov r2, r1
     mov r3, r1
     add r0, r4, #0x98
-    bl func_0200b2c0
+    bl ActorRuntimeTriple_Assign
     ldmia sp!, {r4, pc}
 .size Type7Actor_EnterSpecialPresentationState, . - Type7Actor_EnterSpecialPresentationState
 
@@ -109,17 +109,17 @@ Type7Actor_StartAnimation19Interaction: ; 0x0204b6ec
     mov r2, r1
     mov r3, r1
     add r0, r4, #0x38
-    bl func_0200b2c0
+    bl ActorRuntimeTriple_Assign
     mov r1, #0x0
     mov r2, r1
     mov r3, r1
     add r0, r4, #0x88
-    bl func_0200b2c0
+    bl ActorRuntimeTriple_Assign
     mov r1, #0x0
     mov r2, r1
     mov r3, r1
     add r0, r4, #0x98
-    bl func_0200b2c0
+    bl ActorRuntimeTriple_Assign
     cmp r5, #0x0
     movne r0, #0x1
     str r6, [r4, #0x110]

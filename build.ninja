@@ -10626,91 +10626,91 @@ build build/reports/actor_runtime_scene_triple.json: objdiff build/decomp/delink
   base_object = build/decomp/src/game/actor_runtime_scene_triple.o
 build build/reports/actor_runtime_scene_triple.txt: match_report build/reports/actor_runtime_scene_triple.json | tools/report_objdiff.py
   report_json = build/reports/actor_runtime_scene_triple.json
-  report_args = --section .text --function func_0200b2c0 --require-exact
+  report_args = --section .text --function ActorRuntimeTriple_Assign --require-exact
 
 build build/reports/actor_runtime_scene_lifecycle.json: objdiff build/decomp/delinks/asm/game/actor_runtime_scene_lifecycle.o | build/decomp/asm/game/actor_runtime_scene_lifecycle.o
   target_object = build/decomp/delinks/asm/game/actor_runtime_scene_lifecycle.o
   base_object = build/decomp/asm/game/actor_runtime_scene_lifecycle.o
 build build/reports/actor_runtime_scene_lifecycle.txt: match_report build/reports/actor_runtime_scene_lifecycle.json | tools/report_objdiff.py
   report_json = build/reports/actor_runtime_scene_lifecycle.json
-  report_args = --section .text --function func_0200b2d0 --require-exact
+  report_args = --section .text --function ActorRuntimeScene_Init --require-exact
 
 build build/reports/actor_runtime_scene_teardown.json: objdiff build/decomp/delinks/asm/game/actor_runtime_scene_teardown.o | build/decomp/asm/game/actor_runtime_scene_teardown.o
   target_object = build/decomp/delinks/asm/game/actor_runtime_scene_teardown.o
   base_object = build/decomp/asm/game/actor_runtime_scene_teardown.o
 build build/reports/actor_runtime_scene_teardown.txt: match_report build/reports/actor_runtime_scene_teardown.json | tools/report_objdiff.py
   report_json = build/reports/actor_runtime_scene_teardown.json
-  report_args = --section .text --function func_0200b41c --require-exact
+  report_args = --section .text --function ActorRuntimeScene_Destroy --require-exact
 
 build build/reports/actor_runtime_scene_delete.json: objdiff build/decomp/delinks/asm/game/actor_runtime_scene_delete.o | build/decomp/asm/game/actor_runtime_scene_delete.o
   target_object = build/decomp/delinks/asm/game/actor_runtime_scene_delete.o
   base_object = build/decomp/asm/game/actor_runtime_scene_delete.o
 build build/reports/actor_runtime_scene_delete.txt: match_report build/reports/actor_runtime_scene_delete.json | tools/report_objdiff.py
   report_json = build/reports/actor_runtime_scene_delete.json
-  report_args = --section .text --function func_0200b56c --require-exact
+  report_args = --section .text --function ActorRuntimeScene_DestroyAndFree --require-exact
 
 build build/reports/actor_runtime_scene_update.json: objdiff build/decomp/delinks/asm/game/actor_runtime_scene_update.o | build/decomp/asm/game/actor_runtime_scene_update.o
   target_object = build/decomp/delinks/asm/game/actor_runtime_scene_update.o
   base_object = build/decomp/asm/game/actor_runtime_scene_update.o
 build build/reports/actor_runtime_scene_update.txt: match_report build/reports/actor_runtime_scene_update.json | tools/report_objdiff.py
   report_json = build/reports/actor_runtime_scene_update.json
-  report_args = --section .text --function func_0200b6c4 --require-exact
+  report_args = --section .text --function ActorRuntimeScene_Update --require-exact
 
 build build/reports/actor_runtime_scene_begin.json: objdiff build/decomp/delinks/asm/game/actor_runtime_scene_begin.o | build/decomp/asm/game/actor_runtime_scene_begin.o
   target_object = build/decomp/delinks/asm/game/actor_runtime_scene_begin.o
   base_object = build/decomp/asm/game/actor_runtime_scene_begin.o
 build build/reports/actor_runtime_scene_begin.txt: match_report build/reports/actor_runtime_scene_begin.json | tools/report_objdiff.py
   report_json = build/reports/actor_runtime_scene_begin.json
-  report_args = --section .text --function func_0200b7b4 --require-exact
+  report_args = --section .text --function ActorRuntimeScene_Begin --require-exact
 
 build build/reports/actor_runtime_scene_end.json: objdiff build/decomp/delinks/asm/game/actor_runtime_scene_end.o | build/decomp/asm/game/actor_runtime_scene_end.o
   target_object = build/decomp/delinks/asm/game/actor_runtime_scene_end.o
   base_object = build/decomp/asm/game/actor_runtime_scene_end.o
 build build/reports/actor_runtime_scene_end.txt: match_report build/reports/actor_runtime_scene_end.json | tools/report_objdiff.py
   report_json = build/reports/actor_runtime_scene_end.json
-  report_args = --section .text --function func_0200b7e0 --require-exact
+  report_args = --section .text --function ActorRuntimeScene_End --require-exact
 
 build build/reports/actor_runtime_scene_touch_begin.json: objdiff build/decomp/delinks/asm/game/actor_runtime_scene_touch_begin.o | build/decomp/asm/game/actor_runtime_scene_touch_begin.o
   target_object = build/decomp/delinks/asm/game/actor_runtime_scene_touch_begin.o
   base_object = build/decomp/asm/game/actor_runtime_scene_touch_begin.o
 build build/reports/actor_runtime_scene_touch_begin.txt: match_report build/reports/actor_runtime_scene_touch_begin.json | tools/report_objdiff.py
   report_json = build/reports/actor_runtime_scene_touch_begin.json
-  report_args = --section .text --function func_0200b804 --require-exact
+  report_args = --section .text --function ActorRuntimeScene_TouchBegin --require-exact
 
 build build/reports/actor_runtime_touch_copy.json: objdiff build/decomp/delinks/asm/game/actor_runtime_touch_copy.o | build/decomp/asm/game/actor_runtime_touch_copy.o
   target_object = build/decomp/delinks/asm/game/actor_runtime_touch_copy.o
   base_object = build/decomp/asm/game/actor_runtime_touch_copy.o
 build build/reports/actor_runtime_touch_copy.txt: match_report build/reports/actor_runtime_touch_copy.json | tools/report_objdiff.py
   report_json = build/reports/actor_runtime_touch_copy.json
-  report_args = --section .text --function func_0200b83c --require-exact
+  report_args = --section .text --function TouchPoint_Assign --require-exact
 
 build build/reports/actor_runtime_scene_touch_move.json: objdiff build/decomp/delinks/asm/game/actor_runtime_scene_touch_move.o | build/decomp/asm/game/actor_runtime_scene_touch_move.o
   target_object = build/decomp/delinks/asm/game/actor_runtime_scene_touch_move.o
   base_object = build/decomp/asm/game/actor_runtime_scene_touch_move.o
 build build/reports/actor_runtime_scene_touch_move.txt: match_report build/reports/actor_runtime_scene_touch_move.json | tools/report_objdiff.py
   report_json = build/reports/actor_runtime_scene_touch_move.json
-  report_args = --section .text --function func_0200b85c --require-exact
+  report_args = --section .text --function ActorRuntimeScene_TouchMove --require-exact
 
 build build/reports/actor_runtime_scene_touch_end.json: objdiff build/decomp/delinks/asm/game/actor_runtime_scene_touch_end.o | build/decomp/asm/game/actor_runtime_scene_touch_end.o
   target_object = build/decomp/delinks/asm/game/actor_runtime_scene_touch_end.o
   base_object = build/decomp/asm/game/actor_runtime_scene_touch_end.o
 build build/reports/actor_runtime_scene_touch_end.txt: match_report build/reports/actor_runtime_scene_touch_end.json | tools/report_objdiff.py
   report_json = build/reports/actor_runtime_scene_touch_end.json
-  report_args = --section .text --function func_0200b894 --require-exact
+  report_args = --section .text --function ActorRuntimeScene_TouchEnd --require-exact
 
 build build/reports/actor_runtime_scene_actor_deactivate.json: objdiff build/decomp/delinks/asm/game/actor_runtime_scene_actor_deactivate.o | build/decomp/asm/game/actor_runtime_scene_actor_deactivate.o
   target_object = build/decomp/delinks/asm/game/actor_runtime_scene_actor_deactivate.o
   base_object = build/decomp/asm/game/actor_runtime_scene_actor_deactivate.o
 build build/reports/actor_runtime_scene_actor_deactivate.txt: match_report build/reports/actor_runtime_scene_actor_deactivate.json | tools/report_objdiff.py
   report_json = build/reports/actor_runtime_scene_actor_deactivate.json
-  report_args = --section .text --function func_0200b8cc --require-exact
+  report_args = --section .text --function ActorRuntimeScene_DeactivateActorSets --require-exact
 
 build build/reports/actor_runtime_scene_actor_activate.json: objdiff build/decomp/delinks/asm/game/actor_runtime_scene_actor_activate.o | build/decomp/asm/game/actor_runtime_scene_actor_activate.o
   target_object = build/decomp/delinks/asm/game/actor_runtime_scene_actor_activate.o
   base_object = build/decomp/asm/game/actor_runtime_scene_actor_activate.o
 build build/reports/actor_runtime_scene_actor_activate.txt: match_report build/reports/actor_runtime_scene_actor_activate.json | tools/report_objdiff.py
   report_json = build/reports/actor_runtime_scene_actor_activate.json
-  report_args = --section .text --function func_0200ba00 --require-exact
+  report_args = --section .text --function ActorRuntimeScene_ActivateFlaggedActors --require-exact
 
 build build/reports/actor_runtime_owned_list_variants.json: objdiff build/decomp/delinks/src/game/actor_runtime_owned_list_variants.o | build/decomp/src/game/actor_runtime_owned_list_variants.o
   target_object = build/decomp/delinks/src/game/actor_runtime_owned_list_variants.o

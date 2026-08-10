@@ -2,8 +2,8 @@
 ; the documented portable implementation and recovered behavior.
 .text
 .extern data_021052fc
-.global func_0200b7b4
-func_0200b7b4:
+.global ActorRuntimeScene_Begin
+ActorRuntimeScene_Begin:
     stmdb sp!, {r3, lr}
     ldr r0, L_0200b7dc
     ldr r0, [r0, #0x0]
@@ -15,5 +15,5 @@ func_0200b7b4:
     strh r0, [r1, #0x0]
     ldmia sp!, {r3, pc}
 L_0200b7dc: .word data_021052fc
-.size func_0200b7b4, . - func_0200b7b4
+.size ActorRuntimeScene_Begin, . - ActorRuntimeScene_Begin
 

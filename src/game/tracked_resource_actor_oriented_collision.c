@@ -7,7 +7,7 @@ extern "C" {
 #endif
 extern void *data_02105310;
 extern s32 ActorRuntimeCollection_GetPendingAttachmentFlag(void *state);
-extern void func_0200b2c0(void *vector, s32 x, s32 y, s32 z);
+extern void ActorRuntimeTriple_Assign(void *vector, s32 x, s32 y, s32 z);
 extern void func_02005030(void *destination, const void *source);
 extern void func_02005058(void *vector);
 extern void ActorCollection_QueueActorForRemoval(void *handle, void *actor);
@@ -55,7 +55,7 @@ void func_02052464(void *actor, void *target, u32 unused1, u32 unused2)
         virtual_function(target, 0xb8)(target, vector, value > 0);
         func_02005058(vector);
     }
-    func_0200b2c0((u8 *)actor + 0x38, 0, 0, 0);
+    ActorRuntimeTriple_Assign((u8 *)actor + 0x38, 0, 0, 0);
     FIELD(u16, actor, 0x1f0) = (FIELD(u16, actor, 0x1f0) & 0x8000) | 2;
     FIELD(u32, actor, 0x10) |= 0x1f0000;
     FIELD(u16, actor, 0x1f8) = 0;

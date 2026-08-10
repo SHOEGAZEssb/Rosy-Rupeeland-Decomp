@@ -10,7 +10,7 @@ extern "C" {
 extern SceneVTable data_020d448c;
 extern void *data_021052fc;
 extern void *GamePhaseRuntime_GetActorCollection(void *context, s32 index);
-extern void func_0200b8cc(ActorRuntimeScene *self);
+extern void ActorRuntimeScene_DeactivateActorSets(ActorRuntimeScene *self);
 extern void func_02030b58(void *context, s32 value);
 extern void Actor_SetActive(void *object, s32 value);
 extern void *Actor_GetCollection(void *object);
@@ -29,7 +29,7 @@ extern void Type7Actor_LeaveSpecialPresentationState(void *object);
  * freeing it. Called helpers may update actor/render/game state; no registers
  * are touched directly.
  */
-ActorRuntimeScene *func_0200b41c(ActorRuntimeScene *self)
+ActorRuntimeScene *ActorRuntimeScene_Destroy(ActorRuntimeScene *self)
 {
     u8 *root;
     u8 *active;
@@ -38,7 +38,7 @@ ActorRuntimeScene *func_0200b41c(ActorRuntimeScene *self)
     void *context;
 
     self->base.vtable = &data_020d448c;
-    func_0200b8cc(self);
+    ActorRuntimeScene_DeactivateActorSets(self);
     root = (u8 *)data_021052fc;
     context = GamePhaseRuntime_GetActorCollection(data_021052fc, 1);
     active = *(u8 **)((u8 *)context + 0x2e7c);
@@ -69,13 +69,13 @@ ActorRuntimeScene *func_0200b41c(ActorRuntimeScene *self)
 }
 
 /*
- * Perform the same teardown as func_0200b41c, then release self through the
+ * Perform the same teardown as ActorRuntimeScene_Destroy, then release self through the
  * game heap and return its old address. The portable expression delegates the
  * common behavior; the matching fallback preserves the original inlined form.
  */
-ActorRuntimeScene *func_0200b56c(ActorRuntimeScene *self)
+ActorRuntimeScene *ActorRuntimeScene_DestroyAndFree(ActorRuntimeScene *self)
 {
-    func_0200b41c(self);
+    ActorRuntimeScene_Destroy(self);
     Heap_Free(self);
     return self;
 }

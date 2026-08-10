@@ -3,7 +3,7 @@
 .extern func_02005030
 .extern func_02005058
 .extern ActorRuntimeCollection_GetPendingAttachmentFlag
-.extern func_0200b2c0
+.extern ActorRuntimeTriple_Assign
 .extern func_020328d0
 .text
     .global func_02051fc0
@@ -41,7 +41,7 @@ func_02051fc0:
     mov r2, r1
     mov r3, r1
     add r0, r4, #0x38
-    bl func_0200b2c0
+    bl ActorRuntimeTriple_Assign
     mov r0, r4
     ldr r1, [r0, #0x0]
     ldr r1, [r1, #0xc8]

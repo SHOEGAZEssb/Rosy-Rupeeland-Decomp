@@ -28,7 +28,7 @@ extern void func_0201dcec(void *context, s32 value);
  * then return 0. Indirect helpers may affect gameplay/rendering; no hardware
  * registers are written directly.
  */
-s32 func_0200b6c4(ActorRuntimeScene *self)
+s32 ActorRuntimeScene_Update(ActorRuntimeScene *self)
 {
     u8 *root = (u8 *)data_021052fc;
 

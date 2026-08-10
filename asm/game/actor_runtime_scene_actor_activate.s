@@ -4,8 +4,8 @@
 .extern GamePhaseRuntime_GetActorCollection
 .extern Actor_SetActive
 .extern data_021052fc
-.global func_0200ba00
-func_0200ba00:
+.global ActorRuntimeScene_ActivateFlaggedActors
+ActorRuntimeScene_ActivateFlaggedActors:
     stmdb sp!, {r3, r4, r5, r6, r7, lr}
     ldr r0, L_0200bac0
     mov r1, #0x1
@@ -61,4 +61,4 @@ L_0200bab0:
     blt L_0200ba84
     ldmia sp!, {r3, r4, r5, r6, r7, pc}
 L_0200bac0: .word data_021052fc
-.size func_0200ba00, . - func_0200ba00
+.size ActorRuntimeScene_ActivateFlaggedActors, . - ActorRuntimeScene_ActivateFlaggedActors

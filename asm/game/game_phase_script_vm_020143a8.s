@@ -15,7 +15,7 @@
 .extern func_020050a4
 .extern GamePhaseRuntime_GetActorCollection
 .extern ActorMotionAreaFollower_GetPosition
-.extern func_0200b2c0
+.extern ActorRuntimeTriple_Assign
 .extern func_02012704
 .extern func_020127f8
 .extern func_02015548
@@ -275,7 +275,7 @@ L_02014680:
     mov r1, r1, lsl #0xc
     mov r2, r2, lsl #0xc
     mov r3, r3, lsl #0xc
-    bl func_0200b2c0
+    bl ActorRuntimeTriple_Assign
     b L_020146bc
 L_020146b4:
     add r1, r10, #0x18

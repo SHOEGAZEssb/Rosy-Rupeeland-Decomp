@@ -13,7 +13,7 @@ extern u8 data_021056e0;
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_0200b2c0(void *value, s32 x, s32 y, s32 z);
+extern void ActorRuntimeTriple_Assign(void *value, s32 x, s32 y, s32 z);
 extern void Type7Actor_SetCallbackPair(void *actor, u32 first, u32 second, s32 duration);
 extern void func_02072b68(void *object, u32 value);
 #ifdef __cplusplus
@@ -49,9 +49,9 @@ void Type7Actor_InitializeStationaryMotionState(void *self)
     *(void **)(actor + 0x280) = 0;
     *(u32 *)(actor + 0x268) &= ~0x14;
     set_actor_mode(actor, 1);
-    func_0200b2c0(actor + 0x38, 0, 0, 0);
-    func_0200b2c0(actor + 0x88, 0, 0, 0);
-    func_0200b2c0(actor + 0x98, 0, 0, 0);
+    ActorRuntimeTriple_Assign(actor + 0x38, 0, 0, 0);
+    ActorRuntimeTriple_Assign(actor + 0x88, 0, 0, 0);
+    ActorRuntimeTriple_Assign(actor + 0x98, 0, 0, 0);
     *(u32 *)(actor + 0x108) = 0;
     *(u32 *)(actor + 0xd0) |= 0x100;
 }
@@ -78,9 +78,9 @@ void Type7Actor_InitializeActiveMotionState(void *self, s32 launch)
     *(u32 *)(actor + 0x14) &= ~(2 | 4);
     *(u32 *)(actor + 0x10) |= 0x30000;
     set_actor_mode(actor, 1);
-    func_0200b2c0(actor + 0x38, 0, 0, 0);
-    func_0200b2c0(actor + 0x88, 0, 0, 0);
-    func_0200b2c0(actor + 0x98, 0, 0, 0);
+    ActorRuntimeTriple_Assign(actor + 0x38, 0, 0, 0);
+    ActorRuntimeTriple_Assign(actor + 0x88, 0, 0, 0);
+    ActorRuntimeTriple_Assign(actor + 0x98, 0, 0, 0);
     if (launch != 0) {
         *(s32 *)(actor + 0x90) =
             GameWork_TestFlag(gGameWork, 0x44b) != 0 ? 0x2800 : -0x2800;

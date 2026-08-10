@@ -2,8 +2,8 @@
 ; the documented portable implementation and recovered behavior.
 .text
 .extern data_021052fc
-.global func_0200b7e0
-func_0200b7e0:
+.global ActorRuntimeScene_End
+ActorRuntimeScene_End:
     stmdb sp!, {r3, lr}
     ldr r0, L_0200b800
     ldr r0, [r0, #0x0]
@@ -13,5 +13,5 @@ func_0200b7e0:
     mov r0, #0x0
     ldmia sp!, {r3, pc}
 L_0200b800: .word data_021052fc
-.size func_0200b7e0, . - func_0200b7e0
+.size ActorRuntimeScene_End, . - ActorRuntimeScene_End
 

@@ -19,7 +19,7 @@ typedef void (*ActorRuntimeTouchMethod)(void *context,
  * 0x05000000, and return 0. The halfword write directly affects DS palette
  * hardware; self is unused.
  */
-s32 func_0200b7b4(ActorRuntimeScene *self)
+s32 ActorRuntimeScene_Begin(ActorRuntimeScene *self)
 {
     void *context = data_021052fc;
     void **vtable = *(void ***)context;
@@ -31,7 +31,7 @@ s32 func_0200b7b4(ActorRuntimeScene *self)
 }
 
 /* Invoke shared-context vtable method 0x10 and return 0; self is unused. */
-s32 func_0200b7e0(ActorRuntimeScene *self)
+s32 ActorRuntimeScene_End(ActorRuntimeScene *self)
 {
     void *context = data_021052fc;
     void **vtable = *(void ***)context;
@@ -46,21 +46,21 @@ s32 func_0200b7e0(ActorRuntimeScene *self)
  * method 0x14, and return 0. The virtual callback's gameplay effect is not yet
  * confirmed; self is unused and no hardware is touched directly.
  */
-s32 func_0200b804(ActorRuntimeScene *self, const TouchPoint *point)
+s32 ActorRuntimeScene_TouchBegin(ActorRuntimeScene *self, const TouchPoint *point)
 {
     TouchPoint copy;
     void *context = data_021052fc;
     void **vtable;
 
     (void)self;
-    func_0200b83c(&copy, point);
+    TouchPoint_Assign(&copy, point);
     vtable = *(void ***)context;
     ((ActorRuntimeTouchMethod)vtable[0x14 / 4])(context, &copy);
     return 0;
 }
 
 /* Copy x/y from source, install the shared TouchPoint vtable, and return result. */
-TouchPoint *func_0200b83c(TouchPoint *result, const TouchPoint *source)
+TouchPoint *TouchPoint_Assign(TouchPoint *result, const TouchPoint *source)
 {
     result->vtable = &gSceneTouchInitialData.pointVTable;
     result->x = source->x;
@@ -69,28 +69,28 @@ TouchPoint *func_0200b83c(TouchPoint *result, const TouchPoint *source)
 }
 
 /* Copy and forward point through shared-context vtable method 0x18; return 0. */
-s32 func_0200b85c(ActorRuntimeScene *self, const TouchPoint *point)
+s32 ActorRuntimeScene_TouchMove(ActorRuntimeScene *self, const TouchPoint *point)
 {
     TouchPoint copy;
     void *context = data_021052fc;
     void **vtable;
 
     (void)self;
-    func_0200b83c(&copy, point);
+    TouchPoint_Assign(&copy, point);
     vtable = *(void ***)context;
     ((ActorRuntimeTouchMethod)vtable[0x18 / 4])(context, &copy);
     return 0;
 }
 
 /* Copy and forward point through shared-context vtable method 0x1c; return 0. */
-s32 func_0200b894(ActorRuntimeScene *self, const TouchPoint *point)
+s32 ActorRuntimeScene_TouchEnd(ActorRuntimeScene *self, const TouchPoint *point)
 {
     TouchPoint copy;
     void *context = data_021052fc;
     void **vtable;
 
     (void)self;
-    func_0200b83c(&copy, point);
+    TouchPoint_Assign(&copy, point);
     vtable = *(void ***)context;
     ((ActorRuntimeTouchMethod)vtable[0x1c / 4])(context, &copy);
     return 0;

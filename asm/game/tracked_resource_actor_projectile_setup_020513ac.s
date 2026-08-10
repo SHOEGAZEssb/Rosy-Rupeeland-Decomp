@@ -3,7 +3,7 @@
 .extern func_02005058
 .extern func_020050a4
 .extern func_02008378
-.extern func_0200b2c0
+.extern ActorRuntimeTriple_Assign
 .text
     .global func_020513ac
 func_020513ac:
@@ -32,7 +32,7 @@ func_020513ac:
     add r0, r4, #0x38
     mov r2, r1
     mov r3, r1
-    bl func_0200b2c0
+    bl ActorRuntimeTriple_Assign
     ldr r1, [r4, #0xd0]
     mov r0, #0x10000
     orr r1, r1, #0x2000

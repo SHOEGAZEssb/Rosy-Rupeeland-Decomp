@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/actor_runtime_state_helpers.c.
 .text
-.extern func_0200b2c0
+.extern ActorRuntimeTriple_Assign
 .extern func_0204cff4
 
     .global Actor_ApplyMotionImpulse
@@ -26,7 +26,7 @@ Actor_ApplyMotionImpulse: ; 0x02033f7c
     ldr r3, [r5, #0xc]
     mov r2, r1
     add r0, r6, #0x38
-    bl func_0200b2c0
+    bl ActorRuntimeTriple_Assign
     cmp r4, #0x0
     ldrne r0, [r6, #0xd0]
     orrne r0, r0, #0x4000

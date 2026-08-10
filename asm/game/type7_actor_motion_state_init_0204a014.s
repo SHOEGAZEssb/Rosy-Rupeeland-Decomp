@@ -4,7 +4,7 @@
 .extern data_021056e0
 .extern gGameWork
 .extern GameWork_TestFlag
-.extern func_0200b2c0
+.extern ActorRuntimeTriple_Assign
 .extern Type7Actor_SetCallbackPair
 .extern func_02072b68
 .text
@@ -42,17 +42,17 @@ Type7Actor_InitializeStationaryMotionState: ; 0x0204a014
     mov r2, r1
     mov r3, r1
     add r0, r4, #0x38
-    bl func_0200b2c0
+    bl ActorRuntimeTriple_Assign
     mov r1, #0x0
     add r0, r4, #0x88
     mov r2, r1
     mov r3, r1
-    bl func_0200b2c0
+    bl ActorRuntimeTriple_Assign
     mov r1, #0x0
     add r0, r4, #0x98
     mov r2, r1
     mov r3, r1
-    bl func_0200b2c0
+    bl ActorRuntimeTriple_Assign
     mov r0, #0x0
     str r0, [r4, #0x108]
     ldr r0, [r4, #0xd0]
@@ -90,17 +90,17 @@ Type7Actor_InitializeActiveMotionState: ; 0x0204a0d8
     mov r2, r1
     add r0, r5, #0x38
     mov r3, r1
-    bl func_0200b2c0
+    bl ActorRuntimeTriple_Assign
     mov r1, #0x0
     add r0, r5, #0x88
     mov r2, r1
     mov r3, r1
-    bl func_0200b2c0
+    bl ActorRuntimeTriple_Assign
     mov r1, #0x0
     add r0, r5, #0x98
     mov r2, r1
     mov r3, r1
-    bl func_0200b2c0
+    bl ActorRuntimeTriple_Assign
     cmp r4, #0x0
     beq .L_0204a1e4
     ldr r0, .L_0204a1f4

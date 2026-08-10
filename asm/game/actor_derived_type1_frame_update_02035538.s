@@ -13,7 +13,7 @@
 .extern DisplayBrightness_IsSubTransitionComplete
 .extern func_02005070
 .extern GamePhaseRuntime_StageAreaRequest
-.extern func_0200b2c0
+.extern ActorRuntimeTriple_Assign
 .extern Actor_ClearTransientContactState
 .extern func_02032228
 .extern func_02032370
@@ -380,7 +380,7 @@ ActorDerivedType1_UpdateFrame: ; 0x02035538
     mov r2, r1
     mov r3, r1
     add r0, r5, #0x88
-    bl func_0200b2c0
+    bl ActorRuntimeTriple_Assign
     b .L_02035a54
 .L_02035a38:
     cmp r1, #0x8000

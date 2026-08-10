@@ -6,7 +6,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern u32 *func_0200b2c0(void *object, u32 first, u32 second, u32 third);
+extern u32 *ActorRuntimeTriple_Assign(void *object, u32 first, u32 second, u32 third);
 extern void Actor_SetVelocity(void *actor, const VecFx32Object *value);
 #ifdef __cplusplus
 }
@@ -29,9 +29,9 @@ s32 func_020133e8(GamePhaseActorScriptVm *self)
     }
     if (actor[0xe6] == 1)
         *(u16 *)(*(u8 **)(actor + 0x54) + 0x24) &= (u16)~2;
-    func_0200b2c0(actor + 0x38, 0, 0, 0);
-    func_0200b2c0(actor + 0x88, 0, 0, 0);
-    func_0200b2c0(actor + 0x98, 0, 0, 0);
+    ActorRuntimeTriple_Assign(actor + 0x38, 0, 0, 0);
+    ActorRuntimeTriple_Assign(actor + 0x88, 0, 0, 0);
+    ActorRuntimeTriple_Assign(actor + 0x98, 0, 0, 0);
     func_0200500c(&zero, 0, 0, 0);
     Actor_SetVelocity(actor, &zero);
     func_02005058(&zero);

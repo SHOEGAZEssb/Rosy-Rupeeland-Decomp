@@ -17,19 +17,19 @@ typedef char ActorRuntimeSceneSizeCheck[
 extern "C" {
 #endif
 
-u32 *func_0200b2c0(void *object, u32 first, u32 second, u32 third);
-ActorRuntimeScene *func_0200b2d0(ActorRuntimeScene *self, void *object);
-ActorRuntimeScene *func_0200b41c(ActorRuntimeScene *self);
-ActorRuntimeScene *func_0200b56c(ActorRuntimeScene *self);
-s32 func_0200b6c4(ActorRuntimeScene *self);
-s32 func_0200b7b4(ActorRuntimeScene *self);
-s32 func_0200b7e0(ActorRuntimeScene *self);
-s32 func_0200b804(ActorRuntimeScene *self, const TouchPoint *point);
-TouchPoint *func_0200b83c(TouchPoint *result, const TouchPoint *source);
-s32 func_0200b85c(ActorRuntimeScene *self, const TouchPoint *point);
-s32 func_0200b894(ActorRuntimeScene *self, const TouchPoint *point);
-void func_0200b8cc(ActorRuntimeScene *self);
-void func_0200ba00(ActorRuntimeScene *self);
+u32 *ActorRuntimeTriple_Assign(void *object, u32 first, u32 second, u32 third);
+ActorRuntimeScene *ActorRuntimeScene_Init(ActorRuntimeScene *self, void *object);
+ActorRuntimeScene *ActorRuntimeScene_Destroy(ActorRuntimeScene *self);
+ActorRuntimeScene *ActorRuntimeScene_DestroyAndFree(ActorRuntimeScene *self);
+s32 ActorRuntimeScene_Update(ActorRuntimeScene *self);
+s32 ActorRuntimeScene_Begin(ActorRuntimeScene *self);
+s32 ActorRuntimeScene_End(ActorRuntimeScene *self);
+s32 ActorRuntimeScene_TouchBegin(ActorRuntimeScene *self, const TouchPoint *point);
+TouchPoint *TouchPoint_Assign(TouchPoint *result, const TouchPoint *source);
+s32 ActorRuntimeScene_TouchMove(ActorRuntimeScene *self, const TouchPoint *point);
+s32 ActorRuntimeScene_TouchEnd(ActorRuntimeScene *self, const TouchPoint *point);
+void ActorRuntimeScene_DeactivateActorSets(ActorRuntimeScene *self);
+void ActorRuntimeScene_ActivateFlaggedActors(ActorRuntimeScene *self);
 
 #ifdef __cplusplus
 }

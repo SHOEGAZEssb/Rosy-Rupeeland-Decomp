@@ -50,7 +50,7 @@ extern "C" {
 extern s32 func_020828a0(void *, s32);
 extern s32 Actor_GetCachedTerrainHeight(TerrainUpdateActor *);
 extern u32 Actor_QueryTerrainCell(TerrainUpdateActor *, s32, s32);
-extern void func_0200b2c0(void *, s32, s32, s32);
+extern void ActorRuntimeTriple_Assign(void *, s32, s32, s32);
 #ifdef __cplusplus
 }
 #endif
@@ -62,8 +62,8 @@ static void restoreTerrainActor(TerrainUpdateActor *actor, s32 oldValue)
     actor->field_1dc = oldValue;
     actor->field_3c = 0;
     actor->field_40 = 0;
-    func_0200b2c0((u8 *)actor + 0x88, 0, 0, 0);
-    func_0200b2c0((u8 *)actor + 0x98, 0, 0, 0);
+    ActorRuntimeTriple_Assign((u8 *)actor + 0x88, 0, 0, 0);
+    ActorRuntimeTriple_Assign((u8 *)actor + 0x98, 0, 0, 0);
     actor->flags_d0 |= 0x40;
 }
 

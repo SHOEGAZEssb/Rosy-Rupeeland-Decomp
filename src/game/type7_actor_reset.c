@@ -13,7 +13,7 @@ extern "C" {
 extern void GameWork_SetFlag(void *gameWork, u32 flag);
 extern void GameWork_ClearFlag(void *gameWork, u32 flag);
 extern void Type7Actor_ResetInteractionState(void *actor);
-extern void func_0200b2c0(void *value, s32 x, s32 y, s32 z);
+extern void ActorRuntimeTriple_Assign(void *value, s32 x, s32 y, s32 z);
 extern void AttachmentController_SetEnabled(void *value, s32 mode);
 extern void func_0206e590(void *resource, s32 mode);
 extern void func_0206c978(void *resource);
@@ -28,7 +28,7 @@ extern void Type7Actor_SetCallbackPair(void *actor, u32 first, u32 second, s32 d
  * Input is a type-seven actor. If attached resource +0x234 exists and its
  * halfword +0x1a is at most one, set game-work flag 0x417. Run the full reset
  * in Type7Actor_ResetInteractionState, set cooldown +0x2a6 to 15, and zero the recovered vector-
- * like values at +0x38, +0x88, and +0x98 through func_0200b2c0. Actor and
+ * like values at +0x38, +0x88, and +0x98 through ActorRuntimeTriple_Assign. Actor and
  * global game-work state may change; there is no return or direct hardware
  * access.
  */
@@ -40,9 +40,9 @@ void Type7Actor_ResetMotionAndCooldown(void *self)
         GameWork_SetFlag(gGameWork, 0x417);
     Type7Actor_ResetInteractionState(actor);
     *(u16 *)(actor + 0x2a6) = 15;
-    func_0200b2c0(actor + 0x38, 0, 0, 0);
-    func_0200b2c0(actor + 0x88, 0, 0, 0);
-    func_0200b2c0(actor + 0x98, 0, 0, 0);
+    ActorRuntimeTriple_Assign(actor + 0x38, 0, 0, 0);
+    ActorRuntimeTriple_Assign(actor + 0x88, 0, 0, 0);
+    ActorRuntimeTriple_Assign(actor + 0x98, 0, 0, 0);
 }
 
 /*

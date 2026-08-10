@@ -13,7 +13,7 @@ extern void func_02030b58(void *context, s32 value);
 extern void ActorDerivedType1_ClearStateVectorTimers(void *object);
 extern void Type7Actor_EnterSpecialPresentationState(void *object);
 extern void func_02072b68(u8 value);
-extern void func_0200ba00(ActorRuntimeScene *self);
+extern void ActorRuntimeScene_ActivateFlaggedActors(ActorRuntimeScene *self);
 #ifdef __cplusplus
 }
 #endif
@@ -27,7 +27,7 @@ extern void func_0200ba00(ActorRuntimeScene *self);
  * Returns self; called helpers mutate scene, actor, persistent, and rendering
  * state, but this routine performs no direct hardware register access.
  */
-ActorRuntimeScene *func_0200b2d0(ActorRuntimeScene *self, void *object)
+ActorRuntimeScene *ActorRuntimeScene_Init(ActorRuntimeScene *self, void *object)
 {
     u8 *root;
     u8 *active;
@@ -54,14 +54,14 @@ ActorRuntimeScene *func_0200b2d0(ActorRuntimeScene *self, void *object)
 
     *(u32 *)(active + 0x230) &= ~4;
     ActorDerivedType1_ClearStateVectorTimers(active);
-    func_0200b2c0(active + 0x38, 0, 0, 0);
-    func_0200b2c0(active + 0x88, 0, 0, 0);
-    func_0200b2c0(active + 0x98, 0, 0, 0);
+    ActorRuntimeTriple_Assign(active + 0x38, 0, 0, 0);
+    ActorRuntimeTriple_Assign(active + 0x88, 0, 0, 0);
+    ActorRuntimeTriple_Assign(active + 0x98, 0, 0, 0);
 
     context = *(void **)(root + 0x2ea8);
     if (context != 0)
         Type7Actor_EnterSpecialPresentationState(context);
-    func_0200ba00(self);
+    ActorRuntimeScene_ActivateFlaggedActors(self);
     context = GamePhaseRuntime_GetActorCollection(data_021052fc, 1);
     func_02030b58(context, 0);
     GameWork_TestFlag(gGameWork, 0x410);

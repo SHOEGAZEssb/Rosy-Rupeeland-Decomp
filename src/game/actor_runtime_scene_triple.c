@@ -8,7 +8,7 @@
  * deliberately leaves address zero as the destination, matching the original
  * unchecked contract. No SDK or hardware state is touched.
  */
-u32 *func_0200b2c0(void *object, u32 first, u32 second, u32 third)
+u32 *ActorRuntimeTriple_Assign(void *object, u32 first, u32 second, u32 third)
 {
     u32 *destination = (u32 *)object;
 

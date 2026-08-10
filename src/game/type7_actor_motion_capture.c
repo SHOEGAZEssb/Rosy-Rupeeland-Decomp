@@ -8,7 +8,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_0200b2c0(void *value, s32 x, s32 y, s32 z);
+extern void ActorRuntimeTriple_Assign(void *value, s32 x, s32 y, s32 z);
 #ifdef __cplusplus
 }
 #endif
@@ -32,7 +32,7 @@ void Type7Actor_InitializeMotionCapture(void *self)
     callback(actor, 0);
     *(s32 *)(actor + 0x8c) = *(s32 *)(actor + 0x3c);
     *(s32 *)(actor + 0x90) = *(s32 *)(actor + 0x40);
-    func_0200b2c0(actor + 0x38, 0, 0, 0);
-    func_0200b2c0(actor + 0x98, 0, 0, 0);
+    ActorRuntimeTriple_Assign(actor + 0x38, 0, 0, 0);
+    ActorRuntimeTriple_Assign(actor + 0x98, 0, 0, 0);
     *(void **)(actor + 0x210) = 0;
 }

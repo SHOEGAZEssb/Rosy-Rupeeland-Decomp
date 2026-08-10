@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/type7_actor_destination_motion.c.
 .extern data_020c9670
 .extern func_020050a4
-.extern func_0200b2c0
+.extern ActorRuntimeTriple_Assign
 .extern Type7Actor_CompleteDestinationMotion
 .extern func_0204cfa4
 .extern func_020adae4
@@ -48,17 +48,17 @@ Type7Actor_UpdateDestinationMotion: ; 0x0204991c
     mov r3, r1
     add r0, r4, #0x38
     strh ip, [r4, #0xd6]
-    bl func_0200b2c0
+    bl ActorRuntimeTriple_Assign
     mov r1, #0x0
     mov r2, r1
     mov r3, r1
     add r0, r4, #0x88
-    bl func_0200b2c0
+    bl ActorRuntimeTriple_Assign
     mov r1, #0x0
     mov r2, r1
     add r0, r4, #0x98
     mov r3, r1
-    bl func_0200b2c0
+    bl ActorRuntimeTriple_Assign
     mov r0, r7
     mov r1, r6
     bl func_020ae024

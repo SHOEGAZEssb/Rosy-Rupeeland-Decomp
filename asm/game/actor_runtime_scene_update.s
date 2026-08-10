@@ -12,8 +12,8 @@
 .extern func_02010e68
 .extern data_021052fc
 .extern gLupyContext
-.global func_0200b6c4
-func_0200b6c4:
+.global ActorRuntimeScene_Update
+ActorRuntimeScene_Update:
     stmdb sp!, {r4, lr}
     ldr r1, L_0200b7ac
     mov r4, r0
@@ -78,4 +78,4 @@ L_0200b774:
     ldmia sp!, {r4, pc}
 L_0200b7ac: .word data_021052fc
 L_0200b7b0: .word gLupyContext
-.size func_0200b6c4, . - func_0200b6c4
+.size ActorRuntimeScene_Update, . - ActorRuntimeScene_Update

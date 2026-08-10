@@ -9,7 +9,7 @@ extern void func_0200500c(void *vector, s32 x, s32 y, s32 z);
 extern void func_02005058(void *vector);
 extern void func_020050a4(void *destination, const void *source);
 extern void func_02008378(void *destination, u32 transform, const void *vector);
-extern void func_0200b2c0(void *vector, s32 x, s32 y, s32 z);
+extern void ActorRuntimeTriple_Assign(void *vector, s32 x, s32 y, s32 z);
 #ifdef __cplusplus
 }
 #endif
@@ -35,7 +35,7 @@ void func_020513ac(void *actor, const void *record, u32 transform, u32 unused)
     func_020050a4((u8 *)actor + 0x18, position);
     func_02005058(position);
     func_02005058(source);
-    func_0200b2c0((u8 *)actor + 0x38, 0, 0, 0);
+    ActorRuntimeTriple_Assign((u8 *)actor + 0x38, 0, 0, 0);
     FIELD(u32, actor, 0xd0) |= 0x2000;
     FIELD(u32, actor, 0x5c) = (FIELD(u32, actor, 0x5c) & 0xffff0000) | 8;
 }

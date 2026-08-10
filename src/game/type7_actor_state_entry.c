@@ -12,7 +12,7 @@ extern u32 data_020e18b8[];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_0200b2c0(void *value, s32 x, s32 y, s32 z);
+extern void ActorRuntimeTriple_Assign(void *value, s32 x, s32 y, s32 z);
 extern void AttachmentController_SetEnabled(void *value, s32 mode);
 extern void Type7Actor_ResetMotionAndCooldown(void *actor);
 extern void Type7Actor_SetCallbackPair(void *actor, u32 first, u32 second, s32 duration);
@@ -23,9 +23,9 @@ extern void Type7Actor_SetCallbackPair(void *actor, u32 first, u32 second, s32 d
 /* Clear the three vector-like fields shared by these state entries. */
 static void clear_motion_vectors(u8 *actor)
 {
-    func_0200b2c0(actor + 0x38, 0, 0, 0);
-    func_0200b2c0(actor + 0x88, 0, 0, 0);
-    func_0200b2c0(actor + 0x98, 0, 0, 0);
+    ActorRuntimeTriple_Assign(actor + 0x38, 0, 0, 0);
+    ActorRuntimeTriple_Assign(actor + 0x88, 0, 0, 0);
+    ActorRuntimeTriple_Assign(actor + 0x98, 0, 0, 0);
 }
 
 /*

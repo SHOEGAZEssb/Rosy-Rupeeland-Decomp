@@ -17,7 +17,7 @@ extern void func_02005058(void *);
 extern s32 func_02005070(void *);
 extern void func_020050a4(void *, const void *);
 extern void func_020050c8(void *, const void *);
-extern void func_0200b2c0(void *, s32, s32, s32);
+extern void ActorRuntimeTriple_Assign(void *, s32, s32, s32);
 extern s32 func_020adae4(s32, s32);
 extern s32 func_020adc90(s32, s32);
 extern void Actor_UpdateTerrainMotionFeedback(void *);
@@ -60,14 +60,14 @@ void Actor_IntegrateMotion(void *self)
     if (flags & 0x40) {
         *(s32 *)(actor + 0x3c) = 0;
         *(s32 *)(actor + 0x40) = 0;
-        func_0200b2c0(actor + 0x88, 0, 0, 0);
+        ActorRuntimeTriple_Assign(actor + 0x88, 0, 0, 0);
         if (actor[0x4d] != 1) {
-            func_0200b2c0(actor + 0x98, 0, 0, 0);
+            ActorRuntimeTriple_Assign(actor + 0x98, 0, 0, 0);
         } else if (*(s32 *)(actor + 0x44) <= 0 &&
                    *(s32 *)(actor + 0x24) == *(s32 *)(actor + 0x1dc)) {
             *(s32 *)(actor + 0xa4) = 0;
         } else {
-            func_0200b2c0(actor + 0x98, 0, 0, 0);
+            ActorRuntimeTriple_Assign(actor + 0x98, 0, 0, 0);
         }
         *(u32 *)(actor + 0xd0) &= ~0x40;
     }

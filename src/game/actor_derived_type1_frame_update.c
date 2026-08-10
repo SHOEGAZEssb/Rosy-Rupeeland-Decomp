@@ -36,7 +36,7 @@ extern void Type7AuxiliaryPresentation_Activate(void *object);
 extern void ActorDerivedType1_ClassifyState(void *actor);
 extern s32 Actor_IsAtCachedTerrainHeight(void *actor);
 extern s32 func_02005070(void *state);
-extern void func_0200b2c0(void *state, s32 first, s32 second, s32 third);
+extern void ActorRuntimeTriple_Assign(void *state, s32 first, s32 second, s32 third);
 extern s32 func_020adc90(s32 numerator, s32 denominator);
 extern void func_020328d0(void *state, s32 scale);
 extern void Actor_UpdateAnimationState(void *actor);
@@ -197,7 +197,7 @@ void ActorDerivedType1_UpdateFrame(void *self)
     {
         s32 magnitude = func_02005070(actor + 0x88);
         if (magnitude < 0x19a) {
-            func_0200b2c0(actor + 0x88, 0, 0, 0);
+            ActorRuntimeTriple_Assign(actor + 0x88, 0, 0, 0);
         } else if (magnitude > 0x8000) {
             func_020328d0(actor + 0x88, func_020adc90(0x8000, magnitude));
         }

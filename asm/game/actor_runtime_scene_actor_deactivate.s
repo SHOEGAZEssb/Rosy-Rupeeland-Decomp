@@ -5,8 +5,8 @@
 .extern Actor_RestorePrimaryAttachmentState
 .extern Actor_SetActive
 .extern data_021052fc
-.global func_0200b8cc
-func_0200b8cc:
+.global ActorRuntimeScene_DeactivateActorSets
+ActorRuntimeScene_DeactivateActorSets:
     stmdb sp!, {r3, r4, r5, r6, r7, r8, r9, lr}
     ldr r0, L_0200b9fc
     mov r1, #0x1
@@ -94,4 +94,4 @@ L_0200b9ec:
     blt L_0200b98c
     ldmia sp!, {r3, r4, r5, r6, r7, r8, r9, pc}
 L_0200b9fc: .word data_021052fc
-.size func_0200b8cc, . - func_0200b8cc
+.size ActorRuntimeScene_DeactivateActorSets, . - ActorRuntimeScene_DeactivateActorSets

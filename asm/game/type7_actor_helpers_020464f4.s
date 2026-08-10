@@ -5,7 +5,7 @@
 .extern func_02005030
 .extern func_02005058
 .extern func_020050a4
-.extern func_0200b2c0
+.extern ActorRuntimeTriple_Assign
 .extern func_02031758
 .extern Actor_RefreshTerrainHeight
 .extern Actor_ApplyMotionImpulse
@@ -31,12 +31,12 @@ Type7Actor_ResetBaseTransformAndMotion: ; 0x020464f4
     mov r3, r1
     str r0, [r4, #0x24]
     add r0, r4, #0x38
-    bl func_0200b2c0
+    bl ActorRuntimeTriple_Assign
     add r0, r4, #0x88
     mov r1, #0x0
     mov r2, r1
     mov r3, r1
-    bl func_0200b2c0
+    bl ActorRuntimeTriple_Assign
     ldmia sp!, {r4, pc}
 
 .size Type7Actor_ResetBaseTransformAndMotion, . - Type7Actor_ResetBaseTransformAndMotion

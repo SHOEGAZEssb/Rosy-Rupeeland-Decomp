@@ -6,16 +6,16 @@
 .extern GameWork_TestFlag
 .extern func_02072b68
 .extern ActorDerivedType1_ClearStateVectorTimers
-.extern func_0200b2c0
+.extern ActorRuntimeTriple_Assign
 .extern Type7Actor_EnterSpecialPresentationState
-.extern func_0200ba00
+.extern ActorRuntimeScene_ActivateFlaggedActors
 .extern GamePhaseRuntime_GetActorCollection
 .extern func_02030b58
 .extern data_020d448c
 .extern data_021052fc
 .extern gGameWork
-.global func_0200b2d0
-func_0200b2d0:
+.global ActorRuntimeScene_Init
+ActorRuntimeScene_Init:
     stmdb sp!, {r3, r4, r5, lr}
     mov r5, r0
     mov r4, r1
@@ -63,17 +63,17 @@ L_0200b364:
     mov r2, r1
     mov r3, r1
     add r0, r4, #0x38
-    bl func_0200b2c0
+    bl ActorRuntimeTriple_Assign
     mov r1, #0x0
     mov r2, r1
     mov r3, r1
     add r0, r4, #0x88
-    bl func_0200b2c0
+    bl ActorRuntimeTriple_Assign
     add r0, r4, #0x98
     mov r1, #0x0
     mov r2, r1
     mov r3, r1
-    bl func_0200b2c0
+    bl ActorRuntimeTriple_Assign
     ldr r0, L_0200b40c
     ldr r0, [r0, #0x0]
     add r0, r0, #0x2000
@@ -83,7 +83,7 @@ L_0200b364:
     bl Type7Actor_EnterSpecialPresentationState
 L_0200b3d0:
     mov r0, r5
-    bl func_0200ba00
+    bl ActorRuntimeScene_ActivateFlaggedActors
     ldr r0, L_0200b40c
     mov r1, #0x1
     ldr r0, [r0, #0x0]
@@ -101,5 +101,5 @@ L_0200b40c: .word data_021052fc
 L_0200b410: .word gGameWork
 L_0200b414: .word 0x3f3
 L_0200b418: .word 0x403
-.size func_0200b2d0, . - func_0200b2d0
+.size ActorRuntimeScene_Init, . - ActorRuntimeScene_Init
 

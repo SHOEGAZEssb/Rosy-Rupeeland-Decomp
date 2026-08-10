@@ -8,7 +8,7 @@ extern "C" {
 #endif
 extern void Actor_RefreshTerrainHeight(void *actor);
 extern void func_0204cff4(s32 *x, s32 *y, s32 maximum);
-extern void func_0200b2c0(void *state, s32 first, s32 second, s32 third);
+extern void ActorRuntimeTriple_Assign(void *state, s32 first, s32 second, s32 third);
 #ifdef __cplusplus
 }
 #endif
@@ -98,6 +98,6 @@ void Actor_ApplyMotionImpulse(void *self, const void *vector, s32 mark)
     *(s32 *)(actor + 0x8c) += *(s32 *)(values + 4);
     *(s32 *)(actor + 0x90) += *(s32 *)(values + 8);
     func_0204cff4((s32 *)(actor + 0x8c), (s32 *)(actor + 0x90), 0x6000);
-    func_0200b2c0(actor + 0x38, 0, 0, *(s32 *)(values + 0x0c));
+    ActorRuntimeTriple_Assign(actor + 0x38, 0, 0, *(s32 *)(values + 0x0c));
     if (mark != 0) *(u32 *)(actor + 0xd0) |= 0x4000;
 }

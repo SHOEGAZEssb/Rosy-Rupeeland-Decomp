@@ -20,7 +20,7 @@ extern void Actor_SetActive(void *actor, s32 active);
  * 0x2e74 and entries begin at offset zero. Returns no value; actor state changes
  * occur through the called helpers and self is unused.
  */
-void func_0200b8cc(ActorRuntimeScene *self)
+void ActorRuntimeScene_DeactivateActorSets(ActorRuntimeScene *self)
 {
     s32 bank;
 
@@ -50,7 +50,7 @@ void func_0200b8cc(ActorRuntimeScene *self)
  * bit 0x8000 at offset 0x14. Returns no value; self is unused and actor state
  * changes are delegated to Actor_SetActive.
  */
-void func_0200ba00(ActorRuntimeScene *self)
+void ActorRuntimeScene_ActivateFlaggedActors(ActorRuntimeScene *self)
 {
     s32 bank;
 

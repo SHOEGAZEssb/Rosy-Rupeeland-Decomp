@@ -11,7 +11,7 @@ extern void *gSoundContext;
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_0200b2c0(void *value, s32 x, s32 y, s32 z);
+extern void ActorRuntimeTriple_Assign(void *value, s32 x, s32 y, s32 z);
 extern void AttachmentController_SetEnabled(void *state, s32 enabled);
 extern s32 Type7Actor_GetStateCode(void *actor);
 extern void Type7Actor_UpdateAttachmentControllerAnimation(void *actor);
@@ -29,7 +29,7 @@ extern void func_02072b68(void *presentation, u32 index);
  * +0x268 bit 0x200000, disable helper +0x2a8, optionally advance the current
  * presentation index +0xd4 by eight, set presentation +0x36 to 0x100 and
  * +0x24 bit 0x20, and zero vector-like fields +0x38, +0x88, and +0x98 through
- * func_0200b2c0. Otherwise do nothing. No value is returned. Actor and
+ * ActorRuntimeTriple_Assign. Otherwise do nothing. No value is returned. Actor and
  * presentation state change, with no direct hardware effects.
  */
 void Type7Actor_EnterSpecialPresentationState(void *self)
@@ -45,9 +45,9 @@ void Type7Actor_EnterSpecialPresentationState(void *self)
         func_02072b68(presentation, (u8)(*(u8 *)(actor + 0xd4) + 8));
     *(u16 *)(presentation + 0x36) = 0x100;
     *(u16 *)(presentation + 0x24) |= 0x20;
-    func_0200b2c0(actor + 0x38, 0, 0, 0);
-    func_0200b2c0(actor + 0x88, 0, 0, 0);
-    func_0200b2c0(actor + 0x98, 0, 0, 0);
+    ActorRuntimeTriple_Assign(actor + 0x38, 0, 0, 0);
+    ActorRuntimeTriple_Assign(actor + 0x88, 0, 0, 0);
+    ActorRuntimeTriple_Assign(actor + 0x98, 0, 0, 0);
 }
 
 /*
@@ -97,9 +97,9 @@ void Type7Actor_StartAnimation19Interaction(void *self, s32 value, s32 selector)
     void (**helperVtable)(void *);
     if (*(void **)(actor + 0x294) == 0 || Type7Actor_GetStateCode(actor) != 0)
         return;
-    func_0200b2c0(actor + 0x38, 0, 0, 0);
-    func_0200b2c0(actor + 0x88, 0, 0, 0);
-    func_0200b2c0(actor + 0x98, 0, 0, 0);
+    ActorRuntimeTriple_Assign(actor + 0x38, 0, 0, 0);
+    ActorRuntimeTriple_Assign(actor + 0x88, 0, 0, 0);
+    ActorRuntimeTriple_Assign(actor + 0x98, 0, 0, 0);
     *(s32 *)(actor + 0x110) = value;
     *(s32 *)(actor + 0x114) = selector != 0;
     actorVtable = *(void (***)(void *, void *))actor;
