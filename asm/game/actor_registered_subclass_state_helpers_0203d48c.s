@@ -4,9 +4,9 @@
 .extern data_020df9d8
 .extern func_0201f864
 .extern gHeapContext
-    .global func_0203d48c
-    .type func_0203d48c, @function
-func_0203d48c: ; 0x0203d48c
+    .global ActorRegisteredSubclass_StartTimedState
+    .type ActorRegisteredSubclass_StartTimedState, @function
+ActorRegisteredSubclass_StartTimedState: ; 0x0203d48c
     stmdb sp!, {r4, r5, r6, lr}
     sub sp, sp, #0x18
     mov r4, r0
@@ -53,4 +53,4 @@ func_0203d48c: ; 0x0203d48c
     ldmia sp!, {r4, r5, r6, pc}
 .L_0203d538: .word gHeapContext
 .L_0203d53c: .word data_020df9d8
-    .size func_0203d48c, . - func_0203d48c
+    .size ActorRegisteredSubclass_StartTimedState, . - ActorRegisteredSubclass_StartTimedState

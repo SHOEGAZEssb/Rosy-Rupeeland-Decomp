@@ -4,7 +4,7 @@
 .extern func_0201e0ec
 .extern Actor_GetCachedTerrainHeight
 .extern ActorTableRecord_UpdateFrame
-.extern func_0203d86c
+.extern ActorRegisteredSubclass_EnterState2
 .extern func_020a28e0
 .extern func_020befec
 .extern genrand_int32
@@ -48,14 +48,14 @@ ActorRegisteredSubclass_UpdateFrame: ; 0x0203d540
     cmp r0, #0x1
     ldmneia sp!, {r3, r4, r5, pc}
     mov r0, r5
-    bl func_0203d86c
+    bl ActorRegisteredSubclass_EnterState2
     ldmia sp!, {r3, r4, r5, pc}
 .L_0203d5d0:
     ldr r0, [r5, #0x114]
     cmp r0, #0x1
     bne .L_0203d5e8
     mov r0, r5
-    bl func_0203d86c
+    bl ActorRegisteredSubclass_EnterState2
     ldmia sp!, {r3, r4, r5, pc}
 .L_0203d5e8:
     add r1, r5, #0x200
@@ -97,7 +97,7 @@ ActorRegisteredSubclass_UpdateFrame: ; 0x0203d540
     ldmia sp!, {r3, r4, r5, pc}
 .L_0203d67c:
     mov r0, r5
-    bl func_0203d86c
+    bl ActorRegisteredSubclass_EnterState2
     ldmia sp!, {r3, r4, r5, pc}
 .L_0203d688:
     ldr r0, [r5, #0x114]

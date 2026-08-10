@@ -2,9 +2,9 @@
 .text
 .extern data_02105718
 .extern Actor_SetInteractionFlag2000
-    .global func_0203d3b4
-    .type func_0203d3b4, @function
-func_0203d3b4: ; 0x0203d3b4
+    .global ActorRegisteredSubclass_RegisterInteractionCandidate
+    .type ActorRegisteredSubclass_RegisterInteractionCandidate, @function
+ActorRegisteredSubclass_RegisterInteractionCandidate: ; 0x0203d3b4
     stmdb sp!, {r3, lr}
     ldrsh r2, [r0, #0xd6]
     cmp r2, #0x1
@@ -26,5 +26,5 @@ func_0203d3b4: ; 0x0203d3b4
     mov r0, #0x1
     ldmia sp!, {r3, pc}
 .L_0203d3f8: .word data_02105718
-    .size func_0203d3b4, . - func_0203d3b4
+    .size ActorRegisteredSubclass_RegisterInteractionCandidate, . - ActorRegisteredSubclass_RegisterInteractionCandidate
 

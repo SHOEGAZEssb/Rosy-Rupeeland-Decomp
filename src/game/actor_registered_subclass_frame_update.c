@@ -12,7 +12,7 @@ extern "C" {
 #endif
 extern void ActorTableRecord_UpdateFrame(void *actor);
 extern s32 Actor_GetCachedTerrainHeight(void *actor);
-extern void func_0203d86c(void *actor);
+extern void ActorRegisteredSubclass_EnterState2(void *actor);
 extern void *func_0201e0ec(void *manager);
 extern void func_020a28e0(void *effect, s32 kind, s32 x, s32 y, s32 duration);
 #ifdef __cplusplus
@@ -26,8 +26,9 @@ extern void func_020a28e0(void *effect, s32 kind, s32 x, s32 y, s32 duration);
  * preserved because whether that helper mutates state is not yet confirmed.
  *
  * State halfword +0xd6 selects the remaining behavior. States zero and one
- * enter func_0203d86c when word +0x114 equals one. Otherwise state one advances
- * timer +0x218 until limit +0x21a; on timer values congruent to two modulo 15,
+ * enter ActorRegisteredSubclass_EnterState2 when word +0x114 equals one.
+ * Otherwise state one advances timer +0x218 until limit +0x21a; on timer
+ * values congruent to two modulo 15,
  * it emits a randomized effect near the actor through the manager at global
  * offset +0x2f7c. State two either marks attachment +0x24 bit 0x10 when +0x114
  * is one or resets the actor to state zero, restores the 120-frame limit,
@@ -51,19 +52,19 @@ void ActorRegisteredSubclass_UpdateFrame(void *self)
     state = *(s16 *)(actor + 0xd6);
     if (state == 0) {
         if (*(s32 *)(actor + 0x114) == 1)
-            func_0203d86c(actor);
+            ActorRegisteredSubclass_EnterState2(actor);
         return;
     }
     if (state == 1) {
         u16 *timer = (u16 *)(actor + 0x218);
 
         if (*(s32 *)(actor + 0x114) == 1) {
-            func_0203d86c(actor);
+            ActorRegisteredSubclass_EnterState2(actor);
             return;
         }
         ++timer[0];
         if (timer[0] >= timer[1]) {
-            func_0203d86c(actor);
+            ActorRegisteredSubclass_EnterState2(actor);
             return;
         }
         if (timer[0] % 15 == 2) {

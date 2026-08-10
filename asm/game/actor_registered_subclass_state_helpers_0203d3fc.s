@@ -4,10 +4,10 @@
 .extern func_020349b8
 .extern Actor_SetDirectionFromVector
 .extern ActorDerivedType1_StartRecord
-.extern func_0203d48c
-    .global func_0203d3fc
-    .type func_0203d3fc, @function
-func_0203d3fc: ; 0x0203d3fc
+.extern ActorRegisteredSubclass_StartTimedState
+    .global ActorRegisteredSubclass_TriggerPrimaryInteraction
+    .type ActorRegisteredSubclass_TriggerPrimaryInteraction, @function
+ActorRegisteredSubclass_TriggerPrimaryInteraction: ; 0x0203d3fc
     stmdb sp!, {r3, r4, r5, lr}
     mov r4, r0
     ldrsh r1, [r4, #0xd6]
@@ -17,7 +17,7 @@ func_0203d3fc: ; 0x0203d3fc
     mov r3, #0x0
     mov r1, #0x78
     strh r3, [r2, #0x18]
-    bl func_0203d48c
+    bl ActorRegisteredSubclass_StartTimedState
     ldr r1, .L_0203d484
     mov r0, r4
     mov r2, #0x0
@@ -45,4 +45,4 @@ func_0203d3fc: ; 0x0203d3fc
     ldmia sp!, {r3, r4, r5, pc}
 .L_0203d484: .word 0xe204
 .L_0203d488: .word data_021052fc
-    .size func_0203d3fc, . - func_0203d3fc
+    .size ActorRegisteredSubclass_TriggerPrimaryInteraction, . - ActorRegisteredSubclass_TriggerPrimaryInteraction

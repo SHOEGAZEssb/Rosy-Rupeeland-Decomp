@@ -13,9 +13,9 @@
 .extern func_020be334
 .extern gHeapContext
 .extern gSoundContext
-    .global func_0203d6e0
-    .type func_0203d6e0, @function
-func_0203d6e0: ; 0x0203d6e0
+    .global ActorRegisteredSubclass_EmitImpactFeedback
+    .type ActorRegisteredSubclass_EmitImpactFeedback, @function
+ActorRegisteredSubclass_EmitImpactFeedback: ; 0x0203d6e0
     stmdb sp!, {r4, r5, r6, lr}
     sub sp, sp, #0x18
     mov r5, r0
@@ -92,11 +92,11 @@ func_0203d6e0: ; 0x0203d6e0
 .L_0203d7f8: .word data_020df9d8
 .L_0203d7fc: .word gHeapContext
 .L_0203d800: .word 0x162c
-    .size func_0203d6e0, . - func_0203d6e0
+    .size ActorRegisteredSubclass_EmitImpactFeedback, . - ActorRegisteredSubclass_EmitImpactFeedback
 
-    .global func_0203d804
-    .type func_0203d804, @function
-func_0203d804: ; 0x0203d804
+    .global ActorRegisteredSubclass_UpdatePresentationState
+    .type ActorRegisteredSubclass_UpdatePresentationState, @function
+ActorRegisteredSubclass_UpdatePresentationState: ; 0x0203d804
     stmdb sp!, {r4, lr}
     mov r4, r0
     ldrsh r0, [r4, #0xd6]
@@ -124,11 +124,11 @@ func_0203d804: ; 0x0203d804
     bic r0, r0, #0x11
     strh r0, [r1, #0x24]
     ldmia sp!, {r4, pc}
-    .size func_0203d804, . - func_0203d804
+    .size ActorRegisteredSubclass_UpdatePresentationState, . - ActorRegisteredSubclass_UpdatePresentationState
 
-    .global func_0203d86c
-    .type func_0203d86c, @function
-func_0203d86c: ; 0x0203d86c
+    .global ActorRegisteredSubclass_EnterState2
+    .type ActorRegisteredSubclass_EnterState2, @function
+ActorRegisteredSubclass_EnterState2: ; 0x0203d86c
     stmdb sp!, {r3, lr}
     mov r1, #0x2
     strh r1, [r0, #0xd6]
@@ -149,4 +149,4 @@ func_0203d86c: ; 0x0203d86c
     orr r1, r1, #0x100
     str r1, [r0, #0x10]
     ldmia sp!, {r3, pc}
-    .size func_0203d86c, . - func_0203d86c
+    .size ActorRegisteredSubclass_EnterState2, . - ActorRegisteredSubclass_EnterState2

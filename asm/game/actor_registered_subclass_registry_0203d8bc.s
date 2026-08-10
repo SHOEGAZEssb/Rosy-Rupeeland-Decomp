@@ -5,8 +5,8 @@
 .extern data_02105718
 .extern func_02007868
 .extern ActorTableRecord_ApplyCollisionResponse
-.extern func_0203d3fc
-.extern func_0203d48c
+.extern ActorRegisteredSubclass_TriggerPrimaryInteraction
+.extern ActorRegisteredSubclass_StartTimedState
     .global func_0203d8bc
     .type func_0203d8bc, @function
 func_0203d8bc: ; 0x0203d8bc
@@ -24,7 +24,7 @@ func_0203d8bc: ; 0x0203d8bc
     mov r0, r4
     smulbb r1, r2, r1
     add r1, r1, #0x10
-    bl func_0203d48c
+    bl ActorRegisteredSubclass_StartTimedState
     ldr r0, .L_0203d90c
     ldrsh r1, [r0, #0x0]
     add r1, r1, #0x1
@@ -105,7 +105,7 @@ func_0203d944: ; 0x0203d944
     mla r1, r2, r2, r1
     cmp r1, #0x640
     bge .L_0203da04
-    bl func_0203d3fc
+    bl ActorRegisteredSubclass_TriggerPrimaryInteraction
 .L_0203da04:
     ldr r0, .L_0203da14
     mov r1, #0x0

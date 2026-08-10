@@ -16464,7 +16464,7 @@ build build/reports/actor_registered_subclass_state_helpers_0203d3b4.json: objdi
   base_object = build/decomp/asm/game/actor_registered_subclass_state_helpers_0203d3b4.o
 build build/reports/actor_registered_subclass_state_helpers_0203d3b4.txt: match_report build/reports/actor_registered_subclass_state_helpers_0203d3b4.json | tools/report_objdiff.py
   report_json = build/reports/actor_registered_subclass_state_helpers_0203d3b4.json
-  report_args = --section .text --function func_0203d3b4 --require-exact
+  report_args = --section .text --function ActorRegisteredSubclass_RegisterInteractionCandidate --require-exact
 build build/decomp/asm/game/actor_registered_subclass_state_helpers_0203d3fc.o: mwasmarm asm/game/actor_registered_subclass_state_helpers_0203d3fc.s
 build build/decomp/delinks/asm/game/actor_registered_subclass_state_helpers_0203d3fc.o: dsd_delink config/arm9/config.yaml config/arm9/delinks.txt config/arm9/symbols.txt config/arm9/relocs.txt
 build build/reports/actor_registered_subclass_state_helpers_0203d3fc.json: objdiff build/decomp/delinks/asm/game/actor_registered_subclass_state_helpers_0203d3fc.o | build/decomp/asm/game/actor_registered_subclass_state_helpers_0203d3fc.o
@@ -16472,7 +16472,7 @@ build build/reports/actor_registered_subclass_state_helpers_0203d3fc.json: objdi
   base_object = build/decomp/asm/game/actor_registered_subclass_state_helpers_0203d3fc.o
 build build/reports/actor_registered_subclass_state_helpers_0203d3fc.txt: match_report build/reports/actor_registered_subclass_state_helpers_0203d3fc.json | tools/report_objdiff.py
   report_json = build/reports/actor_registered_subclass_state_helpers_0203d3fc.json
-  report_args = --section .text --function func_0203d3fc --require-exact
+  report_args = --section .text --function ActorRegisteredSubclass_TriggerPrimaryInteraction --require-exact
 build build/decomp/asm/game/actor_registered_subclass_state_helpers_0203d48c.o: mwasmarm asm/game/actor_registered_subclass_state_helpers_0203d48c.s
 build build/decomp/delinks/asm/game/actor_registered_subclass_state_helpers_0203d48c.o: dsd_delink config/arm9/config.yaml config/arm9/delinks.txt config/arm9/symbols.txt config/arm9/relocs.txt
 build build/reports/actor_registered_subclass_state_helpers_0203d48c.json: objdiff build/decomp/delinks/asm/game/actor_registered_subclass_state_helpers_0203d48c.o | build/decomp/asm/game/actor_registered_subclass_state_helpers_0203d48c.o
@@ -16480,7 +16480,7 @@ build build/reports/actor_registered_subclass_state_helpers_0203d48c.json: objdi
   base_object = build/decomp/asm/game/actor_registered_subclass_state_helpers_0203d48c.o
 build build/reports/actor_registered_subclass_state_helpers_0203d48c.txt: match_report build/reports/actor_registered_subclass_state_helpers_0203d48c.json | tools/report_objdiff.py
   report_json = build/reports/actor_registered_subclass_state_helpers_0203d48c.json
-  report_args = --section .text --function func_0203d48c --require-exact
+  report_args = --section .text --function ActorRegisteredSubclass_StartTimedState --require-exact
 build build/reports/actor_registered_subclass_state_helpers.txt: phony build/reports/actor_registered_subclass_state_helpers_0203d3b4.txt build/reports/actor_registered_subclass_state_helpers_0203d3fc.txt build/reports/actor_registered_subclass_state_helpers_0203d48c.txt
 
 build actor_registered_subclass_state_helpers: phony build/decomp/src/game/actor_registered_subclass_state_helpers.o build/decomp/asm/game/actor_registered_subclass_state_helpers_0203d3b4.o build/decomp/asm/game/actor_registered_subclass_state_helpers_0203d3fc.o build/decomp/asm/game/actor_registered_subclass_state_helpers_0203d48c.o build/reports/actor_registered_subclass_state_helpers.txt
@@ -16514,7 +16514,7 @@ build build/reports/actor_registered_subclass_presentation_helpers_0203d6e0.json
   base_object = build/decomp/asm/game/actor_registered_subclass_presentation_helpers_0203d6e0.o
 build build/reports/actor_registered_subclass_presentation_helpers_0203d6e0.txt: match_report build/reports/actor_registered_subclass_presentation_helpers_0203d6e0.json | tools/report_objdiff.py
   report_json = build/reports/actor_registered_subclass_presentation_helpers_0203d6e0.json
-  report_args = --section .text --function func_0203d6e0 --function func_0203d804 --function func_0203d86c --require-exact
+  report_args = --section .text --function ActorRegisteredSubclass_EmitImpactFeedback --function ActorRegisteredSubclass_UpdatePresentationState --function ActorRegisteredSubclass_EnterState2 --require-exact
 build build/reports/actor_registered_subclass_presentation_helpers.txt: phony build/reports/actor_registered_subclass_presentation_helpers_0203d6e0.txt
 
 build actor_registered_subclass_presentation_helpers: phony build/decomp/src/game/actor_registered_subclass_presentation_helpers.o build/decomp/asm/game/actor_registered_subclass_presentation_helpers_0203d6e0.o build/reports/actor_registered_subclass_presentation_helpers.txt

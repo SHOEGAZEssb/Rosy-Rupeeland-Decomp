@@ -14,18 +14,18 @@ extern void func_020349b8(void *actor, u32 sound, s32 extra);
 extern void ActorDerivedType1_StartRecord(void *actor, s32 value);
 extern void Actor_SetDirectionFromVector(void *actor, s32 x, s32 y);
 extern void *func_0201f864(void *allocation, ...);
-void func_0203d48c(void *self, u16 limit);
+void ActorRegisteredSubclass_StartTimedState(void *self, u16 limit);
 #ifdef __cplusplus
 }
 #endif
 
 /*
  * When signed actor state +0xd6 is at most one, store actor in the first null
- * slot of data_02105718's four entries. Invoke Actor_SetInteractionFlag2000 regardless of
- * registration, discard its result, and return one. Registry and base helper
- * calls have observable global/actor effects.
+ * slot of data_02105718's four entries. Invoke Actor_SetInteractionFlag2000
+ * regardless of registration, discard its result, and return one. Registry
+ * and base helper calls have observable global/actor effects.
  */
-s32 func_0203d3b4(void *self)
+s32 ActorRegisteredSubclass_RegisterInteractionCandidate(void *self)
 {
     u8 *actor = (u8 *)self;
     if (*(s16 *)(actor + 0xd6) <= 1) {
@@ -43,26 +43,27 @@ s32 func_0203d3b4(void *self)
 
 /*
  * If actor state +0xd6 is zero, clear halfword +0x218, initiate state through
- * func_0203d48c(actor,120), and play packed sound 0xe204 through
- * func_020349b8. Then obtain the primary runtime actor at +0x2ea4, invoke
- * ActorDerivedType1_StartRecord(target,126), pass self-minus-target X/Y displacement to
- * Actor_SetDirectionFromVector, and invoke target virtual +0x5c. Returns no value; sound,
- * state, motion, and virtual calls mutate global actor state.
+ * ActorRegisteredSubclass_StartTimedState(actor,120), and play packed sound
+ * 0xe204 through func_020349b8. Then obtain the primary runtime actor at
+ * +0x2ea4, invoke ActorDerivedType1_StartRecord(target,126), pass
+ * self-minus-target X/Y displacement to Actor_SetDirectionFromVector, and
+ * invoke target virtual +0x5c. Returns no value; sound, state, motion, and
+ * virtual calls mutate global actor state.
  */
-void func_0203d3fc(void *self)
+void ActorRegisteredSubclass_TriggerPrimaryInteraction(void *self)
 {
     u8 *actor = (u8 *)self;
     u8 *target;
     if (*(s16 *)(actor + 0xd6) == 0) {
         *(u16 *)(actor + 0x218) = 0;
-        func_0203d48c(actor, 0x78);
+        ActorRegisteredSubclass_StartTimedState(actor, 0x78);
         func_020349b8(actor, 0xe204, 0);
     }
     target = *(u8 **)(data_021052fc + 0x2ea4);
     ActorDerivedType1_StartRecord(target, 0x7e);
-    Actor_SetDirectionFromVector(target,
-                  *(s32 *)(actor + 0x1c) - *(s32 *)(target + 0x1c),
-                  *(s32 *)(actor + 0x20) - *(s32 *)(target + 0x20));
+    Actor_SetDirectionFromVector(
+        target, *(s32 *)(actor + 0x1c) - *(s32 *)(target + 0x1c),
+        *(s32 *)(actor + 0x20) - *(s32 *)(target + 0x20));
     (*(void (**)(void *))(*(u8 **)target + 0x5c))(target);
 }
 
@@ -75,7 +76,7 @@ void func_0203d3fc(void *self)
  * 2,-4,-1,1. Returns no value; heap and presentation calls establish owned
  * presentation state, although the returned presentation is not retained here.
  */
-void func_0203d48c(void *self, u16 limit)
+void ActorRegisteredSubclass_StartTimedState(void *self, u16 limit)
 {
     u8 *actor = (u8 *)self;
     void *allocation;

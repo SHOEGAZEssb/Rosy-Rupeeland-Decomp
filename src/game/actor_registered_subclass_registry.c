@@ -13,9 +13,9 @@ extern "C" {
 #endif
 extern void ActorTableRecord_ApplyCollisionResponse(void *actor, s32 value,
                                                     s32 zero, s32 extra);
-extern void func_0203d48c(void *actor, u16 limit);
+extern void ActorRegisteredSubclass_StartTimedState(void *actor, u16 limit);
 extern s32 func_02007868(void *actor);
-extern void func_0203d3fc(void *actor);
+extern void ActorRegisteredSubclass_TriggerPrimaryInteraction(void *actor);
 #ifdef __cplusplus
 }
 #endif
@@ -35,7 +35,8 @@ void func_0203d8bc(void *self, s32 value, s32 extra)
     if ((*(u32 *)(actor + 0x14) & 2) != 0)
         return;
     ActorTableRecord_ApplyCollisionResponse(actor, value, 0, extra);
-    func_0203d48c(actor, (u16)(data_02105714[0] * 6 + 16));
+    ActorRegisteredSubclass_StartTimedState(
+        actor, (u16)(data_02105714[0] * 6 + 16));
     ++data_02105714[0];
 }
 
@@ -59,9 +60,10 @@ void func_0203d910(void)
  * func_02007868, scan all four registry slots, selecting the actor whose
  * attachment halfword +0x28 is smallest. Every occupied slot is cleared while
  * scanning. If the selected actor is within squared X/Y distance 1600 of the
- * primary actor (coordinates shifted down 12), invoke func_0203d3fc on it.
- * Finally clear data_02105714[0]. Returns no value; registry, counter, and actor
- * interaction state may change. A zero [1] counter returns without clearing.
+ * primary actor (coordinates shifted down 12), invoke
+ * ActorRegisteredSubclass_TriggerPrimaryInteraction on it. Finally clear
+ * data_02105714[0]. Returns no value; registry, counter, and actor interaction
+ * state may change. A zero [1] counter returns without clearing.
  */
 void func_0203d944(void)
 {
@@ -91,7 +93,7 @@ void func_0203d944(void)
             s32 dx = (*(s32 *)(primary + 0x1c) >> 12) -
                      (*(s32 *)(selected + 0x1c) >> 12);
             if (dy * dy + dx * dx < 1600)
-                func_0203d3fc(selected);
+                ActorRegisteredSubclass_TriggerPrimaryInteraction(selected);
         }
     }
     data_02105714[0] = 0;

@@ -33,7 +33,7 @@ extern void *func_02050078(s32 effect, const void *first, const void *second);
  * presentation using attachment resource +0x00 and constants 0x162b..0x162d.
  * Returns no value; sound hardware, heap, and presentation state may change.
  */
-void func_0203d6e0(void *self)
+void ActorRegisteredSubclass_EmitImpactFeedback(void *self)
 {
     u8 *actor = (u8 *)self;
     s32 magnitude = func_020be334(*(s32 *)(actor + 0x44));
@@ -72,7 +72,7 @@ void func_0203d6e0(void *self)
  * 0x01/0x10. State two only sets bit 0x10; other states do nothing. Returns no
  * value; attachment animation and flags change.
  */
-void func_0203d804(void *self)
+void ActorRegisteredSubclass_UpdatePresentationState(void *self)
 {
     u8 *actor = (u8 *)self;
     s16 state = *(s16 *)(actor + 0xd6);
@@ -99,7 +99,7 @@ void func_0203d804(void *self)
  * attachment, and effect-manager state change. The returned object is assumed
  * non-null because the retail code dereferences it unconditionally.
  */
-void func_0203d86c(void *self)
+void ActorRegisteredSubclass_EnterState2(void *self)
 {
     u8 *actor = (u8 *)self;
     u8 *effect;
