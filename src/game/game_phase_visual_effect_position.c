@@ -56,25 +56,25 @@ void func_0200fe0c(GamePhaseVisualEffect *self,
             current.value.y != self->vectors[2].value.y ||
             current.value.z != self->vectors[2].value.z) {
             VecFx32Stepper newStepper;
-            func_020066dc(&newStepper, &current, &self->vectors[2], 0x78);
-            func_0200676c(&self->stepper, &newStepper);
-            func_02006788(&newStepper);
+            VecFx32Stepper_InitTransition(&newStepper, &current, &self->vectors[2], 0x78);
+            VecFx32Stepper_Assign(&self->stepper, &newStepper);
+            VecFx32Stepper_Destroy(&newStepper);
         }
-        func_020067b0(&self->stepper);
-        func_020050a4(&self->vectors[2], func_020067f4(&self->stepper));
+        VecFx32Stepper_Update(&self->stepper);
+        func_020050a4(&self->vectors[2], VecFx32Stepper_GetCurrent(&self->stepper));
     } else {
         func_0200500c(&temporary, 0, 0, 0);
         func_020050a4(&self->vectors[2], &temporary);
         func_02005058(&temporary);
     }
 
-    func_020066a4(&temporary, position, &self->vectors[0]);
+    VecFx32_Subtract(&temporary, position, &self->vectors[0]);
     func_020050a4(&current, &temporary);
     func_02005058(&temporary);
     current.value.x = quantizeComponent(current.value.x);
     current.value.y = quantizeComponent(current.value.y);
     func_020050a4(&self->vectors[0], position);
-    func_020066a4(&temporary, &current, &self->vectors[2]);
+    VecFx32_Subtract(&temporary, &current, &self->vectors[2]);
     func_020050a4(&current, &temporary);
     func_02005058(&temporary);
     if (self->flags_94 & 4) {

@@ -8,7 +8,7 @@ extern s32 ActorBounds_GetWidth(void *bounds);
 extern s32 ActorBounds_GetHeight(void *bounds);
 extern void func_02005030(void *temporary, const void *source);
 extern void func_02005058(void *temporary);
-extern void *func_020067fc(void *resourceState);
+extern void *VecFx32Stepper_GetStep(void *resourceState);
 #ifdef __cplusplus
 }
 #endif
@@ -89,13 +89,13 @@ s32 func_02032e14(void *self, u32 selector)
     case 27:
         return *(s16 *)(actor + 0xe4);
     case 36:
-        resource = func_020067fc(actor + 0x198);
+        resource = VecFx32Stepper_GetStep(actor + 0x198);
         return *(s32 *)((u8 *)resource + 4);
     case 37:
-        resource = func_020067fc(actor + 0x198);
+        resource = VecFx32Stepper_GetStep(actor + 0x198);
         return *(s32 *)((u8 *)resource + 8);
     case 38:
-        resource = func_020067fc(actor + 0x198);
+        resource = VecFx32Stepper_GetStep(actor + 0x198);
         return *(s32 *)((u8 *)resource + 12);
     case 41:
         return (*(u32 *)(actor + 0x14) & 0x2000) != 0;

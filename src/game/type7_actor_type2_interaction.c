@@ -10,7 +10,7 @@ extern u8 *data_021052fc;
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_020066a4(void *output, const void *first, const void *second);
+extern void VecFx32_Subtract(void *output, const void *first, const void *second);
 extern void func_02005058(void *value);
 extern void func_020050f0(void *first, const void *second);
 extern s32 func_020adae4(s32 value, s32 divisor);
@@ -79,8 +79,8 @@ void Type7Actor_ApplyType2InteractionResponse(void *self, void *otherObject, s32
     s32 impulseX;
     s32 impulseY;
 
-    func_020066a4(actorCenter, actor + 0x18, actor + 0x28);
-    func_020066a4(otherCenter, other + 0x18, other + 0x28);
+    VecFx32_Subtract(actorCenter, actor + 0x18, actor + 0x28);
+    VecFx32_Subtract(otherCenter, other + 0x18, other + 0x28);
     func_020050f0(actorCenter, otherCenter);
     t = func_020adae4(combined << 12, 50);
     remaining = 0x1000 - t;
@@ -116,7 +116,7 @@ void Type7Actor_ApplyType2InteractionResponse(void *self, void *otherObject, s32
         *(u32 *)(other + 0x40) = 0;
     }
 
-    func_020066a4(displacement, other + 0x18, actor + 0x18);
+    VecFx32_Subtract(displacement, other + 0x18, actor + 0x18);
     ActorVector_DivideByScalar(scaled, displacement, 0x2000);
     func_02008378(effectTransform, actor + 0x18, scaled);
     func_02005058(scaled);

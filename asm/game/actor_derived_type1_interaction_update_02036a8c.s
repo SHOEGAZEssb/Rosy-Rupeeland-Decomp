@@ -16,7 +16,7 @@
 .extern func_02005058
 .extern func_02005084
 .extern func_020050a4
-.extern func_020066a4
+.extern VecFx32_Subtract
 .extern func_02007f0c
 .extern func_0200b164
 .extern func_0200b23c
@@ -206,7 +206,7 @@ ActorDerivedType1_ProcessInteraction: ; 0x02036a8c
     mov r0, r6
     add r1, r1, #0x18
     add r2, r10, #0x18
-    bl func_020066a4
+    bl VecFx32_Subtract
     mov r0, r6
     bl func_02005084
     mov r0, r6
@@ -271,7 +271,7 @@ ActorDerivedType1_ProcessInteraction: ; 0x02036a8c
     add r0, sp, #0x30
     add r1, r8, #0x18
     add r2, r10, #0x18
-    bl func_020066a4
+    bl VecFx32_Subtract
     add r0, sp, #0x30
     bl func_02005084
     add r0, sp, #0x30

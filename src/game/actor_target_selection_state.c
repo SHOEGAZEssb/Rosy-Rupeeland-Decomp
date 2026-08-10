@@ -10,7 +10,7 @@ extern u8 data_0210568c[4];
 extern "C" {
 #endif
 extern void *func_02007f0c(void *manager, u32 slot);
-extern void func_020066a4(void *output, const void *first, const void *second);
+extern void VecFx32_Subtract(void *output, const void *first, const void *second);
 extern s32 func_02005070(void *value);
 extern void func_02005058(void *value);
 #ifdef __cplusplus
@@ -83,7 +83,7 @@ void func_02034ecc(void)
 
                 temporaryPosition =
                     (*(void *(**)(void *))(*(u8 **)actor + 0x1c8))(actor);
-                func_020066a4(displacement, owner + 0x18, temporaryPosition);
+                VecFx32_Subtract(displacement, owner + 0x18, temporaryPosition);
                 *(s32 *)(displacement + 0x0c) = 0;
                 distance = func_02005070(displacement);
                 if (distance < smallest) smallest = distance;

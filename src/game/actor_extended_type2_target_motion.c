@@ -13,7 +13,7 @@ extern u8 *data_021052fc;
 extern "C" {
 #endif
 extern void func_020050a4(void *transform);
-extern void func_020066a4(void *result, const void *from, const void *to);
+extern void VecFx32_Subtract(void *result, const void *from, const void *to);
 extern s32 func_0204cfa4(s32 y, s32 x);
 extern void *func_02007f0c(void *context, s32 index);
 extern s32 func_020ae024(s32 y, s32 x);
@@ -46,7 +46,7 @@ void ActorExtendedType2_UpdateTargetMotion(void *self)
     s32 magnitude;
 
     func_020050a4(actor + 0x78);
-    func_020066a4(query, actor + 0x78, actor + 0x18);
+    VecFx32_Subtract(query, actor + 0x78, actor + 0x18);
     magnitude = func_0204cfa4(*(s32 *)(query + 8), *(s32 *)(query + 4));
 
     if (magnitude > 0x2000) {

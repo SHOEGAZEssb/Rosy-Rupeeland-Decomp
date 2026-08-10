@@ -11,9 +11,9 @@ extern void *func_020050a4(void *destination, const void *source);
 extern void func_0200500c(void *vector, s32 x, s32 y, s32 z);
 extern void func_02005058(void *vector);
 extern void func_020050c8(void *destination, const void *delta);
-extern void func_020067b0(void *track);
-extern void *func_020067fc(void *track);
-extern s32 func_02006804(void *track);
+extern void VecFx32Stepper_Update(void *track);
+extern void *VecFx32Stepper_GetStep(void *track);
+extern s32 VecFx32Stepper_IsComplete(void *track);
 extern void *func_020068ac(void *track);
 extern void Actor_UpdateTerrainMotionFeedback(void *actor);
 #ifdef __cplusplus
@@ -59,16 +59,16 @@ void ActorDerivedRuntime_UpdateFrame(void *self)
         ((*(u32 *)(actor + 0x10) & 1) == 0 ||
          (*(u32 *)(actor + 0x14) & 0x10) != 0)) {
         u8 *sample;
-        func_020067b0(actor + 0x198);
-        sample = (u8 *)func_020067fc(actor + 0x198);
+        VecFx32Stepper_Update(actor + 0x198);
+        sample = (u8 *)VecFx32Stepper_GetStep(actor + 0x198);
         *(s32 *)(actor + 0x3c) = *(s32 *)(sample + 4);
-        sample = (u8 *)func_020067fc(actor + 0x198);
+        sample = (u8 *)VecFx32Stepper_GetStep(actor + 0x198);
         *(s32 *)(actor + 0x40) = *(s32 *)(sample + 8);
         if ((*(u32 *)(actor + 0x10) & 0x400) == 0) {
-            sample = (u8 *)func_020067fc(actor + 0x198);
+            sample = (u8 *)VecFx32Stepper_GetStep(actor + 0x198);
             *(s32 *)(actor + 0x44) = *(s32 *)(sample + 0x0c);
         }
-        if (func_02006804(actor + 0x198) != 0) {
+        if (VecFx32Stepper_IsComplete(actor + 0x198) != 0) {
             void *terminal;
             *(u32 *)(actor + 0x10) &= ~0x40;
             clearActorVector(actor, 0x38);

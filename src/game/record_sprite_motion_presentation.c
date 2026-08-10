@@ -22,7 +22,7 @@ extern void *func_0201e250(void *);extern void *func_0201e28c(void *);
 extern void func_02005030(void *,const void *);extern void func_02004fe0(void *);
 extern void func_0200500c(void *,s32,s32,s32);extern void func_020050a4(void *,const void *);
 extern void func_02005058(void *);extern void func_020050c8(void *,const void *);
-extern void func_020066a4(void *,const void *,s32);extern void func_02056f00(void *,const void *);
+extern void VecFx32_Subtract(void *,const void *,s32);extern void func_02056f00(void *,const void *);
 extern void *Actor_GetCollection(void *);extern void *ActorCollection_GetSpriteOwner(void *);
 extern void func_02071ea4(void *);extern void func_02071eb8(void *);
 extern u8 *func_02073ffc(void *,void *,s32);extern void func_02072b68(void *,s32);
@@ -62,7 +62,7 @@ RecordSpriteMotionPresentation *func_02022ff4(
     self->sprite3c=func_02073ffc(self->spriteOwner44,self->resource48,2);
     func_02062918(&record,0);func_02072b68(self->sprite3c,func_02063190());
     if(rangeEnd==0)*(u16 *)(self->sprite3c+0x24)|=4;
-    func_020066a4(&sampled,&self->track0c,self->sampleArgument08);
+    VecFx32_Subtract(&sampled,&self->track0c,self->sampleArgument08);
     func_02056f00(&position,&sampled);func_02005058(&sampled);
     *(s16 *)(self->sprite3c+0x2c)=(s16)(*(s32 *)&position.bytes[4]>>12);
     *(s16 *)(self->sprite3c+0x2e)=(s16)(*(s32 *)&position.bytes[8]>>12);
@@ -95,7 +95,7 @@ RecordSpriteMotionPresentation *func_020232b0(RecordSpriteMotionPresentation *se
 /* Sample/reposition sprite, chain both offsets into the track, and return whether 60 frames elapsed. */
 s32 func_02023308(RecordSpriteMotionPresentation *self)
 {
-    TrackValue sampled,position;func_020066a4(&sampled,&self->track0c,self->sampleArgument08);
+    TrackValue sampled,position;VecFx32_Subtract(&sampled,&self->track0c,self->sampleArgument08);
     func_02056f00(&position,&sampled);func_02005058(&sampled);
     *(s16 *)(self->sprite3c+0x2c)=(s16)(*(s32 *)&position.bytes[4]>>12);
     *(s16 *)(self->sprite3c+0x2e)=(s16)(*(s32 *)&position.bytes[8]>>12);

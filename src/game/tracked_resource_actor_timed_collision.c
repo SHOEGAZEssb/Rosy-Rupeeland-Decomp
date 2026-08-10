@@ -11,7 +11,7 @@ extern void func_02005030(void *destination, const void *source);
 extern void func_02005058(void *vector);
 extern s32 func_02005070(const void *vector);
 extern void func_020050a4(void *destination, const void *source);
-extern void func_020066a4(void *destination, const void *target,
+extern void VecFx32_Subtract(void *destination, const void *target,
                           const void *source);
 extern void func_020328d0(void *vector, s32 angle);
 extern s32 Actor_GetCachedTerrainHeight(void *actor);
@@ -59,7 +59,7 @@ void func_02051b48(void *actor, void *target, u32 unused1, u32 unused2)
         response[2] = func_020adae4(response[2], -8);
         response[3] = 0;
         virtual_function(target, 0xb8)(target, response);
-        func_020066a4(direction, (u8 *)actor + 0x18, (u8 *)target + 0x18);
+        VecFx32_Subtract(direction, (u8 *)actor + 0x18, (u8 *)target + 0x18);
         func_020050a4((u8 *)actor + 0x88, direction);
         func_02005058(direction);
         length = func_02005070((u8 *)actor + 0x88);

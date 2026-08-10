@@ -6,12 +6,12 @@
 .extern func_02005058
 .extern func_020050a4
 .extern func_020050c8
-.extern func_020066a4
-.extern func_020066dc
-.extern func_0200676c
-.extern func_02006788
-.extern func_020067b0
-.extern func_020067f4
+.extern VecFx32_Subtract
+.extern VecFx32Stepper_InitTransition
+.extern VecFx32Stepper_Assign
+.extern VecFx32Stepper_Destroy
+.extern VecFx32Stepper_Update
+.extern VecFx32Stepper_GetCurrent
 .extern func_02007f0c
 
     .global func_0200fe0c
@@ -112,17 +112,17 @@ L_0200ff3c:
     add r1, sp, #0x84
     add r2, r5, #0x40
     mov r3, #0x78
-    bl func_020066dc
+    bl VecFx32Stepper_InitTransition
     add r1, sp, #0x20
     add r0, r5, #0x60
-    bl func_0200676c
+    bl VecFx32Stepper_Assign
     add r0, sp, #0x20
-    bl func_02006788
+    bl VecFx32Stepper_Destroy
 L_0200ff98:
     add r0, r5, #0x60
-    bl func_020067b0
+    bl VecFx32Stepper_Update
     add r0, r5, #0x60
-    bl func_020067f4
+    bl VecFx32Stepper_GetCurrent
     mov r1, r0
     add r0, r5, #0x40
     bl func_020050a4
@@ -130,7 +130,7 @@ L_0200ffb4:
     add r0, sp, #0x10
     mov r1, r4
     add r2, r5, #0x20
-    bl func_020066a4
+    bl VecFx32_Subtract
     add r0, sp, #0x84
     add r1, sp, #0x10
     bl func_020050a4
@@ -152,7 +152,7 @@ L_0200ffb4:
     add r0, sp, #0x0
     add r1, sp, #0x84
     add r2, r5, #0x40
-    bl func_020066a4
+    bl VecFx32_Subtract
     add r0, sp, #0x84
     add r1, sp, #0x0
     bl func_020050a4

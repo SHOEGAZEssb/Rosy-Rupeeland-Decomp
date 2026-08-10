@@ -40,7 +40,7 @@ extern void func_02071f38(void *state);
 extern void func_02071eb8(void *state);
 extern void func_0200500c(PresentationValue *track, s32 x, s32 y, s32 z);
 extern void func_02005058(PresentationValue *value);
-extern void func_020066a4(PresentationValue *destination,
+extern void VecFx32_Subtract(PresentationValue *destination,
                           PresentationValue *track, s32 argument);
 extern void func_02056f00(PresentationValue *destination,
                           PresentationValue *source);
@@ -133,7 +133,7 @@ s32 func_0201fdec(DirectSpriteTrackPresentation *self)
     if ((*(u16 *)(self->sprite14 + 0x24) & 1) != 0) {
         return 1;
     }
-    func_020066a4(&sampled, &self->track1c, self->sampleArgument18);
+    VecFx32_Subtract(&sampled, &self->track1c, self->sampleArgument18);
     func_02056f00(&transformed, &sampled);
     func_02005058(&sampled);
     *(s16 *)(self->sprite14 + 0x2c) =

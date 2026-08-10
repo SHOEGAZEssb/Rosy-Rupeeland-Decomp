@@ -12,7 +12,7 @@ extern void func_02032a94(void *actor, void *other, s32 mode);
 extern void func_0200500c(void *vector, s32 x, s32 y, s32 z);
 extern void func_020050a4(void *destination, const void *source);
 extern void func_02005058(void *vector);
-extern void func_02006818(void *track);
+extern void VecFx32Stepper_Reset(void *track);
 extern s32 Actor_TryDispatchActivationMode2(void *actor);
 #ifdef __cplusplus
 }
@@ -58,7 +58,7 @@ s32 ActorDerivedRuntime_HandlePairActive(void *self, void *other, s32 mode)
             (*(u32 *)(actor + 0x14) & 0x40000000) != 0 &&
             (*(u32 *)(target + 0x14) & 0x10) == 0) {
             *(u32 *)(actor + 0x10) &= ~0x40;
-            func_02006818(actor + 0x198);
+            VecFx32Stepper_Reset(actor + 0x198);
         }
     }
     if (target[0x4d] == 1 &&

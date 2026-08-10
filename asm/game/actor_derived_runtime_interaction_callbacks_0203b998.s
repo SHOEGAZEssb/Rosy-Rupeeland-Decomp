@@ -3,7 +3,7 @@
 .extern func_0200500c
 .extern func_02005058
 .extern func_020050a4
-.extern func_02006818
+.extern VecFx32Stepper_Reset
 .extern func_02031758
 .extern func_02031cac
 .extern func_02032a94
@@ -64,7 +64,7 @@ ActorDerivedRuntime_HandlePairActive: ; 0x0203b9dc
     bic r1, r1, #0x40
     add r0, r6, #0x198
     str r1, [r6, #0x10]
-    bl func_02006818
+    bl VecFx32Stepper_Reset
 .L_0203ba58:
     ldrb r0, [r5, #0x4d]
     cmp r0, #0x1

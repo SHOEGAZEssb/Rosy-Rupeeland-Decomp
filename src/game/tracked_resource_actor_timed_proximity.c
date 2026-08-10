@@ -8,7 +8,7 @@ extern "C" {
 extern void *data_021052fc;
 extern void func_02005058(void *vector);
 extern s32 func_02005070(const void *vector);
-extern void func_020066a4(void *destination, const void *target,
+extern void VecFx32_Subtract(void *destination, const void *target,
                           const void *source);
 extern s32 Actor_SetInteractionFlag2000(void *actor, u32 argument);
 extern void ActorDerivedType1_TrySetStateVector(void *target, const void *position, s32 duration,
@@ -48,7 +48,7 @@ s32 func_0205184c(void *actor, u32 argument)
     s32 result;
 
     target = FIELD(void *, data_021052fc, 0x2ea4);
-    func_020066a4(vector, (u8 *)target + 0x18, (u8 *)actor + 0x18);
+    VecFx32_Subtract(vector, (u8 *)target + 0x18, (u8 *)actor + 0x18);
     FIELD(s32, vector, 0x0c) = 0;
     distance = func_02005070(vector);
     if (distance < 0x28000) {

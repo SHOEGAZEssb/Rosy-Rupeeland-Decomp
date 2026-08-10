@@ -7,10 +7,10 @@
 extern "C" {
 #endif
 extern void Actor_UpdateAttachmentDirectionFromVector(void *actor, fx32 x, fx32 y);
-extern void *func_020066dc(void *self, const VecFx32Object *target,
+extern void *VecFx32Stepper_InitTransition(void *self, const VecFx32Object *target,
                           const VecFx32Object *source, s32 duration);
-extern void func_0200676c(void *destination, const void *source);
-extern void func_02006788(void *self);
+extern void VecFx32Stepper_Assign(void *destination, const void *source);
+extern void VecFx32Stepper_Destroy(void *self);
 extern fx32 func_020adc40(fx32 value);
 extern fx32 func_020befec(fx32 numerator, fx32 denominator);
 #ifdef __cplusplus
@@ -99,9 +99,9 @@ s32 func_020130ec(GamePhaseActorScriptVm *self)
     }
 
     *(u32 *)(actor + 0x10) |= 0x40;
-    func_020066dc(movement, &target, position, duration);
-    func_0200676c(actor + 0x198, movement);
-    func_02006788(movement);
+    VecFx32Stepper_InitTransition(movement, &target, position, duration);
+    VecFx32Stepper_Assign(actor + 0x198, movement);
+    VecFx32Stepper_Destroy(movement);
     *(u32 *)(actor + 0x10) &= ~1u;
     func_020127f8(&self->base, duration);
     if (*(s16 *)(actor + 0xe4) == 1 && *(void **)(actor + 0x54) != 0)

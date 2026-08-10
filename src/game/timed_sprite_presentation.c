@@ -20,7 +20,7 @@ extern void *data_020d6098;
 extern void func_0200500c(PresentationTrack *track,s32 first,s32 second,s32 third);
 extern void func_02005058(void *track);
 extern void func_020050c8(PresentationTrack *first,PresentationTrack *second);
-extern void func_020066a4(void *output,PresentationTrack *track,s32 argument);
+extern void VecFx32_Subtract(void *output,PresentationTrack *track,s32 argument);
 extern u8 *func_02073fc4(u32 first,u32 second,u32 third,u32 fourth,u32 fifth);
 extern void func_02074038(void *spriteOwner);
 #ifdef __cplusplus
@@ -110,7 +110,7 @@ s32 func_0201e3d8(TimedSpritePresentation *self,s32 argument)
     self->remaining28--;
     if(self->remaining28<0){func_0201e3b8(self,0);return 1;}
     func_020050c8(&self->first08,&self->second18);
-    func_020066a4(sample,&self->first08,argument);
+    VecFx32_Subtract(sample,&self->first08,argument);
     *(u16 *)(self->sprite+0x2c)=(u16)(sample[1]>>12);
     *(u16 *)(self->sprite+0x2e)=(u16)(sample[2]>>12);
     func_02005058(sample);

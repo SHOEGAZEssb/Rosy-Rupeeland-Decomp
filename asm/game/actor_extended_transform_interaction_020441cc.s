@@ -5,7 +5,7 @@
 .extern data_021052fc
 .extern func_02005058
 .extern func_020050a4
-.extern func_020066a4
+.extern VecFx32_Subtract
 .extern func_02007f0c
 .extern func_0204cfa4
 .extern func_020ae024
@@ -30,7 +30,7 @@ ActorExtendedTransform_UpdateTargetMotion: ; 0x020441cc
     add r0, sp, #0x38
     add r1, r6, #0x78
     add r2, r6, #0x18
-    bl func_020066a4
+    bl VecFx32_Subtract
     ldr r0, [sp, #0x3c]
     ldr r1, [sp, #0x40]
     bl func_0204cfa4

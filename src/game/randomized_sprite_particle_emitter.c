@@ -63,7 +63,7 @@ extern void AnimationResource_Assign(void *, const void *);
 extern void func_0200500c(void *, s32, s32, s32);
 extern void func_02005030(void *, const void *);
 extern void func_02005058(void *);
-extern void func_020066a4(void *, const void *, const void *);
+extern void VecFx32_Subtract(void *, const void *, const void *);
 extern void func_0201e250(void *);
 extern void func_0201e28c(void *);
 extern void *func_0201ded4(void *, void *);
@@ -261,7 +261,7 @@ s32 func_02028f04(RandomizedSpriteParticleEmitter *self)
         }
         node = next;
     }
-    func_020066a4(&projected, &self->position_0c, self->projection_08);
+    VecFx32_Subtract(&projected, &self->position_0c, self->projection_08);
     func_020740a4(self->spriteOwner_4c);
     func_02005058(&projected);
     return 0;

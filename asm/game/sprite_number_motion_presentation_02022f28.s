@@ -10,7 +10,7 @@
 .extern func_02005058
 .extern func_020050a4
 .extern func_020050c8
-.extern func_020066a4
+.extern VecFx32_Subtract
 .extern func_0201e250
 .extern func_0201e28c
 .extern func_0202293c
@@ -31,7 +31,7 @@ func_02022f28: ; 0x02022f28
     ldr r2, [r4, #0x8]
     add r0, sp, #0x0
     add r1, r4, #0xc
-    bl func_020066a4
+    bl VecFx32_Subtract
     add r0, sp, #0x10
     add r1, sp, #0x0
     bl func_02056f00

@@ -26,7 +26,7 @@ extern void func_02005030(void *temporary, const void *source);
 extern void func_02005058(void *temporary);
 extern void func_020050a4(void *destination, const void *source);
 extern s32 func_020adcac(const void *first, const void *second);
-extern void func_020066a4(void *output, const void *first, const void *second);
+extern void VecFx32_Subtract(void *output, const void *first, const void *second);
 extern void func_02005084(void *value);
 extern void func_020328d0(void *value, s32 scale);
 extern void *func_02007f0c(void *manager, u32 slot);
@@ -163,7 +163,7 @@ s32 ActorDerivedType1_ProcessInteraction(void *self)
             u8 *target = (u8 *)data_02105690[i];
             if ((*(s32 (**)(void *))(*(u8 **)target + 0x1d0))(target) != 0 &&
                 func_020adcac(target + 0x1c, actorPosition + 1) < 0x20000) {
-                func_020066a4(displacement, target + 0x18, actor + 0x18);
+                VecFx32_Subtract(displacement, target + 0x18, actor + 0x18);
                 func_02005084(displacement);
                 func_020328d0(displacement, 0x1800);
                 (*(void (**)(void *, const void *, s32))
@@ -183,7 +183,7 @@ s32 ActorDerivedType1_ProcessInteraction(void *self)
                 (*(s32 (**)(void *))(*(u8 **)target + 0xd0))(target) == 0 &&
                 func_020adcac(target + 0x1c, actorPosition + 1) < 0x20000) {
                 (*(void (**)(void *, s32))(*(u8 **)target + 0xc4))(target, 0);
-                func_020066a4(displacement, target + 0x18, actor + 0x18);
+                VecFx32_Subtract(displacement, target + 0x18, actor + 0x18);
                 func_02005084(displacement);
                 func_020328d0(displacement, 0x3000);
                 func_020050a4(target + 0x38, displacement);

@@ -15,7 +15,7 @@ extern s32 data_0210570c;
 extern s32 data_02105710;
 extern u8 ActorBounds_GetWidth(const void *value);
 extern u8 ActorBounds_GetHeight(const void *value);
-extern void func_020066a4(void *destination, const void *source,
+extern void VecFx32_Subtract(void *destination, const void *source,
                           const void *transform);
 extern void *ActorCollection_QueueGroupForRemoval(void *collection, s32 index);
 extern void *ActorCollection_SpawnActorFromDescriptor(void *collection, const void *descriptor);
@@ -86,7 +86,7 @@ static void spawnActorSnapshot(GamePhaseActorScriptVm *self, s32 actorIndex,
     descriptor[0x13] = ActorBounds_GetHeight(actor + 8);
 
     Actor_GetCollisionCenter(&position, actor);
-    func_020066a4(&transform, &position, actor + 0x18);
+    VecFx32_Subtract(&transform, &position, actor + 0x18);
     func_02005058(&position);
     descriptor[0x14] = (u8)(transform.value.y >> 12);
     descriptor[0x15] = (u8)(transform.value.x >> 12);

@@ -2,7 +2,7 @@
 .text
 .extern func_0200500c
 .extern func_02005058
-.extern func_02006818
+.extern VecFx32Stepper_Reset
 .extern func_0200b2c0
 .extern Actor_SetVelocity
 .extern ActorDerivedType1_ResetSpecialModeFlags
@@ -50,7 +50,7 @@ L_02013854:
     add r0, r4, #0x198
     bic r1, r1, #0x40
     str r1, [r4, #0x10]
-    bl func_02006818
+    bl VecFx32Stepper_Reset
     mov r0, #0x0
     add sp, sp, #0x10
     ldmia sp!, {r4, pc}

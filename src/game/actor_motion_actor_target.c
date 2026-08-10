@@ -42,7 +42,7 @@ s32 func_020093cc(ActorMotion *self, s32 divisor, s32 useDirectionTable)
     if (!useDirectionTable) {
         VecFx32Object displacement;
 
-        func_020066a4(&displacement, &destination, &self->position);
+        VecFx32_Subtract(&displacement, &destination, &self->position);
         self->field_2c = divisor;
         if (divisor == 0) {
             self->field_1c = displacement.value.y;

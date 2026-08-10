@@ -2,7 +2,7 @@
 .extern data_021052fc
 .extern func_02005058
 .extern func_02005070
-.extern func_020066a4
+.extern VecFx32_Subtract
 .extern Actor_SetInteractionFlag2000
 .extern ActorDerivedType1_TrySetStateVector
 .extern func_020adae4
@@ -20,7 +20,7 @@ func_0205184c:
     mov r4, r1
     add r1, r2, #0x18
     add r2, r5, #0x18
-    bl func_020066a4
+    bl VecFx32_Subtract
     mov r1, #0x0
     add r0, sp, #0x0
     str r1, [sp, #0xc]

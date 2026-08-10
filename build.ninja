@@ -10034,7 +10034,7 @@ build build/reports/vec_fx32_stepper.json: objdiff build/decomp/delinks/src/math
 
 build build/reports/vec_fx32_stepper.txt: match_report build/reports/vec_fx32_stepper.json | tools/report_objdiff.py
   report_json = build/reports/vec_fx32_stepper.json
-  report_args = --section .text --function func_02006644 --function func_02006678 --function func_020066a4 --function func_020066dc --function func_0200676c --function func_02006788 --function func_020067b0 --function func_020067f4 --function func_020067fc --function func_02006804 --function func_02006818 --require-exact
+  report_args = --section .text --function VecFx32Stepper_CopyState --function VecFx32Stepper_Init --function VecFx32_Subtract --function VecFx32Stepper_InitTransition --function VecFx32Stepper_Assign --function VecFx32Stepper_Destroy --function VecFx32Stepper_Update --function VecFx32Stepper_GetCurrent --function VecFx32Stepper_GetStep --function VecFx32Stepper_IsComplete --function VecFx32Stepper_Reset --require-exact
 
 build build/reports/spline_mover.json: objdiff build/decomp/delinks/src/math/spline_mover.o | build/decomp/src/math/spline_mover.o
   target_object = build/decomp/delinks/src/math/spline_mover.o

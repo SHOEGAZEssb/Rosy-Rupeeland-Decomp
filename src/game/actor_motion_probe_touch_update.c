@@ -11,7 +11,7 @@ extern void func_02031758(void *source);
 extern u32 genrand_int32(void);
 extern u64 func_020bf1f8(u32 value, u32 divisor);
 extern void func_0200500c(void *vector, s32 x, s32 y, s32 z);
-extern void func_020066a4(void *output, const void *first,
+extern void VecFx32_Subtract(void *output, const void *first,
                           const void *second);
 extern void func_020050a4(void *destination, const void *source);
 extern void func_02005058(void *vector);
@@ -77,7 +77,7 @@ void ActorMotionProbe_UpdateTouchMotion(void *source, void *self)
         y = multiplyFxRound(centeredRandom(*(s32 *)(actor + 0x248)) << 12,
                             *(s32 *)(actor + 0x20c));
         func_0200500c(target, x, y, 0);
-        func_020066a4(delta, target, actor + 0x210);
+        VecFx32_Subtract(delta, target, actor + 0x210);
         func_020050a4(actor + 0x230, delta);
         func_02005058(delta);
         *(s32 *)(actor + 0x234) = func_020befec(

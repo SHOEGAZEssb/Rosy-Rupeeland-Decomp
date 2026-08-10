@@ -6,7 +6,7 @@
 .extern func_0200500c
 .extern func_02005030
 .extern func_02005058
-.extern func_020066a4
+.extern VecFx32_Subtract
 .extern ActorBounds_GetWidth
 .extern ActorBounds_GetHeight
 .extern func_02012704
@@ -110,7 +110,7 @@ L_0201948c:
     add r0, sp, #0xdc
     add r1, sp, #0x4
     add r2, r4, #0x18
-    bl func_020066a4
+    bl VecFx32_Subtract
     add r0, sp, #0x4
     bl func_02005058
     ldr r0, [sp, #0xe4]

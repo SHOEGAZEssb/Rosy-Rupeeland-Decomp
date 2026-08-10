@@ -22,7 +22,7 @@ extern void func_020349b8(void *actor, u32 sound, s32 extra);
 extern void Actor_SaveAndForceFlags(void *actor);
 extern s32 func_02032370(void *actor, const void *target, s32 step);
 extern s32 func_02032228(void *actor, s32 x, s32 y, s32 step);
-extern void func_020066a4(void *output, ...);
+extern void VecFx32_Subtract(void *output, ...);
 extern s32 func_0204cfa4(s32 x, s32 y);
 extern s32 func_020ae024(s32 y, s32 x);
 extern void func_0204cff4(s32 *x, s32 *y, s32 maximum);
@@ -195,7 +195,7 @@ void ActorExtendedType2_UpdateFrame(void *self)
                 u16 parameter = *(u16 *)(descriptor + 0x1e);
                 s32 kind = parameter >> 2;
 
-                func_020066a4(temporary, target + 0x18, actor + 0x18,
+                VecFx32_Subtract(temporary, target + 0x18, actor + 0x18,
                               (u32)parameter);
                 if (func_0204cfa4(*(s32 *)(temporary + 4),
                                   *(s32 *)(temporary + 8)) > 0x4000) {

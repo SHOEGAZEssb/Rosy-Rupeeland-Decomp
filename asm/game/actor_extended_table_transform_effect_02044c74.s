@@ -2,7 +2,7 @@
 .text
 .extern func_02005030
 .extern func_02005058
-.extern func_020066a4
+.extern VecFx32_Subtract
 .extern ActorExtendedType2_GetDescriptorValue2C
 .extern func_0204cfa4
 .extern func_02050078
@@ -28,7 +28,7 @@ ActorExtendedTable_ApplyTargetRelativeTransform: ; 0x02044c74
     add r0, sp, #0x0
     add r1, sp, #0x10
     add r2, sp, #0x20
-    bl func_020066a4
+    bl VecFx32_Subtract
     mov r2, #0x0
     ldr r0, [sp, #0x4]
     ldr r1, [sp, #0x8]

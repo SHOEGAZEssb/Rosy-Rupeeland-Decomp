@@ -49,7 +49,7 @@ extern void func_0200964c(void *value, s32 first, s32 second, s32 third);
 extern void func_0200919c(void *state, void *source);
 extern s32 func_020096f0(void *state, s32 time, s32 mode);
 extern void VecFx32Bezier_Evaluate3D(void *destination, void *path, s32 offset);
-extern void func_020066a4(PresentationValue *destination, void *source,
+extern void VecFx32_Subtract(PresentationValue *destination, void *source,
                           s32 argument);
 extern void func_02056f00(PresentationValue *destination,
                           PresentationValue *source);
@@ -168,7 +168,7 @@ s32 func_0202057c(RisingSpriteMotionController *self, s32 argument)
     }
     func_0200964c(oscillationSample, -scale << 6, scale << 6, 0xc8);
     VecFx32Bezier_Evaluate3D(pathSample, self->path1c, self->offset5c);
-    func_020066a4(&sampled, pathSample, argument);
+    VecFx32_Subtract(&sampled, pathSample, argument);
     func_02056f00(&transformed, &sampled);
     func_02005058(&sampled);
     func_02005058((PresentationValue *)pathSample);

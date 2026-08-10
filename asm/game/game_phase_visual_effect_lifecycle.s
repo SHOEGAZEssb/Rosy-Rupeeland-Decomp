@@ -6,8 +6,8 @@
 .extern data_020d55e0
 .extern func_02004fe0
 .extern func_02005058
-.extern func_02006678
-.extern func_02006788
+.extern VecFx32Stepper_Init
+.extern VecFx32Stepper_Destroy
 .extern func_02072000
 
     .global func_0200fa40
@@ -34,7 +34,7 @@ func_0200fa40: ; 0x0200fa40
     add r0, r4, #0x50
     bl func_02004fe0
     add r0, r4, #0x60
-    bl func_02006678
+    bl VecFx32Stepper_Init
     ldr r1, [r4, #0x94]
     mov r0, #0x0
     bic r3, r1, #0x1
@@ -100,7 +100,7 @@ func_0200fb34: ; 0x0200fb34
     mov r1, #0x0
     add r0, r4, #0x60
     strh r1, [r2, #0x50]
-    bl func_02006788
+    bl VecFx32Stepper_Destroy
     add r0, r4, #0x50
     bl func_02005058
     add r0, r4, #0x40
@@ -141,7 +141,7 @@ func_0200fbc8: ; 0x0200fbc8
     mov r1, #0x0
     add r0, r4, #0x60
     strh r1, [r2, #0x50]
-    bl func_02006788
+    bl VecFx32Stepper_Destroy
     add r0, r4, #0x50
     bl func_02005058
     add r0, r4, #0x40

@@ -3,7 +3,7 @@
 .extern Heap_Free
 .extern data_020df040
 .extern func_02005058
-.extern func_02006788
+.extern VecFx32Stepper_Destroy
 .extern func_0201b1e0
 .extern ActorCollection_GetSpriteOwner
 .extern func_02030e08
@@ -42,7 +42,7 @@ func_02031260: ; 0x02031260
     bl Heap_Free
 .L_020312c0:
     add r0, r5, #0x198
-    bl func_02006788
+    bl VecFx32Stepper_Destroy
     add r0, r5, #0xec
     bl func_0201b1e0
     add r0, r5, #0xb0

@@ -4,9 +4,9 @@
 .extern func_02005058
 .extern func_020050a4
 .extern func_020050c8
-.extern func_020067b0
-.extern func_020067fc
-.extern func_02006804
+.extern VecFx32Stepper_Update
+.extern VecFx32Stepper_GetStep
+.extern VecFx32Stepper_IsComplete
 .extern func_020068ac
 .extern Actor_SetRuntimeFlag80
 .extern Actor_UpdateTerrainMotionFeedback
@@ -34,25 +34,25 @@ ActorDerivedRuntime_UpdateFrame: ; 0x0203b798
     beq .L_0203b8f4
 .L_0203b7e4:
     add r0, r4, #0x198
-    bl func_020067b0
+    bl VecFx32Stepper_Update
     add r0, r4, #0x198
-    bl func_020067fc
+    bl VecFx32Stepper_GetStep
     ldr r1, [r0, #0x4]
     add r0, r4, #0x198
     str r1, [r4, #0x3c]
-    bl func_020067fc
+    bl VecFx32Stepper_GetStep
     ldr r0, [r0, #0x8]
     str r0, [r4, #0x40]
     ldr r0, [r4, #0x10]
     tst r0, #0x400
     bne .L_0203b828
     add r0, r4, #0x198
-    bl func_020067fc
+    bl VecFx32Stepper_GetStep
     ldr r0, [r0, #0xc]
     str r0, [r4, #0x44]
 .L_0203b828:
     add r0, r4, #0x198
-    bl func_02006804
+    bl VecFx32Stepper_IsComplete
     cmp r0, #0x0
     beq .L_0203b890
     ldr r0, [r4, #0x10]

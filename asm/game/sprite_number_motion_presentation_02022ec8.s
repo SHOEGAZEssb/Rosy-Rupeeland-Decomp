@@ -10,7 +10,7 @@
 .extern func_02005058
 .extern func_020050a4
 .extern func_020050c8
-.extern func_020066a4
+.extern VecFx32_Subtract
 .extern func_0201e250
 .extern func_0201e28c
 .extern func_0202293c

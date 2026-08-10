@@ -6,7 +6,7 @@
 .extern data_020de860
 .extern data_020de8ec
 .extern func_02005058
-.extern func_020066a4
+.extern VecFx32_Subtract
 .extern func_02028860
 .extern func_0202895c
 .extern func_02028998
@@ -102,7 +102,7 @@ func_02028f04: ; 0x02028f04
     ldr r2, [r4, #0x8]
     add r0, sp, #0x8
     add r1, r4, #0xc
-    bl func_020066a4
+    bl VecFx32_Subtract
     ldr r0, [r4, #0x4c]
     bl func_020740a4
     add r0, sp, #0x8

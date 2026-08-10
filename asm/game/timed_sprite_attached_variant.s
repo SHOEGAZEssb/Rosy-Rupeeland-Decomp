@@ -8,7 +8,7 @@
 .extern func_020050a4
 .extern func_020050c8
 .extern GraphicsSpriteState_SetDepthOrderedWorldPositionFromOrigin
-.extern func_020066a4
+.extern VecFx32_Subtract
 .extern func_020188fc
 .extern func_020adae4
 .extern func_020ae024
@@ -175,7 +175,7 @@ func_0201e888: ; 0x0201e888
     add r0, sp, #0x0
     mov r1, r6
     add r2, r5, #0x8
-    bl func_020066a4
+    bl VecFx32_Subtract
     ldrsh r0, [r4, #0x6]
     ldr r1, [sp, #0x8]
     ldr r2, [sp, #0x4]

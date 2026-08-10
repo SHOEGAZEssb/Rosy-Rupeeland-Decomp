@@ -3,7 +3,7 @@
 .text
 .extern data_020c9670
 .extern func_02005058
-.extern func_020066a4
+.extern VecFx32_Subtract
 .extern func_020093ac
 .extern func_02009514
 .extern func_020adc90
@@ -25,7 +25,7 @@ func_020093cc: ; 0x020093cc
     add r0, sp, #0x10
     add r1, sp, #0x20
     add r2, r5, #0x8
-    bl func_020066a4
+    bl VecFx32_Subtract
     str r4, [r5, #0x2c]
     movs r1, r4
     ldreq r0, [sp, #0x14]

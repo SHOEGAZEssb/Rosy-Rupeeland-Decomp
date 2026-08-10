@@ -8,7 +8,7 @@ extern s16 data_020c9670[];
 extern "C" {
 #endif
 extern void func_020050a4(void *destination, const void *source);
-extern void func_020066a4(void *output, const void *first, const void *second);
+extern void VecFx32_Subtract(void *output, const void *first, const void *second);
 extern s32 func_0204cfa4(s32 x, s32 y);
 extern s32 func_020ae024(s32 y, s32 x);
 extern void func_0204cff4(s32 *x, s32 *y, s32 maximum);
@@ -40,7 +40,7 @@ void ActorExtendedType2_ApplyTargetImpulse(void *self, const void *target)
     s32 displacement[4];
 
     func_020050a4(actor + 0x78, target);
-    func_020066a4(displacement, actor + 0x78, actor + 0x18);
+    VecFx32_Subtract(displacement, actor + 0x78, actor + 0x18);
     if (func_0204cfa4(displacement[1], displacement[2]) > 0x4000) {
         u8 *record = data_020e8380 + *(u16 *)(actor + 0x4e) * 0x30;
         u32 kind = *(u16 *)(record + 0x1e) >> 2;

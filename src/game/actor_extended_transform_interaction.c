@@ -13,7 +13,7 @@ extern "C" {
 #endif
 extern void func_02005058(void *value);
 extern void func_020050a4(void *destination, const void *source);
-extern void func_020066a4(void *output, const void *first, const void *second);
+extern void VecFx32_Subtract(void *output, const void *first, const void *second);
 extern void *func_02007f0c(void *context, s32 index);
 extern s32 func_0204cfa4(s32 x, s32 y);
 extern s32 func_020ae024(s32 y, s32 x);
@@ -48,7 +48,7 @@ void ActorExtendedTransform_UpdateTargetMotion(void *self, const void *targetTra
     }
     *(u16 *)(actor + 0x298) = 0;
     func_020050a4(actor + 0x78, targetTransform);
-    func_020066a4(displacement, actor + 0x78, actor + 0x18);
+    VecFx32_Subtract(displacement, actor + 0x78, actor + 0x18);
     magnitude = func_0204cfa4(*(s32 *)(displacement + 4),
                               *(s32 *)(displacement + 8));
 

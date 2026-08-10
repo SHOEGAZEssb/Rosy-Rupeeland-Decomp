@@ -77,7 +77,7 @@ extern void func_0202a7fc(void *, void *, u32, u32, void *, s32, s32, void *);
 extern void func_0202a884(void *, s32, s32);
 extern void func_02029fb0(void *);
 extern void func_0202badc(void *);
-extern void func_020066a4(void *, const void *, const void *);
+extern void VecFx32_Subtract(void *, const void *, const void *);
 extern void func_02005058(void *);
 extern void func_0202a2b0(void *, s32, s32);
 extern void func_0202b930(void *);
@@ -237,7 +237,7 @@ void func_02029784(DualLayerTileRenderer *self, const void *position)
     s32 x;
     s32 y;
     func_0202badc(self);
-    func_020066a4(transformed, position, self->origin_50);
+    VecFx32_Subtract(transformed, position, self->origin_50);
     x = transformed[1] >> 12;
     y = transformed[2] >> 12;
     if (self->layers_28[0])

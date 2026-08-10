@@ -4,7 +4,7 @@
 .extern data_020e8380
 .extern func_02005058
 .extern func_020050a4
-.extern func_020066a4
+.extern VecFx32_Subtract
 .extern func_0204cfa4
 .extern func_0204cff4
 .extern func_020ae024
@@ -19,7 +19,7 @@ ActorExtendedType2_ApplyTargetImpulse: ; 0x0203f858
     add r0, sp, #0x0
     add r1, r5, #0x78
     add r2, r5, #0x18
-    bl func_020066a4
+    bl VecFx32_Subtract
     ldr r0, [sp, #0x4]
     ldr r1, [sp, #0x8]
     bl func_0204cfa4

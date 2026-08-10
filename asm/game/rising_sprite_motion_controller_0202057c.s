@@ -2,7 +2,7 @@
 .text
 .extern func_02005058
 .extern VecFx32Bezier_Evaluate3D
-.extern func_020066a4
+.extern VecFx32_Subtract
 .extern func_0200964c
 .extern func_020096f0
 .extern func_020206e8
@@ -66,7 +66,7 @@ func_0202057c: ; 0x0202057c
     add r0, sp, #0x0
     add r1, sp, #0x10
     mov r2, r4
-    bl func_020066a4
+    bl VecFx32_Subtract
     add r0, sp, #0x20
     add r1, sp, #0x0
     bl func_02056f00

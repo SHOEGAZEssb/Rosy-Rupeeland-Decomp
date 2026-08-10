@@ -4,7 +4,7 @@
 .extern data_021052fc
 .extern func_02005058
 .extern func_020050f0
-.extern func_020066a4
+.extern VecFx32_Subtract
 .extern func_02008378
 .extern func_0201e0ec
 .extern ActorDerivedType1_IsTargetStateEligible
@@ -28,11 +28,11 @@ Type7Actor_ApplyType2InteractionResponse: ; 0x02046e60
     add r1, r7, #0x18
     add r2, r7, #0x28
     add r4, r5, r11
-    bl func_020066a4
+    bl VecFx32_Subtract
     add r0, sp, #0x34
     add r1, r6, #0x18
     add r2, r6, #0x28
-    bl func_020066a4
+    bl VecFx32_Subtract
     add r0, sp, #0x44
     add r1, sp, #0x34
     bl func_020050f0
@@ -184,7 +184,7 @@ Type7Actor_ApplyType2InteractionResponse: ; 0x02046e60
     add r0, sp, #0x14
     add r1, r6, #0x18
     add r2, r7, #0x18
-    bl func_020066a4
+    bl VecFx32_Subtract
     add r0, sp, #0x4
     add r1, sp, #0x14
     mov r2, #0x2000

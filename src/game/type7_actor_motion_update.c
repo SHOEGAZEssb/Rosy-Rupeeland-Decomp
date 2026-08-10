@@ -15,7 +15,7 @@ extern s16 data_020c9670[];
 extern "C" {
 #endif
 extern void *func_020050a4(void *destination, const void *source);
-extern void func_020066a4(void *output, const void *first, const void *second);
+extern void VecFx32_Subtract(void *output, const void *first, const void *second);
 extern void func_02005058(void *value);
 extern s32 func_0204cfa4(s32 x, s32 y);
 extern s32 Type7Actor_HasSpecialCallbackPair(const void *actor);
@@ -96,7 +96,7 @@ void Type7Actor_UpdateMotionTowardTransform(void *self, const void *requestedTra
     s32 angle;
 
     func_020050a4(actor + 0x78, requestedTransform);
-    func_020066a4(displacement, actor + 0x78, actor + 0x18);
+    VecFx32_Subtract(displacement, actor + 0x78, actor + 0x18);
     magnitude = func_0204cfa4((s32)displacement[1], (s32)displacement[2]);
     if (magnitude > 0x4000) {
         if ((*(u32 *)(actor + 0xd0) & 2) != 0) {

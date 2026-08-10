@@ -16,7 +16,7 @@ extern void func_02004fe0(void *);
 extern void func_0200500c(void *, s32, s32, s32);
 extern void func_020050a4(void *, const void *);
 extern void func_0201b0f4(void *);
-extern void func_02006678(void *);
+extern void VecFx32Stepper_Init(void *);
 extern void func_02032228(void *, s32, s32, s32);
 extern void *func_02009d78(void *);
 #ifdef __cplusplus
@@ -69,7 +69,7 @@ void *func_02030f98(void *self, const void *descriptor)
     *(u16 *)(actor + 0xde) = *(u16 *)(actor + 0xe4) = 0;
     actor[0xe6] = actor[0xe7] = actor[0xe8] = 0;
     func_0201b0f4(actor + 0xec);
-    func_02006678(actor + 0x198);
+    VecFx32Stepper_Init(actor + 0x198);
     *(u32 *)(actor + 0x1cc) = *(u32 *)(desc + 0x48);
     *(u32 *)(actor + 0x1d0) = 0x1000;
     *(u32 *)(actor + 0x1d4) = 0x1000;

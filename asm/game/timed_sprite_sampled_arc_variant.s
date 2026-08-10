@@ -5,7 +5,7 @@
 .extern func_02005058
 .extern func_020050a4
 .extern GraphicsSpriteState_SetScreenPositionCulled
-.extern func_020066a4
+.extern VecFx32_Subtract
 .extern func_0201e290
 .extern func_0201e380
 .extern func_0201e3b8
@@ -83,7 +83,7 @@ func_0201ee48: ; 0x0201ee48
     strh r1, [r3, #0x24]
     add r0, sp, #0x0
     add r1, r4, #0x8
-    bl func_020066a4
+    bl VecFx32_Subtract
     ldr r0, [r4, #0x14]
     ldr r1, [sp, #0x4]
     mov r2, r0, asr #0xc

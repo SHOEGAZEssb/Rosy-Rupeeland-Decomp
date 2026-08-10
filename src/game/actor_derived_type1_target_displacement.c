@@ -10,7 +10,7 @@ extern const char data_020df4a4[];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_020066a4(void *output, const void *first, const void *second);
+extern void VecFx32_Subtract(void *output, const void *first, const void *second);
 extern s32 func_020050f0(const void *first, const void *second);
 extern s32 func_020adae4(s32 numerator, s32 denominator);
 extern s32 func_020ae024(s32 y, s32 x);
@@ -86,8 +86,8 @@ void ActorDerivedType1_ApplyWeightedCollisionDisplacement(
     s32 directionY;
     s32 tableIndex;
 
-    func_020066a4(actorCenter, actor + 0x18, actor + 0x28);
-    func_020066a4(targetCenter, target + 0x18, target + 0x28);
+    VecFx32_Subtract(actorCenter, actor + 0x18, actor + 0x28);
+    VecFx32_Subtract(targetCenter, target + 0x18, target + 0x28);
     (void)func_020050f0(actorCenter, targetCenter);
     strength = displacementStrength(total);
     angle = func_020ae024(*(s32 *)(target + 0x20) - *(s32 *)(actor + 0x20),
@@ -132,7 +132,7 @@ void ActorDerivedType1_ApplyWeightedCollisionDisplacement(
         s32 tenth;
         s32 magnitude;
 
-        func_020066a4(separation, target + 0x18, actor + 0x18);
+        VecFx32_Subtract(separation, target + 0x18, actor + 0x18);
         ActorVector_DivideByScalar(normalized, separation, 0x2000);
         func_02008378(effectPosition, actor + 0x18, normalized);
         func_02005058(normalized);

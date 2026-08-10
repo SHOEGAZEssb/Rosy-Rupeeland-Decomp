@@ -28,7 +28,7 @@ GamePhaseVisualEffect *func_0200fa40(GamePhaseVisualEffect *self)
     self->field_1e = 0x1f;
     for (i = 0; i < 4; i++)
         func_02004fe0(&self->vectors[i]);
-    func_02006678(&self->stepper);
+    VecFx32Stepper_Init(&self->stepper);
     self->flags_94 = (self->flags_94 & ~0xff) | 8;
     self->field_98 = 0;
     self->field_9c = 0;
@@ -56,7 +56,7 @@ GamePhaseVisualEffect *func_0200fb34(GamePhaseVisualEffect *self)
               ((((display & 0x1f00) >> 8) & ~2) << 8);
     *(volatile u32 *)0x04000000 = display;
     *(volatile u16 *)0x04000050 = 0;
-    func_02006788(&self->stepper);
+    VecFx32Stepper_Destroy(&self->stepper);
     for (i = 3; i >= 0; i--)
         func_02005058(&self->vectors[i]);
     GraphicsResourceSet_Destroy(&self->resources);

@@ -9,7 +9,7 @@ extern "C" {
 extern u32 *func_0200b2c0(void *object, u32 first, u32 second, u32 third);
 extern void ActorDerivedType1_ResetSpecialModeFlags(void *actor);
 extern void Actor_SetVelocity(void *actor, const VecFx32Object *value);
-extern void func_02006818(void *movement);
+extern void VecFx32Stepper_Reset(void *movement);
 extern void *Actor_GetCollection(void *actor);
 extern void *ActorCollection_FindActorByDescriptorValue(void *collection, s32 index);
 extern void Actor_UpdateAttachmentDirectionFromVector(void *actor, fx32 x, fx32 y);
@@ -36,7 +36,7 @@ s32 func_020137ec(GamePhaseActorScriptVm *self)
     Actor_SetVelocity(actor, &zero);
     func_02005058(&zero);
     *(u32 *)(actor + 0x10) &= ~0x40u;
-    func_02006818(actor + 0x198);
+    VecFx32Stepper_Reset(actor + 0x198);
     return 0;
 }
 

@@ -2,7 +2,7 @@
 .text
 .extern func_02005030
 .extern func_02005058
-.extern func_020067fc
+.extern VecFx32Stepper_GetStep
 .extern ActorBounds_GetWidth
 .extern ActorBounds_GetHeight
 
@@ -189,17 +189,17 @@ func_02032e14: ; 0x02032e14
     b .L_020330f4
 .L_02033074:
     add r0, r2, #0x198
-    bl func_020067fc
+    bl VecFx32Stepper_GetStep
     ldr r0, [r0, #0x4]
     b .L_020330f4
 .L_02033084:
     add r0, r2, #0x198
-    bl func_020067fc
+    bl VecFx32Stepper_GetStep
     ldr r0, [r0, #0x8]
     b .L_020330f4
 .L_02033094:
     add r0, r2, #0x198
-    bl func_020067fc
+    bl VecFx32Stepper_GetStep
     ldr r0, [r0, #0xc]
     b .L_020330f4
 .L_020330a4:

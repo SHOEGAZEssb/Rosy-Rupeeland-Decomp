@@ -5,7 +5,7 @@
 .extern func_02005058
 .extern func_020050a4
 .extern func_020050c8
-.extern func_020066a4
+.extern VecFx32_Subtract
 .extern func_02031758
 .extern func_02031cac
 .extern func_020befec
@@ -62,7 +62,7 @@ ActorMotionProbe_UpdateTouchMotion: ; 0x0203c240
     add r0, sp, #0xc
     add r1, sp, #0x1c
     add r2, r8, #0x210
-    bl func_020066a4
+    bl VecFx32_Subtract
     add r0, r8, #0x230
     add r1, sp, #0xc
     bl func_020050a4

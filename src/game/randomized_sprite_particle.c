@@ -34,7 +34,7 @@ extern void func_02005030(void *, const void *);
 extern void func_02005058(void *);
 extern void func_020050a4(void *, const void *);
 extern void func_020050c8(void *, const void *);
-extern void func_020066a4(void *, const void *, const void *);
+extern void VecFx32_Subtract(void *, const void *, const void *);
 extern s32 func_020adcac(const s32 *, const s32 *);
 extern s32 func_020adc90(s32, s32);
 extern s32 func_020ae024(s32, s32);
@@ -103,7 +103,7 @@ s32 func_02028998(RandomizedSpriteParticle *self, const void *projection)
     s32 x;
     s32 y;
 
-    func_020066a4(&difference, &self->target_10, &self->position_00);
+    VecFx32_Subtract(&difference, &self->target_10, &self->position_00);
     magnitude = func_020adcac(&self->target_10.y, &self->position_00.y);
     magnitude = ((magnitude >> 1) + ((magnitude >> 1) < 0 ? 3 : 0)) >> 14;
     if (magnitude < 1)
@@ -123,7 +123,7 @@ s32 func_02028998(RandomizedSpriteParticle *self, const void *projection)
     func_020050c8(&self->velocity_20, &damping);
     func_020050c8(&self->position_00, &self->velocity_20);
 
-    func_020066a4(&projected, &self->position_00, projection);
+    VecFx32_Subtract(&projected, &self->position_00, projection);
     x = projected.y >> 12;
     y = (projected.z >> 12) - (projected.field_0c >> 12);
     *(u16 *)(self->sprite_40 + 0x2c) = (u16)x;

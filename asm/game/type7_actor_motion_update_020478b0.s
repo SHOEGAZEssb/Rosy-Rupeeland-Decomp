@@ -7,7 +7,7 @@
 .extern data_020e1770
 .extern func_02005058
 .extern func_020050a4
-.extern func_020066a4
+.extern VecFx32_Subtract
 .extern Type7Actor_HasSpecialCallbackPair
 .extern func_0204cfa4
 .extern func_020adae4
@@ -53,7 +53,7 @@ Type7Actor_UpdateMotionTowardTransform: ; 0x02047908
     add r0, sp, #0x0
     add r1, r5, #0x78
     add r2, r5, #0x18
-    bl func_020066a4
+    bl VecFx32_Subtract
     ldr r0, [sp, #0x4]
     ldr r1, [sp, #0x8]
     bl func_0204cfa4

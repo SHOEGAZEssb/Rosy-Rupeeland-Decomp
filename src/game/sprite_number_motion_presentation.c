@@ -27,7 +27,7 @@ extern void func_0200500c(void *,s32,s32,s32);
 extern void func_020050a4(void *,const void *);
 extern void func_02005058(void *);
 extern void func_020050c8(void *,const void *);
-extern void func_020066a4(void *,const void *,s32);
+extern void VecFx32_Subtract(void *,const void *,s32);
 extern void func_02056f00(void *,const void *);
 extern void *Actor_GetCollection(void *);
 extern void *ActorCollection_GetSpriteOwner(void *);
@@ -60,7 +60,7 @@ SpriteNumberMotionPresentation *func_02022cb0(
     group=Heap_Alloc(0x24,data_020d6678,4,&gHeapContext);
     if(group){owner=ActorCollection_GetSpriteOwner(Actor_GetCollection((void *)config));func_0202293c(group,owner,value);}
     self->numberGroup3c=group;if(value==0)func_02022c80(group,0);
-    func_020066a4(&sampled,&self->track0c,self->sampleArgument08);
+    VecFx32_Subtract(&sampled,&self->track0c,self->sampleArgument08);
     func_02056f00(&position,&sampled);func_02005058(&sampled);
     func_02022c30(group,*(s32 *)&position.bytes[4]>>12,*(s32 *)&position.bytes[8]>>12);
     if((*(s32 *)&position.bytes[8]>>12)>0x40) {
@@ -97,7 +97,7 @@ SpriteNumberMotionPresentation *func_02022ec8(SpriteNumberMotionPresentation *se
 s32 func_02022f28(SpriteNumberMotionPresentation *self)
 {
     TrackValue sampled,position;
-    func_020066a4(&sampled,&self->track0c,self->sampleArgument08);
+    VecFx32_Subtract(&sampled,&self->track0c,self->sampleArgument08);
     func_02056f00(&position,&sampled);func_02005058(&sampled);
     func_02022c30(self->numberGroup3c,*(s32 *)&position.bytes[4]>>12,*(s32 *)&position.bytes[8]>>12);
     func_020050c8(&self->track0c,&self->firstOffset1c);

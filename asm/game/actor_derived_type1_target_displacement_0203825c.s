@@ -8,7 +8,7 @@
 .extern func_0200500c
 .extern func_02005058
 .extern func_020050f0
-.extern func_020066a4
+.extern VecFx32_Subtract
 .extern func_02008378
 .extern func_020099c0
 .extern func_02009d78
@@ -43,11 +43,11 @@ ActorDerivedType1_ApplyWeightedCollisionDisplacement: ; 0x0203825c
     add r1, r7, #0x18
     add r2, r7, #0x28
     add r4, r5, r11
-    bl func_020066a4
+    bl VecFx32_Subtract
     add r0, sp, #0x58
     add r1, r6, #0x18
     add r2, r6, #0x28
-    bl func_020066a4
+    bl VecFx32_Subtract
     add r0, sp, #0x68
     add r1, sp, #0x58
     bl func_020050f0
@@ -207,7 +207,7 @@ ActorDerivedType1_ApplyWeightedCollisionDisplacement: ; 0x0203825c
     add r0, sp, #0x18
     add r1, r6, #0x18
     add r2, r7, #0x18
-    bl func_020066a4
+    bl VecFx32_Subtract
     add r0, sp, #0x8
     add r1, sp, #0x18
     mov r2, #0x2000

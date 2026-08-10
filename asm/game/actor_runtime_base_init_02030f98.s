@@ -5,7 +5,7 @@
 .extern func_02004fe0
 .extern func_0200500c
 .extern func_020050a4
-.extern func_02006678
+.extern VecFx32Stepper_Init
 .extern func_020083b0
 .extern func_02009d78
 .extern func_0201b0f4
@@ -82,7 +82,7 @@ func_02030f98: ; 0x02030f98
     strb r1, [r5, #0xe8]
     bl func_0201b0f4
     add r0, r5, #0x198
-    bl func_02006678
+    bl VecFx32Stepper_Init
     ldr r0, [r4, #0x48]
     mov r2, #0x1000
     str r0, [r5, #0x1cc]

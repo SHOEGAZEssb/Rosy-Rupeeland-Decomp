@@ -8,7 +8,7 @@ extern "C" {
 extern void func_02005058(void *vector);
 extern s32 func_02005070(const void *vector);
 extern void func_020050a4(void *destination, const void *source);
-extern void func_020066a4(void *destination, u32 argument, const void *position);
+extern void VecFx32_Subtract(void *destination, u32 argument, const void *position);
 extern void func_020328d0(void *vector, s32 angle);
 extern void func_02050b34(void *vector, s32 length);
 #ifdef __cplusplus
@@ -32,7 +32,7 @@ void func_02050eec(void *actor, const void *record, u32 argument, u32 unused)
     s32 length;
     (void)unused;
     FIELD(const void *, actor, 0x1fc) = record;
-    func_020066a4(vector, argument, (u8 *)actor + 0x18);
+    VecFx32_Subtract(vector, argument, (u8 *)actor + 0x18);
     func_020050a4((u8 *)actor + 0x38, vector);
     func_02005058(vector);
     FIELD(s32, actor, 0x44) += (s32)FIELD(s8, record, 0x15) * 0x1000;

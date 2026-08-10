@@ -30,7 +30,7 @@ extern void func_0201e3b8(SampledArcTimedSprite *self, s32 enabled);
 extern void func_02005058(void *track);
 extern void func_020050a4(PresentationTrack *destination, const void *source);
 extern void GraphicsSpriteState_SetScreenPositionCulled(void *sprite, s32 x, s32 y, s32 constant8);
-extern void func_020066a4(void *output, s32 argument,
+extern void VecFx32_Subtract(void *output, s32 argument,
                           PresentationTrack *track);
 #ifdef __cplusplus
 }
@@ -82,7 +82,7 @@ s32 func_0201ee48(SampledArcTimedSprite *self, s32 argument)
         return 1;
     }
     *(u16 *)(self->sprite + 0x24) &= (u16)~4;
-    func_020066a4(sample, argument, &self->first08);
+    VecFx32_Subtract(sample, argument, &self->first08);
     GraphicsSpriteState_SetScreenPositionCulled(self->sprite, sample[1] >> 12,
                   (sample[2] >> 12)
                       - (*(s32 *)&self->first08.bytes[0xc] >> 12),

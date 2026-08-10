@@ -2,9 +2,9 @@
 .text
 .extern func_02004fe0
 .extern func_02005058
-.extern func_020066dc
-.extern func_0200676c
-.extern func_02006788
+.extern VecFx32Stepper_InitTransition
+.extern VecFx32Stepper_Assign
+.extern VecFx32Stepper_Destroy
 .extern func_02012704
 .extern func_020127f8
 .extern Actor_UpdateAttachmentDirectionFromVector
@@ -189,13 +189,13 @@ L_02013354:
     ldr r2, [r9, #0x84]
     ldr r3, [sp, #0x4]
     add r2, r2, #0x18
-    bl func_020066dc
+    bl VecFx32Stepper_InitTransition
     ldr r0, [r9, #0x84]
     add r1, sp, #0xc
     add r0, r0, #0x198
-    bl func_0200676c
+    bl VecFx32Stepper_Assign
     add r0, sp, #0xc
-    bl func_02006788
+    bl VecFx32Stepper_Destroy
     ldr r3, [r9, #0x84]
     ldr r1, [sp, #0x4]
     ldr r2, [r3, #0x10]
