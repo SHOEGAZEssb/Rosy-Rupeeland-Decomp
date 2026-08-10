@@ -28,7 +28,7 @@ static void addLowFlags(u8 *actor, u16 bits)
  * the high nibble. Returns no value; only actor state changes apart from the
  * GameWork query.
  */
-void func_0203c578(void *self, const void *other, s32 enabled)
+void ActorModeNibble_HandleContactFromField1F8(void *self, const void *other, s32 enabled)
 {
     u8 *actor = (u8 *)self;
     const u8 *source = (const u8 *)other;
@@ -47,11 +47,12 @@ void func_0203c578(void *self, const void *other, s32 enabled)
 }
 
 /*
- * Behave exactly as func_0203c578 except that mode-five contact data obtains
- * the signed halfword through other pointer +0x1fc instead of +0x1f8. Inputs,
- * state changes, return behavior, and GameWork effects are otherwise equal.
+ * Behave exactly as ActorModeNibble_HandleContactFromField1F8 except that
+ * mode-five contact data obtains the signed halfword through other pointer
+ * +0x1fc instead of +0x1f8. Inputs, state changes, return behavior, and
+ * GameWork effects are otherwise equal.
  */
-void func_0203c660(void *self, const void *other, s32 enabled)
+void ActorModeNibble_HandleContactFromField1FC(void *self, const void *other, s32 enabled)
 {
     u8 *actor = (u8 *)self;
     const u8 *source = (const u8 *)other;

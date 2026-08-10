@@ -3,7 +3,7 @@
 .extern func_02005030
 .extern func_02005058
 .extern func_02005070
-.extern func_0203c660
+.extern ActorModeNibble_HandleContactFromField1FC
 .extern func_0204cfa4
 .extern func_02050260
 .extern func_02050560
@@ -78,7 +78,7 @@ func_ov092_0221ab24:
     mov r0, r8
     mov r1, r9
     mov r2, #0x0
-    bl func_0203c660
+    bl ActorModeNibble_HandleContactFromField1FC
     mov r0, #0x3000
     str r0, [r8, #0x44]
     mov r0, #0x1

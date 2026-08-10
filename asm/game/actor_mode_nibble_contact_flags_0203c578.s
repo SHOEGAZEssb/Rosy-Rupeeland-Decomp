@@ -2,9 +2,9 @@
 .text
 .extern GameWork_TestFlag
 .extern gGameWork
-    .global func_0203c578
-    .type func_0203c578, @function
-func_0203c578: ; 0x0203c578
+    .global ActorModeNibble_HandleContactFromField1F8
+    .type ActorModeNibble_HandleContactFromField1F8, @function
+ActorModeNibble_HandleContactFromField1F8: ; 0x0203c578
     stmdb sp!, {r4, r5, r6, lr}
     ldr r3, .L_0203c658
     mov r6, r0
@@ -65,11 +65,11 @@ func_0203c578: ; 0x0203c578
     ldmia sp!, {r4, r5, r6, pc}
 .L_0203c658: .word gGameWork
 .L_0203c65c: .word 0x438
-    .size func_0203c578, . - func_0203c578
+    .size ActorModeNibble_HandleContactFromField1F8, . - ActorModeNibble_HandleContactFromField1F8
 
-    .global func_0203c660
-    .type func_0203c660, @function
-func_0203c660: ; 0x0203c660
+    .global ActorModeNibble_HandleContactFromField1FC
+    .type ActorModeNibble_HandleContactFromField1FC, @function
+ActorModeNibble_HandleContactFromField1FC: ; 0x0203c660
     stmdb sp!, {r4, r5, r6, lr}
     ldr r3, .L_0203c740
     mov r6, r0
@@ -130,6 +130,6 @@ func_0203c660: ; 0x0203c660
     ldmia sp!, {r4, r5, r6, pc}
 .L_0203c740: .word gGameWork
 .L_0203c744: .word 0x438
-    .size func_0203c660, . - func_0203c660
+    .size ActorModeNibble_HandleContactFromField1FC, . - ActorModeNibble_HandleContactFromField1FC
 
 

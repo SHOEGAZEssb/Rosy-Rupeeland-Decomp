@@ -1,6 +1,9 @@
 #include "tingle/types.h"
 
-/* Apply the mode-nibble actor's recovered state to its attachment and expose field +0x108. */
+/*
+ * Apply the mode-nibble actor's recovered state to its attachment and expose
+ * field +0x108.
+ */
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -18,7 +21,7 @@ extern void func_02072b68(void *attachment, u32 animation);
  * Other state values do nothing. Returns no value; animation selection and
  * attachment flag writes change presentation state.
  */
-void func_0203c884(void *self)
+void ActorModeNibble_UpdatePresentationState(void *self)
 {
     u8 *actor = (u8 *)self;
     u8 *attachment = *(u8 **)(actor + 0x54);
@@ -41,7 +44,7 @@ void func_0203c884(void *self)
 }
 
 /* Return actor word +0x108 without changing state. */
-s32 func_0203c944(const void *self)
+s32 ActorModeNibble_GetField108(const void *self)
 {
     return *(const s32 *)((const u8 *)self + 0x108);
 }

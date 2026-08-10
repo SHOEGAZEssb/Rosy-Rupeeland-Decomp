@@ -336,7 +336,7 @@ static void InitializeRuntimeVariant(TingleNativeActorImage *actor)
             TINGLE_NATIVE_ACTOR_PENDING_DESCRIPTOR_HOOK;
 }
 
-/* Reproduce func_0203c4e0 for kind-three subtype routes 12..16 and 19. */
+/* Reproduce ActorModeNibble_Init for kind-three subtype routes 12..16 and 19. */
 static void InitializeModeNibbleActor(TingleNativeActorImage *actor)
 {
     u16 subtype = actor->descriptor.subtype;

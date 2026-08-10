@@ -16311,7 +16311,7 @@ build build/reports/actor_mode_nibble_object_lifecycle_0203c4e0.json: objdiff bu
   base_object = build/decomp/asm/game/actor_mode_nibble_object_lifecycle_0203c4e0.o
 build build/reports/actor_mode_nibble_object_lifecycle_0203c4e0.txt: match_report build/reports/actor_mode_nibble_object_lifecycle_0203c4e0.json | tools/report_objdiff.py
   report_json = build/reports/actor_mode_nibble_object_lifecycle_0203c4e0.json
-  report_args = --section .text --function func_0203c4e0 --function func_0203c548 --function func_0203c55c --require-exact
+  report_args = --section .text --function ActorModeNibble_Init --function ActorModeNibble_Destroy --function ActorModeNibble_DestroyAndFree --require-exact
 build build/reports/actor_mode_nibble_object_lifecycle.txt: phony build/reports/actor_mode_nibble_object_lifecycle_0203c4e0.txt
 
 build actor_mode_nibble_object_lifecycle: phony build/decomp/src/game/actor_mode_nibble_object_lifecycle.o build/decomp/asm/game/actor_mode_nibble_object_lifecycle_0203c4e0.o build/reports/actor_mode_nibble_object_lifecycle.txt
@@ -16328,7 +16328,7 @@ build build/reports/actor_mode_nibble_contact_flags_0203c578.json: objdiff build
   base_object = build/decomp/asm/game/actor_mode_nibble_contact_flags_0203c578.o
 build build/reports/actor_mode_nibble_contact_flags_0203c578.txt: match_report build/reports/actor_mode_nibble_contact_flags_0203c578.json | tools/report_objdiff.py
   report_json = build/reports/actor_mode_nibble_contact_flags_0203c578.json
-  report_args = --section .text --function func_0203c578 --function func_0203c660 --require-exact
+  report_args = --section .text --function ActorModeNibble_HandleContactFromField1F8 --function ActorModeNibble_HandleContactFromField1FC --require-exact
 build build/reports/actor_mode_nibble_contact_flags.txt: phony build/reports/actor_mode_nibble_contact_flags_0203c578.txt
 
 build actor_mode_nibble_contact_flags: phony build/decomp/src/game/actor_mode_nibble_contact_flags.o build/decomp/asm/game/actor_mode_nibble_contact_flags_0203c578.o build/reports/actor_mode_nibble_contact_flags.txt
@@ -16362,7 +16362,7 @@ build build/reports/actor_mode_nibble_presentation_state_0203c884.json: objdiff 
   base_object = build/decomp/asm/game/actor_mode_nibble_presentation_state_0203c884.o
 build build/reports/actor_mode_nibble_presentation_state_0203c884.txt: match_report build/reports/actor_mode_nibble_presentation_state_0203c884.json | tools/report_objdiff.py
   report_json = build/reports/actor_mode_nibble_presentation_state_0203c884.json
-  report_args = --section .text --function func_0203c884 --function func_0203c944 --require-exact
+  report_args = --section .text --function ActorModeNibble_UpdatePresentationState --function ActorModeNibble_GetField108 --require-exact
 build build/reports/actor_mode_nibble_presentation_state.txt: phony build/reports/actor_mode_nibble_presentation_state_0203c884.txt
 
 build actor_mode_nibble_presentation_state: phony build/decomp/src/game/actor_mode_nibble_presentation_state.o build/decomp/asm/game/actor_mode_nibble_presentation_state_0203c884.o build/reports/actor_mode_nibble_presentation_state.txt

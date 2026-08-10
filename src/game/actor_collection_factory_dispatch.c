@@ -49,7 +49,7 @@ extern "C" {
 DECLARE_ACTOR_CTOR(ActorDerivedType1_Init);
 DECLARE_ACTOR_CTOR(ActorDerivedRuntime_InitAlternate);
 DECLARE_ACTOR_CTOR(ActorMotionProbe_Init);
-DECLARE_ACTOR_CTOR(func_0203c4e0);
+DECLARE_ACTOR_CTOR(ActorModeNibble_Init);
 DECLARE_ACTOR_CTOR(func_0203ca28);
 DECLARE_ACTOR_CTOR(func_0203d2a8);
 DECLARE_ACTOR_CTOR(ActorExtendedType2_InitDuplicate);
@@ -160,10 +160,10 @@ static const ActorFactorySpec sKind3Specs[25] = {
     SPEC(0x244, func_ov081_02212c40), SPEC(0x244, func_ov081_02212c40),
     SPEC(0x244, func_ov081_02212c40), SPEC(0x230, func_ov087_022177e0),
     SPEC(0x248, func_ov089_022177e4), SPEC(0x258, func_ov081_02214008),
-    SPEC(0x20c, func_0203c4e0), SPEC(0x20c, func_0203c4e0),
-    SPEC(0x20c, func_0203c4e0), SPEC(0x20c, func_0203c4e0),
-    SPEC(0x20c, func_0203c4e0), SPEC(0x218, func_0203ca28),
-    SPEC(0x21c, func_0203d2a8), SPEC(0x20c, func_0203c4e0),
+    SPEC(0x20c, ActorModeNibble_Init), SPEC(0x20c, ActorModeNibble_Init),
+    SPEC(0x20c, ActorModeNibble_Init), SPEC(0x20c, ActorModeNibble_Init),
+    SPEC(0x20c, ActorModeNibble_Init), SPEC(0x218, func_0203ca28),
+    SPEC(0x21c, func_0203d2a8), SPEC(0x20c, ActorModeNibble_Init),
     SPEC(0x22c, func_ov075_0221461c), SPEC(0x258, func_ov085_02212aec),
     SPEC(0x208, func_ov088_0221b508), SPEC(0x208, ActorDerivedRuntime_InitAlternate),
     SPEC(0x208, ActorDerivedRuntime_InitAlternate)

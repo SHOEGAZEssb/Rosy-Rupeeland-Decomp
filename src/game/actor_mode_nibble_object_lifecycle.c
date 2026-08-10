@@ -1,7 +1,10 @@
 #include "tingle/heap.h"
 #include "tingle/types.h"
 
-/* Construct and destroy an actor subclass carrying a four-bit mode in field +0x208. */
+/*
+ * Construct and destroy an actor subclass carrying a four-bit mode in field
+ * +0x208.
+ */
 extern void *data_020df774;
 
 #ifdef __cplusplus
@@ -20,7 +23,7 @@ extern void *ActorDerivedRuntime_DestroyAlternate(void *actor);
  * The second input is unused in the recovered constructor. Base initialization
  * establishes actor-owned runtime state.
  */
-void *func_0203c4e0(void *self, void *unused, u32 mode)
+void *ActorModeNibble_Init(void *self, void *unused, u32 mode)
 {
     u8 *actor = (u8 *)ActorDerivedRuntime_Init(self);
     u16 flags;
@@ -36,15 +39,18 @@ void *func_0203c4e0(void *self, void *unused, u32 mode)
     return actor;
 }
 
-/* Run the recovered base teardown ActorDerivedRuntime_DestroyAlternate and return self without freeing it. */
-void *func_0203c548(void *self)
+/*
+ * Run ActorDerivedRuntime_DestroyAlternate and return self without freeing
+ * it.
+ */
+void *ActorModeNibble_Destroy(void *self)
 {
     ActorDerivedRuntime_DestroyAlternate(self);
     return self;
 }
 
 /* Run the recovered base teardown, free self, and return its former address. */
-void *func_0203c55c(void *self)
+void *ActorModeNibble_DestroyAndFree(void *self)
 {
     ActorDerivedRuntime_DestroyAlternate(self);
     Heap_Free(self);

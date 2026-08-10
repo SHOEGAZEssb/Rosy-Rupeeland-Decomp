@@ -11,7 +11,7 @@
 .extern ActorDerivedType1_Init
 .extern ActorDerivedRuntime_InitAlternate
 .extern ActorMotionProbe_Init
-.extern func_0203c4e0
+.extern ActorModeNibble_Init
 .extern func_0203ca28
 .extern func_0203d2a8
 .extern ActorExtendedType2_InitDuplicate
@@ -1389,7 +1389,7 @@ ActorCollection_SpawnActorFromDescriptor: ; 0x0202ecd0
     beq .L_0203015c
     mov r1, r5
     mov r2, #0x0
-    bl func_0203c4e0
+    bl ActorModeNibble_Init
     mov r4, r0
     b .L_0203015c
 .L_0202ff6c:
@@ -1402,7 +1402,7 @@ ActorCollection_SpawnActorFromDescriptor: ; 0x0202ecd0
     beq .L_0203015c
     mov r1, r5
     mov r2, #0x1
-    bl func_0203c4e0
+    bl ActorModeNibble_Init
     mov r4, r0
     b .L_0203015c
 .L_0202ff9c:
@@ -1415,7 +1415,7 @@ ActorCollection_SpawnActorFromDescriptor: ; 0x0202ecd0
     beq .L_0203015c
     mov r1, r5
     mov r2, #0x2
-    bl func_0203c4e0
+    bl ActorModeNibble_Init
     mov r4, r0
     b .L_0203015c
 .L_0202ffcc:
@@ -1428,7 +1428,7 @@ ActorCollection_SpawnActorFromDescriptor: ; 0x0202ecd0
     beq .L_0203015c
     mov r1, r5
     mov r2, #0x3
-    bl func_0203c4e0
+    bl ActorModeNibble_Init
     mov r4, r0
     b .L_0203015c
 .L_0202fffc:
@@ -1441,7 +1441,7 @@ ActorCollection_SpawnActorFromDescriptor: ; 0x0202ecd0
     beq .L_0203015c
     mov r1, r5
     mov r2, #0x4
-    bl func_0203c4e0
+    bl ActorModeNibble_Init
     mov r4, r0
     b .L_0203015c
 .L_0203002c:
@@ -1454,7 +1454,7 @@ ActorCollection_SpawnActorFromDescriptor: ; 0x0202ecd0
     beq .L_0203015c
     mov r1, r5
     mov r2, #0x5
-    bl func_0203c4e0
+    bl ActorModeNibble_Init
     mov r4, r0
     b .L_0203015c
 .L_0203005c:

@@ -1,9 +1,9 @@
 ; Matching retail form; see src/game/actor_mode_nibble_presentation_state.c.
 .text
 .extern func_02072b68
-    .global func_0203c884
-    .type func_0203c884, @function
-func_0203c884: ; 0x0203c884
+    .global ActorModeNibble_UpdatePresentationState
+    .type ActorModeNibble_UpdatePresentationState, @function
+ActorModeNibble_UpdatePresentationState: ; 0x0203c884
     stmdb sp!, {r4, lr}
     mov r4, r0
     ldrsh r0, [r4, #0xd6]
@@ -54,13 +54,13 @@ func_0203c884: ; 0x0203c884
     bic r0, r0, #0x1
     strh r0, [r1, #0x24]
     ldmia sp!, {r4, pc}
-    .size func_0203c884, . - func_0203c884
+    .size ActorModeNibble_UpdatePresentationState, . - ActorModeNibble_UpdatePresentationState
 
-    .global func_0203c944
-    .type func_0203c944, @function
-func_0203c944: ; 0x0203c944
+    .global ActorModeNibble_GetField108
+    .type ActorModeNibble_GetField108, @function
+ActorModeNibble_GetField108: ; 0x0203c944
     ldr r0, [r0, #0x108]
     bx lr
 
-    .size func_0203c944, . - func_0203c944
+    .size ActorModeNibble_GetField108, . - ActorModeNibble_GetField108
 
