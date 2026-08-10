@@ -21,7 +21,7 @@ extern void func_0203f5c4(void *actor, const void *transform);
 #endif
 
 /* Invoke base destructor ActorExtendedType2_Destroy and return self; actor state is torn down. */
-void *func_02043864(void *self)
+void *ActorExtendedType3_Destroy(void *self)
 {
     ActorExtendedType2_Destroy(self);
     return self;
@@ -31,7 +31,7 @@ void *func_02043864(void *self)
  * Invoke base destructor ActorExtendedType2_Destroy, free self through Heap_Free, and return
  * the original pointer value. Actor storage becomes invalid after the heap call.
  */
-void *func_02043878(void *self)
+void *ActorExtendedType3_DestroyAndFree(void *self)
 {
     ActorExtendedType2_Destroy(self);
     Heap_Free(self);
@@ -43,7 +43,7 @@ void *func_02043878(void *self)
  * signed descriptor halfword +0x2a into actor +0x29a.
  * Return the forwarded result; actor/base interaction state may change.
  */
-s32 func_02043894(void *self, void *record)
+s32 ActorExtendedType3_ForwardInteractionGateA(void *self, void *record)
 {
     s32 result = func_020400a4(self, record);
     if (result != 0)
@@ -56,7 +56,7 @@ s32 func_02043894(void *self, void *record)
  * signed descriptor halfword +0x2a into actor +0x29a.
  * Return the forwarded result; actor/base interaction state may change.
  */
-s32 func_020438c0(void *self, void *record)
+s32 ActorExtendedType3_ForwardInteractionGateB(void *self, void *record)
 {
     s32 result = func_02040334(self, record);
     if (result != 0)
@@ -71,7 +71,7 @@ s32 func_020438c0(void *self, void *record)
  * The routine has no meaningful return value and may change actor/motion state;
  * no direct hardware operation occurs.
  */
-void func_020438ec(void *self, const void *sourceTransform)
+void ActorExtendedType3_ApplyTransformAndDampAxis(void *self, const void *sourceTransform)
 {
     u8 *actor = (u8 *)self;
     u32 temporary[4];

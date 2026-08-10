@@ -17525,7 +17525,7 @@ build build/reports/actor_extended_type3_wrappers_02043864.json: objdiff build/d
   base_object = build/decomp/asm/game/actor_extended_type3_wrappers_02043864.o
 build build/reports/actor_extended_type3_wrappers_02043864.txt: match_report build/reports/actor_extended_type3_wrappers_02043864.json | tools/report_objdiff.py
   report_json = build/reports/actor_extended_type3_wrappers_02043864.json
-  report_args = --section .text --function func_02043864 --function func_02043878 --function func_02043894 --function func_020438c0 --function func_020438ec --require-exact
+  report_args = --section .text --function ActorExtendedType3_Destroy --function ActorExtendedType3_DestroyAndFree --function ActorExtendedType3_ForwardInteractionGateA --function ActorExtendedType3_ForwardInteractionGateB --function ActorExtendedType3_ApplyTransformAndDampAxis --require-exact
 build build/reports/actor_extended_type3_wrappers.txt: phony build/reports/actor_extended_type3_wrappers_02043864.txt
 build actor_extended_type3_wrappers: phony build/decomp/src/game/actor_extended_type3_wrappers.o build/decomp/asm/game/actor_extended_type3_wrappers_02043864.o build/reports/actor_extended_type3_wrappers.txt
 

@@ -9,20 +9,20 @@
 .extern func_02040334
 .extern ActorExtendedType2_GetDescriptorValue2A
 .extern func_020befec
-.global func_02043864
-.type func_02043864, @function
-func_02043864: ; 0x02043864
+.global ActorExtendedType3_Destroy
+.type ActorExtendedType3_Destroy, @function
+ActorExtendedType3_Destroy: ; 0x02043864
     stmdb sp!, {r4, lr}
     mov r4, r0
     bl ActorExtendedType2_Destroy
     mov r0, r4
     ldmia sp!, {r4, pc}
 
-.size func_02043864, . - func_02043864
+.size ActorExtendedType3_Destroy, . - ActorExtendedType3_Destroy
 
-.global func_02043878
-.type func_02043878, @function
-func_02043878: ; 0x02043878
+.global ActorExtendedType3_DestroyAndFree
+.type ActorExtendedType3_DestroyAndFree, @function
+ActorExtendedType3_DestroyAndFree: ; 0x02043878
     stmdb sp!, {r4, lr}
     mov r4, r0
     bl ActorExtendedType2_Destroy
@@ -31,11 +31,11 @@ func_02043878: ; 0x02043878
     mov r0, r4
     ldmia sp!, {r4, pc}
 
-.size func_02043878, . - func_02043878
+.size ActorExtendedType3_DestroyAndFree, . - ActorExtendedType3_DestroyAndFree
 
-.global func_02043894
-.type func_02043894, @function
-func_02043894: ; 0x02043894
+.global ActorExtendedType3_ForwardInteractionGateA
+.type ActorExtendedType3_ForwardInteractionGateA, @function
+ActorExtendedType3_ForwardInteractionGateA: ; 0x02043894
     stmdb sp!, {r3, r4, r5, lr}
     mov r5, r0
     bl func_020400a4
@@ -49,11 +49,11 @@ func_02043894: ; 0x02043894
     mov r0, r4
     ldmia sp!, {r3, r4, r5, pc}
 
-.size func_02043894, . - func_02043894
+.size ActorExtendedType3_ForwardInteractionGateA, . - ActorExtendedType3_ForwardInteractionGateA
 
-.global func_020438c0
-.type func_020438c0, @function
-func_020438c0: ; 0x020438c0
+.global ActorExtendedType3_ForwardInteractionGateB
+.type ActorExtendedType3_ForwardInteractionGateB, @function
+ActorExtendedType3_ForwardInteractionGateB: ; 0x020438c0
     stmdb sp!, {r3, r4, r5, lr}
     mov r5, r0
     bl func_02040334
@@ -67,11 +67,11 @@ func_020438c0: ; 0x020438c0
     mov r0, r4
     ldmia sp!, {r3, r4, r5, pc}
 
-.size func_020438c0, . - func_020438c0
+.size ActorExtendedType3_ForwardInteractionGateB, . - ActorExtendedType3_ForwardInteractionGateB
 
-.global func_020438ec
-.type func_020438ec, @function
-func_020438ec: ; 0x020438ec
+.global ActorExtendedType3_ApplyTransformAndDampAxis
+.type ActorExtendedType3_ApplyTransformAndDampAxis, @function
+ActorExtendedType3_ApplyTransformAndDampAxis: ; 0x020438ec
     stmdb sp!, {r4, lr}
     sub sp, sp, #0x10
     mov r4, r0
@@ -101,4 +101,4 @@ func_020438ec: ; 0x020438ec
     bl func_02005058
     add sp, sp, #0x10
     ldmia sp!, {r4, pc}
-.size func_020438ec, . - func_020438ec
+.size ActorExtendedType3_ApplyTransformAndDampAxis, . - ActorExtendedType3_ApplyTransformAndDampAxis
