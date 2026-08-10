@@ -18488,7 +18488,7 @@ build build/reports/type7_actor_motion_capture_02049f10.json: objdiff build/deco
   base_object = build/decomp/asm/game/type7_actor_motion_capture_02049f10.o
 build build/reports/type7_actor_motion_capture_02049f10.txt: match_report build/reports/type7_actor_motion_capture_02049f10.json | tools/report_objdiff.py
   report_json = build/reports/type7_actor_motion_capture_02049f10.json
-  report_args = --section .text --function func_02049f10 --require-exact
+  report_args = --section .text --function Type7Actor_InitializeMotionCapture --require-exact
 build type7_actor_motion_capture: phony build/decomp/src/game/type7_actor_motion_capture.o build/decomp/asm/game/type7_actor_motion_capture_02049f10.o build/reports/type7_actor_motion_capture_02049f10.txt
 
 type7_actor_motion_state_update_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
@@ -18502,7 +18502,7 @@ build build/reports/type7_actor_motion_state_update_02049f78.json: objdiff build
   base_object = build/decomp/asm/game/type7_actor_motion_state_update_02049f78.o
 build build/reports/type7_actor_motion_state_update_02049f78.txt: match_report build/reports/type7_actor_motion_state_update_02049f78.json | tools/report_objdiff.py
   report_json = build/reports/type7_actor_motion_state_update_02049f78.json
-  report_args = --section .text --function func_02049f78 --require-exact
+  report_args = --section .text --function Type7Actor_UpdateMotionState --require-exact
 build type7_actor_motion_state_update: phony build/decomp/src/game/type7_actor_motion_state_update.o build/decomp/asm/game/type7_actor_motion_state_update_02049f78.o build/reports/type7_actor_motion_state_update_02049f78.txt
 
 type7_actor_motion_state_init_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++

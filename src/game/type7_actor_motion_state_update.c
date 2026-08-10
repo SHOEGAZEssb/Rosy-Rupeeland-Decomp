@@ -32,7 +32,7 @@ extern void func_0204a0d8(void *actor, s32 condition);
  * game-work-derived state may change. GameWork_TestFlag reads the global game
  * state; there is no direct hardware access and no return value.
  */
-void func_02049f78(void *self, s32 unused, s32 condition)
+void Type7Actor_UpdateMotionState(void *self, s32 unused, s32 condition)
 {
     u8 *actor = (u8 *)self;
     (void)unused;

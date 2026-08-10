@@ -21,7 +21,7 @@ extern void func_0200b2c0(void *value, s32 x, s32 y, s32 z);
  * may change. No value is returned and there are no direct SDK or hardware
  * effects.
  */
-void func_02049f10(void *self)
+void Type7Actor_InitializeMotionCapture(void *self)
 {
     u8 *actor = (u8 *)self;
     typedef void (*ModeCallback)(void *actor, s32 mode);

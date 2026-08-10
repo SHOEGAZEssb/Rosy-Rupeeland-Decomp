@@ -7,9 +7,9 @@
 .extern func_0204a014
 .extern func_0204a0d8
 .text
-    .global func_02049f78
-.type func_02049f78, @function
-func_02049f78: ; 0x02049f78
+    .global Type7Actor_UpdateMotionState
+.type Type7Actor_UpdateMotionState, @function
+Type7Actor_UpdateMotionState: ; 0x02049f78
     stmdb sp!, {r3, r4, r5, lr}
     mov r4, r0
     mov r5, r2
@@ -50,4 +50,4 @@ func_02049f78: ; 0x02049f78
     ldmia sp!, {r3, r4, r5, pc}
 .L_0204a00c: .word gGameWork
 .L_0204a010: .word 0x44b
-.size func_02049f78, . - func_02049f78
+.size Type7Actor_UpdateMotionState, . - Type7Actor_UpdateMotionState

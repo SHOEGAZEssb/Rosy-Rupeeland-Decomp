@@ -1,9 +1,9 @@
 ; Matching retail form; see src/game/type7_actor_motion_capture.c.
 .extern func_0200b2c0
 .text
-    .global func_02049f10
-.type func_02049f10, @function
-func_02049f10: ; 0x02049f10
+    .global Type7Actor_InitializeMotionCapture
+.type Type7Actor_InitializeMotionCapture, @function
+Type7Actor_InitializeMotionCapture: ; 0x02049f10
     stmdb sp!, {r4, lr}
     mov r4, r0
     ldr r2, [r4, #0xd0]
@@ -30,5 +30,5 @@ func_02049f10: ; 0x02049f10
     mov r0, #0x0
     str r0, [r4, #0x210]
     ldmia sp!, {r4, pc}
-.size func_02049f10, . - func_02049f10
+.size Type7Actor_InitializeMotionCapture, . - Type7Actor_InitializeMotionCapture
 
