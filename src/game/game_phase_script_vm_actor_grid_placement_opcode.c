@@ -18,7 +18,7 @@ extern void Actor_AdjustPositionForTerrainHeight(void *actor);
  * through Actor_AdjustPositionForTerrainHeight. Finally derive signed byte extents at actor+8..+0xb
  * from the scaled dimensions. Returns zero.
  */
-s32 func_02016d60(GamePhaseActorScriptVm *self)
+s32 GamePhaseActorScriptVm_PlaceActorOnGridAndSetBounds(GamePhaseActorScriptVm *self)
 {
     s32 height = (s32)GamePhaseScriptVm_Pop(&self->base) << 4;
     s32 width = (s32)GamePhaseScriptVm_Pop(&self->base) << 4;

@@ -3,8 +3,8 @@
 .extern func_0200500c
 .extern func_02005058
 .extern GamePhaseScriptVm_Pop
-.global func_02017a54
-func_02017a54:
+.global GamePhaseActorScriptVm_DispatchActorScaledVectorCommand
+GamePhaseActorScriptVm_DispatchActorScaledVectorCommand:
     stmdb sp!, {r3, r4, r5, r6, r7, lr}
     sub sp, sp, #0x10
     mov r7, r0
@@ -34,4 +34,4 @@ func_02017a54:
     mov r0, #0
     add sp, sp, #0x10
     ldmia sp!, {r3, r4, r5, r6, r7, pc}
-    .size func_02017a54, . - func_02017a54
+    .size GamePhaseActorScriptVm_DispatchActorScaledVectorCommand, . - GamePhaseActorScriptVm_DispatchActorScaledVectorCommand

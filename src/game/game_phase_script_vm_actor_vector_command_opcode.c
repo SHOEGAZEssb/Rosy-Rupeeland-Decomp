@@ -8,7 +8,7 @@
  * 16; construct a temporary vector; invoke bound-actor virtual slot 46 with
  * the vector and command; destroy the vector; and return zero.
  */
-s32 func_02017a54(GamePhaseActorScriptVm *self)
+s32 GamePhaseActorScriptVm_DispatchActorScaledVectorCommand(GamePhaseActorScriptVm *self)
 {
     typedef void (*Method)(void *, const VecFx32Object *, s32);
     VecFx32Object vector;

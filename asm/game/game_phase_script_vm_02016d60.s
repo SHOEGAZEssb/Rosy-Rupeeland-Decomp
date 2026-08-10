@@ -5,8 +5,8 @@
 .extern func_020050a4
 .extern GamePhaseScriptVm_Pop
 .extern Actor_AdjustPositionForTerrainHeight
-.global func_02016d60
-func_02016d60:
+.global GamePhaseActorScriptVm_PlaceActorOnGridAndSetBounds
+GamePhaseActorScriptVm_PlaceActorOnGridAndSetBounds:
     stmdb sp!, {r4, r5, r6, r7, lr}
     sub sp, sp, #0x14
     mov r7, r0
@@ -64,4 +64,4 @@ func_02016d60:
     strb r1, [r7, #0xb]
     add sp, sp, #0x14
     ldmia sp!, {r4, r5, r6, r7, pc}
-    .size func_02016d60, . - func_02016d60
+    .size GamePhaseActorScriptVm_PlaceActorOnGridAndSetBounds, . - GamePhaseActorScriptVm_PlaceActorOnGridAndSetBounds

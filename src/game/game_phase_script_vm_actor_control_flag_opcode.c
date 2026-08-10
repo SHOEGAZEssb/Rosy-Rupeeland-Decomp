@@ -7,7 +7,7 @@
  * actor word at offset 0x44, and return zero. The flag's semantic name remains
  * unconfirmed.
  */
-s32 func_020170f0(GamePhaseActorScriptVm *self)
+s32 GamePhaseActorScriptVm_SetActorFlag40AndClearField44(GamePhaseActorScriptVm *self)
 {
     s32 enabled = (s32)GamePhaseScriptVm_Pop(&self->base);
     u32 *flags = (u32 *)((u8 *)self->actor + 0x14);

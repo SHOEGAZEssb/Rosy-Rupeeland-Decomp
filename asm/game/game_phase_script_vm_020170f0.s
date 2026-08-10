@@ -1,8 +1,8 @@
 ; Matching retail form; see src/game/game_phase_script_vm_actor_control_flag_opcode.c.
 .text
 .extern GamePhaseScriptVm_Pop
-.global func_020170f0
-func_020170f0:
+.global GamePhaseActorScriptVm_SetActorFlag40AndClearField44
+GamePhaseActorScriptVm_SetActorFlag40AndClearField44:
     stmdb sp!, {r4, lr}
     mov r4, r0
     bl GamePhaseScriptVm_Pop
@@ -17,4 +17,4 @@ func_020170f0:
     mov r0, #0
     str r0, [r1, #0x44]
     ldmia sp!, {r4, pc}
-    .size func_020170f0, . - func_020170f0
+    .size GamePhaseActorScriptVm_SetActorFlag40AndClearField44, . - GamePhaseActorScriptVm_SetActorFlag40AndClearField44
