@@ -9,16 +9,32 @@
 
 #include <windows.h>
 #include <stdlib.h>
+#include <string.h>
 
 struct TingleNativePlatform {
     HWND window;
     LARGE_INTEGER frequency;
     LARGE_INTEGER next_frame;
     u16 held;
-    const u32 *pixels;
+    HDC framebuffer_dc;
+    HBITMAP framebuffer_bitmap;
+    HGDIOBJ previous_framebuffer_bitmap;
+    void *framebuffer_bits;
 };
 
 static const wchar_t sWindowClass[] = L"TingleNativeWindow";
+
+static void DrawFramebuffer(TingleNativePlatform *platform, HDC dc)
+{
+    RECT client;
+
+    if (platform->framebuffer_dc == NULL) return;
+    GetClientRect(platform->window, &client);
+    SetStretchBltMode(dc, COLORONCOLOR);
+    StretchBlt(dc, 0, 0, client.right - client.left, client.bottom - client.top,
+               platform->framebuffer_dc, 0, 0,
+               TINGLE_SCREEN_WIDTH, TINGLE_FRAMEBUFFER_HEIGHT, SRCCOPY);
+}
 
 static u16 KeyMask(WPARAM key)
 {
@@ -46,7 +62,7 @@ static LRESULT CALLBACK WindowProcedure(HWND window, UINT message, WPARAM wparam
         platform = (TingleNativePlatform *)((CREATESTRUCTW *)lparam)->lpCreateParams;
         SetWindowLongPtrW(window, GWLP_USERDATA, (LONG_PTR)platform);
         platform->window = window;
-        return TRUE;
+        return DefWindowProcW(window, message, wparam, lparam);
     case WM_KEYDOWN:
     case WM_SYSKEYDOWN:
         if (platform != NULL) platform->held |= KeyMask(wparam);
@@ -59,24 +75,15 @@ static LRESULT CALLBACK WindowProcedure(HWND window, UINT message, WPARAM wparam
         if (platform != NULL) platform->held = 0;
         return 0;
     case WM_PAINT:
-        if (platform != NULL && platform->pixels != NULL) {
+        if (platform != NULL) {
             PAINTSTRUCT paint;
-            BITMAPINFO info = {0};
-            RECT client;
             HDC dc = BeginPaint(window, &paint);
-            GetClientRect(window, &client);
-            info.bmiHeader.biSize = sizeof(info.bmiHeader);
-            info.bmiHeader.biWidth = TINGLE_SCREEN_WIDTH;
-            info.bmiHeader.biHeight = -TINGLE_FRAMEBUFFER_HEIGHT;
-            info.bmiHeader.biPlanes = 1;
-            info.bmiHeader.biBitCount = 32;
-            info.bmiHeader.biCompression = BI_RGB;
-            StretchDIBits(dc, 0, 0, client.right, client.bottom, 0, 0,
-                          TINGLE_SCREEN_WIDTH, TINGLE_FRAMEBUFFER_HEIGHT,
-                          platform->pixels, &info, DIB_RGB_COLORS, SRCCOPY);
+            DrawFramebuffer(platform, dc);
             EndPaint(window, &paint);
         }
         return 0;
+    case WM_ERASEBKGND:
+        return 1;
     case WM_DESTROY:
         PostQuitMessage(0);
         return 0;
@@ -89,6 +96,7 @@ TingleNativePlatform *TingleNativePlatform_Create(void)
 {
     TingleNativePlatform *platform = (TingleNativePlatform *)calloc(1, sizeof(*platform));
     WNDCLASSW window_class = {0};
+    BITMAPINFO bitmap_info = {0};
     RECT rect = {0, 0, TINGLE_SCREEN_WIDTH * 2, TINGLE_FRAMEBUFFER_HEIGHT * 2};
     HINSTANCE instance = GetModuleHandleW(NULL);
 
@@ -115,6 +123,23 @@ TingleNativePlatform *TingleNativePlatform_Create(void)
         return NULL;
     }
 
+    bitmap_info.bmiHeader.biSize = sizeof(bitmap_info.bmiHeader);
+    bitmap_info.bmiHeader.biWidth = TINGLE_SCREEN_WIDTH;
+    bitmap_info.bmiHeader.biHeight = -TINGLE_FRAMEBUFFER_HEIGHT;
+    bitmap_info.bmiHeader.biPlanes = 1;
+    bitmap_info.bmiHeader.biBitCount = 32;
+    bitmap_info.bmiHeader.biCompression = BI_RGB;
+    platform->framebuffer_dc = CreateCompatibleDC(NULL);
+    platform->framebuffer_bitmap = CreateDIBSection(platform->framebuffer_dc,
+        &bitmap_info, DIB_RGB_COLORS, &platform->framebuffer_bits, NULL, 0);
+    if (platform->framebuffer_dc == NULL || platform->framebuffer_bitmap == NULL ||
+        platform->framebuffer_bits == NULL) {
+        TingleNativePlatform_Destroy(platform);
+        return NULL;
+    }
+    platform->previous_framebuffer_bitmap =
+        SelectObject(platform->framebuffer_dc, platform->framebuffer_bitmap);
+
     QueryPerformanceCounter(&platform->next_frame);
     ShowWindow(platform->window, SW_SHOWDEFAULT);
     return platform;
@@ -124,6 +149,10 @@ void TingleNativePlatform_Destroy(TingleNativePlatform *platform)
 {
     if (platform == NULL) return;
     if (platform->window != NULL && IsWindow(platform->window)) DestroyWindow(platform->window);
+    if (platform->framebuffer_dc != NULL && platform->previous_framebuffer_bitmap != NULL)
+        SelectObject(platform->framebuffer_dc, platform->previous_framebuffer_bitmap);
+    if (platform->framebuffer_bitmap != NULL) DeleteObject(platform->framebuffer_bitmap);
+    if (platform->framebuffer_dc != NULL) DeleteDC(platform->framebuffer_dc);
     free(platform);
 }
 
@@ -174,7 +203,8 @@ void TingleNativePlatform_WaitFrame(TingleNativePlatform *platform)
 
 void TingleNativePlatform_Present(TingleNativePlatform *platform, const u32 *pixels)
 {
-    platform->pixels = pixels;
+    memcpy(platform->framebuffer_bits, pixels,
+           sizeof(*pixels) * TINGLE_SCREEN_WIDTH * TINGLE_FRAMEBUFFER_HEIGHT);
     InvalidateRect(platform->window, NULL, FALSE);
     UpdateWindow(platform->window);
 }
