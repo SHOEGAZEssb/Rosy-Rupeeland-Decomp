@@ -10,7 +10,7 @@
  * bits. Returns nothing and has no direct SDK or hardware effects. Field 0x44
  * is likely a motion component, but that interpretation is not confirmed.
  */
-void func_02051710(void *actor)
+void TrackedResourceActorType24_ResetMotionState(void *actor)
 {
     FIELD(s32, actor, 0x44) = 0x2000;
     FIELD(u32, actor, 0x10) |= 0x1f0000;

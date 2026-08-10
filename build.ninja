@@ -19689,7 +19689,7 @@ build build/reports/tracked_resource_actor_projectile_setup_020513ac.json: objdi
   base_object = build/decomp/asm/game/tracked_resource_actor_projectile_setup_020513ac.o
 build build/reports/tracked_resource_actor_projectile_setup_020513ac.txt: match_report build/reports/tracked_resource_actor_projectile_setup_020513ac.json | tools/report_objdiff.py
   report_json = build/reports/tracked_resource_actor_projectile_setup_020513ac.json
-  report_args = --section .text --function func_020513ac --require-exact
+  report_args = --section .text --function TrackedResourceActorType24_SetupFromRecord --require-exact
 
 build tracked_resource_actor_projectile_setup: phony build/decomp/src/game/tracked_resource_actor_projectile_setup.o build/decomp/asm/game/tracked_resource_actor_projectile_setup_020513ac.o build/reports/tracked_resource_actor_projectile_setup_020513ac.txt
 
@@ -19704,7 +19704,7 @@ build build/reports/tracked_resource_actor_projectile_update_02051440.json: objd
   base_object = build/decomp/asm/game/tracked_resource_actor_projectile_update_02051440.o
 build build/reports/tracked_resource_actor_projectile_update_02051440.txt: match_report build/reports/tracked_resource_actor_projectile_update_02051440.json | tools/report_objdiff.py
   report_json = build/reports/tracked_resource_actor_projectile_update_02051440.json
-  report_args = --section .text --function func_02051440 --require-exact
+  report_args = --section .text --function TrackedResourceActorType24_Update --require-exact
 
 build tracked_resource_actor_projectile_update: phony build/decomp/src/game/tracked_resource_actor_projectile_update.o build/decomp/asm/game/tracked_resource_actor_projectile_update_02051440.o build/reports/tracked_resource_actor_projectile_update_02051440.txt
 
@@ -19719,7 +19719,7 @@ build build/reports/tracked_resource_actor_projectile_collision_020515fc.json: o
   base_object = build/decomp/asm/game/tracked_resource_actor_projectile_collision_020515fc.o
 build build/reports/tracked_resource_actor_projectile_collision_020515fc.txt: match_report build/reports/tracked_resource_actor_projectile_collision_020515fc.json | tools/report_objdiff.py
   report_json = build/reports/tracked_resource_actor_projectile_collision_020515fc.json
-  report_args = --section .text --function func_020515fc --require-exact
+  report_args = --section .text --function TrackedResourceActorType24_HandleCollision --require-exact
 
 build tracked_resource_actor_projectile_collision: phony build/decomp/src/game/tracked_resource_actor_projectile_collision.o build/decomp/asm/game/tracked_resource_actor_projectile_collision_020515fc.o build/reports/tracked_resource_actor_projectile_collision_020515fc.txt
 
@@ -19734,7 +19734,7 @@ build build/reports/tracked_resource_actor_projectile_reset_02051710.json: objdi
   base_object = build/decomp/asm/game/tracked_resource_actor_projectile_reset_02051710.o
 build build/reports/tracked_resource_actor_projectile_reset_02051710.txt: match_report build/reports/tracked_resource_actor_projectile_reset_02051710.json | tools/report_objdiff.py
   report_json = build/reports/tracked_resource_actor_projectile_reset_02051710.json
-  report_args = --section .text --function func_02051710 --require-exact
+  report_args = --section .text --function TrackedResourceActorType24_ResetMotionState --require-exact
 
 build tracked_resource_actor_projectile_reset: phony build/decomp/src/game/tracked_resource_actor_projectile_reset.o build/decomp/asm/game/tracked_resource_actor_projectile_reset_02051710.o build/reports/tracked_resource_actor_projectile_reset_02051710.txt
 

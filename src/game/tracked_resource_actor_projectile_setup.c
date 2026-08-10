@@ -24,7 +24,7 @@ extern void ActorRuntimeTriple_Assign(void *vector, s32 x, s32 y, s32 z);
  * sets flag 0x2000 at 0xD0 and replaces the low half of 0x5C with 8. Returns
  * nothing; vector helpers can mutate engine state but hardware is not accessed.
  */
-void func_020513ac(void *actor, const void *record, u32 transform, u32 unused)
+void TrackedResourceActorType24_SetupFromRecord(void *actor, const void *record, u32 transform, u32 unused)
 {
     u8 position[16];
     u8 source[16];

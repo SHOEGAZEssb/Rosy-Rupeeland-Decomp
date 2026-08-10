@@ -4,8 +4,8 @@
 .extern Actor_GetCollection
 .extern Actor_GetCachedTerrainHeight
 .text
-    .global func_02051440
-func_02051440:
+    .global TrackedResourceActorType24_Update
+TrackedResourceActorType24_Update:
     stmdb sp!, {r4, lr}
     ldr r1, [r0, #0x0]
     mov r4, r0
@@ -123,4 +123,4 @@ func_02051440:
     ldr r1, [r1, #0x20]
     blx r1
     ldmia sp!, {r4, pc}
-    .size func_02051440, . - func_02051440
+    .size TrackedResourceActorType24_Update, . - TrackedResourceActorType24_Update

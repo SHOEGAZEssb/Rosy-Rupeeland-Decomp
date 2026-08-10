@@ -40,7 +40,7 @@ static VirtualFunction virtual_function(void *actor, u32 offset)
  * generation and engine callbacks may cross SDK boundaries; no hardware is
  * accessed directly. The vector component semantics remain inferred.
  */
-void func_020515fc(void *actor, void *target)
+void TrackedResourceActorType24_HandleCollision(void *actor, void *target)
 {
     s32 vector[4];
     u32 random;

@@ -11,8 +11,8 @@
 .extern func_020ada8c
 .extern genrand_int32
 .text
-    .global func_020515fc
-func_020515fc:
+    .global TrackedResourceActorType24_HandleCollision
+TrackedResourceActorType24_HandleCollision:
     stmdb sp!, {r4, r5, r6, lr}
     sub sp, sp, #0x10
     mov r5, r0
@@ -83,5 +83,5 @@ func_020515fc:
     add sp, sp, #0x10
     ldmia sp!, {r4, r5, r6, pc}
 .L_0205170c: .word gActorRuntimeCollection
-    .size func_020515fc, . - func_020515fc
+    .size TrackedResourceActorType24_HandleCollision, . - TrackedResourceActorType24_HandleCollision
 

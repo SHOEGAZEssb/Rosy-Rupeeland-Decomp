@@ -5,8 +5,8 @@
 .extern func_02008378
 .extern ActorRuntimeTriple_Assign
 .text
-    .global func_020513ac
-func_020513ac:
+    .global TrackedResourceActorType24_SetupFromRecord
+TrackedResourceActorType24_SetupFromRecord:
     stmdb sp!, {r3, r4, r5, lr}
     sub sp, sp, #0x20
     mov r4, r0
@@ -44,4 +44,4 @@ func_020513ac:
     str r0, [r4, #0x5c]
     add sp, sp, #0x20
     ldmia sp!, {r3, r4, r5, pc}
-    .size func_020513ac, . - func_020513ac
+    .size TrackedResourceActorType24_SetupFromRecord, . - TrackedResourceActorType24_SetupFromRecord
