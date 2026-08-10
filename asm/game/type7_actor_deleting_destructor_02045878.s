@@ -12,9 +12,9 @@
 .extern func_0204cd7c
 .extern func_0206c978
 .extern gGameWork
-.global func_02045878
-.type func_02045878, @function
-func_02045878: ; 0x02045878
+.global Type7Actor_DestroyAndFree
+.type Type7Actor_DestroyAndFree, @function
+Type7Actor_DestroyAndFree: ; 0x02045878
     stmdb sp!, {r3, r4, r5, lr}
     ldr r1, .L_020459bc
     mov r4, r0
@@ -110,4 +110,4 @@ func_02045878: ; 0x02045878
 .L_020459c8: .word gGameWork
 .L_020459cc: .word 0x3fd
 .L_020459d0: .word data_020e16b0
-.size func_02045878, . - func_02045878
+.size Type7Actor_DestroyAndFree, . - Type7Actor_DestroyAndFree

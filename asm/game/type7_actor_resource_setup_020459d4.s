@@ -5,9 +5,9 @@
 .extern Actor_GetCollection
 .extern func_02071ee0
 .extern func_02073fc4
-.global func_020459d4
-.type func_020459d4, @function
-func_020459d4: ; 0x020459d4
+.global Type7Actor_SetupResources
+.type Type7Actor_SetupResources, @function
+Type7Actor_SetupResources: ; 0x020459d4
     stmdb sp!, {r3, r4, r5, lr}
     mov r4, r1
     ldr r2, [r4, #0xc]
@@ -43,4 +43,4 @@ func_020459d4: ; 0x020459d4
     strneb r1, [r0, #0x3a]
     ldmia sp!, {r3, r4, r5, pc}
 .L_02045a5c: .word data_020f4e18
-.size func_020459d4, . - func_020459d4
+.size Type7Actor_SetupResources, . - Type7Actor_SetupResources

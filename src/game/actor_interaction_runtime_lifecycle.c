@@ -24,8 +24,8 @@ extern void func_02034e58(void);
 extern void func_02034ea8(void);
 extern void ActorExtendedPairing_UpdateLinks(void);
 extern void InteractionTimingState_Reset(void);
-extern void func_020454f8(void);
-extern void func_02045598(void);
+extern void Type7ActorRegistry_Populate(void);
+extern void Type7ActorRegistry_Clear(void);
 extern void func_0204fafc(void);
 extern void func_0204fb2c(void);
 extern void func_020534cc(void);
@@ -75,7 +75,7 @@ void ActorInteractionRuntime_Start(void)
     *(u16 *)data_021056e4 = 0;
     ActorExtendedPairing_UpdateLinks();
     InteractionTimingState_Reset();
-    func_020454f8();
+    Type7ActorRegistry_Populate();
     func_0204fafc();
     func_020534cc();
     ActorDerivedType1_SetSingletonFieldE4To20E();
@@ -118,7 +118,7 @@ void ActorInteractionRuntime_Shutdown(void)
         func_0205929c(gSoundContext, 0x20, 0);
     func_0205355c();
     func_0204fb2c();
-    func_02045598();
+    Type7ActorRegistry_Clear();
     if (data_02105778 != 0) {
         InteractionRecordAllocatorPool_DestroyContents(data_02105778);
         Heap_Free(data_02105778);

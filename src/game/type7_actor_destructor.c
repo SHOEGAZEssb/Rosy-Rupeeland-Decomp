@@ -26,18 +26,20 @@ extern void ActorDerivedRuntime_DestroyAlternate(void *actor);
 
 /*
  * Restore vtable data_020e1c38. If world object *data_021052fc+0x2ea4 is
- * nonnull, pass it with zero to ActorDerivedType1_SetSpecialModeEnabled. Remove self from the first
- * matching data_0210577c slot. If owned pointer +0x234 exists, release it via
- * func_0206c978 and Heap_Free. Clear GameWork flag 0x3fd. For actor layer byte
+ * nonnull, pass it with zero to ActorDerivedType1_SetSpecialModeEnabled. Remove
+ * self from the first matching data_0210577c slot. If owned pointer +0x234
+ * exists, release it via func_0206c978 and Heap_Free. Clear GameWork flag
+ * 0x3fd. For actor layer byte
  * +0x48 equal to one, write terminal state into data_020e16b0: +0x268 bit
  * 0x10000 selects +0x2b4=-1, +0x2b8=0, +0x2d0=0; otherwise copy +0x1fc to
  * +0x2bc and store the boolean +0x268 bit 0x10 at +0x2d0. In both cases copy
  * signed +0x27e to +0x2c0 and fixed-point +0x1c/+0x20 integer parts to
  * +0x2c4/+0x2c8. Destroy helper +0x2a8, finalize values +0x284, +0x26c,
- * +0x224, and +0x214, invoke base destructor ActorDerivedRuntime_DestroyAlternate, and return self.
- * Registry, heap, GameWork, shared-scene, helper, and actor state may change.
+ * +0x224, and +0x214, invoke base destructor
+ * ActorDerivedRuntime_DestroyAlternate, and return self. Registry, heap,
+ * GameWork, shared-scene, helper, and actor state may change.
  */
-void *func_02045724(void *self)
+void *Type7Actor_Destroy(void *self)
 {
     u8 *actor = (u8 *)self;
     void *worldObject;

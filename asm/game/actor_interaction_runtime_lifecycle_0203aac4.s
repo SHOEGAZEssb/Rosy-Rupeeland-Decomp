@@ -19,8 +19,8 @@
 .extern InteractionTimingState_Reset
 .extern InteractionRecordAllocatorPool_Init
 .extern InteractionRecordAllocatorPool_DestroyContents
-.extern func_020454f8
-.extern func_02045598
+.extern Type7ActorRegistry_Populate
+.extern Type7ActorRegistry_Clear
 .extern func_0204fafc
 .extern func_0204fb2c
 .extern func_020534cc
@@ -92,7 +92,7 @@ ActorInteractionRuntime_Start: ; 0x0203ab6c
     strh r2, [r0, #0x0]
     bl ActorExtendedPairing_UpdateLinks
     bl InteractionTimingState_Reset
-    bl func_020454f8
+    bl Type7ActorRegistry_Populate
     bl func_0204fafc
     bl func_020534cc
     bl ActorDerivedType1_SetSingletonFieldE4To20E
@@ -162,7 +162,7 @@ ActorInteractionRuntime_Shutdown: ; 0x0203abf4
 .L_0203ac50:
     bl func_0205355c
     bl func_0204fb2c
-    bl func_02045598
+    bl Type7ActorRegistry_Clear
     ldr r0, .L_0203ac98
     ldr r4, [r0, #0x0]
     cmp r4, #0x0

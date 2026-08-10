@@ -1,8 +1,9 @@
 #include "tingle/types.h"
 
 /*
- * Recovered constructor for the type-seven actor registered by func_020454f8.
- * It initializes class transforms, limits, helper objects, and presentation state.
+ * Recovered constructor for the type-seven actor registered by
+ * Type7ActorRegistry_Populate. It initializes class transforms, limits, helper
+ * objects, and presentation state.
  */
 extern u8 data_020e1c38[];
 extern u32 data_020e1740[];
@@ -36,7 +37,7 @@ extern void func_020464f4(void *actor);
  * func_020464f4, clear the low 16 bits of +0x5c, and return self. Actor, helper,
  * resource/presentation, and base state may change; no direct hardware access.
  */
-void *func_020455bc(void *self, const void *configuration)
+void *Type7Actor_Init(void *self, const void *configuration)
 {
     u8 *actor = (u8 *)self;
     void *copied;

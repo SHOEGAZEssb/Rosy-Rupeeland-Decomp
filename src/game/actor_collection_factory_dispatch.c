@@ -57,7 +57,7 @@ DECLARE_ACTOR_CTOR(ActorExtendedType3_Init);
 DECLARE_ACTOR_CTOR(ActorExtendedTransform_InitDuplicate);
 DECLARE_ACTOR_CTOR(ActorExtendedTable_InitDuplicate);
 DECLARE_ACTOR_CTOR(ActorExtendedTableCyclic_Init);
-DECLARE_ACTOR_CTOR(func_020455bc);
+DECLARE_ACTOR_CTOR(Type7Actor_Init);
 DECLARE_ACTOR_CTOR(func_0204d068);
 DECLARE_ACTOR_CTOR(func_0204d284);
 DECLARE_ACTOR_CTOR(func_0204d488);
@@ -230,7 +230,7 @@ static ActorFactorySpec selectFactorySpec(const ActorSpawnDescriptor *descriptor
         case 4: return (ActorFactorySpec)SPEC(0x250, func_ov093_022177f0);
         default: return (ActorFactorySpec)SPEC(0x1ec, func_0204d284);
         }
-    case 7: return (ActorFactorySpec)SPEC(0x2b8, func_020455bc);
+    case 7: return (ActorFactorySpec)SPEC(0x2b8, Type7Actor_Init);
     case 8: return (ActorFactorySpec)SPEC(0x3e0, func_020579b0);
     case 9:
         switch (data_020ed470[subtype * 0x30 + 1]) {

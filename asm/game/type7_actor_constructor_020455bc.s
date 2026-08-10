@@ -9,9 +9,9 @@
 .extern func_020464f4
 .extern func_020481dc
 .extern func_0204cca8
-.global func_020455bc
-.type func_020455bc, @function
-func_020455bc: ; 0x020455bc
+.global Type7Actor_Init
+.type Type7Actor_Init, @function
+Type7Actor_Init: ; 0x020455bc
     stmdb sp!, {r4, lr}
     mov r4, r0
     bl ActorDerivedRuntime_Init
@@ -102,4 +102,4 @@ func_020455bc: ; 0x020455bc
 .L_02045718: .word data_020e1c38
 .L_0204571c: .word 0xccd
 .L_02045720: .word data_020e1740
-.size func_020455bc, . - func_020455bc
+.size Type7Actor_Init, . - Type7Actor_Init

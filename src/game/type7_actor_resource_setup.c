@@ -27,7 +27,7 @@ extern void *func_02073fc4(void *context, void *first, void *second, void *third
  * object byte +0x3a. Returns no meaningful value; resource, virtual, and actor
  * state may change and the helper calls may affect rendering resources.
  */
-void func_020459d4(void *self, const void *descriptor)
+void Type7Actor_SetupResources(void *self, const void *descriptor)
 {
     u8 *actor = (u8 *)self;
     const u8 *record = (const u8 *)descriptor;

@@ -17992,7 +17992,7 @@ build build/reports/type7_actor_registry_020454f8.json: objdiff build/decomp/del
   base_object = build/decomp/asm/game/type7_actor_registry_020454f8.o
 build build/reports/type7_actor_registry_020454f8.txt: match_report build/reports/type7_actor_registry_020454f8.json | tools/report_objdiff.py
   report_json = build/reports/type7_actor_registry_020454f8.json
-  report_args = --section .text --function func_020454f8 --function func_02045598 --require-exact
+  report_args = --section .text --function Type7ActorRegistry_Populate --function Type7ActorRegistry_Clear --require-exact
 build type7_actor_registry: phony build/decomp/src/game/type7_actor_registry.o build/decomp/asm/game/type7_actor_registry_020454f8.o build/reports/type7_actor_registry_020454f8.txt
 
 type7_actor_constructor_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
@@ -18006,7 +18006,7 @@ build build/reports/type7_actor_constructor_020455bc.json: objdiff build/decomp/
   base_object = build/decomp/asm/game/type7_actor_constructor_020455bc.o
 build build/reports/type7_actor_constructor_020455bc.txt: match_report build/reports/type7_actor_constructor_020455bc.json | tools/report_objdiff.py
   report_json = build/reports/type7_actor_constructor_020455bc.json
-  report_args = --section .text --function func_020455bc --require-exact
+  report_args = --section .text --function Type7Actor_Init --require-exact
 build type7_actor_constructor: phony build/decomp/src/game/type7_actor_constructor.o build/decomp/asm/game/type7_actor_constructor_020455bc.o build/reports/type7_actor_constructor_020455bc.txt
 
 type7_actor_destructor_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
@@ -18020,7 +18020,7 @@ build build/reports/type7_actor_destructor_02045724.json: objdiff build/decomp/d
   base_object = build/decomp/asm/game/type7_actor_destructor_02045724.o
 build build/reports/type7_actor_destructor_02045724.txt: match_report build/reports/type7_actor_destructor_02045724.json | tools/report_objdiff.py
   report_json = build/reports/type7_actor_destructor_02045724.json
-  report_args = --section .text --function func_02045724 --require-exact
+  report_args = --section .text --function Type7Actor_Destroy --require-exact
 build type7_actor_destructor: phony build/decomp/src/game/type7_actor_destructor.o build/decomp/asm/game/type7_actor_destructor_02045724.o build/reports/type7_actor_destructor_02045724.txt
 
 type7_actor_deleting_destructor_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
@@ -18034,7 +18034,7 @@ build build/reports/type7_actor_deleting_destructor_02045878.json: objdiff build
   base_object = build/decomp/asm/game/type7_actor_deleting_destructor_02045878.o
 build build/reports/type7_actor_deleting_destructor_02045878.txt: match_report build/reports/type7_actor_deleting_destructor_02045878.json | tools/report_objdiff.py
   report_json = build/reports/type7_actor_deleting_destructor_02045878.json
-  report_args = --section .text --function func_02045878 --require-exact
+  report_args = --section .text --function Type7Actor_DestroyAndFree --require-exact
 build type7_actor_deleting_destructor: phony build/decomp/src/game/type7_actor_deleting_destructor.o build/decomp/asm/game/type7_actor_deleting_destructor_02045878.o build/reports/type7_actor_deleting_destructor_02045878.txt
 
 type7_actor_resource_setup_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
@@ -18048,7 +18048,7 @@ build build/reports/type7_actor_resource_setup_020459d4.json: objdiff build/deco
   base_object = build/decomp/asm/game/type7_actor_resource_setup_020459d4.o
 build build/reports/type7_actor_resource_setup_020459d4.txt: match_report build/reports/type7_actor_resource_setup_020459d4.json | tools/report_objdiff.py
   report_json = build/reports/type7_actor_resource_setup_020459d4.json
-  report_args = --section .text --function func_020459d4 --require-exact
+  report_args = --section .text --function Type7Actor_SetupResources --require-exact
 build type7_actor_resource_setup: phony build/decomp/src/game/type7_actor_resource_setup.o build/decomp/asm/game/type7_actor_resource_setup_020459d4.o build/reports/type7_actor_resource_setup_020459d4.txt
 
 type7_actor_frame_update_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++

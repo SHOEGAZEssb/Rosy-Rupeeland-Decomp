@@ -3,11 +3,11 @@
 .extern data_021052fc
 .extern data_0210577c
 .extern func_02007f0c
-.global func_020454f8
-.type func_020454f8, @function
-.global func_02045598
-.type func_02045598, @function
-func_020454f8: ; 0x020454f8
+.global Type7ActorRegistry_Populate
+.type Type7ActorRegistry_Populate, @function
+.global Type7ActorRegistry_Clear
+.type Type7ActorRegistry_Clear, @function
+Type7ActorRegistry_Populate: ; 0x020454f8
     stmdb sp!, {r3, r4, r5, r6, r7, r8, r9, lr}
     mov r8, #0x0
     mov r7, #0x1
@@ -54,8 +54,8 @@ func_020454f8: ; 0x020454f8
 .L_02045590: .word data_0210577c
 .L_02045594: .word data_021052fc
 
-.size func_020454f8, . - func_020454f8
-func_02045598: ; 0x02045598
+.size Type7ActorRegistry_Populate, . - Type7ActorRegistry_Populate
+Type7ActorRegistry_Clear: ; 0x02045598
     mov r2, #0x0
     ldr r0, .L_020455b8
     mov r1, r2
@@ -66,4 +66,4 @@ func_02045598: ; 0x02045598
     blt .L_020455a4
     bx lr
 .L_020455b8: .word data_0210577c
-.size func_02045598, . - func_02045598
+.size Type7ActorRegistry_Clear, . - Type7ActorRegistry_Clear

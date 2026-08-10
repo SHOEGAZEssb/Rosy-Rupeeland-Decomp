@@ -20,7 +20,7 @@ extern void *func_02007f0c(void *context, s32 index);
  * any unused registry slots. Returns no value; actor and registry state change,
  * while the world query has no direct hardware effect.
  */
-void func_020454f8(void)
+void Type7ActorRegistry_Populate(void)
 {
     s32 found = 0;
     s32 index = 0;
@@ -39,7 +39,7 @@ void func_020454f8(void)
 }
 
 /* Clear all three type-seven actor registry slots; return no value. */
-void func_02045598(void)
+void Type7ActorRegistry_Clear(void)
 {
     s32 i;
     for (i = 0; i < 3; ++i)
