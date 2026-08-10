@@ -10,7 +10,7 @@ extern s32 func_020adae4(s32 numerator, s32 denominator);
 extern s32 func_02034164(void *actor);
 extern void func_020328d0(void *vector, s32 scale);
 extern s32 func_02005070(void *vector);
-extern s32 func_020343e4(void *actor, s32 x, s32 y);
+extern s32 Actor_QueryTerrainHeight(void *actor, s32 x, s32 y);
 extern void func_0203a0f0(void *actor, u32 resource, u16 value);
 extern void func_02032228(void *actor, s32 x, s32 y, s32 scale);
 extern void Actor_UpdateAnimationState(void *actor);
@@ -36,7 +36,7 @@ static s32 squareFxRound(s32 value)
  * length is below 410. Decrement nonzero byte +0x211.
  *
  * Until actor +0x14 bit 0x10000000 is set, query the runtime map at actor X/Y.
- * When decoded bits 10..13 equal one and func_020343e4 height (shifted four)
+ * When decoded bits 10..13 equal one and Actor_QueryTerrainHeight (shifted four)
  * is at least actor Z shifted down 12, spawn resource one with value 0x100,
  * invoke virtual +0x54 with zero, and set that actor flag.
  *
@@ -88,7 +88,7 @@ void func_0203cf8c(void *self)
         u32 cell = (*(u32 (**)(void *, s32, s32))(*(u8 **)map + 0x2c))(
             map, x, y);
         if (((cell >> 10) & 0x0f) == 1 &&
-            (func_020343e4(actor, x, y) << 4) >=
+            (Actor_QueryTerrainHeight(actor, x, y) << 4) >=
                 (*(s32 *)(actor + 0x24) >> 12)) {
             func_0203a0f0(actor, 1, 0x100);
             (*(void (**)(void *, s32))(*(u8 **)actor + 0x54))(actor, 0);

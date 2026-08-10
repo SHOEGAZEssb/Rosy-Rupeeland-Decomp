@@ -18,7 +18,7 @@ extern void *SceneManager_GetCurrent(void *manager);
 extern void *func_02009d78(void *object);
 extern void *func_0202d494(void *value, void *actor);
 extern void *func_020337d4(void *actor);
-extern s32 func_020343e4(void *actor, s32 x, s32 y);
+extern s32 Actor_QueryTerrainHeight(void *actor, s32 x, s32 y);
 extern void func_020050a4(void *destination, const void *source);
 extern void func_020050c8(void *destination, const void *source);
 extern s32 func_0204cfa4(s32 x, s32 y);
@@ -110,7 +110,7 @@ void func_0204d858(void *actor)
         u32 detail = ((u32)tile << 22) >> 27;
         if ((kind == 1 || detail == 14) &&
             (FIELD(s32, actor, 0x24) >> 12) <=
-                func_020343e4(actor, x, y) * 16) {
+                Actor_QueryTerrainHeight(actor, x, y) * 16) {
             finish_actor(actor);
         }
 
@@ -175,4 +175,3 @@ void func_0204d858(void *actor)
         *(ActorUpdateCallback *)((u8 *)FIELD(void *, actor, 0) + 0xc0);
     callback(actor);
 }
-

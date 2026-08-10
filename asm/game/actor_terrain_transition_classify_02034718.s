@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/actor_terrain_transition_classify.c.
 .text
 .extern data_021052fc
-.extern func_020343e4
+.extern Actor_QueryTerrainHeight
 .extern Actor_QueryTerrainCell
 
     .global func_02034718
@@ -47,7 +47,7 @@ func_02034718: ; 0x02034718
     mov r0, r8
     mov r1, r7
     mov r2, r6
-    bl func_020343e4
+    bl Actor_QueryTerrainHeight
     cmp r5, r0
     movlt r0, #0x2
     blt .L_020347f4

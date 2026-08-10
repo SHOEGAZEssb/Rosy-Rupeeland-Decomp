@@ -10,7 +10,7 @@
 extern "C" {
 #endif
 extern void func_02033ed0(void *actor);
-extern s32 func_020343e4(void *actor, s32 x, s32 y);
+extern s32 Actor_QueryTerrainHeight(void *actor, s32 x, s32 y);
 extern s32 func_02034d34(void *actor, s32 x, s32 y, s32 height);
 extern s32 func_020adae4(s32 value, s32 divisor);
 extern s32 func_020adc90(s32 value, s32 length);
@@ -48,7 +48,7 @@ s32 func_0204a890(void *self)
         s32 scale = func_020adc90(0x11000, *(s32 *)(actor + 0x240)) >> 12;
         s32 x = *(s32 *)(actor + 0x1c) + *(s32 *)(actor + 0x3c) * scale;
         s32 y = *(s32 *)(actor + 0x20) + *(s32 *)(actor + 0x40) * scale;
-        s32 level = func_020343e4(actor, x >> 16, y >> 16);
+        s32 level = Actor_QueryTerrainHeight(actor, x >> 16, y >> 16);
         s32 height = level << 16;
 
         if (*(s32 *)(actor + 0x1dc) + 0x10000 != height

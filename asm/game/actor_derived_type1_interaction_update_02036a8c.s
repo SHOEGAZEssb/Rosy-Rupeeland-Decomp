@@ -23,7 +23,7 @@
 .extern func_0200b294
 .extern func_0201e0ec
 .extern func_020328d0
-.extern func_020343e4
+.extern Actor_QueryTerrainHeight
 .extern func_020349b8
 .extern Actor_IsAtCachedTerrainHeight
 .extern func_020372b4
@@ -346,7 +346,7 @@ func_02036a8c: ; 0x02036a8c
     mov r0, r10
     mov r4, r3, lsr #0x1c
     ldr r5, [r10, #0x24]
-    bl func_020343e4
+    bl Actor_QueryTerrainHeight
     ldr r1, [r10, #0xd0]
     mov r0, r0, lsl #0x4
     tst r1, #0x100

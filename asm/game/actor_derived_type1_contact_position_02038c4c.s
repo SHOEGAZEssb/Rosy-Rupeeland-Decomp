@@ -3,7 +3,7 @@
 .extern func_02005030
 .extern func_02005058
 .extern func_02033f44
-.extern func_020343e4
+.extern Actor_QueryTerrainHeight
 
     .global func_02038c4c
     .type func_02038c4c, @function
@@ -45,7 +45,7 @@ func_02038c4c: ; 0x02038c4c
     mov r0, r5
     mov r1, r8
     mov r2, r2, asr #0x10
-    bl func_020343e4
+    bl Actor_QueryTerrainHeight
     mov r7, r0, lsl #0x4
     mov r0, r5
     bl func_02033f44

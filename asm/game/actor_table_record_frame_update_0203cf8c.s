@@ -6,7 +6,7 @@
 .extern func_020328d0
 .extern Actor_UpdateAnimationState
 .extern func_02034164
-.extern func_020343e4
+.extern Actor_QueryTerrainHeight
 .extern func_0203a0f0
 .extern func_020adae4
     .global func_0203cf8c
@@ -119,7 +119,7 @@ func_0203cf8c: ; 0x0203cf8c
     mov r0, r4
     mov r1, r5
     mov r2, r6
-    bl func_020343e4
+    bl Actor_QueryTerrainHeight
     ldr r1, [r4, #0x24]
     mov r0, r0, lsl #0x4
     cmp r0, r1, asr #0xc

@@ -4,7 +4,7 @@
 .extern data_ov095_0221ced0
 .extern func_020050a4
 .extern func_02033f44
-.extern func_020343e4
+.extern Actor_QueryTerrainHeight
 .extern func_0203e7c8
 .extern func_ov095_0221b6d8
 
@@ -86,7 +86,7 @@ func_ov095_0221ba38:
     mov r0, r4
     mov r1, r1, asr #0x10
     mov r2, r2, asr #0x10
-    bl func_020343e4
+    bl Actor_QueryTerrainHeight
     mov r1, r0, lsl #0x10
     str r1, [r4, #0xbc]
     mov r0, r4

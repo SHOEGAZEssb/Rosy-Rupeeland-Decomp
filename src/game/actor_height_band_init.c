@@ -7,7 +7,7 @@ extern void *data_021052fc;
 extern "C" {
 #endif
 extern s32 func_020adae4(s32, s32);
-extern s32 func_020343e4(void *, s32, s32);
+extern s32 Actor_QueryTerrainHeight(void *, s32, s32);
 #ifdef __cplusplus
 }
 #endif
@@ -16,7 +16,8 @@ extern s32 func_020343e4(void *, s32, s32);
  * Interpret input words 0x04/0x08 in sixteenth-unit coordinates. Derive the
  * top scan row from global object 0x2ed4 field 0x20, clamp it to inputY/16+16,
  * and scan downward. At the first row where inputY/16 equals row minus the
- * func_020343e4 height, store inputX<<12 at actor 0x7c, height<<16 at 0x84,
+ * Actor_QueryTerrainHeight result, store inputX<<12 at actor 0x7c and
+ * height<<16 at 0x84,
  * and that height plus inputY<<12 at 0x80. If no row through zero matches,
  * leave these fields unchanged. Returns no value; terrain queries observe
  * world state without direct hardware access.
@@ -36,7 +37,7 @@ void Actor_TryInitializeHeightBandFromPoint(void *self,
     if (row > y + 16)
         row = y + 16;
     for (; row >= 0; row--) {
-        s32 height = func_020343e4(actor, x, row);
+        s32 height = Actor_QueryTerrainHeight(actor, x, row);
         if (y == row - height) {
             *(s32 *)(actor + 0x7c) = *(s32 *)(input + 0x04) << 12;
             *(s32 *)(actor + 0x84) = height << 16;

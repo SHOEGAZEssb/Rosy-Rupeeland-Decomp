@@ -33,4 +33,4 @@ Actor_BuildWorldInteractionBounds: ; 0x02034378
     bx lr
     .size Actor_BuildWorldInteractionBounds, . - Actor_BuildWorldInteractionBounds
 
-    .global func_020343e4
+    .global Actor_QueryTerrainHeight

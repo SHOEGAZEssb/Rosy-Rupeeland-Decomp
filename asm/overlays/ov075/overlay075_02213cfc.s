@@ -4,7 +4,7 @@
 .extern func_02005058
 .extern func_020050a4
 .extern func_02032228
-.extern func_020343e4
+.extern Actor_QueryTerrainHeight
 .extern func_02045364
 .extern func_0204539c
 .extern func_020453b0
@@ -34,7 +34,7 @@ func_ov075_02213cfc:
     ldr r1, [r5, #0x230]
     mov r2, r2, asr #0x10
     mov r1, r1, asr #0x10
-    bl func_020343e4
+    bl Actor_QueryTerrainHeight
     mov r2, r0, lsl #0x10
     add r0, r5, #0x28
     add r1, r5, #0x22c
@@ -59,7 +59,7 @@ func_ov075_02213cfc:
     mov r2, r1, asr #0x10
     ldr r1, [r5, #0x2b4]
     mov r1, r1, asr #0x10
-    bl func_020343e4
+    bl Actor_QueryTerrainHeight
     mov r0, r0, lsl #0x10
     str r0, [r5, #0x2bc]
     ldr r2, [r5, #0x2b8]

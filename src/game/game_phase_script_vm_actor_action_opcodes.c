@@ -7,7 +7,7 @@ extern "C" {
 #endif
 extern void *data_021052fc;
 extern void func_0202bb60(void *object, u32 first, u32 second, u32 third);
-extern u32 func_020343e4(void *actor, u32 first, u32 second);
+extern u32 Actor_QueryTerrainHeight(void *actor, u32 first, u32 second);
 extern void Actor_SavePrimaryAttachmentState(void *actor);
 extern void Actor_RestorePrimaryAttachmentState(void *actor);
 #ifdef __cplusplus
@@ -28,12 +28,12 @@ s32 func_02013e14(GamePhaseActorScriptVm *self)
     return 0;
 }
 
-/* Pop second and first, push func_020343e4(bound actor, first, second), and return zero. */
+/* Pop X/Y, push Actor_QueryTerrainHeight for the bound actor, and return zero. */
 s32 func_02013e64(GamePhaseActorScriptVm *self)
 {
     u32 second = func_02012704(&self->base);
     u32 first = func_02012704(&self->base);
-    func_020127f8(&self->base, func_020343e4(self->actor_84, first, second));
+    func_020127f8(&self->base, Actor_QueryTerrainHeight(self->actor_84, first, second));
     return 0;
 }
 

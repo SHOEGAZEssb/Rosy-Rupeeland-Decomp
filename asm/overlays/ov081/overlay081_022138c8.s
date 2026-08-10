@@ -2,7 +2,7 @@
 ; Matching fallback for the portable implementation in src/overlays/ov081/overlay081_recovery.c.
 .extern data_020c9670
 .extern func_020050a4
-.extern func_020343e4
+.extern Actor_QueryTerrainHeight
 .extern func_020bf1f8
 .extern func_ov081_0221367c
 .extern genrand_int32
@@ -45,7 +45,7 @@ func_ov081_022138c8:
     mov r2, r1, asr #0x10
     ldr r1, [r4, #0x7c]
     mov r1, r1, asr #0x10
-    bl func_020343e4
+    bl Actor_QueryTerrainHeight
     mov r0, r0, lsl #0x10
     str r0, [r4, #0x84]
     mov r0, #0x0

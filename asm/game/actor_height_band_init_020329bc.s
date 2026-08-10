@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/actor_height_band_init.c.
 .text
 .extern data_021052fc
-.extern func_020343e4
+.extern Actor_QueryTerrainHeight
 .extern func_020adae4
 
     .global Actor_TryInitializeHeightBandFromPoint
@@ -32,7 +32,7 @@ Actor_TryInitializeHeightBandFromPoint: ; 0x020329bc
     mov r0, r6
     mov r1, r7
     mov r2, r8
-    bl func_020343e4
+    bl Actor_QueryTerrainHeight
     sub r1, r8, r0
     cmp r4, r1
     bne .L_02032a50

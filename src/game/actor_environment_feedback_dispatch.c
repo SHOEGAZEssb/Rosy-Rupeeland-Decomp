@@ -19,7 +19,7 @@ extern s32 func_02008514(void *runtime, s32 x, s32 y);
 extern void *func_0201f378(void *allocation, ...);
 extern void *func_0201f598(void *allocation, ...);
 extern void func_0201ded4(void *manager, void *presentation);
-extern s32 func_020343e4(void *actor, s32 x, s32 y);
+extern s32 Actor_QueryTerrainHeight(void *actor, s32 x, s32 y);
 extern void *func_0203a0b4(u32 index);
 extern void func_02072bdc(void *sprite, u32 animation);
 extern void Sound_Play(void *context, s32 channel, s32 sound);
@@ -98,7 +98,7 @@ s32 func_0203a314(void *self)
         s32 x = (centerX + dx) >> 4;
         for (dy = -8; dy <= 8; dy += 8) {
             s32 y = (centerY + dy) >> 4;
-            s32 height = func_020343e4(actor, x, y) << 16;
+            s32 height = Actor_QueryTerrainHeight(actor, x, y) << 16;
             if (position[3] == height) {
                 u8 *map = *(u8 **)(data_021052fc + 0x2ed4);
                 u32 cell = (*(u32 (**)(void *, s32, s32))(*(u8 **)map + 0x2c))(

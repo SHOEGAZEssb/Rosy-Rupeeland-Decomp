@@ -10,7 +10,7 @@ typedef struct StepActorVTable {
 extern "C" {
 #endif
 extern u32 Actor_QueryTerrainCell(void *, s32, s32);
-extern s32 func_020343e4(void *, s32, s32);
+extern s32 Actor_QueryTerrainHeight(void *, s32, s32);
 extern void func_02033ed0(void *);
 extern s32 func_020adae4(s32, s32);
 #ifdef __cplusplus
@@ -54,12 +54,12 @@ s32 func_02031f44(void *self)
     terrain = Actor_QueryTerrainCell(actor, targetX >> 16, targetY >> 16);
     if (terrainCodeBlocksStep(terrain))
         return 0;
-    targetHeight = func_020343e4(actor, targetX >> 16, targetY >> 16) << 4;
+    targetHeight = Actor_QueryTerrainHeight(actor, targetX >> 16, targetY >> 16) << 4;
     rise = targetHeight - (baseline >> 12);
     limit = (*(u32 *)(actor + 0x14) & 0x400000) ? 32 : 16;
     if (rise <= 0 || rise > limit)
         return 0;
-    if ((func_020343e4(
+    if ((Actor_QueryTerrainHeight(
              actor,
              (*(s32 *)(actor + 0x1c) + *(s32 *)(actor + 0x3c) * 8) >> 16,
              (*(s32 *)(actor + 0x20) + *(s32 *)(actor + 0x40) * 8) >> 16)

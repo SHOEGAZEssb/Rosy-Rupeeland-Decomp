@@ -7,7 +7,7 @@ extern "C" {
 #endif
 extern void func_02005030(void *destination, const void *source);
 extern void func_02005058(void *value);
-extern s32 func_020343e4(void *actor, s32 x, s32 y);
+extern s32 Actor_QueryTerrainHeight(void *actor, s32 x, s32 y);
 extern s32 func_02033f44(void *actor);
 #ifdef __cplusplus
 }
@@ -36,7 +36,7 @@ void func_02038c4c(void *output, void *self, const void *recordValue)
             s32 direction = *(s32 *)(record + 0x1c) >
                             *(s32 *)(actor + 0x1c) ? 1 : -1;
             s32 cellX = (*(s32 *)(actor + 0x1c) >> 16) + direction;
-            s32 height = func_020343e4(actor, cellX,
+            s32 height = Actor_QueryTerrainHeight(actor, cellX,
                                       *(s32 *)(actor + 0x20) >> 16) << 4;
             if (func_02033f44(actor) == (height << 12)) {
                 temporary[1] = cellX << 16;

@@ -9,7 +9,7 @@ extern void *gSoundContext;
 extern "C" {
 #endif
 extern s32 func_020828a0(void *state, s32 index);
-extern s32 func_020343e4(void *actor, s32 x, s32 y);
+extern s32 Actor_QueryTerrainHeight(void *actor, s32 x, s32 y);
 extern s32 func_02033f44(void *actor);
 extern u32 Actor_QueryTerrainCell(void *actor, s32 x, s32 y);
 extern s32 func_0203463c(void *actor, s32 x, s32 y, s32 height);
@@ -95,7 +95,7 @@ void func_0203bba4(void *self)
                      *(s32 *)(actor + 0x8c) + *(s32 *)(actor + 0x9c);
         predictedY = *(s32 *)(actor + 0x20) + *(s32 *)(actor + 0x40) +
                      *(s32 *)(actor + 0x90) + *(s32 *)(actor + 0xa0);
-        terrain = func_020343e4(actor, predictedX >> 16, predictedY >> 16)
+        terrain = Actor_QueryTerrainHeight(actor, predictedX >> 16, predictedY >> 16)
                   << 16;
         if (*(s32 *)(actor + 0x24) <= terrain &&
             (*(u32 *)(actor + 0xd0) & 0x10) == 0 &&
@@ -114,7 +114,7 @@ void func_0203bba4(void *self)
              *(s32 *)(actor + 0xa0);
     predictedX = *(s32 *)(actor + 0x1c) + totalX;
     predictedY = *(s32 *)(actor + 0x20) + totalY;
-    terrain = func_020343e4(actor, predictedX >> 16, predictedY >> 16) << 16;
+    terrain = Actor_QueryTerrainHeight(actor, predictedX >> 16, predictedY >> 16) << 16;
     currentGround = func_02033f44(actor);
     if (terrain == currentGround) {
         clearContactCountdown(actor);

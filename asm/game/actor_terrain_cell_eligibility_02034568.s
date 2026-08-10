@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/actor_terrain_cell_eligibility.c.
 .text
 .extern data_021052fc
-.extern func_020343e4
+.extern Actor_QueryTerrainHeight
 .extern Actor_QueryTerrainCell
 
     .global func_02034568
@@ -36,7 +36,7 @@ func_02034568: ; 0x02034568
     mov r0, #0x0
     b .L_02034630
 .L_020345d4:
-    bl func_020343e4
+    bl Actor_QueryTerrainHeight
     cmp r0, r4
     movne r0, #0x0
     bne .L_02034630

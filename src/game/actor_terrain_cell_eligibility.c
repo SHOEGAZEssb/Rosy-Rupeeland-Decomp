@@ -6,7 +6,7 @@ extern void *data_021052fc;
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern s32 func_020343e4(void *actor, s32 x, s32 y);
+extern s32 Actor_QueryTerrainHeight(void *actor, s32 x, s32 y);
 extern u32 Actor_QueryTerrainCell(void *actor, s32 x, s32 y);
 #ifdef __cplusplus
 }
@@ -30,7 +30,7 @@ s32 func_02034568(void *self, s32 x, s32 y, s32 expectedHeight)
         y > (s32)(s16)(dimensions >> 16) - 1) {
         return 0;
     }
-    if (func_020343e4(self, x, y) != expectedHeight) return 0;
+    if (Actor_QueryTerrainHeight(self, x, y) != expectedHeight) return 0;
 
     packed = Actor_QueryTerrainCell(self, x, y);
     terrainClass = (packed >> 5) & 0x1f;

@@ -13,7 +13,7 @@
 .extern func_0201ded4
 .extern func_0201f378
 .extern func_0201f598
-.extern func_020343e4
+.extern Actor_QueryTerrainHeight
 .extern func_0203a0b4
 .extern func_02072bdc
 .extern gHeapContext
@@ -80,7 +80,7 @@ func_0203a314: ; 0x0203a314
     mov r0, r10
     mov r1, r7
     mov r2, r8
-    bl func_020343e4
+    bl Actor_QueryTerrainHeight
     mov r1, r0, lsl #0x4
     mov r2, r1, lsl #0xc
     ldr r0, [sp, #0x48]

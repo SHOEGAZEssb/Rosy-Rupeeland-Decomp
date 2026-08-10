@@ -30,7 +30,7 @@ extern void func_020066a4(void *output, const void *first, const void *second);
 extern void func_02005084(void *value);
 extern void func_020328d0(void *value, s32 scale);
 extern void *func_02007f0c(void *manager, u32 slot);
-extern s32 func_020343e4(void *actor, s32 x, s32 y);
+extern s32 Actor_QueryTerrainHeight(void *actor, s32 x, s32 y);
 extern s32 func_020372b4(void *actor);
 extern s32 func_0200b294(void *state);
 extern s32 GameWork_TestFlag(void *work, u32 flag);
@@ -210,7 +210,7 @@ s32 func_02036a8c(void *self)
         }
         terrainField = (packed >> 10) & 0x0f;
         heightDelta = (*(s32 *)(actor + 0x24) >> 12) -
-                      ((s32)func_020343e4(actor, x, y) << 4);
+                      ((s32)Actor_QueryTerrainHeight(actor, x, y) << 4);
         eligible = ((*(u32 *)(actor + 0xd0) & 0x100) == 0 &&
                     func_020372b4(actor) == 0 &&
                     *(void **)(actor + 0x270) == 0 &&

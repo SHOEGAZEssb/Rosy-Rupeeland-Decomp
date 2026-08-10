@@ -20,7 +20,7 @@ extern void func_020050c8(void *destination, const void *source);
 extern void func_02005a00(void *presentation, s32 x, s32 y, s32 mode);
 extern void *func_0202d494(void *value, void *actor);
 extern void *func_020337d4(void *actor);
-extern s32 func_020343e4(void *actor, s32 x, s32 y);
+extern s32 Actor_QueryTerrainHeight(void *actor, s32 x, s32 y);
 extern s32 func_0204aff4(void *actor);
 extern s32 func_0204f478(void *actor);
 extern void func_0204f4d4(void *actor, void *target);
@@ -115,7 +115,7 @@ void func_0204ee24(void *actor)
         u32 detail = ((u32)tile << 22) >> 27;
         if ((kind == 1 || detail == 14) &&
             (FIELD(s32, actor, 0x24) >> 12) <=
-                func_020343e4(actor, x, y) * 16) {
+                Actor_QueryTerrainHeight(actor, x, y) * 16) {
             finish_actor(actor);
         }
 
@@ -202,4 +202,3 @@ void func_0204ee24(void *actor)
         }
     }
 }
-

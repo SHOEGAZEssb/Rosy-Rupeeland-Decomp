@@ -38,7 +38,7 @@ void Actor_BuildWorldInteractionBounds(s32 output[4], const void *self,
  * exceed actor Z +0x24 shifted by 16, return height+4; otherwise return the base
  * height. Terrain helpers read global map/SDK-managed state.
  */
-s32 func_020343e4(void *self, s32 x, s32 y)
+s32 Actor_QueryTerrainHeight(void *self, s32 x, s32 y)
 {
     u8 *actor = (u8 *)self;
     s32 height;

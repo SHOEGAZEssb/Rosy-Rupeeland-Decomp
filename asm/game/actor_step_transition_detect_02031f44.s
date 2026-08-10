@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/actor_step_transition_detect.c.
 .text
 .extern func_02033ed0
-.extern func_020343e4
+.extern Actor_QueryTerrainHeight
 .extern Actor_QueryTerrainCell
 .extern func_020adae4
 
@@ -65,7 +65,7 @@ func_02031f44: ; 0x02031f44
     mov r0, r4
     mov r1, r8
     mov r2, r9
-    bl func_020343e4
+    bl Actor_QueryTerrainHeight
     ldr r1, [r4, #0x14]
     mov r8, r0, lsl #0x4
     tst r1, #0x400000
@@ -85,7 +85,7 @@ func_02031f44: ; 0x02031f44
     mov r0, r4
     mov r1, r3, asr #0x10
     mov r2, r2, asr #0x10
-    bl func_020343e4
+    bl Actor_QueryTerrainHeight
     mov r0, r0, lsl #0x4
     sub r0, r0, r5, asr #0xc
     cmp r0, r10

@@ -8,7 +8,7 @@
 .extern func_02005084
 .extern func_020050a4
 .extern func_02033f44
-.extern func_020343e4
+.extern Actor_QueryTerrainHeight
 .extern Actor_QueryTerrainCell
 .extern func_0203463c
 .extern func_02034800
@@ -58,7 +58,7 @@ func_0203bba4: ; 0x0203bba4
     mov r0, r10
     mov r1, r7
     mov r2, r8
-    bl func_020343e4
+    bl Actor_QueryTerrainHeight
     mov r6, r0, lsl #0x10
     mov r0, r10
     bl func_02033f44
@@ -373,7 +373,7 @@ func_0203bba4: ; 0x0203bba4
     mov r0, r10
     mov r1, r3, asr #0x10
     mov r2, r2, asr #0x10
-    bl func_020343e4
+    bl Actor_QueryTerrainHeight
     ldr r1, [r10, #0x24]
     cmp r1, r0, lsl #0x10
     bgt .L_0203c11c

@@ -13,7 +13,7 @@
 .extern func_02005030
 .extern func_02005058
 .extern func_020050a4
-.extern func_020343e4
+.extern Actor_QueryTerrainHeight
 .extern func_02034568
 .extern func_02034a60
 .extern func_020befec
@@ -179,7 +179,7 @@ func_ov080_02212f90:
     str r1, [sp, #0x0]
     ldr r2, [sp, #0x0]
     mov r1, r8
-    bl func_020343e4
+    bl Actor_QueryTerrainHeight
     ldr r2, [sp, #0x0]
     mov r1, r8
     mov r0, r10
