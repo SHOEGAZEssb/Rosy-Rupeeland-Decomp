@@ -4,8 +4,8 @@
 .extern ActorRuntimeCollection_SetPendingValue
 .extern GamePhaseScriptVm_Pop
 
-    .global func_020142cc
-func_020142cc: ; 0x020142cc
+    .global GamePhaseActorScriptVm_SetCollectionPendingValue
+GamePhaseActorScriptVm_SetCollectionPendingValue: ; 0x020142cc
     stmdb sp!, {r3, lr}
     bl GamePhaseScriptVm_Pop
     mov r1, r0
@@ -14,5 +14,5 @@ func_020142cc: ; 0x020142cc
     mov r0, #0x0
     ldmia sp!, {r3, pc}
 L_020142e8: .word data_02105310
-    .size func_020142cc, . - func_020142cc
+    .size GamePhaseActorScriptVm_SetCollectionPendingValue, . - GamePhaseActorScriptVm_SetCollectionPendingValue
 

@@ -123,8 +123,8 @@ s32 GamePhaseActorScriptVm_TranslateCollisionBounds(GamePhaseActorScriptVm *self
 s32 GamePhaseActorScriptVm_StageAreaRequest(GamePhaseActorScriptVm *self);
 s32 GamePhaseActorScriptVm_StartBrightnessTransition(GamePhaseActorScriptVm *self);
 s32 GamePhaseActorScriptVm_IsBrightnessTransitionPending(GamePhaseActorScriptVm *self);
-s32 func_020142cc(GamePhaseActorScriptVm *self);
-s32 func_020142ec(GamePhaseActorScriptVm *self);
+s32 GamePhaseActorScriptVm_SetCollectionPendingValue(GamePhaseActorScriptVm *self);
+s32 GamePhaseActorScriptVm_PresentationNoOp(GamePhaseActorScriptVm *self);
 s32 func_020142f4(GamePhaseActorScriptVm *self);
 s32 func_02014314(GamePhaseActorScriptVm *self);
 s32 func_0201433c(GamePhaseActorScriptVm *self);

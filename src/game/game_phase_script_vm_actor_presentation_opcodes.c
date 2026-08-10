@@ -13,7 +13,7 @@ extern void Actor_SetAttachmentBaseScale(void *actor, s32 scaleX, s32 scaleY);
 #endif
 
 /* Pop a value, pass it to data_02105310 through ActorRuntimeCollection_SetPendingValue, and return zero. */
-s32 func_020142cc(GamePhaseActorScriptVm *self)
+s32 GamePhaseActorScriptVm_SetCollectionPendingValue(GamePhaseActorScriptVm *self)
 {
     u32 value = GamePhaseScriptVm_Pop(&self->base);
     ActorRuntimeCollection_SetPendingValue(data_02105310, value);
@@ -21,7 +21,7 @@ s32 func_020142cc(GamePhaseActorScriptVm *self)
 }
 
 /* No-op script handler; ignores the VM and returns zero. */
-s32 func_020142ec(GamePhaseActorScriptVm *self)
+s32 GamePhaseActorScriptVm_PresentationNoOp(GamePhaseActorScriptVm *self)
 {
     (void)self;
     return 0;
