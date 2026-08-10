@@ -10,8 +10,8 @@ extern u8 data_020e08ec[];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *func_0203db80(void *actor, const void *configuration);
-extern void *func_0203e494(void *actor);
+extern void *ActorExtendedType2_Init(void *actor, const void *configuration);
+extern void *ActorExtendedType2_Destroy(void *actor);
 extern void func_0200500c(void *value, s32 x, s32 y, s32 z);
 extern void func_02005058(void *value);
 extern s32 func_02043610(const void *actor);
@@ -27,7 +27,7 @@ extern s32 func_02043610(const void *actor);
 void *func_020440cc(void *self, const void *configuration)
 {
     u8 *actor = (u8 *)self;
-    func_0203db80(actor, configuration);
+    ActorExtendedType2_Init(actor, configuration);
     *(void **)actor = data_020e08ec;
     *(u16 *)(actor + 0x298) = 0;
     func_0200500c(actor + 0x29c, 0, 0, 0);
@@ -39,7 +39,7 @@ void *func_020440cc(void *self, const void *configuration)
 void *func_02044118(void *self, const void *configuration)
 {
     u8 *actor = (u8 *)self;
-    func_0203db80(actor, configuration);
+    ActorExtendedType2_Init(actor, configuration);
     *(void **)actor = data_020e08ec;
     *(u16 *)(actor + 0x298) = 0;
     func_0200500c(actor + 0x29c, 0, 0, 0);
@@ -51,7 +51,7 @@ void *func_02044118(void *self, const void *configuration)
 void *func_02044164(void *self)
 {
     func_02005058((u8 *)self + 0x29c);
-    func_0203e494(self);
+    ActorExtendedType2_Destroy(self);
     return self;
 }
 
@@ -62,7 +62,7 @@ void *func_02044164(void *self)
 void *func_02044184(void *self)
 {
     func_02005058((u8 *)self + 0x29c);
-    func_0203e494(self);
+    ActorExtendedType2_Destroy(self);
     Heap_Free(self);
     return self;
 }
@@ -71,6 +71,6 @@ void *func_02044184(void *self)
 void *func_020441ac(void *self)
 {
     func_02005058((u8 *)self + 0x29c);
-    func_0203e494(self);
+    ActorExtendedType2_Destroy(self);
     return self;
 }

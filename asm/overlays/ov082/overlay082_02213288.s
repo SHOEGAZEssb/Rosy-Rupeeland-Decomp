@@ -1,13 +1,13 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov082/overlay082_recovery.c.
 .extern Heap_Free
-.extern func_0203e494
+.extern ActorExtendedType2_Destroy
 
 .global func_ov082_02213288
 func_ov082_02213288:
     stmdb sp!, {r4, lr}
     mov r4, r0
-    bl func_0203e494
+    bl ActorExtendedType2_Destroy
     mov r0, r4
     bl Heap_Free
     mov r0, r4

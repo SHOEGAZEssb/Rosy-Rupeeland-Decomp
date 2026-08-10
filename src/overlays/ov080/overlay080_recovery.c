@@ -151,7 +151,7 @@ void func_ov080_02213e1c(void);
 /* Processes the supplied ABI arguments using only local offset-based fields; observable mutations and the return value are preserved by the matching implementation, with no direct SDK call. */
 void func_ov080_02213e30(void);
 
-/* Processes the supplied ABI arguments and offset-based actor state, returns its encoded result, and invokes func_0203db80, func_020bf1f8, func_ov080_02212ae0 and other shared helpers; exact higher-level semantics remain unconfirmed. */
+/* Processes the supplied ABI arguments and offset-based actor state, returns its encoded result, and invokes ActorExtendedType2_Init, func_020bf1f8, func_ov080_02212ae0 and other shared helpers; exact higher-level semantics remain unconfirmed. */
 void func_ov080_02213e38(void);
 
 

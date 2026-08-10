@@ -6,9 +6,9 @@
 .extern func_02031488
 .extern func_0203b61c
 .extern func_0204cd7c
-    .global func_0203e3b4
-    .type func_0203e3b4, @function
-func_0203e3b4: ; 0x0203e3b4
+    .global ActorExtendedType2_DestroyAndFree
+    .type ActorExtendedType2_DestroyAndFree, @function
+ActorExtendedType2_DestroyAndFree: ; 0x0203e3b4
     stmdb sp!, {r3, r4, r5, lr}
     ldr r1, .L_0203e490
     mov r4, r0
@@ -71,12 +71,12 @@ func_0203e3b4: ; 0x0203e3b4
     mov r0, r4
     ldmia sp!, {r3, r4, r5, pc}
 .L_0203e490: .word data_020dfee4
-    .size func_0203e3b4, . - func_0203e3b4
+    .size ActorExtendedType2_DestroyAndFree, . - ActorExtendedType2_DestroyAndFree
 
-    .global func_0203e494
-    .type func_0203e494, @function
+    .global ActorExtendedType2_Destroy
+    .type ActorExtendedType2_Destroy, @function
 
-func_0203e494: ; 0x0203e494
+ActorExtendedType2_Destroy: ; 0x0203e494
     stmdb sp!, {r3, r4, r5, lr}
     ldr r1, .L_0203e568
     mov r4, r0
@@ -137,5 +137,5 @@ func_0203e494: ; 0x0203e494
     mov r0, r4
     ldmia sp!, {r3, r4, r5, pc}
 .L_0203e568: .word data_020dfee4
-    .size func_0203e494, . - func_0203e494
+    .size ActorExtendedType2_Destroy, . - ActorExtendedType2_Destroy
 

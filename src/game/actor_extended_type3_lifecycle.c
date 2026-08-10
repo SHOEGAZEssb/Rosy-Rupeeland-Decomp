@@ -14,7 +14,7 @@ extern "C" {
 extern void func_020c0c24(void *array, s32 elementSize, s32 alignment,
                           void (*destructor)(void *));
 extern void func_02004ac8(void *element);
-extern void func_0203db80(void *actor);
+extern void ActorExtendedType2_Init(void *actor);
 #ifdef __cplusplus
 }
 #endif
@@ -35,14 +35,14 @@ void *func_020437f4(void *self)
 }
 
 /*
- * Initialize the base through func_0203db80, install vtable data_020e0290, set
+ * Initialize the base through ActorExtendedType2_Init, install vtable data_020e0290, set
  * halfword +0x298 to two and +0x29a to zero, and return self. Actor/base state
  * changes; no direct SDK or hardware operation occurs.
  */
 void *func_02043830(void *self)
 {
     u8 *actor = (u8 *)self;
-    func_0203db80(actor);
+    ActorExtendedType2_Init(actor);
     *(void **)actor = data_020e0290;
     *(u16 *)(actor + 0x298) = 2;
     *(u16 *)(actor + 0x29a) = 0;

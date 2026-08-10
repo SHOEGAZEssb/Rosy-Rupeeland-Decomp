@@ -12,8 +12,8 @@ extern void *data_0210572c[];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *func_0203db80(void *actor, const void *configuration);
-extern void *func_0203e494(void *actor);
+extern void *ActorExtendedType2_Init(void *actor, const void *configuration);
+extern void *ActorExtendedType2_Destroy(void *actor);
 extern void ActorExtendedType2_UpdateFrame(void *actor);
 extern s32 func_02043340(void *actor, void *other, s32 context);
 #ifdef __cplusplus
@@ -29,7 +29,7 @@ extern s32 func_02043340(void *actor, void *other, s32 context);
 void *func_02043cd0(void *self, const void *configuration)
 {
     u8 *actor = (u8 *)self;
-    func_0203db80(actor, configuration);
+    ActorExtendedType2_Init(actor, configuration);
     *(void **)actor = data_020e04d8;
     *(void **)(actor + 0x298) = 0;
     if (data_0210572a < 8) {
@@ -39,28 +39,28 @@ void *func_02043cd0(void *self, const void *configuration)
     return actor;
 }
 
-/* Invoke base destructor func_0203e494 and return self; actor state is torn down. */
+/* Invoke base destructor ActorExtendedType2_Destroy and return self; actor state is torn down. */
 void *func_02043d1c(void *self)
 {
-    func_0203e494(self);
+    ActorExtendedType2_Destroy(self);
     return self;
 }
 
 /*
- * Invoke base destructor func_0203e494, free self, and return the original
+ * Invoke base destructor ActorExtendedType2_Destroy, free self, and return the original
  * pointer value. Actor storage becomes invalid after the heap operation.
  */
 void *func_02043d30(void *self)
 {
-    func_0203e494(self);
+    ActorExtendedType2_Destroy(self);
     Heap_Free(self);
     return self;
 }
 
-/* Invoke base destructor func_0203e494 and return self; actor state is torn down. */
+/* Invoke base destructor ActorExtendedType2_Destroy and return self; actor state is torn down. */
 void *func_02043d4c(void *self)
 {
-    func_0203e494(self);
+    ActorExtendedType2_Destroy(self);
     return self;
 }
 

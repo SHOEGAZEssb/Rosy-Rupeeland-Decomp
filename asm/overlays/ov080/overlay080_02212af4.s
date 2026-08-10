@@ -2,7 +2,7 @@
 ; Matching fallback for the portable implementation in src/overlays/ov080/overlay080_recovery.c.
 .extern data_020eb850
 .extern data_ov080_02213f44
-.extern func_0203db80
+.extern ActorExtendedType2_Init
 .extern func_020bf1f8
 .extern func_ov080_02212ae0
 .extern gGameWork
@@ -13,7 +13,7 @@ func_ov080_02212af4:
     stmdb sp!, {r3, r4, r5, lr}
     sub sp, sp, #0x30
     mov r4, r0
-    bl func_0203db80
+    bl ActorExtendedType2_Init
     ldr r0, .L_02212bb0
     mov r1, #0x0
     str r0, [r4, #0x0]

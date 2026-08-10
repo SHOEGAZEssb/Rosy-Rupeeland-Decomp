@@ -14,7 +14,7 @@
 .extern func_0203c4e0
 .extern func_0203ca28
 .extern func_0203d2a8
-.extern func_0203df4c
+.extern ActorExtendedType2_InitDuplicate
 .extern func_02043830
 .extern func_02044118
 .extern func_020445d8
@@ -187,7 +187,7 @@ ActorCollection_SpawnActorFromDescriptor: ; 0x0202ecd0
     movs r4, r0
     beq .L_0202f928
     mov r1, r5
-    bl func_0203df4c
+    bl ActorExtendedType2_InitDuplicate
     mov r4, r0
     b .L_0202f928
 .L_0202ee4c:
@@ -950,7 +950,7 @@ ActorCollection_SpawnActorFromDescriptor: ; 0x0202ecd0
     movs r4, r0
     beq .L_0202f928
     mov r1, r5
-    bl func_0203df4c
+    bl ActorExtendedType2_InitDuplicate
     mov r4, r0
 .L_0202f928:
     mov r0, r4

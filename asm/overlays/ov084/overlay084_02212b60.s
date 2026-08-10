@@ -3,7 +3,7 @@
 .extern Heap_Free
 .extern data_ov084_022141c8
 .extern func_0200637c
-.extern func_0203e494
+.extern ActorExtendedType2_Destroy
 
 .global func_ov084_02212b60
 func_ov084_02212b60:
@@ -20,7 +20,7 @@ func_ov084_02212b60:
     bl Heap_Free
 .L_02212b8c:
     mov r0, r5
-    bl func_0203e494
+    bl ActorExtendedType2_Destroy
     mov r0, r5
     ldmia sp!, {r3, r4, r5, pc}
 .L_02212b9c: .word data_ov084_022141c8

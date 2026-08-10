@@ -20,9 +20,9 @@
 .extern func_0204cca8
 .extern func_0206899c
 .extern gHeapContext
-    .global func_0203df4c
-    .type func_0203df4c, @function
-func_0203df4c: ; 0x0203df4c
+    .global ActorExtendedType2_InitDuplicate
+    .type ActorExtendedType2_InitDuplicate, @function
+ActorExtendedType2_InitDuplicate: ; 0x0203df4c
     stmdb sp!, {r3, r4, r5, lr}
     sub sp, sp, #0x30
     mov r5, r0
@@ -209,4 +209,4 @@ func_0203df4c: ; 0x0203df4c
 .L_0203e208: .word gHeapContext
 .L_0203e20c: .word data_020e00c0
 .L_0203e210: .word data_020e83a0
-    .size func_0203df4c, . - func_0203df4c
+    .size ActorExtendedType2_InitDuplicate, . - ActorExtendedType2_InitDuplicate

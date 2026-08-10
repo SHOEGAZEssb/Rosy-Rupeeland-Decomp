@@ -51,7 +51,7 @@
 .extern func_ov097_022191b8
 .extern func_02031464
 .extern func_0203baac
-.extern func_0203e214
+.extern ActorExtendedType2_ResetRuntimeState
 .extern func_0203f2ec
 .extern func_0203f4f8
 .extern func_0203f5c4
@@ -333,7 +333,7 @@ data_ov097_0221a5f4:
     .word func_ov097_022191b8
     .word func_02031464
     .word func_0203baac
-    .word func_0203e214
+    .word ActorExtendedType2_ResetRuntimeState
     .word func_0203f2ec
     .word func_0203f4f8
     .word func_0203f5c4
@@ -468,7 +468,7 @@ data_ov097_0221a80c:
     .word func_02043674
     .word func_02031464
     .word func_0203baac
-    .word func_0203e214
+    .word ActorExtendedType2_ResetRuntimeState
     .word func_0203f2ec
     .word func_0203f4f8
     .word func_0203f5c4

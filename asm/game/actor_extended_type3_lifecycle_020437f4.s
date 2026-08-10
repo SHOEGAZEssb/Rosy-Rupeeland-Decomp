@@ -3,7 +3,7 @@
 .extern data_020dfec0
 .extern data_020e0290
 .extern func_02004ac8
-.extern func_0203db80
+.extern ActorExtendedType2_Init
 .extern func_020c0c24
 .global func_020437f4
 .type func_020437f4, @function
@@ -32,7 +32,7 @@ func_020437f4: ; 0x020437f4
 func_02043830: ; 0x02043830
     stmdb sp!, {r4, lr}
     mov r4, r0
-    bl func_0203db80
+    bl ActorExtendedType2_Init
     ldr r0, .L_02043860
     add r1, r4, #0x200
     str r0, [r4, #0x0]

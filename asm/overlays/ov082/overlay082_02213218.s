@@ -1,13 +1,13 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov082/overlay082_recovery.c.
 .extern data_ov082_022148d0
-.extern func_0203db80
+.extern ActorExtendedType2_Init
 
 .global func_ov082_02213218
 func_ov082_02213218:
     stmdb sp!, {r4, lr}
     mov r4, r0
-    bl func_0203db80
+    bl ActorExtendedType2_Init
     ldr r0, .L_0221326c
     add r2, r4, #0x200
     str r0, [r4, #0x0]

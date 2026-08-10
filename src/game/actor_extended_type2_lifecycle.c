@@ -27,7 +27,7 @@ extern void func_02004ac8(void *element);
  * virtual +0xcc, then zero halfword +0x270. Returns no value; actor and virtual
  * callback state change. Meanings of the copied global fields are unconfirmed.
  */
-void func_0203e214(void *self)
+void ActorExtendedType2_ResetRuntimeState(void *self)
 {
     u8 *actor = (u8 *)self;
 
@@ -57,7 +57,7 @@ void func_0203e214(void *self)
  * +0x23c/+0x22c, and finish through func_0203b61c. Return self; owned heap,
  * vector, helper, and base actor state is released.
  */
-void *func_0203e298(void *self)
+void *ActorExtendedType2_DestroyComplete(void *self)
 {
     u8 *actor = (u8 *)self;
     s32 index;

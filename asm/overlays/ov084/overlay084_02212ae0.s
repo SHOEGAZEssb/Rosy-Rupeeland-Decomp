@@ -4,7 +4,7 @@
 .extern data_ov084_022141c8
 .extern data_ov084_0221439c
 .extern func_02006328
-.extern func_0203db80
+.extern ActorExtendedType2_Init
 .extern func_020435f4
 .extern gHeapContext
 
@@ -12,7 +12,7 @@
 func_ov084_02212ae0:
     stmdb sp!, {r4, lr}
     mov r4, r0
-    bl func_0203db80
+    bl ActorExtendedType2_Init
     ldr r0, .L_02212b54
     mov r1, #0x0
     str r0, [r4, #0x0]

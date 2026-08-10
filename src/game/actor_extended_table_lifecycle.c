@@ -10,7 +10,7 @@ extern u8 data_020eb850[];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *func_0203db80(void *actor, const void *configuration);
+extern void *ActorExtendedType2_Init(void *actor, const void *configuration);
 #ifdef __cplusplus
 }
 #endif
@@ -29,7 +29,7 @@ void *func_02044518(void *self, const void *configuration)
     u8 descriptor[0x30];
     u8 *match = 0;
     s32 i;
-    func_0203db80(actor, configuration);
+    ActorExtendedType2_Init(actor, configuration);
     *(void **)actor = data_020e0d50;
     *(u16 *)(actor + 0x298) = 0;
     *(u16 *)(actor + 0x29c) = 0;
@@ -60,7 +60,7 @@ void *func_020445d8(void *self, const void *configuration)
     u8 descriptor[0x30];
     u8 *match = 0;
     s32 i;
-    func_0203db80(actor, configuration);
+    ActorExtendedType2_Init(actor, configuration);
     *(void **)actor = data_020e0d50;
     *(u16 *)(actor + 0x298) = 0;
     *(u16 *)(actor + 0x29c) = 0;

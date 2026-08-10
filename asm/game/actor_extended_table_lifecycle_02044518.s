@@ -2,7 +2,7 @@
 .text
 .extern data_020e0d50
 .extern data_020eb850
-.extern func_0203db80
+.extern ActorExtendedType2_Init
 .global func_02044518
 .type func_02044518, @function
 .global func_020445d8
@@ -11,7 +11,7 @@ func_02044518: ; 0x02044518
     stmdb sp!, {r3, r4, r5, lr}
     sub sp, sp, #0x30
     mov r4, r0
-    bl func_0203db80
+    bl ActorExtendedType2_Init
     ldr r0, .L_020445d0
     add r1, r4, #0x200
     str r0, [r4, #0x0]
@@ -64,7 +64,7 @@ func_020445d8: ; 0x020445d8
     stmdb sp!, {r3, r4, r5, lr}
     sub sp, sp, #0x30
     mov r4, r0
-    bl func_0203db80
+    bl ActorExtendedType2_Init
     ldr r0, .L_02044690
     add r1, r4, #0x200
     str r0, [r4, #0x0]

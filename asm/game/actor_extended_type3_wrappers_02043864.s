@@ -3,7 +3,7 @@
 .extern Heap_Free
 .extern func_02005030
 .extern func_02005058
-.extern func_0203e494
+.extern ActorExtendedType2_Destroy
 .extern func_0203f5c4
 .extern func_020400a4
 .extern func_02040334
@@ -14,7 +14,7 @@
 func_02043864: ; 0x02043864
     stmdb sp!, {r4, lr}
     mov r4, r0
-    bl func_0203e494
+    bl ActorExtendedType2_Destroy
     mov r0, r4
     ldmia sp!, {r4, pc}
 
@@ -25,7 +25,7 @@ func_02043864: ; 0x02043864
 func_02043878: ; 0x02043878
     stmdb sp!, {r4, lr}
     mov r4, r0
-    bl func_0203e494
+    bl ActorExtendedType2_Destroy
     mov r0, r4
     bl Heap_Free
     mov r0, r4

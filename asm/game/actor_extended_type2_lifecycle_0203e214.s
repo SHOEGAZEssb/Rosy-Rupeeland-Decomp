@@ -10,9 +10,9 @@
 .extern func_0203b61c
 .extern func_0204cd7c
 .extern func_020c0c24
-    .global func_0203e214
-    .type func_0203e214, @function
-func_0203e214: ; 0x0203e214
+    .global ActorExtendedType2_ResetRuntimeState
+    .type ActorExtendedType2_ResetRuntimeState, @function
+ActorExtendedType2_ResetRuntimeState: ; 0x0203e214
     stmdb sp!, {r4, lr}
     mov r4, r0
     add r1, r4, #0x200
@@ -46,12 +46,12 @@ func_0203e214: ; 0x0203e214
     strh r1, [r0, #0x70]
     ldmia sp!, {r4, pc}
 .L_0203e294: .word data_020df9e8
-    .size func_0203e214, . - func_0203e214
+    .size ActorExtendedType2_ResetRuntimeState, . - ActorExtendedType2_ResetRuntimeState
 
-    .global func_0203e298
-    .type func_0203e298, @function
+    .global ActorExtendedType2_DestroyComplete
+    .type ActorExtendedType2_DestroyComplete, @function
 
-func_0203e298: ; 0x0203e298
+ActorExtendedType2_DestroyComplete: ; 0x0203e298
     stmdb sp!, {r3, r4, r5, lr}
     ldr r1, .L_0203e36c
     mov r4, r0
@@ -112,7 +112,7 @@ func_0203e298: ; 0x0203e298
     mov r0, r4
     ldmia sp!, {r3, r4, r5, pc}
 .L_0203e36c: .word data_020dfee4
-    .size func_0203e298, . - func_0203e298
+    .size ActorExtendedType2_DestroyComplete, . - ActorExtendedType2_DestroyComplete
 
     .global func_0203e370
     .type func_0203e370, @function

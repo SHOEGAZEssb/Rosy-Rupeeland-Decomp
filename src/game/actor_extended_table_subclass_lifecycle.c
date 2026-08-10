@@ -8,7 +8,7 @@ extern u8 data_020e0b70[];
 extern "C" {
 #endif
 extern void *func_02044518(void *actor, const void *configuration);
-extern void *func_0203e494(void *actor);
+extern void *ActorExtendedType2_Destroy(void *actor);
 extern void func_020447ec(void *actor);
 #ifdef __cplusplus
 }
@@ -29,20 +29,20 @@ void *func_02044d84(void *self, const void *configuration)
     return actor;
 }
 
-/* Invoke base destructor func_0203e494 and return self; actor state is torn down. */
+/* Invoke base destructor ActorExtendedType2_Destroy and return self; actor state is torn down. */
 void *func_02044db4(void *self)
 {
-    func_0203e494(self);
+    ActorExtendedType2_Destroy(self);
     return self;
 }
 
 /*
- * Invoke base destructor func_0203e494, free self, and return the original
+ * Invoke base destructor ActorExtendedType2_Destroy, free self, and return the original
  * pointer value. Actor storage becomes invalid after the heap operation.
  */
 void *func_02044dc8(void *self)
 {
-    func_0203e494(self);
+    ActorExtendedType2_Destroy(self);
     Heap_Free(self);
     return self;
 }

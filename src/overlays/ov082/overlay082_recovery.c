@@ -184,7 +184,7 @@ void func_ov082_02214408(void);
 /* Processes the supplied ABI arguments using only local offset-based fields; observable mutations and the return value are preserved by the matching implementation, with no direct SDK call. */
 void func_ov082_02214430(void);
 
-/* Processes the supplied ABI arguments and offset-based actor state, returns its encoded result, and invokes func_0203db80, func_0203e494, func_0204362c and other shared helpers; exact higher-level semantics remain unconfirmed. */
+/* Processes the supplied ABI arguments and offset-based actor state, returns its encoded result, and invokes ActorExtendedType2_Init, ActorExtendedType2_Destroy, func_0204362c and other shared helpers; exact higher-level semantics remain unconfirmed. */
 void func_ov082_022144e8(void);
 
 

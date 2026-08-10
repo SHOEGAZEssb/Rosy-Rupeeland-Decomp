@@ -3,13 +3,13 @@
 .extern data_ov095_0221cf4c
 .extern func_02004fe0
 .extern Actor_QueryTerrainHeight
-.extern func_0203db80
+.extern ActorExtendedType2_Init
 
 .global func_ov095_0221b23c
 func_ov095_0221b23c:
     stmdb sp!, {r4, lr}
     mov r4, r0
-    bl func_0203db80
+    bl ActorExtendedType2_Init
     ldr r1, .L_0221b29c
     add r0, r4, #0x200
     str r1, [r4, #0x0]

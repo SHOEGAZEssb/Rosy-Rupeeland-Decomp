@@ -16565,7 +16565,7 @@ build build/reports/actor_extended_type2_constructor_0203db80.json: objdiff buil
   base_object = build/decomp/asm/game/actor_extended_type2_constructor_0203db80.o
 build build/reports/actor_extended_type2_constructor_0203db80.txt: match_report build/reports/actor_extended_type2_constructor_0203db80.json | tools/report_objdiff.py
   report_json = build/reports/actor_extended_type2_constructor_0203db80.json
-  report_args = --section .text --function func_0203db80 --require-exact
+  report_args = --section .text --function ActorExtendedType2_Init --require-exact
 build build/reports/actor_extended_type2_constructor.txt: phony build/reports/actor_extended_type2_constructor_0203db80.txt
 
 build actor_extended_type2_constructor: phony build/decomp/src/game/actor_extended_type2_constructor.o build/decomp/asm/game/actor_extended_type2_constructor_0203db80.o build/reports/actor_extended_type2_constructor.txt
@@ -16607,7 +16607,7 @@ build build/reports/actor_extended_type2_constructor_duplicate_0203df4c.json: ob
   base_object = build/decomp/asm/game/actor_extended_type2_constructor_duplicate_0203df4c.o
 build build/reports/actor_extended_type2_constructor_duplicate_0203df4c.txt: match_report build/reports/actor_extended_type2_constructor_duplicate_0203df4c.json | tools/report_objdiff.py
   report_json = build/reports/actor_extended_type2_constructor_duplicate_0203df4c.json
-  report_args = --section .text --function func_0203df4c --require-exact
+  report_args = --section .text --function ActorExtendedType2_InitDuplicate --require-exact
 build build/reports/actor_extended_type2_constructor_duplicate.txt: phony build/reports/actor_extended_type2_constructor_duplicate_0203df4c.txt
 
 build actor_extended_type2_constructor_duplicate: phony build/decomp/src/game/actor_extended_type2_constructor_duplicate.o build/decomp/asm/game/actor_extended_type2_constructor_duplicate_0203df4c.o build/reports/actor_extended_type2_constructor_duplicate.txt
@@ -16624,7 +16624,7 @@ build build/reports/actor_extended_type2_lifecycle_0203e214.json: objdiff build/
   base_object = build/decomp/asm/game/actor_extended_type2_lifecycle_0203e214.o
 build build/reports/actor_extended_type2_lifecycle_0203e214.txt: match_report build/reports/actor_extended_type2_lifecycle_0203e214.json | tools/report_objdiff.py
   report_json = build/reports/actor_extended_type2_lifecycle_0203e214.json
-  report_args = --section .text --function func_0203e214 --function func_0203e298 --function func_0203e370 --require-exact
+  report_args = --section .text --function ActorExtendedType2_ResetRuntimeState --function ActorExtendedType2_DestroyComplete --function func_0203e370 --require-exact
 build build/reports/actor_extended_type2_lifecycle.txt: phony build/reports/actor_extended_type2_lifecycle_0203e214.txt
 
 build actor_extended_type2_lifecycle: phony build/decomp/src/game/actor_extended_type2_lifecycle.o build/decomp/asm/game/actor_extended_type2_lifecycle_0203e214.o build/reports/actor_extended_type2_lifecycle.txt
@@ -16641,7 +16641,7 @@ build build/reports/actor_extended_type2_destructor_variants_0203e3b4.json: objd
   base_object = build/decomp/asm/game/actor_extended_type2_destructor_variants_0203e3b4.o
 build build/reports/actor_extended_type2_destructor_variants_0203e3b4.txt: match_report build/reports/actor_extended_type2_destructor_variants_0203e3b4.json | tools/report_objdiff.py
   report_json = build/reports/actor_extended_type2_destructor_variants_0203e3b4.json
-  report_args = --section .text --function func_0203e3b4 --function func_0203e494 --require-exact
+  report_args = --section .text --function ActorExtendedType2_DestroyAndFree --function ActorExtendedType2_Destroy --require-exact
 build build/reports/actor_extended_type2_destructor_variants.txt: phony build/reports/actor_extended_type2_destructor_variants_0203e3b4.txt
 
 build actor_extended_type2_destructor_variants: phony build/decomp/src/game/actor_extended_type2_destructor_variants.o build/decomp/asm/game/actor_extended_type2_destructor_variants_0203e3b4.o build/reports/actor_extended_type2_destructor_variants.txt

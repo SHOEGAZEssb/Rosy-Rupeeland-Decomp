@@ -9,7 +9,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_0203e494(void *actor);
+extern void ActorExtendedType2_Destroy(void *actor);
 extern s32 func_020400a4(void *actor, void *record);
 extern s32 func_02040334(void *actor, void *record);
 extern s32 func_020435f4(const void *actor);
@@ -20,20 +20,20 @@ extern void func_0203f5c4(void *actor, const void *transform);
 }
 #endif
 
-/* Invoke base destructor func_0203e494 and return self; actor state is torn down. */
+/* Invoke base destructor ActorExtendedType2_Destroy and return self; actor state is torn down. */
 void *func_02043864(void *self)
 {
-    func_0203e494(self);
+    ActorExtendedType2_Destroy(self);
     return self;
 }
 
 /*
- * Invoke base destructor func_0203e494, free self through Heap_Free, and return
+ * Invoke base destructor ActorExtendedType2_Destroy, free self through Heap_Free, and return
  * the original pointer value. Actor storage becomes invalid after the heap call.
  */
 void *func_02043878(void *self)
 {
-    func_0203e494(self);
+    ActorExtendedType2_Destroy(self);
     Heap_Free(self);
     return self;
 }

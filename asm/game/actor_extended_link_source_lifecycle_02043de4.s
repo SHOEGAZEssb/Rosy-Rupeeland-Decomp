@@ -4,8 +4,8 @@
 .extern data_020e06b4
 .extern data_02105728
 .extern data_0210574c
-.extern func_0203db80
-.extern func_0203e494
+.extern ActorExtendedType2_Init
+.extern ActorExtendedType2_Destroy
 .extern ActorExtendedType2_UpdateFrame
 .global func_02043de4
 .type func_02043de4, @function
@@ -20,7 +20,7 @@
 func_02043de4: ; 0x02043de4
     stmdb sp!, {r4, lr}
     mov r4, r0
-    bl func_0203db80
+    bl ActorExtendedType2_Init
     ldr r0, .L_02043e2c
     mov r1, #0x0
     str r0, [r4, #0x0]
@@ -44,7 +44,7 @@ func_02043de4: ; 0x02043de4
 func_02043e38: ; 0x02043e38
     stmdb sp!, {r4, lr}
     mov r4, r0
-    bl func_0203e494
+    bl ActorExtendedType2_Destroy
     mov r0, r4
     ldmia sp!, {r4, pc}
 
@@ -52,7 +52,7 @@ func_02043e38: ; 0x02043e38
 func_02043e4c: ; 0x02043e4c
     stmdb sp!, {r4, lr}
     mov r4, r0
-    bl func_0203e494
+    bl ActorExtendedType2_Destroy
     mov r0, r4
     bl Heap_Free
     mov r0, r4
@@ -62,7 +62,7 @@ func_02043e4c: ; 0x02043e4c
 func_02043e68: ; 0x02043e68
     stmdb sp!, {r4, lr}
     mov r4, r0
-    bl func_0203e494
+    bl ActorExtendedType2_Destroy
     mov r0, r4
     ldmia sp!, {r4, pc}
 

@@ -47,7 +47,7 @@ extern u8 *func_0206899c(s32 index);
  * config +0x2c is forwarded to virtual +0x74 when nonzero. Returns self; base,
  * heap, helper, virtual, and optional manager calls mutate owned engine state.
  */
-void *func_0203db80(void *self, const void *configuration)
+void *ActorExtendedType2_Init(void *self, const void *configuration)
 {
     u8 *actor = (u8 *)self;
     const u8 *config = (const u8 *)configuration;

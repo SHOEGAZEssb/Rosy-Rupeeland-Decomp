@@ -4,8 +4,8 @@
 .extern data_020e08ec
 .extern func_0200500c
 .extern func_02005058
-.extern func_0203db80
-.extern func_0203e494
+.extern ActorExtendedType2_Init
+.extern ActorExtendedType2_Destroy
 .extern func_02043610
 .global func_020440cc
 .type func_020440cc, @function
@@ -20,7 +20,7 @@
 func_020440cc: ; 0x020440cc
     stmdb sp!, {r4, lr}
     mov r4, r0
-    bl func_0203db80
+    bl ActorExtendedType2_Init
     mov r1, #0x0
     ldr r0, .L_02044114
     mov r2, r1
@@ -42,7 +42,7 @@ func_020440cc: ; 0x020440cc
 func_02044118: ; 0x02044118
     stmdb sp!, {r4, lr}
     mov r4, r0
-    bl func_0203db80
+    bl ActorExtendedType2_Init
     mov r1, #0x0
     ldr r0, .L_02044160
     mov r2, r1
@@ -67,7 +67,7 @@ func_02044164: ; 0x02044164
     add r0, r4, #0x29c
     bl func_02005058
     mov r0, r4
-    bl func_0203e494
+    bl ActorExtendedType2_Destroy
     mov r0, r4
     ldmia sp!, {r4, pc}
 
@@ -78,7 +78,7 @@ func_02044184: ; 0x02044184
     add r0, r4, #0x29c
     bl func_02005058
     mov r0, r4
-    bl func_0203e494
+    bl ActorExtendedType2_Destroy
     mov r0, r4
     bl Heap_Free
     mov r0, r4
@@ -91,7 +91,7 @@ func_020441ac: ; 0x020441ac
     add r0, r4, #0x29c
     bl func_02005058
     mov r0, r4
-    bl func_0203e494
+    bl ActorExtendedType2_Destroy
     mov r0, r4
     ldmia sp!, {r4, pc}
 .size func_020441ac, . - func_020441ac
