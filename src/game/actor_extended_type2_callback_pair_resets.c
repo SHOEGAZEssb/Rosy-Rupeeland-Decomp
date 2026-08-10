@@ -6,7 +6,7 @@ extern u8 data_020df9e8[];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_0203fd00(void *actor);
+extern void ActorExtendedType2_IncrementSavedProgressCounter(void *actor);
 #ifdef __cplusplus
 }
 #endif
@@ -40,8 +40,12 @@ void ActorExtendedType2_ConfigureCallback08(void *self)
     if ((*(u32 *)(a+0x10)&8)!=0) *(u32 *)(a+0x10)|=0x01000000;
 }
 
-/* Invoke actor virtual +0xfc followed by func_0203fd00; return no value and propagate both routines' actor effects. */
+/*
+ * Invoke actor virtual +0xfc followed by
+ * ActorExtendedType2_IncrementSavedProgressCounter. Return no value; both
+ * routines' actor effects propagate.
+ */
 void ActorExtendedType2_RunVirtualFCAndResetProgress(void *self)
 {
-    u8 *a=(u8 *)self; (*(void (**)(void *))(*(u8 **)a+0xfc))(a); func_0203fd00(a);
+    u8 *a=(u8 *)self; (*(void (**)(void *))(*(u8 **)a+0xfc))(a); ActorExtendedType2_IncrementSavedProgressCounter(a);
 }

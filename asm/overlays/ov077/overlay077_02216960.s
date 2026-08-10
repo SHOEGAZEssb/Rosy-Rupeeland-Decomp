@@ -2,7 +2,7 @@
 ; Matching fallback for the portable implementation in src/overlays/ov077/overlay077_recovery.c.
 .extern data_ov077_02216fc8
 .extern func_020349b8
-.extern func_0203fd00
+.extern ActorExtendedType2_IncrementSavedProgressCounter
 .extern func_ov077_02216cac
 
 .global func_ov077_02216960
@@ -17,7 +17,7 @@ func_ov077_02216960:
     str r2, [r4, #0x21c]
     bl func_ov077_02216cac
     mov r0, r4
-    bl func_0203fd00
+    bl ActorExtendedType2_IncrementSavedProgressCounter
     ldr r1, .L_022169b4
     mov r0, r4
     mov r2, #0x0

@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/actor_extended_type2_callback_pair_resets.c.
 .text
 .extern data_020df9e8
-.extern func_0203fd00
+.extern ActorExtendedType2_IncrementSavedProgressCounter
     .global ActorExtendedType2_ConfigureCallbacks00And170
     .type ActorExtendedType2_ConfigureCallbacks00And170, @function
 ActorExtendedType2_ConfigureCallbacks00And170: ; 0x0203fb24
@@ -108,7 +108,7 @@ ActorExtendedType2_RunVirtualFCAndResetProgress: ; 0x0203fc48
     ldr r1, [r1, #0xfc]
     blx r1
     mov r0, r4
-    bl func_0203fd00
+    bl ActorExtendedType2_IncrementSavedProgressCounter
     ldmia sp!, {r4, pc}
     .size ActorExtendedType2_RunVirtualFCAndResetProgress, . - ActorExtendedType2_RunVirtualFCAndResetProgress
 

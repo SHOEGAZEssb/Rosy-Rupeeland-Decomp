@@ -65,13 +65,13 @@
 .extern ActorExtendedType2_ConfigureCallbacks18And240
 .extern func_020422f4
 .extern func_ov096_02217898
-.extern func_0203fc68
+.extern ActorExtendedType2_DisableModesAndSetCallbackPair80
 .extern ActorExtendedType2_RunVirtualFCAndResetProgress
 .extern func_02042408
 .extern func_02042514
 .extern func_02042810
-.extern func_0203fd68
-.extern func_0203fd84
+.extern ActorExtendedType2_SetCallbackPair88
+.extern ActorExtendedType2_RestoreState1AndCallbackPair28
 .extern func_ov096_022182e0
 .extern func_020400a4
 .extern ActorExtendedType2_AccumulateProximityInteraction
@@ -256,13 +256,13 @@ data_ov096_02218b98:
     .word ActorExtendedType2_ConfigureCallbacks18And240
     .word func_020422f4
     .word func_ov096_02217898
-    .word func_0203fc68
+    .word ActorExtendedType2_DisableModesAndSetCallbackPair80
     .word ActorExtendedType2_RunVirtualFCAndResetProgress
     .word func_02042408
     .word func_02042514
     .word func_02042810
-    .word func_0203fd68
-    .word func_0203fd84
+    .word ActorExtendedType2_SetCallbackPair88
+    .word ActorExtendedType2_RestoreState1AndCallbackPair28
     .word func_ov096_022182e0
     .word func_020400a4
     .word ActorExtendedType2_AccumulateProximityInteraction
@@ -403,13 +403,13 @@ data_ov096_02218de8:
     .word ActorExtendedType2_ConfigureCallbacks18And240
     .word func_020422f4
     .word ActorExtendedType2_ConfigureCallback08
-    .word func_0203fc68
+    .word ActorExtendedType2_DisableModesAndSetCallbackPair80
     .word ActorExtendedType2_RunVirtualFCAndResetProgress
     .word func_02042408
     .word func_02042514
     .word func_02042810
-    .word func_0203fd68
-    .word func_0203fd84
+    .word ActorExtendedType2_SetCallbackPair88
+    .word ActorExtendedType2_RestoreState1AndCallbackPair28
     .word func_ov096_022182e0
     .word func_020400a4
     .word ActorExtendedType2_AccumulateProximityInteraction

@@ -17,7 +17,7 @@ extern void func_0200b2c0(void *vector, s32 x, s32 y, s32 z);
  * invoke virtual +0x114. Returns no value; actor transform, motion, and virtual
  * callback state change. Both input layouts remain address-derived.
  */
-void func_0203fe0c(void *self, const void *position, const void *motion)
+void ActorExtendedType2_InitializeTransformAndMotion(void *self, const void *position, const void *motion)
 {
     u8 *a=(u8 *)self; const u8 *m=(const u8 *)motion;
     func_020050a4(a+0x28,position); func_020050a4(a+0x18,a+0x28); func_020050a4(a+0x22c,a+0x18);

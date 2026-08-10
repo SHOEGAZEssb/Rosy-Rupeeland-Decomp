@@ -16842,7 +16842,7 @@ build build/reports/actor_extended_type2_disable_reset_0203fc68.json: objdiff bu
   base_object = build/decomp/asm/game/actor_extended_type2_disable_reset_0203fc68.o
 build build/reports/actor_extended_type2_disable_reset_0203fc68.txt: match_report build/reports/actor_extended_type2_disable_reset_0203fc68.json | tools/report_objdiff.py
   report_json = build/reports/actor_extended_type2_disable_reset_0203fc68.json
-  report_args = --section .text --function func_0203fc68 --require-exact
+  report_args = --section .text --function ActorExtendedType2_DisableModesAndSetCallbackPair80 --require-exact
 build build/reports/actor_extended_type2_disable_reset.txt: phony build/reports/actor_extended_type2_disable_reset_0203fc68.txt
 build actor_extended_type2_disable_reset: phony build/decomp/src/game/actor_extended_type2_disable_reset.o build/decomp/asm/game/actor_extended_type2_disable_reset_0203fc68.o build/reports/actor_extended_type2_disable_reset.txt
 
@@ -16857,7 +16857,7 @@ build build/reports/actor_extended_type2_progress_and_state_reset_0203fd00.json:
   base_object = build/decomp/asm/game/actor_extended_type2_progress_and_state_reset_0203fd00.o
 build build/reports/actor_extended_type2_progress_and_state_reset_0203fd00.txt: match_report build/reports/actor_extended_type2_progress_and_state_reset_0203fd00.json | tools/report_objdiff.py
   report_json = build/reports/actor_extended_type2_progress_and_state_reset_0203fd00.json
-  report_args = --section .text --function func_0203fd00 --function func_0203fd68 --function func_0203fd84 --require-exact
+  report_args = --section .text --function ActorExtendedType2_IncrementSavedProgressCounter --function ActorExtendedType2_SetCallbackPair88 --function ActorExtendedType2_RestoreState1AndCallbackPair28 --require-exact
 build build/reports/actor_extended_type2_progress_and_state_reset.txt: phony build/reports/actor_extended_type2_progress_and_state_reset_0203fd00.txt
 build actor_extended_type2_progress_and_state_reset: phony build/decomp/src/game/actor_extended_type2_progress_and_state_reset.o build/decomp/asm/game/actor_extended_type2_progress_and_state_reset_0203fd00.o build/reports/actor_extended_type2_progress_and_state_reset.txt
 
@@ -16872,7 +16872,7 @@ build build/reports/actor_extended_type2_transform_initialize_0203fe0c.json: obj
   base_object = build/decomp/asm/game/actor_extended_type2_transform_initialize_0203fe0c.o
 build build/reports/actor_extended_type2_transform_initialize_0203fe0c.txt: match_report build/reports/actor_extended_type2_transform_initialize_0203fe0c.json | tools/report_objdiff.py
   report_json = build/reports/actor_extended_type2_transform_initialize_0203fe0c.json
-  report_args = --section .text --function func_0203fe0c --require-exact
+  report_args = --section .text --function ActorExtendedType2_InitializeTransformAndMotion --require-exact
 build build/reports/actor_extended_type2_transform_initialize.txt: phony build/reports/actor_extended_type2_transform_initialize_0203fe0c.txt
 build actor_extended_type2_transform_initialize: phony build/decomp/src/game/actor_extended_type2_transform_initialize.o build/decomp/asm/game/actor_extended_type2_transform_initialize_0203fe0c.o build/reports/actor_extended_type2_transform_initialize.txt
 

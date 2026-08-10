@@ -19,7 +19,7 @@ extern void func_02045184(void *handle, void *actor);
  * 0x100, and store 0xff at halfword +0xac. Returns no value; actor, attachment,
  * and optional handle state change.
  */
-void func_0203fc68(void *self)
+void ActorExtendedType2_DisableModesAndSetCallbackPair80(void *self)
 {
     u8 *actor=(u8 *)self;
     *(u32 *)(actor+0xd0)&=~0x200; *(u32 *)(actor+0x260)&=~0x800; *(u16 *)(actor+0x24e)=0;

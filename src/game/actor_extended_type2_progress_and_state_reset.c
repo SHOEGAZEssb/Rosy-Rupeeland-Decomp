@@ -18,7 +18,7 @@ extern void func_02072b68(void *attachment, u32 animation);
  * 0x4c. On an ID match, increment the following signed halfword and return.
  * Otherwise return unchanged. Saved game progress may change.
  */
-void func_0203fd00(const void *self)
+void ActorExtendedType2_IncrementSavedProgressCounter(const void *self)
 {
     s16 value=*(const s16 *)((const u8 *)self+0x27c); s32 i;
     if(value==-1)return;
@@ -26,7 +26,7 @@ void func_0203fd00(const void *self)
 }
 
 /* Copy global callback pair +0x88/+0x8c to actor +0x218/+0x21c; return no value. */
-void func_0203fd68(void *self)
+void ActorExtendedType2_SetCallbackPair88(void *self)
 { u8 *a=(u8 *)self; *(u32 *)(a+0x218)=*(u32 *)(data_020df9e8+0x88); *(u32 *)(a+0x21c)=*(u32 *)(data_020df9e8+0x8c); }
 
 /*
@@ -36,7 +36,7 @@ void func_0203fd68(void *self)
  * clear +0x10 bits 0x1f0000 and +0x14 bits two/four. Returns no value; actor
  * and attachment state change.
  */
-void func_0203fd84(void *self)
+void ActorExtendedType2_RestoreState1AndCallbackPair28(void *self)
 {
     u8 *a=(u8 *)self,*p; Actor_RestoreSavedFlags(a); *(u32 *)(a+0xd0)&=~0x100; *(s16 *)(a+0xd6)=1;
     p=*(u8 **)(a+0x54); *(u16 *)(p+0x24)&=~0x10; func_02072b68(p,(u8)(*(u32 *)(a+0xc8)+8));

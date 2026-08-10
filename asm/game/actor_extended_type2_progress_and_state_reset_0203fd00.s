@@ -4,9 +4,9 @@
 .extern Actor_RestoreSavedFlags
 .extern func_02072b68
 .extern gGameWork
-.global func_0203fd00
-.type func_0203fd00, @function
-func_0203fd00: ; 0x0203fd00
+.global ActorExtendedType2_IncrementSavedProgressCounter
+.type ActorExtendedType2_IncrementSavedProgressCounter, @function
+ActorExtendedType2_IncrementSavedProgressCounter: ; 0x0203fd00
     add r0, r0, #0x200
     ldrsh r3, [r0, #0x7c]
     mvn r0, #0x0
@@ -36,11 +36,11 @@ func_0203fd00: ; 0x0203fd00
     ble .L_0203fd24
     bx lr
 .L_0203fd64: .word gGameWork
-.size func_0203fd00, . - func_0203fd00
-.global func_0203fd68
-.type func_0203fd68, @function
+.size ActorExtendedType2_IncrementSavedProgressCounter, . - ActorExtendedType2_IncrementSavedProgressCounter
+.global ActorExtendedType2_SetCallbackPair88
+.type ActorExtendedType2_SetCallbackPair88, @function
 
-func_0203fd68: ; 0x0203fd68
+ActorExtendedType2_SetCallbackPair88: ; 0x0203fd68
     ldr r1, .L_0203fd80
     ldr r2, [r1, #0x88]
     ldr r1, [r1, #0x8c]
@@ -48,11 +48,11 @@ func_0203fd68: ; 0x0203fd68
     str r1, [r0, #0x21c]
     bx lr
 .L_0203fd80: .word data_020df9e8
-.size func_0203fd68, . - func_0203fd68
-.global func_0203fd84
-.type func_0203fd84, @function
+.size ActorExtendedType2_SetCallbackPair88, . - ActorExtendedType2_SetCallbackPair88
+.global ActorExtendedType2_RestoreState1AndCallbackPair28
+.type ActorExtendedType2_RestoreState1AndCallbackPair28, @function
 
-func_0203fd84: ; 0x0203fd84
+ActorExtendedType2_RestoreState1AndCallbackPair28: ; 0x0203fd84
     stmdb sp!, {r4, lr}
     mov r4, r0
     bl Actor_RestoreSavedFlags
@@ -87,5 +87,5 @@ func_0203fd84: ; 0x0203fd84
     str r0, [r4, #0x14]
     ldmia sp!, {r4, pc}
 .L_0203fe08: .word data_020df9e8
-.size func_0203fd84, . - func_0203fd84
+.size ActorExtendedType2_RestoreState1AndCallbackPair28, . - ActorExtendedType2_RestoreState1AndCallbackPair28
 

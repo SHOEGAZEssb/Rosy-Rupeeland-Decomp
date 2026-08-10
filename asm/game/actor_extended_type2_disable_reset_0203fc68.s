@@ -3,9 +3,9 @@
 .extern data_020df9e8
 .extern Actor_SaveAndForceFlags
 .extern func_02045184
-.global func_0203fc68
-.type func_0203fc68, @function
-func_0203fc68: ; 0x0203fc68
+.global ActorExtendedType2_DisableModesAndSetCallbackPair80
+.type ActorExtendedType2_DisableModesAndSetCallbackPair80, @function
+ActorExtendedType2_DisableModesAndSetCallbackPair80: ; 0x0203fc68
     stmdb sp!, {r4, lr}
     mov r4, r0
     ldr r1, [r4, #0xd0]
@@ -45,5 +45,5 @@ func_0203fc68: ; 0x0203fc68
     strh r1, [r4, #0xac]
     ldmia sp!, {r4, pc}
 .L_0203fcfc: .word data_020df9e8
-.size func_0203fc68, . - func_0203fc68
+.size ActorExtendedType2_DisableModesAndSetCallbackPair80, . - ActorExtendedType2_DisableModesAndSetCallbackPair80
 

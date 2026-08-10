@@ -15,7 +15,7 @@
 .extern func_02032228
 .extern func_02032370
 .extern func_020349b8
-.extern func_0203fd00
+.extern ActorExtendedType2_IncrementSavedProgressCounter
 .extern func_0204e584
 .extern func_020538a4
 .extern func_020a27a0
@@ -378,7 +378,7 @@ func_ov077_02215494:
     ldr r1, [r1, #0x14]
     str r2, [r5, #0x218]
     str r1, [r5, #0x21c]
-    bl func_0203fd00
+    bl ActorExtendedType2_IncrementSavedProgressCounter
     mov r1, #0x0
     mov r2, r1
     mov r3, r1

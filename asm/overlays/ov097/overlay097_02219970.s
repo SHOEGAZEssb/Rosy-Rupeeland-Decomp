@@ -5,7 +5,7 @@
 .extern func_0200500c
 .extern func_02005058
 .extern func_020050a4
-.extern func_0203fe0c
+.extern ActorExtendedType2_InitializeTransformAndMotion
 .extern func_020593dc
 .extern func_ov097_022177e0
 .extern gGameWork
@@ -28,7 +28,7 @@ func_ov097_02219970:
     add r2, sp, #0x8
     mov r0, r6
     add r1, r5, #0x18
-    bl func_0203fe0c
+    bl ActorExtendedType2_InitializeTransformAndMotion
     add r0, sp, #0x8
     bl func_02005058
     mov r0, r6

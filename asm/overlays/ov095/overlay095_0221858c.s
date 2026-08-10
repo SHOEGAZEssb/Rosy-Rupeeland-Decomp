@@ -17,7 +17,7 @@
 .extern func_0201f864
 .extern Actor_GetCachedTerrainHeight
 .extern func_02034a60
-.extern func_0203fe0c
+.extern ActorExtendedType2_InitializeTransformAndMotion
 .extern func_0204cfa4
 .extern func_02050078
 .extern func_020592d8
@@ -1495,7 +1495,7 @@ func_ov095_0221858c:
     ldr r0, [r0, #0x304]
     add r1, sp, #0x1b8
     add r2, sp, #0x1a8
-    bl func_0203fe0c
+    bl ActorExtendedType2_InitializeTransformAndMotion
     ldr r0, [r4, #0xd0]
     mov r2, #0x0
     orr r0, r0, #0x1000

@@ -2,9 +2,9 @@
 .text
 .extern func_020050a4
 .extern func_0200b2c0
-.global func_0203fe0c
-.type func_0203fe0c, @function
-func_0203fe0c: ; 0x0203fe0c
+.global ActorExtendedType2_InitializeTransformAndMotion
+.type ActorExtendedType2_InitializeTransformAndMotion, @function
+ActorExtendedType2_InitializeTransformAndMotion: ; 0x0203fe0c
     stmdb sp!, {r3, r4, r5, lr}
     mov r5, r0
     add r0, r5, #0x28
@@ -42,5 +42,5 @@ func_0203fe0c: ; 0x0203fe0c
     ldr r1, [r1, #0x114]
     blx r1
     ldmia sp!, {r3, r4, r5, pc}
-.size func_0203fe0c, . - func_0203fe0c
+.size ActorExtendedType2_InitializeTransformAndMotion, . - ActorExtendedType2_InitializeTransformAndMotion
 
