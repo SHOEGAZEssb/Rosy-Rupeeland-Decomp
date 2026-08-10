@@ -12,7 +12,7 @@ extern "C" {
 extern void Graphics3DResourceBinding_Destroy(void *);
 extern void Heap_Free(void *);
 extern void func_02002728(void *);
-extern void func_020775d8(void *);
+extern void Graphics3DResourceOwner_Destroy(void *);
 extern void func_02092418(void *);
 extern void DebugText_BeginFrame(void);
 extern void func_020923a0(void *);
@@ -41,7 +41,7 @@ void *func_ov012_021fd4fc(void *state)
     func_02002728(FIELD(void *, state, 0x7c));
     resource = FIELD(void *, state, 0x78);
     if (resource != 0) {
-        func_020775d8(resource);
+        Graphics3DResourceOwner_Destroy(resource);
         Heap_Free(resource);
     }
     func_02092418((u8 *)state + 0x1c4);

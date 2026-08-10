@@ -12,7 +12,7 @@
     .extern func_020ae7b0
     .extern func_020ae6dc
     .extern Heap_Alloc
-    .extern func_020774ac
+    .extern Graphics3DResourceOwner_Init
     .extern func_ov048_0220b7b8
     .extern func_02092850
     .extern func_020b0300
@@ -67,7 +67,7 @@ func_ov037_021fe4fc:
     beq L_021fe59c
     mov r1, #0x4
     mov r2, #0x2
-    bl func_020774ac
+    bl Graphics3DResourceOwner_Init
 L_021fe59c:
     str r0, [r4, #0x58]
     add r0, r4, #0x94

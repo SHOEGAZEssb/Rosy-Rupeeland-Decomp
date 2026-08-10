@@ -23,9 +23,9 @@
 .extern func_02074568
 .extern func_02075238
 .extern func_02077308
-.extern func_020774ac
-.extern func_02077624
-.extern func_020779ac
+.extern Graphics3DResourceOwner_Init
+.extern Graphics3DResourceOwner_CreateManager
+.extern Graphics3DResourceOwner_PrepareResources
 .extern Graphics3DLightSet_Init
 .extern func_02077ae8
 .extern func_0209189c
@@ -152,19 +152,19 @@ L_021ff984:
     beq L_021ffa04
     mov r1, #0x4
     mov r2, #0x2
-    bl func_020774ac
+    bl Graphics3DResourceOwner_Init
 L_021ffa04:
     str r0, [r7, #0x68]
-    bl func_02077624
+    bl Graphics3DResourceOwner_CreateManager
     str r0, [r7, #0x6c]
     ldr r0, [r7, #0x68]
-    bl func_02077624
+    bl Graphics3DResourceOwner_CreateManager
     str r0, [r7, #0x70]
     ldr r0, [r7, #0x68]
-    bl func_02077624
+    bl Graphics3DResourceOwner_CreateManager
     str r0, [r7, #0x74]
     ldr r0, [r7, #0x68]
-    bl func_02077624
+    bl Graphics3DResourceOwner_CreateManager
     ldr r3, L_0220000c
     str r0, [r7, #0x78]
     ldr r1, L_02200010
@@ -176,7 +176,7 @@ L_021ffa04:
     bl func_020720e8
     ldr r0, [r7, #0x68]
     add r1, r7, #0x7c
-    bl func_020779ac
+    bl Graphics3DResourceOwner_PrepareResources
     ldr r3, L_02200014
     ldr r1, L_02200010
     str r3, [sp, #0x0]
@@ -187,7 +187,7 @@ L_021ffa04:
     bl func_020720e8
     ldr r0, [r7, #0x68]
     add r1, r7, #0x88
-    bl func_020779ac
+    bl Graphics3DResourceOwner_PrepareResources
     ldr r3, L_02200018
     ldr r1, L_02200010
     str r3, [sp, #0x0]
@@ -198,7 +198,7 @@ L_021ffa04:
     bl func_020720e8
     ldr r0, [r7, #0x68]
     add r1, r7, #0x94
-    bl func_020779ac
+    bl Graphics3DResourceOwner_PrepareResources
     ldr r3, L_0220001c
     ldr r1, L_02200010
     str r3, [sp, #0x0]
@@ -209,7 +209,7 @@ L_021ffa04:
     bl func_020720e8
     ldr r0, [r7, #0x68]
     add r1, r7, #0xa0
-    bl func_020779ac
+    bl Graphics3DResourceOwner_PrepareResources
     ldr r3, L_02200020
     ldr r1, L_02200010
     str r3, [sp, #0x0]
@@ -220,7 +220,7 @@ L_021ffa04:
     bl func_020720e8
     ldr r0, [r7, #0x68]
     add r1, r7, #0xac
-    bl func_020779ac
+    bl Graphics3DResourceOwner_PrepareResources
     ldr r0, L_02200010
     mov r1, #0x5000
     ldr r0, [r0, #0x0]

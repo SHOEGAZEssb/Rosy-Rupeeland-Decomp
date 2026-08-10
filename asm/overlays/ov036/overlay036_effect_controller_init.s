@@ -6,8 +6,8 @@
     .extern func_020720c0
     .extern func_ov036_021fe218
     .extern func_020720e8
-    .extern func_020779ac
-    .extern func_02077624
+    .extern Graphics3DResourceOwner_PrepareResources
+    .extern Graphics3DResourceOwner_CreateManager
     .extern Heap_Alloc
     .extern func_ov036_021fdf30
     .extern func_02095274
@@ -266,7 +266,7 @@ L_021fed4c:
 L_021fed6c:
     mov r0, r4
     add r1, r5, #0xec
-    bl func_020779ac
+    bl Graphics3DResourceOwner_PrepareResources
     ldr r3, L_021fee70
     ldr r0, L_021fee40
     str r3, [sp, #0x0]
@@ -277,9 +277,9 @@ L_021fed6c:
     bl func_020720e8
     mov r0, r4
     add r1, r5, #0xe0
-    bl func_020779ac
+    bl Graphics3DResourceOwner_PrepareResources
     mov r0, r4
-    bl func_02077624
+    bl Graphics3DResourceOwner_CreateManager
     str r0, [r5, #0xdc]
     mov r0, #0xa0
     ldr r1, L_021fee74

@@ -18,8 +18,8 @@ extern void func_ov036_021fe218(void *list);
 extern void func_02091b6c(void *timer);
 extern void func_020720e8(void *resourceSet, void *archive,
                           s32 firstId, s32 secondId, s32 thirdId);
-extern void func_020779ac(void *owner, void *resourceSet);
-extern void *func_02077624(void *owner);
+extern void Graphics3DResourceOwner_PrepareResources(void *owner, void *resourceSet);
+extern void *Graphics3DResourceOwner_CreateManager(void *owner);
 extern void *func_02077308(void *manager, void *resourceSet);
 extern void func_ov036_021ff050(void *handle, s32 mode,
                                 s32 x, s32 y, s32 z,
@@ -78,10 +78,10 @@ extern "C" void *func_ov036_0220102c(void *controller, void *owner,
         s32 id = ids[i][1];
         func_020720e8((u8 *)controller + offset, data_020f4e18,
                       id - 2, id - 1, id);
-        func_020779ac(owner, (u8 *)controller + offset);
+        Graphics3DResourceOwner_PrepareResources(owner, (u8 *)controller + offset);
     }
 
-    void *manager = func_02077624(owner);
+    void *manager = Graphics3DResourceOwner_CreateManager(owner);
     FIELD(void *, controller, 0x118) = manager;
     void *handle = func_02077308(manager, (u8 *)controller + 0xe8);
     func_ov036_021ff050(handle, 0, 0, 0, 0, 9, 0x42);

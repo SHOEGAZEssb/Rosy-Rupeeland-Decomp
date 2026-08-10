@@ -24,9 +24,11 @@ extern u8 gHeapContext[];
  * list, and increment managerCount. Heap allocation uses tag data_020e69fc,
  * four-byte alignment, and gHeapContext. Retail assumes allocation succeeds:
  * a null result still reaches the link stores and is outside the valid path.
+ * Although the recovered C signature is void, retail leaves the new manager in
+ * r0 and several callers consume that register as the created-manager result.
  */
 #ifndef MATCHING
-void func_02077624(Graphics3DResourceOwner *owner)
+void Graphics3DResourceOwner_CreateManager(Graphics3DResourceOwner *owner)
 {
     GraphicsAnimationInstanceManager *manager =
         (GraphicsAnimationInstanceManager *)Heap_Alloc(
@@ -47,7 +49,7 @@ void func_02077624(Graphics3DResourceOwner *owner)
 }
 #else
 /* This matching fallback implements the documented portable C directly above. */
-asm void func_02077624(Graphics3DResourceOwner *owner)
+asm void Graphics3DResourceOwner_CreateManager(Graphics3DResourceOwner *owner)
 {
     stmdb sp!, {r4, lr}
     /* Load allocation tag data_020e69fc from the trailing literal. */
@@ -88,7 +90,7 @@ graphics_3d_owner_manager_heap:
  * count. The node's own links are not cleared before destruction.
  */
 #ifndef MATCHING
-void func_02077688(Graphics3DResourceOwner *owner,
+void Graphics3DResourceOwner_RemoveManager(Graphics3DResourceOwner *owner,
                    GraphicsAnimationInstanceManager *manager)
 {
     if (manager == 0) {
@@ -110,7 +112,7 @@ void func_02077688(Graphics3DResourceOwner *owner,
 }
 #else
 /* This matching fallback implements the documented portable C directly above. */
-asm void func_02077688(Graphics3DResourceOwner *owner,
+asm void Graphics3DResourceOwner_RemoveManager(Graphics3DResourceOwner *owner,
                        GraphicsAnimationInstanceManager *manager)
 {
     stmdb sp!, {r3, r4, r5, lr}
@@ -147,7 +149,7 @@ graphics_3d_owner_manager_removed:
  * does not call the single-manager unlink helper or decrement count per node.
  */
 #ifndef MATCHING
-void func_020776e8(Graphics3DResourceOwner *owner)
+void Graphics3DResourceOwner_ClearManagers(Graphics3DResourceOwner *owner)
 {
     GraphicsAnimationInstanceManager *manager = owner->managerHead;
 
@@ -164,7 +166,7 @@ void func_020776e8(Graphics3DResourceOwner *owner)
 }
 #else
 /* This matching fallback implements the documented portable C directly above. */
-asm void func_020776e8(Graphics3DResourceOwner *owner)
+asm void Graphics3DResourceOwner_ClearManagers(Graphics3DResourceOwner *owner)
 {
     stmdb sp!, {r4, r5, r6, lr}
     mov r6, r0

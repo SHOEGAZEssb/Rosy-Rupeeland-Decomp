@@ -34,8 +34,8 @@ extern void func_02074568(void *);
 extern void *func_02002700(s32, const char *, s32, void *);
 extern void func_020b4554(void *, s32);
 extern void *Heap_Alloc(s32, const char *, s32, void *);
-extern void *func_020774ac(void *, s32, s32);
-extern void *func_02077624(void);
+extern void *Graphics3DResourceOwner_Init(void *, s32, s32);
+extern void *Graphics3DResourceOwner_CreateManager(void);
 extern void *Graphics3DResourceBinding_Init(void *, void *, void *, s32, s32);
 extern void func_ov010_021fd39c(void *);
 extern void func_ov010_021fd45c(void *);
@@ -62,7 +62,7 @@ extern void func_0209285c(s32);
  * +0x13C/+0x140. Process only full reads, matching the original open/read/close
  * behavior. Initialize manager state, allocate a 0x624-byte resource tagged by
  * data_ov010_021fec84 and construct it with arguments 4/2 at +0x78, retain
- * func_02077624 at +0x88, and allocate/configure a 0x18-byte resource at +0x130
+ * Graphics3DResourceOwner_CreateManager at +0x88, and allocate/configure a 0x18-byte resource at +0x130
  * using IDs 0x611A/0x611B and archive data_020f4e18.
  *
  * Clear +0x8C, +0x12C, +0x144/+0x148/+0x14C/+0x150; call the recovered defaults
@@ -112,9 +112,9 @@ void *func_ov010_021fcebc(void *state)
     func_02075238(manager);
     func_02074568(manager);
     allocation = Heap_Alloc(0x624, data_ov010_021fec84, 4, gHeapContext);
-    if (allocation) func_020774ac(allocation, 4, 2);
+    if (allocation) Graphics3DResourceOwner_Init(allocation, 4, 2);
     FIELD(void *, state, 0x78) = allocation;
-    FIELD(void *, state, 0x88) = func_02077624();
+    FIELD(void *, state, 0x88) = Graphics3DResourceOwner_CreateManager();
     FIELD(s32, state, 0x8c) = 0;
     allocation = Heap_Alloc(0x18, data_ov010_021fec8c, 4, gHeapContext);
     if (allocation)

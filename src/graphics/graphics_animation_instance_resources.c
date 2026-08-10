@@ -15,9 +15,9 @@ extern void *Heap_Alloc(u32 size, const char *tag, s32 alignment, void *heap);
 extern void Heap_Free(void *allocation);
 extern const char data_020e6a04[];
 extern u8 gHeapContext[];
-extern GraphicsSpriteRegion *func_02077870(Graphics3DResourceOwner *owner,
+extern GraphicsSpriteRegion *Graphics3DResourceOwner_AcquireTextureRegion(Graphics3DResourceOwner *owner,
                                            void *resource);
-extern GraphicsSpriteRegion *func_02077918(Graphics3DResourceOwner *owner,
+extern GraphicsSpriteRegion *Graphics3DResourceOwner_AcquirePaletteRegion(Graphics3DResourceOwner *owner,
                                            void *resource);
 
 #ifdef __cplusplus
@@ -47,8 +47,8 @@ GraphicsAnimationInstance *func_02077734(
     instance->textureResource = textureResource;
     instance->paletteResource = paletteResource;
     instance->resource = animationResource;
-    instance->textureRegion = func_02077870(owner, textureResource);
-    instance->paletteRegion = func_02077918(owner, paletteResource);
+    instance->textureRegion = Graphics3DResourceOwner_AcquireTextureRegion(owner, textureResource);
+    instance->paletteRegion = Graphics3DResourceOwner_AcquirePaletteRegion(owner, paletteResource);
     return instance;
 }
 #else
@@ -81,11 +81,11 @@ graphics_animation_instance_resource_init_done:
     mov r0, r8
     mov r1, r7
     str r5, [r4, #0x1c]
-    bl func_02077870
+    bl Graphics3DResourceOwner_AcquireTextureRegion
     str r0, [r4, #0xc]
     mov r0, r8
     mov r1, r6
-    bl func_02077918
+    bl Graphics3DResourceOwner_AcquirePaletteRegion
     str r0, [r4, #0x10]
     mov r0, r4
     ldmia sp!, {r4, r5, r6, r7, r8, pc}
@@ -132,13 +132,13 @@ void func_020777e8(Graphics3DResourceOwner *owner,
         func_0207684c(&owner->textureRegions, instance->textureRegion);
         instance->textureResource = (void *)params->field_00;
         instance->textureRegion =
-            func_02077870(owner, (void *)params->field_00);
+            Graphics3DResourceOwner_AcquireTextureRegion(owner, (void *)params->field_00);
     }
     if (instance->paletteResource != (void *)params->field_04) {
         func_02076a70(&owner->paletteRegions, instance->paletteRegion);
         instance->paletteResource = (void *)params->field_04;
         instance->paletteRegion =
-            func_02077918(owner, (void *)params->field_04);
+            Graphics3DResourceOwner_AcquirePaletteRegion(owner, (void *)params->field_04);
     }
     instance->resource = (GraphicsAnimationResource *)params->field_08;
 }
@@ -164,7 +164,7 @@ asm void func_020777e8(Graphics3DResourceOwner *owner,
     mov r0, r6
     str r1, [r5, #0x14]
     ldr r1, [r4]
-    bl func_02077870
+    bl Graphics3DResourceOwner_AcquireTextureRegion
     str r0, [r5, #0xc]
 graphics_animation_instance_palette_rebind:
     ldr r1, [r5, #0x18]
@@ -178,7 +178,7 @@ graphics_animation_instance_palette_rebind:
     mov r0, r6
     str r1, [r5, #0x18]
     ldr r1, [r4, #4]
-    bl func_02077918
+    bl Graphics3DResourceOwner_AcquirePaletteRegion
     str r0, [r5, #0x10]
 graphics_animation_instance_animation_rebind:
     ldr r0, [r4, #8]

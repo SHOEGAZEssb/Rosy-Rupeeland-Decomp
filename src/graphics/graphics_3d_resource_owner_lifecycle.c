@@ -10,7 +10,7 @@
 extern "C" {
 #endif
 
-extern void func_020776e8(Graphics3DResourceOwner *owner);
+extern void Graphics3DResourceOwner_ClearManagers(Graphics3DResourceOwner *owner);
 extern void func_020ae740(void);
 extern void func_020ae72c(void);
 extern void __destroy_arr(void *array, u32 count, u32 elementSize,
@@ -27,9 +27,9 @@ extern void __destroy_arr(void *array, u32 count, u32 elementSize,
  * are currently no-ops, but retail still performs both reverse-order runtime
  * walks. Hardware bank reset occurs before descriptor destruction.
  */
-Graphics3DResourceOwner *func_020775d8(Graphics3DResourceOwner *owner)
+Graphics3DResourceOwner *Graphics3DResourceOwner_Destroy(Graphics3DResourceOwner *owner)
 {
-    func_020776e8(owner);
+    Graphics3DResourceOwner_ClearManagers(owner);
     func_020ae740();
     func_020ae72c();
     __destroy_arr(owner->paletteRegions.regions, 32,

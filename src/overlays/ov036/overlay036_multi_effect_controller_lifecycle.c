@@ -15,7 +15,7 @@ extern "C" {
 extern void func_0205940c(void *context, s32 id, s32 value);
 extern void func_02095308(void *list);
 extern void func_02071e04(void *archive, void *resource);
-extern void func_02077688(void *manager);
+extern void Graphics3DResourceOwner_RemoveManager(void *manager);
 extern void func_020720d4(void *resourceSet);
 extern void Heap_Free(void *allocation);
 extern void func_02095360(void *list);
@@ -40,7 +40,7 @@ extern "C" void *func_ov036_021ff5bc(void *controller)
     func_02095308((u8 *)controller + 0x128);
     func_02071e04(data_020f4e18, FIELD(void *, controller, 0xf0));
     func_02071e04(data_020f4e18, FIELD(void *, controller, 0xf4));
-    func_02077688(FIELD(void *, FIELD(void *, controller, 0xe8), 0));
+    Graphics3DResourceOwner_RemoveManager(FIELD(void *, FIELD(void *, controller, 0xe8), 0));
     FIELD(const void *, controller, 0x128) = data_ov036_02205eac;
     func_02095308((u8 *)controller + 0x128);
     FIELD(const void *, controller, 0x118) = data_ov036_02205eac;
@@ -66,7 +66,7 @@ extern "C" void *func_ov036_021ff680(void *controller)
     func_02095308((u8 *)controller + 0x128);
     func_02071e04(data_020f4e18, FIELD(void *, controller, 0xf0));
     func_02071e04(data_020f4e18, FIELD(void *, controller, 0xf4));
-    func_02077688(FIELD(void *, FIELD(void *, controller, 0xe8), 0));
+    Graphics3DResourceOwner_RemoveManager(FIELD(void *, FIELD(void *, controller, 0xe8), 0));
     FIELD(const void *, controller, 0x128) = data_ov036_02205eac;
     func_02095308((u8 *)controller + 0x128);
     FIELD(const void *, controller, 0x118) = data_ov036_02205eac;

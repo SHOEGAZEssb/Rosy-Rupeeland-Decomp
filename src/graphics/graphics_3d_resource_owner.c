@@ -19,27 +19,27 @@ extern void func_020aee48(u32 bankSelection);
 #endif
 
 /*
- * Construct both embedded allocators, retain field_00/field_04, and clear the
- * three intervening words. field_00 values 0..6 map to retail bank masks
+ * Construct both embedded allocators, retain both bank modes, and clear the
+ * three intervening words. textureBankMode values 0..6 map to retail bank masks
  * 1,2,4,8,3,6,12; modes 4..6 also expand the initial texture range to 0x40000.
- * field_04 values 0..2 map to 0,0x20,0x40. Values outside either range stop
- * further bank configuration but still return the initialized owner. The two
- * external calls are inferred NDS texture/texture-palette VRAM-bank selectors;
- * they are the only hardware/SDK effects.
+ * paletteBankMode values 0..2 map to 0,0x20,0x40. Values outside either range
+ * stop further bank configuration but still return the initialized owner. The
+ * two external calls are inferred NDS texture/texture-palette VRAM-bank
+ * selectors; they are the only hardware/SDK effects.
  */
 #ifndef MATCHING
-Graphics3DResourceOwner *func_020774ac(Graphics3DResourceOwner *owner,
-                                       u32 field_00, u32 field_04)
+Graphics3DResourceOwner *Graphics3DResourceOwner_Init(
+    Graphics3DResourceOwner *owner, u32 textureBankMode, u32 paletteBankMode)
 {
     func_0207671c(&owner->textureRegions);
     func_02076948(&owner->paletteRegions);
-    owner->field_00 = field_00;
-    owner->field_04 = field_04;
+    owner->textureBankMode = textureBankMode;
+    owner->paletteBankMode = paletteBankMode;
     owner->managerCount = 0;
     owner->managerTail = 0;
     owner->managerHead = 0;
 
-    switch (owner->field_00) {
+    switch (owner->textureBankMode) {
     case 0:
         func_020aef3c(1);
         break;
@@ -68,7 +68,7 @@ Graphics3DResourceOwner *func_020774ac(Graphics3DResourceOwner *owner,
         return owner;
     }
 
-    switch (owner->field_04) {
+    switch (owner->paletteBankMode) {
     case 0:
         func_020aee48(0);
         break;
@@ -85,8 +85,8 @@ Graphics3DResourceOwner *func_020774ac(Graphics3DResourceOwner *owner,
 }
 #else
 /* This matching fallback implements the documented portable C directly above. */
-asm Graphics3DResourceOwner *func_020774ac(Graphics3DResourceOwner *owner,
-                                           u32 field_00, u32 field_04)
+asm Graphics3DResourceOwner *Graphics3DResourceOwner_Init(
+    Graphics3DResourceOwner *owner, u32 textureBankMode, u32 paletteBankMode)
 {
     stmdb sp!, {r4, r5, r6, lr}
     mov r4, r0

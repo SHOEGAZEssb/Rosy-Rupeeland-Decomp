@@ -11,7 +11,7 @@
     .extern func_020720d4
     .extern func_0207419c
     .extern func_02075290
-    .extern func_020775d8
+    .extern Graphics3DResourceOwner_Destroy
     .extern Graphics3DLightSet_Destroy
     .extern Graphics3DRenderObject_Destroy
     .extern func_020923a0
@@ -94,7 +94,7 @@ L_021ff254:
     cmp r5, #0x0
     beq L_021ff270
     mov r0, r5
-    bl func_020775d8
+    bl Graphics3DResourceOwner_Destroy
     mov r0, r5
     bl Heap_Free
 L_021ff270:

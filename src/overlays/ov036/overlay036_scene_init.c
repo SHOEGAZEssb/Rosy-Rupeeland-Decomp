@@ -24,7 +24,7 @@ extern void func_02075238(void *resource);
 extern void func_02074568(void *resource);
 extern void func_020ae6dc(void);
 extern void *Heap_Alloc(u32 size, const void *tag, s32 alignment, void *heap);
-extern void *func_020774ac(void *object, s32 first, s32 second);
+extern void *Graphics3DResourceOwner_Init(void *object, s32 first, s32 second);
 extern void func_ov048_0220b7b8(void *state);
 extern void func_02092850(s32 value);
 extern void func_020b0300(s32, s32, s32, s32, s32);
@@ -81,7 +81,7 @@ extern "C" void *func_ov036_022045d4(void *scene, s32 selector)
 
     void *owner = Heap_Alloc(0x624, data_ov036_022061a8, 4, gHeapContext);
     if (owner != 0)
-        owner = func_020774ac(owner, 4, 2);
+        owner = Graphics3DResourceOwner_Init(owner, 4, 2);
     FIELD(void *, scene, 0x5c) = owner;
     func_ov048_0220b7b8((u8 *)scene + 0x98);
     FIELD(s32, scene, 0x48) = 0x11;

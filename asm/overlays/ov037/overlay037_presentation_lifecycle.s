@@ -3,7 +3,7 @@
 /* Exact fallback; see src/overlays/ov037/overlay037_presentation_lifecycle.c for documented portable C. */
 
     .extern Heap_Free
-    .extern func_020775d8
+    .extern Graphics3DResourceOwner_Destroy
     .extern func_02075020
     .extern func_02092418
     .extern GX_SetGraphicsMode
@@ -33,7 +33,7 @@ L_021fe67c:
     cmp r5, #0x0
     beq L_021fe698
     mov r0, r5
-    bl func_020775d8
+    bl Graphics3DResourceOwner_Destroy
     mov r0, r5
     bl Heap_Free
 L_021fe698:

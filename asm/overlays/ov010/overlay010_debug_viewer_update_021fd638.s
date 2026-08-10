@@ -30,7 +30,7 @@
     .extern func_02076be8
     .extern func_02076c20
     .extern func_020773a8
-    .extern func_020779d8
+    .extern Graphics3DResourceOwner_RenderManagers
     .extern func_02077b44
     .extern Graphics3DResourceBinding_GetTextureFormat
     .extern Graphics3DResourceBinding_GetTextureWidthClass
@@ -1235,7 +1235,7 @@ L_021fe618:
 L_021fe7b8:
     ldr r0, [r9, #0x78]
     add r1, r9, #0xf0
-    bl func_020779d8
+    bl Graphics3DResourceOwner_RenderManagers
     ldr r0, L_021fe884
     mov r1, #0x0
     str r1, [r0, #0x0]

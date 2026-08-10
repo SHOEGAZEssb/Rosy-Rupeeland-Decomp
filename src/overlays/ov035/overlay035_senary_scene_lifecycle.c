@@ -13,7 +13,7 @@ extern "C" {
 #endif
 extern void func_02095308(void *collection);
 extern void func_02071e04(void *resourceContext, void *resource);
-extern void func_02077688(void *resourceSetRoot);
+extern void Graphics3DResourceOwner_RemoveManager(void *resourceSetRoot);
 extern void func_020720d4(void *state);
 extern void Heap_Free(void *allocation);
 #ifdef __cplusplus
@@ -34,7 +34,7 @@ static void *teardown_scene(void *scene)
     func_02095308((u8 *)scene + 0x11c);
     func_02071e04(data_020f4e18[0], FIELD(void *, scene, 0xfc));
     func_02071e04(data_020f4e18[0], FIELD(void *, scene, 0x100));
-    func_02077688(FIELD(void *, FIELD(void *, scene, 0xf4), 0));
+    Graphics3DResourceOwner_RemoveManager(FIELD(void *, FIELD(void *, scene, 0xf4), 0));
     FIELD(const void *, scene, 0x11c) = data_ov035_02203af8;
     func_02095308((u8 *)scene + 0x11c);
     FIELD(const void *, scene, 0x10c) = data_ov035_02203af8;

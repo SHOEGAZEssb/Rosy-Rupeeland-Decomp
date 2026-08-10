@@ -16,9 +16,9 @@
 .extern func_02074568
 .extern func_02075238
 .extern func_02077308
-.extern func_020774ac
-.extern func_02077624
-.extern func_020779ac
+.extern Graphics3DResourceOwner_Init
+.extern Graphics3DResourceOwner_CreateManager
+.extern Graphics3DResourceOwner_PrepareResources
 .extern func_02077ae8
 .extern func_02091b6c
 .extern func_02091e28
@@ -101,10 +101,10 @@ func_ov027_021fda30:
     beq L_021fdb1c
     mov r1, #0x4
     mov r2, #0x2
-    bl func_020774ac
+    bl Graphics3DResourceOwner_Init
 L_021fdb1c:
     str r0, [r10, #0x54]
-    bl func_02077624
+    bl Graphics3DResourceOwner_CreateManager
     ldr r3, L_021fddfc
     str r0, [r10, #0x58]
     ldr r0, L_021fde00
@@ -116,7 +116,7 @@ L_021fdb1c:
     bl func_020720e8
     ldr r0, [r10, #0x54]
     add r1, r10, #0x5c
-    bl func_020779ac
+    bl Graphics3DResourceOwner_PrepareResources
     ldr r3, L_021fde04
     ldr r1, L_021fde00
     str r3, [sp, #0x0]
@@ -127,7 +127,7 @@ L_021fdb1c:
     bl func_020720e8
     ldr r0, [r10, #0x54]
     add r1, r10, #0x68
-    bl func_020779ac
+    bl Graphics3DResourceOwner_PrepareResources
     ldr r3, L_021fde08
     ldr r1, L_021fde00
     str r3, [sp, #0x0]
@@ -138,7 +138,7 @@ L_021fdb1c:
     bl func_020720e8
     ldr r0, [r10, #0x54]
     add r1, r10, #0x74
-    bl func_020779ac
+    bl Graphics3DResourceOwner_PrepareResources
     ldr r1, L_021fde0c
     ldr r3, L_021fddf8
     mov r0, #0x9c

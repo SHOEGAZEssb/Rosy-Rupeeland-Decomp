@@ -20,7 +20,7 @@ extern void func_0205940c(void *, s32, s32);
 extern void func_02071e04(void *, void *);
 extern void func_020720d4(void *);
 extern void func_02075020(void *);
-extern void func_020775d8(void *);
+extern void Graphics3DResourceOwner_Destroy(void *);
 extern void Graphics3DLightSet_Destroy(void *);
 extern void func_02092314(void *, s32, s32);
 extern void func_020923a0(void *);
@@ -49,7 +49,7 @@ static void teardown_scene(void *scene)
     func_02071e04(data_020f4e18, FIELD(void *, scene, 0x15c));
     void *manager = FIELD(void *, scene, 0x68);
     if (manager != 0) {
-        func_020775d8(manager);
+        Graphics3DResourceOwner_Destroy(manager);
         Heap_Free(manager);
     }
     func_02075020(data_020f4e14);

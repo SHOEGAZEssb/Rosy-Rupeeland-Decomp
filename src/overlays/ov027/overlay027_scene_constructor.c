@@ -32,10 +32,10 @@ extern void func_020923a4(void *);
 extern void func_02075238(void *);
 extern void func_02074568(void *);
 extern void func_020ae6dc(void);
-extern void *func_020774ac(void *, s32, s32);
-extern void *func_02077624(void);
+extern void *Graphics3DResourceOwner_Init(void *, s32, s32);
+extern void *Graphics3DResourceOwner_CreateManager(void);
 extern void func_020720e8(void *, void *, s32, s32, s32);
-extern void func_020779ac(void *, void *);
+extern void Graphics3DResourceOwner_PrepareResources(void *, void *);
 extern void *func_02094ad4(void *);
 extern void func_02095274(void *, void *);
 extern void func_02094bbc(void *, s32, s32, s32);
@@ -89,19 +89,19 @@ extern "C" void *func_ov027_021fda30(void *scene)
 
     void *group = Heap_Alloc(0x624, data_ov027_021fef24, 4, gHeapContext);
     if (group)
-        group = func_020774ac(group, 4, 2);
+        group = Graphics3DResourceOwner_Init(group, 4, 2);
     FIELD(void *, scene, 0x54) = group;
-    FIELD(void *, scene, 0x58) = func_02077624();
+    FIELD(void *, scene, 0x58) = Graphics3DResourceOwner_CreateManager();
 
     func_020720e8((u8 *)scene + 0x5c, data_020f4e18,
                    0x6030, 0x6031, 0x6032);
-    func_020779ac(group, (u8 *)scene + 0x5c);
+    Graphics3DResourceOwner_PrepareResources(group, (u8 *)scene + 0x5c);
     func_020720e8((u8 *)scene + 0x68, data_020f4e18,
                    0x6036, 0x6037, 0x6038);
-    func_020779ac(group, (u8 *)scene + 0x68);
+    Graphics3DResourceOwner_PrepareResources(group, (u8 *)scene + 0x68);
     func_020720e8((u8 *)scene + 0x74, data_020f4e18,
                    0x6033, 0x6034, 0x6035);
-    func_020779ac(group, (u8 *)scene + 0x74);
+    Graphics3DResourceOwner_PrepareResources(group, (u8 *)scene + 0x74);
 
     void *child = Heap_Alloc(0x9c, data_ov027_021fef2c, 4, gHeapContext);
     if (child)

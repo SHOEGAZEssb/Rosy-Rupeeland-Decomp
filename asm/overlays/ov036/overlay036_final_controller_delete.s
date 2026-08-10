@@ -3,7 +3,7 @@
 /* Exact fallback; see src/overlays/ov036/overlay036_final_controller_lifecycle.c for documented portable C. */
 
     .extern func_02095308
-    .extern func_02077688
+    .extern Graphics3DResourceOwner_RemoveManager
     .extern func_02071e04
     .extern func_020720d4
     .extern Heap_Free
@@ -37,7 +37,7 @@ L_02204224:
     bl func_02095308
     ldr r1, [r4, #0xe8]
     ldr r0, [r1, #0x0]
-    bl func_02077688
+    bl Graphics3DResourceOwner_RemoveManager
     ldr r0, L_02204294
     ldr r1, [r4, #0xec]
     ldr r0, [r0, #0x0]

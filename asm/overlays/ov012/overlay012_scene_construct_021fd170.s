@@ -12,7 +12,7 @@
     .extern GX_SetGraphicsMode
     .extern func_02002700
     .extern func_020755bc
-    .extern func_020774ac
+    .extern Graphics3DResourceOwner_Init
     .extern Graphics3DLightSet_Init
     .extern func_02077ae8
     .extern Graphics3DResourceBinding_Init
@@ -115,7 +115,7 @@ L_021fd254:
     beq L_021fd280
     mov r1, #1
     mov r2, #2
-    bl func_020774ac
+    bl Graphics3DResourceOwner_Init
 L_021fd280:
     ldr r1, L_021fd444
     str r0, [r4, #0x78]

@@ -13,7 +13,7 @@ extern u8 gHeapContext[];
 extern "C" {
 #endif
 extern void func_02095308(void *object);
-extern void func_02077688(void *resource);
+extern void Graphics3DResourceOwner_RemoveManager(void *resource);
 extern void func_020720d4(void *state);
 extern void Heap_Free(void *allocation);
 extern void *func_02077308(void *resourceSet, void *resource);
@@ -42,7 +42,7 @@ extern "C" void *func_ov035_021fe13c(void *scene)
 {
     FIELD(const void *, scene, 0) = data_ov035_02203b98;
     func_02095308((u8 *)scene + 0x10c);
-    func_02077688(FIELD(void *, FIELD(void *, scene, 0x100), 0));
+    Graphics3DResourceOwner_RemoveManager(FIELD(void *, FIELD(void *, scene, 0x100), 0));
     FIELD(const void *, scene, 0x10c) = data_ov035_02203af8;
     func_02095308((u8 *)scene + 0x10c);
     func_020720d4((u8 *)scene + 0xf4);
@@ -61,7 +61,7 @@ extern "C" void *func_ov035_021fe1a0(void *scene)
 {
     FIELD(const void *, scene, 0) = data_ov035_02203b98;
     func_02095308((u8 *)scene + 0x10c);
-    func_02077688(FIELD(void *, FIELD(void *, scene, 0x100), 0));
+    Graphics3DResourceOwner_RemoveManager(FIELD(void *, FIELD(void *, scene, 0x100), 0));
     FIELD(const void *, scene, 0x10c) = data_ov035_02203af8;
     func_02095308((u8 *)scene + 0x10c);
     func_020720d4((u8 *)scene + 0xf4);

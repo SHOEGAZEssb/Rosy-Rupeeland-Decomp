@@ -8,7 +8,7 @@
     .extern func_02002728
     .extern func_020720d4
     .extern func_02075020
-    .extern func_020775d8
+    .extern Graphics3DResourceOwner_Destroy
     .extern Graphics3DResourceBinding_Destroy
     .extern func_020923a0
     .extern func_02092418
@@ -50,7 +50,7 @@ L_021fd308:
     cmp r5, #0x0
     beq L_021fd33c
     mov r0, r5
-    bl func_020775d8
+    bl Graphics3DResourceOwner_Destroy
     mov r0, r5
     bl Heap_Free
 L_021fd33c:

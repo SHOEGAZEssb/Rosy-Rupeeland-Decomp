@@ -8,8 +8,8 @@
     .extern func_020720c0
     .extern func_020720e8
     .extern func_02077308
-    .extern func_02077624
-    .extern func_020779ac
+    .extern Graphics3DResourceOwner_CreateManager
+    .extern Graphics3DResourceOwner_PrepareResources
     .extern func_020918f4
     .extern func_02091b6c
     .extern func_ov017_021fe3c4
@@ -29,7 +29,7 @@ func_ov017_021fe40c:
     bl genrand_int32
     str r0, [r10, #0x54]
     mov r0, r4
-    bl func_02077624
+    bl Graphics3DResourceOwner_CreateManager
     ldr r3, L_021fe574
     str r0, [r10, #0x0]
     ldr r1, L_021fe578
@@ -41,7 +41,7 @@ func_ov017_021fe40c:
     bl func_020720e8
     mov r0, r4
     add r1, r10, #0x4
-    bl func_020779ac
+    bl Graphics3DResourceOwner_PrepareResources
     mov r6, #0x0
     ldr r11, L_021fe57c
     ldr r5, L_021fe580

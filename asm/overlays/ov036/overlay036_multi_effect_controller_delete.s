@@ -5,7 +5,7 @@
     .extern func_0205940c
     .extern func_02095308
     .extern func_02071e04
-    .extern func_02077688
+    .extern Graphics3DResourceOwner_RemoveManager
     .extern func_020720d4
     .extern Heap_Free
     .extern data_ov036_022060ec
@@ -40,7 +40,7 @@ func_ov036_021ff680:
     bl func_02071e04
     ldr r1, [r4, #0xe8]
     ldr r0, [r1, #0x0]
-    bl func_02077688
+    bl Graphics3DResourceOwner_RemoveManager
     ldr r1, L_021ff748
     add r0, r4, #0x128
     str r1, [r4, #0x128]

@@ -32,10 +32,10 @@ extern void func_020b20b4(void);
  * non-null resource and successful allocation.
  */
 #ifndef MATCHING
-GraphicsSpriteRegion *func_02077870(Graphics3DResourceOwner *owner,
-                                    void *resource)
+GraphicsSpriteRegion *Graphics3DResourceOwner_AcquireTextureRegion(
+    Graphics3DResourceOwner *owner, void *resource)
 {
-    GraphicsSpriteRegion *region = func_020778ec(owner, resource, 1);
+    GraphicsSpriteRegion *region = Graphics3DResourceOwner_FindTextureRegion(owner, resource, 1);
 
     if (region == 0) {
         u32 size = func_0207043c(resource);
@@ -52,14 +52,14 @@ GraphicsSpriteRegion *func_02077870(Graphics3DResourceOwner *owner,
 }
 #else
 /* This matching fallback implements the documented portable C directly above. */
-asm GraphicsSpriteRegion *func_02077870(Graphics3DResourceOwner *owner,
-                                        void *resource)
+asm GraphicsSpriteRegion *Graphics3DResourceOwner_AcquireTextureRegion(
+    Graphics3DResourceOwner *owner, void *resource)
 {
     stmdb sp!, {r3, r4, r5, r6, r7, lr}
     mov r2, #1
     mov r6, r0
     mov r4, r1
-    bl func_020778ec
+    bl Graphics3DResourceOwner_FindTextureRegion
     movs r5, r0
     ldrneh r0, [r5, #0x16]
     addne r0, r0, #1
@@ -96,8 +96,8 @@ graphics_3d_texture_region_acquire_return:
  * next links; return the matching stable descriptor or null. No state changes.
  */
 #ifndef MATCHING
-GraphicsSpriteRegion *func_020778ec(Graphics3DResourceOwner *owner,
-                                    void *resource, u16 type)
+GraphicsSpriteRegion *Graphics3DResourceOwner_FindTextureRegion(
+    Graphics3DResourceOwner *owner, void *resource, u16 type)
 {
     GraphicsSpriteRegion *region = &owner->textureRegions.regions[0];
 
@@ -111,8 +111,8 @@ GraphicsSpriteRegion *func_020778ec(Graphics3DResourceOwner *owner,
 }
 #else
 /* This matching fallback implements the documented portable C directly above. */
-asm GraphicsSpriteRegion *func_020778ec(Graphics3DResourceOwner *owner,
-                                        void *resource, u16 type)
+asm GraphicsSpriteRegion *Graphics3DResourceOwner_FindTextureRegion(
+    Graphics3DResourceOwner *owner, void *resource, u16 type)
 {
     add r0, r0, #0x14
     b graphics_3d_texture_region_find_check
@@ -139,8 +139,8 @@ graphics_3d_texture_region_find_check:
  * allocated offset and size. Retail assumes successful allocation.
  */
 #ifndef MATCHING
-GraphicsSpriteRegion *func_02077918(Graphics3DResourceOwner *owner,
-                                    void *resource)
+GraphicsSpriteRegion *Graphics3DResourceOwner_AcquirePaletteRegion(
+    Graphics3DResourceOwner *owner, void *resource)
 {
     GraphicsSpriteRegion *region = &owner->paletteRegions.regions[0];
 
@@ -161,8 +161,8 @@ GraphicsSpriteRegion *func_02077918(Graphics3DResourceOwner *owner,
 }
 #else
 /* This matching fallback implements the documented portable C directly above. */
-asm GraphicsSpriteRegion *func_02077918(Graphics3DResourceOwner *owner,
-                                        void *resource)
+asm GraphicsSpriteRegion *Graphics3DResourceOwner_AcquirePaletteRegion(
+    Graphics3DResourceOwner *owner, void *resource)
 {
     stmdb sp!, {r3, r4, r5, r6, r7, lr}
     mov r6, r0

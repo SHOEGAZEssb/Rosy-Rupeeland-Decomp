@@ -17,9 +17,9 @@ extern s32 func_020720c0(void *);
 extern void func_020720d4(void *);
 extern void func_020720e8(void *, void *, s32, s32, s32);
 extern void *func_02077308(void *, void *);
-extern void *func_02077624(void *);
-extern void func_02077688(void *, void *);
-extern void func_020779ac(void *, void *);
+extern void *Graphics3DResourceOwner_CreateManager(void *);
+extern void Graphics3DResourceOwner_RemoveManager(void *, void *);
+extern void Graphics3DResourceOwner_PrepareResources(void *, void *);
 extern s32 func_020918f4(void *, s32);
 extern void func_02091b6c(void *);
 extern void func_ov017_021fe3c4(void *, u32, u32, u32, u32, u8, u32);
@@ -46,10 +46,10 @@ extern "C" void *func_ov017_021fe40c(void *pool, void *resourceContext)
     func_02091b6c((u8 *)pool + 0x38);
     FIELD(u32, pool, 0x54) = 0;
     FIELD(u32, pool, 0x54) = genrand_int32();
-    FIELD(void *, pool, 0) = func_02077624(resourceContext);
+    FIELD(void *, pool, 0) = Graphics3DResourceOwner_CreateManager(resourceContext);
     func_020720e8((u8 *)pool + 4, data_020f4e18[0], 0x6020, 0x601e,
                   0x601f);
-    func_020779ac(resourceContext, (u8 *)pool + 4);
+    Graphics3DResourceOwner_PrepareResources(resourceContext, (u8 *)pool + 4);
 
     for (i = 0; i < 8; i++) {
         u16 angle = (u16)(i * 0x1000 - 0x3800);
@@ -87,7 +87,7 @@ extern "C" void *func_ov017_021fe58c(void *pool)
 {
     void *resource = FIELD(void *, pool, 0);
 
-    func_02077688(FIELD(void *, resource, 0), resource);
+    Graphics3DResourceOwner_RemoveManager(FIELD(void *, resource, 0), resource);
     func_020720d4((u8 *)pool + 4);
     return pool;
 }

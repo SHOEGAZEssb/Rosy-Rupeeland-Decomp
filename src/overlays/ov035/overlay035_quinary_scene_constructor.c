@@ -20,9 +20,9 @@ extern void func_02091b6c(void *state);
 extern void func_02091d08(void *state);
 extern void func_020720e8(void *state, void *resourceContext, s32 first,
                          s32 second, s32 third);
-extern void func_020779ac(void *owner, void *resource);
+extern void Graphics3DResourceOwner_PrepareResources(void *owner, void *resource);
 extern void *func_02071adc(void *resourceContext, s32 resourceId);
-extern void *func_02077624(void *owner);
+extern void *Graphics3DResourceOwner_CreateManager(void *owner);
 extern void *func_02077308(void *resourceSet, void *resource);
 extern void func_ov035_021fdd28(void *record, s32 identifier, s32 value20,
                                s32 value24, s32 value28, u8 value5a,
@@ -50,7 +50,7 @@ static void load_group(void *state, s32 first, s32 second, s32 third,
                        void *resourceOwner)
 {
     func_020720e8(state, data_020f4e18[0], first, second, third);
-    func_020779ac(resourceOwner, state);
+    Graphics3DResourceOwner_PrepareResources(resourceOwner, state);
 }
 
 /*
@@ -119,7 +119,7 @@ extern "C" void *func_ov035_022008d0(void *scene, void *resourceOwner,
     }
 
     FIELD(void *, scene, 0xf4) = func_02071adc(data_020f4e18[0], 0x500f);
-    FIELD(void *, scene, 0xf8) = func_02077624(resourceOwner);
+    FIELD(void *, scene, 0xf8) = Graphics3DResourceOwner_CreateManager(resourceOwner);
     FIELD(void *, scene, 0xfc) = create_sprite(scene, 0xdc, 0, 7, 0x46);
     FIELD(void *, scene, 0x100) = create_sprite(scene, 0xe8, 0, 10, 0x42);
     FIELD(void *, scene, 0x104) = create_sprite(scene, 0xe8, 2, 10, 0x41);

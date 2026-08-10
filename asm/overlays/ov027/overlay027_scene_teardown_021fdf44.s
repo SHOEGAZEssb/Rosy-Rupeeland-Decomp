@@ -6,7 +6,7 @@
 .extern data_ov027_021feeb4
 .extern func_020720d4
 .extern func_02075020
-.extern func_020775d8
+.extern Graphics3DResourceOwner_Destroy
 .extern func_020923a0
 .extern func_02092418
 .extern func_02095308
@@ -37,7 +37,7 @@ func_ov027_021fdf44:
     cmp r5, #0x0
     beq L_021fdf9c
     mov r0, r5
-    bl func_020775d8
+    bl Graphics3DResourceOwner_Destroy
     mov r0, r5
     bl Heap_Free
 L_021fdf9c:

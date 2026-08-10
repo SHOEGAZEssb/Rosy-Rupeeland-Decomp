@@ -9,7 +9,7 @@ extern u8 data_ov017_022016e0[];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_020779d8(void *, void *);
+extern void Graphics3DResourceOwner_RenderManagers(void *, void *);
 extern void Graphics3DLight_Apply(void *, s32);
 extern void func_02077b44(void *);
 extern void Graphics3DRenderObject_Draw(void *);
@@ -82,7 +82,7 @@ extern "C" void func_ov017_022008ac(void *state)
     func_ov017_02200a8c(FIELD(u16, state, 0x438), 0, 1);
     func_ov017_021fd414(FIELD(void *, state, 0x2c0));
     *(volatile u32 *)0x04000444 = 0;
-    func_020779d8(FIELD(void *, state, 0x240), (u8 *)state + 0x368);
+    Graphics3DResourceOwner_RenderManagers(FIELD(void *, state, 0x240), (u8 *)state + 0x368);
     *(volatile u32 *)0x04000448 = 1;
     *(volatile u32 *)0x04000540 = 0;
 }

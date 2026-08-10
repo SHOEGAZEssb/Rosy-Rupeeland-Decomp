@@ -23,8 +23,8 @@
     .extern func_02074568
     .extern func_02075238
     .extern func_020755bc
-    .extern func_020774ac
-    .extern func_02077624
+    .extern Graphics3DResourceOwner_Init
+    .extern Graphics3DResourceOwner_CreateManager
     .extern func_02077ae8
     .extern Graphics3DResourceBinding_Init
     .extern func_02091e28
@@ -128,10 +128,10 @@ L_021fcfac:
     beq L_021fcff8
     mov r1, #0x4
     mov r2, #0x2
-    bl func_020774ac
+    bl Graphics3DResourceOwner_Init
 L_021fcff8:
     str r0, [r10, #0x78]
-    bl func_02077624
+    bl Graphics3DResourceOwner_CreateManager
     str r0, [r10, #0x88]
     mov r4, #0x0
     ldr r1, L_021fd1bc

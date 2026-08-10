@@ -1,7 +1,7 @@
     .text
 /* Exact fallback; see src/overlays/ov017/overlay017_scene_render.c. */
     .extern data_ov017_022016e0
-    .extern func_020779d8
+    .extern Graphics3DResourceOwner_RenderManagers
     .extern Graphics3DLight_Apply
     .extern func_02077b44
     .extern Graphics3DRenderObject_Draw
@@ -126,7 +126,7 @@ L_02200a1c:
     str r1, [r0, #0x0]
     ldr r0, [r5, #0x240]
     add r1, r5, #0x368
-    bl func_020779d8
+    bl Graphics3DResourceOwner_RenderManagers
     ldr r1, L_02200a80
     mov r0, #0x1
     str r0, [r1, #0x0]

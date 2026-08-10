@@ -15,7 +15,7 @@ extern void *gSoundContext;
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_020775d8(void *owner);
+extern void Graphics3DResourceOwner_Destroy(void *owner);
 extern void Heap_Free(void *allocation);
 extern void func_02075020(void *resource);
 extern void func_02092418(void *state);
@@ -41,7 +41,7 @@ static void teardown_scene(void *scene)
     delete_controller_if_present(FIELD(void *, scene, 0x60));
     void *owner = FIELD(void *, scene, 0x5c);
     if (owner != 0) {
-        func_020775d8(owner);
+        Graphics3DResourceOwner_Destroy(owner);
         Heap_Free(owner);
     }
     func_02075020(data_020f4e14);

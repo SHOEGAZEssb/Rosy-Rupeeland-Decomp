@@ -36,9 +36,9 @@ Graphics3DResourceBinding *Graphics3DResourceBinding_Init(
     binding->textureResource = func_02071568(archive, textureResourceId);
     binding->paletteResource = func_020716bc(archive, paletteResourceId);
     binding->textureRegion =
-        func_02077870(owner, binding->textureResource);
+        Graphics3DResourceOwner_AcquireTextureRegion(owner, binding->textureResource);
     binding->paletteRegion =
-        func_02077918(owner, binding->paletteResource);
+        Graphics3DResourceOwner_AcquirePaletteRegion(owner, binding->paletteResource);
     func_020703d8(binding->textureResource);
     return binding;
 }

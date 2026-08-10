@@ -20,9 +20,9 @@ extern void func_020720c0(void *state);
 extern void func_ov035_021fdce8(void *record);
 extern void func_020720e8(void *state, void *resourceContext, s32 first,
                          s32 second, s32 third);
-extern void func_020779ac(void *owner, void *resource);
+extern void Graphics3DResourceOwner_PrepareResources(void *owner, void *resource);
 extern void *func_02071adc(void *resourceContext, s32 resourceId);
-extern void *func_02077624(void *owner);
+extern void *Graphics3DResourceOwner_CreateManager(void *owner);
 extern void *func_02077308(void *resourceSet, void *resource);
 extern void func_ov035_021fdd28(void *record, s32 identifier, s32 value20,
                                s32 value24, s32 value28, u8 value5a,
@@ -79,7 +79,7 @@ extern "C" void *func_ov035_021feb7c(void *scene, void *resourceOwner,
 
     func_020720e8((u8 *)scene + 0xdc, data_020f4e18[0],
                   0x6015, 0x6016, 0x6017);
-    func_020779ac(resourceOwner, (u8 *)scene + 0xdc);
+    Graphics3DResourceOwner_PrepareResources(resourceOwner, (u8 *)scene + 0xdc);
     s32 variant = FIELD(s32, scene, 4);
     s32 resourceE8 = variant == 0xcc ? 0x6073 :
                      variant == 0xcf ? 0x6074 : 0x6072;
@@ -89,11 +89,11 @@ extern "C" void *func_ov035_021feb7c(void *scene, void *resourceOwner,
                   0x6070, 0x6071, resourceE8);
     func_020720e8((u8 *)scene + 0xcc, data_020f4e18[0],
                   resourceCC - 2, resourceCC - 1, resourceCC);
-    func_020779ac(resourceOwner, (u8 *)scene + 0xe8);
-    func_020779ac(resourceOwner, (u8 *)scene + 0xcc);
+    Graphics3DResourceOwner_PrepareResources(resourceOwner, (u8 *)scene + 0xe8);
+    Graphics3DResourceOwner_PrepareResources(resourceOwner, (u8 *)scene + 0xcc);
 
     FIELD(void *, scene, 0xf4) = func_02071adc(data_020f4e18[0], 0x5009);
-    FIELD(void *, scene, 0xf8) = func_02077624(resourceOwner);
+    FIELD(void *, scene, 0xf8) = Graphics3DResourceOwner_CreateManager(resourceOwner);
     void *record = func_02077308(FIELD(void *, scene, 0xf8),
                                   (u8 *)scene + 0xdc);
     func_ov035_021fdd28(record, 0, 0, 0, 0, 7, 0x42);

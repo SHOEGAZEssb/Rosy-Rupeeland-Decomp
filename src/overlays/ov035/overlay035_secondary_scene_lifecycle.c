@@ -12,7 +12,7 @@ extern const u8 data_ov035_02203af8[];
 extern "C" {
 #endif
 extern void func_02095308(void *collection);
-extern void func_02077688(void *resource);
+extern void Graphics3DResourceOwner_RemoveManager(void *resource);
 extern void func_02071e04(void *resourceContext, void *resource);
 extern void func_020720d4(void *state);
 extern void Heap_Free(void *allocation);
@@ -29,7 +29,7 @@ static void release_secondary_scene(void *scene)
     func_02095308((u8 *)scene + 0x10c);
     func_02095308((u8 *)scene + 0x11c);
     func_02095308((u8 *)scene + 0x12c);
-    func_02077688(FIELD(void *, FIELD(void *, scene, 0xf8), 0));
+    Graphics3DResourceOwner_RemoveManager(FIELD(void *, FIELD(void *, scene, 0xf8), 0));
     func_02071e04(data_020f4e18[0], FIELD(void *, scene, 0xf4));
     FIELD(const void *, scene, 0x12c) = data_ov035_02203af8;
     func_02095308((u8 *)scene + 0x12c);

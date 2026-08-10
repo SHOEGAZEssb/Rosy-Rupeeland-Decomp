@@ -42,9 +42,9 @@ extern void func_020720e8(void *, void *, s32, s32, s32);
 extern void *func_02073ffc(void *, void *, s32);
 extern void *func_020742cc(void *);
 extern void func_02075358(void *, s32);
-extern void *func_020774ac(void *, s32, s32);
-extern void *func_02077624(void *);
-extern void func_020779ac(void *, void *);
+extern void *Graphics3DResourceOwner_Init(void *, s32, s32);
+extern void *Graphics3DResourceOwner_CreateManager(void *);
+extern void Graphics3DResourceOwner_PrepareResources(void *, void *);
 extern void Graphics3DLightSet_Init(void *);
 extern void func_02077ae8(void *);
 extern void *Graphics3DRenderObject_Init(void *, void *, void *, s32, s32);
@@ -144,16 +144,16 @@ extern "C" void *func_ov017_021feab4(void *state, s32 effectCount,
 
     object = Heap_Alloc(0x624, data_ov017_02201684, 4, gHeapContext);
     if (object != 0)
-        object = func_020774ac(object, 1, 1);
+        object = Graphics3DResourceOwner_Init(object, 1, 1);
     FIELD(void *, state, 0x240) = object;
-    FIELD(void *, state, 0x244) = func_02077624(object);
+    FIELD(void *, state, 0x244) = Graphics3DResourceOwner_CreateManager(object);
     func_02092814((u8 *)state + 0x1d8, 0x7006);
     func_02071ee0((u8 *)state + 0x5c, data_020f4e18[0], 0xd, 0xe, 0xf);
     func_02071ee0((u8 *)state + 0x68, data_020f4e18[0], 0x10, 0x11, 0x12);
     func_02071ee0((u8 *)state + 0x74, data_020f4e18[0], 0x13, 0x14, 0x15);
     func_020720e8((u8 *)state + 0x248, data_020f4e18[0],
                   0x601b, 0x601c, 0x601d);
-    func_020779ac(FIELD(void *, state, 0x240), (u8 *)state + 0x248);
+    Graphics3DResourceOwner_PrepareResources(FIELD(void *, state, 0x240), (u8 *)state + 0x248);
     func_02092754((u8 *)state + 0x1fc, 0x8002);
     func_02092754((u8 *)state + 0x1fc, 0x8003);
 

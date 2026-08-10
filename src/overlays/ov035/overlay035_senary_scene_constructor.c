@@ -23,9 +23,9 @@ extern void func_02091b6c(void *state);
 extern void func_02091d08(void *state);
 extern void func_020720e8(void *state, void *resourceContext, s32 first,
                          s32 second, s32 third);
-extern void func_020779ac(void *owner, void *resource);
+extern void Graphics3DResourceOwner_PrepareResources(void *owner, void *resource);
 extern void *func_02071adc(void *resourceContext, s32 resourceId);
-extern void *func_02077624(void *owner);
+extern void *Graphics3DResourceOwner_CreateManager(void *owner);
 extern void *Heap_Alloc(u32 size, const void *tag, s32 alignment, void *heap);
 extern void *func_ov035_021fcf34(void *object, void *resource, s32 index,
                                 s32 entry);
@@ -58,7 +58,7 @@ static void load_group(void *state, s32 finalId, void *resourceOwner)
 {
     func_020720e8(state, data_020f4e18[0],
                   finalId - 2, finalId - 1, finalId);
-    func_020779ac(resourceOwner, state);
+    Graphics3DResourceOwner_PrepareResources(resourceOwner, state);
 }
 
 /*
@@ -118,8 +118,8 @@ extern "C" void *func_ov035_022016e8(void *scene, void *resourceOwner,
         func_020720e8((u8 *)scene + 0xcc, data_020f4e18[0],
                       0x60cf, 0x60d0, 0x60d1);
     }
-    func_020779ac(resourceOwner, (u8 *)scene + 0xcc);
-    FIELD(void *, scene, 0xf4) = func_02077624(resourceOwner);
+    Graphics3DResourceOwner_PrepareResources(resourceOwner, (u8 *)scene + 0xcc);
+    FIELD(void *, scene, 0xf4) = Graphics3DResourceOwner_CreateManager(resourceOwner);
 
     void *model = Heap_Alloc(0xc4, data_ov035_02203d48, 4, gHeapContext);
     if (model != 0)

@@ -9,7 +9,7 @@
 .extern func_02071e04
 .extern func_020720d4
 .extern func_02075020
-.extern func_020775d8
+.extern Graphics3DResourceOwner_Destroy
 .extern Graphics3DLightSet_Destroy
 .extern func_02092314
 .extern func_020923a0
@@ -53,7 +53,7 @@ func_ov026_022001bc:
     cmp r5, #0x0
     beq L_0220023c
     mov r0, r5
-    bl func_020775d8
+    bl Graphics3DResourceOwner_Destroy
     mov r0, r5
     bl Heap_Free
 L_0220023c:

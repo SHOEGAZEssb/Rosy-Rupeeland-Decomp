@@ -9,9 +9,9 @@
     .extern func_02091d08
     .extern Graphics3DLightSet_Init
     .extern func_020720e8
-    .extern func_020779ac
+    .extern Graphics3DResourceOwner_PrepareResources
     .extern func_02071adc
-    .extern func_02077624
+    .extern Graphics3DResourceOwner_CreateManager
     .extern func_ov036_021fe9fc
     .extern func_ov036_021fea04
     .extern func_ov036_0220213c
@@ -66,7 +66,7 @@ func_ov036_022029d8:
     bl func_020720e8
     mov r0, r4
     add r1, r5, #0xdc
-    bl func_020779ac
+    bl Graphics3DResourceOwner_PrepareResources
     ldr r0, [r5, #0x4]
     cmp r0, #0x65
     beq L_02202a78
@@ -130,17 +130,17 @@ L_02202b00:
 L_02202b40:
     mov r0, r4
     add r1, r5, #0xe8
-    bl func_020779ac
+    bl Graphics3DResourceOwner_PrepareResources
     mov r0, r4
     add r1, r5, #0xcc
-    bl func_020779ac
+    bl Graphics3DResourceOwner_PrepareResources
     ldr r0, L_02202e2c
     ldr r1, L_02202e40
     ldr r0, [r0, #0x0]
     bl func_02071adc
     str r0, [r5, #0x15c]
     mov r0, r4
-    bl func_02077624
+    bl Graphics3DResourceOwner_CreateManager
     str r0, [r5, #0xf4]
     add r0, r5, #0xc
     mov r1, #0x0

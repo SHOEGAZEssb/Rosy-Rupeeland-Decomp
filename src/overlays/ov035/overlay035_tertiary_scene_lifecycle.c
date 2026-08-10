@@ -13,7 +13,7 @@ extern u8 gHeapContext[];
 extern "C" {
 #endif
 extern void func_02095308(void *collection);
-extern void func_02077688(void *resource);
+extern void Graphics3DResourceOwner_RemoveManager(void *resource);
 extern void func_020720d4(void *state);
 extern void Heap_Free(void *allocation);
 extern void *func_02077308(void *resourceSet, void *resource);
@@ -37,7 +37,7 @@ static void release_tertiary_scene(void *scene)
     FIELD(const void *, scene, 0) = data_ov035_02203cb0;
     func_02095308((u8 *)scene + 0x174);
     func_02095308((u8 *)scene + 0x184);
-    func_02077688(FIELD(void *, FIELD(void *, scene, 0x124), 0));
+    Graphics3DResourceOwner_RemoveManager(FIELD(void *, FIELD(void *, scene, 0x124), 0));
     FIELD(const void *, scene, 0x184) = data_ov035_02203af8;
     func_02095308((u8 *)scene + 0x184);
     FIELD(const void *, scene, 0x174) = data_ov035_02203af8;

@@ -3,7 +3,7 @@
 /* Exact fallback; see src/overlays/ov035/overlay035_quaternary_scene_lifecycle.c for documented portable C. */
 
     .extern func_02095308
-    .extern func_02077688
+    .extern Graphics3DResourceOwner_RemoveManager
     .extern func_02071e04
     .extern Graphics3DLightSet_Destroy
     .extern func_020720d4
@@ -27,7 +27,7 @@ func_ov035_0220043c:
     bl func_02095308
     ldr r1, [r4, #0x104]
     ldr r0, [r1, #0x0]
-    bl func_02077688
+    bl Graphics3DResourceOwner_RemoveManager
     ldr r0, L_022004cc
     ldr r1, [r4, #0x100]
     ldr r0, [r0, #0x0]
@@ -69,7 +69,7 @@ func_ov035_022004d4:
     bl func_02095308
     ldr r1, [r4, #0x104]
     ldr r0, [r1, #0x0]
-    bl func_02077688
+    bl Graphics3DResourceOwner_RemoveManager
     ldr r0, L_0220056c
     ldr r1, [r4, #0x100]
     ldr r0, [r0, #0x0]

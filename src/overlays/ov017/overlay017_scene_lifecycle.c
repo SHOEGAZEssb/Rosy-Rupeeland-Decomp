@@ -20,7 +20,7 @@ extern void func_02071eb8(void *);
 extern void func_020720d4(void *);
 extern void func_0207419c(void *);
 extern void func_02075290(void *);
-extern void func_020775d8(void *);
+extern void Graphics3DResourceOwner_Destroy(void *);
 extern void Graphics3DLightSet_Destroy(void *);
 extern void Graphics3DRenderObject_Destroy(void *);
 extern void func_020923a0(void *);
@@ -90,7 +90,7 @@ extern "C" void *func_ov017_021ff16c(void *state)
     }
     owned = FIELD(void *, state, 0x240);
     if (owned != 0) {
-        func_020775d8(owned);
+        Graphics3DResourceOwner_Destroy(owned);
         Heap_Free(owned);
     }
 

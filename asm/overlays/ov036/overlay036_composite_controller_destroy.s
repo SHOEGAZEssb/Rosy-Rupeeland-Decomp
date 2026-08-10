@@ -5,7 +5,7 @@
     .extern func_ov036_021fdc1c
     .extern Heap_Free
     .extern func_02095308
-    .extern func_02077688
+    .extern Graphics3DResourceOwner_RemoveManager
     .extern func_02071e04
     .extern Graphics3DLightSet_Destroy
     .extern func_020720d4
@@ -33,7 +33,7 @@ L_02202e84:
     bl func_02095308
     ldr r1, [r5, #0xf4]
     ldr r0, [r1, #0x0]
-    bl func_02077688
+    bl Graphics3DResourceOwner_RemoveManager
     ldr r0, L_02202efc
     ldr r1, [r5, #0x15c]
     ldr r0, [r0, #0x0]

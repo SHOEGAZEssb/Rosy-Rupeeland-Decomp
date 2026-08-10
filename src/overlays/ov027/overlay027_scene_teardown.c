@@ -14,7 +14,7 @@ extern "C" {
 #endif
 extern void Heap_Free(void *);
 extern void func_02095308(void *);
-extern void func_020775d8(void *);
+extern void Graphics3DResourceOwner_Destroy(void *);
 extern void func_02075020(void *);
 extern void func_02092418(void *);
 extern void GX_SetGraphicsMode(s32, s32, s32);
@@ -44,7 +44,7 @@ extern "C" void *func_ov027_021fde24(void *scene)
 
     void *group = FIELD(void *, scene, 0x54);
     if (group) {
-        func_020775d8(group);
+        Graphics3DResourceOwner_Destroy(group);
         Heap_Free(group);
     }
     func_02075020(data_020f4e14);

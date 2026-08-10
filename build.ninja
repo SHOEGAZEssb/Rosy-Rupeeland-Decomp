@@ -11408,7 +11408,7 @@ build build/reports/graphics_3d_resource_owner.json: objdiff build/decomp/delink
 
 build build/reports/graphics_3d_resource_owner.txt: match_report build/reports/graphics_3d_resource_owner.json | tools/report_objdiff.py
   report_json = build/reports/graphics_3d_resource_owner.json
-  report_args = --section .text --function func_020774ac
+  report_args = --section .text --function Graphics3DResourceOwner_Init
 
 build build/reports/graphics_3d_resource_owner_lifecycle.json: objdiff build/decomp/delinks/src/graphics/graphics_3d_resource_owner_lifecycle.o | build/decomp/src/graphics/graphics_3d_resource_owner_lifecycle.o
   target_object = build/decomp/delinks/src/graphics/graphics_3d_resource_owner_lifecycle.o
@@ -11416,7 +11416,7 @@ build build/reports/graphics_3d_resource_owner_lifecycle.json: objdiff build/dec
 
 build build/reports/graphics_3d_resource_owner_lifecycle.txt: match_report build/reports/graphics_3d_resource_owner_lifecycle.json | tools/report_objdiff.py
   report_json = build/reports/graphics_3d_resource_owner_lifecycle.json
-  report_args = --section .text --function func_020775d8
+  report_args = --section .text --function Graphics3DResourceOwner_Destroy
 
 build build/reports/graphics_3d_resource_owner_managers.json: objdiff build/decomp/delinks/src/graphics/graphics_3d_resource_owner_managers.o | build/decomp/src/graphics/graphics_3d_resource_owner_managers.o
   target_object = build/decomp/delinks/src/graphics/graphics_3d_resource_owner_managers.o
@@ -11424,7 +11424,7 @@ build build/reports/graphics_3d_resource_owner_managers.json: objdiff build/deco
 
 build build/reports/graphics_3d_resource_owner_managers.txt: match_report build/reports/graphics_3d_resource_owner_managers.json | tools/report_objdiff.py
   report_json = build/reports/graphics_3d_resource_owner_managers.json
-  report_args = --section .text --function func_02077624 --function func_02077688 --function func_020776e8
+  report_args = --section .text --function Graphics3DResourceOwner_CreateManager --function Graphics3DResourceOwner_RemoveManager --function Graphics3DResourceOwner_ClearManagers
 
 build build/reports/graphics_animation_instance_resources.json: objdiff build/decomp/delinks/src/graphics/graphics_animation_instance_resources.o | build/decomp/src/graphics/graphics_animation_instance_resources.o
   target_object = build/decomp/delinks/src/graphics/graphics_animation_instance_resources.o
@@ -11440,7 +11440,7 @@ build build/reports/graphics_3d_resource_regions.json: objdiff build/decomp/deli
 
 build build/reports/graphics_3d_resource_regions.txt: match_report build/reports/graphics_3d_resource_regions.json | tools/report_objdiff.py
   report_json = build/reports/graphics_3d_resource_regions.json
-  report_args = --section .text --function func_02077870 --function func_020778ec --function func_02077918
+  report_args = --section .text --function Graphics3DResourceOwner_AcquireTextureRegion --function Graphics3DResourceOwner_FindTextureRegion --function Graphics3DResourceOwner_AcquirePaletteRegion
 
 build build/reports/graphics_3d_resource_owner_ops.json: objdiff build/decomp/delinks/src/graphics/graphics_3d_resource_owner_ops.o | build/decomp/src/graphics/graphics_3d_resource_owner_ops.o
   target_object = build/decomp/delinks/src/graphics/graphics_3d_resource_owner_ops.o
@@ -11448,7 +11448,7 @@ build build/reports/graphics_3d_resource_owner_ops.json: objdiff build/decomp/de
 
 build build/reports/graphics_3d_resource_owner_ops.txt: match_report build/reports/graphics_3d_resource_owner_ops.json | tools/report_objdiff.py
   report_json = build/reports/graphics_3d_resource_owner_ops.json
-  report_args = --section .text --function func_020779ac --function func_020779d8
+  report_args = --section .text --function Graphics3DResourceOwner_PrepareResources --function Graphics3DResourceOwner_RenderManagers
 
 build build/reports/graphics_3d_light.json: objdiff build/decomp/delinks/src/graphics/graphics_3d_light.o | build/decomp/src/graphics/graphics_3d_light.o
   target_object = build/decomp/delinks/src/graphics/graphics_3d_light.o

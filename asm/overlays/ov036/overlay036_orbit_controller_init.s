@@ -7,8 +7,8 @@
     .extern func_ov036_021fe218
     .extern func_02091d08
     .extern func_020720e8
-    .extern func_020779ac
-    .extern func_02077624
+    .extern Graphics3DResourceOwner_PrepareResources
+    .extern Graphics3DResourceOwner_CreateManager
     .extern func_ov036_021fe9fc
     .extern func_ov036_021fea04
     .extern func_02077308
@@ -55,7 +55,7 @@ func_ov036_0220059c:
     bl func_020720e8
     mov r0, r9
     add r1, r10, #0xe8
-    bl func_020779ac
+    bl Graphics3DResourceOwner_PrepareResources
     ldr r3, L_022008cc
     add r0, r10, #0xdc
     str r3, [sp, #0x0]
@@ -66,7 +66,7 @@ func_ov036_0220059c:
     bl func_020720e8
     mov r0, r9
     add r1, r10, #0xdc
-    bl func_020779ac
+    bl Graphics3DResourceOwner_PrepareResources
     ldr r3, L_022008d0
     add r0, r10, #0xf4
     str r3, [sp, #0x0]
@@ -77,9 +77,9 @@ func_ov036_0220059c:
     bl func_020720e8
     mov r0, r9
     add r1, r10, #0xf4
-    bl func_020779ac
+    bl Graphics3DResourceOwner_PrepareResources
     mov r0, r9
-    bl func_02077624
+    bl Graphics3DResourceOwner_CreateManager
     str r0, [r10, #0x100]
     ldr r3, L_022008d4
     add r0, r10, #0xcc
@@ -91,7 +91,7 @@ func_ov036_0220059c:
     bl func_020720e8
     mov r0, r9
     add r1, r10, #0xcc
-    bl func_020779ac
+    bl Graphics3DResourceOwner_PrepareResources
     add r0, r10, #0xc
     mov r1, #0x0
     mov r2, r1

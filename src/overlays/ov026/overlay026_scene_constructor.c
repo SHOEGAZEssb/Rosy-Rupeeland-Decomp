@@ -34,9 +34,9 @@ extern void func_020720e8(void *, void *, s32, s32, s32);
 extern void func_02074568(void *);
 extern void func_02075238(void *);
 extern void *func_02077308(void *, void *);
-extern void *func_020774ac(void *, s32, s32);
-extern void *func_02077624(void *);
-extern void func_020779ac(void *, void *);
+extern void *Graphics3DResourceOwner_Init(void *, s32, s32);
+extern void *Graphics3DResourceOwner_CreateManager(void *);
+extern void Graphics3DResourceOwner_PrepareResources(void *, void *);
 extern void Graphics3DLightSet_Init(void *);
 extern void func_02077ae8(void *);
 extern void func_02091b6c(void *);
@@ -128,19 +128,19 @@ extern "C" void *func_ov026_021ff8a0(void *scene, s32 scene_id,
 
     void *manager = Heap_Alloc(0x624, data_ov026_02204a70, 4, gHeapContext);
     if (manager != 0)
-        manager = func_020774ac(manager, 4, 2);
+        manager = Graphics3DResourceOwner_Init(manager, 4, 2);
     FIELD(void *, scene, 0x68) = manager;
-    FIELD(void *, scene, 0x6c) = func_02077624(manager);
-    FIELD(void *, scene, 0x70) = func_02077624(manager);
-    FIELD(void *, scene, 0x74) = func_02077624(manager);
-    FIELD(void *, scene, 0x78) = func_02077624(manager);
+    FIELD(void *, scene, 0x6c) = Graphics3DResourceOwner_CreateManager(manager);
+    FIELD(void *, scene, 0x70) = Graphics3DResourceOwner_CreateManager(manager);
+    FIELD(void *, scene, 0x74) = Graphics3DResourceOwner_CreateManager(manager);
+    FIELD(void *, scene, 0x78) = Graphics3DResourceOwner_CreateManager(manager);
 
     static const s32 resource_ids[5] = {0x6029, 0x6026, 0x6023, 0x602f, 0x602c};
     for (s32 i = 0; i < 5; ++i) {
         void *descriptor = (u8 *)scene + 0x7c + i * 0xc;
         s32 id = resource_ids[i];
         func_020720e8(descriptor, data_020f4e18, id - 2, id - 1, id);
-        func_020779ac(manager, descriptor);
+        Graphics3DResourceOwner_PrepareResources(manager, descriptor);
     }
 
     void *model_resource = func_02071adc(data_020f4e18, 0x5000);

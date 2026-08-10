@@ -22,11 +22,11 @@ extern void func_020703d8(void *resource);
  * returned or released here, so the caller owns the resulting references.
  * Retail assumes both resources are valid and acquisition succeeds.
  */
-void func_020779ac(Graphics3DResourceOwner *owner,
+void Graphics3DResourceOwner_PrepareResources(Graphics3DResourceOwner *owner,
                    const GraphicsAnimationCreateParams *params)
 {
-    func_02077870(owner, (void *)params->field_00);
-    func_02077918(owner, (void *)params->field_04);
+    Graphics3DResourceOwner_AcquireTextureRegion(owner, (void *)params->field_00);
+    Graphics3DResourceOwner_AcquirePaletteRegion(owner, (void *)params->field_04);
     func_020703d8((void *)params->field_00);
 }
 
@@ -35,7 +35,7 @@ void func_020779ac(Graphics3DResourceOwner *owner,
  * renderContext. The next manager is loaded after each callback, so mutation
  * of the owner list during rendering is outside the confirmed safe contract.
  */
-void func_020779d8(Graphics3DResourceOwner *owner, void *renderContext)
+void Graphics3DResourceOwner_RenderManagers(Graphics3DResourceOwner *owner, void *renderContext)
 {
     GraphicsAnimationInstanceManager *manager;
 

@@ -19,8 +19,8 @@ extern void func_02091d08(void *state);
 extern void func_ov035_021fdce8(void *record);
 extern void func_020720e8(void *state, void *resourceContext, s32 first,
                          s32 second, s32 third);
-extern void func_020779ac(void *owner, void *resource);
-extern void *func_02077624(void *owner);
+extern void Graphics3DResourceOwner_PrepareResources(void *owner, void *resource);
+extern void *Graphics3DResourceOwner_CreateManager(void *owner);
 extern void *func_02077308(void *resourceSet, void *resource);
 extern void func_ov035_021fdd28(void *record, s32 identifier, s32 value20,
                                s32 value24, s32 value28, u8 value5a,
@@ -46,7 +46,7 @@ static void load_group(void *scene, s32 offset, s32 finalId,
     void *state = (u8 *)scene + offset;
     func_020720e8(state, data_020f4e18[0],
                   finalId - 2, finalId - 1, finalId);
-    func_020779ac(resourceOwner, state);
+    Graphics3DResourceOwner_PrepareResources(resourceOwner, state);
 }
 
 /* Creates one configured sprite and attaches it to collection +0x174. */
@@ -102,7 +102,7 @@ extern "C" void *func_ov035_021ff478(void *scene, void *resourceOwner,
     load_group(scene, 0x10c, 0x608f, resourceOwner);
     load_group(scene, 0x118, 0x6092, resourceOwner);
 
-    FIELD(void *, scene, 0x124) = func_02077624(resourceOwner);
+    FIELD(void *, scene, 0x124) = Graphics3DResourceOwner_CreateManager(resourceOwner);
     FIELD(void *, scene, 0x128) =
         create_scene_sprite(scene, 0xdc, 0, 7, 0x42);
     FIELD(void *, scene, 0x12c) =

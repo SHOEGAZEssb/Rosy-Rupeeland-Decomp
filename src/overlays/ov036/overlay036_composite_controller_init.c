@@ -22,9 +22,9 @@ extern void func_02091d08(void *timer);
 extern void Graphics3DLightSet_Init(void *records);
 extern void func_020720e8(void *resourceSet, void *archive,
                           s32 firstId, s32 secondId, s32 thirdId);
-extern void func_020779ac(void *owner, void *resourceSet);
+extern void Graphics3DResourceOwner_PrepareResources(void *owner, void *resourceSet);
 extern void *func_02071adc(void *archive, s32 id);
-extern void *func_02077624(void *owner);
+extern void *Graphics3DResourceOwner_CreateManager(void *owner);
 extern void func_ov036_021fe9fc(void *record, s32 x, s32 y, s32 z);
 extern void func_ov036_021fea04(void *record, s32 x, s32 y, s32 z);
 extern void func_ov036_0220213c(void *records, s32 index,
@@ -83,7 +83,7 @@ extern "C" void *func_ov036_022029d8(void *controller, void *owner,
 
     func_020720e8((u8 *)controller + 0xdc, data_020f4e18,
                   0x6003, 0x6004, 0x6005);
-    func_020779ac(owner, (u8 *)controller + 0xdc);
+    Graphics3DResourceOwner_PrepareResources(owner, (u8 *)controller + 0xdc);
 
     s32 middleId;
     s32 ccLastId;
@@ -101,10 +101,10 @@ extern "C" void *func_ov036_022029d8(void *controller, void *owner,
                   0x6075, middleId, 0x6077);
     func_020720e8((u8 *)controller + 0xcc, data_020f4e18,
                   ccLastId - 2, ccLastId - 1, ccLastId);
-    func_020779ac(owner, (u8 *)controller + 0xe8);
-    func_020779ac(owner, (u8 *)controller + 0xcc);
+    Graphics3DResourceOwner_PrepareResources(owner, (u8 *)controller + 0xe8);
+    Graphics3DResourceOwner_PrepareResources(owner, (u8 *)controller + 0xcc);
     FIELD(void *, controller, 0x15c) = func_02071adc(data_020f4e18, 0x5003);
-    FIELD(void *, controller, 0xf4) = func_02077624(owner);
+    FIELD(void *, controller, 0xf4) = Graphics3DResourceOwner_CreateManager(owner);
 
     func_ov036_021fe9fc((u8 *)controller + 0xc, 0, 0, 0x2800);
     func_ov036_021fea04((u8 *)controller + 0xc, 0, 0, 0);
