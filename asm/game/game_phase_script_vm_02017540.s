@@ -6,8 +6,8 @@
 .extern GamePhaseScriptVm_Pop
 .extern Position_AdjustForTerrainHeight
 .extern func_0204eb18
-.global func_02017540
-func_02017540:
+.global GamePhaseActorScriptVm_SpawnDualVariantEffect
+GamePhaseActorScriptVm_SpawnDualVariantEffect:
     stmdb sp!, {r3, r4, r5, lr}
     sub sp, sp, #0x20
     mov r4, r0
@@ -74,4 +74,4 @@ L_0201761c:
     ldmia sp!, {r3, r4, r5, pc}
 L_02017630: .word 0x00001694
 L_02017634: .word 0x0000169b
-    .size func_02017540, . - func_02017540
+    .size GamePhaseActorScriptVm_SpawnDualVariantEffect, . - GamePhaseActorScriptVm_SpawnDualVariantEffect

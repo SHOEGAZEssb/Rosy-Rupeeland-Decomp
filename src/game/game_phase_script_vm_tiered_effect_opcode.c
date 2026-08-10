@@ -25,7 +25,7 @@ extern void func_0204e2ac(s32 kind, s16 first, s16 tierSource,
  * then call func_0204e2ac with kind 10, resources 0x300d..0x300f, count 7,
  * and trailing zero. Destroy both temporary vectors and return zero.
  */
-s32 func_020171f0(GamePhaseActorScriptVm *self)
+s32 GamePhaseActorScriptVm_SpawnTieredEffect(GamePhaseActorScriptVm *self)
 {
     VecFx32Object position;
     VecFx32Object secondary;

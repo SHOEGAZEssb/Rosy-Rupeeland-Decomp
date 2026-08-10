@@ -4,8 +4,8 @@
 .extern func_02005058
 .extern GamePhaseScriptVm_Pop
 .extern func_0204e2ac
-.global func_020171f0
-func_020171f0:
+.global GamePhaseActorScriptVm_SpawnTieredEffect
+GamePhaseActorScriptVm_SpawnTieredEffect:
     stmdb sp!, {r4, r5, lr}
     sub sp, sp, #0x3c
     mov r5, r0
@@ -88,4 +88,4 @@ L_020172c8:
     add sp, sp, #0x3c
     ldmia sp!, {r4, r5, pc}
 L_02017330: .word 0x0000300d
-    .size func_020171f0, . - func_020171f0
+    .size GamePhaseActorScriptVm_SpawnTieredEffect, . - GamePhaseActorScriptVm_SpawnTieredEffect

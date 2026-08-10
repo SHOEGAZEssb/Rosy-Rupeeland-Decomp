@@ -22,7 +22,7 @@ extern void OS_Halt(void);
  * resources 0x169a..0x169c. Both use size operands 16; other variants halt.
  * Destroy the temporary vector and return zero.
  */
-s32 func_02017540(GamePhaseActorScriptVm *self)
+s32 GamePhaseActorScriptVm_SpawnDualVariantEffect(GamePhaseActorScriptVm *self)
 {
     VecFx32Object position;
     s32 first;
