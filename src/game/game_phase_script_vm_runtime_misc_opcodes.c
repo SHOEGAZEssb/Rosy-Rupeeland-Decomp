@@ -18,7 +18,7 @@ extern s32 Actor_GetCachedTerrainHeight(void *actor);
  * Pop a boolean. Set or clear GameWork flag 1004 and mirror it into bit 2 of
  * runtime collection 1's actor-at-0x2e7c word at 0x230. Returns zero.
  */
-s32 func_02016814(GamePhaseActorScriptVm *self)
+s32 GamePhaseActorScriptVm_SetGameWorkFlag1004AndCollection1ActorFlag4(GamePhaseActorScriptVm *self)
 {
     s32 enabled = (s32)GamePhaseScriptVm_Pop(&self->base);
     u8 *collection;
@@ -37,21 +37,21 @@ s32 func_02016814(GamePhaseActorScriptVm *self)
 }
 
 /* Confirmed no-op opcode; ignore the VM and return zero. */
-s32 func_02016898(GamePhaseActorScriptVm *self)
+s32 GamePhaseActorScriptVm_RuntimeMiscNoOp0(GamePhaseActorScriptVm *self)
 {
     (void)self;
     return 0;
 }
 
 /* Second confirmed no-op opcode; ignore the VM and return zero. */
-s32 func_020168a0(GamePhaseActorScriptVm *self)
+s32 GamePhaseActorScriptVm_RuntimeMiscNoOp1(GamePhaseActorScriptVm *self)
 {
     (void)self;
     return 0;
 }
 
 /* Pass runtime actor 0x2ea4's object at offset 0x270 to Type7AuxiliaryPresentation_BeginShutdown and return zero. */
-s32 func_020168a8(GamePhaseActorScriptVm *self)
+s32 GamePhaseActorScriptVm_BeginRuntimeActorAuxiliaryShutdown(GamePhaseActorScriptVm *self)
 {
     u8 *runtime = (u8 *)data_021052fc;
     u8 *actor = *(u8 **)(runtime + 0x2ea4);
@@ -64,7 +64,7 @@ s32 func_020168a8(GamePhaseActorScriptVm *self)
  * Push one when runtime actor 0x2ea4 has bit 4 set at 0xd0 or its fx32 Y at
  * 0x24 is greater than Actor_GetCachedTerrainHeight(actor); otherwise push zero. Return zero.
  */
-s32 func_020168d0(GamePhaseActorScriptVm *self)
+s32 GamePhaseActorScriptVm_IsRuntimeActorAboveTerrainOrFlagD0Bit4Set(GamePhaseActorScriptVm *self)
 {
     u8 *actor = *(u8 **)((u8 *)data_021052fc + 0x2ea4);
     s32 result = (*(u32 *)(actor + 0xd0) & 0x10) != 0;

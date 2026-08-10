@@ -3,8 +3,8 @@
 .extern data_021052fc
 .extern GamePhaseScriptVm_SetResult
 .extern Actor_GetCachedTerrainHeight
-.global func_020168d0
-func_020168d0:
+.global GamePhaseActorScriptVm_IsRuntimeActorAboveTerrainOrFlagD0Bit4Set
+GamePhaseActorScriptVm_IsRuntimeActorAboveTerrainOrFlagD0Bit4Set:
     stmdb sp!, {r3, r4, r5, lr}
     ldr r1, L_0201692c
     mov r5, r0
@@ -32,4 +32,4 @@ L_02016924:
     mov r0, #0
     ldmia sp!, {r3, r4, r5, pc}
 L_0201692c: .word data_021052fc
-    .size func_020168d0, . - func_020168d0
+    .size GamePhaseActorScriptVm_IsRuntimeActorAboveTerrainOrFlagD0Bit4Set, . - GamePhaseActorScriptVm_IsRuntimeActorAboveTerrainOrFlagD0Bit4Set

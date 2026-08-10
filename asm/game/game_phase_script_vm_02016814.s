@@ -6,8 +6,8 @@
 .extern GamePhaseRuntime_GetActorCollection
 .extern GamePhaseScriptVm_Pop
 .extern gGameWork
-.global func_02016814
-func_02016814:
+.global GamePhaseActorScriptVm_SetGameWorkFlag1004AndCollection1ActorFlag4
+GamePhaseActorScriptVm_SetGameWorkFlag1004AndCollection1ActorFlag4:
     stmdb sp!, {r3, lr}
     bl GamePhaseScriptVm_Pop
     cmp r0, #0
@@ -43,4 +43,4 @@ L_02016884:
     ldmia sp!, {r3, pc}
 L_02016890: .word gGameWork
 L_02016894: .word data_021052fc
-    .size func_02016814, . - func_02016814
+    .size GamePhaseActorScriptVm_SetGameWorkFlag1004AndCollection1ActorFlag4, . - GamePhaseActorScriptVm_SetGameWorkFlag1004AndCollection1ActorFlag4
