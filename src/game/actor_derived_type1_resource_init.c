@@ -17,7 +17,8 @@ extern void *func_02073fc4(void *collectionData, u32 first, u32 second,
                            u32 third, u32 mode);
 extern void func_02072b68(void *attachment, u32 animation);
 extern void func_020313b4(void *actor, void *resource, u32 layer);
-extern void func_0203b65c(void *actor, const void *descriptor);
+extern void Actor_InitializeFromDescriptor(void *actor,
+                                           const void *descriptor);
 #ifdef __cplusplus
 }
 #endif
@@ -40,7 +41,7 @@ static void *allocateResource(u32 first, u32 second, u32 third)
  * the primary attachment +0x54 from the first descriptor's words +4/+8/+0xc
  * and collection data with mode two, select animation zero, attach that first
  * resource using descriptor byte +0x10 as layer, then forward the descriptor
- * through base initializer func_0203b65c. Returns no explicit value; heap,
+ * through Actor_InitializeFromDescriptor. Returns no explicit value; heap,
  * resource, attachment, and presentation helpers establish owned SDK state.
  */
 void func_020353a0(void *self, const void *descriptor)
@@ -70,5 +71,5 @@ void func_020353a0(void *self, const void *descriptor)
     *(void **)(actor + 0x54) = attachment;
     func_02072b68(attachment, 0);
     func_020313b4(actor, first, record[0x10]);
-    func_0203b65c(actor, record);
+    Actor_InitializeFromDescriptor(actor, record);
 }

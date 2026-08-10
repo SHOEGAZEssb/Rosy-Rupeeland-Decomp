@@ -12,7 +12,8 @@ extern void *func_0203b514(void *actor);
 extern void *func_0203b61c(void *actor);
 extern void func_02004fe0(void *vector);
 extern void func_02005058(void *vector);
-extern void func_0203b65c(void *actor, const void *descriptor);
+extern void Actor_InitializeFromDescriptor(void *actor,
+                                           const void *descriptor);
 extern void func_0203b798(void *actor);
 #ifdef __cplusplus
 }
@@ -69,10 +70,10 @@ void *func_0203c1f0(void *self)
     return result;
 }
 
-/* Forward actor and descriptor to base initializer func_0203b65c; return no value. */
+/* Forward actor and descriptor to Actor_InitializeFromDescriptor. */
 void func_0203c228(void *actor, const void *descriptor)
 {
-    func_0203b65c(actor, descriptor);
+    Actor_InitializeFromDescriptor(actor, descriptor);
 }
 
 /* Forward actor to base per-frame update func_0203b798; return no value. */

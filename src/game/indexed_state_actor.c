@@ -13,7 +13,7 @@ extern "C" {
 extern void Heap_Free(void *allocation);
 extern void *func_0203b514(void *actor, const void *descriptor);
 extern void func_0203b61c(void *actor);
-extern void func_0203b65c(void *actor);
+extern void Actor_InitializeFromDescriptor(void *actor);
 extern void func_0203b798(void *actor);
 #ifdef __cplusplus
 }
@@ -60,12 +60,12 @@ void *func_0204d4d4(void *self)
 
 /*
  * Input is an indexed-state actor. Tail-forward directly to base state-entry
- * helper func_0203b65c. Its observable state changes and return convention are
+ * helper Actor_InitializeFromDescriptor. Its observable state changes and return convention are
  * preserved; there are no direct hardware effects in this wrapper.
  */
 void func_0204d4f0(void *self)
 {
-    func_0203b65c(self);
+    Actor_InitializeFromDescriptor(self);
 }
 
 /*

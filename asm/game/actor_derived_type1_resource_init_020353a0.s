@@ -8,7 +8,7 @@
 .extern func_02030acc
 .extern func_020313b4
 .extern func_020337d4
-.extern func_0203b65c
+.extern Actor_InitializeFromDescriptor
 .extern func_02072b68
 .extern func_02073fc4
 .extern gGameWork
@@ -96,7 +96,7 @@ func_020353a0: ; 0x020353a0
     bl func_020313b4
     mov r0, r10
     mov r1, r9
-    bl func_0203b65c
+    bl Actor_InitializeFromDescriptor
     add sp, sp, #0x70
     ldmia sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, pc}
 .L_020354d0: .word data_020c3d90
@@ -108,4 +108,3 @@ func_020353a0: ; 0x020353a0
     .size func_020353a0, . - func_020353a0
 
     .global func_020354e8
-

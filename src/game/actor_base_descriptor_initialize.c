@@ -32,7 +32,7 @@ extern void func_02034260(void *actor, const void *descriptor);
  * func_02034260. Returns no value; virtual, resource, attachment, animation,
  * and callback calls mutate actor and presentation state.
  */
-void func_0203b65c(void *self, const void *descriptor)
+void Actor_InitializeFromDescriptor(void *self, const void *descriptor)
 {
     u8 *actor = (u8 *)self;
     const u8 *record = (const u8 *)descriptor;

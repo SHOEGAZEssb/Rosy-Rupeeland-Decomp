@@ -7,7 +7,7 @@
 .extern func_02033b38
 .extern func_0203b514
 .extern func_0203b61c
-.extern func_0203b65c
+.extern Actor_InitializeFromDescriptor
 .extern func_0203b798
     .global func_0203c134
     .type func_0203c134, @function
@@ -95,7 +95,7 @@ func_0203c1f0: ; 0x0203c1f0
 func_0203c228: ; 0x0203c228
     ldr ip, .L_0203c230
     bx ip
-.L_0203c230: .word func_0203b65c
+.L_0203c230: .word Actor_InitializeFromDescriptor
     .size func_0203c228, . - func_0203c228
 
     .global func_0203c234
@@ -105,5 +105,4 @@ func_0203c234: ; 0x0203c234
     bx ip
 .L_0203c23c: .word func_0203b798
     .size func_0203c234, . - func_0203c234
-
 

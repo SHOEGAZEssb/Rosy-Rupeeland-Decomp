@@ -4,7 +4,7 @@
 .extern Heap_Free
 .extern func_0203b798
 .extern data_020e212c
-.extern func_0203b65c
+.extern Actor_InitializeFromDescriptor
 .text
     .global func_0204d488
 func_0204d488: ; 0x0204d488
@@ -48,7 +48,7 @@ func_0204d4d4: ; 0x0204d4d4
 func_0204d4f0: ; 0x0204d4f0
     ldr ip, .L_0204d4f8
     bx ip
-.L_0204d4f8: .word func_0203b65c
+.L_0204d4f8: .word Actor_InitializeFromDescriptor
 .size func_0204d4f0, . - func_0204d4f0
 
     .global func_0204d4fc
@@ -64,4 +64,3 @@ func_0204d4fc: ; 0x0204d4fc
     bl func_0203b798
     ldmia sp!, {r3, pc}
 .size func_0204d4fc, . - func_0204d4fc
-

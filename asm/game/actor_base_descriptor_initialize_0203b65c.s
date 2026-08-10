@@ -8,9 +8,9 @@
 .extern func_02071ee0
 .extern func_02072b68
 .extern func_02073fc4
-    .global func_0203b65c
-    .type func_0203b65c, @function
-func_0203b65c: ; 0x0203b65c
+    .global Actor_InitializeFromDescriptor
+    .type Actor_InitializeFromDescriptor, @function
+Actor_InitializeFromDescriptor: ; 0x0203b65c
     stmdb sp!, {r3, r4, r5, lr}
     ldr r2, [r0, #0x0]
     mov r4, r1
@@ -93,5 +93,4 @@ func_0203b65c: ; 0x0203b65c
     ldmia sp!, {r3, r4, r5, pc}
 .L_0203b794: .word data_020f4e18
 
-    .size func_0203b65c, . - func_0203b65c
-
+    .size Actor_InitializeFromDescriptor, . - Actor_InitializeFromDescriptor
