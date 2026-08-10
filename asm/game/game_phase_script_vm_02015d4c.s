@@ -3,8 +3,8 @@
 .extern GamePhaseScriptVm_Pop
 .extern GamePhaseScriptVm_SetResult
 .extern func_020adc40
-.global func_02015d4c
-func_02015d4c:
+.global GamePhaseActorScriptVm_CalculateScaledDistance
+GamePhaseActorScriptVm_CalculateScaledDistance:
     stmdb sp!, {r3, r4, r5, r6, r7, r8, r9, lr}
     mov r4, r0
     bl GamePhaseScriptVm_Pop
@@ -36,4 +36,4 @@ func_02015d4c:
     bl GamePhaseScriptVm_SetResult
     mov r0, #0
     ldmia sp!, {r3, r4, r5, r6, r7, r8, r9, pc}
-    .size func_02015d4c, . - func_02015d4c
+    .size GamePhaseActorScriptVm_CalculateScaledDistance, . - GamePhaseActorScriptVm_CalculateScaledDistance

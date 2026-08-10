@@ -6,8 +6,8 @@
 .extern GamePhaseScriptVm_Pop
 .extern func_02028388
 .extern gHeapContext
-.global func_02015dc8
-func_02015dc8:
+.global GamePhaseActorScriptVm_CreateApplyScene
+GamePhaseActorScriptVm_CreateApplyScene:
     stmdb sp!, {r3, r4, r5, r6, r7, lr}
     mov r4, r0
     bl GamePhaseScriptVm_Pop
@@ -39,4 +39,4 @@ L_02015e30:
     ldmia sp!, {r3, r4, r5, r6, r7, pc}
 L_02015e38: .word data_020d5b2c
 L_02015e3c: .word gHeapContext
-    .size func_02015dc8, . - func_02015dc8
+    .size GamePhaseActorScriptVm_CreateApplyScene, . - GamePhaseActorScriptVm_CreateApplyScene

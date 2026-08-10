@@ -37,7 +37,7 @@ s32 GamePhaseActorScriptVm_SetInteractionDirectionAndMagnitude(GamePhaseActorScr
  * Pop two integer XYZ triples, calculate their Euclidean distance through
  * func_020adc40, arithmetically divide the result by 64, push it, and return zero.
  */
-s32 func_02015d4c(GamePhaseActorScriptVm *self)
+s32 GamePhaseActorScriptVm_CalculateScaledDistance(GamePhaseActorScriptVm *self)
 {
     s32 z1 = (s32)GamePhaseScriptVm_Pop(&self->base);
     s32 x1 = (s32)GamePhaseScriptVm_Pop(&self->base);
@@ -59,7 +59,7 @@ s32 func_02015d4c(GamePhaseActorScriptVm *self)
  * pass a zero matching-only fifth argument ignored by the recovered constructor,
  * and return zero.
  */
-s32 func_02015dc8(GamePhaseActorScriptVm *self)
+s32 GamePhaseActorScriptVm_CreateApplyScene(GamePhaseActorScriptVm *self)
 {
     u32 field2c = GamePhaseScriptVm_Pop(&self->base);
     u32 field28 = GamePhaseScriptVm_Pop(&self->base);
