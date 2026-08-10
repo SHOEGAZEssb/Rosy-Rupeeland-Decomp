@@ -8,8 +8,8 @@
 .extern func_02072c98
 .extern gGameWork
 
-    .global func_02015818
-func_02015818: ; 0x02015818
+    .global GamePhaseActorScriptVm_WaitForDebugHudInput
+GamePhaseActorScriptVm_WaitForDebugHudInput: ; 0x02015818
     stmdb sp!, {r3, r4, lr}
     sub sp, sp, #0xc
     ldr r1, L_02015934
@@ -88,5 +88,5 @@ L_0201592c:
     ldmia sp!, {r3, r4, pc}
 L_02015934: .word gGameWork
 L_02015938: .word 0x40e
-    .size func_02015818, . - func_02015818
+    .size GamePhaseActorScriptVm_WaitForDebugHudInput, . - GamePhaseActorScriptVm_WaitForDebugHudInput
 

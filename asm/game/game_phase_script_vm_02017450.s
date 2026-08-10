@@ -6,8 +6,8 @@
 .extern DebugHudState_GetGlobal
 .extern GamePhaseScriptVm_Pop
 .extern Actor_GetCollection
-.global func_02017450
-func_02017450:
+.global GamePhaseActorScriptVm_SetDebugHudTextRowFromCollectionMode
+GamePhaseActorScriptVm_SetDebugHudTextRowFromCollectionMode:
     stmdb sp!, {r3, r4, r5, r6, r7, lr}
     mov r7, r0
     bl GamePhaseScriptVm_Pop
@@ -47,4 +47,4 @@ L_020174c4:
     bl DebugHudState_SetTextRow
     mov r0, #0
     ldmia sp!, {r3, r4, r5, r6, r7, pc}
-    .size func_02017450, . - func_02017450
+    .size GamePhaseActorScriptVm_SetDebugHudTextRowFromCollectionMode, . - GamePhaseActorScriptVm_SetDebugHudTextRowFromCollectionMode

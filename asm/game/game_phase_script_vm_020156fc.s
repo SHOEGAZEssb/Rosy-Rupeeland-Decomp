@@ -11,8 +11,8 @@
 .extern func_ov059_0220fd20
 .extern gHeapContext
 
-    .global func_020156fc
-func_020156fc: ; 0x020156fc
+    .global GamePhaseActorScriptVm_CreateOverlay61DebugObject
+GamePhaseActorScriptVm_CreateOverlay61DebugObject: ; 0x020156fc
     stmdb sp!, {r3, r4, r5, r6, r7, lr}
     mov r5, r0
     bl GamePhaseScriptVm_Pop
@@ -54,5 +54,5 @@ L_02015788:
 L_02015790: .word 0x3d
 L_02015794: .word data_020d5b2c
 L_02015798: .word gHeapContext
-    .size func_020156fc, . - func_020156fc
+    .size GamePhaseActorScriptVm_CreateOverlay61DebugObject, . - GamePhaseActorScriptVm_CreateOverlay61DebugObject
 

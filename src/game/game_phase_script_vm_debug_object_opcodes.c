@@ -29,7 +29,7 @@ extern void func_ov059_0220fd20(void *allocation, void *first,
  * in slot 2, allocate 0x3c bytes, and initialize it through the common
  * overlay-59..74 entry point with the third operand. Returns zero.
  */
-s32 func_020156fc(GamePhaseActorScriptVm *self)
+s32 GamePhaseActorScriptVm_CreateOverlay61DebugObject(GamePhaseActorScriptVm *self)
 {
     u32 third = GamePhaseScriptVm_Pop(&self->base);
     u32 secondValue = GamePhaseScriptVm_Pop(&self->base);
@@ -51,7 +51,7 @@ s32 func_020156fc(GamePhaseActorScriptVm *self)
  * data_021f3ecc/func_020791e0 and the lookup through func_0201d9e4, then feed
  * both to the recovered debug-state chain with enabled=1. Returns zero.
  */
-s32 func_0201579c(GamePhaseActorScriptVm *self)
+s32 GamePhaseActorScriptVm_OpenDebugHudFromLookupTables(GamePhaseActorScriptVm *self)
 {
     void *first;
     void *second;

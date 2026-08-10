@@ -24,7 +24,7 @@ extern void func_02072c98(void *object);
  * return zero. Otherwise rewind two script bytes and return one to poll again
  * on a later update.
  */
-s32 func_02015818(GamePhaseActorScriptVm *self)
+s32 GamePhaseActorScriptVm_WaitForDebugHudInput(GamePhaseActorScriptVm *self)
 {
     void *uiState;
     u32 state;

@@ -3,8 +3,8 @@
 .extern DebugHudState_SetRectangle
 .extern DebugHudState_GetGlobal
 .extern GamePhaseScriptVm_Pop
-.global func_020174dc
-func_020174dc:
+.global GamePhaseActorScriptVm_SetDebugHudRectangle
+GamePhaseActorScriptVm_SetDebugHudRectangle:
     stmdb sp!, {r3, r4, r5, r6, r7, lr}
     sub sp, sp, #0x10
     mov r7, r0
@@ -30,4 +30,4 @@ func_020174dc:
     mov r0, #0
     add sp, sp, #0x10
     ldmia sp!, {r3, r4, r5, r6, r7, pc}
-    .size func_020174dc, . - func_020174dc
+    .size GamePhaseActorScriptVm_SetDebugHudRectangle, . - GamePhaseActorScriptVm_SetDebugHudRectangle

@@ -136,9 +136,9 @@ s32 GamePhaseActorScriptVm_CalculateDistanceToCoordinates(GamePhaseActorScriptVm
 s32 func_02015610(GamePhaseActorScriptVm *self);
 s32 func_02015690(GamePhaseActorScriptVm *self);
 s32 func_020156c8(GamePhaseActorScriptVm *self);
-s32 func_020156fc(GamePhaseActorScriptVm *self);
-s32 func_0201579c(GamePhaseActorScriptVm *self);
-s32 func_02015818(GamePhaseActorScriptVm *self);
+s32 GamePhaseActorScriptVm_CreateOverlay61DebugObject(GamePhaseActorScriptVm *self);
+s32 GamePhaseActorScriptVm_OpenDebugHudFromLookupTables(GamePhaseActorScriptVm *self);
+s32 GamePhaseActorScriptVm_WaitForDebugHudInput(GamePhaseActorScriptVm *self);
 s32 GamePhaseActorScriptVm_GetDataTableRecordByte(GamePhaseActorScriptVm *self);
 s32 GamePhaseActorScriptVm_HasDataTableValue(GamePhaseActorScriptVm *self);
 s32 GamePhaseActorScriptVm_UpdateDataTableValue(GamePhaseActorScriptVm *self);
@@ -193,10 +193,10 @@ s32 GamePhaseActorScriptVm_StartMainBrightnessToZero(GamePhaseActorScriptVm *sel
 s32 GamePhaseActorScriptVm_StartMainBrightnessToMinus8(GamePhaseActorScriptVm *self);
 s32 GamePhaseActorScriptVm_StartSubBrightnessToZero(GamePhaseActorScriptVm *self);
 s32 GamePhaseActorScriptVm_StartSubBrightnessToMinus8(GamePhaseActorScriptVm *self);
-s32 func_02017414(GamePhaseActorScriptVm *self);
-s32 func_0201741c(GamePhaseActorScriptVm *self);
-s32 func_02017450(GamePhaseActorScriptVm *self);
-s32 func_020174dc(GamePhaseActorScriptVm *self);
+s32 GamePhaseActorScriptVm_DebugHudNoOp(GamePhaseActorScriptVm *self);
+s32 GamePhaseActorScriptVm_SetDebugHudNumberRow(GamePhaseActorScriptVm *self);
+s32 GamePhaseActorScriptVm_SetDebugHudTextRowFromCollectionMode(GamePhaseActorScriptVm *self);
+s32 GamePhaseActorScriptVm_SetDebugHudRectangle(GamePhaseActorScriptVm *self);
 s32 GamePhaseActorScriptVm_SpawnDualVariantEffect(GamePhaseActorScriptVm *self);
 s32 GamePhaseActorScriptVm_SetRuntimeCollection2Enabled(GamePhaseActorScriptVm *self);
 s32 GamePhaseActorScriptVm_SetAreaSceneEnabled(GamePhaseActorScriptVm *self);

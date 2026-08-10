@@ -9,8 +9,8 @@
 .extern func_0201da34
 .extern func_020791e0
 
-    .global func_0201579c
-func_0201579c: ; 0x0201579c
+    .global GamePhaseActorScriptVm_OpenDebugHudFromLookupTables
+GamePhaseActorScriptVm_OpenDebugHudFromLookupTables: ; 0x0201579c
     stmdb sp!, {r4, r5, r6, lr}
     mov r5, r0
     bl GamePhaseScriptVm_Pop
@@ -42,5 +42,5 @@ func_0201579c: ; 0x0201579c
     mov r0, #0x0
     ldmia sp!, {r4, r5, r6, pc}
 L_02015814: .word data_021f3ecc
-    .size func_0201579c, . - func_0201579c
+    .size GamePhaseActorScriptVm_OpenDebugHudFromLookupTables, . - GamePhaseActorScriptVm_OpenDebugHudFromLookupTables
 

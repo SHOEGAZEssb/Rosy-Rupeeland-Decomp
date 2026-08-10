@@ -13,14 +13,14 @@ extern void OS_Halt(void);
 #endif
 
 /* Accept the VM, perform no state changes or SDK effects, and return zero. */
-s32 func_02017414(GamePhaseActorScriptVm *self)
+s32 GamePhaseActorScriptVm_DebugHudNoOp(GamePhaseActorScriptVm *self)
 {
     (void)self;
     return 0;
 }
 
 /* Pop a numeric value and row index, write that debug-HUD row, and return zero. */
-s32 func_0201741c(GamePhaseActorScriptVm *self)
+s32 GamePhaseActorScriptVm_SetDebugHudNumberRow(GamePhaseActorScriptVm *self)
 {
     s32 value = (s32)GamePhaseScriptVm_Pop(&self->base);
     s32 row = (s32)GamePhaseScriptVm_Pop(&self->base);
@@ -33,7 +33,7 @@ s32 func_0201741c(GamePhaseActorScriptVm *self)
  * actor's collection mode at offset 0x2e84 (modes 1 and 2 respectively), halt
  * for any other mode, write the selected UTF-16 text to the row, and return zero.
  */
-s32 func_02017450(GamePhaseActorScriptVm *self)
+s32 GamePhaseActorScriptVm_SetDebugHudTextRowFromCollectionMode(GamePhaseActorScriptVm *self)
 {
     s32 index = (s32)GamePhaseScriptVm_Pop(&self->base);
     s32 row = (s32)GamePhaseScriptVm_Pop(&self->base);
@@ -58,7 +58,7 @@ s32 func_02017450(GamePhaseActorScriptVm *self)
  * Pop height, width, top, and left; form a left/top/right/bottom rectangle by
  * adding the dimensions; apply it to the debug HUD; and return zero.
  */
-s32 func_020174dc(GamePhaseActorScriptVm *self)
+s32 GamePhaseActorScriptVm_SetDebugHudRectangle(GamePhaseActorScriptVm *self)
 {
     DebugHudRect rect;
     s32 height = (s32)GamePhaseScriptVm_Pop(&self->base);

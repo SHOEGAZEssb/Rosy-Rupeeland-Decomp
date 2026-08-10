@@ -3,8 +3,8 @@
 .extern DebugHudState_SetNumberRow
 .extern DebugHudState_GetGlobal
 .extern GamePhaseScriptVm_Pop
-.global func_0201741c
-func_0201741c:
+.global GamePhaseActorScriptVm_SetDebugHudNumberRow
+GamePhaseActorScriptVm_SetDebugHudNumberRow:
     stmdb sp!, {r3, r4, r5, lr}
     mov r4, r0
     bl GamePhaseScriptVm_Pop
@@ -18,4 +18,4 @@ func_0201741c:
     bl DebugHudState_SetNumberRow
     mov r0, #0
     ldmia sp!, {r3, r4, r5, pc}
-    .size func_0201741c, . - func_0201741c
+    .size GamePhaseActorScriptVm_SetDebugHudNumberRow, . - GamePhaseActorScriptVm_SetDebugHudNumberRow
