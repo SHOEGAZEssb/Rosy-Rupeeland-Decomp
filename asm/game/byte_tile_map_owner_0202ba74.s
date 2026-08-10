@@ -5,9 +5,9 @@
 .extern func_0202b4e4
 .extern Heap_Free
 
-    .global func_0202ba74
-    .type func_0202ba74, @function
-func_0202ba74: ; 0x0202ba74
+    .global ByteTileMapOwner_DestroyAndFree
+    .type ByteTileMapOwner_DestroyAndFree, @function
+ByteTileMapOwner_DestroyAndFree: ; 0x0202ba74
     stmdb sp!, {r4, lr}
     mov r4, r0
     add r0, r4, #0x10
@@ -20,4 +20,4 @@ func_0202ba74: ; 0x0202ba74
     bl Heap_Free
     mov r0, r4
     ldmia sp!, {r4, pc}
-    .size func_0202ba74, . - func_0202ba74
+    .size ByteTileMapOwner_DestroyAndFree, . - ByteTileMapOwner_DestroyAndFree

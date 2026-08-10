@@ -4,9 +4,9 @@
 .extern CompressedByteBuffer_Destroy
 .extern func_0202b4e4
 
-    .global func_0202ba4c
-    .type func_0202ba4c, @function
-func_0202ba4c: ; 0x0202ba4c
+    .global ByteTileMapOwner_DestroyComplete
+    .type ByteTileMapOwner_DestroyComplete, @function
+ByteTileMapOwner_DestroyComplete: ; 0x0202ba4c
     stmdb sp!, {r4, lr}
     mov r4, r0
     add r0, r4, #0x10
@@ -17,4 +17,4 @@ func_0202ba4c: ; 0x0202ba4c
     bl func_0202b4e4
     mov r0, r4
     ldmia sp!, {r4, pc}
-    .size func_0202ba4c, . - func_0202ba4c
+    .size ByteTileMapOwner_DestroyComplete, . - ByteTileMapOwner_DestroyComplete

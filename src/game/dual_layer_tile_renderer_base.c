@@ -24,8 +24,8 @@ typedef void (*LayerDestructor)(void *);
 extern "C" {
 #endif
 extern void *data_020de930;
-extern void func_0202b9dc(void *);
-extern void func_0202baa4(void *);
+extern void ByteTileMapOwner_Init(void *);
+extern void ByteTileMapOwner_Destroy(void *);
 extern void VecFx32Object_Init(void *);
 extern void VecFx32Object_Destroy(void *);
 extern void func_0202b730(void *);
@@ -41,7 +41,7 @@ void func_02029328(DualLayerTileRendererBase *);
  */
 DualLayerTileRendererBase *func_020291b8(DualLayerTileRendererBase *self)
 {
-    func_0202b9dc(self);
+    ByteTileMapOwner_Init(self);
     *(void ***)self = (void **)data_020de930;
     VecFx32Object_Init(self->vector_50);
     func_0202b730(self->renderer_60);
@@ -56,7 +56,7 @@ DualLayerTileRendererBase *func_020291b8(DualLayerTileRendererBase *self)
 /* Construct the same default renderer state for the alternate recovered entry point. */
 DualLayerTileRendererBase *func_02029218(DualLayerTileRendererBase *self)
 {
-    func_0202b9dc(self);
+    ByteTileMapOwner_Init(self);
     *(void ***)self = (void **)data_020de930;
     VecFx32Object_Init(self->vector_50);
     func_0202b730(self->renderer_60);
@@ -75,7 +75,7 @@ DualLayerTileRendererBase *func_02029278(DualLayerTileRendererBase *self)
     func_02029328(self);
     func_0202b834(self->renderer_60);
     VecFx32Object_Destroy(self->vector_50);
-    func_0202baa4(self);
+    ByteTileMapOwner_Destroy(self);
     return self;
 }
 
@@ -86,7 +86,7 @@ DualLayerTileRendererBase *func_020292b0(DualLayerTileRendererBase *self)
     func_02029328(self);
     func_0202b834(self->renderer_60);
     VecFx32Object_Destroy(self->vector_50);
-    func_0202baa4(self);
+    ByteTileMapOwner_Destroy(self);
     Heap_Free(self);
     return self;
 }
@@ -98,7 +98,7 @@ DualLayerTileRendererBase *func_020292f0(DualLayerTileRendererBase *self)
     func_02029328(self);
     func_0202b834(self->renderer_60);
     VecFx32Object_Destroy(self->vector_50);
-    func_0202baa4(self);
+    ByteTileMapOwner_Destroy(self);
     return self;
 }
 

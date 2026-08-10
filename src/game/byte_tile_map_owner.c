@@ -19,7 +19,7 @@ typedef struct ByteTileMapOwner {
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *data_020deb5c;
+extern void *gByteTileMapOwnerVtable;
 extern void func_0202b4d4(void *self);
 extern void *func_0202b4e4(void *self);
 extern void CompressedByteBuffer_Init(void *self);
@@ -38,9 +38,9 @@ extern void NclFile_Destroy(void *self);
  * clear flag bit zero, set flag bit one, preserve only dimensions_20's low
  * halfword, clear field_1c, and return self.
  */
-ByteTileMapOwner *func_0202b9dc(ByteTileMapOwner *self)
+ByteTileMapOwner *ByteTileMapOwner_Init(ByteTileMapOwner *self)
 {
-    self->vtable_00 = (void **)data_020deb5c;
+    self->vtable_00 = (void **)gByteTileMapOwnerVtable;
     func_0202b4d4(self->sizedBuffer_04);
     CompressedByteBuffer_Init(self->tileBytes_0c);
     NclFile_Init(self->metadata_10);
@@ -52,7 +52,7 @@ ByteTileMapOwner *func_0202b9dc(ByteTileMapOwner *self)
 }
 
 /* Destroy metadata and both owned buffers, then return self without freeing it. */
-ByteTileMapOwner *func_0202ba4c(ByteTileMapOwner *self)
+ByteTileMapOwner *ByteTileMapOwner_DestroyComplete(ByteTileMapOwner *self)
 {
     NclFile_Destroy(self->metadata_10);
     CompressedByteBuffer_Destroy(self->tileBytes_0c);
@@ -61,7 +61,7 @@ ByteTileMapOwner *func_0202ba4c(ByteTileMapOwner *self)
 }
 
 /* Destroy all embedded owners, free self, and return its former address. */
-ByteTileMapOwner *func_0202ba74(ByteTileMapOwner *self)
+ByteTileMapOwner *ByteTileMapOwner_DestroyAndFree(ByteTileMapOwner *self)
 {
     NclFile_Destroy(self->metadata_10);
     CompressedByteBuffer_Destroy(self->tileBytes_0c);
@@ -71,7 +71,7 @@ ByteTileMapOwner *func_0202ba74(ByteTileMapOwner *self)
 }
 
 /* Destroy all embedded owners and return self; this is a second non-freeing virtual destructor. */
-ByteTileMapOwner *func_0202baa4(ByteTileMapOwner *self)
+ByteTileMapOwner *ByteTileMapOwner_Destroy(ByteTileMapOwner *self)
 {
     NclFile_Destroy(self->metadata_10);
     CompressedByteBuffer_Destroy(self->tileBytes_0c);
@@ -137,14 +137,14 @@ void ByteTileMapOwner_SetCell(ByteTileMapOwner *self, s32 x, s32 y, s8 value)
 }
 
 /* Return one unconditionally; no object state is read or changed. */
-s32 func_0202bbd0(const ByteTileMapOwner *self)
+s32 ByteTileMapOwner_ReturnOne(const ByteTileMapOwner *self)
 {
     (void)self;
     return 1;
 }
 
 /* Return zero unconditionally; the retail form materializes it through a stack local. */
-s32 func_0202bbd8(const ByteTileMapOwner *self)
+s32 ByteTileMapOwner_ReturnZero(const ByteTileMapOwner *self)
 {
     s32 result = 0;
     (void)self;
@@ -155,7 +155,7 @@ s32 func_0202bbd8(const ByteTileMapOwner *self)
 void func_0202bbf4(ByteTileMapOwner *self) { (void)self; }
 
 /* Replace flag bit one with enabled's low bit and preserve every other flag. */
-void func_0202bbf8(ByteTileMapOwner *self, s32 enabled)
+void ByteTileMapOwner_SetFlag2Enabled(ByteTileMapOwner *self, s32 enabled)
 {
     self->flags_24 = (self->flags_24 & ~2u) | ((enabled & 1) << 1);
 }

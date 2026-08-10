@@ -3,14 +3,14 @@
 .extern data_020de930
 .extern VecFx32Object_Init
 .extern func_0202b730
-.extern func_0202b9dc
+.extern ByteTileMapOwner_Init
 
     .global func_020291b8
     .type func_020291b8, @function
 func_020291b8: ; 0x020291b8
     stmdb sp!, {r4, lr}
     mov r4, r0
-    bl func_0202b9dc
+    bl ByteTileMapOwner_Init
     ldr r1, .L_02029214
     add r0, r4, #0x50
     str r1, [r4, #0x0]

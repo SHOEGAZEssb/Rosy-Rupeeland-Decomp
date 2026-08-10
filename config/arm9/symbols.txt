@@ -1498,10 +1498,10 @@ func_0202b838 kind:function(arm,size=0x1c) addr:0x0202b838
 func_0202b854 kind:function(arm,size=0xdc) addr:0x0202b854
 func_0202b930 kind:function(arm,size=0x8c) addr:0x0202b930
 func_0202b9bc kind:function(arm,size=0x20) addr:0x0202b9bc
-func_0202b9dc kind:function(arm,size=0x70) addr:0x0202b9dc
-func_0202ba4c kind:function(arm,size=0x28) addr:0x0202ba4c
-func_0202ba74 kind:function(arm,size=0x30) addr:0x0202ba74
-func_0202baa4 kind:function(arm,size=0x28) addr:0x0202baa4
+ByteTileMapOwner_Init kind:function(arm,size=0x70) addr:0x0202b9dc
+ByteTileMapOwner_DestroyComplete kind:function(arm,size=0x28) addr:0x0202ba4c
+ByteTileMapOwner_DestroyAndFree kind:function(arm,size=0x30) addr:0x0202ba74
+ByteTileMapOwner_Destroy kind:function(arm,size=0x28) addr:0x0202baa4
 func_0202bacc kind:function(arm,size=0x4) addr:0x0202bacc
 func_0202bad0 kind:function(arm,size=0x4) addr:0x0202bad0
 func_0202bad4 kind:function(arm,size=0x4) addr:0x0202bad4
@@ -1512,10 +1512,10 @@ func_0202bae4 kind:function(arm,size=0x4) addr:0x0202bae4
 func_0202bae8 kind:function(arm,size=0x4) addr:0x0202bae8
 ByteTileMapOwner_GetCell kind:function(arm,size=0x74) addr:0x0202baec
 ByteTileMapOwner_SetCell kind:function(arm,size=0x70) addr:0x0202bb60
-func_0202bbd0 kind:function(arm,size=0x8) addr:0x0202bbd0
-func_0202bbd8 kind:function(arm,size=0x1c) addr:0x0202bbd8
+ByteTileMapOwner_ReturnOne kind:function(arm,size=0x8) addr:0x0202bbd0
+ByteTileMapOwner_ReturnZero kind:function(arm,size=0x1c) addr:0x0202bbd8
 func_0202bbf4 kind:function(arm,size=0x4) addr:0x0202bbf4
-func_0202bbf8 kind:function(arm,size=0x18) addr:0x0202bbf8
+ByteTileMapOwner_SetFlag2Enabled kind:function(arm,size=0x18) addr:0x0202bbf8
 func_0202bc10 kind:function(arm,size=0x4) addr:0x0202bc10
 func_0202bc14 kind:function(arm,size=0x4) addr:0x0202bc14
 func_0202bc18 kind:function(arm,size=0x20) addr:0x0202bc18
@@ -7209,7 +7209,7 @@ data_020deb34 kind:data(any) addr:0x020deb34
 data_020deb3c kind:data(any) addr:0x020deb3c
 data_020deb44 kind:data(any) addr:0x020deb44
 data_020deb4c kind:data(any) addr:0x020deb4c
-data_020deb5c kind:data(any) addr:0x020deb5c
+gByteTileMapOwnerVtable kind:data(any) addr:0x020deb5c
 data_020debb0 kind:data(any) addr:0x020debb0
 data_020debbc kind:data(any) addr:0x020debbc
 data_020debd4 kind:data(any) addr:0x020debd4

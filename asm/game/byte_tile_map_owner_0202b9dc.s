@@ -3,11 +3,11 @@
 .extern func_0202b4d4
 .extern CompressedByteBuffer_Init
 .extern NclFile_Init
-.extern data_020deb5c
+.extern gByteTileMapOwnerVtable
 
-    .global func_0202b9dc
-    .type func_0202b9dc, @function
-func_0202b9dc: ; 0x0202b9dc
+    .global ByteTileMapOwner_Init
+    .type ByteTileMapOwner_Init, @function
+ByteTileMapOwner_Init: ; 0x0202b9dc
     stmdb sp!, {r4, lr}
     mov r4, r0
     ldr r1, .L_0202ba48
@@ -35,5 +35,5 @@ func_0202b9dc: ; 0x0202b9dc
     mov r0, r4
     str r1, [r4, #0x1c]
     ldmia sp!, {r4, pc}
-.L_0202ba48: .word data_020deb5c
-    .size func_0202b9dc, . - func_0202b9dc
+.L_0202ba48: .word gByteTileMapOwnerVtable
+    .size ByteTileMapOwner_Init, . - ByteTileMapOwner_Init

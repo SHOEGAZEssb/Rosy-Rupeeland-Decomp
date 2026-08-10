@@ -4,7 +4,7 @@
 .extern VecFx32Object_Destroy
 .extern func_02029328
 .extern func_0202b834
-.extern func_0202baa4
+.extern ByteTileMapOwner_Destroy
 
     .global func_02029278
     .type func_02029278, @function
@@ -19,7 +19,7 @@ func_02029278: ; 0x02029278
     add r0, r4, #0x50
     bl VecFx32Object_Destroy
     mov r0, r4
-    bl func_0202baa4
+    bl ByteTileMapOwner_Destroy
     mov r0, r4
     ldmia sp!, {r4, pc}
 .L_020292ac: .word data_020de930

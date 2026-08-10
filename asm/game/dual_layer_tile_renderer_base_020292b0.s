@@ -5,7 +5,7 @@
 .extern VecFx32Object_Destroy
 .extern func_02029328
 .extern func_0202b834
-.extern func_0202baa4
+.extern ByteTileMapOwner_Destroy
 
     .global func_020292b0
     .type func_020292b0, @function
@@ -20,7 +20,7 @@ func_020292b0: ; 0x020292b0
     add r0, r4, #0x50
     bl VecFx32Object_Destroy
     mov r0, r4
-    bl func_0202baa4
+    bl ByteTileMapOwner_Destroy
     mov r0, r4
     bl Heap_Free
     mov r0, r4
