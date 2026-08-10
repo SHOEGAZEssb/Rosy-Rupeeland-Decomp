@@ -36,10 +36,10 @@ src/overlays/ov090/overlay090_title_noop_hooks.c:
 src/overlays/ov090/overlay090_title_countdown.c:
     categories: Game code
     .text start:0x0221a6b4 end:0x0221a6d8
-asm/overlays/ov090/overlay090_0221a6d8.s:
+src/overlays/ov090/overlay090_title_event_callback_a6d8.c:
     categories: Game code
     .text start:0x0221a6d8 end:0x0221a738
-asm/overlays/ov090/overlay090_0221a738.s:
+src/overlays/ov090/overlay090_title_event_callback_a738.c:
     categories: Game code
     .text start:0x0221a738 end:0x0221a784
 asm/overlays/ov090/overlay090_0221a784.s:
