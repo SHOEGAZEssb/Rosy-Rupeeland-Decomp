@@ -13,7 +13,7 @@
 .extern func_020127f8
 .extern func_02019890
 .extern ActorCollection_QueueGroupForRemoval
-.extern func_0202ecd0
+.extern ActorCollection_SpawnActorFromDescriptor
 .extern ActorCollection_SpawnDescriptorsBySelector
 .extern ActorCollection_FindActorByDescriptorValue
 .extern Actor_GetCollisionCenter
@@ -183,7 +183,7 @@ L_0201948c:
     ldr r0, [r9, #0x84]
     bl Actor_GetCollection
     add r1, sp, #0xec
-    bl func_0202ecd0
+    bl ActorCollection_SpawnActorFromDescriptor
     mov r0, r9
     mov r1, r7
     bl func_020127f8

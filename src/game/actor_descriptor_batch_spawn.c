@@ -17,7 +17,7 @@ extern void func_0203ae14(
     void *, u16, u16, s32, s32, s32, u8, u8, u16, u16, u16, u8, u8,
     s32, s32, s32, s32, s32, u16, u8, u8, u8, u8);
 extern void *func_02007f0c(void *runtime, s32 category);
-extern void *func_0202ecd0(void *collection, const void *descriptor);
+extern void *ActorCollection_SpawnActorFromDescriptor(void *collection, const void *descriptor);
 extern void *func_02028508(s32 value);
 extern s32 GameWork_TestFlag(void *work, u32 flag);
 extern void GameWork_ClearFlag(void *work, u32 flag);
@@ -37,7 +37,7 @@ static void *addDescriptor(s32 category, ActorSpawnDescriptor *descriptor,
                            s16 field52)
 {
     *(s16 *)(descriptor->bytes + 0x52) = field52;
-    return func_0202ecd0(actorCollection(category), descriptor);
+    return ActorCollection_SpawnActorFromDescriptor(actorCollection(category), descriptor);
 }
 
 /*
@@ -138,7 +138,7 @@ void func_0203af24(void *unused0, void *unused1,
     while (*(u16 *)inputDescriptors->bytes != 0) {
         *(u32 *)(inputDescriptors->bytes + 0x28) |= 8;
         if (*(s16 *)(inputDescriptors->bytes + 0x50) >= 0)
-            func_0202ecd0(actorCollection(category), inputDescriptors);
+            ActorCollection_SpawnActorFromDescriptor(actorCollection(category), inputDescriptors);
         ++inputDescriptors;
     }
 }

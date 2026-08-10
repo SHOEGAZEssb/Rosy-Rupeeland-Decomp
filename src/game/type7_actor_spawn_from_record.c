@@ -20,7 +20,7 @@ extern void *func_02007f0c(void *runtime, s32 category);
 extern void *func_02025d14(void *state);
 extern u32 func_02028508(s32 phase);
 extern void ActorCollection_QueueActorForRemoval(void *collection, void *actor);
-extern void *func_0202ecd0(void *collection, const void *descriptor);
+extern void *ActorCollection_SpawnActorFromDescriptor(void *collection, const void *descriptor);
 extern void Actor_RefreshTerrainHeight(void *actor);
 extern s32 Actor_GetCachedTerrainHeight(void *actor);
 extern void func_0203ae14(
@@ -115,7 +115,7 @@ s32 func_0204bf9c(s32 recordIndex, s32 phase, s32 x, s32 y, s32 field2b8)
     *(s16 *)(descriptor.bytes + 0x1e) = *(s8 *)(record + 0x52);
     *(s16 *)(descriptor.bytes + 0x20) = *(s8 *)(record + 0x53);
 
-    actor = (u8 *)func_0202ecd0(collection, &descriptor);
+    actor = (u8 *)ActorCollection_SpawnActorFromDescriptor(collection, &descriptor);
     *(u8 **)(actor + 0x29c) = record;
     *(s16 *)(actor + 0x60) = *(s8 *)(record + 0x4c);
     *(s16 *)(actor + 0x62) = *(s8 *)(record + 0x4d);

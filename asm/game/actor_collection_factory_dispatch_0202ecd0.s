@@ -85,9 +85,9 @@
 .extern func_ov097_02219d20
 .extern gHeapContext
 
-    .global func_0202ecd0
-    .type func_0202ecd0, @function
-func_0202ecd0: ; 0x0202ecd0
+    .global ActorCollection_SpawnActorFromDescriptor
+    .type ActorCollection_SpawnActorFromDescriptor, @function
+ActorCollection_SpawnActorFromDescriptor: ; 0x0202ecd0
     stmdb sp!, {r3, r4, r5, r6, r7, lr}
     sub sp, sp, #0x30
     mov r5, r1
@@ -2176,5 +2176,5 @@ func_0202ecd0: ; 0x0202ecd0
 .L_02030a74: .word 0x58
 .L_02030a78: .word 0x4f
 .L_02030a7c: .word data_020ed470
-    .size func_0202ecd0, . - func_0202ecd0
+    .size ActorCollection_SpawnActorFromDescriptor, . - ActorCollection_SpawnActorFromDescriptor
 

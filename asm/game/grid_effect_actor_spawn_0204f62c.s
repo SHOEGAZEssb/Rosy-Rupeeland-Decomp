@@ -2,7 +2,7 @@
 .extern data_021052fc
 .extern func_02007f0c
 .extern func_02028388
-.extern func_0202ecd0
+.extern ActorCollection_SpawnActorFromDescriptor
 .extern func_0203ae14
 .extern func_0204f9c0
 .extern func_02062728
@@ -95,7 +95,7 @@ func_0204f62c: ; 0x0204f62c
     ldr r0, [r0, #0x0]
     bl func_02007f0c
     add r1, sp, #0x4c
-    bl func_0202ecd0
+    bl ActorCollection_SpawnActorFromDescriptor
     str r0, [r4, #0x0]
     add r2, r0, #0x200
     mov r1, r6

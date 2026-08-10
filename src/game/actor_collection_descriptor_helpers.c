@@ -32,7 +32,8 @@ typedef struct DescriptorActorCollection {
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *func_0202ecd0(DescriptorActorCollection *, CollectionDescriptor *);
+extern void *ActorCollection_SpawnActorFromDescriptor(
+    DescriptorActorCollection *, CollectionDescriptor *);
 extern void func_02033f18(DescriptorActor *, s32);
 #ifdef __cplusplus
 }
@@ -50,7 +51,7 @@ void ActorCollection_SpawnDescriptorsBySelector(
     while (descriptor->kind_00) {
         descriptor->flags_28 |= 8;
         if (descriptor->selector_50 == selector)
-            func_0202ecd0(self, descriptor);
+            ActorCollection_SpawnActorFromDescriptor(self, descriptor);
         descriptor++;
     }
 }

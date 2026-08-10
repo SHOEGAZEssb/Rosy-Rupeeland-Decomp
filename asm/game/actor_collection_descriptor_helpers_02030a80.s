@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/actor_collection_descriptor_helpers.c.
 .text
-.extern func_0202ecd0
+.extern ActorCollection_SpawnActorFromDescriptor
 
     .global ActorCollection_SpawnDescriptorsBySelector
     .type ActorCollection_SpawnDescriptorsBySelector, @function
@@ -19,7 +19,7 @@ ActorCollection_SpawnDescriptorsBySelector: ; 0x02030a80
     bne .L_02030ab8
     mov r0, r6
     mov r1, r5
-    bl func_0202ecd0
+    bl ActorCollection_SpawnActorFromDescriptor
 .L_02030ab8:
     add r5, r5, #0x64
 .L_02030abc:

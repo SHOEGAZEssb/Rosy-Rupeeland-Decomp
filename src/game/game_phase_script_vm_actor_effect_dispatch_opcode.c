@@ -18,7 +18,7 @@ extern u8 ActorBounds_GetHeight(const void *value);
 extern void func_020066a4(void *destination, const void *source,
                           const void *transform);
 extern void *ActorCollection_QueueGroupForRemoval(void *collection, s32 index);
-extern void *func_0202ecd0(void *collection, const void *descriptor);
+extern void *ActorCollection_SpawnActorFromDescriptor(void *collection, const void *descriptor);
 extern void ActorCollection_SpawnDescriptorsBySelector(
     void *collection, void *descriptors, s32 selector);
 extern void *ActorCollection_FindActorByDescriptorValue(void *collection, s32 index);
@@ -118,7 +118,7 @@ static void spawnActorSnapshot(GamePhaseActorScriptVm *self, s32 actorIndex,
     *(s16 *)(descriptor + 0x52) = (s16)value;
     *(s32 *)(descriptor + 0x54) = -1;
     *(s32 *)(descriptor + 0x58) = 0;
-    func_0202ecd0(Actor_GetCollection(self->actor_84), descriptor);
+    ActorCollection_SpawnActorFromDescriptor(Actor_GetCollection(self->actor_84), descriptor);
     func_020127f8(&self->base, (u32)value);
     func_02005058(&transform);
 }

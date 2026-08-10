@@ -253,7 +253,7 @@ static ActorFactorySpec selectFactorySpec(const ActorSpawnDescriptor *descriptor
  * aliases, and flag mutations whose scheduling is not represented by this
  * compact portable matrix. Returns the constructed actor.
  */
-void *func_0202ecd0(FactoryCollection *self,
+void *ActorCollection_SpawnActorFromDescriptor(FactoryCollection *self,
                     const ActorSpawnDescriptor *descriptor)
 {
     ActorFactorySpec spec = selectFactorySpec(descriptor);

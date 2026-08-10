@@ -13,7 +13,7 @@ extern "C" {
 #endif
 extern void *func_02007f0c(void *context, s32 index);
 extern void *func_02028388(s32 index);
-extern void *func_0202ecd0(void *manager, const void *descriptor);
+extern void *ActorCollection_SpawnActorFromDescriptor(void *manager, const void *descriptor);
 extern void func_0203ae14(void *destination, ...);
 extern void **func_0204f9c0(void);
 extern void func_02062728(void *subobject, void *source);
@@ -74,7 +74,7 @@ void *func_0204f62c(const void *position, void *source, s16 timer)
         FIELD(u32, descriptor, 0x28) |= 1;
 
     void *manager = func_02007f0c(data_021052fc, 1);
-    void *actor = func_0202ecd0(manager, descriptor);
+    void *actor = ActorCollection_SpawnActorFromDescriptor(manager, descriptor);
     *slot = actor;
     FIELD(s16, actor, 0x218) = timer;
     func_02062728((u8 *)actor + 0x1f4, source);

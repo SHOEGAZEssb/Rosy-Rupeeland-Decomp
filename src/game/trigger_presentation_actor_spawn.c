@@ -12,7 +12,7 @@ extern void *data_021052fc;
 extern "C" {
 #endif
 extern void *func_02007f0c(void *context, s32 index);
-extern void *func_0202ecd0(void *manager, const void *descriptor);
+extern void *ActorCollection_SpawnActorFromDescriptor(void *manager, const void *descriptor);
 extern void func_0203ae14(void *destination, ...);
 extern void func_0204ea8c(void *actor, u16 selection);
 #ifdef __cplusplus
@@ -41,7 +41,7 @@ void func_0204eb18(u32 type, u32 selection, const void *position,
                   FIELD(s32, position, 12) >> 12,
                   width, height, 0, 0, 0, 0, 0, 0xff, 0, 0, 0, 0);
     void *manager = func_02007f0c(data_021052fc, 1);
-    void *actor = func_0202ecd0(manager, descriptor);
+    void *actor = ActorCollection_SpawnActorFromDescriptor(manager, descriptor);
     func_0204ea8c(actor, selection);
     FIELD(u32, actor, 0x10) |= 0x100;
 }

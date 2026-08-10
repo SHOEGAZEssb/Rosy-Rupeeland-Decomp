@@ -7,7 +7,7 @@
 .extern data_0210570c
 .extern func_02007f0c
 .extern func_02028508
-.extern func_0202ecd0
+.extern ActorCollection_SpawnActorFromDescriptor
 .extern func_0203ae14
 .extern func_0204bf9c
 .extern gGameWork
@@ -70,7 +70,7 @@ func_0203af24: ; 0x0203af24
     strh r2, [sp, #0x9e]
     bl func_02007f0c
     add r1, sp, #0x4c
-    bl func_0202ecd0
+    bl ActorCollection_SpawnActorFromDescriptor
     ldr r2, [r0, #0x230]
     mov r1, #0x1
     orr r2, r2, #0x4
@@ -239,7 +239,7 @@ func_0203af24: ; 0x0203af24
     strh r2, [sp, #0x9e]
     bl func_02007f0c
     add r1, sp, #0x4c
-    bl func_0202ecd0
+    bl ActorCollection_SpawnActorFromDescriptor
     ldr r0, .L_0203b37c
     str r10, [r0, #0x4]
 .L_0203b298:
@@ -277,7 +277,7 @@ func_0203af24: ; 0x0203af24
     strh r2, [sp, #0x9e]
     bl func_02007f0c
     add r1, sp, #0x4c
-    bl func_0202ecd0
+    bl ActorCollection_SpawnActorFromDescriptor
     ldr r4, .L_0203b370
     b .L_0203b35c
 .L_0203b32c:
@@ -291,7 +291,7 @@ func_0203af24: ; 0x0203af24
     mov r1, r9
     bl func_02007f0c
     mov r1, r10
-    bl func_0202ecd0
+    bl ActorCollection_SpawnActorFromDescriptor
 .L_0203b358:
     add r10, r10, #0x64
 .L_0203b35c:

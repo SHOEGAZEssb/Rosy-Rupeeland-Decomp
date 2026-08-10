@@ -14,7 +14,7 @@ extern "C" {
 #endif
 extern void *func_02007f0c(void *context, s32 index);
 extern void *func_02028388(s32 index);
-extern void *func_0202ecd0(void *manager, const void *descriptor);
+extern void *ActorCollection_SpawnActorFromDescriptor(void *manager, const void *descriptor);
 extern void func_0203ae14(void *destination, ...);
 #ifdef __cplusplus
 }
@@ -91,7 +91,8 @@ void *func_02050078(s32 key, const void *position, u32 argument)
     if ((FIELD(u32, latest, 0x40) >> 18 & 3) == 3)
         FIELD(u32, descriptor, 0x28) |= 1;
 
-    void *actor = func_0202ecd0(func_02007f0c(data_021052fc, 1), descriptor);
+    void *actor = ActorCollection_SpawnActorFromDescriptor(
+        func_02007f0c(data_021052fc, 1), descriptor);
     ActorRecordCallback initialize =
         *(ActorRecordCallback *)((u8 *)FIELD(void *, actor, 0) + 0xc0);
     initialize(actor, record, argument);
@@ -105,4 +106,3 @@ void *func_02050078(s32 key, const void *position, u32 argument)
     finish(actor);
     return actor;
 }
-
