@@ -2,9 +2,9 @@
 .text
 .extern Actor_UpdateAnimationState
 .extern ActorDerivedRuntime_UpdateFrame
-    .global func_0203c748
-    .type func_0203c748, @function
-func_0203c748: ; 0x0203c748
+    .global ActorModeNibble_UpdateFrame
+    .type ActorModeNibble_UpdateFrame, @function
+ActorModeNibble_UpdateFrame: ; 0x0203c748
     stmdb sp!, {r4, lr}
     mov r4, r0
     ldr r1, [r4, #0x10]
@@ -89,4 +89,4 @@ func_0203c748: ; 0x0203c748
     blx r1
     ldmia sp!, {r4, pc}
 
-    .size func_0203c748, . - func_0203c748
+    .size ActorModeNibble_UpdateFrame, . - ActorModeNibble_UpdateFrame

@@ -77,7 +77,7 @@ static void destroyObject(void *object)
  * confirmed. Returns no value; virtual, scene, GameWork, heap, sound, and owner
  * helpers have observable engine/SDK/hardware effects.
  */
-void func_02035538(void *self)
+void ActorDerivedType1_UpdateFrame(void *self)
 {
     u8 *actor = (u8 *)self;
     u32 flags230 = *(u32 *)(actor + 0x230);

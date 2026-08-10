@@ -38,9 +38,9 @@
 .extern gSoundContext
 .extern genrand_int32
 
-    .global func_02035538
-    .type func_02035538, @function
-func_02035538: ; 0x02035538
+    .global ActorDerivedType1_UpdateFrame
+    .type ActorDerivedType1_UpdateFrame, @function
+ActorDerivedType1_UpdateFrame: ; 0x02035538
     stmdb sp!, {r3, r4, r5, lr}
     sub sp, sp, #0x8
     mov r5, r0
@@ -495,6 +495,6 @@ func_02035538: ; 0x02035538
 .L_02035bbc: .word gHeapContext
 .L_02035bc0: .word 0x19a
 .L_02035bc4: .word 0x3f1
-    .size func_02035538, . - func_02035538
+    .size ActorDerivedType1_UpdateFrame, . - ActorDerivedType1_UpdateFrame
 
     .global Actor_IsAtCachedTerrainHeight

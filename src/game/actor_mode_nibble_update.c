@@ -22,7 +22,7 @@ extern void Actor_UpdateAnimationState(void *actor);
  * Actor_UpdateAnimationState, and virtual +0x20. Returns no value; virtual and base helpers
  * have observable actor/presentation effects.
  */
-void func_0203c748(void *self)
+void ActorModeNibble_UpdateFrame(void *self)
 {
     u8 *actor = (u8 *)self;
     u16 value;

@@ -14,5 +14,5 @@ func_02035518: ; 0x02035518
     bx lr
     .size func_02035518, . - func_02035518
 
-    .global func_02035538
+    .global ActorDerivedType1_UpdateFrame
 

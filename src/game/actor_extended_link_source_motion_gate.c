@@ -17,7 +17,7 @@ extern void Actor_IntegrateMotion(void *actor);
  * Actor_IntegrateMotion. Returns no value; actor motion or base state may change, with
  * no direct SDK or hardware access.
  */
-void func_02043eb4(void *self)
+void ActorExtendedLinkSource_UpdateMotion(void *self)
 {
     u8 *actor = (u8 *)self;
     if ((*(u32 *)(actor + 0x29c) & 1) != 0) {

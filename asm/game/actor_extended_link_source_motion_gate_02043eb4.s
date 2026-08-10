@@ -2,9 +2,9 @@
 .text
 .extern func_0200b2c0
 .extern Actor_IntegrateMotion
-.global func_02043eb4
-.type func_02043eb4, @function
-func_02043eb4: ; 0x02043eb4
+.global ActorExtendedLinkSource_UpdateMotion
+.type ActorExtendedLinkSource_UpdateMotion, @function
+ActorExtendedLinkSource_UpdateMotion: ; 0x02043eb4
     stmdb sp!, {r4, lr}
     mov r4, r0
     ldr r1, [r4, #0x29c]
@@ -29,4 +29,4 @@ func_02043eb4: ; 0x02043eb4
 .L_02043f08:
     bl Actor_IntegrateMotion
     ldmia sp!, {r4, pc}
-.size func_02043eb4, . - func_02043eb4
+.size ActorExtendedLinkSource_UpdateMotion, . - ActorExtendedLinkSource_UpdateMotion
