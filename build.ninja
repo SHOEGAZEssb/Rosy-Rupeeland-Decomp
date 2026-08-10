@@ -3655,7 +3655,7 @@ build build/reports/heap.json: objdiff build/decomp/delinks/src/system/heap.o | 
 
 build build/reports/heap.txt: match_report build/reports/heap.json | tools/report_objdiff.py
   report_json = build/reports/heap.json
-  report_args = --section .text --section .data --function InitHeap --function func_020026c0 --function func_020026ec --function func_02002700 --function func_02002728 --function func_02002744 --function func_02002788 --function func_020027c8 --function func_02002808 --function func_02002828
+  report_args = --section .text --section .data --function InitHeap --function Heap_CreateRoot --function Heap_DestroyRoot --function Heap_AllocCore --function Heap_FreeCore --function HeapContext_CreateChild --function HeapContext_Alloc --function HeapContext_Destroy --function Heap_AccumulateAllocationSize --function Heap_CopyAllocationTag
 
 build build/reports/heap_state.json: objdiff build/decomp/delinks/asm/system/heap_state.o | build/decomp/asm/system/heap_state.o
   target_object = build/decomp/delinks/asm/system/heap_state.o

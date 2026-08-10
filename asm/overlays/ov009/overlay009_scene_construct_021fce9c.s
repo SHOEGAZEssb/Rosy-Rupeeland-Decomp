@@ -19,7 +19,7 @@
     .extern data_ov009_021fee8c
     .extern data_ov009_021feec0
     .extern data_ov009_021feed4
-    .extern func_02002700
+    .extern Heap_AllocCore
     .extern func_02071ea4
     .extern func_02072048
     .extern GraphicsSpriteGroupOwner_CreateGroup
@@ -85,7 +85,7 @@ L_021fcf08:
     mov r1, r5
     mov r2, r11
     mov r6, r0
-    bl func_02002700
+    bl Heap_AllocCore
     add r1, r10, r9, lsl #0x2
     str r0, [r1, #0x8c]
     mov r0, r6, lsr #0x5

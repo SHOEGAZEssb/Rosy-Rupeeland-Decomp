@@ -29,7 +29,7 @@ extern void func_02092364(void *member);
 extern void func_020923a4(void *member);
 extern void GraphicsSpriteRenderer_ClearTextBuffer(void *manager);
 extern void *GraphicsSpriteGroupOwner_CreateGroup(void *manager);
-extern void *func_02002700(s32 size, const char *tag, s32 alignment,
+extern void *Heap_AllocCore(s32 size, const char *tag, s32 alignment,
                           void *heapContext);
 extern void func_020b4554(void *address, s32 size);
 extern void func_ov009_021fd294(void *state);
@@ -106,7 +106,7 @@ void *func_ov009_021fce9c(void *state)
             continue;
         }
         length = CheckedFS_GetFileLength(&file);
-        buffer = func_02002700(length, data_ov009_021feed4, 4, gHeapContext);
+        buffer = Heap_AllocCore(length, data_ov009_021feed4, 4, gHeapContext);
         FIELD(void *, state, 0x8c + index * 4) = buffer;
         FIELD(s32, state, 0xa8 + index * 4) = length >> 5;
         FIELD(s32, state, 0xc0 + index * 4) = 0;

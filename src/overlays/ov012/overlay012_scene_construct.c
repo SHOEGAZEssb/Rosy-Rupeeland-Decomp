@@ -26,7 +26,7 @@ extern void Graphics3DLightSet_Init(void *);
 extern void func_02092364(void *);
 extern void func_020923a4(void *);
 extern void GraphicsSpriteRenderer_ClearTextBuffer(void *);
-extern void *func_02002700(s32, const char *, s32, void *);
+extern void *Heap_AllocCore(s32, const char *, s32, void *);
 extern s32 func_020bf1f8(s32, s32);
 extern void func_020b4554(void *, s32);
 extern void G3X_Init(void);
@@ -87,7 +87,7 @@ void *func_ov012_021fd170(void *state)
     if (CheckedFS_OpenFile(&file, data_ov012_021fe6b8)) {
         length = CheckedFS_GetFileLength(&file);
         FIELD(void *, state, 0x7c) =
-            func_02002700(length, data_ov012_021fe6d4, 4, gHeapContext);
+            Heap_AllocCore(length, data_ov012_021fe6d4, 4, gHeapContext);
         FIELD(s32, state, 0x184) = func_020bf1f8(length, 0x18);
         FIELD(s32, state, 0x188) = 0;
         if (CheckedFS_ReadFile(&file, FIELD(void *, state, 0x7c), length) ==

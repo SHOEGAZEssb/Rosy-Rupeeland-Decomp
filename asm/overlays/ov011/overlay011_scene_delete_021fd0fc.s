@@ -3,7 +3,7 @@
     .extern data_ov011_021fe5ac
     .extern func_ov011_021fce00
     .extern func_02092418
-    .extern func_02002728
+    .extern Heap_FreeCore
     .extern DebugText_BeginFrame
     .extern func_020923a0
     .extern GraphicsResourceSet_Destroy
@@ -28,7 +28,7 @@ func_ov011_021fd0fc:
 L_021fd128:
     add r0, r5, r4, lsl #0x2
     ldr r0, [r0, #0x84]
-    bl func_02002728
+    bl Heap_FreeCore
     add r4, r4, #0x1
     cmp r4, #0x5
     blt L_021fd128

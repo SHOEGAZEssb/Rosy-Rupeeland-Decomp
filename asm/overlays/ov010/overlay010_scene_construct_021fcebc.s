@@ -18,7 +18,7 @@
     .extern data_ov010_021fec7c
     .extern data_ov010_021fec84
     .extern data_ov010_021fec8c
-    .extern func_02002700
+    .extern Heap_AllocCore
     .extern GraphicsResourceSetVariant_Init
     .extern GraphicsSpriteRenderer_HideAllSprites
     .extern func_02075238
@@ -91,7 +91,7 @@ L_021fcf30:
     mov r1, r5
     mov r2, r11
     mov r6, r0
-    bl func_02002700
+    bl Heap_AllocCore
     add r1, r10, r9, lsl #0x2
     str r0, [r1, #0x90]
     mov r0, r6, lsr #0x5

@@ -12,12 +12,12 @@ typedef struct Overlay003PixelBufferDestroyState {
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_02002728(void *allocation);
+extern void Heap_FreeCore(void *allocation);
 #ifdef __cplusplus
 }
 #endif
 
-/* Free pixels_000 through func_02002728 and return state; heap effects are
+/* Free pixels_000 through Heap_FreeCore and return state; heap effects are
  * delegated to that callee, and no other state or hardware is touched. */
 #ifdef __cplusplus
 extern "C"
@@ -25,6 +25,6 @@ extern "C"
 Overlay003PixelBufferDestroyState *func_ov003_021fb7d4(
     Overlay003PixelBufferDestroyState *state)
 {
-    func_02002728(state->pixels_000);
+    Heap_FreeCore(state->pixels_000);
     return state;
 }

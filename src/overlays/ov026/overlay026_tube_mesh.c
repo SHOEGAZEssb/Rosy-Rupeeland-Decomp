@@ -13,8 +13,8 @@ extern void *gHeapContext;
 extern "C" {
 #endif
 extern void Heap_Free(void *);
-extern void *func_02002700(u32, const void *, u32, void *);
-extern void func_02002728(void *);
+extern void *Heap_AllocCore(u32, const void *, u32, void *);
+extern void Heap_FreeCore(void *);
 extern s32 Graphics3DResourceBinding_GetTextureFormat(void *);
 extern s32 Graphics3DResourceBinding_GetTextureWidthClass(void *);
 extern s32 Graphics3DResourceBinding_GetTextureHeightClass(void *);
@@ -47,7 +47,7 @@ extern "C" void *func_ov026_021fd9c4(void *object, void *resource,
 {
     FIELD(const void *, object, 0) = data_ov026_022048e8;
     FIELD(void *, object, 4) = resource;
-    void *buffer = func_02002700(0x300, data_ov026_02204a48, 4, gHeapContext);
+    void *buffer = Heap_AllocCore(0x300, data_ov026_02204a48, 4, gHeapContext);
     FIELD(void *, object, 0x28) = buffer;
     func_020b24cc((u8 *)object + 0x14, buffer, 0x300);
     func_020afebc((u8 *)object + 0x14, 1, 0, 2, 1, 0x1f, 0x8000);
@@ -94,7 +94,7 @@ extern "C" void *func_ov026_021fd9c4(void *object, void *resource,
 extern "C" void *func_ov026_021fdcd8(void *object)
 {
     FIELD(const void *, object, 0) = data_ov026_022048e8;
-    func_02002728(FIELD(void *, object, 0x28));
+    Heap_FreeCore(FIELD(void *, object, 0x28));
     return object;
 }
 

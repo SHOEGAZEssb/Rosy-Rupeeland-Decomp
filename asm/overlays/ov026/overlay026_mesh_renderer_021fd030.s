@@ -8,7 +8,7 @@
 .extern data_ov026_02204928
 .extern data_ov026_02204a40
 .extern data_ov026_02204a48
-.extern func_02002700
+.extern Heap_AllocCore
 .extern Graphics3DResourceBinding_Init
 .extern Graphics3DResourceBinding_GetTextureFormat
 .extern Graphics3DResourceBinding_GetTextureWidthClass
@@ -64,7 +64,7 @@ L_021fd09c:
     ldr r3, L_021fd250
     mov r0, #0x200
     mov r2, #0x4
-    bl func_02002700
+    bl Heap_AllocCore
     str r0, [r10, #0xb4]
     mov r1, r0
     add r0, r10, #0xa0

@@ -13,8 +13,8 @@ extern void *gHeapContext;
 extern "C" {
 #endif
 extern void Heap_Free(void *);
-extern void *func_02002700(u32, const void *, u32, void *);
-extern void func_02002728(void *);
+extern void *Heap_AllocCore(u32, const void *, u32, void *);
+extern void Heap_FreeCore(void *);
 extern void func_020afddc(void *);
 extern void func_020afe00(void *, s32);
 extern void func_020afe64(void *, ...);
@@ -41,7 +41,7 @@ extern "C" void *func_ov026_021fe2c8(void *object, void *payload)
 {
     FIELD(const void *, object, 0) = data_ov026_022048f8;
     FIELD(void *, object, 0x1c) = payload;
-    void *buffer = func_02002700(0x200, data_ov026_02204a48, 4, gHeapContext);
+    void *buffer = Heap_AllocCore(0x200, data_ov026_02204a48, 4, gHeapContext);
     FIELD(void *, object, 0x18) = buffer;
     func_020b24cc((u8 *)object + 4, buffer, 0x200);
     func_020afebc((u8 *)object + 4, 1, 0, 2, 1, 0x1f, 0x8000);
@@ -76,7 +76,7 @@ extern "C" void *func_ov026_021fe2c8(void *object, void *payload)
 extern "C" void *func_ov026_021fe51c(void *object)
 {
     FIELD(const void *, object, 0) = data_ov026_022048f8;
-    func_02002728(FIELD(void *, object, 0x18));
+    Heap_FreeCore(FIELD(void *, object, 0x18));
     return object;
 }
 

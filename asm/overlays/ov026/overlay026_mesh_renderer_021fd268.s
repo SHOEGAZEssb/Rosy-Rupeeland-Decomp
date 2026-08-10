@@ -2,7 +2,7 @@
 
 /* Exact fallback; see src/overlays/ov026/overlay026_mesh_renderer.c. */
 .extern data_ov026_02204928
-.extern func_02002728
+.extern Heap_FreeCore
 .extern Graphics3DResourceBinding_Destroy
 .extern func_ov026_021fce50
 .extern Heap_Free
@@ -15,7 +15,7 @@ func_ov026_021fd268:
     mov r5, r0
     str r1, [r5, #0x0]
     ldr r0, [r5, #0xb4]
-    bl func_02002728
+    bl Heap_FreeCore
     ldr r4, [r5, #0x9c]
     cmp r4, #0x0
     beq L_021fd29c

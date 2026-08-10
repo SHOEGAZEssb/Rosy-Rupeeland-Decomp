@@ -13,7 +13,7 @@
 .extern data_ov056_0220f6e4
 .extern data_ov056_0220f6ec
 .extern data_ov056_0220f6f4
-.extern func_020026ec
+.extern Heap_DestroyRoot
 .extern func_02003e20
 .extern VecFx32Object_Init
 .extern VecFx32Object_InitComponents
@@ -62,7 +62,7 @@ func_ov056_0220e400:
     bl VecFx32Object_Init
     mov r0, #0x0
     str r0, [r6, #0x8a8]
-    bl func_020026ec
+    bl Heap_DestroyRoot
     add r0, sp, #0x3c
     bl GameFile_Init
     mov r1, r5

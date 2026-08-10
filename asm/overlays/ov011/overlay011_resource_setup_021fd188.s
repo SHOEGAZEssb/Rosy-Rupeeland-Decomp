@@ -5,7 +5,7 @@
     .extern func_0207043c
     .extern func_020706c4
     .extern func_02070bc4
-    .extern func_02002700
+    .extern Heap_AllocCore
     .extern func_020b1bfc
     .extern GraphicsResourceSet_Apply
     .extern func_02070874
@@ -73,7 +73,7 @@ func_ov011_021fd188: ; 0x021fd188
     ldr r3, L_021fd36c
     mov r0, #0x800
     mov r2, #0x4
-    bl func_02002700
+    bl Heap_AllocCore
     mov r5, r0
     mov r2, #0x0
     b L_021fd280

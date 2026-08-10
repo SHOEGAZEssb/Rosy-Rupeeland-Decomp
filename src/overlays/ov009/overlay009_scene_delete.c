@@ -12,7 +12,7 @@ extern "C" {
 #endif
 extern const void *data_ov009_021fee8c[];
 extern const void *data_ov009_021feec0[];
-extern void func_02002728(void *allocation);
+extern void Heap_FreeCore(void *allocation);
 extern void GraphicsSpriteGroup_Destroy(void *resource);
 extern void func_02092418(void *member);
 extern void DebugText_BeginFrame(void);
@@ -41,7 +41,7 @@ void *func_ov009_021fd208(void *state)
     FIELD(const void *, state, 0x00) = data_ov009_021fee8c;
     FIELD(const void *, state, 0x24) = data_ov009_021feec0;
     for (index = 0; index < 6; index++) {
-        func_02002728(FIELD(void *, state, 0x8c + index * 4));
+        Heap_FreeCore(FIELD(void *, state, 0x8c + index * 4));
     }
     GraphicsSpriteGroup_Destroy(FIELD(void *, state, 0x84));
     func_02092418((u8 *)state + 0x13c);

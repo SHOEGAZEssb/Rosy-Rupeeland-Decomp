@@ -31,7 +31,7 @@ extern void func_020923a4(void *);
 extern void GraphicsSpriteRenderer_ClearTextBuffer(void *);
 extern void func_02075238(void *);
 extern void GraphicsSpriteRenderer_HideAllSprites(void *);
-extern void *func_02002700(s32, const char *, s32, void *);
+extern void *Heap_AllocCore(s32, const char *, s32, void *);
 extern void func_020b4554(void *, s32);
 extern void *Heap_Alloc(s32, const char *, s32, void *);
 extern void *Graphics3DResourceOwner_Init(void *, s32, s32);
@@ -101,7 +101,7 @@ void *func_ov010_021fcebc(void *state)
         CheckedFS_InitFile(&file);
         if (!CheckedFS_OpenFile(&file, data_ov010_021fea50[i])) continue;
         length = CheckedFS_GetFileLength(&file);
-        buffer = func_02002700(length, data_ov010_021fec7c, 4, gHeapContext);
+        buffer = Heap_AllocCore(length, data_ov010_021fec7c, 4, gHeapContext);
         FIELD(void *, state, 0x90 + i * 4) = buffer;
         FIELD(s32, state, 0x134 + i * 4) = length >> 5;
         FIELD(s32, state, 0x13c + i * 4) = 0;

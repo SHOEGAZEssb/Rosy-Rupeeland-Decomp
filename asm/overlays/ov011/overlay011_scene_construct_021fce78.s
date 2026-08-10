@@ -16,7 +16,7 @@
     .extern data_ov011_021fe578
     .extern data_ov011_021fe5ac
     .extern data_ov011_021fe610
-    .extern func_02002700
+    .extern Heap_AllocCore
     .extern GraphicsSpriteRenderer_ClearTextBuffer
     .extern func_02091e28
     .extern func_02092364
@@ -80,7 +80,7 @@ L_021fcef0:
     mov r1, r5
     mov r2, r11
     mov r6, r0
-    bl func_02002700
+    bl Heap_AllocCore
     add r1, r10, r9, lsl #0x2
     str r0, [r1, #0x84]
     mov r0, r6, lsr #0x5

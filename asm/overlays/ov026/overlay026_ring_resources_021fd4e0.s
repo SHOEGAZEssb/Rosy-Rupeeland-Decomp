@@ -2,7 +2,7 @@
 
 /* Exact fallback; see src/overlays/ov026/overlay026_ring_resources.c. */
 .extern data_ov026_022049ec
-.extern func_02002728
+.extern Heap_FreeCore
 .extern func_ov026_021fce50
 
 
@@ -13,7 +13,7 @@ func_ov026_021fd4e0:
     mov r4, r0
     str r1, [r4, #0x0]
     ldr r0, [r4, #0xb0]
-    bl func_02002728
+    bl Heap_FreeCore
     mov r0, r4
     bl func_ov026_021fce50
     mov r0, r4

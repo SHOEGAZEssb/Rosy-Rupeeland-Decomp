@@ -9,8 +9,8 @@
 .extern data_020f4e50
 .extern data_020f5058
 .extern data_ov058_0220fcfc
-.extern func_02002700
-.extern func_02002728
+.extern Heap_AllocCore
+.extern Heap_FreeCore
 .extern func_0207043c
 .extern func_02070874
 .extern func_020b18bc
@@ -46,7 +46,7 @@ func_ov058_0220f308:
     ldr r3, .L_0220f478
     mov r0, #0x1000
     mov r2, #0x4
-    bl func_02002700
+    bl Heap_AllocCore
     mov r4, r0
     mov r0, #0x0
     mov r1, r4
@@ -61,7 +61,7 @@ func_ov058_0220f308:
     mov r2, #0x1000
     bl func_020b1bfc
     mov r0, r4
-    bl func_02002728
+    bl Heap_FreeCore
     mov r8, #0x0
     ldr r7, .L_0220f47c
     mov r9, r8

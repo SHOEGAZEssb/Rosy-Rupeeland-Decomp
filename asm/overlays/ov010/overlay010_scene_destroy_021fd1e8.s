@@ -5,7 +5,7 @@
     .extern data_020f4e14
     .extern data_ov010_021fec34
     .extern data_ov010_021fec68
-    .extern func_02002728
+    .extern Heap_FreeCore
     .extern GraphicsResourceSetVariant_Destroy
     .extern func_02075020
     .extern Graphics3DResourceOwner_Destroy
@@ -42,7 +42,7 @@ L_021fd238:
 L_021fd23c:
     add r0, r4, r5, lsl #0x2
     ldr r0, [r0, #0x90]
-    bl func_02002728
+    bl Heap_FreeCore
     add r5, r5, #0x1
     cmp r5, #0x2
     blt L_021fd23c

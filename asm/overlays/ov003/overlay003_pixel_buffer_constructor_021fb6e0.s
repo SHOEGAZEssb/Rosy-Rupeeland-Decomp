@@ -1,7 +1,7 @@
     .text
     .extern data_ov003_021fbcd0
     .extern gHeapContext
-    .extern func_02002700
+    .extern Heap_AllocCore
     .extern MIi_CpuClearFast
     .extern genrand_int32
     .extern func_020bf1f8
@@ -16,7 +16,7 @@ func_ov003_021fb6e0: ; 0x021fb6e0
     ldr r3, L_021fb7b8
     mov r0, #0x6000
     mov r2, #0x20
-    bl func_02002700
+    bl Heap_AllocCore
     str r0, [r10, #0x0]
     mov r1, r0
     mov r0, #0x0

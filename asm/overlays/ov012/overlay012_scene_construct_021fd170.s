@@ -10,7 +10,7 @@
     .extern G3X_Init
     .extern GX_DispOn
     .extern GX_SetGraphicsMode
-    .extern func_02002700
+    .extern Heap_AllocCore
     .extern GraphicsSpriteRenderer_ClearTextBuffer
     .extern Graphics3DResourceOwner_Init
     .extern Graphics3DLightSet_Init
@@ -85,7 +85,7 @@ func_ov012_021fd170:
     ldr r3, L_021fd438
     mov r5, r0
     mov r2, #4
-    bl func_02002700
+    bl Heap_AllocCore
     str r0, [r4, #0x7c]
     mov r0, r5
     mov r1, #0x18

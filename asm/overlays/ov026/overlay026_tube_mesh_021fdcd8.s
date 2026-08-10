@@ -2,7 +2,7 @@
 
 /* Exact fallback; see src/overlays/ov026/overlay026_tube_mesh.c. */
 .extern data_ov026_022048e8
-.extern func_02002728
+.extern Heap_FreeCore
 
 
     .global func_ov026_021fdcd8
@@ -12,7 +12,7 @@ func_ov026_021fdcd8:
     mov r4, r0
     str r1, [r4, #0x0]
     ldr r0, [r4, #0x28]
-    bl func_02002728
+    bl Heap_FreeCore
     mov r0, r4
     ldmia sp!, {r4, pc}
 L_021fdcf8: .word data_ov026_022048e8

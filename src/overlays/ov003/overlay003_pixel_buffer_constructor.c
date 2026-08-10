@@ -22,7 +22,7 @@ extern "C" {
 extern const char data_ov003_021fbcd0[];
 extern void *gHeapContext;
 extern Overlay003Pair data_ov003_021fbb40[50];
-extern void *func_02002700(u32 size, const char *tag, s32 alignment,
+extern void *Heap_AllocCore(u32 size, const char *tag, s32 alignment,
                            void *context);
 extern void MIi_CpuClearFast(u32 value, void *destination, u32 size);
 extern u32 genrand_int32(void);
@@ -51,7 +51,7 @@ Overlay003PixelBufferState *func_ov003_021fb6e0(
     s32 i;
 
     state->pixels_000 =
-        func_02002700(0x6000, data_ov003_021fbcd0, 0x20, gHeapContext);
+        Heap_AllocCore(0x6000, data_ov003_021fbcd0, 0x20, gHeapContext);
     MIi_CpuClearFast(0, state->pixels_000, 0x6000);
     for (i = 0; i < 16; i++) {
         u16 channel = (u16)(i * 2);

@@ -33,21 +33,22 @@ extern u32 func_020a71ec(void *allocation);
 #endif
 
 #ifndef MATCHING
-u32 data_020f4dac;
+u32 gHeapAllocationSizeAccumulator;
 HeapContext gHeapContext;
 #define ROOT_INIT_CONTEXT (&gHeapContext)
 #else
-extern u32 data_020f4dac;
-#define ROOT_INIT_CONTEXT ((HeapContext *)((u8 *)&data_020f4dac + 4))
+extern u32 gHeapAllocationSizeAccumulator;
+#define ROOT_INIT_CONTEXT                                                   \
+    ((HeapContext *)((u8 *)&gHeapAllocationSizeAccumulator + 4))
 #endif
 
 /* Four-byte allocation tag used for storage backing child heap contexts. */
-char data_020d3d1c[8] = {'H', 'E', 'A', 'P', 0, 0, 0, 0};
+char gHeapStorageTag[8] = {'H', 'E', 'A', 'P', 0, 0, 0, 0};
 
 /*
  * Claim the complete main arena for the root game heap. NitroSDK first moves
  * the arena low boundary past its allocator metadata; the remaining span is
- * then reserved at 16-byte alignment and wrapped by func_020026c0.
+ * then reserved at 16-byte alignment and wrapped by Heap_CreateRoot.
  */
 #ifndef MATCHING
 void InitHeap(void)
@@ -70,7 +71,7 @@ void InitHeap(void)
     ROOT_INIT_CONTEXT->size = (u8 *)arenaHi - (u8 *)arenaLo;
     ROOT_INIT_CONTEXT->storage =
         OS_AllocFromArenaLo(0, ROOT_INIT_CONTEXT->size, 0x10);
-    func_020026c0();
+    Heap_CreateRoot();
 }
 #else
 /* Matching form of the documented arena/bootstrap sequence above. */
@@ -92,7 +93,7 @@ asm void InitHeap(void)
     mov r0, #0
     bl OS_SetArenaLo
     mov r0, #0
-    ldr r1, =data_020f4dac
+    ldr r1, =gHeapAllocationSizeAccumulator
     str r0, [r1, #4]
     str r0, [r1, #0xc]
     bl OS_GetArenaLo
@@ -100,20 +101,20 @@ asm void InitHeap(void)
     mov r0, #0
     bl OS_GetArenaHi
     sub r1, r0, r4
-    ldr r2, =data_020f4dac
+    ldr r2, =gHeapAllocationSizeAccumulator
     mov r0, #0
     str r1, [r2, #8]
     mov r2, #0x10
     bl OS_AllocFromArenaLo
-    ldr r1, =data_020f4dac
+    ldr r1, =gHeapAllocationSizeAccumulator
     str r0, [r1, #4]
-    bl func_020026c0
+    bl Heap_CreateRoot
     ldmia sp!, {r4, pc}
 }
 #endif
 
 /* Create the SDK heap over the reserved root span and select mode zero. */
-void func_020026c0(void)
+void Heap_CreateRoot(void)
 {
     ROOT_INIT_CONTEXT->heap = func_020a7310(
         ROOT_INIT_CONTEXT->storage, ROOT_INIT_CONTEXT->size, 0);
@@ -121,16 +122,16 @@ void func_020026c0(void)
 }
 
 /* Destroy the process-global root heap through the shared context routine. */
-void func_020026ec(void)
+void Heap_DestroyRoot(void)
 {
-    func_020027c8(&gHeapContext);
+    HeapContext_Destroy(&gHeapContext);
 }
 
 /* Public ABI wrapper: reorder size/tag/alignment/context for the allocator. */
-void *func_02002700(u32 size, const char *tag, s32 alignment,
+void *Heap_AllocCore(u32 size, const char *tag, s32 alignment,
                     HeapContext *context)
 {
-    return func_02002788(context, size, tag, alignment);
+    return HeapContext_Alloc(context, size, tag, alignment);
 }
 
 /*
@@ -138,7 +139,7 @@ void *func_02002700(u32 size, const char *tag, s32 alignment,
  * four-byte header address, allowing allocations from child heaps to share
  * this entry point.
  */
-void func_02002728(void *allocation)
+void Heap_FreeCore(void *allocation)
 {
     void *heap = func_020a70a0((u8 *)allocation - 4);
     func_020a7298(heap, (u8 *)allocation - 4);
@@ -146,26 +147,26 @@ void func_02002728(void *allocation)
 
 /* Allocate storage for, and create, a child heap of the requested size. */
 #ifndef MATCHING
-void func_02002744(HeapContext *context, u32 size)
+void HeapContext_CreateChild(HeapContext *context, u32 size)
 {
     context->heap = func_020a7310(
-        context->storage = func_02002788(
-            &gHeapContext, size + 0x50, data_020d3d1c, 4),
+        context->storage = HeapContext_Alloc(
+            &gHeapContext, size + 0x50, gHeapStorageTag, 4),
         size + 0x50, 0);
     context->size = size;
 }
 #else
 /* Matching form of the documented child-heap construction above. */
-asm void func_02002744(HeapContext *context, u32 size)
+asm void HeapContext_CreateChild(HeapContext *context, u32 size)
 {
     stmdb sp!, {r3, r4, r5, lr}
     mov r5, r0
     mov r4, r1
     ldr r0, =gHeapContext
-    ldr r2, =data_020d3d1c
+    ldr r2, =gHeapStorageTag
     add r1, r4, #0x50
     mov r3, #4
-    bl func_02002788
+    bl HeapContext_Alloc
     add r1, r4, #0x50
     mov r2, #0
     str r0, [r5]
@@ -181,44 +182,44 @@ asm void func_02002744(HeapContext *context, u32 size)
  * the prefix, and return the payload. On failure retail destroys the root heap
  * and then continues with the null result, so callers rely on allocation success.
  */
-void *func_02002788(HeapContext *context, u32 size, const char *tag,
+void *HeapContext_Alloc(HeapContext *context, u32 size, const char *tag,
                     s32 alignment)
 {
     void *allocation = func_020a72d4(context->heap, size + 4, alignment);
 
     if (allocation == 0) {
-        func_020027c8(&gHeapContext);
+        HeapContext_Destroy(&gHeapContext);
     }
-    func_02002828((s8 *)allocation, (const s8 *)tag);
+    Heap_CopyAllocationTag((s8 *)allocation, (const s8 *)tag);
     return (u8 *)allocation + 4;
 }
 
 /* Enumerate and destroy a nonempty SDK heap; its backing storage is retained. */
 #ifndef MATCHING
-void func_020027c8(HeapContext *context)
+void HeapContext_Destroy(HeapContext *context)
 {
     if (context->size == 0) {
         return;
     }
 
-    data_020f4dac = 0;
-    func_020a71f4(context->heap, func_02002808);
+    gHeapAllocationSizeAccumulator = 0;
+    func_020a71f4(context->heap, Heap_AccumulateAllocationSize);
     func_020a7270(context->heap);
 }
 #else
 /* Matching form of the documented heap enumeration/destruction above. */
-asm void func_020027c8(HeapContext *context)
+asm void HeapContext_Destroy(HeapContext *context)
 {
     stmdb sp!, {r4, lr}
     mov r4, r0
     ldr r0, [r4, #4]
     cmp r0, #0
     ldmeqia sp!, {r4, pc}
-    ldr r0, =data_020f4dac
+    ldr r0, =gHeapAllocationSizeAccumulator
     mov r2, #0
     str r2, [r0]
     ldr r0, [r4, #8]
-    ldr r1, =func_02002808
+    ldr r1, =Heap_AccumulateAllocationSize
     bl func_020a71f4
     ldr r0, [r4, #8]
     bl func_020a7270
@@ -227,14 +228,14 @@ asm void func_020027c8(HeapContext *context)
 #endif
 
 /* SDK heap visitor: add this allocation's byte size to the global accumulator. */
-void func_02002808(void *allocation, void *unused)
+void Heap_AccumulateAllocationSize(void *allocation, void *unused)
 {
     (void)unused;
-    data_020f4dac += func_020a71ec(allocation);
+    gHeapAllocationSizeAccumulator += func_020a71ec(allocation);
 }
 
 /* Copy exactly four signed bytes of a non-null diagnostic allocation tag. */
-void func_02002828(s8 *destination, const s8 *tag)
+void Heap_CopyAllocationTag(s8 *destination, const s8 *tag)
 {
     int i;
 

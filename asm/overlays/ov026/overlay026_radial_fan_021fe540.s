@@ -2,7 +2,7 @@
 
 /* Exact fallback; see src/overlays/ov026/overlay026_radial_fan.c. */
 .extern data_ov026_022048f8
-.extern func_02002728
+.extern Heap_FreeCore
 .extern Heap_Free
 
 
@@ -13,7 +13,7 @@ func_ov026_021fe540:
     mov r4, r0
     str r1, [r4, #0x0]
     ldr r0, [r4, #0x18]
-    bl func_02002728
+    bl Heap_FreeCore
     mov r0, r4
     bl Heap_Free
     mov r0, r4

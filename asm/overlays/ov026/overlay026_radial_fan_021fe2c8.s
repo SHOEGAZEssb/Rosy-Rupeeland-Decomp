@@ -4,7 +4,7 @@
 .extern data_020c9670
 .extern data_ov026_022048f8
 .extern data_ov026_02204a48
-.extern func_02002700
+.extern Heap_AllocCore
 .extern func_020afddc
 .extern func_020afe00
 .extern func_020afe64
@@ -31,7 +31,7 @@ func_ov026_021fe2c8:
     ldr r3, L_021fe510
     mov r0, #0x200
     mov r2, #0x4
-    bl func_02002700
+    bl Heap_AllocCore
     str r0, [r10, #0x18]
     mov r1, r0
     add r0, r10, #0x4

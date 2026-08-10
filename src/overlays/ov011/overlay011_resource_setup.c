@@ -25,7 +25,7 @@ extern void func_020b44e8(void);
 extern s32 func_0207043c(void *resource);
 extern void func_020706c4(void *resource, s32 background, s32 value);
 extern void func_02070bc4(void *resource, s32 destination);
-extern void *func_02002700(s32 size, const char *tag, s32 alignment,
+extern void *Heap_AllocCore(s32 size, const char *tag, s32 alignment,
                            void *heapContext);
 extern void func_020b1bfc(void *source, s32 destination, s32 size);
 extern u16 *func_02070874(void *resource);
@@ -83,7 +83,7 @@ void func_ov011_021fd188(void *state)
         if (layout == 0x100)
             paletteDestination = 0x2000;
         func_02070bc4(set->resource1, paletteDestination);
-        tilemap = (u16 *)func_02002700(0x800, data_ov011_021fe618, 4,
+        tilemap = (u16 *)Heap_AllocCore(0x800, data_ov011_021fe618, 4,
                                       gHeapContext);
         for (i = 0; i < count; i++)
             tilemap[i] = (u16)i;

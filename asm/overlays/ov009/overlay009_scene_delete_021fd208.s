@@ -4,7 +4,7 @@
     .extern Scene_Destroy
     .extern data_ov009_021fee8c
     .extern data_ov009_021feec0
-    .extern func_02002728
+    .extern Heap_FreeCore
     .extern func_02071eb8
     .extern GraphicsSpriteGroup_Destroy
     .extern func_020923a0
@@ -24,7 +24,7 @@ func_ov009_021fd208: ; 0x021fd208
 L_021fd224:
     add r0, r5, r4, lsl #0x2
     ldr r0, [r0, #0x8c]
-    bl func_02002728
+    bl Heap_FreeCore
     add r4, r4, #0x1
     cmp r4, #0x6
     blt L_021fd224
