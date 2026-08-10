@@ -7,7 +7,7 @@ extern "C" {
 #endif
 extern void *func_020050a4(void *destination, const void *source);
 extern void func_0200b2c0(void *value, s32 x, s32 y, s32 z);
-extern void func_02034b60(void *actor, s32 angle, s32 step);
+extern void Actor_SetDirectionFromVector(void *actor, s32 x, s32 y);
 extern void func_02038aac(void *actor);
 #ifdef __cplusplus
 }
@@ -27,7 +27,7 @@ void func_0203936c(void *self)
     func_0200b2c0(actor + 0x38, 0, 0, 0);
     func_0200b2c0(actor + 0x88, 0, 0, 0);
     func_0200b2c0(actor + 0x98, 0, 0, 0);
-    func_02034b60(actor, 0, 0x1000);
+    Actor_SetDirectionFromVector(actor, 0, 0x1000);
     func_02038aac(actor);
     *(u32 *)(actor + 0xd0) &= ~0x10000;
     *(u16 *)(actor + 0x204) = 0;

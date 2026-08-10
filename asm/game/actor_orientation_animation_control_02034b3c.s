@@ -15,4 +15,4 @@ Actor_SetInteractionBounds: ; 0x02034b3c
     bx lr
     .size Actor_SetInteractionBounds, . - Actor_SetInteractionBounds
 
-    .global func_02034b60
+    .global Actor_SetDirectionFromVector

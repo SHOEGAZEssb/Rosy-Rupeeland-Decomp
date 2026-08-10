@@ -10,7 +10,7 @@
 .extern func_02005580
 .extern func_02005afc
 .extern func_02005c3c
-.extern func_02034b60
+.extern Actor_SetDirectionFromVector
 .extern func_0204b5d8
 .extern func_020593ac
 .extern func_0205974c
@@ -271,21 +271,21 @@ func_ov062_02210b38:
     ldr r0, [r4, #0x58]
     sub r2, r1, #0x1000
     mov r8, #0x10
-    bl func_02034b60
+    bl Actor_SetDirectionFromVector
     b .L_02210f40
 .L_02210ef8:
     ldr r0, [r4, #0x58]
     mov r1, #0x0
     mov r2, #0x1000
     mov r8, #0xc
-    bl func_02034b60
+    bl Actor_SetDirectionFromVector
     b .L_02210f40
 .L_02210f10:
     ldr r0, [r4, #0x58]
     mov r1, #0x1000
     mov r2, #0x0
     mov r8, #0x12
-    bl func_02034b60
+    bl Actor_SetDirectionFromVector
     b .L_02210f40
 .L_02210f28:
     mov r1, #0x1000
@@ -293,7 +293,7 @@ func_ov062_02210b38:
     rsb r1, r1, #0x0
     mov r2, #0x0
     mov r8, #0xe
-    bl func_02034b60
+    bl Actor_SetDirectionFromVector
 .L_02210f40:
     ldr r0, [r4, #0x64]
     and r1, r8, #0xff

@@ -6,7 +6,7 @@
 .extern func_02005058
 .extern func_0201f864
 .extern Actor_RefreshTerrainHeight
-.extern func_02034b60
+.extern Actor_SetDirectionFromVector
 .extern func_ov088_02218280
 .extern func_ov088_02219960
 .extern func_ov088_0221ad9c
@@ -50,7 +50,7 @@ func_ov088_02218130:
     str r0, [r4, #0x23c]
     mov r0, r4
     mov r2, #0x1000
-    bl func_02034b60
+    bl Actor_SetDirectionFromVector
     mov r0, r4
     ldr r1, [r0, #0x0]
     ldr r1, [r1, #0x5c]

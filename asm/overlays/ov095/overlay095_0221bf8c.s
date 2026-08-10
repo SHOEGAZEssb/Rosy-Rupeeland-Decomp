@@ -1,7 +1,7 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov095/overlay095_recovery.c.
 .extern func_020050a4
-.extern func_02034b60
+.extern Actor_SetDirectionFromVector
 .extern func_0204cfa4
 
 .global func_ov095_0221bf8c
@@ -52,7 +52,7 @@ func_ov095_0221bf8c:
     mov r0, r5
     mov r1, r4
     rsb r2, r6, #0x0
-    bl func_02034b60
+    bl Actor_SetDirectionFromVector
     mov r0, #0x1
     ldmia sp!, {r4, r5, r6, pc}
 .L_0221c04c:

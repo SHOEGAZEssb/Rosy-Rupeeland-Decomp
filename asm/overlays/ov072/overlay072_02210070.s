@@ -8,7 +8,7 @@
 .extern func_02002290
 .extern func_020022dc
 .extern func_02007f24
-.extern func_02034b60
+.extern Actor_SetDirectionFromVector
 .extern func_0204b680
 .extern func_02073ef8
 .extern func_ov072_0221004c
@@ -56,7 +56,7 @@ func_ov072_02210070:
     ldrh r3, [ip, #0x24]
     bic r3, r3, #0x4
     strh r3, [ip, #0x24]
-    bl func_02034b60
+    bl Actor_SetDirectionFromVector
     mov r0, r5
     ldr r1, [r0, #0x0]
     ldr r1, [r1, #0x5c]

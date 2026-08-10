@@ -32,7 +32,7 @@ void Actor_SetInteractionBounds(void *self, const s16 source[4])
  * halfword +0x1ea and reset state objects +0x38 and +0x88 with zero arguments.
  * Returns no value; angle/state helpers may use SDK math or value-object state.
  */
-void func_02034b60(void *self, s32 x, s32 y)
+void Actor_SetDirectionFromVector(void *self, s32 x, s32 y)
 {
     u8 *actor = (u8 *)self;
     u32 angle;

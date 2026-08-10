@@ -3,9 +3,9 @@
 .extern func_0200b2c0
 .extern func_020ae024
 
-    .global func_02034b60
-    .type func_02034b60, @function
-func_02034b60: ; 0x02034b60
+    .global Actor_SetDirectionFromVector
+    .type Actor_SetDirectionFromVector, @function
+Actor_SetDirectionFromVector: ; 0x02034b60
     stmdb sp!, {r4, lr}
     mov r4, r0
     cmp r1, #0x0
@@ -39,6 +39,6 @@ func_02034b60: ; 0x02034b60
     add r0, r4, #0x88
     bl func_0200b2c0
     ldmia sp!, {r4, pc}
-    .size func_02034b60, . - func_02034b60
+    .size Actor_SetDirectionFromVector, . - Actor_SetDirectionFromVector
 
     .global Actor_SetAttachmentAnimation

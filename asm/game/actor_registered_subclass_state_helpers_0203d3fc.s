@@ -2,7 +2,7 @@
 .text
 .extern data_021052fc
 .extern func_020349b8
-.extern func_02034b60
+.extern Actor_SetDirectionFromVector
 .extern func_02038ecc
 .extern func_0203d48c
     .global func_0203d3fc
@@ -37,7 +37,7 @@ func_0203d3fc: ; 0x0203d3fc
     mov r0, r5
     sub r1, ip, r1
     sub r2, r3, r2
-    bl func_02034b60
+    bl Actor_SetDirectionFromVector
     mov r0, r5
     ldr r1, [r0, #0x0]
     ldr r1, [r1, #0x5c]

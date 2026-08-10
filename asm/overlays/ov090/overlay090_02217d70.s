@@ -36,7 +36,7 @@
 .extern func_0201e0ec
 .extern func_0201f864
 .extern func_020349b8
-.extern func_02034b60
+.extern Actor_SetDirectionFromVector
 .extern func_02038ecc
 .extern func_020390c8
 .extern func_020478dc
@@ -533,7 +533,7 @@ func_ov090_02217d70:
     mov r1, #0x0
     mov r0, r9
     sub r2, r1, #0x1000
-    bl func_02034b60
+    bl Actor_SetDirectionFromVector
     mov r0, r9
     ldr r1, [r0, #0x0]
     ldr r1, [r1, #0x5c]
@@ -1957,7 +1957,7 @@ func_ov090_02217d70:
     mov r0, r9
     mov r1, #0x0
     mov r2, #0x1000
-    bl func_02034b60
+    bl Actor_SetDirectionFromVector
     mov r0, r9
     ldr r1, [r0, #0x0]
     ldr r1, [r1, #0x5c]
@@ -2322,7 +2322,7 @@ func_ov090_02217d70:
     mov r0, r9
     mov r1, #0x0
     mov r2, #0x1000
-    bl func_02034b60
+    bl Actor_SetDirectionFromVector
     mov r0, r9
     ldr r1, [r0, #0x0]
     ldr r1, [r1, #0x5c]

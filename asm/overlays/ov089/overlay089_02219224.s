@@ -10,7 +10,7 @@
 .extern func_0200500c
 .extern func_02005058
 .extern func_020050a4
-.extern func_02034b60
+.extern Actor_SetDirectionFromVector
 .extern func_02038aac
 .extern func_02047d40
 .extern func_0204b078
@@ -206,7 +206,7 @@ func_ov089_02219224:
     mov r0, r4
     mov r1, #0x0
     mov r2, #0x1000
-    bl func_02034b60
+    bl Actor_SetDirectionFromVector
     mov r0, r4
     bl func_02038aac
 .L_022194f8:
