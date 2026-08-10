@@ -17,7 +17,7 @@
 .extern ActorDerivedType1_ReleaseAuxiliaryAndSpawnResetEffect
 .extern ActorDerivedType1_ApplyWeightedCollisionDisplacement
 .extern ActorDerivedType1_TeardownActiveRecord
-.extern func_02048c2c
+.extern Type7Actor_HandleResourceInteraction
 .extern func_0206c68c
 .extern func_0206c978
 .extern func_0206cb04
@@ -228,7 +228,7 @@ ActorDerivedType1_HandleAuxiliaryInteraction: ; 0x02037d98
     bic r1, r1, #0x1f0000
     str r1, [r5, #0x10]
     ldr r1, [r5, #0x26c]
-    bl func_02048c2c
+    bl Type7Actor_HandleResourceInteraction
 .L_02038080:
     mov r0, #0x1
     ldmia sp!, {r3, r4, r5, r6, r7, pc}

@@ -19,7 +19,7 @@ extern void Type7Actor_SetMotionTargetWithTimer(void *entity, const VecFx32Objec
                           s32 angle);
 extern void Type7Actor_ResetMotionAndCooldown(void *entity);
 extern void Type7Actor_ClearTarget(void *entity);
-extern void func_02048c10(void *entity);
+extern void Type7Actor_DisableTargeting(void *entity);
 extern void func_0204a200(void *entity, s32 value);
 extern void func_0204b078(void *entity, s32 value);
 extern void func_0204b148(void *entity, s32 value);
@@ -124,7 +124,7 @@ s32 func_02018c3c(GamePhaseActorScriptVm *self)
         if (!entity)
             data_020e1964 = -1;
         else
-            func_02048c10(entity);
+            Type7Actor_DisableTargeting(entity);
         break;
     case 12:
         if (entity)

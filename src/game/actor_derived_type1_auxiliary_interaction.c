@@ -29,7 +29,7 @@ extern void ActorDerivedType1_ReleaseAuxiliaryAndSpawnResetEffect(void *actor);
 extern void ActorDerivedType1_ApplyWeightedCollisionDisplacement(
     void *actor, void *target, s32 distance, s32 offset);
 extern s32 func_0206e3a4(void *resource);
-extern void func_02048c2c(void *target, void *resource);
+extern void Type7Actor_HandleResourceInteraction(void *target, void *resource);
 #ifdef __cplusplus
 }
 #endif
@@ -53,7 +53,7 @@ static void *createAuxiliary(u8 *actor)
  * ActorDerivedType1_ReleaseAuxiliaryAndSpawnResetEffect or
  * ActorDerivedType1_ApplyWeightedCollisionDisplacement.
  * Target type 7 can create +0x26c when its +0x234 resource is eligible and hand that
- * auxiliary resource to func_02048c2c. Allocation, freeing, GameWork, scene,
+ * auxiliary resource to Type7Actor_HandleResourceInteraction. Allocation, freeing, GameWork, scene,
  * manager, target virtual, and resource calls have observable engine/SDK
  * effects; the target itself may also be modified by the called handlers.
  */
@@ -114,7 +114,7 @@ s32 ActorDerivedType1_HandleAuxiliaryInteraction(void *self, void *other)
         if (*(void **)(actor + 0x26c) != 0 &&
             (targetResource == 0 || eligible)) {
             *(u32 *)(actor + 0x10) &= ~0x1f0000;
-            func_02048c2c(target, *(void **)(actor + 0x26c));
+            Type7Actor_HandleResourceInteraction(target, *(void **)(actor + 0x26c));
         }
     }
     return 1;

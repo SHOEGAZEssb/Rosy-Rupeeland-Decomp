@@ -16,16 +16,16 @@
 .extern func_0206cc68
 .extern func_0206e3d0
 .extern gGameWork
-.global func_02048c10
-.global func_02048c2c
-.global func_02048d60
-.global func_02048dd0
-.type func_02048c10, @function
-.type func_02048c2c, @function
-.type func_02048d60, @function
-.type func_02048dd0, @function
+.global Type7Actor_DisableTargeting
+.global Type7Actor_HandleResourceInteraction
+.global Type7Actor_UpdateIdleTargeting
+.global Type7Actor_UpdateIdleTargetingWithType4Scan
+.type Type7Actor_DisableTargeting, @function
+.type Type7Actor_HandleResourceInteraction, @function
+.type Type7Actor_UpdateIdleTargeting, @function
+.type Type7Actor_UpdateIdleTargetingWithType4Scan, @function
 
-func_02048c10: ; 0x02048c10
+Type7Actor_DisableTargeting: ; 0x02048c10
     stmdb sp!, {r4, lr}
     mov r4, r0
     bl Type7Actor_ClearTarget
@@ -34,7 +34,7 @@ func_02048c10: ; 0x02048c10
     str r0, [r4, #0x268]
     ldmia sp!, {r4, pc}
 
-func_02048c2c: ; 0x02048c2c
+Type7Actor_HandleResourceInteraction: ; 0x02048c2c
     stmdb sp!, {r3, r4, r5, lr}
     mov r4, r0
     cmp r1, #0x0
@@ -115,7 +115,7 @@ func_02048c2c: ; 0x02048c2c
 .L_02048d58: .word data_021052fc
 .L_02048d5c: .word data_020e18d0
 
-func_02048d60: ; 0x02048d60
+Type7Actor_UpdateIdleTargeting: ; 0x02048d60
     stmdb sp!, {r4, lr}
     mov r4, r0
     ldr r1, [r4, #0x268]
@@ -145,7 +145,7 @@ func_02048d60: ; 0x02048d60
     mov r0, #0x0
     ldmia sp!, {r4, pc}
 
-func_02048dd0: ; 0x02048dd0
+Type7Actor_UpdateIdleTargetingWithType4Scan: ; 0x02048dd0
     stmdb sp!, {r4, lr}
     mov r4, r0
     ldr r1, [r4, #0x268]
@@ -187,8 +187,8 @@ func_02048dd0: ; 0x02048dd0
     mov r0, #0x0
     ldmia sp!, {r4, pc}
 
-.size func_02048c10, func_02048c2c - func_02048c10
-.size func_02048c2c, func_02048d60 - func_02048c2c
-.size func_02048d60, func_02048dd0 - func_02048d60
-.size func_02048dd0, . - func_02048dd0
+.size Type7Actor_DisableTargeting, Type7Actor_HandleResourceInteraction - Type7Actor_DisableTargeting
+.size Type7Actor_HandleResourceInteraction, Type7Actor_UpdateIdleTargeting - Type7Actor_HandleResourceInteraction
+.size Type7Actor_UpdateIdleTargeting, Type7Actor_UpdateIdleTargetingWithType4Scan - Type7Actor_UpdateIdleTargeting
+.size Type7Actor_UpdateIdleTargetingWithType4Scan, . - Type7Actor_UpdateIdleTargetingWithType4Scan
 

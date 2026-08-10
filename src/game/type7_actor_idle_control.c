@@ -42,7 +42,7 @@ static void set_virtual_mode(u8 *actor, s32 mode)
  * actor flag 0x10000. Target, subordinate, and flag state may change; this
  * routine has no return value or direct SDK/hardware effect.
  */
-void func_02048c10(void *self)
+void Type7Actor_DisableTargeting(void *self)
 {
     u8 *actor = (u8 *)self;
     Type7Actor_ClearTarget(actor);
@@ -60,7 +60,7 @@ void func_02048c10(void *self)
  * Actor callback, resource, heap, global flag, and presentation/audio-like
  * state may change. Heap_Free is the allocator effect; no value is returned.
  */
-void func_02048c2c(void *self, void *object)
+void Type7Actor_HandleResourceInteraction(void *self, void *object)
 {
     u8 *actor = (u8 *)self;
     void *resource;
@@ -94,7 +94,7 @@ void func_02048c2c(void *self, void *object)
  * contract. Actor relation, callback, flags, and animation may change; no
  * direct hardware effect occurs.
  */
-s32 func_02048d60(void *self)
+s32 Type7Actor_UpdateIdleTargeting(void *self)
 {
     u8 *actor = (u8 *)self;
     *(u32 *)(actor + 0x268) |= 0x8000;
@@ -108,13 +108,13 @@ s32 func_02048d60(void *self)
 
 /*
  * Input is a type-seven actor. Set flag 0x8000 and run the same three target
- * transitions as func_02048d60. If none succeeds and collision bit
+ * transitions as Type7Actor_UpdateIdleTargeting. If none succeeds and collision bit
  * +0xd0/0x40000 is set, also scan type-four objects through Type7Actor_TryInteractWithNearbyType4Object.
  * When all decline, select animation eleven below the +0x1dc height or two
  * otherwise. Return zero on every path. Actor target, callback, flags, and
  * animation may change; no SDK or hardware effect occurs directly.
  */
-s32 func_02048dd0(void *self)
+s32 Type7Actor_UpdateIdleTargetingWithType4Scan(void *self)
 {
     u8 *actor = (u8 *)self;
     *(u32 *)(actor + 0x268) |= 0x8000;
