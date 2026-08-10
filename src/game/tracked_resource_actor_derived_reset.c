@@ -10,7 +10,7 @@
  * sets bit 0 at 0x1F4 while preserving other bits. Returns nothing and has no
  * direct SDK or hardware effects; the vector-field semantics remain inferred.
  */
-void func_02050e2c(void *actor)
+void TrackedResourceActorType21_ResetMotionState(void *actor)
 {
     FIELD(s32, actor, 0x40) = 0;
     FIELD(s32, actor, 0x3c) = 0;

@@ -1,8 +1,8 @@
 ; Matching retail form; see src/game/tracked_resource_actor_vector_scale.c.
 .extern func_020adc90
 .text
-    .global func_02050b34
-func_02050b34:
+    .global TrackedResourceActor_ScaleVectorComponents
+TrackedResourceActor_ScaleVectorComponents:
     stmdb sp!, {r3, r4, r5, lr}
     mov r5, r0
     ldr r0, [r5, #0x4]
@@ -18,4 +18,4 @@ func_02050b34:
     bl func_020adc90
     str r0, [r5, #0xc]
     ldmia sp!, {r3, r4, r5, pc}
-    .size func_02050b34, . - func_02050b34
+    .size TrackedResourceActor_ScaleVectorComponents, . - TrackedResourceActor_ScaleVectorComponents

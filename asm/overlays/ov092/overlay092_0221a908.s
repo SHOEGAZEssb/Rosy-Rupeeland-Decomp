@@ -5,7 +5,7 @@
 .extern VecFx32Object_InitCopy
 .extern VecFx32Object_Destroy
 .extern func_0204cfa4
-.extern func_02050b70
+.extern TrackedResourceActorType21_Update
 .extern func_020adae4
 .extern func_020ae024
 .extern func_ov092_0221ada4
@@ -123,7 +123,7 @@ func_ov092_0221a908:
     bl VecFx32Object_Destroy
 .L_0221aaa4:
     mov r0, r4
-    bl func_02050b70
+    bl TrackedResourceActorType21_Update
     ldr r0, [r4, #0x24]
     mov r5, #0x100
     cmp r0, #0x30000

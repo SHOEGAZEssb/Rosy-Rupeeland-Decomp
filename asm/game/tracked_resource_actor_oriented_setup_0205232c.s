@@ -4,7 +4,7 @@
 .extern VecFx32Object_Assign
 .extern VecFx32_Subtract
 .extern func_020328d0
-.extern func_02050b34
+.extern TrackedResourceActor_ScaleVectorComponents
 .text
     .global func_0205232c
 func_0205232c:
@@ -28,7 +28,7 @@ func_0205232c:
     cmp r1, #0x4
     movlt r1, #0x4
     add r0, r4, #0x38
-    bl func_02050b34
+    bl TrackedResourceActor_ScaleVectorComponents
     ldrsh r1, [r5, #0xa]
     add r0, r4, #0x38
     mov r1, r1, lsl #0x4

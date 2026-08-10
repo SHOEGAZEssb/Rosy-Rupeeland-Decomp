@@ -3,8 +3,8 @@
 .extern Actor_UpdateAnimationState
 .extern Actor_GetCollection
 .text
-    .global func_02050b70
-func_02050b70:
+    .global TrackedResourceActorType21_Update
+TrackedResourceActorType21_Update:
     stmdb sp!, {r4, lr}
     ldr r1, [r0, #0x0]
     mov r4, r0
@@ -115,4 +115,4 @@ func_02050b70:
     ldr r1, [r1, #0x20]
     blx r1
     ldmia sp!, {r4, pc}
-    .size func_02050b70, . - func_02050b70
+    .size TrackedResourceActorType21_Update, . - TrackedResourceActorType21_Update

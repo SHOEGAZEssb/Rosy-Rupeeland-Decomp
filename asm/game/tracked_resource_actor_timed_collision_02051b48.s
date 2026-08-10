@@ -10,7 +10,7 @@
 .extern Actor_GetCachedTerrainHeight
 .extern TrackedResourceActor_EmitRecordEffects
 .extern TrackedResourceActor_DispatchTargetInteraction
-.extern func_02050b34
+.extern TrackedResourceActor_ScaleVectorComponents
 .extern func_020adae4
 .text
     .global func_02051b48
@@ -62,7 +62,7 @@ func_02051b48:
     cmp r1, #0x4
     movlt r1, #0x4
     add r0, r5, #0x88
-    bl func_02050b34
+    bl TrackedResourceActor_ScaleVectorComponents
     ldr r1, [r5, #0x1fc]
     add r0, r5, #0x88
     ldrsh r1, [r1, #0xa]

@@ -18,7 +18,7 @@ extern s32 func_020adc90(s32 value, s32 scale);
  * The leading word is preserved. Returns nothing and has no direct SDK or
  * hardware effects; the exact fixed-point format remains unconfirmed.
  */
-void func_02050b34(void *vector, s32 scale)
+void TrackedResourceActor_ScaleVectorComponents(void *vector, s32 scale)
 {
     FIELD(s32, vector, 4) = func_020adc90(FIELD(s32, vector, 4), scale);
     FIELD(s32, vector, 8) = func_020adc90(FIELD(s32, vector, 8), scale);

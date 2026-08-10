@@ -19509,7 +19509,7 @@ build build/reports/tracked_resource_actor_derived_setup_02050a8c.json: objdiff 
   base_object = build/decomp/asm/game/tracked_resource_actor_derived_setup_02050a8c.o
 build build/reports/tracked_resource_actor_derived_setup_02050a8c.txt: match_report build/reports/tracked_resource_actor_derived_setup_02050a8c.json | tools/report_objdiff.py
   report_json = build/reports/tracked_resource_actor_derived_setup_02050a8c.json
-  report_args = --section .text --function func_02050a8c --require-exact
+  report_args = --section .text --function TrackedResourceActorType21_SetupFromRecord --require-exact
 
 build tracked_resource_actor_derived_setup: phony build/decomp/src/game/tracked_resource_actor_derived_setup.o build/decomp/asm/game/tracked_resource_actor_derived_setup_02050a8c.o build/reports/tracked_resource_actor_derived_setup_02050a8c.txt
 
@@ -19524,7 +19524,7 @@ build build/reports/tracked_resource_actor_vector_scale_02050b34.json: objdiff b
   base_object = build/decomp/asm/game/tracked_resource_actor_vector_scale_02050b34.o
 build build/reports/tracked_resource_actor_vector_scale_02050b34.txt: match_report build/reports/tracked_resource_actor_vector_scale_02050b34.json | tools/report_objdiff.py
   report_json = build/reports/tracked_resource_actor_vector_scale_02050b34.json
-  report_args = --section .text --function func_02050b34 --require-exact
+  report_args = --section .text --function TrackedResourceActor_ScaleVectorComponents --require-exact
 
 build tracked_resource_actor_vector_scale: phony build/decomp/src/game/tracked_resource_actor_vector_scale.o build/decomp/asm/game/tracked_resource_actor_vector_scale_02050b34.o build/reports/tracked_resource_actor_vector_scale_02050b34.txt
 
@@ -19539,7 +19539,7 @@ build build/reports/tracked_resource_actor_derived_update_02050b70.json: objdiff
   base_object = build/decomp/asm/game/tracked_resource_actor_derived_update_02050b70.o
 build build/reports/tracked_resource_actor_derived_update_02050b70.txt: match_report build/reports/tracked_resource_actor_derived_update_02050b70.json | tools/report_objdiff.py
   report_json = build/reports/tracked_resource_actor_derived_update_02050b70.json
-  report_args = --section .text --function func_02050b70 --require-exact
+  report_args = --section .text --function TrackedResourceActorType21_Update --require-exact
 
 build tracked_resource_actor_derived_update: phony build/decomp/src/game/tracked_resource_actor_derived_update.o build/decomp/asm/game/tracked_resource_actor_derived_update_02050b70.o build/reports/tracked_resource_actor_derived_update_02050b70.txt
 
@@ -19554,7 +19554,7 @@ build build/reports/tracked_resource_actor_derived_collision_02050d0c.json: objd
   base_object = build/decomp/asm/game/tracked_resource_actor_derived_collision_02050d0c.o
 build build/reports/tracked_resource_actor_derived_collision_02050d0c.txt: match_report build/reports/tracked_resource_actor_derived_collision_02050d0c.json | tools/report_objdiff.py
   report_json = build/reports/tracked_resource_actor_derived_collision_02050d0c.json
-  report_args = --section .text --function func_02050d0c --require-exact
+  report_args = --section .text --function TrackedResourceActorType21_HandleCollision --require-exact
 
 build tracked_resource_actor_derived_collision: phony build/decomp/src/game/tracked_resource_actor_derived_collision.o build/decomp/asm/game/tracked_resource_actor_derived_collision_02050d0c.o build/reports/tracked_resource_actor_derived_collision_02050d0c.txt
 
@@ -19569,7 +19569,7 @@ build build/reports/tracked_resource_actor_derived_reset_02050e2c.json: objdiff 
   base_object = build/decomp/asm/game/tracked_resource_actor_derived_reset_02050e2c.o
 build build/reports/tracked_resource_actor_derived_reset_02050e2c.txt: match_report build/reports/tracked_resource_actor_derived_reset_02050e2c.json | tools/report_objdiff.py
   report_json = build/reports/tracked_resource_actor_derived_reset_02050e2c.json
-  report_args = --section .text --function func_02050e2c --require-exact
+  report_args = --section .text --function TrackedResourceActorType21_ResetMotionState --require-exact
 
 build tracked_resource_actor_derived_reset: phony build/decomp/src/game/tracked_resource_actor_derived_reset.o build/decomp/asm/game/tracked_resource_actor_derived_reset_02050e2c.o build/reports/tracked_resource_actor_derived_reset_02050e2c.txt
 

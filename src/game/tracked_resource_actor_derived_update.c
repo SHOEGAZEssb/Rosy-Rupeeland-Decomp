@@ -30,7 +30,7 @@ static VirtualFunction virtual_function(void *actor, u32 offset)
  * slot 0x20. Returns nothing; actor/presentation state changes and downstream
  * engine callbacks may have SDK effects, but hardware is not accessed here.
  */
-void func_02050b70(void *actor)
+void TrackedResourceActorType21_Update(void *actor)
 {
     u16 state;
     s16 timer;

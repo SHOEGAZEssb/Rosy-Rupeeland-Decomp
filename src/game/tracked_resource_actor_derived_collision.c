@@ -35,10 +35,10 @@ static VirtualFunction virtual_function(void *actor, u32 offset)
  * bit 15, enable flags 0x1F0000, reset timer 0x1F8, and clear actor flag mask
  * 0x00800040. It notifies ActorCollection_QueueActorForRemoval and, for a lower target, invokes the
  * recovered effect and interaction helpers. Returns nothing; actor and target
- * engine state can change, with no direct hardware access. “Below” is confirmed
+ * engine state can change, with no direct hardware access. "Below" is confirmed
  * only as target field 0x24 being numerically less than the actor field.
  */
-void func_02050d0c(void *actor, void *target, u32 unused1, u32 unused2)
+void TrackedResourceActorType21_HandleCollision(void *actor, void *target, u32 unused1, u32 unused2)
 {
     u8 vector[16];
     bool lower;

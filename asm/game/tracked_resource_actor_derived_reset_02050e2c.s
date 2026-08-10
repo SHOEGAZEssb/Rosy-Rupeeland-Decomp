@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/tracked_resource_actor_derived_reset.c.
 .text
-    .global func_02050e2c
-func_02050e2c:
+    .global TrackedResourceActorType21_ResetMotionState
+TrackedResourceActorType21_ResetMotionState:
     mov r1, #0x0
     str r1, [r0, #0x40]
     str r1, [r0, #0x3c]
@@ -20,4 +20,4 @@ func_02050e2c:
     str r1, [r0, #0x1f4]
     bx lr
 .L_02050e70: .word 0xff7fffbf
-    .size func_02050e2c, . - func_02050e2c
+    .size TrackedResourceActorType21_ResetMotionState, . - TrackedResourceActorType21_ResetMotionState

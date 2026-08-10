@@ -17,7 +17,7 @@ extern void func_020328d0(void *vector, s32 angle);
 extern s32 Actor_GetCachedTerrainHeight(void *actor);
 extern void TrackedResourceActor_EmitRecordEffects(void *actor);
 extern void TrackedResourceActor_DispatchTargetInteraction(void *actor, void *target, ...);
-extern void func_02050b34(void *vector, s32 length);
+extern void TrackedResourceActor_ScaleVectorComponents(void *vector, s32 length);
 extern s32 func_020adae4(s32 value, s32 divisor);
 #ifdef __cplusplus
 }
@@ -65,7 +65,7 @@ void func_02051b48(void *actor, void *target, u32 unused1, u32 unused2)
         length = VecFx32Object_GetMagnitude((u8 *)actor + 0x88);
         if (length < 4)
             length = 4;
-        func_02050b34((u8 *)actor + 0x88, length);
+        TrackedResourceActor_ScaleVectorComponents((u8 *)actor + 0x88, length);
         func_020328d0((u8 *)actor + 0x88,
                       (s32)FIELD(s16, FIELD(void *, actor, 0x1fc), 0x0a) << 4);
         if (FIELD(s32, actor, 0x24) <= Actor_GetCachedTerrainHeight(actor) + 0x8000)

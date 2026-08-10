@@ -10,7 +10,7 @@ extern s32 VecFx32Object_GetMagnitude(const void *vector);
 extern void VecFx32Object_Assign(void *destination, const void *source);
 extern void VecFx32_Subtract(void *destination, u32 argument, const void *position);
 extern void func_020328d0(void *vector, s32 angle);
-extern void func_02050b34(void *vector, s32 length);
+extern void TrackedResourceActor_ScaleVectorComponents(void *vector, s32 length);
 #ifdef __cplusplus
 }
 #endif
@@ -39,7 +39,7 @@ void func_02051794(void *actor, const void *record, u32 argument, u32 unused)
     length = VecFx32Object_GetMagnitude((u8 *)actor + 0x38);
     if (length < 4)
         length = 4;
-    func_02050b34((u8 *)actor + 0x38, length);
+    TrackedResourceActor_ScaleVectorComponents((u8 *)actor + 0x38, length);
     func_020328d0((u8 *)actor + 0x38,
                   (s32)FIELD(s16, record, 0x0a) << 4);
     FIELD(s32, actor, 0x44) = 0x2800;
