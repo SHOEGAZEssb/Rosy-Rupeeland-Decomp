@@ -20,15 +20,12 @@ enum {
     TINGLE_KEY_L = 1u << 9
 };
 
-typedef struct TingleNativeInput {
-    u16 held;
-    u16 pressed;
-    u16 released;
-    u16 repeated;
+typedef struct TingleNativeHostInput {
+    u16 keys;
     s32 touch_x;
     s32 touch_y;
     u8 touching;
-} TingleNativeInput;
+} TingleNativeHostInput;
 
 typedef struct TingleNativePlatform TingleNativePlatform;
 
@@ -39,7 +36,8 @@ TingleNativePlatform *TingleNativePlatform_Create(void);
 void TingleNativePlatform_Destroy(TingleNativePlatform *platform);
 
 /* Pumps host events and returns zero once the application should terminate. */
-s32 TingleNativePlatform_Poll(TingleNativePlatform *platform, TingleNativeInput *input);
+s32 TingleNativePlatform_Poll(TingleNativePlatform *platform,
+                              TingleNativeHostInput *input);
 
 /* Waits until the next 60 Hz frame boundary without exposing host clock units. */
 void TingleNativePlatform_WaitFrame(TingleNativePlatform *platform);

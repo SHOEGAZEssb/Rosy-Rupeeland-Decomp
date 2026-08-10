@@ -1,224 +1,213 @@
-# Native cross-platform port
+# Native recompilation
 
 ## Objective
 
-The end goal is a native, cross-platform version of *Freshly-Picked Tingle's
-Rosy Rupeeland*. Windows is the first target, but the architecture should also
-support Linux, macOS, and other suitable platforms without changing game-owned
-logic. It should execute reconstructed game code directly on the host; it is
-not intended to embed a Nintendo DS emulator or run the rebuilt NDS ROM.
+The native target is a source recompilation of *Freshly-Picked Tingle's Rosy
+Rupeeland*, in the same broad sense that Ship of Harkinian recompiles recovered
+game code around replacement platform services. Reconstructed game-owned C and
+C++ must remain the implementation of game behavior. The host target supplies
+compatible operating-system, SDK, hardware, and data-access boundaries.
 
-The matching NDS build remains essential as a behavioral oracle. It establishes
-whether reconstructed code preserves retail behavior before that code is moved
-behind portable interfaces. The matching and native targets should coexist:
+This is not a clone, a scene-by-scene rewrite, an emulator, or a runtime ARM
+interpreter. A native-only function must not reproduce a recovered scene,
+state machine, actor constructor, script, or transition merely to approximate
+what the retail game does. When game behavior cannot yet compile, the native
+runtime stops at that dependency until the canonical recovered implementation
+and its required boundaries are ready.
+
+The matching NDS build remains the behavioral oracle and must continue to
+coexist with the native target:
 
 ```text
-Reconstructed game code
-|- NDS matching platform layer
-`- Portable native platform interfaces
-   |- Windows backend
-   |- Linux backend
-   `- macOS backend
+Canonical reconstructed game code
+|- MATCHING build
+|  `- NitroSDK, ARM code, NDS memory map, and NDS linker layout
+`- Native recompilation
+   |- SDK and hardware compatibility interfaces
+   |- host platform backend
+   `- user-supplied retail data provider
 ```
 
-The native build should obtain copyrighted game data from a user-supplied ROM
-or an extracted local data directory. ROM contents, SDK files, and proprietary
-build tools must remain outside version control.
+The native build reads copyrighted assets from a user-supplied ROM or extracted
+NitroFS tree. ROM contents, proprietary SDK files, and retail executable code
+remain outside version control.
 
-## SDK barrier documentation
+## Canonical-code rule
 
-A **barrier** is any dependency that prevents reconstructed game-owned code
-from compiling or behaving correctly on a normal native host. This includes
-direct NitroSDK calls, memory-mapped hardware access, ARM-specific code,
-cross-processor communication, and assumptions about the NDS runtime or memory
-layout. Platform-neutral interfaces should contain the game-visible contract;
-operating-system-specific code should remain confined to small backends.
+There should be one game implementation under `src/`, shared by matching and
+native builds. Use conditional compilation only where the two targets genuinely
+need different boundary code, such as:
 
-Before moving a reconstructed unit to a host compiler, consult the consolidated
-[compiler-sensitive function inventory](compiler_sensitive.md). It identifies
-matching-only ARM bodies, C++ lifetime forms, and the ordering or ownership
-constraints that must survive even though their retail instruction sequences do
-not.
+- a matching-only assembly body paired with portable recovered C;
+- a NitroSDK or memory-mapped hardware call paired with a native adapter;
+- an overlay linker registration paired with native static registration;
+- a fixed-address global paired with native-owned storage; or
+- a platform entry point, event loop, renderer, audio device, filesystem, or
+  persistence backend.
 
-For each reconstructed module, record barriers alongside its behavioral
-documentation. Each barrier entry should capture:
+Do not add a parallel `native_` version of game logic. Host code may validate
+inputs more defensively at an external boundary, but valid retail inputs must
+retain recovered ordering, timing, numeric behavior, ownership, and side
+effects.
 
-| Field | Meaning |
-| --- | --- |
-| Game caller | Reconstructed function or subsystem using the dependency |
-| NDS dependency | NitroSDK symbol, hardware register, ARM operation, or ABI assumption |
-| Required semantics | Observable behavior the game actually depends upon |
-| Data and ownership | Relevant structures, buffers, lifetimes, and thread/interrupt context |
-| Native replacement | Proposed portable interface and required platform backends |
-| Validation | How behavior can be compared with the matching NDS build |
-| Status | `unmapped`, `identified`, `specified`, `implemented`, or `verified` |
+Before compiling a recovered unit natively, consult the
+[compiler-sensitive function inventory](compiler_sensitive.md). Matching-only
+instruction schedules are not required on the host, but the behavior and
+ordering documented there are.
 
-Do not treat an SDK symbol name alone as sufficient documentation. The native
-port needs its contract: timing, error behavior, callback context, units,
-buffer layout, and any ordering assumptions visible to the game.
+## SDK and hardware barriers
+
+A barrier is a dependency that prevents canonical recovered code from compiling
+or behaving correctly on the host. Typical barriers include NitroSDK calls,
+memory-mapped registers, cache/DMA operations, interrupt context, ARM assembly,
+PXI communication, and fixed NDS addresses.
+
+For each barrier, establish:
+
+- the recovered game callers;
+- the NDS dependency and its observable contract;
+- units, timing, callback context, failure behavior, and ownership;
+- a narrow native replacement point;
+- a comparison against the matching build; and
+- whether the boundary is identified, specified, implemented, or verified.
+
+Replacing a boundary does not authorize replacing its callers. For example,
+the native renderer should implement the effects of palette, tile, OAM, and 3D
+commands issued by recovered graphics code; it should not draw a title screen
+by independently reading title assets and inventing the scene lifecycle.
+
+## ABI and data layout
+
+The NDS program uses 32-bit pointers, ARM EABI conventions, fixed-size handles,
+and structures whose serialized or shared layouts often include pointers. A
+64-bit host compiler changes those layouts. Broadly linking game code before
+choosing an ABI strategy would silently invalidate field offsets, allocation
+sizes, save data, overlay records, and script-visible objects.
+
+The native recompilation must therefore classify structures as one of:
+
+- runtime-native objects whose pointer-bearing layout may be adapted together
+  with every recovered user;
+- fixed retail-format records that require explicit-width handles or a decoded
+  host representation at the boundary; or
+- serialized/resource data that must retain its byte-exact NDS layout.
+
+Using a 32-bit host build may reduce early pointer-width differences, but it
+does not solve fixed addresses, function-pointer identity, alignment, or
+hardware semantics. Using a 64-bit build requires deliberate type adaptation.
+Neither choice should be hidden behind duplicated byte-image simulations of
+game objects. The ABI strategy must be settled before the first substantial
+recovered subsystem is added to the native link.
+
+## Overlays and executable code
+
+Retail overlays are a code-organization and lifetime mechanism, not native
+plugins. Recovered overlay sources should be compiled for the host and
+registered statically or through a generated native table. Native code must not
+load an ARM overlay image, treat an ARM callback address as callable, parse an
+ARM instruction template as a substitute for its source, or construct a scene
+from overlay metadata independently of the recovered engine.
+
+Overlay-local initialized data may be extracted or generated as a build asset
+while it remains unreconstructed, provided executable bytes are never run and
+the provenance is explicit. The end state is compiled recovered code plus
+retail data, not a mixture of native code and interpreted retail programs.
+
+## Retail data and formats
+
+`TingleNativeData` is the current data-provider boundary. It exposes safe
+relative NitroFS file reads from either a user ROM or an extracted tree. ROM
+mode validates FNT and FAT ranges; directory mode accepts either an extraction
+root containing `files/` or the `files/` directory itself. Returned buffers are
+caller-owned. The provider deliberately exposes no ARM9 or overlay executable
+image API.
+
+Nintendo LZ8/LZ10 is part of both resource loading and save compatibility.
+The native memory-interface layer provides the recovered `MI_UncompressLZ8`
+symbol plus a size-checked form for host-controlled I/O. Other resource-format
+knowledge should be connected to canonical loaders and graphics calls rather
+than used to build separate host scenes.
+
+## Current native foundation
+
+The retained Windows foundation consists of:
+
+- a Win32 window and two-screen XRGB8888 presentation surface;
+- a monotonic 60 Hz frame boundary;
+- keyboard and mouse mapping into raw active-high DS key and touch samples;
+- ROM/extracted-NitroFS data access; and
+- native Nintendo LZ8/LZ10 decompression.
+
+`tingle_native` is currently a process-shell and boundary smoke test. It opens
+the data source and platform loop, but intentionally executes no substitute
+game scene. Its framebuffer remains blank until recovered startup code is
+linked. A blank shell is more accurate than a hand-authored screen that appears
+to be progress toward recompilation while bypassing the game implementation.
 
 ## Barrier register
 
-The broad barriers currently known are:
+| Area | Required native boundary | Status |
+| --- | --- | --- |
+| Process and frame timing | Window lifecycle, monotonic clock, frame scheduling | implemented |
+| Input | Host key/touch sampling; canonical recovered edge/repeat logic | partial |
+| Retail files | ROM or extracted NitroFS provider | implemented |
+| Memory-interface compression | LZ8/LZ10 decompression; compression still required for saves | partial |
+| Heap and C/C++ runtime | Alignment, tags, ownership, constructors, global lifetime | identified |
+| ABI and fixed globals | Pointer-width policy, fixed-address replacement, layout classification | unresolved |
+| Overlays | Host compilation and generated static registration | identified |
+| 2D graphics | BG, palette, VRAM-transfer, OAM, brightness, and display semantics | identified |
+| 3D graphics | Geometry commands, matrices, textures, lighting, and render submission | identified |
+| Audio | ARM7 sound services, command queues, formats, mixer, and sequencing | unmapped |
+| Save data | Backup device API, exact serialization, compression, and persistence | identified |
+| ARM7/PXI | Host services for each game-visible message protocol | unmapped |
+| Power management | Suspend/focus policy and game-visible lid/card state | identified |
 
-| Area | NDS-side dependencies | Native-port requirement | Status |
-| --- | --- | --- | --- |
-| Main loop and timing | VBlank waits, VCOUNT, OS timing and interrupts | Host clock, deterministic frame scheduler, and event loop | implemented |
-| Input | Key registers, `PAD_Read`, touch input | Keyboard/controller/mouse mapping with DS-compatible edge and repeat behavior | implemented |
-| Graphics | 2D/3D engines, VRAM banks, GX/G2 commands, display capture | PC renderer reproducing both DS screens and resource semantics | identified |
-| Audio | ARM7 sound services, command queues, Nitro sound formats | Host mixer and sequencer with decoded game resources | unmapped |
-| Files and resources | NitroFS/FS calls and archive formats | ROM-backed or extracted-data virtual filesystem | implemented |
-| Overlays | `FS_LoadOverlay`, `FS_StartOverlay`, unload lifecycle | Static registration or host-side scene/module lifecycle | identified |
-| Power management | `PM_GoSleepMode`, lid and card events | Window focus/suspend policy with compatible game-visible state | identified |
-| ARM7/PXI services | Cross-processor messages and ARM7-owned hardware | Host services replacing each message protocol | unmapped |
-| Save data | GameWork raw/LZ serialization, cartridge backup APIs, and device constraints | Compatible persistent save storage, codec, and validation | identified |
-| Memory/runtime | Fixed addresses, arenas, caches, DMA, fixed-point and ARM ABI assumptions | Portable allocation, transfer, numeric, and serialization layers | identified |
+This table is only an index. Durable subsystem contracts belong in the
+narrowest relevant source comments or existing subsystem document.
 
-The first implemented memory/runtime contract is a fixed-layout native game-work
-image and its 32-byte default-name copy, described in
-[game_work.md](game_work.md). Its reset and flag storage preserve retail byte
-offsets without embedding host pointers. The embedded state initialized through
-`0x02027F94`/`0x02027BD4` remains unmapped.
+## Recompilation sequence
 
-The adjacent [game-work flag accessors](game_flags.md) are already portable C
-and require no platform adapter. Their only external contract is a valid
-`GameWork` object and an unchecked flag index in the range `0-3071`.
+1. Choose and document the host ABI/data-layout strategy.
+2. Add native build selection for portable bodies already present beside
+   matching-only assembly.
+3. Link a minimal slice of canonical startup code and satisfy its heap,
+   memory, global-storage, and SDK dependencies with narrow adapters.
+4. Generate native registrations for the recovered overlays needed by the
+   retail boot path.
+5. Execute the recovered main loop and `GamePhase_Bootstrap`; do not reproduce
+   their state machines in the platform shell.
+6. Implement graphics calls as renderer boundaries until the recovered splash
+   and title phases render through their real scripts, actors, and resources.
+7. Continue subsystem by subsystem through input, audio, saving, and gameplay,
+   comparing valid state and visible behavior with the matching NDS build.
 
-This table is an index, not a substitute for module-level contracts. Update it
-as barriers are discovered or eliminated, and link detailed subsystem notes
-from the relevant area.
+The title screen is reached only when canonical boot, phase, script, actor, and
+graphics code produces it through native boundaries. Rendering the same assets
+from a separate host state machine does not satisfy that milestone.
 
-## Porting milestones
+## Build and validation
 
-1. Continue the matching reconstruction while naming game-owned types,
-   functions, resources, and SDK boundaries.
-2. Define narrow portable interfaces for timing, input, files, overlays,
-   rendering, audio, persistence, and other discovered barriers.
-3. Build a Windows harness that creates a dual-screen window, drives the frame
-   loop, accepts host input, and reads assets from user-supplied game data.
-   Implement Windows first without embedding Windows-only assumptions in game
-   or platform-interface code.
-4. Run an early reconstructed scene, with the debug menu as a useful candidate
-   for exercising text, input, allocation, and scene transitions.
-5. Move gameplay systems across incrementally and compare state and visible
-   behavior against the matching NDS build.
-6. Replace every remaining SDK or hardware barrier required by normal gameplay,
-   then validate complete playthrough, saving, audio, rendering, and timing.
-
-Code that exists solely to initialize Nintendo DS hardware or implement an SDK
-internally does not need a literal native translation. Its game-visible
-contract must still be understood and documented before native platform layers
-can replace it safely.
-
-## Initial Windows harness
-
-The `tingle_native` CMake target creates a resizable window whose client area
-contains the two 256-by-192 DS screens stacked vertically. The portable loop
-receives active-high held, pressed, released, and repeated masks plus
-bottom-screen mouse coordinates. Repeat events use the recovered per-key
-timing: the initial press, again after 20 held frames, and then every four
-frames. The Windows mapping is Z/A, X/B, Backspace/Select, Enter/Start, arrow
-keys/D-pad, Q/L, and W/R. A monotonic host clock maintains a 60 Hz frame
-boundary; a long stall resets accumulated timing debt instead of running an
-unbounded catch-up loop.
-
-Configure and build this target with a Windows CMake toolchain:
+Configure and build the current Windows foundation with a Windows CMake
+toolchain:
 
 ```text
-cmake -S . -B build/native
+cmake -S . -B build/native -DBUILD_TESTING=ON
 cmake --build build/native --config Release
+ctest --test-dir build/native --output-on-failure
 ```
 
-The harness runs a portable presentation model of the recovered hidden debug
-menu. Its directional priority, unusual 13-entry wrapping, horizontal column
-toggle, and A-button activation order match `DebugMenu_Update`. The menu uses a
-host-owned XRGB8888 software canvas and bitmap font; the original DS debug-text
-renderer is not reused. Entry zero opens the recovered phase selector, including
-its three 90-phase pages, wrapping 10-by-9 grid, exact touch bounds, and
-16-frame transition. The selected 0x58-byte phase metadata record is read from
-the ARM9 image and decoded into host scalars. Its primary and secondary overlay
-IDs at offsets `0x1C`/`0x20` are loaded, and callback offsets `0x24`/`0x28` are
-validated as addresses inside their respective DS code ranges. The ARM
-callbacks are verified generated templates: their actor descriptor lists,
-runtime data, callback data, work storage, and secondary region table are
-translated to validated overlay-relative records. Descriptor kinds are checked
-against the recovered 1-9 factory range, and signed selector offset `0x50`
-determines initial eligibility. Confirmed common descriptor fields--kind,
-subtype, byte bounds, signed position, flags, selector, retained value, and the
-raw reference at `0x58`--are copied into host-owned scalar records. The full
-`0x64` bytes are retained alongside those scalars for constructor fields whose
-meaning is still offset-derived. Synthetic startup descriptors reproduce the
-confirmed initializer bytes rather than inventing a host-only layout. The
-recovered factory's kind/subtype matrix and its two ARM9 selector tables
-then resolve every record to a retail allocation size and a type-local
-constructor route. The native phase scaffold allocates a host-owned byte image
-of that size for each initially eligible descriptor and applies the recovered
-geometry and common runtime constructors, including fixed-point positions,
-collision bounds, packed descriptor state, embedded vectors, the empty actor
-script VM, its three-vector stepper, raw NDS vtable identities, and descriptor
-value `0x52`. The phase-global vector copied into actor offset `0x78` is zero at
-this point: the runtime resets its area-motion helper immediately before phase
-subsystem construction and binds the controlling actor afterward. Kind-three
-subtypes that use the shared `0x208` constructor also receive their recovered
-embedded animation-resource state and terminal fields. Other derived
-constructors remain marked pending. The default kind-six `0x1EC` route also
-has its final vtable and factory flag bits; only descriptors with a nonzero
-word at `0x2C` retain their type-specific virtual-hook dependency.
-Kind-three motion-probe subtype 1, indexed-state subtype 5, and mode-nibble
-subtypes 12 through 16 and 19 also have complete constructor images. Subtype
-17 resolves its signed key through the recovered twelve-record ARM9 table and
-retains the selected retail record address in its completed actor image.
-Overlay-backed kind-three subtype 22 has its complete vtable-only extension;
-subtype 20 also has its complete vector/scalar extension unless descriptor word
-`0x2C` requests the still-pending virtual resource hook.
-Overlay 81's kind-three subtypes 6 through 8 likewise have their complete
-host-independent motion-state layout and mandatory overlay-local initializer.
-Their terrain-height refresh remains an explicit map-context boundary, and a
-nonzero descriptor word `0x2C` remains an explicit resource-script boundary.
-Kind-two factory variants zero and four now receive the recovered common
-extended-type-two layout, including their vectors, descriptor-derived scalar
-state, marker helper header, and fixed flag initialization. The marker sprite,
-interaction-record allocators, terrain-dependent placement, and virtual
-configuration callbacks remain explicit native-service boundaries.
-The category-two singleton-tracker bootstrap has its complete constructor
-image. The category-one bootstrap includes its full type-one scalar/vector
-extension and the known header of its marker helper; resource lookup and host
-presentation creation for that helper remain pending. Both bootstraps and the
-common type-three actor added once per category are built in their recovered
-order before each overlay list. The phase-start
-companion also follows its recovered shared-state timing: it
-sets GameWork flag `0x3F3`, advances states zero and one together on its first
-update, then clears optional flag `0x386` and its own flag on the next update.
-The covered-scene virtual updates and screen fades at those states remain
-platform boundaries. The phase boundary presents these partial actors in a
-normalized spawn-map
-diagnostic, colored by the primary or secondary category. It is an inspection
-view of recovered descriptor positions, not a substitute for the game's camera,
-tilemap, sprite, or 3D render paths. Fourteen 32-byte zero
-secondary images are omitted by the phase table; the decoder still represents
-such an image as an empty registration when read directly. The callbacks
-remain addresses and are never called as host function pointers.
-Execution then stops at the large phase-runtime construction boundary. Other menu entries likewise
-report their selected scene boundary until their graphics, sound, heap, and
-overlay dependencies have native implementations.
-
-Supply game data from either a user-owned ROM or an extracted ROM root:
+Supply retail data with either provider:
 
 ```text
 build/native/tingle_native.exe --rom path/to/game.nds
 build/native/tingle_native.exe --data path/to/extracted/root
 ```
 
-An extracted root uses `files/` for NitroFS, `arm9/arm9.bin` for fixed program
-data, and `arm9/arm9.yaml` for its ARM9 base address. Passing the `files/`
-directory directly remains supported for NitroFS-only work. ROM reads resolve
-paths through validated FNT/FAT ranges and ARM9 reads through validated header
-offsets; directory reads reject absolute paths and dot traversal. Returned
-buffers are always owned by the caller, giving reconstructed loaders one
-consistent native contract.
+When run from the repository root without arguments, the shell tries
+`build/source-rom`. This default is a local convenience, not a source or build
+dependency.
 
-ARM9 overlays use the same provider. ROM mode validates the 32-byte overlay
-table record and FAT extent; extracted mode reads the corresponding metadata
-and binary under `arm9_overlays/`. Uncompressed code is copied into owned
-storage with zero-filled BSS and its DS load/constructor addresses retained as
-metadata. Compressed images are rejected until a native decoder is specified.
+Every native change should have boundary-focused unit tests. Any edit to
+canonical reconstructed code must also run its matching target. Before a batch
+that changes decompiled code or NDS linkage is considered complete, `ninja rom`
+must pass all module checks and the expected retail SHA-256 guardrail.

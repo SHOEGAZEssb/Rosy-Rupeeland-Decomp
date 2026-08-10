@@ -2,12 +2,13 @@
 
 ## Long-term objective
 
-The project ultimately targets a native, cross-platform executable, with
-Windows as the first supported desktop target. Byte-matching the European NDS
-ROM is the reference workflow used to validate reconstructed game logic; it is
-not the final product. Native targets will reuse portable game-owned code and
-replace NitroSDK, ARM, and Nintendo DS hardware interfaces with documented
-platform implementations.
+The project ultimately targets a native, cross-platform source recompilation,
+with Windows as the first supported desktop target. Byte-matching the European
+NDS ROM is the reference workflow used to validate reconstructed game logic; it
+is not the final product. Native targets compile that canonical recovered game
+code and replace only NitroSDK, ARM, and Nintendo DS hardware interfaces with
+documented platform implementations. Parallel host rewrites of game behavior
+are explicitly out of scope.
 
 SDK boundaries are therefore part of the decompilation output, not incidental
 details. When a function or subsystem is reconstructed, its documentation

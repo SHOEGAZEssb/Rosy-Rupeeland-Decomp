@@ -71,7 +71,7 @@ classifies those words as data and also associates an aggregate-data relocation
 differently. The final ARM9 link performed by `ninja rom`, rather than the
 standalone object score, is authoritative for this function.
 
-## Native-port boundaries
+## Native recompilation barriers
 
 `GameWork_Create` calls the game heap wrapper with a size, tag, four-byte
 alignment, and heap context. A native build needs an allocator with compatible
@@ -88,15 +88,12 @@ above, including its four-byte size/type header and raw fallback convention. A
 host implementation may use a different internal representation only if the
 persistent on-disk format is converted at the boundary.
 
-The native harness represents this state as an explicit `0x5F14`-byte image.
-This preserves retail offsets and save-format bytes without allowing 64-bit
-host pointers to enlarge the NDS four-byte pointer slots. Native ownership must
-therefore remain in side structures; the raw slots are opaque 32-bit values.
-Its reset reproduces all confirmed writes and defaults, while deliberately
-preserving fields untouched by the retail initializer and the unidentified
-`0x5DF0` subobject. Fresh creation clears the entire allocation before applying
-that reset. The checked native flag API rejects indices outside `0-3071`, unlike
-the unchecked retail accessors.
+`GameWork` mixes serialized state with live pointer-bearing tables. Its retail
+size assertions are therefore valid only under the NDS 32-bit ABI. A native
+recompilation must classify the serialized fields and runtime pointers before
+changing the structure or selecting a host pointer width; a parallel byte-image
+implementation would bypass the canonical recovered initializer and is not an
+acceptable substitute.
 
 Validation is the linked ARM9 check performed by `ninja rom`, followed by the
 retail ROM SHA-256 gate.

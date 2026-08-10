@@ -7,18 +7,9 @@ if(NOT WIN32)
 endif()
 
 add_executable(tingle_native WIN32
-    src/native/native_boot.c
-    src/native/native_actor_factory.c
-    src/native/native_actor_runtime.c
     src/native/main.c
-    src/native/native_debug_menu.c
     src/native/native_data.c
-    src/native/native_game_phase.c
-    src/native/native_game_work.c
-    src/native/native_graphics.c
-    src/native/native_input.c
-    src/native/native_phase_selector.c
-    src/native/native_render.c
+    src/native/native_mi.c
     src/native/platform_win32.c
 )
 
@@ -53,93 +44,16 @@ if(BUILD_TESTING)
     endif()
     add_test(NAME native_data_test COMMAND native_data_test)
 
-    add_executable(native_debug_menu_test
-        tests/native_debug_menu_test.c
-        src/native/native_debug_menu.c
-        src/native/native_render.c
+    add_executable(native_mi_test
+        tests/native_mi_test.c
+        src/native/native_mi.c
     )
-    target_include_directories(native_debug_menu_test PRIVATE include)
-    target_compile_features(native_debug_menu_test PRIVATE c_std_11)
+    target_include_directories(native_mi_test PRIVATE include)
+    target_compile_features(native_mi_test PRIVATE c_std_11)
     if(MSVC)
-        target_compile_definitions(native_debug_menu_test PRIVATE _CRT_SECURE_NO_WARNINGS)
-        target_compile_options(native_debug_menu_test PRIVATE /W4 /WX)
+        target_compile_options(native_mi_test PRIVATE /W4 /WX)
     else()
-        target_compile_options(native_debug_menu_test PRIVATE -Wall -Wextra -Werror)
+        target_compile_options(native_mi_test PRIVATE -Wall -Wextra -Werror)
     endif()
-    add_test(NAME native_debug_menu_test COMMAND native_debug_menu_test)
-
-    add_executable(native_input_test
-        tests/native_input_test.c
-        src/native/native_input.c
-    )
-    target_include_directories(native_input_test PRIVATE include)
-    target_compile_features(native_input_test PRIVATE c_std_11)
-    if(MSVC)
-        target_compile_options(native_input_test PRIVATE /W4 /WX)
-    else()
-        target_compile_options(native_input_test PRIVATE -Wall -Wextra -Werror)
-    endif()
-    add_test(NAME native_input_test COMMAND native_input_test)
-
-    add_executable(native_phase_selector_test
-        tests/native_phase_selector_test.c
-        src/native/native_phase_selector.c
-        src/native/native_render.c
-    )
-    target_include_directories(native_phase_selector_test PRIVATE include)
-    target_compile_features(native_phase_selector_test PRIVATE c_std_11)
-    if(MSVC)
-        target_compile_definitions(native_phase_selector_test PRIVATE _CRT_SECURE_NO_WARNINGS)
-        target_compile_options(native_phase_selector_test PRIVATE /W4 /WX)
-    else()
-        target_compile_options(native_phase_selector_test PRIVATE -Wall -Wextra -Werror)
-    endif()
-    add_test(NAME native_phase_selector_test COMMAND native_phase_selector_test)
-
-    add_executable(native_game_phase_test
-        tests/native_game_phase_test.c
-        src/native/native_actor_factory.c
-        src/native/native_actor_runtime.c
-        src/native/native_data.c
-        src/native/native_game_phase.c
-        src/native/native_game_work.c
-        src/native/native_render.c
-    )
-    target_include_directories(native_game_phase_test PRIVATE include)
-    target_compile_features(native_game_phase_test PRIVATE c_std_11)
-    if(MSVC)
-        target_compile_definitions(native_game_phase_test PRIVATE _CRT_SECURE_NO_WARNINGS)
-        target_compile_options(native_game_phase_test PRIVATE /W4 /WX)
-    else()
-        target_compile_options(native_game_phase_test PRIVATE -Wall -Wextra -Werror)
-    endif()
-    add_test(NAME native_game_phase_test COMMAND native_game_phase_test)
-
-    add_executable(native_game_work_test
-        tests/native_game_work_test.c
-        src/native/native_game_work.c
-    )
-    target_include_directories(native_game_work_test PRIVATE include)
-    target_compile_features(native_game_work_test PRIVATE c_std_11)
-    if(MSVC)
-        target_compile_options(native_game_work_test PRIVATE /W4 /WX)
-    else()
-        target_compile_options(native_game_work_test PRIVATE -Wall -Wextra -Werror)
-    endif()
-    add_test(NAME native_game_work_test COMMAND native_game_work_test)
-
-    add_executable(native_graphics_test
-        tests/native_graphics_test.c
-        src/native/native_data.c
-        src/native/native_graphics.c
-    )
-    target_include_directories(native_graphics_test PRIVATE include)
-    target_compile_features(native_graphics_test PRIVATE c_std_11)
-    if(MSVC)
-        target_compile_definitions(native_graphics_test PRIVATE _CRT_SECURE_NO_WARNINGS)
-        target_compile_options(native_graphics_test PRIVATE /W4 /WX)
-    else()
-        target_compile_options(native_graphics_test PRIVATE -Wall -Wextra -Werror)
-    endif()
-    add_test(NAME native_graphics_test COMMAND native_graphics_test)
+    add_test(NAME native_mi_test COMMAND native_mi_test)
 endif()
