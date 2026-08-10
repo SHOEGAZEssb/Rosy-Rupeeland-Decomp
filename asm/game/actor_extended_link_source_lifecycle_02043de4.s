@@ -9,12 +9,12 @@
 .extern ActorExtendedType2_UpdateFrame
 .global ActorExtendedLinkSource_Init
 .type ActorExtendedLinkSource_Init, @function
-.global func_02043e38
-.type func_02043e38, @function
+.global ActorExtendedLinkSource_DestroyComplete
+.type ActorExtendedLinkSource_DestroyComplete, @function
 .global ActorExtendedLinkSource_DestroyAndFree
 .type ActorExtendedLinkSource_DestroyAndFree, @function
-.global func_02043e68
-.type func_02043e68, @function
+.global ActorExtendedLinkSource_Destroy
+.type ActorExtendedLinkSource_Destroy, @function
 .global ActorExtendedLinkSource_UpdateFrame
 .type ActorExtendedLinkSource_UpdateFrame, @function
 ActorExtendedLinkSource_Init: ; 0x02043de4
@@ -41,14 +41,14 @@ ActorExtendedLinkSource_Init: ; 0x02043de4
 .L_02043e34: .word data_0210574c
 
 .size ActorExtendedLinkSource_Init, . - ActorExtendedLinkSource_Init
-func_02043e38: ; 0x02043e38
+ActorExtendedLinkSource_DestroyComplete: ; 0x02043e38
     stmdb sp!, {r4, lr}
     mov r4, r0
     bl ActorExtendedType2_Destroy
     mov r0, r4
     ldmia sp!, {r4, pc}
 
-.size func_02043e38, . - func_02043e38
+.size ActorExtendedLinkSource_DestroyComplete, . - ActorExtendedLinkSource_DestroyComplete
 ActorExtendedLinkSource_DestroyAndFree: ; 0x02043e4c
     stmdb sp!, {r4, lr}
     mov r4, r0
@@ -59,14 +59,14 @@ ActorExtendedLinkSource_DestroyAndFree: ; 0x02043e4c
     ldmia sp!, {r4, pc}
 
 .size ActorExtendedLinkSource_DestroyAndFree, . - ActorExtendedLinkSource_DestroyAndFree
-func_02043e68: ; 0x02043e68
+ActorExtendedLinkSource_Destroy: ; 0x02043e68
     stmdb sp!, {r4, lr}
     mov r4, r0
     bl ActorExtendedType2_Destroy
     mov r0, r4
     ldmia sp!, {r4, pc}
 
-.size func_02043e68, . - func_02043e68
+.size ActorExtendedLinkSource_Destroy, . - ActorExtendedLinkSource_Destroy
 ActorExtendedLinkSource_UpdateFrame: ; 0x02043e7c
     stmdb sp!, {r4, lr}
     mov r4, r0

@@ -2,7 +2,7 @@
 ; Matching fallback for the portable implementation in src/overlays/ov075/overlay075_recovery.c.
 .extern Heap_Free
 .extern func_02005058
-.extern func_02043e68
+.extern ActorExtendedLinkSource_Destroy
 
 .global func_ov075_02215a48
 func_ov075_02215a48:
@@ -11,7 +11,7 @@ func_ov075_02215a48:
     add r0, r4, #0x2ac
     bl func_02005058
     mov r0, r4
-    bl func_02043e68
+    bl ActorExtendedLinkSource_Destroy
     mov r0, r4
     bl Heap_Free
     mov r0, r4

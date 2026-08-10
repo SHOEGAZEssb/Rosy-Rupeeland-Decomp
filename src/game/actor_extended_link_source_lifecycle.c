@@ -38,8 +38,12 @@ void *ActorExtendedLinkSource_Init(void *self, const void *configuration)
     return actor;
 }
 
-/* Invoke base destructor ActorExtendedType2_Destroy and return self; actor state is torn down. */
-void *func_02043e38(void *self)
+/*
+ * Complete-object destructor: invoke ActorExtendedType2_Destroy and return
+ * self. Actor state is torn down without freeing its storage; the class vtable
+ * selects this form for ordinary non-deleting destruction.
+ */
+void *ActorExtendedLinkSource_DestroyComplete(void *self)
 {
     ActorExtendedType2_Destroy(self);
     return self;
@@ -56,8 +60,12 @@ void *ActorExtendedLinkSource_DestroyAndFree(void *self)
     return self;
 }
 
-/* Invoke base destructor ActorExtendedType2_Destroy and return self; actor state is torn down. */
-void *func_02043e68(void *self)
+/*
+ * Base-object destructor used by derived overlay classes: invoke
+ * ActorExtendedType2_Destroy and return self without freeing storage. Its body
+ * matches ActorExtendedLinkSource_DestroyComplete, but its ABI role is distinct.
+ */
+void *ActorExtendedLinkSource_Destroy(void *self)
 {
     ActorExtendedType2_Destroy(self);
     return self;

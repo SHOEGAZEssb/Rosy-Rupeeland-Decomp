@@ -5,9 +5,9 @@
 .extern func_02004ac8
 .extern ActorExtendedType2_Init
 .extern func_020c0c24
-.global func_020437f4
-.type func_020437f4, @function
-func_020437f4: ; 0x020437f4
+.global ActorExtendedRecordArray_Destroy
+.type ActorExtendedRecordArray_Destroy, @function
+ActorExtendedRecordArray_Destroy: ; 0x020437f4
     stmdb sp!, {r4, lr}
     ldr r1, .L_02043828
     mov r4, r0
@@ -25,11 +25,11 @@ func_020437f4: ; 0x020437f4
 .L_02043828: .word data_020dfec0
 .L_0204382c: .word func_02004ac8
 
-.size func_020437f4, . - func_020437f4
+.size ActorExtendedRecordArray_Destroy, . - ActorExtendedRecordArray_Destroy
 
-.global func_02043830
-.type func_02043830, @function
-func_02043830: ; 0x02043830
+.global ActorExtendedType3_Init
+.type ActorExtendedType3_Init, @function
+ActorExtendedType3_Init: ; 0x02043830
     stmdb sp!, {r4, lr}
     mov r4, r0
     bl ActorExtendedType2_Init
@@ -43,4 +43,4 @@ func_02043830: ; 0x02043830
     strh r2, [r1, #0x9a]
     ldmia sp!, {r4, pc}
 .L_02043860: .word data_020e0290
-.size func_02043830, . - func_02043830
+.size ActorExtendedType3_Init, . - ActorExtendedType3_Init

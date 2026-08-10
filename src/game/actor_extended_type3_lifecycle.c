@@ -1,9 +1,8 @@
 #include "tingle/types.h"
 
 /*
- * Recovered lifecycle for the actor class following extended type two. The
- * destructor restores its terminal vtable and releases an owned array; the
- * constructor initializes the base and two class-specific halfwords.
+ * Recovered non-deleting lifecycle for the extended record-array helper and
+ * initialization for the actor class following extended type two.
  */
 extern u8 data_020dfec0[];
 extern u8 data_020e0290[];
@@ -23,9 +22,10 @@ extern void ActorExtendedType2_Init(void *actor);
  * Restore vtable data_020dfec0, destroy owned array +4 when nonnull using
  * eight-byte elements/alignment and func_02004ac8, then return self. Object and
  * owned allocation state may change; func_020c0c24 performs destruction/freeing
- * but there is no direct hardware access.
+ * but there is no direct hardware access. Unlike
+ * ActorExtendedRecordArray_DestroyAndFree, this destructor retains self storage.
  */
-void *func_020437f4(void *self)
+void *ActorExtendedRecordArray_Destroy(void *self)
 {
     u8 *object = (u8 *)self;
     *(void **)object = data_020dfec0;
@@ -39,7 +39,7 @@ void *func_020437f4(void *self)
  * halfword +0x298 to two and +0x29a to zero, and return self. Actor/base state
  * changes; no direct SDK or hardware operation occurs.
  */
-void *func_02043830(void *self)
+void *ActorExtendedType3_Init(void *self)
 {
     u8 *actor = (u8 *)self;
     ActorExtendedType2_Init(actor);

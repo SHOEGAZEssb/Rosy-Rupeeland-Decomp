@@ -1,7 +1,7 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov076/overlay076_recovery.c.
 .extern data_ov076_02214950
-.extern func_02043d4c
+.extern ActorExtendedLinked_Destroy
 .extern func_0205940c
 .extern gSoundContext
 
@@ -17,7 +17,7 @@ func_ov076_02212b60:
     mov r2, #0x8
     bl func_0205940c
     mov r0, r4
-    bl func_02043d4c
+    bl ActorExtendedLinked_Destroy
     mov r0, r4
     ldmia sp!, {r4, pc}
 .L_02212b94: .word data_ov076_02214950

@@ -10,12 +10,12 @@
 .extern ActorExtendedType2_ApplyContactResponse
 .global ActorExtendedLinked_Init
 .type ActorExtendedLinked_Init, @function
-.global func_02043d1c
-.type func_02043d1c, @function
+.global ActorExtendedLinked_DestroyComplete
+.type ActorExtendedLinked_DestroyComplete, @function
 .global ActorExtendedLinked_DestroyAndFree
 .type ActorExtendedLinked_DestroyAndFree, @function
-.global func_02043d4c
-.type func_02043d4c, @function
+.global ActorExtendedLinked_Destroy
+.type ActorExtendedLinked_Destroy, @function
 .global ActorExtendedLinked_UpdateFrame
 .type ActorExtendedLinked_UpdateFrame, @function
 .global ActorExtendedLinked_ApplyContactResponse
@@ -41,13 +41,13 @@ ActorExtendedLinked_Init: ; 0x02043cd0
 .L_02043d14: .word data_02105728
 .L_02043d18: .word data_0210572c
 .size ActorExtendedLinked_Init, . - ActorExtendedLinked_Init
-func_02043d1c: ; 0x02043d1c
+ActorExtendedLinked_DestroyComplete: ; 0x02043d1c
     stmdb sp!, {r4, lr}
     mov r4, r0
     bl ActorExtendedType2_Destroy
     mov r0, r4
     ldmia sp!, {r4, pc}
-.size func_02043d1c, . - func_02043d1c
+.size ActorExtendedLinked_DestroyComplete, . - ActorExtendedLinked_DestroyComplete
 ActorExtendedLinked_DestroyAndFree: ; 0x02043d30
     stmdb sp!, {r4, lr}
     mov r4, r0
@@ -57,13 +57,13 @@ ActorExtendedLinked_DestroyAndFree: ; 0x02043d30
     mov r0, r4
     ldmia sp!, {r4, pc}
 .size ActorExtendedLinked_DestroyAndFree, . - ActorExtendedLinked_DestroyAndFree
-func_02043d4c: ; 0x02043d4c
+ActorExtendedLinked_Destroy: ; 0x02043d4c
     stmdb sp!, {r4, lr}
     mov r4, r0
     bl ActorExtendedType2_Destroy
     mov r0, r4
     ldmia sp!, {r4, pc}
-.size func_02043d4c, . - func_02043d4c
+.size ActorExtendedLinked_Destroy, . - ActorExtendedLinked_Destroy
 ActorExtendedLinked_UpdateFrame: ; 0x02043d60
     ldr ip, .L_02043d68
     bx ip

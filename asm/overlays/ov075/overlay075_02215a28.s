@@ -1,7 +1,7 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov075/overlay075_recovery.c.
 .extern func_02005058
-.extern func_02043e68
+.extern ActorExtendedLinkSource_Destroy
 
 .global func_ov075_02215a28
 func_ov075_02215a28:
@@ -10,7 +10,7 @@ func_ov075_02215a28:
     add r0, r4, #0x2ac
     bl func_02005058
     mov r0, r4
-    bl func_02043e68
+    bl ActorExtendedLinkSource_Destroy
     mov r0, r4
     ldmia sp!, {r4, pc}
 .size func_ov075_02215a28, . - func_ov075_02215a28

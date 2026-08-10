@@ -247,10 +247,10 @@ void func_ov075_02215044(void);
 /* Processes the supplied ABI arguments and offset-based actor state, returns its encoded result, and invokes ActorExtendedType2_GetDescriptorValue25, ActorExtendedLinked_Init, func_ov075_02215044 and other shared helpers; exact higher-level semantics remain unconfirmed. */
 void func_ov075_02215068(void);
 
-/* Processes the supplied ABI arguments and offset-based actor state, returns its encoded result, and invokes func_02043d4c; exact higher-level semantics remain unconfirmed. */
+/* Processes the supplied ABI arguments and offset-based actor state, returns its encoded result, and invokes ActorExtendedLinked_Destroy; exact higher-level semantics remain unconfirmed. */
 void func_ov075_022150c4(void);
 
-/* Processes the supplied ABI arguments and offset-based actor state, returns its encoded result, and invokes func_02043d4c; exact higher-level semantics remain unconfirmed. */
+/* Processes the supplied ABI arguments and offset-based actor state, returns its encoded result, and invokes ActorExtendedLinked_Destroy; exact higher-level semantics remain unconfirmed. */
 void func_ov075_022150d8(void);
 
 /* Processes the supplied ABI arguments and offset-based actor state, returns its encoded result, and invokes ActorExtendedType2_IsInteractionActive; exact higher-level semantics remain unconfirmed. */
@@ -310,10 +310,10 @@ void func_ov075_02215930(void);
 /* Processes the supplied ABI arguments and offset-based actor state, returns its encoded result, and invokes func_02004fe0, ActorExtendedLinkSource_Init; exact higher-level semantics remain unconfirmed. */
 void func_ov075_022159c4(void);
 
-/* Processes the supplied ABI arguments and offset-based actor state, returns its encoded result, and invokes func_02005058, func_02043e68; exact higher-level semantics remain unconfirmed. */
+/* Processes the supplied ABI arguments and offset-based actor state, returns its encoded result, and invokes func_02005058, ActorExtendedLinkSource_Destroy; exact higher-level semantics remain unconfirmed. */
 void func_ov075_02215a28(void);
 
-/* Processes the supplied ABI arguments and offset-based actor state, returns its encoded result, and invokes func_02005058, func_02043e68; exact higher-level semantics remain unconfirmed. */
+/* Processes the supplied ABI arguments and offset-based actor state, returns its encoded result, and invokes func_02005058, ActorExtendedLinkSource_Destroy; exact higher-level semantics remain unconfirmed. */
 void func_ov075_02215a48(void);
 
 /* Processes the supplied ABI arguments and offset-based actor state, returns its encoded result, and invokes ActorCollection_GetSpriteOwner, Actor_GetCollection, func_02072b68 and other shared helpers; exact higher-level semantics remain unconfirmed. */

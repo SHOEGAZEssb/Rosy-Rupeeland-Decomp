@@ -2,7 +2,7 @@
 ; Matching fallback for the portable implementation in src/overlays/ov076/overlay076_recovery.c.
 .extern Heap_Free
 .extern data_ov076_02214950
-.extern func_02043d4c
+.extern ActorExtendedLinked_Destroy
 .extern func_0205940c
 .extern gSoundContext
 
@@ -18,7 +18,7 @@ func_ov076_02212b9c:
     mov r2, #0x8
     bl func_0205940c
     mov r0, r4
-    bl func_02043d4c
+    bl ActorExtendedLinked_Destroy
     mov r0, r4
     bl Heap_Free
     mov r0, r4

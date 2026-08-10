@@ -3,7 +3,7 @@
 .extern Heap_Free
 .extern data_ov076_02214d08
 .extern func_02005058
-.extern func_02043e68
+.extern ActorExtendedLinkSource_Destroy
 .extern func_02073ef8
 
 .global func_ov076_0221389c
@@ -21,7 +21,7 @@ func_ov076_0221389c:
     add r0, r4, #0x2a8
     bl func_02005058
     mov r0, r4
-    bl func_02043e68
+    bl ActorExtendedLinkSource_Destroy
     mov r0, r4
     bl Heap_Free
     mov r0, r4
