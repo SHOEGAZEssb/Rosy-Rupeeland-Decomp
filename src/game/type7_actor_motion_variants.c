@@ -24,7 +24,7 @@ extern s32 Type7Actor_TryInstallGlobalTargetCallback(void *actor);
 extern s32 Type7Actor_TryAcquireTarget(void *actor, s32 finiteMode);
 extern void Type7Actor_EnterFlag20State(void *actor);
 extern void Type7Actor_EnterFlag80State(void *actor);
-extern void func_0204a5dc(void *actor);
+extern void Type7Actor_AdjustDestinationForCollisions(void *actor);
 #ifdef __cplusplus
 }
 #endif
@@ -82,7 +82,7 @@ s32 Type7Actor_UpdateRandomOffsetMotion(void *self)
 /*
  * Input and return behavior match Type7Actor_UpdateRandomOffsetMotion, but set +0xd0 bit one instead
  * of clearing it. After the shared gates and destination selection, call
- * func_0204a5dc before updating motion. The exact additional state maintained
+ * Type7Actor_AdjustDestinationForCollisions before updating motion. The exact additional state maintained
  * by that helper is not yet known. Actor, target, random, and motion state may
  * change; no direct hardware access occurs.
  */
@@ -116,7 +116,7 @@ s32 Type7Actor_UpdateRandomOffsetMotionVariant(void *self)
         func_020050a4(actor + 0x78, actor + 0x18);
     else if ((*(u32 *)(actor + 0x268) & 4) != 0)
         func_020050a4(actor + 0x78, actor + 0x224);
-    func_0204a5dc(actor);
+    Type7Actor_AdjustDestinationForCollisions(actor);
     Type7Actor_UpdateMotionTowardTransform(actor, actor + 0x78);
     if (*(s32 *)(actor + 0x3c) == 0 && *(s32 *)(actor + 0x40) == 0)
         Type7Actor_ResetInteractionState(actor);
@@ -133,7 +133,7 @@ s32 Type7Actor_UpdateRandomOffsetMotionVariant(void *self)
  * If neither relationship check dispatches, run the shared object and finite
  * acquisition gates. Select destination +0x18 while +0x264 is positive,
  * +0x224 while flag four is set, or saved transform +0x214 otherwise. Maintain
- * the extra state through func_0204a5dc, then update motion. While flag four is
+ * the extra state through Type7Actor_AdjustDestinationForCollisions, then update motion. While flag four is
  * clear, return to idle once the distance-like query between the actor and
  * temporary destination falls below 0x28000. Always return zero. The helper
  * calls may change actor and target state; no direct hardware access occurs.
@@ -171,7 +171,7 @@ s32 Type7Actor_UpdateRelatedTargetMotion(void *self)
         func_020050a4(actor + 0x78, actor + 0x224);
     else
         func_020050a4(actor + 0x78, actor + 0x214);
-    func_0204a5dc(actor);
+    Type7Actor_AdjustDestinationForCollisions(actor);
     Type7Actor_UpdateMotionTowardTransform(actor, actor + 0x78);
     if ((*(u32 *)(actor + 0x268) & 4) == 0
         && func_020adcac(actor + 0x1c, actor + 0x7c) < 0x28000)

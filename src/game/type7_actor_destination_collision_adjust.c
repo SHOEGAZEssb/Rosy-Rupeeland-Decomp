@@ -40,7 +40,7 @@ extern s32 func_020adc90(s32 value, s32 length);
  * routine and there are no direct SDK or hardware effects. No value is
  * returned.
  */
-void func_0204a5dc(void *self)
+void Type7Actor_AdjustDestinationForCollisions(void *self)
 {
     u8 *actor = (u8 *)self;
     s32 height = Actor_GetCachedTerrainHeight(actor) >> 16;

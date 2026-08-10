@@ -6,9 +6,9 @@
 .extern func_020adae4
 .extern func_020adc90
 .text
-    .global func_0204a5dc
-.type func_0204a5dc, @function
-func_0204a5dc: ; 0x0204a5dc
+    .global Type7Actor_AdjustDestinationForCollisions
+.type Type7Actor_AdjustDestinationForCollisions, @function
+Type7Actor_AdjustDestinationForCollisions: ; 0x0204a5dc
     stmdb sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, lr}
     sub sp, sp, #0x20
     mov r10, r0
@@ -194,5 +194,5 @@ func_0204a5dc: ; 0x0204a5dc
 .L_0204a888:
     add sp, sp, #0x20
     ldmia sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, pc}
-.size func_0204a5dc, . - func_0204a5dc
+.size Type7Actor_AdjustDestinationForCollisions, . - Type7Actor_AdjustDestinationForCollisions
 

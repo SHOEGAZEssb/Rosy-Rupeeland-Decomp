@@ -8,7 +8,7 @@
 .extern Type7Actor_DispatchCurrentCallback
 .extern Type7Actor_TryCancelDistantTarget
 .extern Type7Actor_TryAcquireTarget
-.extern func_0204a5dc
+.extern Type7Actor_AdjustDestinationForCollisions
 .text
     .global Type7Actor_UpdateMotionFromRelatedTransform
 .type Type7Actor_UpdateMotionFromRelatedTransform, @function
@@ -168,7 +168,7 @@ Type7Actor_UpdateAcquiredTargetMotion: ; 0x020496cc
     add r1, r1, #0x18
     bl func_020050a4
     mov r0, r4
-    bl func_0204a5dc
+    bl Type7Actor_AdjustDestinationForCollisions
     mov r0, r4
     add r1, r4, #0x78
     bl Type7Actor_UpdateMotionTowardTransform

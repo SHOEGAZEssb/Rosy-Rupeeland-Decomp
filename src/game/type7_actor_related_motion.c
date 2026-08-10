@@ -17,7 +17,7 @@ extern void Type7Actor_UpdateFlag14Bit4FromCondition(void *actor, s32 condition)
 extern void Type7Actor_DispatchCurrentCallback(void *actor);
 extern s32 Type7Actor_TryCancelDistantTarget(void *actor);
 extern s32 Type7Actor_TryAcquireTarget(void *actor, s32 finiteMode);
-extern void func_0204a5dc(void *actor);
+extern void Type7Actor_AdjustDestinationForCollisions(void *actor);
 #ifdef __cplusplus
 }
 #endif
@@ -121,7 +121,7 @@ s32 Type7Actor_UpdateResourceDependentFlags(void *self)
  * The flag-four path copies saved transform +0x224 to +0x78 before the retail
  * control flow overwrites +0x78 with related transform +0x18; both copies are
  * retained because the first may carry reconstructed object semantics not
- * visible in the raw fields. Maintain extra state with func_0204a5dc, update
+ * visible in the raw fields. Maintain extra state with Type7Actor_AdjustDestinationForCollisions, update
  * motion, and select presentation 10 for related subtype one or 14 otherwise.
  * Always return zero. Actor, target, callback, and motion state may change; no
  * direct hardware access occurs.
@@ -149,7 +149,7 @@ s32 Type7Actor_UpdateAcquiredTargetMotion(void *self)
         func_020050a4(actor + 0x78, actor + 0x224);
     related = *(u8 **)(actor + 0x210);
     func_020050a4(actor + 0x78, related + 0x18);
-    func_0204a5dc(actor);
+    Type7Actor_AdjustDestinationForCollisions(actor);
     Type7Actor_UpdateMotionTowardTransform(actor, actor + 0x78);
     *(u16 *)(actor + 0xd6) = related[0x4d] == 1 ? 10 : 14;
     return 0;

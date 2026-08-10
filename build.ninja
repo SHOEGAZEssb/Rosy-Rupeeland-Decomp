@@ -18586,7 +18586,7 @@ build build/reports/type7_actor_destination_collision_adjust_0204a5dc.json: objd
   base_object = build/decomp/asm/game/type7_actor_destination_collision_adjust_0204a5dc.o
 build build/reports/type7_actor_destination_collision_adjust_0204a5dc.txt: match_report build/reports/type7_actor_destination_collision_adjust_0204a5dc.json | tools/report_objdiff.py
   report_json = build/reports/type7_actor_destination_collision_adjust_0204a5dc.json
-  report_args = --section .text --function func_0204a5dc --require-exact
+  report_args = --section .text --function Type7Actor_AdjustDestinationForCollisions --require-exact
 build type7_actor_destination_collision_adjust: phony build/decomp/src/game/type7_actor_destination_collision_adjust.o build/decomp/asm/game/type7_actor_destination_collision_adjust_0204a5dc.o build/reports/type7_actor_destination_collision_adjust_0204a5dc.txt
 
 type7_actor_forward_step_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++

@@ -9,7 +9,7 @@
 .extern Type7Actor_TryAcquireTarget
 .extern Type7Actor_EnterFlag20State
 .extern Type7Actor_EnterFlag80State
-.extern func_0204a5dc
+.extern Type7Actor_AdjustDestinationForCollisions
 .extern func_020ada8c
 .extern func_020adcac
 .extern func_020be328
@@ -188,7 +188,7 @@ Type7Actor_UpdateRandomOffsetMotionVariant: ; 0x0204929c
     bl func_020050a4
 .L_020493bc:
     mov r0, r4
-    bl func_0204a5dc
+    bl Type7Actor_AdjustDestinationForCollisions
     mov r0, r4
     add r1, r4, #0x78
     bl Type7Actor_UpdateMotionTowardTransform
@@ -284,7 +284,7 @@ Type7Actor_UpdateRelatedTargetMotion: ; 0x020493f8
     bl func_020050a4
 .L_02049510:
     mov r0, r5
-    bl func_0204a5dc
+    bl Type7Actor_AdjustDestinationForCollisions
     mov r0, r5
     add r1, r5, #0x78
     bl Type7Actor_UpdateMotionTowardTransform
