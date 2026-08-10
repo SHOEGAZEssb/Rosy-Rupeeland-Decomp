@@ -12,7 +12,7 @@ extern void *data_020f4e14;
 extern void *gDebugFont;
 extern void GamePhaseState_UpdateRenderHelpers(void *runtimeObject);
 extern void GamePhaseState_ForwardVCount(void *runtimeObject, u16 vcount);
-extern void func_02075630(void *object);
+extern void GraphicsSpriteRenderer_QueuePaletteUploads(void *object);
 #ifdef __cplusplus
 }
 #endif
@@ -69,6 +69,6 @@ void GamePhase_ResetTransientState(void)
     u32 i;
     for (i = 0; i < 12; i++)
         GameWork_ClearFlag(gGameWork, data_020c3600[i]);
-    func_02075630(data_020f4e14);
-    func_02075630(gDebugFont);
+    GraphicsSpriteRenderer_QueuePaletteUploads(data_020f4e14);
+    GraphicsSpriteRenderer_QueuePaletteUploads(gDebugFont);
 }

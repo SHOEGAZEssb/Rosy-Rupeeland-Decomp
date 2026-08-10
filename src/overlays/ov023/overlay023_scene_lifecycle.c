@@ -29,7 +29,7 @@ extern void *func_02073ffc(void *, void *, s32);
 extern void func_02073e48(void *, s32, s32, s32, ...);
 extern void func_0207419c(void *);
 extern void *func_020742cc(void *);
-extern void func_02075630(void *);
+extern void GraphicsSpriteRenderer_QueuePaletteUploads(void *);
 extern void func_02091b6c(void *);
 extern void func_02091e28(void *);
 extern void func_020926d8(void *);
@@ -178,8 +178,8 @@ static void cleanup_scene(void *scene)
     func_02071c38(data_020f4e18, FIELD(void *, scene, 0x4c0));
     *(volatile u16 *)0x04000050 = 0;
     *(volatile u16 *)0x04001050 = 0;
-    func_02075630(data_020f4e14);
-    func_02075630(gDebugFont);
+    GraphicsSpriteRenderer_QueuePaletteUploads(data_020f4e14);
+    GraphicsSpriteRenderer_QueuePaletteUploads(gDebugFont);
     __destroy_arr((u8 *)scene + 0x228, 2, 0xac,
                   (void *)func_ov023_021fd9b4);
     func_ov023_021fd9b4((u8 *)scene + 0x17c);

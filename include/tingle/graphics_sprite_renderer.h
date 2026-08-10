@@ -52,7 +52,7 @@ void *GraphicsSpriteRenderer_SetFontResource(GraphicsSpriteRenderer *renderer, v
 void GraphicsSpriteRenderer_ClearFontResource(GraphicsSpriteRenderer *renderer);
 void GraphicsSpriteRenderer_ClearTextBuffer(GraphicsSpriteRenderer *renderer);
 void *GraphicsSpriteRenderer_GetObjectPaletteAddress(GraphicsSpriteRenderer *renderer);
-void func_02075630(GraphicsSpriteRenderer *renderer);
+void GraphicsSpriteRenderer_QueuePaletteUploads(GraphicsSpriteRenderer *renderer);
 void func_020756b4(GraphicsSpriteRenderer *renderer, s32 x, s32 y,
                    const char *text, s32 length, u32 mode);
 void func_02075858(GraphicsSpriteRenderer *renderer, s32 x, s32 y,

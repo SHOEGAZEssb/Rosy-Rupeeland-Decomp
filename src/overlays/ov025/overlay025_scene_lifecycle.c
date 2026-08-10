@@ -42,7 +42,7 @@ extern void *func_02073ffc(void *, void *, s32);
 extern void func_0207419c(void *);
 extern void *func_020742cc(void *);
 extern void GraphicsSpriteRenderer_ClearTextBuffer(void *);
-extern void func_02075630(void *);
+extern void GraphicsSpriteRenderer_QueuePaletteUploads(void *);
 extern void func_02091b6c(void *);
 extern void func_02091e28(void *);
 extern void *func_02092cc0(void *, void *, void *);
@@ -255,7 +255,7 @@ static void cleanup_scene(void *scene)
     virtual_destroy(FIELD(void *, scene, 0x59c));
     func_0207419c(FIELD(void *, scene, 0xb0));
     func_0207419c(FIELD(void *, scene, 0xb4));
-    func_02075630(data_020f4e14);
+    GraphicsSpriteRenderer_QueuePaletteUploads(data_020f4e14);
     func_020927b8((u8 *)scene + 0x574);
     func_020926f8((u8 *)scene + 0x530);
     FIELD(const void *, scene, 0x4f8) = data_ov025_02203318;

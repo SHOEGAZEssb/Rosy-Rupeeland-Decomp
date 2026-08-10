@@ -11272,7 +11272,7 @@ build build/reports/graphics_sprite_palette_upload.json: objdiff build/decomp/de
 
 build build/reports/graphics_sprite_palette_upload.txt: match_report build/reports/graphics_sprite_palette_upload.json | tools/report_objdiff.py
   report_json = build/reports/graphics_sprite_palette_upload.json
-  report_args = --section .text --function func_02075630
+  report_args = --section .text --function GraphicsSpriteRenderer_QueuePaletteUploads
 
 build build/reports/graphics_sprite_text_printf.json: objdiff build/decomp/delinks/src/graphics/graphics_sprite_text_printf.o | build/decomp/src/graphics/graphics_sprite_text_printf.o
   target_object = build/decomp/delinks/src/graphics/graphics_sprite_text_printf.o

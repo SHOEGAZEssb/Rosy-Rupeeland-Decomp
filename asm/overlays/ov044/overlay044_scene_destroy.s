@@ -3,7 +3,7 @@
 .extern Heap_Free
 .extern func_ov001_021fb7d4
 .extern func_0207419c
-.extern func_02075630
+.extern GraphicsSpriteRenderer_QueuePaletteUploads
 .extern func_ov044_0220be34
 .extern func_02071eb8
 .extern func_020926f8
@@ -55,10 +55,10 @@ func_ov044_0220bfd4:
     bl func_0207419c
     ldr r0, .L_0220c0ac
     ldr r0, [r0, #0x0]
-    bl func_02075630
+    bl GraphicsSpriteRenderer_QueuePaletteUploads
     ldr r0, .L_0220c0b0
     ldr r0, [r0, #0x0]
-    bl func_02075630
+    bl GraphicsSpriteRenderer_QueuePaletteUploads
     add r0, r4, #0x17c
     bl func_ov044_0220be34
     add r0, r4, #0xd0
@@ -119,10 +119,10 @@ func_ov044_0220c0b4:
     bl func_0207419c
     ldr r0, .L_0220c194
     ldr r0, [r0, #0x0]
-    bl func_02075630
+    bl GraphicsSpriteRenderer_QueuePaletteUploads
     ldr r0, .L_0220c198
     ldr r0, [r0, #0x0]
-    bl func_02075630
+    bl GraphicsSpriteRenderer_QueuePaletteUploads
     add r0, r4, #0x17c
     bl func_ov044_0220be34
     add r0, r4, #0xd0

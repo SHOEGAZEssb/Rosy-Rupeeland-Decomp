@@ -16,7 +16,7 @@ extern void func_02071eb8(void *);
 extern void GraphicsSpriteState_SetAnimationIndex(void *, s32);
 extern void func_020740c8(void *, s32, s32, s32);
 extern void func_0207419c(void *);
-extern void func_02075630(void *);
+extern void GraphicsSpriteRenderer_QueuePaletteUploads(void *);
 extern void func_020927b8(void *);
 extern void func_02095308(void *);
 extern void func_ov028_021fd1a8(void *);
@@ -65,7 +65,7 @@ extern "C" void *func_ov028_021fdfa8(void *state)
     func_02095308((u8 *)state + 0x264);
     func_0207419c(FIELD(void *, state, 0x54));
     func_0207419c(FIELD(void *, state, 0x58));
-    func_02075630(data_020f4e14[0]);
+    GraphicsSpriteRenderer_QueuePaletteUploads(data_020f4e14[0]);
     FIELD(const void *, state, 0x264) = data_ov028_021ff29c;
     func_02095308((u8 *)state + 0x264);
     func_020927b8((u8 *)state + 0x1fc);

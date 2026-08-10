@@ -36,7 +36,7 @@ extern void *func_020953f4(void *, void *);
 extern void func_02094cf0(void *, const void *, s32);
 extern void func_02095508(void *);
 extern void func_0207419c(void *);
-extern void func_02075630(void *);
+extern void GraphicsSpriteRenderer_QueuePaletteUploads(void *);
 extern void GamePhaseRuntime_FinalizeActorCollections(void *, s32, s32);
 extern void func_ov013_021fce00(void *);
 extern void func_ov013_021fce04(void *, s32, s32, s32);
@@ -152,7 +152,7 @@ void *func_ov013_021fd09c(void *state)
     overlay013_destroy_dynamic(FIELD(void *, state, 0x9a8), 2);
     func_0207419c(FIELD(void *, state, 0x84));
     func_0207419c(FIELD(void *, state, 0x88));
-    func_02075630(data_020f4e14);
+    GraphicsSpriteRenderer_QueuePaletteUploads(data_020f4e14);
     func_0201e14c((u8 *)data_021052fc + 0x2f7c, 0);
     func_ov013_021fce00((u8 *)state + 0x89c);
     for (i = 4; i >= 0; --i)

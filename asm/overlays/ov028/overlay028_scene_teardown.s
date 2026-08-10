@@ -8,7 +8,7 @@
 .extern GraphicsSpriteState_SetAnimationIndex
 .extern func_020740c8
 .extern func_0207419c
-.extern func_02075630
+.extern GraphicsSpriteRenderer_QueuePaletteUploads
 .extern func_020927b8
 .extern func_02095308
 .extern func_ov028_021fd1a8
@@ -72,7 +72,7 @@ L_021fe030:
     bl func_0207419c
     ldr r0, L_021fe0a0
     ldr r0, [r0, #0x0]
-    bl func_02075630
+    bl GraphicsSpriteRenderer_QueuePaletteUploads
     ldr r1, L_021fe0a4
     add r0, r4, #0x264
     str r1, [r4, #0x264]
@@ -142,7 +142,7 @@ L_021fe130:
     bl func_0207419c
     ldr r0, L_021fe1a8
     ldr r0, [r0, #0x0]
-    bl func_02075630
+    bl GraphicsSpriteRenderer_QueuePaletteUploads
     ldr r1, L_021fe1ac
     add r0, r4, #0x264
     str r1, [r4, #0x264]

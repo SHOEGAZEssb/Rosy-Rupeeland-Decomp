@@ -1,6 +1,6 @@
 .text
 .extern func_0207419c
-.extern func_02075630
+.extern GraphicsSpriteRenderer_QueuePaletteUploads
 .extern OverlaySlot_Destroy
 .extern func_ov043_0220b740
 .extern func_02071eb8
@@ -33,10 +33,10 @@ func_ov043_0220b864:
 .L_0220b8a8:
     ldr r0, .L_0220b904
     ldr r0, [r0, #0x0]
-    bl func_02075630
+    bl GraphicsSpriteRenderer_QueuePaletteUploads
     ldr r0, .L_0220b908
     ldr r0, [r0, #0x0]
-    bl func_02075630
+    bl GraphicsSpriteRenderer_QueuePaletteUploads
     add r0, r4, #0x2e8
     bl OverlaySlot_Destroy
     add r0, r4, #0x2dc
@@ -81,10 +81,10 @@ func_ov043_0220b90c:
 .L_0220b950:
     ldr r0, .L_0220b9b4
     ldr r0, [r0, #0x0]
-    bl func_02075630
+    bl GraphicsSpriteRenderer_QueuePaletteUploads
     ldr r0, .L_0220b9b8
     ldr r0, [r0, #0x0]
-    bl func_02075630
+    bl GraphicsSpriteRenderer_QueuePaletteUploads
     add r0, r4, #0x2e8
     bl OverlaySlot_Destroy
     add r0, r4, #0x2dc

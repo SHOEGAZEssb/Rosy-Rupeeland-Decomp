@@ -8,7 +8,7 @@
 .extern func_020597fc
 .extern func_02071eb8
 .extern func_0207419c
-.extern func_02075630
+.extern GraphicsSpriteRenderer_QueuePaletteUploads
 .extern func_020926f8
 .extern func_020927b8
 .extern func_02095308
@@ -95,7 +95,7 @@ L_021ffb64:
     bl func_0207419c
     ldr r0, L_021ffc24
     ldr r0, [r0, #0x0]
-    bl func_02075630
+    bl GraphicsSpriteRenderer_QueuePaletteUploads
     add r0, r4, #0x174
     add r0, r0, #0x400
     bl func_020927b8

@@ -7,7 +7,7 @@
     .extern func_0201e14c
     .extern func_02071eb8
     .extern func_0207419c
-    .extern func_02075630
+    .extern GraphicsSpriteRenderer_QueuePaletteUploads
     .extern func_ov013_021fce00
 
 /* Exact fallback; see the documented portable reconstruction in
@@ -49,7 +49,7 @@ L_021fd204:
     bl func_0207419c
     ldr r0, L_021fd2a0
     ldr r0, [r0, #0x0]
-    bl func_02075630
+    bl GraphicsSpriteRenderer_QueuePaletteUploads
     ldr r0, L_021fd2a4
     mov r1, #0x0
     ldr r0, [r0, #0x0]

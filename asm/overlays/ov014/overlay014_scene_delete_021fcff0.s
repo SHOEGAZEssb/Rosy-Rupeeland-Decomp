@@ -2,7 +2,7 @@
     .extern Heap_Free
     .extern data_020f4e14
     .extern data_ov014_021fd994
-    .extern func_02075630
+    .extern GraphicsSpriteRenderer_QueuePaletteUploads
     .extern func_020927b8
     .extern func_ov000_021fb848
     .extern gDebugFont
@@ -36,10 +36,10 @@ L_021fd028:
 L_021fd040:
     ldr r0, L_021fd074
     ldr r0, [r0, #0x0]
-    bl func_02075630
+    bl GraphicsSpriteRenderer_QueuePaletteUploads
     ldr r0, L_021fd078
     ldr r0, [r0, #0x0]
-    bl func_02075630
+    bl GraphicsSpriteRenderer_QueuePaletteUploads
     add r0, r4, #0x54
     bl func_020927b8
     mov r0, r4

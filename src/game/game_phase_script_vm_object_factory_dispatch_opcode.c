@@ -51,7 +51,7 @@ extern void *OverlayManager_GetGlobal(void);
 extern void OverlayManager_LoadOverlay(void *state, s32 enabled, s32 value);
 extern void func_ov058_0220f484(void);
 extern u16 *GraphicsSpriteRenderer_GetObjectPaletteAddress(void *font);
-extern void func_02075630(void *font);
+extern void GraphicsSpriteRenderer_QueuePaletteUploads(void *font);
 #ifdef __cplusplus
 }
 #endif
@@ -92,8 +92,8 @@ s32 GamePhaseActorScriptVm_DispatchObjectFactory(GamePhaseActorScriptVm *self)
         func_0201ded4(runtimeObjectList(), object);
         break;
     case 19:
-        func_02075630(data_020f4e14);
-        func_02075630(gDebugFont);
+        GraphicsSpriteRenderer_QueuePaletteUploads(data_020f4e14);
+        GraphicsSpriteRenderer_QueuePaletteUploads(gDebugFont);
         break;
     case 18: {
         u16 *first = GraphicsSpriteRenderer_GetObjectPaletteAddress(gDebugFont);

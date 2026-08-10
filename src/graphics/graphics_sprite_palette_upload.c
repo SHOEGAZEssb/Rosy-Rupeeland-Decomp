@@ -43,7 +43,7 @@ extern u32 GX_VBlankIntr(u32 state);
  * interrupt-state word change, and the prior interrupt state is restored.
  */
 #ifndef MATCHING
-void func_02075630(GraphicsSpriteRenderer *renderer)
+void GraphicsSpriteRenderer_QueuePaletteUploads(GraphicsSpriteRenderer *renderer)
 {
     GraphicsSpritePaletteResource *resource =
         (GraphicsSpritePaletteResource *)renderer->field_14;
@@ -64,7 +64,7 @@ void func_02075630(GraphicsSpriteRenderer *renderer)
 }
 #else
 /* This matching fallback implements the documented portable C directly above. */
-asm void func_02075630(GraphicsSpriteRenderer *renderer)
+asm void GraphicsSpriteRenderer_QueuePaletteUploads(GraphicsSpriteRenderer *renderer)
 {
     stmdb sp!, {r3, r4, r5, r6, r7, r8, r9, lr}
     mov r8, r0

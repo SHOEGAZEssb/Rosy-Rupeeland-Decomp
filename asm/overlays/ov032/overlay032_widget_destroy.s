@@ -6,7 +6,7 @@
 .extern func_02071d4c
 .extern GraphicsSpriteRenderer_ClearFontResource
 .extern GraphicsSpriteRenderer_ClearTextBuffer
-.extern func_02075630
+.extern GraphicsSpriteRenderer_QueuePaletteUploads
 .extern func_ov032_0220147c
 
     .global func_ov032_022018ac
@@ -15,7 +15,7 @@ func_ov032_022018ac:
     ldr r1, L_0220190c
     mov r4, r0
     ldr r0, [r1, #0x0]
-    bl func_02075630
+    bl GraphicsSpriteRenderer_QueuePaletteUploads
     add r0, r4, #0x18
     bl func_ov032_0220147c
     ldr r0, L_02201910

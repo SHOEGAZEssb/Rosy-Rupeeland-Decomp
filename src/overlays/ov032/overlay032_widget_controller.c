@@ -29,7 +29,7 @@ extern void func_ov032_021fe0c4(void *);
 extern void *func_02071980(...);
 extern void GraphicsSpriteRenderer_SetFontResource(...);
 extern void *GraphicsSpriteRenderer_GetObjectPaletteAddress(void *);
-extern void func_02075630(void *);
+extern void GraphicsSpriteRenderer_QueuePaletteUploads(void *);
 extern void func_02071d4c(...);
 extern void GraphicsSpriteRenderer_ClearFontResource(void *);
 extern void GraphicsSpriteRenderer_ClearTextBuffer(void *);
@@ -144,7 +144,7 @@ extern "C" void func_ov032_0220173c(void *widget, void *scene)
  */
 extern "C" void func_ov032_022018ac(void *widget)
 {
-    func_02075630(data_020f4e14[0]);
+    GraphicsSpriteRenderer_QueuePaletteUploads(data_020f4e14[0]);
     func_ov032_0220147c((u8 *)widget + 0x18);
     func_02071d4c(data_020f4e18[0], FIELD(void *, widget, 0x48));
     GraphicsSpriteRenderer_ClearFontResource(data_020f4e14[0]);

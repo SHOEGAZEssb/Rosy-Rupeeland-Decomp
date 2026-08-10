@@ -30,7 +30,7 @@ extern void func_ov000_021fb848(void *);
 extern void func_02064be0(void *, s32);
 extern void *func_ov000_021fbcc4(void *, void *);
 extern void func_ov000_021fcae8(void *, void *, s32);
-extern void func_02075630(void *);
+extern void GraphicsSpriteRenderer_QueuePaletteUploads(void *);
 extern void func_ov014_021fce00(void *);
 extern void func_ov014_021fcf50(void *, const void *);
 extern void func_ov014_021fd07c(void *);
@@ -109,8 +109,8 @@ void *func_ov014_021fcf6c(void *state)
         void **vtable = FIELD(void **, object, 0);
         ((Overlay014Destructor)vtable[1])(object);
     }
-    func_02075630(data_020f4e14);
-    func_02075630(gDebugFont);
+    GraphicsSpriteRenderer_QueuePaletteUploads(data_020f4e14);
+    GraphicsSpriteRenderer_QueuePaletteUploads(gDebugFont);
     func_020927b8((u8 *)state + 0x54);
     return state;
 }

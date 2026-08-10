@@ -16,7 +16,7 @@ extern "C" {
 extern void Heap_Free(void *);
 extern void func_0201e14c(void *, s32);
 extern void func_02071c38(void *, void *);
-extern void func_02075630(void *);
+extern void GraphicsSpriteRenderer_QueuePaletteUploads(void *);
 extern void func_020927b8(void *);
 extern void func_ov002_021fb9c4(void *);
 extern void func_ov045_0220b8cc(void *);
@@ -55,8 +55,8 @@ static void Overlay029_TearDown(void *state)
     func_02071c38(data_020f4e18[0], FIELD(void *, state, 0xe8));
     *(volatile u16 *)0x04000050 = 0;
     *(volatile u16 *)0x04001050 = 0;
-    func_02075630(data_020f4e14[0]);
-    func_02075630(gDebugFont);
+    GraphicsSpriteRenderer_QueuePaletteUploads(data_020f4e14[0]);
+    GraphicsSpriteRenderer_QueuePaletteUploads(gDebugFont);
     func_0201e14c((u8 *)data_021052fc + 0x2f7c, 0);
     func_020927b8((u8 *)state + 0x78);
 }

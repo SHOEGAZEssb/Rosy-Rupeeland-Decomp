@@ -38,7 +38,7 @@
 .extern func_02027150
 .extern func_02027300
 .extern GraphicsSpriteRenderer_GetObjectPaletteAddress
-.extern func_02075630
+.extern GraphicsSpriteRenderer_QueuePaletteUploads
 .extern func_ov058_0220f484
 .extern gDebugFont
 .extern gHeapContext
@@ -100,10 +100,10 @@ L_02017dcc:
 L_02017de4:
     ldr r0, L_020181c8
     ldr r0, [r0, #0x0]
-    bl func_02075630
+    bl GraphicsSpriteRenderer_QueuePaletteUploads
     ldr r0, L_020181cc
     ldr r0, [r0, #0x0]
-    bl func_02075630
+    bl GraphicsSpriteRenderer_QueuePaletteUploads
     b L_020181b0
 L_02017e00:
     ldr r0, L_020181cc

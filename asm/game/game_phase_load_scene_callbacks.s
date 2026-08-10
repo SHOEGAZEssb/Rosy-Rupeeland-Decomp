@@ -7,7 +7,7 @@
 .extern data_021052fc
 .extern GamePhaseState_UpdateRenderHelpers
 .extern GamePhaseState_ForwardVCount
-.extern func_02075630
+.extern GraphicsSpriteRenderer_QueuePaletteUploads
 .extern gDebugFont
 .extern gGameWork
 
@@ -84,10 +84,10 @@ L_0200e4a8:
     blo L_0200e494
     ldr r0, L_0200e4d4
     ldr r0, [r0, #0x0]
-    bl func_02075630
+    bl GraphicsSpriteRenderer_QueuePaletteUploads
     ldr r0, L_0200e4d8
     ldr r0, [r0, #0x0]
-    bl func_02075630
+    bl GraphicsSpriteRenderer_QueuePaletteUploads
     ldmia sp!, {r4, r5, r6, pc}
 L_0200e4cc: .word data_020c3600
 L_0200e4d0: .word gGameWork

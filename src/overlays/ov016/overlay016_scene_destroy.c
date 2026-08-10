@@ -14,7 +14,7 @@ extern "C" {
 extern void Heap_Free(void *);
 extern void func_02071eb8(void *);
 extern void func_0207419c(void *);
-extern void func_02075630(void *);
+extern void GraphicsSpriteRenderer_QueuePaletteUploads(void *);
 extern void func_020926f8(void *);
 extern void func_020927b8(void *);
 extern void func_ov000_021fb848(void *);
@@ -69,8 +69,8 @@ static void overlay016_release_scene(void *state)
 
     *(volatile u16 *)0x04000050 = 0;
     *(volatile u16 *)0x04001050 = 0;
-    func_02075630(FIELD(void *, data_020f4e14, 0));
-    func_02075630(FIELD(void *, gDebugFont, 0));
+    GraphicsSpriteRenderer_QueuePaletteUploads(FIELD(void *, data_020f4e14, 0));
+    GraphicsSpriteRenderer_QueuePaletteUploads(FIELD(void *, gDebugFont, 0));
 
     func_ov016_021fe0d4((u8 *)state + 0x398);
     func_ov016_021fe0d4((u8 *)state + 0x2ec);

@@ -10,7 +10,7 @@
 .extern func_0201e28c
 .extern func_02071eb8
 .extern func_0207419c
-.extern func_02075630
+.extern GraphicsSpriteRenderer_QueuePaletteUploads
 .extern func_02075a04
 .extern func_020927b8
 .extern gDebugFont
@@ -23,10 +23,10 @@ func_ov058_0220eb50:
     ldr r0, .L_0220ec34
     str r1, [r4, #0x0]
     ldr r0, [r0, #0x0]
-    bl func_02075630
+    bl GraphicsSpriteRenderer_QueuePaletteUploads
     ldr r0, .L_0220ec38
     ldr r0, [r0, #0x0]
-    bl func_02075630
+    bl GraphicsSpriteRenderer_QueuePaletteUploads
     ldr r0, .L_0220ec34
     mov r1, #0x0
     ldr r0, [r0, #0x0]
