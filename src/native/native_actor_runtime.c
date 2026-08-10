@@ -18,6 +18,7 @@ enum {
     ACTOR_MOTION_PROBE_VTABLE_ADDRESS = 0x020DF61C,
     ACTOR_MODE_NIBBLE_VTABLE_ADDRESS = 0x020DF774,
     ACTOR_INDEXED_STATE_VTABLE_ADDRESS = 0x020E212C,
+    ACTOR_TABLE_RECORD_VTABLE_ADDRESS = 0x020DF910,
     MARKER_PRESENTATION_VTABLE_ADDRESS = 0x020E1ED8,
     VECTOR_VTABLE_ADDRESS = 0x020D405C,
     ACTOR_SCRIPT_VM_VTABLE_ADDRESS = 0x020D5B20,
@@ -205,6 +206,12 @@ static s32 UsesIndexedStateConstructor(
     return desc->kind == 3 && desc->subtype == 5;
 }
 
+static s32 UsesTableRecordConstructor(
+    const TingleNativeActorDescriptor *desc)
+{
+    return desc->kind == 3 && desc->subtype == 17;
+}
+
 static s32 UsesKnownSharedBaseConstructor(
     const TingleNativeActorDescriptor *desc)
 {
@@ -212,7 +219,8 @@ static s32 UsesKnownSharedBaseConstructor(
            UsesSingletonTrackerConstructor(desc) ||
            UsesModeNibbleConstructor(desc) ||
            UsesMotionProbeConstructor(desc) ||
-           UsesIndexedStateConstructor(desc);
+           UsesIndexedStateConstructor(desc) ||
+           UsesTableRecordConstructor(desc);
 }
 
 /* Reproduce func_0203b554 after its common-base constructor has returned. */
@@ -347,6 +355,27 @@ static void InitializeIndexedStateActor(TingleNativeActorImage *actor)
     actor->initialization_stages |= TINGLE_NATIVE_ACTOR_STAGE_KIND3_DERIVED;
 }
 
+/* Reproduce func_0203ca28 using the ARM9 table record resolved by the catalog. */
+static void InitializeTableRecordActor(TingleNativeActorImage *actor)
+{
+    const u8 *record = actor->descriptor.constructor_record;
+    u8 *bytes = actor->bytes;
+    u16 value = ReadU16(record, 0x04);
+    u32 flags;
+
+    WriteU32(bytes, 0x00, ACTOR_TABLE_RECORD_VTABLE_ADDRESS);
+    WriteU16(bytes, 0x20A, 0);
+    flags = ReadU32(bytes, 0x20C) & ~(0x4000u | 0x8000u);
+    bytes[0x210] = bytes[0x211] = 0;
+    WriteU32(bytes, 0x214, actor->descriptor.constructor_record_address);
+    if (value < 1) value = 1;
+    WriteU16(bytes, 0x208, value);
+    flags = (flags & ~0x1FFFu) | (value & 0x1FFFu);
+    flags = (flags & ~0x2000u) | ((u32)(record[0x0D] & 1) << 13);
+    WriteU32(bytes, 0x20C, flags);
+    actor->initialization_stages |= TINGLE_NATIVE_ACTOR_STAGE_KIND3_DERIVED;
+}
+
 static s32 InitializeActor(TingleNativeActorImage *actor,
                            const TingleNativeActorDescriptor *descriptor,
                            u32 category, s32 synthetic)
@@ -406,6 +435,9 @@ static s32 InitializeActor(TingleNativeActorImage *actor,
         InitializeMotionProbeActor(actor);
     else if (actor->size >= 0x20C && UsesIndexedStateConstructor(descriptor))
         InitializeIndexedStateActor(actor);
+    else if (actor->size >= 0x218 && UsesTableRecordConstructor(descriptor) &&
+             descriptor->constructor_record_valid)
+        InitializeTableRecordActor(actor);
     else if (!UsesSharedDerivedConstructor(descriptor) &&
              !UsesRuntimeVariantConstructor(descriptor))
         actor->pending_external_state |=

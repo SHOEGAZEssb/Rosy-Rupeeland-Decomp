@@ -10,8 +10,14 @@
 enum {
     KIND2_TABLE_ADDRESS = 0x020E8380,
     KIND9_TABLE_ADDRESS = 0x020ED470,
+    KIND3_TABLE_ADDRESS = 0x020ED638,
     FACTORY_TABLE_RECORD_SIZE = 0x30
 };
+
+static u16 ReadU16(const u8 *bytes)
+{
+    return (u16)bytes[0] | (u16)((u16)bytes[1] << 8);
+}
 
 /* Load only the selector bytes needed by the reconstructed factory matrix. */
 s32 TingleNativeActorFactoryCatalog_Init(
@@ -19,6 +25,7 @@ s32 TingleNativeActorFactoryCatalog_Init(
 {
     void *kind2_records = NULL;
     void *kind9_records = NULL;
+    void *kind3_table_records = NULL;
     u32 index;
 
     if (catalog == NULL) return 0;
@@ -30,7 +37,13 @@ s32 TingleNativeActorFactoryCatalog_Init(
         !TingleNativeData_ReadArm9(
             data, KIND9_TABLE_ADDRESS,
             TINGLE_NATIVE_KIND9_RECORD_COUNT * FACTORY_TABLE_RECORD_SIZE,
-            &kind9_records)) {
+            &kind9_records) ||
+        !TingleNativeData_ReadArm9(
+            data, KIND3_TABLE_ADDRESS,
+            TINGLE_NATIVE_KIND3_TABLE_RECORD_COUNT *
+                TINGLE_NATIVE_KIND3_TABLE_RECORD_SIZE,
+            &kind3_table_records)) {
+        free(kind3_table_records);
         free(kind9_records);
         free(kind2_records);
         return 0;
@@ -41,6 +54,9 @@ s32 TingleNativeActorFactoryCatalog_Init(
     for (index = 0; index < TINGLE_NATIVE_KIND9_RECORD_COUNT; ++index)
         catalog->kind9_classes[index] =
             ((const u8 *)kind9_records)[index * FACTORY_TABLE_RECORD_SIZE + 1];
+    memcpy(catalog->kind3_table_records, kind3_table_records,
+           sizeof(catalog->kind3_table_records));
+    free(kind3_table_records);
     free(kind9_records);
     free(kind2_records);
     catalog->loaded = 1;
@@ -90,6 +106,7 @@ s32 TingleNativeActorFactoryCatalog_Resolve(
 
     if (catalog == NULL || !catalog->loaded || descriptor == NULL || spec == NULL)
         return 0;
+    memset(spec, 0, sizeof(*spec));
     variant = descriptor->subtype;
     switch (descriptor->kind) {
     case 1:
@@ -105,6 +122,23 @@ s32 TingleNativeActorFactoryCatalog_Resolve(
     case 3:
         if (descriptor->subtype >= 25) return 0;
         size = kind3_sizes[descriptor->subtype];
+        if (descriptor->subtype == 17 || descriptor->subtype == 18) {
+            s16 key = (s16)ReadU16(descriptor->raw + 0x4E);
+            u32 index;
+            for (index = 0; index < TINGLE_NATIVE_KIND3_TABLE_RECORD_COUNT;
+                 ++index) {
+                const u8 *record = catalog->kind3_table_records[index];
+                if ((s16)ReadU16(record) == key) {
+                    spec->constructor_record_address =
+                        KIND3_TABLE_ADDRESS +
+                        index * TINGLE_NATIVE_KIND3_TABLE_RECORD_SIZE;
+                    memcpy(spec->constructor_record, record,
+                           sizeof(spec->constructor_record));
+                    spec->constructor_record_valid = 1;
+                }
+            }
+            if (!spec->constructor_record_valid) return 0;
+        }
         break;
     case 4:
         size = ResolveKind4Size(descriptor->subtype);

@@ -46,6 +46,9 @@ typedef struct TingleNativeActorDescriptor {
     u32 reference_58;
     u16 allocation_size;
     s16 factory_variant;
+    u32 constructor_record_address;
+    u8 constructor_record[0x0E];
+    s32 constructor_record_valid;
     u8 raw[0x64];
 } TingleNativeActorDescriptor;
 

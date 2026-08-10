@@ -136,6 +136,12 @@ static s32 ResolveDescriptorList(
             return 0;
         descriptors[index].allocation_size = spec.allocation_size;
         descriptors[index].factory_variant = spec.factory_variant;
+        descriptors[index].constructor_record_address =
+            spec.constructor_record_address;
+        memcpy(descriptors[index].constructor_record, spec.constructor_record,
+               sizeof(descriptors[index].constructor_record));
+        descriptors[index].constructor_record_valid =
+            spec.constructor_record_valid;
     }
     return 1;
 }

@@ -165,7 +165,9 @@ constructors remain marked pending. The default kind-six `0x1EC` route also
 has its final vtable and factory flag bits; only descriptors with a nonzero
 word at `0x2C` retain their type-specific virtual-hook dependency.
 Kind-three motion-probe subtype 1, indexed-state subtype 5, and mode-nibble
-subtypes 12 through 16 and 19 also have complete constructor images.
+subtypes 12 through 16 and 19 also have complete constructor images. Subtype
+17 resolves its signed key through the recovered twelve-record ARM9 table and
+retains the selected retail record address in its completed actor image.
 The category-two singleton-tracker bootstrap has its complete constructor
 image. The category-one bootstrap includes its full type-one scalar/vector
 extension and the known header of its marker helper; resource lookup and host
