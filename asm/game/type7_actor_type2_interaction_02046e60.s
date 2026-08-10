@@ -7,7 +7,7 @@
 .extern func_020066a4
 .extern func_02008378
 .extern func_0201e0ec
-.extern func_020380f0
+.extern ActorDerivedType1_IsTargetStateEligible
 .extern func_02038784
 .extern func_02047dd8
 .extern func_0204b7bc
@@ -214,7 +214,7 @@ func_02046e60: ; 0x02046e60
     mov r1, #0x1
     bl func_020a2894
     mov r0, r6
-    bl func_020380f0
+    bl ActorDerivedType1_IsTargetStateEligible
     cmp r0, #0x0
     bne .L_0204718c
     ldrb r0, [r6, #0x24c]

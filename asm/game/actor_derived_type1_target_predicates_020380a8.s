@@ -1,9 +1,9 @@
 ; Matching retail form; see src/game/actor_derived_type1_target_predicates.c.
 .text
 
-    .global func_020380a8
-    .type func_020380a8, @function
-func_020380a8: ; 0x020380a8
+    .global ActorDerivedType1_IsTargetInteractionReady
+    .type ActorDerivedType1_IsTargetInteractionReady, @function
+ActorDerivedType1_IsTargetInteractionReady: ; 0x020380a8
     stmdb sp!, {r4, lr}
     ldr r1, [r0, #0x260]
     mov r4, #0x0
@@ -25,4 +25,4 @@ func_020380a8: ; 0x020380a8
 .L_020380e8:
     mov r0, r4
     ldmia sp!, {r4, pc}
-    .size func_020380a8, . - func_020380a8
+    .size ActorDerivedType1_IsTargetInteractionReady, . - ActorDerivedType1_IsTargetInteractionReady

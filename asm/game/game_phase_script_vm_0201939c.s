@@ -19,7 +19,7 @@
 .extern Actor_GetCollisionCenter
 .extern Actor_GetCollection
 .extern ActorDerivedType1_StartRecord
-.extern func_020397d4
+.extern ActorDerivedType1_IsIdleEligible
 .extern func_0204e3f4
 .extern func_0204f7e4
 .extern func_0204f854
@@ -264,7 +264,7 @@ L_02019708:
     ldr r0, [r0, #0x0]
     add r0, r0, #0x2000
     ldr r0, [r0, #0xea4]
-    bl func_020397d4
+    bl ActorDerivedType1_IsIdleEligible
     cmp r0, #0x0
     beq L_02019878
     ldr r0, L_02019884

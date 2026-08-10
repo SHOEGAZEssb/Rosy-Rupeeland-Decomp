@@ -16,7 +16,7 @@ extern void func_02027f2c(void);
 extern void *func_02027f94(void);
 extern void ActorCollection_SetSpriteMode(void *object, s32 value);
 extern void func_0202d68c(void *object, s32 value);
-extern void func_02038e50(void *object, s32 enabled);
+extern void ActorDerivedType1_UpdateGameWorkRuntimeFlags(void *object, s32 enabled);
 extern void ActorInteractionRuntime_Start(void);
 extern void func_020598a0(void *sound, u16 value);
 extern void func_0200e480(void);
@@ -90,7 +90,7 @@ void func_0200e714(GamePhaseState *self, const void *configuration)
     func_0200e780(self, configuration);
     config->callback24(0);
     ActorInteractionRuntime_Start();
-    func_02038e50(self->storage_0004 + 0x2e7c,
+    ActorDerivedType1_UpdateGameWorkRuntimeFlags(self->storage_0004 + 0x2e7c,
                   config->phaseId >= 2 && config->phaseId <= 4);
     if (config->field_12 < 0)
         (*(HelperMethod **)self->helper_2eb4)[0](self->helper_2eb4);

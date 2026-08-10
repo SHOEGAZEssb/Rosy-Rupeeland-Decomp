@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/game_phase_state_configuration.c.
 .text
 .extern func_0200e780
-.extern func_02038e50
+.extern ActorDerivedType1_UpdateGameWorkRuntimeFlags
 .extern ActorInteractionRuntime_Start
 
     .global func_0200e714
@@ -22,7 +22,7 @@ func_0200e714: ; 0x0200e714
     movls r1, #0x1
     ldr r0, [r0, #0xe80]
     movhi r1, #0x0
-    bl func_02038e50
+    bl ActorDerivedType1_UpdateGameWorkRuntimeFlags
     ldr r0, [r4, #0x0]
     ldrsh r0, [r0, #0x12]
     cmp r0, #0x0

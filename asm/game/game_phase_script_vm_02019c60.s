@@ -3,7 +3,7 @@
 .extern data_021052fc
 .extern func_02012704
 .extern func_020127f8
-.extern func_020397d4
+.extern ActorDerivedType1_IsIdleEligible
 .extern gSceneManager
 .extern SceneManager_GetCurrent
 .global func_02019c60
@@ -39,7 +39,7 @@ L_02019cb4:
     cmp r0, #0x2
     beq L_02019db8
     mov r0, r5
-    bl func_020397d4
+    bl ActorDerivedType1_IsIdleEligible
     cmp r0, #0x0
     movne r4, #0x1
     b L_02019db8

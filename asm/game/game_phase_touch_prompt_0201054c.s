@@ -9,7 +9,7 @@
 .extern ActorDerivedType1_TeardownActiveRecord
 .extern ActorDerivedType1_IsActiveRecordType69
 .extern ActorDerivedType1_IsActiveRecordType6A
-.extern func_020397d4
+.extern ActorDerivedType1_IsIdleEligible
 .extern func_02092910
 .extern func_02094cf0
 .extern func_02095224
@@ -103,7 +103,7 @@ L_02010640:
     b L_020106a0
 L_02010674:
     mov r0, r5
-    bl func_020397d4
+    bl ActorDerivedType1_IsIdleEligible
     cmp r0, #0x0
     beq L_020106a0
     ldr r0, L_0201071c

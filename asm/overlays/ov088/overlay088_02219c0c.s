@@ -6,7 +6,7 @@
 .extern func_02005070
 .extern func_0203392c
 .extern Actor_GetCachedTerrainHeight
-.extern func_020397d4
+.extern ActorDerivedType1_IsIdleEligible
 .extern func_ov088_02219d64
 .extern func_ov088_0221a9c0
 .extern gSceneManager
@@ -44,7 +44,7 @@ func_ov088_02219c0c:
     add r0, r0, #0x2000
     ldr r7, [r0, #0xea4]
     mov r0, r7
-    bl func_020397d4
+    bl ActorDerivedType1_IsIdleEligible
     cmp r0, #0x0
     beq .L_02219d48
     mov r0, r5

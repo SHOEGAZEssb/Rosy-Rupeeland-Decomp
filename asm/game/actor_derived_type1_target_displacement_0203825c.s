@@ -17,7 +17,7 @@
 .extern func_0201e0ec
 .extern func_02022cb0
 .extern func_020349b8
-.extern func_020380f0
+.extern ActorDerivedType1_IsTargetStateEligible
 .extern func_02038784
 .extern Type1Actor_TryEnterFailureState
 .extern ActorExtendedType2_GetDescriptorValue28
@@ -238,7 +238,7 @@ ActorDerivedType1_ApplyWeightedCollisionDisplacement: ; 0x0203825c
     bl func_020a2894
     mov r0, r6
     mov r4, #0x0
-    bl func_020380f0
+    bl ActorDerivedType1_IsTargetStateEligible
     cmp r0, #0x0
     beq .L_020385e0
     add r0, r6, #0x200

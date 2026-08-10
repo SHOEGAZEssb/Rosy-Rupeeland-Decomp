@@ -20,7 +20,7 @@ extern void func_020954f4(void *actor);
 extern s32 ActorDerivedType1_IsActiveRecordType69(void *actor);
 extern s32 ActorDerivedType1_IsActiveRecordType6A(void *actor);
 extern void ActorDerivedType1_TeardownActiveRecord(void *actor);
-extern s32 func_020397d4(void *actor);
+extern s32 ActorDerivedType1_IsIdleEligible(void *actor);
 #ifdef __cplusplus
 }
 #endif
@@ -56,7 +56,7 @@ void func_0201054c(GamePhaseTouchPrompt *self)
                             ActorDerivedType1_IsActiveRecordType6A(phaseActor))
                             ActorDerivedType1_TeardownActiveRecord(phaseActor);
                     } else if ((flags & 0x20000) ||
-                               func_020397d4(phaseActor)) {
+                               ActorDerivedType1_IsIdleEligible(phaseActor)) {
                         Scene *scene = SceneManager_GetCurrent(gSceneManager);
                         ((void (*)(Scene *, s32))scene->vtable->method20)(
                             scene, 100);

@@ -2,9 +2,9 @@
 .text
 .extern gGameWork
 
-    .global func_02038e50
-    .type func_02038e50, @function
-func_02038e50: ; 0x02038e50
+    .global ActorDerivedType1_UpdateGameWorkRuntimeFlags
+    .type ActorDerivedType1_UpdateGameWorkRuntimeFlags, @function
+ActorDerivedType1_UpdateGameWorkRuntimeFlags: ; 0x02038e50
     cmp r1, #0x0
     beq .L_02038eb8
     ldr r2, [r0, #0x230]
@@ -39,4 +39,4 @@ func_02038e50: ; 0x02038e50
     str r1, [r0, #0x230]
     bx lr
 .L_02038ec8: .word gGameWork
-    .size func_02038e50, . - func_02038e50
+    .size ActorDerivedType1_UpdateGameWorkRuntimeFlags, . - ActorDerivedType1_UpdateGameWorkRuntimeFlags

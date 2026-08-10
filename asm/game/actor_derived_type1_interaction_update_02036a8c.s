@@ -26,7 +26,7 @@
 .extern Actor_QueryTerrainHeight
 .extern func_020349b8
 .extern Actor_IsAtCachedTerrainHeight
-.extern func_020372b4
+.extern ActorDerivedType1_HasBlockingStateFlags
 .extern func_02039468
 .extern func_02039db8
 .extern ActorFeedback_DispatchEnvironment
@@ -353,7 +353,7 @@ ActorDerivedType1_ProcessInteraction: ; 0x02036a8c
     rsb r5, r0, r5, asr #0xc
     bne .L_02036f78
     mov r0, r10
-    bl func_020372b4
+    bl ActorDerivedType1_HasBlockingStateFlags
     cmp r0, #0x0
     ldreq r0, [r10, #0x270]
     cmpeq r0, #0x0

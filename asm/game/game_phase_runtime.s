@@ -36,7 +36,7 @@
 .extern ActorCollection_DispatchEventToActors
 .extern Actor_AdjustPositionForTerrainHeight
 .extern ActorDerivedType1_ResetToDisabledState
-.extern func_02038e50
+.extern ActorDerivedType1_UpdateGameWorkRuntimeFlags
 .extern ActorInteractionRuntime_Start
 .extern func_020ae90c
 .extern GameWork_TestFlag
@@ -246,7 +246,7 @@ L_02006da0:
     movls r1, #0x1
     ldr r0, [r0, #0xea4]
     movhi r1, #0x0
-    bl func_02038e50
+    bl ActorDerivedType1_UpdateGameWorkRuntimeFlags
     add r1, r4, #0x2000
     add r0, r4, #0x3bc
     ldr r1, [r1, #0xea4]

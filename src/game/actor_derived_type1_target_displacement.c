@@ -20,7 +20,7 @@ extern void func_02038784(void *output, const void *direction, s32 scale);
 extern void func_02008378(void *output, const void *left, const void *right);
 extern void *func_0201e0ec(void *manager);
 extern void func_020a2894(void *effect, s32 kind, s32 x, s32 y, s32 extra);
-extern s32 func_020380f0(void *target);
+extern s32 ActorDerivedType1_IsTargetStateEligible(void *target);
 extern s32 ActorExtendedType2_GetDescriptorValue28(void *target);
 extern u32 genrand_int32(void);
 extern s32 func_020ada8c(s32 value, s32 divisor);
@@ -141,7 +141,7 @@ void ActorDerivedType1_ApplyWeightedCollisionDisplacement(
         effect = func_0201e0ec(data_021052fc + 0x2f7c);
         func_020a2894(effect, 1, effectPosition[1], effectPosition[2], 0);
 
-        if (func_020380f0(target) != 0) {
+        if (ActorDerivedType1_IsTargetStateEligible(target) != 0) {
             s32 relative;
             baseCount = *(s16 *)(target + 0x29e) + 4;
             relative = func_020ae024(*(s32 *)(actor + 0x20) -

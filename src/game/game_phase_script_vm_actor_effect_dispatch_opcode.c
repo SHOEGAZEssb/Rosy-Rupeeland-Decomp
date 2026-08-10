@@ -25,7 +25,7 @@ extern void *ActorCollection_FindActorByDescriptorValue(void *collection, s32 in
 extern void *Actor_GetCollisionCenter(VecFx32Object *destination, void *actor);
 extern void *Actor_GetCollection(void *actor);
 extern void ActorDerivedType1_StartRecord(void *manager, s32 value);
-extern s32 func_020397d4(void *manager);
+extern s32 ActorDerivedType1_IsIdleEligible(void *manager);
 extern void func_0204e3f4(s32 duration, s16 amount,
                           const VecFx32Object *position);
 extern void func_0204f7e4(const VecFx32Object *position,
@@ -160,7 +160,7 @@ s32 func_0201939c(GamePhaseActorScriptVm *self)
     }
     case 2: {
         void *manager = *(void **)((u8 *)data_021052fc + 0x2ea4);
-        if (func_020397d4(manager))
+        if (ActorDerivedType1_IsIdleEligible(manager))
             ActorDerivedType1_StartRecord(manager, p6);
         break;
     }

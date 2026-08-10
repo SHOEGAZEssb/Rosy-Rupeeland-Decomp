@@ -4,7 +4,7 @@
 .extern Actor_IsInteractionEligible
 .extern func_0200b04c
 .extern func_0204aff4
-.extern func_020397d4
+.extern ActorDerivedType1_IsIdleEligible
 .extern func_0200500c
 .extern ActorDerivedType1_TrySetStateVector
 .extern func_02005058
@@ -156,7 +156,7 @@ ActorCollection_ProcessSelectionQuery: ; 0x0202d7a8
     ldr r0, [r0, #0x0]
     add r0, r0, #0x2000
     ldr r0, [r0, #0xea4]
-    bl func_020397d4
+    bl ActorDerivedType1_IsIdleEligible
     cmp r0, #0x0
     beq .L_0202dad8
     ldr r0, .L_0202dae4

@@ -1,11 +1,11 @@
 ; Matching retail form; see src/game/actor_derived_type1_idle_eligibility.c.
 .text
 .extern Actor_IsAtCachedTerrainHeight
-.extern func_020372b4
+.extern ActorDerivedType1_HasBlockingStateFlags
 
-    .global func_020397d4
-    .type func_020397d4, @function
-func_020397d4: ; 0x020397d4
+    .global ActorDerivedType1_IsIdleEligible
+    .type ActorDerivedType1_IsIdleEligible, @function
+ActorDerivedType1_IsIdleEligible: ; 0x020397d4
     stmdb sp!, {r4, r5, r6, r7, r8, lr}
     ldr r1, [r0, #0x0]
     mov r4, #0x0
@@ -38,7 +38,7 @@ func_020397d4: ; 0x020397d4
     cmp r7, #0x0
     beq .L_0203985c
     mov r0, r8
-    bl func_020372b4
+    bl ActorDerivedType1_HasBlockingStateFlags
     cmp r0, #0x0
     moveq r6, #0x1
 .L_0203985c:
@@ -62,4 +62,4 @@ func_020397d4: ; 0x020397d4
 .L_0203989c:
     mov r0, r4
     ldmia sp!, {r4, r5, r6, r7, r8, pc}
-    .size func_020397d4, . - func_020397d4
+    .size ActorDerivedType1_IsIdleEligible, . - ActorDerivedType1_IsIdleEligible

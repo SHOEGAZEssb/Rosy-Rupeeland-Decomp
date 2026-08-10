@@ -9,7 +9,7 @@ extern u8 *gGameWork;
  * 31 for mode/submode pairs 2/3 or 3/4; mode four and all other pairs leave
  * bit 31 unchanged. Returns no value and calls no helpers.
  */
-void func_02038e50(void *self, s32 enable)
+void ActorDerivedType1_UpdateGameWorkRuntimeFlags(void *self, s32 enable)
 {
     u8 *actor = (u8 *)self;
     if (enable == 0) {

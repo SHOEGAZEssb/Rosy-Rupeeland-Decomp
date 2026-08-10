@@ -5,7 +5,7 @@
 .extern data_021052fc
 .extern func_0200222c
 .extern func_020022dc
-.extern func_020397d4
+.extern ActorDerivedType1_IsIdleEligible
 .extern func_ov062_02210b38
 .extern gHeapContext
 
@@ -18,7 +18,7 @@ func_02039ea0: ; 0x02039ea0
     ldr r0, [r0, #0x0]
     add r0, r0, #0x2000
     ldr r0, [r0, #0xea4]
-    bl func_020397d4
+    bl ActorDerivedType1_IsIdleEligible
     cmp r0, #0x0
     moveq r0, #0x0
     beq .L_02039f54

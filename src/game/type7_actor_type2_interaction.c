@@ -20,7 +20,7 @@ extern void func_02038784(void *output, const void *input, s32 scale);
 extern void func_02008378(void *output, const void *first, const void *second);
 extern void *func_0201e0ec(void *world, s32 first, s32 second);
 extern void func_020a2894(void *effect, s32 mode, s32 x, s32 y, s32 extra);
-extern s32 func_020380f0(void *actor);
+extern s32 ActorDerivedType1_IsTargetStateEligible(void *actor);
 extern void func_02047dd8(void *actor);
 extern void func_0204b7bc(void *actor, s32 mode);
 #ifdef __cplusplus
@@ -56,7 +56,7 @@ static s32 scale_shift_round(s32 value, s32 shift)
  * Build a transform from other +0x18 relative to actor +0x18 at scale 0x2000,
  * combine it with actor +0x18, adjust word +8 by 0x18000 minus word +0x0c,
  * create an effect through world +0x2f7c and func_0201e0ec/func_020a2894, then
- * when func_020380f0(other) succeeds or other byte +0x24c is three, invoke
+ * when ActorDerivedType1_IsTargetStateEligible(other) succeeds or other byte +0x24c is three, invoke
  * func_02047dd8, ensure actor response mode one below timer 60, and set signed
  * halfword +0x246 to 90. Finalize all three temporaries. Actor, other, world
  * effect, motion, and callback state may change; the effect may reach rendering.
@@ -130,7 +130,7 @@ void func_02046e60(void *self, void *otherObject, s32 value, s32 extra)
         func_020a2894(effect, 1, *(s32 *)(effectTransform + 1),
                       *(s32 *)(effectTransform + 2), 0);
     }
-    if (func_020380f0(other) != 0 || other[0x24c] == 3) {
+    if (ActorDerivedType1_IsTargetStateEligible(other) != 0 || other[0x24c] == 3) {
         func_02047dd8(actor);
         if (*(s16 *)(actor + 0x246) < 60)
             func_0204b7bc(actor, 1);

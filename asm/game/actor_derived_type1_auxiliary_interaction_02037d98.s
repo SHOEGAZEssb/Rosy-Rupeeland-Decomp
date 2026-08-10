@@ -12,8 +12,8 @@
 .extern func_0200b294
 .extern func_02032a94
 .extern Actor_IsAtCachedTerrainHeight
-.extern func_020372b4
-.extern func_020380f0
+.extern ActorDerivedType1_HasBlockingStateFlags
+.extern ActorDerivedType1_IsTargetStateEligible
 .extern ActorDerivedType1_ReleaseAuxiliaryAndSpawnResetEffect
 .extern ActorDerivedType1_ApplyWeightedCollisionDisplacement
 .extern ActorDerivedType1_TeardownActiveRecord
@@ -47,7 +47,7 @@ func_02037d98: ; 0x02037d98
     movne r0, #0x1
     ldmneia sp!, {r3, r4, r5, r6, r7, pc}
     mov r0, r5
-    bl func_020372b4
+    bl ActorDerivedType1_HasBlockingStateFlags
     cmp r0, #0x0
     movne r0, #0x1
     ldmneia sp!, {r3, r4, r5, r6, r7, pc}
@@ -150,13 +150,13 @@ func_02037d98: ; 0x02037d98
     add r1, r4, #0x200
     mov r0, r4
     ldrsb r6, [r1, #0x7f]
-    bl func_020380f0
+    bl ActorDerivedType1_IsTargetStateEligible
     cmp r0, #0x0
     addne r0, r4, #0x200
     ldrnesh r0, [r0, #0x9e]
     addne r6, r6, r0
     mov r0, r4
-    bl func_020380f0
+    bl ActorDerivedType1_IsTargetStateEligible
     cmp r0, #0x0
     bne .L_02037fa0
     ldrb r0, [r4, #0x24c]

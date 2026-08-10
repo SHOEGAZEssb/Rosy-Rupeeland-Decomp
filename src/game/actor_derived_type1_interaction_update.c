@@ -31,7 +31,7 @@ extern void func_02005084(void *value);
 extern void func_020328d0(void *value, s32 scale);
 extern void *func_02007f0c(void *manager, u32 slot);
 extern s32 Actor_QueryTerrainHeight(void *actor, s32 x, s32 y);
-extern s32 func_020372b4(void *actor);
+extern s32 ActorDerivedType1_HasBlockingStateFlags(void *actor);
 extern s32 func_0200b294(void *state);
 extern s32 GameWork_TestFlag(void *work, u32 flag);
 extern s32 func_0200b23c(void *state, const void *record);
@@ -212,7 +212,7 @@ s32 ActorDerivedType1_ProcessInteraction(void *self)
         heightDelta = (*(s32 *)(actor + 0x24) >> 12) -
                       ((s32)Actor_QueryTerrainHeight(actor, x, y) << 4);
         eligible = ((*(u32 *)(actor + 0xd0) & 0x100) == 0 &&
-                    func_020372b4(actor) == 0 &&
+                    ActorDerivedType1_HasBlockingStateFlags(actor) == 0 &&
                     *(void **)(actor + 0x270) == 0 &&
                     Actor_IsAtCachedTerrainHeight(actor) != 0 &&
                     *(s16 *)(actor + 0x268) == 0 &&

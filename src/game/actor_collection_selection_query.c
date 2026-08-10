@@ -31,7 +31,7 @@ extern s32 Actor_IsInteractionEligible(void *actor);
 extern s32 Actor_DispatchActivationMode1(void *actor);
 extern s32 func_0200b04c(const void *state);
 extern s32 func_0204aff4(void *actor);
-extern s32 func_020397d4(void *actor);
+extern s32 ActorDerivedType1_IsIdleEligible(void *actor);
 extern void func_0200500c(void *storage, s32 first, s32 second);
 extern void func_02005058(void *storage);
 extern void ActorDerivedType1_TrySetStateVector(void *actor, void *storage, s32 value, s32 mode);
@@ -130,7 +130,7 @@ s32 ActorCollection_ProcessSelectionQuery(ActorSelectionCollection *self,
     if (candidate) {
         scene = (u8 *)data_021052fc;
         actor = *(void **)(scene + 0x2ea4);
-        if (func_020397d4(actor) && !func_0200b04c(data_02105310)) {
+        if (ActorDerivedType1_IsIdleEligible(actor) && !func_0200b04c(data_02105310)) {
             if (Actor_IsInteractionEligible(candidate)) {
                 result = Actor_DispatchActivationMode1(candidate);
             } else if (read_u32(candidate, 0x14) & 0x08000000) {

@@ -14,7 +14,7 @@
 .extern func_02005058
 .extern func_0200b294
 .extern func_02032a94
-.extern func_020380f0
+.extern ActorDerivedType1_IsTargetStateEligible
 .extern ActorDerivedType1_StartRecord
 .extern func_02039d0c
 .extern func_02046d8c
@@ -151,7 +151,7 @@ func_02046660: ; 0x02046660
     add r1, r5, #0x200
     mov r0, r5
     ldrsb r7, [r1, #0x7f]
-    bl func_020380f0
+    bl ActorDerivedType1_IsTargetStateEligible
     cmp r0, #0x0
     beq .L_02046850
     add r0, r5, #0x200
@@ -169,7 +169,7 @@ func_02046660: ; 0x02046660
     blx r1
 .L_02046850:
     mov r0, r5
-    bl func_020380f0
+    bl ActorDerivedType1_IsTargetStateEligible
     cmp r0, #0x0
     bne .L_02046878
     ldrb r0, [r5, #0x24c]

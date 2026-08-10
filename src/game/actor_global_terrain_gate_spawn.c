@@ -8,7 +8,7 @@ extern const char data_020df4d8[];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern s32 func_020397d4(void *actor);
+extern s32 ActorDerivedType1_IsIdleEligible(void *actor);
 extern void *func_020022dc(s32 packedCell);
 extern void func_0200222c(void *value, s32 kind, s32 id);
 extern void *func_ov062_02210b38(void *allocation);
@@ -18,7 +18,7 @@ extern void *func_ov062_02210b38(void *allocation);
 
 /*
  * Read global actor data_021052fc +0x2ea4 and return zero unless
- * func_020397d4 reports it idle. Query object +0x2ed4 virtual +0x2c at the
+ * ActorDerivedType1_IsIdleEligible reports it idle. Query object +0x2ed4 virtual +0x2c at the
  * actor's integer X/Y position. Extract packed bits 5..9 and require values
  * two through five. For an accepted cell, transform the packed value through
  * func_020022dc, dispatch kind two/ID 0x3e through func_0200222c, allocate a
@@ -35,7 +35,7 @@ s32 func_02039ea0(void)
     s32 type;
     void *allocation;
 
-    if (func_020397d4(actor) == 0)
+    if (ActorDerivedType1_IsIdleEligible(actor) == 0)
         return 0;
     query = *(u8 **)(data_021052fc + 0x2ed4);
     packed = (*(s32 (**)(void *, s32, s32))(*(u8 **)query + 0x2c))(

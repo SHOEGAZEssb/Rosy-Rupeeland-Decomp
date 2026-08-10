@@ -27,7 +27,7 @@ extern void func_0206c978(void *resource);
 extern void GameWork_SetFlag(void *work, u32 flag);
 extern void GameWork_ClearFlag(void *work, u32 flag);
 extern void func_020481dc(void *actor, u32 first, u32 second, s32 third);
-extern s32 func_020380f0(void *actor);
+extern s32 ActorDerivedType1_IsTargetStateEligible(void *actor);
 extern void func_02046e60(void *actor, void *other, s32 value, s32 extra);
 extern s32 func_0204cfa4(s32 x, s32 y);
 extern s32 func_020adc90(s32 value, s32 divisor);
@@ -110,12 +110,12 @@ s32 func_02046660(void *self, void *otherObject, s32 context)
             if (*(s16 *)(actor + 0x246) != 0)
                 return func_02032a94(actor, other, context);
             extra = *(s8 *)(other + 0x27f);
-            if (func_020380f0(other) != 0) {
+            if (ActorDerivedType1_IsTargetStateEligible(other) != 0) {
                 extra += *(s16 *)(other + 0x29e);
                 if (*(s8 *)(other + 0x27e) == 1)
                     (*(void (**)(void *))(*(u8 **)other + 0x200))(other);
             }
-            if (func_020380f0(other) != 0 || other[0x24c] == 3) {
+            if (ActorDerivedType1_IsTargetStateEligible(other) != 0 || other[0x24c] == 3) {
                 void *resource = *(void **)(actor + 0x234);
                 if (resource != 0
                     && (*(u32 *)((u8 *)resource + 0x20) & 0x10000) != 0) {

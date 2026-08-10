@@ -8,7 +8,7 @@ extern "C" {
 extern void *data_021052fc;
 extern void *gSceneManager;
 extern void *SceneManager_GetCurrent(void *manager);
-extern s32 func_020397d4(void *manager);
+extern s32 ActorDerivedType1_IsIdleEligible(void *manager);
 #ifdef __cplusplus
 }
 #endif
@@ -30,7 +30,7 @@ s32 func_02019c60(GamePhaseActorScriptVm *self)
         break;
     case 1:
         if (*(s32 *)((u8 *)SceneManager_GetCurrent(gSceneManager) + 4) != 2)
-            result = func_020397d4(manager) != 0;
+            result = ActorDerivedType1_IsIdleEligible(manager) != 0;
         break;
     case 2:
         if (*(s32 *)((u8 *)SceneManager_GetCurrent(gSceneManager) + 4) != 2) {

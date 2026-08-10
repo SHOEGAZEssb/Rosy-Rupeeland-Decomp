@@ -15,7 +15,7 @@ extern "C" {
 extern void func_02032a94(void *actor);
 extern void *SceneManager_GetCurrent(void *manager);
 extern s32 func_0200b294(void *state);
-extern s32 func_020372b4(void *actor);
+extern s32 ActorDerivedType1_HasBlockingStateFlags(void *actor);
 extern s32 Actor_IsAtCachedTerrainHeight(void *actor);
 extern s32 func_020828a0(void *state, s32 mask);
 extern void ActorDerivedType1_TeardownActiveRecord(void *actor);
@@ -24,7 +24,7 @@ extern void *func_0206c68c(void *allocation, void *actor);
 extern void GameWork_SetFlag(void *work, u32 flag);
 extern s32 func_0206cb04(void *resource, void *target, s32 mode);
 extern void func_020099c0(void *manager, s32 first, s32 second);
-extern s32 func_020380f0(void *target);
+extern s32 ActorDerivedType1_IsTargetStateEligible(void *target);
 extern void ActorDerivedType1_ReleaseAuxiliaryAndSpawnResetEffect(void *actor);
 extern void ActorDerivedType1_ApplyWeightedCollisionDisplacement(
     void *actor, void *target, s32 distance, s32 offset);
@@ -66,7 +66,7 @@ s32 func_02037d98(void *self, void *other)
     func_02032a94(actor);
     scene = SceneManager_GetCurrent(gSceneManager);
     if (*(s32 *)((u8 *)scene + 4) == 2 || func_0200b294(data_02105310) != 0 ||
-        func_020372b4(actor) != 0 || *(s16 *)(actor + 0xd6) == 0x0d ||
+        ActorDerivedType1_HasBlockingStateFlags(actor) != 0 || *(s16 *)(actor + 0xd6) == 0x0d ||
         (*(u32 *)(actor + 0x230) & 0x20000) != 0)
         return 1;
     if ((*(u32 *)(actor + 0xd0) & 0x100) != 0 ||
@@ -94,9 +94,9 @@ s32 func_02037d98(void *self, void *other)
             }
         } else if ((*(u32 *)(target + 0x260) & 1) != 0) {
             s32 offset = *(s8 *)(target + 0x27f);
-            if (func_020380f0(target) != 0)
+            if (ActorDerivedType1_IsTargetStateEligible(target) != 0)
                 offset += *(s16 *)(target + 0x29e);
-            if (func_020380f0(target) != 0 || target[0x24c] == 3)
+            if (ActorDerivedType1_IsTargetStateEligible(target) != 0 || target[0x24c] == 3)
                 ActorDerivedType1_ReleaseAuxiliaryAndSpawnResetEffect(actor);
             ActorDerivedType1_ApplyWeightedCollisionDisplacement(actor, target, 0x14, offset);
         }
