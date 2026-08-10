@@ -27,7 +27,7 @@ typedef struct OwnerInfoBuffer {
  * There are no inputs or return value; OS_GetOwnerInfo supplies the only SDK
  * side effect and gSystemState receives all observable writes.
  */
-void func_02002ea4(void)
+void SystemState_Init(void)
 {
     OwnerInfoBuffer ownerInfo;
 

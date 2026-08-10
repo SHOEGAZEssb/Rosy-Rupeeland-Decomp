@@ -3711,7 +3711,7 @@ build build/reports/system_state_init.json: objdiff build/decomp/delinks/src/sys
 
 build build/reports/system_state_init.txt: match_report build/reports/system_state_init.json | tools/report_objdiff.py
   report_json = build/reports/system_state_init.json
-  report_args = --section .text --function func_02002ea4 --require-exact
+  report_args = --section .text --function SystemState_Init --require-exact
 
 build build/reports/heap_wrappers.json: objdiff build/decomp/delinks/src/system/heap_wrappers.o | build/decomp/src/system/heap_wrappers.o
   target_object = build/decomp/delinks/src/system/heap_wrappers.o

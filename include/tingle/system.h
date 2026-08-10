@@ -54,7 +54,7 @@ extern s32 gPreviousVCount;
 
 void InitRuntime(void);
 void InitHeap(void);
-void func_02002ea4(void);
+void SystemState_Init(void);
 u16 PAD_Read(void);
 void UpdateSystemFrame(void);
 void UpdateKeyState(u32 keys, int stateIndex);
