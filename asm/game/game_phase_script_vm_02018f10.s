@@ -7,7 +7,7 @@
 .extern ActorCollection_FindActorByDescriptorValue
 .extern Actor_GetCollection
 .extern Type7Actor_GetStateCode
-.extern func_0204c51c
+.extern Type7Actor_FindSpawnRecord
 .extern func_0204c59c
 .global func_02018f10
 func_02018f10:
@@ -83,13 +83,13 @@ L_02018ff0:
     b L_020190ec
 L_02019010:
     mov r0, r5
-    bl func_0204c51c
+    bl Type7Actor_FindSpawnRecord
     add r0, r0, r6, lsl #0x1
     ldrh r1, [r0, #0x56]
     b L_020190ec
 L_02019024:
     mov r0, r5
-    bl func_0204c51c
+    bl Type7Actor_FindSpawnRecord
     cmp r6, #0x4
     mov r1, #0x0
     addls pc, pc, r6, lsl #0x2
@@ -133,7 +133,7 @@ L_0201909c:
     b L_020190ec
 L_020190a8:
     mov r0, r5
-    bl func_0204c51c
+    bl Type7Actor_FindSpawnRecord
     ldr r1, [r0, #0x60]
     b L_020190ec
 L_020190b8:
@@ -143,7 +143,7 @@ L_020190b8:
     b L_020190ec
 L_020190c8:
     mov r0, r5
-    bl func_0204c51c
+    bl Type7Actor_FindSpawnRecord
     ldr r1, [r0, #0x64]
     b L_020190ec
 L_020190d8:

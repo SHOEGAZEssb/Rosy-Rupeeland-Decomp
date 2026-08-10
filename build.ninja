@@ -18712,7 +18712,7 @@ build build/reports/type7_actor_record_state_0204c42c.json: objdiff build/decomp
   base_object = build/decomp/asm/game/type7_actor_record_state_0204c42c.o
 build build/reports/type7_actor_record_state_0204c42c.txt: match_report build/reports/type7_actor_record_state_0204c42c.json | tools/report_objdiff.py
   report_json = build/reports/type7_actor_record_state_0204c42c.json
-  report_args = --section .text --function func_0204c42c --function func_0204c4c0 --function func_0204c51c --function func_0204c55c --require-exact
+  report_args = --section .text --function Type7Actor_SavePersistentState --function Type7Actor_LoadPersistentState --function Type7Actor_FindSpawnRecord --function Type7Actor_FindAuxiliaryRecord --require-exact
 build type7_actor_record_state: phony build/decomp/src/game/type7_actor_record_state.o build/decomp/asm/game/type7_actor_record_state_0204c42c.o build/reports/type7_actor_record_state_0204c42c.txt
 
 type7_actor_random_record_selection_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++

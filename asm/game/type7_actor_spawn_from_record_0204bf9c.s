@@ -1,5 +1,5 @@
 ; Matching retail form; see src/game/type7_actor_spawn_from_record.c.
-.extern func_0204c51c
+.extern Type7Actor_FindSpawnRecord
 .extern func_02028508
 .extern func_02007f0c
 .extern ActorCollection_QueueActorForRemoval
@@ -15,7 +15,7 @@
 .extern func_020beb6c
 .extern func_020beae4
 .extern Type7Actor_InitializeStationaryMotionState
-.extern func_0204c55c
+.extern Type7Actor_FindAuxiliaryRecord
 .extern func_02025d14
 .extern data_021052fc
 .extern data_020e16b0
@@ -29,7 +29,7 @@ Type7Actor_SpawnFromRecord: ; 0x0204bf9c
     mov r9, r1
     mov r8, r2
     mov r11, r3
-    bl func_0204c51c
+    bl Type7Actor_FindSpawnRecord
     movs r4, r0
     moveq r0, #0x0
     beq .L_0204c410
@@ -312,7 +312,7 @@ Type7Actor_SpawnFromRecord: ; 0x0204bf9c
     blt .L_0204c358
 .L_0204c3dc:
     mov r0, r10
-    bl func_0204c55c
+    bl Type7Actor_FindAuxiliaryRecord
     ldr r1, .L_0204c418
     ldrb r2, [r0, #0x13]
     ldr r0, [r1, #0x0]

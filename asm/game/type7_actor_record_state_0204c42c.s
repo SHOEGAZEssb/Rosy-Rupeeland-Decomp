@@ -4,8 +4,8 @@
 .extern data_020ea9b0
 .extern data_020ea650
 .text
-    .global func_0204c42c
-func_0204c42c: ; 0x0204c42c
+    .global Type7Actor_SavePersistentState
+Type7Actor_SavePersistentState: ; 0x0204c42c
     ldr r1, .L_0204c4b8
     ldr r2, .L_0204c4bc
     ldr r0, [r1, #0x0]
@@ -43,10 +43,10 @@ func_0204c42c: ; 0x0204c42c
     bx lr
 .L_0204c4b8: .word gGameWork
 .L_0204c4bc: .word data_020e16b0
-.size func_0204c42c, . - func_0204c42c
+.size Type7Actor_SavePersistentState, . - Type7Actor_SavePersistentState
 
-    .global func_0204c4c0
-func_0204c4c0: ; 0x0204c4c0
+    .global Type7Actor_LoadPersistentState
+Type7Actor_LoadPersistentState: ; 0x0204c4c0
     ldr r0, .L_0204c514
     ldr r1, .L_0204c518
     ldr r0, [r0, #0x0]
@@ -70,10 +70,10 @@ func_0204c4c0: ; 0x0204c4c0
     bx lr
 .L_0204c514: .word gGameWork
 .L_0204c518: .word data_020e16b0
-.size func_0204c4c0, . - func_0204c4c0
+.size Type7Actor_LoadPersistentState, . - Type7Actor_LoadPersistentState
 
-    .global func_0204c51c
-func_0204c51c: ; 0x0204c51c
+    .global Type7Actor_FindSpawnRecord
+Type7Actor_FindSpawnRecord: ; 0x0204c51c
     stmdb sp!, {r3, lr}
     mov lr, #0x0
     ldr ip, .L_0204c558
@@ -92,10 +92,10 @@ func_0204c51c: ; 0x0204c51c
     mov r0, #0x0
     ldmia sp!, {r3, pc}
 .L_0204c558: .word data_020ea9b0
-.size func_0204c51c, . - func_0204c51c
+.size Type7Actor_FindSpawnRecord, . - Type7Actor_FindSpawnRecord
 
-    .global func_0204c55c
-func_0204c55c: ; 0x0204c55c
+    .global Type7Actor_FindAuxiliaryRecord
+Type7Actor_FindAuxiliaryRecord: ; 0x0204c55c
     stmdb sp!, {r3, lr}
     mov lr, #0x0
     ldr ip, .L_0204c598
@@ -114,5 +114,5 @@ func_0204c55c: ; 0x0204c55c
     mov r0, #0x0
     ldmia sp!, {r3, pc}
 .L_0204c598: .word data_020ea650
-.size func_0204c55c, . - func_0204c55c
+.size Type7Actor_FindAuxiliaryRecord, . - Type7Actor_FindAuxiliaryRecord
 

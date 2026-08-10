@@ -15,7 +15,7 @@ extern u8 data_020ea650[];
  * game-work offsets +0x51d0..+0x51ec. Both globals change/read respectively;
  * no value is returned and there are no SDK or hardware effects.
  */
-void func_0204c42c(void)
+void Type7Actor_SavePersistentState(void)
 {
     s32 index;
     for (index = 0; index < 8; ++index)
@@ -28,7 +28,7 @@ void func_0204c42c(void)
  * data_020e16b0 offsets +0x2b4..+0x2d0. Both globals change/read respectively;
  * no value is returned and there are no SDK or hardware effects.
  */
-void func_0204c4c0(void)
+void Type7Actor_LoadPersistentState(void)
 {
     s32 index;
     for (index = 0; index < 8; ++index)
@@ -41,7 +41,7 @@ void func_0204c4c0(void)
  * data_020ea9b0 by their leading signed halfword. Return the matching record
  * address or null. The table is read only; there are no SDK/hardware effects.
  */
-void *func_0204c51c(s32 identifier)
+void *Type7Actor_FindSpawnRecord(s32 identifier)
 {
     s32 index;
     for (index = 0; index < 0x24; ++index) {
@@ -57,7 +57,7 @@ void *func_0204c51c(s32 identifier)
  * data_020ea650 by their leading signed halfword. Return the matching record
  * address or null. The table is read only; there are no SDK/hardware effects.
  */
-void *func_0204c55c(s32 identifier)
+void *Type7Actor_FindAuxiliaryRecord(s32 identifier)
 {
     s32 index;
     for (index = 0; index < 0x24; ++index) {

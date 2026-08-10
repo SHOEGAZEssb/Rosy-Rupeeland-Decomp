@@ -13,7 +13,7 @@ extern s32 data_020e1964;
 extern void *ActorCollection_FindActorByDescriptorValue(void *collection, s32 index);
 extern void *Actor_GetCollection(void *actor);
 extern s32 Type7Actor_GetStateCode(void *entity);
-extern u8 *func_0204c51c(s32 index);
+extern u8 *Type7Actor_FindSpawnRecord(s32 index);
 extern s32 func_0204c59c(s32 mode, s32 index);
 #ifdef __cplusplus
 }
@@ -58,13 +58,13 @@ s32 func_02018f10(GamePhaseActorScriptVm *self)
             result = *(u16 *)(*(u8 **)(entity + 0x29c) + 0x36);
         break;
     case 5:
-        result = *(u16 *)(func_0204c51c(index) + 0x56 + subIndex * 2);
+        result = *(u16 *)(Type7Actor_FindSpawnRecord(index) + 0x56 + subIndex * 2);
         break;
     case 6:
     case 7:
     case 8: {
         static const u8 groupOffsets[5] = { 2, 8, 14, 20, 26 };
-        u8 *record = func_0204c51c(index);
+        u8 *record = Type7Actor_FindSpawnRecord(index);
         u16 *group = 0;
         if ((u32)subIndex <= 4)
             group = (u16 *)(record + groupOffsets[subIndex]);
@@ -73,7 +73,7 @@ s32 func_02018f10(GamePhaseActorScriptVm *self)
         break;
     }
     case 9:
-        result = *(s32 *)(func_0204c51c(index) + 0x60);
+        result = *(s32 *)(Type7Actor_FindSpawnRecord(index) + 0x60);
         break;
     case 10:
     case 11:
@@ -82,7 +82,7 @@ s32 func_02018f10(GamePhaseActorScriptVm *self)
         result = func_0204c59c(mode, index);
         break;
     case 14:
-        result = *(s32 *)(func_0204c51c(index) + 0x64);
+        result = *(s32 *)(Type7Actor_FindSpawnRecord(index) + 0x64);
         break;
     case 15: {
         u8 *actor = (u8 *)ActorCollection_FindActorByDescriptorValue(Actor_GetCollection(self->actor_84), index);

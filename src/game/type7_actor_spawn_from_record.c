@@ -29,8 +29,8 @@ extern void ActorSpawnDescriptor_Init(
 extern void Type7Actor_SetTarget(void *actor, void *object);
 extern void Type7Actor_InitializeStationaryMotionState(void *actor);
 extern s32 Type7Actor_MatchesGlobalRecordIndex(void *actor);
-extern u8 *func_0204c51c(s32 index);
-extern u8 *func_0204c55c(s32 index);
+extern u8 *Type7Actor_FindSpawnRecord(s32 index);
+extern u8 *Type7Actor_FindAuxiliaryRecord(s32 index);
 extern s32 func_020be8c0(s32 left, s32 right);
 extern s32 func_020beae4(void);
 extern s32 func_020beb18(s32 value);
@@ -78,7 +78,7 @@ static void callActorVoidMethod(u8 *actor, u32 byteOffset)
  */
 s32 Type7Actor_SpawnFromRecord(s32 recordIndex, s32 phase, s32 x, s32 y, s32 field2b8)
 {
-    u8 *record = func_0204c51c(recordIndex);
+    u8 *record = Type7Actor_FindSpawnRecord(recordIndex);
     Type7SpawnDescriptor descriptor;
     u8 *actor;
     void *collection;
@@ -197,7 +197,7 @@ s32 Type7Actor_SpawnFromRecord(s32 recordIndex, s32 phase, s32 x, s32 y, s32 fie
         }
     }
 
-    record = func_0204c55c(recordIndex);
+    record = Type7Actor_FindAuxiliaryRecord(recordIndex);
     data_020e5804 = record[0x13];
     *(u8 *)((u8 *)func_02025d14(
         *(void **)(data_021052fc + 0x30e8)) + 0x8d) = 0;
