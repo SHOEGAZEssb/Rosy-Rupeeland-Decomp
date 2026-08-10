@@ -8,31 +8,31 @@ extern "C" {
 extern void *TrackedResourceActor_Init(void *actor);
 extern void *TrackedResourceActor_Destroy(void *actor);
 extern void Heap_Free(void *allocation);
-extern u32 data_020e295c[];
+extern u32 gTrackedResourceActorType28Vtable[];
 #ifdef __cplusplus
 }
 #endif
 
 /*
  * Input is variant storage. Constructs the tracked-resource base, installs
- * vtable data_020e295c, and returns the storage. Engine fields may be initialized.
+ * vtable gTrackedResourceActorType28Vtable, and returns the storage. Engine fields may be initialized.
  */
-void *func_020522a8(void *actor)
+void *TrackedResourceActorType28_InitBase(void *actor)
 {
     TrackedResourceActor_Init(actor);
-    *(u32 **)actor = data_020e295c;
+    *(u32 **)actor = gTrackedResourceActorType28Vtable;
     return actor;
 }
 
 /*
  * Input is variant storage. This second construction entry performs the same
- * base construction and vtable installation as func_020522a8; its distinct
+ * base construction and vtable installation as TrackedResourceActorType28_InitBase; its distinct
  * call-site role is unknown. Returns the supplied storage.
  */
-void *func_020522c8(void *actor)
+void *TrackedResourceActorType28_Init(void *actor)
 {
     TrackedResourceActor_Init(actor);
-    *(u32 **)actor = data_020e295c;
+    *(u32 **)actor = gTrackedResourceActorType28Vtable;
     return actor;
 }
 
@@ -40,7 +40,7 @@ void *func_020522c8(void *actor)
  * Input is a variant instance. Runs tracked-resource base teardown and returns
  * the instance without freeing it. Engine resources may be released.
  */
-void *func_020522e8(void *actor)
+void *TrackedResourceActorType28_DestroyComplete(void *actor)
 {
     TrackedResourceActor_Destroy(actor);
     return actor;
@@ -50,7 +50,7 @@ void *func_020522e8(void *actor)
  * Input is a heap-allocated variant instance. Runs base teardown, frees the
  * allocation, and returns its former address, which must not be dereferenced.
  */
-void *func_020522fc(void *actor)
+void *TrackedResourceActorType28_DestroyAndFree(void *actor)
 {
     TrackedResourceActor_Destroy(actor);
     Heap_Free(actor);
@@ -59,10 +59,10 @@ void *func_020522fc(void *actor)
 
 /*
  * Input is a variant instance. This second non-freeing teardown runs the same
- * base cleanup as func_020522e8 and returns the instance; its separate role is
+ * base cleanup as TrackedResourceActorType28_DestroyComplete and returns the instance; its separate role is
  * unconfirmed. These lifecycle wrappers do not directly access hardware.
  */
-void *func_02052318(void *actor)
+void *TrackedResourceActorType28_Destroy(void *actor)
 {
     TrackedResourceActor_Destroy(actor);
     return actor;

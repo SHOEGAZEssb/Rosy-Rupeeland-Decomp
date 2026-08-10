@@ -2,7 +2,7 @@
 ; Matching fallback for the portable implementation in src/overlays/ov097/overlay097_recovery.c.
 .extern Heap_Free
 .extern data_ov097_0221aaa4
-.extern func_02052318
+.extern TrackedResourceActorType28_Destroy
 .extern func_ov097_02219aa8
 
 .global func_ov097_02219e80
@@ -17,7 +17,7 @@ func_ov097_02219e80:
     bl func_ov097_02219aa8
 .L_02219ea0:
     mov r0, r4
-    bl func_02052318
+    bl TrackedResourceActorType28_Destroy
     mov r0, r4
     bl Heap_Free
     mov r0, r4

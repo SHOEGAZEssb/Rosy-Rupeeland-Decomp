@@ -1,7 +1,7 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov097/overlay097_recovery.c.
 .extern data_ov097_0221aaa4
-.extern func_02052318
+.extern TrackedResourceActorType28_Destroy
 .extern func_ov097_02219aa8
 
 .global func_ov097_02219e4c
@@ -16,7 +16,7 @@ func_ov097_02219e4c:
     bl func_ov097_02219aa8
 .L_02219e6c:
     mov r0, r4
-    bl func_02052318
+    bl TrackedResourceActorType28_Destroy
     mov r0, r4
     ldmia sp!, {r4, pc}
 .L_02219e7c: .word data_ov097_0221aaa4

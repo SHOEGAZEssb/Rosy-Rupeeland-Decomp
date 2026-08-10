@@ -1,11 +1,11 @@
 ; Matching retail form; see src/game/tracked_resource_actor_oriented_lifecycle.c.
 .extern Heap_Free
-.extern data_020e295c
+.extern gTrackedResourceActorType28Vtable
 .extern TrackedResourceActor_Init
 .extern TrackedResourceActor_Destroy
 .text
-    .global func_020522a8
-func_020522a8:
+    .global TrackedResourceActorType28_InitBase
+TrackedResourceActorType28_InitBase:
     stmdb sp!, {r4, lr}
     mov r4, r0
     bl TrackedResourceActor_Init
@@ -13,11 +13,11 @@ func_020522a8:
     mov r0, r4
     str r1, [r4, #0x0]
     ldmia sp!, {r4, pc}
-.L_020522c4: .word data_020e295c
-    .size func_020522a8, . - func_020522a8
+.L_020522c4: .word gTrackedResourceActorType28Vtable
+    .size TrackedResourceActorType28_InitBase, . - TrackedResourceActorType28_InitBase
 
-    .global func_020522c8
-func_020522c8:
+    .global TrackedResourceActorType28_Init
+TrackedResourceActorType28_Init:
     stmdb sp!, {r4, lr}
     mov r4, r0
     bl TrackedResourceActor_Init
@@ -25,20 +25,20 @@ func_020522c8:
     mov r0, r4
     str r1, [r4, #0x0]
     ldmia sp!, {r4, pc}
-.L_020522e4: .word data_020e295c
-    .size func_020522c8, . - func_020522c8
+.L_020522e4: .word gTrackedResourceActorType28Vtable
+    .size TrackedResourceActorType28_Init, . - TrackedResourceActorType28_Init
 
-    .global func_020522e8
-func_020522e8:
+    .global TrackedResourceActorType28_DestroyComplete
+TrackedResourceActorType28_DestroyComplete:
     stmdb sp!, {r4, lr}
     mov r4, r0
     bl TrackedResourceActor_Destroy
     mov r0, r4
     ldmia sp!, {r4, pc}
-    .size func_020522e8, . - func_020522e8
+    .size TrackedResourceActorType28_DestroyComplete, . - TrackedResourceActorType28_DestroyComplete
 
-    .global func_020522fc
-func_020522fc:
+    .global TrackedResourceActorType28_DestroyAndFree
+TrackedResourceActorType28_DestroyAndFree:
     stmdb sp!, {r4, lr}
     mov r4, r0
     bl TrackedResourceActor_Destroy
@@ -46,13 +46,13 @@ func_020522fc:
     bl Heap_Free
     mov r0, r4
     ldmia sp!, {r4, pc}
-    .size func_020522fc, . - func_020522fc
+    .size TrackedResourceActorType28_DestroyAndFree, . - TrackedResourceActorType28_DestroyAndFree
 
-    .global func_02052318
-func_02052318:
+    .global TrackedResourceActorType28_Destroy
+TrackedResourceActorType28_Destroy:
     stmdb sp!, {r4, lr}
     mov r4, r0
     bl TrackedResourceActor_Destroy
     mov r0, r4
     ldmia sp!, {r4, pc}
-    .size func_02052318, . - func_02052318
+    .size TrackedResourceActorType28_Destroy, . - TrackedResourceActorType28_Destroy

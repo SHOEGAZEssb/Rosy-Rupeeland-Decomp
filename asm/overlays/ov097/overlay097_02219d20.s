@@ -3,7 +3,7 @@
 .extern data_ov097_0221aaa4
 .extern ActorCollection_FindActorByDescriptorValue
 .extern Actor_GetCollection
-.extern func_020522a8
+.extern TrackedResourceActorType28_InitBase
 .extern func_ov097_022177e0
 .extern func_ov097_02217fd8
 .extern func_ov097_02219970
@@ -13,7 +13,7 @@
 func_ov097_02219d20:
     stmdb sp!, {r3, r4, r5, r6, r7, lr}
     mov r4, r0
-    bl func_020522a8
+    bl TrackedResourceActorType28_InitBase
     ldr r0, .L_02219e44
     mov r6, #0x0
     str r0, [r4, #0x0]

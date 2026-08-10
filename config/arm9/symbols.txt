@@ -2366,11 +2366,11 @@ TrackedResourceActorType27_DestroyAndFree kind:function(arm,size=0x1c) addr:0x02
 func_02052170 kind:function(arm,size=0x74) addr:0x02052170
 func_020521e4 kind:function(arm,size=0x70) addr:0x020521e4
 func_02052254 kind:function(arm,size=0x54) addr:0x02052254
-func_020522a8 kind:function(arm,size=0x20) addr:0x020522a8
-func_020522c8 kind:function(arm,size=0x20) addr:0x020522c8
-func_020522e8 kind:function(arm,size=0x14) addr:0x020522e8
-func_020522fc kind:function(arm,size=0x1c) addr:0x020522fc
-func_02052318 kind:function(arm,size=0x14) addr:0x02052318
+TrackedResourceActorType28_InitBase kind:function(arm,size=0x20) addr:0x020522a8
+TrackedResourceActorType28_Init kind:function(arm,size=0x20) addr:0x020522c8
+TrackedResourceActorType28_DestroyComplete kind:function(arm,size=0x14) addr:0x020522e8
+TrackedResourceActorType28_DestroyAndFree kind:function(arm,size=0x1c) addr:0x020522fc
+TrackedResourceActorType28_Destroy kind:function(arm,size=0x14) addr:0x02052318
 func_0205232c kind:function(arm,size=0x9c) addr:0x0205232c
 func_020523c8 kind:function(arm,size=0x9c) addr:0x020523c8
 func_02052464 kind:function(arm,size=0x128) addr:0x02052464
@@ -7660,7 +7660,7 @@ data_020e28e0 kind:data(any) addr:0x020e28e0
 data_020e28fc kind:data(any) addr:0x020e28fc
 data_020e2918 kind:data(any) addr:0x020e2918
 data_020e2934 kind:data(any) addr:0x020e2934
-data_020e295c kind:data(any) addr:0x020e295c
+gTrackedResourceActorType28Vtable kind:data(any) addr:0x020e295c
 gTrackedResourceActorType21Vtable kind:data(any) addr:0x020e2a3c
 data_020e2b1c kind:data(any) addr:0x020e2b1c
 gTrackedResourceActorType26Vtable kind:data(any) addr:0x020e2bfc
