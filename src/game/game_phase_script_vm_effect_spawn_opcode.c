@@ -33,7 +33,7 @@ extern void func_ov062_02210674(void *allocation, void *actor,
  * the confirmed heap tag at data_020d5b2c and four-byte alignment. Returns
  * zero; the overlay constructors own any successfully allocated object.
  */
-s32 func_02013f10(GamePhaseActorScriptVm *self)
+s32 GamePhaseActorScriptVm_ConfigureOrSpawnOverlay62Effect(GamePhaseActorScriptVm *self)
 {
     u32 second = GamePhaseScriptVm_Pop(&self->base);
     u32 first = GamePhaseScriptVm_Pop(&self->base);

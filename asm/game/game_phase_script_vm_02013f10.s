@@ -14,8 +14,8 @@
 .extern func_ov062_02210674
 .extern gHeapContext
 
-    .global func_02013f10
-func_02013f10: ; 0x02013f10
+    .global GamePhaseActorScriptVm_ConfigureOrSpawnOverlay62Effect
+GamePhaseActorScriptVm_ConfigureOrSpawnOverlay62Effect: ; 0x02013f10
     stmdb sp!, {r3, r4, r5, r6, r7, r8, r9, r10, lr}
     sub sp, sp, #0x1c
     mov r10, r0
@@ -120,5 +120,5 @@ L_0201408c: .word 0x3e
 L_02014090: .word data_020d5b2c
 L_02014094: .word gHeapContext
 L_02014098: .word data_021052fc
-    .size func_02013f10, . - func_02013f10
+    .size GamePhaseActorScriptVm_ConfigureOrSpawnOverlay62Effect, . - GamePhaseActorScriptVm_ConfigureOrSpawnOverlay62Effect
 

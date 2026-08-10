@@ -116,7 +116,7 @@ s32 GamePhaseActorScriptVm_SavePrimaryAttachmentState(GamePhaseActorScriptVm *se
 s32 GamePhaseActorScriptVm_RestorePrimaryAttachmentState(GamePhaseActorScriptVm *self);
 s32 GamePhaseActorScriptVm_SetValue90AndFlag2(GamePhaseActorScriptVm *self);
 s32 GamePhaseActorScriptVm_ClearFlag2(GamePhaseActorScriptVm *self);
-s32 func_02013f10(GamePhaseActorScriptVm *self);
+s32 GamePhaseActorScriptVm_ConfigureOrSpawnOverlay62Effect(GamePhaseActorScriptVm *self);
 s32 GamePhaseActorScriptVm_SetPositionFromCoordinates(GamePhaseActorScriptVm *self);
 s32 GamePhaseActorScriptVm_TranslateSecondaryBounds(GamePhaseActorScriptVm *self);
 s32 GamePhaseActorScriptVm_TranslateCollisionBounds(GamePhaseActorScriptVm *self);

@@ -5136,7 +5136,7 @@ build build/reports/game_phase_script_vm_02013f10.json: objdiff build/decomp/del
   base_object = build/decomp/asm/game/game_phase_script_vm_02013f10.o
 build build/reports/game_phase_script_vm_02013f10.txt: match_report build/reports/game_phase_script_vm_02013f10.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_script_vm_02013f10.json
-  report_args = --section .text --function func_02013f10 --require-exact
+  report_args = --section .text --function GamePhaseActorScriptVm_ConfigureOrSpawnOverlay62Effect --require-exact
 
 build build/reports/game_phase_script_vm_effect_spawn_opcode.txt: phony build/reports/game_phase_script_vm_02013f10.txt
 
