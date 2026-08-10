@@ -9,7 +9,7 @@
 .extern data_02105610
 .extern func_02005058
 .extern AnimationResource_Init
-.extern func_02005afc
+.extern GraphicsSpriteState_SetDepthOrderedWorldPosition
 .extern func_02005c3c
 .extern func_0200637c
 .extern func_020064b8
@@ -69,7 +69,7 @@ func_020236a0: ; 0x020236a0
     ldr r1, [sp, #0x8]
     ldr r2, [sp, #0xc]
     ldr r3, [sp, #0x10]
-    bl func_02005afc
+    bl GraphicsSpriteState_SetDepthOrderedWorldPosition
     ldrsh r0, [r4, #0x14]
     add r0, r0, #0x1
     strh r0, [r4, #0x14]
@@ -130,7 +130,7 @@ func_020236a0: ; 0x020236a0
     ldr r1, [r3, #0x14]
     ldr r2, [r3, #0x18]
     ldr r3, [r3, #0x1c]
-    bl func_02005afc
+    bl GraphicsSpriteState_SetDepthOrderedWorldPosition
     ldr r0, [r4, #0x10]
     ldrh r0, [r0, #0x24]
     and r0, r0, #0x1

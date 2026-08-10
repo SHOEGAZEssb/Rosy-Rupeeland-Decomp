@@ -17,7 +17,7 @@ extern void func_020050a4(Track *destination,const void *source);
 extern void func_020050c8(Track *first,Track *second);
 extern u16 func_020ae024(s32 x,s32 y);
 extern void func_02072b68(void *sprite,s32 value);
-extern void func_02005914(void *sprite,s32 argument,s32 first,s32 second,
+extern void GraphicsSpriteState_SetWorldPositionFromOrigin(void *sprite,s32 argument,s32 first,s32 second,
                           s32 third,s32 constant8);
 #ifdef __cplusplus
 }
@@ -52,7 +52,7 @@ TimedSprite *func_0201e4e4(TimedSprite *self){func_0201e380(self);Heap_Free(self
 
 /*
  * Decrement lifetime and hide/finish when negative.  Otherwise advance the
- * tracks, update the sprite through func_02005914 with recovered constant 8,
+ * tracks, update the sprite through GraphicsSpriteState_SetWorldPositionFromOrigin with recovered constant 8,
  * and return whether sprite status flag 8 is set.
  */
 s32 func_0201e500(TimedSprite *self,s32 argument)
@@ -60,7 +60,7 @@ s32 func_0201e500(TimedSprite *self,s32 argument)
     self->remaining28--;
     if(self->remaining28<0){func_0201e3b8(self,0);return 1;}
     func_020050c8(&self->first08,&self->second18);
-    func_02005914(self->sprite,argument,*(s32 *)&self->first08.bytes[4],
+    GraphicsSpriteState_SetWorldPositionFromOrigin(self->sprite,argument,*(s32 *)&self->first08.bytes[4],
         *(s32 *)&self->first08.bytes[8],*(s32 *)&self->first08.bytes[0xc],8);
     return (*(u16 *)(self->sprite+0x24)&8)!=0;
 }

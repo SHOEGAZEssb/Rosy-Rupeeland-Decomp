@@ -4051,7 +4051,7 @@ build build/reports/graphics_sprite_position.json: objdiff build/decomp/delinks/
 
 build build/reports/graphics_sprite_position.txt: match_report build/reports/graphics_sprite_position.json | tools/report_objdiff.py
   report_json = build/reports/graphics_sprite_position.json
-  report_args = --section .text --function func_02005914 --function func_020059ac --function func_02005a00 --function func_02005a54 --function func_02005afc --require-exact
+  report_args = --section .text --function GraphicsSpriteState_SetWorldPositionFromOrigin --function GraphicsSpriteState_SetWorldPosition --function GraphicsSpriteState_SetScreenPositionCulled --function GraphicsSpriteState_SetDepthOrderedWorldPositionFromOrigin --function GraphicsSpriteState_SetDepthOrderedWorldPosition --require-exact
 
 build build/reports/graphics_sprite_position_bounds.json: objdiff build/decomp/delinks/src/graphics/graphics_sprite_position_bounds.o | build/decomp/src/graphics/graphics_sprite_position_bounds.o
   target_object = build/decomp/delinks/src/graphics/graphics_sprite_position_bounds.o
@@ -4059,7 +4059,7 @@ build build/reports/graphics_sprite_position_bounds.json: objdiff build/decomp/d
 
 build build/reports/graphics_sprite_position_bounds.txt: match_report build/reports/graphics_sprite_position_bounds.json | tools/report_objdiff.py
   report_json = build/reports/graphics_sprite_position_bounds.json
-  report_args = --section .text --function func_02005b50 --require-exact
+  report_args = --section .text --function GraphicsSpriteState_SetDepthOrderedWorldPositionWithMargins --require-exact
 
 build build/reports/graphics_sprite_create.json: objdiff build/decomp/delinks/src/graphics/graphics_sprite_create.o | build/decomp/src/graphics/graphics_sprite_create.o
   target_object = build/decomp/delinks/src/graphics/graphics_sprite_create.o

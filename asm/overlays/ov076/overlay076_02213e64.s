@@ -4,7 +4,7 @@
 .extern func_02004fe0
 .extern func_02005030
 .extern func_02005058
-.extern func_02005b50
+.extern GraphicsSpriteState_SetDepthOrderedWorldPositionWithMargins
 .extern ActorExtendedType2_RunRenderCallback
 
 .global func_ov076_02213e64
@@ -62,7 +62,7 @@ func_ov076_02213e64:
     ldr r3, [sp, #0x28]
     add r2, sp, #0xc
     mov r1, r6
-    bl func_02005b50
+    bl GraphicsSpriteState_SetDepthOrderedWorldPositionWithMargins
     add r0, r7, #0x200
     ldrsh r2, [r0, #0xca]
     ldr r1, [r7, #0x2a0]
@@ -104,7 +104,7 @@ func_ov076_02213e64:
     ldr r3, [sp, #0x28]
     add r2, sp, #0xc
     mov r1, r6
-    bl func_02005b50
+    bl GraphicsSpriteState_SetDepthOrderedWorldPositionWithMargins
     add r0, r7, #0x200
     ldrsh r3, [r0, #0xca]
     ldrsh r2, [r0, #0xcc]

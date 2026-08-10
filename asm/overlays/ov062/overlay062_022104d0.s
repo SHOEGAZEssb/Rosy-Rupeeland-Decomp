@@ -5,7 +5,7 @@
 .extern data_021052fc
 .extern func_02005058
 .extern func_020050a4
-.extern func_02005afc
+.extern GraphicsSpriteState_SetDepthOrderedWorldPosition
 .extern func_020064b8
 .extern func_02008e10
 .extern func_02009d78
@@ -66,7 +66,7 @@ func_ov062_022104d0:
     ldr r1, [sp, #0x14]
     ldr r2, [sp, #0x18]
     ldr r3, [sp, #0x1c]
-    bl func_02005afc
+    bl GraphicsSpriteState_SetDepthOrderedWorldPosition
     ldr r1, [r4, #0x28]
     ldrh r0, [r1, #0x28]
     sub r0, r0, #0x8

@@ -9,7 +9,7 @@
 .extern data_02105610
 .extern func_02005058
 .extern AnimationResource_Init
-.extern func_02005afc
+.extern GraphicsSpriteState_SetDepthOrderedWorldPosition
 .extern func_02005c3c
 .extern func_0200637c
 .extern func_020064b8

@@ -22,25 +22,26 @@ typedef struct GraphicsPositionMargins {
 extern "C" {
 #endif
 
-void func_02005914(GraphicsSpriteState *state,
-                   const GraphicsPositionSource *origin,
-                   s32 positionX, s32 positionY, s32 depth,
-                   u16 cullFlag);
-void func_020059ac(GraphicsSpriteState *state, s32 positionX,
-                   s32 positionY, s32 depth, u16 cullFlag);
-void func_02005a00(GraphicsSpriteState *state, s32 x, s32 y,
-                   u16 cullFlag);
-void func_02005a54(GraphicsSpriteState *state,
-                   const GraphicsPositionSource *origin,
-                   s32 positionX, s32 positionY, s32 depth,
-                   u16 cullFlag);
-void func_02005afc(GraphicsSpriteState *state, s32 positionX,
-                   s32 positionY, s32 depth, u16 cullFlag);
-void func_02005b50(GraphicsSpriteState *state,
-                   const GraphicsPositionSource *origin,
-                   const GraphicsPositionMargins *margins,
-                   s32 positionX, s32 positionY, s32 depth,
-                   u16 cullFlag);
+void GraphicsSpriteState_SetWorldPositionFromOrigin(GraphicsSpriteState *state,
+                                                    const GraphicsPositionSource *origin,
+                                                    s32 positionX,
+                                                    s32 positionY, s32 depth,
+                                                    u16 cullFlag);
+void GraphicsSpriteState_SetWorldPosition(GraphicsSpriteState *state,
+                                          s32 positionX, s32 positionY,
+                                          s32 depth, u16 cullFlag);
+void GraphicsSpriteState_SetScreenPositionCulled(GraphicsSpriteState *state,
+                                                 s32 x, s32 y, u16 cullFlag);
+void GraphicsSpriteState_SetDepthOrderedWorldPositionFromOrigin(
+    GraphicsSpriteState *state, const GraphicsPositionSource *origin,
+    s32 positionX, s32 positionY, s32 depth, u16 cullFlag);
+void GraphicsSpriteState_SetDepthOrderedWorldPosition(
+    GraphicsSpriteState *state, s32 positionX, s32 positionY, s32 depth,
+    u16 cullFlag);
+void GraphicsSpriteState_SetDepthOrderedWorldPositionWithMargins(
+    GraphicsSpriteState *state, const GraphicsPositionSource *origin,
+    const GraphicsPositionMargins *margins, s32 positionX, s32 positionY,
+    s32 depth, u16 cullFlag);
 
 #ifdef __cplusplus
 }

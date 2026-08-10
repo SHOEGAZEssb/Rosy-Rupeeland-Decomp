@@ -48,7 +48,7 @@ extern void func_02005058(void *track);
 extern void func_020050a4(PresentationTrack *destination, const void *source);
 extern void func_020050c8(PresentationTrack *first,
                           PresentationTrack *second);
-extern void func_02005a54(void *sprite, const void *position, s32 first,
+extern void GraphicsSpriteState_SetDepthOrderedWorldPositionFromOrigin(void *sprite, const void *position, s32 first,
                           s32 second, s32 third, s32 constant8);
 extern void func_020066a4(void *output, s32 argument,
                           PresentationTrack *track);
@@ -139,7 +139,7 @@ void func_0201e840(AttachedTimedSprite *self, const void *ownerPosition,
                    const BoundsCenter *unusedCenter)
 {
     (void)unusedCenter;
-    func_02005a54(self->sprite, ownerPosition,
+    GraphicsSpriteState_SetDepthOrderedWorldPositionFromOrigin(self->sprite, ownerPosition,
                   *(s32 *)&self->first08.bytes[4],
                   *(s32 *)&self->first08.bytes[8],
                   *(s32 *)&self->first08.bytes[0xc] + self->radialX30, 8);

@@ -3,7 +3,7 @@
 .extern Heap_Free
 .extern data_020d60d8
 .extern func_020050a4
-.extern func_02005a54
+.extern GraphicsSpriteState_SetDepthOrderedWorldPositionFromOrigin
 .extern func_0201e380
 .extern func_0201e3b8
 .extern func_0201e6e4
@@ -90,7 +90,7 @@ func_0201ed70: ; 0x0201ed70
     ldr r0, [r4, #0x4]
     ldr r2, [r4, #0xc]
     ldr r3, [r4, #0x10]
-    bl func_02005a54
+    bl GraphicsSpriteState_SetDepthOrderedWorldPositionFromOrigin
     ldr r2, [r4, #0x4]
     ldrsh r1, [r4, #0x38]
     ldrh r0, [r2, #0x28]

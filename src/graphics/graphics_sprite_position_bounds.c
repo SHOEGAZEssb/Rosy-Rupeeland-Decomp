@@ -15,11 +15,10 @@
  * coordinates. Always store 0x7fff minus the pre-depth relative Y in field_28.
  * No graphics register is accessed directly and no value is returned.
  */
-void func_02005b50(GraphicsSpriteState *state,
-                   const GraphicsPositionSource *origin,
-                   const GraphicsPositionMargins *margins,
-                   s32 positionX, s32 positionY, s32 depth,
-                   u16 cullFlag)
+void GraphicsSpriteState_SetDepthOrderedWorldPositionWithMargins(
+    GraphicsSpriteState *state, const GraphicsPositionSource *origin,
+    const GraphicsPositionMargins *margins, s32 positionX, s32 positionY,
+    s32 depth, u16 cullFlag)
 {
     s32 x = (positionX >> 12) - (origin->field_04 >> 12);
     s32 relativeY = (positionY >> 12) - (origin->field_08 >> 12);
@@ -37,8 +36,9 @@ void func_02005b50(GraphicsSpriteState *state,
 }
 #else
 /* This matching form implements the documented portable C directly above. */
-asm void func_02005b50(GraphicsSpriteState *, const GraphicsPositionSource *,
-                       const GraphicsPositionMargins *, s32, s32, s32, u16)
+asm void GraphicsSpriteState_SetDepthOrderedWorldPositionWithMargins(
+    GraphicsSpriteState *, const GraphicsPositionSource *,
+    const GraphicsPositionMargins *, s32, s32, s32, u16)
 {
     stmdb sp!, {r3, r4, r5, lr}
     ldr r4, [r1, #4]

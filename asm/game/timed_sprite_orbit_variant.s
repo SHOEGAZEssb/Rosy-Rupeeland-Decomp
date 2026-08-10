@@ -4,7 +4,7 @@
 .extern data_020c9670
 .extern data_020d6118
 .extern func_020050c8
-.extern func_02005a54
+.extern GraphicsSpriteState_SetDepthOrderedWorldPositionFromOrigin
 .extern func_020188fc
 .extern func_0201e380
 .extern func_0201e3b8
@@ -145,7 +145,7 @@ func_0201eb18: ; 0x0201eb18
     smlabb r2, r2, r0, lr
     smlabb r3, r3, r0, ip
     ldr r0, [r4, #0x4]
-    bl func_02005a54
+    bl GraphicsSpriteState_SetDepthOrderedWorldPositionFromOrigin
     ldr r2, [r4, #0x4]
     ldrsh r1, [r4, #0x3c]
     ldrh r0, [r2, #0x28]

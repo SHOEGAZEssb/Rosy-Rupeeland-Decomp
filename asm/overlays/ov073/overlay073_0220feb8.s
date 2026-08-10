@@ -1,6 +1,6 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov073/overlay073_recovery.c.
-.extern func_02005a54
+.extern GraphicsSpriteState_SetDepthOrderedWorldPositionFromOrigin
 
 .global func_ov073_0220feb8
 func_ov073_0220feb8:
@@ -15,7 +15,7 @@ func_ov073_0220feb8:
     ldr r0, [r4, #0x4]
     ldr r2, [r4, #0xc]
     ldr r3, [r4, #0x10]
-    bl func_02005a54
+    bl GraphicsSpriteState_SetDepthOrderedWorldPositionFromOrigin
     mvn r0, #0x0
     cmp r5, r0
     ldrnesh r1, [r4, #0x44]

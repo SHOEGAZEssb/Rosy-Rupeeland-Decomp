@@ -8,7 +8,7 @@
 .extern func_020050c8
 .extern func_020ae024
 .extern func_02072b68
-.extern func_02005914
+.extern GraphicsSpriteState_SetWorldPositionFromOrigin
 .extern data_020d605c
 .global func_0201e454
 func_0201e454: ; 0x0201e454

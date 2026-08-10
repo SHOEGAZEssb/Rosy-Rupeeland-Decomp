@@ -33,7 +33,7 @@ extern OwnerPositionTimedSprite *func_0201e380(
     OwnerPositionTimedSprite *self);
 extern void func_0201e3b8(OwnerPositionTimedSprite *self, s32 enabled);
 extern void func_020050a4(PresentationTrack *destination, const void *source);
-extern void func_02005a54(void *sprite, const void *position, s32 first,
+extern void GraphicsSpriteState_SetDepthOrderedWorldPositionFromOrigin(void *sprite, const void *position, s32 first,
                           s32 second, s32 third, s32 constant8);
 #ifdef __cplusplus
 }
@@ -95,7 +95,7 @@ void func_0201ed70(OwnerPositionTimedSprite *self,
                    const void *ownerPosition, const void *unusedCenter)
 {
     (void)unusedCenter;
-    func_02005a54(self->sprite, ownerPosition,
+    GraphicsSpriteState_SetDepthOrderedWorldPositionFromOrigin(self->sprite, ownerPosition,
                   *(s32 *)&self->first08.bytes[4],
                   *(s32 *)&self->first08.bytes[8],
                   *(s32 *)&self->first08.bytes[0xc] + self->radialX30, 8);

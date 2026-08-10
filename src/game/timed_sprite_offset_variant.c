@@ -13,7 +13,7 @@ extern OffsetTimedSprite *func_0201e380(OffsetTimedSprite *);
 extern void func_0201e3b8(OffsetTimedSprite *,s32);
 extern void func_020050a4(Track *,const void *);
 extern void func_020050c8(Track *,Track *);
-extern void func_02005a54(void *,s32,s32,s32,s32,s32);
+extern void GraphicsSpriteState_SetDepthOrderedWorldPositionFromOrigin(void *,s32,s32,s32,s32,s32);
 extern void func_02072b68(void *,s32);
 #ifdef __cplusplus
 }
@@ -39,7 +39,7 @@ s32 func_0201e620(OffsetTimedSprite *self,s32 argument)
 {
     self->remaining28--;if(self->remaining28<0||(*(u16 *)(self->sprite+0x24)&1)){func_0201e3b8(self,0);return 1;}
     func_020050c8(&self->first08,&self->second18);*(u16 *)(self->sprite+0x24)&=~4;
-    func_02005a54(self->sprite,argument,*(s32 *)&self->first08.bytes[4],*(s32 *)&self->first08.bytes[8],*(s32 *)&self->first08.bytes[0xc],8);
+    GraphicsSpriteState_SetDepthOrderedWorldPositionFromOrigin(self->sprite,argument,*(s32 *)&self->first08.bytes[4],*(s32 *)&self->first08.bytes[8],*(s32 *)&self->first08.bytes[0xc],8);
     *(u16 *)(self->sprite+0x28)=(u16)(self->offset2c+*(u16 *)(self->sprite+0x28));
     return (*(u16 *)(self->sprite+0x24)&1)!=0;
 }

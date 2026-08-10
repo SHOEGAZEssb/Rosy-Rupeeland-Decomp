@@ -17,7 +17,7 @@ extern "C" {
 extern void *SceneManager_GetCurrent(void *manager);
 extern void func_020050a4(void *destination, const void *source);
 extern void func_020050c8(void *destination, const void *source);
-extern void func_02005a00(void *presentation, s32 x, s32 y, s32 mode);
+extern void GraphicsSpriteState_SetScreenPositionCulled(void *presentation, s32 x, s32 y, s32 mode);
 extern void *ActorCollection_QueueActorForRemoval(void *value, void *actor);
 extern void *Actor_GetCollection(void *actor);
 extern s32 Actor_QueryTerrainHeight(void *actor, s32 x, s32 y);
@@ -173,7 +173,7 @@ void func_0204ee24(void *actor)
             FIELD(u16, FIELD(void *, actor, 0x54), 0x24) |= 4;
             finish_actor(actor);
         }
-        func_02005a00(FIELD(void *, actor, 0x54),
+        GraphicsSpriteState_SetScreenPositionCulled(FIELD(void *, actor, 0x54),
                       FIELD(s32, actor, 0x1c) >> 12,
                       FIELD(s32, actor, 0x20) >> 12, 4);
         break;

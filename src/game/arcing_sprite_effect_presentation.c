@@ -19,7 +19,7 @@ extern void *data_020d6740;extern const char data_020d6760[];
 extern const s16 data_020c9670[];extern u8 data_02105610;extern void *gSoundContext;
 extern void *func_0201e250(void *);extern void *func_0201e28c(void *);
 extern void *AnimationResource_Init(void *,s32,s32,s32);extern u8 *func_02005c3c(void *,void *,s32,s32,s32,s32,s32);
-extern void func_02005afc(void *,s32,s32,s32,s32);extern void func_02004fe0(void *);
+extern void GraphicsSpriteState_SetDepthOrderedWorldPosition(void *,s32,s32,s32,s32);extern void func_02004fe0(void *);
 extern void func_02005058(void *);extern void func_0200637c(void *);extern void func_020064b8(void *,void *,s32);
 extern void func_02006918(void *,const void *,const void *,const void *);extern void func_02008378(void *,const void *,const void *);
 extern void func_020233c8(void *,const void *,s32);extern s32 func_020befec(s32,s32);
@@ -91,7 +91,7 @@ s32 func_020236a0(ArcingSpriteEffectPresentation *self)
         func_020064b8(&value,self->path1c,progress);
         index=(func_020befec(self->frame14<<15,self->duration16)&0xffff)>>4;
         value.z0c+=self->amplitude1a*data_020c9670[index];
-        func_02005afc(self->sprite10,value.x04,value.y08,value.z0c,8);
+        GraphicsSpriteState_SetDepthOrderedWorldPosition(self->sprite10,value.x04,value.y08,value.z0c,8);
         if(++self->frame14>self->duration16){self->frame14=self->duration16;if(self->switchResource20)self->state18=1;else{*(u16 *)(self->sprite10+0x24)|=8;self->state18=3;}}
         func_02005058(&value);break;
     case 1:
@@ -100,7 +100,7 @@ s32 func_020236a0(ArcingSpriteEffectPresentation *self)
         if(data_02105610==0){Sound_Play(gSoundContext,0,15);data_02105610=10;}
         /* Retail falls through to state two. */
     case 2:
-        func_02005afc(self->sprite10,*(s32 *)(self->path1c+0x14),*(s32 *)(self->path1c+0x18),*(s32 *)(self->path1c+0x1c),8);
+        GraphicsSpriteState_SetDepthOrderedWorldPosition(self->sprite10,*(s32 *)(self->path1c+0x14),*(s32 *)(self->path1c+0x18),*(s32 *)(self->path1c+0x1c),8);
         if((*(u16 *)(self->sprite10+0x24)&1)!=0){self->state18=3;*(u16 *)(self->sprite10+0x24)|=8;}
         break;
     }

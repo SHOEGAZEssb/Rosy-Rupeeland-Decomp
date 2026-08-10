@@ -6,7 +6,7 @@
 .extern func_0200500c
 .extern func_02005030
 .extern func_02005058
-.extern func_02005afc
+.extern GraphicsSpriteState_SetDepthOrderedWorldPosition
 .extern Actor_SetActive
 .extern func_02050078
 .extern func_020593ac
@@ -249,7 +249,7 @@ func_ov092_022185c4:
     ldr r1, [r4, #0x27c]
     ldr r2, [r4, #0x280]
     mov r3, #0x10000
-    bl func_02005afc
+    bl GraphicsSpriteState_SetDepthOrderedWorldPosition
     add sp, sp, #0x34
     ldmia sp!, {r3, r4, pc}
 .L_02218928: .word gSystemState

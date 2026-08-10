@@ -6,7 +6,7 @@
 .extern gSceneManager
 .extern func_020050a4
 .extern func_020050c8
-.extern func_02005a00
+.extern GraphicsSpriteState_SetScreenPositionCulled
 .extern ActorCollection_QueueActorForRemoval
 .extern Actor_GetCollection
 .extern Actor_QueryTerrainHeight
@@ -383,7 +383,7 @@ func_0204ee24: ; 0x0204ee24
     mov r1, r1, asr #0xc
     mov r2, r2, asr #0xc
     mov r3, #0x4
-    bl func_02005a00
+    bl GraphicsSpriteState_SetScreenPositionCulled
     b .L_0204f3a8
 .L_0204f394:
     mov r0, r5

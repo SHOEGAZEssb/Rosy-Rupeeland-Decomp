@@ -6,7 +6,7 @@
 .extern func_0201e3b8
 .extern func_020050a4
 .extern func_020050c8
-.extern func_02005a54
+.extern GraphicsSpriteState_SetDepthOrderedWorldPositionFromOrigin
 .extern func_02072b68
 .extern data_020d6084
 .global func_0201e604

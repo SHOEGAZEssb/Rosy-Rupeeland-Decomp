@@ -9,7 +9,7 @@
 .extern func_02005030
 .extern func_02005058
 .extern func_020050a4
-.extern func_02005afc
+.extern GraphicsSpriteState_SetDepthOrderedWorldPosition
 .extern func_020064b8
 .extern func_02009d78
 .extern func_02010c00
@@ -228,7 +228,7 @@ func_ov064_02210c5c:
     ldr r1, [r4, #0x288]
     ldr r2, [r4, #0x28c]
     ldr r3, [r4, #0x290]
-    bl func_02005afc
+    bl GraphicsSpriteState_SetDepthOrderedWorldPosition
 .L_02210f5c:
     ldrsh r0, [r6, #0x74]
     cmp r0, #0x3c
@@ -255,7 +255,7 @@ func_ov064_02210c5c:
     ldr r1, [r4, #0x288]
     ldr r2, [r4, #0x28c]
     ldr r3, [r4, #0x290]
-    bl func_02005afc
+    bl GraphicsSpriteState_SetDepthOrderedWorldPosition
 .L_02210fc4:
     add r0, sp, #0x28
     bl func_02005058

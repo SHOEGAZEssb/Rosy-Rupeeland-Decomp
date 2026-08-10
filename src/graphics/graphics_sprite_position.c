@@ -31,19 +31,21 @@ static u32 queryLayer(s32 positionX, s32 positionY)
  * Query the global view object with the integer parts of positionX/Y, set
  * field_3a to 2 when depth lies below the query's signed five-bit result (or
  * 1 otherwise), then convert X/Y relative to origin and depth into integer
- * sprite coordinates. func_02005a00 performs flag-controlled culling. No
- * graphics register is accessed directly and no value is returned.
+ * sprite coordinates. GraphicsSpriteState_SetScreenPositionCulled performs
+ * flag-controlled culling. No graphics register is accessed directly and no
+ * value is returned.
  */
-void func_02005914(GraphicsSpriteState *state,
-                   const GraphicsPositionSource *origin,
-                   s32 positionX, s32 positionY, s32 depth,
-                   u16 cullFlag)
+void GraphicsSpriteState_SetWorldPositionFromOrigin(GraphicsSpriteState *state,
+                                                    const GraphicsPositionSource *origin,
+                                                    s32 positionX,
+                                                    s32 positionY, s32 depth,
+                                                    u16 cullFlag)
 {
     u32 result = queryLayer(positionX, positionY);
     s32 layer = (s32)(result << 27) >> 27;
 
     state->field_3a = depth < layer * 0x10000 ? 2 : 1;
-    func_02005a00(state,
+    GraphicsSpriteState_SetScreenPositionCulled(state,
                   (positionX >> 12) - (origin->field_04 >> 12),
                   (positionY >> 12) - (depth >> 12) -
                       (origin->field_08 >> 12),
@@ -52,15 +54,18 @@ void func_02005914(GraphicsSpriteState *state,
 
 /*
  * Obtain the default origin from the object at global offset 0x2fbc and pass
- * all coordinates and cullFlag to func_02005914. State changes and return
+ * all coordinates and cullFlag to
+ * GraphicsSpriteState_SetWorldPositionFromOrigin. State changes and return
  * behavior are exactly those of that callee.
  */
-void func_020059ac(GraphicsSpriteState *state, s32 positionX,
-                   s32 positionY, s32 depth, u16 cullFlag)
+void GraphicsSpriteState_SetWorldPosition(GraphicsSpriteState *state,
+                                          s32 positionX, s32 positionY,
+                                          s32 depth, u16 cullFlag)
 {
     GraphicsPositionSource *origin =
         func_02009d78(data_021052fc + 0x2fbc);
-    func_02005914(state, origin, positionX, positionY, depth, cullFlag);
+    GraphicsSpriteState_SetWorldPositionFromOrigin(
+        state, origin, positionX, positionY, depth, cullFlag);
 }
 
 /*
@@ -68,8 +73,8 @@ void func_020059ac(GraphicsSpriteState *state, s32 positionX,
  * and clear cullFlag from state->flags. Outside that expanded DS viewport,
  * set cullFlag and retain the previous coordinates. No value is returned.
  */
-void func_02005a00(GraphicsSpriteState *state, s32 x, s32 y,
-                   u16 cullFlag)
+void GraphicsSpriteState_SetScreenPositionCulled(GraphicsSpriteState *state,
+                                                 s32 x, s32 y, u16 cullFlag)
 {
     if (x >= -32 && x < 272 && y >= -64 && y < 256) {
         state->field_2c = (s16)x;
@@ -81,22 +86,22 @@ void func_02005a00(GraphicsSpriteState *state, s32 x, s32 y,
 }
 
 /*
- * Variant of func_02005914 that uses positionY-origin.field_08 as the
- * retained depth basis, subtracts depth only from the displayed Y, and stores
- * 0x7fff minus that basis in field_28 after culling. The layer query and
- * field_3a selection have the same effects as func_02005914.
+ * Variant of GraphicsSpriteState_SetWorldPositionFromOrigin that uses
+ * positionY-origin.field_08 as the retained depth basis, subtracts depth only
+ * from the displayed Y, and stores 0x7fff minus that basis in field_28 after
+ * culling. The layer query and field_3a selection have the same effects as
+ * GraphicsSpriteState_SetWorldPositionFromOrigin.
  */
-void func_02005a54(GraphicsSpriteState *state,
-                   const GraphicsPositionSource *origin,
-                   s32 positionX, s32 positionY, s32 depth,
-                   u16 cullFlag)
+void GraphicsSpriteState_SetDepthOrderedWorldPositionFromOrigin(
+    GraphicsSpriteState *state, const GraphicsPositionSource *origin,
+    s32 positionX, s32 positionY, s32 depth, u16 cullFlag)
 {
     u32 result = queryLayer(positionX, positionY);
     s32 layer = (s32)(result << 27) >> 27;
     s32 relativeY = (positionY >> 12) - (origin->field_08 >> 12);
 
     state->field_3a = depth < layer * 0x10000 ? 2 : 1;
-    func_02005a00(state,
+    GraphicsSpriteState_SetScreenPositionCulled(state,
                   (positionX >> 12) - (origin->field_04 >> 12),
                   relativeY - (depth >> 12), cullFlag);
     state->field_28 = (u16)(0x7fff - relativeY);
@@ -104,20 +109,24 @@ void func_02005a54(GraphicsSpriteState *state,
 
 /*
  * Obtain the default origin from the object at global offset 0x2fbc and pass
- * all coordinates and cullFlag to func_02005a54. State changes and return
- * behavior are exactly those of that callee.
+ * all coordinates and cullFlag to
+ * GraphicsSpriteState_SetDepthOrderedWorldPositionFromOrigin. State changes
+ * and return behavior are exactly those of that callee.
  */
-void func_02005afc(GraphicsSpriteState *state, s32 positionX,
-                   s32 positionY, s32 depth, u16 cullFlag)
+void GraphicsSpriteState_SetDepthOrderedWorldPosition(
+    GraphicsSpriteState *state, s32 positionX, s32 positionY, s32 depth,
+    u16 cullFlag)
 {
     GraphicsPositionSource *origin =
         func_02009d78(data_021052fc + 0x2fbc);
-    func_02005a54(state, origin, positionX, positionY, depth, cullFlag);
+    GraphicsSpriteState_SetDepthOrderedWorldPositionFromOrigin(
+        state, origin, positionX, positionY, depth, cullFlag);
 }
 #else
 /* Matching forms implement the documented portable C above. */
-asm void func_02005914(GraphicsSpriteState *, const GraphicsPositionSource *,
-                       s32, s32, s32, u16)
+asm void GraphicsSpriteState_SetWorldPositionFromOrigin(
+    GraphicsSpriteState *, const GraphicsPositionSource *, s32, s32, s32,
+    u16)
 {
     stmdb sp!, {r3, r4, r5, r6, r7, lr}
     sub sp, sp, #8
@@ -153,12 +162,13 @@ asm void func_02005914(GraphicsSpriteState *, const GraphicsPositionSource *,
     mov r0, r7
     rsb r1, r1, r5, asr #12
     sub r2, r4, r2, asr #12
-    bl func_02005a00
+    bl GraphicsSpriteState_SetScreenPositionCulled
     add sp, sp, #8
     ldmia sp!, {r3, r4, r5, r6, r7, pc}
 }
 
-asm void func_020059ac(GraphicsSpriteState *, s32, s32, s32, u16)
+asm void GraphicsSpriteState_SetWorldPosition(GraphicsSpriteState *, s32, s32,
+                                              s32, u16)
 {
     stmdb sp!, {r3, r4, r5, r6, r7, lr}
     sub sp, sp, #8
@@ -177,12 +187,13 @@ asm void func_020059ac(GraphicsSpriteState *, s32, s32, s32, u16)
     mov r2, r7
     mov r3, r6
     stmia sp, {r5, ip}
-    bl func_02005914
+    bl GraphicsSpriteState_SetWorldPositionFromOrigin
     add sp, sp, #8
     ldmia sp!, {r3, r4, r5, r6, r7, pc}
 }
 
-asm void func_02005a00(GraphicsSpriteState *, s32, s32, u16)
+asm void GraphicsSpriteState_SetScreenPositionCulled(GraphicsSpriteState *,
+                                                     s32, s32, u16)
 {
     mvn ip, #0x1f
     cmp r1, ip
@@ -208,8 +219,9 @@ outside:
     bx lr
 }
 
-asm void func_02005a54(GraphicsSpriteState *, const GraphicsPositionSource *,
-                       s32, s32, s32, u16)
+asm void GraphicsSpriteState_SetDepthOrderedWorldPositionFromOrigin(
+    GraphicsSpriteState *, const GraphicsPositionSource *, s32, s32, s32,
+    u16)
 {
     stmdb sp!, {r3, r4, r5, r6, r7, lr}
     sub sp, sp, #8
@@ -245,7 +257,7 @@ asm void func_02005a54(GraphicsSpriteState *, const GraphicsPositionSource *,
     mov r0, r7
     rsb r1, r1, r5, asr #12
     sub r2, r4, r2, asr #12
-    bl func_02005a00
+    bl GraphicsSpriteState_SetScreenPositionCulled
     ldr r0, =0x7fff
     sub r0, r0, r4
     strh r0, [r7, #0x28]
@@ -253,7 +265,8 @@ asm void func_02005a54(GraphicsSpriteState *, const GraphicsPositionSource *,
     ldmia sp!, {r3, r4, r5, r6, r7, pc}
 }
 
-asm void func_02005afc(GraphicsSpriteState *, s32, s32, s32, u16)
+asm void GraphicsSpriteState_SetDepthOrderedWorldPosition(
+    GraphicsSpriteState *, s32, s32, s32, u16)
 {
     stmdb sp!, {r3, r4, r5, r6, r7, lr}
     sub sp, sp, #8
@@ -272,7 +285,7 @@ asm void func_02005afc(GraphicsSpriteState *, s32, s32, s32, u16)
     mov r2, r7
     mov r3, r6
     stmia sp, {r5, ip}
-    bl func_02005a54
+    bl GraphicsSpriteState_SetDepthOrderedWorldPositionFromOrigin
     add sp, sp, #8
     ldmia sp!, {r3, r4, r5, r6, r7, pc}
 }

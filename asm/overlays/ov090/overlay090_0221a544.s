@@ -3,8 +3,8 @@
 .extern data_021052fc
 .extern func_02005030
 .extern func_02005058
-.extern func_02005a54
-.extern func_02005afc
+.extern GraphicsSpriteState_SetDepthOrderedWorldPositionFromOrigin
+.extern GraphicsSpriteState_SetDepthOrderedWorldPosition
 .extern func_02031758
 
 .global func_ov090_0221a544
@@ -34,7 +34,7 @@ func_ov090_0221a544:
     ldr r2, [r4, #0x1c]
     mov r1, r5
     add r3, r3, ip
-    bl func_02005a54
+    bl GraphicsSpriteState_SetDepthOrderedWorldPositionFromOrigin
     ldr r0, [r4, #0x20]
     cmp r0, #0x200000
     blt .L_0221a5c4
@@ -79,7 +79,7 @@ func_ov090_0221a544:
     ldr r1, [sp, #0xc]
     ldr r2, [sp, #0x10]
     ldr r3, [sp, #0x14]
-    bl func_02005afc
+    bl GraphicsSpriteState_SetDepthOrderedWorldPosition
     ldr r4, [r6, #0x248]
     mov r3, #0x0
     ldrh r1, [r4, #0x24]

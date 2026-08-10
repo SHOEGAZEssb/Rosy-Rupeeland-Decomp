@@ -4,7 +4,7 @@
 .extern data_020c9670
 .extern data_020f4e14
 .extern data_021052fc
-.extern func_02005afc
+.extern GraphicsSpriteState_SetDepthOrderedWorldPosition
 .extern func_02008e10
 .extern func_02010c00
 .extern ActorDerivedType1_ApplyResourceIndex
@@ -211,7 +211,7 @@ func_ov065_02210600:
     ldr r1, [r4, #0x128]
     ldr r2, [r4, #0x12c]
     add r3, r3, r6
-    bl func_02005afc
+    bl GraphicsSpriteState_SetDepthOrderedWorldPosition
     ldr r0, [r4, #0x24]
     bl func_020740a4
     mov r0, #0x0

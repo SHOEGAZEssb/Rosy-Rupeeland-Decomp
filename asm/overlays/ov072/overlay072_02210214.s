@@ -4,8 +4,8 @@
 .extern Sound_Play
 .extern data_020c9670
 .extern data_021052fc
-.extern func_02005a00
-.extern func_02005afc
+.extern GraphicsSpriteState_SetScreenPositionCulled
+.extern GraphicsSpriteState_SetDepthOrderedWorldPosition
 .extern func_0205974c
 .extern func_020597fc
 .extern func_02072b68
@@ -363,7 +363,7 @@ func_ov072_02210214:
     ldr r1, [r4, #0x1c]
     ldr r2, [r4, #0x20]
     ldr r3, [r4, #0x24]
-    bl func_02005afc
+    bl GraphicsSpriteState_SetDepthOrderedWorldPosition
     mov r8, #0x0
     mov r5, #0x1
     ldr r6, .L_022107d0
@@ -396,7 +396,7 @@ func_ov072_02210214:
     mov r0, r9
     mov r3, #0x4
     sub r2, r2, ip
-    bl func_02005a00
+    bl GraphicsSpriteState_SetScreenPositionCulled
     strb r4, [r9, #0x3a]
     ldr r0, [r7, r8, lsl #0x2]
     add r0, r0, #0x1

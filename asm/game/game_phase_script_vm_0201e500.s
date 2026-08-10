@@ -8,7 +8,7 @@
 .extern func_020050c8
 .extern func_020ae024
 .extern func_02072b68
-.extern func_02005914
+.extern GraphicsSpriteState_SetWorldPositionFromOrigin
 .extern data_020d605c
 .global func_0201e500
 func_0201e500: ; 0x0201e500
@@ -36,7 +36,7 @@ L_0201e530:
     ldr r2, [r5, #0xc]
     ldr r3, [r5, #0x10]
     mov r1, r4
-    bl func_02005914
+    bl GraphicsSpriteState_SetWorldPositionFromOrigin
     ldr r0, [r5, #0x4]
     ldrh r0, [r0, #0x24]
     and r0, r0, #0x8

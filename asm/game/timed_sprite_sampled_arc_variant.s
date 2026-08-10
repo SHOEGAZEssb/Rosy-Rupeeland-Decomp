@@ -4,7 +4,7 @@
 .extern data_020d60ac
 .extern func_02005058
 .extern func_020050a4
-.extern func_02005a00
+.extern GraphicsSpriteState_SetScreenPositionCulled
 .extern func_020066a4
 .extern func_0201e290
 .extern func_0201e380
@@ -92,7 +92,7 @@ func_0201ee48: ; 0x0201ee48
     rsb r2, r2, r3, asr #0xc
     mov r1, r1, asr #0xc
     mov r3, #0x8
-    bl func_02005a00
+    bl GraphicsSpriteState_SetScreenPositionCulled
     ldr r0, [r4, #0x4]
     ldrh r0, [r0, #0x24]
     and r0, r0, #0x8

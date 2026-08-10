@@ -8,8 +8,8 @@
 .extern data_ov088_0221b6f0
 .extern func_02005030
 .extern func_02005058
-.extern func_02005a00
-.extern func_02005b50
+.extern GraphicsSpriteState_SetScreenPositionCulled
+.extern GraphicsSpriteState_SetDepthOrderedWorldPositionWithMargins
 .extern ActorDerivedRuntime_ForwardTouchPoint
 .extern func_02072b68
 .extern func_020adae4
@@ -66,7 +66,7 @@ func_ov088_022191d4:
     str r2, [sp, #0x8]
     ldr r3, [sp, #0x14]
     add r2, r10, #0x68
-    bl func_02005b50
+    bl GraphicsSpriteState_SetDepthOrderedWorldPositionWithMargins
     ldr r0, [r10, #0x224]
     sub r1, r5, #0x2
     strb r7, [r0, #0x3a]
@@ -173,7 +173,7 @@ func_ov088_022191d4:
     add r1, r3, r4, asr #0xc
     add r2, r6, r2
     mov r3, #0x8
-    bl func_02005a00
+    bl GraphicsSpriteState_SetScreenPositionCulled
     strb r7, [r8, #0x3a]
     sub r0, r5, #0x1
     strh r0, [r8, #0x28]
@@ -221,7 +221,7 @@ func_ov088_022191d4:
     ldrsh r2, [r2, #0x2e]
     add r1, r1, r4
     add r2, r2, r6, asr #0xc
-    bl func_02005a00
+    bl GraphicsSpriteState_SetScreenPositionCulled
     b .L_02219520
 .L_022194f0:
     ldr r2, [sp, #0x18]
@@ -235,7 +235,7 @@ func_ov088_022191d4:
     ldr r1, [sp, #0xc]
     add r2, r10, #0x68
     add r3, r3, r6
-    bl func_02005b50
+    bl GraphicsSpriteState_SetDepthOrderedWorldPositionWithMargins
 .L_02219520:
     ldr r0, [r10, #0x250]
     add r1, r5, r9
