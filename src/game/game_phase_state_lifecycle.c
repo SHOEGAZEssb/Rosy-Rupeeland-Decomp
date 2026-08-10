@@ -20,7 +20,7 @@ extern void func_0201e0ec(void *object);
 extern void func_0202cf2c(void *object);
 extern void func_0202d06c(void *object);
 extern void func_0202d094(void *object);
-extern void func_0202d380(void *object);
+extern void ActorCollection_UnregisterAndDestroyAllActors(void *object);
 extern void func_0203abb0(void);
 extern void func_020a2324(void);
 #ifdef __cplusplus
@@ -94,5 +94,5 @@ void func_0200e61c(GamePhaseState *self)
     func_0201e0ec(self->helper_2f58);
     func_020a2324();
     func_0203abb0();
-    func_0202d380(self->storage_0004);
+    ActorCollection_UnregisterAndDestroyAllActors(self->storage_0004);
 }

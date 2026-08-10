@@ -6,7 +6,7 @@
 .extern data_020e8380
 .extern data_020ed470
 .extern func_020062a0
-.extern func_0202d110
+.extern ActorCollection_RegisterActor
 .extern Actor_RefreshTerrainHeight
 .extern func_02035060
 .extern func_0203b554
@@ -2165,7 +2165,7 @@ func_0202ecd0: ; 0x0202ecd0
     beq .L_02030a5c
     mov r0, r6
     mov r1, r4
-    bl func_0202d110
+    bl ActorCollection_RegisterActor
 .L_02030a5c:
     mov r0, r4
     add sp, sp, #0x30

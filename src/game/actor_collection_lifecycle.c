@@ -40,7 +40,7 @@ extern void func_02006280(void *owner);
 extern void func_020062f8(void *owner);
 extern void *func_020742cc(void *pool);
 extern void func_02074330(void *pool, void *sprite);
-extern void func_0202d380(ActorCollection *self);
+extern void ActorCollection_UnregisterAndDestroyAllActors(ActorCollection *self);
 extern void func_0202d094(ActorCollection *self);
 #ifdef __cplusplus
 }
@@ -122,7 +122,7 @@ ActorCollection *func_0202d06c(ActorCollection *self)
  */
 void func_0202d094(ActorCollection *self)
 {
-    func_0202d380(self);
+    ActorCollection_UnregisterAndDestroyAllActors(self);
     if (self->spriteMode_2e84 == 1) {
         func_02074330(data_020f4e14, self->sprite_0e00);
         self->sprite_0e00 = 0;

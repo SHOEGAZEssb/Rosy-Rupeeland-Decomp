@@ -1,9 +1,9 @@
 ; Matching retail form; see src/game/actor_collection_registration.c.
 .text
 
-    .global func_0202d110
-    .type func_0202d110, @function
-func_0202d110: ; 0x0202d110
+    .global ActorCollection_RegisterActor
+    .type ActorCollection_RegisterActor, @function
+ActorCollection_RegisterActor: ; 0x0202d110
     stmdb sp!, {r3, lr}
     ldrb r2, [r1, #0x4d]
     cmp r2, #0x1
@@ -61,4 +61,4 @@ func_0202d110: ; 0x0202d110
     cmp r2, r1
     strlt r1, [r0, #0xe74]
     ldmia sp!, {r3, pc}
-    .size func_0202d110, . - func_0202d110
+    .size ActorCollection_RegisterActor, . - ActorCollection_RegisterActor

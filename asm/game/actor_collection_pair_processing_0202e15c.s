@@ -8,8 +8,8 @@
 .extern func_0200a3b8
 .extern func_0200ac14
 .extern func_0200b04c
-.extern func_0202d2f4
-.extern func_0202d324
+.extern ActorPairMatrix_Get
+.extern ActorPairMatrix_Clear
 .extern func_0202ec08
 .extern func_0202ec74
 .extern Actor_BuildCollisionRect
@@ -365,7 +365,7 @@ func_0202e15c: ; 0x0202e15c
     ldr r2, [sp, #0x4]
     add r0, r0, #0xc00
     mov r6, #0x0
-    bl func_0202d2f4
+    bl ActorPairMatrix_Get
     cmp r0, #0x0
     movne r7, #0x1
     moveq r7, r6
@@ -406,7 +406,7 @@ func_0202e15c: ; 0x0202e15c
     ldr r1, [sp, #0x0]
     ldr r2, [sp, #0x4]
     add r0, r0, #0xc00
-    bl func_0202d2f4
+    bl ActorPairMatrix_Get
     cmp r0, #0x0
     beq .L_0202e74c
     mov r0, r10
@@ -421,7 +421,7 @@ func_0202e15c: ; 0x0202e15c
     ldr r1, [sp, #0x0]
     ldr r2, [sp, #0x4]
     add r0, r0, #0xc00
-    bl func_0202d324
+    bl ActorPairMatrix_Clear
     b .L_0202e74c
 .L_0202e740:
     ldr r0, [sp, #0x14]

@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/actor_collection_active_drain.c.
 .text
-.extern func_0202d1e4
+.extern ActorCollection_UnregisterActor
 
     .global func_0202d5c8
     .type func_0202d5c8, @function
@@ -22,7 +22,7 @@ func_0202d5c8: ; 0x0202d5c8
     beq .L_0202d62c
     mov r0, r5
     mov r1, r8
-    bl func_0202d1e4
+    bl ActorCollection_UnregisterActor
     cmp r8, #0x0
     beq .L_0202d624
     mov r0, r8

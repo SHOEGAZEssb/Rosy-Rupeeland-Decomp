@@ -1,9 +1,9 @@
 ; Matching retail form; see src/game/actor_collection_activation.c.
 .text
-.extern func_0202d2f4
+.extern ActorPairMatrix_Get
 .extern func_0202ec74
-.extern func_0202d324
-.extern func_0202d110
+.extern ActorPairMatrix_Clear
+.extern ActorCollection_RegisterActor
 
     .global func_0202d494
     .type func_0202d494, @function
@@ -32,7 +32,7 @@ func_0202d494: ; 0x0202d494
     mov r1, r8
     mov r2, r9
     add r0, r6, #0xc00
-    bl func_0202d2f4
+    bl ActorPairMatrix_Get
     cmp r0, #0x0
     beq .L_0202d50c
     ldr r1, [r5, r9, lsl #0x2]
@@ -43,13 +43,13 @@ func_0202d494: ; 0x0202d494
     mov r1, r7
     mov r2, r9
     add r0, r6, #0xc00
-    bl func_0202d324
+    bl ActorPairMatrix_Clear
     add r9, r9, #0x1
     cmp r9, #0x80
     blt .L_0202d4d8
     mov r0, r5
     mov r1, r4
-    bl func_0202d110
+    bl ActorCollection_RegisterActor
     mov r1, #0x0
     str r1, [r5, #0x4]
     add r0, r5, #0x2000

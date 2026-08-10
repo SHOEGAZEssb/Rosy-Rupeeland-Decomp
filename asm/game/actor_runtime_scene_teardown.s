@@ -9,7 +9,7 @@
 .extern func_02038aac
 .extern GameWork_ClearFlag
 .extern Actor_GetCollection
-.extern func_0202d358
+.extern ActorCollection_UnregisterAndDestroyActor
 .extern func_02030b58
 .extern Scene_Destroy
 .extern data_020d448c
@@ -87,7 +87,7 @@ L_0200b4e8:
     mov r0, r4
     bl Actor_GetCollection
     mov r1, r4
-    bl func_0202d358
+    bl ActorCollection_UnregisterAndDestroyActor
 L_0200b530:
     ldr r0, L_0200b55c
     mov r1, #0x1

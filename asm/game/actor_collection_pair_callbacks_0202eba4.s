@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/actor_collection_pair_callbacks.c.
 .text
-.extern func_0202d2f4
-.extern func_0202d324
+.extern ActorPairMatrix_Get
+.extern ActorPairMatrix_Clear
 .extern func_0202ec74
 
     .global func_0202eba4
@@ -15,7 +15,7 @@ func_0202eba4: ; 0x0202eba4
     ldrsb r1, [r5, #0x48]
     ldrsb r2, [r4, #0x48]
     add r0, r0, #0xc00
-    bl func_0202d2f4
+    bl ActorPairMatrix_Get
     cmp r0, #0x0
     beq .L_0202ebf0
     mov r0, r6
@@ -31,6 +31,6 @@ func_0202eba4: ; 0x0202eba4
     add r0, r6, #0x234
     ldrsb r2, [r4, #0x48]
     add r0, r0, #0xc00
-    bl func_0202d324
+    bl ActorPairMatrix_Clear
     ldmia sp!, {r4, r5, r6, pc}
     .size func_0202eba4, . - func_0202eba4

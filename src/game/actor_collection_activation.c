@@ -37,10 +37,10 @@ typedef struct ActorCollectionActivation {
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_0202d110(ActorCollectionActivation *, CollectionActor *);
-extern void func_0202d1e4(ActorCollectionActivation *, CollectionActor *);
-extern u8 func_0202d2f4(const u8 *, s32, s32);
-extern void func_0202d324(u8 *, s32, s32);
+extern void ActorCollection_RegisterActor(ActorCollectionActivation *, CollectionActor *);
+extern void ActorCollection_UnregisterActor(ActorCollectionActivation *, CollectionActor *);
+extern u8 ActorPairMatrix_Get(const u8 *, s32, s32);
+extern void ActorPairMatrix_Clear(u8 *, s32, s32);
 extern void func_0202ec74(ActorCollectionActivation *, CollectionActor *,
                           CollectionActor *);
 #ifdef __cplusplus
@@ -61,14 +61,14 @@ void func_0202d3cc(ActorCollectionActivation *self)
     if (self->secondaryActor_2e80 &&
         !(self->secondaryActor_2e80->flags_268 & 0x10)) {
         actor = self->actors_0000[1];
-        func_0202d1e4(self, actor);
+        ActorCollection_UnregisterActor(self, actor);
         if (actor)
             actor->vtable_00->destroy_04(actor);
     }
     for (i = 2; i < self->slotLimit_2e74; i++) {
         actor = self->actors_0000[i];
         if (actor && !(actor->flags_0d0 & 0x100000)) {
-            func_0202d1e4(self, actor);
+            ActorCollection_UnregisterActor(self, actor);
             if (actor)
                 actor->vtable_00->destroy_04(actor);
         }
@@ -88,11 +88,11 @@ void func_0202d494(ActorCollectionActivation *self, CollectionActor *actor)
     if (actor->type_4d == 7 && self->secondaryActor_2e80 == actor) {
         for (i = 0; i < 128; i++) {
             if (self->actors_0000[i] &&
-                func_0202d2f4((u8 *)self + 0x0e34, 1, i))
+                ActorPairMatrix_Get((u8 *)self + 0x0e34, 1, i))
                 func_0202ec74(self, self->actors_0000[i], actor);
-            func_0202d324((u8 *)self + 0x0e34, 1, i);
+            ActorPairMatrix_Clear((u8 *)self + 0x0e34, 1, i);
         }
-        func_0202d110(self, actor);
+        ActorCollection_RegisterActor(self, actor);
         self->actors_0000[1] = 0;
         self->secondaryActor_2e80 = 0;
     }

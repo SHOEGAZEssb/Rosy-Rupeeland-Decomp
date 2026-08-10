@@ -41,9 +41,9 @@ extern "C" {
 extern void func_0202ec74(ActorCollectionRegistration *self,
                           RegisteredActor *other,
                           RegisteredActor *removed);
-extern void func_0202d1e4(ActorCollectionRegistration *, RegisteredActor *);
-extern u8 func_0202d2f4(const u8 *, s32, s32);
-extern void func_0202d324(u8 *, s32, s32);
+extern void ActorCollection_UnregisterActor(ActorCollectionRegistration *, RegisteredActor *);
+extern u8 ActorPairMatrix_Get(const u8 *, s32, s32);
+extern void ActorPairMatrix_Clear(u8 *, s32, s32);
 #ifdef __cplusplus
 }
 #endif
@@ -56,7 +56,7 @@ extern void func_0202d324(u8 *, s32, s32);
  * slotLimit_2e74 when necessary. Capacity exhaustion is not handled by the
  * recovered code and is assumed impossible.
  */
-void func_0202d110(ActorCollectionRegistration *self, RegisteredActor *actor)
+void ActorCollection_RegisterActor(ActorCollectionRegistration *self, RegisteredActor *actor)
 {
     s32 i;
     s32 freeIndex = -1;
@@ -97,7 +97,7 @@ void func_0202d110(ActorCollectionRegistration *self, RegisteredActor *actor)
  * through func_0202ec74, clear every matrix edge involving the removed slot,
  * and finally clear the actor slot. A missing actor causes no state change.
  */
-void func_0202d1e4(ActorCollectionRegistration *self, RegisteredActor *actor)
+void ActorCollection_UnregisterActor(ActorCollectionRegistration *self, RegisteredActor *actor)
 {
     s32 index = -1;
     s32 i;
@@ -119,9 +119,9 @@ void func_0202d1e4(ActorCollectionRegistration *self, RegisteredActor *actor)
     self->actorCount_0e1c--;
     for (i = 0; i < 128; i++) {
         if (self->actors_0000[i] &&
-            func_0202d2f4(self->relationshipMatrix_0e34, index, i))
+            ActorPairMatrix_Get(self->relationshipMatrix_0e34, index, i))
             func_0202ec74(self, self->actors_0000[i], actor);
-        func_0202d324(self->relationshipMatrix_0e34, index, i);
+        ActorPairMatrix_Clear(self->relationshipMatrix_0e34, index, i);
     }
     self->actors_0000[index] = 0;
 }
@@ -131,7 +131,7 @@ void func_0202d1e4(ActorCollectionRegistration *self, RegisteredActor *actor)
  * larger index is stored within a row selected by the smaller index; row n
  * starts at n*128 - n*(n+1)/2, yielding exactly 0x2040 bytes for 128 rows.
  */
-u8 func_0202d2f4(const u8 *matrix, s32 first, s32 second)
+u8 ActorPairMatrix_Get(const u8 *matrix, s32 first, s32 second)
 {
     s32 temporary;
     if (second > first) {
@@ -143,7 +143,7 @@ u8 func_0202d2f4(const u8 *matrix, s32 first, s32 second)
 }
 
 /* Clear the relationship byte for an unordered pair using the same packed index. */
-void func_0202d324(u8 *matrix, s32 first, s32 second)
+void ActorPairMatrix_Clear(u8 *matrix, s32 first, s32 second)
 {
     s32 temporary;
     if (second > first) {
@@ -155,21 +155,21 @@ void func_0202d324(u8 *matrix, s32 first, s32 second)
 }
 
 /* Remove actor from the collection and invoke its vtable offset-0x04 destructor when nonnull. */
-void func_0202d358(ActorCollectionRegistration *self, RegisteredActor *actor)
+void ActorCollection_UnregisterAndDestroyActor(ActorCollectionRegistration *self, RegisteredActor *actor)
 {
-    func_0202d1e4(self, actor);
+    ActorCollection_UnregisterActor(self, actor);
     if (actor)
         actor->vtable_00->destroy_04(actor);
 }
 
 /* Remove and destroy every nonnull actor encountered across all 128 slots. */
-void func_0202d380(ActorCollectionRegistration *self)
+void ActorCollection_UnregisterAndDestroyAllActors(ActorCollectionRegistration *self)
 {
     s32 i;
     for (i = 0; i < 128; i++) {
         RegisteredActor *actor = self->actors_0000[i];
         if (actor) {
-            func_0202d1e4(self, actor);
+            ActorCollection_UnregisterActor(self, actor);
             if (actor)
                 actor->vtable_00->destroy_04(actor);
         }

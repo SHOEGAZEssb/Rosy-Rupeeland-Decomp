@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/actor_collection_lifecycle.c.
 .text
-.extern func_0202d380
+.extern ActorCollection_UnregisterAndDestroyAllActors
 .extern func_02074330
 .extern func_020062f8
 .extern data_020f4e14
@@ -11,7 +11,7 @@
 func_0202d094: ; 0x0202d094
     stmdb sp!, {r4, lr}
     mov r4, r0
-    bl func_0202d380
+    bl ActorCollection_UnregisterAndDestroyAllActors
     add r0, r4, #0x2000
     ldr r0, [r0, #0xe84]
     cmp r0, #0x1

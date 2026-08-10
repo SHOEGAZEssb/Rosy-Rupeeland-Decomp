@@ -7,7 +7,7 @@
 .extern func_02006280
 .extern func_0201e1b0
 .extern func_0202d06c
-.extern func_0202d380
+.extern ActorCollection_UnregisterAndDestroyAllActors
 
     .global func_02011f98
 func_02011f98: ; 0x02011f98
@@ -22,7 +22,7 @@ func_02011f98: ; 0x02011f98
     add r0, r0, #0x2c00
     bl func_0201e1b0
     add r0, r4, #0x8
-    bl func_0202d380
+    bl ActorCollection_UnregisterAndDestroyAllActors
     ldr r0, [r4, #0x4]
     cmp r0, #0x0
     beq L_02011fe0

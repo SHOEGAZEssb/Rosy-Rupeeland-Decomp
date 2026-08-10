@@ -25,8 +25,8 @@ typedef struct PairCallbackCollection {
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern s32 func_0202d2f4(u8 *, s32, s32);
-extern void func_0202d324(u8 *, s32, s32);
+extern s32 ActorPairMatrix_Get(u8 *, s32, s32);
+extern void ActorPairMatrix_Clear(u8 *, s32, s32);
 extern s32 func_0203b9dc(PairCallbackActor *, PairCallbackActor *, s32);
 extern void func_0203baa0(PairCallbackActor *, PairCallbackActor *);
 void func_0202ec74(PairCallbackCollection *, PairCallbackActor *,
@@ -70,7 +70,7 @@ void func_0202ec74(PairCallbackCollection *self, PairCallbackActor *actor,
 /*
  * Query the pair-state matrix at offset 0x0e34 using the actors' signed keys at
  * 0x48. If active, send ended notifications in both directions, then always
- * clear the matrix entry through func_0202d324. Returns no value.
+ * clear the matrix entry through ActorPairMatrix_Clear. Returns no value.
  */
 void func_0202eba4(PairCallbackCollection *self, PairCallbackActor *actor,
                    PairCallbackActor *other)
@@ -78,9 +78,9 @@ void func_0202eba4(PairCallbackCollection *self, PairCallbackActor *actor,
     s8 actorKey = *(s8 *)((u8 *)actor + 0x48);
     s8 otherKey = *(s8 *)((u8 *)other + 0x48);
 
-    if (func_0202d2f4(self->pairState_0e34, actorKey, otherKey)) {
+    if (ActorPairMatrix_Get(self->pairState_0e34, actorKey, otherKey)) {
         func_0202ec74(self, actor, other);
         func_0202ec74(self, other, actor);
     }
-    func_0202d324(self->pairState_0e34, actorKey, otherKey);
+    ActorPairMatrix_Clear(self->pairState_0e34, actorKey, otherKey);
 }

@@ -6,7 +6,7 @@
 .extern data_021052fc
 .extern func_02007f0c
 .extern func_02007f24
-.extern func_0202d358
+.extern ActorCollection_UnregisterAndDestroyActor
 .extern func_02058d28
 .extern func_02058d40
 .extern gGameWork
@@ -80,7 +80,7 @@ func_ov063_02210414:
     ldr r0, [r0, #0x0]
     bl func_02007f0c
     ldr r1, [r6, #0x4c]
-    bl func_0202d358
+    bl ActorCollection_UnregisterAndDestroyActor
 .L_02210518:
     mov r0, #0x1
     bl GX_VBlankIntr

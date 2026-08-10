@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/actor_collection_activation.c.
 .text
-.extern func_0202d1e4
+.extern ActorCollection_UnregisterActor
 
     .global func_0202d3cc
     .type func_0202d3cc, @function
@@ -20,7 +20,7 @@ func_0202d3cc: ; 0x0202d3cc
     ldr r4, [r5, #0x4]
     mov r0, r5
     mov r1, r4
-    bl func_0202d1e4
+    bl ActorCollection_UnregisterActor
     cmp r4, #0x0
     beq .L_0202d424
     mov r0, r4
@@ -45,7 +45,7 @@ func_0202d3cc: ; 0x0202d3cc
     bne .L_0202d480
     mov r0, r5
     mov r1, r9
-    bl func_0202d1e4
+    bl ActorCollection_UnregisterActor
     cmp r9, #0x0
     beq .L_0202d480
     mov r0, r9

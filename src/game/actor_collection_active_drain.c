@@ -25,7 +25,7 @@ typedef struct ActorCollectionActiveDrain {
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_0202d1e4(ActorCollectionActiveDrain *, DrainActor *);
+extern void ActorCollection_UnregisterActor(ActorCollectionActiveDrain *, DrainActor *);
 #ifdef __cplusplus
 }
 #endif
@@ -45,7 +45,7 @@ void func_0202d5c8(ActorCollectionActiveDrain *self)
     for (i = 0; i < self->slotLimit_2e74; i++) {
         DrainActor *actor = self->active_0c00[i];
         if (actor) {
-            func_0202d1e4(self, actor);
+            ActorCollection_UnregisterActor(self, actor);
             if (actor)
                 actor->vtable_00->destroy_04(actor);
             self->active_0c00[i] = 0;

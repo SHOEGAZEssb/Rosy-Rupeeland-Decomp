@@ -14,7 +14,7 @@ extern void func_0200b8cc(ActorRuntimeScene *self);
 extern void func_02030b58(void *context, s32 value);
 extern void Actor_SetActive(void *object, s32 value);
 extern void *Actor_GetCollection(void *object);
-extern void func_0202d358(void *result, void *object);
+extern void ActorCollection_UnregisterAndDestroyActor(void *result, void *object);
 extern void func_02038aac(void *object);
 extern void func_0204b680(void *object);
 #ifdef __cplusplus
@@ -61,7 +61,7 @@ ActorRuntimeScene *func_0200b41c(ActorRuntimeScene *self)
     GameWork_ClearFlag(gGameWork, 0x410);
     object = (u8 *)self->object;
     if (object[0x4d] == 3 && *(u16 *)(object + 0x4e) == 2)
-        func_0202d358(Actor_GetCollection(object), object);
+        ActorCollection_UnregisterAndDestroyActor(Actor_GetCollection(object), object);
     context = func_02007f0c(data_021052fc, 1);
     func_02030b58(context, 1);
     Scene_Destroy(&self->base);

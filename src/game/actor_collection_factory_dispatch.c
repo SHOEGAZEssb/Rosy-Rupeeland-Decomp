@@ -124,7 +124,7 @@ DECLARE_ACTOR_CTOR(func_ov097_02219d20);
 #undef DECLARE_ACTOR_CTOR
 extern void OS_Halt(void);
 extern void Actor_RefreshTerrainHeight(FactoryActor *);
-extern void func_0202d110(FactoryCollection *, FactoryActor *);
+extern void ActorCollection_RegisterActor(FactoryCollection *, FactoryActor *);
 #ifdef __cplusplus
 }
 #endif
@@ -248,7 +248,7 @@ static ActorFactorySpec selectFactorySpec(const ActorSpawnDescriptor *descriptor
  * subtype 0x02, allocate from gHeapContext with tag data_020def5c/alignment
  * four, run the constructor and vtable-offset-0x10 initializer, apply the
  * collection mode flag, copy descriptor halfword 0x52 to actor offset 0xe4,
- * and register the actor through func_0202d110. Invalid selector values halt.
+ * and register the actor through ActorCollection_RegisterActor. Invalid selector values halt.
  * The exact assembly additionally preserves per-case resource loads, overlay
  * aliases, and flag mutations whose scheduling is not represented by this
  * compact portable matrix. Returns the constructed actor.
@@ -277,7 +277,7 @@ void *func_0202ecd0(FactoryCollection *self,
     else
         Actor_RefreshTerrainHeight(actor);
     actor->descriptorValue_e4 = descriptor->value_52;
-    func_0202d110(self, actor);
+    ActorCollection_RegisterActor(self, actor);
     return actor;
 }
 

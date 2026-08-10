@@ -1,12 +1,12 @@
 ; Matching retail form; see src/game/actor_collection_registration.c.
 .text
-.extern func_0202d2f4
+.extern ActorPairMatrix_Get
 .extern func_0202ec74
-.extern func_0202d324
+.extern ActorPairMatrix_Clear
 
-    .global func_0202d1e4
-    .type func_0202d1e4, @function
-func_0202d1e4: ; 0x0202d1e4
+    .global ActorCollection_UnregisterActor
+    .type ActorCollection_UnregisterActor, @function
+ActorCollection_UnregisterActor: ; 0x0202d1e4
     stmdb sp!, {r4, r5, r6, r7, r8, lr}
     mov r6, r1
     ldrb r1, [r6, #0x4d]
@@ -63,7 +63,7 @@ func_0202d1e4: ; 0x0202d1e4
     mov r1, r4
     mov r2, r5
     add r0, r8, #0xc00
-    bl func_0202d2f4
+    bl ActorPairMatrix_Get
     cmp r0, #0x0
     beq .L_0202d2cc
     ldr r1, [r7, r5, lsl #0x2]
@@ -74,11 +74,11 @@ func_0202d1e4: ; 0x0202d1e4
     mov r1, r4
     mov r2, r5
     add r0, r8, #0xc00
-    bl func_0202d324
+    bl ActorPairMatrix_Clear
     add r5, r5, #0x1
     cmp r5, #0x80
     blt .L_0202d298
     mov r0, #0x0
     str r0, [r7, r4, lsl #0x2]
     ldmia sp!, {r4, r5, r6, r7, r8, pc}
-    .size func_0202d1e4, . - func_0202d1e4
+    .size ActorCollection_UnregisterActor, . - ActorCollection_UnregisterActor

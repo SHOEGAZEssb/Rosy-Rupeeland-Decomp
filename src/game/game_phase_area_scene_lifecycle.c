@@ -14,7 +14,7 @@ extern void func_0202cf2c(void *renderer);
 extern void func_0202d014(void *renderer, s32 value);
 extern void func_02030b18(void *renderer, s32 value);
 extern void *ActorCollection_FindActorByTypeAndId(void *renderer, s32 first, s32 second);
-extern void func_0202d380(void *renderer);
+extern void ActorCollection_UnregisterAndDestroyAllActors(void *renderer);
 extern void func_0202d06c(void *renderer);
 extern void func_02006268(void *state);
 extern void func_02006280(void *state);
@@ -158,7 +158,7 @@ GamePhaseAreaScene *func_02011f24(GamePhaseAreaScene *self)
 {
     self->vtable = data_020d5680;
     func_0201e1b0((u8 *)data_021052fc + 0x2f7c, 0x37);
-    func_0202d380(self->renderer_08);
+    ActorCollection_UnregisterAndDestroyAllActors(self->renderer_08);
     if (self->subRenderer_04)
         ((void (*)(void *))(*(void ***)self->subRenderer_04)[1])(
             self->subRenderer_04);

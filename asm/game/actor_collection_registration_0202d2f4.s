@@ -1,9 +1,9 @@
 ; Matching retail form; see src/game/actor_collection_registration.c.
 .text
 
-    .global func_0202d2f4
-    .type func_0202d2f4, @function
-func_0202d2f4: ; 0x0202d2f4
+    .global ActorPairMatrix_Get
+    .type ActorPairMatrix_Get, @function
+ActorPairMatrix_Get: ; 0x0202d2f4
     cmp r2, r1
     movgt r3, r1
     movgt r1, r2
@@ -16,4 +16,4 @@ func_0202d2f4: ; 0x0202d2f4
     add r1, r1, r2
     ldrb r0, [r0, r1]
     bx lr
-    .size func_0202d2f4, . - func_0202d2f4
+    .size ActorPairMatrix_Get, . - ActorPairMatrix_Get

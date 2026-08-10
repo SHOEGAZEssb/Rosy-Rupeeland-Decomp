@@ -23,7 +23,7 @@
 .extern func_0201ded4
 .extern func_0201e14c
 .extern func_02025300
-.extern func_0202d380
+.extern ActorCollection_UnregisterAndDestroyAllActors
 .extern func_0202d3cc
 .extern func_0202d68c
 .extern func_02030acc
@@ -346,7 +346,7 @@ func_ov064_0220fd20:
     mov r1, #0x2
     ldr r0, [r0, #0x0]
     bl func_02007f0c
-    bl func_0202d380
+    bl ActorCollection_UnregisterAndDestroyAllActors
     ldr r0, .L_0221062c
     mov r1, #0x0
     ldr r0, [r0, #0x0]

@@ -61,8 +61,8 @@ extern s32 func_02056f34(CollisionWords *, const CollisionWords *,
                          const CollisionWords *, u32 *);
 extern s32 func_020adc90(s32, s32);
 extern s32 func_020be334(s32);
-extern s32 func_0202d2f4(u8 *, s32, s32);
-extern void func_0202d324(u8 *, s32, s32);
+extern s32 ActorPairMatrix_Get(u8 *, s32, s32);
+extern void ActorPairMatrix_Clear(u8 *, s32, s32);
 extern s32 func_0202ec08(ActorPairCollection *, PairActor *, PairActor *, s32);
 extern void func_0202ec74(ActorPairCollection *, PairActor *, PairActor *);
 extern s32 func_020828a0(void *, s32);
@@ -169,7 +169,7 @@ static s32 testPair(PairActor *actorA, PairActor *actorB, u32 *contact)
  * Sweep category one against category two using signed byte 0x48 as the sorted
  * key. Flag, virtual-mask, height, and shape tests reject pairs. Intersections
  * update edge byte 0x49 and may correct X/Y positions; pair-state at offset
- * 0x0e34 is queried or changed through func_0202d2f4/func_0202d324. Pair
+ * 0x0e34 is queried or changed through ActorPairMatrix_Get/ActorPairMatrix_Clear. Pair
  * callbacks run in both directions. Finally, each processed category-one
  * actor may receive func_0200a3b8 and/or func_0200ac14 using global context
  * offset 0x2ed4. Returns no value; helper calls may update gameplay state.
@@ -208,7 +208,7 @@ void func_0202e15c(ActorPairCollection *self)
                 continue;
 
             collision = testPair(actorA, actorB, &contact);
-            wasActive = func_0202d2f4(self->pairState_0e34,
+            wasActive = ActorPairMatrix_Get(self->pairState_0e34,
                                       actorB->order_48, actorA->order_48);
             if (collision) {
                 s32 accepted;
@@ -232,7 +232,7 @@ void func_0202e15c(ActorPairCollection *self)
             } else if (wasActive) {
                 func_0202ec74(self, actorA, actorB);
                 func_0202ec74(self, actorB, actorA);
-                func_0202d324(self->pairState_0e34, actorB->order_48,
+                ActorPairMatrix_Clear(self->pairState_0e34, actorB->order_48,
                               actorA->order_48);
             }
         }

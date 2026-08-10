@@ -2,7 +2,7 @@
 .text
 .extern func_0201df64
 .extern func_0201e0ec
-.extern func_0202d380
+.extern ActorCollection_UnregisterAndDestroyAllActors
 .extern func_0203abb0
 .extern func_020a2324
 
@@ -19,7 +19,7 @@ func_0200e61c: ; 0x0200e61c
     bl func_020a2324
     bl func_0203abb0
     add r0, r4, #0x4
-    bl func_0202d380
+    bl ActorCollection_UnregisterAndDestroyAllActors
     ldmia sp!, {r4, pc}
     .size func_0200e61c, . - func_0200e61c
 
