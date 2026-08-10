@@ -33,7 +33,7 @@ extern s32 func_020ada8c(u32 value, s32 divisor);
  * -1 when none qualify. Global tables and game work are read; RNG state may
  * change, with no direct hardware effects.
  */
-s32 func_0204c59c(s32 selector, u32 phase, u32 unused2, u32 unused3)
+s32 Type7Actor_SelectRandomEligibleRecordId(s32 selector, u32 phase, u32 unused2, u32 unused3)
 {
     s16 excluded[7];
     s16 candidates[36];

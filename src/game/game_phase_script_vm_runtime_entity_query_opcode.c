@@ -14,7 +14,7 @@ extern void *ActorCollection_FindActorByDescriptorValue(void *collection, s32 in
 extern void *Actor_GetCollection(void *actor);
 extern s32 Type7Actor_GetStateCode(void *entity);
 extern u8 *Type7Actor_FindSpawnRecord(s32 index);
-extern s32 func_0204c59c(s32 mode, s32 index);
+extern s32 Type7Actor_SelectRandomEligibleRecordId(s32 mode, s32 index);
 #ifdef __cplusplus
 }
 #endif
@@ -79,7 +79,7 @@ s32 func_02018f10(GamePhaseActorScriptVm *self)
     case 11:
     case 12:
     case 13:
-        result = func_0204c59c(mode, index);
+        result = Type7Actor_SelectRandomEligibleRecordId(mode, index);
         break;
     case 14:
         result = *(s32 *)(Type7Actor_FindSpawnRecord(index) + 0x64);

@@ -8,7 +8,7 @@
 .extern Actor_GetCollection
 .extern Type7Actor_GetStateCode
 .extern Type7Actor_FindSpawnRecord
-.extern func_0204c59c
+.extern Type7Actor_SelectRandomEligibleRecordId
 .global func_02018f10
 func_02018f10:
     stmdb sp!, {r4, r5, r6, r7, r8, lr}
@@ -138,7 +138,7 @@ L_020190a8:
     b L_020190ec
 L_020190b8:
     mov r1, r5
-    bl func_0204c59c
+    bl Type7Actor_SelectRandomEligibleRecordId
     mov r1, r0
     b L_020190ec
 L_020190c8:

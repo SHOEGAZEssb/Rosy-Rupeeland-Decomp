@@ -6,8 +6,8 @@
 .extern data_020e16b0
 .extern data_020ea9b0
 .text
-    .global func_0204c59c
-func_0204c59c: ; 0x0204c59c
+    .global Type7Actor_SelectRandomEligibleRecordId
+Type7Actor_SelectRandomEligibleRecordId: ; 0x0204c59c
     stmdb sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, lr}
     sub sp, sp, #0x58
     mov r9, #0x0
@@ -125,5 +125,5 @@ func_0204c59c: ; 0x0204c59c
 .L_0204c740: .word gGameWork
 .L_0204c744: .word data_020e16b0
 .L_0204c748: .word data_020ea9b0
-.size func_0204c59c, . - func_0204c59c
+.size Type7Actor_SelectRandomEligibleRecordId, . - Type7Actor_SelectRandomEligibleRecordId
 
