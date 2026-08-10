@@ -2,7 +2,7 @@
 .text
 .extern Heap_Alloc
 .extern data_020c378c
-.extern data_020d6bd0
+.extern gReversedFrameSpriteOverlayPresentationVtable
 .extern gSpriteOverlayControllerAllocationTag
 .extern data_020f4e14
 .extern data_020f4e18
@@ -16,9 +16,9 @@
 .extern func_020953f4
 .extern gHeapContext
 
-    .global func_02027300
-    .type func_02027300, @function
-func_02027300: ; 0x02027300
+    .global ReversedFrameSpriteOverlayPresentation_Init
+    .type ReversedFrameSpriteOverlayPresentation_Init, @function
+ReversedFrameSpriteOverlayPresentation_Init: ; 0x02027300
     stmdb sp!, {r3, r4, r5, r6, lr}
     sub sp, sp, #0x4
     mov r4, r0
@@ -67,10 +67,10 @@ func_02027300: ; 0x02027300
     mov r0, r4
     add sp, sp, #0x4
     ldmia sp!, {r3, r4, r5, r6, pc}
-.L_020273bc: .word data_020d6bd0
+.L_020273bc: .word gReversedFrameSpriteOverlayPresentationVtable
 .L_020273c0: .word data_020f4e18
 .L_020273c4: .word data_020f4e14
 .L_020273c8: .word gSpriteOverlayControllerAllocationTag
 .L_020273cc: .word gHeapContext
 .L_020273d0: .word data_020c378c
-    .size func_02027300, . - func_02027300
+    .size ReversedFrameSpriteOverlayPresentation_Init, . - ReversedFrameSpriteOverlayPresentation_Init

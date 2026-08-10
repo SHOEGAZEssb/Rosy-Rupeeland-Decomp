@@ -9008,62 +9008,62 @@ build build/reports/indexed_sprite_overlay_presentation_02027150.json: objdiff b
   base_object = build/decomp/asm/game/indexed_sprite_overlay_presentation_02027150.o
 build build/reports/indexed_sprite_overlay_presentation_02027150.txt: match_report build/reports/indexed_sprite_overlay_presentation_02027150.json | tools/report_objdiff.py
   report_json = build/reports/indexed_sprite_overlay_presentation_02027150.json
-  report_args = --section .text --function func_02027150 --require-exact
+  report_args = --section .text --function IndexedSpriteOverlayPresentation_Init --require-exact
 build build/reports/indexed_sprite_overlay_presentation_0202721c.json: objdiff build/decomp/delinks/asm/game/indexed_sprite_overlay_presentation_0202721c.o | build/decomp/asm/game/indexed_sprite_overlay_presentation_0202721c.o
   target_object = build/decomp/delinks/asm/game/indexed_sprite_overlay_presentation_0202721c.o
   base_object = build/decomp/asm/game/indexed_sprite_overlay_presentation_0202721c.o
 build build/reports/indexed_sprite_overlay_presentation_0202721c.txt: match_report build/reports/indexed_sprite_overlay_presentation_0202721c.json | tools/report_objdiff.py
   report_json = build/reports/indexed_sprite_overlay_presentation_0202721c.json
-  report_args = --section .text --function func_0202721c --require-exact
+  report_args = --section .text --function IndexedSpriteOverlayPresentation_Destroy --require-exact
 build build/reports/indexed_sprite_overlay_presentation_02027268.json: objdiff build/decomp/delinks/asm/game/indexed_sprite_overlay_presentation_02027268.o | build/decomp/asm/game/indexed_sprite_overlay_presentation_02027268.o
   target_object = build/decomp/delinks/asm/game/indexed_sprite_overlay_presentation_02027268.o
   base_object = build/decomp/asm/game/indexed_sprite_overlay_presentation_02027268.o
 build build/reports/indexed_sprite_overlay_presentation_02027268.txt: match_report build/reports/indexed_sprite_overlay_presentation_02027268.json | tools/report_objdiff.py
   report_json = build/reports/indexed_sprite_overlay_presentation_02027268.json
-  report_args = --section .text --function func_02027268 --require-exact
+  report_args = --section .text --function IndexedSpriteOverlayPresentation_DestroyAndFree --require-exact
 build build/reports/indexed_sprite_overlay_presentation_020272bc.json: objdiff build/decomp/delinks/asm/game/indexed_sprite_overlay_presentation_020272bc.o | build/decomp/asm/game/indexed_sprite_overlay_presentation_020272bc.o
   target_object = build/decomp/delinks/asm/game/indexed_sprite_overlay_presentation_020272bc.o
   base_object = build/decomp/asm/game/indexed_sprite_overlay_presentation_020272bc.o
 build build/reports/indexed_sprite_overlay_presentation_020272bc.txt: match_report build/reports/indexed_sprite_overlay_presentation_020272bc.json | tools/report_objdiff.py
   report_json = build/reports/indexed_sprite_overlay_presentation_020272bc.json
-  report_args = --section .text --function func_020272bc --require-exact
+  report_args = --section .text --function IndexedSpriteOverlayPresentation_IsComplete --require-exact
 build build/reports/indexed_sprite_overlay_presentation_020272e0.json: objdiff build/decomp/delinks/asm/game/indexed_sprite_overlay_presentation_020272e0.o | build/decomp/asm/game/indexed_sprite_overlay_presentation_020272e0.o
   target_object = build/decomp/delinks/asm/game/indexed_sprite_overlay_presentation_020272e0.o
   base_object = build/decomp/asm/game/indexed_sprite_overlay_presentation_020272e0.o
 build build/reports/indexed_sprite_overlay_presentation_020272e0.txt: match_report build/reports/indexed_sprite_overlay_presentation_020272e0.json | tools/report_objdiff.py
   report_json = build/reports/indexed_sprite_overlay_presentation_020272e0.json
-  report_args = --section .text --function func_020272e0 --require-exact
+  report_args = --section .text --function IndexedSpriteOverlayPresentation_SetVisible --require-exact
 build build/reports/indexed_sprite_overlay_presentation.txt: phony build/reports/indexed_sprite_overlay_presentation_02027150.txt build/reports/indexed_sprite_overlay_presentation_0202721c.txt build/reports/indexed_sprite_overlay_presentation_02027268.txt build/reports/indexed_sprite_overlay_presentation_020272bc.txt build/reports/indexed_sprite_overlay_presentation_020272e0.txt
 build build/reports/reversed_frame_sprite_overlay_presentation_02027300.json: objdiff build/decomp/delinks/asm/game/reversed_frame_sprite_overlay_presentation_02027300.o | build/decomp/asm/game/reversed_frame_sprite_overlay_presentation_02027300.o
   target_object = build/decomp/delinks/asm/game/reversed_frame_sprite_overlay_presentation_02027300.o
   base_object = build/decomp/asm/game/reversed_frame_sprite_overlay_presentation_02027300.o
 build build/reports/reversed_frame_sprite_overlay_presentation_02027300.txt: match_report build/reports/reversed_frame_sprite_overlay_presentation_02027300.json | tools/report_objdiff.py
   report_json = build/reports/reversed_frame_sprite_overlay_presentation_02027300.json
-  report_args = --section .text --function func_02027300 --require-exact
+  report_args = --section .text --function ReversedFrameSpriteOverlayPresentation_Init --require-exact
 build build/reports/reversed_frame_sprite_overlay_presentation_020273d4.json: objdiff build/decomp/delinks/asm/game/reversed_frame_sprite_overlay_presentation_020273d4.o | build/decomp/asm/game/reversed_frame_sprite_overlay_presentation_020273d4.o
   target_object = build/decomp/delinks/asm/game/reversed_frame_sprite_overlay_presentation_020273d4.o
   base_object = build/decomp/asm/game/reversed_frame_sprite_overlay_presentation_020273d4.o
 build build/reports/reversed_frame_sprite_overlay_presentation_020273d4.txt: match_report build/reports/reversed_frame_sprite_overlay_presentation_020273d4.json | tools/report_objdiff.py
   report_json = build/reports/reversed_frame_sprite_overlay_presentation_020273d4.json
-  report_args = --section .text --function func_020273d4 --require-exact
+  report_args = --section .text --function ReversedFrameSpriteOverlayPresentation_Destroy --require-exact
 build build/reports/reversed_frame_sprite_overlay_presentation_02027420.json: objdiff build/decomp/delinks/asm/game/reversed_frame_sprite_overlay_presentation_02027420.o | build/decomp/asm/game/reversed_frame_sprite_overlay_presentation_02027420.o
   target_object = build/decomp/delinks/asm/game/reversed_frame_sprite_overlay_presentation_02027420.o
   base_object = build/decomp/asm/game/reversed_frame_sprite_overlay_presentation_02027420.o
 build build/reports/reversed_frame_sprite_overlay_presentation_02027420.txt: match_report build/reports/reversed_frame_sprite_overlay_presentation_02027420.json | tools/report_objdiff.py
   report_json = build/reports/reversed_frame_sprite_overlay_presentation_02027420.json
-  report_args = --section .text --function func_02027420 --require-exact
+  report_args = --section .text --function ReversedFrameSpriteOverlayPresentation_DestroyAndFree --require-exact
 build build/reports/reversed_frame_sprite_overlay_presentation_02027474.json: objdiff build/decomp/delinks/asm/game/reversed_frame_sprite_overlay_presentation_02027474.o | build/decomp/asm/game/reversed_frame_sprite_overlay_presentation_02027474.o
   target_object = build/decomp/delinks/asm/game/reversed_frame_sprite_overlay_presentation_02027474.o
   base_object = build/decomp/asm/game/reversed_frame_sprite_overlay_presentation_02027474.o
 build build/reports/reversed_frame_sprite_overlay_presentation_02027474.txt: match_report build/reports/reversed_frame_sprite_overlay_presentation_02027474.json | tools/report_objdiff.py
   report_json = build/reports/reversed_frame_sprite_overlay_presentation_02027474.json
-  report_args = --section .text --function func_02027474 --require-exact
+  report_args = --section .text --function ReversedFrameSpriteOverlayPresentation_IsComplete --require-exact
 build build/reports/reversed_frame_sprite_overlay_presentation_02027498.json: objdiff build/decomp/delinks/asm/game/reversed_frame_sprite_overlay_presentation_02027498.o | build/decomp/asm/game/reversed_frame_sprite_overlay_presentation_02027498.o
   target_object = build/decomp/delinks/asm/game/reversed_frame_sprite_overlay_presentation_02027498.o
   base_object = build/decomp/asm/game/reversed_frame_sprite_overlay_presentation_02027498.o
 build build/reports/reversed_frame_sprite_overlay_presentation_02027498.txt: match_report build/reports/reversed_frame_sprite_overlay_presentation_02027498.json | tools/report_objdiff.py
   report_json = build/reports/reversed_frame_sprite_overlay_presentation_02027498.json
-  report_args = --section .text --function func_02027498 --require-exact
+  report_args = --section .text --function ReversedFrameSpriteOverlayPresentation_SetVisible --require-exact
 build build/reports/reversed_frame_sprite_overlay_presentation.txt: phony build/reports/reversed_frame_sprite_overlay_presentation_02027300.txt build/reports/reversed_frame_sprite_overlay_presentation_020273d4.txt build/reports/reversed_frame_sprite_overlay_presentation_02027420.txt build/reports/reversed_frame_sprite_overlay_presentation_02027474.txt build/reports/reversed_frame_sprite_overlay_presentation_02027498.txt
 build build/reports/packed_bit_grid_state_020274b8.json: objdiff build/decomp/delinks/asm/game/packed_bit_grid_state_020274b8.o | build/decomp/asm/game/packed_bit_grid_state_020274b8.o
   target_object = build/decomp/delinks/asm/game/packed_bit_grid_state_020274b8.o

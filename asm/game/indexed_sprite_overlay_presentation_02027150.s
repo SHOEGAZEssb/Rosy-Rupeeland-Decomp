@@ -3,7 +3,7 @@
 .extern Heap_Alloc
 .extern data_020c370c
 .extern data_020c3734
-.extern data_020d6c20
+.extern gIndexedSpriteOverlayPresentationVtable
 .extern gSpriteOverlayControllerAllocationTag
 .extern data_020f4e14
 .extern data_020f4e18
@@ -17,9 +17,9 @@
 .extern func_020953f4
 .extern gHeapContext
 
-    .global func_02027150
-    .type func_02027150, @function
-func_02027150: ; 0x02027150
+    .global IndexedSpriteOverlayPresentation_Init
+    .type IndexedSpriteOverlayPresentation_Init, @function
+IndexedSpriteOverlayPresentation_Init: ; 0x02027150
     stmdb sp!, {r3, r4, r5, lr}
     mov r5, r0
     mov r4, r1
@@ -65,11 +65,11 @@ func_02027150: ; 0x02027150
     bl func_02094cf0
     mov r0, r5
     ldmia sp!, {r3, r4, r5, pc}
-.L_02027200: .word data_020d6c20
+.L_02027200: .word gIndexedSpriteOverlayPresentationVtable
 .L_02027204: .word data_020c370c
 .L_02027208: .word data_020f4e18
 .L_0202720c: .word data_020f4e14
 .L_02027210: .word gSpriteOverlayControllerAllocationTag
 .L_02027214: .word gHeapContext
 .L_02027218: .word data_020c3734
-    .size func_02027150, . - func_02027150
+    .size IndexedSpriteOverlayPresentation_Init, . - IndexedSpriteOverlayPresentation_Init

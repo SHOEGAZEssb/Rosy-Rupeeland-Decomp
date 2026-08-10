@@ -45,8 +45,8 @@ extern void *func_02024200(void *object);
 extern void *func_0202432c(void *object, s32 value, s32 parameter);
 extern void *func_02024468(void *object);
 extern void *FourSlot3DPresentation_Init(void *object, s32 value);
-extern void *func_02027150(void *object, s32 value);
-extern void *func_02027300(void *object, s32 value);
+extern void *IndexedSpriteOverlayPresentation_Init(void *object, s32 value);
+extern void *ReversedFrameSpriteOverlayPresentation_Init(void *object, s32 value);
 extern void *OverlayManager_GetGlobal(void);
 extern void OverlayManager_LoadOverlay(void *state, s32 enabled, s32 value);
 extern void func_ov058_0220f484(void);
@@ -122,7 +122,7 @@ s32 GamePhaseActorScriptVm_DispatchObjectFactory(GamePhaseActorScriptVm *self)
     case 14:
         object = allocateObject(0x1c, data_020d5bac);
         if (object)
-            object = func_02027150(object, value);
+            object = IndexedSpriteOverlayPresentation_Init(object, value);
         func_0201ded4(runtimeObjectList(), object);
         break;
     case 13:
@@ -134,7 +134,7 @@ s32 GamePhaseActorScriptVm_DispatchObjectFactory(GamePhaseActorScriptVm *self)
     case 12:
         object = allocateObject(0x1c, data_020d5bbc);
         if (object)
-            object = func_02027300(object, value);
+            object = ReversedFrameSpriteOverlayPresentation_Init(object, value);
         func_0201ded4(runtimeObjectList(), object);
         break;
     case 11:

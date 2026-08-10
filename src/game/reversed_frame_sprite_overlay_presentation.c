@@ -21,7 +21,7 @@ typedef s32 (*ControllerComplete)(void *);
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *data_020d6bd0;
+extern void *gReversedFrameSpriteOverlayPresentationVtable;
 extern const char gSpriteOverlayControllerAllocationTag[];
 extern const u8 data_020c378c[];
 extern void *data_020f4e18;
@@ -49,13 +49,13 @@ extern void func_02094cf0(void *, const void *, s32);
  * around that sprite, configure it from data_020c378c in mode one, retain it,
  * and return self.
  */
-ReversedFrameSpriteOverlayPresentation *func_02027300(
+ReversedFrameSpriteOverlayPresentation *ReversedFrameSpriteOverlayPresentation_Init(
     ReversedFrameSpriteOverlayPresentation *self, s32 value)
 {
     u8 *sprite;
     s32 frame;
     func_0201e250(self);
-    self->vtable00 = (void **)data_020d6bd0;
+    self->vtable00 = (void **)gReversedFrameSpriteOverlayPresentationVtable;
     func_02071ea4(self->resource08);
     func_02071ee0(self->resource08, data_020f4e18, 0x3a, 0x3b, 0x3c);
     self->spriteOwner14 = (u8 *)GraphicsSpriteGroupOwner_CreateGroup(data_020f4e14);
@@ -70,10 +70,10 @@ ReversedFrameSpriteOverlayPresentation *func_02027300(
 }
 
 /* Destroy controller, owner, resource/base state, and return self. */
-ReversedFrameSpriteOverlayPresentation *func_020273d4(
+ReversedFrameSpriteOverlayPresentation *ReversedFrameSpriteOverlayPresentation_Destroy(
     ReversedFrameSpriteOverlayPresentation *self)
 {
-    self->vtable00 = (void **)data_020d6bd0;
+    self->vtable00 = (void **)gReversedFrameSpriteOverlayPresentationVtable;
     if (self->controller18)
         ((ControllerDestructor)(*(void ***)self->controller18)[1])(
             self->controller18);
@@ -83,24 +83,26 @@ ReversedFrameSpriteOverlayPresentation *func_020273d4(
     return self;
 }
 
-/* Perform func_020273d4 teardown, free self, and return its old address. */
-ReversedFrameSpriteOverlayPresentation *func_02027420(
+/* Destroy the owned controller and sprite resources, free self, and return its old address. */
+ReversedFrameSpriteOverlayPresentation *ReversedFrameSpriteOverlayPresentation_DestroyAndFree(
     ReversedFrameSpriteOverlayPresentation *self)
 {
-    func_020273d4(self);
+    ReversedFrameSpriteOverlayPresentation_Destroy(self);
     Heap_Free(self);
     return self;
 }
 
 /* Call controller vtable slot two and normalize its result to zero or one. */
-s32 func_02027474(ReversedFrameSpriteOverlayPresentation *self)
+s32 ReversedFrameSpriteOverlayPresentation_IsComplete(
+    ReversedFrameSpriteOverlayPresentation *self)
 {
     return ((ControllerComplete)(*(void ***)self->controller18)[2])(
                self->controller18) != 0;
 }
 
 /* Enable owner offset 0x20, or disable the owner through GraphicsSpriteGroup_ReleaseIndexedEntries. */
-void func_02027498(ReversedFrameSpriteOverlayPresentation *self, s32 enabled)
+void ReversedFrameSpriteOverlayPresentation_SetVisible(
+    ReversedFrameSpriteOverlayPresentation *self, s32 enabled)
 {
     if (enabled)
         *(u32 *)(self->spriteOwner14 + 0x20) = 1;

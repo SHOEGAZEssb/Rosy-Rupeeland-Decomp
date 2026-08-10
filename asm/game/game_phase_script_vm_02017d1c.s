@@ -35,8 +35,8 @@
 .extern func_0202432c
 .extern func_02024468
 .extern FourSlot3DPresentation_Init
-.extern func_02027150
-.extern func_02027300
+.extern IndexedSpriteOverlayPresentation_Init
+.extern ReversedFrameSpriteOverlayPresentation_Init
 .extern GraphicsSpriteRenderer_GetObjectPaletteAddress
 .extern GraphicsSpriteRenderer_QueuePaletteUploads
 .extern func_ov058_0220f484
@@ -171,7 +171,7 @@ L_02017ecc:
     movs r1, r0
     beq L_02017ef4
     mov r1, r6
-    bl func_02027150
+    bl IndexedSpriteOverlayPresentation_Init
     mov r1, r0
 L_02017ef4:
     ldr r0, L_020181c4
@@ -207,7 +207,7 @@ L_02017f4c:
     movs r1, r0
     beq L_02017f74
     mov r1, r6
-    bl func_02027300
+    bl ReversedFrameSpriteOverlayPresentation_Init
     mov r1, r0
 L_02017f74:
     ldr r0, L_020181c4

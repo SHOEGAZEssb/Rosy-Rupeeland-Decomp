@@ -2,9 +2,9 @@
 .text
 .extern GraphicsSpriteGroup_ReleaseIndexedEntries
 
-    .global func_020272e0
-    .type func_020272e0, @function
-func_020272e0: ; 0x020272e0
+    .global IndexedSpriteOverlayPresentation_SetVisible
+    .type IndexedSpriteOverlayPresentation_SetVisible, @function
+IndexedSpriteOverlayPresentation_SetVisible: ; 0x020272e0
     stmdb sp!, {r3, lr}
     ldr r0, [r0, #0x14]
     cmp r1, #0x0
@@ -13,4 +13,4 @@ func_020272e0: ; 0x020272e0
     ldmneia sp!, {r3, pc}
     bl GraphicsSpriteGroup_ReleaseIndexedEntries
     ldmia sp!, {r3, pc}
-    .size func_020272e0, . - func_020272e0
+    .size IndexedSpriteOverlayPresentation_SetVisible, . - IndexedSpriteOverlayPresentation_SetVisible

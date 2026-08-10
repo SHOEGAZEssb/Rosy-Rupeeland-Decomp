@@ -28,7 +28,7 @@ typedef s32 (*ControllerComplete)(void *);
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *data_020d6c20;
+extern void *gIndexedSpriteOverlayPresentationVtable;
 extern const char gSpriteOverlayControllerAllocationTag[];
 extern const IndexedResourceRecord data_020c370c[];
 extern const u8 data_020c3734[];
@@ -56,13 +56,13 @@ extern void func_02094cf0(void *, const void *, s32);
  * frame index. Allocate a 0xa0-byte controller, construct it around the sprite,
  * configure it from data_020c3734 with mode one, retain it, and return self.
  */
-IndexedSpriteOverlayPresentation *func_02027150(
+IndexedSpriteOverlayPresentation *IndexedSpriteOverlayPresentation_Init(
     IndexedSpriteOverlayPresentation *self, s32 index)
 {
     const IndexedResourceRecord *record = &data_020c370c[index];
     u8 *sprite;
     func_0201e250(self);
-    self->vtable00 = (void **)data_020d6c20;
+    self->vtable00 = (void **)gIndexedSpriteOverlayPresentationVtable;
     func_02071ea4(self->resource08);
     func_02071ee0(self->resource08, data_020f4e18,
                   record->resource00, record->palette02,
@@ -81,10 +81,10 @@ IndexedSpriteOverlayPresentation *func_02027150(
  * Destroy the owned controller through vtable slot one, release the sprite
  * owner through GraphicsSpriteGroup_Destroy, destroy resource state and base, and return self.
  */
-IndexedSpriteOverlayPresentation *func_0202721c(
+IndexedSpriteOverlayPresentation *IndexedSpriteOverlayPresentation_Destroy(
     IndexedSpriteOverlayPresentation *self)
 {
-    self->vtable00 = (void **)data_020d6c20;
+    self->vtable00 = (void **)gIndexedSpriteOverlayPresentationVtable;
     if (self->controller18)
         ((ControllerDestructor)(*(void ***)self->controller18)[1])(
             self->controller18);
@@ -94,17 +94,17 @@ IndexedSpriteOverlayPresentation *func_0202721c(
     return self;
 }
 
-/* Perform func_0202721c teardown, free self, and return its old address. */
-IndexedSpriteOverlayPresentation *func_02027268(
+/* Destroy the owned controller and sprite resources, free self, and return its old address. */
+IndexedSpriteOverlayPresentation *IndexedSpriteOverlayPresentation_DestroyAndFree(
     IndexedSpriteOverlayPresentation *self)
 {
-    func_0202721c(self);
+    IndexedSpriteOverlayPresentation_Destroy(self);
     Heap_Free(self);
     return self;
 }
 
 /* Call controller vtable slot two and normalize its result to zero or one. */
-s32 func_020272bc(IndexedSpriteOverlayPresentation *self)
+s32 IndexedSpriteOverlayPresentation_IsComplete(IndexedSpriteOverlayPresentation *self)
 {
     return ((ControllerComplete)(*(void ***)self->controller18)[2])(
                self->controller18) != 0;
@@ -114,7 +114,8 @@ s32 func_020272bc(IndexedSpriteOverlayPresentation *self)
  * Enable the retained sprite owner by setting its offset-0x20 word to one, or
  * disable it through GraphicsSpriteGroup_ReleaseIndexedEntries when enabled is zero.
  */
-void func_020272e0(IndexedSpriteOverlayPresentation *self, s32 enabled)
+void IndexedSpriteOverlayPresentation_SetVisible(IndexedSpriteOverlayPresentation *self,
+                                                 s32 enabled)
 {
     if (enabled)
         *(u32 *)(self->spriteOwner14 + 0x20) = 1;

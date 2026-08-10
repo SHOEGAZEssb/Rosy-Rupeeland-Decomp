@@ -1,13 +1,13 @@
 ; Matching retail form; see src/game/indexed_sprite_overlay_presentation.c.
 .text
-.extern data_020d6c20
+.extern gIndexedSpriteOverlayPresentationVtable
 .extern func_0201e28c
 .extern func_02071eb8
 .extern GraphicsSpriteGroup_Destroy
 
-    .global func_0202721c
-    .type func_0202721c, @function
-func_0202721c: ; 0x0202721c
+    .global IndexedSpriteOverlayPresentation_Destroy
+    .type IndexedSpriteOverlayPresentation_Destroy, @function
+IndexedSpriteOverlayPresentation_Destroy: ; 0x0202721c
     stmdb sp!, {r4, lr}
     ldr r1, .L_02027264
     mov r4, r0
@@ -27,5 +27,5 @@ func_0202721c: ; 0x0202721c
     bl func_0201e28c
     mov r0, r4
     ldmia sp!, {r4, pc}
-.L_02027264: .word data_020d6c20
-    .size func_0202721c, . - func_0202721c
+.L_02027264: .word gIndexedSpriteOverlayPresentationVtable
+    .size IndexedSpriteOverlayPresentation_Destroy, . - IndexedSpriteOverlayPresentation_Destroy

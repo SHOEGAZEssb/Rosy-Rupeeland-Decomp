@@ -1,14 +1,14 @@
 ; Matching retail form; see src/game/reversed_frame_sprite_overlay_presentation.c.
 .text
 .extern Heap_Free
-.extern data_020d6bd0
+.extern gReversedFrameSpriteOverlayPresentationVtable
 .extern func_0201e28c
 .extern func_02071eb8
 .extern GraphicsSpriteGroup_Destroy
 
-    .global func_02027420
-    .type func_02027420, @function
-func_02027420: ; 0x02027420
+    .global ReversedFrameSpriteOverlayPresentation_DestroyAndFree
+    .type ReversedFrameSpriteOverlayPresentation_DestroyAndFree, @function
+ReversedFrameSpriteOverlayPresentation_DestroyAndFree: ; 0x02027420
     stmdb sp!, {r4, lr}
     ldr r1, .L_02027470
     mov r4, r0
@@ -30,5 +30,5 @@ func_02027420: ; 0x02027420
     bl Heap_Free
     mov r0, r4
     ldmia sp!, {r4, pc}
-.L_02027470: .word data_020d6bd0
-    .size func_02027420, . - func_02027420
+.L_02027470: .word gReversedFrameSpriteOverlayPresentationVtable
+    .size ReversedFrameSpriteOverlayPresentation_DestroyAndFree, . - ReversedFrameSpriteOverlayPresentation_DestroyAndFree
