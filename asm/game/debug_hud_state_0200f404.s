@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/debug_hud_state_runtime.c.
 .text
 .extern Heap_Alloc
-.extern data_020d555c
+.extern gDebugHudRendererAllocationTag
 .extern data_020f4e14
 .extern data_020f4e18
 .extern DebugHudState_UploadRows
@@ -87,7 +87,7 @@ L_0200f494:
     ldmia sp!, {r3, r4, r5, pc}
 L_0200f510: .word data_020f4e18
 L_0200f514: .word 0x7007
-L_0200f518: .word data_020d555c
+L_0200f518: .word gDebugHudRendererAllocationTag
 L_0200f51c: .word gHeapContext
 L_0200f520: .word data_020f4e14
 L_0200f524: .word gDebugFont

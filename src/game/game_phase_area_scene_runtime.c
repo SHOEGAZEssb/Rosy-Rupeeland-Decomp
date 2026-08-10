@@ -7,7 +7,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern const char data_020d5690[];
+extern const char gGamePhaseAreaRegionEffectAllocationTag[];
 extern void *data_021052fc;
 extern void *func_02026f38(void *self, void *renderer, s32 left, s32 top,
                            s32 right, s32 bottom);
@@ -53,7 +53,7 @@ s32 GamePhaseAreaScene_UpdateRegionAtPosition(
         GamePhaseRegion *region = GamePhaseRegionTable_GetRegion(table, index);
         if (!GamePhaseRegionTable_IsRegionEnabled(table, index) &&
             self->subRenderer) {
-            void *effect = Heap_Alloc(0x24, data_020d5690, 4,
+            void *effect = Heap_Alloc(0x24, gGamePhaseAreaRegionEffectAllocationTag, 4,
                                       &gHeapContext);
             if (effect)
                 effect = func_02026f38(

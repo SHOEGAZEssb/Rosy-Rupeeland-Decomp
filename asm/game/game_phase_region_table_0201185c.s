@@ -9,8 +9,8 @@
 .extern MI_UncompressLZ8
 .extern OS_Halt
 .extern data_020d5640
-.extern data_020d5654
-.extern data_020d565c
+.extern gGamePhaseRegionCompressedBufferAllocationTag
+.extern gGamePhaseRegionExpandedBufferAllocationTag
 .extern func_02003e20
 .extern func_02003e38
 .extern GamePhaseRegionTable_SetRegionsFromSentinel
@@ -112,8 +112,8 @@ L_020119b0:
     add sp, sp, #0x4c
     ldmia sp!, {r4, r5, r6, r7, pc}
 L_020119b8: .word data_020d5640
-L_020119bc: .word data_020d5654
+L_020119bc: .word gGamePhaseRegionCompressedBufferAllocationTag
 L_020119c0: .word gHeapContext
-L_020119c4: .word data_020d565c
+L_020119c4: .word gGamePhaseRegionExpandedBufferAllocationTag
     .size GamePhaseRegionTable_Load, . - GamePhaseRegionTable_Load
 

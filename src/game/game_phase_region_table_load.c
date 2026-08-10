@@ -8,8 +8,8 @@
 extern "C" {
 #endif
 extern const char data_020d5640[];
-extern const char data_020d5654[];
-extern const char data_020d565c[];
+extern const char gGamePhaseRegionCompressedBufferAllocationTag[];
+extern const char gGamePhaseRegionExpandedBufferAllocationTag[];
 extern void OS_Halt(void);
 extern void MI_UncompressLZ8(const void *source, void *destination);
 extern void MI_CpuCopy8(const void *source, void *destination, u32 size);
@@ -44,12 +44,12 @@ s32 GamePhaseRegionTable_Load(GamePhaseRegionTable *self,
     GameFile_Init(&file);
     if (!GameFile_Open(&file, data_020d5640))
         OS_Halt();
-    compressed = (u8 *)Heap_Alloc(info->compressedSize_34, data_020d5654,
+    compressed = (u8 *)Heap_Alloc(info->compressedSize_34, gGamePhaseRegionCompressedBufferAllocationTag,
                                   -4, &gHeapContext);
     GameFile_Seek(&file, info->fileOffset_30, 0);
     GameFile_Read(&file, compressed, info->compressedSize_34);
     expandedSize = *(u32 *)compressed >> 8;
-    expanded = (u8 *)Heap_Alloc(expandedSize & ~1, data_020d565c,
+    expanded = (u8 *)Heap_Alloc(expandedSize & ~1, gGamePhaseRegionExpandedBufferAllocationTag,
                                 -4, &gHeapContext);
     MI_UncompressLZ8(compressed, expanded);
     MI_CpuCopy8(expanded + 4, expanded, expandedSize - 4);

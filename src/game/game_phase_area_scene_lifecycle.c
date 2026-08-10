@@ -8,7 +8,7 @@
 extern "C" {
 #endif
 extern const void *data_020d5680;
-extern const char data_020d5688[];
+extern const char gGamePhaseAreaSceneRendererAllocationTag[];
 extern void *data_021052fc;
 extern void ActorCollection_Init(void *renderer);
 extern void ActorCollection_SetSpriteMode(void *renderer, s32 value);
@@ -40,7 +40,7 @@ typedef void (*AreaRendererLoad)(void *self, void *resource,
 
 static void *createRenderer(AreaRendererCtor constructor)
 {
-    void *renderer = Heap_Alloc(0x187c, data_020d5688, 4, &gHeapContext);
+    void *renderer = Heap_Alloc(0x187c, gGamePhaseAreaSceneRendererAllocationTag, 4, &gHeapContext);
     return renderer ? constructor(renderer) : 0;
 }
 

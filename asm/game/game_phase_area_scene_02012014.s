@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/game_phase_area_scene_runtime.c.
 .text
 .extern Heap_Alloc
-.extern data_020d5690
+.extern gGamePhaseAreaRegionEffectAllocationTag
 .extern data_021052fc
 .extern GamePhaseRegionTable_FindContainingRegion
 .extern GamePhaseRegionTable_GetRegion
@@ -92,7 +92,7 @@ L_02012138:
     mov r0, #0x0
     add sp, sp, #0x8
     ldmia sp!, {r4, r5, r6, r7, r8, r9, r10, pc}
-L_02012144: .word data_020d5690
+L_02012144: .word gGamePhaseAreaRegionEffectAllocationTag
 L_02012148: .word gHeapContext
 L_0201214c: .word data_021052fc
     .size GamePhaseAreaScene_UpdateRegionAtPosition, . - GamePhaseAreaScene_UpdateRegionAtPosition

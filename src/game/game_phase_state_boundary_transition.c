@@ -8,7 +8,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern const u8 data_020d5544[];
+extern const u8 gGamePhaseBoundaryTransitionAllocationTag[];
 extern u8 data_02105310[];
 extern void *ActorDerivedType1_GetSingletonObject(void);
 extern s32 ActorRuntimeCollection_GetPendingAttachmentFlag(void *object);
@@ -27,7 +27,7 @@ static s32 launchBoundaryOverlay(s32 direction)
 {
     void *object;
     OverlayManager_LoadOverlay(OverlayManager_GetGlobal(), 2, 0x4a);
-    object = Heap_Alloc(0x174, (const char *)data_020d5544, 4,
+    object = Heap_Alloc(0x174, (const char *)gGamePhaseBoundaryTransitionAllocationTag, 4,
                         &gHeapContext);
     if (object != 0)
         func_ov074_0220fda8(object, direction - 1);

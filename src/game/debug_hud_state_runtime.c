@@ -6,7 +6,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern const u8 data_020d555c[];
+extern const u8 gDebugHudRendererAllocationTag[];
 extern void *data_020d5554[2];
 extern void *data_020f4e14;
 extern void *data_020f4e18;
@@ -46,7 +46,7 @@ void DebugHudState_Open(DebugHudState *self, s32 fontSelect, u32 parameter,
     self->resetFontOnClose = resetFontOnClose;
     self->fontSelect = fontSelect;
     self->resourceHandle = (u32)func_02071980(data_020f4e18, 0x7007);
-    renderer = Heap_Alloc(0xec, (const char *)data_020d555c, 4,
+    renderer = Heap_Alloc(0xec, (const char *)gDebugHudRendererAllocationTag, 4,
                           &gHeapContext);
     if (renderer)
         renderer = func_02092cc0(renderer,

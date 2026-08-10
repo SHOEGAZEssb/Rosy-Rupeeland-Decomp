@@ -6,7 +6,7 @@
 .extern GameWork_ClearPointerBank
 .extern Heap_Alloc
 .extern data_020d5680
-.extern data_020d5688
+.extern gGamePhaseAreaSceneRendererAllocationTag
 .extern VecFx32Object_Init
 .extern OverlaySlot_Init
 .extern func_02029218
@@ -314,7 +314,7 @@ L_02011e48:
 L_02011e98: .word data_020d5680
 L_02011e9c: .word 0x4001000
 L_02011ea0: .word 0x187c
-L_02011ea4: .word data_020d5688
+L_02011ea4: .word gGamePhaseAreaSceneRendererAllocationTag
 L_02011ea8: .word gHeapContext
 L_02011eac: .word 0x400100c
 L_02011eb0: .word 0x4001050

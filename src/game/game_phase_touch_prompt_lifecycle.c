@@ -7,7 +7,7 @@
 extern "C" {
 #endif
 extern const void *data_020d5604;
-extern const char data_020d5628[];
+extern const char gGamePhaseTouchPromptActorAllocationTag[];
 extern void *data_020f4e14;
 extern void *data_020f4e18;
 extern void *func_02006108(void *self);
@@ -48,7 +48,7 @@ GamePhaseTouchPrompt *GamePhaseTouchPrompt_Init(GamePhaseTouchPrompt *self, void
     self->spriteGroup = GraphicsSpriteGroupOwner_CreateGroup(data_020f4e14);
     func_02071ee0(&self->resources, data_020f4e18,
                   (void *)0x3298, (void *)0x3299, (void *)0x329a);
-    allocation = Heap_Alloc(0xa0, data_020d5628, 4, &gHeapContext);
+    allocation = Heap_Alloc(0xa0, gGamePhaseTouchPromptActorAllocationTag, 4, &gHeapContext);
     if (allocation) {
         sprite = GraphicsSpriteGroup_CreateStateFromSource(self->spriteGroup,
                                &self->resources, 2);

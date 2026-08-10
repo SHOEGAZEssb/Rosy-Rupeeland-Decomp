@@ -6,7 +6,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern const u8 data_020d554c[];
+extern const u8 gGamePhaseStateRendererAllocationTag[];
 extern void *func_02029218(void *object);
 extern void func_02029ca4(void *object, const void *configuration);
 extern void *func_0202becc(void *object);
@@ -55,7 +55,7 @@ void GamePhaseState_CreatePhaseObject(GamePhaseState *self, const void *configur
     else
         constructor = func_02029218;
 
-    object = Heap_Alloc(0x187c, (const char *)data_020d554c, 4,
+    object = Heap_Alloc(0x187c, (const char *)gGamePhaseStateRendererAllocationTag, 4,
                         &gHeapContext);
     if (object != 0)
         object = constructor(object);

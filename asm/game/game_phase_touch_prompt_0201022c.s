@@ -2,7 +2,7 @@
 .text
 .extern Heap_Alloc
 .extern data_020d5604
-.extern data_020d5628
+.extern gGamePhaseTouchPromptActorAllocationTag
 .extern data_020f4e14
 .extern data_020f4e18
 .extern func_02006108
@@ -83,7 +83,7 @@ L_02010320: .word data_020d5604
 L_02010324: .word data_020f4e14
 L_02010328: .word 0x329a
 L_0201032c: .word data_020f4e18
-L_02010330: .word data_020d5628
+L_02010330: .word gGamePhaseTouchPromptActorAllocationTag
 L_02010334: .word gHeapContext
     .size GamePhaseTouchPrompt_Init, . - GamePhaseTouchPrompt_Init
 

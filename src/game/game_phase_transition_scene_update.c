@@ -7,7 +7,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern const u8 data_020d53b0[];
+extern const u8 gGamePhaseResumeSceneAllocationTag[];
 extern void *data_021052fc;
 extern void *gLupyContext;
 extern void DisplayBrightness_StartMainTransition(s32 screen, s32 frames);
@@ -69,7 +69,7 @@ s32 GamePhaseTransitionScene_Update(GamePhaseTransitionScene *self)
             GameWork_Reset();
         }
         GamePhaseRuntime_ApplyStagedAreaRequest(data_021052fc);
-        allocation = Heap_Alloc(0x28, (const char *)data_020d53b0, -4,
+        allocation = Heap_Alloc(0x28, (const char *)gGamePhaseResumeSceneAllocationTag, -4,
                                 &gHeapContext);
         if (allocation != 0)
             GamePhaseResumeScene_Init(allocation, 1);

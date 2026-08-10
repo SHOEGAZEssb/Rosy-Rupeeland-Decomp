@@ -14,7 +14,7 @@
 .extern GamePhaseRuntime_ApplyStagedAreaRequest
 .extern Heap_Alloc
 .extern GamePhaseResumeScene_Init
-.extern data_020d53b0
+.extern gGamePhaseResumeSceneAllocationTag
 .extern data_021052fc
 .extern gGameWork
 .extern gHeapContext
@@ -153,7 +153,7 @@ L_0200c89c:
 L_0200c8a4: .word gGameWork
 L_0200c8a8: .word gLupyContext
 L_0200c8ac: .word data_021052fc
-L_0200c8b0: .word data_020d53b0
+L_0200c8b0: .word gGamePhaseResumeSceneAllocationTag
 L_0200c8b4: .word gHeapContext
 L_0200c8b8: .word 0x386
 .size GamePhaseTransitionScene_Update, . - GamePhaseTransitionScene_Update

@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/game_phase_state_object_create.c.
 .text
 .extern Heap_Alloc
-.extern data_020d554c
+.extern gGamePhaseStateRendererAllocationTag
 .extern GamePhaseRegionTable_Load
 .extern GamePhaseRegionTable_SetGameWorkFlagBase
 .extern func_02029218
@@ -129,6 +129,6 @@ L_0200f204:
     ldmia sp!, {r3, r4, r5, pc}
 L_0200f250: .word 0x400000e
 L_0200f254: .word 0x187c
-L_0200f258: .word data_020d554c
+L_0200f258: .word gGamePhaseStateRendererAllocationTag
 L_0200f25c: .word gHeapContext
     .size GamePhaseState_CreatePhaseObject, . - GamePhaseState_CreatePhaseObject
