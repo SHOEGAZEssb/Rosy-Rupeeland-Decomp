@@ -1,7 +1,7 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov095/overlay095_recovery.c.
 .extern data_ov095_0221d1a4
-.extern func_02051d2c
+.extern TrackedResourceActorImpulse_Destroy
 .extern func_0205940c
 .extern gSoundContext
 
@@ -22,7 +22,7 @@ func_ov095_0221c0e4:
     bl func_0205940c
 .L_0221c118:
     mov r0, r4
-    bl func_02051d2c
+    bl TrackedResourceActorImpulse_Destroy
     mov r0, r4
     ldmia sp!, {r4, pc}
 .L_0221c128: .word data_ov095_0221d1a4

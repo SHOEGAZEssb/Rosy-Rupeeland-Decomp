@@ -1,11 +1,11 @@
 ; Matching retail form; see src/game/tracked_resource_actor_impulse_lifecycle.c.
 .extern Heap_Free
-.extern data_020e3308
+.extern gTrackedResourceActorImpulseVtable
 .extern TrackedResourceActor_Init
 .extern TrackedResourceActor_Destroy
 .text
-    .global func_02051cdc
-func_02051cdc:
+    .global TrackedResourceActorImpulse_InitBase
+TrackedResourceActorImpulse_InitBase:
     stmdb sp!, {r4, lr}
     mov r4, r0
     bl TrackedResourceActor_Init
@@ -13,20 +13,20 @@ func_02051cdc:
     mov r0, r4
     str r1, [r4, #0x0]
     ldmia sp!, {r4, pc}
-.L_02051cf8: .word data_020e3308
-    .size func_02051cdc, . - func_02051cdc
+.L_02051cf8: .word gTrackedResourceActorImpulseVtable
+    .size TrackedResourceActorImpulse_InitBase, . - TrackedResourceActorImpulse_InitBase
 
-    .global func_02051cfc
-func_02051cfc:
+    .global TrackedResourceActorImpulse_DestroyComplete
+TrackedResourceActorImpulse_DestroyComplete:
     stmdb sp!, {r4, lr}
     mov r4, r0
     bl TrackedResourceActor_Destroy
     mov r0, r4
     ldmia sp!, {r4, pc}
-    .size func_02051cfc, . - func_02051cfc
+    .size TrackedResourceActorImpulse_DestroyComplete, . - TrackedResourceActorImpulse_DestroyComplete
 
-    .global func_02051d10
-func_02051d10:
+    .global TrackedResourceActorImpulse_DestroyAndFree
+TrackedResourceActorImpulse_DestroyAndFree:
     stmdb sp!, {r4, lr}
     mov r4, r0
     bl TrackedResourceActor_Destroy
@@ -34,13 +34,13 @@ func_02051d10:
     bl Heap_Free
     mov r0, r4
     ldmia sp!, {r4, pc}
-    .size func_02051d10, . - func_02051d10
+    .size TrackedResourceActorImpulse_DestroyAndFree, . - TrackedResourceActorImpulse_DestroyAndFree
 
-    .global func_02051d2c
-func_02051d2c:
+    .global TrackedResourceActorImpulse_Destroy
+TrackedResourceActorImpulse_Destroy:
     stmdb sp!, {r4, lr}
     mov r4, r0
     bl TrackedResourceActor_Destroy
     mov r0, r4
     ldmia sp!, {r4, pc}
-    .size func_02051d2c, . - func_02051d2c
+    .size TrackedResourceActorImpulse_Destroy, . - TrackedResourceActorImpulse_Destroy

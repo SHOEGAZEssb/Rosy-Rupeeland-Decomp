@@ -1,13 +1,13 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov095/overlay095_recovery.c.
 .extern Heap_Free
-.extern func_02051d2c
+.extern TrackedResourceActorImpulse_Destroy
 
 .global func_ov095_0221c760
 func_ov095_0221c760:
     stmdb sp!, {r4, lr}
     mov r4, r0
-    bl func_02051d2c
+    bl TrackedResourceActorImpulse_Destroy
     mov r0, r4
     bl Heap_Free
     mov r0, r4

@@ -5,23 +5,23 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *func_02051cdc(void *actor);
+extern void *TrackedResourceActorImpulse_InitBase(void *actor);
 extern void *TrackedResourceActor_Destroy(void *actor);
 extern void Heap_Free(void *allocation);
-extern u32 data_020e321c[];
+extern u32 gTrackedResourceActorType27Vtable[];
 #ifdef __cplusplus
 }
 #endif
 
 /*
  * Input is subclass storage. Constructs the impulse-oriented parent through
- * func_02051cdc, installs vtable data_020e321c, and returns the same storage.
+ * TrackedResourceActorImpulse_InitBase, installs vtable gTrackedResourceActorType27Vtable, and returns the same storage.
  * Engine-owned fields may be initialized; no direct hardware access occurs.
  */
-void *func_02052120(void *actor)
+void *TrackedResourceActorType27_Init(void *actor)
 {
-    func_02051cdc(actor);
-    *(u32 **)actor = data_020e321c;
+    TrackedResourceActorImpulse_InitBase(actor);
+    *(u32 **)actor = gTrackedResourceActorType27Vtable;
     return actor;
 }
 
@@ -30,7 +30,7 @@ void *func_02052120(void *actor)
  * TrackedResourceActor_Destroy and returns the instance without freeing it. The direct base
  * call rather than an address-derived parent destructor is confirmed.
  */
-void *func_02052140(void *actor)
+void *TrackedResourceActorType27_DestroyComplete(void *actor)
 {
     TrackedResourceActor_Destroy(actor);
     return actor;
@@ -41,7 +41,7 @@ void *func_02052140(void *actor)
  * base teardown, frees the allocation, and returns its former address, which
  * must not be dereferenced. No direct hardware access occurs.
  */
-void *func_02052154(void *actor)
+void *TrackedResourceActorType27_DestroyAndFree(void *actor)
 {
     TrackedResourceActor_Destroy(actor);
     Heap_Free(actor);

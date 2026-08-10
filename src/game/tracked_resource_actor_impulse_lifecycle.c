@@ -8,20 +8,20 @@ extern "C" {
 extern void *TrackedResourceActor_Init(void *actor);
 extern void *TrackedResourceActor_Destroy(void *actor);
 extern void Heap_Free(void *allocation);
-extern u32 data_020e3308[];
+extern u32 gTrackedResourceActorImpulseVtable[];
 #ifdef __cplusplus
 }
 #endif
 
 /*
  * Input is variant storage. Constructs the tracked-resource base, installs
- * vtable data_020e3308, and returns the same storage. Engine-owned fields may
+ * vtable gTrackedResourceActorImpulseVtable, and returns the same storage. Engine-owned fields may
  * be initialized; no direct hardware access occurs.
  */
-void *func_02051cdc(void *actor)
+void *TrackedResourceActorImpulse_InitBase(void *actor)
 {
     TrackedResourceActor_Init(actor);
-    *(u32 **)actor = data_020e3308;
+    *(u32 **)actor = gTrackedResourceActorImpulseVtable;
     return actor;
 }
 
@@ -29,7 +29,7 @@ void *func_02051cdc(void *actor)
  * Input is a variant instance. Runs tracked-resource base teardown and returns
  * the instance without freeing it. Engine resources may be released.
  */
-void *func_02051cfc(void *actor)
+void *TrackedResourceActorImpulse_DestroyComplete(void *actor)
 {
     TrackedResourceActor_Destroy(actor);
     return actor;
@@ -39,7 +39,7 @@ void *func_02051cfc(void *actor)
  * Input is a heap-allocated variant instance. Runs base teardown, frees the
  * allocation, and returns its former address, which must not be dereferenced.
  */
-void *func_02051d10(void *actor)
+void *TrackedResourceActorImpulse_DestroyAndFree(void *actor)
 {
     TrackedResourceActor_Destroy(actor);
     Heap_Free(actor);
@@ -48,10 +48,10 @@ void *func_02051d10(void *actor)
 
 /*
  * Input is a variant instance. This second recovered non-freeing teardown runs
- * the same base cleanup as func_02051cfc and returns the instance; its distinct
+ * the same base cleanup as TrackedResourceActorImpulse_DestroyComplete and returns the instance; its distinct
  * call-site role is not confirmed. No direct hardware access occurs.
  */
-void *func_02051d2c(void *actor)
+void *TrackedResourceActorImpulse_Destroy(void *actor)
 {
     TrackedResourceActor_Destroy(actor);
     return actor;

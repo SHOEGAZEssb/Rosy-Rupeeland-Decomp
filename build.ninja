@@ -19854,7 +19854,7 @@ build build/reports/tracked_resource_actor_impulse_lifecycle_02051cdc.json: objd
   base_object = build/decomp/asm/game/tracked_resource_actor_impulse_lifecycle_02051cdc.o
 build build/reports/tracked_resource_actor_impulse_lifecycle_02051cdc.txt: match_report build/reports/tracked_resource_actor_impulse_lifecycle_02051cdc.json | tools/report_objdiff.py
   report_json = build/reports/tracked_resource_actor_impulse_lifecycle_02051cdc.json
-  report_args = --section .text --function func_02051cdc --function func_02051cfc --function func_02051d10 --function func_02051d2c --require-exact
+  report_args = --section .text --function TrackedResourceActorImpulse_InitBase --function TrackedResourceActorImpulse_DestroyComplete --function TrackedResourceActorImpulse_DestroyAndFree --function TrackedResourceActorImpulse_Destroy --require-exact
 
 build tracked_resource_actor_impulse_lifecycle: phony build/decomp/src/game/tracked_resource_actor_impulse_lifecycle.o build/decomp/asm/game/tracked_resource_actor_impulse_lifecycle_02051cdc.o build/reports/tracked_resource_actor_impulse_lifecycle_02051cdc.txt
 
@@ -19959,7 +19959,7 @@ build build/reports/tracked_resource_actor_sequence_lifecycle_02052120.json: obj
   base_object = build/decomp/asm/game/tracked_resource_actor_sequence_lifecycle_02052120.o
 build build/reports/tracked_resource_actor_sequence_lifecycle_02052120.txt: match_report build/reports/tracked_resource_actor_sequence_lifecycle_02052120.json | tools/report_objdiff.py
   report_json = build/reports/tracked_resource_actor_sequence_lifecycle_02052120.json
-  report_args = --section .text --function func_02052120 --function func_02052140 --function func_02052154 --require-exact
+  report_args = --section .text --function TrackedResourceActorType27_Init --function TrackedResourceActorType27_DestroyComplete --function TrackedResourceActorType27_DestroyAndFree --require-exact
 
 build tracked_resource_actor_sequence_lifecycle: phony build/decomp/src/game/tracked_resource_actor_sequence_lifecycle.o build/decomp/asm/game/tracked_resource_actor_sequence_lifecycle_02052120.o build/reports/tracked_resource_actor_sequence_lifecycle_02052120.txt
 

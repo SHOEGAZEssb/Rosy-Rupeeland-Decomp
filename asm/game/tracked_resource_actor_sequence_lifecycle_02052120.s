@@ -1,32 +1,32 @@
 ; Matching retail form; see src/game/tracked_resource_actor_sequence_lifecycle.c.
 .extern Heap_Free
-.extern data_020e321c
+.extern gTrackedResourceActorType27Vtable
 .extern TrackedResourceActor_Destroy
-.extern func_02051cdc
+.extern TrackedResourceActorImpulse_InitBase
 .text
-    .global func_02052120
-func_02052120:
+    .global TrackedResourceActorType27_Init
+TrackedResourceActorType27_Init:
     stmdb sp!, {r4, lr}
     mov r4, r0
-    bl func_02051cdc
+    bl TrackedResourceActorImpulse_InitBase
     ldr r1, .L_0205213c
     mov r0, r4
     str r1, [r4, #0x0]
     ldmia sp!, {r4, pc}
-.L_0205213c: .word data_020e321c
-    .size func_02052120, . - func_02052120
+.L_0205213c: .word gTrackedResourceActorType27Vtable
+    .size TrackedResourceActorType27_Init, . - TrackedResourceActorType27_Init
 
-    .global func_02052140
-func_02052140:
+    .global TrackedResourceActorType27_DestroyComplete
+TrackedResourceActorType27_DestroyComplete:
     stmdb sp!, {r4, lr}
     mov r4, r0
     bl TrackedResourceActor_Destroy
     mov r0, r4
     ldmia sp!, {r4, pc}
-    .size func_02052140, . - func_02052140
+    .size TrackedResourceActorType27_DestroyComplete, . - TrackedResourceActorType27_DestroyComplete
 
-    .global func_02052154
-func_02052154:
+    .global TrackedResourceActorType27_DestroyAndFree
+TrackedResourceActorType27_DestroyAndFree:
     stmdb sp!, {r4, lr}
     mov r4, r0
     bl TrackedResourceActor_Destroy
@@ -34,4 +34,4 @@ func_02052154:
     bl Heap_Free
     mov r0, r4
     ldmia sp!, {r4, pc}
-    .size func_02052154, . - func_02052154
+    .size TrackedResourceActorType27_DestroyAndFree, . - TrackedResourceActorType27_DestroyAndFree

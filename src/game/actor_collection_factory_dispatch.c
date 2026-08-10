@@ -69,7 +69,7 @@ DECLARE_ACTOR_CTOR(TrackedResourceActorType21_Init);
 DECLARE_ACTOR_CTOR(TrackedResourceActorType22And25_Init);
 DECLARE_ACTOR_CTOR(TrackedResourceActorType24_Init);
 DECLARE_ACTOR_CTOR(TrackedResourceActorType26_Init);
-DECLARE_ACTOR_CTOR(func_02052120);
+DECLARE_ACTOR_CTOR(TrackedResourceActorType27_Init);
 DECLARE_ACTOR_CTOR(func_020522c8);
 DECLARE_ACTOR_CTOR(func_020525b0);
 DECLARE_ACTOR_CTOR(func_02052680);
@@ -182,7 +182,7 @@ static ActorFactorySpec kind4Spec(u16 subtype)
     case 22: case 25: return (ActorFactorySpec)SPEC(0x200, TrackedResourceActorType22And25_Init);
     case 24: return (ActorFactorySpec)SPEC(0x200, TrackedResourceActorType24_Init);
     case 26: return (ActorFactorySpec)SPEC(0x204, TrackedResourceActorType26_Init);
-    case 27: return (ActorFactorySpec)SPEC(0x200, func_02052120);
+    case 27: return (ActorFactorySpec)SPEC(0x200, TrackedResourceActorType27_Init);
     case 28: return (ActorFactorySpec)SPEC(0x200, func_020522c8);
     case 29: return (ActorFactorySpec)SPEC(0x200, func_020525b0);
     case 30: return (ActorFactorySpec)SPEC(0x218, func_ov092_0221a838);
