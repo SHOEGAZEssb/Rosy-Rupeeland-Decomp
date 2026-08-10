@@ -1,7 +1,7 @@
 .bss
 .global gPackedTimerArray
-.global data_020f4160
-.global data_020f4178
+.global gPackedTimerArrayEntry207
+.global gPackedTimerArrayEntry209
 
 /*
  * Matching storage for the portable timer bank documented in
@@ -10,7 +10,7 @@
  */
 gPackedTimerArray:
     .space 0x9b4
-data_020f4160:
+gPackedTimerArrayEntry207:
     .space 0x18
-data_020f4178:
+gPackedTimerArrayEntry209:
     .space 0x234

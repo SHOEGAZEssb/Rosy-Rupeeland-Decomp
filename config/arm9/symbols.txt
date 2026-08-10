@@ -9176,8 +9176,8 @@ data_020f3784 kind:bss addr:0x020f3784
 gFrameTaskList kind:bss addr:0x020f3790
 data_020f37a0 kind:bss addr:0x020f37a0
 gPackedTimerArray kind:bss addr:0x020f37ac
-data_020f4160 kind:bss addr:0x020f4160
-data_020f4178 kind:bss addr:0x020f4178
+gPackedTimerArrayEntry207 kind:bss addr:0x020f4160
+gPackedTimerArrayEntry209 kind:bss addr:0x020f4178
 gOverlayManagerStorage kind:bss addr:0x020f43ac
 data_020f43b0 kind:bss addr:0x020f43b0
 data_020f43bc kind:bss addr:0x020f43bc

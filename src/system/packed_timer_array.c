@@ -30,8 +30,8 @@ PackedTimerArray gPackedTimerArray;
 #else
 /* The matching assembly also exports interior labels at entries 207/209. */
 extern PackedTimer gPackedTimerArray[];
-extern PackedTimer data_020f4160[];
-extern PackedTimer data_020f4178[];
+extern PackedTimer gPackedTimerArrayEntry207[];
+extern PackedTimer gPackedTimerArrayEntry209[];
 #define PACKED_TIMER_BANK ((PackedTimerArray *)gPackedTimerArray)
 #endif
 
