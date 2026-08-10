@@ -9178,7 +9178,7 @@ data_020f37a0 kind:bss addr:0x020f37a0
 gPackedTimerArray kind:bss addr:0x020f37ac
 data_020f4160 kind:bss addr:0x020f4160
 data_020f4178 kind:bss addr:0x020f4178
-data_020f43ac kind:bss addr:0x020f43ac
+gOverlayManagerStorage kind:bss addr:0x020f43ac
 data_020f43b0 kind:bss addr:0x020f43b0
 data_020f43bc kind:bss addr:0x020f43bc
 gMtState kind:bss addr:0x020f43ec

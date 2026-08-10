@@ -31,7 +31,7 @@ extern void __register_global_object(void *object, void *destructor,
 }
 #endif
 
-OverlayManagerGlobal data_020f43ac;
+OverlayManagerGlobal gOverlayManagerStorage;
 
 /* Initialize all four independent overlay slots and return the manager. */
 OverlayManager *OverlayManager_Init(OverlayManager *manager)
@@ -103,12 +103,12 @@ void OverlayManager_UnloadOverlay(OverlayManager *manager, int slotIndex)
  */
 OverlayManager *OverlayManager_GetGlobal(void)
 {
-    if ((data_020f43ac.guard & 1) == 0) {
-        OverlayManager_Init(&data_020f43ac.manager);
-        __register_global_object(&data_020f43ac.manager,
+    if ((gOverlayManagerStorage.guard & 1) == 0) {
+        OverlayManager_Init(&gOverlayManagerStorage.manager);
+        __register_global_object(&gOverlayManagerStorage.manager,
                                  (void *)OverlayManager_Destroy,
-                                 data_020f43ac.destructorRecord);
-        data_020f43ac.guard |= 1;
+                                 gOverlayManagerStorage.destructorRecord);
+        gOverlayManagerStorage.guard |= 1;
     }
-    return &data_020f43ac.manager;
+    return &gOverlayManagerStorage.manager;
 }
