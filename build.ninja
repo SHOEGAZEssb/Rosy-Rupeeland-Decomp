@@ -18368,7 +18368,7 @@ build build/reports/type7_actor_random_motion_02048fe4.json: objdiff build/decom
   base_object = build/decomp/asm/game/type7_actor_random_motion_02048fe4.o
 build build/reports/type7_actor_random_motion_02048fe4.txt: match_report build/reports/type7_actor_random_motion_02048fe4.json | tools/report_objdiff.py
   report_json = build/reports/type7_actor_random_motion_02048fe4.json
-  report_args = --section .text --function func_02048fe4 --require-exact
+  report_args = --section .text --function Type7Actor_UpdateRandomMotionState --require-exact
 build type7_actor_random_motion: phony build/decomp/src/game/type7_actor_random_motion.o build/decomp/asm/game/type7_actor_random_motion_02048fe4.o build/reports/type7_actor_random_motion_02048fe4.txt
 
 type7_actor_motion_variants_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++

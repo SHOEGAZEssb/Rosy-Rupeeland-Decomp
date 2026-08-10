@@ -41,7 +41,7 @@ extern void Type7Actor_ResetInteractionState(void *actor);
  * every path. Actor random, target, callback, transform, motion, and resource
  * state may change; no direct hardware access occurs.
  */
-s32 func_02048fe4(void *self)
+s32 Type7Actor_UpdateRandomMotionState(void *self)
 {
     u8 *actor = (u8 *)self;
     *(u32 *)(actor + 0x268) |= 0x8000;

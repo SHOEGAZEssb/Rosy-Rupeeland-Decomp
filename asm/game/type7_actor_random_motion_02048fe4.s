@@ -10,10 +10,10 @@
 .extern Type7Actor_TryAcquireTarget
 .extern func_020ada8c
 .extern genrand_int32
-.global func_02048fe4
-.type func_02048fe4, @function
+.global Type7Actor_UpdateRandomMotionState
+.type Type7Actor_UpdateRandomMotionState, @function
 
-func_02048fe4: ; 0x02048fe4
+Type7Actor_UpdateRandomMotionState: ; 0x02048fe4
     stmdb sp!, {r4, r5, r6, lr}
     mov r4, r0
     ldr r1, [r4, #0x268]
@@ -108,5 +108,5 @@ func_02048fe4: ; 0x02048fe4
     ldmia sp!, {r4, r5, r6, pc}
 .L_02049144: .word data_020c9670
 
-.size func_02048fe4, . - func_02048fe4
+.size Type7Actor_UpdateRandomMotionState, . - Type7Actor_UpdateRandomMotionState
 
