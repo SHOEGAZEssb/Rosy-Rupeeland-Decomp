@@ -1,9 +1,9 @@
 ; Matching retail form; see src/game/actor_extended_table_counter_dispatch.c.
 .text
 .extern func_02040f4c
-.global func_0204497c
-.type func_0204497c, @function
-func_0204497c: ; 0x0204497c
+.global ActorExtendedTable_UpdateStagedCounters
+.type ActorExtendedTable_UpdateStagedCounters, @function
+ActorExtendedTable_UpdateStagedCounters: ; 0x0204497c
     stmdb sp!, {r3, r4, r5, lr}
     mov r5, r0
     ldr r2, [r5, #0x2a4]
@@ -99,4 +99,4 @@ func_0204497c: ; 0x0204497c
     str r2, [r5, #0x260]
     bl func_02040f4c
     ldmia sp!, {r3, r4, r5, pc}
-.size func_0204497c, . - func_0204497c
+.size ActorExtendedTable_UpdateStagedCounters, . - ActorExtendedTable_UpdateStagedCounters

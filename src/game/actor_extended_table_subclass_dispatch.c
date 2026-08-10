@@ -18,7 +18,7 @@ extern s32 func_02040f4c(void *actor, void *descriptorRecord);
  * vtable +0x1d4 with descriptor signed byte +0x25 when +0x29e is zero, advances
  * +0x2a8 modulo three, enters state 13/mode byte two, sets actor +0xd0 bit
  * 0x1000, and returns zero. Otherwise advance the +0x29c/+0x29e phase as in
- * func_0204497c. Cycle zero may next advance +0x2a0/+0x2a2. Finally increment
+ * ActorExtendedTable_UpdateStagedCounters. Cycle zero may next advance +0x2a0/+0x2a2. Finally increment
  * +0x298; a positive cycle remains in state 13 and returns zero, while cycle
  * zero falls through. The fallthrough path sets +0x260 bit 0x20 and returns
  * func_02040f4c(actor,descriptorRecord). Actor and callback state may change.

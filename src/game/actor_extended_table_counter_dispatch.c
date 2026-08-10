@@ -24,7 +24,7 @@ extern s32 func_02040f4c(void *actor, void *descriptorRecord);
  * forwards actor and descriptorRecord to func_02040f4c, and returns its result.
  * Actor, callback, and descriptor-processing state may change.
  */
-s32 func_0204497c(void *self, void *descriptorRecord)
+s32 ActorExtendedTable_UpdateStagedCounters(void *self, void *descriptorRecord)
 {
     u8 *actor = (u8 *)self;
     if (*(void **)(actor + 0x2a4) != 0) {

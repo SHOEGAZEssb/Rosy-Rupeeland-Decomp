@@ -16,7 +16,7 @@ extern s32 func_02040d64(void *actor);
  * counter +0x298, copy +0x2a2 into +0x2a0, and clear +0x29c. Otherwise return
  * without changes. Returns no value and has no direct hardware effects.
  */
-void func_020447ec(void *self)
+void ActorExtendedTable_ResetStageCounters(void *self)
 {
     u8 *actor = (u8 *)self;
     if (*(void **)(actor + 0x2a4) == 0)
@@ -31,7 +31,7 @@ void func_020447ec(void *self)
  * +0x218/+0x21c, then invoke func_02040d64(actor) and return its result. Actor
  * callback and virtual state may change; no direct SDK or hardware access.
  */
-s32 func_02044818(void *self)
+s32 ActorExtendedTable_InstallCallback30AndDispatch(void *self)
 {
     u8 *actor = (u8 *)self;
     *(u32 *)(actor + 0x218) = *(u32 *)(data_020e0ac8 + 0x30);

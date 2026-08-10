@@ -15,7 +15,7 @@ extern u8 data_020e0ac8[];
  * at actor +0x220/+0x224 with record. Always return zero. Actor, callback, and
  * virtual interaction state may change; no direct SDK or hardware access.
  */
-s32 func_02044ae0(void *self, void *descriptorRecord)
+s32 ActorExtendedTable_ProcessDescriptorRecord(void *self, void *descriptorRecord)
 {
     u8 *actor = (u8 *)self;
     u8 *record = (u8 *)descriptorRecord;

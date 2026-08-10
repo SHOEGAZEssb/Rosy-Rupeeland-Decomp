@@ -20,15 +20,15 @@ extern s32 func_02050078(s32 mode, void *first, void *second);
  * Copy target actor +0x228 transform +0x18 and actor transform +0x18 to two
  * temporaries. When descriptor value +0x2c is positive, derive their displacement
  * with func_020066a4 and zero its fourth word. If its +4/+8 magnitude exceeds
- * 0x1000, normalize those components with func_020adc90, scale them by
- * from that value using rounded fixed-point multiplication, and submit
+ * 0x1000, normalize those components with func_020adc90, scale them from that
+ * value using rounded fixed-point multiplication, and submit
  * the displacement to actor vtable +0xb8 with argument one. Finalize that
  * temporary when constructed. Then call func_02050078(mode,actorTransform,
  * targetTransform), finalize both copied transforms, and return its result.
  * Actor, virtual, transform, and effect state may change without direct
  * hardware access.
  */
-s32 func_02044c74(void *self, s32 mode)
+s32 ActorExtendedTable_ApplyTargetRelativeTransform(void *self, s32 mode)
 {
     u8 *actor = (u8 *)self;
     u8 *target = *(u8 **)(actor + 0x228);

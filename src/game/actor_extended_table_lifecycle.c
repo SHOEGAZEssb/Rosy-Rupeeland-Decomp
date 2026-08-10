@@ -23,7 +23,7 @@ extern void *ActorExtendedType2_Init(void *actor, const void *configuration);
  * halfwords +0x22/+0x24/+0x26 to actor +0x29a/+0x29e/+0x2a2; without one those
  * actor halfwords are zeroed. Return self; actor and virtual-query state change.
  */
-void *func_02044518(void *self, const void *configuration)
+void *ActorExtendedTable_Init(void *self, const void *configuration)
 {
     u8 *actor = (u8 *)self;
     u8 descriptor[0x30];
@@ -53,8 +53,8 @@ void *func_02044518(void *self, const void *configuration)
     return actor;
 }
 
-/* Same inputs, table scan, state changes, and return contract as func_02044518. */
-void *func_020445d8(void *self, const void *configuration)
+/* Same inputs, table scan, state changes, and return contract as ActorExtendedTable_Init. */
+void *ActorExtendedTable_InitDuplicate(void *self, const void *configuration)
 {
     u8 *actor = (u8 *)self;
     u8 descriptor[0x30];

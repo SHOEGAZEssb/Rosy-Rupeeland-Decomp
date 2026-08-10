@@ -11,7 +11,7 @@ extern void *ActorExtendedType2_Destroy(void *actor);
 #endif
 
 /* Invoke base destructor ActorExtendedType2_Destroy and return self; actor state is torn down. */
-void *func_02044698(void *self)
+void *ActorExtendedTable_Destroy(void *self)
 {
     ActorExtendedType2_Destroy(self);
     return self;
@@ -21,7 +21,7 @@ void *func_02044698(void *self)
  * Invoke base destructor ActorExtendedType2_Destroy, free self, and return the original
  * pointer value. Actor storage becomes invalid after the heap operation.
  */
-void *func_020446ac(void *self)
+void *ActorExtendedTable_DestroyAndFree(void *self)
 {
     ActorExtendedType2_Destroy(self);
     Heap_Free(self);

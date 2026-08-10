@@ -3,8 +3,8 @@
 .extern Heap_Free
 .extern data_020e0b70
 .extern ActorExtendedType2_Destroy
-.extern func_02044518
-.extern func_020447ec
+.extern ActorExtendedTable_Init
+.extern ActorExtendedTable_ResetStageCounters
 .global func_02044d84
 .type func_02044d84, @function
 .global func_02044db4
@@ -16,7 +16,7 @@
 func_02044d84: ; 0x02044d84
     stmdb sp!, {r4, lr}
     mov r4, r0
-    bl func_02044518
+    bl ActorExtendedTable_Init
     ldr r0, .L_02044db0
     add r1, r4, #0x200
     str r0, [r4, #0x0]
@@ -49,7 +49,7 @@ func_02044dc8: ; 0x02044dc8
 func_02044de4: ; 0x02044de4
     stmdb sp!, {r4, lr}
     mov r4, r0
-    bl func_020447ec
+    bl ActorExtendedTable_ResetStageCounters
     add r0, r4, #0x200
     mov r1, #0x0
     strh r1, [r0, #0xa8]

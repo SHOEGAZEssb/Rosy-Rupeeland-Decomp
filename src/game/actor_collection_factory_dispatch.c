@@ -55,7 +55,7 @@ DECLARE_ACTOR_CTOR(func_0203d2a8);
 DECLARE_ACTOR_CTOR(ActorExtendedType2_InitDuplicate);
 DECLARE_ACTOR_CTOR(func_02043830);
 DECLARE_ACTOR_CTOR(ActorExtendedTransform_InitDuplicate);
-DECLARE_ACTOR_CTOR(func_020445d8);
+DECLARE_ACTOR_CTOR(ActorExtendedTable_InitDuplicate);
 DECLARE_ACTOR_CTOR(func_02044d84);
 DECLARE_ACTOR_CTOR(func_020455bc);
 DECLARE_ACTOR_CTOR(func_0204d068);
@@ -139,7 +139,7 @@ static const ActorFactorySpec sKind2Specs[36] = {
     SPEC(0x2b4, func_ov083_02213748), SPEC(0x2a8, func_ov075_02212ae0),
     SPEC(0x2ac, ActorExtendedTransform_InitDuplicate), SPEC(0x29c, func_02043830),
     SPEC(0x29c, func_02043830), SPEC(0x29c, func_ov075_02212ae0),
-    SPEC(0x2a8, func_020445d8), SPEC(0x2ac, func_ov076_02213858),
+    SPEC(0x2a8, ActorExtendedTable_InitDuplicate), SPEC(0x2ac, func_ov076_02213858),
     SPEC(0x2a0, func_ov082_02213218), SPEC(0x2c0, func_ov075_0221352c),
     SPEC(0x2a4, func_ov075_02212bb8), SPEC(0x2c4, func_ov077_02212b7c),
     SPEC(0x30c, func_ov077_02213110), SPEC(0x29c, func_02043830),

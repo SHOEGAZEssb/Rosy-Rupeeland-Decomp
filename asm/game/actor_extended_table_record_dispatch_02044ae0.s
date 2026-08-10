@@ -1,9 +1,9 @@
 ; Matching retail form; see src/game/actor_extended_table_record_dispatch.c.
 .text
 .extern data_020e0ac8
-.global func_02044ae0
-.type func_02044ae0, @function
-func_02044ae0: ; 0x02044ae0
+.global ActorExtendedTable_ProcessDescriptorRecord
+.type ActorExtendedTable_ProcessDescriptorRecord, @function
+ActorExtendedTable_ProcessDescriptorRecord: ; 0x02044ae0
     stmdb sp!, {r3, r4, r5, lr}
     mov r5, r0
     ldr r2, [r5, #0x260]
@@ -108,4 +108,4 @@ func_02044ae0: ; 0x02044ae0
     mov r0, #0x0
     ldmia sp!, {r3, r4, r5, pc}
 .L_02044c70: .word data_020e0ac8
-.size func_02044ae0, . - func_02044ae0
+.size ActorExtendedTable_ProcessDescriptorRecord, . - ActorExtendedTable_ProcessDescriptorRecord

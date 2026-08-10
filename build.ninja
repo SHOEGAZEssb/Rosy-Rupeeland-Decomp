@@ -17734,7 +17734,7 @@ build build/reports/actor_extended_table_lifecycle_02044518.json: objdiff build/
   base_object = build/decomp/asm/game/actor_extended_table_lifecycle_02044518.o
 build build/reports/actor_extended_table_lifecycle_02044518.txt: match_report build/reports/actor_extended_table_lifecycle_02044518.json | tools/report_objdiff.py
   report_json = build/reports/actor_extended_table_lifecycle_02044518.json
-  report_args = --section .text --function func_02044518 --function func_020445d8 --require-exact
+  report_args = --section .text --function ActorExtendedTable_Init --function ActorExtendedTable_InitDuplicate --require-exact
 build build/reports/actor_extended_table_lifecycle.txt: phony build/reports/actor_extended_table_lifecycle_02044518.txt
 build actor_extended_table_lifecycle: phony build/decomp/src/game/actor_extended_table_lifecycle.o build/decomp/asm/game/actor_extended_table_lifecycle_02044518.o build/reports/actor_extended_table_lifecycle.txt
 
@@ -17749,7 +17749,7 @@ build build/reports/actor_extended_table_destructors_02044698.json: objdiff buil
   base_object = build/decomp/asm/game/actor_extended_table_destructors_02044698.o
 build build/reports/actor_extended_table_destructors_02044698.txt: match_report build/reports/actor_extended_table_destructors_02044698.json | tools/report_objdiff.py
   report_json = build/reports/actor_extended_table_destructors_02044698.json
-  report_args = --section .text --function func_02044698 --function func_020446ac --require-exact
+  report_args = --section .text --function ActorExtendedTable_Destroy --function ActorExtendedTable_DestroyAndFree --require-exact
 build build/reports/actor_extended_table_destructors.txt: phony build/reports/actor_extended_table_destructors_02044698.txt
 build actor_extended_table_destructors: phony build/decomp/src/game/actor_extended_table_destructors.o build/decomp/asm/game/actor_extended_table_destructors_02044698.o build/reports/actor_extended_table_destructors.txt
 
@@ -17794,7 +17794,7 @@ build build/reports/actor_extended_table_state_helpers_020447ec.json: objdiff bu
   base_object = build/decomp/asm/game/actor_extended_table_state_helpers_020447ec.o
 build build/reports/actor_extended_table_state_helpers_020447ec.txt: match_report build/reports/actor_extended_table_state_helpers_020447ec.json | tools/report_objdiff.py
   report_json = build/reports/actor_extended_table_state_helpers_020447ec.json
-  report_args = --section .text --function func_020447ec --function func_02044818 --require-exact
+  report_args = --section .text --function ActorExtendedTable_ResetStageCounters --function ActorExtendedTable_InstallCallback30AndDispatch --require-exact
 build actor_extended_table_state_helpers: phony build/decomp/src/game/actor_extended_table_state_helpers.o build/decomp/asm/game/actor_extended_table_state_helpers_020447ec.o build/reports/actor_extended_table_state_helpers_020447ec.txt
 
 actor_extended_table_frame_update_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
@@ -17822,7 +17822,7 @@ build build/reports/actor_extended_table_counter_dispatch_0204497c.json: objdiff
   base_object = build/decomp/asm/game/actor_extended_table_counter_dispatch_0204497c.o
 build build/reports/actor_extended_table_counter_dispatch_0204497c.txt: match_report build/reports/actor_extended_table_counter_dispatch_0204497c.json | tools/report_objdiff.py
   report_json = build/reports/actor_extended_table_counter_dispatch_0204497c.json
-  report_args = --section .text --function func_0204497c --require-exact
+  report_args = --section .text --function ActorExtendedTable_UpdateStagedCounters --require-exact
 build actor_extended_table_counter_dispatch: phony build/decomp/src/game/actor_extended_table_counter_dispatch.o build/decomp/asm/game/actor_extended_table_counter_dispatch_0204497c.o build/reports/actor_extended_table_counter_dispatch_0204497c.txt
 
 actor_extended_table_record_dispatch_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
@@ -17836,7 +17836,7 @@ build build/reports/actor_extended_table_record_dispatch_02044ae0.json: objdiff 
   base_object = build/decomp/asm/game/actor_extended_table_record_dispatch_02044ae0.o
 build build/reports/actor_extended_table_record_dispatch_02044ae0.txt: match_report build/reports/actor_extended_table_record_dispatch_02044ae0.json | tools/report_objdiff.py
   report_json = build/reports/actor_extended_table_record_dispatch_02044ae0.json
-  report_args = --section .text --function func_02044ae0 --require-exact
+  report_args = --section .text --function ActorExtendedTable_ProcessDescriptorRecord --require-exact
 build actor_extended_table_record_dispatch: phony build/decomp/src/game/actor_extended_table_record_dispatch.o build/decomp/asm/game/actor_extended_table_record_dispatch_02044ae0.o build/reports/actor_extended_table_record_dispatch_02044ae0.txt
 
 actor_extended_table_transform_effect_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
@@ -17850,7 +17850,7 @@ build build/reports/actor_extended_table_transform_effect_02044c74.json: objdiff
   base_object = build/decomp/asm/game/actor_extended_table_transform_effect_02044c74.o
 build build/reports/actor_extended_table_transform_effect_02044c74.txt: match_report build/reports/actor_extended_table_transform_effect_02044c74.json | tools/report_objdiff.py
   report_json = build/reports/actor_extended_table_transform_effect_02044c74.json
-  report_args = --section .text --function func_02044c74 --require-exact
+  report_args = --section .text --function ActorExtendedTable_ApplyTargetRelativeTransform --require-exact
 build actor_extended_table_transform_effect: phony build/decomp/src/game/actor_extended_table_transform_effect.o build/decomp/asm/game/actor_extended_table_transform_effect_02044c74.o build/reports/actor_extended_table_transform_effect_02044c74.txt
 
 actor_extended_table_subclass_lifecycle_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++

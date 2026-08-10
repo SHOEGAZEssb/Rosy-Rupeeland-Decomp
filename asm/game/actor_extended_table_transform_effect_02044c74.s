@@ -7,9 +7,9 @@
 .extern func_0204cfa4
 .extern func_02050078
 .extern func_020adc90
-.global func_02044c74
-.type func_02044c74, @function
-func_02044c74: ; 0x02044c74
+.global ActorExtendedTable_ApplyTargetRelativeTransform
+.type ActorExtendedTable_ApplyTargetRelativeTransform, @function
+ActorExtendedTable_ApplyTargetRelativeTransform: ; 0x02044c74
     stmdb sp!, {r3, r4, r5, r6, r7, lr}
     sub sp, sp, #0x30
     mov r7, r0
@@ -80,4 +80,4 @@ func_02044c74: ; 0x02044c74
     mov r0, r4
     add sp, sp, #0x30
     ldmia sp!, {r3, r4, r5, r6, r7, pc}
-.size func_02044c74, . - func_02044c74
+.size ActorExtendedTable_ApplyTargetRelativeTransform, . - ActorExtendedTable_ApplyTargetRelativeTransform

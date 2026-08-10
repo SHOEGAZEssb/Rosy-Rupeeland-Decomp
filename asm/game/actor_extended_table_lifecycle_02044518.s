@@ -3,11 +3,11 @@
 .extern data_020e0d50
 .extern data_020eb850
 .extern ActorExtendedType2_Init
-.global func_02044518
-.type func_02044518, @function
-.global func_020445d8
-.type func_020445d8, @function
-func_02044518: ; 0x02044518
+.global ActorExtendedTable_Init
+.type ActorExtendedTable_Init, @function
+.global ActorExtendedTable_InitDuplicate
+.type ActorExtendedTable_InitDuplicate, @function
+ActorExtendedTable_Init: ; 0x02044518
     stmdb sp!, {r3, r4, r5, lr}
     sub sp, sp, #0x30
     mov r4, r0
@@ -59,8 +59,8 @@ func_02044518: ; 0x02044518
 .L_020445d0: .word data_020e0d50
 .L_020445d4: .word data_020eb850
 
-.size func_02044518, . - func_02044518
-func_020445d8: ; 0x020445d8
+.size ActorExtendedTable_Init, . - ActorExtendedTable_Init
+ActorExtendedTable_InitDuplicate: ; 0x020445d8
     stmdb sp!, {r3, r4, r5, lr}
     sub sp, sp, #0x30
     mov r4, r0
@@ -111,4 +111,4 @@ func_020445d8: ; 0x020445d8
     ldmia sp!, {r3, r4, r5, pc}
 .L_02044690: .word data_020e0d50
 .L_02044694: .word data_020eb850
-.size func_020445d8, . - func_020445d8
+.size ActorExtendedTable_InitDuplicate, . - ActorExtendedTable_InitDuplicate

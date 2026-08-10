@@ -7,22 +7,22 @@ extern u8 data_020e0b70[];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *func_02044518(void *actor, const void *configuration);
+extern void *ActorExtendedTable_Init(void *actor, const void *configuration);
 extern void *ActorExtendedType2_Destroy(void *actor);
-extern void func_020447ec(void *actor);
+extern void ActorExtendedTable_ResetStageCounters(void *actor);
 #ifdef __cplusplus
 }
 #endif
 
 /*
- * Initialize the table-configured parent through func_02044518, install vtable
+ * Initialize the table-configured parent through ActorExtendedTable_Init, install vtable
  * data_020e0b70, clear halfwords +0x2a8/+0x2aa, and return self. Actor, parent,
  * and table-selection state change; no direct SDK or hardware access occurs.
  */
 void *func_02044d84(void *self, const void *configuration)
 {
     u8 *actor = (u8 *)self;
-    func_02044518(actor, configuration);
+    ActorExtendedTable_Init(actor, configuration);
     *(void **)actor = data_020e0b70;
     *(u16 *)(actor + 0x2a8) = 0;
     *(u16 *)(actor + 0x2aa) = 0;
@@ -48,13 +48,13 @@ void *func_02044dc8(void *self)
 }
 
 /*
- * Reset the inherited counters through func_020447ec, then clear subclass
+ * Reset the inherited counters through ActorExtendedTable_ResetStageCounters, then clear subclass
  * halfword +0x2a8 and set +0x2aa to 15. Returns no value; actor state changes.
  */
 void func_02044de4(void *self)
 {
     u8 *actor = (u8 *)self;
-    func_020447ec(actor);
+    ActorExtendedTable_ResetStageCounters(actor);
     *(u16 *)(actor + 0x2a8) = 0;
     *(u16 *)(actor + 0x2aa) = 15;
 }
