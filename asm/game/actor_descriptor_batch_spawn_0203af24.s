@@ -9,7 +9,7 @@
 .extern func_02028508
 .extern ActorCollection_SpawnActorFromDescriptor
 .extern ActorSpawnDescriptor_Init
-.extern func_0204bf9c
+.extern Type7Actor_SpawnFromRecord
 .extern gGameWork
     .global ActorDescriptorBatch_RegisterAndSpawn
     .type ActorDescriptorBatch_RegisterAndSpawn, @function
@@ -194,7 +194,7 @@ ActorDescriptorBatch_RegisterAndSpawn: ; 0x0203af24
     mov r2, r7
     ldr r1, [r1, #0x0]
     mov r3, r8
-    bl func_0204bf9c
+    bl Type7Actor_SpawnFromRecord
 .L_0203b1e4:
     ldr r0, .L_0203b37c
     str r10, [r0, #0x0]

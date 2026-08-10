@@ -18698,7 +18698,7 @@ build build/reports/type7_actor_spawn_from_record_0204bf9c.json: objdiff build/d
   base_object = build/decomp/asm/game/type7_actor_spawn_from_record_0204bf9c.o
 build build/reports/type7_actor_spawn_from_record_0204bf9c.txt: match_report build/reports/type7_actor_spawn_from_record_0204bf9c.json | tools/report_objdiff.py
   report_json = build/reports/type7_actor_spawn_from_record_0204bf9c.json
-  report_args = --section .text --function func_0204bf9c --require-exact
+  report_args = --section .text --function Type7Actor_SpawnFromRecord --require-exact
 build type7_actor_spawn_from_record: phony build/decomp/src/game/type7_actor_spawn_from_record.o build/decomp/asm/game/type7_actor_spawn_from_record_0204bf9c.o build/reports/type7_actor_spawn_from_record_0204bf9c.txt
 
 type7_actor_record_state_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++

@@ -21,8 +21,8 @@
 .extern data_020e16b0
 .extern data_020e5804
 .text
-    .global func_0204bf9c
-func_0204bf9c: ; 0x0204bf9c
+    .global Type7Actor_SpawnFromRecord
+Type7Actor_SpawnFromRecord: ; 0x0204bf9c
     stmdb sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, lr}
     sub sp, sp, #0xb0
     mov r10, r0
@@ -332,4 +332,4 @@ func_0204bf9c: ; 0x0204bf9c
 .L_0204c420: .word data_020e16b0
 .L_0204c424: .word 0x25b
 .L_0204c428: .word data_020e5804
-.size func_0204bf9c, . - func_0204bf9c
+.size Type7Actor_SpawnFromRecord, . - Type7Actor_SpawnFromRecord

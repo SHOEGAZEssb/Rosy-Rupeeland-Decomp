@@ -24,7 +24,7 @@ extern void Type7Actor_SetFlag40StateEnabled(void *entity, s32 value);
 extern void Type7Actor_SetActorEnabled(void *entity, s32 value);
 extern void Type7Actor_ConfigureAttachmentController(void *entity, s32 value);
 extern void Type7Actor_StartAnimation19Interaction(void *entity, u16 value, s32 enabled);
-extern void func_0204bf9c(s32 first, void *owner, s32 second, s32 third,
+extern void Type7Actor_SpawnFromRecord(s32 first, void *owner, s32 second, s32 third,
                           s32 fourth);
 #ifdef __cplusplus
 }
@@ -62,7 +62,7 @@ s32 func_02018c3c(GamePhaseActorScriptVm *self)
 
     switch (command) {
     case 0:
-        func_0204bf9c(first, **(void ***)(runtime + 0x30bc),
+        Type7Actor_SpawnFromRecord(first, **(void ***)(runtime + 0x30bc),
                       second, third, fourth);
         break;
     case 1:

@@ -21,7 +21,7 @@ extern void *ActorCollection_SpawnActorFromDescriptor(void *collection, const vo
 extern void *func_02028508(s32 value);
 extern s32 GameWork_TestFlag(void *work, u32 flag);
 extern void GameWork_ClearFlag(void *work, u32 flag);
-extern void func_0204bf9c(s32 field00, s32 phase, s32 x, s32 y, s32 field04);
+extern void Type7Actor_SpawnFromRecord(s32 field00, s32 phase, s32 x, s32 y, s32 field04);
 #ifdef __cplusplus
 }
 #endif
@@ -47,7 +47,7 @@ static void *addDescriptor(s32 category, ActorSpawnDescriptor *descriptor,
  * value one. Clear GameWork flag 0x10 in phase 0x29. Phase 0x5a disables the
  * shared transition record; otherwise, when singleton +0x2e80 is absent and
  * the flag is clear, derive transition coordinates from data_020e1964 or the
- * singleton and call func_0204bf9c when all raw gates pass. Store descriptors
+ * singleton and call Type7Actor_SpawnFromRecord when all raw gates pass. Store descriptors
  * in data_0210570c[0]. Category two creates its distinct bootstrap descriptor
  * and stores the input at slot one.
  *
@@ -116,7 +116,7 @@ void ActorDescriptorBatch_RegisterAndSpawn(void *unused0, void *unused1,
                         valid = 1;
                     }
                     if (valid)
-                        func_0204bf9c(data_020e1964[0], phase, x, y,
+                        Type7Actor_SpawnFromRecord(data_020e1964[0], phase, x, y,
                                       data_020e1964[1]);
                 }
             }

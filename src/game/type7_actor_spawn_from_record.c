@@ -76,7 +76,7 @@ static void callActorVoidMethod(u8 *actor, u32 byteOffset)
  * fixed-point SDK helpers have observable effects; no hardware is accessed
  * directly.
  */
-s32 func_0204bf9c(s32 recordIndex, s32 phase, s32 x, s32 y, s32 field2b8)
+s32 Type7Actor_SpawnFromRecord(s32 recordIndex, s32 phase, s32 x, s32 y, s32 field2b8)
 {
     u8 *record = func_0204c51c(recordIndex);
     Type7SpawnDescriptor descriptor;

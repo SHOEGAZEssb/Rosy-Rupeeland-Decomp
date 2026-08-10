@@ -16,7 +16,7 @@
 .extern Type7Actor_SetActorEnabled
 .extern Type7Actor_ConfigureAttachmentController
 .extern Type7Actor_StartAnimation19Interaction
-.extern func_0204bf9c
+.extern Type7Actor_SpawnFromRecord
 .global func_02018c3c
 func_02018c3c:
     stmdb sp!, {r4, r5, r6, r7, r8, r9, lr}
@@ -67,7 +67,7 @@ L_02018cd8:
     ldr r1, [r1, #0x0]
     mov r2, r4
     mov r3, r5
-    bl func_0204bf9c
+    bl Type7Actor_SpawnFromRecord
     b L_02018ef4
 L_02018cfc:
     cmp r8, #0x0
