@@ -17,7 +17,7 @@ extern void func_020ae284(s32, s32, s32);
 extern void func_020af478(s32);
 extern void func_020ae6dc(void);
 extern void func_02075238(void *);
-extern void func_02074568(void *);
+extern void GraphicsSpriteRenderer_HideAllSprites(void *);
 extern void GraphicsResourceSet_Init(void *);
 extern void GraphicsResourceSet_Destroy(void *);
 extern void func_02071f80(void *);
@@ -106,7 +106,7 @@ extern "C" void func_ov041_021fd01c(void *owner)
     *(volatile u16 *)0x05000000 = 0;
     *(volatile u16 *)0x05000400 = 0;
     func_02075238(data_020f4e14);
-    func_02074568(data_020f4e14);
+    GraphicsSpriteRenderer_HideAllSprites(data_020f4e14);
     func_020ae6dc();
     func_02071f80(temporary);
     FIELD(s32, owner, 0x44) = 0x1f;

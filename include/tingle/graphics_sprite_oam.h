@@ -7,7 +7,7 @@
 extern "C" {
 #endif
 
-void func_02074568(void *renderer);
+void GraphicsSpriteRenderer_HideAllSprites(void *renderer);
 
 #ifdef __cplusplus
 }

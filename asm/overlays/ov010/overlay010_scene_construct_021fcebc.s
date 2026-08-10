@@ -20,7 +20,7 @@
     .extern data_ov010_021fec8c
     .extern func_02002700
     .extern func_020720c0
-    .extern func_02074568
+    .extern GraphicsSpriteRenderer_HideAllSprites
     .extern func_02075238
     .extern func_020755bc
     .extern Graphics3DResourceOwner_Init
@@ -118,7 +118,7 @@ L_021fcfac:
     bl func_02075238
     ldr r0, L_021fd1a4
     ldr r0, [r0, #0x0]
-    bl func_02074568
+    bl GraphicsSpriteRenderer_HideAllSprites
     ldr r0, L_021fd1b4
     ldr r1, L_021fd1b8
     ldr r3, L_021fd1b0

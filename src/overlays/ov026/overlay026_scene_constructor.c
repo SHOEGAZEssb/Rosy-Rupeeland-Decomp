@@ -31,7 +31,7 @@ extern void *Heap_Alloc(u32, const void *, u32, void *);
 extern void *func_02071adc(void *, s32);
 extern void func_020720c0(void *);
 extern void func_020720e8(void *, void *, s32, s32, s32);
-extern void func_02074568(void *);
+extern void GraphicsSpriteRenderer_HideAllSprites(void *);
 extern void func_02075238(void *);
 extern void *GraphicsAnimationInstanceManager_CreateInstance(void *, void *);
 extern void *Graphics3DResourceOwner_Init(void *, s32, s32);
@@ -121,9 +121,9 @@ extern "C" void *func_ov026_021ff8a0(void *scene, s32 scene_id,
     FIELD(s32, scene, 0x50) = 0;
     func_020923a4((u8 *)scene + 0x328);
     func_02075238(data_020f4e14);
-    func_02074568(data_020f4e14);
+    GraphicsSpriteRenderer_HideAllSprites(data_020f4e14);
     func_02075238(gDebugFont);
-    func_02074568(gDebugFont);
+    GraphicsSpriteRenderer_HideAllSprites(gDebugFont);
     func_020ae6dc();
 
     void *manager = Heap_Alloc(0x624, data_ov026_02204a70, 4, gHeapContext);

@@ -8,7 +8,7 @@
     .extern G3X_Init
     .extern func_020923a4
     .extern func_02075238
-    .extern func_02074568
+    .extern GraphicsSpriteRenderer_HideAllSprites
     .extern func_020ae6dc
     .extern Heap_Alloc
     .extern Graphics3DResourceOwner_Init
@@ -61,13 +61,13 @@ func_ov035_02202378:
     bl func_02075238
     ldr r0, L_02202684
     ldr r0, [r0, #0x0]
-    bl func_02074568
+    bl GraphicsSpriteRenderer_HideAllSprites
     ldr r0, L_02202688
     ldr r0, [r0, #0x0]
     bl func_02075238
     ldr r0, L_02202688
     ldr r0, [r0, #0x0]
-    bl func_02074568
+    bl GraphicsSpriteRenderer_HideAllSprites
     bl func_020ae6dc
     ldr r0, L_0220268c
     ldr r1, L_02202690

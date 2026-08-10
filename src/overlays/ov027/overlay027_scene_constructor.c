@@ -30,7 +30,7 @@ extern void func_02091b6c(void *);
 extern void G3X_Init(void);
 extern void func_020923a4(void *);
 extern void func_02075238(void *);
-extern void func_02074568(void *);
+extern void GraphicsSpriteRenderer_HideAllSprites(void *);
 extern void func_020ae6dc(void);
 extern void *Graphics3DResourceOwner_Init(void *, s32, s32);
 extern void *Graphics3DResourceOwner_CreateManager(void);
@@ -82,9 +82,9 @@ extern "C" void *func_ov027_021fda30(void *scene)
     FIELD(s32, scene, 0x50) = 0;
     func_020923a4((u8 *)scene + 0x164);
     func_02075238(data_020f4e14);
-    func_02074568(data_020f4e14);
+    GraphicsSpriteRenderer_HideAllSprites(data_020f4e14);
     func_02075238(gDebugFont);
-    func_02074568(gDebugFont);
+    GraphicsSpriteRenderer_HideAllSprites(gDebugFont);
     func_020ae6dc();
 
     void *group = Heap_Alloc(0x624, data_ov027_021fef24, 4, gHeapContext);

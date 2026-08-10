@@ -11224,7 +11224,7 @@ build build/reports/graphics_sprite_oam.json: objdiff build/decomp/delinks/src/g
 
 build build/reports/graphics_sprite_oam.txt: match_report build/reports/graphics_sprite_oam.json | tools/report_objdiff.py
   report_json = build/reports/graphics_sprite_oam.json
-  report_args = --section .text --function func_02074568
+  report_args = --section .text --function GraphicsSpriteRenderer_HideAllSprites
 
 build build/reports/graphics_sprite_vram_binding.json: objdiff build/decomp/delinks/src/graphics/graphics_sprite_vram_binding.o | build/decomp/src/graphics/graphics_sprite_vram_binding.o
   target_object = build/decomp/delinks/src/graphics/graphics_sprite_vram_binding.o

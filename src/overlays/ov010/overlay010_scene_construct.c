@@ -30,7 +30,7 @@ extern void func_02092364(void *);
 extern void func_020923a4(void *);
 extern void func_020755bc(void *);
 extern void func_02075238(void *);
-extern void func_02074568(void *);
+extern void GraphicsSpriteRenderer_HideAllSprites(void *);
 extern void *func_02002700(s32, const char *, s32, void *);
 extern void func_020b4554(void *, s32);
 extern void *Heap_Alloc(s32, const char *, s32, void *);
@@ -110,7 +110,7 @@ void *func_ov010_021fcebc(void *state)
         CheckedFS_CloseFile(&file);
     }
     func_02075238(manager);
-    func_02074568(manager);
+    GraphicsSpriteRenderer_HideAllSprites(manager);
     allocation = Heap_Alloc(0x624, data_ov010_021fec84, 4, gHeapContext);
     if (allocation) Graphics3DResourceOwner_Init(allocation, 4, 2);
     FIELD(void *, state, 0x78) = allocation;

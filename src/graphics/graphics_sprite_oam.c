@@ -42,7 +42,7 @@ extern void func_020b1e5c(const void *source, u32 destinationOffset, u32 size);
  * value and performs ordered cache and graphics-hardware transfers.
  */
 #ifndef MATCHING
-void func_02074568(void *rendererPointer)
+void GraphicsSpriteRenderer_HideAllSprites(void *rendererPointer)
 {
     GraphicsSpriteOamRenderer *renderer =
         (GraphicsSpriteOamRenderer *)rendererPointer;
@@ -61,7 +61,7 @@ void func_02074568(void *rendererPointer)
 }
 #else
 /* This matching fallback implements the documented portable C directly above. */
-asm void func_02074568(void *renderer)
+asm void GraphicsSpriteRenderer_HideAllSprites(void *renderer)
 {
     stmdb sp!, {r4, lr}
     mov r4, r0

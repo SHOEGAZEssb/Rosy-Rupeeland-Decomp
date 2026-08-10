@@ -13,7 +13,7 @@
 .extern data_ov027_021fef3c
 .extern func_020720c0
 .extern func_020720e8
-.extern func_02074568
+.extern GraphicsSpriteRenderer_HideAllSprites
 .extern func_02075238
 .extern GraphicsAnimationInstanceManager_CreateInstance
 .extern Graphics3DResourceOwner_Init
@@ -84,13 +84,13 @@ func_ov027_021fda30:
     bl func_02075238
     ldr r0, L_021fdde8
     ldr r0, [r0, #0x0]
-    bl func_02074568
+    bl GraphicsSpriteRenderer_HideAllSprites
     ldr r0, L_021fddec
     ldr r0, [r0, #0x0]
     bl func_02075238
     ldr r0, L_021fddec
     ldr r0, [r0, #0x0]
-    bl func_02074568
+    bl GraphicsSpriteRenderer_HideAllSprites
     bl func_020ae6dc
     ldr r0, L_021fddf0
     ldr r1, L_021fddf4
