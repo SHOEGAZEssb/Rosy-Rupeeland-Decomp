@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/game_phase_script_vm_register_transfer_opcodes.c.
 .text
-.global func_0201b354
-func_0201b354: ; 0x0201b354
+.global GamePhaseScriptVm_LoadRegisterFromContext
+GamePhaseScriptVm_LoadRegisterFromContext: ; 0x0201b354
     ldr r1, [r0, #0x4]
     add r2, r1, #0x1
     str r2, [r0, #0x4]
@@ -16,4 +16,4 @@ func_0201b354: ; 0x0201b354
     mov r0, #0x0
     str r2, [r1, #0x2c]
     bx lr
-.size func_0201b354, . - func_0201b354
+.size GamePhaseScriptVm_LoadRegisterFromContext, . - GamePhaseScriptVm_LoadRegisterFromContext

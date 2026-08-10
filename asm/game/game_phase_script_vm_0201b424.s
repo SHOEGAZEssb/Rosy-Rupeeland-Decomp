@@ -1,8 +1,8 @@
 ; Matching retail form; see src/game/game_phase_script_vm_register_transfer_opcodes.c.
 .text
 .extern GamePhaseScriptVm_ReadU32Le
-.global func_0201b424
-func_0201b424: ; 0x0201b424
+.global GamePhaseScriptVm_LoadImmediateU32
+GamePhaseScriptVm_LoadImmediateU32: ; 0x0201b424
     stmdb sp!, {r3, r4, r5, lr}
     mov r5, r0
     ldr r1, [r5, #0x4]
@@ -17,4 +17,4 @@ func_0201b424: ; 0x0201b424
     str r0, [r1, #0x2c]
     mov r0, #0x0
     ldmia sp!, {r3, r4, r5, pc}
-.size func_0201b424, . - func_0201b424
+.size GamePhaseScriptVm_LoadImmediateU32, . - GamePhaseScriptVm_LoadImmediateU32

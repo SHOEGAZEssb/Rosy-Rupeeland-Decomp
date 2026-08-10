@@ -2,8 +2,8 @@
 .text
 .extern GamePhaseScriptVm_ReadS16Le
 .extern GamePhaseScriptVm_Push
-.global func_0201b3f4
-func_0201b3f4: ; 0x0201b3f4
+.global GamePhaseScriptVm_PushImmediateS16
+GamePhaseScriptVm_PushImmediateS16: ; 0x0201b3f4
     stmdb sp!, {r4, lr}
     mov r4, r0
     ldr r0, [r4, #0x4]
@@ -16,4 +16,4 @@ func_0201b3f4: ; 0x0201b3f4
     add r1, r1, #0x2
     str r1, [r4, #0x4]
     ldmia sp!, {r4, pc}
-.size func_0201b3f4, . - func_0201b3f4
+.size GamePhaseScriptVm_PushImmediateS16, . - GamePhaseScriptVm_PushImmediateS16
