@@ -34,7 +34,7 @@ extern void Type7Actor_SpawnFromRecord(s32 first, void *owner, s32 second, s32 t
  * Pop one value, resolve the bound actor's recovered state object, pass the
  * value to its external operation, and return zero.
  */
-s32 func_02018c14(GamePhaseActorScriptVm *self)
+s32 GamePhaseActorScriptVm_DispatchActorAuxiliaryCollisionCommand(GamePhaseActorScriptVm *self)
 {
     s32 value = (s32)GamePhaseScriptVm_Pop(&self->base);
     func_020573fc(Actor_GetAuxiliaryCollisionResource(self->actor), value);
@@ -50,7 +50,7 @@ s32 func_02018c14(GamePhaseActorScriptVm *self)
  * unsupported commands do nothing unless the recovered case explicitly
  * updates the fallback state.  Return zero.
  */
-s32 func_02018c3c(GamePhaseActorScriptVm *self)
+s32 GamePhaseActorScriptVm_DispatchActiveType7ActorCommand(GamePhaseActorScriptVm *self)
 {
     s32 fourth = (s32)GamePhaseScriptVm_Pop(&self->base);
     s32 third = (s32)GamePhaseScriptVm_Pop(&self->base);

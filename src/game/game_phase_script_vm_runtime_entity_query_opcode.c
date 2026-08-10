@@ -26,7 +26,7 @@ extern s32 Type7Actor_SelectRandomEligibleRecordId(s32 mode, s32 index);
  * missing entity and unsupported indexes yield zero where retail does.  Push
  * the result and return zero.
  */
-s32 func_02018f10(GamePhaseActorScriptVm *self)
+s32 GamePhaseActorScriptVm_DispatchType7ActorQuery(GamePhaseActorScriptVm *self)
 {
     s32 subIndex = (s32)GamePhaseScriptVm_Pop(&self->base);
     s32 index = (s32)GamePhaseScriptVm_Pop(&self->base);

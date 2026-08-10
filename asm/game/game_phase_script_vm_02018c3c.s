@@ -17,8 +17,8 @@
 .extern Type7Actor_ConfigureAttachmentController
 .extern Type7Actor_StartAnimation19Interaction
 .extern Type7Actor_SpawnFromRecord
-.global func_02018c3c
-func_02018c3c:
+.global GamePhaseActorScriptVm_DispatchActiveType7ActorCommand
+GamePhaseActorScriptVm_DispatchActiveType7ActorCommand:
     stmdb sp!, {r4, r5, r6, r7, r8, r9, lr}
     sub sp, sp, #0x14
     mov r9, r0
@@ -221,4 +221,4 @@ L_02018f00: .word data_021052fc
 L_02018f04: .word data_020ea9b0
 L_02018f08: .word data_020ea9de
 L_02018f0c: .word data_020e1964
-.size func_02018c3c, . - func_02018c3c
+.size GamePhaseActorScriptVm_DispatchActiveType7ActorCommand, . - GamePhaseActorScriptVm_DispatchActiveType7ActorCommand

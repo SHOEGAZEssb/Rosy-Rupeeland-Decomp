@@ -3,8 +3,8 @@
 .extern GamePhaseScriptVm_Pop
 .extern Actor_GetAuxiliaryCollisionResource
 .extern func_020573fc
-.global func_02018c14
-func_02018c14:
+.global GamePhaseActorScriptVm_DispatchActorAuxiliaryCollisionCommand
+GamePhaseActorScriptVm_DispatchActorAuxiliaryCollisionCommand:
     stmdb sp!, {r3, r4, r5, lr}
     mov r5, r0
     bl GamePhaseScriptVm_Pop
@@ -15,4 +15,4 @@ func_02018c14:
     bl func_020573fc
     mov r0, #0x0
     ldmia sp!, {r3, r4, r5, pc}
-.size func_02018c14, . - func_02018c14
+.size GamePhaseActorScriptVm_DispatchActorAuxiliaryCollisionCommand, . - GamePhaseActorScriptVm_DispatchActorAuxiliaryCollisionCommand

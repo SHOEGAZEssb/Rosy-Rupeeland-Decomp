@@ -9,8 +9,8 @@
 .extern Type7Actor_GetStateCode
 .extern Type7Actor_FindSpawnRecord
 .extern Type7Actor_SelectRandomEligibleRecordId
-.global func_02018f10
-func_02018f10:
+.global GamePhaseActorScriptVm_DispatchType7ActorQuery
+GamePhaseActorScriptVm_DispatchType7ActorQuery:
     stmdb sp!, {r4, r5, r6, r7, r8, lr}
     mov r4, r0
     bl GamePhaseScriptVm_Pop
@@ -159,4 +159,4 @@ L_020190ec:
     ldmia sp!, {r4, r5, r6, r7, r8, pc}
 L_020190fc: .word data_021052fc
 L_02019100: .word data_020e1964
-.size func_02018f10, . - func_02018f10
+.size GamePhaseActorScriptVm_DispatchType7ActorQuery, . - GamePhaseActorScriptVm_DispatchType7ActorQuery
