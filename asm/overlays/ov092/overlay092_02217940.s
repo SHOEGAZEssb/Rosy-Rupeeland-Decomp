@@ -4,7 +4,7 @@
 .extern data_021052fc
 .extern data_ov092_0221c728
 .extern func_02007f0c
-.extern func_02032de4
+.extern Actor_TranslateSecondaryBounds
 .extern func_0204d520
 .extern func_ov092_02217928
 .extern func_ov092_0221792c
@@ -82,7 +82,7 @@ func_ov092_02217940:
     mov r2, r5
     orr ip, ip, #0x12
     strh ip, [r3, #0x24]
-    bl func_02032de4
+    bl Actor_TranslateSecondaryBounds
     ldr r0, [r8, #0x5c]
     and r0, r0, r5, lsl #0xc
     orr r0, r0, #0x20
@@ -98,7 +98,7 @@ func_ov092_02217940:
     mov r2, r1
     orr ip, ip, #0x12
     strh ip, [r3, #0x24]
-    bl func_02032de4
+    bl Actor_TranslateSecondaryBounds
     ldr r1, [r8, #0x5c]
     add r0, r8, #0x18
     and r1, r1, r5, lsl #0xc
@@ -124,7 +124,7 @@ func_ov092_02217940:
     mov r2, r5
     orr ip, ip, #0x12
     strh ip, [r3, #0x24]
-    bl func_02032de4
+    bl Actor_TranslateSecondaryBounds
     ldr r1, [r8, #0x5c]
     add r0, r8, #0x18
     and r1, r1, r5, lsl #0xc

@@ -45,13 +45,13 @@ void Actor_SetVelocity(void *self, const void *value)
 }
 
 /* Update the signed-byte bounds at actor+8 from x and y; returns no value. */
-void func_02032de4(void *self, s32 x, s32 y)
+void Actor_TranslateSecondaryBounds(void *self, s32 x, s32 y)
 {
     ActorBounds_Translate((u8 *)self + 8, x, y);
 }
 
 /* Update the signed-byte bounds at actor+4 from x and y; returns no value. */
-void func_02032df4(void *self, s32 x, s32 y)
+void Actor_TranslateCollisionBounds(void *self, s32 x, s32 y)
 {
     ActorBounds_Translate((u8 *)self + 4, x, y);
 }

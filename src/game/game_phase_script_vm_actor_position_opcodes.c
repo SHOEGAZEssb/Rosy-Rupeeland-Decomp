@@ -7,8 +7,8 @@
 extern "C" {
 #endif
 extern void func_02032e04(void *actor);
-extern void func_02032de4(void *actor, u32 first, u32 second);
-extern void func_02032df4(void *actor, u32 first, u32 second);
+extern void Actor_TranslateSecondaryBounds(void *actor, u32 first, u32 second);
+extern void Actor_TranslateCollisionBounds(void *actor, u32 first, u32 second);
 #ifdef __cplusplus
 }
 #endif
@@ -33,20 +33,20 @@ s32 func_0201409c(GamePhaseActorScriptVm *self)
     return 0;
 }
 
-/* Pop second then first, call func_02032de4 on the bound actor, and return zero. */
+/* Translate the bound actor's secondary bounds by two popped values. */
 s32 func_0201410c(GamePhaseActorScriptVm *self)
 {
     u32 second = func_02012704(&self->base);
     u32 first = func_02012704(&self->base);
-    func_02032de4(self->actor_84, first, second);
+    Actor_TranslateSecondaryBounds(self->actor_84, first, second);
     return 0;
 }
 
-/* Pop second then first, call func_02032df4 on the bound actor, and return zero. */
+/* Translate the bound actor's collision bounds by two popped values. */
 s32 func_0201413c(GamePhaseActorScriptVm *self)
 {
     u32 second = func_02012704(&self->base);
     u32 first = func_02012704(&self->base);
-    func_02032df4(self->actor_84, first, second);
+    Actor_TranslateCollisionBounds(self->actor_84, first, second);
     return 0;
 }
