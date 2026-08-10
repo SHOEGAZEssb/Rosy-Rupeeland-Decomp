@@ -108,7 +108,7 @@ void func_0202bae8(ByteTileMapOwner *self) { (void)self; }
  * halfword as the square side length. Invalid coordinates or an absent byte
  * buffer return zero; otherwise the linear index is y*side+x.
  */
-s32 func_0202baec(ByteTileMapOwner *self, s32 x, s32 y)
+s32 ByteTileMapOwner_GetCell(ByteTileMapOwner *self, s32 x, s32 y)
 {
     u32 side = self->dimensions_20 & 0xffff;
     u8 value;
@@ -125,7 +125,7 @@ s32 func_0202baec(ByteTileMapOwner *self, s32 x, s32 y)
  * Store the low byte of value at (x,y) when both coordinates are in the
  * square bounds and byte storage exists; otherwise leave the object unchanged.
  */
-void func_0202bb60(ByteTileMapOwner *self, s32 x, s32 y, s8 value)
+void ByteTileMapOwner_SetCell(ByteTileMapOwner *self, s32 x, s32 y, s8 value)
 {
     u32 side = self->dimensions_20 & 0xffff;
 

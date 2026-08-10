@@ -21,7 +21,7 @@ typedef void (*DrawCommandMethod)(void *, s32, s32, const TileDrawCommand *);
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_0202bb60(void *, s32, s32, s32);
+extern void ByteTileMapOwner_SetCell(void *, s32, s32, s32);
 #ifdef __cplusplus
 }
 #endif
@@ -29,7 +29,7 @@ extern void func_0202bb60(void *, s32, s32, s32);
 /*
  * Expand one command row-major. Source tiles use a fixed stride of 16; vtable
  * slot 12 receives layer bits 0..1 and each source/destination coordinate,
- * then func_0202bb60 publishes packed bits 2..6 at the destination.
+ * then ByteTileMapOwner_SetCell publishes packed bits 2..6 at the destination.
  */
 void func_02029d40(void *renderer, s32 x, s32 y,
                    const TileDrawCommand *command)
@@ -45,7 +45,7 @@ void func_02029d40(void *renderer, s32 x, s32 y,
             ((DrawTileMethod)(*(void ***)renderer)[12])(
                 renderer, command->packed_18 & 3, source,
                 destinationX, destinationY);
-            func_0202bb60(renderer, destinationX, destinationY,
+            ByteTileMapOwner_SetCell(renderer, destinationX, destinationY,
                           (command->packed_18 & 0x7c) >> 2);
         }
     }

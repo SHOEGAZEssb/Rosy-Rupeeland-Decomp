@@ -12,7 +12,7 @@
 .extern GraphicsSpriteState_SetDepthOrderedWorldPosition
 .extern GamePhaseRuntime_UpdateActorPresentationState
 .extern ActorMotionJitter_EnsureMinimum
-.extern func_0202baec
+.extern ByteTileMapOwner_GetCell
 .extern Type7Actor_GetStateCode
 .extern Type7Actor_ConfigureAttachmentController
 .extern func_02072b68
@@ -195,7 +195,7 @@ func_ov062_02211388:
     ldr r0, [r0, #0xed4]
     mov r1, r5
     mov r2, r6
-    bl func_0202baec
+    bl ByteTileMapOwner_GetCell
     mov r0, r0, lsl #0x10
     str r0, [r4, #0x30]
     str r0, [r4, #0x40]
@@ -208,7 +208,7 @@ func_ov062_02211388:
     mov r2, r6
     add r0, r0, #0x2000
     ldr r0, [r0, #0xed4]
-    bl func_0202baec
+    bl ByteTileMapOwner_GetCell
     ldr r2, [r4, #0x50]
     add r1, r0, #0x1
     ldr r0, [r4, #0x3c]

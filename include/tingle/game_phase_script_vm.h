@@ -109,7 +109,7 @@ s32 GamePhaseActorScriptVm_MaskValueByBit(GamePhaseActorScriptVm *self);
 s32 GamePhaseActorScriptVm_SetActorFlag8(GamePhaseActorScriptVm *self);
 s32 GamePhaseActorScriptVm_SetActorFlag200000Inverse(GamePhaseActorScriptVm *self);
 void Actor_SetFlag200000Inverse(void *actor, s32 enabled);
-s32 func_02013e14(GamePhaseActorScriptVm *self);
+s32 GamePhaseActorScriptVm_SetTileMapCell(GamePhaseActorScriptVm *self);
 s32 GamePhaseActorScriptVm_QueryTerrainHeight(GamePhaseActorScriptVm *self);
 s32 GamePhaseActorScriptVm_DiscardValue(GamePhaseActorScriptVm *self);
 s32 GamePhaseActorScriptVm_SavePrimaryAttachmentState(GamePhaseActorScriptVm *self);

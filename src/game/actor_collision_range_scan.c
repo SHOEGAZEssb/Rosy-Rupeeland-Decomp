@@ -8,7 +8,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern s32 func_0202baec(void *context, s32 x, s32 y, s32 z);
+extern s32 ByteTileMapOwner_GetCell(void *context, s32 x, s32 y, s32 z);
 #ifdef __cplusplus
 }
 #endif
@@ -51,7 +51,7 @@ void ActorCollision_ScanDirectionalRange(ActorCollisionRange *result, void *coll
         result->maxX = 0;
         for (coordinate = minX; coordinate <= maxX; ++coordinate) {
             if (direction == 8)
-                (void)func_0202baec(collisionContext,
+                (void)ByteTileMapOwner_GetCell(collisionContext,
                                     coordinate >> 4, queryY, z);
             if (ActorCollision_TestPoint(collisionContext, coordinate >> 4, queryY,
                               z, actorHeight)) {

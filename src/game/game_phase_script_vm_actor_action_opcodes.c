@@ -6,7 +6,7 @@
 extern "C" {
 #endif
 extern void *data_021052fc;
-extern void func_0202bb60(void *object, u32 first, u32 second, u32 third);
+extern void ByteTileMapOwner_SetCell(void *object, u32 first, u32 second, u32 third);
 extern u32 Actor_QueryTerrainHeight(void *actor, u32 first, u32 second);
 extern void Actor_SavePrimaryAttachmentState(void *actor);
 extern void Actor_RestorePrimaryAttachmentState(void *actor);
@@ -15,16 +15,16 @@ extern void Actor_RestorePrimaryAttachmentState(void *actor);
 #endif
 
 /*
- * Pop third, second, and first operands, dispatch them to func_0202bb60 on the
+ * Pop third, second, and first operands, dispatch them to ByteTileMapOwner_SetCell on the
  * global runtime object at offset 0x2ed4, and return zero.
  */
-s32 func_02013e14(GamePhaseActorScriptVm *self)
+s32 GamePhaseActorScriptVm_SetTileMapCell(GamePhaseActorScriptVm *self)
 {
     u32 third = GamePhaseScriptVm_Pop(&self->base);
     u32 second = GamePhaseScriptVm_Pop(&self->base);
     u32 first = GamePhaseScriptVm_Pop(&self->base);
     void *object = *(void **)((u8 *)data_021052fc + 0x2ed4);
-    func_0202bb60(object, first, second, third);
+    ByteTileMapOwner_SetCell(object, first, second, third);
     return 0;
 }
 

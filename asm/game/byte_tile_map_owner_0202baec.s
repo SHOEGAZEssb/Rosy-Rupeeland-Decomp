@@ -3,9 +3,9 @@
 .extern func_0202b4c0
 .extern func_0202b3f0
 
-    .global func_0202baec
-    .type func_0202baec, @function
-func_0202baec: ; 0x0202baec
+    .global ByteTileMapOwner_GetCell
+    .type ByteTileMapOwner_GetCell, @function
+ByteTileMapOwner_GetCell: ; 0x0202baec
     stmdb sp!, {r4, r5, r6, lr}
     movs r5, r1
     mov r6, r0
@@ -37,4 +37,4 @@ func_0202baec: ; 0x0202baec
     cmp r0, #0x80
     subhs r0, r0, #0x100
     ldmia sp!, {r4, r5, r6, pc}
-    .size func_0202baec, . - func_0202baec
+    .size ByteTileMapOwner_GetCell, . - ByteTileMapOwner_GetCell

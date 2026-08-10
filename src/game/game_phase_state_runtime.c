@@ -13,7 +13,7 @@ extern void GamePhaseRegionTable_Destroy(void *object);
 extern void func_0201de4c(void *object);
 extern void func_0201de8c(void *object, u16 vcount);
 extern void *func_0201e0ec(void *object);
-extern s32 func_0202baec(void *object, s32 x, s32 y);
+extern s32 ByteTileMapOwner_GetCell(void *object, s32 x, s32 y);
 extern void func_0202d3cc(void *object);
 extern void ActorDerivedType1_ClearFailureCounter(void *object);
 extern void ActorFeedback_DestroyPresentations(void);
@@ -100,7 +100,7 @@ s32 GamePhaseState_QueryTerrainHeight(GamePhaseState *self, s32 x, s32 y)
     dimensions = *(u32 *)((u8 *)self->phaseObject + 0x20);
     if (x >= (s32)(dimensions & 0xffff) || y >= (s32)(dimensions >> 16))
         return 0;
-    return func_0202baec(self->phaseObject, x, y);
+    return ByteTileMapOwner_GetCell(self->phaseObject, x, y);
 }
 
 /*

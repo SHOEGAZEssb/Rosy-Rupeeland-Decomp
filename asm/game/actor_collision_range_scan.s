@@ -2,7 +2,7 @@
 ; the documented portable implementation and recovered behavior.
 .text
 .extern ActorCollision_TestPoint
-.extern func_0202baec
+.extern ByteTileMapOwner_GetCell
 .global ActorCollision_ScanDirectionalRange
 ActorCollision_ScanDirectionalRange: ; 0x0200a6ac
     stmdb sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, lr}
@@ -82,7 +82,7 @@ L_0200a7b0:
     ldr r1, [sp, #0x4]
     mov r0, r10
     mov r2, r7
-    bl func_0202baec
+    bl ByteTileMapOwner_GetCell
     ldr r1, [sp, #0x4]
     mov r0, r10
     mov r2, r7

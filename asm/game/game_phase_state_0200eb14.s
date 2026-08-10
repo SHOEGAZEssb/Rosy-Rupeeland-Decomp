@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/game_phase_state_runtime.c.
 .text
-.extern func_0202baec
+.extern ByteTileMapOwner_GetCell
 
     .global GamePhaseState_QueryTerrainHeight
 GamePhaseState_QueryTerrainHeight: ; 0x0200eb14
@@ -17,7 +17,7 @@ GamePhaseState_QueryTerrainHeight: ; 0x0200eb14
     blt L_0200eb50
     cmp r2, r3, lsr #0x10
     bge L_0200eb50
-    bl func_0202baec
+    bl ByteTileMapOwner_GetCell
     ldmia sp!, {r3, pc}
 L_0200eb50:
     mov r0, #0x0

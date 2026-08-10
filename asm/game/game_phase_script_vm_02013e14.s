@@ -2,10 +2,10 @@
 .text
 .extern data_021052fc
 .extern GamePhaseScriptVm_Pop
-.extern func_0202bb60
+.extern ByteTileMapOwner_SetCell
 
-    .global func_02013e14
-func_02013e14: ; 0x02013e14
+    .global GamePhaseActorScriptVm_SetTileMapCell
+GamePhaseActorScriptVm_SetTileMapCell: ; 0x02013e14
     stmdb sp!, {r4, r5, r6, lr}
     mov r6, r0
     bl GamePhaseScriptVm_Pop
@@ -22,9 +22,9 @@ func_02013e14: ; 0x02013e14
     ldr r0, [r0, #0x0]
     add r0, r0, #0x2000
     ldr r0, [r0, #0xed4]
-    bl func_0202bb60
+    bl ByteTileMapOwner_SetCell
     mov r0, #0x0
     ldmia sp!, {r4, r5, r6, pc}
 L_02013e60: .word data_021052fc
-    .size func_02013e14, . - func_02013e14
+    .size GamePhaseActorScriptVm_SetTileMapCell, . - GamePhaseActorScriptVm_SetTileMapCell
 

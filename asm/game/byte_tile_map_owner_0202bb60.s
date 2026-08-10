@@ -3,9 +3,9 @@
 .extern func_0202b4c0
 .extern func_0202b3fc
 
-    .global func_0202bb60
-    .type func_0202bb60, @function
-func_0202bb60: ; 0x0202bb60
+    .global ByteTileMapOwner_SetCell
+    .type ByteTileMapOwner_SetCell, @function
+ByteTileMapOwner_SetCell: ; 0x0202bb60
     stmdb sp!, {r3, r4, r5, r6, r7, lr}
     movs r5, r1
     mov r6, r0
@@ -34,4 +34,4 @@ func_0202bb60: ; 0x0202bb60
     and r2, r2, #0xff
     bl func_0202b3fc
     ldmia sp!, {r3, r4, r5, r6, r7, pc}
-    .size func_0202bb60, . - func_0202bb60
+    .size ByteTileMapOwner_SetCell, . - ByteTileMapOwner_SetCell

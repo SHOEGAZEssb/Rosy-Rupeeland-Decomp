@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/tile_draw_command_dispatch.c.
 .text
-.extern func_0202bb60
+.extern ByteTileMapOwner_SetCell
 
     .global func_02029d40
     .type func_02029d40, @function
@@ -43,7 +43,7 @@ func_02029d40: ; 0x02029d40
     add r1, r5, r8
     mov r2, r9
     mov r3, r3, lsr #0x2
-    bl func_0202bb60
+    bl ByteTileMapOwner_SetCell
     add r8, r8, #0x1
 .L_02029dd8:
     cmp r8, r11

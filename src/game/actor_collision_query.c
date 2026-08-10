@@ -7,7 +7,7 @@ typedef u32 (*ActorCollisionVirtualQuery)(void *context, s32 x, s32 y);
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern s32 func_0202baec(void *context, s32 x, s32 y, s32 z);
+extern s32 ByteTileMapOwner_GetCell(void *context, s32 x, s32 y, s32 z);
 #ifdef __cplusplus
 }
 #endif
@@ -24,7 +24,7 @@ s32 ActorCollision_TestPoint(void *context, s32 x, s32 y, s32 z,
 {
     ActorCollisionVirtualQuery query =
         *(ActorCollisionVirtualQuery *)((u8 *)*(void **)context + 0x2c);
-    s32 height = func_0202baec(context, x, y, z);
+    s32 height = ByteTileMapOwner_GetCell(context, x, y, z);
     u32 value = query(context, x, y);
     u32 retainedValues[2];
 

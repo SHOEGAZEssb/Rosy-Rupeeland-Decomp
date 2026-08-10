@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/actor_collision_query.c for
 ; the documented portable implementation and recovered behavior.
 .text
-.extern func_0202baec
+.extern ByteTileMapOwner_GetCell
 .global ActorCollision_TestPoint
 ActorCollision_TestPoint: ; 0x0200a63c
     stmdb sp!, {r4, r5, r6, r7, r8, lr}
@@ -10,7 +10,7 @@ ActorCollision_TestPoint: ; 0x0200a63c
     mov r7, r1
     mov r6, r2
     mov r5, r3
-    bl func_0202baec
+    bl ByteTileMapOwner_GetCell
     mov r4, r0
     mov r0, r8
     ldr r3, [r0, #0x0]

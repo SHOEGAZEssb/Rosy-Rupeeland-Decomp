@@ -101,7 +101,7 @@ extern void func_0202a708(void *, s32, s32);
 extern void func_0202a588(void *, s32, s32, s32);
 extern u16 func_0202a730(void *, ...);
 extern void func_0202a6d0(void *, s32, s32, s32);
-extern void func_0202bb60(void *, s32, s32, s32);
+extern void ByteTileMapOwner_SetCell(void *, s32, s32, s32);
 extern void *func_0202b9bc(void *);
 extern void func_0202b750(void *, void *, s32);
 extern void func_0202b838(void *, const void *);
