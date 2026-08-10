@@ -4363,6 +4363,34 @@ src/system/touch_region.c:
     categories: Game code
     .text       start:0x02004ac8 end:0x02004fe0
 
+src/graphics/graphics_bg_resource.c:
+    categories: Game code
+    .text       start:0x02070638 end:0x020706c4
+
+src/graphics/graphics_bg_resource_data.c:
+    categories: Game code
+    .text       start:0x02070874 end:0x02070888
+
+src/graphics/graphics_bg_map_upload.c:
+    categories: Game code
+    .text       start:0x02070e0c end:0x02070e94
+
+src/graphics/graphics_bg_map_palette.c:
+    categories: Game code
+    .text       start:0x02070f80 end:0x02070fd4
+
+src/graphics/graphics_archive_character_load.c:
+    categories: Game code
+    .text       start:0x02071568 end:0x02071614
+
+src/graphics/graphics_archive_palette_load.c:
+    categories: Game code
+    .text       start:0x020716bc end:0x02071760
+
+src/graphics/graphics_archive_screen_load.c:
+    categories: Game code
+    .text       start:0x020718dc end:0x02071980
+
 src/graphics/graphics_resource_set.c:
     categories: Game code
     .text       start:0x02071f80 end:0x02072000
