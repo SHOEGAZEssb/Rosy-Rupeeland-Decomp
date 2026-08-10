@@ -10,7 +10,7 @@ extern void *data_021052fc;
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *func_02030b90(void *, const void *);
+extern void *ActorBaseGeometry_Init(void *, const void *);
 extern void func_020083b0(void *, s32, s32, s32, s32);
 extern void func_02004fe0(void *);
 extern void func_0200500c(void *, s32, s32, s32);
@@ -41,7 +41,7 @@ void *func_02030f98(void *self, const void *descriptor)
     s32 i;
     s32 expand;
 
-    func_02030b90(self, descriptor);
+    ActorBaseGeometry_Init(self, descriptor);
     *(void **)(actor + 0x00) = data_020df040;
     *(u32 *)(actor + 0x54) = 0;
     *(u32 *)(actor + 0x58) = 0;

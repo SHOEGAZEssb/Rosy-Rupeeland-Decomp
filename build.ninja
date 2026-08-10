@@ -13549,25 +13549,25 @@ build build/reports/actor_base_geometry_init_02030b90.json: objdiff build/decomp
   base_object = build/decomp/asm/game/actor_base_geometry_init_02030b90.o
 build build/reports/actor_base_geometry_init_02030b90.txt: match_report build/reports/actor_base_geometry_init_02030b90.json | tools/report_objdiff.py
   report_json = build/reports/actor_base_geometry_init_02030b90.json
-  report_args = --section .text --function func_02030b90 --require-exact
+  report_args = --section .text --function ActorBaseGeometry_Init --require-exact
 build build/reports/actor_base_geometry_init_02030d00.json: objdiff build/decomp/delinks/asm/game/actor_base_geometry_init_02030d00.o | build/decomp/asm/game/actor_base_geometry_init_02030d00.o
   target_object = build/decomp/delinks/asm/game/actor_base_geometry_init_02030d00.o
   base_object = build/decomp/asm/game/actor_base_geometry_init_02030d00.o
 build build/reports/actor_base_geometry_init_02030d00.txt: match_report build/reports/actor_base_geometry_init_02030d00.json | tools/report_objdiff.py
   report_json = build/reports/actor_base_geometry_init_02030d00.json
-  report_args = --section .text --function func_02030d00 --require-exact
+  report_args = --section .text --function ActorBounds_Copy --require-exact
 build build/reports/actor_base_geometry_init_02030d24.json: objdiff build/decomp/delinks/asm/game/actor_base_geometry_init_02030d24.o | build/decomp/asm/game/actor_base_geometry_init_02030d24.o
   target_object = build/decomp/delinks/asm/game/actor_base_geometry_init_02030d24.o
   base_object = build/decomp/asm/game/actor_base_geometry_init_02030d24.o
 build build/reports/actor_base_geometry_init_02030d24.txt: match_report build/reports/actor_base_geometry_init_02030d24.json | tools/report_objdiff.py
   report_json = build/reports/actor_base_geometry_init_02030d24.json
-  report_args = --section .text --function func_02030d24 --require-exact
+  report_args = --section .text --function ActorBounds_Set --require-exact
 build build/reports/actor_base_geometry_init_02030d3c.json: objdiff build/decomp/delinks/asm/game/actor_base_geometry_init_02030d3c.o | build/decomp/asm/game/actor_base_geometry_init_02030d3c.o
   target_object = build/decomp/delinks/asm/game/actor_base_geometry_init_02030d3c.o
   base_object = build/decomp/asm/game/actor_base_geometry_init_02030d3c.o
 build build/reports/actor_base_geometry_init_02030d3c.txt: match_report build/reports/actor_base_geometry_init_02030d3c.json | tools/report_objdiff.py
   report_json = build/reports/actor_base_geometry_init_02030d3c.json
-  report_args = --section .text --function func_02030d3c --require-exact
+  report_args = --section .text --function ActorBounds_Translate --require-exact
 build build/reports/actor_base_geometry_init.txt: phony build/reports/actor_base_geometry_init_02030b90.txt build/reports/actor_base_geometry_init_02030d00.txt build/reports/actor_base_geometry_init_02030d24.txt build/reports/actor_base_geometry_init_02030d3c.txt
 
 build actor_base_geometry_init: phony build/decomp/src/game/actor_base_geometry_init.o build/decomp/asm/game/actor_base_geometry_init_02030b90.o build/decomp/asm/game/actor_base_geometry_init_02030d00.o build/decomp/asm/game/actor_base_geometry_init_02030d24.o build/decomp/asm/game/actor_base_geometry_init_02030d3c.o build/reports/actor_base_geometry_init.txt

@@ -7,7 +7,7 @@ extern "C" {
 extern s32 func_02057084(s32 x, s32 y);
 extern void func_02072b68(void *attachment, u32 animation);
 extern void func_020050a4(void *destination, const void *source);
-extern void func_02030d3c(void *bounds, s32 x, s32 y);
+extern void ActorBounds_Translate(void *bounds, s32 x, s32 y);
 extern void func_020344b8(void *position);
 #ifdef __cplusplus
 }
@@ -47,13 +47,13 @@ void func_02032dd4(void *self, const void *value)
 /* Update the signed-byte bounds at actor+8 from x and y; returns no value. */
 void func_02032de4(void *self, s32 x, s32 y)
 {
-    func_02030d3c((u8 *)self + 8, x, y);
+    ActorBounds_Translate((u8 *)self + 8, x, y);
 }
 
 /* Update the signed-byte bounds at actor+4 from x and y; returns no value. */
 void func_02032df4(void *self, s32 x, s32 y)
 {
-    func_02030d3c((u8 *)self + 4, x, y);
+    ActorBounds_Translate((u8 *)self + 4, x, y);
 }
 
 /* Transform or normalize the position object at actor+0x18; returns no value. */

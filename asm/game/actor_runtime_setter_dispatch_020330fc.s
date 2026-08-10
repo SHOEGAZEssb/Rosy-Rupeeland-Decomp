@@ -3,8 +3,8 @@
 .extern func_020050a4
 .extern func_0200ab18
 .extern func_0200ab30
-.extern func_02030d00
-.extern func_02030d24
+.extern ActorBounds_Copy
+.extern ActorBounds_Set
 .extern func_02033738
 .extern func_02033798
 .extern func_02033ae8
@@ -85,10 +85,10 @@ func_020330fc: ; 0x020330fc
     add r0, sp, #0x10
     mov r2, r1
     mov r3, r3, asr #0x18
-    bl func_02030d24
+    bl ActorBounds_Set
     add r1, sp, #0x10
     add r0, r5, #0x8
-    bl func_02030d00
+    bl ActorBounds_Copy
     mov r0, r4
     mvn r1, #0x1
     bl func_020adae4
@@ -122,10 +122,10 @@ func_020330fc: ; 0x020330fc
     str r2, [sp, #0x0]
     add r0, sp, #0xc
     mov r2, r1
-    bl func_02030d24
+    bl ActorBounds_Set
     add r1, sp, #0xc
     add r0, r5, #0x8
-    bl func_02030d00
+    bl ActorBounds_Copy
     add r0, r5, #0x8
     bl func_0200ab18
     mvn r1, #0x1
@@ -158,10 +158,10 @@ func_020330fc: ; 0x020330fc
     add r0, sp, #0x8
     mov r2, r1
     mov r3, r3, asr #0x18
-    bl func_02030d24
+    bl ActorBounds_Set
     add r1, sp, #0x8
     add r0, r5, #0x4
-    bl func_02030d00
+    bl ActorBounds_Copy
     mov r0, r4
     mvn r1, #0x1
     bl func_020adae4
@@ -195,10 +195,10 @@ func_020330fc: ; 0x020330fc
     str r2, [sp, #0x0]
     add r0, sp, #0x4
     mov r2, r1
-    bl func_02030d24
+    bl ActorBounds_Set
     add r1, sp, #0x4
     add r0, r5, #0x4
-    bl func_02030d00
+    bl ActorBounds_Copy
     add r0, r5, #0x4
     bl func_0200ab18
     mvn r1, #0x1
@@ -453,4 +453,3 @@ func_020330fc: ; 0x020330fc
     .size func_020330fc, . - func_020330fc
 
     .global func_02033734
-

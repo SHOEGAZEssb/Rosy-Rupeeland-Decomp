@@ -3,13 +3,13 @@
 .extern data_020def7c
 .extern func_0200500c
 .extern func_020050a4
-.extern func_02030d00
-.extern func_02030d24
-.extern func_02030d3c
+.extern ActorBounds_Copy
+.extern ActorBounds_Set
+.extern ActorBounds_Translate
 
-    .global func_02030b90
-    .type func_02030b90, @function
-func_02030b90: ; 0x02030b90
+    .global ActorBaseGeometry_Init
+    .type ActorBaseGeometry_Init, @function
+ActorBaseGeometry_Init: ; 0x02030b90
     stmdb sp!, {r4, r5, r6, r7, r8, r9, lr}
     sub sp, sp, #0xc
     ldr r2, .L_02030cfc
@@ -21,13 +21,13 @@ func_02030b90: ; 0x02030b90
     mov r3, r1
     add r0, r5, #0x4
     str r1, [sp, #0x0]
-    bl func_02030d24
+    bl ActorBounds_Set
     mov r1, #0x0
     mov r2, r1
     mov r3, r1
     add r0, r5, #0x8
     str r1, [sp, #0x0]
-    bl func_02030d24
+    bl ActorBounds_Set
     mov r2, #0x0
     str r2, [r5, #0xc]
     ldr r1, [r4, #0x58]
@@ -78,18 +78,18 @@ func_02030b90: ; 0x02030b90
     add r0, r5, #0x4
     strb r6, [sp, #0xa]
     strb r7, [sp, #0xb]
-    bl func_02030d00
+    bl ActorBounds_Copy
     add r1, sp, #0x4
     strb r8, [sp, #0x4]
     strb r9, [sp, #0x5]
     strb r6, [sp, #0x6]
     strb r7, [sp, #0x7]
     add r0, r5, #0x8
-    bl func_02030d00
+    bl ActorBounds_Copy
     ldrb r1, [r4, #0x14]
     ldrb r2, [r4, #0x15]
     add r0, r5, #0x8
-    bl func_02030d3c
+    bl ActorBounds_Translate
     ldr r1, [r4, #0x28]
     add r0, r5, #0x28
     str r1, [r5, #0xc]
@@ -102,5 +102,4 @@ func_02030b90: ; 0x02030b90
     add sp, sp, #0xc
     ldmia sp!, {r4, r5, r6, r7, r8, r9, pc}
 .L_02030cfc: .word data_020def7c
-    .size func_02030b90, . - func_02030b90
-
+    .size ActorBaseGeometry_Init, . - ActorBaseGeometry_Init

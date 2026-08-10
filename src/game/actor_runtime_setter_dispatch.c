@@ -7,9 +7,9 @@ extern "C" {
 extern s32 func_0200ab18(const s8 *bounds);
 extern s32 func_0200ab30(const s8 *bounds);
 extern s32 func_020adae4(s32 dividend, s32 divisor);
-extern void func_02030d00(void *destination, const void *source);
-extern void func_02030d24(void *bounds, s32 minX, s32 minY, s32 maxX,
-                          s32 maxY);
+extern void ActorBounds_Copy(void *destination, const void *source);
+extern void ActorBounds_Set(void *bounds, s32 minX, s32 minY, s32 maxX,
+                            s32 maxY);
 extern void func_02033738(void *center, const void *bounds);
 extern void func_02033798(void *bounds, s32 minX, s32 minY);
 extern void func_02034be4(void *actor, s32 value);
@@ -31,11 +31,11 @@ static void setBoundsExtent(s8 *bounds, s32 value, s32 setHeight)
     width = func_0200ab18(bounds);
     height = func_0200ab30(bounds);
     if (setHeight) {
-        func_02030d24(replacement, 0, 0, width, (s8)value);
+        ActorBounds_Set(replacement, 0, 0, width, (s8)value);
     } else {
-        func_02030d24(replacement, 0, 0, (s8)value, height);
+        ActorBounds_Set(replacement, 0, 0, (s8)value, height);
     }
-    func_02030d00(bounds, replacement);
+    ActorBounds_Copy(bounds, replacement);
     width = func_0200ab18(bounds);
     height = func_0200ab30(bounds);
     func_02033798(bounds,

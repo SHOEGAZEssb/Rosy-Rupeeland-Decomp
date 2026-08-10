@@ -63,8 +63,8 @@ extern void func_020050a4(ActorVector *, const ActorVector *);
 #endif
 
 /* Copy four signed bound bytes from source to destination; return no value. */
-void func_02030d00(ActorByteBounds *destination,
-                   const ActorByteBounds *source)
+void ActorBounds_Copy(ActorByteBounds *destination,
+                      const ActorByteBounds *source)
 {
     destination->minX = source->minX;
     destination->minY = source->minY;
@@ -73,8 +73,8 @@ void func_02030d00(ActorByteBounds *destination,
 }
 
 /* Set the four signed bytes of a bounds record and return no value. */
-void func_02030d24(ActorByteBounds *bounds, s32 minX, s32 minY, s32 maxX,
-                   s32 maxY)
+void ActorBounds_Set(ActorByteBounds *bounds, s32 minX, s32 minY, s32 maxX,
+                     s32 maxY)
 {
     bounds->minX = (s8)minX;
     bounds->minY = (s8)minY;
@@ -83,7 +83,7 @@ void func_02030d24(ActorByteBounds *bounds, s32 minX, s32 minY, s32 maxX,
 }
 
 /* Add X to both X edges and Y to both Y edges; return no value. */
-void func_02030d3c(ActorByteBounds *bounds, s32 x, s32 y)
+void ActorBounds_Translate(ActorByteBounds *bounds, s32 x, s32 y)
 {
     bounds->minX += x;
     bounds->minY += y;
@@ -99,16 +99,16 @@ void func_02030d3c(ActorByteBounds *bounds, s32 x, s32 y)
  * fields 0x0c/0x14 and the initial position is copied to offset 0x28. Returns
  * self. Vector helpers may manage SDK value-object state but no hardware.
  */
-ActorBaseGeometry *func_02030b90(ActorBaseGeometry *self,
-                                 const ActorBaseDescriptor *descriptor)
+ActorBaseGeometry *ActorBaseGeometry_Init(
+    ActorBaseGeometry *self, const ActorBaseDescriptor *descriptor)
 {
     ActorByteBounds bounds;
     s32 halfWidth;
     s32 halfHeight;
 
     self->vtable_00 = data_020def7c;
-    func_02030d24(&self->bounds_04, 0, 0, 0, 0);
-    func_02030d24(&self->bounds_08, 0, 0, 0, 0);
+    ActorBounds_Set(&self->bounds_04, 0, 0, 0, 0);
+    ActorBounds_Set(&self->bounds_08, 0, 0, 0, 0);
     self->field_0c = 0;
     self->field_10 = descriptor->field_58;
     self->field_14 = 0;
@@ -129,11 +129,11 @@ ActorBaseGeometry *func_02030b90(ActorBaseGeometry *self,
     self->subtype_4e = descriptor->subtype_02;
     halfWidth = descriptor->halfWidth_12 >> 1;
     halfHeight = descriptor->halfHeight_13 >> 1;
-    func_02030d24(&bounds, -halfWidth, -halfHeight, halfWidth, halfHeight);
-    func_02030d00(&self->bounds_04, &bounds);
-    func_02030d00(&self->bounds_08, &bounds);
-    func_02030d3c(&self->bounds_08, descriptor->boundsOffsetX_14,
-                  descriptor->boundsOffsetY_15);
+    ActorBounds_Set(&bounds, -halfWidth, -halfHeight, halfWidth, halfHeight);
+    ActorBounds_Copy(&self->bounds_04, &bounds);
+    ActorBounds_Copy(&self->bounds_08, &bounds);
+    ActorBounds_Translate(&self->bounds_08, descriptor->boundsOffsetX_14,
+                          descriptor->boundsOffsetY_15);
     self->field_0c = descriptor->field_28;
     self->field_14 = descriptor->field_28;
     func_020050a4(&self->previousPosition_28, &self->position_18);
