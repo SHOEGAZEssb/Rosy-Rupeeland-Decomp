@@ -6,7 +6,7 @@
  * Pop a value into VM byte 0x90, set VM flag 0x2 at offset 0x8c, and return
  * zero. The consumer and precise meaning of this queued value are unconfirmed.
  */
-s32 func_02013ed8(GamePhaseActorScriptVm *self)
+s32 GamePhaseActorScriptVm_SetValue90AndFlag2(GamePhaseActorScriptVm *self)
 {
     self->value_90 = (u8)GamePhaseScriptVm_Pop(&self->base);
     self->flags_8c |= 2;
@@ -14,7 +14,7 @@ s32 func_02013ed8(GamePhaseActorScriptVm *self)
 }
 
 /* Clear VM flag 0x2 at offset 0x8c and return zero. */
-s32 func_02013efc(GamePhaseActorScriptVm *self)
+s32 GamePhaseActorScriptVm_ClearFlag2(GamePhaseActorScriptVm *self)
 {
     self->flags_8c &= ~2u;
     return 0;
