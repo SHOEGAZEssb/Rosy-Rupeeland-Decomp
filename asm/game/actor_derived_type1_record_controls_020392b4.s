@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/actor_derived_type1_record_controls.c.
 .text
-.extern func_02033f7c
+.extern Actor_ApplyMotionImpulse
 .extern Actor_IsAtCachedTerrainHeight
 .extern func_020390c8
 .extern Type1Actor_TryEnterFailureState
@@ -44,7 +44,7 @@ func_020392b4: ; 0x020392b4
     mov r0, r6
     mov r1, r5
     mov r2, r4
-    bl func_02033f7c
+    bl Actor_ApplyMotionImpulse
     mov r0, r6
     bl Type1Actor_TryEnterFailureState
     ldmia sp!, {r4, r5, r6, pc}

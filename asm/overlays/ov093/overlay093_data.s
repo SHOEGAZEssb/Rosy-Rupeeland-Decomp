@@ -25,7 +25,7 @@
 .extern func_02033b38
 .extern Actor_RefreshTerrainHeightIfEnabled
 .extern func_02033f4c
-.extern func_02033f7c
+.extern Actor_ApplyMotionImpulse
 .extern func_0204d3dc
 .extern func_0204d3e0
 .extern func_0204d3e4
@@ -170,7 +170,7 @@ data_ov093_022188f0:
     .word Actor_SetResourceSlot
     .word func_02033f4c
     .word func_ov093_02218734
-    .word func_02033f7c
+    .word Actor_ApplyMotionImpulse
     .word func_02031464
     .word func_ov093_022186bc
     .word func_ov093_022187cc

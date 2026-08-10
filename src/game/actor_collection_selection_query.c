@@ -28,7 +28,7 @@ extern void *data_021052fc;
 extern s32 Actor_TestQueryPoint(void *actor,
                                 const ActorSelectionQuery *query);
 extern s32 func_02034060(void *actor);
-extern s32 func_02034044(void *actor);
+extern s32 Actor_DispatchActivationMode1(void *actor);
 extern s32 func_0200b04c(const void *state);
 extern s32 func_0204aff4(void *actor);
 extern s32 func_020397d4(void *actor);
@@ -72,10 +72,10 @@ static u16 actor_rank(void *actor)
  *
  * Reserved actor one then receives special handling governed by flags at
  * 0x10, 0x14, and 0x268 plus address-derived predicates. A selected candidate
- * can return func_02034044, or can cause a temporary vector to be built from
+ * can return Actor_DispatchActivationMode1, or can cause a temporary vector to be built from
  * query fields and actor offset-0x24 values and sent to the global actor at
  * scene offset 0x2ea4. The function returns the preserved hook result,
- * func_02034044's result, or zero. Query hooks and the final dispatch may
+ * Actor_DispatchActivationMode1's result, or zero. Query hooks and the final dispatch may
  * mutate actor/scene state.
  */
 s32 func_0202d7a8(ActorSelectionCollection *self,
@@ -131,7 +131,7 @@ s32 func_0202d7a8(ActorSelectionCollection *self,
         actor = *(void **)(scene + 0x2ea4);
         if (func_020397d4(actor) && !func_0200b04c(data_02105310)) {
             if (func_02034060(candidate)) {
-                result = func_02034044(candidate);
+                result = Actor_DispatchActivationMode1(candidate);
             } else if (read_u32(candidate, 0x14) & 0x08000000) {
                 void *guardActor = *(void **)(scene + 0x2ea8);
                 s32 allowed = 1;

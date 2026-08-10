@@ -14,7 +14,7 @@ extern void func_0200b2c0(void *vector, s32 x, s32 y, s32 z);
 extern void Actor_RefreshTerrainHeight(void *actor);
 extern void func_02031758(void *context, void *actor, void *value);
 extern void func_0206dcac(void *resource);
-extern void func_02033f7c(void *actor, const void *value, s32 mode);
+extern void Actor_ApplyMotionImpulse(void *actor, const void *value, s32 mode);
 extern void func_02038784(void *output, const void *input, s32 scale);
 #ifdef __cplusplus
 }
@@ -61,9 +61,9 @@ void func_02046544(void *context, void *self, void *value)
  * Inputs are actor, value, and condition. A nonzero condition returns early
  * when record +0x29c halfword +0x40 is zero. Otherwise compare callback pair
  * +0x208/+0x20c against data_020e16b0+0x20/data_020e16d0+4. Nonmatching pairs
- * forward actor/value/condition to func_02033f7c. A matching pair first derives
+ * forward actor/value/condition to Actor_ApplyMotionImpulse. A matching pair first derives
  * a temporary from value with func_02038784 scale 0x2000, then calls
- * func_02033f7c(actor,temporary,0) and finalizes it. Actor/transform state may
+ * Actor_ApplyMotionImpulse(actor,temporary,0) and finalizes it. Actor/transform state may
  * change; no direct SDK or hardware access occurs.
  */
 void func_020465b8(void *self, const void *value, s32 condition)
@@ -79,10 +79,10 @@ void func_020465b8(void *self, const void *value, s32 condition)
         && (*(void **)(actor + 0x20c) == *(void **)(data_020e16d0 + 4)
             || *(void **)(actor + 0x208) == 0);
     if (!matches) {
-        func_02033f7c(actor, value, condition);
+        Actor_ApplyMotionImpulse(actor, value, condition);
         return;
     }
     func_02038784(temporary, value, 0x2000);
-    func_02033f7c(actor, temporary, 0);
+    Actor_ApplyMotionImpulse(actor, temporary, 0);
     func_02005058(temporary);
 }

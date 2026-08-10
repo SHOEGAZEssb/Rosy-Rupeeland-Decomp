@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/actor_derived_type1_record_controls.c.
 .text
-.extern func_02033f7c
+.extern Actor_ApplyMotionImpulse
 .extern func_020390c8
 
     .global func_02039348
@@ -13,6 +13,6 @@ func_02039348: ; 0x02039348
     mov r0, r5
     mov r1, r4
     mov r2, #0x1
-    bl func_02033f7c
+    bl Actor_ApplyMotionImpulse
     ldmia sp!, {r3, r4, r5, pc}
     .size func_02039348, . - func_02039348

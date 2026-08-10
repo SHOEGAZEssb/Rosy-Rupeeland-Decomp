@@ -19,5 +19,5 @@ func_02033f4c: ; 0x02033f4c
 .L_02033f78: .word gGameWork
     .size func_02033f4c, . - func_02033f4c
 
-    .global func_02033f7c
+    .global Actor_ApplyMotionImpulse
 

@@ -8,7 +8,7 @@
 .extern func_0200500c
 .extern func_02038d38
 .extern func_02005058
-.extern func_02034044
+.extern Actor_DispatchActivationMode1
 .extern data_02105310
 .extern data_021052fc
 
@@ -228,7 +228,7 @@ func_0202d7a8: ; 0x0202d7a8
     b .L_0202dad8
 .L_0202dacc:
     mov r0, r5
-    bl func_02034044
+    bl Actor_DispatchActivationMode1
     mov r4, r0
 .L_0202dad8:
     mov r0, r4

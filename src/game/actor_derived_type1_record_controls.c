@@ -10,7 +10,7 @@ extern void func_020390c8(void *actor);
 extern void func_020551f0(void *object);
 extern void func_02038f98(void *actor);
 extern s32 Actor_IsAtCachedTerrainHeight(void *actor);
-extern void func_02033f7c(void *actor, const void *vector, s32 mode);
+extern void Actor_ApplyMotionImpulse(void *actor, const void *vector, s32 mark);
 extern void Type1Actor_TryEnterFailureState(void *actor);
 #ifdef __cplusplus
 }
@@ -56,7 +56,7 @@ void func_02039278(void *self, void *object)
  * reject attachment +0x54 flags 0x14. Require
  * Actor_IsAtCachedTerrainHeight and reject an
  * optional +0x270 object whose byte +0x10 has bit one. For nonzero mode, tear
- * down the active descriptor, then dispatch vector/mode through func_02033f7c
+ * down the active descriptor, then dispatch vector/mode through Actor_ApplyMotionImpulse
  * and finalize with Type1Actor_TryEnterFailureState. Returns no value; helper
  * calls may update
  * actor presentation, ownership, and motion state.
@@ -77,16 +77,16 @@ void func_020392b4(void *self, const void *vector, s32 mode)
         return;
     if (mode != 0)
         func_020390c8(actor);
-    func_02033f7c(actor, vector, mode);
+    Actor_ApplyMotionImpulse(actor, vector, mode);
     Type1Actor_TryEnterFailureState(actor);
 }
 
 /*
- * Tear down the active descriptor and dispatch vector through func_02033f7c
+ * Tear down the active descriptor and dispatch vector through Actor_ApplyMotionImpulse
  * with mode one. Returns no value; both helpers change actor-owned state.
  */
 void func_02039348(void *self, const void *vector)
 {
     func_020390c8(self);
-    func_02033f7c(self, vector, 1);
+    Actor_ApplyMotionImpulse(self, vector, 1);
 }

@@ -13,7 +13,7 @@ extern void func_0200500c(void *vector, s32 x, s32 y, s32 z);
 extern void func_020050a4(void *destination, const void *source);
 extern void func_02005058(void *vector);
 extern void func_02006818(void *track);
-extern void func_02033fe4(void *actor);
+extern s32 Actor_TryDispatchActivationMode2(void *actor);
 #ifdef __cplusplus
 }
 #endif
@@ -40,7 +40,7 @@ void func_0203b998(void *source, void *actor)
  * +0x38; if self +0x10 bit 0x40 and +0x14 bit 0x40000000 are set while other
  * +0x14 bit 0x10 is clear, also clear bit 0x40 and cancel track +0x198.
  * Finally, when other subtype byte +0x4d is one, its virtual +0xa8 returns
- * zero, mode is zero, and self +0x188 is nonnull, invoke func_02033fe4(self).
+ * zero, mode is zero, and self +0x188 is nonnull, invoke Actor_TryDispatchActivationMode2(self).
  * Return one. Base contact, vector, track, virtual, and follow-up helpers have
  * observable actor state effects.
  */
@@ -64,6 +64,6 @@ s32 func_0203b9dc(void *self, void *other, s32 mode)
     if (target[0x4d] == 1 &&
         (*(s32 (**)(void *))(*(u8 **)target + 0xa8))(target) == 0 &&
         mode == 0 && *(void **)(actor + 0x188) != 0)
-        func_02033fe4(actor);
+        Actor_TryDispatchActivationMode2(actor);
     return 1;
 }

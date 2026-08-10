@@ -10,7 +10,7 @@ extern u8 data_020e8380[];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_02033f7c(void *actor);
+extern void Actor_ApplyMotionImpulse(void *actor);
 #ifdef __cplusplus
 }
 #endif
@@ -36,7 +36,7 @@ s32 func_02043648(const void *self, s32 value)
 }
 
 /*
- * Invoke func_02033f7c(actor) unless actor +0x260 bit 0x8000 is set. The routine
+ * Invoke Actor_ApplyMotionImpulse(actor) unless actor +0x260 bit 0x8000 is set. The routine
  * has no meaningful return value and may change actor bookkeeping; no direct
  * SDK or hardware operation occurs.
  */
@@ -44,7 +44,7 @@ void func_02043674(void *self)
 {
     u8 *actor = (u8 *)self;
     if ((*(u32 *)(actor + 0x260) & 0x8000) == 0)
-        func_02033f7c(actor);
+        Actor_ApplyMotionImpulse(actor);
 }
 
 /*

@@ -8,7 +8,7 @@
 .extern func_0200b2c0
 .extern func_02031758
 .extern Actor_RefreshTerrainHeight
-.extern func_02033f7c
+.extern Actor_ApplyMotionImpulse
 .extern func_02038784
 .extern func_0206dcac
 .global func_020464f4
@@ -103,7 +103,7 @@ func_020465b8: ; 0x020465b8
     cmp r0, #0x0
     bne .L_0204662c
     mov r0, r4
-    bl func_02033f7c
+    bl Actor_ApplyMotionImpulse
     b .L_02046650
 .L_0204662c:
     add r0, sp, #0x0
@@ -112,7 +112,7 @@ func_020465b8: ; 0x020465b8
     add r1, sp, #0x0
     mov r0, r4
     mov r2, #0x0
-    bl func_02033f7c
+    bl Actor_ApplyMotionImpulse
     add r0, sp, #0x0
     bl func_02005058
 .L_02046650:

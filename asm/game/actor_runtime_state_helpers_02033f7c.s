@@ -3,9 +3,9 @@
 .extern func_0200b2c0
 .extern func_0204cff4
 
-    .global func_02033f7c
-    .type func_02033f7c, @function
-func_02033f7c: ; 0x02033f7c
+    .global Actor_ApplyMotionImpulse
+    .type Actor_ApplyMotionImpulse, @function
+Actor_ApplyMotionImpulse: ; 0x02033f7c
     stmdb sp!, {r4, r5, r6, lr}
     mov r6, r0
     mov r5, r1
@@ -32,7 +32,7 @@ func_02033f7c: ; 0x02033f7c
     orrne r0, r0, #0x4000
     strne r0, [r6, #0xd0]
     ldmia sp!, {r4, r5, r6, pc}
-    .size func_02033f7c, . - func_02033f7c
+    .size Actor_ApplyMotionImpulse, . - Actor_ApplyMotionImpulse
 
-    .global func_02033fe4
+    .global Actor_TryDispatchActivationMode2
 

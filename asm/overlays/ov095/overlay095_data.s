@@ -185,7 +185,7 @@
 .extern func_02033b38
 .extern func_ov095_0221c6c8
 .extern func_ov095_0221c6c4
-.extern func_02033f7c
+.extern Actor_ApplyMotionImpulse
 .extern func_ov095_0221c344
 .extern func_ov095_0221c4a4
 .extern func_ov095_0221c690
@@ -664,7 +664,7 @@ data_ov095_0221d1a4:
     .word Actor_SetResourceSlot
     .word func_02033f4c
     .word func_ov095_0221b0ac
-    .word func_02033f7c
+    .word Actor_ApplyMotionImpulse
     .word func_02031464
     .word func_ov095_0221c344
     .word func_ov095_0221c4a4
@@ -743,7 +743,7 @@ data_ov095_0221d2e8:
     .word Actor_SetResourceSlot
     .word func_02033f4c
     .word func_ov095_0221b0ac
-    .word func_02033f7c
+    .word Actor_ApplyMotionImpulse
     .word func_02031464
     .word func_ov095_0221c77c
     .word func_ov095_0221ca14

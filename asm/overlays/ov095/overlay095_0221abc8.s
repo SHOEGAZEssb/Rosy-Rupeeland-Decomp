@@ -1,7 +1,7 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov095/overlay095_recovery.c.
 .extern func_02005058
-.extern func_02033f7c
+.extern Actor_ApplyMotionImpulse
 .extern func_ov095_0221a208
 
 .global func_ov095_0221abc8
@@ -23,7 +23,7 @@ func_ov095_0221abc8:
     add r1, sp, #0x0
     mov r0, r5
     mov r2, r4
-    bl func_02033f7c
+    bl Actor_ApplyMotionImpulse
     add r0, sp, #0x0
     bl func_02005058
 .L_0221ac18:

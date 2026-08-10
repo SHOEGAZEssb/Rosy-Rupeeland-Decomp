@@ -182,7 +182,7 @@
 .extern func_ov097_0221a458
 .extern func_ov097_0221a450
 .extern func_02033f4c
-.extern func_02033f7c
+.extern Actor_ApplyMotionImpulse
 .extern func_ov097_02219ebc
 .extern func_ov097_0221a1c8
 .extern func_0205258c
@@ -626,7 +626,7 @@ data_ov097_0221aaa4:
     .word Actor_SetResourceSlot
     .word func_02033f4c
     .word func_ov097_02219b60
-    .word func_02033f7c
+    .word Actor_ApplyMotionImpulse
     .word func_02031464
     .word func_ov097_02219ebc
     .word func_ov097_0221a1c8

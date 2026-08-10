@@ -7,7 +7,7 @@
 .extern func_02031758
 .extern func_02031cac
 .extern func_02032a94
-.extern func_02033fe4
+.extern Actor_TryDispatchActivationMode2
 .extern gSceneTouchInitialData
     .global func_0203b998
     .type func_0203b998, @function
@@ -80,7 +80,7 @@ func_0203b9dc: ; 0x0203b9dc
     cmp r0, #0x0
     beq .L_0203ba94
     mov r0, r6
-    bl func_02033fe4
+    bl Actor_TryDispatchActivationMode2
 .L_0203ba94:
     mov r0, #0x1
     add sp, sp, #0x10

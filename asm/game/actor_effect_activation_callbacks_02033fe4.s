@@ -4,9 +4,9 @@
 .extern func_0200b04c
 .extern func_0200b294
 
-    .global func_02033fe4
-    .type func_02033fe4, @function
-func_02033fe4: ; 0x02033fe4
+    .global Actor_TryDispatchActivationMode2
+    .type Actor_TryDispatchActivationMode2, @function
+Actor_TryDispatchActivationMode2: ; 0x02033fe4
     stmdb sp!, {r4, lr}
     mov r4, r0
     ldr r0, .L_02034040
@@ -31,7 +31,7 @@ func_02033fe4: ; 0x02033fe4
     mov r0, #0x1
     ldmia sp!, {r4, pc}
 .L_02034040: .word data_02105310
-    .size func_02033fe4, . - func_02033fe4
+    .size Actor_TryDispatchActivationMode2, . - Actor_TryDispatchActivationMode2
 
-    .global func_02034044
+    .global Actor_DispatchActivationMode1
 

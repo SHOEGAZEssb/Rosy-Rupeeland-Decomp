@@ -2,7 +2,7 @@
 .text
 .extern data_020e8380
 .extern data_020e83a5
-.extern func_02033f7c
+.extern Actor_ApplyMotionImpulse
 .global func_0204362c
 .type func_0204362c, @function
 func_0204362c: ; 0x0204362c
@@ -40,7 +40,7 @@ func_02043674: ; 0x02043674
     ldr r3, [r0, #0x260]
     tst r3, #0x8000
     ldmneia sp!, {r3, pc}
-    bl func_02033f7c
+    bl Actor_ApplyMotionImpulse
     ldmia sp!, {r3, pc}
 
 .size func_02043674, . - func_02043674

@@ -85,15 +85,15 @@ s32 func_02033f4c(void *self)
 }
 
 /*
- * Add impulse words +4/+8 to actor motion +0x8c/+0x90, clamp that pair to
- * magnitude 0x6000, and pass impulse word +0x0c to state object actor+0x38
+ * Apply vector X/Y words +4/+8 to actor motion +0x8c/+0x90, clamp that pair
+ * to magnitude 0x6000, and pass vector Z at +0x0c to state object actor+0x38
  * with two zero arguments. If mark is nonzero, set flag 0x4000 at +0xd0.
  * Returns no value; the state and clamp helpers may update SDK-managed values.
  */
-void func_02033f7c(void *self, const void *impulse, s32 mark)
+void Actor_ApplyMotionImpulse(void *self, const void *vector, s32 mark)
 {
     u8 *actor = (u8 *)self;
-    const u8 *values = (const u8 *)impulse;
+    const u8 *values = (const u8 *)vector;
 
     *(s32 *)(actor + 0x8c) += *(s32 *)(values + 4);
     *(s32 *)(actor + 0x90) += *(s32 *)(values + 8);

@@ -2,7 +2,7 @@
 .extern func_02031748
 .extern func_02032a94
 .extern func_02032abc
-.extern func_02033fe4
+.extern Actor_TryDispatchActivationMode2
 .extern func_02034164
 .text
 
@@ -34,7 +34,7 @@ func_0204eac8: ; 0x0204eac8
     cmpeq r4, #0x0
     bne .L_0204eb04
     mov r0, r6
-    bl func_02033fe4
+    bl Actor_TryDispatchActivationMode2
 .L_0204eb04:
     mov r0, #0x1
     ldmia sp!, {r4, r5, r6, pc}
