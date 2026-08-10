@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/actor_collection_update_dispatch.c.
 .text
-.extern func_0203b798
+.extern ActorDerivedRuntime_UpdateFrame
 
     .global ActorCollection_UpdateFlag100Category0Actors
     .type ActorCollection_UpdateFlag100Category0Actors, @function
@@ -32,7 +32,7 @@ ActorCollection_UpdateFlag100Category0Actors: ; 0x0202e06c
     blx r1
     b .L_0202e0f0
 .L_0202e0cc:
-    bl func_0203b798
+    bl ActorDerivedRuntime_UpdateFrame
     b .L_0202e0f0
 .L_0202e0d4:
     ldr r1, [r0, #0x0]

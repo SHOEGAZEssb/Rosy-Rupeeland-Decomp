@@ -14,7 +14,7 @@ extern void Heap_Free(void *allocation);
 extern void *func_0203b514(void *actor, const void *descriptor);
 extern void func_0203b61c(void *actor);
 extern void Actor_InitializeFromDescriptor(void *actor);
-extern void func_0203b798(void *actor);
+extern void ActorDerivedRuntime_UpdateFrame(void *actor);
 #ifdef __cplusplus
 }
 #endif
@@ -69,12 +69,12 @@ void func_0204d4f0(void *self)
 }
 
 /*
- * Input is an indexed-state actor. Invoke base frame update func_0203b798 only
+ * Input is an indexed-state actor. Invoke base frame update ActorDerivedRuntime_UpdateFrame only
  * while signed halfword +0x208 is zero; all other values return unchanged. No
  * value is returned. Base actor state may change, with no direct hardware effects.
  */
 void func_0204d4fc(void *self)
 {
     if (*(s16 *)((u8 *)self + 0x208) == 0)
-        func_0203b798(self);
+        ActorDerivedRuntime_UpdateFrame(self);
 }

@@ -2,7 +2,7 @@
 .extern func_0203b514
 .extern func_0203b61c
 .extern Heap_Free
-.extern func_0203b798
+.extern ActorDerivedRuntime_UpdateFrame
 .extern func_02007f0c
 .extern GameWork_TestFlag
 .extern data_020e1f2c
@@ -69,7 +69,7 @@ func_0204d10c: ; 0x0204d10c
     ldr r1, [r4, #0x10]
     tst r1, #0x1000000
     beq .L_0204d128
-    bl func_0203b798
+    bl ActorDerivedRuntime_UpdateFrame
     ldmia sp!, {r4, pc}
 .L_0204d128:
     ldr r0, .L_0204d214

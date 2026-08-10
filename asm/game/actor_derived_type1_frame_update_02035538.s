@@ -24,7 +24,7 @@
 .extern func_0203647c
 .extern func_02037a94
 .extern func_02037bb0
-.extern func_0203b798
+.extern ActorDerivedRuntime_UpdateFrame
 .extern func_02048bcc
 .extern func_0204c798
 .extern func_0204cc14
@@ -222,7 +222,7 @@ func_02035538: ; 0x02035538
     tst r0, #0x100
     beq .L_020357e8
     mov r0, r5
-    bl func_0203b798
+    bl ActorDerivedRuntime_UpdateFrame
 .L_020357e8:
     ldr r0, [r5, #0x230]
     bic r1, r0, #0x200

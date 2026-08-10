@@ -44,7 +44,7 @@ static s32 multiplyFx(s32 a, s32 b)
  * flags, airborne motion subtracts vtable-0xb0 acceleration, and Z is clamped
  * not below baseline. Returns no value; virtual callbacks own gameplay effects.
  */
-void func_02032520(void *self)
+void Actor_IntegrateMotion(void *self)
 {
     u8 *actor = (u8 *)self;
     MotionActorVTable *vtable = *(MotionActorVTable **)actor;

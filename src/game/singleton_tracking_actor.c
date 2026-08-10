@@ -17,7 +17,7 @@ extern void *func_02007f0c(void *runtime, s32 category);
 extern s32 GameWork_TestFlag(void *work, u32 flag);
 extern void *func_0203b514(void *actor);
 extern void func_0203b61c(void *actor);
-extern void func_0203b798(void *actor);
+extern void ActorDerivedRuntime_UpdateFrame(void *actor);
 #ifdef __cplusplus
 }
 #endif
@@ -72,7 +72,7 @@ void *func_0204d0d0(void *self)
 
 /*
  * Input is a tracking actor. If actor +0x10 bit 0x01000000 is set, delegate to
- * base update func_0203b798. Otherwise cache the category-one singleton from
+ * base update ActorDerivedRuntime_UpdateFrame. Otherwise cache the category-one singleton from
  * collection +0x2e7c at actor +0x208. When game-work flag 0x405 is set, invoke
  * actor virtual slot 0x54 with zero. Read mode bits 18..19 from global phase
  * state +0x30bc/+0x40. In mode two, set actor X to half the singleton X, Y to
@@ -89,7 +89,7 @@ void func_0204d10c(void *self)
     u8 *target;
     u32 mode;
     if ((*(u32 *)(actor + 0x10) & 0x01000000) != 0) {
-        func_0203b798(actor);
+        ActorDerivedRuntime_UpdateFrame(actor);
         return;
     }
     collection = (u8 *)func_02007f0c(data_021052fc, 1);

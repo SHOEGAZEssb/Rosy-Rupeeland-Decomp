@@ -11,8 +11,8 @@
 .extern func_02031748
 .extern Actor_UpdateTerrainMotionFeedback
 .extern func_02034164
-    .global func_0203b798
-func_0203b798: ; 0x0203b798
+    .global ActorDerivedRuntime_UpdateFrame
+ActorDerivedRuntime_UpdateFrame: ; 0x0203b798
     stmdb sp!, {r4, lr}
     sub sp, sp, #0x20
     mov r4, r0
@@ -151,5 +151,5 @@ func_0203b798: ; 0x0203b798
     add sp, sp, #0x20
     ldmia sp!, {r4, pc}
 
-    .size func_0203b798, . - func_0203b798
+    .size ActorDerivedRuntime_UpdateFrame, . - ActorDerivedRuntime_UpdateFrame
 

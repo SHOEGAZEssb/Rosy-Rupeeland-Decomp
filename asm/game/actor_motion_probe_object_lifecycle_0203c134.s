@@ -8,7 +8,7 @@
 .extern func_0203b514
 .extern func_0203b61c
 .extern Actor_InitializeFromDescriptor
-.extern func_0203b798
+.extern ActorDerivedRuntime_UpdateFrame
     .global func_0203c134
     .type func_0203c134, @function
 func_0203c134: ; 0x0203c134
@@ -103,6 +103,6 @@ func_0203c228: ; 0x0203c228
 func_0203c234: ; 0x0203c234
     ldr ip, .L_0203c23c
     bx ip
-.L_0203c23c: .word func_0203b798
+.L_0203c23c: .word ActorDerivedRuntime_UpdateFrame
     .size func_0203c234, . - func_0203c234
 

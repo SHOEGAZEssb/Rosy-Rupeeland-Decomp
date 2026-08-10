@@ -15,7 +15,7 @@ extern void *gGameWork;
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_0203b798(void *actor);
+extern void ActorDerivedRuntime_UpdateFrame(void *actor);
 extern s32 func_020adcac(const void *first, const void *second);
 extern void func_02047d40(void *actor);
 extern void func_0204b7bc(void *actor, s32 enabled);
@@ -54,7 +54,7 @@ static s32 callback_pair_matches(const u8 *actor, const void *first,
 
 /*
  * Return immediately when actor +0x268 has bit 0x400 or 0x40000. A pending
- * +0x10 bit 0x01000000 first runs func_0203b798, then requires target +0x280,
+ * +0x10 bit 0x01000000 first runs ActorDerivedRuntime_UpdateFrame, then requires target +0x280,
  * matching +0x180/+0x294, and either target distance above twice +0x25c or a
  * nonzero target vtable +0xa8 predicate; otherwise the frame ends. Acceptance
  * clears that bit and +0x180 and invokes func_02047d40. With +0xd0 bit 0x4000,
@@ -97,7 +97,7 @@ void func_02045a60(void *self)
         return;
     if ((*(u32 *)(actor + 0x10) & 0x01000000) != 0) {
         s32 release = 0;
-        func_0203b798(actor);
+        ActorDerivedRuntime_UpdateFrame(actor);
         target = *(u8 **)(actor + 0x280);
         if (target == 0 || *(u32 *)(actor + 0x180) != *(u32 *)(actor + 0x294))
             return;

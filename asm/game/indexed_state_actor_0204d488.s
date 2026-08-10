@@ -2,7 +2,7 @@
 .extern func_0203b514
 .extern func_0203b61c
 .extern Heap_Free
-.extern func_0203b798
+.extern ActorDerivedRuntime_UpdateFrame
 .extern data_020e212c
 .extern Actor_InitializeFromDescriptor
 .text
@@ -61,6 +61,6 @@ func_0204d4fc: ; 0x0204d4fc
     cmp r1, #0x1
     ldmia sp!, {r3, pc}
 .L_0204d518:
-    bl func_0203b798
+    bl ActorDerivedRuntime_UpdateFrame
     ldmia sp!, {r3, pc}
 .size func_0204d4fc, . - func_0204d4fc

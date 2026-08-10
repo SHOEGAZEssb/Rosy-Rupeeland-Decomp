@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/actor_extended_link_source_motion_gate.c.
 .text
 .extern func_0200b2c0
-.extern func_02032520
+.extern Actor_IntegrateMotion
 .global func_02043eb4
 .type func_02043eb4, @function
 func_02043eb4: ; 0x02043eb4
@@ -27,6 +27,6 @@ func_02043eb4: ; 0x02043eb4
     bl func_0200b2c0
     ldmia sp!, {r4, pc}
 .L_02043f08:
-    bl func_02032520
+    bl Actor_IntegrateMotion
     ldmia sp!, {r4, pc}
 .size func_02043eb4, . - func_02043eb4

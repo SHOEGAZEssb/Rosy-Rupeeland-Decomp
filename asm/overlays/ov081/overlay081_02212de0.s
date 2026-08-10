@@ -8,7 +8,7 @@
 .extern func_02032370
 .extern Actor_UpdateAnimationState
 .extern func_02034164
-.extern func_0203b798
+.extern ActorDerivedRuntime_UpdateFrame
 .extern func_ov081_0221367c
 
 .global func_ov081_02212de0
@@ -18,7 +18,7 @@ func_ov081_02212de0:
     ldr r1, [r4, #0x114]
     cmp r1, #0x0
     beq .L_02212dfc
-    bl func_0203b798
+    bl ActorDerivedRuntime_UpdateFrame
     ldmia sp!, {r4, pc}
 .L_02212dfc:
     ldr r1, [r0, #0x0]

@@ -28,7 +28,7 @@ extern s32 func_02002db0(void);
 extern void func_02048bcc(void *object);
 extern void func_02007f24(void *manager, s32 first, s32 second, s32 third,
                           s32 fourth, s32 fifth);
-extern void func_0203b798(void *actor);
+extern void ActorDerivedRuntime_UpdateFrame(void *actor);
 extern s32 func_02032370(void *actor, void *state, s32 step);
 extern s32 func_02032228(void *actor, s32 x, s32 y, s32 step);
 extern void *func_0204c798(void *storage, void *actor);
@@ -141,7 +141,7 @@ void func_02035538(void *self)
         }
     }
 
-    if ((*(u32 *)(actor + 0x10) & 0x108) == 0x108) func_0203b798(actor);
+    if ((*(u32 *)(actor + 0x10) & 0x108) == 0x108) ActorDerivedRuntime_UpdateFrame(actor);
     *(u32 *)(actor + 0x230) &= ~0x200;
 
     if (*(s16 *)(actor + 0x264) > 0) {

@@ -3,7 +3,7 @@
 .extern func_0200500c
 .extern func_02005058
 .extern func_020050a4
-.extern func_02032520
+.extern Actor_IntegrateMotion
 .extern func_ov083_02213968
 .extern func_ov083_02213afc
 .extern func_ov083_02213b14
@@ -63,7 +63,7 @@ func_ov083_022139b0:
 .L_02213a78:
     bic r1, r1, #0x2
     str r1, [r4, #0x29c]
-    bl func_02032520
+    bl Actor_IntegrateMotion
     ldr r0, [r4, #0x298]
     cmp r0, #0x0
     beq .L_02213af4

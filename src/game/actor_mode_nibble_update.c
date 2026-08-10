@@ -4,14 +4,14 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_0203b798(void *actor);
+extern void ActorDerivedRuntime_UpdateFrame(void *actor);
 extern void Actor_UpdateAnimationState(void *actor);
 #ifdef __cplusplus
 }
 #endif
 
 /*
- * If actor +0x10 bit 0x01000000 is set, forward directly to func_0203b798 and
+ * If actor +0x10 bit 0x01000000 is set, forward directly to ActorDerivedRuntime_UpdateFrame and
  * return. Otherwise invoke virtual +0x18 and inspect low 12 bits of halfword
  * +0x208. Bit one is consumed immediately and sets halfword +0xd6 to one. If
  * +0x10 bit eight is set, invoke virtual +0x74 with actor field +0xf0 and
@@ -28,7 +28,7 @@ void func_0203c748(void *self)
     u16 value;
     u16 low;
     if ((*(u32 *)(actor + 0x10) & 0x01000000) != 0) {
-        func_0203b798(actor);
+        ActorDerivedRuntime_UpdateFrame(actor);
         return;
     }
     (*(void (**)(void *))(*(u8 **)actor + 0x18))(actor);

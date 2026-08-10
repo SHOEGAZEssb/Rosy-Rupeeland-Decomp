@@ -16,7 +16,7 @@
 .extern Actor_GetCachedTerrainHeight
 .extern func_02034a60
 .extern Actor_ReplaceAttachmentSlotResource
-.extern func_0203b798
+.extern ActorDerivedRuntime_UpdateFrame
 .extern func_0203bba4
 .extern func_0204cfa4
 .extern func_0204cff4
@@ -67,7 +67,7 @@ func_ov088_02218328:
     tst r0, #0x1000000
     beq .L_02218378
     mov r0, r4
-    bl func_0203b798
+    bl ActorDerivedRuntime_UpdateFrame
     b .L_02219100
 .L_02218378:
     ldr r0, .L_02219108

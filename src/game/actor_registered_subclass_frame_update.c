@@ -35,7 +35,7 @@ extern void func_020a28e0(void *effect, s32 kind, s32 x, s32 y, s32 duration);
  * receive the common update. Returns no value; actor, attachment, random, and
  * effect-manager state can change.
  */
-void func_0203d540(void *self)
+void ActorRegisteredSubclass_UpdateFrame(void *self)
 {
     u8 *actor = (u8 *)self;
     s16 state;

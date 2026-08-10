@@ -8,9 +8,9 @@
 .extern func_020a28e0
 .extern func_020befec
 .extern genrand_int32
-    .global func_0203d540
-    .type func_0203d540, @function
-func_0203d540: ; 0x0203d540
+    .global ActorRegisteredSubclass_UpdateFrame
+    .type ActorRegisteredSubclass_UpdateFrame, @function
+ActorRegisteredSubclass_UpdateFrame: ; 0x0203d540
     stmdb sp!, {r3, r4, r5, lr}
     mov r5, r0
     bl ActorTableRecord_UpdateFrame
@@ -122,4 +122,4 @@ func_0203d540: ; 0x0203d540
     str r0, [r5, #0xd0]
     ldmia sp!, {r3, r4, r5, pc}
 .L_0203d6dc: .word data_021052fc
-    .size func_0203d540, . - func_0203d540
+    .size ActorRegisteredSubclass_UpdateFrame, . - ActorRegisteredSubclass_UpdateFrame

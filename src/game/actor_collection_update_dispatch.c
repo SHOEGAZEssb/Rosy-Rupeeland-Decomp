@@ -34,14 +34,14 @@ typedef struct ActorCollectionDispatch {
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_0203b798(CollectionDispatchActor *);
+extern void ActorDerivedRuntime_UpdateFrame(CollectionDispatchActor *);
 #ifdef __cplusplus
 }
 #endif
 
 /*
  * Visit every actor in category zero. Actors carrying flag 0x01000000 and
- * type one, two, or five are passed to func_0203b798; all others receive the
+ * type one, two, or five are passed to ActorDerivedRuntime_UpdateFrame; all others receive the
  * virtual callback at vtable offset 0x1c. The routine returns no value, and
  * any observable changes are those performed by the selected callee.
  */
@@ -56,7 +56,7 @@ void ActorCollection_UpdateCategory0Actors(ActorCollectionDispatch *self)
         if ((actor->flags_10 & 0x01000000) &&
             (actor->type_4d == 1 || actor->type_4d == 2 ||
              actor->type_4d == 5))
-            func_0203b798(actor);
+            ActorDerivedRuntime_UpdateFrame(actor);
         else
             actor->vtable_00->callback_1c(actor);
     }
@@ -65,7 +65,7 @@ void ActorCollection_UpdateCategory0Actors(ActorCollectionDispatch *self)
 /*
  * Clear transient flag 0x80 on every category-zero actor. Actors lacking flag
  * 0x100 receive no callback. Of the remainder, types two and five use
- * func_0203b798 when flag 0x01000000 is set; type one and all other cases use
+ * ActorDerivedRuntime_UpdateFrame when flag 0x01000000 is set; type one and all other cases use
  * the callback at vtable offset 0x1c. The routine returns no value.
  */
 void ActorCollection_UpdateFlag100Category0Actors(ActorCollectionDispatch *self)
@@ -81,7 +81,7 @@ void ActorCollection_UpdateFlag100Category0Actors(ActorCollectionDispatch *self)
             continue;
         if ((actor->flags_10 & 0x01000000) &&
             (actor->type_4d == 2 || actor->type_4d == 5))
-            func_0203b798(actor);
+            ActorDerivedRuntime_UpdateFrame(actor);
         else
             actor->vtable_00->callback_1c(actor);
     }

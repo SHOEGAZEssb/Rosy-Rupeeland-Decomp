@@ -12,7 +12,7 @@
 .extern func_02032144
 .extern func_02032208
 .extern func_020324dc
-.extern func_02032520
+.extern Actor_IntegrateMotion
 .extern Actor_SetPosition
 .extern func_02032abc
 .extern Actor_SetResourceVariant
@@ -165,7 +165,7 @@ data_ov093_022188f0:
     .word func_ov093_0221876c
     .word func_ov093_02218764
     .word func_ov093_02218750
-    .word func_02032520
+    .word Actor_IntegrateMotion
     .word func_ov093_02218744
     .word Actor_SetResourceSlot
     .word func_02033f4c

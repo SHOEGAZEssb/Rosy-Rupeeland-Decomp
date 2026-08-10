@@ -12,7 +12,7 @@
 .extern func_02009d78
 .extern func_020316e8
 .extern Actor_UpdateAnimationState
-.extern func_0203b798
+.extern ActorDerivedRuntime_UpdateFrame
 .extern func_020593ac
 .extern func_0205940c
 .extern func_0205943c
@@ -31,7 +31,7 @@ func_ov087_022179b0:
     ldr r1, [r5, #0x10]
     tst r1, #0x1000000
     beq .L_022179d0
-    bl func_0203b798
+    bl ActorDerivedRuntime_UpdateFrame
     b .L_02217ebc
 .L_022179d0:
     add r0, r5, #0x200

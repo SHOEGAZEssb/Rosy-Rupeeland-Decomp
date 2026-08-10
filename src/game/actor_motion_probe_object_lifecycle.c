@@ -14,7 +14,7 @@ extern void func_02004fe0(void *vector);
 extern void func_02005058(void *vector);
 extern void Actor_InitializeFromDescriptor(void *actor,
                                            const void *descriptor);
-extern void func_0203b798(void *actor);
+extern void ActorDerivedRuntime_UpdateFrame(void *actor);
 #ifdef __cplusplus
 }
 #endif
@@ -76,8 +76,8 @@ void func_0203c228(void *actor, const void *descriptor)
     Actor_InitializeFromDescriptor(actor, descriptor);
 }
 
-/* Forward actor to base per-frame update func_0203b798; return no value. */
+/* Forward actor to base per-frame update ActorDerivedRuntime_UpdateFrame; return no value. */
 void func_0203c234(void *actor)
 {
-    func_0203b798(actor);
+    ActorDerivedRuntime_UpdateFrame(actor);
 }

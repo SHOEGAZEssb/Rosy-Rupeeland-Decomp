@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/actor_mode_nibble_update.c.
 .text
 .extern Actor_UpdateAnimationState
-.extern func_0203b798
+.extern ActorDerivedRuntime_UpdateFrame
     .global func_0203c748
     .type func_0203c748, @function
 func_0203c748: ; 0x0203c748
@@ -10,7 +10,7 @@ func_0203c748: ; 0x0203c748
     ldr r1, [r4, #0x10]
     tst r1, #0x1000000
     beq .L_0203c764
-    bl func_0203b798
+    bl ActorDerivedRuntime_UpdateFrame
     ldmia sp!, {r4, pc}
 .L_0203c764:
     ldr r1, [r0, #0x0]

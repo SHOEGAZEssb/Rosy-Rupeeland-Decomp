@@ -14010,7 +14010,7 @@ build build/reports/actor_motion_integration_02032520.json: objdiff build/decomp
   base_object = build/decomp/asm/game/actor_motion_integration_02032520.o
 build build/reports/actor_motion_integration_02032520.txt: match_report build/reports/actor_motion_integration_02032520.json | tools/report_objdiff.py
   report_json = build/reports/actor_motion_integration_02032520.json
-  report_args = --section .text --function func_02032520 --require-exact
+  report_args = --section .text --function Actor_IntegrateMotion --require-exact
 build build/reports/actor_motion_integration.txt: phony build/reports/actor_motion_integration_02032520.txt
 
 build actor_motion_integration: phony build/decomp/src/game/actor_motion_integration.o build/decomp/asm/game/actor_motion_integration_02032520.o build/reports/actor_motion_integration.txt
@@ -16158,7 +16158,7 @@ build build/reports/actor_derived_runtime_object_update_0203b798.json: objdiff b
   base_object = build/decomp/asm/game/actor_derived_runtime_object_update_0203b798.o
 build build/reports/actor_derived_runtime_object_update_0203b798.txt: match_report build/reports/actor_derived_runtime_object_update_0203b798.json | tools/report_objdiff.py
   report_json = build/reports/actor_derived_runtime_object_update_0203b798.json
-  report_args = --section .text --function func_0203b798 --require-exact
+  report_args = --section .text --function ActorDerivedRuntime_UpdateFrame --require-exact
 build build/reports/actor_derived_runtime_object_update.txt: phony build/reports/actor_derived_runtime_object_update_0203b798.txt
 
 build actor_derived_runtime_object_update: phony build/decomp/src/game/actor_derived_runtime_object_update.o build/decomp/asm/game/actor_derived_runtime_object_update_0203b798.o build/reports/actor_derived_runtime_object_update.txt
@@ -16497,7 +16497,7 @@ build build/reports/actor_registered_subclass_frame_update_0203d540.json: objdif
   base_object = build/decomp/asm/game/actor_registered_subclass_frame_update_0203d540.o
 build build/reports/actor_registered_subclass_frame_update_0203d540.txt: match_report build/reports/actor_registered_subclass_frame_update_0203d540.json | tools/report_objdiff.py
   report_json = build/reports/actor_registered_subclass_frame_update_0203d540.json
-  report_args = --section .text --function func_0203d540 --require-exact
+  report_args = --section .text --function ActorRegisteredSubclass_UpdateFrame --require-exact
 build build/reports/actor_registered_subclass_frame_update.txt: phony build/reports/actor_registered_subclass_frame_update_0203d540.txt
 
 build actor_registered_subclass_frame_update: phony build/decomp/src/game/actor_registered_subclass_frame_update.o build/decomp/asm/game/actor_registered_subclass_frame_update_0203d540.o build/reports/actor_registered_subclass_frame_update.txt

@@ -15,7 +15,7 @@
 .extern func_02032370
 .extern Actor_UpdateAnimationState
 .extern Actor_GetCachedTerrainHeight
-.extern func_0203b798
+.extern ActorDerivedRuntime_UpdateFrame
 .extern func_0203bba4
 .extern func_02047d40
 .extern func_02048148
@@ -45,7 +45,7 @@ func_02045a60: ; 0x02045a60
     tst r0, #0x1000000
     beq .L_02045b20
     mov r0, r4
-    bl func_0203b798
+    bl ActorDerivedRuntime_UpdateFrame
     ldr r2, [r4, #0x280]
     cmp r2, #0x0
     beq .L_020461dc

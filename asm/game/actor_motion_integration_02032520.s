@@ -11,9 +11,9 @@
 .extern func_020adae4
 .extern func_020adc90
 
-    .global func_02032520
-    .type func_02032520, @function
-func_02032520: ; 0x02032520
+    .global Actor_IntegrateMotion
+    .type Actor_IntegrateMotion, @function
+Actor_IntegrateMotion: ; 0x02032520
     stmdb sp!, {r4, r5, r6, lr}
     sub sp, sp, #0x10
     mov r4, r0
@@ -266,5 +266,5 @@ func_02032520: ; 0x02032520
 .L_020328c4: .word 0xf5c
 .L_020328c8: .word 0xfae
 .L_020328cc: .word 0x99a
-    .size func_02032520, . - func_02032520
+    .size Actor_IntegrateMotion, . - Actor_IntegrateMotion
 

@@ -15,7 +15,7 @@
 .extern func_02031748
 .extern Actor_UpdateAnimationState
 .extern Actor_QueryTerrainCell
-.extern func_0203b798
+.extern ActorDerivedRuntime_UpdateFrame
 .extern func_020593dc
 .extern func_0205940c
 .extern func_020594a4
@@ -36,7 +36,7 @@ func_ov075_022148d0:
     ldr r1, [r5, #0x10]
     tst r1, #0x1000000
     beq .L_022148f0
-    bl func_0203b798
+    bl ActorDerivedRuntime_UpdateFrame
     b .L_02214d58
 .L_022148f0:
     ldr r1, [r0, #0x0]

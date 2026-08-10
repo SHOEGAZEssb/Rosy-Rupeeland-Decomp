@@ -1,7 +1,7 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov088/overlay088_recovery.c.
 .extern data_021052fc
-.extern func_0203b798
+.extern ActorDerivedRuntime_UpdateFrame
 
 .global func_ov088_0221b558
 func_ov088_0221b558:
@@ -28,5 +28,5 @@ func_ov088_0221b558:
     ldr ip, .L_0221b5ac
     bx ip
 .L_0221b5a8: .word data_021052fc
-.L_0221b5ac: .word func_0203b798
+.L_0221b5ac: .word ActorDerivedRuntime_UpdateFrame
 .size func_ov088_0221b558, . - func_ov088_0221b558

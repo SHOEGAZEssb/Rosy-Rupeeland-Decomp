@@ -47,7 +47,7 @@ static void clearActorVector(u8 *actor, u32 offset)
  * Returns no value; track, vector, correction, and virtual calls mutate actor
  * and presentation state.
  */
-void func_0203b798(void *self)
+void ActorDerivedRuntime_UpdateFrame(void *self)
 {
     u8 *actor = (u8 *)self;
     func_02031748(actor);
