@@ -3,7 +3,7 @@
 .extern func_020050a4
 .extern Actor_GetCachedTerrainHeight
 .extern Type7Actor_UpdateMotionTowardTransform
-.extern func_02047dd8
+.extern Type7Actor_ResetInteractionState
 .extern func_0204820c
 .extern func_0204832c
 .extern func_0204876c
@@ -102,7 +102,7 @@ func_02049148: ; 0x02049148
     cmpeq r0, #0x0
     bne .L_02049290
     mov r0, r4
-    bl func_02047dd8
+    bl Type7Actor_ResetInteractionState
 .L_02049290:
     mov r0, #0x0
     ldmia sp!, {r4, pc}
@@ -198,7 +198,7 @@ func_0204929c: ; 0x0204929c
     cmpeq r0, #0x0
     bne .L_020493ec
     mov r0, r4
-    bl func_02047dd8
+    bl Type7Actor_ResetInteractionState
 .L_020493ec:
     mov r0, #0x0
     ldmia sp!, {r4, pc}
@@ -299,7 +299,7 @@ func_020493f8: ; 0x020493f8
     cmp r0, #0x28000
     bge .L_02049554
     mov r0, r5
-    bl func_02047dd8
+    bl Type7Actor_ResetInteractionState
 .L_02049554:
     mov r0, #0x0
     ldmia sp!, {r4, r5, r6, pc}

@@ -12,7 +12,7 @@ extern "C" {
 #endif
 extern void AttachmentController_SetEnabled(void *state, s32 enabled);
 extern void ActorDerivedType1_SetSpecialModeEnabled(void *object, s32 value);
-extern void func_02047d40(void *actor);
+extern void Type7Actor_ResetMotionAndCooldown(void *actor);
 extern void func_0204ced8(void *state, u32 value);
 extern void func_0204cf28(void *state);
 #ifdef __cplusplus
@@ -21,7 +21,7 @@ extern void func_0204cf28(void *state);
 
 /*
  * Inputs are a type-seven actor and a zero/nonzero mode selector. A nonzero
- * selector clears +0x268 bit 0x400, calls func_02047d40, clears +0x14 bits
+ * selector clears +0x268 bit 0x400, calls Type7Actor_ResetMotionAndCooldown, clears +0x14 bits
  * two and four, and, when attachment +0xa8 exists, clears its +0x24 bit 0x10
  * while setting actor +0x14 bit 0x02000000. Zero sets bit 0x400, clears bits
  * 0x1000/0x2000, disables embedded state +0x2a8, sets actor +0x14 bits two and
@@ -37,7 +37,7 @@ void func_0204b078(void *self, s32 enabled)
 
     if (enabled != 0) {
         *(u32 *)(actor + 0x268) &= ~0x400;
-        func_02047d40(actor);
+        Type7Actor_ResetMotionAndCooldown(actor);
         *(u32 *)(actor + 0x14) &= ~6;
         attachment = *(u8 **)(actor + 0xa8);
         if (attachment != 0) {

@@ -4,7 +4,7 @@
 .extern data_020e18b8
 .extern func_0200b2c0
 .extern AttachmentController_SetEnabled
-.extern func_02047d40
+.extern Type7Actor_ResetMotionAndCooldown
 .extern func_020481dc
 .text
     .global func_0204a200
@@ -65,7 +65,7 @@ func_0204a200: ; 0x0204a200
     strh r2, [r1, #0x46]
     mov r0, r4
     strh r2, [r1, #0x66]
-    bl func_02047d40
+    bl Type7Actor_ResetMotionAndCooldown
     ldmia sp!, {r4, pc}
 .L_0204a2e0: .word data_020e18b8
 .L_0204a2e4: .word 0xfffff7b3

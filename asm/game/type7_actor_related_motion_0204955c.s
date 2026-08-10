@@ -2,9 +2,9 @@
 .extern func_02005058
 .extern func_020050a4
 .extern Type7Actor_UpdateMotionTowardTransform
-.extern func_02047dd8
-.extern func_02047f08
-.extern func_02047f20
+.extern Type7Actor_ResetInteractionState
+.extern Type7Actor_UpdateFlag14Bit2FromCondition
+.extern Type7Actor_UpdateFlag14Bit4FromCondition
 .extern func_02048148
 .extern func_0204820c
 .extern func_0204876c
@@ -25,7 +25,7 @@ func_0204955c: ; 0x0204955c
     ldr r1, [r4, #0x210]
     cmp r1, #0x0
     bne .L_02049598
-    bl func_02047dd8
+    bl Type7Actor_ResetInteractionState
     mov r0, #0x0
     b .L_02049604
 .L_02049598:
@@ -73,10 +73,10 @@ func_0204960c: ; 0x0204960c
     moveq r4, #0x0
     mov r0, r5
     mov r1, r4
-    bl func_02047f08
+    bl Type7Actor_UpdateFlag14Bit2FromCondition
     mov r0, r5
     mov r1, r4
-    bl func_02047f20
+    bl Type7Actor_UpdateFlag14Bit4FromCondition
     mov r0, r5
     ldr r2, [r0, #0x0]
     mov r1, #0x0
@@ -114,10 +114,10 @@ func_02049680: ; 0x02049680
     blx r2
     mov r0, r5
     mov r1, r4
-    bl func_02047f08
+    bl Type7Actor_UpdateFlag14Bit2FromCondition
     mov r0, r5
     mov r1, r4
-    bl func_02047f20
+    bl Type7Actor_UpdateFlag14Bit4FromCondition
     mov r0, #0x0
     ldmia sp!, {r3, r4, r5, pc}
 .size func_02049680, . - func_02049680
@@ -139,7 +139,7 @@ func_020496cc: ; 0x020496cc
     ldr r1, [r4, #0x210]
     cmp r1, #0x0
     bne .L_02049710
-    bl func_02047dd8
+    bl Type7Actor_ResetInteractionState
     mov r0, #0x0
     ldmia sp!, {r4, pc}
 .L_02049710:

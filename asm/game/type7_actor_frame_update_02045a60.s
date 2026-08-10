@@ -17,7 +17,7 @@
 .extern Actor_GetCachedTerrainHeight
 .extern ActorDerivedRuntime_UpdateFrame
 .extern Actor_UpdateGroundContactProbe
-.extern func_02047d40
+.extern Type7Actor_ResetMotionAndCooldown
 .extern func_02048148
 .extern func_02048b94
 .extern func_0204b1e0
@@ -78,7 +78,7 @@ Type7Actor_UpdateFrame: ; 0x02045a60
     str r1, [r4, #0x10]
     mov r1, #0x0
     str r1, [r4, #0x180]
-    bl func_02047d40
+    bl Type7Actor_ResetMotionAndCooldown
 .L_02045b20:
     ldr r0, [r4, #0xd0]
     tst r0, #0x4000

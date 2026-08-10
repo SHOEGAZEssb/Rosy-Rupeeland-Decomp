@@ -4,7 +4,7 @@
 .extern func_020050a4
 .extern Actor_GetCachedTerrainHeight
 .extern Type7Actor_UpdateMotionTowardTransform
-.extern func_02047dd8
+.extern Type7Actor_ResetInteractionState
 .extern func_0204820c
 .extern func_0204832c
 .extern func_0204876c
@@ -102,7 +102,7 @@ func_02048fe4: ; 0x02048fe4
     cmpeq r0, #0x0
     bne .L_0204913c
     mov r0, r4
-    bl func_02047dd8
+    bl Type7Actor_ResetInteractionState
 .L_0204913c:
     mov r0, #0x0
     ldmia sp!, {r4, r5, r6, pc}

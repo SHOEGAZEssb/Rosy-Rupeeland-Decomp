@@ -9,14 +9,14 @@
 .extern func_0206e590
 .extern func_02072b68
 .extern gGameWork
-.global func_02047dd8
-.global func_02047f08
-.global func_02047f20
-.type func_02047dd8, @function
-.type func_02047f08, @function
-.type func_02047f20, @function
+.global Type7Actor_ResetInteractionState
+.global Type7Actor_UpdateFlag14Bit2FromCondition
+.global Type7Actor_UpdateFlag14Bit4FromCondition
+.type Type7Actor_ResetInteractionState, @function
+.type Type7Actor_UpdateFlag14Bit2FromCondition, @function
+.type Type7Actor_UpdateFlag14Bit4FromCondition, @function
 
-func_02047dd8: ; 0x02047dd8
+Type7Actor_ResetInteractionState: ; 0x02047dd8
     stmdb sp!, {r3, r4, r5, lr}
     ldr r2, [r0, #0x0]
     mov r4, r0
@@ -96,7 +96,7 @@ func_02047dd8: ; 0x02047dd8
 .L_02047f00: .word 0x3fd
 .L_02047f04: .word data_020e1930
 
-func_02047f08: ; 0x02047f08
+Type7Actor_UpdateFlag14Bit2FromCondition: ; 0x02047f08
     cmp r1, #0x0
     ldr r1, [r0, #0x14]
     bicne r1, r1, #0x2
@@ -104,7 +104,7 @@ func_02047f08: ; 0x02047f08
     str r1, [r0, #0x14]
     bx lr
 
-func_02047f20: ; 0x02047f20
+Type7Actor_UpdateFlag14Bit4FromCondition: ; 0x02047f20
     cmp r1, #0x0
     ldr r1, [r0, #0x14]
     bicne r1, r1, #0x4
@@ -112,7 +112,7 @@ func_02047f20: ; 0x02047f20
     str r1, [r0, #0x14]
     bx lr
 
-.size func_02047dd8, func_02047f08 - func_02047dd8
-.size func_02047f08, func_02047f20 - func_02047f08
-.size func_02047f20, . - func_02047f20
+.size Type7Actor_ResetInteractionState, Type7Actor_UpdateFlag14Bit2FromCondition - Type7Actor_ResetInteractionState
+.size Type7Actor_UpdateFlag14Bit2FromCondition, Type7Actor_UpdateFlag14Bit4FromCondition - Type7Actor_UpdateFlag14Bit2FromCondition
+.size Type7Actor_UpdateFlag14Bit4FromCondition, . - Type7Actor_UpdateFlag14Bit4FromCondition
 

@@ -10,7 +10,7 @@
 .extern func_02005058
 .extern func_020050a4
 .extern func_02034a60
-.extern func_02047d40
+.extern Type7Actor_ResetMotionAndCooldown
 .extern func_02073ef8
 .extern func_ov062_02210674
 .extern func_ov088_0221a98c
@@ -106,7 +106,7 @@ func_ov088_0221b098:
     ldr r1, [r4, #0x268]
     bic r1, r1, #0x40000
     str r1, [r4, #0x268]
-    bl func_02047d40
+    bl Type7Actor_ResetMotionAndCooldown
     add r0, sp, #0x1c
     bl func_02005058
     add sp, sp, #0x2c

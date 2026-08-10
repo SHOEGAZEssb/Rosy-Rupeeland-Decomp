@@ -12,7 +12,7 @@ extern "C" {
 #endif
 extern void GameWork_SetFlag(void *gameWork, u32 flag);
 extern void GameWork_ClearFlag(void *gameWork, u32 flag);
-extern void func_02047dd8(void *actor);
+extern void Type7Actor_ResetInteractionState(void *actor);
 extern void func_0200b2c0(void *value, s32 x, s32 y, s32 z);
 extern void AttachmentController_SetEnabled(void *value, s32 mode);
 extern void func_0206e590(void *resource, s32 mode);
@@ -27,18 +27,18 @@ extern void func_020481dc(void *actor, u32 first, u32 second, s32 duration);
 /*
  * Input is a type-seven actor. If attached resource +0x234 exists and its
  * halfword +0x1a is at most one, set game-work flag 0x417. Run the full reset
- * in func_02047dd8, set cooldown +0x2a6 to 15, and zero the recovered vector-
+ * in Type7Actor_ResetInteractionState, set cooldown +0x2a6 to 15, and zero the recovered vector-
  * like values at +0x38, +0x88, and +0x98 through func_0200b2c0. Actor and
  * global game-work state may change; there is no return or direct hardware
  * access.
  */
-void func_02047d40(void *self)
+void Type7Actor_ResetMotionAndCooldown(void *self)
 {
     u8 *actor = (u8 *)self;
     u8 *resource = *(u8 **)(actor + 0x234);
     if (resource != 0 && *(u16 *)(resource + 0x1a) <= 1)
         GameWork_SetFlag(gGameWork, 0x417);
-    func_02047dd8(actor);
+    Type7Actor_ResetInteractionState(actor);
     *(u16 *)(actor + 0x2a6) = 15;
     func_0200b2c0(actor + 0x38, 0, 0, 0);
     func_0200b2c0(actor + 0x88, 0, 0, 0);
@@ -59,7 +59,7 @@ void func_02047d40(void *self)
  * animation, and game-work state may change. Heap_Free is the SDK-facing
  * allocator effect; this routine has no return value.
  */
-void func_02047dd8(void *self)
+void Type7Actor_ResetInteractionState(void *self)
 {
     u8 *actor = (u8 *)self;
     typedef void (*ActorModeCallback)(void *actor, s32 mode);
@@ -100,7 +100,7 @@ void func_02047dd8(void *self)
  * nonzero, or set it when condition is zero. No value is returned and there
  * are no SDK or hardware effects.
  */
-void func_02047f08(void *self, s32 condition)
+void Type7Actor_UpdateFlag14Bit2FromCondition(void *self, s32 condition)
 {
     u8 *actor = (u8 *)self;
     if (condition != 0)
@@ -114,7 +114,7 @@ void func_02047f08(void *self, s32 condition)
  * nonzero, or set it when condition is zero. No value is returned and there
  * are no SDK or hardware effects.
  */
-void func_02047f20(void *self, s32 condition)
+void Type7Actor_UpdateFlag14Bit4FromCondition(void *self, s32 condition)
 {
     u8 *actor = (u8 *)self;
     if (condition != 0)

@@ -18,7 +18,7 @@ extern s32 func_0204832c(void *actor);
 extern s32 func_0204820c(void *actor);
 extern s32 func_0204876c(void *actor, s32 finiteMode);
 extern void Type7Actor_UpdateMotionTowardTransform(void *actor, const void *transform);
-extern void func_02047dd8(void *actor);
+extern void Type7Actor_ResetInteractionState(void *actor);
 #ifdef __cplusplus
 }
 #endif
@@ -36,7 +36,7 @@ extern void func_02047dd8(void *actor);
  * copy current transform +0x18 to +0x78 while signed +0x264 is positive, or
  * saved transform +0x224 when flag four is set. Run
  * Type7Actor_UpdateMotionTowardTransform on +0x78; if both resulting
- * directional words +0x3c/+0x40 are zero, run func_02047dd8. Return zero on
+ * directional words +0x3c/+0x40 are zero, run Type7Actor_ResetInteractionState. Return zero on
  * every path. Actor random, target, callback, transform, motion, and resource
  * state may change; no direct hardware access occurs.
  */
@@ -73,6 +73,6 @@ s32 func_02048fe4(void *self)
         func_020050a4(actor + 0x78, actor + 0x224);
     Type7Actor_UpdateMotionTowardTransform(actor, actor + 0x78);
     if (*(s32 *)(actor + 0x3c) == 0 && *(s32 *)(actor + 0x40) == 0)
-        func_02047dd8(actor);
+        Type7Actor_ResetInteractionState(actor);
     return 0;
 }

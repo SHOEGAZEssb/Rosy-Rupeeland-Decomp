@@ -7,10 +7,10 @@
 .extern func_0206c978
 .extern func_02072b68
 .extern gGameWork
-.global func_02047f38
-.type func_02047f38, @function
+.global Type7Actor_ResetCallbackState
+.type Type7Actor_ResetCallbackState, @function
 
-func_02047f38: ; 0x02047f38
+Type7Actor_ResetCallbackState: ; 0x02047f38
     stmdb sp!, {r3, r4, r5, lr}
     ldr r2, [r0, #0x0]
     mov r1, #0x1
@@ -64,5 +64,5 @@ func_02047f38: ; 0x02047f38
 .L_02047ff8: .word gGameWork
 .L_02047ffc: .word 0x3fd
 
-.size func_02047f38, . - func_02047f38
+.size Type7Actor_ResetCallbackState, . - Type7Actor_ResetCallbackState
 

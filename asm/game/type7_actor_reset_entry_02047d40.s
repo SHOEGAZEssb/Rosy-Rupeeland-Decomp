@@ -2,12 +2,12 @@
 .text
 .extern GameWork_SetFlag
 .extern func_0200b2c0
-.extern func_02047dd8
+.extern Type7Actor_ResetInteractionState
 .extern gGameWork
-.global func_02047d40
-.type func_02047d40, @function
+.global Type7Actor_ResetMotionAndCooldown
+.type Type7Actor_ResetMotionAndCooldown, @function
 
-func_02047d40: ; 0x02047d40
+Type7Actor_ResetMotionAndCooldown: ; 0x02047d40
     stmdb sp!, {r4, lr}
     mov r4, r0
     ldr r0, [r4, #0x234]
@@ -25,7 +25,7 @@ func_02047d40: ; 0x02047d40
     bl GameWork_SetFlag
 .L_02047d7c:
     mov r0, r4
-    bl func_02047dd8
+    bl Type7Actor_ResetInteractionState
     mov r1, #0x0
     mov r2, r1
     mov r3, r1
@@ -48,5 +48,5 @@ func_02047d40: ; 0x02047d40
 .L_02047dd0: .word gGameWork
 .L_02047dd4: .word 0x417
 
-.size func_02047d40, . - func_02047d40
+.size Type7Actor_ResetMotionAndCooldown, . - Type7Actor_ResetMotionAndCooldown
 

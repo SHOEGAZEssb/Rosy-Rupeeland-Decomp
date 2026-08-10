@@ -17,7 +17,7 @@ extern void *Actor_GetAuxiliaryCollisionResource(void *actor);
 extern void func_020573fc(void *state, s32 value);
 extern void Type7Actor_SetMotionTargetWithTimer(void *entity, const VecFx32Object *position,
                           s32 angle);
-extern void func_02047d40(void *entity);
+extern void Type7Actor_ResetMotionAndCooldown(void *entity);
 extern void func_02048bcc(void *entity);
 extern void func_02048c10(void *entity);
 extern void func_0204a200(void *entity, s32 value);
@@ -147,7 +147,7 @@ s32 func_02018c3c(GamePhaseActorScriptVm *self)
         break;
     case 15:
         if (entity && (*(u32 *)(entity + 0x268) & 0x10))
-            func_02047d40(entity);
+            Type7Actor_ResetMotionAndCooldown(entity);
         break;
     }
     return 0;

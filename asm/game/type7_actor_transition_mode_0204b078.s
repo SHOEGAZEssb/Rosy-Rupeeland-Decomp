@@ -2,7 +2,7 @@
 .extern data_021052fc
 .extern AttachmentController_SetEnabled
 .extern ActorDerivedType1_SetSpecialModeEnabled
-.extern func_02047d40
+.extern Type7Actor_ResetMotionAndCooldown
 .extern func_0204ced8
 .extern func_0204cf28
 .text
@@ -15,7 +15,7 @@ func_0204b078: ; 0x0204b078
     beq .L_0204b0d0
     bic r1, r1, #0x400
     str r1, [r4, #0x268]
-    bl func_02047d40
+    bl Type7Actor_ResetMotionAndCooldown
     ldr r0, [r4, #0x14]
     bic r0, r0, #0x2
     bic r0, r0, #0x4

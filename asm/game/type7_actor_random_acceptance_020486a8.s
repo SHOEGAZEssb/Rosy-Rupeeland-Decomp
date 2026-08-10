@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/type7_actor_random_acceptance.c.
 .text
 .extern Type7Actor_HasSpecialCallbackPair
-.extern func_02047f38
+.extern Type7Actor_ResetCallbackState
 .extern func_020ada8c
 .extern genrand_int32
 .global func_020486a8
@@ -41,7 +41,7 @@ func_020486a8: ; 0x020486a8
     cmp r0, #0x0
     bne .L_02048730
     mov r0, r4
-    bl func_02047f38
+    bl Type7Actor_ResetCallbackState
     mov r0, #0x0
     ldmia sp!, {r4, pc}
 .L_02048730:
@@ -56,7 +56,7 @@ func_020486a8: ; 0x020486a8
     moveq r0, #0x1
     ldmeqia sp!, {r4, pc}
     mov r0, r4
-    bl func_02047f38
+    bl Type7Actor_ResetCallbackState
     mov r0, #0x0
     ldmia sp!, {r4, pc}
 .L_02048764:

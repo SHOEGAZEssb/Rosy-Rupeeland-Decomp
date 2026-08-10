@@ -19,7 +19,7 @@
     .extern func_020740c8
     .extern func_02072b68
     .extern Sound_Play
-    .extern func_02047d40
+    .extern Type7Actor_ResetMotionAndCooldown
     .extern func_020597fc
     .extern func_020740a4
     .extern data_021f3ecc
@@ -222,7 +222,7 @@ L_021fdc58:
     ldr r1, [r0, #0x268]
     bic r1, r1, #0x40000
     str r1, [r0, #0x268]
-    bl func_02047d40
+    bl Type7Actor_ResetMotionAndCooldown
 L_021fdc84:
     ldr r0, L_021fdcd4
     mov r1, #0x1f4

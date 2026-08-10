@@ -6,7 +6,7 @@
 extern "C" {
 #endif
 extern void *data_021052fc;
-extern void func_02047d40(void *actor);
+extern void Type7Actor_ResetMotionAndCooldown(void *actor);
 extern u32 func_02032e14(void *actor, u32 value);
 extern void func_020330fc(void *actor, u32 first, u32 second);
 extern void *Actor_GetCollection(void *actor);
@@ -22,7 +22,7 @@ typedef void (*ActorPointerMethod)(void *actor, void *value);
  * Clear actor flag 0x01000000 and perform type-specific cleanup. Type 2 calls
  * virtual method 0x114, then for byte 0x27e values 1/2/3/29/32 calls virtual
  * method 0xd4 with the runtime pointer at 0x2ea4. Type 7 delegates to
- * func_02047d40. Returns zero. The meaning of these type values is unconfirmed.
+ * Type7Actor_ResetMotionAndCooldown. Returns zero. The meaning of these type values is unconfirmed.
  */
 s32 func_02013930(GamePhaseActorScriptVm *self)
 {
@@ -40,7 +40,7 @@ s32 func_02013930(GamePhaseActorScriptVm *self)
             method(actor, *(void **)((u8 *)data_021052fc + 0x2ea4));
         }
     } else if (actor[0x4d] == 7) {
-        func_02047d40(actor);
+        Type7Actor_ResetMotionAndCooldown(actor);
     }
     return 0;
 }

@@ -9,7 +9,7 @@
 .extern func_0201e0ec
 .extern ActorDerivedType1_IsTargetStateEligible
 .extern ActorVector_DivideByScalar
-.extern func_02047dd8
+.extern Type7Actor_ResetInteractionState
 .extern func_0204b7bc
 .extern func_0204cff4
 .extern func_020a2894
@@ -225,7 +225,7 @@ Type7Actor_ApplyType2InteractionResponse: ; 0x02046e60
     beq .L_020471bc
 .L_0204718c:
     mov r0, r7
-    bl func_02047dd8
+    bl Type7Actor_ResetInteractionState
     add r0, r7, #0x200
     ldrsh r0, [r0, #0x46]
     cmp r0, #0x3c

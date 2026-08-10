@@ -11,9 +11,9 @@ extern "C" {
 extern void *func_020050a4(void *destination, const void *source);
 extern void func_02005058(void *value);
 extern void Type7Actor_UpdateMotionTowardTransform(void *actor, const void *transform);
-extern void func_02047dd8(void *actor);
-extern void func_02047f08(void *actor, s32 condition);
-extern void func_02047f20(void *actor, s32 condition);
+extern void Type7Actor_ResetInteractionState(void *actor);
+extern void Type7Actor_UpdateFlag14Bit2FromCondition(void *actor, s32 condition);
+extern void Type7Actor_UpdateFlag14Bit4FromCondition(void *actor, s32 condition);
 extern void func_02048148(void *actor);
 extern s32 func_0204820c(void *actor);
 extern s32 func_0204876c(void *actor, s32 finiteMode);
@@ -32,7 +32,7 @@ static void set_actor_mode(u8 *actor, s32 mode)
 
 /*
  * Input is a type-seven actor. Set actor flag 0x8000 and +0xd0 bit one. If
- * related object +0x210 is absent, reset through func_02047dd8 and return zero.
+ * related object +0x210 is absent, reset through Type7Actor_ResetInteractionState and return zero.
  * Otherwise call that object's virtual +0xb4 operation with a temporary
  * 16-byte value and the actor, update actor motion from the result, then
  * finalize the temporary value through func_02005058.
@@ -52,7 +52,7 @@ s32 func_0204955c(void *self)
     *(u32 *)(actor + 0xd0) |= 2;
     related = *(u8 **)(actor + 0x210);
     if (related == 0) {
-        func_02047dd8(actor);
+        Type7Actor_ResetInteractionState(actor);
         return 0;
     }
 
@@ -85,8 +85,8 @@ s32 func_0204960c(void *self)
     s32 hasResource = *(void **)(actor + 0x234) != 0;
     u8 *related;
 
-    func_02047f08(actor, hasResource);
-    func_02047f20(actor, hasResource);
+    Type7Actor_UpdateFlag14Bit2FromCondition(actor, hasResource);
+    Type7Actor_UpdateFlag14Bit4FromCondition(actor, hasResource);
     set_actor_mode(actor, 0);
     related = *(u8 **)(actor + 0x210);
     if (hasResource && related != 0)
@@ -106,8 +106,8 @@ s32 func_02049680(void *self)
     u8 *actor = (u8 *)self;
     s32 hasResource = *(void **)(actor + 0x234) != 0;
     set_actor_mode(actor, 0);
-    func_02047f08(actor, hasResource);
-    func_02047f20(actor, hasResource);
+    Type7Actor_UpdateFlag14Bit2FromCondition(actor, hasResource);
+    Type7Actor_UpdateFlag14Bit4FromCondition(actor, hasResource);
     return 0;
 }
 
@@ -136,7 +136,7 @@ s32 func_020496cc(void *self)
     *(u16 *)(actor + 0x24a) = (u16)-1;
     related = *(u8 **)(actor + 0x210);
     if (related == 0) {
-        func_02047dd8(actor);
+        Type7Actor_ResetInteractionState(actor);
         return 0;
     }
     if (func_0204876c(actor, 1) == 0) {

@@ -18,7 +18,7 @@ extern s32 func_020adcac(const void *first, const void *second);
 extern s32 func_020be328(s32 value);
 extern s32 Actor_GetCachedTerrainHeight(void *actor);
 extern void Type7Actor_UpdateMotionTowardTransform(void *actor, const void *transform);
-extern void func_02047dd8(void *actor);
+extern void Type7Actor_ResetInteractionState(void *actor);
 extern s32 func_0204820c(void *actor);
 extern s32 func_0204832c(void *actor);
 extern s32 func_0204876c(void *actor, s32 finiteMode);
@@ -75,7 +75,7 @@ s32 func_02049148(void *self)
         func_020050a4(actor + 0x78, actor + 0x224);
     Type7Actor_UpdateMotionTowardTransform(actor, actor + 0x78);
     if (*(s32 *)(actor + 0x3c) == 0 && *(s32 *)(actor + 0x40) == 0)
-        func_02047dd8(actor);
+        Type7Actor_ResetInteractionState(actor);
     return 0;
 }
 
@@ -119,7 +119,7 @@ s32 func_0204929c(void *self)
     func_0204a5dc(actor);
     Type7Actor_UpdateMotionTowardTransform(actor, actor + 0x78);
     if (*(s32 *)(actor + 0x3c) == 0 && *(s32 *)(actor + 0x40) == 0)
-        func_02047dd8(actor);
+        Type7Actor_ResetInteractionState(actor);
     return 0;
 }
 
@@ -175,6 +175,6 @@ s32 func_020493f8(void *self)
     Type7Actor_UpdateMotionTowardTransform(actor, actor + 0x78);
     if ((*(u32 *)(actor + 0x268) & 4) == 0
         && func_020adcac(actor + 0x1c, actor + 0x7c) < 0x28000)
-        func_02047dd8(actor);
+        Type7Actor_ResetInteractionState(actor);
     return 0;
 }

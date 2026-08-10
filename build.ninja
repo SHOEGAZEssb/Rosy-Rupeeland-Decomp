@@ -18202,7 +18202,7 @@ build build/reports/type7_actor_reset_02047d40.json: objdiff build/decomp/delink
   base_object = build/decomp/asm/game/type7_actor_reset_entry_02047d40.o
 build build/reports/type7_actor_reset_02047d40.txt: match_report build/reports/type7_actor_reset_02047d40.json | tools/report_objdiff.py
   report_json = build/reports/type7_actor_reset_02047d40.json
-  report_args = --section .text --function func_02047d40 --require-exact
+  report_args = --section .text --function Type7Actor_ResetMotionAndCooldown --require-exact
 build build/decomp/asm/game/type7_actor_reset_state_02047dd8.o: mwasmarm asm/game/type7_actor_reset_state_02047dd8.s
 build build/decomp/delinks/asm/game/type7_actor_reset_state_02047dd8.o: dsd_delink config/arm9/config.yaml config/arm9/delinks.txt config/arm9/symbols.txt config/arm9/relocs.txt
 build build/reports/type7_actor_reset_02047dd8.json: objdiff build/decomp/delinks/asm/game/type7_actor_reset_state_02047dd8.o | build/decomp/asm/game/type7_actor_reset_state_02047dd8.o
@@ -18210,7 +18210,7 @@ build build/reports/type7_actor_reset_02047dd8.json: objdiff build/decomp/delink
   base_object = build/decomp/asm/game/type7_actor_reset_state_02047dd8.o
 build build/reports/type7_actor_reset_02047dd8.txt: match_report build/reports/type7_actor_reset_02047dd8.json | tools/report_objdiff.py
   report_json = build/reports/type7_actor_reset_02047dd8.json
-  report_args = --section .text --function func_02047dd8 --function func_02047f08 --function func_02047f20 --require-exact
+  report_args = --section .text --function Type7Actor_ResetInteractionState --function Type7Actor_UpdateFlag14Bit2FromCondition --function Type7Actor_UpdateFlag14Bit4FromCondition --require-exact
 build type7_actor_reset: phony build/decomp/src/game/type7_actor_reset.o build/decomp/asm/game/type7_actor_reset_entry_02047d40.o build/decomp/asm/game/type7_actor_reset_state_02047dd8.o build/reports/type7_actor_reset_02047d40.txt build/reports/type7_actor_reset_02047dd8.txt
 
 type7_actor_callback_control_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
@@ -18224,7 +18224,7 @@ build build/reports/type7_actor_callback_reset_02047f38.json: objdiff build/deco
   base_object = build/decomp/asm/game/type7_actor_callback_reset_02047f38.o
 build build/reports/type7_actor_callback_reset_02047f38.txt: match_report build/reports/type7_actor_callback_reset_02047f38.json | tools/report_objdiff.py
   report_json = build/reports/type7_actor_callback_reset_02047f38.json
-  report_args = --section .text --function func_02047f38 --require-exact
+  report_args = --section .text --function Type7Actor_ResetCallbackState --require-exact
 build build/decomp/asm/game/type7_actor_callback_random_02048000.o: mwasmarm asm/game/type7_actor_callback_random_02048000.s
 build build/decomp/delinks/asm/game/type7_actor_callback_random_02048000.o: dsd_delink config/arm9/config.yaml config/arm9/delinks.txt config/arm9/symbols.txt config/arm9/relocs.txt
 build build/reports/type7_actor_callback_random_02048000.json: objdiff build/decomp/delinks/asm/game/type7_actor_callback_random_02048000.o | build/decomp/asm/game/type7_actor_callback_random_02048000.o

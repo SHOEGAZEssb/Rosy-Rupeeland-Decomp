@@ -30,7 +30,7 @@ extern void func_020740c8(void *context, void *sprite, s32 first,
                          s32 second, s32 third);
 extern void func_02072b68(void *sprite, s32 animation);
 extern void Sound_Play(void *sound, s32 id, s32 parameter);
-extern void func_02047d40(void *actor);
+extern void Type7Actor_ResetMotionAndCooldown(void *actor);
 extern void func_020597fc(void *sound, s32 id);
 extern void func_020740a4(void *spriteContext);
 #ifdef __cplusplus
@@ -50,7 +50,7 @@ typedef void (*Overlay033ActorMethod)(void *actor, s32 enabled);
  * the primary sprite from its +0x21C record, activates the optional secondary,
  * and starts a 30-frame upward offset. While waiting it periodically retriggers
  * sound 0x1F4. State 4 moves +0x44, keeps the secondary aligned, and on finish
- * clears its 0x40000 flag, restores it through func_02047d40, fades/stops the
+ * clears its 0x40000 flag, restores it through Type7Actor_ResetMotionAndCooldown, fades/stops the
  * recovered sounds, and advances. State 5 returns 1; all other calls update the
  * sprite context and return 0. Dialog, audio, animation, actor, and render state
  * change; there is no direct MMIO.
@@ -131,7 +131,7 @@ extern "C" s32 func_ov033_021fd9a0(void *scene)
         if (func_02091cf0((u8 *)scene + 0x84)) {
             if (secondary != 0) {
                 FIELD(u32, secondary, 0x268) &= ~0x40000u;
-                func_02047d40(secondary);
+                Type7Actor_ResetMotionAndCooldown(secondary);
             }
             func_020597fc(gSoundContext, 0x1f4);
             func_0205929c(gSoundContext, 0x67, 0x1e);

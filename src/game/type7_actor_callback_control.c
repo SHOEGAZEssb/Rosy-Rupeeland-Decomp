@@ -42,7 +42,7 @@ static void enter_callback_mode(u8 *actor)
  * callback, owned heap, animation, and game-work state may change; Heap_Free is
  * the SDK-facing allocator effect. This routine has no return value.
  */
-void func_02047f38(void *self)
+void Type7Actor_ResetCallbackState(void *self)
 {
     u8 *actor = (u8 *)self;
     void *resource;

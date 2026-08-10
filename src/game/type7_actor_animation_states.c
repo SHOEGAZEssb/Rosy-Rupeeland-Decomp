@@ -9,7 +9,7 @@ extern "C" {
 #endif
 extern void func_0200b2c0(void *value, s32 x, s32 y, s32 z);
 extern s32 func_0204a5b8(void *actor);
-extern void func_02047dd8(void *actor);
+extern void Type7Actor_ResetInteractionState(void *actor);
 extern s32 Actor_GetCachedTerrainHeight(void *actor);
 extern s32 func_020be328(s32 value);
 extern void func_0204b7bc(void *actor, s32 mode);
@@ -35,7 +35,7 @@ s32 func_02048e6c(void *self)
  * Input is a type-seven actor. Clear directional words +0x3c/+0x40 and zero
  * vector-like values +0x88/+0x98. With no +0x280 target, return zero. Unless
  * actor flag 0x40 is set, flag 0x20 plus func_0204a5b8 acceptance clears that
- * flag and runs func_02047dd8; otherwise flag 0x80 resets when the absolute
+ * flag and runs Type7Actor_ResetInteractionState; otherwise flag 0x80 resets when the absolute
  * Actor_GetCachedTerrainHeight difference between actor and target is below 0x20000.
  *
  * If no reset occurs, select animation eleven below height +0x1dc, animation
@@ -58,13 +58,13 @@ s32 func_02048e98(void *self)
         if ((*(u32 *)(actor + 0x268) & 0x20) != 0
             && func_0204a5b8(actor) != 0) {
             *(u32 *)(actor + 0x268) &= ~0x20;
-            func_02047dd8(actor);
+            Type7Actor_ResetInteractionState(actor);
             return 0;
         }
         if ((*(u32 *)(actor + 0x268) & 0x80) != 0
             && func_020be328(Actor_GetCachedTerrainHeight(actor)
                              - Actor_GetCachedTerrainHeight(target)) < 0x20000) {
-            func_02047dd8(actor);
+            Type7Actor_ResetInteractionState(actor);
             return 0;
         }
     }

@@ -10,7 +10,7 @@ extern "C" {
 extern s32 Type7Actor_HasSpecialCallbackPair(const void *actor);
 extern u32 genrand_int32(void);
 extern s32 func_020ada8c(s32 value, s32 divisor);
-extern void func_02047f38(void *actor);
+extern void Type7Actor_ResetCallbackState(void *actor);
 #ifdef __cplusplus
 }
 #endif
@@ -19,9 +19,9 @@ extern void func_02047f38(void *actor);
  * Input is a type-seven actor. Return one unconditionally when collision flag
  * +0xd0/0x40000 is set or record subtype +0x54 is one. For subtype zero, return
  * one when Type7Actor_HasSpecialCallbackPair recognizes the callback or with four-in-five random
- * outcomes; on the remaining outcome run func_02047f38 and return zero. For
+ * outcomes; on the remaining outcome run Type7Actor_ResetCallbackState and return zero. For
  * subtype two, return one on random modulo three equal to zero, otherwise run
- * func_02047f38 and return zero. Other subtypes return zero. The random stream,
+ * Type7Actor_ResetCallbackState and return zero. Other subtypes return zero. The random stream,
  * actor callback, animation, resource, and game-work state may change through
  * the reset; there is no direct hardware access.
  */
@@ -40,13 +40,13 @@ s32 func_020486a8(void *self)
             return 1;
         if (func_020ada8c((s32)(genrand_int32() & 0x7fffffff), 5) != 0)
             return 1;
-        func_02047f38(actor);
+        Type7Actor_ResetCallbackState(actor);
         return 0;
     }
     if (subtype == 2) {
         if (func_020ada8c((s32)(genrand_int32() & 0x7fffffff), 3) == 0)
             return 1;
-        func_02047f38(actor);
+        Type7Actor_ResetCallbackState(actor);
         return 0;
     }
     return 0;

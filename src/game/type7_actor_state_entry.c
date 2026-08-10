@@ -14,7 +14,7 @@ extern "C" {
 #endif
 extern void func_0200b2c0(void *value, s32 x, s32 y, s32 z);
 extern void AttachmentController_SetEnabled(void *value, s32 mode);
-extern void func_02047d40(void *actor);
+extern void Type7Actor_ResetMotionAndCooldown(void *actor);
 extern void func_020481dc(void *actor, u32 first, u32 second, s32 duration);
 #ifdef __cplusplus
 }
@@ -36,7 +36,7 @@ static void clear_motion_vectors(u8 *actor)
  *
  * When zero, clear actor flags 0x84c, zero halfwords +0x250/+0x264/+0x24e,
  * set +0x256/+0x25a to 30, clear flags 0x3000, reset subobject +0x2a8 in mode
- * zero, clear +0x246/+0x266, and run the full func_02047d40 reset. Actor,
+ * zero, clear +0x246/+0x266, and run the full Type7Actor_ResetMotionAndCooldown reset. Actor,
  * callback, timer, subobject, flag, and motion state may change. No value is
  * returned and there are no direct SDK or hardware effects.
  */
@@ -62,7 +62,7 @@ void func_0204a200(void *self, s32 condition)
     AttachmentController_SetEnabled(actor + 0x2a8, 0);
     *(u16 *)(actor + 0x246) = 0;
     *(u16 *)(actor + 0x266) = 0;
-    func_02047d40(actor);
+    Type7Actor_ResetMotionAndCooldown(actor);
 }
 
 /*

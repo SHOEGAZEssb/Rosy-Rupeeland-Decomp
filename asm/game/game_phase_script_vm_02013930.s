@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/game_phase_script_vm_actor_interaction_opcodes.c.
 .text
 .extern data_021052fc
-.extern func_02047d40
+.extern Type7Actor_ResetMotionAndCooldown
 
     .global func_02013930
 func_02013930: ; 0x02013930
@@ -43,7 +43,7 @@ L_02013990:
 L_020139b8:
     cmp r1, #0x7
     bne L_020139c4
-    bl func_02047d40
+    bl Type7Actor_ResetMotionAndCooldown
 L_020139c4:
     mov r0, #0x0
     ldmia sp!, {r4, pc}

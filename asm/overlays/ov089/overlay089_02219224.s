@@ -12,7 +12,7 @@
 .extern func_020050a4
 .extern Actor_SetDirectionFromVector
 .extern ActorDerivedType1_ResetToBaseState
-.extern func_02047d40
+.extern Type7Actor_ResetMotionAndCooldown
 .extern func_0204b078
 .extern func_ov062_0220fe78
 .extern func_ov062_02210674
@@ -148,7 +148,7 @@ func_ov089_02219224:
     ldr r1, [r0, #0x268]
     bic r1, r1, #0x40000
     str r1, [r0, #0x268]
-    bl func_02047d40
+    bl Type7Actor_ResetMotionAndCooldown
 .L_02219410:
     ldr r1, .L_02219530
     ldr r3, .L_02219534
