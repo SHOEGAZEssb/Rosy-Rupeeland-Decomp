@@ -2,7 +2,7 @@
 
 /* Exact fallback; see src/overlays/ov036/overlay036_quad_controller_render.c for documented portable C. */
 
-    .extern func_02077a24
+    .extern Graphics3DLight_Apply
 
     .global func_ov036_022029b0
 func_ov036_022029b0:
@@ -12,7 +12,7 @@ func_ov036_022029b0:
 L_022029bc:
     mov r1, r4
     add r0, r5, r4, lsl #0x4
-    bl func_02077a24
+    bl Graphics3DLight_Apply
     add r4, r4, #0x1
     cmp r4, #0x4
     blt L_022029bc

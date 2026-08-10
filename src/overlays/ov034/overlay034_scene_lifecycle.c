@@ -14,11 +14,11 @@ extern "C" {
 #endif
 extern void func_02071e04(void *resourceContext, void *resource);
 extern void func_020597fc(void *sound, s32 id);
-extern void func_02077ac4(void *descriptorArray);
+extern void Graphics3DLightSet_Destroy(void *descriptorArray);
 extern void func_ov034_021fce00(void *object);
 extern void Heap_Free(void *allocation);
 extern void func_02077b44(void *object);
-extern void func_02077a24(void *descriptor, s32 index);
+extern void Graphics3DLight_Apply(void *descriptor, s32 index);
 extern void func_ov034_021fd90c(s32 lightMask, s32 mode, s32 cullMode,
                                s32 polygonId, s32 alpha, s32 miscBits);
 extern void func_ov034_021fd938(s32 format, s32 transform, s32 sizeS, s32 sizeT,
@@ -53,7 +53,7 @@ extern "C" void *func_ov034_021fdda4(void *scene)
     func_02071e04(data_020f4e18[0], FIELD(void *, scene, 4));
     REG16(0x04000060) &= 0xcfef;
     func_020597fc(gSoundContext, 0x1cd);
-    func_02077ac4((u8 *)scene + 0x170);
+    Graphics3DLightSet_Destroy((u8 *)scene + 0x170);
     return scene;
 }
 
@@ -84,7 +84,7 @@ extern "C" void func_ov034_021fde6c(void *scene)
     if (mode == 1) {
         func_02077b44((u8 *)scene + 0x48);
         for (s32 i = 0; i < 4; ++i)
-            func_02077a24((u8 *)scene + 0x170 + i * 0x10, i);
+            Graphics3DLight_Apply((u8 *)scene + 0x170 + i * 0x10, i);
         func_ov034_021fd90c(1, 0, 2, 0x23, 0x1f, 0);
         func_ov034_021fd938(0, 0, 0, 0, 0, 0, 0, 0);
         for (s32 i = 0; i < FIELD(s32, scene, 0x1b0); ++i)

@@ -8,7 +8,7 @@
 extern "C" {
 #endif
 extern void func_020773e4(void *, void *);
-extern void func_02077a24(void *, s32);
+extern void Graphics3DLight_Apply(void *, s32);
 extern void func_02077b44(void *);
 extern void func_020b0558(void);
 extern s32 func_ov043_0220b9bc(void *);
@@ -61,7 +61,7 @@ extern "C" void func_ov026_0220046c(void *scene)
     *(volatile u32 *)0x04000444 = 0;
     func_02077b44((u8 *)scene + 0x1c0);
     for (s32 i = 0; i < 4; ++i)
-        func_02077a24((u8 *)scene + 0x180 + i * 0x10, i);
+        Graphics3DLight_Apply((u8 *)scene + 0x180 + i * 0x10, i);
 
     void *effect = FIELD(void *, scene, 0x160);
     void *central = FIELD(void *, scene, 0x158);

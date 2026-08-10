@@ -16,7 +16,7 @@ extern void Heap_Free(void *allocation);
 extern void func_02095308(void *list);
 extern void func_02077688(void *manager);
 extern void func_02071e04(void *archive, void *resource);
-extern void func_02077ac4(void *records);
+extern void Graphics3DLightSet_Destroy(void *records);
 extern void func_020720d4(void *resourceSet);
 #ifdef __cplusplus
 }
@@ -42,7 +42,7 @@ extern "C" void *func_ov036_02202e58(void *controller)
     func_02095308((u8 *)controller + 0x110);
     func_02077688(FIELD(void *, FIELD(void *, controller, 0xf4), 0));
     func_02071e04(data_020f4e18, FIELD(void *, controller, 0x15c));
-    func_02077ac4((u8 *)controller + 0x160);
+    Graphics3DLightSet_Destroy((u8 *)controller + 0x160);
     FIELD(const void *, controller, 0x110) = data_ov036_02205eac;
     func_02095308((u8 *)controller + 0x110);
     FIELD(const void *, controller, 0x100) = data_ov036_02205eac;
@@ -70,7 +70,7 @@ extern "C" void *func_ov036_02202f04(void *controller)
     func_02095308((u8 *)controller + 0x110);
     func_02077688(FIELD(void *, FIELD(void *, controller, 0xf4), 0));
     func_02071e04(data_020f4e18, FIELD(void *, controller, 0x15c));
-    func_02077ac4((u8 *)controller + 0x160);
+    Graphics3DLightSet_Destroy((u8 *)controller + 0x160);
     FIELD(const void *, controller, 0x110) = data_ov036_02205eac;
     func_02095308((u8 *)controller + 0x110);
     FIELD(const void *, controller, 0x100) = data_ov036_02205eac;

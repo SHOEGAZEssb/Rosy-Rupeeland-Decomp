@@ -21,7 +21,7 @@ extern void func_02071e04(void *, void *);
 extern void func_020720d4(void *);
 extern void func_02075020(void *);
 extern void func_020775d8(void *);
-extern void func_02077ac4(void *);
+extern void Graphics3DLightSet_Destroy(void *);
 extern void func_02092314(void *, s32, s32);
 extern void func_020923a0(void *);
 extern void func_02092418(void *);
@@ -68,7 +68,7 @@ static void teardown_scene(void *scene)
     func_02095308((u8 *)scene + 0x304);
     FIELD(const void *, scene, 0x2f4) = data_ov026_022048b8;
     func_02095308((u8 *)scene + 0x2f4);
-    func_02077ac4((u8 *)scene + 0x180);
+    Graphics3DLightSet_Destroy((u8 *)scene + 0x180);
     for (s32 off = 0xac; off >= 0x7c; off -= 0xc)
         func_020720d4((u8 *)scene + off);
 }

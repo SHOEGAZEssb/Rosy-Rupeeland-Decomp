@@ -12,7 +12,7 @@
     .extern func_0207419c
     .extern func_02075290
     .extern func_020775d8
-    .extern func_02077ac4
+    .extern Graphics3DLightSet_Destroy
     .extern func_02077df8
     .extern func_020923a0
     .extern func_02092418
@@ -127,7 +127,7 @@ L_021ff270:
     str r1, [r4, #0x3d8]
     bl func_02095308
     add r0, r4, #0x2d0
-    bl func_02077ac4
+    bl Graphics3DLightSet_Destroy
     add r0, r4, #0x290
     bl func_ov017_021fd780
     add r0, r4, #0x264

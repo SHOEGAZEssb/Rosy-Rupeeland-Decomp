@@ -16,7 +16,7 @@ extern "C" {
 #endif
 extern void *func_ov035_021fce00(void *object, void *argument);
 extern void func_020720c0(void *state);
-extern void func_02077a8c(void *records);
+extern void Graphics3DLightSet_Init(void *records);
 extern void func_ov035_021fdce8(void *collection);
 extern void func_020720e8(void *state, void *resourceContext, s32 first,
                          s32 second, s32 third);
@@ -114,7 +114,7 @@ extern "C" void *func_ov035_021fff38(void *scene, void *resourceOwner,
     func_020720c0((u8 *)scene + 0xdc);
     func_020720c0((u8 *)scene + 0xe8);
     func_020720c0((u8 *)scene + 0xf4);
-    func_02077a8c((u8 *)scene + 0x120);
+    Graphics3DLightSet_Init((u8 *)scene + 0x120);
     func_ov035_021fdce8((u8 *)scene + 0x160);
     func_ov035_021fdce8((u8 *)scene + 0x170);
     FIELD(s32, scene, 0xc0) = 1;

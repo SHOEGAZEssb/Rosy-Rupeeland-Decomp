@@ -17,7 +17,7 @@ extern void func_02092418(void *);
 extern void DebugText_BeginFrame(void);
 extern void func_020923a0(void *);
 extern void func_ov012_021fce3c(void *);
-extern void func_02077ac4(void *);
+extern void Graphics3DLightSet_Destroy(void *);
 extern void Scene_Destroy(void *);
 #ifdef __cplusplus
 }
@@ -48,7 +48,7 @@ void *func_ov012_021fd4fc(void *state)
     DebugText_BeginFrame();
     func_020923a0((u8 *)state + 0x1c4);
     func_ov012_021fce3c((u8 *)state + 0x158);
-    func_02077ac4((u8 *)state + 0x114);
+    Graphics3DLightSet_Destroy((u8 *)state + 0x114);
     Scene_Destroy(state);
     Heap_Free(state);
     return state;

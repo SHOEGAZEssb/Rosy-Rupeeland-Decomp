@@ -10,7 +10,7 @@ extern u8 data_ov017_022016e0[];
 extern "C" {
 #endif
 extern void func_020779d8(void *, void *);
-extern void func_02077a24(void *, s32);
+extern void Graphics3DLight_Apply(void *, s32);
 extern void func_02077b44(void *);
 extern void func_02077e24(void *);
 extern void func_020b0558(void);
@@ -43,7 +43,7 @@ extern "C" void func_ov017_022008ac(void *state)
     func_02077b44((u8 *)state + 0x310);
 
     for (i = 0; i < 4; i++) {
-        func_02077a24((u8 *)state + 0x2d0 + i * 0x10, i);
+        Graphics3DLight_Apply((u8 *)state + 0x2d0 + i * 0x10, i);
     }
 
     *(volatile u32 *)0x040004c4 = 0;

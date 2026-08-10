@@ -37,7 +37,7 @@ extern void *func_02077308(void *, void *);
 extern void *func_020774ac(void *, s32, s32);
 extern void *func_02077624(void *);
 extern void func_020779ac(void *, void *);
-extern void func_02077a8c(void *);
+extern void Graphics3DLightSet_Init(void *);
 extern void func_02077ae8(void *);
 extern void func_02091b6c(void *);
 extern s32 func_0209189c(void *, s32, s32);
@@ -101,7 +101,7 @@ extern "C" void *func_ov026_021ff8a0(void *scene, s32 scene_id,
     FIELD(s32, scene, 0x64) = range_end;
     for (s32 off = 0x7c; off <= 0xac; off += 0xc)
         func_020720c0((u8 *)scene + off);
-    func_02077a8c((u8 *)scene + 0x180);
+    Graphics3DLightSet_Init((u8 *)scene + 0x180);
     func_02077ae8((u8 *)scene + 0x1c0);
     func_02077ae8((u8 *)scene + 0x254);
     func_ov026_021ff7f0((u8 *)scene + 0x2f4);

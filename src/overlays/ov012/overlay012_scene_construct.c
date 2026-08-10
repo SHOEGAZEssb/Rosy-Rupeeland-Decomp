@@ -22,7 +22,7 @@ extern void Scene_Init(void *);
 extern void Scene_SetFlags03(void *);
 extern void func_02091e28(void *);
 extern void func_02077ae8(void *);
-extern void func_02077a8c(void *);
+extern void Graphics3DLightSet_Init(void *);
 extern void func_02092364(void *);
 extern void func_020923a4(void *);
 extern void func_020755bc(void *);
@@ -76,7 +76,7 @@ void *func_ov012_021fd170(void *state)
     FIELD(const void *, state, 0x00) = data_ov012_021fe670;
     FIELD(const void *, state, 0x24) = data_ov012_021fe6a4;
     func_02077ae8((u8 *)state + 0x80);
-    func_02077a8c((u8 *)state + 0x114);
+    Graphics3DLightSet_Init((u8 *)state + 0x114);
     func_ov012_021fce00((u8 *)state + 0x158);
     func_02092364((u8 *)state + 0x1c4);
     func_020923a4((u8 *)state + 0x1c4);

@@ -45,7 +45,7 @@ extern void func_02075358(void *, s32);
 extern void *func_020774ac(void *, s32, s32);
 extern void *func_02077624(void *);
 extern void func_020779ac(void *, void *);
-extern void func_02077a8c(void *);
+extern void Graphics3DLightSet_Init(void *);
 extern void func_02077ae8(void *);
 extern void *func_02077d7c(void *, void *, void *, s32, s32);
 extern s32 func_020918f4(void *, s32);
@@ -120,7 +120,7 @@ extern "C" void *func_ov017_021feab4(void *state, s32 effectCount,
     func_020720c0((u8 *)state + 0x248);
     func_ov017_021fd744((u8 *)state + 0x264);
     func_ov017_021fd744((u8 *)state + 0x290);
-    func_02077a8c((u8 *)state + 0x2d0);
+    Graphics3DLightSet_Init((u8 *)state + 0x2d0);
     func_02077ae8((u8 *)state + 0x310);
     func_ov017_021ff150((u8 *)state + 0x3ac);
     func_ov017_021fe9c0((u8 *)state + 0x3d8);

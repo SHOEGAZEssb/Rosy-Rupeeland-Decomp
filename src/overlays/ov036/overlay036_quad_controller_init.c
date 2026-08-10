@@ -16,7 +16,7 @@ extern "C" {
 extern void *func_ov036_021fce00(void *controller, s32 argument);
 extern void func_020720c0(void *resourceSet);
 extern void func_ov036_021fe218(void *list);
-extern void func_02077a8c(void *records);
+extern void Graphics3DLightSet_Init(void *records);
 extern void func_020720e8(void *resourceSet, void *archive,
                           s32 firstId, s32 secondId, s32 thirdId);
 extern void func_020779ac(void *owner, void *resourceSet);
@@ -65,7 +65,7 @@ extern "C" void *func_ov036_022021b0(void *controller, void *owner,
     func_020720c0((u8 *)controller + 0xe8);
     func_ov036_021fe218((u8 *)controller + 0xfc);
     func_ov036_021fe218((u8 *)controller + 0x10c);
-    func_02077a8c((u8 *)controller + 0x11c);
+    Graphics3DLightSet_Init((u8 *)controller + 0x11c);
 
     func_020720e8((u8 *)controller + 0xdc, data_020f4e18,
                   0x600c, 0x600d, 0x600e);

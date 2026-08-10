@@ -21,7 +21,7 @@ extern void func_020720d4(void *);
 extern void func_0207419c(void *);
 extern void func_02075290(void *);
 extern void func_020775d8(void *);
-extern void func_02077ac4(void *);
+extern void Graphics3DLightSet_Destroy(void *);
 extern void func_02077df8(void *);
 extern void func_020923a0(void *);
 extern void func_02092418(void *);
@@ -104,7 +104,7 @@ extern "C" void *func_ov017_021ff16c(void *state)
     func_02095308((u8 *)state + 0x3ec);
     FIELD(const u32 *, state, 0x3d8) = data_ov017_02201628;
     func_02095308((u8 *)state + 0x3d8);
-    func_02077ac4((u8 *)state + 0x2d0);
+    Graphics3DLightSet_Destroy((u8 *)state + 0x2d0);
     func_ov017_021fd780((u8 *)state + 0x290);
     func_ov017_021fd780((u8 *)state + 0x264);
     func_020720d4((u8 *)state + 0x248);

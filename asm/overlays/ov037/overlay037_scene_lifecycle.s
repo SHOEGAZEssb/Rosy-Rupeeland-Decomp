@@ -5,7 +5,7 @@
     .extern func_02095308
     .extern func_02077688
     .extern func_02071e04
-    .extern func_02077ac4
+    .extern Graphics3DLightSet_Destroy
     .extern func_020720d4
     .extern Heap_Free
     .extern data_ov037_021fedd0
@@ -30,7 +30,7 @@ func_ov037_021fdbb0:
     ldr r0, [r0, #0x0]
     bl func_02071e04
     add r0, r4, #0x14c
-    bl func_02077ac4
+    bl Graphics3DLightSet_Destroy
     ldr r1, L_021fdc54
     add r0, r4, #0x13c
     str r1, [r4, #0x13c]
@@ -76,7 +76,7 @@ func_ov037_021fdc58:
     ldr r0, [r0, #0x0]
     bl func_02071e04
     add r0, r4, #0x14c
-    bl func_02077ac4
+    bl Graphics3DLightSet_Destroy
     ldr r1, L_021fdd04
     add r0, r4, #0x13c
     str r1, [r4, #0x13c]

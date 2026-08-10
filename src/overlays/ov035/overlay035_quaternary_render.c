@@ -8,7 +8,7 @@
 extern "C" {
 #endif
 extern void func_02077b44(void *camera);
-extern void func_02077a24(void *record, s32 index);
+extern void Graphics3DLight_Apply(void *record, s32 index);
 extern void func_ov048_0220baec(s32 x0, s32 y0, s32 x1, s32 y1,
                                s32 depth, s32 width, s32 height);
 extern void func_020773e4(void *resourceSet, void *transform);
@@ -30,7 +30,7 @@ extern "C" void func_ov035_022007ec(void *scene)
 {
     func_02077b44((u8 *)scene + 0x0c);
     for (s32 i = 0; i < 4; ++i)
-        func_02077a24((u8 *)scene + 0x120 + i * 0x10, i);
+        Graphics3DLight_Apply((u8 *)scene + 0x120 + i * 0x10, i);
 
     /* Confirmed screen-edge rectangles; parameter semantics remain inferred. */
     func_ov048_0220baec(-0xc0, 0x180, 0xc0, 0, -0x80, 0x18, 0x10);

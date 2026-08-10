@@ -11456,7 +11456,7 @@ build build/reports/graphics_3d_light.json: objdiff build/decomp/delinks/src/gra
 
 build build/reports/graphics_3d_light.txt: match_report build/reports/graphics_3d_light.json | tools/report_objdiff.py
   report_json = build/reports/graphics_3d_light.json
-  report_args = --section .text --function func_02077a04 --function func_02077a20 --function func_02077a24
+  report_args = --section .text --function Graphics3DLight_Init --function Graphics3DLight_DestroyNoOp --function Graphics3DLight_Apply
 
 build build/reports/graphics_3d_light_set.json: objdiff build/decomp/delinks/src/graphics/graphics_3d_light_set.o | build/decomp/src/graphics/graphics_3d_light_set.o
   target_object = build/decomp/delinks/src/graphics/graphics_3d_light_set.o
@@ -11464,7 +11464,7 @@ build build/reports/graphics_3d_light_set.json: objdiff build/decomp/delinks/src
 
 build build/reports/graphics_3d_light_set.txt: match_report build/reports/graphics_3d_light_set.json | tools/report_objdiff.py
   report_json = build/reports/graphics_3d_light_set.json
-  report_args = --section .text --function func_02077a8c --function func_02077ac4
+  report_args = --section .text --function Graphics3DLightSet_Init --function Graphics3DLightSet_Destroy
 
 build build/reports/graphics_3d_scene_state.json: objdiff build/decomp/delinks/src/graphics/graphics_3d_scene_state.o | build/decomp/src/graphics/graphics_3d_scene_state.o
   target_object = build/decomp/delinks/src/graphics/graphics_3d_scene_state.o

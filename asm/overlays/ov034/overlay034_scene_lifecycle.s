@@ -4,11 +4,11 @@
 
     .extern func_02071e04
     .extern func_020597fc
-    .extern func_02077ac4
+    .extern Graphics3DLightSet_Destroy
     .extern func_ov034_021fce00
     .extern Heap_Free
     .extern func_02077b44
-    .extern func_02077a24
+    .extern Graphics3DLight_Apply
     .extern func_ov034_021fd90c
     .extern func_ov034_021fd938
     .extern func_ov034_021fce50
@@ -58,7 +58,7 @@ L_021fddec:
     ldr r0, [r2, #0x0]
     bl func_020597fc
     add r0, r4, #0x170
-    bl func_02077ac4
+    bl Graphics3DLightSet_Destroy
     mov r0, r4
     ldmia sp!, {r3, r4, r5, pc}
 L_021fde3c: .word data_020f4e18
@@ -106,7 +106,7 @@ L_021fdeb0:
 L_021fdec0:
     mov r1, r6
     add r0, r5, r6, lsl #0x4
-    bl func_02077a24
+    bl Graphics3DLight_Apply
     add r6, r6, #0x1
     cmp r6, #0x4
     blt L_021fdec0

@@ -2,7 +2,7 @@
 /* Exact fallback; see src/overlays/ov017/overlay017_scene_render.c. */
     .extern data_ov017_022016e0
     .extern func_020779d8
-    .extern func_02077a24
+    .extern Graphics3DLight_Apply
     .extern func_02077b44
     .extern func_02077e24
     .extern func_020b0558
@@ -28,7 +28,7 @@ func_ov017_022008ac:
 L_022008d4:
     mov r1, r6
     add r0, r4, r6, lsl #0x4
-    bl func_02077a24
+    bl Graphics3DLight_Apply
     add r6, r6, #0x1
     cmp r6, #0x4
     blt L_022008d4

@@ -19,7 +19,7 @@ extern void func_020720c0(void *resourceSet);
 extern void func_ov036_021fe218(void *list);
 extern void func_02091b6c(void *timer);
 extern void func_02091d08(void *timer);
-extern void func_02077a8c(void *records);
+extern void Graphics3DLightSet_Init(void *records);
 extern void func_020720e8(void *resourceSet, void *archive,
                           s32 firstId, s32 secondId, s32 thirdId);
 extern void func_020779ac(void *owner, void *resourceSet);
@@ -79,7 +79,7 @@ extern "C" void *func_ov036_022029d8(void *controller, void *owner,
     func_ov036_021fe218((u8 *)controller + 0x110);
     func_02091b6c((u8 *)controller + 0x120);
     func_02091d08((u8 *)controller + 0x13c);
-    func_02077a8c((u8 *)controller + 0x160);
+    Graphics3DLightSet_Init((u8 *)controller + 0x160);
 
     func_020720e8((u8 *)controller + 0xdc, data_020f4e18,
                   0x6003, 0x6004, 0x6005);

@@ -21,11 +21,11 @@ typedef struct Graphics3DLightSet {
 extern "C" {
 #endif
 
-void func_02077a04(Graphics3DLight *light);
-void func_02077a20(Graphics3DLight *light);
-void func_02077a24(const Graphics3DLight *light, u32 lightId);
-Graphics3DLightSet *func_02077a8c(Graphics3DLightSet *set);
-Graphics3DLightSet *func_02077ac4(Graphics3DLightSet *set);
+void Graphics3DLight_Init(Graphics3DLight *light);
+void Graphics3DLight_DestroyNoOp(Graphics3DLight *light);
+void Graphics3DLight_Apply(const Graphics3DLight *light, u32 lightId);
+Graphics3DLightSet *Graphics3DLightSet_Init(Graphics3DLightSet *set);
+Graphics3DLightSet *Graphics3DLightSet_Destroy(Graphics3DLightSet *set);
 
 #ifdef __cplusplus
 }

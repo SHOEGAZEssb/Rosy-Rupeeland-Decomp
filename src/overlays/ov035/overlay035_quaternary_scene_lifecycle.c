@@ -14,7 +14,7 @@ extern "C" {
 extern void func_02095308(void *collection);
 extern void func_02077688(void *resourceSetRoot);
 extern void func_02071e04(void *resourceContext, void *resource);
-extern void func_02077ac4(void *records);
+extern void Graphics3DLightSet_Destroy(void *records);
 extern void func_020720d4(void *state);
 extern void Heap_Free(void *allocation);
 extern void func_02095360(void *collection);
@@ -42,7 +42,7 @@ extern "C" void *func_ov035_0220043c(void *scene)
     func_02095308((u8 *)scene + 0x170);
     FIELD(const void *, scene, 0x160) = data_ov035_02203af8;
     func_02095308((u8 *)scene + 0x160);
-    func_02077ac4((u8 *)scene + 0x120);
+    Graphics3DLightSet_Destroy((u8 *)scene + 0x120);
     func_020720d4((u8 *)scene + 0xf4);
     func_020720d4((u8 *)scene + 0xe8);
     func_020720d4((u8 *)scene + 0xdc);

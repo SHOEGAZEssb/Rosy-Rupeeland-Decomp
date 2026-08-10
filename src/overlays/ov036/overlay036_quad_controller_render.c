@@ -13,7 +13,7 @@ extern void func_020773e4(void *manager, void *transform);
 extern void func_ov036_021fdef0(s32, s32, s32, s32,
                                 s32, s32, s32, s32);
 extern void func_ov036_021fcfa0(void *object, void *transform);
-extern void func_02077a24(void *record, s32 index);
+extern void Graphics3DLight_Apply(void *record, s32 index);
 #ifdef __cplusplus
 }
 #endif
@@ -38,12 +38,12 @@ extern "C" void func_ov036_0220293c(void *controller)
 }
 
 /*
- * Submits four contiguous 0x10-byte records through func_02077a24, passing
+ * Submits four contiguous 0x10-byte records through Graphics3DLight_Apply, passing
  * each record's zero-based index. Returns nothing and changes renderer/GX
  * state through that helper.
  */
 extern "C" void func_ov036_022029b0(void *records)
 {
     for (s32 i = 0; i < 4; ++i)
-        func_02077a24((u8 *)records + i * 0x10, i);
+        Graphics3DLight_Apply((u8 *)records + i * 0x10, i);
 }

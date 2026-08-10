@@ -5,7 +5,7 @@
     .extern func_ov036_021fce00
     .extern func_020720c0
     .extern func_ov036_021fe218
-    .extern func_02077a8c
+    .extern Graphics3DLightSet_Init
     .extern func_020720e8
     .extern func_020779ac
     .extern func_02071adc
@@ -46,7 +46,7 @@ func_ov036_022021b0:
     add r0, r5, #0x10c
     bl func_ov036_021fe218
     add r0, r5, #0x11c
-    bl func_02077a8c
+    bl Graphics3DLightSet_Init
     ldr r3, L_022024d4
     add r0, r5, #0xdc
     str r3, [sp, #0x0]

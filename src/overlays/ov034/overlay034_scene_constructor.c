@@ -18,7 +18,7 @@ extern u8 gHeapContext[];
 extern "C" {
 #endif
 extern void func_02077ae8(void *object);
-extern void func_02077a8c(void *object);
+extern void Graphics3DLightSet_Init(void *object);
 extern void *Heap_Alloc(u32 size, const void *tag, s32 alignment,
                        void *heapContext);
 extern void *func_ov034_021fd544(void *owner);
@@ -73,7 +73,7 @@ extern "C" void *func_ov034_021fdae8(void *scene)
 {
     func_02077ae8((u8 *)scene + 0x48);
     func_02077ae8((u8 *)scene + 0xdc);
-    func_02077a8c((u8 *)scene + 0x170);
+    Graphics3DLightSet_Init((u8 *)scene + 0x170);
 
     void *owner = Heap_Alloc(0xc8, data_ov034_021ff1b0, 4, gHeapContext);
     if (owner != 0)

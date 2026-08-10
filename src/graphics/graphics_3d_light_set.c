@@ -21,11 +21,11 @@ extern void __destroy_arr(void *array, u32 count, u32 elementSize,
 #endif
 
 /* Initialize all four lights to zero through the compiler array runtime. */
-Graphics3DLightSet *func_02077a8c(Graphics3DLightSet *set)
+Graphics3DLightSet *Graphics3DLightSet_Init(Graphics3DLightSet *set)
 {
     __construct_array(set->lights, 4, sizeof(Graphics3DLight),
-                      (void (*)(void *))func_02077a04,
-                      (void (*)(void *))func_02077a20);
+                      (void (*)(void *))Graphics3DLight_Init,
+                      (void (*)(void *))Graphics3DLight_DestroyNoOp);
     return set;
 }
 
@@ -33,9 +33,9 @@ Graphics3DLightSet *func_02077a8c(Graphics3DLightSet *set)
  * Traverse the four lights in reverse through the array runtime and return
  * set. The current element destructor has no observable effects.
  */
-Graphics3DLightSet *func_02077ac4(Graphics3DLightSet *set)
+Graphics3DLightSet *Graphics3DLightSet_Destroy(Graphics3DLightSet *set)
 {
     __destroy_arr(set->lights, 4, sizeof(Graphics3DLight),
-                  (void (*)(void *))func_02077a20);
+                  (void (*)(void *))Graphics3DLight_DestroyNoOp);
     return set;
 }

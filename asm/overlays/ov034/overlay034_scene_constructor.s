@@ -3,7 +3,7 @@
 /* Exact fallback; see src/overlays/ov034/overlay034_scene_constructor.c for documented portable C. */
 
     .extern func_02077ae8
-    .extern func_02077a8c
+    .extern Graphics3DLightSet_Init
     .extern Heap_Alloc
     .extern func_ov034_021fd544
     .extern func_02071adc
@@ -37,7 +37,7 @@ func_ov034_021fdae8:
     add r0, r10, #0xdc
     bl func_02077ae8
     add r0, r10, #0x170
-    bl func_02077a8c
+    bl Graphics3DLightSet_Init
     mov r0, #0xc8
     ldr r1, L_021fdd70
     mov r2, #0x4

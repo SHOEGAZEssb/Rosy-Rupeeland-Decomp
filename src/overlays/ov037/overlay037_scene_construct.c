@@ -16,7 +16,7 @@ extern "C" {
 extern void *func_ov037_021fce00(void *scene);
 extern void func_020720c0(void *state);
 extern void *func_ov037_021fd6d0(void *container);
-extern void func_02077a8c(void *state);
+extern void Graphics3DLightSet_Init(void *state);
 extern void func_02091b6c(void *timer);
 extern void func_020720e8(void *slot, void *archive, s32 id0, s32 id1, s32 id2);
 extern void func_020779ac(void *owner, void *slot);
@@ -69,7 +69,7 @@ extern "C" void *func_ov037_021fd7e4(void *scene, void *owner)
         func_020720c0((u8 *)scene + slotOffsets[i]);
     func_ov037_021fd6d0((u8 *)scene + 0x12c);
     func_ov037_021fd6d0((u8 *)scene + 0x13c);
-    func_02077a8c((u8 *)scene + 0x14c);
+    Graphics3DLightSet_Init((u8 *)scene + 0x14c);
     func_02091b6c((u8 *)scene + 0x18c);
     func_02091b6c((u8 *)scene + 0x1a8);
     func_02091b6c((u8 *)scene + 0x1c4);

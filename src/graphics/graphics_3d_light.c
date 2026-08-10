@@ -11,7 +11,7 @@
 #define REG_G3_LIGHT_COLOR (*(volatile u32 *)0x040004cc)
 
 /* Clear all coordinates, RGB555 color, and the 16-bit enabled selector. */
-void func_02077a04(Graphics3DLight *light)
+void Graphics3DLight_Init(Graphics3DLight *light)
 {
     light->z = 0;
     light->y = 0;
@@ -21,7 +21,7 @@ void func_02077a04(Graphics3DLight *light)
 }
 
 /* No-op element destructor; it changes no state and performs no hardware access. */
-void func_02077a20(Graphics3DLight *light)
+void Graphics3DLight_DestroyNoOp(Graphics3DLight *light)
 {
     (void)light;
 }
@@ -32,7 +32,7 @@ void func_02077a20(Graphics3DLight *light)
  * into bits 30..31, and write LIGHT_VECTOR followed by LIGHT_COLOR. Other
  * enabled values produce no writes. lightId is not masked before shifting.
  */
-void func_02077a24(const Graphics3DLight *light, u32 lightId)
+void Graphics3DLight_Apply(const Graphics3DLight *light, u32 lightId)
 {
     s32 x;
     s32 y;
