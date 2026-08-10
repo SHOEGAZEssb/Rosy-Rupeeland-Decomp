@@ -34,11 +34,11 @@ GameStringList *func_02006120(GameStringList *self);
 GameStringList *func_02006124(GameStringList *self);
 void *func_02006138(void *self);
 void *func_0200613c(void *self);
-GameStringList *func_02006144(GameStringList *self);
-void func_02006164(GameStringList *self);
-GameStringListNode *func_020061c0(GameStringList *self,
+GameStringList *GameStringList_Destroy(GameStringList *self);
+void GameStringList_Clear(GameStringList *self);
+GameStringListNode *GameStringList_Append(GameStringList *self,
                                  const GameString *value);
-GameStringList *func_02006240(GameStringList *self);
+GameStringList *GameStringList_DestroyAndFree(GameStringList *self);
 
 #ifdef __cplusplus
 }

@@ -2,7 +2,7 @@
 .extern data_020d41b4
 .extern data_020d41ec
 .extern Heap_Free
-.extern func_02006164
+.extern GameStringList_Clear
 
 /* Matching lifecycle code; portable equivalents are in game_string_list.c. */
 .global func_02006108
@@ -46,16 +46,16 @@ func_0200613c:
     bx lr
     .size func_0200613c, .-func_0200613c
 
-.global func_02006144
-.type func_02006144, @function
-func_02006144:
+.global GameStringList_Destroy
+.type GameStringList_Destroy, @function
+GameStringList_Destroy:
     stmdb sp!, {r4, lr}
     ldr r1, list_vtable
     mov r4, r0
     str r1, [r4]
-    bl func_02006164
+    bl GameStringList_Clear
     mov r0, r4
     ldmia sp!, {r4, pc}
 list_vtable:
     .word data_020d41ec
-    .size func_02006144, .-func_02006144
+    .size GameStringList_Destroy, .-GameStringList_Destroy

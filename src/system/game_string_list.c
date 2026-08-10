@@ -56,10 +56,10 @@ void *func_0200613c(void *self)
 }
 
 /* Install the GameString-list vtable, clear all nodes, and return self. */
-GameStringList *func_02006144(GameStringList *self)
+GameStringList *GameStringList_Destroy(GameStringList *self)
 {
     self->vtable = data_020d41ec;
-    func_02006164(self);
+    GameStringList_Clear(self);
     return self;
 }
 
@@ -68,7 +68,7 @@ GameStringList *func_02006144(GameStringList *self)
  * tail, and count. Each value's first virtual hook runs before its explicit
  * GameString destructor, matching the recovered C++ deletion sequence.
  */
-void func_02006164(GameStringList *self)
+void GameStringList_Clear(GameStringList *self)
 {
     GameStringListNode *node = self->head;
 
@@ -93,7 +93,7 @@ void func_02006164(GameStringList *self)
  * tail, increment count, and return the new node. Retail assumes allocation
  * succeeds when linking into a nonempty list; that unchecked behavior is kept.
  */
-GameStringListNode *func_020061c0(GameStringList *self,
+GameStringListNode *GameStringList_Append(GameStringList *self,
                                  const GameString *value)
 {
     GameStringListNode *node =
@@ -123,10 +123,10 @@ GameStringListNode *func_020061c0(GameStringList *self,
  * Install the specialized vtable, clear the list, free the object itself, and
  * return its original address.
  */
-GameStringList *func_02006240(GameStringList *self)
+GameStringList *GameStringList_DestroyAndFree(GameStringList *self)
 {
     self->vtable = data_020d41ec;
-    func_02006164(self);
+    GameStringList_Clear(self);
     Heap_Free(self);
     return self;
 }

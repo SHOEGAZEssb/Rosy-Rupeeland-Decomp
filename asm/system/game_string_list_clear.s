@@ -3,9 +3,9 @@
 .extern Heap_Free
 
 /* Matching clear loop; portable equivalent is in game_string_list.c. */
-.global func_02006164
-.type func_02006164, @function
-func_02006164:
+.global GameStringList_Clear
+.type GameStringList_Clear, @function
+GameStringList_Clear:
     stmdb sp!, {r4, r5, r6, lr}
     mov r6, r0
     ldr r4, [r6, #4]
@@ -32,4 +32,4 @@ clear_test:
     str r0, [r6, #8]
     str r0, [r6, #0xc]
     ldmia sp!, {r4, r5, r6, pc}
-    .size func_02006164, .-func_02006164
+    .size GameStringList_Clear, .-GameStringList_Clear

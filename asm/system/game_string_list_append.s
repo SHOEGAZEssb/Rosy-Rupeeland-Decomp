@@ -6,12 +6,12 @@
 .extern Heap_Free
 .extern GameString_Init
 .extern GameString_AssignCopy
-.extern func_02006164
+.extern GameStringList_Clear
 
 /* Matching append/delete code; portable equivalents are in game_string_list.c. */
-.global func_020061c0
-.type func_020061c0, @function
-func_020061c0:
+.global GameStringList_Append
+.type GameStringList_Append, @function
+GameStringList_Append:
     stmdb sp!, {r4, r5, r6, lr}
     mov r6, r1
     mov r4, r0
@@ -47,20 +47,20 @@ node_tag:
     .word data_020d41c0
 heap_context:
     .word gHeapContext
-    .size func_020061c0, .-func_020061c0
+    .size GameStringList_Append, .-GameStringList_Append
 
-.global func_02006240
-.type func_02006240, @function
-func_02006240:
+.global GameStringList_DestroyAndFree
+.type GameStringList_DestroyAndFree, @function
+GameStringList_DestroyAndFree:
     stmdb sp!, {r4, lr}
     ldr r1, list_vtable
     mov r4, r0
     str r1, [r4]
-    bl func_02006164
+    bl GameStringList_Clear
     mov r0, r4
     bl Heap_Free
     mov r0, r4
     ldmia sp!, {r4, pc}
 list_vtable:
     .word data_020d41ec
-    .size func_02006240, .-func_02006240
+    .size GameStringList_DestroyAndFree, .-GameStringList_DestroyAndFree
