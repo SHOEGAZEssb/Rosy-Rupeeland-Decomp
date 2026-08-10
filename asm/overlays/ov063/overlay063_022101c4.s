@@ -4,7 +4,7 @@
 .extern func_0200500c
 .extern func_02005058
 .extern func_02009d78
-.extern func_0200e9e0
+.extern GamePhaseState_UpdateRenderHelpers
 .extern func_0201218c
 .extern func_020a6aa8
 
@@ -16,7 +16,7 @@ func_ov063_022101c4:
     mov r4, r0
     ldr r0, [r1, #0x0]
     add r0, r0, #0x24
-    bl func_0200e9e0
+    bl GamePhaseState_UpdateRenderHelpers
     ldr r0, [r4, #0x4c]
     cmp r0, #0x0
     beq .L_022101f8

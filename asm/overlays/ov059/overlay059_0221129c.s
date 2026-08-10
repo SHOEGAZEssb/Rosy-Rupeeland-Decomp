@@ -1,7 +1,7 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov059/overlay059_recovery.c.
 .extern data_021052fc
-.extern func_0200e9e0
+.extern GamePhaseState_UpdateRenderHelpers
 .extern func_ov059_02210bc4
 
 .global func_ov059_0221129c
@@ -40,7 +40,7 @@ func_ov059_0221129c:
     ldr r0, .L_0221132c
     ldr r0, [r0, #0x0]
     add r0, r0, #0x24
-    bl func_0200e9e0
+    bl GamePhaseState_UpdateRenderHelpers
     mov r0, #0x0
     ldmia sp!, {r3, pc}
 .L_02211328: .word 0x4001000

@@ -35,7 +35,7 @@ extern s32 func_ov052_0220da54(Overlay52Child *self);
 extern void func_ov052_0220e178(Overlay52Child *self);
 extern void Sound_Play(void *context, s32 bank, s32 soundId);
 extern void func_02008e10(void *runtime, s32 mode);
-extern void func_0200e9e0(void *value);
+extern void GamePhaseState_UpdateRenderHelpers(void *value);
 #ifdef __cplusplus
 }
 #endif
@@ -132,6 +132,6 @@ s32 func_0201d0f4(Overlay52Scene *self)
 /* Forward the runtime object's field at offset 0x24 and return zero. */
 s32 func_0201d220(void)
 {
-    func_0200e9e0((u8 *)data_021052fc + 0x24);
+    GamePhaseState_UpdateRenderHelpers((u8 *)data_021052fc + 0x24);
     return 0;
 }

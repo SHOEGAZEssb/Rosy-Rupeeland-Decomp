@@ -10082,7 +10082,7 @@ build build/reports/game_phase_runtime_methods.json: objdiff build/decomp/delink
 
 build build/reports/game_phase_runtime_methods.txt: match_report build/reports/game_phase_runtime_methods.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_runtime_methods.json
-  report_args = --section .text --function func_020072dc --function func_02007308 --function GamePhaseRuntime_QueueSelectionQuery --function ActorQuery_CopyCoordinates --function GamePhaseRuntime_QueueQueryUntilHandled --function GamePhaseRuntime_QueueBroadcastQuery --function func_020073c4 --function func_02007420 --function func_02007428
+  report_args = --section .text --function GamePhaseRuntime_UpdateRenderHelpers --function GamePhaseRuntime_ForwardCurrentVCount --function GamePhaseRuntime_QueueSelectionQuery --function ActorQuery_CopyCoordinates --function GamePhaseRuntime_QueueQueryUntilHandled --function GamePhaseRuntime_QueueBroadcastQuery --function func_020073c4 --function func_02007420 --function func_02007428
 
 build build/reports/game_phase_runtime_update.json: objdiff build/decomp/delinks/asm/game/game_phase_runtime_update.o | build/decomp/asm/game/game_phase_runtime_update.o
   target_object = build/decomp/delinks/asm/game/game_phase_runtime_update.o
@@ -10992,14 +10992,14 @@ build build/reports/game_phase_state_0200e9e0.json: objdiff build/decomp/delinks
   base_object = build/decomp/asm/game/game_phase_state_0200e9e0.o
 build build/reports/game_phase_state_0200e9e0.txt: match_report build/reports/game_phase_state_0200e9e0.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_state_0200e9e0.json
-  report_args = --section .text --function func_0200e9e0 --require-exact
+  report_args = --section .text --function GamePhaseState_UpdateRenderHelpers --require-exact
 
 build build/reports/game_phase_state_0200ea34.json: objdiff build/decomp/delinks/asm/game/game_phase_state_0200ea34.o | build/decomp/asm/game/game_phase_state_0200ea34.o
   target_object = build/decomp/delinks/asm/game/game_phase_state_0200ea34.o
   base_object = build/decomp/asm/game/game_phase_state_0200ea34.o
 build build/reports/game_phase_state_0200ea34.txt: match_report build/reports/game_phase_state_0200ea34.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_state_0200ea34.json
-  report_args = --section .text --function func_0200ea34 --require-exact
+  report_args = --section .text --function GamePhaseState_ForwardVCount --require-exact
 
 build build/reports/game_phase_state_0200ea48.json: objdiff build/decomp/delinks/asm/game/game_phase_state_0200ea48.o | build/decomp/asm/game/game_phase_state_0200ea48.o
   target_object = build/decomp/delinks/asm/game/game_phase_state_0200ea48.o

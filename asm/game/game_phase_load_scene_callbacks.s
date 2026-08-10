@@ -5,8 +5,8 @@
 .extern data_020c3600
 .extern data_020f4e14
 .extern data_021052fc
-.extern func_0200e9e0
-.extern func_0200ea34
+.extern GamePhaseState_UpdateRenderHelpers
+.extern GamePhaseState_ForwardVCount
 .extern func_02075630
 .extern gDebugFont
 .extern gGameWork
@@ -21,7 +21,7 @@ func_0200e3d4: ; 0x0200e3d4
     ldr r0, L_0200e420
     ldr r0, [r0, #0x0]
     add r0, r0, #0x24
-    bl func_0200e9e0
+    bl GamePhaseState_UpdateRenderHelpers
 L_0200e3f8:
     ldr r0, [r4, #0x38]
     cmp r0, #0x0
@@ -49,7 +49,7 @@ func_0200e424: ; 0x0200e424
     ldrh r1, [r1, #0x0]
     ldr r0, [r0, #0x0]
     add r0, r0, #0x24
-    bl func_0200ea34
+    bl GamePhaseState_ForwardVCount
 L_0200e450:
     ldr r0, [r4, #0x38]
     cmp r0, #0x0

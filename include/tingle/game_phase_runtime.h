@@ -24,8 +24,8 @@ void func_02006ff0(GamePhaseRuntime *self);
 void func_02007040(GamePhaseRuntime *self);
 GamePhaseRuntime *func_02007064(GamePhaseRuntime *self);
 GamePhaseRuntime *func_0200719c(GamePhaseRuntime *self);
-s32 func_020072dc(GamePhaseRuntime *self);
-s32 func_02007308(GamePhaseRuntime *self);
+s32 GamePhaseRuntime_UpdateRenderHelpers(GamePhaseRuntime *self);
+s32 GamePhaseRuntime_ForwardCurrentVCount(GamePhaseRuntime *self);
 s32 GamePhaseRuntime_QueueSelectionQuery(GamePhaseRuntime *self,
                                          const void *query);
 void ActorQuery_CopyCoordinates(void *destination, const void *source);

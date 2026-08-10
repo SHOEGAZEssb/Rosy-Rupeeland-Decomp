@@ -10,8 +10,8 @@ extern const u16 data_020c3600[12];
 extern void *data_021052fc;
 extern void *data_020f4e14;
 extern void *gDebugFont;
-extern void func_0200e9e0(void *runtimeObject);
-extern void func_0200ea34(void *runtimeObject, u16 vcount);
+extern void GamePhaseState_UpdateRenderHelpers(void *runtimeObject);
+extern void GamePhaseState_ForwardVCount(void *runtimeObject, u16 vcount);
 extern void func_02075630(void *object);
 #ifdef __cplusplus
 }
@@ -37,7 +37,7 @@ typedef struct LoadPhaseObject {
 s32 func_0200e3d4(GamePhaseLoadScene *self)
 {
     if (self->field_3c)
-        func_0200e9e0((u8 *)data_021052fc + 0x24);
+        GamePhaseState_UpdateRenderHelpers((u8 *)data_021052fc + 0x24);
     if (self->field_38 && self->ownedObject)
         ((LoadPhaseObject *)self->ownedObject)->vtable->method0c(
             self->ownedObject);
@@ -52,7 +52,7 @@ s32 func_0200e3d4(GamePhaseLoadScene *self)
 s32 func_0200e424(GamePhaseLoadScene *self)
 {
     if (self->field_3c)
-        func_0200ea34((u8 *)data_021052fc + 0x24,
+        GamePhaseState_ForwardVCount((u8 *)data_021052fc + 0x24,
                       *(volatile u16 *)0x04000006);
     if (self->field_38 && self->ownedObject)
         ((LoadPhaseObject *)self->ownedObject)->vtable->method10(

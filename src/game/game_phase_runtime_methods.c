@@ -19,8 +19,8 @@ extern void *gSoundContext;
 extern "C" {
 #endif
 
-extern void func_0200e9e0(void *sceneState);
-extern void func_0200ea34(void *sceneState, u16 scanline);
+extern void GamePhaseState_UpdateRenderHelpers(void *sceneState);
+extern void GamePhaseState_ForwardVCount(void *sceneState, u16 scanline);
 extern void func_0201218c(void *object);
 extern void Sound_Play(void *context, s32 argument, s32 soundId);
 extern void func_0200cf00(void *object, s32 enabled, s32 argument);
@@ -33,12 +33,12 @@ extern void func_0200cf00(void *object, s32 enabled, s32 argument);
  * Advance the embedded state at offset 0x24, then update the optional object
  * stored at offset 0x2fb8. The virtual method always returns zero.
  */
-s32 func_020072dc(GamePhaseRuntime *self)
+s32 GamePhaseRuntime_UpdateRenderHelpers(GamePhaseRuntime *self)
 {
     u8 *bytes = (u8 *)self;
     void *object;
 
-    func_0200e9e0(bytes + 0x24);
+    GamePhaseState_UpdateRenderHelpers(bytes + 0x24);
     object = *(void **)(bytes + 0x2fb8);
     if (object != 0)
         func_0201218c(object);
@@ -49,9 +49,9 @@ s32 func_020072dc(GamePhaseRuntime *self)
  * Forward the current DS vertical scanline to the embedded state at offset
  * 0x24. Reading 0x04000006 is a volatile hardware effect; returns zero.
  */
-s32 func_02007308(GamePhaseRuntime *self)
+s32 GamePhaseRuntime_ForwardCurrentVCount(GamePhaseRuntime *self)
 {
-    func_0200ea34((u8 *)self + 0x24, *(volatile u16 *)0x04000006);
+    GamePhaseState_ForwardVCount((u8 *)self + 0x24, *(volatile u16 *)0x04000006);
     return 0;
 }
 

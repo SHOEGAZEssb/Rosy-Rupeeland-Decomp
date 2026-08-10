@@ -3,7 +3,7 @@
 .extern GX_DisableBankForLCDC
 .extern GX_SetGraphicsMode
 .extern data_021052fc
-.extern func_0200e9e0
+.extern GamePhaseState_UpdateRenderHelpers
 .extern func_0200fc64
 .extern func_0201218c
 .extern func_0201de4c
@@ -54,7 +54,7 @@ func_ov074_02210a3c:
     ldr r0, .L_02210b8c
     ldr r0, [r0, #0x0]
     add r0, r0, #0x24
-    bl func_0200e9e0
+    bl GamePhaseState_UpdateRenderHelpers
     ldr r0, .L_02210b8c
     ldr r0, [r0, #0x0]
     add r0, r0, #0x2000
@@ -88,7 +88,7 @@ func_ov074_02210a3c:
     ldr r0, .L_02210b8c
     ldr r0, [r0, #0x0]
     add r0, r0, #0x24
-    bl func_0200e9e0
+    bl GamePhaseState_UpdateRenderHelpers
     ldr r0, .L_02210b8c
     ldr r0, [r0, #0x0]
     add r0, r0, #0x2000

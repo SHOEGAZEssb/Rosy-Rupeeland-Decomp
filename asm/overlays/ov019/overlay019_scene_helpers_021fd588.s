@@ -1,7 +1,7 @@
     .text
 /* Exact fallback; see src/overlays/ov019/overlay019_scene_helpers.c. */
     .extern data_021052fc
-    .extern func_0200ea34
+    .extern GamePhaseState_ForwardVCount
 
 .global func_ov019_021fd588
 func_ov019_021fd588:
@@ -17,7 +17,7 @@ func_ov019_021fd588:
     ldrh r1, [r1, #0x0]
     ldr r0, [r0, #0x0]
     add r0, r0, #0x24
-    bl func_0200ea34
+    bl GamePhaseState_ForwardVCount
 L_021fd5bc:
     mov r0, #0x0
     ldmia sp!, {r3, pc}

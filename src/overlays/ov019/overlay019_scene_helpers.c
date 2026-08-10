@@ -13,7 +13,7 @@ extern "C" {
 #endif
 extern void Heap_Free(void *);
 extern void func_02008e10(void *, s32);
-extern void func_0200ea34(void *, u16);
+extern void GamePhaseState_ForwardVCount(void *, u16);
 extern void func_02010e68(void *);
 extern void func_ov002_021fb9c4(void *);
 extern void func_ov002_021fba00(void *);
@@ -117,7 +117,7 @@ extern "C" s32 func_ov019_021fd588(void *state)
 {
     if ((FIELD(u32, state, 0x20) & 0x400) &&
         FIELD(void *, state, 0x58) != 0) {
-        func_0200ea34((u8 *)data_021052fc + 0x24,
+        GamePhaseState_ForwardVCount((u8 *)data_021052fc + 0x24,
                       *(volatile u16 *)0x04000006);
     }
     return 0;

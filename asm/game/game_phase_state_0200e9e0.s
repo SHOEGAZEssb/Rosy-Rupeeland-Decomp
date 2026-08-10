@@ -3,8 +3,8 @@
 .extern func_0200fc64
 .extern func_0201de4c
 
-    .global func_0200e9e0
-func_0200e9e0: ; 0x0200e9e0
+    .global GamePhaseState_UpdateRenderHelpers
+GamePhaseState_UpdateRenderHelpers: ; 0x0200e9e0
     stmdb sp!, {r4, lr}
     mov r4, r0
     add r0, r4, #0x2000
@@ -27,5 +27,5 @@ L_0200ea24:
     add r0, r0, #0x2c00
     bl func_0200fc64
     ldmia sp!, {r4, pc}
-    .size func_0200e9e0, . - func_0200e9e0
+    .size GamePhaseState_UpdateRenderHelpers, . - GamePhaseState_UpdateRenderHelpers
 

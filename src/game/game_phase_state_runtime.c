@@ -39,7 +39,7 @@ static void *phaseVirtual(GamePhaseState *self, u32 offset)
  * If flags_2f7c bit 1 is set, update the render helper, forward virtual method
  * 0x1c to owned_2eb0 when present, and update helper_2eb4. No value is returned.
  */
-void func_0200e9e0(GamePhaseState *self)
+void GamePhaseState_UpdateRenderHelpers(GamePhaseState *self)
 {
     if (!(self->flags_2f7c & 2))
         return;
@@ -50,7 +50,7 @@ void func_0200e9e0(GamePhaseState *self)
 }
 
 /* Forward VCOUNT to the render helper at offset 0x2f58. */
-void func_0200ea34(GamePhaseState *self, u16 vcount)
+void GamePhaseState_ForwardVCount(GamePhaseState *self, u16 vcount)
 {
     func_0201de8c(self->helper_2f58, vcount);
 }
