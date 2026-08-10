@@ -34,8 +34,8 @@ static s32 AddressInOverlay(const TingleNativeOverlayImage *overlay, u32 address
     return offset <= overlay->size && size <= overlay->size - offset;
 }
 
-static s32 CountDescriptors(const TingleNativeOverlayImage *overlay, u32 address,
-                            u32 *count)
+static s32 CatalogDescriptors(const TingleNativeOverlayImage *overlay, u32 address,
+                              TingleNativePhaseOverlayRegistration *registration)
 {
     const u8 *bytes = (const u8 *)overlay->bytes;
     size_t offset;
@@ -44,12 +44,19 @@ static s32 CountDescriptors(const TingleNativeOverlayImage *overlay, u32 address
     if (!AddressInOverlay(overlay, address, 2)) return 0;
     offset = (size_t)(address - overlay->load_address);
     while (ReadU16(bytes + offset) != 0) {
+        u16 descriptor_kind;
+
         if (!AddressInOverlay(overlay, address, 0x64)) return 0;
+        descriptor_kind = ReadU16(bytes + offset);
+        if (descriptor_kind > 9) return 0;
+        registration->kind_counts[descriptor_kind]++;
+        if ((s16)ReadU16(bytes + offset + 0x50) >= 0)
+            registration->eligible_descriptor_count++;
         address += 0x64;
         offset += 0x64;
         result++;
     }
-    *count = result;
+    registration->descriptor_count = result;
     return 1;
 }
 
@@ -126,8 +133,8 @@ s32 TingleNativeGamePhase_ParseOverlayRegistration(
     } else {
         return 0;
     }
-    return CountDescriptors(overlay, registration->descriptor_address,
-                            &registration->descriptor_count);
+    return CatalogDescriptors(overlay, registration->descriptor_address,
+                              registration);
 }
 
 s32 TingleNativeGamePhase_DecodeMetadata(s32 phase_id, const void *record,
@@ -272,6 +279,10 @@ void TingleNativeGamePhaseBoundary_Draw(
                        boundary->primary_registration.descriptor_count,
                        boundary->secondary_registration.descriptor_count);
         TingleNativeCanvas_DrawText(canvas, 12, 180, text, 0x00e0b060u, 1);
+        (void)snprintf(text, sizeof(text), "ELIGIBLE: %u + %u",
+                       boundary->primary_registration.eligible_descriptor_count,
+                       boundary->secondary_registration.eligible_descriptor_count);
+        TingleNativeCanvas_DrawText(canvas, 12, 194, text, 0x00e0b060u, 1);
         (void)snprintf(text, sizeof(text), "FLAGS 40: %08X", boundary->metadata.flags_40);
         TingleNativeCanvas_DrawText(canvas, 12, 264, text, 0x00d8e0d0u, 1);
         DrawField(canvas, 278, "FIELD 2C", boundary->metadata.field_2c);

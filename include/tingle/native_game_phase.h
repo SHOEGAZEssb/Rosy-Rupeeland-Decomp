@@ -20,6 +20,8 @@ typedef struct TingleNativePhaseOverlayRegistration {
     TingleNativePhaseOverlayKind kind;
     u32 descriptor_address;
     u32 descriptor_count;
+    u32 eligible_descriptor_count;
+    u32 kind_counts[10];
     u32 callback_address;
     u32 runtime_address;
     u32 work_address_0;

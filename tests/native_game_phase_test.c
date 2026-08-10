@@ -49,6 +49,8 @@ static int TestOverlayRegistration(void)
             &overlay, TINGLE_NATIVE_PHASE_OVERLAY_PRIMARY, &registration) ||
         registration.kind != TINGLE_NATIVE_PHASE_OVERLAY_PRIMARY ||
         registration.descriptor_count != 1 ||
+        registration.eligible_descriptor_count != 1 ||
+        registration.kind_counts[1] != 1 ||
         registration.descriptor_address != 0x02200100 ||
         registration.callback_address != 0x02200090) return 0;
     bytes[0] = 0;
@@ -75,6 +77,8 @@ static int ProbeMetadata(const char *kind, const char *source, const char *phase
     if (data != NULL && strcmp(phase_text, "all") == 0) {
         u32 primary_descriptors = 0;
         u32 secondary_descriptors = 0;
+        u32 primary_eligible = 0;
+        u32 secondary_eligible = 0;
 
         for (phase_id = 1; phase_id <= TINGLE_NATIVE_PHASE_COUNT; ++phase_id) {
             ok = TingleNativeGamePhaseBoundary_Init(&boundary, data, phase_id) &&
@@ -87,11 +91,13 @@ static int ProbeMetadata(const char *kind, const char *source, const char *phase
             }
             primary_descriptors += boundary.primary_registration.descriptor_count;
             secondary_descriptors += boundary.secondary_registration.descriptor_count;
+            primary_eligible += boundary.primary_registration.eligible_descriptor_count;
+            secondary_eligible += boundary.secondary_registration.eligible_descriptor_count;
             TingleNativeGamePhaseBoundary_Destroy(&boundary);
         }
-        (void)printf("validated %d phase overlay pairs: %u+%u descriptors\n",
+        (void)printf("validated %d phase overlay pairs: %u+%u descriptors, %u+%u eligible\n",
                      TINGLE_NATIVE_PHASE_COUNT, primary_descriptors,
-                     secondary_descriptors);
+                     secondary_descriptors, primary_eligible, secondary_eligible);
         TingleNativeData_Close(data);
         return EXIT_SUCCESS;
     }

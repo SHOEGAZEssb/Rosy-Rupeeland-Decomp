@@ -140,7 +140,9 @@ IDs at offsets `0x1C`/`0x20` are loaded, and callback offsets `0x24`/`0x28` are
 validated as addresses inside their respective DS code ranges. The ARM
 callbacks are verified generated templates: their actor descriptor lists,
 runtime data, callback data, work storage, and secondary region table are
-translated to validated overlay-relative records. Fourteen 32-byte zero
+translated to validated overlay-relative records. Descriptor kinds are checked
+against the recovered 1-9 factory range, and signed selector offset `0x50`
+determines initial eligibility. Fourteen 32-byte zero
 secondary images are omitted by the phase table; the decoder still represents
 such an image as an empty registration when read directly. The callbacks
 remain addresses and are never called as host function pointers.
