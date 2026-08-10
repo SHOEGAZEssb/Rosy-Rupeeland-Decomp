@@ -29,7 +29,7 @@ typedef struct SubDualLayerResourceRenderer {
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *data_020debd4;
+extern void *gSubDualLayerResourceRendererVtable;
 extern void *data_020f4e18;
 extern void DualLayerTileRendererBase_InitBase(void *self);
 extern void DualLayerTileRendererBase_Destroy(void *self);
@@ -42,28 +42,28 @@ extern void func_020706c4(void *resource, s32 background, s32 value);
 extern void func_02070eac(void *resource, s32 background, s32 value);
 extern u8 *func_02070874(void *resource);
 extern void MIi_CpuCopy16(const void *source, void *destination, u32 size);
-void func_0202bc98(SubDualLayerResourceRenderer *self);
+void SubDualLayerResourceRenderer_LoadBgResources(SubDualLayerResourceRenderer *self);
 #ifdef __cplusplus
 }
 #endif
 
 /* Construct the common renderer, install this variant's vtable, and return self. */
-SubDualLayerResourceRenderer *func_0202bc18(SubDualLayerResourceRenderer *self)
+SubDualLayerResourceRenderer *SubDualLayerResourceRenderer_Init(SubDualLayerResourceRenderer *self)
 {
     DualLayerTileRendererBase_InitBase(self);
-    self->vtable_00 = (void **)data_020debd4;
+    self->vtable_00 = (void **)gSubDualLayerResourceRendererVtable;
     return self;
 }
 
 /* Run common renderer teardown and return self without freeing it. */
-SubDualLayerResourceRenderer *func_0202bc38(SubDualLayerResourceRenderer *self)
+SubDualLayerResourceRenderer *SubDualLayerResourceRenderer_DestroyComplete(SubDualLayerResourceRenderer *self)
 {
     DualLayerTileRendererBase_Destroy(self);
     return self;
 }
 
 /* Run common renderer teardown, free self, and return its former address. */
-SubDualLayerResourceRenderer *func_0202bc4c(SubDualLayerResourceRenderer *self)
+SubDualLayerResourceRenderer *SubDualLayerResourceRenderer_DestroyAndFree(SubDualLayerResourceRenderer *self)
 {
     DualLayerTileRendererBase_Destroy(self);
     Heap_Free(self);
@@ -71,17 +71,17 @@ SubDualLayerResourceRenderer *func_0202bc4c(SubDualLayerResourceRenderer *self)
 }
 
 /* Run the first common activation path, then perform this variant's resource setup. */
-void func_0202bc68(SubDualLayerResourceRenderer *self)
+void SubDualLayerResourceRenderer_ActivatePrimary(SubDualLayerResourceRenderer *self)
 {
     func_02029370(self);
-    func_0202bc98(self);
+    SubDualLayerResourceRenderer_LoadBgResources(self);
 }
 
 /* Run the second common activation path, then perform this variant's resource setup. */
-void func_0202bc80(SubDualLayerResourceRenderer *self)
+void SubDualLayerResourceRenderer_ActivateSecondary(SubDualLayerResourceRenderer *self)
 {
     func_02029648(self);
-    func_0202bc98(self);
+    SubDualLayerResourceRenderer_LoadBgResources(self);
 }
 
 /*
@@ -93,7 +93,7 @@ void func_0202bc80(SubDualLayerResourceRenderer *self)
  * planes, destroy temporary resources, and return. These calls update VRAM,
  * cache state, palette storage, and the sub-engine hardware registers.
  */
-void func_0202bc98(SubDualLayerResourceRenderer *self)
+void SubDualLayerResourceRenderer_LoadBgResources(SubDualLayerResourceRenderer *self)
 {
     GraphicsResourceSet resources;
     TileMapResource *tileMap;
@@ -137,7 +137,7 @@ void func_0202bc98(SubDualLayerResourceRenderer *self)
  * Forward enabled through the common visibility path, then set both sub BG0
  * and BG1 display-plane bits when nonzero or clear both when zero.
  */
-void func_0202be68(SubDualLayerResourceRenderer *self, s32 enabled)
+void SubDualLayerResourceRenderer_SetVisible(SubDualLayerResourceRenderer *self, s32 enabled)
 {
     volatile u32 *dispcnt = (volatile u32 *)0x04001000;
     u32 planes;

@@ -19,7 +19,7 @@ extern void ActorCollection_Destructor(void *renderer);
 extern void OverlaySlot_Init(void *state);
 extern void OverlaySlot_Destroy(void *state);
 extern void OverlaySlot_LoadOverlay(void *state, u32 value);
-extern void *func_0202bc18(void *self);
+extern void *SubDualLayerResourceRenderer_Init(void *self);
 extern void *func_0202c0b8(void *self);
 extern void *func_0202c4f4(void *self);
 extern void *func_0202c8a8(void *self);
@@ -94,7 +94,7 @@ GamePhaseAreaScene *GamePhaseAreaScene_Init(GamePhaseAreaScene *self,
         func_020aea7c(0x80);
         if (config->areaId == 2 || config->areaId == 199) {
             GXS_SetGraphicsMode(0);
-            self->subRenderer = createRenderer(func_0202bc18);
+            self->subRenderer = createRenderer(SubDualLayerResourceRenderer_Init);
             loadRenderer(self->subRenderer, config->resource08, 0);
         } else if (config->areaId == 3) {
             GXS_SetGraphicsMode(0);

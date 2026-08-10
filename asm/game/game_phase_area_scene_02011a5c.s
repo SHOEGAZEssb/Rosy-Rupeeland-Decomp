@@ -12,7 +12,7 @@
 .extern DualLayerTileRendererBase_Init
 .extern DualLayerTileRendererBase_SetLayoutParameters
 .extern func_02029ca4
-.extern func_0202bc18
+.extern SubDualLayerResourceRenderer_Init
 .extern func_0202c0b8
 .extern func_0202c4f4
 .extern func_0202c8a8
@@ -88,7 +88,7 @@ L_02011b10:
     bl Heap_Alloc
     cmp r0, #0x0
     beq L_02011b60
-    bl func_0202bc18
+    bl SubDualLayerResourceRenderer_Init
 L_02011b60:
     str r0, [r6, #0x4]
     add r1, r6, #0x2000

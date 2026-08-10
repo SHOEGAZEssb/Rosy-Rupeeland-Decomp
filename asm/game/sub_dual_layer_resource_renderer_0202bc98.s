@@ -12,9 +12,9 @@
 .extern GraphicsResourceSet_Destroy
 .extern data_020f4e18
 
-    .global func_0202bc98
-    .type func_0202bc98, @function
-func_0202bc98: ; 0x0202bc98
+    .global SubDualLayerResourceRenderer_LoadBgResources
+    .type SubDualLayerResourceRenderer_LoadBgResources, @function
+SubDualLayerResourceRenderer_LoadBgResources: ; 0x0202bc98
     stmdb sp!, {r3, r4, r5, lr}
     sub sp, sp, #0x10
     mov r4, r0
@@ -133,4 +133,4 @@ func_0202bc98: ; 0x0202bc98
 .L_0202be5c: .word data_020f4e18
 .L_0202be60: .word 0x400100a
 .L_0202be64: .word 0xa014
-    .size func_0202bc98, . - func_0202bc98
+    .size SubDualLayerResourceRenderer_LoadBgResources, . - SubDualLayerResourceRenderer_LoadBgResources

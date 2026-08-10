@@ -2,9 +2,9 @@
 .text
 .extern func_02029a40
 
-    .global func_0202be68
-    .type func_0202be68, @function
-func_0202be68: ; 0x0202be68
+    .global SubDualLayerResourceRenderer_SetVisible
+    .type SubDualLayerResourceRenderer_SetVisible, @function
+SubDualLayerResourceRenderer_SetVisible: ; 0x0202be68
     stmdb sp!, {r4, lr}
     mov r4, r1
     bl func_02029a40
@@ -31,4 +31,4 @@ func_0202be68: ; 0x0202be68
     str r0, [r2, #0x0]
     ldmia sp!, {r4, pc}
 .L_0202bec8: .word 0x4001000
-    .size func_0202be68, . - func_0202be68
+    .size SubDualLayerResourceRenderer_SetVisible, . - SubDualLayerResourceRenderer_SetVisible
