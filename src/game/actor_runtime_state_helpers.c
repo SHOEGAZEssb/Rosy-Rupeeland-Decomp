@@ -48,11 +48,11 @@ void Actor_SetScale(void *self, s32 scale)
     *(s32 *)((u8 *)self + 0x1d0) = scale;
 }
 
-/* Store first/second at actor+0x1d4/+0x1d8 and return no value. */
-void func_02033f20(void *self, s32 first, s32 second)
+/* Store the attachment's Q12 base X/Y scales at actor+0x1d4/+0x1d8. */
+void Actor_SetAttachmentBaseScale(void *self, s32 scaleX, s32 scaleY)
 {
-    *(s32 *)((u8 *)self + 0x1d4) = first;
-    *(s32 *)((u8 *)self + 0x1d8) = second;
+    *(s32 *)((u8 *)self + 0x1d4) = scaleX;
+    *(s32 *)((u8 *)self + 0x1d8) = scaleY;
 }
 
 /*

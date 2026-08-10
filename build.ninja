@@ -5207,21 +5207,21 @@ build build/reports/game_phase_script_vm_020142f4.json: objdiff build/decomp/del
   base_object = build/decomp/asm/game/game_phase_script_vm_020142f4.o
 build build/reports/game_phase_script_vm_020142f4.txt: match_report build/reports/game_phase_script_vm_020142f4.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_script_vm_020142f4.json
-  report_args = --section .text --function func_020142f4 --require-exact
+  report_args = --section .text --function GamePhaseActorScriptVm_SetAttachmentAngle --require-exact
 
 build build/reports/game_phase_script_vm_02014314.json: objdiff build/decomp/delinks/asm/game/game_phase_script_vm_02014314.o | build/decomp/asm/game/game_phase_script_vm_02014314.o
   target_object = build/decomp/delinks/asm/game/game_phase_script_vm_02014314.o
   base_object = build/decomp/asm/game/game_phase_script_vm_02014314.o
 build build/reports/game_phase_script_vm_02014314.txt: match_report build/reports/game_phase_script_vm_02014314.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_script_vm_02014314.json
-  report_args = --section .text --function func_02014314 --require-exact
+  report_args = --section .text --function GamePhaseActorScriptVm_SetAttachmentAngleFromByte --require-exact
 
 build build/reports/game_phase_script_vm_0201433c.json: objdiff build/decomp/delinks/asm/game/game_phase_script_vm_0201433c.o | build/decomp/asm/game/game_phase_script_vm_0201433c.o
   target_object = build/decomp/delinks/asm/game/game_phase_script_vm_0201433c.o
   base_object = build/decomp/asm/game/game_phase_script_vm_0201433c.o
 build build/reports/game_phase_script_vm_0201433c.txt: match_report build/reports/game_phase_script_vm_0201433c.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_script_vm_0201433c.json
-  report_args = --section .text --function func_0201433c --require-exact
+  report_args = --section .text --function GamePhaseActorScriptVm_SetAttachmentScale --require-exact
 
 build build/reports/game_phase_script_vm_actor_presentation_opcodes.txt: phony build/reports/game_phase_script_vm_020142cc.txt build/reports/game_phase_script_vm_020142ec.txt build/reports/game_phase_script_vm_020142f4.txt build/reports/game_phase_script_vm_02014314.txt build/reports/game_phase_script_vm_0201433c.txt
 
@@ -14506,7 +14506,7 @@ build build/reports/actor_runtime_state_helpers_02033f20.json: objdiff build/dec
   base_object = build/decomp/asm/game/actor_runtime_state_helpers_02033f20.o
 build build/reports/actor_runtime_state_helpers_02033f20.txt: match_report build/reports/actor_runtime_state_helpers_02033f20.json | tools/report_objdiff.py
   report_json = build/reports/actor_runtime_state_helpers_02033f20.json
-  report_args = --section .text --function func_02033f20 --require-exact
+  report_args = --section .text --function Actor_SetAttachmentBaseScale --require-exact
 build build/decomp/asm/game/actor_runtime_state_helpers_02033f2c.o: mwasmarm asm/game/actor_runtime_state_helpers_02033f2c.s
 build build/decomp/delinks/asm/game/actor_runtime_state_helpers_02033f2c.o: dsd_delink config/arm9/config.yaml config/arm9/delinks.txt config/arm9/symbols.txt config/arm9/relocs.txt
 build build/reports/actor_runtime_state_helpers_02033f2c.json: objdiff build/decomp/delinks/asm/game/actor_runtime_state_helpers_02033f2c.o | build/decomp/asm/game/actor_runtime_state_helpers_02033f2c.o

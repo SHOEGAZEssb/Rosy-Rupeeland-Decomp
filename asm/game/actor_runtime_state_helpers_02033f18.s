@@ -8,5 +8,5 @@ Actor_SetScale: ; 0x02033f18
     bx lr
     .size Actor_SetScale, . - Actor_SetScale
 
-    .global func_02033f20
+    .global Actor_SetAttachmentBaseScale
 

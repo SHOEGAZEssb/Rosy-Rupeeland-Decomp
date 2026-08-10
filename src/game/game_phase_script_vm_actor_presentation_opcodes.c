@@ -7,7 +7,7 @@ extern "C" {
 #endif
 extern u8 data_02105310[];
 extern void func_0200b0d0(void *state, u32 value);
-extern void func_02033f20(void *actor, s32 firstFx, s32 secondFx);
+extern void Actor_SetAttachmentBaseScale(void *actor, s32 scaleX, s32 scaleY);
 #ifdef __cplusplus
 }
 #endif
@@ -27,8 +27,8 @@ s32 func_020142ec(GamePhaseActorScriptVm *self)
     return 0;
 }
 
-/* Pop a value into halfword 0x30 of actor->0x54 and return zero. */
-s32 func_020142f4(GamePhaseActorScriptVm *self)
+/* Pop a raw angle into attachment halfword +0x30 and return zero. */
+s32 GamePhaseActorScriptVm_SetAttachmentAngle(GamePhaseActorScriptVm *self)
 {
     u32 value = func_02012704(&self->base);
     u8 *object = *(u8 **)((u8 *)self->actor_84 + 0x54);
@@ -37,10 +37,10 @@ s32 func_020142f4(GamePhaseActorScriptVm *self)
 }
 
 /*
- * Pop a value and store the low halfword of 0x10000-(value<<8) at offset 0x30
- * of actor->0x54. Returns zero; the field's semantic unit is unconfirmed.
+ * Pop an eight-bit-turn angle and store 0x10000-(value<<8) in attachment angle
+ * halfword +0x30. Returns zero and changes only presentation state.
  */
-s32 func_02014314(GamePhaseActorScriptVm *self)
+s32 GamePhaseActorScriptVm_SetAttachmentAngleFromByte(GamePhaseActorScriptVm *self)
 {
     u32 value = func_02012704(&self->base);
     u8 *object = *(u8 **)((u8 *)self->actor_84 + 0x54);
@@ -49,11 +49,11 @@ s32 func_02014314(GamePhaseActorScriptVm *self)
 }
 
 /*
- * Pop second then first dimensions, clamp each to 0x20..0x200, pass their
- * values shifted left four to func_02033f20, and store the unshifted values at
- * actor->0x54 offsets 0x32 and 0x34. Returns zero.
+ * Pop Y then X attachment scales, clamp each to 0x20..0x200, cache their Q12
+ * forms on the actor, and store the unshifted values in attachment halfwords
+ * +0x32/+0x34. Returns zero and changes presentation state.
  */
-s32 func_0201433c(GamePhaseActorScriptVm *self)
+s32 GamePhaseActorScriptVm_SetAttachmentScale(GamePhaseActorScriptVm *self)
 {
     s32 second = (s32)func_02012704(&self->base);
     s32 first = (s32)func_02012704(&self->base);
@@ -66,7 +66,7 @@ s32 func_0201433c(GamePhaseActorScriptVm *self)
         second = 0x20;
     else if (second > 0x200)
         second = 0x200;
-    func_02033f20(self->actor_84, first << 4, second << 4);
+    Actor_SetAttachmentBaseScale(self->actor_84, first << 4, second << 4);
     *(u16 *)(object + 0x32) = (u16)first;
     *(u16 *)(object + 0x34) = (u16)second;
     return 0;

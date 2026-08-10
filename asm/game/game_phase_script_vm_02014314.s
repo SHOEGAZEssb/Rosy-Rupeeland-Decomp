@@ -2,8 +2,8 @@
 .text
 .extern func_02012704
 
-    .global func_02014314
-func_02014314: ; 0x02014314
+    .global GamePhaseActorScriptVm_SetAttachmentAngleFromByte
+GamePhaseActorScriptVm_SetAttachmentAngleFromByte: ; 0x02014314
     stmdb sp!, {r4, lr}
     mov r4, r0
     bl func_02012704
@@ -14,5 +14,5 @@ func_02014314: ; 0x02014314
     mov r0, #0x0
     strh r2, [r1, #0x30]
     ldmia sp!, {r4, pc}
-    .size func_02014314, . - func_02014314
+    .size GamePhaseActorScriptVm_SetAttachmentAngleFromByte, . - GamePhaseActorScriptVm_SetAttachmentAngleFromByte
 
