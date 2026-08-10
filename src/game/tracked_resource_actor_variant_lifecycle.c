@@ -9,20 +9,20 @@ extern void *TrackedResourceActor_Init(void *actor);
 extern void *TrackedResourceActor_Destroy(void *actor);
 extern void func_02051314(void *actor);
 extern void Heap_Free(void *allocation);
-extern u32 data_020e313c[];
+extern u32 gTrackedResourceActorType22And25Vtable[];
 #ifdef __cplusplus
 }
 #endif
 
 /*
  * Input is variant storage. Constructs the tracked-resource base, installs
- * vtable data_020e313c, and returns the same storage. Engine fields may change;
+ * vtable gTrackedResourceActorType22And25Vtable, and returns the same storage. Engine fields may change;
  * no direct hardware access occurs.
  */
-void *func_02050e74(void *actor)
+void *TrackedResourceActorType22And25_Init(void *actor)
 {
     TrackedResourceActor_Init(actor);
-    *(u32 **)actor = data_020e313c;
+    *(u32 **)actor = gTrackedResourceActorType22And25Vtable;
     return actor;
 }
 
@@ -31,9 +31,9 @@ void *func_02050e74(void *actor)
  * func_02051314 and tracked-resource base teardown, then returns the instance
  * without freeing it. Cleanup can release engine resources.
  */
-void *func_02050e94(void *actor)
+void *TrackedResourceActorType22And25_DestroyComplete(void *actor)
 {
-    *(u32 **)actor = data_020e313c;
+    *(u32 **)actor = gTrackedResourceActorType22And25Vtable;
     func_02051314(actor);
     TrackedResourceActor_Destroy(actor);
     return actor;
@@ -41,12 +41,12 @@ void *func_02050e94(void *actor)
 
 /*
  * Input is a heap-allocated variant instance. Performs the same variant and
- * base cleanup as func_02050e94, frees the allocation, and returns its former
+ * base cleanup as TrackedResourceActorType22And25_DestroyComplete, frees the allocation, and returns its former
  * address. The result must not be dereferenced; no hardware is accessed here.
  */
-void *func_02050ebc(void *actor)
+void *TrackedResourceActorType22And25_DestroyAndFree(void *actor)
 {
-    *(u32 **)actor = data_020e313c;
+    *(u32 **)actor = gTrackedResourceActorType22And25Vtable;
     func_02051314(actor);
     TrackedResourceActor_Destroy(actor);
     Heap_Free(actor);
