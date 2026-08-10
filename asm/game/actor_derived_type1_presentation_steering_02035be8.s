@@ -15,9 +15,9 @@
 .extern gSceneManager
 .extern gSceneTouchInitialData
 
-    .global func_02035be8
-    .type func_02035be8, @function
-func_02035be8: ; 0x02035be8
+    .global ActorDerivedType1_UpdatePresentationSteering
+    .type ActorDerivedType1_UpdatePresentationSteering, @function
+ActorDerivedType1_UpdatePresentationSteering: ; 0x02035be8
     stmdb sp!, {r4, r5, r6, r7, r8, r9, r10, r11, lr}
     sub sp, sp, #0x2c
     mov r4, r2
@@ -305,7 +305,7 @@ func_02035be8: ; 0x02035be8
 .L_02036024: .word data_02105690
 .L_02036028: .word 0xf48
 .L_0203602c: .word gSceneTouchInitialData
-    .size func_02035be8, . - func_02035be8
+    .size ActorDerivedType1_UpdatePresentationSteering, . - ActorDerivedType1_UpdatePresentationSteering
 
-    .global func_02036030
+    .global ActorDerivedType1_UpdateAttachmentPresentation
 

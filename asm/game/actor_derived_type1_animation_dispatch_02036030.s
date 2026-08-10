@@ -8,9 +8,9 @@
 .extern func_020740c8
 .extern gGameWork
 
-    .global func_02036030
-    .type func_02036030, @function
-func_02036030: ; 0x02036030
+    .global ActorDerivedType1_UpdateAttachmentPresentation
+    .type ActorDerivedType1_UpdateAttachmentPresentation, @function
+ActorDerivedType1_UpdateAttachmentPresentation: ; 0x02036030
     stmdb sp!, {r3, r4, r5, r6, r7, r8, r9, r10, lr}
     sub sp, sp, #0x4
     mov r4, r0
@@ -325,7 +325,7 @@ func_02036030: ; 0x02036030
     ldmia sp!, {r3, r4, r5, r6, r7, r8, r9, r10, pc}
 .L_02036474: .word gGameWork
 .L_02036478: .word 0x25d
-    .size func_02036030, . - func_02036030
+    .size ActorDerivedType1_UpdateAttachmentPresentation, . - ActorDerivedType1_UpdateAttachmentPresentation
 
-    .global func_0203647c
+    .global ActorDerivedType1_ClassifyState
 

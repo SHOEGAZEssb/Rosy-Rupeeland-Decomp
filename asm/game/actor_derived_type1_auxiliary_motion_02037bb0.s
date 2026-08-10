@@ -14,9 +14,9 @@
 .extern gLupyContext
 .extern gSystemState
 
-    .global func_02037bb0
-    .type func_02037bb0, @function
-func_02037bb0: ; 0x02037bb0
+    .global ActorDerivedType1_UpdateAuxiliaryResourceMotion
+    .type ActorDerivedType1_UpdateAuxiliaryResourceMotion, @function
+ActorDerivedType1_UpdateAuxiliaryResourceMotion: ; 0x02037bb0
     stmdb sp!, {r4, r5, r6, lr}
     mov r5, r0
     ldr r0, [r5, #0x230]
@@ -148,4 +148,4 @@ func_02037bb0: ; 0x02037bb0
 .L_02037d8c: .word gSystemState
 .L_02037d90: .word data_020df254
 .L_02037d94: .word data_020df258
-    .size func_02037bb0, . - func_02037bb0
+    .size ActorDerivedType1_UpdateAuxiliaryResourceMotion, . - ActorDerivedType1_UpdateAuxiliaryResourceMotion

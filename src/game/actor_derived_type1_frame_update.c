@@ -15,7 +15,7 @@ extern u32 genrand_int32(void);
 extern s32 func_020ada8c(s32 dividend, s32 divisor);
 extern void func_020349b8(void *actor, u32 sound, s32 extra);
 extern void *SceneManager_GetCurrent(void *manager);
-extern void func_02037bb0(void *actor);
+extern void ActorDerivedType1_UpdateAuxiliaryResourceMotion(void *actor);
 extern void func_0205940c(void *sound, s32 first, s32 second);
 extern void GameWork_ClearFlag(void *work, u32 flag);
 extern void GameWork_SetFlag(void *work, u32 flag);
@@ -33,7 +33,7 @@ extern s32 func_02032370(void *actor, void *state, s32 step);
 extern s32 func_02032228(void *actor, s32 x, s32 y, s32 step);
 extern void *func_0204c798(void *storage, void *actor);
 extern void func_0204cc14(void *object);
-extern void func_0203647c(void *actor);
+extern void ActorDerivedType1_ClassifyState(void *actor);
 extern s32 Actor_IsAtCachedTerrainHeight(void *actor);
 extern s32 func_02005070(void *state);
 extern void func_0200b2c0(void *state, s32 first, s32 second, s32 third);
@@ -107,7 +107,7 @@ void ActorDerivedType1_UpdateFrame(void *self)
         if ((*(u32 *)(actor + 0xd0) & 0x100) != 0) {
             if (*(s32 *)(actor + 0x248) > 0) {
                 --*(s32 *)(actor + 0x248);
-                if (*(void **)(actor + 0x26c) != 0) func_02037bb0(actor);
+                if (*(void **)(actor + 0x26c) != 0) ActorDerivedType1_UpdateAuxiliaryResourceMotion(actor);
             } else {
                 func_0205940c(gSoundContext, 0, 0x25);
                 GameWork_ClearFlag(gGameWork, 0x3f5);
@@ -116,7 +116,7 @@ void ActorDerivedType1_UpdateFrame(void *self)
                    *(s16 *)(actor + 0xd6) != 0x0d) {
             s16 state = *(s16 *)(actor + 0xd6);
             if (*(void **)(actor + 0x26c) != 0) {
-                func_02037bb0(actor);
+                ActorDerivedType1_UpdateAuxiliaryResourceMotion(actor);
             } else if ((*(u32 *)(actor + 0x230) & 0x40000000) != 0) {
                 ActorDerivedType1_UpdateHorizontalInputMotion(actor);
             } else if (state != 0x11) {
@@ -174,7 +174,7 @@ void ActorDerivedType1_UpdateFrame(void *self)
         *(u32 *)(actor + 0xd0) |= 8;
     }
 
-    func_0203647c(actor);
+    ActorDerivedType1_ClassifyState(actor);
     if (*(s16 *)(actor + 0xd6) == 8 || *(s16 *)(actor + 0xd6) == 7 ||
         *(s16 *)(actor + 0xd6) == 0x11) {
         *(s32 *)(actor + 0x3c) = 0;

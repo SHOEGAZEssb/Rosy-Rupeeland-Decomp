@@ -14,4 +14,4 @@ Actor_IsAtCachedTerrainHeight: ; 0x02035bc8
     bx lr
     .size Actor_IsAtCachedTerrainHeight, . - Actor_IsAtCachedTerrainHeight
 
-    .global func_02035be8
+    .global ActorDerivedType1_UpdatePresentationSteering

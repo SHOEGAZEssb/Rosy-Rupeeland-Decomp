@@ -47,7 +47,7 @@ static u32 queryPackedTerrain(u8 *actor)
  * transition, while ordinary states clear the mode. Returns no value; terrain,
  * overlay, heap, GameWork, sound, and virtual helpers have observable effects.
  */
-void func_0203647c(void *self)
+void ActorDerivedType1_ClassifyState(void *self)
 {
     u8 *actor = (u8 *)self;
     u32 flags230;

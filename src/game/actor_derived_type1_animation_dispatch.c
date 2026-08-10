@@ -37,7 +37,7 @@ static void applyDescriptor(u8 *actor, const u8 *resource)
  * +0x36. Returns no value; resource and animation helpers update presentation
  * and SDK-managed attachment state.
  */
-void func_02036030(void *self)
+void ActorDerivedType1_UpdateAttachmentPresentation(void *self)
 {
     u8 *actor = (u8 *)self;
     u8 *attachment = *(u8 **)(actor + 0x54);

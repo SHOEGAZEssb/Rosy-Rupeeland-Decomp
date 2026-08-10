@@ -51,7 +51,7 @@ static void decaySteering(u8 *actor)
  * func_02031cac, and destroy temporaries. Returns no value; presentation,
  * scene, owner, and value helpers may modify SDK-managed state.
  */
-void func_02035be8(void *output, void *self, const void *position)
+void ActorDerivedType1_UpdatePresentationSteering(void *output, void *self, const void *position)
 {
     u8 *actor = (u8 *)self;
     const u8 *input = (const u8 *)position;

@@ -21,9 +21,9 @@
 .extern Actor_UpdateAnimationState
 .extern func_020349b8
 .extern Actor_IsAtCachedTerrainHeight
-.extern func_0203647c
+.extern ActorDerivedType1_ClassifyState
 .extern ActorDerivedType1_UpdateHorizontalInputMotion
-.extern func_02037bb0
+.extern ActorDerivedType1_UpdateAuxiliaryResourceMotion
 .extern ActorDerivedRuntime_UpdateFrame
 .extern func_02048bcc
 .extern func_0204c798
@@ -108,7 +108,7 @@ ActorDerivedType1_UpdateFrame: ; 0x02035538
     cmp r0, #0x0
     beq .L_020357cc
     mov r0, r5
-    bl func_02037bb0
+    bl ActorDerivedType1_UpdateAuxiliaryResourceMotion
     b .L_020357cc
 .L_02035644:
     ldr r0, .L_02035ba0
@@ -135,7 +135,7 @@ ActorDerivedType1_UpdateFrame: ; 0x02035538
     cmp r0, #0x0
     beq .L_020356a8
     mov r0, r5
-    bl func_02037bb0
+    bl ActorDerivedType1_UpdateAuxiliaryResourceMotion
     b .L_020357cc
 .L_020356a8:
     ldr r0, [r5, #0x230]
@@ -326,7 +326,7 @@ ActorDerivedType1_UpdateFrame: ; 0x02035538
     str r0, [r5, #0xd0]
 .L_02035964:
     mov r0, r5
-    bl func_0203647c
+    bl ActorDerivedType1_ClassifyState
     ldrsh r0, [r5, #0xd6]
     cmp r0, #0x8
     cmpne r0, #0x7

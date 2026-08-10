@@ -15,9 +15,9 @@
 .extern gHeapContext
 .extern gSoundContext
 
-    .global func_0203647c
-    .type func_0203647c, @function
-func_0203647c: ; 0x0203647c
+    .global ActorDerivedType1_ClassifyState
+    .type ActorDerivedType1_ClassifyState, @function
+ActorDerivedType1_ClassifyState: ; 0x0203647c
     stmdb sp!, {r3, r4, r5, lr}
     sub sp, sp, #0x8
     mov r4, r0
@@ -431,6 +431,6 @@ func_0203647c: ; 0x0203647c
 .L_02036a78: .word gHeapContext
 .L_02036a7c: .word gGameWork
 .L_02036a80: .word gSoundContext
-    .size func_0203647c, . - func_0203647c
+    .size ActorDerivedType1_ClassifyState, . - ActorDerivedType1_ClassifyState
 
     .global Type1Actor_GetDefaultIndex

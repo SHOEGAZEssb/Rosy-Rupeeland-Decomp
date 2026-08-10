@@ -52,7 +52,7 @@ static s32 directionWord(const s32 *table, s32 direction)
  * Returns no value. Resource destruction, heap release, GameWork access, and
  * virtual calls have observable engine/SDK effects.
  */
-void func_02037bb0(void *self)
+void ActorDerivedType1_UpdateAuxiliaryResourceMotion(void *self)
 {
     u8 *actor = (u8 *)self;
     void *resource;
