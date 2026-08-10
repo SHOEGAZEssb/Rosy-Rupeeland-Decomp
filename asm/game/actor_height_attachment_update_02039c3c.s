@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/actor_height_attachment_update.c.
 .text
-.extern data_0210568c
-.extern data_02105690
+.extern gActorTargetSelectionMetadata
+.extern gActorTargetSelectionCandidates
     .global ActorSelection_Contains
     .type ActorSelection_Contains, @function
 ActorSelection_Contains: ; 0x02039c3c
@@ -21,6 +21,6 @@ ActorSelection_Contains: ; 0x02039c3c
     blt .L_02039c50
     mov r0, #0x0
     bx lr
-.L_02039c74: .word data_0210568c
-.L_02039c78: .word data_02105690
+.L_02039c74: .word gActorTargetSelectionMetadata
+.L_02039c78: .word gActorTargetSelectionCandidates
     .size ActorSelection_Contains, . - ActorSelection_Contains

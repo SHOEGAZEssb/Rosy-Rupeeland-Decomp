@@ -2,7 +2,7 @@
 .text
 .extern DebugText_Printf
 .extern Sound_Play
-.extern data_021056e0
+.extern gActorAlternatingMotionCounter
 .extern VecFx32Object_InitComponents
 .extern VecFx32Object_Destroy
 .extern ActorRuntimeTriple_Assign
@@ -127,7 +127,7 @@ ActorDerivedType1_EnterPositionedState: ; 0x02038834
     add sp, sp, #0x14
     ldmia sp!, {r4, r5, pc}
 .L_020389dc: .word gLupyContext
-.L_020389e0: .word data_021056e0
+.L_020389e0: .word gActorAlternatingMotionCounter
 .L_020389e4: .word 0x109e
 .L_020389e8: .word gSoundContext
     .size ActorDerivedType1_EnterPositionedState, . - ActorDerivedType1_EnterPositionedState

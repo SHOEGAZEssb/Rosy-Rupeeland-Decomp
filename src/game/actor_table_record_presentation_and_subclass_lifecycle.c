@@ -3,7 +3,7 @@
 
 /* Apply table-record presentation state and manage a registered derived subclass lifecycle. */
 extern void *data_020df840;
-extern u8 data_02105714[];
+extern u8 gActorRegisteredSubclassCounters[];
 extern void *gActorRegisteredSubclassRegistry[4];
 
 #ifdef __cplusplus
@@ -38,7 +38,7 @@ void ActorTableRecord_UpdatePresentationState(void *self)
  * Initialize the table-record base through ActorTableRecord_Init and install
  * this subclass vtable. Clear halfword +0x218, set +0x21a to 120 and +0xd6
  * to two, OR actor flags +0x14 with six, set word +0x114 to one, increment
- * shared signed halfword data_02105714+2, set word +0x108 to 24, and return
+ * shared signed halfword gActorRegisteredSubclassCounters+2, set word +0x108 to 24, and return
  * self. Base construction and shared-counter mutation have observable engine
  * state.
  */
@@ -51,7 +51,7 @@ void *ActorRegisteredSubclass_Init(void *self, const void *descriptor)
     *(s16 *)(actor + 0xd6) = 2;
     *(u32 *)(actor + 0x14) |= 6;
     *(s32 *)(actor + 0x114) = 1;
-    ++*(s16 *)(data_02105714 + 2);
+    ++*(s16 *)(gActorRegisteredSubclassCounters + 2);
     *(s32 *)(actor + 0x108) = 0x18;
     return actor;
 }

@@ -2,9 +2,9 @@
 
 /* Initialize and populate the global ten-entry actor target-selection cache. */
 extern void *data_021052fc;
-extern void *data_02105690[10];
-extern s32 data_021056b8[10];
-extern u8 data_0210568c[4];
+extern void *gActorTargetSelectionCandidates[10];
+extern s32 gActorTargetSelectionPriorities[10];
+extern u8 gActorTargetSelectionMetadata[4];
 
 #ifdef __cplusplus
 extern "C" {
@@ -19,7 +19,7 @@ extern void VecFx32Object_Destroy(void *value);
 
 /*
  * Clear all ten cached actor pointers, set selection index -1 and count zero
- * in data_0210568c, and clear word +0x278 of global manager object +0x2ea4.
+ * in gActorTargetSelectionMetadata, and clear word +0x278 of global manager object +0x2ea4.
  * Returns no value; only global selection/runtime state changes.
  */
 void func_02034e58(void)
@@ -27,9 +27,9 @@ void func_02034e58(void)
     u32 i;
     u8 *owner;
 
-    for (i = 0; i < 10; ++i) data_02105690[i] = 0;
-    *(s16 *)(data_0210568c + 2) = 0;
-    *(s16 *)data_0210568c = -1;
+    for (i = 0; i < 10; ++i) gActorTargetSelectionCandidates[i] = 0;
+    *(s16 *)(gActorTargetSelectionMetadata + 2) = 0;
+    *(s16 *)gActorTargetSelectionMetadata = -1;
     owner = *(u8 **)((u8 *)data_021052fc + 0x2ea4);
     *(s32 *)(owner + 0x278) = 0;
 }
@@ -39,7 +39,7 @@ void func_02034ea8(void)
 {
     u32 i;
 
-    for (i = 0; i < 10; ++i) data_02105690[i] = 0;
+    for (i = 0; i < 10; ++i) gActorTargetSelectionCandidates[i] = 0;
 }
 
 /*
@@ -62,7 +62,7 @@ void func_02034ecc(void)
     u32 index = 0;
     s32 smallest = 0x10000000;
 
-    *(s16 *)(data_0210568c + 2) = 0;
+    *(s16 *)(gActorTargetSelectionMetadata + 2) = 0;
     while (index < *(u32 *)((u8 *)GamePhaseRuntime_GetActorCollection(manager, 1) + 0x2e74) &&
            found < 10) {
         u8 *collection = (u8 *)GamePhaseRuntime_GetActorCollection(manager, 1);
@@ -89,10 +89,10 @@ void func_02034ecc(void)
                 if (distance < smallest) smallest = distance;
                 threshold = *(s32 (**)(void *))(*(u8 **)actor + 0x1c4);
                 if (distance < threshold(actor)) {
-                    data_02105690[found] = actor;
-                    data_021056b8[found] = distance;
+                    gActorTargetSelectionCandidates[found] = actor;
+                    gActorTargetSelectionPriorities[found] = distance;
                     ++found;
-                    ++*(s16 *)(data_0210568c + 2);
+                    ++*(s16 *)(gActorTargetSelectionMetadata + 2);
                 }
                 finish = *(void (**)(void *))(*(u8 **)actor + 0x1b8);
                 finish(actor);
@@ -101,6 +101,6 @@ void func_02034ecc(void)
         }
         ++index;
     }
-    while (found < 10) data_02105690[found++] = 0;
+    while (found < 10) gActorTargetSelectionCandidates[found++] = 0;
     (void)smallest; /* Retail tracks this minimum locally but never consumes it. */
 }

@@ -4,7 +4,7 @@
  * Handle registered-subclass interactions and the four-entry global registry
  * used to select a nearby actor at the end of an update interval.
  */
-extern s16 data_02105714[2];
+extern s16 gActorRegisteredSubclassCounters[2];
 extern void *gActorRegisteredSubclassRegistry[4];
 extern u8 *data_021052fc;
 
@@ -24,7 +24,7 @@ extern void ActorRegisteredSubclass_TriggerPrimaryInteraction(void *actor);
  * Return immediately when actor +0x14 bit two is set. Otherwise forward value
  * r1 and original r2 as the first and fourth non-self arguments of
  * ActorTableRecord_ApplyCollisionResponse, with zero between them. Start or
- * clamp the timed state to data_02105714[0]*6+16 frames and increment that
+ * clamp the timed state to gActorRegisteredSubclassCounters[0]*6+16 frames and increment that
  * counter. Returns no value; actor interaction state and the global counter
  * change.
  */
@@ -38,13 +38,13 @@ void ActorRegisteredSubclass_ApplyCollisionAndStartTimedState(void *self,
         return;
     ActorTableRecord_ApplyCollisionResponse(actor, value, 0, extra);
     ActorRegisteredSubclass_StartTimedState(
-        actor, (u16)(data_02105714[0] * 6 + 16));
-    ++data_02105714[0];
+        actor, (u16)(gActorRegisteredSubclassCounters[0] * 6 + 16));
+    ++gActorRegisteredSubclassCounters[0];
 }
 
 /*
  * Clear all four actor registry slots and both adjacent signed-halfword
- * counters in data_02105714. Takes no arguments, returns no value, and resets
+ * counters in gActorRegisteredSubclassCounters. Takes no arguments, returns no value, and resets
  * the complete registered-subclass global state.
  */
 void ActorRegisteredSubclass_ResetRegistry(void)
@@ -53,18 +53,18 @@ void ActorRegisteredSubclass_ResetRegistry(void)
 
     for (i = 0; i < 4; ++i)
         gActorRegisteredSubclassRegistry[i] = 0;
-    data_02105714[1] = 0;
-    data_02105714[0] = 0;
+    gActorRegisteredSubclassCounters[1] = 0;
+    gActorRegisteredSubclassCounters[0] = 0;
 }
 
 /*
- * If counter data_02105714[1] is nonzero and the primary runtime actor passes
+ * If counter gActorRegisteredSubclassCounters[1] is nonzero and the primary runtime actor passes
  * func_02007868, scan all four registry slots, selecting the actor whose
  * attachment halfword +0x28 is smallest. Every occupied slot is cleared while
  * scanning. If the selected actor is within squared X/Y distance 1600 of the
  * primary actor (coordinates shifted down 12), invoke
  * ActorRegisteredSubclass_TriggerPrimaryInteraction on it. Finally clear
- * data_02105714[0]. Returns no value; registry, counter, and actor interaction
+ * gActorRegisteredSubclassCounters[0]. Returns no value; registry, counter, and actor interaction
  * state may change. A zero [1] counter returns without clearing.
  */
 void ActorRegisteredSubclass_ProcessRegistry(void)
@@ -74,7 +74,7 @@ void ActorRegisteredSubclass_ProcessRegistry(void)
     s32 minimum = 0x7fffffff;
     s32 i;
 
-    if (data_02105714[1] == 0)
+    if (gActorRegisteredSubclassCounters[1] == 0)
         return;
     primary = *(u8 **)(data_021052fc + 0x2ea4);
     if (func_02007868(primary) != 0) {
@@ -98,7 +98,7 @@ void ActorRegisteredSubclass_ProcessRegistry(void)
                 ActorRegisteredSubclass_TriggerPrimaryInteraction(selected);
         }
     }
-    data_02105714[0] = 0;
+    gActorRegisteredSubclassCounters[0] = 0;
 }
 
 /* Return one without reading inputs or changing state. */

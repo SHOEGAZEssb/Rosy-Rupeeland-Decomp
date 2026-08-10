@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/type7_actor_motion_state_init.c.
 .extern data_020e1780
 .extern data_020e18c0
-.extern data_021056e0
+.extern gActorAlternatingMotionCounter
 .extern gGameWork
 .extern GameWork_TestFlag
 .extern ActorRuntimeTriple_Assign
@@ -139,6 +139,6 @@ Type7Actor_InitializeActiveMotionState: ; 0x0204a0d8
 .L_0204a1f0: .word data_020e18c0
 .L_0204a1f4: .word gGameWork
 .L_0204a1f8: .word 0x44b
-.L_0204a1fc: .word data_021056e0
+.L_0204a1fc: .word gActorAlternatingMotionCounter
 .size Type7Actor_InitializeActiveMotionState, . - Type7Actor_InitializeActiveMotionState
 

@@ -8,7 +8,7 @@ extern HeapContext gHeapContext;
 extern u8 *data_021052fc;
 extern void *gSoundContext;
 extern void *gGameWork;
-extern s16 data_0210568c[];
+extern s16 gActorTargetSelectionMetadata[];
 extern u8 gSystemState[];
 extern s32 data_020df254[];
 extern s32 data_020df258[];
@@ -198,7 +198,7 @@ void ActorDerivedType1_UpdateFrameControl(void *self)
     }
 
     input = *(u16 *)(gSystemState + 0x1a);
-    if (data_0210568c[0] >= 0 &&
+    if (gActorTargetSelectionMetadata[0] >= 0 &&
         (*(u16 *)(gSystemState + 6) & 0x100) != 0)
         ActorDerivedType1_StartRecord(actor);
 

@@ -2,7 +2,7 @@
 ; Matching fallback for the portable implementation in src/overlays/ov101/overlay101_recovery.c.
 .extern Sound_Play
 .extern data_020ec568
-.extern data_0210568c
+.extern gActorTargetSelectionMetadata
 .extern data_ov101_0221d684
 .extern data_ov101_0221d6a0
 .extern data_ov101_0221d6a8
@@ -111,7 +111,7 @@ func_ov101_0221d470:
 .L_0221d5cc: .word gSystemState
 .L_0221d5d0: .word gSoundContext
 .L_0221d5d4: .word data_020ec568
-.L_0221d5d8: .word data_0210568c
+.L_0221d5d8: .word gActorTargetSelectionMetadata
 .L_0221d5dc: .word data_ov101_0221d684
 .L_0221d5e0: .word data_ov101_0221d6a0
 .L_0221d5e4: .word data_ov101_0221d6a8

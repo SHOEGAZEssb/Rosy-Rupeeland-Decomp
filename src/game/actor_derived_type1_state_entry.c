@@ -2,7 +2,7 @@
 
 /* Enter a type-1 actor state while resetting motion and presentation bookkeeping. */
 extern void *gLupyContext;
-extern u8 data_021056e0;
+extern u8 gActorAlternatingMotionCounter;
 extern void *gSoundContext;
 
 #ifdef __cplusplus
@@ -53,11 +53,11 @@ void ActorDerivedType1_EnterPositionedState(void *self, const void *position, s3
         ActorRuntimeTriple_Assign(actor + 0x98, 0, 0, 0);
         if (mode != 0) {
             s32 offset[4];
-            s32 x = (data_021056e0 & 1) ? -0x1800 : 0x1800;
+            s32 x = (gActorAlternatingMotionCounter & 1) ? -0x1800 : 0x1800;
             VecFx32Object_InitComponents(offset, x, -0x3000, 0);
-            ++data_021056e0;
+            ++gActorAlternatingMotionCounter;
             (*(void (**)(void *, const void *, s32, s32))
-                (*(u8 **)actor + 0xb8))(actor, offset, 1, data_021056e0);
+                (*(u8 **)actor + 0xb8))(actor, offset, 1, gActorAlternatingMotionCounter);
             VecFx32Object_Destroy(offset);
         } else {
             *(u32 *)(actor + 0x230) |= 0x400;

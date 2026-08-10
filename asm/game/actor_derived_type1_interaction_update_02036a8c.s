@@ -8,8 +8,8 @@
 .extern data_020d37dc
 .extern data_021052fc
 .extern gActorRuntimeCollection
-.extern data_0210568c
-.extern data_02105690
+.extern gActorTargetSelectionMetadata
+.extern gActorTargetSelectionCandidates
 .extern data_021e9ac0
 .extern VecFx32Object_Init
 .extern VecFx32Object_InitCopy
@@ -572,8 +572,8 @@ ActorDerivedType1_ProcessInteraction: ; 0x02036a8c
     ldmia sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, pc}
 .L_02037264: .word gSystemState
 .L_02037268: .word data_020c9670
-.L_0203726c: .word data_02105690
-.L_02037270: .word data_0210568c
+.L_0203726c: .word gActorTargetSelectionCandidates
+.L_02037270: .word gActorTargetSelectionMetadata
 .L_02037274: .word data_021052fc
 .L_02037278: .word data_020c3d80
 .L_0203727c: .word data_020c3d88

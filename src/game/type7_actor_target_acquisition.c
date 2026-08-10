@@ -6,8 +6,8 @@
  * range, and priority gates.
  */
 extern u8 *data_021052fc;
-extern void *data_02105690[10];
-extern s32 data_021056b8[10];
+extern void *gActorTargetSelectionCandidates[10];
+extern s32 gActorTargetSelectionPriorities[10];
 extern u32 data_020e16e8[];
 extern u32 data_020e18f0[];
 extern u32 data_020e18e8[];
@@ -48,12 +48,12 @@ static s32 invoke_a8_predicate(void *object)
  * callback, install data_020e16e8 for 20 ticks in finite mode or
  * data_020e18f0 indefinitely. Return one after binding.
  *
- * Otherwise reject actor flag 0x4000 and scan ten pointers in data_02105690.
+ * Otherwise reject actor flag 0x4000 and scan ten pointers in gActorTargetSelectionCandidates.
  * A candidate needs +0x260 bit two, must fail its virtual +0xa8 predicate, must
  * clear +0x260 bit 0x10000, share the Actor_GetCachedTerrainHeight value with the actor, lie
  * within 0x20000 vertically, and have planar distance below actor +0x260 plus
  * 0x30000 when Type7Actor_HasSpecialCallbackPair recognizes the callback. Choose the eligible entry
- * with the smallest parallel data_021056b8 priority. Bind it at +0x210 and,
+ * with the smallest parallel gActorTargetSelectionPriorities priority. Bind it at +0x210 and,
  * for an unrecognized callback, install data_020e18e8 for 20 ticks or
  * data_020e18e0 indefinitely, then set +0x256/+0x25a to 60/0. Actor relation,
  * callback, and counters may change; no SDK or hardware effect occurs.
@@ -100,7 +100,7 @@ s32 Type7Actor_TryAcquireTarget(void *self, s32 finiteMode)
         return 0;
 
     for (i = 0; i < 10; ++i) {
-        u8 *candidate = (u8 *)data_02105690[i];
+        u8 *candidate = (u8 *)gActorTargetSelectionCandidates[i];
         s32 distance;
         s32 range;
         if (candidate == 0)
@@ -120,15 +120,15 @@ s32 Type7Actor_TryAcquireTarget(void *self, s32 finiteMode)
             range += 0x30000;
         if (distance >= range)
             continue;
-        if (bestIndex == -1 || bestPriority > data_021056b8[i]) {
+        if (bestIndex == -1 || bestPriority > gActorTargetSelectionPriorities[i]) {
             bestIndex = i;
-            bestPriority = data_021056b8[i];
+            bestPriority = gActorTargetSelectionPriorities[i];
         }
     }
     if (bestIndex == -1)
         return 0;
 
-    *(void **)(actor + 0x210) = data_02105690[bestIndex];
+    *(void **)(actor + 0x210) = gActorTargetSelectionCandidates[bestIndex];
     if (Type7Actor_HasSpecialCallbackPair(actor) == 0) {
         if (finiteMode != 0)
             Type7Actor_SetCallbackPair(actor, data_020e18e8[0], data_020e18e8[1], 20);

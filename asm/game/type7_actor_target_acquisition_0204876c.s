@@ -5,8 +5,8 @@
 .extern data_020e18e8
 .extern data_020e18f0
 .extern data_021052fc
-.extern data_02105690
-.extern data_021056b8
+.extern gActorTargetSelectionCandidates
+.extern gActorTargetSelectionPriorities
 .extern Actor_GetCachedTerrainHeight
 .extern ActorDerivedType1_IsSpecialRecordActive
 .extern Type7Actor_HasSpecialCallbackPair
@@ -214,8 +214,8 @@ Type7Actor_TryAcquireTarget: ; 0x0204876c
 .L_02048a30: .word data_021052fc
 .L_02048a34: .word data_020e16e8
 .L_02048a38: .word data_020e18f0
-.L_02048a3c: .word data_021056b8
-.L_02048a40: .word data_02105690
+.L_02048a3c: .word gActorTargetSelectionPriorities
+.L_02048a40: .word gActorTargetSelectionCandidates
 .L_02048a44: .word data_020e18e8
 .L_02048a48: .word data_020e18e0
 

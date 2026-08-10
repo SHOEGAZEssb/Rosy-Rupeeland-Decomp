@@ -3,8 +3,8 @@
 /* Process type-1 actor impacts, proximity responses, terrain interaction, and scale events. */
 extern u8 gSystemState[];
 extern s16 data_020c9670[];
-extern void *data_02105690[10];
-extern u8 data_0210568c[4];
+extern void *gActorTargetSelectionCandidates[10];
+extern u8 gActorTargetSelectionMetadata[4];
 extern void *data_021052fc;
 extern s8 data_020c3d80[8];
 extern s8 data_020c3d88[8];
@@ -159,8 +159,8 @@ s32 ActorDerivedType1_ProcessInteraction(void *self)
         actorPosition[1] -= first << 4;
         actorPosition[2] += second << 4;
 
-        for (i = 0; i < (u32)*(s16 *)(data_0210568c + 2); ++i) {
-            u8 *target = (u8 *)data_02105690[i];
+        for (i = 0; i < (u32)*(s16 *)(gActorTargetSelectionMetadata + 2); ++i) {
+            u8 *target = (u8 *)gActorTargetSelectionCandidates[i];
             if ((*(s32 (**)(void *))(*(u8 **)target + 0x1d0))(target) != 0 &&
                 func_020adcac(target + 0x1c, actorPosition + 1) < 0x20000) {
                 VecFx32_Subtract(displacement, target + 0x18, actor + 0x18);

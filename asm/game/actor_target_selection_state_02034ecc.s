@@ -1,9 +1,9 @@
 ; Matching retail form; see src/game/actor_target_selection_state.c.
 .text
 .extern data_021052fc
-.extern data_0210568c
-.extern data_02105690
-.extern data_021056b8
+.extern gActorTargetSelectionMetadata
+.extern gActorTargetSelectionCandidates
+.extern gActorTargetSelectionPriorities
 .extern VecFx32Object_Destroy
 .extern VecFx32Object_GetMagnitude
 .extern VecFx32_Subtract
@@ -114,9 +114,9 @@ func_02034ecc: ; 0x02034ecc
     add sp, sp, #0x10
     ldmia sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, pc}
 .L_02035040: .word data_021052fc
-.L_02035044: .word data_0210568c
-.L_02035048: .word data_02105690
-.L_0203504c: .word data_021056b8
+.L_02035044: .word gActorTargetSelectionMetadata
+.L_02035048: .word gActorTargetSelectionCandidates
+.L_0203504c: .word gActorTargetSelectionPriorities
     .size func_02034ecc, . - func_02034ecc
 
     .global func_02035050

@@ -1,9 +1,9 @@
 ; Matching retail form; see src/game/actor_interaction_runtime_update.c.
 .text
 .extern data_020c9670
-.extern data_02105680
-.extern data_02105682
-.extern data_02105684
+.extern gActorInteractionDirectionIndex
+.extern gActorInteractionMagnitude
+.extern gActorInteractionSmoothedDisplacement
 .extern gActorInteractionResourceState
 .extern func_02034ecc
 .extern ActorRegisteredSubclass_ProcessRegistry
@@ -59,9 +59,9 @@ ActorInteractionRuntime_Update: ; 0x0203ac9c
     strh r1, [r0, #0x0]
     bl InteractionTimingState_Tick
     ldmia sp!, {r3, r4, r5, pc}
-.L_0203ad50: .word data_02105680
-.L_0203ad54: .word data_02105682
-.L_0203ad58: .word data_02105684
+.L_0203ad50: .word gActorInteractionDirectionIndex
+.L_0203ad54: .word gActorInteractionMagnitude
+.L_0203ad58: .word gActorInteractionSmoothedDisplacement
 .L_0203ad5c: .word data_020c9670
 .L_0203ad60: .word gActorInteractionResourceState
 

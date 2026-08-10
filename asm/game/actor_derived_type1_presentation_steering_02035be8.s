@@ -1,8 +1,8 @@
 ; Matching retail form; see src/game/actor_derived_type1_presentation_steering.c.
 .text
 .extern SceneManager_GetCurrent
-.extern data_0210568c
-.extern data_02105690
+.extern gActorTargetSelectionMetadata
+.extern gActorTargetSelectionCandidates
 .extern VecFx32Object_InitCopy
 .extern VecFx32Object_Destroy
 .extern func_02031758
@@ -301,8 +301,8 @@ ActorDerivedType1_UpdatePresentationSteering: ; 0x02035be8
     ldmia sp!, {r4, r5, r6, r7, r8, r9, r10, r11, pc}
 .L_02036018: .word gSceneManager
 .L_0203601c: .word 0xb33
-.L_02036020: .word data_0210568c
-.L_02036024: .word data_02105690
+.L_02036020: .word gActorTargetSelectionMetadata
+.L_02036024: .word gActorTargetSelectionCandidates
 .L_02036028: .word 0xf48
 .L_0203602c: .word gSceneTouchInitialData
     .size ActorDerivedType1_UpdatePresentationSteering, . - ActorDerivedType1_UpdatePresentationSteering

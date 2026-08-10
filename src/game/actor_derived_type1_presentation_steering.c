@@ -3,8 +3,8 @@
 /* Synchronize type-1 presentation and steer its recovered X/Y accumulator. */
 extern void *gSceneManager;
 extern u8 gSceneTouchInitialData[];
-extern u8 data_0210568c[4];
-extern void *data_02105690[10];
+extern u8 gActorTargetSelectionMetadata[4];
+extern void *gActorTargetSelectionCandidates[10];
 
 #ifdef __cplusplus
 extern "C" {
@@ -92,7 +92,7 @@ void ActorDerivedType1_UpdatePresentationSteering(void *output, void *self, cons
 
     if ((*(u32 *)(actor + 0x230) & 0x20) != 0) {
         *(s16 *)(actor + 0x24e) = 0;
-    } else if (*(s16 *)(data_0210568c + 2) > 0 ||
+    } else if (*(s16 *)(gActorTargetSelectionMetadata + 2) > 0 ||
                *(s16 *)(actor + 0x29e) > 0) {
         s32 sumX = 0;
         s32 sumY = 0;
@@ -102,8 +102,8 @@ void ActorDerivedType1_UpdatePresentationSteering(void *output, void *self, cons
         s32 magnitude;
         s32 blend;
 
-        for (i = 0; i < (u32)*(s16 *)(data_0210568c + 2); ++i) {
-            u8 *target = (u8 *)data_02105690[i];
+        for (i = 0; i < (u32)*(s16 *)(gActorTargetSelectionMetadata + 2); ++i) {
+            u8 *target = (u8 *)gActorTargetSelectionCandidates[i];
             if ((*(u32 *)(target + 0x260) & 0x1000) != 0) {
                 void *targetPosition =
                     (*(void *(**)(void *))(*(u8 **)target + 0x1c8))(target);

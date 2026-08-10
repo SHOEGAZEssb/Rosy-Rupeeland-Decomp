@@ -2,7 +2,7 @@
 .text
 .extern Heap_Free
 .extern data_020df840
-.extern data_02105714
+.extern gActorRegisteredSubclassCounters
 .extern gActorRegisteredSubclassRegistry
 .extern ActorDerivedRuntime_DestroyAlternate
 .extern ActorTableRecord_Init
@@ -59,7 +59,7 @@ ActorRegisteredSubclass_Init: ; 0x0203d2a8
     str r2, [r4, #0x108]
     ldmia sp!, {r4, pc}
 .L_0203d30c: .word data_020df840
-.L_0203d310: .word data_02105714
+.L_0203d310: .word gActorRegisteredSubclassCounters
     .size ActorRegisteredSubclass_Init, . - ActorRegisteredSubclass_Init
 
     .global ActorRegisteredSubclass_Destroy

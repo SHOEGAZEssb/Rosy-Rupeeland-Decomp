@@ -8,7 +8,7 @@
  */
 extern u32 data_020e1780[];
 extern u32 data_020e18c0[];
-extern u8 data_021056e0;
+extern u8 gActorAlternatingMotionCounter;
 
 #ifdef __cplusplus
 extern "C" {
@@ -64,7 +64,7 @@ void Type7Actor_InitializeStationaryMotionState(void *self)
  *
  * With a zero condition, select presentation 13. Otherwise set motion word
  * +0x90 to +0x2800 when game-work flag 0x44b is set or -0x2800 when clear;
- * alternate +0x8c between +0x1800 and -0x1800 using byte data_021056e0, then
+ * alternate +0x8c between +0x1800 and -0x1800 using byte gActorAlternatingMotionCounter, then
  * increment that byte. Set actor flag 0x200, select presentation 14, reset
  * object +0x54 through GraphicsSpriteState_SetAnimationIndex(..., 0), and clear actor byte +0xd4.
  * Actor, callback, global alternation, game-work-derived, mode, presentation,
@@ -85,8 +85,8 @@ void Type7Actor_InitializeActiveMotionState(void *self, s32 launch)
         *(s32 *)(actor + 0x90) =
             GameWork_TestFlag(gGameWork, 0x44b) != 0 ? 0x2800 : -0x2800;
         *(s32 *)(actor + 0x8c) =
-            (data_021056e0 & 1) != 0 ? -0x1800 : 0x1800;
-        ++data_021056e0;
+            (gActorAlternatingMotionCounter & 1) != 0 ? -0x1800 : 0x1800;
+        ++gActorAlternatingMotionCounter;
         *(u32 *)(actor + 0x268) |= 0x200;
         *(u16 *)(actor + 0xd6) = 14;
         GraphicsSpriteState_SetAnimationIndex(*(void **)(actor + 0x54), 0);

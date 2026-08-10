@@ -1,8 +1,8 @@
 #include "tingle/types.h"
 
 /* Query a recovered pointer list and smooth actor height against an attachment range. */
-extern u8 data_0210568c[];
-extern void *data_02105690[];
+extern u8 gActorTargetSelectionMetadata[];
+extern void *gActorTargetSelectionCandidates[];
 
 #ifdef __cplusplus
 extern "C" {
@@ -14,16 +14,16 @@ extern s32 func_020be334(s32 value);
 #endif
 
 /*
- * Ignore first and linearly scan data_02105690 for target using the signed
- * halfword count at data_0210568c +0x02. Return one on identity match, else
+ * Ignore first and linearly scan gActorTargetSelectionCandidates for target using the signed
+ * halfword count at gActorTargetSelectionMetadata +0x02. Return one on identity match, else
  * zero. No state changes and no helpers are called.
  */
 s32 ActorSelection_Contains(void *first, void *target)
 {
     s32 i;
     (void)first;
-    for (i = 0; i < *(s16 *)(data_0210568c + 2); ++i)
-        if (data_02105690[i] == target)
+    for (i = 0; i < *(s16 *)(gActorTargetSelectionMetadata + 2); ++i)
+        if (gActorTargetSelectionCandidates[i] == target)
             return 1;
     return 0;
 }

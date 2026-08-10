@@ -6,7 +6,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern s32 data_02105684[2];
+extern s32 gActorInteractionSmoothedDisplacement[2];
 extern void *data_021052fc;
 #ifdef __cplusplus
 }
@@ -45,11 +45,11 @@ void GamePhaseVisualEffect_UpdatePosition(GamePhaseVisualEffect *self,
         area = GamePhaseRuntime_GetActorCollection(runtime, 1);
         actor = *(u8 **)((u8 *)area + 0x2e7c);
         if (!(*(u32 *)(actor + 0xd0) & 0x10))
-            VecFx32Object_InitComponents(&temporary, data_02105684[0] * 8,
-                          data_02105684[1] * -8, 0);
+            VecFx32Object_InitComponents(&temporary, gActorInteractionSmoothedDisplacement[0] * 8,
+                          gActorInteractionSmoothedDisplacement[1] * -8, 0);
         else
-            VecFx32Object_InitComponents(&temporary, data_02105684[0] * 32,
-                          data_02105684[1] * -32, 0);
+            VecFx32Object_InitComponents(&temporary, gActorInteractionSmoothedDisplacement[0] * 32,
+                          gActorInteractionSmoothedDisplacement[1] * -32, 0);
         VecFx32Object_Assign(&current, &temporary);
         VecFx32Object_Destroy(&temporary);
         if (current.value.x != self->vectors[2].value.x ||

@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/actor_registered_subclass_registry.c.
 .text
 .extern data_021052fc
-.extern data_02105714
+.extern gActorRegisteredSubclassCounters
 .extern gActorRegisteredSubclassRegistry
 .extern func_02007868
 .extern ActorTableRecord_ApplyCollisionResponse
@@ -30,7 +30,7 @@ ActorRegisteredSubclass_ApplyCollisionAndStartTimedState: ; 0x0203d8bc
     add r1, r1, #0x1
     strh r1, [r0, #0x0]
     ldmia sp!, {r4, pc}
-.L_0203d90c: .word data_02105714
+.L_0203d90c: .word gActorRegisteredSubclassCounters
     .size ActorRegisteredSubclass_ApplyCollisionAndStartTimedState, . - ActorRegisteredSubclass_ApplyCollisionAndStartTimedState
 
     .global ActorRegisteredSubclass_ResetRegistry
@@ -49,7 +49,7 @@ ActorRegisteredSubclass_ResetRegistry: ; 0x0203d910
     strh r1, [r0, #0x0]
     bx lr
 .L_0203d93c: .word gActorRegisteredSubclassRegistry
-.L_0203d940: .word data_02105714
+.L_0203d940: .word gActorRegisteredSubclassCounters
     .size ActorRegisteredSubclass_ResetRegistry, . - ActorRegisteredSubclass_ResetRegistry
 
     .global ActorRegisteredSubclass_ProcessRegistry
@@ -111,7 +111,7 @@ ActorRegisteredSubclass_ProcessRegistry: ; 0x0203d944
     mov r1, #0x0
     strh r1, [r0, #0x0]
     ldmia sp!, {r4, r5, r6, pc}
-.L_0203da14: .word data_02105714
+.L_0203da14: .word gActorRegisteredSubclassCounters
 .L_0203da18: .word data_021052fc
 .L_0203da1c: .word gActorRegisteredSubclassRegistry
     .size ActorRegisteredSubclass_ProcessRegistry, . - ActorRegisteredSubclass_ProcessRegistry

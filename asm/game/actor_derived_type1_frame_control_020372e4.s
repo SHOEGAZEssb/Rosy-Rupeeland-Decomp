@@ -8,7 +8,7 @@
 .extern data_020df258
 .extern data_020df4a4
 .extern data_021052fc
-.extern data_0210568c
+.extern gActorTargetSelectionMetadata
 .extern VecFx32Object_InitComponents
 .extern VecFx32Object_Destroy
 .extern func_02008378
@@ -553,7 +553,7 @@ ActorDerivedType1_UpdateFrameControl: ; 0x020372e4
 .L_02037a70: .word 0x1001
 .L_02037a74: .word gGameWork
 .L_02037a78: .word 0x393
-.L_02037a7c: .word data_0210568c
+.L_02037a7c: .word gActorTargetSelectionMetadata
 .L_02037a80: .word gSystemState
 .L_02037a84: .word data_020df254
 .L_02037a88: .word data_020df258

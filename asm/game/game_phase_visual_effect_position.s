@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/game_phase_visual_effect_position.c.
 .text
 .extern data_021052fc
-.extern data_02105684
+.extern gActorInteractionSmoothedDisplacement
 .extern VecFx32Object_InitComponents
 .extern VecFx32Object_Destroy
 .extern VecFx32Object_Assign
@@ -184,6 +184,6 @@ L_02010084:
     add sp, sp, #0x94
     ldmia sp!, {r4, r5, pc}
 L_0201008c: .word data_021052fc
-L_02010090: .word data_02105684
+L_02010090: .word gActorInteractionSmoothedDisplacement
     .size GamePhaseVisualEffect_UpdatePosition, . - GamePhaseVisualEffect_UpdatePosition
 

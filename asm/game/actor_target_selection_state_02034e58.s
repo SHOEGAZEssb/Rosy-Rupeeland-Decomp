@@ -1,8 +1,8 @@
 ; Matching retail form; see src/game/actor_target_selection_state.c.
 .text
 .extern data_021052fc
-.extern data_0210568c
-.extern data_02105690
+.extern gActorTargetSelectionMetadata
+.extern gActorTargetSelectionCandidates
 
     .global func_02034e58
     .type func_02034e58, @function
@@ -25,8 +25,8 @@ func_02034e58: ; 0x02034e58
     ldr r0, [r0, #0xea4]
     str r3, [r0, #0x278]
     bx lr
-.L_02034e9c: .word data_02105690
-.L_02034ea0: .word data_0210568c
+.L_02034e9c: .word gActorTargetSelectionCandidates
+.L_02034ea0: .word gActorTargetSelectionMetadata
 .L_02034ea4: .word data_021052fc
     .size func_02034e58, . - func_02034e58
 
