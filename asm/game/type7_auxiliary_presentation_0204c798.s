@@ -4,7 +4,7 @@
 .extern Actor_GetCollection
 .extern ActorCollection_GetSpriteOwner
 .extern func_02073fc4
-.extern func_02072b68
+.extern GraphicsSpriteState_SetAnimationIndex
 .extern Type7AuxiliaryPresentation_Reset
 .extern func_02073ef8
 .extern Heap_Free
@@ -45,7 +45,7 @@ Type7AuxiliaryPresentation_Init: ; 0x0204c798
     bl func_02073fc4
     str r0, [r4, #0x4]
     mov r1, #0x0
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     ldr r1, [r4, #0x4]
     mov r0, #0x0
     strh r0, [r1, #0x2c]
@@ -143,7 +143,7 @@ Type7AuxiliaryPresentation_EnterRaisedState: ; 0x0204c91c
     strb r0, [r4, #0x12]
     ldr r0, [r4, #0x4]
     mov r1, #0x10
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     ldr r2, [r4, #0x4]
     mvn r0, #0x0
     ldrh r1, [r2, #0x24]

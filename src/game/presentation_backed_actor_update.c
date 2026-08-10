@@ -22,7 +22,7 @@ extern s32 Actor_QueryTerrainHeight(void *actor, s32 x, s32 y);
 extern void func_020050a4(void *destination, const void *source);
 extern void func_020050c8(void *destination, const void *source);
 extern s32 func_0204cfa4(s32 x, s32 y);
-extern void func_02072b68(void *presentation, u32 selection);
+extern void GraphicsSpriteState_SetAnimationIndex(void *presentation, u32 selection);
 extern s32 func_020adae4(s32 numerator, s32 denominator);
 #ifdef __cplusplus
 }
@@ -71,7 +71,7 @@ void func_0204d858(void *actor)
 
         if (FIELD(u16, actor, 0x4e) == 13 && FIELD(s32, actor, 0x44) < 0 &&
             FIELD(u8, actor, 0x1ef) != FIELD(u8, presentation, 0x38)) {
-            func_02072b68(presentation, FIELD(u8, actor, 0x1ef));
+            GraphicsSpriteState_SetAnimationIndex(presentation, FIELD(u8, actor, 0x1ef));
             FIELD(u16, presentation, 0x24) &= (u16)~2;
         }
 

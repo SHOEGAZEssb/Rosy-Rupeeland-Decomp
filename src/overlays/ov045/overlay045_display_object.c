@@ -21,7 +21,7 @@ extern "C" void *func_02073ffc(void *fontState, void *owner, s32 selector);
 extern "C" void func_02094bbc(void *object, s32 x, s32 y, s32 z);
 extern "C" void func_0207419c(void *resource);
 extern "C" void *func_020740a4(void *resource);
-extern "C" void func_02072b68(void *sprite, s32 mode);
+extern "C" void GraphicsSpriteState_SetAnimationIndex(void *sprite, s32 mode);
 extern "C" void Heap_Free(void *allocation);
 
 class DisplayObjectVirtual {
@@ -116,7 +116,7 @@ extern "C" void func_ov045_0220bd90(void *object)
 {
     void *sprite = FIELD(void *, object, 0xac);
     if (FIELD(u8, sprite, 0x38) != 1)
-        func_02072b68(sprite, 1);
+        GraphicsSpriteState_SetAnimationIndex(sprite, 1);
 }
 
 /* Select sprite animation mode 2 unless it is already active. */
@@ -124,7 +124,7 @@ extern "C" void func_ov045_0220bdb0(void *object)
 {
     void *sprite = FIELD(void *, object, 0xac);
     if (FIELD(u8, sprite, 0x38) != 2)
-        func_02072b68(sprite, 2);
+        GraphicsSpriteState_SetAnimationIndex(sprite, 2);
 }
 
 /* Select sprite animation mode 3 unless it is already active. */
@@ -132,7 +132,7 @@ extern "C" void func_ov045_0220bdd0(void *object)
 {
     void *sprite = FIELD(void *, object, 0xac);
     if (FIELD(u8, sprite, 0x38) != 3)
-        func_02072b68(sprite, 3);
+        GraphicsSpriteState_SetAnimationIndex(sprite, 3);
 }
 
 /* Select sprite animation mode 4 unless it is already active. */
@@ -140,5 +140,5 @@ extern "C" void func_ov045_0220bdf0(void *object)
 {
     void *sprite = FIELD(void *, object, 0xac);
     if (FIELD(u8, sprite, 0x38) != 4)
-        func_02072b68(sprite, 4);
+        GraphicsSpriteState_SetAnimationIndex(sprite, 4);
 }

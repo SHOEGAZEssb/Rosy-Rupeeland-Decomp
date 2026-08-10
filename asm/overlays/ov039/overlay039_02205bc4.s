@@ -1,6 +1,6 @@
 .text
 /* Exact fallback; see overlay039_resource_objects.c for portable C. */
-    .extern func_02072b68
+    .extern GraphicsSpriteState_SetAnimationIndex
     .global func_ov039_02205bc4
 func_ov039_02205bc4:
     stmdb sp!, {r4, r5, r6, lr}
@@ -9,7 +9,7 @@ func_ov039_02205bc4:
     ldr r0, [r6, #0xc]
     mov r5, r2
     mov r4, r3
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     ldr ip, [r6, #0xc]
     ldr r2, [sp, #0x10]
     ldrh r3, [ip, #0x24]

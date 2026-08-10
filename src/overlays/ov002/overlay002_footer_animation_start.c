@@ -16,7 +16,7 @@ typedef struct Overlay002FooterAnimationState {
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_02072b68(void *sprite, u8 value);
+extern void GraphicsSpriteState_SetAnimationIndex(void *sprite, u8 value);
 extern void func_02091bac(void *animation, s32 mode, s32 duration, s32 start,
                           s32 end);
 #ifdef __cplusplus
@@ -34,7 +34,7 @@ extern "C"
 #endif
 void func_ov002_021fbdc0(Overlay002FooterAnimationState *state)
 {
-    func_02072b68(state->footer_07c, 0x1a);
-    func_02072b68(state->footer_080, 0x1b);
+    GraphicsSpriteState_SetAnimationIndex(state->footer_07c, 0x1a);
+    GraphicsSpriteState_SetAnimationIndex(state->footer_080, 0x1b);
     func_02091bac(state->animation_098, 1, 0x18, 0, 0x10);
 }

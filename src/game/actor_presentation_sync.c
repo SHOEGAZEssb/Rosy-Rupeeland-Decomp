@@ -23,7 +23,7 @@ extern void Actor_GetCollisionCenter(void *, void *);
 extern void func_020571b4(void *, const void *, const void *);
 extern void func_02005058(void *);
 extern u32 Actor_QueryTerrainCell(void *, s32, s32);
-extern void func_02072b68(void *, s32);
+extern void GraphicsSpriteState_SetAnimationIndex(void *, s32);
 #ifdef __cplusplus
 }
 #endif
@@ -145,7 +145,7 @@ void func_02031758(PresentationPoint *output, void *actorPointer,
         } else {
             s32 mode = delta < 0x5800 ? 1 : (delta > 0x20000 ? 3 : 2);
             if (attachment[0x38] != mode)
-                func_02072b68(attachment, mode);
+                GraphicsSpriteState_SetAnimationIndex(attachment, mode);
             *(u16 *)(attachment + 0x24) &= ~8;
             *(s16 *)(attachment + 0x2c) =
                 (s16)((*(s32 *)(actor + 0x1c) -

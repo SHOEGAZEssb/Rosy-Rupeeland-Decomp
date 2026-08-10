@@ -2,7 +2,7 @@
 
 /* Exact fallback; see src/overlays/ov031/overlay031_effect_runtime.c for documented portable C. */
 .extern data_ov031_021fe790
-.extern func_02072b68
+.extern GraphicsSpriteState_SetAnimationIndex
 .extern func_02073ffc
 .extern func_0209189c
 .extern func_ov031_021fd19c
@@ -42,7 +42,7 @@ L_021fd6ac:
     mov r1, r0
     mov r0, r5
     and r1, r1, #0xff
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     mov r0, #0x3
     strb r0, [r5, #0x3a]
     sub r1, r0, #0x2b

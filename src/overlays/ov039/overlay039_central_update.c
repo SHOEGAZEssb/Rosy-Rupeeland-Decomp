@@ -32,7 +32,7 @@ extern void func_ov039_021fdb9c(void *scene);
 extern void func_ov039_021ff330(void *scene, s32 mode);
 extern void func_ov039_021fd93c(void *scene, s32 targetX, s32 targetY,
                                 s32 angleOffset);
-extern void func_02072b68(void *renderObject, u8 orientation);
+extern void GraphicsSpriteState_SetAnimationIndex(void *renderObject, u8 orientation);
 extern void Sound_Play(void *context, s32 soundId, s32 parameter);
 extern void func_0205940c(void *context, s32 soundId, s32 parameter);
 extern void func_02005030(Overlay039Vector *destination, void *source);
@@ -104,13 +104,13 @@ static void updateProjectilePattern(void *scene, s32 enableSpecial)
         if (enableSpecial) {
             void *object9c = FIELD(void *, scene, 0x9c);
             FIELD(u16, object9c, 0x42) &= (u16)~4;
-            func_02072b68(FIELD(void *, object9c, 0x0c), 1);
+            GraphicsSpriteState_SetAnimationIndex(FIELD(void *, object9c, 0x0c), 1);
             FIELD(s32, scene, 0x1ca4) = 0x5a;
         }
         state++;
         timer = 0;
         if (pattern != 0) {
-            func_02072b68(FIELD(void *, object98, 0x0c), 9);
+            GraphicsSpriteState_SetAnimationIndex(FIELD(void *, object98, 0x0c), 9);
             FIELD(u16, FIELD(void *, object98, 0x0c), 0x24) |= 2;
             playSceneSound(0x0d);
         }
@@ -196,7 +196,7 @@ static void updateProjectilePattern(void *scene, s32 enableSpecial)
     func_02005058(&target);
     if (patternTimer == 0) {
         timer = 0;
-        func_02072b68(FIELD(void *, object98, 0x0c), 3);
+        GraphicsSpriteState_SetAnimationIndex(FIELD(void *, object98, 0x0c), 3);
         func_0205940c(gSoundContext, 0x63, 7);
         if (pattern == 10) {
             state = 4;
@@ -351,7 +351,7 @@ extern "C" void func_ov039_021fe05c(void *scene)
             FIELD(u16, scene, 0x1d9c) = 0;
             void *renderObject = FIELD(void *, FIELD(void *, scene, 0x98), 0x0c);
             if (FIELD(u8, renderObject, 0x38) != 3)
-                func_02072b68(renderObject, 3);
+                GraphicsSpriteState_SetAnimationIndex(renderObject, 3);
         }
     } else if (FIELD(u16, scene, 0x1cc0) == 0 &&
                FIELD(u16, scene, 0x1cb8) == 0 &&

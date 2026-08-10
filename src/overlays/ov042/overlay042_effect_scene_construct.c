@@ -24,7 +24,7 @@ extern "C" void func_ov042_02209190(void *object);
 extern "C" void func_ov042_02200950(void *object);
 extern "C" void *func_0209a208(void *owner, s32 resource0, s32 resource1,
                                  s32 resource2, s32 heap, s32 mode);
-extern "C" void func_02072b68(void *animation, u8 index);
+extern "C" void GraphicsSpriteState_SetAnimationIndex(void *animation, u8 index);
 extern "C" void func_0209a2a4(void *child, void *parent);
 extern "C" u8 data_ov042_0220b57c[];
 extern "C" u8 data_ov042_0220b590[];
@@ -47,7 +47,7 @@ static void *create_child(void *scene, s32 firstResource, s32 heap, s32 mode,
         FIELD(u16, child, 0x42) |= 4;
     else
         FIELD(u16, child, 0x42) &= (u16)~4;
-    func_02072b68(FIELD(void *, child, 0x0c), animation);
+    GraphicsSpriteState_SetAnimationIndex(FIELD(void *, child, 0x0c), animation);
     return child;
 }
 
@@ -115,7 +115,7 @@ extern "C" void *func_ov042_021ffee4(void *scene, void *owner, s32 heap)
         FIELD(void *, scene, 0x5c + i * 4) = child;
         configure_child(scene, child, 0, 0, 0, 0);
         FIELD(u16, child, 0x42) |= 4;
-        func_02072b68(FIELD(void *, child, 0x0c), (u8)i);
+        GraphicsSpriteState_SetAnimationIndex(FIELD(void *, child, 0x0c), (u8)i);
     }
     FIELD(s32, FIELD(void *, scene, 0x5c), 0x44) = -125;
     FIELD(s32, FIELD(void *, scene, 0x60), 0x44) = -127;

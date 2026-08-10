@@ -11,7 +11,7 @@
 extern "C" void func_0209a07c(void *record);
 extern "C" void func_0209a0d8(void *record, s32 resource0, s32 resource1,
                                s32 resource2, s32 ownerValue, s32 mode);
-extern "C" void func_02072b68(void *resource, u8 mode);
+extern "C" void GraphicsSpriteState_SetAnimationIndex(void *resource, u8 mode);
 
 /*
  * For selector -1, reset record +0x50, configure IDs 0x12FF/0x1300/0x1301
@@ -30,7 +30,7 @@ extern "C" void func_ov042_02206ff8(void *object, s32 selector)
         func_0209a07c(record);
         func_0209a0d8(record, 0x12ff, 0x1300, 0x1301, ownerValue, 1);
         void *resource = FIELD(void *, record, 0xc);
-        func_02072b68(resource, 0);
+        GraphicsSpriteState_SetAnimationIndex(resource, 0);
         FIELD(u16, resource, 0x24) &= (u16)~2;
         FIELD(u16, record, 0x42) |= 4;
         return;
@@ -43,6 +43,6 @@ extern "C" void func_ov042_02206ff8(void *object, s32 selector)
     else if (selector == 1)
         func_0209a0d8(record, 0x12fa, 0x12fd, 0x12fc, ownerValue, 2);
     void *resource = FIELD(void *, record, 0xc);
-    func_02072b68(resource, 0);
+    GraphicsSpriteState_SetAnimationIndex(resource, 0);
     FIELD(u16, resource, 0x24) |= 2;
 }

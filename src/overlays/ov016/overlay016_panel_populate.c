@@ -20,7 +20,7 @@ extern s32 func_02063074(void *);
 extern s32 func_02063084(void *);
 extern s32 func_02063190(void *);
 extern void func_02071ee0(void *, void *, s32, s32, s32);
-extern void func_02072b68(void *, s32);
+extern void GraphicsSpriteState_SetAnimationIndex(void *, s32);
 extern void func_02073e48(void *, s32, s32, s32, s32, s32, s32);
 extern void *func_02073ffc(void *, void *, s32);
 extern void func_02075598(void *, void *);
@@ -72,14 +72,14 @@ extern "C" void func_ov016_021fdaa0(void *state, void *selection, s32 image)
 
     if (wrapper == 0) {
         func_ov016_021fd9dc(state, 1);
-        func_02072b68(FIELD(void *, state, 0x84), image & 0xff);
+        GraphicsSpriteState_SetAnimationIndex(FIELD(void *, state, 0x84), image & 0xff);
         overlay016_show_sprite(FIELD(void *, state, 0x84));
         return;
     }
 
     func_02091b98((u8 *)state + 0xf8, 0x78);
     func_ov016_021fd9dc(state, 0);
-    func_02072b68(FIELD(void *, state, 0x84), (image + 0x32) & 0xff);
+    GraphicsSpriteState_SetAnimationIndex(FIELD(void *, state, 0x84), (image + 0x32) & 0xff);
     overlay016_show_sprite(FIELD(void *, state, 0x84));
 
     {
@@ -90,7 +90,7 @@ extern "C" void func_ov016_021fdaa0(void *state, void *selection, s32 image)
         s32 x = gSystemState[0x5f] != 0 ? -0x10 : 0;
         s32 y = 0;
 
-        func_02072b68(FIELD(void *, state, 0x88), (func_020629a0(header) + 6) & 0xff);
+        GraphicsSpriteState_SetAnimationIndex(FIELD(void *, state, 0x88), (func_020629a0(header) + 6) & 0xff);
         overlay016_show_sprite(FIELD(void *, state, 0x88));
         overlay016_load_row_resource((u8 *)state + 0x18, header);
         sprite = func_02073ffc(FIELD(void *, state, 4), (u8 *)state + 0x18, 2);
@@ -109,11 +109,11 @@ extern "C" void func_ov016_021fdaa0(void *state, void *selection, s32 image)
                 if (FIELD(u8, selection, 0xe + i) == 2) {
                     FIELD(u16, sprite, 0x2a) = 1;
                 }
-                func_02072b68(FIELD(void *, state, 0xa4 + i * 4),
+                GraphicsSpriteState_SetAnimationIndex(FIELD(void *, state, 0xa4 + i * 4),
                               (FIELD(u16, row, 4) - 1) & 0xff);
                 overlay016_show_sprite(FIELD(void *, state, 0xa4 + i * 4));
                 overlay016_show_sprite(FIELD(void *, state, 0x8c + i * 4));
-                func_02072b68(FIELD(void *, state, 0xbc + i * 4),
+                GraphicsSpriteState_SetAnimationIndex(FIELD(void *, state, 0xbc + i * 4),
                               (func_02062ae4(row) + 0x12) & 0xff);
             }
             y += 0x22;

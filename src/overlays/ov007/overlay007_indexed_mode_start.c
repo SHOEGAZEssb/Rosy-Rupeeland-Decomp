@@ -9,7 +9,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_02072b68(void *member, s32 value);
+extern void GraphicsSpriteState_SetAnimationIndex(void *member, s32 value);
 #ifdef __cplusplus
 }
 #endif
@@ -26,6 +26,6 @@ void func_ov007_021fc19c(void *state, s32 index)
 {
     state = (u8 *)state + index * 4;
     *(s32 *)((u8 *)state + 0xa4) = 1;
-    func_02072b68(*(void **)(*(u8 **)((u8 *)state + 0x50) + 0x0c),
+    GraphicsSpriteState_SetAnimationIndex(*(void **)(*(u8 **)((u8 *)state + 0x50) + 0x0c),
                   (u8)(2 * (index % 4) + 1));
 }

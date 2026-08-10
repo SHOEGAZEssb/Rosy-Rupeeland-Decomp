@@ -2,7 +2,7 @@
 /* Exact fallback; see src/overlays/ov017/overlay017_ui_sprite_group.c. */
     .extern Sound_Play
     .extern data_ov017_022016e0
-    .extern func_02072b68
+    .extern GraphicsSpriteState_SetAnimationIndex
     .extern func_020740a4
     .extern func_02091a70
     .extern gSoundContext
@@ -17,7 +17,7 @@ func_ov017_021fe894:
     blt L_021fe8c0
     ldr r0, [r10, #0x1c]
     mov r1, #0x0
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     b L_021fe8dc
 L_021fe8c0:
     mov r0, #0x0
@@ -26,7 +26,7 @@ L_021fe8c0:
     mov r1, r0
     ldr r0, [r10, #0x1c]
     and r1, r1, #0xff
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
 L_021fe8dc:
     ldr r0, L_021fe9b4
     mov r7, #0x0
@@ -41,7 +41,7 @@ L_021fe8f4:
     cmp r1, #0x4
     beq L_021fe910
     mov r1, r4
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
 L_021fe910:
     add r7, r7, #0x1
     cmp r7, #0xf
@@ -80,7 +80,7 @@ L_021fe98c:
     add r0, r10, r9, lsl #0x2
     ldr r0, [r0, #0x20]
     mov r1, r5
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
 L_021fe99c:
     add r9, r9, #0x1
 L_021fe9a0:

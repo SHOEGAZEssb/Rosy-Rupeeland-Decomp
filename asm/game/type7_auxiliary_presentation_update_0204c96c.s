@@ -1,5 +1,5 @@
 ; Matching retail form; see src/game/type7_auxiliary_presentation_update.c.
-.extern func_02072b68
+.extern GraphicsSpriteState_SetAnimationIndex
 .extern Sound_Play
 .extern data_020c9670
 .extern data_020c3dfc
@@ -135,7 +135,7 @@ Type7AuxiliaryPresentation_UpdateAnimationAndPosition: ; 0x0204ca40
     ldr r0, [r5, #0x4]
     add r1, r1, r4
     and r1, r1, #0xff
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
 .L_0204cb44:
     ldrsb r0, [r5, #0x12]
     cmp r0, #0x3
@@ -224,7 +224,7 @@ Type7AuxiliaryPresentation_BeginShutdown: ; 0x0204cc30
     add r1, r1, #0x18
     ldr r0, [r4, #0x4]
     and r1, r1, #0xff
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     ldr r4, [r4, #0x4]
     ldr r0, .L_0204cca4
     ldrh r3, [r4, #0x24]

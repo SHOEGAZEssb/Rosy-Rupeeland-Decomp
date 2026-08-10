@@ -4,7 +4,7 @@
 .extern data_021f5ee8
 .extern GamePhaseCurrencyHud_Update
 .extern func_0206492c
-.extern func_02072b68
+.extern GraphicsSpriteState_SetAnimationIndex
 .extern func_02092b70
 .extern func_020958d8
 .extern func_02095988
@@ -126,7 +126,7 @@ L_021fe8cc:
     add r1, r0, #0x8
     ldr r0, [r4, #0xa8]
     and r1, r1, #0xff
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     mov r0, r5
     mov r1, #0xa
     bl func_020befec
@@ -134,7 +134,7 @@ L_021fe8cc:
     add r1, r5, #0x8
     ldr r0, [r4, #0xac]
     and r1, r1, #0xff
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     ldr r5, [r4, #0x38c]
     mov r1, #0xa
     mov r0, r5
@@ -142,7 +142,7 @@ L_021fe8cc:
     add r0, r0, #0x8
     and r1, r0, #0xff
     ldr r0, [r4, #0xb0]
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     mov r0, r5
     mov r1, #0xa
     bl func_020befec
@@ -150,7 +150,7 @@ L_021fe8cc:
     add r1, r5, #0x8
     ldr r0, [r4, #0xb4]
     and r1, r1, #0xff
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     ldmia sp!, {r3, r4, r5, pc}
 L_021fe950: .word 0x165
 .size func_ov030_021fe808, .-func_ov030_021fe808

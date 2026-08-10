@@ -27,8 +27,8 @@
     .extern func_0207043c
     .extern func_02070958
     .extern func_02070a78
-    .extern func_02072b68
-    .extern func_02072bdc
+    .extern GraphicsSpriteState_SetAnimationIndex
+    .extern GraphicsSpriteState_SetFrameIndex
     .extern func_02072c98
     .extern func_02073aa8
     .extern func_020740a4
@@ -275,7 +275,7 @@ L_021fd7e0:
     str r0, [r9, #0xd8]
     ldr r0, [r9, #0x88]
     and r1, r1, #0xff
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     b L_021fdd84
 L_021fd83c:
     ldr r0, [r9, #0x88]
@@ -304,7 +304,7 @@ L_021fd83c:
     str r0, [r9, #0xdc]
     ldr r0, [r9, #0x88]
     and r1, r1, #0xff
-    bl func_02072bdc
+    bl GraphicsSpriteState_SetFrameIndex
     b L_021fdd84
 L_021fd8ac:
     ldr r0, [r9, #0x50]

@@ -1,5 +1,5 @@
 ; Matching retail form; see src/game/tracked_resource_actor_sequence_stage.c.
-.extern func_02072b68
+.extern GraphicsSpriteState_SetAnimationIndex
 .text
     .global func_020521e4
 func_020521e4:
@@ -26,7 +26,7 @@ func_020521e4:
     cmp r2, r1
     ldmeqia sp!, {r4, pc}
     and r1, r2, #0xff
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     ldr r1, [r4, #0x54]
     ldrh r0, [r1, #0x24]
     bic r0, r0, #0x1

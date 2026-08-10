@@ -1,7 +1,7 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov088/overlay088_recovery.c.
 .extern func_020593dc
-.extern func_02072b68
+.extern GraphicsSpriteState_SetAnimationIndex
 .extern gSoundContext
 
 .global func_ov088_0221963c
@@ -109,7 +109,7 @@ func_ov088_0221963c:
     cmpne r2, r1
     beq .L_022197b4
     and r1, r2, #0xff
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
 .L_022197b4:
     ldr r1, [r5, #0x54]
     ldrh r0, [r1, #0x24]
@@ -127,14 +127,14 @@ func_ov088_0221963c:
     cmpne r4, r1
     beq .L_02219814
     and r1, r4, #0xff
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     ldr r0, [r5, #0x228]
     cmp r0, #0x0
     beq .L_02219814
     ldrb r1, [r5, #0xd4]
     add r1, r1, #0x28
     and r1, r1, #0xff
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
 .L_02219814:
     ldr r1, [r5, #0x224]
     cmp r1, #0x0
@@ -164,7 +164,7 @@ func_ov088_0221963c:
     ldrb r1, [r5, #0xd4]
     add r1, r1, #0x10
     and r1, r1, #0xff
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     ldr r1, [r5, #0x22c]
     ldrh r0, [r1, #0x24]
     bic r0, r0, #0x1

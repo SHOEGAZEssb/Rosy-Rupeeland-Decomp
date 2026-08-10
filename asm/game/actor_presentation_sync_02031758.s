@@ -12,7 +12,7 @@
 .extern func_02056f34
 .extern func_020571b4
 .extern func_02057394
-.extern func_02072b68
+.extern GraphicsSpriteState_SetAnimationIndex
 .extern func_020adae4
 .extern gSceneTouchInitialData
 
@@ -337,7 +337,7 @@ func_02031758: ; 0x02031758
     ldrb r2, [r0, #0x38]
     cmp r1, r2
     beq .L_02031c08
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
 .L_02031c08:
     ldr r2, [r5, #0xa8]
     ldr r0, [sp, #0x8]

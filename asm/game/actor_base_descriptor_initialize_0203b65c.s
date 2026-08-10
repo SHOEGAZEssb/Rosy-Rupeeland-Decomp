@@ -6,7 +6,7 @@
 .extern Actor_GetCollection
 .extern func_02034260
 .extern func_02071ee0
-.extern func_02072b68
+.extern GraphicsSpriteState_SetAnimationIndex
 .extern func_02073fc4
     .global Actor_InitializeFromDescriptor
     .type Actor_InitializeFromDescriptor, @function
@@ -59,7 +59,7 @@ Actor_InitializeFromDescriptor: ; 0x0203b65c
 .L_0203b710:
     ldrb r1, [r4, #0x11]
     ldr r0, [r5, #0x54]
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     ldrsh r3, [r4, #0x24]
     ldrsh r0, [r4, #0x22]
     ldr r2, [r5, #0x54]

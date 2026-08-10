@@ -18,7 +18,7 @@ extern void *Actor_GetCollection(ActorRenderAttachmentOwner *);
 extern void *GamePhaseRuntime_GetActorCollection(void *, s32);
 extern void *ActorCollection_GetSpriteOwner(void *);
 extern void *func_02073fc4(void *, u32, u32, u32, s32);
-extern void func_02072b68(void *, s32);
+extern void GraphicsSpriteState_SetAnimationIndex(void *, s32);
 extern void func_02073ef8(void *);
 #ifdef __cplusplus
 }
@@ -51,7 +51,7 @@ void func_020313b4(ActorRenderAttachmentOwner *self, void *unused,
         *(u32 *)(config + 0x14), *(u32 *)(config + 0x18),
         *(u32 *)(config + 0x1c), finalArg);
     attachment = (u8 *)self->attachment_58;
-    func_02072b68(attachment, config[0x38]);
+    GraphicsSpriteState_SetAnimationIndex(attachment, config[0x38]);
     *(s16 *)(attachment + 0x2c) = *(s16 *)(config + 0x2c);
     *(s16 *)(attachment + 0x2e) = *(s16 *)(config + 0x2e);
     *(u16 *)(attachment + 0x24) |= 2;

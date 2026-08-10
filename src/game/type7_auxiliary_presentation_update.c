@@ -31,7 +31,7 @@ typedef struct Type7AuxiliaryPresentation {
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_02072b68(void *presentation, u32 index);
+extern void GraphicsSpriteState_SetAnimationIndex(void *presentation, u32 index);
 extern void Sound_Play(void *soundContext, s32 group, s32 index);
 #ifdef __cplusplus
 }
@@ -75,7 +75,7 @@ void Type7AuxiliaryPresentation_UpdateMotion(Type7AuxiliaryPresentation *self)
  * current animation finishes. Finally copy owner-presentation byte +0x3a and
  * add the direction's three signed offsets at data_020e1e60 to owner offsets
  * +0x2c/+0x2e/+0x28, then store direction at +0x11. Object and presentation
- * state change via func_02072b68; there are no direct hardware effects.
+ * state change via GraphicsSpriteState_SetAnimationIndex; there are no direct hardware effects.
  */
 void Type7AuxiliaryPresentation_UpdateAnimationAndPosition(Type7AuxiliaryPresentation *self, s32 direction)
 {
@@ -97,7 +97,7 @@ void Type7AuxiliaryPresentation_UpdateAnimationAndPosition(Type7AuxiliaryPresent
             if (self->stage12 < 3)
                 ++self->stage12;
             *(u16 *)(self->presentation + 0x24) &= (u16)~1;
-            func_02072b68(self->presentation,
+            GraphicsSpriteState_SetAnimationIndex(self->presentation,
                           (u8)(direction + data_020c3dfc[self->stage12 - 1]));
         }
         if (self->stage12 == 3)
@@ -150,7 +150,7 @@ void Type7AuxiliaryPresentation_BeginShutdown(Type7AuxiliaryPresentation *self)
     self->previousStage13 = 0;
     if (direction < 0)
         direction = 0;
-    func_02072b68(self->presentation, (u8)(direction + 0x18));
+    GraphicsSpriteState_SetAnimationIndex(self->presentation, (u8)(direction + 0x18));
     *(u16 *)(self->presentation + 0x24) &= (u16)~9;
     Sound_Play(gSoundContext, 0, 0x1b);
 }

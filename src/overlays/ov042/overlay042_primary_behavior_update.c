@@ -18,7 +18,7 @@ extern "C" s32 func_020befec(s32 numerator, s32 denominator);
 extern "C" s32 func_020adc40(s32 squaredLength);
 extern "C" s32 func_020adc90(s32 numerator, s32 denominator);
 extern "C" s32 func_020ae024(s32 x, s32 y);
-extern "C" void func_02072b68(void *animation, s32 index);
+extern "C" void GraphicsSpriteState_SetAnimationIndex(void *animation, s32 index);
 extern "C" void func_020a1ec0(void *owner, u32 effect);
 extern "C" void func_020a1f04(void *owner, u32 sequence);
 extern "C" void func_0205929c(void *sound, s32 sequence, s32 value);
@@ -63,7 +63,7 @@ static void *animation_of(void *display)
 static void set_animation(void *display, s32 animation, s32 clearHold)
 {
     void *object = animation_of(display);
-    func_02072b68(object, animation);
+    GraphicsSpriteState_SetAnimationIndex(object, animation);
     if (clearHold)
         FIELD(u16, object, 0x24) &= ~2;
 }

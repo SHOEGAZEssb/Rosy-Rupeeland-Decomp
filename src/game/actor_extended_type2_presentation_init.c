@@ -18,7 +18,7 @@ extern void *Actor_GetCollection(void *actor);
 extern void *ActorCollection_GetSpriteOwner(void *value);
 extern void *func_02073fc4(void *context, u32 first, u32 second, u32 third,
                            s32 kind);
-extern void func_02072b68(void *attachment, u32 animation);
+extern void GraphicsSpriteState_SetAnimationIndex(void *attachment, u32 animation);
 extern void func_020313b4(void *actor, void *resource, u8 value);
 #ifdef __cplusplus
 }
@@ -85,9 +85,9 @@ void ActorExtendedType2_InitializePresentation(void *self, const void *configura
         *(u32 *)(actor + 0xc8) = sample;
         actor[0xd5] = (u8)choice;
         actor[0xd4] = (u8)choice;
-        func_02072b68(attachment, (u8)(choice + 8));
+        GraphicsSpriteState_SetAnimationIndex(attachment, (u8)(choice + 8));
     } else {
-        func_02072b68(attachment, 8);
+        GraphicsSpriteState_SetAnimationIndex(attachment, 8);
     }
 
     (*(void (**)(void *))(*(u8 **)actor + 0x14))(actor);

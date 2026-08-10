@@ -1,6 +1,6 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov077/overlay077_recovery.c.
-.extern func_02072b68
+.extern GraphicsSpriteState_SetAnimationIndex
 .extern func_ov077_02213768
 .extern func_ov077_02213c08
 
@@ -63,10 +63,10 @@ func_ov077_02213874:
     and r7, r0, #0xff
     ldr r0, [r6, #0x4]
     mov r1, r7
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     ldr r0, [r6, #0x8]
     mov r1, r7
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     ldr r0, [r5, #0x2c4]
     mov r1, #0x1
     bl func_ov077_02213c08
@@ -105,10 +105,10 @@ func_ov077_02213874:
     and r7, r0, #0xff
     ldr r0, [r6, #0x4]
     mov r1, r7
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     ldr r0, [r6, #0x8]
     mov r1, r7
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     ldr r0, [r5, #0x2c4]
     mov r1, #0x1
     bl func_ov077_02213c08
@@ -132,10 +132,10 @@ func_ov077_02213874:
     strh r0, [r2, #0x24]
     ldr r6, [r5, #0x2c4]
     ldr r0, [r6, #0x4]
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     ldr r0, [r6, #0x8]
     mov r1, #0x4
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     ldr r0, [r5, #0x2c4]
     mov r1, #0x1
     bl func_ov077_02213c08
@@ -155,10 +155,10 @@ func_ov077_02213874:
     movge r3, #0x2
     ldr r0, [r6, #0x4]
     add r4, r3, #0x4
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     ldr r0, [r6, #0x8]
     mov r1, #0x4
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     ldr r0, [r5, #0x2c4]
     mov r1, #0x3
     bl func_ov077_02213c08
@@ -175,10 +175,10 @@ func_ov077_02213874:
     movge r3, #0x2
     ldr r0, [r6, #0x4]
     add r4, r3, #0x7
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     ldr r0, [r6, #0x8]
     mov r1, #0x5
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     ldr r0, [r5, #0x2c4]
     mov r1, #0x3
     bl func_ov077_02213c08
@@ -195,10 +195,10 @@ func_ov077_02213874:
     movge r3, #0x2
     ldr r0, [r6, #0x4]
     add r4, r3, #0x7
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     ldr r0, [r6, #0x8]
     mov r1, #0x5
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     ldr r0, [r5, #0x2c4]
     mov r1, #0x3
     bl func_ov077_02213c08
@@ -212,10 +212,10 @@ func_ov077_02213874:
     strh r0, [r2, #0x24]
     ldr r6, [r5, #0x2c4]
     ldr r0, [r6, #0x4]
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     ldr r0, [r6, #0x8]
     mov r1, #0xa
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     ldr r0, [r5, #0x2c4]
     mov r1, #0x3
     bl func_ov077_02213c08
@@ -229,10 +229,10 @@ func_ov077_02213874:
     strh r0, [r2, #0x24]
     ldr r6, [r5, #0x2c4]
     ldr r0, [r6, #0x4]
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     ldr r0, [r6, #0x8]
     mov r1, #0x7
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     ldr r0, [r5, #0x2c4]
     mov r1, #0x3
     bl func_ov077_02213c08
@@ -242,7 +242,7 @@ func_ov077_02213874:
 .L_02213be0:
     ldr r0, [r5, #0x54]
     and r1, r4, #0xff
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     ldr r0, [r5, #0x54]
     mov r1, #0x100
     strh r1, [r0, #0x36]

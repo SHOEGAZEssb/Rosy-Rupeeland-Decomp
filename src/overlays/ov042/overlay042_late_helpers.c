@@ -10,7 +10,7 @@
 
 extern "C" void func_02099fb0(void *object);
 extern "C" void func_0209a2ac(void *object, s32 selector, s32 enabled);
-extern "C" void func_02072b68(void *resource, u8 mode);
+extern "C" void GraphicsSpriteState_SetAnimationIndex(void *resource, u8 mode);
 extern "C" void func_020a1794(void *owner, void *state, s32 value);
 extern "C" void func_ov042_021fcf80(void *element);
 
@@ -166,7 +166,7 @@ extern "C" void func_ov042_02208a90(void *object)
 /*
  * Configure a record belonging to the first late object variant. The first
  * argument is unused; pass record+0xC and the sixth argument's low byte to
- * func_02072b68, set bit 1 in resource halfword +0x24, store three values at
+ * GraphicsSpriteState_SetAnimationIndex, set bit 1 in resource halfword +0x24, store three values at
  * record+0x30..+0x38, set scale halfwords +0x3C/+0x3E to 0x100, and clear
  * +0x40. SDK-owned resource state changes and no value is returned.
  */
@@ -176,7 +176,7 @@ extern "C" void func_ov042_02207f04(void *unused, void *record,
 {
     (void)unused;
     void *resource = FIELD(void *, record, 0xc);
-    func_02072b68(resource, mode);
+    GraphicsSpriteState_SetAnimationIndex(resource, mode);
     FIELD(u16, resource, 0x24) |= 2;
     FIELD(s32, record, 0x30) = value0;
     FIELD(s32, record, 0x34) = value1;
@@ -197,7 +197,7 @@ extern "C" void func_ov042_022088a8(void *unused, void *record,
 {
     (void)unused;
     void *resource = FIELD(void *, record, 0xc);
-    func_02072b68(resource, mode);
+    GraphicsSpriteState_SetAnimationIndex(resource, mode);
     FIELD(u16, resource, 0x24) |= 2;
     FIELD(s32, record, 0x30) = value0;
     FIELD(s32, record, 0x34) = value1;
@@ -235,7 +235,7 @@ extern "C" void func_ov042_0220913c(void *unused, void *record,
 {
     (void)unused;
     void *resource = FIELD(void *, record, 0xc);
-    func_02072b68(resource, mode);
+    GraphicsSpriteState_SetAnimationIndex(resource, mode);
     FIELD(u16, resource, 0x24) |= 2;
     FIELD(s32, record, 0x30) = value0;
     FIELD(s32, record, 0x34) = value1;
@@ -254,7 +254,7 @@ extern "C" void func_ov042_0220913c(void *unused, void *record,
 extern "C" void func_ov042_02209190(void *object)
 {
     void *child = FIELD(void *, object, 0x4c);
-    func_02072b68(FIELD(void *, child, 0xc), 0);
+    GraphicsSpriteState_SetAnimationIndex(FIELD(void *, child, 0xc), 0);
     FIELD(s32, object, 0x78) = 0;
     u8 index = FIELD(u8, object, 0x8e);
     FIELD(s32, object, 0x54) = data_ov042_0220b6e4[index * 2] << 12;
@@ -306,7 +306,7 @@ extern "C" void func_ov042_02209aa0(void *unused, void *record,
 {
     (void)unused;
     void *resource = FIELD(void *, record, 0xc);
-    func_02072b68(resource, mode);
+    GraphicsSpriteState_SetAnimationIndex(resource, mode);
     FIELD(u16, resource, 0x24) |= 2;
     FIELD(s32, record, 0x30) = value0;
     FIELD(s32, record, 0x34) = value1;
@@ -339,7 +339,7 @@ extern "C" void func_ov042_0220a8c0(void *unused, void *record,
 {
     (void)unused;
     void *resource = FIELD(void *, record, 0xc);
-    func_02072b68(resource, mode);
+    GraphicsSpriteState_SetAnimationIndex(resource, mode);
     FIELD(u16, resource, 0x24) |= 2;
     FIELD(s32, record, 0x30) = value0;
     FIELD(s32, record, 0x34) = value1;
@@ -429,7 +429,7 @@ extern "C" void *func_ov042_0220ab30(void *object)
 
 /*
  * Configure a forty-child record. Pass its resource and mode to
- * func_02072b68, clear resource halfword bit 1 (unlike the earlier variants),
+ * GraphicsSpriteState_SetAnimationIndex, clear resource halfword bit 1 (unlike the earlier variants),
  * store three values at +0x30..+0x38, set both scales to 0x100, and clear
  * +0x40. SDK-owned state changes and no value is returned.
  */
@@ -439,7 +439,7 @@ extern "C" void func_ov042_0220ab44(void *unused, void *record,
 {
     (void)unused;
     void *resource = FIELD(void *, record, 0xc);
-    func_02072b68(resource, mode);
+    GraphicsSpriteState_SetAnimationIndex(resource, mode);
     FIELD(u16, resource, 0x24) &= (u16)~2;
     FIELD(s32, record, 0x30) = value0;
     FIELD(s32, record, 0x34) = value1;

@@ -5,7 +5,7 @@
 .extern func_02071ea4
 .extern func_02071eb8
 .extern func_02071ee0
-.extern func_02072b68
+.extern GraphicsSpriteState_SetAnimationIndex
 .extern func_02073fc4
 
 .global func_ov055_0220e400
@@ -57,7 +57,7 @@ func_ov055_0220e400:
     orr r2, r2, #0x4
     strh r2, [r0, #0x24]
     ldr r0, [r5, #0x0]
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     ldr r1, [r5, #0x0]
     mov r0, #0x80
     strh r0, [r1, #0x2c]

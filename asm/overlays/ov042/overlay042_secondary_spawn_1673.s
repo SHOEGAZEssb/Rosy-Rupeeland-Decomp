@@ -1,7 +1,7 @@
 .text
 .extern func_020a1794
 .extern func_0209a0d8
-.extern func_02072b68
+.extern GraphicsSpriteState_SetAnimationIndex
 .global func_ov042_021fe544
 func_ov042_021fe544:
     stmdb sp!, {r4, lr}
@@ -45,7 +45,7 @@ func_ov042_021fe544:
     add r0, r4, r0, lsl #0x2
     ldr r0, [r0, #0xf28]
     ldr r0, [r0, #0xc]
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     add r1, r4, #0x1000
     ldr r0, [r1, #0x648]
     mvn r3, #0x63

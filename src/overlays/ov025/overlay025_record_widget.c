@@ -18,7 +18,7 @@ extern "C" {
 #endif
 extern void func_02071ea4(void *);
 extern void func_02071ee0(void *, void *, s32, s32, s32);
-extern void func_02072b68(void *, s32);
+extern void GraphicsSpriteState_SetAnimationIndex(void *, s32);
 extern void func_02073e48(void *, s32, s32, s32, s32, s32, s32);
 extern void *func_02073ffc(void *, void *, s32);
 extern void func_02074110(void *);
@@ -114,7 +114,7 @@ extern "C" void *func_ov025_021fd5dc(void *widget, s32 index)
                 }
             }
         } else {
-            func_02072b68(FIELD(void *, widget, 0x10), 0x2e);
+            GraphicsSpriteState_SetAnimationIndex(FIELD(void *, widget, 0x10), 0x2e);
         }
         FIELD(void *, widget, 0x2c) = create_sprite(widget,
                                                     index * 2 + 4, 0, 0);
@@ -134,17 +134,17 @@ static void set_digit_modes(void *widget, s32 base, s32 separator)
     s32 value = FIELD(s32, widget, 0x7c);
     if (value < 10) {
         void *sprite = FIELD(void *, widget, 0x14);
-        if (sprite) func_02072b68(sprite, FIELD(u8, sprite, 0x38) % 10 + base);
+        if (sprite) GraphicsSpriteState_SetAnimationIndex(sprite, FIELD(u8, sprite, 0x38) % 10 + base);
         sprite = FIELD(void *, widget, 0x18);
-        if (sprite) func_02072b68(sprite, separator + 0x12);
+        if (sprite) GraphicsSpriteState_SetAnimationIndex(sprite, separator + 0x12);
         sprite = FIELD(void *, widget, 0x1c);
-        if (sprite) func_02072b68(sprite, base);
+        if (sprite) GraphicsSpriteState_SetAnimationIndex(sprite, base);
     } else {
         for (s32 i = 0; i < 6; ++i) {
             void *sprite = FIELD(void *, widget, 0x14 + i * 4);
             if (!sprite) continue;
-            if (i == 2) func_02072b68(sprite, separator);
-            else func_02072b68(sprite, FIELD(u8, sprite, 0x38) % 10 + base);
+            if (i == 2) GraphicsSpriteState_SetAnimationIndex(sprite, separator);
+            else GraphicsSpriteState_SetAnimationIndex(sprite, FIELD(u8, sprite, 0x38) % 10 + base);
         }
     }
 }
@@ -160,13 +160,13 @@ extern "C" void func_ov025_021fd9e4(void *widget, s32 y)
     FIELD(s32, widget, 0x88) = 1;
     FIELD(s32, FIELD(void *, widget, 0xc), 0x18) = y + 0x58;
     if (FIELD(s32, widget, 0x74)) {
-        func_02072b68(FIELD(void *, widget, 0x10),
+        GraphicsSpriteState_SetAnimationIndex(FIELD(void *, widget, 0x10),
                       FIELD(s32, widget, 0x80) ? 2 : 0x2e);
         set_digit_modes(widget, 10, 30);
-        func_02072b68(FIELD(void *, widget, 0x2c),
+        GraphicsSpriteState_SetAnimationIndex(FIELD(void *, widget, 0x2c),
                       FIELD(s32, widget, 0x78) * 2 + 4);
     } else {
-        func_02072b68(FIELD(void *, widget, 0x10), 0);
+        GraphicsSpriteState_SetAnimationIndex(FIELD(void *, widget, 0x10), 0);
     }
 }
 
@@ -180,13 +180,13 @@ extern "C" void func_ov025_021fdb18(void *widget, s32 y)
     FIELD(s32, widget, 0x88) = 0;
     FIELD(s32, FIELD(void *, widget, 0xc), 0x18) = y + 0x58;
     if (FIELD(s32, widget, 0x74)) {
-        func_02072b68(FIELD(void *, widget, 0x10),
+        GraphicsSpriteState_SetAnimationIndex(FIELD(void *, widget, 0x10),
                       FIELD(s32, widget, 0x80) ? 3 : 0x2f);
         set_digit_modes(widget, 20, 31);
-        func_02072b68(FIELD(void *, widget, 0x2c),
+        GraphicsSpriteState_SetAnimationIndex(FIELD(void *, widget, 0x2c),
                       FIELD(s32, widget, 0x78) * 2 + 5);
     } else {
-        func_02072b68(FIELD(void *, widget, 0x10), 1);
+        GraphicsSpriteState_SetAnimationIndex(FIELD(void *, widget, 0x10), 1);
     }
 }
 

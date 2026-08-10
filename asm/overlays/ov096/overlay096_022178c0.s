@@ -8,7 +8,7 @@
 .extern ActorExtendedType2_UpdateFrame
 .extern ActorExtendedType2_GetDescriptorValue2A
 .extern func_020593dc
-.extern func_02072b68
+.extern GraphicsSpriteState_SetAnimationIndex
 .extern func_020740c8
 .extern func_ov096_02217e88
 .extern func_ov096_0221811c
@@ -114,7 +114,7 @@ func_ov096_022178c0:
     bl func_020740c8
     ldr r0, [r4, #0x54]
     mov r1, #0x13
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     mov r0, #0x0
     str r0, [sp, #0x0]
     mov r0, #0x100
@@ -166,7 +166,7 @@ func_ov096_022178c0:
     strb r0, [r4, #0x299]
     ldr r0, [r4, #0x54]
     mov r1, #0x17
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     mov r0, r4
     bl func_ov096_0221811c
 .L_02217b00:
@@ -202,7 +202,7 @@ func_ov096_022178c0:
     bl func_020740c8
     ldr r0, [r4, #0x54]
     mov r1, #0x13
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
 .L_02217b80:
     ldr r0, [r4, #0x260]
     orr r0, r0, #0x8000
@@ -237,7 +237,7 @@ func_ov096_022178c0:
     bl func_020740c8
     ldr r0, [r4, #0x54]
     mov r1, #0x14
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     mov r0, #0x0
     str r0, [sp, #0x0]
     mov r0, #0x100
@@ -279,7 +279,7 @@ func_ov096_022178c0:
     bl func_020740c8
     ldr r0, [r4, #0x54]
     mov r1, #0x15
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
 .L_02217ca0:
     ldr r0, [r4, #0x260]
     orr r0, r0, #0x8000
@@ -321,7 +321,7 @@ func_ov096_022178c0:
     strb r0, [r4, #0x299]
     ldr r0, [r4, #0x54]
     mov r1, #0x17
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     mov r0, r4
     bl func_ov096_0221811c
 .L_02217d40:
@@ -359,7 +359,7 @@ func_ov096_022178c0:
     bl func_020740c8
     ldr r0, [r4, #0x54]
     mov r1, #0x15
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
 .L_02217dc8:
     ldr r0, [r4, #0x260]
     orr r0, r0, #0x8000

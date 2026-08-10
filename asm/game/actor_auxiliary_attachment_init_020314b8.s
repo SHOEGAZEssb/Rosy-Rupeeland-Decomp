@@ -6,7 +6,7 @@
 .extern func_02071e60
 .extern func_02071e70
 .extern func_02071e80
-.extern func_02072b68
+.extern GraphicsSpriteState_SetAnimationIndex
 .extern func_02073fc4
 
     .global func_020314b8
@@ -45,7 +45,7 @@ func_020314b8: ; 0x020314b8
     bl func_02073fc4
     str r0, [r4, #0xa8]
     mov r1, #0x0
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     ldr r1, [r4, #0xa8]
     ldrh r0, [r1, #0x24]
     orr r0, r0, #0xa

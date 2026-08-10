@@ -45,7 +45,7 @@ extern void func_020050c8(ParticleVector *position,
                           const ParticleVector *velocity);
 extern u8 *func_02073fc4(void *owner, s32 resource, s32 palette,
                          s32 animation, s32 mode);
-extern void func_02072b68(void *sprite, s32 frame);
+extern void GraphicsSpriteState_SetAnimationIndex(void *sprite, s32 frame);
 extern void func_02074038(void *owner, void *sprite);
 extern u32 genrand_int32(void);
 extern u32 func_020be4e4(void);
@@ -84,7 +84,7 @@ BallisticSpriteParticle *func_02023890(
     self->sprite20 = func_02073fc4(spriteOwner, config->resource04,
                                    config->palette08, config->animation0c, 2);
     division = func_020bf1f8(genrand_int32(), 7);
-    func_02072b68(self->sprite20, (u8)(division >> 32));
+    GraphicsSpriteState_SetAnimationIndex(self->sprite20, (u8)(division >> 32));
     *(u16 *)(self->sprite20 + 0x24) |= 2;
 
     firstRandom = genrand_int32();

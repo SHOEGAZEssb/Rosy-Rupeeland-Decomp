@@ -6,7 +6,7 @@
 .extern ActorCollection_GetSpriteOwner
 .extern Actor_GetCollection
 .extern ActorExtendedType2_GetDescriptorValue25
-.extern func_02072b68
+.extern GraphicsSpriteState_SetAnimationIndex
 .extern func_020740c8
 
 .global func_ov080_02212bec
@@ -129,7 +129,7 @@ func_ov080_02212bec:
     cmp r4, r1
     beq .L_02212d90
     and r1, r4, #0xff
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
 .L_02212d90:
     ldr r0, [r7, #0x54]
     mov r1, #0x100

@@ -1,7 +1,7 @@
 .text
 
 /* Exact fallback; see src/overlays/ov025/overlay025_name_entry.c. */
-.extern func_02072b68
+.extern GraphicsSpriteState_SetAnimationIndex
 
 
     .global func_ov025_021fd2e8
@@ -12,7 +12,7 @@ func_ov025_021fd2e8:
     ldr r0, [r0, #0x30]
     mov r1, #0x3
     str r0, [r4, #0x174]
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     ldr r0, [r4, #0x174]
     mov r1, #0x0
     strh r1, [r0, #0x28]

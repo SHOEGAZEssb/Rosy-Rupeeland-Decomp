@@ -4,7 +4,7 @@
 .extern data_020d7834
 .extern data_ov046_0220cd14
 .extern data_ov046_0220cdf0
-.extern func_02072b68
+.extern GraphicsSpriteState_SetAnimationIndex
 .extern func_020740e8
 .extern func_ov046_0220bd14
 .extern gGameWork
@@ -72,7 +72,7 @@ func_ov046_0220bffc:
     add r0, r9, r5, lsl #0x2
     ldr r0, [r0, #0x3c]
     and r1, r1, #0xff
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     ldrsh r3, [r4, #0x6]
     ldr r1, [r6, #0x18]
     ldr r0, [r7, #0x4]

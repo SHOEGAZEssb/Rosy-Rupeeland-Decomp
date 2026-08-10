@@ -10,7 +10,7 @@ extern void *data_021052fc;
 extern "C" {
 #endif
 extern void GamePhaseState_UpdateRenderHelpers(void *);
-extern void func_02072b68(void *, s32);
+extern void GraphicsSpriteState_SetAnimationIndex(void *, s32);
 extern void func_020b198c(void *, s32, s32);
 extern void func_020b4554(void *, s32);
 extern void func_ov018_021fd788(void *);
@@ -30,7 +30,7 @@ extern "C" s32 func_ov018_021ff1b8(void *state)
     switch (FIELD(s32, state, 4)) {
     case 0:
         FIELD(u16, FIELD(void *, state, 0xd0), 0x24) &= ~3;
-        func_02072b68(FIELD(void *, state, 0xd0), 0x23);
+        GraphicsSpriteState_SetAnimationIndex(FIELD(void *, state, 0xd0), 0x23);
         FIELD(s32, state, 4)++;
         FIELD(s32, state, 8) = 0;
         /* Confirmed fallthrough: phase 0 immediately performs the phase-1 test. */

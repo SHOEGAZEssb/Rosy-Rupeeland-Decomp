@@ -5,7 +5,7 @@
 .extern func_02005030
 .extern func_02005058
 .extern func_020050a4
-.extern func_02072b68
+.extern GraphicsSpriteState_SetAnimationIndex
 .extern func_02073ffc
 .extern genrand_int32
 
@@ -42,7 +42,7 @@ func_02028860: ; 0x02028860
     ldr r1, [sp, #0x24]
     str r0, [r4, #0x40]
     and r1, r1, #0xff
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     ldr r2, [r4, #0x40]
     mov r1, #0x64
     ldrh r0, [r2, #0x24]

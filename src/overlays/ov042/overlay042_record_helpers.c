@@ -7,14 +7,14 @@
 
 #define FIELD(type, base, offset) (*(type *)((u8 *)(base) + (offset)))
 
-extern "C" void func_02072b68(void *resource, u8 mode);
+extern "C" void GraphicsSpriteState_SetAnimationIndex(void *resource, u8 mode);
 extern "C" u32 genrand_int32(void);
 extern "C" s16 data_020c9670[];
 extern "C" void func_0209a07c(void *child);
 
 /*
  * Configure record using three caller values and the sixth argument's low
- * byte. The first argument is unused. Pass record+0xC to func_02072b68, set bit
+ * byte. The first argument is unused. Pass record+0xC to GraphicsSpriteState_SetAnimationIndex, set bit
  * 1 in that resource's halfword at +0x24, store the three values at +0x30..
  * +0x38, set both scale halfwords at +0x3C/+0x3E to 0x100, and clear +0x40.
  * No value is returned; the callee may change SDK-owned resource state.
@@ -25,7 +25,7 @@ extern "C" void func_ov042_021fd8d0(void *unused, void *record,
 {
     (void)unused;
     void *resource = FIELD(void *, record, 0xc);
-    func_02072b68(resource, mode);
+    GraphicsSpriteState_SetAnimationIndex(resource, mode);
     FIELD(u16, resource, 0x24) |= 2;
     FIELD(s32, record, 0x30) = value0;
     FIELD(s32, record, 0x34) = value1;

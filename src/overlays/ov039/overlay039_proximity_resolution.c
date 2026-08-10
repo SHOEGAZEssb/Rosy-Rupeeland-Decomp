@@ -15,7 +15,7 @@ extern "C" {
 #endif
 extern s32 func_020adc40(s32 squaredDistance);
 extern void func_ov049_0220c2dc(void *system, void *input, s32 mode);
-extern void func_02072b68(void *renderObject, u8 orientation);
+extern void GraphicsSpriteState_SetAnimationIndex(void *renderObject, u8 orientation);
 extern void func_ov039_021fdb78(void *scene);
 extern void func_ov049_0220c67c(void *system);
 extern void func_020a63d0(void *object, s32 mode);
@@ -72,10 +72,10 @@ extern "C" s32 func_ov039_021fee00(void *scene, void *input)
         return 0;
     }
 
-    func_02072b68(FIELD(void *, FIELD(void *, scene, 0x98), 0x0c), 7);
+    GraphicsSpriteState_SetAnimationIndex(FIELD(void *, FIELD(void *, scene, 0x98), 0x0c), 7);
     FIELD(u16, FIELD(void *, scene, 0x9c), 0x42) |= 4;
-    func_02072b68(FIELD(void *, FIELD(void *, scene, 0x4c), 0x0c), 1);
-    func_02072b68(FIELD(void *, FIELD(void *, scene, 0x5c), 0x0c), 1);
+    GraphicsSpriteState_SetAnimationIndex(FIELD(void *, FIELD(void *, scene, 0x4c), 0x0c), 1);
+    GraphicsSpriteState_SetAnimationIndex(FIELD(void *, FIELD(void *, scene, 0x5c), 0x0c), 1);
     FIELD(u16, scene, 0x1caa) = 30;
     FIELD(u16, scene, 0x1ca0) = 0x1000;
     FIELD(s16, scene, 0x1ca8) -= 10;
@@ -93,7 +93,7 @@ extern "C" s32 func_ov039_021fee00(void *scene, void *input)
         FIELD(u16, scene, 0x1cae) = 0;
         func_ov039_021fdb78(scene);
         func_ov049_0220c67c((u8 *)scene + 0x454);
-        func_02072b68(FIELD(void *, FIELD(void *, scene, 0x98), 0x0c), 7);
+        GraphicsSpriteState_SetAnimationIndex(FIELD(void *, FIELD(void *, scene, 0x98), 0x0c), 7);
         FIELD(s32, owner, 0x74) = 0x17;
         if (FIELD(u16, scene, 0x1cb2) == 0) {
             void *notifyObject = FIELD(void *, FIELD(void *, owner, 0xc4), 0x34);

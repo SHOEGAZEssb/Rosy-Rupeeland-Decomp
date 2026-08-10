@@ -25,7 +25,7 @@ extern void *ActorCollection_GetSpriteOwner(void);
 extern void *func_02071e60(void *resources, u32 id);
 extern void *func_02071e70(void *resources, u32 id);
 extern void *func_02071e80(void *resources, u32 id);
-extern void func_02072b68(void *presentation, u32 index);
+extern void GraphicsSpriteState_SetAnimationIndex(void *presentation, u32 index);
 extern void func_02073ef8(void *presentation);
 extern void *func_02073fc4(void *context, void *first, void *second,
                            void *third, u32 mode);
@@ -58,7 +58,7 @@ Type7MarkerPresentation *Type7MarkerPresentation_Init(Type7MarkerPresentation *s
     Actor_GetCollection(owner);
     self->presentation = (u8 *)func_02073fc4(
         ActorCollection_GetSpriteOwner(), first, second, third, 2);
-    func_02072b68(self->presentation, 0);
+    GraphicsSpriteState_SetAnimationIndex(self->presentation, 0);
     self->presentation[0x3a] = 1;
     *(u16 *)(self->presentation + 0x2c) = 0;
     *(u16 *)(self->presentation + 0x2e) = 0;

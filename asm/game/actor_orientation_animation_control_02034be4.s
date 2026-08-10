@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/actor_orientation_animation_control.c.
 .text
-.extern func_02072b68
+.extern GraphicsSpriteState_SetAnimationIndex
 
     .global Actor_SetAttachmentAnimation
     .type Actor_SetAttachmentAnimation, @function
@@ -40,7 +40,7 @@ Actor_SetAttachmentAnimation: ; 0x02034be4
     rsb r4, r4, #0x0
     ldr r0, [r5, #0x54]
     and r1, r4, #0xff
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     ldr r0, [r5, #0x10]
     ldr r1, [r5, #0x54]
     tst r0, #0x10
@@ -53,7 +53,7 @@ Actor_SetAttachmentAnimation: ; 0x02034be4
     cmp r0, #0x0
     ldmeqia sp!, {r3, r4, r5, pc}
     and r1, r4, #0xff
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     ldr r0, [r5, #0x10]
     ldr r1, [r5, #0x58]
     tst r0, #0x10
@@ -67,7 +67,7 @@ Actor_SetAttachmentAnimation: ; 0x02034be4
 .L_02034ccc:
     ldr r0, [r5, #0x54]
     and r1, r4, #0xff
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     ldr r0, [r5, #0x10]
     ldr r1, [r5, #0x54]
     tst r0, #0x10
@@ -80,7 +80,7 @@ Actor_SetAttachmentAnimation: ; 0x02034be4
     cmp r0, #0x0
     ldmeqia sp!, {r3, r4, r5, pc}
     and r1, r4, #0xff
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     ldr r0, [r5, #0x10]
     ldr r1, [r5, #0x58]
     tst r0, #0x10

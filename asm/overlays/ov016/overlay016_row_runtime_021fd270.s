@@ -1,5 +1,5 @@
     .text
-    .extern func_02072b68
+    .extern GraphicsSpriteState_SetAnimationIndex
     .extern func_02073e48
     .extern func_02073ef8
     .extern func_02073ffc
@@ -109,13 +109,13 @@ L_021fd3b4:
     ldr r0, [r4, #0x24]
     add r1, r1, r3
     and r1, r1, #0xff
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     b L_021fd3e4
 L_021fd3d4:
     ldr r1, [r4, #0x60]
     ldr r0, [r4, #0x24]
     and r1, r1, #0xff
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
 L_021fd3e4:
     ldr r0, [r4, #0x4]
     bl func_020740a4

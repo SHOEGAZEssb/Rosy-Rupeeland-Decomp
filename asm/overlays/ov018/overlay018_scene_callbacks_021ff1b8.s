@@ -2,7 +2,7 @@
 /* Exact fallback; see src/overlays/ov018/overlay018_scene_callbacks.c. */
     .extern data_021052fc
     .extern GamePhaseState_UpdateRenderHelpers
-    .extern func_02072b68
+    .extern GraphicsSpriteState_SetAnimationIndex
     .extern func_020b198c
     .extern func_020b4554
     .extern func_ov018_021fd788
@@ -25,7 +25,7 @@ L_021ff1e0:
     bic r0, r0, #0x3
     strh r0, [r2, #0x24]
     ldr r0, [r4, #0xd0]
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     ldr r1, [r4, #0x4]
     mov r0, #0x0
     add r1, r1, #0x1

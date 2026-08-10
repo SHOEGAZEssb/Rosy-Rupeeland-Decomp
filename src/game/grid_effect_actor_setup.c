@@ -18,7 +18,7 @@ extern void *AnimationResource_Init(void *storage, u32 resource0, u32 resource1,
 extern void *ActorCollection_GetSpriteOwner(void);
 extern void func_020313b4(void *actor, void *bundle, u32 mode);
 extern void Actor_GetCollection(void *actor);
-extern void func_02072b68(void *presentation, u32 selection);
+extern void GraphicsSpriteState_SetAnimationIndex(void *presentation, u32 selection);
 extern void *func_02073fc4(void *context, void *resource0, void *resource1,
                            void *resource2, u32 mode);
 #ifdef __cplusplus
@@ -52,7 +52,7 @@ void func_0204ed3c(void *actor, const void *descriptor)
         FIELD(void *, bundle, 12), FIELD(u8, descriptor, 0x10));
     FIELD(void *, actor, 0x54) = presentation;
     func_020313b4(actor, bundle, FIELD(u8, descriptor, 0x10));
-    func_02072b68(presentation, FIELD(u8, descriptor, 0x11));
+    GraphicsSpriteState_SetAnimationIndex(presentation, FIELD(u8, descriptor, 0x11));
     FIELD(u16, presentation, 0x24) |= 6;
 }
 

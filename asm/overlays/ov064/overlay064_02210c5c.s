@@ -18,7 +18,7 @@
 .extern Actor_RefreshTerrainHeight
 .extern func_0204fb64
 .extern func_0205557c
-.extern func_02072b68
+.extern GraphicsSpriteState_SetAnimationIndex
 .extern func_020befec
 .extern func_ov064_0221102c
 .extern func_ov064_02211098
@@ -98,7 +98,7 @@ func_ov064_02210c5c:
     strh r0, [r6, #0x74]
     ldr r0, [r6, #0x30]
     mov r1, #0x1
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     ldr r3, [r6, #0x30]
     add r0, sp, #0x58
     ldrh r2, [r3, #0x24]
@@ -244,7 +244,7 @@ func_ov064_02210c5c:
     bl func_020050a4
     ldr r0, [r6, #0x30]
     mov r1, #0x2
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     ldr r2, [r6, #0x30]
     mov r0, #0x4
     ldrh r1, [r2, #0x24]

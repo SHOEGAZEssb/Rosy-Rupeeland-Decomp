@@ -10,7 +10,7 @@
 
 extern "C" {
 void func_ov041_021ff658(void *, s32);
-void func_02072b68(void *, s32);
+void GraphicsSpriteState_SetAnimationIndex(void *, s32);
 void Sound_Play(void *, s32, s32);
 void func_0205940c(void *, s32, s32);
 void func_02004fe0(void *);
@@ -54,7 +54,7 @@ static void update_render_link(void *object, s32 entry, s32 visible)
             if ((FIELD(u16, render, 0x42) & 4) != 0) {
                 render_links(object)[entry] = (s16)candidate;
                 FIELD(u16, render, 0x42) &= ~4;
-                func_02072b68(FIELD(void *, render, 0x0c),
+                GraphicsSpriteState_SetAnimationIndex(FIELD(void *, render, 0x0c),
                               data_ov041_02204d00[types(object)[entry]]);
                 return;
             }

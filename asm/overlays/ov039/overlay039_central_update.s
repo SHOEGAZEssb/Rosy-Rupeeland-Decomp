@@ -2,7 +2,7 @@
 /* Exact fallback; see overlay039_central_update.c for documented portable C. */
     .extern func_020befec
     .extern GameWork_TestFlag
-    .extern func_02072b68
+    .extern GraphicsSpriteState_SetAnimationIndex
     .extern func_ov039_021ff330
     .extern func_ov039_021fdb9c
     .extern Sound_Play
@@ -154,7 +154,7 @@ L_021fe1dc:
     cmp r1, #0x3
     beq L_021fe310
     mov r1, #0x3
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     b L_021fe310
 L_021fe22c:
     add r2, r6, #0x1c00
@@ -272,7 +272,7 @@ L_021fe3b4:
     strh r0, [r2, #0x42]
     ldr r0, [r6, #0x9c]
     ldr r0, [r0, #0xc]
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     add r0, r6, #0x1000
     mov r1, #0x5a
     str r1, [r0, #0xca4]
@@ -289,7 +289,7 @@ L_021fe3e8:
     ldr r0, [r6, #0x98]
     mov r1, #0x9
     ldr r0, [r0, #0xc]
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     ldr r1, [r6, #0x98]
     ldr r0, L_021fed70
     ldr r4, [r1, #0xc]
@@ -606,7 +606,7 @@ L_021fe898:
     ldr r0, [r6, #0x98]
     mov r1, #0x3
     ldr r0, [r0, #0xc]
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     ldr r0, L_021fed70
     mov r1, #0x63
     ldr r0, [r0, #0x0]

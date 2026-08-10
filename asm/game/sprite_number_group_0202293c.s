@@ -12,7 +12,7 @@
 .extern func_02071ea4
 .extern func_02071eb8
 .extern func_02071ee0
-.extern func_02072b68
+.extern GraphicsSpriteState_SetAnimationIndex
 .extern func_02073ffc
 .extern func_02074038
 .extern func_020befec
@@ -59,7 +59,7 @@ func_0202293c: ; 0x0202293c
     add r0, r7, r1
     and r1, r0, #0xff
     mov r0, r4
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     mov r1, r4
     add r0, r10, #0x4
     bl func_02022b08
@@ -79,11 +79,11 @@ func_0202293c: ; 0x0202293c
     cmp r9, #0x0
     bge .L_02022a24
     mov r1, #0xc
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     b .L_02022a2c
 .L_02022a24:
     mov r1, #0x1
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
 .L_02022a2c:
     mov r1, r4
     add r0, r10, #0x4
@@ -94,7 +94,7 @@ func_0202293c: ; 0x0202293c
     bl func_02073ffc
     mov r4, r0
     mov r1, #0x0
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     mov r1, r4
     add r0, r10, #0x4
     bl func_02022b08

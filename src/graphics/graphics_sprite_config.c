@@ -7,7 +7,7 @@
  */
 
 /*
- * Select animationIndex through func_02072b68, then store the supplied signed
+ * Select animationIndex through GraphicsSpriteState_SetAnimationIndex, then store the supplied signed
  * offset/control halfwords and field_3a byte. OR flags into the existing flags
  * word, preserving all earlier bits. The state is the only modified object;
  * any frame reset or attached-metadata invalidation is performed by the called
@@ -18,7 +18,7 @@ void func_02073e48(GraphicsSpriteState *state, u8 animationIndex,
                    s16 field2c, s16 field2e, u8 field3a,
                    u16 field28, u16 flags)
 {
-    func_02072b68(state, animationIndex);
+    GraphicsSpriteState_SetAnimationIndex(state, animationIndex);
     state->field_2c = field2c;
     state->field_2e = field2e;
     state->field_3a = field3a;
@@ -36,7 +36,7 @@ asm void func_02073e48(GraphicsSpriteState *state, u8 animationIndex,
     mov r6, r2
     and r1, r1, #0xff
     mov r5, r3
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     strh r6, [r4, #0x2c]
     ldr r0, [sp, #0x18]
     ldr r2, [sp, #0x10]

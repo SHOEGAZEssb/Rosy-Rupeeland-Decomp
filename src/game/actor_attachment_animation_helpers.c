@@ -5,7 +5,7 @@
 extern "C" {
 #endif
 extern s32 func_02057084(s32 x, s32 y);
-extern void func_02072b68(void *attachment, u32 animation);
+extern void GraphicsSpriteState_SetAnimationIndex(void *attachment, u32 animation);
 extern void func_020050a4(void *destination, const void *source);
 extern void ActorBounds_Translate(void *bounds, s32 x, s32 y);
 extern void Position_AdjustForTerrainHeight(void *position);
@@ -32,7 +32,7 @@ void Actor_UpdateAttachmentDirectionFromVector(void *self, s32 x, s32 y)
 
     direction = func_02057084(x, y);
     actor[0xd4] = (u8)direction;
-    func_02072b68(attachment, (direction + actor[0xe7]) & 0xff);
+    GraphicsSpriteState_SetAnimationIndex(attachment, (direction + actor[0xe7]) & 0xff);
     *(u16 *)(attachment + 0x24) &= (u16)~0x40;
     *(u16 *)(attachment + 0x24) &= (u16)~1;
     *(u16 *)(attachment + 0x24) |= 2;

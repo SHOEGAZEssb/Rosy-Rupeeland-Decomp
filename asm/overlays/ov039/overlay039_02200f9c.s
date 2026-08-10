@@ -2,7 +2,7 @@
 /* Exact fallback; see overlay039_scene_lifecycle.c for portable C. */
     .extern func_0209a208
     .extern func_ov039_02201234
-    .extern func_02072b68
+    .extern GraphicsSpriteState_SetAnimationIndex
     .extern data_ov039_02208138
     .global func_ov039_02200f9c
 func_ov039_02200f9c:
@@ -68,7 +68,7 @@ L_02201040:
     ldr r0, [r0, #0x50]
     and r1, r8, #0xff
     ldr r0, [r0, #0xc]
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     add r1, r10, r8, lsl #0x2
     ldr r2, [r4, r8, lsl #0x2]
     ldr r0, [r1, #0x50]

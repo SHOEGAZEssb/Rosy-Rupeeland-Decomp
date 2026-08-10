@@ -5,7 +5,7 @@
 .extern func_02071e60
 .extern func_02071e70
 .extern func_02071e80
-.extern func_02072b68
+.extern GraphicsSpriteState_SetAnimationIndex
 .extern func_02073fc4
 .text
     .global func_0204d794
@@ -40,7 +40,7 @@ func_0204d794:
     bl func_02073fc4
     str r0, [r5, #0x54]
     ldrb r1, [r4, #0x11]
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     ldr r1, [r5, #0x54]
     ldrh r0, [r1, #0x24]
     orr r0, r0, #0x6
@@ -61,7 +61,7 @@ func_0204d82c:
     strb r1, [r0, #0x1ef]
     ldrb r1, [r0, #0x1ee]
     ldr r0, [r0, #0x54]
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     ldmia sp!, {r3, pc}
 .size func_0204d82c, . - func_0204d82c
 

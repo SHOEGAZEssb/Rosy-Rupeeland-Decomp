@@ -22,7 +22,7 @@ extern void __destroy_arr(void *array, s32 count, s32 stride,
                           Overlay040ElementDestructor destructor);
 extern void func_02005058(void *object);
 extern void func_02099fb0(void *scene);
-extern void func_02072b68(void *renderer, u8 orientation);
+extern void GraphicsSpriteState_SetAnimationIndex(void *renderer, u8 orientation);
 #ifdef __cplusplus
 }
 #endif
@@ -83,7 +83,7 @@ extern "C" void func_ov040_021fd858(void *scene, void *object, s32 x, s32 y,
 {
     (void)scene;
     void *renderer = FIELD(void *, object, 0x0c);
-    func_02072b68(renderer, orientation);
+    GraphicsSpriteState_SetAnimationIndex(renderer, orientation);
     FIELD(u16, renderer, 0x24) |= 2;
     FIELD(s32, object, 0x30) = x;
     FIELD(s32, object, 0x34) = y;

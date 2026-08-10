@@ -7,7 +7,7 @@
 .extern func_020050a4
 .extern func_020050c8
 .extern GraphicsSpriteState_SetDepthOrderedWorldPositionFromOrigin
-.extern func_02072b68
+.extern GraphicsSpriteState_SetAnimationIndex
 .extern data_020d6084
 .global func_0201e604
 func_0201e604: ; 0x0201e604

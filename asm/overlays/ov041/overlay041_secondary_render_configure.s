@@ -2,7 +2,7 @@
 
 /* Exact fallback for the documented portable C implementation in
  * src/overlays/ov041/overlay041_secondary_object_helpers.c. */
-.extern func_02072b68
+.extern GraphicsSpriteState_SetAnimationIndex
 
     .global func_ov041_02200910
 func_ov041_02200910: ; 0x02200910
@@ -12,7 +12,7 @@ func_ov041_02200910: ; 0x02200910
     ldr r0, [r6, #0xc]
     mov r5, r2
     mov r4, r3
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     ldr ip, [r6, #0xc]
     ldr r2, [sp, #0x10]
     ldrh r3, [ip, #0x24]

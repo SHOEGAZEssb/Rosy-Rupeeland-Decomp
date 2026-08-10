@@ -10,7 +10,7 @@
 .extern data_ov071_022123e0
 .extern func_020050a4
 .extern func_020595b0
-.extern func_02072b68
+.extern GraphicsSpriteState_SetAnimationIndex
 .extern func_020a1794
 .extern func_020adc40
 .extern func_020adc90
@@ -218,7 +218,7 @@ func_ov071_0221083c:
     and r1, r1, #0x7
     cmp r1, r2
     beq .L_02210b0c
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
 .L_02210b0c:
     ldr r1, [r6, #0x48]
     ldr r0, .L_0221112c
@@ -366,7 +366,7 @@ func_ov071_0221083c:
     ldr r0, [r6, #0x90]
     mov r1, #0xb
     ldr r0, [r0, #0xc]
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
 .L_02210d44:
     mov r0, #0x0
     str r0, [r6, #0xb4]
@@ -385,13 +385,13 @@ func_ov071_0221083c:
     and r1, r1, #0xff
     cmp r1, r2
     beq .L_02210de8
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     b .L_02210de8
 .L_02210d90:
     ldr r0, [r6, #0xec]
     mov r1, #0x4
     ldr r0, [r0, #0xc]
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     ldr r2, [r6, #0xec]
     mov r1, #0x0
     ldrh r0, [r2, #0x42]
@@ -399,7 +399,7 @@ func_ov071_0221083c:
     strh r0, [r2, #0x42]
     ldr r0, [r6, #0xf0]
     ldr r0, [r0, #0xc]
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     ldr r3, [r6, #0xf0]
     mov r1, #0x0
     ldrh r2, [r3, #0x42]
@@ -484,7 +484,7 @@ func_ov071_0221083c:
     and r1, r1, #0xff
     cmp r1, r2
     beq .L_02210f4c
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     b .L_02210f4c
 .L_02210f0c:
     mov r0, #0x0
@@ -502,7 +502,7 @@ func_ov071_0221083c:
     add r1, r1, #0x1000
     mov r1, r1, asr #0xd
     and r1, r1, #0x7
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
 .L_02210f4c:
     add r0, r6, #0x94
     add r1, r6, #0xa0
@@ -584,7 +584,7 @@ func_ov071_0221083c:
     ldr r0, [r6, #0xec]
     mov r1, #0x18
     ldr r0, [r0, #0xc]
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     ldr r0, [r6, #0x48]
     ldr r0, [r0, #0xc]
     bl func_ov036_02200b38

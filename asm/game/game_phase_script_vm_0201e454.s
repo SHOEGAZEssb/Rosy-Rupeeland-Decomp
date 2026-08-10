@@ -7,7 +7,7 @@
 .extern func_020050a4
 .extern func_020050c8
 .extern func_020ae024
-.extern func_02072b68
+.extern GraphicsSpriteState_SetAnimationIndex
 .extern GraphicsSpriteState_SetWorldPositionFromOrigin
 .extern data_020d605c
 .global func_0201e454
@@ -37,7 +37,7 @@ func_0201e454: ; 0x0201e454
     mov r5, r0
     ldr r0, [r4, #0x4]
     mov r1, #0x0
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     ldr r1, [r4, #0x4]
     mov r0, r4
     strh r5, [r1, #0x30]

@@ -14,7 +14,7 @@ extern void func_0201e3b8(OffsetTimedSprite *,s32);
 extern void func_020050a4(Track *,const void *);
 extern void func_020050c8(Track *,Track *);
 extern void GraphicsSpriteState_SetDepthOrderedWorldPositionFromOrigin(void *,s32,s32,s32,s32,s32);
-extern void func_02072b68(void *,s32);
+extern void GraphicsSpriteState_SetAnimationIndex(void *,s32);
 #ifdef __cplusplus
 }
 #endif
@@ -25,7 +25,7 @@ OffsetTimedSprite *func_0201e584(OffsetTimedSprite *self,u8 *config,s32 spriteVa
     func_0201e290(self,config);self->vtable=data_020d6084;self->offset2c=offset;
     func_020050a4(&self->first08,config+0x10);func_020050a4(&self->second18,config+0x20);
     self->remaining28=*(s32 *)(config+0x30);*(u16 *)(self->sprite+0x24)&=~2;
-    func_02072b68(self->sprite,spriteValue);return self;
+    GraphicsSpriteState_SetAnimationIndex(self->sprite,spriteValue);return self;
 }
 
 /* Run shared non-freeing teardown and return self. */

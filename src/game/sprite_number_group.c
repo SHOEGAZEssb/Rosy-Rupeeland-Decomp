@@ -24,7 +24,7 @@ extern void func_02071ea4(void *);
 extern void func_02071eb8(void *);
 extern void func_02071ee0(void *,void *,s32,s32,s32);
 extern u8 *func_02073ffc(void *,void *,s32);
-extern void func_02072b68(void *,s32);
+extern void GraphicsSpriteState_SetAnimationIndex(void *,s32);
 extern void func_02074038(void *,void *);
 extern s32 func_020befec(s32,s32);
 #ifdef __cplusplus
@@ -53,11 +53,11 @@ SpriteNumberGroup *func_0202293c(SpriteNumberGroup *self,void *spriteOwner,s32 v
     while(remaining>0) {
         u8 *sprite=func_02073ffc(spriteOwner,self->resource18,2);
         s32 quotient=remaining/10,remainder=remaining%10;
-        func_02072b68(sprite,base+remainder); func_02022b08(&self->nodes04,sprite);
+        GraphicsSpriteState_SetAnimationIndex(sprite,base+remainder); func_02022b08(&self->nodes04,sprite);
         remaining=quotient; digits++;
     }
-    { u8 *s=func_02073ffc(spriteOwner,self->resource18,2); func_02072b68(s,value<0?12:1); func_02022b08(&self->nodes04,s); }
-    { u8 *s=func_02073ffc(spriteOwner,self->resource18,2); func_02072b68(s,0); func_02022b08(&self->nodes04,s); }
+    { u8 *s=func_02073ffc(spriteOwner,self->resource18,2); GraphicsSpriteState_SetAnimationIndex(s,value<0?12:1); func_02022b08(&self->nodes04,s); }
+    { u8 *s=func_02073ffc(spriteOwner,self->resource18,2); GraphicsSpriteState_SetAnimationIndex(s,0); func_02022b08(&self->nodes04,s); }
     self->width14=(s16)((digits+1)*10+8); return self;
 }
 

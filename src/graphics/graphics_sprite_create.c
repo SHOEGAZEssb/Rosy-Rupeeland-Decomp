@@ -17,7 +17,7 @@ void GraphicsSpriteState_Configure(GraphicsSpriteState *state, u8 animationIndex
                    u8 field3a, u16 field28, u16 flagsToSet,
                    u16 flagsToClear)
 {
-    func_02072b68(state, animationIndex);
+    GraphicsSpriteState_SetAnimationIndex(state, animationIndex);
     state->field_3a = field3a;
     state->field_28 = field28;
     state->flags = (state->flags | flagsToSet) & (u16)~flagsToClear;
@@ -50,7 +50,7 @@ asm void GraphicsSpriteState_Configure(GraphicsSpriteState *, u8, u8, u16, u16, 
     mov r6, r2
     and r1, r1, #0xff
     mov r5, r3
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     strb r6, [r4, #0x3a]
     strh r5, [r4, #0x28]
     ldrh r0, [sp, #0x14]

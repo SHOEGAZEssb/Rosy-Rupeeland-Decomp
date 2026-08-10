@@ -9,7 +9,7 @@
 #define FIELD(type, base, offset) (*(type *)((u8 *)(base) + (offset)))
 
 extern "C" {
-void func_02072b68(void *, s32);
+void GraphicsSpriteState_SetAnimationIndex(void *, s32);
 s32 func_020594a4(void *, s32, s32);
 void Sound_Play(void *, s32, s32);
 s32 func_020befec(s32, s32);
@@ -25,7 +25,7 @@ extern "C" void func_ov041_02200910(void *, void *render, s32 x, s32 y,
                                      s32 z, u8 resourceMode)
 {
     void *linked = FIELD(void *, render, 0x0c);
-    func_02072b68(linked, resourceMode);
+    GraphicsSpriteState_SetAnimationIndex(linked, resourceMode);
     FIELD(u16, linked, 0x24) |= 2;
     FIELD(s32, render, 0x30) = x;
     FIELD(s32, render, 0x34) = y;

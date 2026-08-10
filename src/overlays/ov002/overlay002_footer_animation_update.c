@@ -22,7 +22,7 @@ extern "C" {
 #endif
 extern s32 func_02091c7c(void *animation, s32 channel);
 extern s32 func_02091cf0(void *animation);
-extern void func_02072b68(void *sprite, u8 value);
+extern void GraphicsSpriteState_SetAnimationIndex(void *sprite, u8 value);
 #ifdef __cplusplus
 }
 #endif
@@ -46,7 +46,7 @@ s32 func_ov002_021fbe08(Overlay002FooterAnimationUpdateState *state)
     if (func_02091cf0(state->animation_098) == 0) {
         return 0;
     }
-    func_02072b68(state->footer_07c, 0x1f);
-    func_02072b68(state->footer_080, 0x20);
+    GraphicsSpriteState_SetAnimationIndex(state->footer_07c, 0x1f);
+    GraphicsSpriteState_SetAnimationIndex(state->footer_080, 0x20);
     return 1;
 }

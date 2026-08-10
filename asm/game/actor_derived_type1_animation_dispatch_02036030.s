@@ -4,7 +4,7 @@
 .extern ActorCollection_GetSpriteOwner
 .extern Actor_GetCollection
 .extern ActorDerivedType1_ApplyResourceIndex
-.extern func_02072b68
+.extern GraphicsSpriteState_SetAnimationIndex
 .extern func_020740c8
 .extern gGameWork
 
@@ -35,7 +35,7 @@ ActorDerivedType1_UpdateAttachmentPresentation: ; 0x02036030
     ldr r0, [r4, #0x54]
     add r1, r1, #0x10
     and r1, r1, #0xff
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     ldr r1, [r4, #0x54]
     ldrh r0, [r1, #0x24]
     bic r0, r0, #0x2
@@ -53,7 +53,7 @@ ActorDerivedType1_UpdateAttachmentPresentation: ; 0x02036030
     ldr r0, [r4, #0x54]
     add r1, r1, #0x8
     and r1, r1, #0xff
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     b .L_02036100
 .L_020360dc:
     cmp r0, #0x2
@@ -62,10 +62,10 @@ ActorDerivedType1_UpdateAttachmentPresentation: ; 0x02036030
     bne .L_020360fc
     add r1, r1, #0x8
     and r1, r1, #0xff
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     b .L_02036100
 .L_020360fc:
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
 .L_02036100:
     ldr r1, [r4, #0x54]
     ldrh r0, [r1, #0x24]
@@ -307,7 +307,7 @@ ActorDerivedType1_UpdateAttachmentPresentation: ; 0x02036030
     blt .L_02036440
     ldr r0, [r4, #0x54]
     and r1, r7, #0xff
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
 .L_02036440:
     ldr r2, [r4, #0x54]
     mvn r0, r9

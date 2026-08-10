@@ -19,7 +19,7 @@ extern void *ActorMotionAreaFollower_GetPosition(void *manager);
 extern void func_020593ac(void *context, s32 sound, s32 variant,
                           s32 volume, s32 pan, s32 extra);
 extern void *func_0201f864(void *allocation, ...);
-extern void func_02072b68(void *attachment, u32 animation);
+extern void GraphicsSpriteState_SetAnimationIndex(void *attachment, u32 animation);
 extern void *func_02050078(s32 effect, const void *first, const void *second);
 #ifdef __cplusplus
 }
@@ -87,7 +87,7 @@ void ActorRegisteredSubclass_UpdatePresentationState(void *self)
         return;
 
     attachment = *(u8 **)(actor + 0x54);
-    func_02072b68(attachment, state != 0);
+    GraphicsSpriteState_SetAnimationIndex(attachment, state != 0);
     *(u16 *)(attachment + 0x24) |= 2;
     *(u16 *)(attachment + 0x24) &= ~0x11;
 }

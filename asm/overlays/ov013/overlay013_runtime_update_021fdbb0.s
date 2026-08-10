@@ -3,7 +3,7 @@
     .extern data_ov013_021feb58
     .extern data_ov013_021febb4
     .extern GamePhaseCurrencyHud_Update
-    .extern func_02072b68
+    .extern GraphicsSpriteState_SetAnimationIndex
     .extern func_020740a4
     .extern func_02092260
     .extern func_02094cf0
@@ -238,7 +238,7 @@ L_021fde84:
     add r1, r5, #0xf
     ldr r0, [r7, #0x94c]
     and r1, r1, #0xff
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     ldr r2, [r7, #0x94c]
     mov r0, #0x1
     ldrh r1, [r2, #0x24]

@@ -10,7 +10,7 @@
 .extern func_0201e250
 .extern func_02071ea4
 .extern func_02071ee0
-.extern func_02072b68
+.extern GraphicsSpriteState_SetAnimationIndex
 .extern func_02073ffc
 .extern func_020742cc
 .extern func_02094cf0
@@ -48,7 +48,7 @@ func_02027150: ; 0x02027150
     bl func_02073ffc
     and r1, r4, #0xff
     mov r4, r0
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     ldr r1, .L_02027210
     ldr r3, .L_02027214
     mov r0, #0xa0

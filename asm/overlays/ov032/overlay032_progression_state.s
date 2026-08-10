@@ -7,7 +7,7 @@
 .extern data_ov032_02202220
 .extern DisplayBrightness_StartMainTransition
 .extern DisplayBrightness_IsMainTransitionComplete
-.extern func_02072b68
+.extern GraphicsSpriteState_SetAnimationIndex
 .extern func_02098348
 .extern func_ov032_021fe0e8
 .extern func_ov032_021fe134
@@ -169,13 +169,13 @@ L_021ff88c:
     blt L_021ff8d0
     ldr r0, [r4, #0x304]
     mov r1, #0x2
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     b L_021ff8e0
 L_021ff8d0:
     sub r1, r0, #0x1
     ldr r0, [r4, #0x304]
     and r1, r1, #0xff
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
 L_021ff8e0:
     ldr r2, [r4, #0x304]
     add r0, r4, #0x2a4
@@ -386,13 +386,13 @@ L_021ffbb8:
     blt L_021ffbdc
     ldr r0, [r4, #0x304]
     mov r1, #0x2
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     b L_021ffbec
 L_021ffbdc:
     sub r1, r0, #0x1
     ldr r0, [r4, #0x304]
     and r1, r1, #0xff
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
 L_021ffbec:
     ldr r1, [r4, #0x304]
     ldrh r0, [r1, #0x24]
@@ -531,13 +531,13 @@ L_021ffdc0:
     sub r1, r2, #0x2
     ldr r0, [r4, #0x304]
     and r1, r1, #0xff
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     b L_0220016c
 L_021ffdf0:
     sub r1, r2, #0x1
     ldr r0, [r4, #0x304]
     and r1, r1, #0xff
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     b L_0220016c
 L_021ffe04:
     bl func_ov032_02200284
@@ -576,13 +576,13 @@ L_021ffe64:
     sub r1, r2, #0x2
     ldr r0, [r4, #0x304]
     and r1, r1, #0xff
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     b L_0220016c
 L_021ffe98:
     sub r1, r2, #0x1
     ldr r0, [r4, #0x304]
     and r1, r1, #0xff
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     b L_0220016c
 L_021ffeac:
     bl func_ov032_022003e4
@@ -590,7 +590,7 @@ L_021ffeac:
     ldr r0, [r4, #0x304]
     sub r1, r1, #0x1
     and r1, r1, #0xff
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     ldr r1, [r4, #0x304]
     ldrh r0, [r1, #0x24]
     bic r0, r0, #0x4
@@ -637,7 +637,7 @@ L_021fff50:
 L_021fff5c:
     ldr r0, [r4, #0x304]
     mov r1, #0x0
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     ldr r2, [r4, #0x304]
     mov r0, r4
     ldrh r1, [r2, #0x24]

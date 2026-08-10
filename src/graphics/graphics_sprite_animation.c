@@ -50,7 +50,7 @@ extern void func_02070d74(SpriteAnimationResource *resource);
  * preparation may mutate animationResource; no direct hardware write occurs.
  */
 #ifndef MATCHING
-void func_02072b68(GraphicsSpriteState *state, u8 animationIndex)
+void GraphicsSpriteState_SetAnimationIndex(GraphicsSpriteState *state, u8 animationIndex)
 {
     SpriteAnimationResource *resource =
         (SpriteAnimationResource *)state->animationResource;
@@ -71,7 +71,7 @@ void func_02072b68(GraphicsSpriteState *state, u8 animationIndex)
 }
 #else
 /* This matching fallback implements the documented portable C directly above. */
-asm void func_02072b68(GraphicsSpriteState *state, u8 animationIndex)
+asm void GraphicsSpriteState_SetAnimationIndex(GraphicsSpriteState *state, u8 animationIndex)
 {
     stmdb sp!, {r3, r4, r5, lr}
     mov r4, r0
@@ -114,7 +114,7 @@ sprite_set_animation_flags:
  * bit 0. Lazy resource preparation may occur; there is no direct hardware I/O.
  */
 #ifndef MATCHING
-void func_02072bdc(GraphicsSpriteState *state, u8 frameIndex)
+void GraphicsSpriteState_SetFrameIndex(GraphicsSpriteState *state, u8 frameIndex)
 {
     SpriteAnimationResource *resource =
         (SpriteAnimationResource *)state->animationResource;
@@ -143,7 +143,7 @@ void func_02072bdc(GraphicsSpriteState *state, u8 frameIndex)
 }
 #else
 /* This matching fallback implements the documented portable C directly above. */
-asm void func_02072bdc(GraphicsSpriteState *state, u8 frameIndex)
+asm void GraphicsSpriteState_SetFrameIndex(GraphicsSpriteState *state, u8 frameIndex)
 {
     stmdb sp!, {r3, r4, r5, lr}
     mov r5, r0

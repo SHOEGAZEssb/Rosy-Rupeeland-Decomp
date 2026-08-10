@@ -15,7 +15,7 @@ extern "C" {
 #endif
 extern void ActorRuntimeTriple_Assign(void *value, s32 x, s32 y, s32 z);
 extern void Type7Actor_SetCallbackPair(void *actor, u32 first, u32 second, s32 duration);
-extern void func_02072b68(void *object, u32 value);
+extern void GraphicsSpriteState_SetAnimationIndex(void *object, u32 value);
 #ifdef __cplusplus
 }
 #endif
@@ -66,7 +66,7 @@ void Type7Actor_InitializeStationaryMotionState(void *self)
  * +0x90 to +0x2800 when game-work flag 0x44b is set or -0x2800 when clear;
  * alternate +0x8c between +0x1800 and -0x1800 using byte data_021056e0, then
  * increment that byte. Set actor flag 0x200, select presentation 14, reset
- * object +0x54 through func_02072b68(..., 0), and clear actor byte +0xd4.
+ * object +0x54 through GraphicsSpriteState_SetAnimationIndex(..., 0), and clear actor byte +0xd4.
  * Actor, callback, global alternation, game-work-derived, mode, presentation,
  * and motion state may change; no direct hardware access occurs.
  */
@@ -89,7 +89,7 @@ void Type7Actor_InitializeActiveMotionState(void *self, s32 launch)
         ++data_021056e0;
         *(u32 *)(actor + 0x268) |= 0x200;
         *(u16 *)(actor + 0xd6) = 14;
-        func_02072b68(*(void **)(actor + 0x54), 0);
+        GraphicsSpriteState_SetAnimationIndex(*(void **)(actor + 0x54), 0);
         actor[0xd4] = 0;
     } else {
         *(u16 *)(actor + 0xd6) = 13;

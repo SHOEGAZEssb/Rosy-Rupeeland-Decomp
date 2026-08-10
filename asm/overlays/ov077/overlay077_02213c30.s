@@ -9,7 +9,7 @@
 .extern data_ov077_022170d8
 .extern DisplayController_GetVerticalOffset
 .extern UtilAnimationResource_UpdatePosition
-.extern func_02072b68
+.extern GraphicsSpriteState_SetAnimationIndex
 .extern func_ov077_02212e60
 .extern func_ov077_02212f18
 .extern func_ov077_02214298
@@ -430,7 +430,7 @@ func_ov077_02213c30:
     cmp r3, r1
     beq .L_02214274
     and r1, r3, #0xff
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     add r0, r10, #0x200
     ldrsb r0, [r0, #0xe4]
     mov r0, r0, lsl #0x1c

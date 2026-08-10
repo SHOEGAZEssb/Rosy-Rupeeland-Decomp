@@ -41,7 +41,7 @@ extern void func_0207419c(void *);
 extern void func_02074110(void *);
 extern u8 *func_02073ffc(void *, void *, s32);
 extern void func_02073e48(void *, s32, s32, s32, s32, s32, s32);
-extern void func_02072b68(void *, s32);
+extern void GraphicsSpriteState_SetAnimationIndex(void *, s32);
 extern void func_020755bc(void *);
 extern void func_02075598(void *, const void *);
 extern const u16 *func_02079f3c(void *, u16);
@@ -105,7 +105,7 @@ void func_02028100(AreaInfoPanelPresentation *self, s32 index)
     *(u32 *)(self->spriteOwner_34 + 0x20) = 1;
     func_020755bc(self->uiContext_30);
     *(u16 *)(self->primarySprite_38 + 0x24) &= (u16)~4;
-    func_02072b68(self->primarySprite_38, data_020c3a1c[index]);
+    GraphicsSpriteState_SetAnimationIndex(self->primarySprite_38, data_020c3a1c[index]);
 
     func_02075598(self->uiContext_30, *(void **)(self->base_00 + 0));
     text = func_02079f3c(data_021f3ecc, data_020c3a28[index]);

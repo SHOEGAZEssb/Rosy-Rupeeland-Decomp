@@ -17,7 +17,7 @@ extern void func_020adfbc(const void *left, const void *right, void *output);
 extern void func_020adff0(const void *left, const void *right, void *output);
 extern void *func_02005030(void *destination, const void *source);
 extern void *func_020050a4(void *destination, const void *source);
-extern void func_02072b68(void *renderer, u8 orientation);
+extern void GraphicsSpriteState_SetAnimationIndex(void *renderer, u8 orientation);
 extern void func_02099fb0(void *object);
 extern void Heap_Free(void *allocation);
 #ifdef __cplusplus
@@ -104,7 +104,7 @@ extern "C" void func_ov040_02202214(void *scene, s32 value,
     if (FIELD(s32, scene, 0xba4) > 0) return;
     FIELD(s32, scene, 0xba4) = 150;
     FIELD(s32, scene, 0xba8) = value;
-    func_02072b68(FIELD(void *, FIELD(void *, scene, 0xba0), 0x0c), 0);
+    GraphicsSpriteState_SetAnimationIndex(FIELD(void *, FIELD(void *, scene, 0xba0), 0x0c), 0);
 }
 
 /*

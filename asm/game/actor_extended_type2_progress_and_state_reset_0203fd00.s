@@ -2,7 +2,7 @@
 .text
 .extern data_020df9e8
 .extern Actor_RestoreSavedFlags
-.extern func_02072b68
+.extern GraphicsSpriteState_SetAnimationIndex
 .extern gGameWork
 .global ActorExtendedType2_IncrementSavedProgressCounter
 .type ActorExtendedType2_IncrementSavedProgressCounter, @function
@@ -69,7 +69,7 @@ ActorExtendedType2_RestoreState1AndCallbackPair28: ; 0x0203fd84
     ldr r0, [r4, #0x54]
     add r1, r1, #0x8
     and r1, r1, #0xff
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     ldr r1, [r4, #0x14]
     ldr r0, .L_0203fe08
     bic r1, r1, #0x10000000

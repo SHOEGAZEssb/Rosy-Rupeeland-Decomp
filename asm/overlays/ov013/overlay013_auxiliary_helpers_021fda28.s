@@ -4,7 +4,7 @@
     .extern data_ov013_021fed88
     .extern data_ov013_021fed90
     .extern GamePhaseRuntime_SetPlacementMode
-    .extern func_02072b68
+    .extern GraphicsSpriteState_SetAnimationIndex
     .extern func_02095958
     .extern func_020959d4
     .extern func_02095bec
@@ -132,7 +132,7 @@ func_ov013_021fdb50:
     add r0, r5, r4, lsl #0x2
     ldr r0, [r0, #0x950]
     mov r1, #0x1a
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     add r0, r5, r4, lsl #0x2
     ldr r1, [r0, #0x950]
     ldrh r0, [r1, #0x24]

@@ -8,7 +8,7 @@
 .extern ActorCollection_GetSpriteOwner
 .extern ActorCollection_SetActorScale
 .extern Actor_RebuildPrimaryAttachment
-.extern func_02072b68
+.extern GraphicsSpriteState_SetAnimationIndex
 .extern func_020adc90
 .extern func_ov059_02210f34
 
@@ -72,7 +72,7 @@ func_ov059_02210dfc:
     bl Actor_RebuildPrimaryAttachment
     mov r1, #0x0
     mov r4, r0
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     b .L_02210f0c
 .L_02210eec:
     ldr r1, .L_02210f2c
@@ -82,7 +82,7 @@ func_ov059_02210dfc:
     bl Actor_RebuildPrimaryAttachment
     mov r1, #0x1d
     mov r4, r0
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
 .L_02210f0c:
     ldrh r0, [r4, #0x24]
     orr r0, r0, #0x2

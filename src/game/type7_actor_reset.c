@@ -18,7 +18,7 @@ extern void AttachmentController_SetEnabled(void *value, s32 mode);
 extern void func_0206e590(void *resource, s32 mode);
 extern void func_0206c978(void *resource);
 extern void Heap_Free(void *allocation);
-extern void func_02072b68(void *object, u32 value);
+extern void GraphicsSpriteState_SetAnimationIndex(void *object, u32 value);
 extern void Type7Actor_SetCallbackPair(void *actor, u32 first, u32 second, s32 duration);
 #ifdef __cplusplus
 }
@@ -86,7 +86,7 @@ void Type7Actor_ResetInteractionState(void *self)
     }
     *(void **)(actor + 0x210) = 0;
     *(u16 *)(actor + 0xd6) = 2;
-    func_02072b68(*(void **)(actor + 0x54), (actor[0xd4] + 8) & 0xff);
+    GraphicsSpriteState_SetAnimationIndex(*(void **)(actor + 0x54), (actor[0xd4] + 8) & 0xff);
     Type7Actor_SetCallbackPair(actor, data_020e1930[0], data_020e1930[1], 120);
     *(u32 *)(actor + 0x14) &= ~(2 | 4);
     *(u32 *)(actor + 0x10) &= ~0x1f0000;

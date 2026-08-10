@@ -134,7 +134,7 @@ void GamePhaseCurrencyHud_Update(GamePhaseCurrencyHud *self)
                 self->ornaments[activeRow][ornament];
             self->ornamentSpawnTimer = (u16)(randomBelow(4) + 2);
             sprite->flags &= ~5;
-            func_02072b68(sprite, sprite->animationIndex);
+            GraphicsSpriteState_SetAnimationIndex(sprite, sprite->animationIndex);
             sprite->field_2c = (s16)-randomBelow(170);
             sprite->field_2e = (s16)-randomBelow(40);
             self->nextOrnamentIndex++;
@@ -171,9 +171,9 @@ void GamePhaseCurrencyHud_Update(GamePhaseCurrencyHud *self)
             backdropAnimation = 0;
             markerAnimation = (s32)current >= threshold ? 0 : 3;
         }
-        func_02072b68(self->marker[activeRow], markerAnimation);
+        GraphicsSpriteState_SetAnimationIndex(self->marker[activeRow], markerAnimation);
         self->marker[activeRow]->flags &= ~1;
-        func_02072b68(self->backdrop[activeRow], backdropAnimation);
+        GraphicsSpriteState_SetAnimationIndex(self->backdrop[activeRow], backdropAnimation);
     }
 
     if (!(self->flags & 0x10)) {

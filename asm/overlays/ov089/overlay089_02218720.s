@@ -3,7 +3,7 @@
 .extern Sound_Play
 .extern data_021052fc
 .extern Type7Actor_SetActorEnabled
-.extern func_02072b68
+.extern GraphicsSpriteState_SetAnimationIndex
 .extern func_ov089_02217c14
 .extern gSoundContext
 
@@ -77,7 +77,7 @@ func_ov089_02218720:
     b .L_02218920
 .L_02218814:
     ldrb r1, [r4, #0xd4]
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     ldr r1, [r4, #0x54]
     ldrh r0, [r1, #0x24]
     bic r0, r0, #0x1
@@ -89,7 +89,7 @@ func_ov089_02218720:
     ldmia sp!, {r4, pc}
 .L_02218840:
     ldrb r1, [r4, #0xd4]
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     ldr r2, [r4, #0x54]
     mov r1, #0x1
     ldrh r0, [r2, #0x24]
@@ -105,7 +105,7 @@ func_ov089_02218720:
     add r1, r0, #0x8
     ldr r0, [r2, #0x4]
     and r1, r1, #0xff
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     ldr r0, [r4, #0x240]
     add r1, r4, #0x18
     ldr r2, [r0, #0x4]
@@ -135,7 +135,7 @@ func_ov089_02218720:
     ldmia sp!, {r4, pc}
 .L_022188f4:
     ldrb r1, [r4, #0xd4]
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     ldr r1, [r4, #0x54]
     ldrh r0, [r1, #0x24]
     bic r0, r0, #0x1
@@ -147,7 +147,7 @@ func_ov089_02218720:
     ldmia sp!, {r4, pc}
 .L_02218920:
     ldrb r1, [r4, #0xd4]
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     ldr r1, [r4, #0x54]
     ldrh r0, [r1, #0x24]
     bic r0, r0, #0x1

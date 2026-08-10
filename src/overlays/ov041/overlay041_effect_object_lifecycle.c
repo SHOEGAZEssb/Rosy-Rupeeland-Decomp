@@ -14,7 +14,7 @@ void func_02005058(void *);
 void func_ov041_021fce00(void *);
 void func_02099fb0(void *);
 void Heap_Free(void *);
-void func_02072b68(void *, s32);
+void GraphicsSpriteState_SetAnimationIndex(void *, s32);
 extern u8 data_ov041_022059b8;
 }
 
@@ -50,7 +50,7 @@ extern "C" void func_ov041_02201364(void *, void *render, s32 x, s32 y,
                                      s32 z, u8 resourceMode)
 {
     void *linked = FIELD(void *, render, 0x0c);
-    func_02072b68(linked, resourceMode);
+    GraphicsSpriteState_SetAnimationIndex(linked, resourceMode);
     FIELD(u16, linked, 0x24) |= 2;
     FIELD(u8, linked, 0x3a) = 1;
     FIELD(s32, render, 0x44) = 50;

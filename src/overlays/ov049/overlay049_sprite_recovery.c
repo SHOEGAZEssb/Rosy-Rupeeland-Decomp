@@ -19,7 +19,7 @@ extern "C" void func_ov049_0220bac0(void *object, s32 xOffset, s32 yOffset);
 /*
  * Select and apply a sprite frame/variant derived from object state and the
  * supplied index. The sprite referenced by +0xAC is updated through
- * func_02072b68; the object is otherwise unchanged, nothing is returned, and
+ * GraphicsSpriteState_SetAnimationIndex; the object is otherwise unchanged, nothing is returned, and
  * OAM-visible state changes through the SDK helper.
  */
 extern "C" void func_ov049_0220bb84(void *object, s32 index);

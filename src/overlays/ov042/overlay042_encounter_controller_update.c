@@ -24,7 +24,7 @@ extern "C" void func_0205940c(void *sound, s32 sequence, s32 value);
 extern "C" void func_0205943c(void *sound, s32 sequence, s32 channel,
                                s32 value, s32 arg0, s32 arg1);
 extern "C" void func_020594ec(void *sound, s32 value);
-extern "C" void func_02072b68(void *animation, s32 index);
+extern "C" void GraphicsSpriteState_SetAnimationIndex(void *animation, s32 index);
 extern "C" void func_020a1794(void *owner, const void *position,
                                const void *display, s32 flags);
 extern "C" void func_020a1ec0(void *owner, u32 effect);
@@ -73,7 +73,7 @@ static void *animation_of(void *display)
 /* Select an animation, preserving all other animation-object state. */
 static void set_animation(void *display, s32 index)
 {
-    func_02072b68(animation_of(display), index);
+    GraphicsSpriteState_SetAnimationIndex(animation_of(display), index);
 }
 
 /* Emit a randomized hit particle around the scene's primary position. */

@@ -2,7 +2,7 @@
 .extern func_020a1794
 .extern func_0209a0d8
 .extern genrand_int32
-.extern func_02072b68
+.extern GraphicsSpriteState_SetAnimationIndex
 .global func_ov042_021fe670
 func_ov042_021fe670:
     stmdb sp!, {r3, r4, r5, lr}
@@ -48,7 +48,7 @@ func_ov042_021fe670:
     bl genrand_int32
     and r1, r0, #0x3
     mov r0, r5
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     add r1, r4, #0x1000
     ldr r0, [r1, #0x648]
     mvn r3, #0x63

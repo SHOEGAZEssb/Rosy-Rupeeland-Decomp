@@ -2,7 +2,7 @@
 .text
 .extern GamePhaseScriptVm_Pop
 .extern Actor_SetRuntimeProperty
-.extern func_02072b68
+.extern GraphicsSpriteState_SetAnimationIndex
 .global GamePhaseActorScriptVm_StepActorOrientation
 GamePhaseActorScriptVm_StepActorOrientation:
     stmdb sp!, {r3, r4, r5, lr}
@@ -14,7 +14,7 @@ GamePhaseActorScriptVm_StepActorOrientation:
     ldr r0, [r2, #0x54]
     add r1, r1, r4
     and r1, r1, #0xff
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     ldr r0, [r5, #0x84]
     mov r2, r4, lsl #13
     mov r1, #0x11

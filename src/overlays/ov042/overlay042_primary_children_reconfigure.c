@@ -14,7 +14,7 @@ extern "C" void func_0209a0d8(void *child, s32 resource0, s32 resource1,
 extern "C" void func_0209a120(void *child, s32 resource0, s32 resource1,
                                 s32 resource2, s32 ownerValue);
 extern "C" void func_0209a2a4(void *child, s32 value);
-extern "C" void func_02072b68(void *resource, u8 mode);
+extern "C" void GraphicsSpriteState_SetAnimationIndex(void *resource, u8 mode);
 
 static s32 owner_value(void *object)
 {
@@ -55,15 +55,15 @@ extern "C" void func_ov042_02200658(void *object, s32 mode)
         func_0209a07c(child58);
         s32 owner = owner_value(object);
         func_0209a0d8(child4c, 0x12fa, 0x12fb, 0x12fc, owner, 2);
-        func_02072b68(FIELD(void *, child4c, 0xc), 9);
+        GraphicsSpriteState_SetAnimationIndex(FIELD(void *, child4c, 0xc), 9);
         set_resource_bit1(child4c);
         func_0209a0d8(child54, 0x1670, 0x1671, 0x1672, owner, 2);
-        func_02072b68(FIELD(void *, child54, 0xc), 0);
+        GraphicsSpriteState_SetAnimationIndex(FIELD(void *, child54, 0xc), 0);
         set_resource_bit1(child54);
         func_0209a2a4(child54, 0);
         FIELD(s32, child54, 0x44) = 60;
         func_0209a0d8(child50, 0x2227, 0x2228, 0x2229, owner, 2);
-        func_02072b68(FIELD(void *, child50, 0xc), 0);
+        GraphicsSpriteState_SetAnimationIndex(FIELD(void *, child50, 0xc), 0);
         set_resource_bit1(child50);
         FIELD(u16, child50, 0x3c) = 0x100;
         FIELD(u16, child50, 0x3e) = 0x100;
@@ -83,6 +83,6 @@ extern "C" void func_ov042_02200658(void *object, s32 mode)
         func_0209a120(child50, 0x12e3, 0x12e7, 0x12e5, owner);
     else if (mode == 1)
         func_0209a120(child50, 0x12e3, 0x12e6, 0x12e5, owner);
-    func_02072b68(FIELD(void *, child50, 0xc), 0);
+    GraphicsSpriteState_SetAnimationIndex(FIELD(void *, child50, 0xc), 0);
     set_resource_bit1(child50);
 }

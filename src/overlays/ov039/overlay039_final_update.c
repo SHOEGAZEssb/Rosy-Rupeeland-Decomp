@@ -35,7 +35,7 @@ extern void func_02005030(void *destination, const void *source);
 extern void func_02005058(void *vector);
 extern void func_020050a4(void *destination, const void *source);
 extern void func_020050c8(void *destination, const void *source);
-extern void func_02072b68(void *renderObject, u8 mode);
+extern void GraphicsSpriteState_SetAnimationIndex(void *renderObject, u8 mode);
 extern void func_0209a2a4(void *object, void *parent);
 extern void func_0209a2ac(void *object, void *context, s32 enabled);
 extern void func_0209e384(void *object);
@@ -98,7 +98,7 @@ extern "C" void func_ov039_02205c18(void *scene, const void *direction)
     s32 length = func_020adc40(fixedSquare(x) + fixedSquare(y));
     FIELD(s32, scene, 0x88) = fixedMultiply(func_020adc90(x, length), 0x7000);
     FIELD(s32, scene, 0x8c) = fixedMultiply(func_020adc90(y, length), 0x7000);
-    func_02072b68(FIELD(void *, FIELD(void *, scene, 0x48), 0x0c), 0x10);
+    GraphicsSpriteState_SetAnimationIndex(FIELD(void *, FIELD(void *, scene, 0x48), 0x0c), 0x10);
     FIELD(u16, FIELD(void *, scene, 0x48), 0x40) = 0;
     func_ov007_021fc16c(FIELD(void *, FIELD(void *, scene, 0x80), 0x20));
     s32 oldTier = func_020befec(FIELD(s16, scene, 0xba), 10);
@@ -114,7 +114,7 @@ extern "C" void func_ov039_02205c18(void *scene, const void *direction)
         func_ov007_021fc19c(FIELD(void *, FIELD(void *, scene, 0x80), 0x20), i);
     }
     if (FIELD(s16, scene, 0xba) == 0) {
-        func_02072b68(FIELD(void *, FIELD(void *, scene, 0x48), 0x0c), 0x18);
+        GraphicsSpriteState_SetAnimationIndex(FIELD(void *, FIELD(void *, scene, 0x48), 0x0c), 0x18);
         FIELD(s32, scene, 0x88) = 0;
         FIELD(s32, scene, 0x8c) = -0x4000;
         FIELD(u16, scene, 0xb8) = 40;

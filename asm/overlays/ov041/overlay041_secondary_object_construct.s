@@ -5,7 +5,7 @@
 .extern __construct_array
 .extern data_020f4e14
 .extern data_ov041_0220582c
-.extern func_02072b68
+.extern GraphicsSpriteState_SetAnimationIndex
 .extern func_020755e0
 .extern func_0209a208
 .extern func_020bf1f8
@@ -79,7 +79,7 @@ func_ov041_02200660: ; 0x02200660
     ldr r2, [r2, #0x4c]
     and r1, r1, #0xff
     ldr r0, [r2, #0xc]
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     mov r0, #0xc
     mla r2, r8, r0, r10
     add r3, r7, #0x20000

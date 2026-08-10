@@ -12,7 +12,7 @@ extern void *Actor_GetCollection(void *actor);
 extern void *ActorCollection_GetSpriteOwner(void *collection);
 extern void *func_02073fc4(void *collectionData, s32 first, s32 second,
                            s32 third, s32 mode);
-extern void func_02072b68(void *attachment, u32 animation);
+extern void GraphicsSpriteState_SetAnimationIndex(void *attachment, u32 animation);
 extern void func_020313b4(void *actor, void *resource, u32 layer);
 extern void func_02034260(void *actor, const void *descriptor);
 #ifdef __cplusplus
@@ -52,7 +52,7 @@ void Actor_InitializeFromDescriptor(void *self, const void *descriptor)
         *(u8 **)(actor + 0x54) = attachment;
         if ((*(u32 *)(actor + 0x14) & 0x10000000) != 0)
             (*(void (**)(void *, s32))(*(u8 **)actor + 0x54))(actor, 0);
-        func_02072b68(attachment, record[0x11]);
+        GraphicsSpriteState_SetAnimationIndex(attachment, record[0x11]);
         *(s16 *)(attachment + 0x2c) = *(s16 *)(record + 0x22);
         *(s16 *)(attachment + 0x2e) = *(s16 *)(record + 0x24);
         *(u16 *)(attachment + 0x24) |= 2;

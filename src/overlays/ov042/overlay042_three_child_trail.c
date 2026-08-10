@@ -9,7 +9,7 @@
 #define FIELD(type, base, offset) (*(type *)((u8 *)(base) + (offset)))
 
 extern "C" s32 func_020befec(s32 numerator, s32 denominator);
-extern "C" void func_02072b68(void *resource, u8 mode);
+extern "C" void GraphicsSpriteState_SetAnimationIndex(void *resource, u8 mode);
 
 /*
  * Given object, source payload, numerator, and divisor, return immediately when
@@ -48,7 +48,7 @@ extern "C" void func_ov042_022009a0(void *object, const void *source,
     if (frame <= 0)
         FIELD(u16, first, 0x42) |= 4;
     else
-        func_02072b68(FIELD(void *, first, 0xc), (u8)(0x41 - frame));
+        GraphicsSpriteState_SetAnimationIndex(FIELD(void *, first, 0xc), (u8)(0x41 - frame));
 
     for (s32 i = 23; i >= 2; --i)
         FIELD(s32, object, 0xf0 + i * 4) = FIELD(s32, object, 0xec + i * 4);
@@ -62,5 +62,5 @@ extern "C" void func_ov042_022009a0(void *object, const void *source,
     if (tail <= 0)
         FIELD(u16, second, 0x42) |= 4;
     else
-        func_02072b68(FIELD(void *, second, 0xc), (u8)(0x81 - tail));
+        GraphicsSpriteState_SetAnimationIndex(FIELD(void *, second, 0xc), (u8)(0x81 - tail));
 }

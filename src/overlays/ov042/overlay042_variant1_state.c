@@ -8,7 +8,7 @@
 
 #define FIELD(type, base, offset) (*(type *)((u8 *)(base) + (offset)))
 
-extern "C" void func_02072b68(void *resource, u8 mode);
+extern "C" void GraphicsSpriteState_SetAnimationIndex(void *resource, u8 mode);
 
 /*
  * Given a variant object and selector, store the selector byte at +0x8A. For
@@ -38,7 +38,7 @@ extern "C" void func_ov042_02207f58(void *object, u8 selector)
     u8 index = FIELD(u8, object, 0x8a);
     FIELD(s32, object, 0x6c) = positions[index][0] << 12;
     FIELD(s32, object, 0x70) = 0;
-    func_02072b68(FIELD(void *, FIELD(void *, object, 0x4c), 0xc), 24);
+    GraphicsSpriteState_SetAnimationIndex(FIELD(void *, FIELD(void *, object, 0x4c), 0xc), 24);
     FIELD(s32, object, 0x74) = 0;
     FIELD(s32, object, 0x54) = positions[index][0] << 12;
     FIELD(s32, object, 0x58) = positions[index][1] << 12;

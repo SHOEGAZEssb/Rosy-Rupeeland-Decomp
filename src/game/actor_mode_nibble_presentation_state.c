@@ -7,7 +7,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_02072b68(void *attachment, u32 animation);
+extern void GraphicsSpriteState_SetAnimationIndex(void *attachment, u32 animation);
 #ifdef __cplusplus
 }
 #endif
@@ -27,13 +27,13 @@ void ActorModeNibble_UpdatePresentationState(void *self)
     u8 *attachment = *(u8 **)(actor + 0x54);
     s16 state = *(s16 *)(actor + 0xd6);
     if (state == 0) {
-        func_02072b68(attachment, 0);
+        GraphicsSpriteState_SetAnimationIndex(attachment, 0);
         *(u16 *)(attachment + 0x24) &= ~1;
         *(u16 *)(attachment + 0x24) |= 2;
     } else if (state == 1) {
         u8 *nested = *(u8 **)(attachment + 0x1c);
         u8 *record = *(u8 **)(nested + 0x20);
-        func_02072b68(attachment, (*(u32 *)(record + 4) - 1) & 0xff);
+        GraphicsSpriteState_SetAnimationIndex(attachment, (*(u32 *)(record + 4) - 1) & 0xff);
         if ((*(u16 *)(actor + 0x208) >> 12) != 4) {
             *(u16 *)(attachment + 0x24) &= ~3;
         } else {

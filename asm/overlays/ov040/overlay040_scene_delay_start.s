@@ -1,6 +1,6 @@
 .text
 /* Exact fallback; see overlay040_small_helpers.c for portable C. */
-    .extern func_02072b68
+    .extern GraphicsSpriteState_SetAnimationIndex
     .global func_ov040_02202214
 func_ov040_02202214:
     stmdb sp!, {r3, lr}
@@ -13,6 +13,6 @@ func_ov040_02202214:
     ldr r0, [r0, #0xba0]
     mov r1, #0x0
     ldr r0, [r0, #0xc]
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     ldmia sp!, {r3, pc}
     .size func_ov040_02202214, .-func_ov040_02202214

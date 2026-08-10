@@ -25,7 +25,7 @@ extern void GamePhaseCurrencyHud_Update(void *);
 extern s32 func_02095860(void *, void *, s32, s32);
 extern void func_02092260(void *, s32);
 extern void func_02095988(void *, s32);
-extern void func_02072b68(void *, s32);
+extern void GraphicsSpriteState_SetAnimationIndex(void *, s32);
 extern s32 func_ov013_021fdfbc(void *);
 #ifdef __cplusplus
 }
@@ -167,7 +167,7 @@ s32 func_ov013_021fde18(void *state)
             }
             func_02095988(record, data_ov013_021febb4[i * 5] + 1);
             target = FIELD(void *, state, 0x94c);
-            func_02072b68(target, (i + 15) & 0xff);
+            GraphicsSpriteState_SetAnimationIndex(target, (i + 15) & 0xff);
             FIELD(u16, target, 0x24) &= (u16)~4;
             FIELD(s32, state, 0x970) = i;
             return 1;

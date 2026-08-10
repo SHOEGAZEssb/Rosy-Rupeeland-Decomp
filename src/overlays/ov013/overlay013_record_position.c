@@ -9,7 +9,7 @@ extern "C" {
 #endif
 extern void *func_02073ffc(void *, void *, s32);
 extern s32 func_020918f4(void *, s32);
-extern void func_02072b68(void *, s32);
+extern void GraphicsSpriteState_SetAnimationIndex(void *, s32);
 extern s32 func_0209189c(void *, s32, s32);
 #ifdef __cplusplus
 }
@@ -35,7 +35,7 @@ void func_ov013_021fdfd4(void *state, void *record, s32 horizontalRange,
     s32 selector = func_020918f4((u8 *)state + 0x978, 4);
     s32 fixed;
 
-    func_02072b68(target, selector & 0xff);
+    GraphicsSpriteState_SetAnimationIndex(target, selector & 0xff);
     fixed = FIELD(s32, record, 0x20);
     FIELD(s16, target, 0x2e) = (s16)(
         func_0209189c((u8 *)state + 0x978, -verticalRange, verticalRange) +

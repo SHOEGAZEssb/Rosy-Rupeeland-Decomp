@@ -4,7 +4,7 @@
     .extern func_0200500c
     .extern func_02076428
     .extern func_020befec
-    .extern func_02072b68
+    .extern GraphicsSpriteState_SetAnimationIndex
     .extern func_02005058
     .extern gDebugFont
 
@@ -86,7 +86,7 @@ func_ov040_02202cb4:
     cmp r2, r1
     beq .L_02202de4
     and r1, r2, #0xff
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
 .L_02202de4:
     ldr r0, [r5, #0x48]
     mov r1, #0x0
@@ -126,7 +126,7 @@ func_ov040_02202cb4:
     cmp r2, r1
     beq .L_02202e7c
     and r1, r2, #0xff
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
 .L_02202e7c:
     add r0, sp, #0x8
     bl func_02005058

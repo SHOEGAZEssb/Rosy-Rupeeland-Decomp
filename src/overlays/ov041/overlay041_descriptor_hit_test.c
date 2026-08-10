@@ -13,7 +13,7 @@ s32 func_020adc40(s32);
 void Sound_Play(void *, s32, s32);
 void func_ov041_021fec84(void *, s32, s32);
 void func_ov070_02212908(void *, s32, s32, s32);
-void func_02072b68(void *, s32);
+void GraphicsSpriteState_SetAnimationIndex(void *, s32);
 s32 func_020a25c8(void *, s32, s32, s32, s32, s32, s32);
 void func_020a2448(void *, s32, s32);
 extern void *gSoundContext;
@@ -76,7 +76,7 @@ extern "C" s32 func_ov041_02200348(void *object, const void *point)
             }
             if (links[i] >= 0) {
                 void *render = FIELD(void *, object, 0x4c + links[i] * 4);
-                func_02072b68(FIELD(void *, render, 0x0c),
+                GraphicsSpriteState_SetAnimationIndex(FIELD(void *, render, 0x0c),
                               data_ov041_02204d00[typeArray[i]]);
             }
         } else {

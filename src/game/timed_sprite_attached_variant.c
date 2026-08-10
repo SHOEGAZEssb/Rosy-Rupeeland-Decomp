@@ -55,7 +55,7 @@ extern void VecFx32_Subtract(void *output, s32 argument,
 extern BoundsCenter *S16BoundsCenter_Init(BoundsCenter *center, const void *bounds);
 extern s32 func_020adae4(s32 dividend, s32 divisor);
 extern u16 func_020ae024(s32 x, s32 y);
-extern void func_02072b68(void *sprite, s32 value);
+extern void GraphicsSpriteState_SetAnimationIndex(void *sprite, s32 value);
 #ifdef __cplusplus
 }
 #endif
@@ -76,7 +76,7 @@ AttachedTimedSprite *func_0201e6e4(AttachedTimedSprite *self, u8 *owner,
     func_020050a4(&self->second18, config + 0x20);
     self->remaining28 = *(s32 *)(config + 0x30);
     *(u16 *)(self->sprite + 0x24) &= (u16)~2;
-    func_02072b68(self->sprite, spriteValue);
+    GraphicsSpriteState_SetAnimationIndex(self->sprite, spriteValue);
     self->owner2c = owner;
     return self;
 }

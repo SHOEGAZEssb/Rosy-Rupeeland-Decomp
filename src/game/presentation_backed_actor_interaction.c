@@ -28,7 +28,7 @@ extern void *ActorCollection_QueueActorForRemoval(void *value, void *actor);
 extern void *Actor_GetCollection(void *actor);
 extern void ActorDerivedType1_TrySetStateVector(void *actor, const void *position, s32 value,
                           s32 mode);
-extern void func_02072b68(void *presentation, u32 selection);
+extern void GraphicsSpriteState_SetAnimationIndex(void *presentation, u32 selection);
 extern void func_020a25c8(void *manager, s32 mode, s32 x, s32 y,
                           s32 width, s32 height, s32 kind);
 #ifdef __cplusplus
@@ -66,7 +66,7 @@ s32 func_0204df40(void *actor, void *trigger)
         return 0;
 
     FIELD(u16, actor, 0x1f0) = 0;
-    func_02072b68(FIELD(void *, actor, 0x54), FIELD(u8, actor, 0x1ef));
+    GraphicsSpriteState_SetAnimationIndex(FIELD(void *, actor, 0x54), FIELD(u8, actor, 0x1ef));
     FIELD(u8, FIELD(void *, actor, 0x54), 0x3a) = 1;
     FIELD(u16, FIELD(void *, actor, 0x54), 0x24) &= (u16)~4;
     FIELD(u32, actor, 0x5c) = (FIELD(u32, actor, 0x5c) & 0xffff0000) | 0xff00;

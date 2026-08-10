@@ -4,7 +4,7 @@
 .extern data_021052fc
 .extern data_ov075_02216cc8
 .extern func_020593dc
-.extern func_02072b68
+.extern GraphicsSpriteState_SetAnimationIndex
 .extern func_ov075_02213cfc
 .extern gGameWork
 .extern gSoundContext
@@ -132,7 +132,7 @@ func_ov075_02214260:
     str r0, [r6, #0x14]
     str r3, [r6, #0x298]
     ldr r0, [r6, #0x54]
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     ldr r4, [r6, #0x54]
     mov r2, #0x0
     ldrh r3, [r4, #0x24]

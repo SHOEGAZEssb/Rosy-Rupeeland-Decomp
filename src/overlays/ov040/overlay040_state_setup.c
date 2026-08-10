@@ -12,7 +12,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_02072b68(void *renderer, u8 orientation);
+extern void GraphicsSpriteState_SetAnimationIndex(void *renderer, u8 orientation);
 extern void func_0209a07c(void *object);
 extern void func_0209a0d8(void *object, const void *first, const void *second,
                           const void *third, s32 value, s32 enabled);
@@ -182,7 +182,7 @@ extern "C" void func_ov040_021ff42c(void *scene)
     func_0209a0d8(presentation, resource, resource + 1, resource + 2,
                   FIELD(s32, primary, 0), 1);
     void *renderer = FIELD(void *, presentation, 0x0c);
-    func_02072b68(renderer, 3);
+    GraphicsSpriteState_SetAnimationIndex(renderer, 3);
     FIELD(u16, renderer, 0x24) &= (u16)~2;
     Sound_Play(gSoundContext, 300, 0x11);
     Sound_Play(gSoundContext, 300, 5);
@@ -213,7 +213,7 @@ extern "C" void func_ov040_021ff514(void *scene)
     func_0209a0d8(presentation, resource, resource + 1, resource + 2,
                   FIELD(s32, primary, 0), 1);
     void *renderer = FIELD(void *, presentation, 0x0c);
-    func_02072b68(renderer, 0);
+    GraphicsSpriteState_SetAnimationIndex(renderer, 0);
     FIELD(u16, renderer, 0x24) |= 2;
     Sound_Play(gSoundContext, 300, 0x13);
     Sound_Play(gSoundContext, 300, 5);
@@ -239,7 +239,7 @@ extern "C" void func_ov040_021ff8b0(void *scene, s32 duration)
     if (duration >= 2000) FIELD(s32, scene, 0xabc) = 2;
     if (FIELD(void *, scene, 0xb10) != 0) {
         void *renderer = FIELD(void *, FIELD(void *, scene, 0xb10), 0x0c);
-        func_02072b68(renderer, 0x13);
+        GraphicsSpriteState_SetAnimationIndex(renderer, 0x13);
         FIELD(u16, renderer, 0x24) |= 2;
     }
 }
@@ -368,7 +368,7 @@ extern "C" void func_ov040_02202640(void *scene, void *argument)
         create_sub_object(scene, 0x13c3, argument, 0x1c000, 0x5f000, 3);
     FIELD(void *, scene, 0x60) =
         create_sub_object(scene, 0x13c3, argument, 0x80000, 0xab000, 0);
-    func_02072b68(FIELD(void *, FIELD(void *, scene, 0x60), 0x0c), 6);
+    GraphicsSpriteState_SetAnimationIndex(FIELD(void *, FIELD(void *, scene, 0x60), 0x0c), 6);
     FIELD(void *, scene, 0x64) =
         create_sub_object(scene, 0x13c6, argument, 0x80000, 0x0f000, 2);
     FIELD(void *, scene, 0x68) =
@@ -404,9 +404,9 @@ extern "C" void func_ov040_021ff630(void *scene, void *position)
     if (FIELD(s32, scene, 0xb94) < 0x16) {
         s32 phase = ++FIELD(s32, scene, 0xb94);
         if (phase == 0x0b) {
-            func_02072b68(renderer, 1);
+            GraphicsSpriteState_SetAnimationIndex(renderer, 1);
         } else if (phase == 0x16) {
-            func_02072b68(renderer, 2);
+            GraphicsSpriteState_SetAnimationIndex(renderer, 2);
             Sound_Play(gSoundContext, 0x12c, 5);
         }
     }
@@ -422,7 +422,7 @@ extern "C" void func_ov040_021ff630(void *scene, void *position)
             const u8 *resource = (const u8 *)0x1007;
             func_0209a0d8(presentation, resource, resource - 6, resource + 1,
                           (s32)factoryValue, 1);
-            func_02072b68(renderer, 2);
+            GraphicsSpriteState_SetAnimationIndex(renderer, 2);
             FIELD(u16, renderer, 0x24) |= 2;
             void *nested = FIELD(void *, primary, 0x0c);
             FIELD(s32, nested, 0x78) = 8;
@@ -433,7 +433,7 @@ extern "C" void func_ov040_021ff630(void *scene, void *position)
             const u8 *resource = (const u8 *)0x100f;
             func_0209a0d8(presentation, resource, resource - 0x0e,
                           resource + 1, (s32)factoryValue, 2);
-            func_02072b68(renderer, 0x1d);
+            GraphicsSpriteState_SetAnimationIndex(renderer, 0x1d);
             FIELD(u16, renderer, 0x24) |= 2;
             FIELD(s32, scene, 0xb9c) = 0x50;
         }
@@ -449,7 +449,7 @@ extern "C" void func_ov040_021ff630(void *scene, void *position)
         FIELD(s32, scene, 0xb74) /= 2;
         FIELD(s32, scene, 0xb78) = -6;
         if (FIELD(s32, scene, 0xb94) == 0x19) {
-            func_02072b68(renderer, 6);
+            GraphicsSpriteState_SetAnimationIndex(renderer, 6);
             FIELD(u16, renderer, 0x24) &= (u16)~2;
             FIELD(s32, scene, 0xb78) = 0;
         }
@@ -471,7 +471,7 @@ static void set_presentation_state(void *scene, s32 resource, s32 orientation,
     func_0209a0d8(presentation, middle, middle + 1, middle + 2,
                   FIELD(s32, FIELD(void *, scene, 0x48), 0), enabled);
     renderer = FIELD(void *, presentation, 0x0c);
-    func_02072b68(renderer, (u8)orientation);
+    GraphicsSpriteState_SetAnimationIndex(renderer, (u8)orientation);
     if (clearFlag) FIELD(u16, renderer, 0x24) &= (u16)~2;
     else FIELD(u16, renderer, 0x24) |= 2;
 }
@@ -565,7 +565,7 @@ extern "C" void func_ov040_021ff900(void *scene, s32 unused1, s32 unused2,
         func_ov040_02200108(position, presentation);
         if (state == 1) {
             if (++FIELD(s32, scene, 0xb78) == 0) {
-                func_02072b68(renderer, 0x0d);
+                GraphicsSpriteState_SetAnimationIndex(renderer, 0x0d);
                 FIELD(u16, renderer, 0x24) |= 2;
                 FIELD(s32, scene, 0xb7c) = 2;
                 FIELD(s32, scene, 0xb80) = 0;
@@ -583,7 +583,7 @@ extern "C" void func_ov040_021ff900(void *scene, s32 unused1, s32 unused2,
                 FIELD(s32, position, 8) = 0xc0000;
                 FIELD(s32, scene, 0xb7c) = 4; FIELD(s32, scene, 0xb80) = 0;
                 if (FIELD(u8, renderer, 0x38) == 0x26) {
-                    func_02072b68(renderer, 0x27); FIELD(u16, renderer, 0x24) &= (u16)~2;
+                    GraphicsSpriteState_SetAnimationIndex(renderer, 0x27); FIELD(u16, renderer, 0x24) &= (u16)~2;
                     Sound_Play(gSoundContext, 300, (func_020be4e4() & 1) ? 4 : 0);
                 } else {
                     set_presentation_state(scene, 0x1009, 0x18, 1, true);
@@ -603,7 +603,7 @@ extern "C" void func_ov040_021ff900(void *scene, s32 unused1, s32 unused2,
                 FIELD(s32, FIELD(void *, FIELD(void *, scene, 0x48), 0x0c), 0x78) = 7;
                 func_02059278(gSoundContext, 0x32, 0x7f);
             } else if (timer > 0x78 && (FIELD(u16, renderer, 0x24) & 1)) {
-                func_02072b68(renderer, 5); FIELD(u16, renderer, 0x24) |= 2;
+                GraphicsSpriteState_SetAnimationIndex(renderer, 5); FIELD(u16, renderer, 0x24) |= 2;
                 FIELD(s32, scene, 0xb7c) = 6; FIELD(s32, scene, 0xb80) = 0;
             }
         } else if (state == 6 && ++FIELD(s32, scene, 0xb80) >= 0x28) {

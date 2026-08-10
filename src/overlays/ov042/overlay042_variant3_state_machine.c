@@ -10,7 +10,7 @@
 
 extern "C" u32 genrand_int32(void);
 extern "C" s32 func_020adc40(s32 squaredLength);
-extern "C" void func_02072b68(void *animation, u8 index);
+extern "C" void GraphicsSpriteState_SetAnimationIndex(void *animation, u8 index);
 extern "C" void func_020a1794(void *scene, const void *position,
                                 void *destination, s32 unused);
 extern "C" void func_020a1ec0(void *scene, u32 effect);
@@ -131,7 +131,7 @@ extern "C" void func_ov042_02209360(void *object)
         func_ov042_021ff2f8((u8 *)object + 0x50, (u8 *)object + 0x68);
         if (dx >= 0) {
             func_ov042_021fda0c((u8 *)object + 0x50, (u8 *)object + 0x5c);
-            func_02072b68(FIELD(void *, FIELD(void *, object, 0x4c), 0x0c), 0);
+            GraphicsSpriteState_SetAnimationIndex(FIELD(void *, FIELD(void *, object, 0x4c), 0x0c), 0);
             FIELD(s32, object, 0x78) = 0;
         }
     } else if (state == 100) {
@@ -180,20 +180,20 @@ extern "C" void func_ov042_02209360(void *object)
             0x18000, 0, 0);
         if (damage > 0) {
             if (FIELD(s8, object, 0x8f) == 0) {
-                func_02072b68(FIELD(void *, FIELD(void *, object, 0x4c), 0x0c), 2);
+                GraphicsSpriteState_SetAnimationIndex(FIELD(void *, FIELD(void *, object, 0x4c), 0x0c), 2);
                 FIELD(s8, object, 0x8f) = 30;
             }
             FIELD(s32, object, 0x80) -= damage;
             if (FIELD(s32, object, 0x80) <= 0) {
                 enter_fall(object);
-                func_02072b68(FIELD(void *, FIELD(void *, object, 0x4c), 0x0c), 3);
+                GraphicsSpriteState_SetAnimationIndex(FIELD(void *, FIELD(void *, object, 0x4c), 0x0c), 3);
                 func_020a1ec0(owner, 0xeb86);
             }
         }
         if (FIELD(s8, object, 0x8f) > 0) {
             FIELD(s8, object, 0x8f)--;
             if (FIELD(s8, object, 0x8f) == 0)
-                func_02072b68(FIELD(void *, FIELD(void *, object, 0x4c), 0x0c), 1);
+                GraphicsSpriteState_SetAnimationIndex(FIELD(void *, FIELD(void *, object, 0x4c), 0x0c), 1);
         }
     }
 }

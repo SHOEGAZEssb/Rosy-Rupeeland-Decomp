@@ -15,7 +15,7 @@ extern "C" {
 extern void Sound_Play(void *, s32, s32);
 extern void func_02071ea4(void *);
 extern void func_02071ee0(void *, void *, s32, s32, s32);
-extern void func_02072b68(void *, s32);
+extern void GraphicsSpriteState_SetAnimationIndex(void *, s32);
 extern void func_02073e48(void *, s32, s32, s32, s32, s32, s32);
 extern void *func_02073ffc(void *, void *, s32);
 extern void func_020740a4(void *);
@@ -74,18 +74,18 @@ extern "C" void func_ov017_021fe894(void *group)
 
     if (FIELD(s32, data_ov017_022016e0, 0) >=
         FIELD(s32, data_ov017_022016e0, 8)) {
-        func_02072b68(FIELD(void *, group, 0x1c), 0);
+        GraphicsSpriteState_SetAnimationIndex(FIELD(void *, group, 0x1c), 0);
     } else {
         s32 value = func_02091a70(0, 0x10, FIELD(s32, group, 0x60),
                                   FIELD(s32, group, 0x64));
-        func_02072b68(FIELD(void *, group, 0x1c), (u8)value);
+        GraphicsSpriteState_SetAnimationIndex(FIELD(void *, group, 0x1c), (u8)value);
     }
 
     if (FIELD(s32, data_ov017_022016e0, 0x80) == 0) {
         for (i = 0; i < 15; i++) {
             void *sprite = FIELD(void *, group, 0x20 + i * 4);
             if (FIELD(u8, sprite, 0x38) != 4) {
-                func_02072b68(sprite, 4);
+                GraphicsSpriteState_SetAnimationIndex(sprite, 4);
             }
         }
     } else {
@@ -100,7 +100,7 @@ extern "C" void func_ov017_021fe894(void *group)
                     Sound_Play(gSoundContext, soundId >> 7, soundId & 0x7f);
                     played = 1;
                 }
-                func_02072b68(sprite, 2);
+                GraphicsSpriteState_SetAnimationIndex(sprite, 2);
             }
         }
     }

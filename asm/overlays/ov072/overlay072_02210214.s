@@ -8,7 +8,7 @@
 .extern GraphicsSpriteState_SetDepthOrderedWorldPosition
 .extern func_0205974c
 .extern func_020597fc
-.extern func_02072b68
+.extern GraphicsSpriteState_SetAnimationIndex
 .extern func_020befec
 .extern func_ov072_02210818
 .extern func_ov072_022108e8
@@ -80,7 +80,7 @@ func_ov072_02210214:
     orr r0, r0, #0x4
     strh r0, [r2, #0x24]
     ldr r0, [r10, #0x2c]
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     ldr r5, [r10, #0x2c]
     ldr r0, .L_022107cc
     ldrh r3, [r5, #0x24]
@@ -102,7 +102,7 @@ func_ov072_02210214:
     add r0, r0, #0x1
     str r0, [r10, #0x8]
     ldr r0, [r10, #0x2c]
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     ldr r1, [r10, #0x2c]
     ldrh r0, [r1, #0x24]
     orr r0, r0, #0x2
@@ -203,7 +203,7 @@ func_ov072_02210214:
     str r0, [r10, #0x78]
     ldr r0, [r10, #0x2c]
     mov r1, #0x2
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     ldr r1, [r10, #0x2c]
     ldrh r0, [r1, #0x24]
     bic r0, r0, #0x3
@@ -220,7 +220,7 @@ func_ov072_02210214:
     movs r1, r1, lsr #0x10
     beq .L_02210530
     mov r1, #0x3
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     ldr r1, [r10, #0x2c]
     ldrh r0, [r1, #0x24]
     orr r0, r0, #0x2
@@ -265,7 +265,7 @@ func_ov072_02210214:
     add r0, r0, #0x1
     str r0, [r10, #0x8]
     ldr r0, [r10, #0x2c]
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     ldr r3, [r10, #0x2c]
     ldr r0, .L_022107cc
     ldrh r2, [r3, #0x24]
@@ -330,7 +330,7 @@ func_ov072_02210214:
     moveq r1, #0x4
     ldr r0, [r10, #0x2c]
     movne r1, #0x5
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     b .L_02210708
 .L_022106b0:
     ldr r0, [r10, #0x2c]
@@ -340,7 +340,7 @@ func_ov072_02210214:
     movs r1, r1, lsr #0x10
     beq .L_022106f0
     mov r1, #0x3
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     ldr r1, [r10, #0x2c]
     ldrh r0, [r1, #0x24]
     orr r0, r0, #0x2

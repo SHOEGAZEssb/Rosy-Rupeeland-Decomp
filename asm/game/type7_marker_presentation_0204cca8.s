@@ -5,7 +5,7 @@
 .extern Actor_GetCollection
 .extern ActorCollection_GetSpriteOwner
 .extern func_02073fc4
-.extern func_02072b68
+.extern GraphicsSpriteState_SetAnimationIndex
 .extern Type7MarkerPresentation_Reset
 .extern func_02073ef8
 .extern Heap_Free
@@ -46,7 +46,7 @@ Type7MarkerPresentation_Init: ; 0x0204cca8
     bl func_02073fc4
     str r0, [r4, #0x4]
     mov r1, #0x0
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     ldr r0, [r4, #0x4]
     mov r1, #0x1
     strb r1, [r0, #0x3a]

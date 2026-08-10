@@ -4,7 +4,7 @@
 .extern func_02005030
 .extern func_020050a4
 .extern func_0201e290
-.extern func_02072b68
+.extern GraphicsSpriteState_SetAnimationIndex
 
 .global func_ov073_0220fd20
 func_ov073_0220fd20:
@@ -42,7 +42,7 @@ func_ov073_0220fd20:
     bic r0, r0, #0x2
     strh r0, [r2, #0x24]
     ldr r0, [r4, #0x4]
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     mov r0, r4
     ldmia sp!, {r3, r4, r5, r6, r7, pc}
 .L_0220fdb4: .word data_ov073_02210bcc

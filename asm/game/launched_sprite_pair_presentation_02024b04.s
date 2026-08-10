@@ -18,7 +18,7 @@
 .extern Actor_GetCollectionBySlot
 .extern func_02071ea4
 .extern func_02071ee0
-.extern func_02072b68
+.extern GraphicsSpriteState_SetAnimationIndex
 .extern func_02073ffc
 .extern func_02079a7c
 .extern gGameWork
@@ -65,7 +65,7 @@ func_02024b04: ; 0x02024b04
     bl func_02073ffc
     str r0, [r6, #0x50]
     mov r1, #0x0
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     ldr r2, [r6, #0x50]
     ldr r0, .L_02024d30
     ldrh r1, [r2, #0x24]
@@ -94,7 +94,7 @@ func_02024b04: ; 0x02024b04
     bl func_02073ffc
     str r0, [r6, #0x54]
     ldrb r1, [r4, #0xd]
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     b .L_02024c24
 .L_02024c18:
     mov r0, #0x0

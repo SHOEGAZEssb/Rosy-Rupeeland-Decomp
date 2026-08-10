@@ -1,6 +1,6 @@
     .text
 /* Exact fallback; see src/overlays/ov022/overlay022_status_widget.c. */
-    .extern func_02072b68
+    .extern GraphicsSpriteState_SetAnimationIndex
     .extern func_0209189c
     .extern func_020918f4
     .extern func_ov022_021fd514
@@ -43,11 +43,11 @@ L_021fd664:
     ldr r0, [r4, #0x20]
     beq L_021fd6a0
     mov r1, #0x4
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     b L_021fd6a8
 L_021fd6a0:
     mov r1, #0x5
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
 L_021fd6a8:
     ldr r1, [r4, #0x20]
     ldrh r0, [r1, #0x24]

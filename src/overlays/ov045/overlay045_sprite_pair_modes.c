@@ -8,7 +8,7 @@
 
 #define FIELD(type, base, offset) (*(type *)((u8 *)(base) + (offset)))
 
-extern "C" void func_02072b68(void *sprite, s32 animation);
+extern "C" void GraphicsSpriteState_SetAnimationIndex(void *sprite, s32 animation);
 
 /*
  * Select logical mode 2 and sprite animation 3 unless mode 2 is already
@@ -19,7 +19,7 @@ extern "C" void func_ov045_0220c028(void *object)
 {
     if (FIELD(s32, object, 0x28) == 2)
         return;
-    func_02072b68(FIELD(void *, object, 0x20), 3);
+    GraphicsSpriteState_SetAnimationIndex(FIELD(void *, object, 0x20), 3);
     void *sprite = FIELD(void *, object, 0x20);
     FIELD(u16, sprite, 0x24) = (FIELD(u16, sprite, 0x24) | 2) & ~1;
     FIELD(s32, object, 0x28) = 2;
@@ -33,7 +33,7 @@ extern "C" void func_ov045_0220c068(void *object)
 {
     if (FIELD(s32, object, 0x28) == 1)
         return;
-    func_02072b68(FIELD(void *, object, 0x20), 0);
+    GraphicsSpriteState_SetAnimationIndex(FIELD(void *, object, 0x20), 0);
     void *sprite = FIELD(void *, object, 0x20);
     FIELD(u16, sprite, 0x24) = (FIELD(u16, sprite, 0x24) | 2) & ~1;
     FIELD(s32, object, 0x28) = 1;
@@ -47,7 +47,7 @@ extern "C" void func_ov045_0220c0a8(void *object)
 {
     if (FIELD(s32, object, 0x28) == 3)
         return;
-    func_02072b68(FIELD(void *, object, 0x20), 2);
+    GraphicsSpriteState_SetAnimationIndex(FIELD(void *, object, 0x20), 2);
     void *sprite = FIELD(void *, object, 0x20);
     FIELD(u16, sprite, 0x24) = (FIELD(u16, sprite, 0x24) | 2) & ~1;
     FIELD(s32, object, 0x28) = 3;
@@ -61,7 +61,7 @@ extern "C" void func_ov045_0220c0e8(void *object)
 {
     if (FIELD(s32, object, 0x28) == 4)
         return;
-    func_02072b68(FIELD(void *, object, 0x20), 1);
+    GraphicsSpriteState_SetAnimationIndex(FIELD(void *, object, 0x20), 1);
     void *sprite = FIELD(void *, object, 0x20);
     FIELD(u16, sprite, 0x24) = (FIELD(u16, sprite, 0x24) | 2) & ~1;
     FIELD(s32, object, 0x28) = 4;

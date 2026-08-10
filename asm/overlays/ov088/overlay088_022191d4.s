@@ -11,7 +11,7 @@
 .extern GraphicsSpriteState_SetScreenPositionCulled
 .extern GraphicsSpriteState_SetDepthOrderedWorldPositionWithMargins
 .extern ActorDerivedRuntime_ForwardTouchPoint
-.extern func_02072b68
+.extern GraphicsSpriteState_SetAnimationIndex
 .extern func_020adae4
 .extern gSceneManager
 
@@ -247,7 +247,7 @@ func_ov088_022191d4:
     ldrb r2, [r0, #0x38]
     cmp r1, r2
     beq .L_0221954c
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
 .L_0221954c:
     add r0, r10, #0x200
     ldrh r0, [r0, #0x1a]
@@ -279,7 +279,7 @@ func_ov088_022191d4:
     beq .L_022195c4
     ldr r0, [r10, #0x258]
     and r1, r1, #0xff
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
 .L_022195c4:
     add r0, r10, #0x200
     ldrsh r0, [r0, #0x30]

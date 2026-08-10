@@ -1,7 +1,7 @@
 .text
 
 /* Exact fallback; see src/overlays/ov025/overlay025_record_widget.c. */
-.extern func_02072b68
+.extern GraphicsSpriteState_SetAnimationIndex
 .extern func_020befec
 
 
@@ -22,11 +22,11 @@ func_ov025_021fdb18:
     ldr r0, [r4, #0x10]
     beq L_021fdb5c
     mov r1, #0x3
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     b L_021fdb64
 L_021fdb5c:
     mov r1, #0x2f
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
 L_021fdb64:
     ldr r0, [r4, #0x7c]
     cmp r0, #0xa
@@ -40,19 +40,19 @@ L_021fdb64:
     add r1, r1, #0x14
     mov r0, r5
     and r1, r1, #0xff
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
 L_021fdb98:
     ldr r0, [r4, #0x18]
     cmp r0, #0x0
     beq L_021fdbac
     mov r1, #0x31
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
 L_021fdbac:
     ldr r0, [r4, #0x1c]
     cmp r0, #0x0
     beq L_021fdc20
     mov r1, #0x14
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     b L_021fdc20
 L_021fdbc4:
     mov r7, #0x0
@@ -67,7 +67,7 @@ L_021fdbd0:
     bne L_021fdbf8
     mov r0, r8
     mov r1, r6
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     b L_021fdc14
 L_021fdbf8:
     ldrb r0, [r8, #0x38]
@@ -76,7 +76,7 @@ L_021fdbf8:
     add r1, r1, #0x14
     mov r0, r8
     and r1, r1, #0xff
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
 L_021fdc14:
     add r7, r7, #0x1
     cmp r7, #0x6
@@ -87,12 +87,12 @@ L_021fdc20:
     mov r1, r1, lsl #0x1
     add r1, r1, #0x5
     and r1, r1, #0xff
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     ldmia sp!, {r4, r5, r6, r7, r8, pc}
 L_021fdc3c:
     ldr r0, [r4, #0x10]
     mov r1, #0x1
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     ldmia sp!, {r4, r5, r6, r7, r8, pc}
 .size func_ov025_021fdb18, .-func_ov025_021fdb18
 

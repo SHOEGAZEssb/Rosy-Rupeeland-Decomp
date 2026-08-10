@@ -6,7 +6,7 @@
 .extern DisplayController_GetVerticalOffset
 .extern func_02071ee0
 .extern func_02071f38
-.extern func_02072b68
+.extern GraphicsSpriteState_SetAnimationIndex
 .extern func_02073ffc
 .extern func_02074038
 .extern func_02091a70
@@ -72,7 +72,7 @@ func_02024e24: ; 0x02024e24
     bl func_02073ffc
     str r0, [r4, #0x50]
     mov r1, #0x1
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     ldr r0, [r4, #0x54]
     cmp r0, #0x0
     beq .L_02024f20
@@ -82,7 +82,7 @@ func_02024e24: ; 0x02024e24
     bl func_02073ffc
     mov r1, #0x1
     str r0, [r4, #0x54]
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
 .L_02024f20:
     ldr r0, [r4, #0x38]
     add r0, r0, #0x1
@@ -96,7 +96,7 @@ func_02024e24: ; 0x02024e24
     movs r1, r1, lsr #0x10
     beq .L_0202500c
     mov r1, #0x0
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     ldr r1, [r4, #0x50]
     ldrh r0, [r1, #0x24]
     orr r0, r0, #0x2
@@ -106,7 +106,7 @@ func_02024e24: ; 0x02024e24
     cmp r0, #0x0
     beq .L_02024f8c
     mov r1, #0x0
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     ldr r1, [r4, #0x54]
     ldrh r0, [r1, #0x24]
     orr r0, r0, #0x2

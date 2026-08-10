@@ -3,7 +3,7 @@
 .extern data_ov065_02210c00
 .extern func_02005058
 .extern VecFx32Triple_Set
-.extern func_02072b68
+.extern GraphicsSpriteState_SetAnimationIndex
 .extern func_020740c8
 .extern func_ov065_0220fe7c
 .extern func_ov065_0220fee8
@@ -54,7 +54,7 @@ func_ov065_0220fdac:
     bl func_020740c8
     ldr r0, [r5, #0x0]
     and r1, r4, #0xff
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     add r0, sp, #0x24
     bl func_02005058
     add sp, sp, #0x34

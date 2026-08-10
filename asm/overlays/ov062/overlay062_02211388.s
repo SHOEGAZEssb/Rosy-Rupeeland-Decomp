@@ -15,7 +15,7 @@
 .extern ByteTileMapOwner_GetCell
 .extern Type7Actor_GetStateCode
 .extern Type7Actor_ConfigureAttachmentController
-.extern func_02072b68
+.extern GraphicsSpriteState_SetAnimationIndex
 .extern func_020740c8
 .extern func_020adcac
 .extern func_020be334
@@ -154,7 +154,7 @@ func_ov062_02211388:
     bl func_020740c8
     ldr r0, [r4, #0x64]
     and r1, r5, #0xff
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     ldr r0, .L_02211ab0
     mov r1, #0x1b8
     ldr r0, [r0, #0x0]
@@ -229,7 +229,7 @@ func_ov062_02211388:
     bic r0, r0, #0x4
     strh r0, [r2, #0x24]
     ldr r0, [r4, #0x6c]
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     mov r0, #0x0
     strh r0, [r4, #0x56]
     mov r1, #0x5

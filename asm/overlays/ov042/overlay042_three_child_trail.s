@@ -1,6 +1,6 @@
 .text
 .extern func_020befec
-.extern func_02072b68
+.extern GraphicsSpriteState_SetAnimationIndex
 .global func_ov042_022009a0
 func_ov042_022009a0:
     stmdb sp!, {r3, r4, r5, lr}
@@ -65,7 +65,7 @@ func_ov042_022009a0:
     rsb r1, r4, #0x41
     ldr r0, [r0, #0xc]
     and r1, r1, #0xff
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
 .L_02200a88:
     mov r0, #0x18
     sub r2, r0, #0x1
@@ -95,6 +95,6 @@ func_ov042_022009a0:
     rsb r1, r1, #0x81
     ldr r0, [r0, #0xc]
     and r1, r1, #0xff
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     ldmia sp!, {r3, r4, r5, pc}
 .size func_ov042_022009a0, . - func_ov042_022009a0

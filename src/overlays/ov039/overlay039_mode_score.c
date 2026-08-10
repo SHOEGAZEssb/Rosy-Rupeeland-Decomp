@@ -18,8 +18,8 @@ typedef struct Overlay039Vector {
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_02072b68(void *renderObject, u8 mode);
-extern void func_02072bdc(void *renderObject, s32 value);
+extern void GraphicsSpriteState_SetAnimationIndex(void *renderObject, u8 mode);
+extern void GraphicsSpriteState_SetFrameIndex(void *renderObject, s32 value);
 extern void func_020c10d4(void *destination, s32 size);
 extern void func_02004fe0(void *object);
 extern void func_020050a4(void *destination, const void *source);
@@ -32,7 +32,7 @@ extern s32 func_020adc90(s32 numerator, s32 denominator);
 
 /*
  * Apply the low byte of mode to renderer objects belonging to scene slots
- * +0x80..+0x94. Additionally apply value 2 through func_02072bdc to +0x88/
+ * +0x80..+0x94. Additionally apply value 2 through GraphicsSpriteState_SetFrameIndex to +0x88/
  * +0x8C and value 4 to +0x90/+0x94. Clear renderer flag bit zero for those
  * latter four slots, then clear flag bit one for all six. Returns no value;
  * renderer mode, auxiliary parameter, and +0x24 flag state change.
@@ -42,18 +42,18 @@ extern "C" void func_ov039_021ff330(void *scene, s32 mode)
     for (s32 i = 0; i < 6; i++) {
         void *renderObject = FIELD(void *, FIELD(void *, scene, 0x80 + i * 4),
                                    0x0c);
-        func_02072b68(renderObject, (u8)mode);
+        GraphicsSpriteState_SetAnimationIndex(renderObject, (u8)mode);
     }
     for (s32 i = 2; i < 4; i++) {
         void *renderObject = FIELD(void *, FIELD(void *, scene, 0x80 + i * 4),
                                    0x0c);
-        func_02072bdc(renderObject, 2);
+        GraphicsSpriteState_SetFrameIndex(renderObject, 2);
         FIELD(u16, renderObject, 0x24) &= (u16)~1;
     }
     for (s32 i = 4; i < 6; i++) {
         void *renderObject = FIELD(void *, FIELD(void *, scene, 0x80 + i * 4),
                                    0x0c);
-        func_02072bdc(renderObject, 4);
+        GraphicsSpriteState_SetFrameIndex(renderObject, 4);
         FIELD(u16, renderObject, 0x24) &= (u16)~1;
     }
     for (s32 i = 5; i >= 0; i--) {

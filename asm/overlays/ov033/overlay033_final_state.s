@@ -17,7 +17,7 @@
     .extern func_02091cf0
     .extern func_ov033_021fce04
     .extern func_020740c8
-    .extern func_02072b68
+    .extern GraphicsSpriteState_SetAnimationIndex
     .extern Sound_Play
     .extern Type7Actor_ResetMotionAndCooldown
     .extern func_020597fc
@@ -149,7 +149,7 @@ L_021fdadc:
     bl func_020740c8
     mov r0, r4
     mov r1, #0x9
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     mov r0, #0x100
     strh r0, [r4, #0x36]
     ldrh r0, [r4, #0x24]

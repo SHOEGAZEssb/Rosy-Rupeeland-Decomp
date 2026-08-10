@@ -16,7 +16,7 @@ extern void Actor_GetCollection(void *actor);
 extern void *func_02071e60(void *archive, u32 resource_id);
 extern void *func_02071e70(void *archive, u32 resource_id);
 extern void *func_02071e80(void *archive, u32 resource_id);
-extern void func_02072b68(void *presentation, u32 selection);
+extern void GraphicsSpriteState_SetAnimationIndex(void *presentation, u32 selection);
 extern void *func_02073fc4(void *context, void *resource0, void *resource1,
                            void *resource2, u32 mode);
 #ifdef __cplusplus
@@ -46,7 +46,7 @@ void func_0204d794(void *actor, const void *descriptor)
     FIELD(void *, actor, 0x54) =
         func_02073fc4(ActorCollection_GetSpriteOwner(), resource0, resource1, resource2,
                       FIELD(u8, descriptor, 0x10));
-    func_02072b68(FIELD(void *, actor, 0x54), FIELD(u8, descriptor, 0x11));
+    GraphicsSpriteState_SetAnimationIndex(FIELD(void *, actor, 0x54), FIELD(u8, descriptor, 0x11));
     FIELD(u16, FIELD(void *, actor, 0x54), 0x24) |= 6;
 }
 
@@ -63,6 +63,6 @@ void func_0204d82c(void *actor, u16 value_1f2, u16 value_1f4,
     FIELD(u16, actor, 0x1f4) = value_1f4;
     FIELD(u8, actor, 0x1ee) = selection;
     FIELD(u8, actor, 0x1ef) = value_1ef;
-    func_02072b68(FIELD(void *, actor, 0x54), FIELD(u8, actor, 0x1ee));
+    GraphicsSpriteState_SetAnimationIndex(FIELD(void *, actor, 0x54), FIELD(u8, actor, 0x1ee));
 }
 

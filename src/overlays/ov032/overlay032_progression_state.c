@@ -23,7 +23,7 @@ extern void func_ov032_021fe2f0(void *);
 extern void func_ov032_021fe440(void *);
 extern void func_ov032_021fe848(void *, s32);
 extern void func_ov032_021fe8a0(void *);
-extern void func_02072b68(...);
+extern void GraphicsSpriteState_SetAnimationIndex(...);
 extern void func_ov032_02200180(void *);
 extern void func_ov032_022001a0(void *);
 extern s32 func_ov032_021ff288(...);
@@ -67,7 +67,7 @@ static void blink_progress_icon(void *scene)
     if (selection == 1) {
         flag4(scene, 0x304, phase < 4);
     } else {
-        func_02072b68(FIELD(void *, scene, 0x304),
+        GraphicsSpriteState_SetAnimationIndex(FIELD(void *, scene, 0x304),
                       (u8)(phase < 4 ? selection - 2 : selection - 1));
     }
 }
@@ -115,7 +115,7 @@ extern "C" s32 func_ov032_021ff6e0(void *scene)
         func_ov032_021fe2f0(scene);
         func_ov032_021fe440(scene);
         func_ov032_021fe848(scene, 0);
-        func_02072b68(FIELD(void *, scene, 0x304),
+        GraphicsSpriteState_SetAnimationIndex(FIELD(void *, scene, 0x304),
                       (u8)(FIELD(s32, scene, 0xc1c) >= 3 ? 2 : FIELD(s32, scene, 0xc1c) - 1));
         flag4(scene, 0x304, 0);
         flag4(scene, 0x154, 0);
@@ -189,7 +189,7 @@ extern "C" s32 func_ov032_021ff6e0(void *scene)
         break;
     case 61:
         if (FIELD(s32, scene, 0xc1c) > 0) {
-            func_02072b68(FIELD(void *, scene, 0x304),
+            GraphicsSpriteState_SetAnimationIndex(FIELD(void *, scene, 0x304),
                           (u8)(FIELD(s32, scene, 0xc1c) >= 3 ? 2 : FIELD(s32, scene, 0xc1c) - 1));
             flag4(scene, 0x304, 0);
         }
@@ -254,7 +254,7 @@ extern "C" s32 func_ov032_021ff6e0(void *scene)
         break;
     case 70:
         func_ov032_022003e4(scene);
-        func_02072b68(FIELD(void *, scene, 0x304), (u8)(FIELD(s32, scene, 0xc1c) - 1));
+        GraphicsSpriteState_SetAnimationIndex(FIELD(void *, scene, 0x304), (u8)(FIELD(s32, scene, 0xc1c) - 1));
         flag4(scene, 0x304, 0);
         flag4(scene, 0x154, 0);
         flag4(scene, 0x274, 0);
@@ -266,7 +266,7 @@ extern "C" s32 func_ov032_021ff6e0(void *scene)
         FIELD(s32, scene, 0xb64) = 10;
         break;
     case 80:
-        func_02072b68(FIELD(void *, scene, 0x304), 0);
+        GraphicsSpriteState_SetAnimationIndex(FIELD(void *, scene, 0x304), 0);
         flag4(scene, 0x304, 0);
         func_ov032_021fe55c(scene);
         func_ov032_021fe6b0(scene);

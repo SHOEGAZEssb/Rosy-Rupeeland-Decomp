@@ -7,7 +7,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_02072b68(void *, s32);
+extern void GraphicsSpriteState_SetAnimationIndex(void *, s32);
 extern void func_02073e48(void *, s32, s32, s32, s32, s32, s32);
 extern void func_02073ef8(void *);
 extern void *func_02073ffc(void *, void *, s32);
@@ -110,7 +110,7 @@ extern "C" void func_ov016_021fd358(void *state)
                 sum += FIELD(u16, (u8 *)table + i * 0x24, 0x2c);
             }
         }
-        func_02072b68(FIELD(void *, state, 0x24),
+        GraphicsSpriteState_SetAnimationIndex(FIELD(void *, state, 0x24),
                       (FIELD(u32, state, 0x60) + sum) & 0xff);
     }
     func_020740a4(FIELD(void *, state, 4));

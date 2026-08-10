@@ -19,7 +19,7 @@ extern void Type7MarkerPresentation_SelectAnimation(void *state, u32 index);
 extern void Type7MarkerPresentation_ReloadResources(void *state);
 extern void func_020593dc(void *soundContext, s32 group, s32 index,
                           u32 argument, s32 zero, s32 volume);
-extern void func_02072b68(void *presentation, u32 index);
+extern void GraphicsSpriteState_SetAnimationIndex(void *presentation, u32 index);
 #ifdef __cplusplus
 }
 #endif
@@ -42,7 +42,7 @@ void Type7Actor_EnterSpecialPresentationState(void *self)
     AttachmentController_SetEnabled(actor + 0x2a8, 0);
     presentation = *(u8 **)(actor + 0x54);
     if (*(u8 *)(actor + 0xd4) == *(u8 *)(presentation + 0x38))
-        func_02072b68(presentation, (u8)(*(u8 *)(actor + 0xd4) + 8));
+        GraphicsSpriteState_SetAnimationIndex(presentation, (u8)(*(u8 *)(actor + 0xd4) + 8));
     *(u16 *)(presentation + 0x36) = 0x100;
     *(u16 *)(presentation + 0x24) |= 0x20;
     ActorRuntimeTriple_Assign(actor + 0x38, 0, 0, 0);

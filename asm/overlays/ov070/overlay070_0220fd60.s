@@ -3,7 +3,7 @@
 .extern __construct_array
 .extern data_ov070_02212a94
 .extern func_02004fe0
-.extern func_02072b68
+.extern GraphicsSpriteState_SetAnimationIndex
 .extern func_0209a208
 .extern func_ov070_0220fd20
 .extern func_ov070_02210218
@@ -68,7 +68,7 @@ func_ov070_0220fd60:
     strh r0, [r2, #0x42]
     ldr r0, [r10, #0x6c]
     ldr r0, [r0, #0xc]
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     str r9, [sp, #0x0]
     mov r0, #0x2
     str r0, [sp, #0x4]
@@ -95,7 +95,7 @@ func_ov070_0220fd60:
     strb r2, [r0, #0x3a]
     ldr r0, [r10, #0x74]
     ldr r0, [r0, #0xc]
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     ldr r1, [r10, #0x74]
     mov r4, #0xb0000
     ldrh r0, [r1, #0x42]
@@ -141,7 +141,7 @@ func_ov070_0220fd60:
     strb r11, [r0, #0x3a]
     ldr r0, [r2, #0x74]
     ldr r0, [r0, #0xc]
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     add r2, r10, r8, lsl #0x2
     ldr r0, [r2, #0x74]
     cmp r8, #0x1
@@ -194,7 +194,7 @@ func_ov070_0220fd60:
     strb r5, [r0, #0x3a]
     ldr r0, [r2, #0xc8]
     ldr r0, [r0, #0xc]
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     add r0, r10, r8, lsl #0x2
     ldr r1, [r0, #0xc8]
     subs r8, r8, #0x1
@@ -249,7 +249,7 @@ func_ov070_0220fd60:
     strb r11, [r0, #0x3a]
     ldr r0, [r2, #0x88]
     ldr r0, [r0, #0xc]
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     add r0, r10, r8, lsl #0x2
     ldr r1, [r0, #0x88]
     subs r8, r8, #0x1

@@ -6,7 +6,7 @@
 .extern data_ov071_02212394
 .extern data_ov071_022123c8
 .extern func_02004fe0
-.extern func_02072b68
+.extern GraphicsSpriteState_SetAnimationIndex
 .extern func_0209a208
 .extern func_ov071_0220fd20
 .extern func_ov071_02210184
@@ -90,7 +90,7 @@ func_ov071_0220fd60:
     strh r0, [r2, #0x42]
     ldr r0, [r10, #0xec]
     ldr r0, [r0, #0xc]
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     ldr r1, .L_0221016c
     str r9, [sp, #0x0]
     mov r2, #0x2
@@ -117,7 +117,7 @@ func_ov071_0220fd60:
     strh r0, [r2, #0x42]
     ldr r0, [r10, #0xf0]
     ldr r0, [r0, #0xc]
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     ldr r0, [r10, #0xf0]
     mvn r5, #0x7f
     ldr r4, [r0, #0xc]
@@ -207,18 +207,18 @@ func_ov071_0220fd60:
     ldr r0, [r10, #0x88]
     mov r1, #0xa
     ldr r0, [r0, #0xc]
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     ldr r0, [r10, #0x8c]
     mov r1, #0xf4000
     str r1, [r0, #0x34]
     ldr r0, [r10, #0x8c]
     mov r1, #0xa
     ldr r0, [r0, #0xc]
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     ldr r0, [r10, #0x90]
     mov r1, #0xb
     ldr r0, [r0, #0xc]
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     ldr r0, [r10, #0x90]
     mov r2, #0x78
     str r2, [r0, #0x44]

@@ -1,6 +1,6 @@
     .text
 /* Exact fallback; see src/overlays/ov022/overlay022_status_widget.c. */
-    .extern func_02072b68
+    .extern GraphicsSpriteState_SetAnimationIndex
 
 .global func_ov022_021fd4d4
 func_ov022_021fd4d4:
@@ -11,7 +11,7 @@ func_ov022_021fd4d4:
     ldmeqia sp!, {r4, pc}
     ldr r0, [r4, #0x20]
     mov r1, #0x3
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     ldr r2, [r4, #0x20]
     mov r0, #0x2
     ldrh r1, [r2, #0x24]

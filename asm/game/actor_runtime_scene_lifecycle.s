@@ -4,7 +4,7 @@
 .extern Scene_Init
 .extern Scene_SetFlags03
 .extern GameWork_TestFlag
-.extern func_02072b68
+.extern GraphicsSpriteState_SetAnimationIndex
 .extern ActorDerivedType1_ClearStateVectorTimers
 .extern ActorRuntimeTriple_Assign
 .extern Type7Actor_EnterSpecialPresentationState
@@ -45,7 +45,7 @@ ActorRuntimeScene_Init:
     bne L_0200b364
     ldr r0, [r4, #0x54]
     ldrb r1, [r0, #0x38]
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     ldr r0, [r4, #0x54]
     mov r1, #0x100
     strh r1, [r0, #0x36]

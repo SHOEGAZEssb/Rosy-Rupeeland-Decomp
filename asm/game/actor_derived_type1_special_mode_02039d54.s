@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/actor_derived_type1_special_mode.c.
 .text
-.extern func_02072b68
+.extern GraphicsSpriteState_SetAnimationIndex
     .global ActorDerivedType1_SetSpecialModeEnabled
     .type ActorDerivedType1_SetSpecialModeEnabled, @function
 ActorDerivedType1_SetSpecialModeEnabled: ; 0x02039d54
@@ -20,7 +20,7 @@ ActorDerivedType1_SetSpecialModeEnabled: ; 0x02039d54
     add r1, r0, #0x8
     mov r0, r2
     and r1, r1, #0xff
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     ldmia sp!, {r3, pc}
 .L_02039d9c:
     tst r1, #0x800000

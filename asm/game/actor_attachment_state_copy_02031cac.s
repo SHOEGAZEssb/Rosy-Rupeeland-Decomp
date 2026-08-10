@@ -3,8 +3,8 @@
 .extern DisplayController_GetSubScreenVerticalOffset
 .extern func_020083b0
 .extern GamePhaseRegion_ContainsPoint
-.extern func_02072b68
-.extern func_02072bdc
+.extern GraphicsSpriteState_SetAnimationIndex
+.extern GraphicsSpriteState_SetFrameIndex
 
     .global func_02031cac
     .type func_02031cac, @function
@@ -65,7 +65,7 @@ func_02031cac: ; 0x02031cac
     cmp r2, r1
     beq .L_02031d90
     and r1, r2, #0xff
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
 .L_02031d90:
     ldr r0, [r5, #0x58]
     ldr r2, [r5, #0x54]
@@ -74,7 +74,7 @@ func_02031cac: ; 0x02031cac
     cmp r2, r1
     beq .L_02031db0
     and r1, r2, #0xff
-    bl func_02072bdc
+    bl GraphicsSpriteState_SetFrameIndex
 .L_02031db0:
     ldr r0, [r5, #0x54]
     ldr r1, [r5, #0x58]

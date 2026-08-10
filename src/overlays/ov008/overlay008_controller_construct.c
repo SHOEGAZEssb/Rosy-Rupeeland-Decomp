@@ -23,7 +23,7 @@ extern void func_02004fe0(void *member);
 extern void func_02005058(void *member);
 extern void *func_0209a208(void *state, s32 firstId, s32 secondId, s32 thirdId,
                           s32 argument, s32 mode);
-extern void func_02072b68(void *member, s32 value);
+extern void GraphicsSpriteState_SetAnimationIndex(void *member, s32 value);
 #ifdef __cplusplus
 }
 #endif
@@ -59,7 +59,7 @@ void *func_ov008_021fb720(void *state, void *owner, s32 argument)
         FIELD(void *, state, 0x04c + index * 4) = object;
         place(state, object, 0x40000, 0x64000, 0, 0);
         FIELD(u16, object, 0x42) |= 4;
-        func_02072b68(FIELD(void *, object, 0x0c), 3);
+        GraphicsSpriteState_SetAnimationIndex(FIELD(void *, object, 0x0c), 3);
         FIELD(s32, state, 0x754 + index * 4) = -1;
     }
     return state;

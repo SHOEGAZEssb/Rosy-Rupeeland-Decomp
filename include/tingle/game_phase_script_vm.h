@@ -131,7 +131,7 @@ s32 func_0201433c(GamePhaseActorScriptVm *self);
 s32 func_020143a8(GamePhaseActorScriptVm *self);
 u32 *func_02015548(u32 *result, s32 left, s32 top, s32 right, s32 bottom);
 s32 GamePhaseActorScriptVm_SetMotionProbeScale(GamePhaseActorScriptVm *self);
-s32 func_02015580(GamePhaseActorScriptVm *self);
+s32 GamePhaseActorScriptVm_SetAttachmentFrameIndex(GamePhaseActorScriptVm *self);
 s32 GamePhaseActorScriptVm_CalculateDistanceToCoordinates(GamePhaseActorScriptVm *self);
 s32 func_02015610(GamePhaseActorScriptVm *self);
 s32 func_02015690(GamePhaseActorScriptVm *self);

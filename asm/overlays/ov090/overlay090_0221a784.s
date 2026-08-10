@@ -7,7 +7,7 @@
 .extern Actor_GetCollection
 .extern ActorDerivedType1_TeardownActiveRecord
 .extern ActorDerivedType1_GetActiveRecordId
-.extern func_02072b68
+.extern GraphicsSpriteState_SetAnimationIndex
 .extern func_ov090_0221ad64
 .extern gGameWork
 .extern gSoundContext
@@ -72,7 +72,7 @@ func_ov090_0221a784:
     bl func_ov090_0221ad64
     ldr r0, [r6, #0x200]
     mov r1, #0x8
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     ldr r2, [r5, #0x54]
     mov r0, r6
     ldrh r1, [r2, #0x24]

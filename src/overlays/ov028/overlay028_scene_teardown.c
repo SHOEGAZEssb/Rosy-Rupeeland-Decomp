@@ -13,7 +13,7 @@ extern "C" {
 #endif
 extern void Heap_Free(void *);
 extern void func_02071eb8(void *);
-extern void func_02072b68(void *, s32);
+extern void GraphicsSpriteState_SetAnimationIndex(void *, s32);
 extern void func_020740c8(void *, s32, s32, s32);
 extern void func_0207419c(void *);
 extern void func_02075630(void *);
@@ -50,7 +50,7 @@ extern "C" void *func_ov028_021fdfa8(void *state)
         func_020740c8(FIELD(void *, sprite, 0),
                       FIELD(s32, state, 0x80), FIELD(s32, state, 0x84),
                       FIELD(s32, state, 0x88));
-        func_02072b68(sprite, FIELD(u8, state, 0x94));
+        GraphicsSpriteState_SetAnimationIndex(sprite, FIELD(u8, state, 0x94));
     }
     void *child = FIELD(void *, state, 0x220);
     if (child != 0) {

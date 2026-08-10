@@ -28,7 +28,7 @@ extern "C" {
 extern void *func_02071e60(void *resources, u32 id);
 extern void *func_02071e70(void *resources, u32 id);
 extern void *func_02071e80(void *resources, u32 id);
-extern void func_02072b68(void *presentation, u32 index);
+extern void GraphicsSpriteState_SetAnimationIndex(void *presentation, u32 index);
 extern void func_020740c8(const void *presentationVtable, void *presentation,
                           void *first, void *second, void *third);
 extern s16 func_020ae024(s32 y, s32 x);
@@ -76,7 +76,7 @@ void Type7MarkerPresentation_UpdatePosition(Type7MarkerPresentation *self,
 /*
  * Inputs are a marker presentation and animation index. Index -1 sets
  * presentation +0x24 bit four. Other indices are narrowed to a byte, selected
- * through func_02072b68 only when different from current byte +0x38, and then
+ * through GraphicsSpriteState_SetAnimationIndex only when different from current byte +0x38, and then
  * bit four is cleared. No value is returned. Presentation state may change;
  * there are no direct hardware effects.
  */
@@ -88,7 +88,7 @@ void Type7MarkerPresentation_SelectAnimation(Type7MarkerPresentation *self, u32 
     }
     index &= 0xff;
     if (index != self->presentation[0x38])
-        func_02072b68(self->presentation, index);
+        GraphicsSpriteState_SetAnimationIndex(self->presentation, index);
     *(u16 *)(self->presentation + 0x24) &= (u16)~4;
 }
 

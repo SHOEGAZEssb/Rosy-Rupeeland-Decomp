@@ -18,7 +18,7 @@
 .extern func_0201e250
 .extern func_0201e28c
 .extern func_020233c8
-.extern func_02072b68
+.extern GraphicsSpriteState_SetAnimationIndex
 .extern func_02074038
 .extern func_020740c8
 .extern func_020befec

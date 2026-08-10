@@ -11,7 +11,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_02072b68(void *renderObject, u8 orientation);
+extern void GraphicsSpriteState_SetAnimationIndex(void *renderObject, u8 orientation);
 #ifdef __cplusplus
 }
 #endif
@@ -27,7 +27,7 @@ extern "C" void func_ov039_021fd84c(void *scene, void *object,
 {
     (void)scene;
     void *renderObject = FIELD(void *, object, 0x0c);
-    func_02072b68(renderObject, orientation);
+    GraphicsSpriteState_SetAnimationIndex(renderObject, orientation);
     FIELD(u16, renderObject, 0x24) |= 2;
     FIELD(u8, renderObject, 0x3a) = enabled;
 }

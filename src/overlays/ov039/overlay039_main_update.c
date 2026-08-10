@@ -38,8 +38,8 @@ extern s32 func_ov039_021feff0(void *scene);
 extern void func_ov039_021fe05c(void *scene);
 extern void func_ov039_021ff01c(void *scene);
 extern void func_ov039_021ff330(void *scene, s32 mode);
-extern void func_02072b68(void *renderObject, u8 mode);
-extern void func_02072bdc(void *renderObject, s32 value);
+extern void GraphicsSpriteState_SetAnimationIndex(void *renderObject, u8 mode);
+extern void GraphicsSpriteState_SetFrameIndex(void *renderObject, s32 value);
 extern void func_02005030(Overlay039Vector *destination, void *source);
 extern void func_02005058(void *object);
 extern void func_020050a4(void *destination, const void *source);
@@ -196,7 +196,7 @@ static void updateTimedSequence(void *scene, s32 variant)
     if (ownerEffect == 0) {
         if (time == 0xb4) time = 0x12c;
     } else if (func_ov069_022119dc(ownerEffect)) {
-        func_02072b68(FIELD(void *, FIELD(void *, scene, 0x98), 0x0c), 8);
+        GraphicsSpriteState_SetAnimationIndex(FIELD(void *, FIELD(void *, scene, 0x98), 0x0c), 8);
     }
     if (time == 0x12c) {
         if (variant == 0) time = 0x17c;
@@ -254,7 +254,7 @@ static void updateModeObjects(void *scene)
         void *object = FIELD(void *, scene, 0x80 + i * 4);
         void *render = FIELD(void *, object, 0x0c);
         if ((FIELD(u16, render, 0x24) & 1) == 0) continue;
-        func_02072bdc(render, 0);
+        GraphicsSpriteState_SetFrameIndex(render, 0);
         FIELD(u16, render, 0x24) &= (u16)~1;
         if (FIELD(u8, render, 0x38) == 5) {
             Overlay039Vector position;
@@ -314,13 +314,13 @@ static void updateFormationGroup(void *scene, s32 groupOffset)
     void *firstObject = FIELD(void *, scene, 0x4c + groupOffset);
     void *firstRender = FIELD(void *, firstObject, 0x0c);
     if (transition != 0) {
-        func_02072b68(firstRender, data_ov039_02207fe0[transition]);
+        GraphicsSpriteState_SetAnimationIndex(firstRender, data_ov039_02207fe0[transition]);
         FIELD(u16, firstRender, 0x24) &= (u16)~2;
         FIELD(s32, scene, stateOffset) = data_ov039_02207fe7[transition];
         type = FIELD(s32, scene, stateOffset);
     }
     if (type >= 1 && type <= 3 && (FIELD(u16, firstRender, 0x24) & 1)) {
-        func_02072b68(firstRender, data_ov039_02207fdc[type]);
+        GraphicsSpriteState_SetAnimationIndex(firstRender, data_ov039_02207fdc[type]);
         FIELD(u16, firstRender, 0x24) |= 2;
         FIELD(s32, scene, stateOffset) = data_ov039_02207fd8[type];
     }
@@ -385,9 +385,9 @@ extern "C" void func_ov039_021ff610(void *scene)
         if (recovery == 0 && FIELD(u16, scene, 0x1cac) == 0) {
             FIELD(s32, scene, 0x1d94) = 0;
             func_ov039_021ff01c(scene);
-            func_02072b68(FIELD(void *, FIELD(void *, scene, 0x98), 0x0c), 3);
-            func_02072b68(FIELD(void *, FIELD(void *, scene, 0x4c), 0x0c), 0);
-            func_02072b68(FIELD(void *, FIELD(void *, scene, 0x5c), 0x0c), 0);
+            GraphicsSpriteState_SetAnimationIndex(FIELD(void *, FIELD(void *, scene, 0x98), 0x0c), 3);
+            GraphicsSpriteState_SetAnimationIndex(FIELD(void *, FIELD(void *, scene, 0x4c), 0x0c), 0);
+            GraphicsSpriteState_SetAnimationIndex(FIELD(void *, FIELD(void *, scene, 0x5c), 0x0c), 0);
             FIELD(u16, FIELD(void *, scene, 0x4c), 0x40) = 0x65;
             FIELD(u16, FIELD(void *, scene, 0x5c), 0x40) = 0x65;
             Sound_Play(gSoundContext, 0x63, 8);

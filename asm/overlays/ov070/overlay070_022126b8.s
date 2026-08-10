@@ -1,6 +1,6 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov070/overlay070_recovery.c.
-.extern func_02072b68
+.extern GraphicsSpriteState_SetAnimationIndex
 .extern func_ov070_0221189c
 
 .global func_ov070_022126b8
@@ -17,7 +17,7 @@ func_ov070_022126b8:
     ldr r0, [r4, #0x6c]
     mov r1, #0x7
     ldr r0, [r0, #0xc]
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     ldr r0, [r4, #0x6c]
     ldr r1, [r0, #0xc]
     ldrh r0, [r1, #0x24]

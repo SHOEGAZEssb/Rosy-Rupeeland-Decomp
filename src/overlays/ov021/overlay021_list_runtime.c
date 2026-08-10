@@ -25,7 +25,7 @@ extern void MIi_CpuCopy16(const void *, void *, u32);
 extern void *func_02003e20(u32, const void *, s32, void *);
 extern void func_02071ea4(void *);
 extern void func_02071ee0(void *, void *, s32, s32, s32);
-extern void func_02072b68(void *, s32);
+extern void GraphicsSpriteState_SetAnimationIndex(void *, s32);
 extern void func_02073e48(void *, s32, s32, s32, s32, s32, s32);
 extern void *func_02073ffc(void *, void *, s32);
 extern void *func_020742cc(void *);
@@ -160,7 +160,7 @@ extern "C" void func_ov021_021fd490(void *state)
     s32 i;
     for (i = 0; i < 4 && first + i < FIELD(s32, state, 0x54); i++) {
         const u8 *record = FIELD(const u8 *, rows[first + i].descriptor, 4);
-        func_02072b68(rows[first + i].sprite,
+        GraphicsSpriteState_SetAnimationIndex(rows[first + i].sprite,
                       FIELD(u16, record, 4) >= 2 ? 2 : 0);
     }
 
@@ -173,11 +173,11 @@ extern "C" void func_ov021_021fd490(void *state)
     }
     const u8 *descriptor = (const u8 *)selected->descriptor;
     const u8 *record = FIELD(const u8 *, descriptor, 4);
-    func_02072b68(selected->sprite, FIELD(u16, record, 4) >= 2 ? 3 : 1);
+    GraphicsSpriteState_SetAnimationIndex(selected->sprite, FIELD(u16, record, 4) >= 2 ? 3 : 1);
     s32 value = FIELD(s32, record, 0x10);
     if (FIELD(u16, record, 4) == 0 && value > 1) {
         s32 animation = value < 100 ? 0x1c : (value < 10000 ? 0x1d : 0x1e);
-        func_02072b68(FIELD(void *, state, 0x24), animation);
+        GraphicsSpriteState_SetAnimationIndex(FIELD(void *, state, 0x24), animation);
         FIELD(u16, FIELD(void *, state, 0x24), 0x24) &= ~4;
         func_02075598(font, (u8 *)state + 0x2c);
         s32 width = func_02092960(font, value, 0xff676980, 0x2a,

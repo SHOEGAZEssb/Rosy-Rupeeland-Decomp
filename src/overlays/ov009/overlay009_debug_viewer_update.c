@@ -20,8 +20,8 @@ extern void func_ov009_021fd338(void *state);
 extern void func_ov009_021fd360(void *state);
 extern void func_ov009_021fce74(void *, s32, s32, s32);
 extern void func_02072c98(void *object);
-extern void func_02072b68(void *object, s32 value);
-extern void func_02072bdc(void *object, s32 value);
+extern void GraphicsSpriteState_SetAnimationIndex(void *object, s32 value);
+extern void GraphicsSpriteState_SetFrameIndex(void *object, s32 value);
 extern void func_02070958(void *member, s32 x, s32 y, s32 z);
 extern void func_02070a78(void *member, s32 delta, s32 first, s32 last);
 extern void func_02074dc8(void *manager, void *object);
@@ -155,7 +155,7 @@ s32 func_ov009_021fd4e8(void *state)
                 FIELD(s32, state, 0xd8) = func_ov009_021fd458(
                     state, FIELD(s32, state, 0xd8), 0,
                     FIELD(s32, meta, 4) - 1, 1);
-                func_02072b68(FIELD(void *, state, 0x88),
+                GraphicsSpriteState_SetAnimationIndex(FIELD(void *, state, 0x88),
                               (u8)FIELD(s32, state, 0xd8));
             }
             break;
@@ -167,7 +167,7 @@ s32 func_ov009_021fd4e8(void *state)
                 FIELD(s32, state, 0xdc) = func_ov009_021fd458(
                     state, FIELD(s32, state, 0xdc), 0,
                     FIELD(u16, entry, 2) - 1, 1);
-                func_02072bdc(FIELD(void *, state, 0x88),
+                GraphicsSpriteState_SetFrameIndex(FIELD(void *, state, 0x88),
                               (u8)FIELD(s32, state, 0xdc));
             }
             break;

@@ -1,6 +1,6 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov058/overlay058_recovery.c.
-.extern func_02072bdc
+.extern GraphicsSpriteState_SetFrameIndex
 .extern func_020bf1f8
 .extern genrand_int32
 
@@ -27,9 +27,9 @@ func_ov058_0220e598:
     cmp r6, r1
     beq .L_0220e5c4
     and r1, r6, #0xff
-    bl func_02072bdc
+    bl GraphicsSpriteState_SetFrameIndex
     ldr r0, [r4, #0x24]
     and r1, r6, #0xff
-    bl func_02072bdc
+    bl GraphicsSpriteState_SetFrameIndex
     ldmia sp!, {r4, r5, r6, pc}
 .size func_ov058_0220e598, . - func_ov058_0220e598

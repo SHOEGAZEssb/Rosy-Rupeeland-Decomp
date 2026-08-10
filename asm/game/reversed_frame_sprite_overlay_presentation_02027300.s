@@ -9,7 +9,7 @@
 .extern func_0201e250
 .extern func_02071ea4
 .extern func_02071ee0
-.extern func_02072b68
+.extern GraphicsSpriteState_SetAnimationIndex
 .extern func_02073ffc
 .extern func_020742cc
 .extern func_02094cf0
@@ -49,7 +49,7 @@ func_02027300: ; 0x02027300
     addge r1, r1, #0x1
     mov r0, r5
     and r1, r1, #0xff
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     ldr r1, .L_020273c8
     ldr r3, .L_020273cc
     mov r0, #0xa0

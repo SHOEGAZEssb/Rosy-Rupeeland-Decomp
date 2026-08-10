@@ -4,7 +4,7 @@
 .extern data_ov095_0221d288
 .extern func_0201f864
 .extern func_02032228
-.extern func_02072b68
+.extern GraphicsSpriteState_SetAnimationIndex
 .extern gHeapContext
 
 .global func_ov095_0221c1d0
@@ -54,7 +54,7 @@ func_ov095_0221c1d0:
     cmp r1, r2
     beq .L_0221c28c
     and r1, r1, #0xff
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     ldr r1, [r4, #0x54]
     ldrh r0, [r1, #0x24]
     bic r0, r0, #0x1

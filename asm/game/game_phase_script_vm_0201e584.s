@@ -7,7 +7,7 @@
 .extern func_020050a4
 .extern func_020050c8
 .extern GraphicsSpriteState_SetDepthOrderedWorldPositionFromOrigin
-.extern func_02072b68
+.extern GraphicsSpriteState_SetAnimationIndex
 .extern data_020d6084
 .global func_0201e584
 func_0201e584: ; 0x0201e584
@@ -34,7 +34,7 @@ func_0201e584: ; 0x0201e584
     bic r0, r0, #0x2
     strh r0, [r2, #0x24]
     ldr r0, [r4, #0x4]
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     mov r0, r4
     ldmia sp!, {r3, r4, r5, r6, r7, pc}
 L_0201e5ec: .word data_020d6084

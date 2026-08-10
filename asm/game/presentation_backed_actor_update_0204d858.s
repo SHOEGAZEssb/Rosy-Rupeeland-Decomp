@@ -9,7 +9,7 @@
 .extern Actor_GetCollection
 .extern Actor_QueryTerrainHeight
 .extern func_0204cfa4
-.extern func_02072b68
+.extern GraphicsSpriteState_SetAnimationIndex
 .extern func_020adae4
 .text
     .global func_0204d858
@@ -66,7 +66,7 @@ func_0204d858: ; 0x0204d858
     ldrb r2, [r0, #0x38]
     cmp r1, r2
     beq .L_0204d934
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     ldr r1, [r6, #0x54]
     ldrh r0, [r1, #0x24]
     bic r0, r0, #0x2

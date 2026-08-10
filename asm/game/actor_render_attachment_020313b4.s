@@ -4,7 +4,7 @@
 .extern GamePhaseRuntime_GetActorCollection
 .extern ActorCollection_GetSpriteOwner
 .extern Actor_GetCollection
-.extern func_02072b68
+.extern GraphicsSpriteState_SetAnimationIndex
 .extern func_02073fc4
 
     .global func_020313b4
@@ -36,7 +36,7 @@ func_020313b4: ; 0x020313b4
     str r0, [r4, #0x58]
     ldr r1, [r4, #0x54]
     ldrb r1, [r1, #0x38]
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     ldr r0, [r4, #0x54]
     ldr r1, [r4, #0x58]
     ldrsh r2, [r0, #0x2e]

@@ -52,7 +52,7 @@ void func_ov075_022132e8(void);
 /* Processes the supplied ABI arguments using only local offset-based fields; observable mutations and the return value are preserved by the matching implementation, with no direct SDK call. */
 void func_ov075_02213368(void);
 
-/* Processes the supplied ABI arguments and offset-based actor state, returns its encoded result, and invokes func_020050a4, Actor_GetCachedTerrainHeight, func_02072b68; exact higher-level semantics remain unconfirmed. */
+/* Processes the supplied ABI arguments and offset-based actor state, returns its encoded result, and invokes func_020050a4, Actor_GetCachedTerrainHeight, GraphicsSpriteState_SetAnimationIndex; exact higher-level semantics remain unconfirmed. */
 void func_ov075_022133a4(void);
 
 /* Processes the supplied ABI arguments using only local offset-based fields; observable mutations and the return value are preserved by the matching implementation, with no direct SDK call. */
@@ -100,7 +100,7 @@ void func_ov075_02213f08(void);
 /* Processes the supplied ABI arguments using only local offset-based fields; observable mutations and the return value are preserved by the matching implementation, with no direct SDK call. */
 void func_ov075_0221424c(void);
 
-/* Processes the supplied ABI arguments and offset-based actor state, returns its encoded result, and invokes func_020593dc, func_02072b68, func_ov075_02213cfc; exact higher-level semantics remain unconfirmed. */
+/* Processes the supplied ABI arguments and offset-based actor state, returns its encoded result, and invokes func_020593dc, GraphicsSpriteState_SetAnimationIndex, func_ov075_02213cfc; exact higher-level semantics remain unconfirmed. */
 void func_ov075_02214260(void);
 
 /* Processes the supplied ABI arguments using only local offset-based fields; observable mutations and the return value are preserved by the matching implementation, with no direct SDK call. */
@@ -208,7 +208,7 @@ void func_ov075_022148d0(void);
 /* Processes the supplied ABI arguments using only local offset-based fields; observable mutations and the return value are preserved by the matching implementation, with no direct SDK call. */
 void func_ov075_02214d88(void);
 
-/* Processes the supplied ABI arguments and offset-based actor state, returns its encoded result, and invokes ActorCollection_GetSpriteOwner, Actor_GetCollection, func_02072b68 and other shared helpers; exact higher-level semantics remain unconfirmed. */
+/* Processes the supplied ABI arguments and offset-based actor state, returns its encoded result, and invokes ActorCollection_GetSpriteOwner, Actor_GetCollection, GraphicsSpriteState_SetAnimationIndex and other shared helpers; exact higher-level semantics remain unconfirmed. */
 void func_ov075_02214e28(void);
 
 /* Processes the supplied ABI arguments and offset-based actor state, returns its encoded result, and invokes func_020050a4, Actor_GetCachedTerrainHeight; exact higher-level semantics remain unconfirmed. */
@@ -316,7 +316,7 @@ void func_ov075_02215a28(void);
 /* Processes the supplied ABI arguments and offset-based actor state, returns its encoded result, and invokes func_02005058, ActorExtendedLinkSource_Destroy; exact higher-level semantics remain unconfirmed. */
 void func_ov075_02215a48(void);
 
-/* Processes the supplied ABI arguments and offset-based actor state, returns its encoded result, and invokes ActorCollection_GetSpriteOwner, Actor_GetCollection, func_02072b68 and other shared helpers; exact higher-level semantics remain unconfirmed. */
+/* Processes the supplied ABI arguments and offset-based actor state, returns its encoded result, and invokes ActorCollection_GetSpriteOwner, Actor_GetCollection, GraphicsSpriteState_SetAnimationIndex and other shared helpers; exact higher-level semantics remain unconfirmed. */
 void func_ov075_02215a70(void);
 
 /* Processes the supplied ABI arguments and offset-based actor state, returns its encoded result, and invokes ActorExtendedType2_ResetVerticalMotionCallbacks, func_020593dc, func_ov075_022152ac; exact higher-level semantics remain unconfirmed. */

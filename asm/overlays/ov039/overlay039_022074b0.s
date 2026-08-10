@@ -1,6 +1,6 @@
 .text
 /* Exact fallback; see overlay039_final_update.c for portable C. */
-    .extern func_02072b68
+    .extern GraphicsSpriteState_SetAnimationIndex
     .extern func_02059278
     .extern func_020050a4
     .extern func_020befec
@@ -31,7 +31,7 @@ func_ov039_022074b0:
     bne L_02207538
     ldr r0, [r4, #0xc]
     mov r1, #0x23
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     ldr r4, [r4, #0xc]
     ldr r0, L_02207604
     ldrh r3, [r4, #0x24]
@@ -55,7 +55,7 @@ L_02207538:
     movs r1, r1, lsr #0x10
     ldmeqia sp!, {r3, r4, r5, pc}
     mov r1, #0x1b
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     ldr r1, [r4, #0xc]
     ldrh r0, [r1, #0x24]
     orr r0, r0, #0x2

@@ -14,7 +14,7 @@
 .extern Type7Actor_EnterSpecialPresentationState
 .extern func_020593ac
 .extern func_0205974c
-.extern func_02072b68
+.extern GraphicsSpriteState_SetAnimationIndex
 .extern func_ov062_0220fd20
 .extern gHeapContext
 .extern gSoundContext
@@ -297,7 +297,7 @@ func_ov062_02210b38:
 .L_02210f40:
     ldr r0, [r4, #0x64]
     and r1, r8, #0xff
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     mov r0, #0x4
     str r0, [sp, #0x0]
     ldr r0, [r4, #0x64]

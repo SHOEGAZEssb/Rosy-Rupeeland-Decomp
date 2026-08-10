@@ -13,7 +13,7 @@ extern "C" void func_ov042_021fcf9c(void *element);
 extern "C" void *func_ov042_021fd66c(void *object);
 extern "C" void *func_0209a208(void *owner, s32 resource0, s32 resource1,
                                 s32 resource2, s32 heap, s32 enabled);
-extern "C" void func_02072b68(void *resource, u8 mode);
+extern "C" void GraphicsSpriteState_SetAnimationIndex(void *resource, u8 mode);
 extern "C" void __construct_array(void *array, s32 count, s32 size,
                                    void (*constructor)(void *),
                                    void (*destructor)(void *));
@@ -121,7 +121,7 @@ extern "C" void *func_ov042_02207e04(void *object, void *owner, s32 heap)
     RecordConfigure configure = *(RecordConfigure *)FIELD(void *, object, 0);
     configure(object, child, 0x80000, -0x50000, 0, 0);
     FIELD(u16, child, 0x42) |= 4;
-    func_02072b68(FIELD(void *, child, 0xc), 0);
+    GraphicsSpriteState_SetAnimationIndex(FIELD(void *, child, 0xc), 0);
     FIELD(s32, object, 0x54) = 0;
     FIELD(s32, object, 0x58) = 0;
     FIELD(s32, object, 0x74) = 101;
@@ -154,7 +154,7 @@ extern "C" void *func_ov042_022087a0(void *object, void *owner, s32 heap)
     RecordConfigure configure = *(RecordConfigure *)FIELD(void *, object, 0);
     configure(object, child, 0x80000, -0x50000, 0, 0);
     FIELD(u16, child, 0x42) |= 4;
-    func_02072b68(FIELD(void *, child, 0xc), 0);
+    GraphicsSpriteState_SetAnimationIndex(FIELD(void *, child, 0xc), 0);
     FIELD(s32, child, 0x44) = -60;
     FIELD(s32, object, 0x54) = 0;
     FIELD(s32, object, 0x58) = 0;
@@ -192,7 +192,7 @@ extern "C" void *func_ov042_02208ffc(void *object, void *owner, s32 heap,
     RecordConfigure configure = *(RecordConfigure *)FIELD(void *, object, 0);
     configure(object, child, 0x80000, -0x50000, 0, 0);
     FIELD(u16, child, 0x42) |= 4;
-    func_02072b68(FIELD(void *, child, 0xc), 0);
+    GraphicsSpriteState_SetAnimationIndex(FIELD(void *, child, 0xc), 0);
     FIELD(s32, child, 0x44) = -30;
     FIELD(s32, object, 0x54) = 0;
     FIELD(s32, object, 0x58) = 0;
@@ -227,7 +227,7 @@ extern "C" void *func_ov042_0220999c(void *object, void *owner, s32 heap)
     RecordConfigure configure = *(RecordConfigure *)FIELD(void *, object, 0);
     configure(object, child, 0x80000, -0x50000, 0, 0);
     FIELD(u16, child, 0x42) |= 4;
-    func_02072b68(FIELD(void *, child, 0xc), 0);
+    GraphicsSpriteState_SetAnimationIndex(FIELD(void *, child, 0xc), 0);
     FIELD(s32, child, 0x44) = -60;
     FIELD(s32, object, 0x54) = 0;
     FIELD(s32, object, 0x58) = 0;

@@ -14,7 +14,7 @@ void __construct_array(void *, s32, s32, void *, void *);
 void func_ov041_021fd000(void *);
 void func_ov041_021fce00(void *);
 void *func_0209a208(void *, s32, s32, s32, s32, s32);
-void func_02072b68(void *, s32);
+void GraphicsSpriteState_SetAnimationIndex(void *, s32);
 void *func_020755e0(void *);
 u32 genrand_int32(void);
 extern u8 data_ov041_0220582c;
@@ -58,7 +58,7 @@ extern "C" void *func_ov041_02200660(void *object, void *owner,
             FIELD(u16, render, 0x42) |= 4;
         else
             FIELD(u16, render, 0x42) &= ~4;
-        func_02072b68(FIELD(void *, render, 0x0c), (i >> 1) + 3);
+        GraphicsSpriteState_SetAnimationIndex(FIELD(void *, render, 0x0c), (i >> 1) + 3);
         FIELD(s32, object, 0x68 + i * 12) = (i << 18) + 0x20000;
         FIELD(u16, object, 0x94 + i * 2) = (u16)(i * 0x1388);
         FIELD(u16, object, 0x9c + i * 2) = 0x2bc;

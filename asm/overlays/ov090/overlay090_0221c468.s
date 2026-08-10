@@ -5,7 +5,7 @@
 .extern data_ov090_0221ccd0
 .extern DisplayController_GetVerticalOffset
 .extern UtilAnimationResource_Init
-.extern func_02072b68
+.extern GraphicsSpriteState_SetAnimationIndex
 .extern func_ov090_0221b97c
 .extern gHeapContext
 
@@ -87,10 +87,10 @@ func_ov090_0221c468:
     str r4, [r10, #0x8]
     ldr r0, [r4, #0x4]
     and r1, r7, #0xff
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     ldr r0, [r4, #0x8]
     and r1, r7, #0xff
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     ldrh r1, [r10, #0x10]
     mov r0, r7, lsl #0x10
     mov r0, r0, lsr #0x10

@@ -6,7 +6,7 @@ extern "C" {
 #endif
 extern u32 func_020ae024(s32 y, s32 x);
 extern void ActorRuntimeTriple_Assign(void *state, s32 first, s32 second, s32 third);
-extern void func_02072b68(void *attachment, u32 animation);
+extern void GraphicsSpriteState_SetAnimationIndex(void *attachment, u32 animation);
 #ifdef __cplusplus
 }
 #endif
@@ -62,7 +62,7 @@ static void setAttachmentFlip(u8 *attachment, s32 enabled)
  * +0x54 and optional secondary +0x58, then select abs(animation)&0xff on each.
  * For negative animation, flag 0x40 is set when actor flag 0x10 at +0x10 is
  * clear; for nonnegative animation the relationship is reversed. Returns no
- * value; func_02072b68 updates attachment presentation/animation state.
+ * value; GraphicsSpriteState_SetAnimationIndex updates attachment presentation/animation state.
  */
 void Actor_SetAttachmentAnimation(void *self, s32 animation)
 {
@@ -84,10 +84,10 @@ void Actor_SetAttachmentAnimation(void *self, s32 animation)
 
     if (negative) animation = -animation;
     index = (u32)animation & 0xff;
-    func_02072b68(primary, index);
+    GraphicsSpriteState_SetAnimationIndex(primary, index);
     setAttachmentFlip(primary, negative ? !actorFlip : actorFlip);
     if (secondary != 0) {
-        func_02072b68(secondary, index);
+        GraphicsSpriteState_SetAnimationIndex(secondary, index);
         setAttachmentFlip(secondary, negative ? !actorFlip : actorFlip);
     }
 }

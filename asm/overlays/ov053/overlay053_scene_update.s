@@ -3,7 +3,7 @@
 .extern GameWork_ClearFlag
 .extern GameWork_TestFlag
 .extern Sound_Play
-.extern func_02072b68
+.extern GraphicsSpriteState_SetAnimationIndex
 .extern func_020740a4
 .extern gGameWork
 .extern gSoundContext
@@ -56,7 +56,7 @@ func_ov053_0220d8ac:
     add r1, r1, #0x1
     ldr r0, [r0, #0xc]
     and r1, r1, #0xff
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     mov r0, #0x200
     strh r0, [r4, #0x3c]
     ldrsh r0, [r4, #0x38]

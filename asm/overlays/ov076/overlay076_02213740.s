@@ -1,6 +1,6 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov076/overlay076_recovery.c.
-.extern func_02072b68
+.extern GraphicsSpriteState_SetAnimationIndex
 
 .global func_ov076_02213740
 func_ov076_02213740:
@@ -8,7 +8,7 @@ func_ov076_02213740:
     mov r4, r0
     ldr r0, [r4, #0x54]
     mov r1, #0x5
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     ldr r0, [r4, #0x54]
     mov r1, #0x0
     strh r1, [r0, #0x36]

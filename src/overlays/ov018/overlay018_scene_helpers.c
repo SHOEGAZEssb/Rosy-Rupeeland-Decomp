@@ -11,7 +11,7 @@ extern const s8 data_ov018_021ffd08[];
 extern "C" {
 #endif
 extern void *func_02028388(s32);
-extern void func_02072b68(void *, s32);
+extern void GraphicsSpriteState_SetAnimationIndex(void *, s32);
 extern void func_02092260(void *, s32);
 extern void func_02092288(void *, s32);
 extern u32 func_020ae024(s32, s32);
@@ -30,7 +30,7 @@ extern "C" void func_ov018_021fdb7c(void *state, s32 alternate)
     void *sprite = FIELD(void *, state, 0xd0);
     s32 animation = FIELD(s32, state, 0x188) + (alternate ? 0x19 : 0xa);
     if (FIELD(u8, sprite, 0x38) != (u8)animation)
-        func_02072b68(sprite, (u8)animation);
+        GraphicsSpriteState_SetAnimationIndex(sprite, (u8)animation);
 }
 
 /*

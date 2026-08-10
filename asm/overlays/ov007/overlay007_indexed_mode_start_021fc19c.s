@@ -1,5 +1,5 @@
     .text
-    .extern func_02072b68
+    .extern GraphicsSpriteState_SetAnimationIndex
 
 /* Exact fallback; see documented portable reconstruction in
  * src/overlays/ov007/overlay007_indexed_mode_start.c. */
@@ -18,5 +18,5 @@ func_ov007_021fc19c:
     ldr r0, [r0, #0xc]
     and r1, r1, #0xff
     bx ip
-L_021fc1d0: .word func_02072b68
+L_021fc1d0: .word GraphicsSpriteState_SetAnimationIndex
     .size func_ov007_021fc19c, . - func_ov007_021fc19c

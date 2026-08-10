@@ -8,7 +8,7 @@
 .extern data_020e6ca4
 .extern ActorCollection_GetSpriteOwner
 .extern Actor_GetCollection
-.extern func_02072b68
+.extern GraphicsSpriteState_SetAnimationIndex
 .extern func_020740c8
     .global ActorExtendedType2_ApplyAttachmentState
     .type ActorExtendedType2_ApplyAttachmentState, @function
@@ -143,7 +143,7 @@ ActorExtendedType2_ApplyAttachmentState: ; 0x0203f0bc
     bl func_020740c8
     ldr r0, [r7, #0x54]
     and r1, r5, #0xff
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     ldr r0, [r7, #0x54]
     mov r1, #0x0
     strh r4, [r0, #0x36]

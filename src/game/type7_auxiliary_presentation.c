@@ -38,7 +38,7 @@ extern void Actor_GetCollection(void *owner);
 extern void *ActorCollection_GetSpriteOwner(void);
 extern void *func_02073fc4(void *context, u32 first, u32 second, u32 third,
                            u32 mode);
-extern void func_02072b68(void *presentation, u32 index);
+extern void GraphicsSpriteState_SetAnimationIndex(void *presentation, u32 index);
 extern void func_02073ef8(void *presentation);
 extern void Type7AuxiliaryPresentation_Reset(Type7AuxiliaryPresentation *self);
 extern void Type7AuxiliaryPresentation_Activate(Type7AuxiliaryPresentation *self);
@@ -69,7 +69,7 @@ Type7AuxiliaryPresentation *Type7AuxiliaryPresentation_Init(
     Actor_GetCollection(owner);
     self->presentation = func_02073fc4(
         ActorCollection_GetSpriteOwner(), resource[1], resource[2], resource[3], 2);
-    func_02072b68(self->presentation, 0);
+    GraphicsSpriteState_SetAnimationIndex(self->presentation, 0);
     *(u16 *)((u8 *)self->presentation + 0x2c) = 0;
     *(u16 *)((u8 *)self->presentation + 0x2e) = 0;
     *(u16 *)((u8 *)self->presentation + 0x24) &= (u16)~2;
@@ -148,7 +148,7 @@ void Type7AuxiliaryPresentation_EnterRaisedState(Type7AuxiliaryPresentation *sel
     self->field14 = self->field18;
     self->field13 = 3;
     self->field12 = 3;
-    func_02072b68(self->presentation, 0x10);
+    GraphicsSpriteState_SetAnimationIndex(self->presentation, 0x10);
     *(u16 *)((u8 *)self->presentation + 0x24) &= (u16)~8;
     self->field11 = 0xff;
 }

@@ -6,7 +6,7 @@
 .extern GameWork_TestFlag
 .extern ActorRuntimeTriple_Assign
 .extern Type7Actor_SetCallbackPair
-.extern func_02072b68
+.extern GraphicsSpriteState_SetAnimationIndex
 .text
     .global Type7Actor_InitializeStationaryMotionState
 .type Type7Actor_InitializeStationaryMotionState, @function
@@ -128,7 +128,7 @@ Type7Actor_InitializeActiveMotionState: ; 0x0204a0d8
     str r0, [r5, #0x268]
     strh r2, [r5, #0xd6]
     ldr r0, [r5, #0x54]
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     mov r0, #0x0
     strb r0, [r5, #0xd4]
     ldmia sp!, {r3, r4, r5, pc}

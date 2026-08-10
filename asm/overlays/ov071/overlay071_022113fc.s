@@ -1,7 +1,7 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov071/overlay071_recovery.c.
 .extern Sound_Play
-.extern func_02072b68
+.extern GraphicsSpriteState_SetAnimationIndex
 .extern gSoundContext
 
 .global func_ov071_022113fc
@@ -26,7 +26,7 @@ func_ov071_022113fc:
     cmp r1, #0xc
     beq .L_02211450
     mov r1, #0xc
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
 .L_02211450:
     cmp r5, #0x0
     beq .L_02211500

@@ -6,7 +6,7 @@
 .extern data_021052fc
 .extern GamePhaseCurrencyHud_UpdateDigits
 .extern GamePhaseCurrencyHud_SetVisible
-.extern func_02072b68
+.extern GraphicsSpriteState_SetAnimationIndex
 .extern func_020740a4
 .extern func_02074110
 .extern func_02091a70
@@ -203,7 +203,7 @@ L_020110c0:
     strh r0, [r1, #0x24]
     ldr r0, [r2, #0x90]
     ldrb r1, [r0, #0x38]
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     bl genrand_int32
     mov r1, #0xaa
     bl func_020bf1f8
@@ -282,7 +282,7 @@ L_02011224:
 L_02011234:
     add r0, r10, r9, lsl #0x2
     ldr r0, [r0, #0x80]
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     add r3, r10, r9, lsl #0x2
     ldr r2, [r3, #0x80]
     mov r1, r6
@@ -290,7 +290,7 @@ L_02011234:
     bic r0, r0, #0x1
     strh r0, [r2, #0x24]
     ldr r0, [r3, #0x88]
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
 L_02011260:
     ldrh r0, [r10, #0xb0]
     tst r0, #0x10

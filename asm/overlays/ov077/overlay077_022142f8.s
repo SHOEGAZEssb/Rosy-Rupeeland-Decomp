@@ -12,7 +12,7 @@
 .extern func_02005058
 .extern func_020050a4
 .extern Actor_UpdateAnimationState
-.extern func_02072b68
+.extern GraphicsSpriteState_SetAnimationIndex
 .extern func_020befec
 .extern func_ov077_022130b8
 .extern func_ov077_022142c8
@@ -636,10 +636,10 @@ func_ov077_022142f8:
     cmp r8, r1
     beq .L_02214c08
     and r1, r8, #0xff
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     ldr r0, [r6, #0x8]
     and r1, r8, #0xff
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
 .L_02214c08:
     add r5, r5, #0x1
 .L_02214c0c:

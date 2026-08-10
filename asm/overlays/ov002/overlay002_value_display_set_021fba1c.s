@@ -1,6 +1,6 @@
     .text
     .extern func_020befec
-    .extern func_02072b68
+    .extern GraphicsSpriteState_SetAnimationIndex
     .global func_ov002_021fba1c
 func_ov002_021fba1c: ; 0x021fba1c
     stmdb sp!, {r4, r5, r6, r7, r8, r9, r10, lr}
@@ -66,7 +66,7 @@ L_021fbaec:
     bic r0, r0, #0x4
     strh r0, [r2, #0x24]
     ldr r0, [r3, #0x18]
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     mov r7, r4
     b L_021fbb28
 L_021fbb14:

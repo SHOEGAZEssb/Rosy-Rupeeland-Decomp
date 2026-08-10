@@ -1,5 +1,5 @@
 .text
-.extern func_02072b68
+.extern GraphicsSpriteState_SetAnimationIndex
 .extern data_ov042_0220b6e4
 .extern data_ov042_0220b6e8
     .global func_ov042_02209190
@@ -9,7 +9,7 @@ func_ov042_02209190:
     ldr r0, [r4, #0x4c]
     mov r1, #0x0
     ldr r0, [r0, #0xc]
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     mov r0, #0x0
     str r0, [r4, #0x78]
     ldrb r2, [r4, #0x8e]

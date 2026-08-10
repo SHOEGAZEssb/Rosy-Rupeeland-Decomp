@@ -24,7 +24,7 @@ extern void func_02005058(void *);extern void VecFx32Triple_Destroy(void *);exte
 extern void VecFx32Triple_InitWithValues(void *,const void *,const void *,const void *);extern void func_02008378(void *,const void *,const void *);
 extern void func_020233c8(void *,const void *,s32);extern s32 func_020befec(s32,s32);
 extern void func_02074038(void *,void *);extern void func_020740c8(void *,s32,s32,s32,s32);
-extern void func_02072b68(void *,s32);extern void Sound_Play(void *,s32,s32);
+extern void GraphicsSpriteState_SetAnimationIndex(void *,s32);extern void Sound_Play(void *,s32,s32);
 #ifdef __cplusplus
 }
 #endif
@@ -96,7 +96,7 @@ s32 func_020236a0(ArcingSpriteEffectPresentation *self)
         func_02005058(&value);break;
     case 1:
         func_020740c8(*(void **)self->sprite10,*(s32 *)(self->secondDescriptor0c+4),*(s32 *)(self->secondDescriptor0c+8),*(s32 *)(self->secondDescriptor0c+12),*(s32 *)(self->secondDescriptor0c+12));
-        func_02072b68(self->sprite10,0);*(u16 *)(self->sprite10+0x24)&=(u16)~3;self->state18=2;
+        GraphicsSpriteState_SetAnimationIndex(self->sprite10,0);*(u16 *)(self->sprite10+0x24)&=(u16)~3;self->state18=2;
         if(data_02105610==0){Sound_Play(gSoundContext,0,15);data_02105610=10;}
         /* Retail falls through to state two. */
     case 2:

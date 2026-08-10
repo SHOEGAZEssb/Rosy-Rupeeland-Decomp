@@ -26,7 +26,7 @@ extern "C" void func_0205958c(void *sound, s32 value);
 extern "C" void func_020a1ec0(void *owner, u32 effect);
 extern "C" void func_020a1e10(void *owner);
 extern "C" void func_020a1e50(void *owner);
-extern "C" void func_02072b68(void *animation, s32 index);
+extern "C" void GraphicsSpriteState_SetAnimationIndex(void *animation, s32 index);
 extern "C" void func_020a1794(void *owner, const void *position, const void *display, s32 arg);
 extern "C" void func_020050a4(void *destination, const void *source);
 extern "C" void *DisplayBrightnessPair_GetScreen(void *controller, s32 screen);
@@ -139,7 +139,7 @@ extern "C" void func_ov042_02207114(void *scene)
         set_display_scale(primaryDisplay, scale);
         FIELD(u16, animation_of(primaryDisplay), 0x30) = 0;
         if (++FIELD(s32, scene, 0x1b0) > 180) {
-            func_02072b68(animation_of(primaryDisplay), 0);
+            GraphicsSpriteState_SetAnimationIndex(animation_of(primaryDisplay), 0);
             FIELD(s32, scene, 0x1b0) = 0;
             set_display_scale(primaryDisplay, 0x100);
             FIELD(s32, scene, 0xac) += 0x1e000;
@@ -181,7 +181,7 @@ extern "C" void func_ov042_02207114(void *scene)
                 if (FIELD(s32, scene, 0x1bc) != 0) {
                     FIELD(s32, scene, 0x1c4) = 0;
                 } else if (FIELD(u8, animation_of(primaryDisplay), 0x38) != 9) {
-                    func_02072b68(animation_of(primaryDisplay), 9);
+                    GraphicsSpriteState_SetAnimationIndex(animation_of(primaryDisplay), 9);
                     FIELD(u16, animation_of(primaryDisplay), 0x30) = 0;
                     func_020a1ec0(owner, 0xb486);
                 }
@@ -196,7 +196,7 @@ extern "C" void func_ov042_02207114(void *scene)
                 scale = 0x100;
                 FIELD(s32, scene, 0x1c4) = 0;
                 FIELD(s32, scene, 0x20c) = 0;
-                func_02072b68(animation_of(primaryDisplay), 0);
+                GraphicsSpriteState_SetAnimationIndex(animation_of(primaryDisplay), 0);
                 FIELD(s32, scene, 0xbc) = FIELD(s32, scene, 0xc0) = 0;
             }
             set_display_scale(primaryDisplay, scale);
@@ -233,7 +233,7 @@ extern "C" void func_ov042_02207114(void *scene)
                 func_020a1ec0(owner, 0xb500);
             } else if (FIELD(s32, scene, 0xd0) == 0 &&
                        FIELD(u8, animation_of(primaryDisplay), 0x38) == 0) {
-                func_02072b68(animation_of(primaryDisplay), 1);
+                GraphicsSpriteState_SetAnimationIndex(animation_of(primaryDisplay), 1);
                 FIELD(u16, animation_of(primaryDisplay), 0x24) &= ~2;
             }
         }
@@ -251,7 +251,7 @@ extern "C" void func_ov042_02207114(void *scene)
             FIELD(s32, scene, 0x15c) = -0xa0000;
             FIELD(s32, scene, 0xb4) = func_020adc90(-FIELD(s32, scene, 0xa8), 0x50000);
             FIELD(s32, scene, 0xb8) = func_020adc90(-0xa0000 - FIELD(s32, scene, 0xac), 0x50000);
-            func_02072b68(animation_of(primaryDisplay), FIELD(s32, scene, 0x1bc) ? 17 : 8);
+            GraphicsSpriteState_SetAnimationIndex(animation_of(primaryDisplay), FIELD(s32, scene, 0x1bc) ? 17 : 8);
             set_display_bit4(secondaryDisplay, 1);
         }
         FIELD(s32, scene, 0xe8) = 90;

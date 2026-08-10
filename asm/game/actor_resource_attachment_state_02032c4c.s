@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/actor_resource_attachment_state.c.
 .text
-.extern func_02072b68
+.extern GraphicsSpriteState_SetAnimationIndex
 
     .global Actor_RestorePrimaryAttachmentState
     .type Actor_RestorePrimaryAttachmentState, @function
@@ -9,7 +9,7 @@ Actor_RestorePrimaryAttachmentState: ; 0x02032c4c
     mov r4, r0
     ldrb r1, [r4, #0x194]
     ldr r0, [r4, #0x54]
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     ldrb r1, [r4, #0x195]
     ldr r0, [r4, #0x54]
     strb r1, [r0, #0x3a]

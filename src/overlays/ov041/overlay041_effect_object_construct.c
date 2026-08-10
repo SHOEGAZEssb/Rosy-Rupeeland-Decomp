@@ -16,7 +16,7 @@ void func_ov041_021fce00(void *);
 void *Heap_Alloc(s32, const void *, s32, void *);
 void *func_ov007_021fb720(void *, void *, void *);
 void *func_0209a208(void *, s32, s32, s32, s32, s32);
-void func_02072b68(void *, s32);
+void GraphicsSpriteState_SetAnimationIndex(void *, s32);
 extern u8 data_ov041_022059b8;
 extern u8 data_ov041_022059d0;
 extern u8 gHeapContext;
@@ -33,7 +33,7 @@ static void create_effect_render(void *object, s32 slot, void *context,
     PlacementCallback place = *(PlacementCallback *)FIELD(void *, object, 0);
     place(object, render, 0x40000, 0x64000, 0, 0);
     FIELD(u16, render, 0x42) |= 4;
-    func_02072b68(FIELD(void *, render, 0x0c), resourceMode);
+    GraphicsSpriteState_SetAnimationIndex(FIELD(void *, render, 0x0c), resourceMode);
 }
 
 /*

@@ -1,7 +1,7 @@
     .text
 /* Exact fallback; see overlay040_object_update.c for portable C. */
     .extern data_021f5ebc
-    .extern func_02072b68
+    .extern GraphicsSpriteState_SetAnimationIndex
     .extern func_020828a0
     .extern func_020a2614
     .extern func_020a27a0
@@ -100,7 +100,7 @@ func_ov040_02200bf4: ; 0x02200bf4
     ldr r0, [r4, #0xac4]
     mov r1, #0x1
     ldr r0, [r0, #0xc]
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     ldr r1, [r4, #0xac4]
     mov r0, #0x100
     strh r0, [r1, #0x3c]
@@ -166,7 +166,7 @@ func_ov040_02200bf4: ; 0x02200bf4
     movs r1, r1, lsr #0x10
     beq .L_02200e60
     mov r1, #0x2
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     ldr r0, [r4, #0xac4]
     ldr r1, [r0, #0xc]
     ldrh r0, [r1, #0x24]

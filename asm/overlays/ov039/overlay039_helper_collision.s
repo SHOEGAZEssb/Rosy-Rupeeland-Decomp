@@ -1,6 +1,6 @@
 .text
 /* Exact fallback; see overlay039_helper_collision.c for documented portable C. */
-    .extern func_02072b68
+    .extern GraphicsSpriteState_SetAnimationIndex
 
     .global func_ov039_021fd84c
 func_ov039_021fd84c:
@@ -9,7 +9,7 @@ func_ov039_021fd84c:
     ldr r0, [r5, #0xc]
     mov r1, r2
     mov r4, r3
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     ldr r1, [r5, #0xc]
     ldrh r0, [r1, #0x24]
     orr r0, r0, #0x2

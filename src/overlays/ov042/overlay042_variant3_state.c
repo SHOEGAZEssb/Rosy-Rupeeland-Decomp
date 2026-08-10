@@ -11,7 +11,7 @@
 extern "C" void func_ov042_021ff2f8(void *destination, const void *source);
 extern "C" s32 func_020adc40(s32 squaredLength);
 extern "C" s32 func_020adc90(s32 numerator, s32 denominator);
-extern "C" void func_02072b68(void *resource, u8 mode);
+extern "C" void GraphicsSpriteState_SetAnimationIndex(void *resource, u8 mode);
 extern "C" s32 data_ov042_0220b6f4[];
 extern "C" s32 data_ov042_0220b6f8[];
 extern "C" s32 data_ov042_0220b704[];
@@ -41,7 +41,7 @@ extern "C" void func_ov042_022091f4(void *object)
     s32 ny = func_020adc90(dy, length);
     FIELD(s32, object, 0x6c) = (s32)(((s64)nx * 0x4000 + 0x800) >> 12);
     FIELD(s32, object, 0x70) = (s32)(((s64)ny * 0x4000 + 0x800) >> 12);
-    func_02072b68(FIELD(void *, FIELD(void *, object, 0x4c), 0xc), 1);
+    GraphicsSpriteState_SetAnimationIndex(FIELD(void *, FIELD(void *, object, 0x4c), 0xc), 1);
     FIELD(s32, object, 0x80) = 2;
     FIELD(s32, object, 0x78) = 2;
     FIELD(u16, object, 0x8c) = 0;

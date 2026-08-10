@@ -1,5 +1,5 @@
     .text
-    .extern func_02072b68
+    .extern GraphicsSpriteState_SetAnimationIndex
     .extern func_02073ffc
     .extern func_0209189c
     .extern func_020918f4
@@ -24,7 +24,7 @@ func_ov013_021fdfd4:
     bl func_020918f4
     and r1, r0, #0xff
     mov r0, r5
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     add r0, r9, #0x178
     ldr r4, [r8, #0x20]
     add r0, r0, #0x800

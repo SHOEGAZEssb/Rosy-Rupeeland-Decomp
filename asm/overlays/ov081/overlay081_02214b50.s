@@ -3,7 +3,7 @@
 .extern ActorCollection_GetSpriteOwner
 .extern Actor_GetCollection
 .extern Actor_GetCachedTerrainHeight
-.extern func_02072b68
+.extern GraphicsSpriteState_SetAnimationIndex
 .extern func_020740c8
 
 .global func_ov081_02214b50
@@ -137,7 +137,7 @@ func_ov081_02214b50:
     cmpne r1, r2
     beq .L_02214d34
     and r1, r1, #0xff
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
 .L_02214d34:
     add sp, sp, #0x4
     ldmia sp!, {r3, r4, pc}

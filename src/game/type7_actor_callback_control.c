@@ -16,7 +16,7 @@ extern "C" {
 extern void GameWork_ClearFlag(void *gameWork, u32 flag);
 extern void Heap_Free(void *allocation);
 extern void func_0206c978(void *resource);
-extern void func_02072b68(void *object, u32 value);
+extern void GraphicsSpriteState_SetAnimationIndex(void *object, u32 value);
 extern void Type7Actor_SetCallbackPair(void *actor, u32 first, u32 second, s32 duration);
 extern u32 genrand_int32(void);
 extern s32 func_020ada8c(s32 value, s32 divisor);
@@ -50,7 +50,7 @@ void Type7Actor_ResetCallbackState(void *self)
     enter_callback_mode(actor);
     *(u16 *)(actor + 0xd6) = 3;
     *(u16 *)(actor + 0x264) = 60;
-    func_02072b68(*(void **)(actor + 0x54), (actor[0xd4] + 8) & 0xff);
+    GraphicsSpriteState_SetAnimationIndex(*(void **)(actor + 0x54), (actor[0xd4] + 8) & 0xff);
     Type7Actor_SetCallbackPair(actor, data_020e1938[0], data_020e1938[1], 120);
     *(void **)(actor + 0x210) = 0;
     *(u32 *)(actor + 0x268) &= ~0xa0;

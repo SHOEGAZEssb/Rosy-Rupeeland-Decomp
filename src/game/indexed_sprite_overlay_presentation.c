@@ -43,7 +43,7 @@ extern void *func_020742cc(void *);
 extern void func_0207419c(void *);
 extern void func_02074110(void *);
 extern u8 *func_02073ffc(void *, void *, s32);
-extern void func_02072b68(void *, s32);
+extern void GraphicsSpriteState_SetAnimationIndex(void *, s32);
 extern void *func_020953f4(void *, void *sprite);
 extern void func_02094cf0(void *, const void *, s32);
 #ifdef __cplusplus
@@ -69,7 +69,7 @@ IndexedSpriteOverlayPresentation *func_02027150(
                   record->animation04);
     self->spriteOwner14 = (u8 *)func_020742cc(data_020f4e14);
     sprite = func_02073ffc(self->spriteOwner14, self->resource08, 2);
-    func_02072b68(sprite, (u8)index);
+    GraphicsSpriteState_SetAnimationIndex(sprite, (u8)index);
     self->controller18 = Heap_Alloc(0xa0, data_020d6c40, 4, &gHeapContext);
     if (self->controller18)
         self->controller18 = func_020953f4(self->controller18, sprite);

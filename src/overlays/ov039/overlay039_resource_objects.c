@@ -48,7 +48,7 @@ extern void *func_0209a208(void *scene, s32 id0, s32 id1, s32 id2,
                            void *context, s32 mode);
 extern void func_0209a2a4(void *object, void *parent);
 extern void func_02099fb0(void *scene);
-extern void func_02072b68(void *renderObject, u8 mode);
+extern void GraphicsSpriteState_SetAnimationIndex(void *renderObject, u8 mode);
 extern void func_ov039_0220608c(void *scene);
 extern void *func_ov039_02204900(void *record);
 extern void func_ov039_0220491c(void *emitter);
@@ -204,7 +204,7 @@ extern "C" void func_ov039_02205bc4(void *scene, void *object, s32 x, s32 y,
                                      s32 z, u8 orientation)
 {
     (void)scene;
-    func_02072b68(FIELD(void *, object, 0x0c), orientation);
+    GraphicsSpriteState_SetAnimationIndex(FIELD(void *, object, 0x0c), orientation);
     FIELD(u16, FIELD(void *, object, 0x0c), 0x24) |= 2;
     FIELD(s32, object, 0x30) = x;
     FIELD(s32, object, 0x34) = y;

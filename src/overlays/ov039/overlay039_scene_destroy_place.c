@@ -22,7 +22,7 @@ extern void __destroy_arr(void *array, s32 count, s32 stride,
 extern void func_ov039_021fce5c(void);
 extern void *func_ov039_021fd01c(void *object);
 extern void func_02099fb0(void *scene);
-extern void func_02072b68(void *renderObject, u8 orientation);
+extern void GraphicsSpriteState_SetAnimationIndex(void *renderObject, u8 orientation);
 #ifdef __cplusplus
 }
 #endif
@@ -61,7 +61,7 @@ extern "C" void *func_ov039_021fd71c(void *scene)
 
 /*
  * Configure object using x/y fixed-point coordinates and two stack-passed
- * bytes. The first byte is forwarded to func_02072b68 for the render object at
+ * bytes. The first byte is forwarded to GraphicsSpriteState_SetAnimationIndex for the render object at
  * object +0x0C. Set bit 1 in that render object's +0x24 halfword, store the
  * second byte at its +0x3A, write position (x,y,0) at object +0x30, and reset
  * scale/rotation halfwords to (0x100,0x100,0). The scene input is unused.
@@ -72,7 +72,7 @@ extern "C" void func_ov039_021fd7f0(void *scene, void *object, s32 x, s32 y,
 {
     (void)scene;
     void *renderObject = FIELD(void *, object, 0x0c);
-    func_02072b68(renderObject, orientation);
+    GraphicsSpriteState_SetAnimationIndex(renderObject, orientation);
     FIELD(u16, renderObject, 0x24) |= 2;
     FIELD(u8, renderObject, 0x3a) = enabled;
     FIELD(s32, object, 0x30) = x;

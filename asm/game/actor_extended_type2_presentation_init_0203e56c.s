@@ -11,7 +11,7 @@
 .extern ActorCollection_GetSpriteOwner
 .extern func_020313b4
 .extern Actor_GetCollection
-.extern func_02072b68
+.extern GraphicsSpriteState_SetAnimationIndex
 .extern func_02073fc4
 .extern genrand_int32
 .extern gHeapContext
@@ -129,12 +129,12 @@ ActorExtendedType2_InitializePresentation: ; 0x0203e56c
     strb r0, [r7, #0xd4]
     ldr r0, [r7, #0x54]
     and r1, r1, #0xff
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     b .L_0203e71c
 .L_0203e710:
     ldr r0, [r7, #0x54]
     mov r1, #0x8
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
 .L_0203e71c:
     mov r0, r7
     ldr r1, [r0, #0x0]

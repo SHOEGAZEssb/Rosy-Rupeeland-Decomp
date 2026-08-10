@@ -38,7 +38,7 @@ extern void GamePhaseCurrencyHud_Update(void *);
 extern void func_ov032_021fe024(void *);
 extern void func_ov032_021fe0c4(void *);
 extern void func_ov032_021fe0e8(void *);
-extern void func_02072bdc(...);
+extern void GraphicsSpriteState_SetFrameIndex(...);
 extern u32 genrand_int32(void);
 extern s32 func_020bf1f8(...);
 extern void func_020939d8(void *);
@@ -135,8 +135,8 @@ extern "C" void func_ov032_021fe024(void *scene)
         FIELD(s32, scene, 0xbd8) = visible;
         func_ov032_021fe0c4((u8 *)scene + 0x64);
         func_ov032_021fe0c4((u8 *)scene + 0x94);
-        func_02072bdc(FIELD(void *, scene, 0x64), 0);
-        func_02072bdc(FIELD(void *, scene, 0x94), 0);
+        GraphicsSpriteState_SetFrameIndex(FIELD(void *, scene, 0x64), 0);
+        GraphicsSpriteState_SetFrameIndex(FIELD(void *, scene, 0x94), 0);
     } else if (visible > 0) {
         FIELD(s32, scene, 0xbd8) = visible;
     }
@@ -161,7 +161,7 @@ extern "C" void func_ov032_021fe10c(void *scene)
 {
     func_020939d8(FIELD(void *, scene, 0x10));
     func_ov032_021fe0c4((u8 *)scene + 0xc4);
-    func_02072bdc(FIELD(void *, scene, 0xc4), 0);
+    GraphicsSpriteState_SetFrameIndex(FIELD(void *, scene, 0xc4), 0);
 }
 
 /*
@@ -182,12 +182,12 @@ extern "C" s32 func_ov032_021fe134(void *scene, s32 closeOnComplete)
     if (func_02093360(dialog, input) & 1) {
         if (closeOnComplete) func_020939d8(dialog);
         func_ov032_021fe0c4((u8 *)scene + 0xc4);
-        func_02072bdc(FIELD(void *, scene, 0xc4), 0);
+        GraphicsSpriteState_SetFrameIndex(FIELD(void *, scene, 0xc4), 0);
         return 1;
     }
     if (FIELD(u32, dialog, 0x38) & 2) {
         func_ov032_021fe0c4((u8 *)scene + 0xc4);
-        func_02072bdc(FIELD(void *, scene, 0xc4), 0);
+        GraphicsSpriteState_SetFrameIndex(FIELD(void *, scene, 0xc4), 0);
     } else {
         func_ov032_021fe0e8((u8 *)scene + 0xc4);
     }

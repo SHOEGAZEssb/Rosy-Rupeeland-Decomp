@@ -11,7 +11,7 @@
 extern "C" void func_020a1794(void *owner, void *source, void *destination);
 extern "C" void func_0209a0d8(void *record, s32 resource0, s32 resource1,
                                s32 resource2, s32 ownerValue, s32 mode);
-extern "C" void func_02072b68(void *resource, u8 mode);
+extern "C" void GraphicsSpriteState_SetAnimationIndex(void *resource, u8 mode);
 extern "C" u32 genrand_int32(void);
 
 /*
@@ -34,7 +34,7 @@ static void activate_secondary_slot(void *pool, void *source, s32 slotState,
     func_0209a0d8(child, resource0, resource0 + 1, resource0 + 2,
                   FIELD(s32, owner, 0), mode);
     void *resource = FIELD(void *, child, 0xc);
-    func_02072b68(resource, resourceMode);
+    GraphicsSpriteState_SetAnimationIndex(resource, resourceMode);
     FIELD(s32, child, 0x44) = childValue;
     if (setBit1)
         FIELD(u16, resource, 0x24) |= 2;

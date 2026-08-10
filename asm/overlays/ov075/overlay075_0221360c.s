@@ -6,7 +6,7 @@
 .extern func_0201f864
 .extern Actor_SetPosition
 .extern func_020593dc
-.extern func_02072b68
+.extern GraphicsSpriteState_SetAnimationIndex
 .extern func_ov075_02212f10
 .extern gHeapContext
 .extern gSoundContext
@@ -66,7 +66,7 @@ func_ov075_0221360c:
     str r2, [r4, #0x218]
     str r0, [r4, #0x21c]
     ldr r0, [r4, #0x54]
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     ldr ip, [r4, #0x54]
     mov r1, #0x100
     ldrh r3, [ip, #0x24]

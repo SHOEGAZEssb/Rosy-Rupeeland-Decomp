@@ -6,7 +6,7 @@
 extern "C" {
 #endif
 extern void ActorMotionProbe_SetScale(void *actor, s32 valueFx);
-extern void func_02072bdc(void *object, u8 value);
+extern void GraphicsSpriteState_SetFrameIndex(void *object, u8 value);
 extern s32 func_020adc40(s32 value);
 #ifdef __cplusplus
 }
@@ -33,12 +33,12 @@ s32 GamePhaseActorScriptVm_SetMotionProbeScale(GamePhaseActorScriptVm *self)
     return 0;
 }
 
-/* Pop a byte and pass it to func_02072bdc on actor->0x54, then return zero. */
-s32 func_02015580(GamePhaseActorScriptVm *self)
+/* Pop a byte and pass it to GraphicsSpriteState_SetFrameIndex on actor->0x54, then return zero. */
+s32 GamePhaseActorScriptVm_SetAttachmentFrameIndex(GamePhaseActorScriptVm *self)
 {
     u8 value = (u8)GamePhaseScriptVm_Pop(&self->base);
     void *object = *(void **)((u8 *)self->actor + 0x54);
-    func_02072bdc(object, value);
+    GraphicsSpriteState_SetFrameIndex(object, value);
     return 0;
 }
 

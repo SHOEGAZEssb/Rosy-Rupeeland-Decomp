@@ -2,7 +2,7 @@
 ; Matching fallback for the portable implementation in src/overlays/ov050/overlay050_effect_recovery.c.
 .extern func_02004fe0
 .extern func_02005030
-.extern func_02072b68
+.extern GraphicsSpriteState_SetAnimationIndex
 .extern func_02073fc4
 .extern func_ov050_0220d7c4
 
@@ -28,7 +28,7 @@ func_ov050_0220d600:
     bl func_02073fc4
     str r0, [r5, #0x0]
     mov r1, #0x0
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     ldr r2, [r5, #0x0]
     mov r1, #0x80
     strh r1, [r2, #0x2c]
@@ -41,7 +41,7 @@ func_ov050_0220d600:
     bl func_02073fc4
     str r0, [r5, #0x4]
     mov r1, #0x0
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     ldr r1, [r5, #0x4]
     mov r0, #0x80
     strh r0, [r1, #0x2c]

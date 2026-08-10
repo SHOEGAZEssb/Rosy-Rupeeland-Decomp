@@ -18,7 +18,7 @@
 .extern func_0205557c
 .extern func_02058d40
 .extern func_02059278
-.extern func_02072b68
+.extern GraphicsSpriteState_SetAnimationIndex
 .extern gHeapContext
 .extern gLupyContext
 .extern gSoundContext
@@ -57,7 +57,7 @@ func_ov064_02211114:
     bl ActorDerivedType1_ApplyResourceIndex
     ldr r0, [r4, #0x54]
     mov r1, #0x0
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     ldr r0, .L_02211360
     mov r1, #0x52
     ldr r0, [r0, #0x0]
@@ -81,7 +81,7 @@ func_ov064_02211114:
     orr r0, r0, #0x4
     strh r0, [r2, #0x24]
     ldr r0, [r6, #0x30]
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     ldr r3, [r6, #0x30]
     ldr r0, .L_02211364
     ldrh r1, [r3, #0x24]

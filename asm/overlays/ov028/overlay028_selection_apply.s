@@ -3,7 +3,7 @@
 /* Exact fallback; see src/overlays/ov028/overlay028_selection_runtime.c. */
 .extern data_ov028_021ff208
 .extern data_ov028_021ff238
-.extern func_02072b68
+.extern GraphicsSpriteState_SetAnimationIndex
 .extern func_020948e4
 .extern func_02094bbc
 .extern func_020954e0
@@ -81,7 +81,7 @@ func_ov028_021fe558:
     and r1, r1, #0xff
     cmp r1, r2
     ldmeqia sp!, {r4, pc}
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     ldmia sp!, {r4, pc}
 L_021fe66c:
     ldr r1, L_021fe6b8
@@ -100,7 +100,7 @@ L_021fe66c:
     cmpne r1, #0xc
     ldmeqia sp!, {r4, pc}
     mov r1, #0xc
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     ldmia sp!, {r4, pc}
 L_021fe6b4: .word data_ov028_021ff208
 L_021fe6b8: .word data_ov028_021ff238

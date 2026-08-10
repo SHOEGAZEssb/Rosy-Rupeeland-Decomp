@@ -7,7 +7,7 @@
 .extern VecFx32Triple_Set
 .extern VecFx32Triple_Destroy
 .extern Actor_GetCachedTerrainHeight
-.extern func_02072b68
+.extern GraphicsSpriteState_SetAnimationIndex
 .extern func_020befec
 .extern func_ov075_02212d80
 .extern func_ov075_02212e04
@@ -125,7 +125,7 @@ func_ov075_02213f08:
     cmp r2, r1
     beq .L_022140a4
     and r1, r2, #0xff
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
 .L_022140a4:
     ldr r1, [r10, #0x238]
     mov r0, r10
@@ -138,7 +138,7 @@ func_ov075_02213f08:
     cmp r1, #0x15
     beq .L_022140f8
     mov r1, #0x15
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     ldr r3, [r10, #0x54]
     mov r1, #0x3
     ldrh r2, [r3, #0x24]

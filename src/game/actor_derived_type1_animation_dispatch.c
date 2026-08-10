@@ -10,7 +10,7 @@ extern void *Actor_GetCollection(void *actor);
 extern void *ActorCollection_GetSpriteOwner(void *collection);
 extern void func_020740c8(void *collectionData, void *attachment, u32 first,
                           u32 second, u32 third);
-extern void func_02072b68(void *attachment, u32 animation);
+extern void GraphicsSpriteState_SetAnimationIndex(void *attachment, u32 animation);
 extern s32 GameWork_TestFlag(void *work, u32 flag);
 extern void ActorDerivedType1_ApplyResourceIndex(void *actor, u32 index);
 #ifdef __cplusplus
@@ -64,7 +64,7 @@ void ActorDerivedType1_UpdateAttachmentPresentation(void *self)
             *(u16 *)(attachment + 0x24) |= 2;
             *(u16 *)(attachment + 0x24) &= (u16)~1;
         }
-        func_02072b68(attachment, animation & 0xff);
+        GraphicsSpriteState_SetAnimationIndex(attachment, animation & 0xff);
         *(u16 *)(attachment + 0x36) = actor[0x26b] != 0 ? 0x300 : 0x100;
         return;
     }
@@ -160,7 +160,7 @@ void ActorDerivedType1_UpdateAttachmentPresentation(void *self)
         applyDescriptor(actor, resource);
     else if (resourceIndex >= 0)
         ActorDerivedType1_ApplyResourceIndex(actor, (u32)resourceIndex);
-    if (animation >= 0) func_02072b68(attachment, (u32)animation & 0xff);
+    if (animation >= 0) GraphicsSpriteState_SetAnimationIndex(attachment, (u32)animation & 0xff);
     *(u16 *)(attachment + 0x24) |= setMask;
     *(u16 *)(attachment + 0x24) &= (u16)~clearMask;
     *(u16 *)(attachment + 0x36) = scale;

@@ -5,7 +5,7 @@
 .extern func_020050a4
 .extern Actor_ClearTransientContactState
 .extern Actor_GetCachedTerrainHeight
-.extern func_02072b68
+.extern GraphicsSpriteState_SetAnimationIndex
 .extern func_ov075_02212d80
 .extern func_ov075_02212e04
 
@@ -113,7 +113,7 @@ func_ov075_02212fd8:
     str r0, [r6, #0x298]
     ldr r0, [r6, #0x54]
     mov r1, #0x14
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     ldr r2, [r6, #0x54]
     mov r0, r6
     ldrh r1, [r2, #0x24]
@@ -149,7 +149,7 @@ func_ov075_02212fd8:
     str r0, [r6, #0x298]
     ldrb r1, [r6, #0xd4]
     ldr r0, [r6, #0x54]
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     ldr r1, [r6, #0x54]
     ldrh r0, [r1, #0x24]
     orr r0, r0, #0x2

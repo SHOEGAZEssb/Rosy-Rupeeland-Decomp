@@ -12,7 +12,7 @@ extern "C" u32 genrand_int32(void);
 extern "C" s32 func_020adc40(s32 squaredLength);
 extern "C" s32 func_020adc90(s32 numerator, s32 denominator);
 extern "C" u16 func_020ae024(s32 x, s32 y);
-extern "C" void func_02072b68(void *animation, u8 index);
+extern "C" void GraphicsSpriteState_SetAnimationIndex(void *animation, u8 index);
 extern "C" void func_020a1794(void *scene, const void *position,
                                 void *destination, s32 unused);
 extern "C" void func_020a1ec0(void *scene, u32 effect);
@@ -74,7 +74,7 @@ extern "C" void func_ov042_022080f0(void *object)
             FIELD(s32, object, 0x74) = 2;
             FIELD(s32, object, 0x6c) = 0;
             FIELD(s32, object, 0x70) = 0;
-            func_02072b68(FIELD(void *, FIELD(void *, object, 0x4c), 0x0c), 0);
+            GraphicsSpriteState_SetAnimationIndex(FIELD(void *, FIELD(void *, object, 0x4c), 0x0c), 0);
         } else {
             s16 sine = data_020c9670[(phase >> 4) * 2];
             FIELD(s32, object, 0x54) =
@@ -191,7 +191,7 @@ extern "C" void func_ov042_022080f0(void *object)
             FIELD(void *, target, 0xe8), query, 0x18000, 0, 0);
         if (damage > 0) {
             if (FIELD(s8, object, 0x8b) == 0) {
-                func_02072b68(FIELD(void *, FIELD(void *, object, 0x4c), 0x0c),
+                GraphicsSpriteState_SetAnimationIndex(FIELD(void *, FIELD(void *, object, 0x4c), 0x0c),
                               (u8)((direction & 7) + 16));
                 FIELD(s8, object, 0x8b) = 30;
             }
@@ -199,7 +199,7 @@ extern "C" void func_ov042_022080f0(void *object)
             if (FIELD(s32, object, 0x7c) <= 0) {
                 FIELD(s32, object, 0x74) = 100;
                 FIELD(s8, object, 0x8b) = 40;
-                func_02072b68(FIELD(void *, FIELD(void *, object, 0x4c), 0x0c), 26);
+                GraphicsSpriteState_SetAnimationIndex(FIELD(void *, FIELD(void *, object, 0x4c), 0x0c), 26);
                 func_020a1ec0(owner, 0xeb83);
             }
         }
@@ -208,7 +208,7 @@ extern "C" void func_ov042_022080f0(void *object)
         if (FIELD(s8, object, 0x8b) <= 0) {
             void *animation = FIELD(void *, FIELD(void *, object, 0x4c), 0x0c);
             if (FIELD(u8, animation, 0x38) != direction)
-                func_02072b68(animation, direction);
+                GraphicsSpriteState_SetAnimationIndex(animation, direction);
         }
     }
 }

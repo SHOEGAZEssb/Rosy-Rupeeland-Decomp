@@ -5,7 +5,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_02072b68(void *presentation, u8 stage);
+extern void GraphicsSpriteState_SetAnimationIndex(void *presentation, u8 stage);
 #ifdef __cplusplus
 }
 #endif
@@ -17,7 +17,7 @@ extern void func_02072b68(void *presentation, u8 stage);
  * 4, or 5 relative to signed record duration halfword 0x28: stage 5 after
  * duration minus 60, stage 4 after duration minus 120, otherwise stage 3. If
  * the stage differs from presentation byte 0x38, applies it through
- * func_02072b68 and clears presentation bit 0 at offset 0x24. Returns nothing;
+ * GraphicsSpriteState_SetAnimationIndex and clears presentation bit 0 at offset 0x24. Returns nothing;
  * presentation state changes but hardware is not accessed directly.
  */
 void func_020521e4(void *actor)
@@ -37,6 +37,6 @@ void func_020521e4(void *actor)
     presentation = FIELD(void *, actor, 0x54);
     if (stage == FIELD(u8, presentation, 0x38))
         return;
-    func_02072b68(presentation, stage);
+    GraphicsSpriteState_SetAnimationIndex(presentation, stage);
     FIELD(u16, presentation, 0x24) &= (u16)~1;
 }

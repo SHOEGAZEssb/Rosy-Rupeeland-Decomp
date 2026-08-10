@@ -3,7 +3,7 @@
 .extern func_02005058
 .extern func_02005070
 .extern func_020050a4
-.extern func_02072b68
+.extern GraphicsSpriteState_SetAnimationIndex
 .extern func_020adae4
 .extern func_020adc90
 .extern func_020ae024
@@ -72,7 +72,7 @@ func_ov097_02219ebc:
     mov r0, r0, asr #0xd
     and r1, r0, #0xff
     ldr r0, [r4, #0x54]
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     ldr r0, [r4, #0x14]
     mvn r1, #0x17
     orr r0, r0, #0x800000

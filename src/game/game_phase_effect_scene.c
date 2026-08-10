@@ -182,7 +182,7 @@ s32 GamePhaseEffectScene_RiseAfterAnimation(GamePhaseEffectScene *self)
     if (self->base.value08 == 1) {
         if (!(self->sprite->flags & 1))
             return 0;
-        func_02072b68(self->sprite, 0x17);
+        GraphicsSpriteState_SetAnimationIndex(self->sprite, 0x17);
         self->sprite->flags &= (u16)~1;
         self->sprite->flags |= 2;
         self->base.value08++;

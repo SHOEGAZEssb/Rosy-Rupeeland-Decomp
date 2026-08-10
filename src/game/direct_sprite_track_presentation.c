@@ -48,7 +48,7 @@ extern void *GamePhaseRuntime_GetActorCollection(void *runtime, s32 index);
 extern void *ActorCollection_GetSpriteOwner(void *resource);
 extern u8 *func_02073fc4(void *resource, s32 field08, s32 field0c,
                          s32 field10, s32 mode);
-extern void func_02072b68(void *sprite, s32 value);
+extern void GraphicsSpriteState_SetAnimationIndex(void *sprite, s32 value);
 extern void func_02074038(void *spriteOwner);
 extern void *ActorMotionAreaFollower_GetPosition(void *source);
 extern void func_0201df44(void *manager, void *entry);
@@ -83,7 +83,7 @@ DirectSpriteTrackPresentation *func_0201fc28(
         resource, *(s32 *)&self->resource08.bytes[0],
         *(s32 *)&self->resource08.bytes[4],
         *(s32 *)&self->resource08.bytes[8], 2);
-    func_02072b68(self->sprite14, spriteValue & 0xff);
+    GraphicsSpriteState_SetAnimationIndex(self->sprite14, spriteValue & 0xff);
     *(s16 *)(self->sprite14 + 0x2c) = (s16)x;
     *(s16 *)(self->sprite14 + 0x2e) = (s16)y;
     *(s16 *)(self->sprite14 + 0x28) = (s16)field28;

@@ -5,7 +5,7 @@
 .extern data_ov028_021ff29c
 .extern data_ov028_021ff2ac
 .extern func_02071eb8
-.extern func_02072b68
+.extern GraphicsSpriteState_SetAnimationIndex
 .extern func_020740c8
 .extern func_0207419c
 .extern func_02075630
@@ -46,7 +46,7 @@ func_ov028_021fdfa8:
     ldr r1, [r4, #0x94]
     ldr r0, [r4, #0x90]
     and r1, r1, #0xff
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
 L_021fdff8:
     ldr r5, [r4, #0x220]
     cmp r5, #0x0
@@ -116,7 +116,7 @@ func_ov028_021fe0a8:
     ldr r1, [r4, #0x94]
     ldr r0, [r4, #0x90]
     and r1, r1, #0xff
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
 L_021fe0f8:
     ldr r5, [r4, #0x220]
     cmp r5, #0x0

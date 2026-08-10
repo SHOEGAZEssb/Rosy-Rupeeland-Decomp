@@ -15,7 +15,7 @@ extern void *Actor_GetCollection(void *actor);
 extern void *ActorCollection_GetSpriteOwner(void *value);
 extern void func_020740c8(void *context, void *attachment,
                           u32 first, u32 second, u32 third);
-extern void func_02072b68(void *attachment, u32 animation);
+extern void GraphicsSpriteState_SetAnimationIndex(void *attachment, u32 animation);
 #ifdef __cplusplus
 }
 #endif
@@ -121,7 +121,7 @@ void ActorExtendedType2_ApplyAttachmentState(void *self)
     context = ActorCollection_GetSpriteOwner(Actor_GetCollection(actor));
     attachment = *(u8 **)(actor + 0x54);
     func_020740c8(context, attachment, resource[1], resource[2], resource[3]);
-    func_02072b68(attachment, animation & 0xff);
+    GraphicsSpriteState_SetAnimationIndex(attachment, animation & 0xff);
     *(u16 *)(attachment + 0x36) = value36;
     *(u16 *)(attachment + 0x30) = 0;
     if (specialFlags) {

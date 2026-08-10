@@ -7,7 +7,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern s32 func_02072b68(...);
+extern s32 GraphicsSpriteState_SetAnimationIndex(...);
 extern void func_ov032_02201450(...);
 extern u32 genrand_int32(void);
 extern s32 func_020bf1f8(...);
@@ -21,14 +21,14 @@ extern void func_ov032_0220147c(void *);
 extern "C" s32 func_ov032_02200180(void *arrow)
 {
     FIELD(s32, arrow, 0xc) = 0;
-    return func_02072b68(FIELD(void *, arrow, 0), (u8)FIELD(u32, arrow, 0x14));
+    return GraphicsSpriteState_SetAnimationIndex(FIELD(void *, arrow, 0), (u8)FIELD(u32, arrow, 0x14));
 }
 
 /* Sets +0x0C and selects the low-byte frame at +0x10 on the wrapped sprite; returns the SDK frame setter's result. */
 extern "C" s32 func_ov032_022001a0(void *arrow)
 {
     FIELD(s32, arrow, 0xc) = 1;
-    return func_02072b68(FIELD(void *, arrow, 0), (u8)FIELD(u32, arrow, 0x10));
+    return GraphicsSpriteState_SetAnimationIndex(FIELD(void *, arrow, 0), (u8)FIELD(u32, arrow, 0x10));
 }
 
 /*

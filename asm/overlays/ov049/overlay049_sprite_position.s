@@ -1,6 +1,6 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov049/overlay049_sprite_recovery.c.
-.extern func_02072b68
+.extern GraphicsSpriteState_SetAnimationIndex
 .extern func_020adc40
 
 .global func_ov049_0220bac0
@@ -45,7 +45,7 @@ func_ov049_0220bac0:
     ldr r0, [r0, #0x4c]
     mov r1, #0x1
     ldr r0, [r0, #0xc]
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     add r0, r6, r4, lsl #0x1
     mov r1, #0x1a4
     strh r1, [r0, #0xac]

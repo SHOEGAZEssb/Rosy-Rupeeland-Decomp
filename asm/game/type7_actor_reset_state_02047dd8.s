@@ -7,7 +7,7 @@
 .extern Type7Actor_SetCallbackPair
 .extern func_0206c978
 .extern func_0206e590
-.extern func_02072b68
+.extern GraphicsSpriteState_SetAnimationIndex
 .extern gGameWork
 .global Type7Actor_ResetInteractionState
 .global Type7Actor_UpdateFlag14Bit2FromCondition
@@ -68,7 +68,7 @@ Type7Actor_ResetInteractionState: ; 0x02047dd8
     ldr r0, [r4, #0x54]
     add r1, r1, #0x8
     and r1, r1, #0xff
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     ldr r1, .L_02047f04
     mov r0, r4
     mov r3, #0x78

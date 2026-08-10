@@ -16,7 +16,7 @@ extern void func_02005058(void *vector);
 extern void func_02076428(void *canvas, s32 left, s32 top, s32 right,
                           s32 bottom, s32 color);
 extern s32 func_020befec(s32 numerator, s32 denominator);
-extern void func_02072b68(void *renderer, u8 orientation);
+extern void GraphicsSpriteState_SetAnimationIndex(void *renderer, u8 orientation);
 extern void *gDebugFont;
 extern void func_ov040_022021dc(void *output, const void *left,
                                 const void *right);
@@ -68,7 +68,7 @@ extern "C" void func_ov040_02200eb8(void *scene)
                 if (scale < 0x100) scale = 0x100;
                 if (*timer == 0x12) {
                     FIELD(u16, object, 0x42) &= (u16)~4;
-                    func_02072b68(FIELD(void *, object, 0x0c),
+                    GraphicsSpriteState_SetAnimationIndex(FIELD(void *, object, 0x0c),
                                   FIELD(s32, scene, 0xbd4) != 0);
                 }
                 FIELD(s32, object, 0x30) +=
@@ -339,7 +339,7 @@ extern "C" void func_ov040_02200bf4(void *scene)
                 FIELD(u16, followup, 0x42) &= (u16)~4;
                 func_ov040_021fcea0(followup, FIELD(s32, scene, 0xacc),
                                     0xb7000, 0);
-                func_02072b68(FIELD(void *, followup, 0x0c), 1);
+                GraphicsSpriteState_SetAnimationIndex(FIELD(void *, followup, 0x0c), 1);
                 FIELD(u16, followup, 0x3c) = 0x100;
                 FIELD(u16, followup, 0x3e) = 0x180;
                 FIELD(s32, scene, 0xad4) = 0;
@@ -370,7 +370,7 @@ extern "C" void func_ov040_02200bf4(void *scene)
 
         void *renderer = FIELD(void *, followup, 0x0c);
         if ((FIELD(u16, renderer, 0x24) & 1) != 0) {
-            func_02072b68(renderer, 2);
+            GraphicsSpriteState_SetAnimationIndex(renderer, 2);
             FIELD(u16, renderer, 0x24) &= (u16)~2;
         }
 
@@ -412,7 +412,7 @@ extern "C" void func_ov040_02202cb4(void *owner)
     s32 orientation = 5 - func_020befec(leftValue, 0x26);
     void *renderer = FIELD(void *, FIELD(void *, owner, 0x5c), 0x0c);
     if ((u8)orientation != FIELD(u8, renderer, 0x38))
-        func_02072b68(renderer, (u8)orientation);
+        GraphicsSpriteState_SetAnimationIndex(renderer, (u8)orientation);
 
     s32 rightValue = FIELD(s32, scene, 0xb28);
     if (rightValue < 0) rightValue = 0;
@@ -422,7 +422,7 @@ extern "C" void func_ov040_02202cb4(void *owner)
     orientation = 2 - func_020befec(rightValue, 0x26);
     renderer = FIELD(void *, FIELD(void *, owner, 0x58), 0x0c);
     if ((u8)orientation != FIELD(u8, renderer, 0x38))
-        func_02072b68(renderer, (u8)orientation);
+        GraphicsSpriteState_SetAnimationIndex(renderer, (u8)orientation);
     func_02005058(zeroVector);
 }
 
@@ -434,7 +434,7 @@ static void apply_pending_orientation(void *owner, u32 pendingOffset,
     if (pending >= 0) {
         void *renderer = FIELD(void *, FIELD(void *, owner, objectOffset), 0x0c);
         if ((u32)pending != FIELD(u8, renderer, 0x38))
-            func_02072b68(renderer, (u8)pending);
+            GraphicsSpriteState_SetAnimationIndex(renderer, (u8)pending);
         FIELD(s32, owner, pendingOffset) = -1;
     }
 }
@@ -459,7 +459,7 @@ extern "C" void func_ov040_02202a50(void *owner)
     if (pending >= 0) {
         void *renderer = FIELD(void *, FIELD(void *, owner, 0x6c), 0x0c);
         if ((u32)pending != FIELD(u8, renderer, 0x38)) {
-            func_02072b68(renderer, (u8)pending);
+            GraphicsSpriteState_SetAnimationIndex(renderer, (u8)pending);
             FIELD(s32, owner, 0x80) = 0x5a;
             if (pending == 0x0b)
                 FIELD(s32, owner, 0x84) = 1;
@@ -473,27 +473,27 @@ extern "C" void func_ov040_02202a50(void *owner)
         void *renderer = FIELD(void *, FIELD(void *, owner, 0x6c), 0x0c);
         switch (FIELD(u8, renderer, 0x38)) {
         case 6:
-            func_02072b68(renderer, 0x0c);
+            GraphicsSpriteState_SetAnimationIndex(renderer, 0x0c);
             FIELD(s32, owner, 0x80) = 0x3c;
             break;
         case 7:
-            func_02072b68(renderer, 8);
+            GraphicsSpriteState_SetAnimationIndex(renderer, 8);
             FIELD(s32, owner, 0x80) = 0x3c;
             break;
         case 8:
-            func_02072b68(renderer, 7);
+            GraphicsSpriteState_SetAnimationIndex(renderer, 7);
             FIELD(s32, owner, 0x80) = 0x3c;
             break;
         case 9:
-            func_02072b68(renderer, 10);
+            GraphicsSpriteState_SetAnimationIndex(renderer, 10);
             FIELD(s32, owner, 0x80) = 0x3c;
             break;
         case 10:
-            func_02072b68(renderer, 9);
+            GraphicsSpriteState_SetAnimationIndex(renderer, 9);
             FIELD(s32, owner, 0x80) = 0x3c;
             break;
         default:
-            func_02072b68(renderer, 6);
+            GraphicsSpriteState_SetAnimationIndex(renderer, 6);
             FIELD(s32, owner, 0x84) = 0;
             FIELD(s32, owner, 0x80) = 0xa0;
             break;
@@ -504,16 +504,16 @@ extern "C" void func_ov040_02202a50(void *owner)
     if (pending >= 0) {
         void *renderer = FIELD(void *, FIELD(void *, owner, 0x64), 0x0c);
         if ((u32)pending != FIELD(u8, renderer, 0x38)) {
-            func_02072b68(renderer, (u8)pending);
-            func_02072b68(FIELD(void *, FIELD(void *, owner, 0x68), 0x0c),
+            GraphicsSpriteState_SetAnimationIndex(renderer, (u8)pending);
+            GraphicsSpriteState_SetAnimationIndex(FIELD(void *, FIELD(void *, owner, 0x68), 0x0c),
                           (u8)(pending + 3));
         }
         FIELD(s32, owner, 0x84) = -1;
     }
 
     if (FIELD(s32, owner, 0x88) > 0 && --FIELD(s32, owner, 0x88) <= 0) {
-        func_02072b68(FIELD(void *, FIELD(void *, owner, 0x64), 0x0c), 0);
-        func_02072b68(FIELD(void *, FIELD(void *, owner, 0x68), 0x0c), 3);
+        GraphicsSpriteState_SetAnimationIndex(FIELD(void *, FIELD(void *, owner, 0x64), 0x0c), 0);
+        GraphicsSpriteState_SetAnimationIndex(FIELD(void *, FIELD(void *, owner, 0x68), 0x0c), 3);
     }
 }
 

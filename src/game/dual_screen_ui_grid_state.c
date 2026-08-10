@@ -65,7 +65,7 @@ extern void func_020740a4(void *);
 extern void func_02074110(void *);
 extern void *AnimationResource_Init(void *, s32, s32, s32);
 extern u8 *GraphicsSpriteState_Create(void *, void *, s32, s32, s32, s32, s32);
-extern void func_02072b68(void *, s32);
+extern void GraphicsSpriteState_SetAnimationIndex(void *, s32);
 extern s32 func_020befec(s32, s32);
 extern s32 Type7Actor_GetStateCode(void *);
 extern s32 ActorRuntimeCollection_GetPendingAttachmentFlag(void *);
@@ -232,7 +232,7 @@ void func_02026588(DualScreenUiGridState *self, s32 alternateMode)
         s32 remaining = self->target78;
         for (index = 0; index < 20; index++, remaining -= 3) {
             s32 frame = remaining > 3 ? 3 : (remaining < 0 ? 0 : remaining);
-            func_02072b68(self->gridSprites14[index],
+            GraphicsSpriteState_SetAnimationIndex(self->gridSprites14[index],
                           data_020c3704[frame]);
             *(u16 *)(self->gridSprites14[index] + 0x24) &= (u16)~1;
             self->cachedFrames90[index] = (u8)frame;
@@ -317,9 +317,9 @@ void func_020269f8(DualScreenUiGridState *self)
         *(u16 *)(self->progressSprite70 + 0x24) &= (u16)~4;
         progressFrame = func_020befec(*(s32 *)(runtime + 0x1fc) * 90, 300);
         if (self->runtimeSprite6c[0x38] != 1) {
-            func_02072b68(self->runtimeSprite6c, 1);
+            GraphicsSpriteState_SetAnimationIndex(self->runtimeSprite6c, 1);
             *(u16 *)(self->runtimeSprite6c + 0x24) &= (u16)~1;
-            func_02072b68(self->progressSprite70, 0);
+            GraphicsSpriteState_SetAnimationIndex(self->progressSprite70, 0);
             *(u16 *)(self->progressSprite70 + 0x24) &= (u16)~1;
             if (self->soundCount8d < 4) {
                 if (self->soundCount8d != 0 &&
@@ -332,16 +332,16 @@ void func_020269f8(DualScreenUiGridState *self)
             if (++self->animationCounter76 > progressFrame) {
                 self->animationCounter76 = 0;
                 *(u16 *)(self->runtimeSprite6c + 0x24) &= (u16)~1;
-                func_02072b68(self->runtimeSprite6c, 0);
+                GraphicsSpriteState_SetAnimationIndex(self->runtimeSprite6c, 0);
                 *(u16 *)(self->progressSprite70 + 0x24) &= (u16)~1;
-                func_02072b68(self->progressSprite70, 0);
+                GraphicsSpriteState_SetAnimationIndex(self->progressSprite70, 0);
             }
         }
     } else {
         *(u16 *)(self->progressSprite70 + 0x24) |= 4;
         self->soundCount8d = 0;
         if (self->runtimeSprite6c[0x38] != 0) {
-            func_02072b68(self->runtimeSprite6c, 0);
+            GraphicsSpriteState_SetAnimationIndex(self->runtimeSprite6c, 0);
             *(u16 *)(self->runtimeSprite6c + 0x24) &= (u16)~1;
         }
     }
@@ -389,7 +389,7 @@ void func_02026e44(DualScreenUiGridState *self)
             tableIndex += 4;
         }
         if (self->gridSprites14[index][0x38] != data_020c3704[tableIndex]) {
-            func_02072b68(self->gridSprites14[index],
+            GraphicsSpriteState_SetAnimationIndex(self->gridSprites14[index],
                           data_020c3704[tableIndex]);
             *(u16 *)(self->gridSprites14[index] + 0x24) &= (u16)~1;
         }
@@ -405,7 +405,7 @@ void func_02026ed4(DualScreenUiGridState *self)
     s32 index;
     for (index = 0; index < 20; index++) {
         if (*(u16 *)(self->gridSprites14[index] + 0x24) & 1) {
-            func_02072b68(self->gridSprites14[index],
+            GraphicsSpriteState_SetAnimationIndex(self->gridSprites14[index],
                           data_020c3704[self->cachedFrames90[index]]);
             *(u16 *)(self->gridSprites14[index] + 0x24) &= (u16)~1;
         }

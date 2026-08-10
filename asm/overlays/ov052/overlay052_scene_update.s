@@ -10,7 +10,7 @@
 .extern DisplayBrightness_GetCurrent
 .extern DisplayBrightnessPair_GetScreen
 .extern GamePhaseAreaScene_SetEnabled
-.extern func_02072b68
+.extern GraphicsSpriteState_SetAnimationIndex
 .extern func_020740a4
 .extern func_02076428
 .extern func_02093360
@@ -82,7 +82,7 @@ func_ov052_0220da54:
     ldr r1, .L_0220dd9c
     ldr r0, [r4, #0x14]
     ldrb r1, [r1, r2]
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     b .L_0220dd7c
 .L_0220db34:
     ldr r0, .L_0220dda0
@@ -117,7 +117,7 @@ func_ov052_0220da54:
     str r1, [r4, #0x28]
     ldrb r1, [r0, r1]
     ldr r0, [r4, #0x14]
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     mov r0, r4
     mov r1, #0x1
     bl func_ov052_0220df9c
@@ -143,7 +143,7 @@ func_ov052_0220da54:
     ldr r2, [r4, #0x28]
     ldr r1, .L_0220dda4
     ldrb r1, [r1, r2]
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     b .L_0220dd20
 .L_0220dc18:
     cmp r5, #0x0
@@ -177,7 +177,7 @@ func_ov052_0220da54:
     ldrb r1, [r3, r1]
     cmp r1, r2
     beq .L_0220dcf4
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     ldr r3, [r4, #0x18]
     ldr r2, [r4, #0x28]
     ldr r1, .L_0220ddac
@@ -201,7 +201,7 @@ func_ov052_0220da54:
     ldr r2, [r4, #0x28]
     ldr r0, [r4, #0x18]
     ldrb r1, [r1, r2]
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     b .L_0220dd20
 .L_0220dcf4:
     ldrh r2, [r0, #0x24]
@@ -214,7 +214,7 @@ func_ov052_0220da54:
     ldr r1, [r4, #0x28]
     ldr r0, [r4, #0x14]
     ldrb r1, [r3, r1]
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
 .L_0220dd20:
     ldr r1, [r4, #0x14]
     ldrh r0, [r1, #0x24]

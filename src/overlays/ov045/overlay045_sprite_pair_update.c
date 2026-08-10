@@ -13,7 +13,7 @@
 extern "C" void *func_020740a4(void *resource);
 extern "C" s32 func_0209189c(void *seed, s32 minimum, s32 maximum);
 extern "C" s32 func_020918f4(void *seed, s32 modulus);
-extern "C" void func_02072b68(void *sprite, s32 animation);
+extern "C" void GraphicsSpriteState_SetAnimationIndex(void *sprite, s32 animation);
 extern "C" void func_ov045_0220c068(void *object);
 
 class SpritePairVirtual {
@@ -57,9 +57,9 @@ extern "C" void func_ov045_0220c1ac(void *object)
             if (FIELD(s32, object, 0x2c) != 0)
                 return;
             if (func_020918f4((u8 *)object + 0x34, 3) != 0)
-                func_02072b68(FIELD(void *, object, 0x20), 4);
+                GraphicsSpriteState_SetAnimationIndex(FIELD(void *, object, 0x20), 4);
             else
-                func_02072b68(FIELD(void *, object, 0x20), 5);
+                GraphicsSpriteState_SetAnimationIndex(FIELD(void *, object, 0x20), 5);
             void *sprite = FIELD(void *, object, 0x20);
             FIELD(u16, sprite, 0x24) &= ~3;
             return;

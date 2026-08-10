@@ -20,7 +20,7 @@ typedef struct Overlay002ValueDisplayState {
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_02072b68(void *sprite, u8 digit);
+extern void GraphicsSpriteState_SetAnimationIndex(void *sprite, u8 digit);
 #ifdef __cplusplus
 }
 #endif
@@ -31,7 +31,7 @@ extern void func_02072b68(void *sprite, u8 digit);
  * least 1,000,000, or only the thousand indicator for values at least 1,000.
  * Extract seven decimal digits using descending divisors from 10,000,000,
  * suppress leading zero sprites except the final position, and pass each shown
- * digit to func_02072b68. Returns no value; sprite flags and glyph state change.
+ * digit to GraphicsSpriteState_SetAnimationIndex. Returns no value; sprite flags and glyph state change.
  */
 #ifdef __cplusplus
 extern "C"
@@ -66,7 +66,7 @@ void func_ov002_021fba1c(Overlay002ValueDisplayState *state, s32 value)
         digit = remainder / divisor;
         if (digit != 0 || started != 0 || i == 6) {
             FIELD(u16, state->digit_018[i], 0x24) &= ~4;
-            func_02072b68(state->digit_018[i], (u8)digit);
+            GraphicsSpriteState_SetAnimationIndex(state->digit_018[i], (u8)digit);
             started = 1;
         } else {
             FIELD(u16, state->digit_018[i], 0x24) |= 4;

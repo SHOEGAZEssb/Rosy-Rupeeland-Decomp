@@ -10,7 +10,7 @@
 
 extern "C" u32 genrand_int32(void);
 extern "C" s32 func_020befec(s32 numerator, s32 denominator);
-extern "C" void func_02072b68(void *animation, u8 index);
+extern "C" void GraphicsSpriteState_SetAnimationIndex(void *animation, u8 index);
 extern "C" void func_020a1794(void *sceneObject, const void *position,
                                 void *destination, s32 unused);
 extern "C" void func_020a1ec0(void *sceneObject, u32 soundOrEffect);
@@ -29,7 +29,7 @@ static void set_variant_animation(void *object, s32 odd)
 {
     u8 variant = FIELD(u8, object, 0x8a);
     s32 frame = (variant % 3) * 2 + odd;
-    func_02072b68(FIELD(void *, FIELD(void *, object, 0x4c), 0x0c),
+    GraphicsSpriteState_SetAnimationIndex(FIELD(void *, FIELD(void *, object, 0x4c), 0x0c),
                   (u8)frame);
 }
 
@@ -179,7 +179,7 @@ extern "C" void func_ov042_02208aac(void *object)
                 }
                 FIELD(s32, object, 0x74) = 100;
                 FIELD(s8, object, 0x8b) = 40;
-                func_02072b68(FIELD(void *, FIELD(void *, object, 0x4c), 0x0c), 6);
+                GraphicsSpriteState_SetAnimationIndex(FIELD(void *, FIELD(void *, object, 0x4c), 0x0c), 6);
                 void *presentation = FIELD(void *, object, 0x4c);
                 FIELD(u16, FIELD(void *, presentation, 0x0c), 0x24) &= (u16)~2;
                 func_020a1ec0(FIELD(void *, object, 0x48), 0xb484);

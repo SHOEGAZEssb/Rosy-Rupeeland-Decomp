@@ -2,7 +2,7 @@
 ; Matching fallback for the portable implementation in src/overlays/ov070/overlay070_recovery.c.
 .extern DebugText_BeginFrame
 .extern data_ov070_022129cc
-.extern func_02072b68
+.extern GraphicsSpriteState_SetAnimationIndex
 .extern func_020a2448
 .extern func_020a25c8
 .extern func_020adc40
@@ -65,7 +65,7 @@ func_ov070_022103d8:
     add r1, r8, #0xa
     ldr r0, [r0, #0xc]
     and r1, r1, #0xff
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     add r2, r5, r9, lsl #0x2
     ldr r1, [r2, #0x74]
     mul r0, r8, r10
@@ -88,12 +88,12 @@ func_ov070_022103d8:
     beq .L_022104f4
     ldr r0, [r0, #0xc]
     mov r1, #0x16
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     b .L_02210500
 .L_022104f4:
     ldr r0, [r0, #0xc]
     mov r1, #0x15
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
 .L_02210500:
     ldr r0, [r5, #0x74]
     mov r1, #0x0
@@ -123,7 +123,7 @@ func_ov070_022103d8:
     ldrb r1, [r0, #0x38]
     sub r1, r1, #0xa
     and r1, r1, #0xff
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     add r0, r5, r7, lsl #0x2
     ldr r0, [r0, #0x74]
     ldr r1, [r0, #0xc]
@@ -142,11 +142,11 @@ func_ov070_022103d8:
     cmp r1, #0x0
     beq .L_022105b8
     mov r1, r6
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     b .L_022105c0
 .L_022105b8:
     mov r1, r4
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
 .L_022105c0:
     ldr r0, [r5, #0x74]
     ldr r1, [r0, #0xc]

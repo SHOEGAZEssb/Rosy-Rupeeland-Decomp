@@ -8,8 +8,8 @@ extern "C" {
 extern s32 DisplayController_GetSubScreenVerticalOffset(void);
 extern void func_020083b0(void *, s32, s32, s32, s32);
 extern s32 GamePhaseRegion_ContainsPoint(const void *, s32, s32);
-extern void func_02072b68(void *, s32);
-extern void func_02072bdc(void *, s32);
+extern void GraphicsSpriteState_SetAnimationIndex(void *, s32);
+extern void GraphicsSpriteState_SetFrameIndex(void *, s32);
 #ifdef __cplusplus
 }
 #endif
@@ -61,9 +61,9 @@ void func_02031cac(void *self, const void *pointPointer)
 
     source = *(u8 **)(actor + 0x54);
     if (destination[0x38] != source[0x38])
-        func_02072b68(destination, source[0x38]);
+        GraphicsSpriteState_SetAnimationIndex(destination, source[0x38]);
     if (destination[0x39] != source[0x39])
-        func_02072bdc(destination, source[0x39]);
+        GraphicsSpriteState_SetFrameIndex(destination, source[0x39]);
     copyFlag(destination, source, 2);
     copyFlag(destination, source, 4);
     copyFlag(destination, source, 0x10);

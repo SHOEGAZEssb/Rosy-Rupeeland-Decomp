@@ -8,7 +8,7 @@
 
 #define FIELD(type, base, offset) (*(type *)((u8 *)(base) + (offset)))
 
-extern "C" void func_02072b68(void *resource, u8 mode);
+extern "C" void GraphicsSpriteState_SetAnimationIndex(void *resource, u8 mode);
 extern "C" void func_0205940c(void *sound, s32 sequence, s32 value);
 extern "C" void func_0205929c(void *sound, s32 sequence, s32 value);
 extern "C" void func_ov042_021fcf80(void *element);
@@ -28,7 +28,7 @@ extern "C" void func_ov042_02200604(void *unused, void *record,
 {
     (void)unused;
     void *resource = FIELD(void *, record, 0xc);
-    func_02072b68(resource, mode);
+    GraphicsSpriteState_SetAnimationIndex(resource, mode);
     FIELD(u16, resource, 0x24) |= 2;
     FIELD(s32, record, 0x30) = value0;
     FIELD(s32, record, 0x34) = value1;

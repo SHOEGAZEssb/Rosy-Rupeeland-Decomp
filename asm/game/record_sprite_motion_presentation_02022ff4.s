@@ -26,7 +26,7 @@
 .extern func_02063658
 .extern func_02071ea4
 .extern func_02071eb8
-.extern func_02072b68
+.extern GraphicsSpriteState_SetAnimationIndex
 .extern func_02073ffc
 .extern func_02074038
 
@@ -109,7 +109,7 @@ func_02022ff4: ; 0x02022ff4
     bl func_02063190
     mov r1, r0
     ldr r0, [r4, #0x3c]
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     b .L_02023128
 .L_02023124:
     bl OS_Halt

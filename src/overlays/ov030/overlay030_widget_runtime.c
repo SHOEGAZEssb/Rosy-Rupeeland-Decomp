@@ -13,7 +13,7 @@ extern "C" {
 extern void Heap_Free(void *);
 extern void func_02070958(void *, s32, s32, s32);
 extern void func_02071eb8(void *);
-extern void func_02072b68(void *, s32);
+extern void GraphicsSpriteState_SetAnimationIndex(void *, s32);
 extern void func_020740a4(void *);
 extern void func_0207419c(void *);
 extern void func_02074dc8(void *);
@@ -92,8 +92,8 @@ extern "C" void func_ov030_021fd3e8(void *widget)
 {
     s32 value = FIELD(s32, widget, 0x1b4);
     s32 quotient = func_020befec(value, 10);
-    func_02072b68(FIELD(void *, widget, 0x50), (quotient + 8) & 0xff);
+    GraphicsSpriteState_SetAnimationIndex(FIELD(void *, widget, 0x50), (quotient + 8) & 0xff);
     (void)func_020befec(value, 10);
     s32 remainder = value - quotient * 10;
-    func_02072b68(FIELD(void *, widget, 0x54), (remainder + 8) & 0xff);
+    GraphicsSpriteState_SetAnimationIndex(FIELD(void *, widget, 0x54), (remainder + 8) & 0xff);
 }

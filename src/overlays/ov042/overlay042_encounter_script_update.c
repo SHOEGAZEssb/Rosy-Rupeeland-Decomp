@@ -10,7 +10,7 @@
 
 extern "C" s32 func_020adc40(s32 squaredLength);
 extern "C" s32 func_020adc90(s32 numerator, s32 denominator);
-extern "C" void func_02072b68(void *animation, u8 index);
+extern "C" void GraphicsSpriteState_SetAnimationIndex(void *animation, u8 index);
 extern "C" void func_020a1ec0(void *owner, u32 effect);
 extern "C" void func_ov042_021fcf80(void *element);
 extern "C" void func_ov042_021ff2f8(void *destination, const void *source);
@@ -31,7 +31,7 @@ static s32 multiply_fx(s32 left, s32 right)
 static void select_main_animation(void *scene, u8 animation, bool loop)
 {
     void *resource = FIELD(void *, FIELD(void *, scene, 0x4c), 0x0c);
-    func_02072b68(resource, animation);
+    GraphicsSpriteState_SetAnimationIndex(resource, animation);
     if (loop)
         FIELD(u16, resource, 0x24) |= 2;
     else
@@ -155,7 +155,7 @@ extern "C" void func_ov042_02200bc0(void *scene)
                 }
             } else if (phase == 1) {
                 select_main_animation(scene, 5, false);
-                func_02072b68(FIELD(void *, FIELD(void *, scene, 0x58), 0x0c), 0);
+                GraphicsSpriteState_SetAnimationIndex(FIELD(void *, FIELD(void *, scene, 0x58), 0x0c), 0);
                 func_020a1ec0(FIELD(void *, scene, 0x48), 0xeb8d);
                 FIELD(s32, scene, 0x188) = 0;
                 FIELD(s32, scene, 0x16c)++;
@@ -172,7 +172,7 @@ extern "C" void func_ov042_02200bc0(void *scene)
             select_main_animation(scene, 0, true);
             void *secondary = FIELD(void *, scene, 0x50);
             void *secondaryResource = FIELD(void *, secondary, 0x0c);
-            func_02072b68(secondaryResource, 0);
+            GraphicsSpriteState_SetAnimationIndex(secondaryResource, 0);
             FIELD(u16, secondaryResource, 0x24) |= 2;
             FIELD(s32, secondary, 0x30) = FIELD(s32, scene, 0x174);
             FIELD(s32, secondary, 0x34) = FIELD(s32, scene, 0x178);

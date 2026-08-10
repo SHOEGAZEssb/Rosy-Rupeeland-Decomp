@@ -10,7 +10,7 @@
 .extern AnimationResource_Destroy
 .extern AnimationResource_Assign
 .extern func_0201e250
-.extern func_02072b68
+.extern GraphicsSpriteState_SetAnimationIndex
 .extern func_02073ffc
 .extern func_020742cc
 .extern func_ov053_0220d600
@@ -73,12 +73,12 @@ func_ov053_0220d624:
     add r1, r9, #0x1
     ldr r0, [r0, #0xc]
     and r1, r1, #0xff
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     b .L_0220d708
 .L_0220d6fc:
     ldr r0, [r0, #0xc]
     mov r1, r11
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
 .L_0220d708:
     add r0, r10, r9, lsl #0x2
     ldr r3, [r0, #0xc]
@@ -104,7 +104,7 @@ func_ov053_0220d624:
     ldrh r1, [r10, #0x34]
     add r1, r1, #0x6
     and r1, r1, #0xff
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     ldrh r2, [r10, #0x34]
     ldr r1, .L_0220d7f4
     ldr r0, .L_0220d7f8

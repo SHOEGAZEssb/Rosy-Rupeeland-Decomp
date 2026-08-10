@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/type7_marker_presentation_control.c.
 .extern func_020ae024
-.extern func_02072b68
+.extern GraphicsSpriteState_SetAnimationIndex
 .extern func_02071e60
 .extern func_02071e70
 .extern func_02071e80
@@ -83,7 +83,7 @@ Type7MarkerPresentation_SelectAnimation: ; 0x0204ced8
     ldrb r2, [r0, #0x38]
     cmp r1, r2
     beq .L_0204cf14
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
 .L_0204cf14:
     ldr r1, [r4, #0x4]
     ldrh r0, [r1, #0x24]

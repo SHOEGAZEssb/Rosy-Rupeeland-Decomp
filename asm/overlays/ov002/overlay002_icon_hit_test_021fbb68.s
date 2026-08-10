@@ -1,6 +1,6 @@
     .text
     .extern func_02073aa8
-    .extern func_02072b68
+    .extern GraphicsSpriteState_SetAnimationIndex
     .global func_ov002_021fbb68
 func_ov002_021fbb68: ; 0x021fbb68
     stmdb sp!, {r4, r5, r6, lr}
@@ -49,7 +49,7 @@ L_021fbbe0: ; jump table
 L_021fbc0c:
     ldr r0, [r6, #0x78]
     mov r1, #0x1c
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
 L_021fbc18:
     mov r0, r4
     ldmia sp!, {r4, r5, r6, pc}

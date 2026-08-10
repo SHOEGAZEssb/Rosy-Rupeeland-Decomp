@@ -5,7 +5,7 @@
 .extern data_020f4e14
 .extern func_02070958
 .extern func_02071eb8
-.extern func_02072b68
+.extern GraphicsSpriteState_SetAnimationIndex
 .extern func_020740a4
 .extern func_0207419c
 .extern func_02074dc8
@@ -130,7 +130,7 @@ func_ov030_021fd3e8:
     add r1, r0, #0x8
     ldr r0, [r5, #0x50]
     and r1, r1, #0xff
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     mov r0, r4
     mov r1, #0xa
     bl func_020befec
@@ -138,6 +138,6 @@ func_ov030_021fd3e8:
     add r1, r4, #0x8
     ldr r0, [r5, #0x54]
     and r1, r1, #0xff
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     ldmia sp!, {r3, r4, r5, pc}
 .size func_ov030_021fd3e8, .-func_ov030_021fd3e8

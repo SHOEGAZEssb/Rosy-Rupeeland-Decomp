@@ -32,7 +32,7 @@
 .extern ActorFeedback_DispatchEnvironment
 .extern ActorFeedback_ProcessSnapshotCell
 .extern func_02063820
-.extern func_02072b68
+.extern GraphicsSpriteState_SetAnimationIndex
 .extern func_020a25c8
 .extern func_020adcac
 .extern gGameWork
@@ -408,7 +408,7 @@ ActorDerivedType1_ProcessInteraction: ; 0x02036a8c
     ldr r0, [r10, #0x54]
     add r1, r1, #0x10
     and r1, r1, #0xff
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     ldr r2, [r10, #0x54]
     mov r0, r10
     ldrh r1, [r2, #0x24]

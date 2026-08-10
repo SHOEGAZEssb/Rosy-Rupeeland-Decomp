@@ -4,7 +4,7 @@
 .extern data_020e1720
 .extern ActorCollection_GetSpriteOwner
 .extern Actor_GetCollection
-.extern func_02072b68
+.extern GraphicsSpriteState_SetAnimationIndex
 .extern func_020740c8
 .global Type7Actor_UpdateAnimationState
 .type Type7Actor_UpdateAnimationState, @function
@@ -49,7 +49,7 @@ Type7Actor_UpdateAnimationState: ; 0x02046208
     ldr r0, [r5, #0x54]
     add r1, r1, #0x8
     and r1, r1, #0xff
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     ldr r1, [r5, #0x54]
     ldrh r0, [r1, #0x24]
     bic r0, r0, #0x1
@@ -62,7 +62,7 @@ Type7Actor_UpdateAnimationState: ; 0x02046208
 .L_020462c8:
     ldr r0, [r5, #0x54]
     mov r1, #0x21
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     ldr r1, [r5, #0x54]
     ldrh r0, [r1, #0x24]
     bic r0, r0, #0x1
@@ -77,7 +77,7 @@ Type7Actor_UpdateAnimationState: ; 0x02046208
     ldr r0, [r5, #0x54]
     add r1, r1, #0x8
     and r1, r1, #0xff
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     ldr r1, [r5, #0x54]
     ldrh r0, [r1, #0x24]
     bic r0, r0, #0x1
@@ -92,7 +92,7 @@ Type7Actor_UpdateAnimationState: ; 0x02046208
     ldr r0, [r5, #0x54]
     add r1, r1, #0x8
     and r1, r1, #0xff
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     ldr r1, [r5, #0x54]
     ldrh r0, [r1, #0x24]
     bic r0, r0, #0x1
@@ -105,7 +105,7 @@ Type7Actor_UpdateAnimationState: ; 0x02046208
 .L_02046368:
     ldr r0, [r5, #0x54]
     mov r1, #0x12
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     ldr r1, [r5, #0x54]
     ldrh r0, [r1, #0x24]
     bic r0, r0, #0x1
@@ -118,7 +118,7 @@ Type7Actor_UpdateAnimationState: ; 0x02046208
 .L_02046398:
     ldr r0, [r5, #0x54]
     mov r1, #0x11
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     ldr r1, [r5, #0x54]
     ldrh r0, [r1, #0x24]
     bic r0, r0, #0x1
@@ -131,7 +131,7 @@ Type7Actor_UpdateAnimationState: ; 0x02046208
 .L_020463c8:
     ldr r0, [r5, #0x54]
     mov r1, #0x10
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     ldr r1, [r5, #0x54]
     ldrh r0, [r1, #0x24]
     bic r0, r0, #0x1
@@ -164,7 +164,7 @@ Type7Actor_UpdateAnimationState: ; 0x02046208
     ldrb r2, [r0, #0x38]
     cmp r1, r2
     beq .L_0204644c
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
 .L_0204644c:
     ldr r1, [r5, #0x54]
     ldrh r0, [r1, #0x24]
@@ -184,7 +184,7 @@ Type7Actor_UpdateAnimationState: ; 0x02046208
     cmp r1, #0x24
     beq .L_020464a4
     mov r1, #0x24
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     ldr r1, [r5, #0x54]
     ldrh r0, [r1, #0x24]
     bic r0, r0, #0x1
@@ -201,7 +201,7 @@ Type7Actor_UpdateAnimationState: ; 0x02046208
     cmp r1, #0x1a
     beq .L_020464e0
     mov r1, #0x1a
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     ldr r1, [r5, #0x54]
     ldrh r0, [r1, #0x24]
     bic r0, r0, #0x3

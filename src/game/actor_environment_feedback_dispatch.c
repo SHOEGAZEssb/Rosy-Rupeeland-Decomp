@@ -21,7 +21,7 @@ extern void *func_0201f598(void *allocation, ...);
 extern void func_0201ded4(void *manager, void *presentation);
 extern s32 Actor_QueryTerrainHeight(void *actor, s32 x, s32 y);
 extern void *ActorFeedbackResources_GetResource(u32 index);
-extern void func_02072bdc(void *sprite, u32 animation);
+extern void GraphicsSpriteState_SetFrameIndex(void *sprite, u32 animation);
 extern void Sound_Play(void *context, s32 channel, s32 sound);
 #ifdef __cplusplus
 }
@@ -166,7 +166,7 @@ scanComplete:
                         u16 old = *(u16 *)(sprite + 0x28);
                         *(u16 *)(sprite + 0x28) = old + 1;
                         if (old >= 0xfdec && sprite[0x39] <= 2) {
-                            func_02072bdc(sprite, 3);
+                            GraphicsSpriteState_SetFrameIndex(sprite, 3);
                             *(u16 *)(sprite + 0x24) &= ~1;
                         }
                     }

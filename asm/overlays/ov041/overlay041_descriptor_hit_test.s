@@ -5,7 +5,7 @@
 .extern Sound_Play
 .extern data_ov041_02204c7c
 .extern data_ov041_02204d00
-.extern func_02072b68
+.extern GraphicsSpriteState_SetAnimationIndex
 .extern func_020a2448
 .extern func_020a25c8
 .extern func_020adc40
@@ -147,7 +147,7 @@ func_ov041_02200348: ; 0x02200348
     ldr r2, [r2, #0x4c]
     ldrb r1, [r0, r1]
     ldr r0, [r2, #0xc]
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     b .L_02200638
 .L_02200550:
     ldr r2, [r10, #0x84]

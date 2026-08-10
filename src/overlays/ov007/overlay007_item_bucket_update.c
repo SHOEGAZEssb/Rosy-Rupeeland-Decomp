@@ -9,7 +9,7 @@
 extern "C" {
 #endif
 extern s32 func_020befec(s32 dividend, s32 divisor);
-extern void func_02072b68(void *member, s32 value);
+extern void GraphicsSpriteState_SetAnimationIndex(void *member, s32 value);
 #ifdef __cplusplus
 }
 #endif
@@ -38,11 +38,11 @@ void func_ov007_021fc0dc(void *state, s32 value)
     *(s32 *)((u8 *)state + 0x9c) = 0x200;
     if (bucket == 10) {
         void *primary = *(void **)((u8 *)state + 0x4c);
-        func_02072b68((u8 *)primary + 0x0c, 3);
+        GraphicsSpriteState_SetAnimationIndex((u8 *)primary + 0x0c, 3);
     }
     object = *(void **)((u8 *)state + 0x78);
     *(u16 *)((u8 *)object + 0x42) &= ~4;
-    func_02072b68((u8 *)object + 0x0c, bucket & 0xff);
+    GraphicsSpriteState_SetAnimationIndex((u8 *)object + 0x0c, bucket & 0xff);
     *(u16 *)((u8 *)object + 0x3c) = 0x200;
     *(u16 *)((u8 *)object + 0x3e) = 0x200;
 }

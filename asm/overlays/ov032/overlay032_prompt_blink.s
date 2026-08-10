@@ -1,7 +1,7 @@
 .text
 
 /* Exact fallback; see src/overlays/ov032/overlay032_input_runtime.c for documented portable C. */
-.extern func_02072bdc
+.extern GraphicsSpriteState_SetFrameIndex
 .extern func_020bf1f8
 .extern func_ov032_021fe0c4
 .extern func_ov032_021fe0e8
@@ -28,10 +28,10 @@ func_ov032_021fe024:
     bl func_ov032_021fe0c4
     ldr r0, [r4, #0x64]
     mov r1, #0x0
-    bl func_02072bdc
+    bl GraphicsSpriteState_SetFrameIndex
     ldr r0, [r4, #0x94]
     mov r1, #0x0
-    bl func_02072bdc
+    bl GraphicsSpriteState_SetFrameIndex
     ldmia sp!, {r4, pc}
 L_021fe084:
     bl genrand_int32

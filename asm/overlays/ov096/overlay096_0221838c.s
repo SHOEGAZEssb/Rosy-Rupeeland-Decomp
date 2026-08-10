@@ -5,7 +5,7 @@
 .extern data_020e6c0c
 .extern ActorCollection_GetSpriteOwner
 .extern Actor_GetCollection
-.extern func_02072b68
+.extern GraphicsSpriteState_SetAnimationIndex
 .extern func_020740c8
 .extern func_ov096_02218590
 
@@ -132,7 +132,7 @@ func_ov096_0221838c:
     bl func_020740c8
     ldr r0, [r8, #0x54]
     and r1, r5, #0xff
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     ldr r0, [r8, #0x54]
     mov r1, #0x0
     strh r4, [r0, #0x36]

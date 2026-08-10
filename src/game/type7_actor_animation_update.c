@@ -11,7 +11,7 @@ extern void *Actor_GetCollection(void *actor);
 extern void *ActorCollection_GetSpriteOwner(void *value);
 extern void func_020740c8(void *context, void *resource, void *first,
                           void *second, void *third);
-extern void func_02072b68(void *resource, u32 animation);
+extern void GraphicsSpriteState_SetAnimationIndex(void *resource, u32 animation);
 #ifdef __cplusplus
 }
 #endif
@@ -46,27 +46,27 @@ void Type7Actor_UpdateAnimationState(void *self)
     switch (state) {
     case 1: case 2: case 3: case 6: case 7: case 11:
         animation = (actor[0xd4] + 8) & 0xff;
-        func_02072b68(resource, animation);
+        GraphicsSpriteState_SetAnimationIndex(resource, animation);
         *(u16 *)(resource + 0x24) &= (u16)~1;
         *(u16 *)(resource + 0x24) |= 2;
         break;
     case 4: case 5: case 17:
-        func_02072b68(resource, 0x21);
+        GraphicsSpriteState_SetAnimationIndex(resource, 0x21);
         *(u16 *)(resource + 0x24) &= (u16)~1;
         *(u16 *)(resource + 0x24) |= 2;
         break;
     case 12:
-        func_02072b68(resource, 0x12);
+        GraphicsSpriteState_SetAnimationIndex(resource, 0x12);
         *(u16 *)(resource + 0x24) &= (u16)~1;
         *(u16 *)(resource + 0x24) |= 2;
         break;
     case 13:
-        func_02072b68(resource, 0x11);
+        GraphicsSpriteState_SetAnimationIndex(resource, 0x11);
         *(u16 *)(resource + 0x24) &= (u16)~1;
         *(u16 *)(resource + 0x24) |= 2;
         break;
     case 15:
-        func_02072b68(resource, 0x10);
+        GraphicsSpriteState_SetAnimationIndex(resource, 0x10);
         *(u16 *)(resource + 0x24) &= (u16)~1;
         *(u16 *)(resource + 0x24) |= 2;
         break;
@@ -82,14 +82,14 @@ void Type7Actor_UpdateAnimationState(void *self)
         break;
     case 16:
         if (resource[0x38] != 0x24) {
-            func_02072b68(resource, 0x24);
+            GraphicsSpriteState_SetAnimationIndex(resource, 0x24);
             *(u16 *)(resource + 0x24) &= (u16)~1;
         }
         *(u16 *)(resource + 0x24) &= (u16)~2;
         break;
     case 18:
         if (resource[0x38] != 0x1a) {
-            func_02072b68(resource, 0x1a);
+            GraphicsSpriteState_SetAnimationIndex(resource, 0x1a);
             *(u16 *)(resource + 0x24) &= (u16)~3;
         }
         break;
@@ -99,7 +99,7 @@ void Type7Actor_UpdateAnimationState(void *self)
     }
     if (ordinary) {
         if (actor[0xd4] != resource[0x38])
-            func_02072b68(resource, actor[0xd4]);
+            GraphicsSpriteState_SetAnimationIndex(resource, actor[0xd4]);
         *(u16 *)(resource + 0x24) &= (u16)~1;
         *(u16 *)(resource + 0x24) |= 2;
         if ((*(u32 *)(actor + 0x268) & 0x400000) != 0)

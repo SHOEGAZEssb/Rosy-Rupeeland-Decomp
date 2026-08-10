@@ -1,7 +1,7 @@
     .text
 /* Exact fallback; see overlay040_state_setup.c for portable C. */
     .extern Sound_Play
-    .extern func_02072b68
+    .extern GraphicsSpriteState_SetAnimationIndex
     .extern func_0209a07c
     .extern func_0209a0d8
     .extern gSoundContext
@@ -21,7 +21,7 @@ func_ov040_021ff630: ; 0x021ff630
     ldr r0, [r5, #0xb44]
     mov r1, #0x1
     ldr r0, [r0, #0xc]
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     b .L_021ff69c
 .L_021ff670:
     cmp r0, #0x16
@@ -29,7 +29,7 @@ func_ov040_021ff630: ; 0x021ff630
     ldr r0, [r5, #0xb44]
     mov r1, #0x2
     ldr r0, [r0, #0xc]
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     ldr r0, .L_021ff8a4
     mov r1, #0x12c
     ldr r0, [r0, #0x0]
@@ -68,7 +68,7 @@ func_ov040_021ff630: ; 0x021ff630
     ldr r0, [r5, #0xb44]
     mov r1, #0x2
     ldr r0, [r0, #0xc]
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     ldr r0, [r5, #0xb44]
     mov ip, #0x8
     ldr r3, [r0, #0xc]
@@ -109,7 +109,7 @@ func_ov040_021ff630: ; 0x021ff630
     ldr r0, [r5, #0xb44]
     mov r1, #0x1d
     ldr r0, [r0, #0xc]
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     ldr r1, [r5, #0xb44]
     mov r0, #0x50
     ldr r2, [r1, #0xc]
@@ -150,7 +150,7 @@ func_ov040_021ff630: ; 0x021ff630
     ldr r0, [r5, #0xb44]
     mov r1, #0x6
     ldr r0, [r0, #0xc]
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     ldr r1, [r5, #0xb44]
     mov r0, #0x0
     ldr r2, [r1, #0xc]

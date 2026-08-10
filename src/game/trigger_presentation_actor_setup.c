@@ -17,7 +17,7 @@ extern void func_02034260(void *actor, const void *descriptor);
 extern void *func_02071e60(void *archive, u32 resource_id);
 extern void *func_02071e70(void *archive, u32 resource_id);
 extern void *func_02071e80(void *archive, u32 resource_id);
-extern void func_02072b68(void *presentation, u32 selection);
+extern void GraphicsSpriteState_SetAnimationIndex(void *presentation, u32 selection);
 extern void *func_02073fc4(void *context, void *resource0, void *resource1,
                            void *resource2, u32 mode);
 #ifdef __cplusplus
@@ -46,14 +46,14 @@ void func_0204e9e8(void *actor, const void *descriptor)
         ActorCollection_GetSpriteOwner(), resource0, resource1, resource2,
         FIELD(u8, descriptor, 0x10));
     FIELD(void *, actor, 0x54) = presentation;
-    func_02072b68(presentation, FIELD(u8, descriptor, 0x11));
+    GraphicsSpriteState_SetAnimationIndex(presentation, FIELD(u8, descriptor, 0x11));
     FIELD(u16, presentation, 0x24) |= 2;
     func_02034260(actor, descriptor);
 }
 
 /*
  * Inputs are an actor and a 16-bit presentation selection. Store it at 0x1EE,
- * reset state 0x1EC to zero, and tail-call func_02072b68 for the presentation
+ * reset state 0x1EC to zero, and tail-call GraphicsSpriteState_SetAnimationIndex for the presentation
  * at 0x54. The callee's return is propagated by retail assembly; actor and
  * presentation state change, with no direct hardware effects.
  */
@@ -61,6 +61,6 @@ void func_0204ea8c(void *actor, u16 selection)
 {
     FIELD(u16, actor, 0x1ee) = selection;
     FIELD(u16, actor, 0x1ec) = 0;
-    func_02072b68(FIELD(void *, actor, 0x54), selection);
+    GraphicsSpriteState_SetAnimationIndex(FIELD(void *, actor, 0x54), selection);
 }
 

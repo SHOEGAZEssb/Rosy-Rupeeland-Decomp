@@ -1,6 +1,6 @@
 .text
 /* Exact fallback; see overlay039_final_update.c for portable C. */
-    .extern func_02072b68
+    .extern GraphicsSpriteState_SetAnimationIndex
     .extern func_020adc40
     .extern func_020adc90
     .extern func_0201e0ec
@@ -79,7 +79,7 @@ L_02207218:
     mov r1, r1, asr #0x1
     add r1, r1, #0x1b
     and r1, r1, #0xff
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
 L_0220723c:
     ldr r2, L_0220749c
     ldr ip, [r4, #0x8c]

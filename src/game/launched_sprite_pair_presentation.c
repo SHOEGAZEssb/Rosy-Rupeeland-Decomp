@@ -57,7 +57,7 @@ extern void *Actor_GetCollectionBySlot(void *actor, s32 index);
 extern void *ActorCollection_GetSpriteOwner(void *resource);
 extern u8 *func_02079a7c(void *table, s32 index);
 extern u8 *func_02073ffc(void *owner, void *resource, s32 mode);
-extern void func_02072b68(void *sprite, s32 frame);
+extern void GraphicsSpriteState_SetAnimationIndex(void *sprite, s32 frame);
 extern void func_02074038(void *owner, void *sprite);
 extern s32 DisplayController_GetVerticalOffset(void);
 extern s32 func_02091a70(s32, s32, s32, s32);
@@ -105,7 +105,7 @@ LaunchedSpritePairPresentation *func_02024b04(
     func_02071ee0(self->resource3c, data_020f4e18, 0x300a, 0x300b, 0x300c);
     self->primarySprite50 =
         func_02073ffc(self->primaryOwner48, self->resource3c, 2);
-    func_02072b68(self->primarySprite50, 0);
+    GraphicsSpriteState_SetAnimationIndex(self->primarySprite50, 0);
     *(u16 *)(self->primarySprite50 + 0x24) |= 2;
 
     runtimeObject = *(u8 **)(data_021052fc + 0x30bc);
@@ -116,7 +116,7 @@ LaunchedSpritePairPresentation *func_02024b04(
             ActorCollection_GetSpriteOwner(Actor_GetCollectionBySlot(actor, 2));
         self->secondarySprite54 =
             func_02073ffc(self->secondaryOwner4c, self->resource3c, 2);
-        func_02072b68(self->secondarySprite54, record[0x0d]);
+        GraphicsSpriteState_SetAnimationIndex(self->secondarySprite54, record[0x0d]);
     } else {
         self->secondaryOwner4c = 0;
         self->secondarySprite54 = 0;
@@ -207,22 +207,22 @@ s32 func_02024e24(LaunchedSpritePairPresentation *self)
                           0x115a, 0x115b, 0x115c);
             self->primarySprite50 =
                 func_02073ffc(self->primaryOwner48, self->resource3c, 2);
-            func_02072b68(self->primarySprite50, 1);
+            GraphicsSpriteState_SetAnimationIndex(self->primarySprite50, 1);
             if (self->secondarySprite54 != 0) {
                 self->secondarySprite54 =
                     func_02073ffc(self->secondaryOwner4c, self->resource3c, 2);
-                func_02072b68(self->secondarySprite54, 1);
+                GraphicsSpriteState_SetAnimationIndex(self->secondarySprite54, 1);
             }
             self->state38++;
         }
         break;
     case 2:
         if ((*(u16 *)(self->primarySprite50 + 0x24) & 1) != 0) {
-            func_02072b68(self->primarySprite50, 0);
+            GraphicsSpriteState_SetAnimationIndex(self->primarySprite50, 0);
             *(u16 *)(self->primarySprite50 + 0x24) =
                 (u16)((*(u16 *)(self->primarySprite50 + 0x24) | 2) & ~1);
             if (self->secondarySprite54 != 0) {
-                func_02072b68(self->secondarySprite54, 0);
+                GraphicsSpriteState_SetAnimationIndex(self->secondarySprite54, 0);
                 *(u16 *)(self->secondarySprite54 + 0x24) =
                     (u16)((*(u16 *)(self->secondarySprite54 + 0x24) | 2) & ~1);
             }

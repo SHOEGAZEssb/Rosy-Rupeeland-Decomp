@@ -7,7 +7,7 @@
 .extern Actor_GetCollection
 .extern Actor_GetCachedTerrainHeight
 .extern ActorExtendedType2_GetDescriptorValue25
-.extern func_02072b68
+.extern GraphicsSpriteState_SetAnimationIndex
 .extern func_020740c8
 
 .global func_ov082_02212b30
@@ -158,7 +158,7 @@ func_ov082_02212b30:
     cmp r5, r1
     beq .L_02212d38
     and r1, r5, #0xff
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
 .L_02212d38:
     ldr r0, [r7, #0x54]
     mov r1, #0x0

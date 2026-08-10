@@ -17,7 +17,7 @@ extern void func_020948e4(void *, s32, s32);
 extern void func_020740a4(void *);
 extern void func_ov031_021fd684(void *, s32);
 extern void *func_02073ffc(void *, void *, s32);
-extern void func_02072b68(void *, s32);
+extern void GraphicsSpriteState_SetAnimationIndex(void *, s32);
 extern void *Heap_Alloc(u32, const void *, s32, void *);
 extern void Heap_Free(void *);
 extern void *func_ov031_021fd19c(void *, void *, s32, s32, s32);
@@ -90,7 +90,7 @@ extern "C" void func_ov031_021fd69c(void *effect)
             continue;
         void *sprite = func_02073ffc(FIELD(void *, effect, 0x54),
                                      (u8 *)effect + 0x5c, 1);
-        func_02072b68(sprite,
+        GraphicsSpriteState_SetAnimationIndex(sprite,
             func_0209189c((u8 *)effect + 0x150, 4, 7) & 0xff);
         FIELD(u8, sprite, 0x3a) = 3;
         FIELD(u16, sprite, 0x28) = 0x500;

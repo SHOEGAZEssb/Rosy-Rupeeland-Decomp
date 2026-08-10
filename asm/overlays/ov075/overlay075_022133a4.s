@@ -2,7 +2,7 @@
 ; Matching fallback for the portable implementation in src/overlays/ov075/overlay075_recovery.c.
 .extern func_020050a4
 .extern Actor_GetCachedTerrainHeight
-.extern func_02072b68
+.extern GraphicsSpriteState_SetAnimationIndex
 
 .global func_ov075_022133a4
 func_ov075_022133a4:
@@ -28,7 +28,7 @@ func_ov075_022133a4:
     str r0, [r4, #0x298]
     ldr r0, [r4, #0x54]
     mov r1, #0x15
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     ldr r1, [r4, #0x54]
     ldrh r0, [r1, #0x24]
     bic r0, r0, #0x3

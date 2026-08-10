@@ -17,7 +17,7 @@ extern "C" {
 #endif
 extern const s16 data_020c9670[];
 extern void func_ov007_021fbaf0(void *state);
-extern void func_02072b68(void *member, s32 value);
+extern void GraphicsSpriteState_SetAnimationIndex(void *member, s32 value);
 extern void func_02005030(void *destination, const void *source);
 extern s32 func_020adc40(s32 value);
 extern void func_02005058(void *member);
@@ -36,7 +36,7 @@ static void overlay007_clear_primary_trigger(Overlay007ItemsFrameState *state)
 {
     void *primary = FIELD(void *, state, 0x04c);
 
-    func_02072b68((u8 *)primary + 0x0c, 0);
+    GraphicsSpriteState_SetAnimationIndex((u8 *)primary + 0x0c, 0);
     FIELD(u8, state, 0x0a1) = 0;
     FIELD(u8, state, 0x0a0) = 0;
     FIELD(u16, state, 0x0d8) = 0;
@@ -100,7 +100,7 @@ void func_ov007_021fbcd8(Overlay007ItemsFrameState *state)
     }
 
     if (FIELD(s32, owner, 0x0ac) == 10) {
-        func_02072b68((u8 *)FIELD(void *, state, 0x04c) + 0x0c, 2);
+        GraphicsSpriteState_SetAnimationIndex((u8 *)FIELD(void *, state, 0x04c) + 0x0c, 2);
         FIELD(u8, state, 0x0a0) = 1;
     }
 
@@ -149,14 +149,14 @@ void func_ov007_021fbcd8(Overlay007ItemsFrameState *state)
     if (FIELD(s32, state, 0x094) > 0) {
         FIELD(s32, state, 0x094)--;
         if (FIELD(s32, state, 0x094) == 0) {
-            func_02072b68((u8 *)FIELD(void *, state, 0x07c) + 0x0c,
+            GraphicsSpriteState_SetAnimationIndex((u8 *)FIELD(void *, state, 0x07c) + 0x0c,
                           (10 - FIELD(s32, state, 0x090)) & 0xff);
         }
     } else if (FIELD(s32, state, 0x090) != inactive) {
         FIELD(s32, state, 0x090)--;
         FIELD(s32, state, 0x094) =
             FIELD(s32, state, 0x090) == inactive ? 24 : 13;
-        func_02072b68((u8 *)FIELD(void *, state, 0x07c) + 0x0c,
+        GraphicsSpriteState_SetAnimationIndex((u8 *)FIELD(void *, state, 0x07c) + 0x0c,
                       (21 - FIELD(s32, state, 0x090)) & 0xff);
     }
 

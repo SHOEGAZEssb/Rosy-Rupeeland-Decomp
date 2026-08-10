@@ -37,7 +37,7 @@ extern void *func_0209a208(void *owner, s32 firstId, s32 secondId,
 extern void func_0209a07c(void *object);
 extern void func_0209a0d8(void *object, s32 firstId, s32 secondId,
                            s32 thirdId, void *context, s32 mode);
-extern void func_02072b68(void *object, u8 mode);
+extern void GraphicsSpriteState_SetAnimationIndex(void *object, u8 mode);
 extern s32 func_020befec(s32 value, s32 divisor);
 extern u32 genrand_int32(void);
 extern void func_ov069_02210dc0(void *system, void *position);
@@ -132,7 +132,7 @@ extern "C" void func_ov039_02201234(void *scene, void *object, s32 x, s32 y,
 {
     (void)scene;
     void *render = FIELD(void *, object, 0x0c);
-    func_02072b68(render, mode);
+    GraphicsSpriteState_SetAnimationIndex(render, mode);
     FIELD(u16, render, 0x24) |= 2;
     FIELD(u8, render, 0x3a) = rendererByte;
     FIELD(s32, object, 0x30) = x;
@@ -161,7 +161,7 @@ extern "C" void func_ov039_02200f9c(void *scene, s32 variant)
                                (void *)variant, 1);
         FIELD(void *, scene, 0x50 + i * 4) = object;
         func_ov039_02201234(scene, object, 0x200000, 0x118000, 1, 1);
-        func_02072b68(FIELD(void *, object, 0x0c), (u8)i);
+        GraphicsSpriteState_SetAnimationIndex(FIELD(void *, object, 0x0c), (u8)i);
         FIELD(s32, object, 0x44) = values[i];
         FIELD(u16, object, 0x42) |= 4;
     }
@@ -196,7 +196,7 @@ extern "C" void func_ov039_02201290(void *scene, void *object, u8 orientation,
 {
     (void)scene;
     void *render = FIELD(void *, object, 0x0c);
-    func_02072b68(render, orientation);
+    GraphicsSpriteState_SetAnimationIndex(render, orientation);
     FIELD(u16, render, 0x24) |= 2;
     FIELD(u8, render, 0x3a) = rendererByte;
 }

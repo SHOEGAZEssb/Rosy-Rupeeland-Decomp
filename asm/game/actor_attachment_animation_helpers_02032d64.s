@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/actor_attachment_animation_helpers.c.
 .text
 .extern func_02057084
-.extern func_02072b68
+.extern GraphicsSpriteState_SetAnimationIndex
 
     .global Actor_UpdateAttachmentDirectionFromVector
     .type Actor_UpdateAttachmentDirectionFromVector, @function
@@ -20,7 +20,7 @@ Actor_UpdateAttachmentDirectionFromVector: ; 0x02032d64
     ldr r0, [r4, #0x54]
     add r1, r2, r1
     and r1, r1, #0xff
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     ldr r1, [r4, #0x54]
     ldrh r0, [r1, #0x24]
     bic r0, r0, #0x40

@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/dual_screen_ui_grid_state.c.
 .text
 .extern data_020c3704
-.extern func_02072b68
+.extern GraphicsSpriteState_SetAnimationIndex
 
     .global func_02026ed4
     .type func_02026ed4, @function
@@ -21,7 +21,7 @@ func_02026ed4: ; 0x02026ed4
     add r1, r6, r5
     ldrb r1, [r1, #0x90]
     ldrb r1, [r4, r1]
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     add r0, r6, r5, lsl #0x2
     ldr r1, [r0, #0x14]
     ldrh r0, [r1, #0x24]

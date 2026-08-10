@@ -3,7 +3,7 @@
     .extern data_020d4a60
     .extern data_ov018_021ffd08
     .extern func_02028388
-    .extern func_02072b68
+    .extern GraphicsSpriteState_SetAnimationIndex
     .extern func_02092260
     .extern func_02092288
     .extern func_020ae024
@@ -20,7 +20,7 @@ func_ov018_021fdb7c:
     cmp r2, r1
     ldmeqia sp!, {r3, pc}
     and r1, r2, #0xff
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     ldmia sp!, {r3, pc}
     .size func_ov018_021fdb7c, . - func_ov018_021fdb7c
 

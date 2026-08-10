@@ -12,7 +12,7 @@ extern void *GamePhaseRuntime_GetActorCollection(void *context, s32 index);
 extern void func_02030b58(void *context, s32 value);
 extern void ActorDerivedType1_ClearStateVectorTimers(void *object);
 extern void Type7Actor_EnterSpecialPresentationState(void *object);
-extern void func_02072b68(u8 value);
+extern void GraphicsSpriteState_SetAnimationIndex(u8 value);
 extern void ActorRuntimeScene_ActivateFlaggedActors(ActorRuntimeScene *self);
 #ifdef __cplusplus
 }
@@ -45,7 +45,7 @@ ActorRuntimeScene *ActorRuntimeScene_Init(ActorRuntimeScene *self, void *object)
     if (!GameWork_TestFlag(gGameWork, 0x3f3) &&
         !GameWork_TestFlag(gGameWork, 0x403)) {
         child = *(u8 **)(active + 0x54);
-        func_02072b68(child[0x38]);
+        GraphicsSpriteState_SetAnimationIndex(child[0x38]);
         child = *(u8 **)(active + 0x54);
         *(u16 *)(child + 0x36) = 0x100;
         child = *(u8 **)(active + 0x54);

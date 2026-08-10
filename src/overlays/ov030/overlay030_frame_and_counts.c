@@ -20,7 +20,7 @@ extern void func_020b2058(const void *, s32, s32);
 extern void func_020b1ff0(const void *, s32, s32);
 extern s32 func_0206492c(void *, s32);
 extern void func_02095988(void *, s32);
-extern void func_02072b68(void *, s32);
+extern void GraphicsSpriteState_SetAnimationIndex(void *, s32);
 #ifdef __cplusplus
 }
 #endif
@@ -87,8 +87,8 @@ extern "C" void func_ov030_021fe808(void *scene)
     FIELD(s32, scene, 0x38c) = secondCount;
     func_02095988((u8 *)scene + 0x164, secondCount > 0 ? 2 : 3);
 
-    func_02072b68(FIELD(void *, scene, 0xa8), (firstCount / 10 + 8) & 0xff);
-    func_02072b68(FIELD(void *, scene, 0xac), (firstCount % 10 + 8) & 0xff);
-    func_02072b68(FIELD(void *, scene, 0xb0), (secondCount / 10 + 8) & 0xff);
-    func_02072b68(FIELD(void *, scene, 0xb4), (secondCount % 10 + 8) & 0xff);
+    GraphicsSpriteState_SetAnimationIndex(FIELD(void *, scene, 0xa8), (firstCount / 10 + 8) & 0xff);
+    GraphicsSpriteState_SetAnimationIndex(FIELD(void *, scene, 0xac), (firstCount % 10 + 8) & 0xff);
+    GraphicsSpriteState_SetAnimationIndex(FIELD(void *, scene, 0xb0), (secondCount / 10 + 8) & 0xff);
+    GraphicsSpriteState_SetAnimationIndex(FIELD(void *, scene, 0xb4), (secondCount % 10 + 8) & 0xff);
 }

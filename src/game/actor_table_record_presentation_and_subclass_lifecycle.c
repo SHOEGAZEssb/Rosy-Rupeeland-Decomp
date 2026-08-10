@@ -9,7 +9,7 @@ extern void *data_02105718[4];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_02072b68(void *attachment, u32 animation);
+extern void GraphicsSpriteState_SetAnimationIndex(void *attachment, u32 animation);
 extern void *ActorTableRecord_Init(void *actor, const void *descriptor);
 extern void *ActorDerivedRuntime_DestroyAlternate(void *actor);
 #ifdef __cplusplus
@@ -29,7 +29,7 @@ void ActorTableRecord_UpdatePresentationState(void *self)
     if ((*(u32 *)(actor + 0x20c) & 0x2000) == 0)
         return;
     attachment = *(u8 **)(actor + 0x54);
-    func_02072b68(attachment, actor[0xd4]);
+    GraphicsSpriteState_SetAnimationIndex(attachment, actor[0xd4]);
     *(u16 *)(attachment + 0x24) &= ~1;
     *(u16 *)(attachment + 0x24) |= 2;
 }

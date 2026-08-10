@@ -36,7 +36,7 @@ extern s32 ActorRuntimeCollection_GetBusyState(void *state);
 extern s32 GameWork_TestFlag(void *work, u32 flag);
 extern s32 ActorRuntimeCollection_IsQueuedValueMissing(void *state, const void *record);
 extern void ActorRuntimeCollection_QueueValue(void *state, const void *record);
-extern void func_02072b68(void *attachment, u32 animation);
+extern void GraphicsSpriteState_SetAnimationIndex(void *attachment, u32 animation);
 extern void ActorDerivedType1_ResetSpecialModeFlags(void *actor);
 extern void func_02063820(void *state, u32 value);
 extern void Sound_Play(void *context, u32 sound, u32 variant);
@@ -226,7 +226,7 @@ s32 ActorDerivedType1_ProcessInteraction(void *self)
             ActorRuntimeCollection_IsQueuedValueMissing(data_02105310, data_020d37dc) == 0) {
             u8 snapshot[12];
             ActorRuntimeCollection_QueueValue(data_02105310, data_020d37dc);
-            func_02072b68(*(void **)(actor + 0x54),
+            GraphicsSpriteState_SetAnimationIndex(*(void **)(actor + 0x54),
                           (actor[0xd4] + 0x10) & 0xff);
             *(u16 *)(*(u8 **)(actor + 0x54) + 0x24) &= (u16)~2;
             *(u16 *)(*(u8 **)(actor + 0x54) + 0x24) &= (u16)~1;

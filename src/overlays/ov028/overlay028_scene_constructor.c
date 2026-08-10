@@ -23,7 +23,7 @@ extern void *Heap_Alloc(u32, const void *, s32, void *);
 extern u32 genrand_int32(void);
 extern void func_02071ea4(void *);
 extern void func_02071ee0(void *, void *, s32, s32, s32);
-extern void func_02072b68(void *, s32);
+extern void GraphicsSpriteState_SetAnimationIndex(void *, s32);
 extern void func_02073e48(void *, s32, s32, s32, s32, s32, s32);
 extern void *func_02073ffc(void *, void *, s32);
 extern void *func_020742cc(void *);
@@ -116,7 +116,7 @@ extern "C" void *func_ov028_021fdb00(void *state)
     }
     FIELD(void *, state, 0x260) = child;
     func_02095274((u8 *)state + 0x264, child);
-    func_02072b68(FIELD(void *, child, 0x9c), 7);
+    GraphicsSpriteState_SetAnimationIndex(FIELD(void *, child, 0x9c), 7);
     FIELD(u16, FIELD(void *, child, 0x9c), 0x24) |= 6;
     func_02094bbc(child, FIELD(s32, state, 0x274),
                   FIELD(s32, state, 0x278), 0);
@@ -132,7 +132,7 @@ extern "C" void *func_ov028_021fdb00(void *state)
         func_02095274((u8 *)state + 0x264, child);
         func_02094bbc(child, (i != 0 ? 0xf0 : 0x10) << 12,
                       0x4a000, 0);
-        func_02072b68(FIELD(void *, child, 0x9c), i != 0 ? 5 : 3);
+        GraphicsSpriteState_SetAnimationIndex(FIELD(void *, child, 0x9c), i != 0 ? 5 : 3);
         func_020954f4(child);
     }
 
@@ -151,7 +151,7 @@ extern "C" void *func_ov028_021fdb00(void *state)
         FIELD(u32, state, 0x94) = FIELD(u8, sprite, 0x38);
         const s32 *ids = FIELD(const s32 *, owner, 0x208);
         func_020740c8(FIELD(void *, sprite, 0), ids[1], ids[2], ids[3]);
-        func_02072b68(sprite, 0xc);
+        GraphicsSpriteState_SetAnimationIndex(sprite, 0xc);
         FIELD(u16, sprite, 0x36) = 0x100;
         FIELD(u16, sprite, 0x24) |= 2;
         FIELD(u16, sprite, 0x24) &= (u16)~1;

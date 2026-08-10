@@ -5,7 +5,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_02072b68(void *attachment, u8 index);
+extern void GraphicsSpriteState_SetAnimationIndex(void *attachment, u8 index);
 #ifdef __cplusplus
 }
 #endif
@@ -29,7 +29,7 @@ s32 ActorDerivedType1_IsSpecialRecordActive(void *self)
 /*
  * With enable nonzero, set actor +0x230 bit 0x800000. If attachment byte
  * +0x38 and actor orientation byte +0xd4 are both at most seven, call
- * func_02072b68 on attachment +0x54 with orientation+8. With enable zero,
+ * GraphicsSpriteState_SetAnimationIndex on attachment +0x54 with orientation+8. With enable zero,
  * clear bit 0x800000 only when previously set and then set actor +0xd0 bit
  * 0x1000. Returns no value; attachment dispatch can change presentation.
  */
@@ -41,7 +41,7 @@ void ActorDerivedType1_SetSpecialModeEnabled(void *self, s32 enable)
         *(u32 *)(actor + 0x230) |= 0x800000;
         attachment = *(u8 **)(actor + 0x54);
         if (attachment[0x38] <= 7 && actor[0xd4] <= 7)
-            func_02072b68(attachment, (u8)(actor[0xd4] + 8));
+            GraphicsSpriteState_SetAnimationIndex(attachment, (u8)(actor[0xd4] + 8));
     } else if ((*(u32 *)(actor + 0x230) & 0x800000) != 0) {
         *(u32 *)(actor + 0x230) &= ~0x800000;
         *(u32 *)(actor + 0xd0) |= 0x1000;

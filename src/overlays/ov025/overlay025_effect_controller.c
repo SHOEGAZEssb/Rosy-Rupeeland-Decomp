@@ -22,7 +22,7 @@ extern u32 genrand_int32(void);
 extern void func_02071ea4(void *);
 extern void func_02071eb8(void *);
 extern void func_02071ee0(void *, void *, s32, s32, s32);
-extern void func_02072b68(void *, s32);
+extern void GraphicsSpriteState_SetAnimationIndex(void *, s32);
 extern void func_02073e48(void *, s32, s32, s32, s32, s32, s32);
 extern void *func_02073ffc(void *, void *, s32);
 extern void func_020740e8(void *, void *, void *);
@@ -172,7 +172,7 @@ static void show_secondary_pair(void *object, s32 animation, bool select)
     for (s32 i = 0; i < 2; ++i) {
         if (select) FIELD(u16, sprites[i], 0x24) |= 2;
         FIELD(u16, sprites[i], 0x24) &= (u16)~4;
-        func_02072b68(sprites[i], animation);
+        GraphicsSpriteState_SetAnimationIndex(sprites[i], animation);
     }
 }
 
@@ -207,7 +207,7 @@ extern "C" void func_ov025_021fe39c(void *object)
     void *sprites[2] = { FIELD(void *, object, 0xec), FIELD(void *, object, 0xf4) };
     for (s32 i = 0; i < 2; ++i) {
         FIELD(u16, sprites[i], 0x24) &= (u16)~2;
-        func_02072b68(sprites[i], 13);
+        GraphicsSpriteState_SetAnimationIndex(sprites[i], 13);
     }
     FIELD(s32, object, 0xa8) = 0;
 }

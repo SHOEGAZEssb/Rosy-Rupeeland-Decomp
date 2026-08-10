@@ -2,7 +2,7 @@
 /* Exact fallback; see overlay039_final_update.c for portable C. */
     .extern func_020adc40
     .extern func_020adc90
-    .extern func_02072b68
+    .extern GraphicsSpriteState_SetAnimationIndex
     .extern func_ov007_021fc16c
     .extern func_020befec
     .extern func_020828a0
@@ -48,7 +48,7 @@ func_ov039_02205c18:
     mov r5, r0
     ldr r0, [r1, #0xc]
     mov r1, #0x10
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     mov r0, #0x7000
     mov r1, #0x0
     umull r8, r7, r6, r0
@@ -205,7 +205,7 @@ L_02205ed4:
     ldr r0, [r4, #0x48]
     mov r1, #0x18
     ldr r0, [r0, #0xc]
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     mov r1, #0x0
     str r1, [r4, #0x88]
     sub r0, r1, #0x4000

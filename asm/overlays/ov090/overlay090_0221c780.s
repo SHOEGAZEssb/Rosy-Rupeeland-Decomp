@@ -3,7 +3,7 @@
 .extern data_ov090_0221cc88
 .extern DisplayController_GetVerticalOffset
 .extern UtilAnimationResource_UpdatePosition
-.extern func_02072b68
+.extern GraphicsSpriteState_SetAnimationIndex
 .extern func_020bf1f8
 .extern func_ov090_0221b97c
 .extern func_ov090_0221bc5c
@@ -46,11 +46,11 @@ func_ov090_0221c780:
     and r6, r6, #0xff
     beq .L_0221c80c
     and r1, ip, #0xff
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     ldr r1, [sp, #0x4c]
     ldr r0, [r7, #0x8]
     and r1, r1, #0xff
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
 .L_0221c80c:
     ldr r0, [r4, #0x4]
     mov r1, r5
@@ -144,10 +144,10 @@ func_ov090_0221c780:
     ldr r0, [r6, #0x4]
     ldrb r5, [r0, #0x38]
     mov r1, r5
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     ldr r0, [r6, #0x8]
     mov r1, r5
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     ldr r0, [r4, #0x8]
     mov r1, #0x5
     bl func_ov090_0221bc5c

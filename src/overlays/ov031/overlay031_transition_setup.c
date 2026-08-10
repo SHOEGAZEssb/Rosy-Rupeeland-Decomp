@@ -12,7 +12,7 @@ extern void *data_020f4dc8[];
 extern "C" {
 #endif
 extern s32 func_0209189c(void *, s32, s32);
-extern void func_02072b68(void *, s32);
+extern void GraphicsSpriteState_SetAnimationIndex(void *, s32);
 extern void func_020925dc(s32);
 extern void func_02092618(void);
 extern void func_02092688(s32, s32, s32, s32);
@@ -45,14 +45,14 @@ extern "C" void func_ov031_021fdf20(void *scene, s32 restart)
 {
     if (restart != 0) {
         FIELD(s32, scene, 0x94) = 200;
-        func_02072b68(FIELD(void *, scene, 0x6c),
+        GraphicsSpriteState_SetAnimationIndex(FIELD(void *, scene, 0x6c),
             data_ov031_021fe6e0[FIELD(s32, scene, 0x9c)]);
     } else if (FIELD(s32, scene, 0x94) != 0) {
         --FIELD(s32, scene, 0x94);
     } else {
         FIELD(s32, scene, 0x94) =
             func_0209189c((u8 *)scene + 0x54c, 0x78, 0xf0);
-        func_02072b68(FIELD(void *, scene, 0x6c),
+        GraphicsSpriteState_SetAnimationIndex(FIELD(void *, scene, 0x6c),
             data_ov031_021fe6e0[FIELD(s32, scene, 0x9c)]);
     }
     FIELD(u16, FIELD(void *, scene, 0x6c), 0x24) &= (u16)~4;

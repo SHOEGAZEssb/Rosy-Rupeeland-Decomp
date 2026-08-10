@@ -8,7 +8,7 @@
 .extern GamePhaseRuntime_UpdateActorPresentationState
 .extern GamePhaseCurrencyHud_AddCurrency
 .extern ActorDerivedType1_ApplyResourceIndex
-.extern func_02072b68
+.extern GraphicsSpriteState_SetAnimationIndex
 .extern func_020740a4
 .extern func_020755bc
 .extern func_020befec
@@ -74,7 +74,7 @@ func_ov065_02210600:
     str r0, [r4, #0x8]
     ldr r0, [r4, #0x158]
     mov r1, #0x14
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     add r0, r4, #0x100
     mov r1, #0x0
     strh r1, [r0, #0x20]
@@ -107,7 +107,7 @@ func_ov065_02210600:
     ble .L_0221076c
     ldr r0, [r4, #0x158]
     mov r1, #0xc
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     mov r0, #0x1
     str r0, [r4, #0x8]
     add r0, r4, #0x100
@@ -122,7 +122,7 @@ func_ov065_02210600:
     ldr r5, [r5, #0x54]
     mov r1, #0x4
     mov r0, r5
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     ldr r0, .L_022108ec
     mov r1, #0x1
     ldr r0, [r0, #0x0]

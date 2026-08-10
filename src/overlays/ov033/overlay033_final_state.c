@@ -28,7 +28,7 @@ extern s32 func_02091cf0(void *interpolator);
 extern void func_ov033_021fce04(void *group, s32 index);
 extern void func_020740c8(void *context, void *sprite, s32 first,
                          s32 second, s32 third);
-extern void func_02072b68(void *sprite, s32 animation);
+extern void GraphicsSpriteState_SetAnimationIndex(void *sprite, s32 animation);
 extern void Sound_Play(void *sound, s32 id, s32 parameter);
 extern void Type7Actor_ResetMotionAndCooldown(void *actor);
 extern void func_020597fc(void *sound, s32 id);
@@ -104,7 +104,7 @@ extern "C" s32 func_ov033_021fd9a0(void *scene)
             func_020740c8(FIELD(void *, sprite, 0), sprite,
                           FIELD(s32, record, 4), FIELD(s32, record, 8),
                           FIELD(s32, record, 0xc));
-            func_02072b68(sprite, 9);
+            GraphicsSpriteState_SetAnimationIndex(sprite, 9);
             FIELD(u16, sprite, 0x36) = 0x100;
             FIELD(u16, sprite, 0x24) =
                 (FIELD(u16, sprite, 0x24) | 2) & (u16)~0x10;

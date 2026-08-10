@@ -18,7 +18,7 @@ extern const s32 data_ov028_021ff238[];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_02072b68(void *, s32);
+extern void GraphicsSpriteState_SetAnimationIndex(void *, s32);
 extern void func_020755bc(void *);
 extern s32 func_020ae024(s32, s32);
 extern void func_020948e4(void *, s32, s32);
@@ -83,7 +83,7 @@ extern "C" void func_ov028_021fe558(void *state, s32 index)
                 direction = 5;
             s32 selector = 15 - direction;
             if (selector != FIELD(u8, sprite, 0x38))
-                func_02072b68(sprite, selector);
+                GraphicsSpriteState_SetAnimationIndex(sprite, selector);
         }
     } else {
         func_ov028_021fdf94((u8 *)state + 0x274, data_ov028_021ff238);
@@ -92,7 +92,7 @@ extern "C" void func_ov028_021fe558(void *state, s32 index)
                       FIELD(s32, state, 0x278), 0);
         void *sprite = FIELD(void *, state, 0x90);
         if (sprite != 0 && FIELD(u8, sprite, 0x38) != 0xc)
-            func_02072b68(sprite, 0xc);
+            GraphicsSpriteState_SetAnimationIndex(sprite, 0xc);
     }
 }
 

@@ -8,7 +8,7 @@
 .extern Actor_AdjustPositionForTerrainHeight
 .extern Actor_GetCachedTerrainHeight
 .extern func_02034568
-.extern func_02072b68
+.extern GraphicsSpriteState_SetAnimationIndex
 .extern func_020740c8
 .extern func_ov088_02218280
 .extern func_ov088_0221ad6c
@@ -178,7 +178,7 @@ func_ov088_0221aaac:
 .L_0221ad20:
     ldr r0, [r4, #0x250]
     and r1, r7, #0xff
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     ldr r2, [r4, #0x250]
     mov r0, #0x10000
     ldrh r1, [r2, #0x24]

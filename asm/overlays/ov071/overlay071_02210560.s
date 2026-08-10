@@ -2,7 +2,7 @@
 ; Matching fallback for the portable implementation in src/overlays/ov071/overlay071_recovery.c.
 .extern data_020c9670
 .extern func_020050a4
-.extern func_02072b68
+.extern GraphicsSpriteState_SetAnimationIndex
 .extern func_020a1794
 .extern func_020befec
 .extern func_ov071_022102ac
@@ -27,7 +27,7 @@ func_ov071_02210560:
     ldr r0, [r4, #0x90]
     mov r1, #0xb
     ldr r0, [r0, #0xc]
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     b .L_022107d4
 .L_022105b0:
     cmp r1, #0x3
@@ -149,7 +149,7 @@ func_ov071_02210560:
     ldr r0, [r4, #0xec]
     mov r1, #0x1a
     ldr r0, [r0, #0xc]
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     ldr r1, [r4, #0xec]
     mov r0, #0x80
     strh r0, [r1, #0x3c]

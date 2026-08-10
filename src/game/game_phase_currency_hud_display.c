@@ -27,7 +27,7 @@ void GamePhaseCurrencyHud_UpdateDigits(GamePhaseCurrencyHud *self, u32 value)
             GraphicsSpriteState *sprite = self->digits[display][digit];
             if (!(sprite->flags & 1) || sprite->animationIndex != number) {
                 u16 scale;
-                func_02072b68(sprite, number);
+                GraphicsSpriteState_SetAnimationIndex(sprite, number);
                 sprite->flags &= ~1;
                 if (!(genrand_int32() & 0xf))
                     scale = 0xc0;

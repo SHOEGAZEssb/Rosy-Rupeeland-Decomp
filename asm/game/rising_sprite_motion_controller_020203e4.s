@@ -13,7 +13,7 @@
 .extern func_02020364
 .extern func_02020374
 .extern func_020203b0
-.extern func_02072b68
+.extern GraphicsSpriteState_SetAnimationIndex
 .extern func_02073fc4
 .extern gSystemState
 
@@ -78,7 +78,7 @@ func_020203e4: ; 0x020203e4
     bl func_02073fc4
     mov r1, #0x0
     str r0, [r4, #0x0]
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     ldr r2, [r4, #0x0]
     mov r6, #0x40
     ldrh r0, [r2, #0x24]

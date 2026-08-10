@@ -10,7 +10,7 @@
 
 extern "C" void func_ov042_021fda0c(void *destination, const void *source);
 extern "C" s32 func_020befec(s32 numerator, s32 denominator);
-extern "C" void func_02072b68(void *resource, u8 mode);
+extern "C" void GraphicsSpriteState_SetAnimationIndex(void *resource, u8 mode);
 
 /*
  * Given object, subtype, and source payload, copy the source to +0x50, clear
@@ -33,7 +33,7 @@ extern "C" void func_ov042_02209af4(void *object, u8 subtype,
     FIELD(u16, object, 0x88) = 0;
     void *child = FIELD(void *, object, 0x4c);
     void *resource = FIELD(void *, child, 0xc);
-    func_02072b68(resource, (u8)((subtype % 3) * 2));
+    GraphicsSpriteState_SetAnimationIndex(resource, (u8)((subtype % 3) * 2));
     FIELD(u16, resource, 0x24) &= (u16)~2;
     FIELD(u16, child, 0x3c) = 0x100;
     FIELD(u16, child, 0x3e) = 0x100;

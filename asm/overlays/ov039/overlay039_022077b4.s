@@ -1,7 +1,7 @@
 .text
 /* Exact fallback; see overlay039_final_update.c for portable C. */
     .extern func_020befec
-    .extern func_02072b68
+    .extern GraphicsSpriteState_SetAnimationIndex
     .extern func_ov039_0220760c
     .extern func_ov039_0220608c
     .extern func_020a68fc
@@ -134,7 +134,7 @@ L_02207948:
     bne L_02207a00
     ldr r0, [r5, #0xc]
     mov r1, #0x1a
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     mov r0, #0x0
     str r0, [r7, #0x8c]
     str r0, [r7, #0x88]
@@ -143,7 +143,7 @@ L_02207948:
     ldr r0, [r7, #0x54]
     mov r1, #0x1
     ldr r0, [r0, #0xc]
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     mov r0, #0x60
     strh r0, [r7, #0xc0]
     mov r2, #0x0
@@ -236,7 +236,7 @@ L_02207abc:
     strh r0, [r5, #0x40]
     mov r1, r0, asr #0x1
     ldr r0, [r5, #0xc]
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     mov r0, #0x200000
     str r0, [r5, #0x30]
     mov r1, #0x1e0000
@@ -293,7 +293,7 @@ L_02207b84:
     ldr r0, [r5, #0xc]
     mov r1, r1, asr #0x1
     and r1, r1, #0xff
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     mov r0, r7
     bl func_ov039_0220608c
     ldr r0, [r7, #0x80]
@@ -426,7 +426,7 @@ L_02207d4c:
     add r1, r0, #0x1
     ldr r0, [r2, #0xc]
     and r1, r1, #0xff
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     add r0, r7, r6, lsl #0x2
     ldr r0, [r0, #0x58]
     ldr r1, [r0, #0xc]

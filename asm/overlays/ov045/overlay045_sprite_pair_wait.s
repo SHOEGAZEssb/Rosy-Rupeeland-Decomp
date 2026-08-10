@@ -1,7 +1,7 @@
 .text
 .extern func_0209189c
 .extern func_020918f4
-.extern func_02072b68
+.extern GraphicsSpriteState_SetAnimationIndex
 .extern func_ov045_0220c068
 
 .global func_ov045_0220c1ac
@@ -41,11 +41,11 @@ func_ov045_0220c1ac:
     ldr r0, [r4, #0x20]
     beq .L_animation5
     mov r1, #0x4
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     b .L_clear_flags
 .L_animation5:
     mov r1, #0x5
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
 .L_clear_flags:
     ldr r1, [r4, #0x20]
     ldrh r0, [r1, #0x24]

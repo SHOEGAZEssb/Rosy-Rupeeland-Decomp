@@ -4,7 +4,7 @@
     .extern func_020befec
     .extern func_0209a07c
     .extern func_0209a0d8
-    .extern func_02072b68
+    .extern GraphicsSpriteState_SetAnimationIndex
     .extern Sound_Play
     .extern func_ov040_021ff8b0
     .extern gSoundContext
@@ -44,7 +44,7 @@ func_ov040_021ff514:
     ldr r0, [r4, #0xb44]
     mov r1, #0x0
     ldr r0, [r0, #0xc]
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     ldr r1, [r4, #0xb44]
     ldr r0, .Lsound
     ldr r12, [r1, #0xc]

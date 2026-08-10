@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/actor_mode_nibble_presentation_state.c.
 .text
-.extern func_02072b68
+.extern GraphicsSpriteState_SetAnimationIndex
     .global ActorModeNibble_UpdatePresentationState
     .type ActorModeNibble_UpdatePresentationState, @function
 ActorModeNibble_UpdatePresentationState: ; 0x0203c884
@@ -15,7 +15,7 @@ ActorModeNibble_UpdatePresentationState: ; 0x0203c884
 .L_0203c8a4:
     ldr r0, [r4, #0x54]
     mov r1, #0x0
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     ldr r1, [r4, #0x54]
     ldrh r0, [r1, #0x24]
     bic r0, r0, #0x1
@@ -32,7 +32,7 @@ ActorModeNibble_UpdatePresentationState: ; 0x0203c884
     ldr r1, [r1, #0x4]
     sub r1, r1, #0x1
     and r1, r1, #0xff
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     add r0, r4, #0x200
     ldrh r0, [r0, #0x8]
     ldr r1, [r4, #0x54]

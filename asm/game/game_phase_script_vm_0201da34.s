@@ -2,7 +2,7 @@
 .text
 .extern GamePhaseScriptVm_Pop
 .extern func_020be328
-.extern func_02072b68
+.extern GraphicsSpriteState_SetAnimationIndex
 .extern func_020791e0
 .extern Actor_GetCollection
 .extern func_02078e98
@@ -34,7 +34,7 @@ func_0201da34: ; 0x0201da34
     mov r1, r0
     mov r0, r4
     and r1, r1, #0xff
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     ldrsb r0, [r5, #0x90]
     cmp r0, #0x0
     ldrlth r0, [r4, #0x24]

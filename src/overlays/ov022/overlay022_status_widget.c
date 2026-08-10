@@ -17,7 +17,7 @@ extern void *func_02073ffc(void *, void *, s32);
 extern void func_02071ea4(void *);
 extern void func_02071eb8(void *);
 extern void func_02071ee0(void *, void *, s32, s32, s32);
-extern void func_02072b68(void *, s32);
+extern void GraphicsSpriteState_SetAnimationIndex(void *, s32);
 extern void func_0207419c(void *);
 extern void *func_020742cc(void *);
 extern void func_02076148(void *, s32, s32, s32, ...);
@@ -119,7 +119,7 @@ static void set_main_mode(void *widget, s32 mode, s32 animation)
     if (FIELD(s32, widget, 0x28) == mode)
         return;
     void *sprite = FIELD(void *, widget, 0x20);
-    func_02072b68(sprite, animation);
+    GraphicsSpriteState_SetAnimationIndex(sprite, animation);
     FIELD(u16, sprite, 0x24) =
         (FIELD(u16, sprite, 0x24) | 2) & (u16)~1;
     FIELD(s32, widget, 0x28) = mode;
@@ -196,7 +196,7 @@ extern "C" void func_ov022_021fd614(void *widget)
             if (--FIELD(s32, widget, 0x2c) != 0)
                 break;
             void *sprite = FIELD(void *, widget, 0x20);
-            func_02072b68(sprite,
+            GraphicsSpriteState_SetAnimationIndex(sprite,
                          func_020918f4((u8 *)widget + 0x30, 3) != 0 ? 4 : 5);
             FIELD(u16, sprite, 0x24) &= (u16)~3;
         } else if ((FIELD(u16, FIELD(void *, widget, 0x20), 0x24) & 1) != 0) {

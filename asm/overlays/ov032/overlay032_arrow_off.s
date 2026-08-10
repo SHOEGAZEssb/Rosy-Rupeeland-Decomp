@@ -1,7 +1,7 @@
 .text
 
 /* Exact fallback; see src/overlays/ov032/overlay032_unlock_effect.c for documented portable C. */
-.extern func_02072b68
+.extern GraphicsSpriteState_SetAnimationIndex
 
     .global func_ov032_02200180
 func_ov032_02200180:
@@ -12,6 +12,6 @@ func_ov032_02200180:
     ldr r0, [r0, #0x0]
     and r1, r1, #0xff
     bx ip
-L_0220019c: .word func_02072b68
+L_0220019c: .word GraphicsSpriteState_SetAnimationIndex
 .size func_ov032_02200180, .-func_ov032_02200180
 

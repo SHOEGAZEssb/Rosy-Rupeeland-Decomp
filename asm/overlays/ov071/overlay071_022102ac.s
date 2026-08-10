@@ -1,7 +1,7 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov071/overlay071_recovery.c.
 .extern GameWork_TestFlag
-.extern func_02072b68
+.extern GraphicsSpriteState_SetAnimationIndex
 .extern func_0209a07c
 .extern func_0209a0d8
 .extern gGameWork
@@ -41,7 +41,7 @@ func_ov071_022102ac:
     ldr r0, [r4, #0xec]
     mov r1, #0x4
     ldr r0, [r0, #0xc]
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     ldr r0, [r4, #0xec]
     ldr r1, [r0, #0xc]
     ldrh r0, [r1, #0x24]

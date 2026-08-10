@@ -16,7 +16,7 @@ extern void func_02093998(void *);
 extern void *func_02079408(const void *, u16);
 extern void func_02092e9c(void *, void *, s32);
 extern u32 func_02093360(void *, const void *);
-extern void func_02072b68(void *, s32);
+extern void GraphicsSpriteState_SetAnimationIndex(void *, s32);
 extern void func_ov031_021fdf20(void *, s32);
 #ifdef __cplusplus
 }
@@ -45,7 +45,7 @@ extern "C" void func_ov031_021fdd04(void *scene, s32 messageId)
     s32 selection = (result & 0x200) != 0 ? FIELD(s32, dialog, 0xe8) : 0;
     FIELD(s32, scene, 0x9c) = selection;
     void *sprite = FIELD(void *, scene, 0x68);
-    func_02072b68(sprite, data_ov031_021fe6e4[selection]);
+    GraphicsSpriteState_SetAnimationIndex(sprite, data_ov031_021fe6e4[selection]);
     FIELD(u16, sprite, 0x24) =
         (FIELD(u16, sprite, 0x24) | 2) & (u16)~1;
     func_ov031_021fdf20(scene, 1);
@@ -77,7 +77,7 @@ extern "C" s32 func_ov031_021fddbc(void *scene)
         if ((status & 2) != 0) {
             func_ov031_021fdf20(scene, 1);
             if ((FIELD(u16, sprite, 0x24) & 2) == 0) {
-                func_02072b68(sprite,
+                GraphicsSpriteState_SetAnimationIndex(sprite,
                     data_ov031_021fe6e4[FIELD(s32, scene, 0x9c)]);
                 FIELD(u16, sprite, 0x24) =
                     (FIELD(u16, sprite, 0x24) | 2) & (u16)~1;
@@ -93,7 +93,7 @@ extern "C" s32 func_ov031_021fddbc(void *scene)
     if ((result & 0x200) != 0) {
         s32 selection = FIELD(s32, dialog, 0xe8);
         FIELD(s32, scene, 0x9c) = selection;
-        func_02072b68(sprite, data_ov031_021fe6e4[selection]);
+        GraphicsSpriteState_SetAnimationIndex(sprite, data_ov031_021fe6e4[selection]);
         func_ov031_021fdf20(scene, 1);
     }
     if ((result & 1) == 0)

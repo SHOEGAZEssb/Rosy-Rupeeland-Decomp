@@ -39,8 +39,8 @@ extern "C" {
 
 GraphicsSpriteState *func_02072aec(GraphicsSpriteState *state);
 void func_02072b00(GraphicsSpriteState *state);
-void func_02072b68(GraphicsSpriteState *state, u8 animationIndex);
-void func_02072bdc(GraphicsSpriteState *state, u8 frameIndex);
+void GraphicsSpriteState_SetAnimationIndex(GraphicsSpriteState *state, u8 animationIndex);
+void GraphicsSpriteState_SetFrameIndex(GraphicsSpriteState *state, u8 frameIndex);
 void func_02072c98(GraphicsSpriteState *state);
 u16 func_02072cd0(GraphicsSpriteState *state);
 void func_02072d04(GraphicsSpriteState *state);

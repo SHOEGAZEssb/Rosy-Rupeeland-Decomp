@@ -28,7 +28,7 @@ typedef struct Overlay002PointInput {
 extern "C" {
 #endif
 extern s32 func_02073aa8(void *sprite, s32 x, s32 y);
-extern void func_02072b68(void *sprite, u8 value);
+extern void GraphicsSpriteState_SetAnimationIndex(void *sprite, u8 value);
 #ifdef __cplusplus
 }
 #endif
@@ -41,7 +41,7 @@ extern void func_02072b68(void *sprite, u8 value);
  * index. If the shifted retest fails, restore Y and stop; if no confirmed hit
  * exists, return -1. X is rewritten unchanged alongside each Y adjustment,
  * matching the original access pattern. Sprite effects occur through memory
- * and func_02072b68; there is no direct hardware access.
+ * and GraphicsSpriteState_SetAnimationIndex; there is no direct hardware access.
  */
 #ifdef __cplusplus
 extern "C"
@@ -69,7 +69,7 @@ s32 func_ov002_021fbb68(Overlay002IconHitState *state,
             switch (state->selectedIndex_08c) {
             case 0: case 1: case 2: case 3: case 4: case 5:
             case 6: case 7: case 8: case 9: case 10:
-                func_02072b68(state->control_078, 0x1c);
+                GraphicsSpriteState_SetAnimationIndex(state->control_078, 0x1c);
                 break;
             }
             return i;

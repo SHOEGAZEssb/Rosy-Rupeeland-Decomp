@@ -15,7 +15,7 @@
 .extern GraphicsSpriteState_Create
 .extern GamePhaseRuntime_GetActorCollection
 .extern ActorCollection_GetSpriteOwner
-.extern func_02072b68
+.extern GraphicsSpriteState_SetAnimationIndex
 .extern func_02074038
 .extern func_020740a4
 .extern gHeapContext
@@ -349,7 +349,7 @@ L_0200ce64:
     movs r1, r1, lsr #0x10
     beq L_0200cef0
     mov r1, #0x17
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     ldr r1, [r4, #0x28]
     ldrh r0, [r1, #0x24]
     bic r0, r0, #0x1

@@ -22,7 +22,7 @@ extern u32 data_ov007_021fc280;
 extern s32 data_ov007_021fc284[20];
 extern void *func_0209a208(void *state, s32 firstId, s32 secondId, s32 thirdId,
                           s32 argument, s32 mode);
-extern void func_02072b68(void *member, s32 value);
+extern void GraphicsSpriteState_SetAnimationIndex(void *member, s32 value);
 extern void func_0200500c(void *member, s32 first, s32 second, s32 third);
 extern void func_020050a4(void *destination, const void *source);
 extern void func_02005058(void *member);
@@ -101,7 +101,7 @@ void func_ov007_021fb788(Overlay007ItemState *state, s32 argument)
             overlay007_place_object(state, object,
                                     data_ov007_021fc284[index * 2] << 12,
                                     data_ov007_021fc284[index * 2 + 1] << 12);
-            func_02072b68((u8 *)object + 0x0c, (index & 3) * 2);
+            GraphicsSpriteState_SetAnimationIndex((u8 *)object + 0x0c, (index & 3) * 2);
             FIELD(s32, state, 0x0a4 + index * 4) = 0;
         }
 

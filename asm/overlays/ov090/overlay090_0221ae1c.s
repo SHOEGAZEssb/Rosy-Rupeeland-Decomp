@@ -4,7 +4,7 @@
 .extern func_02005058
 .extern func_020050a4
 .extern ActorDerivedType1_TeardownActiveRecord
-.extern func_02072b68
+.extern GraphicsSpriteState_SetAnimationIndex
 .extern func_020adcac
 .extern func_ov077_02214eec
 .extern func_ov090_0221a420
@@ -63,7 +63,7 @@ func_ov090_0221ae1c:
     bl func_ov090_0221ad64
     ldr r0, [r10, #0x200]
     mov r1, #0x4
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     ldr r4, [r10, #0x200]
     mov r3, #0x180
     ldrh r1, [r4, #0x24]
@@ -88,7 +88,7 @@ func_ov090_0221ae1c:
     bl func_ov090_0221ad64
     ldr r0, [r10, #0x200]
     mov r1, #0x4
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     ldr r4, [r10, #0x200]
     mov r3, #0x180
     ldrh r1, [r4, #0x24]
@@ -124,7 +124,7 @@ func_ov090_0221ae1c:
     bic r0, r0, #0x1
     strh r0, [r2, #0x24]
     ldr r0, [r10, #0x200]
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     add r0, r10, #0x100
     mov r1, #0x0
     strh r1, [r0, #0xf0]

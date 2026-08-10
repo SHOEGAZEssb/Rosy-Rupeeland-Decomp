@@ -112,8 +112,8 @@ void GamePhaseCurrencyHud_AddCurrency(GamePhaseCurrencyHud *self, s32 delta,
         self->flags |= 0x10;
     for (display = 0; display < 2; display++) {
         s32 increasing = newValue >= (s32)self->transitionStartValue;
-        func_02072b68(self->marker[display], increasing ? 1 : 2);
-        func_02072b68(self->backdrop[display], increasing ? 1 : 2);
+        GraphicsSpriteState_SetAnimationIndex(self->marker[display], increasing ? 1 : 2);
+        GraphicsSpriteState_SetAnimationIndex(self->backdrop[display], increasing ? 1 : 2);
         self->marker[display]->flags &= ~1;
     }
     if ((s16)self->soundCooldown == 0) {

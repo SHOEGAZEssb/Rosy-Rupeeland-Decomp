@@ -14,7 +14,7 @@
 .extern AnimationResource_Init
 .extern GraphicsSpriteState_Create
 .extern func_0201f864
-.extern func_02072b68
+.extern GraphicsSpriteState_SetAnimationIndex
 .extern func_ov062_0220fd20
 .extern func_ov062_0220fd30
 .extern func_ov062_0220fd50
@@ -161,7 +161,7 @@ func_ov062_0220fe78:
     bl GraphicsSpriteState_Create
     str r0, [r6, #0x28]
     and r1, r4, #0xff
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     ldr r0, [r6, #0x24]
     bl func_ov062_0220fe58
     cmp r0, #0x0

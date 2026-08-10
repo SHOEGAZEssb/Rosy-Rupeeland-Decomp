@@ -39,7 +39,7 @@ extern s32 func_020adcac(const s32 *, const s32 *);
 extern s32 func_020adc90(s32, s32);
 extern s32 func_020ae024(s32, s32);
 extern u8 *func_02073ffc(void *, void *, s32);
-extern void func_02072b68(void *, s32);
+extern void GraphicsSpriteState_SetAnimationIndex(void *, s32);
 extern void func_02074038(void *, void *);
 #ifdef __cplusplus
 }
@@ -65,7 +65,7 @@ RandomizedSpriteParticle *func_02028860(RandomizedSpriteParticle *self,
     self->lifetime_48 = 0;
     self->position_00.y += ((s32)(genrand_int32() & 0x1f) - 0x10) << 12;
     self->sprite_40 = func_02073ffc(owner, resources + 4, 1);
-    func_02072b68(self->sprite_40, (u8)frame);
+    GraphicsSpriteState_SetAnimationIndex(self->sprite_40, (u8)frame);
     *(u16 *)(self->sprite_40 + 0x24) |= 6;
     *(u16 *)(self->sprite_40 + 0x28) = 100;
     func_0200500c(&impulse, 0,

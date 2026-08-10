@@ -5,7 +5,7 @@
 .extern data_020e1938
 .extern Type7Actor_SetCallbackPair
 .extern func_0206c978
-.extern func_02072b68
+.extern GraphicsSpriteState_SetAnimationIndex
 .extern gGameWork
 .global Type7Actor_ResetCallbackState
 .type Type7Actor_ResetCallbackState, @function
@@ -26,7 +26,7 @@ Type7Actor_ResetCallbackState: ; 0x02047f38
     ldr r0, [r4, #0x54]
     add r1, r1, #0x8
     and r1, r1, #0xff
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     ldr r1, .L_02047ff4
     mov r0, r4
     ldmia r1, {r1, r2}

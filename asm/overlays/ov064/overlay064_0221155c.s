@@ -13,7 +13,7 @@
 .extern VecFx32Bezier_Evaluate3D
 .extern func_02058ce0
 .extern func_02059604
-.extern func_02072b68
+.extern GraphicsSpriteState_SetAnimationIndex
 .extern func_020755bc
 .extern func_020a7c4c
 .extern func_020befec
@@ -125,7 +125,7 @@ func_ov064_0221155c:
     cmp r1, #0x1
     bne .L_02211738
     mov r1, #0x2
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     ldr r1, [r5, #0x68]
     ldrh r0, [r1, #0x24]
     bic r0, r0, #0x1
@@ -140,7 +140,7 @@ func_ov064_0221155c:
     cmp r1, #0xa
     bne .L_02211728
     mov r1, #0x1
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     ldr r1, [r5, #0x68]
     ldrh r0, [r1, #0x24]
     bic r0, r0, #0x3
@@ -150,7 +150,7 @@ func_ov064_0221155c:
     cmp r1, #0x74
     bne .L_02211738
     mov r1, #0x3
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
 .L_02211738:
     ldrsh r1, [r5, #0x7c]
     ldrsh r2, [r5, #0x7e]

@@ -16,7 +16,7 @@ extern "C" {
 #endif
 extern void func_02071ea4(void *);
 extern void func_02071ee0(void *, void *, s32, s32, s32);
-extern void func_02072b68(void *, s32);
+extern void GraphicsSpriteState_SetAnimationIndex(void *, s32);
 extern void func_02073e48(void *, s32, s32, s32, s32, s32, s32);
 extern void *func_02073ffc(void *, void *, s32);
 extern void *func_020742cc(void *);
@@ -168,7 +168,7 @@ extern "C" void func_ov025_021fd2e8(void *widget, s32 index)
 {
     void *sprite = FIELD(void *, widget, 0x30 + index * 4);
     FIELD(void *, widget, 0x174) = sprite;
-    func_02072b68(sprite, 3);
+    GraphicsSpriteState_SetAnimationIndex(sprite, 3);
     FIELD(u16, sprite, 0x28) = 0;
 }
 
@@ -180,7 +180,7 @@ extern "C" void func_ov025_021fd314(void *widget, s32 index)
 {
     void *sprite = FIELD(void *, widget, 0x40 + index * 4);
     FIELD(void *, widget, 0x174) = sprite;
-    func_02072b68(sprite, 2);
+    GraphicsSpriteState_SetAnimationIndex(sprite, 2);
     FIELD(u16, sprite, 0x28) = 0;
 }
 
@@ -201,7 +201,7 @@ extern "C" s32 func_ov025_021fd340(void *widget, void *input)
 extern "C" void func_ov025_021fd388(void *widget, s32 index)
 {
     for (s32 i = index; i < FIELD(s32, widget, 0x17c); ++i)
-        func_02072b68(FIELD(void *, widget, 0x10 + i * 4), 5);
+        GraphicsSpriteState_SetAnimationIndex(FIELD(void *, widget, 0x10 + i * 4), 5);
     void *sprite = FIELD(void *, widget, 0x10 + index * 4);
     FIELD(void *, widget, 0x174) = sprite;
     FIELD(u16, sprite, 0x28) = 0;

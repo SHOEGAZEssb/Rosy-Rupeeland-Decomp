@@ -6,7 +6,7 @@
 .extern data_02105718
 .extern ActorDerivedRuntime_DestroyAlternate
 .extern ActorTableRecord_Init
-.extern func_02072b68
+.extern GraphicsSpriteState_SetAnimationIndex
     .global ActorTableRecord_UpdatePresentationState
     .type ActorTableRecord_UpdatePresentationState, @function
 ActorTableRecord_UpdatePresentationState: ; 0x0203d260
@@ -18,7 +18,7 @@ ActorTableRecord_UpdatePresentationState: ; 0x0203d260
     ldmeqia sp!, {r4, pc}
     ldrb r1, [r4, #0xd4]
     ldr r0, [r4, #0x54]
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     ldr r1, [r4, #0x54]
     ldrh r0, [r1, #0x24]
     bic r0, r0, #0x1

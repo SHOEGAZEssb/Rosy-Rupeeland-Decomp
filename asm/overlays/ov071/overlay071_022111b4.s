@@ -5,7 +5,7 @@
 .extern data_ov071_0221223c
 .extern func_0200500c
 .extern func_02005058
-.extern func_02072b68
+.extern GraphicsSpriteState_SetAnimationIndex
 .extern func_0209a2ac
 .extern func_0209b7a0
 .extern func_0209d640
@@ -85,7 +85,7 @@ func_ov071_022111b4:
     and r1, r0, #0xff
     ldr r0, [r2, #0xc]
     sub r4, r4, r3
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     add r0, r10, r7, lsl #0x2
     ldr r1, [r0, #0x6c]
     ldrh r0, [r1, #0x42]

@@ -9,7 +9,7 @@ typedef struct ResourceStateVTable {
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_02072b68(void *, s32);
+extern void GraphicsSpriteState_SetAnimationIndex(void *, s32);
 #ifdef __cplusplus
 }
 #endif
@@ -49,7 +49,7 @@ void Actor_SavePrimaryAttachmentState(void *self)
 }
 
 /*
- * Restore attachment animation byte 0x38 through func_02072b68 and byte 0x3a
+ * Restore attachment animation byte 0x38 through GraphicsSpriteState_SetAnimationIndex and byte 0x3a
  * directly from actor 0x194/0x195. Set attachment flag two, clear flags one
  * and 0x20, then clear actor flag 0x200. The saved halfword at 0x196 is not
  * read by the retail body. Returns no value; the animation helper may mutate
@@ -59,7 +59,7 @@ void Actor_RestorePrimaryAttachmentState(void *self)
 {
     u8 *actor = (u8 *)self;
     u8 *attachment = *(u8 **)(actor + 0x54);
-    func_02072b68(attachment, actor[0x194]);
+    GraphicsSpriteState_SetAnimationIndex(attachment, actor[0x194]);
     attachment[0x3a] = actor[0x195];
     *(u16 *)(attachment + 0x24) |= 2;
     *(u16 *)(attachment + 0x24) &= ~1;

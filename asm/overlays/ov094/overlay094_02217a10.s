@@ -1,7 +1,7 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov094/overlay094_recovery.c.
 .extern data_020c9670
-.extern func_02072b68
+.extern GraphicsSpriteState_SetAnimationIndex
 .extern func_020919e8
 .extern func_020948d4
 .extern func_02094c48
@@ -40,10 +40,10 @@ func_ov094_02217a10:
     add r1, r2, r1
     and r5, r1, #0xff
     mov r1, r5
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     ldr r0, [r4, #0xa0]
     mov r1, r5
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     b .L_02217b20
 .L_02217a94:
     ldr r0, [r4, #0xb8]
@@ -107,10 +107,10 @@ func_ov094_02217a10:
     and r5, r0, #0xff
     ldr r0, [r4, #0x9c]
     mov r1, r5
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     ldr r0, [r4, #0xa0]
     mov r1, r5
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     ldr r0, [r4, #0xa4]
     add r0, r0, #0x1
     str r0, [r4, #0xa4]

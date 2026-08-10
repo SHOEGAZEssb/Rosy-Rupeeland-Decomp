@@ -15,7 +15,7 @@ typedef struct Overlay021Row {
 extern "C" {
 #endif
 extern void func_02071eb8(void *);
-extern void func_02072b68(void *, s32);
+extern void GraphicsSpriteState_SetAnimationIndex(void *, s32);
 extern void func_02073e48(void *, s32, s32, s32, s32, s32, s32);
 extern void func_02073ef8(void *);
 extern void *func_02073ffc(void *, void *, s32);

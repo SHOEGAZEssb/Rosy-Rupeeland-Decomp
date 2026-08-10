@@ -15,7 +15,7 @@
 .extern ActorCollection_QueueActorForRemoval
 .extern Actor_GetCollection
 .extern ActorDerivedType1_TrySetStateVector
-.extern func_02072b68
+.extern GraphicsSpriteState_SetAnimationIndex
 .extern func_020a25c8
 .text
 
@@ -34,7 +34,7 @@ func_0204df40: ; 0x0204df40
     strh r1, [r0, #0xf0]
     ldrb r1, [r6, #0x1ef]
     ldr r0, [r6, #0x54]
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     ldr r1, [r6, #0x54]
     mov r0, #0x1
     strb r0, [r1, #0x3a]

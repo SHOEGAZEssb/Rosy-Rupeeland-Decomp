@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/game_phase_currency_hud_display.c.
 .text
-.extern func_02072b68
+.extern GraphicsSpriteState_SetAnimationIndex
 .extern func_020befec
 .extern genrand_int32
 
@@ -29,7 +29,7 @@ L_0201131c:
     cmpne r4, r1
     beq L_02011388
     mov r1, r4
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     ldr r1, [r8, #0x48]
     ldrh r0, [r1, #0x24]
     bic r0, r0, #0x1

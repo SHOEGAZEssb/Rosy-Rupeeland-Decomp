@@ -1,6 +1,6 @@
 .text
 /* Exact fallback; see overlay039_scene_destroy_place.c for portable C. */
-    .extern func_02072b68
+    .extern GraphicsSpriteState_SetAnimationIndex
 
     .global func_ov039_021fd7f0
 func_ov039_021fd7f0:
@@ -10,7 +10,7 @@ func_ov039_021fd7f0:
     ldr r0, [r6, #0xc]
     mov r5, r2
     mov r4, r3
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     ldr ip, [r6, #0xc]
     ldr r3, [sp, #0x14]
     ldrh r2, [ip, #0x24]

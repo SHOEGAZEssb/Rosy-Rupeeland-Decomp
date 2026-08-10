@@ -15,7 +15,7 @@
 .extern func_0201f598
 .extern Actor_QueryTerrainHeight
 .extern ActorFeedbackResources_GetResource
-.extern func_02072bdc
+.extern GraphicsSpriteState_SetFrameIndex
 .extern gHeapContext
 .extern gSceneTouchInitialData
 .extern gSoundContext
@@ -237,7 +237,7 @@ ActorFeedback_DispatchEnvironment: ; 0x0203a314
     bgt .L_0203a63c
     mov r0, r9
     mov r1, r11
-    bl func_02072bdc
+    bl GraphicsSpriteState_SetFrameIndex
     ldrh r0, [r9, #0x24]
     bic r0, r0, #0x1
     strh r0, [r9, #0x24]

@@ -16,7 +16,7 @@ extern void func_0201e3b8(TimedSprite *self,s32 enabled);
 extern void func_020050a4(Track *destination,const void *source);
 extern void func_020050c8(Track *first,Track *second);
 extern u16 func_020ae024(s32 x,s32 y);
-extern void func_02072b68(void *sprite,s32 value);
+extern void GraphicsSpriteState_SetAnimationIndex(void *sprite,s32 value);
 extern void GraphicsSpriteState_SetWorldPositionFromOrigin(void *sprite,s32 argument,s32 first,s32 second,
                           s32 third,s32 constant8);
 #ifdef __cplusplus
@@ -39,7 +39,7 @@ TimedSprite *func_0201e454(TimedSprite *self,u8 *config)
     *(u16 *)(self->sprite+0x24)|=2;
     angle=func_020ae024(-*(s32 *)&self->second18.bytes[4],
                         *(s32 *)&self->second18.bytes[8]);
-    func_02072b68(self->sprite,0);
+    GraphicsSpriteState_SetAnimationIndex(self->sprite,0);
     *(u16 *)(self->sprite+0x30)=angle;
     return self;
 }

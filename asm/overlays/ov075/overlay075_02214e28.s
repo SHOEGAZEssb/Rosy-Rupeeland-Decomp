@@ -2,7 +2,7 @@
 ; Matching fallback for the portable implementation in src/overlays/ov075/overlay075_recovery.c.
 .extern ActorCollection_GetSpriteOwner
 .extern Actor_GetCollection
-.extern func_02072b68
+.extern GraphicsSpriteState_SetAnimationIndex
 .extern func_020740c8
 
 .global func_ov075_02214e28
@@ -61,7 +61,7 @@ func_ov075_02214e28:
     cmp r1, r2
     beq .L_02214eec
     and r1, r1, #0xff
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
 .L_02214eec:
     ldr r2, [r6, #0x54]
     mvn r0, r5

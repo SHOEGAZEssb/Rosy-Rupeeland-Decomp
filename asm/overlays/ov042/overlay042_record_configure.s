@@ -2,7 +2,7 @@
 
 /* Exact fallback for func_ov042_021fd8d0; see the documented portable C in
  * src/overlays/ov042/overlay042_record_helpers.c. */
-.extern func_02072b68
+.extern GraphicsSpriteState_SetAnimationIndex
 
     .global func_ov042_021fd8d0
 func_ov042_021fd8d0:
@@ -12,7 +12,7 @@ func_ov042_021fd8d0:
     ldr r0, [r6, #0xc]
     mov r5, r2
     mov r4, r3
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     ldr ip, [r6, #0xc]
     ldr r2, [sp, #0x10]
     ldrh r3, [ip, #0x24]

@@ -6,7 +6,7 @@
 .extern ActorCollection_GetSpriteOwner
 .extern Actor_GetCollection
 .extern func_0204d3d8
-.extern func_02072b68
+.extern GraphicsSpriteState_SetAnimationIndex
 .extern func_02073fc4
 .extern func_ov090_0221ad64
 .extern gHeapContext
@@ -56,7 +56,7 @@ func_ov090_02217a3c:
     orr r0, r0, #0x12
     strh r0, [r2, #0x24]
     ldr r0, [r4, #0x23c]
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     ldr r1, .L_02217b5c
     ldr r3, .L_02217b60
     mov r0, #0x10

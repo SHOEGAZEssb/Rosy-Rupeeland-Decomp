@@ -22,7 +22,7 @@ extern void func_02095f48(void *, void *);
 extern void func_02095c30(void *, s32);
 extern void func_02095bec(void *);
 extern s32 func_02095958(void *);
-extern void func_02072b68(void *, s32);
+extern void GraphicsSpriteState_SetAnimationIndex(void *, s32);
 #ifdef __cplusplus
 }
 #endif
@@ -119,6 +119,6 @@ void func_ov013_021fdb50(void *state, s32 index)
     if (func_02095958(record) == 0)
         return;
     associated = FIELD(void *, state, 0x950 + index * 4);
-    func_02072b68(associated, 0x1a);
+    GraphicsSpriteState_SetAnimationIndex(associated, 0x1a);
     FIELD(u16, associated, 0x24) &= (u16)~4;
 }

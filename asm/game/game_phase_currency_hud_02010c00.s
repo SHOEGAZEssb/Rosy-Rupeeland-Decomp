@@ -3,7 +3,7 @@
 .extern Sound_Play
 .extern data_020c368c
 .extern data_021052fc
-.extern func_02072b68
+.extern GraphicsSpriteState_SetAnimationIndex
 .extern func_020be328
 .extern gGameWork
 .extern gSoundContext
@@ -107,7 +107,7 @@ L_02010d5c:
     movlt r1, r5
     ldr r0, [r0, #0x80]
     movge r1, r4
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     ldr r0, [r10, #0xc0]
     cmp r6, r0
     movlt r1, r11
@@ -115,7 +115,7 @@ L_02010d5c:
     movge r1, #0x1
     ldr r0, [r0, #0x88]
     and r1, r1, #0xff
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     add r0, r10, r7, lsl #0x2
     ldr r1, [r0, #0x80]
     add r7, r7, #0x1

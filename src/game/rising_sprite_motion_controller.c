@@ -55,7 +55,7 @@ extern void func_02056f00(PresentationValue *destination,
                           PresentationValue *source);
 extern u8 *func_02073fc4(void *owner, s32 first, s32 second, s32 third,
                          s32 mode);
-extern void func_02072b68(void *sprite, s32 value);
+extern void GraphicsSpriteState_SetAnimationIndex(void *sprite, s32 value);
 extern void func_02074038(void *owner, void *sprite);
 extern void func_02020364(SpriteMotionDelta *self);
 extern SpriteMotionDelta *func_02020374(SpriteMotionDelta *self, s32 first,
@@ -109,7 +109,7 @@ RisingSpriteMotionController *func_020203e4(
     func_020203b0(&self->motion4c, &motion);
     self->sprite00 = func_02073fc4(spriteOwner, spriteConfig[0],
                                    spriteConfig[1], spriteConfig[2], 2);
-    func_02072b68(self->sprite00, 0);
+    GraphicsSpriteState_SetAnimationIndex(self->sprite00, 0);
     *(u16 *)(self->sprite00 + 0x24) &= (u16)~8;
     *(u16 *)(self->sprite00 + 0x24) |= 4;
     *(u16 *)(self->sprite00 + 0x24) |= 2;

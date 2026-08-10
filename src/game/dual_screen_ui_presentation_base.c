@@ -43,7 +43,7 @@ extern void func_02074330(void *owner, void *spriteOwner);
 extern void func_020740a4(void *spriteOwner);
 extern void func_02074110(void *spriteOwner);
 extern u8 *func_02073ffc(void *owner, void *resource, s32 mode);
-extern void func_02072b68(void *sprite, s32 frame);
+extern void GraphicsSpriteState_SetAnimationIndex(void *sprite, s32 frame);
 extern void GraphicsResourceSet_Init(GraphicsResourceSet *);
 extern void GraphicsResourceSet_Load(GraphicsResourceSet *, void *, s32, s32,
                                      s32);
@@ -257,6 +257,6 @@ void func_02025ed4(DualScreenUiPresentationBase *self)
         func_02073ffc(self->spriteOwnera8, self->resourceb8, 2);
     *(u16 *)(self->secondarySpriteb4 + 0x2c) = 104;
     *(u16 *)(self->secondarySpriteb4 + 0x2e) = 107;
-    func_02072b68(self->secondarySpriteb4, 1);
+    GraphicsSpriteState_SetAnimationIndex(self->secondarySpriteb4, 1);
     *(u16 *)(self->secondarySpriteb4 + 0x24) |= 4;
 }

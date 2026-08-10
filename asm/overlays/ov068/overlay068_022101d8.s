@@ -2,7 +2,7 @@
 ; Matching fallback for the portable implementation in src/overlays/ov068/overlay068_recovery.c.
 .extern DebugText_BeginFrame
 .extern data_ov068_022107c0
-.extern func_02072b68
+.extern GraphicsSpriteState_SetAnimationIndex
 .extern func_020740a4
 .extern func_020befec
 .extern func_020bf1f8
@@ -104,7 +104,7 @@ func_ov068_022101d8:
     add r1, r1, #0x8
     ldr r0, [r6, r5, lsl #0x2]
     and r1, r1, #0xff
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     bl genrand_int32
     tst r0, #0x1
     ldrsh r0, [r4, #0x58]

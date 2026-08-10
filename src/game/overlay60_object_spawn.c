@@ -20,7 +20,7 @@ extern void *data_021f4090;
 extern char data_020d5e00[];
 extern s32 GamePhaseScriptVm_Pop(void *script);
 extern u32 func_020be328(void);
-extern void func_02072b68(void *sprite, u32 value);
+extern void GraphicsSpriteState_SetAnimationIndex(void *sprite, u32 value);
 extern void *func_020791e0(void *table, u16 index);
 extern void Actor_GetCollection(void *owner);
 extern void *func_02078e98(void *table, u32 index);
@@ -67,7 +67,7 @@ void func_0201da34(Overlay60ScriptContext *context)
     if (enabled == 0 || sprite == 0 || context->displayValue90 == -128)
         return;
     value = func_020be328();
-    func_02072b68(sprite, value & 0xff);
+    GraphicsSpriteState_SetAnimationIndex(sprite, value & 0xff);
     if (context->displayValue90 < 0)
         *(u32 *)((u8 *)sprite + 0x24) |= 0x40;
     *(u16 *)((u8 *)sprite + 0x24) |= 2;

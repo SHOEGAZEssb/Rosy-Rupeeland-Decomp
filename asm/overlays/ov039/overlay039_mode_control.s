@@ -1,7 +1,7 @@
 .text
 /* Exact fallback; see overlay039_mode_score.c for portable C. */
-    .extern func_02072b68
-    .extern func_02072bdc
+    .extern GraphicsSpriteState_SetAnimationIndex
+    .extern GraphicsSpriteState_SetFrameIndex
 
     .global func_ov039_021ff330
 func_ov039_021ff330:
@@ -11,27 +11,27 @@ func_ov039_021ff330:
     mov r4, r1
     ldr r0, [r0, #0xc]
     and r1, r4, #0xff
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     ldr r0, [r5, #0x84]
     and r1, r4, #0xff
     ldr r0, [r0, #0xc]
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     ldr r0, [r5, #0x88]
     and r1, r4, #0xff
     ldr r0, [r0, #0xc]
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     ldr r0, [r5, #0x8c]
     and r1, r4, #0xff
     ldr r0, [r0, #0xc]
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     ldr r0, [r5, #0x88]
     mov r1, #0x2
     ldr r0, [r0, #0xc]
-    bl func_02072bdc
+    bl GraphicsSpriteState_SetFrameIndex
     ldr r0, [r5, #0x8c]
     mov r1, #0x2
     ldr r0, [r0, #0xc]
-    bl func_02072bdc
+    bl GraphicsSpriteState_SetFrameIndex
     ldr r0, [r5, #0x88]
     and r1, r4, #0xff
     ldr r2, [r0, #0xc]
@@ -45,19 +45,19 @@ func_ov039_021ff330:
     strh r0, [r2, #0x24]
     ldr r0, [r5, #0x90]
     ldr r0, [r0, #0xc]
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     ldr r0, [r5, #0x94]
     and r1, r4, #0xff
     ldr r0, [r0, #0xc]
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     ldr r0, [r5, #0x90]
     mov r1, #0x4
     ldr r0, [r0, #0xc]
-    bl func_02072bdc
+    bl GraphicsSpriteState_SetFrameIndex
     ldr r0, [r5, #0x94]
     mov r1, #0x4
     ldr r0, [r0, #0xc]
-    bl func_02072bdc
+    bl GraphicsSpriteState_SetFrameIndex
     ldr r1, [r5, #0x90]
     mov r0, #0x6
     ldr r1, [r1, #0xc]

@@ -1,6 +1,6 @@
     .text
 /* Exact fallback; see overlay040_object_update.c for portable C. */
-    .extern func_02072b68
+    .extern GraphicsSpriteState_SetAnimationIndex
 .global func_ov040_02202a50
 func_ov040_02202a50: ; 0x02202a50
     stmdb sp!, {r4, lr}
@@ -18,7 +18,7 @@ func_ov040_02202a50: ; 0x02202a50
     cmp r2, r1
     beq .L_02202a90
     and r1, r2, #0xff
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
 .L_02202a90:
     mvn r0, #0x0
     str r0, [r4, #0x70]
@@ -33,7 +33,7 @@ func_ov040_02202a50: ; 0x02202a50
     cmp r2, r1
     beq .L_02202ac4
     and r1, r2, #0xff
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
 .L_02202ac4:
     mvn r0, #0x0
     str r0, [r4, #0x74]
@@ -48,7 +48,7 @@ func_ov040_02202a50: ; 0x02202a50
     cmp r2, r1
     beq .L_02202af8
     and r1, r2, #0xff
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
 .L_02202af8:
     mvn r0, #0x0
     str r0, [r4, #0x78]
@@ -63,7 +63,7 @@ func_ov040_02202a50: ; 0x02202a50
     cmp r2, r1
     beq .L_02202b54
     and r1, r2, #0xff
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     mov r0, #0x5a
     str r0, [r4, #0x80]
     ldr r0, [r4, #0x7c]
@@ -91,7 +91,7 @@ func_ov040_02202a50: ; 0x02202a50
     cmp r1, #0x6
     bne .L_02202ba0
     mov r1, #0xc
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     mov r0, #0x3c
     str r0, [r4, #0x80]
     b .L_02202c28
@@ -99,7 +99,7 @@ func_ov040_02202a50: ; 0x02202a50
     cmp r1, #0x7
     bne .L_02202bbc
     mov r1, #0x8
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     mov r0, #0x3c
     str r0, [r4, #0x80]
     b .L_02202c28
@@ -107,7 +107,7 @@ func_ov040_02202a50: ; 0x02202a50
     cmp r1, #0x8
     bne .L_02202bd8
     mov r1, #0x7
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     mov r0, #0x3c
     str r0, [r4, #0x80]
     b .L_02202c28
@@ -115,7 +115,7 @@ func_ov040_02202a50: ; 0x02202a50
     cmp r1, #0x9
     bne .L_02202bf4
     mov r1, #0xa
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     mov r0, #0x3c
     str r0, [r4, #0x80]
     b .L_02202c28
@@ -123,13 +123,13 @@ func_ov040_02202a50: ; 0x02202a50
     cmp r1, #0xa
     bne .L_02202c10
     mov r1, #0x9
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     mov r0, #0x3c
     str r0, [r4, #0x80]
     b .L_02202c28
 .L_02202c10:
     mov r1, #0x6
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     mov r0, #0x0
     str r0, [r4, #0x84]
     mov r0, #0xa0
@@ -145,13 +145,13 @@ func_ov040_02202a50: ; 0x02202a50
     cmp r2, r1
     beq .L_02202c6c
     and r1, r2, #0xff
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     ldr r0, [r4, #0x68]
     ldr r1, [r4, #0x84]
     ldr r0, [r0, #0xc]
     add r1, r1, #0x3
     and r1, r1, #0xff
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
 .L_02202c6c:
     mvn r0, #0x0
     str r0, [r4, #0x84]
@@ -166,11 +166,11 @@ func_ov040_02202a50: ; 0x02202a50
     ldr r0, [r4, #0x64]
     mov r1, #0x0
     ldr r0, [r0, #0xc]
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     ldr r0, [r4, #0x68]
     mov r1, #0x3
     ldr r0, [r0, #0xc]
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     ldmia sp!, {r4, pc}
     .size func_ov040_02202a50, . - func_ov040_02202a50
 

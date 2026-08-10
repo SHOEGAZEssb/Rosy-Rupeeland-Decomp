@@ -1,7 +1,7 @@
 .text
 .extern func_ov042_021fda0c
 .extern func_020befec
-.extern func_02072b68
+.extern GraphicsSpriteState_SetAnimationIndex
 .global func_ov042_02209af4
 func_ov042_02209af4:
     stmdb sp!, {r3, r4, r5, r6, r7, r8, r9, lr}
@@ -41,7 +41,7 @@ func_ov042_02209af4:
     mov r1, r1, lsl #0x1
     ldr r0, [r0, #0xc]
     and r1, r1, #0xff
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     ldr r1, [r5, #0x4c]
     mov r0, #0x100
     ldr r2, [r1, #0xc]

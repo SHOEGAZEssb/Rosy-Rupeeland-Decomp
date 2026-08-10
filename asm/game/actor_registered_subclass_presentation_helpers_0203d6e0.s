@@ -7,7 +7,7 @@
 .extern func_0201f864
 .extern func_02050078
 .extern func_020593ac
-.extern func_02072b68
+.extern GraphicsSpriteState_SetAnimationIndex
 .extern func_020adae4
 .extern func_020be328
 .extern func_020be334
@@ -114,7 +114,7 @@ ActorRegisteredSubclass_UpdatePresentationState: ; 0x0203d804
     movne r1, #0x1
     ldr r0, [r4, #0x54]
     moveq r1, #0x0
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     ldr r1, [r4, #0x54]
     ldrh r0, [r1, #0x24]
     orr r0, r0, #0x2

@@ -11,7 +11,7 @@
 .extern ActorExtendedType2_GetDescriptorValue25
 .extern func_0204cfa4
 .extern func_020593dc
-.extern func_02072b68
+.extern GraphicsSpriteState_SetAnimationIndex
 .extern func_020befec
 .extern func_ov097_022177e0
 .extern func_ov097_02217ac4
@@ -254,7 +254,7 @@ func_ov097_02218d3c:
     bne .L_022190e0
     ldr r0, [r5, #0x54]
     mov r1, #0x3b
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     mov r0, #0x0
     mov r1, #0x200
     str r0, [sp, #0x0]

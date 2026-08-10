@@ -17,7 +17,7 @@
 .extern Actor_SnapshotTransientState
 .extern Actor_UpdateAnimationState
 .extern ActorDerivedRuntime_UpdateFrame
-.extern func_02072b68
+.extern GraphicsSpriteState_SetAnimationIndex
 .extern func_020adc40
 .extern func_020ae024
 .extern func_ov089_022186b4
@@ -171,7 +171,7 @@ func_ov089_02217c60:
     strb r1, [r10, #0xd4]
     ldr r0, [r10, #0x54]
     and r1, r1, #0xff
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
 .L_02217e90:
     mov r5, #0x1
 .L_02217e94:
@@ -586,7 +586,7 @@ func_ov089_02217c60:
     ldr r0, [r10, #0x240]
     ldrb r1, [r10, #0xd4]
     ldr r0, [r0, #0x4]
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     b .L_0221862c
 .L_022184d0:
     ldr r0, [r2, #0x4]
@@ -609,7 +609,7 @@ func_ov089_02217c60:
     beq .L_0221862c
     add r1, r1, #0x8
     and r1, r1, #0xff
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     ldr r0, [r10, #0x240]
     ldr r1, [r0, #0x4]
     ldrh r0, [r1, #0x24]
@@ -620,7 +620,7 @@ func_ov089_02217c60:
     beq .L_022185fc
     cmp r3, #0x0
     bne .L_0221862c
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     ldr r0, [r10, #0x240]
     ldr r1, .L_022186a4
     ldr r5, [r0, #0x4]
@@ -674,7 +674,7 @@ func_ov089_02217c60:
     cmp r3, #0x0
     bne .L_0221862c
     and r1, r1, #0xff
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     ldr r0, [r10, #0x240]
     ldr r1, [r0, #0x4]
     ldrh r0, [r1, #0x24]
@@ -691,7 +691,7 @@ func_ov089_02217c60:
     ldr r0, [r10, #0x244]
     ldrb r1, [r0, #0x1a]
     ldr r0, [r0, #0x4]
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
 .L_02218658:
     add r0, sp, #0x74
     bl func_02005058

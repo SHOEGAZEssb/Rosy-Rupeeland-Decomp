@@ -6,7 +6,7 @@
 .extern Type7MarkerPresentation_SelectAnimation
 .extern Type7MarkerPresentation_ReloadResources
 .extern func_020593dc
-.extern func_02072b68
+.extern GraphicsSpriteState_SetAnimationIndex
 .extern gGameWork
 .extern gSoundContext
 .text
@@ -30,7 +30,7 @@ Type7Actor_EnterSpecialPresentationState: ; 0x0204b5d8
     bne .L_0204b624
     add r1, r2, #0x8
     and r1, r1, #0xff
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
 .L_0204b624:
     ldr r0, [r4, #0x54]
     mov r1, #0x100

@@ -29,7 +29,7 @@ extern void func_0201e14c(void *, s32);
 extern u32 genrand_int32(void);
 extern void *func_020742cc(void *);
 extern void *func_02073ffc(void *, void *, s32);
-extern void func_02072b68(void *, s32);
+extern void GraphicsSpriteState_SetAnimationIndex(void *, s32);
 extern void *Heap_Alloc(u32, const char *, s32, void *);
 extern void Heap_Free(void *);
 extern void *func_020953f4(void *, void *);
@@ -116,7 +116,7 @@ void *func_ov013_021fce2c(void *state)
 
     selected = func_02073ffc(FIELD(void *, state, 0x84),
                               (u8 *)state + 0x54, 2);
-    func_02072b68(selected, 2);
+    GraphicsSpriteState_SetAnimationIndex(selected, 2);
     FIELD(u8, selected, 0x3a) = 3;
     controller = Heap_Alloc(0xa0, data_ov013_021fed80, 4, gHeapContext);
     if (controller != 0)

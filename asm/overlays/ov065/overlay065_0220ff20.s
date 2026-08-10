@@ -6,7 +6,7 @@
 .extern GraphicsSpriteState_SetDepthOrderedWorldPosition
 .extern VecFx32Bezier_Evaluate3D
 .extern func_020593ac
-.extern func_02072b68
+.extern GraphicsSpriteState_SetAnimationIndex
 .extern func_020740c8
 .extern func_020befec
 .extern gSoundContext
@@ -91,7 +91,7 @@ func_ov065_0220ff20:
     ldr r0, [r7, #0x0]
     ldrb r4, [r0, #0x38]
     mov r1, r4
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     ldr r3, [r7, #0x0]
     mov r1, #0x2
     ldrh r2, [r3, #0x24]

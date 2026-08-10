@@ -25,7 +25,7 @@ extern void func_02005058(void *);extern void func_020050c8(void *,const void *)
 extern void VecFx32_Subtract(void *,const void *,s32);extern void func_02056f00(void *,const void *);
 extern void *Actor_GetCollection(void *);extern void *ActorCollection_GetSpriteOwner(void *);
 extern void func_02071ea4(void *);extern void func_02071eb8(void *);
-extern u8 *func_02073ffc(void *,void *,s32);extern void func_02072b68(void *,s32);
+extern u8 *func_02073ffc(void *,void *,s32);extern void GraphicsSpriteState_SetAnimationIndex(void *,s32);
 extern void func_02074038(void *,void *);extern void func_02022fbc(void *);
 extern s32 func_02063658(void *,u16);extern void func_020627d0(void *,u16,s32,s32);
 extern void func_020627a0(void *,u16,u16);extern void func_02062918(void *,s32);
@@ -60,7 +60,7 @@ RecordSpriteMotionPresentation *func_02022ff4(
     else func_020627a0(&record,(u16)recordId,(u16)rangeEnd);
     func_02062918(&record,0);func_02063014(&record,data_020f4e18,self->resource48);
     self->sprite3c=func_02073ffc(self->spriteOwner44,self->resource48,2);
-    func_02062918(&record,0);func_02072b68(self->sprite3c,func_02063190());
+    func_02062918(&record,0);GraphicsSpriteState_SetAnimationIndex(self->sprite3c,func_02063190());
     if(rangeEnd==0)*(u16 *)(self->sprite3c+0x24)|=4;
     VecFx32_Subtract(&sampled,&self->track0c,self->sampleArgument08);
     func_02056f00(&position,&sampled);func_02005058(&sampled);

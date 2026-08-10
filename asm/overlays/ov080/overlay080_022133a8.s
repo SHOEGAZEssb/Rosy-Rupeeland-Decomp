@@ -3,7 +3,7 @@
 .extern data_0210576d
 .extern data_ov080_02213e68
 .extern Actor_RestoreSavedFlags
-.extern func_02072b68
+.extern GraphicsSpriteState_SetAnimationIndex
 .extern func_ov080_022136f4
 
 .global func_ov080_022133a8
@@ -31,7 +31,7 @@ func_ov080_022133a8:
     bic r0, r0, #0x17
     strh r0, [r2, #0x24]
     ldr r0, [r4, #0x54]
-    bl func_02072b68
+    bl GraphicsSpriteState_SetAnimationIndex
     ldr r0, [r4, #0x14]
     bic r0, r0, #0x10000000
     str r0, [r4, #0x14]

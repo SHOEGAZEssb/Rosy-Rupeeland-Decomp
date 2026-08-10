@@ -10,7 +10,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_02072b68(void *member, s32 value);
+extern void GraphicsSpriteState_SetAnimationIndex(void *member, s32 value);
 #ifdef __cplusplus
 }
 #endif
@@ -32,7 +32,7 @@ void func_ov008_021fb814(void *unused, void *object, s32 field30, s32 field34,
 
     (void)unused;
     member = FIELD(void *, object, 0x0c);
-    func_02072b68(member, mode);
+    GraphicsSpriteState_SetAnimationIndex(member, mode);
     FIELD(u16, member, 0x24) |= 2;
     FIELD(s32, object, 0x30) = field30;
     FIELD(s32, object, 0x34) = field34;
