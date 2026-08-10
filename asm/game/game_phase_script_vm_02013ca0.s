@@ -4,8 +4,8 @@
 .extern GamePhaseScriptVm_Pop
 .extern gGameWork
 
-    .global func_02013ca0
-func_02013ca0: ; 0x02013ca0
+    .global GamePhaseActorScriptVm_ClearGameWorkFlag
+GamePhaseActorScriptVm_ClearGameWorkFlag: ; 0x02013ca0
     stmdb sp!, {r3, lr}
     bl GamePhaseScriptVm_Pop
     ldr r2, L_02013cc0
@@ -15,5 +15,5 @@ func_02013ca0: ; 0x02013ca0
     mov r0, #0x0
     ldmia sp!, {r3, pc}
 L_02013cc0: .word gGameWork
-    .size func_02013ca0, . - func_02013ca0
+    .size GamePhaseActorScriptVm_ClearGameWorkFlag, . - GamePhaseActorScriptVm_ClearGameWorkFlag
 

@@ -5,8 +5,8 @@
 .extern GamePhaseScriptVm_SetResult
 .extern gGameWork
 
-    .global func_02013cc4
-func_02013cc4: ; 0x02013cc4
+    .global GamePhaseActorScriptVm_TestGameWorkFlag
+GamePhaseActorScriptVm_TestGameWorkFlag: ; 0x02013cc4
     stmdb sp!, {r4, lr}
     mov r4, r0
     bl GamePhaseScriptVm_Pop
@@ -20,5 +20,5 @@ func_02013cc4: ; 0x02013cc4
     mov r0, #0x0
     ldmia sp!, {r4, pc}
 L_02013cf4: .word gGameWork
-    .size func_02013cc4, . - func_02013cc4
+    .size GamePhaseActorScriptVm_TestGameWorkFlag, . - GamePhaseActorScriptVm_TestGameWorkFlag
 
