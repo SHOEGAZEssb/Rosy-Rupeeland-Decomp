@@ -18,7 +18,8 @@ typedef struct GraphicsSpriteIndexedRenderer {
  * immediately. Modes 0 and values above 4 do nothing. Null is ignored. Pool
  * list/count state may change; no SDK or graphics-hardware access occurs.
  */
-void func_02074d40(void *rendererPointer, GraphicsIndexedChainEntry *entry)
+void GraphicsSpriteRenderer_ReleaseIndexedEntry(
+    void *rendererPointer, GraphicsIndexedChainEntry *entry)
 {
     GraphicsSpriteIndexedRenderer *renderer =
         (GraphicsSpriteIndexedRenderer *)rendererPointer;

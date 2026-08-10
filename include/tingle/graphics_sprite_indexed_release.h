@@ -7,7 +7,8 @@
 extern "C" {
 #endif
 
-void func_02074d40(void *renderer, GraphicsIndexedChainEntry *entry);
+void GraphicsSpriteRenderer_ReleaseIndexedEntry(
+    void *renderer, GraphicsIndexedChainEntry *entry);
 
 #ifdef __cplusplus
 }

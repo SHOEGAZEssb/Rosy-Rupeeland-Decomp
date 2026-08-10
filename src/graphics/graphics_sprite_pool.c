@@ -34,7 +34,8 @@ extern "C" {
 
 extern GraphicsSpriteStatePool data_021ede68;
 extern GraphicsVramRangeNode *func_02074a88(void *owner, void *resource);
-extern void func_02074d40(void *owner, void *allocation);
+extern void GraphicsSpriteRenderer_ReleaseIndexedEntry(void *owner,
+                                                       void *allocation);
 
 #ifdef __cplusplus
 }
@@ -83,7 +84,7 @@ void GraphicsSpriteStatePool_Release(void *ownerPointer,
     }
     GraphicsVramAllocator_Release(&owner->vramAllocator,
                   (GraphicsVramRangeNode *)state->field_0c);
-    func_02074d40(owner, state->field_10);
+    GraphicsSpriteRenderer_ReleaseIndexedEntry(owner, state->field_10);
     state->field_08 = data_021ede68.freeHead;
     data_021ede68.freeHead = state;
     data_021ede68.count--;
@@ -119,7 +120,7 @@ void GraphicsSpriteState_ReplaceResources(void *ownerPointer,
         }
     }
     if (state->field_18 != field18) {
-        func_02074d40(owner, state->field_10);
+        GraphicsSpriteRenderer_ReleaseIndexedEntry(owner, state->field_10);
         state->field_10 = 0;
         state->field_18 = field18;
     }
@@ -177,7 +178,7 @@ sprite_replace_field18:
     beq sprite_replace_field1c
     ldr r1, [r7, #0x10]
     mov r0, r8
-    bl func_02074d40
+    bl GraphicsSpriteRenderer_ReleaseIndexedEntry
     mov r0, #0
     str r0, [r7, #0x10]
     str r5, [r7, #0x18]

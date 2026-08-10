@@ -11240,7 +11240,7 @@ build build/reports/graphics_sprite_indexed_release.json: objdiff build/decomp/d
 
 build build/reports/graphics_sprite_indexed_release.txt: match_report build/reports/graphics_sprite_indexed_release.json | tools/report_objdiff.py
   report_json = build/reports/graphics_sprite_indexed_release.json
-  report_args = --section .text --function func_02074d40
+  report_args = --section .text --function GraphicsSpriteRenderer_ReleaseIndexedEntry
 
 build build/reports/graphics_sprite_renderer.json: objdiff build/decomp/delinks/src/graphics/graphics_sprite_renderer.o | build/decomp/src/graphics/graphics_sprite_renderer.o
   target_object = build/decomp/delinks/src/graphics/graphics_sprite_renderer.o

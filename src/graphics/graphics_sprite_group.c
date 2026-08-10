@@ -40,7 +40,8 @@ extern void GraphicsSpriteState_ReplaceResources(void *owner,
                                                  void *field14, void *field18,
                                                  void *field1c);
 extern void func_02074330(void *owner, GraphicsSpriteGroup *group);
-extern void func_02074d40(void *owner, void *allocation);
+extern void GraphicsSpriteRenderer_ReleaseIndexedEntry(void *owner,
+                                                       void *allocation);
 
 #ifdef __cplusplus
 }
@@ -327,7 +328,8 @@ void func_02074110(GraphicsSpriteGroup *group)
     state = group->head;
     while (state != 0) {
         if (state->field_10 != 0) {
-            func_02074d40(group->owner, state->field_10);
+            GraphicsSpriteRenderer_ReleaseIndexedEntry(group->owner,
+                                                       state->field_10);
             state->field_10 = 0;
         }
         state = (GraphicsSpriteState *)state->field_08;
