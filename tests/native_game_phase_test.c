@@ -102,6 +102,35 @@ static int TestActorRuntime(void)
     return 1;
 }
 
+static int TestActorBootstrapRuntime(void)
+{
+    TingleNativeActorRuntime *runtime =
+        TingleNativeActorRuntime_CreateForPhase(NULL, 0, NULL, 0, -12, 34);
+    const TingleNativeActorImage *first =
+        TingleNativeActorRuntime_GetActor(runtime, 0);
+    const TingleNativeActorImage *second =
+        TingleNativeActorRuntime_GetActor(runtime, 1);
+    const TingleNativeActorImage *third =
+        TingleNativeActorRuntime_GetActor(runtime, 2);
+    const TingleNativeActorImage *fourth =
+        TingleNativeActorRuntime_GetActor(runtime, 3);
+    int ok = runtime != NULL && runtime->actor_count == 4 &&
+             runtime->allocated_bytes == 0x8E0 && first != NULL &&
+             first->synthetic && first->category == 1 &&
+             first->descriptor.kind == 1 && first->descriptor.position_x == -12 &&
+             first->descriptor.position_y == 34 && first->size == 0x2B8 &&
+             second != NULL && second->synthetic && second->category == 1 &&
+             second->descriptor.kind == 3 && second->descriptor.subtype == 4 &&
+             second->descriptor.value_52 == 2 && third != NULL &&
+             third->synthetic && third->category == 2 &&
+             third->descriptor.kind == 3 && third->descriptor.subtype == 3 &&
+             third->size == 0x218 && fourth != NULL && fourth->synthetic &&
+             fourth->category == 2 && fourth->descriptor.subtype == 4;
+
+    TingleNativeActorRuntime_Destroy(runtime);
+    return ok;
+}
+
 static int TestOverlayRegistration(void)
 {
     static const u32 words[] = {
@@ -195,6 +224,9 @@ static int ProbeMetadata(const char *kind, const char *source, const char *phase
                  boundary.primary_factories_resolved &&
                  boundary.secondary_factories_resolved &&
                  boundary.actor_runtime_built &&
+                 boundary.actor_runtime->actor_count ==
+                     boundary.primary_registration.eligible_descriptor_count +
+                     boundary.secondary_registration.eligible_descriptor_count + 4 &&
                  TingleNativeGameWork_TestFlag(&game_work, 0x3F3) == 1;
             if (!ok) {
                 TingleNativeGamePhaseBoundary_Destroy(&boundary);
@@ -252,7 +284,7 @@ int main(int argc, char **argv)
                       strcmp(argv[1], "--data") == 0))
         return ProbeMetadata(argv[1], argv[2], argv[3]);
     if (!TestOverlayRegistration() || !TestFactoryResolution() ||
-        !TestActorRuntime()) return EXIT_FAILURE;
+        !TestActorRuntime() || !TestActorBootstrapRuntime()) return EXIT_FAILURE;
 
     WriteU32(record + 0x00, 7);
     WriteU16(record + 0x12, (u16)-2);

@@ -37,7 +37,7 @@ static void InitializeVector(u8 *bytes, u32 offset, s32 x, s32 y, s32 z)
 
 static s32 InitializeActor(TingleNativeActorImage *actor,
                            const TingleNativeActorDescriptor *descriptor,
-                           u32 category)
+                           u32 category, s32 synthetic)
 {
     s32 half_width = descriptor->half_width >> 1;
     s32 half_height = descriptor->half_height >> 1;
@@ -49,6 +49,7 @@ static s32 InitializeActor(TingleNativeActorImage *actor,
     actor->descriptor = *descriptor;
     actor->size = descriptor->allocation_size;
     actor->category = category;
+    actor->synthetic = synthetic;
     if (actor->size <= 0xE5) return 0;
     actor->bytes = (u8 *)calloc(actor->size, 1);
     if (actor->bytes == NULL) return 0;
@@ -88,12 +89,42 @@ static s32 AddEligibleActors(TingleNativeActorRuntime *runtime, u32 *next,
 
     for (index = 0; index < count; ++index) {
         if (descriptors[index].selector_50 < 0) continue;
-        if (!InitializeActor(&runtime->actors[*next], &descriptors[index], category))
+        if (!InitializeActor(&runtime->actors[*next], &descriptors[index], category,
+                             0))
             return 0;
         runtime->allocated_bytes += runtime->actors[*next].size;
         ++*next;
     }
     return 1;
+}
+
+static u32 CountEligible(const TingleNativeActorDescriptor *descriptors,
+                         u32 count)
+{
+    u32 eligible = 0;
+    u32 index;
+
+    for (index = 0; index < count; ++index)
+        if (descriptors[index].selector_50 >= 0) ++eligible;
+    return eligible;
+}
+
+static TingleNativeActorRuntime *AllocateRuntime(u32 actor_count)
+{
+    TingleNativeActorRuntime *runtime =
+        (TingleNativeActorRuntime *)calloc(1, sizeof(*runtime));
+
+    if (runtime == NULL) return NULL;
+    if (actor_count != 0) {
+        runtime->actors =
+            (TingleNativeActorImage *)calloc(actor_count, sizeof(*runtime->actors));
+        if (runtime->actors == NULL) {
+            free(runtime);
+            return NULL;
+        }
+    }
+    runtime->actor_count = actor_count;
+    return runtime;
 }
 
 /* Allocate common actor images in the same primary-then-secondary list order. */
@@ -102,35 +133,94 @@ TingleNativeActorRuntime *TingleNativeActorRuntime_Create(
     const TingleNativeActorDescriptor *secondary, u32 secondary_count)
 {
     TingleNativeActorRuntime *runtime;
-    u32 eligible = 0;
-    u32 index;
+    u32 eligible;
     u32 next = 0;
 
     if ((primary_count != 0 && primary == NULL) ||
         (secondary_count != 0 && secondary == NULL))
         return NULL;
-    for (index = 0; index < primary_count; ++index)
-        if (primary[index].selector_50 >= 0) ++eligible;
-    for (index = 0; index < secondary_count; ++index)
-        if (secondary[index].selector_50 >= 0) ++eligible;
-
-    runtime = (TingleNativeActorRuntime *)calloc(1, sizeof(*runtime));
+    eligible = CountEligible(primary, primary_count) +
+               CountEligible(secondary, secondary_count);
+    runtime = AllocateRuntime(eligible);
     if (runtime == NULL) return NULL;
-    if (eligible != 0) {
-        runtime->actors =
-            (TingleNativeActorImage *)calloc(eligible, sizeof(*runtime->actors));
-        if (runtime->actors == NULL) {
-            free(runtime);
-            return NULL;
-        }
-    }
-    runtime->actor_count = eligible;
     if (!AddEligibleActors(runtime, &next, primary, primary_count, 1) ||
         !AddEligibleActors(runtime, &next, secondary, secondary_count, 2)) {
         TingleNativeActorRuntime_Destroy(runtime);
         return NULL;
     }
     return runtime;
+}
+
+static void InitializeSyntheticDescriptor(TingleNativeActorDescriptor *descriptor,
+                                          u16 kind, u16 subtype, s16 x, s16 y,
+                                          s16 z, u8 width, u8 height, u32 flags,
+                                          s16 value, u16 size)
+{
+    memset(descriptor, 0, sizeof(*descriptor));
+    descriptor->kind = kind;
+    descriptor->subtype = subtype;
+    descriptor->position_x = x;
+    descriptor->position_y = y;
+    descriptor->position_z = z;
+    descriptor->half_width = width;
+    descriptor->half_height = height;
+    descriptor->flags_28 = flags;
+    descriptor->value_52 = value;
+    descriptor->allocation_size = size;
+    descriptor->factory_variant = (s16)subtype;
+}
+
+static s32 AddSyntheticActor(TingleNativeActorRuntime *runtime, u32 *next,
+                             const TingleNativeActorDescriptor *descriptor,
+                             u32 category)
+{
+    if (!InitializeActor(&runtime->actors[*next], descriptor, category, 1)) return 0;
+    runtime->allocated_bytes += runtime->actors[*next].size;
+    ++*next;
+    return 1;
+}
+
+/* Build the complete initial descriptor-backed order used by both wrappers. */
+TingleNativeActorRuntime *TingleNativeActorRuntime_CreateForPhase(
+    const TingleNativeActorDescriptor *primary, u32 primary_count,
+    const TingleNativeActorDescriptor *secondary, u32 secondary_count,
+    s32 phase_value_2c, s32 phase_value_30)
+{
+    TingleNativeActorRuntime *runtime;
+    TingleNativeActorDescriptor category_actor;
+    TingleNativeActorDescriptor common_actor;
+    u32 eligible;
+    u32 next = 0;
+
+    if ((primary_count != 0 && primary == NULL) ||
+        (secondary_count != 0 && secondary == NULL))
+        return NULL;
+    eligible = CountEligible(primary, primary_count) +
+               CountEligible(secondary, secondary_count);
+    runtime = AllocateRuntime(eligible + 4);
+    if (runtime == NULL) return NULL;
+
+    InitializeSyntheticDescriptor(
+        &category_actor, 1, 0, (s16)phase_value_2c, (s16)phase_value_30, 0,
+        24, 8, 0x02000008, 0, 0x2B8);
+    InitializeSyntheticDescriptor(
+        &common_actor, 3, 4, -100, 0, 0, 0, 0, 8, 2, 0x208);
+    if (!AddSyntheticActor(runtime, &next, &category_actor, 1) ||
+        !AddSyntheticActor(runtime, &next, &common_actor, 1) ||
+        !AddEligibleActors(runtime, &next, primary, primary_count, 1))
+        goto failure;
+
+    InitializeSyntheticDescriptor(
+        &category_actor, 3, 3, 0, 0, 0, 0, 0, 0x04088008, 0, 0x218);
+    if (!AddSyntheticActor(runtime, &next, &category_actor, 2) ||
+        !AddSyntheticActor(runtime, &next, &common_actor, 2) ||
+        !AddEligibleActors(runtime, &next, secondary, secondary_count, 2))
+        goto failure;
+    return runtime;
+
+failure:
+    TingleNativeActorRuntime_Destroy(runtime);
+    return NULL;
 }
 
 /* Release each independent raw image, the image table, and the runtime. */

@@ -8,6 +8,7 @@ typedef struct TingleNativeActorImage {
     u8 *bytes;
     u32 size;
     u32 category;
+    s32 synthetic;
 } TingleNativeActorImage;
 
 typedef struct TingleNativeActorRuntime {
@@ -20,6 +21,12 @@ typedef struct TingleNativeActorRuntime {
 TingleNativeActorRuntime *TingleNativeActorRuntime_Create(
     const TingleNativeActorDescriptor *primary, u32 primary_count,
     const TingleNativeActorDescriptor *secondary, u32 secondary_count);
+
+/* Adds both recovered category bootstraps and their common actor descriptors. */
+TingleNativeActorRuntime *TingleNativeActorRuntime_CreateForPhase(
+    const TingleNativeActorDescriptor *primary, u32 primary_count,
+    const TingleNativeActorDescriptor *secondary, u32 secondary_count,
+    s32 phase_value_2c, s32 phase_value_30);
 
 /* Releases all descriptor-backed actor images and their owning array. */
 void TingleNativeActorRuntime_Destroy(TingleNativeActorRuntime *runtime);

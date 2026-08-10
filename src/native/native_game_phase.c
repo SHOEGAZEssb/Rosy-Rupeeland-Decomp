@@ -314,11 +314,12 @@ s32 TingleNativeGamePhaseBoundary_Init(TingleNativeGamePhaseBoundary *boundary,
             boundary->secondary_registration.descriptor_count);
         if (boundary->primary_factories_resolved &&
             boundary->secondary_factories_resolved) {
-            boundary->actor_runtime = TingleNativeActorRuntime_Create(
+            boundary->actor_runtime = TingleNativeActorRuntime_CreateForPhase(
                 boundary->primary_descriptors,
                 boundary->primary_registration.descriptor_count,
                 boundary->secondary_descriptors,
-                boundary->secondary_registration.descriptor_count);
+                boundary->secondary_registration.descriptor_count,
+                boundary->metadata.field_2c, boundary->metadata.field_30);
             boundary->actor_runtime_built = boundary->actor_runtime != NULL;
         }
     }
