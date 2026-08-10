@@ -10,7 +10,7 @@
 .extern ActorMotionAreaFollower_GetPosition
 .extern func_0201e250
 .extern func_0201e584
-.extern func_0201f0fc
+.extern TimedSpriteConfig_InitTracks
 .extern func_0201f458
 .extern gHeapContext
 
@@ -24,7 +24,7 @@ func_0201f458: ; 0x0201f458
     mov r7, r1
     mov r4, r2
     mov r6, r3
-    bl func_0201f0fc
+    bl TimedSpriteConfig_InitTracks
     str r6, [r5, #0xc]
     ldr r1, [sp, #0x50]
     ldr r0, [sp, #0x54]

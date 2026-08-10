@@ -5,7 +5,7 @@
 .extern TouchPoint_Init
 .extern data_020c9670
 .extern gTimedSpritePointerArrayAllocationTag
-.extern data_020d6220
+.extern gTimedSpriteBurstManagerVtable
 .extern gTimedSpritePresentationAllocationTag
 .extern data_020f4e18
 .extern data_021052fc
@@ -18,14 +18,14 @@
 .extern func_0201e250
 .extern func_0201e3b8
 .extern func_0201e454
-.extern func_0201eefc
-.extern func_0201f0b0
-.extern func_0201f0d0
-.extern func_0201f0fc
-.extern func_0201f11c
-.extern func_0201f15c
-.extern func_0201f204
-.extern func_0201f2b4
+.extern TimedSpriteBurstManager_Init
+.extern OwnedPointerArray_Destroy
+.extern OwnedPointerArray_Clear
+.extern TimedSpriteConfig_InitTracks
+.extern OwnedPointerArray_Resize
+.extern TimedSpriteBurstManager_Destroy
+.extern TimedSpriteBurstManager_DestroyAndFree
+.extern TimedSpriteBurstManager_Update
 .extern func_02071bdc
 .extern func_02071c38
 .extern func_02071c94
@@ -36,10 +36,10 @@
 .extern gHeapContext
 .extern genrand_int32
 
-.global func_0201f0d0
-.type func_0201f0d0, @function
+.global OwnedPointerArray_Clear
+.type OwnedPointerArray_Clear, @function
 
-func_0201f0d0: ; 0x0201f0d0
+OwnedPointerArray_Clear: ; 0x0201f0d0
     stmdb sp!, {r4, lr}
     mov r4, r0
     ldr r0, [r4, #0x0]
@@ -52,5 +52,5 @@ func_0201f0d0: ; 0x0201f0d0
     mov r0, #0x0
     str r0, [r4, #0x4]
     ldmia sp!, {r4, pc}
-    .size func_0201f0d0, .-func_0201f0d0
+    .size OwnedPointerArray_Clear, .-OwnedPointerArray_Clear
 

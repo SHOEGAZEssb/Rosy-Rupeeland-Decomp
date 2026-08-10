@@ -12,7 +12,7 @@
 .extern func_0201ded4
 .extern func_0201e250
 .extern func_0201e584
-.extern func_0201f0fc
+.extern TimedSpriteConfig_InitTracks
 .extern gHeapContext
 
 .global func_0201f864
@@ -41,7 +41,7 @@ func_0201f864: ; 0x0201f864
 .L_0201f8b4:
     str r0, [r4, #0xc]
     add r0, sp, #0x0
-    bl func_0201f0fc
+    bl TimedSpriteConfig_InitTracks
     str r6, [sp, #0x0]
     ldr r1, [r4, #0xc]
     add r0, sp, #0x10

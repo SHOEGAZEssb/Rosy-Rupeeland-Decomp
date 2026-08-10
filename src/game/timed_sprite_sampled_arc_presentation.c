@@ -38,7 +38,7 @@ extern void *data_020d61d0;
 extern const char gTimedSpritePresentationAllocationTag[];
 extern u8 *data_021052fc;
 extern void *func_0201e250(void *self);
-extern SampledArcSpriteConfig *func_0201f0fc(
+extern SampledArcSpriteConfig *TimedSpriteConfig_InitTracks(
     SampledArcSpriteConfig *config);
 extern void *func_0201edd0(void *self, SampledArcSpriteConfig *config);
 extern void VecFx32Object_Destroy(void *track);
@@ -68,7 +68,7 @@ SampledArcPresentation *func_0201f598(
 
     func_0201e250(self);
     self->vtable = (void **)data_020d61d0;
-    func_0201f0fc(&config);
+    TimedSpriteConfig_InitTracks(&config);
     config.spriteGroup = spriteGroup;
     config.field04 = field04;
     config.field08 = field08;

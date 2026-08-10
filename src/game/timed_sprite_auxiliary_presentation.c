@@ -41,7 +41,7 @@ extern void *data_020d61a8;
 extern const char gTimedSpriteAuxiliaryAllocationTag[];
 extern u8 *data_021052fc;
 extern void *func_0201e250(void *self);
-extern AuxiliarySpriteConfig *func_0201f0fc(AuxiliarySpriteConfig *config);
+extern AuxiliarySpriteConfig *TimedSpriteConfig_InitTracks(AuxiliarySpriteConfig *config);
 extern void *AnimationResource_Init(void *self, s32 first, s32 second, s32 third);
 extern void *func_0201e584(void *self, AuxiliarySpriteConfig *config,
                            s32 spriteValue, s32 offset);
@@ -70,7 +70,7 @@ static AuxiliaryTimedSpritePresentation *initialize_auxiliary_presentation(
         AnimationResource_Init(self->auxiliary0c, auxiliaryFirst, auxiliarySecond,
                       auxiliaryThird);
     }
-    func_0201f0fc(&config);
+    TimedSpriteConfig_InitTracks(&config);
     config.spriteGroup = spriteGroup;
     config.field04 = *(s32 *)(self->auxiliary0c + 4);
     config.field08 = *(s32 *)(self->auxiliary0c + 8);

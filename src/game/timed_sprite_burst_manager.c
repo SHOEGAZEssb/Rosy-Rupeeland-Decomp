@@ -59,7 +59,7 @@ typedef void (*BurstSpriteMove)(void *sprite,
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *data_020d6220;
+extern void *gTimedSpriteBurstManagerVtable;
 extern const s16 data_020c9670[];
 extern const char gTimedSpritePointerArrayAllocationTag[];
 extern const char gTimedSpritePresentationAllocationTag[];
@@ -88,10 +88,10 @@ extern void GraphicsSpriteGroup_AdvanceAnimations(void *spriteGroup);
 }
 #endif
 
-OwnedPointerArray *func_0201f0b0(OwnedPointerArray *array);
-void func_0201f0d0(OwnedPointerArray *array);
-BurstSpriteConfig *func_0201f0fc(BurstSpriteConfig *config);
-void func_0201f11c(OwnedPointerArray *array, s32 count);
+OwnedPointerArray *OwnedPointerArray_Destroy(OwnedPointerArray *array);
+void OwnedPointerArray_Clear(OwnedPointerArray *array);
+BurstSpriteConfig *TimedSpriteConfig_InitTracks(BurstSpriteConfig *config);
+void OwnedPointerArray_Resize(OwnedPointerArray *array, s32 count);
 
 /*
  * Initialize the recovered base and manager vtable, construct a temporary
@@ -102,20 +102,19 @@ void func_0201f11c(OwnedPointerArray *array, s32 count);
  * it, and retain it.  Set the manager timer to 300, destroy both temporary
  * tracks, and return self.  Allocation failure is preserved as a null slot.
  */
-TimedSpriteBurstManager *func_0201eefc(TimedSpriteBurstManager *self,
-                                       const BurstRectangle *rectangle,
-                                       s32 count)
+TimedSpriteBurstManager *TimedSpriteBurstManager_Init(
+    TimedSpriteBurstManager *self, const BurstRectangle *rectangle, s32 count)
 {
     BurstSpriteConfig config;
     TouchPointValue center;
     s32 index;
 
     func_0201e250(self);
-    self->vtable = (void **)data_020d6220;
+    self->vtable = (void **)gTimedSpriteBurstManagerVtable;
     self->sprites08.items = 0;
     self->sprites08.count = 0;
     self->state14 = 0;
-    func_0201f0fc(&config);
+    TimedSpriteConfig_InitTracks(&config);
     self->spriteGroup10 = GraphicsSpriteGroupOwner_CreateGroup(gDebugFont);
     config.spriteGroup = self->spriteGroup10;
     config.field04 = 0;
@@ -124,7 +123,7 @@ TimedSpriteBurstManager *func_0201eefc(TimedSpriteBurstManager *self,
     config.second20.bytes[0xc] = 0;
     config.lifetime30 = 300;
     config.field34 = 2;
-    func_0201f11c(&self->sprites08, count);
+    OwnedPointerArray_Resize(&self->sprites08, count);
     TouchPoint_Init(&center,
                     ((rectangle->right - rectangle->left) * 8
                      + rectangle->left * 16)
@@ -159,16 +158,16 @@ TimedSpriteBurstManager *func_0201eefc(TimedSpriteBurstManager *self,
 }
 
 /* Destroy array storage when present and return the array. */
-OwnedPointerArray *func_0201f0b0(OwnedPointerArray *array)
+OwnedPointerArray *OwnedPointerArray_Destroy(OwnedPointerArray *array)
 {
     if (array->items != 0) {
-        func_0201f0d0(array);
+        OwnedPointerArray_Clear(array);
     }
     return array;
 }
 
 /* Free array storage when present, then clear both pointer and count. */
-void func_0201f0d0(OwnedPointerArray *array)
+void OwnedPointerArray_Clear(OwnedPointerArray *array)
 {
     if (array->items != 0) {
         func_02003e38(array->items);
@@ -178,7 +177,7 @@ void func_0201f0d0(OwnedPointerArray *array)
 }
 
 /* Construct the two embedded tracks and return config. */
-BurstSpriteConfig *func_0201f0fc(BurstSpriteConfig *config)
+BurstSpriteConfig *TimedSpriteConfig_InitTracks(BurstSpriteConfig *config)
 {
     VecFx32Object_Init(&config->first10);
     VecFx32Object_Init(&config->second20);
@@ -189,10 +188,10 @@ BurstSpriteConfig *func_0201f0fc(BurstSpriteConfig *config)
  * Release existing storage, allocate count four-byte pointer slots with the
  * recovered tag/alignment from the game heap, and store pointer and count.
  */
-void func_0201f11c(OwnedPointerArray *array, s32 count)
+void OwnedPointerArray_Resize(OwnedPointerArray *array, s32 count)
 {
     if (array->items != 0) {
-        func_0201f0d0(array);
+        OwnedPointerArray_Clear(array);
     }
     array->items =
         (void **)func_02003e20((u32)count * 4, gTimedSpritePointerArrayAllocationTag, 4,
@@ -205,29 +204,29 @@ void func_0201f11c(OwnedPointerArray *array, s32 count)
  * release the pointer array, sprite group, and three recovered resources, run
  * the array's guarded destructor, and return self without freeing it.
  */
-TimedSpriteBurstManager *func_0201f15c(TimedSpriteBurstManager *self)
+TimedSpriteBurstManager *TimedSpriteBurstManager_Destroy(TimedSpriteBurstManager *self)
 {
     s32 index;
-    self->vtable = (void **)data_020d6220;
+    self->vtable = (void **)gTimedSpriteBurstManagerVtable;
     for (index = 0; index < self->sprites08.count; index++) {
         void *sprite = self->sprites08.items[index];
         if (sprite != 0) {
             ((BurstSpriteDestroy)(*(void ***)sprite)[1])(sprite);
         }
     }
-    func_0201f0d0(&self->sprites08);
+    OwnedPointerArray_Clear(&self->sprites08);
     GraphicsSpriteGroupOwner_DestroyGroup(gDebugFont, self->spriteGroup10);
     func_02071bdc(data_020f4e18, self->resource18);
     func_02071c38(data_020f4e18, self->resource1c);
     func_02071c94(data_020f4e18, self->resource20);
-    func_0201f0b0(&self->sprites08);
+    OwnedPointerArray_Destroy(&self->sprites08);
     return self;
 }
 
-/* Perform func_0201f15c's teardown, free self, and return its old address. */
-TimedSpriteBurstManager *func_0201f204(TimedSpriteBurstManager *self)
+/* Perform the manager teardown, free self, and return its old address. */
+TimedSpriteBurstManager *TimedSpriteBurstManager_DestroyAndFree(TimedSpriteBurstManager *self)
 {
-    func_0201f15c(self);
+    TimedSpriteBurstManager_Destroy(self);
     Heap_Free(self);
     return self;
 }
@@ -239,7 +238,7 @@ TimedSpriteBurstManager *func_0201f204(TimedSpriteBurstManager *self)
  * one.  Other paths render spriteGroup10, destroy the temporary, and return
  * zero.
  */
-s32 func_0201f2b4(TimedSpriteBurstManager *self)
+s32 TimedSpriteBurstManager_Update(TimedSpriteBurstManager *self)
 {
     PresentationTrack position;
     s32 index;

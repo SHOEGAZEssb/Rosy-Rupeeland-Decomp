@@ -20,7 +20,7 @@ extern void *ActorCollection_FindActorByDescriptorValue(...);
 extern void *Actor_GetCollection(...);
 extern void *ActorCollection_GetSpriteOwner(...);
 extern u32 *ActorRuntimeTriple_Assign(void *object, u32 first, u32 second, u32 third);
-extern void *func_0201eefc(...);
+extern void *TimedSpriteBurstManager_Init(...);
 extern void *func_02022cb0(...);
 extern void *func_02022ff4(...);
 extern void *func_0201f864(...);
@@ -139,7 +139,7 @@ s32 func_020143a8(GamePhaseActorScriptVm *self)
         RectS32_Set(rect, tileX - 4, tileY - 4, tileX + 4, tileY + 4);
         object = Heap_Alloc(0x28, data_020d5b34, 4, &gHeapContext);
         if (object != 0)
-            object = func_0201eefc(object, rect, a2, a3, a4);
+            object = TimedSpriteBurstManager_Init(object, rect, a2, a3, a4);
         addScriptObject(object);
         break;
     }

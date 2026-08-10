@@ -7609,49 +7609,49 @@ build build/reports/timed_sprite_burst_manager_0201eefc.json: objdiff build/deco
   base_object = build/decomp/asm/game/timed_sprite_burst_manager_0201eefc.o
 build build/reports/timed_sprite_burst_manager_0201eefc.txt: match_report build/reports/timed_sprite_burst_manager_0201eefc.json | tools/report_objdiff.py
   report_json = build/reports/timed_sprite_burst_manager_0201eefc.json
-  report_args = --section .text --function func_0201eefc --require-exact
+  report_args = --section .text --function TimedSpriteBurstManager_Init --require-exact
 build build/reports/timed_sprite_burst_manager_0201f0b0.json: objdiff build/decomp/delinks/asm/game/timed_sprite_burst_manager_0201f0b0.o | build/decomp/asm/game/timed_sprite_burst_manager_0201f0b0.o
   target_object = build/decomp/delinks/asm/game/timed_sprite_burst_manager_0201f0b0.o
   base_object = build/decomp/asm/game/timed_sprite_burst_manager_0201f0b0.o
 build build/reports/timed_sprite_burst_manager_0201f0b0.txt: match_report build/reports/timed_sprite_burst_manager_0201f0b0.json | tools/report_objdiff.py
   report_json = build/reports/timed_sprite_burst_manager_0201f0b0.json
-  report_args = --section .text --function func_0201f0b0 --require-exact
+  report_args = --section .text --function OwnedPointerArray_Destroy --require-exact
 build build/reports/timed_sprite_burst_manager_0201f0d0.json: objdiff build/decomp/delinks/asm/game/timed_sprite_burst_manager_0201f0d0.o | build/decomp/asm/game/timed_sprite_burst_manager_0201f0d0.o
   target_object = build/decomp/delinks/asm/game/timed_sprite_burst_manager_0201f0d0.o
   base_object = build/decomp/asm/game/timed_sprite_burst_manager_0201f0d0.o
 build build/reports/timed_sprite_burst_manager_0201f0d0.txt: match_report build/reports/timed_sprite_burst_manager_0201f0d0.json | tools/report_objdiff.py
   report_json = build/reports/timed_sprite_burst_manager_0201f0d0.json
-  report_args = --section .text --function func_0201f0d0 --require-exact
+  report_args = --section .text --function OwnedPointerArray_Clear --require-exact
 build build/reports/timed_sprite_burst_manager_0201f0fc.json: objdiff build/decomp/delinks/asm/game/timed_sprite_burst_manager_0201f0fc.o | build/decomp/asm/game/timed_sprite_burst_manager_0201f0fc.o
   target_object = build/decomp/delinks/asm/game/timed_sprite_burst_manager_0201f0fc.o
   base_object = build/decomp/asm/game/timed_sprite_burst_manager_0201f0fc.o
 build build/reports/timed_sprite_burst_manager_0201f0fc.txt: match_report build/reports/timed_sprite_burst_manager_0201f0fc.json | tools/report_objdiff.py
   report_json = build/reports/timed_sprite_burst_manager_0201f0fc.json
-  report_args = --section .text --function func_0201f0fc --require-exact
+  report_args = --section .text --function TimedSpriteConfig_InitTracks --require-exact
 build build/reports/timed_sprite_burst_manager_0201f11c.json: objdiff build/decomp/delinks/asm/game/timed_sprite_burst_manager_0201f11c.o | build/decomp/asm/game/timed_sprite_burst_manager_0201f11c.o
   target_object = build/decomp/delinks/asm/game/timed_sprite_burst_manager_0201f11c.o
   base_object = build/decomp/asm/game/timed_sprite_burst_manager_0201f11c.o
 build build/reports/timed_sprite_burst_manager_0201f11c.txt: match_report build/reports/timed_sprite_burst_manager_0201f11c.json | tools/report_objdiff.py
   report_json = build/reports/timed_sprite_burst_manager_0201f11c.json
-  report_args = --section .text --function func_0201f11c --require-exact
+  report_args = --section .text --function OwnedPointerArray_Resize --require-exact
 build build/reports/timed_sprite_burst_manager_0201f15c.json: objdiff build/decomp/delinks/asm/game/timed_sprite_burst_manager_0201f15c.o | build/decomp/asm/game/timed_sprite_burst_manager_0201f15c.o
   target_object = build/decomp/delinks/asm/game/timed_sprite_burst_manager_0201f15c.o
   base_object = build/decomp/asm/game/timed_sprite_burst_manager_0201f15c.o
 build build/reports/timed_sprite_burst_manager_0201f15c.txt: match_report build/reports/timed_sprite_burst_manager_0201f15c.json | tools/report_objdiff.py
   report_json = build/reports/timed_sprite_burst_manager_0201f15c.json
-  report_args = --section .text --function func_0201f15c --require-exact
+  report_args = --section .text --function TimedSpriteBurstManager_Destroy --require-exact
 build build/reports/timed_sprite_burst_manager_0201f204.json: objdiff build/decomp/delinks/asm/game/timed_sprite_burst_manager_0201f204.o | build/decomp/asm/game/timed_sprite_burst_manager_0201f204.o
   target_object = build/decomp/delinks/asm/game/timed_sprite_burst_manager_0201f204.o
   base_object = build/decomp/asm/game/timed_sprite_burst_manager_0201f204.o
 build build/reports/timed_sprite_burst_manager_0201f204.txt: match_report build/reports/timed_sprite_burst_manager_0201f204.json | tools/report_objdiff.py
   report_json = build/reports/timed_sprite_burst_manager_0201f204.json
-  report_args = --section .text --function func_0201f204 --require-exact
+  report_args = --section .text --function TimedSpriteBurstManager_DestroyAndFree --require-exact
 build build/reports/timed_sprite_burst_manager_0201f2b4.json: objdiff build/decomp/delinks/asm/game/timed_sprite_burst_manager_0201f2b4.o | build/decomp/asm/game/timed_sprite_burst_manager_0201f2b4.o
   target_object = build/decomp/delinks/asm/game/timed_sprite_burst_manager_0201f2b4.o
   base_object = build/decomp/asm/game/timed_sprite_burst_manager_0201f2b4.o
 build build/reports/timed_sprite_burst_manager_0201f2b4.txt: match_report build/reports/timed_sprite_burst_manager_0201f2b4.json | tools/report_objdiff.py
   report_json = build/reports/timed_sprite_burst_manager_0201f2b4.json
-  report_args = --section .text --function func_0201f2b4 --require-exact
+  report_args = --section .text --function TimedSpriteBurstManager_Update --require-exact
 build build/reports/timed_sprite_burst_manager.txt: phony build/reports/timed_sprite_burst_manager_0201eefc.txt build/reports/timed_sprite_burst_manager_0201f0b0.txt build/reports/timed_sprite_burst_manager_0201f0d0.txt build/reports/timed_sprite_burst_manager_0201f0fc.txt build/reports/timed_sprite_burst_manager_0201f11c.txt build/reports/timed_sprite_burst_manager_0201f15c.txt build/reports/timed_sprite_burst_manager_0201f204.txt build/reports/timed_sprite_burst_manager_0201f2b4.txt
 build build/reports/timed_sprite_offset_presentation_0201f378.json: objdiff build/decomp/delinks/asm/game/timed_sprite_offset_presentation_0201f378.o | build/decomp/asm/game/timed_sprite_offset_presentation_0201f378.o
   target_object = build/decomp/delinks/asm/game/timed_sprite_offset_presentation_0201f378.o

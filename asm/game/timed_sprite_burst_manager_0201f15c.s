@@ -5,7 +5,7 @@
 .extern TouchPoint_Init
 .extern data_020c9670
 .extern gTimedSpritePointerArrayAllocationTag
-.extern data_020d6220
+.extern gTimedSpriteBurstManagerVtable
 .extern gTimedSpritePresentationAllocationTag
 .extern data_020f4e18
 .extern data_021052fc
@@ -18,14 +18,14 @@
 .extern func_0201e250
 .extern func_0201e3b8
 .extern func_0201e454
-.extern func_0201eefc
-.extern func_0201f0b0
-.extern func_0201f0d0
-.extern func_0201f0fc
-.extern func_0201f11c
-.extern func_0201f15c
-.extern func_0201f204
-.extern func_0201f2b4
+.extern TimedSpriteBurstManager_Init
+.extern OwnedPointerArray_Destroy
+.extern OwnedPointerArray_Clear
+.extern TimedSpriteConfig_InitTracks
+.extern OwnedPointerArray_Resize
+.extern TimedSpriteBurstManager_Destroy
+.extern TimedSpriteBurstManager_DestroyAndFree
+.extern TimedSpriteBurstManager_Update
 .extern func_02071bdc
 .extern func_02071c38
 .extern func_02071c94
@@ -36,10 +36,10 @@
 .extern gHeapContext
 .extern genrand_int32
 
-.global func_0201f15c
-.type func_0201f15c, @function
+.global TimedSpriteBurstManager_Destroy
+.type TimedSpriteBurstManager_Destroy, @function
 
-func_0201f15c: ; 0x0201f15c
+TimedSpriteBurstManager_Destroy: ; 0x0201f15c
     stmdb sp!, {r3, r4, r5, lr}
     ldr r1, .L_0201f1f8
     mov r4, r0
@@ -61,7 +61,7 @@ func_0201f15c: ; 0x0201f15c
     cmp r5, r0
     blt .L_0201f174
     add r0, r4, #0x8
-    bl func_0201f0d0
+    bl OwnedPointerArray_Clear
     ldr r0, .L_0201f1fc
     ldr r1, [r4, #0x10]
     ldr r0, [r0, #0x0]
@@ -79,11 +79,11 @@ func_0201f15c: ; 0x0201f15c
     ldr r0, [r0, #0x0]
     bl func_02071c94
     add r0, r4, #0x8
-    bl func_0201f0b0
+    bl OwnedPointerArray_Destroy
     mov r0, r4
     ldmia sp!, {r3, r4, r5, pc}
-.L_0201f1f8: .word data_020d6220
+.L_0201f1f8: .word gTimedSpriteBurstManagerVtable
 .L_0201f1fc: .word gDebugFont
 .L_0201f200: .word data_020f4e18
-    .size func_0201f15c, .-func_0201f15c
+    .size TimedSpriteBurstManager_Destroy, .-TimedSpriteBurstManager_Destroy
 

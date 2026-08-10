@@ -24,7 +24,7 @@
 .extern func_0201df54
 .extern func_0201df5c
 .extern func_0201e0ec
-.extern func_0201eefc
+.extern TimedSpriteBurstManager_Init
 .extern func_0201f864
 .extern func_0201fe68
 .extern func_02022cb0
@@ -181,7 +181,7 @@ L_020144c0:
     mov r2, r8
     mov r3, r7
     str r6, [sp, #0x0]
-    bl func_0201eefc
+    bl TimedSpriteBurstManager_Init
     mov r1, r0
 L_02014558:
     ldr r0, L_020154d0

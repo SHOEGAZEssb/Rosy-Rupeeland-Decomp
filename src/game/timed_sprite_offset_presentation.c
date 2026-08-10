@@ -42,7 +42,7 @@ extern void *data_020d61f8;
 extern const char gTimedSpritePresentationAllocationTag[];
 extern u8 *data_021052fc;
 extern void *func_0201e250(void *self);
-extern OffsetSpriteConfig *func_0201f0fc(OffsetSpriteConfig *config);
+extern OffsetSpriteConfig *TimedSpriteConfig_InitTracks(OffsetSpriteConfig *config);
 extern void *func_0201e584(void *self, OffsetSpriteConfig *config,
                            s32 spriteValue, s32 offset);
 extern void VecFx32Object_Destroy(void *track);
@@ -113,7 +113,7 @@ void func_0201f458(TimedSpriteOffsetPresentation *self,
     OffsetSpriteConfig config;
     void *presentation;
 
-    func_0201f0fc(&config);
+    TimedSpriteConfig_InitTracks(&config);
     self->spriteGroup0c = spriteGroup;
     config.spriteGroup = spriteGroup;
     config.field04 = field04;

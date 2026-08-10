@@ -5,7 +5,7 @@
 .extern TouchPoint_Init
 .extern data_020c9670
 .extern gTimedSpritePointerArrayAllocationTag
-.extern data_020d6220
+.extern gTimedSpriteBurstManagerVtable
 .extern gTimedSpritePresentationAllocationTag
 .extern data_020f4e18
 .extern data_021052fc
@@ -18,14 +18,14 @@
 .extern func_0201e250
 .extern func_0201e3b8
 .extern func_0201e454
-.extern func_0201eefc
-.extern func_0201f0b0
-.extern func_0201f0d0
-.extern func_0201f0fc
-.extern func_0201f11c
-.extern func_0201f15c
-.extern func_0201f204
-.extern func_0201f2b4
+.extern TimedSpriteBurstManager_Init
+.extern OwnedPointerArray_Destroy
+.extern OwnedPointerArray_Clear
+.extern TimedSpriteConfig_InitTracks
+.extern OwnedPointerArray_Resize
+.extern TimedSpriteBurstManager_Destroy
+.extern TimedSpriteBurstManager_DestroyAndFree
+.extern TimedSpriteBurstManager_Update
 .extern func_02071bdc
 .extern func_02071c38
 .extern func_02071c94
@@ -36,10 +36,10 @@
 .extern gHeapContext
 .extern genrand_int32
 
-.global func_0201eefc
-.type func_0201eefc, @function
+.global TimedSpriteBurstManager_Init
+.type TimedSpriteBurstManager_Init, @function
 
-func_0201eefc: ; 0x0201eefc
+TimedSpriteBurstManager_Init: ; 0x0201eefc
     stmdb sp!, {r4, r5, r6, r7, r8, r9, r10, r11, lr}
     sub sp, sp, #0x44
     mov r10, r0
@@ -53,7 +53,7 @@ func_0201eefc: ; 0x0201eefc
     str r1, [r10, #0xc]
     add r0, sp, #0xc
     str r1, [r10, #0x14]
-    bl func_0201f0fc
+    bl TimedSpriteConfig_InitTracks
     ldr r0, .L_0201f0a0
     ldr r0, [r0, #0x0]
     bl GraphicsSpriteGroupOwner_CreateGroup
@@ -70,7 +70,7 @@ func_0201eefc: ; 0x0201eefc
     str r0, [sp, #0x3c]
     mov r1, r5
     add r0, r10, #0x8
-    bl func_0201f11c
+    bl OwnedPointerArray_Resize
     ldr r1, [r4, #0x8]
     ldmia r4, {r3, r5}
     ldr r2, [r4, #0xc]
@@ -147,10 +147,10 @@ func_0201eefc: ; 0x0201eefc
     mov r0, r10
     add sp, sp, #0x44
     ldmia sp!, {r4, r5, r6, r7, r8, r9, r10, r11, pc}
-.L_0201f09c: .word data_020d6220
+.L_0201f09c: .word gTimedSpriteBurstManagerVtable
 .L_0201f0a0: .word gDebugFont
 .L_0201f0a4: .word data_020c9670
 .L_0201f0a8: .word gTimedSpritePresentationAllocationTag
 .L_0201f0ac: .word gHeapContext
-    .size func_0201eefc, .-func_0201eefc
+    .size TimedSpriteBurstManager_Init, .-TimedSpriteBurstManager_Init
 
