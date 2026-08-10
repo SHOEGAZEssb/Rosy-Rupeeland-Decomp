@@ -8,7 +8,7 @@
 .extern func_02005058
 .extern func_020091c0
 .extern func_0200a114
-.extern func_02030a80
+.extern ActorCollection_SpawnDescriptorsBySelector
 .extern func_02032cac
 .extern func_020337d4
 .extern func_0204d570
@@ -82,7 +82,7 @@ func_ov091_02217b3c:
     ldr r1, .L_02217cdc
     mvn r2, #0x0
     ldr r1, [r1, #0x0]
-    bl func_02030a80
+    bl ActorCollection_SpawnDescriptorsBySelector
 .L_02217c40:
     mov r0, r4
     mov r1, #0x0

@@ -14,7 +14,7 @@
 .extern func_02019890
 .extern func_0202d568
 .extern func_0202ecd0
-.extern func_02030a80
+.extern ActorCollection_SpawnDescriptorsBySelector
 .extern func_02030ad4
 .extern Actor_GetCollisionCenter
 .extern func_020337d4
@@ -324,7 +324,7 @@ L_020197d8:
     bl func_020337d4
     mov r1, r4
     mov r2, r6
-    bl func_02030a80
+    bl ActorCollection_SpawnDescriptorsBySelector
     b L_02019878
 L_02019804:
     ldr r0, [r9, #0x84]

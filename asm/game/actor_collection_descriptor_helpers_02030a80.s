@@ -2,9 +2,9 @@
 .text
 .extern func_0202ecd0
 
-    .global func_02030a80
-    .type func_02030a80, @function
-func_02030a80: ; 0x02030a80
+    .global ActorCollection_SpawnDescriptorsBySelector
+    .type ActorCollection_SpawnDescriptorsBySelector, @function
+ActorCollection_SpawnDescriptorsBySelector: ; 0x02030a80
     stmdb sp!, {r4, r5, r6, lr}
     mov r6, r0
     mov r5, r1
@@ -27,5 +27,4 @@ func_02030a80: ; 0x02030a80
     cmp r0, #0x0
     bne .L_02030a94
     ldmia sp!, {r4, r5, r6, pc}
-    .size func_02030a80, . - func_02030a80
-
+    .size ActorCollection_SpawnDescriptorsBySelector, . - ActorCollection_SpawnDescriptorsBySelector

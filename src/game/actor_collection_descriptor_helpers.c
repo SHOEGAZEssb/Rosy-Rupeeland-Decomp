@@ -43,8 +43,9 @@ extern void func_02033f18(DescriptorActor *, s32);
  * and construct records whose signed selector at 0x50 equals selector. Inputs
  * are the collection, first descriptor, and selector; returns no value.
  */
-void func_02030a80(DescriptorActorCollection *self,
-                   CollectionDescriptor *descriptor, s32 selector)
+void ActorCollection_SpawnDescriptorsBySelector(
+    DescriptorActorCollection *self, CollectionDescriptor *descriptor,
+    s32 selector)
 {
     while (descriptor->kind_00) {
         descriptor->flags_28 |= 8;

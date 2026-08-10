@@ -19,7 +19,8 @@ extern void func_020066a4(void *destination, const void *source,
                           const void *transform);
 extern void *func_0202d568(void *collection, s32 index);
 extern void *func_0202ecd0(void *collection, const void *descriptor);
-extern void *func_02030a80(void *collection, s32 value, s32 index);
+extern void ActorCollection_SpawnDescriptorsBySelector(
+    void *collection, void *descriptors, s32 selector);
 extern void *func_02030ad4(void *collection, s32 index);
 extern void *Actor_GetCollisionCenter(VecFx32Object *destination, void *actor);
 extern void *func_020337d4(void *actor);
@@ -177,7 +178,8 @@ s32 func_0201939c(GamePhaseActorScriptVm *self)
     case 4: {
         s32 selection = (*(u32 *)((u8 *)self->actor_84 + 0x14) & 0x04000000)
                             ? data_02105710 : data_0210570c;
-        func_02030a80(func_020337d4(self->actor_84), selection, p6);
+        ActorCollection_SpawnDescriptorsBySelector(
+            func_020337d4(self->actor_84), (void *)selection, p6);
         break;
     }
     case 5:
