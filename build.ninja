@@ -43675,3 +43675,23 @@ build build/reports/overlay090_title_sprite_replace.txt: match_report build/repo
   report_json = build/reports/overlay090_title_sprite_replace.json
   report_args = --section .text --function func_ov090_0221ad64
 build overlay090_title_sprite_replace: phony build/reports/overlay090_title_sprite_replace.txt
+build build/decomp/src/overlays/ov090/overlay090_title_participant_separation.o: mwccarm src/overlays/ov090/overlay090_title_participant_separation.c | include/tingle/types.h include/tingle/vec_fx32.h
+  source = src/overlays/ov090/overlay090_title_participant_separation.c
+  cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c
+build build/reports/overlay090_title_participant_separation.json: objdiff build/decomp/delinks/asm/overlays/ov090/overlay090_0221b280.o | build/decomp/src/overlays/ov090/overlay090_title_participant_separation.o
+  target_object = build/decomp/delinks/asm/overlays/ov090/overlay090_0221b280.o
+  base_object = build/decomp/src/overlays/ov090/overlay090_title_participant_separation.o
+build build/reports/overlay090_title_participant_separation.txt: match_report build/reports/overlay090_title_participant_separation.json | tools/report_objdiff.py
+  report_json = build/reports/overlay090_title_participant_separation.json
+  report_args = --section .text --function func_ov090_0221b280
+build overlay090_title_participant_separation: phony build/reports/overlay090_title_participant_separation.txt
+build build/decomp/src/overlays/ov090/overlay090_title_nearest_participant.o: mwccarm src/overlays/ov090/overlay090_title_nearest_participant.c | include/tingle/graphics_sprite_state.h include/tingle/types.h include/tingle/vec_fx32.h
+  source = src/overlays/ov090/overlay090_title_nearest_participant.c
+  cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c
+build build/reports/overlay090_title_nearest_participant.json: objdiff build/decomp/delinks/asm/overlays/ov090/overlay090_0221ae1c.o | build/decomp/src/overlays/ov090/overlay090_title_nearest_participant.o
+  target_object = build/decomp/delinks/asm/overlays/ov090/overlay090_0221ae1c.o
+  base_object = build/decomp/src/overlays/ov090/overlay090_title_nearest_participant.o
+build build/reports/overlay090_title_nearest_participant.txt: match_report build/reports/overlay090_title_nearest_participant.json | tools/report_objdiff.py
+  report_json = build/reports/overlay090_title_nearest_participant.json
+  report_args = --section .text --function func_ov090_0221ae1c
+build overlay090_title_nearest_participant: phony build/reports/overlay090_title_nearest_participant.txt
