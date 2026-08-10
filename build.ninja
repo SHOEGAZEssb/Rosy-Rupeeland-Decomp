@@ -43695,3 +43695,23 @@ build build/reports/overlay090_title_nearest_participant.txt: match_report build
   report_json = build/reports/overlay090_title_nearest_participant.json
   report_args = --section .text --function func_ov090_0221ae1c
 build overlay090_title_nearest_participant: phony build/reports/overlay090_title_nearest_participant.txt
+build build/decomp/src/overlays/ov090/overlay090_title_periodic_effect_spawn.o: mwccarm src/overlays/ov090/overlay090_title_periodic_effect_spawn.c | include/tingle/types.h include/tingle/vec_fx32.h
+  source = src/overlays/ov090/overlay090_title_periodic_effect_spawn.c
+  cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c
+build build/reports/overlay090_title_periodic_effect_spawn.json: objdiff build/decomp/delinks/asm/overlays/ov090/overlay090_0221ab4c.o | build/decomp/src/overlays/ov090/overlay090_title_periodic_effect_spawn.o
+  target_object = build/decomp/delinks/asm/overlays/ov090/overlay090_0221ab4c.o
+  base_object = build/decomp/src/overlays/ov090/overlay090_title_periodic_effect_spawn.o
+build build/reports/overlay090_title_periodic_effect_spawn.txt: match_report build/reports/overlay090_title_periodic_effect_spawn.json | tools/report_objdiff.py
+  report_json = build/reports/overlay090_title_periodic_effect_spawn.json
+  report_args = --section .text --function func_ov090_0221ab4c
+build overlay090_title_periodic_effect_spawn: phony build/reports/overlay090_title_periodic_effect_spawn.txt
+build build/decomp/src/overlays/ov090/overlay090_title_terminal_effect_burst.o: mwccarm src/overlays/ov090/overlay090_title_terminal_effect_burst.c | include/tingle/animation_resource.h include/tingle/heap.h include/tingle/types.h include/tingle/vec_fx32.h
+  source = src/overlays/ov090/overlay090_title_terminal_effect_burst.c
+  cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c
+build build/reports/overlay090_title_terminal_effect_burst.json: objdiff build/decomp/delinks/asm/overlays/ov090/overlay090_0221b428.o | build/decomp/src/overlays/ov090/overlay090_title_terminal_effect_burst.o
+  target_object = build/decomp/delinks/asm/overlays/ov090/overlay090_0221b428.o
+  base_object = build/decomp/src/overlays/ov090/overlay090_title_terminal_effect_burst.o
+build build/reports/overlay090_title_terminal_effect_burst.txt: match_report build/reports/overlay090_title_terminal_effect_burst.json | tools/report_objdiff.py
+  report_json = build/reports/overlay090_title_terminal_effect_burst.json
+  report_args = --section .text --function func_ov090_0221b428
+build overlay090_title_terminal_effect_burst: phony build/reports/overlay090_title_terminal_effect_burst.txt
