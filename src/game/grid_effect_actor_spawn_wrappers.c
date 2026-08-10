@@ -14,7 +14,7 @@ extern "C" {
 extern void VecFx32Object_InitComponents(void *vector, s32 x, s32 y, s32 z);
 extern void VecFx32Object_Destroy(void *vector);
 extern void VecFx32Object_Assign(void *destination, const void *source);
-extern void *func_0204f62c(const void *position, void *source, s16 timer);
+extern void *GridEffectActor_SpawnCore(const void *position, void *source, s16 timer);
 extern u32 genrand_int32(void);
 #ifdef __cplusplus
 }
@@ -34,14 +34,14 @@ static s32 fx_mul(s32 a, s32 b)
 }
 
 /*
- * Inputs are forwarded to func_0204f62c. On success, derive X and Y velocities
+ * Inputs are forwarded to GridEffectActor_SpawnCore. On success, derive X and Y velocities
  * as 0x1000 minus independent 13-bit halves of one random word, use 0x3000 for
  * Z, copy the vector to actor+0x38, and return one; return zero if spawning
  * fails. Actor/RNG state changes, with no direct hardware effects.
  */
-s32 func_0204f7e4(const void *position, void *source, s16 timer)
+s32 GridEffectActor_SpawnWithRandomVelocity(const void *position, void *source, s16 timer)
 {
-    void *actor = func_0204f62c(position, source, timer);
+    void *actor = GridEffectActor_SpawnCore(position, source, timer);
     FxVector3 velocity;
     if (actor == 0)
         return 0;
@@ -56,24 +56,24 @@ s32 func_0204f7e4(const void *position, void *source, s16 timer)
 }
 
 /*
- * Forward the core spawn inputs to func_0204f62c and propagate its actor/null
+ * Forward the core spawn inputs to GridEffectActor_SpawnCore and propagate its actor/null
  * result. This tail-call entry has only the core spawner's engine effects.
  */
-void *func_0204f848(const void *position, void *source, s16 timer)
+void *GridEffectActor_Spawn(const void *position, void *source, s16 timer)
 {
-    return func_0204f62c(position, source, timer);
+    return GridEffectActor_SpawnCore(position, source, timer);
 }
 
 /*
  * Inputs are position, a velocity vector, resource source, and timer. Spawn
- * through func_0204f62c with the latter two inputs reordered, copy the supplied
+ * through GridEffectActor_SpawnCore with the latter two inputs reordered, copy the supplied
  * vector to actor+0x38, set actor flag 2, and return one; return zero on failure.
  * Actor-manager state changes and hardware is not accessed directly.
  */
-s32 func_0204f854(const void *position, const void *velocity,
+s32 GridEffectActor_SpawnWithVelocity(const void *position, const void *velocity,
                   void *source, s16 timer)
 {
-    void *actor = func_0204f62c(position, source, timer);
+    void *actor = GridEffectActor_SpawnCore(position, source, timer);
     if (actor == 0)
         return 0;
     VecFx32Object_Assign((u8 *)actor + 0x38, velocity);
@@ -82,15 +82,15 @@ s32 func_0204f854(const void *position, const void *velocity,
 }
 
 /*
- * Inputs are forwarded to func_0204f62c. On success, advance the global angle
+ * Inputs are forwarded to GridEffectActor_SpawnCore. On success, advance the global angle
  * by 0x1999 plus a random 12-bit value, wrapping values above 0x8000, then form
  * X/Y velocities from data_020c9670 scaled by fixed-point 0x1333 and use Z
  * velocity 0x3000. Copy the vector and return one; return zero on spawn failure.
  * Actor, angle, and RNG state change without direct hardware access.
  */
-s32 func_0204f894(const void *position, void *source, s16 timer)
+s32 GridEffectActor_SpawnWithRadialVelocity(const void *position, void *source, s16 timer)
 {
-    void *actor = func_0204f62c(position, source, timer);
+    void *actor = GridEffectActor_SpawnCore(position, source, timer);
     FxVector3 velocity;
     if (actor == 0)
         return 0;
@@ -108,4 +108,3 @@ s32 func_0204f894(const void *position, void *source, s16 timer)
     VecFx32Object_Destroy(&velocity);
     return 1;
 }
-

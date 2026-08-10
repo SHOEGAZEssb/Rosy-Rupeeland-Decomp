@@ -28,9 +28,9 @@ extern void ActorDerivedType1_StartRecord(void *manager, s32 value);
 extern s32 ActorDerivedType1_IsIdleEligible(void *manager);
 extern void PresentationBackedActor_SpawnSplitAmount(s32 duration, s16 amount,
                           const VecFx32Object *position);
-extern void func_0204f7e4(const VecFx32Object *position,
+extern void GridEffectActor_SpawnWithRandomVelocity(const VecFx32Object *position,
                           const void *descriptor, s32 duration);
-extern void func_0204f854(const VecFx32Object *first,
+extern void GridEffectActor_SpawnWithVelocity(const VecFx32Object *first,
                           const VecFx32Object *second,
                           const void *descriptor, s32 duration);
 extern void func_02050078(s32 effect, const VecFx32Object *first,
@@ -153,7 +153,7 @@ s32 func_0201939c(GamePhaseActorScriptVm *self)
         } else {
             u8 descriptor[0x24];
             func_02019890(descriptor, (u16)p6, 1);
-            func_0204f7e4(&position, descriptor, 300);
+            GridEffectActor_SpawnWithRandomVelocity(&position, descriptor, 300);
         }
         VecFx32Object_Destroy(&position);
         break;
@@ -202,7 +202,7 @@ s32 func_0201939c(GamePhaseActorScriptVm *self)
         func_02019890(descriptor, (u16)p6, 1);
         VecFx32Object_InitComponents(&first, p5 << 12, p4 << 12, p3 << 12);
         VecFx32Object_InitComponents(&second, p2, p1, p0);
-        func_0204f854(&first, &second, descriptor, 300);
+        GridEffectActor_SpawnWithVelocity(&first, &second, descriptor, 300);
         VecFx32Object_Destroy(&second);
         VecFx32Object_Destroy(&first);
         break;

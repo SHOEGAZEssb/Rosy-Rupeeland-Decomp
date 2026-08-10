@@ -39,7 +39,7 @@ extern u32 func_02063190(void);
  * -16/+16 bounds, then return the actor. Global slot, manager, and subobject
  * state change; no hardware registers are accessed directly.
  */
-void *func_0204f62c(const void *position, void *source, s16 timer)
+void *GridEffectActor_SpawnCore(const void *position, void *source, s16 timer)
 {
     void **slot = GridEffectActorRegistry_AcquireSlot();
     u8 descriptor[100];
@@ -85,4 +85,3 @@ void *func_0204f62c(const void *position, void *source, s16 timer)
     FIELD(s16, actor, 0x66) = 16;
     return actor;
 }
-

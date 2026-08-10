@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/grid_effect_actor_lifecycle.c.
 .extern Heap_Free
-.extern data_020e2664
+.extern gGridEffectActorVtable
 .extern func_02022fbc
 .extern func_02030f98
 .extern func_0203130c
@@ -9,8 +9,8 @@
 .extern GridEffectActorRegistry_Unregister
 .text
 
-    .global func_0204ec0c
-func_0204ec0c: ; 0x0204ec0c
+    .global GridEffectActor_Init
+GridEffectActor_Init: ; 0x0204ec0c
     stmdb sp!, {r4, lr}
     mov r4, r0
     bl func_02030f98
@@ -35,13 +35,13 @@ func_0204ec0c: ; 0x0204ec0c
     mov r0, r4
     strb r1, [r4, #0x21b]
     ldmia sp!, {r4, pc}
-.L_0204ec6c: .word data_020e2664
+.L_0204ec6c: .word gGridEffectActorVtable
 .L_0204ec70: .word 0xffff0003
-.size func_0204ec0c, . - func_0204ec0c
+.size GridEffectActor_Init, . - GridEffectActor_Init
 
-    .global func_0204ec74
+    .global GridEffectActor_Destroy
 
-func_0204ec74: ; 0x0204ec74
+GridEffectActor_Destroy: ; 0x0204ec74
     stmdb sp!, {r4, lr}
     ldr r1, .L_0204ecd0
     mov r4, r0
@@ -66,12 +66,12 @@ func_0204ec74: ; 0x0204ec74
     bl func_0203130c
     mov r0, r4
     ldmia sp!, {r4, pc}
-.L_0204ecd0: .word data_020e2664
-.size func_0204ec74, . - func_0204ec74
+.L_0204ecd0: .word gGridEffectActorVtable
+.size GridEffectActor_Destroy, . - GridEffectActor_Destroy
 
-    .global func_0204ecd4
+    .global GridEffectActor_DestroyAndFree
 
-func_0204ecd4: ; 0x0204ecd4
+GridEffectActor_DestroyAndFree: ; 0x0204ecd4
     stmdb sp!, {r4, lr}
     ldr r1, .L_0204ed38
     mov r4, r0
@@ -98,6 +98,6 @@ func_0204ecd4: ; 0x0204ecd4
     bl Heap_Free
     mov r0, r4
     ldmia sp!, {r4, pc}
-.L_0204ed38: .word data_020e2664
-.size func_0204ecd4, . - func_0204ecd4
+.L_0204ed38: .word gGridEffectActorVtable
+.size GridEffectActor_DestroyAndFree, . - GridEffectActor_DestroyAndFree
 

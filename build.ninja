@@ -19170,7 +19170,7 @@ build build/reports/grid_effect_actor_lifecycle_0204ec0c.json: objdiff build/dec
   base_object = build/decomp/asm/game/grid_effect_actor_lifecycle_0204ec0c.o
 build build/reports/grid_effect_actor_lifecycle_0204ec0c.txt: match_report build/reports/grid_effect_actor_lifecycle_0204ec0c.json | tools/report_objdiff.py
   report_json = build/reports/grid_effect_actor_lifecycle_0204ec0c.json
-  report_args = --section .text --function func_0204ec0c --function func_0204ec74 --function func_0204ecd4 --require-exact
+  report_args = --section .text --function GridEffectActor_Init --function GridEffectActor_Destroy --function GridEffectActor_DestroyAndFree --require-exact
 build grid_effect_actor_lifecycle: phony build/decomp/src/game/grid_effect_actor_lifecycle.o build/decomp/asm/game/grid_effect_actor_lifecycle_0204ec0c.o build/reports/grid_effect_actor_lifecycle_0204ec0c.txt
 
 grid_effect_actor_setup_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
@@ -19268,7 +19268,7 @@ build build/reports/grid_effect_actor_spawn_0204f62c.json: objdiff build/decomp/
   base_object = build/decomp/asm/game/grid_effect_actor_spawn_0204f62c.o
 build build/reports/grid_effect_actor_spawn_0204f62c.txt: match_report build/reports/grid_effect_actor_spawn_0204f62c.json | tools/report_objdiff.py
   report_json = build/reports/grid_effect_actor_spawn_0204f62c.json
-  report_args = --section .text --function func_0204f62c --require-exact
+  report_args = --section .text --function GridEffectActor_SpawnCore --require-exact
 build grid_effect_actor_spawn: phony build/decomp/src/game/grid_effect_actor_spawn.o build/decomp/asm/game/grid_effect_actor_spawn_0204f62c.o build/reports/grid_effect_actor_spawn_0204f62c.txt
 
 grid_effect_actor_spawn_wrappers_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
@@ -19282,7 +19282,7 @@ build build/reports/grid_effect_actor_spawn_wrappers_0204f7e4.json: objdiff buil
   base_object = build/decomp/asm/game/grid_effect_actor_spawn_wrappers_0204f7e4.o
 build build/reports/grid_effect_actor_spawn_wrappers_0204f7e4.txt: match_report build/reports/grid_effect_actor_spawn_wrappers_0204f7e4.json | tools/report_objdiff.py
   report_json = build/reports/grid_effect_actor_spawn_wrappers_0204f7e4.json
-  report_args = --section .text --function func_0204f7e4 --function func_0204f848 --function func_0204f854 --function func_0204f894 --require-exact
+  report_args = --section .text --function GridEffectActor_SpawnWithRandomVelocity --function GridEffectActor_Spawn --function GridEffectActor_SpawnWithVelocity --function GridEffectActor_SpawnWithRadialVelocity --require-exact
 build grid_effect_actor_spawn_wrappers: phony build/decomp/src/game/grid_effect_actor_spawn_wrappers.o build/decomp/asm/game/grid_effect_actor_spawn_wrappers_0204f7e4.o build/reports/grid_effect_actor_spawn_wrappers_0204f7e4.txt
 
 grid_effect_actor_registry_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++

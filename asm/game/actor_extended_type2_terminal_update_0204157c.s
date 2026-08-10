@@ -5,7 +5,7 @@
 .extern Actor_RestoreSavedFlags
 .extern PresentationBackedActor_SpawnSplitAmount
 .extern PresentationBackedActor_SpawnTripleVariant
-.extern func_0204f7e4
+.extern GridEffectActor_SpawnWithRandomVelocity
 .extern func_02062864
 .extern func_020695f4
 .global ActorExtendedType2_ResetTerminalAttachmentState
@@ -71,7 +71,7 @@ ActorExtendedType2_UpdateTerminalState18: ; 0x020415a8
     mov r0, r6
     mov r1, r7
     mov r2, r5
-    bl func_0204f7e4
+    bl GridEffectActor_SpawnWithRandomVelocity
     add r9, r9, #0x1
 .L_0204165c:
     cmp r9, r8

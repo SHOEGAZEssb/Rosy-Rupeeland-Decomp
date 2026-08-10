@@ -12,7 +12,7 @@ extern void *func_020695f4(void *actor, s32 *count);
 extern void VecFx32Object_InitCopy(void *temporary, const void *source);
 extern void VecFx32Object_Destroy(void *temporary);
 extern void func_02062864(void *object, s32 enabled);
-extern void func_0204f7e4(void *temporary, void *object, s32 kind);
+extern void GridEffectActor_SpawnWithRandomVelocity(void *temporary, void *object, s32 kind);
 extern void PresentationBackedActor_SpawnSplitAmount(s32 kind, s32 count, void *temporary);
 extern void PresentationBackedActor_SpawnTripleVariant(s32 kind, s32 count, void *temporary);
 extern void Actor_RestoreSavedFlags(void *actor);
@@ -68,7 +68,7 @@ s32 ActorExtendedType2_UpdateTerminalState18(void *self)
                 u16 entries = *(u16 *)((u8 *)object + 4);
                 func_02062864(object, 1);
                 for (i = 0; i < entries; ++i)
-                    func_0204f7e4(temporary, object, 300);
+                    GridEffectActor_SpawnWithRandomVelocity(temporary, object, 300);
             } else if (count > 0) {
                 s16 shortCount = (s16)count;
                 if (count <= 1000)

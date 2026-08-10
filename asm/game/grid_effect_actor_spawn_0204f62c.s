@@ -13,8 +13,8 @@
 .extern func_02063190
 .text
 
-    .global func_0204f62c
-func_0204f62c: ; 0x0204f62c
+    .global GridEffectActor_SpawnCore
+GridEffectActor_SpawnCore: ; 0x0204f62c
     stmdb sp!, {r4, r5, r6, r7, r8, r9, r10, lr}
     sub sp, sp, #0xb0
     mov r7, r0
@@ -126,5 +126,5 @@ func_0204f62c: ; 0x0204f62c
     ldmia sp!, {r4, r5, r6, r7, r8, r9, r10, pc}
 .L_0204f7dc: .word 0x8218
 .L_0204f7e0: .word data_021052fc
-.size func_0204f62c, . - func_0204f62c
+.size GridEffectActor_SpawnCore, . - GridEffectActor_SpawnCore
 

@@ -4,15 +4,15 @@
 .extern VecFx32Object_InitComponents
 .extern VecFx32Object_Destroy
 .extern VecFx32Object_Assign
-.extern func_0204f62c
+.extern GridEffectActor_SpawnCore
 .extern genrand_int32
 .text
 
-    .global func_0204f7e4
-func_0204f7e4: ; 0x0204f7e4
+    .global GridEffectActor_SpawnWithRandomVelocity
+GridEffectActor_SpawnWithRandomVelocity: ; 0x0204f7e4
     stmdb sp!, {r4, lr}
     sub sp, sp, #0x10
-    bl func_0204f62c
+    bl GridEffectActor_SpawnCore
     movs r4, r0
     moveq r0, #0x0
     beq .L_0204f83c
@@ -36,24 +36,24 @@ func_0204f7e4: ; 0x0204f7e4
     add sp, sp, #0x10
     ldmia sp!, {r4, pc}
 .L_0204f844: .word 0x1fff
-.size func_0204f7e4, . - func_0204f7e4
+.size GridEffectActor_SpawnWithRandomVelocity, . - GridEffectActor_SpawnWithRandomVelocity
 
-    .global func_0204f848
+    .global GridEffectActor_Spawn
 
-func_0204f848: ; 0x0204f848
+GridEffectActor_Spawn: ; 0x0204f848
     ldr ip, .L_0204f850
     bx ip
-.L_0204f850: .word func_0204f62c
-.size func_0204f848, . - func_0204f848
+.L_0204f850: .word GridEffectActor_SpawnCore
+.size GridEffectActor_Spawn, . - GridEffectActor_Spawn
 
-    .global func_0204f854
+    .global GridEffectActor_SpawnWithVelocity
 
-func_0204f854: ; 0x0204f854
+GridEffectActor_SpawnWithVelocity: ; 0x0204f854
     stmdb sp!, {r3, r4, r5, lr}
     mov r5, r1
     mov r1, r2
     mov r2, r3
-    bl func_0204f62c
+    bl GridEffectActor_SpawnCore
     movs r4, r0
     moveq r0, #0x0
     ldmeqia sp!, {r3, r4, r5, pc}
@@ -65,14 +65,14 @@ func_0204f854: ; 0x0204f854
     orr r1, r1, #0x2
     str r1, [r4, #0x14]
     ldmia sp!, {r3, r4, r5, pc}
-.size func_0204f854, . - func_0204f854
+.size GridEffectActor_SpawnWithVelocity, . - GridEffectActor_SpawnWithVelocity
 
-    .global func_0204f894
+    .global GridEffectActor_SpawnWithRadialVelocity
 
-func_0204f894: ; 0x0204f894
+GridEffectActor_SpawnWithRadialVelocity: ; 0x0204f894
     stmdb sp!, {r4, r5, r6, lr}
     sub sp, sp, #0x10
-    bl func_0204f62c
+    bl GridEffectActor_SpawnCore
     movs r4, r0
     beq .L_0204f974
     bl genrand_int32
@@ -135,5 +135,5 @@ func_0204f894: ; 0x0204f894
 .L_0204f984: .word 0xfff
 .L_0204f988: .word data_020c9670
 .L_0204f98c: .word 0x1333
-.size func_0204f894, . - func_0204f894
+.size GridEffectActor_SpawnWithRadialVelocity, . - GridEffectActor_SpawnWithRadialVelocity
 

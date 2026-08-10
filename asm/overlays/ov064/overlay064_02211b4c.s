@@ -7,7 +7,7 @@
 .extern VecFx32Object_InitComponents
 .extern VecFx32Object_Destroy
 .extern VecFx32Object_Assign
-.extern func_0204f848
+.extern GridEffectActor_Spawn
 .extern func_020627a0
 .extern func_0207a19c
 .extern func_020bf1f8
@@ -104,7 +104,7 @@ func_ov064_02211b4c:
     add r0, sp, #0x20
     add r1, sp, #0x30
     mov r2, #0x168
-    bl func_0204f848
+    bl GridEffectActor_Spawn
     mov r1, #0x0
     mov r4, r0
     add r0, sp, #0x0

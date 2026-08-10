@@ -21,8 +21,8 @@
 .extern ActorDerivedType1_StartRecord
 .extern ActorDerivedType1_IsIdleEligible
 .extern PresentationBackedActor_SpawnSplitAmount
-.extern func_0204f7e4
-.extern func_0204f854
+.extern GridEffectActor_SpawnWithRandomVelocity
+.extern GridEffectActor_SpawnWithVelocity
 .extern func_02050078
 .global func_0201939c
 func_0201939c:
@@ -255,7 +255,7 @@ L_020196c4:
     add r0, sp, #0x98
     add r1, sp, #0xa8
     mov r2, #0x12c
-    bl func_0204f7e4
+    bl GridEffectActor_SpawnWithRandomVelocity
     add r0, sp, #0x98
     bl VecFx32Object_Destroy
     b L_02019878
@@ -352,7 +352,7 @@ L_02019818:
     add r1, sp, #0x14
     add r2, sp, #0x34
     mov r3, #0x12c
-    bl func_0204f854
+    bl GridEffectActor_SpawnWithVelocity
     add r0, sp, #0x14
     bl VecFx32Object_Destroy
     add r0, sp, #0x24
