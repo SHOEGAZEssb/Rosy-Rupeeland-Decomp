@@ -9,7 +9,7 @@ extern u8 *data_021052fc;
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_0204fbdc(void);
+extern void GridEffectActorRegistry_FinalizeDepartingActors(void);
 extern void GameWork_SetFlag(void *, s32);
 extern void ActorMotion_SetMode2(void *);
 extern void func_ov013_021fdbb0(void *);
@@ -23,7 +23,7 @@ typedef void (*Overlay013TerminalMethod)(void *);
 /*
  * On phase +0x04 equal to zero, translate selected index +0x96C into terminal
  * value +0x980: indexes 0/1/4/5/6 select 4, 8-or-9, 15, 12, and 14. Index 1
- * uses 9 when +0x97C is set; otherwise it selects 8 and calls func_0204fbdc.
+ * uses 9 when +0x97C is set; otherwise it selects 8 and calls GridEffectActorRegistry_FinalizeDepartingActors.
  * Index 3 sets GameWork flags 0x3F2/0x393 and dispatches global member +0x2FBC;
  * index 2 has no extra action. Then advance +0x04 and clear +0x08. Always run
  * the scene-record update and return one. Global and callee side effects pass
@@ -44,7 +44,7 @@ s32 func_ov013_021fe9c8(void *state)
                 FIELD(s32, state, 0x980) = 9;
             } else {
                 FIELD(s32, state, 0x980) = 8;
-                func_0204fbdc();
+                GridEffectActorRegistry_FinalizeDepartingActors();
             }
             break;
         case 3:

@@ -12,7 +12,7 @@
 .extern GamePhaseCurrencyHud_AddCurrency
 .extern func_0201ded4
 .extern func_02022cb0
-.extern func_0204fb64
+.extern GridEffectActorRegistry_BroadcastSlot1c
 .extern func_0205557c
 .extern func_02058d40
 .extern func_02059278
@@ -138,7 +138,7 @@ func_ov064_02211374:
     movgt r0, #0x1
     bgt .L_0221153c
 .L_02211530:
-    bl func_0204fb64
+    bl GridEffectActorRegistry_BroadcastSlot1c
     bl func_0205557c
     mov r0, #0x0
 .L_0221153c:

@@ -74,7 +74,7 @@ extern int GamePhaseRuntime_SetPlacementMode(...);
 extern int func_ov059_02210fec(...);
 extern int func_02001944(...);
 extern int GX_VBlankIntr(...);
-extern int func_0204fbdc(...);
+extern int GridEffectActorRegistry_FinalizeDepartingActors(...);
 extern int func_020923a4(...);
 extern int func_0201e0f4(...);
 extern int func_02074154(...);
@@ -503,7 +503,7 @@ code_r0x0200defc:
   }
   uVar3 = GX_VBlankIntr(0);
   param_1[0xf] = 0;
-  func_0204fbdc();
+  GridEffectActorRegistry_FinalizeDepartingActors();
   switch(param_1[0xb]) {
   case 0x10:
     goto code_r0x0200d224;

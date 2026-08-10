@@ -6476,7 +6476,7 @@ build build/reports/game_phase_script_vm_0201b0d4.json: objdiff build/decomp/del
   base_object = build/decomp/asm/game/game_phase_script_vm_0201b0d4.o
 build build/reports/game_phase_script_vm_0201b0d4.txt: match_report build/reports/game_phase_script_vm_0201b0d4.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_script_vm_0201b0d4.json
-  report_args = --section .text --function func_0201b0d4 --require-exact
+  report_args = --section .text --function GamePhaseActorScriptVm_GetDepartingOrFinishedGridEffectActorCount --require-exact
 
 build build/reports/game_phase_script_vm_final_runtime_opcodes.txt: phony build/reports/game_phase_script_vm_0201b098.txt build/reports/game_phase_script_vm_0201b0d4.txt
 build build/reports/game_phase_script_vm_0201b0f4.json: objdiff build/decomp/delinks/asm/game/game_phase_script_vm_0201b0f4.o | build/decomp/asm/game/game_phase_script_vm_0201b0f4.o
@@ -19324,7 +19324,7 @@ build build/reports/grid_effect_actor_registry_control_0204fafc.json: objdiff bu
   base_object = build/decomp/asm/game/grid_effect_actor_registry_control_0204fafc.o
 build build/reports/grid_effect_actor_registry_control_0204fafc.txt: match_report build/reports/grid_effect_actor_registry_control_0204fafc.json | tools/report_objdiff.py
   report_json = build/reports/grid_effect_actor_registry_control_0204fafc.json
-  report_args = --section .text --function func_0204fafc --function func_0204fb2c --function func_0204fb64 --function func_0204fb9c --function func_0204fbdc --function func_0204fc6c --require-exact
+  report_args = --section .text --function GridEffectActorRegistry_LoadSharedResource --function GridEffectActorRegistry_UnloadSharedResource --function GridEffectActorRegistry_BroadcastSlot1c --function GridEffectActorRegistry_BroadcastStateValue0 --function GridEffectActorRegistry_FinalizeDepartingActors --function GridEffectActorRegistry_CountDepartingOrFinishedActors --require-exact
 build grid_effect_actor_registry_control: phony build/decomp/src/game/grid_effect_actor_registry_control.o build/decomp/asm/game/grid_effect_actor_registry_control_0204fafc.o build/reports/grid_effect_actor_registry_control_0204fafc.txt
 
 grid_effect_actor_callbacks_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++

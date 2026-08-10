@@ -10,8 +10,8 @@
 .extern func_02071d4c
 .text
 
-    .global func_0204fafc
-func_0204fafc: ; 0x0204fafc
+    .global GridEffectActorRegistry_LoadSharedResource
+GridEffectActorRegistry_LoadSharedResource: ; 0x0204fafc
     stmdb sp!, {r3, lr}
     ldr r0, .L_0204fb20
     ldr r1, .L_0204fb24
@@ -24,11 +24,11 @@ func_0204fafc: ; 0x0204fafc
 .L_0204fb20: .word data_020f4e18
 .L_0204fb24: .word 0x7005
 .L_0204fb28: .word data_02105790
-.size func_0204fafc, . - func_0204fafc
+.size GridEffectActorRegistry_LoadSharedResource, . - GridEffectActorRegistry_LoadSharedResource
 
-    .global func_0204fb2c
+    .global GridEffectActorRegistry_UnloadSharedResource
 
-func_0204fb2c: ; 0x0204fb2c
+GridEffectActorRegistry_UnloadSharedResource: ; 0x0204fb2c
     stmdb sp!, {r3, lr}
     ldr r0, .L_0204fb5c
     ldr r1, [r0, #0x8]
@@ -43,11 +43,11 @@ func_0204fb2c: ; 0x0204fb2c
     ldmia sp!, {r3, pc}
 .L_0204fb5c: .word data_02105790
 .L_0204fb60: .word data_020f4e18
-.size func_0204fb2c, . - func_0204fb2c
+.size GridEffectActorRegistry_UnloadSharedResource, . - GridEffectActorRegistry_UnloadSharedResource
 
-    .global func_0204fb64
+    .global GridEffectActorRegistry_BroadcastSlot1c
 
-func_0204fb64: ; 0x0204fb64
+GridEffectActorRegistry_BroadcastSlot1c: ; 0x0204fb64
     stmdb sp!, {r3, r4, r5, lr}
     ldr r4, .L_0204fb98
     mov r5, #0x0
@@ -64,11 +64,11 @@ func_0204fb64: ; 0x0204fb64
     blt .L_0204fb70
     ldmia sp!, {r3, r4, r5, pc}
 .L_0204fb98: .word data_0210579c
-.size func_0204fb64, . - func_0204fb64
+.size GridEffectActorRegistry_BroadcastSlot1c, . - GridEffectActorRegistry_BroadcastSlot1c
 
-    .global func_0204fb9c
+    .global GridEffectActorRegistry_BroadcastStateValue0
 
-func_0204fb9c: ; 0x0204fb9c
+GridEffectActorRegistry_BroadcastStateValue0: ; 0x0204fb9c
     stmdb sp!, {r4, r5, r6, lr}
     mov r6, #0x0
     ldr r5, .L_0204fbd8
@@ -87,11 +87,11 @@ func_0204fb9c: ; 0x0204fb9c
     blt .L_0204fbac
     ldmia sp!, {r4, r5, r6, pc}
 .L_0204fbd8: .word data_0210579c
-.size func_0204fb9c, . - func_0204fb9c
+.size GridEffectActorRegistry_BroadcastStateValue0, . - GridEffectActorRegistry_BroadcastStateValue0
 
-    .global func_0204fbdc
+    .global GridEffectActorRegistry_FinalizeDepartingActors
 
-func_0204fbdc: ; 0x0204fbdc
+GridEffectActorRegistry_FinalizeDepartingActors: ; 0x0204fbdc
     stmdb sp!, {r4, r5, r6, lr}
     ldr r4, .L_0204fc64
     mov r5, #0x0
@@ -130,11 +130,11 @@ func_0204fbdc: ; 0x0204fbdc
     ldmia sp!, {r4, r5, r6, pc}
 .L_0204fc64: .word data_0210579c
 .L_0204fc68: .word data_021052fc
-.size func_0204fbdc, . - func_0204fbdc
+.size GridEffectActorRegistry_FinalizeDepartingActors, . - GridEffectActorRegistry_FinalizeDepartingActors
 
-    .global func_0204fc6c
+    .global GridEffectActorRegistry_CountDepartingOrFinishedActors
 
-func_0204fc6c: ; 0x0204fc6c
+GridEffectActorRegistry_CountDepartingOrFinishedActors: ; 0x0204fc6c
     mov r0, #0x0
     ldr r2, .L_0204fcac
     mov r3, r0
@@ -154,5 +154,5 @@ func_0204fc6c: ; 0x0204fc6c
     blt .L_0204fc78
     bx lr
 .L_0204fcac: .word data_0210579c
-.size func_0204fc6c, . - func_0204fc6c
+.size GridEffectActorRegistry_CountDepartingOrFinishedActors, . - GridEffectActorRegistry_CountDepartingOrFinishedActors
 

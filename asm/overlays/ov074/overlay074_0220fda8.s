@@ -15,7 +15,7 @@
 .extern func_02028388
 .extern ActorDerivedType1_ResetToBaseState
 .extern ActorDerivedType1_GetSingletonObject
-.extern func_0204fb9c
+.extern GridEffectActorRegistry_BroadcastStateValue0
 .extern func_02059880
 .extern func_020755bc
 .extern func_020a2324
@@ -123,7 +123,7 @@ func_ov074_0220fda8:
     mov r1, #0x0
     bl func_ov088_0221ad9c
 .L_0220ff10:
-    bl func_0204fb9c
+    bl GridEffectActorRegistry_BroadcastStateValue0
     ldr r0, .L_0220fffc
     ldr r0, [r0, #0x0]
     bl func_020755bc

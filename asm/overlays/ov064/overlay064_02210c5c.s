@@ -16,7 +16,7 @@
 .extern func_0201ded4
 .extern func_02022cb0
 .extern Actor_RefreshTerrainHeight
-.extern func_0204fb64
+.extern GridEffectActorRegistry_BroadcastSlot1c
 .extern func_0205557c
 .extern GraphicsSpriteState_SetAnimationIndex
 .extern func_020befec
@@ -267,12 +267,12 @@ func_ov064_02210c5c:
     mov r0, r0, lsl #0x10
     movs r0, r0, lsr #0x10
     beq .L_02210ff8
-    bl func_0204fb64
+    bl GridEffectActorRegistry_BroadcastSlot1c
     bl func_0205557c
     mov r0, #0x1
     b .L_02211004
 .L_02210ff8:
-    bl func_0204fb64
+    bl GridEffectActorRegistry_BroadcastSlot1c
     bl func_0205557c
     mov r0, #0x0
 .L_02211004:

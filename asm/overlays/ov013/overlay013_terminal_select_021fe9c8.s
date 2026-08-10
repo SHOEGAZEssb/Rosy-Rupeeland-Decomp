@@ -2,7 +2,7 @@
     .extern GameWork_SetFlag
     .extern data_021052fc
     .extern ActorMotion_SetMode2
-    .extern func_0204fbdc
+    .extern GridEffectActorRegistry_FinalizeDepartingActors
     .extern func_ov013_021fdbb0
     .extern gGameWork
 
@@ -43,7 +43,7 @@ L_021fea1c:
     bne L_021fea98
     mov r0, #0x8
     str r0, [r4, #0x980]
-    bl func_0204fbdc
+    bl GridEffectActorRegistry_FinalizeDepartingActors
     b L_021fea98
 L_021fea40:
     mov r0, #0xc

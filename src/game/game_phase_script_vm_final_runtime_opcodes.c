@@ -9,7 +9,7 @@ extern void *data_021052fc;
 extern void *GamePhaseRuntime_GetActorCollection(void *runtime, s32 index);
 extern void *ActorCollection_FindActorByDescriptorValue(void *collection, s32 index);
 extern void Actor_SetRuntimeProperty(void *actor, s32 command, s32 value);
-extern s32 func_0204fc6c(void);
+extern s32 GridEffectActorRegistry_CountDepartingOrFinishedActors(void);
 #ifdef __cplusplus
 }
 #endif
@@ -28,8 +28,8 @@ s32 GamePhaseActorScriptVm_SendCommand2aToCollection2Actor0(GamePhaseActorScript
 }
 
 /* Query the recovered global runtime value, push it, and return zero. */
-s32 func_0201b0d4(GamePhaseActorScriptVm *self)
+s32 GamePhaseActorScriptVm_GetDepartingOrFinishedGridEffectActorCount(GamePhaseActorScriptVm *self)
 {
-    GamePhaseScriptVm_SetResult(&self->base, (u32)func_0204fc6c());
+    GamePhaseScriptVm_SetResult(&self->base, (u32)GridEffectActorRegistry_CountDepartingOrFinishedActors());
     return 0;
 }

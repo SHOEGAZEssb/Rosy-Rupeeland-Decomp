@@ -281,7 +281,7 @@ s32 GamePhaseActorScriptVm_CalculateScaledRuntimeValue(GamePhaseActorScriptVm *s
 s32 func_0201b040(GamePhaseActorScriptVm *self);
 s32 GamePhaseActorScriptVm_GetOneBasedPhaseRecordByte4c(GamePhaseActorScriptVm *self);
 s32 GamePhaseActorScriptVm_SendCommand2aToCollection2Actor0(GamePhaseActorScriptVm *self);
-s32 func_0201b0d4(GamePhaseActorScriptVm *self);
+s32 GamePhaseActorScriptVm_GetDepartingOrFinishedGridEffectActorCount(GamePhaseActorScriptVm *self);
 GamePhaseActorScriptVm *GamePhaseActorScriptVm_Init(GamePhaseActorScriptVm *self);
 GamePhaseActorScriptVm *GamePhaseActorScriptVm_InitWithScript(
     GamePhaseActorScriptVm *self, void *actor, const s8 *script,

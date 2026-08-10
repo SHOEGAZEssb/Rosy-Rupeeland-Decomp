@@ -21,8 +21,8 @@
 .extern InteractionRecordAllocatorPool_DestroyContents
 .extern Type7ActorRegistry_Populate
 .extern Type7ActorRegistry_Clear
-.extern func_0204fafc
-.extern func_0204fb2c
+.extern GridEffectActorRegistry_LoadSharedResource
+.extern GridEffectActorRegistry_UnloadSharedResource
 .extern func_020534cc
 .extern func_0205355c
 .extern func_0205929c
@@ -93,7 +93,7 @@ ActorInteractionRuntime_Start: ; 0x0203ab6c
     bl ActorExtendedPairing_UpdateLinks
     bl InteractionTimingState_Reset
     bl Type7ActorRegistry_Populate
-    bl func_0204fafc
+    bl GridEffectActorRegistry_LoadSharedResource
     bl func_020534cc
     bl ActorDerivedType1_SetSingletonFieldE4To20E
     ldmia sp!, {r3, pc}
@@ -161,7 +161,7 @@ ActorInteractionRuntime_Shutdown: ; 0x0203abf4
     bl func_0205929c
 .L_0203ac50:
     bl func_0205355c
-    bl func_0204fb2c
+    bl GridEffectActorRegistry_UnloadSharedResource
     bl Type7ActorRegistry_Clear
     ldr r0, .L_0203ac98
     ldr r4, [r0, #0x0]

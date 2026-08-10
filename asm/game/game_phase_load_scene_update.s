@@ -45,7 +45,7 @@
 .extern GamePhaseAreaScene_SetEnabled
 .extern func_0201e0f4
 .extern ActorCollection_GetSpriteOwner
-.extern func_0204fbdc
+.extern GridEffectActorRegistry_FinalizeDepartingActors
 .extern func_02058eb8
 .extern func_02068444
 .extern func_020740a4
@@ -164,7 +164,7 @@ L_0200d17c:
     mov r1, #0x0
     str r1, [r5, #0x3c]
     mov r4, r0
-    bl func_0204fbdc
+    bl GridEffectActorRegistry_FinalizeDepartingActors
     ldr r0, [r5, #0x2c]
     sub r0, r0, #0x10
     cmp r0, #0x8
