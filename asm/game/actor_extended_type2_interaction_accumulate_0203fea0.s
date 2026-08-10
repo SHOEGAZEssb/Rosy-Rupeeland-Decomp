@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/actor_extended_type2_interaction_accumulate.c.
 .text
 .extern data_020df9e8
-.extern func_02040000
+.extern ActorExtendedRecordArray_ContainsPoint
 .extern ActorExtendedType2_IsDirectionToActorAccepted
 .extern func_020be334
 .global ActorExtendedType2_AccumulateProximityInteraction
@@ -40,7 +40,7 @@ ActorExtendedType2_AccumulateProximityInteraction: ; 0x0203fea0
     beq .L_0203ff30
     ldr r1, [r6, #0x1c]
     ldr r2, [r6, #0x20]
-    bl func_02040000
+    bl ActorExtendedRecordArray_ContainsPoint
     cmp r0, #0x0
     movne r4, #0x1
     b .L_0203ff80

@@ -1,10 +1,10 @@
 ; Matching retail form; see src/game/actor_extended_type2_secondary_interaction_gate.c.
 .text
 .extern data_021052fc
-.extern func_020401a0
-.global func_02040334
-.type func_02040334, @function
-func_02040334: ; 0x02040334
+.extern ActorExtendedType2_MatchesInteractionCallbackPairs
+.global ActorExtendedType2_TryDescriptorInteraction128
+.type ActorExtendedType2_TryDescriptorInteraction128, @function
+ActorExtendedType2_TryDescriptorInteraction128: ; 0x02040334
     stmdb sp!, {r3, r4, r5, lr}
     mov r4, r1
     ldrh r1, [r4, #0x1a]
@@ -12,7 +12,7 @@ func_02040334: ; 0x02040334
     tst r1, #0x4
     moveq r0, #0x0
     ldmeqia sp!, {r3, r4, r5, pc}
-    bl func_020401a0
+    bl ActorExtendedType2_MatchesInteractionCallbackPairs
     cmp r0, #0x0
     movne r0, #0x0
     ldmneia sp!, {r3, r4, r5, pc}
@@ -58,5 +58,5 @@ func_02040334: ; 0x02040334
     mov r0, #0x0
     ldmia sp!, {r3, r4, r5, pc}
 .L_020403fc: .word data_021052fc
-.size func_02040334, . - func_02040334
+.size ActorExtendedType2_TryDescriptorInteraction128, . - ActorExtendedType2_TryDescriptorInteraction128
 

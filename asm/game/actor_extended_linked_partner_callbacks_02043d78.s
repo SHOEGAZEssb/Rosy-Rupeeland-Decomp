@@ -1,15 +1,15 @@
 ; Matching retail form; see src/game/actor_extended_linked_partner_callbacks.c.
 .text
-.extern func_02040400
+.extern ActorExtendedType2_CheckRuntimeGroupProximity
 .extern func_02042408
-.global ActorExtendedLinked_IsActorOrPartnerActive
-.type ActorExtendedLinked_IsActorOrPartnerActive, @function
+.global ActorExtendedLinked_CheckGroupProximityOrPartnerActive
+.type ActorExtendedLinked_CheckGroupProximityOrPartnerActive, @function
 .global ActorExtendedLinked_NotifyPartner
 .type ActorExtendedLinked_NotifyPartner, @function
-ActorExtendedLinked_IsActorOrPartnerActive: ; 0x02043d78
+ActorExtendedLinked_CheckGroupProximityOrPartnerActive: ; 0x02043d78
     stmdb sp!, {r4, lr}
     mov r4, r0
-    bl func_02040400
+    bl ActorExtendedType2_CheckRuntimeGroupProximity
     cmp r0, #0x0
     movne r0, #0x1
     ldmneia sp!, {r4, pc}
@@ -26,7 +26,7 @@ ActorExtendedLinked_IsActorOrPartnerActive: ; 0x02043d78
     mov r0, #0x0
     ldmia sp!, {r4, pc}
 
-.size ActorExtendedLinked_IsActorOrPartnerActive, . - ActorExtendedLinked_IsActorOrPartnerActive
+.size ActorExtendedLinked_CheckGroupProximityOrPartnerActive, . - ActorExtendedLinked_CheckGroupProximityOrPartnerActive
 ActorExtendedLinked_NotifyPartner: ; 0x02043dbc
     stmdb sp!, {r4, lr}
     mov r4, r0

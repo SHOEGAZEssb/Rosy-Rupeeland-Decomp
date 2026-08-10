@@ -17,7 +17,7 @@ extern u8 *data_021052fc; extern s16 data_020e70c0[];
  * only a successful virtual callback changes state. Collection ownership and
  * the asymmetric root offsets remain unconfirmed.
  */
-s32 func_02040400(void *self,const void *descriptorRecord)
+s32 ActorExtendedType2_CheckRuntimeGroupProximity(void *self,const void *descriptorRecord)
 {
  u8 *a=(u8 *)self,*runtime=data_021052fc,*primary,*secondary;void *roots[2];s32 radius=*(const s16 *)((const u8 *)descriptorRecord+0x10),pass,which,i;
  if(*(u16 *)(a+0x254)!=0||radius==0)return 0;primary=*(u8 **)(runtime+0x2ea4);secondary=*(u8 **)(runtime+0x2ea8);roots[0]=*(void **)(primary+0x26c);roots[1]=secondary?*(void **)(secondary+0x234):0;if(!roots[0]&&!roots[1])return 0;

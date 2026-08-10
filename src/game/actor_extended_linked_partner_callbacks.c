@@ -8,22 +8,24 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern s32 func_02040400(void *actor);
+extern s32 ActorExtendedType2_CheckRuntimeGroupProximity(void *actor);
 extern void func_02042408(void *actor);
 #ifdef __cplusplus
 }
 #endif
 
 /*
- * Return one when func_02040400 reports actor activity, or when a partner at
- * +0x298 exists and its virtual predicate at vtable +0xa8 returns nonzero;
- * otherwise return zero. Predicate calls may observe or change actor state.
+ * Return one when ActorExtendedType2_CheckRuntimeGroupProximity succeeds, or
+ * when a partner at +0x298 exists and its virtual predicate at vtable +0xa8
+ * returns nonzero; otherwise return zero. The matching proximity call passes
+ * only actor explicitly, preserving the caller's incoming r1 as the descriptor
+ * argument. Predicate calls may observe or change actor state.
  */
-s32 ActorExtendedLinked_IsActorOrPartnerActive(void *self)
+s32 ActorExtendedLinked_CheckGroupProximityOrPartnerActive(void *self)
 {
     u8 *actor = (u8 *)self;
     void *partner;
-    if (func_02040400(actor) != 0)
+    if (ActorExtendedType2_CheckRuntimeGroupProximity(actor) != 0)
         return 1;
     partner = *(void **)(actor + 0x298);
     if (partner != 0

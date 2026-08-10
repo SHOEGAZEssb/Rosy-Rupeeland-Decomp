@@ -3,9 +3,9 @@
 .extern data_020df9e8
 .extern data_020dfae8
 .extern data_020dfab8
-.global func_020401a0
-.type func_020401a0, @function
-func_020401a0: ; 0x020401a0
+.global ActorExtendedType2_MatchesInteractionCallbackPairs
+.type ActorExtendedType2_MatchesInteractionCallbackPairs, @function
+ActorExtendedType2_MatchesInteractionCallbackPairs: ; 0x020401a0
     stmdb sp!, {r3, lr}
     ldr r1, .L_02040220
     mov ip, #0x1
@@ -44,12 +44,12 @@ func_020401a0: ; 0x020401a0
 .L_02040220: .word data_020df9e8
 .L_02040224: .word data_020dfae8
 .L_02040228: .word data_020dfab8
-.size func_020401a0, . - func_020401a0
-.global func_0204022c
-.type func_0204022c, @function
+.size ActorExtendedType2_MatchesInteractionCallbackPairs, . - ActorExtendedType2_MatchesInteractionCallbackPairs
+.global ActorExtendedType2_ReturnZeroInteraction
+.type ActorExtendedType2_ReturnZeroInteraction, @function
 
-func_0204022c: ; 0x0204022c
+ActorExtendedType2_ReturnZeroInteraction: ; 0x0204022c
     mov r0, #0x0
     bx lr
-.size func_0204022c, . - func_0204022c
+.size ActorExtendedType2_ReturnZeroInteraction, . - ActorExtendedType2_ReturnZeroInteraction
 

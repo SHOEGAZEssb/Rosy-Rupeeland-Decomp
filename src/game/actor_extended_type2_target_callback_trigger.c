@@ -9,7 +9,7 @@ extern u8 data_020df9e8[];
  * pair +0x2b0/+0x2b4 to +0x220/+0x224, set mode byte +0x24c to seven, and
  * return one. Actor and virtual target state may change.
  */
-s32 func_02040234(void *self)
+s32 ActorExtendedType2_TriggerStoredTargetCallback(void *self)
 {
     u8 *a=(u8 *)self;if((*(u32 *)(a+0x260)&0x100)==0)return 0;
     (*(void (**)(void *,void *))(*(u8 **)a+0xe4))(a,*(void **)(a+0x228));

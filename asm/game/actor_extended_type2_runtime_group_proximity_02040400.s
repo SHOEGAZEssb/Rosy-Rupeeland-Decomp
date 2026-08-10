@@ -2,9 +2,9 @@
 .text
 .extern data_020e70c0
 .extern data_021052fc
-.global func_02040400
-.type func_02040400, @function
-func_02040400: ; 0x02040400
+.global ActorExtendedType2_CheckRuntimeGroupProximity
+.type ActorExtendedType2_CheckRuntimeGroupProximity, @function
+ActorExtendedType2_CheckRuntimeGroupProximity: ; 0x02040400
     stmdb sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, lr}
     sub sp, sp, #0x8
     add r2, r0, #0x200
@@ -118,5 +118,5 @@ func_02040400: ; 0x02040400
     ldmia sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, pc}
 .L_02040588: .word data_021052fc
 .L_0204058c: .word data_020e70c0
-.size func_02040400, . - func_02040400
+.size ActorExtendedType2_CheckRuntimeGroupProximity, . - ActorExtendedType2_CheckRuntimeGroupProximity
 

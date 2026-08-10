@@ -73,13 +73,13 @@
 .extern ActorExtendedType2_SetCallbackPair88
 .extern ActorExtendedType2_RestoreState1AndCallbackPair28
 .extern func_ov095_0221b1c8
-.extern func_020400a4
+.extern ActorExtendedType2_TryDescriptorInteraction120
 .extern func_ov075_02213368
-.extern func_02040334
+.extern ActorExtendedType2_TryDescriptorInteraction128
 .extern ActorExtendedType2_DispatchProximityCallback
-.extern func_0204022c
-.extern func_02040234
-.extern func_02040400
+.extern ActorExtendedType2_ReturnZeroInteraction
+.extern ActorExtendedType2_TriggerStoredTargetCallback
+.extern ActorExtendedType2_CheckRuntimeGroupProximity
 .extern ActorExtendedType2_AdvancePositionTarget
 .extern ActorExtendedType2_TrackCandidate
 .extern func_ov095_0221b1c0
@@ -380,13 +380,13 @@ data_ov095_0221cca0:
     .word ActorExtendedType2_SetCallbackPair88
     .word ActorExtendedType2_RestoreState1AndCallbackPair28
     .word func_ov095_0221b1c8
-    .word func_020400a4
+    .word ActorExtendedType2_TryDescriptorInteraction120
     .word func_ov075_02213368 ; func_ov078_02213368
-    .word func_02040334
+    .word ActorExtendedType2_TryDescriptorInteraction128
     .word ActorExtendedType2_DispatchProximityCallback
-    .word func_0204022c
-    .word func_02040234
-    .word func_02040400
+    .word ActorExtendedType2_ReturnZeroInteraction
+    .word ActorExtendedType2_TriggerStoredTargetCallback
+    .word ActorExtendedType2_CheckRuntimeGroupProximity
     .word ActorExtendedType2_AdvancePositionTarget
     .word ActorExtendedType2_TrackCandidate
     .word func_ov095_0221b1c0
@@ -544,13 +544,13 @@ data_ov095_0221cf4c:
     .word ActorExtendedType2_SetCallbackPair88
     .word ActorExtendedType2_RestoreState1AndCallbackPair28
     .word func_ov095_0221b1c8
-    .word func_020400a4
+    .word ActorExtendedType2_TryDescriptorInteraction120
     .word ActorExtendedType2_AccumulateProximityInteraction
-    .word func_02040334
+    .word ActorExtendedType2_TryDescriptorInteraction128
     .word ActorExtendedType2_DispatchProximityCallback
-    .word func_0204022c
-    .word func_02040234
-    .word func_02040400
+    .word ActorExtendedType2_ReturnZeroInteraction
+    .word ActorExtendedType2_TriggerStoredTargetCallback
+    .word ActorExtendedType2_CheckRuntimeGroupProximity
     .word ActorExtendedType2_AdvancePositionTarget
     .word ActorExtendedType2_TrackCandidate
     .word func_ov095_0221b1c0

@@ -2,13 +2,13 @@
 ; Matching fallback for the portable implementation in src/overlays/ov076/overlay076_recovery.c.
 .extern data_020e6d3c
 .extern func_020349b8
-.extern func_02040334
+.extern ActorExtendedType2_TryDescriptorInteraction128
 
 .global func_ov076_02214240
 func_ov076_02214240:
     stmdb sp!, {r3, r4, r5, lr}
     mov r5, r0
-    bl func_02040334
+    bl ActorExtendedType2_TryDescriptorInteraction128
     movs r4, r0
     beq .L_0221427c
     mov r2, #0x0

@@ -14,7 +14,7 @@ extern u8 *data_021052fc;
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern s32 func_02040000(const void *records, s32 x, s32 y);
+extern s32 ActorExtendedRecordArray_ContainsPoint(const void *records, s32 x, s32 y);
 extern void func_02005030(void *temporary, const void *source);
 extern void func_02005058(void *temporary);
 #ifdef __cplusplus
@@ -87,7 +87,7 @@ s32 func_02040f4c(void *self, const void *descriptorRecord)
     anchorDx = (*(s32 *)(actor + 0x1c) - *(s32 *)(actor + 0x240)) >> 12;
     anchorDy = (*(s32 *)(actor + 0x20) - *(s32 *)(actor + 0x244)) >> 12;
     if (*(void **)(actor + 0x278) != 0) {
-        contained = func_02040000(*(void **)(actor + 0x278),
+        contained = ActorExtendedRecordArray_ContainsPoint(*(void **)(actor + 0x278),
                                   *(s32 *)(target + 0x1c),
                                   *(s32 *)(target + 0x20));
         if (!contained) {

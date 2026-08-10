@@ -10,8 +10,8 @@
 extern "C" {
 #endif
 extern void ActorExtendedType2_Destroy(void *actor);
-extern s32 func_020400a4(void *actor, void *record);
-extern s32 func_02040334(void *actor, void *record);
+extern s32 ActorExtendedType2_TryDescriptorInteraction120(void *actor, void *record);
+extern s32 ActorExtendedType2_TryDescriptorInteraction128(void *actor, void *record);
 extern s32 ActorExtendedType2_GetDescriptorValue2A(const void *actor);
 extern void func_02005030(void *temporary, const void *source);
 extern void func_02005058(void *temporary);
@@ -39,26 +39,28 @@ void *ActorExtendedType3_DestroyAndFree(void *self)
 }
 
 /*
- * Forward actor and record to func_020400a4. When it returns nonzero, copy
- * signed descriptor halfword +0x2a into actor +0x29a.
+ * Forward actor and record to ActorExtendedType2_TryDescriptorInteraction120.
+ * When it returns nonzero, copy signed descriptor halfword +0x2a into actor
+ * +0x29a.
  * Return the forwarded result; actor/base interaction state may change.
  */
 s32 ActorExtendedType3_ForwardInteractionGateA(void *self, void *record)
 {
-    s32 result = func_020400a4(self, record);
+    s32 result = ActorExtendedType2_TryDescriptorInteraction120(self, record);
     if (result != 0)
         *(u16 *)((u8 *)self + 0x29a) = (u16)ActorExtendedType2_GetDescriptorValue2A(self);
     return result;
 }
 
 /*
- * Forward actor and record to func_02040334. When it returns nonzero, copy
- * signed descriptor halfword +0x2a into actor +0x29a.
+ * Forward actor and record to ActorExtendedType2_TryDescriptorInteraction128.
+ * When it returns nonzero, copy signed descriptor halfword +0x2a into actor
+ * +0x29a.
  * Return the forwarded result; actor/base interaction state may change.
  */
 s32 ActorExtendedType3_ForwardInteractionGateB(void *self, void *record)
 {
-    s32 result = func_02040334(self, record);
+    s32 result = ActorExtendedType2_TryDescriptorInteraction128(self, record);
     if (result != 0)
         *(u16 *)((u8 *)self + 0x29a) = (u16)ActorExtendedType2_GetDescriptorValue2A(self);
     return result;

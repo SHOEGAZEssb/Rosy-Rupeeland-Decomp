@@ -3,7 +3,7 @@
 .extern func_02005030
 .extern func_02005058
 .extern Actor_GetCachedTerrainHeight
-.extern func_02040234
+.extern ActorExtendedType2_TriggerStoredTargetCallback
 .extern func_020536b8
 .extern func_020537f0
 .extern func_ov084_02213b2c
@@ -13,7 +13,7 @@ func_ov084_022138d8:
     stmdb sp!, {r3, r4, r5, lr}
     sub sp, sp, #0x10
     mov r5, r0
-    bl func_02040234
+    bl ActorExtendedType2_TriggerStoredTargetCallback
     cmp r0, #0x0
     beq .L_02213948
     mov r0, r5

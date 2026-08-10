@@ -5,8 +5,8 @@
 .extern func_02005058
 .extern ActorExtendedType2_Destroy
 .extern ActorExtendedType2_UpdateTargetMotion
-.extern func_020400a4
-.extern func_02040334
+.extern ActorExtendedType2_TryDescriptorInteraction120
+.extern ActorExtendedType2_TryDescriptorInteraction128
 .extern ActorExtendedType2_GetDescriptorValue2A
 .extern func_020befec
 .global ActorExtendedType3_Destroy
@@ -38,7 +38,7 @@ ActorExtendedType3_DestroyAndFree: ; 0x02043878
 ActorExtendedType3_ForwardInteractionGateA: ; 0x02043894
     stmdb sp!, {r3, r4, r5, lr}
     mov r5, r0
-    bl func_020400a4
+    bl ActorExtendedType2_TryDescriptorInteraction120
     movs r4, r0
     beq .L_020438b8
     mov r0, r5
@@ -56,7 +56,7 @@ ActorExtendedType3_ForwardInteractionGateA: ; 0x02043894
 ActorExtendedType3_ForwardInteractionGateB: ; 0x020438c0
     stmdb sp!, {r3, r4, r5, lr}
     mov r5, r0
-    bl func_02040334
+    bl ActorExtendedType2_TryDescriptorInteraction128
     movs r4, r0
     beq .L_020438e4
     mov r0, r5

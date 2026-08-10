@@ -16902,7 +16902,7 @@ build build/reports/actor_extended_type2_record_containment_02040000.json: objdi
   base_object = build/decomp/asm/game/actor_extended_type2_record_containment_02040000.o
 build build/reports/actor_extended_type2_record_containment_02040000.txt: match_report build/reports/actor_extended_type2_record_containment_02040000.json | tools/report_objdiff.py
   report_json = build/reports/actor_extended_type2_record_containment_02040000.json
-  report_args = --section .text --function func_02040000 --require-exact
+  report_args = --section .text --function ActorExtendedRecordArray_ContainsPoint --require-exact
 build build/reports/actor_extended_type2_record_containment.txt: phony build/reports/actor_extended_type2_record_containment_02040000.txt
 build actor_extended_type2_record_containment: phony build/decomp/src/game/actor_extended_type2_record_containment.o build/decomp/asm/game/actor_extended_type2_record_containment_02040000.o build/reports/actor_extended_type2_record_containment.txt
 
@@ -16917,7 +16917,7 @@ build build/reports/actor_extended_type2_interaction_gate_020400a4.json: objdiff
   base_object = build/decomp/asm/game/actor_extended_type2_interaction_gate_020400a4.o
 build build/reports/actor_extended_type2_interaction_gate_020400a4.txt: match_report build/reports/actor_extended_type2_interaction_gate_020400a4.json | tools/report_objdiff.py
   report_json = build/reports/actor_extended_type2_interaction_gate_020400a4.json
-  report_args = --section .text --function func_020400a4 --require-exact
+  report_args = --section .text --function ActorExtendedType2_TryDescriptorInteraction120 --require-exact
 build build/reports/actor_extended_type2_interaction_gate.txt: phony build/reports/actor_extended_type2_interaction_gate_020400a4.txt
 build actor_extended_type2_interaction_gate: phony build/decomp/src/game/actor_extended_type2_interaction_gate.o build/decomp/asm/game/actor_extended_type2_interaction_gate_020400a4.o build/reports/actor_extended_type2_interaction_gate.txt
 
@@ -16932,7 +16932,7 @@ build build/reports/actor_extended_type2_callback_pair_predicates_020401a0.json:
   base_object = build/decomp/asm/game/actor_extended_type2_callback_pair_predicates_020401a0.o
 build build/reports/actor_extended_type2_callback_pair_predicates_020401a0.txt: match_report build/reports/actor_extended_type2_callback_pair_predicates_020401a0.json | tools/report_objdiff.py
   report_json = build/reports/actor_extended_type2_callback_pair_predicates_020401a0.json
-  report_args = --section .text --function func_020401a0 --function func_0204022c --require-exact
+  report_args = --section .text --function ActorExtendedType2_MatchesInteractionCallbackPairs --function ActorExtendedType2_ReturnZeroInteraction --require-exact
 build build/reports/actor_extended_type2_callback_pair_predicates.txt: phony build/reports/actor_extended_type2_callback_pair_predicates_020401a0.txt
 build actor_extended_type2_callback_pair_predicates: phony build/decomp/src/game/actor_extended_type2_callback_pair_predicates.o build/decomp/asm/game/actor_extended_type2_callback_pair_predicates_020401a0.o build/reports/actor_extended_type2_callback_pair_predicates.txt
 
@@ -16947,7 +16947,7 @@ build build/reports/actor_extended_type2_target_callback_trigger_02040234.json: 
   base_object = build/decomp/asm/game/actor_extended_type2_target_callback_trigger_02040234.o
 build build/reports/actor_extended_type2_target_callback_trigger_02040234.txt: match_report build/reports/actor_extended_type2_target_callback_trigger_02040234.json | tools/report_objdiff.py
   report_json = build/reports/actor_extended_type2_target_callback_trigger_02040234.json
-  report_args = --section .text --function func_02040234 --require-exact
+  report_args = --section .text --function ActorExtendedType2_TriggerStoredTargetCallback --require-exact
 build build/reports/actor_extended_type2_target_callback_trigger.txt: phony build/reports/actor_extended_type2_target_callback_trigger_02040234.txt
 build actor_extended_type2_target_callback_trigger: phony build/decomp/src/game/actor_extended_type2_target_callback_trigger.o build/decomp/asm/game/actor_extended_type2_target_callback_trigger_02040234.o build/reports/actor_extended_type2_target_callback_trigger.txt
 
@@ -16977,7 +16977,7 @@ build build/reports/actor_extended_type2_secondary_interaction_gate_02040334.jso
   base_object = build/decomp/asm/game/actor_extended_type2_secondary_interaction_gate_02040334.o
 build build/reports/actor_extended_type2_secondary_interaction_gate_02040334.txt: match_report build/reports/actor_extended_type2_secondary_interaction_gate_02040334.json | tools/report_objdiff.py
   report_json = build/reports/actor_extended_type2_secondary_interaction_gate_02040334.json
-  report_args = --section .text --function func_02040334 --require-exact
+  report_args = --section .text --function ActorExtendedType2_TryDescriptorInteraction128 --require-exact
 build build/reports/actor_extended_type2_secondary_interaction_gate.txt: phony build/reports/actor_extended_type2_secondary_interaction_gate_02040334.txt
 build actor_extended_type2_secondary_interaction_gate: phony build/decomp/src/game/actor_extended_type2_secondary_interaction_gate.o build/decomp/asm/game/actor_extended_type2_secondary_interaction_gate_02040334.o build/reports/actor_extended_type2_secondary_interaction_gate.txt
 
@@ -16992,7 +16992,7 @@ build build/reports/actor_extended_type2_runtime_group_proximity_02040400.json: 
   base_object = build/decomp/asm/game/actor_extended_type2_runtime_group_proximity_02040400.o
 build build/reports/actor_extended_type2_runtime_group_proximity_02040400.txt: match_report build/reports/actor_extended_type2_runtime_group_proximity_02040400.json | tools/report_objdiff.py
   report_json = build/reports/actor_extended_type2_runtime_group_proximity_02040400.json
-  report_args = --section .text --function func_02040400 --require-exact
+  report_args = --section .text --function ActorExtendedType2_CheckRuntimeGroupProximity --require-exact
 build build/reports/actor_extended_type2_runtime_group_proximity.txt: phony build/reports/actor_extended_type2_runtime_group_proximity_02040400.txt
 build actor_extended_type2_runtime_group_proximity: phony build/decomp/src/game/actor_extended_type2_runtime_group_proximity.o build/decomp/asm/game/actor_extended_type2_runtime_group_proximity_02040400.o build/reports/actor_extended_type2_runtime_group_proximity.txt
 
@@ -17614,7 +17614,7 @@ build build/reports/actor_extended_linked_partner_callbacks_02043d78.json: objdi
   base_object = build/decomp/asm/game/actor_extended_linked_partner_callbacks_02043d78.o
 build build/reports/actor_extended_linked_partner_callbacks_02043d78.txt: match_report build/reports/actor_extended_linked_partner_callbacks_02043d78.json | tools/report_objdiff.py
   report_json = build/reports/actor_extended_linked_partner_callbacks_02043d78.json
-  report_args = --section .text --function ActorExtendedLinked_IsActorOrPartnerActive --function ActorExtendedLinked_NotifyPartner --require-exact
+  report_args = --section .text --function ActorExtendedLinked_CheckGroupProximityOrPartnerActive --function ActorExtendedLinked_NotifyPartner --require-exact
 build build/reports/actor_extended_linked_partner_callbacks.txt: phony build/reports/actor_extended_linked_partner_callbacks_02043d78.txt
 build actor_extended_linked_partner_callbacks: phony build/decomp/src/game/actor_extended_linked_partner_callbacks.o build/decomp/asm/game/actor_extended_linked_partner_callbacks_02043d78.o build/reports/actor_extended_linked_partner_callbacks.txt
 

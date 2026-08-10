@@ -1,8 +1,8 @@
 ; Matching retail form; see src/game/actor_extended_type2_record_containment.c.
 .text
-.global func_02040000
-.type func_02040000, @function
-func_02040000: ; 0x02040000
+.global ActorExtendedRecordArray_ContainsPoint
+.type ActorExtendedRecordArray_ContainsPoint, @function
+ActorExtendedRecordArray_ContainsPoint: ; 0x02040000
     stmdb sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, lr}
     mov r1, r1, lsl #0x4
     mov r2, r2, lsl #0x4
@@ -46,4 +46,4 @@ func_02040000: ; 0x02040000
     blt .L_02040034
     mov r0, #0x0
     ldmia sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, pc}
-.size func_02040000, . - func_02040000
+.size ActorExtendedRecordArray_ContainsPoint, . - ActorExtendedRecordArray_ContainsPoint

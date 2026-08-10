@@ -7,7 +7,7 @@
 .extern data_021052fc
 .extern func_02005030
 .extern func_02005058
-.extern func_02040000
+.extern ActorExtendedRecordArray_ContainsPoint
 .global func_02040f4c
 .type func_02040f4c, @function
 func_02040f4c: ; 0x02040f4c
@@ -81,7 +81,7 @@ func_02040f4c: ; 0x02040f4c
     beq .L_02041068
     ldr r1, [r5, #0x1c]
     ldr r2, [r5, #0x20]
-    bl func_02040000
+    bl ActorExtendedRecordArray_ContainsPoint
     cmp r0, #0x0
     movne r4, #0x1
 .L_02041068:

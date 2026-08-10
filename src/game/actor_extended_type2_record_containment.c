@@ -9,7 +9,7 @@
  * [halfword +0x02,+0x06). Return zero when no record contains the point.
  * Inputs and records are read only; no engine or hardware state changes.
  */
-s32 func_02040000(const void *self, s32 x, s32 y)
+s32 ActorExtendedRecordArray_ContainsPoint(const void *self, s32 x, s32 y)
 {
     const u8 *object=(const u8 *)self; const u8 *records=*(const u8 *const *)(object+4); s32 i;
     x>>=12; y>>=12;

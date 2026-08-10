@@ -1,9 +1,9 @@
 ; Matching retail form; see src/game/actor_extended_type2_target_callback_trigger.c.
 .text
 .extern data_020df9e8
-.global func_02040234
-.type func_02040234, @function
-func_02040234: ; 0x02040234
+.global ActorExtendedType2_TriggerStoredTargetCallback
+.type ActorExtendedType2_TriggerStoredTargetCallback, @function
+ActorExtendedType2_TriggerStoredTargetCallback: ; 0x02040234
     stmdb sp!, {r4, lr}
     mov r4, r0
     ldr r1, [r4, #0x260]
@@ -24,5 +24,5 @@ func_02040234: ; 0x02040234
     strb r1, [r4, #0x24c]
     ldmia sp!, {r4, pc}
 .L_02040280: .word data_020df9e8
-.size func_02040234, . - func_02040234
+.size ActorExtendedType2_TriggerStoredTargetCallback, . - ActorExtendedType2_TriggerStoredTargetCallback
 
