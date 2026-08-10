@@ -1,0 +1,14 @@
+# Generated exact matching fallback for overlay 561.
+# Regenerate with tools/generate_overlay_matching_ninja.py.
+
+build build/decomp/asm/overlays/ov561/overlay561_02233c60.o: mwasmarm asm/overlays/ov561/overlay561_02233c60.s
+build build/decomp/delinks/asm/overlays/ov561/overlay561_02233c60.o: dsd_delink config/arm9/config.yaml | config/arm9/overlays/ov561/delinks.txt config/arm9/overlays/ov561/symbols.txt config/arm9/overlays/ov561/relocs.txt
+  object = asm/overlays/ov561/overlay561_02233c60.s
+build build/reports/overlay561_02233c60.json: objdiff build/decomp/asm/overlays/ov561/overlay561_02233c60.o build/decomp/delinks/asm/overlays/ov561/overlay561_02233c60.o
+  target_object = build/decomp/asm/overlays/ov561/overlay561_02233c60.o
+  base_object = build/decomp/delinks/asm/overlays/ov561/overlay561_02233c60.o
+build build/reports/overlay561_02233c60.txt: match_report build/reports/overlay561_02233c60.json | tools/report_objdiff.py
+  report_json = build/reports/overlay561_02233c60.json
+  report_args = --section .text --function func_ov561_02233c60 --require-exact
+
+build overlay561_matching: phony build/reports/overlay561_02233c60.txt
