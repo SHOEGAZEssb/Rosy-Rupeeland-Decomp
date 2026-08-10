@@ -11,7 +11,7 @@
 .extern func_020189b0
 .extern func_02030ad4
 .extern func_020337d4
-.extern func_02034378
+.extern Actor_BuildWorldInteractionBounds
 .extern Actor_SetInteractionBounds
 .extern func_02056f34
 .global func_0201863c
@@ -179,11 +179,11 @@ L_02018868:
     mov r1, r0
     add r0, sp, #0x58
     add r2, r1, #0x18
-    bl func_02034378
+    bl Actor_BuildWorldInteractionBounds
     add r0, sp, #0x48
     mov r1, r4
     add r2, r4, #0x18
-    bl func_02034378
+    bl Actor_BuildWorldInteractionBounds
     add r0, sp, #0x38
     add r1, sp, #0x58
     add r2, sp, #0x48

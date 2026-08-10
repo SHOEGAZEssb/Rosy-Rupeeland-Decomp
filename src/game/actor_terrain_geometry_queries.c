@@ -18,7 +18,8 @@ extern u32 func_02034464(void *actor, s32 x, s32 y);
  * both X edges by vector+4 and both Y edges by vector+8. Write four s32 edges
  * to output and return no value; no hardware or SDK state is touched.
  */
-void func_02034378(s32 output[4], const void *self, const void *position)
+void Actor_BuildWorldInteractionBounds(s32 output[4], const void *self,
+                                       const void *position)
 {
     const u8 *actor = (const u8 *)self;
     const u8 *vector = (const u8 *)position;

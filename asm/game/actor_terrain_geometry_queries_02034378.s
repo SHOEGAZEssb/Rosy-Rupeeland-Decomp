@@ -1,9 +1,9 @@
 ; Matching retail form; see src/game/actor_terrain_geometry_queries.c.
 .text
 
-    .global func_02034378
-    .type func_02034378, @function
-func_02034378: ; 0x02034378
+    .global Actor_BuildWorldInteractionBounds
+    .type Actor_BuildWorldInteractionBounds, @function
+Actor_BuildWorldInteractionBounds: ; 0x02034378
     ldrsh r3, [r1, #0x70]
     mov r3, r3, lsl #0xc
     str r3, [r0, #0x0]
@@ -31,7 +31,6 @@ func_02034378: ; 0x02034378
     add r1, r1, r2
     str r1, [r0, #0xc]
     bx lr
-    .size func_02034378, . - func_02034378
+    .size Actor_BuildWorldInteractionBounds, . - Actor_BuildWorldInteractionBounds
 
     .global func_020343e4
-

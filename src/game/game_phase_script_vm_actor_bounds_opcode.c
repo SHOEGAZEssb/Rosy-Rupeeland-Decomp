@@ -27,7 +27,8 @@ extern "C" {
 extern const void *data_020d5b10;
 extern void *func_02030ad4(void *collection, s32 index);
 extern void *func_020337d4(void *actor);
-extern void func_02034378(void *destination, void *actor, void *actorField18);
+extern void Actor_BuildWorldInteractionBounds(void *destination, void *actor,
+                                              void *actorField18);
 extern void Actor_SetInteractionBounds(void *actor, const ActorBounds *bounds);
 extern s32 func_02056f34(void *result, const void *first, const void *second,
                          void *scratch);
@@ -114,8 +115,10 @@ s32 func_0201863c(GamePhaseActorScriptVm *self)
         u32 scratch[7];
         u8 *firstActor = (u8 *)func_02030ad4(func_020337d4(actor), first);
         u8 *secondActor = (u8 *)func_02030ad4(func_020337d4(actor), second);
-        func_02034378(secondState, secondActor, secondActor + 0x18);
-        func_02034378(firstState, firstActor, firstActor + 0x18);
+        Actor_BuildWorldInteractionBounds(secondState, secondActor,
+                                          secondActor + 0x18);
+        Actor_BuildWorldInteractionBounds(firstState, firstActor,
+                                          firstActor + 0x18);
         func_020127f8(&self->base,
                       func_02056f34(result, secondState, firstState, scratch)
                           != 0);

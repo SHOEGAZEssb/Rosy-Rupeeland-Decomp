@@ -7,7 +7,7 @@
 .extern Actor_GetCollisionCenter
 .extern Actor_BuildCollisionRect
 .extern func_020337d4
-.extern func_02034378
+.extern Actor_BuildWorldInteractionBounds
 .extern func_02034464
 .extern func_02056f34
 .extern func_020571b4
@@ -203,7 +203,7 @@ func_02031758: ; 0x02031758
     add r0, sp, #0x50
     mov r1, r5
     add r2, r5, #0x18
-    bl func_02034378
+    bl Actor_BuildWorldInteractionBounds
     mov r0, r5
     bl func_020337d4
     add r0, r0, #0x2000

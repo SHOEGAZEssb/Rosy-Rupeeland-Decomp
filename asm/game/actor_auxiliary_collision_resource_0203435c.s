@@ -13,4 +13,4 @@ Actor_SetAuxiliaryCollisionPosition: ; 0x0203435c
     bx lr
     .size Actor_SetAuxiliaryCollisionPosition, . - Actor_SetAuxiliaryCollisionPosition
 
-    .global func_02034378
+    .global Actor_BuildWorldInteractionBounds
